@@ -68,7 +68,8 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Charger le fichier JSON à partir de GitHub Pages
-  fetch('https://starboy-ngc.github.io/data.json')
+  fetch('https://raw.githubusercontent.com/starboy-ngc/Physics/data.json
+')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok: ' + response.statusText);
