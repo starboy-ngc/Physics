@@ -160,65 +160,71 @@
     });
 
 (function() {
-    // Ajout des boutons tick et cross
+    // Création des boutons tick et cross pour la validation des réponses
     const tickButton = document.createElement('button');
     tickButton.id = 'tickBtn';
-    tickButton.innerText = '✓';
-    tickButton.style.backgroundColor = '#4CAF50';
-    tickButton.style.color = '#FFFFFF';
+    tickButton.textContent = '✓';
+    tickButton.style.backgroundColor = '#4caf50';
+    tickButton.style.color = 'white';
+    tickButton.style.margin = '10px';
 
     const crossButton = document.createElement('button');
     crossButton.id = 'crossBtn';
-    crossButton.innerText = '✗';
-    crossButton.style.backgroundColor = '#F44336';
-    crossButton.style.color = '#FFFFFF';
+    crossButton.textContent = '✗';
+    crossButton.style.backgroundColor = '#f44336';
+    crossButton.style.color = 'white';
+    crossButton.style.margin = '10px';
 
-    // Ajout du bouton statistique
+    // Création du bouton de statistiques
     const statsButton = document.createElement('button');
     statsButton.id = 'statsBtn';
-    statsButton.innerText = 'Statistics';
-    statsButton.style.backgroundColor = '#2196F3';
-    statsButton.style.color = '#FFFFFF';
+    statsButton.textContent = 'Statistiques';
+    statsButton.style.backgroundColor = '#2196f3';
+    statsButton.style.color = 'white';
+    statsButton.style.margin = '10px';
 
-    // Ajout des boutons au conteneur
+    // Ajout des boutons au conteneur existant
     const container = document.getElementById('container');
     container.appendChild(tickButton);
     container.appendChild(crossButton);
     container.appendChild(statsButton);
 
-    // Initialisation de l'objet pour stocker les statistiques
+    // Initialisation de l'objet de statistiques
     let stats = {};
 
-    // Fonctions pour mettre à jour les statistiques
-    function updateStats(chapter, correct) {
+    // Mise à jour des statistiques basée sur la réponse correcte ou incorrecte
+    function updateStats(chapter, isCorrect) {
         if (!stats[chapter]) {
             stats[chapter] = { correct: 0, incorrect: 0 };
         }
-        if (correct) {
+        if (isCorrect) {
             stats[chapter].correct++;
         } else {
             stats[chapter].incorrect++;
         }
     }
 
-    // Gestion des événements click pour les boutons tick et cross
-    tickButton.addEventListener('click', () => {
+    // Gestionnaires d'événements pour les boutons tick et cross
+    tickButton.addEventListener('click', function() {
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, true);
     });
 
-    crossButton.addEventListener('click', () => {
+    crossButton.addEventListener('click', function() {
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, false);
     });
 
-    // Affichage des statistiques
-    statsButton.addEventListener('click', () => {
-        alert(JSON.stringify(stats, null, 2));
+    // Gestionnaire d'événement pour le bouton de statistiques
+    statsButton.addEventListener('click', function() {
+        let statsMsg = 'Statistiques par chapitre:\n';
+        Object.keys(stats).forEach((chapter) => {
+            statsMsg += `${chapter} - Correct: ${stats[chapter].correct}, Incorrect: ${stats[chapter].incorrect}\n`;
+        });
+        alert(statsMsg);
     });
 })();
 
-    
 </script>
 
 
