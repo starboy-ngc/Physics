@@ -52,6 +52,19 @@
             text-align: center;
             margin: 0 auto;
         }
+
+        #statsPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Assure que le pop-up est bien visible */
+}
+
     </style>
 </head>
 <body>
@@ -63,10 +76,12 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
-
-<button onclick="closeStatsPopup()">Fermer</button>
-
     </div>
+
+    <div id="statsPopup" style="display:none;">
+    <div id="statsContent"></div>
+    <button onclick="closeStatsPopup()">Fermer</button>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let data = null; // Variable globale pour stocker les données JSON
@@ -228,16 +243,8 @@
         alert(statsMsg);
         statsContainer.innerHTML = content;
         statsContainer.style.display = 'block'; // Rend le conteneur visible
-
-};
-
     });
 })();
-window.closeStatsPopup = function() {
-    document.getElementById('statsPopup').style.display = 'none';
-};
-
-    
 </script>
 </body>
 </html>
