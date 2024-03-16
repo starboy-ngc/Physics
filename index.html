@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
       function initThemes() {
         const themeSelect = document.getElementById('theme');
         themeSelect.innerHTML = '';
-        Object.keys(data).forEach(theme => {
+        const themes = new Set(data.map(item => item.Theme));
+        themes.forEach(theme => {
           const option = document.createElement('option');
           option.value = theme;
           option.text = theme;
@@ -94,8 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const theme = document.getElementById('theme').value;
         const chapters = document.getElementById('chapter');
         chapters.innerHTML = '';
-
-        Object.keys(data[theme]).forEach(chapter => {
+        const chaptersForTheme = data.filter(item => item.Theme === theme).map(item => item.Chapitre);
+        const uniqueChapters = Array.from(new Set(chaptersForTheme));
+        uniqueChapters.forEach(chapter => {
           const option = document.createElement('option');
           option.value = chapter;
           option.text = chapter;
@@ -104,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       function getRandomQuestionAnswer(theme, chapter) {
-        const questions = data[theme][chapter];
+        const questions = data.filter(item => item.Theme === theme && item.Chapitre === chapter);
         const randomIndex = Math.floor(Math.random() * questions.length);
         return questions[randomIndex];
       }
@@ -115,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const theme = document.getElementById('theme').value;
         const chapter = document.getElementById('chapter').value;
         const qa = getRandomQuestionAnswer(theme, chapter);
-        document.getElementById('questionArea').innerText = `Question: ${qa.question}`;
+        document.getElementById('questionArea').innerText = `Question: ${qa.Question}`;
         document.getElementById('questionArea').style.display = 'block';
         // Cachez la réponse précédente (optionnel)
         document.getElementById('answerArea').style.display = 'none';
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const theme = document.getElementById('theme').value;
           const chapter = document.getElementById('chapter').value;
           const qa = getRandomQuestionAnswer(theme, chapter); // Cela pourrait ne pas correspondre à la question affichée si on clique à nouveau
-          document.getElementById('answerArea').innerText = `Answer: ${qa.reponse}`;
+          document.getElementById('answerArea').innerText = `Answer: ${qa.Reponse}`;
           document.getElementById('answerArea').style.display = 'block';
         }
       });
@@ -140,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
 
 </body>
 </html>
