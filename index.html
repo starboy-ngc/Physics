@@ -67,9 +67,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // S'assurer que l'URL du fichier 'data.json' est correcte. 
-  // Si 'data.json' est bien à la racine du dépôt GitHub Pages, l'URL devrait être correcte.
-  // Assurez-vous que le dépôt est public, car GitHub Pages ne peut pas servir de fichiers à partir de dépôts privés sans configuration supplémentaire.
+  // Charger le fichier JSON à partir de GitHub Pages
   fetch('https://starboy-ngc.github.io/data.json')
     .then(response => {
       if (!response.ok) {
@@ -77,18 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       return response.json();
     })
-    .then(rawData => {
-      // Assurez-vous que cette partie du code est exécutée en vérifiant dans la console du navigateur
-      console.log(rawData);
+    .then(data => {
+      // La variable 'data' contient maintenant les données du fichier JSON
       
-      const data = rawData.reduce((acc, item) => {
-        if (!acc[item.Theme]) acc[item.Theme] = {};
-        if (!acc[item.Theme][item.Chapitre]) acc[item.Theme][item.Chapitre] = [];
-        acc[item.Theme][item.Chapitre].push({ question: item.Question, reponse: item.Reponse });
-        return acc;
-      }, {});
-
-      // Les fonctions suivantes semblent correctes. Assurez-vous qu'elles sont appelées après que les données ont été chargées avec succès.
       function initThemes() {
         const themeSelect = document.getElementById('theme');
         themeSelect.innerHTML = '';
@@ -105,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const theme = document.getElementById('theme').value;
         const chapters = document.getElementById('chapter');
         chapters.innerHTML = '';
-        
+
         Object.keys(data[theme]).forEach(chapter => {
           const option = document.createElement('option');
           option.value = chapter;
@@ -128,20 +117,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const qa = getRandomQuestionAnswer(theme, chapter);
         document.getElementById('questionArea').innerText = `Question: ${qa.question}`;
         document.getElementById('questionArea').style.display = 'block';
+        // Cachez la réponse précédente (optionnel)
+        document.getElementById('answerArea').style.display = 'none';
       });
 
       document.getElementById('answerBtn').addEventListener('click', () => {
+        // Assurez-vous que la question a été posée avant de montrer une réponse
         if (document.getElementById('questionArea').style.display === 'block') {
           const theme = document.getElementById('theme').value;
           const chapter = document.getElementById('chapter').value;
-          const qa = getRandomQuestionAnswer(theme, chapter);
+          const qa = getRandomQuestionAnswer(theme, chapter); // Cela pourrait ne pas correspondre à la question affichée si on clique à nouveau
           document.getElementById('answerArea').innerText = `Answer: ${qa.reponse}`;
           document.getElementById('answerArea').style.display = 'block';
         }
       });
 
-      // Assurez-vous d'appeler initThemes après le chargement des données
-      initThemes();
+      initThemes(); // Initialise les thèmes et les chapitres au chargement de la page
     })
     .catch(error => {
       console.error('Error loading the JSON file:', error);
@@ -150,9 +141,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-
-
-
-    
 </body>
 </html>
