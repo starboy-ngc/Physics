@@ -235,25 +235,6 @@
         statsContainer.innerHTML = content;
         statsContainer.style.display = 'block'; // Rend le conteneur visible
     });
-
-    // Ajoutez ce bloc juste avant la fermeture de votre IIFE existante
-
-// Enregistrement et affichage des statistiques
-window.addEventListener('beforeunload', function() {
-    const previousStats = localStorage.getItem('currentStats');
-    if (previousStats) {
-        localStorage.setItem('previousStats', previousStats);
-    }
-    localStorage.setItem('currentStats', JSON.stringify(stats));
-});
-
-window.addEventListener('load', function() {
-    const currentStats = JSON.parse(localStorage.getItem('currentStats') || '{}');
-    const previousStats = JSON.parse(localStorage.getItem('previousStats') || '{}');
-    displayStatsPopup(currentStats, previousStats);
-});
-
-
 })();
 
 </script>
