@@ -63,6 +63,8 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
+        <button onclick="closeStatsPopup()">Fermer</button>
+
     </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -225,6 +227,11 @@
         alert(statsMsg);
         statsContainer.innerHTML = content;
         statsContainer.style.display = 'block'; // Rend le conteneur visible
+
+            window.closeStatsPopup = function() {
+    document.getElementById('statsPopup').style.display = 'none';
+};
+
     });
 })();
 
