@@ -63,7 +63,8 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
-        <button onclick="closeStatsPopup()">Fermer</button>
+
+<button onclick="closeStatsPopup()">Fermer</button>
 
     </div>
 <script>
@@ -228,13 +229,15 @@
         statsContainer.innerHTML = content;
         statsContainer.style.display = 'block'; // Rend le conteneur visible
 
-            window.closeStatsPopup = function() {
-    document.getElementById('statsPopup').style.display = 'none';
 };
 
     });
 })();
+window.closeStatsPopup = function() {
+    document.getElementById('statsPopup').style.display = 'none';
+};
 
+    
 </script>
 </body>
 </html>
