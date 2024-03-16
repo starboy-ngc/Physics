@@ -85,7 +85,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let data = null; // Variable globale pour stocker les données JSON
-
         // Charger le fichier JSON à partir de l'URL spécifiée
         fetch('https://starboy-ngc.github.io/Physics/data.json')
             .then(response => {
@@ -103,7 +102,6 @@
             .catch(error => {
                 console.error('Error loading the JSON file:', error);
             });
-
         function processData(rawData) {
             // Transformation des données brutes en un format structuré pour l'application
             return rawData.reduce((acc, item) => {
@@ -113,7 +111,6 @@
                 return acc;
             }, {});
         }
-
         function initThemes(data) {
             const themeSelect = document.getElementById('theme');
             // Réinitialiser le contenu du sélecteur de thème
@@ -128,7 +125,6 @@
             // Appeler populateChapters pour afficher les chapitres correspondants au thème sélectionné
             populateChapters(data);
         }
-
         function populateChapters(data) {
             const theme = document.getElementById('theme').value;
             const chapters = document.getElementById('chapter');
@@ -142,7 +138,6 @@
                 chapters.add(option);
             });
         }
-
         function getRandomQuestionAnswer(data) {
             const theme = document.getElementById('theme').value;
             const chapter = document.getElementById('chapter').value;
@@ -150,10 +145,8 @@
             const randomIndex = Math.floor(Math.random() * questions.length);
             return questions[randomIndex];
         }
-
         // Événement de changement de thème pour actualiser les chapitres correspondants
         document.getElementById('theme').addEventListener('change', () => populateChapters(data));
-
         // Événement de clic sur le bouton de question
         document.getElementById('questionBtn').addEventListener('click', () => {
             if (!data) return; // Vérifiez si les données sont chargées
@@ -163,7 +156,6 @@
             // Cacher la réponse précédente (optionnel)
             document.getElementById('answerArea').style.display = 'none';
         });
-
         // Événement de clic sur le bouton de réponse
         document.getElementById('answerBtn').addEventListener('click', () => {
             if (!data) return; // Vérifiez si les données sont chargées
@@ -175,7 +167,6 @@
             }
         });
     });
-
 (function() {
     // Création des boutons tick et cross pour la validation des réponses
     const tickButton = document.createElement('button');
@@ -184,14 +175,12 @@
     tickButton.style.backgroundColor = '#4caf50';
     tickButton.style.color = 'white';
     tickButton.style.margin = '10px';
-
     const crossButton = document.createElement('button');
     crossButton.id = 'crossBtn';
     crossButton.textContent = '✗';
     crossButton.style.backgroundColor = '#f44336';
     crossButton.style.color = 'white';
     crossButton.style.margin = '10px';
-
     // Création du bouton de statistiques
     const statsButton = document.createElement('button');
     statsButton.id = 'statsBtn';
@@ -199,13 +188,11 @@
     statsButton.style.backgroundColor = '#2196f3';
     statsButton.style.color = 'white';
     statsButton.style.margin = '10px';
-
     // Ajout des boutons au conteneur existant
     const container = document.getElementById('container');
     container.appendChild(tickButton);
     container.appendChild(crossButton);
     container.appendChild(statsButton);
-
     // Ajoute le conteneur de statistiques au DOM
     const statsContainer = document.createElement('div');
     statsContainer.id = 'statsContainer';
@@ -217,10 +204,8 @@
     statsContainer.style.marginTop = '20px';
     statsContainer.style.textAlign = 'left';
     container.appendChild(statsContainer); // Ajoute à la fin du conteneur principal
-
     // Initialisation de l'objet de statistiques
     let stats = {};
-
     // Mise à jour des statistiques basée sur la réponse correcte ou incorrecte
     function updateStats(chapter, isCorrect) {
         if (!stats[chapter]) {
@@ -232,18 +217,15 @@
             stats[chapter].incorrect++;
         }
     }
-
     // Gestionnaires d'événements pour les boutons tick et cross
     tickButton.addEventListener('click', function() {
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, true);
     });
-
     crossButton.addEventListener('click', function() {
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, false);
     });
-
     // Remplace l'alerte par l'affichage dans le conteneur de statistiques
     statsButton.addEventListener('click', function() {
         let content = '<h3>Statistiques par Chapitre</h3>';
@@ -290,15 +272,8 @@ window.closeStatsPopup = function() {
     document.getElementById('statsPopup').style.display = 'none';
 };
 
-
-
 })();
 
 </script>
-
-
-
-
-
 </body>
 </html>
