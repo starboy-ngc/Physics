@@ -67,6 +67,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        let data = null; // Variable globale pour stocker les données JSON
+
         // Charger le fichier JSON à partir de l'URL spécifiée
         fetch('https://starboy-ngc.github.io/Physics/data.json')
             .then(response => {
@@ -75,11 +77,11 @@
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(jsonData => {
                 // Une fois que le fichier JSON est chargé avec succès, traitons les données
-                const formattedData = processData(data);
+                data = processData(jsonData);
                 // Initialise les thèmes et les chapitres avec les données traitées
-                initThemes(formattedData);
+                initThemes(data);
             })
             .catch(error => {
                 console.error('Error loading the JSON file:', error);
@@ -137,6 +139,7 @@
 
         // Événement de clic sur le bouton de question
         document.getElementById('questionBtn').addEventListener('click', () => {
+            if (!data) return; // Vérifiez si les données sont chargées
             const qa = getRandomQuestionAnswer(data);
             document.getElementById('questionArea').innerText = `Question: ${qa.question}`;
             document.getElementById('questionArea').style.display = 'block';
@@ -146,6 +149,7 @@
 
         // Événement de clic sur le bouton de réponse
         document.getElementById('answerBtn').addEventListener('click', () => {
+            if (!data) return; // Vérifiez si les données sont chargées
             // Assurer que la question a été posée avant de montrer une réponse
             if (document.getElementById('questionArea').style.display === 'block') {
                 const qa = getRandomQuestionAnswer(data);
@@ -155,6 +159,7 @@
         });
     });
 </script>
+
 
 
 
