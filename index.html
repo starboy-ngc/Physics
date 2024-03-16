@@ -189,6 +189,18 @@
     container.appendChild(crossButton);
     container.appendChild(statsButton);
 
+    // Ajoute le conteneur de statistiques au DOM
+    const statsContainer = document.createElement('div');
+    statsContainer.id = 'statsContainer';
+    statsContainer.style.display = 'none'; // Masqué par défaut
+    statsContainer.style.backgroundColor = '#f9f9f9';
+    statsContainer.style.border = '1px solid #ccc';
+    statsContainer.style.borderRadius = '5px';
+    statsContainer.style.padding = '10px';
+    statsContainer.style.marginTop = '20px';
+    statsContainer.style.textAlign = 'left';
+    container.appendChild(statsContainer); // Ajoute à la fin du conteneur principal
+
     // Initialisation de l'objet de statistiques
     let stats = {};
 
@@ -215,13 +227,14 @@
         updateStats(chapter, false);
     });
 
-    // Gestionnaire d'événement pour le bouton de statistiques
+    // Remplace l'alerte par l'affichage dans le conteneur de statistiques
     statsButton.addEventListener('click', function() {
-        let statsMsg = 'Statistiques par chapitre:\n';
-        Object.keys(stats).forEach((chapter) => {
-            statsMsg += `${chapter} - Correct: ${stats[chapter].correct}, Incorrect: ${stats[chapter].incorrect}\n`;
+        let content = '<h3>Statistiques par Chapitre</h3>';
+        Object.keys(stats).forEach(chapter => {
+            content += `<p><strong>${chapter}:</strong> Correctes: ${stats[chapter].correct}, Incorrectes: ${stats[chapter].incorrect}</p>`;
         });
-        alert(statsMsg);
+        statsContainer.innerHTML = content;
+        statsContainer.style.display = 'block'; // Rend le conteneur visible
     });
 })();
 
