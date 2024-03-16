@@ -64,18 +64,23 @@
         <div id="questionArea"></div>
         <div id="answerArea"></div>
     </div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-  // Remplacer 'data.json' par le chemin exact si votre fichier est dans un sous-dossier
-  fetch('data.json')
+document.addEventListener('DOMContentLoaded', function() {
+  // S'assurer que l'URL du fichier 'data.json' est correcte. 
+  // Si 'data.json' est bien à la racine du dépôt GitHub Pages, l'URL devrait être correcte.
+  // Assurez-vous que le dépôt est public, car GitHub Pages ne peut pas servir de fichiers à partir de dépôts privés sans configuration supplémentaire.
+  fetch('https://starboy-ngc.github.io/data.json')
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok: ' + response.statusText);
       }
       return response.json();
     })
     .then(rawData => {
-      // Transformation des données brutes en un format structuré pour l'application
+      // Assurez-vous que cette partie du code est exécutée en vérifiant dans la console du navigateur
+      console.log(rawData);
+      
       const data = rawData.reduce((acc, item) => {
         if (!acc[item.Theme]) acc[item.Theme] = {};
         if (!acc[item.Theme][item.Chapitre]) acc[item.Theme][item.Chapitre] = [];
@@ -83,6 +88,7 @@
         return acc;
       }, {});
 
+      // Les fonctions suivantes semblent correctes. Assurez-vous qu'elles sont appelées après que les données ont été chargées avec succès.
       function initThemes() {
         const themeSelect = document.getElementById('theme');
         themeSelect.innerHTML = '';
@@ -134,10 +140,19 @@
         }
       });
 
-      initThemes(); // Initialise les thèmes et les chapitres au chargement de la page
+      // Assurez-vous d'appeler initThemes après le chargement des données
+      initThemes();
     })
-    .catch(error => console.error('Error loading the JSON file:', error));
+    .catch(error => {
+      console.error('Error loading the JSON file:', error);
+      // Ajoutez éventuellement un message dans l'interface utilisateur pour indiquer que le chargement a échoué
+    });
 });
 </script>
+
+
+
+
+    
 </body>
 </html>
