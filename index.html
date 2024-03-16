@@ -77,6 +77,7 @@
         <div id="questionArea"></div>
         <div id="answerArea"></div>
         <div id="statsArea" style="display:none;"></div>
+        
 
     </div>
 <script>
@@ -218,7 +219,6 @@
         updateStats(chapter, false);
     });
 
-// Gestion de l'affichage des statistiques
 statsButton.addEventListener('click', () => {
     const statsArea = document.getElementById('statsArea');
     if (statsArea.style.display === 'none' || statsArea.style.display === '') {
@@ -230,6 +230,8 @@ statsButton.addEventListener('click', () => {
         // Cacher les statistiques
         statsArea.style.display = 'none';
     }
+});
+
 });
 
     });
