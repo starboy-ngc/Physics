@@ -52,17 +52,6 @@
             text-align: center;
             margin: 0 auto;
         }
-        #statsPopup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Assure que le pop-up est bien visible */
-}
     </style>
 </head>
 <body>
@@ -74,16 +63,14 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
-    </div>
-    <div id="statsPopup" style="display:none;">
-    <div id="statsContent"></div>
-    <button onclick="closeStatsPopup()">Fermer</button>
-</div>
+        <button onclick="closeStatsPopup()">Fermer</button>
 
+<button onclick="closeStatsPopup()">Fermer</button>
+
+    </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let data = null; // Variable globale pour stocker les données JSON
-
         // Charger le fichier JSON à partir de l'URL spécifiée
         fetch('https://starboy-ngc.github.io/Physics/data.json')
             .then(response => {
@@ -92,13 +79,10 @@
                 }
                 return response.json();
             })
-            .then(data => {
             .then(jsonData => {
                 // Une fois que le fichier JSON est chargé avec succès, traitons les données
-                const formattedData = processData(data);
                 data = processData(jsonData);
                 // Initialise les thèmes et les chapitres avec les données traitées
-                initThemes(formattedData);
                 initThemes(data);
             })
             .catch(error => {
@@ -149,7 +133,6 @@
         }
         // Événement de changement de thème pour actualiser les chapitres correspondants
         document.getElementById('theme').addEventListener('change', () => populateChapters(data));
-
         // Événement de clic sur le bouton de question
         document.getElementById('questionBtn').addEventListener('click', () => {
             if (!data) return; // Vérifiez si les données sont chargées
@@ -159,7 +142,6 @@
             // Cacher la réponse précédente (optionnel)
             document.getElementById('answerArea').style.display = 'none';
         });
-
         // Événement de clic sur le bouton de réponse
         document.getElementById('answerBtn').addEventListener('click', () => {
             if (!data) return; // Vérifiez si les données sont chargées
@@ -197,7 +179,6 @@
     container.appendChild(tickButton);
     container.appendChild(crossButton);
     container.appendChild(statsButton);
-
     // Ajoute le conteneur de statistiques au DOM
     const statsContainer = document.createElement('div');
     statsContainer.id = 'statsContainer';
@@ -209,10 +190,8 @@
     statsContainer.style.marginTop = '20px';
     statsContainer.style.textAlign = 'left';
     container.appendChild(statsContainer); // Ajoute à la fin du conteneur principal
-
     // Initialisation de l'objet de statistiques
     let stats = {};
-
     // Mise à jour des statistiques basée sur la réponse correcte ou incorrecte
     function updateStats(chapter, isCorrect) {
         if (!stats[chapter]) {
@@ -233,7 +212,6 @@
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, false);
     });
-
     // Gestionnaire d'événement pour le bouton de statistiques
     // Remplace l'alerte par l'affichage dans le conteneur de statistiques
     statsButton.addEventListener('click', function() {
@@ -247,28 +225,17 @@
         alert(statsMsg);
         statsContainer.innerHTML = content;
         statsContainer.style.display = 'block'; // Rend le conteneur visible
+
+            window.closeStatsPopup = function() {
+    document.getElementById('statsPopup').style.display = 'none';
+};
+
     });
-
-    // Ajoutez ce bloc juste avant la fermeture de votre IIFE existante
-
-// Enregistrement et affichage des statistiques
-window.addEventListener('beforeunload', function() {
-    const previousStats = localStorage.getItem('currentStats');
-    if (previousStats) {
-        localStorage.setItem('previousStats', previousStats);
-    }
-    localStorage.setItem('currentStats', JSON.stringify(stats));
-});
-</script>
-
-window.addEventListener('load', function() {
-    const currentStats = JSON.parse(localStorage.getItem('currentStats') || '{}');
-    const previousStats = JSON.parse(localStorage.getItem('previousStats') || '{}');
-    displayStatsPopup(currentStats, previousStats);
-});
-
-
 })();
+window.closeStatsPopup = function() {
+    document.getElementById('statsPopup').style.display = 'none';
+};
+
 
 </script>
 </body>
