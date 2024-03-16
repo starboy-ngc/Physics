@@ -158,6 +158,67 @@
             }
         });
     });
+
+(function() {
+    // Ajout des boutons tick et cross
+    const tickButton = document.createElement('button');
+    tickButton.id = 'tickBtn';
+    tickButton.innerText = '✓';
+    tickButton.style.backgroundColor = '#4CAF50';
+    tickButton.style.color = '#FFFFFF';
+
+    const crossButton = document.createElement('button');
+    crossButton.id = 'crossBtn';
+    crossButton.innerText = '✗';
+    crossButton.style.backgroundColor = '#F44336';
+    crossButton.style.color = '#FFFFFF';
+
+    // Ajout du bouton statistique
+    const statsButton = document.createElement('button');
+    statsButton.id = 'statsBtn';
+    statsButton.innerText = 'Statistics';
+    statsButton.style.backgroundColor = '#2196F3';
+    statsButton.style.color = '#FFFFFF';
+
+    // Ajout des boutons au conteneur
+    const container = document.getElementById('container');
+    container.appendChild(tickButton);
+    container.appendChild(crossButton);
+    container.appendChild(statsButton);
+
+    // Initialisation de l'objet pour stocker les statistiques
+    let stats = {};
+
+    // Fonctions pour mettre à jour les statistiques
+    function updateStats(chapter, correct) {
+        if (!stats[chapter]) {
+            stats[chapter] = { correct: 0, incorrect: 0 };
+        }
+        if (correct) {
+            stats[chapter].correct++;
+        } else {
+            stats[chapter].incorrect++;
+        }
+    }
+
+    // Gestion des événements click pour les boutons tick et cross
+    tickButton.addEventListener('click', () => {
+        const chapter = document.getElementById('chapter').value;
+        updateStats(chapter, true);
+    });
+
+    crossButton.addEventListener('click', () => {
+        const chapter = document.getElementById('chapter').value;
+        updateStats(chapter, false);
+    });
+
+    // Affichage des statistiques
+    statsButton.addEventListener('click', () => {
+        alert(JSON.stringify(stats, null, 2));
+    });
+})();
+
+    
 </script>
 
 
