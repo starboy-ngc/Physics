@@ -52,19 +52,6 @@
             text-align: center;
             margin: 0 auto;
         }
-
-        #statsArea {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 80%;
-    background-color: #f9f9f9;
-    text-align: left; /* ou center, selon votre préférence */
-    margin: 20px auto;
-    display: none; /* Cache l'élément par défaut */
-}
-
     </style>
 </head>
 <body>
@@ -76,11 +63,30 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
-        <div id="statsArea" style="display:none;"></div>
-        
-
     </div>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Charger le fichier JSON à partir de GitHub Pages
+  fetch('https://starboy-ngc.github.io/data.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // La variable 'data' contient maintenant les données du fichier JSON
+
+      function initThemes() {
+        const themeSelect = document.getElementById('theme');
+        themeSelect.innerHTML = '';
+        Object.keys(data).forEach(theme => {
+        const themes = new Set(data.map(item => item.Theme));
+        themes.forEach(theme => {
+          const option = document.createElement('option');
+          option.value = theme;
+          option.text = theme;
+          themeSelect.add(option);
     document.addEventListener('DOMContentLoaded', function() {
         let data = null; // Variable globale pour stocker les données JSON
         // Charger le fichier JSON à partir de l'URL spécifiée
@@ -154,6 +160,21 @@
             // Cacher la réponse précédente (optionnel)
             document.getElementById('answerArea').style.display = 'none';
         });
+        populateChapters();
+      }
+      function populateChapters() {
+        const theme = document.getElementById('theme').value;
+        const chapters = document.getElementById('chapter');
+        chapters.innerHTML = '';
+
+        Object.keys(data[theme]).forEach(chapter => {
+        const chaptersForTheme = data.filter(item => item.Theme === theme).map(item => item.Chapitre);
+        const uniqueChapters = Array.from(new Set(chaptersForTheme));
+        uniqueChapters.forEach(chapter => {
+          const option = document.createElement('option');
+          option.value = chapter;
+          option.text = chapter;
+          chapters.add(option);
         // Événement de clic sur le bouton de réponse
         document.getElementById('answerBtn').addEventListener('click', () => {
             if (!data) return; // Vérifiez si les données sont chargées
@@ -164,8 +185,35 @@
                 document.getElementById('answerArea').style.display = 'block';
             }
         });
+      }
     });
 
+      function getRandomQuestionAnswer(theme, chapter) {
+        const questions = data[theme][chapter];
+        const questions = data.filter(item => item.Theme === theme && item.Chapitre === chapter);
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        return questions[randomIndex];
+      }
+      document.getElementById('theme').addEventListener('change', populateChapters);
+      document.getElementById('questionBtn').addEventListener('click', () => {
+        const theme = document.getElementById('theme').value;
+        const chapter = document.getElementById('chapter').value;
+        const qa = getRandomQuestionAnswer(theme, chapter);
+        document.getElementById('questionArea').innerText = `Question: ${qa.question}`;
+        document.getElementById('questionArea').innerText = `Question: ${qa.Question}`;
+        document.getElementById('questionArea').style.display = 'block';
+        // Cachez la réponse précédente (optionnel)
+        document.getElementById('answerArea').style.display = 'none';
+      });
+      document.getElementById('answerBtn').addEventListener('click', () => {
+        // Assurez-vous que la question a été posée avant de montrer une réponse
+        if (document.getElementById('questionArea').style.display === 'block') {
+          const theme = document.getElementById('theme').value;
+          const chapter = document.getElementById('chapter').value;
+          const qa = getRandomQuestionAnswer(theme, chapter); // Cela pourrait ne pas correspondre à la question affichée si on clique à nouveau
+          document.getElementById('answerArea').innerText = `Answer: ${qa.reponse}`;
+          document.getElementById('answerArea').innerText = `Answer: ${qa.Reponse}`;
+          document.getElementById('answerArea').style.display = 'block';
 (function() {
     // Ajout des boutons tick et cross
     const tickButton = document.createElement('button');
@@ -206,6 +254,12 @@
         } else {
             stats[chapter].incorrect++;
         }
+      });
+      initThemes(); // Initialise les thèmes et les chapitres au chargement de la page
+    })
+    .catch(error => {
+      console.error('Error loading the JSON file:', error);
+      // Ajoutez éventuellement un message dans l'interface utilisateur pour indiquer que le chargement a échoué
     }
 
     // Gestion des événements click pour les boutons tick et cross
@@ -213,27 +267,16 @@
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, true);
     });
+});
 
     crossButton.addEventListener('click', () => {
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, false);
     });
 
-statsButton.addEventListener('click', () => {
-    const statsArea = document.getElementById('statsArea');
-    if (statsArea.style.display === 'none' || statsArea.style.display === '') {
-        // Mettre à jour le contenu de statsArea avec les statistiques
-        statsArea.innerHTML = `<h3>Statistics:</h3><pre>${JSON.stringify(stats, null, 2)}</pre>`;
-        // Afficher les statistiques
-        statsArea.style.display = 'block';
-    } else {
-        // Cacher les statistiques
-        statsArea.style.display = 'none';
-    }
-});
-
-});
-
+    // Affichage des statistiques
+    statsButton.addEventListener('click', () => {
+        alert(JSON.stringify(stats, null, 2));
     });
 })();
 
