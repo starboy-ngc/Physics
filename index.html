@@ -212,19 +212,22 @@
         updateStats(chapter, false);
     });
 
-    // Gestionnaire d'événement pour le bouton de statistiques
-    // Remplace l'alerte par l'affichage dans le conteneur de statistiques
-    statsButton.addEventListener('click', function() {
-        let statsMsg = 'Statistiques par chapitre:\n';
-        Object.keys(stats).forEach((chapter) => {
-            statsMsg += `${chapter} - Correct: ${stats[chapter].correct}, Incorrect: ${stats[chapter].incorrect}\n`;
+  // Gestionnaire d'événement pour le bouton de statistiques pour afficher/masquer les stats
+statsButton.addEventListener('click', function() {
+    // Si le conteneur de statistiques est déjà visible, on le masque
+    if (statsContainer.style.display === 'block') {
+        statsContainer.style.display = 'none';
+    } else {
+        // Sinon, on construit le contenu des statistiques et on l'affiche
         let content = '<h3>Statistiques par Chapitre</h3>';
         Object.keys(stats).forEach(chapter => {
             content += `<p><strong>${chapter}:</strong> Correctes: ${stats[chapter].correct}, Incorrectes: ${stats[chapter].incorrect}</p>`;
         });
-        alert(statsMsg);
         statsContainer.innerHTML = content;
-        statsContainer.style.display = 'block'; // Rend le conteneur visible
+        statsContainer.style.display = 'block'; // Affiche le conteneur
+    }
+});
+
     });
 })();
 
