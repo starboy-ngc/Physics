@@ -52,6 +52,19 @@
             text-align: center;
             margin: 0 auto;
         }
+
+        #statsArea {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    background-color: #f9f9f9;
+    text-align: left; /* ou center, selon votre préférence */
+    margin: 20px auto;
+    display: none; /* Cache l'élément par défaut */
+}
+
     </style>
 </head>
 <body>
@@ -63,6 +76,8 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
+        <div id="statsArea" style="display:none;"></div>
+
     </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -203,9 +218,20 @@
         updateStats(chapter, false);
     });
 
-    // Affichage des statistiques
-    statsButton.addEventListener('click', () => {
-        alert(JSON.stringify(stats, null, 2));
+// Gestion de l'affichage des statistiques
+statsButton.addEventListener('click', () => {
+    const statsArea = document.getElementById('statsArea');
+    if (statsArea.style.display === 'none' || statsArea.style.display === '') {
+        // Mettre à jour le contenu de statsArea avec les statistiques
+        statsArea.innerHTML = `<h3>Statistics:</h3><pre>${JSON.stringify(stats, null, 2)}</pre>`;
+        // Afficher les statistiques
+        statsArea.style.display = 'block';
+    } else {
+        // Cacher les statistiques
+        statsArea.style.display = 'none';
+    }
+});
+
     });
 })();
 
