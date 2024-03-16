@@ -290,34 +290,6 @@ window.closeStatsPopup = function() {
     document.getElementById('statsPopup').style.display = 'none';
 };
 
-    // Mise à jour du gestionnaire d'événement pour le bouton de statistiques pour afficher/masquer les stats
-statsButton.addEventListener('click', function() {
-    const statsPopup = document.getElementById('statsPopup');
-    // Vérifie si le pop-up est déjà affiché
-    if (statsPopup.style.display === 'block') {
-        statsPopup.style.display = 'none'; // Masque le pop-up
-    } else {
-        // Génère le contenu du pop-up et l'affiche
-        const currentStats = JSON.parse(localStorage.getItem('currentStats') || '{}');
-        const previousStats = JSON.parse(localStorage.getItem('previousStats') || '{}');
-        let content = "<h3>Statistiques Actuelles vs Précédentes</h3>";
-        
-        Object.keys(currentStats).forEach(chapter => {
-            const cur = currentStats[chapter];
-            const prev = previousStats[chapter] || { correct: 0, incorrect: 0 };
-            content += `<p><strong>${chapter}:</strong> Correctes: ${cur.correct} (Avant: ${prev.correct}), Incorrectes: ${cur.incorrect} (Avant: ${prev.incorrect})</p>`;
-        });
-
-        const statsContent = document.getElementById('statsContent');
-        statsContent.innerHTML = content;
-        statsPopup.style.display = 'block'; // Affiche le pop-up
-    }
-});
-
-// Fonction pour fermer le pop-up, appelée par le bouton Fermer dans le pop-up
-window.closeStatsPopup = function() {
-    document.getElementById('statsPopup').style.display = 'none';
-};
 
 
 })();
