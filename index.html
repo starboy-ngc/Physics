@@ -162,7 +162,7 @@
             // Assurer que la question a été posée avant de montrer une réponse
             if (document.getElementById('questionArea').style.display === 'block') {
                 const qa = getRandomQuestionAnswer(data);
-                document.getElementById('answerArea').innerText = `Answer: ${qa.reponse}`;
+                document.getElementById('answerArea').innerText = `${qa.reponse}`;
                 document.getElementById('answerArea').style.display = 'block';
             }
         });
