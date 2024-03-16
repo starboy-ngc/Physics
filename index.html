@@ -43,6 +43,7 @@
         }
         #questionArea, #answerArea {
             margin-top: 20px;
+    margin-bottom: 20px
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -74,10 +75,6 @@
         <button id="answerBtn">Get Answer</button>
         <div id="questionArea"></div>
         <div id="answerArea"></div>
-        <button onclick="closeStatsPopup()">Fermer</button>
-
-<button onclick="closeStatsPopup()">Fermer</button>
-
     </div>
     <div id="statsPopup" style="display:none;">
     <div id="statsContent"></div>
@@ -227,31 +224,16 @@
         const chapter = document.getElementById('chapter').value;
         updateStats(chapter, false);
     });
-    // Gestionnaire d'événement pour le bouton de statistiques
     // Remplace l'alerte par l'affichage dans le conteneur de statistiques
     statsButton.addEventListener('click', function() {
-        let statsMsg = 'Statistiques par chapitre:\n';
-        Object.keys(stats).forEach((chapter) => {
-            statsMsg += `${chapter} - Correct: ${stats[chapter].correct}, Incorrect: ${stats[chapter].incorrect}\n`;
         let content = '<h3>Statistiques par Chapitre</h3>';
         Object.keys(stats).forEach(chapter => {
             content += `<p><strong>${chapter}:</strong> Correctes: ${stats[chapter].correct}, Incorrectes: ${stats[chapter].incorrect}</p>`;
         });
-        alert(statsMsg);
         statsContainer.innerHTML = content;
         statsContainer.style.display = 'block'; // Rend le conteneur visible
     });
-
-            window.closeStatsPopup = function() {
-    document.getElementById('statsPopup').style.display = 'none';
-};
     // Ajoutez ce bloc juste avant la fermeture de votre IIFE existante
-
-    });
-})();
-window.closeStatsPopup = function() {
-    document.getElementById('statsPopup').style.display = 'none';
-};
 // Enregistrement et affichage des statistiques
 window.addEventListener('beforeunload', function() {
     const previousStats = localStorage.getItem('currentStats');
@@ -260,16 +242,12 @@ window.addEventListener('beforeunload', function() {
     }
     localStorage.setItem('currentStats', JSON.stringify(stats));
 });
-
 window.addEventListener('load', function() {
     const currentStats = JSON.parse(localStorage.getItem('currentStats') || '{}');
     const previousStats = JSON.parse(localStorage.getItem('previousStats') || '{}');
     displayStatsPopup(currentStats, previousStats);
 });
-
-
 })();
-
 </script>
 </body>
 </html>
