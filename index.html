@@ -64,7 +64,8 @@
         <div id="questionArea"></div>
         <div id="answerArea"></div>
     </div>
-document.addEventListener('DOMContentLoaded', function() {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
   // Remplacer 'data.json' par le chemin exact si votre fichier est dans un sous-dossier
   fetch('data.json')
     .then(response => {
@@ -137,6 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => console.error('Error loading the JSON file:', error));
 });
-
+</script>
 </body>
 </html>
