@@ -64,181 +64,16 @@
         <div id="questionArea"></div>
         <div id="answerArea"></div>
     </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const rawData = [
-
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "Astro1",
-    "Question": 1,
-    "Reponse": "1a"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "b",
-    "Question": 2,
-    "Reponse": "2b"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "c",
-    "Question": 3,
-    "Reponse": "3c"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "d",
-    "Question": 4,
-    "Reponse": "4d"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "e",
-    "Question": 5,
-    "Reponse": "5e"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "f",
-    "Question": 6,
-    "Reponse": "6f"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "g",
-    "Question": 7,
-    "Reponse": "7g"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "a",
-    "Question": 8,
-    "Reponse": "8a"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "AstroB",
-    "Question": 9,
-    "Reponse": "9b"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "c",
-    "Question": 10,
-    "Reponse": "10c"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "d",
-    "Question": 11,
-    "Reponse": "11d"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "e",
-    "Question": 12,
-    "Reponse": "12e"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "f",
-    "Question": 13,
-    "Reponse": "13f"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "g",
-    "Question": 14,
-    "Reponse": "14g"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "a",
-    "Question": 15,
-    "Reponse": "15a"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "b",
-    "Question": 16,
-    "Reponse": "16b"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "c",
-    "Question": 17,
-    "Reponse": "17c"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "d",
-    "Question": 18,
-    "Reponse": "18d"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "e",
-    "Question": 19,
-    "Reponse": "19e"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "f",
-    "Question": 20,
-    "Reponse": "20f"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "g",
-    "Question": 21,
-    "Reponse": "21g"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "a",
-    "Question": 22,
-    "Reponse": "22a"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "b",
-    "Question": 23,
-    "Reponse": "23b"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "c",
-    "Question": 24,
-    "Reponse": "24c"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "d",
-    "Question": 25,
-    "Reponse": "25d"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "e",
-    "Question": 26,
-    "Reponse": "26e"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "f",
-    "Question": 27,
-    "Reponse": "27f"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "g",
-    "Question": 28,
-    "Reponse": "28g"
-  }
-      ];
-
+document.addEventListener('DOMContentLoaded', function() {
+  // Remplacer 'data.json' par le chemin exact si votre fichier est dans un sous-dossier
+  fetch('data.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(rawData => {
       // Transformation des données brutes en un format structuré pour l'application
       const data = rawData.reduce((acc, item) => {
         if (!acc[item.Theme]) acc[item.Theme] = {};
@@ -286,23 +121,22 @@
         const qa = getRandomQuestionAnswer(theme, chapter);
         document.getElementById('questionArea').innerText = `Question: ${qa.question}`;
         document.getElementById('questionArea').style.display = 'block';
-        // Cachez la réponse précédente (optionnel)
-        document.getElementById('answerArea').style.display = 'none';
       });
 
       document.getElementById('answerBtn').addEventListener('click', () => {
-        // Assurez-vous que la question a été posée avant de montrer une réponse
         if (document.getElementById('questionArea').style.display === 'block') {
           const theme = document.getElementById('theme').value;
           const chapter = document.getElementById('chapter').value;
-          const qa = getRandomQuestionAnswer(theme, chapter); // Cela pourrait ne pas correspondre à la question affichée si on clique à nouveau
+          const qa = getRandomQuestionAnswer(theme, chapter);
           document.getElementById('answerArea').innerText = `Answer: ${qa.reponse}`;
           document.getElementById('answerArea').style.display = 'block';
         }
       });
 
       initThemes(); // Initialise les thèmes et les chapitres au chargement de la page
-    });
-    </script>
+    })
+    .catch(error => console.error('Error loading the JSON file:', error));
+});
+
 </body>
 </html>
