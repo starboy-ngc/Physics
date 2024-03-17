@@ -2,7 +2,7 @@
   {
     "Theme": "Culture",
     "Chapitre": "Prix nobel",
-    "Question": "Prix nobel 2023 ?",
+    "Question": "Prix nobel de physique 2023 ?",
     "Reponse": "Pierre Agostini, Ferenc Kruaz et Anne L'Huillier \nImpulsion laser tres courte pour suivre le mvt rapide des electrons dans les molecules"
   },
   {
@@ -166,5 +166,91 @@
     "Chapitre": "g",
     "Question": 28,
     "Reponse": "28g"
-  }
+  },
+
+  {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2022 ?",
+    "Reponse": "Alain Aspect, John Clauser, Anton Zilinger \nExpériences avec des photons intriqués établissant la violation des inégalités de Bell et ouvrant la voie à la science de l'informatique quantique"
+  },
+  {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel 2021 ?",
+    "Reponse": "Syukuro Manabe, Klaus Hasselmann, Giorgio Parisi \nContributions marquantes à la compréhension des système complexe"
+  },
+
+ {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2020 ?",
+    "Reponse": "Roger Penrose, Reinhard Genzel, Andrea Ghez \nTravaux sur les trous noirs, prévision de la relativité générale et SgrA*"
+  },
+ {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2019 ?",
+    "Reponse": "James Peebles, Michel Mayor, Didier Queloz \nDécouverte de la première exoplanète 51 Pegasi B (06/10/1995) et découvertes théoriques en cosmologie physique"
+  },
+ {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2018 ?",
+    "Reponse": "Arthur Ashkin, Gérard Mourou, Donna Strickland \nPour leurs inventions dans le domaine des lasers (pinces optiques, production d'impulsions lumineuses ultra-brèves de forte intensité)"
+  },
+
+   {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel 2017 ?",
+    "Reponse": "Rainer Weiss, Barry C. Barish, Kip Thorne \nPour leurs contributions à l'observation des ondes gravitationnelles et au détecteur LIGO"
+  },
+
+   {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2016 ?",
+    "Reponse": "David J. Thouless, Ducan Haldane, John M. Kosterlitz \nPour leurs travaux sur les transitions des phases topologiques de la matière"
+  },
+
+     {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique2015 ?",
+    "Reponse": "Takaaki Kajita, Arthur B. McDonald \nPour leur découverte sur les oscillations de neutrinos qi démontre que les neutrinos ont une masse"
+  },
+       {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2014 ?",
+    "Reponse": "Isamu Akasaki, Hiroshi Amano, Shuji Nakamura \nPour l'invention de diodes électroluminescentes bleues efficaces"
+  },
+
+         {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2013 ?",
+    "Reponse": "François Englert, Peter Higgs \nPour la découverte du Boson de Higgs par le biais des experiences ATLAS et CMS au LHC"
+  },
+
+         {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2012 ?",
+    "Reponse": "Serge Haroche, David Wineland \nPour les méthodes expérimentales révolutionnaires qui ont permis la mesure et la manipulation de systèmes quantiques individuels"
+  },
+          {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2011 ?",
+    "Reponse": "Saul Perlmutter, Brian P. Schmidt, Adam Riess \nPour la découverte de l'accélération de l'expansion de l'Univers"
+  },
+          {
+    "Theme": "Culture",
+    "Chapitre": "Prix nobel",
+    "Question": "Prix nobel de physique 2010 ?",
+    "Reponse": "Andre Geim, Konstantin Novoselov \nPour des expériences fondamentales concernant le graphène (matériau bidimensionnel)"
+  },
+  
 ]
