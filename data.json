@@ -2,7 +2,8 @@
   {
     "Theme": "Culture",
     "Chapitre": "Prix nobel",
-    "Question": "Prix nobel de physique 2023 ?",
+    "Question": "Prix nobel 2023 ?",
+    "Reponse": "Pierre Agostini, Ferenc Kruaz et Anne L'Huillier \n Impulsion laser tres courte pour suivre le mvt rapide des electrons dans les molecules"
     "Reponse": "Pierre Agostini, Ferenc Kruaz et Anne L'Huillier \nImpulsion laser tres courte pour suivre le mvt rapide des electrons dans les molecules"
   },
   {
@@ -166,6 +167,5 @@
     "Chapitre": "g",
     "Question": 28,
     "Reponse": "28g"
-  },
- 
+  }
 ]
