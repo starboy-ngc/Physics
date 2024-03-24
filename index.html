@@ -1,261 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q&A Tool</title>
+    <title>Quiz sur divers thèmes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #11182b; /* Dark blue background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        #container {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        select, button {
-            font-size: 16px;
-            padding: 8px 16px;
-            margin: 10px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        select:hover, button:hover {
-            background-color: #e0e0e0;
-        }
-        #questionBtn, #answerBtn {
-            background-color: #4caf50;
-            color: #fff;
-        }
-        #questionBtn:hover, #answerBtn:hover {
-            background-color: #45a049;
-        }
-        #questionArea, #answerArea {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 80%;
-            background-color: #f9f9f9;
-            display: none;
-            text-align: center;
-            margin: 0 auto;
-        }
-        #statsPopup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Assure que le pop-up est bien visible */
-}
-        #questionArea {
-    margin-bottom: 15px; /* Augmente l'espacement au-dessous de la question */
-}
+        body { font-family: Arial, sans-serif; }
+        #réponse { display: none; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h2>Welcome to the Q&A Tool</h2>
-        <select id="theme"></select>
-        <select id="chapter"></select>
-        <button id="questionBtn">Get Question</button>
-        <button id="answerBtn">Get Answer</button>
-        <div id="questionArea"></div>
-        <div id="answerArea"></div>
+    <h1>Choisissez un thème et obtenez une question</h1>
+    <select id="theme">
+        <option value="">Sélectionnez un thème</option>
+        <!-- Les options seront ajoutées ici par JavaScript -->
+    </select>
+    <button onclick="showQuestion()">Voir une question</button>
+    <div id="question"></div>
+    <div id="réponse">
+        <button onclick="showAnswer()">Voir la réponse</button>
+        <p id="answerText"></p>
     </div>
-    <div id="statsPopup" style="display:none;">
-    <div id="statsContent"></div>
-    <button onclick="closeStatsPopup()">Fermer</button>
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let data = null; // Variable globale pour stocker les données JSON
-        // Charger le fichier JSON à partir de l'URL spécifiée
-        fetch('https://starboy-ngc.github.io/Physics/data.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(jsonData => {
-                // Une fois que le fichier JSON est chargé avec succès, traitons les données
-                data = processData(jsonData);
-                // Initialise les thèmes et les chapitres avec les données traitées
-                initThemes(data);
-            })
-            .catch(error => {
-                console.error('Error loading the JSON file:', error);
-            });
-        function processData(rawData) {
-            // Transformation des données brutes en un format structuré pour l'application
-            return rawData.reduce((acc, item) => {
-                if (!acc[item.Theme]) acc[item.Theme] = {};
-                if (!acc[item.Theme][item.Chapitre]) acc[item.Theme][item.Chapitre] = [];
-                acc[item.Theme][item.Chapitre].push({ question: item.Question, reponse: item.Reponse });
-                return acc;
-            }, {});
-        }
-        function initThemes(data) {
+
+    <script>
+        // Charger et afficher les thèmes depuis data.json
+        fetch('data.json').then(response => response.json()).then(data => {
             const themeSelect = document.getElementById('theme');
-            // Réinitialiser le contenu du sélecteur de thème
-            themeSelect.innerHTML = '';
-            // Ajouter les options de thème à partir des données
             Object.keys(data).forEach(theme => {
                 const option = document.createElement('option');
                 option.value = theme;
-                option.text = theme;
-                themeSelect.add(option);
+                option.textContent = theme;
+                themeSelect.appendChild(option);
             });
-            // Appeler populateChapters pour afficher les chapitres correspondants au thème sélectionné
-            populateChapters(data);
-        }
-        function populateChapters(data) {
-            const theme = document.getElementById('theme').value;
-            const chapters = document.getElementById('chapter');
-            // Réinitialiser le contenu du sélecteur de chapitre
-            chapters.innerHTML = '';
-            // Ajouter les options de chapitre à partir des données du thème sélectionné
-            Object.keys(data[theme]).forEach(chapter => {
-                const option = document.createElement('option');
-                option.value = chapter;
-                option.text = chapter;
-                chapters.add(option);
-            });
-        }
-        function getRandomQuestionAnswer(data) {
-            const theme = document.getElementById('theme').value;
-            const chapter = document.getElementById('chapter').value;
-            const questions = data[theme][chapter];
-            const randomIndex = Math.floor(Math.random() * questions.length);
-            return questions[randomIndex];
-        }
-        // Événement de changement de thème pour actualiser les chapitres correspondants
-        document.getElementById('theme').addEventListener('change', () => populateChapters(data));
-        // Événement de clic sur le bouton de question
-        document.getElementById('questionBtn').addEventListener('click', () => {
-            if (!data) return; // Vérifiez si les données sont chargées
-            const qa = getRandomQuestionAnswer(data);
-            document.getElementById('questionArea').innerText = `Question: ${qa.question}`;
-            document.getElementById('questionArea').style.display = 'block';
-            // Cacher la réponse précédente (optionnel)
-            document.getElementById('answerArea').style.display = 'none';
         });
-        // Événement de clic sur le bouton de réponse
-        document.getElementById('answerBtn').addEventListener('click', () => {
-            if (!data) return; // Vérifiez si les données sont chargées
-            // Assurer que la question a été posée avant de montrer une réponse
-            if (document.getElementById('questionArea').style.display === 'block') {
-                const qa = getRandomQuestionAnswer(data);
-                document.getElementById('answerArea').innerText = `${qa.reponse}`;
-                document.getElementById('answerArea').style.display = 'block';
+
+        let currentData = null; // Stocker les données de la question actuelle
+
+        // Afficher une question pour le thème sélectionné
+        function showQuestion() {
+            const theme = document.getElementById('theme').value;
+            if (!theme) return; // S'assurer qu'un thème est sélectionné
+
+            // Charger les questions pour le thème sélectionné
+            fetch('data.json').then(response => response.json()).then(data => {
+                const questions = data[theme];
+                if (questions && questions.length > 0) {
+                    // Sélectionner aléatoirement une question
+                    const questionIndex = Math.floor(Math.random() * questions.length);
+                    currentData = questions[questionIndex];
+                    document.getElementById('question').textContent = currentData.question;
+                    document.getElementById('réponse').style.display = 'block';
+                    document.getElementById('answerText').textContent = ''; // Réinitialiser le texte de réponse
+                }
+            });
+        }
+
+        // Afficher la réponse à la question courante
+        function showAnswer() {
+            if (currentData) {
+                document.getElementById('answerText').textContent = currentData.réponse;
             }
-        });
-    });
-(function() {
-    // Création des boutons tick et cross pour la validation des réponses
-    const tickButton = document.createElement('button');
-    tickButton.id = 'tickBtn';
-    tickButton.textContent = '✓';
-    tickButton.style.backgroundColor = '#4caf50';
-    tickButton.style.color = 'white';
-    tickButton.style.margin = '10px';
-    const crossButton = document.createElement('button');
-    crossButton.id = 'crossBtn';
-    crossButton.textContent = '✗';
-    crossButton.style.backgroundColor = '#f44336';
-    crossButton.style.color = 'white';
-    crossButton.style.margin = '10px';
-    // Création du bouton de statistiques
-    const statsButton = document.createElement('button');
-    statsButton.id = 'statsBtn';
-    statsButton.textContent = 'Statistiques';
-    statsButton.style.backgroundColor = '#2196f3';
-    statsButton.style.color = 'white';
-    statsButton.style.margin = '10px';
-    // Ajout des boutons au conteneur existant
-    const container = document.getElementById('container');
-    container.appendChild(tickButton);
-    container.appendChild(crossButton);
-    container.appendChild(statsButton);
-    // Ajoute le conteneur de statistiques au DOM
-    const statsContainer = document.createElement('div');
-    statsContainer.id = 'statsContainer';
-    statsContainer.style.display = 'none'; // Masqué par défaut
-    statsContainer.style.backgroundColor = '#f9f9f9';
-    statsContainer.style.border = '1px solid #ccc';
-    statsContainer.style.borderRadius = '5px';
-    statsContainer.style.padding = '10px';
-    statsContainer.style.marginTop = '20px';
-    statsContainer.style.textAlign = 'left';
-    container.appendChild(statsContainer); // Ajoute à la fin du conteneur principal
-    // Initialisation de l'objet de statistiques
-    let stats = {};
-    // Mise à jour des statistiques basée sur la réponse correcte ou incorrecte
-    function updateStats(chapter, isCorrect) {
-        if (!stats[chapter]) {
-            stats[chapter] = { correct: 0, incorrect: 0 };
         }
-        if (isCorrect) {
-            stats[chapter].correct++;
-        } else {
-            stats[chapter].incorrect++;
-        }
-    }
-    // Gestionnaires d'événements pour les boutons tick et cross
-    tickButton.addEventListener('click', function() {
-        const chapter = document.getElementById('chapter').value;
-        updateStats(chapter, true);
-    });
-    crossButton.addEventListener('click', function() {
-        const chapter = document.getElementById('chapter').value;
-        updateStats(chapter, false);
-    });
-    // Remplace l'alerte par l'affichage dans le conteneur de statistiques
-    statsButton.addEventListener('click', function() {
-        let content = '<h3>Statistiques par Chapitre</h3>';
-        Object.keys(stats).forEach(chapter => {
-            content += `<p><strong>${chapter}:</strong> Correctes: ${stats[chapter].correct}, Incorrectes: ${stats[chapter].incorrect}</p>`;
-        });
-        statsContainer.innerHTML = content;
-        statsContainer.style.display = 'block'; // Rend le conteneur visible
-    });
-
-    // Ajoutez ce bloc juste avant la fermeture de votre IIFE existante
-
-// Enregistrement et affichage des statistiques
-window.addEventListener('beforeunload', function() {
-    const previousStats = localStorage.getItem('currentStats');
-    if (previousStats) {
-        localStorage.setItem('previousStats', previousStats);
-    }
-    localStorage.setItem('currentStats', JSON.stringify(stats));
-});
-
-window.addEventListener('load', function() {
-    const currentStats = JSON.parse(localStorage.getItem('currentStats') || '{}');
-    const previousStats = JSON.parse(localStorage.getItem('previousStats') || '{}');
-    displayStatsPopup(currentStats, previousStats);
-});
-
-
-})();
-
-</script>
+    </script>
 </body>
-</html> 
+</html>
