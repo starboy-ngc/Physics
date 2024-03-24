@@ -10,9 +10,12 @@
 </head>
 <body>
     <h1>Choisissez un thème et obtenez une question</h1>
-    <select id="theme">
+    <select id="themeSelector">
         <option value="">Sélectionnez un thème</option>
-        <!-- Les options seront ajoutées ici par JavaScript -->
+        <option value="Astronomie">Astronomie</option>
+        <option value="Culture">Culture</option>
+        <option value="Mathématiques">Mathématiques</option>
+        <option value="Physique">Physique</option>
     </select>
     <button onclick="showQuestion()">Voir une question</button>
     <div id="question"></div>
@@ -21,42 +24,40 @@
         <p id="answerText"></p>
     </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const themes = ["Astronomie", "Culture", "Mathématiques", "Physique"];
-        // Sélectionner un thème aléatoire
-        const selectedTheme = themes[Math.floor(Math.random() * themes.length)];
-        showQuestion(selectedTheme);
-    });
+    <script>
+        let currentData = null; // Stocker les données de la question actuelle
 
-    let currentData = null; // Stocker les données de la question actuelle
-
-    // Afficher une question pour le thème sélectionné
-    function showQuestion(theme) {
-        // Afficher le thème sélectionné
-        document.getElementById('theme').textContent = "Thème: " + theme;
-
-        // Charger les questions pour le thème sélectionné
-        fetch('data.json').then(response => response.json()).then(data => {
-            const questions = data[theme];
-            if (questions && questions.length > 0) {
-                // Sélectionner aléatoirement une question
-                const questionIndex = Math.floor(Math.random() * questions.length);
-                currentData = questions[questionIndex];
-                document.getElementById('question').textContent = currentData.question;
-                document.getElementById('réponse').style.display = 'block';
-                document.getElementById('answerText').textContent = ''; // Réinitialiser le texte de réponse
+        // Afficher une question pour le thème sélectionné
+        function showQuestion() {
+            const theme = document.getElementById('themeSelector').value;
+            if (!theme) {
+                alert("Veuillez sélectionner un thème.");
+                return;
             }
-        });
-    }
 
-    // Afficher la réponse à la question courante
-    function showAnswer() {
-        if (currentData) {
-            document.getElementById('answerText').textContent = currentData.réponse;
+            // Charger les questions pour le thème sélectionné
+            fetch('data.json').then(response => response.json()).then(data => {
+                const questions = data[theme];
+                if (questions && questions.length > 0) {
+                    // Sélectionner aléatoirement une question
+                    const questionIndex = Math.floor(Math.random() * questions.length);
+                    currentData = questions[questionIndex];
+                    document.getElementById('question').textContent = "Question : " + currentData.question;
+                    document.getElementById('réponse').style.display = 'block';
+                    document.getElementById('answerText').textContent = ''; // Réinitialiser le texte de réponse
+                } else {
+                    document.getElementById('question').textContent = "Aucune question disponible pour le thème : " + theme;
+                    document.getElementById('réponse').style.display = 'none';
+                }
+            });
         }
-    }
-</script>
 
+        // Afficher la réponse à la question courante
+        function showAnswer() {
+            if (currentData) {
+                document.getElementById('answerText').textContent = "Réponse : " + currentData.réponse;
+            }
+        }
+    </script>
 </body>
 </html>
