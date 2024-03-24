@@ -5,58 +5,67 @@
     <title>Quiz sur divers thèmes</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-            color: #333;
+            padding: 0;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            color: #333;
         }
         .container {
-            max-width: 600px;
-            width: 100%;
+            max-width: 500px;
+            width: 90%;
             background: white;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 1.5em;
+            color: #333;
         }
         select, button {
             width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.8em;
+            margin: 1em 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
             box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        select:focus, button:focus, select:hover, button:hover {
+            border-color: #007bff;
+            outline: none;
         }
         button {
             background-color: #007bff;
             color: white;
-            border-color: #007bff;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
         button:hover {
             background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        #question {
-            margin-top: 20px;
+            transform: scale(1.05);
         }
         #réponse {
-            margin-top: 20px;
+            display: none;
+            padding-top: 20px;
         }
         #answerText {
-            margin-top: 15px;
-            padding: 10px;
             background-color: #e9ecef;
-            border-radius: 4px;
+            padding: 1em;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Module de révision</h1>
+        <h1>Choisissez un thème et obtenez une question</h1>
         <select id="themeSelector">
             <option value="">Sélectionnez un thème</option>
             <option value="Astronomie">Astronomie</option>
