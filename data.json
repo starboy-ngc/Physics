@@ -12,6 +12,21 @@
     {"question": "Qui est l'auteur de 'Hamlet' ?", "réponse": "William Shakespeare."},
     {"question": "Dans quelle ville se trouve la statue de la Liberté ?", "réponse": "New York."},
     {"question": "Quel est le plus long fleuve du monde ?", "réponse": "Le Nil."}
+        {"question": "Prix nobel physique 2023", "réponse": "Pierre Agostini, Ferenc Kruaz et Anne L'Huillier \nImpulsion laser tres courte pour suivre le mvt rapide des electrons dans les molécules"}
+        {"question": "Prix nobel 2022 ?", "réponse": "Alain Aspect, John Clauser, Anton Zilinger \nExpériences avec des photons intriqués établissant la violation des inégalités de Bell et ouvrant la voie à la science de l'informatique quantique"}
+        {"question": "Prix nobel 2021 ?", "réponse": "Syukuro Manabe, Klaus Hasselmann, Giorgio Parisi \nContributions marquantes à la compréhension des système complexe"}
+        {"question": "Prix nobel 2020 ?", "réponse": "Roger Penrose, Reinhard Genzel, Andrea Ghez \nTravaux sur les trous noirs, prévision de la relativité générale et SgrA*"}
+        {"question": "Prix nobel 2019 ?", "réponse": "James Peebles, Michel Mayor, Didier Queloz \nDécouverte de la première exoplanète 51 Pegasi B (06/10/1995) et découvertes théoriques en cosmologie physique"}
+        {"question": "Prix nobel 2018 ?", "réponse": "Arthur Ashkin, Gérard Mourou, Donna Strickland \nPour leurs inventions dans le domaine des lasers (pinces optiques, production d'impulsions lumineuses ultra-brèves de forte intensité)"}
+            {"question": "Prix nobel 2017 ?", "réponse": "Rainer Weiss, Barry C. Barish, Kip Thorne \nPour leurs contributions à l'observation des ondes gravitationnelles et au détecteur LIGO"}
+            {"question": "Prix nobel 2016 ?", "réponse": "David J. Thouless, Ducan Haldane, John M. Kosterlitz \nPour leurs travaux sur les transitions des phases topologiques de la matière"}
+            {"question": "Prix nobel 2015 ?", "réponse": "Takaaki Kajita, Arthur B. McDonald \nPour leur découverte sur les oscillations de neutrinos qi démontre que les neutrinos ont une masse"}
+            {"question": "Prix nobel 2014 ?", "réponse": "Isamu Akasaki, Hiroshi Amano, Shuji Nakamura \nPour l'invention de diodes électroluminescentes bleues efficaces"}
+            {"question": "Prix nobel 2013 ?", "réponse": "François Englert, Peter Higgs \nPour la découverte du Boson de Higgs par le biais des experiences ATLAS et CMS au LHC"}
+            {"question": "Prix nobel 2012 ?", "réponse": "Serge Haroche, David Wineland \nPour les méthodes expérimentales révolutionnaires qui ont permis la mesure et la manipulation de systèmes quantiques individuels"}
+                {"question": "Prix nobel 2011 ?", "réponse": "Saul Perlmutter, Brian P. Schmidt, Adam Riess \nPour la découverte de l'accélération de l'expansion de l'Univers"}
+                {"question": "Prix nobel 2010 ?", "réponse": "Andre Geim, Konstantin Novoselov \nPour des expériences fondamentales concernant le graphène (matériau bidimensionnel)"}
+    
   ],
   "Mathématiques": [
     {"question": "Quel est le théorème fondamental de l'algèbre ?", "réponse": "Tout polynôme non nul a au moins une racine complexe."},
