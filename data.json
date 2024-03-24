@@ -1,91 +1,30 @@
 {
   "Astronomie": [
-    {
-      "question": "Quelle planète est connue comme la 'Planète Rouge' ?",
-      "réponse": "Mars"
-    },
-    {
-      "question": "Quel est le plus grand planète du système solaire ?",
-      "réponse": "Jupiter"
-    },
-    {
-      "question": "Quel est l'objet céleste le plus proche de la Terre ?",
-      "réponse": "La Lune"
-    },
-    {
-      "question": "Quelle étoile est au centre du système solaire ?",
-      "réponse": "Le Soleil"
-    },
-    {
-      "question": "Quelle est la première planète découverte à l'aide d'un télescope ?",
-      "réponse": "Uranus"
-    }
+    {"question": "Qu'est-ce qu'une supernova ?", "réponse": "L'explosion d'une étoile en fin de vie."},
+    {"question": "Quelle planète est connue comme la 'planète rouge' ?", "réponse": "Mars."},
+    {"question": "Quelle est la plus grande planète du système solaire ?", "réponse": "Jupiter."},
+    {"question": "Qu'est-ce que la Voie Lactée ?", "réponse": "Notre galaxie."},
+    {"question": "Quel est l'objet céleste le plus proche de la Terre ?", "réponse": "La Lune."}
   ],
   "Culture": [
-    {
-      "question": "Qui a peint la Joconde ?",
-      "réponse": "Léonard de Vinci"
-    },
-    {
-      "question": "Dans quelle ville se trouve la Tour Eiffel ?",
-      "réponse": "Paris"
-    },
-    {
-      "question": "Qui a écrit 'L'Iliade' et 'L'Odyssée' ?",
-      "réponse": "Homère"
-    },
-    {
-      "question": "Quel pays est connu comme le pays du Soleil Levant ?",
-      "réponse": "Japon"
-    },
-    {
-      "question": "Quel est le plus long fleuve du monde ?",
-      "réponse": "Le Nil"
-    }
+    {"question": "Qui a peint la Joconde ?", "réponse": "Leonardo da Vinci."},
+    {"question": "Quelle ville est la capitale de la France ?", "réponse": "Paris."},
+    {"question": "Qui est l'auteur de 'Hamlet' ?", "réponse": "William Shakespeare."},
+    {"question": "Dans quelle ville se trouve la statue de la Liberté ?", "réponse": "New York."},
+    {"question": "Quel est le plus long fleuve du monde ?", "réponse": "Le Nil."}
   ],
   "Mathématiques": [
-    {
-      "question": "Quelle est la valeur de Pi ?",
-      "réponse": "Environ 3.14"
-    },
-    {
-      "question": "Quelle est la racine carrée de 144 ?",
-      "réponse": "12"
-    },
-    {
-      "question": "Qu'est-ce qu'un polygone à cinq côtés est appelé ?",
-      "réponse": "Un pentagone"
-    },
-    {
-      "question": "Quel est le théorème fondamental de l'algèbre ?",
-      "réponse": "Tout polynôme non constant a au moins une racine complexe."
-    },
-    {
-      "question": "Qu'est-ce que la série de Fibonacci ?",
-      "réponse": "Une séquence où chaque nombre est la somme des deux précédents."
-    }
+    {"question": "Quel est le théorème fondamental de l'algèbre ?", "réponse": "Tout polynôme non nul a au moins une racine complexe."},
+    {"question": "Qu'est-ce qu'une intégrale ?", "réponse": "Une opération mathématique qui représente l'aire sous une courbe."},
+    {"question": "Que représente le nombre pi ?", "réponse": "Le rapport entre la circonférence d'un cercle et son diamètre."},
+    {"question": "Qu'est-ce qu'une suite de Fibonacci ?", "réponse": "Une séquence où chaque nombre est la somme des deux précédents."},
+    {"question": "Quelle est la formule de l'équation quadratique ?", "réponse": "ax^2 + bx + c = 0."}
   ],
   "Physique": [
-    {
-      "question": "Quelle est la vitesse de la lumière ?",
-      "réponse": "Environ 299 792 kilomètres par seconde"
-    },
-    {
-      "question": "Qui a développé la théorie de la relativité ?",
-      "réponse": "Albert Einstein"
-    },
-    {
-      "question": "Qu'est-ce que la mécanique quantique étudie ?",
-      "réponse": "Le comportement des particules à l'échelle atomique et subatomique."
-    },
-    {
-      "question": "Quelle est la loi de Newton sur le mouvement ?",
-      "réponse": "F = ma (Force égale masse fois accélération)"
-    },
-    {
-      "question": "Qu'est-ce que l'entropie ?",
-      "réponse": "Une mesure du désordre ou de la randomisation d'un système."
-    }
+    {"question": "Qu'est-ce que la relativité générale ?", "réponse": "Une théorie de la gravitation développée par Einstein."},
+    {"question": "Quelle est l'unité de mesure de la force ?", "réponse": "Le Newton."},
+    {"question": "Qu'est-ce que le principe d'incertitude de Heisenberg ?", "réponse": "Il est impossible de connaître avec précision à la fois la position et la vitesse d'une particule."},
+    {"question": "Qu'est-ce que la mécanique quantique ?", "réponse": "Une branche de la physique qui étudie les systèmes à l'échelle atomique et subatomique."},
+    {"question": "Qu'est-ce que la lumière ?", "réponse": "Une forme d'énergie électromagnétique visible par l'œil humain."}
   ]
 }
-
