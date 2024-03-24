@@ -1,164 +1,91 @@
-[
-  {
-    "Theme": "Culture",
-    "Chapitre": "rrrrrr",
-    "Question": "zzzzzz",
-    "Reponse": "oooooooooo"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "c",
-    "Question": 3,
-    "Reponse": "3c"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "d",
-    "Question": 4,
-    "Reponse": "4d"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "e",
-    "Question": 5,
-    "Reponse": "5e"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "f",
-    "Question": 6,
-    "Reponse": "6f"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "g",
-    "Question": 7,
-    "Reponse": "7g"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "a",
-    "Question": 8,
-    "Reponse": "8a"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "b",
-    "Question": 9,
-    "Reponse": "9b"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "c",
-    "Question": 10,
-    "Reponse": "10c"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "d",
-    "Question": 11,
-    "Reponse": "11d"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "e",
-    "Question": 12,
-    "Reponse": "12e"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "f",
-    "Question": 13,
-    "Reponse": "13f"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "g",
-    "Question": 14,
-    "Reponse": "14g"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "a",
-    "Question": 15,
-    "Reponse": "15a"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "b",
-    "Question": 16,
-    "Reponse": "16b"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "c",
-    "Question": 17,
-    "Reponse": "17c"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "d",
-    "Question": 18,
-    "Reponse": "18d"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "e",
-    "Question": 19,
-    "Reponse": "19e"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "f",
-    "Question": 20,
-    "Reponse": "20f"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "g",
-    "Question": 21,
-    "Reponse": "21g"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "a",
-    "Question": 22,
-    "Reponse": "22a"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "b",
-    "Question": 23,
-    "Reponse": "23b"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "c",
-    "Question": 24,
-    "Reponse": "24c"
-  },
-  {
-    "Theme": "Astronomie",
-    "Chapitre": "d",
-    "Question": 25,
-    "Reponse": "25d"
-  },
-  {
-    "Theme": "Culture",
-    "Chapitre": "e",
-    "Question": 26,
-    "Reponse": "26e"
-  },
-  {
-    "Theme": "Mathematiques",
-    "Chapitre": "f",
-    "Question": 27,
-    "Reponse": "27f"
-  },
-  {
-    "Theme": "Physique",
-    "Chapitre": "g",
-    "Question": 28,
-    "Reponse": "28g"
-  },
-]
+{
+  "Astronomie": [
+    {
+      "question": "Quelle planète est connue comme la 'Planète Rouge' ?",
+      "réponse": "Mars"
+    },
+    {
+      "question": "Quel est le plus grand planète du système solaire ?",
+      "réponse": "Jupiter"
+    },
+    {
+      "question": "Quel est l'objet céleste le plus proche de la Terre ?",
+      "réponse": "La Lune"
+    },
+    {
+      "question": "Quelle étoile est au centre du système solaire ?",
+      "réponse": "Le Soleil"
+    },
+    {
+      "question": "Quelle est la première planète découverte à l'aide d'un télescope ?",
+      "réponse": "Uranus"
+    }
+  ],
+  "Culture": [
+    {
+      "question": "Qui a peint la Joconde ?",
+      "réponse": "Léonard de Vinci"
+    },
+    {
+      "question": "Dans quelle ville se trouve la Tour Eiffel ?",
+      "réponse": "Paris"
+    },
+    {
+      "question": "Qui a écrit 'L'Iliade' et 'L'Odyssée' ?",
+      "réponse": "Homère"
+    },
+    {
+      "question": "Quel pays est connu comme le pays du Soleil Levant ?",
+      "réponse": "Japon"
+    },
+    {
+      "question": "Quel est le plus long fleuve du monde ?",
+      "réponse": "Le Nil"
+    }
+  ],
+  "Mathématiques": [
+    {
+      "question": "Quelle est la valeur de Pi ?",
+      "réponse": "Environ 3.14"
+    },
+    {
+      "question": "Quelle est la racine carrée de 144 ?",
+      "réponse": "12"
+    },
+    {
+      "question": "Qu'est-ce qu'un polygone à cinq côtés est appelé ?",
+      "réponse": "Un pentagone"
+    },
+    {
+      "question": "Quel est le théorème fondamental de l'algèbre ?",
+      "réponse": "Tout polynôme non constant a au moins une racine complexe."
+    },
+    {
+      "question": "Qu'est-ce que la série de Fibonacci ?",
+      "réponse": "Une séquence où chaque nombre est la somme des deux précédents."
+    }
+  ],
+  "Physique": [
+    {
+      "question": "Quelle est la vitesse de la lumière ?",
+      "réponse": "Environ 299 792 kilomètres par seconde"
+    },
+    {
+      "question": "Qui a développé la théorie de la relativité ?",
+      "réponse": "Albert Einstein"
+    },
+    {
+      "question": "Qu'est-ce que la mécanique quantique étudie ?",
+      "réponse": "Le comportement des particules à l'échelle atomique et subatomique."
+    },
+    {
+      "question": "Quelle est la loi de Newton sur le mouvement ?",
+      "réponse": "F = ma (Force égale masse fois accélération)"
+    },
+    {
+      "question": "Qu'est-ce que l'entropie ?",
+      "réponse": "Une mesure du désordre ou de la randomisation d'un système."
+    }
+  ]
+}
+
