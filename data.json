@@ -48,6 +48,6 @@
     {"question": "Passage de l'état gazeux à l'état solide", "réponse": "Condensation"},
         {"question": "Différence entre une réaction endothermique et exothermique", "réponse": "Endothermique :  absorbe de l'énergie (ex: fusion, vaporisation) + Baisse de la température T / Tandis qu'Endothermique : libère de l'énergie (ex: Liquéfaction, solidification) + Augmentation de la température T"},
        {"question": "Quelles sont les variables impactant l'état d'un système chimique ?", "réponse": "Les conditions de pression (p) et de température (T) + les especes chimiques en fonction de leur état"}, 
-           {"question": "Qu'est ce que sont des isotopes ?", "réponse": "atomes d'un même élément chimique (N°Z équivalent) qui different selon leur nombre de neutrons (N° de masse). Ca vient du grec iso (même) et topos (place) -> même place dans la classification des éléments"}, 
+           {"question": "Qu'est ce que sont des isotopes ?", "réponse": "atomes d'un même élément chimique (N°Z équivalent) qui different selon leur nombre de neutrons (N° de masse). Ca vient du grec iso (même) et topos (place) -> même place dans la classification des éléments"}
   ]
 }
