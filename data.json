@@ -39,6 +39,15 @@
     {"question": "Quelle est l'unité de mesure de la force ?", "réponse": "Le Newton."},
     {"question": "Qu'est-ce que le principe d'incertitude de Heisenberg ?", "réponse": "Il est impossible de connaître avec précision à la fois la position et la vitesse d'une particule."},
     {"question": "Qu'est-ce que la mécanique quantique ?", "réponse": "Une branche de la physique qui étudie les systèmes à l'échelle atomique et subatomique."},
-    {"question": "Qu'est-ce que la lumière ?", "réponse": "Une forme d'énergie électromagnétique visible par l'œil humain."}
+    {"question": "Qu'est-ce que la lumière ?", "réponse": "Une forme d'énergie électromagnétique visible par l'œil humain."},
+      {"question": "Passage de l'état solide à l'état liquide", "réponse": "Fusion"},
+    {"question": "Passage de l'état solide à l'état gazeux", "réponse": "Sublimation"},
+    {"question": "Passage de l'état liquide à l'état gazeux", "réponse": "Ebullition ou vaporisation"},
+        {"question": "Passage de l'état liquide à l'état solide", "réponse": "Solidificaiton"},
+            {"question": "Passage de l'état gazeux à l'état liquide", "réponse": "Liquefaction"},
+    {"question": "Passage de l'état gazeux à l'état solide", "réponse": "Condensation"},
+        {"question": "Différence entre une réaction endothermique et exothermique", "réponse": "Endothermique :  absorbe de l'énergie (ex: fusion, vaporisation) + Baisse de la température T / Tandis qu'Endothermique : libère de l'énergie (ex: Liquéfaction, solidification) + Augmentation de la température T"},
+       {"question": "Quelles sont les variables impactant l'état d'un système chimique ?", "réponse": "Les conditions de pression (p) et de température (T) + les especes chimiques en fonction de leur état"}, 
+           {"question": "Qu'est ce que sont des isotopes ?", "réponse": "atomes d'un même élément chimique (N°Z équivalent) qui different selon leur nombre de neutrons (N° de masse). Ca vient du grec iso (même) et topos (place) -> même place dans la classification des éléments"}, 
   ]
 }
