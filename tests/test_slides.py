@@ -338,10 +338,20 @@ class TestSummaryComposition(unittest.TestCase):
         self.assertIn("Age 30-39", rendered)
         self.assertIn("Anc. 2-5 ans", rendered)
 
-    def test_page_holds_three_columns_plus_the_indicator_band(self):
+    def test_page_holds_three_columns_between_two_full_width_bands(self):
         widths = [block.width for block in self.summary.blocks]
         self.assertEqual(widths.count("third"), 3)
-        self.assertEqual(widths.count("full"), 1)
+        # Bandeau d'indicateurs en haut, bande de parts remarquables en bas.
+        self.assertEqual(widths.count("full"), 2)
+
+    def test_key_shares_close_the_page(self):
+        last = self.summary.blocks[-1]
+        self.assertEqual(last.kind, "kpis")
+        self.assertTrue(last.payload["compact"])
+        labels = [item["label"] for item in last.payload["items"]]
+        self.assertIn("Moins de 30 ans", labels)
+        self.assertIn("Anciennete > 10 ans", labels)
+        self.assertIn("Donnees valorisees", labels)
 
     def test_r_squared_is_not_repeated_in_the_block_title(self):
         titles = [block.title for block in self.summary.blocks if block.kind == "chart"]

@@ -48,8 +48,12 @@ class Slide:
 # ------------------------------------------------------------------ decoupage
 
 
-def _kpi_block(pairs: Sequence[Sequence[str]], width: str = "full") -> Block:
-    return Block("kpis", [{"label": label, "value": value} for label, value in pairs],
+def _kpi_block(pairs: Sequence[Sequence[str]], width: str = "full",
+               compact: bool = False) -> Block:
+    return Block("kpis",
+                 {"items": [{"label": label, "value": value}
+                            for label, value in pairs],
+                  "compact": compact},
                  width=width)
 
 
@@ -169,17 +173,30 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         # Le R2 est deja porte par le graphique : ne pas le repeter dans le
         # titre du bloc.
         blocks.append(Block(
-            "chart", {"type": "scatter", "dataset": scatter, "height": 345},
+            "chart", {"type": "scatter", "dataset": scatter, "height": 272},
             title="Anciennete et remuneration", width="third"))
     elif distribution.get("available"):
         # Repli : sous le seuil d'effectif, le nuage est desactive mais la
         # distribution reste publiable.
         blocks.append(Block(
             "chart", {"type": "histogram", "bins": distribution.get("bins", []),
-                      "height": 345},
+                      "height": 272},
             title="Distribution des remunerations", width="third"))
     elif scatter.get("warning"):
         blocks.append(Block("note", scatter["warning"], width="third"))
+
+    # Pied de page chiffre : les parts remarquables du chapitre 11 du cahier
+    # des charges, qu'aucun autre bloc de la fiche ne porte.
+    blocks.append(_kpi_block([
+        ["Moins de 30 ans", format_percent(population.get("share_under_30"))],
+        ["30 a 49 ans", format_percent(population.get("share_30_to_49"))],
+        ["50 ans et plus", format_percent(population.get("share_50_plus"))],
+        ["Anciennete < 2 ans",
+         format_percent(population.get("share_tenure_under_2"))],
+        ["Anciennete > 10 ans",
+         format_percent(population.get("share_tenure_over_10"))],
+        ["Donnees valorisees", format_percent(salary.get("coverage"))],
+    ], compact=True))
 
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))
@@ -403,6 +420,10 @@ padding:14px 16px}
 .kpi .label{font-size:11px;color:var(--muted);text-transform:uppercase;
 letter-spacing:.05em}
 .kpi .value{font-size:23px;font-weight:600;margin-top:6px;white-space:nowrap}
+/* Bandeau resserre : sert de pied de page chiffre sous les colonnes. */
+.kpis.compact .kpi{padding:8px 12px}
+.kpis.compact .label{font-size:10px}
+.kpis.compact .value{font-size:15px;margin-top:2px}
 .block-title{font-size:12px;color:var(--muted);text-transform:uppercase;
 letter-spacing:.05em;margin-bottom:8px}
 table{border-collapse:collapse;width:100%;font-size:14px}
@@ -500,9 +521,11 @@ def _render_block(block: Block, currency: str) -> str:
         cells = "".join(
             f'<div class="kpi"><div class="label">{_html_escape(item["label"])}</div>'
             f'<div class="value">{_html_escape(item["value"])}</div></div>'
-            for item in block.payload
+            for item in block.payload["items"]
         )
-        return f'<div class="full"><div class="kpis">{cells}</div></div>'
+        variant = " compact" if block.payload.get("compact") else ""
+        return (f'<div class="{block.width}">'
+                f'<div class="kpis{variant}">{cells}</div></div>')
     if block.kind == "table":
         head = "".join(f"<th>{_html_escape(h)}</th>" for h in block.payload["headers"])
         body = "".join(
@@ -619,19 +642,23 @@ def _rgb(hex_color: str) -> tuple:
 _PDF_PALETTE = [_rgb(color) for color in _PALETTE]
 
 
-def _draw_kpis(page, items, x, y, width) -> float:
+def _draw_kpis(page, payload, x, y, width) -> float:
     """Bandeau d'indicateurs. Retourne la hauteur consommee."""
-    height = 52.0
+    items = payload["items"]
+    compact = bool(payload.get("compact"))
+    height = 34.0 if compact else 52.0
+    label_size, value_size = (5.8, 9.0) if compact else (6.5, 13.0)
+    label_y, value_y = (12, 25) if compact else (18, 39)
     gap = 9.0
     count = max(len(items), 1)
     cell = (width - gap * (count - 1)) / count
     for index, item in enumerate(items):
         left = x + index * (cell + gap)
         page.rect(left, y - height, cell, height, fill=_PANEL, stroke=_LINE)
-        page.text(left + 9, y - 18, str(item["label"]).upper(), size=6.5,
-                  color=_MUTED, max_width=cell - 18)
-        page.text(left + 9, y - 39, str(item["value"]), size=13, bold=True,
-                  color=_INK, max_width=cell - 18)
+        page.text(left + 9, y - label_y, str(item["label"]).upper(),
+                  size=label_size, color=_MUTED, max_width=cell - 18)
+        page.text(left + 9, y - value_y, str(item["value"]), size=value_size,
+                  bold=True, color=_INK, max_width=cell - 18)
     return height
 
 

@@ -160,7 +160,7 @@ Trois sorties construites sur les memes donnees :
 | Sortie | Contenu | Formats |
 |---|---|---|
 | `rapport` | Document detaille, defilant | HTML |
-| `synthese` | Une page paysage : KPI, niveaux de remuneration, structure de la population, nuage anciennete x remuneration | HTML + PDF |
+| `synthese` | Une page paysage : indicateurs, niveaux de remuneration, structure de la population, nuage, parts remarquables | HTML + PDF |
 | `slides` | Un jeu de pages paysage, une idee par page | HTML + PDF |
 
 La fiche standard est organisee en un bandeau de six indicateurs puis trois
@@ -169,9 +169,17 @@ colonnes : niveaux de remuneration (percentiles), structure de la population
 occupe une colonne plutot qu'une bande horizontale : il a besoin de hauteur
 pour que la dispersion verticale se lise.
 
+Un second bandeau resserre ferme la page avec les parts remarquables du
+chapitre 11 du cahier des charges — moins de 30 ans, 30 a 49 ans, 50 ans et
+plus, anciennete inferieure a 2 ans, superieure a 10 ans — et le taux de
+donnees valorisees. Ces parts sont calculees sur les valeurs reelles et non
+sur les libelles de tranches : elles restent justes si l'utilisateur
+reparametre les tranches.
+
 Les blocs se declarent en trois largeurs — `full`, `half`, `third` — et les
-tableaux en version resserree (`compact`), ce qui permet de densifier une page
-sans reduire le texte sous le seuil de lisibilite en projection.
+tableaux comme les bandeaux d'indicateurs en version resserree (`compact`),
+ce qui permet de densifier une page sans reduire le texte sous le seuil de
+lisibilite en projection.
 
 La fiche standard ne porte pas les ratios de dispersion (Q3/Q1, P90/P10,
 coefficient de variation) : ils demandent une lecture experte et trouvent leur

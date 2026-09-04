@@ -79,7 +79,25 @@ def calculate_population_metrics(
     result.update(calculate_age_metrics(population, config))
     result.update(calculate_tenure_metrics(population, config))
     result["gender_split"] = _distribution_share(population, "gender", headcount)
+    result.update(_key_shares(population))
     return result
+
+
+def _key_shares(population: Population) -> Dict[str, Any]:
+    """Parts remarquables demandees par le cahier des charges.
+
+    Calculees sur les valeurs reelles et non sur les libelles de tranches :
+    elles restent justes si l'utilisateur reparametre les tranches.
+    """
+    ages = _values(population, "age_years")
+    tenures = _values(population, "tenure_years")
+    return {
+        "share_under_30": _share(sum(1 for a in ages if a < 30), len(ages)),
+        "share_30_to_49": _share(sum(1 for a in ages if 30 <= a < 50), len(ages)),
+        "share_50_plus": _share(sum(1 for a in ages if a >= 50), len(ages)),
+        "share_tenure_under_2": _share(sum(1 for t in tenures if t < 2), len(tenures)),
+        "share_tenure_over_10": _share(sum(1 for t in tenures if t >= 10), len(tenures)),
+    }
 
 
 def calculate_age_metrics(
