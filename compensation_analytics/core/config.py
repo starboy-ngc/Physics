@@ -1,0 +1,189 @@
+"""Chargement et fusion des parametres.
+
+Les parametres vivent dans des fichiers JSON locaux (`config/`), jamais dans
+le code. JSON est retenu plutot que YAML/SQLite : lisible par un RH, editable
+sans outil, parse par la bibliotheque standard (aucune dependance a installer,
+aucun binaire a faire valider par l'IT).
+
+Toute valeur absente d'un fichier utilisateur retombe sur le defaut embarque :
+le logiciel demarre donc meme sans dossier `config/`.
+"""
+
+from __future__ import annotations
+
+import copy
+import json
+import os
+from typing import Any, Dict
+
+from .errors import ConfigError
+
+CONFIG_FILES = (
+    "population_mapping",
+    "age_parameters",
+    "tenure_parameters",
+    "percentile_parameters",
+    "salary_parameters",
+    "privacy_parameters",
+    "chart_parameters",
+    "export_parameters",
+)
+
+DEFAULTS: Dict[str, Any] = {
+    "population_mapping": {
+        # champ normalise -> libelles acceptes dans le fichier source
+        "fields": {
+            "employee_id": ["Matricule", "Employee ID", "ID"],
+            "last_name": ["Nom", "Last name"],
+            "first_name": ["Prenom", "Prénom", "First name"],
+            "gender": ["Sexe", "Genre", "Gender"],
+            "birth_date": ["Date de naissance", "Birth date"],
+            "hire_date": ["Date d'entree", "Date d'entrée", "Hire date"],
+            "leave_date": ["Date de sortie", "Leave date"],
+            "business_unit": ["BU", "Business Unit"],
+            "country": ["Pays", "Country"],
+            "site": ["Etablissement", "Établissement", "Site"],
+            "job": ["Metier", "Métier", "Job"],
+            "job_family": ["Famille metier", "Famille métier", "Job family"],
+            "grade": ["Grade"],
+            "coefficient": ["Coefficient"],
+            "status": ["Statut", "Status"],
+            "fte": ["Temps de travail", "FTE"],
+            "base_salary": ["Salaire de base", "Base salary"],
+            "variable_pay": ["Variable", "Variable pay"],
+            "total_compensation": ["Remuneration totale", "Rémunération totale"],
+        },
+        "required": ["employee_id", "base_salary"],
+        "numeric": ["coefficient", "fte", "base_salary", "variable_pay",
+                    "total_compensation"],
+        "date": ["birth_date", "hire_date", "leave_date"],
+        "personal": ["last_name", "first_name", "birth_date", "employee_id"],
+    },
+    "age_parameters": {
+        "bands": [
+            {"label": "20-29", "min": 20, "max": 29, "max_inclusive": True},
+            {"label": "30-39", "min": 30, "max": 39, "max_inclusive": True},
+            {"label": "40-49", "min": 40, "max": 49, "max_inclusive": True},
+            {"label": "50-59", "min": 50, "max": 59, "max_inclusive": True},
+            {"label": "60+", "min": 60, "max": None},
+        ],
+        "reference_date": None,
+    },
+    "tenure_parameters": {
+        "bands": [
+            {"label": "<2 ans", "min": 0, "max": 2},
+            {"label": "2-5 ans", "min": 2, "max": 5},
+            {"label": "5-10 ans", "min": 5, "max": 10},
+            {"label": ">10 ans", "min": 10, "max": None},
+        ],
+        "reference_date": None,
+    },
+    "percentile_parameters": {
+        "percentiles": [10, 25, 50, 75, 90],
+        "method": "linear",
+    },
+    "salary_parameters": {
+        "analysis_field": "base_salary",
+        "annualise_on_fte": False,
+        "currency": "EUR",
+        "outlier_method": "iqr",
+        "outlier_factor": 1.5,
+        "min_plausible": 1000.0,
+        "max_plausible": 1000000.0,
+    },
+    "privacy_parameters": {
+        "min_headcount_publish": 5,
+        "min_headcount_warning": 10,
+        "min_headcount_chart": 10,
+        "anonymise_identifiers": True,
+        "log_personal_data": False,
+    },
+    "chart_parameters": {
+        "histogram_bins": 20,
+        "scatter_x": "tenure_years",
+        "scatter_y": "base_salary",
+        "scatter_color_by": "business_unit",
+        "scatter_max_points": 5000,
+        "show_trend_line": True,
+    },
+    "export_parameters": {
+        "output_directory": "output",
+        "excel_enabled": True,
+        "html_report_enabled": True,
+        "include_individual_data": False,
+    },
+}
+
+
+class Configuration:
+    """Vue en lecture sur l'ensemble des parametres charges."""
+
+    def __init__(self, data: Dict[str, Any]):
+        self._data = data
+
+    def section(self, name: str) -> Dict[str, Any]:
+        if name not in self._data:
+            raise ConfigError(
+                f"La section de configuration \"{name}\" est introuvable.",
+                technical=f"unknown config section: {name}",
+            )
+        return self._data[name]
+
+    def get(self, path: str, default: Any = None) -> Any:
+        """Acces pointe : `config.get("salary_parameters.currency")`."""
+        node: Any = self._data
+        for part in path.split("."):
+            if not isinstance(node, dict) or part not in node:
+                return default
+            node = node[part]
+        return node
+
+    def as_dict(self) -> Dict[str, Any]:
+        return copy.deepcopy(self._data)
+
+
+def _deep_merge(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any]:
+    result = copy.deepcopy(base)
+    for key, value in override.items():
+        if isinstance(value, dict) and isinstance(result.get(key), dict):
+            result[key] = _deep_merge(result[key], value)
+        else:
+            result[key] = copy.deepcopy(value)
+    return result
+
+
+def load_configuration(config_dir: str | None = None) -> Configuration:
+    """Charge `config/*.json` en surcharge des defauts embarques."""
+    data = copy.deepcopy(DEFAULTS)
+    if not config_dir:
+        return Configuration(data)
+    for name in CONFIG_FILES:
+        path = os.path.join(config_dir, f"{name}.json")
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                loaded = json.load(handle)
+        except (OSError, ValueError) as exc:
+            raise ConfigError(
+                f"Le fichier de configuration \"{name}.json\" n'a pas pu etre lu. "
+                "Verifiez qu'il s'agit d'un fichier JSON valide.",
+                technical=f"{type(exc).__name__}: {exc}",
+            ) from exc
+        if not isinstance(loaded, dict):
+            raise ConfigError(
+                f"Le fichier de configuration \"{name}.json\" doit contenir un objet.",
+                technical=f"config {name} is {type(loaded).__name__}",
+            )
+        data[name] = _deep_merge(data.get(name, {}), loaded)
+    return Configuration(data)
+
+
+def write_default_configuration(config_dir: str) -> None:
+    """Materialise les defauts sur disque, pour edition par l'utilisateur."""
+    os.makedirs(config_dir, exist_ok=True)
+    for name in CONFIG_FILES:
+        path = os.path.join(config_dir, f"{name}.json")
+        with open(path, "w", encoding="utf-8") as handle:
+            json.dump(DEFAULTS[name], handle, ensure_ascii=False, indent=2)
+            handle.write("\n")

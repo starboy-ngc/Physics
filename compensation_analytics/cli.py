@@ -1,0 +1,211 @@
+"""Interface en ligne de commande du moteur.
+
+C'est la couche de pilotage du V1 : elle enchaine le pipeline et produit la
+restitution. Une interface graphique pourra s'appuyer sur les memes appels
+(`pipeline.run_analysis`), sans dupliquer la moindre regle.
+
+    python3 -m compensation_analytics.cli analyse data/population.xlsx \
+        --filtre "business_unit=France" --segment grade --sortie output
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as _dt
+import json
+import os
+import sys
+from typing import Any, Dict, List, Optional
+
+from .core.config import load_configuration, write_default_configuration
+from .core.errors import CompensationError
+from .core.export import export_excel
+from .core.logging_setup import configure_logging, log_event
+from .core.mapping import resolve_mapping
+from .core.pipeline import AnalysisRequest, load_population, run_analysis
+from .core.quality import run_quality_check
+from .core.reporting import write_report
+from .core.segmentation import SEGMENT_FIELDS, build_filters
+from .core.traceability import write_manifest
+from .io.tabular import read_table
+from .version import ENGINE_NAME, __version__
+
+_OPERATOR_TOKENS = (
+    (">=", "gte"), ("<=", "lte"), ("!=", "ne"), ("~=", "contains"),
+    ("=", "eq"), (">", "gt"), ("<", "lt"),
+)
+
+
+def parse_filter(expression: str) -> Dict[str, Any]:
+    """Traduit "business_unit=France|Iberia" en definition de filtre.
+
+    L'expression est decoupee par comparaison de chaines : aucun `eval`,
+    aucune construction de code dynamique.
+    """
+    for token, operator in _OPERATOR_TOKENS:
+        if token in expression:
+            field_name, _, raw = expression.partition(token)
+            field_name = field_name.strip()
+            raw = raw.strip()
+            if "|" in raw:
+                return {
+                    "field": field_name, "operator": "in",
+                    "value": [item.strip() for item in raw.split("|")],
+                }
+            if operator in ("gte", "lte", "gt", "lt"):
+                return {"field": field_name, "operator": operator, "value": raw}
+            return {"field": field_name, "operator": operator, "value": raw}
+    raise CompensationError(
+        f"Le filtre \"{expression}\" est mal ecrit. "
+        "Format attendu : champ=valeur (ex. business_unit=France).",
+        technical=f"unparsable filter: {expression}",
+    )
+
+
+def _date(value: str) -> Optional[_dt.date]:
+    return _dt.date.fromisoformat(value) if value else None
+
+
+def command_analyse(args: argparse.Namespace) -> int:
+    request = AnalysisRequest(
+        source_path=args.fichier,
+        sheet=args.onglet,
+        config_dir=args.config,
+        filters=build_filters([parse_filter(item) for item in args.filtre or []]),
+        segments=args.segment or [],
+        comparison_filters=build_filters(
+            [parse_filter(item) for item in args.comparer or []]
+        ),
+        comparison_label=args.libelle_comparaison,
+        reference_date=_date(args.date_reference),
+        title=args.titre,
+        ignore_quality_errors=args.ignorer_anomalies,
+    )
+    result = run_analysis(request)
+    output_dir = args.sortie or result.config.get(
+        "export_parameters.output_directory", "output"
+    )
+    os.makedirs(output_dir, exist_ok=True)
+    stamp = _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
+
+    produced: List[str] = []
+    if result.config.get("export_parameters.html_report_enabled", True):
+        produced.append(write_report(
+            result.payload, os.path.join(output_dir, f"restitution-{stamp}.html")
+        ))
+    if result.config.get("export_parameters.excel_enabled", True):
+        produced.append(export_excel(
+            result.payload, result.filtered, result.config,
+            os.path.join(output_dir, f"analyse-{stamp}.xlsx"),
+        ))
+    produced.append(write_manifest(
+        result.payload["manifest"], os.path.join(output_dir, f"manifeste-{stamp}.json")
+    ))
+
+    print(result.quality.to_text())
+    print()
+    print(f"Effectif analyse : {len(result.filtered)} salaries")
+    for path in produced:
+        print(f"  - {path}")
+    return 0
+
+
+def command_controle(args: argparse.Namespace) -> int:
+    config = load_configuration(args.config)
+    population, mapping, _ = load_population(
+        args.fichier, config, args.onglet, _date(args.date_reference)
+    )
+    report = run_quality_check(population, mapping, config)
+    if args.json:
+        print(json.dumps(report.as_dict(), ensure_ascii=False, indent=2))
+    else:
+        print(report.to_text())
+    return 1 if report.blocking else 0
+
+
+def command_mapping(args: argparse.Namespace) -> int:
+    config = load_configuration(args.config)
+    table = read_table(args.fichier, args.onglet)
+    mapping = resolve_mapping(table.headers, config)
+    print("Colonnes identifiees :")
+    for field_name, column in sorted(mapping.field_to_column.items()):
+        print(f"  {field_name:<20} <- \"{column}\"")
+    if mapping.unknown_columns:
+        print("\nColonnes non reconnues (ignorees) :")
+        for column in mapping.unknown_columns:
+            print(f"  \"{column}\"")
+    if mapping.missing_required:
+        print("\nColonnes obligatoires manquantes :")
+        for field_name in mapping.missing_required:
+            print(f"  {field_name}")
+        return 1
+    return 0
+
+
+def command_config(args: argparse.Namespace) -> int:
+    write_default_configuration(args.dossier)
+    print(f"Configuration par defaut ecrite dans {args.dossier}")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="compensation-analytics",
+        description=f"{ENGINE_NAME} v{__version__} — analyse locale, hors ligne.",
+    )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    parser.add_argument("--logs", default="", help="dossier du log technique")
+    sub = parser.add_subparsers(dest="commande", required=True)
+
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument("fichier", help="fichier de population (.xlsx, .xlsm, .csv)")
+    common.add_argument("--onglet", default=None, help="onglet Excel a lire")
+    common.add_argument("--config", default="config", help="dossier de configuration")
+    common.add_argument("--date-reference", default="",
+                        help="date d'analyse (AAAA-MM-JJ), par defaut aujourd'hui")
+
+    analyse = sub.add_parser("analyse", parents=[common],
+                             help="analyse complete et restitution")
+    analyse.add_argument("--filtre", action="append",
+                         help="critere, ex. business_unit=France ou grade=G5|G6")
+    analyse.add_argument("--segment", action="append", choices=list(SEGMENT_FIELDS),
+                         help="dimension d'analyse (repetable)")
+    analyse.add_argument("--comparer", action="append",
+                         help="filtre definissant la population de comparaison")
+    analyse.add_argument("--libelle-comparaison", default="Population B")
+    analyse.add_argument("--sortie", default="", help="dossier de sortie")
+    analyse.add_argument("--titre", default="Analyse de remuneration")
+    analyse.add_argument("--ignorer-anomalies", action="store_true",
+                         help="poursuivre malgre les anomalies critiques")
+    analyse.set_defaults(handler=command_analyse)
+
+    controle = sub.add_parser("controle", parents=[common],
+                              help="controle qualite seul")
+    controle.add_argument("--json", action="store_true")
+    controle.set_defaults(handler=command_controle)
+
+    mapping = sub.add_parser("mapping", parents=[common],
+                             help="verifier l'identification des colonnes")
+    mapping.set_defaults(handler=command_mapping)
+
+    config = sub.add_parser("config", help="ecrire la configuration par defaut")
+    config.add_argument("--dossier", default="config")
+    config.set_defaults(handler=command_config)
+    return parser
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    args = build_parser().parse_args(argv)
+    configure_logging(args.logs or None)
+    try:
+        return args.handler(args)
+    except CompensationError as error:
+        # L'utilisateur lit un message metier ; le detail part dans le log.
+        log_event("cli", args.commande, status="ERREUR",
+                  detail=error.technical or type(error).__name__)
+        print(f"\n{error.message}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

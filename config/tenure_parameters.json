@@ -1,0 +1,25 @@
+{
+  "bands": [
+    {
+      "label": "<2 ans",
+      "min": 0,
+      "max": 2
+    },
+    {
+      "label": "2-5 ans",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "label": "5-10 ans",
+      "min": 5,
+      "max": 10
+    },
+    {
+      "label": ">10 ans",
+      "min": 10,
+      "max": null
+    }
+  ],
+  "reference_date": null
+}

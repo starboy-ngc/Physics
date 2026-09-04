@@ -1,0 +1,107 @@
+{
+  "fields": {
+    "employee_id": [
+      "Matricule",
+      "Employee ID",
+      "ID"
+    ],
+    "last_name": [
+      "Nom",
+      "Last name"
+    ],
+    "first_name": [
+      "Prenom",
+      "Prénom",
+      "First name"
+    ],
+    "gender": [
+      "Sexe",
+      "Genre",
+      "Gender"
+    ],
+    "birth_date": [
+      "Date de naissance",
+      "Birth date"
+    ],
+    "hire_date": [
+      "Date d'entree",
+      "Date d'entrée",
+      "Hire date"
+    ],
+    "leave_date": [
+      "Date de sortie",
+      "Leave date"
+    ],
+    "business_unit": [
+      "BU",
+      "Business Unit"
+    ],
+    "country": [
+      "Pays",
+      "Country"
+    ],
+    "site": [
+      "Etablissement",
+      "Établissement",
+      "Site"
+    ],
+    "job": [
+      "Metier",
+      "Métier",
+      "Job"
+    ],
+    "job_family": [
+      "Famille metier",
+      "Famille métier",
+      "Job family"
+    ],
+    "grade": [
+      "Grade"
+    ],
+    "coefficient": [
+      "Coefficient"
+    ],
+    "status": [
+      "Statut",
+      "Status"
+    ],
+    "fte": [
+      "Temps de travail",
+      "FTE"
+    ],
+    "base_salary": [
+      "Salaire de base",
+      "Base salary"
+    ],
+    "variable_pay": [
+      "Variable",
+      "Variable pay"
+    ],
+    "total_compensation": [
+      "Remuneration totale",
+      "Rémunération totale"
+    ]
+  },
+  "required": [
+    "employee_id",
+    "base_salary"
+  ],
+  "numeric": [
+    "coefficient",
+    "fte",
+    "base_salary",
+    "variable_pay",
+    "total_compensation"
+  ],
+  "date": [
+    "birth_date",
+    "hire_date",
+    "leave_date"
+  ],
+  "personal": [
+    "last_name",
+    "first_name",
+    "birth_date",
+    "employee_id"
+  ]
+}

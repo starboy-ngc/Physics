@@ -1,0 +1,9 @@
+# Sorties d'analyse : elles peuvent contenir des donnees RH.
+output/
+logs/
+data/
+*.log
+
+__pycache__/
+*.py[cod]
+.venv/

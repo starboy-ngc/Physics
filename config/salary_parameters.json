@@ -1,0 +1,9 @@
+{
+  "analysis_field": "base_salary",
+  "annualise_on_fte": false,
+  "currency": "EUR",
+  "outlier_method": "iqr",
+  "outlier_factor": 1.5,
+  "min_plausible": 1000.0,
+  "max_plausible": 1000000.0
+}

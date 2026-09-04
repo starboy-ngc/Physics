@@ -1,0 +1,6 @@
+{
+  "output_directory": "output",
+  "excel_enabled": true,
+  "html_report_enabled": true,
+  "include_individual_data": false
+}

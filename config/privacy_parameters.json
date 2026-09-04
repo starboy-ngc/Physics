@@ -1,0 +1,7 @@
+{
+  "min_headcount_publish": 5,
+  "min_headcount_warning": 10,
+  "min_headcount_chart": 10,
+  "anonymise_identifiers": true,
+  "log_personal_data": false
+}

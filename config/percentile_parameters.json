@@ -1,0 +1,10 @@
+{
+  "percentiles": [
+    10,
+    25,
+    50,
+    75,
+    90
+  ],
+  "method": "linear"
+}

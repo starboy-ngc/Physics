@@ -1,0 +1,483 @@
+"""Restitution HTML autoportante.
+
+Contraintes respectees : aucun appel reseau, aucune police distante, aucune
+bibliotheque JavaScript externe. Les graphiques sont du SVG genere cote
+moteur ; le fichier produit s'ouvre hors ligne dans le navigateur du poste et
+s'imprime en PDF via la fonction d'impression standard (aucun binaire tiers).
+"""
+
+from __future__ import annotations
+
+import datetime as _dt
+import html
+import json
+import os
+from typing import Any, Dict, List, Optional, Sequence
+
+from ..version import ENGINE_NAME, __version__
+from .segmentation import SEGMENT_LABELS
+
+_PALETTE = [
+    "#2f5d8a", "#c26b3f", "#4f8f6d", "#8a5f9e", "#b0453f",
+    "#3f7d9e", "#8d7b3a", "#6b6b6b", "#7a4f6d", "#4a6d3f",
+]
+
+_CSS = """
+:root{--ink:#1b2733;--muted:#5d6b7a;--line:#d9e0e7;--bg:#ffffff;--panel:#f5f7f9;--accent:#2f5d8a;--warn:#8a5a12;--warn-bg:#fdf3e0;--crit:#8f2f2f;--crit-bg:#fbeded}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 "Segoe UI",Calibri,Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 64px}
+header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:28px}
+h1{font-size:24px;margin:0 0 4px}
+h2{font-size:17px;margin:36px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:14px;margin:20px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.meta{color:var(--muted);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+.kpi .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.kpi .value{font-size:20px;font-weight:600;margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{background:var(--panel);font-weight:600;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+tbody tr:hover{background:#fafcfd}
+.scroll{overflow-x:auto}
+.note{border-left:3px solid var(--accent);background:var(--panel);padding:10px 14px;margin:12px 0;font-size:13px}
+.note.warn{border-color:#c9922f;background:var(--warn-bg);color:var(--warn)}
+.note.crit{border-color:#b04a4a;background:var(--crit-bg);color:var(--crit)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;font-size:12px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+figure{margin:0 0 8px}
+svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:6px}
+footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+@media print{.wrap{max-width:none;padding:0}h2{page-break-after:avoid}figure,table{page-break-inside:avoid}}
+"""
+
+# Interaction minimale : survol des points du nuage. Aucun code externe.
+_JS = """
+(function(){
+  var tip=document.createElement('div');
+  tip.style.cssText='position:fixed;display:none;background:#1b2733;color:#fff;padding:6px 9px;'+
+    'border-radius:4px;font:12px/1.4 Segoe UI,Arial,sans-serif;pointer-events:none;z-index:9';
+  document.body.appendChild(tip);
+  document.addEventListener('mouseover',function(e){
+    var t=e.target;
+    if(!t||!t.getAttribute||!t.getAttribute('data-tip'))return;
+    tip.textContent=t.getAttribute('data-tip');
+    tip.style.display='block';
+    tip.style.left=(e.clientX+14)+'px';
+    tip.style.top=(e.clientY+14)+'px';
+  });
+  document.addEventListener('mouseout',function(e){
+    if(e.target&&e.target.getAttribute&&e.target.getAttribute('data-tip'))tip.style.display='none';
+  });
+})();
+"""
+
+
+def _e(value: Any) -> str:
+    return html.escape("" if value is None else str(value), quote=True)
+
+
+def format_money(value: Optional[float], currency: str = "EUR") -> str:
+    if value is None:
+        return "—"
+    return f"{value:,.0f}".replace(",", " ") + f" {currency}"
+
+
+def format_number(value: Optional[float], digits: int = 1) -> str:
+    if value is None:
+        return "—"
+    return f"{value:,.{digits}f}".replace(",", " ").replace(".", ",")
+
+
+def format_percent(value: Optional[float]) -> str:
+    return "—" if value is None else f"{value:.1f} %".replace(".", ",")
+
+
+def _kpi(label: str, value: str) -> str:
+    return f'<div class="kpi"><div class="label">{_e(label)}</div><div class="value">{_e(value)}</div></div>'
+
+
+def _note(text: Optional[str], kind: str = "") -> str:
+    if not text:
+        return ""
+    css = f"note {kind}".strip()
+    return f'<div class="{css}">{_e(text)}</div>'
+
+
+def _table(headers: Sequence[str], rows: Sequence[Sequence[str]]) -> str:
+    head = "".join(f"<th>{_e(item)}</th>" for item in headers)
+    body = "".join(
+        "<tr>" + "".join(f"<td>{_e(cell)}</td>" for cell in row) + "</tr>"
+        for row in rows
+    )
+    return f'<div class="scroll"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+
+
+# ------------------------------------------------------------------ graphiques
+
+
+def histogram_svg(bins: List[Dict[str, float]], currency: str,
+                  width: int = 900, height: int = 300) -> str:
+    if not bins:
+        return ""
+    pad_left, pad_bottom, pad_top, pad_right = 60, 46, 16, 16
+    plot_w = width - pad_left - pad_right
+    plot_h = height - pad_top - pad_bottom
+    peak = max(item["count"] for item in bins) or 1
+    bar_w = plot_w / len(bins)
+    parts = [f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Distribution des remunerations">']
+    for step in range(5):
+        y = pad_top + plot_h - plot_h * step / 4
+        value = peak * step / 4
+        parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="#e6ebf0"/>')
+        parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="#5d6b7a">{value:.0f}</text>')
+    for index, item in enumerate(bins):
+        bar_h = plot_h * item["count"] / peak
+        x = pad_left + index * bar_w
+        y = pad_top + plot_h - bar_h
+        tip = (f'{format_money(item["lower"], currency)} - {format_money(item["upper"], currency)} : '
+               f'{int(item["count"])} salaries')
+        parts.append(
+            f'<rect x="{x + 1:.1f}" y="{y:.1f}" width="{max(bar_w - 2, 1):.1f}" '
+            f'height="{bar_h:.1f}" fill="#2f5d8a" opacity="0.85" data-tip="{_e(tip)}"/>'
+        )
+    low = bins[0]["lower"]
+    high = bins[-1]["upper"]
+    base_y = pad_top + plot_h
+    parts.append(f'<line x1="{pad_left}" y1="{base_y}" x2="{width - pad_right}" y2="{base_y}" stroke="#9aa7b4"/>')
+    parts.append(f'<text x="{pad_left}" y="{base_y + 18}" font-size="11" fill="#5d6b7a">{_e(format_money(low, currency))}</text>')
+    parts.append(f'<text x="{width - pad_right}" y="{base_y + 18}" text-anchor="end" font-size="11" fill="#5d6b7a">{_e(format_money(high, currency))}</text>')
+    parts.append(f'<text x="{pad_left}" y="{base_y + 34}" font-size="11" fill="#5d6b7a">Effectif par classe de remuneration</text>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def scatter_svg(dataset: Dict[str, Any], currency: str,
+                width: int = 900, height: int = 420) -> str:
+    points = dataset.get("points") or []
+    if not points:
+        return ""
+    pad_left, pad_bottom, pad_top, pad_right = 70, 48, 16, 16
+    plot_w = width - pad_left - pad_right
+    plot_h = height - pad_top - pad_bottom
+    xs = [point["x"] for point in points]
+    ys = [point["y"] for point in points]
+    x_min, x_max = min(xs), max(xs)
+    y_min, y_max = min(ys), max(ys)
+    x_span = (x_max - x_min) or 1.0
+    y_span = (y_max - y_min) or 1.0
+
+    def to_x(value: float) -> float:
+        return pad_left + (value - x_min) / x_span * plot_w
+
+    def to_y(value: float) -> float:
+        return pad_top + plot_h - (value - y_min) / y_span * plot_h
+
+    groups = dataset.get("groups") or []
+    colors = {group: _PALETTE[index % len(_PALETTE)] for index, group in enumerate(groups)}
+
+    parts = [f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Nuage de points anciennete / remuneration">']
+    for step in range(5):
+        y = pad_top + plot_h - plot_h * step / 4
+        value = y_min + y_span * step / 4
+        parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="#e6ebf0"/>')
+        parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="#5d6b7a">{_e(format_money(value, currency))}</text>')
+    for step in range(6):
+        x = pad_left + plot_w * step / 5
+        value = x_min + x_span * step / 5
+        parts.append(f'<text x="{x:.1f}" y="{pad_top + plot_h + 18:.1f}" text-anchor="middle" font-size="10" fill="#5d6b7a">{format_number(value, 1)}</text>')
+    for point in points:
+        color = colors.get(point["group"], "#2f5d8a")
+        tip = (f'{point["reference"]} | {point["group"]} | anciennete '
+               f'{format_number(point["x"], 1)} ans | {format_money(point["y"], currency)}')
+        parts.append(
+            f'<circle cx="{to_x(point["x"]):.1f}" cy="{to_y(point["y"]):.1f}" r="3" '
+            f'fill="{color}" opacity="0.7" data-tip="{_e(tip)}"/>'
+        )
+    trend = dataset.get("trend")
+    if trend:
+        y_start = trend["intercept"] + trend["slope"] * x_min
+        y_end = trend["intercept"] + trend["slope"] * x_max
+        y_start = min(max(y_start, y_min), y_max)
+        y_end = min(max(y_end, y_min), y_max)
+        parts.append(
+            f'<line x1="{to_x(x_min):.1f}" y1="{to_y(y_start):.1f}" '
+            f'x2="{to_x(x_max):.1f}" y2="{to_y(y_end):.1f}" '
+            'stroke="#b0453f" stroke-width="2" stroke-dasharray="6 4"/>'
+        )
+        parts.append(
+            f'<text x="{width - pad_right - 6}" y="{pad_top + 14}" text-anchor="end" '
+            f'font-size="11" fill="#b0453f">R2 = {trend["r_squared"]:.3f}</text>'
+        )
+    parts.append(f'<text x="{pad_left}" y="{height - 8}" font-size="11" fill="#5d6b7a">Anciennete (annees)</text>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def _legend(dataset: Dict[str, Any]) -> str:
+    groups = dataset.get("groups") or []
+    if not groups or len(groups) > 14:
+        return ""
+    items = "".join(
+        f'<span><i class="dot" style="background:{_PALETTE[index % len(_PALETTE)]}"></i>{_e(group)}</span>'
+        for index, group in enumerate(groups)
+    )
+    label = SEGMENT_LABELS.get(dataset.get("color_field", ""), dataset.get("color_field", ""))
+    return f'<div class="legend"><strong>{_e(label)} :</strong>{items}</div>'
+
+
+# ------------------------------------------------------------------- sections
+
+
+def _quality_section(quality: Dict[str, Any]) -> str:
+    status = quality.get("statut", "")
+    kind = "crit" if status == "CORRECTIONS REQUISES" else ("warn" if status == "POINTS DE VIGILANCE" else "")
+    kpis = "".join([
+        _kpi("Lignes importees", f'{quality.get("lignes_importees", 0):,}'.replace(",", " ")),
+        _kpi("Salaries uniques", f'{quality.get("salaries_uniques", 0):,}'.replace(",", " ")),
+        _kpi("Doublons", str(quality.get("doublons", 0))),
+        _kpi("Salaires manquants", str(quality.get("salaires_manquants", 0))),
+        _kpi("Dates invalides", str(quality.get("dates_invalides", 0))),
+        _kpi("Anomalies critiques", str(quality.get("anomalies_critiques", 0))),
+    ])
+    rows = [
+        (item["severite"].capitalize(), item["message"], str(item["lignes_concernees"]))
+        for item in quality.get("constats", [])
+    ]
+    table = _table(["Severite", "Constat", "Lignes"], rows) if rows else "<p>Aucun constat.</p>"
+    return (
+        f'<h2>1. Controle qualite des donnees</h2>'
+        f'{_note("Statut : " + status, kind)}'
+        f'<div class="kpis">{kpis}</div>'
+        f'<h3>Detail des constats</h3>{table}'
+    )
+
+
+def _population_section(population: Dict[str, Any]) -> str:
+    if population.get("masked"):
+        return f'<h2>2. Population</h2>{_note(population.get("warning"), "warn")}'
+    kpis = "".join([
+        _kpi("Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")),
+        _kpi("Age moyen", format_number(population.get("age_mean")) + " ans"),
+        _kpi("Age median", format_number(population.get("age_median")) + " ans"),
+        _kpi("Anciennete moyenne", format_number(population.get("tenure_mean")) + " ans"),
+        _kpi("Anciennete mediane", format_number(population.get("tenure_median")) + " ans"),
+    ])
+    age_rows = [
+        (row["label"], str(row["count"]), format_percent(row["share"]))
+        for row in population.get("age_bands", [])
+    ]
+    tenure_rows = [
+        (row["label"], str(row["count"]), format_percent(row["share"]))
+        for row in population.get("tenure_bands", [])
+    ]
+    return (
+        "<h2>2. Population</h2>"
+        f'{_note(population.get("warning"), "warn")}'
+        f'<div class="kpis">{kpis}</div>'
+        f"<h3>Repartition par tranche d'age</h3>"
+        f'{_table(["Tranche", "Effectif", "Part"], age_rows)}'
+        f"<h3>Repartition par tranche d'anciennete</h3>"
+        f'{_table(["Tranche", "Effectif", "Part"], tenure_rows)}'
+    )
+
+
+def _salary_section(salary: Dict[str, Any]) -> str:
+    currency = salary.get("currency", "EUR")
+    if salary.get("masked"):
+        return f"<h2>3. Remuneration</h2>{_note(salary.get('warning'), 'warn')}"
+    kpis = "".join([
+        _kpi("Masse salariale", format_money(salary.get("payroll"), currency)),
+        _kpi("Salaire moyen", format_money(salary.get("mean"), currency)),
+        _kpi("Salaire median", format_money(salary.get("median"), currency)),
+        _kpi("Minimum", format_money(salary.get("min"), currency)),
+        _kpi("Maximum", format_money(salary.get("max"), currency)),
+        _kpi("Couverture", format_percent(salary.get("coverage"))),
+    ])
+    percentile_rows = [
+        (label, format_money(salary.get(key), currency))
+        for label, key in (
+            ("P10", "p10"), ("Q1 (P25)", "p25"), ("Mediane (P50)", "p50"),
+            ("Q3 (P75)", "p75"), ("P90", "p90"),
+        )
+        if salary.get(key) is not None
+    ]
+    dispersion = salary.get("dispersion", {}) or {}
+    dispersion_rows = [
+        ("Q3 - Q1", format_money(dispersion.get("interquartile_range"), currency)),
+        ("Q3 / Q1", format_number(dispersion.get("q3_over_q1"), 2)),
+        ("P90 / P10", format_number(dispersion.get("p90_over_p10"), 2)),
+        ("Moyenne / Mediane", format_number(dispersion.get("mean_over_median"), 2)),
+        ("Coefficient de variation", format_percent(
+            None if dispersion.get("coefficient_of_variation") is None
+            else dispersion["coefficient_of_variation"] * 100)),
+    ]
+    return (
+        "<h2>3. Remuneration</h2>"
+        f'{_note(salary.get("warning"), "warn")}'
+        f'<div class="kpis">{kpis}</div>'
+        f'<h3>Percentiles</h3>{_table(["Indicateur", "Valeur"], percentile_rows)}'
+        f'<h3>Dispersion</h3>{_table(["Indicateur", "Valeur"], dispersion_rows)}'
+        f'{_note("L ecart-type est disponible comme statistique technique (" + format_number(salary.get("std_dev"), 0) + ") mais n est pas un indicateur de pilotage.")}'
+    )
+
+
+def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
+    if not distribution.get("available"):
+        return f"<h2>4. Distribution</h2>{_note(distribution.get('warning'), 'warn')}"
+    chart = histogram_svg(distribution.get("bins", []), currency)
+    outliers = distribution.get("outliers", [])
+    rows = [
+        (
+            item["reference"],
+            item.get("business_unit") or "—",
+            item.get("grade") or "—",
+            format_number(item.get("tenure_years")),
+            format_money(item["value"], currency),
+            f'Position {item["position"]}',
+        )
+        for item in outliers[:50]
+    ]
+    label = distribution.get("outlier_label", "Situation atypique a analyser")
+    table = _table(
+        ["Reference", "BU", "Grade", "Anciennete", "Remuneration", "Lecture"], rows
+    ) if rows else "<p>Aucune situation atypique detectee.</p>"
+    return (
+        "<h2>4. Distribution</h2>"
+        f"<figure>{chart}</figure>"
+        f"<h3>{_e(label)} ({len(outliers)})</h3>"
+        f'{_note("Ces situations sont signalees par un critere statistique (methode interquartile). Elles ne constituent pas un constat RH : elles doivent etre analysees au regard du contexte (metier, marche, historique, performance).")}'
+        f"{table}"
+    )
+
+
+def _scatter_section(dataset: Dict[str, Any], currency: str) -> str:
+    if not dataset.get("available"):
+        return f"<h2>5. Anciennete et remuneration</h2>{_note(dataset.get('warning'), 'warn')}"
+    trend = dataset.get("trend")
+    commentary = ""
+    if trend:
+        slope = format_money(trend["slope"], currency)
+        commentary = _note(
+            f"Tendance : {slope} par annee d'anciennete (R2 = {trend['r_squared']:.3f}). "
+            "Un R2 faible indique que l'anciennete explique peu la remuneration."
+        )
+    return (
+        "<h2>5. Anciennete et remuneration</h2>"
+        f'{_note(dataset.get("warning"), "warn")}'
+        f"{_legend(dataset)}"
+        f"<figure>{scatter_svg(dataset, currency)}</figure>"
+        f"{commentary}"
+    )
+
+
+def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
+    if not segments:
+        return ""
+    blocks = ["<h2>6. Analyses par segment</h2>"]
+    for segment in segments:
+        rows = []
+        for row in segment["rows"]:
+            salary = row["salary"]
+            if row["masked"]:
+                rows.append((row["segment"], str(row["headcount"]),
+                             "—", "—", "—", "—", "Masque (effectif insuffisant)"))
+                continue
+            dispersion = salary.get("dispersion", {}) or {}
+            rows.append((
+                row["segment"], str(row["headcount"]),
+                format_money(salary.get("mean"), currency),
+                format_money(salary.get("median"), currency),
+                format_money(salary.get("p25"), currency),
+                format_money(salary.get("p75"), currency),
+                format_number(dispersion.get("p90_over_p10"), 2),
+            ))
+        blocks.append(f'<h3>{_e(segment["label"])}</h3>')
+        blocks.append(_table(
+            ["Segment", "Effectif", "Moyenne", "Mediane", "Q1", "Q3", "P90/P10"], rows
+        ))
+        if segment.get("masked_segments"):
+            blocks.append(_note(
+                f'{segment["masked_segments"]} segment(s) masque(s) : effectif '
+                "inferieur au seuil de confidentialite parametre.", "warn"))
+    return "".join(blocks)
+
+
+def _comparison_section(comparison: Optional[Dict[str, Any]], currency: str) -> str:
+    if not comparison:
+        return ""
+    rows = []
+    for row in comparison["rows"]:
+        kind = row["kind"]
+        if kind == "money":
+            left, right = format_money(row["left"], currency), format_money(row["right"], currency)
+        elif kind == "int":
+            left, right = str(row["left"] or 0), str(row["right"] or 0)
+        elif kind == "years":
+            left, right = format_number(row["left"]), format_number(row["right"])
+        else:
+            left, right = format_number(row["left"], 2), format_number(row["right"], 2)
+        rows.append((row["indicator"], left, right, format_percent(row["gap_percent"])))
+    return (
+        "<h2>7. Comparaison de populations</h2>"
+        + _table([
+            "Indicateur", comparison["left_label"], comparison["right_label"], "Ecart"
+        ], rows)
+    )
+
+
+def render_report(analysis: Dict[str, Any]) -> str:
+    """Assemble la restitution complete en un fichier HTML autonome."""
+    manifest = analysis.get("manifest", {})
+    currency = analysis.get("salary", {}).get("currency", "EUR")
+    generated = manifest.get("date_analyse", _dt.datetime.now().isoformat(timespec="seconds"))
+    title = analysis.get("title", "Analyse de remuneration")
+    sections = [
+        _quality_section(analysis.get("quality", {})),
+        _population_section(analysis.get("population", {})),
+        _salary_section(analysis.get("salary", {})),
+        _distribution_section(analysis.get("distribution", {}), currency),
+        _scatter_section(analysis.get("scatter", {}), currency),
+        _segments_section(analysis.get("segments", []), currency),
+        _comparison_section(analysis.get("comparison"), currency),
+    ]
+    return f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{_e(title)}</title>
+<style>{_CSS}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>{_e(title)}</h1>
+<div class="meta">
+Fichier source : {_e(manifest.get("fichier_source", "—"))} &nbsp;·&nbsp;
+Effectif analyse : {_e(manifest.get("effectif_analyse", "—"))} &nbsp;·&nbsp;
+Filtres : {_e(manifest.get("filtres", "Aucun filtre"))} &nbsp;·&nbsp;
+Genere le {_e(generated)}
+</div>
+</header>
+{''.join(sections)}
+<footer>
+{_e(ENGINE_NAME)} v{_e(__version__)} — traitement local, hors ligne.
+Empreinte du fichier source : {_e((manifest.get("empreinte_source") or "—")[:16])}.
+Aucune donnee n'a quitte ce poste.
+</footer>
+</div>
+<script>{_JS}</script>
+</body>
+</html>
+"""
+
+
+def write_report(analysis: Dict[str, Any], path: str) -> str:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(render_report(analysis))
+    return path
