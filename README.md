@@ -15,6 +15,21 @@ IMPORT ─▶ CONTRÔLE QUALITÉ ─▶ NORMALISATION ─▶ PARAMÉTRAGE ─▶
       ─▶ ANALYSE ─▶ VISUALISATION ─▶ RESTITUTION ─▶ EXPORT
 ```
 
+## Interface graphique
+
+```bash
+python3 -m compensation_analytics.cli interface     # ou sans argument
+```
+
+Fenêtre unique, `tkinter` livré avec Python — aucune dépendance. Parcours
+Importer → Filtrer → Analyser → Restituer, filtres alimentés par le fichier
+chargé, et un nuage ancienneté × rémunération **explorable** : survol pour
+identifier, molette pour zoomer, clic sur la légende pour isoler une
+population.
+
+Le moteur n'importe jamais l'interface : il reste utilisable en ligne de
+commande sur une installation dépourvue de tkinter.
+
 ## Démarrage
 
 ```bash
@@ -82,7 +97,7 @@ python3 -m compensation_analytics.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 174 tests
+python3 -m unittest discover -s tests -t .     # 186 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 

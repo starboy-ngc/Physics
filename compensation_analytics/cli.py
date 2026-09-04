@@ -231,13 +231,34 @@ def build_parser() -> argparse.ArgumentParser:
                              help="vérifier l'identification des colonnes")
     mapping.set_defaults(handler=command_mapping)
 
-    config = sub.add_parser("config", help="ecrire la configuration par defaut")
+    interface = sub.add_parser("interface",
+                               help="ouvrir l'interface graphique")
+    interface.set_defaults(handler=command_interface)
+
+    config = sub.add_parser("config", help="écrire la configuration par défaut")
     config.add_argument("--dossier", default="config")
     config.set_defaults(handler=command_config)
     return parser
 
 
+def command_interface(_args: argparse.Namespace) -> int:
+    """Ouvre l'interface graphique."""
+    try:
+        from .ui.app import main as ui_main
+    except ImportError:
+        print("L'interface graphique necessite tkinter, absent de cette "
+              "installation de Python.\n"
+              "Les commandes en ligne restent disponibles : "
+              "compensation-analytics --help", file=sys.stderr)
+        return 3
+    return ui_main()
+
+
 def main(argv: Optional[List[str]] = None) -> int:
+    # Sans argument, on ouvre l'interface : c'est ce qui se passe quand
+    # l'utilisateur double-clique sur le fichier.
+    if not (argv if argv is not None else sys.argv[1:]):
+        return command_interface(argparse.Namespace())
     args = build_parser().parse_args(argv)
     configure_logging(args.logs or None)
     try:

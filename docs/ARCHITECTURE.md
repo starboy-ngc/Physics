@@ -359,10 +359,45 @@ Python sur le poste. Le choix zéro-dépendance rend l'exercice simple :
 
 L'option 2 est recommandée : rien à compiler, contenu auditable par l'IT.
 
-## 13. Interface graphique (V3)
+## 13. Interface graphique
 
-Non implémentée. Le parcours cible (Importer → Vérifier → Paramétrer →
-Analyser → Explorer → Restituer → Exporter) est déjà porté par la CLI et par la
-restitution HTML. Une IHM ultérieure appellera `pipeline.run_analysis` sans
-dupliquer la moindre règle. Tkinter (livré avec Python, sans dépendance) est le
-candidat le plus cohérent avec les contraintes IT.
+`compensation_analytics/ui/` — tkinter, livre avec Python : aucune
+dependance, aucun telechargement, aucun droit administrateur.
+
+    app.py      fenetre unique, parcours en quatre etapes
+    charts.py   nuage et histogramme dessines sur un canevas
+
+**Regle de dependance** : l'interface importe le moteur, jamais l'inverse.
+Un test le verifie par analyse syntaxique sur `core/` et `io/`. C'est ce qui
+garantit que le moteur tourne en ligne de commande sur une installation de
+Python depourvue de tkinter, et qu'il reste automatisable.
+
+Aucune regle de calcul n'est dupliquee : chaque action appelle
+`pipeline.run_analysis`, `metrics.*` ou `slides.*`, exactement comme la ligne
+de commande. Changer la dimension de couleur du nuage refait passer le
+regroupement par `metrics.scatter_dataset` plutot que de recolorer dans
+l'interface : l'ecran et le document ne peuvent pas diverger.
+
+### Ce que l'interface apporte, qu'un document ne peut pas
+
+Le nuage est explorable : survol pour identifier un salarie par sa reference
+anonyme, clic pour le selectionner, molette pour zoomer autour du curseur,
+glisser pour se deplacer, clic sur la legende pour masquer une population.
+Le compteur de points affiches rappelle en permanence ce qui est visible,
+pour qu'un zoom ne se confonde jamais avec un filtre.
+
+Les filtres sont des listes deroulantes alimentees par le fichier charge :
+l'utilisateur choisit parmi ce qui existe, sans syntaxe a taper et sans
+pouvoir inventer une valeur absente.
+
+L'analyse tourne dans un fil separe, avec une barre de progression : sur
+100 000 salaries elle prend une quinzaine de secondes, et une fenetre figee
+passerait pour un plantage.
+
+### Tests
+
+Les tests d'interface qui exigent un affichage sont ignores automatiquement
+lorsqu'il n'y en a pas — le moteur reste testable sur un serveur sans ecran.
+Le developpement s'est fait sur un affichage virtuel (Xvfb), chaque ecran
+etant capture et relu : c'est ainsi qu'a ete vu que la liste des filtres
+poussait le bouton "Analyser" hors du cadre.
