@@ -15,14 +15,29 @@ import tkinter as tk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
 from ..core.reporting import _PALETTE, format_money, format_number
+from .theme import (ACCENT, CANVAS, FAINT, INK, LINE, MUTED, SIZE_LABEL,
+                    SIZE_SMALL, pick_family)
 
-INK = "#1b2733"
-MUTED = "#5d6b7a"
-LINE = "#d9e0e7"
-GRID = "#eef2f5"
-PANEL = "#f5f7f9"
-ACCENT = "#2f5d8a"
+#: Les filets du fond doivent se deviner, pas se lire.
+GRID = "#eef2f6"
 TREND = "#b0453f"
+
+_family: str = "TkDefaultFont"
+
+
+def _fonts(widget: tk.Misc) -> None:
+    """Aligne les canevas sur la typographie de la fenetre."""
+    global _family
+    if _family == "TkDefaultFont":
+        _family = pick_family(widget)
+
+
+def axis_font():
+    return (_family, SIZE_LABEL)
+
+
+def note_font():
+    return (_family, SIZE_SMALL)
 
 
 class Tooltip:
@@ -40,7 +55,7 @@ class Tooltip:
             self.window.attributes("-topmost", True)
             self.label = tk.Label(
                 self.window, justify="left", background=INK, foreground="white",
-                padx=8, pady=5, font=("TkDefaultFont", 9),
+                padx=8, pady=5, font=note_font(),
             )
             self.label.pack()
         self.label.configure(text=text)
@@ -61,8 +76,9 @@ class ScatterChart(tk.Frame):
     """
 
     def __init__(self, master: tk.Widget, on_select: Optional[Callable] = None):
-        super().__init__(master, background="white")
-        self.canvas = tk.Canvas(self, background="white", highlightthickness=0)
+        super().__init__(master, background=CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self.on_select = on_select
@@ -137,7 +153,7 @@ class ScatterChart(tk.Frame):
         if not self.points or not self._view:
             self.canvas.create_text(
                 width / 2, height / 2, text=self.dataset.get("warning")
-                or "Aucun point a afficher", fill=MUTED, font=("TkDefaultFont", 10))
+                or "Aucun point a afficher", fill=MUTED, font=note_font())
             return
 
         pad_l, pad_r, pad_t, pad_b = 88, 20, 18, 46
@@ -155,18 +171,18 @@ class ScatterChart(tk.Frame):
             y = pad_t + plot_h - plot_h * step / 4
             self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=GRID)
             self.canvas.create_text(
-                pad_l - 8, y, anchor="e", fill=MUTED, font=("TkDefaultFont", 8),
+                pad_l - 8, y, anchor="e", fill=MUTED, font=axis_font(),
                 text=format_money(y_min + y_span * step / 4, self.currency))
         for step in range(6):
             x = pad_l + plot_w * step / 5
             self.canvas.create_text(
-                x, pad_t + plot_h + 14, fill=MUTED, font=("TkDefaultFont", 8),
+                x, pad_t + plot_h + 14, fill=MUTED, font=axis_font(),
                 text=format_number(x_min + x_span * step / 5, 1))
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill="#9aa7b4")
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32,
                                 text="Ancienneté (années)", fill=MUTED,
-                                font=("TkDefaultFont", 8))
+                                font=axis_font())
 
         groups = self.dataset.get("groups") or []
         colours = {g: _PALETTE[i % len(_PALETTE)] for i, g in enumerate(groups)}
@@ -204,7 +220,7 @@ class ScatterChart(tk.Frame):
         if self._view != self._bounds:
             note += " · zoom actif, double-clic pour réinitialiser"
         self.canvas.create_text(pad_l, pad_t - 6, anchor="sw", text=note,
-                                fill=MUTED, font=("TkDefaultFont", 8))
+                                fill=MUTED, font=axis_font())
 
     # --------------------------------------------------------- interaction
 
@@ -286,8 +302,9 @@ class HistogramChart(tk.Frame):
     """Distribution des remunerations. Survol pour lire une classe."""
 
     def __init__(self, master: tk.Widget):
-        super().__init__(master, background="white")
-        self.canvas = tk.Canvas(self, background="white", highlightthickness=0)
+        super().__init__(master, background=CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self.bins: List[Dict[str, float]] = []
@@ -314,7 +331,7 @@ class HistogramChart(tk.Frame):
             return
         if not self.bins:
             self.canvas.create_text(
-                width / 2, height / 2, fill=MUTED, font=("TkDefaultFont", 10),
+                width / 2, height / 2, fill=MUTED, font=note_font(),
                 text=self.warning or "Aucune distribution à afficher")
             return
 
@@ -328,25 +345,27 @@ class HistogramChart(tk.Frame):
             y = pad_t + plot_h - plot_h * step / 4
             self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=GRID)
             self.canvas.create_text(pad_l - 8, y, anchor="e", fill=MUTED,
-                                    font=("TkDefaultFont", 8),
+                                    font=axis_font(),
                                     text=f"{peak * step / 4:.0f}")
         for index, item in enumerate(self.bins):
             bar_h = plot_h * item["count"] / peak
             x = pad_l + index * bar_w
             handle = self.canvas.create_rectangle(
-                x + 1, pad_t + plot_h - bar_h, x + bar_w - 1, pad_t + plot_h,
+                # Un filet d'air entre les barres : accolees, l'histogramme
+                # se lit comme un aplat.
+                x + 2, pad_t + plot_h - bar_h, x + bar_w - 2, pad_t + plot_h,
                 fill=ACCENT, outline="")
             self._items[handle] = item
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill="#9aa7b4")
         self.canvas.create_text(pad_l, pad_t + plot_h + 14, anchor="w", fill=MUTED,
-                                font=("TkDefaultFont", 8),
+                                font=axis_font(),
                                 text=format_money(self.bins[0]["lower"], self.currency))
         self.canvas.create_text(pad_l + plot_w, pad_t + plot_h + 14, anchor="e",
-                                fill=MUTED, font=("TkDefaultFont", 8),
+                                fill=MUTED, font=axis_font(),
                                 text=format_money(self.bins[-1]["upper"], self.currency))
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32, fill=MUTED,
-                                font=("TkDefaultFont", 8),
+                                font=axis_font(),
                                 text="Effectif par classe de rémunération")
 
     def _on_motion(self, event) -> None:
