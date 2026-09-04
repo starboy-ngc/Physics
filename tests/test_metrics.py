@@ -225,3 +225,30 @@ class TestScatterSampling(unittest.TestCase):
         dataset = self._dataset(1000, 0)
         self.assertFalse(dataset["sampled"])
         self.assertEqual(len(dataset["points"]), 1000)
+
+
+class TestUnknownFilterField(unittest.TestCase):
+    """Un champ de filtre inexistant doit lever une erreur explicite, jamais
+    renvoyer une population vide en silence."""
+
+    def test_unknown_field_raises_readable_error(self):
+        from compensation_analytics.core.errors import ConfigError
+        with self.assertRaises(ConfigError) as caught:
+            build_filters([{"field": "team", "operator": "eq", "value": "Alpha"}])
+        message = caught.exception.message
+        self.assertIn("team", message)
+        self.assertIn("n'existe pas", message)
+        self.assertIn("business_unit", message)  # liste les champs valides
+
+    def test_misspelled_field_is_caught(self):
+        from compensation_analytics.core.errors import ConfigError
+        with self.assertRaises(ConfigError):
+            build_filters([{"field": "gade", "operator": "eq", "value": "G5"}])
+
+    def test_valid_fields_still_pass(self):
+        filters = build_filters([
+            {"field": "business_unit", "operator": "eq", "value": "France"},
+            {"field": "base_salary", "operator": "gte", "value": 50000},
+            {"field": "tenure_band", "operator": "eq", "value": "<2 ans"},
+        ])
+        self.assertEqual(len(filters), 3)

@@ -9,6 +9,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Sequence
 
+import dataclasses
+
 from .errors import ConfigError
 from .normalize import Employee, Population
 
@@ -31,6 +33,14 @@ SEGMENT_LABELS = {
 }
 
 _OPERATORS = ("eq", "ne", "in", "not_in", "gt", "gte", "lt", "lte", "contains", "between")
+
+# Champs sur lesquels un filtre a un sens. Derive de `Employee`, donc
+# automatiquement a jour si un champ est ajoute au modele normalise.
+_INTERNAL_FIELDS = {"row_number", "issues", "anonymous_id"}
+FILTERABLE_FIELDS = tuple(
+    field.name for field in dataclasses.fields(Employee)
+    if field.name not in _INTERNAL_FIELDS
+)
 
 
 @dataclass
@@ -118,6 +128,16 @@ def build_filters(definitions: Sequence[Dict[str, Any]]) -> List[Filter]:
             raise ConfigError(
                 "Un filtre est incomplet : le champ a filtrer n'est pas indique.",
                 technical=f"filter without field: {definition!r}",
+            )
+        if field_name not in FILTERABLE_FIELDS:
+            # Sans ce controle, un champ mal orthographie ne remonterait
+            # aucun salarie sans le moindre message : l'utilisateur croirait
+            # a une population vide plutot qu'a une erreur de saisie.
+            available = ", ".join(sorted(FILTERABLE_FIELDS))
+            raise ConfigError(
+                f"Le champ \"{field_name}\" n'existe pas et ne peut pas etre "
+                f"filtre. Champs disponibles : {available}.",
+                technical=f"unknown filter field: {field_name}",
             )
         operator = definition.get("operator", "eq")
         if operator not in _OPERATORS:
