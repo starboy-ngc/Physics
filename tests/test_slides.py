@@ -7,7 +7,8 @@ import tempfile
 import unittest
 import zlib
 
-from tests.support import REFERENCE_DATE, build_population, make_config, make_row
+from tests.support import (REFERENCE_DATE, build_population, make_config,
+                           make_row)
 from tests.test_privacy_and_pipeline import build_source
 from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
 from compensation_analytics.core.slides import (build_deck, build_summary,
@@ -200,3 +201,64 @@ class TestSummaryOutputs(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestReadability(unittest.TestCase):
+    """Defauts de lecture reperes en regardant les vues produites."""
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+        self.config = make_config()
+
+    def _segment(self, field_name, rows):
+        from compensation_analytics.core import metrics
+        population = build_population(rows, self.config)
+        return metrics.calculate_segment_metrics(population, self.config, field_name)
+
+    def test_ordinal_segments_follow_their_scale_not_headcount(self):
+        # G1 a un effectif plus faible que G2 : un tri par population placerait
+        # G2 en tete et rendrait la progression salariale illisible.
+        rows = ([make_row(i, grade="G2", salary=30000) for i in range(20)]
+                + [make_row(100 + i, grade="G1", salary=25000) for i in range(6)]
+                + [make_row(200 + i, grade="G3", salary=40000) for i in range(10)])
+        segment = self._segment("grade", rows)
+        self.assertEqual([row["segment"] for row in segment["rows"]],
+                         ["G1", "G2", "G3"])
+
+    def test_band_segments_follow_the_configured_order(self):
+        rows = ([make_row(i, age=25) for i in range(5)]
+                + [make_row(100 + i, age=55) for i in range(20)]
+                + [make_row(200 + i, age=35) for i in range(12)])
+        labels = [row["segment"] for row in self._segment("age_band", rows)["rows"]]
+        self.assertEqual(labels, ["20-29", "30-39", "50-59"])
+
+    def test_non_ordinal_segments_keep_headcount_order(self):
+        rows = ([make_row(i, business_unit="DACH") for i in range(5)]
+                + [make_row(100 + i, business_unit="France") for i in range(20)])
+        labels = [row["segment"] for row in self._segment("business_unit", rows)["rows"]]
+        self.assertEqual(labels, ["France", "DACH"])
+
+    def test_constant_dimensions_are_dropped_from_the_outlier_table(self):
+        from compensation_analytics.core import metrics
+        # Population filtree sur une seule BU : la colonne BU n'apprend rien.
+        rows = [make_row(i, business_unit="France", grade=f"G{i % 4 + 1}",
+                         salary=40000 + i * 200) for i in range(40)]
+        rows.append(make_row(99, business_unit="France", grade="G4", salary=400000))
+        population = build_population(rows, self.config)
+        distribution = metrics.calculate_distribution_metrics(population, self.config)
+        shown = [entry["field"] for entry in distribution["dimension_labels"]]
+        self.assertNotIn("business_unit", shown)
+        self.assertIn("grade", shown)
+
+    def test_highlighted_outliers_keep_both_extremes(self):
+        from compensation_analytics.core import metrics
+        rows = [make_row(i, salary=40000 + i * 50) for i in range(200)]
+        rows += [make_row(500 + i, salary=5000) for i in range(10)]
+        rows += [make_row(600 + i, salary=400000) for i in range(10)]
+        population = build_population(rows, self.config)
+        distribution = metrics.calculate_distribution_metrics(population, self.config)
+        highlighted = distribution["outliers_highlighted"]
+        positions = {item["position"] for item in highlighted}
+        self.assertEqual(positions, {"basse", "haute"})
+        # Le comptage annonce reste celui de la liste complete.
+        self.assertGreaterEqual(len(distribution["outliers"]), len(highlighted))

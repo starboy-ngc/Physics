@@ -6,6 +6,8 @@ pres du calcul, pour qu'aucun ecran ne puisse les contourner.
 
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Sequence
 
@@ -234,20 +236,50 @@ def calculate_distribution_metrics(
                 outliers.append(
                     _atypical_entry(employee, field_name, value, bounds, config)
                 )
+    ordered_outliers = sorted(outliers, key=lambda item: item["value"])
     return {
         "field": field_name,
         "available": True,
         "warning": None,
-        "dimension_labels": [
-            {"field": name, "label": dimension_label(config, name)}
-            for name in dimension_fields(config)
-        ],
+        "dimension_labels": _discriminating_dimensions(population, config),
         "bins": stats.histogram(values, bins),
         "bounds": bounds,
-        "outliers": sorted(outliers, key=lambda item: item["value"]),
+        # La liste complete porte le comptage annonce ; seule la selection
+        # mise en avant est tronquee, sinon la restitution annoncerait moins
+        # de situations qu'il n'y en a.
+        "outliers": ordered_outliers,
+        "outliers_highlighted": _extremes(ordered_outliers),
         # Libelle impose : jamais "anomalie RH", qui prejugerait du contexte.
         "outlier_label": "Situation atypique a analyser",
     }
+
+
+def _discriminating_dimensions(
+    population: Population, config: Configuration
+) -> List[Dict[str, str]]:
+    """Dimensions qui varient reellement dans la population analysee.
+
+    Sous un filtre "BU = France", les colonnes BU et Pays sont constantes :
+    les afficher gaspille la place sans rien apprendre.
+    """
+    useful: List[Dict[str, str]] = []
+    for name in dimension_fields(config):
+        values = {str(employee.value(name) or "") for employee in population}
+        values.discard("")
+        if len(values) > 1:
+            useful.append({"field": name, "label": dimension_label(config, name)})
+    return useful
+
+
+def _extremes(ordered: List[Dict[str, Any]], per_side: int = 8) -> List[Dict[str, Any]]:
+    """Selection mise en avant : les cas les plus bas et les plus hauts.
+
+    Tronquer la liste triee ne montrerait que les remunerations basses et
+    masquerait completement les hautes — ou l'inverse.
+    """
+    if len(ordered) <= 2 * per_side:
+        return ordered
+    return ordered[:per_side] + ordered[-per_side:]
 
 
 def _atypical_entry(
@@ -294,13 +326,44 @@ def calculate_segment_metrics(
             "age_median": stats.median(ages) if rules.may_publish(len(group)) else None,
             "tenure_median": stats.median(tenures) if rules.may_publish(len(group)) else None,
         })
-    rows.sort(key=lambda item: (-item["headcount"], item["segment"]))
+    rows.sort(key=_segment_sort_key(field_name, config, [r["segment"] for r in rows]))
     return {
         "field": field_name,
         "label": dimension_label(config, field_name),
         "rows": rows,
         "masked_segments": sum(1 for row in rows if row["masked"]),
     }
+
+
+_ORDINAL_LABEL = re.compile(r"^([^\d]*)(\d+)([^\d]*)$")
+
+
+def _segment_sort_key(field_name: str, config: Configuration, labels: List[str]):
+    """Ordre de presentation d'un segment.
+
+    Une echelle se lit dans son ordre, pas par effectif : trier les grades
+    G1..G8 par population rend illisible la progression salariale. Trois cas :
+
+    * tranches d'age et d'anciennete -> l'ordre declare en configuration ;
+    * libelles ordinaux (G1..G8, N1..N5) -> l'ordre numerique ;
+    * tout le reste (BU, metier, statut) -> effectif decroissant.
+    """
+    bands = {
+        "age_band": config.get("age_parameters.bands", []),
+        "tenure_band": config.get("tenure_parameters.bands", []),
+    }.get(field_name)
+    if bands:
+        order = {str(band.get("label", "")): index for index, band in enumerate(bands)}
+        return lambda item: (order.get(item["segment"], len(order)), item["segment"])
+
+    matches = [_ORDINAL_LABEL.match(label) for label in labels if label]
+    if matches and all(matches) and len({m.group(1) for m in matches}) == 1:
+        def ordinal(item):
+            match = _ORDINAL_LABEL.match(item["segment"])
+            return (0, int(match.group(2))) if match else (1, 0)
+        return ordinal
+
+    return lambda item: (-item["headcount"], item["segment"])
 
 
 def compare_populations(

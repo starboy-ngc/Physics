@@ -327,6 +327,7 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
         return f"<h2>4. Distribution</h2>{_note(distribution.get('warning'), 'warn')}"
     chart = histogram_svg(distribution.get("bins", []), currency)
     outliers = distribution.get("outliers", [])
+    highlighted = distribution.get("outliers_highlighted") or outliers
     # Colonnes derivees des dimensions declarees en configuration : les trois
     # premieres suffisent a situer le cas sans surcharger le tableau.
     shown = (distribution.get("dimension_labels") or [])[:3]
@@ -341,12 +342,18 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
                 f'Position {item["position"]}',
             ]
         )
-        for item in outliers[:50]
+        for item in highlighted
     ]
     label = distribution.get("outlier_label", "Situation atypique a analyser")
     headers = (["Reference"] + [entry["label"] for entry in shown]
                + ["Anciennete", "Remuneration", "Lecture"])
     table = _table(headers, rows) if rows else "<p>Aucune situation atypique detectee.</p>"
+    if len(highlighted) < len(outliers):
+        table += _note(
+            f"Tableau limite aux {len(highlighted)} situations les plus "
+            f"extremes sur {len(outliers)}. La liste complete figure dans "
+            "l'export Excel."
+        )
     return (
         "<h2>4. Distribution</h2>"
         f"<figure>{chart}</figure>"

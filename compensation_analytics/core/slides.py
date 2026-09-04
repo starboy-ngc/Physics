@@ -135,13 +135,17 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         _table_block(["Percentile", "Valeur"], _percentile_rows(salary, currency),
                      title="Percentiles", width="half"),
     ]
+    # Pas de tableau de dispersion ici : Q3/Q1 et P90/P10 figurent deja dans le
+    # bandeau de KPI. Une page de synthese doit tenir sans repetition, et la
+    # place gagnee rend le graphique lisible.
     distribution = analysis.get("distribution", {})
     if distribution.get("available"):
-        blocks.append(Block("chart", {"type": "histogram",
-                                      "bins": distribution.get("bins", [])},
-                            title="Distribution", width="half"))
-    else:
-        blocks.append(Block("note", distribution.get("warning"), width="half"))
+        blocks.append(Block(
+            "chart",
+            {"type": "histogram", "bins": distribution.get("bins", [])},
+            title="Distribution des remunerations", width="half"))
+    elif distribution.get("warning"):
+        blocks.append(Block("note", distribution["warning"], width="half"))
 
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))
@@ -217,6 +221,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             Block("chart", {"type": "histogram", "bins": distribution.get("bins", [])}),
         ]))
         outliers = distribution.get("outliers", [])
+        highlighted = (distribution.get("outliers_highlighted") or outliers)[:10]
         if outliers:
             shown = (distribution.get("dimension_labels") or [])[:3]
             headers = (["Reference"] + [entry["label"] for entry in shown]
@@ -228,11 +233,12 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                 + [format_number(item.get("tenure_years")),
                    format_money(item["value"], currency),
                    f'Position {item["position"]}']
-                for item in outliers[:10]
+                for item in highlighted
             ]
             slides.append(Slide(
                 distribution.get("outlier_label", "Situations atypiques"),
-                f'{len(outliers)} situations reperees — 10 premieres',
+                f'{len(outliers)} situations reperees — '
+                f'{len(highlighted)} cas les plus extremes',
                 blocks=[
                     Block("note", "Repere par un critere statistique, pas par un "
                                   "jugement RH. A analyser au regard du contexte "
@@ -340,7 +346,8 @@ color:#fff;border:none}
 .slide.cover .lines div{color:#dbe6f0;font-size:15px;margin-bottom:7px}
 .rule{height:3px;width:90px;background:var(--accent);margin-bottom:20px}
 .slide.cover .rule{background:#8fb6d8;width:120px}
-.body{flex:1;display:flex;flex-wrap:wrap;gap:22px;align-content:flex-start;min-height:0}
+.body{flex:1;display:flex;flex-wrap:wrap;gap:22px;align-content:flex-start;
+min-height:0;overflow:hidden}
 .full{flex:1 1 100%}
 .half{flex:1 1 calc(50% - 11px);min-width:0}
 .kpis{display:flex;gap:14px;width:100%}
@@ -363,6 +370,7 @@ padding:10px 14px;font-size:13px;width:100%}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .dot{width:10px;height:10px;border-radius:50%}
 svg{display:block;width:100%;height:auto}
+.chart-fit{min-height:0}
 .pagenum{position:absolute;right:56px;bottom:22px;color:var(--muted);font-size:12px}
 .slide.cover .pagenum{color:#9dbad6}
 .hint{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;
@@ -439,11 +447,20 @@ def _render_block(block: Block, currency: str) -> str:
                 f'<table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
     if block.kind == "chart":
         spec = block.payload
+        # Dessiner large puis reduire par CSS ecraserait les libelles d'axe
+        # (7 px reduits de moitie deviennent illisibles) : le SVG est produit
+        # a la largeur reelle de son conteneur.
+        canvas = 1160 if block.width == "full" else 560
+        default = (330 if block.width == "full" else 260)
+        height = spec.get("height", default if spec["type"] == "histogram"
+                          else (430 if block.width == "full" else 300))
         if spec["type"] == "histogram":
-            svg = histogram_svg(spec["bins"], currency, width=1160, height=430)
+            svg = histogram_svg(spec["bins"], currency, width=canvas, height=height)
         else:
-            svg = scatter_svg(spec["dataset"], currency, width=1160, height=470)
-        return f'<div class="{block.width}">{title}{svg}</div>'
+            svg = scatter_svg(spec["dataset"], currency, width=canvas, height=height)
+        # `chart-fit` borne le graphique a la place restante : une hauteur mal
+        # estimee ne peut plus deborder du bas de la page.
+        return f'<div class="{block.width} chart-fit">{title}{svg}</div>'
     if block.kind == "legend":
         dataset = block.payload
         groups = dataset.get("groups") or []
@@ -775,7 +792,7 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             spec = block.payload
             # Un graphique seul sur sa page occupe la hauteur disponible ;
             # place a cote d'un tableau, il reste dans une bande raisonnable.
-            cap = 420 if block.width == "full" else 250
+            cap = spec.get("height") or (420 if block.width == "full" else 250)
             height = max(min(room - 8, cap), 120)
             if spec["type"] == "histogram":
                 return _draw_histogram(page, spec["bins"], currency, left, top,
