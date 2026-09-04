@@ -45,6 +45,19 @@ def _rows_population(population: Dict[str, Any]) -> List[List[Any]]:
         rows.append([title, "Effectif", "Part (%)"])
         for band in population.get(key, []) or []:
             rows.append([band["label"], band["count"], band["share"]])
+
+    # Parts remarquables du chapitre 11. Leur place est ici, dans le tableur :
+    # sur la fiche standard elles repetaient la structure par tranches.
+    rows.append([])
+    rows.append(["Part remarquable", "Valeur (%)"])
+    for label, key in (
+        ("Moins de 30 ans", "share_under_30"),
+        ("30 à 49 ans", "share_30_to_49"),
+        ("50 ans et plus", "share_50_plus"),
+        ("Ancienneté inférieure à 2 ans", "share_tenure_under_2"),
+        ("Ancienneté supérieure à 10 ans", "share_tenure_over_10"),
+    ):
+        rows.append([label, population.get(key)])
     return rows
 
 

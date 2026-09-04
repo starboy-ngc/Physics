@@ -252,3 +252,41 @@ class TestUnknownFilterField(unittest.TestCase):
             {"field": "tenure_band", "operator": "eq", "value": "<2 ans"},
         ])
         self.assertEqual(len(filters), 3)
+
+
+class TestKeyShares(unittest.TestCase):
+    """Parts remarquables du chapitre 11, calculees sur les valeurs reelles.
+
+    Les deriver des libelles de tranches les rendrait fausses des que
+    l'utilisateur reparametre ses tranches.
+    """
+
+    def test_shares_are_computed_from_actual_values(self):
+        config = make_config()
+        rows = ([make_row(i, age=25, tenure=1) for i in range(10)]
+                + [make_row(50 + i, age=55, tenure=12) for i in range(10)])
+        result = metrics.calculate_population_metrics(build_population(rows, config), config)
+        self.assertAlmostEqual(result["share_under_30"], 50.0)
+        self.assertAlmostEqual(result["share_50_plus"], 50.0)
+        self.assertAlmostEqual(result["share_tenure_under_2"], 50.0)
+        self.assertAlmostEqual(result["share_tenure_over_10"], 50.0)
+
+    def test_shares_survive_a_reparametrised_band_configuration(self):
+        config = make_config({"age_parameters.bands": [
+            {"label": "moins de 40", "min": 0, "max": 39, "max_inclusive": True},
+            {"label": "40 et plus", "min": 40, "max": None},
+        ]})
+        rows = [make_row(i, age=25) for i in range(10)] + [make_row(50 + i, age=45)
+                                                           for i in range(10)]
+        result = metrics.calculate_population_metrics(build_population(rows, config), config)
+        self.assertAlmostEqual(result["share_under_30"], 50.0)
+
+    def test_shares_reach_the_spreadsheet(self):
+        from compensation_analytics.core.export import _rows_population
+        config = make_config()
+        rows = [make_row(i, age=25) for i in range(10)]
+        population = metrics.calculate_population_metrics(
+            build_population(rows, config), config)
+        labels = [row[0] for row in _rows_population(population) if row]
+        self.assertIn("Moins de 30 ans", labels)
+        self.assertIn("Ancienneté supérieure à 10 ans", labels)

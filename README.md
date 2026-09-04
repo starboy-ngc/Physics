@@ -82,7 +82,7 @@ python3 -m compensation_analytics.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 165 tests
+python3 -m unittest discover -s tests -t .     # 169 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 

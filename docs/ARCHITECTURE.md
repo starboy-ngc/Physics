@@ -160,7 +160,7 @@ Trois sorties construites sur les memes donnees :
 | Sortie | Contenu | Formats |
 |---|---|---|
 | `rapport` | Document detaille, defilant | HTML |
-| `synthese` | Une page paysage : indicateurs, niveaux de remuneration, structure de la population, nuage, parts remarquables | HTML + PDF |
+| `synthese` | Une page paysage : indicateurs, niveaux de remuneration, structure de la population, nuage | HTML + PDF |
 | `slides` | Un jeu de pages paysage, une idee par page | HTML + PDF |
 
 La fiche standard est organisee en un bandeau de six indicateurs puis trois
@@ -169,12 +169,18 @@ colonnes : niveaux de remuneration (percentiles), structure de la population
 occupe une colonne plutot qu'une bande horizontale : il a besoin de hauteur
 pour que la dispersion verticale se lise.
 
-Un second bandeau resserre ferme la page avec les parts remarquables du
-chapitre 11 du cahier des charges — moins de 30 ans, 30 a 49 ans, 50 ans et
-plus, anciennete inferieure a 2 ans, superieure a 10 ans — et le taux de
-donnees valorisees. Ces parts sont calculees sur les valeurs reelles et non
-sur les libelles de tranches : elles restent justes si l'utilisateur
-reparametre les tranches.
+La page ne cherche pas a remplir sa hauteur. Une bande de parts remarquables
+l'a fermee un temps : elle repetait le tableau de structure place juste
+au-dessus et se lisait comme un remplissage. Ces parts — moins de 30 ans,
+30 a 49 ans, 50 ans et plus, anciennete inferieure a 2 ans, superieure a
+10 ans — sont desormais portees par l'onglet Population de l'export Excel, ou
+la densite ne coute rien. Elles restent calculees sur les valeurs reelles et
+non sur les libelles de tranches : elles ne deviennent pas fausses si
+l'utilisateur reparametre ses tranches.
+
+Le taux de donnees valorisees n'apparait qu'en sous-titre, et seulement s'il
+est inferieur a 100 % : une couverture partielle change la lecture de tous les
+montants, une couverture complete n'apprend rien.
 
 Les blocs se declarent en trois largeurs — `full`, `half`, `third` — et les
 tableaux comme les bandeaux d'indicateurs en version resserree (`compact`),

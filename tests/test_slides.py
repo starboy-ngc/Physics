@@ -338,20 +338,28 @@ class TestSummaryComposition(unittest.TestCase):
         self.assertIn("Âge 30-39", rendered)
         self.assertIn("Anc. 2-5 ans", rendered)
 
-    def test_page_holds_three_columns_between_two_full_width_bands(self):
+    def test_page_holds_one_indicator_band_and_three_columns(self):
         widths = [block.width for block in self.summary.blocks]
         self.assertEqual(widths.count("third"), 3)
-        # Bandeau d'indicateurs en haut, bande de parts remarquables en bas.
-        self.assertEqual(widths.count("full"), 2)
+        self.assertEqual(widths.count("full"), 1)
 
-    def test_key_shares_close_the_page(self):
-        last = self.summary.blocks[-1]
-        self.assertEqual(last.kind, "kpis")
-        self.assertTrue(last.payload["compact"])
-        labels = [item["label"] for item in last.payload["items"]]
-        self.assertIn("Moins de 30 ans", labels)
-        self.assertIn("Ancienneté > 10 ans", labels)
-        self.assertIn("Données valorisées", labels)
+    def test_no_second_band_repeating_the_structure_table(self):
+        """Une bande de parts remarquables fermait la page ; elle repetait le
+        tableau de structure place juste au-dessus et se lisait comme un
+        remplissage. La page ne cherche plus a occuper toute sa hauteur."""
+        bands = [b for b in self.summary.blocks if b.kind == "kpis"]
+        self.assertEqual(len(bands), 1)
+        self.assertFalse(bands[0].payload["compact"])
+
+    def test_coverage_is_announced_only_when_incomplete(self):
+        """Une couverture partielle change la lecture de tous les montants :
+        elle est dite en tete de page. A 100 % elle n'apprend rien."""
+        self.assertNotIn("renseignées", self.summary.subtitle)
+        partial = dict(self.payload)
+        partial["salary"] = dict(self.payload["salary"], coverage=82.0)
+        subtitle = build_summary(partial)[0].subtitle
+        self.assertIn("82,0 %", subtitle)
+        self.assertIn("renseignées", subtitle)
 
     def test_r_squared_is_not_repeated_in_the_block_title(self):
         titles = [block.title for block in self.summary.blocks if block.kind == "chart"]

@@ -109,7 +109,7 @@ def _cover(analysis: Dict[str, Any]) -> Slide:
     manifest = analysis.get("manifest", {})
     return Slide(
         title=analysis.get("title", "Analyse de rémunération"),
-        subtitle=f'{manifest.get("effectif_analyse", "—")} salariés analyses',
+        subtitle=f'{manifest.get("effectif_analyse", "—")} salariés analysés',
         kind="cover",
         blocks=[Block("text", [
             f'Périmètre : {manifest.get("filtres", "Aucun filtre")}',
@@ -173,38 +173,32 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         # Le R2 est deja porte par le graphique : ne pas le repeter dans le
         # titre du bloc.
         blocks.append(Block(
-            "chart", {"type": "scatter", "dataset": scatter, "height": 272},
+            "chart", {"type": "scatter", "dataset": scatter, "height": 345},
             title="Ancienneté et rémunération", width="third"))
     elif distribution.get("available"):
         # Repli : sous le seuil d'effectif, le nuage est desactive mais la
         # distribution reste publiable.
         blocks.append(Block(
             "chart", {"type": "histogram", "bins": distribution.get("bins", []),
-                      "height": 272},
+                      "height": 345},
             title="Distribution des rémunérations", width="third"))
     elif scatter.get("warning"):
         blocks.append(Block("note", scatter["warning"], width="third"))
 
-    # Pied de page chiffre : les parts remarquables du chapitre 11 du cahier
-    # des charges, qu'aucun autre bloc de la fiche ne porte.
-    blocks.append(_kpi_block([
-        ["Moins de 30 ans", format_percent(population.get("share_under_30"))],
-        ["30 à 49 ans", format_percent(population.get("share_30_to_49"))],
-        ["50 ans et plus", format_percent(population.get("share_50_plus"))],
-        ["Ancienneté < 2 ans",
-         format_percent(population.get("share_tenure_under_2"))],
-        ["Ancienneté > 10 ans",
-         format_percent(population.get("share_tenure_over_10"))],
-        ["Données valorisées", format_percent(salary.get("coverage"))],
-    ], compact=True))
-
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))
 
+    subtitle = (f'{manifest.get("effectif_analyse", "—")} salariés · '
+                f'{manifest.get("filtres", "Aucun filtre")}')
+    coverage = salary.get("coverage")
+    if coverage is not None and coverage < 99.95:
+        # Une couverture incomplete change la lecture de tous les montants :
+        # elle est dite en clair, en tete de page. A 100 % elle n'apprend rien.
+        subtitle += f' · {format_percent(coverage)} des rémunérations renseignées'
+
     return [Slide(
         title=analysis.get("title", "Analyse de rémunération"),
-        subtitle=(f'{manifest.get("effectif_analyse", "—")} salariés · '
-                  f'{manifest.get("filtres", "Aucun filtre")}'),
+        subtitle=subtitle,
         blocks=blocks,
     )]
 
