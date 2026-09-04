@@ -23,7 +23,8 @@ Le moteur n'importe **que la bibliothèque standard Python**. En particulier :
 | Écriture XLSX | Génération OOXML directe (`io/xlsx_writer.py`) | xlsxwriter |
 | Statistiques | `statistics_engine.py` | numpy, scipy |
 | Graphiques | SVG généré côté moteur | matplotlib, plotly, Chart.js |
-| Restitution | HTML autoportant + impression navigateur | wkhtmltopdf, reportlab |
+| Restitution HTML | HTML autoportant (rapport + slides paysage) | — |
+| Restitution PDF | Generateur PDF ecrit dans `io/pdf_writer.py` | wkhtmltopdf, reportlab, WeasyPrint |
 | Configuration | JSON (`config/*.json`) | YAML (dépendance), SQLite (binaire) |
 
 Conséquences : aucune DLL tierce, aucun binaire à faire homologuer, aucune
@@ -152,6 +153,52 @@ L'export Excel et le manifeste restent de taille modeste quel que soit
 l'effectif : ils contiennent des agrégats, pas la population — sauf activation
 explicite de `export_parameters.include_individual_data`.
 
+## 9 bis. Restitutions paysage
+
+Trois sorties construites sur les memes donnees :
+
+| Sortie | Contenu | Formats |
+|---|---|---|
+| `rapport` | Document detaille, defilant | HTML |
+| `synthese` | Une page paysage : KPI, percentiles, distribution | HTML + PDF |
+| `slides` | Un jeu de pages paysage, une idee par page | HTML + PDF |
+
+Le decoupage (`core/slides.py`) produit une liste de `Slide` composees de
+`Block` — un descriptif de contenu independant du format. Le rendu HTML et le
+rendu PDF consomment la meme liste : les deux formats ne peuvent pas diverger.
+
+### Le PDF est genere, pas imprime
+
+`io/pdf_writer.py` ecrit le PDF octet par octet : objets numerotes, table de
+references croisees, flux de contenu compresses. Aucun navigateur a piloter,
+aucun moteur de rendu, aucune dependance — le meme parti pris que pour le
+XLSX.
+
+Ce qui rend l'exercice tenable :
+
+* seules les **14 polices de base** du format PDF sont utilisees (Helvetica),
+  donc rien a embarquer ni a licencier, et aucune table `/FontFile` ;
+* les **largeurs de glyphes** Helvetica sont tabulees, ce qui permet de
+  centrer, aligner a droite et tronquer proprement ;
+* le dessin se limite aux primitives dont les graphiques ont besoin —
+  rectangles, lignes, cercles de Bezier, texte — exactement ce que produit
+  deja le SVG.
+
+Les accents passent sans repli (`WinAnsiEncoding` les couvre) ; seuls les
+caracteres typographiques hors jeu (apostrophe courbe, tiret cadratin) sont
+remplaces par un equivalent imprimable.
+
+Format : **A4 paysage** (841,89 x 595,28 points), le plus sur a l'impression
+comme a la projection.
+
+### Verification
+
+Un PDF invalide ne s'ouvre pas du tout : la structure est donc testee et non
+supposee. `tests/test_slides.py` verifie que chaque offset de la table xref
+pointe sur un objet reel, que le nombre de pages correspond au decoupage, que
+le MediaBox est bien paysage, que les flux se decompressent et contiennent le
+texte attendu, et qu'aucune donnee personnelle n'y figure.
+
 ## 10 ter. Dimensions declaratives
 
 Les dimensions d'analyse (segmentation, filtres, coloration du nuage, colonnes
@@ -199,7 +246,7 @@ remuneration coute plus cher qu'un message d'erreur.
 |---|---|---|
 | V0 — PoC | Import, contrôle, KPI, tableau | ✅ |
 | V1 — MVP | Paramétrage, filtres, percentiles, ratios, nuage de points, export Excel | ✅ |
-| V2 — Enterprise | Logs, versioning, tests, traçabilité, packaging, PDF | 🟡 partiel (logs, versioning, tests, traçabilité faits ; packaging et PDF natif à faire) |
+| V2 — Enterprise | Logs, versioning, tests, traçabilité, packaging, PDF | 🟡 partiel (logs, versioning, tests, traçabilité et **PDF natif** faits ; packaging à faire) |
 | V3 — Optimisation | Performance, IHM, segmentation avancée, automatisation | ⬜ |
 
 ### Extensions prévues sans réécriture du cœur

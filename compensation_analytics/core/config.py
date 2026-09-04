@@ -125,6 +125,10 @@ DEFAULTS: Dict[str, Any] = {
         "output_directory": "output",
         "excel_enabled": True,
         "html_report_enabled": True,
+        # Restitutions paysage : synthese d'une page et jeu de slides.
+        "slides_html_enabled": True,
+        "slides_pdf_enabled": True,
+        "summary_enabled": True,
         "include_individual_data": False,
     },
 }

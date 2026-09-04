@@ -311,8 +311,9 @@ def _salary_section(salary: Dict[str, Any]) -> str:
             None if dispersion.get("coefficient_of_variation") is None
             else dispersion["coefficient_of_variation"] * 100)),
     ]
+    field_label = salary.get("field_label") or salary.get("field", "")
     return (
-        "<h2>3. Remuneration</h2>"
+        f"<h2>3. Remuneration — {_e(field_label)}</h2>"
         f'{_note(salary.get("warning"), "warn")}'
         f'<div class="kpis">{kpis}</div>'
         f'<h3>Percentiles</h3>{_table(["Indicateur", "Valeur"], percentile_rows)}'

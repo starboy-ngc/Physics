@@ -36,12 +36,28 @@ Trois niveaux : **critique** (bloque l'analyse), **avertissement**,
 python3 -m compensation_analytics.cli analyse population.xlsx --sortie resultats
 ```
 
-Trois fichiers sont produits dans `resultats/` :
+Les fichiers produits dans `resultats/` :
 
-- `restitution-*.html` — à ouvrir dans le navigateur ; **Ctrl+P → Enregistrer
-  au format PDF** pour la version PDF ;
-- `analyse-*.xlsx` — indicateurs par onglet ;
-- `manifeste-*.json` — paramètres utilisés, pour refaire l'analyse à l'identique.
+| Fichier | Usage |
+|---|---|
+| `restitution-*.html` | Rapport détaillé, à lire à l'écran |
+| `synthese-*.pdf` / `.html` | **Une page paysage** : à envoyer, à projeter |
+| `slides-*.pdf` / `.html` | **Jeu de slides paysage** : pour une présentation |
+| `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres |
+| `manifeste-*.json` | Paramètres utilisés, pour refaire l'analyse à l'identique |
+
+Les PDF sont générés directement par l'outil — pas besoin d'imprimer depuis le
+navigateur. Dans la version HTML des slides, les flèches ← → font défiler les
+pages et les info-bulles restent actives au survol des graphiques.
+
+Pour ne produire qu'une sortie :
+
+```
+--restitution slides
+--restitution synthese
+--restitution rapport
+--restitution excel
+```
 
 ### Filtrer
 

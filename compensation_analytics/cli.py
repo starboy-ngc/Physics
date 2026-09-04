@@ -25,6 +25,8 @@ from .core.mapping import resolve_mapping
 from .core.pipeline import AnalysisRequest, load_population, run_analysis
 from .core.quality import run_quality_check
 from .core.reporting import write_report
+from .core.slides import (build_deck, build_summary, write_slides_html,
+                          write_slides_pdf)
 from .core.segmentation import build_filters, dimension_fields
 from .core.traceability import write_manifest
 from .io.tabular import read_table
@@ -94,11 +96,36 @@ def command_analyse(args: argparse.Namespace) -> int:
     stamp = _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
 
     produced: List[str] = []
-    if result.config.get("export_parameters.html_report_enabled", True):
+    wanted = set(args.restitution or []) or None
+
+    def requested(name: str, setting: str) -> bool:
+        """Une sortie est produite si elle est demandee, ou activee par defaut."""
+        if wanted is not None:
+            return name in wanted
+        return bool(result.config.get(f"export_parameters.{setting}", True))
+
+    if requested("rapport", "html_report_enabled"):
         produced.append(write_report(
             result.payload, os.path.join(output_dir, f"restitution-{stamp}.html")
         ))
-    if result.config.get("export_parameters.excel_enabled", True):
+    if requested("synthese", "summary_enabled"):
+        summary = build_summary(result.payload)
+        produced.append(write_slides_html(
+            summary, result.payload, os.path.join(output_dir, f"synthese-{stamp}.html")
+        ))
+        produced.append(write_slides_pdf(
+            summary, result.payload, os.path.join(output_dir, f"synthese-{stamp}.pdf")
+        ))
+    if requested("slides", "slides_html_enabled"):
+        deck = build_deck(result.payload)
+        produced.append(write_slides_html(
+            deck, result.payload, os.path.join(output_dir, f"slides-{stamp}.html")
+        ))
+        if result.config.get("export_parameters.slides_pdf_enabled", True):
+            produced.append(write_slides_pdf(
+                deck, result.payload, os.path.join(output_dir, f"slides-{stamp}.pdf")
+            ))
+    if requested("excel", "excel_enabled"):
         produced.append(export_excel(
             result.payload, result.filtered, result.config,
             os.path.join(output_dir, f"analyse-{stamp}.xlsx"),
@@ -185,6 +212,10 @@ def build_parser() -> argparse.ArgumentParser:
     analyse.add_argument("--comparer", action="append",
                          help="filtre definissant la population de comparaison")
     analyse.add_argument("--libelle-comparaison", default="Population B")
+    analyse.add_argument("--restitution", action="append",
+                         choices=["rapport", "synthese", "slides", "excel"],
+                         help="sortie a produire (repetable). Par defaut : "
+                              "celles activees dans export_parameters.json")
     analyse.add_argument("--sortie", default="", help="dossier de sortie")
     analyse.add_argument("--titre", default="Analyse de remuneration")
     analyse.add_argument("--ignorer-anomalies", action="store_true",

@@ -31,8 +31,17 @@ python3 -m compensation_analytics.cli analyse data/demo.xlsx \
     --sortie resultats --ignorer-anomalies
 ```
 
-Produit une restitution HTML autoportante (imprimable en PDF par le
-navigateur), un classeur Excel et un manifeste de traçabilité.
+Produit cinq livrables : un rapport HTML détaillé, une **synthèse d'une page
+paysage** et un **jeu de slides paysage** (chacun en HTML et en PDF), un
+classeur Excel et un manifeste de traçabilité.
+
+```bash
+# Ne produire que le jeu de slides
+python3 -m compensation_analytics.cli analyse data/demo.xlsx --restitution slides
+```
+
+Le PDF est **généré par l'outil**, pas imprimé depuis un navigateur : aucune
+dépendance, aucun binaire tiers.
 
 ## Fonctions couvertes (v1.0.0)
 
@@ -73,7 +82,7 @@ python3 -m compensation_analytics.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 120 tests
+python3 -m unittest discover -s tests -t .     # 142 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 

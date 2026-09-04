@@ -162,6 +162,7 @@ def calculate_salary_metrics(
     headcount = len(population)
     result: Dict[str, Any] = {
         "field": field_name,
+        "field_label": _field_label(config, field_name),
         "currency": config.get("salary_parameters.currency", "EUR"),
         "headcount": headcount,
         "valued_headcount": len(values),
@@ -180,6 +181,15 @@ def calculate_salary_metrics(
         for rank in published
     ]
     return result
+
+
+def _field_label(config: Configuration, field_name: str) -> str:
+    """Libelle metier d'un champ : le premier alias declare au mapping.
+
+    Un ecran RH ne doit jamais afficher "base_salary" mais "Salaire de base".
+    """
+    aliases = (config.get("population_mapping.fields", {}) or {}).get(field_name)
+    return aliases[0] if aliases else field_name
 
 
 def _percentile_key(rank: float) -> str:
