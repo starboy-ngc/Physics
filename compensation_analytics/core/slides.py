@@ -115,7 +115,13 @@ def _cover(analysis: Dict[str, Any]) -> Slide:
 
 
 def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
-    """Synthese : une seule page paysage."""
+    """Fiche standard : une seule page paysage.
+
+    Composition : un bandeau d'indicateurs, les percentiles, et le nuage
+    anciennete x remuneration. Les ratios de dispersion (Q3/Q1, P90/P10) n'y
+    figurent pas : ils demandent une lecture experte et trouvent leur place
+    dans le jeu de slides complet et dans l'export Excel.
+    """
     salary = analysis.get("salary", {})
     population = analysis.get("population", {})
     currency = salary.get("currency", "EUR")
@@ -125,27 +131,31 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         _kpi_block(
             [["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
              ["Masse salariale", format_money(salary.get("payroll"), currency)],
+             ["Salaire moyen", format_money(salary.get("mean"), currency)],
              ["Salaire median", format_money(salary.get("median"), currency)],
-             ["Q3 / Q1", format_number(
-                 (salary.get("dispersion") or {}).get("q3_over_q1"), 2)],
-             ["P90 / P10", format_number(
-                 (salary.get("dispersion") or {}).get("p90_over_p10"), 2)],
-             ["Age median", format_number(population.get("age_median")) + " ans"]]
+             ["Age median", format_number(population.get("age_median")) + " ans"],
+             ["Anciennete mediane",
+              format_number(population.get("tenure_median")) + " ans"]]
         ),
         _table_block(["Percentile", "Valeur"], _percentile_rows(salary, currency),
                      title="Percentiles", width="half"),
     ]
-    # Pas de tableau de dispersion ici : Q3/Q1 et P90/P10 figurent deja dans le
-    # bandeau de KPI. Une page de synthese doit tenir sans repetition, et la
-    # place gagnee rend le graphique lisible.
+
+    scatter = analysis.get("scatter", {})
     distribution = analysis.get("distribution", {})
-    if distribution.get("available"):
-        blocks.append(Block(
-            "chart",
-            {"type": "histogram", "bins": distribution.get("bins", [])},
-            title="Distribution des remunerations", width="half"))
-    elif distribution.get("warning"):
-        blocks.append(Block("note", distribution["warning"], width="half"))
+    if scatter.get("available"):
+        # Le R2 est deja porte par le graphique : ne pas le repeter dans le
+        # titre du bloc.
+        blocks.append(Block("chart", {"type": "scatter", "dataset": scatter},
+                            title="Anciennete et remuneration", width="half"))
+    elif distribution.get("available"):
+        # Repli : sous le seuil d'effectif, le nuage est desactive mais la
+        # distribution reste publiable.
+        blocks.append(Block("chart", {"type": "histogram",
+                                      "bins": distribution.get("bins", [])},
+                            title="Distribution des remunerations", width="half"))
+    elif scatter.get("warning"):
+        blocks.append(Block("note", scatter["warning"], width="half"))
 
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))

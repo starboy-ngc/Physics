@@ -160,8 +160,15 @@ Trois sorties construites sur les memes donnees :
 | Sortie | Contenu | Formats |
 |---|---|---|
 | `rapport` | Document detaille, defilant | HTML |
-| `synthese` | Une page paysage : KPI, percentiles, distribution | HTML + PDF |
+| `synthese` | Une page paysage : KPI, percentiles, nuage anciennete x remuneration | HTML + PDF |
 | `slides` | Un jeu de pages paysage, une idee par page | HTML + PDF |
+
+La fiche standard ne porte pas les ratios de dispersion (Q3/Q1, P90/P10,
+coefficient de variation) : ils demandent une lecture experte et trouvent leur
+place dans le jeu de slides complet et dans l'export Excel. Elle privilegie le
+nuage anciennete x remuneration, qui se lit sans grille de lecture prealable.
+Si l'effectif est sous le seuil qui desactive le nuage, la page se rabat sur
+l'histogramme, puis sur un message explicite.
 
 Le decoupage (`core/slides.py`) produit une liste de `Slide` composees de
 `Block` — un descriptif de contenu independant du format. Le rendu HTML et le

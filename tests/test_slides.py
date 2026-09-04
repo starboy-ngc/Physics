@@ -302,3 +302,52 @@ class TestResponsiveSlides(unittest.TestCase):
         # La valeur de repli est 1 : sans JavaScript, la page s'affiche a sa
         # taille reelle plutot que de disparaitre.
         self.assertIn("var(--slide-scale,1)", self.html)
+
+
+class TestSummaryComposition(unittest.TestCase):
+    """La fiche standard porte le nuage de points, pas les ratios de
+    dispersion : ceux-ci demandent une lecture experte et restent dans le jeu
+    de slides complet et dans l'export Excel."""
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+        self.payload = analysis_payload(self.directory)
+        self.summary = build_summary(self.payload)[0]
+
+    def _charts(self):
+        return [block.payload["type"] for block in self.summary.blocks
+                if block.kind == "chart"]
+
+    def test_scatter_is_the_chart_of_the_summary(self):
+        self.assertEqual(self._charts(), ["scatter"])
+
+    def test_no_dispersion_ratio_anywhere_on_the_page(self):
+        rendered = render_slides_html([self.summary], self.payload)
+        for label in ("Q3 / Q1", "P90 / P10", "Coefficient de variation"):
+            self.assertNotIn(label, rendered)
+
+    def test_percentiles_are_kept(self):
+        rendered = render_slides_html([self.summary], self.payload)
+        self.assertIn("Percentiles", rendered)
+        self.assertIn("Q3 (P75)", rendered)
+
+    def test_r_squared_is_not_repeated_in_the_block_title(self):
+        titles = [block.title for block in self.summary.blocks if block.kind == "chart"]
+        self.assertEqual(titles, ["Anciennete et remuneration"])
+
+    def test_falls_back_to_the_histogram_when_the_scatter_is_unavailable(self):
+        # Sous le seuil de graphique, le nuage est desactive ; la distribution
+        # peut rester publiable si son propre seuil est atteint.
+        payload = dict(self.payload)
+        payload["scatter"] = {"available": False, "warning": "effectif insuffisant"}
+        charts = [block.payload["type"] for block in build_summary(payload)[0].blocks
+                  if block.kind == "chart"]
+        self.assertEqual(charts, ["histogram"])
+
+    def test_explains_itself_when_no_chart_can_be_published(self):
+        payload = dict(self.payload)
+        payload["scatter"] = {"available": False, "warning": "effectif insuffisant"}
+        payload["distribution"] = {"available": False, "warning": "effectif insuffisant"}
+        notes = [block.payload for block in build_summary(payload)[0].blocks
+                 if block.kind == "note"]
+        self.assertIn("effectif insuffisant", notes)
