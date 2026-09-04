@@ -61,9 +61,22 @@ class Employee:
     age_band: str = ""
     tenure_band: str = ""
     issues: List[str] = field(default_factory=list)
+    #: Champs declares au mapping mais absents du modele (ex. une notion
+    #: metier ajoutee par configuration). Ils sont filtrables et
+    #: segmentables au meme titre que les champs natifs.
+    extra: Dict[str, Any] = field(default_factory=dict)
 
     def value(self, name: str) -> Any:
+        if name in self.extra:
+            return self.extra[name]
         return getattr(self, name, None)
+
+    def assign(self, name: str, value: Any) -> None:
+        """Ecrit un champ natif, ou le range dans `extra` s'il n'existe pas."""
+        if hasattr(self, name):
+            setattr(self, name, value)
+        else:
+            self.extra[name] = value
 
 
 @dataclass
@@ -124,6 +137,23 @@ def parse_number(value: Any) -> Optional[float]:
         return float(text)
     except ValueError:
         return None
+
+
+_AMBIGUOUS_RE = re.compile(r"^-?[1-9]\d{0,2}[.,]\d{3}$")
+
+
+def has_ambiguous_separator(value: Any) -> bool:
+    """Detecte une ecriture dont le separateur est ambigu.
+
+    "45.000" vaut 45 000 dans un fichier francais et 45,0 en lecture
+    anglo-saxonne. Le moteur retient la lecture standard (separateur
+    decimal) mais signale le cas au controle qualite plutot que de deviner
+    en silence. Les valeurs commencant par 0 ("0,800") sont exclues : ce
+    sont des decimales sans ambiguite.
+    """
+    if isinstance(value, (int, float)) or value is None:
+        return False
+    return bool(_AMBIGUOUS_RE.match(str(value).strip().replace(" ", "")))
 
 
 def parse_date(value: Any) -> Optional[_dt.date]:
@@ -221,14 +251,18 @@ def normalise_table(
                 number = parse_number(raw)
                 if number is None and str(raw).strip() != "":
                     employee.issues.append(f"{field_name}:not_numeric")
-                setattr(employee, field_name, number)
+                elif has_ambiguous_separator(raw):
+                    employee.issues.append(f"{field_name}:ambiguous_separator")
+                employee.assign(field_name, number)
             elif field_name in date_fields:
                 date_value = parse_date(raw)
                 if date_value is None and str(raw).strip() != "":
                     employee.issues.append(f"{field_name}:invalid_date")
-                setattr(employee, field_name, date_value)
+                employee.assign(field_name, date_value)
             else:
-                setattr(employee, field_name, str(raw).strip() if raw is not None else "")
+                employee.assign(
+                    field_name, str(raw).strip() if raw is not None else ""
+                )
 
         if employee.birth_date:
             employee.age_years = years_between(employee.birth_date, reference)

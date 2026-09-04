@@ -24,7 +24,8 @@ from .logging_setup import log_event
 from .mapping import MappingResult, ensure_required, resolve_mapping
 from .normalize import Population, normalise_table
 from .quality import QualityReport, run_quality_check
-from .segmentation import Filter, apply_filters, available_segments, describe_filters
+from .segmentation import (Filter, apply_filters, available_segments,
+                           describe_filters, validate_segments)
 from .traceability import build_manifest
 
 
@@ -123,7 +124,8 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         "distribution": metrics.calculate_distribution_metrics(filtered, config),
         "scatter": metrics.scatter_dataset(filtered, config),
     }
-    segment_fields = request.segments or available_segments(filtered)
+    segment_fields = (validate_segments(request.segments, config)
+                      or available_segments(filtered, config))
     payload["segments"] = [
         metrics.calculate_segment_metrics(filtered, config, field_name)
         for field_name in segment_fields
@@ -132,7 +134,7 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         other = apply_filters(population, request.comparison_filters)
         payload["comparison"] = metrics.compare_populations(
             filtered, other, config,
-            left_label=describe_filters(request.filters) or "Population A",
+            left_label=describe_filters(request.filters, config) or "Population A",
             right_label=request.comparison_label,
         )
 
@@ -142,7 +144,7 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     payload["manifest"] = build_manifest(
         source_path=request.source_path,
         config=config,
-        filters_description=describe_filters(request.filters),
+        filters_description=describe_filters(request.filters, config),
         headcount=len(filtered),
         extra={"segments_analyses": segment_fields},
     )

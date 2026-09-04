@@ -10,8 +10,7 @@ from __future__ import annotations
 import logging
 import os
 import time
-from contextlib import contextmanager
-from typing import Iterator, Optional
+from typing import Optional
 
 LOGGER_NAME = "compensation_analytics"
 _FORMAT = "%(asctime)s | %(module_name)s | %(action)s | %(status)s | %(duration)s | %(detail)s"
@@ -77,20 +76,3 @@ def log_event(
             "detail": detail or "-",
         },
     )
-
-
-@contextmanager
-def timed(module: str, action: str, detail: str = "-") -> Iterator[None]:
-    """Mesure et journalise la duree d'une etape du pipeline."""
-    started = time.perf_counter()
-    try:
-        yield
-    except Exception as exc:  # journalise puis relaie
-        log_event(
-            module, action, status="ERREUR",
-            duration=time.perf_counter() - started,
-            detail=f"{type(exc).__name__}", level=logging.ERROR,
-        )
-        raise
-    log_event(module, action, status="OK",
-              duration=time.perf_counter() - started, detail=detail)

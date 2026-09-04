@@ -15,7 +15,6 @@ import os
 from typing import Any, Dict, List, Optional, Sequence
 
 from ..version import ENGINE_NAME, __version__
-from .segmentation import SEGMENT_LABELS
 
 _PALETTE = [
     "#2f5d8a", "#c26b3f", "#4f8f6d", "#8a5f9e", "#b0453f",
@@ -225,7 +224,7 @@ def _legend(dataset: Dict[str, Any]) -> str:
         f'<span><i class="dot" style="background:{_PALETTE[index % len(_PALETTE)]}"></i>{_e(group)}</span>'
         for index, group in enumerate(groups)
     )
-    label = SEGMENT_LABELS.get(dataset.get("color_field", ""), dataset.get("color_field", ""))
+    label = dataset.get("color_label") or dataset.get("color_field", "")
     return f'<div class="legend"><strong>{_e(label)} :</strong>{items}</div>'
 
 
@@ -298,12 +297,9 @@ def _salary_section(salary: Dict[str, Any]) -> str:
         _kpi("Couverture", format_percent(salary.get("coverage"))),
     ])
     percentile_rows = [
-        (label, format_money(salary.get(key), currency))
-        for label, key in (
-            ("P10", "p10"), ("Q1 (P25)", "p25"), ("Mediane (P50)", "p50"),
-            ("Q3 (P75)", "p75"), ("P90", "p90"),
-        )
-        if salary.get(key) is not None
+        (entry["label"], format_money(salary.get(entry["key"]), currency))
+        for entry in salary.get("published_percentiles", [])
+        if salary.get(entry["key"]) is not None
     ]
     dispersion = salary.get("dispersion", {}) or {}
     dispersion_rows = [
@@ -330,21 +326,26 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
         return f"<h2>4. Distribution</h2>{_note(distribution.get('warning'), 'warn')}"
     chart = histogram_svg(distribution.get("bins", []), currency)
     outliers = distribution.get("outliers", [])
+    # Colonnes derivees des dimensions declarees en configuration : les trois
+    # premieres suffisent a situer le cas sans surcharger le tableau.
+    shown = (distribution.get("dimension_labels") or [])[:3]
     rows = [
-        (
-            item["reference"],
-            item.get("business_unit") or "—",
-            item.get("grade") or "—",
-            format_number(item.get("tenure_years")),
-            format_money(item["value"], currency),
-            f'Position {item["position"]}',
+        tuple(
+            [item["reference"]]
+            + [str(item.get("dimensions", {}).get(entry["field"]) or "—")
+               for entry in shown]
+            + [
+                format_number(item.get("tenure_years")),
+                format_money(item["value"], currency),
+                f'Position {item["position"]}',
+            ]
         )
         for item in outliers[:50]
     ]
     label = distribution.get("outlier_label", "Situation atypique a analyser")
-    table = _table(
-        ["Reference", "BU", "Grade", "Anciennete", "Remuneration", "Lecture"], rows
-    ) if rows else "<p>Aucune situation atypique detectee.</p>"
+    headers = (["Reference"] + [entry["label"] for entry in shown]
+               + ["Anciennete", "Remuneration", "Lecture"])
+    table = _table(headers, rows) if rows else "<p>Aucune situation atypique detectee.</p>"
     return (
         "<h2>4. Distribution</h2>"
         f"<figure>{chart}</figure>"

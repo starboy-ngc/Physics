@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
-from .config import Configuration
+from .config import Configuration, analysis_field
 from .mapping import MappingResult
 from .normalize import Population
 from .statistics_engine import clean, iqr_outlier_bounds
@@ -179,6 +179,15 @@ def _check_structure(
         field_name, kind = issue.split(":", 1)
         if kind == "invalid_date":
             continue  # traite dans _check_dates pour un message unique
+        if kind == "ambiguous_separator":
+            _add(
+                report, f"ambiguous_separator_{field_name}", WARNING,
+                f'Separateur ambigu dans le champ "{field_name}" : une '
+                'ecriture du type "45.000" a ete lue comme 45,0 et non comme '
+                "45 000. Verifiez le format des nombres a l'export du fichier.",
+                rows,
+            )
+            continue
         _add(
             report, f"type_{issue}", WARNING,
             f"Valeurs non numeriques dans le champ \"{field_name}\".", rows,
@@ -247,7 +256,7 @@ def _check_dates(population: Population, report: QualityReport) -> None:
 def _check_salary(
     population: Population, config: Configuration, report: QualityReport
 ) -> None:
-    field_name = config.get("salary_parameters.analysis_field", "base_salary")
+    field_name = analysis_field(config)
     minimum = config.get("salary_parameters.min_plausible")
     maximum = config.get("salary_parameters.max_plausible")
     factor = float(config.get("salary_parameters.outlier_factor", 1.5))

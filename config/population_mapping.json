@@ -82,6 +82,48 @@
       "Rémunération totale"
     ]
   },
+  "dimensions": [
+    {
+      "field": "business_unit",
+      "label": "BU"
+    },
+    {
+      "field": "country",
+      "label": "Pays"
+    },
+    {
+      "field": "site",
+      "label": "Etablissement"
+    },
+    {
+      "field": "job",
+      "label": "Metier"
+    },
+    {
+      "field": "job_family",
+      "label": "Famille metier"
+    },
+    {
+      "field": "grade",
+      "label": "Grade"
+    },
+    {
+      "field": "status",
+      "label": "Statut"
+    },
+    {
+      "field": "gender",
+      "label": "Sexe"
+    },
+    {
+      "field": "age_band",
+      "label": "Tranche d'age"
+    },
+    {
+      "field": "tenure_band",
+      "label": "Tranche d'anciennete"
+    }
+  ],
   "required": [
     "employee_id",
     "base_salary"

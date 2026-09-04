@@ -12,6 +12,7 @@ import os
 from typing import Any, Dict, List, Sequence, Tuple
 
 from ..io.xlsx_writer import write_workbook
+from . import segmentation
 from .config import Configuration
 from .normalize import Population
 
@@ -121,21 +122,27 @@ def _rows_comparison(comparison: Dict[str, Any]) -> List[List[Any]]:
     return rows
 
 
-def _rows_individual(population: Population) -> List[List[Any]]:
-    headers = [
-        "Reference", "BU", "Pays", "Etablissement", "Metier", "Famille metier",
-        "Grade", "Statut", "Sexe", "Tranche d'age", "Tranche d'anciennete",
-        "Age", "Anciennete", "Salaire de base", "Variable", "Remuneration totale",
-    ]
+def _rows_individual(
+    population: Population, config: Configuration
+) -> List[List[Any]]:
+    """Colonnes derivees des dimensions declarees, pas d'une liste figee.
+
+    Une dimension ajoutee par configuration se retrouve donc dans l'export
+    au lieu d'en disparaitre en silence.
+    """
+    dimensions = segmentation.dimensions(config)
+    headers = (["Reference"]
+               + [entry["label"] for entry in dimensions]
+               + ["Age", "Anciennete", "Salaire de base", "Variable",
+                  "Remuneration totale"])
     rows: List[List[Any]] = [headers]
     for employee in population:
-        rows.append([
-            employee.anonymous_id or employee.employee_id, employee.business_unit,
-            employee.country, employee.site, employee.job, employee.job_family,
-            employee.grade, employee.status, employee.gender, employee.age_band,
-            employee.tenure_band, employee.age_years, employee.tenure_years,
-            employee.base_salary, employee.variable_pay, employee.total_compensation,
-        ])
+        rows.append(
+            [employee.anonymous_id or employee.employee_id]
+            + [employee.value(entry["field"]) for entry in dimensions]
+            + [employee.age_years, employee.tenure_years, employee.base_salary,
+               employee.variable_pay, employee.total_compensation]
+        )
     return rows
 
 
@@ -159,7 +166,9 @@ def build_sheets(
     if analysis.get("comparison"):
         sheets.append(("Comparaison", _rows_comparison(analysis["comparison"])))
     if config.get("export_parameters.include_individual_data", False):
-        sheets.append(("Donnees individuelles", _rows_individual(population)))
+        sheets.append(
+            ("Donnees individuelles", _rows_individual(population, config))
+        )
     return sheets
 
 

@@ -8,6 +8,7 @@ tierce pour l'export.
 from __future__ import annotations
 
 import datetime as _dt
+import math
 import zipfile
 from typing import Any, Iterable, List, Sequence, Tuple
 
@@ -78,15 +79,30 @@ def _cell_xml(reference: str, value: Any, style: int) -> str:
     if isinstance(value, bool):
         return f'<c r="{reference}" s="{style}" t="b"><v>{int(value)}</v></c>'
     if isinstance(value, (int, float)):
-        return f'<c r="{reference}" s="{style}"><v>{value!r}</v></c>'
+        # inf et nan n'ont pas de representation numerique valide en OOXML :
+        # les ecrire tels quels produisait un classeur qu'Excel refuse
+        # d'ouvrir. Ils sont ecrits en texte, visibles et sans corruption.
+        if not math.isfinite(value):
+            return _inline_string(reference, style, str(value))
+        text = repr(value)
+        if "e" in text or "E" in text:
+            # OOXML n'accepte pas la notation scientifique produite par repr()
+            # sur les grands nombres ("1e+20").
+            text = f"{value:f}"
+        return f'<c r="{reference}" s="{style}"><v>{text}</v></c>'
     if isinstance(value, _dt.datetime):
         serial = (value.date() - _EXCEL_EPOCH).days
         return f'<c r="{reference}" s="2"><v>{serial}</v></c>'
     if isinstance(value, _dt.date):
         serial = (value - _EXCEL_EPOCH).days
         return f'<c r="{reference}" s="2"><v>{serial}</v></c>'
-    text = _escape(str(value))
-    return f'<c r="{reference}" s="{style}" t="inlineStr"><is><t xml:space="preserve">{text}</t></is></c>'
+    return _inline_string(reference, style, str(value))
+
+
+def _inline_string(reference: str, style: int, value: str) -> str:
+    text = _escape(value)
+    return (f'<c r="{reference}" s="{style}" t="inlineStr">'
+            f'<is><t xml:space="preserve">{text}</t></is></c>')
 
 
 def _sheet_xml(rows: Iterable[Sequence[Any]], header: bool) -> str:

@@ -9,9 +9,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Sequence
 
-from .config import Configuration
+from .config import Configuration, analysis_field, percentiles as configured_percentiles
 from .normalize import Employee, Population
-from .segmentation import SEGMENT_LABELS, split_by
+from .segmentation import dimension_fields, dimension_label, split_by
 from . import statistics_engine as stats
 
 MASKED = None
@@ -149,8 +149,13 @@ def calculate_salary_metrics(
     population: Population, config: Configuration, field_name: Optional[str] = None
 ) -> Dict[str, Any]:
     """Masse salariale, moyenne, mediane, percentiles, dispersion."""
-    field_name = field_name or config.get("salary_parameters.analysis_field", "base_salary")
-    percentiles = config.get("percentile_parameters.percentiles", [10, 25, 50, 75, 90])
+    field_name = field_name or analysis_field(config)
+    published = configured_percentiles(config)
+    # Les ratios de dispersion ont besoin de P10/P25/P75/P90 : on les calcule
+    # toujours, meme si l'utilisateur ne publie qu'une partie des percentiles.
+    # Sans cela, retirer P25 de la configuration faisait disparaitre Q3/Q1 et
+    # P90/P10 de la restitution sans la moindre explication.
+    computed = sorted(set(published) | {10.0, 25.0, 50.0, 75.0, 90.0})
     rules = PrivacyRules.from_config(config)
 
     values = _values(population, field_name)
@@ -166,18 +171,32 @@ def calculate_salary_metrics(
     }
     if result["masked"]:
         return result
-    described = stats.describe(values, percentiles)
+    described = stats.describe(values, computed)
     result.update(described)
     result["payroll"] = described.get("sum")
     result["dispersion"] = stats.dispersion(described)
+    result["published_percentiles"] = [
+        {"key": _percentile_key(rank), "label": _percentile_label(rank)}
+        for rank in published
+    ]
     return result
+
+
+def _percentile_key(rank: float) -> str:
+    return f"p{int(rank)}" if float(rank).is_integer() else f"p{rank}"
+
+
+def _percentile_label(rank: float) -> str:
+    """Libelle usuel : les quartiles sont nommes, les autres numerotes."""
+    usual = {25.0: "Q1 (P25)", 50.0: "Mediane (P50)", 75.0: "Q3 (P75)"}
+    return usual.get(float(rank), f"P{_percentile_key(rank)[1:]}")
 
 
 def calculate_distribution_metrics(
     population: Population, config: Configuration, field_name: Optional[str] = None
 ) -> Dict[str, Any]:
     """Histogramme et points atypiques, sous reserve de l'effectif minimal."""
-    field_name = field_name or config.get("salary_parameters.analysis_field", "base_salary")
+    field_name = field_name or analysis_field(config)
     rules = PrivacyRules.from_config(config)
     bins = int(config.get("chart_parameters.histogram_bins", 20))
     factor = float(config.get("salary_parameters.outlier_factor", 1.5))
@@ -202,11 +221,17 @@ def calculate_distribution_metrics(
             if value is None:
                 continue
             if value < bounds["lower"] or value > bounds["upper"]:
-                outliers.append(_atypical_entry(employee, field_name, value, bounds))
+                outliers.append(
+                    _atypical_entry(employee, field_name, value, bounds, config)
+                )
     return {
         "field": field_name,
         "available": True,
         "warning": None,
+        "dimension_labels": [
+            {"field": name, "label": dimension_label(config, name)}
+            for name in dimension_fields(config)
+        ],
         "bins": stats.histogram(values, bins),
         "bounds": bounds,
         "outliers": sorted(outliers, key=lambda item: item["value"]),
@@ -216,7 +241,11 @@ def calculate_distribution_metrics(
 
 
 def _atypical_entry(
-    employee: Employee, field_name: str, value: float, bounds: Dict[str, float]
+    employee: Employee,
+    field_name: str,
+    value: float,
+    bounds: Dict[str, float],
+    config: Configuration,
 ) -> Dict[str, Any]:
     return {
         "reference": employee.anonymous_id or str(employee.row_number),
@@ -224,10 +253,12 @@ def _atypical_entry(
         "value": value,
         "field": field_name,
         "position": "basse" if value < bounds["lower"] else "haute",
-        "business_unit": employee.business_unit,
-        "grade": employee.grade,
-        "job_family": employee.job_family,
         "tenure_years": employee.tenure_years,
+        # Dimensions declarees en configuration, pas une liste codee en dur.
+        "dimensions": {
+            name: employee.value(name) or ""
+            for name in dimension_fields(config)
+        },
     }
 
 
@@ -256,7 +287,7 @@ def calculate_segment_metrics(
     rows.sort(key=lambda item: (-item["headcount"], item["segment"]))
     return {
         "field": field_name,
-        "label": SEGMENT_LABELS.get(field_name, field_name),
+        "label": dimension_label(config, field_name),
         "rows": rows,
         "masked_segments": sum(1 for row in rows if row["masked"]),
     }
@@ -362,6 +393,7 @@ def scatter_dataset(
             ),
             "points": [], "trend": None,
             "x_field": x_field, "y_field": y_field, "color_field": color_field,
+            "color_label": dimension_label(config, color_field),
         }
     trend = None
     if config.get("chart_parameters.show_trend_line", True):
@@ -382,5 +414,6 @@ def scatter_dataset(
         "x_field": x_field,
         "y_field": y_field,
         "color_field": color_field,
+        "color_label": dimension_label(config, color_field),
         "groups": sorted({point["group"] for point in points}),
     }

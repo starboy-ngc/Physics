@@ -14,7 +14,7 @@ from __future__ import annotations
 import copy
 import json
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from .errors import ConfigError
 
@@ -53,6 +53,21 @@ DEFAULTS: Dict[str, Any] = {
             "variable_pay": ["Variable", "Variable pay"],
             "total_compensation": ["Remuneration totale", "Rémunération totale"],
         },
+        # Dimensions d'analyse : segmentation, filtres, coloration des
+        # graphiques. Ajouter une notion metier (equipe, manager, direction)
+        # se fait ici et dans "fields", sans modification du code.
+        "dimensions": [
+            {"field": "business_unit", "label": "BU"},
+            {"field": "country", "label": "Pays"},
+            {"field": "site", "label": "Etablissement"},
+            {"field": "job", "label": "Metier"},
+            {"field": "job_family", "label": "Famille metier"},
+            {"field": "grade", "label": "Grade"},
+            {"field": "status", "label": "Statut"},
+            {"field": "gender", "label": "Sexe"},
+            {"field": "age_band", "label": "Tranche d'age"},
+            {"field": "tenure_band", "label": "Tranche d'anciennete"},
+        ],
         "required": ["employee_id", "base_salary"],
         "numeric": ["coefficient", "fte", "base_salary", "variable_pay",
                     "total_compensation"],
@@ -140,6 +155,49 @@ class Configuration:
 
     def as_dict(self) -> Dict[str, Any]:
         return copy.deepcopy(self._data)
+
+
+def analysis_field(config: "Configuration") -> str:
+    """Champ de remuneration analyse, valide contre le mapping.
+
+    Sans ce controle, pointer `analysis_field` sur une colonne texte faisait
+    echouer le controle qualite sur une comparaison str/int — une trace
+    technique illisible pour un utilisateur RH.
+    """
+    field_name = config.get("salary_parameters.analysis_field", "base_salary")
+    numeric = config.get("population_mapping.numeric", []) or []
+    if field_name not in numeric:
+        raise ConfigError(
+            f"Le champ d'analyse \"{field_name}\" n'est pas un champ "
+            "numerique. Corrigez \"analysis_field\" dans "
+            "salary_parameters.json. Champs numeriques disponibles : "
+            f"{', '.join(numeric)}.",
+            technical=f"analysis_field not numeric: {field_name}",
+        )
+    return field_name
+
+
+def percentiles(config: "Configuration") -> List[float]:
+    """Percentiles a publier, valides."""
+    configured = config.get("percentile_parameters.percentiles", []) or []
+    result: List[float] = []
+    for entry in configured:
+        try:
+            rank = float(entry)
+        except (TypeError, ValueError):
+            raise ConfigError(
+                f"La valeur de percentile \"{entry}\" n'est pas un nombre. "
+                "Corrigez percentile_parameters.json.",
+                technical=f"non numeric percentile: {entry!r}",
+            ) from None
+        if not 0 <= rank <= 100:
+            raise ConfigError(
+                f"Le percentile {entry} est hors de la plage 0-100. "
+                "Corrigez percentile_parameters.json.",
+                technical=f"percentile out of range: {rank}",
+            )
+        result.append(rank)
+    return result or [10.0, 25.0, 50.0, 75.0, 90.0]
 
 
 def _deep_merge(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any]:

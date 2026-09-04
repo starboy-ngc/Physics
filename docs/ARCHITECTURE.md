@@ -126,10 +126,10 @@ conteneurisé, secondes :
 
 | Effectif | Import | Normalisation | Qualité | Calculs | Restitution | Total | HTML | RAM |
 |---|---|---|---|---|---|---|---|---|
-| 1 000 | 0,08 | 0,01 | 0,00 | 0,02 | 0,01 | **0,12** | 0,2 Mo | 24 Mo |
-| 10 000 | 0,87 | 0,10 | 0,02 | 0,31 | 0,07 | **1,37** | 1,3 Mo | 55 Mo |
-| 50 000 | 5,04 | 0,56 | 0,22 | 1,88 | 0,02 | **7,72** | 0,7 Mo | 164 Mo |
-| 100 000 | 9,85 | 1,45 | 0,25 | 4,20 | 0,03 | **15,78** | 0,7 Mo | 310 Mo |
+| 1 000 | 0,09 | 0,01 | 0,00 | 0,03 | 0,01 | **0,14** | 0,2 Mo | 24 Mo |
+| 10 000 | 1,02 | 0,14 | 0,02 | 0,36 | 0,04 | **1,58** | 0,7 Mo | 51 Mo |
+| 50 000 | 5,80 | 0,90 | 0,12 | 2,23 | 0,02 | **9,07** | 0,7 Mo | 165 Mo |
+| 100 000 | 11,72 | 2,11 | 0,35 | 5,09 | 0,03 | **19,31** | 0,7 Mo | 310 Mo |
 
 Comportement linéaire. **Seuil identifié** : au-delà de ~50 000 salariés,
 l'import XLSX (parsing XML) domine et l'analyse dépasse les 10 secondes ;
@@ -151,6 +151,47 @@ pré-agrégation par segment.
 L'export Excel et le manifeste restent de taille modeste quel que soit
 l'effectif : ils contiennent des agrégats, pas la population — sauf activation
 explicite de `export_parameters.include_individual_data`.
+
+## 10 ter. Dimensions declaratives
+
+Les dimensions d'analyse (segmentation, filtres, coloration du nuage, colonnes
+de l'export individuel) sont declarees dans `population_mapping.json` :
+
+```json
+"dimensions": [
+  {"field": "business_unit", "label": "BU"},
+  {"field": "grade",         "label": "Grade"}
+]
+```
+
+Ajouter une notion metier (equipe, manager, direction) demande deux lignes de
+configuration — un alias dans `fields`, une entree dans `dimensions` — et rien
+d'autre. Les champs absents du modele `Employee` sont ranges dans
+`Employee.extra` et restent filtrables, segmentables et exportables au meme
+titre que les champs natifs.
+
+C'est la condition posee par le chapitre 20 du cahier des charges : les
+analyses a venir se branchent sans reecrire le coeur.
+
+## 10 quater. Anomalies a echec silencieux
+
+Un audit du code a recherche les cas ou le moteur renvoyait un resultat
+plausible mais faux, plutot qu'une erreur. Sept ont ete corriges et sont
+verrouilles par `tests/test_anomalies.py` :
+
+| Anomalie | Symptome | Correction |
+|---|---|---|
+| Champ de filtre inconnu | `gade=G5` renvoyait 0 salarie sans message | Erreur listant les champs disponibles |
+| Egalite sur champ numerique | `base_salary=50000` ne trouvait pas 50000.0 | Comparaison sur la valeur, pas sur l'ecriture |
+| Percentiles configures sans P25/P75 | Q3/Q1 et P90/P10 disparaissaient sans explication | Percentiles de dispersion toujours calcules, publication restant configurable |
+| `analysis_field` sur une colonne texte | `TypeError` brut | Erreur metier nommant les champs numeriques |
+| Separateur ambigu (`45.000`) | Valeur lue 45,0 en silence | Signale au controle qualite |
+| `inf` / notation scientifique en export | Classeur qu'Excel refuse d'ouvrir | Ecriture en texte ou en notation fixe |
+| Export individuel a colonnes figees | Une dimension declaree en disparaissait | Colonnes derivees des dimensions |
+
+Le principe retenu : **face a une incoherence, echouer visiblement plutot que
+produire un resultat plausible**. Un chiffre faux dans une analyse de
+remuneration coute plus cher qu'un message d'erreur.
 
 ## 11. Feuille de route
 

@@ -25,7 +25,7 @@ from .core.mapping import resolve_mapping
 from .core.pipeline import AnalysisRequest, load_population, run_analysis
 from .core.quality import run_quality_check
 from .core.reporting import write_report
-from .core.segmentation import SEGMENT_FIELDS, build_filters
+from .core.segmentation import build_filters, dimension_fields
 from .core.traceability import write_manifest
 from .io.tabular import read_table
 from .version import ENGINE_NAME, __version__
@@ -67,14 +67,19 @@ def _date(value: str) -> Optional[_dt.date]:
 
 
 def command_analyse(args: argparse.Namespace) -> int:
+    # La configuration porte les dimensions declarees : elle est donc
+    # necessaire pour valider les filtres avant de lancer l'analyse.
+    config = load_configuration(args.config)
     request = AnalysisRequest(
         source_path=args.fichier,
         sheet=args.onglet,
         config_dir=args.config,
-        filters=build_filters([parse_filter(item) for item in args.filtre or []]),
+        filters=build_filters(
+            [parse_filter(item) for item in args.filtre or []], config
+        ),
         segments=args.segment or [],
         comparison_filters=build_filters(
-            [parse_filter(item) for item in args.comparer or []]
+            [parse_filter(item) for item in args.comparer or []], config
         ),
         comparison_label=args.libelle_comparaison,
         reference_date=_date(args.date_reference),
@@ -127,6 +132,12 @@ def command_mapping(args: argparse.Namespace) -> int:
     config = load_configuration(args.config)
     table = read_table(args.fichier, args.onglet)
     mapping = resolve_mapping(table.headers, config)
+    print("Dimensions d'analyse declarees :")
+    for name in dimension_fields(config):
+        marker = "ok" if name in mapping.field_to_index or name in (
+            "age_band", "tenure_band") else "absente du fichier"
+        print(f"  {name:<20} {marker}")
+    print()
     print("Colonnes identifiees :")
     for field_name, column in sorted(mapping.field_to_column.items()):
         print(f"  {field_name:<20} <- \"{column}\"")
@@ -168,8 +179,9 @@ def build_parser() -> argparse.ArgumentParser:
                              help="analyse complete et restitution")
     analyse.add_argument("--filtre", action="append",
                          help="critere, ex. business_unit=France ou grade=G5|G6")
-    analyse.add_argument("--segment", action="append", choices=list(SEGMENT_FIELDS),
-                         help="dimension d'analyse (repetable)")
+    analyse.add_argument("--segment", action="append",
+                         help="dimension d'analyse declaree en configuration "
+                              "(repetable)")
     analyse.add_argument("--comparer", action="append",
                          help="filtre definissant la population de comparaison")
     analyse.add_argument("--libelle-comparaison", default="Population B")

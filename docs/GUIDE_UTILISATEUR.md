@@ -59,8 +59,15 @@ Les filtres se cumulent (ET logique).
 --segment grade --segment gender --segment job_family
 ```
 
-Dimensions : `business_unit`, `country`, `site`, `job`, `job_family`, `grade`,
-`status`, `gender`, `age_band`, `tenure_band`.
+Dimensions livrees : `business_unit`, `country`, `site`, `job`, `job_family`,
+`grade`, `status`, `gender`, `age_band`, `tenure_band`.
+
+Un champ mal orthographie est refuse avec la liste des champs valides — l'outil
+ne renvoie jamais une population vide en silence.
+
+Pour ajouter une dimension propre a votre organisation, declarez-la dans
+`config/population_mapping.json` : un alias dans `fields`, une entree dans
+`dimensions`. Elle devient filtrable, segmentable et exportable.
 
 ### Comparer deux populations
 

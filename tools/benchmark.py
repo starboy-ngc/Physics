@@ -75,7 +75,7 @@ def measure(size: int, directory: str) -> dict:
     }
     payload["segments"] = [
         metrics.calculate_segment_metrics(population, config, field_name)
-        for field_name in available_segments(population)
+        for field_name in available_segments(population, config)
     ]
     timings["calculs"] = time.perf_counter() - started
 

@@ -49,8 +49,9 @@ navigateur), un classeur Excel et un manifeste de traçabilité.
 - **Distribution** : histogramme, situations atypiques (méthode interquartile).
 - **Nuage de points** ancienneté × rémunération : coloration par dimension,
   info-bulles, droite de tendance et R², échantillonnage au-delà d'un seuil.
-- **Segmentation** : 10 dimensions, filtres combinables, comparaison de deux
-  populations.
+- **Segmentation** : dimensions **declarees en configuration** (ajouter une
+  notion metier ne demande aucune modification du code), filtres combinables,
+  comparaison de deux populations.
 - **Petits effectifs** : masquage, avertissement et désactivation des
   graphiques, sur seuils paramétrables.
 - **Traçabilité** : manifeste versionné avec empreinte du fichier source et
@@ -72,7 +73,7 @@ python3 -m compensation_analytics.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 93 tests
+python3 -m unittest discover -s tests -t .     # 120 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 
