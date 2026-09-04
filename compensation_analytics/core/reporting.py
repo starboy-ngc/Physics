@@ -207,10 +207,6 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
             f'x2="{to_x(x_max):.1f}" y2="{to_y(y_end):.1f}" '
             'stroke="#b0453f" stroke-width="2" stroke-dasharray="6 4"/>'
         )
-        parts.append(
-            f'<text x="{width - pad_right - 6}" y="{pad_top + 14}" text-anchor="end" '
-            f'font-size="11" fill="#b0453f">R2 = {trend["r_squared"]:.3f}</text>'
-        )
     parts.append(f'<text x="{pad_left}" y="{height - 8}" font-size="11" fill="#5d6b7a">Ancienneté (années)</text>')
     parts.append("</svg>")
     return "".join(parts)
@@ -371,14 +367,7 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
 def _scatter_section(dataset: Dict[str, Any], currency: str) -> str:
     if not dataset.get("available"):
         return f"<h2>5. Ancienneté et rémunération</h2>{_note(dataset.get('warning'), 'warn')}"
-    trend = dataset.get("trend")
     commentary = ""
-    if trend:
-        slope = format_money(trend["slope"], currency)
-        commentary = _note(
-            f"Tendance : {slope} par année d'ancienneté (R2 = {trend['r_squared']:.3f}). "
-            "Un R2 faible indique que l'ancienneté explique peu la rémunération."
-        )
     return (
         "<h2>5. Ancienneté et rémunération</h2>"
         f'{_note(dataset.get("warning"), "warn")}'

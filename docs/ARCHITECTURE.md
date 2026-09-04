@@ -312,6 +312,23 @@ paramètres dédiés, sans toucher au pipeline : égalité salariale, promotions
 augmentations, variable, compa-ratio, positionnement en grille, budget
 salarial, évolution N/N-1.
 
+## 10 quinquies. Statistiques techniques non publiées
+
+Deux statistiques sont calculées et restent accessibles au moteur, sans
+figurer dans les restitutions :
+
+* l'**ecart-type**, disponible dans l'export Excel mais jamais presente en
+  indicateur de pilotage — ce sont les ratios de dispersion qui le sont ;
+* le **R2** de la droite de tendance du nuage, retire des documents. Il
+  demandait une explication pour etre lu, et sans cette explication il
+  n'apportait rien. La pente chiffree est partie avec lui : annoncee seule,
+  sur une population melangeant tous les grades, elle affirmerait un lien que
+  rien n'etaye. La droite reste tracee comme repere visuel.
+
+`statistics_engine.linear_regression` continue de retourner les deux, ce qui
+laisse la porte ouverte a un usage ulterieur — par exemple un R2 par segment,
+la ou la lecture a un sens.
+
 ## 11 bis. Libellés et interface
 
 Les libellés affichés — titres de section, en-têtes de tableaux, messages du

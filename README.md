@@ -57,7 +57,7 @@ dépendance, aucun binaire tiers.
   variation. L'écart-type reste une statistique technique, pas un KPI.
 - **Distribution** : histogramme, situations atypiques (méthode interquartile).
 - **Nuage de points** ancienneté × rémunération : coloration par dimension,
-  info-bulles, droite de tendance et R², échantillonnage au-delà d'un seuil.
+  info-bulles, droite de tendance, échantillonnage au-delà d'un seuil.
 - **Segmentation** : dimensions **declarees en configuration** (ajouter une
   notion metier ne demande aucune modification du code), filtres combinables,
   comparaison de deux populations.
@@ -82,7 +82,7 @@ python3 -m compensation_analytics.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 169 tests
+python3 -m unittest discover -s tests -t .     # 174 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 

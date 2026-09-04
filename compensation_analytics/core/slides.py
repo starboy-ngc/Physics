@@ -170,8 +170,6 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     scatter = analysis.get("scatter", {})
     distribution = analysis.get("distribution", {})
     if scatter.get("available"):
-        # Le R2 est deja porte par le graphique : ne pas le repeter dans le
-        # titre du bloc.
         blocks.append(Block(
             "chart", {"type": "scatter", "dataset": scatter, "height": 345},
             title="Ancienneté et rémunération", width="third"))
@@ -294,11 +292,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     # Anciennete x remuneration
     scatter = analysis.get("scatter", {})
     if scatter.get("available"):
-        trend = scatter.get("trend")
         subtitle = ""
-        if trend:
-            subtitle = (f'Tendance : {format_money(trend["slope"], currency)} par année '
-                        f'd\'ancienneté — R2 = {trend["r_squared"]:.3f}')
         blocks = [Block("legend", scatter), Block("chart", {"type": "scatter",
                                                             "dataset": scatter})]
         if scatter.get("warning"):
@@ -773,9 +767,6 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
         end = min(max(trend["intercept"] + trend["slope"] * x_max, y_min), y_max)
         page.line(to_x(x_min), to_y(start), to_x(x_max), to_y(end),
                   color=(0.690, 0.271, 0.247), width=1.4, dash=(5, 3))
-        page.text(x + width, base + plot_height - 9,
-                  f'R2 = {trend["r_squared"]:.3f}', size=8,
-                  color=(0.690, 0.271, 0.247), align="right")
     for step in range(6):
         value = x_min + x_span * step / 5
         page.text(x + width * step / 5, base - 12, format_number(value, 1),

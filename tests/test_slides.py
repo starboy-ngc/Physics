@@ -381,3 +381,52 @@ class TestSummaryComposition(unittest.TestCase):
         notes = [block.payload for block in build_summary(payload)[0].blocks
                  if block.kind == "note"]
         self.assertIn("effectif insuffisant", notes)
+
+
+class TestNoRSquaredInDocuments(unittest.TestCase):
+    """Le R2 ne figure plus dans les restitutions.
+
+    Il demandait une explication pour etre lu, et sans cette explication il
+    n'apportait rien. La pente chiffree partait avec lui : annoncee seule,
+    sur une population melangeant tous les grades, elle affirmerait un lien
+    que rien n'etaye. La droite reste comme repere visuel.
+
+    Le calcul demeure disponible dans `statistics_engine.linear_regression`
+    et dans les donnees d'analyse, au meme titre que l'ecart-type : une
+    statistique technique, pas un indicateur publie.
+    """
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+        self.payload = analysis_payload(self.directory, segments=["business_unit"])
+
+    def test_absent_from_the_detailed_report(self):
+        from compensation_analytics.core.reporting import render_report
+        html = render_report(self.payload)
+        self.assertNotIn("R2", html)
+        self.assertNotIn("R²", html)
+        self.assertNotIn("par année d'ancienneté", html)
+
+    def test_absent_from_the_slides(self):
+        html = render_slides_html(build_deck(self.payload), self.payload)
+        self.assertNotIn("R2", html)
+        self.assertNotIn("R²", html)
+
+    def test_absent_from_the_pdf(self):
+        path = write_slides_pdf(build_deck(self.payload), self.payload,
+                                os.path.join(self.directory, "d.pdf"))
+        data = open(path, "rb").read()
+        streams = b""
+        for match in re.finditer(rb"(?<!end)stream\r?\n", data):
+            begin = match.end()
+            streams += zlib.decompress(data[begin:data.index(b"\nendstream", begin)])
+        self.assertNotIn(b"R2", streams)
+
+    def test_the_trend_line_is_still_drawn(self):
+        dataset = self.payload["scatter"]
+        self.assertIsNotNone(dataset.get("trend"))
+        svg = render_slides_html(build_deck(self.payload), self.payload)
+        self.assertIn("stroke-dasharray", svg)
+
+    def test_the_statistic_remains_available_to_the_engine(self):
+        self.assertIn("r_squared", self.payload["scatter"]["trend"])
