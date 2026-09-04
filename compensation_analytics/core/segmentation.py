@@ -69,7 +69,7 @@ class Filter:
         if operator == "lte":
             return actual <= threshold
         raise ConfigError(
-            f"Le critere de filtre \"{operator}\" n'est pas reconnu.",
+            f"Le critère de filtre \"{operator}\" n'est pas reconnu.",
             technical=f"unsupported operator: {operator}",
         )
 
@@ -131,8 +131,8 @@ def _number(value: Any) -> float:
     if number is None:
         raise ConfigError(
             f"La valeur de filtre \"{value}\" n'est pas un nombre. "
-            "Les criteres de comparaison (>, >=, <, <=, entre) attendent "
-            "une valeur numerique.",
+            "Les critères de comparaison (>, >=, <, <=, entre) attendent "
+            "une valeur numérique.",
             technical=f"non numeric filter value: {value!r}",
         )
     return number
@@ -190,7 +190,7 @@ def _ensure_known_field(field_name: str, allowed: Sequence[str], usage: str) -> 
     # salarie sans le moindre message : l'utilisateur conclurait a une
     # population vide plutot qu'a une erreur de saisie.
     raise ConfigError(
-        f"Le champ \"{field_name}\" n'existe pas et ne peut pas etre {usage}. "
+        f"Le champ \"{field_name}\" n'existe pas et ne peut pas être {usage}. "
         f"Champs disponibles : {', '.join(allowed)}.",
         technical=f"unknown field: {field_name}",
     )
@@ -217,7 +217,7 @@ def build_filters(
         operator = definition.get("operator", "eq")
         if operator not in _OPERATORS:
             raise ConfigError(
-                f"Le critere de filtre \"{operator}\" n'est pas reconnu.",
+                f"Le critère de filtre \"{operator}\" n'est pas reconnu.",
                 technical=f"unsupported operator: {operator}",
             )
         filters.append(Filter(field_name, operator, definition.get("value")))
@@ -251,7 +251,7 @@ def validate_segments(
     """Verifie que chaque dimension demandee existe."""
     allowed = filterable_fields(config)
     for field_name in fields:
-        _ensure_known_field(field_name, allowed, "utilise comme segment")
+        _ensure_known_field(field_name, allowed, "utilisé comme segment")
     return list(fields)
 
 

@@ -18,6 +18,7 @@ Choix qui rendent l'exercice tenable :
 from __future__ import annotations
 
 import os
+import unicodedata
 import zlib
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
@@ -56,18 +57,34 @@ FONT_REGULAR = "F1"
 FONT_BOLD = "F2"
 
 
+def _base_letter(char: str) -> str:
+    """Lettre de base d'un caractere accentue ("e" pour "e accent aigu").
+
+    Les tables de metriques ne couvrent que l'ASCII imprimable. En Helvetica,
+    un caractere accentue a la largeur de sa lettre de base : la decomposition
+    donne donc la bonne valeur au lieu d'une approximation par defaut.
+    """
+    decomposed = unicodedata.normalize("NFKD", char)
+    return next((part for part in decomposed if not unicodedata.combining(part)), char)
+
+
 def text_width(text: str, size: float, bold: bool = False) -> float:
     """Largeur d'une chaine, en points, pour la police et la taille donnees."""
     table = _BOLD_WIDTHS if bold else _HELVETICA_WIDTHS
     fallback = _HELVETICA_WIDTHS if bold else None
-    total = 0
-    for char in text:
+
+    def width_of(char: str) -> int:
         code = ord(char)
         width = table.get(code)
         if width is None and fallback is not None:
             width = fallback.get(code)
-        total += width if width is not None else _DEFAULT_WIDTH
-    return total * size / 1000.0
+        if width is None:
+            base = _base_letter(char)
+            if base != char:
+                return width_of(base)
+        return width if width is not None else _DEFAULT_WIDTH
+
+    return sum(width_of(char) for char in text) * size / 1000.0
 
 
 def truncate(text: str, size: float, maximum: float, bold: bool = False) -> str:

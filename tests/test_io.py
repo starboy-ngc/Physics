@@ -42,7 +42,7 @@ class TestReaders(unittest.TestCase):
     def test_xlsx_round_trip_preserves_types(self):
         path = self._path("p.xlsx")
         write_workbook(path, [("Population", [
-            ["Matricule", "Salaire de base", "Date d'entree"],
+            ["Matricule", "Salaire de base", "Date d'entrée"],
             ["E1", 40000.5, _dt.date(2019, 3, 15)],
             ["E2", 51000, _dt.date(2021, 11, 2)],
         ])])

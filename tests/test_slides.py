@@ -40,12 +40,12 @@ class TestDeckStructure(unittest.TestCase):
         deck = build_deck(self.payload)
         self.assertEqual(deck[0].kind, "cover")
         self.assertEqual(deck[-1].kind, "closing")
-        self.assertIn("Methodologie", deck[-1].title)
+        self.assertIn("Méthodologie", deck[-1].title)
 
     def test_deck_covers_the_expected_sections(self):
         titles = " | ".join(slide.title for slide in build_deck(self.payload))
-        for expected in ("Qualite des donnees", "Population", "Remuneration",
-                         "Distribution", "Anciennete et remuneration"):
+        for expected in ("Qualité des données", "Population", "Rémunération",
+                         "Distribution", "Ancienneté et rémunération"):
             self.assertIn(expected, titles)
 
     def test_one_slide_per_segment_dimension(self):
@@ -67,7 +67,7 @@ class TestDeckStructure(unittest.TestCase):
             "segments": [],
         }
         titles = [slide.title for slide in build_deck(payload)]
-        self.assertNotIn("Remuneration", titles)
+        self.assertNotIn("Rémunération", titles)
         self.assertNotIn("Population", titles)
 
 
@@ -169,7 +169,7 @@ class TestPdfDocument(unittest.TestCase):
             streams.append(zlib.decompress(self.data[begin:end]).decode("latin-1"))
         self.assertEqual(len(streams), len(self.deck))
         joined = "\n".join(streams)
-        self.assertIn("Remuneration", joined)
+        self.assertIn("Rémunération", joined)
         self.assertIn("BT", joined)
 
     def test_no_personal_data_in_the_pdf(self):
@@ -328,14 +328,14 @@ class TestSummaryComposition(unittest.TestCase):
 
     def test_percentiles_are_kept(self):
         rendered = render_slides_html([self.summary], self.payload)
-        self.assertIn("Niveaux de remuneration", rendered)
-        for label in ("P10", "Q1 (P25)", "Mediane (P50)", "Q3 (P75)", "P90"):
+        self.assertIn("Niveaux de rémunération", rendered)
+        for label in ("P10", "Q1 (P25)", "Médiane (P50)", "Q3 (P75)", "P90"):
             self.assertIn(label, rendered)
 
     def test_population_structure_is_present(self):
         rendered = render_slides_html([self.summary], self.payload)
         self.assertIn("Structure de la population", rendered)
-        self.assertIn("Age 30-39", rendered)
+        self.assertIn("Âge 30-39", rendered)
         self.assertIn("Anc. 2-5 ans", rendered)
 
     def test_page_holds_three_columns_between_two_full_width_bands(self):
@@ -350,12 +350,12 @@ class TestSummaryComposition(unittest.TestCase):
         self.assertTrue(last.payload["compact"])
         labels = [item["label"] for item in last.payload["items"]]
         self.assertIn("Moins de 30 ans", labels)
-        self.assertIn("Anciennete > 10 ans", labels)
-        self.assertIn("Donnees valorisees", labels)
+        self.assertIn("Ancienneté > 10 ans", labels)
+        self.assertIn("Données valorisées", labels)
 
     def test_r_squared_is_not_repeated_in_the_block_title(self):
         titles = [block.title for block in self.summary.blocks if block.kind == "chart"]
-        self.assertEqual(titles, ["Anciennete et remuneration"])
+        self.assertEqual(titles, ["Ancienneté et rémunération"])
 
     def test_falls_back_to_the_histogram_when_the_scatter_is_unavailable(self):
         # Sous le seuil de graphique, le nuage est desactive ; la distribution

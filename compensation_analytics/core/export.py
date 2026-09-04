@@ -24,7 +24,7 @@ def _rows_quality(quality: Dict[str, Any]) -> List[List[Any]]:
                 "anomalies_critiques", "avertissements", "statut"):
         rows.append([key.replace("_", " ").capitalize(), quality.get(key)])
     rows.append([])
-    rows.append(["Severite", "Code", "Constat", "Lignes concernees"])
+    rows.append(["Sévérité", "Code", "Constat", "Lignes concernees"])
     for item in quality.get("constats", []):
         rows.append([item["severite"], item["code"], item["message"],
                      item["lignes_concernees"]])
@@ -34,13 +34,13 @@ def _rows_quality(quality: Dict[str, Any]) -> List[List[Any]]:
 def _rows_population(population: Dict[str, Any]) -> List[List[Any]]:
     rows: List[List[Any]] = [["Indicateur", "Valeur"]]
     for label, key in (
-        ("Effectif", "headcount"), ("Age moyen", "age_mean"),
-        ("Age median", "age_median"), ("Anciennete moyenne", "tenure_mean"),
-        ("Anciennete mediane", "tenure_median"),
+        ("Effectif", "headcount"), ("Âge moyen", "age_mean"),
+        ("Âge médian", "age_median"), ("Ancienneté moyenne", "tenure_mean"),
+        ("Ancienneté médiane", "tenure_median"),
     ):
         rows.append([label, population.get(key)])
-    for title, key in (("Tranche d'age", "age_bands"),
-                       ("Tranche d'anciennete", "tenure_bands")):
+    for title, key in (("Tranche d'âge", "age_bands"),
+                       ("Tranche d'ancienneté", "tenure_bands")):
         rows.append([])
         rows.append([title, "Effectif", "Part (%)"])
         for band in population.get(key, []) or []:
@@ -51,11 +51,11 @@ def _rows_population(population: Dict[str, Any]) -> List[List[Any]]:
 def _rows_salary(salary: Dict[str, Any]) -> List[List[Any]]:
     rows: List[List[Any]] = [["Indicateur", "Valeur"]]
     for label, key in (
-        ("Effectif valorise", "valued_headcount"), ("Masse salariale", "payroll"),
-        ("Moyenne", "mean"), ("Mediane", "median"), ("Minimum", "min"),
+        ("Effectif valorisé", "valued_headcount"), ("Masse salariale", "payroll"),
+        ("Moyenne", "mean"), ("Médiane", "median"), ("Minimum", "min"),
         ("Maximum", "max"), ("P10", "p10"), ("Q1 (P25)", "p25"),
         ("P50", "p50"), ("Q3 (P75)", "p75"), ("P90", "p90"),
-        ("Ecart-type (technique)", "std_dev"),
+        ("Écart-type (technique)", "std_dev"),
     ):
         if key in salary:
             rows.append([label, salary.get(key)])
@@ -65,7 +65,7 @@ def _rows_salary(salary: Dict[str, Any]) -> List[List[Any]]:
         rows.append(["Dispersion", "Valeur"])
         for label, key in (
             ("Q3 - Q1", "interquartile_range"), ("Q3 / Q1", "q3_over_q1"),
-            ("P90 / P10", "p90_over_p10"), ("Moyenne / Mediane", "mean_over_median"),
+            ("P90 / P10", "p90_over_p10"), ("Moyenne / Médiane", "mean_over_median"),
             ("Coefficient de variation", "coefficient_of_variation"),
         ):
             rows.append([label, dispersion.get(key)])
@@ -74,13 +74,13 @@ def _rows_salary(salary: Dict[str, Any]) -> List[List[Any]]:
 
 def _rows_segment(segment: Dict[str, Any]) -> List[List[Any]]:
     rows: List[List[Any]] = [[
-        segment["label"], "Effectif", "Moyenne", "Mediane", "P10", "Q1", "Q3",
-        "P90", "P90/P10", "Age median", "Anciennete mediane",
+        segment["label"], "Effectif", "Moyenne", "Médiane", "P10", "Q1", "Q3",
+        "P90", "P90/P10", "Âge médian", "Ancienneté médiane",
     ]]
     for row in segment["rows"]:
         salary = row["salary"]
         if row["masked"]:
-            rows.append([row["segment"], row["headcount"]] + ["masque"] * 9)
+            rows.append([row["segment"], row["headcount"]] + ["masqué"] * 9)
             continue
         dispersion = salary.get("dispersion") or {}
         rows.append([
@@ -99,8 +99,8 @@ def _rows_distribution(distribution: Dict[str, Any]) -> List[List[Any]]:
     outliers = distribution.get("outliers") or []
     if outliers:
         rows.append([])
-        rows.append([distribution.get("outlier_label", "Situation atypique a analyser")])
-        rows.append(["Reference", "BU", "Grade", "Famille metier", "Anciennete",
+        rows.append([distribution.get("outlier_label", "Situation atypique à analyser")])
+        rows.append(["Référence", "BU", "Grade", "Famille métier", "Ancienneté",
                      "Valeur", "Position"])
         for item in outliers:
             rows.append([
@@ -114,7 +114,7 @@ def _rows_distribution(distribution: Dict[str, Any]) -> List[List[Any]]:
 def _rows_comparison(comparison: Dict[str, Any]) -> List[List[Any]]:
     rows: List[List[Any]] = [[
         "Indicateur", comparison["left_label"], comparison["right_label"],
-        "Ecart", "Ecart (%)",
+        "Écart", "Écart (%)",
     ]]
     for row in comparison["rows"]:
         rows.append([row["indicator"], row["left"], row["right"], row["gap"],
@@ -131,10 +131,10 @@ def _rows_individual(
     au lieu d'en disparaitre en silence.
     """
     dimensions = segmentation.dimensions(config)
-    headers = (["Reference"]
+    headers = (["Référence"]
                + [entry["label"] for entry in dimensions]
-               + ["Age", "Anciennete", "Salaire de base", "Variable",
-                  "Remuneration totale"])
+               + ["Âge", "Ancienneté", "Salaire de base", "Variable",
+                  "Rémunération totale"])
     rows: List[List[Any]] = [headers]
     for employee in population:
         rows.append(
@@ -153,10 +153,10 @@ def build_sheets(
 ) -> List[Tuple[str, Sequence[Sequence[Any]]]]:
     """Compose les onglets du classeur d'export."""
     sheets: List[Tuple[str, Sequence[Sequence[Any]]]] = [
-        ("Synthese", _rows_manifest(analysis.get("manifest", {}))),
-        ("Qualite des donnees", _rows_quality(analysis.get("quality", {}))),
+        ("Synthèse", _rows_manifest(analysis.get("manifest", {}))),
+        ("Qualité des données", _rows_quality(analysis.get("quality", {}))),
         ("Population", _rows_population(analysis.get("population", {}))),
-        ("Remuneration", _rows_salary(analysis.get("salary", {}))),
+        ("Rémunération", _rows_salary(analysis.get("salary", {}))),
     ]
     distribution = analysis.get("distribution") or {}
     if distribution.get("available"):
@@ -167,7 +167,7 @@ def build_sheets(
         sheets.append(("Comparaison", _rows_comparison(analysis["comparison"])))
     if config.get("export_parameters.include_individual_data", False):
         sheets.append(
-            ("Donnees individuelles", _rows_individual(population, config))
+            ("Données individuelles", _rows_individual(population, config))
         )
     return sheets
 

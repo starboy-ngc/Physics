@@ -17,7 +17,7 @@ from .segmentation import dimension_fields, dimension_label, split_by
 from . import statistics_engine as stats
 
 MASKED = None
-MASK_REASON = "Effectif insuffisant : resultat masque pour preserver la confidentialite."
+MASK_REASON = "Effectif insuffisant : résultat masqué pour préserver la confidentialité."
 
 
 @dataclass
@@ -44,13 +44,13 @@ class PrivacyRules:
 
     def warning_for(self, headcount: int) -> Optional[str]:
         if headcount == 0:
-            return "Population vide : aucun indicateur ne peut etre calcule."
+            return "Population vide : aucun indicateur ne peut être calculé."
         if not self.may_publish(headcount):
             return MASK_REASON
         if headcount < self.min_warning:
             return (
-                f"Effectif reduit ({headcount} salaries) : les indicateurs sont "
-                "a interpreter avec prudence."
+                f"Effectif réduit ({headcount} salariés) : les indicateurs sont "
+                "a interpréter avec prudence."
             )
         return None
 
@@ -218,7 +218,7 @@ def _percentile_key(rank: float) -> str:
 
 def _percentile_label(rank: float) -> str:
     """Libelle usuel : les quartiles sont nommes, les autres numerotes."""
-    usual = {25.0: "Q1 (P25)", 50.0: "Mediane (P50)", 75.0: "Q3 (P75)"}
+    usual = {25.0: "Q1 (P25)", 50.0: "Médiane (P50)", 75.0: "Q3 (P75)"}
     return usual.get(float(rank), f"P{_percentile_key(rank)[1:]}")
 
 
@@ -238,7 +238,7 @@ def calculate_distribution_metrics(
             "available": False,
             "warning": (
                 "Effectif insuffisant pour produire une distribution "
-                f"(minimum parametre : {rules.min_chart} salaries)."
+                f"(minimum paramètre : {rules.min_chart} salariés)."
             ),
             "bins": [],
             "outliers": [],
@@ -268,7 +268,7 @@ def calculate_distribution_metrics(
         "outliers": ordered_outliers,
         "outliers_highlighted": _extremes(ordered_outliers),
         # Libelle impose : jamais "anomalie RH", qui prejugerait du contexte.
-        "outlier_label": "Situation atypique a analyser",
+        "outlier_label": "Situation atypique à analyser",
     }
 
 
@@ -399,11 +399,11 @@ def compare_populations(
 
     indicators = [
         ("Effectif", left_pop.get("headcount"), right_pop.get("headcount"), "int"),
-        ("Age median", left_pop.get("age_median"), right_pop.get("age_median"), "years"),
-        ("Anciennete mediane", left_pop.get("tenure_median"),
+        ("Âge médian", left_pop.get("age_median"), right_pop.get("age_median"), "years"),
+        ("Ancienneté médiane", left_pop.get("tenure_median"),
          right_pop.get("tenure_median"), "years"),
         ("Salaire moyen", left_pay.get("mean"), right_pay.get("mean"), "money"),
-        ("Salaire median", left_pay.get("median"), right_pay.get("median"), "money"),
+        ("Salaire médian", left_pay.get("median"), right_pay.get("median"), "money"),
         ("P10", left_pay.get("p10"), right_pay.get("p10"), "money"),
         ("Q1 (P25)", left_pay.get("p25"), right_pay.get("p25"), "money"),
         ("Q3 (P75)", left_pay.get("p75"), right_pay.get("p75"), "money"),
@@ -412,7 +412,7 @@ def compare_populations(
          _dispersion_of(right_pay, "q3_over_q1"), "ratio"),
         ("P90 / P10", _dispersion_of(left_pay, "p90_over_p10"),
          _dispersion_of(right_pay, "p90_over_p10"), "ratio"),
-        ("Moyenne / Mediane", _dispersion_of(left_pay, "mean_over_median"),
+        ("Moyenne / Médiane", _dispersion_of(left_pay, "mean_over_median"),
          _dispersion_of(right_pay, "mean_over_median"), "ratio"),
     ]
     rows = []
@@ -480,7 +480,7 @@ def scatter_dataset(
             "available": False,
             "warning": (
                 "Effectif insuffisant pour afficher le nuage de points "
-                f"(minimum parametre : {rules.min_chart} salaries)."
+                f"(minimum paramètre : {rules.min_chart} salariés)."
             ),
             "points": [], "trend": None,
             "x_field": x_field, "y_field": y_field, "color_field": color_field,
@@ -494,8 +494,8 @@ def scatter_dataset(
     return {
         "available": True,
         "warning": (
-            f"Nuage echantillonne : {len(points)} points affiches sur "
-            f"{total_points} salaries. La droite de tendance et le R2 portent "
+            f"Nuage échantillonné : {len(points)} points affichés sur "
+            f"{total_points} salariés. La droite de tendance et le R2 portent "
             "sur l'echantillon affiche."
         ) if sampled else None,
         "sampled": sampled,

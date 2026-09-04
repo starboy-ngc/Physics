@@ -88,8 +88,8 @@ def ensure_required(result: MappingResult, config: Configuration) -> None:
         labels.append(f'"{aliases[0]}"')
     listed = ", ".join(labels)
     raise MappingError(
-        f"Les colonnes suivantes n'ont pas pu etre identifiees : {listed}. "
-        "Veuillez verifier le mapping des colonnes d'import "
+        f"Les colonnes suivantes n'ont pas pu être identifiées : {listed}. "
+        "Veuillez vérifier le mapping des colonnes d'import "
         "(config/population_mapping.json).",
         technical=f"missing required fields: {result.missing_required}",
     )

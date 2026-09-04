@@ -119,7 +119,7 @@ class TestDistributionAndScatter(unittest.TestCase):
         population = build_population(rows, config)
         distribution = metrics.calculate_distribution_metrics(population, config)
         self.assertTrue(distribution["available"])
-        self.assertEqual(distribution["outlier_label"], "Situation atypique a analyser")
+        self.assertEqual(distribution["outlier_label"], "Situation atypique à analyser")
         self.assertTrue(any(item["value"] == 500000 for item in distribution["outliers"]))
 
     def test_outliers_reference_anonymous_identifier(self):
@@ -213,7 +213,7 @@ class TestScatterSampling(unittest.TestCase):
         self.assertTrue(dataset["sampled"])
         self.assertEqual(len(dataset["points"]), 200)
         self.assertEqual(dataset["total_points"], 1000)
-        self.assertIn("echantillonne", dataset["warning"])
+        self.assertIn("échantillonné", dataset["warning"])
 
     def test_sampling_is_deterministic(self):
         first = self._dataset(1000, 200)["points"]

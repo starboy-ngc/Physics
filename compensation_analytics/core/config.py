@@ -35,23 +35,23 @@ DEFAULTS: Dict[str, Any] = {
         "fields": {
             "employee_id": ["Matricule", "Employee ID", "ID"],
             "last_name": ["Nom", "Last name"],
-            "first_name": ["Prenom", "Prénom", "First name"],
+            "first_name": ["Prénom", "First name"],
             "gender": ["Sexe", "Genre", "Gender"],
             "birth_date": ["Date de naissance", "Birth date"],
-            "hire_date": ["Date d'entree", "Date d'entrée", "Hire date"],
+            "hire_date": ["Date d'entrée", "Hire date"],
             "leave_date": ["Date de sortie", "Leave date"],
             "business_unit": ["BU", "Business Unit"],
             "country": ["Pays", "Country"],
-            "site": ["Etablissement", "Établissement", "Site"],
-            "job": ["Metier", "Métier", "Job"],
-            "job_family": ["Famille metier", "Famille métier", "Job family"],
+            "site": ["Établissement", "Site"],
+            "job": ["Métier", "Job"],
+            "job_family": ["Famille métier", "Job family"],
             "grade": ["Grade"],
             "coefficient": ["Coefficient"],
             "status": ["Statut", "Status"],
             "fte": ["Temps de travail", "FTE"],
             "base_salary": ["Salaire de base", "Base salary"],
             "variable_pay": ["Variable", "Variable pay"],
-            "total_compensation": ["Remuneration totale", "Rémunération totale"],
+            "total_compensation": ["Rémunération totale"],
         },
         # Dimensions d'analyse : segmentation, filtres, coloration des
         # graphiques. Ajouter une notion metier (equipe, manager, direction)
@@ -59,18 +59,17 @@ DEFAULTS: Dict[str, Any] = {
         "dimensions": [
             {"field": "business_unit", "label": "BU"},
             {"field": "country", "label": "Pays"},
-            {"field": "site", "label": "Etablissement"},
-            {"field": "job", "label": "Metier"},
-            {"field": "job_family", "label": "Famille metier"},
+            {"field": "site", "label": "Établissement"},
+            {"field": "job", "label": "Métier"},
+            {"field": "job_family", "label": "Famille métier"},
             {"field": "grade", "label": "Grade"},
             {"field": "status", "label": "Statut"},
             {"field": "gender", "label": "Sexe"},
-            {"field": "age_band", "label": "Tranche d'age"},
-            {"field": "tenure_band", "label": "Tranche d'anciennete"},
+            {"field": "age_band", "label": "Tranche d'âge"},
+            {"field": "tenure_band", "label": "Tranche d'ancienneté"},
         ],
         "required": ["employee_id", "base_salary"],
-        "numeric": ["coefficient", "fte", "base_salary", "variable_pay",
-                    "total_compensation"],
+        "numeric": ["coefficient", "fte", "base_salary", "variable_pay", "total_compensation"],
         "date": ["birth_date", "hire_date", "leave_date"],
         "personal": ["last_name", "first_name", "birth_date", "employee_id"],
     },
@@ -173,8 +172,8 @@ def analysis_field(config: "Configuration") -> str:
     if field_name not in numeric:
         raise ConfigError(
             f"Le champ d'analyse \"{field_name}\" n'est pas un champ "
-            "numerique. Corrigez \"analysis_field\" dans "
-            "salary_parameters.json. Champs numeriques disponibles : "
+            "numérique. Corrigez \"analysis_field\" dans "
+            "salary_parameters.json. Champs numériques disponibles : "
             f"{', '.join(numeric)}.",
             technical=f"analysis_field not numeric: {field_name}",
         )
@@ -228,8 +227,8 @@ def load_configuration(config_dir: str | None = None) -> Configuration:
                 loaded = json.load(handle)
         except (OSError, ValueError) as exc:
             raise ConfigError(
-                f"Le fichier de configuration \"{name}.json\" n'a pas pu etre lu. "
-                "Verifiez qu'il s'agit d'un fichier JSON valide.",
+                f"Le fichier de configuration \"{name}.json\" n'a pas pu être lu. "
+                "Vérifiez qu'il s'agit d'un fichier JSON valide.",
                 technical=f"{type(exc).__name__}: {exc}",
             ) from exc
         if not isinstance(loaded, dict):

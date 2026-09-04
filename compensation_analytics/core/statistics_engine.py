@@ -49,7 +49,7 @@ def percentile(values: Sequence[float], rank: float) -> Optional[float]:
     if not values:
         return None
     if not 0 <= rank <= 100:
-        raise ValueError("le percentile doit etre compris entre 0 et 100")
+        raise ValueError("le percentile doit être compris entre 0 et 100")
     ordered = sorted(values)
     if len(ordered) == 1:
         return ordered[0]

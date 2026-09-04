@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Genere une population fictive pour les tests et les demonstrations.
+"""Généré une population fictive pour les tests et les demonstrations.
 
-Aucune donnee RH reelle n'est utilisee : tout est produit par un generateur
+Aucune donnée RH reelle n'est utilisée : tout est produit par un generateur
 pseudo-aleatoire a graine fixe, donc reproductible.
 
     python3 tools/generate_sample_population.py --rows 2000 --output data/population_demo.xlsx
@@ -20,10 +20,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from compensation_analytics.io.xlsx_writer import write_workbook  # noqa: E402
 
 HEADERS = [
-    "Matricule", "Nom", "Prenom", "Sexe", "Date de naissance", "Date d'entree",
-    "Date de sortie", "BU", "Pays", "Etablissement", "Metier", "Famille metier",
+    "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
+    "Date de sortie", "BU", "Pays", "Établissement", "Métier", "Famille métier",
     "Grade", "Coefficient", "Statut", "Temps de travail", "Salaire de base",
-    "Variable", "Remuneration totale",
+    "Variable", "Rémunération totale",
 ]
 
 BUSINESS_UNITS = ["France", "Iberia", "Benelux", "DACH", "Nordics", "Corporate"]
@@ -31,7 +31,7 @@ COUNTRIES = {
     "France": "France", "Iberia": "Espagne", "Benelux": "Belgique",
     "DACH": "Allemagne", "Nordics": "Suede", "Corporate": "France",
 }
-SITES = ["Siege", "Site Nord", "Site Sud", "Site Est", "Centre de services"]
+SITES = ["Siège", "Site Nord", "Site Sud", "Site Est", "Centre de services"]
 JOB_FAMILIES = {
     "Finance": ["Controleur de gestion", "Comptable", "Analyste financier"],
     "RH": ["Chargé de recrutement", "HRBP", "Gestionnaire paie"],
@@ -105,7 +105,7 @@ def main() -> int:
     parser.add_argument("--output", default="data/population_demo.xlsx")
     parser.add_argument("--reference-date", default="")
     parser.add_argument("--clean", action="store_true",
-                        help="genere une population sans defaut volontaire")
+                        help="généré une population sans defaut volontaire")
     args = parser.parse_args()
 
     reference = (
@@ -126,7 +126,7 @@ def main() -> int:
                 ])
     else:
         write_workbook(args.output, [("Population", [HEADERS] + rows)])
-    print(f"{len(rows)} salaries fictifs ecrits dans {args.output}")
+    print(f"{len(rows)} salariés fictifs écrits dans {args.output}")
     return 0
 
 

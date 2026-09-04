@@ -67,10 +67,10 @@ def _table_block(headers, rows, title="", width="full", compact=False) -> Block:
 def _population_kpis(population: Dict[str, Any]) -> List[List[str]]:
     return [
         ["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
-        ["Age moyen", format_number(population.get("age_mean")) + " ans"],
-        ["Age median", format_number(population.get("age_median")) + " ans"],
-        ["Anciennete moyenne", format_number(population.get("tenure_mean")) + " ans"],
-        ["Anciennete mediane", format_number(population.get("tenure_median")) + " ans"],
+        ["Âge moyen", format_number(population.get("age_mean")) + " ans"],
+        ["Âge médian", format_number(population.get("age_median")) + " ans"],
+        ["Ancienneté moyenne", format_number(population.get("tenure_mean")) + " ans"],
+        ["Ancienneté médiane", format_number(population.get("tenure_median")) + " ans"],
     ]
 
 
@@ -78,7 +78,7 @@ def _salary_kpis(salary: Dict[str, Any], currency: str) -> List[List[str]]:
     return [
         ["Masse salariale", format_money(salary.get("payroll"), currency)],
         ["Salaire moyen", format_money(salary.get("mean"), currency)],
-        ["Salaire median", format_money(salary.get("median"), currency)],
+        ["Salaire médian", format_money(salary.get("median"), currency)],
         ["Minimum", format_money(salary.get("min"), currency)],
         ["Maximum", format_money(salary.get("max"), currency)],
     ]
@@ -99,7 +99,7 @@ def _dispersion_rows(salary: Dict[str, Any], currency: str) -> List[List[str]]:
         ["Q3 - Q1", format_money(dispersion.get("interquartile_range"), currency)],
         ["Q3 / Q1", format_number(dispersion.get("q3_over_q1"), 2)],
         ["P90 / P10", format_number(dispersion.get("p90_over_p10"), 2)],
-        ["Moyenne / Mediane", format_number(dispersion.get("mean_over_median"), 2)],
+        ["Moyenne / Médiane", format_number(dispersion.get("mean_over_median"), 2)],
         ["Coefficient de variation",
          format_percent(None if variation is None else variation * 100)],
     ]
@@ -108,11 +108,11 @@ def _dispersion_rows(salary: Dict[str, Any], currency: str) -> List[List[str]]:
 def _cover(analysis: Dict[str, Any]) -> Slide:
     manifest = analysis.get("manifest", {})
     return Slide(
-        title=analysis.get("title", "Analyse de remuneration"),
-        subtitle=f'{manifest.get("effectif_analyse", "—")} salaries analyses',
+        title=analysis.get("title", "Analyse de rémunération"),
+        subtitle=f'{manifest.get("effectif_analyse", "—")} salariés analyses',
         kind="cover",
         blocks=[Block("text", [
-            f'Perimetre : {manifest.get("filtres", "Aucun filtre")}',
+            f'Périmètre : {manifest.get("filtres", "Aucun filtre")}',
             f'Fichier source : {manifest.get("fichier_source", "—")}',
             f'Date d\'analyse : {manifest.get("date_analyse", "—")}',
             f'{ENGINE_NAME} v{__version__} — traitement local, hors ligne',
@@ -127,7 +127,7 @@ def _structure_rows(population: Dict[str, Any]) -> List[List[str]]:
     libere une colonne pour le graphique.
     """
     rows: List[List[str]] = []
-    for prefix, key in (("Age", "age_bands"), ("Anc.", "tenure_bands")):
+    for prefix, key in (("Âge", "age_bands"), ("Anc.", "tenure_bands")):
         for row in population.get(key) or []:
             rows.append([f'{prefix} {row["label"]}', str(row["count"]),
                          format_percent(row["share"])])
@@ -156,13 +156,13 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
             [["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
              ["Masse salariale", format_money(salary.get("payroll"), currency)],
              ["Salaire moyen", format_money(salary.get("mean"), currency)],
-             ["Salaire median", format_money(salary.get("median"), currency)],
-             ["Age median", format_number(population.get("age_median")) + " ans"],
-             ["Anciennete mediane",
+             ["Salaire médian", format_money(salary.get("median"), currency)],
+             ["Âge médian", format_number(population.get("age_median")) + " ans"],
+             ["Ancienneté médiane",
               format_number(population.get("tenure_median")) + " ans"]]
         ),
         _table_block(["Percentile", "Valeur"], _percentile_rows(salary, currency),
-                     title="Niveaux de remuneration", width="third", compact=True),
+                     title="Niveaux de rémunération", width="third", compact=True),
         _table_block(["Structure", "Effectif", "Part"], _structure_rows(population),
                      title="Structure de la population", width="third", compact=True),
     ]
@@ -174,14 +174,14 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         # titre du bloc.
         blocks.append(Block(
             "chart", {"type": "scatter", "dataset": scatter, "height": 272},
-            title="Anciennete et remuneration", width="third"))
+            title="Ancienneté et rémunération", width="third"))
     elif distribution.get("available"):
         # Repli : sous le seuil d'effectif, le nuage est desactive mais la
         # distribution reste publiable.
         blocks.append(Block(
             "chart", {"type": "histogram", "bins": distribution.get("bins", []),
                       "height": 272},
-            title="Distribution des remunerations", width="third"))
+            title="Distribution des rémunérations", width="third"))
     elif scatter.get("warning"):
         blocks.append(Block("note", scatter["warning"], width="third"))
 
@@ -189,21 +189,21 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     # des charges, qu'aucun autre bloc de la fiche ne porte.
     blocks.append(_kpi_block([
         ["Moins de 30 ans", format_percent(population.get("share_under_30"))],
-        ["30 a 49 ans", format_percent(population.get("share_30_to_49"))],
+        ["30 à 49 ans", format_percent(population.get("share_30_to_49"))],
         ["50 ans et plus", format_percent(population.get("share_50_plus"))],
-        ["Anciennete < 2 ans",
+        ["Ancienneté < 2 ans",
          format_percent(population.get("share_tenure_under_2"))],
-        ["Anciennete > 10 ans",
+        ["Ancienneté > 10 ans",
          format_percent(population.get("share_tenure_over_10"))],
-        ["Donnees valorisees", format_percent(salary.get("coverage"))],
+        ["Données valorisées", format_percent(salary.get("coverage"))],
     ], compact=True))
 
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))
 
     return [Slide(
-        title=analysis.get("title", "Analyse de remuneration"),
-        subtitle=(f'{manifest.get("effectif_analyse", "—")} salaries · '
+        title=analysis.get("title", "Analyse de rémunération"),
+        subtitle=(f'{manifest.get("effectif_analyse", "—")} salariés · '
                   f'{manifest.get("filtres", "Aucun filtre")}'),
         blocks=blocks,
     )]
@@ -223,11 +223,11 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
          str(item["lignes_concernees"])]
         for item in quality.get("constats", [])[:8]
     ]
-    quality_slide = Slide("Qualite des donnees", f'Statut : {quality.get("statut", "")}')
+    quality_slide = Slide("Qualité des données", f'Statut : {quality.get("statut", "")}')
     quality_slide.blocks = [
         _kpi_block([
-            ["Lignes importees", f'{quality.get("lignes_importees", 0):,}'.replace(",", " ")],
-            ["Salaries uniques", f'{quality.get("salaries_uniques", 0):,}'.replace(",", " ")],
+            ["Lignes importées", f'{quality.get("lignes_importees", 0):,}'.replace(",", " ")],
+            ["Salariés uniques", f'{quality.get("salaries_uniques", 0):,}'.replace(",", " ")],
             ["Doublons", str(quality.get("doublons", 0))],
             ["Salaires manquants", str(quality.get("salaires_manquants", 0))],
             ["Dates invalides", str(quality.get("dates_invalides", 0))],
@@ -236,26 +236,26 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     ]
     if constats:
         quality_slide.blocks.append(
-            _table_block(["Severite", "Constat", "Lignes"], constats))
+            _table_block(["Sévérité", "Constat", "Lignes"], constats))
     slides.append(quality_slide)
 
     # Population
     if not population.get("masked"):
-        slides.append(Slide("Population", "Structure d'age et d'anciennete", blocks=[
+        slides.append(Slide("Population", "Structure d'âge et d'ancienneté", blocks=[
             _kpi_block(_population_kpis(population)),
-            _table_block(["Tranche d'age", "Effectif", "Part"],
+            _table_block(["Tranche d'âge", "Effectif", "Part"],
                          [[row["label"], str(row["count"]), format_percent(row["share"])]
                           for row in population.get("age_bands", [])],
-                         title="Age", width="half"),
-            _table_block(["Anciennete", "Effectif", "Part"],
+                         title="Âge", width="half"),
+            _table_block(["Ancienneté", "Effectif", "Part"],
                          [[row["label"], str(row["count"]), format_percent(row["share"])]
                           for row in population.get("tenure_bands", [])],
-                         title="Anciennete", width="half"),
+                         title="Ancienneté", width="half"),
         ]))
 
     # Remuneration
     if not salary.get("masked"):
-        slides.append(Slide("Remuneration",
+        slides.append(Slide("Rémunération",
                             f'Champ analyse : {salary.get("field_label") or salary.get("field", "")}',
                             blocks=[
             _kpi_block(_salary_kpis(salary, currency)),
@@ -268,15 +268,15 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     # Distribution
     distribution = analysis.get("distribution", {})
     if distribution.get("available"):
-        slides.append(Slide("Distribution des remunerations", blocks=[
+        slides.append(Slide("Distribution des rémunérations", blocks=[
             Block("chart", {"type": "histogram", "bins": distribution.get("bins", [])}),
         ]))
         outliers = distribution.get("outliers", [])
         highlighted = (distribution.get("outliers_highlighted") or outliers)[:10]
         if outliers:
             shown = (distribution.get("dimension_labels") or [])[:3]
-            headers = (["Reference"] + [entry["label"] for entry in shown]
-                       + ["Anciennete", "Remuneration", "Lecture"])
+            headers = (["Référence"] + [entry["label"] for entry in shown]
+                       + ["Ancienneté", "Rémunération", "Lecture"])
             rows = [
                 [item["reference"]]
                 + [str(item.get("dimensions", {}).get(entry["field"]) or "—")
@@ -288,12 +288,12 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             ]
             slides.append(Slide(
                 distribution.get("outlier_label", "Situations atypiques"),
-                f'{len(outliers)} situations reperees — '
-                f'{len(highlighted)} cas les plus extremes',
+                f'{len(outliers)} situations repérées — '
+                f'{len(highlighted)} cas les plus extrêmes',
                 blocks=[
-                    Block("note", "Repere par un critere statistique, pas par un "
+                    Block("note", "Repéré par un critère statistique, pas par un "
                                   "jugement RH. A analyser au regard du contexte "
-                                  "(marche, metier, historique, performance)."),
+                                  "(marché, métier, historique, performance)."),
                     _table_block(headers, rows),
                 ]))
 
@@ -303,13 +303,13 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
         trend = scatter.get("trend")
         subtitle = ""
         if trend:
-            subtitle = (f'Tendance : {format_money(trend["slope"], currency)} par annee '
-                        f'd\'anciennete — R2 = {trend["r_squared"]:.3f}')
+            subtitle = (f'Tendance : {format_money(trend["slope"], currency)} par année '
+                        f'd\'ancienneté — R2 = {trend["r_squared"]:.3f}')
         blocks = [Block("legend", scatter), Block("chart", {"type": "scatter",
                                                             "dataset": scatter})]
         if scatter.get("warning"):
             blocks.insert(0, Block("note", scatter["warning"]))
-        slides.append(Slide("Anciennete et remuneration", subtitle, blocks=blocks))
+        slides.append(Slide("Ancienneté et rémunération", subtitle, blocks=blocks))
 
     # Segments : une slide par dimension
     for segment in analysis.get("segments", []) or []:
@@ -329,11 +329,11 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             ])
         slide = Slide(f'Analyse par {segment["label"].lower()}')
         slide.blocks = [_table_block(
-            [segment["label"], "Effectif", "Moyenne", "Mediane", "Q1", "Q3"], rows)]
+            [segment["label"], "Effectif", "Moyenne", "Médiane", "Q1", "Q3"], rows)]
         if segment.get("masked_segments"):
             slide.blocks.append(Block(
-                "note", f'{segment["masked_segments"]} segment(s) masque(s) : '
-                        "effectif sous le seuil de confidentialite."))
+                "note", f'{segment["masked_segments"]} segment(s) masqué(s) : '
+                        "effectif sous le seuil de confidentialité."))
         slides.append(slide)
 
     # Comparaison
@@ -354,23 +354,23 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             rows.append([row["indicator"], left, right,
                          format_percent(row["gap_percent"])])
         slides.append(Slide("Comparaison de populations", blocks=[_table_block(
-            ["Indicateur", comparison["left_label"], comparison["right_label"], "Ecart"],
+            ["Indicateur", comparison["left_label"], comparison["right_label"], "Écart"],
             rows)]))
 
     # Methodologie
     manifest = analysis.get("manifest", {})
-    slides.append(Slide("Methodologie et tracabilite", kind="closing", blocks=[
+    slides.append(Slide("Méthodologie et traçabilité", kind="closing", blocks=[
         Block("text", [
             f'Moteur : {manifest.get("moteur", ENGINE_NAME)} v{manifest.get("version", __version__)}',
             f'Date d\'analyse : {manifest.get("date_analyse", "—")}',
             f'Fichier source : {manifest.get("fichier_source", "—")}',
             f'Empreinte SHA-256 : {(manifest.get("empreinte_source") or "—")[:32]}...',
-            f'Perimetre : {manifest.get("filtres", "Aucun filtre")}',
-            "Percentiles : methode inclusive a interpolation lineaire, "
+            f'Périmètre : {manifest.get("filtres", "Aucun filtre")}',
+            "Percentiles : méthode inclusive à interpolation linéaire, "
             "identique a PERCENTILE.INCLUSIVE d'Excel.",
-            "Situations atypiques : methode interquartile (Tukey).",
-            "Les resultats portant sur un effectif insuffisant sont masques.",
-            "Traitement local et hors ligne : aucune donnee n'a quitte ce poste.",
+            "Situations atypiques : méthode interquartile (Tukey).",
+            "Les résultats portant sur un effectif insuffisant sont masqués.",
+            "Traitement local et hors ligne : aucune donnée n'a quitté ce poste.",
         ]),
     ]))
     return slides
@@ -387,8 +387,8 @@ font:15px/1.45 "Segoe UI",Calibri,Arial,sans-serif}
 .deck{display:flex;flex-direction:column;align-items:center;gap:20px;padding:24px}
 /* La page garde une geometrie fixe (1280x720) : c'est ce qui garantit que
    l'ecran, l'impression et le PDF montrent exactement la meme chose. Pour
-   tenir sur un ecran plus etroit, elle est mise a l'echelle plutot que
-   reagencee. `--slide-scale` est calcule au chargement et au redimensionnement ;
+   tenir sur un ecran plus etroit, elle est mise à l'echelle plutot que
+   reagencee. `--slide-scale` est calculé au chargement et au redimensionnement ;
    sans JavaScript il vaut 1 et le comportement est celui d'avant. */
 .frame{width:100%;max-width:1280px;height:calc(720px * var(--slide-scale,1));
 overflow:hidden}
@@ -449,7 +449,7 @@ opacity:.85}
   body{background:#fff}
   .deck{padding:0;gap:0}
   .hint{display:none}
-  /* A l'impression, la page reprend sa taille reelle : la mise a l'echelle
+  /* A l'impression, la page reprend sa taille reelle : la mise à l'echelle
      d'ecran ne doit jamais alterer le rendu papier ni le PDF. */
   :root{--slide-scale:1 !important}
   .frame{width:1280px;height:720px;max-width:none}
@@ -461,7 +461,7 @@ opacity:.85}
 # Navigation clavier. Aucun code externe, aucun chargement reseau.
 _SLIDE_JS = """
 (function(){
-  // Echelle = largeur disponible / largeur de page, plafonnee a 1 : on reduit
+  // Echelle = largeur disponible / largeur de page, plafonnee a 1 : on réduit
   // pour tenir, jamais on n'agrandit (le texte deviendrait disproportionne).
   function fit(){
     var frame=document.querySelector('.frame');
@@ -577,7 +577,7 @@ def _render_block(block: Block, currency: str) -> str:
 def render_slides_html(slides: Sequence[Slide], analysis: Dict[str, Any]) -> str:
     """Jeu de slides paysage dans un fichier HTML autoportant."""
     currency = analysis.get("salary", {}).get("currency", "EUR")
-    title = analysis.get("title", "Analyse de remuneration")
+    title = analysis.get("title", "Analyse de rémunération")
     rendered = []
     for number, slide in enumerate(slides, start=1):
         blocks = "".join(_render_block(block, currency) for block in slide.blocks)
@@ -734,7 +734,7 @@ def _draw_histogram(page, bins, currency, x, y, width, height) -> float:
               color=_MUTED)
     page.text(x + width, base - 12, format_money(bins[-1]["upper"], currency),
               size=7, color=_MUTED, align="right")
-    page.text(x + width / 2, base - 23, "Effectif par classe de remuneration",
+    page.text(x + width / 2, base - 23, "Effectif par classe de rémunération",
               size=7, color=_MUTED, align="center")
     return height
 
@@ -788,7 +788,7 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
                   size=6.5, color=_MUTED, align="center")
     # Le titre d'axe est place sous les graduations, pas a leur hauteur :
     # il chevauchait la premiere valeur.
-    page.text(x + width / 2, base - 23, "Anciennete (annees)", size=7,
+    page.text(x + width / 2, base - 23, "Ancienneté (années)", size=7,
               color=_MUTED, align="center")
     return height
 

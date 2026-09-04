@@ -17,7 +17,7 @@ from compensation_analytics.core.segmentation import (apply_filters, build_filte
 from compensation_analytics.io.xlsx_writer import write_workbook
 
 REFERENCE = _dt.date(2026, 1, 1)
-HEADERS = ["Matricule", "BU", "Metier", "Equipe", "Salaire de base", "Date d'entree"]
+HEADERS = ["Matricule", "BU", "Métier", "Equipe", "Salaire de base", "Date d'entrée"]
 TEAMS = ["Team Alpha", "Team Beta", "Team Gamma"]
 
 

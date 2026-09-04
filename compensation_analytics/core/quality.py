@@ -94,8 +94,8 @@ class QualityReport:
     def to_text(self) -> str:
         lines = [
             "DATA QUALITY CHECK",
-            f"Lignes importees       : {self.imported_rows:,}".replace(",", " "),
-            f"Salaries uniques       : {self.unique_employees:,}".replace(",", " "),
+            f"Lignes importées       : {self.imported_rows:,}".replace(",", " "),
+            f"Salariés uniques       : {self.unique_employees:,}".replace(",", " "),
             f"Doublons               : {self.duplicates}",
             f"Salaires manquants     : {self.missing_salary}",
             f"Dates invalides        : {self.invalid_dates}",
@@ -142,7 +142,7 @@ def _check_structure(
             Finding(
                 code="empty_population",
                 severity=CRITICAL,
-                message="Le fichier importe ne contient aucun salarie exploitable.",
+                message="Le fichier importe ne contient aucun salarié exploitable.",
                 count=0,
             )
         )
@@ -152,7 +152,7 @@ def _check_structure(
                 code="unknown_columns",
                 severity=INFO,
                 message=(
-                    "Colonnes non reconnues, ignorees par l'analyse : "
+                    "Colonnes non reconnues, ignorées par l'analyse : "
                     + ", ".join(f'"{name}"' for name in mapping.unknown_columns[:10])
                 ),
                 count=len(mapping.unknown_columns),
@@ -164,8 +164,8 @@ def _check_structure(
                 code="duplicate_columns",
                 severity=WARNING,
                 message=(
-                    "Colonnes en double dans le fichier, seule la premiere est "
-                    "utilisee : "
+                    "Colonnes en double dans le fichier, seule la première est "
+                    "utilisée : "
                     + ", ".join(f'"{name}"' for name in mapping.duplicate_columns[:10])
                 ),
                 count=len(mapping.duplicate_columns),
@@ -182,15 +182,15 @@ def _check_structure(
         if kind == "ambiguous_separator":
             _add(
                 report, f"ambiguous_separator_{field_name}", WARNING,
-                f'Separateur ambigu dans le champ "{field_name}" : une '
-                'ecriture du type "45.000" a ete lue comme 45,0 et non comme '
-                "45 000. Verifiez le format des nombres a l'export du fichier.",
+                f'Séparateur ambigu dans le champ "{field_name}" : une '
+                'écriture du type "45.000" a été lue comme 45,0 et non comme '
+                "45 000. Vérifiez le format des nombres à l'export du fichier.",
                 rows,
             )
             continue
         _add(
             report, f"type_{issue}", WARNING,
-            f"Valeurs non numeriques dans le champ \"{field_name}\".", rows,
+            f"Valeurs non numériques dans le champ \"{field_name}\".", rows,
         )
 
 
@@ -211,12 +211,12 @@ def _check_population(population: Population, report: QualityReport) -> None:
     report.unique_employees = len(seen) + len(missing_id_rows)
     _add(
         report, "duplicate_employee_id", CRITICAL,
-        "Matricules presents plusieurs fois dans le fichier.", duplicate_rows,
+        "Matricules présents plusieurs fois dans le fichier.", duplicate_rows,
     )
     _add(
         report, "missing_employee_id", WARNING,
         "Lignes sans matricule : le suivi des doublons est impossible pour "
-        "ces salaries.", missing_id_rows,
+        "ces salariés.", missing_id_rows,
     )
 
 
@@ -242,15 +242,15 @@ def _check_dates(population: Population, report: QualityReport) -> None:
             implausible_age.append(employee.row_number)
     report.invalid_dates = len(invalid)
     _add(report, "invalid_date", CRITICAL,
-         "Dates illisibles : le format n'a pas pu etre interprete.", invalid)
+         "Dates illisibles : le format n'a pas pu être interprété.", invalid)
     _add(report, "future_birth_date", CRITICAL,
-         "Date de naissance posterieure a la date d'analyse.", future_birth)
+         "Date de naissance postérieure à la date d'analyse.", future_birth)
     _add(report, "future_hire_date", WARNING,
-         "Date d'entree posterieure a la date d'analyse.", future_hire)
+         "Date d'entrée postérieure à la date d'analyse.", future_hire)
     _add(report, "leave_before_hire", CRITICAL,
-         "Date de sortie anterieure a la date d'entree.", leave_before_hire)
+         "Date de sortie antérieure à la date d'entrée.", leave_before_hire)
     _add(report, "implausible_age", WARNING,
-         "Age hors de la plage plausible (14-80 ans).", implausible_age)
+         "Âge hors de la plage plausible (14-80 ans).", implausible_age)
 
 
 def _check_salary(
@@ -289,14 +289,14 @@ def _check_salary(
 
     report.missing_salary = len(missing)
     _add(report, "missing_salary", CRITICAL,
-         "Salaire de base absent : ces salaries sont exclus des statistiques "
-         "de remuneration.", missing)
-    _add(report, "negative_salary", CRITICAL, "Salaire de base negatif.", negative)
-    _add(report, "zero_salary", WARNING, "Salaire de base a zero.", zero)
+         "Salaire de base absent : ces salariés sont exclus des statistiques "
+         "de rémunération.", missing)
+    _add(report, "negative_salary", CRITICAL, "Salaire de base négatif.", negative)
+    _add(report, "zero_salary", WARNING, "Salaire de base a zéro.", zero)
     _add(report, "salary_below_threshold", WARNING,
-         "Salaire inferieur au seuil de plausibilite parametre.", below)
+         "Salaire inférieur au seuil de plausibilité paramètre.", below)
     _add(report, "salary_above_threshold", WARNING,
-         "Salaire superieur au seuil de plausibilite parametre.", above)
+         "Salaire supérieur au seuil de plausibilité paramètre.", above)
 
     bounds = iqr_outlier_bounds(clean(values), factor)
     if bounds:
@@ -305,5 +305,5 @@ def _check_salary(
             if value < bounds["lower"] or value > bounds["upper"]
         ]
         _add(report, "salary_outlier", INFO,
-             "Valeurs de remuneration atypiques a analyser (methode "
+             "Valeurs de rémunération atypiques à analyser (méthode "
              "interquartile).", extreme)

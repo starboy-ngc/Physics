@@ -113,7 +113,7 @@ class TestPrivacy(unittest.TestCase):
         html = render_report(self.result.payload)
         self.assertNotIn("anomalie RH", html)
         if self.result.payload["distribution"]["outliers"]:
-            self.assertIn("Situation atypique a analyser", html)
+            self.assertIn("Situation atypique à analyser", html)
 
     def test_technical_log_excludes_personal_data(self):
         log_dir = tempfile.mkdtemp()
@@ -147,7 +147,7 @@ class TestPrivacy(unittest.TestCase):
         export_excel(self.result.payload, self.result.filtered,
                      Configuration(data), path)
         names = [name for name, _ in _sheet_names(path)]
-        self.assertIn("Donnees individuelles", names)
+        self.assertIn("Données individuelles", names)
 
 
 def _sheet_names(path):

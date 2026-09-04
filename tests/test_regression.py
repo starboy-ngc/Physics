@@ -30,7 +30,7 @@ TOLERANCE = 1e-6
 def build_snapshot():
     """Execute le pipeline sur le jeu de reference et extrait les valeurs cles."""
     directory = tempfile.mkdtemp()
-    source = os.path.join(directory, "reference.xlsx")
+    source = os.path.join(directory, "référence.xlsx")
     rows = build_rows(ROWS, SEED, REFERENCE_DATE, defects=False)
     write_workbook(source, [("Population", [HEADERS] + rows)])
 
@@ -70,7 +70,7 @@ def build_snapshot():
 
 def _compare(testcase, expected, actual, path=""):
     if isinstance(expected, dict):
-        testcase.assertEqual(set(expected), set(actual), f"cles differentes en {path}")
+        testcase.assertEqual(set(expected), set(actual), f"clés differentes en {path}")
         for key in expected:
             _compare(testcase, expected[key], actual[key], f"{path}.{key}")
     elif isinstance(expected, list):
@@ -79,9 +79,9 @@ def _compare(testcase, expected, actual, path=""):
             _compare(testcase, item, actual[index], f"{path}[{index}]")
     elif isinstance(expected, float) and isinstance(actual, (int, float)):
         testcase.assertAlmostEqual(expected, actual, delta=abs(expected) * TOLERANCE + 1e-9,
-                                   msg=f"ecart sur {path}")
+                                   msg=f"écart sur {path}")
     else:
-        testcase.assertEqual(expected, actual, f"ecart sur {path}")
+        testcase.assertEqual(expected, actual, f"écart sur {path}")
 
 
 class TestRegression(unittest.TestCase):
@@ -103,7 +103,7 @@ def regenerate():
     with open(BASELINE_PATH, "w", encoding="utf-8") as handle:
         json.dump(build_snapshot(), handle, ensure_ascii=False, indent=2, sort_keys=True)
         handle.write("\n")
-    print(f"Base de reference regeneree : {BASELINE_PATH}")
+    print(f"Base de référence regeneree : {BASELINE_PATH}")
 
 
 if __name__ == "__main__":

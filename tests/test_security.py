@@ -94,3 +94,57 @@ class TestNoForbiddenConstructs(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
+    """Les noms d'options, de sous-commandes et les valeurs acceptees restent
+    en ASCII.
+
+    Les libelles affiches sont accentues, mais une option nommee
+    `--date-référence` obligerait l'utilisateur a taper un accent dans un
+    terminal, casserait les scripts existants et depend de la configuration
+    clavier du poste. Ce test a ete ajoute apres avoir introduit deux fois
+    l'erreur.
+    """
+
+    def _parser_strings(self):
+        import argparse
+        from compensation_analytics.cli import build_parser
+
+        names, choices = [], []
+
+        def walk(parser):
+            for action in parser._actions:
+                names.extend(action.option_strings)
+                if action.choices:
+                    for choice in action.choices:
+                        if isinstance(choice, str):
+                            choices.append(choice)
+                        if isinstance(action.choices, dict):  # sous-commandes
+                            walk(action.choices[choice])
+        walk(build_parser())
+        return names, choices
+
+    def test_option_names_are_ascii(self):
+        names, _ = self._parser_strings()
+        self.assertTrue(names)
+        for name in names:
+            self.assertTrue(name.isascii(), f"option non ASCII : {name}")
+
+    def test_subcommands_and_accepted_values_are_ascii(self):
+        _, choices = self._parser_strings()
+        self.assertIn("analyse", choices)
+        self.assertIn("controle", choices)
+        self.assertIn("synthese", choices)
+        for choice in choices:
+            self.assertTrue(choice.isascii(), f"valeur non ASCII : {choice}")
+
+    def test_generated_file_names_are_ascii(self):
+        """Les noms de fichiers produits circulent par courriel et par partage
+        reseau : ils restent en ASCII."""
+        import inspect
+        from compensation_analytics import cli
+        source = inspect.getsource(cli.command_analyse)
+        for pattern in ("restitution-", "synthese-", "slides-", "analyse-",
+                        "manifeste-"):
+            self.assertIn(pattern, source)

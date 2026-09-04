@@ -108,7 +108,7 @@ class TestDispersionAlwaysComputed(unittest.TestCase):
         result = metrics.calculate_salary_metrics(population, config)
         labels = {entry["label"] for entry in result["published_percentiles"]}
         self.assertIn("Q1 (P25)", labels)
-        self.assertIn("Mediane (P50)", labels)
+        self.assertIn("Médiane (P50)", labels)
 
     def test_invalid_percentile_is_rejected(self):
         for value in ([120], ["beaucoup"]):
@@ -125,7 +125,7 @@ class TestAnalysisFieldValidation(unittest.TestCase):
             analysis_field(config)
         message = caught.exception.message
         self.assertIn("grade", message)
-        self.assertIn("numerique", message)
+        self.assertIn("numérique", message)
         self.assertNotIn("TypeError", message)
 
     def test_quality_check_no_longer_crashes(self):
@@ -160,7 +160,7 @@ class TestAmbiguousSeparator(unittest.TestCase):
         finding = next(f for f in report.findings
                        if f.code == "ambiguous_separator_base_salary")
         self.assertIn("45.000", finding.message)
-        self.assertNotIn("non numeriques", finding.message)
+        self.assertNotIn("non numériques", finding.message)
 
 
 class TestWorkbookNumberWriting(unittest.TestCase):
@@ -175,14 +175,14 @@ class TestWorkbookNumberWriting(unittest.TestCase):
             ["Libelle", "Valeur"],
             ["infini", float("inf")],
             ["nan", float("nan")],
-            ["tres grand", 1e20],
+            ["très grand", 1e20],
             ["normal", 40000.5],
         ])])
         table = read_table(path)  # relu par notre propre importeur
         values = {row[0]: row[1] for row in table.rows}
         self.assertEqual(values["infini"], "inf")
         self.assertAlmostEqual(values["normal"], 40000.5)
-        self.assertAlmostEqual(float(values["tres grand"]), 1e20)
+        self.assertAlmostEqual(float(values["très grand"]), 1e20)
 
     def test_no_scientific_notation_in_the_xml(self):
         import zipfile

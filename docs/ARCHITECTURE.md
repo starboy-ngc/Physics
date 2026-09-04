@@ -306,6 +306,22 @@ paramètres dédiés, sans toucher au pipeline : égalité salariale, promotions
 augmentations, variable, compa-ratio, positionnement en grille, budget
 salarial, évolution N/N-1.
 
+## 11 bis. Libellés et interface
+
+Les libellés affichés — titres de section, en-têtes de tableaux, messages du
+contrôle qualité, noms d'onglets Excel — sont accentués. Le PDF les rend sans
+repli : `WinAnsiEncoding` couvre le latin-1, et les largeurs de glyphes se
+déduisent de la lettre de base, ce qui garde le centrage et la troncature
+justes. Seuls les caractères hors jeu (apostrophe courbe, tiret cadratin) sont
+remplacés par un équivalent imprimable.
+
+En revanche, **l'interface reste en ASCII** : noms d'options
+(`--date-reference`), sous-commandes (`controle`), valeurs acceptées
+(`synthese`), noms de fichiers produits et clés du manifeste JSON. Une option
+accentuée obligerait à taper un accent dans un terminal, casserait les scripts
+existants et dépendrait de la configuration clavier du poste.
+`tests/test_security.py` vérifie cette séparation.
+
 ## 12. Packaging (V2, à faire)
 
 Cible : dossier autonome, sans installation ni droits administrateur, sans

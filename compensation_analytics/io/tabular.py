@@ -50,7 +50,7 @@ def read_table(path: str, sheet: str | None = None) -> Table:
     if not os.path.isfile(path):
         raise ImportError_(
             "Le fichier de population est introuvable. "
-            "Verifiez le chemin indique.",
+            "Vérifiez le chemin indique.",
             technical=f"missing file: {path}",
         )
     extension = os.path.splitext(path)[1].lower()
@@ -60,7 +60,7 @@ def read_table(path: str, sheet: str | None = None) -> Table:
         return _read_xlsx(path, sheet)
     raise ImportError_(
         "Format de fichier non pris en charge. "
-        "Formats acceptes : Excel (.xlsx, .xlsm) et CSV (.csv).",
+        "Formats acceptés : Excel (.xlsx, .xlsm) et CSV (.csv).",
         technical=f"unsupported extension: {extension}",
     )
 
@@ -78,12 +78,12 @@ def _read_csv(path: str) -> Table:
             rows = [row for row in reader]
     except OSError as exc:
         raise ImportError_(
-            "Le fichier CSV n'a pas pu etre ouvert.",
+            "Le fichier CSV n'a pas pu être ouvert.",
             technical=f"{type(exc).__name__}: {exc}",
         ) from exc
     except UnicodeDecodeError as exc:
         raise ImportError_(
-            "Le fichier CSV n'est pas encode en UTF-8. "
+            "Le fichier CSV n'est pas encodé en UTF-8. "
             "Enregistrez-le au format \"CSV UTF-8\" depuis Excel.",
             technical=f"{type(exc).__name__}: {exc}",
         ) from exc
@@ -126,20 +126,20 @@ def _read_xlsx(path: str, sheet: str | None) -> Table:
             rows = _read_sheet(archive, sheet_path, shared, date_styles)
     except zipfile.BadZipFile as exc:
         raise ImportError_(
-            "Le fichier Excel est illisible ou endommage. "
-            "Ouvrez-le dans Excel puis enregistrez-le a nouveau au format .xlsx.",
+            "Le fichier Excel est illisible ou endommagé. "
+            "Ouvrez-le dans Excel puis enregistrez-le à nouveau au format .xlsx.",
             technical=f"{type(exc).__name__}: {exc}",
         ) from exc
     except (OSError, ElementTree.ParseError, KeyError) as exc:
         raise ImportError_(
-            "Le contenu du fichier Excel n'a pas pu etre lu.",
+            "Le contenu du fichier Excel n'a pas pu être lu.",
             technical=f"{type(exc).__name__}: {exc}",
         ) from exc
 
     rows = _drop_trailing_empty(rows)
     if not rows:
         raise ImportError_(
-            "L'onglet importe ne contient aucune donnee.",
+            "L'onglet importe ne contient aucune donnée.",
             technical="xlsx sheet has no rows",
         )
     headers = [str(cell).strip() if cell is not None else "" for cell in rows[0]]

@@ -41,7 +41,7 @@ class AnalysisRequest:
     comparison_filters: List[Filter] = field(default_factory=list)
     comparison_label: str = "Population B"
     reference_date: Optional[_dt.date] = None
-    title: str = "Analyse de remuneration"
+    title: str = "Analyse de rémunération"
     ignore_quality_errors: bool = False
 
 
@@ -104,9 +104,9 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     )
     if quality.blocking and not request.ignore_quality_errors:
         raise DataQualityError(
-            "Le controle qualite a detecte des anomalies critiques. "
+            "Le contrôle qualité a détecté des anomalies critiques. "
             "Corrigez le fichier source, ou relancez l'analyse en acceptant "
-            "explicitement de poursuivre malgre ces anomalies.\n\n"
+            "explicitement de poursuivre malgré ces anomalies.\n\n"
             + quality.to_text(),
             technical=f"blocking quality findings: {quality.critical_count}",
         )

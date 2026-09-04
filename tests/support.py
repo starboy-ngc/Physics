@@ -16,7 +16,7 @@ from compensation_analytics.core.normalize import Population, normalise_table
 REFERENCE_DATE = _dt.date(2025, 1, 1)
 
 HEADERS = [
-    "Matricule", "Nom", "Prenom", "Sexe", "Date de naissance", "Date d'entree",
+    "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
     "Date de sortie", "BU", "Pays", "Grade", "Statut", "Salaire de base",
 ]
 

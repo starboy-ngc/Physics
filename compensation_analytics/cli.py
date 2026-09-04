@@ -58,7 +58,7 @@ def parse_filter(expression: str) -> Dict[str, Any]:
                 return {"field": field_name, "operator": operator, "value": raw}
             return {"field": field_name, "operator": operator, "value": raw}
     raise CompensationError(
-        f"Le filtre \"{expression}\" est mal ecrit. "
+        f"Le filtre \"{expression}\" est mal écrit. "
         "Format attendu : champ=valeur (ex. business_unit=France).",
         technical=f"unparsable filter: {expression}",
     )
@@ -136,7 +136,7 @@ def command_analyse(args: argparse.Namespace) -> int:
 
     print(result.quality.to_text())
     print()
-    print(f"Effectif analyse : {len(result.filtered)} salaries")
+    print(f"Effectif analysé : {len(result.filtered)} salariés")
     for path in produced:
         print(f"  - {path}")
     return 0
@@ -165,11 +165,11 @@ def command_mapping(args: argparse.Namespace) -> int:
             "age_band", "tenure_band") else "absente du fichier"
         print(f"  {name:<20} {marker}")
     print()
-    print("Colonnes identifiees :")
+    print("Colonnes identifiées :")
     for field_name, column in sorted(mapping.field_to_column.items()):
         print(f"  {field_name:<20} <- \"{column}\"")
     if mapping.unknown_columns:
-        print("\nColonnes non reconnues (ignorees) :")
+        print("\nColonnes non reconnues (ignorées) :")
         for column in mapping.unknown_columns:
             print(f"  \"{column}\"")
     if mapping.missing_required:
@@ -182,7 +182,7 @@ def command_mapping(args: argparse.Namespace) -> int:
 
 def command_config(args: argparse.Namespace) -> int:
     write_default_configuration(args.dossier)
-    print(f"Configuration par defaut ecrite dans {args.dossier}")
+    print(f"Configuration par défaut écrite dans {args.dossier}")
     return 0
 
 
@@ -205,7 +205,7 @@ def build_parser() -> argparse.ArgumentParser:
     analyse = sub.add_parser("analyse", parents=[common],
                              help="analyse complete et restitution")
     analyse.add_argument("--filtre", action="append",
-                         help="critere, ex. business_unit=France ou grade=G5|G6")
+                         help="critère, ex. business_unit=France ou grade=G5|G6")
     analyse.add_argument("--segment", action="append",
                          help="dimension d'analyse declaree en configuration "
                               "(repetable)")
@@ -217,18 +217,18 @@ def build_parser() -> argparse.ArgumentParser:
                          help="sortie a produire (repetable). Par defaut : "
                               "celles activees dans export_parameters.json")
     analyse.add_argument("--sortie", default="", help="dossier de sortie")
-    analyse.add_argument("--titre", default="Analyse de remuneration")
+    analyse.add_argument("--titre", default="Analyse de rémunération")
     analyse.add_argument("--ignorer-anomalies", action="store_true",
-                         help="poursuivre malgre les anomalies critiques")
+                         help="poursuivre malgré les anomalies critiques")
     analyse.set_defaults(handler=command_analyse)
 
     controle = sub.add_parser("controle", parents=[common],
-                              help="controle qualite seul")
+                              help="contrôle qualité seul")
     controle.add_argument("--json", action="store_true")
     controle.set_defaults(handler=command_controle)
 
     mapping = sub.add_parser("mapping", parents=[common],
-                             help="verifier l'identification des colonnes")
+                             help="vérifier l'identification des colonnes")
     mapping.set_defaults(handler=command_mapping)
 
     config = sub.add_parser("config", help="ecrire la configuration par defaut")

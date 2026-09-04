@@ -10,7 +10,6 @@
       "Last name"
     ],
     "first_name": [
-      "Prenom",
       "Prénom",
       "First name"
     ],
@@ -24,7 +23,6 @@
       "Birth date"
     ],
     "hire_date": [
-      "Date d'entree",
       "Date d'entrée",
       "Hire date"
     ],
@@ -41,17 +39,14 @@
       "Country"
     ],
     "site": [
-      "Etablissement",
       "Établissement",
       "Site"
     ],
     "job": [
-      "Metier",
       "Métier",
       "Job"
     ],
     "job_family": [
-      "Famille metier",
       "Famille métier",
       "Job family"
     ],
@@ -78,7 +73,6 @@
       "Variable pay"
     ],
     "total_compensation": [
-      "Remuneration totale",
       "Rémunération totale"
     ]
   },
@@ -93,15 +87,15 @@
     },
     {
       "field": "site",
-      "label": "Etablissement"
+      "label": "Établissement"
     },
     {
       "field": "job",
-      "label": "Metier"
+      "label": "Métier"
     },
     {
       "field": "job_family",
-      "label": "Famille metier"
+      "label": "Famille métier"
     },
     {
       "field": "grade",
@@ -117,11 +111,11 @@
     },
     {
       "field": "age_band",
-      "label": "Tranche d'age"
+      "label": "Tranche d'âge"
     },
     {
       "field": "tenure_band",
-      "label": "Tranche d'anciennete"
+      "label": "Tranche d'ancienneté"
     }
   ],
   "required": [
