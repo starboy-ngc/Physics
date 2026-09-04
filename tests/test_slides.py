@@ -328,8 +328,20 @@ class TestSummaryComposition(unittest.TestCase):
 
     def test_percentiles_are_kept(self):
         rendered = render_slides_html([self.summary], self.payload)
-        self.assertIn("Percentiles", rendered)
-        self.assertIn("Q3 (P75)", rendered)
+        self.assertIn("Niveaux de remuneration", rendered)
+        for label in ("P10", "Q1 (P25)", "Mediane (P50)", "Q3 (P75)", "P90"):
+            self.assertIn(label, rendered)
+
+    def test_population_structure_is_present(self):
+        rendered = render_slides_html([self.summary], self.payload)
+        self.assertIn("Structure de la population", rendered)
+        self.assertIn("Age 30-39", rendered)
+        self.assertIn("Anc. 2-5 ans", rendered)
+
+    def test_page_holds_three_columns_plus_the_indicator_band(self):
+        widths = [block.width for block in self.summary.blocks]
+        self.assertEqual(widths.count("third"), 3)
+        self.assertEqual(widths.count("full"), 1)
 
     def test_r_squared_is_not_repeated_in_the_block_title(self):
         titles = [block.title for block in self.summary.blocks if block.kind == "chart"]

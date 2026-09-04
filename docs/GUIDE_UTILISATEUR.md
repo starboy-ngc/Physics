@@ -41,7 +41,7 @@ Les fichiers produits dans `resultats/` :
 | Fichier | Usage |
 |---|---|
 | `restitution-*.html` | Rapport détaillé, à lire à l'écran |
-| `synthese-*.pdf` / `.html` | **Fiche standard, une page paysage** : indicateurs, percentiles et nuage ancienneté × rémunération |
+| `synthese-*.pdf` / `.html` | **Fiche standard, une page paysage** : indicateurs, percentiles, structure de la population et nuage ancienneté × rémunération |
 | `slides-*.pdf` / `.html` | **Jeu de slides paysage** : pour une présentation |
 | `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres |
 | `manifeste-*.json` | Paramètres utilisés, pour refaire l'analyse à l'identique |

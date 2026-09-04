@@ -32,7 +32,7 @@ class Block:
     kind: str                      # kpis | table | chart | note | text | legend
     payload: Any = None
     title: str = ""
-    width: str = "full"            # full | half
+    width: str = "full"            # full | half | third
 
 
 @dataclass
@@ -53,8 +53,10 @@ def _kpi_block(pairs: Sequence[Sequence[str]], width: str = "full") -> Block:
                  width=width)
 
 
-def _table_block(headers, rows, title="", width="full") -> Block:
-    return Block("table", {"headers": list(headers), "rows": [list(r) for r in rows]},
+def _table_block(headers, rows, title="", width="full", compact=False) -> Block:
+    return Block("table",
+                 {"headers": list(headers), "rows": [list(r) for r in rows],
+                  "compact": compact},
                  title=title, width=width)
 
 
@@ -114,13 +116,31 @@ def _cover(analysis: Dict[str, Any]) -> Slide:
     )
 
 
+def _structure_rows(population: Dict[str, Any]) -> List[List[str]]:
+    """Structure d'age et d'anciennete dans un seul tableau.
+
+    Les deux series sont prefixees, ce qui evite deux blocs distincts et
+    libere une colonne pour le graphique.
+    """
+    rows: List[List[str]] = []
+    for prefix, key in (("Age", "age_bands"), ("Anc.", "tenure_bands")):
+        for row in population.get(key) or []:
+            rows.append([f'{prefix} {row["label"]}', str(row["count"]),
+                         format_percent(row["share"])])
+    return rows
+
+
 def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     """Fiche standard : une seule page paysage.
 
-    Composition : un bandeau d'indicateurs, les percentiles, et le nuage
-    anciennete x remuneration. Les ratios de dispersion (Q3/Q1, P90/P10) n'y
-    figurent pas : ils demandent une lecture experte et trouvent leur place
-    dans le jeu de slides complet et dans l'export Excel.
+    Composition : un bandeau d'indicateurs, puis trois colonnes — niveaux de
+    remuneration, structure de la population, et nuage anciennete x
+    remuneration. Le nuage occupe une colonne plutot qu'une bande : il a
+    besoin de hauteur pour que la dispersion verticale se lise.
+
+    Les ratios de dispersion (Q3/Q1, P90/P10) n'y figurent pas : ils demandent
+    une lecture experte et trouvent leur place dans le jeu de slides complet
+    et dans l'export Excel.
     """
     salary = analysis.get("salary", {})
     population = analysis.get("population", {})
@@ -138,7 +158,9 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
               format_number(population.get("tenure_median")) + " ans"]]
         ),
         _table_block(["Percentile", "Valeur"], _percentile_rows(salary, currency),
-                     title="Percentiles", width="half"),
+                     title="Niveaux de remuneration", width="third", compact=True),
+        _table_block(["Structure", "Effectif", "Part"], _structure_rows(population),
+                     title="Structure de la population", width="third", compact=True),
     ]
 
     scatter = analysis.get("scatter", {})
@@ -146,16 +168,18 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     if scatter.get("available"):
         # Le R2 est deja porte par le graphique : ne pas le repeter dans le
         # titre du bloc.
-        blocks.append(Block("chart", {"type": "scatter", "dataset": scatter},
-                            title="Anciennete et remuneration", width="half"))
+        blocks.append(Block(
+            "chart", {"type": "scatter", "dataset": scatter, "height": 345},
+            title="Anciennete et remuneration", width="third"))
     elif distribution.get("available"):
         # Repli : sous le seuil d'effectif, le nuage est desactive mais la
         # distribution reste publiable.
-        blocks.append(Block("chart", {"type": "histogram",
-                                      "bins": distribution.get("bins", [])},
-                            title="Distribution des remunerations", width="half"))
+        blocks.append(Block(
+            "chart", {"type": "histogram", "bins": distribution.get("bins", []),
+                      "height": 345},
+            title="Distribution des remunerations", width="third"))
     elif scatter.get("warning"):
-        blocks.append(Block("note", scatter["warning"], width="half"))
+        blocks.append(Block("note", scatter["warning"], width="third"))
 
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))
@@ -368,6 +392,11 @@ color:#fff;border:none}
 min-height:0;overflow:hidden}
 .full{flex:1 1 100%}
 .half{flex:1 1 calc(50% - 11px);min-width:0}
+.third{flex:1 1 calc(33.333% - 15px);min-width:0}
+/* Tableaux resserres : une page dense doit tenir sans reduire la
+   taille du texte sous le seuil de lisibilite en projection. */
+.compact th,.compact td{padding:4px 8px}
+.compact table{font-size:13px}
 .kpis{display:flex;gap:14px;width:100%}
 .kpi{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:6px;
 padding:14px 16px}
@@ -480,17 +509,18 @@ def _render_block(block: Block, currency: str) -> str:
             "<tr>" + "".join(f"<td>{_html_escape(c)}</td>" for c in row) + "</tr>"
             for row in block.payload["rows"]
         )
-        return (f'<div class="{block.width}">{title}'
+        compact = " compact" if block.payload.get("compact") else ""
+        return (f'<div class="{block.width}{compact}">{title}'
                 f'<table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
     if block.kind == "chart":
         spec = block.payload
         # Dessiner large puis reduire par CSS ecraserait les libelles d'axe
         # (7 px reduits de moitie deviennent illisibles) : le SVG est produit
         # a la largeur reelle de son conteneur.
-        canvas = 1160 if block.width == "full" else 560
-        default = (330 if block.width == "full" else 260)
+        canvas = {"full": 1160, "half": 560, "third": 365}[block.width]
+        default = {"full": 330, "half": 260, "third": 200}[block.width]
         height = spec.get("height", default if spec["type"] == "histogram"
-                          else (430 if block.width == "full" else 300))
+                          else {"full": 430, "half": 300, "third": 220}[block.width])
         if spec["type"] == "histogram":
             svg = histogram_svg(spec["bins"], currency, width=canvas, height=height)
         else:
@@ -610,8 +640,9 @@ def _draw_table(page, payload, x, y, width, max_height) -> float:
     rows = payload["rows"]
     if not headers:
         return 0.0
-    row_height = 16.0
-    header_height = 17.0
+    compact = bool(payload.get("compact"))
+    row_height = 13.0 if compact else 16.0
+    header_height = 15.0 if compact else 17.0
     available = max(0, int((max_height - header_height) // row_height))
     rows = rows[:available]
 
@@ -799,25 +830,28 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
     cursor -= 20
 
     floor = _MARGIN + 20
-    pending_half: List = []
+    gap = 20.0
+    columns = {"half": 2, "third": 3}
+    pending: List = []
 
-    def flush_half() -> None:
-        """Deux blocs cote a cote occupent la meme bande verticale."""
+    def flush_row() -> None:
+        """Les blocs d'une meme rangee occupent la meme bande verticale."""
         nonlocal cursor
-        if not pending_half:
+        if not pending:
             return
-        half_width = (width - 20) / 2
+        count = columns.get(pending[0].width, 1)
+        column_width = (width - gap * (count - 1)) / count
         used = 0.0
-        for index, block in enumerate(pending_half[:2]):
-            left = _MARGIN + index * (half_width + 20)
+        for index, block in enumerate(pending[:count]):
+            left = _MARGIN + index * (column_width + gap)
             top = cursor
             if block.title:
                 page.text(left, top - 8, block.title.upper(), size=6.5, color=_MUTED)
                 top -= 15
             used = max(used, cursor - top + _draw_block(
-                block, left, top, half_width, top - floor))
+                block, left, top, column_width, top - floor))
         cursor -= used
-        pending_half.clear()
+        pending.clear()
 
     def _draw_block(block: Block, left: float, top: float,
                     block_width: float, room: float) -> float:
@@ -829,7 +863,8 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             spec = block.payload
             # Un graphique seul sur sa page occupe la hauteur disponible ;
             # place a cote d'un tableau, il reste dans une bande raisonnable.
-            cap = spec.get("height") or (420 if block.width == "full" else 250)
+            cap = spec.get("height") or {"full": 420, "half": 250,
+                                         "third": 200}[block.width]
             height = max(min(room - 8, cap), 120)
             if spec["type"] == "histogram":
                 return _draw_histogram(page, spec["bins"], currency, left, top,
@@ -850,19 +885,21 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
         return 0.0
 
     for block in slide.blocks:
-        if block.width == "half":
-            pending_half.append(block)
-            if len(pending_half) == 2:
-                flush_half()
+        if block.width in columns:
+            if pending and pending[0].width != block.width:
+                flush_row()
+            pending.append(block)
+            if len(pending) == columns[block.width]:
+                flush_row()
             continue
-        flush_half()
+        flush_row()
         top = cursor
         if block.title:
             page.text(_MARGIN, top - 8, block.title.upper(), size=6.5, color=_MUTED)
             top -= 15
         used = _draw_block(block, _MARGIN, top, width, top - floor)
         cursor = top - used - 16
-    flush_half()
+    flush_row()
 
     page.line(_MARGIN, _MARGIN + 6, PDF_WIDTH - _MARGIN, _MARGIN + 6,
               color=_LINE, width=0.4)
