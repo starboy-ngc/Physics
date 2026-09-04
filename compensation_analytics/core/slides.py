@@ -334,7 +334,15 @@ _SLIDE_CSS = """
 body{margin:0;background:#e8ecf0;color:var(--ink);
 font:15px/1.45 "Segoe UI",Calibri,Arial,sans-serif}
 .deck{display:flex;flex-direction:column;align-items:center;gap:20px;padding:24px}
+/* La page garde une geometrie fixe (1280x720) : c'est ce qui garantit que
+   l'ecran, l'impression et le PDF montrent exactement la meme chose. Pour
+   tenir sur un ecran plus etroit, elle est mise a l'echelle plutot que
+   reagencee. `--slide-scale` est calcule au chargement et au redimensionnement ;
+   sans JavaScript il vaut 1 et le comportement est celui d'avant. */
+.frame{width:100%;max-width:1280px;height:calc(720px * var(--slide-scale,1));
+overflow:hidden}
 .slide{position:relative;width:1280px;height:720px;background:#fff;
+transform:scale(var(--slide-scale,1));transform-origin:top left;
 border:1px solid var(--line);border-radius:4px;padding:44px 56px 56px;
 display:flex;flex-direction:column;overflow:hidden}
 .slide h1{font-size:34px;margin:0 0 6px;font-weight:600}
@@ -381,15 +389,34 @@ opacity:.85}
   body{background:#fff}
   .deck{padding:0;gap:0}
   .hint{display:none}
+  /* A l'impression, la page reprend sa taille reelle : la mise a l'echelle
+     d'ecran ne doit jamais alterer le rendu papier ni le PDF. */
+  :root{--slide-scale:1 !important}
+  .frame{width:1280px;height:720px;max-width:none}
   .slide{border:none;border-radius:0;page-break-after:always;break-after:page}
-  .slide:last-child{page-break-after:auto;break-after:auto}
+  .frame:last-child .slide{page-break-after:auto;break-after:auto}
 }
 """
 
 # Navigation clavier. Aucun code externe, aucun chargement reseau.
 _SLIDE_JS = """
 (function(){
-  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  // Echelle = largeur disponible / largeur de page, plafonnee a 1 : on reduit
+  // pour tenir, jamais on n'agrandit (le texte deviendrait disproportionne).
+  function fit(){
+    var frame=document.querySelector('.frame');
+    if(!frame)return;
+    var scale=Math.min(1,frame.clientWidth/1280);
+    document.documentElement.style.setProperty('--slide-scale',scale);
+  }
+  fit();
+  window.addEventListener('resize',fit);
+  if(window.ResizeObserver){
+    var deck=document.querySelector('.deck');
+    if(deck)new ResizeObserver(fit).observe(deck);
+  }
+
+  var slides=[].slice.call(document.querySelectorAll('.frame'));
   if(!slides.length)return;
   var index=0;
   function show(i){
@@ -496,10 +523,10 @@ def render_slides_html(slides: Sequence[Slide], analysis: Dict[str, Any]) -> str
         page = (f'<div class="pagenum">{number} / {len(slides)}</div>'
                 if slide.kind != "cover" or len(slides) > 1 else "")
         rendered.append(
-            f'<section class="slide {slide.kind}">'
+            f'<div class="frame"><section class="slide {slide.kind}">'
             f'<h1>{_html_escape(slide.title)}</h1>{subtitle}'
             f'<div class="rule"></div>'
-            f'<div class="body">{blocks}</div>{page}</section>'
+            f'<div class="body">{blocks}</div>{page}</section></div>'
         )
     hint = ('<div class="hint">← → pour naviguer · Ctrl+P pour imprimer en PDF paysage</div>'
             if len(slides) > 1 else "")

@@ -262,3 +262,43 @@ class TestReadability(unittest.TestCase):
         self.assertEqual(positions, {"basse", "haute"})
         # Le comptage annonce reste celui de la liste complete.
         self.assertGreaterEqual(len(distribution["outliers"]), len(highlighted))
+
+
+class TestResponsiveSlides(unittest.TestCase):
+    """La page garde une geometrie fixe mais doit tenir dans un ecran etroit.
+
+    Sans mise a l'echelle, un jeu de slides de 1280 px imposait un defilement
+    horizontal en dessous de ~1400 px de fenetre.
+    """
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+        self.payload = analysis_payload(self.directory, segments=["business_unit"])
+        self.deck = build_deck(self.payload)
+        self.html = render_slides_html(self.deck, self.payload)
+
+    def test_each_page_sits_in_an_elastic_frame(self):
+        self.assertEqual(self.html.count('<div class="frame">'), len(self.deck))
+
+    def test_page_geometry_stays_fixed(self):
+        # C'est ce qui garantit que l'ecran, l'impression et le PDF montrent
+        # la meme chose : on met a l'echelle, on ne reagence pas.
+        self.assertIn("width:1280px;height:720px", self.html)
+
+    def test_scale_drives_both_the_frame_and_the_page(self):
+        self.assertIn("height:calc(720px * var(--slide-scale,1))", self.html)
+        self.assertIn("transform:scale(var(--slide-scale,1))", self.html)
+
+    def test_scale_is_computed_and_capped_at_one(self):
+        self.assertIn("Math.min(1,frame.clientWidth/1280)", self.html)
+        self.assertIn("window.addEventListener('resize',fit)", self.html)
+
+    def test_printing_resets_the_scale(self):
+        printing = self.html[self.html.index("@media print"):]
+        self.assertIn("--slide-scale:1 !important", printing)
+        self.assertIn(".frame{width:1280px;height:720px", printing)
+
+    def test_behaviour_without_javascript_is_the_previous_one(self):
+        # La valeur de repli est 1 : sans JavaScript, la page s'affiche a sa
+        # taille reelle plutot que de disparaitre.
+        self.assertIn("var(--slide-scale,1)", self.html)

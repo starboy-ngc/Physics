@@ -167,6 +167,31 @@ Le decoupage (`core/slides.py`) produit une liste de `Slide` composees de
 `Block` — un descriptif de contenu independant du format. Le rendu HTML et le
 rendu PDF consomment la meme liste : les deux formats ne peuvent pas diverger.
 
+### Adaptation a l'ecran
+
+La page garde une **geometrie fixe** de 1280 x 720 : c'est ce qui garantit que
+l'ecran, l'impression et le PDF montrent exactement la meme chose. Pour tenir
+sur un ecran plus etroit, elle est **mise a l'echelle** (`transform: scale`)
+plutot que reagencee — un reagencement ferait diverger le rendu ecran du rendu
+papier.
+
+Le facteur `--slide-scale` est calcule au chargement et au redimensionnement,
+plafonne a 1 (on reduit pour tenir, on n'agrandit jamais). A l'impression il
+est remis a 1 pour que le papier ne soit pas affecte. Sans JavaScript, la
+valeur de repli est 1 : la page s'affiche a sa taille reelle.
+
+Mesure du debordement horizontal (largeur de contenu / largeur de fenetre) :
+
+| Fenetre | Avant | Apres |
+|---|---|---|
+| 768 px | 1017 / 753 — deborde | 753 / 753 — echelle 0,55 |
+| 1024 px | 1145 / 1009 — deborde | 1009 / 1009 — echelle 0,75 |
+| 1440 px | ok | ok — echelle 1 |
+
+Le **rapport detaille**, lui, est fluide : grille de KPI en `auto-fill`,
+tableaux larges dans un conteneur a defilement propre, SVG en `max-width:100%`.
+Verifie sans debordement jusqu'a 390 px de large.
+
 ### Le PDF est genere, pas imprime
 
 `io/pdf_writer.py` ecrit le PDF octet par octet : objets numerotes, table de

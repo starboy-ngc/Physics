@@ -50,6 +50,11 @@ Les PDF sont générés directement par l'outil — pas besoin d'imprimer depuis
 navigateur. Dans la version HTML des slides, les flèches ← → font défiler les
 pages et les info-bulles restent actives au survol des graphiques.
 
+Les slides s'adaptent à la taille de la fenêtre : sur un écran étroit la page
+se réduit proportionnellement, sans jamais imposer de défilement horizontal.
+Le rapport détaillé, lui, se réorganise (les indicateurs passent sur une
+colonne) et reste lisible sur téléphone.
+
 Pour ne produire qu'une sortie :
 
 ```
