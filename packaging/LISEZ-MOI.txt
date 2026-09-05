@@ -176,6 +176,13 @@ CONFIDENTIALITÉ
 -------------------------------------------------------------------
 JEUX DE DÉMONSTRATION FOURNIS
 
+  Les colonnes couvrent BU, pays, établissement, métier, POSTE,
+  famille métier, grade, statut, sexe, dates et rémunération. Le
+  poste précise le métier d'un niveau de responsabilité (« Comptable
+  senior ») : c'est l'axe sur lequel une comparaison de rémunération
+  se fait le plus souvent, et il est coché d'emblée dans l'étape
+  « Analyser par ».
+
   population-demo.xlsx                2000 salariés fictifs, sans défaut
   population-demo-avec-defauts.xlsx   les mêmes, avec 5 anomalies
                                       volontaires pour voir le contrôle

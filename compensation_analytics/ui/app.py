@@ -103,33 +103,39 @@ class Application(tk.Tk):
         self.source_label.pack(side="left", padx=14, pady=(6, 0))
         ttk.Button(inner, text="Paramètres", style="Ghost.TButton",
                    command=self.open_settings).pack(side="right")
-        tk.Frame(header, height=1, background=LINE).pack(fill="x")
+        theme.rule(header).pack(fill="x")
 
-        body = tk.Frame(self, background=GROUND)
-        body.pack(fill="both", expand=True, padx=26, pady=22)
-
-        self.sidebar_card = Card(body, padding=0)
-        self.sidebar_card.pack(side="left", fill="y")
-        self.sidebar_card.configure(width=306)
-        self.sidebar_card.pack_propagate(False)
-        self._build_sidebar(self.sidebar_card.inner)
-
-        content = Card(body, padding=0)
-        content.pack(side="left", fill="both", expand=True, padx=(20, 0))
-        self.tabbar = TabBar(content.inner, self.fonts, on_change=self._show_tab)
-        self.tabbar.pack(fill="x")
-        self.pages = tk.Frame(content.inner, background=CANVAS)
-        self.pages.pack(fill="both", expand=True)
-        self._build_pages()
-
+        # Le pied de page se reserve sa place avant le corps : empile apres
+        # une zone en expansion, il n'obtiendrait aucune hauteur.
         footer = tk.Frame(self, background=GROUND)
-        footer.pack(fill="x", padx=26, pady=(0, 16))
+        footer.pack(side="bottom", fill="x", padx=26, pady=14)
+        theme.rule(self).pack(side="bottom", fill="x")
         self.status = tk.Label(footer, text="", background=GROUND,
                                foreground=MUTED, font=self.fonts.small)
         self.status.pack(side="left")
         tk.Label(footer, text="Traitement local · aucune donnée ne quitte ce poste",
                  background=GROUND, foreground=FAINT,
                  font=self.fonts.small).pack(side="right")
+
+        body = tk.Frame(self, background=GROUND)
+        body.pack(fill="both", expand=True)
+
+        self.sidebar_card = Card(body, padding=0)
+        self.sidebar_card.pack(side="left", fill="y")
+        self.sidebar_card.configure(width=326)
+        self.sidebar_card.pack_propagate(False)
+        self._build_sidebar(self.sidebar_card.inner)
+        theme.rule(body, vertical=True).pack(side="left", fill="y")
+
+        content = Card(body, padding=0)
+        content.pack(side="left", fill="both", expand=True, padx=(26, 8))
+        self.tabbar = TabBar(content.inner, self.fonts, on_change=self._show_tab)
+        self.tabbar.pack(fill="x")
+        self.pages = tk.Frame(content.inner, background=CANVAS)
+        self.pages.pack(fill="both", expand=True)
+        self._build_pages()
+
+
 
     def _section(self, parent, number: int, text: str) -> None:
         row = tk.Frame(parent, background=GROUND)
@@ -142,7 +148,7 @@ class Application(tk.Tk):
     def _build_sidebar(self, parent: tk.Widget) -> None:
         parent.configure(background=GROUND)
         actions = tk.Frame(parent, background=GROUND)
-        actions.pack(side="bottom", fill="x", padx=18, pady=18)
+        actions.pack(side="bottom", fill="x", padx=(26, 22), pady=(18, 24))
         # Ancrees en bas : sur un ecran peu haut, la liste des filtres poussait
         # "Analyser" hors du cadre.
         self.analyse_button = ttk.Button(actions, text="Analyser",
@@ -162,10 +168,10 @@ class Application(tk.Tk):
                             style="Flat.Vertical.TScrollbar")
         # L'ascenseur se reserve sa place en premier : empile apres une zone
         # en expansion, il n'obtenait aucune largeur et restait invisible.
-        bar.pack(side="right", fill="y", padx=(0, 4), pady=4)
-        outer.pack(side="left", fill="both", expand=True, padx=(18, 0))
+        bar.pack(side="right", fill="y", padx=(0, 8), pady=4)
+        outer.pack(side="left", fill="both", expand=True, padx=(26, 0))
         theme.attach_scrollbar(outer, bar, side="right", fill="y",
-                               padx=(0, 4), pady=4, before=outer)
+                               padx=(0, 8), pady=4, before=outer)
         steps = tk.Frame(outer, background=GROUND)
         window = outer.create_window((0, 0), window=steps, anchor="nw")
         steps.bind("<Configure>",
@@ -399,7 +405,10 @@ class Application(tk.Tk):
         for field in segment_fields(self.configuration):
             if not any(str(e.value(field) or "").strip() for e in self.population):
                 continue
-            var = tk.BooleanVar(value=field in ("grade", "business_unit"))
+            # Coches d'emblee : les axes sur lesquels une comparaison de
+            # remuneration se fait le plus souvent.
+            var = tk.BooleanVar(value=field in ("job_title", "grade",
+                                                "business_unit"))
             self.segment_vars[field] = var
             CheckRow(self.segments_frame,
                      dimension_label(self.configuration, field), var,
@@ -478,17 +487,16 @@ class Application(tk.Tk):
         per_row = len(pairs) if len(pairs) <= 4 else -(-len(pairs) // 2)
         for index, (label, value) in enumerate(pairs):
             row, column = divmod(index, per_row)
-            cell = tk.Frame(band, background=CANVAS, highlightthickness=1,
-                            highlightbackground=LINE, highlightcolor=LINE)
+            cell = tk.Frame(band, background=CANVAS)
             span = per_row - column if index == len(pairs) - 1 else 1
             cell.grid(row=row, column=column, columnspan=span, sticky="nsew",
-                      padx=(0, 10) if column + span < per_row else 0,
-                      pady=(0, 10) if row else 0)
+                      padx=(0, 24) if column + span < per_row else 0,
+                      pady=(0, 20) if row == 0 else 0)
             band.grid_columnconfigure(column, weight=1, uniform="kpi")
             tk.Label(cell, text=label.upper(), background=CANVAS, foreground=FAINT,
-                     font=self.fonts.label).pack(anchor="w", padx=14, pady=(12, 0))
+                     font=self.fonts.label).pack(anchor="w")
             tk.Label(cell, text=value, background=CANVAS, foreground=INK,
-                     font=self.fonts.kpi).pack(anchor="w", padx=14, pady=(2, 12))
+                     font=self.fonts.kpi).pack(anchor="w", pady=(1, 0))
 
     def _fill(self, tree: ttk.Treeview, rows) -> None:
         tree.tag_configure("pair", background=STRIPE)
@@ -498,14 +506,14 @@ class Application(tk.Tk):
                         tags=("pair",) if index % 2 else ())
 
     def _panel(self, parent, title: str, first: bool) -> tk.Frame:
-        """Bloc cote a cote : un filet fin suffit a le detacher du voisin."""
-        card = Card(parent, padding=12)
-        card.pack(side="left", fill="both", expand=True,
-                  padx=(0, 14) if first else 0)
-        tk.Label(card.inner, text=title.upper(), background=CANVAS,
+        """Bloc cote a cote : un intertitre et de l'espace, sans cadre."""
+        side = tk.Frame(parent, background=CANVAS)
+        side.pack(side="left", fill="both", expand=True,
+                  padx=(0, 36) if first else 0)
+        tk.Label(side, text=title.upper(), background=CANVAS,
                  foreground=FAINT, font=self.fonts.label).pack(anchor="w",
-                                                               pady=(0, 4))
-        return card.inner
+                                                               pady=(0, 6))
+        return side
 
     def _show_quality(self, quality: Optional[Dict[str, Any]] = None) -> None:
         if quality is None:

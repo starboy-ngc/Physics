@@ -103,3 +103,77 @@ class TestDeclarativeDimension(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestJobTitleIsAvailable(unittest.TestCase):
+    """Le poste est l'axe de comparaison le plus courant en remuneration :
+    il doit etre livre reconnu, filtrable et analysable."""
+
+    def setUp(self):
+        from compensation_analytics.core.config import load_configuration
+        self.config = load_configuration()
+
+    def test_the_column_is_recognised_under_its_usual_names(self):
+        from compensation_analytics.core.mapping import resolve_mapping
+        for header in ("Poste", "poste", "Intitulé de poste", "Job title",
+                       "Position"):
+            mapping = resolve_mapping(["Matricule", "Salaire de base", header],
+                                      self.config)
+            self.assertIn("job_title", mapping.field_to_index, header)
+            self.assertEqual(mapping.unknown_columns, [], header)
+
+    def test_it_is_both_a_filter_and_an_axis(self):
+        from compensation_analytics.core.segmentation import (filter_fields,
+                                                              segment_fields)
+        self.assertIn("job_title", filter_fields(self.config))
+        self.assertIn("job_title", segment_fields(self.config))
+
+    def test_it_is_distinct_from_the_occupation(self):
+        """"Metier" et "Poste" sont deux notions : le second precise le
+        premier d'un niveau de responsabilite."""
+        from compensation_analytics.core.segmentation import dimension_label
+        self.assertEqual(dimension_label(self.config, "job"), "Métier")
+        self.assertEqual(dimension_label(self.config, "job_title"), "Poste")
+
+
+class TestTheSamplePopulationCarriesPositions(unittest.TestCase):
+    def test_positions_stay_under_the_filter_limit(self):
+        """Au-dela de la limite, le poste disparaitrait des listes
+        deroulantes sans que rien ne le signale."""
+        from tools.generate_sample_population import (HEADERS, build_rows,
+                                                      column)
+        from compensation_analytics.core.config import load_configuration
+        from compensation_analytics.core.segmentation import max_filter_values
+        import datetime
+
+        rows = build_rows(2000, 20260905, datetime.date(2026, 1, 1),
+                          defects=False)
+        positions = {row[column("Poste")] for row in rows}
+        self.assertLessEqual(len(positions), max_filter_values(
+            load_configuration()))
+        self.assertGreater(len(positions), 20, "trop peu de postes pour "
+                                               "que la comparaison ait du sens")
+
+    def test_a_position_refines_its_occupation(self):
+        from tools.generate_sample_population import (build_rows, column)
+        import datetime
+
+        rows = build_rows(400, 1, datetime.date(2026, 1, 1), defects=False)
+        for row in rows:
+            self.assertTrue(row[column("Poste")].startswith(row[column("Métier")]))
+
+    def test_the_defects_still_target_the_intended_columns(self):
+        """Les defauts visaient des indices ecrits en dur : inserer une
+        colonne les decalait, et le generateur corrompait la mauvaise."""
+        from tools.generate_sample_population import build_rows, column
+        import datetime
+
+        rows = build_rows(200, 7, datetime.date(2026, 1, 1), defects=True)
+        salary = column("Salaire de base")
+        self.assertEqual(rows[3][salary], "")
+        self.assertEqual(rows[5][salary], -1500)
+        self.assertEqual(rows[11][salary], 950000)
+        self.assertGreater(rows[7][column("Date de naissance")],
+                           datetime.date(2026, 1, 1))
+        self.assertLess(rows[9][column("Date de sortie")],
+                        rows[9][column("Date d'entrée")])

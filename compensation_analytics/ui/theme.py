@@ -27,7 +27,11 @@ FAINT = "#9aa5b1"        # texte tertiaire
 LINE = "#e4e9ee"         # filets
 LINE_STRONG = "#cfd7df"
 CANVAS = "#ffffff"       # fond des contenus
-GROUND = "#f7f9fb"       # fond de la fenetre
+#: Une seule teinte de fond pour toute la fenetre. Les zones se distinguent
+#: par l'espace et par un filet, jamais par un aplat ou un cadre : c'est ce
+#: qui fait la difference entre une interface unie et un empilement de
+#: boites.
+GROUND = CANVAS
 ACCENT = "#2f5d8a"
 ACCENT_HOVER = "#26496d"
 ACCENT_SOFT = "#eaf0f6"
@@ -264,14 +268,27 @@ class TabBar(tk.Frame):
 
 
 class Card(tk.Frame):
-    """Bloc de contenu : fond blanc, filet fin, pas d'ombre ni de relief."""
+    """Zone de contenu, sans cadre.
+
+    Le cadre a disparu : sur une interface unie, ce sont l'espace et les
+    intertitres qui separent, pas un filet autour de chaque bloc. La classe
+    reste, car elle porte la marge interieure et evite d'eparpiller des
+    valeurs de padding dans tous les ecrans.
+    """
 
     def __init__(self, master: tk.Widget, **kwargs):
         padding = kwargs.pop("padding", 14)
-        super().__init__(master, background=CANVAS, highlightthickness=1,
-                         highlightbackground=LINE, highlightcolor=LINE, **kwargs)
+        super().__init__(master, background=CANVAS, highlightthickness=0,
+                         **kwargs)
         self.inner = tk.Frame(self, background=CANVAS)
         self.inner.pack(fill="both", expand=True, padx=padding, pady=padding)
+
+
+def rule(master: tk.Widget, vertical: bool = False) -> tk.Frame:
+    """Filet d'un pixel : la seule separation admise."""
+    if vertical:
+        return tk.Frame(master, width=1, background=LINE)
+    return tk.Frame(master, height=1, background=LINE)
 
 
 def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:

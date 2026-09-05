@@ -21,10 +21,20 @@ from compensation_analytics.io.xlsx_writer import write_workbook  # noqa: E402
 
 HEADERS = [
     "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
-    "Date de sortie", "BU", "Pays", "Établissement", "Métier", "Famille métier",
-    "Grade", "Coefficient", "Statut", "Temps de travail", "Salaire de base",
-    "Variable", "Rémunération totale",
+    "Date de sortie", "BU", "Pays", "Établissement", "Métier", "Poste",
+    "Famille métier", "Grade", "Coefficient", "Statut", "Temps de travail",
+    "Salaire de base", "Variable", "Rémunération totale",
 ]
+
+
+def column(name: str) -> int:
+    """Position d'une colonne, par son nom.
+
+    Les defauts volontaires visaient des indices ecrits en dur : inserer une
+    colonne les decalait tous, et le generateur corrompait silencieusement
+    la mauvaise. Ce detour rend l'ordre des colonnes libre.
+    """
+    return HEADERS.index(name)
 
 BUSINESS_UNITS = ["France", "Iberia", "Benelux", "DACH", "Nordics", "Corporate"]
 COUNTRIES = {
@@ -49,6 +59,18 @@ COUNTRY_FACTOR = {
     "Allemagne": 1.12, "Suede": 1.09,
 }
 STATUSES = ["Non cadre", "Agent de maitrise", "Cadre"]
+
+#: Le poste precise le metier d'un niveau de responsabilite. C'est l'axe de
+#: comparaison le plus courant en remuneration : deux "Comptable" de grades
+#: eloignes n'occupent pas le meme poste et ne se comparent pas.
+POSITION_LEVELS = ((2, "junior"), (5, ""), (8, "senior"))
+
+
+def position_for(job: str, grade_index: int) -> str:
+    for ceiling, level in POSITION_LEVELS:
+        if grade_index < ceiling:
+            return f"{job} {level}".strip()
+    return job
 
 
 def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
@@ -83,18 +105,25 @@ def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
             f"E{index:06d}",
             f"NOM{index:05d}", f"PRENOM{index:05d}", gender,
             birth, hire, "",
-            business_unit, country, rng.choice(SITES), job, family, grade,
+            business_unit, country, rng.choice(SITES), job,
+            position_for(job, grade_index), family, grade,
             100 + grade_index * 25, status, fte, base, variable, base + variable,
         ])
 
     if defects and len(rows) > 30:
-        # Defauts volontaires pour exercer le controle qualite.
-        rows[3][16] = ""                                   # salaire manquant
-        rows[5][16] = -1500                                # salaire negatif
-        rows[7][4] = reference + _dt.timedelta(days=400)   # naissance future
-        rows[9][6] = rows[9][5] - _dt.timedelta(days=30)   # sortie avant entree
-        rows[11][16] = 950000                              # valeur extreme
-        rows.append(list(rows[13]))                        # doublon de matricule
+        # Defauts volontaires pour exercer le controle qualite. Les colonnes
+        # sont designees par leur nom : leur ordre peut changer sans que ces
+        # lignes visent soudain autre chose.
+        salary = column("Salaire de base")
+        birth_date = column("Date de naissance")
+        hire_date = column("Date d'entrée")
+        leave_date = column("Date de sortie")
+        rows[3][salary] = ""                                    # salaire manquant
+        rows[5][salary] = -1500                                 # salaire negatif
+        rows[7][birth_date] = reference + _dt.timedelta(days=400)
+        rows[9][leave_date] = rows[9][hire_date] - _dt.timedelta(days=30)
+        rows[11][salary] = 950000                               # valeur extreme
+        rows.append(list(rows[13]))                             # doublon
     return rows
 
 

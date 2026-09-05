@@ -46,6 +46,12 @@
       "Métier",
       "Job"
     ],
+    "job_title": [
+      "Poste",
+      "Intitulé de poste",
+      "Job title",
+      "Position"
+    ],
     "job_family": [
       "Famille métier",
       "Job family"
@@ -92,6 +98,10 @@
     {
       "field": "job",
       "label": "Métier"
+    },
+    {
+      "field": "job_title",
+      "label": "Poste"
     },
     {
       "field": "job_family",
