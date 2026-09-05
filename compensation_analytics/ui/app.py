@@ -918,19 +918,18 @@ class Application(tk.Tk):
         """Sur qui porte la page, et avec quelle prudence la lire.
 
         Deux phrases que le moteur produisait sans que l'ecran les montre.
-        La premiere quand un filtre est actif : « 73 salaries » ne se lit pas
+        La premiere quand un filtre est actif : « 46 salaries » ne se lit pas
         du tout de la meme facon selon qu'il s'agit du fichier entier ou
-        d'un peritmetre. La seconde quand l'effectif est faible : le moteur
+        d'un perimetre. La seconde quand l'effectif est faible : le moteur
         demande alors de la prudence, le rapport le disait, pas l'ecran.
         """
         if scope.get("filtered") and scope.get("description"):
             line = tk.Frame(self.overview_frame, background=theme.CANVAS)
             line.pack(fill="x", pady=(0, 14))
-            # L'effectif retenu n'est pas repete ici : il est juste dessous,
-            # premiere ligne de la colonne Population.
-            tk.Label(line,
-                     text=f'{scope["description"]}  ·  fichier de '
-                          f'{scope.get("total", 0)} salariés',
+            # Rien que les filtres : ni l'effectif retenu, juste dessous en
+            # premiere ligne de la colonne Population, ni la taille du
+            # fichier, que l'on n'analyse pas.
+            tk.Label(line, text=scope["description"],
                      background=theme.CANVAS, foreground=theme.MUTED,
                      font=self.fonts.small, wraplength=900,
                      justify="left").pack(anchor="w")

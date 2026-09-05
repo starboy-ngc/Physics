@@ -496,7 +496,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             texts = [item.cget("text") for item in walk(app.overview_frame)
                      if isinstance(item, tk.Label)]
             # Sans filtre, pas de ligne de perimetre : la dire serait du bruit.
-            self.assertFalse([text for text in texts if "fichier de" in text])
+            self.assertFalse([text for text in texts if "BU = " in text])
 
             from compensation_analytics.core.pipeline import (AnalysisRequest,
                                                               run_analysis)
@@ -511,10 +511,11 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             app.update()
             texts = [item.cget("text") for item in walk(app.overview_frame)
                      if isinstance(item, tk.Label)]
-            perimetre = [text for text in texts if "fichier de" in text]
+            perimetre = [text for text in texts if "BU = France" in text]
             self.assertEqual(len(perimetre), 1, texts)
-            self.assertIn("BU = France", perimetre[0])
-            self.assertIn("40", perimetre[0])
+            # Rien que les filtres : la taille du fichier n'a rien a faire la,
+            # et l'effectif retenu est deja en tete de la colonne Population.
+            self.assertEqual(perimetre[0], "BU = France")
         finally:
             app.destroy()
 

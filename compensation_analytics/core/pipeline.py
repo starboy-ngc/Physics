@@ -132,10 +132,9 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     }
     # Le perimetre voyage avec le resultat. Sans lui, une page de chiffres
     # ne dit pas sur qui elle porte : « 412 salaries » se lit tout autrement
-    # selon qu'il s'agit de tout le fichier ou d'un filtre.
+    # selon qu'il s'agit de tout le fichier ou d'un filtre. L'effectif n'y
+    # figure pas — il est deja au manifeste et en tete de la page.
     payload["scope"] = {
-        "total": len(population),
-        "retained": len(filtered),
         "filtered": bool(request.filters),
         "description": describe_filters(request.filters, config),
     }
