@@ -45,8 +45,13 @@ LANCER L'INTERFACE
       écart moyen et médian sur la part variable
       part des femmes et des hommes percevant une part variable
       part de chaque sexe dans chaque quartile de rémunération
-      écart par catégorie de travail de même valeur (le Poste par
-        défaut), les catégories au-delà de 5 % étant signalées
+      écart par catégorie de travail de même valeur, les catégories
+        au-delà de 5 % étant signalées. La liste « Écart par »
+        change d'axe : Poste, Grade, Établissement, Pays...
+
+    Les filtres de la colonne de gauche s'appliquent à cet onglet
+    comme aux autres : filtrer sur une BU recalcule les écarts sur
+    cette seule BU.
 
     Convention : un écart POSITIF signifie que les femmes sont moins
     rémunérées. Aucun écart n'est publié si l'un des deux groupes

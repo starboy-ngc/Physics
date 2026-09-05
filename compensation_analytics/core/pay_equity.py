@@ -216,25 +216,46 @@ def calculate_pay_equity(population: Population,
         population, config, salary_field, groups,
         int(section.get("quartile_count", 4) or 4), rules)
 
-    # Categories de travail de meme valeur.
-    groups_by_category = split_by(population, category_field)
+    result.update(calculate_category_gaps(population, config, category_field))
+    return result
+
+
+def calculate_category_gaps(population: Population, config: Configuration,
+                            field_name: str) -> Dict[str, Any]:
+    """Ecarts par categorie, sur l'axe demande.
+
+    Fonction distincte pour que l'axe puisse changer sans tout recalculer :
+    « travail de meme valeur » se lit selon le poste, mais aussi selon le
+    grade, l'etablissement ou la BU, et l'analyse ne vaut que si l'on peut
+    passer de l'un a l'autre.
+    """
+    section = config.section("pay_equity_parameters")
+    rules = PrivacyRules.from_config(config)
+    salary_field = analysis_field(config)
+    threshold = float(section.get("gap_alert_threshold", 5.0) or 0.0)
+    label = dimension_label(config, field_name)
+
+    groups_by_category = split_by(population, field_name)
     if not groups_by_category:
         # Sans ce message, la table resterait vide et laisserait croire a une
         # absence d'ecart, alors que le champ n'existe simplement pas dans
         # le fichier.
-        result["category_warning"] = (
-            f"Le champ « {result['category_label']} » n'est renseigné pour "
-            "aucun salarié de ce fichier : l'écart par catégorie de travail "
-            "de même valeur ne peut pas être calculé. Choisissez un autre "
-            "champ dans les paramètres (pay_equity_parameters.category_field).")
-        result["categories_above_threshold"] = 0
-        return result
+        return {
+            "category_field": field_name,
+            "category_label": label,
+            "categories": [],
+            "categories_above_threshold": 0,
+            "category_warning": (
+                f"Le champ « {label} » n'est renseigné pour aucun salarié de "
+                "ce fichier : l'écart par catégorie ne peut pas être "
+                "calculé."),
+        }
     categories: List[Dict[str, Any]] = []
-    for label, group in groups_by_category.items():
+    for name, group in groups_by_category.items():
         members = _split(group, config)
         pair = _pair(_amounts(members[FEMALE], salary_field),
                      _amounts(members[MALE], salary_field), rules)
-        pair["category"] = label
+        pair["category"] = name
         pair["headcount"] = len(group)
         gap = pair.get("mean_gap")
         # Le seuil de la directive porte sur l'ecart absolu : un ecart
@@ -244,7 +265,11 @@ def calculate_pay_equity(population: Population,
         categories.append(pair)
     categories.sort(key=lambda item: (
         item["mean_gap"] is None, -abs(item["mean_gap"] or 0.0)))
-    result["categories"] = categories
-    result["categories_above_threshold"] = sum(
-        1 for item in categories if item["above_threshold"])
-    return result
+    return {
+        "category_field": field_name,
+        "category_label": label,
+        "categories": categories,
+        "category_warning": None,
+        "categories_above_threshold": sum(
+            1 for item in categories if item["above_threshold"]),
+    }

@@ -191,3 +191,91 @@ class TestCategories(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestFiltersReachTheGap(unittest.TestCase):
+    """Les criteres de la colonne de gauche portent aussi sur les ecarts.
+
+    Un ecart calcule sur la population entiere alors qu'un filtre est pose
+    repondrait a une autre question que celle de l'utilisateur.
+    """
+
+    def _analysed(self, expression=None):
+        import tempfile
+        from compensation_analytics.cli import parse_filter
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        from compensation_analytics.core.segmentation import build_filters
+        from compensation_analytics.io.xlsx_writer import write_workbook
+        from tests.support import HEADERS, REFERENCE_DATE
+
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        rows = []
+        for index in range(60):
+            french = index % 2 == 0
+            female = index % 4 < 2
+            rows.append(make_row(
+                index, gender="F" if female else "H",
+                business_unit="France" if french else "DACH",
+                # En France l'ecart est nul, hors de France il est marque :
+                # un filtre sur la BU doit donc changer le resultat.
+                salary=40000 if french else (40000 if not female else 30000)))
+        write_workbook(source, [("Population", [HEADERS] + rows)])
+        config = make_config()
+        filters = (build_filters([parse_filter(expression)], config)
+                   if expression else [])
+        return run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE,
+            filters=filters)).payload["pay_equity"]
+
+    def test_a_filter_changes_the_gap(self):
+        everyone = self._analysed()
+        france = self._analysed("business_unit=France")
+        self.assertAlmostEqual(france["pay"]["mean_gap"], 0.0, places=6)
+        self.assertGreater(everyone["pay"]["mean_gap"], 0.0)
+
+    def test_a_filter_leaving_one_sex_publishes_nothing(self):
+        """Filtrer sur un seul sexe ne peut pas produire d'ecart."""
+        only_women = self._analysed("gender=F")
+        self.assertFalse(only_women["available"])
+        self.assertIn("Effectif insuffisant", only_women["warning"])
+
+
+class TestTheCategoryAxisCanChange(unittest.TestCase):
+    """« Travail de meme valeur » se lit selon le poste, mais aussi selon le
+    grade ou l'etablissement : l'axe doit pouvoir changer sans relancer
+    toute l'analyse."""
+
+    def setUp(self):
+        from compensation_analytics.core.pay_equity import calculate_category_gaps
+        self.compute = calculate_category_gaps
+        self.config = make_config()
+        rows = []
+        for index in range(60):
+            senior = index % 3 == 0
+            female = index % 2 == 0
+            rows.append(make_row(
+                index, gender="F" if female else "H",
+                grade="G7" if senior else "G3",
+                business_unit=["France", "DACH"][index % 2],
+                salary=(60000 if senior else 40000) - (4000 if female else 0)))
+        self.population = build_population(rows, self.config)
+
+    def test_the_same_population_reads_differently_on_two_axes(self):
+        by_grade = self.compute(self.population, self.config, "grade")
+        by_unit = self.compute(self.population, self.config, "business_unit")
+        self.assertEqual({item["category"] for item in by_grade["categories"]},
+                         {"G3", "G7"})
+        self.assertEqual({item["category"] for item in by_unit["categories"]},
+                         {"France", "DACH"})
+
+    def test_the_axis_is_named_in_the_result(self):
+        block = self.compute(self.population, self.config, "grade")
+        self.assertEqual(block["category_field"], "grade")
+        self.assertEqual(block["category_label"], "Grade")
+
+    def test_an_axis_absent_from_the_file_says_so(self):
+        block = self.compute(self.population, self.config, "job_title")
+        self.assertEqual(block["categories"], [])
+        self.assertIn("n'est renseigné", block["category_warning"])

@@ -30,6 +30,7 @@ from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError
 from ..core.export import export_excel
+from ..core.pay_equity import calculate_category_gaps
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
@@ -354,10 +355,22 @@ class Application(tk.Tk):
         self.quartile_tree = self._tree(
             equite, ("Quartile", "Effectif", "Part femmes", "Part hommes"),
             (200, 120, 140, 140), expand=False, height=4)
-        self.category_title = tk.Label(equite, text="", background=CANVAS,
-                                       foreground=FAINT, font=self.fonts.label,
-                                       wraplength=880, justify="left")
-        self.category_title.pack(anchor="w", padx=18, pady=(4, 6))
+        # Le « travail de meme valeur » se lit selon le poste, mais aussi
+        # selon le grade ou l'etablissement : l'axe doit pouvoir changer.
+        category_head = tk.Frame(equite, background=CANVAS)
+        category_head.pack(fill="x", padx=18, pady=(6, 6))
+        tk.Label(category_head, text="ÉCART PAR", background=CANVAS,
+                 foreground=FAINT, font=self.fonts.label).pack(side="left")
+        self.category_choice = ttk.Combobox(category_head, state="readonly",
+                                            width=22, font=self.fonts.small)
+        self.category_choice.pack(side="left", padx=10)
+        self.category_choice.bind("<<ComboboxSelected>>",
+                                  lambda _e: self._show_categories())
+        self.category_title = tk.Label(category_head, text="",
+                                       background=CANVAS, foreground=FAINT,
+                                       font=self.fonts.label,
+                                       wraplength=620, justify="left")
+        self.category_title.pack(side="left", padx=(8, 0))
         self.category_tree = self._tree(
             equite,
             ("Catégorie", "Femmes", "Hommes", "Écart moyen", "Écart médian"),
@@ -821,16 +834,40 @@ class Application(tk.Tk):
              format_percent(item.get("male_share")))
             for item in equity["quartiles"]])
 
-        categories = equity["categories"]
-        warning = equity.get("category_warning")
+        # Le champ du sexe est ecarte : croiser l'ecart H/F par sexe donnerait
+        # des categories d'un seul sexe, toutes masquees.
+        gender_field = equity.get("gender_field", "gender")
+        self._category_fields = [field for field
+                                 in segment_fields(self.configuration)
+                                 if field != gender_field]
+        self.category_choice.configure(values=[
+            dimension_label(self.configuration, field)
+            for field in self._category_fields])
+        configured = equity.get("category_field")
+        if configured in self._category_fields:
+            self.category_choice.current(self._category_fields.index(configured))
+        elif self._category_fields:
+            self.category_choice.current(0)
+        self._show_categories()
+
+    def _show_categories(self) -> None:
+        """Ecarts par categorie, sur l'axe choisi dans la liste."""
+        index = self.category_choice.current()
+        if self.result is None or index < 0:
+            return
+        equity = self.result.payload["pay_equity"]
+        block = calculate_category_gaps(self.result.filtered,
+                                        self.result.config,
+                                        self._category_fields[index])
+        categories = block["categories"]
+        warning = block.get("category_warning")
         if warning:
             self.category_title.configure(text=warning)
             self._fill(self.category_tree, [])
             return
-        above = equity.get("categories_above_threshold", 0)
+        above = block.get("categories_above_threshold", 0)
         self.category_title.configure(
-            text=f"ÉCART PAR {equity['category_label'].upper()} · "
-                 f"{above} CATÉGORIE(S) AU-DELÀ DE "
+            text=f"· {above} CATÉGORIE(S) SUR {len(categories)} AU-DELÀ DE "
                  f"{format_percent(equity['threshold'])}")
         rows = []
         for item in categories:
@@ -843,7 +880,7 @@ class Application(tk.Tk):
                          _signed_percent(item.get("mean_gap")),
                          _signed_percent(item.get("median_gap"))))
         self._fill(self.category_tree, rows,
-                   flagged=lambda index: categories[index]["above_threshold"])
+                   flagged=lambda position: categories[position]["above_threshold"])
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
         fields = segment_fields(self.configuration)

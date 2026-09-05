@@ -478,3 +478,51 @@ class TestResettingTheChoices(unittest.TestCase):
         self.assertFalse(any(v.get() for v in self.app.output_vars.values()))
         self.app.toggle_outputs()
         self.assertTrue(all(v.get() for v in self.app.output_vars.values()))
+
+
+@needs_display
+class TestThePayGapAxis(unittest.TestCase):
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, gender=["F", "H"][index % 2],
+                     grade=["G3", "G5", "G7"][index % 3],
+                     business_unit=["France", "DACH"][index % 2],
+                     salary=40000 + (index % 7) * 1500)
+            for index in range(90)])])
+        self.app = Application()
+        self.app.update()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE))
+        self.app._render_results()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def test_the_gender_field_is_never_offered_as_an_axis(self):
+        """Croiser l'ecart H/F par sexe donnerait des categories d'un seul
+        sexe, toutes masquees."""
+        self.assertNotIn("Sexe", self.app.category_choice.cget("values"))
+
+    def test_changing_the_axis_changes_the_table(self):
+        values = list(self.app.category_choice.cget("values"))
+        self.assertIn("Grade", values)
+        self.assertIn("BU", values)
+        self.app.category_choice.current(values.index("Grade"))
+        self.app._show_categories()
+        self.app.update()
+        by_grade = {self.app.category_tree.item(row)["values"][0]
+                    for row in self.app.category_tree.get_children()}
+        self.app.category_choice.current(values.index("BU"))
+        self.app._show_categories()
+        self.app.update()
+        by_unit = {self.app.category_tree.item(row)["values"][0]
+                   for row in self.app.category_tree.get_children()}
+        self.assertTrue(by_grade & {"G3", "G5", "G7"})
+        self.assertTrue(by_unit & {"France", "DACH"})
+        self.assertNotEqual(by_grade, by_unit)
