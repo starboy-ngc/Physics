@@ -32,9 +32,11 @@ LANCER L'INTERFACE
 
     puis « Analyser ». Les onglets de droite affichent les résultats.
 
-    « Population et rémunération » réunit les deux lectures sur une
-    seule page : un salaire médian ne veut rien dire sans l'âge et
-    l'ancienneté de la population qui le porte.
+    « Vue d'ensemble » réunit les deux lectures sur une seule page :
+    un salaire médian ne veut rien dire sans l'âge et l'ancienneté de
+    la population qui le porte. Les indicateurs y sont groupés sous
+    leur sujet, et les structures d'âge et d'ancienneté se lisent en
+    barres — les chiffres restent affichés à côté.
 
     L'onglet « Ancienneté × rémunération » est explorable :
 

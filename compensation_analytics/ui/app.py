@@ -43,7 +43,7 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
 from . import theme
-from .charts import HistogramChart, ScatterChart
+from .charts import BandChart, HistogramChart, ScatterChart
 from .theme import (ACCENT, ACCENT_HOVER, CANVAS, CRIT, FAINT, GROUND, INK,
                     INK_SOFT, LINE,
                     MUTED, OK, STRIPE, WARN, WARN_SOFT, Card, CheckRow, Fonts,
@@ -56,7 +56,7 @@ _ALL = "(toutes)"
 
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
 #: quand un chiffre surprend, on ne commence pas par lui.
-TABS = (("population", "Population et rémunération"),
+TABS = (("population", "Vue d'ensemble"),
         ("distribution", "Distribution"),
         ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"),
         ("equite", "Pay Transparency"), ("qualite", "Qualité"))
@@ -669,6 +669,22 @@ class Application(tk.Tk):
                  "salariés ; élargissez le filtre pour les afficher.")
         self.notice.pack(fill="x", after=self.tabbar)
 
+    def _check_labels(self, labels, width: int, per_row: int) -> None:
+        """Journalise un libelle trop long pour sa colonne.
+
+        Le rendu ne peut pas retrecir un intertitre sans le rendre illisible :
+        mieux vaut le signaler au journal technique, ou il sera vu, que de le
+        laisser tronquer en silence.
+        """
+        import tkinter.font as tkfont
+
+        column = (max(width, 600) - 14 * (per_row - 1)) / per_row
+        measure = tkfont.Font(root=self, font=self.fonts.label).measure
+        for label in labels:
+            if measure(label) > column:
+                log_event("interface", "kpi_label", status="ETROIT",
+                          detail=f"{label[:24]}")
+
     def _kpi_font(self, values, width: int, per_row: int):
         """Plus grande taille a laquelle aucune valeur n'est rognee.
 
@@ -773,8 +789,11 @@ class Application(tk.Tk):
         """Population et remuneration sur une seule page.
 
         Les deux se lisent ensemble : un salaire median ne veut rien dire
-        sans l'age et l'anciennete de la population qui le porte. Les
-        separer obligeait a garder un chiffre en tete en changeant d'onglet.
+        sans l'age et l'anciennete de la population qui le porte. Mais les
+        aligner sans les distinguer donnait huit chiffres de meme poids,
+        sans point d'entree. Ils sont donc regroupes sous leur sujet, et les
+        repartitions passent en barres : c'est la forme d'une structure
+        d'age qui se lit d'abord, pas ses pourcentages.
         """
         for child in self.overview_frame.winfo_children():
             child.destroy()
@@ -787,34 +806,40 @@ class Application(tk.Tk):
                      justify="left").pack(anchor="w")
             return
 
-        indicators = [("Effectif", str(population.get("headcount", 0)))]
+        groups = []
         if not salary.get("masked"):
-            indicators += [
+            groups.append(("Rémunération", [
                 ("Masse salariale", format_money(salary.get("payroll"), currency)),
                 ("Salaire moyen", format_money(salary.get("mean"), currency)),
                 ("Salaire médian", format_money(salary.get("median"), currency)),
-            ]
+            ]))
         if not population.get("masked"):
-            indicators += [
-                ("Âge moyen", format_years(population.get("age_mean"))),
+            groups.append(("Population", [
+                ("Effectif", str(population.get("headcount", 0))),
                 ("Âge médian", format_years(population.get("age_median"))),
-                ("Ancienneté moyenne", format_years(population.get("tenure_mean"))),
-                ("Ancienneté médiane", format_years(population.get("tenure_median"))),
-            ]
-        self._kpis(self.overview_frame, indicators)
+                ("Ancienneté médiane",
+                 format_years(population.get("tenure_median"))),
+            ]))
+        self._grouped_kpis(self.overview_frame, groups)
+
+        grid = tk.Frame(self.overview_frame, background=CANVAS)
+        grid.pack(fill="both", expand=True)
+        grid.grid_columnconfigure(0, weight=1, uniform="panel")
+        grid.grid_columnconfigure(1, weight=1, uniform="panel")
 
         spread = salary.get("dispersion") or {}
         variation = spread.get("coefficient_of_variation")
-        panels = []
         if not salary.get("masked"):
-            panels += [
-                ("Percentiles", ("Percentile", "Valeur"), (200, 130),
-                 [("Minimum", format_money(salary.get("min"), currency))]
-                 + [(entry["label"],
-                     format_money(salary.get(entry["key"]), currency))
-                    for entry in salary.get("published_percentiles", [])]
-                 + [("Maximum", format_money(salary.get("max"), currency))]),
-                ("Dispersion", ("Indicateur", "Valeur"), (200, 130), [
+            self._table_panel(
+                grid, 0, 0, "Échelle de rémunération",
+                ("Percentile", "Valeur"), (200, 130),
+                [("Minimum", format_money(salary.get("min"), currency))]
+                + [(entry["label"],
+                    format_money(salary.get(entry["key"]), currency))
+                   for entry in salary.get("published_percentiles", [])]
+                + [("Maximum", format_money(salary.get("max"), currency))])
+            self._table_panel(
+                grid, 0, 1, "Dispersion", ("Indicateur", "Valeur"), (200, 130), [
                     ("Q3 - Q1",
                      format_money(spread.get("interquartile_range"), currency)),
                     ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2)),
@@ -824,41 +849,96 @@ class Application(tk.Tk):
                     ("Coefficient de variation",
                      format_percent(None if variation is None
                                     else variation * 100)),
-                ]),
-            ]
+                    ("Écart-type",
+                     format_money(salary.get("std_dev"), currency)),
+                ])
         if not population.get("masked"):
-            for title, key in (("Tranche d'âge", "age_bands"),
-                               ("Tranche d'ancienneté", "tenure_bands")):
-                panels.append((title, ("Tranche", "Effectif", "Part"),
-                               (150, 85, 85),
-                               [(row["label"], row["count"],
-                                 format_percent(row["share"]))
-                                for row in population.get(key, [])]))
+            for column, (title, key, extra) in enumerate((
+                    ("Structure d'âge", "age_bands",
+                     ("Âge moyen", format_years(population.get("age_mean")))),
+                    ("Structure d'ancienneté", "tenure_bands",
+                     ("Ancienneté moyenne",
+                      format_years(population.get("tenure_mean")))))):
+                self._band_panel(grid, 1, column, title,
+                                 population.get(key, []), extra)
 
-        # Deux rangees de deux : quatre panneaux alignes seraient trop
-        # etroits pour leurs trois colonnes.
-        grid = tk.Frame(self.overview_frame, background=CANVAS)
-        grid.pack(fill="both", expand=True)
-        per_row = 2 if len(panels) > 2 else max(len(panels), 1)
-        for index, (title, headers, widths, rows) in enumerate(panels):
-            row, column = divmod(index, per_row)
-            cell = tk.Frame(grid, background=CANVAS)
-            cell.grid(row=row, column=column, sticky="nsew",
-                      padx=(0, 36) if column < per_row - 1 else 0,
-                      pady=(0, 18) if row == 0 and len(panels) > per_row else 0)
-            grid.grid_columnconfigure(column, weight=1, uniform="panel")
-            grid.grid_rowconfigure(row, weight=1)
-            tk.Label(cell, text=title.upper(), background=CANVAS,
-                     foreground=FAINT,
-                     font=self.fonts.label).pack(anchor="w", pady=(0, 6))
-            tree = ttk.Treeview(cell, columns=headers, show="headings",
-                                height=max(len(rows), 4))
-            for name, width in zip(headers, widths):
-                tree.heading(name, text=name.upper())
-                tree.column(name, width=width,
-                            anchor="w" if width >= 150 else "e")
-            tree.pack(fill="both", expand=True)
-            self._fill(tree, rows)
+    def _grouped_kpis(self, parent, groups) -> None:
+        """Indicateurs ranges sous leur sujet, separes d'un filet vertical.
+
+        Huit chiffres alignes se valent tous ; groupes sous « Rémunération »
+        et « Population », ils se cherchent du regard.
+        """
+        band = tk.Frame(parent, background=CANVAS)
+        band.pack(fill="x", pady=(0, 22))
+        parent.update_idletasks()
+        cells = sum(len(pairs) for _t, pairs in groups) or 1
+        values = [value for _title, pairs in groups for _label, value in pairs]
+        font = self._kpi_font(values, band.winfo_width(), cells)
+        # Un libelle rogne est aussi genant qu'une valeur rognee : la largeur
+        # disponible est verifiee sur les deux.
+        self._check_labels([label.upper() for _t, pairs in groups
+                            for label, _v in pairs],
+                           band.winfo_width(), cells)
+        column = 0
+        for index, (title, pairs) in enumerate(groups):
+            if index:
+                theme.rule(band, vertical=True).grid(
+                    row=0, column=column, rowspan=2, sticky="ns", padx=18)
+                column += 1
+            tk.Label(band, text=title.upper(), background=CANVAS,
+                     foreground=ACCENT, font=self.fonts.label).grid(
+                         row=0, column=column, columnspan=len(pairs),
+                         sticky="w", pady=(0, 8))
+            for position, (label, value) in enumerate(pairs):
+                cell = tk.Frame(band, background=CANVAS)
+                # Pas de marge apres le dernier d'un groupe : le filet et son
+                # ecart la fournissent deja, et chaque pixel rendu evite de
+                # rogner « Ancienneté médiane ».
+                last = position == len(pairs) - 1
+                cell.grid(row=1, column=column, sticky="nsew",
+                          padx=(0, 0 if last else 14))
+                band.grid_columnconfigure(column, weight=1, uniform="kpi")
+                tk.Label(cell, text=label.upper(), background=CANVAS,
+                         foreground=FAINT,
+                         font=self.fonts.label).pack(anchor="w")
+                tk.Label(cell, text=value, background=CANVAS, foreground=INK,
+                         font=font).pack(anchor="w", pady=(1, 0))
+                column += 1
+
+    def _panel_head(self, parent, row: int, column: int, title: str,
+                    extra=None) -> tk.Frame:
+        cell = tk.Frame(parent, background=CANVAS)
+        cell.grid(row=row, column=column, sticky="nsew",
+                  padx=(0, 36) if column == 0 else 0,
+                  pady=(0, 22) if row == 0 else 0)
+        parent.grid_rowconfigure(row, weight=1)
+        head = tk.Frame(cell, background=CANVAS)
+        head.pack(fill="x", pady=(0, 8))
+        tk.Label(head, text=title.upper(), background=CANVAS, foreground=FAINT,
+                 font=self.fonts.label).pack(side="left")
+        if extra:
+            tk.Label(head, text=f"{extra[0]} : {extra[1]}", background=CANVAS,
+                     foreground=MUTED,
+                     font=self.fonts.small).pack(side="right")
+        theme.rule(cell).pack(fill="x", pady=(0, 6))
+        return cell
+
+    def _table_panel(self, parent, row, column, title, headers, widths,
+                     rows) -> None:
+        cell = self._panel_head(parent, row, column, title)
+        tree = ttk.Treeview(cell, columns=headers, show="headings",
+                            height=max(len(rows), 4))
+        for name, width in zip(headers, widths):
+            tree.heading(name, text=name.upper())
+            tree.column(name, width=width, anchor="w" if width >= 150 else "e")
+        tree.pack(fill="both", expand=True)
+        self._fill(tree, rows)
+
+    def _band_panel(self, parent, row, column, title, bands, extra) -> None:
+        cell = self._panel_head(parent, row, column, title, extra)
+        chart = BandChart(cell)
+        chart.pack(fill="x")
+        chart.set_rows(bands)
 
     def _show_pay_equity(self, equity: Dict[str, Any]) -> None:
         """Ecarts de remuneration entre les sexes.

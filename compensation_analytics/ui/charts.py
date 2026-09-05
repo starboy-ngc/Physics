@@ -411,3 +411,56 @@ class HistogramChart(tk.Frame):
                     self.canvas.winfo_rooty() + event.y)
                 return
         self.tooltip.hide()
+
+
+class BandChart(tk.Frame):
+    """Repartition par tranche, en barres horizontales.
+
+    Un tableau donne les chiffres, une barre donne la forme. Pour une
+    structure d'age ou d'anciennete, c'est la forme qui se lit d'abord :
+    savoir que 38 % des salaries ont entre cinq et dix ans d'anciennete
+    demande un effort de lecture qu'une barre epargne.
+
+    Les chiffres restent affiches — la barre les accompagne, elle ne les
+    remplace pas.
+    """
+
+    ROW = 26
+    LABEL = 118
+    VALUE = 96
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.rows: List[Dict[str, Any]] = []
+        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
+        self.rows = [dict(row) for row in rows]
+        self.configure(height=max(len(self.rows), 1) * self.ROW + 6)
+        self.pack_propagate(False)
+        self.redraw()
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        width = self.canvas.winfo_width()
+        if width < 80 or not self.rows:
+            return
+        peak = max((row.get("share") or 0.0) for row in self.rows) or 1.0
+        track = max(width - self.LABEL - self.VALUE - 12, 20)
+        for index, row in enumerate(self.rows):
+            middle = index * self.ROW + self.ROW / 2 + 3
+            self.canvas.create_text(0, middle, anchor="w", fill=INK,
+                                    font=note_font(), text=row.get("label", ""))
+            share = row.get("share") or 0.0
+            # La barre est proportionnee a la tranche la plus fournie, non a
+            # 100 % : sur une repartition ecrasee, tout serait illisible.
+            length = max(track * share / peak, 1.0)
+            self.canvas.create_rectangle(
+                self.LABEL, middle - 7, self.LABEL + length, middle + 7,
+                fill=ACCENT, outline="")
+            self.canvas.create_text(
+                width, middle, anchor="e", fill=MUTED, font=note_font(),
+                text=f'{row.get("count", 0)}   {format_number(share, 1)} %')

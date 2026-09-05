@@ -326,7 +326,7 @@ class TestTabOrder(unittest.TestCase):
         from compensation_analytics.ui.app import TABS
         self.assertEqual(TABS[-1][0], "qualite")
         self.assertEqual(TABS[0][0], "population")
-        self.assertEqual(TABS[0][1], "Population et rémunération")
+        self.assertEqual(TABS[0][1], "Vue d'ensemble")
 
     def test_population_and_pay_share_one_page(self):
         """Un salaire median ne veut rien dire sans l'age et l'anciennete de
@@ -593,12 +593,20 @@ class TestTheMergedOverview(unittest.TestCase):
     def test_the_page_carries_both_subjects(self):
         titles = [item.cget("text")
                   for item in self._all_labels(self.app.overview_frame)]
-        for expected in ("PERCENTILES", "DISPERSION", "TRANCHE D'ÂGE",
-                         "TRANCHE D'ANCIENNETÉ"):
+        for expected in ("ÉCHELLE DE RÉMUNÉRATION", "DISPERSION",
+                         "STRUCTURE D'ÂGE", "STRUCTURE D'ANCIENNETÉ"):
             self.assertIn(expected, titles)
         for expected in ("MASSE SALARIALE", "ÂGE MÉDIAN",
                          "ANCIENNETÉ MÉDIANE", "EFFECTIF"):
             self.assertIn(expected, titles)
+
+    def test_the_indicators_are_grouped_under_their_subject(self):
+        """Huit chiffres alignes se valent tous ; groupes sous leur sujet,
+        ils se cherchent du regard."""
+        titles = [item.cget("text")
+                  for item in self._all_labels(self.app.overview_frame)]
+        self.assertIn("RÉMUNÉRATION", titles)
+        self.assertIn("POPULATION", titles)
 
     def _all_labels(self, root):
         def walk(widget):
@@ -607,19 +615,25 @@ class TestTheMergedOverview(unittest.TestCase):
                 yield from walk(child)
         return [item for item in walk(root) if item.winfo_class() == "Label"]
 
-    def test_no_indicator_is_clipped(self):
-        """Une masse salariale a huit chiffres depassait sa colonne et se
-        retrouvait tronquee des deux cotes."""
+    def test_neither_label_nor_value_is_clipped(self):
+        """Une masse salariale a huit chiffres depassait sa colonne, et
+        « Ancienneté médiane » aussi : les deux sont mesures."""
         import tkinter.font as tkfont
 
         band = self.app.overview_frame.winfo_children()[0]
+        checked = 0
         for cell in band.winfo_children():
-            label, value = cell.winfo_children()[:2]
-            measured = tkfont.Font(root=self.app,
-                                   font=value.cget("font")).measure(
-                                       value.cget("text"))
-            self.assertLessEqual(measured, cell.winfo_width(),
-                                 label.cget("text"))
+            parts = cell.winfo_children()
+            if len(parts) != 2:
+                continue
+            for widget in parts:
+                measured = tkfont.Font(
+                    root=self.app, font=widget.cget("font")).measure(
+                        widget.cget("text"))
+                self.assertLessEqual(measured, cell.winfo_width(),
+                                     widget.cget("text"))
+                checked += 1
+        self.assertGreaterEqual(checked, 8)
 
     def test_the_pay_ladder_runs_from_minimum_to_maximum(self):
         """Minimum et maximum sont a leur place dans l'echelle, pas en
@@ -630,16 +644,35 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertEqual(labels[0], "Minimum")
         self.assertEqual(labels[-1], "Maximum")
 
-    def test_every_tenure_band_is_reachable(self):
-        """Le decoupage s'etend selon les carrieres presentes : la page
-        defile plutot que de couper les dernieres tranches."""
-        bands = self._trees()[-1]
-        labels = [bands.item(row)["values"][0] for row in bands.get_children()]
+    def test_the_distributions_are_drawn_as_bars(self):
+        """Un tableau donne les chiffres, une barre donne la forme — et
+        c'est la forme d'une structure d'age qui se lit d'abord."""
+        from compensation_analytics.ui.charts import BandChart
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        charts = [item for item in walk(self.app.overview_frame)
+                  if isinstance(item, BandChart)]
+        self.assertEqual(len(charts), 2)
+        for chart in charts:
+            self.assertTrue(chart.rows)
+            self.assertIn("share", chart.rows[0])
+
+    def test_every_tenure_band_is_present(self):
+        """Le decoupage s'etend selon les carrieres presentes."""
+        from compensation_analytics.ui.charts import BandChart
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        charts = [item for item in walk(self.app.overview_frame)
+                  if isinstance(item, BandChart)]
+        labels = [row["label"] for row in charts[-1].rows]
         self.assertGreater(len(labels), 5)
         self.assertTrue(labels[-1].startswith(">"))
-        canvas = self.app.overview_frame.master
-        self.assertEqual(canvas.winfo_class(), "Canvas")
-        self.assertLess(canvas.yview()[1], 1.0)
 
 
 @needs_display
