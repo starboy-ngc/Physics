@@ -14,7 +14,7 @@ from __future__ import annotations
 import tkinter as tk
 import tkinter.font as tkfont
 from tkinter import ttk
-from typing import Callable, Dict, List, Optional
+from typing import Callable, Dict, List, Optional, Sequence
 
 from . import raster
 
@@ -316,6 +316,144 @@ def rule(master: tk.Widget, vertical: bool = False) -> tk.Frame:
     if vertical:
         return tk.Frame(master, width=1, background=LINE)
     return tk.Frame(master, height=1, background=LINE)
+
+
+#: Teintes du texte des info-bulles, sur fond INK.
+HINT_TEXT = "#e7ecf1"
+HINT_FAINT = "#a8b5c2"
+
+
+class Hints:
+    """Info-bulles d'explication, une seule fenetre pour tout l'ecran.
+
+    Une page de restitution porte une trentaine de chiffres. Leur donner a
+    chacun sa fenetre en couterait autant au demarrage ; il n'y en a donc
+    qu'une, deplacee et remplie au survol.
+
+    L'apparition est retardee : une bulle qui surgit des que le curseur
+    traverse un tableau se lit comme une gene, pas comme une aide. Et le
+    texte garde sa hierarchie — intitule, definition, formule — plutot que
+    de former un bloc ou l'oeil ne sait pas ou entrer.
+    """
+
+    #: Delai avant l'apparition. Assez long pour ignorer un passage de
+    #: curseur, assez court pour repondre a une hesitation.
+    DELAY = 450
+    #: Largeur de renvoi a la ligne. Une bulle plus large se lit mal.
+    WRAP = 320
+
+    def __init__(self, root: tk.Misc, fonts: Fonts):
+        self.root = root
+        self.fonts = fonts
+        self.window: Optional[tk.Toplevel] = None
+        self.body: Optional[tk.Frame] = None
+        self.lines: List[tk.Label] = []
+        self._pending: Optional[str] = None
+
+    def attach(self, widget: tk.Widget, hint: Optional[Sequence[str]],
+               anchor: Optional[tk.Widget] = None):
+        """Associe une explication a un widget. Sans texte, ne fait rien.
+
+        `hint` se lit comme des paragraphes : le premier est l'intitule.
+
+        `anchor` designe ce sous quoi la bulle se pose. Un indicateur ecrit
+        sur deux lignes — son intitule, puis son chiffre — se survole souvent
+        par l'intitule : posee sous lui, la bulle masquerait le chiffre que
+        l'on cherche justement a comprendre. On l'ancre alors sous le bloc
+        entier.
+        """
+        if not hint:
+            return widget
+        paragraphs = tuple(hint)
+        under = anchor if anchor is not None else widget
+        widget.bind("<Enter>",
+                    lambda _e, w=under: self._schedule(w, paragraphs), add="+")
+        widget.bind("<Leave>", lambda _e: self.hide(), add="+")
+        # Un clic veut dire que l'utilisateur a autre chose en tete : la bulle
+        # s'efface au lieu de rester posee sur ce qu'il vient d'ouvrir.
+        widget.bind("<Button-1>", lambda _e: self.hide(), add="+")
+        return widget
+
+    # ------------------------------------------------------------ mecanique
+
+    def _schedule(self, widget: tk.Widget, paragraphs) -> None:
+        self._cancel()
+        self._pending = self.root.after(
+            self.DELAY, lambda: self._show(widget, paragraphs))
+
+    def _cancel(self) -> None:
+        if self._pending is not None:
+            try:
+                self.root.after_cancel(self._pending)
+            except tk.TclError:
+                pass
+            self._pending = None
+
+    def _build(self) -> None:
+        self.window = tk.Toplevel(self.root)
+        self.window.wm_overrideredirect(True)
+        self.window.attributes("-topmost", True)
+        self.window.configure(background=INK)
+        # Marge interieure portee par un cadre, et non par chaque ligne :
+        # l'ecart sous le dernier paragraphe vaut alors celui du haut, quel
+        # que soit le nombre de paragraphes affiches.
+        self.body = tk.Frame(self.window, background=INK)
+        self.body.pack(fill="both", expand=True, padx=12, pady=(10, 3))
+
+    def _line(self, index: int) -> tk.Label:
+        """Ligne de rang `index`, creee au besoin puis reutilisee."""
+        while len(self.lines) <= index:
+            rank = len(self.lines)
+            label = tk.Label(
+                self.body, justify="left", background=INK,
+                wraplength=self.WRAP, anchor="w",
+                # Intitule en gras, definition en clair, formule en retrait :
+                # trois niveaux, pour entrer par le nom de l'indicateur.
+                font=self.fonts.body_bold if rank == 0 else self.fonts.small,
+                foreground=(CANVAS if rank == 0
+                            else HINT_TEXT if rank == 1 else HINT_FAINT))
+            self.lines.append(label)
+        return self.lines[index]
+
+    def _show(self, widget: tk.Widget, paragraphs) -> None:
+        self._pending = None
+        # La page se reconstruit a chaque calcul : le widget survole peut
+        # avoir ete detruit entre le survol et l'echeance.
+        if not widget.winfo_exists():
+            return
+        if self.window is None:
+            self._build()
+        for index, paragraph in enumerate(paragraphs):
+            line = self._line(index)
+            line.configure(text=paragraph)
+            if not line.winfo_manager():
+                line.pack(anchor="w", fill="x", pady=(0, 7))
+        for surplus in self.lines[len(paragraphs):]:
+            surplus.pack_forget()
+        self.window.update_idletasks()
+        self._place(widget)
+        self.window.deiconify()
+
+    def _place(self, widget: tk.Widget) -> None:
+        """Sous le champ survole, sans sortir de l'ecran.
+
+        Aligne a gauche sur lui : la bulle ne recouvre pas la valeur que
+        l'on est en train de lire.
+        """
+        width = self.window.winfo_reqwidth()
+        height = self.window.winfo_reqheight()
+        screen_w = self.window.winfo_screenwidth()
+        screen_h = self.window.winfo_screenheight()
+        x = max(0, min(widget.winfo_rootx(), screen_w - width - 4))
+        y = widget.winfo_rooty() + widget.winfo_height() + 6
+        if y + height > screen_h:
+            y = max(0, widget.winfo_rooty() - height - 6)
+        self.window.wm_geometry(f"+{int(x)}+{int(y)}")
+
+    def hide(self) -> None:
+        self._cancel()
+        if self.window is not None:
+            self.window.withdraw()
 
 
 def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:

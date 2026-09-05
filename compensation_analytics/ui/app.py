@@ -30,6 +30,7 @@ from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError
 from ..core.export import export_excel
+from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
 from ..core.pay_equity import calculate_category_gaps
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
@@ -63,6 +64,25 @@ TABS = (("population", "Vue d'ensemble"),
         ("equite", "Pay Transparency"), ("qualite", "Qualité"))
 
 
+def _hint(key: Optional[str], title: str):
+    """Explication d'un indicateur, en paragraphes : intitule, sens, calcul.
+
+    Les textes viennent du moteur : la formule affichee est celle qui est
+    appliquee. Un indicateur sans entree ne recoit pas d'info-bulle plutot
+    qu'une bulle vide.
+    """
+    entry = define(key) if key else None
+    if entry is None:
+        return None
+    return (title, entry.definition, f"Calcul : {entry.formula}")
+
+
+def _packed(widget, **packing):
+    """Empile un widget et le rend. `pack` renvoie None et coupe l'enchainement."""
+    widget.pack(**packing)
+    return widget
+
+
 def _signed_percent(value: Optional[float]) -> str:
     """Ecart relatif, signe explicite : « +12,4 % » se lit sans hesitation."""
     if value is None:
@@ -82,6 +102,8 @@ class Application(tk.Tk):
 
         self.fonts = Fonts(self)
         theme.apply(self, self.fonts)
+        # Une seule fenetre d'info-bulle pour toute l'application.
+        self.hints = theme.Hints(self, self.fonts)
 
         self.config_dir = config_dir or default_config_dir()
         self.configuration = load_configuration(self.config_dir)
@@ -720,9 +742,13 @@ class Application(tk.Tk):
         # chiffre est rogne des deux cotes. Les rangees sont equilibrees.
         rows_needed = -(-len(pairs) // self.KPI_MAX_PER_ROW) or 1
         per_row = -(-len(pairs) // rows_needed)
-        font = self._kpi_font([value for _label, value in pairs],
+        font = self._kpi_font([pair[1] for pair in pairs],
                               band.winfo_width(), per_row)
-        for index, (label, value) in enumerate(pairs):
+        for index, pair in enumerate(pairs):
+            # La cle du glossaire est facultative : un compteur qui se lit
+            # tout seul n'a pas besoin d'etre explique.
+            label, value = pair[0], pair[1]
+            note = _hint(pair[2] if len(pair) > 2 else None, label)
             row, column = divmod(index, per_row)
             cell = tk.Frame(band, background=CANVAS)
             span = per_row - column if index == len(pairs) - 1 else 1
@@ -730,10 +756,14 @@ class Application(tk.Tk):
                       padx=(0, 24) if column + span < per_row else 0,
                       pady=(0, 20) if row == 0 else 0)
             band.grid_columnconfigure(column, weight=1, uniform="kpi")
-            tk.Label(cell, text=label.upper(), background=CANVAS, foreground=FAINT,
-                     font=self.fonts.label).pack(anchor="w")
-            tk.Label(cell, text=value, background=CANVAS, foreground=INK,
-                     font=font).pack(anchor="w", pady=(1, 0))
+            self.hints.attach(
+                _packed(tk.Label(cell, text=label.upper(), background=CANVAS,
+                                 foreground=FAINT, font=self.fonts.label),
+                        anchor="w"), note, anchor=cell)
+            self.hints.attach(
+                _packed(tk.Label(cell, text=value, background=CANVAS,
+                                 foreground=INK, font=font),
+                        anchor="w", pady=(1, 0)), note, anchor=cell)
 
     def _fill(self, tree: ttk.Treeview, rows, flagged=None) -> None:
         tree.tag_configure("pair", background=STRIPE)
@@ -812,16 +842,21 @@ class Application(tk.Tk):
         groups = []
         if not population.get("masked"):
             groups.append(("Population", [
-                ("Effectif", str(population.get("headcount", 0))),
-                ("Âge médian", format_years(population.get("age_median"))),
+                ("Effectif", str(population.get("headcount", 0)), "headcount"),
+                ("Âge médian", format_years(population.get("age_median")),
+                 "age_median"),
                 ("Ancienneté médiane",
-                 format_years(population.get("tenure_median"))),
+                 format_years(population.get("tenure_median")),
+                 "tenure_median"),
             ]))
         if not salary.get("masked"):
             groups.append(("Rémunération", [
-                ("Masse salariale", format_money(salary.get("payroll"), currency)),
-                ("Salaire moyen", format_money(salary.get("mean"), currency)),
-                ("Salaire médian", format_money(salary.get("median"), currency)),
+                ("Masse salariale", format_money(salary.get("payroll"), currency),
+                 "payroll"),
+                ("Salaire moyen", format_money(salary.get("mean"), currency),
+                 "mean"),
+                ("Salaire médian", format_money(salary.get("median"), currency),
+                 "median"),
             ]))
         self._grouped_kpis(self.overview_frame, groups)
 
@@ -841,35 +876,45 @@ class Application(tk.Tk):
         if not population.get("masked"):
             self._pyramid_panel(
                 left, "Pyramide des âges", population.get("age_bands", []),
-                ("Âge moyen", format_years(population.get("age_mean"))))
+                ("Âge moyen", format_years(population.get("age_mean")),
+                 "age_mean"), key="age_bands")
             self._pyramid_panel(
                 left, "Structure d'ancienneté",
                 population.get("tenure_bands", []),
                 ("Ancienneté moyenne",
-                 format_years(population.get("tenure_mean"))))
+                 format_years(population.get("tenure_mean")), "tenure_mean"),
+                key="tenure_bands")
         if not salary.get("masked"):
             self._ruled_panel(
                 right, "Échelle de rémunération", ("Percentile", "Valeur"),
-                [("Minimum", format_money(salary.get("min"), currency))]
+                [("Minimum", format_money(salary.get("min"), currency), "min")]
                 + [(entry["label"],
-                    format_money(salary.get(entry["key"]), currency))
+                    format_money(salary.get(entry["key"]), currency),
+                    entry["key"])
                    for entry in salary.get("published_percentiles", [])]
-                + [("Maximum", format_money(salary.get("max"), currency))],
-                emphasis="Médiane (P50)")
+                + [("Maximum", format_money(salary.get("max"), currency), "max")],
+                emphasis="Médiane (P50)", key="salary_scale")
+            # L'ecart-type a quitte ce tableau : il se lit en euros, comme la
+            # mediane juste au-dessus, sans etre du meme ordre, et le
+            # coefficient de variation dit la meme dispersion sous une forme
+            # comparable d'une population a l'autre. Il reste dans l'export.
             self._ruled_panel(
                 right, "Dispersion", ("Indicateur", "Valeur"), [
                     ("Q3 - Q1",
-                     format_money(spread.get("interquartile_range"), currency)),
-                    ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2)),
-                    ("P90 / P10", format_number(spread.get("p90_over_p10"), 2)),
+                     format_money(spread.get("interquartile_range"), currency),
+                     "interquartile_range"),
+                    ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2),
+                     "q3_over_q1"),
+                    ("P90 / P10", format_number(spread.get("p90_over_p10"), 2),
+                     "p90_over_p10"),
                     ("Moyenne / Médiane",
-                     format_number(spread.get("mean_over_median"), 2)),
+                     format_number(spread.get("mean_over_median"), 2),
+                     "mean_over_median"),
                     ("Coefficient de variation",
                      format_percent(None if variation is None
-                                    else variation * 100)),
-                    ("Écart-type",
-                     format_money(salary.get("std_dev"), currency)),
-                ])
+                                    else variation * 100),
+                     "coefficient_of_variation"),
+                ], key="dispersion")
 
     def _grouped_kpis(self, parent, groups) -> None:
         """Indicateurs ranges sous leur sujet, separes d'un filet vertical.
@@ -881,12 +926,13 @@ class Application(tk.Tk):
         band.pack(fill="x", pady=(0, 22))
         parent.update_idletasks()
         cells = sum(len(pairs) for _t, pairs in groups) or 1
-        values = [value for _title, pairs in groups for _label, value in pairs]
+        values = [value for _title, pairs in groups
+                  for _label, value, _key in pairs]
         font = self._kpi_font(values, band.winfo_width(), cells)
         # Un libelle rogne est aussi genant qu'une valeur rognee : la largeur
         # disponible est verifiee sur les deux.
         self._check_labels([label.upper() for _t, pairs in groups
-                            for label, _v in pairs],
+                            for label, _v, _k in pairs],
                            band.winfo_width(), cells)
         column = 0
         for index, (title, pairs) in enumerate(groups):
@@ -898,7 +944,7 @@ class Application(tk.Tk):
                      foreground=ACCENT, font=self.fonts.label).grid(
                          row=0, column=column, columnspan=len(pairs),
                          sticky="w", pady=(0, 8))
-            for position, (label, value) in enumerate(pairs):
+            for position, (label, value, key) in enumerate(pairs):
                 cell = tk.Frame(band, background=CANVAS)
                 # Pas de marge apres le dernier d'un groupe : le filet et son
                 # ecart la fournissent deja, et chaque pixel rendu evite de
@@ -907,29 +953,46 @@ class Application(tk.Tk):
                 cell.grid(row=1, column=column, sticky="nsew",
                           padx=(0, 0 if last else 14))
                 band.grid_columnconfigure(column, weight=1, uniform="kpi")
-                tk.Label(cell, text=label.upper(), background=CANVAS,
-                         foreground=FAINT,
-                         font=self.fonts.label).pack(anchor="w")
-                tk.Label(cell, text=value, background=CANVAS, foreground=INK,
-                         font=font).pack(anchor="w", pady=(1, 0))
+                note = _hint(key, label)
+                # L'explication est posee sur le libelle comme sur le chiffre :
+                # on survole l'un ou l'autre selon celui qui intrigue. Elle
+                # s'affiche sous le bloc, jamais par-dessus le chiffre.
+                self.hints.attach(
+                    _packed(tk.Label(cell, text=label.upper(),
+                                     background=CANVAS, foreground=FAINT,
+                                     font=self.fonts.label), anchor="w"),
+                    note, anchor=cell)
+                self.hints.attach(
+                    _packed(tk.Label(cell, text=value, background=CANVAS,
+                                     foreground=INK, font=font),
+                            anchor="w", pady=(1, 0)), note, anchor=cell)
                 column += 1
 
-    def _panel_head(self, parent, title: str, extra=None) -> tk.Frame:
+    def _panel_head(self, parent, title: str, extra=None,
+                    key: Optional[str] = None) -> tk.Frame:
+        """Intitule, chiffre d'appoint a droite, filet. Chacun s'explique."""
         cell = tk.Frame(parent, background=CANVAS)
         cell.pack(fill="x", pady=(0, 26))
         head = tk.Frame(cell, background=CANVAS)
         head.pack(fill="x", pady=(0, 8))
-        tk.Label(head, text=title.upper(), background=CANVAS, foreground=FAINT,
-                 font=self.fonts.label).pack(side="left")
+        self.hints.attach(
+            _packed(tk.Label(head, text=title.upper(), background=CANVAS,
+                             foreground=FAINT, font=self.fonts.label),
+                    side="left"),
+            _hint(key, title))
         if extra:
-            tk.Label(head, text=f"{extra[0]} : {extra[1]}", background=CANVAS,
-                     foreground=MUTED,
-                     font=self.fonts.small).pack(side="right")
+            label, value = extra[0], extra[1]
+            self.hints.attach(
+                _packed(tk.Label(head, text=f"{label} : {value}",
+                                 background=CANVAS, foreground=MUTED,
+                                 font=self.fonts.small), side="right"),
+                _hint(extra[2] if len(extra) > 2 else None, label))
         theme.rule(cell).pack(fill="x", pady=(0, 6))
         return cell
 
     def _ruled_panel(self, parent, title, headers, rows,
-                     emphasis: Optional[str] = None) -> None:
+                     emphasis: Optional[str] = None,
+                     key: Optional[str] = None) -> None:
         """Tableau a l'anglaise : aucune grille, des filets aux articulations.
 
         Un tableau se lit d'autant mieux qu'il porte peu de traits. On garde
@@ -938,7 +1001,7 @@ class Application(tk.Tk):
         reguliere. La ligne remarquable est mise en avant plutot que
         signalee par une couleur de fond.
         """
-        cell = self._panel_head(parent, title)
+        cell = self._panel_head(parent, title, key=key)
         table = tk.Frame(cell, background=CANVAS)
         table.pack(fill="x")
         table.grid_columnconfigure(0, weight=1)
@@ -951,22 +1014,25 @@ class Application(tk.Tk):
         theme.rule(table).grid(row=1, column=0, columnspan=len(headers),
                                sticky="ew")
 
-        for position, values in enumerate(rows):
-            highlighted = emphasis is not None and values[0] == emphasis
-            for index, value in enumerate(values):
-                tk.Label(
-                    table, text=str(value), background=CANVAS,
+        for position, (label, value, entry_key) in enumerate(rows):
+            highlighted = emphasis is not None and label == emphasis
+            note = _hint(entry_key, label)
+            for index, text in enumerate((label, value)):
+                widget = tk.Label(
+                    table, text=str(text), background=CANVAS,
                     foreground=INK if highlighted else INK_SOFT,
                     font=self.fonts.body_bold if highlighted else self.fonts.body,
-                    anchor="w" if index == 0 else "e").grid(
-                        row=2 + position, column=index, sticky="ew",
-                        pady=6, padx=(0, 0) if index else (0, 24))
+                    anchor="w" if index == 0 else "e")
+                widget.grid(row=2 + position, column=index, sticky="ew",
+                            pady=6, padx=(0, 0) if index else (0, 24))
+                self.hints.attach(widget, note)
         theme.rule(table).grid(row=2 + len(rows), column=0,
                                columnspan=len(headers), sticky="ew", pady=(4, 0))
 
-    def _pyramid_panel(self, parent, title, bands, extra) -> None:
+    def _pyramid_panel(self, parent, title, bands, extra,
+                       key: Optional[str] = None) -> None:
         """Pyramide si le sexe est renseigne, barres simples sinon."""
-        cell = self._panel_head(parent, title, extra)
+        cell = self._panel_head(parent, title, extra, key=key)
         pyramid = PyramidChart(cell)
         pyramid.set_rows(bands)
         if pyramid.has_split():
@@ -1020,12 +1086,13 @@ class Application(tk.Tk):
         variable = equity["variable"]
         coverage = equity["variable_coverage"]
         self._kpis(self.equity_frame, [
-            ("Écart moyen", _signed_percent(pay.get("mean_gap"))),
-            ("Écart médian", _signed_percent(pay.get("median_gap"))),
+            ("Écart moyen", _signed_percent(pay.get("mean_gap")), "mean_gap"),
+            ("Écart médian", _signed_percent(pay.get("median_gap")),
+             "median_gap"),
             ("Écart moyen sur le variable",
-             _signed_percent(variable.get("mean_gap"))),
-            ("Effectif femmes", str(equity["female_count"])),
-            ("Effectif hommes", str(equity["male_count"])),
+             _signed_percent(variable.get("mean_gap")), "variable_mean_gap"),
+            ("Effectif femmes", str(equity["female_count"]), "female_count"),
+            ("Effectif hommes", str(equity["male_count"]), "male_count"),
         ])
         self.equity_frame.pack_configure(padx=18)
         # La convention de signe doit etre lisible sans quitter l'ecran :
