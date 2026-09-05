@@ -167,6 +167,7 @@ class Application(tk.Tk):
         self.sidebar_card.configure(width=326)
         self.sidebar_card.pack_propagate(False)
         self._build_sidebar(self.sidebar_card.inner)
+        self._build_sidebar_handle(body)
         theme.rule(body, vertical=True).pack(side="left", fill="y")
 
         content = Card(body, padding=0)
@@ -188,6 +189,61 @@ class Application(tk.Tk):
         self._build_pages()
 
 
+
+    #: Largeur de la poignee de repli. Assez large pour se viser a la souris,
+    #: assez etroite pour ne rien prendre a l'analyse.
+    HANDLE_WIDTH = 24
+
+    def _build_sidebar_handle(self, parent: tk.Frame) -> None:
+        """Poignee de repli de la colonne de gauche.
+
+        Une fois les filtres poses, ils n'ont plus besoin d'etre a l'ecran :
+        replier la colonne rend deux cent quatre-vingt-dix pixels a la
+        lecture, ce qui compte sur une pyramide ou un nuage. La poignee reste
+        toujours visible — replier sans laisser de quoi deplier serait un
+        piege.
+        """
+        self.sidebar_handle = tk.Frame(parent, background=theme.GROUND,
+                                       width=self.HANDLE_WIDTH, cursor="hand2")
+        self.sidebar_handle.pack(side="left", fill="y")
+        self.sidebar_handle.pack_propagate(False)
+        # Le chevron du corps courant faisait six pixels de large : present,
+        # mais introuvable. Il est trace ici a la chasse d'un titre.
+        import tkinter.font as tkfont
+
+        self._chevron = tkfont.Font(root=self, family=self.fonts.family,
+                                    size=theme.SIZE_TITLE + 4)
+        self.sidebar_arrow = tk.Label(self.sidebar_handle, text="‹",
+                                      background=theme.GROUND,
+                                      foreground=theme.MUTED,
+                                      font=self._chevron, cursor="hand2")
+        self.sidebar_arrow.pack(expand=True)
+        for widget in (self.sidebar_handle, self.sidebar_arrow):
+            widget.bind("<Button-1>", lambda _e: self.toggle_sidebar())
+            widget.bind("<Enter>", lambda _e: self._hover_handle(True), add="+")
+            widget.bind("<Leave>", lambda _e: self._hover_handle(False), add="+")
+        # Un chevron seul ne dit pas ce qu'il fait : l'info-bulle le dit, et
+        # son texte vaut dans les deux etats, sans avoir a le reecrire.
+        self.hints.attach(self.sidebar_arrow,
+                          ("Colonne des filtres",
+                           "Masquer ou afficher la colonne de gauche."),
+                          anchor=self.sidebar_handle)
+
+    def _hover_handle(self, entering: bool) -> None:
+        self.sidebar_arrow.configure(
+            foreground=theme.ACCENT if entering else theme.MUTED)
+
+    def toggle_sidebar(self) -> None:
+        """Replie ou deplie la colonne de gauche."""
+        if self.sidebar_card.winfo_manager():
+            self.sidebar_card.pack_forget()
+            self.sidebar_arrow.configure(text="›")
+            return
+        # « sidebar_handle » n'est jamais depaquete : c'est un repere sur
+        # pour rendre la colonne a sa place dans l'empilement.
+        self.sidebar_card.pack(side="left", fill="y",
+                               before=self.sidebar_handle)
+        self.sidebar_arrow.configure(text="‹")
 
     def _section(self, parent, number: int, text: str,
                  action: Optional[str] = None, command=None) -> Optional[tk.Label]:
@@ -813,8 +869,16 @@ class Application(tk.Tk):
         if eligible["graphique"]:
             hidden += [label for key, label in CHARTS if not charts[key]]
         headcount = payload["population"].get("headcount", 0)
-        self._set_state(f"Analyse terminée · {headcount} salariés"
-                        + (f" · {len(hidden)} vue(s) masquée(s)" if hidden else ""))
+        scope = payload.get("scope") or {}
+        # Les filtres se lisent la plutot qu'en tete d'un onglet : ils
+        # gouvernent toutes les pages, et la barre d'etat est la seule zone
+        # visible quel que soit l'onglet ouvert.
+        state = f"Analyse terminée · {headcount} salariés"
+        if scope.get("filtered") and scope.get("description"):
+            state += f" · {scope['description']}"
+        if hidden:
+            state += f" · {len(hidden)} vue(s) masquée(s)"
+        self._set_state(state)
         if not hidden:
             self.notice.pack_forget()
             return
@@ -923,26 +987,15 @@ class Application(tk.Tk):
                     for item in constats])
 
     def _show_scope(self, scope: Dict[str, Any], population, salary) -> None:
-        """Sur qui porte la page, et avec quelle prudence la lire.
+        """Avec quelle prudence lire la page.
 
-        Deux phrases que le moteur produisait sans que l'ecran les montre.
-        La premiere quand un filtre est actif : « 46 salaries » ne se lit pas
-        du tout de la meme facon selon qu'il s'agit du fichier entier ou
-        d'un perimetre. La seconde quand l'effectif est faible : le moteur
-        demande alors de la prudence, le rapport le disait, pas l'ecran.
+        Le moteur demande de la prudence sous un certain effectif ; le
+        rapport le disait, l'ecran ne le montrait que si tout etait masque —
+        c'est-a-dire quand il n'y avait plus rien a lire.
+
+        Le perimetre, lui, n'est plus ici : il vaut pour tous les onglets et
+        non pour cette seule page, et il se lit donc dans la barre d'etat.
         """
-        if scope.get("filtered") and scope.get("description"):
-            line = tk.Frame(self.overview_frame, background=theme.CANVAS)
-            line.pack(fill="x", pady=(0, 14))
-            # Rien que les filtres : ni l'effectif retenu, juste dessous en
-            # premiere ligne de la colonne Population, ni la taille du
-            # fichier, que l'on n'analyse pas.
-            tk.Label(line, text=scope["description"],
-                     background=theme.CANVAS, foreground=theme.MUTED,
-                     font=self.fonts.small, wraplength=900,
-                     justify="left").pack(anchor="w")
-            theme.rule(line).pack(fill="x", pady=(8, 0))
-
         caution = population.get("warning") or salary.get("warning")
         if caution and not (population.get("masked") and salary.get("masked")):
             tk.Label(self.overview_frame, text=caution,

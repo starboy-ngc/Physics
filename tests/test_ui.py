@@ -182,6 +182,39 @@ class TestWindow(unittest.TestCase):
         self.assertEqual(self.app.chartbar.visible_keys(),
                          ["distribution", "boites", "nuage"])
 
+    def test_the_filter_column_folds_and_unfolds(self):
+        """Une fois les filtres poses, la colonne peut rendre sa place a la
+        lecture — mais la poignee reste, sinon replier serait un piege."""
+        self.assertTrue(self.app.sidebar_card.winfo_manager())
+        largeur = self.app.sidebar_card.winfo_width()
+
+        self.app.toggle_sidebar()
+        self.app.update()
+        self.assertFalse(self.app.sidebar_card.winfo_manager())
+        self.assertTrue(self.app.sidebar_handle.winfo_manager())
+        self.assertEqual(self.app.sidebar_arrow.cget("text"), "›")
+
+        self.app.toggle_sidebar()
+        self.app.update()
+        self.assertTrue(self.app.sidebar_card.winfo_manager())
+        self.assertEqual(self.app.sidebar_arrow.cget("text"), "‹")
+        # Repliee puis depliee, la colonne retrouve sa place et sa largeur :
+        # un widget rendu apres coup se retrouvait sinon a la fin de la pile.
+        self.assertEqual(self.app.sidebar_card.winfo_width(), largeur)
+        self.assertLess(self.app.sidebar_card.winfo_rootx(),
+                        self.app.sidebar_handle.winfo_rootx())
+
+    def test_the_filters_survive_folding(self):
+        """Replier masque, ne remet a zero ni ne relance quoi que ce soit."""
+        self._load()
+        champ = next(iter(self.app.filter_vars))
+        self.app.filter_vars[champ].set("France")
+        self.app.toggle_sidebar()
+        self.app.update()
+        self.app.toggle_sidebar()
+        self.app.update()
+        self.assertEqual(self.app.filter_vars[champ].get(), "France")
+
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
         self.assertIn("disabled", self.app.export_button.state())
@@ -480,26 +513,19 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         finally:
             app.destroy()
 
-    def test_the_page_says_what_it_covers_when_filtered(self):
-        """« 46 salariés » ne se lit pas de la meme facon selon qu'il s'agit
-        du fichier entier ou d'un perimetre."""
-        import tkinter as tk
-
+    def test_the_status_line_says_what_was_filtered(self):
+        """Le perimetre gouverne tous les onglets : il se lit dans la barre
+        d'etat, visible quel que soit l'onglet ouvert, et non en tete d'une
+        seule page."""
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
         from compensation_analytics.core.segmentation import build_filters
         app = self._analysed(40)
         try:
-            def walk(widget):
-                yield widget
-                for child in widget.winfo_children():
-                    yield from walk(child)
+            # Sans filtre, aucun critere dans la barre : ce serait du bruit.
+            self.assertIn("40 salariés", app.status.cget("text"))
+            self.assertNotIn("BU = ", app.status.cget("text"))
 
-            texts = [item.cget("text") for item in walk(app.overview_frame)
-                     if isinstance(item, tk.Label)]
-            # Sans filtre, pas de ligne de perimetre : la dire serait du bruit.
-            self.assertFalse([text for text in texts if "BU = " in text])
-
-            from compensation_analytics.core.pipeline import (AnalysisRequest,
-                                                              run_analysis)
             app.result = run_analysis(AnalysisRequest(
                 source_path=self.source, reference_date=REFERENCE_DATE,
                 segments=[],
@@ -509,13 +535,20 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
                                       app.configuration)))
             app._render_results()
             app.update()
+            state = app.status.cget("text")
+            self.assertIn("BU = France", state)
+            self.assertIn("20 salariés", state)
+            # Et nulle part ailleurs : le perimetre a quitte la page.
+            import tkinter as tk
+
+            def walk(widget):
+                yield widget
+                for child in widget.winfo_children():
+                    yield from walk(child)
+
             texts = [item.cget("text") for item in walk(app.overview_frame)
                      if isinstance(item, tk.Label)]
-            perimetre = [text for text in texts if "BU = France" in text]
-            self.assertEqual(len(perimetre), 1, texts)
-            # Rien que les filtres : la taille du fichier n'a rien a faire la,
-            # et l'effectif retenu est deja en tete de la colonne Population.
-            self.assertEqual(perimetre[0], "BU = France")
+            self.assertFalse([text for text in texts if "BU = " in text])
         finally:
             app.destroy()
 
