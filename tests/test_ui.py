@@ -509,6 +509,63 @@ class TestThePayGapAxis(unittest.TestCase):
         sexe, toutes masquees."""
         self.assertNotIn("Sexe", self.app.category_choice.cget("values"))
 
+    def _kpi_values(self):
+        return [child.cget("text")
+                for band in self.app.equity_frame.winfo_children()
+                for cell in band.winfo_children()
+                for child in cell.winfo_children()]
+
+    def test_the_scope_governs_the_whole_tab(self):
+        """Le perimetre ne restreint pas que le tableau : les ecarts
+        d'ensemble, les effectifs et les quartiles se recalculent dessus."""
+        before = self._kpi_values()
+        quartiles_before = [self.app.quartile_tree.item(row)["values"]
+                            for row in self.app.quartile_tree.get_children()]
+        fields = list(self.app.scope_field.cget("values"))
+        self.app.scope_field.current(fields.index("Grade"))
+        self.app._populate_scope_values()
+        self.app.scope_value.set("G3")
+        self.app._refresh_equity()
+        self.app.update()
+        after = self._kpi_values()
+        quartiles_after = [self.app.quartile_tree.item(row)["values"]
+                           for row in self.app.quartile_tree.get_children()]
+        self.assertNotEqual(before, after)
+        self.assertNotEqual(quartiles_before, quartiles_after)
+        self.assertIn("G3", self.app.scope_label.cget("text"))
+
+    def test_returning_to_the_whole_population_restores_the_figures(self):
+        before = self._kpi_values()
+        fields = list(self.app.scope_field.cget("values"))
+        self.app.scope_field.current(fields.index("Grade"))
+        self.app._populate_scope_values()
+        self.app.scope_value.set("G3")
+        self.app._refresh_equity()
+        self.app.update()
+        self.app.scope_field.current(0)
+        self.app._populate_scope_values()
+        self.app.update()
+        self.assertEqual(self._kpi_values(), before)
+        self.assertEqual(self.app.scope_label.cget("text"), "")
+
+    def test_the_gender_field_is_never_offered_as_a_scope(self):
+        """Restreindre a un seul sexe ne laisse aucun ecart a calculer."""
+        self.assertNotIn("Sexe", self.app.scope_field.cget("values"))
+
+    def test_a_scope_too_small_says_so_instead_of_showing_a_blank_tab(self):
+        fields = list(self.app.scope_field.cget("values"))
+        self.app.scope_field.current(fields.index("Grade"))
+        self.app._populate_scope_values()
+        # Un grade absent de la population : le perimetre est vide.
+        self.app.scope_value.set("G8")
+        self.app._refresh_equity()
+        self.app.update()
+        texts = [child.cget("text")
+                 for child in self.app.equity_frame.winfo_children()
+                 if child.winfo_class() == "Label"]
+        self.assertTrue([text for text in texts
+                         if "Effectif insuffisant" in text])
+
     def test_changing_the_axis_changes_the_table(self):
         values = list(self.app.category_choice.cget("values"))
         self.assertIn("Grade", values)

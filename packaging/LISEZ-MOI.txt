@@ -49,9 +49,14 @@ LANCER L'INTERFACE
         au-delà de 5 % étant signalées. La liste « Écart par »
         change d'axe : Poste, Grade, Établissement, Pays...
 
+    « PÉRIMÈTRE », en haut de l'onglet, restreint TOUT ce qui suit :
+    choisissez par exemple Grade = G7, et les écarts, les effectifs,
+    les quartiles et le tableau se recalculent sur ces seuls
+    salariés. Revenir à « (toute la population) » rétablit l'analyse
+    d'ensemble.
+
     Les filtres de la colonne de gauche s'appliquent à cet onglet
-    comme aux autres : filtrer sur une BU recalcule les écarts sur
-    cette seule BU.
+    comme aux autres, et se cumulent avec le périmètre.
 
     Convention : un écart POSITIF signifie que les femmes sont moins
     rémunérées. Aucun écart n'est publié si l'un des deux groupes
