@@ -46,10 +46,7 @@ from ..core.traceability import write_manifest
 from . import theme
 from .charts import (BandChart, HistogramChart, PyramidChart,
                      ScatterChart)
-from .theme import (ACCENT, ACCENT_HOVER, CANVAS, CRIT, FAINT, GROUND, INK,
-                    INK_SOFT, LINE,
-                    MUTED, OK, STRIPE, WARN, WARN_SOFT, Card, CheckRow, Fonts,
-                    TabBar)
+from .theme import Card, CheckRow, Fonts, TabBar
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de filtre d'une valeur qui,
@@ -98,15 +95,21 @@ class Application(tk.Tk):
         self.title(WINDOW_TITLE)
         self.geometry("1380x880")
         self.minsize(1120, 720)
-        self.configure(background=GROUND)
 
+        # La configuration est lue en premier : c'est elle qui porte le
+        # theme, et un widget prend sa couleur a la construction. Tout ce qui
+        # suit — le fond de la fenetre, les styles ttk, les graphiques — lit
+        # la palette une fois qu'elle est posee.
+        self.config_dir = config_dir or default_config_dir()
+        self.configuration = load_configuration(self.config_dir)
+        theme.load(self.configuration)
+
+        self.configure(background=theme.GROUND)
         self.fonts = Fonts(self)
         theme.apply(self, self.fonts)
         # Une seule fenetre d'info-bulle pour toute l'application.
         self.hints = theme.Hints(self, self.fonts)
 
-        self.config_dir = config_dir or default_config_dir()
-        self.configuration = load_configuration(self.config_dir)
         self.source_path: Optional[str] = None
         self.population = None
         self.mapping = None
@@ -124,14 +127,14 @@ class Application(tk.Tk):
     # -------------------------------------------------------------- layout
 
     def _build_layout(self) -> None:
-        header = tk.Frame(self, background=CANVAS)
+        header = tk.Frame(self, background=theme.CANVAS)
         header.pack(fill="x")
-        inner = tk.Frame(header, background=CANVAS)
+        inner = tk.Frame(header, background=theme.CANVAS)
         inner.pack(fill="x", padx=26, pady=(20, 16))
-        tk.Label(inner, text="Analyse de rémunération", background=CANVAS,
-                 foreground=INK, font=self.fonts.title).pack(side="left")
+        tk.Label(inner, text="Analyse de rémunération", background=theme.CANVAS,
+                 foreground=theme.INK, font=self.fonts.title).pack(side="left")
         self.source_label = tk.Label(inner, text="Aucun fichier chargé",
-                                     background=CANVAS, foreground=FAINT,
+                                     background=theme.CANVAS, foreground=theme.FAINT,
                                      font=self.fonts.small)
         self.source_label.pack(side="left", padx=14, pady=(6, 0))
         ttk.Button(inner, text="Paramètres", style="Ghost.TButton",
@@ -140,17 +143,17 @@ class Application(tk.Tk):
 
         # Le pied de page se reserve sa place avant le corps : empile apres
         # une zone en expansion, il n'obtiendrait aucune hauteur.
-        footer = tk.Frame(self, background=GROUND)
+        footer = tk.Frame(self, background=theme.GROUND)
         footer.pack(side="bottom", fill="x", padx=26, pady=14)
         theme.rule(self).pack(side="bottom", fill="x")
-        self.status = tk.Label(footer, text="", background=GROUND,
-                               foreground=MUTED, font=self.fonts.small)
+        self.status = tk.Label(footer, text="", background=theme.GROUND,
+                               foreground=theme.MUTED, font=self.fonts.small)
         self.status.pack(side="left")
         tk.Label(footer, text="Traitement local · aucune donnée ne quitte ce poste",
-                 background=GROUND, foreground=FAINT,
+                 background=theme.GROUND, foreground=theme.FAINT,
                  font=self.fonts.small).pack(side="right")
 
-        body = tk.Frame(self, background=GROUND)
+        body = tk.Frame(self, background=theme.GROUND)
         body.pack(fill="both", expand=True)
 
         self.sidebar_card = Card(body, padding=0)
@@ -167,11 +170,11 @@ class Application(tk.Tk):
         # Un onglet retire doit s'expliquer la ou l'utilisateur regarde. Le
         # pied de page ne convient pas : la phrase y chevauchait la mention
         # de traitement local.
-        self.notice = tk.Label(content.inner, background=WARN_SOFT,
-                               foreground=WARN, font=self.fonts.small,
+        self.notice = tk.Label(content.inner, background=theme.WARN_SOFT,
+                               foreground=theme.WARN, font=self.fonts.small,
                                justify="left", anchor="w", padx=14, pady=9,
                                wraplength=900)
-        self.pages = tk.Frame(content.inner, background=CANVAS)
+        self.pages = tk.Frame(content.inner, background=theme.CANVAS)
         self.pages.pack(fill="both", expand=True)
         self._build_pages()
 
@@ -180,15 +183,15 @@ class Application(tk.Tk):
     def _section(self, parent, number: int, text: str,
                  action: Optional[str] = None, command=None) -> Optional[tk.Label]:
         """Intertitre numerote, avec une action facultative a sa droite."""
-        row = tk.Frame(parent, background=GROUND)
+        row = tk.Frame(parent, background=theme.GROUND)
         row.pack(fill="x", pady=(18, 8))
-        tk.Label(row, text=f"{number}", background=ACCENT, foreground="white",
+        tk.Label(row, text=f"{number}", background=theme.ACCENT, foreground="white",
                  font=self.fonts.label, width=2, pady=1).pack(side="left")
-        tk.Label(row, text=text.upper(), background=GROUND, foreground=FAINT,
+        tk.Label(row, text=text.upper(), background=theme.GROUND, foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left", padx=8)
         if action is None:
             return None
-        link = tk.Label(row, text=action, background=GROUND, foreground=ACCENT,
+        link = tk.Label(row, text=action, background=theme.GROUND, foreground=theme.ACCENT,
                         font=self.fonts.small, cursor="hand2")
         link.pack(side="right", padx=(0, 4))
         # L'action garde toujours sa place et son libelle. Elle s'eteint
@@ -202,10 +205,10 @@ class Application(tk.Tk):
 
         def survol(_event) -> None:
             if link.enabled:
-                link.configure(foreground=ACCENT_HOVER)
+                link.configure(foreground=theme.ACCENT_HOVER)
 
         def sortie(_event) -> None:
-            link.configure(foreground=ACCENT if link.enabled else FAINT)
+            link.configure(foreground=theme.ACCENT if link.enabled else theme.FAINT)
 
         link.bind("<Button-1>", clic)
         link.bind("<Enter>", survol)
@@ -218,12 +221,12 @@ class Application(tk.Tk):
         if link is None:
             return
         link.enabled = enabled
-        link.configure(foreground=ACCENT if enabled else FAINT,
+        link.configure(foreground=theme.ACCENT if enabled else theme.FAINT,
                        cursor="hand2" if enabled else "")
 
     def _build_sidebar(self, parent: tk.Widget) -> None:
-        parent.configure(background=GROUND)
-        actions = tk.Frame(parent, background=GROUND)
+        parent.configure(background=theme.GROUND)
+        actions = tk.Frame(parent, background=theme.GROUND)
         actions.pack(side="bottom", fill="x", padx=(26, 22), pady=(18, 24))
         # Ancrees en bas : sur un ecran peu haut, la liste des filtres poussait
         # "Analyser" hors du cadre.
@@ -239,7 +242,7 @@ class Application(tk.Tk):
         self.export_button.pack(fill="x", pady=(8, 0))
         self.export_button.state(["disabled"])
 
-        outer = tk.Canvas(parent, background=GROUND, highlightthickness=0)
+        outer = tk.Canvas(parent, background=theme.GROUND, highlightthickness=0)
         bar = ttk.Scrollbar(parent, orient="vertical", command=outer.yview,
                             style="Flat.Vertical.TScrollbar")
         # L'ascenseur se reserve sa place en premier : empile apres une zone
@@ -248,7 +251,7 @@ class Application(tk.Tk):
         outer.pack(side="left", fill="both", expand=True, padx=(26, 0))
         theme.attach_scrollbar(outer, bar, side="right", fill="y",
                                padx=(0, 8), pady=4, before=outer)
-        steps = tk.Frame(outer, background=GROUND)
+        steps = tk.Frame(outer, background=theme.GROUND)
         window = outer.create_window((0, 0), window=steps, anchor="nw")
         steps.bind("<Configure>",
                    lambda _e: outer.configure(scrollregion=outer.bbox("all")))
@@ -262,8 +265,8 @@ class Application(tk.Tk):
         self._section(steps, 1, "Importer")
         ttk.Button(steps, text="Choisir un fichier…", style="GhostGround.TButton",
                    command=self.choose_file).pack(fill="x")
-        self.mapping_label = tk.Label(steps, text="", background=GROUND,
-                                      foreground=MUTED, font=self.fonts.small,
+        self.mapping_label = tk.Label(steps, text="", background=theme.GROUND,
+                                      foreground=theme.MUTED, font=self.fonts.small,
                                       wraplength=250, justify="left")
         self.mapping_label.pack(anchor="w", pady=(8, 0))
 
@@ -271,18 +274,18 @@ class Application(tk.Tk):
             steps, 2, "Filtrer", "Réinitialiser", self.reset_filters)
         # Eteinte tant qu'aucun critere n'est pose.
         self._set_action_enabled(self.reset_filters_link, False)
-        self.filter_summary = tk.Label(steps, text="", background=GROUND,
-                                       foreground=ACCENT, font=self.fonts.small)
+        self.filter_summary = tk.Label(steps, text="", background=theme.GROUND,
+                                       foreground=theme.ACCENT, font=self.fonts.small)
         self.filter_summary.pack(anchor="w", pady=(0, 4))
-        self.filters_frame = tk.Frame(steps, background=GROUND)
+        self.filters_frame = tk.Frame(steps, background=theme.GROUND)
         self.filters_frame.pack(fill="x")
         tk.Label(self.filters_frame, text="Chargez un fichier pour voir les filtres.",
-                 background=GROUND, foreground=FAINT, font=self.fonts.small,
+                 background=theme.GROUND, foreground=theme.FAINT, font=self.fonts.small,
                  wraplength=250, justify="left").pack(anchor="w")
 
         self._section(steps, 3, "Restituer", "Tout / aucun",
                       self.toggle_outputs)
-        self.outputs_frame = tk.Frame(steps, background=GROUND)
+        self.outputs_frame = tk.Frame(steps, background=theme.GROUND)
         self.outputs_frame.pack(fill="x", pady=(0, 8))
         for key, label, default in (("rapport", "Rapport détaillé (HTML)", True),
                                     ("synthese", "Fiche standard (PDF)", True),
@@ -327,18 +330,18 @@ class Application(tk.Tk):
     def _build_pages(self) -> None:
         self.tabs: Dict[str, tk.Frame] = {}
         for key, label in TABS:
-            frame = tk.Frame(self.pages, background=CANVAS)
+            frame = tk.Frame(self.pages, background=theme.CANVAS)
             self.tabs[key] = frame
             self.tabbar.add(key, label)
 
-        self.quality_summary = tk.Frame(self.tabs["qualite"], background=CANVAS)
+        self.quality_summary = tk.Frame(self.tabs["qualite"], background=theme.CANVAS)
         self.quality_summary.pack(fill="x", padx=18, pady=(18, 12))
         # Tant qu'aucun fichier n'est charge, un tableau vide n'apprend rien :
         # la page dit ce qu'elle attend. _kpis vide ce cadre au premier calcul.
         tk.Label(self.quality_summary,
                  text="Aucun fichier chargé.\nChoisissez une population dans la "
                       "colonne de gauche pour lancer le contrôle qualité.",
-                 background=CANVAS, foreground=MUTED, font=self.fonts.body,
+                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.body,
                  justify="left").pack(anchor="w", pady=(40, 0))
         self.quality_tree = self._tree(self.tabs["qualite"],
                                        ("Sévérité", "Constat", "Lignes"),
@@ -348,7 +351,7 @@ class Application(tk.Tk):
         # La page defile : le decoupage de l'anciennete s'etend selon les
         # carrieres presentes, et peut compter dix tranches. Sans cela, les
         # dernieres se retrouvaient coupees en bas de fenetre.
-        overview = tk.Canvas(self.tabs["population"], background=CANVAS,
+        overview = tk.Canvas(self.tabs["population"], background=theme.CANVAS,
                              highlightthickness=0)
         overview_bar = ttk.Scrollbar(self.tabs["population"], orient="vertical",
                                      command=overview.yview,
@@ -358,7 +361,7 @@ class Application(tk.Tk):
         theme.attach_scrollbar(overview, overview_bar, side="right", fill="y",
                                padx=(0, 8), pady=4, before=overview)
         theme.bind_wheel(overview, self)
-        self.overview_frame = tk.Frame(overview, background=CANVAS)
+        self.overview_frame = tk.Frame(overview, background=theme.CANVAS)
         window = overview.create_window((18, 18), window=self.overview_frame,
                                         anchor="nw")
         self.overview_frame.bind(
@@ -372,15 +375,15 @@ class Application(tk.Tk):
         tk.Label(self.overview_frame,
                  text="Aucune analyse.\nChoisissez une population dans la "
                       "colonne de gauche, puis « Analyser ».",
-                 background=CANVAS, foreground=MUTED, font=self.fonts.body,
+                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.body,
                  justify="left").pack(anchor="w", pady=(40, 0))
         self.histogram = HistogramChart(self.tabs["distribution"])
         self.histogram.pack(fill="both", expand=True, padx=18, pady=18)
 
         nuage = self.tabs["nuage"]
-        controls = tk.Frame(nuage, background=CANVAS)
+        controls = tk.Frame(nuage, background=theme.CANVAS)
         controls.pack(fill="x", padx=18, pady=(16, 4))
-        tk.Label(controls, text="COLORER PAR", background=CANVAS, foreground=FAINT,
+        tk.Label(controls, text="COLORER PAR", background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
         self.colour_choice = ttk.Combobox(controls, state="readonly", width=20,
                                           font=self.fonts.small)
@@ -388,31 +391,31 @@ class Application(tk.Tk):
         self.colour_choice.bind("<<ComboboxSelected>>", lambda _e: self._recolour())
         ttk.Button(controls, text="Réinitialiser le cadrage", style="Ghost.TButton",
                    command=lambda: self.scatter.reset_view()).pack(side="left")
-        self.selection_label = tk.Label(controls, text="", background=CANVAS,
-                                        foreground=INK, font=self.fonts.small)
+        self.selection_label = tk.Label(controls, text="", background=theme.CANVAS,
+                                        foreground=theme.INK, font=self.fonts.small)
         self.selection_label.pack(side="right")
 
         self.scatter = ScatterChart(nuage, on_select=self._on_point_selected)
         self.scatter.pack(fill="both", expand=True, padx=18, pady=(4, 4))
-        self.legend_frame = tk.Frame(nuage, background=CANVAS)
+        self.legend_frame = tk.Frame(nuage, background=theme.CANVAS)
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
 
         equite = self.tabs["equite"]
-        self.equity_frame = tk.Frame(equite, background=CANVAS)
+        self.equity_frame = tk.Frame(equite, background=theme.CANVAS)
         self.equity_frame.pack(fill="x", pady=(18, 0))
-        self.equity_note = tk.Label(equite, text="", background=CANVAS,
-                                    foreground=MUTED, font=self.fonts.small,
+        self.equity_note = tk.Label(equite, text="", background=theme.CANVAS,
+                                    foreground=theme.MUTED, font=self.fonts.small,
                                     justify="left", anchor="w",
                                     wraplength=880)
         self.equity_note.pack(anchor="w", padx=18, pady=(0, 14))
         # Titre et tableau reunis dans un bloc : les masquer separement
         # obligeait a les remonter l'un devant l'autre, et remonter un widget
         # devant un widget lui-meme depaquete leve une erreur.
-        self.quartile_block = tk.Frame(equite, background=CANVAS)
+        self.quartile_block = tk.Frame(equite, background=theme.CANVAS)
         self.quartile_block.pack(fill="x")
         tk.Label(self.quartile_block,
                  text="RÉPARTITION PAR QUARTILE DE RÉMUNÉRATION",
-                 background=CANVAS, foreground=FAINT,
+                 background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(anchor="w", padx=18, pady=(0, 6))
         self.quartile_tree = self._tree(
             self.quartile_block,
@@ -420,18 +423,18 @@ class Application(tk.Tk):
             (200, 120, 140, 140), expand=False, height=4)
         # Le « travail de meme valeur » se lit selon le poste, mais aussi
         # selon le grade ou l'etablissement : l'axe doit pouvoir changer.
-        self.category_head = tk.Frame(equite, background=CANVAS)
+        self.category_head = tk.Frame(equite, background=theme.CANVAS)
         category_head = self.category_head
         category_head.pack(fill="x", padx=18, pady=(6, 6))
-        tk.Label(category_head, text="ÉCART PAR", background=CANVAS,
-                 foreground=FAINT, font=self.fonts.label).pack(side="left")
+        tk.Label(category_head, text="ÉCART PAR", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(side="left")
         self.category_choice = ttk.Combobox(category_head, state="readonly",
                                             width=22, font=self.fonts.small)
         self.category_choice.pack(side="left", padx=10)
         self.category_choice.bind("<<ComboboxSelected>>",
                                   lambda _e: self._show_categories())
         self.category_title = tk.Label(category_head, text="",
-                                       background=CANVAS, foreground=FAINT,
+                                       background=theme.CANVAS, foreground=theme.FAINT,
                                        font=self.fonts.label,
                                        wraplength=620, justify="left")
         self.category_title.pack(side="left", padx=(8, 0))
@@ -440,17 +443,17 @@ class Application(tk.Tk):
             ("Catégorie", "Femmes", "Hommes", "Écart moyen", "Écart médian"),
             (280, 100, 100, 140, 140))
 
-        head = tk.Frame(self.tabs["segments"], background=CANVAS)
+        head = tk.Frame(self.tabs["segments"], background=theme.CANVAS)
         head.pack(fill="x", padx=18, pady=(16, 8))
-        tk.Label(head, text="DIMENSION", background=CANVAS, foreground=FAINT,
+        tk.Label(head, text="DIMENSION", background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
         self.segment_choice = ttk.Combobox(head, state="readonly", width=24,
                                            font=self.fonts.small)
         self.segment_choice.pack(side="left", padx=10)
         self.segment_choice.bind("<<ComboboxSelected>>",
                                  lambda _e: self._show_segment())
-        self.segment_reference = tk.Label(head, text="", background=CANVAS,
-                                          foreground=MUTED,
+        self.segment_reference = tk.Label(head, text="", background=theme.CANVAS,
+                                          foreground=theme.MUTED,
                                           font=self.fonts.small)
         self.segment_reference.pack(side="left", padx=(18, 0))
         self.segment_tree = self._tree(
@@ -466,7 +469,7 @@ class Application(tk.Tk):
 
     def _tree(self, parent, columns, widths, expand: bool = True,
               height: Optional[int] = None) -> ttk.Treeview:
-        wrapper = tk.Frame(parent, background=CANVAS)
+        wrapper = tk.Frame(parent, background=theme.CANVAS)
         wrapper.pack(fill="both" if expand else "x", expand=expand,
                      padx=18, pady=(0, 18 if expand else 10))
         options = {"height": height} if height else {}
@@ -563,10 +566,10 @@ class Application(tk.Tk):
             # une liste deroulante cesse d'etre utilisable.
             if not values or len(values) > limit:
                 continue
-            block = tk.Frame(self.filters_frame, background=GROUND)
+            block = tk.Frame(self.filters_frame, background=theme.GROUND)
             block.pack(fill="x", pady=(0, 8))
             tk.Label(block, text=dimension_label(self.configuration, field),
-                     background=GROUND, foreground=MUTED,
+                     background=theme.GROUND, foreground=theme.MUTED,
                      font=self.fonts.small).pack(anchor="w")
             var = tk.StringVar(value=_ALL)
             var.trace_add("write", lambda *_: self._update_filter_summary())
@@ -734,7 +737,7 @@ class Application(tk.Tk):
     def _kpis(self, parent, pairs) -> None:
         for child in parent.winfo_children():
             child.destroy()
-        band = tk.Frame(parent, background=CANVAS)
+        band = tk.Frame(parent, background=theme.CANVAS)
         band.pack(fill="x", pady=(0, 16))
         parent.update_idletasks()
         # Une grille a colonnes egales, quatre au plus par rangee : au-dela,
@@ -750,24 +753,24 @@ class Application(tk.Tk):
             label, value = pair[0], pair[1]
             note = _hint(pair[2] if len(pair) > 2 else None, label)
             row, column = divmod(index, per_row)
-            cell = tk.Frame(band, background=CANVAS)
+            cell = tk.Frame(band, background=theme.CANVAS)
             span = per_row - column if index == len(pairs) - 1 else 1
             cell.grid(row=row, column=column, columnspan=span, sticky="nsew",
                       padx=(0, 24) if column + span < per_row else 0,
                       pady=(0, 20) if row == 0 else 0)
             band.grid_columnconfigure(column, weight=1, uniform="kpi")
             self.hints.attach(
-                _packed(tk.Label(cell, text=label.upper(), background=CANVAS,
-                                 foreground=FAINT, font=self.fonts.label),
+                _packed(tk.Label(cell, text=label.upper(), background=theme.CANVAS,
+                                 foreground=theme.FAINT, font=self.fonts.label),
                         anchor="w"), note, anchor=cell)
             self.hints.attach(
-                _packed(tk.Label(cell, text=value, background=CANVAS,
-                                 foreground=INK, font=font),
+                _packed(tk.Label(cell, text=value, background=theme.CANVAS,
+                                 foreground=theme.INK, font=font),
                         anchor="w", pady=(1, 0)), note, anchor=cell)
 
     def _fill(self, tree: ttk.Treeview, rows, flagged=None) -> None:
-        tree.tag_configure("pair", background=STRIPE)
-        tree.tag_configure("alerte", background=WARN_SOFT, foreground=WARN)
+        tree.tag_configure("pair", background=theme.STRIPE)
+        tree.tag_configure("alerte", background=theme.WARN_SOFT, foreground=theme.WARN)
         tree.delete(*tree.get_children())
         for index, row in enumerate(rows):
             tags = ["pair"] if index % 2 else []
@@ -777,11 +780,11 @@ class Application(tk.Tk):
 
     def _panel(self, parent, title: str, first: bool) -> tk.Frame:
         """Bloc cote a cote : un intertitre et de l'espace, sans cadre."""
-        side = tk.Frame(parent, background=CANVAS)
+        side = tk.Frame(parent, background=theme.CANVAS)
         side.pack(side="left", fill="both", expand=True,
                   padx=(0, 36) if first else 0)
-        tk.Label(side, text=title.upper(), background=CANVAS,
-                 foreground=FAINT, font=self.fonts.label).pack(anchor="w",
+        tk.Label(side, text=title.upper(), background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(anchor="w",
                                                                pady=(0, 6))
         return side
 
@@ -799,10 +802,10 @@ class Application(tk.Tk):
             ("Anomalies critiques", str(quality.get("anomalies_critiques", 0))),
         ])
         statut = quality.get("statut", "")
-        colour = {"CONFORME": OK, "POINTS DE VIGILANCE": WARN}.get(statut, CRIT)
-        banner = tk.Frame(self.quality_summary, background=CANVAS)
+        colour = {"CONFORME": theme.OK, "POINTS DE VIGILANCE": theme.WARN}.get(statut, theme.CRIT)
+        banner = tk.Frame(self.quality_summary, background=theme.CANVAS)
         banner.pack(fill="x")
-        tk.Label(banner, text=f"  {statut}", background=CANVAS, foreground=colour,
+        tk.Label(banner, text=f"  {statut}", background=theme.CANVAS, foreground=colour,
                  font=self.fonts.body_bold).pack(anchor="w")
         constats = quality.get("constats", [])
         wrapper = self.quality_tree.master
@@ -832,7 +835,7 @@ class Application(tk.Tk):
         if population.get("masked") and salary.get("masked"):
             tk.Label(self.overview_frame,
                      text=population.get("warning") or salary.get("warning", ""),
-                     background=CANVAS, foreground=WARN,
+                     background=theme.CANVAS, foreground=theme.WARN,
                      font=self.fonts.body, wraplength=760,
                      justify="left").pack(anchor="w")
             return
@@ -864,11 +867,11 @@ class Application(tk.Tk):
         # la rangee prend la hauteur du plus grand des deux blocs, et le bloc
         # court laisse un trou au milieu de la page. Empilees, chaque colonne
         # se referme sur son contenu et le vide tombe en bas.
-        columns = tk.Frame(self.overview_frame, background=CANVAS)
+        columns = tk.Frame(self.overview_frame, background=theme.CANVAS)
         columns.pack(fill="both", expand=True)
-        left = tk.Frame(columns, background=CANVAS)
+        left = tk.Frame(columns, background=theme.CANVAS)
         left.pack(side="left", fill="both", expand=True, padx=(0, 36))
-        right = tk.Frame(columns, background=CANVAS)
+        right = tk.Frame(columns, background=theme.CANVAS)
         right.pack(side="left", fill="both", expand=True)
 
         spread = salary.get("dispersion") or {}
@@ -922,7 +925,7 @@ class Application(tk.Tk):
         Huit chiffres alignes se valent tous ; groupes sous « Rémunération »
         et « Population », ils se cherchent du regard.
         """
-        band = tk.Frame(parent, background=CANVAS)
+        band = tk.Frame(parent, background=theme.CANVAS)
         band.pack(fill="x", pady=(0, 22))
         parent.update_idletasks()
         cells = sum(len(pairs) for _t, pairs in groups) or 1
@@ -940,12 +943,12 @@ class Application(tk.Tk):
                 theme.rule(band, vertical=True).grid(
                     row=0, column=column, rowspan=2, sticky="ns", padx=18)
                 column += 1
-            tk.Label(band, text=title.upper(), background=CANVAS,
-                     foreground=ACCENT, font=self.fonts.label).grid(
+            tk.Label(band, text=title.upper(), background=theme.CANVAS,
+                     foreground=theme.ACCENT, font=self.fonts.label).grid(
                          row=0, column=column, columnspan=len(pairs),
                          sticky="w", pady=(0, 8))
             for position, (label, value, key) in enumerate(pairs):
-                cell = tk.Frame(band, background=CANVAS)
+                cell = tk.Frame(band, background=theme.CANVAS)
                 # Pas de marge apres le dernier d'un groupe : le filet et son
                 # ecart la fournissent deja, et chaque pixel rendu evite de
                 # rogner « Ancienneté médiane ».
@@ -959,32 +962,32 @@ class Application(tk.Tk):
                 # s'affiche sous le bloc, jamais par-dessus le chiffre.
                 self.hints.attach(
                     _packed(tk.Label(cell, text=label.upper(),
-                                     background=CANVAS, foreground=FAINT,
+                                     background=theme.CANVAS, foreground=theme.FAINT,
                                      font=self.fonts.label), anchor="w"),
                     note, anchor=cell)
                 self.hints.attach(
-                    _packed(tk.Label(cell, text=value, background=CANVAS,
-                                     foreground=INK, font=font),
+                    _packed(tk.Label(cell, text=value, background=theme.CANVAS,
+                                     foreground=theme.INK, font=font),
                             anchor="w", pady=(1, 0)), note, anchor=cell)
                 column += 1
 
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:
         """Intitule, chiffre d'appoint a droite, filet. Chacun s'explique."""
-        cell = tk.Frame(parent, background=CANVAS)
+        cell = tk.Frame(parent, background=theme.CANVAS)
         cell.pack(fill="x", pady=(0, 26))
-        head = tk.Frame(cell, background=CANVAS)
+        head = tk.Frame(cell, background=theme.CANVAS)
         head.pack(fill="x", pady=(0, 8))
         self.hints.attach(
-            _packed(tk.Label(head, text=title.upper(), background=CANVAS,
-                             foreground=FAINT, font=self.fonts.label),
+            _packed(tk.Label(head, text=title.upper(), background=theme.CANVAS,
+                             foreground=theme.FAINT, font=self.fonts.label),
                     side="left"),
             _hint(key, title))
         if extra:
             label, value = extra[0], extra[1]
             self.hints.attach(
                 _packed(tk.Label(head, text=f"{label} : {value}",
-                                 background=CANVAS, foreground=MUTED,
+                                 background=theme.CANVAS, foreground=theme.MUTED,
                                  font=self.fonts.small), side="right"),
                 _hint(extra[2] if len(extra) > 2 else None, label))
         theme.rule(cell).pack(fill="x", pady=(0, 6))
@@ -1002,13 +1005,13 @@ class Application(tk.Tk):
         signalee par une couleur de fond.
         """
         cell = self._panel_head(parent, title, key=key)
-        table = tk.Frame(cell, background=CANVAS)
+        table = tk.Frame(cell, background=theme.CANVAS)
         table.pack(fill="x")
         table.grid_columnconfigure(0, weight=1)
 
         for index, name in enumerate(headers):
-            tk.Label(table, text=name.upper(), background=CANVAS,
-                     foreground=FAINT, font=self.fonts.label,
+            tk.Label(table, text=name.upper(), background=theme.CANVAS,
+                     foreground=theme.FAINT, font=self.fonts.label,
                      anchor="w" if index == 0 else "e").grid(
                          row=0, column=index, sticky="ew", pady=(0, 7))
         theme.rule(table).grid(row=1, column=0, columnspan=len(headers),
@@ -1019,8 +1022,8 @@ class Application(tk.Tk):
             note = _hint(entry_key, label)
             for index, text in enumerate((label, value)):
                 widget = tk.Label(
-                    table, text=str(text), background=CANVAS,
-                    foreground=INK if highlighted else INK_SOFT,
+                    table, text=str(text), background=theme.CANVAS,
+                    foreground=theme.INK if highlighted else theme.INK_SOFT,
                     font=self.fonts.body_bold if highlighted else self.fonts.body,
                     anchor="w" if index == 0 else "e")
                 widget.grid(row=2 + position, column=index, sticky="ew",
@@ -1072,7 +1075,7 @@ class Application(tk.Tk):
             child.destroy()
         if not equity.get("available"):
             tk.Label(self.equity_frame, text=equity.get("warning", ""),
-                     background=CANVAS, foreground=WARN, font=self.fonts.body,
+                     background=theme.CANVAS, foreground=theme.WARN, font=self.fonts.body,
                      wraplength=760, justify="left").pack(anchor="w", padx=18,
                                                           pady=(8, 0))
             self.equity_note.configure(text="")
@@ -1192,19 +1195,19 @@ class Application(tk.Tk):
         groups = self.scatter.dataset.get("groups") or []
         if not groups or len(groups) > 16:
             return
-        tk.Label(self.legend_frame, text="MASQUER", background=CANVAS,
-                 foreground=FAINT, font=self.fonts.label).pack(side="left",
+        tk.Label(self.legend_frame, text="MASQUER", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(side="left",
                                                                padx=(0, 10))
         from .charts import _PALETTE
         for index, group in enumerate(groups):
             colour = _PALETTE[index % len(_PALETTE)]
-            chip = tk.Frame(self.legend_frame, background=CANVAS, cursor="hand2")
+            chip = tk.Frame(self.legend_frame, background=theme.CANVAS, cursor="hand2")
             chip.pack(side="left", padx=(0, 14))
-            dot = tk.Canvas(chip, width=9, height=9, background=CANVAS,
+            dot = tk.Canvas(chip, width=9, height=9, background=theme.CANVAS,
                             highlightthickness=0)
             dot.create_oval(1, 1, 8, 8, fill=colour, outline="")
             dot.pack(side="left", pady=(1, 0))
-            text = tk.Label(chip, text=group, background=CANVAS, foreground=INK_SOFT,
+            text = tk.Label(chip, text=group, background=theme.CANVAS, foreground=theme.INK_SOFT,
                             font=self.fonts.small)
             text.pack(side="left", padx=(5, 0))
             for widget in (chip, dot, text):
@@ -1214,7 +1217,7 @@ class Application(tk.Tk):
     def _toggle_group(self, group: str, text: tk.Label, dot: tk.Canvas) -> None:
         self.scatter.toggle_group(group)
         masked = group in self.scatter.hidden
-        text.configure(foreground=FAINT if masked else INK_SOFT)
+        text.configure(foreground=theme.FAINT if masked else theme.INK_SOFT)
         dot.configure(state="disabled" if masked else "normal")
 
     def _on_point_selected(self, point: Optional[Dict[str, Any]]) -> None:

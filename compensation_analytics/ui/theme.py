@@ -16,32 +16,76 @@ import tkinter.font as tkfont
 from tkinter import ttk
 from typing import Callable, Dict, List, Optional, Sequence
 
+from ..core import palette
 from . import raster
 
 # --------------------------------------------------------------- palette
+#
+# Les valeurs ne sont plus ecrites ici : elles viennent de `core.palette`,
+# qui sert aussi les documents. Les noms de role, eux, restent — deux cent
+# trente-cinq lectures dans l'interface les emploient, et un role se lit
+# mieux qu'une teinte.
 
-INK = "#111c26"          # texte principal
-INK_SOFT = "#3d4b59"     # texte courant
-MUTED = "#6b7885"        # texte secondaire
-FAINT = "#9aa5b1"        # texte tertiaire
-LINE = "#e4e9ee"         # filets
-LINE_STRONG = "#cfd7df"
-CANVAS = "#ffffff"       # fond des contenus
-#: Une seule teinte de fond pour toute la fenetre. Les zones se distinguent
-#: par l'espace et par un filet, jamais par un aplat ou un cadre : c'est ce
-#: qui fait la difference entre une interface unie et un empilement de
-#: boites.
-GROUND = CANVAS
-ACCENT = "#2f5d8a"
-ACCENT_HOVER = "#26496d"
-ACCENT_SOFT = "#eaf0f6"
-WARN = "#8a5a12"
-WARN_SOFT = "#fdf4e3"
-CRIT = "#8f2f2f"
-CRIT_SOFT = "#fbeded"
-OK = "#2f6b4f"
-DISABLED = "#c3ccd6"
-STRIPE = "#fafbfc"   # alternance de lignes, a peine perceptible
+#: Palette active. `load()` la remplace au demarrage selon la configuration ;
+#: sans appel, l'interface s'ouvre avec le theme d'origine.
+ACTIVE: palette.Palette = palette.by_name(palette.DEFAULT_THEME)
+
+INK = INK_SOFT = MUTED = FAINT = LINE = LINE_STRONG = CANVAS = GROUND = ""
+ACCENT = ACCENT_HOVER = ACCENT_SOFT = ""
+WARN = WARN_SOFT = CRIT = CRIT_SOFT = OK = DISABLED = STRIPE = ""
+GRID = FEMALE = MALE = ""
+#: Teintes du texte des info-bulles, sur fond INK.
+HINT_TEXT = HINT_FAINT = ""
+
+
+def _publish() -> None:
+    """Recopie la palette active dans les constantes du module.
+
+    Les modules d'interface lisent `theme.INK` et non `INK` : la valeur est
+    donc relue a chaque usage, et un changement de theme n'exige pas de
+    reimporter quoi que ce soit.
+    """
+    global INK, INK_SOFT, MUTED, FAINT, LINE, LINE_STRONG, CANVAS, GROUND
+    global ACCENT, ACCENT_HOVER, ACCENT_SOFT
+    global WARN, WARN_SOFT, CRIT, CRIT_SOFT, OK, DISABLED, STRIPE
+    global GRID, FEMALE, MALE, HINT_TEXT, HINT_FAINT
+    INK, INK_SOFT = ACTIVE.ink, ACTIVE.ink_soft
+    MUTED, FAINT = ACTIVE.muted, ACTIVE.faint
+    LINE, LINE_STRONG = ACTIVE.line, ACTIVE.line_strong
+    CANVAS = ACTIVE.canvas
+    #: Une seule teinte de fond pour toute la fenetre. Les zones se
+    #: distinguent par l'espace et par un filet, jamais par un aplat ou un
+    #: cadre : c'est ce qui fait la difference entre une interface unie et
+    #: un empilement de boites.
+    GROUND = ACTIVE.canvas
+    ACCENT, ACCENT_HOVER = ACTIVE.accent, ACTIVE.accent_hover
+    ACCENT_SOFT = ACTIVE.accent_soft
+    WARN, WARN_SOFT = ACTIVE.warn, ACTIVE.warn_soft
+    CRIT, CRIT_SOFT = ACTIVE.crit, ACTIVE.crit_soft
+    OK, DISABLED, STRIPE = ACTIVE.ok, ACTIVE.disabled, ACTIVE.stripe
+    GRID, FEMALE, MALE = ACTIVE.grid, ACTIVE.female, ACTIVE.male
+    # L'info-bulle est le seul aplat sombre de l'interface : son texte se
+    # deduit du fond, et non de la palette claire.
+    HINT_TEXT = palette.mix(ACTIVE.canvas, ACTIVE.ink, 0.09)
+    HINT_FAINT = palette.mix(ACTIVE.canvas, ACTIVE.ink, 0.35)
+
+
+_publish()
+
+
+def load(config) -> palette.Palette:
+    """Applique le theme configure. A appeler avant de construire la fenetre.
+
+    Le theme est fixe pour la duree de la session : les widgets recoivent
+    leurs couleurs a la construction, et Tk ne les recalcule pas. Changer de
+    theme prend donc effet au demarrage suivant — ce que la fenetre de
+    parametrage annonce.
+    """
+    global ACTIVE
+    ACTIVE = palette.resolve(config)
+    _publish()
+    return ACTIVE
+
 
 #: Une seule echelle de tailles, du plus grand au plus petit.
 SIZE_TITLE = 17

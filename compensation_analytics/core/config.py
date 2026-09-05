@@ -27,6 +27,7 @@ CONFIG_FILES = (
     "privacy_parameters",
     "pay_equity_parameters",
     "chart_parameters",
+    "theme_parameters",
     "export_parameters",
 )
 
@@ -162,6 +163,13 @@ DEFAULTS: Dict[str, Any] = {
         # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
         # a affirmer une tendance sans permettre d'en juger la solidite.
         "show_trend_line": False,
+    },
+    "theme_parameters": {
+        # Nom du theme applique a l'ecran et aux documents. La liste est
+        # fermee : « palette.THEMES » en tient les quatre jeux, verifies en
+        # contraste. Un nom inconnu retombe sur le theme d'origine plutot
+        # que d'ouvrir l'outil sans couleurs.
+        "theme": "ardoise",
     },
     "export_parameters": {
         "output_directory": "output",

@@ -19,7 +19,9 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from ..version import ENGINE_NAME, __version__
 from .axes import nice_ticks
-from .reporting import (_PALETTE, format_money, format_number, format_percent,
+from . import palette
+from . import reporting
+from .reporting import (format_money, format_number, format_percent,
                         format_years,
                         histogram_svg, scatter_svg)
 
@@ -368,11 +370,51 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
 
 # ----------------------------------------------------------------- rendu HTML
 
+#: Palette du jeu de slides en cours de rendu, HTML comme PDF. Voir la note
+#: de `reporting.ACTIVE` : un document se rend d'un seul tenant.
+ACTIVE: palette.Palette = palette.by_name(palette.DEFAULT_THEME)
+
+
+def use(analysis) -> palette.Palette:
+    """Fixe la palette du rendu qui commence, pour les deux formats.
+
+    Le rapport est teinte en meme temps : une restitution complete produit
+    un rapport et un jeu de slides du meme theme, et l'un des deux ne doit
+    pas rester sur les couleurs du precedent.
+    """
+    global ACTIVE
+    ACTIVE = palette.from_analysis(analysis)
+    reporting.use(analysis)
+    _publish_pdf_colours()
+    return ACTIVE
+
+
+def _variables() -> str:
+    """Les couleurs du theme, en variables CSS."""
+    pairs = (
+        ("ink", ACTIVE.ink), ("muted", ACTIVE.muted), ("faint", ACTIVE.faint),
+        ("line", ACTIVE.line), ("grid", ACTIVE.grid), ("panel", ACTIVE.panel),
+        ("bg", ACTIVE.canvas), ("accent", ACTIVE.accent),
+        ("accent-deep", ACTIVE.accent_deep),
+        # Le fond de la planche : un gris a peine plus dense que les pages,
+        # pour que chaque slide se detache sans cadre.
+        ("deck", palette.mix(ACTIVE.ink, palette.WHITE, 0.90)),
+        ("cover-sub", palette.mix(ACTIVE.accent, palette.WHITE, 0.68)),
+        ("cover-line", palette.mix(ACTIVE.accent, palette.WHITE, 0.52)),
+        ("cover-page", palette.mix(ACTIVE.accent, palette.WHITE, 0.45)),
+        ("warn", ACTIVE.warn), ("warn-bg", ACTIVE.warn_soft),
+        ("female", ACTIVE.female), ("male", ACTIVE.male),
+    )
+    return ":root{" + ";".join(f"--{n}:{v}" for n, v in pairs) + "}"
+
+
+def _slide_css() -> str:
+    return _variables() + _SLIDE_CSS
+
+
 _SLIDE_CSS = """
-:root{--ink:#1b2733;--muted:#5d6b7a;--line:#d9e0e7;--panel:#f5f7f9;--accent:#2f5d8a;
---warn:#8a5a12;--warn-bg:#fdf3e0}
 *{box-sizing:border-box}
-body{margin:0;background:#e8ecf0;color:var(--ink);
+body{margin:0;background:var(--deck);color:var(--ink);
 font:15px/1.45 "Segoe UI",Calibri,Arial,sans-serif}
 .deck{display:flex;flex-direction:column;align-items:center;gap:20px;padding:24px}
 /* La page garde une geometrie fixe (1280x720) : c'est ce qui garantit que
@@ -388,13 +430,13 @@ border:1px solid var(--line);border-radius:4px;padding:44px 56px 56px;
 display:flex;flex-direction:column;overflow:hidden}
 .slide h1{font-size:34px;margin:0 0 6px;font-weight:600}
 .slide .sub{color:var(--muted);font-size:16px;margin-bottom:22px}
-.slide.cover{justify-content:center;background:linear-gradient(135deg,#2f5d8a,#24486b);
+.slide.cover{justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-deep));
 color:#fff;border:none}
 .slide.cover h1{font-size:46px;max-width:80%}
-.slide.cover .sub{color:#c8d8e8;font-size:22px;margin-bottom:34px}
-.slide.cover .lines div{color:#dbe6f0;font-size:15px;margin-bottom:7px}
+.slide.cover .sub{color:var(--cover-sub);font-size:22px;margin-bottom:34px}
+.slide.cover .lines div{color:var(--cover-sub);font-size:15px;margin-bottom:7px}
 .rule{height:3px;width:90px;background:var(--accent);margin-bottom:20px}
-.slide.cover .rule{background:#8fb6d8;width:120px}
+.slide.cover .rule{background:var(--cover-line);width:120px}
 .body{flex:1;display:flex;flex-wrap:wrap;gap:22px;align-content:flex-start;
 min-height:0;overflow:hidden}
 .full{flex:1 1 100%}
@@ -421,7 +463,7 @@ th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right}
 th:first-child,td:first-child{text-align:left}
 thead th{background:var(--panel);color:var(--muted);text-transform:uppercase;
 font-size:11px;letter-spacing:.04em;font-weight:600}
-.note{border-left:3px solid #c9922f;background:var(--warn-bg);color:var(--warn);
+.note{border-left:3px solid var(--warn);background:var(--warn-bg);color:var(--warn);
 padding:10px 14px;font-size:13px;width:100%}
 .lines div{margin-bottom:6px;color:var(--muted);font-size:14px}
 .legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;width:100%}
@@ -430,9 +472,9 @@ padding:10px 14px;font-size:13px;width:100%}
 svg{display:block;width:100%;height:auto}
 .chart-fit{min-height:0}
 .pagenum{position:absolute;right:56px;bottom:22px;color:var(--muted);font-size:12px}
-.slide.cover .pagenum{color:#9dbad6}
+.slide.cover .pagenum{color:var(--cover-page)}
 .hint{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;
-background:#1b2733;color:#fff;padding:7px 14px;border-radius:16px;font-size:12px;
+background:var(--ink);color:var(--bg);padding:7px 14px;border-radius:16px;font-size:12px;
 opacity:.85}
 @media print{
   @page{size:1280px 720px;margin:0}
@@ -480,7 +522,7 @@ _SLIDE_JS = """
     if(e.key==='End'){show(slides.length-1);e.preventDefault();}
   });
   var tip=document.createElement('div');
-  tip.style.cssText='position:fixed;display:none;background:#1b2733;color:#fff;'+
+  tip.style.cssText='position:fixed;display:none;background:var(--ink);color:var(--bg);'+
     'padding:6px 9px;border-radius:4px;font:12px/1.4 Segoe UI,Arial,sans-serif;'+
     'pointer-events:none;z-index:9';
   document.body.appendChild(tip);
@@ -548,7 +590,7 @@ def _render_block(block: Block, currency: str) -> str:
             return ""
         items = "".join(
             f'<span><i class="dot" style="background:'
-            f'{_PALETTE[i % len(_PALETTE)]}"></i>{_html_escape(g)}</span>'
+            f'{ACTIVE.series_for(i)}"></i>{_html_escape(g)}</span>'
             for i, g in enumerate(groups)
         )
         label = dataset.get("color_label") or ""
@@ -566,6 +608,7 @@ def _render_block(block: Block, currency: str) -> str:
 
 def render_slides_html(slides: Sequence[Slide], analysis: Dict[str, Any]) -> str:
     """Jeu de slides paysage dans un fichier HTML autoportant."""
+    use(analysis)
     currency = analysis.get("salary", {}).get("currency", "EUR")
     title = analysis.get("title", "Analyse de rémunération")
     rendered = []
@@ -589,7 +632,7 @@ def render_slides_html(slides: Sequence[Slide], analysis: Dict[str, Any]) -> str
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{_html_escape(title)}</title>
-<style>{_SLIDE_CSS}</style>
+<style>{_slide_css()}</style>
 </head>
 <body>
 <div class="deck">{''.join(rendered)}</div>
@@ -614,22 +657,30 @@ def write_slides_html(slides: Sequence[Slide], analysis: Dict[str, Any],
 PDF_WIDTH, PDF_HEIGHT = 841.89, 595.28
 _MARGIN = 38.0
 
-_INK = (0.106, 0.153, 0.200)
-_MUTED = (0.365, 0.420, 0.478)
-_ACCENT = (0.184, 0.365, 0.541)
-_LINE = (0.851, 0.878, 0.906)
-_PANEL = (0.961, 0.969, 0.976)
-_WARN = (0.541, 0.353, 0.071)
-_WARN_BG = (0.992, 0.953, 0.878)
-_WHITE = (1.0, 1.0, 1.0)
-
-
 def _rgb(hex_color: str) -> tuple:
+    """Teinte en composantes de 0 a 1, comme les attend le generateur PDF."""
     value = hex_color.lstrip("#")
     return tuple(int(value[i:i + 2], 16) / 255.0 for i in (0, 2, 4))
 
 
-_PDF_PALETTE = [_rgb(color) for color in _PALETTE]
+# Le PDF n'a pas de variables : ses couleurs sont des triplets, poses ici et
+# relus par les fonctions de trace. `_publish_pdf_colours()` les recalcule
+# quand le theme change — c'est le pendant du bloc `:root` du HTML.
+_INK = _MUTED = _ACCENT = _LINE = _PANEL = _WARN = _WARN_BG = (0.0, 0.0, 0.0)
+_WHITE = (1.0, 1.0, 1.0)
+_PDF_PALETTE: List[tuple] = []
+
+
+def _publish_pdf_colours() -> None:
+    global _INK, _MUTED, _ACCENT, _LINE, _PANEL, _WARN, _WARN_BG, _PDF_PALETTE
+    _INK, _MUTED = _rgb(ACTIVE.ink), _rgb(ACTIVE.muted)
+    _ACCENT, _LINE = _rgb(ACTIVE.accent), _rgb(ACTIVE.line)
+    _PANEL = _rgb(ACTIVE.panel)
+    _WARN, _WARN_BG = _rgb(ACTIVE.warn), _rgb(ACTIVE.warn_soft)
+    _PDF_PALETTE = [_rgb(colour) for colour in ACTIVE.series]
+
+
+_publish_pdf_colours()
 
 
 def _draw_kpis(page, payload, x, y, width) -> float:
@@ -926,6 +977,7 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
 def write_slides_pdf(slides: Sequence[Slide], analysis: Dict[str, Any],
                      path: str) -> str:
     """Ecrit le jeu de slides en PDF paysage, sans navigateur ni dependance."""
+    use(analysis)
     from ..io.pdf_writer import Document
 
     currency = analysis.get("salary", {}).get("currency", "EUR")

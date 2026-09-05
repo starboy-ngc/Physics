@@ -22,10 +22,11 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from ..core.config import Configuration, write_configuration
 from ..core.errors import CompensationError
+from ..core import palette
 from ..core.mapping import normalise_label
 from ..core.segmentation import CORE_FIELDS, max_filter_values
-from .theme import (ACCENT, CANVAS, CRIT, FAINT, GROUND, INK, INK_SOFT, LINE,
-                    MUTED, WARN, Card, CheckRow, Fonts, attach_scrollbar,
+from . import theme
+from .theme import (Card, CheckRow, Fonts, attach_scrollbar,
                     bind_wheel)
 
 #: Champ conserve mais jamais associe a une colonne.
@@ -149,8 +150,8 @@ class SettingsWindow(tk.Toplevel):
                  config_dir: str, fonts: Fonts,
                  headers: Optional[Sequence[str]] = None,
                  on_saved=None):
-        super().__init__(master, background=GROUND)
-        self.title("Paramètres — champs et filtres")
+        super().__init__(master, background=theme.GROUND)
+        self.title("Paramètres")
         self.configuration = configuration
         self.config_dir = config_dir
         self.fonts = fonts
@@ -168,46 +169,135 @@ class SettingsWindow(tk.Toplevel):
     # ------------------------------------------------------------- montage
 
     def _build(self) -> None:
-        head = tk.Frame(self, background=CANVAS)
+        head = tk.Frame(self, background=theme.CANVAS)
         head.pack(fill="x")
-        tk.Label(head, text="Champs et filtres", background=CANVAS,
-                 foreground=INK, font=self.fonts.title).pack(anchor="w",
+        tk.Label(head, text="Champs, filtres et apparence",
+                 background=theme.CANVAS,
+                 foreground=theme.INK, font=self.fonts.title).pack(anchor="w",
                                                              padx=22, pady=(18, 2))
         tk.Label(head, text="Ces réglages décident de ce qui vous sera "
                             "proposé dans la fenêtre principale ; ils ne "
                             "retirent aucun salarié. Ils sont enregistrés "
-                            "dans population_mapping.json et restent "
-                            "modifiables au bloc-notes.",
-                 background=CANVAS, foreground=MUTED, font=self.fonts.small,
+                            "dans population_mapping.json et "
+                            "theme_parameters.json, et restent modifiables "
+                            "au bloc-notes.",
+                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
                  wraplength=900, justify="left").pack(anchor="w", padx=22,
                                                       pady=(0, 16))
-        tk.Frame(head, height=1, background=LINE).pack(fill="x")
+        tk.Frame(head, height=1, background=theme.LINE).pack(fill="x")
 
-        actions = tk.Frame(self, background=GROUND)
+        actions = tk.Frame(self, background=theme.GROUND)
         actions.pack(side="bottom", fill="x", padx=22, pady=16)
         ttk.Button(actions, text="Enregistrer", style="Primary.TButton",
                    command=self.save).pack(side="right")
         ttk.Button(actions, text="Annuler", style="GhostGround.TButton",
                    command=self.destroy).pack(side="right", padx=(0, 10))
-        self.feedback = tk.Label(actions, text="", background=GROUND,
-                                 foreground=MUTED, font=self.fonts.small,
+        self.feedback = tk.Label(actions, text="", background=theme.GROUND,
+                                 foreground=theme.MUTED, font=self.fonts.small,
                                  justify="left", wraplength=520)
         self.feedback.pack(side="left")
 
-        body = tk.Frame(self, background=GROUND)
+        self._build_theme(self)
+
+        body = tk.Frame(self, background=theme.GROUND)
         body.pack(fill="both", expand=True, padx=22, pady=(16, 0))
         self._build_columns(body)
         self._build_dimensions(body)
 
+    def _build_theme(self, parent: tk.Widget) -> None:
+        """Choix du theme, montre plutot que decrit.
+
+        Les couleurs ne se saisissent pas une par une : quatre jeux complets
+        sont proposes, tous verifies en contraste. On ne peut donc pas rendre
+        l'outil illisible depuis cet ecran, ni donner du vert a « critique ».
+        Chaque jeu montre ses teintes : c'est plus court a lire qu'un nom.
+        """
+        band = tk.Frame(parent, background=theme.GROUND)
+        band.pack(side="bottom", fill="x", padx=22, pady=(4, 0))
+        tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
+                                                             pady=(0, 12))
+        tk.Label(band, text="APPARENCE", background=theme.GROUND,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w")
+        tk.Label(band, text="Le thème colore la fenêtre et les documents "
+                            "produits. Les documents en tiennent compte dès "
+                            "l'enregistrement ; la fenêtre, au prochain "
+                            "démarrage.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(2, 10))
+
+        row = tk.Frame(band, background=theme.GROUND)
+        row.pack(fill="x", pady=(0, 4))
+        self.theme_var = tk.StringVar(
+            value=str(self.configuration.get("theme_parameters.theme",
+                                             palette.DEFAULT_THEME)))
+        self._theme_cards: Dict[str, Dict[str, Any]] = {}
+        for entry in palette.THEMES.values():
+            self._theme_card(row, entry)
+        self._show_theme()
+
+    def _theme_card(self, parent: tk.Widget, entry) -> None:
+        card = tk.Frame(parent, background=theme.GROUND, cursor="hand2")
+        card.pack(side="left", padx=(0, 26))
+        chips = tk.Frame(card, background=theme.GROUND)
+        chips.pack(anchor="w")
+        # Les teintes montrees sont celles qui portent la lecture : l'accent,
+        # l'encre, le gris secondaire, puis le couple femmes / hommes.
+        shown = (entry.palette.accent, entry.palette.ink, entry.palette.muted,
+                 entry.palette.female, entry.palette.male)
+        for colour in shown:
+            chip = tk.Frame(chips, background=colour, width=17, height=17)
+            chip.pack_propagate(False)
+            chip.pack(side="left", padx=(0, 3))
+        name = tk.Label(card, text=entry.label, background=theme.GROUND,
+                        foreground=theme.INK, font=self.fonts.body_bold)
+        name.pack(anchor="w", pady=(6, 0))
+        mark = tk.Frame(card, height=2, background=theme.GROUND)
+        mark.pack(fill="x", pady=(4, 0))
+        self._theme_cards[entry.key] = {"name": name, "mark": mark,
+                                        "help": entry.description}
+        for widget in (card, chips, name, *chips.winfo_children()):
+            widget.bind("<Button-1>",
+                        lambda _e, key=entry.key: self._choose_theme(key))
+        self._describe_on_hover(card, entry)
+
+    def _describe_on_hover(self, card: tk.Widget, entry) -> None:
+        """Le detail du theme s'affiche au survol, pres des boutons.
+
+        Quatre descriptions ecrites en toutes lettres tiendraient plus
+        de place que la bande entiere.
+        """
+        for widget in [card] + list(card.winfo_children()):
+            widget.bind("<Enter>",
+                        lambda _e, text=entry.description:
+                        self.feedback.configure(text=text), add="+")
+            widget.bind("<Leave>",
+                        lambda _e: self.feedback.configure(text=""), add="+")
+
+    def _choose_theme(self, key: str) -> None:
+        self.theme_var.set(key)
+        self._show_theme()
+
+    def _show_theme(self) -> None:
+        """Marque le theme retenu d'un filet, sans cadre ni case a cocher."""
+        chosen = self.theme_var.get()
+        for key, card in self._theme_cards.items():
+            selected = key == chosen
+            card["name"].configure(
+                foreground=theme.INK if selected else theme.MUTED)
+            card["mark"].configure(
+                background=theme.ACCENT if selected else theme.GROUND)
+
     def _scrollable(self, parent: tk.Widget) -> tk.Frame:
-        canvas = tk.Canvas(parent, background=CANVAS, highlightthickness=0)
+        canvas = tk.Canvas(parent, background=theme.CANVAS, highlightthickness=0)
         bar = ttk.Scrollbar(parent, orient="vertical", command=canvas.yview,
                             style="Flat.Vertical.TScrollbar")
         bar.pack(side="right", fill="y")
         canvas.pack(side="left", fill="both", expand=True)
         attach_scrollbar(canvas, bar, side="right", fill="y",
                          before=canvas)
-        inner = tk.Frame(canvas, background=CANVAS)
+        inner = tk.Frame(canvas, background=theme.CANVAS)
         window = canvas.create_window((0, 0), window=inner, anchor="nw")
         inner.bind("<Configure>",
                    lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
@@ -219,23 +309,23 @@ class SettingsWindow(tk.Toplevel):
     def _build_columns(self, parent: tk.Widget) -> None:
         card = Card(parent, padding=0)
         card.pack(side="left", fill="both", expand=True, padx=(0, 14))
-        header = tk.Frame(card.inner, background=CANVAS)
+        header = tk.Frame(card.inner, background=theme.CANVAS)
         header.pack(fill="x", padx=16, pady=(14, 8))
-        tk.Label(header, text="COLONNES DU FICHIER", background=CANVAS,
-                 foreground=FAINT, font=self.fonts.label).pack(anchor="w")
+        tk.Label(header, text="COLONNES DU FICHIER", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(anchor="w")
         if not self.headers:
             tk.Label(card.inner,
                      text="Chargez un fichier pour associer ses colonnes.",
-                     background=CANVAS, foreground=MUTED,
+                     background=theme.CANVAS, foreground=theme.MUTED,
                      font=self.fonts.body).pack(anchor="w", padx=16, pady=8)
             return
         tk.Label(header,
                  text="Une colonne non reconnue reste inutilisable tant "
                       "qu'aucun champ ne lui est associé.",
-                 background=CANVAS, foreground=MUTED, font=self.fonts.small,
+                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
                  wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))
 
-        area = tk.Frame(card.inner, background=CANVAS)
+        area = tk.Frame(card.inner, background=theme.CANVAS)
         area.pack(fill="both", expand=True, padx=16, pady=(0, 14))
         inner = self._scrollable(area)
 
@@ -248,11 +338,11 @@ class SettingsWindow(tk.Toplevel):
         for header_name in self.headers:
             if not str(header_name).strip():
                 continue
-            row = tk.Frame(inner, background=CANVAS)
+            row = tk.Frame(inner, background=theme.CANVAS)
             row.pack(fill="x", pady=3)
             known = column_to_field.get(header_name)
-            tk.Label(row, text=header_name, background=CANVAS,
-                     foreground=INK_SOFT if known else WARN,
+            tk.Label(row, text=header_name, background=theme.CANVAS,
+                     foreground=theme.INK_SOFT if known else theme.WARN,
                      font=self.fonts.body, width=22, anchor="w").pack(side="left")
             var = tk.StringVar(value=known or IGNORED)
             box = ttk.Combobox(row, textvariable=var, values=choices,
@@ -272,30 +362,30 @@ class SettingsWindow(tk.Toplevel):
         """
         card = Card(parent, padding=0)
         card.pack(side="left", fill="both", expand=True)
-        header = tk.Frame(card.inner, background=CANVAS)
+        header = tk.Frame(card.inner, background=theme.CANVAS)
         header.pack(fill="x", padx=16, pady=(14, 8))
         # « Filtres et axes » se lisait comme si l'on filtrait ici meme.
         # Cet ecran ne retire aucun salarie : il dit seulement quels champs
         # apparaissent dans les listes de la fenetre principale.
-        tk.Label(header, text="DIMENSIONS D'ANALYSE", background=CANVAS,
-                 foreground=FAINT, font=self.fonts.label).pack(anchor="w")
+        tk.Label(header, text="DIMENSIONS D'ANALYSE", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(anchor="w")
         tk.Label(header,
                  text="Cet écran ne filtre rien et ne retire aucun salarié. "
                       "Un champ coché est proposé partout : dans la liste "
                       "« Filtrer » de la colonne de gauche, dans « Analyser "
                       "par », dans les onglets Segments et Pay Transparency, "
                       "et dans « Colorer par ».",
-                 background=CANVAS, foreground=MUTED, font=self.fonts.small,
+                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
                  wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))
 
-        legend = tk.Frame(card.inner, background=CANVAS)
+        legend = tk.Frame(card.inner, background=theme.CANVAS)
         legend.pack(fill="x", padx=16)
-        tk.Label(legend, text="CHAMP", background=CANVAS, foreground=FAINT,
+        tk.Label(legend, text="CHAMP", background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label, width=22, anchor="w").pack(side="left")
-        tk.Label(legend, text="PROPOSÉ", background=CANVAS, foreground=FAINT,
+        tk.Label(legend, text="PROPOSÉ", background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
 
-        area = tk.Frame(card.inner, background=CANVAS)
+        area = tk.Frame(card.inner, background=theme.CANVAS)
         area.pack(fill="both", expand=True, padx=16, pady=(6, 10))
         inner = self._scrollable(area)
 
@@ -314,19 +404,19 @@ class SettingsWindow(tk.Toplevel):
                                                             field_name),
                 entry is not None)
 
-        foot = tk.Frame(card.inner, background=CANVAS)
+        foot = tk.Frame(card.inner, background=theme.CANVAS)
         foot.pack(fill="x", padx=16, pady=(0, 14))
         tk.Label(foot, text="Ne pas proposer de filtre au-delà de",
-                 background=CANVAS, foreground=MUTED,
+                 background=theme.CANVAS, foreground=theme.MUTED,
                  font=self.fonts.small).pack(side="left")
         self.limit_var = tk.StringVar(
             value=str(max_filter_values(self.configuration)))
         tk.Entry(foot, textvariable=self.limit_var, width=5, relief="flat",
-                 background=CANVAS, foreground=INK_SOFT, font=self.fonts.small,
-                 highlightthickness=1, highlightbackground=LINE,
-                 highlightcolor=ACCENT).pack(side="left", padx=6, ipady=2)
-        tk.Label(foot, text="valeurs distinctes", background=CANVAS,
-                 foreground=MUTED, font=self.fonts.small).pack(side="left")
+                 background=theme.CANVAS, foreground=theme.INK_SOFT, font=self.fonts.small,
+                 highlightthickness=1, highlightbackground=theme.LINE,
+                 highlightcolor=theme.ACCENT).pack(side="left", padx=6, ipady=2)
+        tk.Label(foot, text="valeurs distinctes", background=theme.CANVAS,
+                 foreground=theme.MUTED, font=self.fonts.small).pack(side="left")
 
     def _chose(self, header: str, box: "ttk.Combobox") -> None:
         """Reagit au choix d'un champ pour une colonne.
@@ -362,17 +452,17 @@ class SettingsWindow(tk.Toplevel):
 
     def add_dimension_row(self, field_name: str, label: str,
                           declared: bool) -> None:
-        row = tk.Frame(self._dimension_area, background=CANVAS)
+        row = tk.Frame(self._dimension_area, background=theme.CANVAS)
         row.pack(fill="x", pady=2)
         label_var = tk.StringVar(value=label)
         declared_var = tk.BooleanVar(value=declared)
-        tk.Entry(row, textvariable=label_var, background=CANVAS,
-                 foreground=INK_SOFT, font=self.fonts.body, width=26,
+        tk.Entry(row, textvariable=label_var, background=theme.CANVAS,
+                 foreground=theme.INK_SOFT, font=self.fonts.body, width=26,
                  relief="flat", highlightthickness=1,
-                 highlightbackground=CANVAS,
-                 highlightcolor=ACCENT).pack(side="left", ipady=3)
+                 highlightbackground=theme.CANVAS,
+                 highlightcolor=theme.ACCENT).pack(side="left", ipady=3)
         CheckRow(row, "", declared_var, self.fonts,
-                 ground=CANVAS).pack(side="left", padx=(12, 0))
+                 ground=theme.CANVAS).pack(side="left", padx=(12, 0))
         self.rows[field_name] = {"label": label_var, "declared": declared_var}
 
     # ---------------------------------------------------------- validation
@@ -453,6 +543,10 @@ class SettingsWindow(tk.Toplevel):
                 directory = chosen
                 continue
             break
+        # Le theme part dans son propre fichier : une section par sujet, et
+        # un utilisateur qui l'ouvre au bloc-notes y trouve une seule ligne.
+        write_configuration(directory, "theme_parameters",
+                            {"theme": self.theme_var.get()})
         if self.on_saved:
             self.on_saved(directory, path)
         self.destroy()

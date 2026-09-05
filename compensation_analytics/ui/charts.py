@@ -18,16 +18,13 @@ from ..core.axes import nice_ticks
 from ..core.reporting import (_PALETTE, format_money, format_number,
                               format_years)
 from . import raster
-from .theme import (ACCENT, CANVAS, FAINT, INK, LINE, MUTED, SIZE_LABEL,
-                    SIZE_SMALL, _rgb, pick_family)
+from . import theme
+from .theme import SIZE_LABEL, SIZE_SMALL, _rgb, pick_family
 
-#: Les filets du fond doivent se deviner, pas se lire.
-GRID = "#eef2f6"
-TREND = "#b0453f"
-
-#: Les deux ailes de la pyramide. Deux teintes du document, nettement
-#: distinctes, sans recourir au rose et au bleu de convention.
-FEMALE_COLOUR = "#c26b3f"
+# Les filets du fond, la droite de tendance et les deux ailes de la pyramide
+# ne sont plus decrits ici : ils viennent de la palette, qui sert aussi les
+# documents. `theme.GRID`, `theme.FEMALE` et `theme.MALE` sont relus a chaque
+# trace, donc un changement de theme n'oblige a rien reimporter.
 
 _family: str = "TkDefaultFont"
 
@@ -61,7 +58,7 @@ class Tooltip:
             self.window.wm_overrideredirect(True)
             self.window.attributes("-topmost", True)
             self.label = tk.Label(
-                self.window, justify="left", background=INK, foreground="white",
+                self.window, justify="left", background=theme.INK, foreground="white",
                 padx=8, pady=5, font=note_font(),
             )
             self.label.pack()
@@ -83,9 +80,9 @@ class ScatterChart(tk.Frame):
     """
 
     def __init__(self, master: tk.Widget, on_select: Optional[Callable] = None):
-        super().__init__(master, background=CANVAS)
+        super().__init__(master, background=theme.CANVAS)
         _fonts(self)
-        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self.on_select = on_select
@@ -163,7 +160,7 @@ class ScatterChart(tk.Frame):
         if not self.points or not self._view:
             self.canvas.create_text(
                 width / 2, height / 2, text=self.dataset.get("warning")
-                or "Aucun point a afficher", fill=MUTED, font=note_font())
+                or "Aucun point a afficher", fill=theme.MUTED, font=note_font())
             return
 
         pad_l, pad_r, pad_t, pad_b = 88, 20, 18, 46
@@ -181,19 +178,19 @@ class ScatterChart(tk.Frame):
         # l'etendue : celles-ci donnaient « 4 284 EUR » ou « -0,6 an ».
         for value in nice_ticks(y_min, y_max):
             y = pad_t + plot_h - (value - y_min) / y_span * plot_h
-            self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=GRID)
+            self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=theme.GRID)
             self.canvas.create_text(
-                pad_l - 8, y, anchor="e", fill=MUTED, font=axis_font(),
+                pad_l - 8, y, anchor="e", fill=theme.MUTED, font=axis_font(),
                 text=format_money(value, self.currency))
         for value in nice_ticks(x_min, x_max):
             x = pad_l + (value - x_min) / x_span * plot_w
             self.canvas.create_text(
-                x, pad_t + plot_h + 14, fill=MUTED, font=axis_font(),
+                x, pad_t + plot_h + 14, fill=theme.MUTED, font=axis_font(),
                 text=format_number(value, 0))
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill="#9aa7b4")
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32,
-                                text="Ancienneté (années)", fill=MUTED,
+                                text="Ancienneté (années)", fill=theme.MUTED,
                                 font=axis_font())
 
         groups = self.dataset.get("groups") or []
@@ -209,7 +206,7 @@ class ScatterChart(tk.Frame):
             if not (pad_t - 4 <= py <= pad_t + plot_h + 4):
                 continue
             shown += 1
-            colour = colours.get(point["group"], ACCENT)
+            colour = colours.get(point["group"], theme.ACCENT)
             selected = self.selected is point
             # create_oval ne lisse pas ses bords : a cette taille les points
             # devenaient des carres a coins ronges. Une image antialiasee,
@@ -223,7 +220,7 @@ class ScatterChart(tk.Frame):
             y_start = trend["intercept"] + trend["slope"] * x_min
             y_end = trend["intercept"] + trend["slope"] * x_max
             self.canvas.create_line(*to_px(x_min, y_start), *to_px(x_max, y_end),
-                                    fill=TREND, width=2, dash=(6, 4))
+                                    fill=theme.CRIT, width=2, dash=(6, 4))
 
         total = len(self.points)
         note = f"{shown} points affichés sur {total}"
@@ -232,7 +229,7 @@ class ScatterChart(tk.Frame):
         if self._view != self._bounds:
             note += " · zoom actif, double-clic pour réinitialiser"
         self.canvas.create_text(pad_l, pad_t - 6, anchor="sw", text=note,
-                                fill=MUTED, font=axis_font())
+                                fill=theme.MUTED, font=axis_font())
 
     # --------------------------------------------------------- interaction
 
@@ -247,8 +244,8 @@ class ScatterChart(tk.Frame):
         image = self._dots.get(key)
         if image is None:
             if selected:
-                data = raster.disc(self.DOT_SELECTED, _rgb(TREND),
-                                   ring=_rgb(INK), ring_width=2.0)
+                data = raster.disc(self.DOT_SELECTED, _rgb(theme.CRIT),
+                                   ring=_rgb(theme.INK), ring_width=2.0)
             else:
                 data = raster.disc(self.DOT, _rgb(colour))
             image = tk.PhotoImage(master=self.canvas, data=data)
@@ -333,9 +330,9 @@ class HistogramChart(tk.Frame):
     """Distribution des remunerations. Survol pour lire une classe."""
 
     def __init__(self, master: tk.Widget):
-        super().__init__(master, background=CANVAS)
+        super().__init__(master, background=theme.CANVAS)
         _fonts(self)
-        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self.bins: List[Dict[str, float]] = []
@@ -362,7 +359,7 @@ class HistogramChart(tk.Frame):
             return
         if not self.bins:
             self.canvas.create_text(
-                width / 2, height / 2, fill=MUTED, font=note_font(),
+                width / 2, height / 2, fill=theme.MUTED, font=note_font(),
                 text=self.warning or "Aucune distribution à afficher")
             return
 
@@ -374,8 +371,8 @@ class HistogramChart(tk.Frame):
 
         for value in nice_ticks(0, peak):
             y = pad_t + plot_h - value / peak * plot_h
-            self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=GRID)
-            self.canvas.create_text(pad_l - 8, y, anchor="e", fill=MUTED,
+            self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=theme.GRID)
+            self.canvas.create_text(pad_l - 8, y, anchor="e", fill=theme.MUTED,
                                     font=axis_font(),
                                     text=format_number(value, 0))
         for index, item in enumerate(self.bins):
@@ -385,7 +382,7 @@ class HistogramChart(tk.Frame):
                 # Un filet d'air entre les barres : accolees, l'histogramme
                 # se lit comme un aplat.
                 x + 2, pad_t + plot_h - bar_h, x + bar_w - 2, pad_t + plot_h,
-                fill=ACCENT, outline="")
+                fill=theme.ACCENT, outline="")
             self._items[handle] = item
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill="#9aa7b4")
@@ -397,9 +394,9 @@ class HistogramChart(tk.Frame):
         for value in nice_ticks(low, high, 5):
             self.canvas.create_text(
                 pad_l + (value - low) / span * plot_w, pad_t + plot_h + 14,
-                fill=MUTED, font=axis_font(),
+                fill=theme.MUTED, font=axis_font(),
                 text=format_money(value, self.currency))
-        self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32, fill=MUTED,
+        self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32, fill=theme.MUTED,
                                 font=axis_font(),
                                 text="Effectif par classe de rémunération")
 
@@ -437,9 +434,9 @@ class PyramidChart(tk.Frame):
     COUNTS = 46
 
     def __init__(self, master: tk.Widget):
-        super().__init__(master, background=CANVAS)
+        super().__init__(master, background=theme.CANVAS)
         _fonts(self)
-        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.rows: List[Dict[str, Any]] = []
         self.tooltip = Tooltip(self.canvas)
@@ -474,9 +471,9 @@ class PyramidChart(tk.Frame):
         left = centre - self.GUTTER / 2
         right = centre + self.GUTTER / 2
 
-        self.canvas.create_text(left, 8, anchor="e", fill=FEMALE_COLOUR,
+        self.canvas.create_text(left, 8, anchor="e", fill=theme.FEMALE,
                                 font=axis_font(), text="FEMMES")
-        self.canvas.create_text(right, 8, anchor="w", fill=ACCENT,
+        self.canvas.create_text(right, 8, anchor="w", fill=theme.MALE,
                                 font=axis_font(), text="HOMMES")
         for index, row in enumerate(self.rows):
             y = index * self.ROW + self.ROW / 2 + 20
@@ -485,20 +482,20 @@ class PyramidChart(tk.Frame):
             if female:
                 item = self.canvas.create_rectangle(
                     left - wing * female / peak, y - 8, left, y + 8,
-                    fill=FEMALE_COLOUR, outline="")
+                    fill=theme.FEMALE, outline="")
                 self._items[item] = f'{row["label"]} · {female} femmes'
                 self.canvas.create_text(left - wing - 6, y, anchor="e",
-                                        fill=MUTED, font=axis_font(),
+                                        fill=theme.MUTED, font=axis_font(),
                                         text=str(female))
             if male:
                 item = self.canvas.create_rectangle(
                     right, y - 8, right + wing * male / peak, y + 8,
-                    fill=ACCENT, outline="")
+                    fill=theme.MALE, outline="")
                 self._items[item] = f'{row["label"]} · {male} hommes'
                 self.canvas.create_text(right + wing + 6, y, anchor="w",
-                                        fill=MUTED, font=axis_font(),
+                                        fill=theme.MUTED, font=axis_font(),
                                         text=str(male))
-            self.canvas.create_text(centre, y, fill=INK, font=axis_font(),
+            self.canvas.create_text(centre, y, fill=theme.INK, font=axis_font(),
                                     text=row.get("label", ""))
 
     def _on_motion(self, event) -> None:
@@ -529,9 +526,9 @@ class BandChart(tk.Frame):
     VALUE = 96
 
     def __init__(self, master: tk.Widget):
-        super().__init__(master, background=CANVAS)
+        super().__init__(master, background=theme.CANVAS)
         _fonts(self)
-        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.rows: List[Dict[str, Any]] = []
         self.canvas.bind("<Configure>", lambda _e: self.redraw())
@@ -551,7 +548,7 @@ class BandChart(tk.Frame):
         track = max(width - self.LABEL - self.VALUE - 12, 20)
         for index, row in enumerate(self.rows):
             middle = index * self.ROW + self.ROW / 2 + 3
-            self.canvas.create_text(0, middle, anchor="w", fill=INK,
+            self.canvas.create_text(0, middle, anchor="w", fill=theme.INK,
                                     font=note_font(), text=row.get("label", ""))
             share = row.get("share") or 0.0
             # La barre est proportionnee a la tranche la plus fournie, non a
@@ -559,7 +556,7 @@ class BandChart(tk.Frame):
             length = max(track * share / peak, 1.0)
             self.canvas.create_rectangle(
                 self.LABEL, middle - 7, self.LABEL + length, middle + 7,
-                fill=ACCENT, outline="")
+                fill=theme.ACCENT, outline="")
             self.canvas.create_text(
-                width, middle, anchor="e", fill=MUTED, font=note_font(),
+                width, middle, anchor="e", fill=theme.MUTED, font=note_font(),
                 text=f'{row.get("count", 0)}   {format_number(share, 1)} %')

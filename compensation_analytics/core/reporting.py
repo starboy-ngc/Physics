@@ -15,15 +15,53 @@ import os
 from typing import Any, Dict, List, Optional, Sequence
 
 from ..version import ENGINE_NAME, __version__
+from . import palette
 from .axes import nice_ticks
 
-_PALETTE = [
-    "#2f5d8a", "#c26b3f", "#4f8f6d", "#8a5f9e", "#b0453f",
-    "#3f7d9e", "#8d7b3a", "#6b6b6b", "#7a4f6d", "#4a6d3f",
-]
+#: Palette du document en cours de rendu. `use()` la fixe au debut de chaque
+#: rendu, a partir du theme porte par l'analyse. Un document se rend d'un
+#: seul tenant, du premier caractere au dernier : il n'y a jamais deux
+#: rendus en cours, et les fonctions de trace la lisent sans se la passer de
+#: main en main sur quinze signatures.
+ACTIVE: palette.Palette = palette.by_name(palette.DEFAULT_THEME)
+
+
+def use(analysis) -> palette.Palette:
+    """Fixe la palette du rendu qui commence."""
+    global ACTIVE, _PALETTE
+    ACTIVE = palette.from_analysis(analysis)
+    _PALETTE = list(ACTIVE.series)
+    return ACTIVE
+
+
+_PALETTE = list(ACTIVE.series)
+
+
+def _variables() -> str:
+    """Les couleurs du theme, en variables CSS.
+
+    Seule cette ligne depend du theme : le reste de la feuille de style
+    ne nomme plus une seule teinte, il ne cite que ces variables — les
+    traces SVG compris.
+    """
+    pairs = (
+        ("ink", ACTIVE.ink), ("muted", ACTIVE.muted), ("faint", ACTIVE.faint),
+        ("line", ACTIVE.line), ("line-strong", ACTIVE.line_strong),
+        ("grid", ACTIVE.grid), ("bg", ACTIVE.canvas), ("panel", ACTIVE.panel),
+        ("stripe", ACTIVE.stripe), ("accent", ACTIVE.accent),
+        ("warn", ACTIVE.warn), ("warn-bg", ACTIVE.warn_soft),
+        ("crit", ACTIVE.crit), ("crit-bg", ACTIVE.crit_soft),
+        ("female", ACTIVE.female), ("male", ACTIVE.male),
+    )
+    return ":root{" + ";".join(f"--{name}:{value}" for name, value in pairs) + "}"
+
+
+def _css() -> str:
+    """Feuille de style complete : les variables du theme, puis la mise en page."""
+    return _variables() + _CSS
+
 
 _CSS = """
-:root{--ink:#1b2733;--muted:#5d6b7a;--line:#d9e0e7;--bg:#ffffff;--panel:#f5f7f9;--accent:#2f5d8a;--warn:#8a5a12;--warn-bg:#fdf3e0;--crit:#8f2f2f;--crit-bg:#fbeded}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 "Segoe UI",Calibri,Arial,sans-serif}
 .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 64px}
@@ -40,16 +78,16 @@ table{border-collapse:collapse;width:100%;font-size:13px}
 th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right}
 th:first-child,td:first-child{text-align:left}
 thead th{background:var(--panel);font-weight:600;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.04em}
-tbody tr:hover{background:#fafcfd}
+tbody tr:hover{background:var(--stripe)}
 .scroll{overflow-x:auto}
 .note{border-left:3px solid var(--accent);background:var(--panel);padding:10px 14px;margin:12px 0;font-size:13px}
-.note.warn{border-color:#c9922f;background:var(--warn-bg);color:var(--warn)}
-.note.crit{border-color:#b04a4a;background:var(--crit-bg);color:var(--crit)}
+.note.warn{border-color:var(--warn);background:var(--warn-bg);color:var(--warn)}
+.note.crit{border-color:var(--crit);background:var(--crit-bg);color:var(--crit)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;font-size:12px}
 .legend span{display:inline-flex;align-items:center;gap:5px}
 .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 figure{margin:0 0 8px}
-svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:6px}
+svg{max-width:100%;height:auto;background:var(--bg);border:1px solid var(--line);border-radius:6px}
 footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
 @media print{.wrap{max-width:none;padding:0}h2{page-break-after:avoid}figure,table{page-break-inside:avoid}}
 """
@@ -58,7 +96,7 @@ footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:v
 _JS = """
 (function(){
   var tip=document.createElement('div');
-  tip.style.cssText='position:fixed;display:none;background:#1b2733;color:#fff;padding:6px 9px;'+
+  tip.style.cssText='position:fixed;display:none;background:var(--ink);color:var(--bg);padding:6px 9px;'+
     'border-radius:4px;font:12px/1.4 Segoe UI,Arial,sans-serif;pointer-events:none;z-index:9';
   document.body.appendChild(tip);
   document.addEventListener('mouseover',function(e){
@@ -147,8 +185,8 @@ def histogram_svg(bins: List[Dict[str, float]], currency: str,
     parts = [f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Distribution des rémunérations">']
     for value in nice_ticks(0, peak):
         y = pad_top + plot_h - value / peak * plot_h
-        parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="#e6ebf0"/>')
-        parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="#5d6b7a">{value:.0f}</text>')
+        parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="var(--grid)"/>')
+        parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="var(--muted)">{value:.0f}</text>')
     for index, item in enumerate(bins):
         bar_h = plot_h * item["count"] / peak
         x = pad_left + index * bar_w
@@ -157,17 +195,17 @@ def histogram_svg(bins: List[Dict[str, float]], currency: str,
                f'{int(item["count"])} salariés')
         parts.append(
             f'<rect x="{x + 1:.1f}" y="{y:.1f}" width="{max(bar_w - 2, 1):.1f}" '
-            f'height="{bar_h:.1f}" fill="#2f5d8a" opacity="0.85" data-tip="{_e(tip)}"/>'
+            f'height="{bar_h:.1f}" fill="var(--accent)" opacity="0.85" data-tip="{_e(tip)}"/>'
         )
     low = bins[0]["lower"]
     high = bins[-1]["upper"]
     span = (high - low) or 1.0
     base_y = pad_top + plot_h
-    parts.append(f'<line x1="{pad_left}" y1="{base_y}" x2="{width - pad_right}" y2="{base_y}" stroke="#9aa7b4"/>')
+    parts.append(f'<line x1="{pad_left}" y1="{base_y}" x2="{width - pad_right}" y2="{base_y}" stroke="var(--line-strong)"/>')
     for value in nice_ticks(low, high, 5):
         x = pad_left + (value - low) / span * plot_w
-        parts.append(f'<text x="{x:.1f}" y="{base_y + 18}" text-anchor="middle" font-size="11" fill="#5d6b7a">{_e(format_money(value, currency))}</text>')
-    parts.append(f'<text x="{pad_left}" y="{base_y + 34}" font-size="11" fill="#5d6b7a">Effectif par classe de rémunération</text>')
+        parts.append(f'<text x="{x:.1f}" y="{base_y + 18}" text-anchor="middle" font-size="11" fill="var(--muted)">{_e(format_money(value, currency))}</text>')
+    parts.append(f'<text x="{pad_left}" y="{base_y + 34}" font-size="11" fill="var(--muted)">Effectif par classe de rémunération</text>')
     parts.append("</svg>")
     return "".join(parts)
 
@@ -201,13 +239,13 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
     # doit se lire de la meme facon sur les trois supports.
     for value in nice_ticks(y_min, y_max):
         y = to_y(value)
-        parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="#e6ebf0"/>')
-        parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="#5d6b7a">{_e(format_money(value, currency))}</text>')
+        parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="var(--grid)"/>')
+        parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="var(--muted)">{_e(format_money(value, currency))}</text>')
     for value in nice_ticks(x_min, x_max):
         x = to_x(value)
-        parts.append(f'<text x="{x:.1f}" y="{pad_top + plot_h + 18:.1f}" text-anchor="middle" font-size="10" fill="#5d6b7a">{format_number(value, 0)}</text>')
+        parts.append(f'<text x="{x:.1f}" y="{pad_top + plot_h + 18:.1f}" text-anchor="middle" font-size="10" fill="var(--muted)">{format_number(value, 0)}</text>')
     for point in points:
-        color = colors.get(point["group"], "#2f5d8a")
+        color = colors.get(point["group"], ACTIVE.accent)
         tip = (f'{point["reference"]} | {point["group"]} | ancienneté '
                f'{format_years(point["x"])} | {format_money(point["y"], currency)}')
         parts.append(
@@ -223,9 +261,9 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
         parts.append(
             f'<line x1="{to_x(x_min):.1f}" y1="{to_y(y_start):.1f}" '
             f'x2="{to_x(x_max):.1f}" y2="{to_y(y_end):.1f}" '
-            'stroke="#b0453f" stroke-width="2" stroke-dasharray="6 4"/>'
+            'stroke="var(--crit)" stroke-width="2" stroke-dasharray="6 4"/>'
         )
-    parts.append(f'<text x="{pad_left}" y="{height - 8}" font-size="11" fill="#5d6b7a">Ancienneté (années)</text>')
+    parts.append(f'<text x="{pad_left}" y="{height - 8}" font-size="11" fill="var(--muted)">Ancienneté (années)</text>')
     parts.append("</svg>")
     return "".join(parts)
 
@@ -452,6 +490,9 @@ def _comparison_section(comparison: Optional[Dict[str, Any]], currency: str) -> 
 
 def render_report(analysis: Dict[str, Any]) -> str:
     """Assemble la restitution complete en un fichier HTML autonome."""
+    # Le theme est fixe avant le premier caractere : tout ce qui suit, mise
+    # en page comme traces, lit la meme palette.
+    use(analysis)
     manifest = analysis.get("manifest", {})
     currency = analysis.get("salary", {}).get("currency", "EUR")
     generated = manifest.get("date_analyse", _dt.datetime.now().isoformat(timespec="seconds"))
@@ -471,7 +512,7 @@ def render_report(analysis: Dict[str, Any]) -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{_e(title)}</title>
-<style>{_CSS}</style>
+<style>{_css()}</style>
 </head>
 <body>
 <div class="wrap">

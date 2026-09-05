@@ -20,6 +20,7 @@ from ..io.tabular import Table, read_table
 from . import metrics
 from .config import Configuration, load_configuration
 from .errors import DataQualityError
+from . import palette
 from .logging_setup import log_event
 from .mapping import MappingResult, ensure_required, resolve_mapping
 from .normalize import Population, normalise_table
@@ -119,6 +120,9 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     started = _time.perf_counter()
     payload: Dict[str, Any] = {
         "title": request.title,
+        # Le theme suit l'analyse : les documents se colorent sans avoir a
+        # relire la configuration, et un resultat rejoue garde ses couleurs.
+        "theme": palette.resolve(config).theme,
         "quality": quality.as_dict(),
         "population": metrics.calculate_population_metrics(filtered, config),
         "salary": metrics.calculate_salary_metrics(filtered, config),
