@@ -825,25 +825,31 @@ class Application(tk.Tk):
             ]))
         self._grouped_kpis(self.overview_frame, groups)
 
-        grid = tk.Frame(self.overview_frame, background=CANVAS)
-        grid.pack(fill="both", expand=True)
-        grid.grid_columnconfigure(0, weight=1, uniform="panel")
-        grid.grid_columnconfigure(1, weight=1, uniform="panel")
+        # Deux colonnes independantes, et non une grille : dans une grille,
+        # la rangee prend la hauteur du plus grand des deux blocs, et le bloc
+        # court laisse un trou au milieu de la page. Empilees, chaque colonne
+        # se referme sur son contenu et le vide tombe en bas.
+        columns = tk.Frame(self.overview_frame, background=CANVAS)
+        columns.pack(fill="both", expand=True)
+        left = tk.Frame(columns, background=CANVAS)
+        left.pack(side="left", fill="both", expand=True, padx=(0, 36))
+        right = tk.Frame(columns, background=CANVAS)
+        right.pack(side="left", fill="both", expand=True)
 
         spread = salary.get("dispersion") or {}
         variation = spread.get("coefficient_of_variation")
         if not population.get("masked"):
             self._pyramid_panel(
-                grid, 0, 0, "Pyramide des âges", population.get("age_bands", []),
+                left, "Pyramide des âges", population.get("age_bands", []),
                 ("Âge moyen", format_years(population.get("age_mean"))))
             self._pyramid_panel(
-                grid, 1, 0, "Structure d'ancienneté",
+                left, "Structure d'ancienneté",
                 population.get("tenure_bands", []),
                 ("Ancienneté moyenne",
                  format_years(population.get("tenure_mean"))))
         if not salary.get("masked"):
             self._ruled_panel(
-                grid, 0, 1, "Échelle de rémunération", ("Percentile", "Valeur"),
+                right, "Échelle de rémunération", ("Percentile", "Valeur"),
                 [("Minimum", format_money(salary.get("min"), currency))]
                 + [(entry["label"],
                     format_money(salary.get(entry["key"]), currency))
@@ -851,7 +857,7 @@ class Application(tk.Tk):
                 + [("Maximum", format_money(salary.get("max"), currency))],
                 emphasis="Médiane (P50)")
             self._ruled_panel(
-                grid, 1, 1, "Dispersion", ("Indicateur", "Valeur"), [
+                right, "Dispersion", ("Indicateur", "Valeur"), [
                     ("Q3 - Q1",
                      format_money(spread.get("interquartile_range"), currency)),
                     ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2)),
@@ -908,13 +914,9 @@ class Application(tk.Tk):
                          font=font).pack(anchor="w", pady=(1, 0))
                 column += 1
 
-    def _panel_head(self, parent, row: int, column: int, title: str,
-                    extra=None) -> tk.Frame:
+    def _panel_head(self, parent, title: str, extra=None) -> tk.Frame:
         cell = tk.Frame(parent, background=CANVAS)
-        cell.grid(row=row, column=column, sticky="nsew",
-                  padx=(0, 36) if column == 0 else 0,
-                  pady=(0, 22) if row == 0 else 0)
-        parent.grid_rowconfigure(row, weight=1)
+        cell.pack(fill="x", pady=(0, 26))
         head = tk.Frame(cell, background=CANVAS)
         head.pack(fill="x", pady=(0, 8))
         tk.Label(head, text=title.upper(), background=CANVAS, foreground=FAINT,
@@ -926,7 +928,7 @@ class Application(tk.Tk):
         theme.rule(cell).pack(fill="x", pady=(0, 6))
         return cell
 
-    def _ruled_panel(self, parent, row, column, title, headers, rows,
+    def _ruled_panel(self, parent, title, headers, rows,
                      emphasis: Optional[str] = None) -> None:
         """Tableau a l'anglaise : aucune grille, des filets aux articulations.
 
@@ -936,7 +938,7 @@ class Application(tk.Tk):
         reguliere. La ligne remarquable est mise en avant plutot que
         signalee par une couleur de fond.
         """
-        cell = self._panel_head(parent, row, column, title)
+        cell = self._panel_head(parent, title)
         table = tk.Frame(cell, background=CANVAS)
         table.pack(fill="x")
         table.grid_columnconfigure(0, weight=1)
@@ -962,9 +964,9 @@ class Application(tk.Tk):
         theme.rule(table).grid(row=2 + len(rows), column=0,
                                columnspan=len(headers), sticky="ew", pady=(4, 0))
 
-    def _pyramid_panel(self, parent, row, column, title, bands, extra) -> None:
+    def _pyramid_panel(self, parent, title, bands, extra) -> None:
         """Pyramide si le sexe est renseigne, barres simples sinon."""
-        cell = self._panel_head(parent, row, column, title, extra)
+        cell = self._panel_head(parent, title, extra)
         pyramid = PyramidChart(cell)
         pyramid.set_rows(bands)
         if pyramid.has_split():

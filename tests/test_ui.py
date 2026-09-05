@@ -867,3 +867,61 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
             self.app._render_results = original_render
         self.assertTrue(raised, "aucun message d'erreur")
         self.assertNotIn("en cours", self.app.status.cget("text"))
+
+
+@needs_display
+class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
+    """Le bloc court ne doit pas creuser un trou au milieu de la page.
+
+    Dans une grille, la rangee prend la hauteur du plus grand des deux
+    blocs : la pyramide des ages, plus courte que l'echelle de
+    remuneration, laissait un vide sous elle et repoussait la structure
+    d'anciennete vers le bas. Les colonnes sont empilees separement.
+    """
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, salary=25000 + (index % 50) * 2000,
+                     age=25 + index % 38, tenure=index % 32,
+                     gender=["F", "H"][index % 2])
+            for index in range(200)])])
+        self.app = Application()
+        self.app.update()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE))
+        self.app._render_results()
+        self.app.update_idletasks()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _panels(self):
+        from compensation_analytics.ui.charts import PyramidChart
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        return [item for item in walk(self.app.overview_frame)
+                if isinstance(item, PyramidChart)]
+
+    def test_the_second_chart_follows_the_first_closely(self):
+        first, second = self._panels()[:2]
+        gap = second.winfo_rooty() - (first.winfo_rooty() + first.winfo_height())
+        # Le titre du second bloc et sa marge occupent quelques dizaines de
+        # pixels ; au-dela, c'est un trou.
+        self.assertLess(gap, 90, f"écart de {gap} px entre les deux blocs")
+
+    def test_the_two_columns_are_independent(self):
+        """Chaque colonne se referme sur son contenu : le vide tombe en bas
+        de page, pas entre deux graphiques."""
+        pyramids = self._panels()
+        columns = {item.master.master for item in pyramids}
+        self.assertEqual(len(columns), 1, "les deux blocs doivent partager "
+                                          "la meme colonne")
