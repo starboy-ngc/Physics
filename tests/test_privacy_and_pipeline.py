@@ -14,7 +14,7 @@ import unittest
 
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from compensation_analytics.cli import main as cli_main, parse_filter
-from compensation_analytics.core.errors import DataQualityError
+from compensation_analytics.core.errors import CompensationError, DataQualityError
 from compensation_analytics.core.export import export_excel
 from compensation_analytics.core.logging_setup import configure_logging
 from compensation_analytics.core.normalize import anonymise
@@ -187,6 +187,37 @@ class TestCommandLine(unittest.TestCase):
                          {"field": "business_unit", "operator": "eq", "value": "France"})
         self.assertEqual(parse_filter("grade=G5|G6")["operator"], "in")
         self.assertEqual(parse_filter("base_salary>=50000")["operator"], "gte")
+
+    def test_a_list_keeps_the_meaning_of_the_operator(self):
+        """"!=" sur une liste doit exclure, pas retenir.
+
+        Le traduire en "in" faisait dire a l'expression exactement l'inverse
+        de ce qui etait ecrit, et sur une population entiere le resultat
+        restait plausible : personne ne pouvait s'en apercevoir.
+        """
+        exclusion = parse_filter("grade!=G1|G2")
+        self.assertEqual(exclusion["operator"], "not_in")
+        self.assertEqual(exclusion["value"], ["G1", "G2"])
+
+    def test_a_list_is_refused_on_a_comparison_operator(self):
+        """">= 50000|60000" n'a pas de sens : mieux vaut le dire."""
+        for expression in ("base_salary>=50000|60000", "base_salary<10|20",
+                           "job~=Ing|Tech"):
+            with self.assertRaises(CompensationError) as raised:
+                parse_filter(expression)
+            self.assertIn("valeur unique", str(raised.exception))
+
+    def test_every_operator_of_the_engine_is_reachable(self):
+        """Un operateur du moteur qu'aucune ecriture n'atteint est du code
+        mort : la ligne de commande doit tous les exposer."""
+        from compensation_analytics.core.segmentation import _OPERATORS
+        reached = {parse_filter(expression)["operator"] for expression in (
+            "grade=G1", "grade!=G1", "grade=G1|G2", "grade!=G1|G2",
+            "base_salary>50000", "base_salary>=50000",
+            "base_salary<50000", "base_salary<=50000", "job~=Ing")}
+        self.assertEqual(set(_OPERATORS) - reached, {"between"},
+                         "seul \"between\" reste sans ecriture, faute de "
+                         "syntaxe a deux bornes")
 
     def test_analyse_command_writes_expected_files(self):
         output = os.path.join(self.directory, "sortie")

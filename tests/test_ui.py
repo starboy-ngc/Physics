@@ -26,7 +26,24 @@ try:
 except ImportError:
     HAS_TK = False
 
-HAS_DISPLAY = bool(os.environ.get("DISPLAY")) and HAS_TK
+def _display_answers() -> bool:
+    """DISPLAY renseigne ne veut pas dire affichage joignable.
+
+    Un serveur X arrete laissait la suite tomber en erreur au lieu d'ignorer
+    les tests d'interface : la seule reponse fiable est d'essayer d'ouvrir
+    une fenetre.
+    """
+    if not (HAS_TK and os.environ.get("DISPLAY")):
+        return False
+    try:
+        root = tkinter.Tk()
+    except tkinter.TclError:
+        return False
+    root.destroy()
+    return True
+
+
+HAS_DISPLAY = _display_answers()
 needs_display = unittest.skipUnless(
     HAS_DISPLAY, "aucun affichage disponible (test d'interface ignoré)")
 

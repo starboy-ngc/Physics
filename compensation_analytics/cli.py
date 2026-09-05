@@ -50,12 +50,22 @@ def parse_filter(expression: str) -> Dict[str, Any]:
             field_name = field_name.strip()
             raw = raw.strip()
             if "|" in raw:
+                # Une liste garde le sens de l'operateur ecrit : "!=" exclut.
+                # Le traduire en "in" ferait dire a l'expression exactement
+                # l'inverse, sans le moindre message.
+                listed = {"eq": "in", "ne": "not_in"}.get(operator)
+                if listed is None:
+                    raise CompensationError(
+                        f"Le filtre \"{expression}\" combine une liste de "
+                        f"valeurs et l'opérateur \"{token}\", qui attend une "
+                        "valeur unique. Utilisez \"=\" pour retenir plusieurs "
+                        "valeurs, \"!=\" pour les exclure.",
+                        technical=f"list value with operator {operator}",
+                    )
                 return {
-                    "field": field_name, "operator": "in",
+                    "field": field_name, "operator": listed,
                     "value": [item.strip() for item in raw.split("|")],
                 }
-            if operator in ("gte", "lte", "gt", "lt"):
-                return {"field": field_name, "operator": operator, "value": raw}
             return {"field": field_name, "operator": operator, "value": raw}
     raise CompensationError(
         f"Le filtre \"{expression}\" est mal écrit. "

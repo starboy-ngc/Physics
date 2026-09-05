@@ -149,16 +149,34 @@ class Application(tk.Tk):
         self.export_button.state(["disabled"])
 
         outer = tk.Canvas(parent, background=GROUND, highlightthickness=0)
-        bar = ttk.Scrollbar(parent, orient="vertical", command=outer.yview)
+        bar = ttk.Scrollbar(parent, orient="vertical", command=outer.yview,
+                            style="Flat.Vertical.TScrollbar")
         outer.configure(yscrollcommand=bar.set)
-        outer.pack(side="left", fill="both", expand=True, padx=(18, 0))
+        # L'ascenseur se reserve sa place en premier : empile apres une zone
+        # en expansion, il n'obtenait aucune largeur et restait invisible.
         bar.pack(side="right", fill="y", padx=(0, 4), pady=4)
+        outer.pack(side="left", fill="both", expand=True, padx=(18, 0))
         steps = tk.Frame(outer, background=GROUND)
         window = outer.create_window((0, 0), window=steps, anchor="nw")
         steps.bind("<Configure>",
                    lambda _e: outer.configure(scrollregion=outer.bbox("all")))
         outer.bind("<Configure>",
                    lambda e: outer.itemconfigure(window, width=e.width - 14))
+
+        # La molette sur la colonne : sans elle, les dernieres dimensions et
+        # les etapes 3 et 4 n'etaient atteignables qu'a l'ascenseur, que rien
+        # ne signalait.
+        def _wheel(event) -> None:
+            first, last = outer.yview()
+            if first <= 0.0 and last >= 1.0:
+                return
+            step = -1 if getattr(event, "delta", 0) > 0 or event.num == 4 else 1
+            outer.yview_scroll(step, "units")
+
+        for sequence in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
+            outer.bind_all(sequence, self._sidebar_wheel, add="+")
+        self._scroll_area = outer
+        self._scroll_step = _wheel
 
         self._section(steps, 1, "Importer")
         ttk.Button(steps, text="Choisir un fichier…", style="GhostGround.TButton",
@@ -190,6 +208,15 @@ class Application(tk.Tk):
             self.output_vars[key] = var
             CheckRow(self.outputs_frame, label, var,
                      self.fonts).pack(anchor="w", pady=2)
+
+    def _sidebar_wheel(self, event) -> None:
+        """La molette n'agit que si le curseur survole la colonne d'etapes."""
+        widget = self.winfo_containing(event.x_root, event.y_root)
+        while widget is not None:
+            if widget is self._scroll_area:
+                self._scroll_step(event)
+                return
+            widget = getattr(widget, "master", None)
 
     def _build_pages(self) -> None:
         self.tabs: Dict[str, tk.Frame] = {}
