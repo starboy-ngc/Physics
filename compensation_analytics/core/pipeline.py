@@ -130,6 +130,15 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         "scatter": metrics.scatter_dataset(filtered, config),
         "pay_equity": calculate_pay_equity(filtered, config),
     }
+    # Le perimetre voyage avec le resultat. Sans lui, une page de chiffres
+    # ne dit pas sur qui elle porte : « 412 salaries » se lit tout autrement
+    # selon qu'il s'agit de tout le fichier ou d'un filtre.
+    payload["scope"] = {
+        "total": len(population),
+        "retained": len(filtered),
+        "filtered": bool(request.filters),
+        "description": describe_filters(request.filters, config),
+    }
     segment_fields = (validate_segments(request.segments, config)
                       or available_segments(filtered, config))
     payload["segments"] = [

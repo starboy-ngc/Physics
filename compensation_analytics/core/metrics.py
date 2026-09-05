@@ -50,7 +50,7 @@ class PrivacyRules:
         if headcount < self.min_warning:
             return (
                 f"Effectif réduit ({headcount} salariés) : les indicateurs sont "
-                "a interpréter avec prudence."
+                "à interpréter avec prudence."
             )
         return None
 

@@ -745,7 +745,7 @@ class Application(tk.Tk):
         payload = self.result.payload
         currency = payload["salary"].get("currency", "EUR")
         self._show_quality(payload["quality"])
-        self._show_overview(payload["population"], payload["salary"])
+        self._show_overview(payload)
         self.histogram.set_distribution(payload["distribution"], currency)
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
@@ -914,8 +914,37 @@ class Application(tk.Tk):
                      item["lignes_concernees"])
                     for item in constats])
 
-    def _show_overview(self, population: Dict[str, Any],
-                       salary: Dict[str, Any]) -> None:
+    def _show_scope(self, scope: Dict[str, Any], population, salary) -> None:
+        """Sur qui porte la page, et avec quelle prudence la lire.
+
+        Deux phrases que le moteur produisait sans que l'ecran les montre.
+        La premiere quand un filtre est actif : « 73 salaries » ne se lit pas
+        du tout de la meme facon selon qu'il s'agit du fichier entier ou
+        d'un peritmetre. La seconde quand l'effectif est faible : le moteur
+        demande alors de la prudence, le rapport le disait, pas l'ecran.
+        """
+        if scope.get("filtered") and scope.get("description"):
+            line = tk.Frame(self.overview_frame, background=theme.CANVAS)
+            line.pack(fill="x", pady=(0, 14))
+            # L'effectif retenu n'est pas repete ici : il est juste dessous,
+            # premiere ligne de la colonne Population.
+            tk.Label(line,
+                     text=f'{scope["description"]}  ·  fichier de '
+                          f'{scope.get("total", 0)} salariés',
+                     background=theme.CANVAS, foreground=theme.MUTED,
+                     font=self.fonts.small, wraplength=900,
+                     justify="left").pack(anchor="w")
+            theme.rule(line).pack(fill="x", pady=(8, 0))
+
+        caution = population.get("warning") or salary.get("warning")
+        if caution and not (population.get("masked") and salary.get("masked")):
+            tk.Label(self.overview_frame, text=caution,
+                     background=theme.WARN_SOFT, foreground=theme.WARN,
+                     font=self.fonts.small, anchor="w", justify="left",
+                     padx=12, pady=8, wraplength=900).pack(fill="x",
+                                                           pady=(0, 14))
+
+    def _show_overview(self, payload: Dict[str, Any]) -> None:
         """Population et remuneration sur une seule page, en deux colonnes.
 
         Le bandeau d'indicateurs qui coiffait la page a disparu : il posait
@@ -930,9 +959,12 @@ class Application(tk.Tk):
         liste de remuneration ne reprend ni la mediane ni les percentiles,
         qui sont l'echelle elle-meme.
         """
+        population = payload["population"]
+        salary = payload["salary"]
         for child in self.overview_frame.winfo_children():
             child.destroy()
         currency = salary.get("currency", "EUR")
+        self._show_scope(payload.get("scope") or {}, population, salary)
         if population.get("masked") and salary.get("masked"):
             tk.Label(self.overview_frame,
                      text=population.get("warning") or salary.get("warning", ""),
@@ -983,13 +1015,19 @@ class Application(tk.Tk):
             # Ni la mediane ni un percentile ici : ils sont l'echelle, juste
             # en dessous. Ne restent que les deux chiffres qui n'y figurent
             # pas.
+            # Le meme ecran veut dire deux choses differentes selon le champ
+            # analyse : « Salaire de base » ou « Remuneration totale ». Il le
+            # dit desormais, comme le font l'onglet Segments et le rapport.
             self._ruled_panel(
                 right, "Rémunération", (), [
                     ("Masse salariale",
                      format_money(salary.get("payroll"), currency), "payroll"),
                     ("Salaire moyen",
                      format_money(salary.get("mean"), currency), "mean"),
-                ], key="salary_summary")
+                ], key="salary_summary",
+                extra=("Champ analysé",
+                       salary.get("field_label") or salary.get("field", ""),
+                       "analysis_field"))
             self._ruled_panel(
                 right, "Échelle de rémunération", ("Percentile", "Valeur"),
                 [("Minimum", format_money(salary.get("min"), currency), "min")]
@@ -1041,7 +1079,7 @@ class Application(tk.Tk):
 
     def _ruled_panel(self, parent, title, headers, rows,
                      emphasis: Optional[str] = None,
-                     key: Optional[str] = None) -> None:
+                     key: Optional[str] = None, extra=None) -> None:
         """Tableau a l'anglaise : aucune grille, des filets aux articulations.
 
         Un tableau se lit d'autant mieux qu'il porte peu de traits. On garde
@@ -1050,7 +1088,7 @@ class Application(tk.Tk):
         reguliere. La ligne remarquable est mise en avant plutot que
         signalee par une couleur de fond.
         """
-        cell = self._panel_head(parent, title, key=key)
+        cell = self._panel_head(parent, title, extra, key=key)
         table = tk.Frame(cell, background=theme.CANVAS)
         table.pack(fill="x")
         table.grid_columnconfigure(0, weight=1)

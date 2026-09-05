@@ -354,7 +354,8 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         from compensation_analytics.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
-        source = os.path.join(directory, "population.xlsx")
+        # Conserve : un test qui rejoue l'analyse avec un filtre en a besoin.
+        source = self.source = os.path.join(directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
             make_row(index, age=30 + index % 25, tenure=index % 20,
                      business_unit=["France", "DACH"][index % 2],
@@ -476,6 +477,64 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             ])
             self.assertEqual([row["quartile"] for row in quartiles._drawable()],
                              [1])
+        finally:
+            app.destroy()
+
+    def test_the_page_says_what_it_covers_when_filtered(self):
+        """« 46 salariés » ne se lit pas de la meme facon selon qu'il s'agit
+        du fichier entier ou d'un perimetre."""
+        import tkinter as tk
+
+        from compensation_analytics.core.segmentation import build_filters
+        app = self._analysed(40)
+        try:
+            def walk(widget):
+                yield widget
+                for child in widget.winfo_children():
+                    yield from walk(child)
+
+            texts = [item.cget("text") for item in walk(app.overview_frame)
+                     if isinstance(item, tk.Label)]
+            # Sans filtre, pas de ligne de perimetre : la dire serait du bruit.
+            self.assertFalse([text for text in texts if "fichier de" in text])
+
+            from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                              run_analysis)
+            app.result = run_analysis(AnalysisRequest(
+                source_path=self.source, reference_date=REFERENCE_DATE,
+                segments=[],
+                filters=build_filters([{"field": "business_unit",
+                                        "operator": "eq",
+                                        "value": "France"}],
+                                      app.configuration)))
+            app._render_results()
+            app.update()
+            texts = [item.cget("text") for item in walk(app.overview_frame)
+                     if isinstance(item, tk.Label)]
+            perimetre = [text for text in texts if "fichier de" in text]
+            self.assertEqual(len(perimetre), 1, texts)
+            self.assertIn("BU = France", perimetre[0])
+            self.assertIn("40", perimetre[0])
+        finally:
+            app.destroy()
+
+    def test_a_small_population_is_flagged_on_screen(self):
+        """Le moteur demande de la prudence : l'ecran le disait moins que le
+        rapport, il le dit maintenant aussi."""
+        import tkinter as tk
+
+        app = self._analysed(8)
+        try:
+            def walk(widget):
+                yield widget
+                for child in widget.winfo_children():
+                    yield from walk(child)
+
+            warning = app.result.payload["salary"]["warning"]
+            self.assertTrue(warning, "le moteur devrait avertir a 8 salaries")
+            shown = [item.cget("text") for item in walk(app.overview_frame)
+                     if isinstance(item, tk.Label)]
+            self.assertIn(warning, shown)
         finally:
             app.destroy()
 
@@ -725,6 +784,13 @@ class TestTheMergedOverview(unittest.TestCase):
         doublons = {name for name in libelles if libelles.count(name) > 1}
         self.assertEqual(doublons, set(), "information affichée deux fois")
         self.assertGreaterEqual(len(libelles), 15)
+
+    def test_the_analysed_field_is_named(self):
+        """Le meme ecran veut dire deux choses selon le champ analyse."""
+        texts = [item.cget("text")
+                 for item in self._all_labels(self.app.overview_frame)]
+        field = self.app.result.payload["salary"]["field_label"]
+        self.assertIn(f"Champ analysé : {field}", texts)
 
     def test_the_population_figures_sit_in_one_place(self):
         """Mediane et moyenne d'age se lisent l'une sous l'autre, et non de

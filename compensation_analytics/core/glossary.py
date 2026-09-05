@@ -90,6 +90,12 @@ GLOSSARY: Dict[str, Entry] = {
         "dont son âge et son ancienneté se situent.",
         "Médiane et moyenne des âges et des anciennetés de la population "
         "filtrée."),
+    "analysis_field": Entry(
+        "La colonne du fichier sur laquelle portent tous les montants de "
+        "cette page. Changer de champ — salaire de base, rémunération "
+        "totale — change tous les chiffres qui suivent.",
+        "Champ déclaré au paramétrage (salary_parameters.analysis_field), "
+        "vérifié contre les colonnes numériques reconnues."),
     "salary_summary": Entry(
         "Les deux montants qui ne figurent pas dans l'échelle ci-dessous : "
         "ce que pèse la population, et sa moyenne.",
