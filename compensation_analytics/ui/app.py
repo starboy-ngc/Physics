@@ -33,7 +33,9 @@ from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
                               write_report)
-from ..core.segmentation import build_filters, dimension_fields, dimension_label
+from ..core.segmentation import (build_filters, dimension_label,
+                                 filter_fields, max_filter_values,
+                                 segment_fields)
 from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
@@ -55,7 +57,7 @@ TABS = (("qualite", "Qualité"), ("population", "Population"),
 class Application(tk.Tk):
     """Fenetre unique de l'outil."""
 
-    def __init__(self) -> None:
+    def __init__(self, config_dir: str = "config") -> None:
         super().__init__()
         self.title(WINDOW_TITLE)
         self.geometry("1380x880")
@@ -65,11 +67,12 @@ class Application(tk.Tk):
         self.fonts = Fonts(self)
         theme.apply(self, self.fonts)
 
-        self.config_dir = "config"
+        self.config_dir = config_dir
         self.configuration = load_configuration(self.config_dir)
         self.source_path: Optional[str] = None
         self.population = None
         self.mapping = None
+        self.headers: List[str] = []
         self.result = None
         self.filter_vars: Dict[str, tk.StringVar] = {}
         self.segment_vars: Dict[str, tk.BooleanVar] = {}
@@ -94,6 +97,8 @@ class Application(tk.Tk):
                                      background=CANVAS, foreground=FAINT,
                                      font=self.fonts.small)
         self.source_label.pack(side="left", padx=14, pady=(6, 0))
+        ttk.Button(inner, text="Paramètres", style="Ghost.TButton",
+                   command=self.open_settings).pack(side="right")
         tk.Frame(header, height=1, background=LINE).pack(fill="x")
 
         body = tk.Frame(self, background=GROUND)
@@ -322,19 +327,21 @@ class Application(tk.Tk):
             return
         try:
             self.configuration = load_configuration(self.config_dir)
-            population, mapping, _table = load_population(path, self.configuration)
+            population, mapping, table = load_population(path, self.configuration)
         except CompensationError as error:
             messagebox.showerror("Import impossible", error.message)
             return
         self.source_path = path
         self.population = population
         self.mapping = mapping
+        self.headers = list(table.headers)
         self.source_label.configure(
             text=f"{os.path.basename(path)} · {len(population)} salariés")
         unknown = len(mapping.unknown_columns)
         self.mapping_label.configure(
             text=f"{len(mapping.field_to_index)} colonnes reconnues"
-                 + (f", {unknown} ignorée(s)" if unknown else ""))
+                 + (f", {unknown} non reconnue(s) — voir Paramètres"
+                    if unknown else ""))
         self._populate_filters()
         self._populate_segments()
         self.analyse_button.state(["!disabled"])
@@ -343,16 +350,52 @@ class Application(tk.Tk):
         self.tabbar.select("qualite")
         self._set_state("Fichier chargé. Vérifiez la qualité, puis lancez l'analyse.")
 
+    def open_settings(self) -> None:
+        """Parametrage des champs : colonnes, filtres, axes d'analyse."""
+        from .settings import SettingsWindow
+
+        SettingsWindow(self, self.configuration, self.config_dir, self.fonts,
+                       headers=getattr(self, "headers", None),
+                       on_saved=self._settings_saved)
+
+    def _settings_saved(self, directory: str, path: str) -> None:
+        """Applique les nouveaux parametres sans redemarrer.
+
+        Le fichier est relu : une colonne qui vient d'etre declaree n'a
+        jamais ete lue, et ses valeurs manqueraient sinon jusqu'a la
+        prochaine ouverture.
+        """
+        self.config_dir = directory
+        try:
+            self.configuration = load_configuration(directory)
+            if self.source_path:
+                population, mapping, table = load_population(
+                    self.source_path, self.configuration)
+                self.population, self.mapping = population, mapping
+                self.headers = list(table.headers)
+        except CompensationError as error:
+            messagebox.showerror("Paramètres", error.message)
+            return
+        if self.population is not None:
+            self._populate_filters()
+            self._populate_segments()
+            self._show_quality()
+        self._set_state(f"Paramètres enregistrés dans {os.path.basename(path)}. "
+                        "Relancez l'analyse pour les appliquer.")
+
     def _populate_filters(self) -> None:
         for child in self.filters_frame.winfo_children():
             child.destroy()
         self.filter_vars.clear()
         # Les listes sont alimentees par le fichier : l'utilisateur choisit
         # parmi ce qui existe, il n'a aucune syntaxe a taper.
-        for field in dimension_fields(self.configuration):
+        limit = max_filter_values(self.configuration)
+        for field in filter_fields(self.configuration):
             values = sorted({str(e.value(field) or "").strip()
                              for e in self.population} - {""})
-            if not values or len(values) > 60:
+            # Le seuil est un parametre, plus un nombre cache ici : au-dela,
+            # une liste deroulante cesse d'etre utilisable.
+            if not values or len(values) > limit:
                 continue
             block = tk.Frame(self.filters_frame, background=GROUND)
             block.pack(fill="x", pady=(0, 8))
@@ -369,7 +412,7 @@ class Application(tk.Tk):
         for child in self.segments_frame.winfo_children():
             child.destroy()
         self.segment_vars.clear()
-        for field in dimension_fields(self.configuration):
+        for field in segment_fields(self.configuration):
             if not any(str(e.value(field) or "").strip() for e in self.population):
                 continue
             var = tk.BooleanVar(value=field in ("grade", "business_unit"))
@@ -588,7 +631,7 @@ class Application(tk.Tk):
             self._fill(tree, rows)
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
-        fields = dimension_fields(self.configuration)
+        fields = segment_fields(self.configuration)
         self._colour_fields = fields
         self.colour_choice.configure(
             values=[dimension_label(self.configuration, f) for f in fields])
@@ -737,7 +780,7 @@ class Application(tk.Tk):
             f"{len(produced)} fichiers ont été écrits dans :\n{directory}")
 
 
-def main() -> int:
+def main(config_dir: str = "config") -> int:
     """Ouvre l'interface. Retourne un code de sortie."""
-    Application().mainloop()
+    Application(config_dir).mainloop()
     return 0

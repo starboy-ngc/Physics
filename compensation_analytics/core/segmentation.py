@@ -141,23 +141,63 @@ def _number(value: Any) -> float:
 # ---------------------------------------------------------------- dimensions
 
 
-def dimensions(config: Configuration) -> List[Dict[str, str]]:
-    """Dimensions d'analyse declarees en configuration."""
+def dimensions(config: Configuration) -> List[Dict[str, Any]]:
+    """Dimensions d'analyse declarees en configuration.
+
+    Chaque entree porte deux usages, independants : servir de critere de
+    selection ("filter") et servir d'axe d'analyse ("segment"). Les deux
+    sont vrais par defaut, de sorte qu'une configuration ecrite avant
+    l'existence de ces drapeaux garde exactement le meme comportement.
+    """
     declared = config.get("population_mapping.dimensions", []) or []
-    result: List[Dict[str, str]] = []
+    result: List[Dict[str, Any]] = []
     for entry in declared:
         if isinstance(entry, str):
-            result.append({"field": entry, "label": entry})
+            result.append({"field": entry, "label": entry,
+                           "filter": True, "segment": True})
         elif isinstance(entry, dict) and entry.get("field"):
             result.append({
                 "field": entry["field"],
                 "label": entry.get("label") or entry["field"],
+                "filter": entry.get("filter", True) is not False,
+                "segment": entry.get("segment", True) is not False,
             })
     return result
 
 
 def dimension_fields(config: Configuration) -> List[str]:
     return [entry["field"] for entry in dimensions(config)]
+
+
+def filter_fields(config: Configuration) -> List[str]:
+    """Dimensions proposees comme critere de selection."""
+    return [entry["field"] for entry in dimensions(config) if entry["filter"]]
+
+
+def segment_fields(config: Configuration) -> List[str]:
+    """Dimensions proposees comme axe d'analyse."""
+    return [entry["field"] for entry in dimensions(config) if entry["segment"]]
+
+
+def max_filter_values(config: Configuration) -> int:
+    """Nombre de valeurs distinctes au-dela duquel une liste deroulante
+    cesse d'etre utilisable. Parametre, et non seuil cache dans l'interface."""
+    configured = config.get("population_mapping.max_filter_values", 60)
+    try:
+        limit = int(configured)
+    except (TypeError, ValueError):
+        raise ConfigError(
+            f"\"max_filter_values\" doit être un nombre entier, et vaut "
+            f"\"{configured}\". Corrigez population_mapping.json.",
+            technical=f"non integer max_filter_values: {configured!r}",
+        ) from None
+    if limit < 1:
+        raise ConfigError(
+            "\"max_filter_values\" doit valoir au moins 1 : à zéro, aucun "
+            "filtre ne serait jamais proposé.",
+            technical=f"max_filter_values out of range: {limit}",
+        )
+    return limit
 
 
 def dimension_labels(config: Configuration) -> Dict[str, str]:

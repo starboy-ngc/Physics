@@ -56,6 +56,11 @@ DEFAULTS: Dict[str, Any] = {
         # Dimensions d'analyse : segmentation, filtres, coloration des
         # graphiques. Ajouter une notion metier (equipe, manager, direction)
         # se fait ici et dans "fields", sans modification du code.
+        #
+        # Chaque entree accepte deux drapeaux optionnels, vrais par defaut :
+        #   "filter"  : proposee comme critere de selection
+        #   "segment" : proposee comme axe d'analyse
+        # Les omettre revient a activer les deux, comme avant leur existence.
         "dimensions": [
             {"field": "business_unit", "label": "BU"},
             {"field": "country", "label": "Pays"},
@@ -72,6 +77,10 @@ DEFAULTS: Dict[str, Any] = {
         "numeric": ["coefficient", "fte", "base_salary", "variable_pay", "total_compensation"],
         "date": ["birth_date", "hire_date", "leave_date"],
         "personal": ["last_name", "first_name", "birth_date", "employee_id"],
+        # Au-dela de ce nombre de valeurs distinctes, une liste deroulante
+        # n'est plus utilisable : la dimension reste analysable, mais n'est
+        # pas proposee comme filtre dans l'interface.
+        "max_filter_values": 60,
     },
     "age_parameters": {
         "bands": [
@@ -238,6 +247,36 @@ def load_configuration(config_dir: str | None = None) -> Configuration:
             )
         data[name] = _deep_merge(data.get(name, {}), loaded)
     return Configuration(data)
+
+
+def write_configuration(config_dir: str, section: str, data: Dict[str, Any]) -> str:
+    """Ecrit une section de configuration, et rend le chemin du fichier.
+
+    L'ecriture passe par un fichier temporaire du meme dossier, renomme
+    ensuite : une interruption en cours d'ecriture laisserait sinon une
+    configuration tronquee, que le chargement suivant refuserait.
+    """
+    if section not in CONFIG_FILES:
+        raise ConfigError(
+            f"La section de configuration \"{section}\" n'existe pas.",
+            technical=f"unknown config section: {section}",
+        )
+    try:
+        os.makedirs(config_dir, exist_ok=True)
+        path = os.path.join(config_dir, f"{section}.json")
+        temporary = path + ".tmp"
+        with open(temporary, "w", encoding="utf-8") as handle:
+            json.dump(data, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(temporary, path)
+    except OSError as exc:
+        raise ConfigError(
+            f"Les paramètres n'ont pas pu être enregistrés dans "
+            f"\"{config_dir}\". Vérifiez que le dossier est accessible en "
+            "écriture, ou choisissez-en un autre.",
+            technical=f"{type(exc).__name__}: {exc}",
+        ) from exc
+    return path
 
 
 def write_default_configuration(config_dir: str) -> None:

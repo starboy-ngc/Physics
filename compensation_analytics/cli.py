@@ -27,7 +27,7 @@ from .core.quality import run_quality_check
 from .core.reporting import write_report
 from .core.slides import (build_deck, build_summary, write_slides_html,
                           write_slides_pdf)
-from .core.segmentation import build_filters, dimension_fields
+from .core.segmentation import build_filters, dimensions
 from .core.traceability import write_manifest
 from .io.tabular import read_table
 from .version import ENGINE_NAME, __version__
@@ -169,11 +169,14 @@ def command_mapping(args: argparse.Namespace) -> int:
     config = load_configuration(args.config)
     table = read_table(args.fichier, args.onglet)
     mapping = resolve_mapping(table.headers, config)
-    print("Dimensions d'analyse declarees :")
-    for name in dimension_fields(config):
+    print("Dimensions declarees (F = filtre, A = axe d'analyse) :")
+    for entry in dimensions(config):
+        name = entry["field"]
         marker = "ok" if name in mapping.field_to_index or name in (
             "age_band", "tenure_band") else "absente du fichier"
-        print(f"  {name:<20} {marker}")
+        usage = ("F" if entry["filter"] else "-") + \
+                ("A" if entry["segment"] else "-")
+        print(f"  {name:<20} {usage:<4} {marker}")
     print()
     print("Colonnes identifiées :")
     for field_name, column in sorted(mapping.field_to_column.items()):
@@ -243,6 +246,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     interface = sub.add_parser("interface",
                                help="ouvrir l'interface graphique")
+    interface.add_argument("--config", default="config",
+                           help="dossier de configuration")
     interface.set_defaults(handler=command_interface)
 
     config = sub.add_parser("config", help="écrire la configuration par défaut")
@@ -251,7 +256,7 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def command_interface(_args: argparse.Namespace) -> int:
+def command_interface(args: argparse.Namespace) -> int:
     """Ouvre l'interface graphique."""
     try:
         from .ui.app import main as ui_main
@@ -261,7 +266,7 @@ def command_interface(_args: argparse.Namespace) -> int:
               "Les commandes en ligne restent disponibles : "
               "compensation-analytics --help", file=sys.stderr)
         return 3
-    return ui_main()
+    return ui_main(getattr(args, "config", None) or "config")
 
 
 def main(argv: Optional[List[str]] = None) -> int:
