@@ -674,3 +674,109 @@ class TestEverySegmentIsComputed(unittest.TestCase):
                   if block["field"] == "grade"][0]
         self.assertGreater(len(grades["rows"]), 1)
         self.assertIsNotNone(grades["reference_median"])
+
+
+@needs_display
+class TestRecoveringFromAnEmptySelection(unittest.TestCase):
+    """Un filtre qui ne laisse personne doit pouvoir se defaire.
+
+    Le defaut : les onglets etaient masques, puis la reinitialisation ne les
+    ramenait pas. Le rendu levait une erreur en remontant le bloc des
+    quartiles devant un widget qu'il avait lui-meme depaquete, et
+    l'exception interrompait la suite — dont le calcul des onglets a
+    afficher. La fenetre restait figee sur « Analyse en cours ».
+    """
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import load_population
+        directory = tempfile.mkdtemp()
+        self.source = os.path.join(directory, "population.xlsx")
+        # Les grades sont lies a la BU : « France + G5 » ne designe donc
+        # personne, ce qu'aucun filtre pris isolement ne ferait.
+        write_workbook(self.source, [("Population", [HEADERS] + [
+            make_row(index,
+                     business_unit="France" if index % 2 else "DACH",
+                     grade="G3" if index % 2 else "G5",
+                     gender=["F", "H"][index % 2],
+                     age=28 + index % 30, tenure=index % 15)
+            for index in range(120)])])
+        self.app = Application()
+        self.app.update()
+        population, mapping, table = load_population(
+            self.source, self.app.configuration, reference_date=REFERENCE_DATE)
+        self.app.source_path = self.source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app.headers = list(table.headers)
+        self.app._populate_filters()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _analyse(self):
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        from compensation_analytics.core.segmentation import build_filters
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE,
+            filters=build_filters(self.app._current_filters(),
+                                  self.app.configuration)))
+        self.app._render_results()
+        self.app.update()
+
+    def test_tabs_come_back_after_resetting_an_impossible_filter(self):
+        self._analyse()
+        complete = self.app.tabbar.visible_keys()
+        self.assertGreater(len(complete), 1)
+
+        self.app.filter_vars["business_unit"].set("France")
+        self.app.filter_vars["grade"].set("G5")
+        self._analyse()
+        self.assertEqual(self.app.result.payload["population"]["headcount"], 0)
+        self.assertEqual(self.app.tabbar.visible_keys(), ["qualite"])
+
+        self.app.reset_filters()
+        self._analyse()
+        self.assertEqual(self.app.tabbar.visible_keys(), complete)
+
+    def test_the_quartile_block_survives_being_hidden_and_shown(self):
+        """Le geste exact qui levait l'erreur."""
+        self._analyse()
+        self.app.filter_vars["business_unit"].set("France")
+        self.app.filter_vars["grade"].set("G5")
+        self._analyse()
+        # winfo_manager dit si le widget est empaquete, independamment de
+        # l'onglet actif : winfo_ismapped repondrait « non » simplement
+        # parce que la page n'est pas au premier plan.
+        self.assertFalse(self.app.quartile_block.winfo_manager())
+        self.app.reset_filters()
+        self._analyse()
+        self.assertEqual(self.app.quartile_block.winfo_manager(), "pack")
+
+    def test_a_rendering_failure_is_reported_instead_of_freezing(self):
+        """Le calcul avait abouti, seul le rendu avait echoue : la fenetre
+        restait sur « Analyse en cours » sans rien dire."""
+        from compensation_analytics.ui import app as module
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+
+        result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE))
+        raised = []
+        original_error = module.messagebox.showerror
+        module.messagebox.showerror = lambda *a, **k: raised.append(a)
+        original_render = self.app._render_results
+        self.app._render_results = lambda: (_ for _ in ()).throw(
+            RuntimeError("rendu casse"))
+        try:
+            self.app._queue.put(("resultat", result))
+            self.app._set_state("Analyse en cours…")
+            self.app._poll()
+            self.app.update()
+        finally:
+            module.messagebox.showerror = original_error
+            self.app._render_results = original_render
+        self.assertTrue(raised, "aucun message d'erreur")
+        self.assertNotIn("en cours", self.app.status.cget("text"))

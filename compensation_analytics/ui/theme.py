@@ -335,7 +335,11 @@ def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:
     def scrolled(first: str, last: str) -> None:
         if float(first) <= 0.0 and float(last) >= 1.0:
             bar.pack_forget()
-        elif not bar.winfo_ismapped():
+        # winfo_ismapped repond « visible a l'ecran » : il vaut faux des que
+        # l'onglet parent n'est pas affiche, et l'ascenseur serait alors
+        # reempile a chaque rafraichissement. winfo_manager repond bien a la
+        # question posee : ce widget est-il pris en charge par le paquetage ?
+        elif not bar.winfo_manager():
             bar.pack(**packing)
         bar.set(first, last)
 

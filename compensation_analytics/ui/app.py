@@ -30,6 +30,7 @@ from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError
 from ..core.export import export_excel
+from ..core.logging_setup import log_event
 from ..core.pay_equity import calculate_category_gaps
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
@@ -356,16 +357,23 @@ class Application(tk.Tk):
                                     justify="left", anchor="w",
                                     wraplength=880)
         self.equity_note.pack(anchor="w", padx=18, pady=(0, 14))
-        self.quartile_title = tk.Label(
-            equite, text="RÉPARTITION PAR QUARTILE DE RÉMUNÉRATION",
-            background=CANVAS, foreground=FAINT, font=self.fonts.label)
-        self.quartile_title.pack(anchor="w", padx=18, pady=(0, 6))
+        # Titre et tableau reunis dans un bloc : les masquer separement
+        # obligeait a les remonter l'un devant l'autre, et remonter un widget
+        # devant un widget lui-meme depaquete leve une erreur.
+        self.quartile_block = tk.Frame(equite, background=CANVAS)
+        self.quartile_block.pack(fill="x")
+        tk.Label(self.quartile_block,
+                 text="RÉPARTITION PAR QUARTILE DE RÉMUNÉRATION",
+                 background=CANVAS, foreground=FAINT,
+                 font=self.fonts.label).pack(anchor="w", padx=18, pady=(0, 6))
         self.quartile_tree = self._tree(
-            equite, ("Quartile", "Effectif", "Part femmes", "Part hommes"),
+            self.quartile_block,
+            ("Quartile", "Effectif", "Part femmes", "Part hommes"),
             (200, 120, 140, 140), expand=False, height=4)
         # Le « travail de meme valeur » se lit selon le poste, mais aussi
         # selon le grade ou l'etablissement : l'axe doit pouvoir changer.
-        category_head = tk.Frame(equite, background=CANVAS)
+        self.category_head = tk.Frame(equite, background=CANVAS)
+        category_head = self.category_head
         category_head.pack(fill="x", padx=18, pady=(6, 6))
         tk.Label(category_head, text="ÉCART PAR", background=CANVAS,
                  foreground=FAINT, font=self.fonts.label).pack(side="left")
@@ -571,7 +579,20 @@ class Application(tk.Tk):
             return
         self.result = payload
         self.export_button.state(["!disabled"])
-        self._render_results()
+        try:
+            self._render_results()
+        except Exception as error:              # noqa: BLE001
+            # Une erreur d'affichage laissait la fenetre figee sur « Analyse
+            # en cours », onglets masques, sans rien dire : le calcul avait
+            # abouti, seul le rendu avait echoue. Elle doit se voir.
+            log_event("interface", "render", status="ERREUR",
+                      detail=type(error).__name__)
+            messagebox.showerror(
+                "Affichage impossible",
+                "Les résultats ont été calculés mais n'ont pas pu être "
+                f"affichés ({type(error).__name__}). Les documents restent "
+                "productibles.")
+            self._set_state("Analyse terminée · affichage incomplet.")
 
     # ------------------------------------------------------------ affichage
 
@@ -713,9 +734,9 @@ class Application(tk.Tk):
                  font=self.fonts.body_bold).pack(anchor="w")
         constats = quality.get("constats", [])
         wrapper = self.quality_tree.master
-        if constats and not wrapper.winfo_ismapped():
+        if constats and not wrapper.winfo_manager():
             wrapper.pack(fill="both", expand=True, padx=18, pady=(0, 18))
-        elif not constats and wrapper.winfo_ismapped():
+        elif not constats and wrapper.winfo_manager():
             wrapper.pack_forget()
         self._fill(self.quality_tree,
                    [(item["severite"].capitalize(), item["message"],
@@ -844,8 +865,7 @@ class Application(tk.Tk):
                      wraplength=760, justify="left").pack(anchor="w", padx=18,
                                                           pady=(8, 0))
             self.equity_note.configure(text="")
-            self.quartile_title.pack_forget()
-            self.quartile_tree.master.pack_forget()
+            self.quartile_block.pack_forget()
             self.category_title.configure(text="")
             self._fill(self.quartile_tree, [])
             self._fill(self.category_tree, [])
@@ -877,10 +897,9 @@ class Application(tk.Tk):
                      "sont exclus des écarts.")
         self.equity_note.configure(text=note)
 
-        if not self.quartile_title.winfo_ismapped():
-            self.quartile_title.pack(anchor="w", padx=18, pady=(0, 6),
-                                     before=self.quartile_tree.master)
-            self.quartile_tree.master.pack(fill="x", padx=18, pady=(0, 10))
+        if not self.quartile_block.winfo_manager():
+            # « category_head » n'est jamais depaquete : c'est un repere sur.
+            self.quartile_block.pack(fill="x", before=self.category_head)
         self._fill(self.quartile_tree, [
             (f"Q{item['quartile']}"
              + (" (rémunérations les plus basses)" if item["quartile"] == 1
