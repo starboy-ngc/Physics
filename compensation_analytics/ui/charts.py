@@ -15,8 +15,9 @@ import tkinter as tk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
 from ..core.reporting import _PALETTE, format_money, format_number
+from . import raster
 from .theme import (ACCENT, CANVAS, FAINT, INK, LINE, MUTED, SIZE_LABEL,
-                    SIZE_SMALL, pick_family)
+                    SIZE_SMALL, _rgb, pick_family)
 
 #: Les filets du fond doivent se deviner, pas se lire.
 GRID = "#eef2f6"
@@ -89,6 +90,9 @@ class ScatterChart(tk.Frame):
         self.hidden: set = set()
         self.selected: Optional[Dict[str, Any]] = None
         self._items: Dict[int, Dict[str, Any]] = {}
+        # Les images des points, gardees ici : Tk ne retient pas ses images,
+        # et un ramassage les ferait disparaitre du canevas.
+        self._dots: Dict[Any, tk.PhotoImage] = {}
         self._view = None            # (x_min, x_max, y_min, y_max) affichee
         self._bounds = None          # etendue complete des donnees
         self._drag = None
@@ -199,11 +203,11 @@ class ScatterChart(tk.Frame):
             shown += 1
             colour = colours.get(point["group"], ACCENT)
             selected = self.selected is point
-            radius = 5 if selected else 3
-            item = self.canvas.create_oval(
-                px - radius, py - radius, px + radius, py + radius,
-                fill=colour if not selected else TREND,
-                outline=INK if selected else "", width=2 if selected else 0)
+            # create_oval ne lisse pas ses bords : a cette taille les points
+            # devenaient des carres a coins ronges. Une image antialiasee,
+            # calculee une fois par couleur, donne de vrais ronds.
+            item = self.canvas.create_image(
+                px, py, image=self._dot(colour, selected))
             self._items[item] = point
 
         trend = self.dataset.get("trend")
@@ -223,6 +227,25 @@ class ScatterChart(tk.Frame):
                                 fill=MUTED, font=axis_font())
 
     # --------------------------------------------------------- interaction
+
+    #: Diametre des points, en pixels. Le point selectionne est plus gros et
+    #: porte un cerne, pour rester reperable au milieu du nuage.
+    DOT = 7
+    DOT_SELECTED = 13
+
+    def _dot(self, colour: str, selected: bool) -> tk.PhotoImage:
+        """Image d'un point, mise en cache par couleur et par etat."""
+        key = (colour, selected)
+        image = self._dots.get(key)
+        if image is None:
+            if selected:
+                data = raster.disc(self.DOT_SELECTED, _rgb(TREND),
+                                   ring=_rgb(INK), ring_width=2.0)
+            else:
+                data = raster.disc(self.DOT, _rgb(colour))
+            image = tk.PhotoImage(master=self.canvas, data=data)
+            self._dots[key] = image
+        return image
 
     def _nearest(self, x: int, y: int) -> Optional[Dict[str, Any]]:
         for item in self.canvas.find_overlapping(x - 5, y - 5, x + 5, y + 5):

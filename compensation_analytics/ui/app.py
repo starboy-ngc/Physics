@@ -50,9 +50,12 @@ WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: elle, existerait vraiment dans le fichier.
 _ALL = "(toutes)"
 
-TABS = (("qualite", "Qualité"), ("population", "Population"),
-        ("remuneration", "Rémunération"), ("distribution", "Distribution"),
-        ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"))
+#: Les resultats d'abord, le controle qualite en dernier : on y revient
+#: quand un chiffre surprend, on ne commence pas par lui.
+TABS = (("population", "Population"), ("remuneration", "Rémunération"),
+        ("distribution", "Distribution"),
+        ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"),
+        ("qualite", "Qualité"))
 
 
 class Application(tk.Tk):
@@ -157,11 +160,12 @@ class Application(tk.Tk):
         outer = tk.Canvas(parent, background=GROUND, highlightthickness=0)
         bar = ttk.Scrollbar(parent, orient="vertical", command=outer.yview,
                             style="Flat.Vertical.TScrollbar")
-        outer.configure(yscrollcommand=bar.set)
         # L'ascenseur se reserve sa place en premier : empile apres une zone
         # en expansion, il n'obtenait aucune largeur et restait invisible.
         bar.pack(side="right", fill="y", padx=(0, 4), pady=4)
         outer.pack(side="left", fill="both", expand=True, padx=(18, 0))
+        theme.attach_scrollbar(outer, bar, side="right", fill="y",
+                               padx=(0, 4), pady=4, before=outer)
         steps = tk.Frame(outer, background=GROUND)
         window = outer.create_window((0, 0), window=steps, anchor="nw")
         steps.bind("<Configure>",
@@ -170,19 +174,8 @@ class Application(tk.Tk):
                    lambda e: outer.itemconfigure(window, width=e.width - 14))
 
         # La molette sur la colonne : sans elle, les dernieres dimensions et
-        # les etapes 3 et 4 n'etaient atteignables qu'a l'ascenseur, que rien
-        # ne signalait.
-        def _wheel(event) -> None:
-            first, last = outer.yview()
-            if first <= 0.0 and last >= 1.0:
-                return
-            step = -1 if getattr(event, "delta", 0) > 0 or event.num == 4 else 1
-            outer.yview_scroll(step, "units")
-
-        for sequence in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
-            outer.bind_all(sequence, self._sidebar_wheel, add="+")
-        self._scroll_area = outer
-        self._scroll_step = _wheel
+        # les etapes 3 et 4 n'etaient atteignables qu'a l'ascenseur.
+        theme.bind_wheel(outer, self)
 
         self._section(steps, 1, "Importer")
         ttk.Button(steps, text="Choisir un fichier…", style="GhostGround.TButton",
@@ -215,15 +208,6 @@ class Application(tk.Tk):
             CheckRow(self.outputs_frame, label, var,
                      self.fonts).pack(anchor="w", pady=2)
 
-    def _sidebar_wheel(self, event) -> None:
-        """La molette n'agit que si le curseur survole la colonne d'etapes."""
-        widget = self.winfo_containing(event.x_root, event.y_root)
-        while widget is not None:
-            if widget is self._scroll_area:
-                self._scroll_step(event)
-                return
-            widget = getattr(widget, "master", None)
-
     def _build_pages(self) -> None:
         self.tabs: Dict[str, tk.Frame] = {}
         for key, label in TABS:
@@ -247,6 +231,13 @@ class Application(tk.Tk):
 
         self.population_frame = tk.Frame(self.tabs["population"], background=CANVAS)
         self.population_frame.pack(fill="both", expand=True, padx=18, pady=18)
+        # Premier onglet de la barre, donc premier ecran vu : il doit dire ce
+        # qu'il attend. _show_population vide ce cadre au premier calcul.
+        tk.Label(self.population_frame,
+                 text="Aucune analyse.\nChoisissez une population dans la "
+                      "colonne de gauche, puis « Analyser ».",
+                 background=CANVAS, foreground=MUTED, font=self.fonts.body,
+                 justify="left").pack(anchor="w", pady=(40, 0))
         self.salary_frame = tk.Frame(self.tabs["remuneration"], background=CANVAS)
         self.salary_frame.pack(fill="both", expand=True, padx=18, pady=18)
 
@@ -301,17 +292,9 @@ class Application(tk.Tk):
             tree.column(name, width=width, anchor="w" if width > 200 else "e")
         scroll = ttk.Scrollbar(wrapper, orient="vertical", command=tree.yview,
                                style="Flat.Vertical.TScrollbar")
-        # L'ascenseur n'apparait que s'il sert : une gouttiere permanente sur
-        # un tableau de six lignes est du bruit.
-        def _scrolled(first: str, last: str) -> None:
-            if float(first) <= 0.0 and float(last) >= 1.0:
-                scroll.pack_forget()
-            elif not scroll.winfo_ismapped():
-                scroll.pack(side="right", fill="y", pady=(30, 0))
-            scroll.set(first, last)
-
-        tree.configure(yscrollcommand=_scrolled)
         tree.pack(side="left", fill="both", expand=True)
+        theme.attach_scrollbar(tree, scroll, side="right", fill="y",
+                               pady=(30, 0), before=tree)
         return tree
 
     # ------------------------------------------------------- etapes

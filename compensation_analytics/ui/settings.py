@@ -25,7 +25,8 @@ from ..core.errors import CompensationError
 from ..core.mapping import normalise_label
 from ..core.segmentation import CORE_FIELDS, max_filter_values
 from .theme import (ACCENT, CANVAS, CRIT, FAINT, GROUND, INK, INK_SOFT, LINE,
-                    MUTED, WARN, Card, CheckRow, Fonts)
+                    MUTED, WARN, Card, CheckRow, Fonts, attach_scrollbar,
+                    bind_wheel)
 
 #: Champ conserve mais jamais associe a une colonne.
 IGNORED = "(ignorée)"
@@ -208,15 +209,17 @@ class SettingsWindow(tk.Toplevel):
         canvas = tk.Canvas(parent, background=CANVAS, highlightthickness=0)
         bar = ttk.Scrollbar(parent, orient="vertical", command=canvas.yview,
                             style="Flat.Vertical.TScrollbar")
-        canvas.configure(yscrollcommand=bar.set)
         bar.pack(side="right", fill="y")
         canvas.pack(side="left", fill="both", expand=True)
+        attach_scrollbar(canvas, bar, side="right", fill="y",
+                         before=canvas)
         inner = tk.Frame(canvas, background=CANVAS)
         window = canvas.create_window((0, 0), window=inner, anchor="nw")
         inner.bind("<Configure>",
                    lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
         canvas.bind("<Configure>",
                     lambda e: canvas.itemconfigure(window, width=e.width))
+        bind_wheel(canvas, self)
         return inner
 
     def _build_columns(self, parent: tk.Widget) -> None:

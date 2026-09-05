@@ -216,3 +216,114 @@ class TestWindow(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless(HAS_TK, "tkinter absent")
+class TestDrawnImages(unittest.TestCase):
+    """Le canevas Tk ne lisse pas ses traces : les formes fines sont des
+    images antialiasees, produites sans la moindre dependance."""
+
+    def test_a_disc_is_round_and_not_square(self):
+        """Le defaut corrige : create_oval rendait des carres a coins
+        ronges. Un coin de l'image doit donc etre transparent, et son
+        centre opaque."""
+        from compensation_analytics.ui.raster import Raster, _circle
+        size = 9
+        raster = Raster(size).paint(_circle(size / 2.0, size / 2.0 - 0.5),
+                                    (0, 0, 0))
+        corner_alpha = raster.pixels[0][0][3]
+        centre_alpha = raster.pixels[size // 2][size // 2][3]
+        self.assertEqual(corner_alpha, 0.0)
+        self.assertEqual(centre_alpha, 1.0)
+
+    def test_edges_are_partially_transparent(self):
+        """C'est la definition de l'antialiasing : sans pixel a opacite
+        intermediaire, le bord est un escalier."""
+        from compensation_analytics.ui.raster import Raster, _circle
+        size = 9
+        raster = Raster(size).paint(_circle(size / 2.0, size / 2.0 - 0.5),
+                                    (0, 0, 0))
+        alphas = {pixel[3] for row in raster.pixels for pixel in row}
+        partial = [value for value in alphas if 0.0 < value < 1.0]
+        self.assertTrue(partial, "aucun pixel de bord adouci")
+
+    def test_the_images_are_valid_png(self):
+        from compensation_analytics.ui import raster
+        import base64
+        for data in (raster.disc(7, (47, 93, 138)),
+                     raster.checkbox(15, True, (47, 93, 138), (47, 93, 138))):
+            self.assertTrue(base64.b64decode(data).startswith(b"\x89PNG\r\n\x1a\n"))
+
+    def test_images_are_computed_once_per_appearance(self):
+        """Un nuage de 2 000 points ne doit pas recalculer 2 000 images."""
+        from compensation_analytics.ui import raster
+        first = raster.disc(7, (10, 20, 30))
+        self.assertIs(first, raster.disc(7, (10, 20, 30)))
+
+    def test_a_checked_box_differs_from_an_unchecked_one(self):
+        from compensation_analytics.ui import raster
+        colour, border = (47, 93, 138), (207, 215, 223)
+        self.assertNotEqual(raster.checkbox(15, True, colour, border),
+                            raster.checkbox(15, False, colour, border))
+
+
+@unittest.skipUnless(HAS_TK, "tkinter absent")
+class TestScrollbarsAreUsable(unittest.TestCase):
+    def test_the_scrollbar_is_wide_enough_to_grab(self):
+        """Le defaut corrige : "arrowsize=0" reduisait l'ascenseur a un
+        pixel de large. Il defilait, mais aucun curseur ne l'attrapait."""
+        from compensation_analytics.ui.theme import SCROLLBAR_WIDTH
+        self.assertGreaterEqual(SCROLLBAR_WIDTH, 10)
+
+
+@needs_display
+class TestScrollbarPlacement(unittest.TestCase):
+    def test_a_hidden_scrollbar_comes_back_at_its_full_width(self):
+        """Reempile apres la zone defilante, qui est en expansion,
+        l'ascenseur ne recuperait aucune largeur : il revenait invisible."""
+        import tkinter as tk
+        from tkinter import ttk
+        from compensation_analytics.ui import theme
+
+        root = tk.Tk()
+        fonts = theme.Fonts(root)
+        theme.apply(root, fonts)
+        parent = tk.Frame(root, width=200, height=100)
+        parent.pack(fill="both", expand=True)
+        canvas = tk.Canvas(parent)
+        bar = ttk.Scrollbar(parent, orient="vertical", command=canvas.yview,
+                            style="Flat.Vertical.TScrollbar")
+        bar.pack(side="right", fill="y")
+        canvas.pack(side="left", fill="both", expand=True)
+        theme.attach_scrollbar(canvas, bar, side="right", fill="y",
+                               before=canvas)
+        root.update()
+        bar.pack_forget()
+        root.update()
+        bar.pack(side="right", fill="y", before=canvas)
+        root.update()
+        self.assertGreaterEqual(bar.winfo_width(), 10)
+        root.destroy()
+
+    def test_the_placement_argument_is_mandatory(self):
+        """L'oubli doit echouer a l'ecriture du code, pas a l'ecran."""
+        import tkinter as tk
+        from tkinter import ttk
+        from compensation_analytics.ui import theme
+
+        root = tk.Tk()
+        canvas = tk.Canvas(root)
+        bar = ttk.Scrollbar(root, orient="vertical")
+        with self.assertRaises(ValueError):
+            theme.attach_scrollbar(canvas, bar, side="right", fill="y")
+        root.destroy()
+
+
+@unittest.skipUnless(HAS_TK, "tkinter absent")
+class TestTabOrder(unittest.TestCase):
+    def test_quality_comes_last(self):
+        """Les resultats d'abord : on revient au controle qualite quand un
+        chiffre surprend, on ne commence pas par lui."""
+        from compensation_analytics.ui.app import TABS
+        self.assertEqual(TABS[-1][0], "qualite")
+        self.assertEqual(TABS[0][0], "population")

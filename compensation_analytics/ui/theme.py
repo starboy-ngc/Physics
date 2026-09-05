@@ -16,6 +16,8 @@ import tkinter.font as tkfont
 from tkinter import ttk
 from typing import Callable, Dict, List, Optional
 
+from . import raster
+
 # --------------------------------------------------------------- palette
 
 INK = "#111c26"          # texte principal
@@ -44,8 +46,17 @@ SIZE_BODY = 10
 SIZE_SMALL = 9
 SIZE_LABEL = 8
 
+#: Epaisseur des ascenseurs. Assez large pour se saisir a la souris.
+SCROLLBAR_WIDTH = 12
+
 _PREFERRED = ("Segoe UI", "SF Pro Text", "Helvetica Neue", "Inter",
               "Noto Sans", "DejaVu Sans", "Liberation Sans", "Arial")
+
+
+def _rgb(colour: str) -> "tuple[int, int, int]":
+    """Traduit une couleur "#rrggbb" en triplet, pour les images."""
+    value = colour.lstrip("#")
+    return (int(value[0:2], 16), int(value[2:4], 16), int(value[4:6], 16))
 
 
 def pick_family(root: tk.Misc) -> str:
@@ -181,9 +192,12 @@ def apply(root: tk.Misc, fonts: Fonts) -> ttk.Style:
             "sticky": "ns",
             "children": [("Vertical.Scrollbar.thumb",
                           {"expand": "1", "sticky": "nswe"})]})])
+    # Dans clam, c'est "arrowsize" qui donne son epaisseur a l'ascenseur, y
+    # compris sans fleche : a zero il tombait a un pixel de large. Il
+    # fonctionnait, mais aucun curseur ne pouvait l'attraper.
     style.configure("Flat.Vertical.TScrollbar", background=LINE_STRONG,
                     troughcolor=GROUND, borderwidth=0, relief="flat",
-                    arrowsize=0, width=8, bordercolor=GROUND,
+                    arrowsize=SCROLLBAR_WIDTH, bordercolor=GROUND,
                     lightcolor=LINE_STRONG, darkcolor=LINE_STRONG)
     style.map("Flat.Vertical.TScrollbar",
               background=[("active", MUTED), ("pressed", MUTED)],
@@ -260,6 +274,56 @@ class Card(tk.Frame):
         self.inner.pack(fill="both", expand=True, padx=padding, pady=padding)
 
 
+def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:
+    """Relie un ascenseur, et ne l'affiche que s'il sert.
+
+    Une gouttiere permanente sur une zone qui tient entierement a l'ecran
+    est du bruit, et laisse croire qu'il reste quelque chose a voir.
+
+    `before` est indispensable : reempile apres la zone defilante, qui est
+    en expansion, l'ascenseur ne recupere aucune largeur et reapparait
+    invisible. On le remet donc a sa place d'origine.
+    """
+    if "before" not in packing:
+        raise ValueError("attach_scrollbar exige \"before\" pour rendre "
+                         "l'ascenseur a sa place dans l'empilement")
+
+    def scrolled(first: str, last: str) -> None:
+        if float(first) <= 0.0 and float(last) >= 1.0:
+            bar.pack_forget()
+        elif not bar.winfo_ismapped():
+            bar.pack(**packing)
+        bar.set(first, last)
+
+    widget.configure(yscrollcommand=scrolled)
+
+
+def bind_wheel(canvas: tk.Canvas, root: tk.Misc) -> None:
+    """Fait defiler `canvas` a la molette quand le curseur le survole.
+
+    La liaison est globale — sans quoi elle ne repondrait que si le canevas
+    lui-meme a le focus, jamais quand le curseur est sur un champ qu'il
+    contient — et le survol est verifie a chaque evenement.
+    """
+
+    def scroll(event) -> None:
+        widget = root.winfo_containing(event.x_root, event.y_root)
+        while widget is not None:
+            if widget is canvas:
+                break
+            widget = getattr(widget, "master", None)
+        else:
+            return
+        first, last = canvas.yview()
+        if first <= 0.0 and last >= 1.0:
+            return
+        step = -1 if getattr(event, "delta", 0) > 0 or event.num == 4 else 1
+        canvas.yview_scroll(step, "units")
+
+    for sequence in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
+        canvas.bind_all(sequence, scroll, add="+")
+
+
 def separator(master: tk.Widget, ground: str = CANVAS) -> tk.Frame:
     frame = tk.Frame(master, height=1, background=LINE)
     return frame
@@ -297,13 +361,14 @@ class CheckRow(tk.Frame):
         self.variable.set(not self.variable.get())
 
     def _draw(self) -> None:
+        """Le canevas Tk ne lisse pas ses traces : la coche tracee a la ligne
+        montrait ses marches. L'indicateur est donc une image antialiasee."""
         self.box.delete("all")
-        edge = self.BOX - 1
         checked = bool(self.variable.get())
-        self.box.create_rectangle(
-            0, 0, edge, edge,
-            outline=ACCENT if checked else LINE_STRONG,
-            fill=ACCENT if checked else CANVAS)
-        if checked:
-            self.box.create_line(3, 8, 6, 11, 12, 4, fill="white", width=2,
-                                 capstyle="round", joinstyle="round")
+        data = raster.checkbox(
+            self.BOX, checked,
+            fill=_rgb(ACCENT if checked else CANVAS),
+            border=_rgb(ACCENT if checked else LINE_STRONG))
+        # La reference doit survivre a l'appel : Tk ne retient pas l'image.
+        self._image = tk.PhotoImage(master=self.box, data=data)
+        self.box.create_image(0, 0, anchor="nw", image=self._image)
