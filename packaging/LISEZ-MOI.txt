@@ -34,9 +34,13 @@ LANCER L'INTERFACE
 
     « Vue d'ensemble » réunit les deux lectures sur une seule page :
     un salaire médian ne veut rien dire sans l'âge et l'ancienneté de
-    la population qui le porte. Les indicateurs y sont groupés sous
-    leur sujet, et les structures d'âge et d'ancienneté se lisent en
-    barres — les chiffres restent affichés à côté.
+    la population qui le porte. La population est à gauche, la
+    rémunération à droite.
+
+    Les structures d'âge et d'ancienneté se lisent en pyramide, femmes
+    à gauche et hommes à droite, la tranche la plus jeune en bas. Si
+    la colonne « Sexe » n'est pas renseignée, l'outil retombe sur des
+    barres simples plutôt que d'afficher une demi-pyramide.
 
     L'onglet « Ancienneté × rémunération » est explorable :
 

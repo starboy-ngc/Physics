@@ -109,7 +109,8 @@ def calculate_age_metrics(
         "age_mean": stats.mean(ages),
         "age_median": stats.median(ages),
         "age_known": len(ages),
-        "age_bands": _band_share(population, "age_band", bands, len(population)),
+        "age_bands": _band_share(population, "age_band", bands,
+                                 len(population), config),
     }
 
 
@@ -122,8 +123,24 @@ def calculate_tenure_metrics(
         "tenure_mean": stats.mean(tenures),
         "tenure_median": stats.median(tenures),
         "tenure_known": len(tenures),
-        "tenure_bands": _band_share(population, "tenure_band", bands, len(population)),
+        "tenure_bands": _band_share(population, "tenure_band", bands,
+                                    len(population), config),
     }
+
+
+def _sex_of(employee, config: Optional[Configuration]) -> str:
+    """« female », « male » ou « unknown », selon les ecritures declarees."""
+    if config is None:
+        return "unknown"
+    from .pay_equity import FEMALE, classify
+
+    section = config.section("pay_equity_parameters")
+    value = employee.value(section.get("gender_field", "gender"))
+    found = classify(value, section.get("female_values", []) or [],
+                     section.get("male_values", []) or [])
+    if not found:
+        return "unknown"
+    return "female" if found == FEMALE else "male"
 
 
 def _band_share(
@@ -131,23 +148,33 @@ def _band_share(
     field_name: str,
     bands: Sequence[Dict[str, Any]],
     headcount: int,
+    config: Optional[Configuration] = None,
 ) -> List[Dict[str, Any]]:
     counts: Dict[str, int] = {str(band.get("label", "")): 0 for band in bands}
+    # Ventilation par sexe : c'est elle qui fait une pyramide plutot qu'un
+    # simple histogramme. Elle reste vide si la colonne n'est pas renseignee.
+    split: Dict[str, Dict[str, int]] = {
+        label: {"female": 0, "male": 0, "unknown": 0} for label in counts
+    }
     unknown = 0
     for employee in population:
         label = str(employee.value(field_name) or "")
         if label in counts:
             counts[label] += 1
+            split[label][_sex_of(employee, config)] += 1
         else:
             unknown += 1
     rows = [
-        {"label": label, "count": value, "share": _share(value, headcount)}
+        {"label": label, "count": value, "share": _share(value, headcount),
+         "female": split[label]["female"], "male": split[label]["male"],
+         "unknown_sex": split[label]["unknown"]}
         for label, value in counts.items()
     ]
     if unknown:
         rows.append(
             {"label": "(non renseigne)", "count": unknown,
-             "share": _share(unknown, headcount)}
+             "share": _share(unknown, headcount),
+             "female": 0, "male": 0, "unknown_sex": unknown}
         )
     return rows
 

@@ -594,7 +594,7 @@ class TestTheMergedOverview(unittest.TestCase):
         titles = [item.cget("text")
                   for item in self._all_labels(self.app.overview_frame)]
         for expected in ("ÉCHELLE DE RÉMUNÉRATION", "DISPERSION",
-                         "STRUCTURE D'ÂGE", "STRUCTURE D'ANCIENNETÉ"):
+                         "PYRAMIDE DES ÂGES", "STRUCTURE D'ANCIENNETÉ"):
             self.assertIn(expected, titles)
         for expected in ("MASSE SALARIALE", "ÂGE MÉDIAN",
                          "ANCIENNETÉ MÉDIANE", "EFFECTIF"):
@@ -638,41 +638,69 @@ class TestTheMergedOverview(unittest.TestCase):
     def test_the_pay_ladder_runs_from_minimum_to_maximum(self):
         """Minimum et maximum sont a leur place dans l'echelle, pas en
         indicateurs isoles."""
-        ladder = self._trees()[0]
-        labels = [ladder.item(row)["values"][0]
-                  for row in ladder.get_children()]
-        self.assertEqual(labels[0], "Minimum")
-        self.assertEqual(labels[-1], "Maximum")
+        texts = [item.cget("text")
+                 for item in self._all_labels(self.app.overview_frame)]
+        self.assertIn("Minimum", texts)
+        self.assertIn("Maximum", texts)
+        self.assertLess(texts.index("Minimum"), texts.index("Maximum"))
 
-    def test_the_distributions_are_drawn_as_bars(self):
-        """Un tableau donne les chiffres, une barre donne la forme — et
-        c'est la forme d'une structure d'age qui se lit d'abord."""
-        from compensation_analytics.ui.charts import BandChart
+    def test_the_median_row_is_set_apart(self):
+        """La ligne que l'on cherche en premier est mise en avant, plutot
+        que signalee par une couleur de fond."""
+        import tkinter.font as tkfont
+        from compensation_analytics.ui.theme import INK
+
+        for item in self._all_labels(self.app.overview_frame):
+            if item.cget("text") == "Médiane (P50)":
+                self.assertEqual(item.cget("foreground"), INK)
+                # La police est un objet nomme : il faut la resoudre pour
+                # connaitre sa graisse.
+                weight = tkfont.Font(root=self.app,
+                                     font=item.cget("font")).actual("weight")
+                self.assertEqual(weight, "bold")
+                return
+        self.fail("ligne médiane introuvable")
+
+    def _pyramids(self):
+        from compensation_analytics.ui.charts import PyramidChart
 
         def walk(widget):
             yield widget
             for child in widget.winfo_children():
                 yield from walk(child)
-        charts = [item for item in walk(self.app.overview_frame)
-                  if isinstance(item, BandChart)]
-        self.assertEqual(len(charts), 2)
-        for chart in charts:
-            self.assertTrue(chart.rows)
-            self.assertIn("share", chart.rows[0])
+        return [item for item in walk(self.app.overview_frame)
+                if isinstance(item, PyramidChart)]
+
+    def test_the_structures_are_drawn_as_pyramids(self):
+        """Une pyramide dit en un regard ou se concentrent les effectifs et
+        si la repartition entre les sexes bascule d'une tranche a l'autre."""
+        pyramids = self._pyramids()
+        self.assertEqual(len(pyramids), 2)
+        for pyramid in pyramids:
+            self.assertTrue(pyramid.rows)
+            self.assertTrue(pyramid.has_split())
+
+    def test_a_pyramid_reads_from_the_bottom_up(self):
+        """La plus jeune tranche en bas : c'est la lecture attendue."""
+        pyramid = self._pyramids()[0]
+        self.assertTrue(pyramid.rows[-1]["label"].startswith("2"))
 
     def test_every_tenure_band_is_present(self):
         """Le decoupage s'etend selon les carrieres presentes."""
-        from compensation_analytics.ui.charts import BandChart
-
-        def walk(widget):
-            yield widget
-            for child in widget.winfo_children():
-                yield from walk(child)
-        charts = [item for item in walk(self.app.overview_frame)
-                  if isinstance(item, BandChart)]
-        labels = [row["label"] for row in charts[-1].rows]
+        labels = [row["label"] for row in self._pyramids()[-1].rows]
         self.assertGreater(len(labels), 5)
-        self.assertTrue(labels[-1].startswith(">"))
+        # Les tranches sont renversees pour la lecture de bas en haut.
+        self.assertTrue(labels[0].startswith(">"))
+
+    def test_a_file_without_sex_falls_back_to_plain_bars(self):
+        """Sans la colonne « Sexe », une pyramide n'aurait qu'une aile."""
+        from compensation_analytics.ui.charts import PyramidChart
+
+        pyramid = PyramidChart(self.app)
+        pyramid.set_rows([{"label": "20-29", "count": 4, "share": 100.0,
+                           "female": 0, "male": 0, "unknown_sex": 4}])
+        self.assertFalse(pyramid.has_split())
+        pyramid.destroy()
 
 
 @needs_display

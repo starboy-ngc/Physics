@@ -25,6 +25,10 @@ from .theme import (ACCENT, CANVAS, FAINT, INK, LINE, MUTED, SIZE_LABEL,
 GRID = "#eef2f6"
 TREND = "#b0453f"
 
+#: Les deux ailes de la pyramide. Deux teintes du document, nettement
+#: distinctes, sans recourir au rose et au bleu de convention.
+FEMALE_COLOUR = "#c26b3f"
+
 _family: str = "TkDefaultFont"
 
 
@@ -409,6 +413,101 @@ class HistogramChart(tk.Frame):
                     f'{int(data["count"])} salariés',
                     self.canvas.winfo_rootx() + event.x,
                     self.canvas.winfo_rooty() + event.y)
+                return
+        self.tooltip.hide()
+
+
+class PyramidChart(tk.Frame):
+    """Pyramide : femmes a gauche, hommes a droite, tranches empilees.
+
+    C'est la lecture classique d'une structure de population, et elle dit en
+    un regard ce qu'un tableau demande de reconstituer : ou se concentrent
+    les effectifs, et si la repartition entre les sexes bascule d'une
+    tranche a l'autre.
+
+    Les deux cotes partagent la meme echelle — sans quoi une aile deux fois
+    plus courte pourrait representer le meme effectif.
+    """
+
+    ROW = 26
+    #: Gouttiere centrale reservee aux libelles de tranche, et colonnes de
+    #: chiffres aux extremites. Sans cette reserve, les barres recouvraient
+    #: les libelles.
+    GUTTER = 84
+    COUNTS = 46
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=CANVAS, highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.rows: List[Dict[str, Any]] = []
+        self.tooltip = Tooltip(self.canvas)
+        self._items: Dict[int, str] = {}
+        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
+        # La plus jeune tranche en bas : une pyramide se lit de bas en haut.
+        self.rows = list(reversed([dict(row) for row in rows]))
+        self.configure(height=max(len(self.rows), 1) * self.ROW + 26)
+        self.pack_propagate(False)
+        self.redraw()
+
+    def has_split(self) -> bool:
+        """Vrai si le sexe est renseigne : sans lui, pas de pyramide."""
+        return any(row.get("female") or row.get("male") for row in self.rows)
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        if width < 200 or not self.rows:
+            return
+        peak = max(max(row.get("female") or 0, row.get("male") or 0)
+                   for row in self.rows) or 1
+        # Les deux ailes partagent la meme echelle : sans quoi une aile deux
+        # fois plus courte pourrait representer le meme effectif.
+        wing = max((width - self.GUTTER - 2 * self.COUNTS) / 2, 20)
+        centre = self.COUNTS + wing + self.GUTTER / 2
+        left = centre - self.GUTTER / 2
+        right = centre + self.GUTTER / 2
+
+        self.canvas.create_text(left, 8, anchor="e", fill=FEMALE_COLOUR,
+                                font=axis_font(), text="FEMMES")
+        self.canvas.create_text(right, 8, anchor="w", fill=ACCENT,
+                                font=axis_font(), text="HOMMES")
+        for index, row in enumerate(self.rows):
+            y = index * self.ROW + self.ROW / 2 + 20
+            female = row.get("female") or 0
+            male = row.get("male") or 0
+            if female:
+                item = self.canvas.create_rectangle(
+                    left - wing * female / peak, y - 8, left, y + 8,
+                    fill=FEMALE_COLOUR, outline="")
+                self._items[item] = f'{row["label"]} · {female} femmes'
+                self.canvas.create_text(left - wing - 6, y, anchor="e",
+                                        fill=MUTED, font=axis_font(),
+                                        text=str(female))
+            if male:
+                item = self.canvas.create_rectangle(
+                    right, y - 8, right + wing * male / peak, y + 8,
+                    fill=ACCENT, outline="")
+                self._items[item] = f'{row["label"]} · {male} hommes'
+                self.canvas.create_text(right + wing + 6, y, anchor="w",
+                                        fill=MUTED, font=axis_font(),
+                                        text=str(male))
+            self.canvas.create_text(centre, y, fill=INK, font=axis_font(),
+                                    text=row.get("label", ""))
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                self.tooltip.show(self._items[item],
+                                  self.canvas.winfo_rootx() + event.x,
+                                  self.canvas.winfo_rooty() + event.y)
                 return
         self.tooltip.hide()
 

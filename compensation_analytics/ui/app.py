@@ -43,7 +43,8 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
 from . import theme
-from .charts import BandChart, HistogramChart, ScatterChart
+from .charts import (BandChart, HistogramChart, PyramidChart,
+                     ScatterChart)
 from .theme import (ACCENT, ACCENT_HOVER, CANVAS, CRIT, FAINT, GROUND, INK,
                     INK_SOFT, LINE,
                     MUTED, OK, STRIPE, WARN, WARN_SOFT, Card, CheckRow, Fonts,
@@ -806,19 +807,21 @@ class Application(tk.Tk):
                      justify="left").pack(anchor="w")
             return
 
+        # Population a gauche, remuneration a droite : on decrit qui l'on
+        # analyse avant de dire combien.
         groups = []
-        if not salary.get("masked"):
-            groups.append(("Rémunération", [
-                ("Masse salariale", format_money(salary.get("payroll"), currency)),
-                ("Salaire moyen", format_money(salary.get("mean"), currency)),
-                ("Salaire médian", format_money(salary.get("median"), currency)),
-            ]))
         if not population.get("masked"):
             groups.append(("Population", [
                 ("Effectif", str(population.get("headcount", 0))),
                 ("Âge médian", format_years(population.get("age_median"))),
                 ("Ancienneté médiane",
                  format_years(population.get("tenure_median"))),
+            ]))
+        if not salary.get("masked"):
+            groups.append(("Rémunération", [
+                ("Masse salariale", format_money(salary.get("payroll"), currency)),
+                ("Salaire moyen", format_money(salary.get("mean"), currency)),
+                ("Salaire médian", format_money(salary.get("median"), currency)),
             ]))
         self._grouped_kpis(self.overview_frame, groups)
 
@@ -829,17 +832,26 @@ class Application(tk.Tk):
 
         spread = salary.get("dispersion") or {}
         variation = spread.get("coefficient_of_variation")
+        if not population.get("masked"):
+            self._pyramid_panel(
+                grid, 0, 0, "Pyramide des âges", population.get("age_bands", []),
+                ("Âge moyen", format_years(population.get("age_mean"))))
+            self._pyramid_panel(
+                grid, 1, 0, "Structure d'ancienneté",
+                population.get("tenure_bands", []),
+                ("Ancienneté moyenne",
+                 format_years(population.get("tenure_mean"))))
         if not salary.get("masked"):
-            self._table_panel(
-                grid, 0, 0, "Échelle de rémunération",
-                ("Percentile", "Valeur"), (200, 130),
+            self._ruled_panel(
+                grid, 0, 1, "Échelle de rémunération", ("Percentile", "Valeur"),
                 [("Minimum", format_money(salary.get("min"), currency))]
                 + [(entry["label"],
                     format_money(salary.get(entry["key"]), currency))
                    for entry in salary.get("published_percentiles", [])]
-                + [("Maximum", format_money(salary.get("max"), currency))])
-            self._table_panel(
-                grid, 0, 1, "Dispersion", ("Indicateur", "Valeur"), (200, 130), [
+                + [("Maximum", format_money(salary.get("max"), currency))],
+                emphasis="Médiane (P50)")
+            self._ruled_panel(
+                grid, 1, 1, "Dispersion", ("Indicateur", "Valeur"), [
                     ("Q3 - Q1",
                      format_money(spread.get("interquartile_range"), currency)),
                     ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2)),
@@ -852,15 +864,6 @@ class Application(tk.Tk):
                     ("Écart-type",
                      format_money(salary.get("std_dev"), currency)),
                 ])
-        if not population.get("masked"):
-            for column, (title, key, extra) in enumerate((
-                    ("Structure d'âge", "age_bands",
-                     ("Âge moyen", format_years(population.get("age_mean")))),
-                    ("Structure d'ancienneté", "tenure_bands",
-                     ("Ancienneté moyenne",
-                      format_years(population.get("tenure_mean")))))):
-                self._band_panel(grid, 1, column, title,
-                                 population.get(key, []), extra)
 
     def _grouped_kpis(self, parent, groups) -> None:
         """Indicateurs ranges sous leur sujet, separes d'un filet vertical.
@@ -923,19 +926,54 @@ class Application(tk.Tk):
         theme.rule(cell).pack(fill="x", pady=(0, 6))
         return cell
 
-    def _table_panel(self, parent, row, column, title, headers, widths,
-                     rows) -> None:
-        cell = self._panel_head(parent, row, column, title)
-        tree = ttk.Treeview(cell, columns=headers, show="headings",
-                            height=max(len(rows), 4))
-        for name, width in zip(headers, widths):
-            tree.heading(name, text=name.upper())
-            tree.column(name, width=width, anchor="w" if width >= 150 else "e")
-        tree.pack(fill="both", expand=True)
-        self._fill(tree, rows)
+    def _ruled_panel(self, parent, row, column, title, headers, rows,
+                     emphasis: Optional[str] = None) -> None:
+        """Tableau a l'anglaise : aucune grille, des filets aux articulations.
 
-    def _band_panel(self, parent, row, column, title, bands, extra) -> None:
+        Un tableau se lit d'autant mieux qu'il porte peu de traits. On garde
+        un filet sous l'en-tete et un a la fin, l'alignement fait le reste :
+        les libelles a gauche, les valeurs a droite, sur une chasse
+        reguliere. La ligne remarquable est mise en avant plutot que
+        signalee par une couleur de fond.
+        """
+        cell = self._panel_head(parent, row, column, title)
+        table = tk.Frame(cell, background=CANVAS)
+        table.pack(fill="x")
+        table.grid_columnconfigure(0, weight=1)
+
+        for index, name in enumerate(headers):
+            tk.Label(table, text=name.upper(), background=CANVAS,
+                     foreground=FAINT, font=self.fonts.label,
+                     anchor="w" if index == 0 else "e").grid(
+                         row=0, column=index, sticky="ew", pady=(0, 7))
+        theme.rule(table).grid(row=1, column=0, columnspan=len(headers),
+                               sticky="ew")
+
+        for position, values in enumerate(rows):
+            highlighted = emphasis is not None and values[0] == emphasis
+            for index, value in enumerate(values):
+                tk.Label(
+                    table, text=str(value), background=CANVAS,
+                    foreground=INK if highlighted else INK_SOFT,
+                    font=self.fonts.body_bold if highlighted else self.fonts.body,
+                    anchor="w" if index == 0 else "e").grid(
+                        row=2 + position, column=index, sticky="ew",
+                        pady=6, padx=(0, 0) if index else (0, 24))
+        theme.rule(table).grid(row=2 + len(rows), column=0,
+                               columnspan=len(headers), sticky="ew", pady=(4, 0))
+
+    def _pyramid_panel(self, parent, row, column, title, bands, extra) -> None:
+        """Pyramide si le sexe est renseigne, barres simples sinon."""
         cell = self._panel_head(parent, row, column, title, extra)
+        pyramid = PyramidChart(cell)
+        pyramid.set_rows(bands)
+        if pyramid.has_split():
+            pyramid.pack(fill="x")
+            return
+        # Sans la colonne « Sexe », une pyramide n'aurait qu'une aile : on
+        # retombe sur la lecture en barres plutot que d'afficher un demi
+        # graphique.
+        pyramid.destroy()
         chart = BandChart(cell)
         chart.pack(fill="x")
         chart.set_rows(bands)
