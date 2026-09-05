@@ -171,7 +171,6 @@ class TestWindow(unittest.TestCase):
         self.app.population = population
         self.app.mapping = mapping
         self.app._populate_filters()
-        self.app._populate_segments()
         self.app.update()
 
     def test_the_window_opens_with_the_expected_steps(self):
@@ -363,7 +362,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app.update()
         app.result = run_analysis(AnalysisRequest(
             source_path=source, reference_date=REFERENCE_DATE,
-            segments=["business_unit"]))
+            segments=[]))
         app._render_results()
         app.update()
         return app
@@ -445,7 +444,6 @@ class TestResettingTheChoices(unittest.TestCase):
         self.app.mapping = mapping
         self.app.headers = list(table.headers)
         self.app._populate_filters()
-        self.app._populate_segments()
         self.app.update()
 
     def tearDown(self):
@@ -472,12 +470,6 @@ class TestResettingTheChoices(unittest.TestCase):
         self.app.update()
         self.assertEqual(self.app.reset_filters_link.cget("text"),
                          "Réinitialiser")
-
-    def test_toggling_axes_selects_all_then_none(self):
-        self.app.toggle_segments()
-        self.assertTrue(all(v.get() for v in self.app.segment_vars.values()))
-        self.app.toggle_segments()
-        self.assertFalse(any(v.get() for v in self.app.segment_vars.values()))
 
     def test_toggling_outputs_selects_none_then_all(self):
         """Les sorties sont toutes cochees au depart : la bascule decoche."""
@@ -622,3 +614,63 @@ class TestTheMergedOverview(unittest.TestCase):
         canvas = self.app.overview_frame.master
         self.assertEqual(canvas.winfo_class(), "Canvas")
         self.assertLess(canvas.yview()[1], 1.0)
+
+
+@needs_display
+class TestEverySegmentIsComputed(unittest.TestCase):
+    """L'etape « Analyser par » a disparu.
+
+    Choisir a l'avance les dimensions a comparer faisait doublon avec la
+    liste de l'onglet Segments, qui permet d'en changer apres coup — et
+    limitait cette liste a ce qui avait ete coche. Le moteur segmente
+    desormais sur toutes les dimensions reellement renseignees.
+
+    Un filtre ne remplace pas cette comparaison : filtrer sur un grade donne
+    la population d'un grade, pas l'ecart entre les huit.
+    """
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, business_unit=["France", "DACH"][index % 2],
+                     grade=["G3", "G5", "G7"][index % 3],
+                     gender=["F", "H"][index % 2],
+                     age=28 + index % 30, tenure=index % 15)
+            for index in range(120)])])
+        self.app = Application()
+        self.app.update()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE, segments=[]))
+        self.app._render_results()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def test_the_step_is_gone_from_the_sidebar(self):
+        self.assertFalse(hasattr(self.app, "segment_vars"))
+        self.assertFalse(hasattr(self.app, "segments_frame"))
+
+    def test_every_populated_dimension_is_comparable(self):
+        computed = {block["field"] for block in self.app.result.payload["segments"]}
+        for expected in ("business_unit", "grade", "gender", "age_band",
+                         "tenure_band"):
+            self.assertIn(expected, computed)
+
+    def test_the_segments_tab_offers_them_all(self):
+        offered = list(self.app.segment_choice.cget("values"))
+        self.assertEqual(len(offered),
+                         len(self.app.result.payload["segments"]))
+        self.assertGreater(len(offered), 3)
+
+    def test_a_comparison_is_not_reachable_by_filtering(self):
+        """La distinction qui justifie de garder la segmentation : une
+        comparaison porte sur plusieurs valeurs a la fois."""
+        grades = [block for block in self.app.result.payload["segments"]
+                  if block["field"] == "grade"][0]
+        self.assertGreater(len(grades["rows"]), 1)
+        self.assertIsNotNone(grades["reference_median"])

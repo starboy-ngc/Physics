@@ -89,7 +89,6 @@ class Application(tk.Tk):
         self.headers: List[str] = []
         self.result = None
         self.filter_vars: Dict[str, tk.StringVar] = {}
-        self.segment_vars: Dict[str, tk.BooleanVar] = {}
         self.output_vars: Dict[str, tk.BooleanVar] = {}
         self._segments: List[Dict[str, Any]] = []
         self._colour_fields: List[str] = []
@@ -230,12 +229,7 @@ class Application(tk.Tk):
                  background=GROUND, foreground=FAINT, font=self.fonts.small,
                  wraplength=250, justify="left").pack(anchor="w")
 
-        self._section(steps, 3, "Analyser par", "Tout / aucun",
-                      self.toggle_segments)
-        self.segments_frame = tk.Frame(steps, background=GROUND)
-        self.segments_frame.pack(fill="x")
-
-        self._section(steps, 4, "Restituer", "Tout / aucun",
+        self._section(steps, 3, "Restituer", "Tout / aucun",
                       self.toggle_outputs)
         self.outputs_frame = tk.Frame(steps, background=GROUND)
         self.outputs_frame.pack(fill="x", pady=(0, 8))
@@ -253,9 +247,6 @@ class Application(tk.Tk):
         for variable in self.filter_vars.values():
             variable.set(_ALL)
         self._update_filter_summary()
-
-    def toggle_segments(self) -> None:
-        self._toggle_all(self.segment_vars)
 
     def toggle_outputs(self) -> None:
         self._toggle_all(self.output_vars)
@@ -464,7 +455,6 @@ class Application(tk.Tk):
                  + (f", {unknown} non reconnue(s) — voir Paramètres"
                     if unknown else ""))
         self._populate_filters()
-        self._populate_segments()
         self.analyse_button.state(["!disabled"])
         self.export_button.state(["disabled"])
         self._show_quality()
@@ -499,7 +489,6 @@ class Application(tk.Tk):
             return
         if self.population is not None:
             self._populate_filters()
-            self._populate_segments()
             self._show_quality()
         self._set_state(f"Paramètres enregistrés dans {path}. "
                         "Relancez l'analyse pour les appliquer.")
@@ -531,22 +520,6 @@ class Application(tk.Tk):
             self.filter_vars[field] = var
         self._update_filter_summary()
 
-    def _populate_segments(self) -> None:
-        for child in self.segments_frame.winfo_children():
-            child.destroy()
-        self.segment_vars.clear()
-        for field in dimension_fields(self.configuration):
-            if not any(str(e.value(field) or "").strip() for e in self.population):
-                continue
-            # Coches d'emblee : les axes sur lesquels une comparaison de
-            # remuneration se fait le plus souvent.
-            var = tk.BooleanVar(value=field in ("job_title", "grade",
-                                                "business_unit"))
-            self.segment_vars[field] = var
-            CheckRow(self.segments_frame,
-                     dimension_label(self.configuration, field), var,
-                     self.fonts).pack(anchor="w", pady=2)
-
     def _current_filters(self) -> List[Dict[str, Any]]:
         return [{"field": field, "operator": "eq", "value": var.get()}
                 for field, var in self.filter_vars.items() if var.get() != _ALL]
@@ -564,7 +537,11 @@ class Application(tk.Tk):
             source_path=self.source_path,
             config_dir=self.config_dir,
             filters=build_filters(self._current_filters(), self.configuration),
-            segments=[f for f, v in self.segment_vars.items() if v.get()],
+            # Aucune liste n'est imposee : le moteur segmente sur toutes les
+            # dimensions reellement renseignees. Choisir a l'avance faisait
+            # doublon avec la liste de l'onglet Segments, qui permet d'en
+            # changer apres coup.
+            segments=[],
             title="Analyse de rémunération",
             ignore_quality_errors=True,
         )

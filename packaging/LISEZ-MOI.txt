@@ -18,13 +18,17 @@ LANCER L'INTERFACE
     Windows  : double-cliquez sur   lancer.bat
     Mac/Linux: ./lancer.sh
 
-    Une fenêtre s'ouvre. Le parcours suit les 4 étapes de la colonne
+    Une fenêtre s'ouvre. Le parcours suit les 3 étapes de la colonne
     de gauche :
 
       1. Importer   choisissez votre fichier
       2. Filtrer    les listes se remplissent avec VOS valeurs
-      3. Analyser   cochez les dimensions à croiser
-      4. Restituer  cochez les documents voulus
+      3. Restituer  cochez les documents voulus
+
+    Il n'y a rien à cocher pour comparer : l'outil segmente sur toutes
+    les dimensions réellement renseignées dans votre fichier, et la
+    liste « Dimension » de l'onglet Segments permet de passer de l'une
+    à l'autre.
 
     puis « Analyser ». Les onglets de droite affichent les résultats.
 
