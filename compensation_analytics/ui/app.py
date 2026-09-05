@@ -442,10 +442,14 @@ class Application(tk.Tk):
         # devant un widget lui-meme depaquete leve une erreur.
         self.quartile_block = tk.Frame(equite, background=theme.CANVAS)
         self.quartile_block.pack(fill="x")
+        # Meme rang que « Dispersion » ou « Échelle de rémunération » : meme
+        # traitement. Les petites majuscules restent aux libelles de champ,
+        # « Écart par » ou « Dimension », qui ne titrent rien.
         tk.Label(self.quartile_block,
-                 text="RÉPARTITION PAR QUARTILE DE RÉMUNÉRATION",
-                 background=theme.CANVAS, foreground=theme.FAINT,
-                 font=self.fonts.label).pack(anchor="w", padx=18, pady=(0, 6))
+                 text="Répartition par quartile de rémunération",
+                 background=theme.CANVAS, foreground=theme.INK,
+                 font=self.fonts.section).pack(anchor="w", padx=18,
+                                               pady=(2, 8))
         # Quatre barres empilees a la place des quatre lignes du tableau :
         # meme information, moins de hauteur, et le plafond de verre se voit
         # au lieu de se calculer. Le detail chiffre reste au survol et dans
@@ -874,16 +878,6 @@ class Application(tk.Tk):
                 tags = ["alerte"]
             tree.insert("", "end", values=row, tags=tuple(tags))
 
-    def _panel(self, parent, title: str, first: bool) -> tk.Frame:
-        """Bloc cote a cote : un intertitre et de l'espace, sans cadre."""
-        side = tk.Frame(parent, background=theme.CANVAS)
-        side.pack(side="left", fill="both", expand=True,
-                  padx=(0, 36) if first else 0)
-        tk.Label(side, text=title.upper(), background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label).pack(anchor="w",
-                                                               pady=(0, 6))
-        return side
-
     def _show_quality(self, quality: Optional[Dict[str, Any]] = None) -> None:
         if quality is None:
             if self.population is None or self.mapping is None:
@@ -1061,9 +1055,14 @@ class Application(tk.Tk):
         cell.pack(fill="x", pady=(0, 26))
         head = tk.Frame(cell, background=theme.CANVAS)
         head.pack(fill="x", pady=(0, 8))
+        # Un intertitre doit primer sur ce qu'il introduit. Il partageait la
+        # chasse, la casse et la teinte des en-tetes de colonne — 2,5:1, moins
+        # lisible que ses propres lignes a 8,9:1. Il passe donc en corps 12
+        # gras, encre pleine, et en casse normale : les petites majuscules
+        # restent aux en-tetes de colonne, un rang plus bas.
         self.hints.attach(
-            _packed(tk.Label(head, text=title.upper(), background=theme.CANVAS,
-                             foreground=theme.FAINT, font=self.fonts.label),
+            _packed(tk.Label(head, text=title, background=theme.CANVAS,
+                             foreground=theme.INK, font=self.fonts.section),
                     side="left"),
             _hint(key, title))
         if extra:
@@ -1097,8 +1096,10 @@ class Application(tk.Tk):
         # ne servent que la ou plusieurs tableaux se suivent et se comparent.
         columns = max(len(headers), 2)
         for index, name in enumerate(headers):
+            # Un rang plus bas que l'intertitre, mais lisible : a 2,5:1 les
+            # petites majuscules se devinaient plus qu'elles ne se lisaient.
             tk.Label(table, text=name.upper(), background=theme.CANVAS,
-                     foreground=theme.FAINT, font=self.fonts.label,
+                     foreground=theme.MUTED, font=self.fonts.label,
                      anchor="w" if index == 0 else "e").grid(
                          row=0, column=index, sticky="ew", pady=(0, 7))
         if headers:

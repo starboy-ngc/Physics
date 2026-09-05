@@ -90,6 +90,11 @@ def load(config) -> palette.Palette:
 #: Une seule echelle de tailles, du plus grand au plus petit.
 SIZE_TITLE = 17
 SIZE_KPI = 20
+#: Intertitre de bloc. Entre le titre de fenetre et le texte courant : un
+#: titre de section doit primer sur les lignes qu'il introduit, ce qui
+#: n'etait pas le cas quand il partageait la chasse et la teinte des
+#: en-tetes de colonne.
+SIZE_SECTION = 12
 SIZE_BODY = 10
 SIZE_SMALL = 9
 SIZE_LABEL = 8
@@ -126,6 +131,8 @@ class Fonts:
                                  weight="bold")
         self.kpi = tkfont.Font(root=root, family=family, size=SIZE_KPI,
                                weight="bold")
+        self.section = tkfont.Font(root=root, family=family,
+                                   size=SIZE_SECTION, weight="bold")
         self.body = tkfont.Font(root=root, family=family, size=SIZE_BODY)
         self.body_bold = tkfont.Font(root=root, family=family, size=SIZE_BODY,
                                      weight="bold")

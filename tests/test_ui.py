@@ -739,8 +739,10 @@ class TestTheMergedOverview(unittest.TestCase):
     def test_the_page_carries_both_subjects(self):
         titles = [item.cget("text")
                   for item in self._all_labels(self.app.overview_frame)]
-        for expected in ("ÉCHELLE DE RÉMUNÉRATION", "DISPERSION",
-                         "PYRAMIDE DES ÂGES", "STRUCTURE D'ANCIENNETÉ"):
+        # Les intertitres sont en casse normale : les petites majuscules
+        # sont descendues d'un rang, aux en-tetes de colonne.
+        for expected in ("Échelle de rémunération", "Dispersion",
+                         "Pyramide des âges", "Structure d'ancienneté"):
             self.assertIn(expected, titles)
         # Les indicateurs ne coiffent plus la page : ils sont en tete de leur
         # colonne, sous la meme forme que les tableaux qui suivent.
@@ -753,8 +755,8 @@ class TestTheMergedOverview(unittest.TestCase):
         ils se cherchent du regard."""
         titles = [item.cget("text")
                   for item in self._all_labels(self.app.overview_frame)]
-        self.assertIn("RÉMUNÉRATION", titles)
-        self.assertIn("POPULATION", titles)
+        self.assertIn("Rémunération", titles)
+        self.assertIn("Population", titles)
 
     def _all_labels(self, root):
         def walk(widget):
@@ -786,6 +788,30 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertEqual(doublons, set(), "information affichée deux fois")
         self.assertGreaterEqual(len(libelles), 15)
 
+    def test_a_section_title_outranks_what_it_introduces(self):
+        """Il partageait la chasse et la teinte des en-tetes de colonne, et
+        se lisait moins bien que ses propres lignes."""
+        import tkinter.font as tkfont
+
+        from compensation_analytics.core import palette
+
+        def taille(widget):
+            return tkfont.Font(root=self.app,
+                               font=widget.cget("font")).cget("size")
+
+        labels = self._all_labels(self.app.overview_frame)
+        titre = next(w for w in labels if w.cget("text") == "Dispersion")
+        entete = next(w for w in labels if w.cget("text") == "INDICATEUR")
+        ligne = next(w for w in labels if w.cget("text") == "Q3 / Q1")
+        self.assertGreater(taille(titre), taille(ligne))
+        self.assertGreater(taille(titre), taille(entete))
+        blanc = palette.by_name("ardoise").canvas
+        contraste = lambda w: palette.contrast(w.cget("foreground"), blanc)
+        self.assertGreater(contraste(titre), contraste(ligne))
+        self.assertGreater(contraste(titre), contraste(entete))
+        # L'en-tete de colonne reste lisible : sous 3:1 il se devinait.
+        self.assertGreater(contraste(entete), 3.0)
+
     def test_the_analysed_field_is_named(self):
         """Le meme ecran veut dire deux choses selon le champ analyse."""
         texts = [item.cget("text")
@@ -802,7 +828,7 @@ class TestTheMergedOverview(unittest.TestCase):
                          "Ancienneté moyenne"):
             self.assertIn(expected, texts)
         self.assertLess(texts.index("Âge moyen"),
-                        texts.index("PYRAMIDE DES ÂGES"))
+                        texts.index("Pyramide des âges"))
 
     def test_the_pay_ladder_runs_from_minimum_to_maximum(self):
         """Minimum et maximum sont a leur place dans l'echelle, pas en
