@@ -55,10 +55,17 @@ _ALL = "(toutes)"
 
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
 #: quand un chiffre surprend, on ne commence pas par lui.
-TABS = (("population", "Vue d'ensemble"),
-        ("distribution", "Distribution"),
-        ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"),
+TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
+        ("segments", "Segments"),
         ("equite", "Pay Transparency"), ("qualite", "Qualité"))
+
+#: Graphiques proposes dans l'onglet « Graphique », dans l'ordre d'affichage.
+#: Les onglets de premier rang repondent a une question — qui, combien, quel
+#: ecart — la ou ceux-ci repondaient tous les deux a « a quoi cela
+#: ressemble-t-il ». Les reunir laisse la place d'en ajouter d'autres sans
+#: allonger la barre principale : une entree de plus ici suffit.
+CHARTS = (("distribution", "Distribution des rémunérations"),
+          ("nuage", "Ancienneté × rémunération"))
 
 
 def _hint(key: Optional[str], title: str):
@@ -374,12 +381,15 @@ class Application(tk.Tk):
                       "colonne de gauche, puis « Analyser ».",
                  background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.body,
                  justify="left").pack(anchor="w", pady=(40, 0))
-        self.histogram = HistogramChart(self.tabs["distribution"])
-        self.histogram.pack(fill="both", expand=True, padx=18, pady=18)
+        self._build_charts(self.tabs["graphique"])
 
-        nuage = self.tabs["nuage"]
+        distribution = self.chart_pages["distribution"]
+        self.histogram = HistogramChart(distribution)
+        self.histogram.pack(fill="both", expand=True, padx=18, pady=(8, 18))
+
+        nuage = self.chart_pages["nuage"]
         controls = tk.Frame(nuage, background=theme.CANVAS)
-        controls.pack(fill="x", padx=18, pady=(16, 4))
+        controls.pack(fill="x", padx=18, pady=(8, 4))
         tk.Label(controls, text="COLORER PAR", background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
         self.colour_choice = ttk.Combobox(controls, state="readonly", width=20,
@@ -458,6 +468,37 @@ class Application(tk.Tk):
             ("Segment", "Effectif", "Part", "Médiane", "Écart", "Moyenne",
              "Q1", "Q3"),
             (190, 75, 70, 120, 80, 120, 115, 115))
+
+    def _build_charts(self, parent: tk.Frame) -> None:
+        """Un onglet, plusieurs graphiques, choisis dans une barre subordonnee.
+
+        Empiler les graphiques les uns sous les autres aurait tenu a deux ;
+        au cinquieme, chacun serait devenu une vignette au bout d'un long
+        defilement. Un seul a la fois, en pleine page, garde le zoom et le
+        survol utilisables — et ajouter un graphique n'est qu'une entree de
+        plus dans `CHARTS`.
+        """
+        head = tk.Frame(parent, background=theme.CANVAS)
+        head.pack(fill="x", padx=18, pady=(14, 0))
+        # Pas d'intertitre « GRAPHIQUE » : l'onglet porte deja ce nom quinze
+        # pixels plus haut. La chasse plus petite suffit a dire que cette
+        # barre est subordonnee a l'autre.
+        self.chartbar = TabBar(head, self.fonts, on_change=self._show_chart,
+                               secondary=True)
+        self.chartbar.pack(side="left")
+        theme.rule(parent).pack(fill="x", padx=18, pady=(6, 0))
+
+        holder = tk.Frame(parent, background=theme.CANVAS)
+        holder.pack(fill="both", expand=True)
+        self.chart_pages: Dict[str, tk.Frame] = {}
+        for key, label in CHARTS:
+            self.chart_pages[key] = tk.Frame(holder, background=theme.CANVAS)
+            self.chartbar.add(key, label)
+
+    def _show_chart(self, key: str) -> None:
+        for name, frame in getattr(self, "chart_pages", {}).items():
+            frame.pack_forget()
+        self.chart_pages[key].pack(fill="both", expand=True)
 
     def _show_tab(self, key: str) -> None:
         for name, frame in getattr(self, "tabs", {}).items():
@@ -666,22 +707,34 @@ class Application(tk.Tk):
         segments = payload.get("segments") or []
         publishable = any(any(not row.get("masked") for row in block.get("rows", []))
                           for block in segments)
+        # Les deux graphiques ont leur propre seuil : l'un peut disparaitre
+        # sans l'autre, et l'onglet ne tombe que si les deux tombent.
+        charts = {
+            "distribution": bool(payload["distribution"].get("available")),
+            "nuage": bool(payload["scatter"].get("available")),
+        }
         eligible = {
             "population": not (payload["population"].get("masked")
                                and payload["salary"].get("masked")),
-            "distribution": bool(payload["distribution"].get("available")),
-            "nuage": bool(payload["scatter"].get("available")),
+            "graphique": any(charts.values()),
             "segments": publishable,
             "equite": bool(payload.get("pay_equity", {}).get("available")),
             "qualite": True,
         }
+        for key, allowed in charts.items():
+            self.chartbar.set_visible(key, allowed)
         for key, allowed in eligible.items():
             self.tabbar.set_visible(key, allowed)
 
         hidden = [label for key, label in TABS if not eligible[key]]
+        # Un graphique retire alors que son onglet reste ouvert doit
+        # s'expliquer autant qu'un onglet disparu : sans cela, il manque une
+        # entree dans la barre et rien ne dit pourquoi.
+        if eligible["graphique"]:
+            hidden += [label for key, label in CHARTS if not charts[key]]
         headcount = payload["population"].get("headcount", 0)
         self._set_state(f"Analyse terminée · {headcount} salariés"
-                        + (f" · {len(hidden)} onglet(s) masqué(s)" if hidden else ""))
+                        + (f" · {len(hidden)} vue(s) masquée(s)" if hidden else ""))
         if not hidden:
             self.notice.pack_forget()
             return

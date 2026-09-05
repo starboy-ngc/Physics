@@ -176,7 +176,11 @@ class TestWindow(unittest.TestCase):
     def test_the_window_opens_with_the_expected_steps(self):
         self.assertEqual(self.app.title(),
                          "Compensation Analytics Engine 1.0.0")
-        self.assertEqual(len(self.app.tabs), 6)
+        self.assertEqual(len(self.app.tabs), 5)
+        # « Graphique » en porte plusieurs : la barre principale ne dit plus
+        # a elle seule tout ce que l'outil sait montrer.
+        self.assertEqual(self.app.chartbar.visible_keys(),
+                         ["distribution", "nuage"])
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
@@ -345,7 +349,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     definie a un seul endroit.
     """
 
-    def _analysed(self, count):
+    def _analysed(self, count, **row_options):
         from compensation_analytics.ui.app import Application
         from compensation_analytics.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
@@ -356,7 +360,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
                      business_unit=["France", "DACH"][index % 2],
                      # Population mixte : sans les deux sexes, l'onglet des
                      # ecarts n'a rien a publier — et disparait a bon droit.
-                     gender=["F", "H"][index % 2])
+                     gender=["F", "H"][index % 2], **row_options)
             for index in range(count)])])
         app = Application()
         app.update()
@@ -381,8 +385,22 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         try:
             visible = app.tabbar.visible_keys()
             self.assertIn("population", visible)
-            self.assertNotIn("distribution", visible)
-            self.assertNotIn("nuage", visible)
+            # Aucun des deux graphiques n'est publiable : l'onglet tombe.
+            self.assertNotIn("graphique", visible)
+            self.assertEqual(app.chartbar.visible_keys(), [])
+        finally:
+            app.destroy()
+
+    def test_one_chart_can_go_while_the_tab_stays(self):
+        """Sans date d'entree, le nuage n'a aucun point — mais l'histogramme
+        des remunerations, lui, reste parfaitement publiable."""
+        app = self._analysed(40, hire_date="")
+        try:
+            self.assertIn("graphique", app.tabbar.visible_keys())
+            self.assertEqual(app.chartbar.visible_keys(), ["distribution"])
+            # Le graphique retire s'explique, comme un onglet retire.
+            self.assertIn("Ancienneté", app.notice.cget("text"))
+            self.assertTrue(app.notice.winfo_ismapped())
         finally:
             app.destroy()
 
@@ -400,9 +418,9 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         try:
             self.assertTrue(app.notice.winfo_ismapped())
             text = app.notice.cget("text")
-            self.assertIn("Distribution", text)
+            self.assertIn("Graphique", text)
             self.assertIn("effectif insuffisant", text)
-            self.assertIn("masqué", app.status.cget("text"))
+            self.assertIn("masquée", app.status.cget("text"))
         finally:
             app.destroy()
 

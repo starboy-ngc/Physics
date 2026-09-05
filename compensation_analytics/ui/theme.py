@@ -130,6 +130,8 @@ class Fonts:
         self.body_bold = tkfont.Font(root=root, family=family, size=SIZE_BODY,
                                      weight="bold")
         self.small = tkfont.Font(root=root, family=family, size=SIZE_SMALL)
+        self.small_bold = tkfont.Font(root=root, family=family, size=SIZE_SMALL,
+                                      weight="bold")
         self.label = tkfont.Font(root=root, family=family, size=SIZE_LABEL,
                                  weight="bold")
 
@@ -266,16 +268,25 @@ class TabBar(tk.Frame):
     """
 
     def __init__(self, master: tk.Widget, fonts: Fonts,
-                 on_change: Optional[Callable[[str], None]] = None):
+                 on_change: Optional[Callable[[str], None]] = None,
+                 secondary: bool = False):
+        """`secondary` : une barre subordonnee, a l'interieur d'un onglet.
+
+        Meme mecanique — memes entrees, meme masquage — mais une chasse plus
+        petite et pas de filet en pied : deux barres identiques l'une sous
+        l'autre laisseraient croire a deux niveaux de meme rang.
+        """
         super().__init__(master, background=CANVAS)
         self.fonts = fonts
         self.on_change = on_change
+        self.secondary = secondary
         self._tabs: Dict[str, Dict[str, tk.Widget]] = {}
         self._order: List[str] = []
         self.active: Optional[str] = None
         self._row = tk.Frame(self, background=CANVAS)
         self._row.pack(fill="x")
-        tk.Frame(self, height=1, background=LINE).pack(fill="x")
+        if not secondary:
+            tk.Frame(self, height=1, background=LINE).pack(fill="x")
 
     def add(self, key: str, text: str) -> None:
         holder = tk.Frame(self._row, background=CANVAS)
@@ -283,7 +294,9 @@ class TabBar(tk.Frame):
         self._visible: Dict[str, bool] = getattr(self, "_visible", {})
         self._visible[key] = True
         label = tk.Label(holder, text=text, background=CANVAS, foreground=MUTED,
-                         font=self.fonts.body, padx=16, pady=10, cursor="hand2")
+                         font=self.fonts.small if self.secondary else self.fonts.body,
+                         padx=12 if self.secondary else 16,
+                         pady=5 if self.secondary else 10, cursor="hand2")
         label.pack()
         underline = tk.Frame(holder, height=2, background=CANVAS)
         underline.pack(fill="x")
@@ -327,11 +340,13 @@ class TabBar(tk.Frame):
         return [key for key in self._order if self._visible.get(key, True)]
 
     def select(self, key: str) -> None:
+        plain = self.fonts.small if self.secondary else self.fonts.body
+        strong = self.fonts.small_bold if self.secondary else self.fonts.body_bold
         for name, parts in self._tabs.items():
             chosen = name == key
             parts["label"].configure(
                 foreground=ACCENT if chosen else MUTED,
-                font=self.fonts.body_bold if chosen else self.fonts.body)
+                font=strong if chosen else plain)
             parts["underline"].configure(background=ACCENT if chosen else CANVAS)
         self.active = key
         if self.on_change:
