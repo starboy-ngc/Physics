@@ -122,11 +122,9 @@ class TestJobTitleIsAvailable(unittest.TestCase):
             self.assertIn("job_title", mapping.field_to_index, header)
             self.assertEqual(mapping.unknown_columns, [], header)
 
-    def test_it_is_both_a_filter_and_an_axis(self):
-        from compensation_analytics.core.segmentation import (filter_fields,
-                                                              segment_fields)
-        self.assertIn("job_title", filter_fields(self.config))
-        self.assertIn("job_title", segment_fields(self.config))
+    def test_it_is_available_as_a_dimension(self):
+        from compensation_analytics.core.segmentation import dimension_fields
+        self.assertIn("job_title", dimension_fields(self.config))
 
     def test_it_is_distinct_from_the_occupation(self):
         """"Metier" et "Poste" sont deux notions : le second precise le

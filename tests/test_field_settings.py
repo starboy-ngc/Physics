@@ -17,9 +17,9 @@ from compensation_analytics.core.config import (Configuration, DEFAULTS,
                                                 load_configuration,
                                                 write_configuration)
 from compensation_analytics.core.errors import ConfigError
-from compensation_analytics.core.segmentation import (dimensions, filter_fields,
-                                                      max_filter_values,
-                                                      segment_fields)
+from compensation_analytics.core.segmentation import (dimension_fields,
+                                                      dimensions,
+                                                      max_filter_values)
 
 try:
     import tkinter  # noqa: F401
@@ -34,35 +34,27 @@ def configuration(**overrides):
     return Configuration(data)
 
 
-class TestDimensionFlags(unittest.TestCase):
-    def test_a_dimension_without_flags_serves_both_uses(self):
-        """La configuration ecrite avant l'existence des drapeaux doit
-        continuer de se comporter exactement comme avant."""
+class TestDeclaredDimensions(unittest.TestCase):
+    """Une dimension sert partout de la meme facon.
+
+    Les drapeaux qui dissociaient « propose en filtre » de « propose comme
+    axe » ont ete retires : sur onze dimensions livrees, aucune ne les
+    distinguait. Deux notions la ou une suffit ne se paient qu'en confusion.
+    """
+
+    def test_a_declared_dimension_is_available_everywhere(self):
         config = configuration(dimensions=[{"field": "grade", "label": "Grade"}])
-        entry = dimensions(config)[0]
-        self.assertTrue(entry["filter"])
-        self.assertTrue(entry["segment"])
-        self.assertEqual(filter_fields(config), ["grade"])
-        self.assertEqual(segment_fields(config), ["grade"])
-
-    def test_a_dimension_can_be_a_filter_only(self):
-        config = configuration(dimensions=[
-            {"field": "site", "label": "Établissement", "segment": False},
-            {"field": "grade", "label": "Grade"},
-        ])
-        self.assertEqual(filter_fields(config), ["site", "grade"])
-        self.assertEqual(segment_fields(config), ["grade"])
-
-    def test_a_dimension_can_be_an_axis_only(self):
-        config = configuration(dimensions=[
-            {"field": "job", "label": "Métier", "filter": False}])
-        self.assertEqual(filter_fields(config), [])
-        self.assertEqual(segment_fields(config), ["job"])
+        self.assertEqual(dimension_fields(config), ["grade"])
+        self.assertEqual(dimensions(config),
+                         [{"field": "grade", "label": "Grade"}])
 
     def test_a_bare_string_still_declares_a_dimension(self):
         config = configuration(dimensions=["grade"])
-        self.assertEqual(filter_fields(config), ["grade"])
-        self.assertEqual(segment_fields(config), ["grade"])
+        self.assertEqual(dimension_fields(config), ["grade"])
+
+    def test_an_undeclared_field_is_offered_nowhere(self):
+        config = configuration(dimensions=[{"field": "grade", "label": "Grade"}])
+        self.assertNotIn("site", dimension_fields(config))
 
 
 class TestFilterValueLimit(unittest.TestCase):
@@ -186,32 +178,31 @@ class TestComposingTheSection(unittest.TestCase):
         section = self._build(
             current={"fields": {}, "dimensions": []},
             assignments={"Direction": "direction"},
-            dimension_flags={"direction": {"label": "Direction", "filter": True,
-                                           "segment": True}},
+            dimension_flags={"direction": {"label": "Direction",
+                                           "declared": True}},
             limit=60)
         self.assertEqual(section["fields"]["direction"], ["Direction"])
         self.assertEqual(section["dimensions"],
                          [{"field": "direction", "label": "Direction"}])
 
-    def test_only_restrictive_flags_are_written(self):
-        """Une entree sans drapeau se lit comme "les deux usages" : les
-        ecrire tous rendrait le fichier illisible a la main."""
+    def test_a_declared_dimension_is_written_plainly(self):
+        """Le fichier reste lisible a la main : un champ, un libelle."""
         section = self._build(
             current={"fields": {}, "dimensions": []}, assignments={},
             dimension_flags={
-                "grade": {"label": "Grade", "filter": True, "segment": True},
-                "site": {"label": "Site", "filter": True, "segment": False},
+                "grade": {"label": "Grade", "declared": True},
+                "site": {"label": "Site", "declared": True},
             }, limit=60)
         self.assertEqual(section["dimensions"], [
             {"field": "grade", "label": "Grade"},
-            {"field": "site", "label": "Site", "segment": False},
+            {"field": "site", "label": "Site"},
         ])
 
-    def test_a_field_used_for_neither_is_not_a_dimension(self):
+    def test_an_unchecked_field_is_not_a_dimension(self):
         section = self._build(
             current={"fields": {}, "dimensions": []}, assignments={},
-            dimension_flags={"fte": {"label": "ETP", "filter": False,
-                                     "segment": False}}, limit=60)
+            dimension_flags={"fte": {"label": "ETP", "declared": False}},
+            limit=60)
         self.assertEqual(section["dimensions"], [])
 
     def test_a_dimension_the_window_never_shows_is_preserved(self):
@@ -222,8 +213,8 @@ class TestComposingTheSection(unittest.TestCase):
             current={"fields": {},
                      "dimensions": [{"field": "last_name", "label": "Nom"}]},
             assignments={},
-            dimension_flags={"grade": {"label": "Grade", "filter": True,
-                                       "segment": True}}, limit=60)
+            dimension_flags={"grade": {"label": "Grade", "declared": True}},
+            limit=60)
         self.assertIn({"field": "last_name", "label": "Nom"},
                       section["dimensions"])
 
@@ -303,19 +294,18 @@ class TestTheWholeRoundTrip(unittest.TestCase):
         from compensation_analytics.ui.settings import build_mapping_section
 
         base = load_configuration()
-        self.assertNotIn("direction", filter_fields(base))
+        self.assertNotIn("direction", dimension_fields(base))
 
         section = build_mapping_section(
             base.section("population_mapping"),
             assignments={"Direction": "direction"},
             dimension_flags={"direction": {"label": "Direction",
-                                           "filter": True, "segment": False}},
+                                           "declared": True}},
             limit=60)
         write_configuration(self.config_dir, "population_mapping", section)
 
         config = load_configuration(self.config_dir)
-        self.assertIn("direction", filter_fields(config))
-        self.assertNotIn("direction", segment_fields(config))
+        self.assertIn("direction", dimension_fields(config))
 
         population, mapping, _ = load_population(self.source, config)
         self.assertEqual(mapping.unknown_columns, [])

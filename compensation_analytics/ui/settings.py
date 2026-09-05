@@ -133,19 +133,10 @@ def build_mapping_section(current: Dict[str, Any],
         if name and name not in dimension_flags:
             ordered.append(entry)
     for field_name, flags in dimension_flags.items():
-        if not (flags.get("filter") or flags.get("segment")):
+        if not flags.get("declared"):
             continue
-        entry: Dict[str, Any] = {
-            "field": field_name,
-            "label": flags.get("label") or field_name,
-        }
-        # On n'ecrit un drapeau que lorsqu'il restreint : une entree sans
-        # drapeau se lit comme "les deux usages", et le fichier reste court.
-        if not flags.get("filter"):
-            entry["filter"] = False
-        if not flags.get("segment"):
-            entry["segment"] = False
-        ordered.append(entry)
+        ordered.append({"field": field_name,
+                        "label": flags.get("label") or field_name})
     section["dimensions"] = ordered
     section["max_filter_values"] = limit
     return section
@@ -286,16 +277,14 @@ class SettingsWindow(tk.Toplevel):
         # « Filtres et axes » se lisait comme si l'on filtrait ici meme.
         # Cet ecran ne retire aucun salarie : il dit seulement quels champs
         # apparaissent dans les listes de la fenetre principale.
-        tk.Label(header, text="OÙ CHAQUE CHAMP EST PROPOSÉ", background=CANVAS,
+        tk.Label(header, text="DIMENSIONS D'ANALYSE", background=CANVAS,
                  foreground=FAINT, font=self.fonts.label).pack(anchor="w")
         tk.Label(header,
-                 text="Cet écran ne filtre rien : il choisit ce qui vous "
-                      "sera proposé.\n"
-                      "Filtrer — le champ apparaît dans la liste « Filtrer » "
-                      "de la colonne de gauche.\n"
-                      "Analyser — le champ apparaît dans « Analyser par », "
-                      "dans les onglets Segments et Pay Transparency, et "
-                      "dans « Colorer par ».",
+                 text="Cet écran ne filtre rien et ne retire aucun salarié. "
+                      "Un champ coché est proposé partout : dans la liste "
+                      "« Filtrer » de la colonne de gauche, dans « Analyser "
+                      "par », dans les onglets Segments et Pay Transparency, "
+                      "et dans « Colorer par ».",
                  background=CANVAS, foreground=MUTED, font=self.fonts.small,
                  wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))
 
@@ -303,9 +292,7 @@ class SettingsWindow(tk.Toplevel):
         legend.pack(fill="x", padx=16)
         tk.Label(legend, text="CHAMP", background=CANVAS, foreground=FAINT,
                  font=self.fonts.label, width=22, anchor="w").pack(side="left")
-        tk.Label(legend, text="FILTRER", background=CANVAS, foreground=FAINT,
-                 font=self.fonts.label).pack(side="left", padx=(0, 12))
-        tk.Label(legend, text="ANALYSER", background=CANVAS, foreground=FAINT,
+        tk.Label(legend, text="PROPOSÉ", background=CANVAS, foreground=FAINT,
                  font=self.fonts.label).pack(side="left")
 
         area = tk.Frame(card.inner, background=CANVAS)
@@ -325,8 +312,7 @@ class SettingsWindow(tk.Toplevel):
                 field_name,
                 (entry or {}).get("label") or default_label(self.configuration,
                                                             field_name),
-                bool((entry or {}).get("filter", False)),
-                bool((entry or {}).get("segment", False)))
+                entry is not None)
 
         foot = tk.Frame(card.inner, background=CANVAS)
         foot.pack(fill="x", padx=16, pady=(0, 14))
@@ -372,26 +358,22 @@ class SettingsWindow(tk.Toplevel):
         for other in self._boxes:
             other.configure(values=values)
         variable.set(name)
-        self.add_dimension_row(name, header, True, True)
+        self.add_dimension_row(name, header, True)
 
     def add_dimension_row(self, field_name: str, label: str,
-                          filter_on: bool, segment_on: bool) -> None:
+                          declared: bool) -> None:
         row = tk.Frame(self._dimension_area, background=CANVAS)
         row.pack(fill="x", pady=2)
         label_var = tk.StringVar(value=label)
-        filter_var = tk.BooleanVar(value=filter_on)
-        segment_var = tk.BooleanVar(value=segment_on)
+        declared_var = tk.BooleanVar(value=declared)
         tk.Entry(row, textvariable=label_var, background=CANVAS,
-                 foreground=INK_SOFT, font=self.fonts.body, width=22,
+                 foreground=INK_SOFT, font=self.fonts.body, width=26,
                  relief="flat", highlightthickness=1,
                  highlightbackground=CANVAS,
                  highlightcolor=ACCENT).pack(side="left", ipady=3)
-        CheckRow(row, "", filter_var, self.fonts,
-                 ground=CANVAS).pack(side="left", padx=(12, 46))
-        CheckRow(row, "", segment_var, self.fonts,
-                 ground=CANVAS).pack(side="left")
-        self.rows[field_name] = {"label": label_var, "filter": filter_var,
-                                 "segment": segment_var}
+        CheckRow(row, "", declared_var, self.fonts,
+                 ground=CANVAS).pack(side="left", padx=(12, 0))
+        self.rows[field_name] = {"label": label_var, "declared": declared_var}
 
     # ---------------------------------------------------------- validation
 
@@ -429,8 +411,7 @@ class SettingsWindow(tk.Toplevel):
             used[field_name] = header
 
         flags = {name: {"label": row["label"].get().strip(),
-                        "filter": row["filter"].get(),
-                        "segment": row["segment"].get()}
+                        "declared": row["declared"].get()}
                  for name, row in self.rows.items()}
         section = build_mapping_section(
             self.configuration.section("population_mapping"),

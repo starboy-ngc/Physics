@@ -53,14 +53,9 @@ LANCER L'INTERFACE
         au-delà de 5 % étant signalées. La liste « Écart par »
         change d'axe : Poste, Grade, Établissement, Pays...
 
-    « PÉRIMÈTRE », en haut de l'onglet, restreint TOUT ce qui suit :
-    choisissez par exemple Grade = G7, et les écarts, les effectifs,
-    les quartiles et le tableau se recalculent sur ces seuls
-    salariés. Revenir à « (toute la population) » rétablit l'analyse
-    d'ensemble.
-
-    Les filtres de la colonne de gauche s'appliquent à cet onglet
-    comme aux autres, et se cumulent avec le périmètre.
+    Pour restreindre l'analyse — à un grade, une BU, un pays —,
+    utilisez les filtres de la colonne de gauche : ils s'appliquent à
+    cet onglet comme aux autres, et aux documents produits.
 
     Convention : un écart POSITIF signifie que les femmes sont moins
     rémunérées. Aucun écart n'est publié si l'un des deux groupes
@@ -153,23 +148,22 @@ PARAMÉTRAGE
                           non reconnue apparaît en orange ; choisissez
                           « + nouveau champ… » pour la déclarer.
 
-    Où chaque champ       CET ÉCRAN NE FILTRE RIEN. Il ne retire aucun
-    est proposé           salarié : il décide seulement de ce qui vous
+    Dimensions            CET ÉCRAN NE FILTRE RIEN. Il ne retire aucun
+    d'analyse             salarié : il décide seulement de ce qui vous
                           sera proposé dans la fenêtre principale.
 
-                          FILTRER  = le champ apparaît dans la liste
-                                     « Filtrer » de la colonne de gauche
-                          ANALYSER = le champ apparaît dans « Analyser
-                                     par », dans les onglets Segments et
-                                     Pay Transparency, et dans « Colorer
-                                     par »
-
-                          Un champ peut être l'un, l'autre, ou les deux.
+                          Un champ coché est proposé PARTOUT : dans la
+                          liste « Filtrer » de la colonne de gauche, dans
+                          « Analyser par », dans les onglets Segments et
+                          Pay Transparency, et dans « Colorer par ».
                           Le libellé affiché se modifie sur place.
 
                           Le filtrage lui-même — retirer des salariés de
                           l'analyse — se fait dans la colonne de gauche,
-                          à l'étape 2, sur le fichier chargé.
+                          à l'étape 2, sur le fichier chargé. C'est le
+                          seul endroit de l'outil où l'on restreint une
+                          population, et il vaut pour tous les onglets
+                          ET pour les documents produits.
 
   « Enregistrer » écrit config/population_mapping.json. Les filtres
   se mettent à jour immédiatement, sans redémarrer, ET le réglage

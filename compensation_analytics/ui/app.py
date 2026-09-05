@@ -30,17 +30,14 @@ from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError
 from ..core.export import export_excel
-from ..core.pay_equity import (calculate_category_gaps,
-                               calculate_pay_equity)
+from ..core.pay_equity import calculate_category_gaps
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
                               format_years,
                               write_report)
-from ..core.segmentation import (apply_filters, build_filters,
-                                 dimension_label,
-                                 filter_fields, max_filter_values,
-                                 segment_fields)
+from ..core.segmentation import (build_filters, dimension_fields,
+                                 dimension_label, max_filter_values)
 from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
@@ -361,28 +358,8 @@ class Application(tk.Tk):
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
 
         equite = self.tabs["equite"]
-        # Le perimetre gouverne tout l'onglet : indicateurs d'ensemble,
-        # quartiles et tableau des categories sont recalcules dessus. Il est
-        # donc en tete, avant ce qu'il commande.
-        scope = tk.Frame(equite, background=CANVAS)
-        scope.pack(fill="x", padx=18, pady=(18, 10))
-        tk.Label(scope, text="PÉRIMÈTRE", background=CANVAS, foreground=FAINT,
-                 font=self.fonts.label).pack(side="left")
-        self.scope_field = ttk.Combobox(scope, state="readonly", width=20,
-                                        font=self.fonts.small)
-        self.scope_field.pack(side="left", padx=10)
-        self.scope_field.bind("<<ComboboxSelected>>",
-                              lambda _e: self._populate_scope_values())
-        self.scope_value = ttk.Combobox(scope, state="readonly", width=26,
-                                        font=self.fonts.small)
-        self.scope_value.pack(side="left")
-        self.scope_value.bind("<<ComboboxSelected>>",
-                              lambda _e: self._refresh_equity())
-        self.scope_label = tk.Label(scope, text="", background=CANVAS,
-                                    foreground=ACCENT, font=self.fonts.small)
-        self.scope_label.pack(side="left", padx=12)
         self.equity_frame = tk.Frame(equite, background=CANVAS)
-        self.equity_frame.pack(fill="x")
+        self.equity_frame.pack(fill="x", pady=(18, 0))
         self.equity_note = tk.Label(equite, text="", background=CANVAS,
                                     foreground=MUTED, font=self.fonts.small,
                                     justify="left", anchor="w",
@@ -534,7 +511,7 @@ class Application(tk.Tk):
         # Les listes sont alimentees par le fichier : l'utilisateur choisit
         # parmi ce qui existe, il n'a aucune syntaxe a taper.
         limit = max_filter_values(self.configuration)
-        for field in filter_fields(self.configuration):
+        for field in dimension_fields(self.configuration):
             values = sorted({str(e.value(field) or "").strip()
                              for e in self.population} - {""})
             # Le seuil est un parametre, plus un nombre cache ici : au-dela,
@@ -558,7 +535,7 @@ class Application(tk.Tk):
         for child in self.segments_frame.winfo_children():
             child.destroy()
         self.segment_vars.clear()
-        for field in segment_fields(self.configuration):
+        for field in dimension_fields(self.configuration):
             if not any(str(e.value(field) or "").strip() for e in self.population):
                 continue
             # Coches d'emblee : les axes sur lesquels une comparaison de
@@ -860,76 +837,31 @@ class Application(tk.Tk):
             tree.pack(fill="both", expand=True)
             self._fill(tree, rows)
 
-    #: Choix par defaut du perimetre : aucune restriction.
-    WHOLE = "(toute la population)"
-
     def _show_pay_equity(self, equity: Dict[str, Any]) -> None:
-        """Prepare l'onglet des ecarts, puis le calcule sur le perimetre."""
+        """Ecarts de remuneration entre les sexes.
+
+        La population est celle qu'ont retenue les filtres de la colonne de
+        gauche, comme pour tous les autres onglets : l'outil n'a qu'un seul
+        endroit ou l'on restreint, et ce qui s'affiche est ce qui s'exporte.
+        """
         gender_field = equity.get("gender_field", "gender")
-        # Le champ du sexe est ecarte des deux listes : restreindre a un sexe
-        # ne laisse aucun ecart a calculer, et croiser l'ecart H/F par sexe
+        # Le champ du sexe est ecarte des axes : croiser l'ecart H/F par sexe
         # donnerait des categories d'un seul sexe, toutes masquees.
         self._category_fields = [field for field
-                                 in segment_fields(self.configuration)
+                                 in dimension_fields(self.configuration)
                                  if field != gender_field]
-        labels = [dimension_label(self.configuration, field)
-                  for field in self._category_fields]
-        self.category_choice.configure(values=labels)
+        self.category_choice.configure(values=[
+            dimension_label(self.configuration, field)
+            for field in self._category_fields])
         configured = equity.get("category_field")
         if configured in self._category_fields:
             self.category_choice.current(self._category_fields.index(configured))
         elif self._category_fields:
             self.category_choice.current(0)
 
-        self.scope_field.configure(values=[self.WHOLE] + labels)
-        self.scope_field.current(0)
-        self._populate_scope_values()
-
-    def _populate_scope_values(self) -> None:
-        """Valeurs disponibles pour le perimetre choisi."""
-        index = self.scope_field.current() - 1
-        if index < 0 or self.result is None:
-            self.scope_value.configure(values=[], state="disabled")
-            self.scope_value.set("")
-            self._refresh_equity()
-            return
-        field = self._category_fields[index]
-        values = sorted({str(item.value(field) or "").strip()
-                         for item in self.result.filtered} - {""})
-        self.scope_value.configure(values=values, state="readonly")
-        if values:
-            self.scope_value.current(0)
-        else:
-            self.scope_value.set("")
-        self._refresh_equity()
-
-    def _scoped_population(self):
-        """Population du perimetre, ou la population analysee entiere."""
-        index = self.scope_field.current() - 1
-        value = self.scope_value.get()
-        if index < 0 or not value:
-            return self.result.filtered, None
-        field = self._category_fields[index]
-        definition = [{"field": field, "operator": "eq", "value": value}]
-        subset = apply_filters(self.result.filtered,
-                               build_filters(definition, self.result.config))
-        return subset, f"{dimension_label(self.result.config, field)} = {value}"
-
-    def _refresh_equity(self) -> None:
-        """Recalcule tout l'onglet sur le perimetre retenu."""
-        if self.result is None:
-            return
-        population, described = self._scoped_population()
-        equity = calculate_pay_equity(population, self.result.config)
-        self.scope_label.configure(
-            text="" if described is None
-            else f"{described} · {len(population)} salariés")
-
         for child in self.equity_frame.winfo_children():
             child.destroy()
         if not equity.get("available"):
-            # Le perimetre choisi peut tomber sous les seuils : on le dit, on
-            # ne rend pas un tableau vide.
             tk.Label(self.equity_frame, text=equity.get("warning", ""),
                      background=CANVAS, foreground=WARN, font=self.fonts.body,
                      wraplength=760, justify="left").pack(anchor="w", padx=18,
@@ -981,18 +913,16 @@ class Application(tk.Tk):
              format_percent(item.get("female_share")),
              format_percent(item.get("male_share")))
             for item in equity["quartiles"]])
-        self._show_categories(population, equity["threshold"])
+        self._show_categories()
 
-    def _show_categories(self, population=None, threshold=None) -> None:
-        """Ecarts par categorie, sur l'axe choisi et dans le perimetre."""
+    def _show_categories(self) -> None:
+        """Ecarts par categorie, sur l'axe choisi."""
         index = self.category_choice.current()
         if self.result is None or index < 0:
             return
-        if population is None:
-            population, _ = self._scoped_population()
-        if threshold is None:
-            threshold = self.result.payload["pay_equity"]["threshold"]
-        block = calculate_category_gaps(population, self.result.config,
+        threshold = self.result.payload["pay_equity"]["threshold"]
+        block = calculate_category_gaps(self.result.filtered,
+                                        self.result.config,
                                         self._category_fields[index])
         categories = block["categories"]
         warning = block.get("category_warning")
@@ -1018,7 +948,7 @@ class Application(tk.Tk):
                    flagged=lambda position: categories[position]["above_threshold"])
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
-        fields = segment_fields(self.configuration)
+        fields = dimension_fields(self.configuration)
         self._colour_fields = fields
         self.colour_choice.configure(
             values=[dimension_label(self.configuration, f) for f in fields])

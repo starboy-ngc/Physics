@@ -55,14 +55,10 @@ DEFAULTS: Dict[str, Any] = {
             "variable_pay": ["Variable", "Variable pay"],
             "total_compensation": ["Rémunération totale"],
         },
-        # Dimensions d'analyse : segmentation, filtres, coloration des
-        # graphiques. Ajouter une notion metier (equipe, manager, direction)
-        # se fait ici et dans "fields", sans modification du code.
-        #
-        # Chaque entree accepte deux drapeaux optionnels, vrais par defaut :
-        #   "filter"  : proposee comme critere de selection
-        #   "segment" : proposee comme axe d'analyse
-        # Les omettre revient a activer les deux, comme avant leur existence.
+        # Dimensions d'analyse : elles servent partout de la meme facon —
+        # critere de selection, axe de segmentation, couleur du nuage.
+        # Ajouter une notion metier (equipe, manager, direction) se fait ici
+        # et dans "fields", sans modification du code.
         "dimensions": [
             {"field": "business_unit", "label": "BU"},
             {"field": "country", "label": "Pays"},

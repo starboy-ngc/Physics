@@ -171,14 +171,12 @@ def command_mapping(args: argparse.Namespace) -> int:
     config = load_configuration(args.config or default_config_dir())
     table = read_table(args.fichier, args.onglet)
     mapping = resolve_mapping(table.headers, config)
-    print("Dimensions declarees (F = filtre, A = axe d'analyse) :")
+    print("Dimensions d'analyse declarees :")
     for entry in dimensions(config):
         name = entry["field"]
         marker = "ok" if name in mapping.field_to_index or name in (
             "age_band", "tenure_band") else "absente du fichier"
-        usage = ("F" if entry["filter"] else "-") + \
-                ("A" if entry["segment"] else "-")
-        print(f"  {name:<20} {usage:<4} {marker}")
+        print(f"  {name:<20} {marker}")
     print()
     print("Colonnes identifiées :")
     for field_name, column in sorted(mapping.field_to_column.items()):

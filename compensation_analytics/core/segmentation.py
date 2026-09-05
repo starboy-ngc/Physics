@@ -144,39 +144,27 @@ def _number(value: Any) -> float:
 def dimensions(config: Configuration) -> List[Dict[str, Any]]:
     """Dimensions d'analyse declarees en configuration.
 
-    Chaque entree porte deux usages, independants : servir de critere de
-    selection ("filter") et servir d'axe d'analyse ("segment"). Les deux
-    sont vrais par defaut, de sorte qu'une configuration ecrite avant
-    l'existence de ces drapeaux garde exactement le meme comportement.
+    Une dimension sert partout de la meme facon : comme critere de
+    selection, comme axe de segmentation et comme couleur du nuage. Les
+    drapeaux qui permettaient de dissocier ces usages ont ete retires — ils
+    n'ont jamais servi, et deux notions la ou une suffit ne se paient qu'en
+    confusion.
     """
     declared = config.get("population_mapping.dimensions", []) or []
     result: List[Dict[str, Any]] = []
     for entry in declared:
         if isinstance(entry, str):
-            result.append({"field": entry, "label": entry,
-                           "filter": True, "segment": True})
+            result.append({"field": entry, "label": entry})
         elif isinstance(entry, dict) and entry.get("field"):
             result.append({
                 "field": entry["field"],
                 "label": entry.get("label") or entry["field"],
-                "filter": entry.get("filter", True) is not False,
-                "segment": entry.get("segment", True) is not False,
             })
     return result
 
 
 def dimension_fields(config: Configuration) -> List[str]:
     return [entry["field"] for entry in dimensions(config)]
-
-
-def filter_fields(config: Configuration) -> List[str]:
-    """Dimensions proposees comme critere de selection."""
-    return [entry["field"] for entry in dimensions(config) if entry["filter"]]
-
-
-def segment_fields(config: Configuration) -> List[str]:
-    """Dimensions proposees comme axe d'analyse."""
-    return [entry["field"] for entry in dimensions(config) if entry["segment"]]
 
 
 def max_filter_values(config: Configuration) -> int:
