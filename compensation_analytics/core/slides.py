@@ -18,7 +18,9 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Sequence
 
 from ..version import ENGINE_NAME, __version__
+from .axes import nice_ticks
 from .reporting import (_PALETTE, format_money, format_number, format_percent,
+                        format_years,
                         histogram_svg, scatter_svg)
 
 SLIDE_WIDTH = 1280
@@ -67,10 +69,10 @@ def _table_block(headers, rows, title="", width="full", compact=False) -> Block:
 def _population_kpis(population: Dict[str, Any]) -> List[List[str]]:
     return [
         ["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
-        ["Âge moyen", format_number(population.get("age_mean")) + " ans"],
-        ["Âge médian", format_number(population.get("age_median")) + " ans"],
-        ["Ancienneté moyenne", format_number(population.get("tenure_mean")) + " ans"],
-        ["Ancienneté médiane", format_number(population.get("tenure_median")) + " ans"],
+        ["Âge moyen", format_years(population.get("age_mean"))],
+        ["Âge médian", format_years(population.get("age_median"))],
+        ["Ancienneté moyenne", format_years(population.get("tenure_mean"))],
+        ["Ancienneté médiane", format_years(population.get("tenure_median"))],
     ]
 
 
@@ -157,9 +159,9 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
              ["Masse salariale", format_money(salary.get("payroll"), currency)],
              ["Salaire moyen", format_money(salary.get("mean"), currency)],
              ["Salaire médian", format_money(salary.get("median"), currency)],
-             ["Âge médian", format_number(population.get("age_median")) + " ans"],
+             ["Âge médian", format_years(population.get("age_median"))],
              ["Ancienneté médiane",
-              format_number(population.get("tenure_median")) + " ans"]]
+              format_years(population.get("tenure_median"))]]
         ),
         _table_block(["Percentile", "Valeur"], _percentile_rows(salary, currency),
                      title="Niveaux de rémunération", width="third", compact=True),
@@ -273,7 +275,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                 [item["reference"]]
                 + [str(item.get("dimensions", {}).get(entry["field"]) or "—")
                    for entry in shown]
-                + [format_number(item.get("tenure_years")),
+                + [format_years(item.get("tenure_years"), suffix=False),
                    format_money(item["value"], currency),
                    f'Position {item["position"]}']
                 for item in highlighted
@@ -708,20 +710,22 @@ def _draw_histogram(page, bins, currency, x, y, width, height) -> float:
     peak = max(item["count"] for item in bins) or 1
     bar_width = width / len(bins)
     base = y - height + axis
-    for step in range(5):
-        level = base + plot_height * step / 4
+    for value in nice_ticks(0, peak):
+        level = base + value / peak * plot_height
         page.line(x, level, x + width, level, color=_LINE, width=0.4)
-        page.text(x - 5, level - 2.5, f"{peak * step / 4:.0f}", size=6.5,
+        page.text(x - 5, level - 2.5, f"{value:.0f}", size=6.5,
                   color=_MUTED, align="right")
     for index, item in enumerate(bins):
         bar = plot_height * item["count"] / peak
         page.rect(x + index * bar_width + 0.8, base, max(bar_width - 1.6, 0.5), bar,
                   fill=_ACCENT)
     page.line(x, base, x + width, base, color=_MUTED, width=0.5)
-    page.text(x, base - 12, format_money(bins[0]["lower"], currency), size=7,
-              color=_MUTED)
-    page.text(x + width, base - 12, format_money(bins[-1]["upper"], currency),
-              size=7, color=_MUTED, align="right")
+    low, high = bins[0]["lower"], bins[-1]["upper"]
+    span = (high - low) or 1.0
+    for value in nice_ticks(low, high, 4):
+        page.text(x + (value - low) / span * width, base - 12,
+                  format_money(value, currency), size=7, color=_MUTED,
+                  align="center")
     page.text(x + width / 2, base - 23, "Effectif par classe de rémunération",
               size=7, color=_MUTED, align="center")
     return height
@@ -749,11 +753,10 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
     def to_y(value):
         return base + (value - y_min) / y_span * plot_height
 
-    for step in range(5):
-        level = base + plot_height * step / 4
+    for value in nice_ticks(y_min, y_max):
+        level = to_y(value)
         page.line(x, level, x + width, level, color=_LINE, width=0.4)
-        page.text(x - 5, level - 2.5,
-                  format_money(y_min + y_span * step / 4, currency),
+        page.text(x - 5, level - 2.5, format_money(value, currency),
                   size=6.5, color=_MUTED, align="right")
     groups = dataset.get("groups") or []
     colors = {group: _PDF_PALETTE[index % len(_PDF_PALETTE)]
@@ -767,9 +770,8 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
         end = min(max(trend["intercept"] + trend["slope"] * x_max, y_min), y_max)
         page.line(to_x(x_min), to_y(start), to_x(x_max), to_y(end),
                   color=(0.690, 0.271, 0.247), width=1.4, dash=(5, 3))
-    for step in range(6):
-        value = x_min + x_span * step / 5
-        page.text(x + width * step / 5, base - 12, format_number(value, 1),
+    for value in nice_ticks(x_min, x_max):
+        page.text(to_x(value), base - 12, format_number(value, 0),
                   size=6.5, color=_MUTED, align="center")
     # Le titre d'axe est place sous les graduations, pas a leur hauteur :
     # il chevauchait la premiere valeur.

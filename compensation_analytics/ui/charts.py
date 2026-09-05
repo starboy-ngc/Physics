@@ -14,7 +14,9 @@ from __future__ import annotations
 import tkinter as tk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
-from ..core.reporting import _PALETTE, format_money, format_number
+from ..core.axes import nice_ticks
+from ..core.reporting import (_PALETTE, format_money, format_number,
+                              format_years)
 from . import raster
 from .theme import (ACCENT, CANVAS, FAINT, INK, LINE, MUTED, SIZE_LABEL,
                     SIZE_SMALL, _rgb, pick_family)
@@ -171,17 +173,19 @@ class ScatterChart(tk.Frame):
             return (pad_l + (x - x_min) / x_span * plot_w,
                     pad_t + plot_h - (y - y_min) / y_span * plot_h)
 
-        for step in range(5):
-            y = pad_t + plot_h - plot_h * step / 4
+        # Graduations posees sur des valeurs rondes, jamais sur les bornes de
+        # l'etendue : celles-ci donnaient « 4 284 EUR » ou « -0,6 an ».
+        for value in nice_ticks(y_min, y_max):
+            y = pad_t + plot_h - (value - y_min) / y_span * plot_h
             self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=GRID)
             self.canvas.create_text(
                 pad_l - 8, y, anchor="e", fill=MUTED, font=axis_font(),
-                text=format_money(y_min + y_span * step / 4, self.currency))
-        for step in range(6):
-            x = pad_l + plot_w * step / 5
+                text=format_money(value, self.currency))
+        for value in nice_ticks(x_min, x_max):
+            x = pad_l + (value - x_min) / x_span * plot_w
             self.canvas.create_text(
                 x, pad_t + plot_h + 14, fill=MUTED, font=axis_font(),
-                text=format_number(x_min + x_span * step / 5, 1))
+                text=format_number(value, 0))
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill="#9aa7b4")
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32,
@@ -264,7 +268,7 @@ class ScatterChart(tk.Frame):
         self.canvas.configure(cursor="hand2")
         self.tooltip.show(
             f'{point["reference"]}\n{point["group"]}\n'
-            f'Ancienneté : {format_number(point["x"], 1)} ans\n'
+            f'Ancienneté : {format_years(point["x"])}\n'
             f'Rémunération : {format_money(point["y"], self.currency)}',
             self.canvas.winfo_rootx() + event.x,
             self.canvas.winfo_rooty() + event.y)
@@ -364,12 +368,12 @@ class HistogramChart(tk.Frame):
         peak = max(item["count"] for item in self.bins) or 1
         bar_w = plot_w / len(self.bins)
 
-        for step in range(5):
-            y = pad_t + plot_h - plot_h * step / 4
+        for value in nice_ticks(0, peak):
+            y = pad_t + plot_h - value / peak * plot_h
             self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=GRID)
             self.canvas.create_text(pad_l - 8, y, anchor="e", fill=MUTED,
                                     font=axis_font(),
-                                    text=f"{peak * step / 4:.0f}")
+                                    text=format_number(value, 0))
         for index, item in enumerate(self.bins):
             bar_h = plot_h * item["count"] / peak
             x = pad_l + index * bar_w
@@ -381,12 +385,16 @@ class HistogramChart(tk.Frame):
             self._items[handle] = item
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill="#9aa7b4")
-        self.canvas.create_text(pad_l, pad_t + plot_h + 14, anchor="w", fill=MUTED,
-                                font=axis_font(),
-                                text=format_money(self.bins[0]["lower"], self.currency))
-        self.canvas.create_text(pad_l + plot_w, pad_t + plot_h + 14, anchor="e",
-                                fill=MUTED, font=axis_font(),
-                                text=format_money(self.bins[-1]["upper"], self.currency))
+        # Les deux bornes exactes cedent la place a des graduations rondes :
+        # « 9 391 EUR » et « 137 074 EUR » ne se lisaient pas d'un coup d'oeil.
+        low = self.bins[0]["lower"]
+        high = self.bins[-1]["upper"]
+        span = (high - low) or 1.0
+        for value in nice_ticks(low, high, 5):
+            self.canvas.create_text(
+                pad_l + (value - low) / span * plot_w, pad_t + plot_h + 14,
+                fill=MUTED, font=axis_font(),
+                text=format_money(value, self.currency))
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32, fill=MUTED,
                                 font=axis_font(),
                                 text="Effectif par classe de rémunération")

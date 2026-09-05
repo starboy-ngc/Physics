@@ -15,6 +15,7 @@ import os
 from typing import Any, Dict, List, Optional, Sequence
 
 from ..version import ENGINE_NAME, __version__
+from .axes import nice_ticks
 
 _PALETTE = [
     "#2f5d8a", "#c26b3f", "#4f8f6d", "#8a5f9e", "#b0453f",
@@ -91,6 +92,22 @@ def format_number(value: Optional[float], digits: int = 1) -> str:
     return f"{value:,.{digits}f}".replace(",", " ").replace(".", ",")
 
 
+def format_years(value: Optional[float], suffix: bool = True) -> str:
+    """Une duree en annees s'ecrit sans decimale.
+
+    « 8,0 ans » affiche une precision que la donnee n'a pas, et « 9,4 ans »
+    une precision que personne n'emploie : une anciennete se compte en
+    annees. La regle vaut pour l'ecran comme pour les documents, d'ou ce
+    formateur unique.
+
+    `suffix` se desactive dans une colonne de tableau, ou l'unite est deja
+    portee par l'en-tete : la regle d'arrondi, elle, reste la meme.
+    """
+    if value is None:
+        return "—"
+    return f"{format_number(value, 0)} ans" if suffix else format_number(value, 0)
+
+
 def format_percent(value: Optional[float]) -> str:
     return "—" if value is None else f"{value:.1f} %".replace(".", ",")
 
@@ -128,9 +145,8 @@ def histogram_svg(bins: List[Dict[str, float]], currency: str,
     peak = max(item["count"] for item in bins) or 1
     bar_w = plot_w / len(bins)
     parts = [f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Distribution des rémunérations">']
-    for step in range(5):
-        y = pad_top + plot_h - plot_h * step / 4
-        value = peak * step / 4
+    for value in nice_ticks(0, peak):
+        y = pad_top + plot_h - value / peak * plot_h
         parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="#e6ebf0"/>')
         parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="#5d6b7a">{value:.0f}</text>')
     for index, item in enumerate(bins):
@@ -145,10 +161,12 @@ def histogram_svg(bins: List[Dict[str, float]], currency: str,
         )
     low = bins[0]["lower"]
     high = bins[-1]["upper"]
+    span = (high - low) or 1.0
     base_y = pad_top + plot_h
     parts.append(f'<line x1="{pad_left}" y1="{base_y}" x2="{width - pad_right}" y2="{base_y}" stroke="#9aa7b4"/>')
-    parts.append(f'<text x="{pad_left}" y="{base_y + 18}" font-size="11" fill="#5d6b7a">{_e(format_money(low, currency))}</text>')
-    parts.append(f'<text x="{width - pad_right}" y="{base_y + 18}" text-anchor="end" font-size="11" fill="#5d6b7a">{_e(format_money(high, currency))}</text>')
+    for value in nice_ticks(low, high, 5):
+        x = pad_left + (value - low) / span * plot_w
+        parts.append(f'<text x="{x:.1f}" y="{base_y + 18}" text-anchor="middle" font-size="11" fill="#5d6b7a">{_e(format_money(value, currency))}</text>')
     parts.append(f'<text x="{pad_left}" y="{base_y + 34}" font-size="11" fill="#5d6b7a">Effectif par classe de rémunération</text>')
     parts.append("</svg>")
     return "".join(parts)
@@ -179,19 +197,19 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
     colors = {group: _PALETTE[index % len(_PALETTE)] for index, group in enumerate(groups)}
 
     parts = [f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Nuage de points ancienneté / rémunération">']
-    for step in range(5):
-        y = pad_top + plot_h - plot_h * step / 4
-        value = y_min + y_span * step / 4
+    # Graduations rondes, comme a l'ecran et dans le PDF : le meme graphique
+    # doit se lire de la meme facon sur les trois supports.
+    for value in nice_ticks(y_min, y_max):
+        y = to_y(value)
         parts.append(f'<line x1="{pad_left}" y1="{y:.1f}" x2="{width - pad_right}" y2="{y:.1f}" stroke="#e6ebf0"/>')
         parts.append(f'<text x="{pad_left - 8}" y="{y + 4:.1f}" text-anchor="end" font-size="10" fill="#5d6b7a">{_e(format_money(value, currency))}</text>')
-    for step in range(6):
-        x = pad_left + plot_w * step / 5
-        value = x_min + x_span * step / 5
-        parts.append(f'<text x="{x:.1f}" y="{pad_top + plot_h + 18:.1f}" text-anchor="middle" font-size="10" fill="#5d6b7a">{format_number(value, 1)}</text>')
+    for value in nice_ticks(x_min, x_max):
+        x = to_x(value)
+        parts.append(f'<text x="{x:.1f}" y="{pad_top + plot_h + 18:.1f}" text-anchor="middle" font-size="10" fill="#5d6b7a">{format_number(value, 0)}</text>')
     for point in points:
         color = colors.get(point["group"], "#2f5d8a")
         tip = (f'{point["reference"]} | {point["group"]} | ancienneté '
-               f'{format_number(point["x"], 1)} ans | {format_money(point["y"], currency)}')
+               f'{format_years(point["x"])} | {format_money(point["y"], currency)}')
         parts.append(
             f'<circle cx="{to_x(point["x"]):.1f}" cy="{to_y(point["y"]):.1f}" r="3" '
             f'fill="{color}" opacity="0.7" data-tip="{_e(tip)}"/>'
@@ -256,10 +274,10 @@ def _population_section(population: Dict[str, Any]) -> str:
         return f'<h2>2. Population</h2>{_note(population.get("warning"), "warn")}'
     kpis = "".join([
         _kpi("Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")),
-        _kpi("Âge moyen", format_number(population.get("age_mean")) + " ans"),
-        _kpi("Âge médian", format_number(population.get("age_median")) + " ans"),
-        _kpi("Ancienneté moyenne", format_number(population.get("tenure_mean")) + " ans"),
-        _kpi("Ancienneté médiane", format_number(population.get("tenure_median")) + " ans"),
+        _kpi("Âge moyen", format_years(population.get("age_mean"))),
+        _kpi("Âge médian", format_years(population.get("age_median"))),
+        _kpi("Ancienneté moyenne", format_years(population.get("tenure_mean"))),
+        _kpi("Ancienneté médiane", format_years(population.get("tenure_median"))),
     ])
     age_rows = [
         (row["label"], str(row["count"]), format_percent(row["share"]))
@@ -338,7 +356,7 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
             + [str(item.get("dimensions", {}).get(entry["field"]) or "—")
                for entry in shown]
             + [
-                format_number(item.get("tenure_years")),
+                format_years(item.get("tenure_years"), suffix=False),
                 format_money(item["value"], currency),
                 f'Position {item["position"]}',
             ]

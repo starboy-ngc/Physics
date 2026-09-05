@@ -33,6 +33,7 @@ from ..core.export import export_excel
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
+                              format_years,
                               write_report)
 from ..core.segmentation import (build_filters, dimension_label,
                                  filter_fields, max_filter_values,
@@ -555,12 +556,12 @@ class Application(tk.Tk):
             return
         self._kpis(self.population_frame, [
             ("Effectif", str(population.get("headcount", 0))),
-            ("Âge moyen", format_number(population.get("age_mean")) + " ans"),
-            ("Âge médian", format_number(population.get("age_median")) + " ans"),
+            ("Âge moyen", format_years(population.get("age_mean"))),
+            ("Âge médian", format_years(population.get("age_median"))),
             ("Ancienneté moyenne",
-             format_number(population.get("tenure_mean")) + " ans"),
+             format_years(population.get("tenure_mean"))),
             ("Ancienneté médiane",
-             format_number(population.get("tenure_median")) + " ans"),
+             format_years(population.get("tenure_median"))),
         ])
         columns = tk.Frame(self.population_frame, background=CANVAS)
         columns.pack(fill="both", expand=True)
@@ -691,7 +692,7 @@ class Application(tk.Tk):
         currency = self.result.payload["salary"].get("currency", "EUR")
         self.selection_label.configure(
             text=f'{point["reference"]} · {point["group"]} · '
-                 f'{format_number(point["x"], 1)} ans · '
+                 f'{format_years(point["x"])} · '
                  f'{format_money(point["y"], currency)}')
 
     def _show_segments(self, segments: List[Dict[str, Any]]) -> None:
