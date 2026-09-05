@@ -153,11 +153,23 @@ PARAMÉTRAGE
                           non reconnue apparaît en orange ; choisissez
                           « + nouveau champ… » pour la déclarer.
 
-    Filtres et axes       pour chaque champ, deux cases :
-                          FILTRE = proposé comme critère de sélection
-                          AXE    = proposé comme axe d'analyse
+    Où chaque champ       CET ÉCRAN NE FILTRE RIEN. Il ne retire aucun
+    est proposé           salarié : il décide seulement de ce qui vous
+                          sera proposé dans la fenêtre principale.
+
+                          FILTRER  = le champ apparaît dans la liste
+                                     « Filtrer » de la colonne de gauche
+                          ANALYSER = le champ apparaît dans « Analyser
+                                     par », dans les onglets Segments et
+                                     Pay Transparency, et dans « Colorer
+                                     par »
+
                           Un champ peut être l'un, l'autre, ou les deux.
                           Le libellé affiché se modifie sur place.
+
+                          Le filtrage lui-même — retirer des salariés de
+                          l'analyse — se fait dans la colonne de gauche,
+                          à l'étape 2, sur le fichier chargé.
 
   « Enregistrer » écrit config/population_mapping.json. Les filtres
   se mettent à jour immédiatement, sans redémarrer, ET le réglage

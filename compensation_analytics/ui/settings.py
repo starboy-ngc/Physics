@@ -182,11 +182,14 @@ class SettingsWindow(tk.Toplevel):
         tk.Label(head, text="Champs et filtres", background=CANVAS,
                  foreground=INK, font=self.fonts.title).pack(anchor="w",
                                                              padx=22, pady=(18, 2))
-        tk.Label(head, text="Ces choix sont enregistrés dans "
-                            "population_mapping.json et restent modifiables "
-                            "au bloc-notes.",
-                 background=CANVAS, foreground=MUTED,
-                 font=self.fonts.small).pack(anchor="w", padx=22, pady=(0, 16))
+        tk.Label(head, text="Ces réglages décident de ce qui vous sera "
+                            "proposé dans la fenêtre principale ; ils ne "
+                            "retirent aucun salarié. Ils sont enregistrés "
+                            "dans population_mapping.json et restent "
+                            "modifiables au bloc-notes.",
+                 background=CANVAS, foreground=MUTED, font=self.fonts.small,
+                 wraplength=900, justify="left").pack(anchor="w", padx=22,
+                                                      pady=(0, 16))
         tk.Frame(head, height=1, background=LINE).pack(fill="x")
 
         actions = tk.Frame(self, background=GROUND)
@@ -270,15 +273,29 @@ class SettingsWindow(tk.Toplevel):
             self._boxes.append(box)
 
     def _build_dimensions(self, parent: tk.Widget) -> None:
+        """Colonnes du fichier -> ou chaque champ sera propose.
+
+        Aucun salarie n'est retire ici : ces cases decident du contenu des
+        listes, pas de la population analysee. Le filtrage lui-meme se fait
+        dans la fenetre principale, sur le fichier charge.
+        """
         card = Card(parent, padding=0)
         card.pack(side="left", fill="both", expand=True)
         header = tk.Frame(card.inner, background=CANVAS)
         header.pack(fill="x", padx=16, pady=(14, 8))
-        tk.Label(header, text="FILTRES ET AXES D'ANALYSE", background=CANVAS,
+        # « Filtres et axes » se lisait comme si l'on filtrait ici meme.
+        # Cet ecran ne retire aucun salarie : il dit seulement quels champs
+        # apparaissent dans les listes de la fenetre principale.
+        tk.Label(header, text="OÙ CHAQUE CHAMP EST PROPOSÉ", background=CANVAS,
                  foreground=FAINT, font=self.fonts.label).pack(anchor="w")
         tk.Label(header,
-                 text="Un champ peut servir de critère de sélection, d'axe "
-                      "d'analyse, ou des deux.",
+                 text="Cet écran ne filtre rien : il choisit ce qui vous "
+                      "sera proposé.\n"
+                      "Filtrer — le champ apparaît dans la liste « Filtrer » "
+                      "de la colonne de gauche.\n"
+                      "Analyser — le champ apparaît dans « Analyser par », "
+                      "dans les onglets Segments et Pay Transparency, et "
+                      "dans « Colorer par ».",
                  background=CANVAS, foreground=MUTED, font=self.fonts.small,
                  wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))
 
@@ -286,9 +303,9 @@ class SettingsWindow(tk.Toplevel):
         legend.pack(fill="x", padx=16)
         tk.Label(legend, text="CHAMP", background=CANVAS, foreground=FAINT,
                  font=self.fonts.label, width=22, anchor="w").pack(side="left")
-        tk.Label(legend, text="FILTRE", background=CANVAS, foreground=FAINT,
-                 font=self.fonts.label).pack(side="left", padx=(0, 18))
-        tk.Label(legend, text="AXE", background=CANVAS, foreground=FAINT,
+        tk.Label(legend, text="FILTRER", background=CANVAS, foreground=FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(0, 12))
+        tk.Label(legend, text="ANALYSER", background=CANVAS, foreground=FAINT,
                  font=self.fonts.label).pack(side="left")
 
         area = tk.Frame(card.inner, background=CANVAS)
