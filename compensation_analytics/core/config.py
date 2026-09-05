@@ -25,6 +25,7 @@ CONFIG_FILES = (
     "percentile_parameters",
     "salary_parameters",
     "privacy_parameters",
+    "pay_equity_parameters",
     "chart_parameters",
     "export_parameters",
 )
@@ -139,6 +140,21 @@ DEFAULTS: Dict[str, Any] = {
         "min_headcount_chart": 10,
         "anonymise_identifiers": True,
         "log_personal_data": False,
+    },
+    "pay_equity_parameters": {
+        # Les valeurs designant le sexe ne sont pas codees dans le moteur :
+        # un fichier RH ecrit « F/H », « F/M » ou « Femme/Homme » selon
+        # l'outil qui l'a produit. La comparaison ignore casse et accents.
+        "gender_field": "gender",
+        "female_values": ["F", "Femme", "Female", "W", "Mme"],
+        "male_values": ["H", "M", "Homme", "Male", "Mr"],
+        "variable_field": "variable_pay",
+        # Categorie de « travail de meme valeur » au sens de la directive.
+        "category_field": "job_title",
+        # Seuil au-dela duquel la directive 2023/970 impose une evaluation
+        # conjointe, faute de justification par des criteres objectifs.
+        "gap_alert_threshold": 5.0,
+        "quartile_count": 4,
     },
     "chart_parameters": {
         "histogram_bins": 20,

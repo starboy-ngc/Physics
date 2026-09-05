@@ -37,6 +37,25 @@ LANCER L'INTERFACE
       clic sur la légende  -> masque une population
       « Colorer par »      -> change la dimension de couleur
 
+    L'onglet « Pay Transparency » analyse les écarts de rémunération
+    entre les sexes, selon le découpage exigé des employeurs par la
+    directive européenne 2023/970 :
+
+      écart moyen et écart médian sur la rémunération de base
+      écart moyen et médian sur la part variable
+      part des femmes et des hommes percevant une part variable
+      part de chaque sexe dans chaque quartile de rémunération
+      écart par catégorie de travail de même valeur (le Poste par
+        défaut), les catégories au-delà de 5 % étant signalées
+
+    Convention : un écart POSITIF signifie que les femmes sont moins
+    rémunérées. Aucun écart n'est publié si l'un des deux groupes
+    compte moins de 5 salariés.
+
+    Les écritures acceptées pour la colonne « Sexe » (F/H, F/M,
+    Femme/Homme...), le champ de catégorie et le seuil d'alerte se
+    règlent dans config/pay_equity_parameters.json.
+
     « Produire les documents » écrit les fichiers où vous voulez.
 
 -------------------------------------------------------------------

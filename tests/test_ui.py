@@ -177,7 +177,7 @@ class TestWindow(unittest.TestCase):
     def test_the_window_opens_with_the_expected_steps(self):
         self.assertEqual(self.app.title(),
                          "Compensation Analytics Engine 1.0.0")
-        self.assertEqual(len(self.app.tabs), 6)
+        self.assertEqual(len(self.app.tabs), 7)
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
@@ -346,7 +346,10 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         source = os.path.join(directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
             make_row(index, age=30 + index % 25, tenure=index % 20,
-                     business_unit=["France", "DACH"][index % 2])
+                     business_unit=["France", "DACH"][index % 2],
+                     # Population mixte : sans les deux sexes, l'onglet des
+                     # ecarts n'a rien a publier — et disparait a bon droit.
+                     gender=["F", "H"][index % 2])
             for index in range(count)])])
         app = Application()
         app.update()
@@ -475,69 +478,3 @@ class TestResettingTheChoices(unittest.TestCase):
         self.assertFalse(any(v.get() for v in self.app.output_vars.values()))
         self.app.toggle_outputs()
         self.assertTrue(all(v.get() for v in self.app.output_vars.values()))
-
-
-@needs_display
-class TestDistributionTabContent(unittest.TestCase):
-    """L'histogramme seul ne disait ni ou passent les seuils, ni qui les
-    depasse."""
-
-    def _analysed(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
-                                                          run_analysis)
-        directory = tempfile.mkdtemp()
-        source = os.path.join(directory, "population.xlsx")
-        write_workbook(source, [("Population", [HEADERS] + [
-            make_row(index, salary=30000 + (index % 40) * 900,
-                     age=28 + index % 30, tenure=index % 18)
-            for index in range(120)])])
-        app = Application()
-        app.update()
-        app.result = run_analysis(AnalysisRequest(
-            source_path=source, reference_date=REFERENCE_DATE))
-        app._render_results()
-        app.update()
-        return app
-
-    def test_the_thresholds_and_the_spread_are_shown(self):
-        app = self._analysed()
-        try:
-            texts = [child.cget("text")
-                     for block in app.distribution_frame.winfo_children()
-                     for cell in block.winfo_children()
-                     for child in cell.winfo_children()]
-            self.assertIn("SEUIL HAUT", texts)
-            self.assertIn("SITUATIONS ATYPIQUES", texts)
-            self.assertIn("COEFFICIENT DE VARIATION", texts)
-        finally:
-            app.destroy()
-
-    def test_a_low_threshold_nobody_can_reach_is_not_displayed(self):
-        """Sur une distribution etiree vers le haut, la borne basse tombe
-        sous zero : l'afficher laisserait croire a un salaire negatif."""
-        from compensation_analytics.ui.app import Application
-        app = self._analysed()
-        try:
-            app._show_distribution(
-                {"bounds": {"lower": -5000.0, "upper": 90000.0},
-                 "outliers": [], "outliers_highlighted": []},
-                {"min": 20000.0, "median": 40000.0, "dispersion": {}}, "EUR")
-            app.update()
-            values = [child.cget("text")
-                      for block in app.distribution_frame.winfo_children()
-                      for cell in block.winfo_children()
-                      for child in cell.winfo_children()]
-            self.assertIn("aucun", values)
-            self.assertFalse([text for text in values if text.startswith("-5")])
-        finally:
-            app.destroy()
-
-    def test_the_outlier_table_names_what_it_shows(self):
-        app = self._analysed()
-        try:
-            title = app.outlier_title.cget("text")
-            if title:
-                self.assertIn("SUR", title)
-        finally:
-            app.destroy()

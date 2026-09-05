@@ -58,7 +58,7 @@ _ALL = "(toutes)"
 TABS = (("population", "Population"), ("remuneration", "Rémunération"),
         ("distribution", "Distribution"),
         ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"),
-        ("qualite", "Qualité"))
+        ("equite", "Pay Transparency"), ("qualite", "Qualité"))
 
 
 def _signed_percent(value: Optional[float]) -> str:
@@ -317,20 +317,8 @@ class Application(tk.Tk):
         self.salary_frame = tk.Frame(self.tabs["remuneration"], background=CANVAS)
         self.salary_frame.pack(fill="both", expand=True, padx=18, pady=18)
 
-        # L'histogramme seul ne disait pas ou passent les seuils, ni qui les
-        # depasse. Le rapport le montrait deja : l'ecran le montre aussi.
-        self.distribution_frame = tk.Frame(self.tabs["distribution"],
-                                           background=CANVAS)
-        self.distribution_frame.pack(fill="x", padx=18, pady=(18, 0))
         self.histogram = HistogramChart(self.tabs["distribution"])
-        self.histogram.pack(fill="both", expand=True, padx=18, pady=12)
-        self.outlier_title = tk.Label(self.tabs["distribution"], text="",
-                                      background=CANVAS, foreground=FAINT,
-                                      font=self.fonts.label)
-        self.outlier_tree = self._tree(
-            self.tabs["distribution"],
-            ("Référence", "Rémunération", "Écart", "Ancienneté", "Lecture"),
-            (170, 140, 110, 110, 260))
+        self.histogram.pack(fill="both", expand=True, padx=18, pady=18)
 
         nuage = self.tabs["nuage"]
         controls = tk.Frame(nuage, background=CANVAS)
@@ -351,6 +339,29 @@ class Application(tk.Tk):
         self.scatter.pack(fill="both", expand=True, padx=18, pady=(4, 4))
         self.legend_frame = tk.Frame(nuage, background=CANVAS)
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
+
+        equite = self.tabs["equite"]
+        self.equity_frame = tk.Frame(equite, background=CANVAS)
+        self.equity_frame.pack(fill="x", padx=18, pady=(18, 0))
+        self.equity_note = tk.Label(equite, text="", background=CANVAS,
+                                    foreground=MUTED, font=self.fonts.small,
+                                    justify="left", anchor="w",
+                                    wraplength=880)
+        self.equity_note.pack(anchor="w", padx=18, pady=(0, 14))
+        tk.Label(equite, text="RÉPARTITION PAR QUARTILE DE RÉMUNÉRATION",
+                 background=CANVAS, foreground=FAINT,
+                 font=self.fonts.label).pack(anchor="w", padx=18, pady=(0, 6))
+        self.quartile_tree = self._tree(
+            equite, ("Quartile", "Effectif", "Part femmes", "Part hommes"),
+            (200, 120, 140, 140), expand=False, height=4)
+        self.category_title = tk.Label(equite, text="", background=CANVAS,
+                                       foreground=FAINT, font=self.fonts.label,
+                                       wraplength=880, justify="left")
+        self.category_title.pack(anchor="w", padx=18, pady=(4, 6))
+        self.category_tree = self._tree(
+            equite,
+            ("Catégorie", "Femmes", "Hommes", "Écart moyen", "Écart médian"),
+            (280, 100, 100, 140, 140))
 
         head = tk.Frame(self.tabs["segments"], background=CANVAS)
         head.pack(fill="x", padx=18, pady=(16, 8))
@@ -376,10 +387,13 @@ class Application(tk.Tk):
             frame.pack_forget()
         self.tabs[key].pack(fill="both", expand=True)
 
-    def _tree(self, parent, columns, widths) -> ttk.Treeview:
+    def _tree(self, parent, columns, widths, expand: bool = True,
+              height: Optional[int] = None) -> ttk.Treeview:
         wrapper = tk.Frame(parent, background=CANVAS)
-        wrapper.pack(fill="both", expand=True, padx=18, pady=(0, 18))
-        tree = ttk.Treeview(wrapper, columns=columns, show="headings")
+        wrapper.pack(fill="both" if expand else "x", expand=expand,
+                     padx=18, pady=(0, 18 if expand else 10))
+        options = {"height": height} if height else {}
+        tree = ttk.Treeview(wrapper, columns=columns, show="headings", **options)
         for name, width in zip(columns, widths):
             tree.heading(name, text=name.upper())
             tree.column(name, width=width, anchor="w" if width > 200 else "e")
@@ -561,10 +575,9 @@ class Application(tk.Tk):
         self._show_population(payload["population"])
         self._show_salary(payload["salary"])
         self.histogram.set_distribution(payload["distribution"], currency)
-        self._show_distribution(payload["distribution"], payload["salary"],
-                                currency)
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
+        self._show_pay_equity(payload["pay_equity"])
         self._apply_eligibility(payload)
 
     def _apply_eligibility(self, payload: Dict[str, Any]) -> None:
@@ -584,6 +597,7 @@ class Application(tk.Tk):
             "distribution": bool(payload["distribution"].get("available")),
             "nuage": bool(payload["scatter"].get("available")),
             "segments": publishable,
+            "equite": bool(payload.get("pay_equity", {}).get("available")),
             "qualite": True,
         }
         for key, allowed in eligible.items():
@@ -625,12 +639,15 @@ class Application(tk.Tk):
             tk.Label(cell, text=value, background=CANVAS, foreground=INK,
                      font=self.fonts.kpi).pack(anchor="w", pady=(1, 0))
 
-    def _fill(self, tree: ttk.Treeview, rows) -> None:
+    def _fill(self, tree: ttk.Treeview, rows, flagged=None) -> None:
         tree.tag_configure("pair", background=STRIPE)
+        tree.tag_configure("alerte", background=WARN_SOFT, foreground=WARN)
         tree.delete(*tree.get_children())
         for index, row in enumerate(rows):
-            tree.insert("", "end", values=row,
-                        tags=("pair",) if index % 2 else ())
+            tags = ["pair"] if index % 2 else []
+            if flagged is not None and flagged(index):
+                tags = ["alerte"]
+            tree.insert("", "end", values=row, tags=tuple(tags))
 
     def _panel(self, parent, title: str, first: bool) -> tk.Frame:
         """Bloc cote a cote : un intertitre et de l'espace, sans cadre."""
@@ -749,61 +766,84 @@ class Application(tk.Tk):
             tree.pack(fill="both", expand=True)
             self._fill(tree, rows)
 
-    def _show_distribution(self, distribution: Dict[str, Any],
-                           salary: Dict[str, Any], currency: str) -> None:
-        """Seuils, dispersion et situations atypiques, sous l'histogramme."""
-        for child in self.distribution_frame.winfo_children():
-            child.destroy()
-        bounds = distribution.get("bounds") or {}
-        outliers = distribution.get("outliers") or []
-        spread = salary.get("dispersion") or {}
-        variation = spread.get("coefficient_of_variation")
-        # Sur une distribution etiree vers le haut, la borne basse tombe
-        # sous zero : aucun salarie ne peut la franchir, et l'afficher
-        # laisserait croire a une remuneration negative.
-        lower = bounds.get("lower")
-        minimum = salary.get("min")
-        low_reached = (lower is not None and minimum is not None
-                       and lower > minimum)
-        self._kpis(self.distribution_frame, [
-            ("Situations atypiques", str(len(outliers))),
-            ("Seuil bas", format_money(lower, currency) if low_reached
-             else "aucun"),
-            ("Seuil haut", format_money(bounds.get("upper"), currency)),
-            ("Écart-type", format_money(salary.get("std_dev"), currency)),
-            ("Coefficient de variation",
-             format_percent(None if variation is None else variation * 100)),
-        ])
+    def _show_pay_equity(self, equity: Dict[str, Any]) -> None:
+        """Ecarts de remuneration entre les sexes.
 
-        highlighted = distribution.get("outliers_highlighted") or []
-        wrapper = self.outlier_tree.master
-        if not highlighted:
-            self.outlier_title.pack_forget()
-            wrapper.pack_forget()
-            self._fill(self.outlier_tree, [])
+        Le decoupage est celui exige par la directive 2023/970 : ecarts
+        moyen et median, ecarts sur la part variable, repartition par
+        quartile, et ecart par categorie de travail de meme valeur.
+        """
+        for child in self.equity_frame.winfo_children():
+            child.destroy()
+        if not equity.get("available"):
+            tk.Label(self.equity_frame, text=equity.get("warning", ""),
+                     background=CANVAS, foreground=WARN,
+                     font=self.fonts.body, wraplength=760,
+                     justify="left").pack(anchor="w")
+            self.equity_note.configure(text="")
+            self.category_title.configure(text="")
+            self._fill(self.quartile_tree, [])
+            self._fill(self.category_tree, [])
             return
-        # On nomme ce que la table montre : ce sont les cas les plus
-        # extremes, pas la totalite des situations comptees plus haut.
-        self.outlier_title.configure(
-            text=f"{len(highlighted)} SITUATIONS LES PLUS ÉCARTÉES "
-                 f"SUR {len(outliers)}")
-        if not wrapper.winfo_ismapped():
-            wrapper.pack(fill="both", expand=True, padx=18, pady=(0, 18))
-        # Empile avant la table : sinon le titre se retrouve dessous.
-        self.outlier_title.pack(anchor="w", padx=18, pady=(4, 6),
-                                before=wrapper)
-        median = salary.get("median")
+
+        pay = equity["pay"]
+        variable = equity["variable"]
+        coverage = equity["variable_coverage"]
+        self._kpis(self.equity_frame, [
+            ("Écart moyen", _signed_percent(pay.get("mean_gap"))),
+            ("Écart médian", _signed_percent(pay.get("median_gap"))),
+            ("Écart moyen sur le variable",
+             _signed_percent(variable.get("mean_gap"))),
+            ("Effectif femmes", str(equity["female_count"])),
+            ("Effectif hommes", str(equity["male_count"])),
+        ])
+        # La convention de signe doit etre lisible sans quitter l'ecran :
+        # un « +3,1 % » ne veut rien dire sans elle.
+        unknown = equity.get("unknown_count", 0)
+        note = ("Un écart positif signifie que les femmes sont moins "
+                "rémunérées. Formule de la directive 2023/970 : "
+                "(moyenne des hommes − moyenne des femmes) / moyenne des "
+                "hommes. Part percevant une rémunération variable : "
+                f"{format_percent(coverage.get('female_share'))} des femmes, "
+                f"{format_percent(coverage.get('male_share'))} des hommes.")
+        if unknown:
+            note += (f" {unknown} salarié(s) dont le sexe n'est pas renseigné "
+                     "sont exclus des écarts.")
+        self.equity_note.configure(text=note)
+
+        self._fill(self.quartile_tree, [
+            (f"Q{item['quartile']}"
+             + (" (rémunérations les plus basses)" if item["quartile"] == 1
+                else " (rémunérations les plus hautes)"
+                if item["quartile"] == len(equity["quartiles"]) else ""),
+             item["headcount"],
+             format_percent(item.get("female_share")),
+             format_percent(item.get("male_share")))
+            for item in equity["quartiles"]])
+
+        categories = equity["categories"]
+        warning = equity.get("category_warning")
+        if warning:
+            self.category_title.configure(text=warning)
+            self._fill(self.category_tree, [])
+            return
+        above = equity.get("categories_above_threshold", 0)
+        self.category_title.configure(
+            text=f"ÉCART PAR {equity['category_label'].upper()} · "
+                 f"{above} CATÉGORIE(S) AU-DELÀ DE "
+                 f"{format_percent(equity['threshold'])}")
         rows = []
-        for item in highlighted:
-            value = item.get("value")
-            gap = ((value - median) / median * 100.0
-                   if median and value is not None else None)
-            rows.append((item.get("reference", ""),
-                         format_money(value, currency),
-                         _signed_percent(gap),
-                         format_years(item.get("tenure_years")),
-                         f"Position {item.get('position', '')}"))
-        self._fill(self.outlier_tree, rows)
+        for item in categories:
+            if not item["published"]:
+                rows.append((item["category"], item["female_count"],
+                             item["male_count"], "masqué", "masqué"))
+                continue
+            rows.append((item["category"], item["female_count"],
+                         item["male_count"],
+                         _signed_percent(item.get("mean_gap")),
+                         _signed_percent(item.get("median_gap"))))
+        self._fill(self.category_tree, rows,
+                   flagged=lambda index: categories[index]["above_threshold"])
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
         fields = segment_fields(self.configuration)

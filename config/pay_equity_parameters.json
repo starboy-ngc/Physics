@@ -1,0 +1,21 @@
+{
+  "gender_field": "gender",
+  "female_values": [
+    "F",
+    "Femme",
+    "Female",
+    "W",
+    "Mme"
+  ],
+  "male_values": [
+    "H",
+    "M",
+    "Homme",
+    "Male",
+    "Mr"
+  ],
+  "variable_field": "variable_pay",
+  "category_field": "job_title",
+  "gap_alert_threshold": 5.0,
+  "quartile_count": 4
+}
