@@ -331,18 +331,35 @@ def calculate_segment_metrics(
     """Recalcule les indicateurs de remuneration pour chaque valeur d'un segment."""
     groups = split_by(population, field_name, include_empty=True)
     rules = PrivacyRules.from_config(config)
+    # Mediane de l'ensemble analyse : c'est a elle que chaque segment se
+    # compare. Une mediane de segment prise isolement ne dit pas si le
+    # segment est au-dessus ou au-dessous, ce qui est pourtant la question.
+    reference = calculate_salary_metrics(population, config, salary_field)
+    reference_median = None if reference.get("masked") else reference.get("median")
+    total = len(population)
     rows: List[Dict[str, Any]] = []
     for label, group in groups.items():
         salary = calculate_salary_metrics(group, config, salary_field)
         ages = _values(group, "age_years")
         tenures = _values(group, "tenure_years")
+        published = rules.may_publish(len(group))
+        median = None if salary.get("masked") else salary.get("median")
         rows.append({
             "segment": label,
             "headcount": len(group),
+            "share": (len(group) / total * 100.0) if total else None,
             "masked": salary.get("masked", False),
             "salary": salary,
-            "age_median": stats.median(ages) if rules.may_publish(len(group)) else None,
-            "tenure_median": stats.median(tenures) if rules.may_publish(len(group)) else None,
+            # Ecart relatif a la mediane de reference, en points de
+            # pourcentage. Nul quand l'un des deux termes est masque : on ne
+            # publie pas un ecart calcule sur un chiffre qu'on a refuse de
+            # montrer.
+            "median_gap": (
+                (median - reference_median) / reference_median * 100.0
+                if median is not None and reference_median else None
+            ),
+            "age_median": stats.median(ages) if published else None,
+            "tenure_median": stats.median(tenures) if published else None,
         })
     rows.sort(key=_segment_sort_key(field_name, config,
                                     [r["segment"] for r in rows], population))
@@ -350,6 +367,8 @@ def calculate_segment_metrics(
         "field": field_name,
         "label": dimension_label(config, field_name),
         "rows": rows,
+        "reference_median": reference_median,
+        "currency": reference.get("currency", "EUR"),
         "masked_segments": sum(1 for row in rows if row["masked"]),
     }
 

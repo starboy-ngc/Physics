@@ -411,3 +411,133 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             self.assertIn(app.tabbar.active, app.tabbar.visible_keys())
         finally:
             app.destroy()
+
+
+@needs_display
+class TestResettingTheChoices(unittest.TestCase):
+    """Poser un critere doit pouvoir se defaire aussi vite que se faire."""
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import load_population
+        self.directory = tempfile.mkdtemp()
+        source = os.path.join(self.directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, business_unit=["France", "DACH"][index % 2],
+                     grade=["G3", "G5", "G7"][index % 3])
+            for index in range(60)])])
+        self.app = Application()
+        self.app.update()
+        population, mapping, table = load_population(
+            source, self.app.configuration, reference_date=REFERENCE_DATE)
+        self.app.source_path = source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app.headers = list(table.headers)
+        self.app._populate_filters()
+        self.app._populate_segments()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def test_resetting_clears_every_criterion(self):
+        self.app.filter_vars["business_unit"].set("France")
+        self.app.filter_vars["grade"].set("G5")
+        self.assertEqual(len(self.app._current_filters()), 2)
+        self.app.reset_filters()
+        self.assertEqual(self.app._current_filters(), [])
+
+    def test_the_number_of_active_criteria_is_recalled(self):
+        """Les filtres defilent hors du champ visible : sans rappel, un
+        critere pose puis oublie fausse la lecture de toute l'analyse."""
+        self.assertEqual(self.app.filter_summary.cget("text"), "")
+        self.app.filter_vars["business_unit"].set("France")
+        self.app.update()
+        self.assertIn("1", self.app.filter_summary.cget("text"))
+
+    def test_the_reset_link_only_shows_when_it_can_do_something(self):
+        self.assertEqual(self.app.reset_filters_link.cget("text"), "")
+        self.app.filter_vars["business_unit"].set("France")
+        self.app.update()
+        self.assertEqual(self.app.reset_filters_link.cget("text"),
+                         "Réinitialiser")
+
+    def test_toggling_axes_selects_all_then_none(self):
+        self.app.toggle_segments()
+        self.assertTrue(all(v.get() for v in self.app.segment_vars.values()))
+        self.app.toggle_segments()
+        self.assertFalse(any(v.get() for v in self.app.segment_vars.values()))
+
+    def test_toggling_outputs_selects_none_then_all(self):
+        """Les sorties sont toutes cochees au depart : la bascule decoche."""
+        self.app.toggle_outputs()
+        self.assertFalse(any(v.get() for v in self.app.output_vars.values()))
+        self.app.toggle_outputs()
+        self.assertTrue(all(v.get() for v in self.app.output_vars.values()))
+
+
+@needs_display
+class TestDistributionTabContent(unittest.TestCase):
+    """L'histogramme seul ne disait ni ou passent les seuils, ni qui les
+    depasse."""
+
+    def _analysed(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, salary=30000 + (index % 40) * 900,
+                     age=28 + index % 30, tenure=index % 18)
+            for index in range(120)])])
+        app = Application()
+        app.update()
+        app.result = run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE))
+        app._render_results()
+        app.update()
+        return app
+
+    def test_the_thresholds_and_the_spread_are_shown(self):
+        app = self._analysed()
+        try:
+            texts = [child.cget("text")
+                     for block in app.distribution_frame.winfo_children()
+                     for cell in block.winfo_children()
+                     for child in cell.winfo_children()]
+            self.assertIn("SEUIL HAUT", texts)
+            self.assertIn("SITUATIONS ATYPIQUES", texts)
+            self.assertIn("COEFFICIENT DE VARIATION", texts)
+        finally:
+            app.destroy()
+
+    def test_a_low_threshold_nobody_can_reach_is_not_displayed(self):
+        """Sur une distribution etiree vers le haut, la borne basse tombe
+        sous zero : l'afficher laisserait croire a un salaire negatif."""
+        from compensation_analytics.ui.app import Application
+        app = self._analysed()
+        try:
+            app._show_distribution(
+                {"bounds": {"lower": -5000.0, "upper": 90000.0},
+                 "outliers": [], "outliers_highlighted": []},
+                {"min": 20000.0, "median": 40000.0, "dispersion": {}}, "EUR")
+            app.update()
+            values = [child.cget("text")
+                      for block in app.distribution_frame.winfo_children()
+                      for cell in block.winfo_children()
+                      for child in cell.winfo_children()]
+            self.assertIn("aucun", values)
+            self.assertFalse([text for text in values if text.startswith("-5")])
+        finally:
+            app.destroy()
+
+    def test_the_outlier_table_names_what_it_shows(self):
+        app = self._analysed()
+        try:
+            title = app.outlier_title.cget("text")
+            if title:
+                self.assertIn("SUR", title)
+        finally:
+            app.destroy()

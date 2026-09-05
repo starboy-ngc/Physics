@@ -333,3 +333,51 @@ class TestKeyShares(unittest.TestCase):
         labels = [row[0] for row in _rows_population(population) if row]
         self.assertIn("Moins de 30 ans", labels)
         self.assertIn("Ancienneté supérieure à 10 ans", labels)
+
+
+class TestSegmentComparison(unittest.TestCase):
+    """Une mediane de segment prise isolement ne dit pas si le segment est
+    au-dessus ou au-dessous : c'est pourtant la question posee."""
+
+    def _segment(self, **overrides):
+        config = make_config(overrides)
+        rows = [make_row(index, grade=["G3", "G7"][index % 2],
+                         salary=30000 if index % 2 == 0 else 60000)
+                for index in range(40)]
+        return metrics.calculate_segment_metrics(
+            build_population(rows, config), config, "grade")
+
+    def test_each_segment_carries_its_share_of_headcount(self):
+        block = self._segment()
+        shares = {row["segment"]: row["share"] for row in block["rows"]}
+        self.assertAlmostEqual(sum(shares.values()), 100.0, places=6)
+        self.assertAlmostEqual(shares["G3"], 50.0, places=6)
+
+    def test_the_gap_is_measured_against_the_reference_median(self):
+        block = self._segment()
+        self.assertIsNotNone(block["reference_median"])
+        gaps = {row["segment"]: row["median_gap"] for row in block["rows"]}
+        self.assertLess(gaps["G3"], 0)
+        self.assertGreater(gaps["G7"], 0)
+
+    def test_a_masked_segment_publishes_no_gap(self):
+        """On ne publie pas un ecart calcule sur un chiffre qu'on a refuse
+        de montrer."""
+        config = make_config()
+        rows = ([make_row(index, grade="G3", salary=30000) for index in range(20)]
+                + [make_row(20 + index, grade="G9", salary=90000)
+                   for index in range(2)])
+        block = metrics.calculate_segment_metrics(
+            build_population(rows, config), config, "grade")
+        small = [row for row in block["rows"] if row["segment"] == "G9"][0]
+        self.assertTrue(small["masked"])
+        self.assertIsNone(small["median_gap"])
+        self.assertIsNotNone(small["share"])
+
+    def test_the_gap_is_zero_for_a_single_segment(self):
+        config = make_config()
+        rows = [make_row(index, grade="G4", salary=40000 + index * 100)
+                for index in range(20)]
+        block = metrics.calculate_segment_metrics(
+            build_population(rows, config), config, "grade")
+        self.assertAlmostEqual(block["rows"][0]["median_gap"], 0.0, places=6)

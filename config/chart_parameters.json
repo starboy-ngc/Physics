@@ -4,5 +4,5 @@
   "scatter_y": "base_salary",
   "scatter_color_by": "business_unit",
   "scatter_max_points": 5000,
-  "show_trend_line": true
+  "show_trend_line": false
 }

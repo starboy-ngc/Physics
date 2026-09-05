@@ -149,5 +149,6 @@
     "first_name",
     "birth_date",
     "employee_id"
-  ]
+  ],
+  "max_filter_values": 60
 }

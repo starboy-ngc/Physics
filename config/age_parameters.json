@@ -30,5 +30,9 @@
       "max": null
     }
   ],
+  "auto_extend": false,
+  "extend_step": 10,
+  "band_label": "{low}-{high}",
+  "open_band_label": "{low}+",
   "reference_date": null
 }

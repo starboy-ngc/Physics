@@ -43,7 +43,8 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
 from ..core.traceability import write_manifest
 from . import theme
 from .charts import HistogramChart, ScatterChart
-from .theme import (ACCENT, CANVAS, CRIT, FAINT, GROUND, INK, INK_SOFT, LINE,
+from .theme import (ACCENT, ACCENT_HOVER, CANVAS, CRIT, FAINT, GROUND, INK,
+                    INK_SOFT, LINE,
                     MUTED, OK, STRIPE, WARN, WARN_SOFT, Card, CheckRow, Fonts,
                     TabBar)
 
@@ -58,6 +59,13 @@ TABS = (("population", "Population"), ("remuneration", "Rémunération"),
         ("distribution", "Distribution"),
         ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"),
         ("qualite", "Qualité"))
+
+
+def _signed_percent(value: Optional[float]) -> str:
+    """Ecart relatif, signe explicite : « +12,4 % » se lit sans hesitation."""
+    if value is None:
+        return "—"
+    return f"{value:+.1f} %".replace(".", ",")
 
 
 class Application(tk.Tk):
@@ -146,13 +154,24 @@ class Application(tk.Tk):
 
 
 
-    def _section(self, parent, number: int, text: str) -> None:
+    def _section(self, parent, number: int, text: str,
+                 action: Optional[str] = None, command=None) -> Optional[tk.Label]:
+        """Intertitre numerote, avec une action facultative a sa droite."""
         row = tk.Frame(parent, background=GROUND)
         row.pack(fill="x", pady=(18, 8))
         tk.Label(row, text=f"{number}", background=ACCENT, foreground="white",
                  font=self.fonts.label, width=2, pady=1).pack(side="left")
         tk.Label(row, text=text.upper(), background=GROUND, foreground=FAINT,
                  font=self.fonts.label).pack(side="left", padx=8)
+        if action is None:
+            return None
+        link = tk.Label(row, text=action, background=GROUND, foreground=ACCENT,
+                        font=self.fonts.small, cursor="hand2")
+        link.pack(side="right", padx=(0, 4))
+        link.bind("<Button-1>", lambda _e: command())
+        link.bind("<Enter>", lambda _e: link.configure(foreground=ACCENT_HOVER))
+        link.bind("<Leave>", lambda _e: link.configure(foreground=ACCENT))
+        return link
 
     def _build_sidebar(self, parent: tk.Widget) -> None:
         parent.configure(background=GROUND)
@@ -200,18 +219,24 @@ class Application(tk.Tk):
                                       wraplength=250, justify="left")
         self.mapping_label.pack(anchor="w", pady=(8, 0))
 
-        self._section(steps, 2, "Filtrer")
+        self.reset_filters_link = self._section(
+            steps, 2, "Filtrer", "Réinitialiser", self.reset_filters)
+        self.filter_summary = tk.Label(steps, text="", background=GROUND,
+                                       foreground=ACCENT, font=self.fonts.small)
+        self.filter_summary.pack(anchor="w", pady=(0, 4))
         self.filters_frame = tk.Frame(steps, background=GROUND)
         self.filters_frame.pack(fill="x")
         tk.Label(self.filters_frame, text="Chargez un fichier pour voir les filtres.",
                  background=GROUND, foreground=FAINT, font=self.fonts.small,
                  wraplength=250, justify="left").pack(anchor="w")
 
-        self._section(steps, 3, "Analyser par")
+        self._section(steps, 3, "Analyser par", "Tout / aucun",
+                      self.toggle_segments)
         self.segments_frame = tk.Frame(steps, background=GROUND)
         self.segments_frame.pack(fill="x")
 
-        self._section(steps, 4, "Restituer")
+        self._section(steps, 4, "Restituer", "Tout / aucun",
+                      self.toggle_outputs)
         self.outputs_frame = tk.Frame(steps, background=GROUND)
         self.outputs_frame.pack(fill="x", pady=(0, 8))
         for key, label, default in (("rapport", "Rapport détaillé (HTML)", True),
@@ -222,6 +247,42 @@ class Application(tk.Tk):
             self.output_vars[key] = var
             CheckRow(self.outputs_frame, label, var,
                      self.fonts).pack(anchor="w", pady=2)
+
+    def reset_filters(self) -> None:
+        """Ramene tous les criteres a « aucun filtre »."""
+        for variable in self.filter_vars.values():
+            variable.set(_ALL)
+        self._update_filter_summary()
+
+    def toggle_segments(self) -> None:
+        self._toggle_all(self.segment_vars)
+
+    def toggle_outputs(self) -> None:
+        self._toggle_all(self.output_vars)
+
+    @staticmethod
+    def _toggle_all(variables: Dict[str, tk.BooleanVar]) -> None:
+        """Tout cocher, ou tout decocher si tout l'etait deja."""
+        if not variables:
+            return
+        target = not all(variable.get() for variable in variables.values())
+        for variable in variables.values():
+            variable.set(target)
+
+    def _update_filter_summary(self) -> None:
+        """Rappelle combien de criteres sont actifs.
+
+        Les filtres se trouvent dans une colonne qui defile : sans ce
+        rappel, un critere pose puis sorti du champ visible s'oublie, et
+        l'analyse porte sur une population qu'on ne croit plus filtrer.
+        """
+        active = len(self._current_filters())
+        if self.reset_filters_link is not None:
+            self.reset_filters_link.configure(
+                text="Réinitialiser" if active else "")
+        self.filter_summary.configure(
+            text="" if not active
+            else f"{active} critère(s) actif(s)")
 
     def _build_pages(self) -> None:
         self.tabs: Dict[str, tk.Frame] = {}
@@ -256,8 +317,20 @@ class Application(tk.Tk):
         self.salary_frame = tk.Frame(self.tabs["remuneration"], background=CANVAS)
         self.salary_frame.pack(fill="both", expand=True, padx=18, pady=18)
 
+        # L'histogramme seul ne disait pas ou passent les seuils, ni qui les
+        # depasse. Le rapport le montrait deja : l'ecran le montre aussi.
+        self.distribution_frame = tk.Frame(self.tabs["distribution"],
+                                           background=CANVAS)
+        self.distribution_frame.pack(fill="x", padx=18, pady=(18, 0))
         self.histogram = HistogramChart(self.tabs["distribution"])
-        self.histogram.pack(fill="both", expand=True, padx=18, pady=18)
+        self.histogram.pack(fill="both", expand=True, padx=18, pady=12)
+        self.outlier_title = tk.Label(self.tabs["distribution"], text="",
+                                      background=CANVAS, foreground=FAINT,
+                                      font=self.fonts.label)
+        self.outlier_tree = self._tree(
+            self.tabs["distribution"],
+            ("Référence", "Rémunération", "Écart", "Ancienneté", "Lecture"),
+            (170, 140, 110, 110, 260))
 
         nuage = self.tabs["nuage"]
         controls = tk.Frame(nuage, background=CANVAS)
@@ -288,10 +361,15 @@ class Application(tk.Tk):
         self.segment_choice.pack(side="left", padx=10)
         self.segment_choice.bind("<<ComboboxSelected>>",
                                  lambda _e: self._show_segment())
+        self.segment_reference = tk.Label(head, text="", background=CANVAS,
+                                          foreground=MUTED,
+                                          font=self.fonts.small)
+        self.segment_reference.pack(side="left", padx=(18, 0))
         self.segment_tree = self._tree(
             self.tabs["segments"],
-            ("Segment", "Effectif", "Moyenne", "Médiane", "Q1", "Q3"),
-            (220, 90, 140, 140, 140, 140))
+            ("Segment", "Effectif", "Part", "Médiane", "Écart", "Moyenne",
+             "Q1", "Q3"),
+            (190, 75, 70, 120, 80, 120, 115, 115))
 
     def _show_tab(self, key: str) -> None:
         for name, frame in getattr(self, "tabs", {}).items():
@@ -402,10 +480,12 @@ class Application(tk.Tk):
                      background=GROUND, foreground=MUTED,
                      font=self.fonts.small).pack(anchor="w")
             var = tk.StringVar(value=_ALL)
+            var.trace_add("write", lambda *_: self._update_filter_summary())
             ttk.Combobox(block, textvariable=var, values=[_ALL] + values,
                          state="readonly", font=self.fonts.small).pack(fill="x",
                                                                        pady=(2, 0))
             self.filter_vars[field] = var
+        self._update_filter_summary()
 
     def _populate_segments(self) -> None:
         for child in self.segments_frame.winfo_children():
@@ -481,6 +561,8 @@ class Application(tk.Tk):
         self._show_population(payload["population"])
         self._show_salary(payload["salary"])
         self.histogram.set_distribution(payload["distribution"], currency)
+        self._show_distribution(payload["distribution"], payload["salary"],
+                                currency)
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
         self._apply_eligibility(payload)
@@ -667,6 +749,62 @@ class Application(tk.Tk):
             tree.pack(fill="both", expand=True)
             self._fill(tree, rows)
 
+    def _show_distribution(self, distribution: Dict[str, Any],
+                           salary: Dict[str, Any], currency: str) -> None:
+        """Seuils, dispersion et situations atypiques, sous l'histogramme."""
+        for child in self.distribution_frame.winfo_children():
+            child.destroy()
+        bounds = distribution.get("bounds") or {}
+        outliers = distribution.get("outliers") or []
+        spread = salary.get("dispersion") or {}
+        variation = spread.get("coefficient_of_variation")
+        # Sur une distribution etiree vers le haut, la borne basse tombe
+        # sous zero : aucun salarie ne peut la franchir, et l'afficher
+        # laisserait croire a une remuneration negative.
+        lower = bounds.get("lower")
+        minimum = salary.get("min")
+        low_reached = (lower is not None and minimum is not None
+                       and lower > minimum)
+        self._kpis(self.distribution_frame, [
+            ("Situations atypiques", str(len(outliers))),
+            ("Seuil bas", format_money(lower, currency) if low_reached
+             else "aucun"),
+            ("Seuil haut", format_money(bounds.get("upper"), currency)),
+            ("Écart-type", format_money(salary.get("std_dev"), currency)),
+            ("Coefficient de variation",
+             format_percent(None if variation is None else variation * 100)),
+        ])
+
+        highlighted = distribution.get("outliers_highlighted") or []
+        wrapper = self.outlier_tree.master
+        if not highlighted:
+            self.outlier_title.pack_forget()
+            wrapper.pack_forget()
+            self._fill(self.outlier_tree, [])
+            return
+        # On nomme ce que la table montre : ce sont les cas les plus
+        # extremes, pas la totalite des situations comptees plus haut.
+        self.outlier_title.configure(
+            text=f"{len(highlighted)} SITUATIONS LES PLUS ÉCARTÉES "
+                 f"SUR {len(outliers)}")
+        if not wrapper.winfo_ismapped():
+            wrapper.pack(fill="both", expand=True, padx=18, pady=(0, 18))
+        # Empile avant la table : sinon le titre se retrouve dessous.
+        self.outlier_title.pack(anchor="w", padx=18, pady=(4, 6),
+                                before=wrapper)
+        median = salary.get("median")
+        rows = []
+        for item in highlighted:
+            value = item.get("value")
+            gap = ((value - median) / median * 100.0
+                   if median and value is not None else None)
+            rows.append((item.get("reference", ""),
+                         format_money(value, currency),
+                         _signed_percent(gap),
+                         format_years(item.get("tenure_years")),
+                         f"Position {item.get('position', '')}"))
+        self._fill(self.outlier_tree, rows)
+
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
         fields = segment_fields(self.configuration)
         self._colour_fields = fields
@@ -753,17 +891,26 @@ class Application(tk.Tk):
         index = self.segment_choice.current()
         if index < 0 or index >= len(self._segments):
             return
-        currency = self.result.payload["salary"].get("currency", "EUR")
+        block = self._segments[index]
+        currency = block.get("currency", "EUR")
+        reference = block.get("reference_median")
+        # L'ecart n'est lisible que si l'on sait a quoi il se rapporte.
+        self.segment_reference.configure(
+            text=("Médiane de référence : "
+                  f"{format_money(reference, currency)}" if reference else ""))
         rows = []
-        for row in self._segments[index]["rows"]:
+        for row in block["rows"]:
             if row["masked"]:
                 rows.append((row["segment"], row["headcount"],
-                             "masqué", "masqué", "masqué", "masqué"))
+                             format_percent(row.get("share")),
+                             "masqué", "—", "masqué", "masqué", "masqué"))
                 continue
             item = row["salary"]
             rows.append((row["segment"], row["headcount"],
-                         format_money(item.get("mean"), currency),
+                         format_percent(row.get("share")),
                          format_money(item.get("median"), currency),
+                         _signed_percent(row.get("median_gap")),
+                         format_money(item.get("mean"), currency),
                          format_money(item.get("p25"), currency),
                          format_money(item.get("p75"), currency)))
         self._fill(self.segment_tree, rows)

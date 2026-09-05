@@ -21,5 +21,10 @@
       "max": null
     }
   ],
+  "auto_extend": true,
+  "extend_step": 5,
+  "extend_max_bands": 10,
+  "band_label": "{low}-{high} ans",
+  "open_band_label": ">{low} ans",
   "reference_date": null
 }

@@ -343,3 +343,50 @@ class TestTheWholeRoundTrip(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestShippedConfigurationMatchesTheDefaults(unittest.TestCase):
+    """Les fichiers livres materialisent les defauts embarques.
+
+    Le piege : un fichier livre surcharge le defaut. Changer une valeur dans
+    DEFAULTS sans toucher le JSON n'a donc aucun effet chez l'utilisateur —
+    et rien ne le signale. C'est exactement ce qui est arrive a
+    `show_trend_line`, laisse a vrai dans le fichier alors que le defaut
+    etait passe a faux : la droite de tendance continuait d'etre tracee.
+    """
+
+    def _shipped(self, name):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(root, "config", f"{name}.json")
+        if not os.path.isfile(path):
+            return None
+        with open(path, encoding="utf-8") as handle:
+            return json.load(handle)
+
+    def _differences(self, prefix, expected, actual, found):
+        if isinstance(expected, dict) and isinstance(actual, dict):
+            for key in sorted(set(expected) | set(actual)):
+                self._differences(f"{prefix}.{key}" if prefix else key,
+                                  expected.get(key, "<absent>"),
+                                  actual.get(key, "<absent>"), found)
+        elif expected != actual:
+            found.append(f"{prefix} : défaut {expected!r}, livré {actual!r}")
+
+    def test_no_shipped_value_contradicts_its_default(self):
+        from compensation_analytics.core.config import CONFIG_FILES
+
+        problems = []
+        for name in CONFIG_FILES:
+            shipped = self._shipped(name)
+            if shipped is None:
+                continue
+            self._differences("", DEFAULTS[name], shipped, problems)
+        self.assertEqual(problems, [], "\n".join([""] + problems))
+
+    def test_every_section_is_shipped(self):
+        """Un fichier manquant prive l'utilisateur des reglages qu'il
+        contient : il ne saurait meme pas qu'ils existent."""
+        from compensation_analytics.core.config import CONFIG_FILES
+
+        for name in CONFIG_FILES:
+            self.assertIsNotNone(self._shipped(name), f"{name}.json absent")
