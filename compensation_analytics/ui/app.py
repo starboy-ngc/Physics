@@ -149,9 +149,6 @@ class Application(tk.Tk):
         self.status = tk.Label(footer, text="", background=theme.GROUND,
                                foreground=theme.MUTED, font=self.fonts.small)
         self.status.pack(side="left")
-        tk.Label(footer, text="Traitement local · aucune donnée ne quitte ce poste",
-                 background=theme.GROUND, foreground=theme.FAINT,
-                 font=self.fonts.small).pack(side="right")
 
         body = tk.Frame(self, background=theme.GROUND)
         body.pack(fill="both", expand=True)
@@ -167,9 +164,9 @@ class Application(tk.Tk):
         content.pack(side="left", fill="both", expand=True, padx=(26, 8))
         self.tabbar = TabBar(content.inner, self.fonts, on_change=self._show_tab)
         self.tabbar.pack(fill="x")
-        # Un onglet retire doit s'expliquer la ou l'utilisateur regarde. Le
-        # pied de page ne convient pas : la phrase y chevauchait la mention
-        # de traitement local.
+        # Un onglet retire doit s'expliquer la ou l'utilisateur regarde,
+        # au-dessus des pages, et non dans le pied de page ou l'oeil ne va
+        # pas le chercher.
         self.notice = tk.Label(content.inner, background=theme.WARN_SOFT,
                                foreground=theme.WARN, font=self.fonts.small,
                                justify="left", anchor="w", padx=14, pady=9,
