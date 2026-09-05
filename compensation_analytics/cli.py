@@ -17,7 +17,8 @@ import os
 import sys
 from typing import Any, Dict, List, Optional
 
-from .core.config import load_configuration, write_default_configuration
+from .core.config import (default_config_dir, load_configuration,
+                          write_default_configuration)
 from .core.errors import CompensationError
 from .core.export import export_excel
 from .core.logging_setup import configure_logging, log_event
@@ -81,11 +82,12 @@ def _date(value: str) -> Optional[_dt.date]:
 def command_analyse(args: argparse.Namespace) -> int:
     # La configuration porte les dimensions declarees : elle est donc
     # necessaire pour valider les filtres avant de lancer l'analyse.
-    config = load_configuration(args.config)
+    config_dir = args.config or default_config_dir()
+    config = load_configuration(config_dir)
     request = AnalysisRequest(
         source_path=args.fichier,
         sheet=args.onglet,
-        config_dir=args.config,
+        config_dir=config_dir,
         filters=build_filters(
             [parse_filter(item) for item in args.filtre or []], config
         ),
@@ -153,7 +155,7 @@ def command_analyse(args: argparse.Namespace) -> int:
 
 
 def command_controle(args: argparse.Namespace) -> int:
-    config = load_configuration(args.config)
+    config = load_configuration(args.config or default_config_dir())
     population, mapping, _ = load_population(
         args.fichier, config, args.onglet, _date(args.date_reference)
     )
@@ -166,7 +168,7 @@ def command_controle(args: argparse.Namespace) -> int:
 
 
 def command_mapping(args: argparse.Namespace) -> int:
-    config = load_configuration(args.config)
+    config = load_configuration(args.config or default_config_dir())
     table = read_table(args.fichier, args.onglet)
     mapping = resolve_mapping(table.headers, config)
     print("Dimensions declarees (F = filtre, A = axe d'analyse) :")
@@ -211,7 +213,9 @@ def build_parser() -> argparse.ArgumentParser:
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("fichier", help="fichier de population (.xlsx, .xlsm, .csv)")
     common.add_argument("--onglet", default=None, help="onglet Excel a lire")
-    common.add_argument("--config", default="config", help="dossier de configuration")
+    common.add_argument("--config", default=None,
+                        help="dossier de configuration (par défaut : celui de "
+                             "l'outil, ou \"config\" s'il existe ici)")
     common.add_argument("--date-reference", default="",
                         help="date d'analyse (AAAA-MM-JJ), par defaut aujourd'hui")
 
@@ -246,7 +250,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     interface = sub.add_parser("interface",
                                help="ouvrir l'interface graphique")
-    interface.add_argument("--config", default="config",
+    interface.add_argument("--config", default=None,
                            help="dossier de configuration")
     interface.set_defaults(handler=command_interface)
 
@@ -266,7 +270,7 @@ def command_interface(args: argparse.Namespace) -> int:
               "Les commandes en ligne restent disponibles : "
               "compensation-analytics --help", file=sys.stderr)
         return 3
-    return ui_main(getattr(args, "config", None) or "config")
+    return ui_main(getattr(args, "config", None) or default_config_dir())
 
 
 def main(argv: Optional[List[str]] = None) -> int:

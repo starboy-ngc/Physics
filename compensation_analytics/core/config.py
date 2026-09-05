@@ -222,6 +222,34 @@ def _deep_merge(base: Dict[str, Any], override: Dict[str, Any]) -> Dict[str, Any
     return result
 
 
+def default_config_dir() -> str:
+    """Dossier de configuration a utiliser quand aucun n'est impose.
+
+    Un simple "config" relatif designe le repertoire courant : l'outil
+    lance depuis un autre dossier repartait alors sur les defauts embarques
+    sans le dire, et le parametrage enregistre semblait perdu.
+
+    On retient donc, dans l'ordre : un "config" present dans le repertoire
+    courant — c'est ce qui permet de garder un parametrage par dossier de
+    travail — sinon celui qui accompagne l'outil.
+    """
+    local = os.path.abspath("config")
+    if os.path.isdir(local):
+        return local
+
+    # `__file__` vaut ".../compensation_analytics/core/config.py", et dans
+    # une archive .pyz le prefixe est l'archive elle-meme : on remonte
+    # jusqu'au premier dossier reel.
+    base = os.path.dirname(os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__))))
+    while base and not os.path.isdir(base):
+        parent = os.path.dirname(base)
+        if parent == base:
+            break
+        base = parent
+    return os.path.join(base, "config")
+
+
 def load_configuration(config_dir: str | None = None) -> Configuration:
     """Charge `config/*.json` en surcharge des defauts embarques."""
     data = copy.deepcopy(DEFAULTS)

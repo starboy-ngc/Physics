@@ -26,7 +26,8 @@ from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
 from ..core import metrics
-from ..core.config import Configuration, load_configuration
+from ..core.config import (Configuration, default_config_dir,
+                           load_configuration)
 from ..core.errors import CompensationError
 from ..core.export import export_excel
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
@@ -57,7 +58,7 @@ TABS = (("qualite", "Qualité"), ("population", "Population"),
 class Application(tk.Tk):
     """Fenetre unique de l'outil."""
 
-    def __init__(self, config_dir: str = "config") -> None:
+    def __init__(self, config_dir: Optional[str] = None) -> None:
         super().__init__()
         self.title(WINDOW_TITLE)
         self.geometry("1380x880")
@@ -67,7 +68,7 @@ class Application(tk.Tk):
         self.fonts = Fonts(self)
         theme.apply(self, self.fonts)
 
-        self.config_dir = config_dir
+        self.config_dir = config_dir or default_config_dir()
         self.configuration = load_configuration(self.config_dir)
         self.source_path: Optional[str] = None
         self.population = None
@@ -380,7 +381,7 @@ class Application(tk.Tk):
             self._populate_filters()
             self._populate_segments()
             self._show_quality()
-        self._set_state(f"Paramètres enregistrés dans {os.path.basename(path)}. "
+        self._set_state(f"Paramètres enregistrés dans {path}. "
                         "Relancez l'analyse pour les appliquer.")
 
     def _populate_filters(self) -> None:
@@ -780,7 +781,7 @@ class Application(tk.Tk):
             f"{len(produced)} fichiers ont été écrits dans :\n{directory}")
 
 
-def main(config_dir: str = "config") -> int:
+def main(config_dir: Optional[str] = None) -> int:
     """Ouvre l'interface. Retourne un code de sortie."""
     Application(config_dir).mainloop()
     return 0

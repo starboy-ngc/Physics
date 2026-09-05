@@ -109,6 +109,45 @@ class TestWritingConfiguration(unittest.TestCase):
             [])
 
 
+class TestWhereTheConfigurationLives(unittest.TestCase):
+    """Ou le parametrage est lu et ecrit quand rien n'est impose.
+
+    Un simple "config" relatif designe le repertoire courant : lance depuis
+    ailleurs, l'outil repartait sur les defauts embarques sans le dire, et
+    le parametrage enregistre semblait perdu.
+    """
+
+    def setUp(self):
+        from compensation_analytics.core.config import default_config_dir
+        self.resolve = default_config_dir
+        self.previous = os.getcwd()
+        self.directory = tempfile.mkdtemp()
+
+    def tearDown(self):
+        os.chdir(self.previous)
+
+    def test_a_config_folder_here_is_used(self):
+        """Un parametrage par dossier de travail reste possible."""
+        os.makedirs(os.path.join(self.directory, "config"))
+        os.chdir(self.directory)
+        self.assertEqual(os.path.realpath(self.resolve()),
+                         os.path.realpath(os.path.join(self.directory, "config")))
+
+    def test_otherwise_the_folder_beside_the_tool_is_used(self):
+        os.chdir(self.directory)
+        resolved = self.resolve()
+        self.assertEqual(os.path.basename(resolved), "config")
+        # Il accompagne l'outil, pas le repertoire de lancement.
+        self.assertNotEqual(os.path.realpath(os.path.dirname(resolved)),
+                            os.path.realpath(self.directory))
+
+    def test_the_resolved_folder_is_always_absolute(self):
+        """Un chemin relatif changerait de sens au moindre changement de
+        repertoire courant, et l'enregistrement atterrirait ailleurs."""
+        os.chdir(self.directory)
+        self.assertTrue(os.path.isabs(self.resolve()))
+
+
 @unittest.skipUnless(HAS_TK, "tkinter absent")
 class TestComposingTheSection(unittest.TestCase):
     """La composition ne demande pas d'affichage : seul l'import le demande."""
