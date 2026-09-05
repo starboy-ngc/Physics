@@ -98,6 +98,33 @@ def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
     return rows
 
 
+def write_population(output: str, rows: int = 2000, seed: int = 20240101,
+                     clean: bool = True,
+                     reference: "_dt.date | None" = None) -> str:
+    """Ecrit une population fictive, et rend le chemin produit.
+
+    Extrait de la ligne de commande pour que la construction de l'archive
+    genere ses jeux de demonstration plutot que d'en copier : aucune donnee
+    RH reelle ne peut ainsi se retrouver dans un livrable.
+    """
+    reference = reference or _dt.date.today()
+    lines = build_rows(rows, seed, reference, defects=not clean)
+    os.makedirs(os.path.dirname(output) or ".", exist_ok=True)
+    if output.lower().endswith(".csv"):
+        import csv
+        with open(output, "w", encoding="utf-8-sig", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";", lineterminator="\n")
+            writer.writerow(HEADERS)
+            for line in lines:
+                writer.writerow([
+                    value.isoformat() if isinstance(value, _dt.date) else value
+                    for value in line
+                ])
+    else:
+        write_workbook(output, [("Population", [HEADERS] + lines)])
+    return output
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rows", type=int, default=2000)
@@ -112,21 +139,11 @@ def main() -> int:
         _dt.date.fromisoformat(args.reference_date)
         if args.reference_date else _dt.date.today()
     )
-    rows = build_rows(args.rows, args.seed, reference, defects=not args.clean)
-    os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
-    if args.output.lower().endswith(".csv"):
-        import csv
-        with open(args.output, "w", encoding="utf-8-sig", newline="") as handle:
-            writer = csv.writer(handle, delimiter=";", lineterminator="\n")
-            writer.writerow(HEADERS)
-            for row in rows:
-                writer.writerow([
-                    value.isoformat() if isinstance(value, _dt.date) else value
-                    for value in row
-                ])
-    else:
-        write_workbook(args.output, [("Population", [HEADERS] + rows)])
-    print(f"{len(rows)} salariés fictifs écrits dans {args.output}")
+    write_population(args.output, rows=args.rows, seed=args.seed,
+                     clean=args.clean, reference=reference)
+    count = len(build_rows(args.rows, args.seed, reference,
+                           defects=not args.clean))
+    print(f"{count} salariés fictifs écrits dans {args.output}")
     return 0
 
 

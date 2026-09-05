@@ -1,0 +1,213 @@
+COMPENSATION ANALYTICS ENGINE 1.0.0
+Analyse de rémunération locale et hors ligne
+===================================================================
+
+PRÉREQUIS
+    Python 3.9 ou supérieur. Rien d'autre : aucune installation,
+    aucune bibliothèque à télécharger, aucun accès Internet.
+
+    Vérifier :   py --version          (Windows)
+                 python3 --version     (Mac / Linux)
+
+    Si Python n'est pas installé : python.org/downloads
+    Cochez "Add Python to PATH" pendant l'installation.
+
+-------------------------------------------------------------------
+LANCER L'INTERFACE
+
+    Windows  : double-cliquez sur   lancer.bat
+    Mac/Linux: ./lancer.sh
+
+    Une fenêtre s'ouvre. Le parcours suit les 4 étapes de la colonne
+    de gauche :
+
+      1. Importer   choisissez votre fichier
+      2. Filtrer    les listes se remplissent avec VOS valeurs
+      3. Analyser   cochez les dimensions à croiser
+      4. Restituer  cochez les documents voulus
+
+    puis « Analyser ». Les onglets de droite affichent les résultats.
+
+    L'onglet « Ancienneté × rémunération » est explorable :
+
+      survolez un point    -> référence, ancienneté, rémunération
+      cliquez un point     -> le sélectionne et l'affiche en haut
+      molette              -> zoom ; glisser -> déplacement
+      double-clic          -> réinitialise le cadrage
+      clic sur la légende  -> masque une population
+      « Colorer par »      -> change la dimension de couleur
+
+    « Produire les documents » écrit les fichiers où vous voulez.
+
+-------------------------------------------------------------------
+SANS INTERFACE (traitement en lot)
+
+    Windows  : double-cliquez sur   analyser-demo.bat
+    Mac/Linux: ./analyser-demo.sh
+
+    Les résultats arrivent dans le dossier "resultats" :
+
+      restitution-*.html   rapport détaillé, à lire à l'écran
+      synthese-*.pdf       fiche standard, une page paysage
+      slides-*.pdf         jeu de slides paysage
+      analyse-*.xlsx       tous les indicateurs par onglet
+      manifeste-*.json     paramètres utilisés, pour refaire
+                           l'analyse à l'identique
+
+-------------------------------------------------------------------
+AVEC VOTRE PROPRE FICHIER, EN LIGNE DE COMMANDE
+
+  1. Vérifier que les colonnes sont reconnues
+
+     py compensation-analytics.pyz mapping mon-fichier.xlsx
+
+     Seules "Matricule" et "Salaire de base" sont obligatoires.
+     La casse et les accents n'ont pas d'importance. Si vos en-têtes
+     diffèrent, ajoutez-les dans config/population_mapping.json.
+
+  2. Contrôler la qualité des données
+
+     py compensation-analytics.pyz controle mon-fichier.xlsx
+
+  3. Analyser
+
+     py compensation-analytics.pyz analyse mon-fichier.xlsx ^
+         --segment grade --segment business_unit ^
+         --sortie resultats
+
+FILTRER
+
+     --filtre "business_unit=France"     égal
+     --filtre "business_unit!=France"    différent
+     --filtre "grade=G5|G6|G7"           l'un de ces trois
+     --filtre "grade!=G5|G6|G7"          aucun des trois
+     --filtre "job~=technicien"          contient (casse indifférente)
+     --filtre "base_salary>=50000"       aussi >  <  <=
+
+  Les filtres se cumulent : plusieurs --filtre se combinent par ET.
+  Un champ mal orthographié est refusé avec la liste des champs
+  valides, jamais silencieusement ignoré.
+
+  Le filtre porte sur N'IMPORTE QUEL champ du fichier, pas seulement
+  sur les dimensions d'analyse : matricule, date d'embauche, ETP,
+  coefficient, rémunération variable... et toute colonne que vous
+  ajoutez vous-même dans config/population_mapping.json.
+
+     py compensation-analytics.pyz mapping mon-fichier.xlsx
+
+  liste les noms de champ exacts reconnus dans votre fichier : ce
+  sont eux qui s'écrivent à gauche du signe.
+
+COMPARER DEUX POPULATIONS
+
+     --filtre "business_unit=France" ^
+     --comparer "business_unit!=France" ^
+     --libelle-comparaison "Hors France"
+
+CHOISIR LES SORTIES
+
+     --restitution rapport      (ou synthese, slides, excel)
+
+-------------------------------------------------------------------
+PARAMÉTRAGE
+
+  DEPUIS L'INTERFACE — bouton « Paramètres », en haut à droite
+
+  Deux colonnes :
+
+    Colonnes du fichier   chaque en-tête de VOTRE fichier, et le
+                          champ auquel il correspond. Une colonne
+                          non reconnue apparaît en orange ; choisissez
+                          « + nouveau champ… » pour la déclarer.
+
+    Filtres et axes       pour chaque champ, deux cases :
+                          FILTRE = proposé comme critère de sélection
+                          AXE    = proposé comme axe d'analyse
+                          Un champ peut être l'un, l'autre, ou les deux.
+                          Le libellé affiché se modifie sur place.
+
+  « Enregistrer » écrit config/population_mapping.json. Les filtres
+  se mettent à jour immédiatement, sans redémarrer, ET le réglage
+  est retrouvé aux ouvertures suivantes : c'est un fichier, pas un
+  réglage de session.
+
+  OÙ CE FICHIER EST CHERCHÉ, dans cet ordre :
+
+    1. le dossier passé en --config, s'il y en a un
+    2. un dossier "config" présent là où vous lancez la commande
+       (utile pour garder un paramétrage par dossier de travail)
+    3. sinon, le dossier "config" livré à côté de l'outil
+
+  La règle 3 fait que le paramétrage suit l'outil : peu importe
+  d'où vous le lancez, vous retrouvez vos réglages.
+
+  Si le dossier est en lecture seule — installation gérée par l'IT —
+  l'outil propose d'en choisir un autre. Il faut alors le lancer avec :
+
+     py compensation-analytics.pyz interface --config mon-dossier
+
+  Les champs nominatifs (nom, prénom, matricule, date de naissance)
+  ne sont jamais proposés comme axe d'analyse : un groupe d'une seule
+  personne ferait entrer une identité dans une restitution.
+
+  DANS LES FICHIERS — config/*.json, modifiables au bloc-notes
+
+  Ce que l'interface écrit reste du JSON lisible et versionnable.
+  Le reste s'y règle de la même façon : tranches d'âge et
+  d'ancienneté, percentiles publiés, seuils de confidentialité,
+  devise, seuils de plausibilité, graphiques.
+
+  Seuils de confidentialité par défaut :
+     moins de  5 salariés  -> résultats masqués
+     moins de 10 salariés  -> avertissement, graphiques désactivés
+
+-------------------------------------------------------------------
+CONFIDENTIALITÉ
+
+  Traitement entièrement local. Aucune connexion réseau, aucun
+  processus externe, aucune donnée transmise. Vous pouvez couper
+  Internet avant de l'utiliser.
+
+  Les matricules sont remplacés par une référence anonyme dans les
+  restitutions et dans l'interface. L'export des données
+  individuelles est désactivé par défaut. Le journal technique ne
+  contient ni nom, ni matricule, ni salaire individuel.
+
+-------------------------------------------------------------------
+JEUX DE DÉMONSTRATION FOURNIS
+
+  population-demo.xlsx                2000 salariés fictifs, sans défaut
+  population-demo-avec-defauts.xlsx   les mêmes, avec 5 anomalies
+                                      volontaires pour voir le contrôle
+                                      qualité les détecter
+
+  Aucune donnée réelle : tout est généré par un tirage à graine fixe.
+
+-------------------------------------------------------------------
+CONTENU DE L'ARCHIVE
+
+  lancer.bat / lancer.sh       ouvre l'interface graphique
+  analyser-demo.bat / .sh      analyse en lot, sans interface
+  compensation-analytics.pyz   l'outil, en un seul fichier
+  compensation_analytics/      le code source, lisible et auditable
+  config/                      les paramètres
+  tools/                       générateur de population, banc de perf
+  docs/                        architecture et guide utilisateur
+
+  Le .pyz est une archive ZIP standard : votre IT peut l'ouvrir et
+  en lire l'intégralité du code.
+
+-------------------------------------------------------------------
+RECONSTRUIRE CETTE ARCHIVE
+
+  Depuis les sources, sans rien télécharger :
+
+     python3 tools/build_archive.py --sortie dist
+
+  Les deux populations de démonstration sont RE-GÉNÉRÉES à chaque
+  construction, jamais copiées : aucune donnée réelle ne peut se
+  retrouver dans un livrable.
+
+  Vérifier au passage que tout fonctionne :
+
+     python3 -m unittest discover -s tests -t .
