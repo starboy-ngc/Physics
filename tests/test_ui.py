@@ -177,7 +177,7 @@ class TestWindow(unittest.TestCase):
     def test_the_window_opens_with_the_expected_steps(self):
         self.assertEqual(self.app.title(),
                          "Compensation Analytics Engine 1.0.0")
-        self.assertEqual(len(self.app.tabs), 7)
+        self.assertEqual(len(self.app.tabs), 6)
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
@@ -327,6 +327,14 @@ class TestTabOrder(unittest.TestCase):
         from compensation_analytics.ui.app import TABS
         self.assertEqual(TABS[-1][0], "qualite")
         self.assertEqual(TABS[0][0], "population")
+        self.assertEqual(TABS[0][1], "Population et rémunération")
+
+    def test_population_and_pay_share_one_page(self):
+        """Un salaire median ne veut rien dire sans l'age et l'anciennete de
+        la population qui le porte : les separer obligeait a garder un
+        chiffre en tete en changeant d'onglet."""
+        from compensation_analytics.ui.app import TABS
+        self.assertNotIn("remuneration", [key for key, _label in TABS])
 
 
 @needs_display
@@ -373,7 +381,6 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app = self._analysed(7)
         try:
             visible = app.tabbar.visible_keys()
-            self.assertIn("remuneration", visible)
             self.assertIn("population", visible)
             self.assertNotIn("distribution", visible)
             self.assertNotIn("nuage", visible)
@@ -583,3 +590,92 @@ class TestThePayGapAxis(unittest.TestCase):
         self.assertTrue(by_grade & {"G3", "G5", "G7"})
         self.assertTrue(by_unit & {"France", "DACH"})
         self.assertNotEqual(by_grade, by_unit)
+
+
+@needs_display
+class TestTheMergedOverview(unittest.TestCase):
+    """Population et remuneration sur une seule page.
+
+    Les deux se lisent ensemble : un salaire median ne veut rien dire sans
+    l'age et l'anciennete de la population qui le porte.
+    """
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, salary=25000 + (index % 50) * 2000,
+                     age=25 + index % 38, tenure=index % 32,
+                     gender=["F", "H"][index % 2])
+            for index in range(200)])])
+        self.app = Application()
+        self.app.update()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE))
+        self.app._render_results()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _trees(self):
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        return [item for item in walk(self.app.overview_frame)
+                if item.winfo_class() == "Treeview"]
+
+    def test_the_page_carries_both_subjects(self):
+        titles = [item.cget("text")
+                  for item in self._all_labels(self.app.overview_frame)]
+        for expected in ("PERCENTILES", "DISPERSION", "TRANCHE D'ÂGE",
+                         "TRANCHE D'ANCIENNETÉ"):
+            self.assertIn(expected, titles)
+        for expected in ("MASSE SALARIALE", "ÂGE MÉDIAN",
+                         "ANCIENNETÉ MÉDIANE", "EFFECTIF"):
+            self.assertIn(expected, titles)
+
+    def _all_labels(self, root):
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        return [item for item in walk(root) if item.winfo_class() == "Label"]
+
+    def test_no_indicator_is_clipped(self):
+        """Une masse salariale a huit chiffres depassait sa colonne et se
+        retrouvait tronquee des deux cotes."""
+        import tkinter.font as tkfont
+
+        band = self.app.overview_frame.winfo_children()[0]
+        for cell in band.winfo_children():
+            label, value = cell.winfo_children()[:2]
+            measured = tkfont.Font(root=self.app,
+                                   font=value.cget("font")).measure(
+                                       value.cget("text"))
+            self.assertLessEqual(measured, cell.winfo_width(),
+                                 label.cget("text"))
+
+    def test_the_pay_ladder_runs_from_minimum_to_maximum(self):
+        """Minimum et maximum sont a leur place dans l'echelle, pas en
+        indicateurs isoles."""
+        ladder = self._trees()[0]
+        labels = [ladder.item(row)["values"][0]
+                  for row in ladder.get_children()]
+        self.assertEqual(labels[0], "Minimum")
+        self.assertEqual(labels[-1], "Maximum")
+
+    def test_every_tenure_band_is_reachable(self):
+        """Le decoupage s'etend selon les carrieres presentes : la page
+        defile plutot que de couper les dernieres tranches."""
+        bands = self._trees()[-1]
+        labels = [bands.item(row)["values"][0] for row in bands.get_children()]
+        self.assertGreater(len(labels), 5)
+        self.assertTrue(labels[-1].startswith(">"))
+        canvas = self.app.overview_frame.master
+        self.assertEqual(canvas.winfo_class(), "Canvas")
+        self.assertLess(canvas.yview()[1], 1.0)

@@ -58,7 +58,7 @@ _ALL = "(toutes)"
 
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
 #: quand un chiffre surprend, on ne commence pas par lui.
-TABS = (("population", "Population"), ("remuneration", "Rémunération"),
+TABS = (("population", "Population et rémunération"),
         ("distribution", "Distribution"),
         ("nuage", "Ancienneté × rémunération"), ("segments", "Segments"),
         ("equite", "Pay Transparency"), ("qualite", "Qualité"))
@@ -308,18 +308,35 @@ class Application(tk.Tk):
                                        (120, 640, 90))
         self.quality_tree.master.pack_forget()
 
-        self.population_frame = tk.Frame(self.tabs["population"], background=CANVAS)
-        self.population_frame.pack(fill="both", expand=True, padx=18, pady=18)
+        # La page defile : le decoupage de l'anciennete s'etend selon les
+        # carrieres presentes, et peut compter dix tranches. Sans cela, les
+        # dernieres se retrouvaient coupees en bas de fenetre.
+        overview = tk.Canvas(self.tabs["population"], background=CANVAS,
+                             highlightthickness=0)
+        overview_bar = ttk.Scrollbar(self.tabs["population"], orient="vertical",
+                                     command=overview.yview,
+                                     style="Flat.Vertical.TScrollbar")
+        overview_bar.pack(side="right", fill="y", padx=(0, 8), pady=4)
+        overview.pack(side="left", fill="both", expand=True)
+        theme.attach_scrollbar(overview, overview_bar, side="right", fill="y",
+                               padx=(0, 8), pady=4, before=overview)
+        theme.bind_wheel(overview, self)
+        self.overview_frame = tk.Frame(overview, background=CANVAS)
+        window = overview.create_window((18, 18), window=self.overview_frame,
+                                        anchor="nw")
+        self.overview_frame.bind(
+            "<Configure>",
+            lambda _e: overview.configure(scrollregion=overview.bbox("all")))
+        overview.bind("<Configure>",
+                      lambda e: overview.itemconfigure(window,
+                                                       width=e.width - 36))
         # Premier onglet de la barre, donc premier ecran vu : il doit dire ce
-        # qu'il attend. _show_population vide ce cadre au premier calcul.
-        tk.Label(self.population_frame,
+        # qu'il attend. _show_overview vide ce cadre au premier calcul.
+        tk.Label(self.overview_frame,
                  text="Aucune analyse.\nChoisissez une population dans la "
                       "colonne de gauche, puis « Analyser ».",
                  background=CANVAS, foreground=MUTED, font=self.fonts.body,
                  justify="left").pack(anchor="w", pady=(40, 0))
-        self.salary_frame = tk.Frame(self.tabs["remuneration"], background=CANVAS)
-        self.salary_frame.pack(fill="both", expand=True, padx=18, pady=18)
-
         self.histogram = HistogramChart(self.tabs["distribution"])
         self.histogram.pack(fill="both", expand=True, padx=18, pady=18)
 
@@ -608,8 +625,7 @@ class Application(tk.Tk):
         payload = self.result.payload
         currency = payload["salary"].get("currency", "EUR")
         self._show_quality(payload["quality"])
-        self._show_population(payload["population"])
-        self._show_salary(payload["salary"])
+        self._show_overview(payload["population"], payload["salary"])
         self.histogram.set_distribution(payload["distribution"], currency)
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
@@ -628,8 +644,8 @@ class Application(tk.Tk):
         publishable = any(any(not row.get("masked") for row in block.get("rows", []))
                           for block in segments)
         eligible = {
-            "population": not payload["population"].get("masked"),
-            "remuneration": not payload["salary"].get("masked"),
+            "population": not (payload["population"].get("masked")
+                               and payload["salary"].get("masked")),
             "distribution": bool(payload["distribution"].get("available")),
             "nuage": bool(payload["scatter"].get("available")),
             "segments": publishable,
@@ -653,15 +669,42 @@ class Application(tk.Tk):
                  "salariés ; élargissez le filtre pour les afficher.")
         self.notice.pack(fill="x", after=self.tabbar)
 
+    def _kpi_font(self, values, width: int, per_row: int):
+        """Plus grande taille a laquelle aucune valeur n'est rognee.
+
+        Une masse salariale a huit chiffres depasse la largeur d'une colonne
+        et se retrouvait tronquee des deux cotes, le fond n'ayant aucune
+        marge a rendre. Plutot que de reduire le nombre de colonnes — ce qui
+        allongerait la page —, on mesure et on ajuste.
+        """
+        import tkinter.font as tkfont
+
+        # La marge absorbe l'ecart entre la largeur mesuree avant mise en
+        # page et celle que la cellule recevra reellement.
+        column = (max(width, 600) - 24 * (per_row - 1)) / per_row - 16
+        for size in range(theme.SIZE_KPI, 12, -1):
+            candidate = tkfont.Font(root=self, family=self.fonts.family,
+                                    size=size, weight="bold")
+            if all(candidate.measure(value) <= column for value in values):
+                return candidate
+        return self.fonts.body_bold
+
+    #: Nombre maximal d'indicateurs par rangee.
+    KPI_MAX_PER_ROW = 4
+
     def _kpis(self, parent, pairs) -> None:
         for child in parent.winfo_children():
             child.destroy()
         band = tk.Frame(parent, background=CANVAS)
         band.pack(fill="x", pady=(0, 16))
-        # Une grille a colonnes egales, sur deux rangees au-dela de quatre
-        # indicateurs : alignes sur une seule ligne, le dernier sortait du
-        # cadre des que la valeur etait longue.
-        per_row = len(pairs) if len(pairs) <= 4 else -(-len(pairs) // 2)
+        parent.update_idletasks()
+        # Une grille a colonnes egales, quatre au plus par rangee : au-dela,
+        # la colonne devient trop etroite pour une valeur monetaire et le
+        # chiffre est rogne des deux cotes. Les rangees sont equilibrees.
+        rows_needed = -(-len(pairs) // self.KPI_MAX_PER_ROW) or 1
+        per_row = -(-len(pairs) // rows_needed)
+        font = self._kpi_font([value for _label, value in pairs],
+                              band.winfo_width(), per_row)
         for index, (label, value) in enumerate(pairs):
             row, column = divmod(index, per_row)
             cell = tk.Frame(band, background=CANVAS)
@@ -673,7 +716,7 @@ class Application(tk.Tk):
             tk.Label(cell, text=label.upper(), background=CANVAS, foreground=FAINT,
                      font=self.fonts.label).pack(anchor="w")
             tk.Label(cell, text=value, background=CANVAS, foreground=INK,
-                     font=self.fonts.kpi).pack(anchor="w", pady=(1, 0))
+                     font=font).pack(anchor="w", pady=(1, 0))
 
     def _fill(self, tree: ttk.Treeview, rows, flagged=None) -> None:
         tree.tag_configure("pair", background=STRIPE)
@@ -725,80 +768,95 @@ class Application(tk.Tk):
                      item["lignes_concernees"])
                     for item in constats])
 
-    def _show_population(self, population: Dict[str, Any]) -> None:
-        for child in self.population_frame.winfo_children():
-            child.destroy()
-        if population.get("masked"):
-            tk.Label(self.population_frame, text=population.get("warning", ""),
-                     background=CANVAS, foreground=WARN,
-                     font=self.fonts.body).pack(anchor="w")
-            return
-        self._kpis(self.population_frame, [
-            ("Effectif", str(population.get("headcount", 0))),
-            ("Âge moyen", format_years(population.get("age_mean"))),
-            ("Âge médian", format_years(population.get("age_median"))),
-            ("Ancienneté moyenne",
-             format_years(population.get("tenure_mean"))),
-            ("Ancienneté médiane",
-             format_years(population.get("tenure_median"))),
-        ])
-        columns = tk.Frame(self.population_frame, background=CANVAS)
-        columns.pack(fill="both", expand=True)
-        for index, (title, key) in enumerate((("Tranche d'âge", "age_bands"),
-                                              ("Tranche d'ancienneté",
-                                               "tenure_bands"))):
-            side = self._panel(columns, title, index == 0)
-            tree = ttk.Treeview(side, columns=("Tranche", "Effectif", "Part"),
-                                show="headings", height=7)
-            for name, width in (("Tranche", 170), ("Effectif", 90), ("Part", 90)):
-                tree.heading(name, text=name.upper())
-                tree.column(name, width=width, anchor="w" if width > 150 else "e")
-            tree.pack(fill="both", expand=True)
-            self._fill(tree, [(row["label"], row["count"],
-                               format_percent(row["share"]))
-                              for row in population.get(key, [])])
+    def _show_overview(self, population: Dict[str, Any],
+                       salary: Dict[str, Any]) -> None:
+        """Population et remuneration sur une seule page.
 
-    def _show_salary(self, salary: Dict[str, Any]) -> None:
-        for child in self.salary_frame.winfo_children():
+        Les deux se lisent ensemble : un salaire median ne veut rien dire
+        sans l'age et l'anciennete de la population qui le porte. Les
+        separer obligeait a garder un chiffre en tete en changeant d'onglet.
+        """
+        for child in self.overview_frame.winfo_children():
             child.destroy()
         currency = salary.get("currency", "EUR")
-        if salary.get("masked"):
-            tk.Label(self.salary_frame, text=salary.get("warning", ""),
+        if population.get("masked") and salary.get("masked"):
+            tk.Label(self.overview_frame,
+                     text=population.get("warning") or salary.get("warning", ""),
                      background=CANVAS, foreground=WARN,
-                     font=self.fonts.body).pack(anchor="w")
+                     font=self.fonts.body, wraplength=760,
+                     justify="left").pack(anchor="w")
             return
-        self._kpis(self.salary_frame, [
-            ("Masse salariale", format_money(salary.get("payroll"), currency)),
-            ("Salaire moyen", format_money(salary.get("mean"), currency)),
-            ("Salaire médian", format_money(salary.get("median"), currency)),
-            ("Minimum", format_money(salary.get("min"), currency)),
-            ("Maximum", format_money(salary.get("max"), currency)),
-        ])
-        columns = tk.Frame(self.salary_frame, background=CANVAS)
-        columns.pack(fill="both", expand=True)
+
+        indicators = [("Effectif", str(population.get("headcount", 0)))]
+        if not salary.get("masked"):
+            indicators += [
+                ("Masse salariale", format_money(salary.get("payroll"), currency)),
+                ("Salaire moyen", format_money(salary.get("mean"), currency)),
+                ("Salaire médian", format_money(salary.get("median"), currency)),
+            ]
+        if not population.get("masked"):
+            indicators += [
+                ("Âge moyen", format_years(population.get("age_mean"))),
+                ("Âge médian", format_years(population.get("age_median"))),
+                ("Ancienneté moyenne", format_years(population.get("tenure_mean"))),
+                ("Ancienneté médiane", format_years(population.get("tenure_median"))),
+            ]
+        self._kpis(self.overview_frame, indicators)
+
         spread = salary.get("dispersion") or {}
         variation = spread.get("coefficient_of_variation")
-        blocks = (
-            ("Percentiles", ("Percentile", "Valeur"),
-             [(entry["label"], format_money(salary.get(entry["key"]), currency))
-              for entry in salary.get("published_percentiles", [])]),
-            ("Dispersion", ("Indicateur", "Valeur"), [
-                ("Q3 - Q1", format_money(spread.get("interquartile_range"), currency)),
-                ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2)),
-                ("P90 / P10", format_number(spread.get("p90_over_p10"), 2)),
-                ("Moyenne / Médiane",
-                 format_number(spread.get("mean_over_median"), 2)),
-                ("Coefficient de variation",
-                 format_percent(None if variation is None else variation * 100)),
-            ]),
-        )
-        for index, (title, headers, rows) in enumerate(blocks):
-            side = self._panel(columns, title, index == 0)
-            tree = ttk.Treeview(side, columns=headers, show="headings", height=7)
-            for name, width, anchor in ((headers[0], 220, "w"),
-                                        (headers[1], 150, "e")):
+        panels = []
+        if not salary.get("masked"):
+            panels += [
+                ("Percentiles", ("Percentile", "Valeur"), (200, 130),
+                 [("Minimum", format_money(salary.get("min"), currency))]
+                 + [(entry["label"],
+                     format_money(salary.get(entry["key"]), currency))
+                    for entry in salary.get("published_percentiles", [])]
+                 + [("Maximum", format_money(salary.get("max"), currency))]),
+                ("Dispersion", ("Indicateur", "Valeur"), (200, 130), [
+                    ("Q3 - Q1",
+                     format_money(spread.get("interquartile_range"), currency)),
+                    ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2)),
+                    ("P90 / P10", format_number(spread.get("p90_over_p10"), 2)),
+                    ("Moyenne / Médiane",
+                     format_number(spread.get("mean_over_median"), 2)),
+                    ("Coefficient de variation",
+                     format_percent(None if variation is None
+                                    else variation * 100)),
+                ]),
+            ]
+        if not population.get("masked"):
+            for title, key in (("Tranche d'âge", "age_bands"),
+                               ("Tranche d'ancienneté", "tenure_bands")):
+                panels.append((title, ("Tranche", "Effectif", "Part"),
+                               (150, 85, 85),
+                               [(row["label"], row["count"],
+                                 format_percent(row["share"]))
+                                for row in population.get(key, [])]))
+
+        # Deux rangees de deux : quatre panneaux alignes seraient trop
+        # etroits pour leurs trois colonnes.
+        grid = tk.Frame(self.overview_frame, background=CANVAS)
+        grid.pack(fill="both", expand=True)
+        per_row = 2 if len(panels) > 2 else max(len(panels), 1)
+        for index, (title, headers, widths, rows) in enumerate(panels):
+            row, column = divmod(index, per_row)
+            cell = tk.Frame(grid, background=CANVAS)
+            cell.grid(row=row, column=column, sticky="nsew",
+                      padx=(0, 36) if column < per_row - 1 else 0,
+                      pady=(0, 18) if row == 0 and len(panels) > per_row else 0)
+            grid.grid_columnconfigure(column, weight=1, uniform="panel")
+            grid.grid_rowconfigure(row, weight=1)
+            tk.Label(cell, text=title.upper(), background=CANVAS,
+                     foreground=FAINT,
+                     font=self.fonts.label).pack(anchor="w", pady=(0, 6))
+            tree = ttk.Treeview(cell, columns=headers, show="headings",
+                                height=max(len(rows), 4))
+            for name, width in zip(headers, widths):
                 tree.heading(name, text=name.upper())
-                tree.column(name, width=width, anchor=anchor)
+                tree.column(name, width=width,
+                            anchor="w" if width >= 150 else "e")
             tree.pack(fill="both", expand=True)
             self._fill(tree, rows)
 
