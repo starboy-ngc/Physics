@@ -15,8 +15,7 @@ import tkinter as tk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
 from ..core.axes import nice_ticks
-from ..core.reporting import (_PALETTE, format_money, format_number,
-                              format_years)
+from ..core.reporting import format_money, format_number, format_years
 from . import raster
 from . import theme
 from .theme import SIZE_LABEL, SIZE_SMALL, _rgb, pick_family
@@ -42,6 +41,18 @@ def axis_font():
 
 def note_font():
     return (_family, SIZE_SMALL)
+
+
+def _shorten(widget: tk.Misc, text: str, limit: float) -> str:
+    """Tronque un libelle a la largeur donnee, en mesurant plutot qu'en devinant."""
+    import tkinter.font as tkfont
+
+    font = tkfont.Font(root=widget, font=axis_font())
+    if font.measure(text) <= limit:
+        return text
+    while text and font.measure(text + "…") > limit:
+        text = text[:-1]
+    return text + "…"
 
 
 class Tooltip:
@@ -188,13 +199,15 @@ class ScatterChart(tk.Frame):
                 x, pad_t + plot_h + 14, fill=theme.MUTED, font=axis_font(),
                 text=format_number(value, 0))
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
-                                pad_t + plot_h, fill="#9aa7b4")
+                                pad_t + plot_h, fill=theme.LINE_STRONG)
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32,
                                 text="Ancienneté (années)", fill=theme.MUTED,
                                 font=axis_font())
 
         groups = self.dataset.get("groups") or []
-        colours = {g: _PALETTE[i % len(_PALETTE)] for i, g in enumerate(groups)}
+        # La serie vient du theme actif et non d'une copie prise a
+        # l'import : figee, elle gardait les couleurs du theme par defaut.
+        colours = {g: theme.ACTIVE.series_for(i) for i, g in enumerate(groups)}
 
         shown = 0
         for point in self.points:
@@ -385,7 +398,7 @@ class HistogramChart(tk.Frame):
                 fill=theme.ACCENT, outline="")
             self._items[handle] = item
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
-                                pad_t + plot_h, fill="#9aa7b4")
+                                pad_t + plot_h, fill=theme.LINE_STRONG)
         # Les deux bornes exactes cedent la place a des graduations rondes :
         # « 9 391 EUR » et « 137 074 EUR » ne se lisaient pas d'un coup d'oeil.
         low = self.bins[0]["lower"]
@@ -408,6 +421,449 @@ class HistogramChart(tk.Frame):
                     f'{format_money(data["lower"], self.currency)} — '
                     f'{format_money(data["upper"], self.currency)}\n'
                     f'{int(data["count"])} salariés',
+                    self.canvas.winfo_rootx() + event.x,
+                    self.canvas.winfo_rooty() + event.y)
+                return
+        self.tooltip.hide()
+
+
+class BoxPlotChart(tk.Frame):
+    """Boites a moustaches : une par segment, couchees.
+
+    Un tableau de medianes cache l'essentiel : deux postes de meme mediane
+    peuvent avoir des grilles sans rapport, l'un resserre, l'autre ouvert du
+    simple au triple. La boite montre les deux d'un regard — P10 et P90 aux
+    extremites, le coeur de l'effectif entre Q1 et Q3, la mediane en trait.
+
+    Couchees, et non dressees : un libelle de poste tient a gauche sans etre
+    incline, la ou vingt libelles dresses seraient illisibles.
+    """
+
+    #: Hauteur d'une ligne. On la reduit jusqu'au plancher pour faire tenir
+    #: le plus de segments possible, sans jamais coller les boites entre elles.
+    ROW_MAX, ROW_MIN = 40, 17
+    LABEL_MAX = 190
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.tooltip = Tooltip(self.canvas)
+        self.rows: List[Dict[str, Any]] = []
+        self.currency = "EUR"
+        self.warning = ""
+        self._items: Dict[int, Dict[str, Any]] = {}
+        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
+                 warning: str = "") -> None:
+        """Lignes de segment, dans l'ordre etabli par le moteur."""
+        self.rows = [dict(row) for row in rows or []]
+        self.currency = currency
+        self.warning = warning
+        self.redraw()
+
+    def _drawable(self) -> List[Dict[str, Any]]:
+        """Segments que l'on a le droit de tracer.
+
+        Le drapeau vient du moteur, et son absence vaut refus : une regle de
+        confidentialite ne se decide pas ici, et une donnee arrivee sans son
+        drapeau ne doit pas etre dessinee par defaut.
+        """
+        ready = []
+        for row in self.rows:
+            salary = row.get("salary") or {}
+            if row.get("masked") or row.get("chartable") is not True:
+                continue
+            if any(salary.get(key) is None for key in ("p25", "p75", "median")):
+                continue
+            ready.append(row)
+        return ready
+
+    def _refusal(self) -> str:
+        """Ce que l'on dit quand rien n'est tracable."""
+        if any(not row.get("masked") for row in self.rows):
+            return ("Effectif par segment insuffisant pour tracer une "
+                    "dispersion. Les valeurs restent lisibles dans l'onglet "
+                    "Segments.")
+        return "Aucun segment publiable sur cette dimension."
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        height = self.canvas.winfo_height()
+        if width < 120 or height < 80:
+            return
+        drawable = self._drawable()
+        if not drawable:
+            self.canvas.create_text(
+                width / 2, height / 2, fill=theme.MUTED, font=note_font(),
+                text=self.warning or self._refusal(), width=max(width - 60, 80),
+                justify="center")
+            return
+
+        label_width = self._label_width(drawable)
+        pad_l = label_width + 18
+        pad_r, pad_t, pad_b = 26, 14, 44
+        plot_w = max(width - pad_l - pad_r, 20)
+        plot_h = max(height - pad_t - pad_b, 20)
+
+        # On reduit la ligne jusqu'au plancher pour tout faire tenir ; si le
+        # compte n'y est toujours pas, on dit combien manquent plutot que de
+        # les ecraser en un trait illisible.
+        row_height = min(self.ROW_MAX, plot_h / len(drawable))
+        shown = drawable
+        if row_height < self.ROW_MIN:
+            row_height = self.ROW_MIN
+            shown = drawable[:max(int(plot_h // row_height), 1)]
+
+        low, high = self._span(shown)
+        span = (high - low) or 1.0
+
+        def to_x(value: float) -> float:
+            return pad_l + (value - low) / span * plot_w
+
+        for value in nice_ticks(low, high, 5):
+            x = to_x(value)
+            self.canvas.create_line(x, pad_t, x, pad_t + len(shown) * row_height,
+                                    fill=theme.GRID)
+            self.canvas.create_text(x, pad_t + len(shown) * row_height + 14,
+                                    fill=theme.MUTED, font=axis_font(),
+                                    text=format_money(value, self.currency))
+
+        for index, row in enumerate(shown):
+            self._draw_box(row, index, row_height, pad_l, to_x)
+
+        caption = "Rémunération par segment · P10, Q1, médiane, Q3, P90"
+        hidden = len(drawable) - len(shown)
+        if hidden:
+            caption += f" · {hidden} segment(s) de plus, non affiché(s)"
+        self.canvas.create_text(pad_l, pad_t + len(shown) * row_height + 32,
+                                anchor="w", fill=theme.MUTED, font=axis_font(),
+                                text=caption)
+
+    def _label_width(self, rows: Sequence[Dict[str, Any]]) -> float:
+        """Gouttiere des libelles, mesuree et non devinee."""
+        import tkinter.font as tkfont
+
+        font = tkfont.Font(root=self, font=axis_font())
+        widest = max((font.measure(str(row.get("segment", ""))) for row in rows),
+                     default=60)
+        return min(max(widest, 60), self.LABEL_MAX)
+
+    def _span(self, rows: Sequence[Dict[str, Any]]):
+        """Etendue commune a toutes les boites : sans elle, rien ne se compare."""
+        lows, highs = [], []
+        for row in rows:
+            salary = row["salary"]
+            lows.append(self._whisker(salary, "p10", "p25"))
+            highs.append(self._whisker(salary, "p90", "p75"))
+        low, high = min(lows), max(highs)
+        margin = (high - low) * 0.04 or 1.0
+        return low - margin, high + margin
+
+    @staticmethod
+    def _whisker(salary: Dict[str, Any], preferred: str, fallback: str) -> float:
+        value = salary.get(preferred)
+        return float(value if value is not None else salary[fallback])
+
+    def _draw_box(self, row, index: int, row_height: float, pad_l: float,
+                  to_x) -> None:
+        salary = row["salary"]
+        centre = 14 + index * row_height + row_height / 2
+        thickness = min(max(row_height * 0.42, 5.0), 15.0)
+        p10 = self._whisker(salary, "p10", "p25")
+        p90 = self._whisker(salary, "p90", "p75")
+        q1, q3 = float(salary["p25"]), float(salary["p75"])
+        median = float(salary["median"])
+
+        # Moustaches d'abord : la boite les recouvre, ce qui evite un trait
+        # qui depasserait a l'interieur.
+        self.canvas.create_line(to_x(p10), centre, to_x(p90), centre,
+                                fill=theme.LINE_STRONG)
+        for value in (p10, p90):
+            self.canvas.create_line(to_x(value), centre - thickness / 2,
+                                    to_x(value), centre + thickness / 2,
+                                    fill=theme.LINE_STRONG)
+        handle = self.canvas.create_rectangle(
+            to_x(q1), centre - thickness / 2, to_x(q3), centre + thickness / 2,
+            fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
+        # La mediane est le chiffre que l'on cite : elle est le seul trait
+        # dense de la boite.
+        self.canvas.create_line(to_x(median), centre - thickness / 2 - 2,
+                                to_x(median), centre + thickness / 2 + 2,
+                                fill=theme.INK, width=2)
+        self.canvas.create_text(pad_l - 12, centre, anchor="e", fill=theme.INK_SOFT,
+                                font=axis_font(),
+                                text=_shorten(self, str(row.get("segment", "")),
+                                              self.LABEL_MAX))
+        self._items[handle] = row
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                row = self._items[item]
+                salary = row["salary"]
+                lines = [f'{row.get("segment", "")} · {row.get("headcount", 0)} salariés']
+                for label, key in (("P90", "p90"), ("Q3", "p75"),
+                                   ("Médiane", "median"), ("Q1", "p25"),
+                                   ("P10", "p10")):
+                    if salary.get(key) is not None:
+                        lines.append(
+                            f'{label} : {format_money(salary[key], self.currency)}')
+                self.tooltip.show("\n".join(lines),
+                                  self.canvas.winfo_rootx() + event.x,
+                                  self.canvas.winfo_rooty() + event.y)
+                return
+        self.tooltip.hide()
+
+
+class GapChart(tk.Frame):
+    """Ecarts de remuneration par categorie, de part et d'autre d'un zero.
+
+    Dix pourcentages signes dans un tableau demandent d'etre lus un par un
+    pour reperer les deux qui sortent. Poses autour d'un axe zero, tries par
+    ampleur, ils se hierarchisent d'eux-memes — et le seuil de la directive,
+    trace en pointille, dit d'un regard qui le franchit.
+
+    Convention de signe, la meme que partout : un ecart positif signifie que
+    les femmes sont moins remunerees.
+    """
+
+    ROW_MAX, ROW_MIN = 30, 16
+    LABEL_MAX = 170
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.tooltip = Tooltip(self.canvas)
+        self.rows: List[Dict[str, Any]] = []
+        self.threshold = 0.0
+        self.warning = ""
+        self._items: Dict[int, Dict[str, Any]] = {}
+        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]], threshold: float = 0.0,
+                 warning: str = "") -> None:
+        self.rows = [dict(row) for row in rows or []]
+        self.threshold = float(threshold or 0.0)
+        self.warning = warning
+        self.redraw()
+
+    def _drawable(self) -> List[Dict[str, Any]]:
+        """Categories dont l'ecart a ete publie par le moteur."""
+        return [row for row in self.rows
+                if row.get("published") and row.get("mean_gap") is not None]
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        height = self.canvas.winfo_height()
+        if width < 120 or height < 60:
+            return
+        drawable = self._drawable()
+        if not drawable:
+            self.canvas.create_text(
+                width / 2, height / 2, fill=theme.MUTED, font=note_font(),
+                width=max(width - 60, 80), justify="center",
+                text=self.warning or "Aucune catégorie ne réunit assez de "
+                                     "femmes et d'hommes pour publier un écart.")
+            return
+
+        label_width = self._label_width(drawable)
+        pad_l = label_width + 16
+        pad_r, pad_t, pad_b = 46, 12, 34
+        plot_w = max(width - pad_l - pad_r, 20)
+        plot_h = max(height - pad_t - pad_b, 20)
+        row_height = min(self.ROW_MAX, plot_h / len(drawable))
+        shown = drawable
+        if row_height < self.ROW_MIN:
+            row_height = self.ROW_MIN
+            shown = drawable[:max(int(plot_h // row_height), 1)]
+
+        # Echelle symetrique : sans elle, un ecart de +6 % et un de -6 %
+        # n'auraient pas la meme longueur, et la comparaison serait faussee.
+        reach = max(max(abs(row["mean_gap"]) for row in shown),
+                    self.threshold, 1.0) * 1.15
+        zero = pad_l + plot_w / 2
+
+        def to_x(value: float) -> float:
+            return zero + value / reach * (plot_w / 2)
+
+        base = pad_t + len(shown) * row_height
+        for sign in (-1, 1):
+            if self.threshold > 0:
+                x = to_x(sign * self.threshold)
+                self.canvas.create_line(x, pad_t, x, base, fill=theme.WARN,
+                                        dash=(3, 3))
+        self.canvas.create_line(zero, pad_t, zero, base, fill=theme.LINE_STRONG)
+
+        for index, row in enumerate(shown):
+            gap = float(row["mean_gap"])
+            centre = pad_t + index * row_height + row_height / 2
+            thickness = min(max(row_height * 0.5, 5.0), 14.0)
+            # Au-dela du seuil, la barre passe en teinte de vigilance : c'est
+            # le seul endroit ou la couleur porte un jugement, et il vient du
+            # seuil parametre, pas d'une appreciation.
+            colour = theme.WARN if row.get("above_threshold") else theme.ACCENT
+            handle = self.canvas.create_rectangle(
+                min(zero, to_x(gap)), centre - thickness / 2,
+                max(zero, to_x(gap)), centre + thickness / 2,
+                fill=colour, outline="")
+            self._items[handle] = row
+            self.canvas.create_text(pad_l - 10, centre, anchor="e",
+                                    fill=theme.INK_SOFT, font=axis_font(),
+                                    text=_shorten(self, str(row.get("category", "")),
+                                                  self.LABEL_MAX))
+            # La valeur au bout de la barre : on lit l'ordre sur le graphique
+            # et le chiffre sans survoler.
+            end = to_x(gap)
+            self.canvas.create_text(
+                end + (6 if gap >= 0 else -6), centre,
+                anchor="w" if gap >= 0 else "e", fill=theme.MUTED,
+                font=axis_font(), text=f"{gap:+.1f} %".replace(".", ","))
+
+        legend = "Écart positif : les femmes sont moins rémunérées"
+        if self.threshold > 0:
+            legend += f" · seuil {self.threshold:.0f} %".replace(".", ",")
+        hidden = len(drawable) - len(shown)
+        if hidden:
+            legend += f" · {hidden} catégorie(s) non affichée(s)"
+        self.canvas.create_text(pad_l - label_width, base + 18, anchor="w",
+                                fill=theme.MUTED, font=axis_font(), text=legend)
+
+    def _label_width(self, rows: Sequence[Dict[str, Any]]) -> float:
+        import tkinter.font as tkfont
+
+        font = tkfont.Font(root=self, font=axis_font())
+        widest = max((font.measure(str(row.get("category", ""))) for row in rows),
+                     default=60)
+        return min(max(widest, 60), self.LABEL_MAX)
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                row = self._items[item]
+                lines = [f'{row.get("category", "")} · {row.get("headcount", 0)} salariés',
+                         f'{row.get("female_count", 0)} femmes, '
+                         f'{row.get("male_count", 0)} hommes']
+                for label, key in (("Écart moyen", "mean_gap"),
+                                   ("Écart médian", "median_gap")):
+                    value = row.get(key)
+                    if value is not None:
+                        lines.append(f'{label} : {value:+.1f} %'.replace(".", ","))
+                self.tooltip.show("\n".join(lines),
+                                  self.canvas.winfo_rootx() + event.x,
+                                  self.canvas.winfo_rooty() + event.y)
+                return
+        self.tooltip.hide()
+
+
+class QuartileChart(tk.Frame):
+    """Part de chaque sexe dans chaque quartile de remuneration.
+
+    Indicateur f) de la directive. Quatre barres empilees disent en un
+    regard ce qu'un tableau de quatre lignes demande de comparer de tete :
+    si la part des femmes s'effrite en montant dans les quartiles, le
+    plafond est la, dessine.
+    """
+
+    ROW = 34
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0, height=4 * self.ROW + 34)
+        self.canvas.pack(fill="both", expand=True)
+        self.tooltip = Tooltip(self.canvas)
+        self.rows: List[Dict[str, Any]] = []
+        self._items: Dict[int, Dict[str, Any]] = {}
+        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
+        self.rows = [dict(row) for row in rows or []]
+        self.redraw()
+
+    def _drawable(self) -> List[Dict[str, Any]]:
+        return [row for row in self.rows if row.get("female_share") is not None]
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        if width < 120:
+            return
+        drawable = self._drawable()
+        if not drawable:
+            self.canvas.create_text(
+                width / 2, 30, fill=theme.MUTED, font=note_font(),
+                text="Effectif par quartile insuffisant pour publier une "
+                     "répartition.")
+            return
+        pad_l, pad_r, pad_t = 116, 20, 8
+        plot_w = max(width - pad_l - pad_r, 40)
+        for index, row in enumerate(drawable):
+            y = pad_t + index * self.ROW
+            female = float(row.get("female_share") or 0.0)
+            cut = pad_l + female / 100.0 * plot_w
+            left = self.canvas.create_rectangle(pad_l, y, cut, y + self.ROW - 12,
+                                                fill=theme.FEMALE, outline="")
+            right = self.canvas.create_rectangle(cut, y, pad_l + plot_w,
+                                                 y + self.ROW - 12,
+                                                 fill=theme.MALE, outline="")
+            self._items[left] = self._items[right] = row
+            rank = row.get("quartile", index + 1)
+            edge = {1: " · le plus bas", len(drawable): " · le plus haut"}.get(rank, "")
+            self.canvas.create_text(pad_l - 10, y + (self.ROW - 12) / 2,
+                                    anchor="e", fill=theme.INK_SOFT,
+                                    font=axis_font(), text=f"Q{rank}{edge}")
+            # La part est ecrite dans la barre quand elle y tient : lire un
+            # plafond de verre demande le chiffre, pas seulement la longueur.
+            if female >= 12:
+                self.canvas.create_text(
+                    pad_l + 8, y + (self.ROW - 12) / 2, anchor="w",
+                    fill=theme.CANVAS, font=axis_font(),
+                    text=f"{female:.0f} %".replace(".", ","))
+            male = float(row.get("male_share") or 0.0)
+            if male >= 12:
+                self.canvas.create_text(
+                    pad_l + plot_w - 8, y + (self.ROW - 12) / 2, anchor="e",
+                    fill=theme.CANVAS, font=axis_font(),
+                    text=f"{male:.0f} %".replace(".", ","))
+        base = pad_t + len(drawable) * self.ROW
+        self.canvas.create_text(pad_l, base + 4, anchor="w", fill=theme.FEMALE,
+                                font=axis_font(), text="FEMMES")
+        self.canvas.create_text(pad_l + plot_w, base + 4, anchor="e",
+                                fill=theme.MALE, font=axis_font(), text="HOMMES")
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                row = self._items[item]
+                self.tooltip.show(
+                    f'Quartile {row.get("quartile")} · '
+                    f'{row.get("headcount", 0)} salariés\n'
+                    f'{row.get("female_count", 0)} femmes '
+                    f'({row.get("female_share", 0):.1f} %)\n'
+                    f'{row.get("male_count", 0)} hommes '
+                    f'({row.get("male_share", 0):.1f} %)'.replace(".", ","),
                     self.canvas.winfo_rootx() + event.x,
                     self.canvas.winfo_rooty() + event.y)
                 return

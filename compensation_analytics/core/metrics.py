@@ -387,6 +387,11 @@ def calculate_segment_metrics(
             ),
             "age_median": stats.median(ages) if published else None,
             "tenure_median": stats.median(tenures) if published else None,
+            # Publier et tracer ne demandent pas le meme effectif. Une boite
+            # a moustaches dessine P10 et P90 : sur cinq salaries, ce sont
+            # deux remunerations individuelles pointees a l'ecran. Le seuil
+            # graphique, plus haut, decide donc separement.
+            "chartable": rules.may_chart(len(group)),
         })
     rows.sort(key=_segment_sort_key(field_name, config,
                                     [r["segment"] for r in rows], population))

@@ -180,7 +180,7 @@ class TestWindow(unittest.TestCase):
         # « Graphique » en porte plusieurs : la barre principale ne dit plus
         # a elle seule tout ce que l'outil sait montrer.
         self.assertEqual(self.app.chartbar.visible_keys(),
-                         ["distribution", "nuage"])
+                         ["distribution", "boites", "nuage"])
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
@@ -397,7 +397,8 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app = self._analysed(40, hire_date="")
         try:
             self.assertIn("graphique", app.tabbar.visible_keys())
-            self.assertEqual(app.chartbar.visible_keys(), ["distribution"])
+            self.assertEqual(app.chartbar.visible_keys(),
+                             ["distribution", "boites"])
             # Le graphique retire s'explique, comme un onglet retire.
             self.assertIn("Ancienneté", app.notice.cget("text"))
             self.assertTrue(app.notice.winfo_ismapped())
@@ -408,6 +409,73 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app = self._analysed(40)
         try:
             self.assertEqual(len(app.tabbar.visible_keys()), len(app.tabs))
+        finally:
+            app.destroy()
+
+    def test_a_box_needs_more_people_than_a_table_row(self):
+        """Tracer une dispersion en demande plus que la publier.
+
+        Une boite dessine P10 et P90 : sur un segment de cinq salaries, ce
+        sont deux remunerations individuelles pointees a l'ecran. Le segment
+        garde donc sa ligne de tableau, mais pas sa boite.
+        """
+        from compensation_analytics.core.metrics import PrivacyRules
+        app = self._analysed(40)
+        try:
+            rules = PrivacyRules.from_config(app.result.config)
+            rows = [row for block in app.result.payload["segments"]
+                    for row in block["rows"]]
+            petits = [row for row in rows
+                      if not row["masked"] and row["headcount"] < rules.min_chart]
+            self.assertTrue(petits, "aucun segment entre les deux seuils")
+            for row in petits:
+                with self.subTest(segment=row["segment"]):
+                    # Publiable — il a sa ligne — mais pas tracable.
+                    self.assertFalse(row["chartable"])
+            self.assertTrue(any(row["chartable"] for row in rows))
+        finally:
+            app.destroy()
+
+    def test_a_box_is_never_drawn_without_the_engine_flag(self):
+        """Le refus est l'etat par defaut : une ligne arrivee sans drapeau
+        n'est pas dessinee « au cas ou »."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            complete = {"segment": "X", "headcount": 99, "masked": False,
+                        "salary": {"p10": 1.0, "p25": 2.0, "median": 3.0,
+                                   "p75": 4.0, "p90": 5.0}}
+            chart.set_rows([complete])
+            self.assertEqual(chart._drawable(), [])
+            chart.set_rows([dict(complete, chartable=True)])
+            self.assertEqual(len(chart._drawable()), 1)
+        finally:
+            app.destroy()
+
+    def test_the_directive_charts_only_draw_what_the_engine_published(self):
+        """Un ecart ou une part que le moteur a refuse de publier ne doit pas
+        reapparaitre sous forme de barre."""
+        from compensation_analytics.ui.charts import GapChart, QuartileChart
+        app = self._analysed(40)
+        try:
+            gaps = GapChart(app)
+            gaps.set_rows([
+                {"category": "publie", "published": True, "mean_gap": 3.0},
+                {"category": "sous le seuil", "published": False,
+                 "mean_gap": 12.0},
+                # Publie, mais l'ecart n'a pas pu etre calcule.
+                {"category": "sans ecart", "published": True, "mean_gap": None},
+            ])
+            self.assertEqual([row["category"] for row in gaps._drawable()],
+                             ["publie"])
+            quartiles = QuartileChart(app)
+            quartiles.set_rows([
+                {"quartile": 1, "female_share": 60.0, "male_share": 40.0},
+                {"quartile": 2, "female_share": None, "male_share": None},
+            ])
+            self.assertEqual([row["quartile"] for row in quartiles._drawable()],
+                             [1])
         finally:
             app.destroy()
 

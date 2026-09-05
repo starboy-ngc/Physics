@@ -44,7 +44,8 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
 from . import theme
-from .charts import (BandChart, HistogramChart, PyramidChart,
+from .charts import (BandChart, BoxPlotChart, GapChart,
+                     HistogramChart, PyramidChart, QuartileChart,
                      ScatterChart)
 from .theme import Card, CheckRow, Fonts, TabBar
 
@@ -65,6 +66,7 @@ TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
 #: ressemble-t-il ». Les reunir laisse la place d'en ajouter d'autres sans
 #: allonger la barre principale : une entree de plus ici suffit.
 CHARTS = (("distribution", "Distribution des rémunérations"),
+          ("boites", "Dispersion par segment"),
           ("nuage", "Ancienneté × rémunération"))
 
 
@@ -387,6 +389,23 @@ class Application(tk.Tk):
         self.histogram = HistogramChart(distribution)
         self.histogram.pack(fill="both", expand=True, padx=18, pady=(8, 18))
 
+        boites = self.chart_pages["boites"]
+        box_head = tk.Frame(boites, background=theme.CANVAS)
+        box_head.pack(fill="x", padx=18, pady=(10, 0))
+        tk.Label(box_head, text="DIMENSION", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left")
+        self.box_choice = ttk.Combobox(box_head, state="readonly", width=24,
+                                       font=self.fonts.small)
+        self.box_choice.pack(side="left", padx=10)
+        self.box_choice.bind("<<ComboboxSelected>>", lambda _e: self._show_boxes())
+        self.box_reference = tk.Label(box_head, text="", background=theme.CANVAS,
+                                      foreground=theme.MUTED,
+                                      font=self.fonts.small)
+        self.box_reference.pack(side="left", padx=(18, 0))
+        self.boxplot = BoxPlotChart(boites)
+        self.boxplot.pack(fill="both", expand=True, padx=18, pady=(6, 10))
+
         nuage = self.chart_pages["nuage"]
         controls = tk.Frame(nuage, background=theme.CANVAS)
         controls.pack(fill="x", padx=18, pady=(8, 4))
@@ -407,7 +426,10 @@ class Application(tk.Tk):
         self.legend_frame = tk.Frame(nuage, background=theme.CANVAS)
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
 
-        equite = self.tabs["equite"]
+        # La page defile : les indicateurs de la directive, la repartition
+        # par quartile, le graphique des ecarts et son tableau ne tiennent
+        # plus en un ecran — le tableau se retrouvait ecrase a un pixel.
+        equite = self._scrolling_page(self.tabs["equite"])
         self.equity_frame = tk.Frame(equite, background=theme.CANVAS)
         self.equity_frame.pack(fill="x", pady=(18, 0))
         self.equity_note = tk.Label(equite, text="", background=theme.CANVAS,
@@ -424,10 +446,12 @@ class Application(tk.Tk):
                  text="RÉPARTITION PAR QUARTILE DE RÉMUNÉRATION",
                  background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(anchor="w", padx=18, pady=(0, 6))
-        self.quartile_tree = self._tree(
-            self.quartile_block,
-            ("Quartile", "Effectif", "Part femmes", "Part hommes"),
-            (200, 120, 140, 140), expand=False, height=4)
+        # Quatre barres empilees a la place des quatre lignes du tableau :
+        # meme information, moins de hauteur, et le plafond de verre se voit
+        # au lieu de se calculer. Le detail chiffre reste au survol et dans
+        # l'export.
+        self.quartile_chart = QuartileChart(self.quartile_block)
+        self.quartile_chart.pack(fill="x", padx=18, pady=(0, 10))
         # Le « travail de meme valeur » se lit selon le poste, mais aussi
         # selon le grade ou l'etablissement : l'axe doit pouvoir changer.
         self.category_head = tk.Frame(equite, background=theme.CANVAS)
@@ -445,6 +469,14 @@ class Application(tk.Tk):
                                        font=self.fonts.label,
                                        wraplength=620, justify="left")
         self.category_title.pack(side="left", padx=(8, 0))
+        # Le graphique porte la lecture, le tableau garde les chiffres
+        # exacts : sur un indicateur reglementaire, on ne remplace pas les
+        # seconds par la premiere. Hauteur fixe, pour que le tableau reste
+        # visible sous lui sans faire defiler la page.
+        self.gap_chart = GapChart(equite)
+        self.gap_chart.configure(height=196)
+        self.gap_chart.pack_propagate(False)
+        self.gap_chart.pack(fill="x", padx=18, pady=(0, 4))
         self.category_tree = self._tree(
             equite,
             ("Catégorie", "Femmes", "Hommes", "Écart moyen", "Écart médian"),
@@ -468,6 +500,30 @@ class Application(tk.Tk):
             ("Segment", "Effectif", "Part", "Médiane", "Écart", "Moyenne",
              "Q1", "Q3"),
             (190, 75, 70, 120, 80, 120, 115, 115))
+
+    def _scrolling_page(self, parent: tk.Frame) -> tk.Frame:
+        """Rend `parent` defilant et retourne le cadre ou empiler le contenu.
+
+        Meme montage que la vue d'ensemble : l'ascenseur se reserve sa place
+        avant la zone en expansion, sans quoi il n'obtient aucune largeur, et
+        la molette est liee pour que le bas de page soit atteignable sans
+        viser la gouttiere.
+        """
+        canvas = tk.Canvas(parent, background=theme.CANVAS, highlightthickness=0)
+        bar = ttk.Scrollbar(parent, orient="vertical", command=canvas.yview,
+                            style="Flat.Vertical.TScrollbar")
+        bar.pack(side="right", fill="y", padx=(0, 8), pady=4)
+        canvas.pack(side="left", fill="both", expand=True)
+        theme.attach_scrollbar(canvas, bar, side="right", fill="y",
+                               padx=(0, 8), pady=4, before=canvas)
+        theme.bind_wheel(canvas, self)
+        inner = tk.Frame(canvas, background=theme.CANVAS)
+        window = canvas.create_window((0, 0), window=inner, anchor="nw")
+        inner.bind("<Configure>",
+                   lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
+        canvas.bind("<Configure>",
+                    lambda e: canvas.itemconfigure(window, width=e.width))
+        return inner
 
     def _build_charts(self, parent: tk.Frame) -> None:
         """Un onglet, plusieurs graphiques, choisis dans une barre subordonnee.
@@ -711,6 +767,12 @@ class Application(tk.Tk):
         # sans l'autre, et l'onglet ne tombe que si les deux tombent.
         charts = {
             "distribution": bool(payload["distribution"].get("available")),
+            # Les boites suivent le seuil graphique, plus exigeant que le
+            # seuil de publication : un segment peut figurer dans le tableau
+            # des segments sans qu'on ait le droit d'en tracer la dispersion.
+            "boites": any(row.get("chartable")
+                          for block in segments
+                          for row in block.get("rows", [])),
             "nuage": bool(payload["scatter"].get("available")),
         }
         eligible = {
@@ -1131,7 +1193,7 @@ class Application(tk.Tk):
             self.equity_note.configure(text="")
             self.quartile_block.pack_forget()
             self.category_title.configure(text="")
-            self._fill(self.quartile_tree, [])
+            self.quartile_chart.set_rows([])
             self._fill(self.category_tree, [])
             return
 
@@ -1165,15 +1227,7 @@ class Application(tk.Tk):
         if not self.quartile_block.winfo_manager():
             # « category_head » n'est jamais depaquete : c'est un repere sur.
             self.quartile_block.pack(fill="x", before=self.category_head)
-        self._fill(self.quartile_tree, [
-            (f"Q{item['quartile']}"
-             + (" (rémunérations les plus basses)" if item["quartile"] == 1
-                else " (rémunérations les plus hautes)"
-                if item["quartile"] == len(equity["quartiles"]) else ""),
-             item["headcount"],
-             format_percent(item.get("female_share")),
-             format_percent(item.get("male_share")))
-            for item in equity["quartiles"]])
+        self.quartile_chart.set_rows(equity["quartiles"])
         self._show_categories()
 
     def _show_categories(self) -> None:
@@ -1190,6 +1244,11 @@ class Application(tk.Tk):
         if warning:
             self.category_title.configure(text=warning)
             self._fill(self.category_tree, [])
+            # Le titre porte deja l'explication : un graphique vide qui la
+            # repeterait mot pour mot ferait doublon.
+            if self.gap_chart.winfo_manager():
+                self.gap_chart.pack_forget()
+            self.gap_chart.set_rows([])
             return
         above = block.get("categories_above_threshold", 0)
         self.category_title.configure(
@@ -1207,6 +1266,14 @@ class Application(tk.Tk):
                          _signed_percent(item.get("median_gap"))))
         self._fill(self.category_tree, rows,
                    flagged=lambda position: categories[position]["above_threshold"])
+        # Le graphique lit exactement la meme liste, deja triee par ampleur
+        # d'ecart : l'ordre des barres est celui des lignes du tableau.
+        if not self.gap_chart.winfo_manager():
+            # « category_tree.master » n'est jamais depaquete : c'est un
+            # repere sur pour rendre le graphique a sa place.
+            self.gap_chart.pack(fill="x", padx=18, pady=(0, 4),
+                                before=self.category_tree.master)
+        self.gap_chart.set_rows(categories, threshold)
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
         fields = dimension_fields(self.configuration)
@@ -1248,9 +1315,10 @@ class Application(tk.Tk):
         tk.Label(self.legend_frame, text="MASQUER", background=theme.CANVAS,
                  foreground=theme.FAINT, font=self.fonts.label).pack(side="left",
                                                                padx=(0, 10))
-        from .charts import _PALETTE
         for index, group in enumerate(groups):
-            colour = _PALETTE[index % len(_PALETTE)]
+            # Meme serie que le nuage, prise au theme actif : la pastille de
+            # la legende doit etre exactement la couleur du point.
+            colour = theme.ACTIVE.series_for(index)
             chip = tk.Frame(self.legend_frame, background=theme.CANVAS, cursor="hand2")
             chip.pack(side="left", padx=(0, 14))
             dot = tk.Canvas(chip, width=9, height=9, background=theme.CANVAS,
@@ -1284,11 +1352,34 @@ class Application(tk.Tk):
         self._segments = segments or []
         labels = [segment["label"] for segment in self._segments]
         self.segment_choice.configure(values=labels)
+        self.box_choice.configure(values=labels)
         if labels:
             self.segment_choice.current(0)
+            self.box_choice.current(0)
             self._show_segment()
+            self._show_boxes()
         else:
             self._fill(self.segment_tree, [])
+            self.boxplot.set_rows([])
+
+    def _show_boxes(self) -> None:
+        """Boites a moustaches de la dimension choisie.
+
+        Elles lisent le meme bloc que l'onglet Segments : les percentiles par
+        segment sont deja calcules, et un chiffre affiche a deux endroits
+        doit venir du meme calcul.
+        """
+        index = self.box_choice.current()
+        if index < 0 or index >= len(self._segments):
+            self.boxplot.set_rows([])
+            return
+        block = self._segments[index]
+        currency = block.get("currency", "EUR")
+        reference = block.get("reference_median")
+        self.box_reference.configure(
+            text=("Médiane de référence : "
+                  f"{format_money(reference, currency)}" if reference else ""))
+        self.boxplot.set_rows(block["rows"], currency)
 
     def _show_segment(self) -> None:
         index = self.segment_choice.current()
