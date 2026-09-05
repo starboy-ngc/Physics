@@ -464,12 +464,38 @@ class TestResettingTheChoices(unittest.TestCase):
         self.app.update()
         self.assertIn("1", self.app.filter_summary.cget("text"))
 
-    def test_the_reset_link_only_shows_when_it_can_do_something(self):
-        self.assertEqual(self.app.reset_filters_link.cget("text"), "")
+    def test_the_reset_link_keeps_its_place_and_its_label(self):
+        """Le defaut signale : l'action disparaissait sous le curseur au
+        moment ou l'on cliquait, ce qui se lit comme un bouton instable."""
+        from compensation_analytics.ui.theme import ACCENT, FAINT
+
+        link = self.app.reset_filters_link
+        self.assertEqual(link.cget("text"), "Réinitialiser")
+        self.assertEqual(link.cget("foreground"), FAINT)
+        self.assertFalse(link.enabled)
+
         self.app.filter_vars["business_unit"].set("France")
         self.app.update()
-        self.assertEqual(self.app.reset_filters_link.cget("text"),
-                         "Réinitialiser")
+        self.assertEqual(link.cget("text"), "Réinitialiser")
+        self.assertEqual(link.cget("foreground"), ACCENT)
+        self.assertTrue(link.enabled)
+
+        self.app.reset_filters()
+        self.app.update()
+        self.assertEqual(link.cget("text"), "Réinitialiser")
+        self.assertEqual(link.cget("foreground"), FAINT)
+
+    def test_an_extinguished_action_does_nothing_when_clicked(self):
+        link = self.app.reset_filters_link
+        self.app.filter_vars["business_unit"].set("France")
+        self.app.update()
+        link.event_generate("<Button-1>")
+        self.app.update()
+        self.assertEqual(self.app._current_filters(), [])
+        # Eteinte, elle ne rappelle plus l'action.
+        link.event_generate("<Button-1>")
+        self.app.update()
+        self.assertEqual(self.app._current_filters(), [])
 
     def test_toggling_outputs_selects_none_then_all(self):
         """Les sorties sont toutes cochees au depart : la bascule decoche."""

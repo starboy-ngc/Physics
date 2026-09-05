@@ -168,10 +168,35 @@ class Application(tk.Tk):
         link = tk.Label(row, text=action, background=GROUND, foreground=ACCENT,
                         font=self.fonts.small, cursor="hand2")
         link.pack(side="right", padx=(0, 4))
-        link.bind("<Button-1>", lambda _e: command())
-        link.bind("<Enter>", lambda _e: link.configure(foreground=ACCENT_HOVER))
-        link.bind("<Leave>", lambda _e: link.configure(foreground=ACCENT))
+        # L'action garde toujours sa place et son libelle. Elle s'eteint
+        # quand elle n'a rien a faire : la faire disparaitre sous le curseur
+        # au moment ou l'on clique donne l'impression d'un bouton instable.
+        link.enabled = True
+
+        def clic(_event) -> None:
+            if link.enabled:
+                command()
+
+        def survol(_event) -> None:
+            if link.enabled:
+                link.configure(foreground=ACCENT_HOVER)
+
+        def sortie(_event) -> None:
+            link.configure(foreground=ACCENT if link.enabled else FAINT)
+
+        link.bind("<Button-1>", clic)
+        link.bind("<Enter>", survol)
+        link.bind("<Leave>", sortie)
         return link
+
+    @staticmethod
+    def _set_action_enabled(link: Optional[tk.Label], enabled: bool) -> None:
+        """Allume ou eteint une action, sans jamais la retirer de l'ecran."""
+        if link is None:
+            return
+        link.enabled = enabled
+        link.configure(foreground=ACCENT if enabled else FAINT,
+                       cursor="hand2" if enabled else "")
 
     def _build_sidebar(self, parent: tk.Widget) -> None:
         parent.configure(background=GROUND)
@@ -221,6 +246,8 @@ class Application(tk.Tk):
 
         self.reset_filters_link = self._section(
             steps, 2, "Filtrer", "Réinitialiser", self.reset_filters)
+        # Eteinte tant qu'aucun critere n'est pose.
+        self._set_action_enabled(self.reset_filters_link, False)
         self.filter_summary = tk.Label(steps, text="", background=GROUND,
                                        foreground=ACCENT, font=self.fonts.small)
         self.filter_summary.pack(anchor="w", pady=(0, 4))
@@ -269,9 +296,7 @@ class Application(tk.Tk):
         l'analyse porte sur une population qu'on ne croit plus filtrer.
         """
         active = len(self._current_filters())
-        if self.reset_filters_link is not None:
-            self.reset_filters_link.configure(
-                text="Réinitialiser" if active else "")
+        self._set_action_enabled(self.reset_filters_link, bool(active))
         self.filter_summary.configure(
             text="" if not active
             else f"{active} critère(s) actif(s)")
