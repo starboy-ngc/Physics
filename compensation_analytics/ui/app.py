@@ -172,7 +172,10 @@ class Application(tk.Tk):
         content = Card(body, padding=0)
         content.pack(side="left", fill="both", expand=True, padx=(26, 8))
         self.tabbar = TabBar(content.inner, self.fonts, on_change=self._show_tab)
-        self.tabbar.pack(fill="x")
+        # De l'air sous le filet : colle a lui, le contenu donnait une page
+        # entassee en haut. La marge est posee une fois ici plutot que dans
+        # chacune des pages, qui n'avaient d'ailleurs pas la meme.
+        self.tabbar.pack(fill="x", pady=(0, 10))
         # Un onglet retire doit s'expliquer la ou l'utilisateur regarde,
         # au-dessus des pages, et non dans le pied de page ou l'oeil ne va
         # pas le chercher.
@@ -370,9 +373,13 @@ class Application(tk.Tk):
         self.overview_frame = tk.Frame(overview, background=theme.CANVAS)
         window = overview.create_window((18, 18), window=self.overview_frame,
                                         anchor="nw")
+        # « bbox("all") » commence au premier element, soit (18, 18) : la
+        # zone de defilement demarrait donc apres la marge, qui disparaissait
+        # des le premier affichage — le titre venait coller au filet des
+        # onglets. On ancre la zone a l'origine, et on rend la marge du bas.
         self.overview_frame.bind(
             "<Configure>",
-            lambda _e: overview.configure(scrollregion=overview.bbox("all")))
+            lambda _e: self._scroll_region(overview))
         overview.bind("<Configure>",
                       lambda e: overview.itemconfigure(window,
                                                        width=e.width - 36))
@@ -487,7 +494,7 @@ class Application(tk.Tk):
             (280, 100, 100, 140, 140))
 
         head = tk.Frame(self.tabs["segments"], background=theme.CANVAS)
-        head.pack(fill="x", padx=18, pady=(16, 8))
+        head.pack(fill="x", padx=18, pady=(8, 8))
         tk.Label(head, text="DIMENSION", background=theme.CANVAS, foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
         self.segment_choice = ttk.Combobox(head, state="readonly", width=24,
@@ -504,6 +511,13 @@ class Application(tk.Tk):
             ("Segment", "Effectif", "Part", "Médiane", "Écart", "Moyenne",
              "Q1", "Q3"),
             (190, 75, 70, 120, 80, 120, 115, 115))
+
+    @staticmethod
+    def _scroll_region(canvas: tk.Canvas) -> None:
+        """Zone de defilement ancree a l'origine, marges comprises."""
+        box = canvas.bbox("all")
+        if box:
+            canvas.configure(scrollregion=(0, 0, box[2] + 18, box[3] + 18))
 
     def _scrolling_page(self, parent: tk.Frame) -> tk.Frame:
         """Rend `parent` defilant et retourne le cadre ou empiler le contenu.
@@ -524,7 +538,7 @@ class Application(tk.Tk):
         inner = tk.Frame(canvas, background=theme.CANVAS)
         window = canvas.create_window((0, 0), window=inner, anchor="nw")
         inner.bind("<Configure>",
-                   lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
+                   lambda _e: self._scroll_region(canvas))
         canvas.bind("<Configure>",
                     lambda e: canvas.itemconfigure(window, width=e.width))
         return inner
