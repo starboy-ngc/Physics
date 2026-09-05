@@ -807,22 +807,6 @@ class Application(tk.Tk):
                  "salariés ; élargissez le filtre pour les afficher.")
         self.notice.pack(fill="x", after=self.tabbar)
 
-    def _check_labels(self, labels, width: int, per_row: int) -> None:
-        """Journalise un libelle trop long pour sa colonne.
-
-        Le rendu ne peut pas retrecir un intertitre sans le rendre illisible :
-        mieux vaut le signaler au journal technique, ou il sera vu, que de le
-        laisser tronquer en silence.
-        """
-        import tkinter.font as tkfont
-
-        column = (max(width, 600) - 14 * (per_row - 1)) / per_row
-        measure = tkfont.Font(root=self, font=self.fonts.label).measure
-        for label in labels:
-            if measure(label) > column:
-                log_event("interface", "kpi_label", status="ETROIT",
-                          detail=f"{label[:24]}")
-
     def _kpi_font(self, values, width: int, per_row: int):
         """Plus grande taille a laquelle aucune valeur n'est rognee.
 
@@ -932,14 +916,19 @@ class Application(tk.Tk):
 
     def _show_overview(self, population: Dict[str, Any],
                        salary: Dict[str, Any]) -> None:
-        """Population et remuneration sur une seule page.
+        """Population et remuneration sur une seule page, en deux colonnes.
 
-        Les deux se lisent ensemble : un salaire median ne veut rien dire
-        sans l'age et l'anciennete de la population qui le porte. Mais les
-        aligner sans les distinguer donnait huit chiffres de meme poids,
-        sans point d'entree. Ils sont donc regroupes sous leur sujet, et les
-        repartitions passent en barres : c'est la forme d'une structure
-        d'age qui se lit d'abord, pas ses pourcentages.
+        Le bandeau d'indicateurs qui coiffait la page a disparu : il posait
+        six chiffres au-dessus de deux colonnes qui parlaient deja d'eux, et
+        repetait la mediane que l'echelle affiche trois centimetres plus bas.
+        Chaque colonne porte donc les siens, en tete, sous la meme forme que
+        les tableaux qui suivent.
+
+        Rien n'y figure deux fois. Les scalaires de population — effectif,
+        ages, anciennetes — sont reunis dans une seule liste au lieu d'etre
+        partages entre un bandeau et les en-tetes des deux pyramides ; et la
+        liste de remuneration ne reprend ni la mediane ni les percentiles,
+        qui sont l'echelle elle-meme.
         """
         for child in self.overview_frame.winfo_children():
             child.destroy()
@@ -952,29 +941,6 @@ class Application(tk.Tk):
                      justify="left").pack(anchor="w")
             return
 
-        # Population a gauche, remuneration a droite : on decrit qui l'on
-        # analyse avant de dire combien.
-        groups = []
-        if not population.get("masked"):
-            groups.append(("Population", [
-                ("Effectif", str(population.get("headcount", 0)), "headcount"),
-                ("Âge médian", format_years(population.get("age_median")),
-                 "age_median"),
-                ("Ancienneté médiane",
-                 format_years(population.get("tenure_median")),
-                 "tenure_median"),
-            ]))
-        if not salary.get("masked"):
-            groups.append(("Rémunération", [
-                ("Masse salariale", format_money(salary.get("payroll"), currency),
-                 "payroll"),
-                ("Salaire moyen", format_money(salary.get("mean"), currency),
-                 "mean"),
-                ("Salaire médian", format_money(salary.get("median"), currency),
-                 "median"),
-            ]))
-        self._grouped_kpis(self.overview_frame, groups)
-
         # Deux colonnes independantes, et non une grille : dans une grille,
         # la rangee prend la hauteur du plus grand des deux blocs, et le bloc
         # court laisse un trou au milieu de la page. Empilees, chaque colonne
@@ -986,20 +952,44 @@ class Application(tk.Tk):
         right = tk.Frame(columns, background=theme.CANVAS)
         right.pack(side="left", fill="both", expand=True)
 
-        spread = salary.get("dispersion") or {}
-        variation = spread.get("coefficient_of_variation")
         if not population.get("masked"):
-            self._pyramid_panel(
-                left, "Pyramide des âges", population.get("age_bands", []),
-                ("Âge moyen", format_years(population.get("age_mean")),
-                 "age_mean"), key="age_bands")
-            self._pyramid_panel(
-                left, "Structure d'ancienneté",
-                population.get("tenure_bands", []),
-                ("Ancienneté moyenne",
-                 format_years(population.get("tenure_mean")), "tenure_mean"),
-                key="tenure_bands")
+            self._ruled_panel(
+                left, "Population", (), [
+                    ("Effectif", str(population.get("headcount", 0)),
+                     "headcount"),
+                    ("Âge médian", format_years(population.get("age_median")),
+                     "age_median"),
+                    ("Âge moyen", format_years(population.get("age_mean")),
+                     "age_mean"),
+                    ("Ancienneté médiane",
+                     format_years(population.get("tenure_median")),
+                     "tenure_median"),
+                    ("Ancienneté moyenne",
+                     format_years(population.get("tenure_mean")),
+                     "tenure_mean"),
+                ], emphasis="Effectif", key="population_summary")
+            # Les pyramides n'ont plus de chiffre en tete : leurs moyennes
+            # sont juste au-dessus, dans la liste.
+            self._pyramid_panel(left, "Pyramide des âges",
+                                population.get("age_bands", []), None,
+                                key="age_bands")
+            self._pyramid_panel(left, "Structure d'ancienneté",
+                                population.get("tenure_bands", []), None,
+                                key="tenure_bands")
+
         if not salary.get("masked"):
+            spread = salary.get("dispersion") or {}
+            variation = spread.get("coefficient_of_variation")
+            # Ni la mediane ni un percentile ici : ils sont l'echelle, juste
+            # en dessous. Ne restent que les deux chiffres qui n'y figurent
+            # pas.
+            self._ruled_panel(
+                right, "Rémunération", (), [
+                    ("Masse salariale",
+                     format_money(salary.get("payroll"), currency), "payroll"),
+                    ("Salaire moyen",
+                     format_money(salary.get("mean"), currency), "mean"),
+                ], key="salary_summary")
             self._ruled_panel(
                 right, "Échelle de rémunération", ("Percentile", "Valeur"),
                 [("Minimum", format_money(salary.get("min"), currency), "min")]
@@ -1009,10 +999,6 @@ class Application(tk.Tk):
                    for entry in salary.get("published_percentiles", [])]
                 + [("Maximum", format_money(salary.get("max"), currency), "max")],
                 emphasis="Médiane (P50)", key="salary_scale")
-            # L'ecart-type a quitte ce tableau : il se lit en euros, comme la
-            # mediane juste au-dessus, sans etre du meme ordre, et le
-            # coefficient de variation dit la meme dispersion sous une forme
-            # comparable d'une population a l'autre. Il reste dans l'export.
             self._ruled_panel(
                 right, "Dispersion", ("Indicateur", "Valeur"), [
                     ("Q3 - Q1",
@@ -1030,58 +1016,6 @@ class Application(tk.Tk):
                                     else variation * 100),
                      "coefficient_of_variation"),
                 ], key="dispersion")
-
-    def _grouped_kpis(self, parent, groups) -> None:
-        """Indicateurs ranges sous leur sujet, separes d'un filet vertical.
-
-        Huit chiffres alignes se valent tous ; groupes sous « Rémunération »
-        et « Population », ils se cherchent du regard.
-        """
-        band = tk.Frame(parent, background=theme.CANVAS)
-        band.pack(fill="x", pady=(0, 22))
-        parent.update_idletasks()
-        cells = sum(len(pairs) for _t, pairs in groups) or 1
-        values = [value for _title, pairs in groups
-                  for _label, value, _key in pairs]
-        font = self._kpi_font(values, band.winfo_width(), cells)
-        # Un libelle rogne est aussi genant qu'une valeur rognee : la largeur
-        # disponible est verifiee sur les deux.
-        self._check_labels([label.upper() for _t, pairs in groups
-                            for label, _v, _k in pairs],
-                           band.winfo_width(), cells)
-        column = 0
-        for index, (title, pairs) in enumerate(groups):
-            if index:
-                theme.rule(band, vertical=True).grid(
-                    row=0, column=column, rowspan=2, sticky="ns", padx=18)
-                column += 1
-            tk.Label(band, text=title.upper(), background=theme.CANVAS,
-                     foreground=theme.ACCENT, font=self.fonts.label).grid(
-                         row=0, column=column, columnspan=len(pairs),
-                         sticky="w", pady=(0, 8))
-            for position, (label, value, key) in enumerate(pairs):
-                cell = tk.Frame(band, background=theme.CANVAS)
-                # Pas de marge apres le dernier d'un groupe : le filet et son
-                # ecart la fournissent deja, et chaque pixel rendu evite de
-                # rogner « Ancienneté médiane ».
-                last = position == len(pairs) - 1
-                cell.grid(row=1, column=column, sticky="nsew",
-                          padx=(0, 0 if last else 14))
-                band.grid_columnconfigure(column, weight=1, uniform="kpi")
-                note = _hint(key, label)
-                # L'explication est posee sur le libelle comme sur le chiffre :
-                # on survole l'un ou l'autre selon celui qui intrigue. Elle
-                # s'affiche sous le bloc, jamais par-dessus le chiffre.
-                self.hints.attach(
-                    _packed(tk.Label(cell, text=label.upper(),
-                                     background=theme.CANVAS, foreground=theme.FAINT,
-                                     font=self.fonts.label), anchor="w"),
-                    note, anchor=cell)
-                self.hints.attach(
-                    _packed(tk.Label(cell, text=value, background=theme.CANVAS,
-                                     foreground=theme.INK, font=font),
-                            anchor="w", pady=(1, 0)), note, anchor=cell)
-                column += 1
 
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:
@@ -1121,13 +1055,18 @@ class Application(tk.Tk):
         table.pack(fill="x")
         table.grid_columnconfigure(0, weight=1)
 
+        # En-tetes facultatifs : sur une liste de deux colonnes, « Indicateur »
+        # et « Valeur » ne disent rien que la lecture n'ait deja compris. Ils
+        # ne servent que la ou plusieurs tableaux se suivent et se comparent.
+        columns = max(len(headers), 2)
         for index, name in enumerate(headers):
             tk.Label(table, text=name.upper(), background=theme.CANVAS,
                      foreground=theme.FAINT, font=self.fonts.label,
                      anchor="w" if index == 0 else "e").grid(
                          row=0, column=index, sticky="ew", pady=(0, 7))
-        theme.rule(table).grid(row=1, column=0, columnspan=len(headers),
-                               sticky="ew")
+        if headers:
+            theme.rule(table).grid(row=1, column=0, columnspan=columns,
+                                   sticky="ew")
 
         for position, (label, value, entry_key) in enumerate(rows):
             highlighted = emphasis is not None and label == emphasis
@@ -1142,7 +1081,7 @@ class Application(tk.Tk):
                             pady=6, padx=(0, 0) if index else (0, 24))
                 self.hints.attach(widget, note)
         theme.rule(table).grid(row=2 + len(rows), column=0,
-                               columnspan=len(headers), sticky="ew", pady=(4, 0))
+                               columnspan=columns, sticky="ew", pady=(4, 0))
 
     def _pyramid_panel(self, parent, title, bands, extra,
                        key: Optional[str] = None) -> None:

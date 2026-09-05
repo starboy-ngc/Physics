@@ -85,6 +85,15 @@ GLOSSARY: Dict[str, Entry] = {
     "p90": Entry("90 % des salariés sont rémunérés en dessous de ce montant.",
                  f"Percentile 90. {_PERCENTILE_METHOD}"),
 
+    "population_summary": Entry(
+        "Qui l'on analyse : l'effectif retenu par les filtres, et la façon "
+        "dont son âge et son ancienneté se situent.",
+        "Médiane et moyenne des âges et des anciennetés de la population "
+        "filtrée."),
+    "salary_summary": Entry(
+        "Les deux montants qui ne figurent pas dans l'échelle ci-dessous : "
+        "ce que pèse la population, et sa moyenne.",
+        "Somme et moyenne du champ d'analyse sur les salariés valorisés."),
     "salary_scale": Entry(
         "Les niveaux de rémunération observés, du plus bas au plus haut. La "
         "médiane est mise en avant : c'est elle qui sert de référence de "

@@ -682,8 +682,10 @@ class TestTheMergedOverview(unittest.TestCase):
         for expected in ("ÉCHELLE DE RÉMUNÉRATION", "DISPERSION",
                          "PYRAMIDE DES ÂGES", "STRUCTURE D'ANCIENNETÉ"):
             self.assertIn(expected, titles)
-        for expected in ("MASSE SALARIALE", "ÂGE MÉDIAN",
-                         "ANCIENNETÉ MÉDIANE", "EFFECTIF"):
+        # Les indicateurs ne coiffent plus la page : ils sont en tete de leur
+        # colonne, sous la meme forme que les tableaux qui suivent.
+        for expected in ("Masse salariale", "Âge médian",
+                         "Ancienneté médiane", "Effectif"):
             self.assertIn(expected, titles)
 
     def test_the_indicators_are_grouped_under_their_subject(self):
@@ -701,25 +703,39 @@ class TestTheMergedOverview(unittest.TestCase):
                 yield from walk(child)
         return [item for item in walk(root) if item.winfo_class() == "Label"]
 
-    def test_neither_label_nor_value_is_clipped(self):
-        """Une masse salariale a huit chiffres depassait sa colonne, et
-        « Ancienneté médiane » aussi : les deux sont mesures."""
-        import tkinter.font as tkfont
+    def test_no_figure_is_shown_twice(self):
+        """Aucun chiffre ne doit figurer deux fois sur la page.
 
-        band = self.app.overview_frame.winfo_children()[0]
-        checked = 0
-        for cell in band.winfo_children():
-            parts = cell.winfo_children()
-            if len(parts) != 2:
-                continue
-            for widget in parts:
-                measured = tkfont.Font(
-                    root=self.app, font=widget.cget("font")).measure(
-                        widget.cget("text"))
-                self.assertLessEqual(measured, cell.winfo_width(),
-                                     widget.cget("text"))
-                checked += 1
-        self.assertGreaterEqual(checked, 8)
+        La mediane s'affichait en indicateur et, trois centimetres plus bas,
+        en ligne de l'echelle ; les moyennes d'age et d'anciennete etaient
+        partagees entre un bandeau et les en-tetes des pyramides. Ce test
+        empeche la redondance de revenir.
+        """
+        texts = [item.cget("text")
+                 for item in self._all_labels(self.app.overview_frame)]
+        # C'est le libelle qui identifie une information, pas sa valeur :
+        # « Âge médian » et « Âge moyen » peuvent tomber sur le meme nombre
+        # sans que rien ne soit redondant. En revanche un meme libelle a deux
+        # endroits, c'est la meme information affichee deux fois.
+        entetes = {"INDICATEUR", "VALEUR", "PERCENTILE", "FEMMES", "HOMMES"}
+        libelles = [text for text in texts
+                    if text.upper() not in entetes
+                    and not any(char.isdigit() for char in text)
+                    and text.strip()]
+        doublons = {name for name in libelles if libelles.count(name) > 1}
+        self.assertEqual(doublons, set(), "information affichée deux fois")
+        self.assertGreaterEqual(len(libelles), 15)
+
+    def test_the_population_figures_sit_in_one_place(self):
+        """Mediane et moyenne d'age se lisent l'une sous l'autre, et non de
+        part et d'autre de la page."""
+        texts = [item.cget("text")
+                 for item in self._all_labels(self.app.overview_frame)]
+        for expected in ("Âge médian", "Âge moyen", "Ancienneté médiane",
+                         "Ancienneté moyenne"):
+            self.assertIn(expected, texts)
+        self.assertLess(texts.index("Âge moyen"),
+                        texts.index("PYRAMIDE DES ÂGES"))
 
     def test_the_pay_ladder_runs_from_minimum_to_maximum(self):
         """Minimum et maximum sont a leur place dans l'echelle, pas en
