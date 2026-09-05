@@ -22,7 +22,41 @@ class TestPopulationMetrics(unittest.TestCase):
         self.assertEqual(bands["60+"], 1)
         tenure = {item["label"]: item["count"] for item in result["tenure_bands"]}
         self.assertEqual(tenure["<2 ans"], 2)
-        self.assertEqual(tenure[">10 ans"], 2)
+        # L'anciennete maximale vaut 20 ans : le decoupage se prolonge, et
+        # ne range plus 12 ans et 20 ans dans une meme tranche « > 10 ans ».
+        self.assertEqual(tenure["10-15 ans"], 1)
+        self.assertEqual(tenure[">15 ans"], 1)
+        self.assertNotIn(">10 ans", tenure)
+
+    def test_short_careers_keep_the_configured_bands(self):
+        """Rien n'est engendre quand la population ne depasse pas la derniere
+        tranche : le decoupage configure reste intact."""
+        rows = [make_row(index, age=30 + index, tenure=tenure)
+                for index, tenure in enumerate([0.5, 1, 3, 4, 7, 8, 11])]
+        result = metrics.calculate_population_metrics(
+            build_population(rows, make_config()), make_config())
+        labels = [item["label"] for item in result["tenure_bands"]]
+        self.assertEqual(labels, ["<2 ans", "2-5 ans", "5-10 ans", ">10 ans"])
+
+    def test_the_extension_can_be_switched_off(self):
+        config = make_config({"tenure_parameters.auto_extend": False})
+        rows = [make_row(index, age=40, tenure=tenure)
+                for index, tenure in enumerate([1, 3, 6, 9, 12, 20, 30])]
+        result = metrics.calculate_population_metrics(
+            build_population(rows, config), config)
+        tenure = {item["label"]: item["count"] for item in result["tenure_bands"]}
+        self.assertEqual(tenure[">10 ans"], 3)
+
+    def test_the_step_is_configurable(self):
+        config = make_config({"tenure_parameters.extend_step": 10})
+        rows = [make_row(index, age=50, tenure=tenure)
+                for index, tenure in enumerate([1, 4, 7, 11, 15, 25, 33])]
+        result = metrics.calculate_population_metrics(
+            build_population(rows, config), config)
+        labels = [item["label"] for item in result["tenure_bands"]]
+        self.assertIn("10-20 ans", labels)
+        self.assertIn("20-30 ans", labels)
+        self.assertIn(">30 ans", labels)
 
     def test_shares_sum_to_one_hundred(self):
         rows = [make_row(i, age=30 + i % 30) for i in range(50)]
@@ -138,6 +172,15 @@ class TestDistributionAndScatter(unittest.TestCase):
         dataset = metrics.scatter_dataset(population, config)
         self.assertTrue(dataset["available"])
         self.assertEqual(len(dataset["points"]), 40)
+        # La droite de tendance n'est plus tracee par defaut : elle vient de
+        # la meme regression que le R2, retire parce qu'il n'apprenait rien.
+        self.assertIsNone(dataset["trend"])
+
+    def test_the_trend_line_can_be_switched_back_on(self):
+        config = make_config({"chart_parameters.show_trend_line": True})
+        rows = [make_row(i, tenure=i % 20, salary=30000 + (i % 20) * 1000)
+                for i in range(40)]
+        dataset = metrics.scatter_dataset(build_population(rows, config), config)
         self.assertGreater(dataset["trend"]["r_squared"], 0.9)
 
 

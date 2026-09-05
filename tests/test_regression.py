@@ -27,6 +27,14 @@ ROWS = 1500
 TOLERANCE = 1e-6
 
 
+def _regression_r2(points):
+    from compensation_analytics.core import statistics_engine as stats
+
+    trend = stats.linear_regression([point["x"] for point in points],
+                                    [point["y"] for point in points])
+    return trend["r_squared"] if trend else None
+
+
 def build_snapshot():
     """Execute le pipeline sur le jeu de reference et extrait les valeurs cles."""
     directory = tempfile.mkdtemp()
@@ -56,7 +64,10 @@ def build_snapshot():
         "dispersion": salary["dispersion"],
         "qualite_statut": payload["quality"]["statut"],
         "nb_atypiques": len(payload["distribution"]["outliers"]),
-        "tendance_r2": payload["scatter"]["trend"]["r_squared"],
+        # La droite de tendance n'est plus publiee, mais la regression reste
+        # calculable : c'est elle que la reference surveille, pour detecter
+        # une derive du calcul et non un changement de presentation.
+        "tendance_r2": _regression_r2(payload["scatter"]["points"]),
         "segments": {
             segment["field"]: {
                 row["segment"]: [row["headcount"], row["salary"].get("median")]

@@ -92,6 +92,13 @@ DEFAULTS: Dict[str, Any] = {
             {"label": "50-59", "min": 50, "max": 59, "max_inclusive": True},
             {"label": "60+", "min": 60, "max": None},
         ],
+        # Meme mecanisme que pour l'anciennete, desactive par defaut : la
+        # tranche « 60+ » recouvre une realite, alors que « > 10 ans »
+        # d'anciennete n'en recouvre pas une.
+        "auto_extend": False,
+        "extend_step": 10,
+        "band_label": "{low}-{high}",
+        "open_band_label": "{low}+",
         "reference_date": None,
     },
     "tenure_parameters": {
@@ -101,6 +108,16 @@ DEFAULTS: Dict[str, Any] = {
             {"label": "5-10 ans", "min": 5, "max": 10},
             {"label": ">10 ans", "min": 10, "max": None},
         ],
+        # Une derniere tranche « > 10 ans » range ensemble une anciennete de
+        # 11 ans et une de 30 : la comparaison n'a plus de sens des que la
+        # population contient des carrieres longues. Les tranches suivantes
+        # sont donc engendrees au pas ci-dessous, jusqu'a couvrir
+        # l'anciennete reellement observee — et seulement si elle depasse.
+        "auto_extend": True,
+        "extend_step": 5,
+        "extend_max_bands": 10,
+        "band_label": "{low}-{high} ans",
+        "open_band_label": ">{low} ans",
         "reference_date": None,
     },
     "percentile_parameters": {
@@ -129,7 +146,10 @@ DEFAULTS: Dict[str, Any] = {
         "scatter_y": "base_salary",
         "scatter_color_by": "business_unit",
         "scatter_max_points": 5000,
-        "show_trend_line": True,
+        # La droite de tendance est issue de la meme regression que le R2,
+        # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
+        # a affirmer une tendance sans permettre d'en juger la solidite.
+        "show_trend_line": False,
     },
     "export_parameters": {
         "output_directory": "output",

@@ -384,15 +384,17 @@ class TestSummaryComposition(unittest.TestCase):
 
 
 class TestNoRSquaredInDocuments(unittest.TestCase):
-    """Le R2 ne figure plus dans les restitutions.
+    """Ni le R2, ni la droite de tendance ne figurent dans les restitutions.
 
-    Il demandait une explication pour etre lu, et sans cette explication il
-    n'apportait rien. La pente chiffree partait avec lui : annoncee seule,
-    sur une population melangeant tous les grades, elle affirmerait un lien
-    que rien n'etaye. La droite reste comme repere visuel.
+    Le R2 demandait une explication pour etre lu, et sans cette explication
+    il n'apportait rien. La pente chiffree est partie avec lui : annoncee
+    seule, sur une population melangeant tous les grades, elle affirmerait
+    un lien que rien n'etaye. La droite elle-meme a suivi, pour la meme
+    raison — tracee sans son R2, elle affirme une tendance sans permettre
+    d'en juger la solidite.
 
     Le calcul demeure disponible dans `statistics_engine.linear_regression`
-    et dans les donnees d'analyse, au meme titre que l'ecart-type : une
+    et se reactive par configuration, au meme titre que l'ecart-type : une
     statistique technique, pas un indicateur publie.
     """
 
@@ -422,11 +424,14 @@ class TestNoRSquaredInDocuments(unittest.TestCase):
             streams += zlib.decompress(data[begin:data.index(b"\nendstream", begin)])
         self.assertNotIn(b"R2", streams)
 
-    def test_the_trend_line_is_still_drawn(self):
-        dataset = self.payload["scatter"]
-        self.assertIsNotNone(dataset.get("trend"))
+    def test_the_trend_line_is_no_longer_drawn(self):
+        self.assertIsNone(self.payload["scatter"].get("trend"))
         svg = render_slides_html(build_deck(self.payload), self.payload)
-        self.assertIn("stroke-dasharray", svg)
+        self.assertNotIn("stroke-dasharray", svg)
 
     def test_the_statistic_remains_available_to_the_engine(self):
-        self.assertIn("r_squared", self.payload["scatter"]["trend"])
+        """Retiree de la restitution, la regression reste calculable : on ne
+        supprime pas une formule parce qu'on cesse de la publier."""
+        from compensation_analytics.core import statistics_engine as stats
+        trend = stats.linear_regression([1.0, 2.0, 3.0], [10.0, 20.0, 30.0])
+        self.assertIn("r_squared", trend)

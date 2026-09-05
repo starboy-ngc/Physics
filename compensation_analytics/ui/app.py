@@ -44,7 +44,8 @@ from ..core.traceability import write_manifest
 from . import theme
 from .charts import HistogramChart, ScatterChart
 from .theme import (ACCENT, CANVAS, CRIT, FAINT, GROUND, INK, INK_SOFT, LINE,
-                    MUTED, OK, STRIPE, WARN, Card, CheckRow, Fonts, TabBar)
+                    MUTED, OK, STRIPE, WARN, WARN_SOFT, Card, CheckRow, Fonts,
+                    TabBar)
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de filtre d'une valeur qui,
@@ -132,6 +133,13 @@ class Application(tk.Tk):
         content.pack(side="left", fill="both", expand=True, padx=(26, 8))
         self.tabbar = TabBar(content.inner, self.fonts, on_change=self._show_tab)
         self.tabbar.pack(fill="x")
+        # Un onglet retire doit s'expliquer la ou l'utilisateur regarde. Le
+        # pied de page ne convient pas : la phrase y chevauchait la mention
+        # de traitement local.
+        self.notice = tk.Label(content.inner, background=WARN_SOFT,
+                               foreground=WARN, font=self.fonts.small,
+                               justify="left", anchor="w", padx=14, pady=9,
+                               wraplength=900)
         self.pages = tk.Frame(content.inner, background=CANVAS)
         self.pages.pack(fill="both", expand=True)
         self._build_pages()
@@ -463,7 +471,6 @@ class Application(tk.Tk):
         self.result = payload
         self.export_button.state(["!disabled"])
         self._render_results()
-        self._set_state(f"Analyse terminée · {len(self.result.filtered)} salariés")
 
     # ------------------------------------------------------------ affichage
 
@@ -476,6 +483,43 @@ class Application(tk.Tk):
         self.histogram.set_distribution(payload["distribution"], currency)
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
+        self._apply_eligibility(payload)
+
+    def _apply_eligibility(self, payload: Dict[str, Any]) -> None:
+        """Retire les onglets dont le contenu ne peut pas etre publie.
+
+        Les seuils ne sont pas re-evalues ici : on lit ce que le moteur a
+        deja decide. Un onglet vide, ou porteur d'un seul avertissement,
+        promet un resultat qui n'existe pas — mais le retirer en silence
+        laisserait croire a une disparition inexpliquee, d'ou le message.
+        """
+        segments = payload.get("segments") or []
+        publishable = any(any(not row.get("masked") for row in block.get("rows", []))
+                          for block in segments)
+        eligible = {
+            "population": not payload["population"].get("masked"),
+            "remuneration": not payload["salary"].get("masked"),
+            "distribution": bool(payload["distribution"].get("available")),
+            "nuage": bool(payload["scatter"].get("available")),
+            "segments": publishable,
+            "qualite": True,
+        }
+        for key, allowed in eligible.items():
+            self.tabbar.set_visible(key, allowed)
+
+        hidden = [label for key, label in TABS if not eligible[key]]
+        headcount = payload["population"].get("headcount", 0)
+        self._set_state(f"Analyse terminée · {headcount} salariés"
+                        + (f" · {len(hidden)} onglet(s) masqué(s)" if hidden else ""))
+        if not hidden:
+            self.notice.pack_forget()
+            return
+        listed = ", ".join(hidden)
+        self.notice.configure(
+            text=f"{listed} : effectif insuffisant pour publier ces résultats. "
+                 f"Les seuils de confidentialité s'appliquent à {headcount} "
+                 "salariés ; élargissez le filtre pour les afficher.")
+        self.notice.pack(fill="x", after=self.tabbar)
 
     def _kpis(self, parent, pairs) -> None:
         for child in parent.winfo_children():

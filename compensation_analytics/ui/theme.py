@@ -236,6 +236,8 @@ class TabBar(tk.Frame):
     def add(self, key: str, text: str) -> None:
         holder = tk.Frame(self._row, background=CANVAS)
         holder.pack(side="left")
+        self._visible: Dict[str, bool] = getattr(self, "_visible", {})
+        self._visible[key] = True
         label = tk.Label(holder, text=text, background=CANVAS, foreground=MUTED,
                          font=self.fonts.body, padx=16, pady=10, cursor="hand2")
         label.pack()
@@ -244,7 +246,8 @@ class TabBar(tk.Frame):
         label.bind("<Button-1>", lambda _e, k=key: self.select(k))
         label.bind("<Enter>", lambda _e, k=key: self._hover(k, True))
         label.bind("<Leave>", lambda _e, k=key: self._hover(k, False))
-        self._tabs[key] = {"label": label, "underline": underline}
+        self._tabs[key] = {"label": label, "underline": underline,
+                           "holder": holder}
         self._order.append(key)
         if self.active is None:
             self.select(key)
@@ -254,6 +257,30 @@ class TabBar(tk.Frame):
             return
         self._tabs[key]["label"].configure(
             foreground=INK if entering else MUTED)
+
+    def set_visible(self, key: str, visible: bool) -> None:
+        """Affiche ou retire une entree, sans changer l'ordre des autres.
+
+        Un onglet dont le contenu ne peut pas etre publie — effectif trop
+        faible — n'a rien a montrer : le laisser affiche promet un resultat
+        qui n'existe pas.
+        """
+        if self._visible.get(key) == visible:
+            return
+        self._visible[key] = visible
+        for name in self._order:
+            self._tabs[name]["holder"].pack_forget()
+        for name in self._order:
+            if self._visible.get(name, True):
+                self._tabs[name]["holder"].pack(side="left")
+        if not self._visible.get(self.active, True):
+            for name in self._order:
+                if self._visible.get(name, True):
+                    self.select(name)
+                    break
+
+    def visible_keys(self) -> List[str]:
+        return [key for key in self._order if self._visible.get(key, True)]
 
     def select(self, key: str) -> None:
         for name, parts in self._tabs.items():

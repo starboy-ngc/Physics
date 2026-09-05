@@ -327,3 +327,87 @@ class TestTabOrder(unittest.TestCase):
         from compensation_analytics.ui.app import TABS
         self.assertEqual(TABS[-1][0], "qualite")
         self.assertEqual(TABS[0][0], "population")
+
+
+@needs_display
+class TestTabsFollowWhatCanBePublished(unittest.TestCase):
+    """Un onglet dont le contenu est masque n'a rien a montrer.
+
+    Les seuils ne sont pas re-evalues dans l'interface : elle lit ce que le
+    moteur a decide. Ce qui garantit qu'une regle de confidentialite reste
+    definie a un seul endroit.
+    """
+
+    def _analysed(self, count):
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        directory = tempfile.mkdtemp()
+        source = os.path.join(directory, "population.xlsx")
+        write_workbook(source, [("Population", [HEADERS] + [
+            make_row(index, age=30 + index % 25, tenure=index % 20,
+                     business_unit=["France", "DACH"][index % 2])
+            for index in range(count)])])
+        app = Application()
+        app.update()
+        app.result = run_analysis(AnalysisRequest(
+            source_path=source, reference_date=REFERENCE_DATE,
+            segments=["business_unit"]))
+        app._render_results()
+        app.update()
+        return app
+
+    def test_a_population_below_the_publication_threshold_keeps_only_quality(self):
+        app = self._analysed(3)
+        try:
+            self.assertEqual(app.tabbar.visible_keys(), ["qualite"])
+        finally:
+            app.destroy()
+
+    def test_charts_disappear_below_the_chart_threshold(self):
+        """Entre les deux seuils, les tableaux restent publiables mais pas
+        les graphiques."""
+        app = self._analysed(7)
+        try:
+            visible = app.tabbar.visible_keys()
+            self.assertIn("remuneration", visible)
+            self.assertIn("population", visible)
+            self.assertNotIn("distribution", visible)
+            self.assertNotIn("nuage", visible)
+        finally:
+            app.destroy()
+
+    def test_a_large_enough_population_keeps_every_tab(self):
+        app = self._analysed(40)
+        try:
+            self.assertEqual(len(app.tabbar.visible_keys()), len(app.tabs))
+        finally:
+            app.destroy()
+
+    def test_the_reason_is_written_out(self):
+        """Retirer un onglet en silence laisserait croire a une disparition
+        inexpliquee."""
+        app = self._analysed(7)
+        try:
+            self.assertTrue(app.notice.winfo_ismapped())
+            text = app.notice.cget("text")
+            self.assertIn("Distribution", text)
+            self.assertIn("effectif insuffisant", text)
+            self.assertIn("masqué", app.status.cget("text"))
+        finally:
+            app.destroy()
+
+    def test_no_notice_when_everything_is_published(self):
+        app = self._analysed(40)
+        try:
+            self.assertFalse(app.notice.winfo_ismapped())
+        finally:
+            app.destroy()
+
+    def test_the_active_tab_never_stays_hidden(self):
+        """Selectionner un onglet retire laisserait une page vide."""
+        app = self._analysed(3)
+        try:
+            self.assertIn(app.tabbar.active, app.tabbar.visible_keys())
+        finally:
+            app.destroy()

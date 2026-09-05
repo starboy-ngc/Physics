@@ -104,7 +104,7 @@ def calculate_age_metrics(
     population: Population, config: Configuration
 ) -> Dict[str, Any]:
     ages = _values(population, "age_years")
-    bands = config.get("age_parameters.bands", [])
+    bands = population.age_bands or config.get("age_parameters.bands", [])
     return {
         "age_mean": stats.mean(ages),
         "age_median": stats.median(ages),
@@ -117,7 +117,7 @@ def calculate_tenure_metrics(
     population: Population, config: Configuration
 ) -> Dict[str, Any]:
     tenures = _values(population, "tenure_years")
-    bands = config.get("tenure_parameters.bands", [])
+    bands = population.tenure_bands or config.get("tenure_parameters.bands", [])
     return {
         "tenure_mean": stats.mean(tenures),
         "tenure_median": stats.median(tenures),
@@ -344,7 +344,8 @@ def calculate_segment_metrics(
             "age_median": stats.median(ages) if rules.may_publish(len(group)) else None,
             "tenure_median": stats.median(tenures) if rules.may_publish(len(group)) else None,
         })
-    rows.sort(key=_segment_sort_key(field_name, config, [r["segment"] for r in rows]))
+    rows.sort(key=_segment_sort_key(field_name, config,
+                                    [r["segment"] for r in rows], population))
     return {
         "field": field_name,
         "label": dimension_label(config, field_name),
@@ -356,7 +357,8 @@ def calculate_segment_metrics(
 _ORDINAL_LABEL = re.compile(r"^([^\d]*)(\d+)([^\d]*)$")
 
 
-def _segment_sort_key(field_name: str, config: Configuration, labels: List[str]):
+def _segment_sort_key(field_name: str, config: Configuration,
+                      labels: List[str], population: Population):
     """Ordre de presentation d'un segment.
 
     Une echelle se lit dans son ordre, pas par effectif : trier les grades
@@ -366,9 +368,13 @@ def _segment_sort_key(field_name: str, config: Configuration, labels: List[str])
     * libelles ordinaux (G1..G8, N1..N5) -> l'ordre numerique ;
     * tout le reste (BU, metier, statut) -> effectif decroissant.
     """
+    # Les tranches posees sur la population priment sur celles declarees :
+    # la derniere tranche ouverte a pu etre prolongee, et l'ordre doit
+    # suivre le decoupage reellement affiche.
     bands = {
-        "age_band": config.get("age_parameters.bands", []),
-        "tenure_band": config.get("tenure_parameters.bands", []),
+        "age_band": population.age_bands or config.get("age_parameters.bands", []),
+        "tenure_band": (population.tenure_bands
+                        or config.get("tenure_parameters.bands", [])),
     }.get(field_name)
     if bands:
         order = {str(band.get("label", "")): index for index, band in enumerate(bands)}

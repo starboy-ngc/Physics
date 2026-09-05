@@ -88,6 +88,12 @@ class Population:
     reference_date: Optional[_dt.date] = None
     mapped_fields: List[str] = field(default_factory=list)
     raw_row_count: int = 0
+    #: Tranches effectivement posees sur cette population. Elles peuvent
+    #: differer de la configuration, la derniere tranche ouverte etant
+    #: prolongee selon les valeurs observees : tout ce qui les affiche doit
+    #: donc les lire ici, et non relire le fichier de parametres.
+    age_bands: List[Dict[str, Any]] = field(default_factory=list)
+    tenure_bands: List[Dict[str, Any]] = field(default_factory=list)
 
     def __len__(self) -> int:
         return len(self.employees)
@@ -101,6 +107,8 @@ class Population:
             source_name=self.source_name,
             reference_date=self.reference_date,
             mapped_fields=list(self.mapped_fields),
+            age_bands=list(self.age_bands),
+            tenure_bands=list(self.tenure_bands),
             raw_row_count=self.raw_row_count,
         )
 
@@ -211,6 +219,71 @@ def band_for(value: Optional[float], bands: List[Dict[str, Any]]) -> str:
     return ""
 
 
+def extend_open_band(bands: List[Dict[str, Any]], observed_max: Optional[float],
+                     step: float, closed_label: str, open_label: str,
+                     limit: int = 10) -> List[Dict[str, Any]]:
+    """Prolonge la derniere tranche ouverte jusqu'a la valeur observee.
+
+    Une derniere tranche « > 10 ans » range ensemble un salarie de 11 ans
+    d'anciennete et un autre de 30 : la comparaison n'a plus de sens des que
+    la population contient des carrieres longues. Les tranches suivantes
+    sont donc engendrees au pas configure, jusqu'a couvrir le maximum
+    reellement present.
+
+    Rien n'est engendre quand la population ne va pas plus loin que la
+    tranche ouverte : le decoupage configure reste alors intact.
+    """
+    if not bands or observed_max is None or step <= 0:
+        return bands
+    last = bands[-1]
+    if last.get("max") is not None:
+        return bands            # decoupage entierement borne : rien a prolonger
+    floor = last.get("min")
+    if floor is None:
+        return bands
+    extended = list(bands[:-1])
+    low = float(floor)
+    added = 0
+    while low + step < observed_max and added < limit:
+        high = low + step
+        extended.append({
+            "label": closed_label.format(low=_band_number(low),
+                                         high=_band_number(high)),
+            "min": low, "max": high,
+        })
+        low = high
+        added += 1
+    extended.append({"label": open_label.format(low=_band_number(low)),
+                     "min": low, "max": None})
+    return extended
+
+
+def _band_number(value: float) -> str:
+    """Une borne de tranche s'ecrit sans decimale inutile."""
+    return str(int(value)) if float(value).is_integer() else str(value)
+
+
+def resolve_bands(config: Configuration, section: str,
+                  observed_max: Optional[float]) -> List[Dict[str, Any]]:
+    """Tranches d'une section, prolongees si la configuration le demande."""
+    bands = config.get(f"{section}.bands", []) or []
+    if not config.get(f"{section}.auto_extend", False):
+        return bands
+    return extend_open_band(
+        bands, observed_max,
+        float(config.get(f"{section}.extend_step", 5) or 5),
+        str(config.get(f"{section}.band_label", "{low}-{high}")),
+        str(config.get(f"{section}.open_band_label", ">{low}")),
+        int(config.get(f"{section}.extend_max_bands", 10) or 10),
+    )
+
+
+def _observed_max(employees: Iterable["Employee"], field_name: str) -> Optional[float]:
+    values = [getattr(item, field_name) for item in employees
+              if getattr(item, field_name) is not None]
+    return max(values) if values else None
+
+
 def anonymise(identifier: str, salt: str = "compensation-analytics") -> str:
     """Identifiant stable non reversible sans le sel, pour affichage/logs."""
     digest = hashlib.sha256(f"{salt}:{identifier}".encode("utf-8")).hexdigest()
@@ -234,8 +307,6 @@ def normalise_table(
     date_fields = set(section.get("date", []))
     reference = reference_date or _configured_reference_date(config) or _dt.date.today()
 
-    age_bands = config.get("age_parameters.bands", [])
-    tenure_bands = config.get("tenure_parameters.bands", [])
     anonymise_ids = bool(config.get("privacy_parameters.anonymise_identifiers", True))
 
     employees: List[Employee] = []
@@ -269,13 +340,22 @@ def normalise_table(
         end_date = employee.leave_date or reference
         if employee.hire_date:
             employee.tenure_years = years_between(employee.hire_date, end_date)
-        employee.age_band = band_for(employee.age_years, age_bands)
-        employee.tenure_band = band_for(employee.tenure_years, tenure_bands)
         employee.anonymous_id = (
             anonymise(employee.employee_id) if (anonymise_ids and employee.employee_id)
             else employee.employee_id
         )
         employees.append(employee)
+
+    # Les tranches sont posees en second temps : prolonger la derniere
+    # tranche ouverte suppose de connaitre le maximum de la population, qui
+    # n'est etabli qu'une fois toutes les lignes lues.
+    age_bands = resolve_bands(config, "age_parameters",
+                              _observed_max(employees, "age_years"))
+    tenure_bands = resolve_bands(config, "tenure_parameters",
+                                 _observed_max(employees, "tenure_years"))
+    for employee in employees:
+        employee.age_band = band_for(employee.age_years, age_bands)
+        employee.tenure_band = band_for(employee.tenure_years, tenure_bands)
 
     return Population(
         employees=employees,
@@ -283,6 +363,8 @@ def normalise_table(
         reference_date=reference,
         mapped_fields=sorted(mapping.field_to_index),
         raw_row_count=len(rows),
+        age_bands=age_bands,
+        tenure_bands=tenure_bands,
     )
 
 
