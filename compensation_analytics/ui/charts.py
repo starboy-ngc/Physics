@@ -12,6 +12,7 @@ l'ecran et le document racontent la meme chose.
 from __future__ import annotations
 
 import tkinter as tk
+from tkinter import ttk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
 from ..core.axes import nice_ticks
@@ -488,18 +489,57 @@ class BoxPlotChart(tk.Frame):
     def __init__(self, master: tk.Widget):
         super().__init__(master, background=theme.CANVAS)
         _fonts(self)
+        # Deux canevas : les lignes defilent, l'axe et la cle restent. Tout
+        # faire defiler ferait sortir la graduation de l'ecran au moment
+        # precis ou l'on regarde une boite lointaine, et une boite sans
+        # graduation ne dit plus rien.
+        self.footer = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0,
+                                height=self.FOOTER_HEIGHT)
+        self.footer.pack(side="bottom", fill="x")
+        self.bar = ttk.Scrollbar(self, orient="vertical",
+                                 style="Flat.Vertical.TScrollbar")
         self.canvas = tk.Canvas(self, background=theme.CANVAS,
                                 highlightthickness=0)
-        self.canvas.pack(fill="both", expand=True)
+        self.bar.pack(side="right", fill="y")
+        self.canvas.pack(side="left", fill="both", expand=True)
+        self.bar.configure(command=self.canvas.yview)
+        theme.attach_scrollbar(self.canvas, self.bar, side="right", fill="y",
+                               before=self.canvas)
         self.tooltip = Tooltip(self.canvas)
         self.rows: List[Dict[str, Any]] = []
         self.currency = "EUR"
         self.warning = ""
         self.reference: Optional[float] = None
+        self.order = "dimension"
         self._items: Dict[int, Dict[str, Any]] = {}
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+        # La molette sur le graphique : atteindre le vingtieme metier a
+        # l'ascenseur seulement serait une corvee.
+        self.after_idle(lambda: theme.bind_wheel(self.canvas,
+                                                 self.winfo_toplevel()))
+
+    #: Tris proposes. La cle est technique, l'intitule s'affiche.
+    ORDERS = (("dimension", "Ordre de la dimension"),
+              ("median", "Médiane décroissante"),
+              ("headcount", "Effectif décroissant"))
+
+    def set_order(self, key: str) -> None:
+        """Change l'ordre des boites sans recalculer quoi que ce soit."""
+        self.order = key if key in dict(self.ORDERS) else "dimension"
+        self.redraw()
+
+    def _sorted(self, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Ordre demande. « dimension » est celui qu'a etabli le moteur —
+        alphabetique, ou celui des grades — et sert de reference commune avec
+        l'onglet Segments."""
+        if self.order == "median":
+            return sorted(rows, key=lambda row: -(row["salary"]["median"] or 0))
+        if self.order == "headcount":
+            return sorted(rows, key=lambda row: -(row.get("headcount") or 0))
+        return rows
 
     def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
                  warning: str = "", reference: Optional[float] = None) -> None:
@@ -535,7 +575,7 @@ class BoxPlotChart(tk.Frame):
             if any(salary.get(key) is None for key in ("p25", "p75", "median")):
                 continue
             ready.append(row)
-        return ready
+        return self._sorted(ready)
 
     def _refusal(self) -> str:
         """Ce que l'on dit quand rien n'est tracable."""
@@ -547,13 +587,15 @@ class BoxPlotChart(tk.Frame):
 
     def redraw(self) -> None:
         self.canvas.delete("all")
+        self.footer.delete("all")
         self._items.clear()
         width = self.canvas.winfo_width()
         height = self.canvas.winfo_height()
-        if width < 120 or height < 80:
+        if width < 120 or height < 60:
             return
         drawable = self._drawable()
         if not drawable:
+            self.canvas.configure(scrollregion=(0, 0, width, height))
             self.canvas.create_text(
                 width / 2, height / 2, fill=theme.MUTED, font=note_font(),
                 text=self.warning or self._refusal(), width=max(width - 60, 80),
@@ -570,33 +612,30 @@ class BoxPlotChart(tk.Frame):
         # il y a un repere a poser.
         pad_r = 30
         pad_t = 26 if self.reference is not None else 12
-        # Sous le trace : les graduations, puis la cle de lecture dessinee.
-        pad_b = 44 + self.LEGEND_HEIGHT
         plot_w = max(width - pad_l - pad_r, 20)
-        plot_h = max(height - pad_t - pad_b, 20)
+        plot_h = max(height - pad_t - 10, 20)
 
-        # On reduit la ligne jusqu'au plancher pour tout faire tenir ; si le
-        # compte n'y est toujours pas, on dit combien manquent plutot que de
-        # les ecraser en un trait illisible.
-        row_height = min(self.ROW_MAX, plot_h / len(drawable))
-        shown = drawable
-        if row_height < self.ROW_MIN:
-            row_height = self.ROW_MIN
-            shown = drawable[:max(int(plot_h // row_height), 1)]
-
-        low, high = self._span(shown)
+        # Plus de troncature : la ligne s'etire jusqu'a son confort maximal
+        # quand les segments tiennent, et se pose sur son plancher quand ils
+        # ne tiennent pas — la page defile alors. Ecarter des segments faute
+        # de place revenait a cacher une partie de la reponse.
+        row_height = min(self.ROW_MAX, max(plot_h / len(drawable),
+                                           self.ROW_MIN))
+        low, high = self._span(drawable)
         span = (high - low) or 1.0
-        base = pad_t + len(shown) * row_height
+        base = pad_t + len(drawable) * row_height
 
         def to_x(value: float) -> float:
             return pad_l + (value - low) / span * plot_w
 
+        # La zone defilante couvre toutes les lignes, jamais moins que la
+        # fenetre : sinon un graphique court se recadrerait tout seul.
+        self.canvas.configure(scrollregion=(0, 0, width,
+                                            max(base + 10, height)))
+
         for value in nice_ticks(low, high, 5):
             x = to_x(value)
             self.canvas.create_line(x, pad_t, x, base, fill=theme.GRID)
-            self.canvas.create_text(x, base + 14, fill=theme.MUTED,
-                                    font=axis_font(),
-                                    text=format_money(value, self.currency))
 
         # Le repere d'ensemble, trace avant les boites pour passer dessous.
         if self.reference is not None and low <= self.reference <= high:
@@ -608,20 +647,29 @@ class BoxPlotChart(tk.Frame):
                                     text="Médiane d'ensemble : "
                                          f"{format_money(self.reference, self.currency)}")
 
-        for index, row in enumerate(shown):
+        for index, row in enumerate(drawable):
             self._draw_box(row, index, row_height, pad_l, label_width, to_x)
 
-        self._draw_key(label_width, base + 30, plot_w,
-                       len(drawable) - len(shown))
+        self._draw_footer(label_width, pad_l, plot_w, to_x, low, high)
 
+    #: Hauteur du pied fixe : graduations, puis cle de lecture.
+    FOOTER_HEIGHT = 74
     #: Hauteur reservee sous les graduations pour la cle de lecture.
     LEGEND_HEIGHT = 46
     #: Largeur du schema explicatif. Assez large pour que les cinq intitules
     #: tiennent sans se chevaucher — mesure faite a la chasse des axes.
     LEGEND_WIDTH = 190
 
-    def _draw_key(self, x: float, y: float, available: float,
-                  overflow: int) -> None:
+    def _draw_footer(self, label_width: float, pad_l: float, plot_w: float,
+                     to_x, low: float, high: float) -> None:
+        """Graduations et cle de lecture, hors de la zone qui defile."""
+        for value in nice_ticks(low, high, 5):
+            self.footer.create_text(to_x(value), 12, fill=theme.MUTED,
+                                    font=axis_font(),
+                                    text=format_money(value, self.currency))
+        self._draw_key(label_width, 26, plot_w)
+
+    def _draw_key(self, x: float, y: float, available: float) -> None:
         """Cle de lecture : une boite miniature, legendee, puis une phrase.
 
         Une boite a moustaches ne se devine pas. « P10, Q1, mediane, Q3,
@@ -632,22 +680,23 @@ class BoxPlotChart(tk.Frame):
         """
         wide = self.LEGEND_WIDTH
         left, mid = x, y + 6
+        canvas = self.footer
         q1, q3 = left + wide * 0.25, left + wide * 0.75
         median = left + wide * 0.5
         thickness = 9
-        self.canvas.create_line(left, mid, left + wide, mid,
+        canvas.create_line(left, mid, left + wide, mid,
                                 fill=theme.LINE_STRONG)
         for edge in (left, left + wide):
-            self.canvas.create_line(edge, mid - thickness / 2, edge,
+            canvas.create_line(edge, mid - thickness / 2, edge,
                                     mid + thickness / 2, fill=theme.LINE_STRONG)
-        self.canvas.create_rectangle(q1, mid - thickness / 2, q3,
+        canvas.create_rectangle(q1, mid - thickness / 2, q3,
                                      mid + thickness / 2,
                                      fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
-        self.canvas.create_line(median, mid - thickness / 2 - 2, median,
+        canvas.create_line(median, mid - thickness / 2 - 2, median,
                                 mid + thickness / 2 + 2, fill=theme.INK, width=2)
         for position, text in ((left, "P10"), (q1, "Q1"), (median, "Médiane"),
                                (q3, "Q3"), (left + wide, "P90")):
-            self.canvas.create_text(position, mid + 14, fill=theme.MUTED,
+            canvas.create_text(position, mid + 14, fill=theme.MUTED,
                                     font=axis_font(), text=text)
 
         phrase = ("La boîte contient la moitié des salariés du segment ; "
@@ -657,9 +706,7 @@ class BoxPlotChart(tk.Frame):
         if withheld:
             phrase += (f" {withheld} segment(s) trop peu nombreux pour être "
                        "tracés — voir l'onglet Segments.")
-        if overflow:
-            phrase += f" {overflow} segment(s) de plus, faute de place."
-        self.canvas.create_text(left + wide + 30, mid - 5, anchor="nw",
+        canvas.create_text(left + wide + 30, mid - 5, anchor="nw",
                                 fill=theme.MUTED, font=axis_font(),
                                 width=max(available - wide - 40, 120),
                                 text=phrase)

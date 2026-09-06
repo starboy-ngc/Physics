@@ -618,9 +618,16 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             app.destroy()
 
     def _canvas_texts(self, chart):
-        return [chart.canvas.itemcget(item, "text")
-                for item in chart.canvas.find_all()
-                if chart.canvas.type(item) == "text"]
+        """Textes des deux canevas : les lignes defilent, le pied ne bouge
+        pas, mais tout est du meme graphique."""
+        textes = []
+        for canvas in (chart.canvas, getattr(chart, "footer", None)):
+            if canvas is None:
+                continue
+            textes += [canvas.itemcget(item, "text")
+                       for item in canvas.find_all()
+                       if canvas.type(item) == "text"]
+        return textes
 
     def test_the_boxes_carry_their_reading_key(self):
         """Une boite a moustaches ne se devine pas : sans cle de lecture, le
@@ -700,6 +707,106 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
                       if "trop peu nombreux" in x]
             self.assertEqual(len(phrase), 1)
             self.assertIn("1 segment", phrase[0])
+        finally:
+            app.destroy()
+
+    def _fake_rows(self, count):
+        return [{"segment": f"Poste {index:02}", "headcount": 40 + index,
+                 "masked": False, "chartable": True,
+                 "salary": {"p10": 20000 + index * 300,
+                            "p25": 25000 + index * 300,
+                            "median": 30000 + index * 300,
+                            "p75": 36000 + index * 300,
+                            "p90": 44000 + index * 300}}
+                for index in range(count)]
+
+    def test_every_segment_is_drawn_and_the_page_scrolls(self):
+        """Ecarter des segments faute de place revenait a cacher une partie
+        de la reponse : ils sont tous traces, et la page defile."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            chart.pack(fill="both", expand=True)
+            chart.configure(width=900, height=380)
+            app.update()
+
+            def boites():
+                return sum(1 for item in chart.canvas.find_all()
+                           if chart.canvas.type(item) == "rectangle")
+
+            def hauteur_zone():
+                region = chart.canvas.cget("scrollregion").split()
+                return float(region[3]) if len(region) == 4 else 0.0
+
+            chart.set_rows(self._fake_rows(6), "EUR")
+            chart.redraw()
+            app.update()
+            self.assertEqual(boites(), 6)
+            # Ce qui tient ne fait pas defiler : pas d'ascenseur inutile.
+            self.assertFalse(chart.bar.winfo_manager())
+
+            chart.set_rows(self._fake_rows(40), "EUR")
+            chart.redraw()
+            app.update()
+            self.assertEqual(boites(), 40)
+            self.assertGreater(hauteur_zone(), chart.canvas.winfo_height())
+            self.assertTrue(chart.bar.winfo_manager())
+        finally:
+            app.destroy()
+
+    def test_the_axis_stays_put_while_the_boxes_scroll(self):
+        """Une boite sans graduation ne dit plus rien : l'axe et la cle sont
+        hors de la zone qui defile."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            chart.pack(fill="both", expand=True)
+            chart.configure(width=900, height=380)
+            app.update()
+            chart.set_rows(self._fake_rows(40), "EUR")
+            chart.redraw()
+            app.update()
+            pied = [chart.footer.itemcget(item, "text")
+                    for item in chart.footer.find_all()
+                    if chart.footer.type(item) == "text"]
+            self.assertIn("Médiane", pied)
+            self.assertTrue([x for x in pied if "EUR" in x])
+            # Rien de tout cela ne bouge quand on descend.
+            avant = chart.footer.bbox("all")
+            chart.canvas.yview_moveto(1.0)
+            app.update()
+            self.assertEqual(chart.footer.bbox("all"), avant)
+        finally:
+            app.destroy()
+
+    def test_the_boxes_can_be_sorted_without_recomputing(self):
+        """Trier repond a une autre question avec les memes chiffres."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            rows = self._fake_rows(5)
+            chart.set_rows(rows, "EUR")
+            ordre = [row["segment"] for row in chart._drawable()]
+            self.assertEqual(ordre, [row["segment"] for row in rows])
+
+            chart.set_order("median")
+            medianes = [row["salary"]["median"] for row in chart._drawable()]
+            self.assertEqual(medianes, sorted(medianes, reverse=True))
+
+            chart.set_order("headcount")
+            effectifs = [row["headcount"] for row in chart._drawable()]
+            self.assertEqual(effectifs, sorted(effectifs, reverse=True))
+
+            # Un tri inconnu retombe sur l'ordre du moteur plutot que de lever.
+            chart.set_order("n'importe quoi")
+            self.assertEqual([row["segment"] for row in chart._drawable()],
+                             ordre)
         finally:
             app.destroy()
 

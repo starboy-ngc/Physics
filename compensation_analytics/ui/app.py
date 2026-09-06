@@ -620,6 +620,22 @@ class Application(tk.Tk):
                                        font=self.fonts.small)
         self.box_choice.pack(side="left", padx=10)
         self.box_choice.bind("<<ComboboxSelected>>", lambda _e: self._show_boxes())
+        # Trier, c'est repondre a une autre question avec les memes chiffres :
+        # « quels metiers paient le mieux » plutot que « comment se situe
+        # celui-ci ». Le tri ne recalcule rien, il reordonne.
+        tk.Label(box_head, text="TRIER PAR", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(22, 0))
+        self.box_order = ttk.Combobox(box_head, state="readonly", width=22,
+                                      font=self.fonts.small,
+                                      values=[label for _key, label
+                                              in BoxPlotChart.ORDERS])
+        self.box_order.current(0)
+        self.box_order.pack(side="left", padx=10)
+        self.box_order.bind(
+            "<<ComboboxSelected>>",
+            lambda _e: self.boxplot.set_order(
+                BoxPlotChart.ORDERS[self.box_order.current()][0]))
         self.boxplot = BoxPlotChart(boites)
         self.boxplot.pack(fill="both", expand=True, padx=18, pady=(6, 10))
 
