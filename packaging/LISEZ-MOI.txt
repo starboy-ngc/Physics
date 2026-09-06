@@ -26,11 +26,14 @@ LANCER L'INTERFACE
       3. Restituer  cochez les documents voulus
 
     Il n'y a rien à cocher pour comparer : l'outil segmente sur toutes
-    les dimensions réellement renseignées dans votre fichier, et la
-    liste « Dimension » de l'onglet Segments permet de passer de l'une
-    à l'autre.
+    les dimensions réellement renseignées dans votre fichier.
 
-    puis « Analyser ». Les onglets de droite affichent les résultats.
+    puis « Analyser ». Les onglets de droite affichent les résultats :
+    Vue d'ensemble, Graphique, Pay Transparency, Ma page, Qualité.
+
+    La colonne de gauche se replie : le chevron sur son bord rend toute
+    la largeur aux graphiques, et la ligne du bas rappelle en
+    permanence les filtres appliqués.
 
     « Vue d'ensemble » réunit les deux lectures sur une seule page :
     un salaire médian ne veut rien dire sans l'âge et l'ancienneté de
@@ -42,9 +45,16 @@ LANCER L'INTERFACE
     la colonne « Sexe » n'est pas renseignée, l'outil retombe sur des
     barres simples plutôt que d'afficher une demi-pyramide.
 
-    L'onglet « Ancienneté × rémunération » est explorable :
+    L'onglet « Graphique » en réunit trois :
 
-      survolez un point    -> référence, ancienneté, rémunération
+      Rémunération/Ancienneté   le nuage de points, explorable
+      Distribution              l'histogramme des rémunérations
+      Dispersion                une boîte à moustaches par segment,
+                                triable par médiane ou par effectif
+
+    Le nuage est explorable :
+
+      survolez un point    -> le salarié, son ancienneté, sa rémunération
       cliquez un point     -> le sélectionne et l'affiche en haut
       molette              -> zoom ; glisser -> déplacement
       double-clic          -> réinitialise le cadrage
@@ -62,6 +72,14 @@ LANCER L'INTERFACE
       écart par catégorie de travail de même valeur, les catégories
         au-delà de 5 % étant signalées. La liste « Écart par »
         change d'axe : Poste, Grade, Établissement, Pays...
+
+    « Ma page » part vide : la colonne de gauche y propose tous les
+    indicateurs, tableaux et graphiques que l'analyse produit. Un clic
+    les ajoute ; on déplace un bloc en l'attrapant par son titre, on le
+    redimensionne par son coin, et « Enregistrer la page » la retrouve
+    à la prochaine ouverture. Ce qui est enregistré se réduit à la
+    liste des blocs, à leur ordre et à leur taille — aucun chiffre,
+    aucune donnée de votre fichier.
 
     Pour restreindre l'analyse — à un grade, une BU, un pays —,
     utilisez les filtres de la colonne de gauche : ils s'appliquent à
@@ -163,9 +181,9 @@ PARAMÉTRAGE
                           sera proposé dans la fenêtre principale.
 
                           Un champ coché est proposé PARTOUT : dans la
-                          liste « Filtrer » de la colonne de gauche, dans
-                          « Analyser par », dans les onglets Segments et
-                          Pay Transparency, et dans « Colorer par ».
+                          liste « Filtrer » de la colonne de gauche,
+                          dans « Dispersion », dans l'onglet Pay
+                          Transparency et dans « Colorer par ».
                           Le libellé affiché se modifie sur place.
 
                           Le filtrage lui-même — retirer des salariés de
@@ -210,6 +228,13 @@ PARAMÉTRAGE
      moins de  5 salariés  -> résultats masqués
      moins de 10 salariés  -> avertissement, graphiques désactivés
 
+  COULEURS — Paramètres → Apparence. Cinq thèmes : Ardoise (d'origine),
+  Graphite (neutre, le meilleur rendu à l'impression en noir et blanc),
+  Forêt, Prune et Auroral. Le thème colore la fenêtre ET les documents
+  produits. Trois teintes n'en dépendent jamais : le rouge de
+  « critique », l'orange d'« avertissement » et le couple
+  femmes/hommes — les changer serait un contresens, pas une préférence.
+
 -------------------------------------------------------------------
 CONFIDENTIALITÉ
 
@@ -217,10 +242,20 @@ CONFIDENTIALITÉ
   processus externe, aucune donnée transmise. Vous pouvez couper
   Internet avant de l'utiliser.
 
+  À L'ÉCRAN, le nuage de points nomme le salarié survolé : un point à
+  30 % sous la médiane ne veut rien dire tant qu'on ne sait pas de qui
+  il s'agit. La case « Afficher les noms des salariés à l'écran »
+  (Paramètres → Confidentialité) revient à la référence anonyme.
+
+  DANS CE QUI CIRCULE — documents produits, exports, journal technique
+  — il n'y a jamais ni nom ni prénom, et ce n'est pas affaire de
+  réglage : l'identité n'entre jamais dans le résultat d'analyse, la
+  fenêtre la reconstruit depuis votre fichier au moment de l'afficher.
+
   Les matricules sont remplacés par une référence anonyme dans les
-  restitutions et dans l'interface. L'export des données
-  individuelles est désactivé par défaut. Le journal technique ne
-  contient ni nom, ni matricule, ni salaire individuel.
+  restitutions. L'export des données individuelles est désactivé par
+  défaut. Le journal technique ne contient ni nom, ni matricule, ni
+  salaire individuel.
 
 -------------------------------------------------------------------
 JEUX DE DÉMONSTRATION FOURNIS
@@ -229,8 +264,7 @@ JEUX DE DÉMONSTRATION FOURNIS
   famille métier, grade, statut, sexe, dates et rémunération. Le
   poste précise le métier d'un niveau de responsabilité (« Comptable
   senior ») : c'est l'axe sur lequel une comparaison de rémunération
-  se fait le plus souvent, et il est coché d'emblée dans l'étape
-  « Analyser par ».
+  se fait le plus souvent.
 
   population-demo.xlsx                2000 salariés fictifs, sans défaut
   population-demo-avec-defauts.xlsx   les mêmes, avec 5 anomalies
