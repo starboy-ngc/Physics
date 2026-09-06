@@ -98,6 +98,44 @@ def _signed_percent(value: Optional[float]) -> str:
     return f"{value:+.1f} %".replace(".", ",")
 
 
+def salary_scale_rows(salary: Dict[str, Any], currency: str) -> List[tuple]:
+    """Echelle de remuneration : minimum, percentiles publies, maximum.
+
+    Ecrite ici plutot qu'a chaque endroit qui l'affiche. La vue d'ensemble
+    et la page composee la montraient toutes deux, avec leur propre copie du
+    meme code : retirer un percentile de la configuration ou changer un
+    libelle n'aurait tenu qu'a un seul des deux ecrans, et le meme fichier
+    aurait porte deux echelles differentes selon l'onglet ouvert.
+    """
+    return ([("Minimum", format_money(salary.get("min"), currency), "min")]
+            + [(entry["label"],
+                format_money(salary.get(entry["key"]), currency), entry["key"])
+               for entry in salary.get("published_percentiles", [])]
+            + [("Maximum", format_money(salary.get("max"), currency), "max")])
+
+
+def dispersion_rows(spread: Dict[str, Any], currency: str) -> List[tuple]:
+    """Indicateurs de dispersion, avec la mise en forme propre a chacun.
+
+    Meme raison : deux copies s'ecartent, une seule se corrige. La cle
+    portee par chaque ligne est celle du glossaire, qui en donne la
+    definition et la formule au survol.
+    """
+    variation = spread.get("coefficient_of_variation")
+    return [
+        ("Q3 - Q1", format_money(spread.get("interquartile_range"), currency),
+         "interquartile_range"),
+        ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2), "q3_over_q1"),
+        ("P90 / P10", format_number(spread.get("p90_over_p10"), 2),
+         "p90_over_p10"),
+        ("Moyenne / Médiane", format_number(spread.get("mean_over_median"), 2),
+         "mean_over_median"),
+        ("Coefficient de variation",
+         format_percent(None if variation is None else variation * 100),
+         "coefficient_of_variation"),
+    ]
+
+
 class Application(tk.Tk):
     """Fenetre unique de l'outil."""
 
@@ -967,33 +1005,10 @@ class Application(tk.Tk):
 
     def _workshop_table(self, holder, payload, block, currency) -> None:
         salary = payload.get("salary", {}) or {}
-        spread = salary.get("dispersion", {}) or {}
-        if block.key == "salary_scale":
-            rows = ([("Minimum", format_money(salary.get("min"), currency),
-                      "min")]
-                    + [(entry["label"],
-                        format_money(salary.get(entry["key"]), currency),
-                        entry["key"])
-                       for entry in salary.get("published_percentiles", [])]
-                    + [("Maximum", format_money(salary.get("max"), currency),
-                        "max")])
-        else:
-            variation = spread.get("coefficient_of_variation")
-            rows = [
-                ("Q3 - Q1",
-                 format_money(spread.get("interquartile_range"), currency),
-                 "interquartile_range"),
-                ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2),
-                 "q3_over_q1"),
-                ("P90 / P10", format_number(spread.get("p90_over_p10"), 2),
-                 "p90_over_p10"),
-                ("Moyenne / Médiane",
-                 format_number(spread.get("mean_over_median"), 2),
-                 "mean_over_median"),
-                ("Coefficient de variation",
-                 format_percent(None if variation is None else variation * 100),
-                 "coefficient_of_variation"),
-            ]
+        rows = (salary_scale_rows(salary, currency)
+                if block.key == "salary_scale"
+                else dispersion_rows(salary.get("dispersion", {}) or {},
+                                     currency))
         table = tk.Frame(holder, background=theme.CANVAS)
         table.pack(fill="x")
         table.grid_columnconfigure(0, weight=1)
@@ -1585,30 +1600,11 @@ class Application(tk.Tk):
                        "analysis_field"))
             self._ruled_panel(
                 right, "Échelle de rémunération", ("Percentile", "Valeur"),
-                [("Minimum", format_money(salary.get("min"), currency), "min")]
-                + [(entry["label"],
-                    format_money(salary.get(entry["key"]), currency),
-                    entry["key"])
-                   for entry in salary.get("published_percentiles", [])]
-                + [("Maximum", format_money(salary.get("max"), currency), "max")],
+                salary_scale_rows(salary, currency),
                 emphasis="Médiane (P50)", key="salary_scale")
             self._ruled_panel(
-                right, "Dispersion", ("Indicateur", "Valeur"), [
-                    ("Q3 - Q1",
-                     format_money(spread.get("interquartile_range"), currency),
-                     "interquartile_range"),
-                    ("Q3 / Q1", format_number(spread.get("q3_over_q1"), 2),
-                     "q3_over_q1"),
-                    ("P90 / P10", format_number(spread.get("p90_over_p10"), 2),
-                     "p90_over_p10"),
-                    ("Moyenne / Médiane",
-                     format_number(spread.get("mean_over_median"), 2),
-                     "mean_over_median"),
-                    ("Coefficient de variation",
-                     format_percent(None if variation is None
-                                    else variation * 100),
-                     "coefficient_of_variation"),
-                ], key="dispersion")
+                right, "Dispersion", ("Indicateur", "Valeur"),
+                dispersion_rows(spread, currency), key="dispersion")
 
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:

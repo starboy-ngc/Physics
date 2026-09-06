@@ -201,10 +201,6 @@ class TestSummaryOutputs(unittest.TestCase):
             self.assertIn(b"/Count 1", handle.read())
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestReadability(unittest.TestCase):
     """Defauts de lecture reperes en regardant les vues produites."""
 
@@ -438,3 +434,52 @@ class TestNoRSquaredInDocuments(unittest.TestCase):
         from compensation_analytics.core import statistics_engine as stats
         trend = stats.linear_regression([1.0, 2.0, 3.0], [10.0, 20.0, 30.0])
         self.assertIn("r_squared", trend)
+
+class TestTheComparisonReadsTheSameEverywhere(unittest.TestCase):
+    """Le rapport et les slides doivent porter le meme tableau.
+
+    La mise en forme des lignes etait ecrite deux fois. Une nature de valeur
+    ajoutee par le moteur n'aurait ete honoree que d'un cote, et le meme
+    fichier aurait produit deux comparaisons differentes selon le support.
+    """
+
+    COMPARAISON = {
+        "left_label": "France", "right_label": "Hors France",
+        "rows": [
+            {"indicator": "Effectif", "kind": "int", "left": 120,
+             "right": 80, "gap_percent": 50.0},
+            {"indicator": "Salaire médian", "kind": "money", "left": 48000.0,
+             "right": 45000.0, "gap_percent": 6.7},
+            {"indicator": "Ancienneté", "kind": "years", "left": 7.4,
+             "right": 5.1, "gap_percent": 45.1},
+            {"indicator": "Q3 / Q1", "kind": "ratio", "left": 1.42,
+             "right": 1.51, "gap_percent": -6.0},
+        ],
+    }
+
+    def test_the_two_renderers_format_identically(self):
+        from compensation_analytics.core.reporting import comparison_rows
+
+        rows = comparison_rows(self.COMPARAISON, "EUR")
+        self.assertEqual(rows[0][1], "120")
+        self.assertIn("EUR", rows[1][1])
+        self.assertEqual(rows[3][1], "1,42")
+        self.assertEqual(len(rows), 4)
+        for row in rows:
+            self.assertEqual(len(row), 4)
+
+    def test_an_unknown_kind_falls_back_without_raising(self):
+        """Le moteur peut ajouter une nature : la restitution ne doit pas
+        s'arreter dessus, des deux cotes de la meme facon."""
+        from compensation_analytics.core.reporting import comparison_rows
+
+        inconnu = {"left_label": "A", "right_label": "B", "rows": [
+            {"indicator": "Nouveau", "kind": "quelque_chose", "left": 3.14159,
+             "right": 2.71828, "gap_percent": 13.5}]}
+        rows = comparison_rows(inconnu, "EUR")
+        self.assertEqual(rows[0][1], "3,14")
+        self.assertEqual(rows[0][2], "2,72")
+
+
+if __name__ == "__main__":
+    unittest.main()

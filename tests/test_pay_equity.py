@@ -189,10 +189,6 @@ class TestCategories(unittest.TestCase):
         self.assertEqual(gaps, sorted(gaps, reverse=True))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestFiltersReachTheGap(unittest.TestCase):
     """Les criteres de la colonne de gauche portent aussi sur les ecarts.
 
@@ -279,3 +275,43 @@ class TestTheCategoryAxisCanChange(unittest.TestCase):
         block = self.compute(self.population, self.config, "job_title")
         self.assertEqual(block["categories"], [])
         self.assertIn("n'est renseigné", block["category_warning"])
+
+class TestTheSexComparisonIsMemoisedWithoutChangingIt(unittest.TestCase):
+    """La memorisation ne doit rien changer au resultat, ni rien casser.
+
+    La decomposition Unicode des ecritures du sexe pesait trente-huit pour
+    cent du temps d'analyse : les memes libelles etaient redecomposes a
+    chaque salarie. La memorisation les normalise une fois — encore
+    faut-il qu'elle reste insensible a la casse et aux accents, et qu'elle
+    survive a une configuration ecrite a la main.
+    """
+
+    def test_the_reading_is_unchanged(self):
+        femmes, hommes = ["F", "Femme", "Mme"], ["H", "M", "Homme"]
+        for valeur, attendu in (("F", FEMALE), ("f", FEMALE),
+                                ("FEMME", FEMALE), (" Mme ", FEMALE),
+                                ("H", MALE), ("homme", MALE),
+                                ("X", ""), ("", ""), (None, "")):
+            self.assertEqual(classify(valeur, femmes, hommes), attendu,
+                             repr(valeur))
+
+    def test_accents_and_case_are_ignored_on_both_sides(self):
+        self.assertEqual(classify("FÉMININ", ["féminin"], ["masculin"]), FEMALE)
+        self.assertEqual(classify("feminin", ["Féminin"], ["Masculin"]), FEMALE)
+
+    def test_two_different_configurations_do_not_share_a_cache_entry(self):
+        """Deux fichiers RH n'ecrivent pas le sexe pareil : la memorisation
+        est portee par la liste declaree, pas par le moteur."""
+        self.assertEqual(classify("W", ["W"], ["M"]), FEMALE)
+        self.assertEqual(classify("W", ["F"], ["W"]), MALE)
+
+    def test_a_hand_written_configuration_never_raises(self):
+        """Une valeur non hachable dans la configuration ne doit pas faire
+        lever : la valeur n'est simplement pas reconnue."""
+        for declaree in ([["F"]], [None], [12], [{"a": 1}], []):
+            self.assertEqual(classify("F", declaree, ["H"]), "")
+        self.assertEqual(classify("F", ["F", ["imbrique"]], ["H"]), FEMALE)
+
+
+if __name__ == "__main__":
+    unittest.main()

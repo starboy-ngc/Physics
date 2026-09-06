@@ -101,10 +101,6 @@ class TestDeclarativeDimension(unittest.TestCase):
                           self.config)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestJobTitleIsAvailable(unittest.TestCase):
     """Le poste est l'axe de comparaison le plus courant en remuneration :
     il doit etre livre reconnu, filtrable et analysable."""
@@ -175,3 +171,6 @@ class TestTheSamplePopulationCarriesPositions(unittest.TestCase):
                            datetime.date(2026, 1, 1))
         self.assertLess(rows[9][column("Date de sortie")],
                         rows[9][column("Date d'entrée")])
+
+if __name__ == "__main__":
+    unittest.main()

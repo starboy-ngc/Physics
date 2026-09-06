@@ -189,6 +189,5 @@ class TestWorkbookNumberWriting(unittest.TestCase):
             content = archive.read("xl/worksheets/sheet1.xml").decode("utf-8")
         self.assertNotIn("e+", content)
 
-
 if __name__ == "__main__":
     unittest.main()

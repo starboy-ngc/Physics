@@ -325,6 +325,5 @@ class TestCommandLine(unittest.TestCase):
             handle.write("Matricule;BU\nE1;France\n")
         self.assertEqual(cli_main(["controle", path]), 2)
 
-
 if __name__ == "__main__":
     unittest.main()

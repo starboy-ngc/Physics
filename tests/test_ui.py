@@ -542,8 +542,59 @@ class TestWindow(unittest.TestCase):
         self.assertEqual(self.app._current_filters(), [])
 
 
-if __name__ == "__main__":
-    unittest.main()
+@unittest.skipUnless(HAS_TK, "tkinter absent")
+class TestTheIndicatorTablesAreBuiltOnce(unittest.TestCase):
+    """Deux ecrans montrent l'echelle et la dispersion : un seul code les
+    construit. Ecrites en double, elles se seraient ecartees — retirer un
+    percentile de la configuration n'aurait tenu qu'a l'un des deux, et le
+    meme fichier aurait porte deux echelles selon l'onglet ouvert."""
+
+    def setUp(self):
+        from compensation_analytics.ui import app
+        self.app_module = app
+        self.salary = {
+            "min": 30000.0, "max": 90000.0, "p25": 42000.0, "median": 50000.0,
+            "p75": 61000.0,
+            "published_percentiles": [{"key": "p25", "label": "Q1 (P25)"},
+                                      {"key": "median",
+                                       "label": "Médiane (P50)"},
+                                      {"key": "p75", "label": "Q3 (P75)"}],
+            "dispersion": {"interquartile_range": 19000.0,
+                           "q3_over_q1": 1.452, "p90_over_p10": 2.03,
+                           "mean_over_median": 1.04,
+                           "coefficient_of_variation": 0.2718},
+        }
+
+    def test_the_scale_follows_the_published_percentiles(self):
+        rows = self.app_module.salary_scale_rows(self.salary, "EUR")
+        self.assertEqual([label for label, _v, _k in rows],
+                         ["Minimum", "Q1 (P25)", "Médiane (P50)", "Q3 (P75)",
+                          "Maximum"])
+        self.assertEqual(rows[0][2], "min")
+        self.assertIn("30", rows[0][1])
+
+        restreint = dict(self.salary, published_percentiles=[
+            {"key": "median", "label": "Médiane (P50)"}])
+        self.assertEqual(
+            [label for label, _v, _k in
+             self.app_module.salary_scale_rows(restreint, "EUR")],
+            ["Minimum", "Médiane (P50)", "Maximum"])
+
+    def test_each_dispersion_indicator_keeps_its_own_formatting(self):
+        rows = self.app_module.dispersion_rows(self.salary["dispersion"],
+                                               "EUR")
+        valeurs = {key: value for _label, value, key in rows}
+        self.assertIn("EUR", valeurs["interquartile_range"])
+        self.assertEqual(valeurs["q3_over_q1"], "1,45")
+        self.assertIn("%", valeurs["coefficient_of_variation"])
+        self.assertEqual([key for _l, _v, key in rows],
+                         ["interquartile_range", "q3_over_q1", "p90_over_p10",
+                          "mean_over_median", "coefficient_of_variation"])
+
+    def test_an_absent_indicator_does_not_break_the_table(self):
+        rows = self.app_module.dispersion_rows({}, "EUR")
+        self.assertEqual(len(rows), 5)
+        self.assertEqual(len(self.app_module.salary_scale_rows({}, "EUR")), 2)
 
 
 @needs_display
@@ -1866,3 +1917,6 @@ class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
         columns = {item.master.master for item in pyramids}
         self.assertEqual(len(columns), 1, "les deux blocs doivent partager "
                                           "la meme colonne")
+
+if __name__ == "__main__":
+    unittest.main()

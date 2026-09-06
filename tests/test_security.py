@@ -92,10 +92,6 @@ class TestNoForbiddenConstructs(unittest.TestCase):
                     )
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
     """Les noms d'options, de sous-commandes et les valeurs acceptees restent
     en ASCII.
@@ -147,3 +143,6 @@ class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
         for pattern in ("restitution-", "synthese-", "slides-", "analyse-",
                         "manifeste-"):
             self.assertIn(pattern, source)
+
+if __name__ == "__main__":
+    unittest.main()

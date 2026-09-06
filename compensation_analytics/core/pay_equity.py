@@ -28,6 +28,7 @@ justification par des criteres objectifs — n'appartient pas au logiciel.
 from __future__ import annotations
 
 import unicodedata
+from functools import lru_cache
 from typing import Any, Dict, List, Optional, Sequence
 
 from . import statistics_engine as stats
@@ -40,11 +41,22 @@ FEMALE = "F"
 MALE = "H"
 
 
-def _key(value: Any) -> str:
-    """Comparaison insensible a la casse, aux accents et aux espaces."""
-    text = "" if value is None else str(value).strip()
+@lru_cache(maxsize=4096)
+def _normalise(text: str) -> str:
+    """Forme comparable d'une ecriture : sans casse, sans accent, sans espace.
+
+    Le resultat est memorise : un fichier de cent mille salaries ne contient
+    qu'une poignee d'ecritures distinctes du sexe, mais la comparaison les
+    redecomposait toutes a chaque appel. La decomposition Unicode pesait a
+    elle seule trente-huit pour cent du temps d'analyse.
+    """
     decomposed = unicodedata.normalize("NFKD", text)
     return "".join(c for c in decomposed if not unicodedata.combining(c)).lower()
+
+
+def _key(value: Any) -> str:
+    """Comparaison insensible a la casse, aux accents et aux espaces."""
+    return _normalise("" if value is None else str(value).strip())
 
 
 def classify(value: Any, female: Sequence[str], male: Sequence[str]) -> str:
@@ -56,11 +68,24 @@ def classify(value: Any, female: Sequence[str], male: Sequence[str]) -> str:
     key = _key(value)
     if not key:
         return ""
-    if key in {_key(item) for item in female}:
+    # Les ecritures declarees en configuration sont normalisees une fois par
+    # jeu, et non a chaque salarie : elles ne changent pas d'un appel a
+    # l'autre. Les tuples servent de cle de memorisation.
+    # Les ecritures sont converties en texte avant de servir de cle : une
+    # configuration ecrite a la main peut contenir n'importe quoi, y compris
+    # une liste imbriquee, et une cle non hachable ferait lever la ou la
+    # version precedente se contentait de ne pas reconnaitre la valeur.
+    if key in _declared(tuple(str(item) for item in female)):
         return FEMALE
-    if key in {_key(item) for item in male}:
+    if key in _declared(tuple(str(item) for item in male)):
         return MALE
     return ""
+
+
+@lru_cache(maxsize=64)
+def _declared(values: tuple) -> frozenset:
+    """Formes comparables d'une liste d'ecritures declaree en configuration."""
+    return frozenset(_key(item) for item in values)
 
 
 def _gap(male_value: Optional[float], female_value: Optional[float]) -> Optional[float]:

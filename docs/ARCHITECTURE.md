@@ -127,15 +127,30 @@ conteneurisé, secondes :
 
 | Effectif | Import | Normalisation | Qualité | Calculs | Restitution | Total | HTML | RAM |
 |---|---|---|---|---|---|---|---|---|
-| 1 000 | 0,09 | 0,01 | 0,00 | 0,03 | 0,01 | **0,14** | 0,2 Mo | 24 Mo |
-| 10 000 | 1,02 | 0,14 | 0,02 | 0,36 | 0,04 | **1,58** | 0,7 Mo | 51 Mo |
-| 50 000 | 5,80 | 0,90 | 0,12 | 2,23 | 0,02 | **9,07** | 0,7 Mo | 165 Mo |
-| 100 000 | 11,72 | 2,11 | 0,35 | 5,09 | 0,03 | **19,31** | 0,7 Mo | 310 Mo |
+| 1 000 | 0,07 | 0,01 | 0,00 | 0,03 | 0,00 | **0,12** | 0,2 Mo | 26 Mo |
+| 10 000 | 0,82 | 0,12 | 0,01 | 0,45 | 0,02 | **1,43** | 0,7 Mo | 55 Mo |
+| 50 000 | 4,68 | 0,59 | 0,20 | 2,99 | 0,02 | **8,47** | 0,7 Mo | 178 Mo |
+| 100 000 | 9,93 | 1,39 | 0,16 | 7,17 | 0,02 | **18,68** | 0,7 Mo | 335 Mo |
 
-Comportement linéaire. **Seuil identifié** : au-delà de ~50 000 salariés,
-l'import XLSX (parsing XML) domine et l'analyse dépasse les 10 secondes ;
-au-delà de ~200 000, la population entièrement en mémoire deviendrait
-contraignante sur un poste à 8 Go.
+Le banc mesurait moins que ce que l'outil execute : il omettait l'equite
+salariale, presente dans toute analyse reelle. Elle y est desormais, et la
+colonne « Calculs » a donc grossi de ce qu'elle cachait.
+
+Trois chemins chauds ont ete corriges apres profilage — la comparaison des
+ecritures du sexe redecomposait en Unicode les memes libelles a chaque
+salarie (trente-huit pour cent du temps de calcul), la lecture des dates
+recompilait un analyseur `strptime` la ou `fromisoformat` suffit, et le
+nettoyage des valeurs convertissait des flottants deja flottants. Sur ce
+banc, la colonne « Calculs » passe de 9,00 s a 7,17 s a cent mille
+salaries ; sur une entree CSV — ou les dates arrivent en texte et non deja
+typees — l'analyse complete passe de 9,8 s a 2,8 s a trente-deux mille
+salaries.
+
+Comportement linéaire (cout unitaire stable a ±16 % de mille a cent mille).
+**Seuil identifié** : au-delà de ~50 000 salariés, l'import XLSX (parsing
+XML) domine et l'analyse dépasse les 10 secondes ; au-delà de ~200 000, la
+population entièrement en mémoire deviendrait contraignante sur un poste à
+8 Go.
 
 Un premier plafond a déjà été traité : sans garde-fou, le nuage de points
 produisait 100 000 cercles SVG et un HTML de 12,8 Mo (navigateur inutilisable).
@@ -144,8 +159,8 @@ produisait 100 000 cercles SVG et un HTML de 12,8 Mo (navigateur inutilisable).
 et traçable — et l'échantillonnage est signalé dans la restitution.
 
 Leviers si le seuil doit être repoussé (V3) : import CSV plutôt que XLSX
-(≈10× plus rapide), lecture en flux sans matérialiser le tableau brut,
-pré-agrégation par segment.
+(mesuré : 0,93 s contre 9,38 s pour 100 000 salariés, soit 10,1×), lecture
+en flux sans matérialiser le tableau brut, pré-agrégation par segment.
 
 ## 10 bis. Empreinte des livrables
 

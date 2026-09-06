@@ -25,6 +25,7 @@ from compensation_analytics.core.mapping import resolve_mapping
 from compensation_analytics.core.normalize import normalise_table
 from compensation_analytics.core.quality import run_quality_check
 from compensation_analytics.core.reporting import render_report
+from compensation_analytics.core.pay_equity import calculate_pay_equity
 from compensation_analytics.core.segmentation import available_segments
 from compensation_analytics.io.tabular import read_table
 from compensation_analytics.io.xlsx_writer import write_workbook
@@ -71,6 +72,10 @@ def measure(size: int, directory: str) -> dict:
         "salary": metrics.calculate_salary_metrics(population, config),
         "distribution": metrics.calculate_distribution_metrics(population, config),
         "scatter": metrics.scatter_dataset(population, config),
+        # L'equite salariale fait partie de toute analyse reelle : l'omettre
+        # ici faisait publier un chiffre de performance plus favorable que
+        # ce que l'outil execute vraiment.
+        "pay_equity": calculate_pay_equity(population, config),
         "manifest": {},
     }
     payload["segments"] = [

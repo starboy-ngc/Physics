@@ -232,10 +232,6 @@ class TestSegmentationAndComparison(unittest.TestCase):
         self.assertAlmostEqual(row["gap_percent"], 25.0)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestScatterSampling(unittest.TestCase):
     """Au-dela du seuil parametre, le nuage est echantillonne de facon
     deterministe pour rester exploitable dans le navigateur."""
@@ -381,3 +377,6 @@ class TestSegmentComparison(unittest.TestCase):
         block = metrics.calculate_segment_metrics(
             build_population(rows, config), config, "grade")
         self.assertAlmostEqual(block["rows"][0]["median_gap"], 0.0, places=6)
+
+if __name__ == "__main__":
+    unittest.main()

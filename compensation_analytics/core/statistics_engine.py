@@ -14,14 +14,21 @@ from typing import Dict, Iterable, List, Optional, Sequence
 def clean(values: Iterable[Optional[float]]) -> List[float]:
     """Ne conserve que les nombres finis exploitables."""
     result: List[float] = []
+    isfinite = math.isfinite
     for value in values:
+        # Chemin rapide : les champs numeriques sont deja des flottants une
+        # fois normalises, et c'est le cas de la quasi-totalite des valeurs.
+        if type(value) is float:
+            if isfinite(value):
+                result.append(value)
+            continue
         if value is None or isinstance(value, bool):
             continue
         try:
             number = float(value)
         except (TypeError, ValueError):
             continue
-        if math.isnan(number) or math.isinf(number):
+        if not isfinite(number):
             continue
         result.append(number)
     return result

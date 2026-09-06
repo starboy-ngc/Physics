@@ -103,6 +103,5 @@ class TestTheThreeRenderersAgree(unittest.TestCase):
         for path, source in self._sources():
             self.assertIsNone(pattern.search(source), path)
 
-
 if __name__ == "__main__":
     unittest.main()

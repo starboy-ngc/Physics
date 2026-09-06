@@ -331,20 +331,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     # Comparaison
     comparison = analysis.get("comparison")
     if comparison:
-        rows = []
-        for row in comparison["rows"]:
-            kind = row["kind"]
-            if kind == "money":
-                left = format_money(row["left"], currency)
-                right = format_money(row["right"], currency)
-            elif kind == "int":
-                left, right = str(row["left"] or 0), str(row["right"] or 0)
-            elif kind == "years":
-                left, right = format_number(row["left"]), format_number(row["right"])
-            else:
-                left, right = format_number(row["left"], 2), format_number(row["right"], 2)
-            rows.append([row["indicator"], left, right,
-                         format_percent(row["gap_percent"])])
+        rows = reporting.comparison_rows(comparison, currency)
         slides.append(Slide("Comparaison de populations", blocks=[_table_block(
             ["Indicateur", comparison["left_label"], comparison["right_label"], "Écart"],
             rows)]))

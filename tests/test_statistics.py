@@ -105,6 +105,5 @@ class TestDistributionTools(unittest.TestCase):
     def test_outlier_bounds_small_sample(self):
         self.assertIsNone(stats.iqr_outlier_bounds([10, 20, 30], 1.5))
 
-
 if __name__ == "__main__":
     unittest.main()

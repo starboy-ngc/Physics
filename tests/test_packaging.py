@@ -100,6 +100,5 @@ class TestWhatIsShipped(unittest.TestCase):
         for name, _target in build_archive.FILES:
             self.assertFalse(name.endswith((".xlsx", ".csv")), name)
 
-
 if __name__ == "__main__":
     unittest.main()

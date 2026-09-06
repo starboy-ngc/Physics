@@ -251,6 +251,14 @@ def parse_date(value: Any) -> Optional[_dt.date]:
     if not text:
         return None
     text = text.split("T")[0].split(" ")[0]
+    # Chemin rapide : la forme ISO est de loin la plus frequente, et
+    # « fromisoformat » est ecrit en C la ou « strptime » recompile son
+    # analyseur a chaque appel. Deux dates par salarie, cent mille salaries :
+    # la difference se compte en secondes.
+    try:
+        return _dt.date.fromisoformat(text)
+    except ValueError:
+        pass
     for fmt in _DATE_FORMATS:
         try:
             return _dt.datetime.strptime(text, fmt).date()

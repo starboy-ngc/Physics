@@ -129,6 +129,5 @@ class TestReportRendering(unittest.TestCase):
         self.assertIn("lignes_importees", payload)
         self.assertIn("statut", payload)
 
-
 if __name__ == "__main__":
     unittest.main()

@@ -117,6 +117,29 @@ def _e(value: Any) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
+def comparison_rows(comparison: Dict[str, Any], currency: str) -> List[List[str]]:
+    """Lignes d'une comparaison de populations, mises en forme.
+
+    La regle vit ici et non dans chaque restitution : la meme comparaison
+    doit se lire a l'identique dans le rapport et dans les slides. Ecrite en
+    double, l'ajout d'une nature de valeur par le moteur n'aurait ete
+    honoree que d'un cote, et le meme fichier aurait produit deux tableaux
+    differents selon le support.
+    """
+    mise_en_forme = {
+        "money": lambda value: format_money(value, currency),
+        "int": lambda value: str(value or 0),
+        "years": format_number,
+    }
+    rows = []
+    for row in comparison["rows"]:
+        rendu = mise_en_forme.get(row["kind"],
+                                  lambda value: format_number(value, 2))
+        rows.append([row["indicator"], rendu(row["left"]), rendu(row["right"]),
+                     format_percent(row["gap_percent"])])
+    return rows
+
+
 def format_money(value: Optional[float], currency: str = "EUR") -> str:
     if value is None:
         return "—"
@@ -467,18 +490,7 @@ def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
 def _comparison_section(comparison: Optional[Dict[str, Any]], currency: str) -> str:
     if not comparison:
         return ""
-    rows = []
-    for row in comparison["rows"]:
-        kind = row["kind"]
-        if kind == "money":
-            left, right = format_money(row["left"], currency), format_money(row["right"], currency)
-        elif kind == "int":
-            left, right = str(row["left"] or 0), str(row["right"] or 0)
-        elif kind == "years":
-            left, right = format_number(row["left"]), format_number(row["right"])
-        else:
-            left, right = format_number(row["left"], 2), format_number(row["right"], 2)
-        rows.append((row["indicator"], left, right, format_percent(row["gap_percent"])))
+    rows = [tuple(row) for row in comparison_rows(comparison, currency)]
     return (
         "<h2>7. Comparaison de populations</h2>"
         + _table([

@@ -331,10 +331,6 @@ class TestTheWholeRoundTrip(unittest.TestCase):
         self.assertEqual(len(population), 30)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestShippedConfigurationMatchesTheDefaults(unittest.TestCase):
     """Les fichiers livres materialisent les defauts embarques.
 
@@ -380,3 +376,6 @@ class TestShippedConfigurationMatchesTheDefaults(unittest.TestCase):
 
         for name in CONFIG_FILES:
             self.assertIsNotNone(self._shipped(name), f"{name}.json absent")
+
+if __name__ == "__main__":
+    unittest.main()

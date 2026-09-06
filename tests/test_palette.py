@@ -276,6 +276,5 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
                 finally:
                     app.destroy()
 
-
 if __name__ == "__main__":
     unittest.main()

@@ -285,6 +285,5 @@ class TestAWorkbookStaysReadable(unittest.TestCase):
             sheet = archive.read("xl/worksheets/sheet1.xml").decode("utf-8")
         self.assertNotIn("<f>", sheet)
 
-
 if __name__ == "__main__":
     unittest.main()

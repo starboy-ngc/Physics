@@ -191,6 +191,5 @@ class TestEveryFieldOnScreenIsExplained(unittest.TestCase):
                    if child.winfo_class() == "Toplevel"]
         self.assertEqual(len(windows), 1)
 
-
 if __name__ == "__main__":
     unittest.main()
