@@ -204,7 +204,7 @@ class TestWindow(unittest.TestCase):
         # « Graphique » en porte plusieurs : la barre principale ne dit plus
         # a elle seule tout ce que l'outil sait montrer.
         self.assertEqual(self.app.chartbar.visible_keys(),
-                         ["distribution", "boites", "nuage"])
+                         ["nuage", "distribution", "boites"])
 
     def _settle(self, app=None):
         """Laisse le glissement aller a son terme, comme le ferait l'oeil."""
@@ -579,7 +579,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         try:
             self.assertIn("graphique", app.tabbar.visible_keys())
             self.assertEqual(app.chartbar.visible_keys(),
-                             ["distribution", "boites"])
+                             ["distribution", "boites"])   # le nuage est parti
             # Le graphique retire s'explique, comme un onglet retire.
             self.assertIn("Ancienneté", app.notice.cget("text"))
             self.assertTrue(app.notice.winfo_ismapped())

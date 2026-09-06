@@ -66,9 +66,9 @@ TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
 #: ecart — la ou ceux-ci repondaient tous les deux a « a quoi cela
 #: ressemble-t-il ». Les reunir laisse la place d'en ajouter d'autres sans
 #: allonger la barre principale : une entree de plus ici suffit.
-CHARTS = (("distribution", "Distribution des rémunérations"),
-          ("boites", "Dispersion par segment"),
-          ("nuage", "Ancienneté × rémunération"))
+CHARTS = (("nuage", "Rémunération/Ancienneté"),
+          ("distribution", "Distribution"),
+          ("boites", "Dispersion"))
 
 
 def _hint(key: Optional[str], title: str):
