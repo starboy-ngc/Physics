@@ -94,7 +94,8 @@ class TestWhatIsShipped(unittest.TestCase):
         fichier existant : aucune donnee RH reelle ne peut se glisser dans
         un livrable."""
         from tools import build_archive
-        source = open(build_archive.__file__, encoding="utf-8").read()
+        with open(build_archive.__file__, encoding="utf-8") as handle:
+            source = handle.read()
         self.assertIn("write_population", source)
         for name, _target in build_archive.FILES:
             self.assertFalse(name.endswith((".xlsx", ".csv")), name)

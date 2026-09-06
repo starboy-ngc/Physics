@@ -1251,7 +1251,15 @@ class Application(tk.Tk):
         except CompensationError as error:
             self._queue.put(("erreur", error.message))
         except Exception as error:                      # garde-fou d'interface
-            self._queue.put(("erreur", f"L'analyse a échoué : {error}"))
+            # Seul le type est remonte : le texte d'une exception Python peut
+            # citer la cellule qui l'a provoquee, donc une donnee RH, et rien
+            # de ce qui s'affiche ou se journalise ne doit en porter.
+            log_event("interface", "analyse", status="ERREUR",
+                      detail=type(error).__name__)
+            self._queue.put(
+                ("erreur", "L'analyse a échoué pour une raison technique "
+                           f"({type(error).__name__}). Le détail figure dans "
+                           "le journal technique."))
 
     def _poll(self) -> None:
         try:

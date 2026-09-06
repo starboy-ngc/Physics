@@ -18,7 +18,22 @@ from typing import Any, Dict, Iterable, List, Optional
 from .config import Configuration
 from .mapping import MappingResult
 
-_NUMBER_CLEAN_RE = re.compile(r"[^\d,.\-]")
+#: Symboles monetaires, apostrophes de groupement et espaces, retires sans
+#: discussion. Tout le reste — une lettre en particulier — fait refuser la
+#: cellule plutot que de la raboter jusqu'a en tirer un nombre.
+_CURRENCY_RE = re.compile(r"[\u20ac$\u00a3\u00a5\u20a3\u20b9\u20bd\u00a4"
+                          r"\u00a0\u202f\s'\u2019]")
+#: Codes devise usuels, toleres en tete ou en fin de cellule.
+_CODES = ("eur|usd|gbp|chf|cad|aud|jpy|cny|sek|nok|dkk|pln|czk|huf|ron|bgn|"
+          "try|brl|mxn|inr|zar|sgd|hkd|aed|mad|tnd|xof|xaf")
+_CODE_LEADING_RE = re.compile(rf"(?i)^(?:{_CODES})\s*")
+_CODE_TRAILING_RE = re.compile(rf"(?i)\s*(?:{_CODES})$")
+#: Forme acceptee apres nettoyage : un signe, des chiffres, des separateurs.
+_NUMBER_SHAPE_RE = re.compile(r"^[+-]?\d+(?:[.,]\d+)*$")
+#: Nombre deja ecrit sans fioriture. La grande majorite des cellules d'un
+#: fichier de paie en sont : les traiter sans passer par le nettoyage evite
+#: d'en payer le cout cinq fois, a chaque champ et pour chaque salarie.
+_PLAIN_NUMBER_RE = re.compile(r"^-?\d+(?:\.\d+)?$")
 _DATE_FORMATS = (
     "%Y-%m-%d", "%d/%m/%Y", "%d-%m-%Y", "%Y/%m/%d",
     "%d.%m.%Y", "%m/%d/%Y", "%Y%m%d",
@@ -120,7 +135,16 @@ def parse_number(value: Any) -> Optional[float]:
     """Convertit une cellule en nombre. Retourne None si non convertible.
 
     Gere les formats francais ("45 000,50", "45 000 €") et anglo-saxons
-    ("45,000.50"). Aucune evaluation dynamique n'est utilisee.
+    ("45,000.50"), ainsi que la notation comptable entre parentheses
+    ("(1 200)" vaut -1 200). Aucune evaluation dynamique n'est utilisee.
+
+    Une cellule qui n'est pas un nombre est refusee, et non rabotee jusqu'a
+    en devenir un. La version precedente supprimait tout caractere non
+    chiffre : "1E+05" devenait 105, "50k" devenait 50, "12 mois" devenait 12
+    et "5O000" — la lettre O frappee a la place du zero — devenait 5 000.
+    La cellule passait alors pour un montant plausible, sans la moindre
+    alerte. Refusee, elle est comptee « non numerique » par le controle
+    qualite, qui la signale avec son numero de ligne.
     """
     if value is None or isinstance(value, bool):
         return None
@@ -129,16 +153,48 @@ def parse_number(value: Any) -> Optional[float]:
     text = str(value).strip()
     if not text:
         return None
-    text = text.replace(" ", "").replace(" ", "")
-    text = _NUMBER_CLEAN_RE.sub("", text)
-    if not text or text in ("-", ".", ","):
+    if _PLAIN_NUMBER_RE.match(text):
+        return float(text)
+
+    # Notation comptable : le signe est porte par les parentheses.
+    negative = False
+    if text.startswith("(") and text.endswith(")"):
+        negative, text = True, text[1:-1].strip()
+
+    text = _strip_currency(text)
+    if not _NUMBER_SHAPE_RE.match(text):
         return None
+    number = _resolve_separators(text)
+    if number is None:
+        return None
+    return -number if negative else number
+
+
+def _strip_currency(text: str) -> str:
+    """Retire symboles, espaces et code devise ; le reste doit se suffire."""
+    text = _CODE_LEADING_RE.sub("", text.strip())
+    text = _CODE_TRAILING_RE.sub("", text)
+    return _CURRENCY_RE.sub("", text)
+
+
+def _resolve_separators(text: str) -> Optional[float]:
+    """Tranche entre separateur decimal et separateur de milliers.
+
+    Deux separateurs differents : le dernier rencontre est le decimal.
+    Un meme separateur repete ("1.234.567") ne peut etre que le separateur
+    de milliers. Un separateur unique suivi de trois chiffres reste
+    ambigu — la lecture decimale est retenue, et `has_ambiguous_separator`
+    la signale au controle qualite plutot que de deviner en silence.
+    """
     if "," in text and "." in text:
-        # Le dernier separateur rencontre est le separateur decimal.
         if text.rfind(",") > text.rfind("."):
             text = text.replace(".", "").replace(",", ".")
         else:
             text = text.replace(",", "")
+    elif text.count(",") > 1:
+        text = text.replace(",", "")
+    elif text.count(".") > 1:
+        text = text.replace(".", "")
     elif "," in text:
         text = text.replace(",", ".")
     try:

@@ -108,7 +108,6 @@ class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
     """
 
     def _parser_strings(self):
-        import argparse
         from compensation_analytics.cli import build_parser
 
         names, choices = [], []

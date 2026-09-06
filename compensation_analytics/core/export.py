@@ -7,7 +7,6 @@ de parametrage pour sortir de la donnee nominative.
 
 from __future__ import annotations
 
-import csv
 import os
 from typing import Any, Dict, List, Sequence, Tuple
 
@@ -206,12 +205,4 @@ def export_excel(
 ) -> str:
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     write_workbook(path, build_sheets(analysis, population, config))
-    return path
-
-
-def export_csv(rows: Sequence[Sequence[Any]], path: str, delimiter: str = ";") -> str:
-    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    with open(path, "w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.writer(handle, delimiter=delimiter, lineterminator="\n")
-        writer.writerows(rows)
     return path

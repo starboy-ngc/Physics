@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import logging
 import os
-import time
 from typing import Optional
 
 LOGGER_NAME = "compensation_analytics"
@@ -32,6 +31,11 @@ def configure_logging(
     """Initialise le log technique (console + fichier local optionnel)."""
     logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(level)
+    # Les gestionnaires precedents sont fermes avant d'etre oublies : les
+    # vider sans les fermer laissait le fichier de log ouvert a chaque
+    # reconfiguration, et une session d'interface en enchaine plusieurs.
+    for handler in list(logger.handlers):
+        handler.close()
     logger.handlers.clear()
     logger.propagate = False
 

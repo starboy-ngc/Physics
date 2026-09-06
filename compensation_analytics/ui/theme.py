@@ -584,11 +584,6 @@ def bind_wheel(canvas: tk.Canvas, root: tk.Misc) -> None:
         canvas.bind_all(sequence, scroll, add="+")
 
 
-def separator(master: tk.Widget, ground: str = CANVAS) -> tk.Frame:
-    frame = tk.Frame(master, height=1, background=LINE)
-    return frame
-
-
 class CheckRow(tk.Frame):
     """Case a cocher dessinee, plutot que l'indicateur du theme.
 

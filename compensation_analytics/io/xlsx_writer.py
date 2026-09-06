@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import math
+import re
 import zipfile
 from typing import Any, Iterable, List, Sequence, Tuple
 
@@ -44,7 +45,17 @@ _EXCEL_EPOCH = _dt.date(1899, 12, 30)
 _MAX_SHEET_NAME = 31
 
 
+#: Caracteres interdits par XML 1.0. Une cellule RH venue d'un export
+#: mainframe peut en porter (tabulation verticale, saut de page) : ecrits
+#: tels quels, ils produisaient un classeur qu'Excel declare illisible dans
+#: son integralite. Ils sont remplaces par une espace, ce qui abime une
+#: cellule au lieu de perdre le fichier.
+_FORBIDDEN_RE = re.compile(
+    "[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x84\x86-\x9f\ufffe\uffff]")
+
+
 def _escape(text: str) -> str:
+    text = _FORBIDDEN_RE.sub(" ", text)
     return (
         text.replace("&", "&amp;")
         .replace("<", "&lt;")

@@ -5,16 +5,13 @@ la ou l'utilisateur attendait une reponse claire. Ces tests empechent leur
 reapparition.
 """
 
-import datetime as _dt
-import math
 import os
 import tempfile
 import unittest
 
-from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
+from tests.support import HEADERS, build_population, make_config, make_row
 from compensation_analytics.core import metrics
-from compensation_analytics.core.config import (Configuration, analysis_field,
-                                                load_configuration, percentiles)
+from compensation_analytics.core.config import analysis_field, percentiles
 from compensation_analytics.core.errors import ConfigError
 from compensation_analytics.core.mapping import resolve_mapping
 from compensation_analytics.core.normalize import has_ambiguous_separator

@@ -1,6 +1,5 @@
 """Tests des restitutions paysage (slides HTML et PDF natif)."""
 
-import datetime as _dt
 import os
 import re
 import tempfile
@@ -126,7 +125,8 @@ class TestPdfPrimitives(unittest.TestCase):
             page = document.add_page()
             page.text(50, 500, "Test")
         document.save(path)
-        data = open(path, "rb").read()
+        with open(path, "rb") as handle:
+            data = handle.read()
         self.assertTrue(data.startswith(b"%PDF-"))
         self.assertTrue(data.rstrip().endswith(b"%%EOF"))
         self.assertIn(b"/Count 3", data)
@@ -142,7 +142,8 @@ class TestPdfDocument(unittest.TestCase):
         self.path = write_slides_pdf(
             self.deck, self.payload, os.path.join(self.directory, "deck.pdf")
         )
-        self.data = open(self.path, "rb").read()
+        with open(self.path, "rb") as handle:
+            self.data = handle.read()
 
     def test_cross_reference_table_points_at_real_objects(self):
         start = int(re.search(rb"startxref\s+(\d+)", self.data).group(1))
@@ -196,7 +197,8 @@ class TestSummaryOutputs(unittest.TestCase):
         pdf = write_slides_pdf(summary, payload, os.path.join(directory, "s.pdf"))
         self.assertGreater(os.path.getsize(html), 1000)
         self.assertGreater(os.path.getsize(pdf), 500)
-        self.assertIn(b"/Count 1", open(pdf, "rb").read())
+        with open(pdf, "rb") as handle:
+            self.assertIn(b"/Count 1", handle.read())
 
 
 if __name__ == "__main__":
@@ -417,7 +419,8 @@ class TestNoRSquaredInDocuments(unittest.TestCase):
     def test_absent_from_the_pdf(self):
         path = write_slides_pdf(build_deck(self.payload), self.payload,
                                 os.path.join(self.directory, "d.pdf"))
-        data = open(path, "rb").read()
+        with open(path, "rb") as handle:
+            data = handle.read()
         streams = b""
         for match in re.finditer(rb"(?<!end)stream\r?\n", data):
             begin = match.end()

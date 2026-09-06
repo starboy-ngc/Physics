@@ -129,6 +129,40 @@ class TestPrivacy(unittest.TestCase):
         self.assertNotIn("PRENOM0", content)
         self.assertFalse(re.search(r"\bE000\d\d\b", content))
 
+    def test_a_rejected_filter_value_never_reaches_the_log(self):
+        """La valeur d'un filtre est saisie par l'utilisateur : elle peut
+        etre un nom de salarie. Le message a l'ecran la cite — c'est ce qui
+        rend l'erreur comprehensible a qui vient de la taper — mais le
+        journal technique, lui, est un fichier qui reste, et le paragraphe 6
+        interdit qu'une donnee personnelle y figure.
+        """
+        log_dir = tempfile.mkdtemp()
+        configure_logging(log_dir)
+        code = cli_main(["--logs", log_dir, "analyse", self.source,
+                         "--sortie", os.path.join(self.directory, "sortie"),
+                         "--filtre", "base_salary>Dupont"])
+        self.assertEqual(code, 2)
+        for handler in logging.getLogger("compensation_analytics").handlers:
+            handler.flush()
+        with open(os.path.join(log_dir, "technical.log"),
+                  encoding="utf-8") as handle:
+            content = handle.read()
+        self.assertIn("non numeric filter value", content)
+        self.assertNotIn("Dupont", content)
+
+    def test_an_unreadable_filter_never_reaches_the_log(self):
+        log_dir = tempfile.mkdtemp()
+        configure_logging(log_dir)
+        cli_main(["--logs", log_dir, "analyse", self.source,
+                  "--sortie", os.path.join(self.directory, "sortie2"),
+                  "--filtre", "Marie Dupont"])
+        for handler in logging.getLogger("compensation_analytics").handlers:
+            handler.flush()
+        with open(os.path.join(log_dir, "technical.log"),
+                  encoding="utf-8") as handle:
+            content = handle.read()
+        self.assertNotIn("Dupont", content)
+
     def test_individual_data_is_not_exported_by_default(self):
         path = os.path.join(self.directory, "export.xlsx")
         export_excel(self.result.payload, self.result.filtered,

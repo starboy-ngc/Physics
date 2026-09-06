@@ -20,7 +20,7 @@ from __future__ import annotations
 import os
 import unicodedata
 import zlib
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import List, Optional, Sequence, Tuple
 
 # Largeurs Helvetica (unites de 1/1000 em) pour les caracteres imprimables
 # latin-1. Table officielle des metriques Adobe (AFM).

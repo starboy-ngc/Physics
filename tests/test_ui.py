@@ -6,7 +6,6 @@ depourvue de tkinter doit continuer de fonctionner en ligne de commande.
 """
 
 import ast
-import datetime as _dt
 import glob
 import os
 import sys
@@ -63,7 +62,8 @@ class TestEngineStaysIndependent(unittest.TestCase):
 
     def test_no_tkinter_in_the_engine(self):
         for path in self._engine_files():
-            tree = ast.parse(open(path, encoding="utf-8").read())
+            with open(path, encoding="utf-8") as handle:
+                tree = ast.parse(handle.read())
             for node in ast.walk(tree):
                 names = []
                 if isinstance(node, ast.Import):
@@ -75,7 +75,8 @@ class TestEngineStaysIndependent(unittest.TestCase):
 
     def test_no_ui_import_in_the_engine(self):
         for path in self._engine_files():
-            source = open(path, encoding="utf-8").read()
+            with open(path, encoding="utf-8") as handle:
+                source = handle.read()
             self.assertNotIn("from ..ui", source, os.path.basename(path))
             self.assertNotIn("from .ui", source, os.path.basename(path))
 

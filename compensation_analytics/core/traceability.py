@@ -11,7 +11,7 @@ import datetime as _dt
 import hashlib
 import json
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from ..version import ENGINE_NAME, __version__
 from .config import Configuration

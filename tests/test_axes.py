@@ -89,7 +89,8 @@ class TestTheThreeRenderersAgree(unittest.TestCase):
         for path in ("compensation_analytics/core/reporting.py",
                      "compensation_analytics/core/slides.py",
                      "compensation_analytics/ui/charts.py"):
-            yield path, open(os.path.join(root, path), encoding="utf-8").read()
+            with open(os.path.join(root, path), encoding="utf-8") as handle:
+                yield path, handle.read()
 
     def test_every_renderer_uses_the_shared_ticks(self):
         for path, source in self._sources():

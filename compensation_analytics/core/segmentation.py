@@ -133,7 +133,10 @@ def _number(value: Any) -> float:
             f"La valeur de filtre \"{value}\" n'est pas un nombre. "
             "Les critères de comparaison (>, >=, <, <=, entre) attendent "
             "une valeur numérique.",
-            technical=f"non numeric filter value: {value!r}",
+            # La valeur vient de l'utilisateur et peut etre un nom : le
+            # journal technique n'en retient que le type et la longueur.
+            technical=("non numeric filter value: "
+                       f"{type(value).__name__} len={len(str(value))}"),
         )
     return number
 
@@ -239,7 +242,8 @@ def build_filters(
         if not field_name:
             raise ConfigError(
                 "Un filtre est incomplet : le champ a filtrer n'est pas indique.",
-                technical=f"filter without field: {definition!r}",
+                technical=("filter without field, keys="
+                           f"{sorted(definition)}"),
             )
         _ensure_known_field(field_name, allowed, "filtre")
         operator = definition.get("operator", "eq")

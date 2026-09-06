@@ -9,7 +9,6 @@ pour qu'un jeu ajoute demain ne passe pas sans etre mesure.
 Aucune donnee RH reelle n'est utilisee.
 """
 
-import datetime as _dt
 import os
 import re
 import sys

@@ -28,7 +28,22 @@ python3 -m compensation_analytics.cli controle population.xlsx
 ```
 
 Trois niveaux : **critique** (bloque l'analyse), **avertissement**,
-**information**. Le rapport indique les numéros de ligne à corriger.
+**information**. Le rapport indique les numéros de ligne à corriger — ce sont
+les numéros de ligne de votre fichier, lignes vides comprises.
+
+### Écriture des montants
+
+Sont lus : `45000`, `45000.75`, `45 000,50`, `45,000.50`, `1.234.567,89`,
+`1 200 €`, `1200 EUR`, et la notation comptable `(1 200)` qui vaut −1 200.
+
+**Une cellule qui n'est pas un nombre est refusée**, jamais rabotée jusqu'à en
+devenir un : `1E+05`, `50k`, `12 mois` ou `5O000` (la lettre O à la place du
+zéro) sont comptés « non numériques » et signalés avec leur numéro de ligne,
+plutôt que lus comme 105, 50, 12 et 5 000.
+
+Reste ambiguë une écriture comme `45.000` : elle vaut 45 000 en France et 45,0
+ailleurs. La lecture décimale est retenue **et l'ambiguïté est signalée** au
+contrôle qualité — l'outil ne devine pas en silence.
 
 ## 4. Lancer l'analyse
 

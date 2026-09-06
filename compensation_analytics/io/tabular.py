@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import csv
 import datetime as _dt
-import io
 import os
 import re
 import zipfile
@@ -191,7 +190,9 @@ def _resolve_sheet_path(archive: zipfile.ZipFile, sheet: str | None) -> str:
         for node in rels_root
     }
     sheets = workbook.find(f"{_NS}sheets")
-    entries = list(sheets or [])
+    # « sheets or [] » testait la valeur de verite d'un Element : Python la
+    # deprecie et la fera lever. L'absence de nœud se teste explicitement.
+    entries = list(sheets) if sheets is not None else []
     if not entries:
         raise ImportError_(
             "Le classeur Excel ne contient aucun onglet.",
@@ -225,6 +226,11 @@ def _read_sheet(
         for _, element in ElementTree.iterparse(stream, events=("end",)):
             if element.tag != f"{_NS}row":
                 continue
+            # Excel omet les lignes vides du fichier : sans les restituer, la
+            # troisieme ligne lue pouvait etre la septieme du classeur, et le
+            # controle qualite renvoyait l'utilisateur a une ligne qui n'est
+            # pas celle a corriger.
+            _restore_gap(rows, element.get("r"))
             values: List[Any] = []
             for cell in element.findall(f"{_NS}c"):
                 index = _column_index(cell.get("r"))
@@ -237,6 +243,22 @@ def _read_sheet(
             element.clear()
     width = max((len(row) for row in rows), default=0)
     return [_pad(row, width) for row in rows]
+
+
+#: Au-dela de cet ecart, la ligne annoncee releve du fichier fabrique et
+#: non de lignes vides : mieux vaut une numerotation decalee qu'un million
+#: de lignes vides en memoire.
+_MAX_ROW_GAP = 50_000
+
+
+def _restore_gap(rows: List[List[Any]], reference: str | None) -> None:
+    """Reinsere les lignes vides qu'Excel n'a pas ecrites."""
+    if not reference or not reference.isdigit():
+        return
+    expected = int(reference) - 1
+    missing = expected - len(rows)
+    if 0 < missing <= _MAX_ROW_GAP:
+        rows.extend([] for _ in range(missing))
 
 
 def _column_index(reference: str | None) -> int | None:
@@ -293,12 +315,3 @@ def _drop_trailing_empty(rows: List[List[Any]]) -> List[List[Any]]:
     while rows and all(str(cell).strip() == "" for cell in rows[-1]):
         rows.pop()
     return rows
-
-
-def table_to_csv_text(table: Table, delimiter: str = ";") -> str:
-    """Serialisation utilitaire (tests, export intermediaire)."""
-    buffer = io.StringIO()
-    writer = csv.writer(buffer, delimiter=delimiter, lineterminator="\n")
-    writer.writerow(table.headers)
-    writer.writerows(table.rows)
-    return buffer.getvalue()

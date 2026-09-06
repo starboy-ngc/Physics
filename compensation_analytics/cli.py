@@ -71,7 +71,9 @@ def parse_filter(expression: str) -> Dict[str, Any]:
     raise CompensationError(
         f"Le filtre \"{expression}\" est mal écrit. "
         "Format attendu : champ=valeur (ex. business_unit=France).",
-        technical=f"unparsable filter: {expression}",
+        # L'expression est saisie par l'utilisateur et peut porter un nom
+        # de salarie : le journal technique n'en retient que la longueur.
+        technical=f"unparsable filter (len={len(expression)})",
     )
 
 

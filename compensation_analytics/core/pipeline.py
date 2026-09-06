@@ -11,10 +11,9 @@ compa-ratio, N/N-1) sans toucher au coeur.
 from __future__ import annotations
 
 import datetime as _dt
-import os
 import time as _time
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, List, Optional
 
 from ..io.tabular import Table, read_table
 from . import metrics
