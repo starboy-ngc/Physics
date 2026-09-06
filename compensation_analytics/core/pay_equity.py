@@ -304,6 +304,135 @@ def calculate_category_gaps(population: Population, config: Configuration,
     return result
 
 
+def calculate_category_profile(population: Population, config: Configuration,
+                               field_name: str,
+                               value: str) -> Dict[str, Any]:
+    """Fiche d'une categorie : les deux sexes, sur plusieurs variables.
+
+    Un ecart de remuneration ne se lit pas seul. Vingt pour cent d'ecart sur
+    un poste ou les hommes comptent neuf ans d'anciennete et les femmes
+    quatre ne dit pas la meme chose que le meme ecart a anciennete egale :
+    le premier appelle une revue de la grille d'anciennete, le second une
+    revalorisation. La fiche pose donc cote a cote ce que touche chaque sexe
+    et ce qui l'entoure — anciennete, age, temps de travail, part variable.
+
+    Les variables comparees sont declarees en configuration : une prime
+    propre a l'entreprise s'ajoute a la liste sans toucher au moteur.
+
+    Rien n'est publie si l'un des deux sexes est sous le seuil : une
+    mediane calculee sur trois personnes les designe.
+    """
+    section = config.section("pay_equity_parameters")
+    rules = PrivacyRules.from_config(config)
+    members = [employee for employee in population
+               if str(employee.value(field_name) or "") == str(value)]
+    groups = _split_members(members, config)
+    women, men = groups[FEMALE], groups[MALE]
+    published = (rules.may_publish(len(women)) and rules.may_publish(len(men)))
+    profile: Dict[str, Any] = {
+        "category": value,
+        "category_field": field_name,
+        "female_count": len(women),
+        "male_count": len(men),
+        "unknown_count": len(groups[""]),
+        "headcount": len(members),
+        "published": published,
+        "rows": [],
+        "variable_share": {},
+    }
+    if not published:
+        profile["warning"] = (
+            "Effectif insuffisant : cette catégorie ne réunit pas assez de "
+            "femmes et d'hommes pour publier une comparaison.")
+        return profile
+
+    for entry in section.get("profile_fields", []) or []:
+        name = str(entry.get("field", ""))
+        if not name:
+            continue
+        female = _amounts(women, name)
+        male = _amounts(men, name)
+        if not female and not male:
+            # Une colonne absente du fichier n'a pas a occuper une ligne :
+            # elle ferait croire a une donnee manquante plutot qu'a un
+            # champ non renseigne.
+            continue
+        profile["rows"].append(_profile_row(entry, name, female, male))
+
+    # Part de chaque sexe percevant une remuneration variable : indicateur
+    # de la directive, et il se lit au niveau du poste comme au global.
+    variable_field = section.get("variable_field", "variable_pay")
+    profile["variable_share"] = {
+        "female_share": _share_with_variable(women, variable_field),
+        "male_share": _share_with_variable(men, variable_field),
+    }
+    salary_field = analysis_field(config)
+    pair = _pair(_amounts(women, salary_field), _amounts(men, salary_field),
+                 rules)
+    profile["at_stake"] = _at_stake(pair)
+    profile["mean_gap"] = pair.get("mean_gap")
+    profile["median_gap"] = pair.get("median_gap")
+    threshold = float(section.get("gap_alert_threshold", 5.0) or 0.0)
+    profile["above_threshold"] = (profile["mean_gap"] is not None
+                                  and threshold > 0
+                                  and abs(profile["mean_gap"]) >= threshold)
+    return profile
+
+
+def _profile_row(entry: Dict[str, Any], name: str, female: Sequence[float],
+                 male: Sequence[float]) -> Dict[str, Any]:
+    """Une variable, les deux sexes, et l'ecart dans l'unite qui convient.
+
+    Un pourcentage sur une anciennete se lirait comme un ecart de
+    remuneration : sur les variables qui ne sont pas des montants, l'ecart
+    est une difference, dans l'unite de la variable.
+    """
+    kind = str(entry.get("kind", "money"))
+    female_mean, male_mean = stats.mean(female), stats.mean(male)
+    row = {
+        "field": name,
+        "label": str(entry.get("label", name)),
+        "kind": kind,
+        "female_count": len(female),
+        "male_count": len(male),
+        "female_mean": female_mean,
+        "male_mean": male_mean,
+        "female_median": stats.median(female),
+        "male_median": stats.median(male),
+        "gap": None,
+        "difference": None,
+    }
+    if female_mean is not None and male_mean is not None:
+        row["difference"] = female_mean - male_mean
+        if kind == "money":
+            row["gap"] = _gap(male_mean, female_mean)
+    return row
+
+
+def _share_with_variable(employees: Sequence[Any],
+                         field_name: str) -> Optional[float]:
+    if not employees:
+        return None
+    touched = sum(1 for employee in employees
+                  if isinstance(employee.value(field_name), (int, float))
+                  and not isinstance(employee.value(field_name), bool)
+                  and employee.value(field_name) > 0)
+    return touched / len(employees) * 100.0
+
+
+def _split_members(members: Sequence[Any], config: Configuration):
+    """Repartit une liste de salaries entre les deux sexes."""
+    section = config.section("pay_equity_parameters")
+    field_name = section.get("gender_field", "gender")
+    female = section.get("female_values", []) or []
+    male = section.get("male_values", []) or []
+    groups: Dict[str, List[Any]] = {FEMALE: [], MALE: [], "": []}
+    for employee in members:
+        groups[classify(employee.value(field_name), female, male)].append(
+            employee)
+    return groups
+
+
 def _at_stake(pair: Dict[str, Any]) -> Optional[float]:
     """Cout de rattrapage d'une categorie : ce que couterait l'alignement.
 

@@ -159,6 +159,24 @@ DEFAULTS: Dict[str, Any] = {
         # conjointe, faute de justification par des criteres objectifs.
         "gap_alert_threshold": 5.0,
         "quartile_count": 4,
+        # Variables comparees entre les sexes sur la fiche d'un poste. Un
+        # ecart de remuneration ne se lit pas seul : la meme difference
+        # n'appelle pas la meme reponse selon que les deux sexes ont la
+        # meme anciennete ou non. La liste est declarative — une prime
+        # propre a l'entreprise s'y ajoute sans toucher au moteur.
+        # « kind » commande la mise en forme et la nature de l'ecart :
+        # « money » un pourcentage, « years » et « ratio » une difference.
+        "profile_fields": [
+            {"field": "base_salary", "label": "Salaire de base",
+             "kind": "money"},
+            {"field": "variable_pay", "label": "Part variable",
+             "kind": "money"},
+            {"field": "total_compensation", "label": "Rémunération totale",
+             "kind": "money"},
+            {"field": "tenure_years", "label": "Ancienneté", "kind": "years"},
+            {"field": "age_years", "label": "Âge", "kind": "years"},
+            {"field": "fte", "label": "Temps de travail", "kind": "ratio"},
+        ],
     },
     "chart_parameters": {
         "histogram_bins": 20,

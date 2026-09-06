@@ -157,6 +157,36 @@ L'écart à poste comparable n'est calculé que sur les postes où **les deux
 sexes** atteignent le seuil de publication ; le pourcentage d'effectif
 couvert est indiqué.
 
+### La page : une liste, une fiche
+
+À gauche, **les postes**, classés par ce qui est en jeu. À droite, **la fiche
+du poste retenu** : les deux sexes comparés variable par variable.
+
+| | Femmes | Hommes | Écart |
+|---|---|---|---|
+| Salaire de base | 64 985 EUR | 80 898 EUR | +19,7 % |
+| Part variable | 11 137 EUR | 15 188 EUR | +26,7 % |
+| Rémunération totale | 76 122 EUR | 96 086 EUR | +20,8 % |
+| Ancienneté | 7 ans | 9 ans | −1,8 an |
+| Âge | 40 ans | 43 ans | −2,8 ans |
+| Temps de travail | 0,93 | 0,99 | −0,06 |
+
+Un écart de rémunération ne se lit pas seul : +19,7 % sur un poste où les
+hommes comptent deux ans d'ancienneté de plus n'appelle pas la même réponse
+que le même écart à ancienneté égale. Le premier interroge la grille
+d'ancienneté, le second la rémunération elle-même.
+
+**Sur les montants**, l'écart suit la formule de la directive. **Sur les
+autres variables**, c'est une différence dans l'unité de la variable — un
+pourcentage s'y lirait comme un écart de rémunération.
+
+Les variables comparées sont **déclarées** dans
+`config/pay_equity_parameters.json` (`profile_fields`) : une prime propre à
+votre entreprise s'ajoute à la liste sans toucher au logiciel.
+
+Rien n'est affiché si l'un des deux sexes est sous le seuil de publication :
+une médiane calculée sur trois personnes les désigne.
+
 ### Le rattrapage
 
 Ce que coûterait l'alignement du sexe le moins rémunéré sur l'autre, poste

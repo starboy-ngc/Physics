@@ -17,5 +17,37 @@
   "variable_field": "variable_pay",
   "category_field": "job_title",
   "gap_alert_threshold": 5.0,
-  "quartile_count": 4
+  "quartile_count": 4,
+  "profile_fields": [
+    {
+      "field": "base_salary",
+      "label": "Salaire de base",
+      "kind": "money"
+    },
+    {
+      "field": "variable_pay",
+      "label": "Part variable",
+      "kind": "money"
+    },
+    {
+      "field": "total_compensation",
+      "label": "Rémunération totale",
+      "kind": "money"
+    },
+    {
+      "field": "tenure_years",
+      "label": "Ancienneté",
+      "kind": "years"
+    },
+    {
+      "field": "age_years",
+      "label": "Âge",
+      "kind": "years"
+    },
+    {
+      "field": "fte",
+      "label": "Temps de travail",
+      "kind": "ratio"
+    }
+  ]
 }

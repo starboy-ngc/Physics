@@ -7,9 +7,11 @@ depourvue de tkinter doit continuer de fonctionner en ligne de commande.
 
 import ast
 import glob
+import json
 import os
 import sys
 import tempfile
+import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -510,6 +512,127 @@ class TestTheScreenPrivacySetting(unittest.TestCase):
         self.assertIs(section["anonymise_identifiers"], True)
 
 
+@needs_display
+class TestThePayTransparencyPage(unittest.TestCase):
+    """La page se travaille poste par poste : une liste, une fiche."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "population.xlsx")
+        rows = []
+        for index in range(120):
+            grade = ["G3", "G5", "G7"][index % 3]
+            femme = index % 2 == 0
+            rows.append(make_row(
+                index, salary=40000 + (0 if femme else 6000) + index * 40,
+                gender="F" if femme else "H", grade=grade,
+                tenure=4 if femme else 9))
+        write_workbook(cls.source, [("Population", [HEADERS] + rows)])
+
+    def setUp(self):
+        import shutil
+        from compensation_analytics.ui.app import Application
+
+        self.workspace = tempfile.mkdtemp()
+        config_dir = os.path.join(self.workspace, "config")
+        shutil.copytree(os.path.join(ROOT, "config"), config_dir)
+        # Le jeu de test n'a pas de colonne « Poste » : la categorie de la
+        # directive est portee par le grade.
+        path = os.path.join(config_dir, "pay_equity_parameters.json")
+        with open(path, encoding="utf-8") as handle:
+            section = json.load(handle)
+        section["category_field"] = "grade"
+        with open(path, "w", encoding="utf-8") as handle:
+            json.dump(section, handle)
+        self.app = Application(config_dir=config_dir)
+        self.app.update()
+        self._analyse()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _analyse(self):
+        from compensation_analytics.core.pipeline import load_population
+
+        population, mapping, _table = load_population(
+            self.source, self.app.configuration)
+        self.app.source_path = self.source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app._populate_filters()
+        self.app.run_analysis()
+        limite = time.time() + 30
+        while self.app.result is None and time.time() < limite:
+            self.app.update()
+            time.sleep(0.02)
+        for _ in range(20):
+            self.app.update()
+            time.sleep(0.01)
+
+    def test_the_list_opens_on_its_first_line(self):
+        """Une page qui s'ouvre sur un panneau vide demande un clic pour ne
+        rien apprendre."""
+        self.assertTrue(self.app.category_tree.get_children())
+        self.assertTrue(self.app.category_tree.selection())
+        self.assertTrue(self.app.profile_title.cget("text"))
+        self.assertIn("femmes", self.app.profile_subtitle.cget("text"))
+
+    def test_choosing_a_line_opens_that_profile(self):
+        lignes = self.app.category_tree.get_children()
+        self.assertGreaterEqual(len(lignes), 2)
+        premier = self.app.profile_title.cget("text")
+        self.app.category_tree.selection_set(lignes[1])
+        self.app.update()
+        self.assertNotEqual(self.app.profile_title.cget("text"), premier)
+        self.assertEqual(self.app.profile_title.cget("text"),
+                         self.app._categories[1]["category"])
+
+    def test_the_profile_compares_the_sexes_on_several_variables(self):
+        """C'est l'objet de la fiche : la remuneration ET ce qui l'entoure."""
+        valeurs = [self.app.profile_tree.item(line, "values")
+                   for line in self.app.profile_tree.get_children()]
+        intitules = [ligne[0] for ligne in valeurs]
+        self.assertIn("Salaire de base", intitules)
+        self.assertIn("Ancienneté", intitules)
+        for ligne in valeurs:
+            self.assertEqual(len(ligne), 4)
+            # Une colonne pour chaque sexe, et un ecart : jamais un tiret
+            # partout, sinon la ligne n'apprend rien.
+            self.assertNotEqual(ligne[1], "—")
+            self.assertNotEqual(ligne[2], "—")
+
+    def test_a_gap_in_years_is_never_shown_as_a_percentage(self):
+        valeurs = {ligne[0]: ligne for ligne in
+                   (self.app.profile_tree.item(line, "values")
+                    for line in self.app.profile_tree.get_children())}
+        self.assertIn("%", valeurs["Salaire de base"][3])
+        self.assertIn("an", valeurs["Ancienneté"][3])
+        self.assertNotIn("%", valeurs["Ancienneté"][3])
+
+    def test_changing_the_sort_reorders_the_list(self):
+        from compensation_analytics.ui.app import CATEGORY_ORDERS
+
+        noms = [key for key, _label in CATEGORY_ORDERS]
+        self.assertEqual(noms[0], "stake")
+        avant = [self.app.category_tree.item(line, "values")[0]
+                 for line in self.app.category_tree.get_children()]
+        self.app.category_order.current(noms.index("name"))
+        self.app._show_categories()
+        self.app.update()
+        apres = [self.app.category_tree.item(line, "values")[0]
+                 for line in self.app.category_tree.get_children()]
+        self.assertEqual(apres, sorted(avant, key=str.lower))
+
+    def test_the_directive_indicators_stay_on_the_page(self):
+        """Le detail par poste ne remplace pas ce qu'il faut publier."""
+        self.assertTrue(self.app.quartile_block.winfo_manager())
+        self.assertEqual(len(self.app.quartile_chart.rows), 4)
+        note = self.app.compliance_note.cget("text")
+        self.assertIn("2023/970", note)
+        self.assertIn("médian", note)
+
+
 @unittest.skipUnless(HAS_TK, "tkinter absent")
 class TestDrawnImages(unittest.TestCase):
     """Le canevas Tk ne lisse pas ses traces : les formes fines sont des
@@ -937,21 +1060,11 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             app.destroy()
 
     def test_the_directive_charts_only_draw_what_the_engine_published(self):
-        """Un ecart ou une part que le moteur a refuse de publier ne doit pas
-        reapparaitre sous forme de barre."""
-        from compensation_analytics.ui.charts import GapChart, QuartileChart
+        """Une part que le moteur a refuse de publier ne doit pas reapparaitre
+        sous forme de barre."""
+        from compensation_analytics.ui.charts import QuartileChart
         app = self._analysed(40)
         try:
-            gaps = GapChart(app)
-            gaps.set_rows([
-                {"category": "publie", "published": True, "mean_gap": 3.0},
-                {"category": "sous le seuil", "published": False,
-                 "mean_gap": 12.0},
-                # Publie, mais l'ecart n'a pas pu etre calcule.
-                {"category": "sans ecart", "published": True, "mean_gap": None},
-            ])
-            self.assertEqual([row["category"] for row in gaps._drawable()],
-                             ["publie"])
             quartiles = QuartileChart(app)
             quartiles.set_rows([
                 {"quartile": 1, "female_share": 60.0, "male_share": 40.0},
