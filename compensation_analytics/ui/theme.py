@@ -33,7 +33,7 @@ ACTIVE: palette.Palette = palette.by_name(palette.DEFAULT_THEME)
 INK = INK_SOFT = MUTED = FAINT = LINE = LINE_STRONG = CANVAS = GROUND = ""
 ACCENT = ACCENT_HOVER = ACCENT_SOFT = ""
 WARN = WARN_SOFT = CRIT = CRIT_SOFT = OK = DISABLED = STRIPE = ""
-GRID = FEMALE = MALE = ""
+GRID = FEMALE = MALE = FEMALE_SOFT = MALE_SOFT = ""
 #: Teintes du texte des info-bulles, sur fond INK.
 HINT_TEXT = HINT_FAINT = ""
 
@@ -48,7 +48,8 @@ def _publish() -> None:
     global INK, INK_SOFT, MUTED, FAINT, LINE, LINE_STRONG, CANVAS, GROUND
     global ACCENT, ACCENT_HOVER, ACCENT_SOFT
     global WARN, WARN_SOFT, CRIT, CRIT_SOFT, OK, DISABLED, STRIPE
-    global GRID, FEMALE, MALE, HINT_TEXT, HINT_FAINT
+    global GRID, FEMALE, MALE, FEMALE_SOFT, MALE_SOFT
+    global HINT_TEXT, HINT_FAINT
     INK, INK_SOFT = ACTIVE.ink, ACTIVE.ink_soft
     MUTED, FAINT = ACTIVE.muted, ACTIVE.faint
     LINE, LINE_STRONG = ACTIVE.line, ACTIVE.line_strong
@@ -64,6 +65,7 @@ def _publish() -> None:
     CRIT, CRIT_SOFT = ACTIVE.crit, ACTIVE.crit_soft
     OK, DISABLED, STRIPE = ACTIVE.ok, ACTIVE.disabled, ACTIVE.stripe
     GRID, FEMALE, MALE = ACTIVE.grid, ACTIVE.female, ACTIVE.male
+    FEMALE_SOFT, MALE_SOFT = palette.FEMALE_SOFT, palette.MALE_SOFT
     # L'info-bulle est le seul aplat sombre de l'interface : son texte se
     # deduit du fond, et non de la palette claire.
     HINT_TEXT = palette.mix(ACTIVE.canvas, ACTIVE.ink, 0.09)

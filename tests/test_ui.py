@@ -527,6 +527,7 @@ class TestThePayTransparencyPage(unittest.TestCase):
             rows.append(make_row(
                 index, salary=40000 + (0 if femme else 6000) + index * 40,
                 gender="F" if femme else "H", grade=grade,
+                business_unit=["France", "DACH"][index % 2 == 0],
                 tenure=4 if femme else 9))
         write_workbook(cls.source, [("Population", [HEADERS] + rows)])
 
@@ -624,6 +625,29 @@ class TestThePayTransparencyPage(unittest.TestCase):
                  for line in self.app.category_tree.get_children()]
         self.assertEqual(apres, sorted(avant, key=str.lower))
 
+    def test_crossing_two_axes_splits_the_list_and_the_header(self):
+        """Croiser change l'axe : la liste, le titre et les trois chiffres
+        du haut doivent suivre ensemble. Laisser l'ecart d'un axe au-dessus
+        de la liste d'un autre serait pire que de ne pas croiser."""
+        simple = len(self.app._categories)
+        etiquette = self.app.category_heading.cget("text")
+
+        self.app.category_cross.set("BU")
+        self.app._show_categories()
+        self.app.update()
+
+        self.assertEqual(self.app._axis(), ["grade", "business_unit"])
+        self.assertGreater(len(self.app._categories), simple)
+        self.assertNotEqual(self.app.category_heading.cget("text"), etiquette)
+        self.assertIn("·", self.app._categories[0]["category"])
+        self.assertIn("comparable", self.app.equity_note.cget("text"))
+
+    def test_crossing_an_axis_with_itself_is_ignored(self):
+        """Cela ne produirait que des libelles doubles."""
+        self.app.category_cross.set(self.app.category_choice.get())
+        self.app._show_categories()
+        self.assertEqual(self.app._axis(), "grade")
+
     def test_the_directive_indicators_stay_on_the_page(self):
         """Le detail par poste ne remplace pas ce qu'il faut publier."""
         self.assertTrue(self.app.quartile_block.winfo_manager())
@@ -631,6 +655,85 @@ class TestThePayTransparencyPage(unittest.TestCase):
         note = self.app.compliance_note.cget("text")
         self.assertIn("2023/970", note)
         self.assertIn("médian", note)
+
+
+@needs_display
+class TestTheDispersionSplitBySex(unittest.TestCase):
+    """Deux medianes proches peuvent recouvrir deux distributions tres
+    differentes : une seule boite par segment ne dit pas si les deux sexes
+    s'y etalent pareil."""
+
+    def setUp(self):
+        from compensation_analytics.ui import theme
+        from compensation_analytics.ui.charts import BoxPlotChart
+        from compensation_analytics.core.config import load_configuration
+
+        self.root = tkinter.Tk()
+        self.root.geometry("900x500")
+        theme.load(load_configuration())
+        theme.Fonts(self.root)
+        self.chart = BoxPlotChart(self.root)
+        self.chart.pack(fill="both", expand=True)
+        self.root.update()
+
+    def tearDown(self):
+        self.root.destroy()
+
+    def _rows(self, female_chartable=True, male_chartable=True):
+        stats = {"p10": 30000.0, "p25": 35000.0, "median": 40000.0,
+                 "p75": 45000.0, "p90": 50000.0, "masked": False}
+        return [{
+            "segment": "France", "headcount": 60, "masked": False,
+            "chartable": True, "sex_chartable": female_chartable or male_chartable,
+            "salary": dict(stats),
+            "female": dict(stats, median=38000.0),
+            "male": dict(stats, median=42000.0),
+            "female_count": 30, "male_count": 30,
+            "female_chartable": female_chartable,
+            "male_chartable": male_chartable,
+        }]
+
+    def test_two_boxes_are_drawn_instead_of_one(self):
+        self.chart.set_rows(self._rows(), "EUR")
+        self.root.update()
+        simple = len(self.chart._items)
+        self.chart.set_split(True)
+        self.root.update()
+        self.assertEqual(len(self.chart._items), simple * 2)
+
+    def test_a_sex_below_the_chart_threshold_is_not_drawn(self):
+        """Un segment de cinquante personnes dont quatre femmes ne donne pas
+        le droit de dessiner les percentiles de ces quatre-la."""
+        self.chart.split = True
+        self.chart.set_rows(self._rows(female_chartable=False), "EUR")
+        self.root.update()
+        self.assertEqual(len(self.chart._items), 1)
+        dessinees = {row.get("sex") for row in self.chart._items.values()}
+        self.assertEqual(dessinees, {"male"})
+
+    def test_a_segment_with_neither_sex_drawable_leaves_the_list(self):
+        self.chart.split = True
+        self.chart.set_rows(self._rows(False, False), "EUR")
+        self.root.update()
+        self.assertEqual(self.chart._drawable(), [])
+
+    def test_the_sort_by_dimension_order_is_gone(self):
+        """Un classement alphabetique ne repond a aucune question qu'on se
+        pose devant une dispersion."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        self.assertNotIn("dimension", dict(BoxPlotChart.ORDERS))
+        self.assertEqual(BoxPlotChart.ORDERS[0][0], "median")
+
+    def test_the_axis_follows_the_boxes_instead_of_the_frame(self):
+        """La graduation flottait deux cents pixels sous la derniere boite."""
+        self.chart.set_rows(self._rows(), "EUR")
+        self.root.update()
+        dessine = self.chart.canvas.bbox("all")
+        self.assertIsNotNone(dessine)
+        # Le canevas se reduit au trace tant que celui-ci tient.
+        self.assertLess(self.chart.canvas.winfo_height(),
+                        self.root.winfo_height() - self.chart.FOOTER_HEIGHT)
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")
@@ -1025,7 +1128,13 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             rows = self._fake_rows(5)
             chart.set_rows(rows, "EUR")
             ordre = [row["segment"] for row in chart._drawable()]
-            self.assertEqual(ordre, [row["segment"] for row in rows])
+            # L'ordre d'ouverture est la mediane decroissante : c'est la
+            # question qu'on se pose devant une dispersion. Le classement
+            # alphabetique a ete retire, il ne repondait a aucune.
+            self.assertEqual(
+                ordre,
+                [row["segment"] for row in
+                 sorted(rows, key=lambda r: -(r["salary"]["median"] or 0))])
 
             chart.set_order("median")
             medianes = [row["salary"]["median"] for row in chart._drawable()]

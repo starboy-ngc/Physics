@@ -287,13 +287,43 @@ def validate_segments(
     return list(fields)
 
 
+#: Ce qui separe deux dimensions croisees dans un libelle compose.
+CROSS_SEPARATOR = " · "
+
+
+def cross_key(employee: Employee, fields: Sequence[str]) -> str:
+    """Valeur composee d'un salarie sur plusieurs dimensions.
+
+    « Travail de meme valeur » se lit parfois sur deux axes a la fois : un
+    comptable senior au grade G5 et un comptable senior au grade G7 ne font
+    pas le meme travail, et les confondre dilue l'ecart que l'on cherche.
+    Une valeur manquante sur l'un des axes vide la cle entiere : un salarie
+    a demi classe n'appartient a aucune categorie croisee.
+    """
+    parts = []
+    for name in fields:
+        value = employee.value(name)
+        value = "" if value is None else str(value).strip()
+        if not value:
+            return ""
+        parts.append(value)
+    return CROSS_SEPARATOR.join(parts)
+
+
 def split_by(
-    population: Population, field_name: str, include_empty: bool = False
+    population: Population, field_name, include_empty: bool = False
 ) -> Dict[str, Population]:
-    """Decoupe la population par valeur d'une dimension."""
+    """Decoupe la population par valeur d'une dimension, ou d'un croisement.
+
+    `field_name` accepte une chaine ou une suite de champs : dans ce dernier
+    cas la cle est leur valeur composee.
+    """
+    fields = ([field_name] if isinstance(field_name, str)
+              else list(field_name))
     groups: Dict[str, List[Employee]] = {}
     for employee in population:
-        key = employee.value(field_name)
+        key = (employee.value(fields[0]) if len(fields) == 1
+               else cross_key(employee, fields))
         key = "" if key is None else str(key).strip()
         if not key:
             if not include_empty:

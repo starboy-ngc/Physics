@@ -512,5 +512,75 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
         self.assertFalse(fiche["published"])
 
 
+class TestCrossingTwoAxes(unittest.TestCase):
+    """« Travail de meme valeur » se lit parfois sur deux axes a la fois.
+
+    Un comptable senior au grade G5 et un comptable senior au G7 ne font pas
+    le meme travail : les confondre dilue l'ecart que l'on cherche.
+    """
+
+    def _population(self):
+        config = make_config()
+        lignes = []
+        for unite in ("France", "DACH"):
+            for grade in ("G5", "G7"):
+                # A grade et statut egaux, les femmes touchent 10 % de moins.
+                lignes += [(grade, unite, "F", 90000)] * 8
+                lignes += [(grade, unite, "H", 100000)] * 8
+        # Le second axe est porte par la BU : le jeu de test l'expose en
+        # parametre, et le croisement ne depend pas du champ choisi.
+        rows = [make_row(index, salary=salaire, gender=sexe, grade=grade,
+                         business_unit=unite)
+                for index, (grade, unite, sexe, salaire) in enumerate(lignes)]
+        return build_population(rows, config), config
+
+    def test_the_crossed_axis_splits_finer_than_either_alone(self):
+        population, config = self._population()
+        simple = calculate_category_gaps(population, config, "grade")
+        croise = calculate_category_gaps(population, config,
+                                         ["grade", "business_unit"])
+        self.assertEqual(len(simple["categories"]), 2)
+        self.assertEqual(len(croise["categories"]), 4)
+        self.assertEqual(croise["category_label"], "Grade + BU")
+        for item in croise["categories"]:
+            self.assertIn("·", item["category"])
+
+    def test_the_gap_is_the_same_when_the_second_axis_explains_nothing(self):
+        """Croiser sur un axe sans effet ne doit pas deplacer l'ecart."""
+        population, config = self._population()
+        simple = calculate_category_gaps(population, config, "grade")
+        croise = calculate_category_gaps(population, config,
+                                         ["grade", "business_unit"])
+        self.assertAlmostEqual(simple["comparable_gap"],
+                               croise["comparable_gap"], places=6)
+
+    def test_a_profile_can_be_opened_on_a_crossed_category(self):
+        population, config = self._population()
+        croise = calculate_category_gaps(population, config,
+                                         ["grade", "business_unit"])
+        nom = croise["categories"][0]["category"]
+        fiche = calculate_category_profile(population, config,
+                                           ["grade", "business_unit"], nom)
+        self.assertEqual(fiche["category"], nom)
+        self.assertTrue(fiche["published"])
+        self.assertEqual(fiche["female_count"], 8)
+        self.assertEqual(fiche["male_count"], 8)
+
+    def test_a_missing_value_on_one_axis_excludes_the_employee(self):
+        """Un salarie a demi classe n'appartient a aucune categorie
+        croisee : l'y ranger inventerait une categorie."""
+        from compensation_analytics.core.segmentation import cross_key
+
+        population, config = self._population()
+        salarie = population.employees[0]
+        salarie.assign("business_unit", "")
+        self.assertEqual(cross_key(salarie, ["grade", "business_unit"]), "")
+        croise = calculate_category_gaps(population, config,
+                                         ["grade", "business_unit"])
+        total = sum(item["female_count"] + item["male_count"]
+                    for item in croise["categories"])
+        self.assertEqual(total, len(population.employees) - 1)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -50,7 +50,10 @@ LANCER L'INTERFACE
       Rémunération/Ancienneté   le nuage de points, explorable
       Distribution              l'histogramme des rémunérations
       Dispersion                une boîte à moustaches par segment,
-                                triable par médiane ou par effectif
+                                triable par médiane ou par effectif.
+                                « Distinguer femmes / hommes » en trace
+                                deux : femmes en rouge au-dessus,
+                                hommes en bleu au-dessous.
 
     Le nuage est explorable :
 
@@ -107,6 +110,11 @@ LANCER L'INTERFACE
     pèse 6 % sur cent vingt.
 
     « Comparer par » change d'axe : Grade, Établissement, Pays...
+    « Croiser avec » en ajoute un second : « Poste + Grade » traite
+    « Comptable senior · G5 » et « Comptable senior · G7 » comme deux
+    catégories distinctes. Croiser découpe plus fin, donc masque
+    davantage : la couverture annoncée dit sur quelle part de
+    l'effectif l'écart reste calculable.
     « Trier par » change l'ordre : enjeu, écart, effectif, nom.
 
     Sont également publiés, au titre de la directive : écart médian,

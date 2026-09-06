@@ -85,6 +85,13 @@ def redraw_on_resize(chart: tk.Frame, canvas: tk.Canvas) -> None:
     chart.bind("<Destroy>", cancel, add="+")
 
 
+def _text_width(widget: tk.Misc, text: str) -> float:
+    """Largeur d'un libelle a la chasse des axes."""
+    import tkinter.font as tkfont
+
+    return tkfont.Font(root=widget, font=axis_font()).measure(text)
+
+
 def _shorten(widget: tk.Misc, text: str, limit: float) -> str:
     """Tronque un libelle a la largeur donnee, en mesurant plutot qu'en devinant."""
     import tkinter.font as tkfont
@@ -509,13 +516,17 @@ class BoxPlotChart(tk.Frame):
         self.footer = tk.Canvas(self, background=theme.CANVAS,
                                 highlightthickness=0,
                                 height=self.FOOTER_HEIGHT)
-        self.footer.pack(side="bottom", fill="x")
         self.bar = ttk.Scrollbar(self, orient="vertical",
                                  style="Flat.Vertical.TScrollbar")
         self.canvas = tk.Canvas(self, background=theme.CANVAS,
                                 highlightthickness=0)
         self.bar.pack(side="right", fill="y")
-        self.canvas.pack(side="left", fill="both", expand=True)
+        # Le pied vient sous le canevas et non au bas du cadre : ancre en
+        # bas, il restait a sa place quand le canevas se reduisait au trace,
+        # et la graduation flottait deux cents pixels sous la derniere
+        # boite.
+        self.canvas.pack(side="top", fill="both", expand=True)
+        self.footer.pack(side="top", fill="x")
         self.bar.configure(command=self.canvas.yview)
         theme.attach_scrollbar(self.canvas, self.bar, side="right", fill="y",
                                before=self.canvas)
@@ -524,8 +535,12 @@ class BoxPlotChart(tk.Frame):
         self.currency = "EUR"
         self.warning = ""
         self.reference: Optional[float] = None
-        self.order = "dimension"
+        self.order = self.ORDERS[0][0]
         self._items: Dict[int, Dict[str, Any]] = {}
+        #: Dernier ajustement du canevas a son contenu : (expansion, hauteur).
+        self._fitted: Optional[tuple] = None
+        #: Deux boites par segment, femmes et hommes, plutot qu'une seule.
+        self.split = False
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
@@ -549,19 +564,26 @@ class BoxPlotChart(tk.Frame):
             pass
 
     #: Tris proposes. La cle est technique, l'intitule s'affiche.
-    ORDERS = (("dimension", "Ordre de la dimension"),
-              ("median", "Médiane décroissante"),
+    #: « Ordre de la dimension » a ete retire : un classement alphabetique
+    #: ne repond a aucune question qu'on se pose devant une dispersion, et
+    #: il occupait la premiere place, donc l'ordre par defaut.
+    ORDERS = (("median", "Médiane décroissante"),
               ("headcount", "Effectif décroissant"))
+
+    def set_split(self, split: bool) -> None:
+        """Une boite par segment, ou deux : femmes et hommes."""
+        self.split = bool(split)
+        self.redraw()
 
     def set_order(self, key: str) -> None:
         """Change l'ordre des boites sans recalculer quoi que ce soit."""
-        self.order = key if key in dict(self.ORDERS) else "dimension"
+        self.order = key if key in dict(self.ORDERS) else self.ORDERS[0][0]
         self.redraw()
 
     def _sorted(self, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Ordre demande. « dimension » est celui qu'a etabli le moteur —
-        alphabetique, ou celui des grades — et sert de reference commune avec
-        l'onglet Segments."""
+        """Ordre demande, mediane decroissante par defaut : c'est la
+        question qu'on se pose devant une dispersion — qui gagne le plus, et
+        de combien l'ecart se creuse."""
         if self.order == "median":
             return sorted(rows, key=lambda row: -(row["salary"]["median"] or 0))
         if self.order == "headcount":
@@ -600,6 +622,11 @@ class BoxPlotChart(tk.Frame):
             if row.get("masked") or row.get("chartable") is not True:
                 continue
             if any(salary.get(key) is None for key in ("p25", "p75", "median")):
+                continue
+            # Dedouble, un segment n'a sa place que si l'un des deux sexes
+            # au moins atteint le seuil graphique : une ligne sans boite
+            # occuperait la place d'un resultat qu'elle n'a pas.
+            if self.split and row.get("sex_chartable") is not True:
                 continue
             ready.append(row)
         return self._sorted(ready)
@@ -657,8 +684,6 @@ class BoxPlotChart(tk.Frame):
 
         # La zone defilante couvre toutes les lignes, jamais moins que la
         # fenetre : sinon un graphique court se recadrerait tout seul.
-        self.canvas.configure(scrollregion=(0, 0, width,
-                                            max(base + 10, height)))
 
         for value in self._ticks(low, high, plot_w):
             x = to_x(value)
@@ -678,6 +703,34 @@ class BoxPlotChart(tk.Frame):
             self._draw_box(row, index, row_height, pad_l, label_width, to_x)
 
         self._draw_footer(label_width, pad_l, plot_w, to_x, low, high)
+        self._fit_to_content(width, base + 10)
+
+    def _fit_to_content(self, width: float, needed: float) -> None:
+        """Le pied suit le trace au lieu de rester colle au bas du cadre.
+
+        Six segments dessines occupent deux cent soixante-huit pixels dans
+        un canevas qui en fait quatre cent quatre-vingt-neuf : la graduation
+        se retrouvait deux cent vingt pixels sous la derniere boite, trop
+        loin pour qu'on la rapporte a ce qu'on lit. Le canevas se reduit
+        donc au trace tant que celui-ci tient, et ne reprend toute la place
+        que lorsqu'il faut faire defiler.
+        """
+        available = self.winfo_height() - self.FOOTER_HEIGHT
+        if available <= 0:
+            return
+        expand = needed >= available
+        height = available if expand else int(needed)
+        # La zone de defilement suit la hauteur retenue : la laisser a la
+        # taille d'avant faisait apparaitre un ascenseur pour un trace qui
+        # tenait desormais en entier.
+        self.canvas.configure(scrollregion=(0, 0, width, max(needed, height)))
+        if self._fitted == (expand, height):
+            return
+        self._fitted = (expand, height)
+        # « expand » commande seul la hauteur reelle : une hauteur demandee
+        # est ignoree tant qu'il vaut vrai.
+        self.canvas.pack_configure(expand=expand)
+        self.canvas.configure(height=height)
 
     #: Hauteur du pied fixe : graduations, puis cle de lecture.
     FOOTER_HEIGHT = 74
@@ -726,10 +779,25 @@ class BoxPlotChart(tk.Frame):
             canvas.create_text(position, mid + 14, fill=theme.MUTED,
                                     font=axis_font(), text=text)
 
+        offset = 30
+        if self.split:
+            # Deux teintes qui ne se legendent pas ne sont qu'un decor : la
+            # cle dit laquelle est laquelle, la ou on la lit.
+            for teinte, aplat, texte in (
+                    (theme.FEMALE, theme.FEMALE_SOFT, "Femmes"),
+                    (theme.MALE, theme.MALE_SOFT, "Hommes")):
+                start = left + wide + offset
+                canvas.create_rectangle(start, mid - 5, start + 18, mid + 5,
+                                        fill=aplat, outline=teinte)
+                canvas.create_text(start + 24, mid, anchor="w",
+                                   fill=theme.MUTED, font=axis_font(),
+                                   text=texte)
+                offset += 24 + 18 + _text_width(self, texte)
+
         # La phrase demande de la place : dans un bloc etroit, le schema
         # legende suffit, et une phrase coupee en trois mots par ligne
         # n'explique plus rien.
-        room = available - wide - 40
+        room = available - wide - offset - 10
         if room < 190:
             return
         phrase = ("La boîte contient la moitié des salariés du segment ; "
@@ -739,7 +807,7 @@ class BoxPlotChart(tk.Frame):
         if withheld:
             phrase += (f" {withheld} segment(s) trop peu nombreux pour être "
                        "tracés — voir l'onglet Segments.")
-        canvas.create_text(left + wide + 30, mid - 5, anchor="nw",
+        canvas.create_text(left + wide + offset, mid - 5, anchor="nw",
                                 fill=theme.MUTED, font=axis_font(),
                                 width=room, text=phrase)
 
@@ -803,9 +871,41 @@ class BoxPlotChart(tk.Frame):
 
     def _draw_box(self, row, index: int, row_height: float, pad_l: float,
                   label_width: float, to_x) -> None:
-        salary = row["salary"]
         centre = 14 + index * row_height + row_height / 2
-        thickness = min(max(row_height * 0.42, 5.0), 15.0)
+        self.canvas.create_text(label_width, centre, anchor="e",
+                                fill=theme.INK_SOFT, font=axis_font(),
+                                text=_shorten(self, str(row.get("segment", "")),
+                                              self.LABEL_MAX))
+        # L'effectif : une boite tracee sur douze salaries a la meme allure
+        # qu'une boite tracee sur quatre cents.
+        self.canvas.create_text(pad_l - 14, centre, anchor="e",
+                                fill=theme.FAINT, font=axis_font(),
+                                text=str(row.get("headcount", 0)))
+        if not self.split:
+            self._draw_one(row, row["salary"], centre, row_height * 0.42,
+                           theme.ACCENT_SOFT, theme.ACCENT, to_x)
+            return
+        # Deux demi-boites, femmes au-dessus : deux medianes proches peuvent
+        # recouvrir deux distributions tres differentes, et un ecart de
+        # mediane nul n'exclut pas que les femmes soient absentes du haut de
+        # la fourchette.
+        ecart = row_height * 0.22
+        for sex, decalage, teinte, aplat in (
+                ("female", -ecart, theme.FEMALE, theme.FEMALE_SOFT),
+                ("male", ecart, theme.MALE, theme.MALE_SOFT)):
+            if not row.get(f"{sex}_chartable"):
+                continue
+            salary = row.get(sex) or {}
+            if salary.get("masked") or salary.get("median") is None:
+                continue
+            self._draw_one(dict(row, salary=salary, sex=sex),
+                           salary, centre + decalage, row_height * 0.26,
+                           aplat, teinte, to_x)
+
+    def _draw_one(self, row, salary, centre: float, span: float,
+                  fill: str, outline: str, to_x) -> None:
+        """Une boite : moustaches, quartiles, mediane."""
+        thickness = min(max(span, 5.0), 15.0)
         p10 = self._whisker(salary, "p10", "p25")
         p90 = self._whisker(salary, "p90", "p75")
         q1, q3 = float(salary["p25"]), float(salary["p75"])
@@ -821,21 +921,12 @@ class BoxPlotChart(tk.Frame):
                                     fill=theme.LINE_STRONG)
         handle = self.canvas.create_rectangle(
             to_x(q1), centre - thickness / 2, to_x(q3), centre + thickness / 2,
-            fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
+            fill=fill, outline=outline)
         # La mediane est le chiffre que l'on cite : elle est le seul trait
         # dense de la boite.
         self.canvas.create_line(to_x(median), centre - thickness / 2 - 2,
                                 to_x(median), centre + thickness / 2 + 2,
                                 fill=theme.INK, width=2)
-        self.canvas.create_text(label_width, centre, anchor="e",
-                                fill=theme.INK_SOFT, font=axis_font(),
-                                text=_shorten(self, str(row.get("segment", "")),
-                                              self.LABEL_MAX))
-        # L'effectif : une boite tracee sur douze salaries a la meme allure
-        # qu'une boite tracee sur quatre cents.
-        self.canvas.create_text(pad_l - 14, centre, anchor="e",
-                                fill=theme.FAINT, font=axis_font(),
-                                text=str(row.get("headcount", 0)))
         self._items[handle] = row
 
     def _on_motion(self, event) -> None:

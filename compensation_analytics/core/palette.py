@@ -86,10 +86,25 @@ OK = "#2f6b4f"
 WARN_SOFT = "#fdf4e3"
 CRIT_SOFT = "#fbeded"
 
-#: Couple femmes / hommes. Bleu et orange restent distincts pour un
-#: daltonisme deutan, ce qui n'est le cas ni du vert-rouge ni du vert-orange.
-FEMALE = "#c26b3f"
+#: Couple femmes / hommes. Les deux teintes sont la meme couleur a la
+#: rotation pres : meme luminosite, meme saturation, canaux rouge et bleu
+#: echanges. Elles se lisent comme un couple et non comme deux choix
+#: separes, et le rouge y gagne au passage un contraste de 7,9 sur blanc
+#: contre 3,8 a l'orange qu'il remplace.
+#:
+#: Le rouge est pose a 330 degres et non a zero : a zero il vaut #8a2f2f,
+#: soit cinq points de distance du rouge « critique » — mesure faite, les
+#: deux etaient indiscernables cote a cote. A 330 il en reste 46, et il se
+#: lit encore comme un rouge et non comme un violet.
+#:
+#: Rouge et bleu restent distincts pour un daltonisme deutan, ce qui n'est
+#: le cas ni du vert-rouge ni du vert-orange.
+FEMALE = "#8a2f5d"
 MALE = "#2f5d8a"
+#: Remplissages clairs du couple. Une boite a moustaches se lit par son
+#: contour ; l'aplat ne fait qu'appartenir au sexe, il ne doit pas peser.
+FEMALE_SOFT = "#f0e0e8"
+MALE_SOFT = "#dfe7ee"
 
 #: Reserve ou puiser la palette categorielle des graphiques. Sa premiere
 #: couleur suit l'accent du theme ; les suivantes sont prises ici, dans

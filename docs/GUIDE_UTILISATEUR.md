@@ -195,11 +195,36 @@ personnes ne pèse pas ce que pèse 6 % sur cent vingt. Le tableau est trié
 par cet enjeu par défaut — **Trier par** permet de passer à l'écart, à
 l'effectif ou au nom.
 
-### Changer d'axe
+### Changer d'axe, ou en croiser deux
 
 **Comparer par** remplace le poste par le grade, l'établissement, le pays…
-La même question, lue autrement. Tout le bloc — les trois chiffres compris —
-se recalcule sur l'axe choisi.
+La même question, lue autrement.
+
+**Croiser avec** ajoute un second axe : « Poste + Grade » traite « Comptable
+senior · G5 » et « Comptable senior · G7 » comme deux catégories distinctes.
+Un comptable senior au G5 et un comptable senior au G7 ne font pas le même
+travail, et les confondre dilue l'écart que l'on cherche.
+
+Croiser découpe plus fin, donc masque davantage : la couverture affichée dans
+la note dit sur quelle part de l'effectif l'écart à catégorie comparable est
+encore calculable. Un salarié dont l'un des deux axes n'est pas renseigné
+n'entre dans aucune catégorie croisée.
+
+Tout le bloc — les trois chiffres compris — se recalcule sur l'axe choisi.
+
+## 5 quater. Dispersion : distinguer femmes et hommes
+
+Dans **Graphique → Dispersion**, la case **Distinguer femmes / hommes** trace
+deux boîtes par segment au lieu d'une : les femmes en rouge au-dessus, les
+hommes en bleu au-dessous.
+
+Deux médianes proches peuvent recouvrir deux distributions très différentes,
+et un écart de médiane nul n'exclut pas que les femmes soient absentes du
+haut de la fourchette.
+
+Chaque demi-boîte a son propre droit au tracé : un segment de cinquante
+personnes dont quatre femmes ne donne pas le droit de dessiner les
+percentiles de ces quatre-là — cette moitié-là n'est simplement pas tracée.
 
 ## 6. Protection des données
 

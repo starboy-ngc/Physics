@@ -35,7 +35,7 @@ from . import statistics_engine as stats
 from .config import Configuration, analysis_field
 from .normalize import Population
 from .metrics import PrivacyRules
-from .segmentation import dimension_label, split_by
+from .segmentation import cross_key, dimension_label, split_by
 
 FEMALE = "F"
 MALE = "H"
@@ -245,6 +245,13 @@ def calculate_pay_equity(population: Population,
     return result
 
 
+def _axis_label(config: Configuration, field_name) -> str:
+    """Intitule d'un axe, simple ou croise."""
+    if isinstance(field_name, str):
+        return dimension_label(config, field_name)
+    return " + ".join(dimension_label(config, name) for name in field_name)
+
+
 def calculate_category_gaps(population: Population, config: Configuration,
                             field_name: str) -> Dict[str, Any]:
     """Ecarts par categorie, sur l'axe demande.
@@ -258,7 +265,7 @@ def calculate_category_gaps(population: Population, config: Configuration,
     rules = PrivacyRules.from_config(config)
     salary_field = analysis_field(config)
     threshold = float(section.get("gap_alert_threshold", 5.0) or 0.0)
-    label = dimension_label(config, field_name)
+    label = _axis_label(config, field_name)
 
     groups_by_category = split_by(population, field_name)
     if not groups_by_category:
@@ -324,8 +331,12 @@ def calculate_category_profile(population: Population, config: Configuration,
     """
     section = config.section("pay_equity_parameters")
     rules = PrivacyRules.from_config(config)
-    members = [employee for employee in population
-               if str(employee.value(field_name) or "") == str(value)]
+    if isinstance(field_name, str):
+        members = [employee for employee in population
+                   if str(employee.value(field_name) or "") == str(value)]
+    else:
+        members = [employee for employee in population
+                   if cross_key(employee, field_name) == str(value)]
     groups = _split_members(members, config)
     women, men = groups[FEMALE], groups[MALE]
     published = (rules.may_publish(len(women)) and rules.may_publish(len(men)))

@@ -349,6 +349,51 @@ def _atypical_entry(
     }
 
 
+def segment_by_sex(population: Population, config: Configuration,
+                   field_name: str,
+                   salary_field: Optional[str] = None) -> List[Dict[str, Any]]:
+    """Chaque segment coupe en deux : ce que touchent les femmes, les hommes.
+
+    Une boite a moustaches par segment dit comment la remuneration s'etale ;
+    elle ne dit pas si les deux sexes s'y etalent pareil. Or c'est la que la
+    question se pose vraiment : deux medianes proches peuvent recouvrir deux
+    distributions tres differentes, et un ecart de mediane nul n'exclut pas
+    que les femmes soient absentes du haut de la fourchette.
+
+    Chaque demi-segment porte son propre droit au trace : un segment de
+    cinquante personnes dont quatre femmes ne donne pas le droit de dessiner
+    les percentiles de ces quatre-la.
+    """
+    rules = PrivacyRules.from_config(config)
+    groups = split_by(population, field_name, include_empty=True)
+    rows: List[Dict[str, Any]] = []
+    for label, group in groups.items():
+        parts = {"female": [], "male": []}
+        for employee in group:
+            sex = _sex_of(employee, config)
+            if sex in parts:
+                parts[sex].append(employee)
+        entry: Dict[str, Any] = {"segment": label, "headcount": len(group)}
+        for sex, members in parts.items():
+            subset = Population(employees=members,
+                                age_bands=population.age_bands,
+                                tenure_bands=population.tenure_bands)
+            entry[sex] = calculate_salary_metrics(subset, config, salary_field)
+            entry[f"{sex}_count"] = len(members)
+            entry[f"{sex}_chartable"] = rules.may_chart(len(members))
+        # Le segment entier est fourni aussi : le graphique s'en sert pour
+        # l'echelle et pour le tri, et la ligne reste comparable a celle du
+        # mode simple.
+        overall = calculate_salary_metrics(group, config, salary_field)
+        entry["salary"] = overall
+        entry["masked"] = overall.get("masked", False)
+        entry["chartable"] = rules.may_chart(len(group))
+        entry["sex_chartable"] = (entry["female_chartable"]
+                                  or entry["male_chartable"])
+        rows.append(entry)
+    return rows
+
+
 def calculate_segment_metrics(
     population: Population,
     config: Configuration,

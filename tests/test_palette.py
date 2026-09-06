@@ -75,6 +75,29 @@ class TestEveryThemeStaysReadable(unittest.TestCase):
                 self.assertEqual(theme.palette.male, palette.MALE)
         self.assertGreater(palette.distance(palette.FEMALE, palette.MALE), 100)
 
+    def test_the_sexes_are_one_pair_and_not_two_choices(self):
+        """Meme luminosite, meme saturation : les deux teintes se lisent
+        comme un couple. Sans cela, l'une pese plus que l'autre a l'oeil et
+        la pyramide semble pencher avant d'avoir ete lue."""
+        import colorsys
+
+        teintes = []
+        for couleur in (palette.FEMALE, palette.MALE):
+            r, g, b = (part / 255 for part in palette._rgb(couleur))
+            teintes.append(colorsys.rgb_to_hls(r, g, b))
+        (_hf, lf, sf), (_hm, lm, sm) = teintes
+        self.assertAlmostEqual(lf, lm, places=2)
+        self.assertAlmostEqual(sf, sm, places=2)
+
+    def test_the_sexes_are_never_taken_for_a_severity(self):
+        """Un rouge « femmes » pose a zero degre valait le rouge
+        « critique » a cinq points pres : les deux etaient indiscernables,
+        et une pyramide se serait lue comme une alerte."""
+        for couleur in (palette.FEMALE, palette.MALE):
+            for severite in (palette.CRIT, palette.WARN, palette.OK):
+                with self.subTest(couleur=couleur, severite=severite):
+                    self.assertGreater(palette.distance(couleur, severite), 40)
+
     def test_the_series_never_repeat_the_accent(self):
         for theme in self.themes():
             series = theme.palette.series

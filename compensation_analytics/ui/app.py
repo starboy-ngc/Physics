@@ -70,6 +70,9 @@ TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
 #: Tris du tableau des postes. L'enjeu vient en premier : c'est la question
 #: qui suit l'ecart — combien pour le refermer, et ou en priorite. Trier par
 #: ampleur d'ecart seul met en tete des postes de quatre personnes.
+#: Entree « pas de croisement » de la seconde liste.
+NO_CROSS = "(aucun)"
+
 CATEGORY_ORDERS = (("stake", "Enjeu"), ("gap", "Écart"),
                    ("headcount", "Effectif"), ("name", "Nom"))
 
@@ -702,6 +705,14 @@ class Application(tk.Tk):
             "<<ComboboxSelected>>",
             lambda _e: self.boxplot.set_order(
                 BoxPlotChart.ORDERS[self.box_order.current()][0]))
+        # Deux medianes proches peuvent recouvrir deux distributions tres
+        # differentes : une seule boite par segment ne dit pas si les deux
+        # sexes s'y etalent pareil.
+        self.box_split = tk.BooleanVar(value=False)
+        CheckRow(box_head, "Distinguer femmes / hommes", self.box_split,
+                 self.fonts, ground=theme.CANVAS).pack(side="left",
+                                                       padx=(22, 0))
+        self.box_split.trace_add("write", lambda *_: self._show_boxes())
         self.boxplot = BoxPlotChart(boites)
         self.boxplot.pack(fill="both", expand=True, padx=18, pady=(6, 10))
 
@@ -769,6 +780,19 @@ class Application(tk.Tk):
         self.category_choice.pack(side="left")
         self.category_choice.bind("<<ComboboxSelected>>",
                                   lambda _e: self._show_categories())
+        # Deux axes valent parfois mieux qu'un : un comptable senior au
+        # grade G5 et un comptable senior au G7 ne font pas le meme travail,
+        # et les confondre dilue l'ecart qu'on cherche.
+        cross = tk.Frame(left, background=theme.CANVAS)
+        cross.pack(fill="x", padx=18, pady=(0, 3))
+        tk.Label(cross, text="CROISER AVEC", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label,
+                 width=13, anchor="w").pack(side="left")
+        self.category_cross = ttk.Combobox(cross, state="readonly", width=17,
+                                           font=self.fonts.small)
+        self.category_cross.pack(side="left")
+        self.category_cross.bind("<<ComboboxSelected>>",
+                                 lambda _e: self._show_categories())
         order = tk.Frame(left, background=theme.CANVAS)
         order.pack(fill="x", padx=18, pady=(0, 2))
         tk.Label(order, text="TRIER PAR", background=theme.CANVAS,
@@ -1494,9 +1518,12 @@ class Application(tk.Tk):
         self._category_fields = [field for field
                                  in dimension_fields(self.configuration)
                                  if field != gender_field]
-        self.category_choice.configure(values=[
-            dimension_label(self.configuration, field)
-            for field in self._category_fields])
+        etiquettes = [dimension_label(self.configuration, field)
+                      for field in self._category_fields]
+        self.category_choice.configure(values=etiquettes)
+        self.category_cross.configure(values=[NO_CROSS] + etiquettes)
+        if not self.category_cross.get():
+            self.category_cross.current(0)
         configured = equity.get("category_field")
         if configured in self._category_fields:
             self.category_choice.current(self._category_fields.index(configured))
@@ -1527,26 +1554,7 @@ class Application(tk.Tk):
         # des femmes plus nombreuses sur les postes les moins payes — qui
         # appellent l'un une revalorisation, l'autre une politique de
         # mobilite. Additionnes, ils sont indecidables.
-        self._decomposed = self._category_block()
-        block = self._decomposed
-        self._kpis(self.equity_frame, [
-            ("Écart global", _signed_percent(pay.get("mean_gap")), "mean_gap"),
-            ("À poste comparable",
-             _signed_percent((block or {}).get("comparable_gap")),
-             "comparable_gap"),
-            ("Effet de structure",
-             _signed_percent((block or {}).get("structure_gap")),
-             "structure_gap"),
-            ("Rattrapage",
-             format_money((block or {}).get("at_stake_total"),
-                          self.result.payload["salary"].get("currency", "EUR")),
-             "at_stake_total"),
-            ("Effectif F / H",
-             f'{equity["female_count"]} / {equity["male_count"]}',
-             "female_count"),
-        ])
-        self.equity_frame.pack_configure(padx=18)
-        self.equity_note.configure(text=self._decomposition_note(equity, block))
+        self._show_decomposition(self._category_block())
 
         if not self.quartile_block.winfo_manager():
             # « compliance_note » n'est jamais depaquetee : c'est un repere
@@ -1568,6 +1576,33 @@ class Application(tk.Tk):
                             "renseigné sont exclus de tous les écarts.")
         self.compliance_note.configure(text=publication)
         self._show_categories()
+
+    def _show_decomposition(self, block: Optional[Dict[str, Any]]) -> None:
+        """Les trois chiffres du haut, sur l'axe courant."""
+        if self.result is None:
+            return
+        self._decomposed = block
+        equity = self.result.payload["pay_equity"]
+        pay = equity.get("pay", {})
+        label = ((block or {}).get("category_label") or "poste").lower()
+        self._kpis(self.equity_frame, [
+            ("Écart global", _signed_percent(pay.get("mean_gap")), "mean_gap"),
+            (f"À {label} comparable",
+             _signed_percent((block or {}).get("comparable_gap")),
+             "comparable_gap"),
+            ("Effet de structure",
+             _signed_percent((block or {}).get("structure_gap")),
+             "structure_gap"),
+            ("Rattrapage",
+             format_money((block or {}).get("at_stake_total"),
+                          self.result.payload["salary"].get("currency", "EUR")),
+             "at_stake_total"),
+            ("Effectif F / H",
+             f'{equity.get("female_count", 0)} / {equity.get("male_count", 0)}',
+             "female_count"),
+        ])
+        self.equity_frame.pack_configure(padx=18)
+        self.equity_note.configure(text=self._decomposition_note(equity, block))
 
     def _decomposition_note(self, equity: Dict[str, Any],
                             block: Optional[Dict[str, Any]]) -> str:
@@ -1591,14 +1626,30 @@ class Application(tk.Tk):
             f"{label} égal. Rattrapage : coût de l'alignement du sexe le "
             "moins rémunéré sur l'autre, poste par poste.")
 
+    def _axis(self):
+        """L'axe courant : un champ, ou un couple si l'on croise.
+
+        Croiser un axe avec lui-meme ne produirait que des libelles doubles :
+        le second choix est alors ignore.
+        """
+        index = self.category_choice.current()
+        if index < 0:
+            return None
+        champ = self._category_fields[index]
+        croise = self.category_cross.current() - 1
+        if 0 <= croise < len(self._category_fields):
+            autre = self._category_fields[croise]
+            if autre != champ:
+                return [champ, autre]
+        return champ
+
     def _category_block(self) -> Optional[Dict[str, Any]]:
         """Ecarts sur l'axe choisi, recalcules pour la population filtree."""
-        index = self.category_choice.current()
-        if self.result is None or index < 0:
+        axe = self._axis()
+        if self.result is None or axe is None:
             return None
         return calculate_category_gaps(self.result.filtered,
-                                       self.result.config,
-                                       self._category_fields[index])
+                                       self.result.config, axe)
 
     def _show_categories(self) -> None:
         """La liste de gauche : un poste par ligne, classee par enjeu."""
@@ -1607,8 +1658,7 @@ class Application(tk.Tk):
             return
         self._decomposed = block
         label = block.get("category_label") or "Poste"
-        self.category_heading.configure(text=label + "s"
-                                        if not label.endswith("s") else label)
+        self.category_heading.configure(text=label)
         self.category_tree.heading("#1", text=label)
         currency = self.result.payload["salary"].get("currency", "EUR")
 
@@ -1635,6 +1685,10 @@ class Application(tk.Tk):
                          if item.get("published") else "—"))
         self._fill(self.category_tree, rows,
                    flagged=lambda position: categories[position]["above_threshold"])
+        # Les trois chiffres du haut portent sur l'axe : changer d'axe sans
+        # les refaire laissait l'ecart d'un axe au-dessus de la liste d'un
+        # autre.
+        self._show_decomposition(block)
         # Le premier de la liste est ouvert d'emblee : une page qui s'ouvre
         # sur un panneau vide demande un clic pour ne rien apprendre.
         children = self.category_tree.get_children()
@@ -1692,10 +1746,8 @@ class Application(tk.Tk):
         if value is None or self.result is None:
             self._clear_profile("Choisissez une ligne pour ouvrir sa fiche.")
             return
-        index = self.category_choice.current()
         profile = calculate_category_profile(
-            self.result.filtered, self.result.config,
-            self._category_fields[max(index, 0)], value)
+            self.result.filtered, self.result.config, self._axis(), value)
         currency = self.result.payload["salary"].get("currency", "EUR")
 
         self.profile_title.configure(text=str(value))
@@ -1894,10 +1946,19 @@ class Application(tk.Tk):
             return
         block = self._segments[index]
         currency = block.get("currency", "EUR")
+        split = bool(self.box_split.get())
+        self.boxplot.split = split
+        # Dedouble, les lignes viennent d'un autre calcul : le meme segment,
+        # coupe en deux. Elles portent aussi le segment entier, pour que
+        # l'echelle et le tri restent ceux du mode simple.
+        rows = (metrics.segment_by_sex(self.result.filtered,
+                                       self.result.config,
+                                       block["field"])
+                if split else block["rows"])
         # La mediane d'ensemble n'est pas repetee en tete : le graphique la
         # trace, et un repere dessine se lit mieux qu'un montant a comparer
         # de tete avec seize boites.
-        self.boxplot.set_rows(block["rows"], currency,
+        self.boxplot.set_rows(rows, currency,
                               reference=block.get("reference_median"))
 
     # -------------------------------------------------------------- export
