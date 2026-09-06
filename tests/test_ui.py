@@ -362,6 +362,99 @@ class TestWindow(unittest.TestCase):
         self._settle()
         self.assertEqual(self.app.filter_vars[champ].get(), "France")
 
+    def test_the_page_is_composed_reordered_and_emptied(self):
+        """« Ma page » n'impose rien : elle empile ce qu'on lui donne, dans
+        l'ordre ou on le donne."""
+        self.assertEqual(self.app._workshop_blocks, [])
+        for ident in ("headcount", "median", "age_pyramid"):
+            self.app.add_block(ident)
+        self.app.update()
+        self.assertEqual([b["block"] for b in self.app._workshop_blocks],
+                         ["headcount", "median", "age_pyramid"])
+
+        self.app.move_block(2, -1)
+        self.assertEqual([b["block"] for b in self.app._workshop_blocks],
+                         ["headcount", "age_pyramid", "median"])
+        # Un deplacement hors des bornes ne fait rien plutot que de lever.
+        self.app.move_block(0, -1)
+        self.app.move_block(2, 1)
+        self.assertEqual(len(self.app._workshop_blocks), 3)
+
+        self.app.remove_block(1)
+        self.assertEqual([b["block"] for b in self.app._workshop_blocks],
+                         ["headcount", "median"])
+        self.app.clear_workshop()
+        self.assertEqual(self.app._workshop_blocks, [])
+
+    def test_an_unknown_block_is_refused(self):
+        """Le catalogue fait foi : rien d'autre n'entre dans la page."""
+        self.app.add_block("bloc_qui_n_existe_pas")
+        self.assertEqual(self.app._workshop_blocks, [])
+
+    def test_the_composed_page_is_saved_and_found_again(self):
+        """C'est la promesse du bouton : la page survit a la fermeture."""
+        import shutil
+        import tempfile
+
+        from compensation_analytics.core.config import load_configuration
+        from compensation_analytics.ui import dashboard
+        from compensation_analytics.ui.app import Application
+
+        directory = tempfile.mkdtemp()
+        config_dir = os.path.join(directory, "config")
+        shutil.copytree(os.path.join(ROOT, "config"), config_dir)
+        app = Application(config_dir=config_dir)
+        app.update()
+        try:
+            for ident in ("payroll", "boxes", "histogram"):
+                app.add_block(ident)
+            app._workshop_blocks[1]["field"] = "grade"
+            app.save_workshop()
+            app.update()
+            self.assertIn("enregistrée", app.workshop_state.cget("text"))
+        finally:
+            app.destroy()
+
+        # Relue depuis le disque : identifiants et ordre, rien d'autre.
+        saved = dashboard.load(load_configuration(config_dir))
+        self.assertEqual([entry["block"] for entry in saved],
+                         ["payroll", "boxes", "histogram"])
+        self.assertEqual(saved[1]["field"], "grade")
+
+        repris = Application(config_dir=config_dir)
+        try:
+            repris.update()
+            self.assertEqual([b["block"] for b in repris._workshop_blocks],
+                             ["payroll", "boxes", "histogram"])
+        finally:
+            repris.destroy()
+
+    def test_a_saved_page_survives_a_block_that_no_longer_exists(self):
+        """Une configuration se modifie au bloc-notes et survit aux versions :
+        un identifiant inconnu ampute la page, il ne l'empeche pas."""
+        from compensation_analytics.ui import dashboard
+
+        class FausseConfig:
+            def get(self, path, default=None):
+                return [{"block": "headcount"}, {"block": "disparu"},
+                        {"block": "median"}, "pas un bloc"]
+
+        gardes = dashboard.load(FausseConfig())
+        self.assertEqual([entry["block"] for entry in gardes],
+                         ["headcount", "median"])
+
+    def test_the_saved_page_never_carries_figures(self):
+        """Ce qui part en configuration se reduit a des identifiants : jamais
+        un chiffre, jamais une donnee RH."""
+        from compensation_analytics.ui import dashboard
+
+        section = dashboard.dump([{"block": "median", "field": ""},
+                                  {"block": "boxes", "field": "grade"},
+                                  {"block": "inconnu", "field": ""}])
+        self.assertEqual(section, {"blocks": [{"block": "median"},
+                                              {"block": "boxes",
+                                               "field": "grade"}]})
+
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
         self.assertIn("disabled", self.app.export_button.state())
@@ -1316,8 +1409,10 @@ class TestEverySegmentIsComputed(unittest.TestCase):
                          "tenure_band"):
             self.assertIn(expected, computed)
 
-    def test_the_segments_tab_offers_them_all(self):
-        offered = list(self.app.segment_choice.cget("values"))
+    def test_every_dimension_is_offered_to_the_dispersion(self):
+        """L'onglet Segments a disparu ; ses dimensions restent celles que la
+        dispersion propose, sans en perdre une."""
+        offered = list(self.app.box_choice.cget("values"))
         self.assertEqual(len(offered),
                          len(self.app.result.payload["segments"]))
         self.assertGreater(len(offered), 3)
