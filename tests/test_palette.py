@@ -85,6 +85,25 @@ class TestEveryThemeStaysReadable(unittest.TestCase):
                     min(palette.distance(series[0], other)
                         for other in series[1:]), palette.SERIES_GAP)
 
+    def test_two_themes_never_look_alike(self):
+        """Un theme qui ressemble a un autre n'apporte rien.
+
+        C'est pourtant la seule regle qu'aucune autre ne couvrait : un
+        accent recopie sur un theme existant passait tous les contrastes,
+        toutes les series et toutes les neutres, et remplissait la bande de
+        choix d'une pastille qu'on ne sait pas distinguer de sa voisine.
+        """
+        entrees = list(self.themes())
+        for index, theme in enumerate(entrees):
+            for autre in entrees[index + 1:]:
+                with self.subTest(paire=(theme.key, autre.key)):
+                    self.assertGreater(
+                        palette.distance(theme.palette.accent,
+                                         autre.palette.accent), 30,
+                        f"{theme.label} et {autre.label} ont le meme accent")
+                    self.assertNotEqual(theme.palette.ink, autre.palette.ink)
+                    self.assertNotEqual(theme.label, autre.label)
+
     def test_the_neutrals_go_from_dense_to_light_without_crossing(self):
         """Une hierarchie de lecture inversee ferait ressortir l'accessoire."""
         for theme in self.themes():

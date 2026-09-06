@@ -122,6 +122,18 @@ Puis éditez les fichiers JSON : tranches d'âge et d'ancienneté, percentiles,
 seuils de confidentialité, devise, seuils de plausibilité, graphiques, export.
 Aucune modification du logiciel n'est nécessaire.
 
+### Couleurs
+
+Cinq thèmes, dans **Paramètres → Apparence** : **Ardoise** (d'origine),
+**Graphite** (neutre, le meilleur rendu à l'impression en noir et blanc),
+**Forêt**, **Prune** et **Auroral** (bleu-vert lumineux sur nuit polaire,
+l'accent le plus contrasté — pour un écran très éclairé).
+
+Le thème colore la fenêtre **et** les documents produits. Trois teintes n'en
+dépendent jamais : le rouge de « critique », l'orange d'« avertissement » et
+le couple femmes/hommes du nuage et des pyramides — les changer serait un
+contresens, pas une préférence.
+
 ## 5 bis. Composer sa propre page (« Ma page »)
 
 L'onglet **Ma page** part vide et propose, a gauche, tous les indicateurs,

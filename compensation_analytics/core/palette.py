@@ -222,6 +222,10 @@ THEMES: Dict[str, Theme] = {
         Theme("prune", "Prune",
               "Aubergine sourd. Chaleureux sans être vif.",
               _build("prune", "#1d1620", "#6d3f63")),
+        Theme("auroral", "Auroral",
+              "Bleu-vert lumineux sur nuit polaire. Le plus contrasté des "
+              "accents, pour un écran très éclairé.",
+              _build("auroral", "#0b1d26", "#00768c")),
     )
 }
 
