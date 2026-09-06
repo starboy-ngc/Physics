@@ -170,6 +170,8 @@ class Application(tk.Tk):
         # Numero de ligne -> identite. Vide tant qu'aucune analyse n'a
         # tourne, et vide aussi si le reglage d'ecran l'interdit.
         self._identities: Dict[int, str] = {}
+        #: Bloc attrape dans la palette : (identifiant, x, y, glisser commence)
+        self._taken: Optional[tuple] = None
         self._colour_fields: List[str] = []
         self._queue: queue.Queue = queue.Queue()
 
@@ -848,7 +850,12 @@ class Application(tk.Tk):
             font=self.fonts.body, justify="left", wraplength=620)
 
     def _build_palette(self, parent: tk.Frame) -> None:
-        """Catalogue groupe par famille : un clic ajoute a la page."""
+        """Catalogue groupe par famille.
+
+        On attrape un bloc et on le lache ou on veut sur la page. Un clic
+        sans deplacement l'ajoute a la fin : c'est le geste de celui qui
+        remplit une page vide, et il ne demande pas de viser.
+        """
         for family, blocks in dashboard.families():
             tk.Label(parent, text=family.upper(), background=theme.CANVAS,
                      foreground=theme.ACCENT, font=self.fonts.label).pack(
@@ -859,11 +866,43 @@ class Application(tk.Tk):
                                cursor="hand2", anchor="w")
                 row.pack(fill="x", padx=18, pady=1)
                 row.bind("<Button-1>",
-                         lambda _e, ident=block.ident: self.add_block(ident))
+                         lambda e, ident=block.ident: self._take_block(ident, e))
+                row.bind("<B1-Motion>", self._drag_block)
+                row.bind("<ButtonRelease-1>", self._release_block)
                 row.bind("<Enter>",
                          lambda _e, w=row: w.configure(foreground=theme.ACCENT))
                 row.bind("<Leave>",
                          lambda _e, w=row: w.configure(foreground=theme.INK_SOFT))
+
+    #: Deplacement au-dela duquel un clic devient un glisser. En dessous,
+    #: c'est la main qui tremble, pas une intention.
+    DRAG_THRESHOLD = 4
+
+    def _take_block(self, ident: str, event) -> None:
+        self._taken = (ident, event.x_root, event.y_root, False)
+
+    def _drag_block(self, event) -> None:
+        if not self._taken:
+            return
+        ident, x0, y0, started = self._taken
+        if not started:
+            if (abs(event.x_root - x0) < self.DRAG_THRESHOLD
+                    and abs(event.y_root - y0) < self.DRAG_THRESHOLD):
+                return
+            self.board.start_external(ident)
+            self._taken = (ident, x0, y0, True)
+        self.board.drag_external()
+
+    def _release_block(self, _event=None) -> None:
+        if not self._taken:
+            return
+        ident, _x0, _y0, started = self._taken
+        self._taken = None
+        if started:
+            self.board.finish_external()
+        else:
+            # Un clic net : le bloc va a la fin, sans avoir a viser.
+            self.add_block(ident)
 
     # ------------------------------------------------------- composition
 

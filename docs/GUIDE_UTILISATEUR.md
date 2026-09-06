@@ -139,20 +139,26 @@ contresens, pas une préférence.
 L'onglet **Ma page** part vide et propose, a gauche, tous les indicateurs,
 tableaux et graphiques que l'analyse produit. Un clic les ajoute a la page.
 
-- **Deplacer** : attraper un bloc par son titre et le faire glisser. Un trait
-  vertical montre ou il atterrira.
-- **Redimensionner** : tirer le coin en bas a droite. La largeur se pose sur
-  un palier — quart, tiers, moitie, pleine largeur — pour que les blocs
-  restent alignes ; la hauteur est libre entre deux bornes.
-- **Retirer** : la croix en haut a droite du bloc. « Tout retirer » vide la
+- **Poser** : attrapez un bloc dans la liste de gauche, maintenez le bouton,
+  lâchez-le sur la page. Il se pose là où vous l'avez lâché ; un trait
+  vertical montre où il atterrira. Lâché à côté de la page, il n'ajoute rien.
+- **Ajouter à la fin** : un clic net, sans déplacer la souris.
+- **Déplacer** : attrapez un bloc posé par son titre et faites-le glisser.
+- **Retirer** : la croix en haut à droite du bloc. « Tout retirer » vide la
   page.
-- **Enregistrer la page** : la composition est retrouvee a la prochaine
+- **Enregistrer la page** : la composition est retrouvée à la prochaine
   ouverture.
 
-Ce qui est enregistre se reduit a la liste des blocs, a leur ordre et a leur
-taille : aucun chiffre, aucune donnee de votre fichier n'est ecrit dans la
-configuration. La largeur y est notee en colonnes et non en pixels — une page
-composee sur un grand ecran s'ouvre droite sur un petit.
+**Il n'y a rien à dimensionner** : chaque bloc a la taille qui convient à ce
+qu'il montre — un chiffre tient dans un tiers de largeur, un nuage de points
+en occupe les deux tiers. Les blocs se rangent de gauche à droite et passent
+à la ligne quand la largeur est prise.
+
+Ce qui est enregistré se réduit à la liste des blocs et à leur ordre : aucun
+chiffre, aucune donnée de votre fichier, et pas même une taille. Une page
+composée sur un grand écran s'ouvre donc droite sur un petit, et si une taille
+de référence est corrigée dans une version ultérieure, votre page en profite
+sans que vous ayez à la refaire.
 
 Les regles de confidentialite s'appliquent ici comme partout : un bloc dont
 l'effectif est trop faible n'affiche rien.

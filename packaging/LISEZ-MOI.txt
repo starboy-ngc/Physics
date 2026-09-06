@@ -74,12 +74,24 @@ LANCER L'INTERFACE
         change d'axe : Poste, Grade, Établissement, Pays...
 
     « Ma page » part vide : la colonne de gauche y propose tous les
-    indicateurs, tableaux et graphiques que l'analyse produit. Un clic
-    les ajoute ; on déplace un bloc en l'attrapant par son titre, on le
-    redimensionne par son coin, et « Enregistrer la page » la retrouve
-    à la prochaine ouverture. Ce qui est enregistré se réduit à la
-    liste des blocs, à leur ordre et à leur taille — aucun chiffre,
-    aucune donnée de votre fichier.
+    indicateurs, tableaux et graphiques que l'analyse produit.
+
+      attrapez un bloc dans la liste, maintenez, lâchez sur la page
+        -> il se pose là où vous l'avez lâché ; un trait vertical
+           montre où il atterrira
+      un clic net, sans déplacer -> il va à la fin
+      attrapez un bloc posé par son titre -> vous le déplacez
+      la croix en haut à droite -> vous le retirez
+
+    Il n'y a rien à dimensionner : chaque bloc a la taille qui convient
+    à ce qu'il montre — un chiffre tient dans un tiers de largeur, un
+    nuage de points en occupe les deux tiers.
+
+    « Enregistrer la page » la retrouve à la prochaine ouverture. Ce
+    qui est enregistré se réduit à la liste des blocs et à leur ordre —
+    aucun chiffre, aucune donnée de votre fichier, et pas même une
+    taille : si une taille de référence est corrigée dans une version
+    ultérieure, votre page en profite sans que vous ayez à la refaire.
 
     Pour restreindre l'analyse — à un grade, une BU, un pays —,
     utilisez les filtres de la colonne de gauche : ils s'appliquent à

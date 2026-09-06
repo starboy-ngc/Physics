@@ -421,25 +421,44 @@ Le catalogue vit dans l'interface et non dans le moteur : un « bloc » est
 une facon d'afficher, pas une facon de calculer. Chaque bloc lit le meme
 resultat que les autres onglets ; aucune valeur n'y est recalculee.
 
-**Disposition en douziemes, jamais en pixels.** Les blocs sont poses a la
-souris, mais ce qui est retenu d'un deplacement est un rang, et ce qui est
-retenu d'un redimensionnement est une largeur en colonnes (quart, tiers,
-moitie, pleine largeur) plus une hauteur bornee. `flow()` recalcule les
-pixels a chaque mise en page. Une position absolue serait juste sur l'ecran
-ou elle a ete posee et fausse partout ailleurs : une page composee sur un
-grand ecran doit s'ouvrir droite sur un petit.
+**La taille appartient au bloc, pas a la page.** Chaque entree du catalogue
+porte sa largeur en douziemes et sa hauteur en pixels : elles dependent de
+ce que le bloc montre — un chiffre tient dans un tiers de largeur, un nuage
+de points a besoin des deux tiers — et non de ce que l'utilisateur en fait.
+Le redimensionnement a la souris a ete retire : il demandait un reglage a
+qui voulait seulement disposer, et laissait composer des pages ou le meme
+indicateur avait deux tailles. La largeur du tiers n'est pas un avis : sur
+une fenetre de 1360 px, onze des vingt-trois intitules d'indicateurs sont
+tronques au quart contre trois au tiers, et le chiffre y garde une chasse
+de titre.
+
+**Disposition en douziemes, jamais en pixels.** Ce qui est retenu d'un
+deplacement est un rang ; `flow()` recalcule les pixels a chaque mise en
+page. Une position absolue serait juste sur l'ecran ou elle a ete posee et
+fausse partout ailleurs : une page composee sur un grand ecran doit s'ouvrir
+droite sur un petit.
 
 **Pendant un deplacement, seul un fantome suit le curseur**, double d'un
 trait d'insertion qui montre ou le bloc atterrira. Deplacer le bloc lui-meme
 ferait repeindre son contenu a chaque pixel parcouru : le nuage de points
-met 129 ms a se tracer.
+met 129 ms a se tracer. Le fantome est une fenetre flottante et non un cadre
+pose dans le plan de travail : le bloc peut venir de la palette, a gauche,
+et un cadre ne se dessine pas hors de son parent — le fantome disparaissait
+tant que le curseur n'avait pas atteint la page.
+
+**Le meme chemin sert au depot venu de la palette et au deplacement d'un
+bloc deja pose** : `_target(x, y)` dit ou le bloc atterrit, et un lacher
+hors de la page n'ajoute ni ne deplace rien — un geste interrompu doit
+pouvoir l'etre. Un clic sans deplacement ajoute a la fin : c'est le geste
+de celui qui remplit une page vide, et il ne demande pas de viser.
 
 **Ce qui part en configuration** (`dashboard_parameters.blocks`) se reduit a
-des identifiants, un ordre et des tailles — jamais un chiffre, jamais une
-donnee RH. Un identifiant inconnu, dans une configuration ecrite a la main
+des identifiants et a un ordre — jamais un chiffre, jamais une donnee RH, et
+plus aucune taille : une taille de reference corrigee dans une version
+ulterieure profite ainsi aux pages deja composees. Un identifiant inconnu, dans une configuration ecrite a la main
 ou heritee d'une version anterieure, est ignore avec une trace au journal
-technique : la page s'ouvre amputee plutot que pas du tout. Une hauteur ou
-une largeur hors bornes est ramenee a sa valeur par defaut.
+technique : la page s'ouvre amputee plutot que pas du tout. Une taille
+heritee d'une version anterieure est ignoree, le catalogue faisant foi.
 
 Les regles de confidentialite ne sont pas rejouees ici : un bloc affiche ce
 que le moteur a marque publiable, et se tait sinon — la dispersion par

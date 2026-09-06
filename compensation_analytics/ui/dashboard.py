@@ -41,6 +41,12 @@ class Block(NamedTuple):
     source: str = ""
     key: str = ""
     needs_field: bool = False
+    #: Taille propre au bloc : largeur en douziemes, hauteur en pixels.
+    #: Elle est fixee ici parce qu'elle depend de ce que le bloc montre —
+    #: un chiffre tient dans un quart de largeur, un nuage de points a
+    #: besoin des deux tiers — et non de ce que l'utilisateur en fait.
+    span: int = 3
+    height: int = 92
 
 
 #: Familles, dans l'ordre ou elles sont proposees.
@@ -48,9 +54,21 @@ FAMILIES = ("Population", "Rémunération", "Dispersion", "Pay Transparency",
             "Graphiques")
 
 
+#: Tailles de reference, mesurees a l'ecran. Un indicateur loge son
+#: en-tete, son filet et son chiffre ; un tableau ses lignes ; un
+#: graphique ses axes et sa legende.
+QUARTER, THIRD, HALF, TWO_THIRDS, FULL = 3, 4, 6, 8, 12
+
+
 def _indicator(ident: str, label: str, family: str, source: str,
                key: str) -> Block:
-    return Block(ident, label, family, "indicator", source, key)
+    # Le tiers plutot que le quart : mesure faite sur une fenetre de
+    # 1360 px, onze des vingt-trois intitules etaient tronques au quart
+    # contre trois au tiers, et le chiffre — qui est le contenu du bloc —
+    # y garde une chasse de titre au lieu de retomber au corps du texte.
+    # Trois indicateurs par rangee tombent juste sur les douze colonnes.
+    return Block(ident, label, family, "indicator", source, key,
+                 span=THIRD, height=92)
 
 
 CATALOGUE: Dict[str, Block] = {block.ident: block for block in (
@@ -105,25 +123,27 @@ CATALOGUE: Dict[str, Block] = {block.ident: block for block in (
 
     # ------------------------------------------------------------ tableaux
     Block("salary_scale", "Échelle de rémunération", "Rémunération", "table",
-          key="salary_scale"),
+          key="salary_scale", span=THIRD, height=250),
     Block("dispersion_table", "Tableau de dispersion", "Dispersion", "table",
-          key="dispersion"),
+          key="dispersion", span=THIRD, height=210),
 
     # ----------------------------------------------------------- graphiques
     Block("age_pyramid", "Pyramide des âges", "Graphiques", "chart",
-          key="age_pyramid"),
+          key="age_pyramid", span=HALF, height=300),
     Block("tenure_pyramid", "Structure d'ancienneté", "Graphiques", "chart",
-          key="tenure_pyramid"),
+          key="tenure_pyramid", span=HALF, height=300),
     Block("histogram", "Distribution des rémunérations", "Graphiques",
-          "chart", key="histogram"),
+          "chart", key="histogram", span=HALF, height=280),
+    # Le nuage porte deux axes chiffres et une legende : plus etroit, ses
+    # graduations se chevauchent.
     Block("scatter", "Rémunération / Ancienneté", "Graphiques", "chart",
-          key="scatter"),
+          key="scatter", span=TWO_THIRDS, height=340),
     Block("boxes", "Dispersion par segment", "Graphiques", "chart",
-          key="boxes", needs_field=True),
+          key="boxes", needs_field=True, span=TWO_THIRDS, height=330),
     Block("quartiles", "Répartition H/F par quartile", "Graphiques", "chart",
-          key="quartiles"),
+          key="quartiles", span=HALF, height=280),
     Block("gaps", "Écarts H/F par catégorie", "Graphiques", "chart",
-          key="gaps", needs_field=True),
+          key="gaps", needs_field=True, span=HALF, height=300),
 )}
 
 
@@ -154,10 +174,10 @@ def load(config) -> List[Dict[str, Any]]:
         if ident not in CATALOGUE:
             unknown.append(ident)
             continue
+        # Une taille enregistree du temps ou elle se tirait a la souris est
+        # ignoree : c'est le catalogue qui la donne desormais.
         kept.append(normalise({"block": ident,
-                               "field": entry.get("field") or "",
-                               "span": entry.get("span"),
-                               "height": entry.get("height")}))
+                               "field": entry.get("field") or ""}))
     if unknown:
         log_event("interface", "dashboard_load", status="INCONNU",
                   detail=f"blocs ignores={len(unknown)}")
@@ -165,20 +185,21 @@ def load(config) -> List[Dict[str, Any]]:
 
 
 def dump(blocks: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
-    """Section a enregistrer : identifiants, ordre et tailles, rien d'autre.
+    """Section a enregistrer : des identifiants et un ordre, rien d'autre.
 
-    La largeur part en colonnes et non en pixels : une page composee sur un
-    grand ecran doit s'ouvrir juste sur un petit.
+    Ni chiffre, ni donnee RH — et plus aucune taille : elle appartient au
+    bloc, pas a la page. Une page composee sur un grand ecran s'ouvre donc
+    juste sur un petit, et un bloc dont la taille de reference est corrigee
+    dans une version ulterieure la prend sans que personne ait a refaire sa
+    page.
     """
     saved = []
     for entry in blocks:
         if entry.get("block") not in CATALOGUE:
             continue
-        complete = normalise(entry)
-        item = {"block": complete["block"], "span": complete["span"],
-                "height": complete["height"]}
-        if complete["field"]:
-            item["field"] = complete["field"]
+        item = {"block": entry["block"]}
+        if entry.get("field"):
+            item["field"] = entry["field"]
         saved.append(item)
     return {"blocks": saved}
 
@@ -189,50 +210,20 @@ def dump(blocks: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
 #: quatre : toutes les largeurs utiles tombent juste.
 COLUMNS = 12
 
-#: Largeurs proposees, en colonnes, avec leur nom.
-SIZES = ((3, "Quart"), (4, "Tiers"), (6, "Moitié"), (12, "Pleine largeur"))
-
-#: Hauteurs de depart, par nature de bloc. Assez generreuses pour que rien
-#: ne soit rogne avant que l'on y touche.
-#: L'indicateur doit loger son en-tete, son filet et son chiffre au corps
-#: des indicateurs — mesure faite, quatre-vingt-douze pixels.
-DEFAULT_HEIGHT = {"indicator": 92, "table": 230, "chart": 280}
-
-#: Bornes du redimensionnement vertical. Le plancher est celui d'un bloc
-#: dont l'en-tete reste lisible.
-MIN_HEIGHT, MAX_HEIGHT = 70, 700
-
-
 def normalise(entry: Dict[str, Any]) -> Dict[str, Any]:
-    """Complete un bloc enregistre avec sa taille, si elle manque.
+    """Complete un bloc avec la taille de sa nature.
 
-    Une page composee avant que les tailles existent doit s'ouvrir : ses
-    blocs prennent alors la largeur pleine et la hauteur de leur nature.
+    La taille vient du catalogue et non de la configuration : elle depend
+    de ce que le bloc montre — un chiffre tient dans un quart de largeur,
+    un nuage de points a besoin des deux tiers — et non de ce que
+    l'utilisateur en a fait. Une page composee du temps ou les tailles se
+    tiraient a la souris s'ouvre donc a la bonne taille, et non a celle
+    qu'on lui avait donnee.
     """
     block = CATALOGUE[entry["block"]]
-    span = entry.get("span")
-    if span not in [size for size, _label in SIZES]:
-        span = COLUMNS
-    height = entry.get("height")
-    if not isinstance(height, int) or not MIN_HEIGHT <= height <= MAX_HEIGHT:
-        height = DEFAULT_HEIGHT.get(block.kind, 260)
     return {"block": entry["block"], "field": entry.get("field", ""),
-            "span": span, "height": height}
+            "span": block.span, "height": block.height}
 
-
-def snap_span(wanted: float) -> int:
-    """Palier de largeur le plus proche d'une largeur voulue.
-
-    La largeur se pose sur un palier : une page dont les blocs font cinq
-    douziemes et sept douziemes ne s'aligne plus avec rien.
-    """
-    return min((size for size, _label in SIZES),
-               key=lambda size: abs(size - wanted))
-
-
-def clamp_height(wanted: float) -> int:
-    """Hauteur ramenee entre le plancher lisible et le plafond utile."""
-    return int(max(MIN_HEIGHT, min(MAX_HEIGHT, wanted)))
 
 
 def flow(blocks: Sequence[Dict[str, Any]], width: float,
@@ -288,7 +279,6 @@ class Board(tk.Frame):
 
     GAP = 18
     HEADER = 26
-    GRIP = 14
     #: Place reservee a la croix de retrait, marges comprises.
     CLOSE = 28
 
@@ -303,7 +293,8 @@ class Board(tk.Frame):
         self._ghost: Optional[tk.Frame] = None
         self._marker: Optional[tk.Frame] = None
         self._dragging: Optional[int] = None
-        self._sizing: Optional[int] = None
+        #: Bloc du catalogue en cours de depot depuis la palette.
+        self._incoming: Optional[str] = None
         self.bind("<Configure>", lambda _e: self.layout())
 
     # ------------------------------------------------------------ contenu
@@ -359,13 +350,6 @@ class Board(tk.Frame):
         content.pack(fill="both", expand=True)
         self.build(content, entry, position, width)
 
-        grip = tk.Label(holder, text="◢", background=theme.CANVAS,
-                        foreground=theme.LINE_STRONG, font=self.fonts.small,
-                        cursor="bottom_right_corner")
-        grip.place(relx=1.0, rely=1.0, anchor="se")
-        grip.bind("<Button-1>", lambda e, p=position: self._grab_size(p, e))
-        grip.bind("<B1-Motion>", self._resize)
-        grip.bind("<ButtonRelease-1>", self._release_size)
         return holder
 
     def _fit(self, text: str, limit: float) -> str:
@@ -397,27 +381,92 @@ class Board(tk.Frame):
         if position >= len(self.blocks):
             return
         self._dragging = position
-        block = CATALOGUE[self.blocks[position]["block"]]
-        self._ghost = tk.Frame(self, background=theme.ACCENT_SOFT,
-                               highlightthickness=1,
-                               highlightbackground=theme.ACCENT)
-        tk.Label(self._ghost, text=block.label, background=theme.ACCENT_SOFT,
-                 foreground=theme.ACCENT, font=self.fonts.body_bold).pack(
-                     padx=10, pady=6)
+        self._raise_ghost(CATALOGUE[self.blocks[position]["block"]].label)
         self.holders[position].configure(background=theme.STRIPE)
         self._move_ghost(event)
 
-    def _move_ghost(self, event) -> None:
+    def _raise_ghost(self, label: str) -> None:
+        """Etiquette qui suit le curseur, dans sa propre fenetre.
+
+        Une fenetre plutot qu'un cadre pose dans le plan de travail : le
+        bloc peut venir de la palette, a gauche, et un cadre ne se dessine
+        pas hors de son parent — le fantome disparaissait tant que le
+        curseur n'avait pas atteint la page.
+        """
+        self._drop_ghost()
+        self._ghost = tk.Toplevel(self)
+        self._ghost.wm_overrideredirect(True)
+        self._ghost.attributes("-topmost", True)
+        self._ghost.configure(background=theme.ACCENT)
+        tk.Label(self._ghost, text=label, background=theme.ACCENT_SOFT,
+                 foreground=theme.ACCENT, font=self.fonts.body_bold,
+                 padx=10, pady=6).pack(padx=1, pady=1)
+
+    def _drop_ghost(self) -> None:
+        if self._ghost is not None:
+            self._ghost.destroy()
+            self._ghost = None
+
+    def _move_ghost(self, _event=None) -> None:
         if self._ghost is None:
             return
-        x = self.winfo_pointerx() - self.winfo_rootx()
-        y = self.winfo_pointery() - self.winfo_rooty()
-        self._ghost.place(x=x + 12, y=y + 10)
+        self._ghost.wm_geometry(f"+{self.winfo_pointerx() + 14}"
+                                f"+{self.winfo_pointery() + 12}")
         self._ghost.lift()
-        self._show_marker(x, y)
+        x, y = self._local_pointer()
+        if self._inside(x, y):
+            self._show_marker(x, y)
+        else:
+            self._hide_marker()
+
+    def _local_pointer(self) -> tuple:
+        return (self.winfo_pointerx() - self.winfo_rootx(),
+                self.winfo_pointery() - self.winfo_rooty())
+
+    def _inside(self, x: float, y: float) -> bool:
+        """Le curseur est-il au-dessus du plan de travail ?"""
+        return 0 <= x <= self.winfo_width() and 0 <= y <= self.winfo_height()
 
     def _drag(self, event) -> None:
         self._move_ghost(event)
+
+    # ------------------------------------------- depot venu de la palette
+
+    def start_external(self, ident: str) -> None:
+        """Un bloc du catalogue commence sa course vers la page."""
+        if ident not in CATALOGUE:
+            return
+        self._incoming = ident
+        self._raise_ghost(CATALOGUE[ident].label)
+        self._move_ghost()
+
+    def drag_external(self) -> None:
+        if self._incoming is not None:
+            self._move_ghost()
+
+    def finish_external(self) -> bool:
+        """Depose le bloc a l'endroit lache. Rend False si c'etait hors page.
+
+        Lacher a cote n'ajoute rien : un geste interrompu doit pouvoir
+        l'etre, sinon la page se remplit de blocs qu'on n'a pas voulus.
+        """
+        ident, self._incoming = self._incoming, None
+        x, y = self._local_pointer()
+        self._drop_ghost()
+        self._hide_marker()
+        if ident is None or not self._inside(x, y):
+            return False
+        self.insert(ident, self._target(x, y))
+        return True
+
+    def insert(self, ident: str, position: int) -> None:
+        """Ajoute un bloc du catalogue au rang demande."""
+        if ident not in CATALOGUE:
+            return
+        position = max(0, min(position, len(self.blocks)))
+        self.blocks.insert(position, normalise({"block": ident}))
+        self._rebuild()
+        self._changed()
 
     def _show_marker(self, x: float, y: float) -> None:
         """Trait d'insertion : sans lui, on lache a l'aveugle."""
@@ -434,6 +483,10 @@ class Board(tk.Frame):
                                y=box["y"], width=3, height=box["height"])
         self._marker.lift()
 
+    def _hide_marker(self) -> None:
+        if self._marker is not None:
+            self._marker.place_forget()
+
     def _target(self, x: float, y: float) -> int:
         """Rang ou le bloc atterrirait, en ordre de lecture."""
         for index, box in enumerate(self.boxes):
@@ -448,18 +501,16 @@ class Board(tk.Frame):
     def _drop(self, _event=None) -> None:
         if self._dragging is None:
             return
-        x = self.winfo_pointerx() - self.winfo_rootx()
-        y = self.winfo_pointery() - self.winfo_rooty()
-        target = self._target(x, y)
-        source = self._dragging
-        self._dragging = None
-        if self._ghost is not None:
-            self._ghost.destroy()
-            self._ghost = None
-        if self._marker is not None:
-            self._marker.destroy()
-            self._marker = None
-        self.move(source, target)
+        x, y = self._local_pointer()
+        source, self._dragging = self._dragging, None
+        self._drop_ghost()
+        self._hide_marker()
+        # Lache hors de la page, le bloc revient a sa place : c'est ce qu'on
+        # attend d'un geste interrompu.
+        if self._inside(x, y):
+            self.move(source, self._target(x, y))
+        else:
+            self._rebuild()
 
     def move(self, source: int, target: int) -> None:
         """Deplace un bloc au rang demande, et remonte la page."""
@@ -488,37 +539,6 @@ class Board(tk.Frame):
         self.blocks = []
         self._rebuild()
         self._changed()
-
-    # ---------------------------------------------------- redimensionnement
-
-    def _grab_size(self, position: int, _event) -> None:
-        self._sizing = position
-
-    def _resize(self, _event) -> None:
-        if self._sizing is None or self._sizing >= len(self.boxes):
-            return
-        entry = self.blocks[self._sizing]
-        box = self.boxes[self._sizing]
-        x = self.winfo_pointerx() - self.winfo_rootx()
-        y = self.winfo_pointery() - self.winfo_rooty()
-        width = max(self.winfo_width(), 200)
-        unit = (width - self.GAP * (COLUMNS - 1)) / COLUMNS
-        wanted = (x - box["x"] + self.GAP) / (unit + self.GAP)
-        entry["span"] = snap_span(wanted)
-        entry["height"] = clamp_height(y - box["y"])
-        self.layout()
-
-    def _release_size(self, _event=None) -> None:
-        """Le contenu est remonte a la largeur obtenue, pas a l'ancienne.
-
-        Un indicateur choisit la chasse de son chiffre d'apres la largeur
-        qu'on lui donne : passer d'un quart a la pleine largeur sans
-        remonter le bloc laisserait le chiffre a la taille du quart.
-        """
-        if self._sizing is not None:
-            self._sizing = None
-            self._rebuild()
-            self._changed()
 
     def _changed(self) -> None:
         if self.on_change:
