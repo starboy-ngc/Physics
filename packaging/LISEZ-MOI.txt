@@ -29,7 +29,7 @@ LANCER L'INTERFACE
     les dimensions réellement renseignées dans votre fichier.
 
     puis « Analyser ». Les onglets de droite affichent les résultats :
-    Vue d'ensemble, Graphique, Pay Transparency, Ma page, Qualité.
+    Vue d'ensemble, Graphique, Pay Transparency, Qualité.
 
     La colonne de gauche se replie : le chevron sur son bord rend toute
     la largeur aux graphiques, et la ligne du bas rappelle en
@@ -72,26 +72,6 @@ LANCER L'INTERFACE
       écart par catégorie de travail de même valeur, les catégories
         au-delà de 5 % étant signalées. La liste « Écart par »
         change d'axe : Poste, Grade, Établissement, Pays...
-
-    « Ma page » part vide : la colonne de gauche y propose tous les
-    indicateurs, tableaux et graphiques que l'analyse produit.
-
-      attrapez un bloc dans la liste, maintenez, lâchez sur la page
-        -> il se pose là où vous l'avez lâché ; un trait vertical
-           montre où il atterrira
-      un clic net, sans déplacer -> il va à la fin
-      attrapez un bloc posé par son titre -> vous le déplacez
-      la croix en haut à droite -> vous le retirez
-
-    Il n'y a rien à dimensionner : chaque bloc a la taille qui convient
-    à ce qu'il montre — un chiffre tient dans un tiers de largeur, un
-    nuage de points en occupe les deux tiers.
-
-    « Enregistrer la page » la retrouve à la prochaine ouverture. Ce
-    qui est enregistré se réduit à la liste des blocs et à leur ordre —
-    aucun chiffre, aucune donnée de votre fichier, et pas même une
-    taille : si une taille de référence est corrigée dans une version
-    ultérieure, votre page en profite sans que vous ayez à la refaire.
 
     Pour restreindre l'analyse — à un grade, une BU, un pays —,
     utilisez les filtres de la colonne de gauche : ils s'appliquent à

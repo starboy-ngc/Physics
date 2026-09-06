@@ -134,35 +134,6 @@ dépendent jamais : le rouge de « critique », l'orange d'« avertissement » e
 le couple femmes/hommes du nuage et des pyramides — les changer serait un
 contresens, pas une préférence.
 
-## 5 bis. Composer sa propre page (« Ma page »)
-
-L'onglet **Ma page** part vide et propose, a gauche, tous les indicateurs,
-tableaux et graphiques que l'analyse produit. Un clic les ajoute a la page.
-
-- **Poser** : attrapez un bloc dans la liste de gauche, maintenez le bouton,
-  lâchez-le sur la page. Il se pose là où vous l'avez lâché ; un trait
-  vertical montre où il atterrira. Lâché à côté de la page, il n'ajoute rien.
-- **Ajouter à la fin** : un clic net, sans déplacer la souris.
-- **Déplacer** : attrapez un bloc posé par son titre et faites-le glisser.
-- **Retirer** : la croix en haut à droite du bloc. « Tout retirer » vide la
-  page.
-- **Enregistrer la page** : la composition est retrouvée à la prochaine
-  ouverture.
-
-**Il n'y a rien à dimensionner** : chaque bloc a la taille qui convient à ce
-qu'il montre — un chiffre tient dans un tiers de largeur, un nuage de points
-en occupe les deux tiers. Les blocs se rangent de gauche à droite et passent
-à la ligne quand la largeur est prise.
-
-Ce qui est enregistré se réduit à la liste des blocs et à leur ordre : aucun
-chiffre, aucune donnée de votre fichier, et pas même une taille. Une page
-composée sur un grand écran s'ouvre donc droite sur un petit, et si une taille
-de référence est corrigée dans une version ultérieure, votre page en profite
-sans que vous ayez à la refaire.
-
-Les regles de confidentialite s'appliquent ici comme partout : un bloc dont
-l'effectif est trop faible n'affiche rien.
-
 ## 6. Protection des données
 
 - Les résultats sont masqués sous 5 salariés, signalés sous 10, les graphiques

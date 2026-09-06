@@ -28,7 +28,6 @@ CONFIG_FILES = (
     "pay_equity_parameters",
     "chart_parameters",
     "theme_parameters",
-    "dashboard_parameters",
     "export_parameters",
 )
 
@@ -171,13 +170,6 @@ DEFAULTS: Dict[str, Any] = {
         # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
         # a affirmer une tendance sans permettre d'en juger la solidite.
         "show_trend_line": False,
-    },
-    "dashboard_parameters": {
-        # Page composee par l'utilisateur : une liste d'identifiants de blocs
-        # et leur ordre. Jamais de chiffres ni de donnees : seulement ce que
-        # l'on souhaite voir, et dans quel ordre. Vide au depart — la page
-        # explique alors comment la remplir.
-        "blocks": [],
     },
     "theme_parameters": {
         # Nom du theme applique a l'ecran et aux documents. La liste est

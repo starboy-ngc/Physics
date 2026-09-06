@@ -201,7 +201,11 @@ class TestWindow(unittest.TestCase):
     def test_the_window_opens_with_the_expected_steps(self):
         self.assertEqual(self.app.title(),
                          "Compensation Analytics Engine 1.0.0")
-        self.assertEqual(len(self.app.tabs), 5)
+        from compensation_analytics.ui.app import TABS
+
+        self.assertEqual(len(self.app.tabs), len(TABS))
+        self.assertEqual([key for key, _label in TABS],
+                         ["population", "graphique", "equite", "qualite"])
         # « Graphique » en porte plusieurs : la barre principale ne dit plus
         # a elle seule tout ce que l'outil sait montrer.
         self.assertEqual(self.app.chartbar.visible_keys(),
@@ -363,106 +367,6 @@ class TestWindow(unittest.TestCase):
         self._settle()
         self.assertEqual(self.app.filter_vars[champ].get(), "France")
 
-    def test_the_page_is_composed_reordered_and_emptied(self):
-        """« Ma page » n'impose rien : elle empile ce qu'on lui donne, dans
-        l'ordre ou on le donne."""
-        self.assertEqual(self.app._workshop_blocks, [])
-        for ident in ("headcount", "median", "age_pyramid"):
-            self.app.add_block(ident)
-        self.app.update()
-        self.assertEqual([b["block"] for b in self.app._workshop_blocks],
-                         ["headcount", "median", "age_pyramid"])
-
-        self.app.move_block(2, -1)
-        self.assertEqual([b["block"] for b in self.app._workshop_blocks],
-                         ["headcount", "age_pyramid", "median"])
-        # Un deplacement hors des bornes ne fait rien plutot que de lever.
-        self.app.move_block(0, -1)
-        self.app.move_block(2, 1)
-        self.assertEqual(len(self.app._workshop_blocks), 3)
-
-        self.app.remove_block(1)
-        self.assertEqual([b["block"] for b in self.app._workshop_blocks],
-                         ["headcount", "median"])
-        self.app.clear_workshop()
-        self.assertEqual(self.app._workshop_blocks, [])
-
-    def test_an_unknown_block_is_refused(self):
-        """Le catalogue fait foi : rien d'autre n'entre dans la page."""
-        self.app.add_block("bloc_qui_n_existe_pas")
-        self.assertEqual(self.app._workshop_blocks, [])
-
-    def test_the_composed_page_is_saved_and_found_again(self):
-        """C'est la promesse du bouton : la page survit a la fermeture."""
-        import shutil
-        import tempfile
-
-        from compensation_analytics.core.config import load_configuration
-        from compensation_analytics.ui import dashboard
-        from compensation_analytics.ui.app import Application
-
-        directory = tempfile.mkdtemp()
-        config_dir = os.path.join(directory, "config")
-        shutil.copytree(os.path.join(ROOT, "config"), config_dir)
-        app = Application(config_dir=config_dir)
-        app.update()
-        try:
-            for ident in ("payroll", "boxes", "histogram"):
-                app.add_block(ident)
-            app._workshop_blocks[1]["field"] = "grade"
-            app.save_workshop()
-            app.update()
-            self.assertIn("enregistrée", app.workshop_state.cget("text"))
-        finally:
-            app.destroy()
-
-        # Relue depuis le disque : identifiants et ordre, rien d'autre.
-        saved = dashboard.load(load_configuration(config_dir))
-        self.assertEqual([entry["block"] for entry in saved],
-                         ["payroll", "boxes", "histogram"])
-        self.assertEqual(saved[1]["field"], "grade")
-
-        repris = Application(config_dir=config_dir)
-        try:
-            repris.update()
-            self.assertEqual([b["block"] for b in repris._workshop_blocks],
-                             ["payroll", "boxes", "histogram"])
-        finally:
-            repris.destroy()
-
-    def test_a_saved_page_survives_a_block_that_no_longer_exists(self):
-        """Une configuration se modifie au bloc-notes et survit aux versions :
-        un identifiant inconnu ampute la page, il ne l'empeche pas."""
-        from compensation_analytics.ui import dashboard
-
-        class FausseConfig:
-            def get(self, path, default=None):
-                return [{"block": "headcount"}, {"block": "disparu"},
-                        {"block": "median"}, "pas un bloc"]
-
-        gardes = dashboard.load(FausseConfig())
-        self.assertEqual([entry["block"] for entry in gardes],
-                         ["headcount", "median"])
-
-    def test_the_saved_page_never_carries_figures(self):
-        """Ce qui part en configuration se reduit a des identifiants et a un
-        ordre : jamais un chiffre, jamais une donnee RH. Plus aucune taille
-        non plus — elle appartient au bloc, pas a la page, et une taille de
-        reference corrigee dans une version ulterieure doit profiter aux
-        pages deja composees."""
-        from compensation_analytics.ui import dashboard
-
-        section = dashboard.dump([{"block": "median", "field": "",
-                                   "span": 12, "height": 400},
-                                  {"block": "boxes", "field": "grade"},
-                                  {"block": "inconnu", "field": ""}])
-        self.assertEqual(section["blocks"],
-                         [{"block": "median"},
-                          {"block": "boxes", "field": "grade"}])
-        for entry in section["blocks"]:
-            self.assertNotIn("span", entry)
-            self.assertNotIn("height", entry)
-
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
         self.assertIn("disabled", self.app.export_button.state())
@@ -500,10 +404,13 @@ class TestWindow(unittest.TestCase):
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")
 class TestTheIndicatorTablesAreBuiltOnce(unittest.TestCase):
-    """Deux ecrans montrent l'echelle et la dispersion : un seul code les
-    construit. Ecrites en double, elles se seraient ecartees — retirer un
-    percentile de la configuration n'aurait tenu qu'a l'un des deux, et le
-    meme fichier aurait porte deux echelles selon l'onglet ouvert."""
+    """L'echelle et la dispersion se construisent en un seul endroit.
+
+    Elles ont ete ecrites en double le temps qu'un second ecran les montre,
+    et elles se seraient ecartees : retirer un percentile de la
+    configuration n'aurait tenu qu'a l'un des deux. Le second ecran a
+    disparu, la regle reste — c'est elle qui garantit que l'echelle affichee
+    suit les percentiles publies, et rien d'autre."""
 
     def setUp(self):
         from compensation_analytics.ui import app
@@ -601,195 +508,6 @@ class TestTheScreenPrivacySetting(unittest.TestCase):
         self.assertEqual(section["min_headcount_publish"], 5)
         self.assertEqual(section["min_headcount_chart"], 10)
         self.assertIs(section["anonymise_identifiers"], True)
-
-
-@unittest.skipUnless(HAS_TK, "tkinter absent")
-class TestTheLayoutOfTheComposedPage(unittest.TestCase):
-    """La disposition se calcule sans ecran : c'est de l'arithmetique sur
-    une grille en douziemes, et c'est la qu'elle doit etre verifiee."""
-
-    def setUp(self):
-        from compensation_analytics.ui import dashboard
-        self.dashboard = dashboard
-
-    def _page(self, *idents):
-        return [self.dashboard.normalise({"block": ident})
-                for ident in idents]
-
-    def test_blocks_fill_a_row_before_starting_the_next(self):
-        """Trois indicateurs tiennent sur une ligne ; le quatrieme passe a
-        la ligne suivante. Sans cela la page se lirait en colonne unique."""
-        boxes = self.dashboard.flow(
-            self._page("median", "mean", "min", "max"), 1000)
-        par_rangee = self.dashboard.COLUMNS // \
-            self.dashboard.CATALOGUE["median"].span
-        premiers = boxes[:par_rangee]
-        self.assertEqual(len({round(box["y"]) for box in premiers}), 1)
-        self.assertGreater(boxes[par_rangee]["y"], premiers[0]["y"])
-        for gauche, droite in zip(premiers, premiers[1:]):
-            self.assertGreater(droite["x"], gauche["x"])
-
-    def test_no_block_overflows_the_page(self):
-        """Le debordement a droite est invisible tant qu'on ne mesure pas :
-        la derniere colonne doit tomber juste sur le bord."""
-        page = self._page("scatter", "boxes", "histogram", "age_pyramid",
-                          "median", "salary_scale")
-        for width in (600, 900, 1440):
-            for box in self.dashboard.flow(page, width):
-                self.assertGreaterEqual(box["x"], -0.01)
-                self.assertLessEqual(box["x"] + box["width"], width + 0.01)
-
-    def test_a_full_width_block_spans_the_whole_page(self):
-        page = [{"block": "median", "field": "", "span": 12, "height": 92}]
-        box = self.dashboard.flow(page, 900)[0]
-        self.assertAlmostEqual(box["width"], 900, places=6)
-
-    def test_the_page_is_as_tall_as_its_tallest_row(self):
-        """Une ligne vaut son bloc le plus haut : c'est ce qui evite qu'un
-        graphique chevauche la ligne suivante."""
-        page = self._page("age_pyramid", "median", "histogram")
-        haut = max(entry["height"] for entry in page[:2])
-        boxes = self.dashboard.flow(page, 1000)
-        self.assertEqual(boxes[0]["y"], boxes[1]["y"])
-        self.assertGreaterEqual(boxes[2]["y"], haut)
-        self.assertEqual(self.dashboard.page_height([]), 0.0)
-
-    def test_every_block_carries_its_own_size(self):
-        """La taille depend de ce que le bloc montre, pas de ce qu'on en
-        fait : un chiffre tient dans un quart de largeur, un nuage de
-        points a besoin des deux tiers."""
-        catalogue = self.dashboard.CATALOGUE
-        for ident, block in catalogue.items():
-            with self.subTest(bloc=ident):
-                self.assertGreaterEqual(block.span, 1)
-                self.assertLessEqual(block.span, self.dashboard.COLUMNS)
-                self.assertGreaterEqual(block.height, 70)
-        self.assertLess(catalogue["median"].span, catalogue["scatter"].span)
-        self.assertLess(catalogue["median"].height,
-                        catalogue["histogram"].height)
-        # Les indicateurs partagent une seule taille : alignes, ils forment
-        # une rangee reguliere plutot qu'un escalier.
-        indicateurs = {(b.span, b.height) for b in catalogue.values()
-                       if b.kind == "indicator"}
-        self.assertEqual(len(indicateurs), 1)
-
-    def test_the_size_comes_from_the_catalogue_not_from_the_page(self):
-        """Une taille heritee d'une version ou elle se tirait a la souris
-        est ignoree : le bloc reprend la sienne, et une taille de reference
-        corrigee plus tard profite aux pages deja composees."""
-        entry = self.dashboard.normalise({"block": "median", "span": 12,
-                                          "height": 400})
-        block = self.dashboard.CATALOGUE["median"]
-        self.assertEqual(entry["span"], block.span)
-        self.assertEqual(entry["height"], block.height)
-
-
-@needs_display
-class TestTheBoardMovesAndAccepts(unittest.TestCase):
-    """Le plan de travail est la seule piece qui ait besoin d'un ecran :
-    on y verifie qu'un deplacement reordonne, et qu'un bloc lache depuis la
-    palette se pose la ou on le lache."""
-
-    def setUp(self):
-        from compensation_analytics.ui import dashboard, theme
-        self.dashboard = dashboard
-        self.root = tkinter.Tk()
-        self.root.geometry("1000x700")
-        self.built = []
-        self.changes = []
-        self.board = dashboard.Board(
-            self.root, theme.Fonts(self.root),
-            build=lambda content, entry, position, width:
-                self.built.append((entry["block"], width)),
-            on_change=lambda: self.changes.append(True))
-        self.board.pack(fill="both", expand=True)
-        self.root.update()
-
-    def tearDown(self):
-        self.root.destroy()
-
-    def _compose(self, *idents):
-        self.board.set_blocks([{"block": ident} for ident in idents])
-        self.root.update()
-
-    def _order(self):
-        return [entry["block"] for entry in self.board.blocks]
-
-    def test_moving_a_block_reorders_the_page(self):
-        self._compose("headcount", "median", "payroll")
-        self.board.move(2, 0)
-        self.assertEqual(self._order(), ["payroll", "headcount", "median"])
-        self.board.move(0, 3)
-        self.assertEqual(self._order(), ["headcount", "median", "payroll"])
-        self.assertEqual(len(self.changes), 2)
-
-    def test_moving_a_block_that_is_not_there_changes_nothing(self):
-        """Un relachement hors de la page ne doit rien deranger."""
-        self._compose("headcount", "median")
-        self.board.move(7, 0)
-        self.assertEqual(self._order(), ["headcount", "median"])
-        self.assertEqual(self.changes, [])
-
-    def test_a_block_dropped_from_the_palette_lands_where_it_is_released(self):
-        """Le geste demande : je clique dans la palette, je maintiens, je
-        lache sur la page — et le bloc se pose la, pas a la fin."""
-        self._compose("headcount", "median", "payroll")
-        self.board.start_external("boxes")
-        self.assertIsNotNone(self.board._ghost)
-        self.board.insert("boxes", 1)
-        self.assertEqual(self._order(),
-                         ["headcount", "boxes", "median", "payroll"])
-        self.assertEqual(len(self.board.holders), 4)
-        self.assertEqual(len(self.changes), 1)
-
-    def test_a_drop_outside_the_page_adds_nothing(self):
-        """Un geste interrompu doit pouvoir l'etre : sinon la page se
-        remplit de blocs qu'on n'a pas voulus."""
-        self._compose("headcount")
-        self.board.start_external("boxes")
-        self.root.update()
-        # Le curseur de l'affichage virtuel n'est pas sur le plan de
-        # travail : le depot doit etre refuse.
-        self.board.winfo_pointerx = lambda: -500
-        self.board.winfo_pointery = lambda: -500
-        self.assertFalse(self.board.finish_external())
-        self.assertEqual(self._order(), ["headcount"])
-        self.assertIsNone(self.board._ghost)
-        self.assertEqual(self.changes, [])
-
-    def test_an_unknown_block_never_starts_a_drop(self):
-        self._compose("headcount")
-        self.board.start_external("bloc_qui_n_existe_pas")
-        self.assertIsNone(self.board._ghost)
-        self.assertFalse(self.board.finish_external())
-        self.assertEqual(self._order(), ["headcount"])
-
-    def test_an_insert_beyond_the_page_lands_at_the_end(self):
-        self._compose("headcount", "median")
-        self.board.insert("payroll", 99)
-        self.board.insert("min", -3)
-        self.assertEqual(self._order(),
-                         ["min", "headcount", "median", "payroll"])
-
-    def test_the_page_is_exactly_as_tall_as_its_blocks(self):
-        """La hauteur du plan de travail commande la barre de defilement :
-        trop courte, le dernier bloc devient inatteignable."""
-        self._compose("scatter", "boxes")
-        self.root.update()
-        attendu = self.dashboard.page_height(self.board.boxes, self.board.GAP)
-        self.assertEqual(self.board.winfo_reqheight(), int(attendu))
-
-    def test_removing_and_clearing_leave_the_page_consistent(self):
-        self._compose("headcount", "median", "payroll")
-        self.board.remove(1)
-        self.assertEqual(self._order(), ["headcount", "payroll"])
-        self.assertEqual(len(self.board.holders), 2)
-        self.board.add("min")
-        self.assertEqual(self._order(), ["headcount", "payroll", "min"])
-        self.board.add("bloc_inexistant")
-        self.assertEqual(len(self.board.blocks), 3)
-        self.board.clear()
-        self.assertEqual(self.board.holders, [])
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")
