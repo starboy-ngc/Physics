@@ -148,7 +148,13 @@ SANS INTERFACE (traitement en lot)
       restitution-*.html   rapport détaillé, à lire à l'écran
       synthese-*.pdf       fiche standard, une page paysage
       slides-*.pdf         jeu de slides paysage
-      analyse-*.xlsx       tous les indicateurs par onglet
+      analyse-*.xlsx       tous les indicateurs par onglet. Les
+                           indicateurs DÉRIVÉS y portent leur formule :
+                           cliquez sur « Q3 - Q1 », vous lisez
+                           « =B11-B9 ». Avec les données individuelles
+                           activées, un onglet « Contrôle » recalcule
+                           médiane et percentiles par formule, pour les
+                           comparer à ce que l'outil a calculé.
       manifeste-*.json     paramètres utilisés, pour refaire
                            l'analyse à l'identique
 

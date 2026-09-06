@@ -226,6 +226,43 @@ Chaque demi-boîte a son propre droit au tracé : un segment de cinquante
 personnes dont quatre femmes ne donne pas le droit de dessiner les
 percentiles de ces quatre-là — cette moitié-là n'est simplement pas tracée.
 
+## 5 quinquies. Vérifier les calculs dans le classeur Excel
+
+Le classeur ne se contente pas d'afficher des résultats : **les indicateurs
+dérivés portent leur formule**. Cliquez sur la cellule « Q3 − Q1 », vous lisez
+`=B11-B9` — les deux cellules d'où le chiffre sort.
+
+Sont écrits en formules :
+
+| Onglet | Ce qui se recalcule |
+|---|---|
+| Rémunération | Q3 − Q1, Q3/Q1, P90/P10, Moyenne/Médiane, coefficient de variation |
+| Population | la part de chaque tranche, rapportée à l'effectif total |
+| Seg … | P90/P10, sur les deux colonnes de la même ligne |
+| Pay Transparency | écart moyen, écart médian et rattrapage de chaque catégorie, et leur total |
+
+Chaque cellule porte **aussi** sa valeur calculée : Excel la recalcule à
+l'ouverture, mais un lecteur qui ne recalcule pas affiche le bon chiffre
+quand même.
+
+### Vérifier les indicateurs de base
+
+Une médiane ne se déduit d'aucun autre chiffre : la vérifier demande les
+valeurs. Activez `export_parameters.include_individual_data` et le classeur
+gagne un onglet **Contrôle** qui pose côte à côte ce que l'outil a calculé et
+ce que le tableur trouve sur la colonne des rémunérations :
+
+```
+Indicateur   Calculé par l'outil   Recalculé par le tableur   Formule
+Médiane      40 642                40 642                     MEDIAN(...)
+Q1 (P25)     31 386,25             31 386,25                  PERCENTILE(...;0,25)
+```
+
+Les percentiles suivent la méthode inclusive (type 7), identique à
+`PERCENTILE` d'Excel : **les deux colonnes doivent coïncider à l'affichage
+près**. Cet onglet n'apparaît qu'avec les données individuelles, car il ne
+peut pas exister sans elles.
+
 ## 6. Protection des données
 
 - Les résultats sont masqués sous 5 salariés, signalés sous 10, les graphiques

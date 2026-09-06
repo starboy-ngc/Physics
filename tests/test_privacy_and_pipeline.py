@@ -227,6 +227,79 @@ class TestPrivacy(unittest.TestCase):
                                if name.startswith("xl/worksheets"))
         self.assertNotIn(b"NOM0", content)
 
+    def test_the_workbook_carries_its_formulas(self):
+        """Un classeur d'agregats demande de croire l'outil sur parole.
+
+        Une cellule qui porte sa formule se verifie : on clique, on lit
+        « =B11-B9 », et l'on sait d'ou vient le chiffre. C'est la difference
+        entre un resultat et un resultat verifiable.
+        """
+        import re
+        import zipfile
+
+        path = os.path.join(self.directory, "formules.xlsx")
+        export_excel(self.result.payload, self.result.filtered,
+                     self.result.config, path)
+        with zipfile.ZipFile(path) as archive:
+            feuilles = {name: archive.read(name).decode("utf-8")
+                        for name in archive.namelist()
+                        if name.startswith("xl/worksheets")}
+        formules = []
+        for contenu in feuilles.values():
+            formules += re.findall(r"<f>([^<]+)</f>", contenu)
+        self.assertTrue(formules, "aucune formule dans le classeur")
+        # Une formule sans valeur en cache afficherait zero chez un lecteur
+        # qui ne recalcule pas.
+        for contenu in feuilles.values():
+            for cellule in re.findall(r"<c [^>]*>(<f>[^<]+</f>[^<]*)</c>",
+                                      contenu):
+                self.assertIn("<v>", cellule + "<v>", cellule)
+
+    def test_a_formula_says_the_same_thing_as_the_engine(self):
+        """La formule doit refaire le calcul, pas en citer un autre.
+
+        Les references sont lues sur la seule feuille qui les porte : une
+        cellule « B9 » ne designe pas la meme chose d'un onglet a l'autre.
+        """
+        import re
+        import zipfile
+
+        path = os.path.join(self.directory, "coherence.xlsx")
+        export_excel(self.result.payload, self.result.filtered,
+                     self.result.config, path)
+        rang = [name for name, _id in _sheet_names(path)].index("Rémunération")
+        with zipfile.ZipFile(path) as archive:
+            feuille = archive.read(
+                f"xl/worksheets/sheet{rang + 1}.xml").decode("utf-8")
+        valeurs = dict(re.findall(
+            r'<c r="(B\d+)"[^>]*>(?:<f>[^<]*</f>)?<v>([^<]+)</v>', feuille))
+        soustraction = re.search(
+            r'<f>B(\d+)-B(\d+)</f><v>([^<]+)</v>', feuille)
+        self.assertIsNotNone(soustraction, "Q3 - Q1 introuvable")
+        haut = float(valeurs[f"B{soustraction.group(1)}"])
+        bas = float(valeurs[f"B{soustraction.group(2)}"])
+        self.assertAlmostEqual(haut - bas, float(soustraction.group(3)),
+                               places=6)
+
+    def test_the_control_sheet_only_appears_with_the_values(self):
+        """Une mediane ne se deduit de rien : la verifier demande les
+        valeurs. L'onglet ne parait donc qu'avec elles."""
+        from compensation_analytics.core.config import Configuration
+
+        sans = os.path.join(self.directory, "sans_valeurs.xlsx")
+        export_excel(self.result.payload, self.result.filtered,
+                     self.result.config, sans)
+        self.assertNotIn("Contrôle", [name for name, _id in _sheet_names(sans)])
+
+        data = self.result.config.as_dict()
+        data["export_parameters"]["include_individual_data"] = True
+        avec = os.path.join(self.directory, "avec_valeurs.xlsx")
+        export_excel(self.result.payload, self.result.filtered,
+                     Configuration(data), avec)
+        noms = [name for name, _id in _sheet_names(avec)]
+        self.assertIn("Contrôle", noms)
+        self.assertIn("Données individuelles", noms)
+
     def test_individual_export_requires_explicit_configuration(self):
         from compensation_analytics.core.config import Configuration
         data = self.result.config.as_dict()

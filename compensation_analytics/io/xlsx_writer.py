@@ -11,7 +11,8 @@ import datetime as _dt
 import math
 import re
 import zipfile
-from typing import Any, Iterable, List, Sequence, Tuple
+from typing import (Any, Iterable, List, NamedTuple, Optional,
+                    Sequence, Tuple)
 
 _CONTENT_TYPES = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
@@ -84,7 +85,34 @@ def _sanitize_sheet_name(name: str, used: set) -> str:
     return candidate
 
 
+class Formula(NamedTuple):
+    """Cellule calculee par le tableur, et non par nous.
+
+    Un classeur d'agregats demande de croire l'outil sur parole. Une
+    cellule qui porte sa formule se verifie : on clique dessus, on lit
+    « =B10-B8 », et l'on sait d'ou vient le chiffre. C'est la difference
+    entre un resultat et un resultat verifiable.
+
+    La valeur calculee est ecrite en meme temps que la formule : Excel la
+    recalcule a l'ouverture, mais un lecteur qui ne recalcule pas — un
+    convertisseur, un import automatise — afficherait des zeros sans elle.
+    """
+
+    expression: str
+    value: Optional[float] = None
+
+
+def _formula_xml(reference: str, formula: "Formula", style: int) -> str:
+    cached = ""
+    if formula.value is not None and math.isfinite(formula.value):
+        cached = f"<v>{formula.value!r}</v>"
+    return (f'<c r="{reference}" s="{style}">'
+            f"<f>{_escape(formula.expression)}</f>{cached}</c>")
+
+
 def _cell_xml(reference: str, value: Any, style: int) -> str:
+    if isinstance(value, Formula):
+        return _formula_xml(reference, value, style)
     if value is None or value == "":
         return ""
     if isinstance(value, bool):
