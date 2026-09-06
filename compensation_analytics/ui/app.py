@@ -164,7 +164,7 @@ class Application(tk.Tk):
 
         self.sidebar_card = Card(body, padding=0)
         self.sidebar_card.pack(side="left", fill="y")
-        self.sidebar_card.configure(width=326)
+        self.sidebar_card.configure(width=self.SIDEBAR_WIDTH)
         self.sidebar_card.pack_propagate(False)
         self._build_sidebar(self.sidebar_card.inner)
         self._build_sidebar_handle(body)
@@ -194,6 +194,15 @@ class Application(tk.Tk):
     #: assez etroite pour ne rien prendre a l'analyse.
     HANDLE_WIDTH = 24
 
+    #: Largeur deployee de la colonne de gauche.
+    SIDEBAR_WIDTH = 326
+    #: Repli anime : duree totale et intervalle entre deux images. Une
+    #: transition trop longue se subit ; trop courte, elle ne dit plus d'ou
+    #: vient ni ou va la colonne. Un cinquieme de seconde est le compromis
+    #: usuel pour un panneau lateral.
+    FOLD_MS = 200
+    FOLD_FRAME_MS = 16
+
     def _build_sidebar_handle(self, parent: tk.Frame) -> None:
         """Poignee de repli de la colonne de gauche.
 
@@ -203,6 +212,10 @@ class Application(tk.Tk):
         toujours visible — replier sans laisser de quoi deplier serait un
         piege.
         """
+        self.sidebar_open = True
+        self._fold_job = None
+        self._fold_width = self.SIDEBAR_WIDTH
+        self._scatter_hidden = False
         self.sidebar_handle = tk.Frame(parent, background=theme.GROUND,
                                        width=self.HANDLE_WIDTH, cursor="hand2")
         self.sidebar_handle.pack(side="left", fill="y")
@@ -234,16 +247,109 @@ class Application(tk.Tk):
             foreground=theme.ACCENT if entering else theme.MUTED)
 
     def toggle_sidebar(self) -> None:
-        """Replie ou deplie la colonne de gauche."""
-        if self.sidebar_card.winfo_manager():
-            self.sidebar_card.pack_forget()
-            self.sidebar_arrow.configure(text="›")
+        """Replie ou deplie la colonne de gauche, en glissant.
+
+        La colonne ne disparait pas d'un coup : elle se retire, et le
+        contenu prend la place laissee. Une apparition instantanee oblige a
+        relire la page pour comprendre ce qui a bouge ; un glissement la
+        raconte.
+
+        Le chevron, lui, bascule des le clic : c'est l'accuse de reception
+        du geste, il n'a pas a attendre la fin du mouvement.
+        """
+        self.sidebar_open = not getattr(self, "sidebar_open", True)
+        self.sidebar_arrow.configure(text="‹" if self.sidebar_open else "›")
+        if self.sidebar_open and not self.sidebar_card.winfo_manager():
+            # « sidebar_handle » n'est jamais depaquete : c'est un repere sur
+            # pour rendre la colonne a sa place dans l'empilement.
+            self.sidebar_card.configure(width=1)
+            self.sidebar_card.pack(side="left", fill="y",
+                                   before=self.sidebar_handle)
+        self._slide_sidebar()
+
+    def _slide_sidebar(self) -> None:
+        """Anime la largeur de la colonne jusqu'a son etat cible.
+
+        La largeur courante est tenue ici plutot que relue sur le widget :
+        « winfo_width » rend la derniere largeur mise en page, pas celle que
+        l'on vient de demander. Au depliage, elle valait donc deja celle
+        d'arrivee — depart et cible confondus, aucun mouvement. La tenir
+        permet aussi de repartir de la position exacte quand on rebascule au
+        milieu d'un glissement.
+        """
+        self._cancel_fold()
+        self._suspend_scatter()
+        start = self._fold_width
+        target = self.SIDEBAR_WIDTH if self.sidebar_open else 1
+        if start == target:
+            self._end_fold()
             return
-        # « sidebar_handle » n'est jamais depaquete : c'est un repere sur
-        # pour rendre la colonne a sa place dans l'empilement.
-        self.sidebar_card.pack(side="left", fill="y",
-                               before=self.sidebar_handle)
-        self.sidebar_arrow.configure(text="‹")
+        frames = max(int(self.FOLD_MS / self.FOLD_FRAME_MS), 1)
+
+        def step(number: int) -> None:
+            self._fold_job = None
+            if not self.sidebar_card.winfo_exists():
+                return
+            if number >= frames:
+                self._end_fold()
+                return
+            # Sortie amortie : le mouvement part vite et se pose, ce qui se
+            # lit comme un objet qui glisse plutot que comme un saut decoupe.
+            eased = 1 - (1 - number / frames) ** 3
+            self._fold_width = int(round(start + (target - start) * eased))
+            self.sidebar_card.configure(width=self._fold_width)
+            self._fold_job = self.after(self.FOLD_FRAME_MS,
+                                        lambda: step(number + 1))
+
+        step(1)
+
+    def _end_fold(self) -> None:
+        """Pose l'etat final exact.
+
+        Une animation ne doit rien laisser en chemin : ni largeur approchee,
+        ni colonne repliee mais toujours empilee.
+        """
+        self._fold_width = self.SIDEBAR_WIDTH if self.sidebar_open else 1
+        self.sidebar_card.configure(width=self._fold_width)
+        self._restore_scatter()
+        if not self.sidebar_open:
+            self.sidebar_card.pack_forget()
+            # La colonne repart de sa pleine largeur au prochain depliage :
+            # c'est la largeur d'arrivee qui est animee, pas la largeur nulle.
+            self.sidebar_card.configure(width=1)
+
+    def _suspend_scatter(self) -> None:
+        """Retire le nuage de l'ecran pendant le glissement.
+
+        Tk repeint les deux mille images du nuage a chaque changement de
+        geometrie, et ce cout n'est pas celui de notre trace : mesure, 1 592
+        ms pour un repli avec le nuage affiche contre 185 ms sans lui, une
+        image contre quatre-vingt-quinze. Un nuage que l'on comprime
+        n'apprend de toute facon rien : on le retire, et on le remet a
+        l'arrivee.
+        """
+        if self._scatter_hidden or not self.scatter.winfo_manager():
+            return
+        self.scatter.pack_forget()
+        self._scatter_hidden = True
+
+    def _restore_scatter(self) -> None:
+        if not self._scatter_hidden:
+            return
+        # « legend_frame » n'est jamais depaquete : repere sur pour rendre le
+        # nuage a sa place entre les controles et la legende.
+        self.scatter.pack(fill="both", expand=True, padx=18, pady=(4, 4),
+                          before=self.legend_frame)
+        self._scatter_hidden = False
+
+    def _cancel_fold(self) -> None:
+        job = getattr(self, "_fold_job", None)
+        if job is not None:
+            try:
+                self.after_cancel(job)
+            except tk.TclError:
+                pass
+        self._fold_job = None
 
     def _section(self, parent, number: int, text: str,
                  action: Optional[str] = None, command=None) -> Optional[tk.Label]:
@@ -252,8 +358,13 @@ class Application(tk.Tk):
         row.pack(fill="x", pady=(18, 8))
         tk.Label(row, text=f"{number}", background=theme.ACCENT, foreground="white",
                  font=self.fonts.label, width=2, pady=1).pack(side="left")
-        tk.Label(row, text=text.upper(), background=theme.GROUND, foreground=theme.FAINT,
-                 font=self.fonts.label).pack(side="left", padx=8)
+        # Ancre a gauche : quand la colonne se replie, un libelle plus large
+        # que la place restante est rogne par le milieu — « IMPORTER »
+        # devenait « PORT ». Ancre, il se coupe par la fin, comme un mot que
+        # l'on cesse de lire.
+        tk.Label(row, text=text.upper(), background=theme.GROUND,
+                 foreground=theme.FAINT, font=self.fonts.label,
+                 anchor="w").pack(side="left", padx=8)
         if action is None:
             return None
         link = tk.Label(row, text=action, background=theme.GROUND, foreground=theme.ACCENT,

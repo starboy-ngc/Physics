@@ -43,6 +43,47 @@ def note_font():
     return (_family, SIZE_SMALL)
 
 
+#: Delai avant de retracer apres un redimensionnement. Assez court pour que
+#: le trace paraisse suivre la fenetre, assez long pour absorber une rafale.
+RESIZE_DELAY = 60
+
+
+def redraw_on_resize(chart: tk.Frame, canvas: tk.Canvas) -> None:
+    """Retrace quand le redimensionnement s'arrete, et non a chaque pixel.
+
+    Tk envoie un « Configure » par pixel parcouru. Le nuage de deux mille
+    points met 129 ms a se tracer — mesure — : le suivre pixel par pixel
+    transforme un redimensionnement de fenetre, ou le repli de la colonne de
+    gauche, en diaporama. Seul le dernier evenement d'une rafale est donc
+    honore.
+    """
+    pending: Dict[str, Any] = {"job": None}
+
+    def fire() -> None:
+        pending["job"] = None
+        if chart.winfo_exists():
+            chart.redraw()
+
+    def cancel(_event=None) -> None:
+        if pending["job"] is not None:
+            try:
+                chart.after_cancel(pending["job"])
+            except tk.TclError:
+                pass
+            pending["job"] = None
+
+    def schedule(_event=None) -> None:
+        cancel()
+        pending["job"] = chart.after(RESIZE_DELAY, fire)
+
+    canvas.bind("<Configure>", schedule)
+    # Un trace en attente survit au widget : Tk tente alors d'appeler une
+    # commande supprimee et ecrit « invalid command name » sur la sortie
+    # d'erreur. Fermer la fenetre avec un redimensionnement en cours suffisait
+    # a le declencher.
+    chart.bind("<Destroy>", cancel, add="+")
+
+
 def _shorten(widget: tk.Misc, text: str, limit: float) -> str:
     """Tronque un libelle a la largeur donnee, en mesurant plutot qu'en devinant."""
     import tkinter.font as tkfont
@@ -111,7 +152,7 @@ class ScatterChart(tk.Frame):
         self._bounds = None          # etendue complete des donnees
         self._drag = None
 
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
         self.canvas.bind("<Button-1>", self._on_click)
@@ -352,7 +393,7 @@ class HistogramChart(tk.Frame):
         self.currency = "EUR"
         self.warning = ""
         self._items: Dict[int, Dict[str, float]] = {}
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
@@ -455,7 +496,7 @@ class BoxPlotChart(tk.Frame):
         self.currency = "EUR"
         self.warning = ""
         self._items: Dict[int, Dict[str, Any]] = {}
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
@@ -650,7 +691,7 @@ class GapChart(tk.Frame):
         self.threshold = 0.0
         self.warning = ""
         self._items: Dict[int, Dict[str, Any]] = {}
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
@@ -792,7 +833,7 @@ class QuartileChart(tk.Frame):
         self.tooltip = Tooltip(self.canvas)
         self.rows: List[Dict[str, Any]] = []
         self._items: Dict[int, Dict[str, Any]] = {}
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
@@ -897,7 +938,7 @@ class PyramidChart(tk.Frame):
         self.rows: List[Dict[str, Any]] = []
         self.tooltip = Tooltip(self.canvas)
         self._items: Dict[int, str] = {}
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
@@ -987,7 +1028,7 @@ class BandChart(tk.Frame):
         self.canvas = tk.Canvas(self, background=theme.CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.rows: List[Dict[str, Any]] = []
-        self.canvas.bind("<Configure>", lambda _e: self.redraw())
+        redraw_on_resize(self, self.canvas)
 
     def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
         self.rows = [dict(row) for row in rows]

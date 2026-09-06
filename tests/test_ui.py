@@ -182,6 +182,17 @@ class TestWindow(unittest.TestCase):
         self.assertEqual(self.app.chartbar.visible_keys(),
                          ["distribution", "boites", "nuage"])
 
+    def _settle(self, app=None):
+        """Laisse le glissement aller a son terme, comme le ferait l'oeil."""
+        import time
+
+        app = app or self.app
+        limite = time.time() + 5
+        while app._fold_job is not None and time.time() < limite:
+            app.update()
+            time.sleep(0.005)
+        app.update()
+
     def test_the_filter_column_folds_and_unfolds(self):
         """Une fois les filtres poses, la colonne peut rendre sa place a la
         lecture — mais la poignee reste, sinon replier serait un piege."""
@@ -189,20 +200,105 @@ class TestWindow(unittest.TestCase):
         largeur = self.app.sidebar_card.winfo_width()
 
         self.app.toggle_sidebar()
-        self.app.update()
+        # Le chevron bascule des le clic, sans attendre la fin du mouvement.
+        self.assertEqual(self.app.sidebar_arrow.cget("text"), "›")
+        self.assertFalse(self.app.sidebar_open)
+        self._settle()
         self.assertFalse(self.app.sidebar_card.winfo_manager())
         self.assertTrue(self.app.sidebar_handle.winfo_manager())
-        self.assertEqual(self.app.sidebar_arrow.cget("text"), "›")
 
         self.app.toggle_sidebar()
-        self.app.update()
+        self._settle()
         self.assertTrue(self.app.sidebar_card.winfo_manager())
         self.assertEqual(self.app.sidebar_arrow.cget("text"), "‹")
         # Repliee puis depliee, la colonne retrouve sa place et sa largeur :
-        # un widget rendu apres coup se retrouvait sinon a la fin de la pile.
+        # un widget rendu apres coup se retrouvait sinon a la fin de la pile,
+        # et une animation mal fermee la laissait a une largeur approchee.
         self.assertEqual(self.app.sidebar_card.winfo_width(), largeur)
         self.assertLess(self.app.sidebar_card.winfo_rootx(),
                         self.app.sidebar_handle.winfo_rootx())
+
+    def test_the_column_really_slides(self):
+        """Sans largeurs intermediaires, il n'y a pas d'animation mais un
+        basculement — c'est ce qu'il y avait avant."""
+        largeurs = set()
+        self.app.toggle_sidebar()
+        import time
+
+        limite = time.time() + 5
+        while self.app._fold_job is not None and time.time() < limite:
+            self.app.update()
+            largeurs.add(self.app._fold_width)
+            time.sleep(0.005)
+        self.app.update()
+        intermediaires = {w for w in largeurs
+                          if 1 < w < self.app.SIDEBAR_WIDTH}
+        self.assertGreaterEqual(len(intermediaires), 4, largeurs)
+
+    def test_the_scatter_is_put_aside_during_the_slide_and_comes_back(self):
+        """Tk repeint les deux mille images du nuage a chaque changement de
+        geometrie ; le garder affiche pendant le glissement le figeait."""
+        self._load()
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("nuage")
+        self.app.update()
+        self.assertTrue(self.app.scatter.winfo_manager())
+
+        self.app.toggle_sidebar()
+        # Retire des le premier pas, et non a la fin.
+        self.assertTrue(self.app._scatter_hidden)
+        self.assertFalse(self.app.scatter.winfo_manager())
+        self._settle()
+        # Rendu a l'arrivee, et a sa place : entre les controles et la
+        # legende, jamais en fin de pile.
+        self.assertFalse(self.app._scatter_hidden)
+        self.assertTrue(self.app.scatter.winfo_manager())
+        self.assertLess(self.app.scatter.winfo_rooty(),
+                        self.app.legend_frame.winfo_rooty())
+
+    def test_a_chart_redraw_waits_for_the_resizing_to_stop(self):
+        """Un trace par pixel parcouru transformait un redimensionnement en
+        diaporama : seule la fin d'une rafale est honoree."""
+        from compensation_analytics.ui import charts
+
+        self._load()
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("distribution")
+        self.app.update()
+        appels = []
+        brut = charts.HistogramChart.redraw
+        charts.HistogramChart.redraw = lambda self: appels.append(1) or brut(self)
+        try:
+            for largeur in range(900, 940, 4):
+                self.app.histogram.canvas.event_generate(
+                    "<Configure>", width=largeur, height=400)
+            self.app.update()
+            # Dix evenements, aucun trace tant que la rafale n'est pas finie.
+            self.assertEqual(appels, [])
+            self._wait(lambda: appels, seconds=2)
+            self.assertEqual(len(appels), 1, appels)
+        finally:
+            charts.HistogramChart.redraw = brut
+
+    def _wait(self, condition, seconds=2):
+        import time
+
+        limite = time.time() + seconds
+        while not condition() and time.time() < limite:
+            self.app.update()
+            time.sleep(0.01)
+        self.app.update()
+
+    def test_toggling_mid_slide_does_not_strand_the_column(self):
+        """Rebasculer en plein mouvement doit rendre un etat propre, et non
+        une colonne figee a mi-largeur."""
+        self.app.toggle_sidebar()
+        self.app.update()
+        self.app.toggle_sidebar()      # on se ravise avant la fin
+        self._settle()
+        self.assertTrue(self.app.sidebar_open)
+        self.assertTrue(self.app.sidebar_card.winfo_manager())
+        self.assertEqual(self.app._fold_width, self.app.SIDEBAR_WIDTH)
 
     def test_the_filters_survive_folding(self):
         """Replier masque, ne remet a zero ni ne relance quoi que ce soit."""
@@ -210,9 +306,9 @@ class TestWindow(unittest.TestCase):
         champ = next(iter(self.app.filter_vars))
         self.app.filter_vars[champ].set("France")
         self.app.toggle_sidebar()
-        self.app.update()
+        self._settle()
         self.app.toggle_sidebar()
-        self.app.update()
+        self._settle()
         self.assertEqual(self.app.filter_vars[champ].get(), "France")
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
