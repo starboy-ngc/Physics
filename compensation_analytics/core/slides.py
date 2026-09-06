@@ -328,6 +328,67 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                         "effectif sous le seuil de confidentialité."))
         slides.append(slide)
 
+    # Pay Transparency : deux slides, l'ecart et son detail par poste
+    equity = analysis.get("pay_equity") or {}
+    if equity.get("available"):
+        label = (equity.get("category_label") or "poste").lower()
+        slides.append(Slide(
+            "Écarts femmes / hommes",
+            "Un écart positif signifie que les femmes sont moins rémunérées",
+            blocks=[
+                _kpi_block([
+                    ["Écart global", format_percent(
+                        equity.get("pay", {}).get("mean_gap"))],
+                    [f"À {label} comparable",
+                     format_percent(equity.get("comparable_gap"))],
+                    ["Effet de structure",
+                     format_percent(equity.get("structure_gap"))],
+                    ["Rattrapage", format_money(equity.get("at_stake_total"),
+                                                currency)],
+                ]),
+                Block("note",
+                      f"À {label} comparable : moyenne des écarts de chaque "
+                      f"{label}, pondérée par leur effectif, sur "
+                      f"{format_percent(equity.get('comparable_coverage'))} "
+                      "de l'effectif. Effet de structure : le reste — ce que "
+                      f"le {label} occupé explique de l'écart global. "
+                      "Rattrapage : coût de l'alignement du sexe le moins "
+                      "rémunéré sur l'autre."),
+                _table_block(["Quartile", "Part femmes", "Part hommes"],
+                             [[f'Q{item["quartile"]}',
+                               format_percent(item.get("female_share")),
+                               format_percent(item.get("male_share"))]
+                              for item in equity.get("quartiles", [])],
+                             title="Répartition par quartile"),
+            ]))
+        # Les categories ou l'enjeu est le plus fort : c'est la que se
+        # decide un plan de rattrapage.
+        retenues = sorted(equity.get("categories", []),
+                          key=lambda item: (not item.get("published"),
+                                            -(item.get("at_stake") or 0.0)))[:12]
+        if retenues:
+            rows = []
+            for item in retenues:
+                if not item.get("published"):
+                    rows.append([item["category"], str(item["female_count"]),
+                                 str(item["male_count"]), "masqué", "—"])
+                    continue
+                rows.append([item["category"], str(item["female_count"]),
+                             str(item["male_count"]),
+                             format_percent(item.get("mean_gap")),
+                             format_money(item.get("at_stake"), currency)])
+            slide = Slide(f"Écart par {label}",
+                          "Classé par enjeu de rattrapage")
+            slide.blocks = [_table_block(
+                [equity.get("category_label") or "Catégorie", "Femmes",
+                 "Hommes", "Écart moyen", "Rattrapage"], rows)]
+            above = equity.get("categories_above_threshold", 0)
+            total = len(equity.get("categories", []))
+            slide.blocks.append(Block(
+                "note", f"{above} {label}(s) sur {total} au-delà du seuil de "
+                        f"{format_percent(equity.get('threshold'))}."))
+            slides.append(slide)
+
     # Comparaison
     comparison = analysis.get("comparison")
     if comparison:

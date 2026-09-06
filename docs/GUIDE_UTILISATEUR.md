@@ -134,6 +134,43 @@ dépendent jamais : le rouge de « critique », l'orange d'« avertissement » e
 le couple femmes/hommes du nuage et des pyramides — les changer serait un
 contresens, pas une préférence.
 
+## 5 ter. Lire l'onglet Pay Transparency
+
+La directive 2023/970 demande l'écart de rémunération **par catégorie de
+travailleurs accomplissant un travail de même valeur**. Le poste est cette
+catégorie : l'onglet s'organise donc autour du couple **poste × sexe**.
+
+### Trois chiffres, pas un
+
+| | ce qu'il dit |
+|---|---|
+| **Écart global** | (moyenne hommes − moyenne femmes) / moyenne hommes. C'est le chiffre publiable. |
+| **À poste comparable** | La moyenne des écarts de chaque poste, pondérée par leur effectif. C'est l'écart « à travail égal ». |
+| **Effet de structure** | Le reste. Ce que le poste occupé explique de l'écart global. |
+
+Un écart global faible peut cacher un écart à poste comparable élevé : il
+suffit que les femmes soient plus nombreuses sur les postes les mieux
+rémunérés. Les deux appellent des réponses opposées — une revalorisation
+individuelle dans un cas, une politique de mobilité dans l'autre.
+
+L'écart à poste comparable n'est calculé que sur les postes où **les deux
+sexes** atteignent le seuil de publication ; le pourcentage d'effectif
+couvert est indiqué.
+
+### Le rattrapage
+
+Ce que coûterait l'alignement du sexe le moins rémunéré sur l'autre, poste
+par poste. C'est la question qui suit l'écart : un écart de 20 % sur quatre
+personnes ne pèse pas ce que pèse 6 % sur cent vingt. Le tableau est trié
+par cet enjeu par défaut — **Trier par** permet de passer à l'écart, à
+l'effectif ou au nom.
+
+### Changer d'axe
+
+**Comparer par** remplace le poste par le grade, l'établissement, le pays…
+La même question, lue autrement. Tout le bloc — les trois chiffres compris —
+se recalcule sur l'axe choisi.
+
 ## 6. Protection des données
 
 - Les résultats sont masqués sous 5 salariés, signalés sous 10, les graphiques

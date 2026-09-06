@@ -481,5 +481,77 @@ class TestTheComparisonReadsTheSameEverywhere(unittest.TestCase):
         self.assertEqual(rows[0][2], "2,72")
 
 
+class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
+    """L'analyse d'equite n'existait qu'a l'ecran.
+
+    La directive 2023/970 porte precisement sur la *publication* de ces
+    indicateurs : les calculer sans jamais pouvoir les transmettre revenait
+    a s'arreter juste avant ce qu'on demande a l'outil.
+    """
+
+    def _analysis(self):
+        from tests.support import build_population, make_config, make_row
+        from compensation_analytics.core.pay_equity import calculate_pay_equity
+        from compensation_analytics.core import metrics
+
+        # Le jeu de test n'a pas de colonne « Poste » : la categorie de la
+        # directive est portee par le grade, ce qui emprunte exactement le
+        # meme chemin de calcul.
+        config = make_config({"pay_equity_parameters.category_field": "grade"})
+        lignes = ([("G5", "F", 90000)] * 12 + [("G5", "H", 100000)] * 12
+                  + [("G7", "F", 45000)] * 12 + [("G7", "H", 50000)] * 12)
+        rows = [make_row(index, salary=salaire, gender=sexe, grade=grade)
+                for index, (grade, sexe, salaire) in enumerate(lignes)]
+        population = build_population(rows, config)
+        return {
+            "title": "essai",
+            "quality": {},
+            "population": metrics.calculate_population_metrics(population,
+                                                               config),
+            "salary": metrics.calculate_salary_metrics(population, config),
+            "distribution": metrics.calculate_distribution_metrics(population,
+                                                                   config),
+            "scatter": metrics.scatter_dataset(population, config),
+            "segments": [],
+            "pay_equity": calculate_pay_equity(population, config),
+            "manifest": {},
+        }
+
+    def test_the_report_carries_the_gaps_and_their_decomposition(self):
+        from compensation_analytics.core.reporting import render_report
+
+        html = render_report(self._analysis())
+        self.assertIn("Pay Transparency", html)
+        for attendu in ("Écart global", "comparable", "Effet de structure",
+                        "Rattrapage", "Répartition par quartile"):
+            self.assertIn(attendu, html, attendu)
+
+    def test_the_deck_carries_them_too(self):
+        from compensation_analytics.core.slides import build_deck
+
+        titres = [slide.title for slide in build_deck(self._analysis())]
+        self.assertIn("Écarts femmes / hommes", titres)
+        self.assertTrue(any(t.startswith("Écart par") for t in titres), titres)
+
+    def test_a_masked_category_is_never_detailed_in_a_document(self):
+        """Un document circule : une categorie sous le seuil n'y entre pas
+        plus que dans l'interface."""
+        from compensation_analytics.core.reporting import render_report
+
+        analysis = self._analysis()
+        analysis["pay_equity"]["categories"].append({
+            "category": "CategorieMinuscule", "published": False,
+            "female_count": 2, "male_count": 1, "mean_gap": None,
+            "median_gap": None, "female_median": 91000.0,
+            "male_median": 99000.0, "at_stake": None,
+            "above_threshold": False,
+        })
+        html = render_report(analysis)
+        self.assertIn("CategorieMinuscule", html)
+        self.assertIn("masqué", html)
+        self.assertNotIn("91 000", html)
+        self.assertNotIn("99 000", html)
+
+
 if __name__ == "__main__":
     unittest.main()

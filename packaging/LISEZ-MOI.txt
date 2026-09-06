@@ -61,17 +61,37 @@ LANCER L'INTERFACE
       clic sur la légende  -> masque une population
       « Colorer par »      -> change la dimension de couleur
 
-    L'onglet « Pay Transparency » analyse les écarts de rémunération
-    entre les sexes, selon le découpage exigé des employeurs par la
-    directive européenne 2023/970 :
+    L'onglet « Pay Transparency » s'organise autour du couple POSTE x
+    SEXE : c'est la catégorie que la directive européenne 2023/970
+    retient — « travail de même valeur ».
 
-      écart moyen et écart médian sur la rémunération de base
-      écart moyen et médian sur la part variable
-      part des femmes et des hommes percevant une part variable
-      part de chaque sexe dans chaque quartile de rémunération
-      écart par catégorie de travail de même valeur, les catégories
-        au-delà de 5 % étant signalées. La liste « Écart par »
-        change d'axe : Poste, Grade, Établissement, Pays...
+    Trois chiffres en tête, qui ne disent pas la même chose :
+
+      Écart global          (moyenne H - moyenne F) / moyenne H
+      À poste comparable    moyenne des écarts de chaque poste,
+                            pondérée par leur effectif
+      Effet de structure    le reste : ce que le poste occupé
+                            explique de l'écart global
+
+    Un écart global faible peut cacher un écart à poste comparable
+    élevé — il suffit que les femmes soient plus nombreuses sur les
+    postes les mieux rémunérés. Les deux appellent des réponses
+    opposées : une revalorisation dans un cas, une politique de
+    mobilité dans l'autre.
+
+    RATTRAPAGE : ce que coûterait l'alignement du sexe le moins
+    rémunéré sur l'autre, poste par poste. Le tableau est trié par cet
+    enjeu — un écart de 20 % sur quatre personnes ne pèse pas ce que
+    pèse 6 % sur cent vingt.
+
+    « Comparer par » change d'axe : Grade, Établissement, Pays...
+    « Trier par » change l'ordre : enjeu, écart, effectif, nom.
+
+    Sont également publiés, au titre de la directive : écart médian,
+    écart sur la part variable, part de chaque sexe la percevant, et
+    part de chaque sexe dans chaque quartile de rémunération.
+
+    Tout cela figure aussi dans la restitution HTML et dans les slides.
 
     Pour restreindre l'analyse — à un grade, une BU, un pays —,
     utilisez les filtres de la colonne de gauche : ils s'appliquent à

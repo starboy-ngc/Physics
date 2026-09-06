@@ -287,14 +287,84 @@ def calculate_category_gaps(population: Population, config: Configuration,
         # marque en faveur des hommes comme des femmes appelle un examen.
         pair["above_threshold"] = (gap is not None and threshold > 0
                                    and abs(gap) >= threshold)
+        pair["at_stake"] = _at_stake(pair)
         categories.append(pair)
     categories.sort(key=lambda item: (
         item["mean_gap"] is None, -abs(item["mean_gap"] or 0.0)))
-    return {
+    result = {
         "category_field": field_name,
         "category_label": label,
         "categories": categories,
         "category_warning": None,
         "categories_above_threshold": sum(
             1 for item in categories if item["above_threshold"]),
+        "at_stake_total": sum(item["at_stake"] or 0.0 for item in categories),
+    }
+    result.update(_decomposition(categories, population, config))
+    return result
+
+
+def _at_stake(pair: Dict[str, Any]) -> Optional[float]:
+    """Cout de rattrapage d'une categorie : ce que couterait l'alignement.
+
+    C'est la question que pose un service C&B apres avoir vu un ecart :
+    combien pour le refermer. Un ecart de vingt pour cent sur quatre
+    personnes ne pese pas ce que pese un ecart de six pour cent sur cent
+    vingt, et un classement par ampleur d'ecart seul met les premiers en
+    tete. On aligne le sexe le moins remunere sur la moyenne de l'autre.
+    """
+    if not pair.get("published"):
+        return None
+    female, male = pair.get("female_mean"), pair.get("male_mean")
+    if female is None or male is None:
+        return 0.0
+    if male > female:
+        return (male - female) * pair["female_count"]
+    return (female - male) * pair["male_count"]
+
+
+def _decomposition(categories: Sequence[Dict[str, Any]],
+                   population: Population,
+                   config: Configuration) -> Dict[str, Any]:
+    """Partage l'ecart global entre ce qui tient au poste et au reste.
+
+    Un ecart global melange deux faits que rien ne distingue une fois
+    additionnes : des femmes moins payees que des hommes *sur le meme
+    poste*, et des femmes plus nombreuses *sur les postes les moins
+    payes*. Les deux appellent des reponses opposees — une revalorisation
+    individuelle dans un cas, une politique de mobilite dans l'autre — et
+    c'est pourquoi la directive fait publier le detail par categorie.
+
+    L'ecart a poste comparable est la moyenne des ecarts de categorie,
+    ponderee par l'effectif comparable de chacune. L'effet de structure est
+    ce qui reste : un residu, pas une cause demontree.
+
+    Il n'est calcule que sur les categories ou les deux sexes atteignent le
+    seuil de publication ; la couverture dit sur quelle part de l'effectif
+    il porte, faute de quoi un chiffre calcule sur un dixieme de la
+    population passerait pour l'image de l'ensemble.
+    """
+    salary_field = analysis_field(config)
+    groups = _split(population, config)
+    overall = _gap(stats.mean(_amounts(groups[MALE], salary_field)),
+                   stats.mean(_amounts(groups[FEMALE], salary_field)))
+    retained = [item for item in categories
+                if item.get("published") and item.get("mean_gap") is not None]
+    comparable_headcount = sum(item["female_count"] + item["male_count"]
+                               for item in retained)
+    total = len(groups[FEMALE]) + len(groups[MALE])
+    if not comparable_headcount or overall is None:
+        return {"overall_gap": overall, "comparable_gap": None,
+                "structure_gap": None, "comparable_headcount": 0,
+                "comparable_coverage": None}
+    comparable = sum(item["mean_gap"] * (item["female_count"]
+                                         + item["male_count"])
+                     for item in retained) / comparable_headcount
+    return {
+        "overall_gap": overall,
+        "comparable_gap": comparable,
+        "structure_gap": overall - comparable,
+        "comparable_headcount": comparable_headcount,
+        "comparable_coverage": (comparable_headcount / total * 100.0
+                                if total else None),
     }

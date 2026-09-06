@@ -972,9 +972,13 @@ class GapChart(tk.Frame):
         legend = "Écart positif : les femmes sont moins rémunérées"
         if self.threshold > 0:
             legend += f" · seuil {self.threshold:.0f} %".replace(".", ",")
-        hidden = len(drawable) - len(shown)
-        if hidden:
-            legend += f" · {hidden} catégorie(s) non affichée(s)"
+        if len(shown) < len(drawable):
+            # « n non affichees » se lisait comme une limite subie. Le
+            # graphique montre la tete du classement en cours et le tableau
+            # porte la liste entiere, juste dessous : c'est ce qu'il faut
+            # dire.
+            legend += (f" · {len(shown)} premières sur {len(drawable)}, "
+                       "dans l'ordre du tableau")
         self.canvas.create_text(pad_l - label_width, base + 18, anchor="w",
                                 fill=theme.MUTED, font=axis_font(), text=legend)
 

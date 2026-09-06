@@ -66,6 +66,12 @@ TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
 #: ecart — la ou ceux-ci repondaient tous les deux a « a quoi cela
 #: ressemble-t-il ». Les reunir laisse la place d'en ajouter d'autres sans
 #: allonger la barre principale : une entree de plus ici suffit.
+#: Tris du tableau des postes. L'enjeu vient en premier : c'est la question
+#: qui suit l'ecart — combien pour le refermer, et ou en priorite. Trier par
+#: ampleur d'ecart seul met en tete des postes de quatre personnes.
+CATEGORY_ORDERS = (("stake", "Enjeu"), ("gap", "Écart"),
+                   ("headcount", "Effectif"), ("name", "Nom"))
+
 CHARTS = (("nuage", "Rémunération/Ancienneté"),
           ("distribution", "Distribution"),
           ("boites", "Dispersion"))
@@ -707,22 +713,75 @@ class Application(tk.Tk):
         # La page defile : les indicateurs de la directive, la repartition
         # par quartile, le graphique des ecarts et son tableau ne tiennent
         # plus en un ecran — le tableau se retrouvait ecrase a un pixel.
+        # La page est ordonnee par ce qu'elle sert a decider, et non par
+        # l'ordre des indicateurs de la directive : d'abord de quoi est fait
+        # l'ecart, puis ou il se loge poste par poste, et enfin les chiffres
+        # a publier. La page defile : les trois blocs ne tiennent pas en un
+        # ecran.
         equite = self._scrolling_page(self.tabs["equite"])
+
+        # 1. De quoi l'ecart est fait -------------------------------------
         self.equity_frame = tk.Frame(equite, background=theme.CANVAS)
         self.equity_frame.pack(fill="x", pady=(18, 0))
         self.equity_note = tk.Label(equite, text="", background=theme.CANVAS,
                                     foreground=theme.MUTED, font=self.fonts.small,
                                     justify="left", anchor="w",
                                     wraplength=880)
-        self.equity_note.pack(anchor="w", padx=18, pady=(0, 14))
-        # Titre et tableau reunis dans un bloc : les masquer separement
-        # obligeait a les remonter l'un devant l'autre, et remonter un widget
-        # devant un widget lui-meme depaquete leve une erreur.
+        self.equity_note.pack(anchor="w", padx=18, pady=(0, 16))
+
+        # 2. Poste par poste, le coeur de la page -------------------------
+        self.category_head = tk.Frame(equite, background=theme.CANVAS)
+        self.category_head.pack(fill="x", padx=18, pady=(4, 2))
+        self.category_heading = tk.Label(
+            self.category_head, text="Écart par poste",
+            background=theme.CANVAS, foreground=theme.INK,
+            font=self.fonts.section)
+        self.category_heading.pack(side="left")
+        # Le « travail de meme valeur » se lit d'abord par le poste — c'est
+        # l'unite de la directive — mais un grade ou un etablissement
+        # eclairent la meme question : l'axe doit pouvoir changer.
+        tk.Label(self.category_head, text="COMPARER PAR", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(
+                     side="left", padx=(18, 0))
+        self.category_choice = ttk.Combobox(self.category_head, state="readonly",
+                                            width=20, font=self.fonts.small)
+        self.category_choice.pack(side="left", padx=10)
+        self.category_choice.bind("<<ComboboxSelected>>",
+                                  lambda _e: self._show_categories())
+        tk.Label(self.category_head, text="TRIER PAR", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(
+                     side="left", padx=(12, 0))
+        self.category_order = ttk.Combobox(self.category_head, state="readonly",
+                                           width=16, font=self.fonts.small,
+                                           values=[label for _key, label
+                                                   in CATEGORY_ORDERS])
+        self.category_order.current(0)
+        self.category_order.pack(side="left", padx=10)
+        self.category_order.bind("<<ComboboxSelected>>",
+                                 lambda _e: self._show_categories())
+        self.category_title = tk.Label(equite, text="",
+                                       background=theme.CANVAS, foreground=theme.FAINT,
+                                       font=self.fonts.label,
+                                       wraplength=880, justify="left")
+        self.category_title.pack(anchor="w", padx=18, pady=(0, 6))
+        # Le graphique porte la lecture, le tableau garde les chiffres
+        # exacts : sur un indicateur reglementaire, on ne remplace pas les
+        # seconds par la premiere.
+        self.gap_chart = GapChart(equite)
+        self.gap_chart.configure(height=196)
+        self.gap_chart.pack_propagate(False)
+        self.gap_chart.pack(fill="x", padx=18, pady=(0, 4))
+        # Le rattrapage repond a la question qui vient apres l'ecart :
+        # combien pour le refermer, et ou en priorite.
+        self.category_tree = self._tree(
+            equite,
+            ("Poste", "Femmes", "Hommes", "Médiane femmes", "Médiane hommes",
+             "Écart moyen", "Rattrapage"),
+            (240, 80, 80, 130, 130, 110, 130))
+
+        # 3. Les indicateurs a publier ------------------------------------
         self.quartile_block = tk.Frame(equite, background=theme.CANVAS)
-        self.quartile_block.pack(fill="x")
-        # Meme rang que « Dispersion » ou « Échelle de rémunération » : meme
-        # traitement. Les petites majuscules restent aux libelles de champ,
-        # « Écart par » ou « Dimension », qui ne titrent rien.
+        self.quartile_block.pack(fill="x", pady=(16, 0))
         tk.Label(self.quartile_block,
                  text="Répartition par quartile de rémunération",
                  background=theme.CANVAS, foreground=theme.INK,
@@ -730,39 +789,13 @@ class Application(tk.Tk):
                                                pady=(2, 8))
         # Quatre barres empilees a la place des quatre lignes du tableau :
         # meme information, moins de hauteur, et le plafond de verre se voit
-        # au lieu de se calculer. Le detail chiffre reste au survol et dans
-        # l'export.
+        # au lieu de se calculer.
         self.quartile_chart = QuartileChart(self.quartile_block)
         self.quartile_chart.pack(fill="x", padx=18, pady=(0, 10))
-        # Le « travail de meme valeur » se lit selon le poste, mais aussi
-        # selon le grade ou l'etablissement : l'axe doit pouvoir changer.
-        self.category_head = tk.Frame(equite, background=theme.CANVAS)
-        category_head = self.category_head
-        category_head.pack(fill="x", padx=18, pady=(6, 6))
-        tk.Label(category_head, text="ÉCART PAR", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label).pack(side="left")
-        self.category_choice = ttk.Combobox(category_head, state="readonly",
-                                            width=22, font=self.fonts.small)
-        self.category_choice.pack(side="left", padx=10)
-        self.category_choice.bind("<<ComboboxSelected>>",
-                                  lambda _e: self._show_categories())
-        self.category_title = tk.Label(category_head, text="",
-                                       background=theme.CANVAS, foreground=theme.FAINT,
-                                       font=self.fonts.label,
-                                       wraplength=620, justify="left")
-        self.category_title.pack(side="left", padx=(8, 0))
-        # Le graphique porte la lecture, le tableau garde les chiffres
-        # exacts : sur un indicateur reglementaire, on ne remplace pas les
-        # seconds par la premiere. Hauteur fixe, pour que le tableau reste
-        # visible sous lui sans faire defiler la page.
-        self.gap_chart = GapChart(equite)
-        self.gap_chart.configure(height=196)
-        self.gap_chart.pack_propagate(False)
-        self.gap_chart.pack(fill="x", padx=18, pady=(0, 4))
-        self.category_tree = self._tree(
-            equite,
-            ("Catégorie", "Femmes", "Hommes", "Écart moyen", "Écart médian"),
-            (280, 100, 100, 140, 140))
+        self.compliance_note = tk.Label(
+            equite, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=880)
+        self.compliance_note.pack(anchor="w", padx=18, pady=(0, 16))
 
     @staticmethod
     def _scroll_region(canvas: tk.Canvas) -> None:
@@ -1426,6 +1459,7 @@ class Application(tk.Tk):
                      wraplength=760, justify="left").pack(anchor="w", padx=18,
                                                           pady=(8, 0))
             self.equity_note.configure(text="")
+            self.compliance_note.configure(text="")
             self.quartile_block.pack_forget()
             self.category_title.configure(text="")
             self.quartile_chart.set_rows([])
@@ -1435,46 +1469,97 @@ class Application(tk.Tk):
         pay = equity["pay"]
         variable = equity["variable"]
         coverage = equity["variable_coverage"]
+        # Le bandeau ne repete plus le meme ecart sous trois formes : il
+        # montre de quoi l'ecart global est fait. Un ecart global melange
+        # deux faits opposes — des femmes moins payees sur le meme poste, et
+        # des femmes plus nombreuses sur les postes les moins payes — qui
+        # appellent l'un une revalorisation, l'autre une politique de
+        # mobilite. Additionnes, ils sont indecidables.
+        self._decomposed = self._category_block()
+        block = self._decomposed
         self._kpis(self.equity_frame, [
-            ("Écart moyen", _signed_percent(pay.get("mean_gap")), "mean_gap"),
-            ("Écart médian", _signed_percent(pay.get("median_gap")),
-             "median_gap"),
-            ("Écart moyen sur le variable",
-             _signed_percent(variable.get("mean_gap")), "variable_mean_gap"),
-            ("Effectif femmes", str(equity["female_count"]), "female_count"),
-            ("Effectif hommes", str(equity["male_count"]), "male_count"),
+            ("Écart global", _signed_percent(pay.get("mean_gap")), "mean_gap"),
+            ("À poste comparable",
+             _signed_percent((block or {}).get("comparable_gap")),
+             "comparable_gap"),
+            ("Effet de structure",
+             _signed_percent((block or {}).get("structure_gap")),
+             "structure_gap"),
+            ("Rattrapage",
+             format_money((block or {}).get("at_stake_total"),
+                          self.result.payload["salary"].get("currency", "EUR")),
+             "at_stake_total"),
+            ("Effectif F / H",
+             f'{equity["female_count"]} / {equity["male_count"]}',
+             "female_count"),
         ])
         self.equity_frame.pack_configure(padx=18)
-        # La convention de signe doit etre lisible sans quitter l'ecran :
-        # un « +3,1 % » ne veut rien dire sans elle.
-        unknown = equity.get("unknown_count", 0)
-        note = ("Un écart positif signifie que les femmes sont moins "
-                "rémunérées. Formule de la directive 2023/970 : "
-                "(moyenne des hommes − moyenne des femmes) / moyenne des "
-                "hommes. Part percevant une rémunération variable : "
-                f"{format_percent(coverage.get('female_share'))} des femmes, "
-                f"{format_percent(coverage.get('male_share'))} des hommes.")
-        if unknown:
-            note += (f" {unknown} salarié(s) dont le sexe n'est pas renseigné "
-                     "sont exclus des écarts.")
-        self.equity_note.configure(text=note)
+        self.equity_note.configure(text=self._decomposition_note(equity, block))
 
         if not self.quartile_block.winfo_manager():
-            # « category_head » n'est jamais depaquete : c'est un repere sur.
-            self.quartile_block.pack(fill="x", before=self.category_head)
+            # « compliance_note » n'est jamais depaquetee : c'est un repere
+            # sur pour rendre le bloc a sa place apres l'avoir masque.
+            self.quartile_block.pack(fill="x", pady=(16, 0),
+                                     before=self.compliance_note)
         self.quartile_chart.set_rows(equity["quartiles"])
+        unknown = equity.get("unknown_count", 0)
+        publication = (
+            "Indicateurs publiables au titre de la directive 2023/970 : "
+            f"écart médian {_signed_percent(pay.get('median_gap'))}, "
+            "écart moyen sur la rémunération variable "
+            f"{_signed_percent(variable.get('mean_gap'))}, part percevant "
+            f"une rémunération variable {format_percent(coverage.get('female_share'))} "
+            f"des femmes et {format_percent(coverage.get('male_share'))} des "
+            "hommes.")
+        if unknown:
+            publication += (f" {unknown} salarié(s) dont le sexe n'est pas "
+                            "renseigné sont exclus de tous les écarts.")
+        self.compliance_note.configure(text=publication)
         self._show_categories()
 
-    def _show_categories(self) -> None:
-        """Ecarts par categorie, sur l'axe choisi."""
+    def _decomposition_note(self, equity: Dict[str, Any],
+                            block: Optional[Dict[str, Any]]) -> str:
+        """Ce qu'il faut savoir pour lire les trois chiffres du bandeau."""
+        note = ("Un écart positif signifie que les femmes sont moins "
+                "rémunérées. Écart global : (moyenne des hommes − moyenne "
+                "des femmes) / moyenne des hommes, formule de la directive "
+                "2023/970.")
+        if not block or block.get("comparable_gap") is None:
+            return note + (" L'écart à poste comparable n'a pas pu être "
+                           "calculé : aucun poste ne réunit assez de femmes "
+                           "et d'hommes.")
+        label = (block.get("category_label") or "poste").lower()
+        return note + (
+            f" À {label} comparable : moyenne des écarts de chaque {label}, "
+            "pondérée par leur effectif, sur les "
+            f"{format_percent(block.get('comparable_coverage'))} de "
+            "l'effectif où les deux sexes atteignent le seuil de "
+            f"publication. Effet de structure : le reste — ce que le {label} "
+            "occupé explique de l'écart global, et non la rémunération à "
+            f"{label} égal. Rattrapage : coût de l'alignement du sexe le "
+            "moins rémunéré sur l'autre, poste par poste.")
+
+    def _category_block(self) -> Optional[Dict[str, Any]]:
+        """Ecarts sur l'axe choisi, recalcules pour la population filtree."""
         index = self.category_choice.current()
         if self.result is None or index < 0:
+            return None
+        return calculate_category_gaps(self.result.filtered,
+                                       self.result.config,
+                                       self._category_fields[index])
+
+    def _show_categories(self) -> None:
+        """Le coeur de la page : un poste, deux sexes, un ecart, un cout."""
+        block = self._category_block()
+        if block is None:
             return
+        self._decomposed = block
+        label = block.get("category_label") or "poste"
+        self.category_heading.configure(text=f"Écart par {label.lower()}")
+        self.category_tree.heading("#1", text=label)
         threshold = self.result.payload["pay_equity"]["threshold"]
-        block = calculate_category_gaps(self.result.filtered,
-                                        self.result.config,
-                                        self._category_fields[index])
-        categories = block["categories"]
+        currency = self.result.payload["salary"].get("currency", "EUR")
+
         warning = block.get("category_warning")
         if warning:
             self.category_title.configure(text=warning)
@@ -1485,30 +1570,62 @@ class Application(tk.Tk):
                 self.gap_chart.pack_forget()
             self.gap_chart.set_rows([])
             return
+
+        categories = block["categories"]
         above = block.get("categories_above_threshold", 0)
-        self.category_title.configure(
-            text=f"· {above} CATÉGORIE(S) SUR {len(categories)} AU-DELÀ DE "
-                 f"{format_percent(threshold)}")
+        masked = sum(1 for item in categories if not item.get("published"))
+        titre = (f"· {above} {label.upper()}(S) SUR {len(categories)} "
+                 f"AU-DELÀ DE {format_percent(threshold)}")
+        if masked:
+            # Un poste masque n'est pas un poste sans ecart : le dire evite
+            # de lire le tableau comme un solde de tout compte.
+            titre += (f" · {masked} MASQUÉ(S), EFFECTIF INSUFFISANT POUR "
+                      "PUBLIER")
+        self.category_title.configure(text=titre)
+
+        ordered = self._ordered_categories(categories)
         rows = []
-        for item in categories:
+        for item in ordered:
             if not item["published"]:
                 rows.append((item["category"], item["female_count"],
-                             item["male_count"], "masqué", "masqué"))
+                             item["male_count"], "masqué", "masqué",
+                             "masqué", "—"))
                 continue
             rows.append((item["category"], item["female_count"],
                          item["male_count"],
+                         format_money(item.get("female_median"), currency),
+                         format_money(item.get("male_median"), currency),
                          _signed_percent(item.get("mean_gap")),
-                         _signed_percent(item.get("median_gap"))))
+                         format_money(item.get("at_stake"), currency)))
         self._fill(self.category_tree, rows,
-                   flagged=lambda position: categories[position]["above_threshold"])
-        # Le graphique lit exactement la meme liste, deja triee par ampleur
-        # d'ecart : l'ordre des barres est celui des lignes du tableau.
+                   flagged=lambda position: ordered[position]["above_threshold"])
+        # Le graphique lit la meme liste, dans le meme ordre : une barre et
+        # une ligne qui ne se suivent pas se lisent comme deux resultats.
         if not self.gap_chart.winfo_manager():
             # « category_tree.master » n'est jamais depaquete : c'est un
             # repere sur pour rendre le graphique a sa place.
             self.gap_chart.pack(fill="x", padx=18, pady=(0, 4),
                                 before=self.category_tree.master)
-        self.gap_chart.set_rows(categories, threshold)
+        self.gap_chart.set_rows(ordered, threshold)
+
+    def _ordered_categories(self, categories):
+        """Classe les postes selon le tri demande.
+
+        Les postes masques restent en fin de liste quel que soit le tri :
+        leur place dans un classement par ecart serait arbitraire, puisque
+        l'ecart n'est precisement pas connu.
+        """
+        key = CATEGORY_ORDERS[max(self.category_order.current(), 0)][0]
+        rangs = {
+            "stake": lambda item: -(item.get("at_stake") or 0.0),
+            "gap": lambda item: -abs(item.get("mean_gap") or 0.0),
+            "headcount": lambda item: -(item["female_count"]
+                                        + item["male_count"]),
+            "name": lambda item: str(item["category"]).lower(),
+        }
+        return sorted(categories,
+                      key=lambda item: (not item.get("published"),
+                                        rangs[key](item)))
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
         fields = dimension_fields(self.configuration)

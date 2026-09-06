@@ -492,10 +492,92 @@ def _comparison_section(comparison: Optional[Dict[str, Any]], currency: str) -> 
         return ""
     rows = [tuple(row) for row in comparison_rows(comparison, currency)]
     return (
-        "<h2>7. Comparaison de populations</h2>"
+        "<h2>8. Comparaison de populations</h2>"
         + _table([
             "Indicateur", comparison["left_label"], comparison["right_label"], "Écart"
         ], rows)
+    )
+
+
+def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
+    """Ecarts femmes / hommes, poste par poste.
+
+    La section manquait : l'analyse d'equite n'existait qu'a l'ecran, alors
+    que la directive 2023/970 porte precisement sur la *publication* de ces
+    indicateurs. Ce qui se voit doit pouvoir se transmettre.
+    """
+    if not equity or not equity.get("available"):
+        return ""
+    pay = equity.get("pay", {})
+    variable = equity.get("variable", {})
+    coverage = equity.get("variable_coverage", {})
+    label = (equity.get("category_label") or "poste").lower()
+
+    kpis = "".join([
+        _kpi("Écart global", format_percent(pay.get("mean_gap"))),
+        _kpi(f"À {label} comparable",
+             format_percent(equity.get("comparable_gap"))),
+        _kpi("Effet de structure",
+             format_percent(equity.get("structure_gap"))),
+        _kpi("Rattrapage", format_money(equity.get("at_stake_total"),
+                                        currency)),
+        _kpi("Effectif femmes", str(equity.get("female_count", 0))),
+        _kpi("Effectif hommes", str(equity.get("male_count", 0))),
+    ])
+
+    rows = []
+    for item in sorted(equity.get("categories", []),
+                       key=lambda entry: (not entry.get("published"),
+                                          -(entry.get("at_stake") or 0.0))):
+        if not item.get("published"):
+            rows.append((item["category"], str(item["female_count"]),
+                         str(item["male_count"]), "masqué", "masqué",
+                         "masqué", "—"))
+            continue
+        rows.append((item["category"], str(item["female_count"]),
+                     str(item["male_count"]),
+                     format_money(item.get("female_median"), currency),
+                     format_money(item.get("male_median"), currency),
+                     format_percent(item.get("mean_gap")),
+                     format_money(item.get("at_stake"), currency)))
+    table = _table([equity.get("category_label") or "Catégorie", "Femmes",
+                    "Hommes", "Médiane femmes", "Médiane hommes",
+                    "Écart moyen", "Rattrapage"], rows) if rows else ""
+
+    quartiles = [(f'Q{item["quartile"]}', str(item["headcount"]),
+                  format_percent(item.get("female_share")),
+                  format_percent(item.get("male_share")))
+                 for item in equity.get("quartiles", [])]
+    quartile_table = _table(["Quartile", "Effectif", "Part femmes",
+                             "Part hommes"], quartiles) if quartiles else ""
+
+    note = (
+        "Un écart positif signifie que les femmes sont moins rémunérées. "
+        "Écart global : (moyenne des hommes − moyenne des femmes) / moyenne "
+        f"des hommes, formule de la directive 2023/970. À {label} "
+        f"comparable : moyenne des écarts de chaque {label}, pondérée par "
+        "leur effectif, sur "
+        f"{format_percent(equity.get('comparable_coverage'))} de l'effectif "
+        "où les deux sexes atteignent le seuil de publication. Effet de "
+        f"structure : le reste — ce que le {label} occupé explique de "
+        "l'écart global. Rattrapage : coût de l'alignement du sexe le moins "
+        f"rémunéré sur l'autre, {label} par {label}. Écart médian "
+        f"{format_percent(pay.get('median_gap'))} ; écart moyen sur la "
+        f"rémunération variable {format_percent(variable.get('mean_gap'))} ; "
+        "part percevant une rémunération variable "
+        f"{format_percent(coverage.get('female_share'))} des femmes et "
+        f"{format_percent(coverage.get('male_share'))} des hommes.")
+    unknown = equity.get("unknown_count", 0)
+    if unknown:
+        note += (f" {unknown} salarié(s) dont le sexe n'est pas renseigné "
+                 "sont exclus de tous les écarts.")
+
+    return (
+        "<h2>7. Pay Transparency — écarts femmes / hommes</h2>"
+        f'<div class="kpis">{kpis}</div>'
+        f"{_note(note, 'info')}"
+        f"<h3>Écart par {label}</h3>{table}"
+        f"<h3>Répartition par quartile de rémunération</h3>{quartile_table}"
     )
 
 
@@ -515,6 +597,7 @@ def render_report(analysis: Dict[str, Any]) -> str:
         _distribution_section(analysis.get("distribution", {}), currency),
         _scatter_section(analysis.get("scatter", {}), currency),
         _segments_section(analysis.get("segments", []), currency),
+        _pay_equity_section(analysis.get("pay_equity", {}), currency),
         _comparison_section(analysis.get("comparison"), currency),
     ]
     return f"""<!DOCTYPE html>

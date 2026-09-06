@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
 from compensation_analytics.core.pay_equity import (FEMALE, MALE, classify,
+                                                    calculate_category_gaps,
                                                     calculate_pay_equity)
 
 
@@ -311,6 +312,110 @@ class TestTheSexComparisonIsMemoisedWithoutChangingIt(unittest.TestCase):
         for declaree in ([["F"]], [None], [12], [{"a": 1}], []):
             self.assertEqual(classify("F", declaree, ["H"]), "")
         self.assertEqual(classify("F", ["F", ["imbrique"]], ["H"]), FEMALE)
+
+
+class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
+    """Un ecart global melange deux faits opposes.
+
+    Des femmes moins payees *sur le meme poste* appellent une
+    revalorisation ; des femmes plus nombreuses *sur les postes les moins
+    payes* appellent une politique de mobilite. Additionnes, les deux sont
+    indecidables — et c'est pourquoi la directive fait publier le detail par
+    categorie.
+    """
+
+    def _population(self, lignes):
+        """`lignes` : (categorie, sexe, salaire) repete autant que voulu.
+
+        La categorie est portee par le grade : le jeu de test n'a pas de
+        colonne « Poste », et le calcul est le meme quel que soit l'axe —
+        c'est precisement ce qui permet de comparer par poste, par grade ou
+        par etablissement.
+        """
+        config = make_config()
+        rows = [make_row(index, salary=salaire, gender=sexe, grade=categorie)
+                for index, (categorie, sexe, salaire) in enumerate(lignes)]
+        return build_population(rows, config), config
+
+    def test_a_gap_hidden_by_the_structure_is_brought_out(self):
+        """Le cas qui justifie tout : a poste egal les femmes sont moins
+        payees, mais elles occupent les postes les mieux payes, et l'ecart
+        global s'en trouve minore."""
+        lignes = ([("Cadre", "F", 90000)] * 20 + [("Cadre", "H", 100000)] * 5
+                  + [("Employe", "F", 45000)] * 5
+                  + [("Employe", "H", 50000)] * 20)
+        population, config = self._population(lignes)
+        block = calculate_category_gaps(population, config, "grade")
+
+        # A poste egal, les femmes touchent 10 % de moins dans les deux cas.
+        self.assertAlmostEqual(block["comparable_gap"], 10.0, places=6)
+        # L'ecart global, lui, est bien plus faible : les femmes sont
+        # surrepresentees sur le poste le mieux paye.
+        self.assertLess(block["overall_gap"], block["comparable_gap"])
+        # L'effet de structure porte la difference, et il est negatif.
+        self.assertAlmostEqual(
+            block["structure_gap"],
+            block["overall_gap"] - block["comparable_gap"], places=6)
+        self.assertLess(block["structure_gap"], 0)
+
+    def test_without_structure_effect_the_two_gaps_agree(self):
+        """Repartition identique sur les deux postes : il ne reste que
+        l'ecart a poste comparable."""
+        lignes = ([("Cadre", "F", 90000)] * 10 + [("Cadre", "H", 100000)] * 10
+                  + [("Employe", "F", 45000)] * 10
+                  + [("Employe", "H", 50000)] * 10)
+        population, config = self._population(lignes)
+        block = calculate_category_gaps(population, config, "grade")
+        self.assertAlmostEqual(block["comparable_gap"], 10.0, places=6)
+        self.assertAlmostEqual(block["structure_gap"], 0.0, places=6)
+
+    def test_the_coverage_says_on_what_the_comparable_gap_is_computed(self):
+        """Un ecart calcule sur un dixieme de la population passerait pour
+        l'image de l'ensemble : la couverture doit le dire."""
+        lignes = ([("Cadre", "F", 90000)] * 10 + [("Cadre", "H", 100000)] * 10
+                  # Poste trop petit pour publier : hors du calcul.
+                  + [("Rare", "F", 40000)] * 2 + [("Rare", "H", 80000)] * 2)
+        population, config = self._population(lignes)
+        block = calculate_category_gaps(population, config, "grade")
+        self.assertEqual(block["comparable_headcount"], 20)
+        self.assertAlmostEqual(block["comparable_coverage"],
+                               20 / 24 * 100.0, places=6)
+        self.assertAlmostEqual(block["comparable_gap"], 10.0, places=6)
+
+    def test_the_catch_up_cost_weighs_the_gap_by_the_headcount(self):
+        """Vingt pour cent sur quatre personnes ne pese pas ce que pese six
+        pour cent sur cent vingt : c'est la question qui suit l'ecart."""
+        lignes = ([("Petit", "F", 80000)] * 5 + [("Petit", "H", 100000)] * 5
+                  + [("Grand", "F", 94000)] * 100
+                  + [("Grand", "H", 100000)] * 100)
+        population, config = self._population(lignes)
+        block = calculate_category_gaps(population, config, "grade")
+        cout = {item["category"]: item["at_stake"]
+                for item in block["categories"]}
+        self.assertAlmostEqual(cout["Petit"], (100000 - 80000) * 5)
+        self.assertAlmostEqual(cout["Grand"], (100000 - 94000) * 100)
+        self.assertGreater(cout["Grand"], cout["Petit"])
+        self.assertAlmostEqual(block["at_stake_total"],
+                               cout["Petit"] + cout["Grand"])
+
+    def test_a_masked_category_costs_nothing_it_is_simply_unknown(self):
+        """Un poste masque n'a pas un rattrapage nul : il est inconnu."""
+        lignes = [("Rare", "F", 40000)] * 2 + [("Rare", "H", 80000)] * 2
+        population, config = self._population(lignes)
+        block = calculate_category_gaps(population, config, "grade")
+        self.assertIsNone(block["categories"][0]["at_stake"])
+        self.assertIsNone(block["comparable_gap"])
+        self.assertIsNone(block["structure_gap"])
+
+    def test_the_men_are_realigned_when_they_are_the_ones_behind(self):
+        """L'outil ne presume pas du sens de l'ecart."""
+        lignes = ([("Poste", "F", 100000)] * 10
+                  + [("Poste", "H", 90000)] * 10)
+        population, config = self._population(lignes)
+        block = calculate_category_gaps(population, config, "grade")
+        item = block["categories"][0]
+        self.assertLess(item["mean_gap"], 0)
+        self.assertAlmostEqual(item["at_stake"], (100000 - 90000) * 10)
 
 
 if __name__ == "__main__":
