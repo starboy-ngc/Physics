@@ -107,6 +107,29 @@ Puis éditez les fichiers JSON : tranches d'âge et d'ancienneté, percentiles,
 seuils de confidentialité, devise, seuils de plausibilité, graphiques, export.
 Aucune modification du logiciel n'est nécessaire.
 
+## 5 bis. Composer sa propre page (« Ma page »)
+
+L'onglet **Ma page** part vide et propose, a gauche, tous les indicateurs,
+tableaux et graphiques que l'analyse produit. Un clic les ajoute a la page.
+
+- **Deplacer** : attraper un bloc par son titre et le faire glisser. Un trait
+  vertical montre ou il atterrira.
+- **Redimensionner** : tirer le coin en bas a droite. La largeur se pose sur
+  un palier — quart, tiers, moitie, pleine largeur — pour que les blocs
+  restent alignes ; la hauteur est libre entre deux bornes.
+- **Retirer** : la croix en haut a droite du bloc. « Tout retirer » vide la
+  page.
+- **Enregistrer la page** : la composition est retrouvee a la prochaine
+  ouverture.
+
+Ce qui est enregistre se reduit a la liste des blocs, a leur ordre et a leur
+taille : aucun chiffre, aucune donnee de votre fichier n'est ecrit dans la
+configuration. La largeur y est notee en colonnes et non en pixels — une page
+composee sur un grand ecran s'ouvre droite sur un petit.
+
+Les regles de confidentialite s'appliquent ici comme partout : un bloc dont
+l'effectif est trop faible n'affiche rien.
+
 ## 6. Protection des données
 
 - Les résultats sont masqués sous 5 salariés, signalés sous 10, les graphiques

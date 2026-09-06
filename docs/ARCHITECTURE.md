@@ -364,8 +364,9 @@ L'option 2 est recommandée : rien à compiler, contenu auditable par l'IT.
 `compensation_analytics/ui/` — tkinter, livre avec Python : aucune
 dependance, aucun telechargement, aucun droit administrateur.
 
-    app.py      fenetre unique, parcours en quatre etapes
-    charts.py   nuage et histogramme dessines sur un canevas
+    app.py        fenetre unique, parcours en quatre etapes
+    charts.py     nuage et histogramme dessines sur un canevas
+    dashboard.py  catalogue et grille de la page composee par l'utilisateur
 
 **Regle de dependance** : l'interface importe le moteur, jamais l'inverse.
 Un test le verifie par analyse syntaxique sur `core/` et `io/`. C'est ce qui
@@ -393,6 +394,41 @@ pouvoir inventer une valeur absente.
 L'analyse tourne dans un fil separe, avec une barre de progression : sur
 100 000 salaries elle prend une quinzaine de secondes, et une fenetre figee
 passerait pour un plantage.
+
+### « Ma page » — composition par l'utilisateur
+
+Les autres onglets repondent chacun a une question que nous avons choisie.
+Celui-la ne choisit rien : `ui/dashboard.py` expose le catalogue de tout ce
+que l'analyse produit — indicateurs, tableaux, graphiques — et laisse
+composer la page dont on a besoin.
+
+Le catalogue vit dans l'interface et non dans le moteur : un « bloc » est
+une facon d'afficher, pas une facon de calculer. Chaque bloc lit le meme
+resultat que les autres onglets ; aucune valeur n'y est recalculee.
+
+**Disposition en douziemes, jamais en pixels.** Les blocs sont poses a la
+souris, mais ce qui est retenu d'un deplacement est un rang, et ce qui est
+retenu d'un redimensionnement est une largeur en colonnes (quart, tiers,
+moitie, pleine largeur) plus une hauteur bornee. `flow()` recalcule les
+pixels a chaque mise en page. Une position absolue serait juste sur l'ecran
+ou elle a ete posee et fausse partout ailleurs : une page composee sur un
+grand ecran doit s'ouvrir droite sur un petit.
+
+**Pendant un deplacement, seul un fantome suit le curseur**, double d'un
+trait d'insertion qui montre ou le bloc atterrira. Deplacer le bloc lui-meme
+ferait repeindre son contenu a chaque pixel parcouru : le nuage de points
+met 129 ms a se tracer.
+
+**Ce qui part en configuration** (`dashboard_parameters.blocks`) se reduit a
+des identifiants, un ordre et des tailles — jamais un chiffre, jamais une
+donnee RH. Un identifiant inconnu, dans une configuration ecrite a la main
+ou heritee d'une version anterieure, est ignore avec une trace au journal
+technique : la page s'ouvre amputee plutot que pas du tout. Une hauteur ou
+une largeur hors bornes est ramenee a sa valeur par defaut.
+
+Les regles de confidentialite ne sont pas rejouees ici : un bloc affiche ce
+que le moteur a marque publiable, et se tait sinon — la dispersion par
+segment exige le drapeau `chartable`, faute de quoi elle ne trace rien.
 
 ### Tests
 

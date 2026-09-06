@@ -444,16 +444,25 @@ class TestWindow(unittest.TestCase):
                          ["headcount", "median"])
 
     def test_the_saved_page_never_carries_figures(self):
-        """Ce qui part en configuration se reduit a des identifiants : jamais
-        un chiffre, jamais une donnee RH."""
+        """Ce qui part en configuration se reduit a des identifiants, un
+        ordre et des tailles : jamais un chiffre, jamais une donnee RH. La
+        largeur y est en colonnes et non en pixels, faute de quoi une page
+        composee sur un grand ecran s'ouvrirait de travers sur un petit."""
         from compensation_analytics.ui import dashboard
 
-        section = dashboard.dump([{"block": "median", "field": ""},
+        section = dashboard.dump([{"block": "median", "field": "", "span": 3},
                                   {"block": "boxes", "field": "grade"},
                                   {"block": "inconnu", "field": ""}])
-        self.assertEqual(section, {"blocks": [{"block": "median"},
-                                              {"block": "boxes",
-                                               "field": "grade"}]})
+        self.assertEqual(section["blocks"][0],
+                         {"block": "median", "span": 3,
+                          "height": dashboard.DEFAULT_HEIGHT["indicator"]})
+        self.assertEqual(section["blocks"][1]["block"], "boxes")
+        self.assertEqual(section["blocks"][1]["field"], "grade")
+        self.assertEqual(len(section["blocks"]), 2)
+        for entry in section["blocks"]:
+            self.assertLessEqual(entry["span"], dashboard.COLUMNS)
+            self.assertIn(entry["span"],
+                          [size for size, _label in dashboard.SIZES])
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
@@ -492,6 +501,182 @@ class TestWindow(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless(HAS_TK, "tkinter absent")
+class TestTheLayoutOfTheComposedPage(unittest.TestCase):
+    """La disposition se calcule sans ecran : c'est de l'arithmetique sur
+    une grille en douziemes, et c'est la qu'elle doit etre verifiee."""
+
+    def setUp(self):
+        from compensation_analytics.ui import dashboard
+        self.dashboard = dashboard
+
+    def _page(self, *spans):
+        return [self.dashboard.normalise({"block": "median", "span": span})
+                for span in spans]
+
+    def test_blocks_fill_a_row_before_starting_the_next(self):
+        """Quatre quarts tiennent sur une ligne ; le cinquieme passe a la
+        ligne suivante. Sans cela la page se lirait en colonne unique."""
+        boxes = self.dashboard.flow(self._page(3, 3, 3, 3, 3), 1000)
+        premiers = boxes[:4]
+        self.assertEqual(len({round(box["y"]) for box in premiers}), 1)
+        self.assertGreater(boxes[4]["y"], premiers[0]["y"])
+        for gauche, droite in zip(premiers, premiers[1:]):
+            self.assertGreater(droite["x"], gauche["x"])
+
+    def test_no_block_overflows_the_page(self):
+        """Le debordement a droite est invisible tant qu'on ne mesure pas :
+        la derniere colonne doit tomber juste sur le bord."""
+        for width in (600, 900, 1440):
+            boxes = self.dashboard.flow(self._page(6, 6, 12, 4, 4, 4), width)
+            for box in boxes:
+                self.assertGreaterEqual(box["x"], -0.01)
+                self.assertLessEqual(box["x"] + box["width"], width + 0.01)
+            pleine = boxes[2]
+            self.assertAlmostEqual(pleine["width"], width, places=6)
+
+    def test_the_page_is_as_tall_as_its_tallest_row(self):
+        """Une ligne vaut son bloc le plus haut : c'est ce qui evite qu'un
+        graphique chevauche la ligne suivante."""
+        page = self._page(6, 6, 12)
+        page[0]["height"] = 300
+        page[1]["height"] = 120
+        page[2]["height"] = 200
+        boxes = self.dashboard.flow(page, 1000)
+        self.assertEqual(boxes[0]["y"], boxes[1]["y"])
+        self.assertGreaterEqual(boxes[2]["y"], 300)
+        self.assertGreaterEqual(self.dashboard.page_height(boxes), 500)
+        self.assertEqual(self.dashboard.page_height([]), 0.0)
+
+    def test_a_width_always_lands_on_a_step(self):
+        """Cinq douziemes et sept douziemes ne s'alignent avec rien : la
+        largeur tiree a la souris se pose sur un palier."""
+        paliers = [size for size, _label in self.dashboard.SIZES]
+        for wanted in (-3, 0.4, 2.6, 5, 7, 9.9, 40):
+            self.assertIn(self.dashboard.snap_span(wanted), paliers)
+        self.assertEqual(self.dashboard.snap_span(3.4), 3)
+        self.assertEqual(self.dashboard.snap_span(5), 4)
+        self.assertEqual(self.dashboard.snap_span(11), 12)
+
+    def test_a_height_stays_between_the_two_bounds(self):
+        """En dessous du plancher l'en-tete devient illisible ; au dessus du
+        plafond le bloc ne tient plus dans une page."""
+        clamp = self.dashboard.clamp_height
+        self.assertEqual(clamp(-200), self.dashboard.MIN_HEIGHT)
+        self.assertEqual(clamp(10 ** 6), self.dashboard.MAX_HEIGHT)
+        self.assertEqual(clamp(211.7), 211)
+
+    def test_a_size_taken_by_hand_survives_the_round_trip(self):
+        """Ce que l'on regle a la souris doit se retrouver a la reouverture :
+        c'est toute la promesse de la page composee."""
+        compose = [{"block": "boxes", "field": "grade", "span": 6,
+                    "height": 340},
+                   {"block": "median", "span": 3, "height": 92}]
+        section = self.dashboard.dump(compose)
+
+        class Config:
+            def get(self, path, default=None):
+                return section["blocks"]
+
+        relu = self.dashboard.load(Config())
+        self.assertEqual([(e["block"], e["span"], e["height"], e["field"])
+                          for e in relu],
+                         [("boxes", 6, 340, "grade"), ("median", 3, 92, "")])
+
+    def test_a_size_written_by_hand_out_of_range_is_brought_back(self):
+        """Une configuration se modifie au bloc-notes : une hauteur absurde
+        ou une largeur hors palier ne doit pas casser la page."""
+        entry = self.dashboard.normalise({"block": "median", "span": 5,
+                                          "height": 4000})
+        self.assertEqual(entry["span"], self.dashboard.COLUMNS)
+        self.assertEqual(entry["height"],
+                         self.dashboard.DEFAULT_HEIGHT["indicator"])
+
+
+@needs_display
+class TestTheBoardMovesAndResizes(unittest.TestCase):
+    """Le plan de travail est la seule piece qui ait besoin d'un ecran :
+    on y verifie qu'un deplacement reordonne, et qu'une taille se propage."""
+
+    def setUp(self):
+        from compensation_analytics.ui import dashboard, theme
+        self.dashboard = dashboard
+        self.root = tkinter.Tk()
+        self.root.geometry("1000x700")
+        self.built = []
+        self.changes = []
+        self.board = dashboard.Board(
+            self.root, theme.Fonts(self.root),
+            build=lambda content, entry, position, width:
+                self.built.append((entry["block"], width)),
+            on_change=lambda: self.changes.append(True))
+        self.board.pack(fill="both", expand=True)
+        self.root.update()
+
+    def tearDown(self):
+        self.root.destroy()
+
+    def _compose(self, *idents):
+        self.board.set_blocks([{"block": ident} for ident in idents])
+        self.root.update()
+
+    def _order(self):
+        return [entry["block"] for entry in self.board.blocks]
+
+    def test_moving_a_block_reorders_the_page(self):
+        self._compose("headcount", "median", "payroll")
+        self.board.move(2, 0)
+        self.assertEqual(self._order(), ["payroll", "headcount", "median"])
+        self.board.move(0, 3)
+        self.assertEqual(self._order(), ["headcount", "median", "payroll"])
+        self.assertEqual(len(self.changes), 2)
+
+    def test_moving_a_block_that_is_not_there_changes_nothing(self):
+        """Un relachement hors de la page ne doit rien deranger."""
+        self._compose("headcount", "median")
+        self.board.move(7, 0)
+        self.assertEqual(self._order(), ["headcount", "median"])
+        self.assertEqual(self.changes, [])
+
+    def test_a_resized_block_is_rebuilt_at_its_new_width(self):
+        """Un indicateur choisit la chasse de son chiffre d'apres la largeur
+        recue : sans remontage, un quart passe en pleine largeur garderait
+        le corps du quart, et le chiffre resterait minuscule."""
+        self._compose("median")
+        self.board.blocks[0]["span"] = 3
+        self.board._rebuild()
+        self.root.update()
+        etroit = self.built[-1][1]
+
+        self.board.blocks[0]["span"] = 12
+        self.board._sizing = 0
+        self.board._release_size()
+        self.root.update()
+        large = self.built[-1][1]
+        self.assertGreater(large, etroit * 2)
+        self.assertEqual(self.changes, [True])
+
+    def test_the_page_is_exactly_as_tall_as_its_blocks(self):
+        """La hauteur du plan de travail commande la barre de defilement :
+        trop courte, le dernier bloc devient inatteignable."""
+        self._compose("scatter", "boxes")
+        self.root.update()
+        attendu = self.dashboard.page_height(self.board.boxes, self.board.GAP)
+        self.assertEqual(self.board.winfo_reqheight(), int(attendu))
+
+    def test_removing_and_clearing_leave_the_page_consistent(self):
+        self._compose("headcount", "median", "payroll")
+        self.board.remove(1)
+        self.assertEqual(self._order(), ["headcount", "payroll"])
+        self.assertEqual(len(self.board.holders), 2)
+        self.board.add("min")
+        self.assertEqual(self._order(), ["headcount", "payroll", "min"])
+        self.board.add("bloc_inexistant")
+        self.assertEqual(len(self.board.blocks), 3)
+        self.board.clear()
+        self.assertEqual(self.board.holders, [])
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")

@@ -517,9 +517,23 @@ class BoxPlotChart(tk.Frame):
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
         # La molette sur le graphique : atteindre le vingtieme metier a
-        # l'ascenseur seulement serait une corvee.
-        self.after_idle(lambda: theme.bind_wheel(self.canvas,
-                                                 self.winfo_toplevel()))
+        # l'ascenseur seulement serait une corvee. Le rappel est annule a la
+        # destruction : sans cela, un graphique ferme avant le premier temps
+        # mort laissait Tk executer un rappel sur un widget disparu.
+        wheel = self.after_idle(lambda: theme.bind_wheel(
+            self.canvas, self.winfo_toplevel()))
+        self.bind("<Destroy>", lambda event, job=wheel: self._forget(event,
+                                                                    job),
+                  add="+")
+
+    def _forget(self, event, job: str) -> None:
+        """Annule le rappel en attente quand le graphique disparait."""
+        if event.widget is not self:
+            return
+        try:
+            self.after_cancel(job)
+        except tk.TclError:
+            pass
 
     #: Tris proposes. La cle est technique, l'intitule s'affiche.
     ORDERS = (("dimension", "Ordre de la dimension"),
@@ -633,7 +647,7 @@ class BoxPlotChart(tk.Frame):
         self.canvas.configure(scrollregion=(0, 0, width,
                                             max(base + 10, height)))
 
-        for value in nice_ticks(low, high, 5):
+        for value in self._ticks(low, high, plot_w):
             x = to_x(value)
             self.canvas.create_line(x, pad_t, x, base, fill=theme.GRID)
 
@@ -663,7 +677,7 @@ class BoxPlotChart(tk.Frame):
     def _draw_footer(self, label_width: float, pad_l: float, plot_w: float,
                      to_x, low: float, high: float) -> None:
         """Graduations et cle de lecture, hors de la zone qui defile."""
-        for value in nice_ticks(low, high, 5):
+        for value in self._ticks(low, high, plot_w):
             self.footer.create_text(to_x(value), 12, fill=theme.MUTED,
                                     font=axis_font(),
                                     text=format_money(value, self.currency))
@@ -699,6 +713,12 @@ class BoxPlotChart(tk.Frame):
             canvas.create_text(position, mid + 14, fill=theme.MUTED,
                                     font=axis_font(), text=text)
 
+        # La phrase demande de la place : dans un bloc etroit, le schema
+        # legende suffit, et une phrase coupee en trois mots par ligne
+        # n'explique plus rien.
+        room = available - wide - 40
+        if room < 190:
+            return
         phrase = ("La boîte contient la moitié des salariés du segment ; "
                   "le trait, la médiane. Les moustaches vont du 10e au 90e "
                   "centile.")
@@ -708,8 +728,7 @@ class BoxPlotChart(tk.Frame):
                        "tracés — voir l'onglet Segments.")
         canvas.create_text(left + wide + 30, mid - 5, anchor="nw",
                                 fill=theme.MUTED, font=axis_font(),
-                                width=max(available - wide - 40, 120),
-                                text=phrase)
+                                width=room, text=phrase)
 
     def _label_width(self, rows: Sequence[Dict[str, Any]]) -> float:
         """Gouttiere des libelles, mesuree et non devinee."""
@@ -719,6 +738,27 @@ class BoxPlotChart(tk.Frame):
         widest = max((font.measure(str(row.get("segment", ""))) for row in rows),
                      default=60)
         return min(max(widest, 60), self.LABEL_MAX)
+
+    def _ticks(self, low: float, high: float, plot_w: float) -> List[float]:
+        """Graduations qui tiennent cote a cote, mesurees et non estimees.
+
+        Le nombre demande a `nice_ticks` n'est qu'un souhait : la fonction
+        rend le pas rond le plus proche, quitte a poser une graduation de
+        plus. Dans une demi-page, trois montants a six chiffres se
+        chevauchaient. On en retire donc une sur deux tant qu'ils ne tiennent
+        pas cote a cote.
+        """
+        import tkinter.font as tkfont
+
+        font = tkfont.Font(root=self, font=axis_font())
+        values = list(nice_ticks(low, high, 5))
+        while len(values) > 2:
+            largest = max(font.measure(format_money(value, self.currency))
+                          for value in values)
+            if (largest + 16) * len(values) <= plot_w:
+                break
+            values = values[::2]
+        return values
 
     def _count_width(self, rows: Sequence[Dict[str, Any]]) -> float:
         """Colonne des effectifs, a la chasse du plus grand nombre."""

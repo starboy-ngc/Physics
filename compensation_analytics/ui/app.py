@@ -136,7 +136,7 @@ class Application(tk.Tk):
         # La composition enregistree est relue avant le premier affichage :
         # c'est la promesse du bouton « Enregistrer », et elle ne tient que
         # si la page survit a la fermeture.
-        self._workshop_blocks = dashboard.load(self.configuration)
+        self.board.set_blocks(dashboard.load(self.configuration))
         self._render_workshop()
         self._set_state("Choisissez un fichier de population pour commencer.")
 
@@ -792,9 +792,18 @@ class Application(tk.Tk):
         self._build_palette(self._scrolling_page(palette))
         theme.rule(body, vertical=True).pack(side="left", fill="y")
 
-        self.workshop_page = self._scrolling_page(body)
-        self._workshop_blocks: List[Dict[str, Any]] = []
-        self._workshop_widgets: List[tk.Widget] = []
+        page = self._scrolling_page(body)
+        self.board = dashboard.Board(page, self.fonts, self._fill_block,
+                                     on_change=self._workshop_changed)
+        self.board.pack(fill="both", expand=True, padx=24, pady=(16, 0))
+        self.workshop_empty = tk.Label(
+            page,
+            text="Page vide.\nChoisissez à gauche ce que vous voulez y voir, "
+                 "puis faites glisser les blocs pour les disposer et tirez "
+                 "le coin pour les redimensionner.\n« Enregistrer la page » "
+                 "les retrouve au prochain démarrage.",
+            background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.body, justify="left", wraplength=620)
 
     def _build_palette(self, parent: tk.Frame) -> None:
         """Catalogue groupe par famille : un clic ajoute a la page."""
@@ -816,123 +825,114 @@ class Application(tk.Tk):
 
     # ------------------------------------------------------- composition
 
+    @property
+    def _workshop_blocks(self):
+        """Composition courante. Le plan de travail en est le seul detenteur."""
+        return self.board.blocks
+
     def add_block(self, ident: str) -> None:
-        if ident not in dashboard.CATALOGUE:
-            return
-        self._workshop_blocks.append({"block": ident, "field": ""})
-        self._render_workshop()
+        self.board.add(ident)
 
     def remove_block(self, position: int) -> None:
-        if 0 <= position < len(self._workshop_blocks):
-            del self._workshop_blocks[position]
-            self._render_workshop()
+        self.board.remove(position)
 
     def move_block(self, position: int, step: int) -> None:
+        """Deplacement au clavier ou par appel : le glisser-deposer passe par
+        le meme chemin."""
         target = position + step
-        blocks = self._workshop_blocks
-        if 0 <= position < len(blocks) and 0 <= target < len(blocks):
-            blocks[position], blocks[target] = blocks[target], blocks[position]
-            self._render_workshop()
+        if 0 <= position < len(self.board.blocks) and \
+                0 <= target < len(self.board.blocks):
+            self.board.move(position, target + (1 if step > 0 else 0))
 
     def clear_workshop(self) -> None:
-        self._workshop_blocks = []
-        self._render_workshop()
+        self.board.clear()
+
+    def _workshop_changed(self) -> None:
+        """Le plan de travail a bouge : ajout, retrait, deplacement, taille."""
+        self._show_workshop_state()
+        self._show_workshop_page()
 
     def _render_workshop(self) -> None:
-        """Redessine la page composee.
+        """Remonte la page composee a partir du resultat courant."""
+        self._show_workshop_state()
+        self._show_workshop_page()
+        if self.board.blocks:
+            self.board.set_blocks(self.board.blocks)
 
-        Chaque bloc porte sa barre — monter, descendre, retirer — et, quand
-        il en reclame une, sa dimension. Les indicateurs qui se suivent sont
-        reunis dans un seul tableau : quatre chiffres a la file valent mieux
-        que quatre blocs d'une ligne.
-        """
-        for widget in self._workshop_widgets:
-            widget.destroy()
-        self._workshop_widgets = []
+    def _show_workshop_page(self) -> None:
+        """Le plan de travail ou le mode d'emploi, jamais les deux."""
+        if self.board.blocks:
+            self.workshop_empty.pack_forget()
+            if not self.board.winfo_manager():
+                self.board.pack(fill="both", expand=True, padx=24,
+                                pady=(16, 0))
+            return
+        self.board.pack_forget()
+        if not self.workshop_empty.winfo_manager():
+            self.workshop_empty.pack(anchor="w", padx=24, pady=(40, 0))
+
+    def _show_workshop_state(self, saved: bool = False) -> None:
+        count = len(self.board.blocks)
         self.workshop_state.configure(
-            text=f"{len(self._workshop_blocks)} bloc(s)")
-        if not self._workshop_blocks:
-            self._workshop_widgets.append(_packed(tk.Label(
-                self.workshop_page,
-                text="Page vide.\nChoisissez à gauche ce que vous voulez y "
-                     "voir : les blocs s'empilent dans l'ordre où vous les "
-                     "ajoutez, et « Enregistrer la page » les retrouve au "
-                     "prochain démarrage.",
-                background=theme.CANVAS, foreground=theme.MUTED,
-                font=self.fonts.body, justify="left"),
-                anchor="w", padx=24, pady=(40, 0)))
-            return
+            text=f"{count} bloc(s)" + (" · enregistrée" if saved else ""))
+
+    def _fill_block(self, content: tk.Frame, entry: Dict[str, Any],
+                    position: int, width: float) -> None:
+        """Contenu d'un bloc. Le plan de travail fournit le cadre, l'ordre et
+        la taille ; l'application ne fournit que ce qu'il y a dedans."""
+        block = dashboard.CATALOGUE[entry["block"]]
         if self.result is None:
-            self._workshop_widgets.append(_packed(tk.Label(
-                self.workshop_page,
-                text="Lancez une analyse pour remplir cette page.",
-                background=theme.CANVAS, foreground=theme.MUTED,
-                font=self.fonts.body), anchor="w", padx=24, pady=(40, 0)))
+            tk.Label(content, text="Lancez une analyse.",
+                     background=theme.CANVAS, foreground=theme.MUTED,
+                     font=self.fonts.small).pack(anchor="w")
             return
-
         payload = self.result.payload
-        position = 0
-        while position < len(self._workshop_blocks):
-            block = dashboard.CATALOGUE[self._workshop_blocks[position]["block"]]
-            if block.kind == "indicator":
-                # On avale la suite des indicateurs pour n'en faire qu'un
-                # tableau : ils se lisent en colonne, pas en tranches.
-                end = position
-                while (end < len(self._workshop_blocks)
-                       and dashboard.CATALOGUE[
-                           self._workshop_blocks[end]["block"]].kind
-                       == "indicator"):
-                    end += 1
-                self._workshop_indicators(payload, position, end)
-                position = end
-                continue
-            self._workshop_single(payload, position, block)
-            position += 1
+        salary = payload.get("salary", {}) or {}
+        currency = salary.get("currency", "EUR")
+        if block.kind == "indicator":
+            text = self._workshop_value(payload, block)
+            # La chasse s'adapte a la largeur du bloc : « 92 477 894 EUR » au
+            # corps des chiffres-cles ne tient pas dans un quart de page, et
+            # se faisait rogner en « 92 477 894 E ».
+            value = tk.Label(content, text=text,
+                             background=theme.CANVAS, foreground=theme.INK,
+                             font=self._kpi_font([text], int(width) - 8, 1,
+                                                 floor=0, smallest=9),
+                             anchor="w")
+            value.pack(anchor="w")
+            self.hints.attach(value, _hint(block.key, block.label))
+            return
+        if block.kind == "table":
+            self._workshop_table(content, payload, block, currency)
+            return
+        if block.needs_field and self._segments:
+            self._block_field(content, entry, position)
+        chart = self._workshop_chart(content, payload, block, currency, entry)
+        if chart is not None:
+            chart.pack(fill="both", expand=True)
 
-    def _workshop_frame(self, position: int, title: str,
-                        block=None) -> tk.Frame:
-        """Cadre d'un bloc : son titre, ses commandes, et de quoi le remplir."""
-        holder = tk.Frame(self.workshop_page, background=theme.CANVAS)
-        holder.pack(fill="x", padx=24, pady=(16, 0))
-        self._workshop_widgets.append(holder)
-        head = tk.Frame(holder, background=theme.CANVAS)
-        head.pack(fill="x")
-        tk.Label(head, text=title, background=theme.CANVAS, foreground=theme.INK,
-                 font=self.fonts.section).pack(side="left")
-        for symbol, step in (("↑", -1), ("↓", 1)):
-            self._workshop_action(head, symbol,
-                                  lambda p=position, s=step:
-                                  self.move_block(p, s))
-        self._workshop_action(head, "✕",
-                              lambda p=position: self.remove_block(p))
-        if block is not None and block.needs_field and self._segments:
-            choice = ttk.Combobox(head, state="readonly", width=20,
-                                  font=self.fonts.small,
-                                  values=[b["label"] for b in self._segments])
-            wanted = self._workshop_blocks[position].get("field")
-            names = [b["field"] for b in self._segments]
-            choice.current(names.index(wanted) if wanted in names else 0)
-            choice.pack(side="right", padx=(0, 12))
-            choice.bind("<<ComboboxSelected>>",
-                        lambda _e, p=position, c=choice, n=names:
-                        self._workshop_field(p, n[c.current()]))
-        theme.rule(holder).pack(fill="x", pady=(6, 8))
-        return holder
-
-    def _workshop_action(self, parent, symbol: str, command) -> None:
-        label = tk.Label(parent, text=symbol, background=theme.CANVAS,
-                         foreground=theme.FAINT, font=self.fonts.body,
-                         cursor="hand2", padx=6)
-        label.pack(side="right")
-        label.bind("<Button-1>", lambda _e: command())
-        label.bind("<Enter>",
-                   lambda _e: label.configure(foreground=theme.ACCENT))
-        label.bind("<Leave>",
-                   lambda _e: label.configure(foreground=theme.FAINT))
+    def _block_field(self, content: tk.Frame, entry: Dict[str, Any],
+                     position: int) -> None:
+        """Selecteur de dimension du bloc : la dispersion par metier et par
+        grade sont deux blocs differents, sur la meme page."""
+        row = tk.Frame(content, background=theme.CANVAS)
+        row.pack(fill="x", pady=(0, 4))
+        names = [block["field"] for block in self._segments]
+        choice = ttk.Combobox(row, state="readonly", width=18,
+                              font=self.fonts.small,
+                              values=[block["label"] for block in self._segments])
+        wanted = entry.get("field")
+        choice.current(names.index(wanted) if wanted in names else 0)
+        choice.pack(side="left")
+        choice.bind("<<ComboboxSelected>>",
+                    lambda _e, p=position, c=choice, n=names:
+                    self._workshop_field(p, n[c.current()]))
 
     def _workshop_field(self, position: int, field: str) -> None:
-        self._workshop_blocks[position]["field"] = field
-        self._render_workshop()
+        if 0 <= position < len(self.board.blocks):
+            self.board.blocks[position]["field"] = field
+            self._render_workshop()
+            self._workshop_changed()
 
     def _workshop_value(self, payload: Dict[str, Any], block) -> str:
         """Valeur d'un indicateur, formatee comme partout ailleurs."""
@@ -960,47 +960,6 @@ class Application(tk.Tk):
         if block.key in ("q3_over_q1", "p90_over_p10", "mean_over_median"):
             return format_number(value, 2)
         return format_money(value, currency)
-
-    def _workshop_indicators(self, payload: Dict[str, Any], start: int,
-                             end: int) -> None:
-        holder = self._workshop_frame(start, "Indicateurs")
-        rows = []
-        for position in range(start, end):
-            block = dashboard.CATALOGUE[self._workshop_blocks[position]["block"]]
-            rows.append((block.label, self._workshop_value(payload, block),
-                         block.key))
-        table = tk.Frame(holder, background=theme.CANVAS)
-        table.pack(fill="x")
-        table.grid_columnconfigure(0, weight=1)
-        for line, (label, value, key) in enumerate(rows):
-            note = _hint(key, label)
-            for column, text in enumerate((label, value)):
-                widget = tk.Label(table, text=text, background=theme.CANVAS,
-                                  foreground=theme.INK_SOFT,
-                                  font=self.fonts.body,
-                                  anchor="w" if column == 0 else "e")
-                widget.grid(row=line, column=column, sticky="ew", pady=5,
-                            padx=(0, 0) if column else (0, 24))
-                self.hints.attach(widget, note)
-
-    def _workshop_single(self, payload: Dict[str, Any], position: int,
-                         block) -> None:
-        """Un tableau ou un graphique, monte a la demande.
-
-        Les graphiques sont instancies pour ce bloc et non partages avec les
-        autres onglets : deux exemplaires du meme trace peuvent coexister sur
-        la page, par exemple la dispersion par metier puis par grade.
-        """
-        holder = self._workshop_frame(position, block.label, block)
-        salary = payload.get("salary", {}) or {}
-        currency = salary.get("currency", "EUR")
-        if block.kind == "table":
-            self._workshop_table(holder, payload, block, currency)
-            return
-        chart = self._workshop_chart(holder, payload, block, currency,
-                                     self._workshop_blocks[position])
-        if chart is not None:
-            chart.pack(fill="x")
 
     def _workshop_table(self, holder, payload, block, currency) -> None:
         salary = payload.get("salary", {}) or {}
@@ -1106,8 +1065,7 @@ class Application(tk.Tk):
             messagebox.showwarning("Ma page", str(error), parent=self)
             return
         self.configuration = load_configuration(self.config_dir)
-        self.workshop_state.configure(
-            text=f"{len(self._workshop_blocks)} bloc(s) · enregistrée")
+        self._show_workshop_state(saved=True)
         log_event("interface", "dashboard_save",
                   detail=f"blocs={len(self._workshop_blocks)}")
 
@@ -1407,20 +1365,26 @@ class Application(tk.Tk):
                  "salariés ; élargissez le filtre pour les afficher.")
         self.notice.pack(fill="x", after=self.tabbar)
 
-    def _kpi_font(self, values, width: int, per_row: int):
+    def _kpi_font(self, values, width: int, per_row: int,
+                  floor: int = 600, smallest: int = 12):
         """Plus grande taille a laquelle aucune valeur n'est rognee.
 
         Une masse salariale a huit chiffres depasse la largeur d'une colonne
         et se retrouvait tronquee des deux cotes, le fond n'ayant aucune
         marge a rendre. Plutot que de reduire le nombre de colonnes — ce qui
         allongerait la page —, on mesure et on ajuste.
+
+        `floor` protege du cas ou la largeur est demandee avant la mise en
+        page et vaut alors presque rien. Un bloc du plan de travail, lui,
+        connait sa largeur exacte : il passe zero, sinon un bloc au quart de
+        page serait traite comme s'il en faisait six cents pixels.
         """
         import tkinter.font as tkfont
 
         # La marge absorbe l'ecart entre la largeur mesuree avant mise en
         # page et celle que la cellule recevra reellement.
-        column = (max(width, 600) - 24 * (per_row - 1)) / per_row - 16
-        for size in range(theme.SIZE_KPI, 12, -1):
+        column = (max(width, floor) - 24 * (per_row - 1)) / per_row - 16
+        for size in range(theme.SIZE_KPI, smallest, -1):
             candidate = tkfont.Font(root=self, family=self.fonts.family,
                                     size=size, weight="bold")
             if all(candidate.measure(value) <= column for value in values):

@@ -415,6 +415,14 @@ class Hints:
         self.body: Optional[tk.Frame] = None
         self.lines: List[tk.Label] = []
         self._pending: Optional[str] = None
+        # Une bulle demandee puis annulee par la fermeture de la fenetre
+        # laissait Tk executer un rappel sur un widget detruit, et ecrire
+        # « invalid command name » sur la sortie d'erreur.
+        root.bind("<Destroy>", self._forget, add="+")
+
+    def _forget(self, event) -> None:
+        if event.widget is self.root:
+            self._cancel()
 
     def attach(self, widget: tk.Widget, hint: Optional[Sequence[str]],
                anchor: Optional[tk.Widget] = None):
