@@ -620,10 +620,6 @@ class Application(tk.Tk):
                                        font=self.fonts.small)
         self.box_choice.pack(side="left", padx=10)
         self.box_choice.bind("<<ComboboxSelected>>", lambda _e: self._show_boxes())
-        self.box_reference = tk.Label(box_head, text="", background=theme.CANVAS,
-                                      foreground=theme.MUTED,
-                                      font=self.fonts.small)
-        self.box_reference.pack(side="left", padx=(18, 0))
         self.boxplot = BoxPlotChart(boites)
         self.boxplot.pack(fill="both", expand=True, padx=18, pady=(6, 10))
 
@@ -1577,11 +1573,11 @@ class Application(tk.Tk):
             return
         block = self._segments[index]
         currency = block.get("currency", "EUR")
-        reference = block.get("reference_median")
-        self.box_reference.configure(
-            text=("Médiane de référence : "
-                  f"{format_money(reference, currency)}" if reference else ""))
-        self.boxplot.set_rows(block["rows"], currency)
+        # La mediane d'ensemble n'est pas repetee en tete : le graphique la
+        # trace, et un repere dessine se lit mieux qu'un montant a comparer
+        # de tete avec seize boites.
+        self.boxplot.set_rows(block["rows"], currency,
+                              reference=block.get("reference_median"))
 
     def _show_segment(self) -> None:
         index = self.segment_choice.current()

@@ -495,18 +495,30 @@ class BoxPlotChart(tk.Frame):
         self.rows: List[Dict[str, Any]] = []
         self.currency = "EUR"
         self.warning = ""
+        self.reference: Optional[float] = None
         self._items: Dict[int, Dict[str, Any]] = {}
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
     def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
-                 warning: str = "") -> None:
-        """Lignes de segment, dans l'ordre etabli par le moteur."""
+                 warning: str = "", reference: Optional[float] = None) -> None:
+        """Lignes de segment, dans l'ordre etabli par le moteur.
+
+        `reference` est la mediane de l'ensemble analyse : tracee en repere,
+        elle rend lisible d'un regard ce qui est au-dessus et au-dessous,
+        sans avoir a comparer des montants de tete.
+        """
         self.rows = [dict(row) for row in rows or []]
         self.currency = currency
         self.warning = warning
+        self.reference = reference
         self.redraw()
+
+    def _withheld(self) -> int:
+        """Segments publiables mais trop peu nombreux pour etre traces."""
+        return sum(1 for row in self.rows
+                   if not row.get("masked") and row.get("chartable") is not True)
 
     def _drawable(self) -> List[Dict[str, Any]]:
         """Segments que l'on a le droit de tracer.
@@ -549,8 +561,17 @@ class BoxPlotChart(tk.Frame):
             return
 
         label_width = self._label_width(drawable)
-        pad_l = label_width + 18
-        pad_r, pad_t, pad_b = 26, 14, 44
+        count_width = self._count_width(drawable)
+        # Une colonne pour l'effectif entre le libelle et le trace : une boite
+        # dessinee sur douze salaries a la meme allure qu'une boite dessinee
+        # sur quatre cents, et rien ne le disait hors du survol.
+        pad_l = label_width + 12 + count_width + 14
+        # De la place en haut pour l'intitule du repere, et seulement quand
+        # il y a un repere a poser.
+        pad_r = 30
+        pad_t = 26 if self.reference is not None else 12
+        # Sous le trace : les graduations, puis la cle de lecture dessinee.
+        pad_b = 44 + self.LEGEND_HEIGHT
         plot_w = max(width - pad_l - pad_r, 20)
         plot_h = max(height - pad_t - pad_b, 20)
 
@@ -565,28 +586,83 @@ class BoxPlotChart(tk.Frame):
 
         low, high = self._span(shown)
         span = (high - low) or 1.0
+        base = pad_t + len(shown) * row_height
 
         def to_x(value: float) -> float:
             return pad_l + (value - low) / span * plot_w
 
         for value in nice_ticks(low, high, 5):
             x = to_x(value)
-            self.canvas.create_line(x, pad_t, x, pad_t + len(shown) * row_height,
-                                    fill=theme.GRID)
-            self.canvas.create_text(x, pad_t + len(shown) * row_height + 14,
-                                    fill=theme.MUTED, font=axis_font(),
+            self.canvas.create_line(x, pad_t, x, base, fill=theme.GRID)
+            self.canvas.create_text(x, base + 14, fill=theme.MUTED,
+                                    font=axis_font(),
                                     text=format_money(value, self.currency))
 
-        for index, row in enumerate(shown):
-            self._draw_box(row, index, row_height, pad_l, to_x)
+        # Le repere d'ensemble, trace avant les boites pour passer dessous.
+        if self.reference is not None and low <= self.reference <= high:
+            x = to_x(self.reference)
+            self.canvas.create_line(x, pad_t - 4, x, base, fill=theme.ACCENT,
+                                    dash=(4, 3))
+            self.canvas.create_text(x + 5, pad_t - 8, anchor="sw",
+                                    fill=theme.ACCENT, font=axis_font(),
+                                    text="Médiane d'ensemble : "
+                                         f"{format_money(self.reference, self.currency)}")
 
-        caption = "Rémunération par segment · P10, Q1, médiane, Q3, P90"
-        hidden = len(drawable) - len(shown)
-        if hidden:
-            caption += f" · {hidden} segment(s) de plus, non affiché(s)"
-        self.canvas.create_text(pad_l, pad_t + len(shown) * row_height + 32,
-                                anchor="w", fill=theme.MUTED, font=axis_font(),
-                                text=caption)
+        for index, row in enumerate(shown):
+            self._draw_box(row, index, row_height, pad_l, label_width, to_x)
+
+        self._draw_key(label_width, base + 30, plot_w,
+                       len(drawable) - len(shown))
+
+    #: Hauteur reservee sous les graduations pour la cle de lecture.
+    LEGEND_HEIGHT = 46
+    #: Largeur du schema explicatif. Assez large pour que les cinq intitules
+    #: tiennent sans se chevaucher — mesure faite a la chasse des axes.
+    LEGEND_WIDTH = 190
+
+    def _draw_key(self, x: float, y: float, available: float,
+                  overflow: int) -> None:
+        """Cle de lecture : une boite miniature, legendee, puis une phrase.
+
+        Une boite a moustaches ne se devine pas. « P10, Q1, mediane, Q3,
+        P90 » en pied de graphique ne l'explique pas davantage : c'est une
+        liste de sigles. Le schema montre a quoi chaque trait correspond, et
+        la phrase dit ce que la boite contient — sans quoi le graphique le
+        plus utile de l'outil reste le plus opaque.
+        """
+        wide = self.LEGEND_WIDTH
+        left, mid = x, y + 6
+        q1, q3 = left + wide * 0.25, left + wide * 0.75
+        median = left + wide * 0.5
+        thickness = 9
+        self.canvas.create_line(left, mid, left + wide, mid,
+                                fill=theme.LINE_STRONG)
+        for edge in (left, left + wide):
+            self.canvas.create_line(edge, mid - thickness / 2, edge,
+                                    mid + thickness / 2, fill=theme.LINE_STRONG)
+        self.canvas.create_rectangle(q1, mid - thickness / 2, q3,
+                                     mid + thickness / 2,
+                                     fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
+        self.canvas.create_line(median, mid - thickness / 2 - 2, median,
+                                mid + thickness / 2 + 2, fill=theme.INK, width=2)
+        for position, text in ((left, "P10"), (q1, "Q1"), (median, "Médiane"),
+                               (q3, "Q3"), (left + wide, "P90")):
+            self.canvas.create_text(position, mid + 14, fill=theme.MUTED,
+                                    font=axis_font(), text=text)
+
+        phrase = ("La boîte contient la moitié des salariés du segment ; "
+                  "le trait, la médiane. Les moustaches vont du 10e au 90e "
+                  "centile.")
+        withheld = self._withheld()
+        if withheld:
+            phrase += (f" {withheld} segment(s) trop peu nombreux pour être "
+                       "tracés — voir l'onglet Segments.")
+        if overflow:
+            phrase += f" {overflow} segment(s) de plus, faute de place."
+        self.canvas.create_text(left + wide + 30, mid - 5, anchor="nw",
+                                fill=theme.MUTED, font=axis_font(),
+                                width=max(available - wide - 40, 120),
+                                text=phrase)
 
     def _label_width(self, rows: Sequence[Dict[str, Any]]) -> float:
         """Gouttiere des libelles, mesuree et non devinee."""
@@ -597,6 +673,14 @@ class BoxPlotChart(tk.Frame):
                      default=60)
         return min(max(widest, 60), self.LABEL_MAX)
 
+    def _count_width(self, rows: Sequence[Dict[str, Any]]) -> float:
+        """Colonne des effectifs, a la chasse du plus grand nombre."""
+        import tkinter.font as tkfont
+
+        font = tkfont.Font(root=self, font=axis_font())
+        return max((font.measure(str(row.get("headcount", 0))) for row in rows),
+                   default=24)
+
     def _span(self, rows: Sequence[Dict[str, Any]]):
         """Etendue commune a toutes les boites : sans elle, rien ne se compare."""
         lows, highs = [], []
@@ -605,6 +689,10 @@ class BoxPlotChart(tk.Frame):
             lows.append(self._whisker(salary, "p10", "p25"))
             highs.append(self._whisker(salary, "p90", "p75"))
         low, high = min(lows), max(highs)
+        # Le repere fait partie de l'echelle : hors d'elle, il se tracerait
+        # au bord du cadre et mentirait sur sa position.
+        if self.reference is not None:
+            low, high = min(low, self.reference), max(high, self.reference)
         margin = (high - low) * 0.04 or 1.0
         return low - margin, high + margin
 
@@ -614,7 +702,7 @@ class BoxPlotChart(tk.Frame):
         return float(value if value is not None else salary[fallback])
 
     def _draw_box(self, row, index: int, row_height: float, pad_l: float,
-                  to_x) -> None:
+                  label_width: float, to_x) -> None:
         salary = row["salary"]
         centre = 14 + index * row_height + row_height / 2
         thickness = min(max(row_height * 0.42, 5.0), 15.0)
@@ -639,10 +727,15 @@ class BoxPlotChart(tk.Frame):
         self.canvas.create_line(to_x(median), centre - thickness / 2 - 2,
                                 to_x(median), centre + thickness / 2 + 2,
                                 fill=theme.INK, width=2)
-        self.canvas.create_text(pad_l - 12, centre, anchor="e", fill=theme.INK_SOFT,
-                                font=axis_font(),
+        self.canvas.create_text(label_width, centre, anchor="e",
+                                fill=theme.INK_SOFT, font=axis_font(),
                                 text=_shorten(self, str(row.get("segment", "")),
                                               self.LABEL_MAX))
+        # L'effectif : une boite tracee sur douze salaries a la meme allure
+        # qu'une boite tracee sur quatre cents.
+        self.canvas.create_text(pad_l - 14, centre, anchor="e",
+                                fill=theme.FAINT, font=axis_font(),
+                                text=str(row.get("headcount", 0)))
         self._items[handle] = row
 
     def _on_motion(self, event) -> None:

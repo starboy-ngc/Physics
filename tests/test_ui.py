@@ -617,6 +617,92 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         finally:
             app.destroy()
 
+    def _canvas_texts(self, chart):
+        return [chart.canvas.itemcget(item, "text")
+                for item in chart.canvas.find_all()
+                if chart.canvas.type(item) == "text"]
+
+    def test_the_boxes_carry_their_reading_key(self):
+        """Une boite a moustaches ne se devine pas : sans cle de lecture, le
+        graphique le plus utile de l'outil reste le plus opaque."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            chart.pack(fill="both", expand=True)
+            chart.configure(width=900, height=420)
+            app.update()
+            block = app.result.payload["segments"][0]
+            chart.set_rows(block["rows"], "EUR",
+                           reference=block.get("reference_median"))
+            chart.redraw()
+            app.update()
+            textes = self._canvas_texts(chart)
+            for part in ("P10", "Q1", "Médiane", "Q3", "P90"):
+                self.assertIn(part, textes)
+            phrase = [x for x in textes if "moitié des salariés" in x]
+            self.assertEqual(len(phrase), 1, textes)
+            self.assertIn("10e au 90e centile", phrase[0])
+        finally:
+            app.destroy()
+
+    def test_the_boxes_show_the_overall_median_and_the_headcounts(self):
+        """Un repere dessine se lit mieux qu'un montant a comparer de tete, et
+        une boite tracee sur douze salaries a la meme allure que sur quatre
+        cents."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            chart.pack(fill="both", expand=True)
+            chart.configure(width=900, height=420)
+            app.update()
+            block = app.result.payload["segments"][0]
+            reference = block.get("reference_median")
+            self.assertIsNotNone(reference)
+            chart.set_rows(block["rows"], "EUR", reference=reference)
+            chart.redraw()
+            app.update()
+            textes = self._canvas_texts(chart)
+            self.assertTrue([x for x in textes if "Médiane d'ensemble" in x])
+            # Le repere doit tomber dans l'echelle, sinon il se tracerait au
+            # bord du cadre en mentant sur sa position.
+            low, high = chart._span(chart._drawable())
+            self.assertLessEqual(low, reference)
+            self.assertLessEqual(reference, high)
+            for row in chart._drawable():
+                self.assertIn(str(row["headcount"]), textes)
+        finally:
+            app.destroy()
+
+    def test_the_key_says_when_segments_are_withheld(self):
+        """Un segment publiable mais trop peu nombreux pour etre trace ne doit
+        pas disparaitre en silence."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        app = self._analysed(40)
+        try:
+            chart = BoxPlotChart(app)
+            chart.pack(fill="both", expand=True)
+            chart.configure(width=900, height=420)
+            app.update()
+            block = app.result.payload["segments"][0]
+            rows = [dict(row) for row in block["rows"]]
+            traçables = [row for row in rows if row.get("chartable")]
+            self.assertTrue(traçables)
+            traçables[-1]["chartable"] = False       # publiable, pas tracable
+            chart.set_rows(rows, "EUR")
+            chart.redraw()
+            app.update()
+            phrase = [x for x in self._canvas_texts(chart)
+                      if "trop peu nombreux" in x]
+            self.assertEqual(len(phrase), 1)
+            self.assertIn("1 segment", phrase[0])
+        finally:
+            app.destroy()
+
     def test_a_box_is_never_drawn_without_the_engine_flag(self):
         """Le refus est l'etat par defaut : une ligne arrivee sans drapeau
         n'est pas dessinee « au cas ou »."""
