@@ -20,6 +20,7 @@ import datetime as _dt
 import os
 import queue
 import threading
+import time as _time
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from typing import Any, Dict, List, Optional
@@ -196,11 +197,14 @@ class Application(tk.Tk):
 
     #: Largeur deployee de la colonne de gauche.
     SIDEBAR_WIDTH = 326
-    #: Repli anime : duree totale et intervalle entre deux images. Une
-    #: transition trop longue se subit ; trop courte, elle ne dit plus d'ou
-    #: vient ni ou va la colonne. Un cinquieme de seconde est le compromis
-    #: usuel pour un panneau lateral.
+    #: Repli anime : duree totale et cadence visee. Une transition trop
+    #: longue se subit ; trop courte, elle ne dit plus d'ou vient ni ou va la
+    #: colonne. Un cinquieme de seconde est le compromis usuel pour un
+    #: panneau lateral.
     FOLD_MS = 200
+    #: Echeance entre deux images, soit soixante images par seconde. C'est un
+    #: objectif, pas une garantie : une image trop lente est sautee, jamais
+    #: attendue.
     FOLD_FRAME_MS = 16
 
     def _build_sidebar_handle(self, parent: tk.Frame) -> None:
@@ -215,7 +219,7 @@ class Application(tk.Tk):
         self.sidebar_open = True
         self._fold_job = None
         self._fold_width = self.SIDEBAR_WIDTH
-        self._scatter_hidden = False
+        self._frozen: List[tk.Widget] = []
         self.sidebar_handle = tk.Frame(parent, background=theme.GROUND,
                                        width=self.HANDLE_WIDTH, cursor="hand2")
         self.sidebar_handle.pack(side="left", fill="y")
@@ -278,30 +282,45 @@ class Application(tk.Tk):
         milieu d'un glissement.
         """
         self._cancel_fold()
-        self._suspend_scatter()
+        self._freeze_charts()
         start = self._fold_width
         target = self.SIDEBAR_WIDTH if self.sidebar_open else 1
         if start == target:
             self._end_fold()
             return
-        frames = max(int(self.FOLD_MS / self.FOLD_FRAME_MS), 1)
+        began = _time.perf_counter()
 
-        def step(number: int) -> None:
+        def step() -> None:
             self._fold_job = None
             if not self.sidebar_card.winfo_exists():
                 return
-            if number >= frames:
+            # L'avancement se lit sur l'horloge, jamais sur un compteur
+            # d'images. Compte, l'animation durait le temps que la machine
+            # mettait a la dessiner : chaque image coute de 4 a 12 ms selon
+            # l'onglet, et s'ajoutait au delai au lieu de s'y fondre — d'ou
+            # une cadence qui changeait d'un onglet a l'autre, et s'effondrait
+            # sur un poste lent. A l'horloge, le glissement dure toujours un
+            # cinquieme de seconde : ce sont les images qui manquent, pas le
+            # temps qui s'etire.
+            elapsed = (_time.perf_counter() - began) * 1000.0
+            if elapsed >= self.FOLD_MS:
                 self._end_fold()
                 return
             # Sortie amortie : le mouvement part vite et se pose, ce qui se
             # lit comme un objet qui glisse plutot que comme un saut decoupe.
-            eased = 1 - (1 - number / frames) ** 3
-            self._fold_width = int(round(start + (target - start) * eased))
-            self.sidebar_card.configure(width=self._fold_width)
-            self._fold_job = self.after(self.FOLD_FRAME_MS,
-                                        lambda: step(number + 1))
+            eased = 1 - (1 - elapsed / self.FOLD_MS) ** 3
+            width = int(round(start + (target - start) * eased))
+            if width != self._fold_width:
+                self._fold_width = width
+                self.sidebar_card.configure(width=width)
+            # Prochaine echeance calee sur le debut du mouvement, et non sur
+            # la fin de cette image : une image lente rattrape son retard au
+            # lieu de le reporter sur toutes les suivantes.
+            now = (_time.perf_counter() - began) * 1000.0
+            due = (int(now // self.FOLD_FRAME_MS) + 1) * self.FOLD_FRAME_MS
+            self._fold_job = self.after(max(int(round(due - now)), 1), step)
 
-        step(1)
+        step()
 
     def _end_fold(self) -> None:
         """Pose l'etat final exact.
@@ -311,36 +330,64 @@ class Application(tk.Tk):
         """
         self._fold_width = self.SIDEBAR_WIDTH if self.sidebar_open else 1
         self.sidebar_card.configure(width=self._fold_width)
-        self._restore_scatter()
+        # Le degel attend que Tk ait refait sa mise en page : un graphique se
+        # trace d'apres la largeur de son canevas, et celle-ci n'est a jour
+        # qu'apres. Retrace trop tot, il restait vide.
+        self._fold_job = self.after_idle(self._thaw_charts)
         if not self.sidebar_open:
             self.sidebar_card.pack_forget()
             # La colonne repart de sa pleine largeur au prochain depliage :
             # c'est la largeur d'arrivee qui est animee, pas la largeur nulle.
             self.sidebar_card.configure(width=1)
 
-    def _suspend_scatter(self) -> None:
-        """Retire le nuage de l'ecran pendant le glissement.
+    def _page_charts(self) -> List[tk.Widget]:
+        """Graphiques affiches sur l'onglet courant.
 
-        Tk repeint les deux mille images du nuage a chaque changement de
-        geometrie, et ce cout n'est pas celui de notre trace : mesure, 1 592
-        ms pour un repli avec le nuage affiche contre 185 ms sans lui, une
-        image contre quatre-vingt-quinze. Un nuage que l'on comprime
-        n'apprend de toute facon rien : on le retire, et on le remet a
-        l'arrivee.
+        On reconnait un graphique a ce qu'il sait se retracer et porte son
+        canevas. On ne descend pas a l'interieur : le canevas d'un graphique
+        est son enfant, et surtout le conteneur defilant d'une page est lui
+        aussi un canevas — le vider supprimerait la page entiere.
         """
-        if self._scatter_hidden or not self.scatter.winfo_manager():
-            return
-        self.scatter.pack_forget()
-        self._scatter_hidden = True
+        found: List[tk.Widget] = []
 
-    def _restore_scatter(self) -> None:
-        if not self._scatter_hidden:
+        def walk(widget: tk.Misc) -> None:
+            for child in widget.winfo_children():
+                if hasattr(child, "redraw") and hasattr(child, "canvas"):
+                    if child.winfo_manager():
+                        found.append(child)
+                else:
+                    walk(child)
+
+        page = self.tabs.get(self.tabbar.active)
+        if page is not None:
+            walk(page)
+        return found
+
+    def _freeze_charts(self) -> None:
+        """Vide les graphiques de la page le temps du glissement.
+
+        Tk repeint le contenu d'un canevas a chaque changement de geometrie,
+        et ce cout n'est pas celui de notre trace : mesure, une image de
+        glissement passe de 124 ms a 4,6 ms sur le nuage de deux mille points
+        une fois son canevas vide. Un graphique que l'on comprime n'apprend
+        de toute facon rien.
+
+        On vide plutot que de depaqueter : le widget garde sa place dans
+        l'empilement. Depaqueter puis repaqueter est la manoeuvre qui a deja
+        produit deux defauts d'ordre dans cette fenetre.
+        """
+        if self._frozen:
             return
-        # « legend_frame » n'est jamais depaquete : repere sur pour rendre le
-        # nuage a sa place entre les controles et la legende.
-        self.scatter.pack(fill="both", expand=True, padx=18, pady=(4, 4),
-                          before=self.legend_frame)
-        self._scatter_hidden = False
+        self._frozen = self._page_charts()
+        for chart in self._frozen:
+            chart.canvas.delete("all")
+
+    def _thaw_charts(self) -> None:
+        self._fold_job = None
+        for chart in self._frozen:
+            if chart.winfo_exists():
+                chart.redraw()
+        self._frozen = []
 
     def _cancel_fold(self) -> None:
         job = getattr(self, "_fold_job", None)

@@ -163,6 +163,30 @@ class TestWindow(unittest.TestCase):
     def tearDown(self):
         self.app.destroy()
 
+    def _analyse(self):
+        """Charge, analyse, et laisse les graphiques se tracer.
+
+        Le trace attend la fin d'une rafale de redimensionnements : juste
+        apres l'analyse, un canevas est encore vide. Un test qui n'attend pas
+        mesure cette latence, pas le resultat.
+        """
+        import time
+
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+        self._load()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE,
+            segments=[]))
+        self.app._render_results()
+        self.app.update()
+        limite = time.time() + 2
+        while time.time() < limite:
+            self.app.update()
+            time.sleep(0.02)
+            if self.app.histogram.canvas.find_all():
+                break
+
     def _load(self):
         from compensation_analytics.core.pipeline import load_population
         population, mapping, _ = load_population(
@@ -235,26 +259,53 @@ class TestWindow(unittest.TestCase):
                           if 1 < w < self.app.SIDEBAR_WIDTH}
         self.assertGreaterEqual(len(intermediaires), 4, largeurs)
 
-    def test_the_scatter_is_put_aside_during_the_slide_and_comes_back(self):
-        """Tk repeint les deux mille images du nuage a chaque changement de
-        geometrie ; le garder affiche pendant le glissement le figeait."""
-        self._load()
+    def test_the_charts_are_emptied_during_the_slide_and_come_back(self):
+        """Tk repeint le contenu d'un canevas a chaque changement de
+        geometrie ; garder les deux mille points du nuage pendant le
+        glissement le figeait."""
+        import time
+
+        self._analyse()
         self.app.tabbar.select("graphique")
         self.app.chartbar.select("nuage")
-        self.app.update()
-        self.assertTrue(self.app.scatter.winfo_manager())
+        limite = time.time() + 2
+        while not self.app.scatter.canvas.find_all() and time.time() < limite:
+            self.app.update()
+            time.sleep(0.02)
+        self.assertTrue(self.app.scatter.canvas.find_all())
 
         self.app.toggle_sidebar()
-        # Retire des le premier pas, et non a la fin.
-        self.assertTrue(self.app._scatter_hidden)
-        self.assertFalse(self.app.scatter.winfo_manager())
-        self._settle()
-        # Rendu a l'arrivee, et a sa place : entre les controles et la
-        # legende, jamais en fin de pile.
-        self.assertFalse(self.app._scatter_hidden)
+        # Vide des le premier pas, et non a la fin.
+        self.assertIn(self.app.scatter, self.app._frozen)
+        self.assertEqual(self.app.scatter.canvas.find_all(), ())
+        # Vide, mais toujours en place : on ne depaquete rien.
         self.assertTrue(self.app.scatter.winfo_manager())
+        self._settle()
+        self.assertEqual(self.app._frozen, [])
+        self.assertTrue(self.app.scatter.canvas.find_all())
         self.assertLess(self.app.scatter.winfo_rooty(),
                         self.app.legend_frame.winfo_rooty())
+
+    def test_the_scrolling_container_is_never_emptied(self):
+        """Le conteneur defilant d'une page est lui aussi un canevas : le
+        vider supprimerait la page entiere."""
+        import tkinter as tk
+
+        self._analyse()
+        self.app.tabbar.select("population")
+        self.app.update()
+        self.app.toggle_sidebar()
+        self._settle()
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+
+        # La page est toujours la, avec ses libelles.
+        textes = [w.cget("text") for w in walk(self.app.overview_frame)
+                  if isinstance(w, tk.Label)]
+        self.assertIn("Population", textes)
 
     def test_a_chart_redraw_waits_for_the_resizing_to_stop(self):
         """Un trace par pixel parcouru transformait un redimensionnement en
