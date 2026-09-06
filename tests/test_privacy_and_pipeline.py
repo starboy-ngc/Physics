@@ -163,6 +163,60 @@ class TestPrivacy(unittest.TestCase):
             content = handle.read()
         self.assertNotIn("Dupont", content)
 
+    def test_names_never_enter_the_analysis_result(self):
+        """L'identite n'est pas transportee par le resultat : elle est
+        reconstruite a l'ecran depuis le fichier charge.
+
+        C'est ce qui rend la garantie structurelle et non conditionnelle :
+        aucun reglage, present ou futur, ne peut faire porter un nom a un
+        document produit, puisque le nom n'est jamais entre dans ce qui sert
+        a le produire. Le nuage de points ne porte qu'un numero de ligne.
+        """
+        import json
+
+        payload = json.dumps(self.result.payload, default=str)
+        self.assertNotIn("NOM0", payload)
+        self.assertNotIn("PRENOM0", payload)
+        points = self.result.payload["scatter"]["points"]
+        self.assertTrue(points)
+        for point in points:
+            self.assertNotIn("name", point)
+            self.assertNotIn("identity", point)
+            self.assertIsInstance(point["row"], int)
+
+    def test_showing_names_on_screen_changes_no_document(self):
+        """Le reglage d'ecran ne doit toucher a aucun livrable.
+
+        Le paragraphe 6 exige des identifiants anonymisables, pas anonymises,
+        et identifier un salarie a l'ecran est le geste meme de l'analyse.
+        Mais ce qui circule — restitution, slides, classeur, manifeste — doit
+        rester sans nom, que la case soit cochee ou non.
+        """
+        import shutil
+
+        directory = tempfile.mkdtemp()
+        config_dir = os.path.join(directory, "config")
+        shutil.copytree(os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "config"), config_dir)
+        privacy = os.path.join(config_dir, "privacy_parameters.json")
+        import json
+        with open(privacy, encoding="utf-8") as handle:
+            section = json.load(handle)
+        section["show_identities_on_screen"] = True
+        with open(privacy, "w", encoding="utf-8") as handle:
+            json.dump(section, handle)
+
+        output = os.path.join(directory, "sortie")
+        self.assertEqual(cli_main(["analyse", self.source, "--sortie", output,
+                                   "--config", config_dir]), 0)
+        produced = glob.glob(os.path.join(output, "*"))
+        self.assertGreaterEqual(len(produced), 5)
+        for path in produced:
+            with open(path, "rb") as handle:
+                content = handle.read()
+            self.assertNotIn(b"NOM0", content, os.path.basename(path))
+            self.assertNotIn(b"PRENOM0", content, os.path.basename(path))
+
     def test_individual_data_is_not_exported_by_default(self):
         path = os.path.join(self.directory, "export.xlsx")
         export_excel(self.result.payload, self.result.filtered,

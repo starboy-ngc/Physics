@@ -465,6 +465,48 @@ class TestWindow(unittest.TestCase):
             self.assertIn(entry["span"],
                           [size for size, _label in dashboard.SIZES])
 
+    def test_the_screen_names_the_employee_behind_a_point(self):
+        """Un point a trente pour cent sous la mediane ne veut rien dire
+        tant qu'on ne sait pas de qui il s'agit : c'est le geste meme de
+        l'analyse. Le paragraphe 6 exige des identifiants *anonymisables*,
+        pas anonymises."""
+        self._analyse()
+        self.assertTrue(self.app._identities)
+        point = self.app.result.payload["scatter"]["points"][0]
+        self.assertEqual(self.app.scatter._label_of(point),
+                         self.app._identities[point["row"]])
+        self.assertTrue(self.app.scatter._label_of(point).startswith("NOM"))
+
+        self.app._on_point_selected(point)
+        self.assertIn("NOM", self.app.selection_label.cget("text"))
+
+    def test_the_identity_is_rebuilt_on_screen_and_never_carried(self):
+        """L'ecran reconstruit l'identite depuis le fichier qu'il detient.
+
+        Si elle voyageait dans le jeu de donnees du graphique, elle entrerait
+        par construction dans tout ce qui en derive.
+        """
+        self._analyse()
+        for point in self.app.result.payload["scatter"]["points"]:
+            self.assertNotIn("name", point)
+            self.assertNotIn("identity", point)
+
+    def test_unticking_the_setting_brings_back_the_anonymous_reference(self):
+        """Le reglage doit se voir immediatement, sans relancer l'analyse."""
+        self._analyse()
+        point = self.app.result.payload["scatter"]["points"][0]
+        self.assertTrue(self.app.scatter._label_of(point).startswith("NOM"))
+
+        data = self.app.configuration.as_dict()
+        data["privacy_parameters"]["show_identities_on_screen"] = False
+        from compensation_analytics.core.config import Configuration
+        self.app.configuration = Configuration(data)
+        self.app._index_identities()
+
+        self.assertEqual(self.app._identities, {})
+        self.assertEqual(self.app.scatter._label_of(point), point["reference"])
+        self.assertFalse(self.app.scatter._label_of(point).startswith("NOM"))
+
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
         self.assertIn("disabled", self.app.export_button.state())
@@ -502,6 +544,56 @@ class TestWindow(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestTheScreenPrivacySetting(unittest.TestCase):
+    """La case « Afficher les noms » n'engage que l'ecran."""
+
+    def setUp(self):
+        import shutil
+        from compensation_analytics.ui.app import Application
+        self.directory = tempfile.mkdtemp()
+        self.config_dir = os.path.join(self.directory, "config")
+        shutil.copytree(os.path.join(ROOT, "config"), self.config_dir)
+        self.app = Application(config_dir=self.config_dir)
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _window(self):
+        from compensation_analytics.ui.settings import SettingsWindow
+        window = SettingsWindow(self.app, self.app.configuration,
+                                self.config_dir, self.app.fonts,
+                                headers=list(HEADERS))
+        self.app.update()
+        return window
+
+    def test_saving_keeps_the_other_privacy_settings(self):
+        """La section est reecrite entiere : les seuils d'effectif qui la
+        partagent doivent survivre a l'enregistrement du reglage d'ecran.
+        Les perdre remettrait la confidentialite a ses valeurs par defaut
+        sans que personne ne l'ait demande."""
+        import json
+
+        window = self._window()
+        try:
+            self.assertTrue(window.identities_var.get())
+            window.identities_var.set(False)
+            window.save()
+        finally:
+            if window.winfo_exists():
+                window.destroy()
+        self.app.update()
+
+        path = os.path.join(self.config_dir, "privacy_parameters.json")
+        with open(path, encoding="utf-8") as handle:
+            section = json.load(handle)
+        self.assertIs(section["show_identities_on_screen"], False)
+        self.assertEqual(section["min_headcount_publish"], 5)
+        self.assertEqual(section["min_headcount_chart"], 10)
+        self.assertIs(section["anonymise_identifiers"], True)
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")

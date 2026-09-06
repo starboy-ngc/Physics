@@ -430,6 +430,26 @@ Les regles de confidentialite ne sont pas rejouees ici : un bloc affiche ce
 que le moteur a marque publiable, et se tait sinon — la dispersion par
 segment exige le drapeau `chartable`, faute de quoi elle ne trace rien.
 
+### Identifier un salarie a l'ecran, jamais dans un document
+
+Le paragraphe 6 du cahier des charges exige des identifiants
+*anonymisables* — une capacite, pas une obligation. Identifier un salarie a
+l'ecran est le geste meme de l'analyse : un point du nuage a trente pour
+cent sous la mediane ne veut rien dire tant qu'on ne sait pas de qui il
+s'agit. La fenetre le nomme donc, et le reglage
+`privacy_parameters.show_identities_on_screen` permet de s'en tenir a la
+reference anonyme.
+
+**La separation est structurelle, pas conditionnelle.** L'identite n'entre
+jamais dans le resultat d'analyse : le jeu de points ne porte qu'un numero
+de ligne (`row`), cle technique deja publiee par le controle qualite.
+L'interface tient un index `numero de ligne -> identite`, construit depuis
+la population qu'elle detient deja, et le consulte au moment d'afficher une
+info-bulle. Aucun reglage — present ou futur — ne peut donc faire porter un
+nom a une restitution, a un export ou au journal technique, puisque le nom
+n'est jamais entre dans ce qui sert a les produire. Un test le verifie sur
+tous les fichiers produits, reglage active.
+
 ### Tests
 
 Les tests d'interface qui exigent un affichage sont ignores automatiquement

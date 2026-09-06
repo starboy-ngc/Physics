@@ -138,6 +138,13 @@ DEFAULTS: Dict[str, Any] = {
         "min_headcount_chart": 10,
         "anonymise_identifiers": True,
         "log_personal_data": False,
+        # Identifier un salarie a l'ecran est le geste meme de l'analyse :
+        # un point du nuage a trente pour cent sous la mediane ne veut rien
+        # dire tant qu'on ne sait pas de qui il s'agit. Le paragraphe 6
+        # exige des identifiants *anonymisables*, pas anonymises : le
+        # reglage existe, et il ne porte que sur l'ecran. Aucun document
+        # produit, aucun export, aucun journal n'en depend.
+        "show_identities_on_screen": True,
     },
     "pay_equity_parameters": {
         # Les valeurs designant le sexe ne sont pas codees dans le moteur :

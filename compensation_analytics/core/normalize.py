@@ -81,6 +81,19 @@ class Employee:
     #: segmentables au meme titre que les champs natifs.
     extra: Dict[str, Any] = field(default_factory=dict)
 
+    @property
+    def identity(self) -> str:
+        """Identite lisible, pour l'ecran de l'analyste et lui seul.
+
+        Elle n'entre jamais dans le resultat d'analyse : c'est ce qui
+        garantit qu'aucun document produit, aucun export et aucun journal ne
+        peut en porter, quel que soit le reglage. L'interface la reconstruit
+        depuis la population qu'elle a deja en memoire.
+        """
+        name = " ".join(part for part in (self.last_name.upper(),
+                                          self.first_name) if part).strip()
+        return name or self.employee_id
+
     def value(self, name: str) -> Any:
         if name in self.extra:
             return self.extra[name]

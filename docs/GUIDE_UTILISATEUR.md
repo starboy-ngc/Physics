@@ -151,6 +151,23 @@ l'effectif est trop faible n'affiche rien.
   désactivés sous 10 (seuils modifiables).
 - Les matricules sont remplacés par une référence anonyme dans les
   restitutions.
+
+### Voir qui se cache derrière un point
+
+Dans la fenêtre, le nuage de points **nomme le salarié survolé** (« DUPONT
+Marie »), et la bannière de sélection le reprend. C'est le geste même de
+l'analyse : un point à 30 % sous la médiane ne veut rien dire tant qu'on ne
+sait pas de qui il s'agit.
+
+Le réglage se trouve dans **Paramètres → Confidentialité** (« Afficher les noms
+des salariés à l'écran »). Décoché, la fenêtre s'en tient à la référence
+anonyme.
+
+**Dans les deux cas, les documents produits, les exports et le journal
+technique restent sans nom ni prénom.** Ce n'est pas une question de réglage :
+l'identité n'entre jamais dans le résultat d'analyse — la fenêtre la
+reconstruit depuis le fichier qu'elle a chargé, au moment de l'afficher. Rien
+de ce qui circule ne peut donc en porter.
 - L'export des données individuelles est **désactivé par défaut**.
 - Le journal technique ne contient ni nom, ni matricule, ni salaire individuel.
 

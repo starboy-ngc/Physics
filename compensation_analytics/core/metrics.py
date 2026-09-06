@@ -517,6 +517,11 @@ def scatter_dataset(
             "y": float(y_value),
             "group": str(employee.value(color_field) or "(non renseigne)"),
             "reference": employee.anonymous_id or str(employee.row_number),
+            # Cle de jointure technique — un numero de ligne, jamais un nom.
+            # Elle permet a l'ecran de retrouver le salarie dans la
+            # population qu'il detient, sans qu'aucune identite ne transite
+            # par le resultat d'analyse.
+            "row": employee.row_number,
             "grade": employee.grade,
             "job_family": employee.job_family,
         })

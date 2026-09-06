@@ -171,14 +171,15 @@ class SettingsWindow(tk.Toplevel):
     def _build(self) -> None:
         head = tk.Frame(self, background=theme.CANVAS)
         head.pack(fill="x")
-        tk.Label(head, text="Champs, filtres et apparence",
+        tk.Label(head, text="Champs, filtres et affichage",
                  background=theme.CANVAS,
                  foreground=theme.INK, font=self.fonts.title).pack(anchor="w",
                                                              padx=22, pady=(18, 2))
         tk.Label(head, text="Ces réglages décident de ce qui vous sera "
                             "proposé dans la fenêtre principale ; ils ne "
                             "retirent aucun salarié. Ils sont enregistrés "
-                            "dans population_mapping.json et "
+                            "dans population_mapping.json, "
+                            "privacy_parameters.json et "
                             "theme_parameters.json, et restent modifiables "
                             "au bloc-notes.",
                  background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
@@ -198,6 +199,7 @@ class SettingsWindow(tk.Toplevel):
         self.feedback.pack(side="left")
 
         self._build_theme(self)
+        self._build_privacy(self)
 
         body = tk.Frame(self, background=theme.GROUND)
         body.pack(fill="both", expand=True, padx=22, pady=(16, 0))
@@ -236,6 +238,38 @@ class SettingsWindow(tk.Toplevel):
         for entry in palette.THEMES.values():
             self._theme_card(row, entry)
         self._show_theme()
+
+    def _build_privacy(self, parent: tk.Widget) -> None:
+        """Ce que l'ecran a le droit de montrer — et lui seul.
+
+        Le paragraphe 6 exige des identifiants *anonymisables*, pas
+        anonymises : identifier un salarie a l'ecran est le geste meme de
+        l'analyse. Ce reglage ne porte que sur la fenetre. Les documents
+        produits, les exports et le journal technique n'en dependent pas :
+        l'identite ne transite jamais par le resultat d'analyse, elle est
+        reconstruite a l'ecran depuis le fichier charge.
+        """
+        band = tk.Frame(parent, background=theme.GROUND)
+        band.pack(side="bottom", fill="x", padx=22, pady=(4, 0))
+        tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
+                                                             pady=(0, 12))
+        tk.Label(band, text="CONFIDENTIALITÉ", background=theme.GROUND,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w")
+        self.identities_var = tk.BooleanVar(
+            value=bool(self.configuration.get(
+                "privacy_parameters.show_identities_on_screen", True)))
+        CheckRow(band, "Afficher les noms des salariés à l'écran",
+                 self.identities_var, self.fonts).pack(anchor="w",
+                                                       pady=(6, 2))
+        tk.Label(band,
+                 text="Décochée, la fenêtre s'en tient à la référence "
+                      "anonyme. Dans les deux cas, les documents produits, "
+                      "les exports et le journal technique restent sans nom "
+                      "ni prénom : ce réglage ne porte que sur l'écran.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(0, 8))
 
     def _theme_card(self, parent: tk.Widget, entry) -> None:
         card = tk.Frame(parent, background=theme.GROUND, cursor="hand2")
@@ -547,6 +581,11 @@ class SettingsWindow(tk.Toplevel):
         # un utilisateur qui l'ouvre au bloc-notes y trouve une seule ligne.
         write_configuration(directory, "theme_parameters",
                             {"theme": self.theme_var.get()})
+        # La section est reecrite entiere : les seuils d'effectif qui la
+        # partagent doivent survivre a l'enregistrement du reglage d'ecran.
+        privacy = dict(self.configuration.section("privacy_parameters"))
+        privacy["show_identities_on_screen"] = bool(self.identities_var.get())
+        write_configuration(directory, "privacy_parameters", privacy)
         if self.on_saved:
             self.on_saved(directory, path)
         self.destroy()

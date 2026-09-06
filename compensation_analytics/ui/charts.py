@@ -139,6 +139,11 @@ class ScatterChart(tk.Frame):
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self.on_select = on_select
+        # Resolveur d'identite, pose par la fenetre : il rend « DUPONT
+        # Marie » pour un numero de ligne, ou rien. Le graphique ne detient
+        # aucune identite et n'en recoit aucune dans son jeu de donnees ;
+        # il en demande une au moment de l'afficher.
+        self.identify: Optional[Callable[[Any], str]] = None
 
         self.dataset: Dict[str, Any] = {}
         self.currency = "EUR"
@@ -323,11 +328,19 @@ class ScatterChart(tk.Frame):
             return
         self.canvas.configure(cursor="hand2")
         self.tooltip.show(
-            f'{point["reference"]}\n{point["group"]}\n'
+            f'{self._label_of(point)}\n{point["group"]}\n'
             f'Ancienneté : {format_years(point["x"])}\n'
             f'Rémunération : {format_money(point["y"], self.currency)}',
             self.canvas.winfo_rootx() + event.x,
             self.canvas.winfo_rooty() + event.y)
+
+    def _label_of(self, point: Dict[str, Any]) -> str:
+        """Identite si l'ecran en fournit une, reference anonyme sinon."""
+        if self.identify is not None:
+            name = self.identify(point.get("row"))
+            if name:
+                return name
+        return str(point.get("reference", ""))
 
     def _on_click(self, event) -> None:
         point = self._nearest(event.x, event.y)

@@ -129,6 +129,9 @@ class Application(tk.Tk):
         self.filter_vars: Dict[str, tk.StringVar] = {}
         self.output_vars: Dict[str, tk.BooleanVar] = {}
         self._segments: List[Dict[str, Any]] = []
+        # Numero de ligne -> identite. Vide tant qu'aucune analyse n'a
+        # tourne, et vide aussi si le reglage d'ecran l'interdit.
+        self._identities: Dict[int, str] = {}
         self._colour_fields: List[str] = []
         self._queue: queue.Queue = queue.Queue()
 
@@ -662,6 +665,7 @@ class Application(tk.Tk):
         self.selection_label.pack(side="right")
 
         self.scatter = ScatterChart(nuage, on_select=self._on_point_selected)
+        self.scatter.identify = self._identity_of
         self.scatter.pack(fill="both", expand=True, padx=18, pady=(4, 4))
         self.legend_frame = tk.Frame(nuage, background=theme.CANVAS)
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
@@ -1296,6 +1300,7 @@ class Application(tk.Tk):
     def _render_results(self) -> None:
         payload = self.result.payload
         currency = payload["salary"].get("currency", "EUR")
+        self._index_identities()
         self._show_quality(payload["quality"])
         self._show_overview(payload)
         self.histogram.set_distribution(payload["distribution"], currency)
@@ -1872,13 +1877,45 @@ class Application(tk.Tk):
         text.configure(foreground=theme.FAINT if masked else theme.INK_SOFT)
         dot.configure(state="disabled" if masked else "normal")
 
+    # ------------------------------------------------------------ identites
+
+    def _index_identities(self) -> None:
+        """Table numero de ligne -> identite, tenue par l'ecran seul.
+
+        Identifier un salarie est le geste meme de l'analyse : un point a
+        trente pour cent sous la mediane ne veut rien dire tant qu'on ne
+        sait pas de qui il s'agit. Le paragraphe 6 exige des identifiants
+        *anonymisables*, pas anonymises — le reglage existe, et il ne porte
+        que sur l'ecran.
+
+        L'index est construit ici, depuis la population que la fenetre
+        detient deja, et non transporte par le resultat d'analyse : c'est ce
+        qui garantit qu'aucun document produit, aucun export et aucun
+        journal ne peut porter un nom, quel que soit le reglage.
+        """
+        self._identities = {}
+        if not self.result:
+            return
+        if not self.configuration.get(
+                "privacy_parameters.show_identities_on_screen", True):
+            return
+        for employee in self.result.filtered:
+            identity = employee.identity
+            if identity:
+                self._identities[employee.row_number] = identity
+
+    def _identity_of(self, row: Optional[int]) -> str:
+        return self._identities.get(row, "") if row is not None else ""
+
     def _on_point_selected(self, point: Optional[Dict[str, Any]]) -> None:
         if not point:
             self.selection_label.configure(text="")
             return
         currency = self.result.payload["salary"].get("currency", "EUR")
+        label = (self._identity_of(point.get("row"))
+                 or str(point.get("reference", "")))
         self.selection_label.configure(
-            text=f'{point["reference"]} · {point["group"]} · '
+            text=f'{label} · {point["group"]} · '
                  f'{format_years(point["x"])} · '
                  f'{format_money(point["y"], currency)}')
 
