@@ -22,6 +22,7 @@ from .errors import ConfigError, DataQualityError
 from . import palette
 from .logging_setup import log_event
 from .mapping import MappingResult, ensure_required, resolve_mapping
+from .hierarchy import Tree, team_population
 from .normalize import Population, periods_of, normalise_table
 from .pay_equity import calculate_pay_equity
 from .quality import QualityReport, run_quality_check
@@ -44,6 +45,12 @@ class AnalysisRequest:
     reference_date: Optional[_dt.date] = None
     #: Periode a analyser. Vide : la plus recente du fichier.
     period: Optional[str] = None
+    #: Matricule du responsable dont on analyse l'equipe. Vide : tout le
+    #: perimetre retenu par les filtres.
+    team: Optional[str] = None
+    #: Restreint l'equipe au premier niveau. Par defaut, l'analyse porte
+    #: sur l'equipe totale : c'est d'elle qu'un responsable repond.
+    team_direct_only: bool = False
     title: str = "Analyse de rémunération"
     ignore_quality_errors: bool = False
 
@@ -144,9 +151,36 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     if period:
         filtered = filtered.filtered(
             [employee for employee in filtered if employee.period == period])
+    # L'arbre se construit sur tout le fichier de la periode, et non sur la
+    # population deja filtree : un filtre « France » couperait la branche
+    # d'un responsable dont une partie de l'equipe est ailleurs, et
+    # l'equipe totale ne serait plus totale. Les filtres s'appliquent
+    # ensuite, sur les membres ainsi trouves.
+    team = (request.team or "").strip()
+    team_scope: Dict[str, Any] = {}
+    if team:
+        observed = population
+        if period:
+            observed = observed.filtered(
+                [employee for employee in observed
+                 if employee.period == period])
+        tree = Tree(observed)
+        if team not in tree.employees:
+            raise ConfigError(
+                "L'identifiant demandé ne figure pas dans le fichier pour "
+                "cette période : aucune équipe ne peut en être déduite.",
+                technical="unknown team manager")
+        members = {member.employee_id for member in team_population(
+            observed, tree, team, direct_only=request.team_direct_only)}
+        filtered = filtered.filtered(
+            [employee for employee in filtered
+             if employee.employee_id in members])
+        team_scope = {"manager": team,
+                      "direct_only": bool(request.team_direct_only),
+                      "depth": tree.depth(team)}
     log_event("segmentation", "apply_filters",
               detail=(f"in={len(population)};out={len(filtered)}"
-                      f";periods={len(periods)}"))
+                      f";periods={len(periods)};team={int(bool(team))}"))
 
     started = _time.perf_counter()
     payload: Dict[str, Any] = {
@@ -172,6 +206,9 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         # trois ans, « 412 salaries » ne veut rien dire sans elle.
         "period": period,
         "periods": periods,
+        # L'equipe analysee, quand l'analyse porte sur une branche de
+        # l'organigramme plutot que sur un perimetre declaratif.
+        "team": team_scope,
     }
     segment_fields = (validate_segments(request.segments, config)
                       or available_segments(filtered, config))
@@ -199,7 +236,10 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         # sur un fichier pluriannuel exige de savoir laquelle a servi.
         extra={"segments_analyses": segment_fields,
                "periode_analysee": period or "sans objet",
-               "periodes_disponibles": periods},
+               "periodes_disponibles": periods,
+               "equipe_analysee": (
+                   ("équipe directe de " if request.team_direct_only
+                    else "équipe totale de ") + team) if team else "sans objet"},
     )
     log_event("pipeline", "run_analysis", detail=f"headcount={len(filtered)}")
     return AnalysisResult(

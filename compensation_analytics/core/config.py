@@ -53,6 +53,11 @@ DEFAULTS: Dict[str, Any] = {
             # periode — et l'identite devient le couple matricule + periode.
             "period": ["Période", "Periode", "Period", "Date d'effet",
                        "Mois", "Année", "Annee"],
+            # Matricule du responsable hierarchique. Facultatif : avec lui,
+            # l'arbre se reconstruit du plus haut au plus bas, et l'equipe
+            # d'un manager devient une population analysable.
+            "manager": ["Manager", "Responsable", "Manager ID",
+                        "Matricule manager", "N+1"],
             "job_family": ["Famille métier", "Job family"],
             "grade": ["Grade"],
             "coefficient": ["Coefficient"],

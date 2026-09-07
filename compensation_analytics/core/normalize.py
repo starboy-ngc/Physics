@@ -78,6 +78,8 @@ class Employee:
     #: Periode d'observation, telle qu'ecrite dans le fichier. Vide quand la
     #: colonne n'existe pas : le fichier est alors un instantane.
     period: str = ""
+    #: Matricule du responsable hierarchique. Vide au sommet de l'arbre.
+    manager: str = ""
     issues: List[str] = field(default_factory=list)
     #: Champs declares au mapping mais absents du modele (ex. une notion
     #: metier ajoutee par configuration). Ils sont filtrables et

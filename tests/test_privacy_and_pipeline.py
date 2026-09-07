@@ -14,12 +14,14 @@ import unittest
 
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from compensation_analytics.cli import main as cli_main, parse_filter
-from compensation_analytics.core.errors import CompensationError, DataQualityError
+from compensation_analytics.core.errors import (
+    CompensationError, ConfigError, DataQualityError)
 from compensation_analytics.core.export import export_excel
 from compensation_analytics.core.logging_setup import configure_logging
 from compensation_analytics.core.normalize import anonymise
 from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
 from compensation_analytics.core.reporting import render_report
+from compensation_analytics.core.segmentation import Filter
 from compensation_analytics.io.tabular import read_table
 from compensation_analytics.io.xlsx_writer import write_workbook
 from compensation_analytics.version import __version__
@@ -499,6 +501,113 @@ class TestCommandLine(unittest.TestCase):
         with open(path, "w", encoding="utf-8") as handle:
             handle.write("Matricule;BU\nE1;France\n")
         self.assertEqual(cli_main(["controle", path]), 2)
+
+class TestTeamScope(unittest.TestCase):
+    """Analyser l'equipe d'un responsable, et non un perimetre declaratif.
+
+    Un fichier de paie porte rarement l'organigramme, mais il porte le
+    matricule du manager : l'arbre s'en deduit, et avec lui la population
+    dont un responsable repond.
+    """
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+
+    def _source(self, periods=("2024", "2025")):
+        """DG > 2 directeurs > 3 managers chacun > 6 salaries chacun."""
+        import csv
+
+        headers = list(HEADERS) + ["Manager", "Période"]
+        path = os.path.join(self.directory, "equipes.csv")
+        links = [("DG", "")]
+        for direction in range(2):
+            links.append((f"D{direction}", "DG"))
+            for team in range(3):
+                links.append((f"M{direction}{team}", f"D{direction}"))
+                for member in range(6):
+                    links.append((f"E{direction}{team}{member}",
+                                  f"M{direction}{team}"))
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(headers)
+            for index, period in enumerate(periods):
+                for number, (key, manager) in enumerate(links):
+                    row = make_row(number, salary=40000 + index * 1000
+                                   + number * 50, employee_id=key,
+                                   grade=f"G{3 + number % 3}")
+                    writer.writerow(list(row) + [manager, period])
+        self.headcount = len(links)
+        return path
+
+    def _run(self, **kwargs):
+        return run_analysis(AnalysisRequest(source_path=self._source(),
+                                            **kwargs))
+
+    def test_without_a_team_the_whole_file_is_analysed(self):
+        result = self._run()
+        self.assertEqual(result.payload["population"]["headcount"], 45)
+        self.assertEqual(result.payload["scope"]["team"], {})
+
+    def test_the_total_team_goes_down_to_the_last_level(self):
+        """C'est la population dont un directeur repond : lui, ses trois
+        managers et leurs dix-huit salaries."""
+        result = self._run(team="D0")
+        self.assertEqual(result.payload["population"]["headcount"], 22)
+
+    def test_the_direct_team_stops_one_level_below(self):
+        result = self._run(team="D0", team_direct_only=True)
+        self.assertEqual(result.payload["population"]["headcount"], 4)
+
+    def test_the_top_manager_carries_the_whole_file(self):
+        result = self._run(team="DG")
+        self.assertEqual(result.payload["population"]["headcount"], 45)
+
+    def test_a_team_below_the_publication_threshold_is_masked(self):
+        """Le seuil ne cede pas devant une equipe : quatre personnes
+        restent quatre personnes."""
+        result = self._run(team="D0", team_direct_only=True)
+        self.assertTrue(result.payload["salary"].get("masked"))
+        self.assertNotIn("median", result.payload["salary"])
+
+    def test_the_team_is_read_period_by_period(self):
+        """Suivre une equipe dans le temps, c'est la meme branche a deux
+        dates : seules les remunerations changent."""
+        figures = {}
+        for period in ("2024", "2025"):
+            result = self._run(team="D0", period=period)
+            self.assertEqual(result.payload["population"]["headcount"], 22)
+            figures[period] = result.payload["salary"]["median"]
+        self.assertEqual(figures["2025"] - figures["2024"], 1000)
+
+    def test_the_scope_says_which_team_served(self):
+        scope = self._run(team="M00").payload["scope"]["team"]
+        self.assertEqual(scope, {"manager": "M00", "direct_only": False,
+                                 "depth": 3})
+
+    def test_the_manifest_records_the_team(self):
+        manifest = self._run(team="D0").payload["manifest"]
+        self.assertEqual(manifest["equipe_analysee"], "équipe totale de D0")
+        manifest = self._run(team="D0",
+                             team_direct_only=True).payload["manifest"]
+        self.assertEqual(manifest["equipe_analysee"], "équipe directe de D0")
+
+    def test_an_unknown_identifier_is_refused(self):
+        """Sans refus, l'analyse porterait sur une population vide sans que
+        rien ne le dise."""
+        with self.assertRaises(ConfigError):
+            self._run(team="INTROUVABLE")
+
+    def test_a_filter_does_not_amputate_the_tree(self):
+        """L'arbre se construit sur tout le fichier : un filtre restreint
+        les membres retenus, jamais la recherche des descendants."""
+        whole = self._run(team="D0").payload["population"]["headcount"]
+        narrowed = run_analysis(AnalysisRequest(
+            source_path=self._source(), team="D0",
+            filters=[Filter(field="grade", operator="eq", value="G4")]))
+        self.assertLess(narrowed.payload["population"]["headcount"], whole)
+        self.assertGreater(narrowed.payload["population"]["headcount"], 0)
+
+
 
 if __name__ == "__main__":
     unittest.main()

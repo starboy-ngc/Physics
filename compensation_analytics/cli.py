@@ -100,6 +100,8 @@ def command_analyse(args: argparse.Namespace) -> int:
         comparison_label=args.libelle_comparaison,
         reference_date=_date(args.date_reference),
         period=args.periode or None,
+        team=args.equipe or None,
+        team_direct_only=args.equipe_directe,
         title=args.titre,
         ignore_quality_errors=args.ignorer_anomalies,
     )
@@ -222,6 +224,13 @@ def build_parser() -> argparse.ArgumentParser:
     common.add_argument("--periode", default="",
                         help="periode a analyser dans un fichier pluriannuel, "
                              "par defaut la plus recente")
+
+    common.add_argument("--equipe", default="",
+                        help="matricule du responsable dont on analyse "
+                             "l'equipe (necessite la colonne manager)")
+    common.add_argument("--equipe-directe", action="store_true",
+                        help="limite l'equipe au premier niveau ; par defaut "
+                             "elle descend jusqu'au dernier")
 
     analyse = sub.add_parser("analyse", parents=[common],
                              help="analyse complete et restitution")

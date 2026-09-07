@@ -61,6 +61,13 @@
       "Année",
       "Annee"
     ],
+    "manager": [
+      "Manager",
+      "Responsable",
+      "Manager ID",
+      "Matricule manager",
+      "N+1"
+    ],
     "job_family": [
       "Famille métier",
       "Job family"

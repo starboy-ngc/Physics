@@ -1232,6 +1232,12 @@ class Application(tk.Tk):
         # « 100 salaries » ne dit pas de quelle annee il s'agit.
         if scope.get("period"):
             state += f" · période {scope['period']}"
+        # L'equipe se lit avant les filtres : elle designe la population,
+        # les filtres ne font que la restreindre.
+        team = scope.get("team") or {}
+        if team.get("manager"):
+            state += (" · équipe directe de " if team.get("direct_only")
+                      else " · équipe de ") + self._identity(team["manager"])
         if scope.get("filtered") and scope.get("description"):
             state += f" · {scope['description']}"
         if hidden:
@@ -1956,6 +1962,24 @@ class Application(tk.Tk):
 
     def _identity_of(self, row: Optional[int]) -> str:
         return self._identities.get(row, "") if row is not None else ""
+
+    def _identity(self, employee_id: str) -> str:
+        """Identite lisible d'un matricule, pour l'ecran et lui seul.
+
+        Elle se lit dans la population que la fenetre detient deja : le
+        resultat d'analyse n'en porte aucune, et c'est ce qui garantit
+        qu'aucun document produit ne peut en porter non plus. A defaut, le
+        matricule tel qu'il a ete saisi.
+        """
+        if not employee_id or not self.result:
+            return employee_id
+        if not self.configuration.get(
+                "privacy_parameters.show_identities_on_screen", True):
+            return employee_id
+        for employee in self.result.population:
+            if employee.employee_id == employee_id:
+                return employee.identity or employee_id
+        return employee_id
 
     def _on_point_selected(self, point: Optional[Dict[str, Any]]) -> None:
         if not point:
