@@ -50,6 +50,8 @@ class QualityReport:
     retained_rows: int = 0
     unique_employees: int = 0
     duplicates: int = 0
+    #: Nombre de periodes distinctes. Zero quand le fichier est un instantane.
+    periods: int = 0
     missing_salary: int = 0
     invalid_dates: int = 0
     findings: List[Finding] = field(default_factory=list)
@@ -82,6 +84,7 @@ class QualityReport:
             "lignes_importees": self.imported_rows,
             "lignes_retenues": self.retained_rows,
             "salaries_uniques": self.unique_employees,
+            "periodes": self.periods,
             "doublons": self.duplicates,
             "salaires_manquants": self.missing_salary,
             "dates_invalides": self.invalid_dates,
@@ -96,6 +99,7 @@ class QualityReport:
             "DATA QUALITY CHECK",
             f"Lignes importées       : {self.imported_rows:,}".replace(",", " "),
             f"Salariés uniques       : {self.unique_employees:,}".replace(",", " "),
+            f"Périodes               : {self.periods or 'aucune (instantané)'}",
             f"Doublons               : {self.duplicates}",
             f"Salaires manquants     : {self.missing_salary}",
             f"Dates invalides        : {self.invalid_dates}",
@@ -195,7 +199,15 @@ def _check_structure(
 
 
 def _check_population(population: Population, report: QualityReport) -> None:
-    seen: Dict[str, int] = {}
+    """Unicite des salaries, periode par periode s'il y en a une.
+
+    Un fichier de trois ans porte trois lignes par salarie : c'est
+    l'intention, pas une erreur. L'identite est donc le couple matricule +
+    periode des lors que la colonne existe. Sans colonne de periode, un
+    matricule repete reste ce qu'il a toujours ete — un doublon.
+    """
+    dated = any(employee.period for employee in population)
+    seen: Dict[tuple, int] = {}
     duplicate_rows: List[int] = []
     missing_id_rows: List[int] = []
     for employee in population:
@@ -203,15 +215,21 @@ def _check_population(population: Population, report: QualityReport) -> None:
         if not identifier:
             missing_id_rows.append(employee.row_number)
             continue
-        if identifier in seen:
+        key = (identifier, employee.period) if dated else (identifier, "")
+        if key in seen:
             duplicate_rows.append(employee.row_number)
         else:
-            seen[identifier] = employee.row_number
+            seen[key] = employee.row_number
     report.duplicates = len(duplicate_rows)
-    report.unique_employees = len(seen) + len(missing_id_rows)
+    report.unique_employees = (len({key[0] for key in seen})
+                               + len(missing_id_rows))
+    report.periods = len({employee.period for employee in population
+                          if employee.period})
     _add(
         report, "duplicate_employee_id", CRITICAL,
-        "Matricules présents plusieurs fois dans le fichier.", duplicate_rows,
+        ("Matricules présents plusieurs fois sur une même période."
+         if dated else "Matricules présents plusieurs fois dans le fichier."),
+        duplicate_rows,
     )
     _add(
         report, "missing_employee_id", WARNING,

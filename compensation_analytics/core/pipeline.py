@@ -13,16 +13,16 @@ from __future__ import annotations
 import datetime as _dt
 import time as _time
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Sequence
 
 from ..io.tabular import Table, read_table
 from . import metrics
 from .config import Configuration, load_configuration
-from .errors import DataQualityError
+from .errors import ConfigError, DataQualityError
 from . import palette
 from .logging_setup import log_event
 from .mapping import MappingResult, ensure_required, resolve_mapping
-from .normalize import Population, normalise_table
+from .normalize import Population, periods_of, normalise_table
 from .pay_equity import calculate_pay_equity
 from .quality import QualityReport, run_quality_check
 from .segmentation import (Filter, apply_filters, available_segments,
@@ -42,6 +42,8 @@ class AnalysisRequest:
     comparison_filters: List[Filter] = field(default_factory=list)
     comparison_label: str = "Population B"
     reference_date: Optional[_dt.date] = None
+    #: Periode a analyser. Vide : la plus recente du fichier.
+    period: Optional[str] = None
     title: str = "Analyse de rémunération"
     ignore_quality_errors: bool = False
 
@@ -91,6 +93,25 @@ def load_population(
     return population, mapping, table
 
 
+def _chosen_period(periods: Sequence[str], wanted: Optional[str]):
+    """Periode retenue : celle demandee, la plus recente sinon.
+
+    Une periode demandee mais absente du fichier n'est pas ignoree en
+    silence : sans cela, une faute de frappe rendrait l'analyse de la
+    derniere periode en la faisant passer pour celle qu'on visait.
+    """
+    if not periods:
+        return ""
+    if wanted:
+        if wanted not in periods:
+            raise ConfigError(
+                f"La période « {wanted} » n'existe pas dans ce fichier. "
+                f"Périodes disponibles : {', '.join(periods)}.",
+                technical=f"unknown period: {wanted}")
+        return wanted
+    return periods[-1]
+
+
 def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     """Execute le pipeline de bout en bout et retourne le resultat structure."""
     config = load_configuration(request.config_dir)
@@ -113,8 +134,19 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         )
 
     filtered = apply_filters(population, request.filters)
+    # Un fichier pluriannuel porte une ligne par salarie et par periode :
+    # analyse tel quel, il compterait chacun autant de fois qu'il y a
+    # d'annees et melangerait des remunerations de dates differentes. Une
+    # seule periode est donc retenue — la plus recente par defaut, celle
+    # que l'on demande sinon.
+    periods = periods_of(filtered)
+    period = _chosen_period(periods, request.period)
+    if period:
+        filtered = filtered.filtered(
+            [employee for employee in filtered if employee.period == period])
     log_event("segmentation", "apply_filters",
-              detail=f"in={len(population)};out={len(filtered)}")
+              detail=(f"in={len(population)};out={len(filtered)}"
+                      f";periods={len(periods)}"))
 
     started = _time.perf_counter()
     payload: Dict[str, Any] = {
@@ -136,6 +168,10 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     payload["scope"] = {
         "filtered": bool(request.filters),
         "description": describe_filters(request.filters, config),
+        # La periode analysee voyage avec le resultat : sur un fichier de
+        # trois ans, « 412 salaries » ne veut rien dire sans elle.
+        "period": period,
+        "periods": periods,
     }
     segment_fields = (validate_segments(request.segments, config)
                       or available_segments(filtered, config))
@@ -159,7 +195,11 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         config=config,
         filters_description=describe_filters(request.filters, config),
         headcount=len(filtered),
-        extra={"segments_analyses": segment_fields},
+        # La periode entre au manifeste : refaire l'analyse a l'identique
+        # sur un fichier pluriannuel exige de savoir laquelle a servi.
+        extra={"segments_analyses": segment_fields,
+               "periode_analysee": period or "sans objet",
+               "periodes_disponibles": periods},
     )
     log_event("pipeline", "run_analysis", detail=f"headcount={len(filtered)}")
     return AnalysisResult(

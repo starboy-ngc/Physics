@@ -52,6 +52,15 @@
       "Job title",
       "Position"
     ],
+    "period": [
+      "Période",
+      "Periode",
+      "Period",
+      "Date d'effet",
+      "Mois",
+      "Année",
+      "Annee"
+    ],
     "job_family": [
       "Famille métier",
       "Job family"

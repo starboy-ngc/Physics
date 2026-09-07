@@ -99,6 +99,7 @@ def command_analyse(args: argparse.Namespace) -> int:
         ),
         comparison_label=args.libelle_comparaison,
         reference_date=_date(args.date_reference),
+        period=args.periode or None,
         title=args.titre,
         ignore_quality_errors=args.ignorer_anomalies,
     )
@@ -218,6 +219,9 @@ def build_parser() -> argparse.ArgumentParser:
                              "l'outil, ou \"config\" s'il existe ici)")
     common.add_argument("--date-reference", default="",
                         help="date d'analyse (AAAA-MM-JJ), par defaut aujourd'hui")
+    common.add_argument("--periode", default="",
+                        help="periode a analyser dans un fichier pluriannuel, "
+                             "par defaut la plus recente")
 
     analyse = sub.add_parser("analyse", parents=[common],
                              help="analyse complete et restitution")

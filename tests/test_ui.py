@@ -658,6 +658,66 @@ class TestThePayTransparencyPage(unittest.TestCase):
 
 
 @needs_display
+class TestThePeriodSelector(unittest.TestCase):
+    """Le reglage ne parait que s'il a une raison d'etre."""
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+
+        self.directory = tempfile.mkdtemp()
+        self.app = Application()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _load(self, periods):
+        import csv
+
+        from compensation_analytics.core.pipeline import load_population
+
+        headers = list(HEADERS) + (["Période"] if periods else [])
+        path = os.path.join(self.directory, f"p{len(periods)}.csv")
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(headers)
+            for period in periods or [None]:
+                for number in range(30):
+                    row = list(make_row(number, salary=40000 + number * 60))
+                    writer.writerow(row + ([period] if period else []))
+        population, mapping, _table = load_population(path,
+                                                      self.app.configuration)
+        self.app.source_path = path
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app._populate_filters()
+        self.app.update()
+
+    def test_a_snapshot_file_shows_no_period_setting(self):
+        """Un reglage qui ne sert a rien encombre le parcours."""
+        self._load([])
+        self.assertFalse(self.app.period_block.winfo_manager())
+        self.assertEqual(self.app._periods, [])
+
+    def test_several_periods_bring_the_setting_out(self):
+        self._load(["2024", "2025", "2026"])
+        self.assertEqual(self.app.period_block.winfo_manager(), "pack")
+        self.assertEqual(self.app._periods, ["2024", "2025", "2026"])
+        # La plus recente est proposee : c'est celle qu'on regarde.
+        self.assertEqual(self.app.period_var.get(), "2026")
+        self.assertEqual(list(self.app.period_choice.cget("values")),
+                         ["2024", "2025", "2026"])
+
+    def test_the_setting_disappears_again_with_a_snapshot_file(self):
+        """Charger un second fichier ne doit pas laisser le reglage du
+        premier."""
+        self._load(["2024", "2025"])
+        self.assertTrue(self.app.period_block.winfo_manager())
+        self._load([])
+        self.assertFalse(self.app.period_block.winfo_manager())
+
+
+@needs_display
 class TestTheDispersionSplitBySex(unittest.TestCase):
     """Deux medianes proches peuvent recouvrir deux distributions tres
     differentes : une seule boite par segment ne dit pas si les deux sexes

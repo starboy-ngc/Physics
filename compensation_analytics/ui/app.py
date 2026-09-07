@@ -194,6 +194,8 @@ class Application(tk.Tk):
         self._identities: Dict[int, str] = {}
         #: Categories affichees a gauche, dans l'ordre du tri courant.
         self._categories: List[Dict[str, Any]] = []
+        #: Periodes presentes dans le fichier charge.
+        self._periods: List[str] = []
         self._colour_fields: List[str] = []
         self._queue: queue.Queue = queue.Queue()
 
@@ -562,8 +564,25 @@ class Application(tk.Tk):
                                       wraplength=250, justify="left")
         self.mapping_label.pack(anchor="w", pady=(8, 0))
 
+        # La periode precede les filtres : sur un fichier pluriannuel, elle
+        # decide de quel instantane on parle, et tout le reste s'y applique.
+        # Le bloc reste cache tant que le fichier n'en porte qu'une.
+        self.period_block = tk.Frame(steps, background=theme.GROUND)
+        self._section(self.period_block, 2, "Période")
+        self.period_var = tk.StringVar()
+        self.period_choice = ttk.Combobox(self.period_block, state="readonly",
+                                          textvariable=self.period_var,
+                                          font=self.fonts.small)
+        self.period_choice.pack(fill="x")
+        tk.Label(self.period_block,
+                 text="Une seule période à la fois : mélangées, les "
+                      "rémunérations de trois années ne veulent rien dire.",
+                 background=theme.GROUND, foreground=theme.FAINT,
+                 font=self.fonts.small, wraplength=250,
+                 justify="left").pack(anchor="w", pady=(4, 0))
+
         self.reset_filters_link = self._section(
-            steps, 2, "Filtrer", "Réinitialiser", self.reset_filters)
+            steps, 3, "Filtrer", "Réinitialiser", self.reset_filters)
         # Eteinte tant qu'aucun critere n'est pose.
         self._set_action_enabled(self.reset_filters_link, False)
         self.filter_summary = tk.Label(steps, text="", background=theme.GROUND,
@@ -575,7 +594,7 @@ class Application(tk.Tk):
                  background=theme.GROUND, foreground=theme.FAINT, font=self.fonts.small,
                  wraplength=250, justify="left").pack(anchor="w")
 
-        self._section(steps, 3, "Restituer", "Tout / aucun",
+        self._section(steps, 4, "Restituer", "Tout / aucun",
                       self.toggle_outputs)
         self.outputs_frame = tk.Frame(steps, background=theme.GROUND)
         self.outputs_frame.pack(fill="x", pady=(0, 8))
@@ -1022,7 +1041,31 @@ class Application(tk.Tk):
         self._set_state(f"Paramètres enregistrés dans {path}. "
                         "Relancez l'analyse pour les appliquer.")
 
+    def _populate_periods(self) -> None:
+        """Periodes du fichier, la plus recente en premier choix.
+
+        Le bloc ne parait que s'il y a matiere : un fichier instantane — le
+        cas courant — n'a pas a montrer un reglage qui ne sert a rien.
+        """
+        from ..core.normalize import periods_of
+
+        periods = periods_of(self.population) if self.population else []
+        self._periods = periods
+        if len(periods) < 2:
+            self.period_block.pack_forget()
+            self.period_var.set("")
+            return
+        self.period_choice.configure(values=periods)
+        if self.period_var.get() not in periods:
+            self.period_var.set(periods[-1])
+        if not self.period_block.winfo_manager():
+            # « reset_filters_link » n'est jamais depaquete : c'est un
+            # repere sur pour poser le bloc juste avant l'etape suivante.
+            self.period_block.pack(fill="x", pady=(0, 14),
+                                   before=self.reset_filters_link.master)
+
     def _populate_filters(self) -> None:
+        self._populate_periods()
         for child in self.filters_frame.winfo_children():
             child.destroy()
         self.filter_vars.clear()
@@ -1066,6 +1109,7 @@ class Application(tk.Tk):
             source_path=self.source_path,
             config_dir=self.config_dir,
             filters=build_filters(self._current_filters(), self.configuration),
+            period=self.period_var.get() or None,
             # Aucune liste n'est imposee : le moteur segmente sur toutes les
             # dimensions reellement renseignees. Choisir a l'avance faisait
             # doublon avec la liste de l'onglet Segments, qui permet d'en
@@ -1184,6 +1228,10 @@ class Application(tk.Tk):
         # gouvernent toutes les pages, et la barre d'etat est la seule zone
         # visible quel que soit l'onglet ouvert.
         state = f"Analyse terminée · {headcount} salariés"
+        # La periode se lit la aussi : sur un fichier de trois ans,
+        # « 100 salaries » ne dit pas de quelle annee il s'agit.
+        if scope.get("period"):
+            state += f" · période {scope['period']}"
         if scope.get("filtered") and scope.get("description"):
             state += f" · {scope['description']}"
         if hidden:

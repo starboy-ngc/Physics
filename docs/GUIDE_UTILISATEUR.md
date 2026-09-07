@@ -263,6 +263,33 @@ Les percentiles suivent la méthode inclusive (type 7), identique à
 près**. Cet onglet n'apparaît qu'avec les données individuelles, car il ne
 peut pas exister sans elles.
 
+## 5 sexies. Plusieurs périodes dans un même fichier
+
+Déclarez une colonne **Période** (« Periode », « Date d'effet », « Mois »,
+« Année »… — les intitulés acceptés sont dans `population_mapping.json`) et
+le fichier peut porter plusieurs années : une ligne par salarié et par
+période.
+
+Ce qui change :
+
+- **L'identité devient (matricule + période).** Un matricule répété sur deux
+  années n'est plus un doublon — c'est l'intention du fichier. Répété **deux
+  fois sur la même période**, c'en est toujours un, et le contrôle qualité le
+  signale comme avant.
+- **Une seule période est analysée à la fois**, la plus récente par défaut.
+  Mélangées, les rémunérations de trois années ne veulent rien dire : sur un
+  fichier de 100 salariés sur 3 ans, l'effectif afficherait 300 et la médiane
+  tomberait entre deux années sans correspondre à aucune.
+- Un bloc **Période** apparaît dans la colonne de gauche, avant les filtres.
+  Il reste caché si le fichier n'en porte qu'une.
+- La période analysée figure dans la barre d'état, et **dans le manifeste** :
+  refaire l'analyse à l'identique exige de savoir laquelle a servi.
+
+En ligne de commande : `--periode 2025`. Une période absente du fichier est
+refusée avec la liste de celles qui existent — une faute de frappe rendrait
+sinon l'analyse de la dernière période en la faisant passer pour celle qu'on
+visait.
+
 ## 6. Protection des données
 
 - Les résultats sont masqués sous 5 salariés, signalés sous 10, les graphiques

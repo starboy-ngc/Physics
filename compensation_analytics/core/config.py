@@ -47,6 +47,12 @@ DEFAULTS: Dict[str, Any] = {
             "site": ["Établissement", "Site"],
             "job": ["Métier", "Job"],
             "job_title": ["Poste", "Intitulé de poste", "Job title", "Position"],
+            # Periode d'observation. Facultative : sans elle, le fichier est
+            # un instantane et l'outil se comporte comme avant. Avec elle,
+            # un meme salarie peut figurer plusieurs fois — une ligne par
+            # periode — et l'identite devient le couple matricule + periode.
+            "period": ["Période", "Periode", "Period", "Date d'effet",
+                       "Mois", "Année", "Annee"],
             "job_family": ["Famille métier", "Job family"],
             "grade": ["Grade"],
             "coefficient": ["Coefficient"],

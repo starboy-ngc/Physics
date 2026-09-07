@@ -75,6 +75,9 @@ class Employee:
     tenure_years: Optional[float] = None
     age_band: str = ""
     tenure_band: str = ""
+    #: Periode d'observation, telle qu'ecrite dans le fichier. Vide quand la
+    #: colonne n'existe pas : le fichier est alors un instantane.
+    period: str = ""
     issues: List[str] = field(default_factory=list)
     #: Champs declares au mapping mais absents du modele (ex. une notion
     #: metier ajoutee par configuration). Ils sont filtrables et
@@ -217,6 +220,8 @@ def _resolve_separators(text: str) -> Optional[float]:
 
 
 _AMBIGUOUS_RE = re.compile(r"^-?[1-9]\d{0,2}[.,]\d{3}$")
+#: Periode ecrite au mois : « 2026-12 », « 2026/12 ».
+_MONTH_RE = re.compile(r"^(\d{4})[-/](\d{2})$")
 
 
 def has_ambiguous_separator(value: Any) -> bool:
@@ -269,6 +274,38 @@ def parse_date(value: Any) -> Optional[_dt.date]:
 
 def years_between(start: _dt.date, end: _dt.date) -> float:
     return (end - start).days / _DAYS_PER_YEAR
+
+
+def period_key(label: str):
+    """Cle de tri d'une periode, sans imposer d'ecriture au fichier.
+
+    Une periode s'ecrit « 2026 », « 2026-12 », « 2026-12-31 » ou
+    « Decembre 2026 » selon l'outil qui a produit l'export. Les trois
+    premieres se trient comme des dates ; la derniere se trie comme du
+    texte. On tente donc la lecture de date, et l'on retombe sur l'ordre
+    alphabetique — qui, sur des periodes ecrites de la meme facon dans un
+    meme fichier, donne le bon ordre.
+    """
+    texte = (label or "").strip()
+    date = parse_date(texte)
+    if date is not None:
+        return (0, date.isoformat())
+    # « 2026 » et « 2026-12 » ne sont pas des dates completes mais
+    # s'ordonnent comme telles. Sans cela elles tombaient dans le tri
+    # textuel, et un fichier melangeant les deux ecritures se serait
+    # ordonne de travers.
+    if texte.isdigit() and len(texte) == 4:
+        return (0, f"{int(texte):04d}-12-31")
+    mois = _MONTH_RE.match(texte)
+    if mois:
+        return (0, f"{mois.group(1)}-{mois.group(2)}-31")
+    return (1, texte.lower())
+
+
+def periods_of(population: "Population") -> List[str]:
+    """Periodes presentes, de la plus ancienne a la plus recente."""
+    return sorted({employee.period for employee in population
+                   if employee.period}, key=period_key)
 
 
 def band_for(value: Optional[float], bands: List[Dict[str, Any]]) -> str:

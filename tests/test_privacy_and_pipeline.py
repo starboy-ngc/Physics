@@ -84,6 +84,108 @@ class TestPipeline(unittest.TestCase):
         self.assertNotIn("NOM0", str(manifest))
 
 
+class TestSeveralPeriods(unittest.TestCase):
+    """Un fichier pluriannuel porte une ligne par salarie et par periode.
+
+    Analyse tel quel, il compterait chacun autant de fois qu'il y a
+    d'annees et melangerait des remunerations de dates differentes : sur
+    trois ans, l'effectif triplait et la mediane tombait entre deux annees,
+    sans correspondre a aucune.
+    """
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+
+    def _source(self, periods=("2024", "2025", "2026"), with_period=True):
+        import csv
+
+        headers = list(HEADERS)
+        if with_period:
+            headers.append("Période")
+        path = os.path.join(self.directory,
+                            f"p{len(periods)}{int(with_period)}.csv")
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(headers)
+            for index, period in enumerate(periods):
+                for number in range(40):
+                    row = make_row(number, salary=40000 + index * 1000
+                                   + number * 50)
+                    writer.writerow(list(row) + ([period] if with_period
+                                                 else []))
+        return path
+
+    def test_the_same_employee_twice_is_not_a_duplicate_across_periods(self):
+        """C'est l'intention du fichier, pas une erreur."""
+        result = run_analysis(AnalysisRequest(source_path=self._source()))
+        self.assertEqual(result.quality.duplicates, 0)
+        self.assertEqual(result.quality.unique_employees, 40)
+        self.assertEqual(result.quality.periods, 3)
+
+    def test_without_a_period_column_a_repeated_identifier_stays_a_duplicate(self):
+        """Le garde-fou d'origine ne doit pas tomber avec la nouveaute."""
+        result = run_analysis(AnalysisRequest(
+            source_path=self._source(("x", "y"), with_period=False),
+            ignore_quality_errors=True))
+        self.assertEqual(result.quality.duplicates, 40)
+        codes = {finding.code for finding in result.quality.findings}
+        self.assertIn("duplicate_employee_id", codes)
+
+    def test_the_latest_period_is_analysed_by_default(self):
+        result = run_analysis(AnalysisRequest(source_path=self._source()))
+        self.assertEqual(result.payload["scope"]["period"], "2026")
+        self.assertEqual(result.payload["scope"]["periods"],
+                         ["2024", "2025", "2026"])
+        # Quarante salaries, pas cent vingt.
+        self.assertEqual(result.payload["population"]["headcount"], 40)
+
+    def test_each_period_has_its_own_figures(self):
+        medianes = {}
+        for period in ("2024", "2025", "2026"):
+            result = run_analysis(AnalysisRequest(source_path=self._source(),
+                                                  period=period))
+            self.assertEqual(result.payload["scope"]["period"], period)
+            self.assertEqual(result.payload["population"]["headcount"], 40)
+            medianes[period] = result.payload["salary"]["median"]
+        self.assertEqual(len(set(medianes.values())), 3, medianes)
+        self.assertLess(medianes["2024"], medianes["2026"])
+
+    def test_an_unknown_period_is_refused_with_the_list(self):
+        """Une faute de frappe rendrait l'analyse de la derniere periode en
+        la faisant passer pour celle qu'on visait."""
+        from compensation_analytics.core.errors import ConfigError
+
+        with self.assertRaises(ConfigError) as levee:
+            run_analysis(AnalysisRequest(source_path=self._source(),
+                                          period="2023"))
+        self.assertIn("2023", str(levee.exception))
+        self.assertIn("2024", str(levee.exception))
+
+    def test_the_manifest_records_which_period_served(self):
+        """Refaire l'analyse a l'identique exige de savoir laquelle."""
+        result = run_analysis(AnalysisRequest(source_path=self._source(),
+                                              period="2025"))
+        manifest = result.payload["manifest"]
+        self.assertEqual(manifest["periode_analysee"], "2025")
+        self.assertEqual(manifest["periodes_disponibles"],
+                         ["2024", "2025", "2026"])
+
+    def test_a_file_without_periods_behaves_exactly_as_before(self):
+        result = run_analysis(AnalysisRequest(
+            source_path=self._source(("unique",), with_period=False)))
+        self.assertEqual(result.payload["scope"]["period"], "")
+        self.assertEqual(result.payload["scope"]["periods"], [])
+        self.assertEqual(result.quality.periods, 0)
+
+    def test_periods_are_ordered_by_time_not_by_text(self):
+        from compensation_analytics.core.normalize import period_key
+
+        melange = ["2026", "2024-12-31", "2025-06", "2024", "2025-12"]
+        self.assertEqual(
+            sorted(melange, key=period_key),
+            ["2024-12-31", "2024", "2025-06", "2025-12", "2026"])
+
+
 class TestPrivacy(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.mkdtemp()
