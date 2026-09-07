@@ -290,6 +290,79 @@ refusée avec la liste de celles qui existent — une faute de frappe rendrait
 sinon l'analyse de la dernière période en la faisant passer pour celle qu'on
 visait.
 
+## 5 septies. Analyser une équipe
+
+Un fichier de paie porte rarement l'organigramme. Il porte en revanche, dans
+la plupart des exports, le **matricule du responsable** de chaque salarié —
+et c'est tout ce qu'il faut : l'arbre se déduit du rapprochement entre ce
+matricule et celui des autres lignes.
+
+Déclarez une colonne **Manager** (« Responsable », « N+1 », « Matricule
+manager »… — les intitulés acceptés sont dans `population_mapping.json`).
+Elle n'est pas obligatoire : sans elle, l'outil se comporte exactement comme
+avant, et le réglage reste caché.
+
+Deux populations en découlent :
+
+- **l'équipe directe** : celle qu'un responsable voit tous les jours ;
+- **l'équipe totale** : tous les niveaux en dessous, jusqu'au dernier. C'est
+  celle dont il répond, et elle ne se lit sur aucune colonne. C'est le choix
+  par défaut.
+
+Le responsable est compté dans son équipe : une équipe sans son manager
+n'est pas l'objet dont on parle quand on demande « la rémunération de
+l'équipe de X ».
+
+Ce qui apparaît :
+
+- Un bloc **Équipe** dans la colonne de gauche, entre la période et les
+  filtres — l'équipe désigne la population, les filtres ne font que la
+  restreindre. La liste se lit du sommet vers le bas, chaque niveau décalé.
+- Sous la liste, **les deux effectifs** de l'équipe choisie : une équipe
+  directe de 4 personnes et une équipe totale de 40 ne donnent pas la même
+  page.
+- L'équipe analysée figure dans la barre d'état et **dans le manifeste**.
+
+En ligne de commande : `--equipe M0042`, et `--equipe-directe` pour s'arrêter
+au premier niveau. Un matricule absent du fichier est refusé : sans refus,
+l'analyse porterait sur une population vide sans que rien ne le dise.
+
+**L'arbre se construit sur tout le fichier de la période, jamais sur la
+population déjà filtrée.** Un filtre « France » couperait sinon la branche
+d'un responsable dont une partie de l'équipe est ailleurs, et l'équipe totale
+ne serait plus totale. Les filtres s'appliquent ensuite, sur les membres
+ainsi trouvés.
+
+### Trois ans de données, la même équipe
+
+La période et l'équipe se combinent : la même branche à deux dates, seules
+les rémunérations changent. C'est ainsi qu'on suit l'évolution d'une équipe
+année par année.
+
+### Quand le fichier est incohérent
+
+Un export mal tenu ne fait jamais lever, mais il le dit, sous la liste :
+
+- **responsable introuvable** : le matricule ne correspond à personne. Le
+  subordonné devient une racine — mieux vaut un arbre à plusieurs racines
+  qu'un salarié perdu.
+- **salarié dans une boucle** : « A encadre B qui encadre A ». Les membres du
+  cycle deviennent des racines. Sans cette rupture, toute descente dans
+  l'arbre tournerait sans fin.
+- **matricule en double** : l'arbre ne peut pas trancher, la première ligne
+  fait foi.
+
+Ces anomalies sont annoncées **en nombre et jamais en matricules** : la
+colonne désigne des personnes.
+
+### Ce que l'équipe ne change pas
+
+Les seuils de confidentialité ne cèdent pas devant une équipe : sous 5
+salariés, les résultats sont masqués, équipe ou pas. Et le résultat d'analyse
+ne porte que le matricule — le nom du responsable est reconstruit à l'écran
+depuis le fichier chargé, et ne peut donc entrer dans aucun document produit
+ni dans aucun journal.
+
 ## 6. Protection des données
 
 - Les résultats sont masqués sous 5 salariés, signalés sous 10, les graphiques

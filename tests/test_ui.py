@@ -718,6 +718,166 @@ class TestThePeriodSelector(unittest.TestCase):
 
 
 @needs_display
+class TestTheTeamSelector(unittest.TestCase):
+    """Choisir une equipe avant d'analyser.
+
+    La colonne « manager » n'est pas obligatoire : le reglage ne parait que
+    si le fichier permet d'en deduire un arbre.
+    """
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+
+        self.directory = tempfile.mkdtemp()
+        self.app = Application()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _load(self, with_manager=True, periods=(), broken=False):
+        """DG > 2 directeurs > 2 managers chacun > 5 salaries chacun."""
+        import csv
+
+        from compensation_analytics.core.pipeline import load_population
+
+        links = [("DG", "")]
+        for direction in range(2):
+            links.append((f"D{direction}", "DG"))
+            for team in range(2):
+                links.append((f"M{direction}{team}", f"D{direction}"))
+                for member in range(5):
+                    links.append((f"E{direction}{team}{member}",
+                                  f"M{direction}{team}"))
+        if broken:
+            links += [("X", "Y"), ("Y", "X"), ("Z", "ABSENT")]
+        headers = list(HEADERS) + (["Manager"] if with_manager else [])
+        headers += ["Période"] if periods else []
+        path = os.path.join(self.directory,
+                            f"t{int(with_manager)}{len(periods)}{int(broken)}.csv")
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(headers)
+            for index, period in enumerate(periods or [None]):
+                for number, (key, manager) in enumerate(links):
+                    row = list(make_row(number, employee_id=key,
+                                        salary=40000 + index * 1000
+                                        + number * 50))
+                    writer.writerow(row + ([manager] if with_manager else [])
+                                    + ([period] if period else []))
+        population, mapping, _table = load_population(path,
+                                                      self.app.configuration)
+        self.app.source_path = path
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app._populate_filters()
+        self.app.update()
+        return path
+
+    def _label(self, key):
+        return next(label for label, other in self.app._team_keys.items()
+                    if other == key)
+
+    def test_a_file_without_the_column_shows_no_team_setting(self):
+        """La colonne n'est pas obligatoire : sans elle, pas de reglage."""
+        self._load(with_manager=False)
+        self.assertFalse(self.app.team_block.winfo_manager())
+        self.assertEqual(self.app._team_keys, {})
+
+    def test_a_manager_column_brings_the_setting_out(self):
+        self._load()
+        self.assertEqual(self.app.team_block.winfo_manager(), "pack")
+        self.assertEqual(len(self.app._team_keys), 7)
+
+    def test_the_whole_file_is_the_default_choice(self):
+        self._load()
+        self.assertEqual(self.app.team_var.get(), "(tout le périmètre)")
+
+    def test_the_list_reads_from_the_top_down(self):
+        self._load()
+        keys = list(self.app._team_keys.values())
+        self.assertEqual(keys[0], "DG")
+        self.assertEqual(sorted(keys[1:3]), ["D0", "D1"])
+
+    def test_deeper_managers_are_set_back(self):
+        """L'indentation est ce qui fait lire une liste plate comme un
+        organigramme."""
+        self._load()
+        self.assertFalse(self._label("DG").startswith("·"))
+        self.assertTrue(self._label("D0").startswith("· "))
+        self.assertTrue(self._label("M00").startswith("· · "))
+
+    def test_the_label_carries_no_headcount(self):
+        """Mesure faite, « NOM PRENOM - 10 direct(s), 10 au total » demande
+        262 px, 420 avec un patronyme reel, quand la liste en offre 237 :
+        les effectifs se lisent sous la liste, ou rien ne les rogne."""
+        self._load()
+        for label in self.app._team_keys:
+            self.assertNotIn("direct", label)
+            self.assertNotIn("total", label)
+
+    def test_the_note_gives_both_headcounts(self):
+        self._load()
+        self.app.team_var.set(self._label("D0"))
+        self.app.update()
+        note = self.app.team_note.cget("text")
+        self.assertIn("12", note)                 # 2 managers et leurs 10
+        self.assertIn("2 en direct", note)
+
+    def test_the_note_follows_the_direct_team_setting(self):
+        self._load()
+        self.app.team_var.set(self._label("D0"))
+        self.app.team_direct_var.set(True)
+        self.app.update()
+        self.assertIn("Équipe directe : 2", self.app.team_note.cget("text"))
+
+    def test_homonyms_are_told_apart_by_their_identifier(self):
+        """Deux « MARTIN Jean » dans la liste sont indiscernables : le
+        matricule tranche, et seulement quand le nom ne suffit pas."""
+        self._load()
+        labels = list(self.app._team_keys)
+        self.assertEqual(len(labels), len(set(labels)))
+
+    def test_a_broken_tree_is_reported_by_the_numbers(self):
+        """Jamais par les matricules : la colonne designe des personnes."""
+        self._load(broken=True)
+        note = self.app.team_note.cget("text")
+        self.assertIn("Arbre incomplet", note)
+        self.assertIn("responsable introuvable", note)
+        self.assertIn("boucle", note)
+        for identifier in ("ABSENT", "X", "Y", "Z"):
+            self.assertNotIn(identifier, note)
+
+    def test_changing_the_period_rebuilds_the_tree(self):
+        """L'organigramme de 2024 n'est pas celui de 2026 : une liste
+        laissee en place proposerait des equipes disparues."""
+        self._load(periods=("2024", "2025"))
+        self.assertEqual(self.app.period_var.get(), "2025")
+        before = list(self.app._team_keys)
+        self.app.team_var.set(self._label("D0"))
+        self.app.period_var.set("2024")
+        self.app.update()
+        self.assertEqual(list(self.app._team_keys), before)
+        self.assertEqual(len(self.app._team_keys), 7)
+
+    def test_the_setting_disappears_again_without_the_column(self):
+        self._load()
+        self.assertTrue(self.app.team_block.winfo_manager())
+        self._load(with_manager=False)
+        self.assertFalse(self.app.team_block.winfo_manager())
+
+    def test_the_request_carries_the_chosen_team(self):
+        """Ce que la fenetre demande au moteur, sans lancer l'analyse."""
+        self._load()
+        self.app.team_var.set(self._label("D0"))
+        self.app.team_direct_var.set(True)
+        self.app.update()
+        self.assertEqual(
+            self.app._team_keys[self.app.team_var.get()], "D0")
+        self.assertTrue(self.app.team_direct_var.get())
+
+
+@needs_display
 class TestTheDispersionSplitBySex(unittest.TestCase):
     """Deux medianes proches peuvent recouvrir deux distributions tres
     differentes : une seule boite par segment ne dit pas si les deux sexes

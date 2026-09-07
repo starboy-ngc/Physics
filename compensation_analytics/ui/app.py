@@ -16,6 +16,7 @@ un plantage.
 
 from __future__ import annotations
 
+import collections
 import datetime as _dt
 import os
 import queue
@@ -55,6 +56,7 @@ WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de filtre d'une valeur qui,
 #: elle, existerait vraiment dans le fichier.
 _ALL = "(toutes)"
+_WHOLE_FILE = "(tout le périmètre)"
 
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
 #: quand un chiffre surprend, on ne commence pas par lui.
@@ -192,6 +194,13 @@ class Application(tk.Tk):
         # Numero de ligne -> identite. Vide tant qu'aucune analyse n'a
         # tourne, et vide aussi si le reglage d'ecran l'interdit.
         self._identities: Dict[int, str] = {}
+        #: Libelle affiche -> matricule du responsable, pour la liste des
+        #: equipes. Vide tant qu'aucun fichier n'est charge.
+        self._team_keys: Dict[str, str] = {}
+        #: Matricule -> ligne de « team_rows », pour dire sous la liste ce
+        #: que vaut l'equipe choisie.
+        self._team_rows: Dict[str, Dict[str, Any]] = {}
+        self._team_anomalies: List[str] = []
         #: Categories affichees a gauche, dans l'ordre du tri courant.
         self._categories: List[Dict[str, Any]] = []
         #: Periodes presentes dans le fichier charge.
@@ -574,6 +583,9 @@ class Application(tk.Tk):
                                           textvariable=self.period_var,
                                           font=self.fonts.small)
         self.period_choice.pack(fill="x")
+        # L'organigramme de 2024 n'est pas celui de 2026 : la liste des
+        # equipes se refait a chaque changement de periode.
+        self.period_var.trace_add("write", lambda *_: self._populate_teams())
         tk.Label(self.period_block,
                  text="Une seule période à la fois : mélangées, les "
                       "rémunérations de trois années ne veulent rien dire.",
@@ -581,8 +593,34 @@ class Application(tk.Tk):
                  font=self.fonts.small, wraplength=250,
                  justify="left").pack(anchor="w", pady=(4, 0))
 
+        # L'equipe precede les filtres pour la meme raison que la periode :
+        # elle designe la population, les filtres ne font que la restreindre.
+        # Le bloc reste cache tant que le fichier ne porte pas de colonne
+        # manager exploitable — la colonne n'est pas obligatoire.
+        self.team_block = tk.Frame(steps, background=theme.GROUND)
+        self._section(self.team_block, 3, "Équipe")
+        self.team_var = tk.StringVar(value=_WHOLE_FILE)
+        self.team_choice = ttk.Combobox(self.team_block, state="readonly",
+                                        textvariable=self.team_var,
+                                        font=self.fonts.small)
+        self.team_choice.pack(fill="x")
+        self.team_var.trace_add("write", lambda *_: self._update_team_note())
+        self.team_direct_var = tk.BooleanVar(value=False)
+        self.team_direct_var.trace_add(
+            "write", lambda *_: self._update_team_note())
+        CheckRow(self.team_block, "Équipe directe seulement",
+                 self.team_direct_var, self.fonts).pack(anchor="w",
+                                                        pady=(6, 0))
+        self.team_note = tk.Label(
+            self.team_block,
+            text="Par défaut, l'équipe descend jusqu'au dernier niveau : "
+                 "c'est celle dont un responsable répond.",
+            background=theme.GROUND, foreground=theme.FAINT,
+            font=self.fonts.small, wraplength=250, justify="left")
+        self.team_note.pack(anchor="w", pady=(4, 0))
+
         self.reset_filters_link = self._section(
-            steps, 3, "Filtrer", "Réinitialiser", self.reset_filters)
+            steps, 4, "Filtrer", "Réinitialiser", self.reset_filters)
         # Eteinte tant qu'aucun critere n'est pose.
         self._set_action_enabled(self.reset_filters_link, False)
         self.filter_summary = tk.Label(steps, text="", background=theme.GROUND,
@@ -594,7 +632,7 @@ class Application(tk.Tk):
                  background=theme.GROUND, foreground=theme.FAINT, font=self.fonts.small,
                  wraplength=250, justify="left").pack(anchor="w")
 
-        self._section(steps, 4, "Restituer", "Tout / aucun",
+        self._section(steps, 5, "Restituer", "Tout / aucun",
                       self.toggle_outputs)
         self.outputs_frame = tk.Frame(steps, background=theme.GROUND)
         self.outputs_frame.pack(fill="x", pady=(0, 8))
@@ -1061,11 +1099,108 @@ class Application(tk.Tk):
         if not self.period_block.winfo_manager():
             # « reset_filters_link » n'est jamais depaquete : c'est un
             # repere sur pour poser le bloc juste avant l'etape suivante.
-            self.period_block.pack(fill="x", pady=(0, 14),
-                                   before=self.reset_filters_link.master)
+            self.period_block.pack(
+                fill="x", pady=(0, 14),
+                before=(self.team_block if self.team_block.winfo_manager()
+                        else self.reset_filters_link.master))
+
+    def _populate_teams(self) -> None:
+        """Responsables du fichier, du sommet vers le bas.
+
+        L'arbre se reconstruit a chaque importation et a chaque changement
+        de periode : l'organigramme de 2024 n'est pas celui de 2026, et une
+        liste laissee en place proposerait des equipes qui n'existent plus.
+        """
+        from ..core.hierarchy import Tree, team_rows
+
+        self._team_keys, self._team_rows = {}, {}
+        rows, summary = [], {}
+        if self.population is not None and len(self.population):
+            period = self.period_var.get()
+            observed = self.population
+            if period:
+                observed = observed.filtered(
+                    [employee for employee in observed
+                     if employee.period == period])
+            tree = Tree(observed)
+            rows = team_rows(observed, tree)
+            summary = tree.summary()
+        if not rows:
+            self.team_block.pack_forget()
+            self.team_var.set(_WHOLE_FILE)
+            return
+        # Le libelle ne porte que le nom. Les deux effectifs y tenaient, et
+        # ils s'y lisaient : mesure faite, « · · NOM PRENOM — 10 direct(s),
+        # 10 au total » demande 262 px, 420 avec un patronyme reel, quand la
+        # liste en offre 237. Ils passent donc sous la liste, ou rien ne les
+        # rogne — et ou ils se lisent au moment de decider.
+        homonymes = collections.Counter(self._identity(row["manager"])
+                                        for row in rows)
+        labels = [_WHOLE_FILE]
+        for row in rows:
+            identity = self._identity(row["manager"])
+            # Deux homonymes : le matricule tranche. Il n'apparait que la,
+            # et seulement quand le nom ne suffit pas.
+            if homonymes[identity] > 1 and identity != row["manager"]:
+                identity = f"{identity} ({row['manager']})"
+            label = f"{'· ' * (row['depth'] - 1)}{identity}"
+            while label in self._team_keys:
+                label += " "
+            self._team_keys[label] = row["manager"]
+            self._team_rows[row["manager"]] = row
+            labels.append(label)
+        self.team_choice.configure(values=labels)
+        if self.team_var.get() not in labels:
+            self.team_var.set(_WHOLE_FILE)
+        # Les anomalies de l'arbre se disent en nombre et jamais en
+        # matricules : la colonne designe des personnes.
+        self._team_anomalies = []
+        for count, single, plural in (
+                (len(summary.get("unknown_managers", [])),
+                 "responsable introuvable", "responsables introuvables"),
+                (len(summary.get("cycles", [])),
+                 "salarié dans une boucle", "salariés dans une boucle"),
+                (len(summary.get("duplicates", [])),
+                 "matricule en double", "matricules en double")):
+            if count:
+                self._team_anomalies.append(
+                    f"{count} {single if count == 1 else plural}")
+        self._update_team_note()
+        if not self.team_block.winfo_manager():
+            self.team_block.pack(fill="x", pady=(0, 14),
+                                 before=self.reset_filters_link.master)
+
+    def _update_team_note(self) -> None:
+        """Ce que vaut le choix courant, sous la liste.
+
+        Les deux effectifs decident de la lecture : une equipe directe de
+        quatre personnes et une equipe totale de quarante ne donnent pas la
+        meme page. Le seuil de publication, lui, n'est pas rejoue ici — il
+        appartient au moteur, et la vue ne fait que rapporter ce qu'il
+        renvoie.
+        """
+        key = self._team_keys.get(self.team_var.get())
+        row = self._team_rows.get(key or "")
+        if row is None:
+            text = ("Par défaut, l'équipe descend jusqu'au dernier niveau : "
+                    "c'est celle dont un responsable répond.")
+        elif self.team_direct_var.get():
+            text = (f"Équipe directe : {row['direct']} "
+                    f"{'salarié' if row['direct'] < 2 else 'salariés'}, "
+                    f"le responsable en plus.")
+        else:
+            text = (f"Équipe totale : {row['total']} "
+                    f"{'salarié' if row['total'] < 2 else 'salariés'} dont "
+                    f"{row['direct']} en direct, le responsable en plus.")
+        if self._team_anomalies:
+            text += f"\nArbre incomplet : {', '.join(self._team_anomalies)}."
+        self.team_note.configure(
+            text=text,
+            foreground=theme.WARN if self._team_anomalies else theme.FAINT)
 
     def _populate_filters(self) -> None:
         self._populate_periods()
+        self._populate_teams()
         for child in self.filters_frame.winfo_children():
             child.destroy()
         self.filter_vars.clear()
@@ -1110,6 +1245,8 @@ class Application(tk.Tk):
             config_dir=self.config_dir,
             filters=build_filters(self._current_filters(), self.configuration),
             period=self.period_var.get() or None,
+            team=self._team_keys.get(self.team_var.get()),
+            team_direct_only=bool(self.team_direct_var.get()),
             # Aucune liste n'est imposee : le moteur segmente sur toutes les
             # dimensions reellement renseignees. Choisir a l'avance faisait
             # doublon avec la liste de l'onglet Segments, qui permet d'en
@@ -1971,12 +2108,12 @@ class Application(tk.Tk):
         qu'aucun document produit ne peut en porter non plus. A defaut, le
         matricule tel qu'il a ete saisi.
         """
-        if not employee_id or not self.result:
+        if not employee_id or self.population is None:
             return employee_id
         if not self.configuration.get(
                 "privacy_parameters.show_identities_on_screen", True):
             return employee_id
-        for employee in self.result.population:
+        for employee in self.population:
             if employee.employee_id == employee_id:
                 return employee.identity or employee_id
         return employee_id

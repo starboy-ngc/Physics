@@ -48,12 +48,22 @@ compensation_analytics/
     ├── statistics_engine.py Formules — source unique de vérité
     ├── metrics.py          Indicateurs métier + règles de confidentialité
     ├── segmentation.py     Filtres combinables, découpage par dimension
+    ├── hierarchy.py        Arbre déduit de la colonne manager (équipes)
     ├── reporting.py        Restitution HTML + SVG
     ├── export.py           Export Excel / CSV
     ├── logging_setup.py    Log technique sans donnée personnelle
     ├── traceability.py     Manifeste de reproductibilité
     └── pipeline.py         Orchestration
 ```
+
+`hierarchy` ne calcule aucune rémunération : il rend des ensembles de
+salariés, que le reste du moteur analyse comme n'importe quelle population.
+L'arbre se construit sur tout le fichier de la période retenue et non sur la
+population déjà filtrée, sans quoi un filtre amputerait la branche d'un
+responsable ; et il est lu par itération, jamais par récursion — une chaîne
+hiérarchique de mille niveaux dépasserait la pile. Un fichier incohérent
+(cycle, manager absent, matricule en double) ne fait pas lever : il rend un
+arbre amputé et le dit.
 
 **Règle de dépendance** : `io` ne connaît pas `core` ; `core.statistics_engine`
 ne connaît rien ; `metrics` ne connaît que `statistics_engine`, `normalize` et

@@ -23,7 +23,7 @@ HEADERS = [
     "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
     "Date de sortie", "BU", "Pays", "Établissement", "Métier", "Poste",
     "Famille métier", "Grade", "Coefficient", "Statut", "Temps de travail",
-    "Salaire de base", "Variable", "Rémunération totale",
+    "Salaire de base", "Variable", "Rémunération totale", "Manager",
 ]
 
 
@@ -73,6 +73,42 @@ def position_for(job: str, grade_index: int) -> str:
     return job
 
 
+def assign_managers(rows, rng, span: int = 8) -> None:
+    """Rattache chaque salarie a un responsable, et ecrit la colonne.
+
+    Sans organigramme, la fonction « equipe » de l'outil ne s'essaie sur
+    rien : le jeu de demonstration doit donc en porter un.
+
+    Il se construit BU par BU, du grade le plus eleve au plus bas, chacun
+    rejoignant le premier responsable qui n'encadre pas encore `span`
+    personnes. Le manager est ainsi toujours d'un grade au moins egal a
+    celui de son equipe, et l'encadrement reste borne. Un rattachement
+    tire au hasard parmi les grades superieurs, essaye d'abord, donnait
+    1 150 responsables pour 2 000 salaries et un encadrement median de 1 :
+    une chaine, pas un organigramme.
+
+    Le sommet de chaque BU reste sans responsable : l'arbre a plusieurs
+    racines, comme un vrai fichier de paie. Le tirage est celui de la
+    population, donc reproductible a graine egale.
+    """
+    identifier = column("Matricule")
+    unit, grade = column("BU"), column("Grade")
+    units: dict = {}
+    for row in rows:
+        units.setdefault(row[unit], []).append(row)
+    for members in units.values():
+        # Le grade decide de l'ordre ; le tirage departage les ex aequo,
+        # sans quoi l'organigramme suivrait l'ordre des matricules.
+        rng.shuffle(members)
+        members.sort(key=lambda row: -GRADES.index(row[grade]))
+        placed: list = []
+        for position, row in enumerate(members):
+            # Encadrement borne : le premier responsable non complet.
+            parent = placed[(position - 1) // span] if position else None
+            row.append(parent[identifier] if parent is not None else "")
+            placed.append(row)
+
+
 def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
     rng = random.Random(seed)
     rows = []
@@ -109,6 +145,8 @@ def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
             position_for(job, grade_index), family, grade,
             100 + grade_index * 25, status, fte, base, variable, base + variable,
         ])
+
+    assign_managers(rows, rng)
 
     if defects and len(rows) > 30:
         # Defauts volontaires pour exercer le controle qualite. Les colonnes

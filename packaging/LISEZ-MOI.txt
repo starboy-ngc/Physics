@@ -202,6 +202,53 @@ FILTRER
   liste les noms de champ exacts reconnus dans votre fichier : ce
   sont eux qui s'écrivent à gauche du signe.
 
+PLUSIEURS PÉRIODES DANS UN MÊME FICHIER
+
+  Déclarez une colonne "Période" ("Periode", "Date d'effet", "Mois",
+  "Année"...) et le fichier peut porter plusieurs années : une ligne
+  par salarié et par période.
+
+     --periode 2025
+
+  Une seule période est analysée à la fois, la plus récente par
+  défaut. Mélangées, les rémunérations de trois années ne veulent
+  rien dire : sur un fichier de 100 salariés sur 3 ans, l'effectif
+  afficherait 300 et la médiane tomberait entre deux années sans
+  correspondre à aucune.
+
+  Un matricule répété sur deux années n'est plus un doublon — c'est
+  l'intention du fichier. Répété deux fois sur la MÊME période, c'en
+  est toujours un, et le contrôle qualité le signale.
+
+  Une période absente du fichier est refusée avec la liste de celles
+  qui existent, jamais remplacée en silence par la dernière.
+
+ANALYSER UNE ÉQUIPE
+
+  Déclarez une colonne "Manager" ("Responsable", "N+1", "Matricule
+  manager"...) portant le matricule du responsable de chaque
+  salarié : l'organigramme s'en déduit. La colonne n'est pas
+  obligatoire ; sans elle, rien ne change.
+
+     --equipe M0042            équipe totale, jusqu'au dernier niveau
+     --equipe M0042 --equipe-directe    premier niveau seulement
+
+  L'équipe totale est celle dont un responsable répond, et elle ne se
+  lit sur aucune colonne. Le responsable est compté dans son équipe.
+
+  L'arbre se construit sur tout le fichier de la période, jamais sur
+  la population déjà filtrée : un filtre "France" couperait sinon la
+  branche d'un responsable dont une partie de l'équipe est ailleurs.
+  Les filtres s'appliquent ensuite, sur les membres ainsi trouvés.
+
+  Un export incohérent ne fait jamais lever : un responsable
+  introuvable laisse son subordonné à la racine, une boucle "A
+  encadre B qui encadre A" est rompue, et l'anomalie est annoncée en
+  nombre — jamais en matricules.
+
+  Les seuils de confidentialité ne cèdent pas devant une équipe :
+  sous 5 salariés, les résultats sont masqués, équipe ou pas.
+
 COMPARER DEUX POPULATIONS
 
      --filtre "business_unit=France" ^
@@ -309,7 +356,9 @@ CONFIDENTIALITÉ
 JEUX DE DÉMONSTRATION FOURNIS
 
   Les colonnes couvrent BU, pays, établissement, métier, POSTE,
-  famille métier, grade, statut, sexe, dates et rémunération. Le
+  famille métier, grade, statut, sexe, dates, rémunération et
+  MANAGER — l'organigramme, pour essayer l'analyse par équipe : six
+  racines, quatre niveaux, huit personnes encadrées au plus. Le
   poste précise le métier d'un niveau de responsabilité (« Comptable
   senior ») : c'est l'axe sur lequel une comparaison de rémunération
   se fait le plus souvent.
