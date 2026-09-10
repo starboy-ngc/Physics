@@ -943,7 +943,16 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
         from compensation_analytics.ui.charts import BoxPlotChart
 
         self.assertNotIn("dimension", dict(BoxPlotChart.ORDERS))
-        self.assertEqual(BoxPlotChart.ORDERS[0][0], "median")
+
+    def test_the_headcount_comes_first(self):
+        """Devant une dimension a quarante postes, la premiere question est
+        « lesquels pesent », pas « lesquels paient le mieux » : un poste de
+        six personnes en tete de liste met en avant ce qui compte le
+        moins."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        self.assertEqual(BoxPlotChart.ORDERS[0][0], "headcount")
+        self.assertEqual(BoxPlotChart(self.root).order, "headcount")
 
     def test_the_axis_follows_the_boxes_instead_of_the_frame(self):
         """La graduation flottait deux cents pixels sous la derniere boite."""

@@ -291,6 +291,39 @@ class TestSegmentBySex(unittest.TestCase):
         self.assertEqual((entry["female_count"], entry["male_count"]),
                          (12, 12))
 
+    def test_the_gap_between_the_two_sexes_is_given(self):
+        """L'ecart est ce qu'on vient chercher en dedoublant : il se calcule
+        du meme cote que tout le reste, et non dans la vue. Un graphique qui
+        ferait sa propre soustraction finirait par annoncer un chiffre que
+        le document contredit."""
+        entry = segment_by_sex(self.population(), make_config(),
+                               "business_unit")[0]
+        self.assertIsNotNone(entry["median_gap"])
+        self.assertIsNotNone(entry["mean_gap"])
+
+    def test_the_gap_follows_the_directive_formula(self):
+        """(hommes - femmes) / hommes : positif quand les femmes sont
+        payees moins."""
+        entry = segment_by_sex(self.population(), make_config(),
+                               "business_unit")[0]
+        femmes, hommes = entry["female"]["median"], entry["male"]["median"]
+        self.assertAlmostEqual(entry["median_gap"],
+                               (hommes - femmes) / hommes * 100.0, places=6)
+        self.assertGreater(entry["median_gap"], 0)
+
+    def test_a_withheld_side_gives_no_gap_rather_than_zero(self):
+        """Un zero se lirait « pas de difference », quand la verite est
+        « on n'a pas le droit de le dire »."""
+        entry = segment_by_sex(self.population(women=3, men=24),
+                               make_config(), "business_unit")[0]
+        self.assertIsNone(entry["median_gap"])
+        self.assertIsNone(entry["mean_gap"])
+
+    def test_a_segment_without_men_gives_no_gap(self):
+        entry = segment_by_sex(self.population(women=20, men=0),
+                               make_config(), "business_unit")[0]
+        self.assertIsNone(entry["median_gap"])
+
     def test_another_salary_field_can_be_read(self):
         people = self.population()
         entry = segment_by_sex(people, make_config(), "business_unit",

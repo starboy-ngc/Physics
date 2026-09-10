@@ -504,6 +504,12 @@ class BoxPlotChart(tk.Frame):
     #: Hauteur d'une ligne. On la reduit jusqu'au plancher pour faire tenir
     #: le plus de segments possible, sans jamais coller les boites entre elles.
     ROW_MAX, ROW_MIN = 40, 17
+    #: Hauteur de ligne minimale en mode dedouble. Dix-sept pixels ont ete
+    #: mesures pour *une* boite : deux boites et leurs effectifs n'y tiennent
+    #: pas, les boites se touchent et les nombres se chevauchent. La ligne
+    #: s'agrandit donc, quitte a faire defiler — ce que le graphique sait
+    #: faire depuis toujours.
+    ROW_SPLIT_MIN = 32
     LABEL_MAX = 190
 
     def __init__(self, master: tk.Widget):
@@ -541,6 +547,11 @@ class BoxPlotChart(tk.Frame):
         self._fitted: Optional[tuple] = None
         #: Deux boites par segment, femmes et hommes, plutot qu'une seule.
         self.split = False
+        #: Seuil d'alerte de l'ecart, pose par la fenetre depuis la
+        #: configuration.
+        self.alert = 5.0
+        #: Hauteur reelle du pied, mesuree sur son contenu a chaque trace.
+        self._footer_height = self.FOOTER_HEIGHT
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
@@ -567,8 +578,12 @@ class BoxPlotChart(tk.Frame):
     #: « Ordre de la dimension » a ete retire : un classement alphabetique
     #: ne repond a aucune question qu'on se pose devant une dispersion, et
     #: il occupait la premiere place, donc l'ordre par defaut.
-    ORDERS = (("median", "Médiane décroissante"),
-              ("headcount", "Effectif décroissant"))
+    #: L'effectif vient en premier, et c'est l'ordre par defaut : devant une
+    #: dimension a quarante postes, la premiere question est « lesquels
+    #: pesent », pas « lesquels paient le mieux ». Un poste de six personnes
+    #: en tete de liste met en avant ce qui compte le moins.
+    ORDERS = (("headcount", "Effectif décroissant"),
+              ("median", "Médiane décroissante"))
 
     def set_split(self, split: bool) -> None:
         """Une boite par segment, ou deux : femmes et hommes."""
@@ -591,7 +606,8 @@ class BoxPlotChart(tk.Frame):
         return rows
 
     def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
-                 warning: str = "", reference: Optional[float] = None) -> None:
+                 warning: str = "", reference: Optional[float] = None,
+                 alert: float = 5.0) -> None:
         """Lignes de segment, dans l'ordre etabli par le moteur.
 
         `reference` est la mediane de l'ensemble analyse : tracee en repere,
@@ -601,6 +617,10 @@ class BoxPlotChart(tk.Frame):
         self.rows = [dict(row) for row in rows or []]
         self.currency = currency
         self.warning = warning
+        # Seuil d'alerte de l'ecart, tel que la configuration le fixe. Il
+        # etait ecrit en dur ici alors qu'il existe deja en parametre : deux
+        # endroits pour une meme regle, c'est un des deux qui finit faux.
+        self.alert = alert
         self.reference = reference
         self.redraw()
 
@@ -663,8 +683,11 @@ class BoxPlotChart(tk.Frame):
         # sur quatre cents, et rien ne le disait hors du survol.
         pad_l = label_width + 12 + count_width + 14
         # De la place en haut pour l'intitule du repere, et seulement quand
-        # il y a un repere a poser.
-        pad_r = 30
+        # il y a un repere a poser. A droite, une gouttiere pour l'ecart
+        # femmes / hommes : c'est ce qu'on vient chercher en dedoublant, et
+        # il n'etait chiffre nulle part — il fallait comparer deux traits a
+        # l'oeil.
+        pad_r = self.GAP_COLUMN if self.split else 30
         pad_t = 26 if self.reference is not None else 12
         plot_w = max(width - pad_l - pad_r, 20)
         plot_h = max(height - pad_t - 10, 20)
@@ -673,8 +696,8 @@ class BoxPlotChart(tk.Frame):
         # quand les segments tiennent, et se pose sur son plancher quand ils
         # ne tiennent pas — la page defile alors. Ecarter des segments faute
         # de place revenait a cacher une partie de la reponse.
-        row_height = min(self.ROW_MAX, max(plot_h / len(drawable),
-                                           self.ROW_MIN))
+        plancher = self.ROW_SPLIT_MIN if self.split else self.ROW_MIN
+        row_height = min(self.ROW_MAX, max(plot_h / len(drawable), plancher))
         low, high = self._span(drawable)
         span = (high - low) or 1.0
         base = pad_t + len(drawable) * row_height
@@ -699,8 +722,21 @@ class BoxPlotChart(tk.Frame):
                                     text="Médiane d'ensemble : "
                                          f"{format_money(self.reference, self.currency)}")
 
+        # Un fond une ligne sur deux, en mode dedouble seulement : deux
+        # boites par segment, c'est deux fois plus de lignes, et l'oeil ne
+        # sait plus ou finit un segment. Le mode simple n'en a pas besoin.
+        if self.split:
+            for index in range(len(drawable)):
+                if index % 2:
+                    continue
+                haut = pad_t + index * row_height
+                self.canvas.create_rectangle(
+                    0, haut, width, haut + row_height,
+                    fill=theme.STRIPE, outline="")
+
         for index, row in enumerate(drawable):
-            self._draw_box(row, index, row_height, pad_l, label_width, to_x)
+            self._draw_box(row, index, row_height, pad_l, label_width, to_x,
+                           width, pad_t)
 
         self._draw_footer(label_width, pad_l, plot_w, to_x, low, high)
         self._fit_to_content(width, base + 10)
@@ -715,7 +751,7 @@ class BoxPlotChart(tk.Frame):
         donc au trace tant que celui-ci tient, et ne reprend toute la place
         que lorsqu'il faut faire defiler.
         """
-        available = self.winfo_height() - self.FOOTER_HEIGHT
+        available = self.winfo_height() - self._footer_height
         if available <= 0:
             return
         expand = needed >= available
@@ -748,6 +784,17 @@ class BoxPlotChart(tk.Frame):
                                     font=axis_font(),
                                     text=format_money(value, self.currency))
         self._draw_key(label_width, 26, plot_w)
+        # Le pied suit son contenu au lieu d'une hauteur constante. La
+        # phrase de lecture se renvoie a la ligne quand la fenetre se
+        # resserre, et quand on dedouble — la legende des deux teintes lui
+        # prend de la largeur : mesure faite, jusqu'a vingt-trois pixels de
+        # texte etaient coupes par le bas, c'est-a-dire la phrase qui
+        # explique le graphique.
+        contenu = self.footer.bbox("all")
+        self._footer_height = max(self.FOOTER_HEIGHT,
+                                  int(contenu[3]) + 6 if contenu else 0)
+        if self.footer.winfo_height() != self._footer_height:
+            self.footer.configure(height=self._footer_height)
 
     def _draw_key(self, x: float, y: float, available: float) -> None:
         """Cle de lecture : une boite miniature, legendee, puis une phrase.
@@ -846,6 +893,11 @@ class BoxPlotChart(tk.Frame):
         import tkinter.font as tkfont
 
         font = tkfont.Font(root=self, font=axis_font())
+        if self.split:
+            # « 178 / 111 » demande plus de place qu'un effectif seul.
+            return max((font.measure(f"{row.get('female_count', 0)} / "
+                                     f"{row.get('male_count', 0)}")
+                        for row in rows), default=48)
         return max((font.measure(str(row.get("headcount", 0))) for row in rows),
                    default=24)
 
@@ -869,27 +921,45 @@ class BoxPlotChart(tk.Frame):
         value = salary.get(preferred)
         return float(value if value is not None else salary[fallback])
 
+    #: Gouttiere de droite reservee a l'ecart, en mode dedouble. Assez pour
+    #: « -12,3 % » a la chasse des axes, et un peu d'air avant le bord.
+    GAP_COLUMN = 64
+
     def _draw_box(self, row, index: int, row_height: float, pad_l: float,
-                  label_width: float, to_x) -> None:
-        centre = 14 + index * row_height + row_height / 2
+                  label_width: float, to_x, width: float,
+                  top: float) -> None:
+        # L'origine verticale est celle de la grille. Elle valait 14 en dur,
+        # quand la grille part de « pad_t » — 26 des qu'un repere d'ensemble
+        # est pose : les boites etaient tracees douze pixels au-dessus des
+        # traits qu'elles sont censees couper. Invisible tant que le fond
+        # etait uni, evident des qu'une bande vient marquer la ligne.
+        centre = top + index * row_height + row_height / 2
         self.canvas.create_text(label_width, centre, anchor="e",
                                 fill=theme.INK_SOFT, font=axis_font(),
                                 text=_shorten(self, str(row.get("segment", "")),
                                               self.LABEL_MAX))
-        # L'effectif : une boite tracee sur douze salaries a la meme allure
-        # qu'une boite tracee sur quatre cents.
-        self.canvas.create_text(pad_l - 14, centre, anchor="e",
-                                fill=theme.FAINT, font=axis_font(),
-                                text=str(row.get("headcount", 0)))
         if not self.split:
+            # L'effectif : une boite tracee sur douze salaries a la meme
+            # allure qu'une boite tracee sur quatre cents.
+            self.canvas.create_text(pad_l - 14, centre, anchor="e",
+                                    fill=theme.FAINT, font=axis_font(),
+                                    text=str(row.get("headcount", 0)))
             self._draw_one(row, row["salary"], centre, row_height * 0.42,
                            theme.ACCENT_SOFT, theme.ACCENT, to_x)
             return
+
         # Deux demi-boites, femmes au-dessus : deux medianes proches peuvent
         # recouvrir deux distributions tres differentes, et un ecart de
         # mediane nul n'exclut pas que les femmes soient absentes du haut de
         # la fourchette.
-        ecart = row_height * 0.22
+        #
+        # L'ecartement de la paire vaut moins que le blanc qui la separe du
+        # segment suivant, et c'est ce qui la fait lire comme une paire : a
+        # 0,22 de la hauteur de ligne, les deux boites d'un segment etaient
+        # aussi eloignees l'une de l'autre que de celles du voisin, et
+        # l'oeil ne groupait plus rien.
+        ecart = row_height * 0.17
+        self._draw_counts(row, pad_l - 14, centre)
         for sex, decalage, teinte, aplat in (
                 ("female", -ecart, theme.FEMALE, theme.FEMALE_SOFT),
                 ("male", ecart, theme.MALE, theme.MALE_SOFT)):
@@ -899,8 +969,63 @@ class BoxPlotChart(tk.Frame):
             if salary.get("masked") or salary.get("median") is None:
                 continue
             self._draw_one(dict(row, salary=salary, sex=sex),
-                           salary, centre + decalage, row_height * 0.26,
+                           salary, centre + decalage, row_height * 0.24,
                            aplat, teinte, to_x)
+
+        self._draw_gap(row, centre, width)
+
+    def _draw_counts(self, row, droite: float, centre: float) -> None:
+        """« 178 / 111 » : l'effectif de chaque sexe, dans sa teinte.
+
+        Cinq femmes en face de cent vingt hommes ne se lisent pas comme deux
+        boites de meme poids, et l'effectif du segment entier ne le disait
+        pas. Les deux nombres tiennent sur une seule ligne, a la hauteur de
+        la paire : empiles a la hauteur de chaque boite, ils se chevauchaient
+        des que la ligne se resserrait.
+        """
+        import tkinter.font as tkfont
+
+        police = tkfont.Font(root=self, font=axis_font())
+        hommes = str(row.get("male_count", 0))
+        femmes = str(row.get("female_count", 0))
+        x = droite
+        self.canvas.create_text(x, centre, anchor="e", fill=theme.MALE,
+                                font=axis_font(), text=hommes)
+        x -= police.measure(hommes)
+        self.canvas.create_text(x, centre, anchor="e", fill=theme.FAINT,
+                                font=axis_font(), text=" / ")
+        x -= police.measure(" / ")
+        self.canvas.create_text(x, centre, anchor="e", fill=theme.FEMALE,
+                                font=axis_font(), text=femmes)
+
+    def _draw_gap(self, row, centre: float, width: float) -> None:
+        """L'ecart de mediane, a droite de la paire.
+
+        C'est ce qu'on vient chercher en cochant la case. Il n'etait chiffre
+        nulle part : il fallait comparer deux traits verticaux a l'oeil, ce
+        que personne ne fait a un pour cent pres. Le calcul vient du moteur
+        et non d'ici — un graphique qui ferait sa propre soustraction
+        finirait par annoncer un chiffre que le document contredit.
+        """
+        ecart = row.get("median_gap")
+        if ecart is None:
+            # Un cote retenu par le seuil : « rien » et non « zero ». Un
+            # zero se lirait « pas de difference », quand la verite est
+            # « on n'a pas le droit de le dire ».
+            self.canvas.create_text(width - 8, centre, anchor="e",
+                                    fill=theme.FAINT, font=axis_font(),
+                                    text="—")
+            return
+        # Un ecart negatif — les femmes payees davantage — reste en teinte
+        # neutre : c'est une situation a regarder, ce n'est pas celle que la
+        # directive fait surveiller. La couleur ne decide de rien et ne
+        # modifie aucun chiffre ; elle ne fait que signaler ce que le moteur
+        # a deja publie.
+        self.canvas.create_text(
+            width - 8, centre, anchor="e", font=axis_font(),
+            fill=theme.CRIT if ecart >= self.alert * 2 else (
+                theme.WARN if ecart >= self.alert else theme.MUTED),
+            text=f"{ecart:+.1f} %".replace(".", ","))
 
     def _draw_one(self, row, salary, centre: float, span: float,
                   fill: str, outline: str, to_x) -> None:

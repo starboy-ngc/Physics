@@ -379,6 +379,55 @@ class TestSettingsRoundTrip(WindowCase):
             window.destroy()
 
 
+class TestTheDispersionDefaults(WindowCase):
+    """Ce que l'onglet Dispersion propose sans qu'on ait rien touche."""
+
+    def _load_with_positions(self):
+        return self.load(self.source(
+            "postes.csv", rows=120, extra_headers=["Poste"],
+            extra=lambda index: [["Comptable", "Technicien",
+                                  "Chef de projet"][index % 3]]))
+
+    def test_the_position_is_the_dimension_offered_first(self):
+        """C'est l'axe sur lequel une comparaison de remuneration se fait le
+        plus souvent. La BU arrivait en tete parce qu'elle est declaree en
+        premier, ce qui n'est pas une raison."""
+        self._load_with_positions()
+        self.analyse()
+        self.assertEqual(self.app.box_choice.get(), "Poste")
+
+    def test_the_sort_is_by_headcount(self):
+        self._load_with_positions()
+        self.analyse()
+        self.assertEqual(self.app.box_order.get(), "Effectif décroissant")
+        self.assertEqual(self.app.boxplot.order, "headcount")
+
+    def test_the_biggest_segment_comes_first(self):
+        self._load_with_positions()
+        self.analyse()
+        effectifs = [row.get("headcount") or 0
+                     for row in self.app.boxplot._drawable()]
+        self.assertEqual(effectifs, sorted(effectifs, reverse=True))
+
+    def test_a_file_without_positions_falls_back(self):
+        """Le champ n'est pas ecrit en dur : sans colonne de poste, la
+        premiere dimension disponible fait l'affaire."""
+        self.load()
+        self.analyse()
+        self.assertTrue(self.app.box_choice.get())
+        self.assertNotEqual(self.app.box_choice.get(), "")
+
+    def test_the_alert_threshold_reaches_the_chart(self):
+        from tests.support import make_config
+
+        self._load_with_positions()
+        self.analyse()
+        self.assertEqual(
+            self.app.boxplot.alert,
+            self.app.configuration.get(
+                "pay_equity_parameters.gap_alert_threshold"))
+
+
 class TestThemeAndIdentities(WindowCase):
     def test_changing_the_colour_dimension_regroups_the_cloud(self):
         """Le regroupement est refait par le moteur, pas par l'interface :

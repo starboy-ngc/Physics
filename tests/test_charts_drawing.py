@@ -490,6 +490,229 @@ class TestBoxPlot(ChartCase):
 
 
 @needs_display
+class TestSplitPresentation(ChartCase):
+    """Ce que le dedoublement doit montrer, et qu'il ne montrait pas.
+
+    Cocher « distinguer femmes / hommes » repond a une question precise :
+    de combien les deux medianes different, et sur quels effectifs. Rien de
+    tout cela n'etait lisible — l'ecart n'etait chiffre nulle part, les
+    effectifs par sexe non plus, et les deux boites d'un segment etaient
+    aussi eloignees l'une de l'autre que de celles du voisin.
+    """
+
+    def rows(self, count=6, femmes=20, hommes=25, ecart=True):
+        made = []
+        for index in range(count):
+            mediane = 40000 + index * 1500
+            femme = {"median": mediane * (0.92 if ecart else 1.0),
+                     "p25": mediane * 0.85, "p75": mediane * 1.05,
+                     "p10": mediane * 0.78, "p90": mediane * 1.15,
+                     "count": femmes}
+            homme = {"median": mediane, "p25": mediane * 0.9,
+                     "p75": mediane * 1.12, "p10": mediane * 0.82,
+                     "p90": mediane * 1.25, "count": hommes}
+            made.append({
+                "segment": f"Poste {index}", "headcount": femmes + hommes,
+                "masked": False, "chartable": True,
+                "salary": dict(homme, median=mediane),
+                "female": femme, "male": homme,
+                "female_count": femmes, "male_count": hommes,
+                "female_chartable": True, "male_chartable": True,
+                "sex_chartable": True,
+                "median_gap": (homme["median"] - femme["median"])
+                / homme["median"] * 100.0,
+            })
+        return made
+
+    def chart(self, rows=None, alert=5.0):
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        chart = self.build(BoxPlotChart)
+        chart.set_split(True)
+        chart.set_rows(rows if rows is not None else self.rows(), "EUR",
+                       alert=alert)
+        self.root.update()
+        return chart
+
+    def _texts(self, chart):
+        return [chart.canvas.itemcget(item, "text")
+                for item in chart.canvas.find_all()
+                if chart.canvas.type(item) == "text"]
+
+    def test_the_gap_is_written_out(self):
+        """Il fallait comparer deux traits verticaux a l'oeil, ce que
+        personne ne fait a un pour cent pres."""
+        textes = self._texts(self.chart())
+        self.assertTrue(any(text.endswith("%") and text.startswith("+")
+                            for text in textes), textes)
+
+    def test_the_gap_carries_its_sign(self):
+        chart = self.chart(self.rows(count=2))
+        ecarts = [text for text in self._texts(chart) if text.endswith("%")]
+        self.assertTrue(all(text[0] in "+-" for text in ecarts), ecarts)
+
+    def test_the_gap_uses_the_french_decimal_comma(self):
+        ecarts = [text for text in self._texts(self.chart())
+                  if text.endswith("%")]
+        self.assertTrue(all("," in text for text in ecarts), ecarts)
+
+    def test_a_gap_beyond_the_threshold_is_coloured(self):
+        from compensation_analytics.ui import theme
+
+        chart = self.chart(self.rows(count=2))          # ecart de 8 %
+        couleurs = {chart.canvas.itemcget(item, "fill")
+                    for item in chart.canvas.find_all()
+                    if chart.canvas.type(item) == "text"
+                    and chart.canvas.itemcget(item, "text").endswith("%")}
+        self.assertIn(theme.WARN, couleurs)
+
+    def test_a_small_gap_stays_neutral(self):
+        from compensation_analytics.ui import theme
+
+        chart = self.chart(self.rows(count=2, ecart=False))
+        couleurs = {chart.canvas.itemcget(item, "fill")
+                    for item in chart.canvas.find_all()
+                    if chart.canvas.type(item) == "text"
+                    and chart.canvas.itemcget(item, "text").endswith("%")}
+        self.assertNotIn(theme.WARN, couleurs)
+        self.assertNotIn(theme.CRIT, couleurs)
+
+    def test_the_threshold_comes_from_the_configuration(self):
+        """Il etait ecrit en dur dans le graphique alors qu'il existe deja
+        en parametre : deux endroits pour une meme regle, c'est un des deux
+        qui finit faux."""
+        from compensation_analytics.ui import theme
+
+        def couleurs(alert):
+            chart = self.chart(self.rows(count=2), alert=alert)
+            return {chart.canvas.itemcget(item, "fill")
+                    for item in chart.canvas.find_all()
+                    if chart.canvas.type(item) == "text"
+                    and chart.canvas.itemcget(item, "text").endswith("%")}
+
+        self.assertIn(theme.WARN, couleurs(5.0))       # ecart de 8 %
+        self.assertNotIn(theme.WARN, couleurs(20.0))
+
+    def test_an_unknown_gap_is_a_dash_and_never_a_zero(self):
+        """Un zero se lirait « pas de difference », quand la verite est
+        « on n'a pas le droit de le dire »."""
+        rows = self.rows(count=2)
+        rows[0]["median_gap"] = None
+        chart = self.chart(rows)
+        self.assertIn("—", self._texts(chart))
+
+    def test_both_headcounts_are_shown(self):
+        """Cinq femmes en face de cent vingt hommes ne se lisent pas comme
+        deux boites de meme poids."""
+        chart = self.chart(self.rows(count=2, femmes=7, hommes=113))
+        textes = self._texts(chart)
+        self.assertIn("7", textes)
+        self.assertIn("113", textes)
+
+    def test_the_two_headcounts_never_overlap(self):
+        """Empiles a la hauteur de chaque boite, ils se chevauchaient des
+        que la ligne se resserrait."""
+        chart = self.chart(self.rows(count=14, femmes=39, hommes=31))
+        hauteurs = [chart.canvas.coords(item)[1]
+                    for item in chart.canvas.find_all()
+                    if chart.canvas.type(item) == "text"
+                    and chart.canvas.itemcget(item, "text") in ("39", "31")]
+        self.assertTrue(hauteurs)
+        for niveau in set(hauteurs):
+            # Les deux nombres d'un meme segment partagent leur ligne.
+            self.assertEqual(hauteurs.count(niveau), 2)
+
+    def test_each_headcount_wears_the_colour_of_its_sex(self):
+        from compensation_analytics.ui import theme
+
+        chart = self.chart(self.rows(count=2, femmes=7, hommes=113))
+        couleurs = {chart.canvas.itemcget(item, "text"):
+                    chart.canvas.itemcget(item, "fill")
+                    for item in chart.canvas.find_all()
+                    if chart.canvas.type(item) == "text"}
+        self.assertEqual(couleurs["7"], theme.FEMALE)
+        self.assertEqual(couleurs["113"], theme.MALE)
+
+    def test_the_pair_is_tighter_than_the_gap_between_segments(self):
+        """C'est ce qui la fait lire comme une paire : a l'ecartement
+        precedent, les deux boites d'un segment etaient aussi eloignees
+        l'une de l'autre que de celles du voisin."""
+        chart = self.chart(self.rows(count=4))
+        boites = sorted(chart.canvas.coords(item)[1]
+                        for item in chart.canvas.find_all()
+                        if chart.canvas.type(item) == "rectangle"
+                        and chart.canvas.coords(item)[2]
+                        - chart.canvas.coords(item)[0] < 400)
+        self.assertEqual(len(boites), 8)
+        dans = [boites[index + 1] - boites[index]
+                for index in range(0, len(boites), 2)]
+        entre = [boites[index + 2] - boites[index + 1]
+                 for index in range(0, len(boites) - 2, 2)]
+        self.assertLess(max(dans), min(entre))
+
+    def test_the_row_is_taller_when_split(self):
+        """Dix-sept pixels ont ete mesures pour une seule boite : deux
+        boites et leurs effectifs n'y tiennent pas."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        self.assertGreater(BoxPlotChart.ROW_SPLIT_MIN, BoxPlotChart.ROW_MIN)
+
+    def test_the_boxes_sit_inside_their_row(self):
+        """Les boites etaient tracees douze pixels au-dessus des traits
+        qu'elles sont censees couper : l'origine verticale valait 14 en dur
+        quand la grille part de « pad_t »."""
+        chart = self.chart(self.rows(count=3))
+        bandes = [chart.canvas.coords(item)
+                  for item in chart.canvas.find_all()
+                  if chart.canvas.type(item) == "rectangle"
+                  and chart.canvas.coords(item)[0] == 0]
+        self.assertTrue(bandes)
+        boites = [chart.canvas.coords(item)
+                  for item in chart.canvas.find_all()
+                  if chart.canvas.type(item) == "rectangle"
+                  and chart.canvas.coords(item)[0] > 0]
+        for haut, bas in ((bande[1], bande[3]) for bande in bandes):
+            dedans = [boite for boite in boites
+                      if haut <= (boite[1] + boite[3]) / 2 <= bas]
+            # Une bande couvre un segment : ses deux boites, jamais une.
+            self.assertIn(len(dedans), (0, 2), (haut, bas))
+
+    def test_the_reading_key_is_never_cut_off(self):
+        """La phrase se renvoie a la ligne quand la fenetre se resserre, et
+        quand on dedouble — la legende des deux teintes lui prend de la
+        largeur. Mesure faite, jusqu'a vingt-trois pixels de texte etaient
+        coupes par le bas : c'est-a-dire la phrase qui explique le
+        graphique."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        for largeur in (1200, 1000, 900, 800, 700):
+            self.root.geometry(f"{largeur}x520+0+0")
+            self.root.update()
+            chart = self.build(BoxPlotChart)
+            chart.set_split(True)
+            chart.set_rows(self.rows(count=6), "EUR", reference=45000)
+            self.root.update()
+            contenu = chart.footer.bbox("all")
+            if contenu is None:
+                continue
+            self.assertLessEqual(contenu[3], chart.footer.winfo_height(),
+                                 f"pied coupé à {largeur} px")
+            chart.destroy()
+
+    def test_the_plain_view_has_no_bands(self):
+        """Le mode simple n'en a pas besoin : une ligne, une boite."""
+        from compensation_analytics.ui.charts import BoxPlotChart
+
+        chart = self.build(BoxPlotChart)
+        chart.set_rows(self.rows(count=4), "EUR")
+        self.root.update()
+        bandes = [item for item in chart.canvas.find_all()
+                  if chart.canvas.type(item) == "rectangle"
+                  and chart.canvas.coords(item)[0] == 0]
+        self.assertEqual(bandes, [])
+
+
+@needs_display
 class TestSmallCharts(ChartCase):
     """Quartiles, pyramide et tranches : trois lectures a barres."""
 

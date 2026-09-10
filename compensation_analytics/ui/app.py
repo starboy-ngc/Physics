@@ -2137,10 +2137,29 @@ class Application(tk.Tk):
         labels = [segment["label"] for segment in self._segments]
         self.box_choice.configure(values=labels)
         if labels:
-            self.box_choice.current(0)
+            self.box_choice.current(self._default_dimension())
             self._show_boxes()
         else:
             self.boxplot.set_rows([])
+
+    def _default_dimension(self) -> int:
+        """Dimension proposee d'emblee sur la dispersion : le poste.
+
+        C'est l'axe sur lequel une comparaison de remuneration se fait le
+        plus souvent — « travail de meme valeur » se lit d'abord la. La BU
+        arrivait en tete parce qu'elle est declaree en premier, ce qui n'est
+        pas une raison.
+
+        Le champ n'est pas ecrit en dur : c'est celui que la configuration
+        designe deja comme categorie de comparaison. Un fichier sans colonne
+        de poste retombe sur la premiere dimension disponible.
+        """
+        voulu = self.configuration.get(
+            "pay_equity_parameters.category_field", "job_title")
+        for index, segment in enumerate(self._segments):
+            if segment.get("field") == voulu:
+                return index
+        return 0
 
     def _show_boxes(self) -> None:
         """Boites a moustaches de la dimension choisie.
@@ -2167,8 +2186,12 @@ class Application(tk.Tk):
         # La mediane d'ensemble n'est pas repetee en tete : le graphique la
         # trace, et un repere dessine se lit mieux qu'un montant a comparer
         # de tete avec seize boites.
-        self.boxplot.set_rows(rows, currency,
-                              reference=block.get("reference_median"))
+        self.boxplot.set_rows(
+            rows, currency, reference=block.get("reference_median"),
+            # Le seuil qui met un ecart en evidence est celui de la
+            # configuration, pas un nombre ecrit dans le graphique.
+            alert=float(self.configuration.get(
+                "pay_equity_parameters.gap_alert_threshold", 5.0)))
 
     # -------------------------------------------------------------- export
 

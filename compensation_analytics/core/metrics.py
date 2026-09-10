@@ -409,8 +409,29 @@ def segment_by_sex(population: Population, config: Configuration,
         entry["chartable"] = rules.may_chart(len(group))
         entry["sex_chartable"] = (entry["female_chartable"]
                                   or entry["male_chartable"])
+        # L'ecart est ce qu'on vient chercher en dedoublant : il se calcule
+        # ici, du meme cote que tout le reste, et non dans la vue. Un
+        # graphique qui ferait sa propre soustraction finirait par annoncer
+        # un chiffre que le document contredit. Formule de la directive
+        # 2023/970 : (hommes - femmes) / hommes.
+        entry["median_gap"] = _sex_gap(entry, "median")
+        entry["mean_gap"] = _sex_gap(entry, "mean")
         rows.append(entry)
     return rows
+
+
+def _sex_gap(entry: Dict[str, Any], key: str) -> Optional[float]:
+    """Ecart relatif entre les deux sexes, ou rien.
+
+    Rien, et non zero, des qu'un des deux cotes est retenu par le seuil de
+    publication : un ecart de zero se lirait « pas de difference », quand la
+    verite est « on n'a pas le droit de le dire ».
+    """
+    femmes = (entry.get("female") or {}).get(key)
+    hommes = (entry.get("male") or {}).get(key)
+    if femmes is None or hommes is None or not hommes:
+        return None
+    return (hommes - femmes) / hommes * 100.0
 
 
 def calculate_segment_metrics(
