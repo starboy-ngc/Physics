@@ -197,11 +197,19 @@ class TestPrivacy(unittest.TestCase):
             segments=["business_unit"],
         ))
 
-    def test_anonymisation_is_stable_and_not_the_raw_identifier(self):
-        first, second = anonymise("E00042"), anonymise("E00042")
+    def test_anonymisation_is_stable_for_a_given_salt(self):
+        sel = "sel-de-test"
+        first, second = anonymise("E00042", sel), anonymise("E00042", sel)
         self.assertEqual(first, second)
         self.assertNotIn("E00042", first)
-        self.assertNotEqual(anonymise("E00042"), anonymise("E00043"))
+        self.assertNotEqual(anonymise("E00042", sel), anonymise("E00043", sel))
+
+    def test_two_salts_give_two_references(self):
+        """C'est ce qui rend la reference irreversible pour qui ne detient
+        pas le sel : sans cela, un matricule vit dans un espace minuscule et
+        se retrouve par essais successifs en un centieme de seconde."""
+        self.assertNotEqual(anonymise("E00042", "un"),
+                            anonymise("E00042", "deux"))
 
     def test_report_contains_no_names(self):
         html = render_report(self.result.payload)

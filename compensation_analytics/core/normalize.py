@@ -12,6 +12,7 @@ import datetime as _dt
 import hashlib
 import math
 import re
+import secrets
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional
 
@@ -400,10 +401,34 @@ def _observed_max(employees: Iterable["Employee"], field_name: str) -> Optional[
     return max(values) if values else None
 
 
-def anonymise(identifier: str, salt: str = "compensation-analytics") -> str:
-    """Identifiant stable non reversible sans le sel, pour affichage/logs."""
+def anonymise(identifier: str, salt: str) -> str:
+    """Reference stable pour un matricule, irreversible sans le sel.
+
+    Le sel est obligatoire, et c'est tout l'objet de cette fonction. Il
+    valait auparavant une constante ecrite dans le code : la reference
+    n'etait alors anonyme pour personne. Un matricule vit dans un espace
+    minuscule — « E00001 » a « E99999 » —, et quiconque detient l'outil
+    detient le sel : retrouver le matricule derriere une reference publiee
+    demandait un centieme de seconde et quatre mille essais. Le rapport
+    circule, lui.
+    """
     digest = hashlib.sha256(f"{salt}:{identifier}".encode("utf-8")).hexdigest()
     return digest[:12].upper()
+
+
+def anonymisation_salt(config: Configuration) -> str:
+    """Sel employe pour cette execution.
+
+    Vide en configuration — le cas par defaut —, il est tire au hasard a
+    chaque analyse : les references ne valent alors que dans les documents
+    d'une meme execution, et rien ne les relie a un matricule. Renseigne en
+    configuration, il rend les references stables d'une analyse a l'autre
+    sur ce poste, et seul celui qui detient cette configuration peut les
+    rapprocher d'un matricule. Le sel n'entre dans aucun document produit.
+    """
+    declared = str(config.get("privacy_parameters.anonymisation_salt", "")
+                   or "").strip()
+    return declared or secrets.token_hex(16)
 
 
 # ---------------------------------------------------------------- pipeline
@@ -424,6 +449,10 @@ def normalise_table(
     reference = reference_date or _configured_reference_date(config) or _dt.date.today()
 
     anonymise_ids = bool(config.get("privacy_parameters.anonymise_identifiers", True))
+    # Un seul sel pour toute la population : les documents d'une meme
+    # execution se lisent ensemble, et une reference y designe la meme
+    # personne d'un onglet a l'autre.
+    salt = anonymisation_salt(config)
 
     employees: List[Employee] = []
     for offset, row in enumerate(rows):
@@ -457,7 +486,8 @@ def normalise_table(
         if employee.hire_date:
             employee.tenure_years = years_between(employee.hire_date, end_date)
         employee.anonymous_id = (
-            anonymise(employee.employee_id) if (anonymise_ids and employee.employee_id)
+            anonymise(employee.employee_id, salt)
+            if (anonymise_ids and employee.employee_id)
             else employee.employee_id
         )
         employees.append(employee)

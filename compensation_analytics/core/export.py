@@ -201,7 +201,12 @@ def _rows_pay_equity(equity: Dict[str, Any]) -> List[List[Any]]:
     rows.append([])
     rows.append(["Ensemble", "Valeur", "Formule"])
     total = len(rows) + 1
-    detail = f"J2:J{total - 3}" if total > 4 else "J2:J2"
+    #: Vrai des qu'au moins une categorie a ete ecrite au-dessus. Sans
+    #: categorie — un fichier sans colonne de poste —, il n'y a rien a
+    #: sommer : ecrire « SUM(J2:J2) » ferait additionner la ligne vide, et
+    #: la formule n'aurait aucune valeur en cache a afficher tant que le
+    #: tableur ne recalcule pas.
+    detailed = total > 4
     rows.append(["Écart global (%)", equity.get("pay", {}).get("mean_gap"),
                  "(moyenne hommes − moyenne femmes) / moyenne hommes"])
     rows.append([f"À {label.lower()} comparable (%)",
@@ -210,7 +215,8 @@ def _rows_pay_equity(equity: Dict[str, Any]) -> List[List[Any]]:
     rows.append(["Effet de structure (%)", equity.get("structure_gap"),
                  "écart global − écart à catégorie comparable"])
     rows.append(["Rattrapage total",
-                 Formula(f"SUM({detail})", equity.get("at_stake_total")),
+                 Formula(f"SUM(J2:J{total - 3})", equity.get("at_stake_total"))
+                 if detailed else equity.get("at_stake_total"),
                  "somme des rattrapages ci-dessus"])
     rows.append(["Couverture (%)", equity.get("comparable_coverage"),
                  "part de l'effectif où les deux sexes atteignent le seuil"])

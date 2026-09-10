@@ -8,6 +8,7 @@ les fonctions n'acceptent que des compteurs et des libelles techniques.
 from __future__ import annotations
 
 import logging
+import re
 import os
 from typing import Optional
 
@@ -60,6 +61,22 @@ def get_logger() -> logging.Logger:
     return logging.getLogger(LOGGER_NAME)
 
 
+#: Tout ce qui pourrait couper une ligne ou en fabriquer une autre.
+_CONTROL_RE = re.compile(r"[\x00-\x1f\x7f]")
+
+
+def _one_line(value: str) -> str:
+    """Ramene un champ a une seule ligne.
+
+    Un journal se lit une ligne par evenement, et souvent a la machine. Une
+    valeur venue du fichier — un libelle de periode, le detail technique
+    d'une erreur — pouvait porter un retour a la ligne et fabriquer ainsi
+    des evenements qui n'ont jamais eu lieu. Un journal auquel on peut faire
+    dire n'importe quoi ne prouve plus rien.
+    """
+    return _CONTROL_RE.sub(" ", str(value))
+
+
 def log_event(
     module: str,
     action: str,
@@ -73,10 +90,10 @@ def log_event(
         level,
         "",
         extra={
-            "module_name": module,
-            "action": action,
-            "status": status,
+            "module_name": _one_line(module),
+            "action": _one_line(action),
+            "status": _one_line(status),
             "duration": f"{duration:.3f}s" if duration is not None else "-",
-            "detail": detail or "-",
+            "detail": _one_line(detail or "-"),
         },
     )

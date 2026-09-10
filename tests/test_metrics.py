@@ -162,7 +162,15 @@ class TestDistributionAndScatter(unittest.TestCase):
         rows.append(make_row(99, salary=500000))
         population = build_population(rows, config)
         outliers = metrics.calculate_distribution_metrics(population, config)["outliers"]
-        self.assertTrue(all(not item["reference"].startswith("E0") for item in outliers))
+        # « ne commence pas par E0 » etait un raccourci : avec un sel tire
+        # au hasard, une reference sur 256 commence par ces deux
+        # caracteres, et le test echouait sans qu'aucune donnee ne fuie.
+        # Ce qu'il faut verifier est l'inverse : aucun matricule du fichier
+        # ne se retrouve dans la restitution.
+        matricules = {employee.employee_id for employee in population}
+        self.assertTrue(outliers)
+        for item in outliers:
+            self.assertNotIn(item["reference"], matricules)
 
     def test_scatter_trend_line_and_grouping(self):
         config = make_config()

@@ -52,11 +52,34 @@ def build_manifest(
                            else "date d'exécution"),
         "effectif_analyse": headcount,
         "filtres": filters_description,
-        "parametres": config.as_dict(),
+        "parametres": _publishable(config.as_dict()),
     }
     if extra:
         manifest.update(extra)
     return manifest
+
+
+#: Reglages qui ne doivent jamais quitter le poste. Le manifeste porte
+#: toute la configuration — c'est ce qui permet de refaire une analyse a
+#: l'identique — et il accompagne les documents produits : un secret qui y
+#: figure est un secret publie.
+_SECRET_SETTINGS = (("privacy_parameters", "anonymisation_salt"),)
+
+
+def _publishable(parameters: Dict[str, Any]) -> Dict[str, Any]:
+    """Configuration debarrassee de ce qui ne se publie pas.
+
+    Le sel d'anonymisation est ce qui rend une reference irreversible : le
+    joindre au manifeste rendrait tous les matricules retrouvables, et la
+    reference anonyme redeviendrait un matricule en clair.
+    """
+    cleaned = {section: dict(values) if isinstance(values, dict) else values
+               for section, values in parameters.items()}
+    for section, key in _SECRET_SETTINGS:
+        if isinstance(cleaned.get(section), dict) and key in cleaned[section]:
+            cleaned[section][key] = "(non publié)" if cleaned[section][key] \
+                else ""
+    return cleaned
 
 
 def write_manifest(manifest: Dict[str, Any], path: str) -> str:

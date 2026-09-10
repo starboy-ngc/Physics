@@ -147,6 +147,15 @@ DEFAULTS: Dict[str, Any] = {
         "min_headcount_warning": 10,
         "min_headcount_chart": 10,
         "anonymise_identifiers": True,
+        # Sel des references anonymes. Vide : il est tire au hasard a chaque
+        # analyse, et les references ne valent que dans les documents d'une
+        # meme execution — c'est le reglage le plus protecteur. Renseigne,
+        # les references deviennent stables d'une analyse a l'autre sur ce
+        # poste, ce qui permet de suivre une situation d'une periode a la
+        # suivante ; seul celui qui detient ce fichier de parametres peut
+        # alors les rapprocher d'un matricule. Ne le communiquez pas avec
+        # les documents produits.
+        "anonymisation_salt": "",
         "log_personal_data": False,
         # Identifier un salarie a l'ecran est le geste meme de l'analyse :
         # un point du nuage a trente pour cent sous la mediane ne veut rien

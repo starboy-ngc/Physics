@@ -348,7 +348,17 @@ CONFIDENTIALITÉ
   fenêtre la reconstruit depuis votre fichier au moment de l'afficher.
 
   Les matricules sont remplacés par une référence anonyme dans les
-  restitutions. L'export des données individuelles est désactivé par
+  restitutions. Cette référence est le condensé du matricule et d'un
+  SEL, et le sel décide de tout : un matricule vit dans un espace
+  minuscule, et si le sel est connu, retrouver le matricule derrière
+  une référence publiée prend un centième de seconde.
+
+  Par défaut le sel est tiré au hasard à chaque analyse : les
+  références ne valent que dans les documents d'une même exécution.
+  Renseignez privacy_parameters.anonymisation_salt pour les rendre
+  stables d'une période à la suivante — et ne communiquez alors pas ce
+  fichier de paramètres avec les documents produits. Le manifeste, lui,
+  n'en porte jamais la valeur. L'export des données individuelles est désactivé par
   défaut. Le journal technique ne contient ni nom, ni matricule, ni
   salaire individuel.
 

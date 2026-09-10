@@ -370,6 +370,27 @@ ni dans aucun journal.
 - Les matricules sont remplacés par une référence anonyme dans les
   restitutions.
 
+### Ce que vaut la référence anonyme
+
+Une référence est le condensé du matricule et d'un **sel**. Le sel décide de
+tout : un matricule vit dans un espace minuscule — « E00001 » à « E99999 » —,
+et si le sel est connu, retrouver le matricule derrière une référence publiée
+demande quelques milliers d'essais, soit un centième de seconde. Le rapport
+circule, lui.
+
+Par défaut, `anonymisation_salt` est vide : **un sel est tiré au hasard à
+chaque analyse.** Les références ne valent alors que dans les documents d'une
+même exécution, et rien ne les relie à un matricule — pas même pour vous.
+
+Renseignez `privacy_parameters.anonymisation_salt` avec une phrase de votre
+choix si vous voulez **suivre une situation d'une période à la suivante** : les
+références deviennent stables d'une analyse à l'autre sur ce poste. Seul celui
+qui détient ce fichier de paramètres peut alors les rapprocher d'un matricule.
+
+**Ne communiquez pas ce fichier avec les documents produits.** Le manifeste
+recopie toute la configuration — c'est ce qui permet de refaire une analyse à
+l'identique — mais le sel en est retiré et remplacé par « (non publié) ».
+
 ### Voir qui se cache derrière un point
 
 Dans la fenêtre, le nuage de points **nomme le salarié survolé** (« DUPONT

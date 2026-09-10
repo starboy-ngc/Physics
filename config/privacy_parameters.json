@@ -3,6 +3,7 @@
   "min_headcount_warning": 10,
   "min_headcount_chart": 10,
   "anonymise_identifiers": true,
+  "anonymisation_salt": "",
   "log_personal_data": false,
   "show_identities_on_screen": true
 }
