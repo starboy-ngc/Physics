@@ -3,8 +3,13 @@ Analyse de rémunération locale et hors ligne
 ===================================================================
 
 PRÉREQUIS
-    Python 3.9 ou supérieur. Rien d'autre : aucune installation,
+    Python 3.10 ou supérieur. Rien d'autre : aucune installation,
     aucune bibliothèque à télécharger, aucun accès Internet.
+
+    Essayé sur 3.10, 3.11, 3.12 et 3.13 : suite de tests complète
+    et production des documents. La 3.9 devrait convenir — aucune
+    construction plus récente n'est employée — mais elle n'a pas
+    été essayée, et cela ne se promet donc pas.
 
     Vérifier :   py --version          (Windows)
                  python3 --version     (Mac / Linux)

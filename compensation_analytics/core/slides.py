@@ -25,10 +25,6 @@ from .reporting import (format_money, format_number, format_percent,
                         format_years,
                         histogram_svg, scatter_svg)
 
-SLIDE_WIDTH = 1280
-SLIDE_HEIGHT = 720
-
-
 @dataclass
 class Block:
     """Element de contenu d'une slide, independant du format de sortie."""
@@ -465,7 +461,9 @@ _SLIDE_CSS = """
 body{margin:0;background:var(--deck);color:var(--ink);
 font:15px/1.45 "Segoe UI",Calibri,Arial,sans-serif}
 .deck{display:flex;flex-direction:column;align-items:center;gap:20px;padding:24px}
-/* La page garde une geometrie fixe (1280x720) : c'est ce qui garantit que
+/* La page garde une geometrie fixe (1280x720), decidee ici et nulle part
+   ailleurs — le PDF a la sienne, PDF_WIDTH et PDF_HEIGHT. C'est ce qui
+   garantit que
    l'ecran, l'impression et le PDF montrent exactement la meme chose. Pour
    tenir sur un ecran plus etroit, elle est mise à l'echelle plutot que
    reagencee. `--slide-scale` est calculé au chargement et au redimensionnement ;

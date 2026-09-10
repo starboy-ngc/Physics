@@ -108,12 +108,6 @@ def _sniff_delimiter(sample: str) -> str:
         return best if counts[best] else ","
 
 
-def _pad(row: Sequence[Any], width: int) -> List[Any]:
-    values = list(row[:width])
-    values.extend([""] * (width - len(values)))
-    return values
-
-
 # -------------------------------------------------------------------------- XLSX
 
 

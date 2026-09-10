@@ -117,4 +117,6 @@ générateur pseudo-aléatoire à graine fixe.
 
 ## Prérequis
 
-Python 3.9 ou supérieur. Rien d'autre.
+Python 3.10 ou supérieur. Rien d'autre.
+
+Essayé sur 3.10, 3.11, 3.12 et 3.13. La 3.9 devrait convenir — aucune construction plus récente n'est employée — mais elle n'a pas été essayée.

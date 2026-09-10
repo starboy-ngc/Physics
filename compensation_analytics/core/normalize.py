@@ -51,12 +51,6 @@ _DATE_FORMATS = (
 )
 _DAYS_PER_YEAR = 365.2425
 
-TEXT_FIELDS = (
-    "gender", "business_unit", "country", "site", "job",
-    "job_family", "grade", "status",
-)
-
-
 @dataclass
 class Employee:
     """Salarie normalise. Les champs derives sont calcules une seule fois."""

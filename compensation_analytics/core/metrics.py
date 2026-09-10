@@ -17,7 +17,6 @@ from .normalize import Employee, Population
 from .segmentation import dimension_fields, dimension_label, split_by
 from . import statistics_engine as stats
 
-MASKED = None
 MASK_REASON = "Effectif insuffisant : résultat masqué pour préserver la confidentialité."
 
 
