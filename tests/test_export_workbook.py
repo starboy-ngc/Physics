@@ -290,6 +290,92 @@ class TestMaskedContent(WorkbookCase):
         self.assertIn("masqué", rows)
 
 
+class TestUnusualWorkbooks(WorkbookCase):
+    """Ce que le classeur devient quand le fichier n'est pas parfait."""
+
+    def test_the_quality_findings_are_written_line_by_line(self):
+        """Le classeur porte le controle qualite : c'est lui qu'on envoie a
+        qui doit corriger le fichier."""
+        result = self.analyse(overrides={
+            "salary_parameters": {"max_plausible": 40000}})
+        sheets = self.workbook(result, "qualite.xlsx")
+        values = [value for (_f, value)
+                  in sheets["Qualité des données"].values()]
+        self.assertIn("Sévérité", values)
+        self.assertTrue(any(isinstance(value, str)
+                            and "seuil" in value.lower() for value in values),
+                        values)
+
+    def test_the_outliers_are_listed_with_their_reference(self):
+        import csv
+
+        path = os.path.join(self.directory, "atypiques.csv")
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(HEADERS)
+            for index in range(40):
+                writer.writerow(list(make_row(index, salary=40000 + index * 50)))
+            for index in (900, 901):
+                writer.writerow(list(make_row(index, salary=400000)))
+        from compensation_analytics.core.config import write_default_configuration
+
+        config_dir = os.path.join(self.directory, "config-atypiques")
+        write_default_configuration(config_dir)
+        result = run_analysis(AnalysisRequest(source_path=path,
+                                              config_dir=config_dir))
+        self.assertTrue(result.payload["distribution"]["outliers"])
+        sheets = self.workbook(result, "atypiques.xlsx")
+        values = [value for (_f, value) in sheets["Distribution"].values()]
+        self.assertIn("Référence", values)
+        self.assertIn("Position", values)
+        matricules = {employee.employee_id for employee in result.filtered}
+        for value in values:
+            self.assertNotIn(value, matricules)
+
+    def test_a_missing_cell_leaves_a_plain_value_instead_of_a_formula(self):
+        """Une formule qui pointe une case vide afficherait une erreur la ou
+        le chiffre est parfaitement connu.
+
+        Le pipeline ne produit pas ce cas — P10 et P90 sont toujours
+        calcules, la dispersion en depend, et « percentiles » ne decide que
+        de ce qui est *publie*. C'est donc un garde-fou, et il se verifie
+        la ou il vit.
+        """
+        from compensation_analytics.core.export import _derived
+
+        complete = _derived("B{p90}/B{p10}", {"p90": 12, "p10": 8}, 1.5)
+        self.assertEqual(complete.expression, "B12/B8")
+        self.assertEqual(complete.value, 1.5)
+        partial = _derived("B{p90}/B{p10}", {"p90": 12}, 1.5)
+        self.assertEqual(partial, 1.5)
+
+    def test_every_published_percentile_keeps_its_row(self):
+        result = self.analyse(overrides={
+            "percentile_parameters": {"percentiles": [25, 50, 75]}})
+        sheets = self.workbook(result, "trois-percentiles.xlsx")
+        values = [value for (_f, value) in sheets["Rémunération"].values()]
+        self.assertIn("Q1 (P25)", values)
+        self.assertIn("Q3 (P75)", values)
+
+    def test_a_workbook_without_a_salary_column_says_so(self):
+        """L'onglet « Controle » ne peut pas etre pose sans la colonne des
+        remunerations : il le dit plutot que d'ecrire des formules vides."""
+        from compensation_analytics.core.export import _rows_control
+
+        rows = _rows_control([["Référence", "BU"], ["R1", "France"]],
+                             {"median": 40000})
+        self.assertIn("absente", rows[0][0])
+
+    def test_the_control_sheet_skips_what_the_engine_withheld(self):
+        from compensation_analytics.core.export import _rows_control
+
+        rows = _rows_control([["Salaire de base"], [40000], [42000]],
+                             {"median": 41000})
+        labels = [row[0] for row in rows[1:] if row]
+        self.assertIn("Médiane", labels)
+        self.assertNotIn("P90", labels)
+
+
 class TestWriterItself(unittest.TestCase):
     """Le redacteur XLSX, sur ses cas limites."""
 

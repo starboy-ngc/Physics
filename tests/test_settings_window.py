@@ -251,6 +251,152 @@ class TestSaving(SettingsCase):
             os.path.join(self.directory, "population_mapping.json")))
 
 
+class TestCreatingAField(SettingsCase):
+    """Rattacher une colonne a un champ qui n'existe pas encore.
+
+    C'est ce qui permet d'analyser une notion propre a l'entreprise — une
+    prime maison, un dispositif local — sans toucher au code.
+    """
+
+    def _answer(self, text):
+        """Remplace la boite de saisie du systeme."""
+        from compensation_analytics.ui import settings as module
+
+        saved = module.simpledialog.askstring
+        module.simpledialog.askstring = lambda *_a, **_k: text
+        self.addCleanup(setattr, module.simpledialog, "askstring", saved)
+
+    def _warnings(self):
+        from compensation_analytics.ui import settings as module
+
+        caught = []
+        saved = module.messagebox.showwarning
+        module.messagebox.showwarning = lambda *args, **kwargs: caught.append(args)
+        self.addCleanup(setattr, module.messagebox, "showwarning", saved)
+        return caught
+
+    def _create(self, header="Prime de panier"):
+        from compensation_analytics.ui.settings import NEW_FIELD
+
+        box = self.window._boxes[list(self.window.assignments).index(header)]
+        self.window.assignments[header].set(NEW_FIELD)
+        self.window._chose(header, box)
+        self.window.update()
+        return box
+
+    def test_a_new_field_is_created_and_assigned(self):
+        self._answer("prime_panier")
+        self._create()
+        self.assertEqual(self.window.assignments["Prime de panier"].get(),
+                         "prime_panier")
+        section = self.window.collect()
+        self.assertIn("Prime de panier", section["fields"]["prime_panier"])
+
+    def test_the_new_field_becomes_a_dimension(self):
+        self._answer("prime_panier")
+        self._create()
+        section = self.window.collect()
+        self.assertIn("prime_panier",
+                      [entry["field"] for entry in section["dimensions"]])
+
+    def test_the_name_is_made_writable_on_the_command_line(self):
+        """Sans accent ni espace : il s'ecrit aussi en ligne de commande."""
+        self._answer("Prime de Panier été")
+        self._create()
+        name = self.window.assignments["Prime de panier"].get()
+        self.assertTrue(name.isascii(), name)
+        self.assertNotIn(" ", name)
+
+    def test_an_existing_name_is_refused_rather_than_duplicated(self):
+        warned = self._warnings()
+        self._answer("base_salary")
+        self._create()
+        self.assertTrue(warned)
+        from compensation_analytics.ui.settings import IGNORED
+
+        self.assertEqual(self.window.assignments["Prime de panier"].get(),
+                         IGNORED)
+
+    def test_cancelling_leaves_the_column_ignored(self):
+        from compensation_analytics.ui.settings import IGNORED
+
+        self._answer(None)
+        self._create()
+        self.assertEqual(self.window.assignments["Prime de panier"].get(),
+                         IGNORED)
+
+    def test_the_new_field_is_offered_to_every_other_column(self):
+        self._answer("prime_panier")
+        box = self._create()
+        for other in self.window._boxes:
+            self.assertIn("prime_panier", other.cget("values"))
+
+
+class TestSavingWhenTheFolderRefuses(SettingsCase):
+    """Un poste verrouille est le cas nominal, pas l'exception.
+
+    Le dossier de configuration peut etre en lecture seule : plutot que de
+    perdre la saisie, la fenetre propose d'en choisir un autre.
+    """
+
+    def _dialogs(self, retry, chosen):
+        from compensation_analytics.ui import settings as module
+
+        asked = []
+        saved = (module.messagebox.askretrycancel,
+                 module.filedialog.askdirectory)
+        module.messagebox.askretrycancel = lambda *a, **k: (asked.append(a)
+                                                            or retry)
+        module.filedialog.askdirectory = lambda *a, **k: chosen
+        self.addCleanup(
+            lambda: (setattr(module.messagebox, "askretrycancel", saved[0]),
+                     setattr(module.filedialog, "askdirectory", saved[1])))
+        return asked
+
+    def _lock(self):
+        """Un chemin qui n'est pas un dossier : l'ecriture y echoue."""
+        blocked = os.path.join(self.directory, "verrou")
+        with open(blocked, "w", encoding="utf-8") as handle:
+            handle.write("x")
+        self.window.config_dir = blocked
+        return blocked
+
+    def test_another_folder_is_offered_and_used(self):
+        self._lock()
+        elsewhere = os.path.join(self.directory, "ailleurs")
+        os.makedirs(elsewhere, exist_ok=True)
+        asked = self._dialogs(retry=True, chosen=elsewhere)
+        self.window.save()
+        self.assertTrue(asked)
+        self.assertTrue(os.path.isfile(
+            os.path.join(elsewhere, "population_mapping.json")))
+
+    def test_declining_keeps_the_screen_open_and_writes_nothing(self):
+        blocked = self._lock()
+        self._dialogs(retry=False, chosen="")
+        self.window.save()
+        self.assertTrue(os.path.isfile(blocked))
+        self.assertTrue(self.window.winfo_exists())
+
+    def test_cancelling_the_folder_choice_writes_nothing(self):
+        self._lock()
+        self._dialogs(retry=True, chosen="")
+        self.window.save()
+        self.assertTrue(self.window.winfo_exists())
+
+    def test_the_caller_is_told_where_the_settings_went(self):
+        """La fenetre principale doit relire le fichier depuis le bon
+        dossier, qui n'est pas forcement celui qu'elle avait."""
+        elsewhere = os.path.join(self.directory, "ailleurs2")
+        os.makedirs(elsewhere, exist_ok=True)
+        self._lock()
+        self._dialogs(retry=True, chosen=elsewhere)
+        told = []
+        self.window.on_saved = lambda directory, path: told.append(directory)
+        self.window.save()
+        self.assertEqual(told, [elsewhere])
+
+
 @needs_display
 class TestWithoutAFile(unittest.TestCase):
     """La fenetre s'ouvre aussi avant tout import."""
