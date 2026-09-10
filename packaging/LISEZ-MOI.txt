@@ -382,6 +382,14 @@ JEUX DE DÉMONSTRATION FOURNIS
   population-demo-avec-defauts.xlsx   les mêmes, avec 5 anomalies
                                       volontaires pour voir le contrôle
                                       qualité les détecter
+  population-realiste.xlsx            900 salariés, patronymes plausibles,
+                                      grille de rémunération vraisemblable
+                                      et 11 anomalies TOUTES NON
+                                      BLOQUANTES : le contrôle rend
+                                      "POINTS DE VIGILANCE" et l'analyse
+                                      se lance. C'est le fichier pour
+                                      regarder l'outil comme on le
+                                      regardera en vrai.
 
   Aucune donnée réelle : tout est généré par un tirage à graine fixe.
 

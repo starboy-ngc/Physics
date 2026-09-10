@@ -14,6 +14,7 @@ verifiable de bout en bout par une DSI.
 from __future__ import annotations
 
 import argparse
+import datetime as _dt
 import os
 import shutil
 import sys
@@ -120,6 +121,18 @@ def build_populations(destination: str, rows: int, seed: int) -> None:
     write_population(
         os.path.join(destination, "population-demo-avec-defauts.xlsx"),
         rows=rows, seed=seed, clean=False)
+
+    # Un troisieme jeu, pour regarder l'outil comme on le regardera en vrai :
+    # patronymes plausibles, grille de remuneration qui tient debout, et des
+    # anomalies toutes non bloquantes — l'analyse se lance, et l'on voit ce
+    # que le controle signale sans qu'il refuse de travailler.
+    from tools.generate_realistic_population import construire
+    from compensation_analytics.io.xlsx_writer import write_workbook
+    from tools.generate_realistic_population import HEADERS as ENTETES
+
+    lignes, _anomalies = construire(900, 20260910, _dt.date.today())
+    write_workbook(os.path.join(destination, "population-realiste.xlsx"),
+                   [("Population", [ENTETES] + lignes)])
 
 
 def zip_tree(tree: str, archive: str) -> str:
