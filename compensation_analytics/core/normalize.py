@@ -29,8 +29,18 @@ _CODES = ("eur|usd|gbp|chf|cad|aud|jpy|cny|sek|nok|dkk|pln|czk|huf|ron|bgn|"
           "try|brl|mxn|inr|zar|sgd|hkd|aed|mad|tnd|xof|xaf")
 _CODE_LEADING_RE = re.compile(rf"(?i)^(?:{_CODES})\s*")
 _CODE_TRAILING_RE = re.compile(rf"(?i)\s*(?:{_CODES})$")
-#: Forme acceptee apres nettoyage : un signe, des chiffres, des separateurs.
-_NUMBER_SHAPE_RE = re.compile(r"^[+-]?\d+(?:[.,]\d+)*$")
+#: Forme acceptee apres nettoyage. Un separateur repete ne peut etre que
+#: celui des milliers, et il ne groupe alors que par trois : « 1.234.567 »
+#: est un nombre, « 1.2.3.4 » n'en est pas un. La forme precedente acceptait
+#: n'importe quel groupement, et retirait ensuite les points : un numero de
+#: version lu dans une colonne de salaires devenait 1 234, sans la moindre
+#: alerte — precisement la corruption silencieuse que ce controle existe
+#: pour empecher.
+_NUMBER_SHAPE_RE = re.compile(r"""^[+-]?(?:
+      \d+(?:[.,]\d+)?                  # 45000  45000.50  45000,50
+    | \d{1,3}(?:\.\d{3})+(?:,\d+)?     # 45.000  45.000,50
+    | \d{1,3}(?:,\d{3})+(?:\.\d+)?     # 45,000  45,000.50
+    )$""", re.VERBOSE)
 #: Nombre deja ecrit sans fioriture. La grande majorite des cellules d'un
 #: fichier de paie en sont : les traiter sans passer par le nettoyage evite
 #: d'en payer le cout cinq fois, a chaque champ et pour chaque salarie.
