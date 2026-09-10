@@ -113,6 +113,23 @@ def build_mapping_section(current: Dict[str, Any],
         for name, aliases in (current.get("fields") or {}).items()
     }
 
+    # Une colonne mise a « ignoree » cesse d'etre un alias, de ce champ
+    # comme de tout autre. Sans cela, l'ecran disait « ignoree » et la
+    # colonne restait declaree dans les parametres : l'analyse suivante la
+    # relisait, sans que rien ne le signale. Une fenetre de reglage qui
+    # n'obtient pas ce qu'elle affiche ne sert a rien.
+    ignored = {normalise_label(header)
+               for header, field_name in assignments.items()
+               if field_name == IGNORED}
+    if ignored:
+        fields = {name: [alias for alias in aliases
+                         if normalise_label(alias) not in ignored]
+                  for name, aliases in fields.items()}
+        # Un champ dont il ne reste aucun alias n'est plus associe a rien :
+        # le retirer est ce qui permet au controle des champs obligatoires
+        # de s'apercevoir qu'il manque.
+        fields = {name: aliases for name, aliases in fields.items() if aliases}
+
     # Une colonne associee a un champ en devient l'alias principal : c'est ce
     # qui rend l'association durable d'un fichier a l'autre.
     for header, field_name in assignments.items():
@@ -542,7 +559,13 @@ class SettingsWindow(tk.Toplevel):
             assignments, flags, limit)
 
         required = section.get("required") or []
-        missing = [name for name in required if name not in section["fields"]]
+        # Ce qui compte est qu'une colonne *de ce fichier* porte le champ,
+        # et non qu'il subsiste une orthographe dans les parametres : un
+        # champ obligatoire garde volontiers d'autres alias, prevus pour
+        # d'autres fichiers, et le controle ne s'apercevait alors de rien.
+        # Sans fichier charge, il n'y a rien a controler.
+        missing = ([name for name in required if name not in used]
+                   if self.headers else [])
         if missing:
             raise CompensationError(
                 "Les champs obligatoires suivants ne sont plus associés à "
