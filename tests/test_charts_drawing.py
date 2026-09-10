@@ -42,9 +42,10 @@ needs_display = unittest.skipUnless(
 class Motion:
     """Evenement de souris minimal, pour appeler les gestionnaires."""
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, delta=0, num=0):
         self.x, self.y = x, y
         self.x_root, self.y_root = x + 100, y + 100
+        self.delta, self.num = delta, num
 
 
 class ChartCase(unittest.TestCase):
@@ -254,6 +255,132 @@ class TestScatter(ChartCase):
         chart = self.chart({"available": True, "points": [
             {"x": 5, "y": 40000, "group": "France", "row": 2}]})
         self.assertEqual(len(chart._items), 1)
+
+
+@needs_display
+class TestScatterExploration(ChartCase):
+    """Le nuage est explorable : deplacement, zoom, selection, tendance.
+
+    « Le zoom et le deplacement ne changent que la fenetre affichee : les
+    donnees ne sont jamais filtrees a l'insu de l'utilisateur. » C'est la
+    promesse de ce graphique, et elle se verifie.
+    """
+
+    def chart(self, trend=False, count=40):
+        from compensation_analytics.ui.charts import ScatterChart
+
+        dataset = {"available": True, "points": [
+            {"x": index % 20, "y": 30000 + (index % 20) * 900,
+             "group": ["France", "Iberia"][index % 2], "row": index + 2,
+             "reference": f"REF{index}"} for index in range(count)]}
+        if trend:
+            dataset["trend"] = {"slope": 900.0, "intercept": 30000.0}
+        chart = self.build(ScatterChart)
+        chart.set_dataset(dataset)
+        self.root.update()
+        return chart
+
+    def _empty_spot(self, chart):
+        """Un point du canevas ou il n'y a aucun salarie."""
+        return (chart.canvas.winfo_width() - 5, 5)
+
+    def test_the_trend_line_is_drawn_when_the_engine_gives_one(self):
+        """Elle vient du moteur : l'interface ne calcule aucune
+        regression, elle trace celle qu'on lui donne."""
+        chart = self.chart()
+        plain = len(chart.canvas.find_all())
+        chart.dataset["trend"] = {"slope": 900.0, "intercept": 30000.0}
+        chart.redraw()
+        self.root.update()
+        self.assertEqual(len(chart.canvas.find_all()), plain + 1)
+
+    def test_dragging_moves_the_window_and_keeps_every_point(self):
+        chart = self.chart()
+        before = chart._view
+        x, y = self._empty_spot(chart)
+        chart._on_click(Motion(x, y))
+        chart._on_drag(Motion(x - 60, y + 40))
+        self.root.update()
+        self.assertNotEqual(chart._view, before)
+        self.assertEqual(len(chart.points), 40)
+
+    def test_dragging_without_having_pressed_does_nothing(self):
+        chart = self.chart()
+        before = chart._view
+        chart._on_drag(Motion(10, 10))
+        self.assertEqual(chart._view, before)
+
+    def test_the_wheel_zooms_both_ways(self):
+        chart = self.chart()
+        full = chart._view
+        chart._on_wheel(Motion(200, 200, delta=120))
+        zoomed = chart._view
+        self.assertLess(zoomed[1] - zoomed[0], full[1] - full[0])
+        chart._on_wheel(Motion(200, 200, delta=-120))
+        self.assertGreater(chart._view[1] - chart._view[0],
+                           zoomed[1] - zoomed[0])
+
+    def test_zooming_out_far_enough_shows_everything_again(self):
+        chart = self.chart()
+        full = chart._view
+        for _ in range(12):
+            chart._zoom(200, 200, 1.2)
+        self.assertEqual(chart._view, full)
+
+    def test_zooming_in_stops_before_the_window_collapses(self):
+        chart = self.chart()
+        for _ in range(60):
+            chart._zoom(200, 200, 1 / 1.2)
+        width = chart._view[1] - chart._view[0]
+        self.assertGreater(width, 0)
+        self.assertEqual(len(chart.visible_points()), 40)
+
+    def test_zooming_an_empty_chart_does_nothing(self):
+        from compensation_analytics.ui.charts import ScatterChart
+
+        chart = self.build(ScatterChart)
+        chart.set_dataset({"available": False, "points": []})
+        chart._zoom(100, 100, 0.5)
+        self.assertIsNone(chart._view)
+
+    def test_clicking_a_point_then_the_same_point_unselects_it(self):
+        chart = self.chart()
+        item = next(iter(chart._items))
+        x, y = chart.canvas.coords(item)[:2]
+        chart._on_click(Motion(int(x), int(y)))
+        self.assertIsNotNone(chart.selected)
+        chart._on_click(Motion(int(x), int(y)))
+        self.assertIsNone(chart.selected)
+
+    def test_moving_over_empty_space_hides_the_bubble(self):
+        chart = self.chart()
+        item = next(iter(chart._items))
+        x, y = chart.canvas.coords(item)[:2]
+        chart._on_motion(Motion(int(x), int(y)))
+        chart._on_motion(Motion(*self._empty_spot(chart)))
+        self.root.update()
+        if chart.tooltip.window is not None:
+            self.assertEqual(chart.tooltip.window.state(), "withdrawn")
+
+    def test_the_bubble_falls_back_on_the_anonymous_reference(self):
+        """Sans resolveur d'identite — le reglage decoche —, le graphique
+        n'a que la reference, et c'est tout ce qu'il doit montrer."""
+        chart = self.chart()
+        self.assertIsNone(chart.identify)
+        point = next(iter(chart._items.values()))
+        self.assertEqual(chart._label_of(point), point["reference"])
+
+    def test_no_bubble_while_dragging(self):
+        """Une bulle qui suit la souris pendant un deplacement rend le
+        geste illisible."""
+        chart = self.chart()
+        chart._drag = (10, 10, chart._view)
+        item = next(iter(chart._items))
+        x, y = chart.canvas.coords(item)[:2]
+        chart._on_motion(Motion(int(x), int(y)))
+        self.root.update()
+        if chart.tooltip.window is not None:
+            self.assertNotEqual(chart.tooltip.window.state(), "normal")
 
 
 @needs_display
