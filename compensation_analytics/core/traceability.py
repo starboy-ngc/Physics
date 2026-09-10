@@ -35,6 +35,7 @@ def build_manifest(
     filters_description: str,
     headcount: int,
     analysis_date: Optional[_dt.datetime] = None,
+    reference_date: Optional[_dt.date] = None,
     extra: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     moment = analysis_date or _dt.datetime.now()
@@ -44,6 +45,11 @@ def build_manifest(
         "date_analyse": moment.isoformat(timespec="seconds"),
         "fichier_source": os.path.basename(source_path) if source_path else "",
         "empreinte_source": file_fingerprint(source_path) if source_path else "",
+        # La date de reference decide de tous les ages et de toutes les
+        # anciennetes : sans elle au manifeste, une analyse rejouee un an
+        # plus tard donne d'autres tranches et personne ne sait pourquoi.
+        "date_reference": (reference_date.isoformat() if reference_date
+                           else "date d'exécution"),
         "effectif_analyse": headcount,
         "filtres": filters_description,
         "parametres": config.as_dict(),

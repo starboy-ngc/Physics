@@ -91,8 +91,9 @@ def _read_csv(path: str) -> Table:
             "Le fichier importe est vide.",
             technical="csv file has no rows",
         )
-    headers = [str(cell).strip() for cell in rows[0]]
-    body = [_pad(row, len(headers)) for row in rows[1:]]
+    keep = _named_columns(rows[0])
+    headers = [str(rows[0][index]).strip() for index in keep]
+    body = _select(rows[1:], keep)
     return Table(headers=headers, rows=body, source_name=os.path.basename(path))
 
 
@@ -141,9 +142,9 @@ def _read_xlsx(path: str, sheet: str | None) -> Table:
             "L'onglet importe ne contient aucune donnée.",
             technical="xlsx sheet has no rows",
         )
-    headers = [str(cell).strip() if cell is not None else "" for cell in rows[0]]
-    width = len(headers)
-    body = [_pad(row, width) for row in rows[1:]]
+    keep = _named_columns(rows[0])
+    headers = [str(rows[0][index]).strip() for index in keep]
+    body = _select(rows[1:], keep)
     return Table(headers=headers, rows=body, source_name=os.path.basename(path))
 
 
@@ -241,8 +242,33 @@ def _read_sheet(
                 values.append(_cell_value(cell, shared, date_styles))
             rows.append(values)
             element.clear()
-    width = max((len(row) for row in rows), default=0)
-    return [_pad(row, width) for row in rows]
+    # Les lignes sont rendues telles quelles, sans etre alignees sur la plus
+    # large. Les aligner ici materialisait toutes les cellules vides jusqu'a
+    # la derniere colonne rencontree : une seule cellule egaree en XFD — une
+    # ligne mise en forme jusqu'au bout de la feuille, ce qu'un export RH
+    # comporte souvent — portait un fichier de 5 000 lignes a 16 384
+    # colonnes, soit 82 millions de cellules, 1,3 Go de memoire et dix
+    # secondes de lecture. C'est l'en-tete qui decide de la largeur utile,
+    # et lui seul.
+    return rows
+
+
+def _named_columns(header_row: Sequence[Any]) -> List[int]:
+    """Indices des colonnes portant un intitule.
+
+    Une colonne sans intitule ne peut correspondre a aucun champ : le
+    mapping l'ignore de toute facon. La retirer des l'import evite d'en
+    porter le poids d'un bout a l'autre de la chaine — et surtout de
+    materialiser des millions de cellules vides.
+    """
+    return [index for index, cell in enumerate(header_row)
+            if str(cell if cell is not None else "").strip()]
+
+
+def _select(rows: List[List[Any]], keep: List[int]) -> List[List[Any]]:
+    """Ne conserve que les colonnes retenues, en comblant les manquantes."""
+    return [[row[index] if index < len(row) else "" for index in keep]
+            for row in rows]
 
 
 #: Au-dela de cet ecart, la ligne annoncee releve du fichier fabrique et

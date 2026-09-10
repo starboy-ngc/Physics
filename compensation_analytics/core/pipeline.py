@@ -232,6 +232,8 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
         config=config,
         filters_description=describe_filters(request.filters, config),
         headcount=len(filtered),
+        reference_date=(request.reference_date
+                        or population.reference_date),
         # La periode entre au manifeste : refaire l'analyse a l'identique
         # sur un fichier pluriannuel exige de savoir laquelle a servi.
         extra={"segments_analyses": segment_fields,

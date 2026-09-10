@@ -19,7 +19,7 @@ from typing import Any, Dict, List, Optional
 
 from .core.config import (default_config_dir, load_configuration,
                           write_default_configuration)
-from .core.errors import CompensationError
+from .core.errors import CompensationError, ConfigError
 from .core.export import export_excel
 from .core.logging_setup import configure_logging, log_event
 from .core.mapping import resolve_mapping
@@ -78,7 +78,22 @@ def parse_filter(expression: str) -> Dict[str, Any]:
 
 
 def _date(value: str) -> Optional[_dt.date]:
-    return _dt.date.fromisoformat(value) if value else None
+    """Lit une date de reference, ou refuse lisiblement.
+
+    « 01/01/2030 » est l'ecriture francaise, donc celle qu'un utilisateur
+    tapera : elle faisait remonter une trace Python entiere jusqu'au
+    terminal au lieu d'un message.
+    """
+    if not value:
+        return None
+    try:
+        return _dt.date.fromisoformat(value)
+    except ValueError as exc:
+        raise ConfigError(
+            f"La date de référence \"{value}\" n'est pas lisible. "
+            "Format attendu : AAAA-MM-JJ (par exemple 2026-01-01).",
+            technical=f"invalid reference date: {type(exc).__name__}",
+        ) from exc
 
 
 def command_analyse(args: argparse.Namespace) -> int:
