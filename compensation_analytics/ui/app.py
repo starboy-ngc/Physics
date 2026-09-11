@@ -20,6 +20,7 @@ import collections
 import datetime as _dt
 import os
 import queue
+import sys
 import threading
 import time as _time
 import tkinter as tk
@@ -50,6 +51,7 @@ from . import theme
 from .charts import (BandChart, BoxPlotChart,
                      HistogramChart, PyramidChart, QuartileChart,
                      ScatterChart)
+from .progress import LoadingBar
 from .theme import Card, CheckRow, Fonts, TabBar
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
@@ -207,6 +209,14 @@ class Application(tk.Tk):
         self._periods: List[str] = []
         self._colour_fields: List[str] = []
         self._queue: queue.Queue = queue.Queue()
+        #: Tranche d'execution d'un fil telle qu'elle etait avant l'analyse.
+        #: Retenue des la construction : un releve de file peut survenir
+        #: sans qu'aucune analyse n'ait ete lancee.
+        self._switch_interval = sys.getswitchinterval()
+        #: Releve de file en attente, pour l'annuler a la fermeture : une
+        #: fenetre fermee pendant une analyse laissait Tk executer un
+        #: rappel dont le widget n'existait plus.
+        self._poll_job: Optional[str] = None
 
         self._build_layout()
         # La composition enregistree est relue avant le premier affichage :
@@ -469,6 +479,20 @@ class Application(tk.Tk):
                 chart.redraw()
         self._frozen = []
 
+    def destroy(self) -> None:
+        """Ferme proprement : un releve de file encore en attente
+        s'executerait apres la fenetre, et Tk se plaindrait d'une commande
+        qui n'existe plus. Le fil de calcul, lui, est demon : il s'arrete
+        avec le programme."""
+        self._cancel_fold()
+        if self._poll_job is not None:
+            try:
+                self.after_cancel(self._poll_job)
+            except tk.TclError:
+                pass
+            self._poll_job = None
+        super().destroy()
+
     def _cancel_fold(self) -> None:
         job = getattr(self, "_fold_job", None)
         if job is not None:
@@ -538,7 +562,11 @@ class Application(tk.Tk):
                                          command=self.run_analysis)
         self.analyse_button.pack(fill="x")
         self.analyse_button.state(["disabled"])
-        self.progress = ttk.Progressbar(actions, mode="indeterminate")
+        # Une barre dessinee et animee sur l'horloge, et non sur le nombre
+        # d'images : pendant une analyse, le fil principal est preempte par
+        # le calcul, et une barre qui avance d'un cran par image se fige
+        # avec lui. Voir « ui/progress.py ».
+        self.progress = LoadingBar(actions, ground=theme.GROUND)
         self.export_button = ttk.Button(actions, text="Produire les documents",
                                         style="GhostGround.TButton",
                                         command=self.export_documents)
@@ -1234,13 +1262,35 @@ class Application(tk.Tk):
 
     # ------------------------------------------------------------- analyse
 
+    #: Intervalle de relevé de la file du fil de calcul. Plus court que
+    #: l'image de la barre : un avancement releve en retard se verrait.
+    POLL_MS = 30
+    #: Tranche d'execution d'un fil, le temps de l'analyse. Voir la mesure
+    #: citee dans « run_analysis ».
+    SWITCH_INTERVAL = 0.001
+
     def run_analysis(self) -> None:
         if not self.source_path:
             return
         self.analyse_button.state(["disabled"])
-        self.progress.pack(fill="x", pady=(8, 0))
-        self.progress.start(12)
+        # Sous « Analyser », et non sous le bouton d'export : la barre
+        # repond au geste qu'on vient de faire, elle doit paraitre ou le
+        # regard est.
+        self.progress.pack(fill="x", pady=(10, 2), before=self.export_button)
+        self.progress.start("Préparation")
         self._set_state("Analyse en cours…")
+        # Le fil de calcul garde le verrou global de Python par tranches de
+        # cinq millisecondes : le fil qui dessine n'obtenait la main que
+        # trente-sept fois par seconde, et une image sur dix arrivait avec
+        # plus de cent millisecondes de retard. Reduire la tranche le temps
+        # de l'analyse coute cinq pour cent sur le calcul et rend la barre
+        # regulierement animee.
+        self._switch_interval = sys.getswitchinterval()
+        #: Releve de file en attente, pour l'annuler a la fermeture : une
+        #: fenetre fermee pendant une analyse laissait Tk executer un
+        #: rappel dont le widget n'existait plus.
+        self._poll_job: Optional[str] = None
+        sys.setswitchinterval(self.SWITCH_INTERVAL)
         request = AnalysisRequest(
             source_path=self.source_path,
             config_dir=self.config_dir,
@@ -1255,9 +1305,13 @@ class Application(tk.Tk):
             segments=[],
             title="Analyse de rémunération",
             ignore_quality_errors=True,
+            # Appele depuis le fil de calcul : il ne touche a rien de la
+            # fenetre, il depose. Tk n'est pas sur pour deux fils.
+            progress=lambda label, part: self._queue.put(
+                ("avancement", (label, part))),
         )
         threading.Thread(target=self._worker, args=(request,), daemon=True).start()
-        self.after(80, self._poll)
+        self._poll_job = self.after(self.POLL_MS, self._poll)
 
     def _worker(self, request: AnalysisRequest) -> None:
         try:
@@ -1276,15 +1330,37 @@ class Application(tk.Tk):
                            "le journal technique."))
 
     def _poll(self) -> None:
-        try:
-            kind, payload = self._queue.get_nowait()
-        except queue.Empty:
-            self.after(80, self._poll)
+        """Releve ce que le fil de calcul a depose, sans jamais l'attendre.
+
+        La file est videe entierement a chaque passage : un seul message par
+        passage ferait prendre a la barre un retard qu'elle ne rattraperait
+        plus sur un gros fichier, ou l'avancement s'annonce toutes les
+        soixante millisecondes.
+        """
+        resultat = None
+        while True:
+            try:
+                kind, payload = self._queue.get_nowait()
+            except queue.Empty:
+                break
+            if kind == "avancement":
+                self.progress.announce(*payload)
+                continue
+            resultat = (kind, payload)
+        if resultat is None:
+            self._poll_job = self.after(self.POLL_MS, self._poll)
             return
+        self._poll_job = None
+        kind, payload = resultat
+        sys.setswitchinterval(self._switch_interval)
         self.progress.stop()
-        self.progress.pack_forget()
+        if kind == "ok":
+            # Le trait se termine, puis reste le temps que les resultats
+            # s'affichent : c'est la seule seconde ou il est plein.
+            self.progress.finish()
         self.analyse_button.state(["!disabled"])
         if kind == "erreur":
+            self.progress.pack_forget()
             messagebox.showerror("Analyse impossible", payload)
             self._set_state("L'analyse n'a pas abouti.")
             return
@@ -1304,6 +1380,9 @@ class Application(tk.Tk):
                 f"affichés ({type(error).__name__}). Les documents restent "
                 "productibles.")
             self._set_state("Analyse terminée · affichage incomplet.")
+        # La barre s'efface une fois les resultats poses, et non avant : la
+        # derniere chose qu'on voit d'elle est un trait plein.
+        self.progress.pack_forget()
 
     # ------------------------------------------------------------ affichage
 

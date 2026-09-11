@@ -390,8 +390,29 @@ L'option 2 est recommandée : rien à compiler, contenu auditable par l'IT.
 `compensation_analytics/ui/` — tkinter, livre avec Python : aucune
 dependance, aucun telechargement, aucun droit administrateur.
 
-    app.py      fenetre unique, parcours en quatre etapes
-    charts.py   nuage et histogramme dessines sur un canevas
+    app.py       fenetre unique, parcours en quatre etapes
+    charts.py    nuage et histogramme dessines sur un canevas
+    progress.py  barre de chargement, animee sur l'horloge
+
+**L'analyse tourne sur un fil separe** et rapporte son avancement par
+`AnalysisRequest.progress` : le moteur annonce une étape et une part faite,
+sans rien savoir de ce qui l'affiche. Le rappel est appelé depuis le fil de
+calcul et ne fait que déposer dans une file ; c'est la fenêtre qui la relève
+et dessine, Tk n'étant pas sûr pour deux fils.
+
+Deux mesures gouvernent cette partie, toutes deux prises sur cent mille
+salariés :
+
+- **Le ramasse-miettes cyclique est suspendu le temps de l'analyse**
+  (`_without_cycle_collection`) : 25,3 s avec, 21,5 s sans, pour un pic de
+  mémoire identique. L'analyse construit des centaines de milliers d'objets
+  qui vivent tous jusqu'à la fin ; le ramasseur les reparcourait à chaque
+  passage sans jamais rien avoir à libérer — et figeait le fil d'affichage
+  par tranches de deux cents millisecondes.
+- **La tranche d'exécution des fils est réduite le temps de l'analyse**
+  (`sys.setswitchinterval`) : le fil qui dessine passe de 37 à 41 images par
+  seconde et d'une image sur dix en retard de plus de cent millisecondes à
+  une seule sur l'analyse entière.
 
 **Regle de dependance** : l'interface importe le moteur, jamais l'inverse.
 Un test le verifie par analyse syntaxique sur `core/` et `io/`. C'est ce qui

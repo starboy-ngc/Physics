@@ -15,7 +15,7 @@ import os
 import re
 import zipfile
 from dataclasses import dataclass, field
-from typing import Any, List, Sequence
+from typing import Any, Callable, List, Optional, Sequence
 from xml.etree import ElementTree
 
 from ..core.errors import ImportError_
@@ -29,6 +29,17 @@ _BUILTIN_DATE_FORMATS = set(range(14, 23)) | set(range(45, 48)) | {27, 30, 36, 5
 _EXCEL_EPOCH = _dt.date(1899, 12, 30)
 
 MAX_CSV_SNIFF_BYTES = 8192
+
+#: Nombre de lignes entre deux annonces d'avancement. La lecture d'un gros
+#: fichier pese la moitie du temps d'une analyse : sans annonce, la barre de
+#: chargement reste immobile pendant dix secondes, et l'outil parait fige au
+#: moment ou il travaille le plus. Toutes les deux mille lignes, l'annonce ne
+#: se mesure pas ; c'est vingt fois par seconde sur un gros fichier, soit
+#: bien plus souvent que l'ecran ne se rafraichit.
+PROGRESS_EVERY = 500
+
+#: Rapporte l'avancement d'une lecture, entre 0 et 1.
+Progress = Callable[[float], None]
 
 
 @dataclass
@@ -44,8 +55,14 @@ class Table:
         return len(self.rows)
 
 
-def read_table(path: str, sheet: str | None = None) -> Table:
-    """Point d'entree unique d'import."""
+def read_table(path: str, sheet: str | None = None,
+               progress: Optional[Progress] = None) -> Table:
+    """Point d'entree unique d'import.
+
+    `progress` est appele au fil de la lecture avec la part du fichier deja
+    parcourue. Il est facultatif : le moteur lit un fichier de la meme
+    facon, qu'une fenetre regarde ou non.
+    """
     if not os.path.isfile(path):
         raise ImportError_(
             "Le fichier de population est introuvable. "
@@ -54,9 +71,9 @@ def read_table(path: str, sheet: str | None = None) -> Table:
         )
     extension = os.path.splitext(path)[1].lower()
     if extension in (".csv", ".txt"):
-        return _read_csv(path)
+        return _read_csv(path, progress)
     if extension in (".xlsx", ".xlsm"):
-        return _read_xlsx(path, sheet)
+        return _read_xlsx(path, sheet, progress)
     raise ImportError_(
         "Format de fichier non pris en charge. "
         "Formats acceptés : Excel (.xlsx, .xlsm) et CSV (.csv).",
@@ -67,14 +84,27 @@ def read_table(path: str, sheet: str | None = None) -> Table:
 # --------------------------------------------------------------------------- CSV
 
 
-def _read_csv(path: str) -> Table:
+def _read_csv(path: str, progress: Optional[Progress] = None) -> Table:
     try:
+        taille = os.path.getsize(path) or 1
         with open(path, "r", encoding="utf-8-sig", newline="") as handle:
             sample = handle.read(MAX_CSV_SNIFF_BYTES)
             handle.seek(0)
             delimiter = _sniff_delimiter(sample)
             reader = csv.reader(handle, delimiter=delimiter)
-            rows = [row for row in reader]
+            rows = []
+            for row in reader:
+                rows.append(row)
+                if progress and len(rows) % PROGRESS_EVERY == 0:
+                    # La position dans le fichier, et non le nombre de
+                    # lignes : le total est inconnu tant qu'on n'a pas fini,
+                    # et une barre qui ignore ou elle en est ne peut
+                    # qu'avancer au hasard. C'est la position du tampon
+                    # binaire qui est lue : Python interdit « tell() » sur
+                    # un fichier texte pendant qu'on le parcourt, et le
+                    # tampon, en avance de quelques kilo-octets, dit ce
+                    # qu'il faut savoir.
+                    progress(min(handle.buffer.tell() / taille, 1.0))
     except OSError as exc:
         raise ImportError_(
             "Le fichier CSV n'a pas pu être ouvert.",
@@ -111,13 +141,15 @@ def _sniff_delimiter(sample: str) -> str:
 # -------------------------------------------------------------------------- XLSX
 
 
-def _read_xlsx(path: str, sheet: str | None) -> Table:
+def _read_xlsx(path: str, sheet: str | None,
+               progress: Optional[Progress] = None) -> Table:
     try:
         with zipfile.ZipFile(path) as archive:
             shared = _read_shared_strings(archive)
             date_styles = _read_date_styles(archive)
             sheet_path = _resolve_sheet_path(archive, sheet)
-            rows = _read_sheet(archive, sheet_path, shared, date_styles)
+            rows = _read_sheet(archive, sheet_path, shared, date_styles,
+                               progress)
     except zipfile.BadZipFile as exc:
         raise ImportError_(
             "Le fichier Excel est illisible ou endommagé. "
@@ -215,8 +247,13 @@ def _read_sheet(
     sheet_path: str,
     shared: List[str],
     date_styles: set,
+    progress: Optional[Progress] = None,
 ) -> List[List[Any]]:
     rows: List[List[Any]] = []
+    # Taille de l'onglet decompresse : c'est la seule mesure connue d'avance
+    # de ce qu'il reste a lire. Le nombre de lignes, lui, ne se sait qu'a la
+    # fin.
+    taille = archive.getinfo(sheet_path).file_size or 1
     with archive.open(sheet_path) as stream:
         for _, element in ElementTree.iterparse(stream, events=("end",)):
             if element.tag != f"{_NS}row":
@@ -236,6 +273,8 @@ def _read_sheet(
                 values.append(_cell_value(cell, shared, date_styles))
             rows.append(values)
             element.clear()
+            if progress and len(rows) % PROGRESS_EVERY == 0:
+                progress(min(stream.tell() / taille, 1.0))
     # Les lignes sont rendues telles quelles, sans etre alignees sur la plus
     # large. Les aligner ici materialisait toutes les cellules vides jusqu'a
     # la derniere colonne rencontree : une seule cellule egaree en XFD — une

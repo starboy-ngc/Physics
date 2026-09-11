@@ -79,6 +79,21 @@ Pour ne produire qu'une sortie :
 --restitution excel
 ```
 
+### Pendant l'analyse
+
+La barre sous « Analyser » nomme l'étape en cours et la part faite. Sur un
+gros fichier, **la lecture pèse la moitié du temps** : c'est normal que la
+barre y passe la moitié de son parcours. Les étapes suivantes —
+normalisation, contrôle qualité, indicateurs, écarts femmes / hommes,
+segments — sont bien plus rapides.
+
+La barre ne recule jamais et ne s'arrête pas : entre deux annonces du moteur
+elle continue d'avancer, de plus en plus lentement, jusqu'à la suivante.
+
+Ordre de grandeur, sur un fichier Excel de cent mille lignes : une vingtaine
+de secondes au total, dont une dizaine pour la seule lecture. Neuf cents
+salariés s'analysent en deux dixièmes de seconde.
+
 ### Filtrer
 
 ```
