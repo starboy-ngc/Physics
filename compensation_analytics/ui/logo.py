@@ -6,15 +6,16 @@ informatique doit pouvoir relire irait contre tout le reste. Le symbole est
 donc *calcule*, puis encode en PNG par le module « raster », qui sait deja
 le faire pour les points du nuage.
 
-Ce qu'il montre : une aurore, c'est-a-dire un ruban de lumiere qui ondule et
-se dissipe vers le haut. Deux formes suffisent — le ruban et son echo —,
-decrites par une seule onde. Un symbole n'a pas a etre une illustration : il
-doit se reconnaitre a vingt-quatre pixels comme a deux mille, et l'on doit
-pouvoir le redessiner de memoire.
+Ce qu'il montre : un rideau d'aurore. Un bord vif, ondulant, et des rais qui
+s'en elevent et se dissipent — du vert des basses couches au violet des
+hautes, dans cet ordre-la, qui est celui du ciel. Onze traits suffisent. Un
+symbole n'a pas a etre une illustration : il doit se reconnaitre a
+vingt-quatre pixels comme a deux mille, et l'on doit pouvoir le redessiner
+de memoire.
 
-Tout est analytique : pour chaque pixel on calcule sa distance a l'onde, et
-la couverture s'en deduit. Il n'y a ni tirage aleatoire, ni echantillonnage
-— donc aucun grain a faire grossir quand l'image grandit, et le meme dessin
+Tout est analytique : pour chaque pixel, sa position dans le rai et la
+couverture s'en deduit. Il n'y a ni tirage aleatoire, ni echantillonnage —
+donc aucun grain a faire grossir quand l'image grandit, et le meme dessin
 exactement a toutes les tailles.
 """
 
@@ -27,63 +28,112 @@ from . import raster
 
 RGB = Tuple[int, int, int]
 
-#: Couleurs du symbole. Elles ne suivent pas le theme de la fenetre : une
-#: marque qui change de couleur avec un reglage d'affichage n'est plus une
-#: marque. Du vert au violet, les deux teintes que prend une aurore.
+#: Couleurs du symbole, du bas vers le haut. Elles ne suivent pas le theme
+#: de la fenetre : une marque qui change de couleur avec un reglage
+#: d'affichage n'est plus une marque. Le vert des basses couches, le violet
+#: des hautes — l'ordre qu'a le ciel.
 GREEN = (74, 201, 150)
 TEAL = (72, 168, 196)
-VIOLET = (146, 120, 214)
+VIOLET = (126, 98, 208)
 
-#: L'onde : une periode dans la largeur, soit une crete et un creux — un S,
-#: plus franc a lire qu'une bosse.
+#: Nombre de rais. Cinq font une main, onze font un peigne : neuf se
+#: comptent d'un coup d'oeil sans que le rideau paraisse ajoure.
+RAYS = 11
+
+#: Le rai : largeur et ecart, en parts de la largeur de l'image.
+RAY_WIDTH = 0.056
+RAY_GAP = 0.028
+
+#: L'onde qui porte le rideau : le bord *inferieur* la suit, et les rais
+#: s'en elevent. C'est le bas d'une aurore qui est vif et net ; le haut se
+#: dissipe. Une periode sur la largeur : une crete et un creux.
 PERIODS = 1.0
-AMPLITUDE = 0.17
+AMPLITUDE = 0.10
+TOP = 0.682
 
-#: Les trois rubans, du plus bas au plus haut. Pour chacun : hauteur au
-#: repos, epaisseur, opacite, couleur. Un ruban de plus serait un dessin ;
-#: un de moins, un trait ondule.
-#: Chaque ruban est aussi plus court que celui d'en dessous : c'est ce
-#: retrait qui fait un rideau plutot que trois traits paralleles.
-#: Chacun porte aussi un leger decalage d'onde : les rubans se suivent au
-#: lieu de se superposer, et le rideau parait derive par le vent solaire.
-RIBBONS = (
-    (0.615, 0.135, 1.00, 0.38, 0.000, GREEN),
-    (0.460, 0.075, 0.92, 0.44, 0.035, TEAL),
-    (0.340, 0.045, 0.80, 0.50, 0.070, VIOLET),
-)
+#: Le bord inferieur : un trait fin, qui relie les rais entre eux. Sans
+#: lui, onze traits verticaux font un diagramme en batons.
+EDGE = 0.034
 
-#: Marge laissee de chaque cote : les pointes ne touchent pas le bord de
-#: l'image, sans quoi le symbole parait coupe des qu'on le pose contre autre
-#: chose.
-INSET = 0.06
+#: Longueur des rais. Elle varie d'un rai a l'autre, sans quoi leurs pieds
+#: s'alignent et le rideau retombe sur une ligne de base.
+LENGTH = 0.40
+LENGTH_SWING = 0.42
 
-#: La lueur qui parcourt le symbole : de combien elle eclaircit, sur quelle
+#: Part franche d'un rai avant l'extinction. Courte : c'est l'extinction
+#: qui fait une lumiere suspendue plutot qu'un baton.
+SOLID = 0.10
+
+#: Douceur des bords lateraux, en parts de la largeur du rai.
+SOFTNESS = 0.45
+
+#: Inclinaison des rais : ils ne tombent pas d'aplomb mais penchent tous du
+#: meme cote, comme pousses. Des traits parfaitement verticaux font un
+#: diagramme en batons ; ceux-la font un rideau.
+TILT = 0.17
+
+#: De combien un rai s'affine en descendant : la lumiere s'amincit en
+#: s'eteignant.
+NARROWING = 0.32
+
+#: Marge laissee tout autour : le symbole ne touche jamais le bord de son
+#: cadre, sans quoi il parait coupe des qu'on le pose contre autre chose.
+INSET = 0.055
+
+#: La lueur qui parcourt le rideau : de combien elle eclaircit, sur quelle
 #: largeur, et jusqu'ou elle voyage de part et d'autre du cadre. Elle ne
 #: touche jamais au trace — seulement a sa couleur.
-GLOW_STRENGTH = 0.42
-GLOW_WIDTH = 0.26
+GLOW_STRENGTH = 0.45
+GLOW_WIDTH = 0.22
 GLOW_TRAVEL = 1.5
 GLOW_MARGIN = 0.25
 
-#: Douceur du bord, en parts de l'epaisseur. Assez pour qu'une aurore n'ait
-#: pas de contour, assez peu pour que le symbole reste franc a vingt-quatre
-#: pixels.
-SOFTNESS = 0.12
-
 
 class Aurora:
-    """Le symbole, et son ondulation lente, image par image."""
+    """Le symbole, et la lueur qui le parcourt, image par image."""
 
     def __init__(self, size: int, count: int = 1,
                  height: Optional[int] = None):
         """`size` est la largeur ; `height` permet un cadre plus bas que
-        large — une aurore s'inscrit mal dans un carre, ou elle laisse deux
-        bandes vides. Le dessin n'est pas etire pour autant : il est cadre."""
+        large. Le dessin n'est pas etire pour autant : il est cadre."""
         self.size = size
         self.height = height or size
         self.count = max(1, count)
+        self.rays = self._rays()
 
-    # ---------------------------------------------------------- lecture
+    # ------------------------------------------------------------- rais
+
+    def _rays(self) -> List[Tuple[float, float, float]]:
+        """Abscisse, sommet et longueur de chaque rai.
+
+        Les rais sont poses une fois pour toutes : ils ne dependent ni de
+        la taille demandee, ni de l'image en cours. C'est la meme aurore a
+        chaque ouverture et a toutes les echelles.
+        """
+        utile = 1.0 - 2 * INSET
+        pas = RAY_WIDTH + RAY_GAP
+        largeur_totale = RAYS * RAY_WIDTH + (RAYS - 1) * RAY_GAP
+        depart = INSET + (utile - largeur_totale) / 2 + RAY_WIDTH / 2
+        rais: List[Tuple[float, float, float]] = []
+        for rang in range(RAYS):
+            x = depart + rang * pas
+            # La longueur suit sa propre onde, plus lente que celle du
+            # bord : deux rais voisins ne descendent jamais a la meme
+            # profondeur, et le rideau n'a pas de pied.
+            # La hauteur suit une arche : haute au milieu, basse aux
+            # extremites. Un rideau dont les rais monteraient tous a la
+            # meme hauteur serait une grille ; un rideau dont les hauteurs
+            # seraient tirees au hasard n'aurait pas de silhouette.
+            place = rang / (RAYS - 1)
+            arche = math.sin(math.pi * place) ** 0.75
+            # Un leger desordre, pour que l'arche ne soit pas un compas.
+            desordre = 1.0 + LENGTH_SWING * 0.35 * math.sin(
+                2 * math.pi * (2.3 * place + 0.15))
+            rais.append((x, _wave(x),
+                         LENGTH * (0.30 + 0.70 * arche) * desordre))
+        return rais
+
+    # ---------------------------------------------------------- images
 
     def frame(self, index: int = 0) -> bytes:
         """Image `index` de l'animation, prete pour PhotoImage.
@@ -91,114 +141,164 @@ class Aurora:
         Le dessin ne bouge pas : c'est une lueur qui le parcourt, de gauche
         a droite, et revient. Un logo qui change de forme au fil des images
         n'est plus un logo — mais une aurore immobile n'est pas une aurore.
-
-        Le trace se fait colonne par colonne et ruban par ruban : pour une
-        abscisse donnee, un ruban n'occupe qu'une poignee de lignes. Balayer
-        l'image entiere pour chacun couterait dix fois plus, et l'ecran
-        d'accueil calcule ces images pendant qu'il est deja affiche.
         """
         size = self.size
-        # La lueur traverse le cadre puis reprend : l'aller-retour boucle
-        # sans saut, contrairement a un simple defilement.
         part = (index % self.count) / self.count
         lueur = GLOW_TRAVEL * (1 - abs(1 - 2 * part)) - GLOW_MARGIN
         toile = [bytearray(size * 4) for _ in range(self.height)]
-        for base, epaisseur, force, bord, decalage, couleur in RIBBONS:
-            self._draw(toile, size, decalage, base, epaisseur, force,
-                       bord, couleur, lueur)
-        return raster.image_data(size, self.height, toile, 6)
-
-    def _draw(self, toile, size: int, phase: float, base: float,
-              epaisseur: float, opacite: float, bord: float,
-              couleur: RGB, lueur: float) -> None:
-        """Pose un ruban sur la toile, colonne par colonne."""
-        rouge, vert, bleu = couleur
         # Tout est mesure en parts de la largeur, y compris a la verticale :
         # un cadre plus bas que large recadre le dessin, il ne l'aplatit pas.
-        haut = (size - self.height) / 2.0
+        haut = (size * (1.0) - self.height) / 2.0
+        self._draw_rays(toile, size, haut, lueur)
+        self._draw_edge(toile, size, haut, lueur)
+        return raster.image_data(size, self.height, toile, 6)
+
+    def _draw_edge(self, toile, size: int, haut: float,
+                   lueur: float) -> None:
+        """Le bord inferieur, d'un bout a l'autre du rideau.
+
+        Il relie les rais : sans lui, onze traits ne sont qu'un diagramme en
+        batons. Il s'affine aux deux extremites, comme un trait de pinceau.
+        """
+        demi_base = EDGE / 2.0
+        premier = self.rays[0][0]
+        dernier = self.rays[-1][0]
+        etendue = dernier - premier
         for colonne in range(size):
             x = (colonne + 0.5) / size
-            demi = epaisseur * self._taper(x, bord) / 2.0
+            position = (x - premier) / etendue
+            if position < -0.06 or position > 1.06:
+                continue
+            bout = min(1.0, max(0.0, (0.5 - abs(position - 0.5)) / 0.22))
+            demi = demi_base * bout * bout * (3 - 2 * bout)
             if demi <= 0.0:
                 continue
-            angle = 2 * math.pi * (PERIODS * x + phase)
-            onde = base + AMPLITUDE * math.sin(angle)
-            pente = AMPLITUDE * 2 * math.pi * PERIODS * math.cos(angle)
-            correction = math.sqrt(1.0 + pente * pente)
-            douceur = demi * SOFTNESS
-            # Lueur : elle eclaircit la couleur sans toucher au trace.
-            ecart_lueur = (x - lueur) / GLOW_WIDTH
-            eclat = 1.0 + GLOW_STRENGTH * math.exp(-ecart_lueur * ecart_lueur)
-            rouge_x = min(255, int(rouge * eclat))
-            vert_x = min(255, int(vert * eclat))
-            bleu_x = min(255, int(bleu * eclat))
+            onde = _wave(x)
+            correction = math.sqrt(1.0 + _slope(x) ** 2)
+            douceur = demi * 0.7
+            eclat = self._glow(x, lueur)
             portee = (demi + douceur) * correction
-            premiere = max(0, int((onde - portee) * size - haut))
-            derniere = min(self.height - 1,
-                           int((onde + portee) * size - haut) + 1)
-            for ligne in range(premiere, derniere + 1):
+            debut = max(0, int((onde - portee) * size - haut))
+            fin = min(self.height - 1, int((onde + portee) * size - haut) + 1)
+            for ligne in range(debut, fin + 1):
                 y = (ligne + haut + 0.5) / size
-                couverture = self._coverage(y, onde, demi, douceur, correction)
+                couverture = self._across(abs(y - onde) / correction, demi,
+                                          douceur)
                 if couverture <= 0.004:
                     continue
-                couverture *= opacite
-                cible = toile[ligne]
-                position = colonne * 4
-                ancienne = cible[position + 3] / 255.0
-                melange = couverture + ancienne * (1 - couverture)
-                cible[position] = int(
-                    (rouge_x * couverture
-                     + cible[position] * ancienne * (1 - couverture)) / melange)
-                cible[position + 1] = int(
-                    (vert_x * couverture
-                     + cible[position + 1] * ancienne * (1 - couverture))
-                    / melange)
-                cible[position + 2] = int(
-                    (bleu_x * couverture
-                     + cible[position + 2] * ancienne * (1 - couverture))
-                    / melange)
-                cible[position + 3] = min(255, int(melange * 255))
+                self._pose(toile, ligne, colonne, couverture,
+                           self._colour(y), eclat)
+
+    def _draw_rays(self, toile, size: int, haut: float,
+                   lueur: float) -> None:
+        """Les rais, en un seul passage.
+
+        Un rai n'est pas dessine pour lui-meme : pour chaque point, on
+        regarde a quelle profondeur sous le bord il se trouve, puis de quel
+        rai il releve une fois l'inclinaison defaite. C'est ce qui permet
+        aux rais de pencher et de s'affiner sans rien couter de plus.
+        """
+        pas = RAY_WIDTH + RAY_GAP
+        premier = self.rays[0][0]
+        profond = max(longueur for _x, _s, longueur in self.rays)
+        for colonne in range(size):
+            x = (colonne + 0.5) / size
+            eclat = self._glow(x, lueur)
+            onde = _wave(x)
+            debut = max(0, int((onde - profond) * size - haut))
+            fin = min(self.height - 1, int(onde * size - haut) + 1)
+            for ligne in range(debut, fin + 1):
+                y = (ligne + haut + 0.5) / size
+                creux = onde - y
+                if creux < 0.0:
+                    continue
+                # L'inclinaison se defait : on revient a l'abscisse du rai
+                # au moment ou il quitte le bord.
+                origine = x - TILT * creux
+                rang = int(round((origine - premier) / pas))
+                if rang < 0 or rang >= RAYS:
+                    continue
+                centre, _sommet, longueur = self.rays[rang]
+                if creux > longueur:
+                    continue
+                part = creux / longueur
+                demi = RAY_WIDTH / 2.0 * (1.0 - NARROWING * part)
+                douceur = demi * SOFTNESS
+                lateral = self._across(abs(origine - centre), demi, douceur)
+                if lateral <= 0.0:
+                    continue
+                couverture = lateral * self._along(part)
+                if couverture <= 0.004:
+                    continue
+                self._pose(toile, ligne, colonne, couverture,
+                           self._colour(y), eclat)
 
     @staticmethod
-    def _coverage(y: float, onde: float, demi: float, douceur: float,
-                  correction: float) -> float:
-        """Part du pixel couverte par le ruban, bord adouci.
-
-        La distance a une courbe qui est le graphe d'une fonction se calcule
-        sans chercher le point le plus proche : l'ecart vertical, corrige de
-        la pente. C'est exact au premier ordre, et une onde de cette
-        amplitude n'en demande pas plus.
-        """
-        ecart = abs(y - onde) / correction
-        if ecart >= demi + douceur:
-            return 0.0
-        if ecart <= demi - douceur:
-            couverture = 1.0
-        else:
-            part = (demi + douceur - ecart) / (2 * douceur)
-            couverture = part * part * (3 - 2 * part)
-        # La lumiere monte et se dissipe : le bord superieur s'efface, le
-        # bord inferieur reste franc. C'est ce desequilibre qui distingue
-        # une aurore d'un simple trait ondule.
-        if y < onde:
-            couverture *= 1.0 - 0.18 * (onde - y) / (demi + douceur)
-        return couverture
+    def _glow(x: float, lueur: float) -> float:
+        """Eclaircissement du a la lueur, a cette abscisse."""
+        ecart = (x - lueur) / GLOW_WIDTH
+        return 1.0 + GLOW_STRENGTH * math.exp(-ecart * ecart)
 
     @staticmethod
-    def _taper(x: float, bord: float) -> float:
-        """Affinement aux deux extremites, de zero a l'epaisseur pleine.
+    def _pose(toile, ligne: int, colonne: int, couverture: float,
+              couleur: RGB, eclat: float) -> None:
+        """Pose un point, le plus opaque l'emportant.
 
-        Il occupe plus d'un tiers de la longueur : un affinement bref donne
-        une pointe coupee au couteau, la ou l'on attend un trait de pinceau.
+        Les rais et le bord se recouvrent au sommet : melanger leurs
+        couvertures y ferait une tache plus claire que partout ailleurs.
         """
-        utile = 1.0 - 2 * INSET
-        position = (x - INSET) / utile
-        if position <= 0.0 or position >= 1.0:
+        position = colonne * 4
+        cible = toile[ligne]
+        opacite = min(255, int(couverture * 255))
+        if opacite <= cible[position + 3]:
+            return
+        rouge, vert, bleu = couleur
+        cible[position] = min(255, int(rouge * eclat))
+        cible[position + 1] = min(255, int(vert * eclat))
+        cible[position + 2] = min(255, int(bleu * eclat))
+        cible[position + 3] = opacite
+
+    @staticmethod
+    def _across(distance: float, demi: float, douceur: float) -> float:
+        """Profil en travers du rai : plein au milieu, adouci aux bords."""
+        if distance >= demi + douceur:
             return 0.0
-        if position < bord:
-            part = position / bord
-        elif position > 1 - bord:
-            part = (1 - position) / bord
-        else:
+        if distance <= demi - douceur:
             return 1.0
+        part = (demi + douceur - distance) / (2 * douceur)
         return part * part * (3 - 2 * part)
+
+    @staticmethod
+    def _along(position: float) -> float:
+        """Profil le long du rai : franc sous le sommet, eteint au bas."""
+        if position <= SOLID:
+            return 1.0
+        reste = (1.0 - position) / (1.0 - SOLID)
+        # Extinction douce plutot que carree : les pointes restent visibles
+        # sur un fond clair, ou une opacite de dix pour cent ne se voit pas.
+        return reste ** 1.45
+
+    @staticmethod
+    def _colour(y: float) -> RGB:
+        """Vert au bord, violet en haut des rais, quelle que soit la
+        longueur de chacun : les bandes de couleur appartiennent au ciel,
+        pas au trait."""
+        part = min(max((TOP + AMPLITUDE - y) / (LENGTH * 0.82), 0.0), 1.0)
+        if part < 0.5:
+            return _mix(GREEN, TEAL, part * 2)
+        return _mix(TEAL, VIOLET, (part - 0.5) * 2)
+
+
+def _wave(x: float) -> float:
+    """Hauteur du bord superieur du rideau, a cette abscisse."""
+    return TOP + AMPLITUDE * math.sin(2 * math.pi * PERIODS * x)
+
+
+def _slope(x: float) -> float:
+    """Pente de ce bord : elle corrige la distance quand il est incline."""
+    return AMPLITUDE * 2 * math.pi * PERIODS * math.cos(
+        2 * math.pi * PERIODS * x)
+
+
+def _mix(first: RGB, second: RGB, part: float) -> RGB:
+    return tuple(int(round(a + (b - a) * part)) for a, b in zip(first, second))

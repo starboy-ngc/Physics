@@ -63,14 +63,14 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """Une aurore : trois rubans, une onde, et rien d'autre.
+    """Un rideau d'aurore : un bord ondulant, des rais qui s'en elevent.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
     toujours le meme, qu'il tienne a toutes les tailles, et qu'il se
     reconnaisse a vingt-quatre pixels.
     """
 
-    LARGEUR, HAUTEUR = 200, 144
+    LARGEUR, HAUTEUR = 240, 163
 
     def symbole(self, largeur=None, hauteur=None, count=1):
         return logo.Aurora(largeur or self.LARGEUR, count,
@@ -102,12 +102,12 @@ class TestTheSymbol(unittest.TestCase):
     def test_the_drawing_is_the_same_at_any_size(self):
         """Decrit par une formule et non par des pixels : la silhouette
         agrandie doit recouvrir la petite, a l'echelle pres."""
-        petit = pixels(self.symbole(100, 72).frame(0), 100, 72)
-        grand = pixels(self.symbole(400, 288).frame(0), 400, 288)
+        petit = pixels(self.symbole(120, 82).frame(0), 120, 82)
+        grand = pixels(self.symbole(480, 326).frame(0), 480, 326)
         part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in petit) / (100 * 72)
+                         for ligne in petit) / (120 * 82)
         part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in grand) / (400 * 288)
+                         for ligne in grand) / (480 * 326)
         self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
 
     def test_it_never_touches_the_edge_of_its_frame(self):
@@ -120,7 +120,7 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
-        lignes = pixels(self.symbole(32, 23).frame(0), 32, 23)
+        lignes = pixels(self.symbole(32, 22).frame(0), 32, 22)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
         self.assertGreater(encres, 40)
@@ -143,15 +143,16 @@ class TestTheSymbol(unittest.TestCase):
         bas = couleur(range(self.HAUTEUR - 1, -1, -1))
         self.assertIsNotNone(haut)
         self.assertIsNotNone(bas)
-        self.assertGreater(haut[2], haut[1], "le ruban du haut tire au violet")
-        self.assertGreater(bas[1], bas[2], "celui du bas tire au vert")
+        self.assertGreater(haut[2], haut[1],
+                           "la pointe des rais tire au violet")
+        self.assertGreater(bas[1], bas[2], "le bord du bas tire au vert")
 
     def test_one_frame_costs_nothing(self):
         """L'ecran d'accueil les calcule pendant qu'il est deja affiche :
         aucune ne doit bloquer l'affichage."""
         import time
 
-        symbole = logo.Aurora(236, 24, height=170)
+        symbole = logo.Aurora(236, 24, height=160)
         debut = time.perf_counter()
         symbole.frame(0)
         self.assertLess(time.perf_counter() - debut, 0.12)

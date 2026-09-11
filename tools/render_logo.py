@@ -27,8 +27,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from compensation_analytics.core import palette
 from compensation_analytics.ui import logo, raster
 
-#: Proportion du cadre : une aurore s'inscrit mal dans un carre.
-RATIO = 0.72
+#: Proportion du cadre : un rideau d'aurore s'inscrit mal dans un carre.
+#: Cette hauteur laisse la meme marge de tous les cotes.
+RATIO = 0.68
 
 
 def _lignes(data: bytes, largeur: int, hauteur: int):
@@ -68,7 +69,7 @@ def main(argv=None) -> int:
     parser.add_argument("--largeur", type=int, default=512,
                         help="largeur de l'image en pixels (defaut : 512)")
     parser.add_argument("--hauteur", type=int, default=None,
-                        help="hauteur ; par defaut 72 %% de la largeur")
+                        help="hauteur ; par defaut 68 %% de la largeur")
     parser.add_argument("--sortie", default="logo.png",
                         help="fichier PNG a ecrire")
     parser.add_argument("--fond", default=None,

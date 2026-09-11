@@ -22,7 +22,7 @@ ait le temps de le lire : cette attente-là est délibérée. Elle se règle dan
 un clic sur l'écran le passe sans attendre.
 
 Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture —
-trois rubans posés sur une même onde, du vert au violet — puis encodé en PNG
+un rideau : un bord ondulant, et onze rais qui s'en élèvent et se dissipent, du vert au violet — puis encodé en PNG
 par le même module qui dessine les points du nuage. Rien d'opaque dans
 l'archive, et rien de tiré au hasard : le même symbole à chaque fois, et le
 même dessin exactement à toutes les tailles, de l'icône à l'affiche.

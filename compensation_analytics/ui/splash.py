@@ -41,7 +41,7 @@ class Splash(tk.Toplevel):
     #: Cadre du symbole. Une aurore s'inscrit mal dans un carre : il y
     #: resterait deux bandes vides.
     LOGO = 236
-    LOGO_HEIGHT = 170
+    LOGO_HEIGHT = 160
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300
