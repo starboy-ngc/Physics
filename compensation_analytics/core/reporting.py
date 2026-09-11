@@ -253,8 +253,9 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
     def to_y(value: float) -> float:
         return pad_top + plot_h - (value - y_min) / y_span * plot_h
 
-    groups = dataset.get("groups") or []
-    colors = {group: _PALETTE[index % len(_PALETTE)] for index, group in enumerate(groups)}
+    colors = palette.series_map(
+        dataset.get("groups") or [], _PALETTE,
+        other=dataset.get("other_label"), neutral="var(--muted)")
 
     parts = [f'<svg viewBox="0 0 {width} {height}" role="img" aria-label="Nuage de points ancienneté / rémunération">']
     # Graduations rondes, comme a l'ecran et dans le PDF : le meme graphique
@@ -268,7 +269,8 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
         parts.append(f'<text x="{x:.1f}" y="{pad_top + plot_h + 18:.1f}" text-anchor="middle" font-size="10" fill="var(--muted)">{format_number(value, 0)}</text>')
     for point in points:
         color = colors.get(point["group"], ACTIVE.accent)
-        tip = (f'{point["reference"]} | {point["group"]} | ancienneté '
+        modalite = point.get("group_label") or point["group"]
+        tip = (f'{point["reference"]} | {modalite} | ancienneté '
                f'{format_years(point["x"])} | {format_money(point["y"], currency)}')
         parts.append(
             f'<circle cx="{to_x(point["x"]):.1f}" cy="{to_y(point["y"]):.1f}" r="3" '
@@ -294,9 +296,13 @@ def _legend(dataset: Dict[str, Any]) -> str:
     groups = dataset.get("groups") or []
     if not groups or len(groups) > 14:
         return ""
+    colors = palette.series_map(groups, _PALETTE,
+                                other=dataset.get("other_label"),
+                                neutral="var(--muted)")
     items = "".join(
-        f'<span><i class="dot" style="background:{_PALETTE[index % len(_PALETTE)]}"></i>{_e(group)}</span>'
-        for index, group in enumerate(groups)
+        f'<span><i class="dot" style="background:{colors[group]}"></i>'
+        f'{_e(group)}</span>'
+        for group in groups
     )
     label = dataset.get("color_label") or dataset.get("color_field", "")
     return f'<div class="legend"><strong>{_e(label)} :</strong>{items}</div>'

@@ -965,6 +965,139 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
                         self.root.winfo_height() - self.chart.FOOTER_HEIGHT)
 
 
+@needs_display
+class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
+    """Colorer par « Poste » demande quarante couleurs a une serie qui en
+    compte dix. La legende, elle, disparaissait au-dela de seize entrees :
+    le nuage restait colore, mais plus rien ne disait de quoi."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "postes.xlsx")
+        # Quinze modalites d'effectifs differents : de quoi depasser la
+        # serie de couleurs et faire jouer le regroupement.
+        rows = [make_row(i, salary=30000 + (i % 40) * 800,
+                         business_unit=f"BU{i % 15:02d}",
+                         age=28 + i % 30, tenure=i % 18)
+                for i in range(300)]
+        write_workbook(cls.source, [("Population", [HEADERS] + rows)])
+
+    def setUp(self):
+        from compensation_analytics.ui.app import Application
+
+        self.app = Application()
+        self.app.geometry("1400x900")
+        self.app.update()
+        self._analyse()
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("nuage")
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _analyse(self):
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          load_population,
+                                                          run_analysis)
+
+        population, mapping, _ = load_population(
+            self.source, self.app.configuration, reference_date=REFERENCE_DATE)
+        self.app.source_path = self.source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app._populate_filters()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE,
+            segments=[]))
+        self.app._render_results()
+        self.app.update()
+
+    def _chips(self):
+        """Intitules des pastilles, toutes lignes confondues."""
+        import tkinter as tk
+
+        textes = []
+        for ligne in self.app.legend_frame.winfo_children():
+            for chip in ligne.winfo_children():
+                for widget in chip.winfo_children():
+                    if isinstance(widget, tk.Label):
+                        textes.append(widget.cget("text"))
+        return textes
+
+    def test_every_modality_of_the_chart_is_in_the_legend(self):
+        groups = self.app.scatter.dataset.get("groups")
+        self.assertTrue(groups)
+        for group in groups:
+            self.assertIn(group, self._chips())
+
+    def test_the_legend_folds_instead_of_being_cut(self):
+        """« Responsable administratif et financier » occupe le quart d'une
+        ligne a lui seul : la legende tient sur plusieurs lignes, mesurees
+        et non estimees."""
+        self.app.geometry("900x820")
+        self.app.update()
+        self.app._flow_legend()
+        self.app.update()
+        lignes = self.app.legend_frame.winfo_children()
+        self.assertGreater(len(lignes), 1)
+        droite = self.app.legend_frame.winfo_rootx() + \
+            self.app.legend_frame.winfo_width()
+        for ligne in lignes:
+            for chip in ligne.winfo_children():
+                self.assertLessEqual(chip.winfo_rootx() + chip.winfo_width(),
+                                     droite)
+
+    def test_the_grouping_never_wears_a_series_colour(self):
+        """Un regroupement de la couleur d'un vrai poste se lirait comme ce
+        poste."""
+        from compensation_analytics.ui import theme
+
+        autres = self.app.scatter.dataset.get("other_label")
+        self.assertIsNotNone(autres)
+        pastille = self._dot_of(autres)
+        self.assertEqual(pastille, theme.FAINT)
+        self.assertNotIn(pastille, theme.ACTIVE.series)
+
+    def _dot_of(self, group):
+        import tkinter as tk
+
+        for ligne in self.app.legend_frame.winfo_children():
+            for chip in ligne.winfo_children():
+                labels = [w for w in chip.winfo_children()
+                          if isinstance(w, tk.Label)]
+                if labels and labels[0].cget("text") == group:
+                    canvas = [w for w in chip.winfo_children()
+                              if isinstance(w, tk.Canvas)][0]
+                    return canvas.itemcget(canvas.find_all()[0], "fill")
+        return None
+
+    def test_the_legend_colours_are_those_of_the_points(self):
+        """La pastille doit etre exactement la couleur du point."""
+        from compensation_analytics.core import palette
+        from compensation_analytics.ui import theme
+
+        dataset = self.app.scatter.dataset
+        couleurs = palette.series_map(
+            dataset["groups"], theme.ACTIVE.series,
+            other=dataset.get("other_label"), neutral=theme.FAINT)
+        for group in dataset["groups"]:
+            self.assertEqual(self._dot_of(group), couleurs[group])
+
+    def test_hiding_the_grouping_leaves_the_named_modalities(self):
+        """Masquer « Autres » est la facon de ne garder que les modalites
+        nommees."""
+        dataset = self.app.scatter.dataset
+        autres = dataset["other_label"]
+        self.app.scatter.toggle_group(autres)
+        self.app.update()
+        restants = {point["group"]
+                    for point in self.app.scatter.visible_points()}
+        self.assertNotIn(autres, restants)
+        self.assertTrue(restants)
+
+
 @unittest.skipUnless(HAS_TK, "tkinter absent")
 class TestDrawnImages(unittest.TestCase):
     """Le canevas Tk ne lisse pas ses traces : les formes fines sont des

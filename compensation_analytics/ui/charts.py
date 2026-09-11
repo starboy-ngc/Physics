@@ -15,6 +15,7 @@ import tkinter as tk
 from tkinter import ttk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
+from ..core import palette
 from ..core.axes import nice_ticks
 from ..core.reporting import format_money, format_number, format_years
 from . import raster
@@ -258,10 +259,11 @@ class ScatterChart(tk.Frame):
                                 text="Ancienneté (années)", fill=theme.MUTED,
                                 font=axis_font())
 
-        groups = self.dataset.get("groups") or []
         # La serie vient du theme actif et non d'une copie prise a
         # l'import : figee, elle gardait les couleurs du theme par defaut.
-        colours = {g: theme.ACTIVE.series_for(i) for i, g in enumerate(groups)}
+        colours = palette.series_map(
+            self.dataset.get("groups") or [], theme.ACTIVE.series,
+            other=self.dataset.get("other_label"), neutral=theme.FAINT)
 
         shown = 0
         for point in self.points:
@@ -335,7 +337,8 @@ class ScatterChart(tk.Frame):
             return
         self.canvas.configure(cursor="hand2")
         self.tooltip.show(
-            f'{self._label_of(point)}\n{point["group"]}\n'
+            f'{self._label_of(point)}\n'
+            f'{point.get("group_label") or point["group"]}\n'
             f'Ancienneté : {format_years(point["x"])}\n'
             f'Rémunération : {format_money(point["y"], self.currency)}',
             self.canvas.winfo_rootx() + event.x,

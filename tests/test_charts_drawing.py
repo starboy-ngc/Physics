@@ -245,6 +245,38 @@ class TestScatter(ChartCase):
         if chart.tooltip.window is not None:
             self.assertIn("DUPONT", chart.tooltip.label.cget("text"))
 
+    def test_a_grouped_point_still_names_its_own_modality(self):
+        """Le regroupement met les couleurs en commun, pas les identites :
+        le survol doit nommer le poste, pas « Autres »."""
+        chart = self.chart({"available": True, "other_label": "Autres (3 valeurs)",
+                            "groups": ["France", "Autres (3 valeurs)"],
+                            "points": [
+            {"x": 5, "y": 40000, "group": "Autres (3 valeurs)",
+             "group_label": "Iberia", "row": 2, "reference": "REF1"}]})
+        item = next(iter(chart._items))
+        x, y = chart.canvas.coords(item)[:2]
+        chart._on_motion(Motion(int(x) + 2, int(y) + 2))
+        self.root.update()
+        if chart.tooltip.window is not None:
+            texte = chart.tooltip.label.cget("text")
+            self.assertIn("Iberia", texte)
+            self.assertNotIn("Autres", texte)
+
+    def test_the_grouping_is_drawn_in_the_neutral_and_not_in_the_series(self):
+        """Deux postes sans rapport devenaient la meme couleur quand la
+        serie se recyclait ; le regroupement, lui, ne doit ressembler a
+        aucune modalite."""
+        from compensation_analytics.core import palette
+        from compensation_analytics.ui import theme
+
+        groups = [f"BU{index}" for index in range(9)] + ["Autres (30 valeurs)"]
+        couleurs = palette.series_map(groups, theme.ACTIVE.series,
+                                      other="Autres (30 valeurs)",
+                                      neutral=theme.FAINT)
+        self.assertEqual(couleurs["Autres (30 valeurs)"], theme.FAINT)
+        nommees = [couleurs[group] for group in groups[:-1]]
+        self.assertEqual(len(set(nommees)), 9)
+
     def test_an_empty_dataset_says_so(self):
         chart = self.chart({"available": False, "points": [],
                             "warning": "Effectif insuffisant"})

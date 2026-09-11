@@ -582,6 +582,63 @@ def _dispersion_of(metrics: Dict[str, Any], key: str) -> Optional[float]:
     return (metrics.get("dispersion") or {}).get(key)
 
 
+#: Au-dela, les modalites les moins nombreuses sont regroupees. La serie
+#: categorielle compte dix couleurs (« palette.SERIES_COUNT ») : neuf
+#: modalites nommees et un regroupement en gris les occupent exactement.
+DEFAULT_MAX_GROUPS = 9
+
+
+def _collapse_groups(points: List[Dict[str, Any]], max_groups: int):
+    """Classe les modalites par effectif et regroupe la queue.
+
+    Colorier par « Poste » demandait trente-huit couleurs a une serie qui
+    en compte dix : la dixieme modalite reprenait la couleur de la
+    premiere, et deux postes sans rapport devenaient indiscernables. La
+    legende, elle, disparaissait purement et simplement au-dela de seize
+    entrees — le nuage restait colore, mais plus rien ne disait de quoi.
+
+    Le remede n'est pas d'interdire les dimensions nombreuses : « Poste »
+    est precisement celle qu'on veut regarder. Ce sont les modalites les
+    plus nombreuses qui portent une couleur ; les autres, prises ensemble,
+    en portent une seule, neutre. Aucun point ne disparait, et le nuage ne
+    ment plus sur ce qu'il montre.
+
+    Rend la liste des modalites — effectif decroissant, regroupement en
+    dernier —, le nom du regroupement, et l'effectif de chacune.
+    """
+    counts: Dict[str, int] = {}
+    for point in points:
+        counts[point["group"]] = counts.get(point["group"], 0) + 1
+    # A effectif egal, l'ordre alphabetique : deux analyses du meme fichier
+    # doivent rendre les memes couleurs.
+    classees = sorted(counts, key=lambda name: (-counts[name], name))
+    if not max_groups or len(classees) <= max_groups:
+        return classees, None, counts
+
+    gardees = classees[:max_groups]
+    regroupees = set(classees[max_groups:])
+    other = f"Autres ({len(regroupees)} valeurs)"
+    while other in counts:
+        # Une modalite du fichier porte deja ce nom : le regroupement doit
+        # rester distinct d'elle, sinon il l'absorbe en silence.
+        other += " "
+    for point in points:
+        if point["group"] in regroupees:
+            # L'identite de la modalite n'est pas perdue : elle reste
+            # lisible au survol du point, seule la couleur est mise en
+            # commun.
+            point["group_label"] = point["group"]
+            point["group"] = other
+    # Le regroupement passe devant : quatre cents points gris traces apres
+    # les autres les recouvriraient, et c'est justement sur les modalites
+    # nommees que le regard doit pouvoir se poser. Le tri est stable, donc
+    # l'ordre des points d'une meme modalite ne change pas.
+    points.sort(key=lambda point: 0 if point["group"] == other else 1)
+    retenus = {name: counts[name] for name in gardees}
+    retenus[other] = sum(counts[name] for name in regroupees)
+    return gardees + [other], other, retenus
+
+
 def scatter_dataset(
     population: Population, config: Configuration
 ) -> Dict[str, Any]:
@@ -622,6 +679,10 @@ def scatter_dataset(
         points = [points[int(index * step)] for index in range(max_points)]
         sampled = True
 
+    groups, other_label, group_counts = _collapse_groups(
+        points, int(config.get("chart_parameters.scatter_max_groups",
+                       DEFAULT_MAX_GROUPS) or 0))
+
     if not rules.may_chart(len(points)):
         return {
             "available": False,
@@ -653,5 +714,9 @@ def scatter_dataset(
         "y_field": y_field,
         "color_field": color_field,
         "color_label": dimension_label(config, color_field),
-        "groups": sorted({point["group"] for point in points}),
+        "groups": groups,
+        # Nom du regroupement, ou None si toutes les modalites tiennent.
+        # Les quatre supports s'en servent pour lui donner un neutre.
+        "other_label": other_label,
+        "group_counts": group_counts,
     }

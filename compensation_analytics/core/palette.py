@@ -26,7 +26,7 @@ rendre l'outil illisible depuis les parametres.
 
 from __future__ import annotations
 
-from typing import Dict, List, NamedTuple, Optional, Tuple
+from typing import Any, Dict, List, NamedTuple, Optional, Sequence, Tuple
 
 WHITE = "#ffffff"
 
@@ -273,3 +273,27 @@ def from_analysis(analysis) -> Palette:
     le parametrage a change depuis.
     """
     return by_name((analysis or {}).get("theme"))
+
+
+def series_map(groups: Sequence[str], colours: Sequence[str],
+               other: Optional[str] = None,
+               neutral: Any = None) -> Dict[str, Any]:
+    """Couleur de chaque modalite, le regroupement mis a part.
+
+    Les quatre supports — ecran, HTML, SVG, PDF — coloriaient le nuage
+    chacun de leur cote, par la position dans la liste. Le jour ou le
+    moteur a regroupe la queue des modalites sous « Autres », il aurait
+    fallu les corriger quatre fois, et le premier oubli aurait donne un
+    regroupement de la couleur d'un vrai poste. La regle tient donc ici :
+    la serie dans l'ordre, et le regroupement dans un neutre qui ne
+    ressemble a aucune modalite.
+    """
+    mapping: Dict[str, Any] = {}
+    rang = 0
+    for group in groups:
+        if other is not None and group == other:
+            mapping[group] = neutral
+            continue
+        mapping[group] = colours[rang % len(colours)]
+        rang += 1
+    return mapping

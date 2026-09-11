@@ -634,10 +634,13 @@ def _render_block(block: Block, currency: str) -> str:
         groups = dataset.get("groups") or []
         if not groups or len(groups) > 14:
             return ""
+        colors = palette.series_map(groups, ACTIVE.series,
+                                     other=dataset.get("other_label"),
+                                     neutral=ACTIVE.muted)
         items = "".join(
             f'<span><i class="dot" style="background:'
-            f'{ACTIVE.series_for(i)}"></i>{_html_escape(g)}</span>'
-            for i, g in enumerate(groups)
+            f'{colors[g]}"></i>{_html_escape(g)}</span>'
+            for g in groups
         )
         label = dataset.get("color_label") or ""
         return (f'<div class="full"><div class="legend">'
@@ -855,9 +858,9 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
         page.line(x, level, x + width, level, color=_LINE, width=0.4)
         page.text(x - 5, level - 2.5, format_money(value, currency),
                   size=6.5, color=_MUTED, align="right")
-    groups = dataset.get("groups") or []
-    colors = {group: _PDF_PALETTE[index % len(_PDF_PALETTE)]
-              for index, group in enumerate(groups)}
+    colors = palette.series_map(dataset.get("groups") or [], _PDF_PALETTE,
+                                other=dataset.get("other_label"),
+                                neutral=_MUTED)
     for point in points:
         page.circle(to_x(point["x"]), to_y(point["y"]), 1.8,
                     colors.get(point["group"], _ACCENT), alpha_state="GA")
@@ -888,13 +891,15 @@ def _draw_legend(page, dataset, x, y, width) -> float:
     if label:
         page.text(cursor, line_y, f"{label} :", size=7.5, bold=True, color=_MUTED)
         cursor += _width(f"{label} :", 7.5, True) + 10
-    for index, group in enumerate(groups):
+    colors = palette.series_map(groups, _PDF_PALETTE,
+                                other=dataset.get("other_label"),
+                                neutral=_MUTED)
+    for group in groups:
         entry = str(group)
         needed = _width(entry, 7.5) + 20
         if cursor + needed > x + width:
             break
-        page.circle(cursor + 3, line_y + 2.5, 3,
-                    _PDF_PALETTE[index % len(_PDF_PALETTE)])
+        page.circle(cursor + 3, line_y + 2.5, 3, colors[group])
         page.text(cursor + 9, line_y, entry, size=7.5, color=_MUTED)
         cursor += needed
     return 16.0

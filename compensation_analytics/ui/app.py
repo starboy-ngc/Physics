@@ -27,7 +27,7 @@ from tkinter import filedialog, messagebox, ttk
 from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
-from ..core import metrics
+from ..core import metrics, palette
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError
@@ -793,6 +793,7 @@ class Application(tk.Tk):
         self.scatter.pack(fill="both", expand=True, padx=18, pady=(4, 4))
         self.legend_frame = tk.Frame(nuage, background=theme.CANVAS)
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
+        self.legend_frame.bind("<Configure>", self._on_legend_resize)
 
         # La page defile : les indicateurs de la directive, la repartition
         # par quartile, le graphique des ecarts et son tableau ne tiennent
@@ -2038,31 +2039,74 @@ class Application(tk.Tk):
             dataset, self.result.payload["salary"].get("currency", "EUR"))
         self._build_legend()
 
+    #: Largeur reservee a une pastille et a ses marges, en pixels. Mesuree
+    #: sur la legende : 9 px de rond, 5 d'ecart, 14 de separation.
+    LEGEND_CHIP_PADDING = 28
+
     def _build_legend(self) -> None:
+        """Legende du nuage : une pastille par modalite, repliee si besoin.
+
+        Elle disparaissait au-dela de seize modalites — le nuage restait
+        colore, mais plus rien ne disait de quoi. Le moteur en limite
+        desormais le nombre ; il reste a ne pas dependre d'une seule ligne,
+        car « Responsable administratif et financier » en occupe le quart a
+        lui seul. Les pastilles sont donc reparties sur autant de lignes
+        que la largeur en impose, mesurees et non estimees.
+        """
+        self._legend_groups = self.scatter.dataset.get("groups") or []
+        self._legend_width = 0
+        self._flow_legend()
+
+    def _flow_legend(self) -> None:
         for child in self.legend_frame.winfo_children():
             child.destroy()
-        groups = self.scatter.dataset.get("groups") or []
-        if not groups or len(groups) > 16:
+        groups = getattr(self, "_legend_groups", [])
+        if not groups:
             return
-        tk.Label(self.legend_frame, text="MASQUER", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label).pack(side="left",
-                                                               padx=(0, 10))
-        for index, group in enumerate(groups):
-            # Meme serie que le nuage, prise au theme actif : la pastille de
-            # la legende doit etre exactement la couleur du point.
-            colour = theme.ACTIVE.series_for(index)
-            chip = tk.Frame(self.legend_frame, background=theme.CANVAS, cursor="hand2")
+        available = self.legend_frame.winfo_width()
+        if available < 60:
+            # Avant le premier calcul de geometrie, Tk annonce un pixel : on
+            # depose tout sur une ligne, le « Configure » qui suit repliera.
+            available = 10 ** 6
+        self._legend_width = available
+        colours = palette.series_map(
+            groups, theme.ACTIVE.series,
+            other=self.scatter.dataset.get("other_label"), neutral=theme.FAINT)
+        ligne = tk.Frame(self.legend_frame, background=theme.CANVAS)
+        ligne.pack(fill="x", anchor="w")
+        tk.Label(ligne, text="MASQUER", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(0, 10))
+        reste = available - self.fonts.label.measure("MASQUER") - 10
+        for group in groups:
+            largeur = self.fonts.small.measure(group) + self.LEGEND_CHIP_PADDING
+            if largeur > reste and ligne.winfo_children():
+                ligne = tk.Frame(self.legend_frame, background=theme.CANVAS)
+                ligne.pack(fill="x", anchor="w", pady=(4, 0))
+                reste = available
+            reste -= largeur
+            chip = tk.Frame(ligne, background=theme.CANVAS, cursor="hand2")
             chip.pack(side="left", padx=(0, 14))
             dot = tk.Canvas(chip, width=9, height=9, background=theme.CANVAS,
                             highlightthickness=0)
-            dot.create_oval(1, 1, 8, 8, fill=colour, outline="")
+            dot.create_oval(1, 1, 8, 8, fill=colours[group], outline="")
             dot.pack(side="left", pady=(1, 0))
-            text = tk.Label(chip, text=group, background=theme.CANVAS, foreground=theme.INK_SOFT,
-                            font=self.fonts.small)
+            text = tk.Label(chip, text=group, background=theme.CANVAS,
+                            foreground=theme.INK_SOFT, font=self.fonts.small)
             text.pack(side="left", padx=(5, 0))
             for widget in (chip, dot, text):
                 widget.bind("<Button-1>", lambda _e, g=group, t=text, d=dot:
                             self._toggle_group(g, t, d))
+
+    def _on_legend_resize(self, event) -> None:
+        """Replie la legende quand la fenetre change de largeur.
+
+        Le repli detruit et recree les pastilles, ce qui provoque un
+        « Configure » : sans la comparaison de largeur, la legende se
+        reconstruirait sans fin.
+        """
+        if abs(event.width - getattr(self, "_legend_width", 0)) > 2:
+            self._flow_legend()
 
     def _toggle_group(self, group: str, text: tk.Label, dot: tk.Canvas) -> None:
         self.scatter.toggle_group(group)

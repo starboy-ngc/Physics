@@ -204,6 +204,10 @@ DEFAULTS: Dict[str, Any] = {
         "scatter_y": "base_salary",
         "scatter_color_by": "business_unit",
         "scatter_max_points": 5000,
+        # Nombre de modalites coloriees avant regroupement dans « Autres ».
+        # Au-dela de la serie categorielle, les couleurs se recyclent et
+        # deux modalites deviennent indiscernables.
+        "scatter_max_groups": 9,
         # La droite de tendance est issue de la meme regression que le R2,
         # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
         # a affirmer une tendance sans permettre d'en juger la solidite.
