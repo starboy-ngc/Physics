@@ -202,7 +202,7 @@ class TestWindow(unittest.TestCase):
 
     def test_the_window_opens_with_the_expected_steps(self):
         self.assertEqual(self.app.title(),
-                         "Compensation Analytics Engine 1.0.0")
+                         "HR Insight 1.0.0")
         from compensation_analytics.ui.app import TABS
 
         self.assertEqual(len(self.app.tabs), len(TABS))

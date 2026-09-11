@@ -52,6 +52,7 @@ from .charts import (BandChart, BoxPlotChart,
                      HistogramChart, PyramidChart, QuartileChart,
                      ScatterChart)
 from .progress import LoadingBar
+from . import splash as accueil_module
 from .theme import Card, CheckRow, Fonts, TabBar
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
@@ -165,11 +166,22 @@ def dispersion_rows(spread: Dict[str, Any], currency: str) -> List[tuple]:
 class Application(tk.Tk):
     """Fenetre unique de l'outil."""
 
-    def __init__(self, config_dir: Optional[str] = None) -> None:
+    #: Duree minimale d'affichage de l'ecran d'accueil, si la
+    #: configuration n'en dit rien. La construction de la fenetre est trop
+    #: rapide pour qu'on ait le temps de lire quoi que ce soit : ce temps-la
+    #: est assume, et se regle a zero.
+    SPLASH_SECONDS = 1.6
+
+    def __init__(self, config_dir: Optional[str] = None,
+                 splash: bool = False) -> None:
         super().__init__()
         self.title(WINDOW_TITLE)
         self.geometry("1380x880")
         self.minsize(1120, 720)
+        # Retiree de l'ecran le temps de la construction : une fenetre qui
+        # se remplit widget par widget sous les yeux de l'utilisateur fait
+        # plus desordre que d'attendre.
+        self.withdraw()
 
         # La configuration est lue en premier : c'est elle qui porte le
         # theme, et un widget prend sa couleur a la construction. Tout ce qui
@@ -184,6 +196,16 @@ class Application(tk.Tk):
         theme.apply(self, self.fonts)
         # Une seule fenetre d'info-bulle pour toute l'application.
         self.hints = theme.Hints(self, self.fonts)
+
+        # L'ecran d'accueil appartient au lancement, pas a la fenetre :
+        # « main » le demande, un test qui construit la fenetre pour lire un
+        # widget ne l'attend pas une seconde et demie.
+        self._splash = self._open_splash() if splash else None
+        #: Ce qui annonce l'avancement du demarrage. Sans ecran d'accueil,
+        #: il n'annonce a personne — le reste du code n'a pas a le savoir.
+        self._startup = (self._splash.announce if self._splash
+                         else lambda _label, _part: None)
+        self._startup("Paramètres et thème", 0.18)
 
         self.source_path: Optional[str] = None
         self.population = None
@@ -223,6 +245,39 @@ class Application(tk.Tk):
         # c'est la promesse du bouton « Enregistrer », et elle ne tient que
         # si la page survit a la fermeture.
         self._set_state("Choisissez un fichier de population pour commencer.")
+        self._startup("Prêt", 1.0)
+        self._close_splash()
+        self.deiconify()
+
+    # ------------------------------------------------------------ accueil
+
+    def _splash_seconds(self) -> float:
+        return float(self.configuration.get("theme_parameters.splash_seconds",
+                                            self.SPLASH_SECONDS) or 0.0)
+
+    def _open_splash(self):
+        """Ouvre l'ecran d'accueil, sauf si la configuration l'a mis a zero."""
+        if self._splash_seconds() <= 0:
+            return None
+        return accueil_module.show(self, self.fonts)
+
+    def _close_splash(self) -> None:
+        """Laisse l'ecran le temps d'etre vu, puis le retire.
+
+        La boucle est ici, avant « mainloop », et c'est voulu : le demarrage
+        est lineaire, et un enchainement de rappels pour attendre une
+        seconde et demie serait plus difficile a suivre qu'a ecrire.
+        """
+        ecran = self._splash
+        self._splash = None
+        if ecran is None:
+            return
+        limite = _time.perf_counter() + self._splash_seconds()
+        while _time.perf_counter() < limite and not ecran.skipped:
+            ecran.tick()
+            self.update()
+            _time.sleep(0.008)
+        ecran.close()
 
     # -------------------------------------------------------------- layout
 
@@ -253,6 +308,7 @@ class Application(tk.Tk):
         body = tk.Frame(self, background=theme.GROUND)
         body.pack(fill="both", expand=True)
 
+        self._startup("Colonne de gauche", 0.42)
         self.sidebar_card = Card(body, padding=0)
         self.sidebar_card.pack(side="left", fill="y")
         self.sidebar_card.configure(width=self.SIDEBAR_WIDTH)
@@ -277,6 +333,7 @@ class Application(tk.Tk):
                                wraplength=900)
         self.pages = tk.Frame(content.inner, background=theme.CANVAS)
         self.pages.pack(fill="both", expand=True)
+        self._startup("Pages et graphiques", 0.68)
         self._build_pages()
 
 
@@ -2368,5 +2425,5 @@ class Application(tk.Tk):
 
 def main(config_dir: Optional[str] = None) -> int:
     """Ouvre l'interface. Retourne un code de sortie."""
-    Application(config_dir).mainloop()
+    Application(config_dir, splash=True).mainloop()
     return 0

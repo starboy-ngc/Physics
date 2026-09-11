@@ -389,12 +389,19 @@ class TestTheWindowDrivesTheBar(unittest.TestCase):
         self.assertEqual(sys.getswitchinterval(), avant)
 
     def test_the_bar_sits_under_the_button_that_started_it(self):
+        """Elle repond au geste qu'on vient de faire : sa place est entre
+        « Analyser » et le bouton d'export, pas sous les deux.
+
+        L'ordre d'empilement est lu plutot que les coordonnees : celles-ci
+        ne valent qu'une fois la geometrie recalculee, et l'analyse peut
+        s'achever d'ici la.
+        """
         self.app.run_analysis()
-        self.app.update()
-        self.assertLess(self.app.analyse_button.winfo_rooty(),
-                        self.app.progress.winfo_rooty())
-        self.assertLess(self.app.progress.winfo_rooty(),
-                        self.app.export_button.winfo_rooty())
+        ordre = self.app.analyse_button.master.pack_slaves()
+        self.assertLess(ordre.index(self.app.analyse_button),
+                        ordre.index(self.app.progress))
+        self.assertLess(ordre.index(self.app.progress),
+                        ordre.index(self.app.export_button))
 
 
 if __name__ == "__main__":

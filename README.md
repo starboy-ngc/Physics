@@ -1,4 +1,4 @@
-# Compensation Analytics Engine
+# HR Insight
 
 Logiciel **local, hors ligne et sans dépendance** d'analyse de rémunération,
 destiné aux équipes RH / Compensation & Benefits en environnement d'entreprise

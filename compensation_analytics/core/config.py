@@ -219,6 +219,9 @@ DEFAULTS: Dict[str, Any] = {
         # contraste. Un nom inconnu retombe sur le theme d'origine plutot
         # que d'ouvrir l'outil sans couleurs.
         "theme": "ardoise",
+        # Duree minimale d'affichage de l'ecran d'accueil, en secondes.
+        # Zero : pas d'ecran d'accueil, la fenetre s'ouvre directement.
+        "splash_seconds": 1.6,
     },
     "export_parameters": {
         "output_directory": "output",

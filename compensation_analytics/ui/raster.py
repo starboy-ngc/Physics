@@ -31,7 +31,8 @@ RGB = Tuple[int, int, int]
 SAMPLES = 4
 
 
-def _png(width: int, height: int, pixels: Sequence[Sequence[int]]) -> bytes:
+def _png(width: int, height: int, pixels: Sequence[Sequence[int]],
+         level: int = 9) -> bytes:
     """Encode une image RVBA en PNG, sans filtrage de ligne."""
 
     def chunk(tag: bytes, data: bytes) -> bytes:
@@ -42,7 +43,7 @@ def _png(width: int, height: int, pixels: Sequence[Sequence[int]]) -> bytes:
     body = b"".join(b"\x00" + bytes(row) for row in pixels)
     return (b"\x89PNG\r\n\x1a\n"
             + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0))
-            + chunk(b"IDAT", zlib.compress(body, 9))
+            + chunk(b"IDAT", zlib.compress(body, level))
             + chunk(b"IEND", b""))
 
 
@@ -143,6 +144,17 @@ def _segments(points: Sequence[Tuple[float, float]],
         return False
 
     return inside
+
+
+def image_data(width: int, height: int,
+               rows: Sequence[Sequence[int]], level: int = 9) -> bytes:
+    """Forme attendue par PhotoImage, pour une image RVBA deja composee.
+
+    « Raster » compose par couverture, une forme apres l'autre : c'est ce
+    qu'il faut pour un disque de sept pixels, pas pour un millier d'etoiles
+    dont la lumiere s'ajoute. Celles-la arrivent ici deja calculees.
+    """
+    return base64.b64encode(_png(width, height, rows, level))
 
 
 # ------------------------------------------------------------------ images

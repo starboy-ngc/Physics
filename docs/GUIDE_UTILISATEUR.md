@@ -1,7 +1,30 @@
-# Guide utilisateur
+# Guide utilisateur — HR Insight
 
 Logiciel **local et hors ligne** : aucune donnée ne quitte votre poste.
 Vous pouvez couper Internet avant de l'utiliser.
+
+## 0. L'écran d'accueil
+
+À l'ouverture, **HR Insight** affiche sa galaxie, son nom et l'étape en
+cours : lecture des paramètres, thème, colonne de gauche, pages et
+graphiques. Ces étapes sont réelles — construire la fenêtre demande deux
+dixièmes de seconde ici, davantage sur un poste chargé.
+
+L'écran reste ensuite affiché **une seconde et demie de plus**, pour qu'on
+ait le temps de le lire : cette attente-là est délibérée. Elle se règle dans
+`config/theme_parameters.json` :
+
+```json
+{ "theme": "ardoise", "splash_seconds": 1.6 }
+```
+
+À **0**, pas d'écran d'accueil du tout : la fenêtre s'ouvre directement. Et
+un clic sur l'écran le passe sans attendre.
+
+Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture —
+mille huit cents étoiles sur deux bras en spirale — puis encodé en PNG par
+le même module qui dessine les points du nuage. Rien d'opaque dans
+l'archive, et le tirage est fixe : la même galaxie à chaque fois.
 
 ## 1. Préparer le fichier
 

@@ -63,8 +63,16 @@ class LoadingBar(tk.Frame):
     CEILING = 0.995
 
     def __init__(self, master: tk.Widget, ground: Optional[str] = None,
-                 clock: Callable[[], float] = time.perf_counter):
+                 clock: Callable[[], float] = time.perf_counter,
+                 track: Optional[str] = None, fill: Optional[str] = None,
+                 ink: Optional[str] = None):
+        # Les couleurs sont celles du theme par defaut, mais l'ecran
+        # d'accueil pose la meme barre sur un fond sombre : un filet gris
+        # clair y disparaitrait.
         self.ground = ground or theme.GROUND
+        self.track = track or theme.LINE
+        self.fill = fill or theme.ACCENT
+        self.ink = ink or theme.MUTED
         super().__init__(master, background=self.ground)
         petite = (pick_family(self), SIZE_SMALL)
         self.clock = clock
@@ -72,17 +80,17 @@ class LoadingBar(tk.Frame):
                                 background=self.ground, highlightthickness=0)
         self.canvas.pack(fill="x")
         self.caption = tk.Label(self, text="", background=self.ground,
-                                foreground=theme.MUTED, anchor="w",
+                                foreground=self.ink, anchor="w",
                                 font=petite)
         self.percent = tk.Label(self, text="", background=self.ground,
-                                foreground=theme.MUTED, anchor="e",
+                                foreground=self.ink, anchor="e",
                                 font=petite)
         self.caption.pack(side="left", pady=(4, 0))
         self.percent.pack(side="right", pady=(4, 0))
         self._track = self.canvas.create_rectangle(
-            0, 0, 0, self.HEIGHT, fill=theme.LINE, outline="")
+            0, 0, 0, self.HEIGHT, fill=self.track, outline="")
         self._fill = self.canvas.create_rectangle(
-            0, 0, 0, self.HEIGHT, fill=theme.ACCENT, outline="")
+            0, 0, 0, self.HEIGHT, fill=self.fill, outline="")
         self._target = 0.0
         self._shown = 0.0
         self._last = self.clock()

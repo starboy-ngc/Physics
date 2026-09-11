@@ -1,4 +1,4 @@
-COMPENSATION ANALYTICS ENGINE 1.0.0
+HR INSIGHT 1.0.0 — Pulsar Analytics
 Analyse de rémunération locale et hors ligne
 ===================================================================
 
