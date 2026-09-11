@@ -103,6 +103,36 @@ class TestTheGalaxy(unittest.TestCase):
         galaxie = self.galaxy()
         self.assertEqual(galaxie.frame(0), galaxie.frame(12))
 
+    def test_the_density_follows_the_surface(self):
+        """Quatre fois plus large, seize fois plus d'etoiles : c'est ce qui
+        fait tenir les bras. A nombre constant, une galaxie agrandie se
+        defait en grains isoles."""
+        petite = logo.Galaxy(78, 12, cold=COLD, warm=WARM)
+        grande = logo.Galaxy(312, 12, cold=COLD, warm=WARM)
+        rapport = len(grande.stars) / len(petite.stars)
+        self.assertAlmostEqual(rapport, 16.0, delta=1.0)
+
+    def test_the_dot_grows_slower_than_the_image(self):
+        """Sinon une galaxie rendue en grand n'est plus qu'un amas de
+        taches floues : le point doit perdre en taille relative."""
+        petite = logo.Galaxy(156, 12, cold=COLD, warm=WARM)
+        grande = logo.Galaxy(624, 12, cold=COLD, warm=WARM)
+        self.assertGreater(len(grande.kernel), len(petite.kernel))
+        # Quatre fois plus large, mais le point n'a pas quadruple.
+        self.assertLess(len(grande.kernel), len(petite.kernel) * 16)
+
+    def test_the_light_does_not_depend_on_the_size(self):
+        """La lumiere s'ajoute : deux fois plus d'etoiles, chacune plus
+        large, et la galaxie vire au ruban blanc. L'eclat de chaque etoile
+        est donc divise par ce que le point a gagne."""
+        def clarte(taille):
+            galaxie = logo.Galaxy(taille, 12, cold=COLD, warm=WARM)
+            lignes = pixels(galaxie.frame(0), taille)
+            total = sum(sum(ligne[3::4]) for ligne in lignes)
+            return total / (taille * taille)
+
+        self.assertAlmostEqual(clarte(78), clarte(312), delta=12)
+
     def test_the_whole_rotation_is_affordable(self):
         """Elle est calculée pendant que l'écran est déjà là, image par
         image : aucune ne doit bloquer l'affichage."""

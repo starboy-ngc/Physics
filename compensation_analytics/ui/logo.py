@@ -25,9 +25,16 @@ RGB = Tuple[int, int, int]
 #: Graine du tirage. Elle fixe la forme de la galaxie une fois pour toutes.
 SEED = 20260911
 
-#: Nombre d'etoiles. Assez pour que les bras se lisent, assez peu pour que
-#: trente images se calculent en un clin d'oeil.
-STARS = 1800
+#: Nombre d'etoiles a la taille de reference. Assez pour que les bras se
+#: lisent, assez peu pour que la rotation entiere se calcule en un quart de
+#: seconde.
+STARS = 3200
+
+#: Taille pour laquelle ce nombre a ete choisi, en pixels. Au-dela, la
+#: densite suit la surface et le point grossit : sans cela, une galaxie
+#: agrandie se defait en grains isoles — les bras ne tiennent que par le
+#: nombre d'etoiles au centimetre carre.
+REFERENCE = 156
 
 #: Bras de la spirale, et enroulement (en tours du centre au bord).
 ARMS = 2
@@ -60,7 +67,13 @@ def _stars(count: int) -> List[Tuple[float, float, float, float]]:
         # Spirale : l'angle croit avec le rayon. L'ecart au bras s'ouvre
         # vers l'exterieur — un bras parfaitement net ferait un dessin, pas
         # une galaxie.
-        ouverture = 0.04 + 0.15 * rayon
+        ouverture = 0.07 + 0.26 * rayon
+        if index % 4 == 0:
+            # Une etoile sur quatre s'ecarte franchement : c'est ce voile
+            # entre les bras qui empeche la spirale de ressembler a deux
+            # rubans peints. Sans lui, la galaxie tient en vignette et se
+            # defait des qu'on l'agrandit.
+            ouverture *= 2.6
         angle = bras + WINDING * 2 * math.pi * rayon + tirage.gauss(0, ouverture)
         eclat = max(0.15, (1.0 - rayon) ** 0.9) * tirage.uniform(0.35, 1.0)
         # Le bleu des bras gagne vite : au tiers du rayon, plus rien d'or.
@@ -70,11 +83,26 @@ def _stars(count: int) -> List[Tuple[float, float, float, float]]:
     return etoiles
 
 
-#: Noyau du point : une etoile n'est pas un pixel, sinon la galaxie
-#: scintille au lieu de tourner. Les poids valent pour les huit voisins.
-_KERNEL = ((-1, -1, 0.10), (0, -1, 0.26), (1, -1, 0.10),
-           (-1, 0, 0.26), (0, 0, 1.00), (1, 0, 0.26),
-           (-1, 1, 0.10), (0, 1, 0.26), (1, 1, 0.10))
+def _weight(kernel) -> float:
+    """Lumiere totale d'un point, tous ses pixels additionnes."""
+    return sum(poids for _dx, _dy, poids in kernel)
+
+
+def _kernel(radius: int):
+    """Noyau du point : une etoile n'est pas un pixel.
+
+    Un seul pixel ferait scintiller la galaxie au lieu de la faire tourner,
+    et l'agrandir la reduirait a de la poussiere. Le rayon suit donc la
+    taille de l'image, et la lumiere y decroit en cloche.
+    """
+    noyau = []
+    for dy in range(-radius, radius + 1):
+        for dx in range(-radius, radius + 1):
+            distance = math.hypot(dx, dy)
+            if distance > radius + 0.5:
+                continue
+            noyau.append((dx, dy, math.exp(-(distance / (radius * 0.85)) ** 2)))
+    return tuple(noyau)
 
 
 def _mix(cold: RGB, warm: RGB, part: float) -> RGB:
@@ -97,7 +125,19 @@ class Galaxy:
         self.cold = cold
         self.warm = warm
         self.flatten = flatten
-        self.stars = _stars(STARS)
+        # Densite et grosseur du point suivent la taille demandee : la
+        # galaxie doit se tenir aussi bien en vignette qu'en grand.
+        echelle = size / REFERENCE
+        self.stars = _stars(max(240, int(STARS * echelle * echelle)))
+        # Le point grossit moins vite que l'image : a taille de logo il
+        # tient en trois pixels, et une galaxie rendue en grand garde des
+        # etoiles piquees plutot que des taches floues.
+        self.kernel = _kernel(max(1, round(math.sqrt(echelle))))
+        # La lumiere s'ajoute : deux fois plus d'etoiles, chacune deux fois
+        # plus large, et la galaxie vire au ruban blanc. L'eclat de chaque
+        # etoile est donc divise par ce que le point a gagne en surface —
+        # la meme galaxie, simplement plus fine.
+        self.gain = _weight(_kernel(1)) / _weight(self.kernel)
         self._centre = size / 2.0
         self._radius = self._centre * 0.92
 
@@ -112,17 +152,22 @@ class Galaxy:
             y = (self._centre
                  + math.sin(theta) * rayon * self._radius * self.flatten)
             rouge, vert, bleu = _mix(self.cold, self.warm, chaleur)
-            _pose(toile, size, x, y, eclat, rouge, vert, bleu)
-        _glow(toile, size, self._centre, self._radius * 0.19, self.warm)
+            _pose(toile, size, x, y, eclat * self.gain, rouge, vert, bleu,
+                  self.kernel)
+        # Deux halos : un noyau franc, et un voile trois fois plus large
+        # qui l'adoucit. Un seul halo assez fort pour se voir saturait au
+        # centre et donnait, en grand, un disque jaune parfaitement plat.
+        _glow(toile, size, self._centre, self._radius * 0.17, self.warm, 0.62)
+        _glow(toile, size, self._centre, self._radius * 0.44, self.warm, 0.16)
         # Compression rapide : l'image vit une seconde a l'ecran, elle n'a
         # pas a etre compacte.
         return raster.image_data(size, size, _to_rows(toile, size), 1)
 
 
 def _pose(toile, size: int, x: float, y: float, eclat: float,
-          rouge: int, vert: int, bleu: int) -> None:
+          rouge: int, vert: int, bleu: int, noyau) -> None:
     base_x, base_y = int(x), int(y)
-    for dx, dy, poids in _KERNEL:
+    for dx, dy, poids in noyau:
         px, py = base_x + dx, base_y + dy
         if not (0 <= px < size and 0 <= py < size):
             continue
@@ -136,7 +181,8 @@ def _pose(toile, size: int, x: float, y: float, eclat: float,
         ligne[index + 2] += bleu * force
 
 
-def _glow(toile, size: int, centre: float, rayon: float, warm: RGB) -> None:
+def _glow(toile, size: int, centre: float, rayon: float, warm: RGB,
+          force_max: float) -> None:
     """Halo du bulbe : la lumiere du centre deborde sur ses voisins."""
     portee = int(rayon * 3)
     for y in range(max(0, int(centre - portee)), min(size, int(centre + portee))):
@@ -144,7 +190,7 @@ def _glow(toile, size: int, centre: float, rayon: float, warm: RGB) -> None:
         for x in range(max(0, int(centre - portee)),
                        min(size, int(centre + portee))):
             distance = math.hypot(x - centre, y - centre)
-            force = math.exp(-(distance / rayon) ** 2) * 0.80
+            force = math.exp(-(distance / rayon) ** 2) * force_max
             if force < 0.004:
                 continue
             index = x * 3
