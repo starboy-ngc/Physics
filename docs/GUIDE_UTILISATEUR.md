@@ -245,23 +245,67 @@ Chaque cellule porte **aussi** sa valeur calculée : Excel la recalcule à
 l'ouverture, mais un lecteur qui ne recalcule pas affiche le bon chiffre
 quand même.
 
-### Vérifier les indicateurs de base
+### Le dossier de vérification : le fichier importé et tous les calculs
 
 Une médiane ne se déduit d'aucun autre chiffre : la vérifier demande les
-valeurs. Activez `export_parameters.include_individual_data` et le classeur
-gagne un onglet **Contrôle** qui pose côte à côte ce que l'outil a calculé et
-ce que le tableur trouve sur la colonne des rémunérations :
+valeurs. Et vérifier une valeur demande de pouvoir remonter jusqu'à la ligne
+du fichier dont elle sort.
+
+Dans **Paramètres → Export**, deux cases :
+
+1. **Exporter les données individuelles dans le classeur.**
+2. **Joindre le fichier importé et les onglets de contrôle** (elle suppose la
+   première, et la coche automatiquement).
+
+Le classeur gagne alors cinq onglets, dans l'ordre de la chaîne :
+
+| Onglet | Ce qu'il contient |
+|---|---|
+| **Fichier importé** | le fichier tel qu'il a été lu, ligne pour ligne et colonne pour colonne — la ligne 7 de l'onglet est la ligne 7 du fichier |
+| **Colonnes lues** | ce que le mapping a fait de chaque colonne, et lesquelles il a ignorées |
+| **Données individuelles** | les salariés retenus, avec leur **ligne source**, le **sexe retenu** par la classification, les dates comprises à la lecture, et l'âge comme l'ancienneté **écrits en formules** |
+| **Contrôle** | chaque indicateur d'ensemble refait par le tableur : effectif, âge, ancienneté, tranches, parts remarquables, tous les percentiles, écart-type, dispersion, bornes atypiques, chaque classe de l'histogramme |
+| **Contrôle segments** | chaque ligne de chaque segment : effectif, moyenne, médiane, P10, Q1, Q3, P90, âge et ancienneté médians |
+| **Contrôle Pay Transparency** | chaque catégorie : effectifs, moyennes, médianes, écarts et rattrapage |
+
+Chaque ligne de contrôle a quatre colonnes : ce que **l'outil** a calculé, ce
+que le **tableur** retrouve, l'**écart** entre les deux, et la **formule** en
+clair.
 
 ```
-Indicateur   Calculé par l'outil   Recalculé par le tableur   Formule
-Médiane      40 642                40 642                     MEDIAN(...)
-Q1 (P25)     31 386,25             31 386,25                  PERCENTILE(...;0,25)
+Indicateur   Calculé par l'outil   Recalculé par le tableur   Écart   Formule
+Médiane      40 642                40 642                     0       MEDIAN(...)
+Q1 (P25)     31 386,25             31 386,25                  0       PERCENTILE(...;0,25)
 ```
 
-Les percentiles suivent la méthode inclusive (type 7), identique à
-`PERCENTILE` d'Excel : **les deux colonnes doivent coïncider à l'affichage
-près**. Cet onglet n'apparaît qu'avec les données individuelles, car il ne
-peut pas exister sans elles.
+**La colonne « Écart » doit valoir zéro partout.** C'est la vérification, et
+elle se fait d'un coup d'œil — sans lire une ligne de code.
+
+Un onglet **Formules**, lui, est toujours présent, données individuelles ou
+non : il dit en français ce que chaque indicateur calcule, avec son écriture
+dans un tableur et l'endroit où le vérifier. Les deux se complètent — une
+formule juste appliquée à la mauvaise définition reste une erreur.
+
+### Ce que le contrôle ne fait pas
+
+- **Il ne franchit jamais un seuil de confidentialité.** Un segment masqué
+  garde son effectif vérifiable et rien d'autre : recalculer sa médiane
+  reviendrait à la publier.
+- **Le découpage en quartiles n'est pas refait en formule.** Il se fait par
+  rang, à effectifs égaux, et les ex æquo y sont départagés par l'ordre de
+  lecture : aucune formule ne reproduit cet arbitrage. La règle est écrite
+  dans l'onglet « Formules » plutôt que faussement recalculée.
+- **Au-delà de 20 000 salariés** (`export_parameters.control_max_rows`), le
+  contrôle par segment n'est plus posé : chaque formule y relit toute la
+  population, et le classeur mettrait plusieurs minutes à s'ouvrir. Le
+  contrôle d'ensemble, lui, reste posé.
+- **Au-delà de 50 000 lignes** (`export_parameters.source_max_rows`), le
+  fichier importé n'est plus recopié.
+
+**Ces onglets portent de la donnée nominative** : le fichier importé porte les
+noms, et les données individuelles la référence de chaque salarié. C'est
+pourquoi les deux cases sont décochées au départ et le restent tant qu'on ne
+les coche pas.
 
 ## 5 sexies. Plusieurs périodes dans un même fichier
 
@@ -402,11 +446,17 @@ Le réglage se trouve dans **Paramètres → Confidentialité** (« Afficher les
 des salariés à l'écran »). Décoché, la fenêtre s'en tient à la référence
 anonyme.
 
-**Dans les deux cas, les documents produits, les exports et le journal
-technique restent sans nom ni prénom.** Ce n'est pas une question de réglage :
-l'identité n'entre jamais dans le résultat d'analyse — la fenêtre la
+**Dans les deux cas, les documents produits (HTML, PDF, synthèse) et le
+journal technique restent sans nom ni prénom.** Ce n'est pas une question de
+réglage : l'identité n'entre jamais dans le résultat d'analyse — la fenêtre la
 reconstruit depuis le fichier qu'elle a chargé, au moment de l'afficher. Rien
 de ce qui circule ne peut donc en porter.
+
+**Une seule exception, et elle se coche à la main** : l'onglet « Fichier
+importé » du classeur recopie votre fichier tel quel, noms compris. Il
+n'apparaît que si vous cochez « Joindre le fichier importé et les onglets de
+contrôle » (Paramètres → Export), et les onglets de contrôle ne peuvent pas
+exister sans lui — on ne vérifie pas un calcul sans ses valeurs.
 - L'export des données individuelles est **désactivé par défaut**.
 - Le journal technique ne contient ni nom, ni matricule, ni salaire individuel.
 

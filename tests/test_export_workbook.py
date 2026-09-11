@@ -115,7 +115,8 @@ class WorkbookCase(unittest.TestCase):
 
     def workbook(self, result, name="c.xlsx"):
         path = os.path.join(self.directory, name)
-        export_excel(result.payload, result.filtered, result.config, path)
+        export_excel(result.payload, result.filtered, result.config, path,
+                     table=result.table, mapping=result.mapping)
         return read_workbook(path)
 
 
@@ -262,7 +263,7 @@ class TestControlSheet(WorkbookCase):
         formulas = " ".join(
             formula for (formula, _value) in self.sheets["Contrôle"].values()
             if formula)
-        found = re.search(r"!([A-Z]+)2:[A-Z]+(\d+)", formulas)
+        found = re.search(r"!\$?([A-Z]+)\$?2:\$?[A-Z]+\$?(\d+)", formulas)
         self.assertIsNotNone(found)
         self.assertEqual(int(found.group(2)), lines)
 
@@ -357,23 +358,27 @@ class TestUnusualWorkbooks(WorkbookCase):
         self.assertIn("Q1 (P25)", values)
         self.assertIn("Q3 (P75)", values)
 
-    def test_a_workbook_without_a_salary_column_says_so(self):
-        """L'onglet « Controle » ne peut pas etre pose sans la colonne des
-        remunerations : il le dit plutot que d'ecrire des formules vides."""
-        from compensation_analytics.core.export import _rows_control
+    def test_the_control_sheet_covers_what_the_engine_computed(self):
+        """Tout percentile calcule a sa ligne de controle, publie ou non.
 
-        rows = _rows_control([["Référence", "BU"], ["R1", "France"]],
-                             {"median": 40000})
-        self.assertIn("absente", rows[0][0])
-
-    def test_the_control_sheet_skips_what_the_engine_withheld(self):
-        from compensation_analytics.core.export import _rows_control
-
-        rows = _rows_control([["Salaire de base"], [40000], [42000]],
-                             {"median": 41000})
-        labels = [row[0] for row in rows[1:] if row]
-        self.assertIn("Médiane", labels)
-        self.assertNotIn("P90", labels)
+        P90 et P10 ne figurent pas sur la fiche quand la configuration ne
+        les publie pas, mais le rapport interdecile, lui, y figure : sans
+        eux deux, il ne serait verifiable par rien. En revanche un rang que
+        le moteur n'a pas calcule n'a pas de ligne — une formule pointant
+        une case vide afficherait une erreur la ou il n'y a rien a
+        verifier.
+        """
+        result = self.analyse(overrides={
+            "percentile_parameters": {"percentiles": [50]},
+            "export_parameters": {"include_individual_data": True}})
+        sheets = self.workbook(result, "un-percentile.xlsx")
+        labels = column_values(sheets["Contrôle"], "A")
+        calcules = {key for key in result.payload["salary"]
+                    if len(key) > 1 and key[0] == "p" and key[1:].isdigit()}
+        for key in calcules:
+            self.assertIn(f"P{key[1:]}", labels)
+        self.assertNotIn("P60", labels)
+        self.assertNotIn("p60", result.payload["salary"])
 
 
 class TestWriterItself(unittest.TestCase):

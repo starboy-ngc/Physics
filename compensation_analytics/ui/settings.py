@@ -196,9 +196,9 @@ class SettingsWindow(tk.Toplevel):
                             "proposé dans la fenêtre principale ; ils ne "
                             "retirent aucun salarié. Ils sont enregistrés "
                             "dans population_mapping.json, "
-                            "privacy_parameters.json et "
-                            "theme_parameters.json, et restent modifiables "
-                            "au bloc-notes.",
+                            "privacy_parameters.json, export_parameters.json "
+                            "et theme_parameters.json, et restent "
+                            "modifiables au bloc-notes.",
                  background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
                  wraplength=900, justify="left").pack(anchor="w", padx=22,
                                                       pady=(0, 16))
@@ -217,6 +217,7 @@ class SettingsWindow(tk.Toplevel):
 
         self._build_theme(self)
         self._build_privacy(self)
+        self._build_export(self)
 
         body = tk.Frame(self, background=theme.GROUND)
         body.pack(fill="both", expand=True, padx=22, pady=(16, 0))
@@ -281,12 +282,68 @@ class SettingsWindow(tk.Toplevel):
                                                        pady=(6, 2))
         tk.Label(band,
                  text="Décochée, la fenêtre s'en tient à la référence "
-                      "anonyme. Dans les deux cas, les documents produits, "
-                      "les exports et le journal technique restent sans nom "
-                      "ni prénom : ce réglage ne porte que sur l'écran.",
+                      "anonyme. Dans les deux cas, les documents produits et "
+                      "le journal technique restent sans nom ni prénom : ce "
+                      "réglage ne porte que sur l'écran. Seul le classeur "
+                      "peut en porter, et seulement si vous y joignez le "
+                      "fichier importé (ci-dessus).",
                  background=theme.GROUND, foreground=theme.MUTED,
                  font=self.fonts.small, wraplength=880,
                  justify="left").pack(anchor="w", pady=(0, 8))
+
+    def _build_export(self, parent: tk.Widget) -> None:
+        """Ce que le classeur emporte — et ce que cela implique.
+
+        Verifier un calcul demande les valeurs sur lesquelles il porte :
+        un controle ne se fait pas sur des agregats. Le classeur peut donc
+        emporter les salaries retenus, le fichier importe tel qu'il a ete
+        lu, et des onglets qui refont chaque chiffre en formules. C'est de
+        la donnee nominative, et c'est pourquoi le reglage est ici, decoche,
+        et dit ce qu'il fait.
+        """
+        band = tk.Frame(parent, background=theme.GROUND)
+        band.pack(side="bottom", fill="x", padx=22, pady=(4, 0))
+        tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
+                                                             pady=(0, 12))
+        tk.Label(band, text="EXPORT", background=theme.GROUND,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w")
+        self.individual_var = tk.BooleanVar(
+            value=bool(self.configuration.get(
+                "export_parameters.include_individual_data", False)))
+        self.audit_var = tk.BooleanVar(
+            value=bool(self.configuration.get(
+                "export_parameters.include_source_file", False)))
+        CheckRow(band, "Exporter les données individuelles dans le classeur",
+                 self.individual_var, self.fonts).pack(anchor="w",
+                                                       pady=(6, 2))
+        CheckRow(band, "Joindre le fichier importé et les onglets de "
+                       "contrôle", self.audit_var,
+                 self.fonts).pack(anchor="w", pady=(2, 2))
+        tk.Label(band,
+                 text="Les onglets de contrôle refont chaque chiffre publié "
+                      "en formules, à partir des données individuelles : la "
+                      "colonne « Écart » doit valoir zéro partout. Ils "
+                      "supposent donc l'export des données individuelles, "
+                      "qui portent la référence de chaque salarié et, avec "
+                      "le fichier importé, son identité. Décochées, ces deux "
+                      "cases laissent le classeur aux seuls agrégats.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(0, 8))
+        # Le controle ne peut pas se poser sans les valeurs : les deux
+        # reglages se suivent plutot que de laisser une case cochee sans
+        # effet.
+        self.audit_var.trace_add("write", self._follow_audit)
+        self.individual_var.trace_add("write", self._follow_individual)
+
+    def _follow_audit(self, *_args) -> None:
+        if self.audit_var.get():
+            self.individual_var.set(True)
+
+    def _follow_individual(self, *_args) -> None:
+        if not self.individual_var.get():
+            self.audit_var.set(False)
 
     def _theme_card(self, parent: tk.Widget, entry) -> None:
         card = tk.Frame(parent, background=theme.GROUND, cursor="hand2")
@@ -609,6 +666,10 @@ class SettingsWindow(tk.Toplevel):
         privacy = dict(self.configuration.section("privacy_parameters"))
         privacy["show_identities_on_screen"] = bool(self.identities_var.get())
         write_configuration(directory, "privacy_parameters", privacy)
+        export = dict(self.configuration.section("export_parameters"))
+        export["include_individual_data"] = bool(self.individual_var.get())
+        export["include_source_file"] = bool(self.audit_var.get())
+        write_configuration(directory, "export_parameters", export)
         if self.on_saved:
             self.on_saved(directory, path)
         self.destroy()

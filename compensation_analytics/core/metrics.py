@@ -14,7 +14,8 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from .config import Configuration, analysis_field, percentiles as configured_percentiles
 from .normalize import Employee, Population
-from .segmentation import dimension_fields, dimension_label, split_by
+from .segmentation import (UNKNOWN_LABEL, dimension_fields,
+                           dimension_label, split_by)
 from . import statistics_engine as stats
 
 MASK_REASON = "Effectif insuffisant : résultat masqué pour préserver la confidentialité."
@@ -191,7 +192,7 @@ def _band_share(
     ]
     if unknown:
         rows.append(
-            {"label": "(non renseigne)", "count": unknown,
+            {"label": UNKNOWN_LABEL, "count": unknown,
              "share": _share(unknown, headcount),
              "female": 0, "male": 0, "unknown_sex": unknown}
         )
@@ -203,7 +204,7 @@ def _distribution_share(
 ) -> List[Dict[str, Any]]:
     counts: Dict[str, int] = {}
     for employee in population:
-        key = str(employee.value(field_name) or "").strip() or "(non renseigne)"
+        key = str(employee.value(field_name) or "").strip() or UNKNOWN_LABEL
         counts[key] = counts.get(key, 0) + 1
     return [
         {"label": key, "count": value, "share": _share(value, headcount)}
@@ -657,7 +658,7 @@ def scatter_dataset(
         points.append({
             "x": float(x_value),
             "y": float(y_value),
-            "group": str(employee.value(color_field) or "(non renseigne)"),
+            "group": str(employee.value(color_field) or UNKNOWN_LABEL),
             "reference": employee.anonymous_id or str(employee.row_number),
             # Cle de jointure technique — un numero de ligne, jamais un nom.
             # Elle permet a l'ecran de retrouver le salarie dans la

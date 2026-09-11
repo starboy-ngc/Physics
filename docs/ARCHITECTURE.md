@@ -51,6 +51,7 @@ compensation_analytics/
     ├── hierarchy.py        Arbre déduit de la colonne manager (équipes)
     ├── reporting.py        Restitution HTML + SVG
     ├── export.py           Export Excel / CSV
+    ├── formulas.py         Écriture tableur des calculs (onglets de contrôle)
     ├── logging_setup.py    Log technique sans donnée personnelle
     ├── traceability.py     Manifeste de reproductibilité
     └── pipeline.py         Orchestration

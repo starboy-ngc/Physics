@@ -135,9 +135,14 @@ class TestWorkbook(HostileFileCase):
             self.assertNotIn(f"<f>{expression}", self.xml)
 
     def test_the_only_formulas_are_the_ones_the_tool_writes(self):
-        written = set(re.findall(r"<f>\(?([A-Z]+)", self.xml))
-        allowed = {"SUM", "ABS", "IF", "COUNT", "AVERAGE", "MEDIAN", "MIN",
-                   "MAX", "PERCENTILE", "STDEV", "B", "E", "H", "J"}
+        # Les formules matricielles portent des attributs : les ignorer
+        # laissait hors du controle toutes celles qui recalculent un
+        # segment, c'est-a-dire la plupart.
+        written = set(re.findall(r"<f[^>]*>[-(]*([A-Z]+)", self.xml))
+        allowed = {"SUM", "SUMPRODUCT", "ABS", "IF", "COUNT", "COUNTA",
+                   "COUNTIFS", "AVERAGE", "MEDIAN", "MIN", "MAX",
+                   "PERCENTILE", "STDEV", "DATE", "ISBLANK", "OR",
+                   "B", "E", "H", "J"}
         self.assertTrue(written)
         for name in written:
             self.assertIn(name, allowed, name)

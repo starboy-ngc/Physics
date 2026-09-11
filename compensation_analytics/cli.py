@@ -161,6 +161,7 @@ def command_analyse(args: argparse.Namespace) -> int:
         produced.append(export_excel(
             result.payload, result.filtered, result.config,
             os.path.join(output_dir, f"analyse-{stamp}.xlsx"),
+            table=result.table, mapping=result.mapping,
         ))
     produced.append(write_manifest(
         result.payload["manifest"], os.path.join(output_dir, f"manifeste-{stamp}.json")

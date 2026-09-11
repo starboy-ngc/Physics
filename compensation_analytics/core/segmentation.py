@@ -22,6 +22,12 @@ from .normalize import Employee, Population
 _OPERATORS = ("eq", "ne", "in", "not_in", "gt", "gte", "lt", "lte",
               "contains", "between")
 
+#: Libelle donne a une dimension vide quand le decoupage la conserve. Il
+#: est cite par le moteur, par l'export et par les formules de controle :
+#: ecrit deux fois, un controle chercherait un libelle que le decoupage
+#: n'emploie pas, et rendrait zero sans rien dire.
+UNKNOWN_LABEL = "(non renseigne)"
+
 # Champs techniques du modele normalise, jamais exposes comme critere.
 _INTERNAL_FIELDS = {"row_number", "issues", "anonymous_id", "extra"}
 
@@ -328,7 +334,7 @@ def split_by(
         if not key:
             if not include_empty:
                 continue
-            key = "(non renseigne)"
+            key = UNKNOWN_LABEL
         groups.setdefault(key, []).append(employee)
     return {
         key: population.filtered(members)

@@ -100,14 +100,20 @@ class Formula(NamedTuple):
 
     expression: str
     value: Optional[float] = None
+    #: Formule matricielle. « MEDIAN(IF(...)) » n'a de sens que validee par
+    #: Ctrl+Maj+Entree : ecrite en formule ordinaire, elle rend la mediane
+    #: de la premiere cellule au lieu de celle de la selection. Le format
+    #: le note dans le fichier, et le tableur la valide seul a l'ouverture.
+    array: bool = False
 
 
 def _formula_xml(reference: str, formula: "Formula", style: int) -> str:
     cached = ""
     if formula.value is not None and math.isfinite(formula.value):
         cached = f"<v>{formula.value!r}</v>"
+    attributs = f' t="array" ref="{reference}"' if formula.array else ""
     return (f'<c r="{reference}" s="{style}">'
-            f"<f>{_escape(formula.expression)}</f>{cached}</c>")
+            f"<f{attributs}>{_escape(formula.expression)}</f>{cached}</c>")
 
 
 def _cell_xml(reference: str, value: Any, style: int) -> str:

@@ -171,9 +171,6 @@ class Palette(NamedTuple):
     # series categorielles
     series: Tuple[str, ...]
 
-    def series_for(self, index: int) -> str:
-        return self.series[index % len(self.series)]
-
 
 def _build(name: str, ink: str, accent: str) -> Palette:
     """Deduit une palette complete de son encre et de son accent."""

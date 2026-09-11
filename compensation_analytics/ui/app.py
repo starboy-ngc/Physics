@@ -2269,7 +2269,8 @@ class Application(tk.Tk):
             if self.output_vars["excel"].get():
                 produced.append(export_excel(
                     payload, self.result.filtered, self.result.config,
-                    os.path.join(directory, f"analyse-{stamp}.xlsx")))
+                    os.path.join(directory, f"analyse-{stamp}.xlsx"),
+                    table=self.result.table, mapping=self.result.mapping))
             produced.append(write_manifest(
                 payload["manifest"],
                 os.path.join(directory, f"manifeste-{stamp}.json")))

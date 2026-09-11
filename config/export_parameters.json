@@ -5,5 +5,8 @@
   "slides_html_enabled": true,
   "slides_pdf_enabled": true,
   "summary_enabled": true,
-  "include_individual_data": false
+  "include_individual_data": false,
+  "include_source_file": false,
+  "source_max_rows": 50000,
+  "control_max_rows": 20000
 }

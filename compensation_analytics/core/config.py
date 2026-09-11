@@ -229,6 +229,17 @@ DEFAULTS: Dict[str, Any] = {
         "slides_pdf_enabled": True,
         "summary_enabled": True,
         "include_individual_data": False,
+        # Recopie du fichier importe dans le classeur, et onglets de
+        # controle qui refont chaque chiffre a partir de lui. C'est de la
+        # donnee nominative : le reglage suppose « include_individual_data »
+        # et reste, comme lui, un choix explicite.
+        "include_source_file": False,
+        # Au-dela, le fichier importe n'est pas recopie : un classeur de
+        # plusieurs centaines de milliers de lignes ne s'ouvre plus.
+        "source_max_rows": 50000,
+        # Au-dela, le controle par segment n'est plus pose : le classeur
+        # mettrait plusieurs minutes a s'ouvrir.
+        "control_max_rows": 20000,
     },
 }
 

@@ -65,6 +65,12 @@ class AnalysisResult:
     mapping: MappingResult
     config: Configuration
     payload: Dict[str, Any]
+    #: Tableau importe, tel qu'il a ete lu. Il voyage avec le resultat pour
+    #: que l'export puisse le recopier : un classeur de controle qui
+    #: relirait le fichier au moment de l'ecriture recopierait un fichier
+    #: qui a pu changer depuis l'analyse, et le controle porterait alors sur
+    #: autre chose que ce qui a ete calcule.
+    table: Optional[Table] = None
 
     def as_dict(self) -> Dict[str, Any]:
         return self.payload
@@ -122,7 +128,7 @@ def _chosen_period(periods: Sequence[str], wanted: Optional[str]):
 def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     """Execute le pipeline de bout en bout et retourne le resultat structure."""
     config = load_configuration(request.config_dir)
-    population, mapping, _table = load_population(
+    population, mapping, table = load_population(
         request.source_path, config, request.sheet, request.reference_date
     )
 
@@ -246,5 +252,5 @@ def run_analysis(request: AnalysisRequest) -> AnalysisResult:
     log_event("pipeline", "run_analysis", detail=f"headcount={len(filtered)}")
     return AnalysisResult(
         population=population, filtered=filtered, quality=quality,
-        mapping=mapping, config=config, payload=payload,
+        mapping=mapping, config=config, payload=payload, table=table,
     )
