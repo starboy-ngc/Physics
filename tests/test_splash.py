@@ -147,15 +147,30 @@ class TestTheSymbol(unittest.TestCase):
                            "la pointe des rais tire au violet")
         self.assertGreater(bas[1], bas[2], "le bord du bas tire au vert")
 
-    def test_one_frame_costs_nothing(self):
-        """L'ecran d'accueil les calcule pendant qu'il est deja affiche :
-        aucune ne doit bloquer l'affichage."""
+    def test_the_drawing_is_computed_once_and_only_once(self):
+        """Le trace est surechantillonne — donc lent —, mais les images ne
+        font que le colorer. L'ecran d'accueil les calcule pendant qu'il
+        est deja affiche : aucune ne doit bloquer l'affichage."""
         import time
 
         symbole = logo.Aurora(236, 24, height=160)
         debut = time.perf_counter()
         symbole.frame(0)
-        self.assertLess(time.perf_counter() - debut, 0.12)
+        trace = time.perf_counter() - debut
+        debut = time.perf_counter()
+        symbole.frame(7)
+        suivante = time.perf_counter() - debut
+        self.assertLess(trace, 0.8)
+        self.assertLess(suivante, 0.06)
+        self.assertLess(suivante * 4, trace, "le trace doit etre garde")
+
+    def test_a_large_symbol_is_not_supersampled(self):
+        """Au-dela d'une certaine taille, la finesse du dessin depasse
+        celle de l'oeil : surechantillonner couterait sans rien rendre."""
+        petit = logo.Aurora(200, 1, height=136)
+        grand = logo.Aurora(900, 1, height=612)
+        self.assertLessEqual(petit.size, logo.SUPERSAMPLE_UNTIL)
+        self.assertGreater(grand.size, logo.SUPERSAMPLE_UNTIL)
 
 
 @needs_display

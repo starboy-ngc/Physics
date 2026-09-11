@@ -80,6 +80,14 @@ NARROWING = 0.32
 #: cadre, sans quoi il parait coupe des qu'on le pose contre autre chose.
 INSET = 0.055
 
+#: Suréchantillonnage : le trace est calcule a cette echelle, puis reduit.
+#: Les bords adoucis a la formule suffisent presque, mais la ou le bord du
+#: rideau croise un rai, la marche se voyait. Au-dela de cette taille, la
+#: finesse du dessin depasse deja celle de l'oeil et le cout n'aurait plus
+#: de contrepartie.
+SUPERSAMPLE = 2
+SUPERSAMPLE_UNTIL = 420
+
 #: La lueur qui parcourt le rideau : de combien elle eclaircit, sur quelle
 #: largeur, et jusqu'ou elle voyage de part et d'autre du cadre. Elle ne
 #: touche jamais au trace — seulement a sa couleur.
@@ -100,6 +108,7 @@ class Aurora:
         self.height = height or size
         self.count = max(1, count)
         self.rays = self._rays()
+        self._carte: Optional[List[bytearray]] = None
 
     # ------------------------------------------------------------- rais
 
@@ -141,20 +150,88 @@ class Aurora:
         Le dessin ne bouge pas : c'est une lueur qui le parcourt, de gauche
         a droite, et revient. Un logo qui change de forme au fil des images
         n'est plus un logo — mais une aurore immobile n'est pas une aurore.
+
+        Le trace, lui, n'est calcule qu'une fois : les images ne font que le
+        colorer. C'est ce qui permet de le calculer *bien* — en
+        surechantillonnant — sans le payer vingt-quatre fois.
         """
-        size = self.size
+        carte = self._map()
         part = (index % self.count) / self.count
         lueur = GLOW_TRAVEL * (1 - abs(1 - 2 * part)) - GLOW_MARGIN
-        toile = [bytearray(size * 4) for _ in range(self.height)]
+        eclats = [self._glow((colonne + 0.5) / self.size, lueur)
+                  for colonne in range(self.size)]
+        toile: List[bytearray] = []
+        for source in carte:
+            ligne = bytearray(source)
+            for colonne, eclat in enumerate(eclats):
+                position = colonne * 4
+                if not ligne[position + 3]:
+                    continue
+                ligne[position] = min(255, int(ligne[position] * eclat))
+                ligne[position + 1] = min(255, int(ligne[position + 1] * eclat))
+                ligne[position + 2] = min(255, int(ligne[position + 2] * eclat))
+            toile.append(ligne)
+        return raster.image_data(self.size, self.height, toile, 6)
+
+    def _map(self) -> List[bytearray]:
+        """Le trace, sans la lueur. Calcule a la premiere demande."""
+        if self._carte is None:
+            echelle = (SUPERSAMPLE if self.size <= SUPERSAMPLE_UNTIL else 1)
+            self._carte = self._reduce(self._trace(echelle), echelle)
+        return self._carte
+
+    def _trace(self, echelle: int) -> List[bytearray]:
+        """Pose le rideau, a l'echelle demandee."""
+        size = self.size * echelle
+        hauteur = self.height * echelle
         # Tout est mesure en parts de la largeur, y compris a la verticale :
         # un cadre plus bas que large recadre le dessin, il ne l'aplatit pas.
-        haut = (size * (1.0) - self.height) / 2.0
-        self._draw_rays(toile, size, haut, lueur)
-        self._draw_edge(toile, size, haut, lueur)
-        return raster.image_data(size, self.height, toile, 6)
+        haut = (size - hauteur) / 2.0
+        toile = [bytearray(size * 4) for _ in range(hauteur)]
+        self._draw_rays(toile, size, hauteur, haut)
+        self._draw_edge(toile, size, hauteur, haut)
+        return toile
 
-    def _draw_edge(self, toile, size: int, haut: float,
-                   lueur: float) -> None:
+    @staticmethod
+    def _reduce(toile: List[bytearray], echelle: int) -> List[bytearray]:
+        """Moyenne les points du surechantillonnage.
+
+        La couleur est moyennee *ponderee par l'opacite* : sans cela, un
+        point transparent tirerait la teinte vers le noir et le bord du
+        dessin s'assombrirait.
+        """
+        if echelle == 1:
+            return toile
+        hauteur = len(toile) // echelle
+        largeur = len(toile[0]) // 4 // echelle
+        reduite: List[bytearray] = []
+        for ligne in range(hauteur):
+            sortie = bytearray(largeur * 4)
+            sources = toile[ligne * echelle:(ligne + 1) * echelle]
+            for colonne in range(largeur):
+                rouge = vert = bleu = opacite = 0
+                for source in sources:
+                    for pas in range(echelle):
+                        position = (colonne * echelle + pas) * 4
+                        alpha = source[position + 3]
+                        if not alpha:
+                            continue
+                        rouge += source[position] * alpha
+                        vert += source[position + 1] * alpha
+                        bleu += source[position + 2] * alpha
+                        opacite += alpha
+                if not opacite:
+                    continue
+                place = colonne * 4
+                sortie[place] = rouge // opacite
+                sortie[place + 1] = vert // opacite
+                sortie[place + 2] = bleu // opacite
+                sortie[place + 3] = opacite // (echelle * echelle)
+            reduite.append(sortie)
+        return reduite
+
+    def _draw_edge(self, toile, size: int, hauteur: int,
+                   haut: float) -> None:
         """Le bord inferieur, d'un bout a l'autre du rideau.
 
         Il relie les rais : sans lui, onze traits ne sont qu'un diagramme en
@@ -176,37 +253,34 @@ class Aurora:
             onde = _wave(x)
             correction = math.sqrt(1.0 + _slope(x) ** 2)
             douceur = demi * 0.7
-            eclat = self._glow(x, lueur)
             portee = (demi + douceur) * correction
             debut = max(0, int((onde - portee) * size - haut))
-            fin = min(self.height - 1, int((onde + portee) * size - haut) + 1)
+            fin = min(hauteur - 1, int((onde + portee) * size - haut) + 1)
             for ligne in range(debut, fin + 1):
                 y = (ligne + haut + 0.5) / size
                 couverture = self._across(abs(y - onde) / correction, demi,
                                           douceur)
                 if couverture <= 0.004:
                     continue
-                self._pose(toile, ligne, colonne, couverture,
-                           self._colour(y), eclat)
+                _pose(toile, ligne, colonne, couverture, _colour(y))
 
-    def _draw_rays(self, toile, size: int, haut: float,
-                   lueur: float) -> None:
+    def _draw_rays(self, toile, size: int, hauteur: int,
+                   haut: float) -> None:
         """Les rais, en un seul passage.
 
         Un rai n'est pas dessine pour lui-meme : pour chaque point, on
-        regarde a quelle profondeur sous le bord il se trouve, puis de quel
-        rai il releve une fois l'inclinaison defaite. C'est ce qui permet
-        aux rais de pencher et de s'affiner sans rien couter de plus.
+        regarde a quelle hauteur au-dessus du bord il se trouve, puis de
+        quel rai il releve une fois l'inclinaison defaite. C'est ce qui
+        permet aux rais de pencher et de s'affiner sans rien couter de plus.
         """
         pas = RAY_WIDTH + RAY_GAP
         premier = self.rays[0][0]
         profond = max(longueur for _x, _s, longueur in self.rays)
         for colonne in range(size):
             x = (colonne + 0.5) / size
-            eclat = self._glow(x, lueur)
             onde = _wave(x)
             debut = max(0, int((onde - profond) * size - haut))
-            fin = min(self.height - 1, int(onde * size - haut) + 1)
+            fin = min(hauteur - 1, int(onde * size - haut) + 1)
             for ligne in range(debut, fin + 1):
                 y = (ligne + haut + 0.5) / size
                 creux = onde - y
@@ -230,33 +304,13 @@ class Aurora:
                 couverture = lateral * self._along(part)
                 if couverture <= 0.004:
                     continue
-                self._pose(toile, ligne, colonne, couverture,
-                           self._colour(y), eclat)
+                _pose(toile, ligne, colonne, couverture, _colour(y))
 
     @staticmethod
     def _glow(x: float, lueur: float) -> float:
         """Eclaircissement du a la lueur, a cette abscisse."""
         ecart = (x - lueur) / GLOW_WIDTH
         return 1.0 + GLOW_STRENGTH * math.exp(-ecart * ecart)
-
-    @staticmethod
-    def _pose(toile, ligne: int, colonne: int, couverture: float,
-              couleur: RGB, eclat: float) -> None:
-        """Pose un point, le plus opaque l'emportant.
-
-        Les rais et le bord se recouvrent au sommet : melanger leurs
-        couvertures y ferait une tache plus claire que partout ailleurs.
-        """
-        position = colonne * 4
-        cible = toile[ligne]
-        opacite = min(255, int(couverture * 255))
-        if opacite <= cible[position + 3]:
-            return
-        rouge, vert, bleu = couleur
-        cible[position] = min(255, int(rouge * eclat))
-        cible[position + 1] = min(255, int(vert * eclat))
-        cible[position + 2] = min(255, int(bleu * eclat))
-        cible[position + 3] = opacite
 
     @staticmethod
     def _across(distance: float, demi: float, douceur: float) -> float:
@@ -278,15 +332,39 @@ class Aurora:
         # sur un fond clair, ou une opacite de dix pour cent ne se voit pas.
         return reste ** 1.45
 
-    @staticmethod
-    def _colour(y: float) -> RGB:
-        """Vert au bord, violet en haut des rais, quelle que soit la
-        longueur de chacun : les bandes de couleur appartiennent au ciel,
-        pas au trait."""
-        part = min(max((TOP + AMPLITUDE - y) / (LENGTH * 0.82), 0.0), 1.0)
-        if part < 0.5:
-            return _mix(GREEN, TEAL, part * 2)
-        return _mix(TEAL, VIOLET, (part - 0.5) * 2)
+def _pose(toile, ligne: int, colonne: int, couverture: float,
+          couleur: RGB) -> None:
+    """Ajoute une lumiere sur la toile, par-dessus ce qui s'y trouve.
+
+    Les rais et le bord se recouvrent au ras de l'onde : prendre la plus
+    opaque des deux — ce qui se faisait — y laissait une marche visible des
+    qu'on agrandissait. Les lumieres se composent.
+    """
+    position = colonne * 4
+    cible = toile[ligne]
+    ancienne = cible[position + 3] / 255.0
+    melange = couverture + ancienne * (1.0 - couverture)
+    if melange <= 0.0:
+        return
+    rouge, vert, bleu = couleur
+    reste = ancienne * (1.0 - couverture)
+    cible[position] = int((rouge * couverture
+                           + cible[position] * reste) / melange)
+    cible[position + 1] = int((vert * couverture
+                               + cible[position + 1] * reste) / melange)
+    cible[position + 2] = int((bleu * couverture
+                               + cible[position + 2] * reste) / melange)
+    cible[position + 3] = min(255, int(melange * 255))
+
+
+def _colour(y: float) -> RGB:
+    """Vert au bord, violet en haut des rais, quelle que soit la longueur
+    de chacun : les bandes de couleur appartiennent au ciel, pas au
+    trait."""
+    part = min(max((TOP + AMPLITUDE - y) / (LENGTH * 0.82), 0.0), 1.0)
+    if part < 0.5:
+        return _mix(GREEN, TEAL, part * 2)
+    return _mix(TEAL, VIOLET, (part - 0.5) * 2)
 
 
 def _wave(x: float) -> float:

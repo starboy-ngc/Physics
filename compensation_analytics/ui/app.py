@@ -170,7 +170,7 @@ class Application(tk.Tk):
     #: configuration n'en dit rien. La construction de la fenetre est trop
     #: rapide pour qu'on ait le temps de lire quoi que ce soit : ce temps-la
     #: est assume, et se regle a zero.
-    SPLASH_SECONDS = 1.6
+    SPLASH_SECONDS = 3.0
 
     def __init__(self, config_dir: Optional[str] = None,
                  splash: bool = False) -> None:
@@ -200,6 +200,8 @@ class Application(tk.Tk):
         # L'ecran d'accueil appartient au lancement, pas a la fenetre :
         # « main » le demande, un test qui construit la fenetre pour lire un
         # widget ne l'attend pas une seconde et demie.
+        #: Instant d'ouverture de l'ecran d'accueil.
+        self._splash_started = 0.0
         self._splash = self._open_splash() if splash else None
         #: Ce qui annonce l'avancement du demarrage. Sans ecran d'accueil,
         #: il n'annonce a personne — le reste du code n'a pas a le savoir.
@@ -259,6 +261,10 @@ class Application(tk.Tk):
         """Ouvre l'ecran d'accueil, sauf si la configuration l'a mis a zero."""
         if self._splash_seconds() <= 0:
             return None
+        # L'horloge part de l'ouverture de l'ecran, non de la fin de la
+        # construction : les trois secondes demandees sont celles que
+        # l'utilisateur attend, pas celles qui s'y ajoutent.
+        self._splash_started = _time.perf_counter()
         return accueil_module.show(self, self.fonts)
 
     def _close_splash(self) -> None:
@@ -272,7 +278,7 @@ class Application(tk.Tk):
         self._splash = None
         if ecran is None:
             return
-        limite = _time.perf_counter() + self._splash_seconds()
+        limite = self._splash_started + self._splash_seconds()
         while _time.perf_counter() < limite and not ecran.skipped:
             ecran.tick()
             self.update()

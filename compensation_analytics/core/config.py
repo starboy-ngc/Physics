@@ -221,7 +221,7 @@ DEFAULTS: Dict[str, Any] = {
         "theme": "ardoise",
         # Duree minimale d'affichage de l'ecran d'accueil, en secondes.
         # Zero : pas d'ecran d'accueil, la fenetre s'ouvre directement.
-        "splash_seconds": 1.6,
+        "splash_seconds": 3.0,
     },
     "export_parameters": {
         "output_directory": "output",

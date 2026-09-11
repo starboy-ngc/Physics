@@ -10,12 +10,12 @@ cours : lecture des paramètres, thème, colonne de gauche, pages et
 graphiques. Ces étapes sont réelles — construire la fenêtre demande deux
 dixièmes de seconde ici, davantage sur un poste chargé.
 
-L'écran reste ensuite affiché **une seconde et demie de plus**, pour qu'on
-ait le temps de le lire : cette attente-là est délibérée. Elle se règle dans
+L'écran reste ensuite affiché **trois secondes**, pour qu'on ait le temps de
+le lire : cette attente-là est délibérée. Elle se règle dans
 `config/theme_parameters.json` :
 
 ```json
-{ "theme": "ardoise", "splash_seconds": 1.6 }
+{ "theme": "ardoise", "splash_seconds": 3.0 }
 ```
 
 À **0**, pas d'écran d'accueil du tout : la fenêtre s'ouvre directement. Et
