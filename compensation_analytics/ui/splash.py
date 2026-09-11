@@ -33,20 +33,19 @@ from .progress import LoadingBar
 PRODUCT = ENGINE_NAME
 TAGLINE = "Analyse de rémunération · local et hors ligne"
 
-#: Or des vieilles etoiles du bulbe. Il ne depend pas du theme : c'est la
-#: couleur du logo, pas celle d'une donnee.
-CORE = (255, 226, 170)
-
 
 class Splash(tk.Toplevel):
     """Fenetre sans cadre, centree, le temps du demarrage."""
 
     WIDTH, HEIGHT = 580, 424
-    LOGO = 156
+    #: Cadre du symbole. Une aurore s'inscrit mal dans un carre : il y
+    #: resterait deux bandes vides.
+    LOGO = 236
+    LOGO_HEIGHT = 170
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300
-    #: Images d'une rotation complete de la galaxie, et cadence.
+    #: Images d'une ondulation complete, et cadence.
     FRAMES = 24
     FRAME_MS = 70
     #: Images calculees d'un coup entre deux battements : elles arrivent
@@ -69,14 +68,15 @@ class Splash(tk.Toplevel):
         petite = (fonts.family, theme.SIZE_SMALL)
         minuscule = (fonts.family, theme.SIZE_LABEL)
 
-        froid = palette._rgb(palette.mix(theme.ACCENT, theme.CANVAS, 0.45))
-        self.galaxie_source = logo.Galaxy(self.LOGO, self.FRAMES,
-                                          cold=froid, warm=CORE)
+        # Le symbole ne suit pas le theme : une marque qui change de
+        # couleur avec un reglage d'affichage n'est plus une marque.
+        self.symbole = logo.Aurora(self.LOGO, self.FRAMES,
+                                   height=self.LOGO_HEIGHT)
         self._images: List[tk.PhotoImage] = []
         self._frame = 0
         self._next_ms = 0.0
-        self.galaxie = tk.Label(self, background=theme.INK)
-        self.galaxie.pack(pady=(38, 16))
+        self.symbole_vu = tk.Label(self, background=theme.INK)
+        self.symbole_vu.pack(pady=(34, 14))
         # La premiere image suffit a montrer l'ecran ; les vingt-trois
         # autres arrivent pendant qu'il est deja la.
         self._render_next()
@@ -121,7 +121,7 @@ class Splash(tk.Toplevel):
         y = (ecran_h - self.HEIGHT) // 2
         self.geometry(f"{self.WIDTH}x{self.HEIGHT}+{x}+{max(y, 0)}")
 
-    # ---------------------------------------------------------- galaxie
+    # ----------------------------------------------------------- symbole
 
     def _render_next(self) -> bool:
         """Calcule l'image suivante. Rend faux quand la rotation est
@@ -129,12 +129,12 @@ class Splash(tk.Toplevel):
         if len(self._images) >= self.FRAMES:
             return False
         self._images.append(tk.PhotoImage(
-            master=self, data=self.galaxie_source.frame(len(self._images))))
+            master=self, data=self.symbole.frame(len(self._images))))
         return True
 
     def _show(self, index: int) -> None:
         if index < len(self._images):
-            self.galaxie.configure(image=self._images[index])
+            self.symbole_vu.configure(image=self._images[index])
 
     # ------------------------------------------------------------ vie
 
@@ -142,9 +142,9 @@ class Splash(tk.Toplevel):
         self.bar.announce(label, fraction)
 
     def tick(self) -> None:
-        """Un battement : la barre avance, la galaxie tourne.
+        """Un battement : la barre avance, l'aurore ondule.
 
-        Tant que la rotation n'est pas complete, le battement sert a la
+        Tant que l'ondulation n'est pas complete, le battement sert a la
         calculer — une image par passage, pour ne jamais bloquer l'ecran
         plus d'une douzaine de millisecondes d'affilee.
         """

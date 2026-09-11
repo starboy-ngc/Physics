@@ -27,6 +27,10 @@ chargé, et un nuage ancienneté × rémunération **explorable** : survol pour
 identifier, molette pour zoomer, clic sur la légende pour isoler une
 population.
 
+L'ouverture affiche un **écran d'accueil** — le symbole de l'outil, une
+aurore calculée à la formule plutôt que livrée en fichier image, et l'étape
+de démarrage en cours.
+
 L'analyse tourne sur un fil séparé et **annonce son avancement étape par
 étape** — lecture du fichier, normalisation, indicateurs, segments — que la
 fenêtre montre sur une barre animée sur l'horloge plutôt que sur le nombre

@@ -5,7 +5,7 @@ Vous pouvez couper Internet avant de l'utiliser.
 
 ## 0. L'écran d'accueil
 
-À l'ouverture, **HR Insight** affiche sa galaxie, son nom et l'étape en
+À l'ouverture, **HR Insight** affiche son aurore, son nom et l'étape en
 cours : lecture des paramètres, thème, colonne de gauche, pages et
 graphiques. Ces étapes sont réelles — construire la fenêtre demande deux
 dixièmes de seconde ici, davantage sur un poste chargé.
@@ -22,9 +22,22 @@ ait le temps de le lire : cette attente-là est délibérée. Elle se règle dan
 un clic sur l'écran le passe sans attendre.
 
 Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture —
-mille huit cents étoiles sur deux bras en spirale — puis encodé en PNG par
-le même module qui dessine les points du nuage. Rien d'opaque dans
-l'archive, et le tirage est fixe : la même galaxie à chaque fois.
+trois rubans posés sur une même onde, du vert au violet — puis encodé en PNG
+par le même module qui dessine les points du nuage. Rien d'opaque dans
+l'archive, et rien de tiré au hasard : le même symbole à chaque fois, et le
+même dessin exactement à toutes les tailles, de l'icône à l'affiche.
+
+Pour en tirer une image — une présentation, un intranet, une icône :
+
+```
+python3 tools/render_logo.py --largeur 1024 --sortie logo.png
+python3 tools/render_logo.py --largeur 256 --fond "#141f2a"
+```
+
+Sans `--fond`, le fond reste transparent.
+
+Une lueur parcourt le symbole pendant le chargement. Elle n'en change jamais
+la forme : un logo qui se déforme n'est plus un logo.
 
 ## 1. Préparer le fichier
 

@@ -394,7 +394,7 @@ dependance, aucun telechargement, aucun droit administrateur.
     charts.py    nuage et histogramme dessines sur un canevas
     progress.py  barre de chargement, animee sur l'horloge
     splash.py    ecran d'accueil du demarrage
-    logo.py      la galaxie, calculee plutot que livree en image
+    logo.py      l'aurore du logo, calculee plutot que livree en image
 
 **L'analyse tourne sur un fil separe** et rapporte son avancement par
 `AnalysisRequest.progress` : le moteur annonce une étape et une part faite,

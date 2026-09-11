@@ -1,10 +1,11 @@
-"""L'écran d'accueil, sa galaxie et son nom.
+"""L'écran d'accueil, son aurore et son nom.
 
 Un logo calculé plutôt que livré en fichier image : c'est la même exigence
 que partout ailleurs — rien d'opaque dans l'archive, aucune dépendance. Ce
-qui se vérifie ici : que la galaxie soit la même à chaque ouverture (un logo
-qui change de forme n'est pas un logo), qu'elle tourne vraiment, et que
-l'écran ne retarde ni la fenêtre ni les tests.
+qui se vérifie ici : que le symbole soit le même à chaque ouverture et à
+toutes les tailles (un logo qui change de forme n'est pas un logo), que la
+lueur le parcoure sans le déformer, et que l'écran ne retarde ni la fenêtre
+ni les tests.
 
 Aucune donnée RH réelle.
 """
@@ -41,11 +42,7 @@ def _display_answers() -> bool:
 needs_display = unittest.skipUnless(
     _display_answers(), "aucun affichage disponible (test d'interface ignoré)")
 
-COLD = (96, 160, 235)
-WARM = (255, 226, 170)
-
-
-def pixels(data: bytes, size: int):
+def pixels(data: bytes, largeur: int, hauteur: int):
     """Relit le PNG produit : RVBA, ligne par ligne, sans filtrage."""
     png = base64.b64decode(data)
     corps = b""
@@ -56,92 +53,108 @@ def pixels(data: bytes, size: int):
             corps += png[position + 8:position + 8 + taille]
         position += 12 + taille
     brut = zlib.decompress(corps)
-    largeur = size * 4 + 1
-    return [brut[y * largeur + 1:(y + 1) * largeur] for y in range(size)]
+    ligne = largeur * 4 + 1
+    return [brut[y * ligne + 1:(y + 1) * ligne] for y in range(hauteur)]
 
 
-class TestTheGalaxy(unittest.TestCase):
+def encre(lignes):
+    """Silhouette : l'opacite de chaque pixel, la couleur mise de cote."""
+    return [bytes(ligne[3::4]) for ligne in lignes]
 
-    SIZE = 64
 
-    def galaxy(self):
-        return logo.Galaxy(self.SIZE, 12, cold=COLD, warm=WARM)
+class TestTheSymbol(unittest.TestCase):
+    """Une aurore : trois rubans, une onde, et rien d'autre.
+
+    Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
+    toujours le meme, qu'il tienne a toutes les tailles, et qu'il se
+    reconnaisse a vingt-quatre pixels.
+    """
+
+    LARGEUR, HAUTEUR = 200, 144
+
+    def symbole(self, largeur=None, hauteur=None, count=1):
+        return logo.Aurora(largeur or self.LARGEUR, count,
+                           height=hauteur or self.HAUTEUR)
 
     def test_a_frame_is_a_readable_image_of_the_right_size(self):
-        lignes = pixels(self.galaxy().frame(0), self.SIZE)
-        self.assertEqual(len(lignes), self.SIZE)
-        self.assertEqual(len(lignes[0]), self.SIZE * 4)
+        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
+        self.assertEqual(len(lignes), self.HAUTEUR)
+        self.assertEqual(len(lignes[0]), self.LARGEUR * 4)
 
-    def test_the_same_galaxy_comes_back_every_time(self):
-        """Un logo qui changerait de forme d'un lancement à l'autre ne
-        serait pas un logo."""
-        self.assertEqual(self.galaxy().frame(3), self.galaxy().frame(3))
+    def test_the_same_symbol_comes_back_every_time(self):
+        """Rien n'est tire au hasard : le dessin vient d'une formule."""
+        self.assertEqual(self.symbole().frame(0), self.symbole().frame(0))
 
-    def test_the_core_shines_and_the_corners_stay_clear(self):
-        lignes = pixels(self.galaxy().frame(0), self.SIZE)
-        milieu = self.SIZE // 2
-        centre = lignes[milieu][milieu * 4:milieu * 4 + 4]
-        self.assertGreater(centre[3], 200, "le bulbe doit être lumineux")
-        # Le coin doit rester transparent : sans quoi le logo poserait un
-        # rectangle sur le fond au lieu de s'y fondre.
-        self.assertEqual(lignes[0][3], 0)
-        self.assertEqual(lignes[-1][-1], 0)
+    def test_the_shape_never_changes_from_one_frame_to_the_next(self):
+        """L'animation est une lueur qui parcourt le symbole, pas une
+        deformation : un logo qui change de forme n'est plus un logo."""
+        symbole = self.symbole(count=8)
+        silhouettes = {
+            bytes(b"".join(encre(pixels(symbole.frame(index), self.LARGEUR,
+                                        self.HAUTEUR))))
+            for index in range(8)}
+        self.assertEqual(len(silhouettes), 1)
 
-    def test_the_core_is_warm_and_the_arms_are_cold(self):
-        lignes = pixels(self.galaxy().frame(0), self.SIZE)
-        milieu = self.SIZE // 2
-        rouge, _vert, bleu, _alpha = lignes[milieu][milieu * 4:milieu * 4 + 4]
-        self.assertGreater(rouge, bleu, "le bulbe tire vers l'or")
+    def test_the_light_does_travel(self):
+        symbole = self.symbole(count=8)
+        self.assertNotEqual(symbole.frame(0), symbole.frame(4))
 
-    def test_it_really_turns(self):
-        galaxie = self.galaxy()
-        self.assertNotEqual(galaxie.frame(0), galaxie.frame(3))
+    def test_the_drawing_is_the_same_at_any_size(self):
+        """Decrit par une formule et non par des pixels : la silhouette
+        agrandie doit recouvrir la petite, a l'echelle pres."""
+        petit = pixels(self.symbole(100, 72).frame(0), 100, 72)
+        grand = pixels(self.symbole(400, 288).frame(0), 400, 288)
+        part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
+                         for ligne in petit) / (100 * 72)
+        part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
+                         for ligne in grand) / (400 * 288)
+        self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
 
-    def test_a_full_turn_comes_back_to_the_start(self):
-        """Douze images pour un tour : la treizième est la première, sans
-        quoi la rotation sauterait à chaque boucle."""
-        galaxie = self.galaxy()
-        self.assertEqual(galaxie.frame(0), galaxie.frame(12))
+    def test_it_never_touches_the_edge_of_its_frame(self):
+        """Un symbole coupe au bord parait coupe des qu'on le pose contre
+        autre chose."""
+        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
+        self.assertEqual(max(lignes[0][3::4]), 0)
+        self.assertEqual(max(lignes[-1][3::4]), 0)
+        self.assertEqual(max(ligne[3] for ligne in lignes), 0)
+        self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
-    def test_the_density_follows_the_surface(self):
-        """Quatre fois plus large, seize fois plus d'etoiles : c'est ce qui
-        fait tenir les bras. A nombre constant, une galaxie agrandie se
-        defait en grains isoles."""
-        petite = logo.Galaxy(78, 12, cold=COLD, warm=WARM)
-        grande = logo.Galaxy(312, 12, cold=COLD, warm=WARM)
-        rapport = len(grande.stars) / len(petite.stars)
-        self.assertAlmostEqual(rapport, 16.0, delta=1.0)
+    def test_it_survives_at_the_size_of_an_icon(self):
+        lignes = pixels(self.symbole(32, 23).frame(0), 32, 23)
+        encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
+                     if valeur > 60)
+        self.assertGreater(encres, 40)
 
-    def test_the_dot_grows_slower_than_the_image(self):
-        """Sinon une galaxie rendue en grand n'est plus qu'un amas de
-        taches floues : le point doit perdre en taille relative."""
-        petite = logo.Galaxy(156, 12, cold=COLD, warm=WARM)
-        grande = logo.Galaxy(624, 12, cold=COLD, warm=WARM)
-        self.assertGreater(len(grande.kernel), len(petite.kernel))
-        # Quatre fois plus large, mais le point n'a pas quadruple.
-        self.assertLess(len(grande.kernel), len(petite.kernel) * 16)
+    def test_it_goes_from_green_below_to_violet_above(self):
+        """Les deux teintes d'une aurore. Elles ne suivent pas le theme :
+        une marque qui change de couleur n'est plus une marque."""
+        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
+        milieu = self.LARGEUR // 2
 
-    def test_the_light_does_not_depend_on_the_size(self):
-        """La lumiere s'ajoute : deux fois plus d'etoiles, chacune plus
-        large, et la galaxie vire au ruban blanc. L'eclat de chaque etoile
-        est donc divise par ce que le point a gagne."""
-        def clarte(taille):
-            galaxie = logo.Galaxy(taille, 12, cold=COLD, warm=WARM)
-            lignes = pixels(galaxie.frame(0), taille)
-            total = sum(sum(ligne[3::4]) for ligne in lignes)
-            return total / (taille * taille)
+        def couleur(rangs):
+            """Premier pixel franc rencontre en parcourant ces lignes."""
+            for y in rangs:
+                r, v, b, a = lignes[y][milieu * 4:milieu * 4 + 4]
+                if a > 200:
+                    return r, v, b
+            return None
 
-        self.assertAlmostEqual(clarte(78), clarte(312), delta=12)
+        haut = couleur(range(0, self.HAUTEUR))
+        bas = couleur(range(self.HAUTEUR - 1, -1, -1))
+        self.assertIsNotNone(haut)
+        self.assertIsNotNone(bas)
+        self.assertGreater(haut[2], haut[1], "le ruban du haut tire au violet")
+        self.assertGreater(bas[1], bas[2], "celui du bas tire au vert")
 
-    def test_the_whole_rotation_is_affordable(self):
-        """Elle est calculée pendant que l'écran est déjà là, image par
-        image : aucune ne doit bloquer l'affichage."""
+    def test_one_frame_costs_nothing(self):
+        """L'ecran d'accueil les calcule pendant qu'il est deja affiche :
+        aucune ne doit bloquer l'affichage."""
         import time
 
-        galaxie = logo.Galaxy(156, 24, cold=COLD, warm=WARM)
+        symbole = logo.Aurora(236, 24, height=170)
         debut = time.perf_counter()
-        galaxie.frame(0)
-        self.assertLess(time.perf_counter() - debut, 0.25)
+        symbole.frame(0)
+        self.assertLess(time.perf_counter() - debut, 0.12)
 
 
 @needs_display
@@ -193,7 +206,7 @@ class TestTheSplash(unittest.TestCase):
             self.ecran.tick()
         self.assertGreater(self.ecran.bar.shown, 0.5)
 
-    def test_the_rotation_is_computed_beat_by_beat(self):
+    def test_the_animation_is_computed_beat_by_beat(self):
         """La première image suffit à afficher l'écran ; les autres
         arrivent pendant qu'il est déjà là."""
         self.assertEqual(len(self.ecran._images), 1)

@@ -1,236 +1,204 @@
-"""La galaxie de l'outil, dessinee point par point.
+"""L'aurore de l'outil, dessinee a la formule.
 
 Un logo est un fichier image dans la plupart des logiciels. Ici il n'en est
 pas question : embarquer un binaire opaque dans une archive que le service
-informatique doit pouvoir relire irait contre tout le reste. La galaxie est
-donc *calculee* — quelques centaines d'etoiles posees sur deux bras en
-spirale, un bulbe au centre, et une rotation d'ensemble — puis encodee en
-PNG par le module « raster », qui sait deja le faire pour les points du
-nuage.
+informatique doit pouvoir relire irait contre tout le reste. Le symbole est
+donc *calcule*, puis encode en PNG par le module « raster », qui sait deja
+le faire pour les points du nuage.
 
-Le tirage est deterministe : la meme galaxie a chaque ouverture. Un logo qui
-changerait de forme d'un lancement a l'autre ne serait pas un logo.
+Ce qu'il montre : une aurore, c'est-a-dire un ruban de lumiere qui ondule et
+se dissipe vers le haut. Deux formes suffisent — le ruban et son echo —,
+decrites par une seule onde. Un symbole n'a pas a etre une illustration : il
+doit se reconnaitre a vingt-quatre pixels comme a deux mille, et l'on doit
+pouvoir le redessiner de memoire.
+
+Tout est analytique : pour chaque pixel on calcule sa distance a l'onde, et
+la couverture s'en deduit. Il n'y a ni tirage aleatoire, ni echantillonnage
+— donc aucun grain a faire grossir quand l'image grandit, et le meme dessin
+exactement a toutes les tailles.
 """
 
 from __future__ import annotations
 
 import math
-import random
-from typing import List, Sequence, Tuple
+from typing import List, Optional, Tuple
 
 from . import raster
 
 RGB = Tuple[int, int, int]
 
-#: Graine du tirage. Elle fixe la forme de la galaxie une fois pour toutes.
-SEED = 20260911
+#: Couleurs du symbole. Elles ne suivent pas le theme de la fenetre : une
+#: marque qui change de couleur avec un reglage d'affichage n'est plus une
+#: marque. Du vert au violet, les deux teintes que prend une aurore.
+GREEN = (74, 201, 150)
+TEAL = (72, 168, 196)
+VIOLET = (146, 120, 214)
 
-#: Nombre d'etoiles a la taille de reference. Assez pour que les bras se
-#: lisent, assez peu pour que la rotation entiere se calcule en un quart de
-#: seconde.
-STARS = 3200
+#: L'onde : une periode dans la largeur, soit une crete et un creux — un S,
+#: plus franc a lire qu'une bosse.
+PERIODS = 1.0
+AMPLITUDE = 0.17
 
-#: Taille pour laquelle ce nombre a ete choisi, en pixels. Au-dela, la
-#: densite suit la surface et le point grossit : sans cela, une galaxie
-#: agrandie se defait en grains isoles — les bras ne tiennent que par le
-#: nombre d'etoiles au centimetre carre.
-REFERENCE = 156
+#: Les trois rubans, du plus bas au plus haut. Pour chacun : hauteur au
+#: repos, epaisseur, opacite, couleur. Un ruban de plus serait un dessin ;
+#: un de moins, un trait ondule.
+#: Chaque ruban est aussi plus court que celui d'en dessous : c'est ce
+#: retrait qui fait un rideau plutot que trois traits paralleles.
+#: Chacun porte aussi un leger decalage d'onde : les rubans se suivent au
+#: lieu de se superposer, et le rideau parait derive par le vent solaire.
+RIBBONS = (
+    (0.615, 0.135, 1.00, 0.38, 0.000, GREEN),
+    (0.460, 0.075, 0.92, 0.44, 0.035, TEAL),
+    (0.340, 0.045, 0.80, 0.50, 0.070, VIOLET),
+)
 
-#: Bras de la spirale, et enroulement (en tours du centre au bord).
-ARMS = 2
-WINDING = 1.0
+#: Marge laissee de chaque cote : les pointes ne touchent pas le bord de
+#: l'image, sans quoi le symbole parait coupe des qu'on le pose contre autre
+#: chose.
+INSET = 0.06
 
-#: Part des etoiles rassemblees dans le bulbe central.
-BULGE = 0.18
+#: La lueur qui parcourt le symbole : de combien elle eclaircit, sur quelle
+#: largeur, et jusqu'ou elle voyage de part et d'autre du cadre. Elle ne
+#: touche jamais au trace — seulement a sa couleur.
+GLOW_STRENGTH = 0.42
+GLOW_WIDTH = 0.26
+GLOW_TRAVEL = 1.5
+GLOW_MARGIN = 0.25
 
-
-def _stars(count: int) -> List[Tuple[float, float, float, float]]:
-    """Etoiles en coordonnees polaires : rayon, angle, eclat, chaleur.
-
-    La chaleur va de 0 (bleu des bras, jeunes etoiles) a 1 (or du bulbe) :
-    c'est ce degrade qui fait lire une galaxie plutot qu'un tourbillon.
-    """
-    tirage = random.Random(SEED)
-    etoiles: List[Tuple[float, float, float, float]] = []
-    bulbe = int(count * BULGE)
-    for _ in range(bulbe):
-        rayon = abs(tirage.gauss(0.0, 0.075))
-        # Les etoiles du bulbe sont volontairement discretes : c'est le
-        # halo qui fait la lumiere du centre. Trop vives, elles donnaient
-        # une boule grumeleuse plutot qu'un noyau.
-        etoiles.append((min(rayon, 0.24), tirage.uniform(0, 2 * math.pi),
-                        tirage.uniform(0.30, 0.60),
-                        tirage.uniform(0.80, 1.0)))
-    for index in range(count - bulbe):
-        rayon = 0.10 + 0.88 * math.sqrt(tirage.random())
-        bras = (index % ARMS) * (2 * math.pi / ARMS)
-        # Spirale : l'angle croit avec le rayon. L'ecart au bras s'ouvre
-        # vers l'exterieur — un bras parfaitement net ferait un dessin, pas
-        # une galaxie.
-        ouverture = 0.07 + 0.26 * rayon
-        if index % 4 == 0:
-            # Une etoile sur quatre s'ecarte franchement : c'est ce voile
-            # entre les bras qui empeche la spirale de ressembler a deux
-            # rubans peints. Sans lui, la galaxie tient en vignette et se
-            # defait des qu'on l'agrandit.
-            ouverture *= 2.6
-        angle = bras + WINDING * 2 * math.pi * rayon + tirage.gauss(0, ouverture)
-        eclat = max(0.15, (1.0 - rayon) ** 0.9) * tirage.uniform(0.35, 1.0)
-        # Le bleu des bras gagne vite : au tiers du rayon, plus rien d'or.
-        chaleur = max(0.0, 1.0 - rayon / 0.42) * tirage.uniform(0.6, 1.1)
-        etoiles.append((rayon * tirage.uniform(0.97, 1.03), angle, eclat,
-                        min(chaleur, 1.0)))
-    return etoiles
+#: Douceur du bord, en parts de l'epaisseur. Assez pour qu'une aurore n'ait
+#: pas de contour, assez peu pour que le symbole reste franc a vingt-quatre
+#: pixels.
+SOFTNESS = 0.12
 
 
-def _weight(kernel) -> float:
-    """Lumiere totale d'un point, tous ses pixels additionnes."""
-    return sum(poids for _dx, _dy, poids in kernel)
+class Aurora:
+    """Le symbole, et son ondulation lente, image par image."""
 
-
-def _kernel(radius: int):
-    """Noyau du point : une etoile n'est pas un pixel.
-
-    Un seul pixel ferait scintiller la galaxie au lieu de la faire tourner,
-    et l'agrandir la reduirait a de la poussiere. Le rayon suit donc la
-    taille de l'image, et la lumiere y decroit en cloche.
-    """
-    noyau = []
-    for dy in range(-radius, radius + 1):
-        for dx in range(-radius, radius + 1):
-            distance = math.hypot(dx, dy)
-            if distance > radius + 0.5:
-                continue
-            noyau.append((dx, dy, math.exp(-(distance / (radius * 0.85)) ** 2)))
-    return tuple(noyau)
-
-
-def _mix(cold: RGB, warm: RGB, part: float) -> RGB:
-    return tuple(int(round(c + (w - c) * part)) for c, w in zip(cold, warm))
-
-
-class Galaxy:
-    """Une galaxie et sa rotation, image par image.
-
-    Les images se calculent une a une : la premiere suffit a afficher
-    l'ecran d'accueil, les suivantes arrivent pendant qu'il est deja la.
-    Une rotation complete pese un quart de seconde de calcul — ce n'est pas
-    un temps qu'on fait attendre avant d'afficher quoi que ce soit.
-    """
-
-    def __init__(self, size: int, count: int, cold: RGB, warm: RGB,
-                 flatten: float = 1.0):
+    def __init__(self, size: int, count: int = 1,
+                 height: Optional[int] = None):
+        """`size` est la largeur ; `height` permet un cadre plus bas que
+        large — une aurore s'inscrit mal dans un carre, ou elle laisse deux
+        bandes vides. Le dessin n'est pas etire pour autant : il est cadre."""
         self.size = size
-        self.count = count
-        self.cold = cold
-        self.warm = warm
-        self.flatten = flatten
-        # Densite et grosseur du point suivent la taille demandee : la
-        # galaxie doit se tenir aussi bien en vignette qu'en grand.
-        echelle = size / REFERENCE
-        self.stars = _stars(max(240, int(STARS * echelle * echelle)))
-        # Le point grossit moins vite que l'image : a taille de logo il
-        # tient en trois pixels, et une galaxie rendue en grand garde des
-        # etoiles piquees plutot que des taches floues.
-        self.kernel = _kernel(max(1, round(math.sqrt(echelle))))
-        # La lumiere s'ajoute : deux fois plus d'etoiles, chacune deux fois
-        # plus large, et la galaxie vire au ruban blanc. L'eclat de chaque
-        # etoile est donc divise par ce que le point a gagne en surface —
-        # la meme galaxie, simplement plus fine.
-        self.gain = _weight(_kernel(1)) / _weight(self.kernel)
-        self._centre = size / 2.0
-        self._radius = self._centre * 0.92
+        self.height = height or size
+        self.count = max(1, count)
 
-    def frame(self, index: int) -> bytes:
-        """Image `index` de la rotation, prete pour PhotoImage."""
-        tour = 2 * math.pi * index / self.count
+    # ---------------------------------------------------------- lecture
+
+    def frame(self, index: int = 0) -> bytes:
+        """Image `index` de l'animation, prete pour PhotoImage.
+
+        Le dessin ne bouge pas : c'est une lueur qui le parcourt, de gauche
+        a droite, et revient. Un logo qui change de forme au fil des images
+        n'est plus un logo — mais une aurore immobile n'est pas une aurore.
+
+        Le trace se fait colonne par colonne et ruban par ruban : pour une
+        abscisse donnee, un ruban n'occupe qu'une poignee de lignes. Balayer
+        l'image entiere pour chacun couterait dix fois plus, et l'ecran
+        d'accueil calcule ces images pendant qu'il est deja affiche.
+        """
         size = self.size
-        toile = [[0.0] * (size * 3) for _ in range(size)]
-        for rayon, angle, eclat, chaleur in self.stars:
-            theta = angle + tour
-            x = self._centre + math.cos(theta) * rayon * self._radius
-            y = (self._centre
-                 + math.sin(theta) * rayon * self._radius * self.flatten)
-            rouge, vert, bleu = _mix(self.cold, self.warm, chaleur)
-            _pose(toile, size, x, y, eclat * self.gain, rouge, vert, bleu,
-                  self.kernel)
-        # Deux halos : un noyau franc, et un voile trois fois plus large
-        # qui l'adoucit. Un seul halo assez fort pour se voir saturait au
-        # centre et donnait, en grand, un disque jaune parfaitement plat.
-        _glow(toile, size, self._centre, self._radius * 0.17, self.warm, 0.62)
-        _glow(toile, size, self._centre, self._radius * 0.44, self.warm, 0.16)
-        # Compression rapide : l'image vit une seconde a l'ecran, elle n'a
-        # pas a etre compacte.
-        return raster.image_data(size, size, _to_rows(toile, size), 1)
+        # La lueur traverse le cadre puis reprend : l'aller-retour boucle
+        # sans saut, contrairement a un simple defilement.
+        part = (index % self.count) / self.count
+        lueur = GLOW_TRAVEL * (1 - abs(1 - 2 * part)) - GLOW_MARGIN
+        toile = [bytearray(size * 4) for _ in range(self.height)]
+        for base, epaisseur, force, bord, decalage, couleur in RIBBONS:
+            self._draw(toile, size, decalage, base, epaisseur, force,
+                       bord, couleur, lueur)
+        return raster.image_data(size, self.height, toile, 6)
 
-
-def _pose(toile, size: int, x: float, y: float, eclat: float,
-          rouge: int, vert: int, bleu: int, noyau) -> None:
-    base_x, base_y = int(x), int(y)
-    for dx, dy, poids in noyau:
-        px, py = base_x + dx, base_y + dy
-        if not (0 <= px < size and 0 <= py < size):
-            continue
-        force = eclat * poids
-        ligne = toile[py]
-        index = px * 3
-        # Somme des lumieres : deux etoiles voisines font un point plus
-        # clair, comme dans le ciel.
-        ligne[index] += rouge * force
-        ligne[index + 1] += vert * force
-        ligne[index + 2] += bleu * force
-
-
-def _glow(toile, size: int, centre: float, rayon: float, warm: RGB,
-          force_max: float) -> None:
-    """Halo du bulbe : la lumiere du centre deborde sur ses voisins."""
-    portee = int(rayon * 3)
-    for y in range(max(0, int(centre - portee)), min(size, int(centre + portee))):
-        ligne = toile[y]
-        for x in range(max(0, int(centre - portee)),
-                       min(size, int(centre + portee))):
-            distance = math.hypot(x - centre, y - centre)
-            force = math.exp(-(distance / rayon) ** 2) * force_max
-            if force < 0.004:
+    def _draw(self, toile, size: int, phase: float, base: float,
+              epaisseur: float, opacite: float, bord: float,
+              couleur: RGB, lueur: float) -> None:
+        """Pose un ruban sur la toile, colonne par colonne."""
+        rouge, vert, bleu = couleur
+        # Tout est mesure en parts de la largeur, y compris a la verticale :
+        # un cadre plus bas que large recadre le dessin, il ne l'aplatit pas.
+        haut = (size - self.height) / 2.0
+        for colonne in range(size):
+            x = (colonne + 0.5) / size
+            demi = epaisseur * self._taper(x, bord) / 2.0
+            if demi <= 0.0:
                 continue
-            index = x * 3
-            ligne[index] += warm[0] * force
-            ligne[index + 1] += warm[1] * force
-            ligne[index + 2] += warm[2] * force
+            angle = 2 * math.pi * (PERIODS * x + phase)
+            onde = base + AMPLITUDE * math.sin(angle)
+            pente = AMPLITUDE * 2 * math.pi * PERIODS * math.cos(angle)
+            correction = math.sqrt(1.0 + pente * pente)
+            douceur = demi * SOFTNESS
+            # Lueur : elle eclaircit la couleur sans toucher au trace.
+            ecart_lueur = (x - lueur) / GLOW_WIDTH
+            eclat = 1.0 + GLOW_STRENGTH * math.exp(-ecart_lueur * ecart_lueur)
+            rouge_x = min(255, int(rouge * eclat))
+            vert_x = min(255, int(vert * eclat))
+            bleu_x = min(255, int(bleu * eclat))
+            portee = (demi + douceur) * correction
+            premiere = max(0, int((onde - portee) * size - haut))
+            derniere = min(self.height - 1,
+                           int((onde + portee) * size - haut) + 1)
+            for ligne in range(premiere, derniere + 1):
+                y = (ligne + haut + 0.5) / size
+                couverture = self._coverage(y, onde, demi, douceur, correction)
+                if couverture <= 0.004:
+                    continue
+                couverture *= opacite
+                cible = toile[ligne]
+                position = colonne * 4
+                ancienne = cible[position + 3] / 255.0
+                melange = couverture + ancienne * (1 - couverture)
+                cible[position] = int(
+                    (rouge_x * couverture
+                     + cible[position] * ancienne * (1 - couverture)) / melange)
+                cible[position + 1] = int(
+                    (vert_x * couverture
+                     + cible[position + 1] * ancienne * (1 - couverture))
+                    / melange)
+                cible[position + 2] = int(
+                    (bleu_x * couverture
+                     + cible[position + 2] * ancienne * (1 - couverture))
+                    / melange)
+                cible[position + 3] = min(255, int(melange * 255))
 
+    @staticmethod
+    def _coverage(y: float, onde: float, demi: float, douceur: float,
+                  correction: float) -> float:
+        """Part du pixel couverte par le ruban, bord adouci.
 
-def _to_rows(toile, size: int) -> List[bytearray]:
-    """Lignes RVBA. L'opacite suit la lumiere : le logo se pose alors sur
-    n'importe quel fond sans rectangle autour de lui.
+        La distance a une courbe qui est le graphe d'une fonction se calcule
+        sans chercher le point le plus proche : l'ecart vertical, corrige de
+        la pente. C'est exact au premier ordre, et une onde de cette
+        amplitude n'en demande pas plus.
+        """
+        ecart = abs(y - onde) / correction
+        if ecart >= demi + douceur:
+            return 0.0
+        if ecart <= demi - douceur:
+            couverture = 1.0
+        else:
+            part = (demi + douceur - ecart) / (2 * douceur)
+            couverture = part * part * (3 - 2 * part)
+        # La lumiere monte et se dissipe : le bord superieur s'efface, le
+        # bord inferieur reste franc. C'est ce desequilibre qui distingue
+        # une aurore d'un simple trait ondule.
+        if y < onde:
+            couverture *= 1.0 - 0.18 * (onde - y) / (demi + douceur)
+        return couverture
 
-    Ecrit dans des octets plutot que dans des listes d'entiers : c'est la
-    moitie du temps de calcul d'une image, et il y en a vingt-quatre.
-    """
-    rows: List[bytearray] = []
-    for y in range(size):
-        source = toile[y]
-        ligne = bytearray(size * 4)
-        for x in range(size):
-            index = x * 3
-            rouge = source[index]
-            vert = source[index + 1]
-            bleu = source[index + 2]
-            clarte = rouge if rouge > vert else vert
-            if bleu > clarte:
-                clarte = bleu
-            if clarte <= 0.5:
-                continue
-            if clarte > 255.0:
-                # Sature : on garde la teinte, on ramene l'intensite.
-                facteur = 255.0 / clarte
-                rouge *= facteur
-                vert *= facteur
-                bleu *= facteur
-                clarte = 255.0
-            sortie = x * 4
-            ligne[sortie] = int(rouge)
-            ligne[sortie + 1] = int(vert)
-            ligne[sortie + 2] = int(bleu)
-            ligne[sortie + 3] = int(clarte)
-        rows.append(ligne)
-    return rows
+    @staticmethod
+    def _taper(x: float, bord: float) -> float:
+        """Affinement aux deux extremites, de zero a l'epaisseur pleine.
+
+        Il occupe plus d'un tiers de la longueur : un affinement bref donne
+        une pointe coupee au couteau, la ou l'on attend un trait de pinceau.
+        """
+        utile = 1.0 - 2 * INSET
+        position = (x - INSET) / utile
+        if position <= 0.0 or position >= 1.0:
+            return 0.0
+        if position < bord:
+            part = position / bord
+        elif position > 1 - bord:
+            part = (1 - position) / bord
+        else:
+            return 1.0
+        return part * part * (3 - 2 * part)
