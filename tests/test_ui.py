@@ -966,6 +966,78 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
 
 
 @needs_display
+class TestACriticalQualityFindingIsSaidWhereOneLooks(unittest.TestCase):
+    """Un fichier qui porte des anomalies critiques produit quand meme une
+    analyse — mais l'utilisateur doit l'apprendre sans avoir a penser a
+    ouvrir l'onglet « Qualite ». Un chiffre faux qui a l'air juste est le
+    pire des resultats."""
+
+    @classmethod
+    def setUpClass(cls):
+        import datetime as _dt
+
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "douteux.xlsx")
+        rows = [make_row(index, salary=30000 + index * 500)
+                for index in range(40)]
+        # Une sortie anterieure a l'entree : critique, et signalee comme
+        # telle par le controle qualite.
+        rows[0] = make_row(0, hire_date=_dt.date(2020, 1, 1),
+                           leave_date=_dt.date(2015, 1, 1))
+        write_workbook(cls.source, [("Population", [HEADERS] + rows)])
+
+    def setUp(self):
+        import time
+
+        from compensation_analytics.ui.app import Application
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          load_population,
+                                                          run_analysis)
+
+        self.app = Application()
+        self.app.update()
+        population, mapping, table = load_population(
+            self.source, self.app.configuration, reference_date=REFERENCE_DATE)
+        self.app.source_path = self.source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app.headers = list(table.headers)
+        self.app._populate_filters()
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE,
+            ignore_quality_errors=True))
+        self.app._render_results()
+        self.app.update()
+        self.addCleanup(self.app.destroy)
+
+    def test_the_status_line_counts_them(self):
+        self.assertIn("critique", self.app.status.cget("text"))
+
+    def test_a_banner_points_at_the_quality_tab(self):
+        self.assertTrue(self.app.notice.winfo_ismapped())
+        texte = str(self.app.notice.cget("text"))
+        self.assertIn("Qualité", texte)
+        self.assertIn("critique", texte)
+
+    def test_a_clean_file_says_nothing_of_the_sort(self):
+        """Le bandeau ne doit pas devenir un decor permanent."""
+        import time
+
+        from compensation_analytics.core.pipeline import (AnalysisRequest,
+                                                          run_analysis)
+
+        propre = os.path.join(self.directory, "propre.xlsx")
+        write_workbook(propre, [("Population",
+                                 [HEADERS] + [make_row(i, salary=30000 + i * 400)
+                                              for i in range(40)])])
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=propre, reference_date=REFERENCE_DATE))
+        self.app._render_results()
+        self.app.update()
+        self.assertNotIn("critique", self.app.status.cget("text"))
+
+
+@needs_display
 class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
     """Colorer par « Poste » demande quarante couleurs a une serie qui en
     compte dix. La legende, elle, disparaissait au-dela de seize entrees :

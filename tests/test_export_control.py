@@ -142,6 +142,62 @@ class TestEveryFormulaHoldsUp(ControlCase):
             float(lignes[0][1]))
 
 
+class TestTheHeadcountsBehindTheGaps(ControlCase):
+    """Les effectifs du controle doivent etre ceux qui portent l'ecart.
+
+    Sur un fichier ou tout le monde n'a pas de remuneration connue — une
+    embauche du mois, un contrat suspendu —, l'outil compte les salaries
+    *valorises*, puisque ce sont eux qui font la moyenne. Le controle
+    comptait, lui, toutes les lignes de la categorie : il annoncait un ecart
+    la ou il n'y en avait pas, sur la feuille meme qui sert a se rassurer.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.creux = os.path.join(cls.directory, "sans-toutes-les-valeurs.csv")
+        with open(cls.creux, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(list(HEADERS) + ["Poste"])
+            for index in range(90):
+                ligne = list(make_row(index, salary=32000 + index * 300,
+                                      gender="F" if index % 2 else "H"))
+                # Un salarie sur trois n'a pas de remuneration connue.
+                if index % 3 == 0:
+                    ligne[11] = ""
+                writer.writerow(ligne + [["Comptable", "Technicien"][index % 2]])
+        cls.creuse = run_analysis(AnalysisRequest(
+            source_path=cls.creux, config_dir=cls.config_dir,
+            ignore_quality_errors=True))
+
+    def test_the_sheet_agrees_with_the_tool_on_every_headcount(self):
+        data = self.creuse.config.as_dict()
+        data["export_parameters"]["include_individual_data"] = True
+        sheets = build_sheets(self.creuse.payload, self.creuse.filtered,
+                              Configuration(data))
+        book = Workbook(sheets)
+        rows = {name: lignes for name, lignes in sheets}.get(
+            "Contrôle Pay Transparency")
+        self.assertTrue(rows, "l'onglet de contrôle doit exister")
+        effectifs = [ligne for ligne in rows[1:]
+                     if len(ligne) > 4 and str(ligne[1]).startswith("Effectif")]
+        self.assertTrue(effectifs, "les effectifs doivent être contrôlés")
+        for ligne in effectifs:
+            recalcul = book.evaluate(ligne[3].expression,
+                                     "Contrôle Pay Transparency")
+            self.assertEqual(float(recalcul), float(ligne[2]),
+                             f"{ligne[0]} / {ligne[1]}")
+
+    def test_the_tool_counts_only_the_employees_it_can_average(self):
+        """Ce que le controle doit refleter : un effectif d'ecart n'est pas
+        un effectif de categorie."""
+        equite = self.creuse.payload["pay_equity"]
+        for item in equite.get("categories") or []:
+            total = item["female_count"] + item["male_count"]
+            self.assertLess(total, 90,
+                            "tous les salariés ne sont pas valorisés")
+
+
 class TestTheImportedFileTravelsWithIt(ControlCase):
 
     def test_the_sheet_repeats_the_file_line_for_line(self):

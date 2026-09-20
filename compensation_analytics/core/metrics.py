@@ -31,10 +31,20 @@ class PrivacyRules:
 
     @classmethod
     def from_config(cls, config: Configuration) -> "PrivacyRules":
+        # Au moins un salarie : un seuil a zero — ou negatif — publierait
+        # les indicateurs d'un segment d'une personne, c'est-a-dire sa
+        # remuneration. Le garde-fou ne doit pas pouvoir se desarmer par une
+        # faute de frappe dans un fichier de parametres.
         return cls(
-            min_publish=int(config.get("privacy_parameters.min_headcount_publish", 5)),
-            min_warning=int(config.get("privacy_parameters.min_headcount_warning", 10)),
-            min_chart=int(config.get("privacy_parameters.min_headcount_chart", 10)),
+            min_publish=config.number(
+                "privacy_parameters.min_headcount_publish", 5,
+                minimum=1, integer=True),
+            min_warning=config.number(
+                "privacy_parameters.min_headcount_warning", 10,
+                minimum=1, integer=True),
+            min_chart=config.number(
+                "privacy_parameters.min_headcount_chart", 10,
+                minimum=1, integer=True),
         )
 
     def may_publish(self, headcount: int) -> bool:
@@ -275,8 +285,10 @@ def calculate_distribution_metrics(
     """Histogramme et points atypiques, sous reserve de l'effectif minimal."""
     field_name = field_name or analysis_field(config)
     rules = PrivacyRules.from_config(config)
-    bins = int(config.get("chart_parameters.histogram_bins", 20))
-    factor = float(config.get("salary_parameters.outlier_factor", 1.5))
+    bins = config.number("chart_parameters.histogram_bins", 20,
+                         minimum=1, maximum=500, integer=True)
+    factor = config.number("salary_parameters.outlier_factor", 1.5,
+                           minimum=0.1, maximum=10.0)
 
     values = _values(population, field_name)
     if not rules.may_chart(len(values)):
@@ -670,7 +682,8 @@ def scatter_dataset(
         })
     total_points = len(points)
     sampled = False
-    max_points = int(config.get("chart_parameters.scatter_max_points", 5000) or 0)
+    max_points = config.number("chart_parameters.scatter_max_points", 5000,
+                               minimum=0, integer=True)
     if max_points and total_points > max_points:
         # Echantillonnage systematique a pas constant : deterministe (donc
         # reproductible et tracable) et sans dependance a un generateur
@@ -681,8 +694,8 @@ def scatter_dataset(
         sampled = True
 
     groups, other_label, group_counts = _collapse_groups(
-        points, int(config.get("chart_parameters.scatter_max_groups",
-                       DEFAULT_MAX_GROUPS) or 0))
+        points, config.number("chart_parameters.scatter_max_groups",
+                              DEFAULT_MAX_GROUPS, minimum=0, integer=True))
 
     if not rules.may_chart(len(points)):
         return {

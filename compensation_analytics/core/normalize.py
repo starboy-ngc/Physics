@@ -392,10 +392,11 @@ def resolve_bands(config: Configuration, section: str,
         return bands
     return extend_open_band(
         bands, observed_max,
-        float(config.get(f"{section}.extend_step", 5) or 5),
+        config.number(f"{section}.extend_step", 5, minimum=0.1),
         str(config.get(f"{section}.band_label", "{low}-{high}")),
         str(config.get(f"{section}.open_band_label", ">{low}")),
-        int(config.get(f"{section}.extend_max_bands", 10) or 10),
+        config.number(f"{section}.extend_max_bands", 10, minimum=1,
+                      maximum=200, integer=True),
     )
 
 
@@ -484,11 +485,25 @@ def normalise_table(
                     field_name, str(raw).strip() if raw is not None else ""
                 )
 
+        # Un age ou une anciennete negatifs n'existent pas : une date de
+        # naissance dans le futur, une sortie anterieure a l'entree. Les
+        # calculer quand meme les faisait entrer dans les moyennes publiees,
+        # ou ils passaient inapercus — le controle qualite les signale, mais
+        # rien n'empechait le chiffre de sortir. Une valeur impossible n'est
+        # pas une valeur : elle est absente, et la ligne est marquee.
         if employee.birth_date:
-            employee.age_years = years_between(employee.birth_date, reference)
+            if employee.birth_date > reference:
+                employee.issues.append("birth_date:after_reference")
+            else:
+                employee.age_years = years_between(employee.birth_date,
+                                                   reference)
         end_date = employee.leave_date or reference
         if employee.hire_date:
-            employee.tenure_years = years_between(employee.hire_date, end_date)
+            if end_date < employee.hire_date:
+                employee.issues.append("tenure:end_before_hire")
+            else:
+                employee.tenure_years = years_between(employee.hire_date,
+                                                      end_date)
         employee.anonymous_id = (
             anonymise(employee.employee_id, salt)
             if (anonymise_ids and employee.employee_id)

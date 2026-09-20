@@ -389,8 +389,8 @@ def _rows_source(table: Table, config: Configuration) -> List[List[Any]]:
     le mapping ignore. Une valeur mal lue doit se voir ici telle qu'elle
     etait.
     """
-    limite = int(config.get("export_parameters.source_max_rows",
-                            SOURCE_MAX_ROWS) or 0)
+    limite = config.number("export_parameters.source_max_rows",
+                           SOURCE_MAX_ROWS, minimum=0, integer=True)
     rows: List[List[Any]] = [list(table.headers)]
     if limite and table.row_count > limite:
         return [[f"Le fichier importé compte {table.row_count} lignes ; "
@@ -587,7 +587,8 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
             ecart = (f"{ledger.percentile(salaire, 75)}-"
                      f"{ledger.percentile(salaire, 25)}")
             facteur = fx.number_literal(
-                float(config.get("salary_parameters.outlier_factor", 1.5)))
+                config.number("salary_parameters.outlier_factor", 1.5,
+                              minimum=0.1, maximum=10.0))
             poser("Borne basse (Q1 − facteur × (Q3−Q1))", bounds.get("lower"),
                   f"{ledger.percentile(salaire, 25)}-{facteur}*({ecart})")
             poser("Borne haute (Q3 + facteur × (Q3−Q1))", bounds.get("upper"),
@@ -768,10 +769,16 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
             nom = item["category"]
             critere_f = [(colonne, nom), femme]
             critere_h = [(colonne, nom), homme]
+            # Ces effectifs sont ceux qui portent l'ecart : les salaries de
+            # la categorie *dont la remuneration est connue*. Compter les
+            # lignes de la categorie, sans cette condition, faisait dire au
+            # controle « 20 » la ou l'outil disait « 0 » sur un fichier ou
+            # la colonne analysee n'est pas partout renseignee — un ecart
+            # affiche a tort, sur la feuille meme qui sert a se rassurer.
             poser(nom, "Effectif femmes", item.get("female_count"),
-                  ledger.rows_matching(critere_f))
+                  ledger.count(salaire, critere_f))
             poser(nom, "Effectif hommes", item.get("male_count"),
-                  ledger.rows_matching(critere_h))
+                  ledger.count(salaire, critere_h))
             if not item.get("published"):
                 poser(nom, "Indicateurs masqués (un sexe sous le seuil de "
                            "publication)", "", None)
@@ -864,8 +871,8 @@ def build_sheets(
         sheets.append(("Fichier importé", _rows_source(table, config)))
         if mapping is not None:
             sheets.append(("Colonnes lues", _rows_columns(mapping, config)))
-    limite = int(config.get("export_parameters.control_max_rows",
-                            CONTROL_MAX_ROWS) or 0)
+    limite = config.number("export_parameters.control_max_rows",
+                           CONTROL_MAX_ROWS, minimum=0, integer=True)
     detaille = not limite or len(population) <= limite
     individual = _rows_individual(population, config,
                                   derived_as_formulas=detaille)

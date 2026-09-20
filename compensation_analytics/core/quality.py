@@ -277,7 +277,8 @@ def _check_salary(
     field_name = analysis_field(config)
     minimum = config.get("salary_parameters.min_plausible")
     maximum = config.get("salary_parameters.max_plausible")
-    factor = float(config.get("salary_parameters.outlier_factor", 1.5))
+    factor = config.number("salary_parameters.outlier_factor", 1.5,
+                           minimum=0.1, maximum=10.0)
 
     missing: List[int] = []
     negative: List[int] = []

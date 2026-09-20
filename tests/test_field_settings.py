@@ -13,6 +13,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import build_population, make_config, make_row
 from compensation_analytics.core.config import (Configuration, DEFAULTS,
                                                 load_configuration,
                                                 write_configuration)
@@ -379,3 +380,137 @@ class TestShippedConfigurationMatchesTheDefaults(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
+    """Un fichier de parametres se corrige au bloc-notes.
+
+    Il s'y glisse un texte a la place d'un nombre, un zero la ou il faut au
+    moins un. Le premier donnait une trace Python illisible ; le second,
+    pire, une analyse silencieusement fausse — un seuil de publication a
+    zero publie les indicateurs d'un segment d'une personne, c'est-a-dire sa
+    remuneration.
+    """
+
+    def _config(self, **reglages):
+        from compensation_analytics.core.config import Configuration
+
+        donnees = make_config().as_dict()
+        for chemin, valeur in reglages.items():
+            section, cle = chemin.split(".", 1)
+            donnees.setdefault(section, {})[cle] = valeur
+        return Configuration(donnees)
+
+    def test_a_word_where_a_number_belongs_is_refused_by_name(self):
+        from compensation_analytics.core.errors import ConfigError
+        from compensation_analytics.core.metrics import PrivacyRules
+
+        config = self._config(**{
+            "privacy_parameters.min_headcount_publish": "beaucoup"})
+        with self.assertRaises(ConfigError) as leve:
+            PrivacyRules.from_config(config)
+        message = str(leve.exception)
+        self.assertIn("min_headcount_publish", message)
+        self.assertIn("beaucoup", message)
+        self.assertIn("privacy_parameters.json", message)
+
+    def test_a_publication_threshold_below_one_is_refused(self):
+        """Le garde-fou ne doit pas pouvoir se desarmer par une faute de
+        frappe."""
+        from compensation_analytics.core.errors import ConfigError
+        from compensation_analytics.core.metrics import PrivacyRules
+
+        for valeur in (0, -3):
+            with self.subTest(valeur=valeur):
+                config = self._config(**{
+                    "privacy_parameters.min_headcount_publish": valeur})
+                with self.assertRaises(ConfigError):
+                    PrivacyRules.from_config(config)
+
+    def test_impossible_chart_settings_are_refused(self):
+        from compensation_analytics.core import metrics
+        from compensation_analytics.core.errors import ConfigError
+
+        population = build_population([make_row(i) for i in range(30)])
+        for chemin, valeur in (("chart_parameters.histogram_bins", 0),
+                               ("chart_parameters.histogram_bins", -7),
+                               ("salary_parameters.outlier_factor", 0),
+                               ("salary_parameters.outlier_factor", -1.5)):
+            with self.subTest(chemin=chemin, valeur=valeur):
+                config = self._config(**{chemin: valeur})
+                with self.assertRaises(ConfigError):
+                    metrics.calculate_distribution_metrics(population, config)
+
+    def test_a_missing_setting_still_falls_back_on_its_default(self):
+        """Le controle ne doit pas transformer un fichier incomplet en
+        refus : ce qui manque garde sa valeur d'origine."""
+        from compensation_analytics.core.config import Configuration
+        from compensation_analytics.core.metrics import PrivacyRules
+
+        donnees = make_config().as_dict()
+        donnees["privacy_parameters"].pop("min_headcount_publish", None)
+        regles = PrivacyRules.from_config(Configuration(donnees))
+        self.assertEqual(regles.min_publish, 5)
+
+    def test_a_number_written_as_text_is_accepted(self):
+        """« 5 » ecrit entre guillemets reste un cinq : refuser la forme
+        quand le fond est juste ferait un outil tatillon."""
+        from compensation_analytics.core.metrics import PrivacyRules
+
+        regles = PrivacyRules.from_config(self._config(**{
+            "privacy_parameters.min_headcount_publish": "7"}))
+        self.assertEqual(regles.min_publish, 7)
+
+    def test_a_gap_threshold_written_as_text_is_refused_by_name(self):
+        """Le seuil d'alerte se lit a trois endroits — le tableau global, la
+        table par axe, le profil d'un poste. Il doit y etre refuse de la
+        meme facon, sans qu'un chemin encore lu « a la main » ne laisse
+        passer une trace Python la ou les deux autres nomment le fichier."""
+        from compensation_analytics.core import pay_equity
+
+        population = build_population([make_row(i) for i in range(40)])
+        config = self._config(**{
+            "pay_equity_parameters.gap_alert_threshold": "cinq"})
+        for appel in (lambda: pay_equity.calculate_pay_equity(population,
+                                                              config),
+                      lambda: pay_equity.calculate_category_gaps(
+                          population, config, "grade")):
+            with self.subTest(appel=appel):
+                with self.assertRaises(ConfigError) as leve:
+                    appel()
+                self.assertIn("gap_alert_threshold", str(leve.exception))
+
+
+class TestACosmeticSettingNeverBlocksTheWindow(unittest.TestCase):
+    """Tout parametre illisible n'a pas le meme prix.
+
+    Un seuil de publication faux fausse un resultat : il doit arreter
+    l'analyse. Une duree d'ecran d'accueil fausse ne fausse rien — refuser
+    d'ouvrir la fenetre pour elle couterait a l'utilisateur bien plus que
+    le defaut ne lui coute.
+    """
+
+    def _duree(self, valeur):
+        from compensation_analytics.ui.app import Application
+
+        donnees = make_config().as_dict()
+        donnees.setdefault("theme_parameters", {})["splash_seconds"] = valeur
+        faux = type("Faux", (), {
+            "configuration": Configuration(donnees),
+            "SPLASH_SECONDS": Application.SPLASH_SECONDS,
+            "_splash_seconds": Application._splash_seconds,
+        })()
+        return faux._splash_seconds()
+
+    @unittest.skipUnless(HAS_TK, "tkinter absent")
+    def test_an_unreadable_duration_falls_back_on_the_default(self):
+        from compensation_analytics.ui.app import Application
+
+        self.assertEqual(self._duree("longtemps"),
+                         float(Application.SPLASH_SECONDS))
+
+    @unittest.skipUnless(HAS_TK, "tkinter absent")
+    def test_a_duration_of_zero_stays_zero(self):
+        """Zero est un reglage, non une faute : il retire l'ecran
+        d'accueil, et le defaut ne doit pas le reintroduire."""
+        self.assertEqual(self._duree(0), 0.0)

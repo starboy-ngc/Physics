@@ -190,7 +190,8 @@ def calculate_pay_equity(population: Population,
     salary_field = analysis_field(config)
     variable_field = section.get("variable_field", "variable_pay")
     category_field = section.get("category_field", "job_title")
-    threshold = float(section.get("gap_alert_threshold", 5.0) or 0.0)
+    threshold = config.number("pay_equity_parameters.gap_alert_threshold",
+                              5.0, minimum=0.0, maximum=100.0)
 
     groups = _split(population, config)
     women, men, unknown = groups[FEMALE], groups[MALE], groups[""]
@@ -239,7 +240,8 @@ def calculate_pay_equity(population: Population,
 
     result["quartiles"] = _quartiles(
         population, config, salary_field, groups,
-        int(section.get("quartile_count", 4) or 4), rules)
+        config.number("pay_equity_parameters.quartile_count", 4,
+                      minimum=2, maximum=10, integer=True), rules)
 
     result.update(calculate_category_gaps(population, config, category_field))
     return result
@@ -264,7 +266,8 @@ def calculate_category_gaps(population: Population, config: Configuration,
     section = config.section("pay_equity_parameters")
     rules = PrivacyRules.from_config(config)
     salary_field = analysis_field(config)
-    threshold = float(section.get("gap_alert_threshold", 5.0) or 0.0)
+    threshold = config.number("pay_equity_parameters.gap_alert_threshold",
+                              5.0, minimum=0.0, maximum=100.0)
     label = _axis_label(config, field_name)
 
     groups_by_category = split_by(population, field_name)
@@ -383,7 +386,8 @@ def calculate_category_profile(population: Population, config: Configuration,
     profile["at_stake"] = _at_stake(pair)
     profile["mean_gap"] = pair.get("mean_gap")
     profile["median_gap"] = pair.get("median_gap")
-    threshold = float(section.get("gap_alert_threshold", 5.0) or 0.0)
+    threshold = config.number("pay_equity_parameters.gap_alert_threshold",
+                              5.0, minimum=0.0, maximum=100.0)
     profile["above_threshold"] = (profile["mean_gap"] is not None
                                   and threshold > 0
                                   and abs(profile["mean_gap"]) >= threshold)

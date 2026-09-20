@@ -14,7 +14,7 @@ from __future__ import annotations
 import copy
 import json
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .errors import ConfigError
 
@@ -269,6 +269,58 @@ class Configuration:
                 return default
             node = node[part]
         return node
+
+    def number(self, path: str, default: Any, minimum: Optional[float] = None,
+               maximum: Optional[float] = None, integer: bool = False) -> Any:
+        """Parametre numerique, verifie a la lecture.
+
+        Un fichier de parametres se corrige au bloc-notes : il s'y glisse un
+        texte a la place d'un nombre, un zero la ou il faut au moins un. Lus
+        sans controle, ces deux-la donnaient l'un une trace Python illisible
+        (`int('beaucoup')`), l'autre une analyse silencieusement fausse — un
+        seuil de publication a zero publie les segments d'une personne.
+
+        La valeur absente retombe sur le defaut ; la valeur presente mais
+        inutilisable est refusee, en nommant le fichier, la cle et ce qui a
+        ete lu. Aucune donnee RH n'entre dans ce message : un parametre
+        n'en contient pas.
+        """
+        brut = self.get(path, None)
+        if brut is None or brut == "":
+            brut = default
+        if isinstance(brut, bool) or not isinstance(brut, (int, float, str)):
+            raise self._refus(path, brut, minimum, maximum, integer)
+        if isinstance(brut, str):
+            try:
+                brut = float(brut.replace(",", ".").strip())
+            except ValueError:
+                raise self._refus(path, brut, minimum, maximum, integer) from None
+        if integer and float(brut) != int(brut):
+            raise self._refus(path, brut, minimum, maximum, integer)
+        valeur = int(brut) if integer else float(brut)
+        if minimum is not None and valeur < minimum:
+            raise self._refus(path, brut, minimum, maximum, integer)
+        if maximum is not None and valeur > maximum:
+            raise self._refus(path, brut, minimum, maximum, integer)
+        return valeur
+
+    @staticmethod
+    def _refus(path: str, brut: Any, minimum: Optional[float],
+               maximum: Optional[float], integer: bool) -> ConfigError:
+        section = path.split(".")[0]
+        nature = "entier" if integer else "nombre"
+        bornes = ""
+        if minimum is not None and maximum is not None:
+            bornes = f" compris entre {minimum:g} et {maximum:g}"
+        elif minimum is not None:
+            bornes = f" supérieur ou égal à {minimum:g}"
+        elif maximum is not None:
+            bornes = f" inférieur ou égal à {maximum:g}"
+        return ConfigError(
+            f"Le paramètre \"{path}\" doit être un {nature}{bornes}. "
+            f"Valeur lue : \"{brut}\". Corrigez {section}.json.",
+            technical=f"invalid numeric setting: {path}={brut!r}",
+        )
 
     def as_dict(self) -> Dict[str, Any]:
         return copy.deepcopy(self._data)

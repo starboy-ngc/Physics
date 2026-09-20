@@ -31,7 +31,7 @@ from ..version import ENGINE_NAME, __version__
 from ..core import metrics, palette
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
-from ..core.errors import CompensationError
+from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
@@ -254,8 +254,20 @@ class Application(tk.Tk):
     # ------------------------------------------------------------ accueil
 
     def _splash_seconds(self) -> float:
-        return float(self.configuration.get("theme_parameters.splash_seconds",
-                                            self.SPLASH_SECONDS) or 0.0)
+        """Duree de l'ecran d'accueil, lue sans jamais empecher l'ouverture.
+
+        Ailleurs un parametre illisible arrete l'analyse, et c'est voulu :
+        un seuil faux fausse un resultat. Ici non. Une duree d'accueil est
+        cosmetique, et refuser d'ouvrir la fenetre parce qu'un fichier de
+        theme porte un texte a la place d'un nombre couterait plus a
+        l'utilisateur que le defaut ne lui coute.
+        """
+        try:
+            return self.configuration.number(
+                "theme_parameters.splash_seconds", self.SPLASH_SECONDS,
+                minimum=0.0, maximum=60.0)
+        except ConfigError:
+            return float(self.SPLASH_SECONDS)
 
     def _open_splash(self):
         """Ouvre l'ecran d'accueil, sauf si la configuration l'a mis a zero."""
@@ -541,6 +553,24 @@ class Application(tk.Tk):
             if chart.winfo_exists():
                 chart.redraw()
         self._frozen = []
+
+    def readprofile(self, baseName: str, className: str) -> None:
+        """Neutralise les « profils » de Tk. C'est une porte d'entree.
+
+        A la creation de sa fenetre, Tk lit dans le repertoire personnel
+        « .Tk.py », « .Tk.tcl » et leurs equivalents au nom du programme —
+        et les *execute*, l'un comme code Python, l'autre comme code Tcl.
+        Quiconque peut deposer un fichier dans le profil de l'utilisateur
+        fait donc executer ce qu'il veut au demarrage de l'outil.
+
+        CPython connait le defaut (issue 16248) et ne l'evite qu'avec le
+        drapeau « -E » de l'interpreteur — inutilisable ici, l'outil se
+        lancant d'un double-clic. La parade tient dans cette methode vide :
+        « tkinter.Tk.__init__ » appelle celle de la classe, donc celle-ci.
+
+        Verifie a l'execution : un « .Tk.py » depose dans un faux repertoire
+        personnel s'executait avant, ne s'execute plus.
+        """
 
     def destroy(self) -> None:
         """Ferme proprement : un releve de file encore en attente
@@ -1522,15 +1552,36 @@ class Application(tk.Tk):
             state += f" · {scope['description']}"
         if hidden:
             state += f" · {len(hidden)} vue(s) masquée(s)"
+        # Le controle qualite se lit la aussi. Un fichier qui porte des
+        # anomalies critiques — une sortie avant l'entree, un salaire
+        # absent — produit quand meme une analyse, mais l'utilisateur doit
+        # l'apprendre sans avoir a penser a ouvrir l'onglet « Qualite » :
+        # un chiffre faux qui a l'air juste est le pire des resultats.
+        critiques = (payload.get("quality") or {}).get("anomalies_critiques", 0)
+        if critiques:
+            state += f" · {critiques} anomalie(s) critique(s)"
         self._set_state(state)
-        if not hidden:
+
+        messages = []
+        if critiques:
+            messages.append(
+                f"{critiques} anomalie(s) critique(s) dans le fichier : les "
+                "indicateurs sont calculés sur des données que le contrôle "
+                "qualité signale. Ouvrez l'onglet « Qualité » avant de les "
+                "publier.")
+        if hidden:
+            listed = ", ".join(hidden)
+            messages.append(
+                f"{listed} : effectif insuffisant pour publier ces résultats. "
+                f"Les seuils de confidentialité s'appliquent à {headcount} "
+                "salariés ; élargissez le filtre pour les afficher.")
+        if not messages:
             self.notice.pack_forget()
             return
-        listed = ", ".join(hidden)
         self.notice.configure(
-            text=f"{listed} : effectif insuffisant pour publier ces résultats. "
-                 f"Les seuils de confidentialité s'appliquent à {headcount} "
-                 "salariés ; élargissez le filtre pour les afficher.")
+            text="\n".join(messages),
+            background=theme.CRIT_SOFT if critiques else theme.WARN_SOFT,
+            foreground=theme.CRIT if critiques else theme.WARN)
         self.notice.pack(fill="x", after=self.tabbar)
 
     def _kpi_font(self, values, width: int, per_row: int,
@@ -2361,7 +2412,10 @@ class Application(tk.Tk):
         block = self._segments[index]
         currency = block.get("currency", "EUR")
         split = bool(self.box_split.get())
-        self.boxplot.split = split
+        # Par la methode, non par l'attribut : elle existe pour cela, et un
+        # chemin que les tests parcourent sans que l'outil l'emprunte n'est
+        # pas un chemin teste.
+        self.boxplot.set_split(split)
         # Dedouble, les lignes viennent d'un autre calcul : le meme segment,
         # coupe en deux. Elles portent aussi le segment entier, pour que
         # l'echelle et le tri restent ceux du mode simple.
@@ -2376,8 +2430,9 @@ class Application(tk.Tk):
             rows, currency, reference=block.get("reference_median"),
             # Le seuil qui met un ecart en evidence est celui de la
             # configuration, pas un nombre ecrit dans le graphique.
-            alert=float(self.configuration.get(
-                "pay_equity_parameters.gap_alert_threshold", 5.0)))
+            alert=self.configuration.number(
+                "pay_equity_parameters.gap_alert_threshold",
+                5.0, minimum=0.0, maximum=100.0))
 
     # -------------------------------------------------------------- export
 

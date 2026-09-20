@@ -191,3 +191,57 @@ class TestWorkbookNumberWriting(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestImpossibleDatesNeverEnterAnAverage(unittest.TestCase):
+    """Une sortie anterieure a l'entree donne une anciennete negative.
+
+    Le controle qualite la signale depuis toujours ; rien n'empechait pour
+    autant le chiffre d'entrer dans l'« anciennete moyenne » publiee, ou
+    il ne se voyait plus. Une valeur impossible n'est pas une valeur : elle
+    est absente, et la ligne est marquee.
+    """
+
+    def _population(self):
+        import datetime as _dt
+
+        lignes = [make_row(0, hire_date=_dt.date(2020, 1, 1),
+                           leave_date=_dt.date(2015, 1, 1)),
+                  make_row(1, birth_date=_dt.date(2090, 1, 1))]
+        lignes += [make_row(index, tenure=5, age=40)
+                   for index in range(2, 14)]
+        return build_population(lignes)
+
+    def test_a_departure_before_the_arrival_leaves_no_seniority(self):
+        salaries = list(self._population())
+        self.assertIsNone(salaries[0].tenure_years)
+        self.assertIn("tenure:end_before_hire", salaries[0].issues)
+
+    def test_a_birth_date_in_the_future_leaves_no_age(self):
+        salaries = list(self._population())
+        self.assertIsNone(salaries[1].age_years)
+        self.assertIn("birth_date:after_reference", salaries[1].issues)
+
+    def test_the_published_averages_are_those_of_the_others(self):
+        config = make_config()
+        population = self._population()
+        anciennete = metrics.calculate_tenure_metrics(population, config)
+        age = metrics.calculate_age_metrics(population, config)
+        self.assertAlmostEqual(anciennete["tenure_mean"], 5.0, places=2)
+        self.assertAlmostEqual(age["age_mean"], 40.0, places=1)
+        # Les deux lignes restent comptees dans l'effectif : elles existent.
+        # Treize anciennetes connues sur quatorze : seule la ligne dont la
+        # sortie precede l'entree n'en a pas.
+        self.assertEqual(anciennete["tenure_known"], 13)
+        self.assertEqual(age["age_known"], 13)
+        self.assertEqual(len(population), 14)
+
+    def test_the_quality_report_still_names_the_lines(self):
+        """La valeur disparait du calcul, pas du rapport : c'est le controle
+        qualite qui dit quoi corriger."""
+        config = make_config()
+        population = self._population()
+        mapping = resolve_mapping(list(HEADERS), config)
+        rapport = run_quality_check(population, mapping, config).as_dict()
+        codes = {constat["code"] for constat in rapport["constats"]}
+        self.assertIn("leave_before_hire", codes)

@@ -118,6 +118,80 @@ class TestHtmlDocuments(HostileFileCase):
             self.assertNotIn("PRENOM0", document, name)
 
 
+def _display_answers() -> bool:
+    try:
+        import tkinter
+    except ImportError:                                # pragma: no cover
+        return False
+    if not os.environ.get("DISPLAY"):
+        return False
+    try:
+        racine = tkinter.Tk()
+    except tkinter.TclError:                           # pragma: no cover
+        return False
+    racine.destroy()
+    return True
+
+
+@unittest.skipUnless(_display_answers(),
+                     "aucun affichage disponible (test d'interface ignoré)")
+class TestTheWindowRefusesTheProfilesOfTk(unittest.TestCase):
+    """Tk execute, a la creation de sa fenetre, « ~/.Tk.py » et
+    « ~/.Tk.tcl » s'ils existent.
+
+    C'est du code Python et du code Tcl arbitraires, pris dans le repertoire
+    personnel : quiconque peut y deposer un fichier fait executer ce qu'il
+    veut au demarrage de l'outil. CPython connait le defaut (issue 16248) et
+    ne l'evite qu'avec le drapeau « -E », inutilisable pour un programme
+    lance d'un double-clic.
+
+    Le defaut a ete constate ici avant d'etre corrige : les deux fichiers
+    s'executaient.
+    """
+
+    def setUp(self):
+        self.maison = tempfile.mkdtemp()
+        self.temoin = os.path.join(self.maison, "execute.txt")
+        with open(os.path.join(self.maison, ".Tk.py"), "w",
+                  encoding="utf-8") as fichier:
+            fichier.write("open(%r, 'w').write('python')\n" % self.temoin)
+        with open(os.path.join(self.maison, ".Tk.tcl"), "w",
+                  encoding="utf-8") as fichier:
+            fichier.write('set f [open "%s.tcl" w]; puts $f "tcl"; close $f\n'
+                          % self.temoin)
+
+    def test_a_profile_dropped_in_the_home_directory_is_not_executed(self):
+        import tkinter
+
+        from compensation_analytics.ui.app import Application
+
+        ancien = os.environ.get("HOME")
+        os.environ["HOME"] = self.maison
+        try:
+            app = Application(splash=False)
+            app.update()
+            app.destroy()
+        finally:
+            if ancien is None:
+                del os.environ["HOME"]
+            else:
+                os.environ["HOME"] = ancien
+        self.assertFalse(os.path.exists(self.temoin),
+                         "le profil Python de Tk a été exécuté")
+        self.assertFalse(os.path.exists(self.temoin + ".tcl"),
+                         "le profil Tcl de Tk a été exécuté")
+
+    def test_the_guard_is_on_the_window_itself(self):
+        """La parade doit tenir dans la classe, et non dans un lanceur : un
+        outil qui ne se protege que lance d'une certaine facon ne se protege
+        pas."""
+        import tkinter
+
+        from compensation_analytics.ui.app import Application
+
+        self.assertIsNot(Application.readprofile, tkinter.Tk.readprofile)
+
+
 class TestWorkbook(HostileFileCase):
     def setUp(self):
         self.path = os.path.join(self.directory, "c.xlsx")
