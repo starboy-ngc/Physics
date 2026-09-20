@@ -106,7 +106,7 @@ python3 -m compensation_analytics.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 186 tests
+python3 -m unittest discover -s tests -t .     # 1087 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 
@@ -123,6 +123,8 @@ générateur pseudo-aléatoire à graine fixe.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — modules, décisions,
   sécurité, performance, feuille de route.
 - [`docs/GUIDE_UTILISATEUR.md`](docs/GUIDE_UTILISATEUR.md) — guide RH.
+- [`docs/AUDIT.md`](docs/AUDIT.md) — audit complet : ce qui a été
+  mesuré, les défauts trouvés et corrigés, ce qui reste fragile.
 
 ## Prérequis
 
