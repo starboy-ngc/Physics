@@ -102,8 +102,16 @@ class PayTransparencyCase(unittest.TestCase):
         return [item["category"] for item in self.app._categories]
 
     def select(self, position=0):
-        children = self.app.category_tree.get_children()
-        self.app.category_tree.selection_set(children[position])
+        """Retient une barre du graphique, comme un clic dessus.
+
+        La liste a cede la place a un graphique : la selection ne passe
+        plus par un « Treeview » mais par le graphique lui-meme. Ce que ces
+        tests verifient — quelle fiche s'ouvre, ce qu'elle montre — n'a pas
+        change.
+        """
+        self.app.gap_chart.select(
+            self.app._categories[position]["category"])
+        self.app._show_profile()
         self.app.update()
 
 

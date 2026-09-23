@@ -45,6 +45,12 @@ def note_font():
     return (_family, SIZE_SMALL)
 
 
+def _font(size: int, weight: str = "normal"):
+    """Police du module a une taille donnee, pour les canevas qui en
+    melangent plusieurs sur une meme ligne."""
+    return (_family, size, weight) if weight != "normal" else (_family, size)
+
+
 #: Delai avant de retracer apres un redimensionnement. Assez court pour que
 #: le trace paraisse suivre la fenetre, assez long pour absorber une rafale.
 RESIZE_DELAY = 60
@@ -1320,3 +1326,172 @@ class BandChart(tk.Frame):
             self.canvas.create_text(
                 width, middle, anchor="e", fill=theme.MUTED, font=note_font(),
                 text=f'{row.get("count", 0)}   {format_number(share, 1)} %')
+
+
+class GapChart(tk.Frame):
+    """Ou se joue l'ecart : une barre par categorie, de part et d'autre de zero.
+
+    Une liste de vingt-cinq lignes chiffrees demande de comparer de tete ;
+    des barres partant d'un axe commun donnent la forme d'un coup d'oeil —
+    lesquelles s'ecartent, dans quel sens, et de combien. C'est l'objet
+    qu'on vient chercher sur cette page, et il etait rendu en tableau.
+
+    Les barres divergent : a droite les categories ou les femmes sont moins
+    remunerees, a gauche l'inverse. Une categorie sous le seuil de
+    publication garde sa ligne — l'effacer laisserait croire qu'elle
+    n'existe pas — mais sans barre ni chiffre.
+    """
+
+    ROW = 30
+    LABEL = 210
+    COUNTS = 74
+    VALUE = 78
+    STAKE = 86
+
+    def __init__(self, master: tk.Widget, on_select=None):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.rows: List[Dict[str, Any]] = []
+        self.selected: Optional[str] = None
+        self._on_select = on_select
+        self._currency = "EUR"
+        self.canvas.bind("<Button-1>", self._clicked)
+        self.canvas.bind("<Motion>", self._hover)
+        redraw_on_resize(self, self.canvas)
+
+    # ------------------------------------------------------------ donnees
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]],
+                 currency: str = "EUR") -> None:
+        self.rows = [dict(row) for row in rows]
+        self._currency = currency
+        if self.selected not in {row.get("category") for row in self.rows}:
+            self.selected = (self.rows[0].get("category") if self.rows
+                             else None)
+        self.configure(height=max(len(self.rows), 1) * self.ROW + 10)
+        self.pack_propagate(False)
+        self.redraw()
+
+    def select(self, category: Optional[str]) -> None:
+        self.selected = category
+        self.redraw()
+
+    # ------------------------------------------------------------ souris
+
+    def _row_at(self, y: int) -> Optional[Dict[str, Any]]:
+        index = int((y - 4) // self.ROW)
+        if 0 <= index < len(self.rows):
+            return self.rows[index]
+        return None
+
+    def _clicked(self, event) -> None:
+        row = self._row_at(event.y)
+        if row is None:
+            return
+        self.selected = row.get("category")
+        self.redraw()
+        if self._on_select is not None:
+            self._on_select(self.selected)
+
+    def _hover(self, event) -> None:
+        row = self._row_at(event.y)
+        self.canvas.configure(cursor="hand2" if row is not None else "")
+
+    # ------------------------------------------------------------ trace
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        width = self.canvas.winfo_width()
+        if width < 200 or not self.rows:
+            return
+        piste = max(width - self.LABEL - self.COUNTS - self.VALUE
+                    - self.STAKE - 24, 40)
+        depart = self.LABEL + self.COUNTS
+
+        # L'axe zero se place ou les donnees le demandent. Pose au milieu,
+        # il gaspillait la moitie de la largeur des qu'aucun ecart n'etait
+        # negatif — le cas courant. Il ne se decale que s'il y a quelque
+        # chose a gauche de lui.
+        ecarts = [row.get("gap") or 0.0 for row in self.rows
+                  if row.get("published")]
+        bas = min(ecarts, default=0.0)
+        haut = max(ecarts, default=0.0)
+        bas, haut = min(bas, 0.0), max(haut, 0.0)
+        etendue = (haut - bas) or 1.0
+        zero = depart + piste * (-bas) / etendue
+        # Dix pixels de gouttiere avant la colonne des valeurs : sans
+        # elle, la barre la plus longue — toujours celle qu'on regarde en
+        # premier — venait toucher son propre chiffre.
+        echelle = max(piste - 10, 20) / etendue
+
+        self.canvas.create_line(zero, 2, zero, len(self.rows) * self.ROW + 4,
+                                fill=theme.LINE_STRONG)
+
+        for index, row in enumerate(self.rows):
+            haut = index * self.ROW + 4
+            milieu = haut + self.ROW / 2
+            choisi = row.get("category") == self.selected
+            if choisi:
+                self.canvas.create_rectangle(
+                    0, haut, width, haut + self.ROW - 2,
+                    fill=theme.ACCENT_SOFT, outline="")
+            self.canvas.create_text(
+                self.LABEL - 12, milieu, anchor="e",
+                text=_ellipsis(self.canvas, str(row.get("category", "")),
+                               self.LABEL - 20, _font(11)),
+                font=_font(11, "bold" if choisi else "normal"),
+                fill=theme.INK)
+            self.canvas.create_text(
+                self.LABEL + self.COUNTS - 14, milieu, anchor="e",
+                text=f'{row.get("female_count", 0)} / '
+                     f'{row.get("male_count", 0)}',
+                font=_font(10), fill=theme.MUTED)
+
+            if not row.get("published"):
+                self.canvas.create_text(
+                    zero + 10, milieu, anchor="w", text="masqué",
+                    font=_font(10), fill=theme.FAINT)
+                continue
+
+            ecart = row.get("gap") or 0.0
+            longueur = abs(ecart) * echelle
+            couleur = theme.FEMALE if ecart > 0 else theme.MALE
+            gauche = zero if ecart > 0 else zero - longueur
+            self.canvas.create_rectangle(
+                gauche, milieu - 7, gauche + longueur, milieu + 7,
+                fill=couleur, outline="")
+            # La valeur a sa propre colonne, a droite de la piste : ecrite
+            # au bout de la barre, elle passait dessus des que la barre
+            # etait longue — c'est-a-dire precisement sur les lignes qu'on
+            # regarde en premier.
+            self.canvas.create_text(
+                depart + piste + self.VALUE - 12, milieu, anchor="e",
+                text=f"{ecart:+.1f} %".replace(".", ","),
+                font=_font(11, "bold"), fill=theme.INK)
+            enjeu = row.get("at_stake")
+            if enjeu:
+                self.canvas.create_text(
+                    width - 8, milieu, anchor="e",
+                    text=_thousands_label(enjeu),
+                    font=_font(10), fill=theme.MUTED)
+
+
+def _thousands_label(value: float) -> str:
+    """Montant en milliers : « 126 k ». La precision n'aide pas a arbitrer."""
+    milliers = round(float(value) / 1000)
+    return f"{milliers:,.0f} k".replace(",", " ")
+
+
+def _ellipsis(canvas: tk.Canvas, text: str, room: int, font) -> str:
+    """Texte coupe a la largeur disponible, points de suspension compris."""
+    import tkinter.font as tkfont
+
+    mesure = tkfont.Font(root=canvas, font=font)
+    if mesure.measure(text) <= room:
+        return text
+    while text and mesure.measure(text + "…") > room:
+        text = text[:-1]
+    return text + "…"

@@ -571,19 +571,19 @@ class TestThePayTransparencyPage(unittest.TestCase):
             self.app.update()
             time.sleep(0.01)
 
-    def test_the_list_opens_on_its_first_line(self):
-        """Une page qui s'ouvre sur un panneau vide demande un clic pour ne
+    def test_the_chart_opens_on_its_first_bar(self):
+        """Une page qui s'ouvre sur une fiche vide demande un clic pour ne
         rien apprendre."""
-        self.assertTrue(self.app.category_tree.get_children())
-        self.assertTrue(self.app.category_tree.selection())
+        self.assertTrue(self.app.gap_chart.rows)
+        self.assertIsNotNone(self.app.gap_chart.selected)
         self.assertTrue(self.app.profile_title.cget("text"))
         self.assertIn("femmes", self.app.profile_subtitle.cget("text"))
 
-    def test_choosing_a_line_opens_that_profile(self):
-        lignes = self.app.category_tree.get_children()
-        self.assertGreaterEqual(len(lignes), 2)
+    def test_choosing_a_bar_opens_that_profile(self):
+        self.assertGreaterEqual(len(self.app.gap_chart.rows), 2)
         premier = self.app.profile_title.cget("text")
-        self.app.category_tree.selection_set(lignes[1])
+        self.app.gap_chart.select(self.app._categories[1]["category"])
+        self.app._show_profile()
         self.app.update()
         self.assertNotEqual(self.app.profile_title.cget("text"), premier)
         self.assertEqual(self.app.profile_title.cget("text"),
@@ -616,13 +616,11 @@ class TestThePayTransparencyPage(unittest.TestCase):
 
         noms = [key for key, _label in CATEGORY_ORDERS]
         self.assertEqual(noms[0], "stake")
-        avant = [self.app.category_tree.item(line, "values")[0]
-                 for line in self.app.category_tree.get_children()]
+        avant = [row["category"] for row in self.app.gap_chart.rows]
         self.app.category_order.current(noms.index("name"))
         self.app._show_categories()
         self.app.update()
-        apres = [self.app.category_tree.item(line, "values")[0]
-                 for line in self.app.category_tree.get_children()]
+        apres = [row["category"] for row in self.app.gap_chart.rows]
         self.assertEqual(apres, sorted(avant, key=str.lower))
 
     def test_crossing_two_axes_splits_the_list_and_the_header(self):
@@ -1846,13 +1844,11 @@ class TestThePayGapAxis(unittest.TestCase):
         self.app.category_choice.current(values.index("Grade"))
         self.app._show_categories()
         self.app.update()
-        by_grade = {self.app.category_tree.item(row)["values"][0]
-                    for row in self.app.category_tree.get_children()}
+        by_grade = {row["category"] for row in self.app.gap_chart.rows}
         self.app.category_choice.current(values.index("BU"))
         self.app._show_categories()
         self.app.update()
-        by_unit = {self.app.category_tree.item(row)["values"][0]
-                   for row in self.app.category_tree.get_children()}
+        by_unit = {row["category"] for row in self.app.gap_chart.rows}
         self.assertTrue(by_grade & {"G3", "G5", "G7"})
         self.assertTrue(by_unit & {"France", "DACH"})
         self.assertNotEqual(by_grade, by_unit)
@@ -2200,16 +2196,19 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
 
     def test_a_rendering_failure_is_reported_instead_of_freezing(self):
         """Le calcul avait abouti, seul le rendu avait echoue : la fenetre
-        restait sur « Analyse en cours » sans rien dire."""
-        from hr_insight.ui import app as module
+        restait sur « Analyse en cours » sans rien dire.
+
+        Le message etait une boite modale. Elle bloquait tout jusqu'a ce
+        que quelqu'un clique — sur un poste sans personne devant, plus rien
+        n'avancait, et un defaut d'affichage se muait en outil fige. C'est
+        desormais un bandeau : il dit la meme chose, reste visible, et
+        laisse la fenetre repondre.
+        """
         from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
 
         result = run_analysis(AnalysisRequest(
             source_path=self.source, reference_date=REFERENCE_DATE))
-        raised = []
-        original_error = module.messagebox.showerror
-        module.messagebox.showerror = lambda *a, **k: raised.append(a)
         original_render = self.app._render_results
         self.app._render_results = lambda: (_ for _ in ()).throw(
             RuntimeError("rendu casse"))
@@ -2219,9 +2218,11 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
             self.app._poll()
             self.app.update()
         finally:
-            module.messagebox.showerror = original_error
             self.app._render_results = original_render
-        self.assertTrue(raised, "aucun message d'erreur")
+        avis = self.app.notice.cget("text")
+        self.assertIn("n'ont pas pu être affichés", avis)
+        self.assertIn("RuntimeError", avis)
+        self.assertEqual(self.app.notice.winfo_manager(), "pack")
         self.assertNotIn("en cours", self.app.status.cget("text"))
 
 

@@ -823,3 +823,118 @@ class TestLabelShortening(ChartCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestTheGapChart(ChartCase):
+    """Le graphique des ecarts : une barre par categorie, un axe commun.
+
+    Il remplace une liste de vingt-cinq lignes chiffrees. Ce qu'une liste
+    donnait — la valeur exacte — il le garde ; ce qu'elle ne donnait pas —
+    la forme, le sens, la comparaison immediate — tient dans la longueur
+    des barres, et c'est cela qu'il faut verifier.
+    """
+
+    def lignes(self, gaps, publiees=None):
+        return [{"category": f"Poste {rang}", "female_count": 10 + rang,
+                 "male_count": 9, "gap": ecart, "at_stake": 1000 * (rang + 1),
+                 "published": True if publiees is None else publiees[rang]}
+                for rang, ecart in enumerate(gaps)]
+
+    def chart(self, gaps, publiees=None):
+        from hr_insight.ui.charts import GapChart
+
+        graphique = self.build(GapChart)
+        graphique.set_rows(self.lignes(gaps, publiees))
+        self.root.update()
+        return graphique
+
+    def barres(self, graphique):
+        """Les rectangles de barre, hors surlignage de la ligne retenue.
+
+        Le surlignage couvre toute la largeur ; une barre, jamais.
+        """
+        largeur = graphique.canvas.winfo_width()
+        boites = []
+        for item in self.items(graphique.canvas, "rectangle"):
+            x1, _y1, x2, _y2 = graphique.canvas.coords(item)
+            if x2 - x1 < largeur * 0.9:
+                boites.append((x1, x2))
+        return boites
+
+    def test_a_longer_gap_draws_a_longer_bar(self):
+        """C'est toute la raison d'etre du graphique : les longueurs se
+        comparent sans lire les chiffres."""
+        graphique = self.chart([5.0, 20.0, 10.0])
+        longueurs = [x2 - x1 for x1, x2 in self.barres(graphique)]
+        self.assertEqual(len(longueurs), 3)
+        self.assertGreater(longueurs[1], longueurs[2])
+        self.assertGreater(longueurs[2], longueurs[0])
+        # Les longueurs sont proportionnelles : un ecart double fait une
+        # barre double, sans quoi la comparaison visuelle ment.
+        self.assertAlmostEqual(longueurs[1] / longueurs[0], 4.0, places=1)
+
+    def test_a_negative_gap_goes_the_other_way(self):
+        """A droite les femmes sont moins remunerees, a gauche l'inverse.
+        Sans cela, le sens de l'ecart se perdrait."""
+        graphique = self.chart([10.0, -10.0])
+        (droite_x1, _), (gauche_x1, gauche_x2) = self.barres(graphique)
+        self.assertAlmostEqual(droite_x1, gauche_x2, places=0)
+        self.assertLess(gauche_x1, droite_x1)
+
+    def test_with_no_negative_gap_the_axis_sits_at_the_left(self):
+        """Pose au milieu, l'axe gaspillait la moitie de la largeur des
+        qu'aucun ecart n'etait negatif — le cas courant."""
+        etroit = self.chart([10.0, 20.0])
+        large = max(x2 - x1 for x1, x2 in self.barres(etroit))
+        centre = self.chart([10.0, 20.0, -20.0])
+        moitie = max(x2 - x1 for x1, x2 in self.barres(centre))
+        self.assertGreater(large, moitie * 1.5)
+
+    def test_a_masked_category_keeps_its_line_but_has_no_bar(self):
+        """L'effacer laisserait croire qu'elle n'existe pas ; lui donner
+        une barre publierait un ecart que le seuil protege."""
+        graphique = self.chart([10.0, 0.0, 20.0], publiees=[True, False, True])
+        self.assertEqual(len(self.barres(graphique)), 2)
+        self.assertIn("masqué", self.texts(graphique.canvas))
+        self.assertIn("Poste 1", " ".join(self.texts(graphique.canvas)))
+
+    def test_the_value_never_overlaps_its_own_bar(self):
+        """Ecrite au bout de la barre, la valeur passait dessus des que la
+        barre etait longue — c'est-a-dire sur la ligne qu'on regarde en
+        premier."""
+        graphique = self.chart([30.0, 5.0])
+        fin_barre = max(x2 for _x1, x2 in self.barres(graphique))
+        gauches = [graphique.canvas.bbox(item)[0]
+                   for item in self.items(graphique.canvas, "text")
+                   if "%" in graphique.canvas.itemcget(item, "text")]
+        self.assertTrue(gauches)
+        self.assertGreater(min(gauches), fin_barre)
+
+    def test_clicking_a_row_selects_it_and_calls_back(self):
+        from hr_insight.ui.charts import GapChart
+
+        retenus = []
+        graphique = self.build(lambda master: GapChart(master,
+                                                       on_select=retenus.append))
+        graphique.set_rows(self.lignes([10.0, 20.0, 30.0]))
+        self.root.update()
+        graphique.canvas.event_generate(
+            "<Button-1>", x=40, y=int(GapChart.ROW * 1.5) + 4)
+        self.root.update()
+        self.assertEqual(retenus, ["Poste 1"])
+        self.assertEqual(graphique.selected, "Poste 1")
+
+    def test_the_first_row_is_selected_when_nothing_is(self):
+        """Une page qui s'ouvre sur une fiche vide demande un clic pour ne
+        rien apprendre."""
+        graphique = self.chart([10.0, 20.0])
+        self.assertEqual(graphique.selected, "Poste 0")
+
+    def test_an_empty_chart_draws_nothing_and_does_not_raise(self):
+        from hr_insight.ui.charts import GapChart
+
+        graphique = self.build(GapChart)
+        graphique.set_rows([])
+        self.root.update()
+        self.assertEqual(self.items(graphique.canvas), [])

@@ -48,7 +48,7 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
 from . import theme
-from .charts import (BandChart, BoxPlotChart,
+from .charts import (BandChart, BoxPlotChart, GapChart,
                      HistogramChart, PyramidChart, QuartileChart,
                      ScatterChart)
 from .progress import LoadingBar
@@ -916,145 +916,137 @@ class Application(tk.Tk):
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
         self.legend_frame.bind("<Configure>", self._on_legend_resize)
 
-        # La page defile : les indicateurs de la directive, la repartition
-        # par quartile, le graphique des ecarts et son tableau ne tiennent
-        # plus en un ecran — le tableau se retrouvait ecrase a un pixel.
-        # La page se travaille poste par poste : a gauche la liste, classee
-        # par ce qui est en jeu, a droite la fiche du poste retenu. Un ecart
-        # de remuneration ne se decide pas sur une vue d'ensemble — il se
-        # regarde a l'endroit ou il se produit, avec ce qui l'entoure.
+        # La page des ecarts : une colonne, pleine largeur, quatre temps.
+        #
+        # Elle etait coupee en deux — reglages et liste a gauche, fiche a
+        # droite — et les trois zones se disputaient le regard. Or la
+        # question se pose dans un ordre : quel est l'ecart, d'ou vient-il,
+        # ou se joue-t-il, sur qui. Une colonne qui defile pose ces quatre
+        # questions l'une apres l'autre ; un ecran partage les pose toutes
+        # en meme temps.
+        #
+        # La liste chiffree devient un graphique : vingt-cinq ecarts en
+        # colonne demandent de comparer de tete, vingt-cinq barres partant
+        # d'un meme axe donnent la forme d'un coup d'oeil.
         equite = self.tabs["equite"]
+        self.equity_page = self._scrolling_page(equite)
 
-        # Bandeau : de quoi l'ecart global est fait, sur une seule ligne.
-        self.equity_frame = tk.Frame(equite, background=theme.CANVAS)
-        self.equity_frame.pack(fill="x", padx=18, pady=(14, 0))
-        # Qui l'on compte : une ligne sous le chiffre, jamais dans une
-        # phrase. Un effectif n'est pas un raisonnement.
-        self.equity_context = tk.Label(equite, text="",
+        # --- 1. Le constat ------------------------------------------------
+        self.equity_frame = tk.Frame(self.equity_page, background=theme.CANVAS)
+        self.equity_frame.pack(fill="x", padx=24, pady=(18, 0))
+        self.equity_context = tk.Label(self.equity_page, text="",
                                        background=theme.CANVAS,
                                        foreground=theme.FAINT,
                                        font=self.fonts.small, anchor="w")
-        self.equity_context.pack(anchor="w", padx=18, pady=(0, 2))
-        self.equity_note = tk.Label(equite, text="", background=theme.CANVAS,
+        self.equity_context.pack(anchor="w", padx=24, pady=(0, 2))
+        self.equity_note = tk.Label(self.equity_page, text="",
+                                    background=theme.CANVAS,
                                     foreground=theme.MUTED,
                                     font=self.fonts.small, justify="left",
-                                    anchor="w", wraplength=930)
-        self.equity_note.pack(anchor="w", padx=18, pady=(0, 12))
+                                    anchor="w", wraplength=980)
+        self.equity_note.pack(anchor="w", padx=24, pady=(0, 4))
 
-        self.equity_body = tk.Frame(equite, background=theme.CANVAS)
-        self.equity_body.pack(fill="both", expand=True)
-
-        # --- a gauche : les postes, classes par enjeu ---------------------
-        left = tk.Frame(self.equity_body, background=theme.CANVAS, width=360)
-        left.pack(side="left", fill="y")
-        left.pack_propagate(False)
-        # Une colonne de 360 px ne loge pas un intertitre et deux listes sur
-        # la meme ligne : mesure faite, « COMPARER PAR » y perdait ses trois
-        # dernieres lettres. Chaque reglage prend sa ligne.
-        self.category_heading = tk.Label(left, text="Postes",
+        # --- 2. Ou se joue l'ecart ---------------------------------------
+        self._equity_rule()
+        entete = tk.Frame(self.equity_page, background=theme.CANVAS)
+        entete.pack(fill="x", padx=24, pady=(0, 2))
+        self.category_heading = tk.Label(entete, text="Où se joue l'écart",
                                          background=theme.CANVAS,
                                          foreground=theme.INK,
                                          font=self.fonts.section, anchor="w")
-        self.category_heading.pack(anchor="w", padx=18, pady=(0, 6))
-        head = tk.Frame(left, background=theme.CANVAS)
-        head.pack(fill="x", padx=18, pady=(0, 3))
-        tk.Label(head, text="COMPARER PAR", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label,
-                 width=13, anchor="w").pack(side="left")
-        self.category_choice = ttk.Combobox(head, state="readonly", width=17,
-                                            font=self.fonts.small)
-        self.category_choice.pack(side="left")
-        self.category_choice.bind("<<ComboboxSelected>>",
-                                  lambda _e: self._show_categories())
-        # Deux axes valent parfois mieux qu'un : un comptable senior au
-        # grade G5 et un comptable senior au G7 ne font pas le meme travail,
-        # et les confondre dilue l'ecart qu'on cherche.
-        cross = tk.Frame(left, background=theme.CANVAS)
-        cross.pack(fill="x", padx=18, pady=(0, 3))
-        tk.Label(cross, text="CROISER AVEC", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label,
-                 width=13, anchor="w").pack(side="left")
-        self.category_cross = ttk.Combobox(cross, state="readonly", width=17,
-                                           font=self.fonts.small)
-        self.category_cross.pack(side="left")
-        self.category_cross.bind("<<ComboboxSelected>>",
-                                 lambda _e: self._show_categories())
-        order = tk.Frame(left, background=theme.CANVAS)
-        order.pack(fill="x", padx=18, pady=(0, 2))
-        tk.Label(order, text="TRIER PAR", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label,
-                 width=13, anchor="w").pack(side="left")
-        self.category_order = ttk.Combobox(order, state="readonly", width=17,
-                                           font=self.fonts.small,
-                                           values=[label for _key, label
-                                                   in CATEGORY_ORDERS])
+        self.category_heading.pack(side="left")
+        # Les trois reglages tiennent sur la ligne du titre : empiles dans
+        # une colonne, ils occupaient un tiers de la hauteur utile pour
+        # trois choix qu'on fait une fois.
+        self.category_order = self._axis_choice(entete, "trier par",
+                                                [label for _key, label
+                                                 in CATEGORY_ORDERS])
         self.category_order.current(0)
-        self.category_order.pack(side="left")
-        self.category_order.bind("<<ComboboxSelected>>",
-                                 lambda _e: self._show_categories())
-        self.category_title = tk.Label(left, text="", background=theme.CANVAS,
+        self.category_cross = self._axis_choice(entete, "croisé avec")
+        self.category_choice = self._axis_choice(entete, "par")
+
+        self.category_title = tk.Label(self.equity_page, text="",
+                                       background=theme.CANVAS,
                                        foreground=theme.FAINT,
                                        font=self.fonts.label, anchor="w")
-        self.category_title.pack(anchor="w", padx=18, pady=(4, 4))
-        # Quatre colonnes et non cinq : mesure faite, la liste ne dispose
-        # que de 312 px et cinq colonnes rognaient les intitules de poste.
-        # Les deux effectifs tiennent dans une seule colonne « 19 / 17 ».
-        self.category_tree = self._tree(
-            left, ("Poste", "F / H", "Écart", "Enjeu"),
-            (126, 58, 62, 60))
-        self.category_tree.bind("<<TreeviewSelect>>",
-                                lambda _e: self._show_profile())
+        self.category_title.pack(anchor="w", padx=24, pady=(2, 4))
+        self.gap_chart = GapChart(self.equity_page,
+                                  on_select=self._on_category_selected)
+        self.gap_chart.pack(fill="x", padx=24, pady=(0, 6))
 
-        # --- a droite : la fiche du poste retenu -------------------------
-        self.profile_page = self._scrolling_page(self.equity_body)
-        self.profile_page.master.pack_configure(side="left", fill="both",
-                                                expand=True)
-        self.profile_title = tk.Label(self.profile_page, text="",
+        # --- 3. La fiche de la categorie retenue -------------------------
+        self._equity_rule()
+        self.profile_title = tk.Label(self.equity_page, text="",
                                       background=theme.CANVAS,
                                       foreground=theme.INK,
                                       font=self.fonts.title, anchor="w")
-        self.profile_title.pack(anchor="w", padx=18, pady=(2, 0))
-        self.profile_subtitle = tk.Label(self.profile_page, text="",
+        self.profile_title.pack(anchor="w", padx=24, pady=(2, 0))
+        self.profile_subtitle = tk.Label(self.equity_page, text="",
                                          background=theme.CANVAS,
                                          foreground=theme.MUTED,
                                          font=self.fonts.body, anchor="w")
-        self.profile_subtitle.pack(anchor="w", padx=18, pady=(0, 10))
-        self.profile_kpis = tk.Frame(self.profile_page, background=theme.CANVAS)
+        self.profile_subtitle.pack(anchor="w", padx=24, pady=(0, 10))
+        self.profile_kpis = tk.Frame(self.equity_page,
+                                     background=theme.CANVAS)
         self.profile_kpis.pack(fill="x")
-        # Les deux sexes cote a cote, variable par variable : c'est la
-        # comparaison elle-meme, et elle ne tient pas dans un seul chiffre.
-        # Quatre colonnes : mesure faite, la fiche dispose de 567 px et six
-        # colonnes rognaient les montants. Les valeurs montrees sont les
-        # moyennes, celles sur lesquelles la directive calcule l'ecart ; les
-        # medianes figurent dans le bandeau et dans la restitution.
+        # Pleine largeur : la fiche disposait de 567 px et rognait les
+        # montants ; elle en a maintenant le double, et les colonnes
+        # respirent.
         self.profile_tree = self._tree(
-            self.profile_page,
+            self.equity_page,
             ("Variable", "Femmes", "Hommes", "Écart"),
-            (170, 130, 130, 137), expand=False, height=7)
-        self.profile_note = tk.Label(self.profile_page, text="",
+            (300, 220, 220, 220), expand=False, height=7)
+        self.profile_note = tk.Label(self.equity_page, text="",
                                      background=theme.CANVAS,
                                      foreground=theme.MUTED,
                                      font=self.fonts.small, justify="left",
-                                     anchor="w", wraplength=520)
-        self.profile_note.pack(anchor="w", padx=18, pady=(0, 12))
+                                     anchor="w", wraplength=980)
+        self.profile_note.pack(anchor="w", padx=24, pady=(2, 10))
 
-        # Les indicateurs a publier, sous la fiche : ils portent sur
-        # l'ensemble et non sur le poste retenu.
-        self.quartile_block = tk.Frame(self.profile_page,
+        # --- 4. La repartition d'ensemble --------------------------------
+        self._equity_rule()
+        self.quartile_block = tk.Frame(self.equity_page,
                                        background=theme.CANVAS)
         self.quartile_block.pack(fill="x")
         tk.Label(self.quartile_block,
                  text="Répartition par quartile de rémunération",
                  background=theme.CANVAS, foreground=theme.INK,
-                 font=self.fonts.section).pack(anchor="w", padx=18,
-                                               pady=(2, 8))
+                 font=self.fonts.section).pack(anchor="w", padx=24,
+                                               pady=(0, 8))
         self.quartile_chart = QuartileChart(self.quartile_block)
-        self.quartile_chart.pack(fill="x", padx=18, pady=(0, 10))
+        self.quartile_chart.pack(fill="x", padx=24, pady=(0, 10))
         self.compliance_note = tk.Label(
-            self.profile_page, text="", background=theme.CANVAS,
+            self.equity_page, text="", background=theme.CANVAS,
             foreground=theme.MUTED, font=self.fonts.small, justify="left",
-            anchor="w", wraplength=520)
-        self.compliance_note.pack(anchor="w", padx=18, pady=(0, 16))
+            anchor="w", wraplength=980)
+        self.compliance_note.pack(anchor="w", padx=24, pady=(0, 24))
+
+    def _equity_rule(self) -> None:
+        """Un filet entre deux temps de la page.
+
+        Il porte la structure a lui seul : sans lui, quatre sections
+        empilees se lisent comme une seule longue page.
+        """
+        tk.Frame(self.equity_page, background=theme.LINE,
+                 height=1).pack(fill="x", padx=24, pady=(14, 12))
+
+    def _axis_choice(self, parent: tk.Frame, label: str,
+                     values: Optional[List[str]] = None) -> ttk.Combobox:
+        """Un reglage d'axe, pose a droite de la ligne de titre."""
+        bloc = tk.Frame(parent, background=theme.CANVAS)
+        bloc.pack(side="right", padx=(16, 0))
+        choix = ttk.Combobox(bloc, state="readonly", width=16,
+                             font=self.fonts.small,
+                             values=values or [])
+        choix.pack(side="right")
+        tk.Label(bloc, text=label.upper(), background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label,
+                 anchor="e").pack(side="right", padx=(0, 7))
+        choix.bind("<<ComboboxSelected>>", lambda _e: self._show_categories())
+        return choix
+
+    def _on_category_selected(self, _category: Optional[str]) -> None:
+        self._show_profile()
 
     @staticmethod
     def _scroll_region(canvas: tk.Canvas) -> None:
@@ -1474,11 +1466,20 @@ class Application(tk.Tk):
             # abouti, seul le rendu avait echoue. Elle doit se voir.
             log_event("interface", "render", status="ERREUR",
                       detail=type(error).__name__)
-            messagebox.showerror(
-                "Affichage impossible",
-                "Les résultats ont été calculés mais n'ont pas pu être "
-                f"affichés ({type(error).__name__}). Les documents restent "
-                "productibles.")
+            # Un bandeau dans la fenetre, non une boite modale. Elle
+            # bloquait tout jusqu'a ce que quelqu'un clique : sur un poste
+            # sans personne devant — un banc d'essai, une session laissee
+            # ouverte — plus rien n'avancait, et le defaut d'affichage se
+            # muait en outil fige. Le bandeau dit la meme chose, reste
+            # visible, et laisse la fenetre repondre.
+            self.notice.configure(
+                text="Les résultats ont été calculés mais n'ont pas pu être "
+                     f"affichés ({type(error).__name__}). Les documents "
+                     "restent productibles : utilisez « Produire les "
+                     "documents ».",
+                background=theme.CRIT_SOFT, foreground=theme.CRIT)
+            if not self.notice.winfo_manager():
+                self.notice.pack(fill="x", after=self.tabbar)
             self._set_state("Analyse terminée · affichage incomplet.")
         # La barre s'efface une fois les resultats poses, et non avant : la
         # derniere chose qu'on voit d'elle est un trait plein.
@@ -1930,11 +1931,13 @@ class Application(tk.Tk):
                      wraplength=760, justify="left").pack(anchor="w", padx=18,
                                                           pady=(8, 0))
             self.equity_note.configure(text="")
+            self.equity_context.configure(text="")
             self.compliance_note.configure(text="")
             self.quartile_block.pack_forget()
             self.category_title.configure(text="")
             self.quartile_chart.set_rows([])
-            self._fill(self.category_tree, [])
+            self.gap_chart.set_rows([])
+            self._clear_profile("")
             return
 
         pay = equity["pay"]
@@ -2185,20 +2188,25 @@ class Application(tk.Tk):
                                        self.result.config, axe)
 
     def _show_categories(self) -> None:
-        """La liste de gauche : un poste par ligne, classee par enjeu."""
+        """Le graphique : une barre par categorie, classee par enjeu.
+
+        Vingt-cinq ecarts en colonne demandaient de comparer de tete.
+        Partant d'un meme axe, ils donnent la forme d'un coup d'oeil —
+        lesquels s'ecartent, dans quel sens, et de combien.
+        """
         block = self._category_block()
         if block is None:
             return
         self._decomposed = block
         label = block.get("category_label") or "Poste"
-        self.category_heading.configure(text=label)
-        self.category_tree.heading("#1", text=label)
+        self.category_heading.configure(text=f"Où se joue l'écart · {label}")
         currency = self.result.payload["salary"].get("currency", "EUR")
 
         warning = block.get("category_warning")
         if warning:
             self.category_title.configure(text="")
-            self._fill(self.category_tree, [])
+            self._categories = []
+            self.gap_chart.set_rows([], currency)
             self._clear_profile(warning)
             return
 
@@ -2206,28 +2214,23 @@ class Application(tk.Tk):
         self._categories = categories
         above = block.get("categories_above_threshold", 0)
         self.category_title.configure(
-            text=f"· {above}/{len(categories)} AU-DELÀ DU SEUIL · ENJEU EN "
-                 "MILLIERS")
-        rows = []
-        for item in categories:
-            rows.append((item["category"],
-                         f'{item["female_count"]} / {item["male_count"]}',
-                         _signed_percent(item.get("mean_gap"))
-                         if item.get("published") else "masqué",
-                         _thousands(item.get("at_stake"))
-                         if item.get("published") else "—"))
-        self._fill(self.category_tree, rows,
-                   flagged=lambda position: categories[position]["above_threshold"])
-        # Les trois chiffres du haut portent sur l'axe : changer d'axe sans
-        # les refaire laissait l'ecart d'un axe au-dessus de la liste d'un
+            text=f"{above} SUR {len(categories)} AU-DELÀ DU SEUIL DE "
+                 "PUBLICATION · À DROITE, LES FEMMES SONT MOINS RÉMUNÉRÉES "
+                 "· ENJEU EN MILLIERS")
+        self.gap_chart.set_rows(
+            [{"category": item["category"],
+              "female_count": item["female_count"],
+              "male_count": item["male_count"],
+              "gap": item.get("mean_gap"),
+              "at_stake": item.get("at_stake"),
+              "published": bool(item.get("published"))}
+             for item in categories], currency)
+        # Les chiffres du haut portent sur l'axe : changer d'axe sans les
+        # refaire laissait l'ecart d'un axe au-dessus du graphique d'un
         # autre.
         self._show_decomposition(block)
-        # Le premier de la liste est ouvert d'emblee : une page qui s'ouvre
-        # sur un panneau vide demande un clic pour ne rien apprendre.
-        children = self.category_tree.get_children()
-        if children:
-            self.category_tree.selection_set(children[0])
-            self.category_tree.focus(children[0])
+        # La premiere barre est ouverte d'emblee : une page qui s'ouvre sur
+        # une fiche vide demande un clic pour ne rien apprendre.
         self._show_profile()
 
     def _ordered_categories(self, categories):
@@ -2252,13 +2255,12 @@ class Application(tk.Tk):
     # ------------------------------------------------ fiche d'un poste
 
     def _selected_category(self) -> Optional[str]:
-        selection = self.category_tree.selection()
-        if not selection:
-            return None
-        position = self.category_tree.index(selection[0])
-        if 0 <= position < len(self._categories):
-            return self._categories[position]["category"]
-        return None
+        """La categorie retenue sur le graphique.
+
+        `GapChart` retient la premiere de la liste quand rien n'est
+        choisi : la fiche a toujours un sujet.
+        """
+        return self.gap_chart.selected
 
     def _clear_profile(self, message: str = "") -> None:
         self.profile_title.configure(text="")
