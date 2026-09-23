@@ -90,7 +90,7 @@ n'affecte que `metrics.py`.
 | Aucun code dynamique | Aucun `eval`/`exec` ; les filtres sont des structures de données interprétées par comparaison |
 | Aucun droit administrateur | Écriture limitée au dossier de sortie choisi par l'utilisateur ; aucune écriture registre |
 | Fichiers temporaires | Le moteur n'en crée pas ; il écrit uniquement les livrables demandés |
-| Données personnelles | Jamais dans les logs ni dans les messages d'erreur ; export individuel désactivé par défaut ; identifiants hachés SHA-256 |
+| Données personnelles | Jamais dans les logs ni dans les messages d'erreur ; identifiants hachés SHA-256 ; le classeur porte les valeurs individuelles sous référence anonyme, et le dit en tête de sa Synthèse |
 | Dépendances | Zéro. `pip install` n'est jamais requis |
 
 ## 6. Confidentialité — petits effectifs
@@ -218,9 +218,16 @@ en flux sans matérialiser le tableau brut, pré-agrégation par segment.
 
 ## 10 bis. Empreinte des livrables
 
-L'export Excel et le manifeste restent de taille modeste quel que soit
-l'effectif : ils contiennent des agrégats, pas la population — sauf activation
-explicite de `export_parameters.include_individual_data`.
+Le manifeste reste de taille modeste quel que soit l'effectif. Le classeur,
+lui, porte la population : c'est ce qui permet d'en refaire les calculs. Deux
+seuils l'empêchent de devenir inouvrable — `source_max_rows` (50 000) au-delà
+duquel le fichier importé n'est plus recopié, et `control_max_rows` (20 000)
+au-delà duquel le contrôle par segment n'est plus posé, chacune de ses
+formules relisant toute la population. À 60 000 lignes, le classeur se
+construit en 3 secondes.
+
+Deux réglages rendent le classeur purement agrégé :
+`export_parameters.include_individual_data` et `include_source_file`.
 
 ## 9 bis. Restitutions paysage
 

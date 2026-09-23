@@ -135,8 +135,15 @@ class TestEveryFormulaHoldsUp(ControlCase):
                   if ligne and str(ligne[0]).startswith("<2 ans — effectif")]
         self.assertTrue(lignes, "la tranche « <2 ans » doit être peuplée")
         formule = lignes[0][2]
-        self.assertNotIn('"<2 ans"', formule.expression.replace('="<2 ans"',
-                                                                ""))
+        # Le libelle ne doit apparaitre que comme texte compare, jamais
+        # comme critere qu'un tableur interpreterait. Les deux formes qui
+        # comparent — « =\"<2 ans\" » et « EXACT(plage,\"<2 ans\") » —
+        # sont retirees ; s'il en reste une occurrence, c'est qu'elle sert
+        # de critere.
+        reste = formule.expression.replace('="<2 ans"', "")
+        reste = reste.replace(',"<2 ans")', ")")
+        self.assertNotIn('"<2 ans"', reste)
+        self.assertIn("EXACT(", formule.expression)
         self.assertEqual(
             float(self.tableur.evaluate(formule.expression, "Contrôle")),
             float(lignes[0][1]))
@@ -350,12 +357,41 @@ class TestTheControlIsAnExplicitChoice(ControlCase):
                           if name != "Fichier importé")
         self.assertNotIn("NOM0", autres)
 
-    def test_the_shipped_setting_stays_off(self):
+    def test_the_shipped_setting_now_poses_the_control(self):
+        """Le reglage a change de sens, et c'est un arbitrage assume.
+
+        Le classeur a une raison d'etre precise : permettre a une equipe
+        C&B de refaire chaque indicateur. Livre sans ses onglets de
+        controle, il demandait de croire l'outil sur parole — et une
+        verification qui suppose d'abord de trouver un fichier de
+        configuration n'est pas une verification qu'on fait.
+        """
         from hr_insight.core.config import DEFAULTS
 
-        self.assertFalse(DEFAULTS["export_parameters"]["include_source_file"])
-        self.assertFalse(
+        self.assertTrue(DEFAULTS["export_parameters"]["include_source_file"])
+        self.assertTrue(
             DEFAULTS["export_parameters"]["include_individual_data"])
+
+    def test_the_workbook_says_what_it_carries(self):
+        """La contrepartie du controle est un classeur qui porte des noms.
+        Il doit le dire en tete, faute de quoi la difference entre un envoi
+        delibere et un envoi distrait n'existe plus."""
+        synthese = " ".join(str(cell) for ligne in
+                            self.named(self.sheets())["Synthèse"]
+                            for cell in ligne)
+        self.assertIn("CE QUE CONTIENT CE CLASSEUR", synthese)
+        self.assertIn("Fichier importé", synthese)
+        self.assertIn("include_individual_data", synthese)
+
+    def test_the_settings_still_withhold_everything(self):
+        """La garantie durable n'est pas le defaut, c'est le reglage : a
+        false, aucune ligne individuelle ne sort."""
+        sheets = self.named(self.sheets(overrides={
+            "export_parameters.include_individual_data": False,
+            "export_parameters.include_source_file": False}))
+        for onglet in ("Données individuelles", "Fichier importé",
+                       "Contrôle", "Contrôle segments"):
+            self.assertNotIn(onglet, sheets)
 
 
 class TestALargePopulationStaysOpenable(ControlCase):

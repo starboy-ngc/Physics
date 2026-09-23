@@ -294,11 +294,40 @@ def _compare(operator: str, left: Any, right: Any) -> Any:
     return {"<": a < b, "<=": a <= b, ">": a > b, ">=": a >= b}[operator]
 
 
+def _exact(left: Any, right: Any) -> bool:
+    """EXACT d'un tableur : meme texte, casse comprise."""
+    if left is None and right is None:
+        return True
+    if left is None or right is None:
+        return False
+    return str(left) == str(right)
+
+
 def _same(left: Any, right: Any) -> bool:
+    """Egalite du tableur.
+
+    « left or "" » ecrasait le zero : en Python, 0 est faux, donc un
+    montant nul se comparait comme une cellule vide et « 0<>"" » rendait
+    faux. Un tableur repond vrai — verifie sous LibreOffice —, et la
+    difference n'est pas academique : le masque d'une formule matricielle
+    ecartait les remunerations variables nulles, et la moyenne de controle
+    sortait fausse sur les seuls fichiers ou quelqu'un touche zero de
+    variable. L'instrument de verification se trompait, precisement la ou
+    il servait.
+    """
     if isinstance(left, str) or isinstance(right, str):
-        return (str(left or "").strip().casefold()
-                == str(right or "").strip().casefold())
+        return _texte(left) == _texte(right)
     return _scalar(left) == _scalar(right)
+
+
+def _texte(value: Any) -> str:
+    """Ecriture d'une valeur pour une comparaison textuelle.
+
+    None et la chaine vide sont vides ; zero ne l'est pas.
+    """
+    if value is None:
+        return ""
+    return str(value).strip().casefold()
 
 
 _CRITERION_RE = re.compile(r"^(<>|<=|>=|<|>|=)?(.*)$", re.DOTALL)
@@ -386,6 +415,14 @@ def _apply(name: str, arguments: List[Any]) -> Any:
         import datetime as _dt
         return (_dt.date(int(arguments[0]), int(arguments[1]),
                          int(arguments[2])) - _dt.date(1899, 12, 30)).days
+    if name == "EXACT":
+        # Comparaison sensible a la casse : « = » ne l'est pas dans un
+        # tableur, et le decoupage de l'outil l'est. Sur une plage, la
+        # fonction rend un tableau, comme dans un tableur.
+        gauche, droite = arguments[0], arguments[1]
+        if isinstance(gauche, list):
+            return [_exact(item, droite) for item in gauche]
+        return _exact(gauche, droite)
     if name == "COUNT":
         return float(len(_numbers(arguments[0])))
     if name == "COUNTA":

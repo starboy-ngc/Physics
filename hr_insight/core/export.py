@@ -262,6 +262,11 @@ TENURE_COLUMN = "Ancienneté"
 #: export.
 FTE_COLUMN = "Temps de travail"
 
+#: Au-dela, une formule cesse d'etre lisible — et Excel la refuse vers
+#: 8 192 caracteres. On prefere alors le dire plutot que d'ecrire une
+#: formule qui ne s'ouvrira pas.
+FORMULA_MAX_CHARS = 6000
+
 #: Libelles des colonnes de remuneration, par champ du modele.
 _MONEY_COLUMNS = (("base_salary", "Salaire de base"),
                   ("variable_pay", "Variable"),
@@ -343,7 +348,16 @@ def _dimension_value(employee, field_name: str) -> Any:
 
 
 def _age_cell(employee, reference, cellule: str) -> Any:
-    """Age : le nombre de jours ecoules, divise par la duree de l'annee."""
+    """Age : le nombre de jours ecoules, divise par la duree de l'annee.
+
+    Sans valeur cote moteur, pas de formule cote classeur. Une naissance
+    posterieure a la date de reference est une date impossible : le moteur
+    la retire de ses moyennes, et une formule qui la calculerait quand
+    meme ferait dire au controle autre chose qu'a l'outil — sur la feuille
+    meme qui sert a le verifier.
+    """
+    if employee.age_years is None:
+        return None
     if not employee.birth_date or reference is None:
         return employee.age_years
     return fx.cell(f"({_date_call(reference)}-{cellule})"
@@ -353,7 +367,16 @@ def _age_cell(employee, reference, cellule: str) -> Any:
 
 def _tenure_cell(employee, reference, entree: str, sortie: str) -> Any:
     """Anciennete : jusqu'a la sortie si elle existe, sinon jusqu'a la date
-    de reference. La formule porte la regle plutot que son resultat."""
+    de reference. La formule porte la regle plutot que son resultat.
+
+    Meme reserve que pour l'age : une sortie anterieure a l'entree donne
+    une anciennete negative, que le moteur ecarte. La formule doit
+    l'ecarter aussi, sans quoi la mediane du classeur porte sur deux
+    valeurs de plus que celle de l'outil — c'est exactement l'ecart que
+    LibreOffice a fait apparaitre.
+    """
+    if employee.tenure_years is None:
+        return None
     if not employee.hire_date or reference is None:
         return employee.tenure_years
     fin = f'IF({sortie}="",{_date_call(reference)},{sortie})'
@@ -507,6 +530,8 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
         poser("Âge médian", population.get("age_median"),
               ledger.median(AGE_COLUMN))
     if ledger.has(TENURE_COLUMN):
+        poser("Ancienneté connue", population.get("tenure_known"),
+              f"COUNT({ledger.range(TENURE_COLUMN)})")
         poser("Ancienneté moyenne", population.get("tenure_mean"),
               ledger.average(TENURE_COLUMN))
         poser("Ancienneté médiane", population.get("tenure_median"),
@@ -569,6 +594,9 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
         # ligne : c'est la seule facon de rendre l'indicateur refaisable, et
         # un indicateur publie sans sa formule n'a rien a faire dans ce
         # classeur.
+        poser("Couverture (%)", salary.get("coverage"),
+              f"{ledger.count(salaire)}"
+              f"/{ledger.rows_matching([])}*100")
         plein = salary.get("full_time") or {}
         if ledger.has(FTE_COLUMN) and not plein.get("masked"):
             poser("Effectif au temps de travail connu",
@@ -580,6 +608,11 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
                   ledger.per_full_time(salaire, FTE_COLUMN, "AVERAGE"))
             poser("Médiane à temps plein", plein.get("median"),
                   ledger.per_full_time(salaire, FTE_COLUMN, "MEDIAN"))
+            poser("Couverture du temps plein (%)", plein.get("coverage"),
+                  f'SUMPRODUCT(--({ledger.range(salaire)}<>""),'
+                  f'--({ledger.range(FTE_COLUMN)}<>""),'
+                  f'--({ledger.range(FTE_COLUMN)}>0))'
+                  f"/{ledger.count(salaire)}*100")
         dispersion = salary.get("dispersion") or {}
         for label, key, expression in (
             ("Q3 - Q1", "interquartile_range",
@@ -735,6 +768,92 @@ def _rows_control_segments(ledger: fx.Ledger, analysis: Dict[str, Any],
     return rows
 
 
+def _money_column(field_name: str, ledger: fx.Ledger) -> Optional[str]:
+    """Libelle de colonne d'un champ de remuneration, s'il est au classeur."""
+    for champ, label in _MONEY_COLUMNS:
+        if champ == field_name and ledger.has(label):
+            return label
+    return None
+
+
+def _poser_couple(poser, ledger: fx.Ledger, categorie: str, colonne: str,
+                  bloc: Dict[str, Any], femme, homme) -> None:
+    """Moyennes, medianes, ecarts et effectifs d'un couple femmes / hommes.
+
+    Le meme jeu de six lignes revient pour la remuneration, pour la part
+    variable et pour le temps plein : ecrit une fois, il ne peut pas
+    diverger d'un bloc a l'autre.
+    """
+    poser(categorie, "Moyenne femmes", bloc.get("female_mean"),
+          ledger.average(colonne, [femme]))
+    poser(categorie, "Moyenne hommes", bloc.get("male_mean"),
+          ledger.average(colonne, [homme]))
+    poser(categorie, "Écart moyen (%)", bloc.get("mean_gap"),
+          f"({ledger.average(colonne, [homme])}"
+          f"-{ledger.average(colonne, [femme])})"
+          f"/{ledger.average(colonne, [homme])}*100")
+    poser(categorie, "Médiane femmes", bloc.get("female_median"),
+          ledger.median(colonne, [femme]))
+    poser(categorie, "Médiane hommes", bloc.get("male_median"),
+          ledger.median(colonne, [homme]))
+    poser(categorie, "Écart médian (%)", bloc.get("median_gap"),
+          f"({ledger.median(colonne, [homme])}"
+          f"-{ledger.median(colonne, [femme])})"
+          f"/{ledger.median(colonne, [homme])}*100")
+    poser(categorie, "Effectif femmes", bloc.get("female_count"),
+          ledger.count(colonne, [femme]))
+    poser(categorie, "Effectif hommes", bloc.get("male_count"),
+          ledger.count(colonne, [homme]))
+
+
+def _poser_couple_temps_plein(poser, ledger: fx.Ledger, salaire: str,
+                              bloc: Dict[str, Any], femme, homme) -> None:
+    """Le meme couple, chaque montant divise par le temps de travail."""
+    def moyenne(critere):
+        return ledger.per_full_time(salaire, FTE_COLUMN, "AVERAGE", [critere])
+
+    def mediane(critere):
+        return ledger.per_full_time(salaire, FTE_COLUMN, "MEDIAN", [critere])
+
+    def effectif(critere):
+        return (f'SUMPRODUCT(--({ledger.range(salaire)}<>""),'
+                f'--({ledger.range(FTE_COLUMN)}<>""),'
+                f'--({ledger.range(FTE_COLUMN)}>0),'
+                f'--({ledger.range(critere[0])}="{critere[1]}"))')
+
+    categorie = "À temps plein"
+    poser(categorie, "Moyenne femmes", bloc.get("female_mean"), moyenne(femme))
+    poser(categorie, "Moyenne hommes", bloc.get("male_mean"), moyenne(homme))
+    poser(categorie, "Écart moyen (%)", bloc.get("mean_gap"),
+          f"({moyenne(homme)}-{moyenne(femme)})/{moyenne(homme)}*100")
+    poser(categorie, "Médiane femmes", bloc.get("female_median"),
+          mediane(femme))
+    poser(categorie, "Médiane hommes", bloc.get("male_median"), mediane(homme))
+    poser(categorie, "Écart médian (%)", bloc.get("median_gap"),
+          f"({mediane(homme)}-{mediane(femme)})/{mediane(homme)}*100")
+    poser(categorie, "Effectif femmes", bloc.get("female_count"),
+          effectif(femme))
+    poser(categorie, "Effectif hommes", bloc.get("male_count"),
+          effectif(homme))
+    poser(categorie, "Couverture (%)", bloc.get("coverage"),
+          f"({effectif(femme)}+{effectif(homme)})"
+          f"/({ledger.count(salaire, [femme])}"
+          f"+{ledger.count(salaire, [homme])})*100")
+
+
+def _ligne_de(rows: List[List[Any]], label: str,
+              categorie: str = "Ensemble") -> int:
+    """Numero de ligne d'un indicateur deja pose, pour qu'on puisse le citer.
+
+    Une formule qui recite un calcul entier est illisible ; une formule qui
+    cite la cellule d'ou vient le chiffre se verifie d'un coup d'oeil.
+    """
+    for index, ligne in enumerate(rows, start=1):
+        if len(ligne) >= 2 and ligne[0] == categorie and ligne[1] == label:
+            return index
+    return 0
+
+
 def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
                          config: Configuration) -> List[List[Any]]:
     """Les ecarts de la directive, refaits categorie par categorie.
@@ -767,6 +886,11 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
                      expression])
 
     femme, homme = (SEX_COLUMN, "Femme"), (SEX_COLUMN, "Homme")
+    #: Lignes des ecarts de categorie et des effectifs qui les ponderent.
+    #: « A categorie comparable » est leur moyenne ponderee : la poser en
+    #: formule la rend verifiable au lieu de renvoyer a un autre onglet.
+    lignes_ecart: List[int] = []
+    lignes_poids: List[int] = []
     ensemble = equity.get("pay") or {}
     poser("Ensemble", "Moyenne femmes", ensemble.get("female_mean"),
           ledger.average(salaire, [femme]))
@@ -784,6 +908,32 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
           f"({ledger.median(salaire, [homme])}"
           f"-{ledger.median(salaire, [femme])})"
           f"/{ledger.median(salaire, [homme])}*100")
+    poser("Ensemble", "Effectif femmes", ensemble.get("female_count"),
+          ledger.count(salaire, [femme]))
+    poser("Ensemble", "Effectif hommes", ensemble.get("male_count"),
+          ledger.count(salaire, [homme]))
+
+    # Part variable : c'est l'indicateur c) de la directive, et il n'avait
+    # aucune formule. Un ecart publie au titre d'un texte doit se refaire
+    # comme les autres.
+    variable = equity.get("variable") or {}
+    colonne_variable = _money_column("variable_pay", ledger)
+    if variable.get("published") and colonne_variable is not None:
+        _poser_couple(poser, ledger, "Part variable", colonne_variable,
+                      variable, femme, homme)
+
+    # Meme chose a temps de travail egal. Le bloc etait publie a l'ecran et
+    # dans la restitution sans que rien ne permette de le refaire.
+    plein = equity.get("full_time") or {}
+    if plein.get("published") and ledger.has(FTE_COLUMN):
+        ligne_globale = _ligne_de(rows, "Écart moyen (%)")
+        _poser_couple_temps_plein(poser, ledger, salaire, plein, femme, homme)
+        # « Explique par le temps de travail » cite les deux ecarts plutot
+        # que de refaire leur calcul : c'est une soustraction, et elle doit
+        # se lire comme telle.
+        poser("À temps plein", "Expliqué par le temps de travail (points)",
+              plein.get("explained_gap"),
+              f"D{ligne_globale}-D{_ligne_de(rows, 'Écart moyen (%)', 'À temps plein')}")
 
     if colonne is not None:
         for item in equity.get("categories", []) or []:
@@ -816,6 +966,12 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
                   f"({ledger.average(salaire, critere_h)}"
                   f"-{ledger.average(salaire, critere_f)})"
                   f"/{ledger.average(salaire, critere_h)}*100")
+            lignes_ecart.append(len(rows))
+            poser(nom, "Effectif comparable",
+                  (item.get("female_count") or 0) + (item.get("male_count") or 0),
+                  f"{ledger.count(salaire, critere_f)}"
+                  f"+{ledger.count(salaire, critere_h)}")
+            lignes_poids.append(len(rows))
             poser(nom, "Écart médian (%)", item.get("median_gap"),
                   f"({ledger.median(salaire, critere_h)}"
                   f"-{ledger.median(salaire, critere_f)})"
@@ -829,15 +985,51 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
                   f"{ledger.rows_matching(critere_h)})")
 
     rows.append([])
-    poser("Ensemble", "À catégorie comparable (%)",
-          equity.get("comparable_gap"), None,
-          "moyenne des écarts de catégorie, pondérée par leur effectif "
-          "comparable ; elle se refait sur l'onglet « Pay Transparency », "
-          "colonnes des écarts et des effectifs")
-    poser("Ensemble", "Effet de structure (%)", equity.get("structure_gap"),
-          None, "écart global − écart à catégorie comparable")
-    poser("Ensemble", "Couverture (%)", equity.get("comparable_coverage"),
-          None, "part de l'effectif où les deux sexes atteignent le seuil")
+    # La decomposition se posait en commentaire, renvoyant a un autre
+    # onglet. Elle se pose en formule : les ecarts et les effectifs qui la
+    # composent sont ecrits quelques lignes plus haut, et une moyenne
+    # ponderee se lit aussi bien qu'elle se calcule.
+    if lignes_ecart and lignes_poids:
+        poids = ",".join(f"D{ligne}" for ligne in lignes_poids)
+        # Somme de produits ecrite terme a terme, et non « SUMPRODUCT » :
+        # les ecarts et leurs effectifs sont sur des lignes alternees, donc
+        # sur des references non contigues, et SUMPRODUCT ne sait pas les
+        # lire — verifie sous LibreOffice, qui rendait un nombre absurde au
+        # lieu d'un refus. Ecrite ainsi, la ponderation se lit aussi : on
+        # voit chaque ecart multiplie par son effectif.
+        produits = "+".join(f"D{e}*D{p}"
+                            for e, p in zip(lignes_ecart, lignes_poids))
+        comparable = len(rows) + 1
+        expression = (f"({produits})/SUM({poids})" if len(lignes_ecart) > 1
+                      else f"D{lignes_ecart[0]}")
+        if len(expression) > FORMULA_MAX_CHARS:
+            expression = None
+        poser("Ensemble", "À catégorie comparable (%)",
+              equity.get("comparable_gap"), expression,
+              "" if expression else
+              "trop de catégories pour écrire la pondération en une "
+              "formule lisible : elle se refait sur les lignes ci-dessus, "
+              "chaque écart multiplié par son effectif comparable")
+        # L'effet de structure cite la ligne precedente ; si celle-ci n'a
+        # pas de formule, il n'en a pas non plus — une formule qui cite une
+        # cellule sans valeur rendrait une erreur, non un controle.
+        poser("Ensemble", "Effet de structure (%)",
+              equity.get("structure_gap"),
+              f"D{_ligne_de(rows, 'Écart moyen (%)')}-D{comparable}"
+              if expression else None,
+              "" if expression else
+              "écart global − écart à catégorie comparable")
+        poser("Ensemble", "Effectif comparable",
+              equity.get("comparable_headcount"), f"SUM({poids})")
+        poser("Ensemble", "Couverture (%)",
+              equity.get("comparable_coverage"),
+              f"SUM({poids})/({ledger.rows_matching([femme])}"
+              f"+{ledger.rows_matching([homme])})*100")
+    else:
+        poser("Ensemble", "À catégorie comparable (%)",
+              equity.get("comparable_gap"), None,
+              "aucune catégorie n'atteint le seuil de publication des deux "
+              "côtés : la moyenne pondérée n'a aucun terme")
     for item in equity.get("quartiles", []) or []:
         poser(f'Quartile {item["quartile"]}', "Part femmes (%)",
               item.get("female_share"), None,
@@ -867,7 +1059,12 @@ def build_sheets(
     C'est un choix explicite de parametrage, jamais un defaut.
     """
     sheets: List[Tuple[str, Sequence[Sequence[Any]]]] = [
-        ("Synthèse", _rows_manifest(analysis.get("manifest", {}))),
+        ("Synthèse", _rows_manifest(
+            analysis.get("manifest", {}),
+            nominatif=bool(config.get(
+                "export_parameters.include_individual_data", False)),
+            source=bool(config.get(
+                "export_parameters.include_source_file", False)))),
         ("Qualité des données", _rows_quality(analysis.get("quality", {}))),
         ("Population", _rows_population(analysis.get("population", {}))),
         ("Rémunération", _rows_salary(analysis.get("salary", {}))),
@@ -1016,8 +1213,18 @@ def _rows_method(analysis: Dict[str, Any],
     return rows
 
 
-def _rows_manifest(manifest: Dict[str, Any]) -> List[List[Any]]:
-    return [
+def _rows_manifest(manifest: Dict[str, Any],
+                   nominatif: bool = False,
+                   source: bool = False) -> List[List[Any]]:
+    """Identite de l'analyse, et ce que le classeur transporte.
+
+    Un classeur se transmet. Celui-ci porte de quoi refaire chaque calcul,
+    donc des valeurs individuelles — et, si le fichier importe y est
+    recopie, des noms. L'ecrire en tete n'est pas une precaution de forme :
+    c'est la seule chose qui distingue un envoi delibere d'un envoi
+    distrait.
+    """
+    rows = [
         ["Element", "Valeur"],
         ["Moteur", manifest.get("moteur")],
         ["Version", manifest.get("version")],
@@ -1027,6 +1234,21 @@ def _rows_manifest(manifest: Dict[str, Any]) -> List[List[Any]]:
         ["Effectif analyse", manifest.get("effectif_analyse")],
         ["Filtres", manifest.get("filtres")],
     ]
+    if nominatif or source:
+        contenu = ["Ce classeur contient les données individuelles ayant "
+                   "servi aux calculs, sous référence anonymisée."]
+        if source:
+            contenu.append("L'onglet « Fichier importé » porte le fichier "
+                           "source tel qu'il a été lu, colonnes nominatives "
+                           "comprises.")
+        contenu.append("Vérifiez qui en est destinataire avant de le "
+                       "transmettre. Pour un classeur d'agrégats seuls, "
+                       "mettez « include_individual_data » et "
+                       "« include_source_file » à false dans "
+                       "config/export_parameters.json.")
+        rows.append([])
+        rows.append(["CE QUE CONTIENT CE CLASSEUR", " ".join(contenu)])
+    return rows
 
 
 def export_excel(

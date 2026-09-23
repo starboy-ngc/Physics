@@ -508,7 +508,12 @@ importé » du classeur recopie votre fichier tel quel, noms compris. Il
 n'apparaît que si vous cochez « Joindre le fichier importé et les onglets de
 contrôle » (Paramètres → Export), et les onglets de contrôle ne peuvent pas
 exister sans lui — on ne vérifie pas un calcul sans ses valeurs.
-- L'export des données individuelles est **désactivé par défaut**.
+- Les données individuelles et les onglets de contrôle sont **posés par
+  défaut** : le classeur existe pour que vous puissiez refaire chaque
+  chiffre, et un classeur d'agrégats vous demanderait de croire l'outil
+  sur parole. La Synthèse le dit en tête, pour que la transmission soit
+  un acte et non un oubli. Décochez « Joindre le fichier importé et les
+  onglets de contrôle » pour un classeur d'agrégats seuls.
 - Le journal technique ne contient ni nom, ni matricule, ni salaire individuel.
 
 ## 7. Lire les « situations atypiques »

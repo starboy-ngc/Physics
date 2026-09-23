@@ -398,16 +398,16 @@ class TestPrivacy(unittest.TestCase):
         valeurs. L'onglet ne parait donc qu'avec elles."""
         from hr_insight.core.config import Configuration
 
+        data = self.result.config.as_dict()
+        data["export_parameters"]["include_individual_data"] = False
         sans = os.path.join(self.directory, "sans_valeurs.xlsx")
         export_excel(self.result.payload, self.result.filtered,
-                     self.result.config, sans)
+                     Configuration(data), sans)
         self.assertNotIn("Contrôle", [name for name, _id in _sheet_names(sans)])
 
-        data = self.result.config.as_dict()
-        data["export_parameters"]["include_individual_data"] = True
         avec = os.path.join(self.directory, "avec_valeurs.xlsx")
         export_excel(self.result.payload, self.result.filtered,
-                     Configuration(data), avec)
+                     self.result.config, avec)
         noms = [name for name, _id in _sheet_names(avec)]
         self.assertIn("Contrôle", noms)
         self.assertIn("Données individuelles", noms)

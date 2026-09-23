@@ -144,17 +144,20 @@ class TestSheetSet(WorkbookCase):
             comparison=[Filter("business_unit", "eq", "Iberia")]), "c2.xlsx")
         self.assertIn("Comparaison", sheets)
 
-    def test_individual_data_is_withheld_by_default(self):
-        """Le reglage par defaut ne sort aucune ligne nominative."""
+    def test_individual_data_is_posed_by_default(self):
+        """Le classeur sert a refaire les calculs : sans les valeurs, il
+        demande de croire l'outil sur parole."""
         sheets = self.workbook(self.analyse())
-        self.assertNotIn("Données individuelles", sheets)
-        self.assertNotIn("Contrôle", sheets)
-
-    def test_individual_data_appears_only_on_an_explicit_setting(self):
-        sheets = self.workbook(self.analyse(overrides={
-            "export_parameters": {"include_individual_data": True}}))
         self.assertIn("Données individuelles", sheets)
         self.assertIn("Contrôle", sheets)
+
+    def test_the_setting_still_withholds_it(self):
+        """Le defaut a change ; le reglage, non. Il reste le moyen d'avoir
+        un classeur d'agregats seuls."""
+        sheets = self.workbook(self.analyse(overrides={
+            "export_parameters": {"include_individual_data": False}}))
+        self.assertNotIn("Données individuelles", sheets)
+        self.assertNotIn("Contrôle", sheets)
 
     def test_no_sheet_name_breaks_excel_rules(self):
         """31 caracteres au plus, et aucun des caracteres interdits."""

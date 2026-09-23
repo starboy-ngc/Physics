@@ -153,13 +153,25 @@ SANS INTERFACE (traitement en lot)
       restitution-*.html   rapport détaillé, à lire à l'écran
       synthese-*.pdf       fiche standard, une page paysage
       slides-*.pdf         jeu de slides paysage
-      analyse-*.xlsx       tous les indicateurs par onglet. Les
-                           indicateurs DÉRIVÉS y portent leur formule :
-                           cliquez sur « Q3 - Q1 », vous lisez
-                           « =B11-B9 ». Avec les données individuelles
-                           activées, un onglet « Contrôle » recalcule
-                           médiane et percentiles par formule, pour les
-                           comparer à ce que l'outil a calculé.
+      analyse-*.xlsx       tous les indicateurs par onglet, ET DE QUOI
+                           LES REFAIRE. Le classeur contient votre
+                           fichier tel qu'il a été lu, les salariés
+                           retenus, puis des onglets « Contrôle » où
+                           CHAQUE indicateur publié est recalculé par
+                           une formule que vous pouvez lire et
+                           contester : cliquez sur une cellule, vous
+                           lisez « =MEDIAN(IF(...)) » ou « =B11-B9 ».
+                           Une colonne « Écart » compare le chiffre de
+                           l'outil à celui du tableur : elle doit
+                           afficher zéro partout.
+
+                           Le classeur porte donc des valeurs
+                           individuelles, et l'onglet du fichier importé
+                           porte votre fichier, noms compris. Sa
+                           première page le rappelle. Pour un classeur
+                           d'agrégats seuls, décochez « Joindre le
+                           fichier importé et les onglets de contrôle »
+                           dans Paramètres → Export.
       manifeste-*.json     paramètres utilisés, pour refaire
                            l'analyse à l'identique
 

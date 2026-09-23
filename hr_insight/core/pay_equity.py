@@ -242,11 +242,15 @@ def calculate_pay_equity(population: Population,
     hommes_etp = _full_time_amounts(men, salary_field)
     result["full_time"] = _pair(femmes_etp, hommes_etp, rules)
     valorises = len(_amounts(women, salary_field)) + len(_amounts(men, salary_field))
+    # Sans arrondi : le moteur rend la valeur, la restitution la formate.
+    # Arrondie ici, elle ne coincidait plus avec la formule du classeur de
+    # controle, qui affichait alors un ecart de quelques millièmes sur la
+    # feuille meme qui sert a prouver qu'il n'y en a pas.
     result["full_time"]["coverage"] = (
-        round(100.0 * (len(femmes_etp) + len(hommes_etp)) / valorises, 1)
+        100.0 * (len(femmes_etp) + len(hommes_etp)) / valorises
         if valorises else None)
     result["full_time"]["explained_gap"] = (
-        round(result["pay"]["mean_gap"] - result["full_time"]["mean_gap"], 2)
+        result["pay"]["mean_gap"] - result["full_time"]["mean_gap"]
         if result["pay"].get("mean_gap") is not None
         and result["full_time"].get("mean_gap") is not None else None)
     result["variable"] = _pair(_amounts(women, variable_field),

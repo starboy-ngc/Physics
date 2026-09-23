@@ -122,9 +122,23 @@ class Ledger:
         Quand l'agregat porte sur des valeurs, la condition « la valeur est
         renseignee » s'ajoute : sans elle, un salarie sans remuneration
         entrerait dans la moyenne pour zero, alors que le moteur l'ecarte.
+
+        La comparaison d'un texte se fait par « EXACT », non par « = » :
+        l'egalite d'un tableur ignore la casse, le decoupage de l'outil ne
+        l'ignore pas. Sur un fichier ou le statut s'ecrit « Cadre »,
+        « CADRE » et « cadre », le controle comptait trente-huit salaries
+        la ou l'outil en affichait trente-six — et faisait douter de
+        l'outil sur la feuille meme qui sert a le verifier. Les ecritures
+        divergentes restent signalees par le controle qualite ; ce n'est
+        pas au classeur de les reconcilier en silence.
         """
-        tests = [f"({self.range(label)}={text_literal(value)})"
-                 for label, value in criteria]
+        tests = []
+        for label, value in criteria:
+            if isinstance(value, str):
+                tests.append(f"EXACT({self.range(label)},"
+                             f"{text_literal(value)})")
+            else:
+                tests.append(f"({self.range(label)}={text_literal(value)})")
         if value_label is not None:
             tests.append(f"({self.range(value_label)}<>\"\")")
         return tests

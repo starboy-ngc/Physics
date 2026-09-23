@@ -227,12 +227,22 @@ DEFAULTS: Dict[str, Any] = {
         "slides_html_enabled": True,
         "slides_pdf_enabled": True,
         "summary_enabled": True,
-        "include_individual_data": False,
-        # Recopie du fichier importe dans le classeur, et onglets de
-        # controle qui refont chaque chiffre a partir de lui. C'est de la
-        # donnee nominative : le reglage suppose « include_individual_data »
-        # et reste, comme lui, un choix explicite.
-        "include_source_file": False,
+        # Donnees individuelles et recopie du fichier importe. Elles
+        # etaient desactivees par defaut, au nom du traitement des donnees
+        # RH ; elles sont desormais posees, parce que le classeur a une
+        # raison d'etre precise : permettre a une equipe C&B de refaire
+        # chaque indicateur. Un classeur d'agregats demande de croire
+        # l'outil sur parole, et une verification qui suppose d'abord de
+        # trouver un fichier de configuration n'est pas une verification
+        # qu'on fait.
+        #
+        # Ce que cela implique est ecrit dans le classeur lui-meme, en tete
+        # de la Synthese : les references y sont anonymisees, mais l'onglet
+        # du fichier importe porte le fichier tel qu'il est arrive, noms
+        # compris. Les deux reglages restent la pour qui veut un classeur
+        # d'agregats seuls.
+        "include_individual_data": True,
+        "include_source_file": True,
         # Au-dela, le fichier importe n'est pas recopie : un classeur de
         # plusieurs centaines de milliers de lignes ne s'ouvre plus.
         "source_max_rows": 50000,
