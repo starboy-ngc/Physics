@@ -14,8 +14,9 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from .config import Configuration, analysis_field, percentiles as configured_percentiles
 from .normalize import Employee, Population
+from .errors import ConfigError
 from .segmentation import (UNKNOWN_LABEL, dimension_fields,
-                           dimension_label, split_by)
+                           dimension_label, personal_fields, split_by)
 from . import statistics_engine as stats
 
 MASK_REASON = "Effectif insuffisant : résultat masqué pour préserver la confidentialité."
@@ -668,6 +669,18 @@ def scatter_dataset(
     x_field = config.get("chart_parameters.scatter_x", "tenure_years")
     y_field = config.get("chart_parameters.scatter_y", "base_salary")
     color_field = config.get("chart_parameters.scatter_color_by", "business_unit")
+    # Troisieme porte de la meme famille : la couleur du nuage devient une
+    # legende, et la legende s'imprime. Un nuage colorie par le nom affiche
+    # une identite par point, dans la restitution comme dans les slides.
+    if color_field in set(personal_fields(config)):
+        raise ConfigError(
+            f"Le champ \"{color_field}\" est nominatif : il ne peut pas "
+            f"colorer le nuage, car sa légende porterait le nom des "
+            f"personnes dans les documents produits. Choisissez une notion "
+            f"collective. Corrigez \"scatter_color_by\" dans "
+            f"chart_parameters.json.",
+            technical=f"personal field as scatter colour: {color_field}",
+        )
     rules = PrivacyRules.from_config(config)
 
     points: List[Dict[str, Any]] = []

@@ -90,9 +90,23 @@ class Filter:
         found = any(_equivalent(actual, candidate) for candidate in candidates)
         return found if operator in ("eq", "in") else not found
 
-    def describe(self, labels: Optional[Dict[str, str]] = None) -> str:
+    #: Ce qui remplace la valeur d'un filtre nominatif dans tout libelle ecrit.
+    HIDDEN_VALUE = "(valeur masquée)"
+
+    def describe(self, labels: Optional[Dict[str, str]] = None,
+                 personal: Sequence[str] = ()) -> str:
+        """Libelle du critere. La valeur d'un champ nominatif n'y figure pas.
+
+        Filtrer sur un matricule ou un nom a du sens — verifier un dossier
+        en est un. Ce qui n'en a pas, c'est de l'ecrire : ce libelle part
+        dans la restitution, dans la synthese, dans les slides et dans le
+        manifeste de tracabilite, ou le nom resterait. L'analyste, lui,
+        vient de saisir la valeur : elle ne lui apprend rien.
+        """
         label = (labels or {}).get(self.field, self.field)
-        if self.operator in ("in", "not_in", "between"):
+        if self.field in set(personal):
+            rendered = self.HIDDEN_VALUE
+        elif self.operator in ("in", "not_in", "between"):
             rendered = ", ".join(str(item) for item in _as_list(self.value))
         else:
             rendered = str(self.value)
@@ -150,6 +164,33 @@ def _number(value: Any) -> float:
 # ---------------------------------------------------------------- dimensions
 
 
+#: Champs nominatifs par defaut, quand la configuration n'en declare pas.
+#: Ils ne sont pas parametrables a la baisse par omission : un fichier de
+#: mapping sans liste « personal » garde cette protection.
+DEFAULT_PERSONAL = ("last_name", "first_name", "birth_date", "employee_id")
+
+
+def personal_fields(config: Optional[Configuration] = None) -> List[str]:
+    """Champs nominatifs : importables, jamais publiables.
+
+    Ils servent au controle des doublons et a l'ecran de l'analyste, qui
+    travaille sur son propre fichier. Ils ne peuvent etre ni axe, ni
+    filtre, ni couleur : chacun de ces usages ecrirait une identite dans un
+    document produit — un segment « Dupont » se lit aussi bien qu'un
+    salaire, et se lit meme quand le salaire est masque.
+
+    La fenetre de parametrage les ecartait deja de ses propositions. Ce
+    n'etait pas assez : un fichier de configuration se modifie au
+    bloc-notes, et la ligne de commande ne passe pas par la fenetre.
+    """
+    if config is None:
+        return sorted(DEFAULT_PERSONAL)
+    declared = config.get("population_mapping.personal", None)
+    if declared is None:
+        return sorted(DEFAULT_PERSONAL)
+    return sorted({str(name) for name in declared if name} | set(DEFAULT_PERSONAL))
+
+
 def dimensions(config: Configuration) -> List[Dict[str, Any]]:
     """Dimensions d'analyse declarees en configuration.
 
@@ -160,6 +201,7 @@ def dimensions(config: Configuration) -> List[Dict[str, Any]]:
     confusion.
     """
     declared = config.get("population_mapping.dimensions", []) or []
+    interdits = set(personal_fields(config))
     result: List[Dict[str, Any]] = []
     for entry in declared:
         if isinstance(entry, str):
@@ -169,6 +211,17 @@ def dimensions(config: Configuration) -> List[Dict[str, Any]]:
                 "field": entry["field"],
                 "label": entry.get("label") or entry["field"],
             })
+        else:
+            continue
+        if result[-1]["field"] in interdits:
+            raise ConfigError(
+                f"Le champ \"{result[-1]['field']}\" est nominatif et ne peut "
+                f"pas servir de dimension d'analyse : chaque segment porterait "
+                f"le nom d'une personne. Retirez-le de \"dimensions\" dans "
+                f"population_mapping.json.",
+                technical=f"personal field declared as dimension: "
+                          f"{result[-1]['field']}",
+            )
     return result
 
 
@@ -216,13 +269,25 @@ def filterable_fields(config: Optional[Configuration] = None) -> List[str]:
     if config is not None:
         fields.update(config.get("population_mapping.fields", {}) or {})
         fields.update(dimension_fields(config))
-        fields.discard("")
+    fields.discard("")
     return sorted(fields)
 
 
 def _ensure_known_field(field_name: str, allowed: Sequence[str], usage: str) -> None:
     if field_name in allowed:
         return
+    if field_name in personal_fields():
+        # « N'existe pas » serait un mensonge, et l'utilisateur chercherait
+        # sa faute de frappe. Le champ existe ; c'est son usage qui est
+        # refuse, et la raison vaut d'etre dite.
+        raise ConfigError(
+            f"Le champ \"{field_name}\" est nominatif : il ne peut pas être "
+            f"{usage}, car l'identité des personnes entrerait alors dans la "
+            f"restitution — elle s'y lirait même là où les montants sont "
+            f"masqués. Travaillez sur une notion collective : poste, grade, "
+            f"établissement, tranche.",
+            technical=f"personal field refused as {usage}: {field_name}",
+        )
     # Sans ce controle, un champ mal orthographie ne remonterait aucun
     # salarie sans le moindre message : l'utilisateur conclurait a une
     # population vide plutot qu'a une erreur de saisie.
@@ -251,7 +316,7 @@ def build_filters(
                 technical=("filter without field, keys="
                            f"{sorted(definition)}"),
             )
-        _ensure_known_field(field_name, allowed, "filtre")
+        _ensure_known_field(field_name, allowed, "filtré")
         operator = definition.get("operator", "eq")
         if operator not in _OPERATORS:
             raise ConfigError(
@@ -277,7 +342,9 @@ def describe_filters(
     filters: Sequence[Filter], config: Optional[Configuration] = None
 ) -> str:
     labels = dimension_labels(config) if config is not None else {}
-    return " + ".join(criterion.describe(labels) for criterion in filters) or "Aucun filtre"
+    personal = personal_fields(config)
+    return " + ".join(criterion.describe(labels, personal)
+                      for criterion in filters) or "Aucun filtre"
 
 
 # -------------------------------------------------------------- segmentation
@@ -286,8 +353,17 @@ def describe_filters(
 def validate_segments(
     fields: Sequence[str], config: Configuration
 ) -> List[str]:
-    """Verifie que chaque dimension demandee existe."""
-    allowed = filterable_fields(config)
+    """Verifie que chaque dimension demandee existe, et peut etre publiee.
+
+    Le filtre et le segment ne se jugent pas de la meme facon. Filtrer sur
+    un matricule restreint la population, et le libelle du filtre se
+    masque ; segmenter sur un nom *ecrit le nom* — chaque bloc porte la
+    valeur en titre, dans la restitution comme dans les slides, et le
+    masquage des montants n'y change rien. Le premier est une promesse du
+    LISEZ-MOI, le second une fuite.
+    """
+    allowed = [name for name in filterable_fields(config)
+               if name not in set(personal_fields(config))]
     for field_name in fields:
         _ensure_known_field(field_name, allowed, "utilisé comme segment")
     return list(fields)

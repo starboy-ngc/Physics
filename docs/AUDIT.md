@@ -10,7 +10,7 @@ suite. Chaque point fort a été vérifié en exécutant l'outil, non en lisant
 ses intentions.
 
 Périmètre mesuré : 14 914 lignes de moteur et d'interface (37 fichiers),
-14 469 lignes de tests, 1 087 tests.
+14 721 lignes de tests, 1 099 tests.
 
 ---
 
@@ -20,14 +20,14 @@ Périmètre mesuré : 14 914 lignes de moteur et d'interface (37 fichiers),
 |---|---|---|
 | Local-first (§3) | **conforme, vérifié à l'exécution** | — |
 | IT-safe (§4) | **conforme, vérifié à l'exécution** | — |
-| CS-safe / données RH (§6) | **conforme après correction** | une faille critique trouvée et fermée |
+| CS-safe / données RH (§6) | **conforme après correction** | deux failles critiques trouvées et fermées |
 | Mapping configurable (§7) | **conforme** | — |
 | Aucune donnée réelle en test (§27) | **conforme** | 25 jeux synthétiques |
 | Sécurité du code (§30) | **conforme** | aucun `eval`/`exec`/code dynamique |
 | Aucune dépendance externe (§34) | **conforme** | bibliothèque standard seule |
 | Aucun runtime supposé (§34) | **non tenu** | voir 7.1 — seul écart de fond |
 
-**10 défauts trouvés, 10 corrigés** : 1 critique, 7 majeurs, 2 mineurs.
+**12 défauts trouvés, 12 corrigés** : 2 critiques, 8 majeurs, 2 mineurs.
 Aucun défaut connu ne reste ouvert dans le périmètre audité.
 
 ---
@@ -39,13 +39,13 @@ Aucun défaut connu ne reste ouvert dans le périmètre audité.
 | Analyse statique (AST) | 37 fichiers ; appels et imports interdits, `except` nus, défauts mutables, symboles morts | 0 constat réel *(les 12 `compile()` signalés sont tous des `re.compile`)* |
 | Sonde d'exécution (PEP 578) — moteur | intercepte réseau, processus, code dynamique, `ctypes`, registre, `pickle`, écritures, imports | 19 opérations, **0 réseau, 0 processus, 0 code dynamique, 0 écriture hors dossier de sortie, 0 module hors bibliothèque standard** |
 | Sonde d'exécution — interface | idem, fenêtre ouverte sous Xvfb | 24 opérations, **0 réseau, 0 processus, 0 code dynamique, 0 écriture hors dossier temporaire** |
-| Matrice de configuration | 25 jeux de données × 72 combinaisons de réglages (15 axes, couverture par paires) | **241 cas, 17 154 formules Excel réexécutées, 0 exception, 0 anomalie** |
+| Matrice de configuration | 25 jeux de données × 71 combinaisons de réglages (15 axes, couverture par paires) | **238 cas, 18 394 formules Excel réexécutées, 0 exception, 0 anomalie** |
 | Parcours d'interface | import → filtres → analyse → onglets → graphiques → export, pilotés à la souris simulée | 77 s, **0 exception, 0 anomalie** |
 | Fichiers hostiles | 9 attaques sur le format XLSX | **absorbés ou refusés proprement ; aucune fuite, aucun blocage** |
 | Refus attendus | 18 configurations fausses | tous les paramètres gardant un résultat sont refusés en nommant le fichier |
 | Performance | 1 000 → 60 000 lignes | **linéaire**, 60 000 lignes en 2,86 s, 173 Mo de pic |
 | Reproductibilité | deux analyses du même fichier | identique **au sel déclaré près** |
-| Suite de tests | Python 3.10, 3.11, 3.12, 3.13 | **1 087 tests verts** partout |
+| Suite de tests | Python 3.10, 3.11, 3.12, 3.13 | **1 099 tests verts** partout |
 
 Les 15 axes de la matrice : thème, seuil de publication, seuil de
 graphique, anonymisation, champ analysé, facteur atypique, devise, liste de
@@ -83,6 +83,43 @@ Tk appelle, rien ne se lit.
 
 C'est le seul défaut de l'audit qui relevait de la sécurité du poste et non
 de la justesse du résultat.
+
+**[C-2] Une option de ligne de commande publiait 40 noms de famille.**
+
+`--segment last_name`, sur la **configuration livrée**, sans rien modifier :
+la restitution HTML et les slides sortaient avec un bloc par personne,
+chacun portant son nom de famille en titre. Le garde-fou d'effectif faisait
+son travail — tous les montants étaient masqués — mais rien ne gardait les
+*libellés*. Le moteur affirmait pourtant la garantie en commentaire :
+« elle n'entre jamais dans le résultat d'analyse […] quel que soit le
+réglage ».
+
+Trois portes menaient au même endroit, et une quatrième écrivait la valeur
+sans segmenter :
+
+| Porte | Ce qu'il fallait pour l'ouvrir | Ce qui en sortait |
+|---|---|---|
+| `--segment last_name` | une option CLI, configuration livrée | 40 noms dans la restitution et les slides |
+| `dimensions` édité à la main | une ligne dans `population_mapping.json` | idem, plus dans l'interface |
+| `scatter_color_by: last_name` | une ligne dans `chart_parameters.json` | un nom par point, en légende |
+| `--filtre last_name=X` | une option CLI | la valeur dans la restitution, la synthèse, les slides **et le manifeste** |
+
+*Correction*, en distinguant ce qui se vaut de ce qui ne se vaut pas :
+- **Segment, dimension, couleur** : refusés, avec un message qui dit
+  pourquoi plutôt que de prétendre que le champ n'existe pas.
+- **Filtre** : conservé — vérifier un dossier par matricule est une
+  promesse du LISEZ-MOI et un usage légitime —, mais son libellé écrit
+  retient le champ et non la valeur : `last_name = (valeur masquée)`.
+  L'analyste vient de la saisir ; le lecteur du rapport n'a pas à
+  l'apprendre.
+- La liste des champs nominatifs **ne peut plus être désarmée par
+  omission** : retirer `personal` du fichier de mapping ne lève pas la
+  protection.
+
+*Tests* : `tests/test_identity_never_published.py` (9 tests), dont un qui
+balaie l'ensemble du résultat d'analyse à la recherche d'un patronyme —
+une cinquième porte le ferait échouer sans qu'il faille y penser. 8 des 9
+échouent sans le correctif.
 
 ### 3.2 Majeures
 
@@ -139,6 +176,25 @@ côté et un écart femmes/hommes calculé de l'autre — deux réponses
 contradictoires à la même question, dans la même analyse.
 → `core/metrics.py` ; `tests/test_anomalies.py` (2 tests).
 
+**[M-8] Quatre réglages se laissaient modifier sans effet.**
+`salary_parameters.annualise_on_fte`, `salary_parameters.outlier_method`,
+`percentile_parameters.method` et `privacy_parameters.log_personal_data`
+étaient déclarés, documentés par leur seule présence, et lus par personne.
+Mesuré : régler chacun sur l'autre valeur rend un résultat identique au bit
+près.
+
+Le plus coûteux est `annualise_on_fte` : un utilisateur le mettant à `true`
+aurait publié des écarts femmes/hommes qu'il croyait ramenés au temps
+plein, alors que les temps partiels y entraient bruts. Le plus trompeur est
+`log_personal_data` : il donnait à croire que journaliser des données
+personnelles était une option, alors que c'est une impossibilité de
+construction.
+
+Les quatre sont retirés. Surtout, `tests/test_no_inert_setting.py` énumère
+désormais tous les réglages déclarés et échoue si l'un d'eux n'est lu nulle
+part : c'est la famille qui est fermée, pas les quatre cas.
+**L'annualisation sur l'ETP reste à décider** — voir 9.
+
 ### 3.3 Mineures
 
 **[m-1] L'interface contournait `BoxPlotChart.set_split()`.**
@@ -182,12 +238,12 @@ colonne très lointaine, nom d'onglet piégé : absorbés sans dommage.
 60 000 lignes analysées en 2,86 s pour 173 Mo de pic ; le facteur de temps
 suit le facteur de lignes (×3 lignes → ×3,1 temps). Aucun effet de seuil.
 
-**Le classeur d'export porte ses formules.** 17 154 formules ont été
+**Le classeur d'export porte ses formules.** 18 394 formules ont été
 réexécutées par un tableur tiers après effacement des valeurs en cache :
 toutes redonnent la valeur publiée. Le contrôle de l'implémentation par un
 tiers est donc réellement possible, et pas seulement annoncé.
 
-**La suite tient sur quatre versions de Python.** 1 087 tests verts sur
+**La suite tient sur quatre versions de Python.** 1 099 tests verts sur
 3.10, 3.11, 3.12 et 3.13. Les 322 tests d'interface se déclarent ignorés,
 proprement, là où `tkinter` est absent — le moteur n'importe jamais
 l'interface.
@@ -237,7 +293,30 @@ Le modèle `Employee` lui-même est un schéma fixe. C'est un choix
 d'architecture, pas un oubli : il donne un socle typé et vérifiable, et
 `extra` absorbe tout ce qu'un employeur y ajoute.
 
-### 5.4 Le défaut que cette recherche a trouvé
+### 5.4 Cohérence des champs, vérifiée clé par clé
+
+Inventaire mené par résolution AST (suivi des variables, pas d'appariement
+au jugé), sur les 22 champs déclarés et les 63 clés de configuration :
+
+| Contrôle | Résultat |
+|---|---|
+| Champs de `required`, `numeric`, `date`, `personal` déclarés dans `fields` | **22/22** |
+| Dimensions pointant un champ connu (mappé ou dérivé) | **11/11** |
+| Pointeurs de configuration (`analysis_field`, `gender_field`, `variable_field`, `category_field`, `scatter_*`, `profile_fields`) visant un champ connu | **tous** |
+| Fichiers de `config/` en accord avec les défauts | **10/10** |
+| Clés lues par le code sans être déclarées | **0** |
+| Clés déclarées et lues nulle part | **4** → voir **[M-8]** |
+| Champs mappés hors du modèle (`extra`) | 1 — `job_title`, par construction |
+| Attributs du modèle non atteignables par le mapping | **0** |
+
+Deux mécanismes de libellé coexistent : `_field_label` (premier alias
+déclaré, pour le champ analysé) et `dimension_label` (libellé explicite,
+pour les axes). Sur la configuration livrée, les onze dimensions communes
+donnent le même mot des deux côtés. Rien ne l'impose : renommer un alias
+d'import dans `fields` change le titre du chapitre Rémunération sans
+toucher aux filtres. Fragilité, pas défaut — on la note en 6.6.
+
+### 5.5 Le défaut que cette recherche a trouvé
 
 Un seul endroit lisait un champ en dur alors qu'un paramètre existait pour
 lui : la répartition femmes/hommes de l'écran Population. Voir **[M-7]**.
@@ -274,6 +353,15 @@ non mesuré.
 obtenu sous Linux. Les chemins, les fins de ligne, l'encodage `cp1252` des
 CSV exportés par un SIRH français, le rendu de la fenêtre à 125 % : angle
 mort complet, alors que c'est la cible réelle.
+
+---
+
+**6.6 Deux chemins de libellé pour le même champ.** Le chapitre
+Rémunération prend son titre du premier alias d'import déclaré ; les axes
+et les filtres prennent le leur du libellé explicite de `dimensions`. Ils
+coïncident aujourd'hui sur toute la configuration livrée, à la main. Un
+utilisateur qui renomme un alias pour faire entrer un fichier verra le
+titre du chapitre changer sans l'avoir voulu.
 
 ---
 
@@ -315,4 +403,5 @@ Nommé pour que la portée du « 0 anomalie » soit lisible :
 | 2 | Banc Windows | angle mort sur la cible réelle |
 | 3 | Repli d'encodage `cp1252` à l'import | cas courant d'un SIRH français |
 | 4 | Régime de sel inscrit au manifeste (6.1) | lève la seule ambiguïté de lecture |
-| 5 | Fiche individuelle, évolution N/N−1 | fonctionnel déjà arbitré |
+| 5 | **Décider de l'annualisation sur l'ETP** | le réglage existait sans effet ; l'implémenter change tous les écarts publiés, c'est une décision, pas un correctif |
+| 6 | Fiche individuelle, évolution N/N−1 | fonctionnel déjà arbitré |

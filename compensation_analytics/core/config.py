@@ -131,13 +131,10 @@ DEFAULTS: Dict[str, Any] = {
     },
     "percentile_parameters": {
         "percentiles": [10, 25, 50, 75, 90],
-        "method": "linear",
     },
     "salary_parameters": {
         "analysis_field": "base_salary",
-        "annualise_on_fte": False,
         "currency": "EUR",
-        "outlier_method": "iqr",
         "outlier_factor": 1.5,
         "min_plausible": 1000.0,
         "max_plausible": 1000000.0,
@@ -156,7 +153,6 @@ DEFAULTS: Dict[str, Any] = {
         # alors les rapprocher d'un matricule. Ne le communiquez pas avec
         # les documents produits.
         "anonymisation_salt": "",
-        "log_personal_data": False,
         # Identifier un salarie a l'ecran est le geste meme de l'analyse :
         # un point du nuage a trente pour cent sous la mediane ne veut rien
         # dire tant qu'on ne sait pas de qui il s'agit. Le paragraphe 6

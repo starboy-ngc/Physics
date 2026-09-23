@@ -202,6 +202,16 @@ FILTRER
   coefficient, rémunération variable... et toute colonne que vous
   ajoutez vous-même dans config/population_mapping.json.
 
+  Filtre sur un champ nominatif (nom, prénom, matricule, date de
+  naissance) : il fonctionne, mais sa VALEUR n'est jamais écrite dans
+  les documents produits ni dans le manifeste — ils retiennent
+  « last_name = (valeur masquée) ». Vous venez de la saisir ; un
+  lecteur du rapport, lui, n'a pas à l'apprendre.
+
+  SEGMENTER sur un champ nominatif est refusé : chaque bloc porterait
+  le nom d'une personne en titre, et le masquage des montants n'y
+  changerait rien. Segmentez sur une notion collective.
+
      py compensation-analytics.pyz mapping mon-fichier.xlsx
 
   liste les noms de champ exacts reconnus dans votre fichier : ce
