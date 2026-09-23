@@ -481,7 +481,7 @@ class SettingsWindow(tk.Toplevel):
                  text="Cet écran ne filtre rien et ne retire aucun salarié. "
                       "Un champ coché est proposé partout : dans la liste "
                       "« Filtrer » de la colonne de gauche, dans « Analyser "
-                      "par », dans les onglets Segments et Pay Transparency, "
+                      "par », dans les onglets Segments et Écarts F/H, "
                       "et dans « Colorer par ».",
                  background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
                  wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))

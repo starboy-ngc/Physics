@@ -144,9 +144,12 @@ GLOSSARY: Dict[str, Entry] = {
     # unique : un écart positif signifie que les femmes sont moins
     # rémunérées.
     "mean_gap": Entry(
-        "Écart de rémunération moyenne entre femmes et hommes, indicateur a) "
-        "de la directive 2023/970. Un écart positif signifie que les femmes "
-        "sont moins rémunérées.",
+        "Écart de rémunération moyenne entre femmes et hommes, sur toute la "
+        "population retenue. Un écart positif signifie que les femmes sont "
+        "moins rémunérées. Il mélange deux faits opposés — une différence "
+        "de rémunération à travail comparable, et une répartition inégale "
+        "sur les postes — que les deux indicateurs suivants séparent. La "
+        "directive 2023/970 demande de le publier.",
         "(Moyenne des hommes − Moyenne des femmes) / Moyenne des hommes, en "
         "pourcentage."),
     "full_time_gap": Entry(
@@ -164,14 +167,20 @@ GLOSSARY: Dict[str, Entry] = {
         "temps de travail égal.",
         "Écart global − Écart à temps plein, en points de pourcentage."),
     "median_gap": Entry(
-        "Écart de rémunération médiane, indicateur b) de la directive "
-        "2023/970. Moins sensible aux rémunérations extrêmes que l'écart "
-        "moyen.",
+        "Écart de rémunération médiane. Moins sensible aux rémunérations "
+        "extrêmes que l'écart moyen : quand les deux s'éloignent, c'est que "
+        "quelques rémunérations hautes tirent la moyenne, et la médiane "
+        "décrit mieux le cas courant. La directive 2023/970 demande de le "
+        "publier.",
         "(Médiane des hommes − Médiane des femmes) / Médiane des hommes, en "
         "pourcentage."),
     "variable_mean_gap": Entry(
         "Écart sur les composantes variables — primes, bonus, "
-        "intéressement —, indicateur c) de la directive 2023/970.",
+        "intéressement. C'est souvent là que l'écart se loge sans qu'on le "
+        "voie, la rémunération fixe étant tenue par une grille. À lire avec "
+        "la part de chaque sexe qui en perçoit : l'écart peut venir du "
+        "montant ou de l'accès. La directive 2023/970 demande de le "
+        "publier.",
         "(Moyenne des hommes − Moyenne des femmes) / Moyenne des hommes sur "
         "le champ variable, en pourcentage."),
     "female_count": Entry(

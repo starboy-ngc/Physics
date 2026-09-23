@@ -615,30 +615,44 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
     elif plein:
         note_plein = (" " + (plein.get("warning") or "")) if plein.get("warning") else ""
 
+    # La note disait d'ou venaient les formules avant de dire ce que les
+    # chiffres signifient. Elle dit maintenant ce que chacun commande : un
+    # ecart a travail comparable se corrige en remuneration, un effet de
+    # structure en mobilite, un ecart de temps de travail ne se corrige
+    # pas. La provenance des formules se mentionne une fois, a la fin.
     note = (
         "Un écart positif signifie que les femmes sont moins rémunérées. "
-        "Écart global : (moyenne des hommes − moyenne des femmes) / moyenne "
-        f"des hommes, formule de la directive 2023/970. À {label} "
-        f"comparable : moyenne des écarts de chaque {label}, pondérée par "
-        "leur effectif, sur "
+        f"L'écart global se partage en deux causes : à {label} comparable, "
+        "un même travail est payé différemment — cela se corrige en "
+        "rémunération ; l'effet de structure vient de ce que les deux sexes "
+        f"n'occupent pas les mêmes {label}s — cela se corrige en mobilité, "
+        "pas sur une grille. Le rattrapage est ce que coûterait l'alignement "
+        f"du sexe le moins rémunéré sur l'autre, {label} par {label} : un "
+        "ordre de grandeur pour arbitrer, non un engagement."
+        + note_plein
+        + f" Écart médian {format_percent(pay.get('median_gap'))}."
+        + (f" Sur la rémunération variable, l'écart est de "
+           f"{format_percent(variable.get('mean_gap'))}, perçue par "
+           f"{format_percent(coverage.get('female_share'))} des femmes et "
+           f"{format_percent(coverage.get('male_share'))} des hommes."
+           if variable.get("mean_gap") is not None
+           else " Aucune rémunération variable n'est renseignée.")
+        + f" La décomposition porte sur les "
         f"{format_percent(equity.get('comparable_coverage'))} de l'effectif "
-        "où les deux sexes atteignent le seuil de publication. Effet de "
-        f"structure : le reste — ce que le {label} occupé explique de "
-        "l'écart global. Rattrapage : coût de l'alignement du sexe le moins "
-        f"rémunéré sur l'autre, {label} par {label}. Écart médian "
-        f"{format_percent(pay.get('median_gap'))} ; écart moyen sur la "
-        f"rémunération variable {format_percent(variable.get('mean_gap'))} ; "
-        "part percevant une rémunération variable "
-        f"{format_percent(coverage.get('female_share'))} des femmes et "
-        f"{format_percent(coverage.get('male_share'))} des hommes."
-        + note_plein)
+        f"dont le {label} réunit assez de femmes et d'hommes pour être "
+        "comparé.")
     unknown = equity.get("unknown_count", 0)
     if unknown:
         note += (f" {unknown} salarié(s) dont le sexe n'est pas renseigné "
                  "sont exclus de tous les écarts.")
+    # Une mention, une seule, et a la fin : c'est la provenance des
+    # formules, non le sujet de la page.
+    note += (" Les écarts moyen et médian, celui sur la rémunération "
+             "variable et la part qui la perçoit sont les indicateurs que "
+             "la directive 2023/970 demande de publier.")
 
     return (
-        "<h2>7. Pay Transparency — écarts femmes / hommes</h2>"
+        "<h2>7. Écarts de rémunération femmes / hommes</h2>"
         f'<div class="kpis">{kpis}</div>'
         f"{_note(note, 'info')}"
         f"<h3>Écart par {label}</h3>{table}"

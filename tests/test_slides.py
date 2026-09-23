@@ -521,7 +521,9 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
         from hr_insight.core.reporting import render_report
 
         html = render_report(self._analysis())
-        self.assertIn("Pay Transparency", html)
+        # Le chapitre dit ce qu'il analyse, non le nom d'un texte de loi :
+        # c'est une page d'analyse d'ecarts, pas une page de conformite.
+        self.assertIn("Écarts de rémunération femmes / hommes", html)
         for attendu in ("Écart global", "comparable", "Effet de structure",
                         "Rattrapage", "Répartition par quartile"):
             self.assertIn(attendu, html, attendu)
