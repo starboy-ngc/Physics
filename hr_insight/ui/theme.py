@@ -568,8 +568,30 @@ def bind_wheel(canvas: tk.Canvas, root: tk.Misc) -> None:
     contient — et le survol est verifie a chaque evenement.
     """
 
+    def sous_le_curseur(event):
+        """Widget survole, ou None si Tk n'en designe pas un a nous.
+
+        « winfo_containing » rend un chemin Tcl que tkinter traduit en objet
+        Python. Toutes les fenetres de Tk ne sont pas dans cette table : la
+        liste deroulante d'un combobox — « .!combobox.popdown » — est creee
+        par Tcl, et la traduction leve « KeyError: 'popdown' ». La molette
+        tournee pendant qu'une liste est ouverte remplissait alors la
+        console de traces, une par cran.
+
+        Un widget qui n'est pas a nous n'est pas un widget a faire defiler :
+        on ne repond rien, ce qui est aussi la bonne reponse pour une liste
+        ouverte — c'est elle qui defile, pas le panneau derriere.
+        """
+        try:
+            return root.winfo_containing(event.x_root, event.y_root)
+        except (KeyError, tk.TclError):
+            # TclError : la fenetre a disparu entre l'evenement et la
+            # question. Cela arrive quand la liste se referme sous le
+            # curseur, et ce n'est pas davantage une erreur.
+            return None
+
     def scroll(event) -> None:
-        widget = root.winfo_containing(event.x_root, event.y_root)
+        widget = sous_le_curseur(event)
         while widget is not None:
             if widget is canvas:
                 break

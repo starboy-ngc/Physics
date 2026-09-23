@@ -200,6 +200,56 @@ class TestWheelScrolling(WidgetCase):
         self._scroll(canvas, -120)
         self.assertGreaterEqual(canvas.yview()[0], before)
 
+    def test_the_wheel_over_a_combobox_list_says_nothing(self):
+        """La molette tournee pendant qu'une liste deroulante est ouverte.
+
+        « winfo_containing » rend alors le chemin de la fenetre que Tcl a
+        creee pour la liste — « .!combobox.popdown » —, que tkinter ne sait
+        pas traduire : « KeyError: 'popdown' ». Chaque cran de molette
+        ecrivait une trace dans la console, et l'outil avait l'air de
+        tomber en panne alors qu'il ne se passait rien.
+
+        Remonte d'un poste Windows sous Python 3.11 ; reproduit ici a
+        l'identique, ce qui confirme que le defaut n'est pas propre a
+        Windows : il fallait seulement ouvrir une liste et tourner la
+        molette.
+        """
+        import tkinter as tk
+        from tkinter import ttk
+
+        canvas = self.build()
+        combo = ttk.Combobox(self.root, values=["a", "b", "c"])
+        combo.pack()
+        self.root.update()
+        popdown = self.root.tk.call("ttk::combobox::PopdownWindow", combo)
+        self.root.tk.call("wm", "deiconify", popdown)
+        self.root.update()
+        x = int(self.root.tk.call("winfo", "rootx", popdown)) + 5
+        y = int(self.root.tk.call("winfo", "rooty", popdown)) + 5
+
+        # Sans la garde, cette traduction leve — c'est la panne elle-meme.
+        with self.assertRaises(KeyError):
+            self.root.winfo_containing(x, y)
+
+        # Tk attrape l'exception d'un rappel et l'imprime : le defilement ne
+        # bouge pas davantage avec la panne que sans elle, et le verifier ne
+        # prouverait rien. C'est le canal ou la trace part qu'il faut
+        # ecouter — « report_callback_exception », celui-la meme qui ecrit
+        # « Exception in Tkinter callback ».
+        traces = []
+        self.root.report_callback_exception = (
+            lambda *infos: traces.append(infos))
+
+        avant = canvas.yview()[0]
+        canvas.event_generate("<MouseWheel>", delta=-120, x=10, y=10,
+                              rootx=x, rooty=y)
+        self.root.update()
+
+        self.assertEqual(traces, [], "la molette ne doit rien lever")
+        self.assertEqual(canvas.yview()[0], avant,
+                         "le panneau ne doit pas défiler sous une liste "
+                         "ouverte : c'est la liste qui défile")
+
     def test_content_that_fits_never_scrolls(self):
         """Sinon la page tremble sous la molette sans jamais bouger."""
         canvas = self.build(content_height=50)

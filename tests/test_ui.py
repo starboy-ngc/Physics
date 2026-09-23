@@ -2263,3 +2263,90 @@ class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestNoTkCallbackEverRaises(unittest.TestCase):
+    """Aucun rappel Tk ne doit lever, sur tout le parcours.
+
+    Tk attrape l'exception d'un rappel et l'imprime : la fenetre continue
+    de repondre, et rien n'echoue. C'est exactement ce qui rend cette
+    famille de defauts invisible — un parcours automatise peut annoncer
+    « zero exception » pendant que la console de l'utilisateur se remplit de
+    traces. Le parcours d'audit de ce projet l'a fait.
+
+    Ce test ecoute donc le canal ou ces traces partent, et non le
+    deroulement du parcours. Le premier cas connu : la molette tournee
+    alors qu'une liste deroulante est ouverte.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "population.xlsx")
+        rows = [make_row(i, salary=30000 + (i % 40) * 800,
+                         business_unit=["France", "DACH"][i % 2],
+                         grade=["G3", "G5", "G7"][i % 3])
+                for i in range(80)]
+        write_workbook(cls.source, [("Population", [HEADERS] + rows)])
+
+    def setUp(self):
+        from hr_insight.ui.app import Application
+
+        self.app = Application()
+        self.traces = []
+        self.app.report_callback_exception = (
+            lambda *infos: self.traces.append(infos))
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _listes(self):
+        """Les listes deroulantes de la fenetre, a plat."""
+        from tkinter import ttk
+
+        trouvees = []
+        a_voir = [self.app]
+        while a_voir:
+            widget = a_voir.pop()
+            a_voir.extend(widget.winfo_children())
+            if isinstance(widget, ttk.Combobox):
+                trouvees.append(widget)
+        return trouvees
+
+    def test_the_wheel_raises_nothing_over_an_open_list(self):
+        listes = self._listes()
+        self.assertTrue(listes, "la fenêtre doit proposer des listes")
+        for liste in listes[:4]:
+            with self.subTest(liste=str(liste)):
+                popdown = self.app.tk.call(
+                    "ttk::combobox::PopdownWindow", liste)
+                self.app.tk.call("wm", "deiconify", popdown)
+                self.app.update()
+                x = int(self.app.tk.call("winfo", "rootx", popdown)) + 5
+                y = int(self.app.tk.call("winfo", "rooty", popdown)) + 5
+                for delta in (-120, 120):
+                    self.app.event_generate("<MouseWheel>", delta=delta,
+                                            x=5, y=5, rootx=x, rooty=y)
+                self.app.update()
+                self.app.tk.call("wm", "withdraw", popdown)
+        self.assertEqual(
+            [f"{t[0].__name__}: {t[1]}" for t in self.traces], [],
+            "un rappel Tk a levé : la console de l'utilisateur porterait "
+            "une trace à chaque cran de molette")
+
+    def test_the_wheel_raises_nothing_anywhere_on_the_window(self):
+        """La molette promenee sur toute la fenetre, liste fermee."""
+        self.app.update()
+        largeur = max(self.app.winfo_width(), 200)
+        hauteur = max(self.app.winfo_height(), 200)
+        base_x, base_y = self.app.winfo_rootx(), self.app.winfo_rooty()
+        for fraction_x in (0.1, 0.4, 0.7, 0.95):
+            for fraction_y in (0.1, 0.4, 0.7, 0.95):
+                self.app.event_generate(
+                    "<MouseWheel>", delta=-120, x=5, y=5,
+                    rootx=base_x + int(largeur * fraction_x),
+                    rooty=base_y + int(hauteur * fraction_y))
+        self.app.update()
+        self.assertEqual([f"{t[0].__name__}: {t[1]}" for t in self.traces], [])
