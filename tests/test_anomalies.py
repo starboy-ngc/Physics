@@ -245,3 +245,43 @@ class TestImpossibleDatesNeverEnterAnAverage(unittest.TestCase):
         rapport = run_quality_check(population, mapping, config).as_dict()
         codes = {constat["code"] for constat in rapport["constats"]}
         self.assertIn("leave_before_hire", codes)
+
+
+class TestTheSexIsReadFromOneFieldOnly(unittest.TestCase):
+    """Un SIRH range parfois le sexe dans une colonne a lui.
+
+    « gender_field » existe pour cela. Encore faut-il que tout le monde le
+    lise : la repartition affichee sur l'ecran Population l'ignorait et
+    retombait sur le champ natif. Sur un fichier ainsi configure, l'outil
+    annoncait « 100 % non renseigne » a gauche et un ecart femmes/hommes
+    calcule a droite — deux reponses contradictoires a la meme question,
+    dans la meme analyse.
+    """
+
+    def _population_et_config(self):
+        from compensation_analytics.core.config import Configuration
+
+        population = build_population([make_row(i) for i in range(40)])
+        for rang, salarie in enumerate(population.employees):
+            salarie.extra["sexe_sirh"] = "F" if rang % 2 else "H"
+            salarie.gender = ""
+        donnees = make_config().as_dict()
+        donnees["pay_equity_parameters"]["gender_field"] = "sexe_sirh"
+        return population, Configuration(donnees)
+
+    def test_the_population_split_follows_the_configured_field(self):
+        population, config = self._population_et_config()
+        parts = metrics.calculate_population_metrics(population, config)
+        repartition = {item["label"]: item["count"]
+                       for item in parts["gender_split"]}
+        self.assertEqual(repartition, {"F": 20, "H": 20})
+
+    def test_the_split_and_the_gap_speak_of_the_same_field(self):
+        from compensation_analytics.core import pay_equity
+
+        population, config = self._population_et_config()
+        parts = metrics.calculate_population_metrics(population, config)
+        ecarts = pay_equity.calculate_pay_equity(population, config)
+        femmes = {item["label"]: item["count"]
+                  for item in parts["gender_split"]}.get("F")
+        self.assertEqual(femmes, ecarts["female_count"])

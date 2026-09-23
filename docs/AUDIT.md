@@ -25,9 +25,9 @@ Périmètre mesuré : 14 914 lignes de moteur et d'interface (37 fichiers),
 | Aucune donnée réelle en test (§27) | **conforme** | 25 jeux synthétiques |
 | Sécurité du code (§30) | **conforme** | aucun `eval`/`exec`/code dynamique |
 | Aucune dépendance externe (§34) | **conforme** | bibliothèque standard seule |
-| Aucun runtime supposé (§34) | **non tenu** | voir 6.1 — seul écart de fond |
+| Aucun runtime supposé (§34) | **non tenu** | voir 7.1 — seul écart de fond |
 
-**9 défauts trouvés, 9 corrigés** : 1 critique, 6 majeurs, 2 mineurs.
+**10 défauts trouvés, 10 corrigés** : 1 critique, 7 majeurs, 2 mineurs.
 Aucun défaut connu ne reste ouvert dans le périmètre audité.
 
 ---
@@ -131,6 +131,14 @@ Après la correction M-2, deux des trois lectures de
 au contrôle et rendaient la trace Python que la première évitait.
 → `core/pay_equity.py` ; `tests/test_field_settings.py` (1 test, 2 chemins).
 
+**[M-7] Le sexe se lisait à deux endroits différents.**
+`gender_field` existe pour le SIRH qui range le sexe dans une colonne à
+lui. L'écran Population l'ignorait et retombait sur le champ natif : sur un
+fichier ainsi configuré, l'outil annonçait « 100 % non renseigné » d'un
+côté et un écart femmes/hommes calculé de l'autre — deux réponses
+contradictoires à la même question, dans la même analyse.
+→ `core/metrics.py` ; `tests/test_anomalies.py` (2 tests).
+
 ### 3.3 Mineures
 
 **[m-1] L'interface contournait `BoxPlotChart.set_split()`.**
@@ -186,9 +194,62 @@ l'interface.
 
 ---
 
-## 5. Points fragiles (pas des défauts — des endroits où l'outil est mince)
+## 5. Code en dur : ce qui est paramétrable, et ce qui ne l'est pas
 
-**5.1 La reproductibilité dépend d'un paramètre.** Deux analyses du même
+Question posée directement, vérifiée en cherchant les noms de champs et les
+seuils écrits dans le code plutôt qu'en relisant les intentions.
+
+### 5.1 Aucune donnée RH n'est en dur
+
+Aucun nom, prénom, matricule, salaire ni fichier réel n'existe dans le code
+ou dans les tests. Les 25 jeux d'essai sont fabriqués par un générateur à
+graine fixe (§27). Les deux populations de démonstration livrées dans
+l'archive sont synthétiques.
+
+### 5.2 Le mapping ne l'est pas non plus
+
+`config/population_mapping.json` déclare, pour chaque champ du modèle, les
+en-têtes de colonne qui y mènent — « Matricule », « Employee ID », « ID »
+pour l'identifiant, et ainsi de suite. Un SIRH qui nomme ses colonnes
+autrement s'ajoute au fichier, sans toucher au code. Un champ déclaré mais
+inconnu du modèle n'est pas perdu : il part dans `extra` et reste filtrable
+et segmentable comme les autres.
+
+De même sont dans les fichiers de configuration, et non dans le code : le
+champ analysé, le champ du sexe, les écritures qui désignent chaque sexe
+(« F », « Femme », « Female », « Mme »…), le champ de catégorie, les
+tranches d'âge et d'ancienneté, les percentiles, les seuils de
+confidentialité, le facteur d'atypie, le seuil d'alerte, la devise, les
+dimensions d'analyse et les champs du profil.
+
+### 5.3 Ce qui reste écrit dans le code
+
+Quatre endroits, tous assumés — mais il faut savoir qu'ils existent :
+
+| Endroit | Ce qui est figé | Défendable ? |
+|---|---|---|
+| `metrics._key_shares` | les tranches des parts remarquables : < 30 ans, 30-49, 50+, ancienneté < 2 ans, > 10 ans | **oui** — ce sont des indicateurs de définition fixe, demandés tels quels ; les tranches *affichées*, elles, sont paramétrables à part |
+| `export._MONEY_COLUMNS` | les trois colonnes de rémunération de l'export et leurs libellés | **partiellement** — un employeur ayant une quatrième notion de rémunération devra la déclarer en `extra`, où elle ne sera pas traitée comme un montant |
+| `export._rows_distribution` | les colonnes du tableau des situations atypiques (BU, grade, famille métier) | **oui** — c'est une mise en page, pas un calcul |
+| `metrics` (nuage) | `grade` et `job_family` joints à chaque point | **oui** — ce sont des clés de survol, non des résultats |
+
+Le modèle `Employee` lui-même est un schéma fixe. C'est un choix
+d'architecture, pas un oubli : il donne un socle typé et vérifiable, et
+`extra` absorbe tout ce qu'un employeur y ajoute.
+
+### 5.4 Le défaut que cette recherche a trouvé
+
+Un seul endroit lisait un champ en dur alors qu'un paramètre existait pour
+lui : la répartition femmes/hommes de l'écran Population. Voir **[M-7]**.
+C'est exactement le risque de ce genre de code en dur — non pas qu'il
+empêche un réglage, mais qu'il fasse dire deux choses différentes à deux
+écrans de la même analyse.
+
+---
+
+## 6. Points fragiles (pas des défauts — des endroits où l'outil est mince)
+
+**6.1 La reproductibilité dépend d'un paramètre.** Deux analyses du même
 fichier donnent des références anonymes différentes tant qu'aucun sel n'est
 déclaré ; avec un sel, elles sont identiques au caractère près. C'est le
 comportement voulu — un sel fixe rend les pseudonymes rapprochables d'une
@@ -197,28 +258,28 @@ qu'il faut éviter. **Mais le choix est silencieux.** Un utilisateur qui
 compare deux exports sans avoir posé de sel croira à une incohérence.
 *Suggestion* : le manifeste devrait dire lequel des deux régimes a servi.
 
-**5.2 Un champ d'analyse absent du fichier est accepté.** L'analyse se
+**6.2 Un champ d'analyse absent du fichier est accepté.** L'analyse se
 produit, vide et masquée, et le contrôle qualité le signale — mais l'outil
 ne refuse pas. Défendable ; à confirmer comme un choix.
 
-**5.3 Une liste de percentiles vide est acceptée.** Elle produit une
+**6.3 Une liste de percentiles vide est acceptée.** Elle produit une
 analyse sans percentiles. Même remarque.
 
-**5.4 Le banc a tourné sous un compte privilégié.** Le cas « fichier de
+**6.4 Le banc a tourné sous un compte privilégié.** Le cas « fichier de
 configuration sans droit de lecture » est donc passé au lieu d'être refusé.
 Ce n'est pas un résultat de l'outil, c'est une limite du banc : ce cas reste
 non mesuré.
 
-**5.5 L'audit n'a rien mesuré sous Windows.** Tout ce qui précède a été
+**6.5 L'audit n'a rien mesuré sous Windows.** Tout ce qui précède a été
 obtenu sous Linux. Les chemins, les fins de ligne, l'encodage `cp1252` des
 CSV exportés par un SIRH français, le rendu de la fenêtre à 125 % : angle
 mort complet, alors que c'est la cible réelle.
 
 ---
 
-## 6. Écart de fond restant
+## 7. Écart de fond restant
 
-### 6.1 §34 — « ne jamais supposer qu'un runtime est installé »
+### 7.1 §34 — « ne jamais supposer qu'un runtime est installé »
 
 C'est le seul point de la spécification que l'outil ne tient pas
 aujourd'hui, et il ne relève pas d'un correctif : il se livre. L'outil
@@ -234,11 +295,11 @@ chantier à ouvrir.**
 
 ---
 
-## 7. Ce que l'audit n'a pas couvert
+## 8. Ce que l'audit n'a pas couvert
 
 Nommé pour que la portée du « 0 anomalie » soit lisible :
 
-- Windows, dans son ensemble (5.5).
+- Windows, dans son ensemble (6.5).
 - Les fichiers `.xls` anciens et les CSV en `cp1252`.
 - La tenue au-delà de 60 000 lignes.
 - L'accessibilité au lecteur d'écran.
@@ -246,12 +307,12 @@ Nommé pour que la portée du « 0 anomalie » soit lisible :
 
 ---
 
-## 8. Suites proposées
+## 9. Suites proposées
 
 | Ordre | Chantier | Pourquoi |
 |---|---|---|
-| 1 | Interpréteur embarqué (6.1) | seul écart à la spécification |
+| 1 | Interpréteur embarqué (7.1) | seul écart à la spécification |
 | 2 | Banc Windows | angle mort sur la cible réelle |
 | 3 | Repli d'encodage `cp1252` à l'import | cas courant d'un SIRH français |
-| 4 | Régime de sel inscrit au manifeste (5.1) | lève la seule ambiguïté de lecture |
+| 4 | Régime de sel inscrit au manifeste (6.1) | lève la seule ambiguïté de lecture |
 | 5 | Fiche individuelle, évolution N/N−1 | fonctionnel déjà arbitré |

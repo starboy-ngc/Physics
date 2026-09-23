@@ -108,7 +108,16 @@ def calculate_population_metrics(
         return result
     result.update(calculate_age_metrics(population, config))
     result.update(calculate_tenure_metrics(population, config))
-    result["gender_split"] = _distribution_share(population, "gender", headcount)
+    # Le champ du sexe est celui de la configuration, non le champ natif :
+    # un SIRH qui range le sexe dans une colonne declaree a part reste
+    # analysable, et surtout la repartition affichee ici et les ecarts
+    # de la directive parlent alors du meme champ. Lus differemment, ils
+    # se contredisaient — 100 % « non renseigne » d'un cote, un ecart
+    # calcule de l'autre.
+    result["gender_split"] = _distribution_share(
+        population,
+        config.section("pay_equity_parameters").get("gender_field", "gender"),
+        headcount)
     result.update(_key_shares(population))
     return result
 
