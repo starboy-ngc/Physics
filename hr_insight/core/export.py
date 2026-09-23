@@ -256,6 +256,11 @@ HIRE_COLUMN = "Date d'entrée"
 LEAVE_COLUMN = "Date de sortie"
 AGE_COLUMN = "Âge"
 TENURE_COLUMN = "Ancienneté"
+#: Temps de travail : la colonne qui permet de ramener au temps plein.
+#: Sans elle dans le classeur, l'indicateur a temps plein serait publie
+#: sans que rien ne permette de le refaire — or c'est tout l'objet de cet
+#: export.
+FTE_COLUMN = "Temps de travail"
 
 #: Libelles des colonnes de remuneration, par champ du modele.
 _MONEY_COLUMNS = (("base_salary", "Salaire de base"),
@@ -304,7 +309,7 @@ def _rows_individual(
     headers = ([SOURCE_ROW, "Référence"]
                + [entry["label"] for entry in dimensions]
                + [SEX_COLUMN, BIRTH_COLUMN, HIRE_COLUMN, LEAVE_COLUMN,
-                  AGE_COLUMN, TENURE_COLUMN]
+                  AGE_COLUMN, TENURE_COLUMN, FTE_COLUMN]
                + [label for _, label in _MONEY_COLUMNS])
     rows: List[List[Any]] = [headers]
     naissance = fx.column_letter(len(dimensions) + 3)
@@ -322,7 +327,8 @@ def _rows_individual(
                if derived_as_formulas else employee.age_years,
                _tenure_cell(employee, reference, f"{entree}{ligne}",
                             f"{sortie}{ligne}")
-               if derived_as_formulas else employee.tenure_years]
+               if derived_as_formulas else employee.tenure_years,
+               employee.fte]
             + [employee.value(field) for field, _ in _MONEY_COLUMNS]
         )
     return rows
@@ -559,6 +565,21 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
             if cle in salary:
                 poser(f"P{int(rang)}", salary.get(cle),
                       ledger.percentile(salaire, rang))
+        # Le meme montant ramene au temps plein. Sa formule divise ligne a
+        # ligne : c'est la seule facon de rendre l'indicateur refaisable, et
+        # un indicateur publie sans sa formule n'a rien a faire dans ce
+        # classeur.
+        plein = salary.get("full_time") or {}
+        if ledger.has(FTE_COLUMN) and not plein.get("masked"):
+            poser("Effectif au temps de travail connu",
+                  plein.get("known_headcount"),
+                  f'SUMPRODUCT(--({ledger.range(salaire)}<>""),'
+                  f'--({ledger.range(FTE_COLUMN)}<>""),'
+                  f'--({ledger.range(FTE_COLUMN)}>0))')
+            poser("Moyenne à temps plein", plein.get("mean"),
+                  ledger.per_full_time(salaire, FTE_COLUMN, "AVERAGE"))
+            poser("Médiane à temps plein", plein.get("median"),
+                  ledger.per_full_time(salaire, FTE_COLUMN, "MEDIAN"))
         dispersion = salary.get("dispersion") or {}
         for label, key, expression in (
             ("Q3 - Q1", "interquartile_range",

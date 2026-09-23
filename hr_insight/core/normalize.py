@@ -400,6 +400,93 @@ def resolve_bands(config: Configuration, section: str,
     )
 
 
+#: Au-dela de cette valeur, une colonne de temps de travail ne peut plus se
+#: lire comme un ratio : personne ne travaille a 50 fois le temps plein.
+#: C'est donc une echelle en pourcentage.
+FTE_RATIO_LIMIT = 1.5
+
+#: Nom du champ de temps de travail. Il est ecrit une fois : le mapping le
+#: relie a la colonne du fichier, mais le calcul, lui, a besoin de savoir
+#: lequel des champs numeriques porte un temps de travail.
+FTE_FIELD = "fte"
+
+
+def parse_fte(value: Any) -> tuple:
+    """Rend (nombre, ecrit_en_pourcent) pour une cellule de temps de travail.
+
+    « 50 % » ne se lit pas comme un montant : le signe est refuse par
+    `parse_number`, qui a raison de le refuser pour un salaire. Ici il
+    porte une information — l'echelle — et on la retient au lieu de rendre
+    la cellule illisible.
+    """
+    if value is None:
+        return None, False
+    text = str(value).strip()
+    percent = text.endswith("%")
+    if percent:
+        text = text[:-1].strip()
+    return parse_number(text), percent
+
+
+def apply_fte_scale(employees: List["Employee"], any_percent: bool) -> None:
+    """Ramene la colonne de temps de travail a un ratio, ou la refuse.
+
+    La meme notion s'ecrit « 0,8 », « 80 » ou « 80 % » selon le SIRH. Tant
+    que rien ne calculait avec elle, l'ecriture n'avait pas d'importance.
+    Des qu'on divise un salaire par elle, un « 80 » pris pour 80 divise le
+    salaire par quatre-vingts.
+
+    L'echelle se deduit de la colonne entiere, non de la cellule : un
+    maximum au-dela de 1,5, ou un seul pourcentage ecrit explicitement,
+    et toute la colonne est en pourcentage. Une valeur impossible apres
+    mise a l'echelle — nulle, negative, au-dela du temps plein — n'est pas
+    une valeur : elle est retiree et la ligne marquee, comme l'est une
+    date impossible.
+    """
+    values = [item.fte for item in employees if item.fte is not None]
+    if not values:
+        return
+    en_pourcent = any_percent or max(values) > FTE_RATIO_LIMIT
+    for item in employees:
+        if item.fte is None:
+            continue
+        if en_pourcent:
+            # Dans une colonne en pourcentage, un « 1 » vaut 1 % de temps
+            # de travail. C'est presque toujours un temps plein mal ecrit,
+            # et le diviser par cent multiplierait son salaire par cent.
+            if item.fte <= FTE_RATIO_LIMIT:
+                item.issues.append("fte:ambiguous_scale")
+                item.fte = None
+                continue
+            item.fte = item.fte / 100.0
+        if item.fte is not None and not 0 < item.fte <= 1:
+            item.issues.append("fte:out_of_range")
+            item.fte = None
+
+
+def full_time_amount(employee: "Employee", field_name: str) -> Optional[float]:
+    """Montant ramene au temps plein, ou None s'il ne peut pas l'etre.
+
+    Les fichiers de paie portent le montant *verse*, non le taux plein :
+    un salarie a 80 % y figure pour 80 % de son salaire. Comparer tel quel
+    une population feminine plus souvent a temps partiel a une population
+    masculine plus souvent a temps plein mesure d'abord la difference de
+    temps de travail, et seulement ensuite la difference de remuneration.
+    Diviser par le temps de travail les met sur la meme base.
+
+    Un temps de travail inconnu ne se suppose pas egal a un : ce serait
+    compter un temps partiel comme un temps plein, c'est-a-dire l'erreur
+    meme que ce calcul corrige. Le montant est alors absent, et la
+    couverture le dit.
+    """
+    value = employee.value(field_name)
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        return None
+    if employee.fte is None or not 0 < employee.fte <= 1:
+        return None
+    return float(value) / employee.fte
+
+
 def _observed_max(employees: Iterable["Employee"], field_name: str) -> Optional[float]:
     values = [getattr(item, field_name) for item in employees
               if getattr(item, field_name) is not None]
@@ -460,6 +547,9 @@ def normalise_table(
     salt = anonymisation_salt(config)
 
     employees: List[Employee] = []
+    #: Un seul pourcentage ecrit dans la colonne suffit a fixer l'echelle
+    #: de toute la colonne : personne ne melange « 0,8 » et « 80 % ».
+    fte_en_pourcent = False
     for offset, row in enumerate(rows):
         if all(str(cell).strip() == "" for cell in row):
             continue
@@ -469,7 +559,11 @@ def normalise_table(
                 continue
             raw = row[index]
             if field_name in numeric_fields:
-                number = parse_number(raw)
+                if field_name == FTE_FIELD:
+                    number, ecrit_en_pourcent = parse_fte(raw)
+                    fte_en_pourcent = fte_en_pourcent or ecrit_en_pourcent
+                else:
+                    number = parse_number(raw)
                 if number is None and str(raw).strip() != "":
                     employee.issues.append(f"{field_name}:not_numeric")
                 elif has_ambiguous_separator(raw):
@@ -510,6 +604,10 @@ def normalise_table(
             else employee.employee_id
         )
         employees.append(employee)
+
+    # Le temps de travail se met a l'echelle en second temps, pour la meme
+    # raison que les tranches : son echelle se lit sur la colonne entiere.
+    apply_fte_scale(employees, fte_en_pourcent)
 
     # Les tranches sont posees en second temps : prolonger la derniere
     # tranche ouverte suppose de connaitre le maximum de la population, qui

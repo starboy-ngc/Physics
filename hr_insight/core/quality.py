@@ -192,6 +192,28 @@ def _check_structure(
                 rows,
             )
             continue
+        if kind == "ambiguous_scale":
+            _add(
+                report, "fte_ambiguous_scale", WARNING,
+                "Temps de travail ambigu : la colonne est écrite en "
+                "pourcentage (80 pour 80 %), mais ces lignes portent une "
+                "valeur inférieure à 1,5 — un temps plein écrit « 1 » dans "
+                "une colonne en pourcentage vaudrait 1 %. Ces lignes sont "
+                "écartées du calcul à temps plein. Harmonisez l'écriture de "
+                "la colonne.",
+                rows,
+            )
+            continue
+        if kind == "out_of_range":
+            _add(
+                report, "fte_out_of_range", WARNING,
+                "Temps de travail impossible : nul, négatif, ou supérieur au "
+                "temps plein. Ces lignes gardent leur rémunération mais "
+                "sortent du calcul à temps plein, qui diviserait par une "
+                "valeur qui n'en est pas une.",
+                rows,
+            )
+            continue
         _add(
             report, f"type_{issue}", WARNING,
             f"Valeurs non numériques dans le champ \"{field_name}\".", rows,

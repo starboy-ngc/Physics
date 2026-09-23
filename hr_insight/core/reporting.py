@@ -403,7 +403,40 @@ def _salary_section(salary: Dict[str, Any]) -> str:
         f'<div class="kpis">{kpis}</div>'
         f'<h3>Percentiles</h3>{_table(["Indicateur", "Valeur"], percentile_rows)}'
         f'<h3>Dispersion</h3>{_table(["Indicateur", "Valeur"], dispersion_rows)}'
+        f"{_full_time_section(salary, currency)}"
         f"{technical_note}"
+    )
+
+
+def _full_time_section(salary: Dict[str, Any], currency: str) -> str:
+    """Les memes montants a temps de travail egal.
+
+    Place sous les indicateurs verses, jamais a leur place : le lecteur
+    doit voir les deux, et savoir lequel il cite.
+    """
+    bloc = salary.get("full_time") or {}
+    if not bloc:
+        return ""
+    if bloc.get("masked"):
+        return (f"<h3>À temps plein</h3>"
+                f'{_note(bloc.get("warning"), "warn")}')
+    rows = [
+        ("Moyenne à temps plein", format_money(bloc.get("mean"), currency)),
+        ("Médiane à temps plein", format_money(bloc.get("median"), currency)),
+        ("Salariés au temps de travail connu",
+         f'{format_number(bloc.get("known_headcount"), 0)} '
+         f'({format_percent(bloc.get("coverage"))} des rémunérations)'),
+    ]
+    return (
+        "<h3>À temps plein</h3>"
+        + _note("Chaque rémunération est divisée par le temps de travail du "
+                "salarié : un 80 % à 32 000 € compte pour 40 000 €. Ces "
+                "montants répondent à « que paie-t-on pour un même temps de "
+                "travail ? », les précédents à « que verse-t-on ? ». Les "
+                "salariés dont le temps de travail est inconnu en sont "
+                "exclus — le supposer plein serait l'erreur que ce calcul "
+                "corrige.")
+        + _table(["Indicateur", "Valeur"], rows)
     )
 
 
@@ -531,6 +564,18 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
         _kpi("Effectif hommes", str(equity.get("male_count", 0))),
     ])
 
+    # L'ecart a temps de travail egal, a cote de l'ecart global. Une
+    # population feminine plus souvent a temps partiel fait un ecart global
+    # qui mesure d'abord le temps de travail : le dire evite de publier
+    # comme ecart de remuneration ce qui n'en est pas un.
+    plein = equity.get("full_time") or {}
+    if plein.get("published"):
+        kpis += "".join([
+            _kpi("Écart à temps plein", format_percent(plein.get("mean_gap"))),
+            _kpi("Expliqué par le temps de travail",
+                 format_percent(plein.get("explained_gap"))),
+        ])
+
     rows = []
     for item in sorted(equity.get("categories", []),
                        key=lambda entry: (not entry.get("published"),
@@ -557,6 +602,19 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
     quartile_table = _table(["Quartile", "Effectif", "Part femmes",
                              "Part hommes"], quartiles) if quartiles else ""
 
+    note_plein = ""
+    if plein.get("published"):
+        note_plein = (
+            " Écart à temps plein : le même calcul, chaque rémunération "
+            "divisée par le temps de travail du salarié, sur "
+            f"{format_percent(plein.get('coverage'))} des rémunérations — "
+            "celles dont le temps de travail est connu. La différence entre "
+            "les deux écarts est la part que le temps de travail explique ; "
+            "ce qui reste est l'écart à temps de travail égal."
+        )
+    elif plein:
+        note_plein = (" " + (plein.get("warning") or "")) if plein.get("warning") else ""
+
     note = (
         "Un écart positif signifie que les femmes sont moins rémunérées. "
         "Écart global : (moyenne des hommes − moyenne des femmes) / moyenne "
@@ -572,7 +630,8 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
         f"rémunération variable {format_percent(variable.get('mean_gap'))} ; "
         "part percevant une rémunération variable "
         f"{format_percent(coverage.get('female_share'))} des femmes et "
-        f"{format_percent(coverage.get('male_share'))} des hommes.")
+        f"{format_percent(coverage.get('male_share'))} des hommes."
+        + note_plein)
     unknown = equity.get("unknown_count", 0)
     if unknown:
         note += (f" {unknown} salarié(s) dont le sexe n'est pas renseigné "

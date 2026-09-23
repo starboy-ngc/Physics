@@ -182,6 +182,27 @@ class Ledger:
         return (f"MEDIAN(IF({self._mask(criteria, value_label)},"
                 f"{self.range(value_label)}))")
 
+    def per_full_time(self, value_label: str, ratio_label: str,
+                      statistic: str = "AVERAGE",
+                      criteria: Sequence[Tuple[str, Any]] = ()) -> str:
+        """Moyenne — ou mediane — d'un montant ramene au temps plein.
+
+        Le montant se divise ligne a ligne par le temps de travail, ce qui
+        fait une formule matricielle : la division porte sur deux plages,
+        non sur deux cellules. Les lignes ou l'un des deux manque sont
+        exclues par le masque, sans quoi la division rendrait une erreur
+        qui remonterait jusqu'au resultat.
+        """
+        # Chaque test est parenthese : sans cela « A<>""*B<>"" » se lit
+        # « A <> ("" * B) <> "" » et le masque devient faux partout. La
+        # formule rendait alors un tableau de zeros au lieu d'un nombre.
+        tests = [f'({self.range(value_label)}<>"")',
+                 f'({self.range(ratio_label)}<>"")',
+                 f'({self.range(ratio_label)}>0)']
+        tests.extend(f"({test})" for test in self._tests(criteria))
+        return (f"{statistic}(IF({'*'.join(tests)},"
+                f"{self.range(value_label)}/{self.range(ratio_label)}))")
+
     def percentile(self, value_label: str, rank: float,
                    criteria: Sequence[Tuple[str, Any]] = ()) -> str:
         part = number_literal(rank / 100.0)

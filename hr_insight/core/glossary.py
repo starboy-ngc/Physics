@@ -149,6 +149,20 @@ GLOSSARY: Dict[str, Entry] = {
         "sont moins rémunérées.",
         "(Moyenne des hommes − Moyenne des femmes) / Moyenne des hommes, en "
         "pourcentage."),
+    "full_time_gap": Entry(
+        "Le même écart moyen, chaque rémunération d'abord ramenée au temps "
+        "plein. Une population féminine plus souvent à temps partiel fait un "
+        "écart global qui mesure d'abord une différence de temps de travail ; "
+        "celui-ci mesure ce que l'employeur paie à temps de travail égal. "
+        "Les salariés dont le temps de travail est inconnu en sont exclus : "
+        "le supposer plein serait l'erreur même que ce calcul corrige.",
+        "Même formule que l'écart moyen, appliquée à (Rémunération ÷ Temps "
+        "de travail) salarié par salarié."),
+    "explained_gap": Entry(
+        "Part de l'écart global que la différence de temps de travail "
+        "explique. Ce qui reste — l'écart à temps plein — est l'écart à "
+        "temps de travail égal.",
+        "Écart global − Écart à temps plein, en points de pourcentage."),
     "median_gap": Entry(
         "Écart de rémunération médiane, indicateur b) de la directive "
         "2023/970. Moins sensible aux rémunérations extrêmes que l'écart "

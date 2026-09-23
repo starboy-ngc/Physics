@@ -13,7 +13,7 @@ from dataclasses import dataclass, fields as _dataclass_fields
 from typing import Any, Dict, List, Optional, Sequence
 
 from .config import Configuration, analysis_field, percentiles as configured_percentiles
-from .normalize import Employee, Population
+from .normalize import Employee, Population, full_time_amount
 from .errors import ConfigError
 from .segmentation import (UNKNOWN_LABEL, dimension_fields,
                            dimension_label, personal_fields, split_by)
@@ -267,7 +267,40 @@ def calculate_salary_metrics(
         {"key": _percentile_key(rank), "label": _percentile_label(rank)}
         for rank in published
     ]
+    result["full_time"] = _full_time_block(population, field_name, rules)
     return result
+
+
+def _full_time_block(population: Population, field_name: str,
+                     rules: PrivacyRules) -> Dict[str, Any]:
+    """Les memes montants, ramenes au temps plein.
+
+    Un indicateur a cote de l'autre, jamais a sa place : le montant verse
+    est ce que l'employeur paie, le montant a temps plein est ce qu'il
+    paierait a temps de travail egal. Les deux sont vrais, et ils ne
+    repondent pas a la meme question.
+
+    La couverture est publiee avec eux : un temps plein calcule sur la
+    moitie de la population ne se lit pas comme un temps plein calcule sur
+    toute la population.
+    """
+    amounts = [full_time_amount(employee, field_name)
+               for employee in population]
+    amounts = [value for value in amounts if value is not None]
+    valued = len(_values(population, field_name))
+    bloc: Dict[str, Any] = {
+        "known_headcount": len(amounts),
+        "coverage": _share(len(amounts), valued),
+        "masked": not rules.may_publish(len(amounts)),
+    }
+    if bloc["masked"]:
+        bloc["warning"] = (
+            "Temps de travail connu pour trop peu de salariés : la "
+            "rémunération à temps plein n'est pas publiée.")
+        return bloc
+    bloc["mean"] = stats.mean(amounts)
+    bloc["median"] = stats.median(amounts)
+    return bloc
 
 
 def _field_label(config: Configuration, field_name: str) -> str:

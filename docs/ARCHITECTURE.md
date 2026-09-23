@@ -124,6 +124,49 @@ Méthode inclusive à interpolation linéaire (type 7), identique à
 Excel par l'équipe C&B donne exactement la même valeur. Les valeurs de
 référence sont figées dans `tests/test_statistics.py`.
 
+## 8 bis. Temps de travail et rémunération à temps plein
+
+Un fichier de paie porte le montant **versé**, non le taux plein : un
+salarié à 80 % y figure pour 80 % de son salaire. Dans une population où le
+temps partiel est majoritairement féminin — le cas ordinaire —, un écart
+femmes/hommes calculé sur ces montants mesure d'abord une différence de
+temps de travail, et publie comme écart de rémunération ce qui n'en est
+pas un.
+
+L'outil publie donc **les deux** : l'écart versé et l'écart à temps de
+travail égal, avec la différence entre eux — ce que le temps partiel
+explique. Jamais l'un à la place de l'autre : ils répondent à deux
+questions, et le lecteur doit savoir laquelle il cite.
+
+**La colonne d'abord.** La même notion s'écrit « 0,8 », « 80 » ou « 80 % »
+selon le SIRH. Tant que rien ne calculait avec elle, l'écriture n'avait pas
+d'importance ; dès qu'on divise un salaire par elle, un « 80 » pris pour 80
+divise le salaire par quatre-vingts. L'échelle se déduit donc de la
+**colonne entière**, jamais de la cellule : un maximum au-delà de 1,5, ou
+un seul pourcentage écrit explicitement, et toute la colonne est en
+pourcentage.
+
+Ce qui ne peut pas se trancher est refusé plutôt que deviné :
+
+| Cas | Traitement |
+|---|---|
+| « 1 » dans une colonne en pourcentage | ligne écartée, `fte:ambiguous_scale` — un temps plein mal écrit vaudrait 1 % |
+| ETP nul, négatif, au-delà du temps plein | ligne écartée, `fte:out_of_range` |
+| ETP inconnu | exclu du calcul à temps plein — le supposer plein serait l'erreur même que ce calcul corrige |
+
+Les deux premiers cas remontent au contrôle qualité avec leurs numéros de
+ligne. La **couverture** est publiée avec l'indicateur : un temps plein
+calculé sur la moitié de la population ne se lit pas comme un temps plein
+calculé sur toute la population, et le seuil de confidentialité s'y
+applique comme ailleurs.
+
+**Le calcul est refaisable.** L'onglet Contrôle porte la formule, qui
+divise ligne à ligne :
+`AVERAGE(IF((salaire<>"")*(etp<>"")*(etp>0), salaire/etp))`. La colonne
+« Temps de travail » figure pour cela dans les données individuelles — un
+indicateur publié sans le moyen de le refaire n'a pas sa place dans ce
+classeur.
+
 ## 9. Traçabilité
 
 Chaque analyse produit un manifeste JSON : moteur, version, date, nom et

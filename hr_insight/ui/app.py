@@ -1985,9 +1985,29 @@ class Application(tk.Tk):
             ("Effectif F / H",
              f'{equity.get("female_count", 0)} / {equity.get("male_count", 0)}',
              "female_count"),
-        ])
+        ] + self._full_time_kpis(equity))
         self.equity_frame.pack_configure(padx=18)
         self.equity_note.configure(text=self._decomposition_note(equity, block))
+
+    @staticmethod
+    def _full_time_kpis(equity: Dict[str, Any]) -> List[tuple]:
+        """L'ecart a temps de travail egal, quand il est publiable.
+
+        Il ne remplace pas l'ecart global : les deux se lisent ensemble.
+        L'un dit ce que l'employeur verse, l'autre ce qu'il verserait a
+        temps de travail egal, et leur difference dit ce que le temps
+        partiel explique — souvent l'essentiel, dans une population ou il
+        est majoritairement feminin.
+        """
+        plein = equity.get("full_time") or {}
+        if not plein.get("published"):
+            return []
+        return [
+            ("Écart à temps plein", _signed_percent(plein.get("mean_gap")),
+             "full_time_gap"),
+            ("Expliqué par le temps de travail",
+             _signed_percent(plein.get("explained_gap")), "explained_gap"),
+        ]
 
     def _decomposition_note(self, equity: Dict[str, Any],
                             block: Optional[Dict[str, Any]]) -> str:

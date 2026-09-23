@@ -33,7 +33,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from . import statistics_engine as stats
 from .config import Configuration, analysis_field
-from .normalize import Population
+from .normalize import Population, full_time_amount
 from .metrics import PrivacyRules
 from .segmentation import cross_key, dimension_label, split_by
 
@@ -112,6 +112,16 @@ def _amounts(employees: Sequence[Any], field_name: str) -> List[float]:
         value = employee.value(field_name)
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             values.append(float(value))
+    return values
+
+
+def _full_time_amounts(employees: Sequence[Any], field_name: str) -> List[float]:
+    """Memes montants, ramenes au temps plein. Les ETP inconnus sortent."""
+    values = []
+    for employee in employees:
+        amount = full_time_amount(employee, field_name)
+        if amount is not None:
+            values.append(amount)
     return values
 
 
@@ -221,6 +231,24 @@ def calculate_pay_equity(population: Population,
     result["available"] = True
     result["pay"] = _pair(_amounts(women, salary_field),
                           _amounts(men, salary_field), rules)
+
+    # Le meme ecart, une fois les temps partiels ramenes au temps plein.
+    # Il ne remplace pas le precedent : les deux ensemble disent ce que le
+    # temps de travail explique de l'ecart, et ce qu'il n'explique pas.
+    # Publie seulement si l'ETP est connu pour assez de monde des deux
+    # cotes — un ecart a temps plein calcule sur trois femmes n'est pas un
+    # ecart a temps plein.
+    femmes_etp = _full_time_amounts(women, salary_field)
+    hommes_etp = _full_time_amounts(men, salary_field)
+    result["full_time"] = _pair(femmes_etp, hommes_etp, rules)
+    valorises = len(_amounts(women, salary_field)) + len(_amounts(men, salary_field))
+    result["full_time"]["coverage"] = (
+        round(100.0 * (len(femmes_etp) + len(hommes_etp)) / valorises, 1)
+        if valorises else None)
+    result["full_time"]["explained_gap"] = (
+        round(result["pay"]["mean_gap"] - result["full_time"]["mean_gap"], 2)
+        if result["pay"].get("mean_gap") is not None
+        and result["full_time"].get("mean_gap") is not None else None)
     result["variable"] = _pair(_amounts(women, variable_field),
                                _amounts(men, variable_field), rules)
 

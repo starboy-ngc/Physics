@@ -403,5 +403,5 @@ Nommé pour que la portée du « 0 anomalie » soit lisible :
 | 2 | Banc Windows | angle mort sur la cible réelle |
 | 3 | Repli d'encodage `cp1252` à l'import | cas courant d'un SIRH français |
 | 4 | Régime de sel inscrit au manifeste (6.1) | lève la seule ambiguïté de lecture |
-| 5 | **Décider de l'annualisation sur l'ETP** | le réglage existait sans effet ; l'implémenter change tous les écarts publiés, c'est une décision, pas un correctif |
+| ~~5~~ | ~~Décider de l'annualisation sur l'ETP~~ | **fait** — décidé et implémenté : les deux écarts se lisent côte à côte, voir `docs/ARCHITECTURE.md` |
 | 6 | Fiche individuelle, évolution N/N−1 | fonctionnel déjà arbitré |
