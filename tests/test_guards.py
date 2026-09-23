@@ -18,14 +18,14 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core import axes, metrics
-from compensation_analytics.core import statistics_engine as stats
-from compensation_analytics.core.hierarchy import Tree
-from compensation_analytics.core.mapping import resolve_mapping
-from compensation_analytics.core.normalize import Employee, Population
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.core.segmentation import _as_list
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.core import axes, metrics
+from hr_insight.core import statistics_engine as stats
+from hr_insight.core.hierarchy import Tree
+from hr_insight.core.mapping import resolve_mapping
+from hr_insight.core.normalize import Employee, Population
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.core.segmentation import _as_list
+from hr_insight.io.xlsx_writer import write_workbook
 
 
 class TestStatisticsOnNothing(unittest.TestCase):
@@ -181,7 +181,7 @@ class TestWorkbookGuards(unittest.TestCase):
             write_workbook(os.path.join(self.directory, "vide.xlsx"), [])
 
     def test_a_datetime_is_written_like_a_date(self):
-        from compensation_analytics.io.tabular import read_table
+        from hr_insight.io.tabular import read_table
 
         path = os.path.join(self.directory, "horodate.xlsx")
         write_workbook(path, [("P", [["Quand"],

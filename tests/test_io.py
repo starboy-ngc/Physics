@@ -6,12 +6,12 @@ import tempfile
 import unittest
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core.errors import ImportError_, MappingError
-from compensation_analytics.core.mapping import ensure_required, resolve_mapping
-from compensation_analytics.core.normalize import (
+from hr_insight.core.errors import ImportError_, MappingError
+from hr_insight.core.mapping import ensure_required, resolve_mapping
+from hr_insight.core.normalize import (
     has_ambiguous_separator, parse_number)
-from compensation_analytics.io.tabular import read_table
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.io.tabular import read_table
+from hr_insight.io.xlsx_writer import write_workbook
 
 
 # Classeur minimal ou les lignes 3 a 6 sont absentes, comme Excel les omet.

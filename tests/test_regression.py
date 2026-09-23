@@ -15,8 +15,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.io.xlsx_writer import write_workbook
 from tools.generate_sample_population import HEADERS, build_rows
 
 BASELINE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
@@ -28,7 +28,7 @@ TOLERANCE = 1e-6
 
 
 def _regression_r2(points):
-    from compensation_analytics.core import statistics_engine as stats
+    from hr_insight.core import statistics_engine as stats
 
     trend = stats.linear_regression([point["x"] for point in points],
                                     [point["y"] for point in points])

@@ -19,10 +19,10 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
-from compensation_analytics.core.pipeline import (AnalysisRequest, _STAGES,
+from hr_insight.core.pipeline import (AnalysisRequest, _STAGES,
                                                   run_analysis)
-from compensation_analytics.io.tabular import read_table
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.io.tabular import read_table
+from hr_insight.io.xlsx_writer import write_workbook
 
 try:
     import tkinter
@@ -66,9 +66,9 @@ class TestTheBarMovesOnTheClock(unittest.TestCase):
     def setUp(self):
         import tkinter as tk
 
-        from compensation_analytics.ui import theme
-        from compensation_analytics.ui.progress import LoadingBar
-        from compensation_analytics.core.config import load_configuration
+        from hr_insight.ui import theme
+        from hr_insight.ui.progress import LoadingBar
+        from hr_insight.core.config import load_configuration
 
         self.root = tk.Tk()
         self.root.geometry("400x120")
@@ -321,9 +321,9 @@ class TestTheWindowDrivesTheBar(unittest.TestCase):
     def setUp(self):
         import time
 
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.ui.progress import LoadingBar
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.ui.app import Application
+        from hr_insight.ui.progress import LoadingBar
+        from hr_insight.core.pipeline import load_population
 
         self.annonces = []
         self.originale = LoadingBar.announce

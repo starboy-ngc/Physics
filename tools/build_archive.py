@@ -24,7 +24,7 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from compensation_analytics.version import __version__  # noqa: E402
+from hr_insight.version import __version__  # noqa: E402
 
 #: `zipapp -m` produit un lanceur qui appelle main() sans retransmettre sa
 #: valeur : tous les codes de sortie seraient perdus dans l'archive, et
@@ -37,13 +37,13 @@ par lot de savoir qu'un controle qualite a echoue.
 """
 import sys
 
-from compensation_analytics.cli import main
+from hr_insight.cli import main
 
 sys.exit(main())
 '''
 
 #: Ce que l'archive contient, en plus du code : dossier source -> destination.
-TREES = (("compensation_analytics", "compensation_analytics"),
+TREES = (("hr_insight", "hr_insight"),
          ("config", "config"),
          ("tools", "tools"),
          ("docs", "docs"))
@@ -56,7 +56,7 @@ FILES = (("packaging/lancer.bat", "lancer.bat"),
          ("README.md", "README.md"))
 
 #: Le .pyz n'embarque que ce qui est necessaire a l'execution.
-BUNDLED = ("compensation_analytics", "config")
+BUNDLED = ("hr_insight", "config")
 
 
 def _clean(path: str) -> None:
@@ -100,7 +100,7 @@ def build_tree(destination: str) -> str:
         if os.path.isfile(origin):
             shutil.copy2(origin, os.path.join(destination, target))
     _clean(destination)
-    build_pyz(os.path.join(destination, "compensation-analytics.pyz"))
+    build_pyz(os.path.join(destination, "hr-insight.pyz"))
     for name in ("lancer.sh", "analyser-demo.sh"):
         path = os.path.join(destination, name)
         if os.path.isfile(path):
@@ -127,7 +127,7 @@ def build_populations(destination: str, rows: int, seed: int) -> None:
     # anomalies toutes non bloquantes — l'analyse se lance, et l'on voit ce
     # que le controle signale sans qu'il refuse de travailler.
     from tools.generate_realistic_population import construire
-    from compensation_analytics.io.xlsx_writer import write_workbook
+    from hr_insight.io.xlsx_writer import write_workbook
     from tools.generate_realistic_population import HEADERS as ENTETES
 
     lignes, _anomalies = construire(900, 20260910, _dt.date.today())
@@ -154,11 +154,11 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
 
     os.makedirs(args.sortie, exist_ok=True)
-    tree = os.path.join(args.sortie, "compensation-analytics")
+    tree = os.path.join(args.sortie, "hr-insight")
     build_tree(tree)
     build_populations(tree, args.lignes, args.graine)
     archive = os.path.join(args.sortie,
-                           f"compensation-analytics-{__version__}.zip")
+                           f"hr-insight-{__version__}.zip")
     zip_tree(tree, archive)
     size = os.path.getsize(archive) / 1024
     print(f"{archive}  ({size:.0f} Ko)")

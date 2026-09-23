@@ -8,7 +8,7 @@ if not defined PY (
     echo   Python 3.9 ou superieur est requis. https://www.python.org/downloads/
     pause & exit /b 1
 )
-%PY% compensation-analytics.pyz analyse population-demo.xlsx ^
+%PY% hr-insight.pyz analyse population-demo.xlsx ^
     --segment grade --segment business_unit --segment gender ^
     --date-reference 2026-01-01 --titre "Analyse de demonstration" ^
     --sortie resultats

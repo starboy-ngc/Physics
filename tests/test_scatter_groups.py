@@ -22,7 +22,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core import metrics, palette
+from hr_insight.core import metrics, palette
 
 
 def dataset(counts, maximum=None):
@@ -155,27 +155,27 @@ class TestDocumentsShowTheSameGrouping(unittest.TestCase):
             {f"BU{index:02d}": 20 - index for index in range(15)}, maximum=9)
 
     def test_the_html_legend_names_the_grouping(self):
-        from compensation_analytics.core import reporting
+        from hr_insight.core import reporting
 
         legende = reporting._legend(self.data)
         self.assertIn(self.data["other_label"], legende)
         self.assertIn("var(--muted)", legende)
 
     def test_the_svg_paints_the_grouping_in_the_neutral(self):
-        from compensation_analytics.core import reporting
+        from hr_insight.core import reporting
 
         svg = reporting.scatter_svg(self.data, "EUR")
         self.assertIn('fill="var(--muted)"', svg)
 
     def test_the_svg_tooltip_names_the_real_modality(self):
-        from compensation_analytics.core import reporting
+        from hr_insight.core import reporting
 
         svg = reporting.scatter_svg(self.data, "EUR")
         self.assertIn("BU14", svg)
 
     def test_the_pdf_legend_draws_every_modality(self):
-        from compensation_analytics.core import slides
-        from compensation_analytics.io.pdf_writer import Document
+        from hr_insight.core import slides
+        from hr_insight.io.pdf_writer import Document
 
         document = Document()
         page = document.add_page()

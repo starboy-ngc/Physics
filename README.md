@@ -18,7 +18,7 @@ IMPORT ─▶ CONTRÔLE QUALITÉ ─▶ NORMALISATION ─▶ PARAMÉTRAGE ─▶
 ## Interface graphique
 
 ```bash
-python3 -m compensation_analytics.cli interface     # ou sans argument
+python3 -m hr_insight.cli interface     # ou sans argument
 ```
 
 Fenêtre unique, `tkinter` livré avec Python — aucune dépendance. Parcours
@@ -46,10 +46,10 @@ commande sur une installation dépourvue de tkinter.
 python3 tools/generate_sample_population.py --rows 2000 --output data/demo.xlsx
 
 # Contrôle qualité
-python3 -m compensation_analytics.cli controle data/demo.xlsx
+python3 -m hr_insight.cli controle data/demo.xlsx
 
 # Analyse complète
-python3 -m compensation_analytics.cli analyse data/demo.xlsx \
+python3 -m hr_insight.cli analyse data/demo.xlsx \
     --filtre "business_unit=France" \
     --segment grade --segment gender \
     --sortie resultats --ignorer-anomalies
@@ -61,7 +61,7 @@ classeur Excel et un manifeste de traçabilité.
 
 ```bash
 # Ne produire que le jeu de slides
-python3 -m compensation_analytics.cli analyse data/demo.xlsx --restitution slides
+python3 -m hr_insight.cli analyse data/demo.xlsx --restitution slides
 ```
 
 Le PDF est **généré par l'outil**, pas imprimé depuis un navigateur : aucune
@@ -100,7 +100,7 @@ salary_parameters · privacy_parameters · chart_parameters · export_parameters
 ```
 
 ```bash
-python3 -m compensation_analytics.cli config --dossier config
+python3 -m hr_insight.cli config --dossier config
 ```
 
 ## Tests

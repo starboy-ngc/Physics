@@ -24,9 +24,9 @@ from xml.etree import ElementTree
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
-from compensation_analytics.core.export import build_sheets, export_excel
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.io.xlsx_writer import Formula, write_workbook
+from hr_insight.core.export import build_sheets, export_excel
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.io.xlsx_writer import Formula, write_workbook
 
 NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 
@@ -96,7 +96,7 @@ class WorkbookCase(unittest.TestCase):
                     # publiable.
                     + [["Comptable", "Technicien"][(index // 2) % 2]])
         self.config_dir = os.path.join(self.directory, "config")
-        from compensation_analytics.core.config import write_default_configuration
+        from hr_insight.core.config import write_default_configuration
         write_default_configuration(self.config_dir)
         if overrides:
             import json
@@ -136,7 +136,7 @@ class TestSheetSet(WorkbookCase):
         self.assertIn("Pay Transparency", self.workbook(self.analyse()))
 
     def test_the_comparison_sheet_appears_only_when_asked(self):
-        from compensation_analytics.core.segmentation import Filter
+        from hr_insight.core.segmentation import Filter
 
         self.assertNotIn("Comparaison", self.workbook(self.analyse()))
         sheets = self.workbook(self.analyse(
@@ -318,7 +318,7 @@ class TestUnusualWorkbooks(WorkbookCase):
                 writer.writerow(list(make_row(index, salary=40000 + index * 50)))
             for index in (900, 901):
                 writer.writerow(list(make_row(index, salary=400000)))
-        from compensation_analytics.core.config import write_default_configuration
+        from hr_insight.core.config import write_default_configuration
 
         config_dir = os.path.join(self.directory, "config-atypiques")
         write_default_configuration(config_dir)
@@ -342,7 +342,7 @@ class TestUnusualWorkbooks(WorkbookCase):
         de ce qui est *publie*. C'est donc un garde-fou, et il se verifie
         la ou il vit.
         """
-        from compensation_analytics.core.export import _derived
+        from hr_insight.core.export import _derived
 
         complete = _derived("B{p90}/B{p10}", {"p90": 12, "p10": 8}, 1.5)
         self.assertEqual(complete.expression, "B12/B8")
@@ -421,7 +421,7 @@ class TestWriterItself(unittest.TestCase):
         et l'outil la relit bien comme une date."""
         import datetime as _dt
 
-        from compensation_analytics.io.tabular import read_table
+        from hr_insight.io.tabular import read_table
 
         path = os.path.join(self.directory, "date.xlsx")
         write_workbook(path, [("P", [["Date"], [_dt.date(2026, 1, 31)]])])

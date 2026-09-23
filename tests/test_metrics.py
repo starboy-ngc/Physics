@@ -3,8 +3,8 @@
 import unittest
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core import metrics
-from compensation_analytics.core.segmentation import build_filters, apply_filters, split_by
+from hr_insight.core import metrics
+from hr_insight.core.segmentation import build_filters, apply_filters, split_by
 
 
 class TestPopulationMetrics(unittest.TestCase):
@@ -279,7 +279,7 @@ class TestUnknownFilterField(unittest.TestCase):
     renvoyer une population vide en silence."""
 
     def test_unknown_field_raises_readable_error(self):
-        from compensation_analytics.core.errors import ConfigError
+        from hr_insight.core.errors import ConfigError
         with self.assertRaises(ConfigError) as caught:
             build_filters([{"field": "team", "operator": "eq", "value": "Alpha"}])
         message = caught.exception.message
@@ -288,7 +288,7 @@ class TestUnknownFilterField(unittest.TestCase):
         self.assertIn("business_unit", message)  # liste les champs valides
 
     def test_misspelled_field_is_caught(self):
-        from compensation_analytics.core.errors import ConfigError
+        from hr_insight.core.errors import ConfigError
         with self.assertRaises(ConfigError):
             build_filters([{"field": "gade", "operator": "eq", "value": "G5"}])
 
@@ -329,7 +329,7 @@ class TestKeyShares(unittest.TestCase):
         self.assertAlmostEqual(result["share_under_30"], 50.0)
 
     def test_shares_reach_the_spreadsheet(self):
-        from compensation_analytics.core.export import _rows_population
+        from hr_insight.core.export import _rows_population
         config = make_config()
         rows = [make_row(i, age=25) for i in range(10)]
         population = metrics.calculate_population_metrics(

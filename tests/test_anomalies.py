@@ -10,15 +10,15 @@ import tempfile
 import unittest
 
 from tests.support import HEADERS, build_population, make_config, make_row
-from compensation_analytics.core import metrics
-from compensation_analytics.core.config import analysis_field, percentiles
-from compensation_analytics.core.errors import ConfigError
-from compensation_analytics.core.mapping import resolve_mapping
-from compensation_analytics.core.normalize import has_ambiguous_separator
-from compensation_analytics.core.quality import run_quality_check
-from compensation_analytics.core.segmentation import apply_filters, build_filters
-from compensation_analytics.io.tabular import read_table
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.core import metrics
+from hr_insight.core.config import analysis_field, percentiles
+from hr_insight.core.errors import ConfigError
+from hr_insight.core.mapping import resolve_mapping
+from hr_insight.core.normalize import has_ambiguous_separator
+from hr_insight.core.quality import run_quality_check
+from hr_insight.core.segmentation import apply_filters, build_filters
+from hr_insight.io.tabular import read_table
+from hr_insight.io.xlsx_writer import write_workbook
 
 
 class TestNumericEqualityFilter(unittest.TestCase):
@@ -259,7 +259,7 @@ class TestTheSexIsReadFromOneFieldOnly(unittest.TestCase):
     """
 
     def _population_et_config(self):
-        from compensation_analytics.core.config import Configuration
+        from hr_insight.core.config import Configuration
 
         population = build_population([make_row(i) for i in range(40)])
         for rang, salarie in enumerate(population.employees):
@@ -277,7 +277,7 @@ class TestTheSexIsReadFromOneFieldOnly(unittest.TestCase):
         self.assertEqual(repartition, {"F": 20, "H": 20})
 
     def test_the_split_and_the_gap_speak_of_the_same_field(self):
-        from compensation_analytics.core import pay_equity
+        from hr_insight.core import pay_equity
 
         population, config = self._population_et_config()
         parts = metrics.calculate_population_metrics(population, config)

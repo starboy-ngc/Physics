@@ -76,7 +76,7 @@ class TestTheBuiltArchive(unittest.TestCase):
         import zipfile
         with zipfile.ZipFile(self.pyz) as bundle:
             names = bundle.namelist()
-        self.assertIn("compensation_analytics/cli.py", names)
+        self.assertIn("hr_insight/cli.py", names)
         self.assertIn("__main__.py", names)
         self.assertFalse([name for name in names if "__pycache__" in name],
                          "aucun cache compilé ne doit être distribué")

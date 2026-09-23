@@ -33,7 +33,7 @@ chaîne d'approvisionnement logicielle à surveiller, packaging trivial.
 ## 3. Modules
 
 ```
-compensation_analytics/
+hr_insight/
 ├── version.py              Version MAJOR.MINOR.PATCH portée par les restitutions
 ├── cli.py                  Pilotage (une IHM utiliserait les mêmes appels)
 ├── io/
@@ -387,7 +387,7 @@ L'option 2 est recommandée : rien à compiler, contenu auditable par l'IT.
 
 ## 13. Interface graphique
 
-`compensation_analytics/ui/` — tkinter, livre avec Python : aucune
+`hr_insight/ui/` — tkinter, livre avec Python : aucune
 dependance, aucun telechargement, aucun droit administrateur.
 
     app.py       fenetre unique, parcours en quatre etapes

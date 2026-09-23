@@ -12,8 +12,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core.axes import nice_step, nice_ticks, positions
-from compensation_analytics.core.reporting import format_years
+from hr_insight.core.axes import nice_step, nice_ticks, positions
+from hr_insight.core.reporting import format_years
 
 
 class TestTickValues(unittest.TestCase):
@@ -86,9 +86,9 @@ class TestTheThreeRenderersAgree(unittest.TestCase):
 
     def _sources(self):
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        for path in ("compensation_analytics/core/reporting.py",
-                     "compensation_analytics/core/slides.py",
-                     "compensation_analytics/ui/charts.py"):
+        for path in ("hr_insight/core/reporting.py",
+                     "hr_insight/core/slides.py",
+                     "hr_insight/ui/charts.py"):
             with open(os.path.join(root, path), encoding="utf-8") as handle:
                 yield path, handle.read()
 

@@ -19,13 +19,13 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
-from compensation_analytics.core.config import (Configuration, DEFAULTS,
+from hr_insight.core.config import (Configuration, DEFAULTS,
                                                 default_config_dir,
                                                 load_configuration,
                                                 write_configuration,
                                                 write_default_configuration)
-from compensation_analytics.core.errors import ConfigError
-from compensation_analytics.core.normalize import (band_for, extend_open_band,
+from hr_insight.core.errors import ConfigError
+from hr_insight.core.normalize import (band_for, extend_open_band,
                                                    parse_date, parse_number,
                                                    period_key)
 
@@ -69,9 +69,9 @@ class TestParsingNumbers(unittest.TestCase):
         self.assertEqual(parse_number("12,345"), 12.345)
 
     def test_the_ambiguity_is_reported_to_the_quality_check(self):
-        from compensation_analytics.core.quality import run_quality_check
-        from compensation_analytics.core.mapping import resolve_mapping
-        from compensation_analytics.core.normalize import normalise_table
+        from hr_insight.core.quality import run_quality_check
+        from hr_insight.core.mapping import resolve_mapping
+        from hr_insight.core.normalize import normalise_table
 
         config = make_config()
         mapping = resolve_mapping(list(HEADERS), config)
@@ -294,7 +294,7 @@ class TestConfiguration(unittest.TestCase):
         self.assertEqual(written, ["privacy_parameters.json"])
 
     def test_every_declared_file_has_a_default(self):
-        from compensation_analytics.core.config import CONFIG_FILES
+        from hr_insight.core.config import CONFIG_FILES
 
         for name in CONFIG_FILES:
             self.assertIn(name, DEFAULTS, name)

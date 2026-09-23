@@ -19,16 +19,16 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core import metrics
-from compensation_analytics.core.config import load_configuration
-from compensation_analytics.core.mapping import resolve_mapping
-from compensation_analytics.core.normalize import normalise_table
-from compensation_analytics.core.quality import run_quality_check
-from compensation_analytics.core.reporting import render_report
-from compensation_analytics.core.pay_equity import calculate_pay_equity
-from compensation_analytics.core.segmentation import available_segments
-from compensation_analytics.io.tabular import read_table
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.core import metrics
+from hr_insight.core.config import load_configuration
+from hr_insight.core.mapping import resolve_mapping
+from hr_insight.core.normalize import normalise_table
+from hr_insight.core.quality import run_quality_check
+from hr_insight.core.reporting import render_report
+from hr_insight.core.pay_equity import calculate_pay_equity
+from hr_insight.core.segmentation import available_segments
+from hr_insight.io.tabular import read_table
+from hr_insight.io.xlsx_writer import write_workbook
 from tools.generate_sample_population import HEADERS, build_rows
 
 REFERENCE = _dt.date(2025, 1, 1)

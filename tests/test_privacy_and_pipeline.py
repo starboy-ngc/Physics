@@ -13,18 +13,18 @@ import tempfile
 import unittest
 
 from tests.support import HEADERS, REFERENCE_DATE, make_row
-from compensation_analytics.cli import main as cli_main, parse_filter
-from compensation_analytics.core.errors import (
+from hr_insight.cli import main as cli_main, parse_filter
+from hr_insight.core.errors import (
     CompensationError, ConfigError, DataQualityError)
-from compensation_analytics.core.export import export_excel
-from compensation_analytics.core.logging_setup import configure_logging
-from compensation_analytics.core.normalize import anonymise
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.core.reporting import render_report
-from compensation_analytics.core.segmentation import Filter
-from compensation_analytics.io.tabular import read_table
-from compensation_analytics.io.xlsx_writer import write_workbook
-from compensation_analytics.version import __version__
+from hr_insight.core.export import export_excel
+from hr_insight.core.logging_setup import configure_logging
+from hr_insight.core.normalize import anonymise
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.core.reporting import render_report
+from hr_insight.core.segmentation import Filter
+from hr_insight.io.tabular import read_table
+from hr_insight.io.xlsx_writer import write_workbook
+from hr_insight.version import __version__
 
 
 def build_source(directory, rows=None):
@@ -59,7 +59,7 @@ class TestPipeline(unittest.TestCase):
         self.assertEqual(len(payload["segments"]), 2)
 
     def test_filters_reduce_the_analysed_population(self):
-        from compensation_analytics.core.segmentation import build_filters
+        from hr_insight.core.segmentation import build_filters
         result = self._run(filters=build_filters([
             {"field": "business_unit", "operator": "eq", "value": "France"}
         ]))
@@ -155,7 +155,7 @@ class TestSeveralPeriods(unittest.TestCase):
     def test_an_unknown_period_is_refused_with_the_list(self):
         """Une faute de frappe rendrait l'analyse de la derniere periode en
         la faisant passer pour celle qu'on visait."""
-        from compensation_analytics.core.errors import ConfigError
+        from hr_insight.core.errors import ConfigError
 
         with self.assertRaises(ConfigError) as levee:
             run_analysis(AnalysisRequest(source_path=self._source(),
@@ -180,7 +180,7 @@ class TestSeveralPeriods(unittest.TestCase):
         self.assertEqual(result.quality.periods, 0)
 
     def test_periods_are_ordered_by_time_not_by_text(self):
-        from compensation_analytics.core.normalize import period_key
+        from hr_insight.core.normalize import period_key
 
         melange = ["2026", "2024-12-31", "2025-06", "2024", "2025-12"]
         self.assertEqual(
@@ -232,7 +232,7 @@ class TestPrivacy(unittest.TestCase):
         configure_logging(log_dir)
         run_analysis(AnalysisRequest(source_path=self.source,
                                      reference_date=REFERENCE_DATE))
-        for handler in logging.getLogger("compensation_analytics").handlers:
+        for handler in logging.getLogger("hr_insight").handlers:
             handler.flush()
         with open(os.path.join(log_dir, "technical.log"), encoding="utf-8") as handle:
             content = handle.read()
@@ -254,7 +254,7 @@ class TestPrivacy(unittest.TestCase):
                          "--sortie", os.path.join(self.directory, "sortie"),
                          "--filtre", "base_salary>Dupont"])
         self.assertEqual(code, 2)
-        for handler in logging.getLogger("compensation_analytics").handlers:
+        for handler in logging.getLogger("hr_insight").handlers:
             handler.flush()
         with open(os.path.join(log_dir, "technical.log"),
                   encoding="utf-8") as handle:
@@ -268,7 +268,7 @@ class TestPrivacy(unittest.TestCase):
         cli_main(["--logs", log_dir, "analyse", self.source,
                   "--sortie", os.path.join(self.directory, "sortie2"),
                   "--filtre", "Marie Dupont"])
-        for handler in logging.getLogger("compensation_analytics").handlers:
+        for handler in logging.getLogger("hr_insight").handlers:
             handler.flush()
         with open(os.path.join(log_dir, "technical.log"),
                   encoding="utf-8") as handle:
@@ -396,7 +396,7 @@ class TestPrivacy(unittest.TestCase):
     def test_the_control_sheet_only_appears_with_the_values(self):
         """Une mediane ne se deduit de rien : la verifier demande les
         valeurs. L'onglet ne parait donc qu'avec elles."""
-        from compensation_analytics.core.config import Configuration
+        from hr_insight.core.config import Configuration
 
         sans = os.path.join(self.directory, "sans_valeurs.xlsx")
         export_excel(self.result.payload, self.result.filtered,
@@ -413,7 +413,7 @@ class TestPrivacy(unittest.TestCase):
         self.assertIn("Données individuelles", noms)
 
     def test_individual_export_requires_explicit_configuration(self):
-        from compensation_analytics.core.config import Configuration
+        from hr_insight.core.config import Configuration
         data = self.result.config.as_dict()
         data["export_parameters"]["include_individual_data"] = True
         path = os.path.join(self.directory, "export_full.xlsx")
@@ -483,7 +483,7 @@ class TestCommandLine(unittest.TestCase):
     def test_every_operator_of_the_engine_is_reachable(self):
         """Un operateur du moteur qu'aucune ecriture n'atteint est du code
         mort : la ligne de commande doit tous les exposer."""
-        from compensation_analytics.core.segmentation import _OPERATORS
+        from hr_insight.core.segmentation import _OPERATORS
         reached = {parse_filter(expression)["operator"] for expression in (
             "grade=G1", "grade!=G1", "grade=G1|G2", "grade!=G1|G2",
             "base_salary>50000", "base_salary>=50000",

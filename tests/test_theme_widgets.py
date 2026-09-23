@@ -65,7 +65,7 @@ class TestCheckRow(WidgetCase):
     """Une case a cocher dessinee plutot que celle du theme."""
 
     def build(self, value=False):
-        from compensation_analytics.ui.theme import CheckRow, Fonts
+        from hr_insight.ui.theme import CheckRow, Fonts
 
         variable = tkinter.BooleanVar(value=value)
         row = CheckRow(self.root, "Équipe directe seulement", variable,
@@ -104,7 +104,7 @@ class TestHints(WidgetCase):
     """Les bulles d'aide, qui survivent a la fenetre qui les porte."""
 
     def build(self):
-        from compensation_analytics.ui.theme import Fonts, Hints
+        from hr_insight.ui.theme import Fonts, Hints
 
         return Hints(self.root, Fonts(self.root))
 
@@ -174,7 +174,7 @@ class TestWheelScrolling(WidgetCase):
     def build(self, content_height=2000):
         import tkinter as tk
 
-        from compensation_analytics.ui.theme import bind_wheel
+        from hr_insight.ui.theme import bind_wheel
 
         canvas = tk.Canvas(self.root, height=200)
         canvas.pack(fill="both", expand=True)
@@ -215,7 +215,7 @@ class TestFontChoice(unittest.TestCase):
         systeme, plutot qu'un nom que Tk ne saura pas resoudre."""
         import tkinter as tk
 
-        from compensation_analytics.ui.theme import pick_family
+        from hr_insight.ui.theme import pick_family
 
         root = tk.Tk()
         try:

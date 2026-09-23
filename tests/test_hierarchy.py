@@ -15,10 +15,10 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core.hierarchy import (
+from hr_insight.core.hierarchy import (
     Tree, team_population, team_rows,
 )
-from compensation_analytics.core.normalize import Employee, Population
+from hr_insight.core.normalize import Employee, Population
 
 
 def make(links, salary=40000):

@@ -24,8 +24,8 @@ import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core import palette
-from compensation_analytics.ui import logo, raster
+from hr_insight.core import palette
+from hr_insight.ui import logo, raster
 
 #: Proportion du cadre : un rideau d'aurore s'inscrit mal dans un carre.
 #: Cette hauteur laisse la meme marge de tous les cotes.

@@ -18,8 +18,8 @@ import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.ui import logo
-from compensation_analytics.version import ENGINE_NAME, PUBLISHER, __version__
+from hr_insight.ui import logo
+from hr_insight.version import ENGINE_NAME, PUBLISHER, __version__
 
 try:
     import tkinter
@@ -179,8 +179,8 @@ class TestTheSplash(unittest.TestCase):
     def setUp(self):
         import tkinter as tk
 
-        from compensation_analytics.ui import splash, theme
-        from compensation_analytics.core.config import load_configuration
+        from hr_insight.ui import splash, theme
+        from hr_insight.core.config import load_configuration
 
         self.root = tk.Tk()
         self.root.withdraw()
@@ -241,7 +241,7 @@ class TestTheStartup(unittest.TestCase):
     """L'écran appartient au lancement, pas à la fenêtre."""
 
     def _app(self, **kwargs):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         app = Application(**kwargs)
         self.addCleanup(app.destroy)
@@ -278,7 +278,7 @@ class TestTheStartup(unittest.TestCase):
         import json
         import tempfile
 
-        from compensation_analytics.core.config import write_default_configuration
+        from hr_insight.core.config import write_default_configuration
 
         dossier = tempfile.mkdtemp()
         write_default_configuration(dossier)

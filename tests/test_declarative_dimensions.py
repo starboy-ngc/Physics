@@ -9,12 +9,12 @@ import os
 import tempfile
 import unittest
 
-from compensation_analytics.core.config import Configuration, load_configuration
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.core.reporting import render_report
-from compensation_analytics.core.segmentation import (apply_filters, build_filters,
+from hr_insight.core.config import Configuration, load_configuration
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.core.reporting import render_report
+from hr_insight.core.segmentation import (apply_filters, build_filters,
                                                       dimension_fields, split_by)
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.io.xlsx_writer import write_workbook
 
 REFERENCE = _dt.date(2026, 1, 1)
 HEADERS = ["Matricule", "BU", "Métier", "Equipe", "Salaire de base", "Date d'entrée"]
@@ -49,7 +49,7 @@ class TestDeclarativeDimension(unittest.TestCase):
         self.config = config_with_team()
 
     def _population(self):
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
         population, _, _ = load_population(self.source, self.config,
                                            reference_date=REFERENCE)
         return population
@@ -95,7 +95,7 @@ class TestDeclarativeDimension(unittest.TestCase):
         self.assertIn("Team Alpha", html)
 
     def test_unknown_dimension_still_rejected(self):
-        from compensation_analytics.core.errors import ConfigError
+        from hr_insight.core.errors import ConfigError
         with self.assertRaises(ConfigError):
             build_filters([{"field": "direction", "operator": "eq", "value": "X"}],
                           self.config)
@@ -106,11 +106,11 @@ class TestJobTitleIsAvailable(unittest.TestCase):
     il doit etre livre reconnu, filtrable et analysable."""
 
     def setUp(self):
-        from compensation_analytics.core.config import load_configuration
+        from hr_insight.core.config import load_configuration
         self.config = load_configuration()
 
     def test_the_column_is_recognised_under_its_usual_names(self):
-        from compensation_analytics.core.mapping import resolve_mapping
+        from hr_insight.core.mapping import resolve_mapping
         for header in ("Poste", "poste", "Intitulé de poste", "Job title",
                        "Position"):
             mapping = resolve_mapping(["Matricule", "Salaire de base", header],
@@ -119,13 +119,13 @@ class TestJobTitleIsAvailable(unittest.TestCase):
             self.assertEqual(mapping.unknown_columns, [], header)
 
     def test_it_is_available_as_a_dimension(self):
-        from compensation_analytics.core.segmentation import dimension_fields
+        from hr_insight.core.segmentation import dimension_fields
         self.assertIn("job_title", dimension_fields(self.config))
 
     def test_it_is_distinct_from_the_occupation(self):
         """"Metier" et "Poste" sont deux notions : le second precise le
         premier d'un niveau de responsabilite."""
-        from compensation_analytics.core.segmentation import dimension_label
+        from hr_insight.core.segmentation import dimension_label
         self.assertEqual(dimension_label(self.config, "job"), "Métier")
         self.assertEqual(dimension_label(self.config, "job_title"), "Poste")
 
@@ -136,8 +136,8 @@ class TestTheSamplePopulationCarriesPositions(unittest.TestCase):
         deroulantes sans que rien ne le signale."""
         from tools.generate_sample_population import (HEADERS, build_rows,
                                                       column)
-        from compensation_analytics.core.config import load_configuration
-        from compensation_analytics.core.segmentation import max_filter_values
+        from hr_insight.core.config import load_configuration
+        from hr_insight.core.segmentation import max_filter_values
         import datetime
 
         rows = build_rows(2000, 20260905, datetime.date(2026, 1, 1),

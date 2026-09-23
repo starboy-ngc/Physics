@@ -17,9 +17,9 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core import metrics, segmentation
-from compensation_analytics.core.config import Configuration
-from compensation_analytics.core.errors import ConfigError
+from hr_insight.core import metrics, segmentation
+from hr_insight.core.config import Configuration
+from hr_insight.core.errors import ConfigError
 
 NOM = "Marchetti"
 
@@ -108,7 +108,7 @@ class TestTheWholeResultIsSweptForNames(unittest.TestCase):
     """Le filet, plutot que la liste des trous connus."""
 
     def test_no_surname_survives_anywhere_in_a_full_analysis(self):
-        from compensation_analytics.core import pay_equity
+        from hr_insight.core import pay_equity
 
         population = population_nominative()
         config = make_config()

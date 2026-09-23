@@ -53,7 +53,7 @@ class PayTransparencyCase(unittest.TestCase):
     """Une population ou l'ecart existe et se laisse publier."""
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
         self.source = os.path.join(self.directory, "p.csv")
@@ -74,7 +74,7 @@ class PayTransparencyCase(unittest.TestCase):
         self.app = Application()
         self.app.geometry("1400x900+0+0")
         self.app.update()
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
 
         population, mapping, table = load_population(self.source,
                                                      self.app.configuration)
@@ -135,7 +135,7 @@ class TestTheList(PayTransparencyCase):
         self.assertNotIn("gender", self.app._category_fields)
 
     def test_each_order_reorders_without_losing_anything(self):
-        from compensation_analytics.ui.app import CATEGORY_ORDERS
+        from hr_insight.ui.app import CATEGORY_ORDERS
 
         for position in range(len(CATEGORY_ORDERS)):
             self.app.category_order.current(position)
@@ -145,7 +145,7 @@ class TestTheList(PayTransparencyCase):
                              CATEGORY_ORDERS[position][0])
 
     def test_ordering_by_name_is_alphabetical(self):
-        from compensation_analytics.ui.app import CATEGORY_ORDERS
+        from hr_insight.ui.app import CATEGORY_ORDERS
 
         position = [key for key, _label in CATEGORY_ORDERS].index("name")
         self.app.category_order.current(position)
@@ -154,7 +154,7 @@ class TestTheList(PayTransparencyCase):
         self.assertEqual(self.categories(), sorted(POSTES, key=str.lower))
 
     def test_ordering_by_headcount_puts_the_largest_first(self):
-        from compensation_analytics.ui.app import CATEGORY_ORDERS
+        from hr_insight.ui.app import CATEGORY_ORDERS
 
         position = [key for key, _label in CATEGORY_ORDERS].index("headcount")
         self.app.category_order.current(position)
@@ -262,7 +262,7 @@ class TestWithoutAnyGap(unittest.TestCase):
     """Un fichier sans sexe renseigne : la page doit le dire, pas mentir."""
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         directory = tempfile.mkdtemp()
         self.source = os.path.join(directory, "sans-sexe.csv")
@@ -274,7 +274,7 @@ class TestWithoutAnyGap(unittest.TestCase):
                                               salary=40000 + index * 100)))
         self.app = Application()
         self.app.update()
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
 
         population, mapping, table = load_population(self.source,
                                                      self.app.configuration)

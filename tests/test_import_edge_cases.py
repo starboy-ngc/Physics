@@ -18,8 +18,8 @@ import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core.errors import ImportError_
-from compensation_analytics.io.tabular import read_table
+from hr_insight.core.errors import ImportError_
+from hr_insight.io.tabular import read_table
 
 NS = 'xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"'
 RELS = 'xmlns="http://schemas.openxmlformats.org/package/2006/relationships"'

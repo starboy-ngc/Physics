@@ -61,7 +61,7 @@ class Dialogs:
         self.warnings = []
 
     def __enter__(self):
-        from compensation_analytics.ui import app as module
+        from hr_insight.ui import app as module
 
         self.saved = (module.filedialog.askopenfilename,
                       module.filedialog.askdirectory,
@@ -79,7 +79,7 @@ class Dialogs:
         return self
 
     def __exit__(self, *_exception):
-        from compensation_analytics.ui import app as module
+        from hr_insight.ui import app as module
 
         (module.filedialog.askopenfilename, module.filedialog.askdirectory,
          module.messagebox.showerror, module.messagebox.showinfo,
@@ -89,7 +89,7 @@ class Dialogs:
 @needs_display
 class WindowCase(unittest.TestCase):
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
         self.app = Application()
@@ -210,7 +210,7 @@ class TestRunningTheAnalysis(WindowCase):
         """Le texte d'une exception Python peut citer la cellule qui l'a
         provoquee, donc une donnee RH."""
         self.load()
-        from compensation_analytics.ui import app as module
+        from hr_insight.ui import app as module
 
         original = module.run_analysis
 
@@ -234,8 +234,8 @@ class TestRunningTheAnalysis(WindowCase):
 
     def test_a_business_refusal_shows_its_own_message(self):
         self.load()
-        from compensation_analytics.core.errors import ConfigError
-        from compensation_analytics.ui import app as module
+        from hr_insight.core.errors import ConfigError
+        from hr_insight.ui import app as module
 
         original = module.run_analysis
         module.run_analysis = lambda _r: (_ for _ in ()).throw(
@@ -335,8 +335,8 @@ class TestSettingsRoundTrip(WindowCase):
         self.assertNotIn("variable_pay", self.app.mapping.field_to_index)
         config_dir = os.path.join(self.directory, "config")
         os.makedirs(config_dir, exist_ok=True)
-        from compensation_analytics.core.config import write_configuration
-        from compensation_analytics.ui.settings import build_mapping_section
+        from hr_insight.core.config import write_configuration
+        from hr_insight.ui.settings import build_mapping_section
 
         assignments = {header: "" for header in self.app.headers}
         assignments["Prime de panier"] = "variable_pay"

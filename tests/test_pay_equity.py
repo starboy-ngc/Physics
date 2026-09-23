@@ -13,7 +13,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core.pay_equity import (FEMALE, MALE, classify,
+from hr_insight.core.pay_equity import (FEMALE, MALE, classify,
                                                     calculate_category_gaps,
                                                     calculate_category_profile,
                                                     calculate_pay_equity)
@@ -200,11 +200,11 @@ class TestFiltersReachTheGap(unittest.TestCase):
 
     def _analysed(self, expression=None):
         import tempfile
-        from compensation_analytics.cli import parse_filter
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.cli import parse_filter
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
-        from compensation_analytics.core.segmentation import build_filters
-        from compensation_analytics.io.xlsx_writer import write_workbook
+        from hr_insight.core.segmentation import build_filters
+        from hr_insight.io.xlsx_writer import write_workbook
         from tests.support import HEADERS, REFERENCE_DATE
 
         directory = tempfile.mkdtemp()
@@ -246,7 +246,7 @@ class TestTheCategoryAxisCanChange(unittest.TestCase):
     toute l'analyse."""
 
     def setUp(self):
-        from compensation_analytics.core.pay_equity import calculate_category_gaps
+        from hr_insight.core.pay_equity import calculate_category_gaps
         self.compute = calculate_category_gaps
         self.config = make_config()
         rows = []
@@ -569,7 +569,7 @@ class TestCrossingTwoAxes(unittest.TestCase):
     def test_a_missing_value_on_one_axis_excludes_the_employee(self):
         """Un salarie a demi classe n'appartient a aucune categorie
         croisee : l'y ranger inventerait une categorie."""
-        from compensation_analytics.core.segmentation import cross_key
+        from hr_insight.core.segmentation import cross_key
 
         population, config = self._population()
         salarie = population.employees[0]

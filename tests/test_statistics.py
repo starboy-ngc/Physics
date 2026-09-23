@@ -7,7 +7,7 @@ controles faits par les equipes RH sous Excel donnent le meme resultat.
 import unittest
 
 from tests.support import *  # noqa: F401,F403  (chemin d'import)
-from compensation_analytics.core import statistics_engine as stats
+from hr_insight.core import statistics_engine as stats
 
 
 class TestDescriptiveStatistics(unittest.TestCase):

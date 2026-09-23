@@ -19,10 +19,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from tests.test_ui import needs_display
-from compensation_analytics.core import palette, reporting, slides
-from compensation_analytics.core.config import (CONFIG_FILES, DEFAULTS,
+from hr_insight.core import palette, reporting, slides
+from hr_insight.core.config import (CONFIG_FILES, DEFAULTS,
                                                 load_configuration)
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.io.xlsx_writer import write_workbook
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -182,7 +182,7 @@ class TestTheDocumentsFollowTheTheme(unittest.TestCase):
                      age=28 + index % 30, tenure=index % 18,
                      gender=["F", "H"][index % 2])
             for index in range(80)])])
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         cls.payload = run_analysis(AnalysisRequest(
             source_path=source, reference_date=REFERENCE_DATE,
@@ -222,7 +222,7 @@ class TestTheDocumentsFollowTheTheme(unittest.TestCase):
                                  "teintes ecrites hors du theme")
 
     def test_the_slides_are_tinted_in_html_and_in_pdf(self):
-        from compensation_analytics.core.slides import (build_deck,
+        from hr_insight.core.slides import (build_deck,
                                                         render_slides_html,
                                                         write_slides_pdf)
         for name in ("ardoise", "prune"):
@@ -254,7 +254,7 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
 
     def setUp(self):
         import shutil
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
         self.directory = tempfile.mkdtemp()
         self.config_dir = os.path.join(self.directory, "config")
         shutil.copytree(os.path.join(ROOT, "config"), self.config_dir)
@@ -265,7 +265,7 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
         self.app.destroy()
 
     def _window(self):
-        from compensation_analytics.ui.settings import SettingsWindow
+        from hr_insight.ui.settings import SettingsWindow
         window = SettingsWindow(self.app, self.app.configuration,
                                 self.config_dir, self.app.fonts,
                                 headers=list(HEADERS))
@@ -301,8 +301,8 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
     def test_the_window_opens_under_every_theme(self):
         """Un theme ne doit pas seulement s'enregistrer : il doit s'ouvrir."""
         import json
-        from compensation_analytics.ui import theme as ui_theme
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui import theme as ui_theme
+        from hr_insight.ui.app import Application
         for name in palette.THEMES:
             with self.subTest(theme=name):
                 with open(os.path.join(self.config_dir,

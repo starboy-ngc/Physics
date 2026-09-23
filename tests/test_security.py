@@ -9,7 +9,7 @@ import os
 import unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PACKAGE = os.path.join(ROOT, "compensation_analytics")
+PACKAGE = os.path.join(ROOT, "hr_insight")
 
 FORBIDDEN_IMPORTS = {
     "socket", "ssl", "http", "urllib", "urllib3", "requests", "ftplib",
@@ -83,7 +83,7 @@ class TestNoForbiddenConstructs(unittest.TestCase):
                 else:
                     continue
                 for module in modules:
-                    if module == "compensation_analytics":
+                    if module == "hr_insight":
                         continue
                     self.assertIn(
                         module, standard,
@@ -104,7 +104,7 @@ class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
     """
 
     def _parser_strings(self):
-        from compensation_analytics.cli import build_parser
+        from hr_insight.cli import build_parser
 
         names, choices = [], []
 
@@ -138,7 +138,7 @@ class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
         """Les noms de fichiers produits circulent par courriel et par partage
         reseau : ils restent en ASCII."""
         import inspect
-        from compensation_analytics import cli
+        from hr_insight import cli
         source = inspect.getsource(cli.command_analyse)
         for pattern in ("restitution-", "synthese-", "slides-", "analyse-",
                         "manifeste-"):

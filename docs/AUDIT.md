@@ -1,7 +1,7 @@
 # Audit complet — HR Insight 1.0.0
 
 *Audit conduit le 20 septembre 2026 sur la branche
-`claude/compensation-analytics-local-8mbxy0`, révision `9cc4343`.*
+`claude/hr-insight-local-8mbxy0`, révision `9cc4343`.*
 
 Méthode : **mesurer, regarder, corriger**. Aucun constat de ce rapport ne
 repose sur une lecture du code seule. Chaque défaut a d'abord été prouvé

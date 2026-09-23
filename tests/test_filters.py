@@ -16,9 +16,9 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
-from compensation_analytics.cli import parse_filter
-from compensation_analytics.core.errors import CompensationError, ConfigError
-from compensation_analytics.core.segmentation import (
+from hr_insight.cli import parse_filter
+from hr_insight.core.errors import CompensationError, ConfigError
+from hr_insight.core.segmentation import (
     CORE_FIELDS, Filter, apply_filters, build_filters, cross_key,
     describe_filters, split_by,
 )

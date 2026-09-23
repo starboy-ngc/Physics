@@ -19,10 +19,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from tests.test_ui import needs_display
-from compensation_analytics.core import glossary
-from compensation_analytics.core import statistics_engine as stats
-from compensation_analytics.core.pay_equity import _gap
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.core import glossary
+from hr_insight.core import statistics_engine as stats
+from hr_insight.core.pay_equity import _gap
+from hr_insight.io.xlsx_writer import write_workbook
 
 
 class TestTheGlossaryIsWellFormed(unittest.TestCase):
@@ -124,9 +124,9 @@ class TestEveryFieldOnScreenIsExplained(unittest.TestCase):
             for index in range(120)])])
 
     def setUp(self):
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
         self.app = Application()
         self.app.update()
         self.app.result = run_analysis(AnalysisRequest(

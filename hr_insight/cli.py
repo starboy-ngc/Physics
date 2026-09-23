@@ -4,7 +4,7 @@ C'est la couche de pilotage du V1 : elle enchaine le pipeline et produit la
 restitution. Une interface graphique pourra s'appuyer sur les memes appels
 (`pipeline.run_analysis`), sans dupliquer la moindre regle.
 
-    python3 -m compensation_analytics.cli analyse data/population.xlsx \
+    python3 -m hr_insight.cli analyse data/population.xlsx \
         --filtre "business_unit=France" --segment grade --sortie output
 """
 
@@ -222,7 +222,7 @@ def command_config(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="compensation-analytics",
+        prog="hr-insight",
         description=f"{ENGINE_NAME} v{__version__} — analyse locale, hors ligne.",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -297,7 +297,7 @@ def command_interface(args: argparse.Namespace) -> int:
         print("L'interface graphique necessite tkinter, absent de cette "
               "installation de Python.\n"
               "Les commandes en ligne restent disponibles : "
-              "compensation-analytics --help", file=sys.stderr)
+              "hr-insight --help", file=sys.stderr)
         return 3
     return ui_main(getattr(args, "config", None) or default_config_dir())
 

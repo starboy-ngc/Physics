@@ -18,8 +18,8 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from compensation_analytics.core import metrics
-from compensation_analytics.core import statistics_engine as stats
+from hr_insight.core import metrics
+from hr_insight.core import statistics_engine as stats
 
 
 class CountingSort:

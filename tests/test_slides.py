@@ -9,11 +9,11 @@ import zlib
 from tests.support import (REFERENCE_DATE, build_population, make_config,
                            make_row)
 from tests.test_privacy_and_pipeline import build_source
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.core.slides import (build_deck, build_summary,
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.core.slides import (build_deck, build_summary,
                                                 render_slides_html,
                                                 write_slides_html, write_slides_pdf)
-from compensation_analytics.io.pdf_writer import (Document, encode_text,
+from hr_insight.io.pdf_writer import (Document, encode_text,
                                                   text_width, truncate)
 
 
@@ -56,7 +56,7 @@ class TestDeckStructure(unittest.TestCase):
     def test_masked_population_produces_no_salary_slide(self):
         config = make_config({"privacy_parameters.min_headcount_publish": 50})
         population = build_population([make_row(i) for i in range(6)], config)
-        from compensation_analytics.core import metrics
+        from hr_insight.core import metrics
         payload = {
             "title": "Test", "quality": {}, "manifest": {},
             "population": metrics.calculate_population_metrics(population, config),
@@ -209,7 +209,7 @@ class TestReadability(unittest.TestCase):
         self.config = make_config()
 
     def _segment(self, field_name, rows):
-        from compensation_analytics.core import metrics
+        from hr_insight.core import metrics
         population = build_population(rows, self.config)
         return metrics.calculate_segment_metrics(population, self.config, field_name)
 
@@ -237,7 +237,7 @@ class TestReadability(unittest.TestCase):
         self.assertEqual(labels, ["France", "DACH"])
 
     def test_constant_dimensions_are_dropped_from_the_outlier_table(self):
-        from compensation_analytics.core import metrics
+        from hr_insight.core import metrics
         # Population filtree sur une seule BU : la colonne BU n'apprend rien.
         rows = [make_row(i, business_unit="France", grade=f"G{i % 4 + 1}",
                          salary=40000 + i * 200) for i in range(40)]
@@ -249,7 +249,7 @@ class TestReadability(unittest.TestCase):
         self.assertIn("grade", shown)
 
     def test_highlighted_outliers_keep_both_extremes(self):
-        from compensation_analytics.core import metrics
+        from hr_insight.core import metrics
         rows = [make_row(i, salary=40000 + i * 50) for i in range(200)]
         rows += [make_row(500 + i, salary=5000) for i in range(10)]
         rows += [make_row(600 + i, salary=400000) for i in range(10)]
@@ -401,7 +401,7 @@ class TestNoRSquaredInDocuments(unittest.TestCase):
         self.payload = analysis_payload(self.directory, segments=["business_unit"])
 
     def test_absent_from_the_detailed_report(self):
-        from compensation_analytics.core.reporting import render_report
+        from hr_insight.core.reporting import render_report
         html = render_report(self.payload)
         self.assertNotIn("R2", html)
         self.assertNotIn("R²", html)
@@ -431,7 +431,7 @@ class TestNoRSquaredInDocuments(unittest.TestCase):
     def test_the_statistic_remains_available_to_the_engine(self):
         """Retiree de la restitution, la regression reste calculable : on ne
         supprime pas une formule parce qu'on cesse de la publier."""
-        from compensation_analytics.core import statistics_engine as stats
+        from hr_insight.core import statistics_engine as stats
         trend = stats.linear_regression([1.0, 2.0, 3.0], [10.0, 20.0, 30.0])
         self.assertIn("r_squared", trend)
 
@@ -458,7 +458,7 @@ class TestTheComparisonReadsTheSameEverywhere(unittest.TestCase):
     }
 
     def test_the_two_renderers_format_identically(self):
-        from compensation_analytics.core.reporting import comparison_rows
+        from hr_insight.core.reporting import comparison_rows
 
         rows = comparison_rows(self.COMPARAISON, "EUR")
         self.assertEqual(rows[0][1], "120")
@@ -471,7 +471,7 @@ class TestTheComparisonReadsTheSameEverywhere(unittest.TestCase):
     def test_an_unknown_kind_falls_back_without_raising(self):
         """Le moteur peut ajouter une nature : la restitution ne doit pas
         s'arreter dessus, des deux cotes de la meme facon."""
-        from compensation_analytics.core.reporting import comparison_rows
+        from hr_insight.core.reporting import comparison_rows
 
         inconnu = {"left_label": "A", "right_label": "B", "rows": [
             {"indicator": "Nouveau", "kind": "quelque_chose", "left": 3.14159,
@@ -491,8 +491,8 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
 
     def _analysis(self):
         from tests.support import build_population, make_config, make_row
-        from compensation_analytics.core.pay_equity import calculate_pay_equity
-        from compensation_analytics.core import metrics
+        from hr_insight.core.pay_equity import calculate_pay_equity
+        from hr_insight.core import metrics
 
         # Le jeu de test n'a pas de colonne « Poste » : la categorie de la
         # directive est portee par le grade, ce qui emprunte exactement le
@@ -518,7 +518,7 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
         }
 
     def test_the_report_carries_the_gaps_and_their_decomposition(self):
-        from compensation_analytics.core.reporting import render_report
+        from hr_insight.core.reporting import render_report
 
         html = render_report(self._analysis())
         self.assertIn("Pay Transparency", html)
@@ -527,7 +527,7 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
             self.assertIn(attendu, html, attendu)
 
     def test_the_deck_carries_them_too(self):
-        from compensation_analytics.core.slides import build_deck
+        from hr_insight.core.slides import build_deck
 
         titres = [slide.title for slide in build_deck(self._analysis())]
         self.assertIn("Écarts femmes / hommes", titres)
@@ -536,7 +536,7 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
     def test_a_masked_category_is_never_detailed_in_a_document(self):
         """Un document circule : une categorie sous le seuil n'y entre pas
         plus que dans l'interface."""
-        from compensation_analytics.core.reporting import render_report
+        from hr_insight.core.reporting import render_report
 
         analysis = self._analysis()
         analysis["pay_equity"]["categories"].append({

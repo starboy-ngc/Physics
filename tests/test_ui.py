@@ -17,7 +17,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, REFERENCE_DATE, make_row
-from compensation_analytics.io.xlsx_writer import write_workbook
+from hr_insight.io.xlsx_writer import write_workbook
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -59,8 +59,8 @@ class TestEngineStaysIndependent(unittest.TestCase):
     def _engine_files(self):
         for folder in ("core", "io"):
             yield from glob.glob(
-                os.path.join(ROOT, "compensation_analytics", folder, "*.py"))
-        yield os.path.join(ROOT, "compensation_analytics", "version.py")
+                os.path.join(ROOT, "hr_insight", folder, "*.py"))
+        yield os.path.join(ROOT, "hr_insight", "version.py")
 
     def test_no_tkinter_in_the_engine(self):
         for path in self._engine_files():
@@ -85,7 +85,7 @@ class TestEngineStaysIndependent(unittest.TestCase):
 
 class TestLaunching(unittest.TestCase):
     def test_interface_is_an_explicit_subcommand(self):
-        from compensation_analytics.cli import build_parser
+        from hr_insight.cli import build_parser
         parser = build_parser()
         commands = [a.choices for a in parser._actions if a.choices][0]
         self.assertIn("interface", commands)
@@ -96,12 +96,12 @@ class TestLaunching(unittest.TestCase):
         import argparse
         import io
         import contextlib
-        from compensation_analytics import cli
+        from hr_insight import cli
 
         blocked = dict(sys.modules)
-        blocked["compensation_analytics.ui.app"] = None  # force l'ImportError
-        saved = sys.modules.get("compensation_analytics.ui.app", "absent")
-        sys.modules["compensation_analytics.ui.app"] = None
+        blocked["hr_insight.ui.app"] = None  # force l'ImportError
+        saved = sys.modules.get("hr_insight.ui.app", "absent")
+        sys.modules["hr_insight.ui.app"] = None
         try:
             stderr = io.StringIO()
             with contextlib.redirect_stderr(stderr):
@@ -111,9 +111,9 @@ class TestLaunching(unittest.TestCase):
             self.assertIn("--help", stderr.getvalue())
         finally:
             if saved == "absent":
-                sys.modules.pop("compensation_analytics.ui.app", None)
+                sys.modules.pop("hr_insight.ui.app", None)
             else:
-                sys.modules["compensation_analytics.ui.app"] = saved
+                sys.modules["hr_insight.ui.app"] = saved
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")
@@ -121,7 +121,7 @@ class TestScatterGeometry(unittest.TestCase):
     """Le calcul de cadrage ne demande pas d'affichage."""
 
     def test_bounds_add_a_margin(self):
-        from compensation_analytics.ui.charts import ScatterChart
+        from hr_insight.ui.charts import ScatterChart
         bounds = ScatterChart._compute_bounds(
             [{"x": 0, "y": 10}, {"x": 10, "y": 20}])
         self.assertIsNotNone(bounds)
@@ -133,11 +133,11 @@ class TestScatterGeometry(unittest.TestCase):
         self.assertGreater(y_max, 20)
 
     def test_bounds_of_an_empty_cloud(self):
-        from compensation_analytics.ui.charts import ScatterChart
+        from hr_insight.ui.charts import ScatterChart
         self.assertIsNone(ScatterChart._compute_bounds([]))
 
     def test_a_single_point_still_has_a_frame(self):
-        from compensation_analytics.ui.charts import ScatterChart
+        from hr_insight.ui.charts import ScatterChart
         x_min, x_max, y_min, y_max = ScatterChart._compute_bounds([{"x": 5, "y": 5}])
         self.assertLess(x_min, x_max)
         self.assertLess(y_min, y_max)
@@ -159,7 +159,7 @@ class TestWindow(unittest.TestCase):
         write_workbook(cls.source, [("Population", [HEADERS] + rows)])
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
         self.app = Application()
         self.app.update()
 
@@ -175,7 +175,7 @@ class TestWindow(unittest.TestCase):
         """
         import time
 
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         self._load()
         self.app.result = run_analysis(AnalysisRequest(
@@ -191,7 +191,7 @@ class TestWindow(unittest.TestCase):
                 break
 
     def _load(self):
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
         population, mapping, _ = load_population(
             self.source, self.app.configuration, reference_date=REFERENCE_DATE)
         self.app.source_path = self.source
@@ -203,7 +203,7 @@ class TestWindow(unittest.TestCase):
     def test_the_window_opens_with_the_expected_steps(self):
         self.assertEqual(self.app.title(),
                          "HR Insight 1.0.0")
-        from compensation_analytics.ui.app import TABS
+        from hr_insight.ui.app import TABS
 
         self.assertEqual(len(self.app.tabs), len(TABS))
         self.assertEqual([key for key, _label in TABS],
@@ -317,7 +317,7 @@ class TestWindow(unittest.TestCase):
     def test_a_chart_redraw_waits_for_the_resizing_to_stop(self):
         """Un trace par pixel parcouru transformait un redimensionnement en
         diaporama : seule la fin d'une rafale est honoree."""
-        from compensation_analytics.ui import charts
+        from hr_insight.ui import charts
 
         self._load()
         self.app.tabbar.select("graphique")
@@ -415,7 +415,7 @@ class TestTheIndicatorTablesAreBuiltOnce(unittest.TestCase):
     suit les percentiles publies, et rien d'autre."""
 
     def setUp(self):
-        from compensation_analytics.ui import app
+        from hr_insight.ui import app
         self.app_module = app
         self.salary = {
             "min": 30000.0, "max": 90000.0, "p25": 42000.0, "median": 50000.0,
@@ -468,7 +468,7 @@ class TestTheScreenPrivacySetting(unittest.TestCase):
 
     def setUp(self):
         import shutil
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
         self.directory = tempfile.mkdtemp()
         self.config_dir = os.path.join(self.directory, "config")
         shutil.copytree(os.path.join(ROOT, "config"), self.config_dir)
@@ -479,7 +479,7 @@ class TestTheScreenPrivacySetting(unittest.TestCase):
         self.app.destroy()
 
     def _window(self):
-        from compensation_analytics.ui.settings import SettingsWindow
+        from hr_insight.ui.settings import SettingsWindow
         window = SettingsWindow(self.app, self.app.configuration,
                                 self.config_dir, self.app.fonts,
                                 headers=list(HEADERS))
@@ -533,7 +533,7 @@ class TestThePayTransparencyPage(unittest.TestCase):
 
     def setUp(self):
         import shutil
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         self.workspace = tempfile.mkdtemp()
         config_dir = os.path.join(self.workspace, "config")
@@ -554,7 +554,7 @@ class TestThePayTransparencyPage(unittest.TestCase):
         self.app.destroy()
 
     def _analyse(self):
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
 
         population, mapping, _table = load_population(
             self.source, self.app.configuration)
@@ -612,7 +612,7 @@ class TestThePayTransparencyPage(unittest.TestCase):
         self.assertNotIn("%", valeurs["Ancienneté"][3])
 
     def test_changing_the_sort_reorders_the_list(self):
-        from compensation_analytics.ui.app import CATEGORY_ORDERS
+        from hr_insight.ui.app import CATEGORY_ORDERS
 
         noms = [key for key, _label in CATEGORY_ORDERS]
         self.assertEqual(noms[0], "stake")
@@ -662,7 +662,7 @@ class TestThePeriodSelector(unittest.TestCase):
     """Le reglage ne parait que s'il a une raison d'etre."""
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
         self.app = Application()
@@ -674,7 +674,7 @@ class TestThePeriodSelector(unittest.TestCase):
     def _load(self, periods):
         import csv
 
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
 
         headers = list(HEADERS) + (["Période"] if periods else [])
         path = os.path.join(self.directory, f"p{len(periods)}.csv")
@@ -726,7 +726,7 @@ class TestTheTeamSelector(unittest.TestCase):
     """
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
         self.app = Application()
@@ -739,7 +739,7 @@ class TestTheTeamSelector(unittest.TestCase):
         """DG > 2 directeurs > 2 managers chacun > 5 salaries chacun."""
         import csv
 
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.core.pipeline import load_population
 
         links = [("DG", "")]
         for direction in range(2):
@@ -884,9 +884,9 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
     s'y etalent pareil."""
 
     def setUp(self):
-        from compensation_analytics.ui import theme
-        from compensation_analytics.ui.charts import BoxPlotChart
-        from compensation_analytics.core.config import load_configuration
+        from hr_insight.ui import theme
+        from hr_insight.ui.charts import BoxPlotChart
+        from hr_insight.core.config import load_configuration
 
         self.root = tkinter.Tk()
         self.root.geometry("900x500")
@@ -940,7 +940,7 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
     def test_the_sort_by_dimension_order_is_gone(self):
         """Un classement alphabetique ne repond a aucune question qu'on se
         pose devant une dispersion."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         self.assertNotIn("dimension", dict(BoxPlotChart.ORDERS))
 
@@ -949,7 +949,7 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
         « lesquels pesent », pas « lesquels paient le mieux » : un poste de
         six personnes en tete de liste met en avant ce qui compte le
         moins."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         self.assertEqual(BoxPlotChart.ORDERS[0][0], "headcount")
         self.assertEqual(BoxPlotChart(self.root).order, "headcount")
@@ -989,8 +989,8 @@ class TestACriticalQualityFindingIsSaidWhereOneLooks(unittest.TestCase):
     def setUp(self):
         import time
 
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           load_population,
                                                           run_analysis)
 
@@ -1023,7 +1023,7 @@ class TestACriticalQualityFindingIsSaidWhereOneLooks(unittest.TestCase):
         """Le bandeau ne doit pas devenir un decor permanent."""
         import time
 
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
 
         propre = os.path.join(self.directory, "propre.xlsx")
@@ -1056,7 +1056,7 @@ class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
         write_workbook(cls.source, [("Population", [HEADERS] + rows)])
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
+        from hr_insight.ui.app import Application
 
         self.app = Application()
         self.app.geometry("1400x900")
@@ -1070,7 +1070,7 @@ class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
         self.app.destroy()
 
     def _analyse(self):
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           load_population,
                                                           run_analysis)
 
@@ -1124,7 +1124,7 @@ class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
     def test_the_grouping_never_wears_a_series_colour(self):
         """Un regroupement de la couleur d'un vrai poste se lirait comme ce
         poste."""
-        from compensation_analytics.ui import theme
+        from hr_insight.ui import theme
 
         autres = self.app.scatter.dataset.get("other_label")
         self.assertIsNotNone(autres)
@@ -1147,8 +1147,8 @@ class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
 
     def test_the_legend_colours_are_those_of_the_points(self):
         """La pastille doit etre exactement la couleur du point."""
-        from compensation_analytics.core import palette
-        from compensation_analytics.ui import theme
+        from hr_insight.core import palette
+        from hr_insight.ui import theme
 
         dataset = self.app.scatter.dataset
         couleurs = palette.series_map(
@@ -1179,7 +1179,7 @@ class TestDrawnImages(unittest.TestCase):
         """Le defaut corrige : create_oval rendait des carres a coins
         ronges. Un coin de l'image doit donc etre transparent, et son
         centre opaque."""
-        from compensation_analytics.ui.raster import Raster, _circle
+        from hr_insight.ui.raster import Raster, _circle
         size = 9
         raster = Raster(size).paint(_circle(size / 2.0, size / 2.0 - 0.5),
                                     (0, 0, 0))
@@ -1191,7 +1191,7 @@ class TestDrawnImages(unittest.TestCase):
     def test_edges_are_partially_transparent(self):
         """C'est la definition de l'antialiasing : sans pixel a opacite
         intermediaire, le bord est un escalier."""
-        from compensation_analytics.ui.raster import Raster, _circle
+        from hr_insight.ui.raster import Raster, _circle
         size = 9
         raster = Raster(size).paint(_circle(size / 2.0, size / 2.0 - 0.5),
                                     (0, 0, 0))
@@ -1200,7 +1200,7 @@ class TestDrawnImages(unittest.TestCase):
         self.assertTrue(partial, "aucun pixel de bord adouci")
 
     def test_the_images_are_valid_png(self):
-        from compensation_analytics.ui import raster
+        from hr_insight.ui import raster
         import base64
         for data in (raster.disc(7, (47, 93, 138)),
                      raster.checkbox(15, True, (47, 93, 138), (47, 93, 138))):
@@ -1208,12 +1208,12 @@ class TestDrawnImages(unittest.TestCase):
 
     def test_images_are_computed_once_per_appearance(self):
         """Un nuage de 2 000 points ne doit pas recalculer 2 000 images."""
-        from compensation_analytics.ui import raster
+        from hr_insight.ui import raster
         first = raster.disc(7, (10, 20, 30))
         self.assertIs(first, raster.disc(7, (10, 20, 30)))
 
     def test_a_checked_box_differs_from_an_unchecked_one(self):
-        from compensation_analytics.ui import raster
+        from hr_insight.ui import raster
         colour, border = (47, 93, 138), (207, 215, 223)
         self.assertNotEqual(raster.checkbox(15, True, colour, border),
                             raster.checkbox(15, False, colour, border))
@@ -1224,7 +1224,7 @@ class TestScrollbarsAreUsable(unittest.TestCase):
     def test_the_scrollbar_is_wide_enough_to_grab(self):
         """Le defaut corrige : "arrowsize=0" reduisait l'ascenseur a un
         pixel de large. Il defilait, mais aucun curseur ne l'attrapait."""
-        from compensation_analytics.ui.theme import SCROLLBAR_WIDTH
+        from hr_insight.ui.theme import SCROLLBAR_WIDTH
         self.assertGreaterEqual(SCROLLBAR_WIDTH, 10)
 
 
@@ -1235,7 +1235,7 @@ class TestScrollbarPlacement(unittest.TestCase):
         l'ascenseur ne recuperait aucune largeur : il revenait invisible."""
         import tkinter as tk
         from tkinter import ttk
-        from compensation_analytics.ui import theme
+        from hr_insight.ui import theme
 
         root = tk.Tk()
         fonts = theme.Fonts(root)
@@ -1261,7 +1261,7 @@ class TestScrollbarPlacement(unittest.TestCase):
         """L'oubli doit echouer a l'ecriture du code, pas a l'ecran."""
         import tkinter as tk
         from tkinter import ttk
-        from compensation_analytics.ui import theme
+        from hr_insight.ui import theme
 
         root = tk.Tk()
         canvas = tk.Canvas(root)
@@ -1276,7 +1276,7 @@ class TestTabOrder(unittest.TestCase):
     def test_quality_comes_last(self):
         """Les resultats d'abord : on revient au controle qualite quand un
         chiffre surprend, on ne commence pas par lui."""
-        from compensation_analytics.ui.app import TABS
+        from hr_insight.ui.app import TABS
         self.assertEqual(TABS[-1][0], "qualite")
         self.assertEqual(TABS[0][0], "population")
         self.assertEqual(TABS[0][1], "Vue d'ensemble")
@@ -1285,7 +1285,7 @@ class TestTabOrder(unittest.TestCase):
         """Un salaire median ne veut rien dire sans l'age et l'anciennete de
         la population qui le porte : les separer obligeait a garder un
         chiffre en tete en changeant d'onglet."""
-        from compensation_analytics.ui.app import TABS
+        from hr_insight.ui.app import TABS
         self.assertNotIn("remuneration", [key for key, _label in TABS])
 
 
@@ -1299,8 +1299,8 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     """
 
     def _analysed(self, count, **row_options):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
         # Conserve : un test qui rejoue l'analyse avec un filtre en a besoin.
@@ -1369,7 +1369,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         sont deux remunerations individuelles pointees a l'ecran. Le segment
         garde donc sa ligne de tableau, mais pas sa boite.
         """
-        from compensation_analytics.core.metrics import PrivacyRules
+        from hr_insight.core.metrics import PrivacyRules
         app = self._analysed(40)
         try:
             rules = PrivacyRules.from_config(app.result.config)
@@ -1401,7 +1401,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     def test_the_boxes_carry_their_reading_key(self):
         """Une boite a moustaches ne se devine pas : sans cle de lecture, le
         graphique le plus utile de l'outil reste le plus opaque."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         app = self._analysed(40)
         try:
@@ -1427,7 +1427,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         """Un repere dessine se lit mieux qu'un montant a comparer de tete, et
         une boite tracee sur douze salaries a la meme allure que sur quatre
         cents."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         app = self._analysed(40)
         try:
@@ -1456,7 +1456,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     def test_the_key_says_when_segments_are_withheld(self):
         """Un segment publiable mais trop peu nombreux pour etre trace ne doit
         pas disparaitre en silence."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         app = self._analysed(40)
         try:
@@ -1492,7 +1492,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     def test_every_segment_is_drawn_and_the_page_scrolls(self):
         """Ecarter des segments faute de place revenait a cacher une partie
         de la reponse : ils sont tous traces, et la page defile."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         app = self._analysed(40)
         try:
@@ -1528,7 +1528,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     def test_the_axis_stays_put_while_the_boxes_scroll(self):
         """Une boite sans graduation ne dit plus rien : l'axe et la cle sont
         hors de la zone qui defile."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         app = self._analysed(40)
         try:
@@ -1554,7 +1554,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
 
     def test_the_boxes_can_be_sorted_without_recomputing(self):
         """Trier repond a une autre question avec les memes chiffres."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
 
         app = self._analysed(40)
         try:
@@ -1588,7 +1588,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     def test_a_box_is_never_drawn_without_the_engine_flag(self):
         """Le refus est l'etat par defaut : une ligne arrivee sans drapeau
         n'est pas dessinee « au cas ou »."""
-        from compensation_analytics.ui.charts import BoxPlotChart
+        from hr_insight.ui.charts import BoxPlotChart
         app = self._analysed(40)
         try:
             chart = BoxPlotChart(app)
@@ -1605,7 +1605,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
     def test_the_directive_charts_only_draw_what_the_engine_published(self):
         """Une part que le moteur a refuse de publier ne doit pas reapparaitre
         sous forme de barre."""
-        from compensation_analytics.ui.charts import QuartileChart
+        from hr_insight.ui.charts import QuartileChart
         app = self._analysed(40)
         try:
             quartiles = QuartileChart(app)
@@ -1622,9 +1622,9 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         """Le perimetre gouverne tous les onglets : il se lit dans la barre
         d'etat, visible quel que soit l'onglet ouvert, et non en tete d'une
         seule page."""
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
-        from compensation_analytics.core.segmentation import build_filters
+        from hr_insight.core.segmentation import build_filters
         app = self._analysed(40)
         try:
             # Sans filtre, aucun critere dans la barre : ce serait du bruit.
@@ -1711,8 +1711,8 @@ class TestResettingTheChoices(unittest.TestCase):
     """Poser un critere doit pouvoir se defaire aussi vite que se faire."""
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import load_population
         self.directory = tempfile.mkdtemp()
         source = os.path.join(self.directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
@@ -1751,7 +1751,7 @@ class TestResettingTheChoices(unittest.TestCase):
     def test_the_reset_link_keeps_its_place_and_its_label(self):
         """Le defaut signale : l'action disparaissait sous le curseur au
         moment ou l'on cliquait, ce qui se lit comme un bouton instable."""
-        from compensation_analytics.ui.theme import ACCENT, FAINT
+        from hr_insight.ui.theme import ACCENT, FAINT
 
         link = self.app.reset_filters_link
         self.assertEqual(link.cget("text"), "Réinitialiser")
@@ -1792,8 +1792,8 @@ class TestResettingTheChoices(unittest.TestCase):
 @needs_display
 class TestThePayGapAxis(unittest.TestCase):
     def setUp(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
         source = os.path.join(directory, "population.xlsx")
@@ -1846,8 +1846,8 @@ class TestTheMergedOverview(unittest.TestCase):
     """
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
         source = os.path.join(directory, "population.xlsx")
@@ -1931,7 +1931,7 @@ class TestTheMergedOverview(unittest.TestCase):
         se lisait moins bien que ses propres lignes."""
         import tkinter.font as tkfont
 
-        from compensation_analytics.core import palette
+        from hr_insight.core import palette
 
         def taille(widget):
             return tkfont.Font(root=self.app,
@@ -1981,7 +1981,7 @@ class TestTheMergedOverview(unittest.TestCase):
         """La ligne que l'on cherche en premier est mise en avant, plutot
         que signalee par une couleur de fond."""
         import tkinter.font as tkfont
-        from compensation_analytics.ui.theme import INK
+        from hr_insight.ui.theme import INK
 
         for item in self._all_labels(self.app.overview_frame):
             if item.cget("text") == "Médiane (P50)":
@@ -1995,7 +1995,7 @@ class TestTheMergedOverview(unittest.TestCase):
         self.fail("ligne médiane introuvable")
 
     def _pyramids(self):
-        from compensation_analytics.ui.charts import PyramidChart
+        from hr_insight.ui.charts import PyramidChart
 
         def walk(widget):
             yield widget
@@ -2027,7 +2027,7 @@ class TestTheMergedOverview(unittest.TestCase):
 
     def test_a_file_without_sex_falls_back_to_plain_bars(self):
         """Sans la colonne « Sexe », une pyramide n'aurait qu'une aile."""
-        from compensation_analytics.ui.charts import PyramidChart
+        from hr_insight.ui.charts import PyramidChart
 
         pyramid = PyramidChart(self.app)
         pyramid.set_rows([{"label": "20-29", "count": 4, "share": 100.0,
@@ -2050,8 +2050,8 @@ class TestEverySegmentIsComputed(unittest.TestCase):
     """
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
         source = os.path.join(directory, "population.xlsx")
@@ -2110,8 +2110,8 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
     """
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import load_population
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import load_population
         directory = tempfile.mkdtemp()
         self.source = os.path.join(directory, "population.xlsx")
         # Les grades sont lies a la BU : « France + G5 » ne designe donc
@@ -2138,9 +2138,9 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
         self.app.destroy()
 
     def _analyse(self):
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
-        from compensation_analytics.core.segmentation import build_filters
+        from hr_insight.core.segmentation import build_filters
         self.app.result = run_analysis(AnalysisRequest(
             source_path=self.source, reference_date=REFERENCE_DATE,
             filters=build_filters(self.app._current_filters(),
@@ -2180,8 +2180,8 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
     def test_a_rendering_failure_is_reported_instead_of_freezing(self):
         """Le calcul avait abouti, seul le rendu avait echoue : la fenetre
         restait sur « Analyse en cours » sans rien dire."""
-        from compensation_analytics.ui import app as module
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui import app as module
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
 
         result = run_analysis(AnalysisRequest(
@@ -2215,8 +2215,8 @@ class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
     """
 
     def setUp(self):
-        from compensation_analytics.ui.app import Application
-        from compensation_analytics.core.pipeline import (AnalysisRequest,
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
         source = os.path.join(directory, "population.xlsx")
@@ -2237,7 +2237,7 @@ class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
         self.app.destroy()
 
     def _panels(self):
-        from compensation_analytics.ui.charts import PyramidChart
+        from hr_insight.ui.charts import PyramidChart
 
         def walk(widget):
             yield widget

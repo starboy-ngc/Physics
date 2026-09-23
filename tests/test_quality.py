@@ -4,8 +4,8 @@ import datetime as _dt
 import unittest
 
 from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
-from compensation_analytics.core.mapping import resolve_mapping
-from compensation_analytics.core.quality import CRITICAL, run_quality_check
+from hr_insight.core.mapping import resolve_mapping
+from hr_insight.core.quality import CRITICAL, run_quality_check
 
 
 def check(rows, overrides=None):

@@ -54,13 +54,13 @@ accents n'ont pas d'importance. Si vos en-têtes diffèrent, ajoutez-les dans
 ## 2. Vérifier que les colonnes sont reconnues
 
 ```
-python3 -m compensation_analytics.cli mapping population.xlsx
+python3 -m hr_insight.cli mapping population.xlsx
 ```
 
 ## 3. Contrôler la qualité des données
 
 ```
-python3 -m compensation_analytics.cli controle population.xlsx
+python3 -m hr_insight.cli controle population.xlsx
 ```
 
 Trois niveaux : **critique** (bloque l'analyse), **avertissement**,
@@ -84,7 +84,7 @@ contrôle qualité — l'outil ne devine pas en silence.
 ## 4. Lancer l'analyse
 
 ```
-python3 -m compensation_analytics.cli analyse population.xlsx --sortie resultats
+python3 -m hr_insight.cli analyse population.xlsx --sortie resultats
 ```
 
 Les fichiers produits dans `resultats/` :
@@ -166,7 +166,7 @@ Pour ajouter une dimension propre a votre organisation, declarez-la dans
 ## 5. Adapter les paramètres
 
 ```
-python3 -m compensation_analytics.cli config --dossier config
+python3 -m hr_insight.cli config --dossier config
 ```
 
 Puis éditez les fichiers JSON : tranches d'âge et d'ancienneté, percentiles,

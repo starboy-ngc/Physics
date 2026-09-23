@@ -9,9 +9,9 @@ from typing import Any, Dict, List, Optional
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from compensation_analytics.core.config import Configuration, load_configuration
-from compensation_analytics.core.mapping import resolve_mapping
-from compensation_analytics.core.normalize import Population, normalise_table
+from hr_insight.core.config import Configuration, load_configuration
+from hr_insight.core.mapping import resolve_mapping
+from hr_insight.core.normalize import Population, normalise_table
 
 REFERENCE_DATE = _dt.date(2025, 1, 1)
 

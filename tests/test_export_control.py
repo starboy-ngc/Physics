@@ -25,11 +25,11 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
 from tests.support_spreadsheet import Workbook
-from compensation_analytics.core.config import (Configuration,
+from hr_insight.core.config import (Configuration,
                                                 write_default_configuration)
-from compensation_analytics.core.export import build_sheets
-from compensation_analytics.core.pipeline import AnalysisRequest, run_analysis
-from compensation_analytics.io.xlsx_writer import Formula
+from hr_insight.core.export import build_sheets
+from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+from hr_insight.io.xlsx_writer import Formula
 
 
 class ControlCase(unittest.TestCase):
@@ -351,7 +351,7 @@ class TestTheControlIsAnExplicitChoice(ControlCase):
         self.assertNotIn("NOM0", autres)
 
     def test_the_shipped_setting_stays_off(self):
-        from compensation_analytics.core.config import DEFAULTS
+        from hr_insight.core.config import DEFAULTS
 
         self.assertFalse(DEFAULTS["export_parameters"]["include_source_file"])
         self.assertFalse(

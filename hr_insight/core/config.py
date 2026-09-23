@@ -390,7 +390,7 @@ def default_config_dir() -> str:
     if os.path.isdir(local):
         return local
 
-    # `__file__` vaut ".../compensation_analytics/core/config.py", et dans
+    # `__file__` vaut ".../hr_insight/core/config.py", et dans
     # une archive .pyz le prefixe est l'archive elle-meme : on remonte
     # jusqu'au premier dossier reel.
     base = os.path.dirname(os.path.dirname(os.path.dirname(
