@@ -109,7 +109,7 @@ class PayTransparencyCase(unittest.TestCase):
         tests verifient — quelle fiche s'ouvre, ce qu'elle montre — n'a pas
         change.
         """
-        self.app.gap_chart.select(
+        self.app.category_value.set(
             self.app._categories[position]["category"])
         self.app._show_profile()
         self.app.update()
@@ -185,23 +185,30 @@ class TestTheProfile(PayTransparencyCase):
         self.assertTrue(self.app.profile_title.cget("text"))
         self.assertIn(self.app.profile_title.cget("text"), POSTES)
 
-    def test_the_card_compares_the_declared_variables(self):
-        """Plusieurs variables, pas seulement le salaire de base : c'est ce
-        qui permet de voir d'ou vient un ecart."""
+    def test_the_card_holds_the_whole_pay_analysis(self):
+        """La fiche ne compare plus deux moyennes : elle pose l'analyse
+        complete de la remuneration du poste — extremes, quartiles,
+        mediane, moyenne, dispersion."""
         self.select()
-        lignes = self.app.profile_tree.get_children()
-        self.assertGreaterEqual(len(lignes), 3)
         libelles = [self.app.profile_tree.item(ligne)["values"][0]
-                    for ligne in lignes]
-        self.assertIn("Salaire de base", libelles)
+                    for ligne in self.app.profile_tree.get_children()]
+        for attendu in ("Minimum", "Q1 (P25)", "Médiane (P50)", "Moyenne",
+                        "Q3 (P75)", "Maximum", "DISPERSION"):
+            self.assertIn(attendu, libelles, attendu)
 
-    def test_the_card_shows_both_sexes(self):
+    def test_the_card_shows_three_columns(self):
+        """Femmes, hommes, et l'ensemble. Sans la troisieme, on ne sait pas
+        si un ecart tient a un groupe tire vers le bas ou l'autre vers le
+        haut."""
         self.select()
-        headings = [self.app.profile_tree.heading(column)["text"]
-                    for column in self.app.profile_tree["columns"]]
-        joined = " ".join(headings).lower()
-        self.assertIn("femme", joined)
-        self.assertIn("homme", joined)
+        intitules = [self.app.profile_tree.heading(colonne)["text"]
+                     for colonne in self.app.profile_tree["columns"]]
+        self.assertEqual([texte.title() for texte in intitules[1:]],
+                         ["Femmes", "Hommes", "Global"])
+        valeurs = [self.app.profile_tree.item(ligne)["values"]
+                   for ligne in self.app.profile_tree.get_children()]
+        for ligne in valeurs:
+            self.assertEqual(len(ligne), 4)
 
     def test_changing_the_selection_changes_the_card(self):
         self.select(0)
@@ -209,19 +216,65 @@ class TestTheProfile(PayTransparencyCase):
         self.select(1)
         self.assertNotEqual(self.app.profile_title.cget("text"), first)
 
-    def test_changing_the_axis_moves_the_card_to_the_new_axis(self):
-        """La fiche d'un poste n'a plus de sens quand la liste montre des
+    def test_with_no_selection_the_page_shows_the_overview(self):
+        """Sans poste choisi, la page repond a « ou faut-il regarder ? »
+        plutot que d'ouvrir une fiche au hasard."""
+        from hr_insight.ui.app import ALL_CATEGORIES
+
+        self.app.category_value.set(ALL_CATEGORIES)
+        self.app._show_profile()
+        self.app.update()
+        self.assertEqual(self.app.overview_block.winfo_manager(), "pack")
+        self.assertFalse(self.app.detail_block.winfo_manager())
+        self.assertTrue(self.app.gap_chart.rows)
+
+    def test_choosing_a_position_replaces_the_overview(self):
+        """Une seule question a la fois : le detail prend la place de la
+        vue d'ensemble, il ne s'y ajoute pas."""
+        self.select()
+        self.assertEqual(self.app.detail_block.winfo_manager(), "pack")
+        self.assertFalse(self.app.overview_block.winfo_manager())
+
+    def test_a_group_below_the_threshold_is_not_calculated(self):
+        """« On ne met pas les calculs en dessous de cinq. » Chaque colonne
+        est masquee pour elle-meme : un poste ou vingt hommes cotoient
+        trois femmes garde les colonnes Hommes et Global."""
+        from hr_insight.core.pay_equity import category_breakdown
+
+        breakdown = category_breakdown(
+            self.app.result.filtered, self.app.result.config,
+            self.app._axis(), self.app.category_value.get())
+        seuil = breakdown["threshold"]
+        for colonne in breakdown["columns"]:
+            with self.subTest(colonne=colonne["label"]):
+                if colonne["headcount"] < seuil:
+                    self.assertTrue(colonne["masked"])
+                    self.assertNotIn("salary", colonne)
+                else:
+                    self.assertFalse(colonne["masked"])
+
+    def test_changing_the_axis_returns_to_the_overview(self):
+        """La fiche d'un poste n'a plus de sens quand la page montre des
         grades : la laisser affichee ferait lire un ecart sous un mauvais
-        intitule. Elle suit donc l'axe."""
+        intitule.
+
+        Elle ne se deplace pas vers un grade pris au hasard : changer
+        d'axe, c'est changer de question, et la page revient a « ou faut-il
+        regarder ? ». Choisir a la place de l'utilisateur serait lui faire
+        lire une fiche qu'il n'a pas demandee.
+        """
         self.select()
         self.assertIn(self.app.profile_title.cget("text"), POSTES)
         wanted = self.app._category_fields.index("grade")
         self.app.category_choice.current(wanted)
         self.app._show_categories()
         self.app.update()
-        titre = self.app.profile_title.cget("text")
-        self.assertNotIn(titre, POSTES)
-        self.assertIn(titre, self.categories())
+        self.assertEqual(self.app.overview_block.winfo_manager(), "pack")
+        self.assertFalse(self.app.detail_block.winfo_manager())
+        # Et les grades sont proposes au choix, a la place des postes.
+        propositions = list(self.app.category_value.cget("values"))
+        self.assertTrue(set(propositions) & set(self.categories()))
+        self.assertFalse(set(propositions) & set(POSTES))
 
     def test_the_card_carries_no_name(self):
         self.select()
@@ -314,3 +367,62 @@ class TestWithoutAnyGap(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestTheThresholdIsReachableAndBinding(PayTransparencyCase):
+    """Le seuil decide de ce que la page montre ou tait.
+
+    Il vivait dans un fichier JSON, ou personne ne va le chercher. Il se
+    regle maintenant dans la fenetre — et surtout, il agit : le relever
+    doit masquer des colonnes qui s'affichaient.
+    """
+
+    def test_raising_the_threshold_masks_more_columns(self):
+        from hr_insight.core.config import Configuration
+        from hr_insight.core.pay_equity import category_breakdown
+
+        poste = self.app._categories[0]["category"]
+        donnees = self.app.result.config.as_dict()
+
+        donnees["privacy_parameters"]["min_headcount_publish"] = 1
+        bas = category_breakdown(self.app.result.filtered,
+                                 Configuration(donnees),
+                                 self.app._axis(), poste)
+        donnees["privacy_parameters"]["min_headcount_publish"] = 500
+        haut = category_breakdown(self.app.result.filtered,
+                                  Configuration(donnees),
+                                  self.app._axis(), poste)
+
+        self.assertTrue(all(not c["masked"] for c in bas["columns"]))
+        self.assertTrue(all(c["masked"] for c in haut["columns"]))
+        self.assertFalse(haut["published"])
+        self.assertIn("500", haut["warning"])
+
+    def test_the_settings_window_offers_the_threshold(self):
+        import tkinter as tk
+        from hr_insight.ui.settings import SettingsWindow
+
+        fenetre = SettingsWindow(self.app, self.app.configuration,
+                                 self.app.config_dir, self.app.fonts,
+                                 list(self.app.headers or []))
+        self.app.update()
+        try:
+            self.assertEqual(
+                fenetre.threshold_var.get(),
+                str(self.app.configuration.number(
+                    "privacy_parameters.min_headcount_publish", 5,
+                    minimum=1, integer=True)))
+            textes = []
+
+            def marcher(widget):
+                for enfant in widget.winfo_children():
+                    if isinstance(enfant, tk.Label):
+                        textes.append(enfant.cget("text"))
+                    marcher(enfant)
+
+            marcher(fenetre)
+            joint = " ".join(textes)
+            self.assertIn("Ne rien calculer en dessous de", joint)
+        finally:
+            fenetre.destroy()

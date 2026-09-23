@@ -36,6 +36,7 @@ from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
 from ..core.pay_equity import (calculate_category_gaps,
+                               category_breakdown,
                                calculate_category_profile)
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
@@ -77,6 +78,11 @@ TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
 #: ampleur d'ecart seul met en tete des postes de quatre personnes.
 #: Entree « pas de croisement » de la seconde liste.
 NO_CROSS = "(aucun)"
+
+#: Premiere entree du choix de poste : elle ouvre la vue d'ensemble plutot
+#: qu'une fiche. Sans elle, on ne pourrait plus revenir a la question
+#: « ou faut-il regarder ? » une fois un poste ouvert.
+ALL_CATEGORIES = "(vue d'ensemble)"
 
 CATEGORY_ORDERS = (("stake", "Enjeu"), ("gap", "Écart"),
                    ("headcount", "Effectif"), ("name", "Nom"))
@@ -916,22 +922,22 @@ class Application(tk.Tk):
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
         self.legend_frame.bind("<Configure>", self._on_legend_resize)
 
-        # La page des ecarts : une colonne, pleine largeur, quatre temps.
+        # La page des ecarts : on choisit un poste en haut, le detail se
+        # deploie en dessous.
         #
-        # Elle etait coupee en deux — reglages et liste a gauche, fiche a
-        # droite — et les trois zones se disputaient le regard. Or la
-        # question se pose dans un ordre : quel est l'ecart, d'ou vient-il,
-        # ou se joue-t-il, sur qui. Une colonne qui defile pose ces quatre
-        # questions l'une apres l'autre ; un ecran partage les pose toutes
-        # en meme temps.
+        # Sans choix, la page repond a « ou faut-il regarder ? » — les
+        # postes classes par ampleur d'ecart. Avec un choix, elle repond a
+        # « que se passe-t-il ici ? » — toute l'analyse de remuneration du
+        # poste, en trois colonnes : femmes, hommes, ensemble. Une seule
+        # question a la fois.
         #
-        # La liste chiffree devient un graphique : vingt-cinq ecarts en
-        # colonne demandent de comparer de tete, vingt-cinq barres partant
-        # d'un meme axe donnent la forme d'un coup d'oeil.
+        # La troisieme colonne n'est pas decorative : sans l'ensemble, on
+        # ne sait pas si un ecart tient a un groupe tire vers le bas ou
+        # l'autre vers le haut.
         equite = self.tabs["equite"]
         self.equity_page = self._scrolling_page(equite)
 
-        # --- 1. Le constat ------------------------------------------------
+        # --- 1. Le constat d'ensemble -------------------------------------
         self.equity_frame = tk.Frame(self.equity_page, background=theme.CANVAS)
         self.equity_frame.pack(fill="x", padx=24, pady=(18, 0))
         self.equity_context = tk.Label(self.equity_page, text="",
@@ -946,36 +952,32 @@ class Application(tk.Tk):
                                     anchor="w", wraplength=980)
         self.equity_note.pack(anchor="w", padx=24, pady=(0, 4))
 
-        # --- 2. Ou se joue l'ecart ---------------------------------------
+        # --- 2. Le choix du poste ----------------------------------------
         self._equity_rule()
-        entete = tk.Frame(self.equity_page, background=theme.CANVAS)
-        entete.pack(fill="x", padx=24, pady=(0, 2))
-        self.category_heading = tk.Label(entete, text="Où se joue l'écart",
-                                         background=theme.CANVAS,
-                                         foreground=theme.INK,
-                                         font=self.fonts.section, anchor="w")
-        self.category_heading.pack(side="left")
-        # Les trois reglages tiennent sur la ligne du titre : empiles dans
-        # une colonne, ils occupaient un tiers de la hauteur utile pour
-        # trois choix qu'on fait une fois.
-        self.category_order = self._axis_choice(entete, "trier par",
+        # Le choix du poste occupe sa ligne, seul : c'est le geste de la
+        # page. Les trois reglages d'axe sont secondaires — on les touche
+        # une fois — et tiennent sur une ligne discrete en dessous. Poses
+        # sur la meme ligne, ils ecrasaient le choix du poste.
+        barre = tk.Frame(self.equity_page, background=theme.CANVAS)
+        barre.pack(fill="x", padx=24, pady=(0, 6))
+        tk.Label(barre, text="POSTE", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(0, 10))
+        self.category_value = ttk.Combobox(barre, state="readonly", width=42,
+                                           font=self.fonts.body)
+        self.category_value.pack(side="left")
+        self.category_value.bind("<<ComboboxSelected>>",
+                                 lambda _e: self._show_profile())
+        reglages = tk.Frame(self.equity_page, background=theme.CANVAS)
+        reglages.pack(fill="x", padx=24, pady=(0, 10))
+        self.category_choice = self._axis_choice(reglages, "comparer par")
+        self.category_cross = self._axis_choice(reglages, "croisé avec")
+        self.category_order = self._axis_choice(reglages, "trier par",
                                                 [label for _key, label
                                                  in CATEGORY_ORDERS])
         self.category_order.current(0)
-        self.category_cross = self._axis_choice(entete, "croisé avec")
-        self.category_choice = self._axis_choice(entete, "par")
 
-        self.category_title = tk.Label(self.equity_page, text="",
-                                       background=theme.CANVAS,
-                                       foreground=theme.FAINT,
-                                       font=self.fonts.label, anchor="w")
-        self.category_title.pack(anchor="w", padx=24, pady=(2, 4))
-        self.gap_chart = GapChart(self.equity_page,
-                                  on_select=self._on_category_selected)
-        self.gap_chart.pack(fill="x", padx=24, pady=(0, 6))
-
-        # --- 3. La fiche de la categorie retenue -------------------------
-        self._equity_rule()
+        # --- 3. Le detail, ou la vue d'ensemble --------------------------
         self.profile_title = tk.Label(self.equity_page, text="",
                                       background=theme.CANVAS,
                                       foreground=theme.INK,
@@ -986,17 +988,38 @@ class Application(tk.Tk):
                                          foreground=theme.MUTED,
                                          font=self.fonts.body, anchor="w")
         self.profile_subtitle.pack(anchor="w", padx=24, pady=(0, 10))
-        self.profile_kpis = tk.Frame(self.equity_page,
+
+        # Sans poste choisi : les postes classes par ampleur d'ecart.
+        self.overview_block = tk.Frame(self.equity_page,
+                                       background=theme.CANVAS)
+        self.overview_block.pack(fill="x")
+        self.category_heading = tk.Label(self.overview_block, text="",
+                                         background=theme.CANVAS,
+                                         foreground=theme.INK,
+                                         font=self.fonts.section, anchor="w")
+        self.category_heading.pack(anchor="w", padx=24, pady=(0, 4))
+        self.category_title = tk.Label(self.overview_block, text="",
+                                       background=theme.CANVAS,
+                                       foreground=theme.FAINT,
+                                       font=self.fonts.label, anchor="w")
+        self.category_title.pack(anchor="w", padx=24, pady=(0, 4))
+        self.gap_chart = GapChart(self.overview_block,
+                                  on_select=self._on_category_selected)
+        self.gap_chart.pack(fill="x", padx=24, pady=(0, 6))
+
+        # Avec un poste choisi : toute sa remuneration, en trois colonnes.
+        self.detail_block = tk.Frame(self.equity_page, background=theme.CANVAS)
+        self.profile_kpis = tk.Frame(self.detail_block,
                                      background=theme.CANVAS)
         self.profile_kpis.pack(fill="x")
-        # Pleine largeur : la fiche disposait de 567 px et rognait les
-        # montants ; elle en a maintenant le double, et les colonnes
-        # respirent.
         self.profile_tree = self._tree(
-            self.equity_page,
-            ("Variable", "Femmes", "Hommes", "Écart"),
-            (300, 220, 220, 220), expand=False, height=7)
-        self.profile_note = tk.Label(self.equity_page, text="",
+            self.detail_block,
+            ("Indicateur", "Femmes", "Hommes", "Global"),
+            # Quinze lignes : dix mesures, l'intertitre, quatre rapports.
+            # A quatorze, le coefficient de variation tombait sous le
+            # bord et demandait un defilement dans le defilement.
+            (320, 190, 190, 190), expand=False, height=15)
+        self.profile_note = tk.Label(self.detail_block, text="",
                                      background=theme.CANVAS,
                                      foreground=theme.MUTED,
                                      font=self.fonts.small, justify="left",
@@ -1004,7 +1027,10 @@ class Application(tk.Tk):
         self.profile_note.pack(anchor="w", padx=24, pady=(2, 10))
 
         # --- 4. La repartition d'ensemble --------------------------------
-        self._equity_rule()
+        # Le filet est retenu : les deux blocs du dessus alternent, et
+        # « pack » a besoin d'un repere stable pour les remettre a leur
+        # place apres un depaquetage.
+        self._equity_last_rule = self._equity_rule()
         self.quartile_block = tk.Frame(self.equity_page,
                                        background=theme.CANVAS)
         self.quartile_block.pack(fill="x")
@@ -1021,31 +1047,39 @@ class Application(tk.Tk):
             anchor="w", wraplength=980)
         self.compliance_note.pack(anchor="w", padx=24, pady=(0, 24))
 
-    def _equity_rule(self) -> None:
+    def _equity_rule(self) -> tk.Frame:
         """Un filet entre deux temps de la page.
 
         Il porte la structure a lui seul : sans lui, quatre sections
         empilees se lisent comme une seule longue page.
         """
-        tk.Frame(self.equity_page, background=theme.LINE,
-                 height=1).pack(fill="x", padx=24, pady=(14, 12))
+        filet = tk.Frame(self.equity_page, background=theme.LINE, height=1)
+        filet.pack(fill="x", padx=24, pady=(14, 12))
+        return filet
 
     def _axis_choice(self, parent: tk.Frame, label: str,
                      values: Optional[List[str]] = None) -> ttk.Combobox:
         """Un reglage d'axe, pose a droite de la ligne de titre."""
         bloc = tk.Frame(parent, background=theme.CANVAS)
-        bloc.pack(side="right", padx=(16, 0))
-        choix = ttk.Combobox(bloc, state="readonly", width=16,
-                             font=self.fonts.small,
-                             values=values or [])
-        choix.pack(side="right")
+        bloc.pack(side="left", padx=(0, 22))
         tk.Label(bloc, text=label.upper(), background=theme.CANVAS,
                  foreground=theme.FAINT, font=self.fonts.label,
-                 anchor="e").pack(side="right", padx=(0, 7))
+                 anchor="w").pack(side="left", padx=(0, 7))
+        choix = ttk.Combobox(bloc, state="readonly", width=17,
+                             font=self.fonts.small,
+                             values=values or [])
+        choix.pack(side="left")
         choix.bind("<<ComboboxSelected>>", lambda _e: self._show_categories())
         return choix
 
-    def _on_category_selected(self, _category: Optional[str]) -> None:
+    def _on_category_selected(self, category: Optional[str]) -> None:
+        """Un clic sur une barre ouvre la fiche, et le dit au selecteur.
+
+        Les deux chemins — le menu en haut, la barre du graphique — menent
+        au meme endroit ; ils doivent montrer le meme etat.
+        """
+        if category:
+            self.category_value.set(category)
         self._show_profile()
 
     @staticmethod
@@ -1123,8 +1157,12 @@ class Application(tk.Tk):
         options = {"height": height} if height else {}
         tree = ttk.Treeview(wrapper, columns=columns, show="headings", **options)
         for name, width in zip(columns, widths):
-            tree.heading(name, text=name.upper())
-            tree.column(name, width=width, anchor="w" if width > 200 else "e")
+            # L'en-tete suit l'alignement de sa colonne. Centre par defaut,
+            # il flottait au-dessus de valeurs calees a gauche ou a droite,
+            # et l'oeil ne retrouvait plus quelle colonne il coiffait.
+            alignement = "w" if width > 200 else "e"
+            tree.heading(name, text=name.upper(), anchor=alignement)
+            tree.column(name, width=width, anchor=alignement)
         scroll = ttk.Scrollbar(wrapper, orient="vertical", command=tree.yview,
                                style="Flat.Vertical.TScrollbar")
         tree.pack(side="left", fill="both", expand=True)
@@ -2199,7 +2237,8 @@ class Application(tk.Tk):
             return
         self._decomposed = block
         label = block.get("category_label") or "Poste"
-        self.category_heading.configure(text=f"Où se joue l'écart · {label}")
+        self.category_heading.configure(
+            text=f"Les {label.lower()}s aux plus grands écarts")
         currency = self.result.payload["salary"].get("currency", "EUR")
 
         warning = block.get("category_warning")
@@ -2225,6 +2264,13 @@ class Application(tk.Tk):
               "at_stake": item.get("at_stake"),
               "published": bool(item.get("published"))}
              for item in categories], currency)
+        # Le menu suit l'axe : changer d'axe sans le refaire laisserait
+        # proposer des postes sur une page qui parle de grades.
+        retenu = self.category_value.get()
+        noms = [item["category"] for item in categories]
+        self.category_value.configure(values=[ALL_CATEGORIES] + noms)
+        if retenu not in noms:
+            self.category_value.set(ALL_CATEGORIES)
         # Les chiffres du haut portent sur l'axe : changer d'axe sans les
         # refaire laissait l'ecart d'un axe au-dessus du graphique d'un
         # autre.
@@ -2271,85 +2317,141 @@ class Application(tk.Tk):
         self.profile_note.configure(text="")
 
     def _show_profile(self) -> None:
-        """La fiche : les deux sexes, variable par variable.
+        """Le detail d'un poste, ou la vue d'ensemble si aucun n'est choisi.
 
-        Un ecart ne se lit pas seul. Vingt pour cent sur un poste ou les
-        hommes comptent neuf ans d'anciennete et les femmes quatre n'appelle
-        pas la meme reponse que le meme ecart a anciennete egale.
+        Une seule question a la fois. Sans poste : ou faut-il regarder —
+        les postes classes par ampleur d'ecart. Avec un poste : que s'y
+        passe-t-il — toute l'analyse de remuneration, en trois colonnes.
         """
-        value = self._selected_category()
-        if value is None or self.result is None:
-            self._clear_profile("Choisissez une ligne pour ouvrir sa fiche.")
+        if self.result is None:
             return
-        profile = calculate_category_profile(
-            self.result.filtered, self.result.config, self._axis(), value)
-        currency = self.result.payload["salary"].get("currency", "EUR")
+        choix = self.category_value.get()
+        if not choix or choix == ALL_CATEGORIES:
+            self._show_category_overview()
+            return
 
-        self.profile_title.configure(text=str(value))
-        effectifs = (f'{profile["female_count"]} femmes · '
-                     f'{profile["male_count"]} hommes')
-        if profile.get("unknown_count"):
-            effectifs += f' · {profile["unknown_count"]} sexe non renseigné'
+        self.gap_chart.select(choix)
+        breakdown = category_breakdown(self.result.filtered,
+                                       self.result.config,
+                                       self._axis(), choix)
+        currency = self.result.payload["salary"].get("currency", "EUR")
+        self._pack_detail()
+
+        self.profile_title.configure(text=str(choix))
+        effectifs = "  ·  ".join(
+            f'{colonne["label"]} {colonne["headcount"]}'
+            for colonne in breakdown["columns"])
+        if breakdown.get("unknown_count"):
+            effectifs += (f'  ·  {breakdown["unknown_count"]} au sexe non '
+                          "renseigné")
         self.profile_subtitle.configure(text=effectifs)
 
         for child in self.profile_kpis.winfo_children():
             child.destroy()
-        if not profile.get("published"):
-            self._fill(self.profile_tree, [])
-            self.profile_note.configure(text=profile.get("warning", ""))
-            return
+        if breakdown.get("published"):
+            self._kpis(self.profile_kpis, [
+                ("Écart moyen", _signed_percent(breakdown.get("mean_gap")),
+                 "mean_gap"),
+                ("Écart médian",
+                 _signed_percent(breakdown.get("median_gap")), "median_gap"),
+                ("Effectif", str(breakdown.get("headcount", 0))),
+            ], per_row=3)
+            self.profile_kpis.pack_configure(padx=24)
 
-        self._kpis(self.profile_kpis, [
-            ("Écart moyen", _signed_percent(profile.get("mean_gap")),
-             "mean_gap"),
-            ("Écart médian", _signed_percent(profile.get("median_gap")),
-             "median_gap"),
-            ("Rattrapage", format_money(profile.get("at_stake"), currency),
-             "at_stake_total"),
-        ], per_row=3)
-        self.profile_kpis.pack_configure(padx=18)
-
-        rows = []
-        for row in profile["rows"]:
-            rows.append((row["label"],
-                         self._profile_value(row, row["female_mean"], currency),
-                         self._profile_value(row, row["male_mean"], currency),
-                         self._profile_gap(row)))
-        self._fill(self.profile_tree, rows)
-        # La note expliquait d'abord d'ou venait la formule. Elle sert
-        # d'abord a eviter une erreur de lecture : les lignes du tableau ne
-        # se lisent pas toutes dans la meme unite, et l'anciennete y est la
-        # variable qu'on regarde en premier quand un ecart surprend.
-        share = profile.get("variable_share", {})
-        note = ["Moyennes des deux groupes. L'écart est en pourcentage sur "
-                "les montants, en unité de la variable ailleurs."]
-        # « difference » est femmes − hommes, et c'est le seul ecart
-        # disponible sur une variable qui n'est pas un montant : « gap »
-        # n'existe que pour les remunerations.
-        anciennete = next((row for row in profile["rows"]
-                           if row.get("field") == "tenure_years"), None)
-        ecart_anciennete = (anciennete or {}).get("difference")
-        if ecart_anciennete is not None and abs(ecart_anciennete) >= 2.0:
-            plus = "femmes" if ecart_anciennete > 0 else "hommes"
-            note.append(
-                f"Les {plus} de cette ligne comptent "
-                f"{format_years(abs(ecart_anciennete))} d'ancienneté de "
-                "plus : une part de l'écart de rémunération peut venir de "
-                "là plutôt que du travail lui-même.")
-        # « 100 % des femmes, 100 % des hommes » n'apprend rien et occupe
-        # une ligne. La part ne se dit que lorsqu'elle differe : c'est alors
-        # qu'elle explique une partie de l'ecart — l'acces au variable
-        # plutot que son montant.
-        part_f, part_h = share.get("female_share"), share.get("male_share")
-        if part_f is not None and part_h is not None \
-                and abs(part_f - part_h) >= 2.0:
-            moins = "femmes" if part_f < part_h else "hommes"
-            note.append(
-                f"{format_percent(part_f)} des femmes perçoivent une "
-                f"rémunération variable, contre {format_percent(part_h)} des "
-                f"hommes : une part de l'écart tient à l'accès au variable "
-                f"et non à son montant, au détriment des {moins}.")
+        self._fill(self.profile_tree,
+                   self._breakdown_rows(breakdown, currency))
+        seuil = breakdown.get("threshold", 5)
+        note = [f"Une colonne comptant moins de {seuil} salariés n'est pas "
+                "calculée : elle désignerait quelqu'un. Le seuil se règle "
+                "dans Paramètres → Confidentialité."]
+        if breakdown.get("warning"):
+            note.insert(0, breakdown["warning"])
         self.profile_note.configure(text=" ".join(note))
+
+    def _show_category_overview(self) -> None:
+        """Sans poste choisi : ou faut-il regarder.
+
+        Le nom porte « category » : « _show_overview » designe deja
+        l'onglet Vue d'ensemble, et deux methodes de meme nom sur la meme
+        classe font que la derniere ecrase l'autre en silence.
+        """
+        self._pack_overview()
+        block = self._decomposed or {}
+        label = (block.get("category_label") or "poste").lower()
+        self.profile_title.configure(text="Vue d'ensemble")
+        self.profile_subtitle.configure(
+            text=f"Les {label}s classés par ampleur d'écart. Choisissez-en "
+                 "un ci-dessus, ou cliquez une barre, pour en déplier le "
+                 "détail.")
+
+    def _pack_detail(self) -> None:
+        if self.overview_block.winfo_manager():
+            self.overview_block.pack_forget()
+        if not self.detail_block.winfo_manager():
+            self.detail_block.pack(fill="x", before=self._equity_last_rule)
+
+    def _pack_overview(self) -> None:
+        if self.detail_block.winfo_manager():
+            self.detail_block.pack_forget()
+        if not self.overview_block.winfo_manager():
+            self.overview_block.pack(fill="x", before=self._equity_last_rule)
+
+    #: Les lignes du tableau : intitule, cle de la mesure, nature.
+    BREAKDOWN_ROWS = (
+        ("Effectif", "valued_headcount", "count"),
+        ("Minimum", "min", "money"),
+        ("P10", "p10", "money"),
+        ("Q1 (P25)", "p25", "money"),
+        ("Médiane (P50)", "median", "money"),
+        ("Moyenne", "mean", "money"),
+        ("Q3 (P75)", "p75", "money"),
+        ("P90", "p90", "money"),
+        ("Maximum", "max", "money"),
+        ("Masse salariale", "payroll", "money"),
+    )
+
+    #: Les rapports de dispersion, qui vivent dans un sous-dictionnaire.
+    BREAKDOWN_SPREAD = (
+        ("Q3 − Q1", "interquartile_range", "money"),
+        ("Q3 / Q1", "q3_over_q1", "ratio"),
+        ("P90 / P10", "p90_over_p10", "ratio"),
+        ("Coefficient de variation", "coefficient_of_variation", "share"),
+    )
+
+    def _breakdown_rows(self, breakdown: Dict[str, Any],
+                        currency: str) -> List[tuple]:
+        """Le tableau : une mesure par ligne, un groupe par colonne.
+
+        Une colonne masquee ne rend pas la ligne inutile : les deux autres
+        restent lisibles, et c'est tout l'interet d'avoir separe les
+        masquages.
+        """
+        colonnes = breakdown["columns"]
+
+        def cellule(colonne, key, kind, spread=False):
+            if colonne.get("masked"):
+                return "—"
+            salaire = colonne.get("salary") or {}
+            source = (salaire.get("dispersion") or {}) if spread else salaire
+            valeur = source.get(key)
+            if valeur is None:
+                return "—"
+            if kind == "money":
+                return format_money(valeur, currency)
+            if kind == "count":
+                return format_number(valeur, 0)
+            if kind == "share":
+                return format_percent(valeur * 100.0)
+            return format_number(valeur, 2)
+
+        lignes = [(label,) + tuple(cellule(c, key, kind) for c in colonnes)
+                  for label, key, kind in self.BREAKDOWN_ROWS]
+        lignes.append(("DISPERSION", "", "", ""))
+        lignes.extend(
+            (label,) + tuple(cellule(c, key, kind, spread=True)
+                             for c in colonnes)
+            for label, key, kind in self.BREAKDOWN_SPREAD)
+        return lignes
 
     @staticmethod
     def _profile_value(row: Dict[str, Any], value: Optional[float],

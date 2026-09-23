@@ -274,6 +274,34 @@ class SettingsWindow(tk.Toplevel):
         tk.Label(band, text="CONFIDENTIALITÉ", background=theme.GROUND,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(anchor="w")
+        # Le seuil de publication : le nombre en deca duquel aucun calcul
+        # n'est pose. Il etait dans un fichier JSON, ou personne ne va le
+        # chercher, alors que c'est le reglage qui decide de ce que la
+        # page des ecarts affiche ou tait.
+        seuil = tk.Frame(band, background=theme.GROUND)
+        seuil.pack(anchor="w", pady=(6, 2))
+        tk.Label(seuil, text="Ne rien calculer en dessous de",
+                 background=theme.GROUND, foreground=theme.INK,
+                 font=self.fonts.body).pack(side="left", padx=(0, 8))
+        self.threshold_var = tk.StringVar(
+            value=str(self.configuration.number(
+                "privacy_parameters.min_headcount_publish", 5,
+                minimum=1, integer=True)))
+        ttk.Spinbox(seuil, from_=1, to=200, width=5, increment=1,
+                    textvariable=self.threshold_var,
+                    font=self.fonts.body).pack(side="left")
+        tk.Label(seuil, text="salariés", background=theme.GROUND,
+                 foreground=theme.INK,
+                 font=self.fonts.body).pack(side="left", padx=(8, 0))
+        tk.Label(band,
+                 text="Un groupe plus petit serait identifiable : ses "
+                      "moyennes, médianes et quartiles ne sont pas publiés, "
+                      "ni à l'écran ni dans les documents. Le seuil vaut "
+                      "partout de la même façon.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(2, 10))
+
         self.identities_var = tk.BooleanVar(
             value=bool(self.configuration.get(
                 "privacy_parameters.show_identities_on_screen", True)))
@@ -665,6 +693,14 @@ class SettingsWindow(tk.Toplevel):
         # partagent doivent survivre a l'enregistrement du reglage d'ecran.
         privacy = dict(self.configuration.section("privacy_parameters"))
         privacy["show_identities_on_screen"] = bool(self.identities_var.get())
+        # Une saisie illisible garde la valeur en place : le seuil protege
+        # des personnes, il ne se perd pas sur une frappe.
+        try:
+            saisi = int(str(self.threshold_var.get()).strip())
+        except ValueError:
+            saisi = 0
+        if saisi >= 1:
+            privacy["min_headcount_publish"] = saisi
         write_configuration(directory, "privacy_parameters", privacy)
         export = dict(self.configuration.section("export_parameters"))
         export["include_individual_data"] = bool(self.individual_var.get())

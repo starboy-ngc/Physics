@@ -15,6 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
 from hr_insight.core.config import (Configuration, DEFAULTS,
+                                    write_default_configuration,
                                                 load_configuration,
                                                 write_configuration)
 from hr_insight.core.errors import ConfigError
@@ -514,3 +515,31 @@ class TestACosmeticSettingNeverBlocksTheWindow(unittest.TestCase):
         """Zero est un reglage, non une faute : il retire l'ecran
         d'accueil, et le defaut ne doit pas le reintroduire."""
         self.assertEqual(self._duree(0), 0.0)
+
+    def test_the_publication_threshold_is_offered_in_the_settings(self):
+        """« On ne met pas les calculs en dessous de cinq. »
+
+        Le seuil vivait dans un fichier JSON, ou personne ne va le
+        chercher, alors que c'est lui qui decide de ce que la page des
+        ecarts affiche ou tait. Il se regle desormais dans la fenetre.
+        """
+        import json
+
+        from hr_insight.core.config import load_configuration
+
+        dossier = tempfile.mkdtemp()
+        write_default_configuration(dossier)
+        config = load_configuration(dossier)
+        privacy = dict(config.section("privacy_parameters"))
+        privacy["min_headcount_publish"] = 12
+        write_configuration(dossier, "privacy_parameters", privacy)
+
+        relu = load_configuration(dossier)
+        self.assertEqual(
+            relu.number("privacy_parameters.min_headcount_publish", 5,
+                        minimum=1, integer=True), 12)
+        # Et le reglage d'ecran, qui partage la section, survit.
+        self.assertIn("show_identities_on_screen",
+                      json.load(open(os.path.join(
+                          dossier, "privacy_parameters.json"),
+                          encoding="utf-8")))

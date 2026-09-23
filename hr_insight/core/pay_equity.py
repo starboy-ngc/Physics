@@ -346,6 +346,87 @@ def calculate_category_gaps(population: Population, config: Configuration,
     return result
 
 
+def category_members(population: Population, field_name,
+                     value: str) -> List[Any]:
+    """Les salaries d'une categorie, axe simple ou croise."""
+    if isinstance(field_name, str):
+        return [employee for employee in population
+                if str(employee.value(field_name) or "") == str(value)]
+    return [employee for employee in population
+            if cross_key(employee, field_name) == str(value)]
+
+
+#: Les trois colonnes de la fiche. L'ordre est celui de la lecture : les
+#: deux groupes qu'on compare, puis l'ensemble auquel ils appartiennent.
+BREAKDOWN_COLUMNS = (("female", "Femmes"), ("male", "Hommes"),
+                     ("all", "Global"))
+
+
+def category_breakdown(population: Population, config: Configuration,
+                       field_name, value: str) -> Dict[str, Any]:
+    """Toute la remuneration d'une categorie, en trois colonnes.
+
+    La fiche comparait deux moyennes par variable. Ce qu'on vient chercher
+    est plus simple et plus complet : la meme analyse de remuneration que
+    pour la population entiere — minimum, moyenne, mediane, quartiles,
+    maximum, dispersion — mais posee trois fois, pour les femmes, pour les
+    hommes, et pour l'ensemble. La troisieme colonne n'est pas decorative :
+    sans elle, on ne sait pas si un ecart tient a un groupe tire vers le
+    bas ou l'autre vers le haut.
+
+    Chaque colonne est masquee pour elle-meme. Un poste ou vingt hommes
+    cotoient trois femmes publie la colonne des hommes et celle de
+    l'ensemble, et tait celle des femmes : c'est la seule qui designerait
+    quelqu'un. Le seuil est celui du parametrage, et il vaut ici ce qu'il
+    vaut partout.
+    """
+    from . import metrics as _metrics
+
+    rules = PrivacyRules.from_config(config)
+    members = category_members(population, field_name, value)
+    groups = _split_members(members, config)
+    séries = {"female": groups[FEMALE], "male": groups[MALE],
+              "all": members}
+
+    colonnes = []
+    for cle, libelle in BREAKDOWN_COLUMNS:
+        gens = séries[cle]
+        effectif = len(gens)
+        colonne: Dict[str, Any] = {
+            "key": cle, "label": libelle, "headcount": effectif,
+            "masked": not rules.may_publish(effectif),
+        }
+        if not colonne["masked"]:
+            sous = Population(employees=list(gens),
+                              reference_date=population.reference_date,
+                              age_bands=population.age_bands,
+                              tenure_bands=population.tenure_bands)
+            colonne["salary"] = _metrics.calculate_salary_metrics(sous, config)
+        colonnes.append(colonne)
+
+    femmes = next(c for c in colonnes if c["key"] == "female")
+    hommes = next(c for c in colonnes if c["key"] == "male")
+    publiable = not femmes["masked"] and not hommes["masked"]
+    return {
+        "category": value,
+        "columns": colonnes,
+        "published": publiable,
+        "headcount": len(members),
+        "unknown_count": len(groups[""]),
+        "mean_gap": (_gap(hommes["salary"].get("mean"),
+                          femmes["salary"].get("mean"))
+                     if publiable else None),
+        "median_gap": (_gap(hommes["salary"].get("median"),
+                            femmes["salary"].get("median"))
+                       if publiable else None),
+        "warning": None if publiable else (
+            "Effectif insuffisant dans l'un des deux groupes : l'écart "
+            f"n'est pas publié (minimum {rules.min_publish} salariés de "
+            "chaque sexe)."),
+        "threshold": rules.min_publish,
+    }
+
+
 def calculate_category_profile(population: Population, config: Configuration,
                                field_name: str,
                                value: str) -> Dict[str, Any]:

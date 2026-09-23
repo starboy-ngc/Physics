@@ -571,45 +571,46 @@ class TestThePayTransparencyPage(unittest.TestCase):
             self.app.update()
             time.sleep(0.01)
 
-    def test_the_chart_opens_on_its_first_bar(self):
-        """Une page qui s'ouvre sur une fiche vide demande un clic pour ne
-        rien apprendre."""
+    def test_the_page_opens_on_the_overview(self):
+        """Sans poste choisi, la page repond a « ou faut-il regarder ? ».
+        Ouvrir une fiche au hasard ferait lire un poste que personne n'a
+        demande."""
         self.assertTrue(self.app.gap_chart.rows)
-        self.assertIsNotNone(self.app.gap_chart.selected)
-        self.assertTrue(self.app.profile_title.cget("text"))
-        self.assertIn("femmes", self.app.profile_subtitle.cget("text"))
+        self.assertEqual(self.app.overview_block.winfo_manager(), "pack")
+        self.assertIn("écart", self.app.profile_subtitle.cget("text"))
 
     def test_choosing_a_bar_opens_that_profile(self):
         self.assertGreaterEqual(len(self.app.gap_chart.rows), 2)
-        premier = self.app.profile_title.cget("text")
-        self.app.gap_chart.select(self.app._categories[1]["category"])
-        self.app._show_profile()
+        attendu = self.app._categories[1]["category"]
+        self.app._on_category_selected(attendu)
         self.app.update()
-        self.assertNotEqual(self.app.profile_title.cget("text"), premier)
-        self.assertEqual(self.app.profile_title.cget("text"),
-                         self.app._categories[1]["category"])
+        self.assertEqual(self.app.profile_title.cget("text"), attendu)
+        self.assertEqual(self.app.detail_block.winfo_manager(), "pack")
 
-    def test_the_profile_compares_the_sexes_on_several_variables(self):
-        """C'est l'objet de la fiche : la remuneration ET ce qui l'entoure."""
+    def test_the_profile_holds_the_whole_pay_analysis(self):
+        """C'est l'objet de la fiche : toute la remuneration du poste, et
+        non deux moyennes."""
+        self.app._on_category_selected(self.app._categories[0]["category"])
+        self.app.update()
         valeurs = [self.app.profile_tree.item(line, "values")
                    for line in self.app.profile_tree.get_children()]
         intitules = [ligne[0] for ligne in valeurs]
-        self.assertIn("Salaire de base", intitules)
-        self.assertIn("Ancienneté", intitules)
+        for attendu in ("Minimum", "Médiane (P50)", "Moyenne", "Maximum"):
+            self.assertIn(attendu, intitules, attendu)
         for ligne in valeurs:
             self.assertEqual(len(ligne), 4)
-            # Une colonne pour chaque sexe, et un ecart : jamais un tiret
-            # partout, sinon la ligne n'apprend rien.
-            self.assertNotEqual(ligne[1], "—")
-            self.assertNotEqual(ligne[2], "—")
 
-    def test_a_gap_in_years_is_never_shown_as_a_percentage(self):
+    def test_the_global_column_is_never_empty(self):
+        """La colonne d'ensemble ne depend pas du sexe : elle reste lisible
+        meme quand un groupe est sous le seuil, et c'est ce qui permet de
+        situer celui qui reste."""
+        self.app._on_category_selected(self.app._categories[0]["category"])
+        self.app.update()
         valeurs = {ligne[0]: ligne for ligne in
                    (self.app.profile_tree.item(line, "values")
                     for line in self.app.profile_tree.get_children())}
-        self.assertIn("%", valeurs["Salaire de base"][3])
-        self.assertIn("an", valeurs["Ancienneté"][3])
-        self.assertNotIn("%", valeurs["Ancienneté"][3])
+        self.assertNotEqual(valeurs["Moyenne"][3], "—")
+        self.assertNotEqual(valeurs["Médiane (P50)"][3], "—")
 
     def test_changing_the_sort_reorders_the_list(self):
         from hr_insight.ui.app import CATEGORY_ORDERS

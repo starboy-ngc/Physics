@@ -1345,7 +1345,10 @@ class GapChart(tk.Frame):
     ROW = 30
     LABEL = 210
     COUNTS = 74
-    VALUE = 78
+    #: La colonne des valeurs doit loger « +100,0 % » en gras, plus la
+    #: gouttiere : mesuree trop juste, la plus longue barre — toujours
+    #: celle qu'on regarde en premier — venait toucher son propre chiffre.
+    VALUE = 96
     STAKE = 86
 
     def __init__(self, master: tk.Widget, on_select=None):
