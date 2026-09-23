@@ -928,11 +928,18 @@ class Application(tk.Tk):
         # Bandeau : de quoi l'ecart global est fait, sur une seule ligne.
         self.equity_frame = tk.Frame(equite, background=theme.CANVAS)
         self.equity_frame.pack(fill="x", padx=18, pady=(14, 0))
+        # Qui l'on compte : une ligne sous le chiffre, jamais dans une
+        # phrase. Un effectif n'est pas un raisonnement.
+        self.equity_context = tk.Label(equite, text="",
+                                       background=theme.CANVAS,
+                                       foreground=theme.FAINT,
+                                       font=self.fonts.small, anchor="w")
+        self.equity_context.pack(anchor="w", padx=18, pady=(0, 2))
         self.equity_note = tk.Label(equite, text="", background=theme.CANVAS,
                                     foreground=theme.MUTED,
                                     font=self.fonts.small, justify="left",
                                     anchor="w", wraplength=930)
-        self.equity_note.pack(anchor="w", padx=18, pady=(2, 10))
+        self.equity_note.pack(anchor="w", padx=18, pady=(0, 12))
 
         self.equity_body = tk.Frame(equite, background=theme.CANVAS)
         self.equity_body.pack(fill="both", expand=True)
@@ -1976,71 +1983,81 @@ class Application(tk.Tk):
         # passe dans la ligne en dessous, avec le reste de ce qu'il faut
         # savoir pour lire ces chiffres.
         plein = equity.get("full_time") or {}
-        self._kpis(self.equity_frame, [
+        self.equity_context.configure(text=self._contexte_note(equity, block))
+        self._equity_headline(
             ("Écart global", _signed_percent(pay.get("mean_gap")), "mean_gap"),
-            (f"À {label} comparable",
-             _signed_percent((block or {}).get("comparable_gap")),
-             "comparable_gap"),
-            ("Effet de structure",
-             _signed_percent((block or {}).get("structure_gap")),
-             "structure_gap"),
-            ("À temps de travail égal",
-             _signed_percent(plein.get("mean_gap"))
-             if plein.get("published") else "—",
-             "full_time_gap"),
-        ], per_row=4)
+            [(f"à {label} comparable",
+              _signed_percent((block or {}).get("comparable_gap")),
+              "comparable_gap"),
+             ("effet de structure",
+              _signed_percent((block or {}).get("structure_gap")),
+              "structure_gap"),
+             ("à temps de travail égal",
+              _signed_percent(plein.get("mean_gap"))
+              if plein.get("published") else "—",
+              "full_time_gap")])
         self.equity_frame.pack_configure(padx=18)
         self.equity_note.configure(text=self._decomposition_note(equity, block))
 
-    def _decomposition_note(self, equity: Dict[str, Any],
-                            block: Optional[Dict[str, Any]]) -> str:
-        """Ce qu'il faut savoir pour agir sur les chiffres du bandeau.
+    def _equity_headline(self, principal, details) -> None:
+        """Un chiffre qui domine, trois qui l'expliquent.
 
-        La note disait d'ou venaient les formules. Elle dit maintenant ce
-        que chaque chiffre commande : un ecart a travail comparable se
-        corrige par la remuneration, un effet de structure par la mobilite,
-        un ecart de temps de travail ne se corrige pas du tout. Trois
-        chiffres, trois decisions differentes — c'est cela qu'on vient
-        chercher sur cette page, non la provenance d'un quotient.
+        Quatre indicateurs de meme taille se lisent comme quatre reponses
+        independantes ; il n'y en a qu'une, et les trois autres la
+        decomposent. La hierarchie le dit sans qu'une phrase ait a
+        l'expliquer — c'est autant de texte en moins sur la page.
         """
-        phrases = ["Un écart positif signifie que les femmes sont moins "
-                   "rémunérées."]
-        if not block or block.get("comparable_gap") is None:
-            phrases.append(
-                "L'écart à poste comparable n'a pas pu être calculé : aucun "
-                "poste ne réunit assez de femmes et d'hommes. L'écart global "
-                "reste lisible, mais il mélange la rémunération et la "
-                "répartition des postes, et l'on ne peut pas les séparer ici.")
-            return " ".join(phrases + [self._contexte_note(equity, block)])
+        import tkinter.font as tkfont
 
-        label = (block.get("category_label") or "poste").lower()
-        phrases.append(
-            f"L'écart global se partage en deux causes qui n'appellent pas "
-            f"la même réponse : à {label} comparable, un même travail est "
-            f"payé différemment — cela se corrige en rémunération ; l'effet "
-            f"de structure vient de ce que les deux sexes n'occupent pas les "
-            f"mêmes {label}s — cela se corrige en mobilité, pas sur une "
-            f"grille.")
+        for child in self.equity_frame.winfo_children():
+            child.destroy()
+        band = tk.Frame(self.equity_frame, background=theme.CANVAS)
+        band.pack(fill="x", pady=(0, 10))
+        grand = tkfont.Font(root=self, family=self.fonts.family,
+                            size=theme.SIZE_KPI + 12, weight="bold")
 
-        plein = equity.get("full_time") or {}
-        explique = plein.get("explained_gap") if plein.get("published") else None
-        if explique is not None and abs(explique) >= 0.5:
-            phrases.append(
-                f"Le temps de travail en explique "
-                f"{format_percent(abs(explique))}.")
+        titre, valeur, cle = principal
+        note = _hint(cle, titre)
+        tete = tk.Frame(band, background=theme.CANVAS)
+        tete.pack(anchor="w")
+        self.hints.attach(
+            _packed(tk.Label(tete, text=titre.upper(),
+                             background=theme.CANVAS, foreground=theme.FAINT,
+                             font=self.fonts.label), anchor="w"),
+            note, anchor=tete)
+        self.hints.attach(
+            _packed(tk.Label(tete, text=valeur, background=theme.CANVAS,
+                             foreground=theme.INK, font=grand), anchor="w"),
+            note, anchor=tete)
 
-        devise = self.result.payload["salary"].get("currency", "EUR") \
-            if self.result else "EUR"
-        montant = (block or {}).get("at_stake_total")
-        if montant:
-            phrase = (f"Aligner le sexe le moins rémunéré sur l'autre, "
-                      f"{label} par {label}, coûterait "
-                      f"{format_money(montant, devise)}")
-            concentration = self._concentration_note(block)
-            phrases.append(phrase + (f" — {concentration}" if concentration
-                                     else "."))
-        phrases.append(self._contexte_note(equity, block))
-        return " ".join(phrase for phrase in phrases if phrase)
+        # « dont » : les trois qui suivent partagent le chiffre du dessus,
+        # ils ne s'y ajoutent pas. Le mot porte a lui seul ce qu'un
+        # paragraphe expliquait.
+        ligne = tk.Frame(band, background=theme.CANVAS)
+        ligne.pack(anchor="w", pady=(6, 0))
+        tk.Label(ligne, text="dont", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.body).pack(side="left", padx=(0, 10))
+        for index, (titre, valeur, cle) in enumerate(details):
+            if index:
+                tk.Label(ligne, text="·", background=theme.CANVAS,
+                         foreground=theme.LINE_STRONG,
+                         font=self.fonts.body).pack(side="left", padx=12)
+            cellule = tk.Frame(ligne, background=theme.CANVAS)
+            cellule.pack(side="left")
+            note = _hint(cle, titre)
+            self.hints.attach(
+                _packed(tk.Label(cellule, text=valeur,
+                                 background=theme.CANVAS, foreground=theme.INK,
+                                 font=self.fonts.body_bold), side="left"),
+                note, anchor=cellule)
+            self.hints.attach(
+                _packed(tk.Label(cellule, text=titre,
+                                 background=theme.CANVAS,
+                                 foreground=theme.MUTED,
+                                 font=self.fonts.body), side="left",
+                        padx=(5, 0)),
+                note, anchor=cellule)
 
     def _autres_lectures(self, pay: Dict[str, Any], variable: Dict[str, Any],
                          coverage: Dict[str, Any]) -> str:
@@ -2051,10 +2068,9 @@ class Application(tk.Tk):
             if abs(moyen - median) >= 2.0:
                 lequel = "plus" if median > moyen else "moins"
                 phrases.append(
-                    f"Écart médian {_signed_percent(median)}, soit "
-                    f"nettement {lequel} que l'écart moyen : celui-ci tient "
-                    "donc en partie à quelques rémunérations extrêmes, et la "
-                    "médiane décrit mieux le cas courant.")
+                    f"Écart médian {_signed_percent(median)}, nettement "
+                    f"{lequel} que l'écart moyen : celui-ci tient donc en "
+                    "partie à quelques rémunérations extrêmes.")
             else:
                 phrases.append(
                     f"Écart médian {_signed_percent(median)}, proche de "
@@ -2064,36 +2080,58 @@ class Application(tk.Tk):
         if variable.get("mean_gap") is not None:
             phrase = ("Sur la rémunération variable, l'écart est de "
                       f"{_signed_percent(variable.get('mean_gap'))}")
-            if part_f is not None and part_h is not None:
-                phrase += (f", et {format_percent(part_f)} des femmes en "
+            if part_f is not None and part_h is not None \
+                    and abs(part_f - part_h) >= 5.0:
+                phrase += (f" — et {format_percent(part_f)} des femmes en "
                            f"perçoivent contre {format_percent(part_h)} des "
-                           "hommes")
-                if abs((part_f or 0) - (part_h or 0)) >= 5.0:
-                    phrase += (" — l'écart se joue ici autant sur l'accès au "
-                               "variable que sur son montant")
+                           "hommes : l'accès au variable y pèse autant que "
+                           "son montant")
             phrases.append(phrase + ".")
-        phrases.append(
-            "Ces trois indicateurs sont aussi ceux que la directive "
-            "2023/970 demande de publier.")
+        phrases.append("Indicateurs demandés par la directive 2023/970.")
+        return " ".join(phrases)
+
+    def _decomposition_note(self, equity: Dict[str, Any],
+                            block: Optional[Dict[str, Any]]) -> str:
+        """Une ligne : ou agir, et sur quelle part de l'effectif.
+
+        La note faisait cinq lignes. Elle expliquait ce que le mot « dont »
+        et la hierarchie du bandeau disent maintenant sans un mot, et
+        redonnait des definitions que le survol d'un indicateur donne deja.
+        Ce qui reste est ce qu'aucune des deux ne peut dire : ou se
+        concentre l'enjeu, et sur quelle part de l'effectif la
+        decomposition porte.
+        """
+        if not block or block.get("comparable_gap") is None:
+            return ("Aucun poste ne réunit assez de femmes et d'hommes : "
+                    "l'écart global ne peut pas être décomposé.")
+        label = (block.get("category_label") or "poste").lower()
+        devise = (self.result.payload["salary"].get("currency", "EUR")
+                  if self.result else "EUR")
+        montant = block.get("at_stake_total")
+        phrases = []
+        if montant:
+            phrase = (f"Aligner coûterait {format_money(montant, devise)}")
+            concentration = self._concentration_note(block)
+            phrases.append(phrase + (f", {concentration}" if concentration
+                                     else "."))
+        couverture = block.get("comparable_coverage")
+        if couverture is not None and couverture < 99.5:
+            # La reserve ne se dit que lorsqu'elle est une reserve : a
+            # couverture quasi totale, elle n'apprend rien et occupe une
+            # ligne.
+            phrases.append(f"Décomposition établie sur "
+                           f"{format_percent(couverture)} de l'effectif.")
         return " ".join(phrases)
 
     def _contexte_note(self, equity: Dict[str, Any],
                        block: Optional[Dict[str, Any]]) -> str:
-        """Effectifs et couverture : le contexte, pas les indicateurs."""
-        morceaux = [f'{equity.get("female_count", 0)} femmes, '
+        """Qui l'on compare. Rien d'autre."""
+        morceaux = [f'{equity.get("female_count", 0)} femmes',
                     f'{equity.get("male_count", 0)} hommes']
         inconnu = equity.get("unknown_count", 0)
         if inconnu:
-            morceaux.append(f"{inconnu} au sexe non renseigné, exclus de "
-                            "tous les écarts")
-        couverture = (block or {}).get("comparable_coverage")
-        if couverture is not None:
-            label = ((block or {}).get("category_label") or "poste").lower()
-            morceaux.append(
-                f"{format_percent(couverture)} de l'effectif travaille sur "
-                f"un {label} qui réunit assez de femmes et d'hommes pour "
-                "être comparé")
-        return " ; ".join(morceaux) + "."
+            morceaux.append(f"{inconnu} au sexe non renseigné, exclus")
+        return "  ·  ".join(morceaux)
 
     @staticmethod
     def _concentration_note(block: Optional[Dict[str, Any]]) -> str:
@@ -2281,10 +2319,8 @@ class Application(tk.Tk):
         # se lisent pas toutes dans la meme unite, et l'anciennete y est la
         # variable qu'on regarde en premier quand un ecart surprend.
         share = profile.get("variable_share", {})
-        note = ["Moyennes des deux groupes, ligne à ligne. L'écart est en "
-                "pourcentage sur les montants, et dans l'unité de la "
-                "variable ailleurs — « −1,5 an » se lit comme une "
-                "différence d'ancienneté, non comme un écart de salaire."]
+        note = ["Moyennes des deux groupes. L'écart est en pourcentage sur "
+                "les montants, en unité de la variable ailleurs."]
         # « difference » est femmes − hommes, et c'est le seul ecart
         # disponible sur une variable qui n'est pas un montant : « gap »
         # n'existe que pour les remunerations.

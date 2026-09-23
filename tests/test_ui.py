@@ -640,7 +640,28 @@ class TestThePayTransparencyPage(unittest.TestCase):
         self.assertGreater(len(self.app._categories), simple)
         self.assertNotEqual(self.app.category_heading.cget("text"), etiquette)
         self.assertIn("·", self.app._categories[0]["category"])
-        self.assertIn("comparable", self.app.equity_note.cget("text"))
+        # Le bandeau suit l'axe croise : son intitule intermediaire porte le
+        # libelle compose. La note, elle, ne contient plus de definition —
+        # elle dit ou agir, et sur un axe croise trop fin elle dit que la
+        # decomposition n'est pas possible. C'est le bandeau qu'il faut
+        # interroger.
+        intitules = " ".join(self._equity_labels()).lower()
+        self.assertIn("comparable", intitules)
+
+    def _equity_labels(self):
+        """Tous les intitules du bandeau des ecarts."""
+        import tkinter as tk
+
+        trouves = []
+
+        def marcher(widget):
+            for enfant in widget.winfo_children():
+                if isinstance(enfant, tk.Label):
+                    trouves.append(enfant.cget("text"))
+                marcher(enfant)
+
+        marcher(self.app.equity_frame)
+        return trouves
 
     def test_crossing_an_axis_with_itself_is_ignored(self):
         """Cela ne produirait que des libelles doubles."""
