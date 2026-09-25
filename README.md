@@ -106,7 +106,7 @@ python3 -m hr_insight.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 1099 tests
+python3 -m unittest discover -s tests -t .     # 1142 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 
@@ -125,6 +125,9 @@ générateur pseudo-aléatoire à graine fixe.
 - [`docs/GUIDE_UTILISATEUR.md`](docs/GUIDE_UTILISATEUR.md) — guide RH.
 - [`docs/AUDIT.md`](docs/AUDIT.md) — audit complet : ce qui a été
   mesuré, les défauts trouvés et corrigés, ce qui reste fragile.
+- [`docs/AUDIT-SECURITE-IT.md`](docs/AUDIT-SECURITE-IT.md) — audit de
+  sécurité IT : dépendances, accès réseau, sortie de données,
+  injection depuis le fichier RH.
 
 ## Prérequis
 

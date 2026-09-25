@@ -21,6 +21,7 @@ from ..version import ENGINE_NAME, __version__
 from .axes import nice_ticks
 from . import palette
 from . import reporting
+from ..io import restrict_to_owner
 from .reporting import (format_money, format_number, format_percent,
                         format_years,
                         histogram_svg, scatter_svg)
@@ -697,7 +698,7 @@ def write_slides_html(slides: Sequence[Slide], analysis: Dict[str, Any],
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(render_slides_html(slides, analysis))
-    return path
+    return restrict_to_owner(path)
 
 
 # ------------------------------------------------------------------ rendu PDF

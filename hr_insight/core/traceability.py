@@ -15,6 +15,7 @@ from typing import Any, Dict, Optional
 
 from ..version import ENGINE_NAME, __version__
 from .config import Configuration
+from ..io import restrict_to_owner
 
 
 def file_fingerprint(path: str) -> str:
@@ -87,4 +88,4 @@ def write_manifest(manifest: Dict[str, Any], path: str) -> str:
     with open(path, "w", encoding="utf-8") as handle:
         json.dump(manifest, handle, ensure_ascii=False, indent=2, default=str)
         handle.write("\n")
-    return path
+    return restrict_to_owner(path)

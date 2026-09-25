@@ -22,6 +22,8 @@ import unicodedata
 import zlib
 from typing import List, Optional, Sequence, Tuple
 
+from . import restrict_to_owner
+
 # Largeurs Helvetica (unites de 1/1000 em) pour les caracteres imprimables
 # latin-1. Table officielle des metriques Adobe (AFM).
 _HELVETICA_WIDTHS = {
@@ -232,7 +234,7 @@ class Document:
         os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
         with open(path, "wb") as handle:
             handle.write(self._build())
-        return path
+        return restrict_to_owner(path)
 
     def _build(self) -> bytes:
         objects: List[bytes] = []

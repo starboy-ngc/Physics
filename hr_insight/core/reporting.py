@@ -16,6 +16,7 @@ from typing import Any, Dict, List, Optional, Sequence
 from ..version import ENGINE_NAME, __version__
 from . import palette
 from .axes import nice_ticks
+from ..io import restrict_to_owner
 
 #: Palette du document en cours de rendu. `use()` la fixe au debut de chaque
 #: rendu, a partir du theme porte par l'analyse. Un document se rend d'un
@@ -715,4 +716,4 @@ def write_report(analysis: Dict[str, Any], path: str) -> str:
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(render_report(analysis))
-    return path
+    return restrict_to_owner(path)
