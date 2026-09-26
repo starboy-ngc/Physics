@@ -1343,7 +1343,10 @@ class GapChart(tk.Frame):
     """
 
     ROW = 30
-    LABEL = 210
+    #: La colonne des libelles. Deux cent dix pixels suffisaient pour un
+    #: poste ; un regroupement croise ecrit « Comptable · Ile-de-France » et
+    #: s'y coupait au milieu du mot qui distingue justement les deux lignes.
+    LABEL = 268
     COUNTS = 74
     #: La colonne des valeurs doit loger « +100,0 % » en gras, plus la
     #: gouttiere : mesuree trop juste, la plus longue barre — toujours
@@ -1509,3 +1512,183 @@ def _ellipsis(canvas: tk.Canvas, text: str, room: int, font) -> str:
     while text and mesure.measure(text + "…") > room:
         text = text[:-1]
     return text + "…"
+
+
+class PeopleChart(tk.Frame):
+    """Les salaries d'un groupe, un point chacun, sur l'echelle des salaires.
+
+    Un ecart de groupe dit qu'il se passe quelque chose ; il ne dit pas a
+    qui. Une revalorisation se decide personne par personne, et la premiere
+    question qui suit « ce poste presente un ecart de douze pour cent » est
+    « lesquels sont en dessous, et de combien ».
+
+    Deux couloirs — les femmes au-dessus, les hommes au-dessous — partagent
+    la meme echelle horizontale, sans quoi deux points a la meme abscisse ne
+    vaudraient pas le meme salaire. Le repere vertical est la mediane du
+    groupe : les points a sa gauche sont ceux qui decrochent, et ils sont
+    dessines pleins quand les autres sont creux.
+
+    L'identite n'est pas dans les donnees : le point porte un numero de
+    ligne, et la fenetre y rapproche un nom si le parametrage l'y autorise —
+    a l'ecran seulement.
+    """
+
+    HEIGHT = 168
+    LANE = 46
+    MARGIN_LEFT = 96
+    MARGIN_RIGHT = 24
+
+    def __init__(self, master: tk.Widget, on_select: Optional[Callable] = None):
+        super().__init__(master, background=theme.CANVAS, height=self.HEIGHT)
+        _fonts(self)
+        self.pack_propagate(False)
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.tooltip = Tooltip(self.canvas)
+        self.rows: List[Dict[str, Any]] = []
+        self.currency = "EUR"
+        self.reference: Optional[float] = None
+        self.warning = ""
+        #: Rappel qui rend un nom lisible depuis un numero de ligne. Vide
+        #: quand le parametrage cache les identites : le graphique n'a alors
+        #: rien a montrer d'autre que la reference anonyme.
+        self.identify: Optional[Callable[[Optional[int]], str]] = None
+        self._on_select = on_select
+        self._items: Dict[int, Dict[str, Any]] = {}
+        redraw_on_resize(self, self.canvas)
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+        self.canvas.bind("<Button-1>", self._on_click)
+
+    # ------------------------------------------------------------ donnees
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
+                 reference: Optional[float] = None, warning: str = "") -> None:
+        self.rows = [dict(row) for row in rows or []]
+        self.currency = currency
+        self.reference = reference
+        self.warning = warning
+        self.redraw()
+
+    # ------------------------------------------------------------ souris
+
+    def _at(self, x: int, y: int) -> Optional[Dict[str, Any]]:
+        for item in self.canvas.find_overlapping(x - 3, y - 3, x + 3, y + 3):
+            if item in self._items:
+                return self._items[item]
+        return None
+
+    def _on_motion(self, event) -> None:
+        point = self._at(event.x, event.y)
+        if point is None:
+            self.tooltip.hide()
+            self.canvas.configure(cursor="")
+            return
+        self.canvas.configure(cursor="hand2")
+        self.tooltip.show(self._label(point),
+                          self.canvas.winfo_rootx() + event.x,
+                          self.canvas.winfo_rooty() + event.y)
+
+    def _on_click(self, event) -> None:
+        point = self._at(event.x, event.y)
+        if point is not None and self._on_select is not None:
+            self._on_select(point)
+
+    def _label(self, point: Dict[str, Any]) -> str:
+        """Ce que dit un point au survol : qui, combien, et de combien en
+        dessous du repere."""
+        nom = ""
+        if self.identify is not None:
+            nom = self.identify(point.get("row")) or ""
+        morceaux = [nom or str(point.get("reference", "")),
+                    format_money(point.get("amount") or 0.0, self.currency)]
+        écart = point.get("gap")
+        if écart:
+            morceaux.append(f"{écart:+.1f} %".replace(".", ",")
+                            + " sous la médiane du groupe")
+        explication = point.get("explain")
+        if explication:
+            morceaux.append(str(explication))
+        return "  ·  ".join(morceaux)
+
+    # ------------------------------------------------------------ trace
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        if width < 240:
+            return
+        if not self.rows:
+            self.canvas.create_text(
+                self.MARGIN_LEFT, self.HEIGHT / 2, anchor="w",
+                text=self.warning or "Aucun salarié à montrer ici.",
+                font=note_font(), fill=theme.MUTED)
+            return
+
+        montants = [row.get("amount") or 0.0 for row in self.rows]
+        bas, haut = min(montants), max(montants)
+        if self.reference is not None:
+            bas, haut = min(bas, self.reference), max(haut, self.reference)
+        if haut <= bas:
+            # Tout le monde au meme salaire : une echelle plate ferait
+            # empiler tous les points sur une seule abscisse, ce qui se
+            # lirait comme un hasard de trace. On l'ecrit.
+            self.canvas.create_text(
+                self.MARGIN_LEFT, self.HEIGHT / 2, anchor="w",
+                text="Tous les salariés de ce groupe sont au même montant : "
+                     "il n'y a pas d'échelle à dessiner.",
+                font=note_font(), fill=theme.MUTED)
+            return
+        piste = max(width - self.MARGIN_LEFT - self.MARGIN_RIGHT, 40)
+
+        def x_de(montant: float) -> float:
+            return self.MARGIN_LEFT + piste * (montant - bas) / (haut - bas)
+
+        couloirs = (("F", "FEMMES", theme.FEMALE, 46),
+                    ("H", "HOMMES", theme.MALE, 46 + self.LANE))
+        for _sexe, libellé, couleur, y in couloirs:
+            self.canvas.create_text(self.MARGIN_LEFT - 12, y, anchor="e",
+                                    text=libellé, font=axis_font(),
+                                    fill=couleur)
+            self.canvas.create_line(self.MARGIN_LEFT, y,
+                                    self.MARGIN_LEFT + piste, y,
+                                    fill=theme.GRID)
+
+        if self.reference is not None:
+            x = x_de(self.reference)
+            self.canvas.create_line(x, 24, x, 46 + self.LANE + 20,
+                                    fill=theme.LINE_STRONG, dash=(3, 3))
+            self.canvas.create_text(
+                x, 14, text=f"Médiane du groupe : "
+                            f"{format_money(self.reference, self.currency)}",
+                font=axis_font(), fill=theme.MUTED)
+
+        y_par_sexe = {sexe: y for sexe, _l, _c, y in couloirs}
+        for index, row in enumerate(self.rows):
+            y = y_par_sexe.get(str(row.get("sex") or ""))
+            if y is None:
+                continue
+            # Un decalage vertical regulier, tire du rang : deux salaries au
+            # meme montant se superposeraient sinon, et le point le plus bas
+            # — celui qu'on cherche — se cacherait derriere un autre.
+            y += ((index % 5) - 2) * 4
+            x = x_de(row.get("amount") or 0.0)
+            couleur = (theme.FEMALE if str(row.get("sex")) == "F"
+                       else theme.MALE)
+            décroche = bool(row.get("lagging"))
+            item = self.canvas.create_oval(
+                x - 4, y - 4, x + 4, y + 4,
+                fill=couleur if décroche else theme.CANVAS,
+                outline=couleur, width=1 if décroche else 1)
+            self._items[item] = row
+
+        # Les deux bornes de l'echelle, calees vers l'interieur : centrees
+        # sur leur abscisse, celle de droite sortait du canevas et perdait
+        # sa derniere lettre.
+        for montant, ancre in ((bas, "w"), (haut, "e")):
+            self.canvas.create_text(
+                x_de(montant), 46 + self.LANE + 30, anchor=ancre,
+                text=format_money(montant, self.currency),
+                font=axis_font(), fill=theme.FAINT)

@@ -576,11 +576,11 @@ class TestThePayTransparencyPage(unittest.TestCase):
         Ouvrir une fiche au hasard ferait lire un poste que personne n'a
         demande."""
         self.assertTrue(self.app.gap_chart.rows)
-        self.assertEqual(self.app.overview_block.winfo_manager(), "pack")
-        # Le titre de la lecture dit de quoi la page parle, le sous-titre
-        # dit quoi en faire : les deux ensemble repondent a la question.
+        # Le titre de la page dit de quoi elle parle, le sous-titre dit sur
+        # quoi elle compare, et le bloc du dessous invite a choisir.
         self.assertIn("écart", self.app.profile_title.cget("text"))
-        self.assertIn("Choisissez", self.app.profile_subtitle.cget("text"))
+        self.assertIn("Regroupement", self.app.profile_subtitle.cget("text"))
+        self.assertIn("Choisissez", self.app.detail_title.cget("text"))
 
     def test_choosing_a_bar_opens_that_profile(self):
         self.assertGreaterEqual(len(self.app.gap_chart.rows), 2)
@@ -636,7 +636,7 @@ class TestThePayTransparencyPage(unittest.TestCase):
         du haut doivent suivre ensemble. Laisser l'ecart d'un axe au-dessus
         de la liste d'un autre serait pire que de ne pas croiser."""
         simple = len(self.app._categories)
-        etiquette = self.app.profile_title.cget("text")
+        etiquette = self.app.profile_subtitle.cget("text")
 
         self.app.category_cross.set("BU")
         self.app._show_categories()
@@ -644,7 +644,9 @@ class TestThePayTransparencyPage(unittest.TestCase):
 
         self.assertEqual(self.app._axis(), ["grade", "business_unit"])
         self.assertGreater(len(self.app._categories), simple)
-        self.assertNotEqual(self.app.profile_title.cget("text"), etiquette)
+        # Le titre de la page ne bouge pas — il dit ce que la page fait ;
+        # c'est le sous-titre qui porte le regroupement courant.
+        self.assertNotEqual(self.app.profile_subtitle.cget("text"), etiquette)
         self.assertIn("·", self.app._categories[0]["category"])
         # Le bandeau suit l'axe croise : son intitule intermediaire porte le
         # libelle compose. La note, elle, ne contient plus de definition —
@@ -682,7 +684,7 @@ class TestThePayTransparencyPage(unittest.TestCase):
         des quartiles reste offerte quel que soit le poste retenu, et elle
         est remplie sans attendre qu'on l'ouvre.
         """
-        self.assertIn("quartiles", self.app.analysisbar.visible_keys())
+        self.assertTrue(self.app.quartile_block.winfo_manager())
         self.assertEqual(len(self.app.quartile_chart.rows), 4)
         note = self.app.compliance_note.cget("text")
         self.assertIn("2023/970", note)
@@ -2201,17 +2203,11 @@ class TestRecoveringFromAnEmptySelection(unittest.TestCase):
         self._analyse()
         # winfo_manager dit si le widget est empaquete, independamment de
         # l'onglet actif : winfo_ismapped repondrait « non » simplement
-        # parce que la page n'est pas au premier plan. Le bloc n'est plus
-        # empaquete en permanence — c'est la barre des lectures qui decide
-        # de ce qui est a l'ecran —, mais l'ouvrir doit marcher apres
-        # n'importe quelle suite d'analyses : c'est le geste qui levait
-        # l'erreur.
-        self.app.analysisbar.select("quartiles")
+        # parce que la page n'est pas au premier plan.
         self.app.update()
-        self.assertEqual(self.app.quartile_block.winfo_manager(), "pack")
+        self.assertFalse(self.app.quartile_block.winfo_manager())
         self.app.reset_filters()
         self._analyse()
-        self.app.analysisbar.select("quartiles")
         self.app.update()
         self.assertEqual(self.app.quartile_block.winfo_manager(), "pack")
         self.assertEqual(len(self.app.quartile_chart.rows), 4)

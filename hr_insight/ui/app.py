@@ -29,7 +29,6 @@ from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
 from ..core import metrics, palette
-from ..core import statistics_engine
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError, ConfigError
@@ -37,8 +36,7 @@ from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
 from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
-                               category_members, comparison_amounts,
-                               salary_bands_by_sex)
+                               group_positions, lagging_members)
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
@@ -51,7 +49,7 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
 from ..core.traceability import write_manifest
 from . import theme
 from .charts import (BandChart, BoxPlotChart, GapChart,
-                     HistogramChart, PyramidChart, QuartileChart,
+                     HistogramChart, PeopleChart, PyramidChart, QuartileChart,
                      ScatterChart)
 from .progress import LoadingBar
 from . import splash as accueil_module
@@ -966,45 +964,47 @@ class Application(tk.Tk):
                                     anchor="w", wraplength=980)
         self.equity_note.pack(anchor="w", padx=24, pady=(0, 4))
 
-        # --- 2. Le choix du poste ----------------------------------------
+        # --- 2. Le groupe de comparaison ---------------------------------
+        #
+        # « Travail de meme valeur » ne se lit pas sur un seul axe. Un
+        # comptable en Ile-de-France et un comptable dans le Nord ne sont pas
+        # payes pareil, et l'ecart entre eux n'est pas un ecart de sexe ;
+        # une revue du personnel qui classe « talent », « en poste »,
+        # « en decalage » explique une part de ce qui reste. Le regroupement
+        # se construit donc ici, jusqu'a trois dimensions, parmi toutes
+        # celles que le parametrage declare.
         self._equity_rule()
-        # Le choix du poste occupe sa ligne, seul : c'est le geste de la
-        # page. Les trois reglages d'axe sont secondaires — on les touche
-        # une fois — et tiennent sur une ligne discrete en dessous. Poses
-        # sur la meme ligne, ils ecrasaient le choix du poste.
         barre = tk.Frame(self.equity_page, background=theme.CANVAS)
         barre.pack(fill="x", padx=24, pady=(0, 6))
-        tk.Label(barre, text="POSTE", background=theme.CANVAS,
+        tk.Label(barre, text="GROUPE", background=theme.CANVAS,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left", padx=(0, 10))
-        self.category_value = ttk.Combobox(barre, state="readonly", width=42,
+        self.category_value = ttk.Combobox(barre, state="readonly", width=48,
                                            font=self.fonts.body)
         self.category_value.pack(side="left")
         self.category_value.bind("<<ComboboxSelected>>",
                                  lambda _e: self._show_profile())
-        reglages = tk.Frame(self.equity_page, background=theme.CANVAS)
-        reglages.pack(fill="x", padx=24, pady=(0, 10))
-        self.category_choice = self._axis_choice(reglages, "comparer par")
-        self.category_cross = self._axis_choice(reglages, "croisé avec")
-        self.category_order = self._axis_choice(reglages, "trier par",
+        # Le tri suit le choix du groupe, sur la meme ligne : c'est un
+        # reglage de lecture, pas une piece du regroupement. Les quatre
+        # dimensions tiennent la ligne suivante — cinq listes cote a cote
+        # sortaient de la fenetre, et la derniere s'appelait « TRII ».
+        self.category_order = self._axis_choice(barre, "trier par",
                                                 [label for _key, label
                                                  in CATEGORY_ORDERS])
         self.category_order.current(0)
+        reglages = tk.Frame(self.equity_page, background=theme.CANVAS)
+        reglages.pack(fill="x", padx=24, pady=(0, 10))
+        self.category_choice = self._axis_choice(reglages, "comparer par")
+        # « Croise avec » devient « puis » : trois dimensions se lisent
+        # comme une phrase — poste, puis etablissement, puis grade — la ou
+        # « croise avec » ne se disait qu'une fois.
+        self.category_cross = self._axis_choice(reglages, "puis")
+        self.category_cross2 = self._axis_choice(reglages, "puis")
+        self.explain_choice = self._axis_choice(
+            reglages, "expliquer par", command=self._show_lagging)
 
-        # --- 3. Les analyses, une a la fois ------------------------------
-        # Meme mecanique que l'onglet Graphique : une barre subordonnee, un
-        # contenu en pleine page. Empilees, ces cinq lectures faisaient une
-        # page de deux mille pixels ou chacune devenait une vignette ; l'une
-        # apres l'autre, chacune garde sa place, son survol et son echelle.
+        # --- 3. Les groupes ----------------------------------------------
         self._equity_rule()
-        barre = tk.Frame(self.equity_page, background=theme.CANVAS)
-        barre.pack(fill="x", padx=18)
-        self.analysisbar = TabBar(barre, self.fonts,
-                                  on_change=self._show_analysis,
-                                  secondary=True)
-        self.analysisbar.pack(side="left")
-        theme.rule(self.equity_page).pack(fill="x", padx=24, pady=(4, 12))
-
         self.profile_title = tk.Label(self.equity_page, text="",
                                       background=theme.CANVAS,
                                       foreground=theme.INK,
@@ -1015,31 +1015,26 @@ class Application(tk.Tk):
                                          foreground=theme.MUTED,
                                          font=self.fonts.body, anchor="w",
                                          justify="left", wraplength=1000)
-        self.profile_subtitle.pack(anchor="w", padx=24, pady=(0, 10))
-
-        self.analysis_holder = tk.Frame(self.equity_page,
-                                        background=theme.CANVAS)
-        self.analysis_holder.pack(fill="both", expand=True)
-        self.analysis_pages: Dict[str, tk.Frame] = {
-            key: tk.Frame(self.analysis_holder, background=theme.CANVAS)
-            for key, _label in EQUITY_VIEWS}
-
-        # a) Les ecarts : ou faut-il regarder.
-        self.overview_block = self.analysis_pages["ecarts"]
-        # Pas d'intertitre : le titre de la lecture, quinze pixels plus
-        # haut, porte deja l'intitule de l'axe. Deux titres l'un sous
-        # l'autre se lisaient comme deux sections.
-        self.category_title = tk.Label(self.overview_block, text="",
+        self.profile_subtitle.pack(anchor="w", padx=24, pady=(0, 8))
+        self.category_title = tk.Label(self.equity_page, text="",
                                        background=theme.CANVAS,
                                        foreground=theme.FAINT,
                                        font=self.fonts.label, anchor="w")
         self.category_title.pack(anchor="w", padx=24, pady=(0, 4))
-        self.gap_chart = GapChart(self.overview_block,
+        self.gap_chart = GapChart(self.equity_page,
                                   on_select=self._on_category_selected)
         self.gap_chart.pack(fill="x", padx=24, pady=(0, 6))
 
-        # b) Le detail d'un poste : toute sa remuneration, en trois colonnes.
-        self.detail_block = self.analysis_pages["detail"]
+        # --- 4. Le groupe retenu, en trois colonnes ----------------------
+        self._equity_rule()
+        self.detail_block = tk.Frame(self.equity_page,
+                                     background=theme.CANVAS)
+        self.detail_block.pack(fill="x")
+        self.detail_title = tk.Label(self.detail_block, text="",
+                                     background=theme.CANVAS,
+                                     foreground=theme.INK,
+                                     font=self.fonts.section, anchor="w")
+        self.detail_title.pack(anchor="w", padx=24, pady=(0, 6))
         self.profile_kpis = tk.Frame(self.detail_block,
                                      background=theme.CANVAS)
         self.profile_kpis.pack(fill="x")
@@ -1057,46 +1052,60 @@ class Application(tk.Tk):
                                      anchor="w", wraplength=980)
         self.profile_note.pack(anchor="w", padx=24, pady=(2, 10))
 
-        # c) La repartition : ce qu'une moyenne efface.
-        self.bands_block = self.analysis_pages["repartition"]
-        self.bands_chart = PyramidChart(self.bands_block)
-        self.bands_chart.pack(fill="x", padx=24, pady=(4, 6))
-        self.bands_note = tk.Label(self.bands_block, text="",
-                                   background=theme.CANVAS,
-                                   foreground=theme.MUTED,
-                                   font=self.fonts.small, justify="left",
-                                   anchor="w", wraplength=980)
-        self.bands_note.pack(anchor="w", padx=24, pady=(2, 10))
+        # --- 5. Les personnes qui decrochent -----------------------------
+        #
+        # C'est la que la page devient decidable : un ecart de groupe dit
+        # qu'il se passe quelque chose, il ne dit pas a qui. Les points
+        # d'abord — ou chacun se situe sur l'echelle du groupe —, puis la
+        # liste, classee par ampleur du decrochage.
+        self._equity_rule()
+        self.lagging_title = tk.Label(
+            self.equity_page, text="Les personnes qui décrochent",
+            background=theme.CANVAS, foreground=theme.INK,
+            font=self.fonts.section, anchor="w")
+        self.lagging_title.pack(anchor="w", padx=24, pady=(0, 2))
+        self.lagging_subtitle = tk.Label(self.equity_page, text="",
+                                         background=theme.CANVAS,
+                                         foreground=theme.MUTED,
+                                         font=self.fonts.body, anchor="w",
+                                         justify="left", wraplength=1000)
+        self.lagging_subtitle.pack(anchor="w", padx=24, pady=(0, 4))
+        self.people_chart = PeopleChart(self.equity_page,
+                                        on_select=self._on_person_selected)
+        self.people_chart.identify = self._identity_of
+        self.people_chart.pack(fill="x", padx=24, pady=(0, 4))
+        self.lagging_tree = self._tree(
+            self.equity_page,
+            ("Salarié", "Sexe", "Groupe", "Lecture",
+             "Salaire à temps plein", "Écart au groupe"),
+            # Les colonnes de texte passent la barre des deux cents pixels :
+            # c'est elle qui decide de l'alignement, et « Performance » cale
+            # a droite se lisait comme un nombre.
+            (250, 90, 240, 210, 180, 150), expand=False, height=10)
+        self.lagging_note = tk.Label(self.equity_page, text="",
+                                     background=theme.CANVAS,
+                                     foreground=theme.MUTED,
+                                     font=self.fonts.small, justify="left",
+                                     anchor="w", wraplength=980)
+        self.lagging_note.pack(anchor="w", padx=24, pady=(2, 10))
 
-        # d) La dispersion : deux boites par poste, femmes et hommes.
-        self.spread_block = self.analysis_pages["dispersion"]
-        cadre = tk.Frame(self.spread_block, background=theme.CANVAS,
-                         height=430)
-        cadre.pack(fill="x", padx=24, pady=(4, 0))
-        cadre.pack_propagate(False)
-        self.equity_boxplot = BoxPlotChart(cadre)
-        self.equity_boxplot.pack(fill="both", expand=True)
-        self.spread_note = tk.Label(self.spread_block, text="",
-                                    background=theme.CANVAS,
-                                    foreground=theme.MUTED,
-                                    font=self.fonts.small, justify="left",
-                                    anchor="w", wraplength=980)
-        self.spread_note.pack(anchor="w", padx=24, pady=(6, 10))
-
-        # e) Les quartiles : l'indicateur f) de la directive.
-        self.quartile_block = self.analysis_pages["quartiles"]
+        # --- 6. La repartition d'ensemble --------------------------------
+        self._equity_rule()
+        self.quartile_block = tk.Frame(self.equity_page,
+                                       background=theme.CANVAS)
+        self.quartile_block.pack(fill="x")
+        tk.Label(self.quartile_block,
+                 text="Répartition par quartile de rémunération",
+                 background=theme.CANVAS, foreground=theme.INK,
+                 font=self.fonts.section).pack(anchor="w", padx=24,
+                                               pady=(0, 8))
         self.quartile_chart = QuartileChart(self.quartile_block)
-        self.quartile_chart.pack(fill="x", padx=24, pady=(4, 10))
+        self.quartile_chart.pack(fill="x", padx=24, pady=(0, 10))
         self.compliance_note = tk.Label(
-            self.quartile_block, text="", background=theme.CANVAS,
+            self.equity_page, text="", background=theme.CANVAS,
             foreground=theme.MUTED, font=self.fonts.small, justify="left",
             anchor="w", wraplength=980)
         self.compliance_note.pack(anchor="w", padx=24, pady=(0, 24))
-
-        # Les entrees en dernier : la premiere ajoutee est selectionnee, et
-        # elle appelle « _show_analysis » — qui a besoin des cinq cadres.
-        for key, label in EQUITY_VIEWS:
-            self.analysisbar.add(key, label)
 
     def _equity_rule(self) -> tk.Frame:
         """Un filet entre deux temps de la page.
@@ -1109,18 +1118,26 @@ class Application(tk.Tk):
         return filet
 
     def _axis_choice(self, parent: tk.Frame, label: str,
-                     values: Optional[List[str]] = None) -> ttk.Combobox:
-        """Un reglage d'axe, pose a droite de la ligne de titre."""
+                     values: Optional[List[str]] = None,
+                     command=None) -> ttk.Combobox:
+        """Un reglage de regroupement, sur la ligne des reglages.
+
+        `command` : ce que le choix declenche. Par defaut tout le bloc se
+        recalcule — c'est ce qu'exige un changement de regroupement. La
+        dimension de lecture, elle, ne change aucun calcul : elle ne
+        rafraichit que la liste des personnes.
+        """
         bloc = tk.Frame(parent, background=theme.CANVAS)
-        bloc.pack(side="left", padx=(0, 22))
+        bloc.pack(side="left", padx=(0, 18))
         tk.Label(bloc, text=label.upper(), background=theme.CANVAS,
                  foreground=theme.FAINT, font=self.fonts.label,
                  anchor="w").pack(side="left", padx=(0, 7))
-        choix = ttk.Combobox(bloc, state="readonly", width=17,
+        choix = ttk.Combobox(bloc, state="readonly", width=15,
                              font=self.fonts.small,
                              values=values or [])
         choix.pack(side="left")
-        choix.bind("<<ComboboxSelected>>", lambda _e: self._show_categories())
+        rappel = command or self._show_categories
+        choix.bind("<<ComboboxSelected>>", lambda _e: rappel())
         return choix
 
     def _on_category_selected(self, category: Optional[str]) -> None:
@@ -2003,9 +2020,11 @@ class Application(tk.Tk):
         etiquettes = [dimension_label(self.configuration, field)
                       for field in self._category_fields]
         self.category_choice.configure(values=etiquettes)
-        self.category_cross.configure(values=[NO_CROSS] + etiquettes)
-        if not self.category_cross.get():
-            self.category_cross.current(0)
+        for combo in (self.category_cross, self.category_cross2,
+                      self.explain_choice):
+            combo.configure(values=[NO_CROSS] + etiquettes)
+            if not combo.get():
+                combo.current(0)
         configured = equity.get("category_field")
         if configured in self._category_fields:
             self.category_choice.current(self._category_fields.index(configured))
@@ -2026,6 +2045,10 @@ class Application(tk.Tk):
             self.category_title.configure(text="")
             self.quartile_chart.set_rows([])
             self.gap_chart.set_rows([])
+            self.people_chart.set_rows([])
+            self._fill(self.lagging_tree, [])
+            self.lagging_note.configure(text="")
+            self.lagging_subtitle.configure(text="")
             self._clear_profile("")
             return
 
@@ -2040,9 +2063,12 @@ class Application(tk.Tk):
         # mobilite. Additionnes, ils sont indecidables.
         self._show_decomposition(self._category_block())
 
-        # Le bloc des quartiles n'est plus empaquete ici : c'est la barre
-        # des lectures qui decide de ce qui est a l'ecran. Il reste rempli a
-        # chaque analyse, pour qu'ouvrir l'onglet ne demande aucun calcul.
+        if not self.quartile_block.winfo_manager():
+            # Il a pu etre depaquete par une analyse sans ecart publiable.
+            # « compliance_note » n'est jamais depaquetee : c'est un repere
+            # sur pour rendre le bloc a sa place.
+            self.quartile_block.pack(fill="x", pady=(16, 0),
+                                     before=self.compliance_note)
         self.quartile_chart.set_rows(equity["quartiles"])
         # Ces trois chiffres disaient d'abord qu'ils etaient « publiables au
         # titre de la directive ». Ils valent pour ce qu'ils apprennent :
@@ -2264,21 +2290,39 @@ class Application(tk.Tk):
         return ""
 
     def _axis(self):
-        """L'axe courant : un champ, ou un couple si l'on croise.
+        """Le regroupement courant : un champ, ou jusqu'a trois.
 
-        Croiser un axe avec lui-meme ne produirait que des libelles doubles :
-        le second choix est alors ignore.
+        « Travail de meme valeur » ne se lit pas sur un seul axe : un
+        comptable en Ile-de-France et un comptable dans le Nord ne sont pas
+        payes pareil, et l'ecart entre eux n'est pas un ecart de sexe. Le
+        regroupement se construit donc dimension par dimension.
+
+        Reprendre deux fois la meme dimension ne produirait que des libelles
+        doubles : les repetitions sont ignorees.
         """
         index = self.category_choice.current()
         if index < 0:
             return None
-        champ = self._category_fields[index]
-        croise = self.category_cross.current() - 1
-        if 0 <= croise < len(self._category_fields):
-            autre = self._category_fields[croise]
-            if autre != champ:
-                return [champ, autre]
-        return champ
+        champs = [self._category_fields[index]]
+        for combo in (self.category_cross, self.category_cross2):
+            rang = combo.current() - 1
+            if 0 <= rang < len(self._category_fields):
+                autre = self._category_fields[rang]
+                if autre not in champs:
+                    champs.append(autre)
+        return champs[0] if len(champs) == 1 else champs
+
+    def _explain_field(self) -> Optional[str]:
+        """La dimension portee en clair a cote de chaque personne.
+
+        C'est la colonne qui explique, ou qui refuse d'expliquer : une revue
+        du personnel, un grade, une tranche d'anciennete. Elle ne change
+        aucun calcul — elle se lit.
+        """
+        rang = self.explain_choice.current() - 1
+        if 0 <= rang < len(self._category_fields):
+            return self._category_fields[rang]
+        return None
 
     def _category_block(self) -> Optional[Dict[str, Any]]:
         """Ecarts sur l'axe choisi, recalcules pour la population filtree."""
@@ -2300,7 +2344,12 @@ class Application(tk.Tk):
             return
         self._decomposed = block
         label = block.get("category_label") or "Poste"
+        base = (block.get("basis") or {}).get("label") or ""
         currency = self.result.payload["salary"].get("currency", "EUR")
+        self.profile_title.configure(
+            text="Les groupes où l'écart est le plus significatif")
+        self.profile_subtitle.configure(
+            text=f"Regroupement : {label}  ·  comparaison sur le {base}.")
 
         warning = block.get("category_warning")
         if warning:
@@ -2308,6 +2357,10 @@ class Application(tk.Tk):
             self._categories = []
             self.gap_chart.set_rows([], currency)
             self._clear_profile(warning)
+            self._fill(self.lagging_tree, [])
+            self.people_chart.set_rows([], currency, warning=warning)
+            self.lagging_subtitle.configure(text="")
+            self.lagging_note.configure(text="")
             return
 
         categories = self._ordered_categories(block["categories"])
@@ -2412,103 +2465,56 @@ class Application(tk.Tk):
         return self.gap_chart.selected
 
     def _clear_profile(self, message: str = "") -> None:
-        self.profile_title.configure(text="")
-        self.profile_subtitle.configure(text=message)
+        """Vide le bloc du groupe retenu.
+
+        Le titre et le sous-titre de la page n'en font pas partie : ils
+        portent le classement, qui reste a l'ecran. Les vider ici laissait
+        la page sans annonce des qu'aucun groupe n'etait choisi.
+        """
+        self.detail_title.configure(text="")
         for child in self.profile_kpis.winfo_children():
             child.destroy()
         self._fill(self.profile_tree, [])
-        self.profile_note.configure(text="")
+        self.profile_note.configure(text=message)
 
-    def _analysis_view(self) -> str:
-        """La lecture affichee. « ecarts » tant que la barre n'existe pas."""
-        barre = getattr(self, "analysisbar", None)
-        return (barre.active if barre is not None and barre.active
-                else "ecarts")
-
-    def _show_analysis(self, key: str) -> None:
-        """Change de lecture : une seule a la fois, en pleine page.
-
-        Les cinq lectures repondent a cinq questions — ou regarder, ce qui
-        s'y passe, comment les deux sexes se repartissent, comment leurs
-        remunerations s'etalent, et la repartition par quartile que la
-        directive fait publier. Empilees, elles faisaient une page qu'on
-        parcourt ; l'une apres l'autre, elles se lisent.
-        """
-        for cadre in getattr(self, "analysis_pages", {}).values():
-            cadre.pack_forget()
-        cadre = getattr(self, "analysis_pages", {}).get(key)
-        if cadre is None:
-            return
-        cadre.pack(fill="both", expand=True)
-        self._fill_analysis(key)
-
-    def _fill_analysis(self, key: Optional[str] = None) -> None:
-        """Remplit la lecture affichee, et elle seule."""
-        if self.result is None:
-            return
-        key = key or self._analysis_view()
-        remplir = {"ecarts": self._fill_gaps, "detail": self._fill_detail,
-                   "repartition": self._fill_bands,
-                   "dispersion": self._fill_spread,
-                   "quartiles": self._fill_quartiles}.get(key)
-        if remplir is not None:
-            remplir()
-
-    def _selected_job(self) -> Optional[str]:
-        """Le poste retenu, ou rien si la page parle de l'ensemble."""
+    def _selected_group(self) -> Optional[str]:
+        """Le groupe retenu, ou rien si la page parle de l'ensemble."""
         choix = self.category_value.get()
         return None if not choix or choix == ALL_CATEGORIES else choix
 
     def _show_profile(self) -> None:
-        """La page suit la selection du poste.
+        """La page suit la selection du groupe.
 
-        Choisir un poste depuis la vue d'ensemble ouvre son detail : c'est
-        le geste qu'on vient de faire, et rester sur le classement
-        demanderait un second clic pour voir ce qu'on a demande. Mais
-        choisir un poste depuis la repartition ou la dispersion ne change
-        pas de lecture : on compare des postes, et changer de page a chaque
-        choix rendrait la comparaison impossible.
+        Une seule page : le classement reste a l'ecran quand on choisit un
+        groupe, et ce sont les deux blocs du dessous — le detail et les
+        personnes — qui changent. C'est ce qui permet de passer d'un groupe
+        a l'autre sans perdre de vue ou l'on est.
         """
         if self.result is None:
             return
-        poste = self._selected_job()
-        vue = self._analysis_view()
-        if poste:
-            self.gap_chart.select(poste)
-            if vue == "ecarts":
-                self.analysisbar.select("detail")
-                return
-        elif vue == "detail":
-            self.analysisbar.select("ecarts")
-            return
-        self._fill_analysis(vue)
+        groupe = self._selected_group()
+        if groupe:
+            self.gap_chart.select(groupe)
+        self._show_detail()
+        self._show_lagging()
 
-    def _fill_gaps(self) -> None:
-        """Ou faut-il regarder : les postes classes par significativite."""
-        block = self._decomposed or {}
-        label = (block.get("category_label") or "poste").lower()
-        base = (block.get("basis") or {}).get("label") or ""
-        self.profile_title.configure(
-            text=f"Les {label}s où l'écart est le plus significatif")
-        self.profile_subtitle.configure(
-            text=f"Comparaison sur le {base}. Choisissez un {label} "
-                 "ci-dessus, ou cliquez une barre, pour en déplier le "
-                 "détail.")
-
-    def _fill_detail(self) -> None:
-        """Le detail d'un poste : toute sa remuneration, en trois colonnes.
+    def _show_detail(self) -> None:
+        """Le groupe retenu : toute sa remuneration, en trois colonnes.
 
         La troisieme colonne n'est pas decorative : sans l'ensemble, on ne
         sait pas si un ecart tient a un groupe tire vers le bas ou l'autre
         tire vers le haut.
         """
-        choix = self._selected_job()
+        choix = self._selected_group()
         if choix is None:
-            self._clear_profile("Choisissez un poste ci-dessus : le détail "
-                                "compare les femmes et les hommes qui "
-                                "l'occupent.")
-            self.profile_title.configure(text="Détail du poste")
+            self._clear_profile(
+                "Le détail compare les femmes et les hommes d'un même "
+                "groupe — même poste, même établissement, même ce que vous "
+                "avez mis dans le regroupement.")
+            self.detail_title.configure(
+                text="Choisissez un groupe ci-dessus, ou cliquez une barre")
             return
+        self.detail_title.configure(text=str(choix))
         breakdown = category_breakdown(self.result.filtered,
                                        self.result.config,
                                        self._axis(), choix)
@@ -2583,84 +2589,94 @@ class Application(tk.Tk):
             return "< 0,1 %"
         return format_percent(valeur)
 
-    def _fill_bands(self) -> None:
-        """La repartition : ce qu'une moyenne efface.
+    def _show_lagging(self) -> None:
+        """Les personnes qui decrochent de leur groupe.
 
-        Deux moyennes egales peuvent recouvrir deux repartitions sans
-        rapport. La pyramide le montre — et c'est le meme dessin que la
-        pyramide des ages de la vue d'ensemble : une lecture connue n'a pas
-        a etre apprise.
+        Sans groupe retenu, la page les cherche dans tous les groupes a la
+        fois : c'est la liste par laquelle on commence quand on ne sait pas
+        encore ou regarder. Avec un groupe, elle s'y restreint.
+
+        Aucune identite ne vient du moteur : chaque ligne porte un numero de
+        ligne du fichier, et la fenetre y rapproche un nom seulement si le
+        parametrage l'y autorise, a l'ecran seulement.
         """
-        poste = self._selected_job()
-        membres = (category_members(self.result.filtered, self._axis(), poste)
-                   if poste else None)
-        bloc = salary_bands_by_sex(self.result.filtered, self.result.config,
-                                   membres)
-        base = (bloc.get("basis") or {}).get("label") or ""
-        self.profile_title.configure(
-            text=f"Répartition — {poste}" if poste
-            else "Répartition de l'ensemble")
-        sujet = (f"{bloc['female_count']} femmes  ·  {bloc['male_count']} "
-                 "hommes comparables")
-        self.profile_subtitle.configure(text=f"{sujet}  ·  {base}")
-        self.bands_chart.set_rows(bloc.get("bands") or [])
+        if self.result is None:
+            return
+        groupe = self._selected_group()
+        bloc = lagging_members(self.result.filtered, self.result.config,
+                               self._axis(), groupe, self._explain_field())
         devise = self.result.payload["salary"].get("currency", "EUR")
-        étendue = ""
-        if bloc.get("lowest") is not None and bloc.get("highest") is not None:
-            étendue = (
-                "Huit tranches d'égale largeur, découpées sur l'étendue de "
-                f"ce qui est montré ici — de {format_money(bloc['lowest'], devise)} "
-                f"à {format_money(bloc['highest'], devise)}. "
-                "Les deux ailes partagent la même échelle : leurs longueurs "
-                "se comparent.")
-        note = bloc.get("warning") or étendue
-        self.bands_note.configure(text=note)
+        lignes = bloc["rows"]
+        base = (bloc.get("basis") or {}).get("label") or ""
 
-    def _fill_spread(self) -> None:
-        """La dispersion : deux boites par poste, femmes et hommes.
+        étiquette = (dimension_label(self.configuration,
+                                     self._explain_field())
+                     if self._explain_field() else "Lecture")
+        self.lagging_tree.heading("Lecture", text=étiquette)
+        self._fill(self.lagging_tree, [
+            (self._identity_of(ligne["row"]) or ligne["reference"],
+             {"F": "Femme", "H": "Homme"}.get(ligne["sex"], "—"),
+             ligne["group"],
+             ligne["explain"] or "—",
+             format_money(ligne["amount"], devise),
+             f'−{format_percent(ligne["gap"])}')
+            for ligne in lignes[:200]])
 
-        Un ecart de moyenne ne dit pas si les femmes sont absentes du haut
-        de la fourchette ou reparties tout du long. Les boites le disent, et
-        elles le disent pour tous les postes a la fois.
+        # Le graphique ne montre qu'un groupe : superposer vingt echelles
+        # de salaire sur une meme piste ne dirait rien. Sans groupe retenu,
+        # il montre celui qui vient en tete du classement.
+        vedette = groupe or (self.gap_chart.selected or "")
+        situé = self._people_points(vedette)
+        self.people_chart.set_rows(
+            situé["rows"], devise, reference=situé.get("reference"),
+            warning=situé.get("warning") or "")
+
+        self.lagging_subtitle.configure(
+            text=(f"Chacun comparé à la médiane de son groupe, sur le {base}. "
+                  + (f"Groupe retenu : {groupe}." if groupe
+                     else "La liste parcourt tous les groupes ; le graphique "
+                          f"montre {vedette}, en tête du classement.")))
+        note = [f"{len(lignes)} salariés sous la médiane de leur groupe."]
+        if bloc.get("withheld_groups"):
+            note.append(
+                f'{bloc["withheld_groups"]} groupes ne fournissent pas de '
+                f'repère : ils réunissent moins de {bloc["threshold"]} '
+                "salariés comparables, et une médiane calculée sur si peu de "
+                "monde désignerait ces personnes.")
+        if len(lignes) > 200:
+            note.append("Les 200 plus grands décrochages sont affichés.")
+        note.append("Ces noms restent à l'écran : aucun document produit, "
+                    "aucun export, aucun journal n'en porte.")
+        self.lagging_note.configure(text=" ".join(note))
+
+    def _people_points(self, groupe: str) -> Dict[str, Any]:
+        """Les points d'un groupe : tout le monde, pas seulement ceux qui
+        decrochent.
+
+        Une liste de decrochages sans le reste du groupe ne situe rien : on
+        voit qui est en bas sans voir de quoi.
         """
-        block = self._decomposed or {}
-        base = block.get("basis") or {}
-        champ = base.get("field") or ""
-        libellé = (block.get("category_label") or "poste").lower()
-        rows = metrics.segment_by_sex(self.result.filtered,
-                                      self.result.config, self._axis(),
-                                      salary_field=champ or None,
-                                      full_time=bool(base.get("full_time")))
-        currency = self.result.payload["salary"].get("currency", "EUR")
-        montants = comparison_amounts(list(self.result.filtered), champ,
-                                      bool(base.get("full_time")))
-        self.profile_title.configure(text=f"Dispersion par {libellé}")
-        self.profile_subtitle.configure(
-            text=f"Femmes et hommes séparés, sur le "
-                 f"{base.get('label') or ''}. Le repère vertical est la "
-                 "médiane de l'ensemble ; à droite, l'écart de médiane — "
-                 "c'est le trait que la boîte montre.")
-        self.equity_boxplot.set_split(True)
-        self.equity_boxplot.set_rows(
-            rows, currency,
-            reference=statistics_engine.median(montants) if montants else None,
-            alert=self.configuration.number(
-                "pay_equity_parameters.gap_alert_threshold",
-                5.0, minimum=0.0, maximum=100.0))
-        self.spread_note.configure(
-            text="Un demi-segment trop peu nombreux n'est pas dessiné : ses "
-                 "percentiles désigneraient ses salariés. Le seuil de tracé "
-                 "se règle dans Paramètres → Confidentialité.")
+        if not groupe:
+            return {"rows": [], "reference": None, "warning": ""}
+        return group_positions(self.result.filtered, self.result.config,
+                               self._axis(), groupe, self._explain_field())
 
-    def _fill_quartiles(self) -> None:
-        """L'indicateur f) de la directive : qui occupe le haut de l'echelle."""
-        self.profile_title.configure(
-            text="Répartition par quartile de rémunération")
-        self.profile_subtitle.configure(
-            text="Les salariés sont classés par rémunération puis coupés en "
-                 "quatre tranches d'effectif égal. Une répartition "
-                 "déséquilibrée entre le quartile bas et le quartile haut "
-                 "est le signal le plus direct d'un plafond de verre.")
+    def _on_person_selected(self, point: Dict[str, Any]) -> None:
+        """Un clic sur un point met la ligne correspondante en evidence.
+
+        Le graphique situe, la liste nomme : passer de l'un a l'autre a la
+        main sur deux cents lignes serait une corvee.
+        """
+        nom = (self._identity_of(point.get("row"))
+               or str(point.get("reference", "")))
+        for ligne in self.lagging_tree.get_children():
+            valeurs = self.lagging_tree.item(ligne, "values")
+            if valeurs and str(valeurs[0]) == nom:
+                self.lagging_tree.selection_set(ligne)
+                self.lagging_tree.see(ligne)
+                return
+        self.lagging_tree.selection_remove(
+            *self.lagging_tree.selection())
 
     #: Les lignes du tableau : intitule, cle de la mesure, nature.
     BREAKDOWN_ROWS = (

@@ -223,23 +223,31 @@ objectifs, un écart non significatif reste un écart.
 
 ### Ce que la page montre
 
-Cinq lectures dans une barre subordonnée, une seule à l'écran : les écarts
-classés, le détail d'un poste, la répartition par tranche de rémunération, la
-dispersion des deux sexes, la répartition par quartile. C'est la mécanique de
-l'onglet Graphique, et elle vaut ici pour la même raison : cinq lectures
-empilées deviennent cinq vignettes au bout d'un long défilement, chacune
-ayant perdu le survol, le zoom et l'échelle qui la rendent lisible.
+Une seule page, trois temps : les groupes classés, le groupe retenu en trois
+colonnes, les personnes qui décrochent. Rien ne s'ouvre, rien ne se replie —
+les trois blocs se répondent, et choisir un groupe ne fait pas disparaître le
+classement dont il vient.
 
-Toutes lisent la même base de comparaison. Les deux graphiques la reçoivent
-du moteur et non de la vue : `metrics.segment_by_sex(..., full_time=True)`
-pour les boîtes, `pay_equity.salary_bands_by_sex(...)` pour la pyramide. Un
-graphique qui ferait sa propre division par le temps de travail finirait par
-montrer autre chose que le tableau posé à côté.
+**Le groupe de comparaison se construit.** Jusqu'à trois dimensions déclarées
+se composent (`cross_key`, `split_by` acceptent une suite de champs depuis
+l'origine) ; une quatrième, dite « de lecture », ne change aucun calcul et
+n'ajoute qu'une colonne à côté de chaque personne. C'est là que se branche
+une revue du personnel — « talent », « performance », « en décalage » — sans
+une ligne de code, comme n'importe quelle dimension (§7).
 
-Les tranches de la pyramide sont découpées sur l'étendue du groupe montré, et
-cette étendue est publiée avec elles : les couper sur toute la population
-aurait rendu deux postes comparables entre eux, mais sur un poste dont les
-salaires tiennent en cinq mille euros, sept tranches sur huit seraient vides.
+**Les personnes n'ont pas de nom dans le moteur.** `lagging_members` et
+`group_positions` rendent, pour chaque salarié, son numéro de ligne dans le
+fichier et sa référence anonyme — jamais son identité. C'est la fenêtre qui
+rapproche un nom, depuis la population qu'elle détient déjà, et seulement si
+`show_identities_on_screen` l'y autorise. Le §6 l'exige : l'identité ne
+transite pas par le résultat d'analyse, donc aucun document produit ne peut
+en porter.
+
+**Le repère est la médiane du groupe**, sur la base de comparaison de la
+page, et il n'existe que si le groupe atteint le seuil de publication : une
+médiane établie sur trois personnes désignerait ces trois-là, et situer
+quelqu'un par rapport à elle n'apprendrait rien. Les groupes sans repère sont
+comptés et annoncés, jamais tus.
 
 **Tout se refait.** Le classeur porte, poste par poste, le bloc à temps
 plein : moyennes, médianes, écarts, effectifs portant l'écart et couverture,

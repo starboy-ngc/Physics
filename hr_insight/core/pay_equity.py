@@ -569,92 +569,129 @@ def category_breakdown(population: Population, config: Configuration,
     }
 
 
-#: Nombre de tranches de la pyramide des remunerations. Huit tranches
-#: tiennent dans la hauteur d'un ecran sans ascenseur et laissent voir ou la
-#: repartition bascule ; a vingt, chaque tranche compte deux personnes et la
-#: forme disparait dans le bruit.
-SALARY_BANDS = 8
+def sexes_of(members: Sequence[Any],
+             config: Configuration) -> Dict[int, str]:
+    """Le sexe retenu de chaque salarie, par identite d'objet.
+
+    La cle est `id(salarie)` et non le matricule : rien de nominatif ne
+    circule, et le rapprochement ne vaut que le temps du calcul.
+    """
+    groupes = _split_members(list(members), config)
+    table: Dict[int, str] = {}
+    for sexe in (FEMALE, MALE):
+        for salarié in groupes[sexe]:
+            table[id(salarié)] = sexe
+    return table
 
 
-def _band_label(lower: float, upper: float) -> str:
-    """« 45–50 k ». Le montant exact se lit dans le tableau, pas ici."""
-    if upper >= 10000:
-        return f"{round(lower / 1000)}–{round(upper / 1000)} k"
-    return f"{round(lower)}–{round(upper)}"
+def group_positions(population: Population, config: Configuration,
+                    field_name, value: str,
+                    explain_field: Optional[str] = None) -> Dict[str, Any]:
+    """Tous les salaries d'un groupe, situes par rapport a sa mediane.
 
+    Le repere est la mediane du groupe, sur la base de comparaison de la
+    page — meme poste, meme etablissement, meme ce que l'utilisateur a mis
+    dans son regroupement. Il n'est calcule que si le groupe atteint le
+    seuil de publication : une mediane etablie sur trois personnes
+    designerait ces trois-la, et situer quelqu'un par rapport a elle
+    n'apprendrait rien.
 
-def salary_bands_by_sex(population: Population, config: Configuration,
-                        members: Optional[Sequence[Any]] = None,
-                        bands: int = SALARY_BANDS) -> Dict[str, Any]:
-    """Repartition des remunerations par tranche, femmes a part des hommes.
-
-    Deux moyennes egales peuvent recouvrir deux repartitions sans rapport :
-    des femmes groupees au milieu de la fourchette et des hommes aux deux
-    bouts donnent le meme chiffre et n'appellent pas la meme reponse. La
-    pyramide montre ce qu'une moyenne efface — et c'est la meme lecture, et
-    le meme dessin, que la pyramide des ages de la vue d'ensemble.
-
-    Les tranches sont decoupees sur l'etendue du groupe montre, et cette
-    etendue est publiee avec elles. Les couper sur toute la population
-    aurait rendu deux postes comparables entre eux, mais au prix de la
-    lecture qu'on vient chercher : sur un poste dont les salaires tiennent
-    en cinq mille euros, sept tranches sur huit seraient vides et la
-    huitieme dirait « tout le monde est ici ».
+    Aucune identite ne sort d'ici. Chaque ligne porte le numero de ligne du
+    fichier et la reference anonyme ; c'est la fenetre qui rapproche, si le
+    parametrage l'y autorise, et seulement a l'ecran. Le paragraphe 6 le
+    demande : l'identite ne transite pas par le resultat d'analyse.
     """
     rules = PrivacyRules.from_config(config)
     base = basis_description(population, config)
     champ = base["field"]
-    gens = list(population) if members is None else list(members)
-    référence = comparison_amounts(gens, champ, base["full_time"])
-    groupes = _split_members(gens, config)
-    femmes = comparison_amounts(groupes[FEMALE], champ, base["full_time"])
-    hommes = comparison_amounts(groupes[MALE], champ, base["full_time"])
-
-    résultat: Dict[str, Any] = {
-        "basis": base, "bands": [],
-        "female_count": len(femmes), "male_count": len(hommes),
-        "threshold": rules.min_chart,
+    membres = category_members(population, field_name, value)
+    montants = comparison_amounts(membres, champ, base["full_time"])
+    bloc: Dict[str, Any] = {
+        "group": str(value), "basis": base, "rows": [],
+        "reference": None, "threshold": rules.min_publish,
+        "comparable": len(montants), "warning": None,
     }
-    résultat["lowest"] = min(référence) if référence else None
-    résultat["highest"] = max(référence) if référence else None
-    bas, haut = (min(référence), max(référence)) if référence else (0.0, 0.0)
-    if not référence or haut <= bas or bands < 1:
-        résultat["available"] = False
-        résultat["warning"] = (
-            "Les rémunérations retenues ne s'étalent sur aucune plage : la "
-            "répartition n'a rien à montrer.")
-        return résultat
-    if not rules.may_chart(len(femmes) + len(hommes)):
-        résultat["available"] = False
-        résultat["warning"] = (
-            "Effectif insuffisant pour dessiner une répartition "
-            f"(minimum {rules.min_chart} salariés dont la rémunération est "
-            "comparable).")
-        return résultat
-
-    largeur = (haut - bas) / bands
-    for index in range(bands):
-        borne_basse = bas + largeur * index
-        borne_haute = bas + largeur * (index + 1)
-        dernière = index == bands - 1
-
-        def dedans(valeur: float) -> bool:
-            # Tranches fermees a gauche, ouvertes a droite, la derniere
-            # exceptee : c'est la convention de `statistics_engine.histogram`,
-            # et une borne traitee autrement ferait disparaitre le mieux
-            # remunere de la population.
-            return (borne_basse <= valeur <= borne_haute if dernière
-                    else borne_basse <= valeur < borne_haute)
-
-        résultat["bands"].append({
-            "label": _band_label(borne_basse, borne_haute),
-            "lower": borne_basse, "upper": borne_haute,
-            "female": sum(1 for valeur in femmes if dedans(valeur)),
-            "male": sum(1 for valeur in hommes if dedans(valeur)),
+    if not rules.may_publish(len(montants)):
+        bloc["warning"] = (
+            f"Ce groupe réunit moins de {rules.min_publish} salariés "
+            "comparables : il ne fournit pas de repère, et personne ne peut "
+            "y être situé.")
+        return bloc
+    repère = stats.median(montants)
+    if not repère:
+        return bloc
+    bloc["reference"] = float(repère)
+    appartenance = sexes_of(membres, config)
+    for salarié in membres:
+        montant = (full_time_amount(salarié, champ) if base["full_time"]
+                   else salarié.value(champ))
+        if not isinstance(montant, (int, float)) or isinstance(montant, bool):
+            continue
+        écart = (repère - float(montant)) / repère * 100.0
+        bloc["rows"].append({
+            # Cle de jointure technique — un numero de ligne, jamais un nom.
+            # La fenetre retrouve le salarie dans la population qu'elle
+            # detient deja.
+            "row": salarié.row_number,
+            "reference": salarié.anonymous_id or str(salarié.row_number),
+            "group": str(value),
+            "sex": appartenance.get(id(salarié), ""),
+            "amount": float(montant),
+            "group_reference": float(repère),
+            # « Decrochage » n'est pas « ecart » : seul compte ce qui manque
+            # pour rejoindre le repere. Au-dessus, l'ecart est nul.
+            "gap": écart if écart > 0 else 0.0,
+            "shortfall": (repère - float(montant)) if écart > 0 else 0.0,
+            "lagging": écart > 0,
+            "fte": salarié.value(FTE_FIELD),
+            "explain": (str(salarié.value(explain_field) or "")
+                        if explain_field else ""),
         })
-    résultat["available"] = True
-    résultat["warning"] = None
-    return résultat
+    bloc["rows"].sort(key=lambda ligne: ligne["amount"])
+    return bloc
+
+
+def lagging_members(population: Population, config: Configuration,
+                    field_name, value: Optional[str] = None,
+                    explain_field: Optional[str] = None) -> Dict[str, Any]:
+    """Les salaries qui decrochent de leur groupe de comparaison.
+
+    Un ecart de groupe dit qu'il se passe quelque chose ; il ne dit pas a
+    qui. Or une revalorisation se decide personne par personne, et la
+    premiere question qui suit « ce poste presente un ecart de douze pour
+    cent » est « lesquels sont en dessous, et de combien ».
+
+    Sans groupe retenu, la recherche porte sur tous les groupes a la fois :
+    c'est la liste par laquelle on commence quand on ne sait pas encore ou
+    regarder.
+    """
+    rules = PrivacyRules.from_config(config)
+    base = basis_description(population, config)
+    noms = [str(nom) for nom in split_by(population, field_name)]
+    if value is not None:
+        noms = [nom for nom in noms if nom == str(value)]
+
+    lignes: List[Dict[str, Any]] = []
+    retenus = 0
+    for nom in noms:
+        bloc = group_positions(population, config, field_name, nom,
+                               explain_field)
+        if bloc["reference"] is None:
+            # Le groupe existe, mais il ne peut pas fournir de repere : le
+            # dire, plutot que de laisser croire que personne n'y decroche.
+            retenus += 1
+            continue
+        lignes.extend(ligne for ligne in bloc["rows"] if ligne["lagging"])
+    lignes.sort(key=lambda ligne: -ligne["gap"])
+    return {
+        "basis": base,
+        "rows": lignes,
+        "groups": len(noms),
+        "withheld_groups": retenus,
+        "explain_field": explain_field,
+        "threshold": rules.min_publish,
+        "reference_label": "médiane du groupe",
+    }
 
 
 def calculate_category_profile(population: Population, config: Configuration,

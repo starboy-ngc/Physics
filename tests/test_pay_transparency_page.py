@@ -216,24 +216,26 @@ class TestTheProfile(PayTransparencyCase):
         self.select(1)
         self.assertNotEqual(self.app.profile_title.cget("text"), first)
 
-    def test_with_no_selection_the_page_shows_the_overview(self):
-        """Sans poste choisi, la page repond a « ou faut-il regarder ? »
+    def test_with_no_selection_the_page_still_ranks_the_groups(self):
+        """Sans groupe choisi, la page repond a « ou faut-il regarder ? »
         plutot que d'ouvrir une fiche au hasard."""
         from hr_insight.ui.app import ALL_CATEGORIES
 
         self.app.category_value.set(ALL_CATEGORIES)
         self.app._show_profile()
         self.app.update()
-        self.assertEqual(self.app.overview_block.winfo_manager(), "pack")
-        self.assertFalse(self.app.detail_block.winfo_manager())
         self.assertTrue(self.app.gap_chart.rows)
+        self.assertIn("Choisissez", self.app.detail_title.cget("text"))
 
-    def test_choosing_a_position_replaces_the_overview(self):
-        """Une seule question a la fois : le detail prend la place de la
-        vue d'ensemble, il ne s'y ajoute pas."""
+    def test_choosing_a_position_fills_the_detail_without_hiding_the_rest(self):
+        """Une seule page : le detail s'ajoute au classement, il ne le
+        remplace pas — c'est ce qui permet de passer d'un groupe a
+        l'autre."""
         self.select()
-        self.assertEqual(self.app.detail_block.winfo_manager(), "pack")
-        self.assertFalse(self.app.overview_block.winfo_manager())
+        self.assertEqual(self.app.detail_title.cget("text"),
+                         self.app._categories[0]["category"])
+        self.assertTrue(self.app.gap_chart.rows)
+        self.assertTrue(self.app.gap_chart.winfo_manager())
 
     def test_a_group_below_the_threshold_is_not_calculated(self):
         """« On ne met pas les calculs en dessous de cinq. » Chaque colonne
@@ -253,24 +255,23 @@ class TestTheProfile(PayTransparencyCase):
                 else:
                     self.assertFalse(colonne["masked"])
 
-    def test_changing_the_axis_returns_to_the_overview(self):
-        """La fiche d'un poste n'a plus de sens quand la page montre des
-        grades : la laisser affichee ferait lire un ecart sous un mauvais
+    def test_changing_the_grouping_clears_the_selection(self):
+        """Le detail d'un poste n'a plus de sens quand la page montre des
+        grades : le laisser affiche ferait lire un ecart sous un mauvais
         intitule.
 
-        Elle ne se deplace pas vers un grade pris au hasard : changer
-        d'axe, c'est changer de question, et la page revient a « ou faut-il
-        regarder ? ». Choisir a la place de l'utilisateur serait lui faire
-        lire une fiche qu'il n'a pas demandee.
+        Il ne se deplace pas vers un grade pris au hasard : changer de
+        regroupement, c'est changer de question, et la page revient a « ou
+        faut-il regarder ? ». Choisir a la place de l'utilisateur serait
+        lui faire lire un detail qu'il n'a pas demande.
         """
         self.select()
-        self.assertIn(self.app.profile_title.cget("text"), POSTES)
+        self.assertIn(self.app.detail_title.cget("text"), POSTES)
         wanted = self.app._category_fields.index("grade")
         self.app.category_choice.current(wanted)
         self.app._show_categories()
         self.app.update()
-        self.assertEqual(self.app.overview_block.winfo_manager(), "pack")
-        self.assertFalse(self.app.detail_block.winfo_manager())
+        self.assertIn("Choisissez", self.app.detail_title.cget("text"))
         # Et les grades sont proposes au choix, a la place des postes.
         propositions = list(self.app.category_value.cget("values"))
         self.assertTrue(set(propositions) & set(self.categories()))
@@ -555,109 +556,154 @@ class TestTheFullTimeBasisOnScreen(unittest.TestCase):
 
 
 @needs_display
-class TestTheFiveReadings(PayTransparencyCase):
-    """Cinq lectures, une a la fois, dans une barre subordonnee.
+class TestTheSinglePage(PayTransparencyCase):
+    """Une seule page : le classement, le groupe retenu, les personnes.
 
-    C'est la mecanique de l'onglet Graphique, appliquee ici : empilees, ces
-    cinq lectures faisaient une page qu'on parcourt ; l'une apres l'autre,
-    elles se lisent. Ce que ces tests protegent, c'est la navigation — quelle
-    lecture s'ouvre, laquelle reste, et qu'aucune n'en montre deux.
+    Les trois blocs sont a l'ecran ensemble et se repondent. Choisir un
+    groupe ne remplace rien : le classement reste visible — c'est ce qui
+    permet de passer d'un groupe a l'autre sans perdre de vue ou l'on est.
     """
 
-    VUES = ("ecarts", "detail", "repartition", "dispersion", "quartiles")
+    def test_the_three_blocks_are_all_on_the_page(self):
+        for bloc in (self.app.gap_chart, self.app.detail_block,
+                     self.app.people_chart, self.app.lagging_tree,
+                     self.app.quartile_block):
+            with self.subTest(bloc=bloc):
+                self.assertTrue(bloc.winfo_manager())
 
-    def test_the_five_readings_are_offered(self):
-        self.assertEqual(tuple(self.app.analysisbar.visible_keys()),
-                         self.VUES)
+    def test_choosing_a_group_keeps_the_ranking_on_screen(self):
+        self.select()
+        self.assertTrue(self.app.gap_chart.rows)
+        self.assertEqual(self.app.detail_title.cget("text"),
+                         self.app._categories[0]["category"])
 
-    def test_only_one_reading_is_on_screen_at_a_time(self):
-        for vue in self.VUES:
-            self.app.analysisbar.select(vue)
-            self.app.update()
-            empaquetés = [clef for clef, cadre
-                          in self.app.analysis_pages.items()
-                          if cadre.winfo_manager()]
-            self.assertEqual(empaquetés, [vue])
-
-    def test_choosing_a_position_from_the_gaps_opens_its_detail(self):
-        """Le geste qu'on vient de faire n'a pas a etre refait."""
-        self.app.analysisbar.select("ecarts")
-        self.app.update()
-        self.app.category_value.set(POSTES[0])
-        self.app._show_profile()
-        self.app.update()
-        self.assertEqual(self.app.analysisbar.active, "detail")
-        self.assertEqual(self.app.profile_title.cget("text"), POSTES[0])
-
-    def test_choosing_a_position_elsewhere_keeps_the_reading(self):
-        """On compare des postes : changer de page a chaque choix
-        rendrait la comparaison impossible."""
-        for vue in ("repartition", "dispersion", "quartiles"):
-            with self.subTest(vue=vue):
-                self.app.analysisbar.select(vue)
-                self.app.category_value.set(POSTES[1])
-                self.app._show_profile()
-                self.app.update()
-                self.assertEqual(self.app.analysisbar.active, vue)
-
-    def test_leaving_the_selection_returns_to_the_gaps(self):
-        """Un detail sans poste ne dirait rien."""
-        from hr_insight.ui.app import ALL_CATEGORIES
-
-        self.app.category_value.set(POSTES[0])
-        self.app._show_profile()
-        self.app.update()
-        self.assertEqual(self.app.analysisbar.active, "detail")
-        self.app.category_value.set(ALL_CATEGORIES)
-        self.app._show_profile()
-        self.app.update()
-        self.assertEqual(self.app.analysisbar.active, "ecarts")
-
-    def test_the_detail_without_a_position_asks_for_one(self):
+    def test_without_a_group_the_detail_asks_for_one(self):
         from hr_insight.ui.app import ALL_CATEGORIES
 
         self.app.category_value.set(ALL_CATEGORIES)
-        self.app.analysisbar.select("detail")
+        self.app._show_profile()
         self.app.update()
-        self.assertIn("Choisissez", self.app.profile_subtitle.cget("text"))
+        self.assertIn("Choisissez", self.app.detail_title.cget("text"))
         self.assertFalse(self.app.profile_tree.get_children())
+        # Et la liste des personnes, elle, ne demande rien : elle cherche
+        # dans tous les groupes a la fois.
+        self.assertTrue(self.app.lagging_tree.get_children())
 
-    def test_the_distribution_is_drawn_for_the_chosen_position(self):
-        self.app.category_value.set(POSTES[0])
-        self.app._show_profile()
-        self.app.analysisbar.select("repartition")
+    def test_the_page_carries_no_name_where_it_should_not(self):
+        """Le tableau des indicateurs ne porte jamais d'identite.
+
+        La liste des personnes en porte — c'est sa raison d'etre, et le
+        parametrage la commande. Le tableau des indicateurs, lui, agrege.
+        """
+        self.select()
+        lignes = [self.app.profile_tree.item(ligne)["values"]
+                  for ligne in self.app.profile_tree.get_children()]
+        texte = " ".join(str(valeur) for ligne in lignes for valeur in ligne)
+        self.assertNotIn("NOM", texte)
+
+
+@needs_display
+class TestTheGroupBuilder(PayTransparencyCase):
+    """Le regroupement se construit : jusqu'a trois dimensions.
+
+    Un comptable en Ile-de-France et un comptable dans le Nord ne sont pas
+    payes pareil, et l'ecart entre eux n'est pas un ecart de sexe.
+    """
+
+    def test_a_second_dimension_splits_the_groups(self):
+        simple = len(self.app._categories)
+        self.app.category_cross.set("BU")
+        self.app._show_categories()
         self.app.update()
-        self.assertIn(POSTES[0], self.app.profile_title.cget("text"))
-        self.assertTrue(self.app.bands_chart.rows)
-        self.assertTrue(self.app.bands_chart.has_split())
+        self.assertEqual(self.app._axis(), ["job_title", "business_unit"])
+        self.assertGreater(len(self.app._categories), simple)
 
-    def test_the_spread_holds_one_line_per_position(self):
-        self.app.analysisbar.select("dispersion")
+    def test_a_third_dimension_splits_them_further(self):
+        self.app.category_cross.set("BU")
+        self.app._show_categories()
+        deux = len(self.app._categories)
+        self.app.category_cross2.set("Grade")
+        self.app._show_categories()
         self.app.update()
-        segments = {str(ligne["segment"])
-                    for ligne in self.app.equity_boxplot.rows}
-        self.assertTrue(set(POSTES) <= segments, segments)
-        self.assertTrue(self.app.equity_boxplot.split)
+        self.assertEqual(self.app._axis(),
+                         ["job_title", "business_unit", "grade"])
+        self.assertGreater(len(self.app._categories), deux)
 
-    def test_no_reading_carries_a_name(self):
-        """Le nom d'un salarie n'a sa place sur aucune des cinq."""
-        import tkinter as tk
+    def test_the_same_dimension_twice_is_ignored(self):
+        """Elle ne produirait que des libelles doubles."""
+        self.app.category_cross.set("BU")
+        self.app.category_cross2.set("BU")
+        self.app._show_categories()
+        self.app.update()
+        self.assertEqual(self.app._axis(), ["job_title", "business_unit"])
 
-        for vue in self.VUES:
-            self.app.analysisbar.select(vue)
-            self.app.update()
-            textes = []
+    def test_the_reading_dimension_changes_no_figure(self):
+        """« Expliquer par » se lit, elle ne calcule rien."""
+        self.select()
+        avant = [self.app.profile_tree.item(ligne)["values"]
+                 for ligne in self.app.profile_tree.get_children()]
+        écarts = [row.get("gap") for row in self.app.gap_chart.rows]
+        self.app.explain_choice.set("Statut")
+        self.app._show_lagging()
+        self.app.update()
+        après = [self.app.profile_tree.item(ligne)["values"]
+                 for ligne in self.app.profile_tree.get_children()]
+        self.assertEqual(avant, après)
+        self.assertEqual(écarts,
+                         [row.get("gap") for row in self.app.gap_chart.rows])
+        # Mais la colonne de lecture porte desormais le statut.
+        self.assertEqual(
+            self.app.lagging_tree.heading("Lecture")["text"], "Statut")
 
-            def marcher(widget):
-                for enfant in widget.winfo_children():
-                    if isinstance(enfant, tk.Label):
-                        textes.append(str(enfant.cget("text")))
-                    marcher(enfant)
 
-            marcher(self.app.analysis_pages[vue])
-            textes.append(" ".join(
-                str(valeur)
-                for ligne in self.app.profile_tree.get_children()
-                for valeur in self.app.profile_tree.item(ligne)["values"]))
-            with self.subTest(vue=vue):
-                self.assertNotIn("NOM", " ".join(textes))
+@needs_display
+class TestThePeopleWhoLagBehind(PayTransparencyCase):
+    """Un ecart de groupe ne dit pas a qui. Cette page le dit."""
+
+    def test_the_list_names_those_below_their_group(self):
+        self.select()
+        lignes = [self.app.lagging_tree.item(ligne)["values"]
+                  for ligne in self.app.lagging_tree.get_children()]
+        self.assertTrue(lignes)
+        for ligne in lignes:
+            with self.subTest(ligne=ligne):
+                self.assertIn(str(ligne[1]), ("Femme", "Homme", "—"))
+                self.assertTrue(str(ligne[5]).startswith("−"))
+
+    def test_the_chart_holds_the_whole_group_not_only_the_laggards(self):
+        """Voir qui est en bas sans voir de quoi ne situerait personne."""
+        self.select()
+        points = self.app.people_chart.rows
+        décrochent = [point for point in points if point["lagging"]]
+        self.assertTrue(points)
+        self.assertLess(len(décrochent), len(points))
+        self.assertTrue(all(point["amount"] > 0 for point in points))
+
+    def test_the_names_come_from_the_window_never_from_the_engine(self):
+        """Le paragraphe 6 : l'identite ne transite pas par l'analyse."""
+        from hr_insight.core.pay_equity import lagging_members
+
+        bloc = lagging_members(self.app.result.filtered,
+                               self.app.result.config, self.app._axis())
+        texte = " ".join(str(valeur) for ligne in bloc["rows"]
+                         for valeur in ligne.values())
+        self.assertNotIn("NOM", texte)
+        self.assertNotIn("PRENOM", texte)
+        # A l'ecran, le nom est la : c'est la fenetre qui l'ajoute.
+        self.select()
+        premiers = [self.app.lagging_tree.item(ligne)["values"][0]
+                    for ligne in self.app.lagging_tree.get_children()]
+        self.assertTrue(any("NOM" in str(nom) for nom in premiers), premiers)
+
+    def test_hiding_identities_leaves_only_the_anonymous_reference(self):
+        données = self.app.configuration.as_dict()
+        données["privacy_parameters"]["show_identities_on_screen"] = False
+        from hr_insight.core.config import Configuration
+
+        self.app.configuration = Configuration(données)
+        self.app._index_identities()
+        self.select()
+        premiers = [self.app.lagging_tree.item(ligne)["values"][0]
+                    for ligne in self.app.lagging_tree.get_children()]
+        self.assertTrue(premiers)
+        self.assertFalse(any("NOM" in str(nom) for nom in premiers), premiers)

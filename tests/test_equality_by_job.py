@@ -325,122 +325,272 @@ class TestTheMostSignificantJobsComeFirst(unittest.TestCase):
         self.assertEqual(poste["comparison"]["significance"]["level"], 0.0)
 
 
-if __name__ == "__main__":                              # pragma: no cover
-    unittest.main()
+class TestTheGroupIsBuiltByTheUser(unittest.TestCase):
+    """Le regroupement se construit : une, deux, trois dimensions.
 
-
-class TestTheDistributionByBand(unittest.TestCase):
-    """La pyramide des rémunérations : ce qu'une moyenne efface.
-
-    Deux moyennes egales peuvent recouvrir deux repartitions sans rapport —
-    des femmes groupees au milieu de la fourchette et des hommes aux deux
-    bouts donnent le meme chiffre et n'appellent pas la meme reponse.
+    Un comptable en Ile-de-France et un comptable dans le Nord ne sont pas
+    payes pareil, et l'ecart entre eux n'est pas un ecart de sexe. Les
+    confondre dans un seul « Comptable » fabrique un ecart qui n'existe pas,
+    ou en masque un qui existe.
     """
 
     def setUp(self):
         self.config = make_config()
+        self.population = _population(120, postes=("Comptable",))
+        for rang, salarie in enumerate(self.population.employees):
+            salarie.site = ("Île-de-France", "Nord")[rang % 4 < 2]
+            # Le Nord paie moins, les deux sexes pareil : aucun ecart F/H
+            # nulle part, mais un ecart de site de vingt pour cent.
+            salarie.base_salary = (50000.0 if salarie.site == "Île-de-France"
+                                   else 40000.0)
 
-    def _étalé(self, taille=60):
-        population = _population(taille, postes=("Comptable",))
-        for rang, salarie in enumerate(population.employees):
-            salarie.base_salary = 30000.0 + rang * 500
-        return population
+    def _groupes(self, axe):
+        bloc = calculate_category_gaps(self.population, self.config, axe)
+        return {item["category"]: item for item in bloc["categories"]}
 
-    def test_every_comparable_employee_lands_in_a_band(self):
-        from hr_insight.core.pay_equity import salary_bands_by_sex
+    def test_one_dimension_hides_what_two_reveal(self):
+        simple = self._groupes("job_title")
+        self.assertEqual(list(simple), ["Comptable"])
+        croisé = self._groupes(["job_title", "site"])
+        self.assertEqual(sorted(croisé),
+                         ["Comptable · Nord", "Comptable · Île-de-France"])
+        # Aucun ecart F/H, ni avant ni apres : c'est l'ecart de site que le
+        # regroupement isole, et il ne doit pas se lire comme un ecart de
+        # sexe.
+        for groupe in list(simple.values()) + list(croisé.values()):
+            with self.subTest(groupe=groupe["category"]):
+                self.assertAlmostEqual(groupe["comparison"]["mean_gap"], 0.0,
+                                       places=6)
+        self.assertAlmostEqual(
+            croisé["Comptable · Île-de-France"]["comparison"]["female_mean"],
+            50000.0, places=6)
+        self.assertAlmostEqual(
+            croisé["Comptable · Nord"]["comparison"]["female_mean"],
+            40000.0, places=6)
 
-        population = self._étalé()
-        bloc = salary_bands_by_sex(population, self.config)
-        self.assertTrue(bloc["available"])
-        self.assertEqual(len(bloc["bands"]), 8)
-        self.assertEqual(sum(tranche["female"] for tranche in bloc["bands"]),
-                         bloc["female_count"])
-        self.assertEqual(sum(tranche["male"] for tranche in bloc["bands"]),
-                         bloc["male_count"])
+    def test_three_dimensions_hold(self):
+        for rang, salarie in enumerate(self.population.employees):
+            salarie.status = ("Cadre", "Non cadre")[rang % 2]
+        groupes = self._groupes(["job_title", "site", "status"])
+        self.assertEqual(len(groupes), 4)
+        for nom in groupes:
+            self.assertEqual(nom.count(" · "), 2)
 
-    def test_the_bands_cover_the_range_of_what_is_shown(self):
-        """Des tranches decoupees ailleurs laisseraient sept cases vides."""
-        from hr_insight.core.pay_equity import (category_members,
-                                                salary_bands_by_sex)
-
-        population = _population(90, postes=("Comptable", "Technicien",
-                                             "Ingénieur"))
-        for rang, salarie in enumerate(population.employees):
-            salarie.base_salary = (30000.0 if salarie.job_title == "Comptable"
-                                   else 80000.0) + rang * 10
-        membres = category_members(population, "job_title", "Comptable")
-        bloc = salary_bands_by_sex(population, self.config, membres)
-        self.assertLess(bloc["highest"], 40000.0)
-        self.assertGreaterEqual(bloc["lowest"], 30000.0)
-        # Aucune tranche vide : elles sont taillees sur ce qui est montre.
-        peuplées = [tranche for tranche in bloc["bands"]
-                    if tranche["female"] or tranche["male"]]
-        self.assertGreaterEqual(len(peuplées), 4)
-
-    def test_the_bands_read_full_time_amounts(self):
-        """Un mi-temps se range ou son salaire a temps plein le place."""
-        from hr_insight.core.pay_equity import salary_bands_by_sex
-
-        population = _population(60, postes=("Comptable",))
-        for salarie in population.employees:
-            salarie.base_salary = 50000.0
-            if salarie.gender == "F":
-                salarie.fte = 0.5
-                salarie.base_salary = 25000.0
-        bloc = salary_bands_by_sex(population, self.config)
-        # Tout le monde a 50 000 a temps plein : aucune plage, donc rien a
-        # dessiner — et surtout pas deux groupes separes, qui feraient
-        # croire a un ecart la ou il n'y en a pas.
-        self.assertFalse(bloc["available"])
-        self.assertIn("étalent", bloc["warning"])
-
-    def test_a_group_too_small_is_not_drawn(self):
-        from hr_insight.core.pay_equity import salary_bands_by_sex
-
-        population = self._étalé(taille=8)
-        bloc = salary_bands_by_sex(population, self.config)
-        self.assertFalse(bloc["available"])
-        self.assertIn("insuffisant", bloc["warning"])
-        self.assertEqual(bloc["bands"], [])
+    def test_a_missing_value_leaves_the_crossed_group(self):
+        """Un salarie a demi classe n'appartient a aucun groupe croise."""
+        for salarie in self.population.employees[:10]:
+            salarie.site = ""
+        groupes = self._groupes(["job_title", "site"])
+        effectifs = sum(item["headcount"] for item in groupes.values())
+        self.assertEqual(effectifs, 110)
 
 
-class TestTheSpreadOfBothSexes(unittest.TestCase):
-    """Les boites a moustaches, sur la base de comparaison de la page."""
+class TestThePeopleWhoLagBehind(unittest.TestCase):
+    """Un ecart de groupe ne dit pas a qui. Ces fonctions le disent.
+
+    Et elles le disent sans nommer personne : le paragraphe 6 interdit que
+    l'identite transite par le resultat d'analyse. Chaque ligne porte un
+    numero de ligne du fichier ; la fenetre y rapproche un nom, a l'ecran
+    seulement, si le parametrage l'y autorise.
+    """
 
     def setUp(self):
         self.config = make_config()
+        self.population = _population(40, postes=("Comptable",))
+        for rang, salarie in enumerate(self.population.employees):
+            salarie.base_salary = 40000.0
+        # Trois personnes nettement en dessous, dont deux femmes.
+        for rang in (1, 3, 4):
+            self.population.employees[rang].base_salary = 34000.0
 
-    def test_the_boxes_are_drawn_on_full_time_amounts(self):
-        from hr_insight.core import metrics
+    def test_it_finds_those_below_the_median_of_their_group(self):
+        from hr_insight.core.pay_equity import lagging_members
 
-        population = _population(60, postes=("Comptable",))
-        for rang, salarie in enumerate(population.employees):
-            # La meme grille pour les deux sexes — « rang // 2 » : le sexe
-            # alterne a chaque rang, et un pas sur le rang lui-meme aurait
-            # donne deux echelles differentes, donc un ecart residuel qui
-            # n'aurait rien appris.
-            salarie.base_salary = 40000.0 + ((rang // 2) % 10) * 500
+        bloc = lagging_members(self.population, self.config, "job_title")
+        self.assertEqual(len(bloc["rows"]), 3)
+        for ligne in bloc["rows"]:
+            with self.subTest(ligne=ligne["row"]):
+                self.assertAlmostEqual(ligne["group_reference"], 40000.0,
+                                       places=6)
+                self.assertAlmostEqual(ligne["gap"], 15.0, places=6)
+                self.assertAlmostEqual(ligne["shortfall"], 6000.0, places=6)
+        self.assertEqual(sorted(ligne["sex"] for ligne in bloc["rows"]),
+                         ["F", "F", "H"])
+
+    def test_it_carries_no_identity_at_all(self):
+        from hr_insight.core.pay_equity import lagging_members
+
+        bloc = lagging_members(self.population, self.config, "job_title")
+        texte = " ".join(str(valeur) for ligne in bloc["rows"]
+                         for valeur in ligne.values())
+        self.assertNotIn("NOM", texte)
+        self.assertNotIn("PRENOM", texte)
+        for ligne in bloc["rows"]:
+            self.assertIsInstance(ligne["row"], int)
+
+    def test_a_group_too_small_gives_no_reference(self):
+        """Une mediane calculee sur trois personnes les designerait."""
+        from hr_insight.core.pay_equity import lagging_members
+
+        petite = _population(8, postes=("Comptable", "Technicien",
+                                        "Chef de projet", "Assistant"))
+        for salarie in petite.employees:
+            salarie.base_salary = 40000.0
+        petite.employees[0].base_salary = 30000.0
+        bloc = lagging_members(petite, self.config, "job_title")
+        self.assertEqual(bloc["rows"], [])
+        self.assertEqual(bloc["withheld_groups"], bloc["groups"])
+
+    def test_the_reading_column_is_read_not_computed(self):
+        from hr_insight.core.pay_equity import lagging_members
+
+        for salarie in self.population.employees:
+            salarie.status = "Cadre"
+        self.population.employees[1].status = "En décalage"
+        sans = lagging_members(self.population, self.config, "job_title")
+        avec = lagging_members(self.population, self.config, "job_title",
+                               explain_field="status")
+        self.assertEqual([ligne["gap"] for ligne in sans["rows"]],
+                         [ligne["gap"] for ligne in avec["rows"]])
+        self.assertEqual({ligne["explain"] for ligne in avec["rows"]},
+                         {"Cadre", "En décalage"})
+
+    def test_the_positions_hold_the_whole_group(self):
+        """Voir qui est en bas sans voir de quoi ne situerait personne."""
+        from hr_insight.core.pay_equity import group_positions
+
+        bloc = group_positions(self.population, self.config, "job_title",
+                               "Comptable")
+        self.assertEqual(len(bloc["rows"]), 40)
+        self.assertEqual(sum(1 for ligne in bloc["rows"]
+                             if ligne["lagging"]), 3)
+        self.assertAlmostEqual(bloc["reference"], 40000.0, places=6)
+        # Les lignes sont rangees du plus bas au plus haut : le regard va
+        # d'abord la ou la decision se prend.
+        montants = [ligne["amount"] for ligne in bloc["rows"]]
+        self.assertEqual(montants, sorted(montants))
+
+    def test_the_positions_are_full_time_amounts(self):
+        from hr_insight.core.pay_equity import group_positions
+
+        for salarie in self.population.employees:
             if salarie.gender == "F":
                 salarie.fte = 0.5
                 salarie.base_salary /= 2
-        versé = metrics.segment_by_sex(population, self.config, "job_title")[0]
-        plein = metrics.segment_by_sex(population, self.config, "job_title",
-                                       full_time=True)[0]
-        # Sur les montants verses, les femmes sont deux fois moins payees ;
-        # a temps de travail egal, les deux medianes se rejoignent.
-        self.assertGreater(versé["median_gap"], 45.0)
-        self.assertAlmostEqual(plein["median_gap"], 0.0, places=6)
+        bloc = group_positions(self.population, self.config, "job_title",
+                               "Comptable")
+        femmes = [ligne for ligne in bloc["rows"] if ligne["sex"] == "F"]
+        self.assertTrue(femmes)
+        # Un mi-temps paye la moitie d'un temps plein ne decroche pas : son
+        # montant ramene au temps plein rejoint celui des autres.
+        self.assertEqual(sum(1 for ligne in bloc["rows"]
+                             if ligne["lagging"]), 3)
+        self.assertAlmostEqual(max(ligne["amount"] for ligne in femmes),
+                               40000.0, places=6)
 
-    def test_a_half_segment_without_working_time_is_not_drawn(self):
-        """Ses percentiles designeraient les rares salaries calculables."""
-        from hr_insight.core import metrics
 
-        population = _population(60, postes=("Comptable",))
-        for rang, salarie in enumerate(population.employees):
-            salarie.base_salary = 40000.0 + rang * 100
-            if salarie.gender == "F" and rang > 5:
-                salarie.fte = None
-        ligne = metrics.segment_by_sex(population, self.config, "job_title",
-                                       full_time=True)[0]
-        self.assertFalse(ligne["female_chartable"])
-        self.assertTrue(ligne["male_chartable"])
+class TestAPeopleReviewColumn(unittest.TestCase):
+    """Une rubrique de revue du personnel, ajoutee au parametrage.
+
+    « Talent », « performance », « en decalage » : ce sont des notions
+    d'entreprise, pas du logiciel. Le paragraphe 7 l'impose — aucune colonne
+    n'est codee ici. Declaree au parametrage, une telle colonne doit valoir
+    comme les autres : axe de regroupement, colonne de lecture, filtre.
+
+    Ce test le prouve de bout en bout, depuis un fichier qui porte la
+    colonne jusqu'a la liste des personnes qui decrochent.
+    """
+
+    HEADERS = ["Matricule", "Nom", "Prénom", "Sexe", "Date de naissance",
+               "Date d'entrée", "Date de sortie", "BU", "Pays", "Grade",
+               "Statut", "Salaire de base", "Revue du personnel"]
+    RUBRIQUES = ["Talent", "Performance", "En décalage"]
+
+    def setUp(self):
+        import datetime as _dt
+
+        from hr_insight.core.config import Configuration, load_configuration
+        from hr_insight.core.mapping import resolve_mapping
+        from hr_insight.core.normalize import normalise_table
+
+        données = load_configuration().as_dict()
+        données["population_mapping"]["fields"]["people_review"] = [
+            "Revue du personnel", "People review"]
+        données["population_mapping"]["dimensions"].append(
+            {"field": "people_review", "label": "Revue du personnel"})
+        self.config = Configuration(données)
+
+        naissance = _dt.date(1985, 1, 1)
+        entrée = _dt.date(2015, 1, 1)
+        lignes = []
+        for rang in range(60):
+            rubrique = self.RUBRIQUES[rang % 3]
+            # Les « talents » sont mieux payes, les deux sexes pareil : sans
+            # la rubrique au regroupement, cet ecart se lit comme un ecart
+            # de sexe des que les talents ne sont pas repartis a parite.
+            salaire = {"Talent": 60000.0, "Performance": 50000.0,
+                       "En décalage": 44000.0}[rubrique]
+            if rang % 12 == 0:
+                salaire -= 6000.0
+            lignes.append([f"E{rang:04d}", f"NOM{rang}", f"PRENOM{rang}",
+                           "F" if rang % 2 else "H", naissance, entrée, "",
+                           "France", "France", "G5", "Cadre", salaire,
+                           rubrique])
+        mapping = resolve_mapping(self.HEADERS, self.config)
+        self.population = normalise_table(
+            self.HEADERS, lignes, mapping, self.config, source_name="test",
+            reference_date=_dt.date(2025, 1, 1))
+
+    def test_the_column_becomes_a_grouping_axis(self):
+        from hr_insight.core.segmentation import dimension_fields
+
+        self.assertIn("people_review", dimension_fields(self.config))
+        bloc = calculate_category_gaps(self.population, self.config,
+                                       "people_review")
+        self.assertEqual(sorted(item["category"] for item
+                                in bloc["categories"]),
+                         sorted(self.RUBRIQUES))
+
+    def test_it_can_be_crossed_with_a_position(self):
+        bloc = calculate_category_gaps(self.population, self.config,
+                                       ["grade", "people_review"])
+        self.assertEqual(sorted(item["category"] for item
+                                in bloc["categories"]),
+                         sorted(f"G5 · {rubrique}"
+                                for rubrique in self.RUBRIQUES))
+
+    def test_it_reads_as_a_column_beside_each_person(self):
+        from hr_insight.core.pay_equity import lagging_members
+
+        bloc = lagging_members(self.population, self.config, "people_review",
+                               explain_field="people_review")
+        self.assertTrue(bloc["rows"])
+        self.assertTrue(set(ligne["explain"] for ligne in bloc["rows"])
+                        <= set(self.RUBRIQUES))
+
+    def test_grouping_by_the_review_removes_the_gap_it_explains(self):
+        """La rubrique explique un ecart ; le regroupement le retire.
+
+        Sans elle, les « talents » mieux payes tirent la moyenne de leur
+        sexe ; avec elle, on ne compare que des situations comparables, et
+        il ne reste que ce que la rubrique n'explique pas.
+        """
+        # Tous les talents sont des hommes : sans la rubrique, l'ecart est
+        # franc ; avec elle, il disparait.
+        for salarie in self.population.employees:
+            if salarie.value("people_review") == "Talent":
+                salarie.gender = "H"
+        sans = calculate_category_gaps(self.population, self.config,
+                                       "grade")["categories"][0]
+        avec = {item["category"]: item for item in calculate_category_gaps(
+            self.population, self.config,
+            ["grade", "people_review"])["categories"]}
+        self.assertGreater(sans["comparison"]["mean_gap"], 5.0)
+        for nom, item in avec.items():
+            if item["comparison"]["published"]:
+                with self.subTest(groupe=nom):
+                    self.assertLess(abs(item["comparison"]["mean_gap"]), 2.0)
+
+
+if __name__ == "__main__":                              # pragma: no cover
+    unittest.main()

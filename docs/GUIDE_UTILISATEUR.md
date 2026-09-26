@@ -209,43 +209,59 @@ l'effectif l'écart est établi. Un fichier **sans aucune** colonne de temps de
 travail ne rend pas une page vide : la comparaison porte alors sur les
 montants versés, et l'écrit noir sur blanc.
 
-### Cinq lectures, une à la fois
+### Une seule page, trois temps
 
-Sous le choix du poste, une barre propose cinq lectures — même mécanique que
-l'onglet **Graphique**, et pour la même raison : empilées, elles feraient une
-page qu'on parcourt ; l'une après l'autre, elles se lisent.
+La page tient en trois temps, de haut en bas, sans onglet à ouvrir :
 
-| Lecture | Ce qu'elle répond |
-|---|---|
-| **Écarts** | Où faut-il regarder : un poste par barre, classés par significativité. |
-| **Détail du poste** | Ce qui s'y passe : toute la rémunération, femmes / hommes / global. |
-| **Répartition** | Ce qu'une moyenne efface : la pyramide des rémunérations du poste. |
-| **Dispersion** | Comment chacun s'étale : deux boîtes à moustaches par poste. |
-| **Quartiles** | Qui occupe le haut de l'échelle : l'indicateur f) de la directive. |
+1. **Les groupes**, classés par significativité de l'écart ;
+2. **Le groupe retenu**, toute sa rémunération en trois colonnes ;
+3. **Les personnes qui décrochent**, nommées une par une.
 
-Choisir un poste **depuis les écarts** ouvre son détail : c'est le geste qu'on
-vient de faire, et rester sur le classement demanderait un second clic.
-Choisir un poste depuis la répartition ou la dispersion **ne change pas de
-lecture** : on est en train de comparer des postes, et changer de page à
-chaque choix rendrait la comparaison impossible.
+### Construire son groupe de comparaison
 
-### Écarts : où faut-il regarder
+C'est le cœur de la page. « Travail de même valeur » ne se lit pas sur un
+seul axe : un comptable en Île-de-France et un comptable dans le Nord ne
+sont pas payés pareil, et l'écart entre eux n'est pas un écart de sexe. Les
+confondre dans un seul « Comptable » fabrique un écart qui n'existe pas — ou
+en masque un qui existe.
 
-Une barre par poste, de part et d'autre de zéro — à droite les postes où les
-femmes sont moins rémunérées, à gauche l'inverse. Le classement par défaut
-n'est pas l'ampleur de l'écart, mais sa **significativité**.
+**Comparer par**, puis **puis**, puis **puis** : jusqu'à trois dimensions se
+composent pour former le groupe. « Poste + Établissement » traite
+« Comptable · Île-de-France » et « Comptable · Nord » comme deux groupes
+distincts. Reprendre deux fois la même dimension est sans effet.
+
+**Expliquer par** ne change aucun calcul : elle ajoute une colonne à côté de
+chaque personne. C'est là que se lit une revue du personnel — « talent »,
+« performance », « en décalage » — ou toute autre notion qui éclaire un
+écart sans le justifier à elle seule.
+
+Un salarié dont l'une des dimensions du groupe n'est pas renseignée n'entre
+dans aucun groupe : à demi classé, il n'est comparable à personne.
+
+> **Vos propres rubriques.** Les dimensions proposées sont celles du
+> paramétrage. Une colonne « Revue du personnel », « Potentiel », « Filière »
+> s'ajoute dans `config/population_mapping.json` — un nom de champ, ses
+> intitulés possibles dans la colonne `fields`, une entrée dans
+> `dimensions` — et elle devient aussitôt un axe de regroupement, une colonne
+> de lecture **et** un filtre de la colonne de gauche. Aucune ligne de code.
+
+### Les groupes : où faut-il regarder
+
+Une barre par groupe, de part et d'autre de zéro — à droite les groupes où
+les femmes sont moins rémunérées. Le classement par défaut n'est pas
+l'ampleur de l'écart, mais sa **significativité**.
 
 | | ce qu'il dit |
 |---|---|
 | **Écart** | (moyenne hommes − moyenne femmes) / moyenne hommes, à temps plein. |
 | **Significativité** | La probabilité qu'un écart de cette ampleur apparaisse alors que les deux sexes sont payés de la même façon. |
-| **Enjeu** | Ce que coûterait l'alignement du sexe le moins rémunéré sur l'autre, en euros réellement versés. |
+| **Enjeu** | Ce que coûterait l'alignement, en euros réellement versés. |
 
 Pourquoi la significativité d'abord : 30 % d'écart entre trois femmes et
 quatre hommes n'est pas un fait, c'est un tirage. Classer par ampleur met en
-tête exactement les postes dont l'écart est le moins sûr. Les écarts que le
+tête exactement les groupes dont l'écart est le moins sûr. Les écarts que le
 hasard suffirait à expliquer gardent leur barre, **en pâle**, et leur chiffre
-en gris : ils se voient, ils ne se lisent pas comme les autres.
+en gris.
 
 Le test est celui de Welch, sur les rémunérations ramenées au temps plein.
 Le seuil est paramétrable (`pay_equity_parameters.significance_level`,
@@ -259,18 +275,17 @@ mérite d'être regardé d'abord ; elle ne juge pas.
 
 **Trier par** permet de passer à l'enjeu, à l'écart, à l'effectif ou au nom.
 
-### Détail du poste : toute sa rémunération, en trois colonnes
+### Le groupe retenu : toute sa rémunération, en trois colonnes
 
-Un clic sur une barre, ou le menu **Poste** en haut, déplie le détail :
+Un clic sur une barre, ou le menu **Groupe** en haut, remplit le détail — le
+classement, lui, reste à l'écran : c'est ce qui permet de passer d'un groupe
+à l'autre sans perdre de vue où l'on en est.
 
 | | Femmes | Hommes | Global |
 |---|---|---|---|
 | Effectif | 18 | 24 | 42 |
-| Minimum | 38 000 EUR | 39 500 EUR | 38 000 EUR |
-| P10 · Q1 · **Médiane** · Q3 · P90 | … | … | … |
-| Moyenne | 42 200 EUR | 44 600 EUR | 43 570 EUR |
-| Maximum | 51 000 EUR | 56 000 EUR | 56 000 EUR |
-| Masse salariale | … | … | … |
+| Minimum · P10 · Q1 · **Médiane** · Moyenne · Q3 · P90 · Maximum | … | … | … |
+| Masse salariale reconstituée | … | … | … |
 | Dispersion : Q3 − Q1, Q3/Q1, P90/P10, coefficient de variation | … | … | … |
 
 La troisième colonne n'est pas décorative : sans l'ensemble, on ne sait pas
@@ -278,43 +293,40 @@ si un écart tient à un groupe tiré vers le bas ou à l'autre tiré vers le
 haut. Au-dessus du tableau, quatre chiffres : l'écart moyen, l'écart médian,
 **la probabilité que le hasard l'explique**, et l'effectif.
 
-Chaque colonne est masquée **pour elle-même** : un poste où vingt hommes
+Chaque colonne est masquée **pour elle-même** : un groupe où vingt hommes
 côtoient trois femmes publie la colonne des hommes et celle de l'ensemble,
 et tait celle des femmes — c'est la seule qui désignerait quelqu'un. Le
-seuil se règle dans **Paramètres → Confidentialité** et vaut partout de la
-même façon. Il porte sur le nombre de salariés **dont le calcul est
-possible** : un poste de trente personnes dont deux ont un temps de travail
-renseigné ne publie rien.
+seuil se règle dans **Paramètres → Confidentialité** et porte sur le nombre
+de salariés **dont le calcul est possible**.
 
-### Répartition : ce qu'une moyenne efface
+### Les personnes qui décrochent
 
-Une pyramide, femmes à gauche, hommes à droite — le même dessin que la
-pyramide des âges de la vue d'ensemble : une lecture connue n'a pas à être
-apprise. Les tranches ne sont pas des âges mais des rémunérations, en huit
-tranches d'égale largeur découpées **sur l'étendue de ce qui est montré**, et
-cette étendue est écrite sous le graphique.
+Un écart de groupe dit qu'il se passe quelque chose ; il ne dit pas à qui. Or
+une revalorisation se décide personne par personne.
 
-C'est la lecture qui rattrape ce qu'un écart moyen ne peut pas dire. Deux
-moyennes égales peuvent recouvrir deux répartitions sans rapport : des femmes
-groupées au milieu de la fourchette et des hommes aux deux bouts donnent le
-même chiffre et n'appellent pas la même réponse. Et un poste où toutes les
-femmes occupent les tranches basses et tous les hommes les tranches hautes se
-voit ici d'un regard, quel que soit l'écart affiché.
+Le graphique situe **tout le groupe** sur l'échelle des salaires — les femmes
+au-dessus, les hommes au-dessous, la médiane du groupe en repère. Les points
+pleins sont ceux qui décrochent, à gauche du repère ; les points creux sont
+au-dessus. Le survol donne le nom, le montant et l'écart ; le clic met en
+évidence la ligne correspondante dans la liste.
 
-Les deux ailes partagent la même échelle : sans quoi une aile deux fois plus
-courte pourrait représenter le même effectif.
+La liste, elle, nomme et classe : salarié, sexe, groupe, la colonne de
+lecture que vous avez choisie, le salaire à temps plein et l'écart à la
+médiane du groupe. Sans groupe retenu, elle parcourt **tous les groupes à la
+fois** — c'est la liste par laquelle on commence quand on ne sait pas encore
+où regarder.
 
-### Dispersion : deux boîtes par poste
+Deux garde-fous :
 
-Une boîte à moustaches par sexe et par poste : la boîte contient la moitié
-centrale de l'effectif (Q1 à Q3), le trait est la médiane, les moustaches
-vont du 10e au 90e centile. Le repère vertical est la médiane de l'ensemble,
-et la colonne de droite porte **l'écart de médiane** — c'est le trait que la
-boîte montre, non la moyenne du classement des écarts.
-
-Un demi-segment trop peu nombreux n'est pas dessiné : ses percentiles
-désigneraient ses salariés. Le seuil de tracé se règle dans
-**Paramètres → Confidentialité**.
+- Un groupe qui réunit moins de salariés comparables que le seuil de
+  publication **ne fournit aucun repère** : personne n'y est situé, et la
+  note dit combien de groupes sont dans ce cas. Une médiane calculée sur
+  trois personnes désignerait ces trois-là.
+- **Ces noms restent à l'écran.** Aucun document produit, aucun export, aucun
+  journal n'en porte : le moteur ne manipule qu'un numéro de ligne, et c'est
+  la fenêtre qui y rapproche un nom. Décochez *Afficher les noms des salariés
+  à l'écran* dans **Paramètres → Confidentialité** et la liste s'en tient à
+  la référence anonyme.
 
 ### Les trois chiffres du haut
 
@@ -332,23 +344,6 @@ Un écart global faible peut cacher un écart à poste comparable élevé : il
 suffit que les femmes soient plus nombreuses sur les postes les mieux
 rémunérés. Les deux appellent des réponses opposées — une revalorisation
 individuelle dans un cas, une politique de mobilité dans l'autre.
-
-### Changer d'axe, ou en croiser deux
-
-**Comparer par** remplace le poste par le grade, l'établissement, le pays…
-La même question, lue autrement.
-
-**Croiser avec** ajoute un second axe : « Poste + Grade » traite « Comptable
-senior · G5 » et « Comptable senior · G7 » comme deux catégories distinctes.
-Un comptable senior au G5 et un comptable senior au G7 ne font pas le même
-travail, et les confondre dilue l'écart que l'on cherche.
-
-Croiser découpe plus fin, donc masque davantage : la couverture affichée dans
-la note dit sur quelle part de l'effectif l'écart à catégorie comparable est
-encore calculable. Un salarié dont l'un des deux axes n'est pas renseigné
-n'entre dans aucune catégorie croisée.
-
-Tout le bloc — les chiffres du haut compris — se recalcule sur l'axe choisi.
 
 ### Tout se refait
 
