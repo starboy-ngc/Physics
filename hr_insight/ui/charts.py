@@ -1461,7 +1461,17 @@ class GapChart(tk.Frame):
 
             ecart = row.get("gap") or 0.0
             longueur = abs(ecart) * echelle
-            couleur = theme.FEMALE if ecart > 0 else theme.MALE
+            # Un ecart que le hasard suffirait a expliquer se voit, mais il
+            # ne se voit pas comme les autres : barre pale et chiffre gris.
+            # Sans cette distinction, un ecart de vingt pour cent entre
+            # trois femmes et quatre hommes attire l'oeil avant un ecart de
+            # six pour cent sur deux cents personnes, alors qu'il en dit
+            # beaucoup moins.
+            sûr = bool(row.get("significant", True))
+            if ecart > 0:
+                couleur = theme.FEMALE if sûr else theme.FEMALE_SOFT
+            else:
+                couleur = theme.MALE if sûr else theme.MALE_SOFT
             gauche = zero if ecart > 0 else zero - longueur
             self.canvas.create_rectangle(
                 gauche, milieu - 7, gauche + longueur, milieu + 7,
@@ -1473,7 +1483,8 @@ class GapChart(tk.Frame):
             self.canvas.create_text(
                 depart + piste + self.VALUE - 12, milieu, anchor="e",
                 text=f"{ecart:+.1f} %".replace(".", ","),
-                font=_font(11, "bold"), fill=theme.INK)
+                font=_font(11, "bold" if sûr else "normal"),
+                fill=theme.INK if sûr else theme.MUTED)
             enjeu = row.get("at_stake")
             if enjeu:
                 self.canvas.create_text(

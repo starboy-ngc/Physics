@@ -237,6 +237,32 @@ def calculate_salary_metrics(
 ) -> Dict[str, Any]:
     """Masse salariale, moyenne, mediane, percentiles, dispersion."""
     field_name = field_name or analysis_field(config)
+    result = calculate_amount_metrics(
+        _values(population, field_name), config, field_name,
+        headcount=len(population))
+    if result["masked"]:
+        return result
+    result["full_time"] = _full_time_block(population, field_name,
+                                           PrivacyRules.from_config(config))
+    return result
+
+
+def calculate_amount_metrics(
+    amounts: Sequence[float], config: Configuration, field_name: str,
+    headcount: Optional[int] = None
+) -> Dict[str, Any]:
+    """Les memes indicateurs, sur une serie de montants deja etablie.
+
+    Extrait de `calculate_salary_metrics` pour qu'une serie construite
+    autrement — les montants ramenes au temps plein, par exemple — recoive
+    exactement le meme traitement : memes percentiles, meme dispersion,
+    meme seuil de masquage. Deux chemins de calcul auraient fini par
+    diverger entre l'ecran et le classeur.
+
+    Le masquage porte sur le nombre de montants exploitables, non sur
+    l'effectif : vingt salaries dont trois seulement ont un montant connu
+    publieraient les trois.
+    """
     published = configured_percentiles(config)
     # Les ratios de dispersion ont besoin de P10/P25/P75/P90 : on les calcule
     # toujours, meme si l'utilisateur ne publie qu'une partie des percentiles.
@@ -245,8 +271,8 @@ def calculate_salary_metrics(
     computed = sorted(set(published) | {10.0, 25.0, 50.0, 75.0, 90.0})
     rules = PrivacyRules.from_config(config)
 
-    values = _values(population, field_name)
-    headcount = len(population)
+    values = list(amounts)
+    headcount = len(values) if headcount is None else headcount
     result: Dict[str, Any] = {
         "field": field_name,
         "field_label": _field_label(config, field_name),
@@ -267,7 +293,6 @@ def calculate_salary_metrics(
         {"key": _percentile_key(rank), "label": _percentile_label(rank)}
         for rank in published
     ]
-    result["full_time"] = _full_time_block(population, field_name, rules)
     return result
 
 

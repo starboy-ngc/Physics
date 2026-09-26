@@ -426,3 +426,129 @@ class TestTheThresholdIsReachableAndBinding(PayTransparencyCase):
             self.assertIn("Ne rien calculer en dessous de", joint)
         finally:
             fenetre.destroy()
+
+
+@needs_display
+class TestTheFullTimeBasisOnScreen(unittest.TestCase):
+    """Un fichier avec temps de travail : ce que la page compare, et l'annonce.
+
+    Le fichier de la classe precedente n'a pas de colonne de temps de
+    travail — la page y compare donc les montants verses, et le dit. Ici le
+    fichier en a une, et les femmes sont a 80 % payees 80 % : l'ecart verse
+    est de vingt pour cent, l'ecart reel est nul. La page ne doit pas
+    montrer le premier.
+    """
+
+    def setUp(self):
+        import time
+
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import load_population
+
+        self.directory = tempfile.mkdtemp()
+        self.source = os.path.join(self.directory, "temps.csv")
+        with open(self.source, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(list(HEADERS) + ["Poste", "Temps de travail"])
+            for index in range(120):
+                poste = POSTES[index % 3]
+                femme = (index // 3) % 2 == 0
+                base = 40000 + POSTES.index(poste) * 9000 + (index % 5) * 300
+                # Les femmes a 80 %, payees exactement 80 % : aucun ecart a
+                # temps de travail egal, vingt pour cent sur les montants
+                # verses. Sauf sur le dernier poste, ou s'ajoute un vrai
+                # ecart de dix pour cent.
+                réel = base * (0.9 if poste == POSTES[2] and femme else 1.0)
+                writer.writerow(list(make_row(
+                    index, salary=round(réel * (0.8 if femme else 1.0)),
+                    gender="F" if femme else "H")) +
+                    [poste, "0,8" if femme else "1"])
+        self.app = Application()
+        self.app.geometry("1400x900+0+0")
+        self.app.update()
+        population, mapping, table = load_population(self.source,
+                                                     self.app.configuration)
+        self.app.source_path = self.source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app.headers = list(table.headers)
+        self.app._populate_filters()
+        self.app.run_analysis()
+        limit = time.time() + 60
+        while self.app.result is None and time.time() < limit:
+            self.app.update()
+            time.sleep(0.02)
+        self.assertIsNotNone(self.app.result)
+        self.app.tabbar.select("equite")
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _rows(self):
+        return {row["category"]: row for row in self.app.gap_chart.rows}
+
+    def test_the_page_says_what_it_compares(self):
+        texte = self.app.profile_subtitle.cget("text")
+        self.assertIn("temps plein", texte)
+        self.assertIn("salaire de base", texte.lower())
+
+    def test_a_part_time_gap_is_not_shown_as_an_inequality(self):
+        """Vingt pour cent sur les montants verses, zero a temps egal."""
+        lignes = self._rows()
+        for poste in POSTES[:2]:
+            with self.subTest(poste=poste):
+                self.assertAlmostEqual(lignes[poste]["gap"], 0.0, places=6)
+                self.assertFalse(lignes[poste]["significant"])
+
+    def test_the_real_gap_is_shown_and_comes_first(self):
+        lignes = self._rows()
+        vrai = lignes[POSTES[2]]
+        self.assertAlmostEqual(vrai["gap"], 10.0, places=6)
+        self.assertTrue(vrai["significant"])
+        # Le classement ouvre sur l'ecart que le hasard n'explique pas.
+        self.assertEqual(self.app.gap_chart.rows[0]["category"], POSTES[2])
+
+    def test_the_card_shows_the_probability_of_chance(self):
+        self.app.category_value.set(POSTES[2])
+        self.app._show_profile()
+        self.app.update()
+        textes = []
+
+        def marcher(widget):
+            import tkinter as tk
+
+            for enfant in widget.winfo_children():
+                if isinstance(enfant, tk.Label):
+                    textes.append(enfant.cget("text"))
+                marcher(enfant)
+
+        marcher(self.app.profile_kpis)
+        self.assertTrue(any("hasard" in str(texte).lower()
+                            for texte in textes), textes)
+        # La colonne des femmes porte la mediane a temps plein : celle du
+        # montant verse vaudrait 80 % de celle-la, et se lirait comme un
+        # ecart de vingt pour cent la ou il en est dix.
+        from hr_insight.core.pay_equity import category_breakdown
+
+        fiche = category_breakdown(self.app.result.filtered,
+                                   self.app.result.config,
+                                   self.app._axis(), POSTES[2])
+        femmes = next(c for c in fiche["columns"] if c["key"] == "female")
+        hommes = next(c for c in fiche["columns"] if c["key"] == "male")
+        self.assertAlmostEqual(
+            femmes["salary"]["median"] / hommes["salary"]["median"], 0.9,
+            places=2)
+        affichée = {ligne[0]: ligne for ligne in
+                    (self.app.profile_tree.item(line, "values")
+                     for line in self.app.profile_tree.get_children())
+                    }["Médiane (P50)"][1]
+        self.assertIn(str(int(femmes["salary"]["median"] // 1000)),
+                      affichée.replace("\u202f", " ").replace(" ", ""))
+
+    def test_the_card_names_the_basis(self):
+        self.app.category_value.set(POSTES[0])
+        self.app._show_profile()
+        self.app.update()
+        self.assertIn("temps plein",
+                      self.app.profile_subtitle.cget("text"))

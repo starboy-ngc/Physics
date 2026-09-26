@@ -152,6 +152,19 @@ GLOSSARY: Dict[str, Entry] = {
         "directive 2023/970 demande de le publier.",
         "(Moyenne des hommes − Moyenne des femmes) / Moyenne des hommes, en "
         "pourcentage."),
+    "significance": Entry(
+        "Probabilité qu'un écart de cette ampleur apparaisse alors que "
+        "femmes et hommes sont rémunérés de la même façon sur ce poste. "
+        "Plus elle est faible, moins le hasard du recrutement suffit à "
+        "expliquer l'écart. Elle ne dit pas si l'écart est justifié : un "
+        "écart significatif peut l'être par des critères objectifs, et un "
+        "écart non significatif reste un écart. Elle dit lequel mérite "
+        "d'être regardé d'abord.",
+        "Test de Welch sur les rémunérations ramenées au temps plein : "
+        "t = (moyenne des hommes − moyenne des femmes) / racine(variance "
+        "des hommes / effectif + variance des femmes / effectif), lu dans "
+        "la loi de Student bilatérale aux degrés de liberté de "
+        "Welch-Satterthwaite."),
     "full_time_gap": Entry(
         "Le même écart moyen, chaque rémunération d'abord ramenée au temps "
         "plein. Une population féminine plus souvent à temps partiel fait un "

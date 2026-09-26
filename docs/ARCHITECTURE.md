@@ -167,6 +167,65 @@ divise ligne à ligne :
 indicateur publié sans le moyen de le refaire n'a pas sa place dans ce
 classeur.
 
+## 8 ter. La base de comparaison de l'égalité professionnelle
+
+Les indicateurs de la directive se publient sur les montants versés : c'est
+ce qu'un employeur paie, et c'est ce qu'il doit publier. La comparaison
+femmes / hommes **poste par poste** répond à une autre question — deux
+personnes qui font le même travail sont-elles payées pareil — et elle se
+fait donc sur une autre base, la même partout sur la page :
+
+`analysis_field` (salaire de base par défaut), **ramené au temps plein**.
+
+Une base ne se devine pas : `pay_equity.basis_description(population,
+config)` la nomme en clair, l'écran et les documents affichent cette phrase
+telle quelle. Ils ne peuvent donc pas annoncer une base que le moteur
+n'applique pas.
+
+Elle porte une clause de repli, et une seule : si **personne** n'a de temps
+de travail renseigné, rien ne peut être ramené à rien. Plutôt qu'une page
+vide — ou, pire, l'hypothèse tacite que tout le monde est à temps plein — la
+comparaison porte alors sur les montants versés et le dit. Un temps de
+travail inconnu **au cas par cas** sort du calcul, avec la couverture pour
+le signaler.
+
+Le masquage suit la base : il porte sur le nombre de salariés **dont le
+calcul est possible**, non sur l'effectif du groupe. Un poste de trente
+personnes dont deux ont un temps de travail connu publierait la rémunération
+de ces deux-là.
+
+### La significativité
+
+Un écart se lit avec sa fiabilité. 30 % d'écart entre trois femmes et quatre
+hommes est un tirage, pas un fait ; 4 % entre deux cents personnes n'en est
+probablement pas un. Sans cette mesure, un classement par ampleur met en
+tête les postes les moins peuplés — ceux dont l'écart est le moins sûr.
+
+Le test est celui de **Welch** (`statistics_engine.welch_comparison`) : il ne
+suppose pas que les deux sexes ont la même dispersion de salaire, ce qui n'a
+aucune raison d'être vrai. La loi de Student est évaluée par la fonction bêta
+incomplète régularisée, écrite dans le moteur — la bibliothèque standard ne
+la fournit pas, et aucune dépendance externe n'est admise (§34). Elle est
+vérifiée contre des valeurs de table **et** par intégration numérique de sa
+propre densité.
+
+Deux cas ne se remplacent pas par un chiffre inventé :
+
+| Cas | Traitement |
+|---|---|
+| Moins de deux montants d'un côté | aucun test : `p_value` vaut `None`, le poste n'est pas mis en tête |
+| Les deux séries sans aucune dispersion (grille salariale) | le *t* est infini : probabilité nulle si les deux montants diffèrent, totale s'ils sont égaux |
+
+Le seuil (`significance_level`, 5 %) ne masque rien et ne change aucun
+calcul : il commande le classement et la mention affichée. Le logiciel ne
+décide pas — un écart significatif peut être justifié par des critères
+objectifs, un écart non significatif reste un écart.
+
+**Tout se refait.** Le classeur porte, poste par poste, le bloc à temps
+plein : moyennes, médianes, écarts, effectifs portant l'écart et couverture,
+chacun en formule sur les données individuelles. Vérifié en exécutant ces
+formules sous LibreOffice, valeurs en cache retirées.
+
 ## 9. Traçabilité
 
 Chaque analyse produit un manifeste JSON : moteur, version, date, nom et

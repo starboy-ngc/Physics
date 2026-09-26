@@ -469,5 +469,112 @@ class TestDerivedColumnsCarryTheirRule(ControlCase):
         self.assertIn(f'IF({lettre}2=""', anciennete.expression)
 
 
+class TestTheFullTimeGapOfEachJobIsCheckable(unittest.TestCase):
+    """L'ecart qu'affiche la page des ecarts doit se refaire poste par poste.
+
+    La page compare a temps de travail egal. Si le classeur ne sait refaire
+    que l'ecart sur les montants verses, il verifie une base et l'ecran en
+    montre une autre : c'est la pire des deux situations, parce qu'elle
+    rassure. Ce test execute les formules du classeur — pas son texte — sur
+    ses propres onglets.
+    """
+
+    ROWS = 96
+
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "population.csv")
+        with open(cls.source, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(list(HEADERS) + ["Poste", "Temps de travail"])
+            for index in range(cls.ROWS):
+                femme = index % 2 == 1
+                poste = ["Comptable", "Technicien", "Ingénieur"][index % 3]
+                base = 38000 + (index % 12) * 700
+                writer.writerow(list(make_row(
+                    index, salary=round(base * (0.8 if femme else 1.0)),
+                    gender="F" if femme else "H",
+                    grade=f"G{3 + index % 3}")) +
+                    [poste, "0,8" if femme else "1"])
+        cls.config_dir = os.path.join(cls.directory, "config")
+        write_default_configuration(cls.config_dir)
+        cls.result = run_analysis(AnalysisRequest(
+            source_path=cls.source, config_dir=cls.config_dir))
+        data = cls.result.config.as_dict()
+        data["export_parameters"]["include_individual_data"] = True
+        cls.book = build_sheets(cls.result.payload, cls.result.filtered,
+                               Configuration(data), table=cls.result.table,
+                               mapping=cls.result.mapping)
+        cls.rows = dict(cls.book)["Contrôle Pay Transparency"]
+
+    def test_each_job_carries_its_full_time_lines(self):
+        postes = {str(ligne[0]) for ligne in self.rows if ligne}
+        for poste in ("Comptable", "Technicien", "Ingénieur"):
+            self.assertIn(f"{poste} — à temps plein", postes)
+
+    def test_the_spreadsheet_gives_back_the_full_time_gaps(self):
+        tableur = Workbook(self.book)
+        vérifiées = 0
+        for ligne in self.rows:
+            if not ligne or "à temps plein" not in str(ligne[0]):
+                continue
+            if len(ligne) < 4 or not isinstance(ligne[3], Formula):
+                continue
+            attendu = ligne[3].value
+            if attendu is None:
+                continue
+            obtenu = tableur.evaluate(ligne[3].expression,
+                                      "Contrôle Pay Transparency")
+            self.assertAlmostEqual(
+                float(obtenu), float(attendu), places=6,
+                msg=f"{ligne[0]} / {ligne[1]} : {ligne[3].expression}")
+            vérifiées += 1
+        # Trois postes, neuf lignes chacun : un compte trop faible voudrait
+        # dire que le bloc n'est pas ecrit et que le test ne verifie rien.
+        self.assertGreaterEqual(vérifiées, 24)
+
+    def test_the_catch_up_is_paid_at_the_worked_time(self):
+        """Aligner un mi-temps ne coute pas ce que coute un temps plein.
+
+        L'ecart se mesure a temps plein ; le rattrapage se paie au prorata.
+        Compter un effectif la ou il faut compter des temps de travail
+        gonfle la facture — ici de vingt pour cent sur les femmes.
+        """
+        tableur = Workbook(self.book)
+        lignes = [ligne for ligne in self.rows
+                  if ligne and str(ligne[0]).endswith("— à temps plein")
+                  and ligne[1] == "Rattrapage"]
+        self.assertEqual(len(lignes), 3)
+        for ligne in lignes:
+            obtenu = tableur.evaluate(ligne[3].expression,
+                                      "Contrôle Pay Transparency")
+            self.assertAlmostEqual(float(obtenu), float(ligne[2]), places=6)
+        total = [ligne for ligne in self.rows
+                 if ligne and ligne[1] == "Rattrapage comparable (à temps "
+                                          "plein)"]
+        self.assertEqual(len(total), 1)
+        self.assertAlmostEqual(
+            float(total[0][2]),
+            sum(float(ligne[2]) for ligne in lignes), places=6)
+        self.assertAlmostEqual(
+            float(tableur.evaluate(total[0][3].expression,
+                                   "Contrôle Pay Transparency")),
+            float(total[0][2]), places=6)
+
+    def test_the_full_time_gap_is_the_one_the_screen_shows(self):
+        """Le chiffre du classeur est celui du moteur, pas un recalcul voisin."""
+        categories = {item["category"]: item for item
+                      in self.result.payload["pay_equity"]["categories"]}
+        for ligne in self.rows:
+            if not ligne or not str(ligne[0]).endswith("— à temps plein"):
+                continue
+            if ligne[1] != "Écart moyen (%)":
+                continue
+            nom = str(ligne[0]).replace(" — à temps plein", "")
+            attendu = categories[nom]["comparison"]["mean_gap"]
+            self.assertAlmostEqual(float(ligne[2]), float(attendu), places=9)
+
+
 if __name__ == "__main__":
     unittest.main()

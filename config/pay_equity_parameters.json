@@ -17,6 +17,7 @@
   "variable_field": "variable_pay",
   "category_field": "job_title",
   "gap_alert_threshold": 5.0,
+  "significance_level": 0.05,
   "quartile_count": 4,
   "profile_fields": [
     {

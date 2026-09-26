@@ -217,6 +217,21 @@ class Ledger:
         return (f"{statistic}(IF({'*'.join(tests)},"
                 f"{self.range(value_label)}/{self.range(ratio_label)}))")
 
+    def worked_time(self, value_label: str, ratio_label: str,
+                    criteria: Sequence[Tuple[str, Any]] = ()) -> str:
+        """Somme des temps de travail des lignes exploitables.
+
+        Deux mi-temps ne coutent pas ce que coutent deux temps pleins :
+        c'est cette somme, et non l'effectif, qui convertit un ecart a temps
+        plein en euros reellement verses. Chaque test est parenthese avant
+        d'etre converti en 0/1, comme partout ailleurs dans ce module.
+        """
+        tests = [f'--({self.range(value_label)}<>"")',
+                 f'--({self.range(ratio_label)}<>"")',
+                 f'--({self.range(ratio_label)}>0)']
+        tests.extend(f"--({test})" for test in self._tests(criteria))
+        return f"SUMPRODUCT({','.join(tests)},{self.range(ratio_label)})"
+
     def percentile(self, value_label: str, rank: float,
                    criteria: Sequence[Tuple[str, Any]] = ()) -> str:
         part = number_literal(rank / 100.0)

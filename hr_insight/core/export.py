@@ -807,21 +807,38 @@ def _poser_couple(poser, ledger: fx.Ledger, categorie: str, colonne: str,
 
 
 def _poser_couple_temps_plein(poser, ledger: fx.Ledger, salaire: str,
-                              bloc: Dict[str, Any], femme, homme) -> None:
-    """Le meme couple, chaque montant divise par le temps de travail."""
+                              bloc: Dict[str, Any], femme, homme,
+                              categorie: str = "À temps plein",
+                              contexte: Sequence = ()) -> None:
+    """Le meme couple, chaque montant divise par le temps de travail.
+
+    `contexte` restreint le calcul a une categorie — un poste, un grade.
+    C'est la base sur laquelle la page des ecarts compare : elle doit se
+    refaire poste par poste, pas seulement sur l'ensemble.
+    """
+    def critères(critere):
+        return list(contexte) + [critere]
+
     def moyenne(critere):
-        return ledger.per_full_time(salaire, FTE_COLUMN, "AVERAGE", [critere])
+        return ledger.per_full_time(salaire, FTE_COLUMN, "AVERAGE",
+                                    critères(critere))
 
     def mediane(critere):
-        return ledger.per_full_time(salaire, FTE_COLUMN, "MEDIAN", [critere])
+        return ledger.per_full_time(salaire, FTE_COLUMN, "MEDIAN",
+                                    critères(critere))
 
     def effectif(critere):
+        # Compte les salaries dont le montant *et* le temps de travail sont
+        # exploitables : ce sont eux, et eux seuls, qui portent l'ecart a
+        # temps plein.
+        tests = "".join(
+            f'--({ledger.range(champ)}="{valeur}"),'
+            for champ, valeur in critères(critere))
         return (f'SUMPRODUCT(--({ledger.range(salaire)}<>""),'
                 f'--({ledger.range(FTE_COLUMN)}<>""),'
                 f'--({ledger.range(FTE_COLUMN)}>0),'
-                f'--({ledger.range(critere[0])}="{critere[1]}"))')
+                f'{tests}'.rstrip(",") + ")")
 
-    categorie = "À temps plein"
     poser(categorie, "Moyenne femmes", bloc.get("female_mean"), moyenne(femme))
     poser(categorie, "Moyenne hommes", bloc.get("male_mean"), moyenne(homme))
     poser(categorie, "Écart moyen (%)", bloc.get("mean_gap"),
@@ -837,8 +854,8 @@ def _poser_couple_temps_plein(poser, ledger: fx.Ledger, salaire: str,
           effectif(homme))
     poser(categorie, "Couverture (%)", bloc.get("coverage"),
           f"({effectif(femme)}+{effectif(homme)})"
-          f"/({ledger.count(salaire, [femme])}"
-          f"+{ledger.count(salaire, [homme])})*100")
+          f"/({ledger.count(salaire, list(contexte) + [femme])}"
+          f"+{ledger.count(salaire, list(contexte) + [homme])})*100")
 
 
 def _ligne_de(rows: List[List[Any]], label: str,
@@ -891,6 +908,8 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
     #: formule la rend verifiable au lieu de renvoyer a un autre onglet.
     lignes_ecart: List[int] = []
     lignes_poids: List[int] = []
+    #: Lignes des rattrapages comparables, pour en poser le total.
+    lignes_rattrapage: List[int] = []
     ensemble = equity.get("pay") or {}
     poser("Ensemble", "Moyenne femmes", ensemble.get("female_mean"),
           ledger.average(salaire, [femme]))
@@ -983,6 +1002,32 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
                   f"{ledger.average(salaire, critere_f)},"
                   f"{ledger.rows_matching(critere_f)},"
                   f"{ledger.rows_matching(critere_h)})")
+            # L'ecart a temps de travail egal est celui que la page des
+            # ecarts affiche pour ce poste : il doit se refaire ici comme
+            # les autres, faute de quoi le classeur verifie une base et
+            # l'ecran en montre une autre.
+            plein_categorie = item.get("comparison") or {}
+            if plein_categorie.get("published") and ledger.has(FTE_COLUMN) \
+                    and (equity.get("basis") or {}).get("full_time"):
+                intitulé = f"{nom} — à temps plein"
+                _poser_couple_temps_plein(
+                    poser, ledger, salaire, plein_categorie, femme, homme,
+                    categorie=intitulé, contexte=[(colonne, nom)])
+                # Le rattrapage comparable : l'ecart se mesure a temps
+                # plein, il se paie au prorata du temps travaille. Aligner
+                # les montants verses reviendrait a payer un mi-temps comme
+                # un temps plein.
+                moyenne_f = ledger.per_full_time(salaire, FTE_COLUMN,
+                                                 "AVERAGE", critere_f)
+                moyenne_h = ledger.per_full_time(salaire, FTE_COLUMN,
+                                                 "AVERAGE", critere_h)
+                poser(intitulé, "Rattrapage",
+                      plein_categorie.get("at_stake"),
+                      f"ABS({moyenne_h}-{moyenne_f})"
+                      f"*IF({moyenne_h}>{moyenne_f},"
+                      f"{ledger.worked_time(salaire, FTE_COLUMN, critere_f)},"
+                      f"{ledger.worked_time(salaire, FTE_COLUMN, critere_h)})")
+                lignes_rattrapage.append(len(rows))
 
     rows.append([])
     # La decomposition se posait en commentaire, renvoyant a un autre
@@ -1025,6 +1070,17 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
               equity.get("comparable_coverage"),
               f"SUM({poids})/({ledger.rows_matching([femme])}"
               f"+{ledger.rows_matching([homme])})*100")
+    if lignes_rattrapage:
+        # Le total des rattrapages comparables cite les lignes qui le
+        # composent plutot que de refaire chaque calcul : une somme se
+        # verifie a l'oeil, une formule de quatre mille signes non.
+        somme = "+".join(f"D{ligne}" for ligne in lignes_rattrapage)
+        poser("Ensemble", "Rattrapage comparable (à temps plein)",
+              equity.get("comparable_at_stake_total"),
+              somme if len(somme) <= FORMULA_MAX_CHARS else None,
+              "" if len(somme) <= FORMULA_MAX_CHARS else
+              "trop de catégories pour en écrire la somme : elle se refait "
+              "sur les lignes « Rattrapage » ci-dessus")
     else:
         poser("Ensemble", "À catégorie comparable (%)",
               equity.get("comparable_gap"), None,

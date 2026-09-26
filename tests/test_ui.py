@@ -616,7 +616,11 @@ class TestThePayTransparencyPage(unittest.TestCase):
         from hr_insight.ui.app import CATEGORY_ORDERS
 
         noms = [key for key, _label in CATEGORY_ORDERS]
-        self.assertEqual(noms[0], "stake")
+        # Le premier tri est celui qui s'applique a l'ouverture : la page
+        # repond « ou faut-il regarder », et la reponse est l'ecart que le
+        # hasard n'explique pas — non le plus grand en pourcentage, qui se
+        # trouve toujours sur les postes les moins peuples.
+        self.assertEqual(noms[0], "significance")
         avant = [row["category"] for row in self.app.gap_chart.rows]
         self.app.category_order.current(noms.index("name"))
         self.app._show_categories()

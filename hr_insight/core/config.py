@@ -174,6 +174,12 @@ DEFAULTS: Dict[str, Any] = {
         # Seuil au-dela duquel la directive 2023/970 impose une evaluation
         # conjointe, faute de justification par des criteres objectifs.
         "gap_alert_threshold": 5.0,
+        # Seuil de probabilite en deca duquel un ecart est dit
+        # significatif : la chance qu'un ecart de cette ampleur apparaisse
+        # alors que les deux sexes sont payes pareil. Cinq pour cent est
+        # l'usage. Ce reglage ne masque rien et ne change aucun calcul : il
+        # ne commande que le classement des postes et la mention affichee.
+        "significance_level": 0.05,
         "quartile_count": 4,
         # Variables comparees entre les sexes sur la fiche d'un poste. Un
         # ecart de remuneration ne se lit pas seul : la meme difference

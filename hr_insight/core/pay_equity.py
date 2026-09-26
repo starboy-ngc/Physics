@@ -33,7 +33,7 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from . import statistics_engine as stats
 from .config import Configuration, analysis_field
-from .normalize import Population, full_time_amount
+from .normalize import FTE_FIELD, Population, full_time_amount
 from .metrics import PrivacyRules
 from .segmentation import cross_key, dimension_label, split_by
 
@@ -148,6 +148,68 @@ def _pair(women: List[float], men: List[float],
         "mean_gap": _gap(male_mean, female_mean),
         "median_gap": _gap(male_median, female_median),
     }
+
+
+def _significance(women: List[float], men: List[float],
+                  level: float) -> Dict[str, Any]:
+    """Un ecart, et la chance qu'il ne soit qu'un effet du hasard.
+
+    Sans cette mesure, un classement par ampleur met en tete les postes les
+    moins peuples : c'est la ou un ecart de vingt pour cent se produit le
+    plus facilement sans qu'aucune decision de remuneration ne l'explique.
+    Le test est celui de Welch — il ne suppose pas que les deux sexes ont la
+    meme dispersion de salaire, ce qui n'a aucune raison d'etre vrai.
+
+    Rien n'est decide ici : un ecart non significatif reste un ecart, et un
+    ecart significatif n'est pas pour autant injustifie. La mesure dit
+    seulement lequel merite d'etre regarde d'abord.
+    """
+    comparaison = stats.welch_comparison(men, women)
+    probabilite = comparaison.get("p_value")
+    return {
+        "t": comparaison.get("t"),
+        "degrees_of_freedom": comparaison.get("degrees_of_freedom"),
+        "p_value": probabilite,
+        "level": level,
+        "significant": (probabilite is not None and probabilite <= level),
+        # La confiance est ce qui se dit a l'oral : « significatif a 95 % ».
+        "confidence": (None if probabilite is None
+                       else (1.0 - probabilite) * 100.0),
+    }
+
+
+def comparison_amounts(employees: Sequence[Any], field_name: str,
+                       full_time: bool) -> List[float]:
+    """Les montants a comparer, sur la base retenue pour la page."""
+    if full_time:
+        return _full_time_amounts(employees, field_name)
+    return _amounts(employees, field_name)
+
+
+def comparison_pair(employees_female: Sequence[Any],
+                    employees_male: Sequence[Any], config: Configuration,
+                    field_name: str, rules: PrivacyRules,
+                    full_time: bool = True) -> Dict[str, Any]:
+    """Le couple femmes / hommes sur la base de comparaison de la page.
+
+    A temps de travail egal des que le temps de travail est connu : les
+    salaries dont il ne l'est pas sortent du calcul, et la couverture le
+    dit. Un ecart etabli sur la moitie d'un poste ne se lit pas comme un
+    ecart etabli sur le poste entier.
+    """
+    femmes = comparison_amounts(employees_female, field_name, full_time)
+    hommes = comparison_amounts(employees_male, field_name, full_time)
+    bloc = _pair(femmes, hommes, rules)
+    verses = (len(_amounts(employees_female, field_name))
+              + len(_amounts(employees_male, field_name)))
+    bloc["coverage"] = (((len(femmes) + len(hommes)) / verses * 100.0)
+                        if verses else None)
+    bloc["at_stake"] = _comparable_at_stake(
+        bloc, employees_female, employees_male, field_name, full_time)
+    niveau = config.number("pay_equity_parameters.significance_level", 0.05,
+                           minimum=0.0, maximum=1.0)
+    bloc["significance"] = _significance(femmes, hommes, niveau)
+    return bloc
 
 
 def _quartiles(population: Population, config: Configuration, field_name: str,
@@ -286,6 +348,42 @@ def _axis_label(config: Configuration, field_name) -> str:
     return " + ".join(dimension_label(config, name) for name in field_name)
 
 
+def basis_description(population: Population,
+                      config: Configuration) -> Dict[str, Any]:
+    """La base de comparaison, dite en clair une fois pour toutes.
+
+    L'egalite professionnelle se compare a temps de travail egal : deux
+    personnes au meme poste dont l'une travaille a 80 % ne touchent pas la
+    meme somme sans qu'aucune inegalite ne soit en cause. Chaque montant est
+    donc ramene au temps plein avant comparaison.
+
+    Encore faut-il que le temps de travail soit connu. Un fichier sans
+    colonne de temps de travail ne peut rien ramener a rien : plutot que de
+    rendre une page vide — ou, pire, de supposer tout le monde a temps
+    plein —, la comparaison porte alors sur les montants verses, et le dit.
+
+    Un ecart n'a de sens qu'avec la mention de ce qu'il compare : l'ecran et
+    les documents affichent cette phrase telle quelle, ils ne la
+    reconstruisent pas, et ne peuvent donc pas annoncer une base que le
+    moteur n'applique pas.
+    """
+    from .metrics import _field_label
+
+    field_name = analysis_field(config)
+    label = _field_label(config, field_name)
+    connu = any(full_time_amount(employee, field_name) is not None
+                for employee in population)
+    return {
+        "field": field_name,
+        "field_label": label,
+        "full_time": connu,
+        "label": (f"{label.lower()}, ramené au temps plein" if connu else
+                  f"{label.lower()} versé — le temps de travail n'est "
+                  "renseigné pour personne, les montants ne peuvent pas être "
+                  "ramenés au temps plein"),
+    }
+
+
 def calculate_category_gaps(population: Population, config: Configuration,
                             field_name: str) -> Dict[str, Any]:
     """Ecarts par categorie, sur l'axe demande.
@@ -301,6 +399,7 @@ def calculate_category_gaps(population: Population, config: Configuration,
     threshold = config.number("pay_equity_parameters.gap_alert_threshold",
                               5.0, minimum=0.0, maximum=100.0)
     label = _axis_label(config, field_name)
+    base = basis_description(population, config)
 
     groups_by_category = split_by(population, field_name)
     if not groups_by_category:
@@ -312,6 +411,7 @@ def calculate_category_gaps(population: Population, config: Configuration,
             "category_label": label,
             "categories": [],
             "categories_above_threshold": 0,
+            "basis": base,
             "category_warning": (
                 f"Le champ « {label} » n'est renseigné pour aucun salarié de "
                 "ce fichier : l'écart par catégorie ne peut pas être "
@@ -330,6 +430,18 @@ def calculate_category_gaps(population: Population, config: Configuration,
         pair["above_threshold"] = (gap is not None and threshold > 0
                                    and abs(gap) >= threshold)
         pair["at_stake"] = _at_stake(pair)
+        # Le meme couple sur la base de comparaison de la page, et la chance
+        # que son ecart ne soit qu'un effet du hasard. Les montants verses
+        # melent l'inegalite au temps partiel : l'egalite professionnelle se
+        # compare a temps de travail egal.
+        comparaison = comparison_pair(members[FEMALE], members[MALE], config,
+                                      salary_field, rules,
+                                      full_time=base["full_time"])
+        ecart_comparable = comparaison.get("mean_gap")
+        comparaison["above_threshold"] = (
+            ecart_comparable is not None and threshold > 0
+            and abs(ecart_comparable) >= threshold)
+        pair["comparison"] = comparaison
         categories.append(pair)
     categories.sort(key=lambda item: (
         item["mean_gap"] is None, -abs(item["mean_gap"] or 0.0)))
@@ -338,9 +450,16 @@ def calculate_category_gaps(population: Population, config: Configuration,
         "category_label": label,
         "categories": categories,
         "category_warning": None,
+        "basis": base,
         "categories_above_threshold": sum(
             1 for item in categories if item["above_threshold"]),
         "at_stake_total": sum(item["at_stake"] or 0.0 for item in categories),
+        # Le meme total sur la base de comparaison de la page : c'est celui
+        # qu'un service C&B peut budgeter, parce qu'il ne compte pas un
+        # mi-temps comme un temps plein.
+        "comparable_at_stake_total": sum(
+            (item["comparison"].get("at_stake") or 0.0)
+            for item in categories),
     }
     result.update(_decomposition(categories, population, config))
     return result
@@ -383,46 +502,69 @@ def category_breakdown(population: Population, config: Configuration,
     from . import metrics as _metrics
 
     rules = PrivacyRules.from_config(config)
+    salary_field = analysis_field(config)
+    # La base se decide sur la population entiere, jamais sur la categorie :
+    # un poste dont personne n'a de temps de travail renseigne ne doit pas
+    # changer en silence la base de comparaison de la page.
+    base = basis_description(population, config)
     members = category_members(population, field_name, value)
     groups = _split_members(members, config)
     séries = {"female": groups[FEMALE], "male": groups[MALE],
               "all": members}
 
     colonnes = []
+    montants: Dict[str, List[float]] = {}
     for cle, libelle in BREAKDOWN_COLUMNS:
         gens = séries[cle]
-        effectif = len(gens)
+        # Chaque colonne est calculee sur la base de comparaison de la
+        # page : des montants ramenes au temps plein, ou un temps partiel
+        # compte pour ce qu'il serait a temps complet. Les salaries dont le
+        # temps de travail est inconnu sortent du calcul, et la couverture
+        # le dit.
+        série = comparison_amounts(gens, salary_field, base["full_time"])
+        montants[cle] = série
         colonne: Dict[str, Any] = {
-            "key": cle, "label": libelle, "headcount": effectif,
-            "masked": not rules.may_publish(effectif),
+            "key": cle, "label": libelle, "headcount": len(gens),
+            # Le masquage porte sur les montants exploitables, non sur
+            # l'effectif : un poste de vingt personnes dont trois ont un
+            # temps de travail connu publierait ces trois-la.
+            "masked": not rules.may_publish(len(série)),
         }
         if not colonne["masked"]:
-            sous = Population(employees=list(gens),
-                              reference_date=population.reference_date,
-                              age_bands=population.age_bands,
-                              tenure_bands=population.tenure_bands)
-            colonne["salary"] = _metrics.calculate_salary_metrics(sous, config)
+            colonne["salary"] = _metrics.calculate_amount_metrics(
+                série, config, salary_field, headcount=len(gens))
         colonnes.append(colonne)
 
     femmes = next(c for c in colonnes if c["key"] == "female")
     hommes = next(c for c in colonnes if c["key"] == "male")
     publiable = not femmes["masked"] and not hommes["masked"]
+    niveau = config.number("pay_equity_parameters.significance_level", 0.05,
+                           minimum=0.0, maximum=1.0)
+    verses = (len(_amounts(groups[FEMALE], salary_field))
+              + len(_amounts(groups[MALE], salary_field)))
+    comparables = len(montants["female"]) + len(montants["male"])
     return {
         "category": value,
         "columns": colonnes,
         "published": publiable,
         "headcount": len(members),
         "unknown_count": len(groups[""]),
+        "basis": base,
+        "coverage": (comparables / verses * 100.0) if verses else None,
+        "compared_headcount": comparables,
         "mean_gap": (_gap(hommes["salary"].get("mean"),
                           femmes["salary"].get("mean"))
                      if publiable else None),
         "median_gap": (_gap(hommes["salary"].get("median"),
                             femmes["salary"].get("median"))
                        if publiable else None),
+        "significance": (_significance(montants["female"], montants["male"],
+                                       niveau) if publiable else None),
         "warning": None if publiable else (
             "Effectif insuffisant dans l'un des deux groupes : l'écart "
             f"n'est pas publié (minimum {rules.min_publish} salariés de "
-            "chaque sexe)."),
+            "chaque sexe" + (" dont le temps de travail est connu"
+                             if base["full_time"] else "") + ")."),
         "threshold": rules.min_publish,
     }
 
@@ -559,6 +701,46 @@ def _split_members(members: Sequence[Any], config: Configuration):
         groups[classify(employee.value(field_name), female, male)].append(
             employee)
     return groups
+
+
+def _worked_time(employees: Sequence[Any], field_name: str) -> float:
+    """Somme des temps de travail des salaries dont le montant est exploitable.
+
+    Deux mi-temps ne coutent pas ce que coutent deux temps pleins : c'est
+    cette somme, et non l'effectif, qui convertit un ecart a temps plein en
+    euros reellement verses.
+    """
+    total = 0.0
+    for employee in employees:
+        if full_time_amount(employee, field_name) is None:
+            continue
+        ratio = employee.value(FTE_FIELD)
+        if isinstance(ratio, (int, float)) and not isinstance(ratio, bool):
+            total += float(ratio)
+    return total
+
+
+def _comparable_at_stake(pair: Dict[str, Any],
+                         employees_female: Sequence[Any],
+                         employees_male: Sequence[Any], field_name: str,
+                         full_time: bool) -> Optional[float]:
+    """Ce que couterait, en euros verses, la fermeture de l'ecart comparable.
+
+    L'ecart se mesure a temps plein ; le rattrapage se paie au prorata du
+    temps travaille. Aligner les montants verses reviendrait a payer un
+    mi-temps comme un temps plein — ce n'est pas ce que demande l'egalite,
+    et le chiffre serait sans rapport avec la decision a prendre.
+    """
+    if not pair.get("published"):
+        return None
+    if not full_time:
+        return _at_stake(pair)
+    femme, homme = pair.get("female_mean"), pair.get("male_mean")
+    if femme is None or homme is None:
+        return 0.0
+    if homme > femme:
+        return (homme - femme) * _worked_time(employees_female, field_name)
+    return (femme - homme) * _worked_time(employees_male, field_name)
 
 
 def _at_stake(pair: Dict[str, Any]) -> Optional[float]:

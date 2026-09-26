@@ -185,66 +185,103 @@ dépendent jamais : le rouge de « critique », l'orange d'« avertissement » e
 le couple femmes/hommes du nuage et des pyramides — les changer serait un
 contresens, pas une préférence.
 
-## 5 ter. Lire l'onglet Pay Transparency
+## 5 ter. Lire l'onglet Écarts F/H
 
-La directive 2023/970 demande l'écart de rémunération **par catégorie de
-travailleurs accomplissant un travail de même valeur**. Le poste est cette
-catégorie : l'onglet s'organise donc autour du couple **poste × sexe**.
+L'égalité professionnelle se compare **à poste égal** : femmes et hommes qui
+font le même travail. La page tient donc en un geste — **choisir un poste** —
+et en une base de comparaison, annoncée en haut de la fiche :
 
-### Trois chiffres, pas un
+> **le salaire de base, ramené au temps plein**
+
+Deux précisions qui décident de tout le reste.
+
+**Le salaire de base**, parce que c'est lui que fixe une grille et que c'est
+sur lui qu'une décision de rémunération se prend. Le champ est paramétrable
+(`salary_parameters.analysis_field`) : une entreprise qui compare la
+rémunération totale le déclare, et toute la page suit.
+
+**Ramené au temps plein**, parce qu'une personne à 80 % touche 80 % : sans ce
+retour au temps complet, la page afficherait 20 % d'écart là où il n'y a
+aucune inégalité, et masquerait un écart réel dans une population féminine
+plus souvent à temps partiel. Les salariés dont le temps de travail n'est pas
+renseigné **sortent du calcul**, et la fiche dit sur quelle part de
+l'effectif l'écart est établi. Un fichier **sans aucune** colonne de temps de
+travail ne rend pas une page vide : la comparaison porte alors sur les
+montants versés, et l'écrit noir sur blanc.
+
+### Sans sélection : où faut-il regarder
+
+Une barre par poste, de part et d'autre de zéro — à droite les postes où les
+femmes sont moins rémunérées, à gauche l'inverse. Le classement par défaut
+n'est pas l'ampleur de l'écart, mais sa **significativité**.
 
 | | ce qu'il dit |
 |---|---|
-| **Écart global** | (moyenne hommes − moyenne femmes) / moyenne hommes. C'est le chiffre publiable. |
-| **À poste comparable** | La moyenne des écarts de chaque poste, pondérée par leur effectif. C'est l'écart « à travail égal ». |
-| **Effet de structure** | Le reste. Ce que le poste occupé explique de l'écart global. |
+| **Écart** | (moyenne hommes − moyenne femmes) / moyenne hommes, à temps plein. |
+| **Significativité** | La probabilité qu'un écart de cette ampleur apparaisse alors que les deux sexes sont payés de la même façon. |
+| **Enjeu** | Ce que coûterait l'alignement du sexe le moins rémunéré sur l'autre, en euros réellement versés. |
+
+Pourquoi la significativité d'abord : 30 % d'écart entre trois femmes et
+quatre hommes n'est pas un fait, c'est un tirage. Classer par ampleur met en
+tête exactement les postes dont l'écart est le moins sûr. Les écarts que le
+hasard suffirait à expliquer gardent leur barre, **en pâle**, et leur chiffre
+en gris : ils se voient, ils ne se lisent pas comme les autres.
+
+Le test est celui de Welch, sur les rémunérations ramenées au temps plein.
+Le seuil est paramétrable (`pay_equity_parameters.significance_level`,
+5 % par défaut). Il ne masque rien et ne change aucun calcul : il commande le
+classement et la mention affichée.
+
+Un écart significatif n'est pas pour autant injustifié — l'ancienneté, le
+diplôme, la performance sont des critères objectifs, et c'est à vous de les
+apprécier. Un écart non significatif reste un écart. La page dit lequel
+mérite d'être regardé d'abord ; elle ne juge pas.
+
+**Trier par** permet de passer à l'enjeu, à l'écart, à l'effectif ou au nom.
+
+### Avec un poste : toute sa rémunération, en trois colonnes
+
+Un clic sur une barre, ou le menu **Poste** en haut, déplie le détail :
+
+| | Femmes | Hommes | Global |
+|---|---|---|---|
+| Effectif | 18 | 24 | 42 |
+| Minimum | 38 000 EUR | 39 500 EUR | 38 000 EUR |
+| P10 · Q1 · **Médiane** · Q3 · P90 | … | … | … |
+| Moyenne | 42 200 EUR | 44 600 EUR | 43 570 EUR |
+| Maximum | 51 000 EUR | 56 000 EUR | 56 000 EUR |
+| Masse salariale | … | … | … |
+| Dispersion : Q3 − Q1, Q3/Q1, P90/P10, coefficient de variation | … | … | … |
+
+La troisième colonne n'est pas décorative : sans l'ensemble, on ne sait pas
+si un écart tient à un groupe tiré vers le bas ou à l'autre tiré vers le
+haut. Au-dessus du tableau, quatre chiffres : l'écart moyen, l'écart médian,
+**la probabilité que le hasard l'explique**, et l'effectif.
+
+Chaque colonne est masquée **pour elle-même** : un poste où vingt hommes
+côtoient trois femmes publie la colonne des hommes et celle de l'ensemble,
+et tait celle des femmes — c'est la seule qui désignerait quelqu'un. Le
+seuil se règle dans **Paramètres → Confidentialité** et vaut partout de la
+même façon. Il porte sur le nombre de salariés **dont le calcul est
+possible** : un poste de trente personnes dont deux ont un temps de travail
+renseigné ne publie rien.
+
+### Les trois chiffres du haut
+
+Ils restent ceux de la directive 2023/970, sur les **montants versés** —
+c'est ce qu'un employeur publie :
+
+| | ce qu'il dit |
+|---|---|
+| **Écart global** | (moyenne hommes − moyenne femmes) / moyenne hommes. Le chiffre publiable. |
+| **À poste comparable** | La moyenne des écarts de chaque poste, pondérée par leur effectif. |
+| **Effet de structure** | Le reste : ce que le poste occupé explique de l'écart global. |
+| **À temps de travail égal** | Le même écart global, chaque montant ramené au temps plein. C'est la base de la comparaison qui suit. |
 
 Un écart global faible peut cacher un écart à poste comparable élevé : il
 suffit que les femmes soient plus nombreuses sur les postes les mieux
 rémunérés. Les deux appellent des réponses opposées — une revalorisation
 individuelle dans un cas, une politique de mobilité dans l'autre.
-
-L'écart à poste comparable n'est calculé que sur les postes où **les deux
-sexes** atteignent le seuil de publication ; le pourcentage d'effectif
-couvert est indiqué.
-
-### La page : une liste, une fiche
-
-À gauche, **les postes**, classés par ce qui est en jeu. À droite, **la fiche
-du poste retenu** : les deux sexes comparés variable par variable.
-
-| | Femmes | Hommes | Écart |
-|---|---|---|---|
-| Salaire de base | 64 985 EUR | 80 898 EUR | +19,7 % |
-| Part variable | 11 137 EUR | 15 188 EUR | +26,7 % |
-| Rémunération totale | 76 122 EUR | 96 086 EUR | +20,8 % |
-| Ancienneté | 7 ans | 9 ans | −1,8 an |
-| Âge | 40 ans | 43 ans | −2,8 ans |
-| Temps de travail | 0,93 | 0,99 | −0,06 |
-
-Un écart de rémunération ne se lit pas seul : +19,7 % sur un poste où les
-hommes comptent deux ans d'ancienneté de plus n'appelle pas la même réponse
-que le même écart à ancienneté égale. Le premier interroge la grille
-d'ancienneté, le second la rémunération elle-même.
-
-**Sur les montants**, l'écart suit la formule de la directive. **Sur les
-autres variables**, c'est une différence dans l'unité de la variable — un
-pourcentage s'y lirait comme un écart de rémunération.
-
-Les variables comparées sont **déclarées** dans
-`config/pay_equity_parameters.json` (`profile_fields`) : une prime propre à
-votre entreprise s'ajoute à la liste sans toucher au logiciel.
-
-Rien n'est affiché si l'un des deux sexes est sous le seuil de publication :
-une médiane calculée sur trois personnes les désigne.
-
-### Le rattrapage
-
-Ce que coûterait l'alignement du sexe le moins rémunéré sur l'autre, poste
-par poste. C'est la question qui suit l'écart : un écart de 20 % sur quatre
-personnes ne pèse pas ce que pèse 6 % sur cent vingt. Le tableau est trié
-par cet enjeu par défaut — **Trier par** permet de passer à l'écart, à
-l'effectif ou au nom.
 
 ### Changer d'axe, ou en croiser deux
 
@@ -261,7 +298,15 @@ la note dit sur quelle part de l'effectif l'écart à catégorie comparable est
 encore calculable. Un salarié dont l'un des deux axes n'est pas renseigné
 n'entre dans aucune catégorie croisée.
 
-Tout le bloc — les trois chiffres compris — se recalcule sur l'axe choisi.
+Tout le bloc — les chiffres du haut compris — se recalcule sur l'axe choisi.
+
+### Tout se refait
+
+Le classeur exporté porte, poste par poste, les formules qui refont l'écart à
+temps plein : chaque montant divisé par son temps de travail, la moyenne et
+la médiane des deux sexes, les effectifs qui les portent et la couverture.
+Onglet **Contrôle Pay Transparency**, colonne **Écart** : elle doit valoir
+zéro partout.
 
 ## 5 quater. Dispersion : distinguer femmes et hommes
 

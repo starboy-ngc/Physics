@@ -35,9 +35,7 @@ from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
-from ..core.pay_equity import (calculate_category_gaps,
-                               category_breakdown,
-                               calculate_category_profile)
+from ..core.pay_equity import calculate_category_gaps, category_breakdown
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
@@ -84,7 +82,12 @@ NO_CROSS = "(aucun)"
 #: « ou faut-il regarder ? » une fois un poste ouvert.
 ALL_CATEGORIES = "(vue d'ensemble)"
 
-CATEGORY_ORDERS = (("stake", "Enjeu"), ("gap", "Écart"),
+#: Les ordres de lecture de la vue d'ensemble. « Significativite » vient en
+#: premier parce que c'est la question posee : quels postes s'ecartent
+#: au-dela de ce que le hasard explique. Classer par ampleur seule met en
+#: tete les postes les moins peuples, ou un grand ecart est le plus facile.
+CATEGORY_ORDERS = (("significance", "Significativité"),
+                   ("stake", "Enjeu"), ("gap", "Écart"),
                    ("headcount", "Effectif"), ("name", "Nom"))
 
 CHARTS = (("nuage", "Rémunération/Ancienneté"),
@@ -986,7 +989,8 @@ class Application(tk.Tk):
         self.profile_subtitle = tk.Label(self.equity_page, text="",
                                          background=theme.CANVAS,
                                          foreground=theme.MUTED,
-                                         font=self.fonts.body, anchor="w")
+                                         font=self.fonts.body, anchor="w",
+                                         justify="left", wraplength=1000)
         self.profile_subtitle.pack(anchor="w", padx=24, pady=(0, 10))
 
         # Sans poste choisi : les postes classes par ampleur d'ecart.
@@ -2148,10 +2152,15 @@ class Application(tk.Tk):
         label = (block.get("category_label") or "poste").lower()
         devise = (self.result.payload["salary"].get("currency", "EUR")
                   if self.result else "EUR")
-        montant = block.get("at_stake_total")
+        # Le rattrapage cite ici est celui de la comparaison : l'ecart se
+        # mesure a temps plein, il se paie au prorata du temps travaille.
+        # Aligner les montants verses reviendrait a payer un mi-temps comme
+        # un temps plein — un chiffre sans rapport avec la decision.
+        montant = block.get("comparable_at_stake_total")
         phrases = []
         if montant:
-            phrase = (f"Aligner coûterait {format_money(montant, devise)}")
+            phrase = ("Fermer l'écart à temps de travail égal coûterait "
+                      f"{format_money(montant, devise)}")
             concentration = self._concentration_note(block)
             phrases.append(phrase + (f", {concentration}" if concentration
                                      else "."))
@@ -2172,6 +2181,13 @@ class Application(tk.Tk):
         inconnu = equity.get("unknown_count", 0)
         if inconnu:
             morceaux.append(f"{inconnu} au sexe non renseigné, exclus")
+        # Ces chiffres sont ceux de la directive : ils portent sur les
+        # montants verses. La comparaison poste par poste, en dessous, est a
+        # temps plein. Deux bases sur une meme page se disent, sans quoi on
+        # compare « +11,7 % à poste comparable » a un graphique qui ne parle
+        # pas de la meme chose.
+        morceaux.append("indicateurs de la directive, sur les montants "
+                        "versés")
         return "  ·  ".join(morceaux)
 
     @staticmethod
@@ -2182,7 +2198,9 @@ class Application(tk.Tk):
         trente. C'est pourtant la premiere question qu'on se pose en
         sortant de cette page, et elle se lit dans les memes donnees.
         """
-        categories = [item for item in (block or {}).get("categories", [])
+        categories = [(item.get("comparison") or {})
+                      for item in (block or {}).get("categories", [])]
+        categories = [item for item in categories
                       if item.get("published") and item.get("at_stake")]
         total = sum(item["at_stake"] for item in categories)
         if len(categories) < 4 or total <= 0:
@@ -2238,7 +2256,7 @@ class Application(tk.Tk):
         self._decomposed = block
         label = block.get("category_label") or "Poste"
         self.category_heading.configure(
-            text=f"Les {label.lower()}s aux plus grands écarts")
+            text=f"Les {label.lower()}s où l'écart est le plus significatif")
         currency = self.result.payload["salary"].get("currency", "EUR")
 
         warning = block.get("category_warning")
@@ -2251,18 +2269,27 @@ class Application(tk.Tk):
 
         categories = self._ordered_categories(block["categories"])
         self._categories = categories
-        above = block.get("categories_above_threshold", 0)
+        # Le compte porte sur ce que la page montre : les ecarts a temps de
+        # travail egal dont le hasard ne rend pas compte. Compter les ecarts
+        # au-dela du seuil sans cette condition annoncait « 14 postes » la ou
+        # trois seulement appelaient un examen.
+        marques = sum(1 for item in categories
+                      if self._is_significant(item)
+                      and self._full_time_block(item).get("above_threshold"))
         self.category_title.configure(
-            text=f"{above} SUR {len(categories)} AU-DELÀ DU SEUIL DE "
-                 "PUBLICATION · À DROITE, LES FEMMES SONT MOINS RÉMUNÉRÉES "
-                 "· ENJEU EN MILLIERS")
+            text=f"{marques} SUR {len(categories)} AU-DELÀ DU SEUIL, ÉCART "
+                 "SIGNIFICATIF · À DROITE, LES FEMMES SONT MOINS RÉMUNÉRÉES "
+                 "· EN PÂLE, CE QUE LE HASARD EXPLIQUE · ENJEU EN MILLIERS")
         self.gap_chart.set_rows(
             [{"category": item["category"],
-              "female_count": item["female_count"],
-              "male_count": item["male_count"],
-              "gap": item.get("mean_gap"),
-              "at_stake": item.get("at_stake"),
-              "published": bool(item.get("published"))}
+              "female_count": self._full_time_block(item).get(
+                  "female_count", 0),
+              "male_count": self._full_time_block(item).get("male_count", 0),
+              "gap": self._full_time_block(item).get("mean_gap"),
+              "at_stake": self._full_time_block(item).get("at_stake"),
+              "significant": self._is_significant(item),
+              "published": bool(
+                  self._full_time_block(item).get("published"))}
              for item in categories], currency)
         # Le menu suit l'axe : changer d'axe sans le refaire laisserait
         # proposer des postes sur une page qui parle de grades.
@@ -2279,23 +2306,56 @@ class Application(tk.Tk):
         # une fiche vide demande un clic pour ne rien apprendre.
         self._show_profile()
 
+    @classmethod
+    def _is_significant(cls, item: Dict[str, Any]) -> bool:
+        """Vrai si le hasard seul n'expliquerait pas cet ecart.
+
+        Un test impossible — moins de deux montants d'un cote, ou aucune
+        dispersion — ne vaut pas « significatif » : la prudence consiste
+        alors a ne pas mettre ce poste en tete.
+        """
+        signe = cls._full_time_block(item).get("significance") or {}
+        return bool(signe.get("significant"))
+
+    @staticmethod
+    def _full_time_block(item: Dict[str, Any]) -> Dict[str, Any]:
+        """Le couple femmes / hommes d'un poste, sur la base de la page.
+
+        A temps de travail egal des que le temps de travail est connu :
+        deux personnes au meme poste dont l'une travaille a 80 % ne touchent
+        pas la meme somme sans qu'aucune inegalite ne soit en cause.
+        """
+        return item.get("comparison") or {}
+
     def _ordered_categories(self, categories):
         """Classe les postes selon le tri demande.
 
         Les postes masques restent en fin de liste quel que soit le tri :
         leur place dans un classement par ecart serait arbitraire, puisque
         l'ecart n'est precisement pas connu.
+
+        Tous les classements portent sur l'ecart a temps de travail egal —
+        celui qu'affiche la page. Un classement etabli sur une autre base
+        que celle qu'on lit serait une trahison silencieuse.
         """
         key = CATEGORY_ORDERS[max(self.category_order.current(), 0)][0]
+        plein = self._full_time_block
+
+        def probabilite(item):
+            """Du plus sûr au moins sûr ; sans test possible, en fin."""
+            valeur = (plein(item).get("significance") or {}).get("p_value")
+            return (valeur is None, valeur if valeur is not None else 1.0)
+
         rangs = {
+            "significance": probabilite,
             "stake": lambda item: -(item.get("at_stake") or 0.0),
-            "gap": lambda item: -abs(item.get("mean_gap") or 0.0),
-            "headcount": lambda item: -(item["female_count"]
-                                        + item["male_count"]),
+            "gap": lambda item: -abs(plein(item).get("mean_gap") or 0.0),
+            "headcount": lambda item: -(plein(item).get("female_count", 0)
+                                        + plein(item).get("male_count", 0)),
             "name": lambda item: str(item["category"]).lower(),
         }
         return sorted(categories,
-                      key=lambda item: (not item.get("published"),
+                      key=lambda item: (not plein(item).get("published"),
                                         rangs[key](item)))
 
     # ------------------------------------------------ fiche d'un poste
@@ -2344,6 +2404,9 @@ class Application(tk.Tk):
         if breakdown.get("unknown_count"):
             effectifs += (f'  ·  {breakdown["unknown_count"]} au sexe non '
                           "renseigné")
+        base = (breakdown.get("basis") or {}).get("label") or ""
+        if base:
+            effectifs += f"  ·  {base}"
         self.profile_subtitle.configure(text=effectifs)
 
         for child in self.profile_kpis.winfo_children():
@@ -2354,19 +2417,55 @@ class Application(tk.Tk):
                  "mean_gap"),
                 ("Écart médian",
                  _signed_percent(breakdown.get("median_gap")), "median_gap"),
+                # Un ecart sans sa fiabilite se lit comme un fait alors
+                # qu'il peut n'etre qu'un hasard de recrutement : sur ce
+                # poste-la, c'est la difference entre agir et attendre.
+                ("Le hasard l'expliquerait",
+                 self._significance_value(breakdown.get("significance")),
+                 "significance"),
                 ("Effectif", str(breakdown.get("headcount", 0))),
-            ], per_row=3)
+            ], per_row=4)
             self.profile_kpis.pack_configure(padx=24)
 
         self._fill(self.profile_tree,
                    self._breakdown_rows(breakdown, currency))
         seuil = breakdown.get("threshold", 5)
-        note = [f"Une colonne comptant moins de {seuil} salariés n'est pas "
-                "calculée : elle désignerait quelqu'un. Le seuil se règle "
-                "dans Paramètres → Confidentialité."]
+        note = [f"Une colonne comptant moins de {seuil} salariés dont le "
+                "temps de travail est connu n'est pas calculée : elle "
+                "désignerait quelqu'un. Le seuil se règle dans "
+                "Paramètres → Confidentialité."]
+        couverture = breakdown.get("coverage")
+        if couverture is not None and couverture < 99.5:
+            # La reserve ne se dit que lorsqu'elle est une reserve : a
+            # couverture quasi totale, elle occupe une ligne pour rien.
+            note.insert(0, "Comparaison établie sur "
+                           f"{format_percent(couverture)} des salariés dont "
+                           "la rémunération est renseignée : les autres ont "
+                           "un temps de travail inconnu, qui interdit de "
+                           "ramener leur salaire au temps plein.")
+        signe = breakdown.get("significance") or {}
+        if signe.get("p_value") is not None:
+            niveau = format_percent((signe.get("level") or 0.0) * 100.0)
+            note.append(f"Un écart est dit significatif en dessous de "
+                        f"{niveau} (test de Welch, seuil paramétrable).")
         if breakdown.get("warning"):
             note.insert(0, breakdown["warning"])
         self.profile_note.configure(text=" ".join(note))
+
+    @staticmethod
+    def _significance_value(significance: Optional[Dict[str, Any]]) -> str:
+        """La probabilite que le hasard suffise, dite en clair.
+
+        « p = 0,03 » ne se lit pas dans une reunion RH. « 3 % » se lit, et
+        c'est la meme chose : la chance qu'un ecart de cette ampleur
+        apparaisse alors que les deux sexes sont payes pareil.
+        """
+        if not significance or significance.get("p_value") is None:
+            return "—"
+        valeur = float(significance["p_value"]) * 100.0
+        if valeur < 0.1:
+            return "< 0,1 %"
+        return format_percent(valeur)
 
     def _show_category_overview(self) -> None:
         """Sans poste choisi : ou faut-il regarder.
@@ -2378,11 +2477,12 @@ class Application(tk.Tk):
         self._pack_overview()
         block = self._decomposed or {}
         label = (block.get("category_label") or "poste").lower()
+        base = (block.get("basis") or {}).get("label") or ""
         self.profile_title.configure(text="Vue d'ensemble")
         self.profile_subtitle.configure(
-            text=f"Les {label}s classés par ampleur d'écart. Choisissez-en "
-                 "un ci-dessus, ou cliquez une barre, pour en déplier le "
-                 "détail.")
+            text=f"Comparaison sur le {base}. Les {label}s sont classés par "
+                 "significativité de l'écart. Choisissez-en un ci-dessus, ou "
+                 "cliquez une barre, pour en déplier le détail.")
 
     def _pack_detail(self) -> None:
         if self.overview_block.winfo_manager():
@@ -2427,6 +2527,18 @@ class Application(tk.Tk):
         masquages.
         """
         colonnes = breakdown["columns"]
+        plein = (breakdown.get("basis") or {}).get("full_time")
+
+        def intitulé(label: str) -> str:
+            """La masse salariale a temps plein n'est pas de l'argent versé.
+
+            C'est la somme de ce que coûteraient ces salariés à temps
+            complet. L'appeler « masse salariale » sans reserve la ferait
+            rapprocher d'une ligne de compte de resultat.
+            """
+            if label == "Masse salariale" and plein:
+                return "Masse salariale reconstituée"
+            return label
 
         def cellule(colonne, key, kind, spread=False):
             if colonne.get("masked"):
@@ -2444,7 +2556,8 @@ class Application(tk.Tk):
                 return format_percent(valeur * 100.0)
             return format_number(valeur, 2)
 
-        lignes = [(label,) + tuple(cellule(c, key, kind) for c in colonnes)
+        lignes = [(intitulé(label),)
+                  + tuple(cellule(c, key, kind) for c in colonnes)
                   for label, key, kind in self.BREAKDOWN_ROWS]
         lignes.append(("DISPERSION", "", "", ""))
         lignes.extend(
