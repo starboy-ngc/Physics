@@ -249,6 +249,12 @@ médiane établie sur trois personnes désignerait ces trois-là, et situer
 quelqu'un par rapport à elle n'apprendrait rien. Les groupes sans repère sont
 comptés et annoncés, jamais tus.
 
+**Un seul sens pour tous les écarts.** Positif veut dire que les femmes sont
+en dessous — sur un pourcentage comme sur une différence d'années. La page
+pose côte à côte des écarts de nature différente ; deux conventions de signe
+y auraient fait lire « +8,6 % » et « −0,4 an » pour dire deux fois la même
+chose.
+
 **Tout se refait.** Le classeur porte, poste par poste, le bloc à temps
 plein : moyennes, médianes, écarts, effectifs portant l'écart et couverture,
 chacun en formule sur les données individuelles. Vérifié en exécutant ces

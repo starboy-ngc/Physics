@@ -460,7 +460,14 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
     def test_a_gap_in_years_is_a_difference_not_a_percentage(self):
         """Un pourcentage sur une anciennete se lirait comme un ecart de
         remuneration : sur ce qui n'est pas un montant, l'ecart est une
-        difference, dans l'unite de la variable."""
+        difference, dans l'unite de la variable.
+
+        Et son signe est celui de toute la page : positif veut dire que les
+        femmes sont en dessous. Ici les hommes comptent cinq ans de plus,
+        donc « +5 » — comme l'ecart de salaire, positif lui aussi, dit que
+        les femmes gagnent moins. Deux signes opposes pour dire deux fois
+        la meme chose se lisaient comme une contradiction.
+        """
         lignes = ([("G5", "F", 90000, 4)] * 10
                   + [("G5", "H", 100000, 9)] * 10)
         population, config = self._population(lignes)
@@ -469,7 +476,11 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
                           if row["field"] == "tenure_years")
         self.assertEqual(anciennete["kind"], "years")
         self.assertIsNone(anciennete["gap"])
-        self.assertAlmostEqual(anciennete["difference"], -5.0, places=1)
+        self.assertAlmostEqual(anciennete["difference"], 5.0, places=1)
+        # Le salaire penche du meme cote, et porte le meme signe.
+        salaire = next(row for row in fiche["rows"]
+                       if row["field"] == "base_salary")
+        self.assertGreater(salaire["gap"], 0)
 
     def test_a_category_below_the_threshold_shows_nothing(self):
         """Une mediane calculee sur trois personnes les designe."""

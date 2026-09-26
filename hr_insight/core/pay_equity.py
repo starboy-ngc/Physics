@@ -584,6 +584,64 @@ def sexes_of(members: Sequence[Any],
     return table
 
 
+def _positions_of(membres: Sequence[Any], nom: str, config: Configuration,
+                  base: Dict[str, Any], rules: PrivacyRules,
+                  explain_field: Optional[str]) -> Dict[str, Any]:
+    """Situe un groupe deja constitue par rapport a sa mediane.
+
+    Separee de `group_positions` pour que le parcours de tous les groupes
+    n'ait pas a redecouper la population une fois par groupe : sur cinquante
+    mille salaries et trois dimensions de regroupement, le redecoupage
+    coutait plus d'une seconde a chaque clic, pour un resultat identique.
+    """
+    champ = base["field"]
+    montants = comparison_amounts(membres, champ, base["full_time"])
+    bloc: Dict[str, Any] = {
+        "group": str(nom), "basis": base, "rows": [],
+        "reference": None, "threshold": rules.min_publish,
+        "comparable": len(montants), "warning": None,
+    }
+    if not rules.may_publish(len(montants)):
+        bloc["warning"] = (
+            f"Ce groupe réunit moins de {rules.min_publish} salariés "
+            "comparables : il ne fournit pas de repère, et personne ne peut "
+            "y être situé.")
+        return bloc
+    repère = stats.median(montants)
+    if not repère:
+        return bloc
+    bloc["reference"] = float(repère)
+    appartenance = sexes_of(membres, config)
+    plein = base["full_time"]
+    for salarié in membres:
+        montant = (full_time_amount(salarié, champ) if plein
+                   else salarié.value(champ))
+        if not isinstance(montant, (int, float)) or isinstance(montant, bool):
+            continue
+        écart = (repère - float(montant)) / repère * 100.0
+        bloc["rows"].append({
+            # Cle de jointure technique — un numero de ligne, jamais un nom.
+            # La fenetre retrouve le salarie dans la population qu'elle
+            # detient deja.
+            "row": salarié.row_number,
+            "reference": salarié.anonymous_id or str(salarié.row_number),
+            "group": str(nom),
+            "sex": appartenance.get(id(salarié), ""),
+            "amount": float(montant),
+            "group_reference": float(repère),
+            # « Decrochage » n'est pas « ecart » : seul compte ce qui manque
+            # pour rejoindre le repere. Au-dessus, l'ecart est nul.
+            "gap": écart if écart > 0 else 0.0,
+            "shortfall": (repère - float(montant)) if écart > 0 else 0.0,
+            "lagging": écart > 0,
+            "fte": salarié.value(FTE_FIELD),
+            "explain": (str(salarié.value(explain_field) or "")
+                        if explain_field else ""),
+        })
+    bloc["rows"].sort(key=lambda ligne: ligne["amount"])
+    return bloc
+
+
 def group_positions(population: Population, config: Configuration,
                     field_name, value: str,
                     explain_field: Optional[str] = None) -> Dict[str, Any]:
@@ -601,54 +659,10 @@ def group_positions(population: Population, config: Configuration,
     parametrage l'y autorise, et seulement a l'ecran. Le paragraphe 6 le
     demande : l'identite ne transite pas par le resultat d'analyse.
     """
-    rules = PrivacyRules.from_config(config)
-    base = basis_description(population, config)
-    champ = base["field"]
-    membres = category_members(population, field_name, value)
-    montants = comparison_amounts(membres, champ, base["full_time"])
-    bloc: Dict[str, Any] = {
-        "group": str(value), "basis": base, "rows": [],
-        "reference": None, "threshold": rules.min_publish,
-        "comparable": len(montants), "warning": None,
-    }
-    if not rules.may_publish(len(montants)):
-        bloc["warning"] = (
-            f"Ce groupe réunit moins de {rules.min_publish} salariés "
-            "comparables : il ne fournit pas de repère, et personne ne peut "
-            "y être situé.")
-        return bloc
-    repère = stats.median(montants)
-    if not repère:
-        return bloc
-    bloc["reference"] = float(repère)
-    appartenance = sexes_of(membres, config)
-    for salarié in membres:
-        montant = (full_time_amount(salarié, champ) if base["full_time"]
-                   else salarié.value(champ))
-        if not isinstance(montant, (int, float)) or isinstance(montant, bool):
-            continue
-        écart = (repère - float(montant)) / repère * 100.0
-        bloc["rows"].append({
-            # Cle de jointure technique — un numero de ligne, jamais un nom.
-            # La fenetre retrouve le salarie dans la population qu'elle
-            # detient deja.
-            "row": salarié.row_number,
-            "reference": salarié.anonymous_id or str(salarié.row_number),
-            "group": str(value),
-            "sex": appartenance.get(id(salarié), ""),
-            "amount": float(montant),
-            "group_reference": float(repère),
-            # « Decrochage » n'est pas « ecart » : seul compte ce qui manque
-            # pour rejoindre le repere. Au-dessus, l'ecart est nul.
-            "gap": écart if écart > 0 else 0.0,
-            "shortfall": (repère - float(montant)) if écart > 0 else 0.0,
-            "lagging": écart > 0,
-            "fte": salarié.value(FTE_FIELD),
-            "explain": (str(salarié.value(explain_field) or "")
-                        if explain_field else ""),
-        })
-    bloc["rows"].sort(key=lambda ligne: ligne["amount"])
-    return bloc
+    return _positions_of(
+        category_members(population, field_name, value), value, config,
+        basis_description(population, config),
+        PrivacyRules.from_config(config), explain_field)
 
 
 def lagging_members(population: Population, config: Configuration,
@@ -667,15 +681,20 @@ def lagging_members(population: Population, config: Configuration,
     """
     rules = PrivacyRules.from_config(config)
     base = basis_description(population, config)
-    noms = [str(nom) for nom in split_by(population, field_name)]
+    # Un seul decoupage pour tous les groupes. Le faire une fois par groupe
+    # — ce que revenait a appeler `group_positions` en boucle — relisait la
+    # population entiere autant de fois qu'il y a de groupes : plus d'une
+    # seconde par clic sur cinquante mille salaries et trois dimensions.
+    groupes = split_by(population, field_name)
     if value is not None:
-        noms = [nom for nom in noms if nom == str(value)]
+        groupes = {nom: gens for nom, gens in groupes.items()
+                   if str(nom) == str(value)}
 
     lignes: List[Dict[str, Any]] = []
     retenus = 0
-    for nom in noms:
-        bloc = group_positions(population, config, field_name, nom,
-                               explain_field)
+    for nom, gens in groupes.items():
+        bloc = _positions_of(list(gens), str(nom), config, base, rules,
+                             explain_field)
         if bloc["reference"] is None:
             # Le groupe existe, mais il ne peut pas fournir de repere : le
             # dire, plutot que de laisser croire que personne n'y decroche.
@@ -686,7 +705,7 @@ def lagging_members(population: Population, config: Configuration,
     return {
         "basis": base,
         "rows": lignes,
-        "groups": len(noms),
+        "groups": len(groupes),
         "withheld_groups": retenus,
         "explain_field": explain_field,
         "threshold": rules.min_publish,
@@ -781,6 +800,14 @@ def _profile_row(entry: Dict[str, Any], name: str, female: Sequence[float],
     Un pourcentage sur une anciennete se lirait comme un ecart de
     remuneration : sur les variables qui ne sont pas des montants, l'ecart
     est une difference, dans l'unite de la variable.
+
+    Le signe est celui de toute la page, et c'est ce qui permet de lire
+    une colonne d'ecarts sans se demander a chaque ligne dans quel sens
+    elle penche : **positif veut dire que les femmes sont en dessous**.
+    La difference se compte donc des hommes vers les femmes, comme l'ecart
+    de remuneration de la directive. Ecrite dans l'autre sens, elle donnait
+    « +8,6 % » sur le salaire et « -0,4 an » sur l'anciennete pour dire deux
+    fois la meme chose.
     """
     kind = str(entry.get("kind", "money"))
     female_mean, male_mean = stats.mean(female), stats.mean(male)
@@ -798,7 +825,7 @@ def _profile_row(entry: Dict[str, Any], name: str, female: Sequence[float],
         "difference": None,
     }
     if female_mean is not None and male_mean is not None:
-        row["difference"] = female_mean - male_mean
+        row["difference"] = male_mean - female_mean
         if kind == "money":
             row["gap"] = _gap(male_mean, female_mean)
     return row

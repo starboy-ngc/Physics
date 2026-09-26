@@ -707,3 +707,223 @@ class TestThePeopleWhoLagBehind(PayTransparencyCase):
                     for ligne in self.app.lagging_tree.get_children()]
         self.assertTrue(premiers)
         self.assertFalse(any("NOM" in str(nom) for nom in premiers), premiers)
+
+
+@needs_display
+class TestNothingRaisesOnAnyCombination(PayTransparencyCase):
+    """Tout le clavier de la page, combinaison par combinaison.
+
+    Trois listes de regroupement, une de lecture, une de tri, un groupe
+    retenu ou non : quelques centaines d'etats possibles, dont aucun ne doit
+    lever ni laisser un bloc dans un etat impossible.
+
+    Tk attrape l'exception d'un rappel et l'imprime : la fenetre continue de
+    repondre, et rien n'echoue. C'est ce qui rend cette famille de defauts
+    invisible — un parcours automatise annonce « zero exception » pendant
+    que la console de l'utilisateur se remplit de traces. Ce test ecoute
+    donc le canal ou ces traces partent.
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.traces = []
+        self.app.report_callback_exception = (
+            lambda *infos: self.traces.append(infos))
+
+    def _sans_trace(self, état):
+        self.assertEqual(
+            [f"{t[0].__name__}: {t[1]}" for t in self.traces], [], état)
+
+    def test_every_combination_of_the_five_lists_holds(self):
+        from hr_insight.ui.app import ALL_CATEGORIES, CATEGORY_ORDERS
+
+        dimensions = [""] + list(self.app.category_choice.cget("values"))
+        for premier in self.app.category_choice.cget("values")[:3]:
+            self.app.category_choice.set(premier)
+            for second in dimensions[:4]:
+                self.app.category_cross.set(second or "(aucun)")
+                for troisième in dimensions[:3]:
+                    self.app.category_cross2.set(troisième or "(aucun)")
+                    for lecture in dimensions[:3]:
+                        self.app.explain_choice.set(lecture or "(aucun)")
+                        self.app._show_categories()
+                        self.app.update()
+                        état = (f"{premier} / {second} / {troisième} / "
+                                f"{lecture}")
+                        self._sans_trace(état)
+                        # Et le choix d'un groupe, puis le retour.
+                        noms = [nom for nom
+                                in self.app.category_value.cget("values")
+                                if nom != ALL_CATEGORIES]
+                        for nom in (noms[:1] + noms[-1:]):
+                            self.app.category_value.set(nom)
+                            self.app._show_profile()
+                            self.app.update()
+                            self._sans_trace(f"{état} → {nom}")
+                        self.app.category_value.set(ALL_CATEGORIES)
+                        self.app._show_profile()
+                        self.app.update()
+                        self._sans_trace(f"{état} → vue d'ensemble")
+        for rang in range(len(CATEGORY_ORDERS)):
+            self.app.category_order.current(rang)
+            self.app._show_categories()
+            self.app.update()
+            self._sans_trace(f"tri {CATEGORY_ORDERS[rang][1]}")
+
+    def test_a_group_that_vanishes_leaves_no_stale_detail(self):
+        """Le defaut classique : filtrer apres avoir choisi un groupe.
+
+        Le groupe retenu peut disparaitre de la population filtree. La page
+        ne doit alors montrer ni son detail, ni ses personnes — un tableau
+        qui survit a son sujet ferait lire les chiffres d'hier.
+        """
+        self.select()
+        poste = self.app.category_value.get()
+        self.assertEqual(self.app.detail_title.cget("text"), poste)
+        # On restreint a un autre poste : celui qui etait retenu n'existe
+        # plus dans la population analysee.
+        autre = [nom for nom in POSTES if nom != poste][0]
+        self.app.filter_vars["job_title"].set(autre)
+        self.app.run_analysis()
+        limite = time.time() + 60
+        while self.app.result is None and time.time() < limite:
+            self.app.update()
+            time.sleep(0.02)
+        for _ in range(10):
+            self.app.update()
+            time.sleep(0.01)
+        self._sans_trace("après un filtre qui retire le groupe retenu")
+        self.assertNotEqual(self.app.detail_title.cget("text"), poste)
+        groupes = {str(ligne[2]) for ligne
+                   in (self.app.lagging_tree.item(ligne)["values"]
+                       for ligne in self.app.lagging_tree.get_children())}
+        self.assertNotIn(poste, groupes)
+
+
+@needs_display
+class TestWhatSurroundsTheGap(PayTransparencyCase):
+    """Un ecart ne se lit pas seul.
+
+    Vingt pour cent sur un groupe ou les hommes comptent neuf ans
+    d'anciennete et les femmes quatre ne dit pas la meme chose que le meme
+    ecart a anciennete egale : le premier appelle une revue de la grille, le
+    second une revalorisation. Le tableau ne tranche pas ; il pose ce qu'il
+    faut pour trancher.
+    """
+
+    def _lignes(self):
+        return [self.app.surroundings_tree.item(ligne)["values"]
+                for ligne in self.app.surroundings_tree.get_children()]
+
+    def test_it_compares_the_declared_variables(self):
+        self.select()
+        intitulés = [str(ligne[0]) for ligne in self._lignes()]
+        self.assertTrue(intitulés)
+        déclarées = [entrée["label"] for entrée in
+                     self.app.configuration.section("pay_equity_parameters")
+                     ["profile_fields"]]
+        # Une variable absente du fichier n'occupe pas de ligne ; celles qui
+        # sont la viennent toutes du parametrage.
+        for intitulé in intitulés:
+            with self.subTest(intitulé=intitulé):
+                self.assertIn(intitulé, déclarées + [
+                    "Part percevant une rémunération variable"])
+
+    def test_a_variable_added_to_the_settings_appears(self):
+        """Le paragraphe 7 : la liste est declarative, pas codee."""
+        from hr_insight.core.config import Configuration
+
+        données = self.app.result.config.as_dict()
+        données["pay_equity_parameters"]["profile_fields"] = [
+            {"field": "age_years", "label": "Âge", "kind": "years"}]
+        self.app.result.config = Configuration(données)
+        self.select()
+        self.assertEqual([str(ligne[0]) for ligne in self._lignes()][:1],
+                         ["Âge"])
+
+    def test_the_gap_keeps_the_unit_of_its_variable(self):
+        """Un pourcentage sur une anciennete se lirait comme un ecart de
+        remuneration."""
+        self.select()
+        for ligne in self._lignes():
+            with self.subTest(ligne=ligne[0]):
+                if str(ligne[0]) == "Ancienneté":
+                    self.assertIn("an", str(ligne[3]))
+                if str(ligne[0]) == "Salaire de base":
+                    self.assertIn("%", str(ligne[3]))
+
+    def test_every_gap_leans_the_same_way(self):
+        """Un signe qui change de sens d'une ligne a l'autre se lit comme
+        une contradiction.
+
+        Sur ce fichier, les femmes sont sous les hommes partout : toutes
+        les lignes doivent donc porter un ecart positif ou nul, quelle que
+        soit l'unite.
+        """
+        self.select()
+        for ligne in self._lignes():
+            écart = str(ligne[3])
+            if écart in ("—", "") or "0,0" in écart or "+0,00" in écart:
+                continue
+            with self.subTest(ligne=ligne[0]):
+                self.assertTrue(écart.startswith("+"), f"{ligne[0]} : {écart}")
+
+    def test_it_empties_with_the_rest_when_no_group_is_chosen(self):
+        from hr_insight.ui.app import ALL_CATEGORIES
+
+        self.select()
+        self.assertTrue(self._lignes())
+        self.app.category_value.set(ALL_CATEGORIES)
+        self.app._show_profile()
+        self.app.update()
+        self.assertFalse(self._lignes())
+        self.assertEqual(self.app.surroundings_title.cget("text"), "")
+
+    def test_it_carries_no_name(self):
+        self.select()
+        texte = " ".join(str(valeur) for ligne in self._lignes()
+                         for valeur in ligne)
+        self.assertNotIn("NOM", texte)
+
+
+@needs_display
+class TestTheDefaultGroupingIsNotComputedTwice(PayTransparencyCase):
+    """Le moteur a deja calcule le regroupement declare au parametrage.
+
+    L'ecran le refaisait a l'identique a chaque analyse : un quart de
+    seconde sur cinquante mille salaries, pour le meme resultat. Ce test
+    verifie que c'est bien le meme — sans quoi l'economie serait un
+    mensonge.
+    """
+
+    def test_the_reused_block_equals_the_recomputed_one(self):
+        from hr_insight.core.pay_equity import calculate_category_gaps
+
+        réutilisé = self.app._category_block()
+        refait = calculate_category_gaps(self.app.result.filtered,
+                                         self.app.result.config,
+                                         self.app._axis())
+        self.assertEqual(réutilisé["category_field"], refait["category_field"])
+        self.assertEqual(len(réutilisé["categories"]),
+                         len(refait["categories"]))
+        for gauche, droite in zip(
+                sorted(réutilisé["categories"], key=lambda i: i["category"]),
+                sorted(refait["categories"], key=lambda i: i["category"])):
+            with self.subTest(groupe=gauche["category"]):
+                self.assertEqual(gauche["comparison"]["mean_gap"],
+                                 droite["comparison"]["mean_gap"])
+                self.assertEqual(gauche.get("at_stake"),
+                                 droite.get("at_stake"))
+        self.assertEqual(réutilisé.get("comparable_at_stake_total"),
+                         refait.get("comparable_at_stake_total"))
+
+    def test_another_grouping_is_still_computed(self):
+        """Le moteur ne pouvait pas le prevoir : il doit se calculer."""
+        self.app.category_cross.set("BU")
+        self.app._show_categories()
+        self.app.update()
+        bloc = self.app._category_block()
+        self.assertEqual(bloc["category_field"], ["job_title", "business_unit"])
+        self.assertNotEqual(
+            bloc["category_field"],
+            self.app.result.payload["pay_equity"]["category_field"])

@@ -19,7 +19,7 @@ from __future__ import annotations
 import time
 import tkinter as tk
 import tkinter.font as tkfont
-from typing import Callable, List, Optional
+from typing import List, Optional
 
 from ..core import palette
 from ..version import ENGINE_NAME, PUBLISHER, __version__

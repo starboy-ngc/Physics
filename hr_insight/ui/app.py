@@ -35,9 +35,11 @@ from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
-from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
+from ..core.pay_equity import (calculate_category_gaps,
+                               calculate_category_profile, category_breakdown,
                                group_positions, lagging_members)
-from ..core.pipeline import AnalysisRequest, load_population, run_analysis
+from ..core.pipeline import (AnalysisRequest, load_population, run_analysis,
+                             stage_labels)
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
                               format_years,
@@ -52,6 +54,7 @@ from .charts import (BandChart, BoxPlotChart, GapChart,
                      HistogramChart, PeopleChart, PyramidChart, QuartileChart,
                      ScatterChart)
 from .progress import LoadingBar
+from .working import WorkPanel
 from . import splash as accueil_module
 from .theme import Card, CheckRow, Fonts, TabBar
 
@@ -259,6 +262,8 @@ class Application(tk.Tk):
         #: fenetre fermee pendant une analyse laissait Tk executer un
         #: rappel dont le widget n'existait plus.
         self._poll_job: Optional[str] = None
+        #: Apparition differee du panneau d'attente, annulable de meme.
+        self._work_job: Optional[str] = None
 
         self._build_layout()
         # La composition enregistree est relue avant le premier affichage :
@@ -369,6 +374,10 @@ class Application(tk.Tk):
                                wraplength=900)
         self.pages = tk.Frame(content.inner, background=theme.CANVAS)
         self.pages.pack(fill="both", expand=True)
+        # Le panneau d'attente prend la place des pages le temps du calcul.
+        # Les etapes qu'il annonce viennent du moteur : les recopier ici
+        # aurait garanti qu'un jour elles different de ce qui est calcule.
+        self.work_panel = WorkPanel(content.inner, self.fonts, stage_labels())
         self._startup("Pages et graphiques", 0.68)
         self._build_pages()
 
@@ -596,12 +605,17 @@ class Application(tk.Tk):
         qui n'existe plus. Le fil de calcul, lui, est demon : il s'arrete
         avec le programme."""
         self._cancel_fold()
-        if self._poll_job is not None:
-            try:
-                self.after_cancel(self._poll_job)
-            except tk.TclError:
-                pass
-            self._poll_job = None
+        # Deux rappels peuvent etre en attente : le releve de la file, et
+        # l'apparition differee du panneau d'attente. Tous deux
+        # s'executeraient apres la fenetre.
+        for nom in ("_poll_job", "_work_job"):
+            job = getattr(self, nom, None)
+            if job is not None:
+                try:
+                    self.after_cancel(job)
+                except tk.TclError:
+                    pass
+                setattr(self, nom, None)
         super().destroy()
 
     def _cancel_fold(self) -> None:
@@ -1052,6 +1066,26 @@ class Application(tk.Tk):
                                      anchor="w", wraplength=980)
         self.profile_note.pack(anchor="w", padx=24, pady=(2, 10))
 
+        # Ce qui entoure l'ecart. Vingt pour cent sur un groupe ou les
+        # hommes comptent neuf ans d'anciennete et les femmes quatre ne dit
+        # pas la meme chose que le meme ecart a anciennete egale : le
+        # premier appelle une revue de la grille, le second une
+        # revalorisation. Les variables comparees sont declarees au
+        # parametrage (« profile_fields ») : une prime propre a l'entreprise
+        # s'y ajoute sans toucher au moteur.
+        self.surroundings_title = tk.Label(
+            self.detail_block, text="", background=theme.CANVAS,
+            foreground=theme.INK, font=self.fonts.section, anchor="w")
+        self.surroundings_title.pack(anchor="w", padx=24, pady=(4, 6))
+        self.surroundings_tree = self._tree(
+            self.detail_block, ("Variable", "Femmes", "Hommes", "Écart"),
+            (320, 190, 190, 190), expand=False, height=7)
+        self.surroundings_note = tk.Label(
+            self.detail_block, text="", background=theme.CANVAS,
+            foreground=theme.MUTED, font=self.fonts.small, justify="left",
+            anchor="w", wraplength=980)
+        self.surroundings_note.pack(anchor="w", padx=24, pady=(2, 10))
+
         # --- 5. Les personnes qui decrochent -----------------------------
         #
         # C'est la que la page devient decidable : un ecart de groupe dit
@@ -1466,6 +1500,10 @@ class Application(tk.Tk):
     #: Tranche d'execution d'un fil, le temps de l'analyse. Voir la mesure
     #: citee dans « run_analysis ».
     SWITCH_INTERVAL = 0.001
+    #: Delai avant que le panneau d'attente ne prenne la place des pages.
+    #: Trois cents millisecondes : au-dela, l'attente se voit ; en deca,
+    #: c'est le panneau qui se verrait, et pour rien.
+    WORK_PANEL_DELAY_MS = 300
 
     def run_analysis(self) -> None:
         if not self.source_path:
@@ -1477,6 +1515,13 @@ class Application(tk.Tk):
         self.progress.pack(fill="x", pady=(10, 2), before=self.export_button)
         self.progress.start("Préparation")
         self._set_state("Analyse en cours…")
+        # Le panneau ne parait qu'apres un court delai : sur un petit
+        # fichier l'analyse dure moins qu'un clignement, et un panneau qui
+        # apparaitrait pour disparaitre aussitot serait un defaut
+        # d'affichage, pas une information.
+        self.work_panel.start()
+        self._work_job = self.after(self.WORK_PANEL_DELAY_MS,
+                                    self._show_work_panel)
         # Le fil de calcul garde le verrou global de Python par tranches de
         # cinq millisecondes : le fil qui dessine n'obtenait la main que
         # trente-sept fois par seconde, et une image sur dix arrivait avec
@@ -1527,6 +1572,27 @@ class Application(tk.Tk):
                            f"({type(error).__name__}). Le détail figure dans "
                            "le journal technique."))
 
+    def _show_work_panel(self) -> None:
+        """Le panneau prend la place des pages, et la barre des onglets se
+        tait : rien a cliquer tant qu'il n'y a rien a lire."""
+        self._work_job = None
+        if self.result is not None and not self.analyse_button.instate(
+                ["disabled"]):
+            return
+        if not self.work_panel.winfo_manager():
+            self.pages.pack_forget()
+            self.work_panel.pack(fill="both", expand=True)
+
+    def _hide_work_panel(self) -> None:
+        """Les pages reprennent leur place."""
+        if getattr(self, "_work_job", None) is not None:
+            self.after_cancel(self._work_job)
+            self._work_job = None
+        if self.work_panel.winfo_manager():
+            self.work_panel.pack_forget()
+        if not self.pages.winfo_manager():
+            self.pages.pack(fill="both", expand=True)
+
     def _poll(self) -> None:
         """Releve ce que le fil de calcul a depose, sans jamais l'attendre.
 
@@ -1543,15 +1609,22 @@ class Application(tk.Tk):
                 break
             if kind == "avancement":
                 self.progress.announce(*payload)
+                self.work_panel.announce(*payload)
                 continue
             resultat = (kind, payload)
         if resultat is None:
+            # Le battement du panneau vit sur ce meme releve : une image de
+            # plus, le chronometre, et rien de plus — le fil de calcul garde
+            # la main.
+            self.work_panel.tick()
             self._poll_job = self.after(self.POLL_MS, self._poll)
             return
         self._poll_job = None
         kind, payload = resultat
         sys.setswitchinterval(self._switch_interval)
         self.progress.stop()
+        self.work_panel.finish()
+        self._hide_work_panel()
         if kind == "ok":
             # Le trait se termine, puis reste le temps que les resultats
             # s'affichent : c'est la seule seconde ou il est plein.
@@ -2325,10 +2398,24 @@ class Application(tk.Tk):
         return None
 
     def _category_block(self) -> Optional[Dict[str, Any]]:
-        """Ecarts sur l'axe choisi, recalcules pour la population filtree."""
+        """Ecarts sur le regroupement choisi, pour la population filtree.
+
+        Le moteur a deja calcule ceux du regroupement declare au
+        parametrage : c'est ce que l'analyse publie, et c'est le
+        regroupement affiche a l'ouverture. Les refaire a l'identique
+        coutait un quart de seconde a chaque analyse sur cinquante mille
+        salaries — pour le meme resultat, au chiffre pres.
+
+        Tout autre regroupement, lui, se calcule : le moteur ne pouvait pas
+        le prevoir.
+        """
         axe = self._axis()
         if self.result is None or axe is None:
             return None
+        équité = self.result.payload.get("pay_equity") or {}
+        if équité.get("categories") is not None \
+                and axe == équité.get("category_field"):
+            return équité
         return calculate_category_gaps(self.result.filtered,
                                        self.result.config, axe)
 
@@ -2454,15 +2541,7 @@ class Application(tk.Tk):
                       key=lambda item: (not plein(item).get("published"),
                                         rangs[key](item)))
 
-    # ------------------------------------------------ fiche d'un poste
-
-    def _selected_category(self) -> Optional[str]:
-        """La categorie retenue sur le graphique.
-
-        `GapChart` retient la premiere de la liste quand rien n'est
-        choisi : la fiche a toujours un sujet.
-        """
-        return self.gap_chart.selected
+    # ------------------------------------------------ fiche d'un groupe
 
     def _clear_profile(self, message: str = "") -> None:
         """Vide le bloc du groupe retenu.
@@ -2476,6 +2555,9 @@ class Application(tk.Tk):
             child.destroy()
         self._fill(self.profile_tree, [])
         self.profile_note.configure(text=message)
+        self.surroundings_title.configure(text="")
+        self._fill(self.surroundings_tree, [])
+        self.surroundings_note.configure(text="")
 
     def _selected_group(self) -> Optional[str]:
         """Le groupe retenu, ou rien si la page parle de l'ensemble."""
@@ -2573,6 +2655,61 @@ class Application(tk.Tk):
         if breakdown.get("warning"):
             note.insert(0, breakdown["warning"])
         self.profile_note.configure(text=" ".join(note))
+        self._show_surroundings(choix)
+
+    def _show_surroundings(self, groupe: str) -> None:
+        """Ce qui entoure l'ecart : anciennete, age, temps de travail, primes.
+
+        Un ecart de remuneration ne se lit pas seul. Le meme ecart n'appelle
+        pas la meme reponse selon que les deux sexes ont la meme anciennete
+        ou non : une revue de la grille d'un cote, une revalorisation de
+        l'autre. Le tableau ne tranche pas — il pose ce qu'il faut savoir
+        pour trancher.
+
+        Les variables sont declarees au parametrage : elles ne sont pas
+        ecrites ici, et une prime propre a l'entreprise s'ajoute a la liste
+        sans toucher au code (paragraphe 7).
+        """
+        fiche = calculate_category_profile(self.result.filtered,
+                                           self.result.config,
+                                           self._axis(), groupe)
+        devise = self.result.payload["salary"].get("currency", "EUR")
+        self.surroundings_title.configure(text="Ce qui entoure l'écart")
+        if not fiche.get("published"):
+            self._fill(self.surroundings_tree, [])
+            self.surroundings_note.configure(
+                text=fiche.get("warning") or "")
+            return
+        lignes = [
+            (ligne["label"],
+             self._profile_value(ligne, ligne.get("female_mean"), devise),
+             self._profile_value(ligne, ligne.get("male_mean"), devise),
+             self._profile_gap(ligne))
+            for ligne in fiche.get("rows", [])]
+        part = fiche.get("variable_share") or {}
+        if part.get("female_share") is not None \
+                or part.get("male_share") is not None:
+            # Indicateur e) de la directive : la part de chaque sexe qui
+            # percoit une remuneration variable. Il dit si l'ecart vient du
+            # montant ou de l'acces, et ces deux-la n'appellent pas la meme
+            # reponse.
+            lignes.append((
+                "Part percevant une rémunération variable",
+                format_percent(part["female_share"])
+                if part.get("female_share") is not None else "—",
+                format_percent(part["male_share"])
+                if part.get("male_share") is not None else "—",
+                _signed_percent(
+                    (part["male_share"] - part["female_share"])
+                    if part.get("female_share") is not None
+                    and part.get("male_share") is not None else None)))
+        self._fill(self.surroundings_tree, lignes)
+        self.surroundings_note.configure(
+            text="Sur les montants, l'écart suit la formule de la directive. "
+                 "Sur les autres variables, c'est une différence dans l'unité "
+                 "de la variable : un pourcentage s'y lirait comme un écart "
+                 "de rémunération. Les variables comparées se déclarent dans "
+                 "les paramètres.")
 
     @staticmethod
     def _significance_value(significance: Optional[Dict[str, Any]]) -> str:
@@ -2603,9 +2740,26 @@ class Application(tk.Tk):
         if self.result is None:
             return
         groupe = self._selected_group()
-        bloc = lagging_members(self.result.filtered, self.result.config,
-                               self._axis(), groupe, self._explain_field())
         devise = self.result.payload["salary"].get("currency", "EUR")
+        # Le graphique ne montre qu'un groupe : superposer vingt echelles de
+        # salaire sur une meme piste ne dirait rien. Sans groupe retenu, il
+        # montre celui qui vient en tete du classement.
+        vedette = groupe or (self.gap_chart.selected or "")
+        situé = self._people_points(vedette)
+
+        if groupe:
+            # Un groupe retenu : la liste est le decrochage de ce groupe, et
+            # il est deja calcule pour le graphique. Redemander le meme
+            # travail au moteur relisait la population une seconde fois a
+            # chaque clic.
+            bloc = {"rows": [ligne for ligne in situé["rows"]
+                             if ligne["lagging"]],
+                    "basis": situé.get("basis"), "groups": 1,
+                    "withheld_groups": 1 if situé["reference"] is None else 0,
+                    "threshold": situé.get("threshold")}
+        else:
+            bloc = lagging_members(self.result.filtered, self.result.config,
+                                   self._axis(), None, self._explain_field())
         lignes = bloc["rows"]
         base = (bloc.get("basis") or {}).get("label") or ""
 
@@ -2622,11 +2776,6 @@ class Application(tk.Tk):
              f'−{format_percent(ligne["gap"])}')
             for ligne in lignes[:200]])
 
-        # Le graphique ne montre qu'un groupe : superposer vingt echelles
-        # de salaire sur une meme piste ne dirait rien. Sans groupe retenu,
-        # il montre celui qui vient en tete du classement.
-        vedette = groupe or (self.gap_chart.selected or "")
-        situé = self._people_points(vedette)
         self.people_chart.set_rows(
             situé["rows"], devise, reference=situé.get("reference"),
             warning=situé.get("warning") or "")
@@ -2638,11 +2787,13 @@ class Application(tk.Tk):
                           f"montre {vedette}, en tête du classement.")))
         note = [f"{len(lignes)} salariés sous la médiane de leur groupe."]
         if bloc.get("withheld_groups"):
+            retenus = bloc["withheld_groups"]
             note.append(
-                f'{bloc["withheld_groups"]} groupes ne fournissent pas de '
-                f'repère : ils réunissent moins de {bloc["threshold"]} '
-                "salariés comparables, et une médiane calculée sur si peu de "
-                "monde désignerait ces personnes.")
+                (f"Ce groupe ne fournit pas de repère" if groupe else
+                 f"{retenus} groupes ne fournissent pas de repère")
+                + f' : moins de {bloc["threshold"]} salariés comparables, et '
+                "une médiane calculée sur si peu de monde désignerait ces "
+                "personnes.")
         if len(lignes) > 200:
             note.append("Les 200 plus grands décrochages sont affichés.")
         note.append("Ces noms restent à l'écran : aucun document produit, "

@@ -2390,3 +2390,124 @@ class TestNoTkCallbackEverRaises(unittest.TestCase):
                     rooty=base_y + int(hauteur * fraction_y))
         self.app.update()
         self.assertEqual([f"{t[0].__name__}: {t[1]}" for t in self.traces], [])
+
+
+@needs_display
+class TestTheWholeWindowAnswersWithoutRaising(unittest.TestCase):
+    """Toute la fenetre parcourue, reglage par reglage.
+
+    Tk attrape l'exception d'un rappel et l'imprime : la fenetre continue de
+    repondre, et aucun test ne le voit. Ce parcours ecoute donc le canal ou
+    ces traces partent, et il touche a tout ce qui se touche — les quatre
+    onglets, les trois graphiques, chaque liste deroulante a chacune de ses
+    valeurs, chaque case, le repli de la colonne de gauche.
+
+    Il ne verifie aucun chiffre : d'autres tests s'en chargent. Il verifie
+    qu'aucun geste ne laisse une trace dans la console de l'utilisateur.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "population.xlsx")
+        rows = [make_row(index, salary=30000 + (index % 40) * 800,
+                         business_unit=["France", "DACH"][index % 2],
+                         grade=["G3", "G5", "G7"][index % 3],
+                         gender="F" if index % 2 else "H",
+                         age=25 + index % 35, tenure=(index % 18) / 1.4)
+                for index in range(90)]
+        write_workbook(cls.source, [("Population", [HEADERS] + rows)])
+
+    def setUp(self):
+        from hr_insight.core.pipeline import load_population
+        from hr_insight.ui.app import Application
+
+        self.app = Application()
+        self.traces = []
+        self.app.report_callback_exception = (
+            lambda *infos: self.traces.append(infos))
+        population, mapping, table = load_population(self.source,
+                                                     self.app.configuration)
+        self.app.source_path = self.source
+        self.app.population = population
+        self.app.mapping = mapping
+        self.app.headers = list(table.headers)
+        self.app._populate_filters()
+        self.app.run_analysis()
+        limite = time.time() + 120
+        while self.app.result is None and time.time() < limite:
+            self.app.update()
+            time.sleep(0.01)
+        for _ in range(5):
+            self.app.update()
+            time.sleep(0.01)
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _sans_trace(self, geste):
+        self.assertEqual(
+            [f"{t[0].__name__}: {t[1]}" for t in self.traces], [], geste)
+
+    def _combos(self):
+        from tkinter import ttk
+
+        trouvees = []
+        a_voir = [self.app]
+        while a_voir:
+            widget = a_voir.pop()
+            a_voir.extend(widget.winfo_children())
+            if isinstance(widget, ttk.Combobox):
+                trouvees.append(widget)
+        return trouvees
+
+    def test_every_tab_and_every_chart_holds(self):
+        from hr_insight.ui.app import CHARTS, TABS
+
+        for clef, _label in TABS:
+            if clef not in self.app.tabbar.visible_keys():
+                continue
+            self.app.tabbar.select(clef)
+            self.app.update()
+            self._sans_trace(f"onglet {clef}")
+        self.app.tabbar.select("graphique")
+        for clef, _label in CHARTS:
+            self.app.chartbar.select(clef)
+            self.app.update()
+            self._sans_trace(f"graphique {clef}")
+
+    def test_every_value_of_every_list_holds(self):
+        """Chaque liste, a chacune de ses valeurs."""
+        for liste in self._combos():
+            valeurs = list(liste.cget("values"))
+            if not valeurs:
+                continue
+            initiale = liste.get()
+            # Au plus six valeurs par liste : au-dela, c'est la meme
+            # mecanique qui se repete, et le parcours durerait des minutes.
+            for valeur in valeurs[:6]:
+                liste.set(valeur)
+                liste.event_generate("<<ComboboxSelected>>")
+                self.app.update()
+                self._sans_trace(f"{liste} = {valeur}")
+            liste.set(initiale)
+            liste.event_generate("<<ComboboxSelected>>")
+            self.app.update()
+
+    def test_folding_the_sidebar_holds(self):
+        for _ in range(2):
+            self.app.toggle_sidebar()
+            limite = time.time() + 5
+            while getattr(self.app, "_fold_job", None) and time.time() < limite:
+                self.app.update()
+                time.sleep(0.01)
+            self.app.update()
+            self._sans_trace("repli de la colonne de gauche")
+
+    def test_resizing_holds(self):
+        for largeur, hauteur in ((1000, 700), (1600, 1000), (860, 620)):
+            self.app.geometry(f"{largeur}x{hauteur}+0+0")
+            self.app.update()
+            time.sleep(0.12)
+            self.app.update()
+            self._sans_trace(f"fenêtre {largeur}×{hauteur}")

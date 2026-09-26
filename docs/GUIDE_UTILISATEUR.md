@@ -299,6 +299,29 @@ et tait celle des femmes — c'est la seule qui désignerait quelqu'un. Le
 seuil se règle dans **Paramètres → Confidentialité** et porte sur le nombre
 de salariés **dont le calcul est possible**.
 
+### Ce qui entoure l'écart
+
+Sous le tableau des trois colonnes, un second tableau compare les deux sexes
+sur ce qui n'est pas la rémunération : ancienneté, âge, temps de travail,
+part variable — et la part de chacun qui perçoit une rémunération variable,
+l'un des indicateurs de la directive.
+
+Un écart ne se lit pas seul. Vingt pour cent sur un groupe où les hommes
+comptent cinq ans d'ancienneté de plus n'appelle pas la même réponse que le
+même écart à ancienneté égale : le premier interroge la grille d'ancienneté,
+le second la rémunération elle-même. Le tableau ne tranche pas ; il pose ce
+qu'il faut pour trancher.
+
+**Sur les montants**, l'écart est un pourcentage, celui de la directive.
+**Sur les autres variables**, c'est une différence dans l'unité de la
+variable — un pourcentage sur une ancienneté se lirait comme un écart de
+rémunération. Le signe, lui, ne change jamais de sens : **positif veut dire
+que les femmes sont en dessous**, sur toutes les lignes.
+
+Les variables comparées sont **déclarées** dans
+`config/pay_equity_parameters.json` (`profile_fields`) : une prime propre à
+votre entreprise s'ajoute à la liste sans toucher au logiciel.
+
 ### Les personnes qui décrochent
 
 Un écart de groupe dit qu'il se passe quelque chose ; il ne dit pas à qui. Or
@@ -352,6 +375,18 @@ temps plein : chaque montant divisé par son temps de travail, la moyenne et
 la médiane des deux sexes, les effectifs qui les portent et la couverture.
 Onglet **Contrôle Pay Transparency**, colonne **Écart** : elle doit valoir
 zéro partout.
+
+## 5 bis bis. Pendant que l'analyse tourne
+
+Sur un fichier de cent mille lignes, l'analyse demande une dizaine de
+secondes. La page laisse alors la place à un panneau qui dit ce qui se
+passe : l'étape en cours, celles qui sont faites, celles qui restent, et le
+temps écoulé. Les étapes sont celles du moteur — lecture, normalisation,
+contrôle qualité, sélection, indicateurs, écarts, segments, traçabilité — et
+non une liste recopiée pour l'occasion.
+
+Sur un petit fichier, vous ne le verrez pas : il n'apparaît qu'au-delà de
+trois dixièmes de seconde, le temps qu'une attente commence à se voir.
 
 ## 5 quater. Dispersion : distinguer femmes et hommes
 

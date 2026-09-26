@@ -137,6 +137,16 @@ _STAGES: Sequence[tuple] = (
 )
 
 
+def stage_labels() -> List[str]:
+    """Les etapes de l'analyse, dans l'ordre et sous leur intitule.
+
+    L'interface les affiche telles quelles : une etape ajoutee ici apparait
+    a l'ecran sans qu'on y pense, et aucune etape affichee ne peut manquer
+    au calcul. Recopier la liste dans la fenetre aurait garanti l'inverse.
+    """
+    return [label for _key, label, _weight in _STAGES]
+
+
 class _Progress:
     """Avancement rapporte a qui veut l'afficher.
 
