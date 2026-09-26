@@ -209,7 +209,27 @@ l'effectif l'écart est établi. Un fichier **sans aucune** colonne de temps de
 travail ne rend pas une page vide : la comparaison porte alors sur les
 montants versés, et l'écrit noir sur blanc.
 
-### Sans sélection : où faut-il regarder
+### Cinq lectures, une à la fois
+
+Sous le choix du poste, une barre propose cinq lectures — même mécanique que
+l'onglet **Graphique**, et pour la même raison : empilées, elles feraient une
+page qu'on parcourt ; l'une après l'autre, elles se lisent.
+
+| Lecture | Ce qu'elle répond |
+|---|---|
+| **Écarts** | Où faut-il regarder : un poste par barre, classés par significativité. |
+| **Détail du poste** | Ce qui s'y passe : toute la rémunération, femmes / hommes / global. |
+| **Répartition** | Ce qu'une moyenne efface : la pyramide des rémunérations du poste. |
+| **Dispersion** | Comment chacun s'étale : deux boîtes à moustaches par poste. |
+| **Quartiles** | Qui occupe le haut de l'échelle : l'indicateur f) de la directive. |
+
+Choisir un poste **depuis les écarts** ouvre son détail : c'est le geste qu'on
+vient de faire, et rester sur le classement demanderait un second clic.
+Choisir un poste depuis la répartition ou la dispersion **ne change pas de
+lecture** : on est en train de comparer des postes, et changer de page à
+chaque choix rendrait la comparaison impossible.
+
+### Écarts : où faut-il regarder
 
 Une barre par poste, de part et d'autre de zéro — à droite les postes où les
 femmes sont moins rémunérées, à gauche l'inverse. Le classement par défaut
@@ -239,7 +259,7 @@ mérite d'être regardé d'abord ; elle ne juge pas.
 
 **Trier par** permet de passer à l'enjeu, à l'écart, à l'effectif ou au nom.
 
-### Avec un poste : toute sa rémunération, en trois colonnes
+### Détail du poste : toute sa rémunération, en trois colonnes
 
 Un clic sur une barre, ou le menu **Poste** en haut, déplie le détail :
 
@@ -265,6 +285,36 @@ seuil se règle dans **Paramètres → Confidentialité** et vaut partout de la
 même façon. Il porte sur le nombre de salariés **dont le calcul est
 possible** : un poste de trente personnes dont deux ont un temps de travail
 renseigné ne publie rien.
+
+### Répartition : ce qu'une moyenne efface
+
+Une pyramide, femmes à gauche, hommes à droite — le même dessin que la
+pyramide des âges de la vue d'ensemble : une lecture connue n'a pas à être
+apprise. Les tranches ne sont pas des âges mais des rémunérations, en huit
+tranches d'égale largeur découpées **sur l'étendue de ce qui est montré**, et
+cette étendue est écrite sous le graphique.
+
+C'est la lecture qui rattrape ce qu'un écart moyen ne peut pas dire. Deux
+moyennes égales peuvent recouvrir deux répartitions sans rapport : des femmes
+groupées au milieu de la fourchette et des hommes aux deux bouts donnent le
+même chiffre et n'appellent pas la même réponse. Et un poste où toutes les
+femmes occupent les tranches basses et tous les hommes les tranches hautes se
+voit ici d'un regard, quel que soit l'écart affiché.
+
+Les deux ailes partagent la même échelle : sans quoi une aile deux fois plus
+courte pourrait représenter le même effectif.
+
+### Dispersion : deux boîtes par poste
+
+Une boîte à moustaches par sexe et par poste : la boîte contient la moitié
+centrale de l'effectif (Q1 à Q3), le trait est la médiane, les moustaches
+vont du 10e au 90e centile. Le repère vertical est la médiane de l'ensemble,
+et la colonne de droite porte **l'écart de médiane** — c'est le trait que la
+boîte montre, non la moyenne du classement des écarts.
+
+Un demi-segment trop peu nombreux n'est pas dessiné : ses percentiles
+désigneraient ses salariés. Le seuil de tracé se règle dans
+**Paramètres → Confidentialité**.
 
 ### Les trois chiffres du haut
 

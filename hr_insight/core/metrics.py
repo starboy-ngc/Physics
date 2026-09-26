@@ -449,9 +449,31 @@ def _atypical_entry(
     }
 
 
+def full_time_values(employees: Sequence[Any], field_name: str) -> List[float]:
+    """Montants ramenes au temps plein, les temps inconnus ecartes."""
+    values = [full_time_amount(employee, field_name) for employee in employees]
+    return [value for value in values if value is not None]
+
+
+def _sex_salary(members: Sequence[Any], population: Population,
+                config: Configuration, field_name: str,
+                full_time: bool) -> Dict[str, Any]:
+    """Le bloc de remuneration d'un sous-groupe, sur la base demandee."""
+    if not full_time:
+        subset = Population(employees=list(members),
+                            reference_date=population.reference_date,
+                            age_bands=population.age_bands,
+                            tenure_bands=population.tenure_bands)
+        return calculate_salary_metrics(subset, config, field_name)
+    return calculate_amount_metrics(
+        full_time_values(members, field_name), config, field_name,
+        headcount=len(members))
+
+
 def segment_by_sex(population: Population, config: Configuration,
                    field_name: str,
-                   salary_field: Optional[str] = None) -> List[Dict[str, Any]]:
+                   salary_field: Optional[str] = None,
+                   full_time: bool = False) -> List[Dict[str, Any]]:
     """Chaque segment coupe en deux : ce que touchent les femmes, les hommes.
 
     Une boite a moustaches par segment dit comment la remuneration s'etale ;
@@ -465,6 +487,7 @@ def segment_by_sex(population: Population, config: Configuration,
     les percentiles de ces quatre-la.
     """
     rules = PrivacyRules.from_config(config)
+    champ = salary_field or analysis_field(config)
     groups = split_by(population, field_name, include_empty=True)
     rows: List[Dict[str, Any]] = []
     for label, group in groups.items():
@@ -475,19 +498,25 @@ def segment_by_sex(population: Population, config: Configuration,
                 parts[sex].append(employee)
         entry: Dict[str, Any] = {"segment": label, "headcount": len(group)}
         for sex, members in parts.items():
-            subset = Population(employees=members,
-                                age_bands=population.age_bands,
-                                tenure_bands=population.tenure_bands)
-            entry[sex] = calculate_salary_metrics(subset, config, salary_field)
+            entry[sex] = _sex_salary(members, population, config, champ,
+                                     full_time)
             entry[f"{sex}_count"] = len(members)
-            entry[f"{sex}_chartable"] = rules.may_chart(len(members))
+            # A temps plein, le droit au trace porte sur les montants
+            # calculables : un segment de trente personnes dont trois ont un
+            # temps de travail connu dessinerait les percentiles de ces
+            # trois-la.
+            traçables = (len(full_time_values(members, champ)) if full_time
+                         else len(members))
+            entry[f"{sex}_chartable"] = rules.may_chart(traçables)
         # Le segment entier est fourni aussi : le graphique s'en sert pour
         # l'echelle et pour le tri, et la ligne reste comparable a celle du
         # mode simple.
-        overall = calculate_salary_metrics(group, config, salary_field)
+        overall = _sex_salary(list(group), population, config, champ,
+                              full_time)
         entry["salary"] = overall
         entry["masked"] = overall.get("masked", False)
-        entry["chartable"] = rules.may_chart(len(group))
+        entry["chartable"] = rules.may_chart(
+            len(full_time_values(group, champ)) if full_time else len(group))
         entry["sex_chartable"] = (entry["female_chartable"]
                                   or entry["male_chartable"])
         # L'ecart est ce qu'on vient chercher en dedoublant : il se calcule

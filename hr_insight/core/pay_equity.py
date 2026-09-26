@@ -569,6 +569,94 @@ def category_breakdown(population: Population, config: Configuration,
     }
 
 
+#: Nombre de tranches de la pyramide des remunerations. Huit tranches
+#: tiennent dans la hauteur d'un ecran sans ascenseur et laissent voir ou la
+#: repartition bascule ; a vingt, chaque tranche compte deux personnes et la
+#: forme disparait dans le bruit.
+SALARY_BANDS = 8
+
+
+def _band_label(lower: float, upper: float) -> str:
+    """« 45–50 k ». Le montant exact se lit dans le tableau, pas ici."""
+    if upper >= 10000:
+        return f"{round(lower / 1000)}–{round(upper / 1000)} k"
+    return f"{round(lower)}–{round(upper)}"
+
+
+def salary_bands_by_sex(population: Population, config: Configuration,
+                        members: Optional[Sequence[Any]] = None,
+                        bands: int = SALARY_BANDS) -> Dict[str, Any]:
+    """Repartition des remunerations par tranche, femmes a part des hommes.
+
+    Deux moyennes egales peuvent recouvrir deux repartitions sans rapport :
+    des femmes groupees au milieu de la fourchette et des hommes aux deux
+    bouts donnent le meme chiffre et n'appellent pas la meme reponse. La
+    pyramide montre ce qu'une moyenne efface — et c'est la meme lecture, et
+    le meme dessin, que la pyramide des ages de la vue d'ensemble.
+
+    Les tranches sont decoupees sur l'etendue du groupe montre, et cette
+    etendue est publiee avec elles. Les couper sur toute la population
+    aurait rendu deux postes comparables entre eux, mais au prix de la
+    lecture qu'on vient chercher : sur un poste dont les salaires tiennent
+    en cinq mille euros, sept tranches sur huit seraient vides et la
+    huitieme dirait « tout le monde est ici ».
+    """
+    rules = PrivacyRules.from_config(config)
+    base = basis_description(population, config)
+    champ = base["field"]
+    gens = list(population) if members is None else list(members)
+    référence = comparison_amounts(gens, champ, base["full_time"])
+    groupes = _split_members(gens, config)
+    femmes = comparison_amounts(groupes[FEMALE], champ, base["full_time"])
+    hommes = comparison_amounts(groupes[MALE], champ, base["full_time"])
+
+    résultat: Dict[str, Any] = {
+        "basis": base, "bands": [],
+        "female_count": len(femmes), "male_count": len(hommes),
+        "threshold": rules.min_chart,
+    }
+    résultat["lowest"] = min(référence) if référence else None
+    résultat["highest"] = max(référence) if référence else None
+    bas, haut = (min(référence), max(référence)) if référence else (0.0, 0.0)
+    if not référence or haut <= bas or bands < 1:
+        résultat["available"] = False
+        résultat["warning"] = (
+            "Les rémunérations retenues ne s'étalent sur aucune plage : la "
+            "répartition n'a rien à montrer.")
+        return résultat
+    if not rules.may_chart(len(femmes) + len(hommes)):
+        résultat["available"] = False
+        résultat["warning"] = (
+            "Effectif insuffisant pour dessiner une répartition "
+            f"(minimum {rules.min_chart} salariés dont la rémunération est "
+            "comparable).")
+        return résultat
+
+    largeur = (haut - bas) / bands
+    for index in range(bands):
+        borne_basse = bas + largeur * index
+        borne_haute = bas + largeur * (index + 1)
+        dernière = index == bands - 1
+
+        def dedans(valeur: float) -> bool:
+            # Tranches fermees a gauche, ouvertes a droite, la derniere
+            # exceptee : c'est la convention de `statistics_engine.histogram`,
+            # et une borne traitee autrement ferait disparaitre le mieux
+            # remunere de la population.
+            return (borne_basse <= valeur <= borne_haute if dernière
+                    else borne_basse <= valeur < borne_haute)
+
+        résultat["bands"].append({
+            "label": _band_label(borne_basse, borne_haute),
+            "lower": borne_basse, "upper": borne_haute,
+            "female": sum(1 for valeur in femmes if dedans(valeur)),
+            "male": sum(1 for valeur in hommes if dedans(valeur)),
+        })
+    résultat["available"] = True
+    résultat["warning"] = None
+    return résultat
+
+
 def calculate_category_profile(population: Population, config: Configuration,
                                field_name: str,
                                value: str) -> Dict[str, Any]:

@@ -552,3 +552,112 @@ class TestTheFullTimeBasisOnScreen(unittest.TestCase):
         self.app.update()
         self.assertIn("temps plein",
                       self.app.profile_subtitle.cget("text"))
+
+
+@needs_display
+class TestTheFiveReadings(PayTransparencyCase):
+    """Cinq lectures, une a la fois, dans une barre subordonnee.
+
+    C'est la mecanique de l'onglet Graphique, appliquee ici : empilees, ces
+    cinq lectures faisaient une page qu'on parcourt ; l'une apres l'autre,
+    elles se lisent. Ce que ces tests protegent, c'est la navigation — quelle
+    lecture s'ouvre, laquelle reste, et qu'aucune n'en montre deux.
+    """
+
+    VUES = ("ecarts", "detail", "repartition", "dispersion", "quartiles")
+
+    def test_the_five_readings_are_offered(self):
+        self.assertEqual(tuple(self.app.analysisbar.visible_keys()),
+                         self.VUES)
+
+    def test_only_one_reading_is_on_screen_at_a_time(self):
+        for vue in self.VUES:
+            self.app.analysisbar.select(vue)
+            self.app.update()
+            empaquetés = [clef for clef, cadre
+                          in self.app.analysis_pages.items()
+                          if cadre.winfo_manager()]
+            self.assertEqual(empaquetés, [vue])
+
+    def test_choosing_a_position_from_the_gaps_opens_its_detail(self):
+        """Le geste qu'on vient de faire n'a pas a etre refait."""
+        self.app.analysisbar.select("ecarts")
+        self.app.update()
+        self.app.category_value.set(POSTES[0])
+        self.app._show_profile()
+        self.app.update()
+        self.assertEqual(self.app.analysisbar.active, "detail")
+        self.assertEqual(self.app.profile_title.cget("text"), POSTES[0])
+
+    def test_choosing_a_position_elsewhere_keeps_the_reading(self):
+        """On compare des postes : changer de page a chaque choix
+        rendrait la comparaison impossible."""
+        for vue in ("repartition", "dispersion", "quartiles"):
+            with self.subTest(vue=vue):
+                self.app.analysisbar.select(vue)
+                self.app.category_value.set(POSTES[1])
+                self.app._show_profile()
+                self.app.update()
+                self.assertEqual(self.app.analysisbar.active, vue)
+
+    def test_leaving_the_selection_returns_to_the_gaps(self):
+        """Un detail sans poste ne dirait rien."""
+        from hr_insight.ui.app import ALL_CATEGORIES
+
+        self.app.category_value.set(POSTES[0])
+        self.app._show_profile()
+        self.app.update()
+        self.assertEqual(self.app.analysisbar.active, "detail")
+        self.app.category_value.set(ALL_CATEGORIES)
+        self.app._show_profile()
+        self.app.update()
+        self.assertEqual(self.app.analysisbar.active, "ecarts")
+
+    def test_the_detail_without_a_position_asks_for_one(self):
+        from hr_insight.ui.app import ALL_CATEGORIES
+
+        self.app.category_value.set(ALL_CATEGORIES)
+        self.app.analysisbar.select("detail")
+        self.app.update()
+        self.assertIn("Choisissez", self.app.profile_subtitle.cget("text"))
+        self.assertFalse(self.app.profile_tree.get_children())
+
+    def test_the_distribution_is_drawn_for_the_chosen_position(self):
+        self.app.category_value.set(POSTES[0])
+        self.app._show_profile()
+        self.app.analysisbar.select("repartition")
+        self.app.update()
+        self.assertIn(POSTES[0], self.app.profile_title.cget("text"))
+        self.assertTrue(self.app.bands_chart.rows)
+        self.assertTrue(self.app.bands_chart.has_split())
+
+    def test_the_spread_holds_one_line_per_position(self):
+        self.app.analysisbar.select("dispersion")
+        self.app.update()
+        segments = {str(ligne["segment"])
+                    for ligne in self.app.equity_boxplot.rows}
+        self.assertTrue(set(POSTES) <= segments, segments)
+        self.assertTrue(self.app.equity_boxplot.split)
+
+    def test_no_reading_carries_a_name(self):
+        """Le nom d'un salarie n'a sa place sur aucune des cinq."""
+        import tkinter as tk
+
+        for vue in self.VUES:
+            self.app.analysisbar.select(vue)
+            self.app.update()
+            textes = []
+
+            def marcher(widget):
+                for enfant in widget.winfo_children():
+                    if isinstance(enfant, tk.Label):
+                        textes.append(str(enfant.cget("text")))
+                    marcher(enfant)
+
+            marcher(self.app.analysis_pages[vue])
+            textes.append(" ".join(
+                str(valeur)
+                for ligne in self.app.profile_tree.get_children()
+                for valeur in self.app.profile_tree.item(ligne)["values"]))
+            with self.subTest(vue=vue):
+                self.assertNotIn("NOM", " ".join(textes))

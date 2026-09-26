@@ -29,13 +29,16 @@ from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
 from ..core import metrics, palette
+from ..core import statistics_engine
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
-from ..core.pay_equity import calculate_category_gaps, category_breakdown
+from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
+                               category_members, comparison_amounts,
+                               salary_bands_by_sex)
 from ..core.pipeline import AnalysisRequest, load_population, run_analysis
 from ..core.quality import run_quality_check
 from ..core.reporting import (format_money, format_number, format_percent,
@@ -89,6 +92,14 @@ ALL_CATEGORIES = "(vue d'ensemble)"
 CATEGORY_ORDERS = (("significance", "Significativité"),
                    ("stake", "Enjeu"), ("gap", "Écart"),
                    ("headcount", "Effectif"), ("name", "Nom"))
+
+#: Les lectures de la page des ecarts, dans l'ordre ou l'on s'en sert : ou
+#: regarder, ce qui s'y passe, comment les deux sexes s'y repartissent,
+#: comment leurs remunerations s'etalent, et la repartition par quartile que
+#: la directive fait publier.
+EQUITY_VIEWS = (("ecarts", "Écarts"), ("detail", "Détail du poste"),
+                ("repartition", "Répartition"),
+                ("dispersion", "Dispersion"), ("quartiles", "Quartiles"))
 
 CHARTS = (("nuage", "Rémunération/Ancienneté"),
           ("distribution", "Distribution"),
@@ -980,7 +991,20 @@ class Application(tk.Tk):
                                                  in CATEGORY_ORDERS])
         self.category_order.current(0)
 
-        # --- 3. Le detail, ou la vue d'ensemble --------------------------
+        # --- 3. Les analyses, une a la fois ------------------------------
+        # Meme mecanique que l'onglet Graphique : une barre subordonnee, un
+        # contenu en pleine page. Empilees, ces cinq lectures faisaient une
+        # page de deux mille pixels ou chacune devenait une vignette ; l'une
+        # apres l'autre, chacune garde sa place, son survol et son echelle.
+        self._equity_rule()
+        barre = tk.Frame(self.equity_page, background=theme.CANVAS)
+        barre.pack(fill="x", padx=18)
+        self.analysisbar = TabBar(barre, self.fonts,
+                                  on_change=self._show_analysis,
+                                  secondary=True)
+        self.analysisbar.pack(side="left")
+        theme.rule(self.equity_page).pack(fill="x", padx=24, pady=(4, 12))
+
         self.profile_title = tk.Label(self.equity_page, text="",
                                       background=theme.CANVAS,
                                       foreground=theme.INK,
@@ -993,15 +1017,18 @@ class Application(tk.Tk):
                                          justify="left", wraplength=1000)
         self.profile_subtitle.pack(anchor="w", padx=24, pady=(0, 10))
 
-        # Sans poste choisi : les postes classes par ampleur d'ecart.
-        self.overview_block = tk.Frame(self.equity_page,
-                                       background=theme.CANVAS)
-        self.overview_block.pack(fill="x")
-        self.category_heading = tk.Label(self.overview_block, text="",
-                                         background=theme.CANVAS,
-                                         foreground=theme.INK,
-                                         font=self.fonts.section, anchor="w")
-        self.category_heading.pack(anchor="w", padx=24, pady=(0, 4))
+        self.analysis_holder = tk.Frame(self.equity_page,
+                                        background=theme.CANVAS)
+        self.analysis_holder.pack(fill="both", expand=True)
+        self.analysis_pages: Dict[str, tk.Frame] = {
+            key: tk.Frame(self.analysis_holder, background=theme.CANVAS)
+            for key, _label in EQUITY_VIEWS}
+
+        # a) Les ecarts : ou faut-il regarder.
+        self.overview_block = self.analysis_pages["ecarts"]
+        # Pas d'intertitre : le titre de la lecture, quinze pixels plus
+        # haut, porte deja l'intitule de l'axe. Deux titres l'un sous
+        # l'autre se lisaient comme deux sections.
         self.category_title = tk.Label(self.overview_block, text="",
                                        background=theme.CANVAS,
                                        foreground=theme.FAINT,
@@ -1011,8 +1038,8 @@ class Application(tk.Tk):
                                   on_select=self._on_category_selected)
         self.gap_chart.pack(fill="x", padx=24, pady=(0, 6))
 
-        # Avec un poste choisi : toute sa remuneration, en trois colonnes.
-        self.detail_block = tk.Frame(self.equity_page, background=theme.CANVAS)
+        # b) Le detail d'un poste : toute sa remuneration, en trois colonnes.
+        self.detail_block = self.analysis_pages["detail"]
         self.profile_kpis = tk.Frame(self.detail_block,
                                      background=theme.CANVAS)
         self.profile_kpis.pack(fill="x")
@@ -1030,26 +1057,46 @@ class Application(tk.Tk):
                                      anchor="w", wraplength=980)
         self.profile_note.pack(anchor="w", padx=24, pady=(2, 10))
 
-        # --- 4. La repartition d'ensemble --------------------------------
-        # Le filet est retenu : les deux blocs du dessus alternent, et
-        # « pack » a besoin d'un repere stable pour les remettre a leur
-        # place apres un depaquetage.
-        self._equity_last_rule = self._equity_rule()
-        self.quartile_block = tk.Frame(self.equity_page,
-                                       background=theme.CANVAS)
-        self.quartile_block.pack(fill="x")
-        tk.Label(self.quartile_block,
-                 text="Répartition par quartile de rémunération",
-                 background=theme.CANVAS, foreground=theme.INK,
-                 font=self.fonts.section).pack(anchor="w", padx=24,
-                                               pady=(0, 8))
+        # c) La repartition : ce qu'une moyenne efface.
+        self.bands_block = self.analysis_pages["repartition"]
+        self.bands_chart = PyramidChart(self.bands_block)
+        self.bands_chart.pack(fill="x", padx=24, pady=(4, 6))
+        self.bands_note = tk.Label(self.bands_block, text="",
+                                   background=theme.CANVAS,
+                                   foreground=theme.MUTED,
+                                   font=self.fonts.small, justify="left",
+                                   anchor="w", wraplength=980)
+        self.bands_note.pack(anchor="w", padx=24, pady=(2, 10))
+
+        # d) La dispersion : deux boites par poste, femmes et hommes.
+        self.spread_block = self.analysis_pages["dispersion"]
+        cadre = tk.Frame(self.spread_block, background=theme.CANVAS,
+                         height=430)
+        cadre.pack(fill="x", padx=24, pady=(4, 0))
+        cadre.pack_propagate(False)
+        self.equity_boxplot = BoxPlotChart(cadre)
+        self.equity_boxplot.pack(fill="both", expand=True)
+        self.spread_note = tk.Label(self.spread_block, text="",
+                                    background=theme.CANVAS,
+                                    foreground=theme.MUTED,
+                                    font=self.fonts.small, justify="left",
+                                    anchor="w", wraplength=980)
+        self.spread_note.pack(anchor="w", padx=24, pady=(6, 10))
+
+        # e) Les quartiles : l'indicateur f) de la directive.
+        self.quartile_block = self.analysis_pages["quartiles"]
         self.quartile_chart = QuartileChart(self.quartile_block)
-        self.quartile_chart.pack(fill="x", padx=24, pady=(0, 10))
+        self.quartile_chart.pack(fill="x", padx=24, pady=(4, 10))
         self.compliance_note = tk.Label(
-            self.equity_page, text="", background=theme.CANVAS,
+            self.quartile_block, text="", background=theme.CANVAS,
             foreground=theme.MUTED, font=self.fonts.small, justify="left",
             anchor="w", wraplength=980)
         self.compliance_note.pack(anchor="w", padx=24, pady=(0, 24))
+
+        # Les entrees en dernier : la premiere ajoutee est selectionnee, et
+        # elle appelle « _show_analysis » — qui a besoin des cinq cadres.
+        for key, label in EQUITY_VIEWS:
+            self.analysisbar.add(key, label)
 
     def _equity_rule(self) -> tk.Frame:
         """Un filet entre deux temps de la page.
@@ -1993,11 +2040,9 @@ class Application(tk.Tk):
         # mobilite. Additionnes, ils sont indecidables.
         self._show_decomposition(self._category_block())
 
-        if not self.quartile_block.winfo_manager():
-            # « compliance_note » n'est jamais depaquetee : c'est un repere
-            # sur pour rendre le bloc a sa place apres l'avoir masque.
-            self.quartile_block.pack(fill="x", pady=(16, 0),
-                                     before=self.compliance_note)
+        # Le bloc des quartiles n'est plus empaquete ici : c'est la barre
+        # des lectures qui decide de ce qui est a l'ecran. Il reste rempli a
+        # chaque analyse, pour qu'ouvrir l'onglet ne demande aucun calcul.
         self.quartile_chart.set_rows(equity["quartiles"])
         # Ces trois chiffres disaient d'abord qu'ils etaient « publiables au
         # titre de la directive ». Ils valent pour ce qu'ils apprennent :
@@ -2255,8 +2300,6 @@ class Application(tk.Tk):
             return
         self._decomposed = block
         label = block.get("category_label") or "Poste"
-        self.category_heading.configure(
-            text=f"Les {label.lower()}s où l'écart est le plus significatif")
         currency = self.result.payload["salary"].get("currency", "EUR")
 
         warning = block.get("category_warning")
@@ -2376,27 +2419,100 @@ class Application(tk.Tk):
         self._fill(self.profile_tree, [])
         self.profile_note.configure(text="")
 
-    def _show_profile(self) -> None:
-        """Le detail d'un poste, ou la vue d'ensemble si aucun n'est choisi.
+    def _analysis_view(self) -> str:
+        """La lecture affichee. « ecarts » tant que la barre n'existe pas."""
+        barre = getattr(self, "analysisbar", None)
+        return (barre.active if barre is not None and barre.active
+                else "ecarts")
 
-        Une seule question a la fois. Sans poste : ou faut-il regarder —
-        les postes classes par ampleur d'ecart. Avec un poste : que s'y
-        passe-t-il — toute l'analyse de remuneration, en trois colonnes.
+    def _show_analysis(self, key: str) -> None:
+        """Change de lecture : une seule a la fois, en pleine page.
+
+        Les cinq lectures repondent a cinq questions — ou regarder, ce qui
+        s'y passe, comment les deux sexes se repartissent, comment leurs
+        remunerations s'etalent, et la repartition par quartile que la
+        directive fait publier. Empilees, elles faisaient une page qu'on
+        parcourt ; l'une apres l'autre, elles se lisent.
+        """
+        for cadre in getattr(self, "analysis_pages", {}).values():
+            cadre.pack_forget()
+        cadre = getattr(self, "analysis_pages", {}).get(key)
+        if cadre is None:
+            return
+        cadre.pack(fill="both", expand=True)
+        self._fill_analysis(key)
+
+    def _fill_analysis(self, key: Optional[str] = None) -> None:
+        """Remplit la lecture affichee, et elle seule."""
+        if self.result is None:
+            return
+        key = key or self._analysis_view()
+        remplir = {"ecarts": self._fill_gaps, "detail": self._fill_detail,
+                   "repartition": self._fill_bands,
+                   "dispersion": self._fill_spread,
+                   "quartiles": self._fill_quartiles}.get(key)
+        if remplir is not None:
+            remplir()
+
+    def _selected_job(self) -> Optional[str]:
+        """Le poste retenu, ou rien si la page parle de l'ensemble."""
+        choix = self.category_value.get()
+        return None if not choix or choix == ALL_CATEGORIES else choix
+
+    def _show_profile(self) -> None:
+        """La page suit la selection du poste.
+
+        Choisir un poste depuis la vue d'ensemble ouvre son detail : c'est
+        le geste qu'on vient de faire, et rester sur le classement
+        demanderait un second clic pour voir ce qu'on a demande. Mais
+        choisir un poste depuis la repartition ou la dispersion ne change
+        pas de lecture : on compare des postes, et changer de page a chaque
+        choix rendrait la comparaison impossible.
         """
         if self.result is None:
             return
-        choix = self.category_value.get()
-        if not choix or choix == ALL_CATEGORIES:
-            self._show_category_overview()
+        poste = self._selected_job()
+        vue = self._analysis_view()
+        if poste:
+            self.gap_chart.select(poste)
+            if vue == "ecarts":
+                self.analysisbar.select("detail")
+                return
+        elif vue == "detail":
+            self.analysisbar.select("ecarts")
             return
+        self._fill_analysis(vue)
 
-        self.gap_chart.select(choix)
+    def _fill_gaps(self) -> None:
+        """Ou faut-il regarder : les postes classes par significativite."""
+        block = self._decomposed or {}
+        label = (block.get("category_label") or "poste").lower()
+        base = (block.get("basis") or {}).get("label") or ""
+        self.profile_title.configure(
+            text=f"Les {label}s où l'écart est le plus significatif")
+        self.profile_subtitle.configure(
+            text=f"Comparaison sur le {base}. Choisissez un {label} "
+                 "ci-dessus, ou cliquez une barre, pour en déplier le "
+                 "détail.")
+
+    def _fill_detail(self) -> None:
+        """Le detail d'un poste : toute sa remuneration, en trois colonnes.
+
+        La troisieme colonne n'est pas decorative : sans l'ensemble, on ne
+        sait pas si un ecart tient a un groupe tire vers le bas ou l'autre
+        tire vers le haut.
+        """
+        choix = self._selected_job()
+        if choix is None:
+            self._clear_profile("Choisissez un poste ci-dessus : le détail "
+                                "compare les femmes et les hommes qui "
+                                "l'occupent.")
+            self.profile_title.configure(text="Détail du poste")
+            return
         breakdown = category_breakdown(self.result.filtered,
                                        self.result.config,
                                        self._axis(), choix)
         currency = self.result.payload["salary"].get("currency", "EUR")
-        self._pack_detail()
-
         self.profile_title.configure(text=str(choix))
         effectifs = "  ·  ".join(
             f'{colonne["label"]} {colonne["headcount"]}'
@@ -2467,34 +2583,84 @@ class Application(tk.Tk):
             return "< 0,1 %"
         return format_percent(valeur)
 
-    def _show_category_overview(self) -> None:
-        """Sans poste choisi : ou faut-il regarder.
+    def _fill_bands(self) -> None:
+        """La repartition : ce qu'une moyenne efface.
 
-        Le nom porte « category » : « _show_overview » designe deja
-        l'onglet Vue d'ensemble, et deux methodes de meme nom sur la meme
-        classe font que la derniere ecrase l'autre en silence.
+        Deux moyennes egales peuvent recouvrir deux repartitions sans
+        rapport. La pyramide le montre — et c'est le meme dessin que la
+        pyramide des ages de la vue d'ensemble : une lecture connue n'a pas
+        a etre apprise.
         """
-        self._pack_overview()
+        poste = self._selected_job()
+        membres = (category_members(self.result.filtered, self._axis(), poste)
+                   if poste else None)
+        bloc = salary_bands_by_sex(self.result.filtered, self.result.config,
+                                   membres)
+        base = (bloc.get("basis") or {}).get("label") or ""
+        self.profile_title.configure(
+            text=f"Répartition — {poste}" if poste
+            else "Répartition de l'ensemble")
+        sujet = (f"{bloc['female_count']} femmes  ·  {bloc['male_count']} "
+                 "hommes comparables")
+        self.profile_subtitle.configure(text=f"{sujet}  ·  {base}")
+        self.bands_chart.set_rows(bloc.get("bands") or [])
+        devise = self.result.payload["salary"].get("currency", "EUR")
+        étendue = ""
+        if bloc.get("lowest") is not None and bloc.get("highest") is not None:
+            étendue = (
+                "Huit tranches d'égale largeur, découpées sur l'étendue de "
+                f"ce qui est montré ici — de {format_money(bloc['lowest'], devise)} "
+                f"à {format_money(bloc['highest'], devise)}. "
+                "Les deux ailes partagent la même échelle : leurs longueurs "
+                "se comparent.")
+        note = bloc.get("warning") or étendue
+        self.bands_note.configure(text=note)
+
+    def _fill_spread(self) -> None:
+        """La dispersion : deux boites par poste, femmes et hommes.
+
+        Un ecart de moyenne ne dit pas si les femmes sont absentes du haut
+        de la fourchette ou reparties tout du long. Les boites le disent, et
+        elles le disent pour tous les postes a la fois.
+        """
         block = self._decomposed or {}
-        label = (block.get("category_label") or "poste").lower()
-        base = (block.get("basis") or {}).get("label") or ""
-        self.profile_title.configure(text="Vue d'ensemble")
+        base = block.get("basis") or {}
+        champ = base.get("field") or ""
+        libellé = (block.get("category_label") or "poste").lower()
+        rows = metrics.segment_by_sex(self.result.filtered,
+                                      self.result.config, self._axis(),
+                                      salary_field=champ or None,
+                                      full_time=bool(base.get("full_time")))
+        currency = self.result.payload["salary"].get("currency", "EUR")
+        montants = comparison_amounts(list(self.result.filtered), champ,
+                                      bool(base.get("full_time")))
+        self.profile_title.configure(text=f"Dispersion par {libellé}")
         self.profile_subtitle.configure(
-            text=f"Comparaison sur le {base}. Les {label}s sont classés par "
-                 "significativité de l'écart. Choisissez-en un ci-dessus, ou "
-                 "cliquez une barre, pour en déplier le détail.")
+            text=f"Femmes et hommes séparés, sur le "
+                 f"{base.get('label') or ''}. Le repère vertical est la "
+                 "médiane de l'ensemble ; à droite, l'écart de médiane — "
+                 "c'est le trait que la boîte montre.")
+        self.equity_boxplot.set_split(True)
+        self.equity_boxplot.set_rows(
+            rows, currency,
+            reference=statistics_engine.median(montants) if montants else None,
+            alert=self.configuration.number(
+                "pay_equity_parameters.gap_alert_threshold",
+                5.0, minimum=0.0, maximum=100.0))
+        self.spread_note.configure(
+            text="Un demi-segment trop peu nombreux n'est pas dessiné : ses "
+                 "percentiles désigneraient ses salariés. Le seuil de tracé "
+                 "se règle dans Paramètres → Confidentialité.")
 
-    def _pack_detail(self) -> None:
-        if self.overview_block.winfo_manager():
-            self.overview_block.pack_forget()
-        if not self.detail_block.winfo_manager():
-            self.detail_block.pack(fill="x", before=self._equity_last_rule)
-
-    def _pack_overview(self) -> None:
-        if self.detail_block.winfo_manager():
-            self.detail_block.pack_forget()
-        if not self.overview_block.winfo_manager():
-            self.overview_block.pack(fill="x", before=self._equity_last_rule)
+    def _fill_quartiles(self) -> None:
+        """L'indicateur f) de la directive : qui occupe le haut de l'echelle."""
+        self.profile_title.configure(
+            text="Répartition par quartile de rémunération")
+        self.profile_subtitle.configure(
+            text="Les salariés sont classés par rémunération puis coupés en "
+                 "quatre tranches d'effectif égal. Une répartition "
+                 "déséquilibrée entre le quartile bas et le quartile haut "
+                 "est le signal le plus direct d'un plafond de verre.")
 
     #: Les lignes du tableau : intitule, cle de la mesure, nature.
     BREAKDOWN_ROWS = (

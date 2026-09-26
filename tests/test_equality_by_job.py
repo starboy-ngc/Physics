@@ -327,3 +327,120 @@ class TestTheMostSignificantJobsComeFirst(unittest.TestCase):
 
 if __name__ == "__main__":                              # pragma: no cover
     unittest.main()
+
+
+class TestTheDistributionByBand(unittest.TestCase):
+    """La pyramide des rémunérations : ce qu'une moyenne efface.
+
+    Deux moyennes egales peuvent recouvrir deux repartitions sans rapport —
+    des femmes groupees au milieu de la fourchette et des hommes aux deux
+    bouts donnent le meme chiffre et n'appellent pas la meme reponse.
+    """
+
+    def setUp(self):
+        self.config = make_config()
+
+    def _étalé(self, taille=60):
+        population = _population(taille, postes=("Comptable",))
+        for rang, salarie in enumerate(population.employees):
+            salarie.base_salary = 30000.0 + rang * 500
+        return population
+
+    def test_every_comparable_employee_lands_in_a_band(self):
+        from hr_insight.core.pay_equity import salary_bands_by_sex
+
+        population = self._étalé()
+        bloc = salary_bands_by_sex(population, self.config)
+        self.assertTrue(bloc["available"])
+        self.assertEqual(len(bloc["bands"]), 8)
+        self.assertEqual(sum(tranche["female"] for tranche in bloc["bands"]),
+                         bloc["female_count"])
+        self.assertEqual(sum(tranche["male"] for tranche in bloc["bands"]),
+                         bloc["male_count"])
+
+    def test_the_bands_cover_the_range_of_what_is_shown(self):
+        """Des tranches decoupees ailleurs laisseraient sept cases vides."""
+        from hr_insight.core.pay_equity import (category_members,
+                                                salary_bands_by_sex)
+
+        population = _population(90, postes=("Comptable", "Technicien",
+                                             "Ingénieur"))
+        for rang, salarie in enumerate(population.employees):
+            salarie.base_salary = (30000.0 if salarie.job_title == "Comptable"
+                                   else 80000.0) + rang * 10
+        membres = category_members(population, "job_title", "Comptable")
+        bloc = salary_bands_by_sex(population, self.config, membres)
+        self.assertLess(bloc["highest"], 40000.0)
+        self.assertGreaterEqual(bloc["lowest"], 30000.0)
+        # Aucune tranche vide : elles sont taillees sur ce qui est montre.
+        peuplées = [tranche for tranche in bloc["bands"]
+                    if tranche["female"] or tranche["male"]]
+        self.assertGreaterEqual(len(peuplées), 4)
+
+    def test_the_bands_read_full_time_amounts(self):
+        """Un mi-temps se range ou son salaire a temps plein le place."""
+        from hr_insight.core.pay_equity import salary_bands_by_sex
+
+        population = _population(60, postes=("Comptable",))
+        for salarie in population.employees:
+            salarie.base_salary = 50000.0
+            if salarie.gender == "F":
+                salarie.fte = 0.5
+                salarie.base_salary = 25000.0
+        bloc = salary_bands_by_sex(population, self.config)
+        # Tout le monde a 50 000 a temps plein : aucune plage, donc rien a
+        # dessiner — et surtout pas deux groupes separes, qui feraient
+        # croire a un ecart la ou il n'y en a pas.
+        self.assertFalse(bloc["available"])
+        self.assertIn("étalent", bloc["warning"])
+
+    def test_a_group_too_small_is_not_drawn(self):
+        from hr_insight.core.pay_equity import salary_bands_by_sex
+
+        population = self._étalé(taille=8)
+        bloc = salary_bands_by_sex(population, self.config)
+        self.assertFalse(bloc["available"])
+        self.assertIn("insuffisant", bloc["warning"])
+        self.assertEqual(bloc["bands"], [])
+
+
+class TestTheSpreadOfBothSexes(unittest.TestCase):
+    """Les boites a moustaches, sur la base de comparaison de la page."""
+
+    def setUp(self):
+        self.config = make_config()
+
+    def test_the_boxes_are_drawn_on_full_time_amounts(self):
+        from hr_insight.core import metrics
+
+        population = _population(60, postes=("Comptable",))
+        for rang, salarie in enumerate(population.employees):
+            # La meme grille pour les deux sexes — « rang // 2 » : le sexe
+            # alterne a chaque rang, et un pas sur le rang lui-meme aurait
+            # donne deux echelles differentes, donc un ecart residuel qui
+            # n'aurait rien appris.
+            salarie.base_salary = 40000.0 + ((rang // 2) % 10) * 500
+            if salarie.gender == "F":
+                salarie.fte = 0.5
+                salarie.base_salary /= 2
+        versé = metrics.segment_by_sex(population, self.config, "job_title")[0]
+        plein = metrics.segment_by_sex(population, self.config, "job_title",
+                                       full_time=True)[0]
+        # Sur les montants verses, les femmes sont deux fois moins payees ;
+        # a temps de travail egal, les deux medianes se rejoignent.
+        self.assertGreater(versé["median_gap"], 45.0)
+        self.assertAlmostEqual(plein["median_gap"], 0.0, places=6)
+
+    def test_a_half_segment_without_working_time_is_not_drawn(self):
+        """Ses percentiles designeraient les rares salaries calculables."""
+        from hr_insight.core import metrics
+
+        population = _population(60, postes=("Comptable",))
+        for rang, salarie in enumerate(population.employees):
+            salarie.base_salary = 40000.0 + rang * 100
+            if salarie.gender == "F" and rang > 5:
+                salarie.fte = None
+        ligne = metrics.segment_by_sex(population, self.config, "job_title",
+                                       full_time=True)[0]
+        self.assertFalse(ligne["female_chartable"])
+        self.assertTrue(ligne["male_chartable"])

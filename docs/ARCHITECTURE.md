@@ -221,6 +221,26 @@ calcul : il commande le classement et la mention affichée. Le logiciel ne
 décide pas — un écart significatif peut être justifié par des critères
 objectifs, un écart non significatif reste un écart.
 
+### Ce que la page montre
+
+Cinq lectures dans une barre subordonnée, une seule à l'écran : les écarts
+classés, le détail d'un poste, la répartition par tranche de rémunération, la
+dispersion des deux sexes, la répartition par quartile. C'est la mécanique de
+l'onglet Graphique, et elle vaut ici pour la même raison : cinq lectures
+empilées deviennent cinq vignettes au bout d'un long défilement, chacune
+ayant perdu le survol, le zoom et l'échelle qui la rendent lisible.
+
+Toutes lisent la même base de comparaison. Les deux graphiques la reçoivent
+du moteur et non de la vue : `metrics.segment_by_sex(..., full_time=True)`
+pour les boîtes, `pay_equity.salary_bands_by_sex(...)` pour la pyramide. Un
+graphique qui ferait sa propre division par le temps de travail finirait par
+montrer autre chose que le tableau posé à côté.
+
+Les tranches de la pyramide sont découpées sur l'étendue du groupe montré, et
+cette étendue est publiée avec elles : les couper sur toute la population
+aurait rendu deux postes comparables entre eux, mais sur un poste dont les
+salaires tiennent en cinq mille euros, sept tranches sur huit seraient vides.
+
 **Tout se refait.** Le classeur porte, poste par poste, le bloc à temps
 plein : moyennes, médianes, écarts, effectifs portant l'écart et couverture,
 chacun en formule sur les données individuelles. Vérifié en exécutant ces
