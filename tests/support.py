@@ -1,4 +1,17 @@
-"""Utilitaires de test. Aucune donnee RH reelle n'est utilisee."""
+"""Utilitaires de test. Aucune donnee RH reelle n'est utilisee.
+
+Une regle vaut pour tous les tests d'interface, et elle ne se rattrape pas :
+**une seule racine Tk par processus**. Une seconde `tkinter.Tk()`, creee
+alors que des fenetres precedentes ont lance des analyses — donc des fils de
+calcul —, fait ecrire a Tcl « async handler deleted by the wrong thread » et
+**terminer le processus** : pas d'exception, pas de trace, pas de decompte
+final. Une suite verte peut ainsi disparaitre sans laisser de resultat.
+
+Un test qui a besoin d'un widget isole le construit donc sur la fenetre de
+l'outil (`Application`), et non sur une racine a lui. Les sondes
+`_display_answers()` font exception : elles creent une racine et la
+detruisent aussitot, avant qu'aucun fil n'existe.
+"""
 
 from __future__ import annotations
 

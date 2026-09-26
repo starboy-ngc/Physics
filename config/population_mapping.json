@@ -166,5 +166,6 @@
     "birth_date",
     "employee_id"
   ],
-  "max_filter_values": 60
+  "max_filter_values": 60,
+  "max_uncompressed_mb": 512
 }

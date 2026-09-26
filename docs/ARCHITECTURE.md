@@ -299,6 +299,31 @@ XML) domine et l'analyse dépasse les 10 secondes ; au-delà de ~200 000, la
 population entièrement en mémoire deviendrait contraignante sur un poste à
 8 Go.
 
+### Un plafond pour ce que l'archive annonce
+
+Un `.xlsx` est une archive : trois mégaoctets sur le disque peuvent en
+annoncer trois mille une fois décompressés. Lus tels quels, ils ne
+produisent pas une erreur mais une mort — le système tue le processus avant
+que l'outil ait pu dire quoi que ce soit, et une fenêtre qui disparaît ne
+laisse personne comprendre.
+
+Chaque morceau lu (l'onglet, les chaînes partagées, les styles) est donc
+comparé à un plafond **avant** d'être lu, puis la lecture elle-même est
+bornée, au cas où l'en-tête mentirait. Le plafond est mesuré : un onglet de
+200 000 salariés pèse 149 Mio décompressé ; il est fixé à 512 Mio, et il se
+règle — `population_mapping.max_uncompressed_mb` — pour un poste qui a la
+mémoire de lire plus.
+
+### Une seule racine Tk par processus
+
+Deux interpréteurs Tk dans un même processus, plus des objets Tk libérés
+tardivement, font écrire à Tcl `async handler deleted by the wrong thread`
+— et **terminer le processus**, sans exception ni trace Python. L'outil
+n'ouvre qu'un interpréteur : l'écran d'accueil et la fenêtre des paramètres
+sont des `Toplevel` de la fenêtre principale. Les tests doivent tenir la
+même règle ; celui du panneau d'attente utilise la fenêtre de l'outil, et
+non une racine à lui.
+
 Un premier plafond a déjà été traité : sans garde-fou, le nuage de points
 produisait 100 000 cercles SVG et un HTML de 12,8 Mo (navigateur inutilisable).
 `chart_parameters.scatter_max_points` (5 000 par défaut) applique un

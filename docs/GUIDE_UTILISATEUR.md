@@ -376,6 +376,23 @@ la médiane des deux sexes, les effectifs qui les portent et la couverture.
 Onglet **Contrôle Pay Transparency**, colonne **Écart** : elle doit valoir
 zéro partout.
 
+## 5 bis. Un fichier que l'outil refuse de lire
+
+Un fichier Excel est une archive : quelques mégaoctets sur le disque peuvent
+en contenir plusieurs milliers une fois décompressés. L'outil vérifie donc,
+**avant de lire**, ce que l'archive annonce. Au-delà du plafond, il refuse
+et le dit — plutôt que de remplir la mémoire de la machine jusqu'à ce que le
+système mette fin à l'application sans un mot.
+
+Le plafond est de 512 Mo de données décompressées, soit environ trois fois
+la plus grosse population plausible (un onglet de 200 000 salariés en pèse
+149). Si votre poste a la mémoire de lire plus, relevez
+`max_uncompressed_mb` dans `config/population_mapping.json`.
+
+De même, un CSV dont une cellule est démesurée — ou dont un guillemet n'a
+jamais été refermé — est refusé avec ces mots-là, et non par un message
+technique.
+
 ## 5 bis bis. Pendant que l'analyse tourne
 
 Sur un fichier de cent mille lignes, l'analyse demande une dizaine de

@@ -92,6 +92,12 @@ DEFAULTS: Dict[str, Any] = {
         # n'est plus utilisable : la dimension reste analysable, mais n'est
         # pas proposee comme filtre dans l'interface.
         "max_filter_values": 60,
+        # Plafond de ce qu'un classeur a le droit de peser une fois
+        # decompresse, en megaoctets. Un .xlsx est une archive : trois
+        # megaoctets sur le disque peuvent en faire trois mille en memoire,
+        # et le systeme tue alors le processus sans un mot. Mesure : un
+        # onglet de 200 000 salaries pese 149 Mo decompresse.
+        "max_uncompressed_mb": 512,
     },
     "age_parameters": {
         "bands": [

@@ -519,3 +519,157 @@ class TestHostileWorkbooks(ImportCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAFileThatWouldKillTheProcess(unittest.TestCase):
+    """Un .xlsx est une archive : ce qu'elle annonce peut tuer la machine.
+
+    Trois megaoctets sur le disque peuvent en faire trois mille en memoire.
+    L'outil les lisait — et le systeme tuait le processus avant qu'il ait pu
+    dire quoi que ce soit. Une fenetre qui disparait ne laisse personne
+    comprendre ; un message, si.
+
+    Les tailles sont ici volontairement minuscules : c'est le plafond qui
+    est abaisse, pas le fichier qui est gonfle. Un test qui fabriquerait
+    trois gigaoctets pour prouver trois gigaoctets ne serait execute par
+    personne.
+    """
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+        self.builder = WorkbookBuilder(self.directory)
+
+    def _gros_classeur(self, octets: int) -> str:
+        corps = row(1, cell("A1", "Matricule", "inlineStr"))
+        remplissage = row(2, cell("A2", "X" * octets, "inlineStr"))
+        return self.builder.write("gros.xlsx",
+                                  [("Population", sheet(corps + remplissage))])
+
+    def test_a_sheet_beyond_the_ceiling_is_refused_with_a_message(self):
+        chemin = self._gros_classeur(2 * 1024 * 1024)
+        with self.assertRaises(ImportError_) as levee:
+            read_table(chemin, max_uncompressed=1024 * 1024)
+        message = levee.exception.message
+        self.assertIn("décompressé", message)
+        self.assertIn("max_uncompressed_mb", message)
+        # Le message dit la taille annoncee et le plafond : sans eux, on ne
+        # sait pas de combien on depasse ni quoi regler.
+        self.assertIn("Mo", message)
+
+    def test_the_same_file_reads_under_a_larger_ceiling(self):
+        """Le plafond protege ; il n'interdit pas."""
+        chemin = self._gros_classeur(2 * 1024 * 1024)
+        table = read_table(chemin, max_uncompressed=8 * 1024 * 1024)
+        self.assertEqual(table.headers, ["Matricule"])
+
+    def test_the_shared_strings_are_covered_too(self):
+        """C'est le morceau le plus facile a gonfler : il est lu en entier."""
+        partagees = ('<sst xmlns="http://schemas.openxmlformats.org/'
+                     'spreadsheetml/2006/main">'
+                     + "".join(f"<si><t>{'X' * 4096}</t></si>"
+                               for _ in range(512))
+                     + "</sst>")
+        chemin = self.builder.write(
+            "partage.xlsx",
+            [("Population", sheet(row(1, cell("A1", 0, "s"))))],
+            extra={"xl/sharedStrings.xml": partagees})
+        with self.assertRaises(ImportError_) as levee:
+            read_table(chemin, max_uncompressed=1024 * 1024)
+        self.assertIn("décompressé", levee.exception.message)
+
+    def test_a_normal_file_is_never_touched_by_the_ceiling(self):
+        """Le plafond par defaut laisse passer trois fois la plus grosse
+        population plausible : il ne doit gener personne."""
+        corps = row(1, cell("A1", "Matricule", "inlineStr")) + row(
+            2, cell("A2", "E0001", "inlineStr"))
+        chemin = self.builder.write("normal.xlsx", [("Population",
+                                                     sheet(corps))])
+        table = read_table(chemin)
+        self.assertEqual(table.rows, [["E0001"]])
+
+
+class TestACsvThatWouldKillTheProcess(unittest.TestCase):
+    """Une cellule demesuree, un guillemet jamais referme."""
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+
+    def _csv(self, contenu: str) -> str:
+        chemin = os.path.join(self.directory, "p.csv")
+        with open(chemin, "w", encoding="utf-8", newline="") as fichier:
+            fichier.write(contenu)
+        return chemin
+
+    def test_an_oversized_cell_is_refused_in_plain_words(self):
+        """« field larger than field limit » ne dit rien a personne.
+
+        Le message remontait tel quel jusqu'a l'ecran, sous la forme
+        « l'analyse a échoué pour une raison technique (Error) ».
+        """
+        chemin = self._csv("Matricule;Salaire de base\nE1;"
+                           + "9" * 200000 + "\n")
+        with self.assertRaises(ImportError_) as levee:
+            read_table(chemin)
+        message = levee.exception.message
+        self.assertIn("mal formé", message)
+        self.assertIn("cellule", message)
+
+    def test_a_normal_csv_still_reads(self):
+        chemin = self._csv("Matricule;Salaire de base\nE1;40000\n")
+        table = read_table(chemin)
+        self.assertEqual(table.rows, [["E1", "40000"]])
+
+
+class TestTheCeilingIsASetting(unittest.TestCase):
+    """Il protege d'un fichier qui tuerait le processus ; il ne doit pas
+    empecher de lire un fichier sur un poste qui a la memoire.
+
+    D'ou un reglage, et non un nombre ecrit dans le code — et une analyse
+    complete qui le lit vraiment, car un reglage que le moteur n'applique
+    pas est pire qu'un nombre en dur : il donne a croire.
+    """
+
+    def setUp(self):
+        self.directory = tempfile.mkdtemp()
+        self.builder = WorkbookBuilder(self.directory)
+        entêtes = row(1, cell("A1", "Matricule", "inlineStr"),
+                      cell("B1", "Salaire de base", "inlineStr"),
+                      cell("C1", "Remplissage", "inlineStr"))
+        # Un onglet volontairement au-dessus du megaoctet : le plafond
+        # minimal admis est d'un megaoctet, et un fichier plus leger ne
+        # prouverait rien.
+        remplissage = "X" * 30000
+        lignes = "".join(
+            row(index + 2, cell(f"A{index + 2}", f"E{index:04d}", "inlineStr"),
+                cell(f"B{index + 2}", 40000 + index),
+                cell(f"C{index + 2}", remplissage, "inlineStr"))
+            for index in range(40))
+        self.source = self.builder.write("population.xlsx",
+                                         [("Population",
+                                           sheet(entêtes + lignes))])
+
+    def _analyse(self, mégaoctets=None):
+        from hr_insight.core.config import (load_configuration,
+                                            write_default_configuration)
+        from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+        import json
+
+        config_dir = os.path.join(self.directory, f"config{mégaoctets}")
+        write_default_configuration(config_dir)
+        if mégaoctets is not None:
+            chemin = os.path.join(config_dir, "population_mapping.json")
+            with open(chemin, encoding="utf-8") as fichier:
+                données = json.load(fichier)
+            données["max_uncompressed_mb"] = mégaoctets
+            with open(chemin, "w", encoding="utf-8") as fichier:
+                json.dump(données, fichier)
+        return run_analysis(AnalysisRequest(source_path=self.source,
+                                            config_dir=config_dir))
+
+    def test_the_default_reads_the_file(self):
+        résultat = self._analyse()
+        self.assertEqual(résultat.payload["population"]["headcount"], 40)
+
+    def test_lowering_it_refuses_the_same_file(self):
+        with self.assertRaises(ImportError_):
+            self._analyse(mégaoctets=1)

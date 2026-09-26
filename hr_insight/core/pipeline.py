@@ -95,7 +95,8 @@ def load_population(
     if progress:
         progress.enter("lecture")
     table = read_table(source_path, sheet,
-                       progress.within if progress else None)
+                       progress.within if progress else None,
+                       max_uncompressed=_uncompressed_limit(config))
     log_event("import", "read_table", duration=_time.perf_counter() - started,
               detail=f"rows={table.row_count}")
 
@@ -135,6 +136,18 @@ _STAGES: Sequence[tuple] = (
     ("segments", "Segments", 0.18),
     ("tracabilite", "Traçabilité", 0.03),
 )
+
+
+def _uncompressed_limit(config: Configuration) -> int:
+    """Plafond de decompression, en octets, tel que le parametrage le fixe.
+
+    Il protege d'un fichier qui tuerait le processus avant que l'outil ait
+    pu dire quoi que ce soit ; il n'a donc pas sa place dans le code, ou
+    personne ne pourrait le relever pour un poste qui a la memoire.
+    """
+    mégaoctets = config.number("population_mapping.max_uncompressed_mb",
+                               512, minimum=1, integer=True)
+    return int(mégaoctets) * 1024 * 1024
 
 
 def stage_labels() -> List[str]:

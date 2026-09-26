@@ -30,6 +30,18 @@ _EXCEL_EPOCH = _dt.date(1899, 12, 30)
 
 MAX_CSV_SNIFF_BYTES = 8192
 
+#: Plafond de taille d'un morceau de classeur *une fois decompresse*, en
+#: octets. Un fichier .xlsx est une archive : trois megaoctets sur le disque
+#: peuvent en faire trois milliards en memoire, et la machine n'a alors plus
+#: qu'a mourir — sans un mot, le systeme tuant le processus avant que
+#: l'outil ait pu dire quoi que ce soit.
+#:
+#: Le plafond est mesure, non devine : un onglet de 200 000 salaries pese
+#: 149 Mio decompresse. Cinq cent douze laissent donc passer trois fois la
+#: plus grosse population plausible, et arretent la bombe. Il se regle —
+#: « population_mapping.max_uncompressed_mb ».
+DEFAULT_MAX_UNCOMPRESSED = 512 * 1024 * 1024
+
 #: Nombre de lignes entre deux annonces d'avancement. La lecture d'un gros
 #: fichier pese la moitie du temps d'une analyse : sans annonce, la barre de
 #: chargement reste immobile pendant dix secondes, et l'outil parait fige au
@@ -56,12 +68,16 @@ class Table:
 
 
 def read_table(path: str, sheet: str | None = None,
-               progress: Optional[Progress] = None) -> Table:
+               progress: Optional[Progress] = None,
+               max_uncompressed: Optional[int] = None) -> Table:
     """Point d'entree unique d'import.
 
     `progress` est appele au fil de la lecture avec la part du fichier deja
     parcourue. Il est facultatif : le moteur lit un fichier de la meme
     facon, qu'une fenetre regarde ou non.
+
+    `max_uncompressed` plafonne ce qu'un classeur a le droit de peser une
+    fois decompresse. Voir `DEFAULT_MAX_UNCOMPRESSED`.
     """
     if not os.path.isfile(path):
         raise ImportError_(
@@ -73,7 +89,7 @@ def read_table(path: str, sheet: str | None = None,
     if extension in (".csv", ".txt"):
         return _read_csv(path, progress)
     if extension in (".xlsx", ".xlsm"):
-        return _read_xlsx(path, sheet, progress)
+        return _read_xlsx(path, sheet, progress, max_uncompressed)
     raise ImportError_(
         "Format de fichier non pris en charge. "
         "Formats acceptés : Excel (.xlsx, .xlsm) et CSV (.csv).",
@@ -116,6 +132,17 @@ def _read_csv(path: str, progress: Optional[Progress] = None) -> Table:
             "Enregistrez-le au format \"CSV UTF-8\" depuis Excel.",
             technical=f"{type(exc).__name__}: {exc}",
         ) from exc
+    except csv.Error as exc:
+        # Une cellule de deux cents megaoctets, un guillemet jamais referme :
+        # le lecteur de Python s'arrete sur « field larger than field
+        # limit », qui ne dit rien a personne et remontait jusqu'a l'ecran
+        # sous la forme « erreur technique (Error) ».
+        raise ImportError_(
+            "Le fichier CSV est mal formé : une cellule dépasse la taille "
+            "admise, ou un guillemet n'a pas été refermé. Vérifiez le "
+            "fichier, puis réenregistrez-le depuis Excel.",
+            technical=f"{type(exc).__name__}: {exc}",
+        ) from exc
     if not rows:
         raise ImportError_(
             "Le fichier importe est vide.",
@@ -142,12 +169,16 @@ def _sniff_delimiter(sample: str) -> str:
 
 
 def _read_xlsx(path: str, sheet: str | None,
-               progress: Optional[Progress] = None) -> Table:
+               progress: Optional[Progress] = None,
+               max_uncompressed: Optional[int] = None) -> Table:
+    plafond = (DEFAULT_MAX_UNCOMPRESSED if max_uncompressed is None
+               else int(max_uncompressed))
     try:
         with zipfile.ZipFile(path) as archive:
-            shared = _read_shared_strings(archive)
-            date_styles = _read_date_styles(archive)
+            shared = _read_shared_strings(archive, plafond)
+            date_styles = _read_date_styles(archive, plafond)
             sheet_path = _resolve_sheet_path(archive, sheet)
+            _refuse_if_too_large(archive, sheet_path, plafond)
             rows = _read_sheet(archive, sheet_path, shared, date_styles,
                                progress)
     except zipfile.BadZipFile as exc:
@@ -174,23 +205,71 @@ def _read_xlsx(path: str, sheet: str | None,
     return Table(headers=headers, rows=body, source_name=os.path.basename(path))
 
 
-def _read_shared_strings(archive: zipfile.ZipFile) -> List[str]:
+def _refuse_if_too_large(archive: zipfile.ZipFile, name: str,
+                         limit: int) -> None:
+    """Refuse un morceau de classeur trop lourd une fois decompresse.
+
+    Un .xlsx est une archive, et l'archive annonce la taille de chacun de
+    ses morceaux : trois megaoctets sur le disque peuvent en annoncer trois
+    milliards. Sans ce controle, l'outil les lisait — et le systeme tuait le
+    processus avant qu'il ait pu dire quoi que ce soit. Une fenetre qui
+    disparait ne laisse personne comprendre ; un message, si.
+    """
+    try:
+        taille = archive.getinfo(name).file_size
+    except KeyError:
+        return
+    if taille > limit:
+        raise ImportError_(
+            f"Ce fichier Excel annonce {taille // (1024 * 1024)} Mo de "
+            f"données une fois décompressé, au-delà du plafond de "
+            f"{limit // (1024 * 1024)} Mo. Scindez le fichier, ou relevez "
+            "« max_uncompressed_mb » dans population_mapping.json si votre "
+            "poste a la mémoire pour le lire.",
+            technical=f"uncompressed member too large: {name} = {taille}",
+        )
+
+
+def _read_bounded(archive: zipfile.ZipFile, name: str, limit: int) -> bytes:
+    """Lit un morceau, sans croire l'en-tete sur parole.
+
+    La taille annoncee est verifiee d'abord — c'est elle qui evite de lire
+    quoi que ce soit —, puis la lecture elle-meme est bornee : un en-tete
+    peut mentir, et un fichier taille pour cela ferait exactement ce que ce
+    plafond existe pour empecher.
+    """
+    _refuse_if_too_large(archive, name, limit)
+    with archive.open(name) as flux:
+        contenu = flux.read(limit + 1)
+    if len(contenu) > limit:
+        raise ImportError_(
+            "Ce fichier Excel contient plus de données qu'annoncé : sa "
+            "lecture a été interrompue au-delà du plafond de "
+            f"{limit // (1024 * 1024)} Mo.",
+            technical=f"member exceeds announced size: {name}",
+        )
+    return contenu
+
+
+def _read_shared_strings(archive: zipfile.ZipFile,
+                         limit: int = DEFAULT_MAX_UNCOMPRESSED) -> List[str]:
     name = "xl/sharedStrings.xml"
     if name not in archive.namelist():
         return []
-    root = ElementTree.fromstring(archive.read(name))
+    root = ElementTree.fromstring(_read_bounded(archive, name, limit))
     values: List[str] = []
     for item in root.findall(f"{_NS}si"):
         values.append("".join(node.text or "" for node in item.iter(f"{_NS}t")))
     return values
 
 
-def _read_date_styles(archive: zipfile.ZipFile) -> set:
+def _read_date_styles(archive: zipfile.ZipFile,
+                      limit: int = DEFAULT_MAX_UNCOMPRESSED) -> set:
     """Indices de style dont le format numerique correspond a une date."""
     name = "xl/styles.xml"
     if name not in archive.namelist():
         return set()
-    root = ElementTree.fromstring(archive.read(name))
+    root = ElementTree.fromstring(_read_bounded(archive, name, limit))
     custom_date_ids = set()
     for fmt in root.iter(f"{_NS}numFmt"):
         code = (fmt.get("formatCode") or "").lower()
