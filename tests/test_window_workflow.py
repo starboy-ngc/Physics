@@ -141,11 +141,20 @@ class TestOpeningAFile(WindowCase):
         self.load()
         self.assertIn("colonnes reconnues", self.app.mapping_label.cget("text"))
 
-    def test_an_unrecognised_column_points_at_the_settings(self):
-        """C'est la reponse a « pourquoi ma colonne n'apparait pas ? »."""
+    def test_an_unrecognised_column_points_at_what_to_do(self):
+        """C'est la reponse a « pourquoi ma colonne n'apparait pas ? ».
+
+        Elle renvoyait aux « Paramètres », ou personne n'allait la
+        chercher. Le bouton qui associe les colonnes est maintenant sous
+        le fichier, la ou l'on vient de le charger : le message y renvoie,
+        et le bouton s'allume.
+        """
         self.load(self.source("extra.csv", extra_headers=["Prime de panier"],
                               extra=lambda index: [100 + index]))
-        self.assertIn("Paramètres", self.app.mapping_label.cget("text"))
+        message = self.app.mapping_label.cget("text")
+        self.assertIn("non reconnue", message)
+        self.assertIn("associez", message.lower())
+        self.assertFalse(self.app.columns_button.instate(["disabled"]))
 
     def test_the_quality_tab_comes_up_first(self):
         """On regarde la qualite du fichier avant de le croire."""
@@ -475,3 +484,122 @@ class TestThemeAndIdentities(WindowCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestMappingAColumnFromTheWindow(WindowCase):
+    """Importer un fichier, associer ses colonnes, analyser — sans éditeur.
+
+    C'est le parcours complet de quelqu'un dont le fichier porte des
+    notions que l'outil ne connait pas : une direction, une revue du
+    personnel, une prime maison. Jusqu'ici il fallait ouvrir un fichier
+    JSON au bloc-notes pour les declarer. Ce test verifie que la fenetre
+    suffit, et que ce qui est declare arrive jusqu'aux analyses.
+    """
+
+    COLONNES = ["Direction", "Revue du personnel", "Prime exceptionnelle"]
+
+    def _fichier(self):
+        return self.source(
+            "maison.csv", extra_headers=self.COLONNES,
+            extra=lambda index: [["Nord", "Sud"][index % 2],
+                                 ["Talent", "Performance",
+                                  "En décalage"][index % 3],
+                                 900 + index])
+
+    def _ecran(self):
+        from hr_insight.ui.settings import SettingsWindow
+
+        fenêtre = SettingsWindow(
+            self.app, self.app.configuration, self.directory, self.app.fonts,
+            headers=self.app.headers, on_saved=self.app._settings_saved,
+            samples=getattr(self.app, "_samples", None))
+        fenêtre.update()
+        return fenêtre
+
+    def test_the_window_is_enough_to_declare_a_column(self):
+        from hr_insight.ui.settings import ORGANISATION
+
+        self.load(self._fichier())
+        # Au depart, ces colonnes ne sont pas reconnues.
+        self.assertIn("non reconnue", self.app.mapping_label.cget("text"))
+        self.assertNotIn("Direction",
+                         [self.app.filter_labels[field]
+                          for field in self.app.filter_vars]
+                         if hasattr(self.app, "filter_labels")
+                         else list(self.app.filter_vars))
+
+        fenêtre = self._ecran()
+        try:
+            rangs = {nom: rang for rang, nom in enumerate(
+                nom for nom in self.app.headers if str(nom).strip())}
+            for colonne in ("Direction", "Revue du personnel"):
+                fenêtre.assignments[colonne].set(ORGANISATION)
+                fenêtre._chose(colonne, fenêtre._boxes[rangs[colonne]])
+            # Une prime est un montant, pas un axe : elle se rattache a un
+            # champ existant du modele.
+            fenêtre.assignments["Prime exceptionnelle"].set(
+                fenêtre._label_of("variable_pay"))
+            fenêtre.update()
+            with Dialogs(directory=self.directory):
+                fenêtre.save()
+        finally:
+            if fenêtre.winfo_exists():
+                fenêtre.destroy()
+        self.app.update()
+
+        # 1. Le fichier de parametres porte les deux nouvelles notions.
+        chemin = os.path.join(self.directory, "population_mapping.json")
+        with open(chemin, encoding="utf-8") as fichier:
+            section = json.load(fichier)
+        self.assertIn("Direction", section["fields"]["direction"])
+        self.assertIn("Revue du personnel",
+                      section["fields"]["revue_du_personnel"])
+        self.assertIn("Prime exceptionnelle", section["fields"]["variable_pay"])
+        déclarées = {entry["field"] for entry in section["dimensions"]}
+        self.assertTrue({"direction", "revue_du_personnel"} <= déclarées)
+
+        # 2. La fenetre principale les propose aussitot en filtre.
+        self.assertIn("direction", self.app.filter_vars)
+        self.assertIn("revue_du_personnel", self.app.filter_vars)
+        self.assertNotIn("non reconnue", self.app.mapping_label.cget("text"))
+
+        # 3. Et l'analyse sait grouper par elles.
+        self.analyse()
+        from hr_insight.core.pay_equity import calculate_category_gaps
+
+        bloc = calculate_category_gaps(self.app.result.filtered,
+                                       self.app.result.config,
+                                       "revue_du_personnel")
+        self.assertEqual(
+            sorted(item["category"] for item in bloc["categories"]),
+            ["En décalage", "Performance", "Talent"])
+        # La prime rejoint bien le champ de la part variable.
+        self.assertGreater(
+            self.app.result.payload["pay_equity"]["variable"]["female_count"],
+            0)
+
+    def test_the_new_axis_is_offered_on_the_gaps_page(self):
+        """Declarer une notion sert a comparer avec : elle doit paraitre
+        dans « Comparer par »."""
+        from hr_insight.ui.settings import ORGANISATION
+
+        self.load(self._fichier())
+        fenêtre = self._ecran()
+        try:
+            rang = [nom for nom in self.app.headers
+                    if str(nom).strip()].index("Direction")
+            fenêtre.assignments["Direction"].set(ORGANISATION)
+            fenêtre._chose("Direction", fenêtre._boxes[rang])
+            fenêtre.update()
+            with Dialogs(directory=self.directory):
+                fenêtre.save()
+        finally:
+            if fenêtre.winfo_exists():
+                fenêtre.destroy()
+        self.analyse()
+        self.app.tabbar.select("equite")
+        self.app.update()
+        self.assertIn("direction", self.app._category_fields)
+        self.assertIn("Direction",
+                      list(self.app.category_choice.cget("values")))

@@ -314,6 +314,37 @@ bornée, au cas où l'en-tête mentirait. Le plafond est mesuré : un onglet de
 règle — `population_mapping.max_uncompressed_mb` — pour un poste qui a la
 mémoire de lire plus.
 
+### Le mapping se règle dans la fenêtre
+
+Le paragraphe 7 veut un mapping configurable ; il l'était, dans un fichier
+JSON. Une notion propre à l'entreprise — direction, revue du personnel,
+convention — demandait donc d'ouvrir `population_mapping.json` au
+bloc-notes, d'y ajouter un champ, ses alias, puis une entrée dans
+`dimensions`. Peu d'utilisateurs le feront, et aucun ne devrait avoir à le
+faire.
+
+L'écran d'association tient en une ligne par colonne : son intitulé, ses
+premières valeurs, son rôle, et une case « filtre et axe ». Le rôle
+« Organisation » fait les trois gestes d'un coup — créer le champ à partir
+de l'intitulé, en faire l'alias de la colonne, le déclarer comme
+dimension — parce que c'est le cas courant.
+
+Trois règles tiennent cet écran :
+
+- **Un seul état par décision.** Les cases des colonnes et le panneau des
+  champs sans colonne écrivent dans le même dictionnaire (`rows`), et c'est
+  lui que `collect()` traduit. Deux jeux de cases pour une même vérité
+  finissaient par se contredire — l'écran disait « proposé », le fichier
+  disait non.
+- **Le libellé se montre, le nom technique s'enregistre.** La liste propose
+  « Salaire de base » ; le fichier garde `base_salary`, qui s'écrit aussi en
+  ligne de commande. `_field_of` accepte les deux, car un fichier de
+  paramètres se corrige aussi à la main.
+- **La fenêtre entière défile.** Empilé entre des sections de hauteur fixe,
+  le bloc des colonnes tombait à deux pixels de haut sur un écran
+  ordinaire : la fonction existait et restait introuvable. Un test mesure
+  désormais sa hauteur.
+
 ### Une seule racine Tk par processus
 
 Deux interpréteurs Tk dans un même processus, plus des objets Tk libérés

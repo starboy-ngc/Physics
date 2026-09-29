@@ -80,10 +80,20 @@ class TestColumnAssignment(SettingsCase):
             self.assertIn(header, self.window.assignments)
 
     def test_the_recognised_columns_start_assigned(self):
-        self.assertEqual(self.window.assignments["Matricule"].get(),
+        """La liste montre un libelle, le reglage garde le nom technique.
+
+        « employee_id » ne dit rien a qui n'a pas ecrit le logiciel ; c'est
+        pourtant ce nom-la qui s'enregistre, et qui s'ecrit en ligne de
+        commande.
+        """
+        champ = self.window._field_of
+        self.assertEqual(champ(self.window.assignments["Matricule"].get()),
                          "employee_id")
-        self.assertEqual(self.window.assignments["Salaire de base"].get(),
-                         "base_salary")
+        self.assertEqual(
+            champ(self.window.assignments["Salaire de base"].get()),
+            "base_salary")
+        self.assertEqual(self.window.assignments["Matricule"].get(),
+                         "Matricule")
 
     def test_an_unrecognised_column_starts_ignored(self):
         """Elle doit paraitre a l'ecran pour qu'on puisse la rattacher, mais
@@ -287,8 +297,10 @@ class TestCreatingAField(SettingsCase):
     def test_a_new_field_is_created_and_assigned(self):
         self._answer("prime_panier")
         self._create()
-        self.assertEqual(self.window.assignments["Prime de panier"].get(),
-                         "prime_panier")
+        self.assertEqual(
+            self.window._field_of(
+                self.window.assignments["Prime de panier"].get()),
+            "prime_panier")
         section = self.window.collect()
         self.assertIn("Prime de panier", section["fields"]["prime_panier"])
 
@@ -303,7 +315,8 @@ class TestCreatingAField(SettingsCase):
         """Sans accent ni espace : il s'ecrit aussi en ligne de commande."""
         self._answer("Prime de Panier été")
         self._create()
-        name = self.window.assignments["Prime de panier"].get()
+        name = self.window._field_of(
+            self.window.assignments["Prime de panier"].get())
         self.assertTrue(name.isascii(), name)
         self.assertNotIn(" ", name)
 
@@ -326,10 +339,14 @@ class TestCreatingAField(SettingsCase):
                          IGNORED)
 
     def test_the_new_field_is_offered_to_every_other_column(self):
+        """Deux colonnes d'un meme fichier doivent pouvoir parler de la
+        meme chose : le champ cree est propose partout, sous son libelle."""
         self._answer("prime_panier")
-        box = self._create()
+        self._create()
         for other in self.window._boxes:
-            self.assertIn("prime_panier", other.cget("values"))
+            self.assertIn("Prime de panier", other.cget("values"))
+        self.assertEqual(self.window._field_of("Prime de panier"),
+                         "prime_panier")
 
 
 class TestSavingWhenTheFolderRefuses(SettingsCase):
@@ -429,3 +446,157 @@ class TestWithoutAFile(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestTheColumnsAreVisible(SettingsCase):
+    """Le bloc des colonnes doit avoir la place de se montrer.
+
+    Il ne l'avait pas : empile entre quatre sections de hauteur fixe, il
+    recevait ce qui restait — deux pixels, intitule compris. La fonction
+    existait, elle etait introuvable. Ce test mesure ce que la fenetre
+    montre, et non ce qu'elle contient.
+    """
+
+    def test_the_columns_block_has_room(self):
+        self.window.update()
+        self.assertGreater(self.window._columns_card.winfo_height(), 200,
+                           "le bloc des colonnes est écrasé")
+
+    def test_every_column_has_a_visible_row(self):
+        self.window.update()
+        for header in HEADERS:
+            with self.subTest(colonne=header):
+                self.assertIn(header, self.window.assignments)
+                self.assertIn(header, self.window.dimension_vars)
+
+
+@needs_display
+class TestTheRoleOfAColumn(SettingsCase):
+    """Une colonne, un rôle, une case : le geste tient en une ligne."""
+
+    def _box_of(self, header: str):
+        rang = [nom for nom in HEADERS if str(nom).strip()].index(header)
+        return self.window._boxes[rang]
+
+    def test_organisation_makes_a_column_an_axis_and_a_filter(self):
+        """« Organisation » fait tout : le champ, son libelle, sa case.
+
+        C'est le cas courant — direction, etablissement, revue du
+        personnel. Il demandait deux ecrans et un nom technique ; il
+        demande un choix.
+        """
+        from hr_insight.ui.settings import ORGANISATION
+
+        colonne = "Prime de panier"
+        self.window.assignments[colonne].set(ORGANISATION)
+        self.window._chose(colonne, self._box_of(colonne))
+        section = self.window.collect()
+        champ = self.window._field_of(self.window.assignments[colonne].get())
+        self.assertEqual(champ, "prime_de_panier")
+        # La colonne devient l'alias du champ : l'association tient d'un
+        # fichier a l'autre.
+        self.assertIn(colonne, section["fields"][champ])
+        # Et le champ est propose comme axe et comme filtre, sous le
+        # libelle du fichier.
+        déclarées = {entry["field"]: entry["label"]
+                     for entry in section["dimensions"]}
+        self.assertEqual(déclarées.get(champ), colonne)
+
+    def test_unticking_a_column_withdraws_its_field(self):
+        """La case de la ligne commande l'etat du champ, sans doublon."""
+        self.window.dimension_vars["Grade"].set(False)
+        self.window.update()
+        section = self.window.collect()
+        self.assertNotIn("grade",
+                         [entry["field"] for entry in section["dimensions"]])
+
+    def test_ticking_a_column_proposes_its_field(self):
+        """Une colonne dont le champ n'etait pas propose le devient."""
+        self.window.dimension_vars["Nom"].set(False)   # etat de depart net
+        self.window.dimension_vars["BU"].set(False)
+        self.window.update()
+        self.window.dimension_vars["BU"].set(True)
+        self.window.update()
+        section = self.window.collect()
+        self.assertIn("business_unit",
+                      [entry["field"] for entry in section["dimensions"]])
+
+    def test_a_field_carried_by_a_column_is_not_offered_twice(self):
+        """Deux cases pour une decision finissent par se contredire."""
+        libellés = [enfant.winfo_children()[0].get()
+                    for enfant in self.window._dimension_area.winfo_children()]
+        self.assertNotIn("Grade", libellés)
+        # Mais l'age, qu'aucune colonne ne porte, s'y trouve.
+        self.assertTrue(any("ge" in str(libellé) for libellé in libellés),
+                        libellés)
+
+
+@needs_display
+class TestTheFirstValuesAreShown(unittest.TestCase):
+    """Voir ce que porte une colonne vaut mieux que lire son intitule."""
+
+    def setUp(self):
+        from hr_insight.core.config import load_configuration
+        from hr_insight.ui.app import Application
+        from hr_insight.ui.settings import SettingsWindow
+
+        self.app = Application()
+        self.window = SettingsWindow(
+            self.app, load_configuration(), tempfile.mkdtemp(),
+            self.app.fonts, headers=["Matricule", "Direction"],
+            samples=[["E001", "Nord"], ["E002", "Sud"], ["E003", "Nord"]])
+        self.window.update()
+
+    def tearDown(self):
+        self.window.destroy()
+        self.app.destroy()
+
+    def test_the_distinct_values_are_shown(self):
+        self.assertEqual(self.window._sample_of(1), "Nord · Sud")
+
+    def test_a_long_value_is_cut_rather_than_pushing_the_row(self):
+        self.window.samples = [["x" * 200, "y" * 200]]
+        self.assertLessEqual(len(self.window._sample_of(0)), 44)
+        self.assertTrue(self.window._sample_of(0).endswith("…"))
+
+    def test_a_column_without_values_shows_nothing(self):
+        self.window.samples = [["E001"], ["E002"]]
+        self.assertEqual(self.window._sample_of(1), "")
+
+
+@needs_display
+class TestTheWarningFades(SettingsCase):
+    """L'ambre dit « rattachée à rien ». Elle doit s'éteindre au moment où
+    la colonne est rattachée — sinon l'écran alerte sur ce qui vient d'être
+    réglé."""
+
+    def _colour_of(self, header: str) -> str:
+        return self.window._labels_widgets[header].cget("foreground")
+
+    def test_an_unmapped_column_is_flagged(self):
+        from hr_insight.ui import theme
+
+        self.assertEqual(self._colour_of("Prime de panier"), theme.WARN)
+        self.assertEqual(self._colour_of("Grade"), theme.INK_SOFT)
+
+    def test_mapping_it_turns_the_flag_off(self):
+        from hr_insight.ui import theme
+        from hr_insight.ui.settings import ORGANISATION
+
+        rang = [nom for nom in HEADERS
+                if str(nom).strip()].index("Prime de panier")
+        self.window.assignments["Prime de panier"].set(ORGANISATION)
+        self.window._chose("Prime de panier", self.window._boxes[rang])
+        self.window.update()
+        self.assertEqual(self._colour_of("Prime de panier"), theme.INK_SOFT)
+
+    def test_ignoring_a_column_flags_it_again(self):
+        from hr_insight.ui import theme
+        from hr_insight.ui.settings import IGNORED
+
+        rang = [nom for nom in HEADERS if str(nom).strip()].index("Grade")
+        self.window.assignments["Grade"].set(IGNORED)
+        self.window._chose("Grade", self.window._boxes[rang])
+        self.window.update()
+        self.assertEqual(self._colour_of("Grade"), theme.WARN)

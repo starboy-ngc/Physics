@@ -376,6 +376,49 @@ la médiane des deux sexes, les effectifs qui les portent et la couverture.
 Onglet **Contrôle Pay Transparency**, colonne **Écart** : elle doit valoir
 zéro partout.
 
+## 4 bis. Associer les colonnes de votre fichier
+
+L'outil reconnaît les intitulés courants — « Matricule », « Salaire de
+base », « Date d'entrée ». Votre fichier porte aussi ses propres notions :
+une direction, une revue du personnel, une convention collective, une prime
+maison. Elles ne se devinent pas, et elles n'ont pas à être déclarées dans
+un fichier de configuration au bloc-notes : **le bouton « Associer les
+colonnes… », sous le fichier chargé, ouvre l'écran qui le fait.**
+
+Une ligne par colonne du fichier, et sur chaque ligne :
+
+| | |
+|---|---|
+| **Colonne** | son intitulé, tel qu'il est dans le fichier. En ambre tant qu'elle n'est rattachée à rien. |
+| **Premières valeurs** | ce qu'elle contient réellement. « Direction » peut porter des régions comme des noms de personnes : l'intitulé ne suffit pas à trancher. |
+| **Rôle** | ce qu'elle devient. |
+| **Filtre et axe** | cochée, la notion est proposée partout : dans « Filtrer », dans « Comparer par », dans « Colorer par ». |
+
+Trois rôles possibles :
+
+- **Un champ du modèle** — Salaire de base, Sexe, Date d'entrée, Temps de
+  travail… C'est ce que l'outil calcule. Une colonne rattachée au salaire
+  devient le salaire.
+- **Organisation (axe et filtre)** — pour tout ce que votre entreprise a en
+  propre : direction, établissement, revue du personnel, filière. La notion
+  est créée à partir de l'intitulé, et aussitôt proposée comme filtre et
+  comme axe d'analyse. **C'est le cas courant.**
+- **(ignorée)** — la colonne n'est pas lue. Une colonne ignorée ne pèse rien
+  et n'apparaît nulle part.
+
+Deux colonnes ne peuvent pas recevoir le même champ : l'une écraserait
+l'autre en silence, et l'analyse porterait sur la mauvaise. L'écran le
+refuse en le disant.
+
+Sous la liste, **Champs sans colonne** : l'âge et l'ancienneté se calculent
+à partir des dates, aucune colonne ne les porte — ils se règlent là.
+
+À l'enregistrement, le fichier est relu : la colonne que vous venez de
+déclarer est immédiatement disponible dans les filtres et dans les axes,
+sans redémarrer. L'association est écrite dans
+`config/population_mapping.json` et **vaut pour les fichiers suivants** :
+elle ne se refait pas à chaque import.
+
 ## 5 bis. Un fichier que l'outil refuse de lire
 
 Un fichier Excel est une archive : quelques mégaoctets sur le disque peuvent

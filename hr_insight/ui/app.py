@@ -725,6 +725,15 @@ class Application(tk.Tk):
                                       foreground=theme.MUTED, font=self.fonts.small,
                                       wraplength=250, justify="left")
         self.mapping_label.pack(anchor="w", pady=(8, 0))
+        # Associer les colonnes se fait la ou l'on vient de charger le
+        # fichier. Renvoye aux « Paramètres », ce geste n'etait pas
+        # trouve : la colonne que l'outil ne reconnait pas est justement
+        # celle sur laquelle on veut travailler.
+        self.columns_button = ttk.Button(
+            steps, text="Associer les colonnes…", style="GhostGround.TButton",
+            command=self.open_settings)
+        self.columns_button.pack(fill="x", pady=(8, 0))
+        self.columns_button.state(["disabled"])
 
         # La periode precede les filtres : sur un fichier pluriannuel, elle
         # decide de quel instantane on parle, et tout le reste s'y applique.
@@ -1299,8 +1308,13 @@ class Application(tk.Tk):
         unknown = len(mapping.unknown_columns)
         self.mapping_label.configure(
             text=f"{len(mapping.field_to_index)} colonnes reconnues"
-                 + (f", {unknown} non reconnue(s) — voir Paramètres"
-                    if unknown else ""))
+                 + (f", {unknown} non reconnue(s) — associez-les ci-dessous"
+                    if unknown else ""),
+            foreground=theme.WARN if unknown else theme.MUTED)
+        self.columns_button.state(["!disabled"])
+        # Quelques lignes du fichier, pour l'ecran d'association : voir ce
+        # que porte une colonne vaut mieux que lire son intitule.
+        self._samples = [list(ligne) for ligne in table.rows[:40]]
         self._populate_filters()
         self.analyse_button.state(["!disabled"])
         self.export_button.state(["disabled"])
@@ -1314,7 +1328,8 @@ class Application(tk.Tk):
 
         SettingsWindow(self, self.configuration, self.config_dir, self.fonts,
                        headers=getattr(self, "headers", None),
-                       on_saved=self._settings_saved)
+                       on_saved=self._settings_saved,
+                       samples=getattr(self, "_samples", None))
 
     def _settings_saved(self, directory: str, path: str) -> None:
         """Applique les nouveaux parametres sans redemarrer.
@@ -1331,6 +1346,16 @@ class Application(tk.Tk):
                     self.source_path, self.configuration)
                 self.population, self.mapping = population, mapping
                 self.headers = list(table.headers)
+                self._samples = [list(ligne) for ligne in table.rows[:40]]
+                # Le compte des colonnes suit ce qui vient d'etre associe :
+                # laisser « 3 non reconnues » apres les avoir associees
+                # ferait douter de l'enregistrement.
+                inconnues = len(mapping.unknown_columns)
+                self.mapping_label.configure(
+                    text=f"{len(mapping.field_to_index)} colonnes reconnues"
+                         + (f", {inconnues} non reconnue(s) — associez-les "
+                            "ci-dessous" if inconnues else ""),
+                    foreground=theme.WARN if inconnues else theme.MUTED)
         except CompensationError as error:
             messagebox.showerror("Paramètres", error.message)
             return

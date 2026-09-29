@@ -35,6 +35,12 @@ IGNORED = "(ignorée)"
 #: Entree de liste ouvrant la creation d'un champ absent du modele.
 NEW_FIELD = "+ nouveau champ…"
 
+#: Entree de liste qui fait d'une colonne un axe d'analyse et un filtre,
+#: sans rien demander : c'est le cas courant — direction, etablissement,
+#: revue du personnel, convention. Le nom technique se deduit de
+#: l'intitule, et l'intitule reste celui du fichier.
+ORGANISATION = "Organisation (axe et filtre)"
+
 #: Champs calcules a partir des dates : aucune colonne du fichier ne les
 #: porte, les proposer a l'association n'aurait pas de sens.
 DERIVED_FIELDS = ("age_years", "age_band", "tenure_years", "tenure_band")
@@ -166,7 +172,7 @@ class SettingsWindow(tk.Toplevel):
     def __init__(self, master: tk.Misc, configuration: Configuration,
                  config_dir: str, fonts: Fonts,
                  headers: Optional[Sequence[str]] = None,
-                 on_saved=None):
+                 on_saved=None, samples: Optional[Sequence[Sequence[Any]]] = None):
         super().__init__(master, background=theme.GROUND)
         self.title("Paramètres")
         self.configuration = configuration
@@ -174,12 +180,22 @@ class SettingsWindow(tk.Toplevel):
         self.fonts = fonts
         self.headers = list(headers or [])
         self.on_saved = on_saved
+        #: Quelques lignes du fichier : voir ce que porte une colonne vaut
+        #: mieux que lire son intitule. « Direction » peut contenir des
+        #: noms de region comme des noms de personnes.
+        self.samples = [list(ligne) for ligne in (samples or [])]
+        #: Une case par colonne : « proposé comme filtre et comme axe ».
+        self.dimension_vars: Dict[str, tk.BooleanVar] = {}
+        #: L'intitule de chaque colonne, pour en eteindre l'alerte.
+        self._labels_widgets: Dict[str, tk.Label] = {}
         self.assignments: Dict[str, tk.StringVar] = {}
         self.rows: Dict[str, Dict[str, Any]] = {}
         self._boxes: List[ttk.Combobox] = []
         self.transient(master)
-        self.geometry("980x720")
-        self.minsize(760, 520)
+        # La fenetre s'ouvre sur ce qu'elle nomme — les colonnes — et non
+        # sur l'apparence : c'est la premiere chose qu'on vient y faire.
+        self.geometry("1060x760")
+        self.minsize(820, 480)
         self._build()
         self.grab_set()
 
@@ -215,14 +231,19 @@ class SettingsWindow(tk.Toplevel):
                                  justify="left", wraplength=520)
         self.feedback.pack(side="left")
 
-        self._build_theme(self)
-        self._build_privacy(self)
-        self._build_export(self)
-
-        body = tk.Frame(self, background=theme.GROUND)
-        body.pack(fill="both", expand=True, padx=22, pady=(16, 0))
-        self._build_columns(body)
-        self._build_dimensions(body)
+        # Toute la fenetre defile. Empilees en hauteur fixe, les cinq
+        # sections se partageaient la place au prorata de ce qui restait :
+        # sur un ecran ordinaire, les colonnes du fichier — ce que cette
+        # fenetre existe pour regler — tombaient a deux pixels de haut,
+        # intitule compris. Ce n'etait pas une maladresse d'affichage :
+        # la fonction devenait introuvable.
+        page = self._scrollable(self, background=theme.GROUND)
+        self._prepare_dimensions()
+        self._build_columns(page)
+        self._build_dimensions(page)
+        self._build_export(page)
+        self._build_privacy(page)
+        self._build_theme(page)
 
     def _build_theme(self, parent: tk.Widget) -> None:
         """Choix du theme, montre plutot que decrit.
@@ -233,7 +254,7 @@ class SettingsWindow(tk.Toplevel):
         Chaque jeu montre ses teintes : c'est plus court a lire qu'un nom.
         """
         band = tk.Frame(parent, background=theme.GROUND)
-        band.pack(side="bottom", fill="x", padx=22, pady=(4, 0))
+        band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
         tk.Label(band, text="APPARENCE", background=theme.GROUND,
@@ -268,7 +289,7 @@ class SettingsWindow(tk.Toplevel):
         reconstruite a l'ecran depuis le fichier charge.
         """
         band = tk.Frame(parent, background=theme.GROUND)
-        band.pack(side="bottom", fill="x", padx=22, pady=(4, 0))
+        band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
         tk.Label(band, text="CONFIDENTIALITÉ", background=theme.GROUND,
@@ -330,7 +351,7 @@ class SettingsWindow(tk.Toplevel):
         et dit ce qu'il fait.
         """
         band = tk.Frame(parent, background=theme.GROUND)
-        band.pack(side="bottom", fill="x", padx=22, pady=(4, 0))
+        band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
         tk.Label(band, text="EXPORT", background=theme.GROUND,
@@ -425,15 +446,18 @@ class SettingsWindow(tk.Toplevel):
             card["mark"].configure(
                 background=theme.ACCENT if selected else theme.GROUND)
 
-    def _scrollable(self, parent: tk.Widget) -> tk.Frame:
-        canvas = tk.Canvas(parent, background=theme.CANVAS, highlightthickness=0)
+    def _scrollable(self, parent: tk.Widget,
+                    background: Optional[str] = None) -> tk.Frame:
+        background = background or theme.CANVAS
+        canvas = tk.Canvas(parent, background=background,
+                           highlightthickness=0)
         bar = ttk.Scrollbar(parent, orient="vertical", command=canvas.yview,
                             style="Flat.Vertical.TScrollbar")
         bar.pack(side="right", fill="y")
         canvas.pack(side="left", fill="both", expand=True)
         attach_scrollbar(canvas, bar, side="right", fill="y",
                          before=canvas)
-        inner = tk.Frame(canvas, background=theme.CANVAS)
+        inner = tk.Frame(canvas, background=background)
         window = canvas.create_window((0, 0), window=inner, anchor="nw")
         inner.bind("<Configure>",
                    lambda _e: canvas.configure(scrollregion=canvas.bbox("all")))
@@ -443,8 +467,27 @@ class SettingsWindow(tk.Toplevel):
         return inner
 
     def _build_columns(self, parent: tk.Widget) -> None:
+        """Une ligne par colonne du fichier : ce qu'elle porte, ce qu'elle
+        devient.
+
+        Le geste que l'on vient faire ici est simple et tient en une phrase :
+        « cette colonne-la, c'est le salaire ; celles-ci, ce sont mes axes
+        d'analyse ; le reste, je n'en veux pas ». Il se faisait en deux
+        endroits — associer la colonne a un champ ici, cocher le champ
+        comme dimension la-bas — et il fallait avoir compris que les deux
+        listes parlaient de la meme chose. Une ligne par colonne, avec sa
+        case au bout, dit la meme chose en un seul geste.
+
+        Les premieres valeurs du fichier sont montrees : « Direction » peut
+        contenir des regions comme des noms de personnes, et l'intitule seul
+        ne permet pas de trancher.
+        """
         card = Card(parent, padding=0)
-        card.pack(side="left", fill="both", expand=True, padx=(0, 14))
+        card.pack(fill="x", padx=22, pady=(16, 0))
+        #: Retenu pour ce qu'il a coute : empile parmi des sections de
+        #: hauteur fixe, ce bloc tombait a deux pixels de haut et la
+        #: fonction devenait introuvable. Un test mesure sa hauteur.
+        self._columns_card = card
         header = tk.Frame(card.inner, background=theme.CANVAS)
         header.pack(fill="x", padx=16, pady=(14, 8))
         tk.Label(header, text="COLONNES DU FICHIER", background=theme.CANVAS,
@@ -456,89 +499,212 @@ class SettingsWindow(tk.Toplevel):
                      font=self.fonts.body).pack(anchor="w", padx=16, pady=8)
             return
         tk.Label(header,
-                 text="Une colonne non reconnue reste inutilisable tant "
-                      "qu'aucun champ ne lui est associé.",
-                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
-                 wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))
+                 text="Chaque colonne reçoit un rôle. « Organisation » en "
+                      "fait un axe d'analyse et un filtre — direction, "
+                      "établissement, revue du personnel, ce que votre "
+                      "fichier porte. Une colonne ignorée n'est pas lue.",
+                 background=theme.CANVAS, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=900,
+                 justify="left").pack(anchor="w", pady=(2, 0))
 
-        area = tk.Frame(card.inner, background=theme.CANVAS)
-        area.pack(fill="both", expand=True, padx=16, pady=(0, 14))
-        inner = self._scrollable(area)
+        légende = tk.Frame(card.inner, background=theme.CANVAS)
+        légende.pack(fill="x", padx=16, pady=(8, 2))
+        for texte, largeur in (("COLONNE", 22), ("PREMIÈRES VALEURS", 34),
+                               ("RÔLE", 26)):
+            tk.Label(légende, text=texte, background=theme.CANVAS,
+                     foreground=theme.FAINT, font=self.fonts.label,
+                     width=largeur, anchor="w").pack(side="left")
+        tk.Label(légende, text="FILTRE ET AXE", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left")
+
+        # Pas de defilement ici : la fenetre entiere defile. Deux
+        # ascenseurs imbriques obligent a viser le bon, et le geste rate
+        # fait bouger l'autre.
+        inner = tk.Frame(card.inner, background=theme.CANVAS)
+        inner.pack(fill="x", padx=16, pady=(0, 14))
 
         from ..core.mapping import resolve_mapping
         resolved = resolve_mapping(self.headers, self.configuration)
         column_to_field = {column: name
                            for name, column in resolved.field_to_column.items()}
-        choices = [IGNORED, NEW_FIELD] + candidate_fields(self.configuration)
+        # La liste montre des libelles — « Salaire de base », et non
+        # « base_salary ». Le nom technique reste ce qui est enregistre, et
+        # il reste accepte tel quel : un reglage se lit aussi au bloc-notes.
+        self._labels = {name: self._label_of(name)
+                        for name in candidate_fields(self.configuration)}
+        choices = ([IGNORED, ORGANISATION, NEW_FIELD]
+                   + sorted(self._labels.values(), key=str.lower))
 
-        for header_name in self.headers:
+        for index, header_name in enumerate(self.headers):
             if not str(header_name).strip():
                 continue
             row = tk.Frame(inner, background=theme.CANVAS)
             row.pack(fill="x", pady=3)
             known = column_to_field.get(header_name)
-            tk.Label(row, text=header_name, background=theme.CANVAS,
-                     foreground=theme.INK_SOFT if known else theme.WARN,
-                     font=self.fonts.body, width=22, anchor="w").pack(side="left")
-            var = tk.StringVar(value=known or IGNORED)
+            étiquette = tk.Label(
+                row, text=header_name, background=theme.CANVAS,
+                foreground=theme.INK_SOFT if known else theme.WARN,
+                font=self.fonts.body, width=22, anchor="w")
+            étiquette.pack(side="left")
+            # L'ambre dit « cette colonne n'est rattachee a rien ». Elle
+            # doit s'eteindre des qu'on la rattache, sinon l'ecran continue
+            # d'alerter sur ce qui vient d'etre regle.
+            self._labels_widgets[header_name] = étiquette
+            tk.Label(row, text=self._sample_of(index), background=theme.CANVAS,
+                     foreground=theme.FAINT, font=self.fonts.small, width=34,
+                     anchor="w").pack(side="left")
+            var = tk.StringVar(value=self._label_of(known) if known
+                               else IGNORED)
             box = ttk.Combobox(row, textvariable=var, values=choices,
-                               state="readonly", font=self.fonts.small)
-            box.pack(side="left", fill="x", expand=True)
+                               state="readonly", font=self.fonts.small,
+                               width=24)
+            box.pack(side="left", padx=(0, 16))
             box.bind("<<ComboboxSelected>>",
                      lambda _e, h=header_name, w=box: self._chose(h, w))
             self.assignments[header_name] = var
             self._boxes.append(box)
 
+            coché = tk.BooleanVar(value=self._is_dimension(known))
+            self.dimension_vars[header_name] = coché
+            case = CheckRow(row, "", coché, self.fonts, ground=theme.CANVAS)
+            case.pack(side="left")
+            coché.trace_add(
+                "write", lambda *_a, h=header_name: self._follow_dimension(h))
+
+    def _label_of(self, field_name: Optional[str]) -> str:
+        """Libelle lisible d'un champ. « base_salary » -> « Salaire de base »."""
+        if not field_name:
+            return IGNORED
+        état = self.rows.get(field_name)
+        if état is not None and état["label"].get().strip():
+            return état["label"].get().strip()
+        return default_label(self.configuration, field_name)
+
+    def _field_of(self, value: str) -> str:
+        """Champ designe par une valeur de liste.
+
+        Accepte le libelle — c'est ce que la liste montre — comme le nom
+        technique, qu'un fichier de parametres ecrit a la main peut porter
+        et qu'un test peut poser directement.
+        """
+        if value in (IGNORED, NEW_FIELD, ORGANISATION):
+            return value
+        for name, libellé in getattr(self, "_labels", {}).items():
+            if value == libellé:
+                return name
+        return value
+
+    def _sample_of(self, index: int) -> str:
+        """Les premieres valeurs distinctes d'une colonne, abregees."""
+        vues: List[str] = []
+        for ligne in self.samples:
+            if index >= len(ligne):
+                continue
+            valeur = str(ligne[index] if ligne[index] is not None else "").strip()
+            if valeur and valeur not in vues:
+                vues.append(valeur)
+            if len(vues) == 3:
+                break
+        texte = " · ".join(vues)
+        return texte if len(texte) <= 44 else texte[:43] + "…"
+
+    def _is_dimension(self, field_name: Optional[str]) -> bool:
+        """Ce champ est-il deja propose comme filtre et comme axe ?"""
+        if not field_name:
+            return False
+        ligne = self.rows.get(field_name)
+        return bool(ligne and ligne["declared"].get())
+
+    def _follow_dimension(self, header: str) -> None:
+        """La case d'une colonne ecrit dans le champ qu'elle porte.
+
+        Les deux etats ne sont pas dupliques : la case de la ligne est une
+        commande, l'etat vit dans `rows`, qui est ce que `collect` lit. Une
+        colonne ignoree n'a pas de champ ou ecrire, et sa case ne fait rien.
+        """
+        field_name = self._field_of(self.assignments[header].get())
+        if field_name in (IGNORED, NEW_FIELD, ORGANISATION):
+            return
+        coché = self.dimension_vars[header].get()
+        ligne = self.rows.get(field_name)
+        if ligne is None:
+            self.add_dimension_row(field_name, header, coché)
+            return
+        if ligne["declared"].get() != coché:
+            ligne["declared"].set(coché)
+
+    def _prepare_dimensions(self) -> None:
+        """L'etat de chaque champ, avant tout affichage.
+
+        Les cases des colonnes le lisent, et le panneau du dessous l'ecrit :
+        il n'y a donc qu'un seul etat, et c'est lui que `collect` traduit.
+        Deux jeux de cases pour une meme verite finissaient par se
+        contredire — l'ecran disait « proposé », le fichier disait non.
+        """
+        from ..core.segmentation import dimensions as declared_dimensions
+
+        current = {entry["field"]: entry
+                   for entry in declared_dimensions(self.configuration)}
+        allowed = candidate_dimensions(self.configuration)
+        listed = ([name for name in current if name in allowed]
+                  + [name for name in allowed if name not in current])
+        for field_name in listed:
+            entry = current.get(field_name)
+            libellé = ((entry or {}).get("label")
+                       or default_label(self.configuration, field_name))
+            self.rows[field_name] = {
+                "label": tk.StringVar(value=libellé),
+                "declared": tk.BooleanVar(value=entry is not None),
+            }
+
     def _build_dimensions(self, parent: tk.Widget) -> None:
-        """Colonnes du fichier -> ou chaque champ sera propose.
+        """Les champs qu'aucune colonne de ce fichier ne porte.
+
+        L'age et l'anciennete se calculent, ils n'ont pas de colonne ; un
+        fichier peut aussi ne pas porter une notion declaree pour un autre.
+        Ces champs-la n'ont pas de ligne plus haut : ils se reglent ici.
 
         Aucun salarie n'est retire ici : ces cases decident du contenu des
-        listes, pas de la population analysee. Le filtrage lui-meme se fait
-        dans la fenetre principale, sur le fichier charge.
+        listes, pas de la population analysee.
         """
         card = Card(parent, padding=0)
-        card.pack(side="left", fill="both", expand=True)
+        card.pack(fill="x", padx=22, pady=(14, 0))
         header = tk.Frame(card.inner, background=theme.CANVAS)
         header.pack(fill="x", padx=16, pady=(14, 8))
-        # « Filtres et axes » se lisait comme si l'on filtrait ici meme.
-        # Cet ecran ne retire aucun salarie : il dit seulement quels champs
-        # apparaissent dans les listes de la fenetre principale.
-        tk.Label(header, text="DIMENSIONS D'ANALYSE", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label).pack(anchor="w")
+        tk.Label(header, text="CHAMPS SANS COLONNE",
+                 background=theme.CANVAS, foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w")
         tk.Label(header,
-                 text="Cet écran ne filtre rien et ne retire aucun salarié. "
-                      "Un champ coché est proposé partout : dans la liste "
-                      "« Filtrer » de la colonne de gauche, dans « Analyser "
-                      "par », dans les onglets Segments et Écarts F/H, "
-                      "et dans « Colorer par ».",
-                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
-                 wraplength=380, justify="left").pack(anchor="w", pady=(2, 0))
+                 text="L'âge et l'ancienneté se calculent à partir des "
+                      "dates : aucune colonne ne les porte. Un champ coché "
+                      "est proposé partout — dans « Filtrer », dans "
+                      "« Comparer par », dans « Colorer par ». Cet écran ne "
+                      "filtre rien et ne retire aucun salarié.",
+                 background=theme.CANVAS, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=900,
+                 justify="left").pack(anchor="w", pady=(2, 0))
 
         legend = tk.Frame(card.inner, background=theme.CANVAS)
         legend.pack(fill="x", padx=16)
-        tk.Label(legend, text="CHAMP", background=theme.CANVAS, foreground=theme.FAINT,
-                 font=self.fonts.label, width=22, anchor="w").pack(side="left")
-        tk.Label(legend, text="PROPOSÉ", background=theme.CANVAS, foreground=theme.FAINT,
+        tk.Label(legend, text="CHAMP", background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label, width=22,
+                 anchor="w").pack(side="left")
+        tk.Label(legend, text="PROPOSÉ", background=theme.CANVAS,
+                 foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
 
-        area = tk.Frame(card.inner, background=theme.CANVAS)
-        area.pack(fill="both", expand=True, padx=16, pady=(6, 10))
-        inner = self._scrollable(area)
+        self._dimension_area = tk.Frame(card.inner, background=theme.CANVAS)
+        self._dimension_area.pack(fill="x", padx=16, pady=(6, 10))
 
-        from ..core.segmentation import dimensions as declared_dimensions
-        current = {entry["field"]: entry
-                   for entry in declared_dimensions(self.configuration)}
-        self._dimension_area = inner
-        allowed = candidate_dimensions(self.configuration)
-        listed = [name for name in current if name in allowed] + \
-                 [name for name in allowed if name not in current]
-        for field_name in listed:
-            entry = current.get(field_name)
-            self.add_dimension_row(
-                field_name,
-                (entry or {}).get("label") or default_label(self.configuration,
-                                                            field_name),
-                entry is not None)
+        # Les champs portes par une colonne se reglent sur leur ligne, plus
+        # haut : les reproposer ici ferait deux cases pour une decision.
+        portés = {self._field_of(var.get())
+                  for var in self.assignments.values()}
+        for field_name in list(self.rows):
+            if field_name in portés:
+                continue
+            self._dimension_widget(field_name)
 
         foot = tk.Frame(card.inner, background=theme.CANVAS)
         foot.pack(fill="x", padx=16, pady=(0, 14))
@@ -548,24 +714,51 @@ class SettingsWindow(tk.Toplevel):
         self.limit_var = tk.StringVar(
             value=str(max_filter_values(self.configuration)))
         tk.Entry(foot, textvariable=self.limit_var, width=5, relief="flat",
-                 background=theme.CANVAS, foreground=theme.INK_SOFT, font=self.fonts.small,
-                 highlightthickness=1, highlightbackground=theme.LINE,
-                 highlightcolor=theme.ACCENT).pack(side="left", padx=6, ipady=2)
+                 background=theme.CANVAS, foreground=theme.INK_SOFT,
+                 font=self.fonts.small, highlightthickness=1,
+                 highlightbackground=theme.LINE,
+                 highlightcolor=theme.ACCENT).pack(side="left", padx=6,
+                                                   ipady=2)
         tk.Label(foot, text="valeurs distinctes", background=theme.CANVAS,
                  foreground=theme.MUTED, font=self.fonts.small).pack(side="left")
 
-    def _chose(self, header: str, box: "ttk.Combobox") -> None:
-        """Reagit au choix d'un champ pour une colonne.
+    def _dimension_widget(self, field_name: str) -> None:
+        """La ligne visible d'un champ : son libelle, et sa case."""
+        état = self.rows[field_name]
+        row = tk.Frame(self._dimension_area, background=theme.CANVAS)
+        row.pack(fill="x", pady=2)
+        tk.Entry(row, textvariable=état["label"], background=theme.CANVAS,
+                 foreground=theme.INK_SOFT, font=self.fonts.body, width=26,
+                 relief="flat", highlightthickness=1,
+                 highlightbackground=theme.CANVAS,
+                 highlightcolor=theme.ACCENT).pack(side="left", ipady=3)
+        CheckRow(row, "", état["declared"], self.fonts,
+                 ground=theme.CANVAS).pack(side="left", padx=(12, 0))
 
-        Seul "nouveau champ" demande quelque chose : declarer une notion
-        absente du modele — direction, manager, convention — sans quoi la
-        fenetre ne saurait que redistribuer des champs existants.
+    def _chose(self, header: str, box: "ttk.Combobox") -> None:
+        """Reagit au choix d'un role pour une colonne.
+
+        Trois cas. Un champ connu : la case de la ligne se met a l'etat de
+        ce champ, et il n'y a rien d'autre a faire. « Organisation » :
+        le champ est cree a partir de l'intitule, sans rien demander, et
+        propose aussitot comme filtre et comme axe — c'est le cas courant.
+        « Nouveau champ » : il faut un nom technique, et lui seul se
+        demande, parce qu'il s'ecrit aussi en ligne de commande.
         """
         variable = self.assignments[header]
+        self._repaint(header)
+        if variable.get() == ORGANISATION:
+            self._declare(header, box,
+                          suggest_field_name(header, self._taken()))
+            return
         if variable.get() != NEW_FIELD:
+            # Un champ connu : la case suit l'etat de ce champ.
+            case = self.dimension_vars.get(header)
+            if case is not None:
+                case.set(self._is_dimension(self._field_of(variable.get())))
             return
         variable.set(IGNORED)
-        taken = set(candidate_fields(self.configuration)) | set(self.rows)
+        taken = self._taken()
         proposed = simpledialog.askstring(
             "Nouveau champ",
             f"Nom technique du champ porté par la colonne « {header} ».\n"
@@ -580,26 +773,59 @@ class SettingsWindow(tk.Toplevel):
                 f"Le champ « {name} » existe déjà : choisissez-le dans la "
                 "liste plutôt que d'en créer un second.", parent=self)
             return
-        values = list(box.cget("values")) + [name]
+        self._declare(header, box, name)
+
+    def _repaint(self, header: str) -> None:
+        """Rallume ou eteint l'alerte d'une colonne, selon son role."""
+        étiquette = self._labels_widgets.get(header)
+        if étiquette is None:
+            return
+        rattachée = self.assignments[header].get() not in (IGNORED, NEW_FIELD)
+        étiquette.configure(foreground=theme.INK_SOFT if rattachée
+                            else theme.WARN)
+
+    def _taken(self) -> set:
+        """Noms de champ deja pris : ceux du modele et ceux de l'ecran."""
+        return set(candidate_fields(self.configuration)) | set(self.rows)
+
+    def _declare(self, header: str, box: "ttk.Combobox", name: str) -> None:
+        """Cree le champ porte par une colonne et l'offre a toutes les autres.
+
+        Sans cette derniere partie, une notion declaree sur une colonne
+        restait invisible pour les suivantes : deux colonnes d'un meme
+        fichier ne pouvaient pas parler de la meme chose.
+        """
+        self._labels[name] = header
+        values = [valeur for valeur in box.cget("values")] + [header]
         for other in self._boxes:
             other.configure(values=values)
-        variable.set(name)
+        self.assignments[header].set(header)
+        self._repaint(header)
         self.add_dimension_row(name, header, True)
+        case = self.dimension_vars.get(header)
+        if case is not None:
+            case.set(True)
 
     def add_dimension_row(self, field_name: str, label: str,
                           declared: bool) -> None:
-        row = tk.Frame(self._dimension_area, background=theme.CANVAS)
-        row.pack(fill="x", pady=2)
-        label_var = tk.StringVar(value=label)
-        declared_var = tk.BooleanVar(value=declared)
-        tk.Entry(row, textvariable=label_var, background=theme.CANVAS,
-                 foreground=theme.INK_SOFT, font=self.fonts.body, width=26,
-                 relief="flat", highlightthickness=1,
-                 highlightbackground=theme.CANVAS,
-                 highlightcolor=theme.ACCENT).pack(side="left", ipady=3)
-        CheckRow(row, "", declared_var, self.fonts,
-                 ground=theme.CANVAS).pack(side="left", padx=(12, 0))
-        self.rows[field_name] = {"label": label_var, "declared": declared_var}
+        """Declare un champ, et le montre s'il n'a pas de colonne.
+
+        Un champ cree depuis une colonne se regle sur sa ligne : lui donner
+        en plus une ligne ici ferait deux cases pour une decision.
+        """
+        état = self.rows.get(field_name)
+        if état is None:
+            état = {"label": tk.StringVar(value=label),
+                    "declared": tk.BooleanVar(value=declared)}
+            self.rows[field_name] = état
+        else:
+            état["label"].set(label)
+            état["declared"].set(declared)
+        if field_name in {self._field_of(var.get())
+                          for var in self.assignments.values()}:
+            return
+        if getattr(self, "_dimension_area", None) is not None:
+            self._dimension_widget(field_name)
 
     # ---------------------------------------------------------- validation
 
@@ -619,7 +845,7 @@ class SettingsWindow(tk.Toplevel):
                 technical=f"limit out of range: {limit}",
             )
 
-        assignments = {header: var.get()
+        assignments = {header: self._field_of(var.get())
                        for header, var in self.assignments.items()}
         used: Dict[str, str] = {}
         for header, field_name in assignments.items():
