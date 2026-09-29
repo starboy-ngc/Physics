@@ -222,10 +222,13 @@ class TestPrivacy(unittest.TestCase):
             self.assertNotIn(pattern, html)
 
     def test_report_uses_neutral_wording_for_atypical_cases(self):
+        """La restitution ne porte plus la liste des situations atypiques —
+        elle reste a l'ecran et dans l'export — donc elle ne peut pas les
+        qualifier. Le vocabulaire neutre continue de valoir partout ou elles
+        paraissent, y compris si la section revenait."""
         html = render_report(self.result.payload)
         self.assertNotIn("anomalie RH", html)
-        if self.result.payload["distribution"]["outliers"]:
-            self.assertIn("Situation atypique à analyser", html)
+        self.assertNotIn("atypique", html)
 
     def test_technical_log_excludes_personal_data(self):
         log_dir = tempfile.mkdtemp()

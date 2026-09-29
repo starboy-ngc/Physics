@@ -71,6 +71,15 @@ class DocumentCase(unittest.TestCase):
         cls.deck = _slides.build_deck(cls.payload)
         cls.summary = _slides.build_summary(cls.payload)
 
+    def deck_text(self):
+        """Tout le texte du support, titres, sous-titres et blocs confondus."""
+        morceaux = []
+        for slide in self.deck:
+            morceaux += [slide.title, slide.subtitle]
+            for bloc in slide.blocks:
+                morceaux += [bloc.title, repr(bloc.payload)]
+        return "\n".join(morceaux)
+
 
 class TestTheAnalysisIsRichEnough(DocumentCase):
     """Sans quoi les tests suivants ne prouveraient rien."""
@@ -86,18 +95,31 @@ class TestTheAnalysisIsRichEnough(DocumentCase):
 
 
 class TestReport(DocumentCase):
-    def test_the_outlier_section_names_no_one(self):
-        """Elle designe des salaries : seule la reference anonyme y entre."""
-        self.assertIn("Position", self.report)
+    def test_the_distribution_section_shows_the_shape_only(self):
+        """La restitution donne la forme de la distribution, pas la liste des
+        cas : l'histogramme reste, le tableau des situations atypiques non.
+
+        Ce tableau tenait une page pour designer des salaries un par un. Il
+        s'analyse avec son contexte, donc la ou ce contexte est disponible :
+        la fenetre, l'export Excel, le support de presentation.
+        """
+        self.assertIn("4. Distribution", self.report)
+        self.assertIn("<svg", self.report.split("4. Distribution", 1)[1])
+        self.assertNotIn("atypique", self.report)
+
+    def test_the_report_names_no_one(self):
+        """Le tableau parti, il ne reste aucune ligne nominative : le document
+        ne porte plus que des agregats."""
         matricules = {employee.employee_id
                       for employee in self.result.filtered}
         for matricule in list(matricules)[:20]:
             self.assertNotIn(f">{matricule}<", self.report)
 
-    def test_the_outlier_section_says_it_is_statistical(self):
-        """« Repere par un critere statistique, pas par un jugement RH » :
-        c'est ce qui empeche de lire ce tableau comme une liste de fautifs."""
-        self.assertIn("critère statistique", self.report)
+    def test_the_outliers_are_still_carried_by_the_analysis(self):
+        """Retirees du document, elles restent lisibles ailleurs — avec la
+        mise en garde qui empeche de les lire comme une liste de fautifs."""
+        self.assertTrue(self.payload["distribution"]["outliers"])
+        self.assertIn("critère statistique", self.deck_text())
 
     def test_the_comparison_section_carries_both_labels(self):
         self.assertIn("Comparaison de populations", self.report)

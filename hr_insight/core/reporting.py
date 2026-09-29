@@ -443,43 +443,16 @@ def _full_time_section(salary: Dict[str, Any], currency: str) -> str:
 
 
 def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
+    # Le rapport ne porte que la vue d'ensemble : l'histogramme. Les situations
+    # atypiques reperees par la methode interquartile restent a l'ecran et dans
+    # l'export Excel, ou elles s'analysent avec leur contexte. Les sortir d'ici
+    # retire du meme coup la seule donnee nominative du document.
     if not distribution.get("available"):
         return f"<h2>4. Distribution</h2>{_note(distribution.get('warning'), 'warn')}"
     chart = histogram_svg(distribution.get("bins", []), currency)
-    outliers = distribution.get("outliers", [])
-    highlighted = distribution.get("outliers_highlighted") or outliers
-    # Colonnes derivees des dimensions declarees en configuration : les trois
-    # premieres suffisent a situer le cas sans surcharger le tableau.
-    shown = (distribution.get("dimension_labels") or [])[:3]
-    rows = [
-        tuple(
-            [item["reference"]]
-            + [str(item.get("dimensions", {}).get(entry["field"]) or "—")
-               for entry in shown]
-            + [
-                format_years(item.get("tenure_years"), suffix=False),
-                format_money(item["value"], currency),
-                f'Position {item["position"]}',
-            ]
-        )
-        for item in highlighted
-    ]
-    label = distribution.get("outlier_label", "Situation atypique à analyser")
-    headers = (["Référence"] + [entry["label"] for entry in shown]
-               + ["Ancienneté", "Rémunération", "Lecture"])
-    table = _table(headers, rows) if rows else "<p>Aucune situation atypique détectée.</p>"
-    if len(highlighted) < len(outliers):
-        table += _note(
-            f"Tableau limite aux {len(highlighted)} situations les plus "
-            f"extrêmes sur {len(outliers)}. La liste complete figure dans "
-            "l'export Excel."
-        )
     return (
         "<h2>4. Distribution</h2>"
         f"<figure>{chart}</figure>"
-        f"<h3>{_e(label)} ({len(outliers)})</h3>"
-        f'{_note("Ces situations sont signalées par un critère statistique (méthode interquartile). Elles ne constituent pas un constat RH : elles doivent être analysées au regard du contexte (métier, marché, historique, performance).")}'
-        f"{table}"
     )
 
 

@@ -113,6 +113,12 @@ critère est statistique, la lecture est contextuelle (marché, métier,
 historique, performance). Un test vérifie que la chaîne « anomalie RH »
 n'apparaît pas dans la restitution.
 
+Ces situations paraissent à l'écran, dans l'export Excel et dans le support
+de présentation, jamais dans la restitution HTML : celle-ci s'arrête à
+l'histogramme. Un document qui circule n'a pas à porter de ligne
+nominative, et une liste de cas sans leur contexte se lit comme un verdict.
+`_distribution_section` ne rend donc que le graphique.
+
 L'écart-type reste calculé et exporté comme statistique technique, mais n'est
 pas présenté en KPI de pilotage : les ratios de dispersion (Q3/Q1, P90/P10,
 moyenne/médiane) sont les indicateurs mis en avant.

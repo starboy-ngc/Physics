@@ -709,6 +709,11 @@ ancienneté peut refléter un recrutement en tension ; une rémunération faible
 avec forte ancienneté peut refléter un changement de métier. Elles sont à
 analyser, pas à corriger mécaniquement.
 
+Elles se lisent **à l'écran, dans l'export Excel et dans le support de
+présentation** — là où le contexte du cas est à portée de main. La
+restitution HTML, elle, ne porte que l'histogramme : c'est un document qui
+circule, et une liste nominative n'y a pas sa place.
+
 ## 8. Messages d'erreur
 
 Les messages sont rédigés en langage métier. Exemple :
