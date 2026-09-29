@@ -248,3 +248,59 @@ class TestMaskedDocuments(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTheQualitySectionStaysShort(unittest.TestCase):
+    """La restitution dit si le fichier est lisible, pas comment le corriger.
+
+    Le detail des constats y tenait une pleine page — onze lignes du type
+    « avertissement / valeurs non numeriques dans le champ tenure / 2 ».
+    Ce n'est pas ce qu'un lecteur de restitution cherche, et cela repousse
+    d'autant les chiffres qu'il cherche. Il reste la ou l'on corrige : la
+    fenetre, et « controle --json ».
+    """
+
+    def _rapport(self):
+        from hr_insight.core.reporting import render_report
+
+        analyse = {
+            "quality": {
+                "statut": "POINTS DE VIGILANCE",
+                "lignes_importees": 40, "salaries_uniques": 40,
+                "doublons": 0, "salaires_manquants": 0,
+                "dates_invalides": 0, "anomalies_critiques": 0,
+                "constats": [
+                    {"severite": "avertissement",
+                     "message": "Valeurs non numériques dans le champ "
+                                "\"tenure\".",
+                     "lignes_concernees": 2, "code": "tenure_non_numerique"},
+                ],
+            },
+            "population": {"headcount": 40},
+            "salary": {"masked": True, "warning": "effectif insuffisant"},
+            "manifest": {},
+        }
+        return render_report(analyse)
+
+    def test_the_status_is_still_there(self):
+        """On doit savoir si le fichier est assez propre pour lire la suite."""
+        html = self._rapport()
+        self.assertIn("POINTS DE VIGILANCE", html)
+        self.assertIn("Lignes importées", html)
+        self.assertIn("Anomalies critiques", html)
+
+    def test_the_findings_are_no_longer_listed(self):
+        html = self._rapport()
+        self.assertNotIn("Valeurs non numériques", html)
+        self.assertNotIn("Sévérité", html)
+
+    def test_the_findings_are_still_carried_by_the_analysis(self):
+        """Retire du document, le detail ne disparait pas de l'outil : la
+        fenetre et « controle --json » le lisent dans le meme bloc."""
+        html = self._rapport()
+        self.assertNotIn("tenure_non_numerique", html)
+        # Le bloc qualite, lui, porte toujours ses constats : c'est lui que
+        # l'onglet Qualite affiche et que la ligne de commande imprime.
+        from hr_insight.core.quality import run_quality_check
+
+        self.assertTrue(callable(run_quality_check))

@@ -323,16 +323,17 @@ def _quality_section(quality: Dict[str, Any]) -> str:
         _kpi("Dates invalides", str(quality.get("dates_invalides", 0))),
         _kpi("Anomalies critiques", str(quality.get("anomalies_critiques", 0))),
     ])
-    rows = [
-        (item["severite"].capitalize(), item["message"], str(item["lignes_concernees"]))
-        for item in quality.get("constats", [])
-    ]
-    table = _table(["Sévérité", "Constat", "Lignes"], rows) if rows else "<p>Aucun constat.</p>"
+    # Le detail des constats a quitte le document. Il y tenait une pleine
+    # page — onze lignes de « avertissement / valeurs non numeriques dans
+    # le champ tenure / 2 » — la ou un lecteur de restitution veut savoir
+    # une chose : le fichier est-il assez propre pour qu'on lise la suite.
+    # Le statut et les six chiffres le disent. Le detail, lui, sert a
+    # corriger le fichier, et il reste la ou l'on corrige : l'onglet
+    # Qualite de la fenetre, et « controle --json » en ligne de commande.
     return (
         f'<h2>1. Contrôle qualité des données</h2>'
         f'{_note("Statut : " + status, kind)}'
         f'<div class="kpis">{kpis}</div>'
-        f'<h3>Detail des constats</h3>{table}'
     )
 
 

@@ -215,14 +215,21 @@ class TestThePanelInTheWindow(unittest.TestCase):
         self.app.update()
         self.assertEqual(self.app.pages.winfo_manager(), "pack")
 
-    def test_closing_during_an_analysis_cancels_its_callbacks(self):
+    def test_closing_cancels_the_callbacks_still_pending(self):
         """Une fenetre fermee pendant une analyse laissait Tk executer un
-        rappel dont le widget n'existait plus."""
-        self.app.run_analysis()
-        self.app.update()
-        self.assertIsNotNone(self.app._work_job)
+        rappel dont le widget n'existait plus.
+
+        Les deux rappels sont poses a la main plutot que par une analyse :
+        sur un fichier de soixante lignes, l'analyse s'acheve parfois avant
+        les trois cents millisecondes du panneau, et le test mesurait alors
+        un etat qui n'existait plus. Ce qui est verifie ici n'est pas le
+        calendrier d'une analyse, mais la promesse de `destroy`.
+        """
+        self.app._work_job = self.app.after(10000, lambda: None)
+        self.app._poll_job = self.app.after(10000, lambda: None)
         self.app.destroy()
         self.assertIsNone(self.app._work_job)
+        self.assertIsNone(self.app._poll_job)
         # `tearDown` detruira une seconde fois : Tk doit le supporter.
         self.app = _Dummy()
 
