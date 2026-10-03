@@ -237,6 +237,11 @@ DEFAULTS: Dict[str, Any] = {
         # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
         # a affirmer une tendance sans permettre d'en juger la solidite.
         "show_trend_line": False,
+        # Ouverture de grille (Q3/Q1) a partir de laquelle la dispersion
+        # merite un regard, puis une alerte. Une regle de lecture se
+        # parametre : elle n'a pas sa place dans un graphique.
+        "spread_alert_threshold": 1.4,
+        "spread_critical_threshold": 1.8,
     },
     "theme_parameters": {
         # Nom du theme applique a l'ecran et aux documents. La liste est

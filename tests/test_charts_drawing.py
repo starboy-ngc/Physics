@@ -309,6 +309,184 @@ class TestTheWithheldSegmentsPointSomewhereReal(ChartCase):
 
 
 @needs_display
+class TestTheDispersionColumns(ChartCase):
+    """Les deux colonnes chiffrées de droite, et ce qui les coiffe."""
+
+    def rows(self, spreads=(1.10, 1.45, 1.95)):
+        """Des segments dont l'ouverture de grille est posée, pas devinée."""
+        built = []
+        for index, ratio in enumerate(spreads):
+            q1 = 30000.0
+            q3 = q1 * ratio
+            built.append({
+                "segment": f"Poste {index}", "headcount": 40 - index,
+                "chartable": True, "masked": False,
+                "salary": {"p10": q1 * 0.9, "p25": q1, "median": (q1 + q3) / 2,
+                           "p75": q3, "p90": q3 * 1.1,
+                           "dispersion": {"q3_over_q1": ratio}},
+            })
+        return built
+
+    def chart(self, **kwargs):
+        from hr_insight.ui.charts import BoxPlotChart
+
+        chart = self.build(BoxPlotChart)
+        chart.set_rows(self.rows(), "EUR", dimension="Poste", **kwargs)
+        self.root.update()
+        return chart
+
+    def head(self, chart):
+        return " ".join(chart.header.itemcget(item, "text")
+                        for item in chart.header.find_all()
+                        if chart.header.type(item) == "text")
+
+    def test_the_ratio_is_written_as_a_multiplier(self):
+        """« 1,20 » tout seul se lit comme un montant ou un rang. Le signe
+        dit ce que c'est."""
+        chart = self.chart()
+        self.assertIn("× 1,45", self.texts(chart.canvas))
+
+    def test_the_columns_are_named_in_the_fixed_header(self):
+        chart = self.chart()
+        entete = self.head(chart)
+        self.assertIn("OUVERTURE Q3/Q1", entete)
+        self.assertIn("MÉDIANE", entete)
+        self.assertIn("POSTE", entete)
+
+    def test_the_header_carries_the_dimension_it_was_given(self):
+        """L'intitulé n'est pas écrit en dur : c'est la dimension analysée."""
+        from hr_insight.ui.charts import BoxPlotChart
+
+        chart = self.build(BoxPlotChart)
+        chart.set_rows(self.rows(), "EUR", dimension="Business unit")
+        self.root.update()
+        self.assertIn("BUSINESS UNIT", self.head(chart))
+
+    def test_the_colour_follows_the_configured_thresholds(self):
+        chart = self.chart(spread_alert=1.40, spread_critical=1.80)
+        couleurs = {}
+        for item in self.items(chart.canvas, "text"):
+            texte = chart.canvas.itemcget(item, "text")
+            if texte.startswith("×"):
+                couleurs[texte] = chart.canvas.itemcget(item, "fill")
+        from hr_insight.ui import theme
+        self.assertEqual(couleurs["× 1,10"], theme.MUTED)
+        self.assertEqual(couleurs["× 1,45"], theme.WARN)
+        self.assertEqual(couleurs["× 1,95"], theme.CRIT)
+
+    def test_a_higher_threshold_calms_the_column_down(self):
+        """Le seuil se paramètre : il n'est pas écrit dans le graphique."""
+        from hr_insight.ui import theme
+
+        chart = self.chart(spread_alert=2.0, spread_critical=3.0)
+        for item in self.items(chart.canvas, "text"):
+            if chart.canvas.itemcget(item, "text").startswith("×"):
+                self.assertEqual(chart.canvas.itemcget(item, "fill"), theme.MUTED)
+
+    def test_sorting_by_spread_puts_the_widest_grid_first(self):
+        chart = self.chart()
+        chart.set_order("spread")
+        self.root.update()
+        self.assertEqual(self.chart_order(chart),
+                         ["× 1,95", "× 1,45", "× 1,10"])
+
+    def chart_order(self, chart):
+        """Les ouvertures dans l'ordre où elles sont tracées, de haut en bas."""
+        lignes = [(chart.canvas.coords(item)[1],
+                   chart.canvas.itemcget(item, "text"))
+                  for item in self.items(chart.canvas, "text")
+                  if chart.canvas.itemcget(item, "text").startswith("×")]
+        return [texte for _y, texte in sorted(lignes)]
+
+    def test_the_split_mode_offers_its_own_sorts(self):
+        """« Ouverture » n'a pas de colonne en mode dédoublé, et « écart
+        F/H » n'existe pas en mode simple."""
+        chart = self.chart()
+        self.assertIn("spread", [key for key, _l in chart.orders()])
+        chart.set_split(True)
+        cles = [key for key, _l in chart.orders()]
+        self.assertIn("gap", cles)
+        self.assertNotIn("spread", cles)
+
+
+@needs_display
+class TestTheDispersionRibbon(ChartCase):
+    """Le second tracé : un ruban dont l'intensité dit la densité."""
+
+    def chart(self, mark="ruban"):
+        from hr_insight.ui.charts import BoxPlotChart
+
+        chart = self.build(BoxPlotChart)
+        chart.set_rows([{
+            "segment": "Poste", "headcount": 40, "chartable": True,
+            "masked": False,
+            "salary": {"p10": 27000.0, "p25": 30000.0, "median": 34000.0,
+                       "p75": 38000.0, "p90": 42000.0,
+                       "dispersion": {"q3_over_q1": 1.27}},
+        }], "EUR", dimension="Poste")
+        chart.set_mark(mark)
+        self.root.update()
+        return chart
+
+    def bars(self, chart):
+        """Les tranches du ruban seules : la bande de fond d'une ligne est
+        un rectangle elle aussi, et elle part du bord gauche."""
+        return [chart.canvas.coords(item)
+                for item in self.items(chart.canvas, "rectangle")
+                if chart.canvas.coords(item)[0] > 0]
+
+    def test_the_ribbon_thickens_towards_the_middle(self):
+        """Le cœur pèse, les ailes s'effacent : c'est tout le propos."""
+        chart = self.chart()
+        epaisseurs = sorted((c[3] - c[1], (c[0] + c[2]) / 2)
+                            for c in self.bars(chart))
+        self.assertGreater(epaisseurs[-1][0], epaisseurs[0][0])
+
+    def test_the_ribbon_spans_the_same_range_as_the_box(self):
+        """Changer de tracé ne change pas l'échelle : les deux couvrent du
+        10e au 90e centile, sans quoi on comparerait deux graphiques."""
+        ruban = self.bars(self.chart("ruban"))
+        self.tearDown(); self.setUp()
+        boite = self.chart("boites")
+        reperes = [boite.canvas.coords(item)
+                   for item in self.items(boite.canvas, "line")
+                   if len(boite.canvas.coords(item)) == 4
+                   and boite.canvas.coords(item)[0]
+                   != boite.canvas.coords(item)[2]]
+        self.assertAlmostEqual(min(c[0] for c in ruban),
+                               min(c[0] for c in reperes), delta=2)
+        self.assertAlmostEqual(max(c[2] for c in ruban),
+                               max(c[2] for c in reperes), delta=2)
+
+    def test_the_key_follows_the_mark(self):
+        """Une clé qui légende la boîte quand l'écran porte un ruban
+        explique un dessin qui n'est pas là."""
+        ruban = self.chart()
+        pied = " ".join(ruban.footer.itemcget(item, "text")
+                        for item in ruban.footer.find_all()
+                        if ruban.footer.type(item) == "text")
+        self.assertIn("cœur du ruban", pied)
+        self.assertNotIn("La boîte contient", pied)
+
+    def test_going_back_to_boxes_restores_the_box_key(self):
+        chart = self.chart("boites")
+        pied = " ".join(chart.footer.itemcget(item, "text")
+                        for item in chart.footer.find_all()
+                        if chart.footer.type(item) == "text")
+        self.assertIn("La boîte contient", pied)
+
+    def test_hovering_the_ribbon_still_identifies_the_segment(self):
+        """Les repères chiffrés passent au survol : c'est le prix du ruban,
+        et il n'est acceptable que si le survol répond."""
+        chart = self.chart()
+        coords = self.bars(chart)[0]
+        chart._on_motion(Motion(int((coords[0] + coords[2]) / 2),
+                                int((coords[1] + coords[3]) / 2)))
+        self.root.update()
+        self.assertIsNotNone(chart.tooltip.window)
+
+
+@needs_display
 class TestScatter(ChartCase):
     def dataset(self, count=40):
         return {"available": True, "points": [
@@ -878,8 +1056,14 @@ class TestSplitPresentation(ChartCase):
                                  f"pied coupé à {largeur} px")
             chart.destroy()
 
-    def test_the_plain_view_has_no_bands(self):
-        """Le mode simple n'en a pas besoin : une ligne, une boite."""
+    def test_the_plain_view_is_banded_too(self):
+        """Le mode simple en a besoin depuis qu'il porte deux colonnes.
+
+        La bande n'existait qu'en mode dédoublé, au motif qu'il a deux fois
+        plus de lignes. Mais c'est en mode simple que l'œil doit relier un
+        libellé à un nombre situé à l'autre bout de l'écran, et c'est là
+        qu'il perd sa ligne.
+        """
         from hr_insight.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
@@ -888,7 +1072,8 @@ class TestSplitPresentation(ChartCase):
         bandes = [item for item in chart.canvas.find_all()
                   if chart.canvas.type(item) == "rectangle"
                   and chart.canvas.coords(item)[0] == 0]
-        self.assertEqual(bandes, [])
+        # Une ligne sur deux : quatre segments, deux bandes.
+        self.assertEqual(len(bandes), 2)
 
 
 @needs_display

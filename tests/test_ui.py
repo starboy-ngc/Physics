@@ -1555,7 +1555,8 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         """Textes des deux canevas : les lignes defilent, le pied ne bouge
         pas, mais tout est du meme graphique."""
         textes = []
-        for canvas in (chart.canvas, getattr(chart, "footer", None)):
+        for canvas in (chart.canvas, getattr(chart, "footer", None),
+                       getattr(chart, "header", None)):
             if canvas is None:
                 continue
             textes += [canvas.itemcget(item, "text")
@@ -1667,8 +1668,11 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             app.update()
 
             def boites():
+                # Le fond d'une ligne sur deux est un rectangle lui aussi,
+                # et il part du bord gauche : il ne se compte pas.
                 return sum(1 for item in chart.canvas.find_all()
-                           if chart.canvas.type(item) == "rectangle")
+                           if chart.canvas.type(item) == "rectangle"
+                           and chart.canvas.coords(item)[0] > 0)
 
             def hauteur_zone():
                 region = chart.canvas.cget("scrollregion").split()

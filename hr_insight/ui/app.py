@@ -947,10 +947,22 @@ class Application(tk.Tk):
                                               in BoxPlotChart.ORDERS])
         self.box_order.current(0)
         self.box_order.pack(side="left", padx=10)
-        self.box_order.bind(
+        self.box_order.bind("<<ComboboxSelected>>", lambda _e: self._reorder())
+        # Deux traces pour la meme donnee : la boite donne cinq reperes qu'on
+        # cite en reunion, le ruban donne la masse et son decalage.
+        tk.Label(box_head, text="TRACÉ", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(22, 0))
+        self.box_mark = ttk.Combobox(box_head, state="readonly", width=10,
+                                     font=self.fonts.small,
+                                     values=[label for _key, label
+                                             in BoxPlotChart.MARKS])
+        self.box_mark.current(0)
+        self.box_mark.pack(side="left", padx=10)
+        self.box_mark.bind(
             "<<ComboboxSelected>>",
-            lambda _e: self.boxplot.set_order(
-                BoxPlotChart.ORDERS[self.box_order.current()][0]))
+            lambda _e: self.boxplot.set_mark(
+                BoxPlotChart.MARKS[self.box_mark.current()][0]))
         # Deux medianes proches peuvent recouvrir deux distributions tres
         # differentes : une seule boite par segment ne dit pas si les deux
         # sexes s'y etalent pareil.
@@ -3854,6 +3866,26 @@ class Application(tk.Tk):
             self.dist_split_note.configure(text=self.histogram.split_warning())
             self.dist_split_note.pack(side="left")
 
+    def _reorder(self) -> None:
+        """Applique le tri choisi, dans la liste du mode courant."""
+        choix = self.boxplot.orders()
+        index = max(self.box_order.current(), 0)
+        self.boxplot.set_order(choix[min(index, len(choix) - 1)][0])
+
+    def _refill_orders(self) -> None:
+        """Remplit la liste des tris selon le mode.
+
+        « Ouverture décroissante » n'a pas de colonne pour se verifier en
+        mode dedouble, et « Écart F/H » n'existe pas en mode simple : un
+        tri qu'aucune colonne ne montre se lit comme un desordre.
+        """
+        choix = self.boxplot.orders()
+        voulu = self.boxplot.order
+        self.box_order.configure(values=[label for _key, label in choix])
+        cles = [key for key, _label in choix]
+        self.box_order.current(cles.index(voulu) if voulu in cles else 0)
+        self.boxplot.set_order(cles[self.box_order.current()])
+
     def _show_boxes(self) -> None:
         """Boites a moustaches de la dimension choisie.
 
@@ -3872,6 +3904,7 @@ class Application(tk.Tk):
         # chemin que les tests parcourent sans que l'outil l'emprunte n'est
         # pas un chemin teste.
         self.boxplot.set_split(split)
+        self._refill_orders()
         # Dedouble, les lignes viennent d'un autre calcul : le meme segment,
         # coupe en deux. Elles portent aussi le segment entier, pour que
         # l'echelle et le tri restent ceux du mode simple.
@@ -3888,7 +3921,16 @@ class Application(tk.Tk):
             # configuration, pas un nombre ecrit dans le graphique.
             alert=self.configuration.number(
                 "pay_equity_parameters.gap_alert_threshold",
-                5.0, minimum=0.0, maximum=100.0))
+                5.0, minimum=0.0, maximum=100.0),
+            # Les seuils d'ouverture de grille viennent de la configuration
+            # comme tout le reste : une regle de lecture se parametre.
+            spread_alert=self.configuration.number(
+                "chart_parameters.spread_alert_threshold",
+                1.40, minimum=1.0, maximum=20.0),
+            spread_critical=self.configuration.number(
+                "chart_parameters.spread_critical_threshold",
+                1.80, minimum=1.0, maximum=20.0),
+            dimension=block.get("label", ""))
 
     # -------------------------------------------------------------- export
 

@@ -782,6 +782,14 @@ class BoxPlotChart(tk.Frame):
                                  style="Flat.Vertical.TScrollbar")
         self.canvas = tk.Canvas(self, background=theme.CANVAS,
                                 highlightthickness=0)
+        # Un bandeau d'en-tete, fixe comme le pied : il nomme les colonnes.
+        # « 1,20 » tout seul, a droite d'une boite, n'est pas une donnee —
+        # c'est une enigme. Dans la zone qui defile, son intitule serait
+        # parti des la premiere ligne cachee.
+        self.header = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0,
+                                height=self.HEADER_HEIGHT)
+        self.header.pack(side="top", fill="x")
         self.bar.pack(side="right", fill="y")
         # Le pied vient sous le canevas et non au bas du cadre : ancre en
         # bas, il restait a sa place quand le canevas se reduisait au trace,
@@ -806,6 +814,18 @@ class BoxPlotChart(tk.Frame):
         #: Seuil d'alerte de l'ecart, pose par la fenetre depuis la
         #: configuration.
         self.alert = 5.0
+        #: Seuils d'ouverture de grille (Q3/Q1), poses de meme. Ils ne sont
+        #: pas ecrits ici : une regle de lecture se parametre, elle ne se
+        #: code pas dans un graphique.
+        self.spread_alert = 1.40
+        self.spread_critical = 1.80
+        #: Trace courant : boites par defaut, c'est la lecture que l'on
+        #: cite en reunion.
+        self.mark = self.MARKS[0][0]
+        #: Abscisses des colonnes chiffrees, posees au trace.
+        self._value_cols: tuple = ()
+        #: Intitule de la dimension, pour coiffer la colonne des libelles.
+        self.dimension = ""
         #: Hauteur reelle du pied, mesuree sur son contenu a chaque trace.
         self._footer_height = self.FOOTER_HEIGHT
         redraw_on_resize(self, self.canvas)
@@ -838,8 +858,35 @@ class BoxPlotChart(tk.Frame):
     #: dimension a quarante postes, la premiere question est « lesquels
     #: pesent », pas « lesquels paient le mieux ». Un poste de six personnes
     #: en tete de liste met en avant ce qui compte le moins.
+    #: Trier, c'est repondre a une autre question avec les memes chiffres.
+    #: « Ouverture » ne vaut qu'en mode simple, « ecart F/H » qu'en mode
+    #: dedouble : proposer l'un dans l'autre mode offrirait un tri sans
+    #: colonne pour le verifier.
     ORDERS = (("headcount", "Effectif décroissant"),
-              ("median", "Médiane décroissante"))
+              ("median", "Médiane décroissante"),
+              ("spread", "Ouverture décroissante"))
+    SPLIT_ORDERS = (("headcount", "Effectif décroissant"),
+                    ("median", "Médiane décroissante"),
+                    ("gap", "Écart F/H décroissant"))
+
+    #: Deux traces pour la meme donnee. La boite donne cinq reperes qu'on
+    #: cite en reunion ; le ruban donne la masse et son decalage, lisible de
+    #: loin, au prix des reperes chiffres — qui restent au survol.
+    MARKS = (("boites", "Boîtes"), ("ruban", "Ruban"))
+
+    #: Hauteur du bandeau d'en-tete : une ligne d'intitules.
+    HEADER_HEIGHT = 26
+    #: Blanc entre les deux colonnes chiffrees de droite.
+    VALUE_GAP = 20
+
+    def orders(self):
+        """Tris applicables au mode courant."""
+        return self.SPLIT_ORDERS if self.split else self.ORDERS
+
+    def set_mark(self, key: str) -> None:
+        """Boites ou ruban. Rien n'est recalcule : seul le trace change."""
+        self.mark = key if key in dict(self.MARKS) else self.MARKS[0][0]
+        self.redraw()
 
     def set_split(self, split: bool) -> None:
         """Une boite par segment, ou deux : femmes et hommes."""
@@ -859,11 +906,29 @@ class BoxPlotChart(tk.Frame):
             return sorted(rows, key=lambda row: -(row["salary"]["median"] or 0))
         if self.order == "headcount":
             return sorted(rows, key=lambda row: -(row.get("headcount") or 0))
+        if self.order == "spread":
+            # Les segments sans ouverture calculable ferment la marche :
+            # les mettre en tete reviendrait a classer en premier ce qu'on
+            # ne sait pas mesurer.
+            return sorted(rows, key=lambda row: -(self._spread(row) or -1))
+        if self.order == "gap":
+            return sorted(rows, key=lambda row: -(row.get("median_gap")
+                                                  if row.get("median_gap")
+                                                  is not None else -1e9))
         return rows
+
+    @staticmethod
+    def _spread(row) -> Optional[float]:
+        """Ouverture de la grille sur le segment : Q3/Q1, telle que le
+        moteur la publie. Le graphique ne refait pas la division."""
+        dispersion = ((row.get("salary") or {}).get("dispersion") or {})
+        value = dispersion.get("q3_over_q1")
+        return float(value) if value is not None else None
 
     def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
                  warning: str = "", reference: Optional[float] = None,
-                 alert: float = 5.0) -> None:
+                 alert: float = 5.0, spread_alert: float = 1.40,
+                 spread_critical: float = 1.80, dimension: str = "") -> None:
         """Lignes de segment, dans l'ordre etabli par le moteur.
 
         `reference` est la mediane de l'ensemble analyse : tracee en repere,
@@ -877,6 +942,9 @@ class BoxPlotChart(tk.Frame):
         # etait ecrit en dur ici alors qu'il existe deja en parametre : deux
         # endroits pour une meme regle, c'est un des deux qui finit faux.
         self.alert = alert
+        self.spread_alert = spread_alert
+        self.spread_critical = spread_critical
+        self.dimension = dimension
         self.reference = reference
         self.redraw()
 
@@ -911,8 +979,8 @@ class BoxPlotChart(tk.Frame):
         """Ce que l'on dit quand rien n'est tracable."""
         if any(not row.get("masked") for row in self.rows):
             return ("Effectif par segment insuffisant pour tracer une "
-                    "dispersion. Les valeurs restent lisibles dans l'onglet "
-                    "Segments.")
+                    "dispersion. Les valeurs restent lisibles dans le "
+                    "rapport et dans le classeur.")
         return "Aucun segment publiable sur cette dimension."
 
     def redraw(self) -> None:
@@ -943,8 +1011,11 @@ class BoxPlotChart(tk.Frame):
         # femmes / hommes : c'est ce qu'on vient chercher en dedoublant, et
         # il n'etait chiffre nulle part — il fallait comparer deux traits a
         # l'oeil.
-        pad_r = self.GAP_COLUMN if self.split else 30
-        pad_t = 26 if self.reference is not None else 12
+        value_width = self._value_width(drawable)
+        pad_r = self.GAP_COLUMN if self.split else value_width
+        # Le repere d'ensemble s'intitule desormais dans le bandeau fixe :
+        # la grille n'a plus a lui reserver une bande en haut du trace.
+        pad_t = 12
         plot_w = max(width - pad_l - pad_r, 20)
         plot_h = max(height - pad_t - 10, 20)
 
@@ -970,30 +1041,30 @@ class BoxPlotChart(tk.Frame):
 
         # Le repere d'ensemble, trace avant les boites pour passer dessous.
         if self.reference is not None and low <= self.reference <= high:
-            x = to_x(self.reference)
-            self.canvas.create_line(x, pad_t - 4, x, base, fill=theme.ACCENT,
-                                    dash=(4, 3))
-            self.canvas.create_text(x + 5, pad_t - 8, anchor="sw",
-                                    fill=theme.ACCENT, font=axis_font(),
-                                    text="Médiane d'ensemble : "
-                                         f"{format_money(self.reference, self.currency)}")
+            self.canvas.create_line(to_x(self.reference), pad_t - 4,
+                                    to_x(self.reference), base,
+                                    fill=theme.ACCENT, dash=(4, 3))
 
-        # Un fond une ligne sur deux, en mode dedouble seulement : deux
-        # boites par segment, c'est deux fois plus de lignes, et l'oeil ne
-        # sait plus ou finit un segment. Le mode simple n'en a pas besoin.
-        if self.split:
-            for index in range(len(drawable)):
-                if index % 2:
-                    continue
-                haut = pad_t + index * row_height
-                self.canvas.create_rectangle(
-                    0, haut, width, haut + row_height,
-                    fill=theme.STRIPE, outline="")
+        # Un fond une ligne sur deux, dans les deux modes. Il n'existait
+        # qu'en mode dedouble, au motif que le mode simple a moins de
+        # lignes : avec deux colonnes chiffrees a l'autre bout de l'ecran,
+        # c'est pourtant la qu'un oeil perd sa ligne entre le libelle et le
+        # nombre.
+        for index in range(0, len(drawable), 2):
+            haut = pad_t + index * row_height
+            self.canvas.create_rectangle(0, haut, width, haut + row_height,
+                                         fill=theme.STRIPE, outline="")
 
+        # Abscisses des deux colonnes chiffrees, calees a droite. Elles
+        # servent au trace comme au bandeau : un intitule qui ne tombe pas
+        # au-dessus de sa colonne ne l'intitule pas.
+        self._value_cols = ((width - value_width + self._spread_width(drawable),
+                             width - 10) if not self.split else ())
         for index, row in enumerate(drawable):
             self._draw_box(row, index, row_height, pad_l, label_width, to_x,
                            width, pad_t)
 
+        self._draw_header(label_width, pad_l, width, to_x, low, high)
         self._draw_footer(label_width, pad_l, plot_w, to_x, low, high)
         self._fit_to_content(width, base + 10)
 
@@ -1007,7 +1078,8 @@ class BoxPlotChart(tk.Frame):
         donc au trace tant que celui-ci tient, et ne reprend toute la place
         que lorsqu'il faut faire defiler.
         """
-        available = self.winfo_height() - self._footer_height
+        available = (self.winfo_height() - self._footer_height
+                     - self.HEADER_HEIGHT)
         if available <= 0:
             return
         expand = needed >= available
@@ -1067,14 +1139,29 @@ class BoxPlotChart(tk.Frame):
         q1, q3 = left + wide * 0.25, left + wide * 0.75
         median = left + wide * 0.5
         thickness = 9
-        canvas.create_line(left, mid, left + wide, mid,
-                                fill=theme.LINE_STRONG)
-        for edge in (left, left + wide):
-            canvas.create_line(edge, mid - thickness / 2, edge,
-                                    mid + thickness / 2, fill=theme.LINE_STRONG)
-        canvas.create_rectangle(q1, mid - thickness / 2, q3,
-                                     mid + thickness / 2,
-                                     fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
+        if self.mark == "ruban":
+            # La cle doit montrer ce qui est trace. Le schema de la boite
+            # legendait un dessin que l'ecran ne portait plus.
+            for debut, fin, couleur, epaisseur in (
+                    (left, (left + q1) / 2, theme.STRIPE, thickness * 0.45),
+                    ((left + q1) / 2, q1, theme.ACCENT_SOFT, thickness * 0.72),
+                    (q1, q3, theme.ACCENT, thickness),
+                    (q3, (q3 + left + wide) / 2, theme.ACCENT_SOFT,
+                     thickness * 0.72),
+                    ((q3 + left + wide) / 2, left + wide, theme.STRIPE,
+                     thickness * 0.45)):
+                canvas.create_rectangle(debut, mid - epaisseur / 2, fin,
+                                        mid + epaisseur / 2, fill=couleur,
+                                        outline="")
+        else:
+            canvas.create_line(left, mid, left + wide, mid,
+                                    fill=theme.LINE_STRONG)
+            for edge in (left, left + wide):
+                canvas.create_line(edge, mid - thickness / 2, edge,
+                                        mid + thickness / 2, fill=theme.LINE_STRONG)
+            canvas.create_rectangle(q1, mid - thickness / 2, q3,
+                                         mid + thickness / 2,
+                                         fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
         canvas.create_line(median, mid - thickness / 2 - 2, median,
                                 mid + thickness / 2 + 2, fill=theme.INK, width=2)
         for position, text in ((left, "P10"), (q1, "Q1"), (median, "Médiane"),
@@ -1103,7 +1190,11 @@ class BoxPlotChart(tk.Frame):
         room = available - wide - offset - 10
         if room < 190:
             return
-        phrase = ("La boîte contient la moitié des salariés du segment ; "
+        phrase = ("Le cœur du ruban contient la moitié des salariés du "
+                  "segment ; le trait, la médiane. Les extrémités s'effacent "
+                  "vers le 10e et le 90e centile — le survol les chiffre."
+                  if self.mark == "ruban" else
+                  "La boîte contient la moitié des salariés du segment ; "
                   "le trait, la médiane. Les moustaches vont du 10e au 90e "
                   "centile.")
         withheld = self._withheld()
@@ -1146,6 +1237,90 @@ class BoxPlotChart(tk.Frame):
                 break
             values = values[::2]
         return values
+
+    def _spread_width(self, rows: Sequence[Dict[str, Any]]) -> float:
+        """Colonne de l'ouverture, a la chasse de la plus large valeur."""
+        import tkinter.font as tkfont
+
+        font = tkfont.Font(root=self, font=axis_font())
+        return max((font.measure(self._spread_text(row)) for row in rows),
+                   default=font.measure("× 1,00"))
+
+    def _value_width(self, rows: Sequence[Dict[str, Any]]) -> float:
+        """Place prise a droite par les deux colonnes chiffrees."""
+        import tkinter.font as tkfont
+
+        font = tkfont.Font(root=self, font=axis_font())
+        medianes = max(
+            (font.measure(format_money((row.get("salary") or {}).get("median"),
+                                       self.currency)) for row in rows),
+            default=60)
+        return self._spread_width(rows) + self.VALUE_GAP + medianes + 20
+
+    def _spread_text(self, row) -> str:
+        """« × 1,20 » plutot que « 1,20 ».
+
+        Le rapport Q3/Q1 nu se lit comme un montant, un rang ou un indice.
+        Le signe de multiplication dit ce qu'il est : le quart superieur
+        commence a 1,2 fois la ou le quart inferieur s'arrete.
+        """
+        value = self._spread(row)
+        return "—" if value is None else f"× {format_number(value, 2)}"
+
+    def _draw_header(self, label_width: float, pad_l: float, width: float,
+                     to_x, low: float, high: float) -> None:
+        """Intitules des colonnes, hors de la zone qui defile."""
+        self.header.delete("all")
+        y = self.HEADER_HEIGHT - 9
+        # A gauche de sa colonne, et non calee a droite contre elle : les
+        # libelles sont alignes a droite, et un intitule au meme bord venait
+        # se coller a celui de l'effectif — « POSTE EFF. » se lisait comme
+        # un seul mot.
+        self.header.create_text(4, y, anchor="w", fill=theme.FAINT,
+                                font=axis_font(),
+                                text=self.dimension.upper() or "SEGMENT")
+        self.header.create_text(pad_l - 14, y, anchor="e", fill=theme.FAINT,
+                                font=axis_font(),
+                                text="FEMMES / HOMMES" if self.split else "EFF.")
+        if self.reference is not None and low <= self.reference <= high:
+            self.header.create_text(
+                to_x(self.reference) + 5, y, anchor="w", fill=theme.ACCENT,
+                font=axis_font(),
+                text="Médiane d'ensemble · "
+                     f"{format_money(self.reference, self.currency)}")
+        if self.split:
+            self.header.create_text(width - 8, y, anchor="e", fill=theme.FAINT,
+                                    font=axis_font(), text="ÉCART F/H")
+            return
+        if not self._value_cols:
+            return
+        spread_x, median_x = self._value_cols
+        self.header.create_text(spread_x, y, anchor="e", fill=theme.FAINT,
+                                font=axis_font(), text="OUVERTURE Q3/Q1")
+        self.header.create_text(median_x, y, anchor="e", fill=theme.FAINT,
+                                font=axis_font(), text="MÉDIANE")
+
+    def _draw_values(self, row, centre: float) -> None:
+        """Les deux chiffres de droite : ouverture de grille, et mediane.
+
+        La place existait deja — elle etait vide. Or la largeur d'une boite
+        ne dit pas l'ouverture de la grille : une boite haute dans l'echelle
+        parait large sans l'etre, et personne ne divise Q3 par Q1 de tete.
+        """
+        if not self._value_cols:
+            return
+        spread_x, median_x = self._value_cols
+        value = self._spread(row)
+        self.canvas.create_text(
+            spread_x, centre, anchor="e", font=axis_font(),
+            fill=theme.CRIT if value is not None and value >= self.spread_critical
+            else (theme.WARN if value is not None and value >= self.spread_alert
+                  else theme.MUTED),
+            text=self._spread_text(row))
+        self.canvas.create_text(
+            median_x, centre, anchor="e", fill=theme.INK_SOFT, font=axis_font(),
+            text=format_money((row.get("salary") or {}).get("median"),
+                              self.currency))
 
     def _count_width(self, rows: Sequence[Dict[str, Any]]) -> float:
         """Colonne des effectifs, a la chasse du plus grand nombre."""
@@ -1205,6 +1380,7 @@ class BoxPlotChart(tk.Frame):
                                     text=str(row.get("headcount", 0)))
             self._draw_one(row, row["salary"], centre, row_height * 0.42,
                            theme.ACCENT_SOFT, theme.ACCENT, to_x)
+            self._draw_values(row, centre)
             return
 
         # Deux demi-boites, femmes au-dessus : deux medianes proches peuvent
@@ -1288,6 +1464,53 @@ class BoxPlotChart(tk.Frame):
 
     def _draw_one(self, row, salary, centre: float, span: float,
                   fill: str, outline: str, to_x) -> None:
+        """Un segment, trace selon le mode choisi."""
+        if self.mark == "ruban":
+            self._draw_ribbon(row, salary, centre, span, fill, outline, to_x)
+            return
+        self._draw_box_mark(row, salary, centre, span, fill, outline, to_x)
+
+    def _draw_ribbon(self, row, salary, centre: float, span: float,
+                     fill: str, outline: str, to_x) -> None:
+        """Un ruban dont l'intensite dit la densite.
+
+        La boite donne cinq reperes et laisse l'oeil les assembler. Le ruban
+        donne directement ce que l'oeil cherchait : ou est la masse, et de
+        combien elle est decalee. Le coeur plein porte la moitie centrale,
+        les ailes s'effacent vers le 10e et le 90e centile.
+
+        Les reperes chiffres ne disparaissent pas : ils passent au survol,
+        qui les donne tous. C'est le prix de ce trace, et c'est pourquoi il
+        n'est pas celui par defaut.
+        """
+        p10 = self._whisker(salary, "p10", "p25")
+        p90 = self._whisker(salary, "p90", "p75")
+        q1, q3 = float(salary["p25"]), float(salary["p75"])
+        median = float(salary["median"])
+        coeur = min(max(span, 5.0), 15.0)
+        # Trois epaisseurs et trois teintes : le coeur pese, les ailes
+        # s'effacent. Un degre de plus ne se distinguerait pas a l'ecran.
+        tranches = (
+            (p10, (p10 + q1) / 2, theme.STRIPE, coeur * 0.45),
+            ((p10 + q1) / 2, q1, fill, coeur * 0.72),
+            (q1, q3, outline, coeur),
+            (q3, (q3 + p90) / 2, fill, coeur * 0.72),
+            ((q3 + p90) / 2, p90, theme.STRIPE, coeur * 0.45),
+        )
+        for debut, fin, couleur, epaisseur in tranches:
+            if fin <= debut:
+                continue
+            handle = self.canvas.create_rectangle(
+                to_x(debut), centre - epaisseur, to_x(fin), centre + epaisseur,
+                fill=couleur, outline="")
+            self._items[handle] = row
+        handle = self.canvas.create_line(to_x(median), centre - coeur - 2,
+                                         to_x(median), centre + coeur + 2,
+                                         fill=theme.INK, width=2)
+        self._items[handle] = row
+
+    def _draw_box_mark(self, row, salary, centre: float, span: float,
+                       fill: str, outline: str, to_x) -> None:
         """Une boite : moustaches, quartiles, mediane."""
         thickness = min(max(span, 5.0), 15.0)
         p10 = self._whisker(salary, "p10", "p25")

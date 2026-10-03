@@ -561,6 +561,41 @@ Chaque demi-boîte a son propre droit au tracé : un segment de cinquante
 personnes dont quatre femmes ne donne pas le droit de dessiner les
 percentiles de ces quatre-là — cette moitié-là n'est simplement pas tracée.
 
+### Les deux colonnes de droite
+
+En mode simple, chaque ligne porte deux chiffres à droite :
+
+- **Ouverture Q3/Q1**, écrite `× 1,20` : le quart le mieux payé du poste
+  commence à 1,2 fois là où le quart le moins bien payé s'arrête. C'est
+  l'ouverture de la grille sur ce poste, et elle ne se lit pas sur la
+  largeur de la boîte — une boîte haute dans l'échelle paraît large sans
+  l'être, parce que l'axe est en euros et non en proportions.
+- **Médiane** du poste, pour n'avoir pas à la relever sur l'axe.
+
+La couleur de l'ouverture suit deux seuils paramétrés dans
+`config/chart_parameters.json` : `spread_alert_threshold` (1,40 par défaut)
+et `spread_critical_threshold` (1,80). Sur une grille resserrée, aucune
+valeur ne s'allume — c'est le résultat, pas une panne.
+
+### Trier, c'est poser une autre question
+
+**Trier par** propose, en mode simple, « Ouverture décroissante » : les
+grilles les plus ouvertes en tête. En mode dédoublé, cette entrée cède la
+place à « Écart F/H décroissant ». Un tri qu'aucune colonne ne montre se
+lirait comme un désordre, et chaque mode ne propose donc que les siens.
+
+### Deux tracés
+
+**Tracé** choisit entre **Boîtes** et **Ruban**. La boîte donne cinq repères
+— P10, Q1, médiane, Q3, P90 — que l'on cite en réunion. Le ruban donne
+directement ce que l'œil cherchait : où est la masse et de combien elle est
+décalée, le cœur plein portant la moitié centrale. Les repères chiffrés n'y
+sont plus écrits, ils passent au survol : c'est le prix de ce tracé, et
+c'est pourquoi la boîte reste le tracé par défaut.
+
+Les deux partagent la même échelle : changer de tracé ne change jamais ce
+qui est comparé.
+
 ## 5 quinquies. Vérifier les calculs dans le classeur Excel
 
 Le classeur ne se contente pas d'afficher des résultats : **les indicateurs
