@@ -736,10 +736,54 @@ def _collapse_groups(points: List[Dict[str, Any]], max_groups: int):
     return gardees + [other], other, retenus
 
 
+#: Unite par defaut d'un champ dont le parametrage ne dit rien. Un nombre
+#: sans unite se lit toujours ; un montant annonce en annees, non.
+DEFAULT_AXIS_KIND = "number"
+
+
+def scatter_axes(config: Configuration) -> List[Dict[str, str]]:
+    """Champs qu'on peut porter en abscisse ou en ordonnee du nuage.
+
+    Ils sont lus dans `pay_equity_parameters.profile_fields`, qui les
+    declare deja — champ, libelle et unite — pour la page des ecarts. Une
+    seconde liste ici aurait fini par en differer : une prime maison
+    ajoutee au parametrage serait apparue d'un cote et pas de l'autre.
+
+    Les champs nominatifs n'y figurent pas : un nuage dont l'axe porte un
+    matricule n'est pas un nuage, et sa legende entrerait dans les
+    documents.
+    """
+    personnels = set(personal_fields(config))
+    axes = []
+    for entry in config.get("pay_equity_parameters.profile_fields", []) or []:
+        champ = str(entry.get("field") or "")
+        if not champ or champ in personnels:
+            continue
+        axes.append({"field": champ,
+                     "label": entry.get("label") or _field_label(config, champ),
+                     "kind": entry.get("kind") or DEFAULT_AXIS_KIND})
+    return axes
+
+
+def _axis_of(config: Configuration, field_name: str) -> Dict[str, str]:
+    """Libelle et unite d'un axe, declares ou deduits."""
+    for axis in scatter_axes(config):
+        if axis["field"] == field_name:
+            return axis
+    return {"field": field_name, "label": _field_label(config, field_name),
+            "kind": "years" if field_name.endswith("_years")
+            else DEFAULT_AXIS_KIND}
+
+
 def scatter_dataset(
     population: Population, config: Configuration
 ) -> Dict[str, Any]:
-    """Jeu de points anciennete x remuneration, avec droite de tendance et R2."""
+    """Jeu de points, avec droite de tendance et R2.
+
+    Les deux axes viennent du parametrage et peuvent etre changes en cours
+    de route : le nuage n'est plus « remuneration x anciennete » mais un
+    nuage, et c'est a l'utilisateur de dire ce qu'il compare.
+    """
     x_field = config.get("chart_parameters.scatter_x", "tenure_years")
     y_field = config.get("chart_parameters.scatter_y", "base_salary")
     color_field = config.get("chart_parameters.scatter_color_by", "business_unit")
@@ -794,6 +838,31 @@ def scatter_dataset(
                               DEFAULT_MAX_GROUPS, minimum=0, integer=True))
 
     if not rules.may_chart(len(points)):
+        # Deux raisons, qu'il ne faut pas confondre : trop peu de salaries,
+        # ou un axe que personne ne renseigne. Le nuage s'appelait
+        # « Remuneration/Anciennete » et son titre disait la seconde ; il
+        # s'appelle maintenant « Nuage de points », et c'est au message de
+        # la dire.
+        manquants = [axis["label"] for axis, champ in
+                     ((_axis_of(config, x_field), x_field),
+                      (_axis_of(config, y_field), y_field))
+                     if not any(employee.value(champ) is not None
+                                for employee in population)]
+        if manquants and rules.may_chart(len(population)):
+            raison = (f"« {manquants[0]} » n'est renseigné pour aucun salarié."
+                      if len(manquants) == 1 else
+                      " et ".join(f"« {nom} »" for nom in manquants)
+                      + " ne sont renseignés pour aucun salarié.")
+            return {
+                "available": False,
+                "warning": f"Aucun point à placer : {raison}",
+                "points": [], "trend": None,
+                "x_field": x_field, "y_field": y_field,
+                "color_field": color_field,
+                "color_label": dimension_label(config, color_field),
+                "x_axis": _axis_of(config, x_field),
+                "y_axis": _axis_of(config, y_field),
+            }
         return {
             "available": False,
             "warning": (
@@ -803,6 +872,8 @@ def scatter_dataset(
             "points": [], "trend": None,
             "x_field": x_field, "y_field": y_field, "color_field": color_field,
             "color_label": dimension_label(config, color_field),
+            "x_axis": _axis_of(config, x_field),
+            "y_axis": _axis_of(config, y_field),
         }
     trend = None
     if config.get("chart_parameters.show_trend_line", True):
@@ -822,6 +893,11 @@ def scatter_dataset(
         "trend": trend,
         "x_field": x_field,
         "y_field": y_field,
+        # Libelle et unite de chaque axe : l'ecran et les documents les
+        # lisent ici plutot que de les deduire du nom du champ, qui ne dit
+        # ni « EUR » ni « ans ».
+        "x_axis": _axis_of(config, x_field),
+        "y_axis": _axis_of(config, y_field),
         "color_field": color_field,
         "color_label": dimension_label(config, color_field),
         "groups": groups,

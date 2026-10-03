@@ -173,7 +173,7 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     if scatter.get("available"):
         blocks.append(Block(
             "chart", {"type": "scatter", "dataset": scatter, "height": 345},
-            title="Ancienneté et rémunération", width="third"))
+            title=_scatter_title(analysis), width="third"))
     elif distribution.get("available"):
         # Repli : sous le seuil d'effectif, le nuage est desactive mais la
         # distribution reste publiable.
@@ -200,6 +200,20 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         subtitle=subtitle,
         blocks=blocks,
     )]
+
+
+def _scatter_title(analysis: Dict[str, Any]) -> str:
+    """Titre du nuage : les deux axes, tels que le moteur les declare.
+
+    Ecrit en dur, il annoncait « Anciennete et remuneration » quel que soit
+    ce que le dessin montrait — les deux axes se parametrent.
+    """
+    from .reporting import axis_label
+
+    dataset = analysis.get("scatter", {})
+    return (f'{axis_label(dataset, "y")} et '
+            f'{axis_label(dataset, "x").lower()}'
+            ).strip(" et") or "Nuage de points"
 
 
 def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
@@ -298,7 +312,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                                                             "dataset": scatter})]
         if scatter.get("warning"):
             blocks.insert(0, Block("note", scatter["warning"]))
-        slides.append(Slide("Ancienneté et rémunération", subtitle, blocks=blocks))
+        slides.append(Slide(_scatter_title(analysis), subtitle, blocks=blocks))
 
     # Segments : une slide par dimension
     for segment in analysis.get("segments", []) or []:

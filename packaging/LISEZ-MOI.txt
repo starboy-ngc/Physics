@@ -34,7 +34,7 @@ LANCER L'INTERFACE
     les dimensions réellement renseignées dans votre fichier.
 
     puis « Analyser ». Les onglets de droite affichent les résultats :
-    Vue d'ensemble, Graphique, Pay Transparency, Qualité.
+    Vue d'ensemble, Graphiques, Pay Transparency, Qualité.
 
     Un onglet de plus paraît si vous avez choisi une équipe à l'étape
     3 : « Organigramme ». Il se lit du général au particulier.
@@ -94,9 +94,18 @@ LANCER L'INTERFACE
     à deux et défile. Replier la colonne de gauche par le chevron suffit
     en général à retrouver les trois.
 
-    L'onglet « Graphique » en réunit trois :
+    L'onglet « Graphiques » en réunit trois :
 
-      Rémunération/Ancienneté   le nuage de points, explorable
+      Nuage de points           explorable, et SUR DEUX AXES AU CHOIX :
+                                « en abscisse » et « en ordonnée » se
+                                règlent au-dessus du dessin, parmi les
+                                champs numériques déclarés — salaire de
+                                base, part variable, rémunération totale,
+                                ancienneté, âge, temps de travail. Le
+                                titre des axes, les graduations et les
+                                info-bulles suivent l'unité du champ
+                                choisi. Changer d'axe ne relance pas
+                                l'analyse.
       Distribution              l'histogramme des rémunérations
       Dispersion                une boîte à moustaches par segment,
                                 triable par médiane ou par effectif.

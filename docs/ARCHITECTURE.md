@@ -187,6 +187,21 @@ est calculée par `metrics`, dans le résultat d'analyse : un écran qui
 parcourrait lui-même la population finirait par compter autrement que le
 moteur, et deux chiffres du même nom se contrediraient.
 
+### Les axes du nuage
+
+Ils sont lus dans `pay_equity_parameters.profile_fields`, qui les déclare
+déjà — champ, libellé et unité — pour la page des écarts. Une seconde liste
+aurait fini par en différer : une prime maison ajoutée au paramétrage serait
+apparue d'un côté et pas de l'autre. Les champs nominatifs en sont exclus :
+un nuage dont l'axe porte un matricule n'est pas un nuage, et sa légende
+entrerait dans les documents.
+
+Le jeu de données porte `x_axis` et `y_axis` (libellé + unité) : l'écran, la
+restitution et les slides les lisent plutôt que de les déduire du nom du
+champ, qui ne dit ni « EUR » ni « ans ». Changer d'axe depuis la fenêtre
+repasse par `scatter_dataset` — jamais par un recalcul local — pour que
+l'échantillonnage et le regroupement des couleurs restent ceux du moteur.
+
 ## 7. Formulation des résultats
 
 Une valeur hors bornes interquartiles est présentée comme

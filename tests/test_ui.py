@@ -1444,7 +1444,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app = self._analysed(8)
         try:
             texte = app.notice.cget("text")
-            self.assertIn("Graphique —", texte)
+            self.assertIn("Graphiques —", texte)
             self.assertIn("Écarts F/H —", texte)
             self.assertIn("5 salariés de chaque sexe", texte)
             self.assertIn("Confidentialité", texte)
@@ -1489,8 +1489,15 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             self.assertIn("graphique", app.tabbar.visible_keys())
             self.assertEqual(app.chartbar.visible_keys(),
                              ["distribution", "boites"])   # le nuage est parti
-            # Le graphique retire s'explique, comme un onglet retire.
-            self.assertIn("Ancienneté", app.notice.cget("text"))
+            # Le graphique retire s'explique, comme un onglet retire — et
+            # il nomme l'axe qui manque. Le nuage s'appelait
+            # « Remuneration/Anciennete » et son titre disait pourquoi ; il
+            # s'appelle « Nuage de points », c'est donc au message de le
+            # dire.
+            texte = app.notice.cget("text")
+            self.assertIn("Nuage de points", texte)
+            self.assertIn("Ancienneté", texte)
+            self.assertIn("aucun salarié", texte)
             self.assertTrue(app.notice.winfo_ismapped())
         finally:
             app.destroy()

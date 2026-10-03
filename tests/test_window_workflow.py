@@ -826,3 +826,80 @@ class TestTheOrganisationChart(WindowCase):
         valeurs = [self.app.org_tree.item(item, "values")
                    for item in self.app.org_tree.get_children()]
         self.assertTrue(any("masquée" in ligne for ligne in valeurs))
+
+
+class TestTheScatterAxes(WindowCase):
+    """Les deux axes du nuage se changent sans relancer l'analyse."""
+
+    def _ouvrir(self):
+        self.load()
+        self.analyse()
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("nuage")
+        self.app.update()
+
+    def _choisir(self, boite, champ):
+        champs = [axis["field"] for axis in self.app._scatter_axes]
+        boite.current(champs.index(champ))
+
+    def test_the_tab_and_the_chart_are_named_for_what_they_hold(self):
+        """« Graphiques » : il y en a trois. « Nuage de points » : les deux
+        axes se choisissent, le titre ne peut plus les nommer."""
+        from hr_insight.ui.app import CHARTS, TABS
+
+        self.assertIn(("graphique", "Graphiques"), TABS)
+        self.assertIn(("nuage", "Nuage de points"), CHARTS)
+
+    def test_both_axes_are_offered(self):
+        self._ouvrir()
+        champs = [axis["field"] for axis in self.app._scatter_axes]
+        self.assertIn("base_salary", champs)
+        self.assertIn("age_years", champs)
+        self.assertEqual(self.app.x_choice.get(), "Ancienneté")
+        self.assertEqual(self.app.y_choice.get(), "Salaire de base")
+
+    def test_changing_an_axis_redraws_without_a_new_analysis(self):
+        self._ouvrir()
+        avant = self.app.result
+        self._choisir(self.app.x_choice, "age_years")
+        self.app._reaxis()
+        self.app.update()
+        self.assertIs(self.app.result, avant, "l'analyse a été relancée")
+        self.assertEqual(self.app.scatter.dataset["x_field"], "age_years")
+        self.assertEqual(self.app.scatter.dataset["x_axis"]["label"], "Âge")
+
+    def test_the_chart_titles_its_axis_from_the_data(self):
+        """« Ancienneté (années) » écrit en dur aurait annoncé une chose
+        pendant qu'on en regardait une autre."""
+        self._ouvrir()
+        self._choisir(self.app.x_choice, "age_years")
+        self.app._reaxis()
+        self.app.update()
+        self.assertEqual(self.app.scatter._axis_title("x"), "Âge (années)")
+        self._choisir(self.app.x_choice, "base_salary")
+        self.app._reaxis()
+        self.app.update()
+        self.assertEqual(self.app.scatter._axis_title("x"), "Salaire de base")
+
+    def test_the_values_follow_the_unit_of_their_axis(self):
+        """Un montant annoncé en années ne se lit pas."""
+        self._ouvrir()
+        self.assertIn("EUR", self.app.scatter._value("y", 42000))
+        self.assertIn("ans", self.app.scatter._value("x", 7))
+        self._choisir(self.app.y_choice, "age_years")
+        self.app._reaxis()
+        self.app.update()
+        self.assertIn("ans", self.app.scatter._value("y", 42))
+
+    def test_changing_the_colour_keeps_the_chosen_axes(self):
+        """Deux chemins de calcul auraient fini par ne plus poser les mêmes
+        paramètres, et le nuage aurait changé de forme en changeant de
+        couleur."""
+        self._ouvrir()
+        self._choisir(self.app.x_choice, "age_years")
+        self.app._reaxis()
+        self.app.update()
+        self.app.colour_choice.current(1)
+        self.app._recolour()
+        self.app.update()
+        self.assertEqual(self.app.scatter.dataset["x_field"], "age_years")

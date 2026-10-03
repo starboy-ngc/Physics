@@ -80,8 +80,9 @@ dépendance, aucun binaire tiers.
 - **Dispersion** : Q3−Q1, Q3/Q1, P90/P10, moyenne/médiane, coefficient de
   variation. L'écart-type reste une statistique technique, pas un KPI.
 - **Distribution** : histogramme, situations atypiques (méthode interquartile).
-- **Nuage de points** ancienneté × rémunération : coloration par dimension,
-  info-bulles, droite de tendance, échantillonnage au-delà d'un seuil.
+- **Nuage de points** sur **deux axes au choix** parmi les champs numériques
+  déclarés : coloration par dimension, info-bulles, droite de tendance,
+  échantillonnage au-delà d'un seuil.
 - **Segmentation** : dimensions **declarees en configuration** (ajouter une
   notion metier ne demande aucune modification du code), filtres combinables,
   comparaison de deux populations.

@@ -296,9 +296,30 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
             f'x2="{to_x(x_max):.1f}" y2="{to_y(y_end):.1f}" '
             'stroke="var(--crit)" stroke-width="2" stroke-dasharray="6 4"/>'
         )
-    parts.append(f'<text x="{pad_left}" y="{height - 8}" font-size="11" fill="var(--muted)">Ancienneté (années)</text>')
+    # Le titre de l'axe vient du jeu de donnees : les deux axes se
+    # parametrent, et « Anciennete (annees) » ecrit en dur aurait annonce
+    # une chose pendant que le dessin en montrait une autre.
+    parts.append(f'<text x="{pad_left}" y="{height - 8}" font-size="11" '
+                 f'fill="var(--muted)">{_e(axis_title(dataset, "x"))}</text>')
     parts.append("</svg>")
     return "".join(parts)
+
+
+#: Unite ajoutee au titre d'un axe. Un nombre sans unite se lit toujours ;
+#: un montant annonce en annees, non.
+AXIS_UNITS = {"years": " (années)", "ratio": " (ETP)"}
+
+
+def axis_label(dataset: Dict[str, Any], which: str) -> str:
+    """Libelle d'un axe du nuage, tel que le moteur l'a declare."""
+    axis = (dataset or {}).get(f"{which}_axis") or {}
+    return str(axis.get("label") or "")
+
+
+def axis_title(dataset: Dict[str, Any], which: str) -> str:
+    """Le meme, avec son unite."""
+    axis = (dataset or {}).get(f"{which}_axis") or {}
+    return f'{axis_label(dataset, which)}{AXIS_UNITS.get(axis.get("kind"), "")}'
 
 
 def _legend(dataset: Dict[str, Any]) -> str:
@@ -465,11 +486,13 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
 
 
 def _scatter_section(dataset: Dict[str, Any], currency: str) -> str:
+    titre = (f'5. {axis_label(dataset, "y")} et '
+             f'{axis_label(dataset, "x").lower()}')
     if not dataset.get("available"):
-        return f"<h2>5. Ancienneté et rémunération</h2>{_note(dataset.get('warning'), 'warn')}"
+        return f"<h2>{_e(titre)}</h2>{_note(dataset.get('warning'), 'warn')}"
     commentary = ""
     return (
-        "<h2>5. Ancienneté et rémunération</h2>"
+        f"<h2>{_e(titre)}</h2>"
         f'{_note(dataset.get("warning"), "warn")}'
         f"{_legend(dataset)}"
         f"<figure>{scatter_svg(dataset, currency)}</figure>"

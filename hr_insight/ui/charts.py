@@ -148,7 +148,7 @@ class Tooltip:
 
 
 class ScatterChart(tk.Frame):
-    """Nuage anciennete x remuneration, explorable.
+    """Nuage de points, explorable, sur deux axes au choix.
 
     Le zoom et le deplacement ne changent que la fenetre affichee : les
     donnees ne sont jamais filtrees a l'insu de l'utilisateur, et le compteur
@@ -194,6 +194,45 @@ class ScatterChart(tk.Frame):
         self.canvas.bind("<Button-5>", lambda e: self._zoom(e.x, e.y, 1.2))
 
     # ------------------------------------------------------------- donnees
+
+    #: Unite par defaut d'un axe que le jeu de donnees ne decrit pas.
+    AXIS_FALLBACK = {"label": "", "kind": "number"}
+
+    def _axis(self, which: str) -> Dict[str, Any]:
+        return self.dataset.get(f"{which}_axis") or self.AXIS_FALLBACK
+
+    def _value(self, which: str, value: float) -> str:
+        """Un nombre dans l'unite de son axe.
+
+        Les deux axes se choisissent : la meme abscisse peut porter des
+        euros, des annees ou un taux, et un montant annonce en annees ne se
+        lit pas.
+        """
+        kind = self._axis(which).get("kind")
+        if kind == "money":
+            return format_money(value, self.currency)
+        if kind == "years":
+            return format_years(value)
+        if kind == "ratio":
+            return format_number(value, 2)
+        return format_number(value, 0)
+
+    def _tick(self, which: str, value: float) -> str:
+        """Graduation : la meme unite, sans le suffixe qui alourdit."""
+        kind = self._axis(which).get("kind")
+        if kind == "money":
+            return format_money(value, self.currency)
+        if kind == "years":
+            return format_years(value, suffix=False)
+        if kind == "ratio":
+            return format_number(value, 2)
+        return format_number(value, 0)
+
+    def _axis_title(self, which: str) -> str:
+        axis = self._axis(which)
+        unite = {"years": " (années)", "ratio": " (ETP)"}.get(
+            axis.get("kind"), "")
+        return f'{axis.get("label", "")}{unite}'
 
     def set_dataset(self, dataset: Dict[str, Any], currency: str = "EUR") -> None:
         self.dataset = dataset or {}
@@ -262,16 +301,19 @@ class ScatterChart(tk.Frame):
             self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=theme.GRID)
             self.canvas.create_text(
                 pad_l - 8, y, anchor="e", fill=theme.MUTED, font=axis_font(),
-                text=format_money(value, self.currency))
+                text=self._tick("y", value))
         for value in nice_ticks(x_min, x_max):
             x = pad_l + (value - x_min) / x_span * plot_w
             self.canvas.create_text(
                 x, pad_t + plot_h + 14, fill=theme.MUTED, font=axis_font(),
-                text=format_number(value, 0))
+                text=self._tick("x", value))
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill=theme.LINE_STRONG)
+        # Le titre de l'axe vient du jeu de donnees : les deux axes se
+        # changent en cours de route, et « Anciennete (annees) » ecrit en
+        # dur aurait annonce une chose pendant qu'on en regardait une autre.
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32,
-                                text="Ancienneté (années)", fill=theme.MUTED,
+                                text=self._axis_title("x"), fill=theme.MUTED,
                                 font=axis_font())
 
         # La serie vient du theme actif et non d'une copie prise a
@@ -354,8 +396,8 @@ class ScatterChart(tk.Frame):
         self.tooltip.show(
             f'{self._label_of(point)}\n'
             f'{point.get("group_label") or point["group"]}\n'
-            f'Ancienneté : {format_years(point["x"])}\n'
-            f'Rémunération : {format_money(point["y"], self.currency)}',
+            f'{self._axis("x")["label"]} : {self._value("x", point["x"])}\n'
+            f'{self._axis("y")["label"]} : {self._value("y", point["y"])}',
             self.canvas.winfo_rootx() + event.x,
             self.canvas.winfo_rooty() + event.y)
 

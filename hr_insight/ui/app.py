@@ -67,7 +67,7 @@ _WHOLE_FILE = "(tout le périmètre)"
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
 #: quand un chiffre surprend, on ne commence pas par lui.
 TABS = (("population", "Vue d'ensemble"), ("organigramme", "Organigramme"),
-        ("graphique", "Graphique"),
+        ("graphique", "Graphiques"),
         ("equite", "Écarts F/H"),
         ("qualite", "Qualité"))
 
@@ -109,7 +109,7 @@ EQUITY_VIEWS = (("ecarts", "Écarts"), ("detail", "Détail du poste"),
                 ("repartition", "Répartition"),
                 ("dispersion", "Dispersion"), ("quartiles", "Quartiles"))
 
-CHARTS = (("nuage", "Rémunération/Ancienneté"),
+CHARTS = (("nuage", "Nuage de points"),
           ("distribution", "Distribution"),
           ("boites", "Dispersion"))
 
@@ -947,9 +947,15 @@ class Application(tk.Tk):
         nuage = self.chart_pages["nuage"]
         controls = tk.Frame(nuage, background=theme.CANVAS)
         controls.pack(fill="x", padx=18, pady=(8, 4))
+        # Les deux axes se choisissent : le nuage n'est plus « remuneration
+        # x anciennete » mais un nuage, et c'est a l'utilisateur de dire ce
+        # qu'il compare — l'age et le salaire, la part variable et l'ETP,
+        # une prime maison et l'anciennete.
+        self.x_choice = self._axis_box(controls, "EN ABSCISSE")
+        self.y_choice = self._axis_box(controls, "EN ORDONNÉE")
         tk.Label(controls, text="COLORER PAR", background=theme.CANVAS, foreground=theme.FAINT,
-                 font=self.fonts.label).pack(side="left")
-        self.colour_choice = ttk.Combobox(controls, state="readonly", width=20,
+                 font=self.fonts.label).pack(side="left", padx=(16, 0))
+        self.colour_choice = ttk.Combobox(controls, state="readonly", width=18,
                                           font=self.fonts.small)
         self.colour_choice.pack(side="left", padx=10)
         self.colour_choice.bind("<<ComboboxSelected>>", lambda _e: self._recolour())
@@ -3538,7 +3544,56 @@ class Application(tk.Tk):
             return f"{difference:+.1f} an(s)".replace(".", ",")
         return f"{difference:+.2f}".replace(".", ",")
 
+    def _axis_box(self, parent: tk.Frame, label: str) -> ttk.Combobox:
+        """Un selecteur d'axe : son intitule, sa liste."""
+        tk.Label(parent, text=label, background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(0, 0))
+        box = ttk.Combobox(parent, state="readonly", width=18,
+                           font=self.fonts.small)
+        box.pack(side="left", padx=(10, 16))
+        box.bind("<<ComboboxSelected>>", lambda _e: self._reaxis())
+        return box
+
+    def _fill_axis_box(self, box: ttk.Combobox, field: str) -> None:
+        box.configure(values=[axis["label"] for axis in self._scatter_axes])
+        champs = [axis["field"] for axis in self._scatter_axes]
+        if field in champs:
+            box.current(champs.index(field))
+        elif champs:
+            box.current(0)
+
+    def _reaxis(self) -> None:
+        """Recalcule le nuage sur les deux axes choisis.
+
+        Le calcul est refait par le moteur, jamais par l'ecran : les points
+        affiches et ceux des documents viennent du meme endroit, et
+        l'echantillonnage comme le regroupement des couleurs restent les
+        memes.
+        """
+        if not self.result or not getattr(self, "_scatter_axes", None):
+            return
+        champs = [axis["field"] for axis in self._scatter_axes]
+        data = self.configuration.as_dict()
+        for box, clef in ((self.x_choice, "scatter_x"),
+                          (self.y_choice, "scatter_y")):
+            index = box.current()
+            if 0 <= index < len(champs):
+                data["chart_parameters"][clef] = champs[index]
+        index = self.colour_choice.current()
+        if 0 <= index < len(getattr(self, "_colour_fields", [])):
+            data["chart_parameters"]["scatter_color_by"] = \
+                self._colour_fields[index]
+        dataset = metrics.scatter_dataset(self.result.filtered,
+                                          Configuration(data))
+        self.scatter.set_dataset(
+            dataset, self.result.payload["salary"].get("currency", "EUR"))
+        self._build_legend()
+
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
+        self._scatter_axes = metrics.scatter_axes(self.configuration)
+        self._fill_axis_box(self.x_choice, dataset.get("x_field", ""))
+        self._fill_axis_box(self.y_choice, dataset.get("y_field", ""))
         fields = dimension_fields(self.configuration)
         self._colour_fields = fields
         self.colour_choice.configure(
@@ -3554,20 +3609,12 @@ class Application(tk.Tk):
     def _recolour(self) -> None:
         """Recalcule le nuage avec une autre dimension de couleur.
 
-        Le regroupement est refait par le moteur, pas par l'interface : les
-        couleurs de l'ecran et celles du document restent identiques.
+        Meme chemin que le changement d'axe : un seul calcul, trois
+        entrees. Deux chemins auraient fini par ne plus poser les memes
+        parametres, et le nuage aurait change de forme en changeant de
+        couleur.
         """
-        if not self.result:
-            return
-        index = self.colour_choice.current()
-        if index < 0:
-            return
-        data = self.configuration.as_dict()
-        data["chart_parameters"]["scatter_color_by"] = self._colour_fields[index]
-        dataset = metrics.scatter_dataset(self.result.filtered, Configuration(data))
-        self.scatter.set_dataset(
-            dataset, self.result.payload["salary"].get("currency", "EUR"))
-        self._build_legend()
+        self._reaxis()
 
     #: Largeur reservee a une pastille et a ses marges, en pixels. Mesuree
     #: sur la legende : 9 px de rond, 5 d'ecart, 14 de separation.

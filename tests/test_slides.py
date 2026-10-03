@@ -43,8 +43,11 @@ class TestDeckStructure(unittest.TestCase):
 
     def test_deck_covers_the_expected_sections(self):
         titles = " | ".join(slide.title for slide in build_deck(self.payload))
+        # Le titre du nuage suit les deux axes, qui se parametrent : ecrit
+        # en dur, il annoncait « Anciennete et remuneration » quel que soit
+        # ce que le dessin montrait.
         for expected in ("Qualité des données", "Population", "Rémunération",
-                         "Distribution", "Ancienneté et rémunération"):
+                         "Distribution", "Salaire de base et ancienneté"):
             self.assertIn(expected, titles)
 
     def test_one_slide_per_segment_dimension(self):
@@ -361,7 +364,7 @@ class TestSummaryComposition(unittest.TestCase):
 
     def test_r_squared_is_not_repeated_in_the_block_title(self):
         titles = [block.title for block in self.summary.blocks if block.kind == "chart"]
-        self.assertEqual(titles, ["Ancienneté et rémunération"])
+        self.assertEqual(titles, ["Salaire de base et ancienneté"])
 
     def test_falls_back_to_the_histogram_when_the_scatter_is_unavailable(self):
         # Sous le seuil de graphique, le nuage est desactive ; la distribution

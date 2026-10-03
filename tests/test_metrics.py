@@ -450,3 +450,99 @@ class TestTheCatchAllBandKeepsItsSexes(unittest.TestCase):
         self.assertEqual(
             sum(band["female"] + band["male"] + band["unknown_sex"]
                 for band in bandes), 22)
+
+
+class TestTheScatterAxesAreConfigurable(unittest.TestCase):
+    """Le nuage n'est plus « rémunération × ancienneté » mais un nuage.
+
+    Les deux axes se choisissent, et tout ce qui les nomme — l'écran, la
+    restitution, les slides — doit les lire plutôt que les supposer.
+    """
+
+    def population(self):
+        return build_population([
+            make_row(index, salary=30000 + index * 500, age=30 + index % 20,
+                     tenure=index % 15)
+            for index in range(40)])
+
+    def dataset(self, **chart):
+        from hr_insight.core.metrics import scatter_dataset
+
+        reglages = {f"chart_parameters.{clef}": valeur
+                    for clef, valeur in chart.items()}
+        return scatter_dataset(self.population(), make_config(reglages))
+
+    def test_the_axes_come_from_the_declared_fields(self):
+        """La même liste que la page des écarts : une seconde ici aurait
+        fini par en différer, et une prime maison serait apparue d'un côté
+        et pas de l'autre."""
+        from hr_insight.core.metrics import scatter_axes
+
+        axes = scatter_axes(make_config())
+        champs = [axis["field"] for axis in axes]
+        self.assertIn("base_salary", champs)
+        self.assertIn("age_years", champs)
+        self.assertIn("tenure_years", champs)
+        for axis in axes:
+            self.assertTrue(axis["label"])
+            self.assertIn(axis["kind"], {"money", "years", "ratio", "number"})
+
+    def test_no_personal_field_can_carry_an_axis(self):
+        """Un nuage dont l'axe porte un matricule n'est pas un nuage, et sa
+        légende entrerait dans les documents."""
+        from hr_insight.core.metrics import scatter_axes
+        from hr_insight.core.segmentation import personal_fields
+
+        config = make_config()
+        interdits = set(personal_fields(config))
+        for axis in scatter_axes(config):
+            self.assertNotIn(axis["field"], interdits)
+
+    def test_the_dataset_follows_the_chosen_axes(self):
+        données = self.dataset(scatter_x="age_years",
+                               scatter_y="variable_pay")
+        self.assertEqual(données["x_field"], "age_years")
+        self.assertEqual(données["y_field"], "variable_pay")
+
+    def test_each_axis_carries_its_label_and_its_unit(self):
+        """« EUR » ou « ans » ne se devinent pas d'un nom de champ."""
+        données = self.dataset(scatter_x="age_years", scatter_y="base_salary")
+        self.assertEqual(données["x_axis"]["label"], "Âge")
+        self.assertEqual(données["x_axis"]["kind"], "years")
+        self.assertEqual(données["y_axis"]["label"], "Salaire de base")
+        self.assertEqual(données["y_axis"]["kind"], "money")
+
+    def test_an_axis_nobody_fills_says_so_rather_than_blaming_the_headcount(self):
+        """Le nuage s'appelait « Rémunération/Ancienneté » et son titre
+        disait pourquoi il disparaissait ; il s'appelle « Nuage de points »,
+        c'est donc au message de le dire."""
+        from hr_insight.core.metrics import scatter_dataset
+
+        population = build_population([
+            make_row(index, salary=30000 + index * 100, hire_date="")
+            for index in range(40)])
+        données = scatter_dataset(population, make_config())
+        self.assertFalse(données["available"])
+        self.assertIn("Ancienneté", données["warning"])
+        self.assertIn("aucun salarié", données["warning"])
+        self.assertNotIn("Effectif insuffisant", données["warning"])
+
+    def test_a_small_population_still_blames_the_headcount(self):
+        population = build_population([
+            make_row(index, salary=30000) for index in range(4)])
+        from hr_insight.core.metrics import scatter_dataset
+
+        données = scatter_dataset(population, make_config())
+        self.assertFalse(données["available"])
+        self.assertIn("Effectif insuffisant", données["warning"])
+
+    def test_the_axes_are_named_even_when_nothing_can_be_drawn(self):
+        """La fenêtre remplit ses deux listes depuis le jeu de données :
+        vide, il doit quand même dire sur quoi il portait."""
+        population = build_population([
+            make_row(index, salary=30000) for index in range(4)])
+        from hr_insight.core.metrics import scatter_dataset
+
+        données = scatter_dataset(population, make_config())
+        self.assertEqual(données["x_axis"]["label"], "Ancienneté")
+        self.assertEqual(données["y_axis"]["label"], "Salaire de base")
