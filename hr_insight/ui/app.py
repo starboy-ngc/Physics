@@ -2123,8 +2123,17 @@ class Application(tk.Tk):
             # Deux colonnes : les pyramides rejoignent la population.
             middle.destroy()
             middle = left
+        # L'ordre de lecture : qui compose la population, ce qu'elle est
+        # payee, comment elle se structure. Les pyramides passent en
+        # troisieme colonne — elles sont le bloc le plus haut, et une page
+        # se lit mieux quand sa colonne la plus longue est au bout.
         self._overview_frames = [left, middle, right] if wide else [left, right]
 
+        # La colonne des structures : la troisieme quand il y en a trois, la
+        # premiere sinon — a deux colonnes, les pyramides rejoignent la
+        # population, dont elles sont le detail.
+        structures = right if wide else left
+        pay = middle if wide else right
         if not population.get("masked"):
             self._ruled_panel(
                 left, "Population", (), [
@@ -2145,12 +2154,12 @@ class Application(tk.Tk):
             self._csp_panel(left, population)
             # Les pyramides n'ont plus de chiffre en tete : leurs moyennes
             # sont juste au-dessus, dans la liste.
-            self._pyramid_panel(middle, "Pyramide des âges",
+            self._pyramid_panel(structures, "Pyramide des âges",
                                 population.get("age_bands", []), None,
-                                key="age_bands")
-            self._pyramid_panel(middle, "Structure d'ancienneté",
+                                key="age_bands", measure="d'âge")
+            self._pyramid_panel(structures, "Structure d'ancienneté",
                                 population.get("tenure_bands", []), None,
-                                key="tenure_bands")
+                                key="tenure_bands", measure="d'ancienneté")
 
         if not salary.get("masked"):
             spread = salary.get("dispersion") or {}
@@ -2161,7 +2170,7 @@ class Application(tk.Tk):
             # analyse : « Salaire de base » ou « Remuneration totale ». Il le
             # dit, comme le font l'onglet Segments et le rapport.
             self._ruled_panel(
-                right, "Rémunération", (), [
+                pay, "Rémunération", (), [
                     ("Masse salariale",
                      format_money(salary.get("payroll"), currency), "payroll"),
                     ("Salaire moyen",
@@ -2170,13 +2179,13 @@ class Application(tk.Tk):
                 extra=("Champ",
                        salary.get("field_label") or salary.get("field", ""),
                        "analysis_field"))
-            cell = self._panel_head(right, "Échelle de rémunération", None,
+            cell = self._panel_head(pay, "Échelle de rémunération", None,
                                     key="salary_scale")
             scale = ScaleChart(cell)
             scale.pack(fill="x")
             scale.set_salary(salary, currency)
             self._ruled_panel(
-                right, "Dispersion", ("Indicateur", "Valeur"),
+                pay, "Dispersion", ("Indicateur", "Valeur"),
                 dispersion_rows(spread, currency), key="dispersion")
         # La page connait maintenant son contenu : elle peut l'accorder a la
         # hauteur dont elle dispose. L'ajustement est differe — il mesure, il
@@ -2470,19 +2479,27 @@ class Application(tk.Tk):
                                columnspan=columns, sticky="ew", pady=(4, 0))
 
     def _pyramid_panel(self, parent, title, bands, extra,
-                       key: Optional[str] = None) -> None:
+                       key: Optional[str] = None,
+                       measure: str = "") -> None:
         """Pyramide si le sexe est renseigne, barres simples sinon.
 
-        Une tranche dont personne n'a le sexe renseigne n'a aucune aile :
-        elle reservait une ligne et n'y dessinait rien, ni barre ni nombre,
-        et ces salaries disparaissaient d'un graphique qui leur gardait
-        pourtant une place. Ils en sortent, et la ligne sous le graphique
-        les compte — c'est deja ce que fait la page des ecarts, qui les
-        annonce « exclus ».
+        Deux populations n'y figurent pas, et pour deux raisons qu'il ne
+        faut pas confondre — la fenetre les a confondues, et annoncait
+        « sexe non renseigne » des salaries qui en avaient un.
+
+        Les salaries qu'aucune tranche n'accueille — valeur absente, ou hors
+        des bornes declarees — n'ont pas de place sur l'axe : la pyramide se
+        lit du plus jeune au plus age, et ils ne sont ni l'un ni l'autre.
+
+        Ceux dont le sexe est inconnu, eux, ont bien une tranche mais aucune
+        aile : ils sont dans le graphique sans y etre dessines.
+
+        Les deux se comptent sous le graphique, chacun sous son motif.
         """
-        drawn = [band for band in bands
-                 if (band.get("female") or band.get("male"))]
-        outside = sum(band.get("unknown_sex") or 0 for band in bands)
+        drawn = [band for band in bands if not band.get("catch_all")]
+        outside = sum(band.get("count") or 0 for band in bands
+                      if band.get("catch_all"))
+        sexless = sum(band.get("unknown_sex") or 0 for band in drawn)
         cell = self._panel_head(parent, title, extra, key=key)
         pyramid = PyramidChart(cell)
         pyramid.set_rows(drawn if drawn else bands)
@@ -2490,8 +2507,16 @@ class Application(tk.Tk):
             pyramid.pack(fill="x")
             if outside:
                 self._note(parent,
-                           f"{outside} salarié{'s' if outside > 1 else ''} au "
-                           f"sexe non renseigné, hors pyramide.")
+                           f"{outside} salarié{'s' if outside > 1 else ''} "
+                           f"sans tranche{' ' + measure if measure else ''} "
+                           f"— valeur absente ou hors bornes —, "
+                           f"hors pyramide.")
+            if sexless:
+                self._note(parent,
+                           f"{sexless} salarié{'s' if sexless > 1 else ''} au "
+                           f"sexe non renseigné : compté"
+                           f"{'s' if sexless > 1 else ''} dans l'effectif, "
+                           f"sans aile dans la pyramide.")
             return
         # Sans la colonne « Sexe », une pyramide n'aurait qu'une aile : on
         # retombe sur la lecture en barres plutot que d'afficher un demi

@@ -388,3 +388,65 @@ class TestSegmentComparison(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTheCatchAllBandKeepsItsSexes(unittest.TestCase):
+    """Un salarié qu'aucune tranche n'accueille garde son sexe.
+
+    La tranche fourre-tout — valeur absente, ou hors des bornes déclarées :
+    un âge de douze ans, une ancienneté vide — posait « femmes : 0,
+    hommes : 0 » et rangeait tout le monde sous « unknown_sex ». La même clé
+    portait deux notions différentes, et la fenêtre annonçait « sexe non
+    renseigné » des salariés qui en avaient un.
+    """
+
+    def population(self, rows):
+        return build_population(rows)
+
+    def bands(self, rows, field="age_band"):
+        from hr_insight.core.metrics import calculate_population_metrics
+
+        payload = calculate_population_metrics(self.population(rows),
+                                               make_config())
+        return payload["age_bands" if field == "age_band" else "tenure_bands"]
+
+    def test_someone_outside_every_band_still_counts_as_a_woman(self):
+        # Douze ans : aucune tranche d'âge ne l'accueille.
+        rows = [make_row(index, gender="F" if index % 2 else "H")
+                for index in range(20)]
+        rows.append(make_row(99, age=12, gender="F"))
+        fourre_tout = [band for band in self.bands(rows)
+                       if band.get("catch_all")]
+        self.assertEqual(len(fourre_tout), 1)
+        self.assertEqual(fourre_tout[0]["count"], 1)
+        self.assertEqual(fourre_tout[0]["female"], 1)
+        self.assertEqual(fourre_tout[0]["male"], 0)
+        self.assertEqual(fourre_tout[0]["unknown_sex"], 0)
+
+    def test_unknown_sex_means_unknown_sex_and_nothing_else(self):
+        rows = [make_row(index, gender="F" if index % 2 else "H")
+                for index in range(20)]
+        rows.append(make_row(98, gender=""))
+        bandes = self.bands(rows)
+        self.assertEqual(sum(band["unknown_sex"] for band in bandes), 1)
+        # Et il reste dans sa tranche : son age est connu.
+        self.assertFalse([band for band in bandes if band.get("catch_all")])
+
+    def test_every_band_says_whether_it_is_the_catch_all(self):
+        """La fenêtre ne doit pas avoir à reconnaître le fourre-tout à son
+        libellé : un libellé se traduit, un drapeau non."""
+        rows = [make_row(index) for index in range(20)]
+        for band in self.bands(rows):
+            self.assertIn("catch_all", band)
+            self.assertFalse(band["catch_all"])
+
+    def test_the_counts_still_add_up(self):
+        rows = [make_row(index, gender="F" if index % 2 else "H")
+                for index in range(20)]
+        rows.append(make_row(99, age=12, gender="H"))
+        rows.append(make_row(98, gender=""))
+        bandes = self.bands(rows)
+        self.assertEqual(sum(band["count"] for band in bandes), 22)
+        self.assertEqual(
+            sum(band["female"] + band["male"] + band["unknown_sex"]
+                for band in bandes), 22)

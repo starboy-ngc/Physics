@@ -2228,10 +2228,18 @@ class TestTheMergedOverview(unittest.TestCase):
         camembert = colonne(premier(PieChart))
         echelle = colonne(premier(ScaleChart))
         self.assertIsNotNone(pyramide)
-        # Trois colonnes distinctes : population, pyramides, remuneration.
+        # Trois colonnes distinctes : population, remuneration, structures.
         self.assertNotEqual(str(pyramide), str(camembert))
         self.assertNotEqual(str(pyramide), str(echelle))
         self.assertNotEqual(str(camembert), str(echelle))
+        # Et dans cet ordre : les pyramides au bout, parce qu'elles sont le
+        # bloc le plus haut.
+        colonnes = self.app.overview_frame.winfo_children()[-1]
+        posees = [str(enfant) for enfant in colonnes.winfo_children()
+                  if enfant.winfo_manager()]
+        self.assertEqual(posees.index(str(camembert)), 0)
+        self.assertEqual(posees.index(str(echelle)), 1)
+        self.assertEqual(posees.index(str(pyramide)), 2)
 
     def _column_heights(self):
         colonnes = self.app.overview_frame.winfo_children()[-1]
@@ -2421,57 +2429,60 @@ class TestTheMergedOverview(unittest.TestCase):
         pyramid = self._pyramids()[0]
         self.assertTrue(pyramid.rows[-1]["label"].startswith("2"))
 
-    def test_a_band_without_any_known_sex_leaves_the_pyramid(self):
-        """Elle reservait une ligne et n'y dessinait rien, ni barre ni
-        nombre : ces salaries disparaissaient d'un graphique qui leur
-        gardait pourtant une place. Ils en sortent, et la ligne dessous les
-        compte — comme le fait la page des ecarts, qui les annonce
-        « exclus »."""
+    def _panel_texts(self, bandes, measure=""):
         import tkinter as tk
 
-        from hr_insight.ui.charts import PyramidChart
-
-        bandes = [{"label": "20-29", "count": 10, "female": 6, "male": 4,
-                   "unknown_sex": 0},
-                  {"label": "(non renseigne)", "count": 3, "female": 0,
-                   "male": 0, "unknown_sex": 3}]
         cadre = tk.Frame(self.app)
-        self.app._pyramid_panel(cadre, "Essai", bandes, None)
+        self.app._pyramid_panel(cadre, "Essai", bandes, None,
+                                measure=measure)
         self.app.update()
 
         def walk(widget):
             yield widget
             for child in widget.winfo_children():
                 yield from walk(child)
-        pyramide = next(item for item in walk(cadre)
-                        if isinstance(item, PyramidChart))
-        self.assertEqual([row["label"] for row in pyramide.rows], ["20-29"])
         textes = [item.cget("text") for item in walk(cadre)
                   if isinstance(item, tk.Label)]
-        self.assertTrue(any("3 salariés au sexe non renseigné" in texte
-                            for texte in textes))
+        pyramides = [item for item in walk(cadre)
+                     if type(item).__name__ == "PyramidChart"]
         cadre.destroy()
+        return textes, pyramides
 
-    def test_nothing_is_said_when_every_sex_is_known(self):
-        """La ligne ne parait que lorsqu'elle a quelque chose a dire."""
-        import tkinter as tk
-
-        cadre = tk.Frame(self.app)
-        self.app._pyramid_panel(
-            cadre, "Essai",
-            [{"label": "20-29", "count": 10, "female": 6, "male": 4,
-              "unknown_sex": 0}], None)
-        self.app.update()
-
-        def walk(widget):
-            yield widget
-            for child in widget.winfo_children():
-                yield from walk(child)
-        textes = [item.cget("text") for item in walk(cadre)
-                  if isinstance(item, tk.Label)]
+    def test_the_catch_all_band_leaves_the_pyramid_and_says_why(self):
+        """Elle reservait une ligne et n'y dessinait rien. Et la fenetre
+        annoncait « sexe non renseigne » des salaries qui en avaient un :
+        ce qui leur manque, c'est une tranche — un age hors bornes, une
+        anciennete absente —, pas un sexe."""
+        bandes = [{"label": "20-29", "count": 10, "female": 6, "male": 4,
+                   "unknown_sex": 0, "catch_all": False},
+                  {"label": "(non renseigne)", "count": 3, "female": 2,
+                   "male": 1, "unknown_sex": 0, "catch_all": True}]
+        textes, pyramides = self._panel_texts(bandes, measure="d'âge")
+        self.assertEqual([row["label"] for row in pyramides[0].rows],
+                         ["20-29"])
+        self.assertTrue(any("3 salariés sans tranche d'âge" in texte
+                            for texte in textes))
         self.assertFalse(any("sexe non renseigné" in texte
                              for texte in textes))
-        cadre.destroy()
+
+    def test_an_unknown_sex_is_said_as_such_and_separately(self):
+        """Ceux-la ont bien une tranche, mais aucune aile : ils sont dans le
+        graphique sans y etre dessines."""
+        bandes = [{"label": "20-29", "count": 12, "female": 6, "male": 4,
+                   "unknown_sex": 2, "catch_all": False}]
+        textes, _pyramides = self._panel_texts(bandes)
+        self.assertTrue(any("2 salariés au sexe non renseigné" in texte
+                            for texte in textes))
+        self.assertFalse(any("sans tranche" in texte for texte in textes))
+
+    def test_nothing_is_said_when_there_is_nothing_to_say(self):
+        """La ligne ne parait que lorsqu'elle a quelque chose a dire."""
+        textes, _pyramides = self._panel_texts(
+            [{"label": "20-29", "count": 10, "female": 6, "male": 4,
+              "unknown_sex": 0, "catch_all": False}])
+        self.assertFalse(any("sexe non renseigné" in texte
+                             for texte in textes))
+        self.assertFalse(any("sans tranche" in texte for texte in textes))
 
     def test_every_tenure_band_is_present(self):
         """Le decoupage s'etend selon les carrieres presentes."""

@@ -206,14 +206,20 @@ titre — sans les deux, on ne sait pas ce qu'on regarde. Au-delà de six parts
 un gris qui ne ressemble à aucune vraie catégorie : un camembert à quinze
 parts ne se lit plus.
 
-**Colonne 2 — les structures**, en pyramides, femmes à gauche et hommes à
-droite, la tranche la plus jeune en bas. Une tranche dont personne n'a le sexe
-renseigné n'a aucune aile : elle sort du graphique, et une ligne dessous la
-compte. Sans la colonne « Sexe », l'outil retombe sur des barres simples
+**Colonne 2 — Rémunération.** Masse salariale, salaire moyen, l'échelle et
+la dispersion.
+
+**Colonne 3 — les structures**, en pyramides, femmes à gauche et hommes à
+droite, la tranche la plus jeune en bas. Deux populations n'y figurent pas, pour deux raisons qu'il ne faut pas
+confondre, et chacune se compte sous le graphique. Les salariés qu'**aucune
+tranche n'accueille** — âge ou ancienneté absent, ou hors des bornes
+déclarées — n'ont pas de place sur l'axe : une pyramide se lit du plus jeune
+au plus âgé, et ils ne sont ni l'un ni l'autre. Ceux dont le **sexe est
+inconnu**, eux, ont bien une tranche mais aucune aile : ils sont dans le
+graphique sans y être dessinés. Sans la colonne « Sexe », l'outil retombe sur des barres simples
 plutôt que d'afficher une demi-pyramide.
 
-**Colonne 3 — Rémunération.** Masse salariale et salaire moyen, puis
-l'**échelle**, dessinée : la moustache va du percentile le plus bas au plus
+L'**échelle**, dans la colonne 2, est dessinée : la moustache va du percentile le plus bas au plus
 haut, la boîte de Q1 à Q3 — la moitié centrale de l'effectif —, le trait plein
 est la médiane. On y lit d'un regard ce qu'un tableau de sept lignes ne disait
 pas : la grille est-elle resserrée ou ouverte, la médiane est-elle au milieu

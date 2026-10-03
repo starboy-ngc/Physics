@@ -138,6 +138,15 @@ plus haut, prennent donc une colonne à elles. Sous `OVERVIEW_COLUMN` × 3, la
 disposition revient à deux colonnes et la page défile — mieux vaut défiler
 que rogner.
 
+La tranche **fourre-tout** d'une pyramide — valeur absente, ou hors des
+bornes déclarées : un âge de douze ans, une ancienneté vide — garde sa
+ventilation par sexe et se reconnaît à `catch_all`. Elle posait auparavant
+« femmes : 0, hommes : 0 » et rangeait tout le monde sous `unknown_sex` : la
+même clé portait deux notions, et la fenêtre annonçait « sexe non renseigné »
+des salariés qui en avaient un. Les deux populations absentes du dessin se
+comptent désormais séparément — celles qu'aucune tranche n'accueille, et
+celles dont le sexe est inconnu, qui ont une tranche mais aucune aile.
+
 La page **rend la hauteur dont elle dispose**. Dimensionnée pour le pire
 cas — une fenêtre basse, ou un affichage Windows à 150 % qui grossit les
 polices —, elle laissait un tiers de hauteur vide sur un grand écran.

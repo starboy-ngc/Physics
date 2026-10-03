@@ -204,25 +204,33 @@ def _band_share(
     split: Dict[str, Dict[str, int]] = {
         label: {"female": 0, "male": 0, "unknown": 0} for label in counts
     }
-    unknown = 0
+    # Les salaries qu'aucune tranche n'accueille : valeur absente, ou hors
+    # des bornes declarees — un age de douze ans, une anciennete vide. Ils
+    # ont un sexe comme les autres, et il se comptait jusqu'ici dans
+    # « unknown_sex » : la meme cle portait deux notions differentes, et la
+    # fenetre annoncait « sexe non renseigne » des salaries qui en avaient
+    # un. Ils ont donc leur ventilation, et le fourre-tout se reconnait a
+    # « catch_all ».
+    outside = {"female": 0, "male": 0, "unknown": 0}
     for employee in population:
         label = str(employee.value(field_name) or "")
+        part = split[label] if label in counts else outside
         if label in counts:
             counts[label] += 1
-            split[label][_sex_of(employee, config)] += 1
-        else:
-            unknown += 1
+        part[_sex_of(employee, config)] += 1
     rows = [
         {"label": label, "count": value, "share": _share(value, headcount),
          "female": split[label]["female"], "male": split[label]["male"],
-         "unknown_sex": split[label]["unknown"]}
+         "unknown_sex": split[label]["unknown"], "catch_all": False}
         for label, value in counts.items()
     ]
-    if unknown:
+    total_outside = sum(outside.values())
+    if total_outside:
         rows.append(
-            {"label": UNKNOWN_LABEL, "count": unknown,
-             "share": _share(unknown, headcount),
-             "female": 0, "male": 0, "unknown_sex": unknown}
+            {"label": UNKNOWN_LABEL, "count": total_outside,
+             "share": _share(total_outside, headcount),
+             "female": outside["female"], "male": outside["male"],
+             "unknown_sex": outside["unknown"], "catch_all": True}
         )
     return rows
 
