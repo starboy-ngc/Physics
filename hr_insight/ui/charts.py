@@ -1562,6 +1562,10 @@ class PeopleChart(tk.Frame):
         self.identify: Optional[Callable[[Optional[int]], str]] = None
         self._on_select = on_select
         self._items: Dict[int, Dict[str, Any]] = {}
+        #: Derniere hauteur imposee au cadre. Sans ce garde, demander une
+        #: hauteur depuis le trace declenche un <Configure>, donc un
+        #: nouveau trace, donc une nouvelle demande : la fenetre tourne.
+        self._fitted: Optional[int] = None
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
@@ -1719,29 +1723,50 @@ class OrgChart(tk.Frame):
     la fenetre y rapproche un nom si le parametrage l'y autorise.
     """
 
-    BOX_W, BOX_H = 168, 56
+    # Compact, et c'est une contrainte de lecture, pas d'economie : un
+    # organigramme qui s'etend sur trois ecrans ne se lit plus, on le
+    # parcourt. Trois lignes dans la case — le nom, le poste, le salaire de
+    # base — et rien de plus ; la mediane de l'equipe et les effectifs
+    # tiennent dans l'info-bulle.
+    BOX_W, BOX_H = 148, 46
     #: La case des collaborateurs sans equipe : plus basse, elle se
     #: distingue d'un rattachement nomme au premier coup d'oeil.
-    CHIP_H = 30
-    GAP_X, GAP_Y = 20, 42
-    MARGIN = 20
+    CHIP_H = 24
+    GAP_X, GAP_Y = 14, 28
+    MARGIN = 16
+    #: Place reservee a l'ascenseur du bas quand le cadre prend la hauteur
+    #: du dessin : sans elle, il recouvre la derniere rangee de cases.
+    SCROLLBAR_ROOM = 16
 
-    def __init__(self, master: tk.Widget, on_select: Optional[Callable] = None):
+    def __init__(self, master: tk.Widget, on_select: Optional[Callable] = None,
+                 grows: bool = False):
+        """`grows` : le dessin prend la hauteur qu'il lui faut.
+
+        Pose dans une page qui defile, un organigramme ne doit pas avoir son
+        propre ascenseur vertical — deux zones defilantes imbriquees rendent
+        la molette imprevisible, et l'on se retrouve a faire defiler l'une
+        en croyant bouger l'autre. Il s'etend donc, et c'est la page qui
+        defile. En largeur, en revanche, il garde le sien : c'est la
+        dimension par laquelle un organigramme deborde.
+        """
         super().__init__(master, background=theme.CANVAS)
         _fonts(self)
+        self.grows = grows
         self.bar_x = ttk.Scrollbar(self, orient="horizontal",
                                    style="Flat.Horizontal.TScrollbar")
         self.bar_y = ttk.Scrollbar(self, orient="vertical",
                                    style="Flat.Vertical.TScrollbar")
         self.canvas = tk.Canvas(self, background=theme.CANVAS,
                                 highlightthickness=0)
-        self.bar_y.pack(side="right", fill="y")
+        if not grows:
+            self.bar_y.pack(side="right", fill="y")
         self.bar_x.pack(side="bottom", fill="x")
         self.canvas.pack(side="left", fill="both", expand=True)
         self.bar_x.configure(command=self.canvas.xview)
         self.bar_y.configure(command=self.canvas.yview)
-        theme.attach_scrollbar(self.canvas, self.bar_y, axis="y",
-                               side="right", fill="y", before=self.canvas)
+        if not grows:
+            theme.attach_scrollbar(self.canvas, self.bar_y, axis="y",
+                                   side="right", fill="y", before=self.canvas)
         theme.attach_scrollbar(self.canvas, self.bar_x, axis="x",
                                side="bottom", fill="x", before=self.canvas)
         self.tooltip = Tooltip(self.canvas)
@@ -1759,6 +1784,10 @@ class OrgChart(tk.Frame):
         self.selected: Optional[str] = None
         self._on_select = on_select
         self._items: Dict[int, Dict[str, Any]] = {}
+        #: Derniere hauteur imposee au cadre. Sans ce garde, demander une
+        #: hauteur depuis le trace declenche un <Configure>, donc un
+        #: nouveau trace, donc une nouvelle demande : la fenetre tourne.
+        self._fitted: Optional[int] = None
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
@@ -1821,6 +1850,8 @@ class OrgChart(tk.Frame):
         morceaux = [self._display(node.get("manager", ""))]
         if node.get("job"):
             morceaux.append(str(node["job"]))
+        if node.get("own_amount") is not None:
+            morceaux.append(format_money(node["own_amount"], self.currency))
         morceaux.append(f"{node.get('direct', 0)} en direct · "
                         f"{node.get('total', 0)} au total")
         if node.get("amount") is not None:
@@ -1894,6 +1925,15 @@ class OrgChart(tk.Frame):
                 self._draw_node(node)
         hauteur = max((node["y"] + self.BOX_H for node in posees),
                       default=self.BOX_H) + self.MARGIN
+        if self.grows:
+            # Le cadre prend la hauteur du dessin : c'est la page qui
+            # defile, et elle ne peut le faire que si le dessin annonce ce
+            # qu'il occupe.
+            voulue = int(hauteur) + self.SCROLLBAR_ROOM
+            if voulue != self._fitted:
+                self._fitted = voulue
+                self.pack_propagate(False)
+                self.configure(height=voulue)
         # Le dessin se centre dans les deux sens quand il tient dans la
         # fenetre : cale en haut a gauche, un organigramme de deux cases
         # flotte au bord d'une grande zone vide. Le centrage passe par la
@@ -1901,7 +1941,8 @@ class OrgChart(tk.Frame):
         # cases elles-memes fausserait les coordonnees du survol.
         étendue = largeur + 2 * self.MARGIN
         gauche = min((étendue - width) / 2, 0)
-        haut = min((hauteur - self.canvas.winfo_height()) / 2, 0)
+        haut = (0 if self.grows
+                else min((hauteur - self.canvas.winfo_height()) / 2, 0))
         self.canvas.configure(
             scrollregion=(gauche, haut,
                           max(étendue, width + gauche),
@@ -1916,28 +1957,31 @@ class OrgChart(tk.Frame):
             x, y, x + self.BOX_W, y + self.BOX_H,
             fill=fond, outline=bord, width=2 if choisi else 1)
         self._items[case] = node
+        # Trois lignes, et trois seulement : le nom, le poste, le salaire
+        # de base. Les effectifs et la mediane de l'equipe sont dans
+        # l'info-bulle — une quatrieme ligne obligerait a agrandir la case,
+        # donc le dessin, donc a le parcourir au lieu de le lire.
         nom = self._display(node.get("manager", ""))
         titre = self.canvas.create_text(
-            x + 10, y + 14, anchor="w",
-            text=_shorten(self, nom, self.BOX_W - 20,
+            x + 8, y + 11, anchor="w",
+            text=_shorten(self, nom, self.BOX_W - 16,
                           _font(SIZE_SMALL, "bold")),
             font=_font(SIZE_SMALL, "bold"), fill=theme.INK)
         self._items[titre] = node
-        effectif = node.get("total", 0)
-        détail = f"{effectif} pers." if effectif else "sans équipe"
-        if node.get("job"):
-            détail = f"{node['job']} · {détail}"
         poste = self.canvas.create_text(
-            x + 10, y + 30, anchor="w",
-            text=_shorten(self, détail, self.BOX_W - 20),
+            x + 8, y + 24, anchor="w",
+            text=_shorten(self, node.get("job") or "—", self.BOX_W - 16),
             font=note_font(), fill=theme.MUTED)
         self._items[poste] = node
-        montant = (format_money(node["amount"], self.currency)
-                   if node.get("amount") is not None else "médiane masquée")
+        # Le salaire du responsable, et non la mediane de son equipe : c'est
+        # de lui qu'on parle en regardant sa case.
+        propre = node.get("own_amount")
         valeur = self.canvas.create_text(
-            x + 10, y + 45, anchor="w", text=montant, font=note_font(),
-            fill=theme.INK_SOFT if node.get("amount") is not None
-            else theme.FAINT)
+            x + 8, y + 37, anchor="w",
+            text=(format_money(propre, self.currency) if propre is not None
+                  else "montant masqué"),
+            font=note_font(),
+            fill=theme.INK_SOFT if propre is not None else theme.FAINT)
         self._items[valeur] = node
         for enfant in (list(node.get("children") or [])
                        + ([node["_chip"]] if node.get("_chip") else [])):

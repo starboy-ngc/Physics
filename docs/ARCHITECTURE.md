@@ -49,7 +49,7 @@ hr_insight/
     ├── metrics.py          Indicateurs métier + règles de confidentialité
     ├── segmentation.py     Filtres combinables, découpage par dimension
     ├── hierarchy.py        Arbre déduit de la colonne manager (équipes)
-    ├── org.py              Organigramme d'une équipe : structure + médianes
+    ├── org.py              Organigramme d'une équipe : structure + montants
     ├── reporting.py        Restitution HTML + SVG
     ├── export.py           Export Excel / CSV
     ├── formulas.py         Écriture tableur des calculs (onglets de contrôle)
@@ -68,15 +68,24 @@ hiérarchique de mille niveaux dépasserait la pile. Un fichier incohérent
 arbre amputé et le dit.
 
 `org` fait ce que `hierarchy` s'interdit : rapprocher la structure et la
-rémunération. Il rend deux lectures d'une même équipe — les cases du dessin
+rémunération. Il rend trois lectures — l'équipe par poste (effectif,
+minimum, médiane, moyenne, maximum, dans l'ordre de la hiérarchie), la liste
+nominative avec le rang de rémunération dans l'équipe, et les cases du
+dessin. Il rend deux lectures d'une même équipe — les cases du dessin
 (responsables seuls ; ceux qui n'encadrent personne sont comptés sous leur
 responsable) et la liste nominative — et les fait porter sur **la population
 analysée**, filtres compris. Un salarié dont le responsable a été écarté par
 un filtre se rattache au premier responsable restant au-dessus de lui : sans
 ce rattrapage, un filtre qui retire un chef de service détacherait son
 service entier, et le dessin perdrait des personnes que les autres onglets
-comptent toujours. Les seuils y valent comme ailleurs — une médiane d'équipe
-n'est rendue qu'au-dessus du seuil de publication —, et la base est le temps
+comptent toujours. Le seuil de publication, lui, **n'y vaut pas par défaut**
+(`privacy_parameters.mask_in_org_chart`, faux) : cette page ne sort jamais de
+l'écran — aucun document, aucun export, aucun journal — et elle porte sur une
+équipe que son lecteur vient de désigner. Masquée, elle serait inutilisable :
+un poste tenu par trois personnes n'aurait ni minimum, ni médiane, ni
+maximum. Un test vérifie que `reporting`, `export` et `slides` n'importent
+pas ce module : le jour où l'un d'eux le ferait, l'exemption devrait être
+rediscutée avant publication. La base est le temps
 plein, avec le même repli sur le montant versé que la page des écarts quand
 le fichier ne porte aucun temps de travail.
 

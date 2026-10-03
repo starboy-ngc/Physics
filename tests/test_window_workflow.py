@@ -746,3 +746,83 @@ class TestTheOrganisationChart(WindowCase):
             valeur = self.app.org_tree.item(item, "values")[0]
             self.assertNotIn("NOM", valeur)
             self.assertIn("E000", valeur)
+
+    def test_the_page_reads_from_the_general_to_the_particular(self):
+        """Trois lectures, dans cet ordre : les postes, les personnes, le
+        dessin. Devant cinquante salariés, la première question n'est pas
+        « qui gagne combien » mais « quels postes, dans quelle fourchette »."""
+        self.load(self._fichier())
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        self.assertTrue(self.app.org_jobs.get_children())
+        self.assertTrue(self.app.org_tree.get_children())
+        self.assertIsNotNone(self.app.org_chart.root)
+
+    def test_the_job_table_carries_the_range_of_each_job(self):
+        """Un poste du simple au double n'appelle pas la même conversation
+        qu'un poste resserré, et aucune moyenne ne le dirait."""
+        self.load(self._fichier())
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        lignes = self.app.org_jobs.get_children()
+        valeurs = self.app.org_jobs.item(lignes[0], "values")
+        self.assertEqual(len(valeurs), 7)
+        # Effectif, minimum, médiane, moyenne, maximum : tous renseignés.
+        for valeur in valeurs[2:]:
+            self.assertNotEqual(valeur, "—")
+        total = sum(int(self.app.org_jobs.item(item, "values")[2])
+                    for item in lignes)
+        self.assertEqual(total, len(self.app.result.filtered))
+
+    def test_the_people_table_ranks_the_pay_within_the_team(self):
+        """« 31 400 EUR » ne dit rien ; « 4 / 57 » situe la personne."""
+        self.load(self._fichier())
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        rangs = [self.app.org_tree.item(item, "values")[-1]
+                 for item in self.app.org_tree.get_children()]
+        self.assertIn("1 / 40", rangs)
+        self.assertIn("40 / 40", rangs)
+        # Un rang par salarié, et aucun en double : le classement est un
+        # ordre, pas une étiquette.
+        self.assertEqual(len(set(rangs)), len(rangs))
+
+    def test_a_small_team_keeps_its_figures_on_this_page(self):
+        """Le seuil de publication ne s'applique pas ici : la page ne sort
+        pas de l'écran, et elle porte sur une équipe que l'on vient de
+        désigner. Masquée, elle serait inutilisable — un poste tenu par
+        trois personnes n'aurait ni minimum, ni médiane, ni maximum."""
+        self.load(self._fichier())
+        self._choisir("E00002")        # un chef et ses quelques rattachés
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        self.assertLess(len(self.app.result.filtered), 10)
+        for item in self.app.org_tree.get_children():
+            self.assertNotIn("masquée",
+                             self.app.org_tree.item(item, "values"))
+        for item in self.app.org_jobs.get_children():
+            self.assertNotIn("—", self.app.org_jobs.item(item, "values")[3:])
+
+    def test_the_threshold_comes_back_on_this_page_when_asked_for(self):
+        """Une installation partagée peut le vouloir : le réglage existe,
+        et il se comporte alors comme partout ailleurs."""
+        from tests.support import make_config
+
+        self.load(self._fichier())
+        self.app.configuration = make_config(
+            {"privacy_parameters.mask_in_org_chart": True,
+             "privacy_parameters.min_headcount_publish": 20})
+        self._choisir("E00002")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        valeurs = [self.app.org_tree.item(item, "values")
+                   for item in self.app.org_tree.get_children()]
+        self.assertTrue(any("masquée" in ligne for ligne in valeurs))

@@ -600,3 +600,78 @@ class TestTheWarningFades(SettingsCase):
         self.window._chose("Grade", self.window._boxes[rang])
         self.window.update()
         self.assertEqual(self._colour_of("Grade"), theme.WARN)
+
+
+@needs_display
+class TestTheThreeHeadcountThresholds(SettingsCase):
+    """Trois seuils, et non un seul affiché sur trois en service.
+
+    Un utilisateur qui pose « 5 » dans l'écran et voit un groupe de huit
+    sans boîte à moustaches ne peut pas deviner qu'un second seuil, à dix,
+    gouverne les graphiques : il conclut que le réglage ne marche pas. Les
+    trois sont donc à l'écran, nommés par ce qu'ils décident.
+    """
+
+    def labels(self):
+        import tkinter as tk
+
+        textes = []
+
+        def marcher(widget):
+            for enfant in widget.winfo_children():
+                if isinstance(enfant, tk.Label):
+                    textes.append(enfant.cget("text"))
+                marcher(enfant)
+
+        marcher(self.window)
+        return " ".join(textes)
+
+    def written(self):
+        with open(os.path.join(self.directory, "privacy_parameters.json"),
+                  encoding="utf-8") as handle:
+            return json.load(handle)
+
+    def test_the_three_are_offered(self):
+        for variable, chemin, defaut in (
+                (self.window.threshold_var,
+                 "privacy_parameters.min_headcount_publish", 5),
+                (self.window.warning_var,
+                 "privacy_parameters.min_headcount_warning", 10),
+                (self.window.chart_var,
+                 "privacy_parameters.min_headcount_chart", 10)):
+            self.assertEqual(variable.get(),
+                             str(self.configuration.number(
+                                 chemin, defaut, minimum=1, integer=True)))
+
+    def test_each_one_says_what_it_decides(self):
+        joint = self.labels()
+        self.assertIn("Ne rien calculer en dessous de", joint)
+        self.assertIn("Avertir sur l'interprétation en dessous de", joint)
+        self.assertIn("Ne pas tracer de graphique en dessous de", joint)
+
+    def test_the_two_sided_rule_is_written_down(self):
+        """La réponse à « j'ai mis 5 et il m'en demande plus » : une
+        comparaison F/H demande le seuil de chaque côté, donc le double."""
+        joint = self.labels()
+        self.assertIn("DE CHAQUE CÔTÉ", joint)
+        self.assertIn("Organigramme", joint)
+
+    def test_the_three_are_written_to_the_file(self):
+        self.window.threshold_var.set("7")
+        self.window.warning_var.set("14")
+        self.window.chart_var.set("21")
+        self.window.save()
+        écrit = self.written()
+        self.assertEqual(écrit["min_headcount_publish"], 7)
+        self.assertEqual(écrit["min_headcount_warning"], 14)
+        self.assertEqual(écrit["min_headcount_chart"], 21)
+
+    def test_an_unreadable_entry_keeps_the_value_in_place(self):
+        """Un seuil protège des personnes : il ne se perd pas sur une
+        frappe."""
+        avant = self.configuration.number(
+            "privacy_parameters.min_headcount_chart", 10, minimum=1,
+            integer=True)
+        self.window.chart_var.set("beaucoup")
+        self.window.save()
+        self.assertEqual(self.written()["min_headcount_chart"], avant)

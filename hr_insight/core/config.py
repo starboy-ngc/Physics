@@ -149,6 +149,14 @@ DEFAULTS: Dict[str, Any] = {
         "min_headcount_publish": 5,
         "min_headcount_warning": 10,
         "min_headcount_chart": 10,
+        # L'onglet « Organigramme » ne masque rien par defaut, et c'est une
+        # decision : cette page ne sort jamais de l'ecran — aucun document,
+        # aucun export, aucun journal — et elle porte sur une equipe que son
+        # lecteur vient de designer. Masquee, elle serait inutilisable : un
+        # poste tenu par trois personnes n'aurait ni minimum, ni mediane, ni
+        # maximum. A vrai, le seuil de publication s'y applique comme
+        # partout — ce que veut une installation partagee.
+        "mask_in_org_chart": False,
         "anonymise_identifiers": True,
         # Sel des references anonymes. Vide : il est tire au hasard a chaque
         # analyse, et les references ne valent que dans les documents d'une

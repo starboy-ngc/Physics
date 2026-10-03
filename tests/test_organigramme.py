@@ -197,36 +197,70 @@ class TestTheFiltersApplyHereToo(OrgCase):
 
 
 class TestConfidentiality(OrgCase):
-    """Un organigramme ne doit pas devenir le chemin vers le salaire du
-    voisin."""
+    """Le seuil de publication ne s'applique pas ici par defaut.
 
-    def test_a_team_below_the_threshold_shows_its_size_and_not_its_pay(self):
+    C'est une decision, pas un oubli, et elle tient a ce que cette page
+    est : un ecran, jamais un document. Elle ne figure dans aucune
+    restitution, aucun export, aucun journal, et elle porte sur une equipe
+    que son lecteur vient de designer. Un responsable qui prepare ses
+    augmentations connait les remunerations de ses six collaborateurs ; une
+    page qui les masquerait ne protegerait personne et serait inutilisable —
+    passe le seuil, un poste tenu par trois personnes n'aurait ni minimum,
+    ni mediane, ni maximum.
+
+    Le seuil reste disponible pour une installation partagee, et c'est ce
+    que ces tests verifient aussi : retabli, il se comporte exactement comme
+    partout ailleurs.
+    """
+
+    def masquée(self):
+        return make_config({"privacy_parameters.mask_in_org_chart": True})
+
+    def test_a_small_team_keeps_its_figures(self):
         petite = make([("P", ""), ("Q", "P"), ("R", "P")])
-        arbre = Tree(petite)
-        racine = org.chart_nodes(arbre, "P", self.config)
+        racine = org.chart_nodes(Tree(petite), "P", self.config)
         self.assertEqual(racine["total"], 2)
-        self.assertIsNone(racine["amount"])
-        self.assertTrue(racine["masked"])
+        self.assertIsNotNone(racine["amount"])
+        self.assertFalse(racine["masked"])
 
-    def test_individual_amounts_fall_with_the_team(self):
+    def test_a_small_team_keeps_its_individual_amounts(self):
         petite = make([("P", ""), ("Q", "P"), ("R", "P")])
         lignes = org.member_rows(Tree(petite), "P", self.config)
         self.assertEqual(len(lignes), 3)
+        self.assertTrue(all(ligne["amount"] is not None for ligne in lignes))
+        self.assertFalse(any(ligne["masked"] for ligne in lignes))
+
+    def test_the_threshold_comes_back_when_it_is_asked_for(self):
+        petite = make([("P", ""), ("Q", "P"), ("R", "P")])
+        racine = org.chart_nodes(Tree(petite), "P", self.masquée())
+        self.assertTrue(racine["masked"])
+        self.assertIsNone(racine["amount"])
+        lignes = org.member_rows(Tree(petite), "P", self.masquée())
         self.assertTrue(all(ligne["amount"] is None for ligne in lignes))
-        self.assertTrue(all(ligne["masked"] for ligne in lignes))
 
-    def test_a_team_above_the_threshold_publishes_its_median(self):
-        racine = self.nodes()
-        self.assertFalse(racine["masked"])
-        self.assertIsNotNone(racine["amount"])
-
-    def test_the_threshold_is_the_configured_one(self):
-        """Il n'est pas ecrit dans ce module : il vient du parametrage, et
-        un seuil releve doit faire tomber une mediane qui passait."""
-        strict = make_config({"privacy_parameters.min_headcount_publish": 20})
+    def test_restored_it_is_the_configured_threshold_and_not_a_number_here(self):
+        """Il ne doit pas etre ecrit dans ce module : un seuil releve doit
+        faire tomber une mediane qui passait."""
+        strict = make_config({"privacy_parameters.mask_in_org_chart": True,
+                              "privacy_parameters.min_headcount_publish": 20})
         racine = org.chart_nodes(self.tree, "D", strict)
         self.assertTrue(racine["masked"])
         self.assertIsNone(racine["amount"])
+        # Le meme arbre, au seuil par defaut, passe.
+        self.assertFalse(org.chart_nodes(self.tree, "D",
+                                         self.masquée())["masked"])
+
+    def test_the_page_stays_out_of_every_document(self):
+        """La raison meme de l'exemption. Si une restitution venait un jour
+        a porter cette page, ce test tomberait, et il faudrait rediscuter le
+        seuil avant de la publier."""
+        from hr_insight.core import reporting, export, slides
+
+        for module in (reporting, export, slides):
+            with open(module.__file__, encoding="utf-8") as handle:
+                source = handle.read()
+            self.assertNotIn("from .org import", source)
+            self.assertNotIn("import org", source)
 
     def test_without_any_working_time_the_amounts_are_the_paid_ones(self):
         """La colonne du temps de travail n'est pas obligatoire.
@@ -289,3 +323,130 @@ class TestTheSummary(OrgCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTheViewByJob(OrgCase):
+    """L'equipe par poste : la lecture qui precede la liste nominative.
+
+    Devant cinquante personnes, la premiere question n'est pas « qui gagne
+    combien » mais « quels postes, combien de personnes chacun, dans quelle
+    fourchette ». Un poste du simple au double n'appelle pas la meme
+    conversation qu'un poste resserre, et aucune moyenne ne le dirait.
+    """
+
+    def setUp(self):
+        super().setUp()
+        # Deux postes, des montants connus : on verifie des bornes, pas un
+        # ordre de grandeur.
+        self.population = make([("D", "")] + [(f"A{index}", "D")
+                                              for index in range(5)])
+        for employee in self.population:
+            employee.fte = 1.0
+        montants = {"D": 90000, "A0": 30000, "A1": 32000, "A2": 34000,
+                    "A3": 50000, "A4": 60000}
+        postes = {"D": "Directeur", "A0": "Comptable", "A1": "Comptable",
+                  "A2": "Comptable", "A3": "Contrôleur", "A4": "Contrôleur"}
+        for employee in self.population:
+            employee.base_salary = montants[employee.employee_id]
+            employee.job_title = postes[employee.employee_id]
+            employee.assign("job_title", postes[employee.employee_id])
+        self.arbre = Tree(self.population)
+
+    def lignes(self):
+        return org.job_rows(self.arbre, "D", self.config)
+
+    def test_one_line_per_job(self):
+        self.assertEqual([ligne["job"] for ligne in self.lignes()],
+                         ["Directeur", "Comptable", "Contrôleur"])
+
+    def test_the_manager_job_comes_first_and_the_rest_follows_the_levels(self):
+        """L'ordre suit la hierarchie, pas l'alphabet : « Comptable »
+        passerait avant « Directeur » si on triait les lettres."""
+        lignes = self.lignes()
+        self.assertEqual(lignes[0]["job"], "Directeur")
+        self.assertEqual(lignes[0]["level"], 0)
+        self.assertTrue(all(ligne["level"] == 1 for ligne in lignes[1:]))
+
+    def test_at_equal_level_the_most_numerous_job_reads_first(self):
+        """C'est lui qui porte l'equipe."""
+        lignes = self.lignes()
+        self.assertEqual(lignes[1]["job"], "Comptable")
+        self.assertEqual(lignes[1]["headcount"], 3)
+
+    def test_each_line_carries_its_range(self):
+        ligne = next(row for row in self.lignes() if row["job"] == "Comptable")
+        self.assertEqual(ligne["minimum"], 30000)
+        self.assertEqual(ligne["maximum"], 34000)
+        self.assertEqual(ligne["median"], 32000)
+        self.assertEqual(ligne["mean"], 32000)
+
+    def test_a_job_held_at_two_levels_is_filed_at_the_highest(self):
+        """C'est la qu'il entre dans l'organisation."""
+        self.population.employees[-1].assign("job_title", "Directeur")
+        lignes = org.job_rows(Tree(self.population), "D", self.config)
+        directeur = next(row for row in lignes if row["job"] == "Directeur")
+        self.assertEqual(directeur["level"], 0)
+        self.assertEqual(directeur["headcount"], 2)
+
+    def test_the_job_is_the_one_the_gaps_page_calls_a_job(self):
+        """Deux pages qui nommeraient « poste » deux colonnes differentes se
+        contrediraient sous le meme mot."""
+        self.assertEqual([ligne["job"] for ligne in self.lignes()][0],
+                         "Directeur")
+        autre = make_config({"pay_equity_parameters.category_field": "job"})
+        lignes = org.job_rows(self.arbre, "D", autre)
+        self.assertEqual([ligne["job"] for ligne in lignes], ["Poste"])
+
+    def test_without_any_job_title_the_trade_takes_over(self):
+        """Un fichier qui ne porte que « Métier » ne doit pas afficher une
+        page vide."""
+        for employee in self.population:
+            employee.assign("job_title", "")
+        lignes = org.job_rows(Tree(self.population), "D", self.config)
+        self.assertEqual([ligne["job"] for ligne in lignes], ["Poste"])
+
+
+class TestThePayRank(OrgCase):
+    """Le rang de remuneration : ce qui manque a un montant seul.
+
+    « 31 400 EUR » ne dit rien ; « 31 400 EUR, 4e sur 57 » situe la personne
+    dans son equipe, et c'est la question qu'on se pose en preparant une
+    revue.
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.population = make([("D", "")] + [(f"A{index}", "D")
+                                              for index in range(4)])
+        for index, employee in enumerate(self.population):
+            employee.fte = 1.0
+            employee.base_salary = [50000, 40000, 40000, 30000, 20000][index]
+        self.arbre = Tree(self.population)
+
+    def rangs(self):
+        return {ligne["employee_id"]: ligne["rank"]
+                for ligne in org.member_rows(self.arbre, "D", self.config)}
+
+    def test_the_best_paid_is_first(self):
+        self.assertEqual(self.rangs()["D"], 1)
+
+    def test_equal_pay_shares_a_rank(self):
+        """Deux deuxiemes, puis un quatrieme : classer l'un devant l'autre a
+        montant egal serait une difference que la donnee ne porte pas."""
+        rangs = self.rangs()
+        self.assertEqual(rangs["A0"], 2)
+        self.assertEqual(rangs["A1"], 2)
+        self.assertEqual(rangs["A2"], 4)
+
+    def test_the_total_is_the_number_of_people_ranked(self):
+        lignes = org.member_rows(self.arbre, "D", self.config)
+        self.assertTrue(all(ligne["ranked"] == 5 for ligne in lignes))
+
+    def test_someone_without_an_amount_has_no_rank(self):
+        """Un salaire absent n'est pas un salaire nul : il ne se classe
+        pas."""
+        self.population.employees[2].base_salary = None
+        lignes = org.member_rows(Tree(self.population), "D", self.config)
+        sans = next(row for row in lignes if row["employee_id"] == "A1")
+        self.assertIsNone(sans["rank"])
+        self.assertTrue(all(ligne["ranked"] == 4 for ligne in lignes))

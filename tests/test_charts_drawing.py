@@ -953,7 +953,8 @@ class TestOrgChart(ChartCase):
     def noeud(self, cle, enfants=(), individus=0, montant=50000.0, total=10):
         return {"manager": cle, "row": 1, "job": "Poste", "level": 0,
                 "direct": len(enfants) + individus, "total": total,
-                "individuals": individus, "amount": montant, "masked": False,
+                "individuals": individus, "amount": montant,
+                "own_amount": montant, "masked": False,
                 "full_time": True, "children": list(enfants)}
 
     def chart(self, racine=None):
@@ -1026,13 +1027,28 @@ class TestOrgChart(ChartCase):
         chart = self.chart()
         self.assertEqual(len(self.items(chart.canvas, "line")), 3)
 
-    def test_a_masked_median_is_written_and_not_left_blank(self):
+    def test_a_masked_amount_is_written_and_not_left_blank(self):
         """Une case vide se lit comme une donnee absente, pas comme un
         seuil de confidentialite."""
         racine = self.noeud("S", montant=None, total=3)
         racine["masked"] = True
         chart = self.chart(racine)
-        self.assertIn("médiane masquée", self.texts(chart.canvas))
+        self.assertIn("montant masqué", self.texts(chart.canvas))
+
+    def test_the_box_carries_the_manager_own_pay_not_the_team_median(self):
+        """C'est de lui qu'on parle en regardant sa case. La mediane de son
+        equipe est dans l'info-bulle, ou elle ne coute pas une ligne."""
+        racine = self.noeud("S", total=9)
+        racine["own_amount"] = 88000.0
+        racine["amount"] = 41000.0
+        chart = self.chart(racine)
+        textes = self.texts(chart.canvas)
+        self.assertTrue(any("88" in texte for texte in textes))
+        self.assertFalse(any("41" in texte for texte in textes))
+        # Les deux se lisent au survol, et la mediane y est nommee.
+        bulle = chart._label(racine)
+        self.assertIn("88", bulle)
+        self.assertIn("médiane de l'équipe", bulle)
 
     def test_without_a_team_it_says_what_it_waits_for(self):
         from hr_insight.ui.charts import OrgChart

@@ -639,37 +639,76 @@ colonne désigne des personnes.
 
 Choisir une équipe fait paraître un onglet de plus, **entre « Vue
 d'ensemble » et « Graphique »**. Sans équipe choisie, il n'existe pas : il
-n'y a alors rien à dessiner, et une entrée ouvrant sur une page vide est pire
+n'y a alors rien à montrer, et une entrée ouvrant sur une page vide est pire
 qu'une entrée absente.
 
-Il porte deux lectures de la même population, parce qu'aucune ne suffit.
+La page se lit **du général au particulier**, et aucune des trois lectures ne
+remplace les autres.
 
-**Le dessin** donne la structure d'un regard : combien de niveaux, qui porte
-quelle équipe, et à quel niveau de rémunération. Seuls les responsables ont
-une case ; ceux qui n'encadrent personne sont comptés sous celle de leur
-responsable — « 7 collaborateurs ». Un organigramme où chaque salarié aurait
-sa case devient illisible passé trente personnes, et la structure, qu'on
-vient précisément y lire, y disparaît. Chaque case porte l'effectif encadré
-et la médiane de l'équipe ; sous le seuil de publication, elle affiche sa
-taille et jamais sa rémunération.
+**En tête, six chiffres sur une ligne** : effectif, nombre de responsables,
+ancienneté moyenne, niveaux d'organisation, salaire médian et salaire moyen.
+L'écart entre les deux derniers est le premier signal : une moyenne très
+au-dessus de la médiane dit qu'une poignée de rémunérations tire l'ensemble.
 
-**La liste** nomme : un salarié par ligne, dans l'ordre de l'arbre — chaque
-responsable suivi de son équipe —, avec son poste, son niveau, son
-rattachement, l'effectif qu'il encadre, son ancienneté et sa rémunération.
-C'est elle qu'on lit pour préparer un entretien.
+**L'équipe par poste.** Une ligne par poste, dans l'ordre de la hiérarchie —
+celui du responsable choisi d'abord, puis ceux du niveau en dessous : avec
+l'effectif, le minimum, la médiane, la moyenne et le maximum. C'est la
+lecture qui précède la liste nominative : devant cinquante personnes, la
+question n'est pas « qui gagne combien » mais « quels postes la composent, et
+dans quelle fourchette ». Un poste dont le minimum et le maximum vont du
+simple au double n'appelle pas la même conversation qu'un poste resserré, et
+aucune moyenne ne le dirait. Un poste tenu à deux niveaux différents est
+classé au plus haut des deux — c'est là qu'il entre dans l'organisation.
 
-Les deux se répondent : **cliquez une case**, la personne se sélectionne dans
-la liste ; **choisissez une ligne**, la case qui la porte s'allume.
+« Poste » désigne ici la même colonne que la page des écarts : celle que
+`pay_equity_parameters.category_field` déclare. Si elle n'est renseignée pour
+personne, le métier prend le relais.
 
-Les filtres s'appliquent ici comme partout ailleurs. Un salarié écarté n'est
-plus compté, et celui dont le responsable l'a été se rattache au premier
-responsable restant au-dessus de lui — sans quoi un filtre qui retire un chef
-de service détacherait son service entier, et l'effectif affiché ne serait
-plus celui des autres onglets.
+**Les salariés.** Un par ligne, dans l'ordre de l'arbre : poste, niveau,
+rattachement, âge, ancienneté, rémunération, et le **rang** de cette
+rémunération dans l'équipe — 1 pour la plus élevée. C'est ce qui manque à un
+montant seul : « 31 400 EUR » ne dit rien, « 31 400 EUR, 4e sur 57 » situe la
+personne. Deux rémunérations égales partagent leur rang.
 
-Les rémunérations y sont ramenées au temps plein. Si le fichier ne renseigne
-le temps de travail pour personne, la page retombe sur le montant versé et le
-dit plutôt que de laisser croire à une base qu'elle n'applique pas.
+**L'organigramme**, en bas, compact et volontairement sobre : nom, poste,
+salaire de base. Seuls les responsables ont une case ; ceux qui n'encadrent
+personne sont comptés sous celle de leur responsable — « 7 collaborateurs ».
+Un organigramme où chaque salarié aurait sa case devient illisible passé
+trente personnes, et la structure, qu'on vient précisément y lire, y
+disparaît. Les effectifs encadrés et la médiane de l'équipe se lisent au
+survol, où ils ne coûtent pas une ligne de plus dans la case.
+
+Le dessin et la liste se répondent : **cliquez une case**, la personne se
+sélectionne dans la liste ; **choisissez une ligne**, la case qui la porte
+s'allume.
+
+#### Les seuils ne s'appliquent pas ici
+
+C'est la seule page de l'outil dans ce cas, et c'est une décision, pas un
+oubli. Elle ne sort jamais de l'écran : aucun document produit, aucun export,
+aucun journal ne la porte. Elle décrit une équipe que vous venez de désigner
+et que, dans l'usage, vous encadrez. Un responsable qui prépare ses
+augmentations connaît les rémunérations de ses six collaborateurs ; une page
+qui les masquerait ne protégerait personne et serait inutilisable — passé le
+seuil, un poste tenu par trois personnes n'aurait ni minimum, ni médiane, ni
+maximum.
+
+Pour une installation partagée, le seuil se rétablit : passez
+`privacy_parameters.mask_in_org_chart` à `true`, et la page se masque comme
+les autres. **Partout ailleurs, le seuil continue de s'appliquer sans
+discussion** : ce qui circule reste protégé.
+
+#### Les filtres s'appliquent, eux
+
+Un salarié écarté par un filtre n'est plus compté, et celui dont le
+responsable l'a été se rattache au premier responsable restant au-dessus de
+lui — sans quoi un filtre qui retire un chef de service détacherait son
+service entier, et l'effectif affiché ne serait plus celui des autres
+onglets.
+
+Les rémunérations sont ramenées au temps plein. Si le fichier ne renseigne le
+temps de travail pour personne, la page retombe sur le montant versé et le
+dit, plutôt que de laisser croire à une base qu'elle n'applique pas.
 
 ### Ce que l'équipe ne change pas
 
@@ -685,6 +724,30 @@ ni dans aucun journal.
   désactivés sous 10 (seuils modifiables).
 - Les matricules sont remplacés par une référence anonyme dans les
   restitutions.
+
+### Trois seuils, et non un seul
+
+Ils se règlent tous les trois dans **Paramètres → Confidentialité**, et
+chacun décide d'autre chose :
+
+| Seuil | Défaut | Ce qu'il décide |
+|---|---|---|
+| **Publication** | 5 | En dessous, aucune moyenne, médiane ou quartile n'est publié, nulle part |
+| **Avertissement** | 10 | En dessous, les chiffres restent publiés mais portent une mise en garde |
+| **Graphiques** | 10 | En dessous, aucune boîte à moustaches : elle dessinerait la position de chaque salarié |
+
+Poser 5 dans le premier ne suffit donc pas à voir une dispersion sur un
+groupe de huit : c'est le troisième qui la gouverne, et il vaut 10. C'était
+la source de confusion la plus fréquente, d'où leur présence à l'écran.
+
+**Une comparaison femmes / hommes demande le seuil de publication de chaque
+côté.** Avec 5, il faut 5 femmes **et** 5 hommes, donc au moins 10 personnes
+— et un groupe de 8 reste sans écart publié quel que soit son équilibre. Ce
+n'est pas un seuil de plus : c'est le même, appliqué à chacun des deux
+groupes comparés, parce qu'un écart calculé sur trois femmes les désigne.
+
+**L'onglet « Organigramme » fait exception** et ne masque rien : voir plus
+haut.
 
 ### Ce que vaut la référence anonyme
 

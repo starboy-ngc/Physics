@@ -1238,44 +1238,77 @@ class Application(tk.Tk):
         return inner
 
     def _build_org(self, parent: tk.Frame) -> None:
-        """L'organigramme de l'equipe choisie, et la liste de ses salaries.
+        """L'equipe choisie, de la vue d'ensemble au dessin.
 
-        Deux lectures d'une meme population, sur une page : le dessin donne
-        la structure d'un regard — combien de niveaux, qui porte quelle
-        equipe —, la liste nomme. Aucune ne se suffit : un organigramme ne
-        permet pas de comparer quarante anciennetes, et une liste de
-        quarante lignes ne dit pas qui depend de qui.
+        Trois lectures d'une meme population, du general au particulier, et
+        aucune ne se suffit.
 
-        La page ne defile pas : le dessin a son propre defilement, et deux
-        zones defilantes imbriquees rendent la molette imprevisible.
+        L'equipe **par poste** vient en premier : devant cinquante
+        personnes, la question n'est pas « qui gagne combien » mais « quels
+        postes la composent, combien chacun, dans quelle fourchette ». Un
+        poste du simple au double n'appelle pas la meme conversation qu'un
+        poste resserre, et aucune moyenne ne le dirait.
+
+        La liste **nominative** ensuite : c'est celle qu'on lit pour
+        preparer un entretien, et le rang de remuneration y repond a la
+        question qui suit un montant — « ou se situe-t-elle dans l'equipe ».
+
+        Le **dessin** en dernier : la structure, compacte. Il repond a « qui
+        depend de qui », ce qu'aucun tableau ne montre.
+
+        La page defile d'un bloc. Le dessin, lui, prend la hauteur qu'il
+        lui faut et ne garde que son ascenseur horizontal — c'est la
+        dimension par laquelle un organigramme deborde. Deux zones
+        defilantes verticales imbriquees rendraient la molette
+        imprevisible : on ferait defiler l'une en croyant bouger l'autre.
         """
+        parent = self._scrolling_page(parent)
         self.org_frame = tk.Frame(parent, background=theme.CANVAS)
-        self.org_frame.pack(fill="x", padx=24, pady=(18, 0))
+        self.org_frame.pack(fill="x", padx=24, pady=(16, 0))
         self.org_note = tk.Label(parent, text="", background=theme.CANVAS,
                                  foreground=theme.MUTED,
                                  font=self.fonts.small, justify="left",
-                                 anchor="w", wraplength=980)
-        self.org_note.pack(anchor="w", padx=24, pady=(0, 8))
-        self.org_chart = OrgChart(parent, on_select=self._on_org_node)
-        self.org_chart.identify = self._identity
-        self.org_chart.pack(fill="both", expand=True, padx=18, pady=(0, 8))
-        tk.Frame(parent, background=theme.LINE, height=1).pack(
-            fill="x", padx=24, pady=(0, 10))
-        tk.Label(parent, text="LES SALARIÉS DE L'ÉQUIPE",
-                 background=theme.CANVAS, foreground=theme.FAINT,
-                 font=self.fonts.label).pack(anchor="w", padx=24,
-                                             pady=(0, 6))
+                                 anchor="w", wraplength=1100)
+        self.org_note.pack(anchor="w", padx=24, pady=(0, 10))
+
+        self._org_title(parent, "L'ÉQUIPE PAR POSTE")
+        self.org_jobs = self._tree(
+            parent,
+            ("Poste", "Niveau", "Effectif", "Minimum", "Médiane", "Moyenne",
+             "Maximum"),
+            (300, 70, 80, 120, 120, 120, 120),
+            expand=False, height=5)
+
+        self._org_title(parent, "LES SALARIÉS")
         self.org_tree = self._tree(
             parent,
-            ("Salarié", "Poste", "Niveau", "Rattaché à", "Encadre",
-             "Ancienneté", "Rémunération"),
-            (260, 210, 70, 220, 80, 100, 130),
-            expand=False, height=9)
+            ("Salarié", "Poste", "Niveau", "Rattaché à", "Âge", "Ancienneté",
+             "Rémunération", "Rang"),
+            (230, 190, 70, 190, 80, 100, 130, 90),
+            expand=False, height=8)
         self.org_tree.bind("<<TreeviewSelect>>", self._on_org_row)
+
+        self._org_title(parent, "ORGANIGRAMME")
+        self.org_chart = OrgChart(parent, on_select=self._on_org_node,
+                                  grows=True)
+        self.org_chart.identify = self._identity
+        self.org_chart.pack(fill="x", padx=18, pady=(0, 10))
         #: Matricules par ligne du tableau — le salarie, et la case qui le
         #: porte — pour relier les deux lectures sans faire entrer un
         #: matricule dans le libelle affiche.
         self._org_keys: Dict[str, tuple] = {}
+
+    def _org_title(self, parent: tk.Frame, text: str) -> None:
+        """Un intertitre, precede de son filet.
+
+        Trois blocs empiles sans rien entre eux se lisent comme un seul long
+        tableau : le filet porte la structure de la page a lui seul.
+        """
+        tk.Frame(parent, background=theme.LINE, height=1).pack(
+            fill="x", padx=24, pady=(0, 8))
+        tk.Label(parent, text=text, background=theme.CANVAS,
+                 foreground=theme.FAINT, font=self.fonts.label).pack(
+            anchor="w", padx=24, pady=(0, 6))
 
     def _build_charts(self, parent: tk.Frame) -> None:
         """Un onglet, plusieurs graphiques, choisis dans une barre subordonnee.
@@ -2179,8 +2212,7 @@ class Application(tk.Tk):
         team = scope.get("team") or {}
         key = team.get("manager") or ""
         if not key or self.population is None:
-            self.org_chart.set_tree(None)
-            self._fill(self.org_tree, [])
+            self._clear_org()
             return False
         observed = self.population
         if scope.get("period"):
@@ -2189,8 +2221,7 @@ class Application(tk.Tk):
                  if employee.period == scope["period"]])
         tree = Tree(observed)
         if key not in tree.employees:
-            self.org_chart.set_tree(None)
-            self._fill(self.org_tree, [])
+            self._clear_org()
             return False
         keep = {employee.employee_id for employee in self.result.filtered}
         direct = bool(team.get("direct_only"))
@@ -2198,23 +2229,40 @@ class Application(tk.Tk):
                                      keep=keep, direct_only=direct)
         rows = org_view.member_rows(tree, key, self.configuration,
                                     keep=keep, direct_only=direct)
+        jobs = org_view.job_rows(tree, key, self.configuration,
+                                 keep=keep, direct_only=direct)
         resume = org_view.summary(nodes, rows)
         currency = payload["salary"].get("currency", "EUR")
 
-        span = resume.get("span")
+        # Six chiffres sur une seule ligne : ce sont les six qu'on lit avant
+        # d'entrer dans un tableau, et les repartir sur deux rangees ferait
+        # chercher le sixieme.
         self._kpis(self.org_frame, [
             # Des comptes de personnes : sans decimale. « 47,0 salaries »
             # affiche une precision que la donnee n'a pas.
             ("Effectif", format_number(resume["headcount"], 0), "effectif"),
-            ("Niveaux", format_number(resume["levels"], 0)),
             ("Responsables", format_number(resume["managers"], 0)),
-            ("Encadrement moyen",
-             "—" if span is None else f"{span:.1f}".replace(".", ",")),
-            ("Médiane de l'équipe" if resume.get("full_time")
-             else "Médiane versée",
-             format_money(resume["amount"], currency)
-             if resume.get("amount") is not None else "masquée"),
-        ])
+            ("Ancienneté moyenne", format_years(resume.get("tenure_mean"))),
+            ("Niveaux", format_number(resume["levels"], 0)),
+            ("Salaire médian", format_money(resume.get("median"), currency)
+             if resume.get("median") is not None else "masqué"),
+            ("Salaire moyen", format_money(resume.get("mean"), currency)
+             if resume.get("mean") is not None else "masqué"),
+        ], per_row=6)
+
+        self._fill(self.org_jobs, [
+            (row["job"],
+             format_number(row["level"] + 1, 0),
+             format_number(row["headcount"], 0),
+             format_money(row["minimum"], currency)
+             if row["minimum"] is not None else "—",
+             format_money(row["median"], currency)
+             if row["median"] is not None else "—",
+             format_money(row["mean"], currency)
+             if row["mean"] is not None else "—",
+             format_money(row["maximum"], currency)
+             if row["maximum"] is not None else "—")
+            for row in jobs])
 
         self.org_chart.set_tree(nodes, currency)
         self.org_chart.select(None)
@@ -2233,10 +2281,14 @@ class Application(tk.Tk):
                 row.get("job") or "—",
                 format_number(row["level"] + 1, 0),
                 rattachement,
-                format_number(row["manages"], 0) if row["manages"] else "—",
+                format_years(row.get("age_years")),
                 format_years(row.get("tenure_years")),
                 format_money(row["amount"], currency)
                 if row.get("amount") is not None else "masquée",
+                # Le rang seul ne se lit pas : « 4 » ne dit rien, « 4 / 57 »
+                # situe la personne dans son equipe.
+                f'{row["rank"]} / {row["ranked"]}'
+                if row.get("rank") else "—",
             ))
             # Deux matricules par ligne : celui du salarie, et celui de la
             # case qui le porte — un salarie sans equipe n'a pas de case a
@@ -2246,10 +2298,12 @@ class Application(tk.Tk):
                 row["employee_id"] if row["manages"] else row.get("manager"))
         self._fill(self.org_tree, lignes)
 
-        explication = ("Seuls les responsables ont une case ; ceux qui "
-                       "n'encadrent personne sont comptés sous celle de leur "
-                       "responsable. Cliquez une case pour retrouver la "
-                       "personne dans la liste, et l'inverse.")
+        explication = ("Le rang classe la rémunération dans l'équipe, 1 pour "
+                       "la plus élevée. Dans l'organigramme, seuls les "
+                       "responsables ont une case ; ceux qui n'encadrent "
+                       "personne sont comptés sous celle de leur responsable. "
+                       "Cliquez une case pour retrouver la personne dans la "
+                       "liste, et l'inverse.")
         # La base de comparaison s'annonce, elle ne se devine pas : les
         # montants d'une page a temps plein et ceux d'une page qui retombe
         # sur le verse ne se lisent pas de la meme facon.
@@ -2269,6 +2323,15 @@ class Application(tk.Tk):
                             "seuil de publication.")
         self.org_note.configure(text=explication)
         return True
+
+    def _clear_org(self) -> None:
+        """Vide la page. Une analyse sans equipe ne doit pas laisser en
+        place l'organigramme de la precedente a cote de chiffres qui ne sont
+        plus les siens."""
+        self.org_chart.set_tree(None)
+        self._fill(self.org_jobs, [])
+        self._fill(self.org_tree, [])
+        self.org_note.configure(text="")
 
     def _on_org_node(self, node: Dict[str, Any]) -> None:
         """Une case choisie dans le dessin : la ligne correspondante se

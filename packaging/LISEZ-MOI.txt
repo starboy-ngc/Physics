@@ -37,13 +37,32 @@ LANCER L'INTERFACE
     Vue d'ensemble, Graphique, Pay Transparency, Qualité.
 
     Un onglet de plus paraît si vous avez choisi une équipe à l'étape
-    3 : « Organigramme ». Il montre la structure de cette équipe en
-    cases reliées — seuls les responsables en ont une, ceux qui
-    n'encadrent personne sont comptés sous celle de leur responsable —
-    et, dessous, la liste nominative des salariés concernés. Cliquez
-    une case pour retrouver la personne dans la liste, et l'inverse.
-    Chaque case porte l'effectif encadré et la médiane de son équipe,
-    masquée sous le seuil de publication.
+    3 : « Organigramme ». Il se lit du général au particulier.
+
+      en tête      effectif, responsables, ancienneté moyenne,
+                   niveaux, salaire médian et salaire moyen
+      par poste    une ligne par poste, dans l'ordre de la
+                   hiérarchie : effectif, minimum, médiane,
+                   moyenne, maximum
+      les salariés un par ligne : poste, niveau, rattachement, âge,
+                   ancienneté, rémunération, et son RANG dans
+                   l'équipe — 1 pour la plus élevée
+      le dessin    compact : nom, poste, salaire de base. Seuls les
+                   responsables ont une case ; ceux qui n'encadrent
+                   personne sont comptés sous celle de leur
+                   responsable. Effectifs et médiane de l'équipe au
+                   survol.
+
+    Cliquez une case pour retrouver la personne dans la liste, et
+    l'inverse.
+
+    CET ONGLET NE MASQUE RIEN. C'est le seul dans ce cas : il ne sort
+    jamais de l'écran — aucun document, aucun export, aucun journal —
+    et il porte sur une équipe que vous venez de désigner. Masqué, il
+    serait inutilisable : un poste tenu par trois personnes n'aurait
+    ni minimum, ni médiane, ni maximum. Pour une installation
+    partagée, passez privacy_parameters.mask_in_org_chart à true et le
+    seuil s'y applique comme partout.
 
     La colonne de gauche se replie : le chevron sur son bord rend toute
     la largeur aux graphiques, et la ligne du bas rappelle en
@@ -355,9 +374,24 @@ PARAMÉTRAGE
   d'ancienneté, percentiles publiés, seuils de confidentialité,
   devise, seuils de plausibilité, graphiques.
 
-  Seuils de confidentialité par défaut :
-     moins de  5 salariés  -> résultats masqués
-     moins de 10 salariés  -> avertissement, graphiques désactivés
+  TROIS SEUILS DE CONFIDENTIALITÉ, réglables dans
+  Paramètres -> Confidentialité. Chacun décide d'autre chose :
+
+     publication     5   en dessous, aucune moyenne, médiane ni
+                         quartile n'est publié, nulle part
+     avertissement  10   en dessous, les chiffres restent publiés
+                         mais portent une mise en garde
+     graphiques     10   en dessous, pas de boîte à moustaches :
+                         elle dessinerait la position de chacun
+
+  Poser 5 dans le premier ne suffit donc pas à voir une dispersion sur
+  un groupe de huit : c'est le troisième qui la gouverne.
+
+  UNE COMPARAISON FEMMES / HOMMES demande le seuil de publication DE
+  CHAQUE CÔTÉ : avec 5, il faut 5 femmes ET 5 hommes, donc au moins 10
+  personnes, et un groupe de 8 reste sans écart publié. C'est le même
+  seuil, appliqué à chacun des deux groupes comparés — un écart calculé
+  sur trois femmes les désigne.
 
   COULEURS — Paramètres → Apparence. Cinq thèmes : Ardoise (d'origine),
   Graphite (neutre, le meilleur rendu à l'impression en noir et blanc),
