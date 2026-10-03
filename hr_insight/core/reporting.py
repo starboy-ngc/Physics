@@ -169,8 +169,16 @@ def format_years(value: Optional[float], suffix: bool = True) -> str:
     return f"{format_number(value, 0)} ans" if suffix else format_number(value, 0)
 
 
-def format_percent(value: Optional[float]) -> str:
-    return "—" if value is None else f"{value:.1f} %".replace(".", ",")
+def format_percent(value: Optional[float], digits: int = 1) -> str:
+    """Un pourcentage, a la precision demandee.
+
+    Une decimale par defaut : un ecart de remuneration de 5,2 % ne se dit
+    pas « 5 % ». Mais une part d'effectif, elle, se lit sans decimale — la
+    precision affichee y suggere une exactitude que l'arrondi d'un
+    comptage n'a pas.
+    """
+    return ("—" if value is None
+            else f"{value:.{digits}f} %".replace(".", ","))
 
 
 def _kpi(label: str, value: str) -> str:

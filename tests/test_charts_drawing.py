@@ -1188,7 +1188,10 @@ class TestPieChart(ChartCase):
         textes = " ".join(self.texts(self.chart(total=898).canvas))
         self.assertIn("Cadre", textes)
         self.assertIn("59", textes)
-        self.assertIn("6,6 %", textes)
+        self.assertIn("7 %", textes)
+        # Sans decimale : une part d'effectif a 6,6 % suggere une exactitude
+        # que l'arrondi d'un comptage n'a pas.
+        self.assertNotIn("6,6 %", textes)
 
     def test_a_value_at_zero_takes_no_slice(self):
         """Une part nulle dessinerait un arc d'angle nul et occuperait une

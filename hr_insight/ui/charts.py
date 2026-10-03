@@ -1227,9 +1227,26 @@ class PyramidChart(tk.Frame):
     def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
         # La plus jeune tranche en bas : une pyramide se lit de bas en haut.
         self.rows = list(reversed([dict(row) for row in rows]))
-        self.configure(height=max(len(self.rows), 1) * self.ROW + 24)
+        self._fit()
         self.pack_propagate(False)
         self.redraw()
+
+    def set_row_height(self, value: int) -> None:
+        """Hauteur d'une tranche, posee par la page.
+
+        La page connait la hauteur dont elle dispose, le graphique non :
+        c'est elle qui decide si les tranches peuvent respirer. Une valeur
+        fixe laissait un grand vide sous une page courte.
+        """
+        value = int(value)
+        if value == self.ROW:
+            return
+        self.ROW = value
+        self._fit()
+        self.redraw()
+
+    def _fit(self) -> None:
+        self.configure(height=max(len(self.rows), 1) * self.ROW + 24)
 
     def has_split(self) -> bool:
         """Vrai si le sexe est renseigne : sans lui, pas de pyramide."""
@@ -2100,9 +2117,25 @@ class PieChart(tk.Frame):
         # Le cadre prend la hauteur du plus grand des deux — l'anneau ou la
         # legende : fixe, il laissait un trou sous un camembert a trois
         # parts, et aurait rogne une legende a sept.
+        self._fit()
+        self.redraw()
+
+    def set_radius(self, value: int) -> None:
+        """Rayon de l'anneau, pose par la page selon la place dont elle
+        dispose. L'image est relachee : elle se recalcule a la taille
+        demandee."""
+        value = int(value)
+        if value == self.RADIUS:
+            return
+        self.RADIUS = value
+        self.HOLE = round(value * 0.58)
+        self._image = None
+        self._fit()
+        self.redraw()
+
+    def _fit(self) -> None:
         self.configure(height=max(2 * self.RADIUS + 16,
                                   len(self.slices) * self.ROW + 16))
-        self.redraw()
 
     def _slice_at(self, x: float, y: float) -> Optional[tuple]:
         """La part survolee, retrouvee par l'angle.
@@ -2136,7 +2169,7 @@ class PieChart(tk.Frame):
         libelle, nombre = part
         total = sum(n for _l, n in self.slices) or 1
         self.tooltip.show(f"{libelle}  ·  {nombre}  ·  "
-                          f"{format_percent(100.0 * nombre / total)}",
+                          f"{format_percent(100.0 * nombre / total, digits=0)}",
                           self.canvas.winfo_rootx() + event.x,
                           self.canvas.winfo_rooty() + event.y)
 
@@ -2185,9 +2218,12 @@ class PieChart(tk.Frame):
                 fill=theme.INK_SOFT,
                 text=_shorten(self, libelle, largeur - x - self.VALUES,
                               _font(SIZE_SMALL)))
+            # Sans decimale : une part d'effectif a 65,6 % suggere une
+            # exactitude que l'arrondi d'un comptage n'a pas.
             self.canvas.create_text(
                 largeur - 2, y, anchor="e", font=axis_font(), fill=theme.MUTED,
-                text=f"{nombre}   {format_percent(100.0 * nombre / total)}")
+                text=f"{nombre}   "
+                     f"{format_percent(100.0 * nombre / total, digits=0)}")
             y += self.ROW
 
 
@@ -2226,6 +2262,15 @@ class ScaleChart(tk.Frame):
     def set_salary(self, salary: Dict[str, Any], currency: str = "EUR") -> None:
         self.salary = dict(salary or {})
         self.currency = currency
+        self.redraw()
+
+    def set_height(self, value: int) -> None:
+        """Hauteur du cadre, posee par la page. Le trace reste centre."""
+        value = int(value)
+        if value == self.HEIGHT:
+            return
+        self.HEIGHT = value
+        self.configure(height=value)
         self.redraw()
 
     def _on_motion(self, event) -> None:
@@ -2276,7 +2321,12 @@ class ScaleChart(tk.Frame):
         gauche, droite = self.PAD, largeur - self.PAD
         étendue = (haut - bas) or 1
         x_de = lambda v: gauche + (droite - gauche) * (v - bas) / étendue
-        y = 48
+        # Le trace occupe quatre-vingts pixels — les intitules au-dessus,
+        # les deux rangees de montants en dessous — et se centre dans la
+        # hauteur recue : posee a un tiers, la boite laissait un grand vide
+        # sous elle des que la page lui donnait de la place.
+        hauteur = self.canvas.winfo_height() or self.HEIGHT
+        y = max(48, (hauteur - 82) / 2 + 30)
         self.canvas.create_line(x_de(bas), y, x_de(haut), y,
                                 fill=theme.LINE_STRONG)
         for valeur in (bas, haut):

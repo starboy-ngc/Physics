@@ -231,6 +231,16 @@ sur un centimètre.
 Enfin la **dispersion** : Q3−Q1, Q3/Q1, P90/P10, moyenne/médiane, coefficient
 de variation.
 
+Les graphiques **prennent la place disponible** : sur un grand écran, les
+pyramides et l'anneau s'agrandissent plutôt que de laisser un tiers de page
+vide, et ce qui reste s'écarte entre les blocs. Sur une fenêtre basse, ils
+reviennent à leur taille compacte.
+
+Les parts d'effectif s'écrivent **sans décimale** : « 66 % », et non
+« 65,6 % » — la décimale suggérerait une exactitude que l'arrondi d'un
+comptage n'a pas. Les écarts de rémunération, eux, gardent la leur : 5,2 %
+ne se dit pas « 5 % ».
+
 ### Si la page ne tient pas
 
 Elle est dimensionnée pour tenir largement sur un écran de 1080 pixels de

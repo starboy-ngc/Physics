@@ -138,6 +138,19 @@ plus haut, prennent donc une colonne à elles. Sous `OVERVIEW_COLUMN` × 3, la
 disposition revient à deux colonnes et la page défile — mieux vaut défiler
 que rogner.
 
+La page **rend la hauteur dont elle dispose**. Dimensionnée pour le pire
+cas — une fenêtre basse, ou un affichage Windows à 150 % qui grossit les
+polices —, elle laissait un tiers de hauteur vide sur un grand écran.
+`_fit_overview` mesure la place offerte et la restitue : d'abord aux
+graphiques, qui se lisent d'autant mieux qu'ils sont grands (chacun borné :
+`PYRAMID_ROW_MAX`, `PIE_RADIUS_MAX`, `SCALE_HEIGHT_MAX`), puis en écartant
+les blocs les uns des autres — un vide réparti se lit comme une respiration,
+le même vide massé sous le dernier bloc comme une page inachevée. L'écart de
+départ est retenu au premier passage, sans quoi il grandirait à chaque
+redimensionnement. L'ajustement est différé — il mesure, donc la géométrie
+doit être posée — et porte la génération qui l'a demandé : recomposée
+entre-temps, la page a jeté les cadres que cet appel allait mesurer.
+
 Le nombre de colonnes **suit la largeur** et n'est pas décidé une fois pour
 toutes : un onglet qui n'a jamais été affiché mesure un pixel de large, et la
 page se figeait alors à deux colonnes pour le reste de la session, y compris

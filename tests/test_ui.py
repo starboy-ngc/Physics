@@ -2233,20 +2233,56 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertNotEqual(str(pyramide), str(echelle))
         self.assertNotEqual(str(camembert), str(echelle))
 
-    def test_the_whole_page_fits_without_scrolling(self):
-        """La demande meme : tenir sur un ecran.
-
-        Le seuil n'est pas la hauteur offerte ici mais nettement en dessous :
-        sur un poste Windows a 125 ou 150 % d'echelle, les polices grossissent
-        et la page avec elles. A cinq cent cinquante pixels, elle tient encore
-        une fois et demie plus haut.
-        """
+    def _column_heights(self):
         colonnes = self.app.overview_frame.winfo_children()[-1]
-        hauteurs = [enfant.winfo_reqheight()
-                    for enfant in colonnes.winfo_children()
-                    if enfant.winfo_manager()]
+        return [enfant.winfo_reqheight()
+                for enfant in colonnes.winfo_children()
+                if enfant.winfo_manager()]
+
+    def test_the_whole_page_fits_without_scrolling(self):
+        """La demande meme : tenir sur un ecran, sans descendre."""
+        offert = self.app.overview_canvas.winfo_height()
+        hauteurs = self._column_heights()
         self.assertTrue(hauteurs)
-        self.assertLess(max(hauteurs), 560)
+        self.assertLessEqual(max(hauteurs), offert)
+
+    def test_the_page_uses_the_height_it_has(self):
+        """L'autre moitie de la demande : dimensionnee pour le pire cas, la
+        page laissait un tiers de hauteur vide sur un grand ecran. Elle rend
+        cette place a ses graphiques, puis l'ecarte entre les blocs."""
+        offert = self.app.overview_canvas.winfo_height()
+        self.assertGreater(max(self._column_heights()), offert * 0.75)
+
+    def test_breathing_is_bounded(self):
+        """Rendre la place ne veut pas dire un anneau de la taille d'une
+        assiette : chaque respiration a sa borne."""
+        from hr_insight.ui.charts import PieChart, PyramidChart, ScaleChart
+
+        self.app.geometry("1600x1600+0+0")
+        for _ in range(20):
+            self.app.update()
+            time.sleep(0.01)
+        anneaux = self.app._of_type(self.app.overview_frame, PieChart)
+        pyramides = self.app._of_type(self.app.overview_frame, PyramidChart)
+        echelles = self.app._of_type(self.app.overview_frame, ScaleChart)
+        self.assertTrue(anneaux and pyramides and echelles)
+        self.assertLessEqual(anneaux[0].RADIUS, self.app.PIE_RADIUS_MAX)
+        self.assertLessEqual(pyramides[0].ROW, self.app.PYRAMID_ROW_MAX)
+        self.assertLessEqual(echelles[0].HEIGHT, self.app.SCALE_HEIGHT_MAX)
+
+    def test_the_spacing_never_accumulates(self):
+        """Ajoute a l'ecart precedent, il grandirait a chaque
+        redimensionnement jusqu'a disloquer la page."""
+        for largeur in (1500, 1600, 1500, 1600):
+            self.app.geometry(f"{largeur}x1000+0+0")
+            for _ in range(12):
+                self.app.update()
+                time.sleep(0.01)
+        premier = max(self._column_heights())
+        for _ in range(3):
+            self.app._fit_overview()
+            self.app.update()
+        self.assertEqual(max(self._column_heights()), premier)
 
     def test_the_csp_breakdown_names_the_column_it_used(self):
         """« CSP » est le mot du metier, « Statut » la colonne du fichier :

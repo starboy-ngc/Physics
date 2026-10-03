@@ -169,8 +169,12 @@ def dispersion_rows(spread: Dict[str, Any], currency: str) -> List[tuple]:
          "p90_over_p10"),
         ("Moyenne / Médiane", format_number(spread.get("mean_over_median"), 2),
          "mean_over_median"),
+        # Sans decimale, comme toutes les parts de la vue d'ensemble : un
+        # coefficient de variation a 31,9 % affiche une precision que la
+        # lecture n'emploie pas.
         ("Coefficient de variation",
-         format_percent(None if variation is None else variation * 100),
+         format_percent(None if variation is None else variation * 100,
+                        digits=0),
          "coefficient_of_variation"),
     ]
 
@@ -2119,6 +2123,7 @@ class Application(tk.Tk):
             # Deux colonnes : les pyramides rejoignent la population.
             middle.destroy()
             middle = left
+        self._overview_frames = [left, middle, right] if wide else [left, right]
 
         if not population.get("masked"):
             self._ruled_panel(
@@ -2173,6 +2178,122 @@ class Application(tk.Tk):
             self._ruled_panel(
                 right, "Dispersion", ("Indicateur", "Valeur"),
                 dispersion_rows(spread, currency), key="dispersion")
+        # La page connait maintenant son contenu : elle peut l'accorder a la
+        # hauteur dont elle dispose. L'ajustement est differe — il mesure, il
+        # faut donc que la geometrie soit posee — et marque de la generation
+        # qui l'a demande : recomposee entre-temps, la page a jete les cadres
+        # que cet appel-ci allait mesurer.
+        generation = self._overview_build = object()
+        self.after_idle(lambda: self._fit_overview(generation))
+
+    #: Bornes de respiration : la page ne grandit pas au-dela, sous peine
+    #: d'un anneau de la taille d'une assiette et de pyramides etirees.
+    PYRAMID_ROW_MAX = 32
+    PIE_RADIUS_MAX = 78
+    SCALE_HEIGHT_MAX = 176
+    #: Ecart maximal ajoute entre deux blocs d'une meme colonne.
+    PANEL_GAP_MAX = 30
+
+    def _fit_overview(self, generation: Optional[object] = None) -> None:
+        """Accorde la page a la hauteur dont elle dispose.
+
+        Dimensionnee pour le pire cas — une fenetre basse, ou un affichage
+        Windows a 150 % qui grossit les polices —, la page laissait un tiers
+        de hauteur vide sur un grand ecran. Elle mesure donc la place
+        offerte et la rend a son contenu : d'abord aux graphiques, qui se
+        lisent d'autant mieux qu'ils sont grands, puis en ecartant les blocs
+        les uns des autres.
+
+        Aucune boucle a craindre : grandir ne change pas la largeur, et
+        c'est la largeur qui declenche une recomposition.
+        """
+        if generation is not None and generation is not getattr(
+                self, "_overview_build", None):
+            return
+        try:
+            frames = [frame for frame in getattr(self, "_overview_frames", [])
+                      if frame.winfo_exists() and frame.winfo_manager()]
+            if not frames:
+                return
+            self.overview_frame.update_idletasks()
+            available = self.overview_canvas.winfo_height() - 40
+            if available < 200:
+                return
+            for frame in frames:
+                self._grow_column(frame, available)
+            self.overview_frame.update_idletasks()
+            for frame in frames:
+                self._space_column(frame, available)
+        except tk.TclError:
+            # Un widget detruit entre la mesure et l'ajustement : la page
+            # vient d'etre recomposee, et c'est elle qui fait foi.
+            return
+
+    def _grow_column(self, frame: tk.Frame, available: int) -> None:
+        """Rend la place libre aux graphiques de la colonne."""
+        pyramids = self._of_type(frame, PyramidChart)
+        pies = self._of_type(frame, PieChart)
+        scales = self._of_type(frame, ScaleChart)
+        rows = sum(max(len(chart.rows), 1) for chart in pyramids)
+        if pyramids and rows:
+            slack = available - frame.winfo_reqheight()
+            extra = max(0, min(self.PYRAMID_ROW_MAX - PyramidChart.ROW,
+                               slack // rows))
+            for chart in pyramids:
+                chart.set_row_height(PyramidChart.ROW + extra)
+            frame.update_idletasks()
+        for chart in pies:
+            slack = available - frame.winfo_reqheight()
+            extra = max(0, min(self.PIE_RADIUS_MAX - PieChart.RADIUS,
+                               slack // 2))
+            chart.set_radius(PieChart.RADIUS + extra)
+            frame.update_idletasks()
+        for chart in scales:
+            slack = available - frame.winfo_reqheight()
+            extra = max(0, min(self.SCALE_HEIGHT_MAX - ScaleChart.HEIGHT,
+                               slack))
+            chart.set_height(ScaleChart.HEIGHT + extra)
+            frame.update_idletasks()
+
+    def _space_column(self, frame: tk.Frame, available: int) -> None:
+        """Repartit ce qui reste entre les blocs, plutot qu'en bas de page.
+
+        Un vide reparti se lit comme une respiration ; le meme vide massé
+        sous le dernier bloc se lit comme une page inachevee.
+        """
+        blocks = [child for child in frame.winfo_children()
+                  if child.winfo_manager()]
+        if len(blocks) < 2:
+            return
+        slack = available - frame.winfo_reqheight()
+        if slack <= 0:
+            return
+        extra = min(self.PANEL_GAP_MAX, slack // (len(blocks) - 1))
+        if extra <= 0:
+            return
+        for block in blocks[:-1]:
+            # L'ecart de depart est retenu au premier passage : ajoute au
+            # precedent, il grandirait a chaque redimensionnement.
+            base = getattr(block, "_base_gap", None)
+            if base is None:
+                info = block.pack_info()
+                base = int(str(info.get("pady", 0)).split()[-1].strip("()"))
+                block._base_gap = base
+            block.pack_configure(pady=(0, base + extra))
+
+    @staticmethod
+    def _of_type(widget: tk.Misc, kind) -> List[tk.Misc]:
+        found = []
+
+        def walk(current: tk.Misc) -> None:
+            for child in current.winfo_children():
+                if isinstance(child, kind):
+                    found.append(child)
+                else:
+                    walk(child)
+
+        walk(widget)
+        return found
 
     def _overview_width(self) -> int:
         """Largeur offerte a la page, mesuree la ou elle est connue.
@@ -2211,6 +2332,10 @@ class Application(tk.Tk):
         if self.result is None:
             return
         if self._overview_column_count() == self._overview_columns:
+            # Meme disposition, mais peut-etre pas la meme hauteur : la page
+            # se reaccorde sans se recomposer.
+            generation = getattr(self, "_overview_build", None)
+            self.after_idle(lambda: self._fit_overview(generation))
             return
         try:
             self._show_overview(self.result.payload)
