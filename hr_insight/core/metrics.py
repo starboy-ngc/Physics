@@ -384,8 +384,11 @@ def calculate_distribution_metrics(
                 f"(minimum paramétré : {rules.min_chart} salariés)."
             ),
             "bins": [],
+            "sex_split": _sex_distribution(population, config, field_name,
+                                           [], rules),
             "outliers": [],
         }
+    histogram = stats.histogram(values, bins)
     bounds = stats.iqr_outlier_bounds(values, factor)
     outliers: List[Dict[str, Any]] = []
     if bounds:
@@ -403,7 +406,9 @@ def calculate_distribution_metrics(
         "available": True,
         "warning": None,
         "dimension_labels": _discriminating_dimensions(population, config),
-        "bins": stats.histogram(values, bins),
+        "bins": histogram,
+        "sex_split": _sex_distribution(population, config, field_name,
+                                       histogram, rules),
         "bounds": bounds,
         # La liste complete porte le comptage annonce ; seule la selection
         # mise en avant est tronquee, sinon la restitution annoncerait moins
@@ -413,6 +418,60 @@ def calculate_distribution_metrics(
         # Libelle impose : jamais "anomalie RH", qui prejugerait du contexte.
         "outlier_label": "Situation atypique à analyser",
     }
+
+
+def _sex_distribution(
+    population: Population,
+    config: Configuration,
+    field_name: str,
+    bins: List[Dict[str, float]],
+    rules: PrivacyRules,
+) -> Dict[str, Any]:
+    """Deux distributions dos a dos, sur les classes de la population entiere.
+
+    L'ecart global dit *de combien* les deux sexes sont payes differemment ;
+    il ne dit pas *ou* : deux populations peuvent avoir le meme ecart de
+    mediane, l'une parce que les femmes manquent dans les classes hautes,
+    l'autre parce qu'elles s'entassent dans les basses. Ces deux lectures
+    n'appellent pas la meme decision, et seule la forme des distributions les
+    distingue.
+
+    Le decoupage se fait ici, et non dans la vue : une fenetre qui parcourt
+    la population pour son propre compte finit par compter autrement que le
+    moteur, et par afficher un effectif que le document contredit.
+
+    Chaque cote porte son propre droit au trace, comme les demi-segments des
+    boites : trente hommes ne donnent pas le droit de dessiner la
+    distribution de trois femmes.
+    """
+    parts: Dict[str, List[float]] = {"female": [], "male": []}
+    unknown = 0
+    for employee in population:
+        sex = _sex_of(employee, config)
+        if sex not in parts:
+            unknown += 1
+            continue
+        value = employee.value(field_name)
+        if value is not None:
+            parts[sex].append(float(value))
+    split: Dict[str, Any] = {"unknown_count": unknown}
+    for sex, group in parts.items():
+        chartable = rules.may_chart(len(group))
+        split[f"{sex}_count"] = len(group)
+        split[f"{sex}_chartable"] = chartable
+        split[f"{sex}_counts"] = (stats.histogram_like(group, bins)
+                                  if chartable else [])
+        split[f"{sex}_median"] = (stats.median(group)
+                                  if rules.may_publish(len(group)) else None)
+    # Les deux cotes, ou rien : une seule distribution ne se compare a rien,
+    # et le dos a dos promettrait une lecture qu'il ne tiendrait pas.
+    split["available"] = bool(bins) and (split["female_chartable"]
+                                         and split["male_chartable"])
+    split["warning"] = None if split["available"] else (
+        "Effectif insuffisant pour séparer femmes et hommes "
+        f"(minimum paramétré : {rules.min_chart} salariés de chaque côté)."
+    )
+    return split
 
 
 def _discriminating_dimensions(

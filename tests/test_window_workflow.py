@@ -437,6 +437,82 @@ class TestTheDispersionDefaults(WindowCase):
                 "pay_equity_parameters.gap_alert_threshold"))
 
 
+class TestTheDistributionSplitButton(WindowCase):
+    """Le bouton « Séparer H/F » de l'onglet Distribution."""
+
+    def _lopsided(self, femmes=3, hommes=37):
+        """Un fichier dont un seul sexe passe le seuil de trace."""
+        path = os.path.join(self.directory, "desequilibre.csv")
+        with open(path, "w", encoding="utf-8", newline="") as handle:
+            writer = csv.writer(handle, delimiter=";")
+            writer.writerow(list(HEADERS))
+            for index in range(femmes + hommes):
+                writer.writerow(make_row(
+                    index, salary=40000 + index * 250,
+                    gender="F" if index < femmes else "H"))
+        return path
+
+    def test_the_whole_population_comes_first(self):
+        """Le dedoublement repond a une question plus fine : il se demande."""
+        self.load()
+        self.analyse()
+        self.assertFalse(self.app.dist_split.get())
+        self.assertFalse(self.app.histogram.split)
+
+    def _distribution(self):
+        """La page Distribution au premier plan : un graphique qu'on n'a
+        jamais montre n'a pas de taille, et ne dessine rien."""
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("distribution")
+        self.app.update()
+
+    def test_the_button_is_offered_when_both_sides_can_be_drawn(self):
+        self.load()
+        self.analyse()
+        self.assertTrue(self.app.histogram.may_split())
+        self.assertTrue(self.app.dist_split_row.winfo_manager())
+
+    def test_ticking_it_splits_the_chart(self):
+        self.load()
+        self.analyse()
+        self._distribution()
+        self.app.dist_split.set(True)
+        self.app.update()
+        self.assertTrue(self.app.histogram.split)
+        textes = [self.app.histogram.canvas.itemcget(item, "text")
+                  for item in self.app.histogram.canvas.find_all()
+                  if self.app.histogram.canvas.type(item) == "text"]
+        self.assertIn("FEMMES ▲", textes)
+
+    def test_unticking_it_brings_the_whole_population_back(self):
+        self.load()
+        self.analyse()
+        self.app.dist_split.set(True)
+        self.app.update()
+        self.app.dist_split.set(False)
+        self.app.update()
+        self.assertFalse(self.app.histogram.split)
+
+    def test_an_unbalanced_file_says_why_instead_of_offering_the_button(self):
+        """Un bouton absent sans explication passe pour un oubli."""
+        self.load(self._lopsided())
+        self.analyse()
+        self.assertFalse(self.app.histogram.may_split())
+        self.assertFalse(self.app.dist_split_row.winfo_manager())
+        self.assertIn("Effectif insuffisant",
+                      self.app.dist_split_note.cget("text"))
+
+    def test_the_button_cannot_stay_ticked_on_a_file_that_refuses_it(self):
+        self.load()
+        self.analyse()
+        self.app.dist_split.set(True)
+        self.app.update()
+        self.load(self._lopsided())
+        self.analyse()
+        self.assertFalse(self.app.dist_split.get())
+        self.assertFalse(self.app.histogram.split)
+
+
 class TestThemeAndIdentities(WindowCase):
     def test_changing_the_colour_dimension_regroups_the_cloud(self):
         """Le regroupement est refait par le moteur, pas par l'interface :

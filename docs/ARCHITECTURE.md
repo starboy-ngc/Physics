@@ -231,6 +231,16 @@ l'histogramme. Un document qui circule n'a pas à porter de ligne
 nominative, et une liste de cas sans leur contexte se lit comme un verdict.
 `_distribution_section` ne rend donc que le graphique.
 
+La distribution porte aussi un **découpage par sexe** (`sex_split`), calculé
+par le moteur et non par la fenêtre : un écran qui parcourt la population
+pour son propre compte finit par compter autrement que le moteur, et par
+afficher un effectif que le document contredit. Les deux ventilations sont
+posées sur les **classes de la population entière**
+(`statistics_engine.histogram_like`) : deux histogrammes aux classes
+différentes ne se comparent pas. Chaque côté porte son propre droit au tracé,
+comme les demi-segments de `segment_by_sex` — et le dos à dos n'est offert que
+si les deux l'ont, une seule distribution ne se comparant à rien.
+
 L'écart-type reste calculé et exporté comme statistique technique, mais n'est
 pas présenté en KPI de pilotage : les ratios de dispersion (Q3/Q1, P90/P10,
 moyenne/médiane) sont les indicateurs mis en avant.

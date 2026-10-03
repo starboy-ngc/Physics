@@ -79,7 +79,10 @@ dépendance, aucun binaire tiers.
   P50, Q3, P90, min, max, robustes aux valeurs manquantes.
 - **Dispersion** : Q3−Q1, Q3/Q1, P90/P10, moyenne/médiane, coefficient de
   variation. L'écart-type reste une statistique technique, pas un KPI.
-- **Distribution** : histogramme, situations atypiques (méthode interquartile).
+- **Distribution** : histogramme, séparation femmes / hommes **dos à dos**
+  sur les mêmes classes — l'écart global dit *de combien*, la forme des
+  deux distributions dit *où* —, situations atypiques (méthode
+  interquartile).
 - **Nuage de points** sur **deux axes au choix** parmi les champs numériques
   déclarés : coloration par dimension, info-bulles, droite de tendance,
   échantillonnage au-delà d'un seuil.
@@ -110,7 +113,7 @@ python3 -m hr_insight.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 1142 tests
+python3 -m unittest discover -s tests -t .     # 1399 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 

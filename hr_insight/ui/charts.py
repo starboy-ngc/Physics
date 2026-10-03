@@ -516,7 +516,18 @@ class ScatterChart(tk.Frame):
 
 
 class HistogramChart(tk.Frame):
-    """Distribution des remunerations. Survol pour lire une classe."""
+    """Distribution des remunerations. Survol pour lire une classe.
+
+    Deux lectures sur les memes classes : la population entiere d'un bloc,
+    ou les deux sexes dos a dos. La seconde repond a une question que la
+    premiere ne pose pas — un ecart de mediane dit *de combien*, la forme des
+    deux distributions dit *ou* : classes hautes desertees, ou entassement
+    dans les basses.
+    """
+
+    #: Filet entre les deux moitiees en mode dos a dos. Sans lui, les deux
+    #: premieres barres se touchent et l'axe median disparait dessous.
+    MID_GAP = 3
 
     def __init__(self, master: tk.Widget):
         super().__init__(master, background=theme.CANVAS)
@@ -525,9 +536,11 @@ class HistogramChart(tk.Frame):
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self.bins: List[Dict[str, float]] = []
+        self.sexes: Dict[str, Any] = {}
+        self.split = False
         self.currency = "EUR"
         self.warning = ""
-        self._items: Dict[int, Dict[str, float]] = {}
+        self._items: Dict[int, Dict[str, Any]] = {}
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
@@ -535,9 +548,26 @@ class HistogramChart(tk.Frame):
     def set_distribution(self, distribution: Dict[str, Any],
                          currency: str = "EUR") -> None:
         self.bins = list((distribution or {}).get("bins") or [])
+        self.sexes = dict((distribution or {}).get("sex_split") or {})
         self.warning = (distribution or {}).get("warning") or ""
         self.currency = currency
         self.redraw()
+
+    def set_split(self, flag: bool) -> None:
+        """Dos a dos, ou d'un bloc."""
+        flag = bool(flag)
+        if flag == self.split:
+            return
+        self.split = flag
+        self.redraw()
+
+    def may_split(self) -> bool:
+        """Vrai si le moteur a juge les deux cotes publiables."""
+        return bool(self.sexes.get("available"))
+
+    def split_warning(self) -> str:
+        """Pourquoi le dos a dos est refuse, tel que le moteur le dit."""
+        return "" if self.may_split() else (self.sexes.get("warning") or "")
 
     def redraw(self) -> None:
         self.canvas.delete("all")
@@ -551,10 +581,47 @@ class HistogramChart(tk.Frame):
                 width / 2, height / 2, fill=theme.MUTED, font=note_font(),
                 text=self.warning or "Aucune distribution à afficher")
             return
+        if self.split and self.may_split():
+            self._draw_sexes(width, height)
+        else:
+            self._draw_whole(width, height)
 
-        pad_l, pad_r, pad_t, pad_b = 60, 20, 18, 46
-        plot_w = max(width - pad_l - pad_r, 10)
-        plot_h = max(height - pad_t - pad_b, 10)
+    # -- geometrie commune ------------------------------------------------
+
+    def _frame(self, width: int, height: int, pad_t: int):
+        pad_l, pad_r, pad_b = 60, 20, 46
+        return (pad_l, pad_t,
+                max(width - pad_l - pad_r, 10),
+                max(height - pad_t - pad_b, 10))
+
+    def _footer(self, pad_l: int, pad_t: int, plot_w: float, plot_h: float,
+                title: str) -> None:
+        """Graduation des remunerations et titre, sous le cadre.
+
+        Les deux bornes exactes cedent la place a des graduations rondes :
+        « 9 391 EUR » et « 137 074 EUR » ne se lisaient pas d'un coup d'oeil.
+        """
+        low = self.bins[0]["lower"]
+        high = self.bins[-1]["upper"]
+        span = (high - low) or 1.0
+        base = pad_t + plot_h
+        for value in nice_ticks(low, high, 5):
+            self.canvas.create_text(
+                pad_l + (value - low) / span * plot_w, base + 14,
+                fill=theme.MUTED, font=axis_font(),
+                text=format_money(value, self.currency))
+        self.canvas.create_text(pad_l + plot_w / 2, base + 32, fill=theme.MUTED,
+                                font=axis_font(), text=title)
+
+    def _x_of(self, pad_l: int, plot_w: float, value: float) -> float:
+        low = self.bins[0]["lower"]
+        high = self.bins[-1]["upper"]
+        return pad_l + (value - low) / ((high - low) or 1.0) * plot_w
+
+    # -- population entiere ------------------------------------------------
+
+    def _draw_whole(self, width: int, height: int) -> None:
+        pad_l, pad_t, plot_w, plot_h = self._frame(width, height, 18)
         peak = max(item["count"] for item in self.bins) or 1
         bar_w = plot_w / len(self.bins)
 
@@ -572,22 +639,97 @@ class HistogramChart(tk.Frame):
                 # se lit comme un aplat.
                 x + 2, pad_t + plot_h - bar_h, x + bar_w - 2, pad_t + plot_h,
                 fill=theme.ACCENT, outline="")
-            self._items[handle] = item
+            self._items[handle] = dict(item)
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill=theme.LINE_STRONG)
-        # Les deux bornes exactes cedent la place a des graduations rondes :
-        # « 9 391 EUR » et « 137 074 EUR » ne se lisaient pas d'un coup d'oeil.
-        low = self.bins[0]["lower"]
-        high = self.bins[-1]["upper"]
-        span = (high - low) or 1.0
-        for value in nice_ticks(low, high, 5):
-            self.canvas.create_text(
-                pad_l + (value - low) / span * plot_w, pad_t + plot_h + 14,
-                fill=theme.MUTED, font=axis_font(),
-                text=format_money(value, self.currency))
-        self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32, fill=theme.MUTED,
-                                font=axis_font(),
-                                text="Effectif par classe de rémunération")
+        self._footer(pad_l, pad_t, plot_w, plot_h,
+                     "Effectif par classe de rémunération")
+
+    # -- femmes et hommes dos a dos ----------------------------------------
+
+    def _draw_sexes(self, width: int, height: int) -> None:
+        # L'en-tete porte la cle de lecture : sans elle, rien ne dit quelle
+        # moitie est laquelle, et la couleur seule ne suffit pas.
+        pad_l, pad_t, plot_w, plot_h = self._frame(width, height, 32)
+        female = list(self.sexes.get("female_counts") or [])
+        male = list(self.sexes.get("male_counts") or [])
+        peak = max([*female, *male, 1])
+        # La hauteur se partage entre les deux moities : la calculer sur le
+        # cadre entier faisait deborder les barres hautes hors du cadre.
+        half = max((plot_h - self.MID_GAP) / 2, 8)
+        mid = pad_t + plot_h / 2
+        bar_w = plot_w / len(self.bins)
+
+        self.canvas.create_text(pad_l, 12, anchor="w", fill=theme.FEMALE,
+                                font=axis_font(), text="FEMMES ▲")
+        self.canvas.create_text(pad_l + 76, 12, anchor="w", fill=theme.MALE,
+                                font=axis_font(), text="HOMMES ▼")
+        for value in nice_ticks(0, peak):
+            offset = value / peak * half
+            for y in (mid - self.MID_GAP / 2 - offset,
+                      mid + self.MID_GAP / 2 + offset):
+                self.canvas.create_line(pad_l, y, pad_l + plot_w, y,
+                                        fill=theme.GRID)
+                self.canvas.create_text(pad_l - 8, y, anchor="e",
+                                        fill=theme.MUTED, font=axis_font(),
+                                        text=format_number(value, 0))
+        for index, item in enumerate(self.bins):
+            x = pad_l + index * bar_w
+            for counts, sex, colour, up in (
+                (female, "femmes", theme.FEMALE, True),
+                (male, "hommes", theme.MALE, False),
+            ):
+                count = counts[index] if index < len(counts) else 0
+                if not count:
+                    continue
+                bar_h = half * count / peak
+                near = mid - self.MID_GAP / 2 if up else mid + self.MID_GAP / 2
+                far = near - bar_h if up else near + bar_h
+                handle = self.canvas.create_rectangle(
+                    x + 2, min(near, far), x + bar_w - 2, max(near, far),
+                    fill=colour, outline="")
+                self._items[handle] = dict(item, count=count, sex=sex)
+        # Les deux medianes, chacune dans sa moitie : c'est le chiffre que
+        # l'ecart global annonce, remis a sa place sur l'echelle.
+        for key, colour, up in (("female_median", theme.FEMALE, True),
+                                ("male_median", theme.MALE, False)):
+            value = self.sexes.get(key)
+            if value is None:
+                continue
+            x = self._x_of(pad_l, plot_w, float(value))
+            end = mid - half if up else mid + half
+            self.canvas.create_line(x, mid, x, end, fill=colour, dash=(3, 3))
+            self._plate(x, end + (10 if up else -10), colour,
+                        f"méd. {format_money(value, self.currency)}",
+                        pad_l, plot_w)
+        self.canvas.create_line(pad_l, mid, pad_l + plot_w, mid,
+                                fill=theme.LINE_STRONG)
+        self._footer(pad_l, pad_t, plot_w, plot_h,
+                     "Effectif par classe de rémunération, "
+                     "femmes au-dessus, hommes au-dessous")
+
+    def _plate(self, x: float, y: float, colour: str, text: str,
+               pad_l: int, plot_w: float) -> None:
+        """Etiquette posee sur un fond plein, et maintenue dans le cadre.
+
+        La mediane tombe la ou la population se concentre, c'est-a-dire sur
+        les barres les plus hautes : sans fond, le montant se lisait sur un
+        aplat de sa propre couleur. Et une mediane proche d'un bord faisait
+        sortir le texte du cadre.
+        """
+        anchor = "center"
+        if x - 55 < pad_l:
+            anchor, x = "w", max(x, pad_l)
+        elif x + 55 > pad_l + plot_w:
+            anchor, x = "e", min(x, pad_l + plot_w)
+        label = self.canvas.create_text(x, y, fill=colour, font=axis_font(),
+                                        anchor=anchor, text=text)
+        box = self.canvas.bbox(label)
+        if box:
+            plate = self.canvas.create_rectangle(
+                box[0] - 3, box[1] - 1, box[2] + 3, box[3] + 1,
+                fill=theme.CANVAS, outline="", tags=("plate",))
+            self.canvas.tag_lower(plate, label)
 
     def _on_motion(self, event) -> None:
         for item in self.canvas.find_overlapping(event.x, event.y, event.x, event.y):
@@ -596,7 +738,7 @@ class HistogramChart(tk.Frame):
                 self.tooltip.show(
                     f'{format_money(data["lower"], self.currency)} — '
                     f'{format_money(data["upper"], self.currency)}\n'
-                    f'{int(data["count"])} salariés',
+                    f'{int(data["count"])} {data.get("sex") or "salariés"}',
                     self.canvas.winfo_rootx() + event.x,
                     self.canvas.winfo_rooty() + event.y)
                 return

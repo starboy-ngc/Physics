@@ -162,6 +162,122 @@ class TestHistogram(ChartCase):
 
 
 @needs_display
+class TestHistogramBackToBack(ChartCase):
+    """Femmes au-dessus, hommes au-dessous, sur les memes classes."""
+
+    def distribution(self, femmes=(1, 8, 14, 3, 0), hommes=(0, 4, 11, 12, 5),
+                     available=True):
+        bins = [{"lower": 30000 + index * 5000, "upper": 35000 + index * 5000,
+                 "count": femmes[index] + hommes[index]}
+                for index in range(len(femmes))]
+        return {"available": True, "bins": bins, "sex_split": {
+            "available": available,
+            "warning": None if available else "Effectif insuffisant "
+                                             "pour séparer femmes et hommes",
+            "female_counts": list(femmes) if available else [],
+            "male_counts": list(hommes) if available else [],
+            "female_count": sum(femmes), "male_count": sum(hommes),
+            "female_chartable": available, "male_chartable": available,
+            "female_median": 41000.0, "male_median": 48000.0,
+            "unknown_count": 0,
+        }}
+
+    def chart(self, **kwargs):
+        from hr_insight.ui.charts import HistogramChart
+
+        chart = self.build(HistogramChart)
+        chart.set_distribution(self.distribution(**kwargs))
+        chart.set_split(True)
+        self.root.update()
+        return chart
+
+    def bars(self, chart):
+        """Les barres seules : le fond d'une etiquette est un rectangle lui
+        aussi, et il ne se compte pas comme un effectif."""
+        return [chart.canvas.coords(item)
+                for item in self.items(chart.canvas, "rectangle")
+                if "plate" not in chart.canvas.gettags(item)]
+
+    def test_one_bar_per_class_and_per_sex(self):
+        chart = self.chart()
+        # Neuf classes renseignees sur dix : une classe vide ne se dessine pas.
+        self.assertEqual(len(self.bars(chart)), 8)
+
+    def test_the_two_halves_sit_on_either_side_of_the_middle(self):
+        chart = self.chart()
+        middles = [(coords[1] + coords[3]) / 2 for coords in self.bars(chart)]
+        self.assertTrue(any(value < chart.canvas.winfo_height() / 2
+                            for value in middles))
+        self.assertTrue(any(value > chart.canvas.winfo_height() / 2
+                            for value in middles))
+
+    def test_the_bars_stay_inside_the_frame(self):
+        """Le defaut a corriger : la hauteur se partage entre deux moities,
+        et la calculer sur le cadre entier faisait deborder les plus hautes."""
+        chart = self.chart()
+        height = chart.canvas.winfo_height()
+        width = chart.canvas.winfo_width()
+        for x1, y1, x2, y2 in self.bars(chart):
+            self.assertGreaterEqual(round(y1), 0)
+            self.assertLessEqual(round(y2), height)
+            self.assertGreaterEqual(round(x1), 0)
+            self.assertLessEqual(round(x2), width)
+
+    def test_a_tall_class_does_not_cross_the_middle(self):
+        """La barre la plus haute d'un cote reste de son cote : sinon elle
+        se lirait comme un effectif de l'autre sexe."""
+        chart = self.chart(femmes=(0, 0, 40, 0, 0), hommes=(0, 0, 0, 0, 1))
+        bars = sorted(self.bars(chart), key=lambda c: c[3] - c[1])
+        tallest = bars[-1]
+        self.assertLess(tallest[3], chart.canvas.winfo_height() / 2 + 4)
+
+    def test_the_two_sides_share_the_same_scale(self):
+        """Un effectif deux fois plus grand donne une barre deux fois plus
+        haute, de quelque cote qu'il soit."""
+        chart = self.chart(femmes=(0, 0, 20, 0, 0), hommes=(0, 0, 10, 0, 0))
+        bars = sorted(self.bars(chart), key=lambda c: c[3] - c[1])
+        petite, grande = bars[0], bars[-1]
+        self.assertAlmostEqual((grande[3] - grande[1]) / (petite[3] - petite[1]),
+                               2.0, places=1)
+
+    def test_each_median_is_drawn_and_named(self):
+        chart = self.chart()
+        self.assertEqual(
+            len([text for text in self.texts(chart.canvas)
+                 if text.startswith("méd.")]), 2)
+
+    def test_the_header_says_which_half_is_which(self):
+        chart = self.chart()
+        joined = " ".join(self.texts(chart.canvas))
+        self.assertIn("FEMMES", joined)
+        self.assertIn("HOMMES", joined)
+
+    def test_hovering_names_the_sex(self):
+        chart = self.chart()
+        item = self.items(chart.canvas, "rectangle")[0]
+        x1, y1, x2, y2 = chart.canvas.coords(item)
+        chart._on_motion(Motion(int((x1 + x2) / 2), int((y1 + y2) / 2)))
+        self.root.update()
+        text = chart.tooltip.label.cget("text")
+        self.assertTrue("femmes" in text or "hommes" in text)
+
+    def test_a_refused_split_falls_back_to_the_whole_population(self):
+        chart = self.chart(available=False)
+        self.assertFalse(chart.may_split())
+        self.assertIn("Effectif insuffisant", chart.split_warning())
+        # Une barre par classe renseignee, et non deux : l'histogramme
+        # d'ensemble, comme si le bouton n'avait pas ete coche.
+        self.assertEqual(len(self.bars(chart)), 5)
+
+    def test_going_back_to_the_whole_population_redraws_it(self):
+        chart = self.chart()
+        chart.set_split(False)
+        self.root.update()
+        self.assertEqual(len(self.bars(chart)), 5)
+        self.assertNotIn("FEMMES", " ".join(self.texts(chart.canvas)))
+
+
+@needs_display
 class TestScatter(ChartCase):
     def dataset(self, count=40):
         return {"available": True, "points": [

@@ -177,6 +177,33 @@ def histogram(
     ]
 
 
+def histogram_like(
+    values: Sequence[float], bins: Sequence[Dict[str, float]]
+) -> List[int]:
+    """Repartit d'autres valeurs dans les classes d'un histogramme deja decoupe.
+
+    Decouper une sous-population a part donnerait des classes differentes, et
+    deux histogrammes aux classes differentes ne se comparent pas. Les classes
+    sont donc imposees : celles de la population entiere.
+    """
+    counts = [0] * len(bins)
+    if not bins:
+        return counts
+    low = float(bins[0]["lower"])
+    high = float(bins[-1]["upper"])
+    width = (high - low) / len(bins)
+    for value in clean(values):
+        if width <= 0:
+            counts[0] += 1
+            continue
+        index = int((value - low) / width)
+        # Les valeurs viennent d'un sous-ensemble de la population decoupee :
+        # elles tombent dans les bornes. Le serrage protege du cas limite de
+        # la borne haute, et d'un appel sur d'autres valeurs.
+        counts[min(max(index, 0), len(bins) - 1)] += 1
+    return counts
+
+
 def linear_regression(
     xs: Sequence[float], ys: Sequence[float]
 ) -> Optional[Dict[str, float]]:

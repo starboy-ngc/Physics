@@ -525,6 +525,28 @@ non une liste recopiée pour l'occasion.
 Sur un petit fichier, vous ne le verrez pas : il n'apparaît qu'au-delà de
 trois dixièmes de seconde, le temps qu'une attente commence à se voir.
 
+## 5 ter bis. Distribution : séparer les femmes et les hommes
+
+Dans **Graphiques → Distribution**, la case **Séparer H/F** remplace
+l'histogramme d'ensemble par **deux distributions dos à dos** : les femmes
+au-dessus, les hommes au-dessous, sur les **mêmes classes** de rémunération
+et à la **même échelle** d'effectif. Chaque moitié porte sa médiane.
+
+C'est la question que l'écart global ne pose pas. L'écart dit *de combien*
+les deux sexes sont payés différemment ; il ne dit pas *où*. Deux
+populations peuvent afficher le même écart de médiane, l'une parce que les
+femmes manquent dans les classes hautes, l'autre parce qu'elles
+s'entassent dans les basses. Ces deux lectures n'appellent pas la même
+décision, et seule la forme des deux distributions les distingue.
+
+Les classes sont celles de la population entière, et non un découpage
+refait pour chaque sexe : deux histogrammes aux classes différentes ne se
+comparent pas.
+
+Chaque côté a son propre droit au tracé : trente hommes ne donnent pas le
+droit de dessiner la distribution de trois femmes. Quand un côté passe sous
+le seuil de tracé, la case n'est pas proposée — et sa place dit pourquoi.
+
 ## 5 quater. Dispersion : distinguer femmes et hommes
 
 Dans **Graphique → Dispersion**, la case **Distinguer femmes / hommes** trace

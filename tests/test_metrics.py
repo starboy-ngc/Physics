@@ -192,6 +192,103 @@ class TestDistributionAndScatter(unittest.TestCase):
         self.assertGreater(dataset["trend"]["r_squared"], 0.9)
 
 
+class TestTheDistributionSplitsBySex(unittest.TestCase):
+    """Deux distributions dos a dos, decoupees par le moteur.
+
+    La fenetre ne doit pas parcourir la population pour son propre compte :
+    elle finirait par compter autrement que le moteur.
+    """
+
+    def _population(self, femmes: int, hommes: int, config=None):
+        config = config or make_config()
+        rows = [make_row(index, gender="F", salary=30000 + index * 500)
+                for index in range(femmes)]
+        rows += [make_row(1000 + index, gender="M", salary=35000 + index * 500)
+                 for index in range(hommes)]
+        return build_population(rows, config), config
+
+    def test_the_two_sides_share_the_classes_of_the_whole(self):
+        population, config = self._population(20, 20)
+        distribution = metrics.calculate_distribution_metrics(population, config)
+        split = distribution["sex_split"]
+        self.assertTrue(split["available"])
+        self.assertIsNone(split["warning"])
+        self.assertEqual(len(split["female_counts"]), len(distribution["bins"]))
+        self.assertEqual(len(split["male_counts"]), len(distribution["bins"]))
+        # Chaque classe accueille les deux cotes et rien de plus : le total
+        # des deux ventilations est celui de l'histogramme d'ensemble.
+        for index, item in enumerate(distribution["bins"]):
+            self.assertEqual(
+                split["female_counts"][index] + split["male_counts"][index],
+                int(item["count"]))
+        self.assertEqual(split["female_count"], 20)
+        self.assertEqual(split["male_count"], 20)
+        self.assertEqual(split["unknown_count"], 0)
+
+    def test_each_side_carries_its_own_median(self):
+        population, config = self._population(20, 20)
+        split = metrics.calculate_distribution_metrics(
+            population, config)["sex_split"]
+        # 30 000 a 39 500 par pas de 500 : mediane a mi-chemin.
+        self.assertAlmostEqual(split["female_median"], 34750.0)
+        self.assertAlmostEqual(split["male_median"], 39750.0)
+
+    def test_a_side_below_the_chart_threshold_refuses_the_split(self):
+        """Trente hommes ne donnent pas le droit de dessiner la distribution
+        de trois femmes."""
+        config = make_config({"privacy_parameters.min_headcount_chart": 10})
+        population, config = self._population(3, 30, config)
+        split = metrics.calculate_distribution_metrics(
+            population, config)["sex_split"]
+        self.assertFalse(split["available"])
+        self.assertFalse(split["female_chartable"])
+        self.assertTrue(split["male_chartable"])
+        self.assertEqual(split["female_counts"], [])
+        self.assertIn("10", split["warning"])
+
+    def test_the_threshold_of_the_warning_is_the_configured_one(self):
+        config = make_config({"privacy_parameters.min_headcount_chart": 4,
+                              "privacy_parameters.min_headcount_publish": 2})
+        population, config = self._population(3, 30, config)
+        split = metrics.calculate_distribution_metrics(
+            population, config)["sex_split"]
+        self.assertIn("4 salariés", split["warning"])
+        # Sous le seuil de publication, pas de mediane : trois salaries ne
+        # se resument pas par un chiffre... mais le seuil est a deux ici.
+        self.assertIsNotNone(split["female_median"])
+
+    def test_a_side_below_the_publication_threshold_has_no_median(self):
+        config = make_config({"privacy_parameters.min_headcount_publish": 5,
+                              "privacy_parameters.min_headcount_chart": 2})
+        population, config = self._population(3, 30, config)
+        split = metrics.calculate_distribution_metrics(
+            population, config)["sex_split"]
+        self.assertIsNone(split["female_median"])
+        self.assertIsNotNone(split["male_median"])
+
+    def test_employees_without_a_sex_are_counted_apart(self):
+        config = make_config()
+        rows = [make_row(index, gender="F") for index in range(12)]
+        rows += [make_row(100 + index, gender="M") for index in range(12)]
+        rows += [make_row(200 + index, gender="") for index in range(4)]
+        population = build_population(rows, config)
+        split = metrics.calculate_distribution_metrics(
+            population, config)["sex_split"]
+        self.assertEqual(split["unknown_count"], 4)
+        self.assertEqual(split["female_count"], 12)
+        self.assertEqual(split["male_count"], 12)
+
+    def test_an_unavailable_distribution_still_carries_the_split_shape(self):
+        """La vue lit une seule forme de bloc : sans quoi elle doit tester
+        l'existence de chaque cle avant de la lire."""
+        config = make_config({"privacy_parameters.min_headcount_chart": 10})
+        population, config = self._population(2, 2, config)
+        distribution = metrics.calculate_distribution_metrics(population, config)
+        self.assertFalse(distribution["available"])
+        self.assertFalse(distribution["sex_split"]["available"])
+        self.assertEqual(distribution["sex_split"]["female_counts"], [])
+
+
 class TestSegmentationAndComparison(unittest.TestCase):
     def test_filters_are_combinable(self):
         config = make_config()

@@ -904,8 +904,26 @@ class Application(tk.Tk):
         self._build_charts(self.tabs["graphique"])
 
         distribution = self.chart_pages["distribution"]
+        dist_head = tk.Frame(distribution, background=theme.CANVAS)
+        dist_head.pack(fill="x", padx=18, pady=(10, 0))
+        # L'ecart global dit de combien les deux sexes sont payes
+        # differemment ; il ne dit pas ou. Deux distributions dos a dos le
+        # disent : classes hautes desertees, ou entassement dans les basses.
+        self.dist_split = tk.BooleanVar(value=False)
+        self.dist_split_row = CheckRow(dist_head, "Séparer H/F",
+                                       self.dist_split, self.fonts,
+                                       ground=theme.CANVAS)
+        self.dist_split_row.pack(side="left")
+        # Quand le dedoublement est refuse, la place du bouton dit pourquoi :
+        # un bouton absent sans explication passe pour un oubli.
+        self.dist_split_note = tk.Label(dist_head, text="",
+                                        background=theme.CANVAS,
+                                        foreground=theme.MUTED,
+                                        font=self.fonts.small)
+        self.dist_split_note.pack(side="left")
+        self.dist_split.trace_add("write", lambda *_: self._show_distribution())
         self.histogram = HistogramChart(distribution)
-        self.histogram.pack(fill="both", expand=True, padx=18, pady=(8, 18))
+        self.histogram.pack(fill="both", expand=True, padx=18, pady=(6, 18))
 
         boites = self.chart_pages["boites"]
         box_head = tk.Frame(boites, background=theme.CANVAS)
@@ -1790,6 +1808,7 @@ class Application(tk.Tk):
         self._show_quality(payload["quality"])
         self._show_overview(payload)
         self.histogram.set_distribution(payload["distribution"], currency)
+        self._show_distribution()
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
         self._show_pay_equity(payload["pay_equity"])
@@ -3811,6 +3830,29 @@ class Application(tk.Tk):
             if segment.get("field") == voulu:
                 return index
         return 0
+
+    def _show_distribution(self) -> None:
+        """Histogramme d'un bloc, ou les deux sexes dos a dos.
+
+        Le decoupage par sexe vient du moteur, avec le reste de la
+        distribution : une fenetre qui parcourt la population pour son
+        propre compte finit par compter autrement que lui.
+        """
+        allowed = self.histogram.may_split()
+        if not allowed and self.dist_split.get():
+            # Repasser la variable a faux avant de rendre : le bouton ne doit
+            # pas rester coche sur un graphique qui n'est pas dedouble.
+            self.dist_split.set(False)
+            return
+        self.histogram.set_split(bool(self.dist_split.get()))
+        if allowed:
+            self.dist_split_row.pack(side="left")
+            self.dist_split_note.configure(text="")
+            self.dist_split_note.pack_forget()
+        else:
+            self.dist_split_row.pack_forget()
+            self.dist_split_note.configure(text=self.histogram.split_warning())
+            self.dist_split_note.pack(side="left")
 
     def _show_boxes(self) -> None:
         """Boites a moustaches de la dimension choisie.
