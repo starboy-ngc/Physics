@@ -871,6 +871,9 @@ class Application(tk.Tk):
         self.overview_frame = tk.Frame(overview, background=theme.CANVAS)
         window = overview.create_window((18, 18), window=self.overview_frame,
                                         anchor="nw")
+        self._overview_window = window
+        #: Nombre de colonnes avec lequel la page a ete composee.
+        self._overview_columns: Optional[int] = None
         # « bbox("all") » commence au premier element, soit (18, 18) : la
         # zone de defilement demarrait donc apres la marge, qui disparaissait
         # des le premier affichage — le titre venait coller au filet des
@@ -878,9 +881,14 @@ class Application(tk.Tk):
         self.overview_frame.bind(
             "<Configure>",
             lambda _e: self._scroll_region(overview))
-        overview.bind("<Configure>",
-                      lambda e: overview.itemconfigure(window,
-                                                       width=e.width - 36))
+        # La largeur disponible decide du nombre de colonnes. Elle n'est pas
+        # connue au moment ou la page se compose — un onglet qui n'a jamais
+        # ete affiche mesure un pixel de large —, et la page se figeait alors
+        # a deux colonnes pour le reste de la session, meme en plein ecran.
+        # On relaie donc chaque changement de largeur, et la page se
+        # redispose si le compte de colonnes change.
+        self.overview_canvas = overview
+        overview.bind("<Configure>", self._on_overview_resize)
         # Premier onglet de la barre, donc premier ecran vu : il doit dire ce
         # qu'il attend. _show_overview vide ce cadre au premier calcul.
         tk.Label(self.overview_frame,
@@ -2098,9 +2106,8 @@ class Application(tk.Tk):
         # referme sur son contenu et le vide tombe en bas.
         columns = tk.Frame(self.overview_frame, background=theme.CANVAS)
         columns.pack(fill="both", expand=True)
-        self.overview_frame.update_idletasks()
-        wide = (self.overview_frame.winfo_width()
-                >= 3 * self.OVERVIEW_COLUMN + 52)
+        self._overview_columns = self._overview_column_count()
+        wide = self._overview_columns >= 3
         left = tk.Frame(columns, background=theme.CANVAS)
         left.pack(side="left", fill="both", expand=True, padx=(0, 26))
         middle = tk.Frame(columns, background=theme.CANVAS)
@@ -2166,6 +2173,52 @@ class Application(tk.Tk):
             self._ruled_panel(
                 right, "Dispersion", ("Indicateur", "Valeur"),
                 dispersion_rows(spread, currency), key="dispersion")
+
+    def _overview_width(self) -> int:
+        """Largeur offerte a la page, mesuree la ou elle est connue.
+
+        Le cadre lui-meme repond un pixel tant qu'il n'a jamais ete
+        affiche : c'est le canevas qui le porte qui sait, et lui le sait des
+        que la fenetre a une taille.
+        """
+        for widget in (getattr(self, "overview_canvas", None),
+                       self.overview_frame):
+            if widget is not None and widget.winfo_width() > 1:
+                return widget.winfo_width()
+        return 0
+
+    def _overview_column_count(self) -> int:
+        """Trois colonnes si la largeur le permet, deux sinon.
+
+        Tant que la largeur est inconnue, on repond trois : la page se
+        redispose au premier redimensionnement, et il vaut mieux partir de
+        la disposition qui tient sur un ecran que de s'y figer a deux.
+        """
+        width = self._overview_width()
+        if not width:
+            return 3
+        return 3 if width >= 3 * self.OVERVIEW_COLUMN + 52 else 2
+
+    def _on_overview_resize(self, event) -> None:
+        """Suit la largeur, et redispose la page si le compte change.
+
+        Le trace coute une poignee de millisecondes, et la condition ne
+        bascule qu'une fois par franchissement : il n'y a ni rafale ni
+        boucle — redisposer ne change pas la largeur.
+        """
+        self.overview_canvas.itemconfigure(self._overview_window,
+                                           width=event.width - 36)
+        if self.result is None:
+            return
+        if self._overview_column_count() == self._overview_columns:
+            return
+        try:
+            self._show_overview(self.result.payload)
+        except Exception as error:              # noqa: BLE001
+            # Un redimensionnement ne doit jamais faire tomber la fenetre :
+            # la page garde alors la disposition qu'elle avait.
+            log_event("interface", "overview_resize", status="ERREUR",
+                      detail=type(error).__name__)
 
     def _coverage_note(self, parent, population: Dict[str, Any]) -> None:
         """Sur quelle part de l'effectif l'anciennete est etablie.

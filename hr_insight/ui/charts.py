@@ -2159,7 +2159,11 @@ class PieChart(tk.Frame):
         cx = 4 + self.RADIUS
         cy = self.winfo_height() / 2 or self.RADIUS
         if self._image is None:
-            self._image = tk.PhotoImage(data=raster.ring(
+            # `master` est indispensable : sans lui, l'image s'attache a la
+            # racine Tk par defaut et non a cet interpreteur. Une seconde
+            # fenetre fait alors disparaitre les images de la premiere —
+            # « image pyimageN doesn't exist » au trace suivant.
+            self._image = tk.PhotoImage(master=self.canvas, data=raster.ring(
                 2 * self.RADIUS, self.HOLE,
                 [(nombre / total, _rgb(couleurs.get(libelle, theme.ACCENT)))
                  for libelle, nombre in self.slices]))

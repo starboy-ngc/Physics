@@ -138,6 +138,16 @@ plus haut, prennent donc une colonne à elles. Sous `OVERVIEW_COLUMN` × 3, la
 disposition revient à deux colonnes et la page défile — mieux vaut défiler
 que rogner.
 
+Le nombre de colonnes **suit la largeur** et n'est pas décidé une fois pour
+toutes : un onglet qui n'a jamais été affiché mesure un pixel de large, et la
+page se figeait alors à deux colonnes pour le reste de la session, y compris
+en plein écran. `_on_overview_resize` relaie chaque changement de largeur et
+redispose la page quand le compte change — la condition ne bascule qu'une
+fois par franchissement, et redisposer ne change pas la largeur, donc ni
+rafale ni boucle. Tant que la largeur est inconnue, la page part sur trois
+colonnes : mieux vaut partir de la disposition qui tient sur un écran que
+s'y figer à deux.
+
 L'anneau du camembert est une **image antialiasée** produite par `raster`,
 et non un `create_arc` : le canevas Tk ne lisse pas ses arcs, et les bords en
 escalier étaient la première chose qu'on voyait de la page. Un seul passage

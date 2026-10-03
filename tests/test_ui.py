@@ -2006,7 +2006,9 @@ class TestTheMergedOverview(unittest.TestCase):
         from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
-        source = os.path.join(directory, "population.xlsx")
+        # Conserve : un test compose la page une seconde fois, sur une
+        # fenetre qui n'a pas encore de taille.
+        source = self.source = os.path.join(directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
             make_row(index, salary=25000 + (index % 50) * 2000,
                      age=25 + index % 38, tenure=index % 32,
@@ -2270,6 +2272,50 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertEqual(sum(n for _l, n in chart.slices),
                          self.app.result.payload["population"]["headcount"])
 
+    def test_a_page_composed_before_it_had_a_width_still_gets_three_columns(self):
+        """Le defaut signale en plein ecran : la page se composait pendant
+        que son onglet n'avait jamais ete affiche — donc un pixel de large —
+        et se figeait a deux colonnes pour le reste de la session.
+
+        Elle suit desormais la largeur : composee sans la connaitre, elle se
+        redispose au premier redimensionnement.
+        """
+        from hr_insight.ui.app import Application
+        from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+
+        app = Application()
+        app.update()
+        app.result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE))
+        try:
+            # Compose alors que rien n'a de taille : c'est le cas reel d'un
+            # resultat rendu avant que l'onglet ait ete ouvert.
+            app._show_overview(app.result.payload)
+            app.geometry("1600x1000+0+0")
+            for _ in range(15):
+                app.update()
+                time.sleep(0.01)
+            colonnes = app.overview_frame.winfo_children()[-1]
+            posees = [enfant for enfant in colonnes.winfo_children()
+                      if enfant.winfo_manager()]
+            self.assertEqual(len(posees), 3)
+            self.assertEqual(app._overview_columns, 3)
+        finally:
+            app.destroy()
+
+    def test_the_layout_follows_the_window_both_ways(self):
+        """Elargir doit rendre la troisieme colonne, retrecir la reprendre."""
+        self.app.geometry("900x1000+0+0")
+        for _ in range(15):
+            self.app.update()
+            time.sleep(0.01)
+        self.assertEqual(self.app._overview_columns, 2)
+        self.app.geometry("1600x1000+0+0")
+        for _ in range(15):
+            self.app.update()
+            time.sleep(0.01)
+        self.assertEqual(self.app._overview_columns, 3)
+
     def test_a_narrow_window_falls_back_to_two_columns(self):
         """Une colonne a besoin d'environ 330 px pour que la pyramide garde
         des ailes et l'echelle ses graduations. En dessous, mieux vaut deux
@@ -2277,11 +2323,7 @@ class TestTheMergedOverview(unittest.TestCase):
         from hr_insight.ui.charts import PyramidChart, ScaleChart
 
         self.app.geometry("900x1000+0+0")
-        for _ in range(10):
-            self.app.update()
-            time.sleep(0.01)
-        self.app._render_results()
-        for _ in range(10):
+        for _ in range(15):
             self.app.update()
             time.sleep(0.01)
         colonnes = self.app.overview_frame.winfo_children()[-1]
@@ -2604,7 +2646,9 @@ class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
         from hr_insight.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         directory = tempfile.mkdtemp()
-        source = os.path.join(directory, "population.xlsx")
+        # Conserve : un test compose la page une seconde fois, sur une
+        # fenetre qui n'a pas encore de taille.
+        source = self.source = os.path.join(directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
             make_row(index, salary=25000 + (index % 50) * 2000,
                      age=25 + index % 38, tenure=index % 32,
