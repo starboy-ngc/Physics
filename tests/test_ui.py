@@ -432,19 +432,21 @@ class TestTheIndicatorTablesAreBuiltOnce(unittest.TestCase):
         }
 
     def test_the_scale_follows_the_published_percentiles(self):
-        rows = self.app_module.salary_scale_rows(self.salary, "EUR")
-        self.assertEqual([label for label, _v, _k in rows],
-                         ["Minimum", "Q1 (P25)", "Médiane (P50)", "Q3 (P75)",
-                          "Maximum"])
-        self.assertEqual(rows[0][2], "min")
-        self.assertIn("30", rows[0][1])
+        """Le moteur calcule toujours P10 a P90 — les ratios de dispersion
+        en ont besoin — mais l'utilisateur decide lesquels sont publies.
+        L'echelle trace ceux-la, et pas les cinq habituels : les tracer tous
+        reviendrait a publier ce qu'il a retire."""
+        from hr_insight.ui.charts import ScaleChart
 
-        restreint = dict(self.salary, published_percentiles=[
+        chart = ScaleChart.__new__(ScaleChart)
+        chart.salary, chart.currency = self.salary, "EUR"
+        self.assertEqual([label for _k, label, _v in chart.points()],
+                         ["Q1 (P25)", "Médiane (P50)", "Q3 (P75)"])
+
+        chart.salary = dict(self.salary, published_percentiles=[
             {"key": "median", "label": "Médiane (P50)"}])
-        self.assertEqual(
-            [label for label, _v, _k in
-             self.app_module.salary_scale_rows(restreint, "EUR")],
-            ["Minimum", "Médiane (P50)", "Maximum"])
+        self.assertEqual([label for _k, label, _v in chart.points()],
+                         ["Médiane (P50)"])
 
     def test_each_dispersion_indicator_keeps_its_own_formatting(self):
         rows = self.app_module.dispersion_rows(self.salary["dispersion"],
@@ -460,7 +462,6 @@ class TestTheIndicatorTablesAreBuiltOnce(unittest.TestCase):
     def test_an_absent_indicator_does_not_break_the_table(self):
         rows = self.app_module.dispersion_rows({}, "EUR")
         self.assertEqual(len(rows), 5)
-        self.assertEqual(len(self.app_module.salary_scale_rows({}, "EUR")), 2)
 
 
 @needs_display
@@ -1895,11 +1896,18 @@ class TestThePayGapAxis(unittest.TestCase):
                      salary=40000 + (index % 7) * 1500)
             for index in range(90)])])
         self.app = Application()
+        # Une page qui se dispose en colonnes et des graphiques qui se
+        # tracent a la largeur de leur colonne ont besoin d'une fenetre qui
+        # en ait une : sans geometrie, les canevas restent vides et le test
+        # ne verifie plus rien.
+        self.app.geometry("1500x1000+0+0")
         self.app.update()
         self.app.result = run_analysis(AnalysisRequest(
             source_path=source, reference_date=REFERENCE_DATE))
         self.app._render_results()
-        self.app.update()
+        for _ in range(10):
+            self.app.update()
+            time.sleep(0.01)
 
     def tearDown(self):
         self.app.destroy()
@@ -1946,11 +1954,18 @@ class TestTheMergedOverview(unittest.TestCase):
                      gender=["F", "H"][index % 2])
             for index in range(200)])])
         self.app = Application()
+        # Une page qui se dispose en colonnes et des graphiques qui se
+        # tracent a la largeur de leur colonne ont besoin d'une fenetre qui
+        # en ait une : sans geometrie, les canevas restent vides et le test
+        # ne verifie plus rien.
+        self.app.geometry("1500x1000+0+0")
         self.app.update()
         self.app.result = run_analysis(AnalysisRequest(
             source_path=source, reference_date=REFERENCE_DATE))
         self.app._render_results()
-        self.app.update()
+        for _ in range(10):
+            self.app.update()
+            time.sleep(0.01)
 
     def tearDown(self):
         self.app.destroy()
@@ -2044,7 +2059,9 @@ class TestTheMergedOverview(unittest.TestCase):
         texts = [item.cget("text")
                  for item in self._all_labels(self.app.overview_frame)]
         field = self.app.result.payload["salary"]["field_label"]
-        self.assertIn(f"Champ analysé : {field}", texts)
+        # « Champ analysé » touchait le titre dans une colonne etroite : le
+        # mot qui porte le sens est « Champ », et la valeur le precise.
+        self.assertIn(f"Champ : {field}", texts)
 
     def test_the_population_figures_sit_in_one_place(self):
         """Mediane et moyenne d'age se lisent l'une sous l'autre, et non de
@@ -2057,31 +2074,185 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertLess(texts.index("Âge moyen"),
                         texts.index("Pyramide des âges"))
 
+    def _scale(self):
+        from hr_insight.ui.charts import ScaleChart  # noqa: F401
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        charts = [item for item in walk(self.app.overview_frame)
+                  if isinstance(item, ScaleChart)]
+        self.assertEqual(len(charts), 1, "échelle de rémunération introuvable")
+        return charts[0]
+
+    def _scale_texts(self):
+        chart = self._scale()
+        canvas = chart.canvas
+        return [canvas.itemcget(item, "text") for item in canvas.find_all()
+                if canvas.type(item) == "text"]
+
     def test_the_pay_ladder_runs_from_minimum_to_maximum(self):
-        """Minimum et maximum sont a leur place dans l'echelle, pas en
-        indicateurs isoles."""
+        """Minimum et maximum se lisent aux deux bouts de l'échelle, en
+        retrait : ils ne commandent plus le cadrage — une rémunération à
+        zéro écraserait les neuf dixièmes de l'effectif sur un centimètre —
+        mais ils restent lisibles."""
+        from hr_insight.core.reporting import format_money
+
+        textes = self._scale_texts()
+        salary = self.app.result.payload["salary"]
+        bas = [t for t in textes if t.startswith("min")]
+        haut = [t for t in textes if t.startswith("max")]
+        self.assertTrue(bas and haut)
+        self.assertIn(format_money(salary["min"], "EUR"), bas[0])
+        self.assertIn(format_money(salary["max"], "EUR"), haut[0])
+        # Et le cadrage, lui, s'arrete aux percentiles publies.
+        points = self._scale().points()
+        self.assertLess(points[0][2], points[-1][2])
+        self.assertGreater(points[0][2], salary["min"])
+
+    def test_the_median_is_set_apart(self):
+        """Le chiffre que l'on cherche en premier est mis en avant, plutot
+        que signale par une couleur de fond."""
+        import tkinter.font as tkfont
+        from hr_insight.core.reporting import format_money
+        from hr_insight.ui.theme import ACCENT, INK
+
+        chart = self._scale()
+        canvas = chart.canvas
+        mediane = self.app.result.payload["salary"]["median"]
+        attendu = format_money(mediane, "EUR")
+        for item in canvas.find_all():
+            if canvas.type(item) != "text":
+                continue
+            if canvas.itemcget(item, "text") != attendu:
+                continue
+            self.assertEqual(canvas.itemcget(item, "fill"), INK)
+            weight = tkfont.Font(root=self.app,
+                                 font=canvas.itemcget(item, "font")
+                                 ).actual("weight")
+            self.assertEqual(weight, "bold")
+            break
+        else:
+            self.fail("médiane introuvable dans l'échelle")
+        # Son intitule porte la couleur d'accent, les autres le gris.
+        self.assertIn(ACCENT, [canvas.itemcget(item, "fill")
+                               for item in canvas.find_all()
+                               if canvas.type(item) == "text"])
+
+    def test_the_page_holds_three_columns_when_it_can(self):
+        """Le desequilibre, et non le contenu, faisait deborder la page : la
+        colonne de population portait la liste, le camembert et les deux
+        pyramides pendant que celle de remuneration s'arretait au tiers de
+        la hauteur. Les pyramides prennent donc une colonne a elles."""
+        from hr_insight.ui.charts import PyramidChart, PieChart, ScaleChart
+
+        def colonne(widget):
+            """Le cadre de premier rang qui porte ce widget."""
+            colonnes = self.app.overview_frame.winfo_children()[-1]
+            parent = widget
+            while parent is not None and parent.master is not colonnes:
+                parent = parent.master
+            return parent
+
+        def premier(classe):
+            def walk(widget):
+                yield widget
+                for child in widget.winfo_children():
+                    yield from walk(child)
+            return next(item for item in walk(self.app.overview_frame)
+                        if isinstance(item, classe))
+
+        pyramide = colonne(premier(PyramidChart))
+        camembert = colonne(premier(PieChart))
+        echelle = colonne(premier(ScaleChart))
+        self.assertIsNotNone(pyramide)
+        # Trois colonnes distinctes : population, pyramides, remuneration.
+        self.assertNotEqual(str(pyramide), str(camembert))
+        self.assertNotEqual(str(pyramide), str(echelle))
+        self.assertNotEqual(str(camembert), str(echelle))
+
+    def test_the_whole_page_fits_without_scrolling(self):
+        """La demande meme : tenir sur un ecran. La plus haute des trois
+        colonnes doit rester dans la hauteur offerte."""
+        colonnes = self.app.overview_frame.winfo_children()[-1]
+        hauteurs = [enfant.winfo_reqheight()
+                    for enfant in colonnes.winfo_children()]
+        self.assertTrue(hauteurs)
+        self.assertLess(max(hauteurs), 820)
+
+    def test_the_csp_breakdown_names_the_column_it_used(self):
+        """« CSP » est le mot du metier, « Statut » la colonne du fichier :
+        sans les deux, on ne sait pas ce qu'on regarde."""
         texts = [item.cget("text")
                  for item in self._all_labels(self.app.overview_frame)]
-        self.assertIn("Minimum", texts)
-        self.assertIn("Maximum", texts)
-        self.assertLess(texts.index("Minimum"), texts.index("Maximum"))
+        self.assertIn("Répartition par CSP", texts)
+        label = self.app.result.payload["population"]["csp_label"]
+        self.assertIn(f"Champ : {label}", texts)
 
-    def test_the_median_row_is_set_apart(self):
-        """La ligne que l'on cherche en premier est mise en avant, plutot
-        que signalee par une couleur de fond."""
-        import tkinter.font as tkfont
-        from hr_insight.ui.theme import INK
+    def test_the_csp_breakdown_counts_what_the_engine_counted(self):
+        """Un ecran qui parcourt lui-meme la population finit par compter
+        autrement que le moteur, et deux chiffres du meme nom se
+        contredisent."""
+        from hr_insight.ui.charts import PieChart
 
-        for item in self._all_labels(self.app.overview_frame):
-            if item.cget("text") == "Médiane (P50)":
-                self.assertEqual(item.cget("foreground"), INK)
-                # La police est un objet nomme : il faut la resoudre pour
-                # connaitre sa graisse.
-                weight = tkfont.Font(root=self.app,
-                                     font=item.cget("font")).actual("weight")
-                self.assertEqual(weight, "bold")
-                return
-        self.fail("ligne médiane introuvable")
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        chart = next(item for item in walk(self.app.overview_frame)
+                     if isinstance(item, PieChart))
+        self.assertEqual(sum(n for _l, n in chart.slices),
+                         self.app.result.payload["population"]["headcount"])
+
+    def test_a_narrow_window_falls_back_to_two_columns(self):
+        """Une colonne a besoin d'environ 330 px pour que la pyramide garde
+        des ailes et l'echelle ses graduations. En dessous, mieux vaut deux
+        colonnes et une page qui defile que trois colonnes rognees."""
+        from hr_insight.ui.charts import PyramidChart, ScaleChart
+
+        self.app.geometry("900x1000+0+0")
+        for _ in range(10):
+            self.app.update()
+            time.sleep(0.01)
+        self.app._render_results()
+        for _ in range(10):
+            self.app.update()
+            time.sleep(0.01)
+        colonnes = self.app.overview_frame.winfo_children()[-1]
+        posees = [enfant for enfant in colonnes.winfo_children()
+                  if enfant.winfo_manager()]
+        self.assertEqual(len(posees), 2)
+
+        def colonne(classe):
+            def walk(widget):
+                yield widget
+                for child in widget.winfo_children():
+                    yield from walk(child)
+            widget = next(item for item in walk(self.app.overview_frame)
+                          if isinstance(item, classe))
+            while widget is not None and widget.master is not colonnes:
+                widget = widget.master
+            return str(widget)
+
+        # Les pyramides rejoignent la population ; la remuneration garde la
+        # sienne.
+        self.assertNotEqual(colonne(PyramidChart), colonne(ScaleChart))
+
+    def test_the_coverage_is_said_when_something_is_missing(self):
+        """Sur un fichier ou un quart des dates d'entree manque, la mediane
+        affichee ne porte pas sur la population annoncee."""
+        texts = [item.cget("text")
+                 for item in self._all_labels(self.app.overview_frame)]
+        population = self.app.result.payload["population"]
+        if population["tenure_known"] >= population["headcount"]:
+            # Couverture complete : la ligne n'apprend rien et ne doit pas
+            # occuper une place.
+            self.assertFalse(any("Ancienneté établie sur" in texte
+                                 for texte in texts))
+        else:
+            self.assertTrue(any("Ancienneté établie sur" in texte
+                                for texte in texts))
 
     def _pyramids(self):
         from hr_insight.ui.charts import PyramidChart
@@ -2106,6 +2277,58 @@ class TestTheMergedOverview(unittest.TestCase):
         """La plus jeune tranche en bas : c'est la lecture attendue."""
         pyramid = self._pyramids()[0]
         self.assertTrue(pyramid.rows[-1]["label"].startswith("2"))
+
+    def test_a_band_without_any_known_sex_leaves_the_pyramid(self):
+        """Elle reservait une ligne et n'y dessinait rien, ni barre ni
+        nombre : ces salaries disparaissaient d'un graphique qui leur
+        gardait pourtant une place. Ils en sortent, et la ligne dessous les
+        compte — comme le fait la page des ecarts, qui les annonce
+        « exclus »."""
+        import tkinter as tk
+
+        from hr_insight.ui.charts import PyramidChart
+
+        bandes = [{"label": "20-29", "count": 10, "female": 6, "male": 4,
+                   "unknown_sex": 0},
+                  {"label": "(non renseigne)", "count": 3, "female": 0,
+                   "male": 0, "unknown_sex": 3}]
+        cadre = tk.Frame(self.app)
+        self.app._pyramid_panel(cadre, "Essai", bandes, None)
+        self.app.update()
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        pyramide = next(item for item in walk(cadre)
+                        if isinstance(item, PyramidChart))
+        self.assertEqual([row["label"] for row in pyramide.rows], ["20-29"])
+        textes = [item.cget("text") for item in walk(cadre)
+                  if isinstance(item, tk.Label)]
+        self.assertTrue(any("3 salarié(s) au sexe non renseigné" in texte
+                            for texte in textes))
+        cadre.destroy()
+
+    def test_nothing_is_said_when_every_sex_is_known(self):
+        """La ligne ne parait que lorsqu'elle a quelque chose a dire."""
+        import tkinter as tk
+
+        cadre = tk.Frame(self.app)
+        self.app._pyramid_panel(
+            cadre, "Essai",
+            [{"label": "20-29", "count": 10, "female": 6, "male": 4,
+              "unknown_sex": 0}], None)
+        self.app.update()
+
+        def walk(widget):
+            yield widget
+            for child in widget.winfo_children():
+                yield from walk(child)
+        textes = [item.cget("text") for item in walk(cadre)
+                  if isinstance(item, tk.Label)]
+        self.assertFalse(any("sexe non renseigné" in texte
+                             for texte in textes))
+        cadre.destroy()
 
     def test_every_tenure_band_is_present(self):
         """Le decoupage s'etend selon les carrieres presentes."""

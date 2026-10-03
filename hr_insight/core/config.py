@@ -224,6 +224,15 @@ DEFAULTS: Dict[str, Any] = {
         # Au-dela de la serie categorielle, les couleurs se recyclent et
         # deux modalites deviennent indiscernables.
         "scatter_max_groups": 9,
+        # Champ de la repartition en camembert, sur la vue d'ensemble. Le
+        # statut porte la CSP dans la plupart des exports francais — cadre,
+        # agent de maitrise, ouvrier / employe — mais c'est un parametre :
+        # un fichier qui range la CSP ailleurs pointe sa colonne ici.
+        "csp_field": "status",
+        # Au-dela, la queue des modalites est regroupee sous « Autres ». Un
+        # camembert a quinze parts ne se lit plus, et les plus petites n'ont
+        # meme plus la place d'un libelle.
+        "csp_max_slices": 6,
         # La droite de tendance est issue de la meme regression que le R2,
         # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
         # a affirmer une tendance sans permettre d'en juger la solidite.

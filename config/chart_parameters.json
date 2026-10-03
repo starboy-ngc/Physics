@@ -5,5 +5,7 @@
   "scatter_color_by": "business_unit",
   "scatter_max_points": 5000,
   "scatter_max_groups": 9,
+  "csp_field": "status",
+  "csp_max_slices": 6,
   "show_trend_line": false
 }

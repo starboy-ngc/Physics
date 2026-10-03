@@ -185,6 +185,60 @@ dépendent jamais : le rouge de « critique », l'orange d'« avertissement » e
 le couple femmes/hommes du nuage et des pyramides — les changer serait un
 contresens, pas une préférence.
 
+## 5 bis ter. Lire la « Vue d'ensemble »
+
+La page tient sur un écran, en **trois colonnes**, et se lit de gauche à
+droite : qui compose la population, comment elle se structure, ce qu'elle est
+payée.
+
+**Colonne 1 — Population.** Effectif, âges et anciennetés, médiane et moyenne
+l'une sous l'autre. Quand l'ancienneté n'est pas renseignée pour tout le
+monde, une ligne grise dit sur combien de salariés la médiane est établie :
+sur un fichier où un quart des dates d'entrée manque, le chiffre affiché ne
+porte pas sur la population annoncée, et la page doit le dire. À couverture
+complète, la ligne n'apparaît pas.
+
+Dessous, la **répartition par CSP** en camembert. « CSP » est le mot du
+métier ; la colonne qui la porte est déclarée en configuration
+(`chart_parameters.csp_field`, le statut par défaut) et s'affiche à droite du
+titre — sans les deux, on ne sait pas ce qu'on regarde. Au-delà de six parts
+(`csp_max_slices`), la queue des modalités est regroupée sous « Autres », dans
+un gris qui ne ressemble à aucune vraie catégorie : un camembert à quinze
+parts ne se lit plus.
+
+**Colonne 2 — les structures**, en pyramides, femmes à gauche et hommes à
+droite, la tranche la plus jeune en bas. Une tranche dont personne n'a le sexe
+renseigné n'a aucune aile : elle sort du graphique, et une ligne dessous la
+compte. Sans la colonne « Sexe », l'outil retombe sur des barres simples
+plutôt que d'afficher une demi-pyramide.
+
+**Colonne 3 — Rémunération.** Masse salariale et salaire moyen, puis
+l'**échelle**, dessinée : la moustache va du percentile le plus bas au plus
+haut, la boîte de Q1 à Q3 — la moitié centrale de l'effectif —, le trait plein
+est la médiane. On y lit d'un regard ce qu'un tableau de sept lignes ne disait
+pas : la grille est-elle resserrée ou ouverte, la médiane est-elle au milieu
+ou tirée vers le bas.
+
+Deux points comptent dans cette échelle. Elle ne trace **que les percentiles
+publiés** : l'outil calcule toujours P10 à P90 parce que les ratios de
+dispersion en ont besoin, mais si vous en retirez de
+`percentile_parameters`, ils ne se dessinent pas — les tracer reviendrait à
+publier ce que vous avez retiré. Et le **minimum et le maximum ne commandent
+pas le cadrage** : ils se lisent en retrait aux deux bouts. Une rémunération à
+zéro ou un contrat d'expatrié écraserait sinon les neuf dixièmes de l'effectif
+sur un centimètre.
+
+Enfin la **dispersion** : Q3−Q1, Q3/Q1, P90/P10, moyenne/médiane, coefficient
+de variation.
+
+### Si la fenêtre est trop étroite
+
+Une colonne a besoin d'environ 330 pixels pour que la pyramide garde des ailes
+lisibles et l'échelle ses graduations. En dessous de trois fois cela, la page
+revient à **deux colonnes** et défile : mieux vaut défiler que rogner. Sur un
+écran de portable, replier la colonne de gauche par le chevron suffit à
+retrouver les trois colonnes.
+
 ## 5 ter. Lire l'onglet Écarts F/H
 
 L'égalité professionnelle se compare **à poste égal** : femmes et hommes qui

@@ -119,6 +119,14 @@ def calculate_population_metrics(
         population,
         config.section("pay_equity_parameters").get("gender_field", "gender"),
         headcount)
+    # La CSP : meme mecanique, sur le champ declare en configuration. Elle
+    # est calculee ici et non dans la fenetre pour la meme raison que le
+    # reste — un ecran qui parcourt lui-meme la population finit par compter
+    # autrement que le moteur, et deux chiffres du meme nom se contredisent.
+    champ = config.get("chart_parameters.csp_field", "status")
+    result["csp_field"] = champ
+    result["csp_label"] = dimension_label(config, champ)
+    result["csp_split"] = _distribution_share(population, champ, headcount)
     result.update(_key_shares(population))
     return result
 

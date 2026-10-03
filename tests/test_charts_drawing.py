@@ -1084,3 +1084,195 @@ class TestOrgChart(ChartCase):
         for item in self.items(chart.canvas, "text"):
             x1, _y1, x2, _y2 = chart.canvas.bbox(item)
             self.assertLessEqual(x2 - x1, chart.BOX_W)
+
+
+@needs_display
+class TestPieChart(ChartCase):
+    """Le camembert de répartition, relu part par part."""
+
+    def parts(self, *couples):
+        return [{"label": libelle, "count": nombre}
+                for libelle, nombre in couples]
+
+    def chart(self, parts=None, total=None, maximum=6):
+        from hr_insight.ui.charts import PieChart
+
+        parts = parts if parts is not None else self.parts(
+            ("Ouvrier / Employé", 589), ("Agent de maîtrise", 250),
+            ("Cadre", 59))
+        chart = self.build(PieChart)
+        chart.set_parts(parts, total if total is not None
+                        else sum(p["count"] for p in parts), maximum=maximum)
+        self.root.update()
+        return chart
+
+    def arcs(self, chart):
+        return self.items(chart.canvas, "arc")
+
+    def test_one_slice_per_value(self):
+        self.assertEqual(len(self.arcs(self.chart())), 3)
+
+    def test_the_slices_close_the_circle(self):
+        """Un camembert dont les parts ne totalisent pas un tour est un
+        camembert faux, et rien ne le signale a l'oeil."""
+        chart = self.chart()
+        total = sum(float(chart.canvas.itemcget(item, "extent"))
+                    for item in self.arcs(chart))
+        self.assertAlmostEqual(total, 360.0, places=3)
+
+    def test_the_biggest_slice_comes_first(self):
+        """L'ordre des parts n'est pas celui du fichier : on lit la plus
+        grosse d'abord."""
+        chart = self.chart(self.parts(("Petit", 10), ("Gros", 200),
+                                      ("Moyen", 90)))
+        self.assertEqual([l for l, _n in chart.slices],
+                         ["Gros", "Moyen", "Petit"])
+
+    def test_the_tail_is_grouped_beyond_the_limit(self):
+        """Un camembert a quinze parts ne se lit plus, et les plus petites
+        n'ont meme plus la place d'un libelle."""
+        chart = self.chart(self.parts(*[(f"V{index}", 100 - index)
+                                        for index in range(10)]), maximum=4)
+        self.assertEqual(len(chart.slices), 5)
+        self.assertTrue(chart.slices[-1][0].startswith("Autres (6 valeurs)"))
+        # Le regroupement vaut la somme de ce qu'il regroupe : rien ne se
+        # perd en route.
+        self.assertEqual(chart.slices[-1][1],
+                         sum(100 - index for index in range(4, 10)))
+
+    def test_the_grouping_never_takes_a_real_colour(self):
+        """Sinon il se lirait comme une modalite de plus."""
+        from hr_insight.ui import theme
+
+        chart = self.chart(self.parts(*[(f"V{index}", 10) for index in
+                                        range(8)]), maximum=3)
+        couleurs = [chart.canvas.itemcget(item, "fill")
+                    for item in self.arcs(chart)]
+        self.assertEqual(couleurs.count(theme.FAINT), 1)
+
+    def test_the_centre_carries_the_headcount(self):
+        """Il serait sinon a chercher ailleurs."""
+        chart = self.chart(total=898)
+        self.assertIn("898", self.texts(chart.canvas))
+        self.assertIn("salariés", self.texts(chart.canvas))
+
+    def test_the_legend_gives_the_count_and_the_share(self):
+        """Lus dans le camembert ils se devinent ; ecrits, ils se citent."""
+        textes = " ".join(self.texts(self.chart(total=898).canvas))
+        self.assertIn("Cadre", textes)
+        self.assertIn("59", textes)
+        self.assertIn("6,6 %", textes)
+
+    def test_a_value_at_zero_takes_no_slice(self):
+        """Une part nulle dessinerait un arc d'angle nul et occuperait une
+        ligne de legende pour ne rien dire."""
+        chart = self.chart(self.parts(("Présent", 10), ("Absent", 0)))
+        self.assertEqual(len(self.arcs(chart)), 1)
+
+    def test_an_empty_breakdown_says_so_instead_of_drawing(self):
+        chart = self.chart(self.parts())
+        self.assertEqual(self.arcs(chart), [])
+        self.assertIn("Aucune valeur renseignée.", self.texts(chart.canvas))
+
+    def test_a_long_label_never_runs_into_its_count(self):
+        """La legende tient dans une colonne etroite : mesuree, pas devinee."""
+        chart = self.chart(self.parts(
+            ("Catégorie au libellé interminable qui déborde", 10),
+            ("Courte", 5)))
+        canvas = chart.canvas
+        for item in self.items(canvas, "text"):
+            x1, _y1, x2, _y2 = canvas.bbox(item)
+            self.assertLessEqual(x2, canvas.winfo_width() + 1)
+
+
+@needs_display
+class TestScaleChart(ChartCase):
+    """L'échelle de rémunération, dessinée plutôt que tabulée."""
+
+    def salary(self, **extra):
+        base = {"min": 0.0, "p10": 30000.0, "p25": 38000.0,
+                "median": 45000.0, "p50": 45000.0, "p75": 57000.0,
+                "p90": 70000.0, "max": 1050000.0,
+                "published_percentiles": [
+                    {"key": "p10", "label": "P10"},
+                    {"key": "p25", "label": "Q1 (P25)"},
+                    {"key": "p50", "label": "Médiane (P50)"},
+                    {"key": "p75", "label": "Q3 (P75)"},
+                    {"key": "p90", "label": "P90"}]}
+        base.update(extra)
+        return base
+
+    def chart(self, **extra):
+        from hr_insight.ui.charts import ScaleChart
+
+        chart = self.build(ScaleChart)
+        chart.set_salary(self.salary(**extra), "EUR")
+        self.root.update()
+        return chart
+
+    def test_the_extremes_do_not_command_the_scale(self):
+        """Un salarié à zéro et un contrat à un million écraseraient les
+        neuf dixièmes de l'effectif sur un centimètre. Le cadrage s'arrête
+        aux percentiles publiés ; les extrêmes se lisent aux deux bouts."""
+        chart = self.chart()
+        points = chart.points()
+        self.assertEqual(points[0][2], 30000.0)
+        self.assertEqual(points[-1][2], 70000.0)
+        textes = " ".join(self.texts(chart.canvas))
+        self.assertIn("min", textes)
+        self.assertIn("max", textes)
+
+    def test_the_box_is_the_central_half(self):
+        chart = self.chart()
+        boites = self.items(chart.canvas, "rectangle")
+        self.assertEqual(len(boites), 1)
+        x1, _y1, x2, _y2 = chart.canvas.coords(boites[0])
+        self.assertLess(x1, x2)
+
+    def test_it_draws_only_the_published_percentiles(self):
+        """Le moteur calcule toujours P10 à P90 pour les ratios de
+        dispersion, mais les tracer tous reviendrait à publier ce que
+        l'utilisateur a retiré."""
+        chart = self.chart(published_percentiles=[
+            {"key": "p25", "label": "Q1 (P25)"},
+            {"key": "p50", "label": "Médiane (P50)"},
+            {"key": "p75", "label": "Q3 (P75)"}])
+        self.assertEqual([clef for clef, _l, _v in chart.points()],
+                         ["p25", "p50", "p75"])
+        textes = " ".join(self.texts(chart.canvas))
+        self.assertNotIn("P10", textes)
+        self.assertNotIn("P90", textes)
+
+    def test_without_both_quartiles_no_box_is_drawn(self):
+        """Une boîte à un seul bord ne veut rien dire."""
+        chart = self.chart(published_percentiles=[
+            {"key": "p10", "label": "P10"},
+            {"key": "p50", "label": "Médiane (P50)"},
+            {"key": "p90", "label": "P90"}])
+        self.assertEqual(self.items(chart.canvas, "rectangle"), [])
+
+    def test_the_amounts_alternate_rows_so_they_never_collide(self):
+        """Sur une grille resserrée, deux percentiles voisins tombent à
+        quelques pixels l'un de l'autre."""
+        chart = self.chart(p10=44000.0, p25=44500.0, median=45000.0,
+                           p50=45000.0, p75=45500.0, p90=46000.0)
+        boites = []
+        for item in self.items(chart.canvas, "text"):
+            texte = chart.canvas.itemcget(item, "text")
+            if "EUR" in texte and "\n" not in texte:
+                boites.append(chart.canvas.bbox(item))
+        rangees = {bbox[1] for bbox in boites}
+        self.assertGreaterEqual(len(rangees), 2)
+        for rangee in rangees:
+            sur_la_rangee = sorted(b for b in boites if b[1] == rangee)
+            for premier, second in zip(sur_la_rangee, sur_la_rangee[1:]):
+                self.assertLessEqual(premier[2], second[0] + 1)
+
+    def test_a_masked_population_says_so_instead_of_drawing(self):
+        from hr_insight.ui.charts import ScaleChart
+
+        chart = self.build(ScaleChart)
+        chart.set_salary({"masked": True}, "EUR")
+        self.root.update()
+        self.assertIn("Les percentiles ne sont pas publiés pour cet effectif.",
+                      self.texts(chart.canvas))

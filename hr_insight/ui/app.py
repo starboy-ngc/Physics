@@ -51,8 +51,8 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
 from ..core.traceability import write_manifest
 from . import theme
 from .charts import (BandChart, BoxPlotChart, GapChart,
-                     HistogramChart, OrgChart, PeopleChart, PyramidChart,
-                     QuartileChart, ScatterChart)
+                     HistogramChart, OrgChart, PeopleChart, PieChart,
+                     PyramidChart, QuartileChart, ScaleChart, ScatterChart)
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
@@ -151,22 +151,6 @@ def _signed_percent(value: Optional[float]) -> str:
     if value is None:
         return "—"
     return f"{value:+.1f} %".replace(".", ",")
-
-
-def salary_scale_rows(salary: Dict[str, Any], currency: str) -> List[tuple]:
-    """Echelle de remuneration : minimum, percentiles publies, maximum.
-
-    Ecrite ici plutot qu'a chaque endroit qui l'affiche. La vue d'ensemble
-    et la page composee la montraient toutes deux, avec leur propre copie du
-    meme code : retirer un percentile de la configuration ou changer un
-    libelle n'aurait tenu qu'a un seul des deux ecrans, et le meme fichier
-    aurait porte deux echelles differentes selon l'onglet ouvert.
-    """
-    return ([("Minimum", format_money(salary.get("min"), currency), "min")]
-            + [(entry["label"],
-                format_money(salary.get(entry["key"]), currency), entry["key"])
-               for entry in salary.get("published_percentiles", [])]
-            + [("Maximum", format_money(salary.get("max"), currency), "max")])
 
 
 def dispersion_rows(spread: Dict[str, Any], currency: str) -> List[tuple]:
@@ -2065,20 +2049,34 @@ class Application(tk.Tk):
                      padx=12, pady=8, wraplength=900).pack(fill="x",
                                                            pady=(0, 14))
 
+    #: Largeur minimale d'une colonne de la vue d'ensemble. En dessous, la
+    #: pyramide perd ses ailes et l'echelle ses graduations : mieux vaut
+    #: alors deux colonnes et une page qui defile que trois colonnes
+    #: rognees.
+    OVERVIEW_COLUMN = 330
+
     def _show_overview(self, payload: Dict[str, Any]) -> None:
-        """Population et remuneration sur une seule page, en deux colonnes.
+        """Population et remuneration sur une seule page, en trois colonnes.
 
         Le bandeau d'indicateurs qui coiffait la page a disparu : il posait
-        six chiffres au-dessus de deux colonnes qui parlaient deja d'eux, et
+        six chiffres au-dessus de colonnes qui parlaient deja d'eux, et
         repetait la mediane que l'echelle affiche trois centimetres plus bas.
         Chaque colonne porte donc les siens, en tete, sous la meme forme que
         les tableaux qui suivent.
 
-        Rien n'y figure deux fois. Les scalaires de population — effectif,
-        ages, anciennetes — sont reunis dans une seule liste au lieu d'etre
-        partages entre un bandeau et les en-tetes des deux pyramides ; et la
-        liste de remuneration ne reprend ni la mediane ni les percentiles,
-        qui sont l'echelle elle-meme.
+        Trois colonnes et non deux : a deux, la colonne de population portait
+        la liste, le camembert et les deux pyramides — neuf cents pixels —
+        pendant que celle de remuneration s'arretait a cinq cents. La page
+        debordait par desequilibre, et non par exces de contenu. Les
+        pyramides, qui sont le bloc le plus haut, prennent donc une colonne a
+        elles, et l'ensemble tient sur un ecran. Sous la largeur necessaire,
+        on revient a deux colonnes et la page defile : mieux vaut defiler que
+        rogner.
+
+        Rien n'y figure deux fois. Les scalaires de population sont reunis
+        dans une seule liste au lieu d'etre partages entre un bandeau et les
+        en-tetes des pyramides ; et la liste de remuneration ne reprend ni la
+        mediane ni les percentiles, qui sont l'echelle elle-meme.
         """
         population = payload["population"]
         salary = payload["salary"]
@@ -2094,16 +2092,26 @@ class Application(tk.Tk):
                      justify="left").pack(anchor="w")
             return
 
-        # Deux colonnes independantes, et non une grille : dans une grille,
-        # la rangee prend la hauteur du plus grand des deux blocs, et le bloc
-        # court laisse un trou au milieu de la page. Empilees, chaque colonne
-        # se referme sur son contenu et le vide tombe en bas.
+        # Des colonnes independantes, et non une grille : dans une grille, la
+        # rangee prend la hauteur du plus grand des blocs, et le bloc court
+        # laisse un trou au milieu de la page. Empilees, chaque colonne se
+        # referme sur son contenu et le vide tombe en bas.
         columns = tk.Frame(self.overview_frame, background=theme.CANVAS)
         columns.pack(fill="both", expand=True)
+        self.overview_frame.update_idletasks()
+        wide = (self.overview_frame.winfo_width()
+                >= 3 * self.OVERVIEW_COLUMN + 52)
         left = tk.Frame(columns, background=theme.CANVAS)
-        left.pack(side="left", fill="both", expand=True, padx=(0, 36))
+        left.pack(side="left", fill="both", expand=True, padx=(0, 26))
+        middle = tk.Frame(columns, background=theme.CANVAS)
+        if wide:
+            middle.pack(side="left", fill="both", expand=True, padx=(0, 26))
         right = tk.Frame(columns, background=theme.CANVAS)
         right.pack(side="left", fill="both", expand=True)
+        if not wide:
+            # Deux colonnes : les pyramides rejoignent la population.
+            middle.destroy()
+            middle = left
 
         if not population.get("masked"):
             self._ruled_panel(
@@ -2121,24 +2129,25 @@ class Application(tk.Tk):
                      format_years(population.get("tenure_mean")),
                      "tenure_mean"),
                 ], emphasis="Effectif", key="population_summary")
+            self._coverage_note(left, population)
+            self._csp_panel(left, population)
             # Les pyramides n'ont plus de chiffre en tete : leurs moyennes
             # sont juste au-dessus, dans la liste.
-            self._pyramid_panel(left, "Pyramide des âges",
+            self._pyramid_panel(middle, "Pyramide des âges",
                                 population.get("age_bands", []), None,
                                 key="age_bands")
-            self._pyramid_panel(left, "Structure d'ancienneté",
+            self._pyramid_panel(middle, "Structure d'ancienneté",
                                 population.get("tenure_bands", []), None,
                                 key="tenure_bands")
 
         if not salary.get("masked"):
             spread = salary.get("dispersion") or {}
-            variation = spread.get("coefficient_of_variation")
             # Ni la mediane ni un percentile ici : ils sont l'echelle, juste
             # en dessous. Ne restent que les deux chiffres qui n'y figurent
             # pas.
             # Le meme ecran veut dire deux choses differentes selon le champ
             # analyse : « Salaire de base » ou « Remuneration totale ». Il le
-            # dit desormais, comme le font l'onglet Segments et le rapport.
+            # dit, comme le font l'onglet Segments et le rapport.
             self._ruled_panel(
                 right, "Rémunération", (), [
                     ("Masse salariale",
@@ -2146,16 +2155,65 @@ class Application(tk.Tk):
                     ("Salaire moyen",
                      format_money(salary.get("mean"), currency), "mean"),
                 ], key="salary_summary",
-                extra=("Champ analysé",
+                extra=("Champ",
                        salary.get("field_label") or salary.get("field", ""),
                        "analysis_field"))
-            self._ruled_panel(
-                right, "Échelle de rémunération", ("Percentile", "Valeur"),
-                salary_scale_rows(salary, currency),
-                emphasis="Médiane (P50)", key="salary_scale")
+            cell = self._panel_head(right, "Échelle de rémunération", None,
+                                    key="salary_scale")
+            scale = ScaleChart(cell)
+            scale.pack(fill="x")
+            scale.set_salary(salary, currency)
             self._ruled_panel(
                 right, "Dispersion", ("Indicateur", "Valeur"),
                 dispersion_rows(spread, currency), key="dispersion")
+
+    def _coverage_note(self, parent, population: Dict[str, Any]) -> None:
+        """Sur quelle part de l'effectif l'anciennete est etablie.
+
+        Elle ne parait que lorsqu'il manque quelque chose : a couverture
+        complete, la ligne n'apprend rien et prend une place. Sur un fichier
+        ou un quart des dates d'entree manque, la mediane affichee ne porte
+        pas sur la population annoncee, et la page doit le dire.
+        """
+        known = population.get("tenure_known")
+        headcount = population.get("headcount", 0)
+        if known is None or known >= headcount:
+            return
+        missing = headcount - known
+        self._note(parent,
+                   f"Ancienneté établie sur {known} salariés : elle n'est pas "
+                   f"renseignée pour {missing} d'entre eux.")
+
+    def _note(self, parent, text: str) -> tk.Label:
+        """Une reserve sous un bloc, dans la chasse des mentions."""
+        label = tk.Label(parent, text=text, background=theme.CANVAS,
+                         foreground=theme.MUTED, font=self.fonts.small,
+                         wraplength=self.OVERVIEW_COLUMN, justify="left")
+        label.pack(anchor="w", pady=(0, 14))
+        return label
+
+    def _csp_panel(self, parent, population: Dict[str, Any]) -> None:
+        """La repartition par CSP, en camembert.
+
+        « CSP » est le mot du metier ; la colonne qui la porte est declaree
+        en configuration et s'appelle « Statut » dans la plupart des exports.
+        Les deux se lisent — le titre et, a sa droite, le champ employe —,
+        sans quoi on ne sait pas ce qu'on regarde.
+        """
+        parts = population.get("csp_split") or []
+        if not parts:
+            return
+        cell = self._panel_head(
+            parent, "Répartition par CSP",
+            ("Champ", population.get("csp_label")
+             or population.get("csp_field", ""), "csp_split"),
+            key="csp_split")
+        chart = PieChart(cell)
+        chart.pack(fill="x")
+        chart.set_parts(parts, population.get("headcount", 0),
+                        maximum=self.configuration.number(
+                            "chart_parameters.csp_max_slices", 6,
+                            minimum=2, integer=True))
 
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:
@@ -2232,12 +2290,27 @@ class Application(tk.Tk):
 
     def _pyramid_panel(self, parent, title, bands, extra,
                        key: Optional[str] = None) -> None:
-        """Pyramide si le sexe est renseigne, barres simples sinon."""
+        """Pyramide si le sexe est renseigne, barres simples sinon.
+
+        Une tranche dont personne n'a le sexe renseigne n'a aucune aile :
+        elle reservait une ligne et n'y dessinait rien, ni barre ni nombre,
+        et ces salaries disparaissaient d'un graphique qui leur gardait
+        pourtant une place. Ils en sortent, et la ligne sous le graphique
+        les compte — c'est deja ce que fait la page des ecarts, qui les
+        annonce « exclus ».
+        """
+        drawn = [band for band in bands
+                 if (band.get("female") or band.get("male"))]
+        outside = sum(band.get("unknown_sex") or 0 for band in bands)
         cell = self._panel_head(parent, title, extra, key=key)
         pyramid = PyramidChart(cell)
-        pyramid.set_rows(bands)
+        pyramid.set_rows(drawn if drawn else bands)
         if pyramid.has_split():
             pyramid.pack(fill="x")
+            if outside:
+                self._note(parent,
+                           f"{outside} salarié(s) au sexe non renseigné, hors "
+                           f"pyramide : ils comptent dans l'effectif.")
             return
         # Sans la colonne « Sexe », une pyramide n'aurait qu'une aile : on
         # retombe sur la lecture en barres plutot que d'afficher un demi

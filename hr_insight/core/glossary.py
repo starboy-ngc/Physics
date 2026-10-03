@@ -33,6 +33,12 @@ GLOSSARY: Dict[str, Entry] = {
     "headcount": Entry(
         "Nombre de salariés retenus après application des filtres.",
         "Comptage des lignes conservées."),
+    "csp_split": Entry(
+        "Répartition de l'effectif par catégorie socio-professionnelle.",
+        "Comptage des salariés par valeur de la colonne déclarée dans "
+        "chart_parameters.csp_field — le statut dans la plupart des "
+        "exports. Au-delà du nombre de parts autorisé, la queue des "
+        "modalités est regroupée sous « Autres »."),
     "age_median": Entry(
         "Âge qui partage la population en deux moitiés égales.",
         f"Percentile 50 des âges. {_PERCENTILE_METHOD}"),

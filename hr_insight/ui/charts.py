@@ -17,10 +17,12 @@ from typing import Any, Callable, Dict, List, Optional, Sequence
 
 from ..core import palette
 from ..core.axes import nice_ticks
-from ..core.reporting import format_money, format_number, format_years
+from ..core.reporting import (format_money, format_number,
+                              format_percent, format_years)
 from . import raster
 from . import theme
-from .theme import SIZE_LABEL, SIZE_SMALL, _rgb, pick_family
+from .theme import (SIZE_LABEL, SIZE_SECTION, SIZE_SMALL, _rgb,
+                    pick_family)
 
 # Les filets du fond, la droite de tendance et les deux ailes de la pyramide
 # ne sont plus decrits ici : ils viennent de la palette, qui sert aussi les
@@ -2017,3 +2019,258 @@ class OrgChart(tk.Frame):
         x2 = enfant["x"] + self.BOX_W / 2
         self.canvas.create_line(x1, haut, x1, milieu, x2, milieu, x2, bas,
                                 fill=theme.LINE_STRONG)
+
+
+class PieChart(tk.Frame):
+    """Repartition d'un effectif par modalite, en anneau.
+
+    Un anneau plutot qu'un disque plein : le centre rend l'effectif total,
+    qu'il faudrait sinon chercher ailleurs, et la comparaison de deux parts
+    se fait sur la longueur d'arc dans les deux cas.
+
+    La legende porte le nombre et la part. Lus dans le camembert ils se
+    devinent ; ecrits, ils se citent — et c'est ce qu'on fait d'une
+    repartition par CSP.
+
+    Au-dela du nombre de parts qu'autorise le parametrage, la queue est
+    regroupee dans un neutre qui ne ressemble a aucune modalite : un
+    camembert a quinze parts ne se lit plus, et les plus petites n'ont meme
+    plus la place d'un libelle.
+    """
+
+    RADIUS = 56
+    HOLE = 32
+    ROW = 20
+    #: Place reservee a l'effectif et a la part, a droite de la legende.
+    VALUES = 86
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        self.pack_propagate(False)
+        self.slices: List[tuple] = []
+        self.total = 0
+        self.other = ""
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.tooltip = Tooltip(self.canvas)
+        self._items: Dict[int, str] = {}
+        # Au premier trace, la colonne n'a pas encore sa largeur : la legende
+        # se calait sur une largeur deux fois trop grande, et les libelles
+        # s'ecrivaient par-dessus les effectifs.
+        redraw_on_resize(self, self.canvas)
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+
+    def set_parts(self, parts: Sequence[Dict[str, Any]], total: int,
+                  maximum: int = 6) -> None:
+        """`parts` : des entrees {label, count}, dans l'ordre voulu."""
+        entrees = [(str(p.get("label", "")), int(p.get("count") or 0))
+                   for p in parts if (p.get("count") or 0) > 0]
+        entrees.sort(key=lambda couple: (-couple[1], couple[0]))
+        self.other = ""
+        if len(entrees) > maximum:
+            queue = entrees[maximum:]
+            self.other = f"Autres ({len(queue)} valeurs)"
+            entrees = entrees[:maximum] + [(self.other,
+                                            sum(n for _l, n in queue))]
+        self.slices = entrees
+        self.total = total
+        # Le cadre prend la hauteur du plus grand des deux — l'anneau ou la
+        # legende : fixe, il laissait un trou sous un camembert a trois
+        # parts, et aurait rogne une legende a sept.
+        self.configure(height=max(2 * self.RADIUS + 16,
+                                  len(self.slices) * self.ROW + 16))
+        self.redraw()
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                self.tooltip.show(self._items[item],
+                                  self.canvas.winfo_rootx() + event.x,
+                                  self.canvas.winfo_rooty() + event.y)
+                return
+        self.tooltip.hide()
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        largeur = self.canvas.winfo_width()
+        if largeur < 180:
+            return
+        if not self.slices:
+            self.canvas.create_text(4, self.RADIUS, anchor="w",
+                                    text="Aucune valeur renseignée.",
+                                    font=note_font(), fill=theme.MUTED)
+            return
+        total = sum(n for _l, n in self.slices) or 1
+        couleurs = palette.series_map([l for l, _n in self.slices],
+                                      theme.ACTIVE.series,
+                                      other=self.other or None,
+                                      neutral=theme.FAINT)
+        cx = 4 + self.RADIUS
+        cy = self.winfo_height() / 2 or self.RADIUS
+        depart = 90.0
+        for libelle, nombre in self.slices:
+            angle = 360.0 * nombre / total
+            item = self.canvas.create_arc(
+                cx - self.RADIUS, cy - self.RADIUS,
+                cx + self.RADIUS, cy + self.RADIUS,
+                start=depart - angle, extent=angle,
+                fill=couleurs.get(libelle, theme.ACCENT),
+                outline=theme.CANVAS, width=2)
+            self._items[item] = (f"{libelle}  ·  {nombre}  ·  "
+                                 f"{format_percent(100.0 * nombre / total)}")
+            depart -= angle
+        self.canvas.create_oval(cx - self.HOLE, cy - self.HOLE,
+                                cx + self.HOLE, cy + self.HOLE,
+                                fill=theme.CANVAS, outline="")
+        self.canvas.create_text(cx, cy - 6, text=format_number(self.total, 0),
+                                font=_font(SIZE_SECTION + 1, "bold"),
+                                fill=theme.INK)
+        self.canvas.create_text(cx, cy + 10, text="salariés",
+                                font=axis_font(), fill=theme.MUTED)
+
+        x = 2 * self.RADIUS + 20
+        y = cy - (len(self.slices) * self.ROW) / 2 + self.ROW / 2
+        for libelle, nombre in self.slices:
+            self.canvas.create_rectangle(
+                x, y - 5, x + 10, y + 5,
+                fill=couleurs.get(libelle, theme.ACCENT), outline="")
+            self.canvas.create_text(
+                x + 16, y, anchor="w", font=_font(SIZE_SMALL),
+                fill=theme.INK_SOFT,
+                text=_shorten(self, libelle, largeur - x - self.VALUES,
+                              _font(SIZE_SMALL)))
+            self.canvas.create_text(
+                largeur - 2, y, anchor="e", font=axis_font(), fill=theme.MUTED,
+                text=f"{nombre}   {format_percent(100.0 * nombre / total)}")
+            y += self.ROW
+
+
+class ScaleChart(tk.Frame):
+    """L'echelle de remuneration : une boite, plutot que sept lignes.
+
+    Les percentiles alignes dans un tableau donnaient les chiffres sans
+    donner la forme — la grille est-elle resserree ou ouverte, la mediane
+    est-elle au milieu ou tiree vers le bas. La boite le montre d'un regard,
+    et les chiffres restent : elle les accompagne, elle ne les remplace pas.
+
+    Le cadrage s'arrete a P10 et P90. Le minimum et le maximum se lisent aux
+    deux bouts, en retrait : une remuneration a zero ou un contrat
+    d'expatrie commanderait sinon l'echelle entiere, et les neuf dixiemes de
+    l'effectif se tasseraient sur un centimetre.
+    """
+
+    HEIGHT = 128
+    PAD = 48
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=theme.CANVAS, height=self.HEIGHT)
+        _fonts(self)
+        self.pack_propagate(False)
+        self.salary: Dict[str, Any] = {}
+        self.currency = "EUR"
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(fill="both", expand=True)
+        self.tooltip = Tooltip(self.canvas)
+        self._items: Dict[int, str] = {}
+        redraw_on_resize(self, self.canvas)
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+
+    def set_salary(self, salary: Dict[str, Any], currency: str = "EUR") -> None:
+        self.salary = dict(salary or {})
+        self.currency = currency
+        self.redraw()
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                self.tooltip.show(self._items[item],
+                                  self.canvas.winfo_rootx() + event.x,
+                                  self.canvas.winfo_rooty() + event.y)
+                return
+        self.tooltip.hide()
+
+    def points(self) -> List[tuple]:
+        """Les percentiles **publies**, du plus bas au plus haut.
+
+        Pas les cinq habituels : le moteur calcule toujours P10 a P90 pour
+        les ratios de dispersion, mais l'utilisateur decide lesquels sont
+        publies. Les tracer tous reviendrait a publier ce qu'il a retire.
+        """
+        rendus = []
+        for entry in self.salary.get("published_percentiles") or []:
+            valeur = self.salary.get(entry.get("key"))
+            if valeur is not None:
+                rendus.append((entry.get("key"), entry.get("label", ""),
+                               float(valeur)))
+        rendus.sort(key=lambda point: point[2])
+        return rendus
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        largeur = self.canvas.winfo_width()
+        if largeur < 200:
+            return
+        rendus = self.points()
+        if len(rendus) < 2:
+            self.canvas.create_text(
+                self.PAD, self.HEIGHT / 2, anchor="w", font=note_font(),
+                fill=theme.MUTED,
+                text="Les percentiles ne sont pas publiés pour cet effectif.")
+            return
+        bas, haut = rendus[0][2], rendus[-1][2]
+        # La boite ne se dessine que si les deux quartiles sont publies :
+        # une boite a un seul bord ne veut rien dire.
+        valeurs = {clef: valeur for clef, _l, valeur in rendus}
+        q1, q3 = valeurs.get("p25"), valeurs.get("p75")
+        med = valeurs.get("p50", valeurs.get("median"))
+        gauche, droite = self.PAD, largeur - self.PAD
+        étendue = (haut - bas) or 1
+        x_de = lambda v: gauche + (droite - gauche) * (v - bas) / étendue
+        y = 48
+        self.canvas.create_line(x_de(bas), y, x_de(haut), y,
+                                fill=theme.LINE_STRONG)
+        for valeur in (bas, haut):
+            self.canvas.create_line(x_de(valeur), y - 7, x_de(valeur), y + 7,
+                                    fill=theme.LINE_STRONG)
+        if q1 is not None and q3 is not None:
+            boite = self.canvas.create_rectangle(
+                x_de(q1), y - 14, x_de(q3), y + 14,
+                fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
+            self._items[boite] = (
+                f"La moitié centrale de l'effectif : "
+                f"{format_money(q1, self.currency)} à "
+                f"{format_money(q3, self.currency)}")
+        if med is not None:
+            self.canvas.create_line(x_de(med), y - 16, x_de(med), y + 16,
+                                    fill=theme.ACCENT, width=3)
+        # Une rangee de montants sur deux : sur une grille resserree, deux
+        # percentiles voisins tombent a quelques pixels l'un de l'autre et
+        # leurs montants s'ecrivent l'un sur l'autre.
+        for index, (clef, libelle, valeur) in enumerate(rendus):
+            fort = valeur == med
+            self.canvas.create_text(
+                x_de(valeur), y - 28, text=libelle.split(" (")[0],
+                font=axis_font(),
+                fill=theme.ACCENT if fort else theme.FAINT)
+            self.canvas.create_text(
+                x_de(valeur), y + (24 if index % 2 == 0 else 46),
+                text=format_money(valeur, self.currency),
+                font=_font(SIZE_SMALL, "bold") if fort else axis_font(),
+                fill=theme.INK if fort else theme.MUTED)
+        for valeur, nom, x, ancre in (
+                (self.salary.get("min"), "min", 2, "w"),
+                (self.salary.get("max"), "max", largeur - 2, "e")):
+            if valeur is None:
+                continue
+            self.canvas.create_text(
+                x, y, anchor=ancre, font=axis_font(), fill=theme.FAINT,
+                text=f"{nom}\n{format_money(valeur, self.currency)}")

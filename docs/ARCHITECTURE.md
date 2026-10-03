@@ -128,6 +128,24 @@ contourner depuis un écran) :
 | `min_headcount_chart` | 10 | En deçà, graphiques désactivés |
 | `anonymise_identifiers` | true | Matricule remplacé par une empreinte SHA-256 tronquée |
 
+### La vue d'ensemble tient sur un écran
+
+Trois colonnes, et non deux. À deux, la colonne de population portait la
+liste, le camembert et les deux pyramides — neuf cents pixels — pendant que
+celle de rémunération s'arrêtait à cinq cents : la page débordait par
+déséquilibre, non par excès de contenu. Les pyramides, qui sont le bloc le
+plus haut, prennent donc une colonne à elles. Sous `OVERVIEW_COLUMN` × 3, la
+disposition revient à deux colonnes et la page défile — mieux vaut défiler
+que rogner.
+
+`PieChart` et `ScaleChart` suivent la règle des autres graphiques : ils se
+retracent au redimensionnement, mesurent leurs libellés plutôt que de compter
+les lettres, et ne décident d'aucun seuil — `ScaleChart` lit les percentiles
+que le moteur déclare publiés et ne trace que ceux-là. La répartition par CSP
+est calculée par `metrics`, dans le résultat d'analyse : un écran qui
+parcourrait lui-même la population finirait par compter autrement que le
+moteur, et deux chiffres du même nom se contrediraient.
+
 ## 7. Formulation des résultats
 
 Une valeur hors bornes interquartiles est présentée comme

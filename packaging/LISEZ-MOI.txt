@@ -68,15 +68,31 @@ LANCER L'INTERFACE
     la largeur aux graphiques, et la ligne du bas rappelle en
     permanence les filtres appliqués.
 
-    « Vue d'ensemble » réunit les deux lectures sur une seule page :
-    un salaire médian ne veut rien dire sans l'âge et l'ancienneté de
-    la population qui le porte. La population est à gauche, la
-    rémunération à droite.
+    « Vue d'ensemble » tient sur un écran, en TROIS COLONNES :
 
-    Les structures d'âge et d'ancienneté se lisent en pyramide, femmes
-    à gauche et hommes à droite, la tranche la plus jeune en bas. Si
-    la colonne « Sexe » n'est pas renseignée, l'outil retombe sur des
-    barres simples plutôt que d'afficher une demi-pyramide.
+      population    effectif, âges, anciennetés, et la répartition
+                    par CSP en camembert. La colonne employée est
+                    déclarée en configuration (chart_parameters.
+                    csp_field, le statut par défaut) et s'affiche à
+                    droite du titre.
+      structures    pyramides des âges et des anciennetés, femmes à
+                    gauche et hommes à droite, la tranche la plus
+                    jeune en bas. Sans colonne « Sexe », l'outil
+                    retombe sur des barres simples plutôt que
+                    d'afficher une demi-pyramide.
+      rémunération  masse salariale, salaire moyen, l'échelle
+                    dessinée et la dispersion.
+
+    L'ÉCHELLE est une boîte : la moustache va du percentile le plus
+    bas au plus haut, la boîte de Q1 à Q3 — la moitié centrale de
+    l'effectif —, le trait plein est la médiane. Elle ne trace que les
+    percentiles que vous publiez. Le minimum et le maximum se lisent
+    en retrait aux deux bouts et ne commandent pas le cadrage : une
+    rémunération à zéro écraserait sinon tout le reste.
+
+    Si la fenêtre est trop étroite pour trois colonnes, la page revient
+    à deux et défile. Replier la colonne de gauche par le chevron suffit
+    en général à retrouver les trois.
 
     L'onglet « Graphique » en réunit trois :
 
