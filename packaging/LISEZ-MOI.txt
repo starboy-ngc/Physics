@@ -36,6 +36,15 @@ LANCER L'INTERFACE
     puis « Analyser ». Les onglets de droite affichent les résultats :
     Vue d'ensemble, Graphique, Pay Transparency, Qualité.
 
+    Un onglet de plus paraît si vous avez choisi une équipe à l'étape
+    3 : « Organigramme ». Il montre la structure de cette équipe en
+    cases reliées — seuls les responsables en ont une, ceux qui
+    n'encadrent personne sont comptés sous celle de leur responsable —
+    et, dessous, la liste nominative des salariés concernés. Cliquez
+    une case pour retrouver la personne dans la liste, et l'inverse.
+    Chaque case porte l'effectif encadré et la médiane de son équipe,
+    masquée sous le seuil de publication.
+
     La colonne de gauche se replie : le chevron sur son bord rend toute
     la largeur aux graphiques, et la ligne du bas rappelle en
     permanence les filtres appliqués.

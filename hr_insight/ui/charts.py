@@ -99,11 +99,17 @@ def _text_width(widget: tk.Misc, text: str) -> float:
     return tkfont.Font(root=widget, font=axis_font()).measure(text)
 
 
-def _shorten(widget: tk.Misc, text: str, limit: float) -> str:
-    """Tronque un libelle a la largeur donnee, en mesurant plutot qu'en devinant."""
+def _shorten(widget: tk.Misc, text: str, limit: float, police=None) -> str:
+    """Tronque un libelle a la largeur donnee, en mesurant plutot qu'en devinant.
+
+    `police` sert aux libelles qui ne sont pas a la chasse des axes : un
+    titre en gras est plus large a nombre de lettres egal, et compter les
+    lettres le ferait deborder de sa case.
+    """
     import tkinter.font as tkfont
 
-    font = tkfont.Font(root=widget, font=axis_font())
+    text = str(text or "")
+    font = tkfont.Font(root=widget, font=police or axis_font())
     if font.measure(text) <= limit:
         return text
     while text and font.measure(text + "…") > limit:
@@ -1692,3 +1698,278 @@ class PeopleChart(tk.Frame):
                 x_de(montant), 46 + self.LANE + 30, anchor=ancre,
                 text=format_money(montant, self.currency),
                 font=axis_font(), fill=theme.FAINT)
+
+
+class OrgChart(tk.Frame):
+    """L'organigramme d'une equipe, en cases reliees.
+
+    Seuls les responsables ont une case. Ceux qui n'encadrent personne sont
+    comptes sous celle de leur responsable, dans une case plus discrete :
+    « 7 collaborateurs ». Un organigramme ou chaque salarie aurait sa case
+    deviendrait illisible passe trente personnes, et la structure — ce qu'on
+    vient precisement y lire — y disparaitrait. La liste nominative est a
+    cote, c'est elle qui nomme.
+
+    Chaque case porte l'effectif qu'elle encadre et, quand le seuil de
+    publication est atteint, la mediane de son equipe. Une equipe de trois
+    affiche sa taille et jamais sa remuneration : l'organigramme serait
+    sinon le chemin le plus court vers le salaire du voisin.
+
+    L'identite n'est pas dans les donnees : la case porte un matricule, et
+    la fenetre y rapproche un nom si le parametrage l'y autorise.
+    """
+
+    BOX_W, BOX_H = 168, 56
+    #: La case des collaborateurs sans equipe : plus basse, elle se
+    #: distingue d'un rattachement nomme au premier coup d'oeil.
+    CHIP_H = 30
+    GAP_X, GAP_Y = 20, 42
+    MARGIN = 20
+
+    def __init__(self, master: tk.Widget, on_select: Optional[Callable] = None):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        self.bar_x = ttk.Scrollbar(self, orient="horizontal",
+                                   style="Flat.Horizontal.TScrollbar")
+        self.bar_y = ttk.Scrollbar(self, orient="vertical",
+                                   style="Flat.Vertical.TScrollbar")
+        self.canvas = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.bar_y.pack(side="right", fill="y")
+        self.bar_x.pack(side="bottom", fill="x")
+        self.canvas.pack(side="left", fill="both", expand=True)
+        self.bar_x.configure(command=self.canvas.xview)
+        self.bar_y.configure(command=self.canvas.yview)
+        theme.attach_scrollbar(self.canvas, self.bar_y, axis="y",
+                               side="right", fill="y", before=self.canvas)
+        theme.attach_scrollbar(self.canvas, self.bar_x, axis="x",
+                               side="bottom", fill="x", before=self.canvas)
+        self.tooltip = Tooltip(self.canvas)
+        self.root: Optional[Dict[str, Any]] = None
+        self.currency = "EUR"
+        self.warning = ""
+        #: Rappel qui rend un nom lisible depuis un matricule. Vide quand le
+        #: parametrage cache les identites : la case porte alors le
+        #: matricule, qui suffit a retrouver la personne dans son fichier.
+        self.identify: Optional[Callable[[str], str]] = None
+        #: Matricule mis en evidence, pose par la fenetre quand une ligne de
+        #: la liste est choisie. Le lien entre les deux lectures passe par
+        #: la : sans lui, trouver dans le dessin la personne qu'on vient de
+        #: selectionner dans la liste demande de parcourir quarante cases.
+        self.selected: Optional[str] = None
+        self._on_select = on_select
+        self._items: Dict[int, Dict[str, Any]] = {}
+        redraw_on_resize(self, self.canvas)
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+        self.canvas.bind("<Button-1>", self._on_click)
+
+    # ------------------------------------------------------------ donnees
+
+    def set_tree(self, root: Optional[Dict[str, Any]], currency: str = "EUR",
+                 warning: str = "") -> None:
+        self.root = root
+        self.currency = currency
+        self.warning = warning
+        self.redraw()
+
+    def select(self, manager: Optional[str]) -> None:
+        """Met une case en evidence, sans rien changer d'autre."""
+        if manager == self.selected:
+            return
+        self.selected = manager
+        self.redraw()
+
+    # ------------------------------------------------------------ souris
+
+    def _at(self, x: int, y: int) -> Optional[Dict[str, Any]]:
+        # Les coordonnees de l'evenement sont celles de la fenetre ; le
+        # canevas defile, donc elles ne sont pas celles du dessin.
+        x, y = int(self.canvas.canvasx(x)), int(self.canvas.canvasy(y))
+        for item in self.canvas.find_overlapping(x, y, x, y):
+            if item in self._items:
+                return self._items[item]
+        return None
+
+    def _on_motion(self, event) -> None:
+        node = self._at(event.x, event.y)
+        if node is None or node.get("chip"):
+            self.tooltip.hide()
+            self.canvas.configure(cursor="")
+            return
+        self.canvas.configure(cursor="hand2")
+        self.tooltip.show(self._label(node),
+                          self.canvas.winfo_rootx() + event.x,
+                          self.canvas.winfo_rooty() + event.y)
+
+    def _on_click(self, event) -> None:
+        node = self._at(event.x, event.y)
+        if node is not None and not node.get("chip") and self._on_select:
+            self._on_select(node)
+
+    def _display(self, manager: str) -> str:
+        """Nom lisible d'un matricule. Le methode ne s'appelle pas `_name` :
+        tkinter range deja le nom Tcl du widget sous cet attribut, et le
+        redefinir remplace une chaine par une methode au milieu de la
+        machinerie de Tk."""
+        if self.identify is not None:
+            return self.identify(manager) or manager
+        return manager
+
+    def _label(self, node: Dict[str, Any]) -> str:
+        """Ce que dit une case au survol : qui, combien, et a quel niveau."""
+        morceaux = [self._display(node.get("manager", ""))]
+        if node.get("job"):
+            morceaux.append(str(node["job"]))
+        morceaux.append(f"{node.get('direct', 0)} en direct · "
+                        f"{node.get('total', 0)} au total")
+        if node.get("amount") is not None:
+            morceaux.append("médiane de l'équipe : "
+                            + format_money(node["amount"], self.currency))
+        else:
+            morceaux.append("médiane masquée : effectif sous le seuil")
+        return "  ·  ".join(morceaux)
+
+    # ------------------------------------------------------------ disposition
+
+    def _layout(self, node: Dict[str, Any], x: int, level: int,
+                out: List[Dict[str, Any]]) -> int:
+        """Pose une case et sa descendance, et rend la largeur occupee.
+
+        Disposition classique : chaque case est centree sur ses enfants, et
+        la largeur d'une branche est la somme de celles de ses enfants. Elle
+        se calcule en un seul parcours, l'enfant etant pose avant que son
+        parent ne sache ou se centrer.
+        """
+        enfants = list(node.get("children") or [])
+        curseur = x
+        for enfant in enfants:
+            curseur += self._layout(enfant, curseur, level + 1,
+                                    out) + self.GAP_X
+        # Les collaborateurs sans equipe font une case comptee, posee apres
+        # les rattachements nommes — mais seulement quand il y a des cases
+        # a cote : seul sous son responsable, le compte est deja dans la
+        # case du dessus.
+        chip = None
+        if enfants and node.get("individuals"):
+            chip = {"chip": True, "individuals": node["individuals"],
+                    "x": curseur, "y": self._y(level + 1),
+                    "width": self.BOX_W}
+            curseur += self.BOX_W + self.GAP_X
+            out.append(chip)
+        largeur = max(curseur - self.GAP_X - x, self.BOX_W)
+        centre = x + largeur / 2 - self.BOX_W / 2
+        node["x"], node["y"] = centre, self._y(level)
+        node["width"] = self.BOX_W
+        out.append(node)
+        node["_chip"] = chip
+        return largeur
+
+    def _y(self, level: int) -> float:
+        return self.MARGIN + level * (self.BOX_H + self.GAP_Y)
+
+    # ------------------------------------------------------------ trace
+
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        if width < 200:
+            return
+        if not self.root:
+            self.canvas.configure(scrollregion=(0, 0, 0, 0))
+            self.canvas.create_text(
+                self.MARGIN, 40, anchor="w",
+                text=self.warning or "Choisissez une équipe à l'étape 3 pour "
+                                     "voir son organigramme.",
+                font=note_font(), fill=theme.MUTED)
+            return
+
+        posees: List[Dict[str, Any]] = []
+        largeur = self._layout(self.root, self.MARGIN, 0, posees)
+        for node in posees:
+            if node.get("chip"):
+                self._draw_chip(node)
+            else:
+                self._draw_node(node)
+        hauteur = max((node["y"] + self.BOX_H for node in posees),
+                      default=self.BOX_H) + self.MARGIN
+        # Le dessin se centre dans les deux sens quand il tient dans la
+        # fenetre : cale en haut a gauche, un organigramme de deux cases
+        # flotte au bord d'une grande zone vide. Le centrage passe par la
+        # zone de defilement, qu'on etend symetriquement — deplacer les
+        # cases elles-memes fausserait les coordonnees du survol.
+        étendue = largeur + 2 * self.MARGIN
+        gauche = min((étendue - width) / 2, 0)
+        haut = min((hauteur - self.canvas.winfo_height()) / 2, 0)
+        self.canvas.configure(
+            scrollregion=(gauche, haut,
+                          max(étendue, width + gauche),
+                          max(hauteur, self.canvas.winfo_height() + haut)))
+
+    def _draw_node(self, node: Dict[str, Any]) -> None:
+        x, y = node["x"], node["y"]
+        choisi = node.get("manager") and node["manager"] == self.selected
+        fond = theme.ACCENT_SOFT if choisi else theme.GROUND
+        bord = theme.ACCENT if choisi else theme.LINE_STRONG
+        case = self.canvas.create_rectangle(
+            x, y, x + self.BOX_W, y + self.BOX_H,
+            fill=fond, outline=bord, width=2 if choisi else 1)
+        self._items[case] = node
+        nom = self._display(node.get("manager", ""))
+        titre = self.canvas.create_text(
+            x + 10, y + 14, anchor="w",
+            text=_shorten(self, nom, self.BOX_W - 20,
+                          _font(SIZE_SMALL, "bold")),
+            font=_font(SIZE_SMALL, "bold"), fill=theme.INK)
+        self._items[titre] = node
+        effectif = node.get("total", 0)
+        détail = f"{effectif} pers." if effectif else "sans équipe"
+        if node.get("job"):
+            détail = f"{node['job']} · {détail}"
+        poste = self.canvas.create_text(
+            x + 10, y + 30, anchor="w",
+            text=_shorten(self, détail, self.BOX_W - 20),
+            font=note_font(), fill=theme.MUTED)
+        self._items[poste] = node
+        montant = (format_money(node["amount"], self.currency)
+                   if node.get("amount") is not None else "médiane masquée")
+        valeur = self.canvas.create_text(
+            x + 10, y + 45, anchor="w", text=montant, font=note_font(),
+            fill=theme.INK_SOFT if node.get("amount") is not None
+            else theme.FAINT)
+        self._items[valeur] = node
+        for enfant in (list(node.get("children") or [])
+                       + ([node["_chip"]] if node.get("_chip") else [])):
+            self._connect(node, enfant)
+
+    def _draw_chip(self, node: Dict[str, Any]) -> None:
+        x, y = node["x"], node["y"]
+        # Calee sur le bas de la rangee : alignee en haut, elle laissait
+        # croire a un niveau hierarchique de plus.
+        y += self.BOX_H - self.CHIP_H
+        case = self.canvas.create_rectangle(
+            x, y, x + self.BOX_W, y + self.CHIP_H,
+            fill=theme.CANVAS, outline=theme.LINE, dash=(3, 2))
+        self._items[case] = node
+        nombre = node["individuals"]
+        texte = f"{nombre} collaborateur{'s' if nombre > 1 else ''}"
+        self.canvas.create_text(x + self.BOX_W / 2, y + self.CHIP_H / 2,
+                                text=texte, font=note_font(),
+                                fill=theme.MUTED)
+
+    def _connect(self, parent: Dict[str, Any], enfant: Dict[str, Any]) -> None:
+        """Trait coude entre deux cases : vertical, horizontal, vertical.
+
+        Le trait droit en diagonale se croise avec ses voisins des trois
+        rattachements, et l'oeil ne sait plus lequel descend ou.
+        """
+        haut = parent["y"] + self.BOX_H
+        bas = enfant["y"]
+        if enfant.get("chip"):
+            bas += self.BOX_H - self.CHIP_H
+        milieu = (haut + bas) / 2
+        x1 = parent["x"] + self.BOX_W / 2
+        x2 = enfant["x"] + self.BOX_W / 2
+        self.canvas.create_line(x1, haut, x1, milieu, x2, milieu, x2, bas,
+                                fill=theme.LINE_STRONG)

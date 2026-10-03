@@ -938,3 +938,133 @@ class TestTheGapChart(ChartCase):
         graphique.set_rows([])
         self.root.update()
         self.assertEqual(self.items(graphique.canvas), [])
+
+
+@needs_display
+class TestOrgChart(ChartCase):
+    """L'organigramme, relu case par case sur le canevas.
+
+    Ce que le dessin promet et qu'il faut verifier : une case par
+    responsable et une seule, un compte pour ceux qui n'encadrent personne,
+    chaque parent centre sur ses enfants, et un trait de rattachement par
+    case — sans quoi une case flotte sans qu'on sache de qui elle releve.
+    """
+
+    def noeud(self, cle, enfants=(), individus=0, montant=50000.0, total=10):
+        return {"manager": cle, "row": 1, "job": "Poste", "level": 0,
+                "direct": len(enfants) + individus, "total": total,
+                "individuals": individus, "amount": montant, "masked": False,
+                "full_time": True, "children": list(enfants)}
+
+    def chart(self, racine=None):
+        from hr_insight.ui.charts import OrgChart
+
+        chart = self.build(OrgChart)
+        chart.set_tree(racine if racine is not None else self.arbre())
+        self.root.update()
+        return chart
+
+    def arbre(self):
+        """D encadre deux chefs et quatre personnes sans equipe.
+
+        Le melange est le cas interessant : les deux chefs font une case,
+        les quatre autres un compte. Un responsable qui n'encadrerait que
+        des collaborateurs n'a pas de compte a part — sa propre case porte
+        deja leur nombre.
+        """
+        return self.noeud("D", enfants=[self.noeud("C1"), self.noeud("C2")],
+                          individus=4, total=10)
+
+    def boxes(self, chart):
+        """Cases pleines, le compte des collaborateurs excepte."""
+        return [item for item in self.items(chart.canvas, "rectangle")
+                if not chart.canvas.itemcget(item, "dash")]
+
+    def test_one_box_per_manager(self):
+        chart = self.chart()
+        self.assertEqual(len(self.boxes(chart)), 3)
+
+    def test_those_without_a_team_are_a_counted_chip(self):
+        chart = self.chart()
+        pointillés = [item for item in self.items(chart.canvas, "rectangle")
+                      if chart.canvas.itemcget(item, "dash")]
+        self.assertEqual(len(pointillés), 1)
+        self.assertIn("4 collaborateurs", self.texts(chart.canvas))
+
+    def test_a_manager_of_nobody_but_collaborators_gets_no_chip(self):
+        """Sa case porte deja leur nombre : un compte a cote le dirait deux
+        fois, et ajouterait un niveau qui n'existe pas."""
+        chart = self.chart(self.noeud("C", individus=6, total=6))
+        self.assertEqual([item for item in self.items(chart.canvas, "rectangle")
+                          if chart.canvas.itemcget(item, "dash")], [])
+
+    def test_a_parent_sits_above_the_middle_of_its_children(self):
+        """Un parent decale se lit comme s'il relevait d'une seule branche.
+
+        Le compte des collaborateurs est un enfant comme un autre : le
+        parent se centre sur l'ensemble, lui compris.
+        """
+        chart = self.chart()
+        parent, enfants = None, []
+        for item in self.items(chart.canvas, "rectangle"):
+            coords = chart.canvas.coords(item)
+            noeud = chart._items.get(item)
+            if noeud and noeud.get("manager") == "D":
+                parent = coords
+            else:
+                enfants.append(coords)
+        self.assertIsNotNone(parent)
+        self.assertEqual(len(enfants), 3)
+        gauche = min(coords[0] for coords in enfants)
+        droite = max(coords[2] for coords in enfants)
+        self.assertAlmostEqual((parent[0] + parent[2]) / 2,
+                               (gauche + droite) / 2, delta=2)
+
+    def test_each_child_is_joined_to_its_parent(self):
+        """Deux cases et un compte sous D : trois traits, pas un de moins.
+        Une case sans trait flotte sans qu'on sache de qui elle releve."""
+        chart = self.chart()
+        self.assertEqual(len(self.items(chart.canvas, "line")), 3)
+
+    def test_a_masked_median_is_written_and_not_left_blank(self):
+        """Une case vide se lit comme une donnee absente, pas comme un
+        seuil de confidentialite."""
+        racine = self.noeud("S", montant=None, total=3)
+        racine["masked"] = True
+        chart = self.chart(racine)
+        self.assertIn("médiane masquée", self.texts(chart.canvas))
+
+    def test_without_a_team_it_says_what_it_waits_for(self):
+        from hr_insight.ui.charts import OrgChart
+
+        chart = self.build(OrgChart)
+        chart.set_tree(None)
+        self.root.update()
+        self.assertTrue(any("étape 3" in texte
+                            for texte in self.texts(chart.canvas)))
+
+    def test_a_chosen_box_is_the_only_one_marked(self):
+        chart = self.chart()
+        chart.select("C1")
+        self.root.update()
+        épais = [item for item in self.boxes(chart)
+                 if float(chart.canvas.itemcget(item, "width")) > 1]
+        self.assertEqual(len(épais), 1)
+        self.assertEqual(chart._items[épais[0]]["manager"], "C1")
+
+    def test_the_identity_comes_from_the_window_and_not_from_the_data(self):
+        chart = self.chart()
+        self.assertIn("D", self.texts(chart.canvas))
+        chart.identify = lambda key: {"D": "MARTIN Claire"}.get(key, key)
+        chart.redraw()
+        self.root.update()
+        self.assertIn("MARTIN Claire", self.texts(chart.canvas))
+
+    def test_a_long_name_is_cut_and_never_written_over_its_neighbour(self):
+        chart = self.chart()
+        chart.identify = lambda key: "NOM-TRÈS-LONG-QUI-DÉBORDE " * 3
+        chart.redraw()
+        self.root.update()
+        for item in self.items(chart.canvas, "text"):
+            x1, _y1, x2, _y2 = chart.canvas.bbox(item)
+            self.assertLessEqual(x2 - x1, chart.BOX_W)

@@ -635,6 +635,42 @@ Un export mal tenu ne fait jamais lever, mais il le dit, sous la liste :
 Ces anomalies sont annoncées **en nombre et jamais en matricules** : la
 colonne désigne des personnes.
 
+### L'onglet « Organigramme »
+
+Choisir une équipe fait paraître un onglet de plus, **entre « Vue
+d'ensemble » et « Graphique »**. Sans équipe choisie, il n'existe pas : il
+n'y a alors rien à dessiner, et une entrée ouvrant sur une page vide est pire
+qu'une entrée absente.
+
+Il porte deux lectures de la même population, parce qu'aucune ne suffit.
+
+**Le dessin** donne la structure d'un regard : combien de niveaux, qui porte
+quelle équipe, et à quel niveau de rémunération. Seuls les responsables ont
+une case ; ceux qui n'encadrent personne sont comptés sous celle de leur
+responsable — « 7 collaborateurs ». Un organigramme où chaque salarié aurait
+sa case devient illisible passé trente personnes, et la structure, qu'on
+vient précisément y lire, y disparaît. Chaque case porte l'effectif encadré
+et la médiane de l'équipe ; sous le seuil de publication, elle affiche sa
+taille et jamais sa rémunération.
+
+**La liste** nomme : un salarié par ligne, dans l'ordre de l'arbre — chaque
+responsable suivi de son équipe —, avec son poste, son niveau, son
+rattachement, l'effectif qu'il encadre, son ancienneté et sa rémunération.
+C'est elle qu'on lit pour préparer un entretien.
+
+Les deux se répondent : **cliquez une case**, la personne se sélectionne dans
+la liste ; **choisissez une ligne**, la case qui la porte s'allume.
+
+Les filtres s'appliquent ici comme partout ailleurs. Un salarié écarté n'est
+plus compté, et celui dont le responsable l'a été se rattache au premier
+responsable restant au-dessus de lui — sans quoi un filtre qui retire un chef
+de service détacherait son service entier, et l'effectif affiché ne serait
+plus celui des autres onglets.
+
+Les rémunérations y sont ramenées au temps plein. Si le fichier ne renseigne
+le temps de travail pour personne, la page retombe sur le montant versé et le
+dit plutôt que de laisser croire à une base qu'elle n'applique pas.
+
 ### Ce que l'équipe ne change pas
 
 Les seuils de confidentialité ne cèdent pas devant une équipe : sous 5

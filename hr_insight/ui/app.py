@@ -28,7 +28,7 @@ from tkinter import filedialog, messagebox, ttk
 from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
-from ..core import metrics, palette
+from ..core import metrics, org as org_view, palette
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError, ConfigError
@@ -51,8 +51,8 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
 from ..core.traceability import write_manifest
 from . import theme
 from .charts import (BandChart, BoxPlotChart, GapChart,
-                     HistogramChart, PeopleChart, PyramidChart, QuartileChart,
-                     ScatterChart)
+                     HistogramChart, OrgChart, PeopleChart, PyramidChart,
+                     QuartileChart, ScatterChart)
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
@@ -66,9 +66,16 @@ _WHOLE_FILE = "(tout le périmètre)"
 
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
 #: quand un chiffre surprend, on ne commence pas par lui.
-TABS = (("population", "Vue d'ensemble"), ("graphique", "Graphique"),
+TABS = (("population", "Vue d'ensemble"), ("organigramme", "Organigramme"),
+        ("graphique", "Graphique"),
         ("equite", "Écarts F/H"),
         ("qualite", "Qualité"))
+
+#: Onglets qui ne paraissent que si l'on a demande ce qu'ils montrent, et
+#: non parce que l'effectif le permet. Les retirer ne s'explique pas : il n'y
+#: a rien a expliquer tant que personne n'a choisi d'equipe, et un message
+#: « effectif insuffisant » serait faux.
+ON_DEMAND = ("organigramme",)
 
 #: Graphiques proposes dans l'onglet « Graphique », dans l'ordre d'affichage.
 #: Les onglets de premier rang repondent a une question — qui, combien, quel
@@ -380,6 +387,11 @@ class Application(tk.Tk):
         self.work_panel = WorkPanel(content.inner, self.fonts, stage_labels())
         self._startup("Pages et graphiques", 0.68)
         self._build_pages()
+        # L'organigramme n'existe qu'une fois une equipe choisie : la barre
+        # ne doit pas en porter l'entree avant la premiere analyse, sans
+        # quoi on ouvre un onglet vide sans savoir ce qu'il attend.
+        for key in ON_DEMAND:
+            self.tabbar.set_visible(key, False)
 
 
 
@@ -892,6 +904,7 @@ class Application(tk.Tk):
                       "colonne de gauche, puis « Analyser ».",
                  background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.body,
                  justify="left").pack(anchor="w", pady=(40, 0))
+        self._build_org(self.tabs["organigramme"])
         self._build_charts(self.tabs["graphique"])
 
         distribution = self.chart_pages["distribution"]
@@ -1223,6 +1236,46 @@ class Application(tk.Tk):
         canvas.bind("<Configure>",
                     lambda e: canvas.itemconfigure(window, width=e.width))
         return inner
+
+    def _build_org(self, parent: tk.Frame) -> None:
+        """L'organigramme de l'equipe choisie, et la liste de ses salaries.
+
+        Deux lectures d'une meme population, sur une page : le dessin donne
+        la structure d'un regard — combien de niveaux, qui porte quelle
+        equipe —, la liste nomme. Aucune ne se suffit : un organigramme ne
+        permet pas de comparer quarante anciennetes, et une liste de
+        quarante lignes ne dit pas qui depend de qui.
+
+        La page ne defile pas : le dessin a son propre defilement, et deux
+        zones defilantes imbriquees rendent la molette imprevisible.
+        """
+        self.org_frame = tk.Frame(parent, background=theme.CANVAS)
+        self.org_frame.pack(fill="x", padx=24, pady=(18, 0))
+        self.org_note = tk.Label(parent, text="", background=theme.CANVAS,
+                                 foreground=theme.MUTED,
+                                 font=self.fonts.small, justify="left",
+                                 anchor="w", wraplength=980)
+        self.org_note.pack(anchor="w", padx=24, pady=(0, 8))
+        self.org_chart = OrgChart(parent, on_select=self._on_org_node)
+        self.org_chart.identify = self._identity
+        self.org_chart.pack(fill="both", expand=True, padx=18, pady=(0, 8))
+        tk.Frame(parent, background=theme.LINE, height=1).pack(
+            fill="x", padx=24, pady=(0, 10))
+        tk.Label(parent, text="LES SALARIÉS DE L'ÉQUIPE",
+                 background=theme.CANVAS, foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w", padx=24,
+                                             pady=(0, 6))
+        self.org_tree = self._tree(
+            parent,
+            ("Salarié", "Poste", "Niveau", "Rattaché à", "Encadre",
+             "Ancienneté", "Rémunération"),
+            (260, 210, 70, 220, 80, 100, 130),
+            expand=False, height=9)
+        self.org_tree.bind("<<TreeviewSelect>>", self._on_org_row)
+        #: Matricules par ligne du tableau — le salarie, et la case qui le
+        #: porte — pour relier les deux lectures sans faire entrer un
+        #: matricule dans le libelle affiche.
+        self._org_keys: Dict[str, tuple] = {}
 
     def _build_charts(self, parent: tk.Frame) -> None:
         """Un onglet, plusieurs graphiques, choisis dans une barre subordonnee.
@@ -1701,6 +1754,7 @@ class Application(tk.Tk):
         self._show_scatter(payload["scatter"], currency)
         self._show_segments(payload["segments"])
         self._show_pay_equity(payload["pay_equity"])
+        self._org_available = self._show_org(payload)
         self._apply_eligibility(payload)
 
     def _apply_eligibility(self, payload: Dict[str, Any]) -> None:
@@ -1729,6 +1783,10 @@ class Application(tk.Tk):
         eligible = {
             "population": not (payload["population"].get("masked")
                                and payload["salary"].get("masked")),
+            # Sur demande : il n'y a d'organigramme que si l'on a choisi une
+            # equipe a l'etape 3. Son absence ne s'explique donc pas comme
+            # celle des autres — voir ON_DEMAND.
+            "organigramme": bool(getattr(self, "_org_available", False)),
             "graphique": any(charts.values()),
             "equite": bool(payload.get("pay_equity", {}).get("available")),
             "qualite": True,
@@ -1738,7 +1796,8 @@ class Application(tk.Tk):
         for key, allowed in eligible.items():
             self.tabbar.set_visible(key, allowed)
 
-        hidden = [label for key, label in TABS if not eligible[key]]
+        hidden = [label for key, label in TABS
+                  if not eligible[key] and key not in ON_DEMAND]
         # Un graphique retire alors que son onglet reste ouvert doit
         # s'expliquer autant qu'un onglet disparu : sans cela, il manque une
         # entree dans la barre et rien ne dit pourquoi.
@@ -2101,6 +2160,143 @@ class Application(tk.Tk):
         chart = BandChart(cell)
         chart.pack(fill="x")
         chart.set_rows(bands)
+
+    def _show_org(self, payload: Dict[str, Any]) -> bool:
+        """L'organigramme de l'equipe analysee. Rend vrai s'il y a a montrer.
+
+        L'arbre se reconstruit sur le fichier de la periode, jamais sur la
+        population deja filtree : un filtre « France » couperait la branche
+        d'un responsable dont une partie de l'equipe est ailleurs, et le
+        rattachement affiche serait faux. Les filtres s'appliquent ensuite,
+        en retirant des salaries de l'arbre ainsi construit — c'est le meme
+        ordre que celui du moteur, et c'est ce qui fait que cet onglet
+        compte exactement ce que les autres comptent.
+        """
+        from ..core.hierarchy import Tree
+
+        self._org_keys = {}
+        scope = payload.get("scope") or {}
+        team = scope.get("team") or {}
+        key = team.get("manager") or ""
+        if not key or self.population is None:
+            self.org_chart.set_tree(None)
+            self._fill(self.org_tree, [])
+            return False
+        observed = self.population
+        if scope.get("period"):
+            observed = observed.filtered(
+                [employee for employee in observed
+                 if employee.period == scope["period"]])
+        tree = Tree(observed)
+        if key not in tree.employees:
+            self.org_chart.set_tree(None)
+            self._fill(self.org_tree, [])
+            return False
+        keep = {employee.employee_id for employee in self.result.filtered}
+        direct = bool(team.get("direct_only"))
+        nodes = org_view.chart_nodes(tree, key, self.configuration,
+                                     keep=keep, direct_only=direct)
+        rows = org_view.member_rows(tree, key, self.configuration,
+                                    keep=keep, direct_only=direct)
+        resume = org_view.summary(nodes, rows)
+        currency = payload["salary"].get("currency", "EUR")
+
+        span = resume.get("span")
+        self._kpis(self.org_frame, [
+            # Des comptes de personnes : sans decimale. « 47,0 salaries »
+            # affiche une precision que la donnee n'a pas.
+            ("Effectif", format_number(resume["headcount"], 0), "effectif"),
+            ("Niveaux", format_number(resume["levels"], 0)),
+            ("Responsables", format_number(resume["managers"], 0)),
+            ("Encadrement moyen",
+             "—" if span is None else f"{span:.1f}".replace(".", ",")),
+            ("Médiane de l'équipe" if resume.get("full_time")
+             else "Médiane versée",
+             format_money(resume["amount"], currency)
+             if resume.get("amount") is not None else "masquée"),
+        ])
+
+        self.org_chart.set_tree(nodes, currency)
+        self.org_chart.select(None)
+        lignes = []
+        for row in rows:
+            identité = self._identity(row["employee_id"])
+            if row.get("out_of_scope"):
+                # Le responsable choisi que les filtres ont retire : il
+                # reste la racine du dessin, mais il n'est pas dans la
+                # population analysee, et la ligne doit le dire.
+                identité += "  (hors filtre)"
+            rattachement = (self._identity(row["manager"])
+                            if row.get("manager") else "—")
+            lignes.append((
+                "· " * row["level"] + identité,
+                row.get("job") or "—",
+                format_number(row["level"] + 1, 0),
+                rattachement,
+                format_number(row["manages"], 0) if row["manages"] else "—",
+                format_years(row.get("tenure_years")),
+                format_money(row["amount"], currency)
+                if row.get("amount") is not None else "masquée",
+            ))
+            # Deux matricules par ligne : celui du salarie, et celui de la
+            # case qui le porte — un salarie sans equipe n'a pas de case a
+            # lui, il est compte sous celle de son responsable.
+            self._org_keys[str(len(lignes) - 1)] = (
+                row["employee_id"],
+                row["employee_id"] if row["manages"] else row.get("manager"))
+        self._fill(self.org_tree, lignes)
+
+        explication = ("Seuls les responsables ont une case ; ceux qui "
+                       "n'encadrent personne sont comptés sous celle de leur "
+                       "responsable. Cliquez une case pour retrouver la "
+                       "personne dans la liste, et l'inverse.")
+        # La base de comparaison s'annonce, elle ne se devine pas : les
+        # montants d'une page a temps plein et ceux d'une page qui retombe
+        # sur le verse ne se lisent pas de la meme facon.
+        explication += (" Les rémunérations sont ramenées au temps plein."
+                        if resume.get("full_time") else
+                        " Le temps de travail n'est renseigné pour personne : "
+                        "les rémunérations sont celles qui sont versées, et "
+                        "un temps partiel y compte pour ce qu'il perçoit.")
+        if scope.get("filtered"):
+            explication += (" Les filtres s'appliquent ici comme ailleurs : "
+                            "les salariés écartés ne sont plus comptés, et "
+                            "ceux dont le responsable l'a été se rattachent "
+                            "au premier responsable restant au-dessus d'eux.")
+        if resume.get("masked"):
+            explication += (" Les médianes sont masquées : l'effectif dont la "
+                            "rémunération est calculable n'atteint pas le "
+                            "seuil de publication.")
+        self.org_note.configure(text=explication)
+        return True
+
+    def _on_org_node(self, node: Dict[str, Any]) -> None:
+        """Une case choisie dans le dessin : la ligne correspondante se
+        selectionne dans la liste, et la liste s'y rend."""
+        self.org_chart.select(node.get("manager"))
+        for item, (key, _case) in self._org_keys.items():
+            if key == node.get("manager"):
+                enfants = self.org_tree.get_children()
+                index = int(item)
+                if index < len(enfants):
+                    cible = enfants[index]
+                    self.org_tree.selection_set(cible)
+                    self.org_tree.see(cible)
+                return
+
+    def _on_org_row(self, _event=None) -> None:
+        """Une ligne choisie dans la liste : la case de son responsable
+        s'allume. Un salarie sans equipe n'a pas de case a lui — c'est
+        celle sous laquelle il est compte que l'on cherche."""
+        selection = self.org_tree.selection()
+        if not selection:
+            return
+        enfants = list(self.org_tree.get_children())
+        try:
+            index = enfants.index(selection[0])
+        except ValueError:
+            return
+        self.org_chart.select(self._org_keys.get(str(index), (None, None))[1])
 
     def _show_pay_equity(self, equity: Dict[str, Any]) -> None:
         """Ecarts de remuneration entre les sexes.

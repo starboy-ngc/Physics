@@ -262,6 +262,21 @@ def apply(root: tk.Misc, fonts: Fonts) -> ttk.Style:
               background=[("active", MUTED), ("pressed", MUTED)],
               lightcolor=[("active", MUTED)], darkcolor=[("active", MUTED)])
 
+    # Le meme, couche : un organigramme s'etend en largeur, et l'ascenseur
+    # du bas doit avoir l'allure de celui de droite.
+    style.layout("Flat.Horizontal.TScrollbar", [
+        ("Horizontal.Scrollbar.trough", {
+            "sticky": "we",
+            "children": [("Horizontal.Scrollbar.thumb",
+                          {"expand": "1", "sticky": "nswe"})]})])
+    style.configure("Flat.Horizontal.TScrollbar", background=LINE_STRONG,
+                    troughcolor=GROUND, borderwidth=0, relief="flat",
+                    arrowsize=SCROLLBAR_WIDTH, bordercolor=GROUND,
+                    lightcolor=LINE_STRONG, darkcolor=LINE_STRONG)
+    style.map("Flat.Horizontal.TScrollbar",
+              background=[("active", MUTED), ("pressed", MUTED)],
+              lightcolor=[("active", MUTED)], darkcolor=[("active", MUTED)])
+
     style.configure("TProgressbar", background=ACCENT, troughcolor=LINE,
                     borderwidth=0, thickness=3, bordercolor=LINE,
                     lightcolor=ACCENT, darkcolor=ACCENT)
@@ -532,7 +547,8 @@ class Hints:
             self.window.withdraw()
 
 
-def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:
+def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, axis: str = "y",
+                     **packing) -> None:
     """Relie un ascenseur, et ne l'affiche que s'il sert.
 
     Une gouttiere permanente sur une zone qui tient entierement a l'ecran
@@ -541,10 +557,15 @@ def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:
     `before` est indispensable : reempile apres la zone defilante, qui est
     en expansion, l'ascenseur ne recupere aucune largeur et reapparait
     invisible. On le remet donc a sa place d'origine.
+
+    `axis` vaut « y » par defaut. Un organigramme s'etend en largeur bien
+    plus qu'en hauteur : la meme mecanique sert alors l'ascenseur du bas.
     """
     if "before" not in packing:
         raise ValueError("attach_scrollbar exige \"before\" pour rendre "
                          "l'ascenseur a sa place dans l'empilement")
+    if axis not in ("x", "y"):
+        raise ValueError("attach_scrollbar n'accepte que \"x\" ou \"y\"")
 
     def scrolled(first: str, last: str) -> None:
         if float(first) <= 0.0 and float(last) >= 1.0:
@@ -557,7 +578,7 @@ def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, **packing) -> None:
             bar.pack(**packing)
         bar.set(first, last)
 
-    widget.configure(yscrollcommand=scrolled)
+    widget.configure(**{f"{axis}scrollcommand": scrolled})
 
 
 def bind_wheel(canvas: tk.Canvas, root: tk.Misc) -> None:

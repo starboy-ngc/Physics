@@ -49,6 +49,7 @@ hr_insight/
     ├── metrics.py          Indicateurs métier + règles de confidentialité
     ├── segmentation.py     Filtres combinables, découpage par dimension
     ├── hierarchy.py        Arbre déduit de la colonne manager (équipes)
+    ├── org.py              Organigramme d'une équipe : structure + médianes
     ├── reporting.py        Restitution HTML + SVG
     ├── export.py           Export Excel / CSV
     ├── formulas.py         Écriture tableur des calculs (onglets de contrôle)
@@ -65,6 +66,19 @@ responsable ; et il est lu par itération, jamais par récursion — une chaîne
 hiérarchique de mille niveaux dépasserait la pile. Un fichier incohérent
 (cycle, manager absent, matricule en double) ne fait pas lever : il rend un
 arbre amputé et le dit.
+
+`org` fait ce que `hierarchy` s'interdit : rapprocher la structure et la
+rémunération. Il rend deux lectures d'une même équipe — les cases du dessin
+(responsables seuls ; ceux qui n'encadrent personne sont comptés sous leur
+responsable) et la liste nominative — et les fait porter sur **la population
+analysée**, filtres compris. Un salarié dont le responsable a été écarté par
+un filtre se rattache au premier responsable restant au-dessus de lui : sans
+ce rattrapage, un filtre qui retire un chef de service détacherait son
+service entier, et le dessin perdrait des personnes que les autres onglets
+comptent toujours. Les seuils y valent comme ailleurs — une médiane d'équipe
+n'est rendue qu'au-dessus du seuil de publication —, et la base est le temps
+plein, avec le même repli sur le montant versé que la page des écarts quand
+le fichier ne porte aucun temps de travail.
 
 **Règle de dépendance** : `io` ne connaît pas `core` ; `core.statistics_engine`
 ne connaît rien ; `metrics` ne connaît que `statistics_engine`, `normalize` et

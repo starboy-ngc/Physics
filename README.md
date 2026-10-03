@@ -85,6 +85,9 @@ dépendance, aucun binaire tiers.
 - **Segmentation** : dimensions **declarees en configuration** (ajouter une
   notion metier ne demande aucune modification du code), filtres combinables,
   comparaison de deux populations.
+- **Organigramme** : pour une équipe choisie, sa structure d'encadrement en
+  cases reliées et la liste de ses salariés, sur la population analysée —
+  filtres compris.
 - **Petits effectifs** : masquage, avertissement et désactivation des
   graphiques, sur seuils paramétrables.
 - **Traçabilité** : manifeste versionné avec empreinte du fichier source et

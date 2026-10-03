@@ -603,3 +603,146 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         self.assertIn("direction", self.app._category_fields)
         self.assertIn("Direction",
                       list(self.app.category_choice.cget("values")))
+
+
+class TestTheOrganisationChart(WindowCase):
+    """L'onglet « Organigramme », et ce qui le fait paraitre.
+
+    Il ne repond pas a un seuil mais a une demande : tant que personne n'a
+    choisi d'equipe a l'etape 3, il n'y a pas d'organigramme a montrer, et
+    une entree ouvrant sur une page vide est pire qu'une entree absente.
+
+    Les deux lectures de la page — le dessin et la liste — portent sur la
+    meme population que tous les autres onglets. C'est ce que verifient ces
+    tests : un effectif qui ne correspondrait pas a celui de la barre d'etat
+    ferait douter des deux.
+    """
+
+    def _fichier(self):
+        """Quarante salaries, six responsables, trois niveaux.
+
+        E00000 porte tout le monde ; E00001 a E00005 encadrent ; les autres
+        se repartissent entre eux.
+        """
+        def manager(index):
+            if index == 0:
+                return [""]
+            if index <= 5:
+                return ["E00000"]
+            return [f"E{1 + index % 5:05d}"]
+
+        return self.source("equipe.csv", extra_headers=["Manager"],
+                           extra=manager)
+
+    def _choisir(self, matricule):
+        for label, key in self.app._team_keys.items():
+            if key == matricule:
+                self.app.team_var.set(label)
+                self.app.update()
+                return label
+        self.fail(f"{matricule} n'est pas proposé comme responsable")
+
+    def test_without_a_team_there_is_no_tab(self):
+        self.load(self._fichier())
+        self.analyse()
+        self.assertNotIn("organigramme", self.app.tabbar.visible_keys())
+
+    def test_its_absence_is_not_announced_as_a_privacy_masking(self):
+        """« Vue masquee » veut dire « effectif insuffisant ». Le dire d'un
+        onglet que personne n'a demande serait faux, et enverrait elargir un
+        filtre pour retrouver une page qui n'a jamais manque."""
+        self.load(self._fichier())
+        self.analyse()
+        self.assertNotIn("masquée", self.app.status.cget("text"))
+
+    def test_choosing_a_team_brings_the_tab(self):
+        self.load(self._fichier())
+        self._choisir("E00001")
+        self.analyse()
+        self.assertIn("organigramme", self.app.tabbar.visible_keys())
+
+    def test_the_list_carries_the_team_and_nothing_else(self):
+        self.load(self._fichier())
+        self._choisir("E00001")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        lignes = self.app.org_tree.get_children()
+        self.assertEqual(len(lignes), len(self.app.result.filtered))
+        # Le responsable choisi ouvre la liste : c'est lui la racine.
+        premier = self.app.org_tree.item(lignes[0], "values")[0]
+        self.assertIn("NOM1", premier)
+
+    def test_the_drawing_and_the_list_say_the_same_number(self):
+        self.load(self._fichier())
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        self.assertEqual(len(self.app.org_tree.get_children()), 40)
+        self.assertEqual(self.app.org_chart.root["total"], 39)
+
+    def test_clicking_a_box_selects_the_person_in_the_list(self):
+        """Le lien entre les deux lectures. Sans lui, retrouver dans
+        quarante lignes la case qu'on vient de cliquer est une corvee."""
+        self.load(self._fichier())
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        enfant = self.app.org_chart.root["children"][0]
+        self.app._on_org_node(enfant)
+        self.app.update()
+        self.assertEqual(self.app.org_chart.selected, enfant["manager"])
+        choisi = self.app.org_tree.selection()
+        self.assertTrue(choisi)
+        valeur = self.app.org_tree.item(choisi[0], "values")[0]
+        self.assertIn("NOM", valeur)
+
+    def test_selecting_a_line_lights_the_box_that_carries_it(self):
+        """Un salarie sans equipe n'a pas de case a lui : c'est celle sous
+        laquelle il est compte que l'on cherche."""
+        self.load(self._fichier())
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        lignes = list(self.app.org_tree.get_children())
+        # La derniere ligne est un collaborateur, jamais un responsable.
+        self.app.org_tree.selection_set(lignes[-1])
+        self.app.update()
+        self.assertIsNotNone(self.app.org_chart.selected)
+        self.assertNotEqual(self.app.org_chart.selected,
+                            self.app.org_tree.item(lignes[-1], "values")[0])
+
+    def test_the_tab_goes_away_when_the_team_is_released(self):
+        """Reanalyser sans equipe doit refermer la page, et non laisser
+        l'organigramme de l'analyse precedente ouvert a cote de chiffres
+        qui ne sont plus les siens."""
+        self.load(self._fichier())
+        self._choisir("E00001")
+        self.analyse()
+        self.assertIn("organigramme", self.app.tabbar.visible_keys())
+        self.app.team_var.set(self.app.team_choice.cget("values")[0])
+        self.app.update()
+        self.app.result = None
+        self.analyse()
+        self.assertNotIn("organigramme", self.app.tabbar.visible_keys())
+        self.assertEqual(self.app.org_tree.get_children(), ())
+
+    def test_no_identity_reaches_the_screen_when_it_is_switched_off(self):
+        """Le reglage ne porte que sur l'ecran, et il porte sur tout
+        l'ecran : une page qui l'ignorerait annulerait les autres."""
+        from tests.support import make_config
+
+        self.load(self._fichier())
+        self.app.configuration = make_config(
+            {"privacy_parameters.show_identities_on_screen": False})
+        self._choisir("E00000")
+        self.analyse()
+        self.app.tabbar.select("organigramme")
+        self.app.update()
+        for item in self.app.org_tree.get_children():
+            valeur = self.app.org_tree.item(item, "values")[0]
+            self.assertNotIn("NOM", valeur)
+            self.assertIn("E000", valeur)

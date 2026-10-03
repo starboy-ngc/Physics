@@ -207,7 +207,8 @@ class TestWindow(unittest.TestCase):
 
         self.assertEqual(len(self.app.tabs), len(TABS))
         self.assertEqual([key for key, _label in TABS],
-                         ["population", "graphique", "equite", "qualite"])
+                         ["population", "organigramme", "graphique",
+                          "equite", "qualite"])
         # « Graphique » en porte plusieurs : la barre principale ne dit plus
         # a elle seule tout ce que l'outil sait montrer.
         self.assertEqual(self.app.chartbar.visible_keys(),
@@ -1390,9 +1391,18 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             app.destroy()
 
     def test_a_large_enough_population_keeps_every_tab(self):
+        """Tous, sauf ceux qui ne paraissent que sur demande : l'absence de
+        l'organigramme ne tient pas a un seuil mais au fait que personne
+        n'a choisi d'equipe."""
+        from hr_insight.ui.app import ON_DEMAND
+
         app = self._analysed(40)
         try:
-            self.assertEqual(len(app.tabbar.visible_keys()), len(app.tabs))
+            self.assertEqual(sorted(app.tabbar.visible_keys()),
+                             sorted(key for key in app.tabs
+                                    if key not in ON_DEMAND))
+            for key in ON_DEMAND:
+                self.assertNotIn(key, app.tabbar.visible_keys())
         finally:
             app.destroy()
 
