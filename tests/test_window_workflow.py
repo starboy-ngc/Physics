@@ -523,21 +523,6 @@ class TestTheDispersionControls(WindowCase):
                                   "Chef de projet"][index % 3]]))
         self.analyse()
 
-    def test_the_boxes_come_first(self):
-        """C'est la lecture que l'on cite en réunion : P10, Q1, médiane."""
-        self._load()
-        self.assertEqual(self.app.box_mark.get(), "Boîtes")
-        self.assertEqual(self.app.boxplot.mark, "boites")
-
-    def test_choosing_the_ribbon_changes_only_the_mark(self):
-        self._load()
-        avant = len(self.app.boxplot._drawable())
-        self.app.box_mark.current(1)
-        self.app.box_mark.event_generate("<<ComboboxSelected>>")
-        self.app.update()
-        self.assertEqual(self.app.boxplot.mark, "ruban")
-        self.assertEqual(len(self.app.boxplot._drawable()), avant)
-
     def test_the_spread_sort_is_offered_in_the_plain_mode(self):
         self._load()
         self.assertIn("Ouverture décroissante", self.app.box_order.cget("values"))
@@ -575,11 +560,6 @@ class TestTheDispersionControls(WindowCase):
             self.app.boxplot.spread_critical,
             self.app.configuration.get(
                 "chart_parameters.spread_critical_threshold"))
-
-    def test_the_header_names_the_chosen_dimension(self):
-        """L'intitulé de la colonne suit la dimension analysée."""
-        self._load()
-        self.assertEqual(self.app.boxplot.dimension, self.app.box_choice.get())
 
 
 class TestThemeAndIdentities(WindowCase):

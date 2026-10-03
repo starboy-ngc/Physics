@@ -163,19 +163,27 @@ _cache: Dict[Tuple, bytes] = {}
 
 
 def disc(diameter: int, colour: RGB, ring: RGB = None,
-         ring_width: float = 0.0) -> bytes:
-    """Disque plein, avec un cerne optionnel pour le point selectionne."""
-    key = ("disc", diameter, colour, ring, ring_width)
+         ring_width: float = 0.0, samples: int = SAMPLES) -> bytes:
+    """Disque plein, avec un cerne optionnel pour le point selectionne.
+
+    `samples` commande la finesse du lissage. Le defaut suffit a une case a
+    cocher de quinze pixels ; a sept pixels, un disque n'a qu'une vingtaine
+    de pixels de bord, et quatre sous-echantillons y laissent un escalier
+    visible — le rond se lit alors comme un octogone. Le calcul etant fait
+    une fois par couleur et garde en cache, monter l'echantillonnage sur les
+    petits disques ne coute rien a l'affichage.
+    """
+    key = ("disc", diameter, colour, ring, ring_width, samples)
     if key not in _cache:
         centre = diameter / 2.0
         raster = Raster(diameter)
-        raster.paint(_circle(centre, centre - 0.5), colour)
+        raster.paint(_circle(centre, centre - 0.5), colour, samples=samples)
         if ring and ring_width:
             outer, inner = centre - 0.5, centre - 0.5 - ring_width
             outside_inner = _circle(centre, inner)
             circle = _circle(centre, outer)
             raster.paint(lambda x, y: circle(x, y) and not outside_inner(x, y),
-                         ring)
+                         ring, samples=samples)
         _cache[key] = raster.to_data()
     return _cache[key]
 

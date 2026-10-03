@@ -948,21 +948,6 @@ class Application(tk.Tk):
         self.box_order.current(0)
         self.box_order.pack(side="left", padx=10)
         self.box_order.bind("<<ComboboxSelected>>", lambda _e: self._reorder())
-        # Deux traces pour la meme donnee : la boite donne cinq reperes qu'on
-        # cite en reunion, le ruban donne la masse et son decalage.
-        tk.Label(box_head, text="TRACÉ", background=theme.CANVAS,
-                 foreground=theme.FAINT,
-                 font=self.fonts.label).pack(side="left", padx=(22, 0))
-        self.box_mark = ttk.Combobox(box_head, state="readonly", width=10,
-                                     font=self.fonts.small,
-                                     values=[label for _key, label
-                                             in BoxPlotChart.MARKS])
-        self.box_mark.current(0)
-        self.box_mark.pack(side="left", padx=10)
-        self.box_mark.bind(
-            "<<ComboboxSelected>>",
-            lambda _e: self.boxplot.set_mark(
-                BoxPlotChart.MARKS[self.box_mark.current()][0]))
         # Deux medianes proches peuvent recouvrir deux distributions tres
         # differentes : une seule boite par segment ne dit pas si les deux
         # sexes s'y etalent pareil.
@@ -3929,8 +3914,7 @@ class Application(tk.Tk):
                 1.40, minimum=1.0, maximum=20.0),
             spread_critical=self.configuration.number(
                 "chart_parameters.spread_critical_threshold",
-                1.80, minimum=1.0, maximum=20.0),
-            dimension=block.get("label", ""))
+                1.80, minimum=1.0, maximum=20.0))
 
     # -------------------------------------------------------------- export
 

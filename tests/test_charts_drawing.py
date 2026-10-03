@@ -331,7 +331,7 @@ class TestTheDispersionColumns(ChartCase):
         from hr_insight.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
-        chart.set_rows(self.rows(), "EUR", dimension="Poste", **kwargs)
+        chart.set_rows(self.rows(), "EUR", **kwargs)
         self.root.update()
         return chart
 
@@ -351,16 +351,7 @@ class TestTheDispersionColumns(ChartCase):
         entete = self.head(chart)
         self.assertIn("OUVERTURE Q3/Q1", entete)
         self.assertIn("MÉDIANE", entete)
-        self.assertIn("POSTE", entete)
-
-    def test_the_header_carries_the_dimension_it_was_given(self):
-        """L'intitulé n'est pas écrit en dur : c'est la dimension analysée."""
-        from hr_insight.ui.charts import BoxPlotChart
-
-        chart = self.build(BoxPlotChart)
-        chart.set_rows(self.rows(), "EUR", dimension="Business unit")
-        self.root.update()
-        self.assertIn("BUSINESS UNIT", self.head(chart))
+        self.assertIn("EFF.", entete)
 
     def test_the_colour_follows_the_configured_thresholds(self):
         chart = self.chart(spread_alert=1.40, spread_critical=1.80)
@@ -410,80 +401,184 @@ class TestTheDispersionColumns(ChartCase):
 
 
 @needs_display
-class TestTheDispersionRibbon(ChartCase):
-    """Le second tracé : un ruban dont l'intensité dit la densité."""
+class TestTheScatterDots(ChartCase):
+    """De vrais ronds, et un point choisi qui grossit sans se déguiser."""
 
-    def chart(self, mark="ruban"):
-        from hr_insight.ui.charts import BoxPlotChart
+    def chart(self):
+        from hr_insight.ui.charts import ScatterChart
 
-        chart = self.build(BoxPlotChart)
-        chart.set_rows([{
-            "segment": "Poste", "headcount": 40, "chartable": True,
-            "masked": False,
-            "salary": {"p10": 27000.0, "p25": 30000.0, "median": 34000.0,
-                       "p75": 38000.0, "p90": 42000.0,
-                       "dispersion": {"q3_over_q1": 1.27}},
-        }], "EUR", dimension="Poste")
-        chart.set_mark(mark)
+        chart = self.build(ScatterChart)
+        chart.set_dataset({
+            "available": True,
+            "x_axis": {"field": "tenure_years", "label": "Ancienneté",
+                       "kind": "years"},
+            "y_axis": {"field": "base_salary", "label": "Salaire de base",
+                       "kind": "money"},
+            "color_by": "business_unit",
+            "points": [{"x": 1.0 + i, "y": 30000.0 + i * 500, "group": "France",
+                        "row": i} for i in range(12)],
+        }, "EUR")
         self.root.update()
         return chart
 
-    def bars(self, chart):
-        """Les tranches du ruban seules : la bande de fond d'une ligne est
-        un rectangle elle aussi, et elle part du bord gauche."""
-        return [chart.canvas.coords(item)
-                for item in self.items(chart.canvas, "rectangle")
-                if chart.canvas.coords(item)[0] > 0]
+    def test_the_chosen_dot_keeps_its_colour_and_grows(self):
+        """Il virait au rouge et portait un cerne : deux signaux pour dire
+        une chose, et le rouge mentait sur sa population."""
+        from hr_insight.ui.charts import ScatterChart
 
-    def test_the_ribbon_thickens_towards_the_middle(self):
-        """Le cœur pèse, les ailes s'effacent : c'est tout le propos."""
         chart = self.chart()
-        epaisseurs = sorted((c[3] - c[1], (c[0] + c[2]) / 2)
-                            for c in self.bars(chart))
-        self.assertGreater(epaisseurs[-1][0], epaisseurs[0][0])
+        ordinaire = chart._dot("#c26b3f", False)
+        choisi = chart._dot("#c26b3f", True)
+        self.assertEqual(ordinaire.width(), ScatterChart.DOT)
+        self.assertEqual(choisi.width(), ScatterChart.DOT_SELECTED)
+        # Même teinte au centre : c'est le même point, en plus gros.
+        milieu = ScatterChart.DOT_SELECTED // 2
+        self.assertEqual(choisi.get(milieu, milieu)[:3],
+                         ordinaire.get(ScatterChart.DOT // 2,
+                                       ScatterChart.DOT // 2)[:3])
 
-    def test_the_ribbon_spans_the_same_range_as_the_box(self):
-        """Changer de tracé ne change pas l'échelle : les deux couvrent du
-        10e au 90e centile, sans quoi on comparerait deux graphiques."""
-        ruban = self.bars(self.chart("ruban"))
-        self.tearDown(); self.setUp()
-        boite = self.chart("boites")
-        reperes = [boite.canvas.coords(item)
-                   for item in self.items(boite.canvas, "line")
-                   if len(boite.canvas.coords(item)) == 4
-                   and boite.canvas.coords(item)[0]
-                   != boite.canvas.coords(item)[2]]
-        self.assertAlmostEqual(min(c[0] for c in ruban),
-                               min(c[0] for c in reperes), delta=2)
-        self.assertAlmostEqual(max(c[2] for c in ruban),
-                               max(c[2] for c in reperes), delta=2)
+    def test_no_ring_surrounds_the_chosen_dot(self):
+        """Un cerne d'encre ferait, sur le bord, une teinte étrangère à la
+        couleur du point."""
+        from hr_insight.ui.charts import ScatterChart
 
-    def test_the_key_follows_the_mark(self):
-        """Une clé qui légende la boîte quand l'écran porte un ruban
-        explique un dessin qui n'est pas là."""
-        ruban = self.chart()
-        pied = " ".join(ruban.footer.itemcget(item, "text")
-                        for item in ruban.footer.find_all()
-                        if ruban.footer.type(item) == "text")
-        self.assertIn("cœur du ruban", pied)
-        self.assertNotIn("La boîte contient", pied)
-
-    def test_going_back_to_boxes_restores_the_box_key(self):
-        chart = self.chart("boites")
-        pied = " ".join(chart.footer.itemcget(item, "text")
-                        for item in chart.footer.find_all()
-                        if chart.footer.type(item) == "text")
-        self.assertIn("La boîte contient", pied)
-
-    def test_hovering_the_ribbon_still_identifies_the_segment(self):
-        """Les repères chiffrés passent au survol : c'est le prix du ruban,
-        et il n'est acceptable que si le survol répond."""
         chart = self.chart()
-        coords = self.bars(chart)[0]
-        chart._on_motion(Motion(int((coords[0] + coords[2]) / 2),
-                                int((coords[1] + coords[3]) / 2)))
+        choisi = chart._dot("#c26b3f", True)
+        milieu = ScatterChart.DOT_SELECTED // 2
+        coeur = choisi.get(milieu, milieu)[:3]
+        # Le pixel juste à l'intérieur du bord reste dans la teinte du
+        # point, et ne vire pas vers l'encre.
+        bord = choisi.get(1, milieu)[:3]
+        self.assertLess(abs(bord[0] - coeur[0]) + abs(bord[1] - coeur[1])
+                        + abs(bord[2] - coeur[2]), 200)
+
+    def test_the_edge_is_graded_rather_than_stepped(self):
+        """Un vrai rond a des bords dégradés ; un octogone a des marches.
+
+        Le dégradé vit dans le canal alpha, que `PhotoImage.get` ne rend
+        pas : il se vérifie donc là où il est produit, sur le pochoir.
+        """
+        from hr_insight.ui import raster
+        from hr_insight.ui.charts import ScatterChart
+
+        taille = ScatterChart.DOT
+        pochoir = raster.Raster(taille)
+        pochoir.paint(raster._circle(taille / 2.0, taille / 2.0 - 0.5),
+                      (47, 93, 138), samples=ScatterChart.DOT_SAMPLES)
+        ligne = pochoir.pixels[taille // 2]
+        couvertures = {round(pixel[3], 3) for pixel in ligne}
+        partielles = [c for c in couvertures if 0.0 < c < 1.0]
+        self.assertTrue(partielles,
+                        "aucun pixel de bord partiellement couvert : "
+                        "le bord est franc, donc crénelé")
+
+    def test_the_sampling_actually_reaches_the_pixels(self):
+        """Monter l'échantillonnage doit changer l'image, sinon le réglage
+        ne fait rien."""
+        from hr_insight.ui import raster
+        from hr_insight.ui.charts import ScatterChart
+
+        grossier = raster.disc(ScatterChart.DOT, (47, 93, 138), samples=2)
+        fin = raster.disc(ScatterChart.DOT, (47, 93, 138),
+                          samples=ScatterChart.DOT_SAMPLES)
+        self.assertNotEqual(grossier, fin)
+
+
+@needs_display
+class TestThePyramidLayout(ChartCase):
+    """Tranches à gauche, effectifs au bout de leur barre."""
+
+    def chart(self):
+        from hr_insight.ui.charts import PyramidChart
+
+        chart = self.build(PyramidChart)
+        chart.set_rows([
+            {"label": "20-29", "female": 43, "male": 34},
+            {"label": "30-39", "female": 122, "male": 143},
+            {"label": "40-49", "female": 174, "male": 191},
+        ])
         self.root.update()
-        self.assertIsNotNone(chart.tooltip.window)
+        return chart
+
+    def placés(self, chart):
+        return {chart.canvas.itemcget(item, "text"):
+                chart.canvas.coords(item)
+                for item in self.items(chart.canvas, "text")}
+
+    def test_the_bands_sit_on_the_left_edge(self):
+        """Elles occupaient la gouttière centrale, où elles séparaient les
+        deux ailes au lieu de les laisser se répondre."""
+        chart = self.chart()
+        for libellé in ("20-29", "30-39", "40-49"):
+            self.assertLess(self.placés(chart)[libellé][0], 20, libellé)
+
+    def test_each_count_sits_at_the_end_of_its_bar(self):
+        """À une colonne fixe, le nombre flottait loin d'une barre courte."""
+        chart = self.chart()
+        textes = self.placés(chart)
+        barres = [chart.canvas.coords(item)
+                  for item in self.items(chart.canvas, "rectangle")]
+        # La plus longue aile femme est celle de 174 : son nombre doit en
+        # toucher le bout, donc être plus à gauche que celui de 43.
+        self.assertLess(textes["174"][0], textes["43"][0])
+        self.assertGreater(textes["191"][0], textes["34"][0])
+        self.assertTrue(barres)
+
+    def test_the_two_wings_share_one_scale(self):
+        """Sans quoi une aile deux fois plus courte représenterait le même
+        effectif."""
+        chart = self.chart()
+        largeurs = sorted(c[2] - c[0]
+                          for c in (chart.canvas.coords(item)
+                                    for item in self.items(chart.canvas,
+                                                           "rectangle")))
+        # 191 est le sommet : 43 doit faire 43/191 de sa longueur.
+        self.assertAlmostEqual(largeurs[0] / largeurs[-1], 34 / 191, places=1)
+
+
+@needs_display
+class TestTheScaleEnds(ChartCase):
+    """Le minimum et le maximum, au-dessus et non sur le tracé."""
+
+    def chart(self):
+        from hr_insight.ui.charts import ScaleChart
+
+        chart = self.build(ScaleChart)
+        chart.set_salary({
+            "min": 0.0, "max": 8017.0, "p10": 1922.0, "p25": 2167.0,
+            "p50": 2588.0, "median": 2588.0, "p75": 3090.0, "p90": 3861.0,
+            "published_percentiles": [
+                {"key": "p10", "label": "P10"}, {"key": "p25", "label": "Q1"},
+                {"key": "p50", "label": "Médiane"},
+                {"key": "p75", "label": "Q3"}, {"key": "p90", "label": "P90"}],
+        }, "EUR")
+        self.root.update()
+        return chart
+
+    def test_the_ends_are_above_the_scale(self):
+        """Posés à la hauteur du trait, ils s'écrivaient par-dessus."""
+        chart = self.chart()
+        hauteurs = {chart.canvas.itemcget(item, "text"):
+                    chart.canvas.coords(item)[1]
+                    for item in self.items(chart.canvas, "text")}
+        bornes = [y for texte, y in hauteurs.items()
+                  if texte.startswith(("min ", "max "))]
+        self.assertEqual(len(bornes), 2)
+        boîte = [chart.canvas.coords(item)
+                 for item in self.items(chart.canvas, "rectangle")]
+        self.assertTrue(boîte)
+        for y in bornes:
+            self.assertLess(y, boîte[0][1], "la borne touche la boîte")
+
+    def test_the_ends_are_on_a_single_line(self):
+        """Sur deux lignes, ils mordaient sur la rangée des percentiles."""
+        chart = self.chart()
+        textes = [chart.canvas.itemcget(item, "text")
+                  for item in self.items(chart.canvas, "text")]
+        bornes = [t for t in textes if t.startswith(("min ", "max "))]
+        self.assertEqual(len(bornes), 2)
+        for borne in bornes:
+            self.assertNotIn("\n", borne)
 
 
 @needs_display

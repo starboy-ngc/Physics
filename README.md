@@ -80,8 +80,7 @@ dépendance, aucun binaire tiers.
 - **Dispersion** : Q3−Q1, Q3/Q1, P90/P10, moyenne/médiane, coefficient de
   variation. L'écart-type reste une statistique technique, pas un KPI.
   À l'écran, chaque segment porte son **ouverture de grille chiffrée**
-  (`× 1,20`) et sa médiane, en deux colonnes triables, et se trace au choix
-  en **boîtes** ou en **ruban de densité**.
+  (`× 1,20`) et sa médiane, en deux colonnes triables.
 - **Distribution** : histogramme, séparation femmes / hommes **dos à dos**
   sur les mêmes classes — l'écart global dit *de combien*, la forme des
   deux distributions dit *où* —, situations atypiques (méthode

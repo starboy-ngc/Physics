@@ -584,18 +584,6 @@ grilles les plus ouvertes en tête. En mode dédoublé, cette entrée cède la
 place à « Écart F/H décroissant ». Un tri qu'aucune colonne ne montre se
 lirait comme un désordre, et chaque mode ne propose donc que les siens.
 
-### Deux tracés
-
-**Tracé** choisit entre **Boîtes** et **Ruban**. La boîte donne cinq repères
-— P10, Q1, médiane, Q3, P90 — que l'on cite en réunion. Le ruban donne
-directement ce que l'œil cherchait : où est la masse et de combien elle est
-décalée, le cœur plein portant la moitié centrale. Les repères chiffrés n'y
-sont plus écrits, ils passent au survol : c'est le prix de ce tracé, et
-c'est pourquoi la boîte reste le tracé par défaut.
-
-Les deux partagent la même échelle : changer de tracé ne change jamais ce
-qui est comparé.
-
 ## 5 quinquies. Vérifier les calculs dans le classeur Excel
 
 Le classeur ne se contente pas d'afficher des résultats : **les indicateurs
