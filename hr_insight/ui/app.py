@@ -378,7 +378,7 @@ class Application(tk.Tk):
         self.notice = tk.Label(content.inner, background=theme.WARN_SOFT,
                                foreground=theme.WARN, font=self.fonts.small,
                                justify="left", anchor="w", padx=14, pady=9,
-                               wraplength=900)
+                               wraplength=1100)
         self.pages = tk.Frame(content.inner, background=theme.CANVAS)
         self.pages.pack(fill="both", expand=True)
         # Le panneau d'attente prend la place des pages le temps du calcul.
@@ -1829,6 +1829,14 @@ class Application(tk.Tk):
         for key, allowed in eligible.items():
             self.tabbar.set_visible(key, allowed)
 
+        # Chaque vue retiree est accompagnee de la raison que le moteur a
+        # deja ecrite pour elle. Un message commun — « effectif insuffisant,
+        # les seuils s'appliquent a 8 salaries » — melait deux nombres de
+        # nature differente : l'effectif analyse et le seuil requis. Lu vite,
+        # le premier passait pour le second, et l'on cherchait ou l'outil
+        # etait regle sur huit. Il ne l'a jamais ete : huit etait le nombre
+        # de salaries retenus.
+        raisons = self._hidden_reasons(payload, charts)
         hidden = [label for key, label in TABS
                   if not eligible[key] and key not in ON_DEMAND]
         # Un graphique retire alors que son onglet reste ouvert doit
@@ -1836,6 +1844,12 @@ class Application(tk.Tk):
         # entree dans la barre et rien ne dit pourquoi.
         if eligible["graphique"]:
             hidden += [label for key, label in CHARTS if not charts[key]]
+        manquantes = [(label, raisons.get(key, ""))
+                      for key, label in TABS
+                      if not eligible[key] and key not in ON_DEMAND]
+        if eligible["graphique"]:
+            manquantes += [(label, raisons.get(key, ""))
+                           for key, label in CHARTS if not charts[key]]
         headcount = payload["population"].get("headcount", 0)
         scope = payload.get("scope") or {}
         # Les filtres se lisent la plutot qu'en tete d'un onglet : ils
@@ -1873,12 +1887,20 @@ class Application(tk.Tk):
                 "indicateurs sont calculés sur des données que le contrôle "
                 "qualité signale. Ouvrez l'onglet « Qualité » avant de les "
                 "publier.")
-        if hidden:
-            listed = ", ".join(hidden)
-            messages.append(
-                f"{listed} : effectif insuffisant pour publier ces résultats. "
-                f"Les seuils de confidentialité s'appliquent à {headcount} "
-                "salariés ; élargissez le filtre pour les afficher.")
+        if manquantes:
+            # L'effectif analyse d'abord, et nomme comme tel : c'est lui
+            # qu'on reconnait, et il ne doit pas pouvoir se lire comme un
+            # seuil. Puis une ligne par vue, portant le seuil qui lui
+            # manque — ils ne sont pas tous les memes.
+            lignes = [f"La sélection analysée compte {headcount} salarié(s). "
+                      f"{len(manquantes)} vue(s) en demandent davantage :"]
+            for label, raison in manquantes:
+                lignes.append(f"    • {label} — "
+                              + (raison or "effectif insuffisant pour "
+                                           "publier ces résultats."))
+            lignes.append("Élargissez le filtre, ou ajustez les seuils dans "
+                          "« Paramètres » → Confidentialité.")
+            messages.append("\n".join(lignes))
         if not messages:
             self.notice.pack_forget()
             return
@@ -1887,6 +1909,37 @@ class Application(tk.Tk):
             background=theme.CRIT_SOFT if critiques else theme.WARN_SOFT,
             foreground=theme.CRIT if critiques else theme.WARN)
         self.notice.pack(fill="x", after=self.tabbar)
+
+    def _hidden_reasons(self, payload: Dict[str, Any],
+                        charts: Dict[str, bool]) -> Dict[str, str]:
+        """La raison propre a chaque vue retiree.
+
+        Elle est relue dans le resultat d'analyse, jamais reecrite ici : le
+        moteur sait quel seuil il a applique — dix pour un graphique, cinq
+        de chaque sexe pour un ecart —, et une phrase recomposee dans la
+        fenetre finirait par annoncer un seuil que le calcul n'emploie pas.
+        """
+        rules = metrics.PrivacyRules.from_config(self.configuration)
+        distribution = (payload.get("distribution") or {}).get("warning", "")
+        nuage = (payload.get("scatter") or {}).get("warning", "")
+        boites = (f"Effectif insuffisant pour tracer une dispersion "
+                  f"(minimum paramétré : {rules.min_chart} salariés).")
+        return {
+            "population": ((payload.get("salary") or {}).get("warning")
+                           or (payload.get("population") or {}).get("warning")
+                           or ""),
+            # L'onglet ne tombe que si les trois graphiques tombent : la
+            # raison du premier d'entre eux vaut pour l'onglet.
+            "graphique": next((raison for actif, raison in
+                               ((charts.get("distribution"), distribution),
+                                (charts.get("nuage"), nuage),
+                                (charts.get("boites"), boites))
+                               if not actif and raison), ""),
+            "equite": (payload.get("pay_equity") or {}).get("warning", ""),
+            "distribution": distribution,
+            "nuage": nuage,
+            "boites": boites,
+        }
 
     def _kpi_font(self, values, width: int, per_row: int,
                   floor: int = 600, smallest: int = 12):

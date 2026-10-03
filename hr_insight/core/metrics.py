@@ -365,7 +365,7 @@ def calculate_distribution_metrics(
             "available": False,
             "warning": (
                 "Effectif insuffisant pour produire une distribution "
-                f"(minimum paramètre : {rules.min_chart} salariés)."
+                f"(minimum paramétré : {rules.min_chart} salariés)."
             ),
             "bins": [],
             "outliers": [],
@@ -782,7 +782,7 @@ def scatter_dataset(
             "available": False,
             "warning": (
                 "Effectif insuffisant pour afficher le nuage de points "
-                f"(minimum paramètre : {rules.min_chart} salariés)."
+                f"(minimum paramétré : {rules.min_chart} salariés)."
             ),
             "points": [], "trend": None,
             "x_field": x_field, "y_field": y_field, "color_field": color_field,

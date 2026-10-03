@@ -1356,6 +1356,51 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app.update()
         return app
 
+    def test_the_banner_never_passes_the_headcount_off_as_a_threshold(self):
+        """Le défaut qui a fait chercher un réglage inexistant.
+
+        Le bandeau disait « les seuils de confidentialité s'appliquent à 8
+        salariés ». Deux nombres de nature différente — l'effectif analysé
+        et le seuil requis — tenaient la même place dans la phrase, et le
+        premier se lisait comme le second : on cherchait alors où l'outil
+        était réglé sur huit. Il ne l'a jamais été.
+        """
+        app = self._analysed(8)
+        try:
+            texte = app.notice.cget("text")
+            self.assertIn("La sélection analysée compte 8 salarié(s)", texte)
+            # Le seuil, lui, est celui que le moteur a appliqué, et il est
+            # écrit à côté de la vue qu'il retire.
+            self.assertIn("minimum paramétré : 10 salariés", texte)
+            self.assertNotIn("seuils de confidentialité s'appliquent à 8",
+                             texte)
+        finally:
+            app.destroy()
+
+    def test_each_hidden_view_carries_its_own_reason(self):
+        """Les seuils ne sont pas les mêmes : dix pour un graphique, cinq de
+        chaque sexe pour un écart. Une phrase commune en annonçait un seul,
+        donc un faux pour l'autre."""
+        app = self._analysed(8)
+        try:
+            texte = app.notice.cget("text")
+            self.assertIn("Graphique —", texte)
+            self.assertIn("Écarts F/H —", texte)
+            self.assertIn("5 salariés de chaque sexe", texte)
+            self.assertIn("Confidentialité", texte)
+        finally:
+            app.destroy()
+
+    def test_the_reason_is_the_engine_own_words(self):
+        """Recomposée dans la fenêtre, elle finirait par annoncer un seuil
+        que le calcul n'emploie pas."""
+        app = self._analysed(8)
+        try:
+            attendu = app.result.payload["pay_equity"]["warning"]
+            self.assertIn(attendu, app.notice.cget("text"))
+        finally:
+            app.destroy()
+
     def test_a_population_below_the_publication_threshold_keeps_only_quality(self):
         app = self._analysed(3)
         try:
@@ -1729,7 +1774,9 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             self.assertTrue(app.notice.winfo_ismapped())
             text = app.notice.cget("text")
             self.assertIn("Graphique", text)
-            self.assertIn("effectif insuffisant", text)
+            # La raison est celle du moteur, qui la commence par une
+            # majuscule : c'est le debut d'une phrase a lui.
+            self.assertIn("effectif insuffisant", text.lower())
             self.assertIn("masquée", app.status.cget("text"))
         finally:
             app.destroy()
