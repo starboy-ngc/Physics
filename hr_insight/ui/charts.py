@@ -1768,9 +1768,13 @@ class GapChart(tk.Frame):
     qu'on vient chercher sur cette page, et il etait rendu en tableau.
 
     Les barres divergent : a droite les categories ou les femmes sont moins
-    remunerees, a gauche l'inverse. Une categorie sous le seuil de
-    publication garde sa ligne — l'effacer laisserait croire qu'elle
-    n'existe pas — mais sans barre ni chiffre.
+    remunerees, a gauche l'inverse.
+
+    Les categories sous le seuil de publication ne sont pas effacees — cela
+    laisserait croire qu'elles n'existent pas — mais elles ne prennent plus
+    une ligne chacune : quatorze lignes « masqué » occupaient un ecran
+    entier sans rien apprendre de plus que leur liste. Elles se replient
+    donc en un seul paragraphe, nommees, sous les barres.
     """
 
     ROW = 30
@@ -1792,7 +1796,11 @@ class GapChart(tk.Frame):
                                 highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
         self.rows: List[Dict[str, Any]] = []
+        #: Ce que l'utilisateur a choisi : surligne, et ouvre la fiche.
         self.selected: Optional[str] = None
+        #: La tete du classement. Elle ne surligne rien : elle sert au
+        #: graphique des personnes, qui ne peut montrer qu'un groupe.
+        self.featured: Optional[str] = None
         self._on_select = on_select
         self._currency = "EUR"
         self.canvas.bind("<Button-1>", self._clicked)
@@ -1805,10 +1813,17 @@ class GapChart(tk.Frame):
                  currency: str = "EUR") -> None:
         self.rows = [dict(row) for row in rows]
         self._currency = currency
-        if self.selected not in {row.get("category") for row in self.rows}:
-            self.selected = (self.rows[0].get("category") if self.rows
-                             else None)
-        self.configure(height=max(len(self.rows), 1) * self.ROW + 10)
+        traçables = self._drawn()
+        # Deux notions, qui n'en faisaient qu'une : ce que l'utilisateur a
+        # choisi, et ce que le classement met en tete. La premiere surligne
+        # une ligne et ouvre la fiche du groupe ; la seconde ne fait que
+        # designer le groupe dont le graphique des personnes a besoin.
+        # Confondues, la page surlignait un groupe en gras pendant que le
+        # bloc du dessous demandait d'en choisir un.
+        if self.selected not in {row.get("category") for row in traçables}:
+            self.selected = None
+        self.featured = (traçables[0].get("category") if traçables else None)
+        self.configure(height=max(len(traçables), 1) * self.ROW + 10)
         self.pack_propagate(False)
         self.redraw()
 
@@ -1818,10 +1833,18 @@ class GapChart(tk.Frame):
 
     # ------------------------------------------------------------ souris
 
+    def _drawn(self) -> List[Dict[str, Any]]:
+        """Les categories qui ont une barre. Les autres sont nommees en pied."""
+        return [row for row in self.rows if row.get("published")]
+
+    def _withheld(self) -> List[Dict[str, Any]]:
+        return [row for row in self.rows if not row.get("published")]
+
     def _row_at(self, y: int) -> Optional[Dict[str, Any]]:
+        traçables = self._drawn()
         index = int((y - 4) // self.ROW)
-        if 0 <= index < len(self.rows):
-            return self.rows[index]
+        if 0 <= index < len(traçables):
+            return traçables[index]
         return None
 
     def _clicked(self, event) -> None:
@@ -1844,6 +1867,10 @@ class GapChart(tk.Frame):
         width = self.canvas.winfo_width()
         if width < 200 or not self.rows:
             return
+        traçables = self._drawn()
+        if not traçables:
+            self._draw_withheld(0, width)
+            return
         piste = max(width - self.LABEL - self.COUNTS - self.VALUE
                     - self.STAKE - 24, 40)
         depart = self.LABEL + self.COUNTS
@@ -1852,8 +1879,7 @@ class GapChart(tk.Frame):
         # il gaspillait la moitie de la largeur des qu'aucun ecart n'etait
         # negatif — le cas courant. Il ne se decale que s'il y a quelque
         # chose a gauche de lui.
-        ecarts = [row.get("gap") or 0.0 for row in self.rows
-                  if row.get("published")]
+        ecarts = [row.get("gap") or 0.0 for row in traçables]
         bas = min(ecarts, default=0.0)
         haut = max(ecarts, default=0.0)
         bas, haut = min(bas, 0.0), max(haut, 0.0)
@@ -1864,10 +1890,11 @@ class GapChart(tk.Frame):
         # premier — venait toucher son propre chiffre.
         echelle = max(piste - 10, 20) / etendue
 
-        self.canvas.create_line(zero, 2, zero, len(self.rows) * self.ROW + 4,
+        self.canvas.create_line(zero, 2, zero,
+                                len(traçables) * self.ROW + 4,
                                 fill=theme.LINE_STRONG)
 
-        for index, row in enumerate(self.rows):
+        for index, row in enumerate(traçables):
             haut = index * self.ROW + 4
             milieu = haut + self.ROW / 2
             choisi = row.get("category") == self.selected
@@ -1886,12 +1913,6 @@ class GapChart(tk.Frame):
                 text=f'{row.get("female_count", 0)} / '
                      f'{row.get("male_count", 0)}',
                 font=_font(10), fill=theme.MUTED)
-
-            if not row.get("published"):
-                self.canvas.create_text(
-                    zero + 10, milieu, anchor="w", text="masqué",
-                    font=_font(10), fill=theme.FAINT)
-                continue
 
             ecart = row.get("gap") or 0.0
             longueur = abs(ecart) * echelle
@@ -1925,6 +1946,31 @@ class GapChart(tk.Frame):
                     width - 8, milieu, anchor="e",
                     text=_thousands_label(enjeu),
                     font=_font(10), fill=theme.MUTED)
+
+        self._draw_withheld(len(traçables) * self.ROW + 4, width)
+
+    def _draw_withheld(self, top: float, width: float) -> None:
+        """Les categories sans barre, nommees en un paragraphe.
+
+        Les compter sans les nommer priverait d'une information reelle — on
+        veut savoir *lesquelles* n'ont pas de resultat — mais leur donner
+        une ligne chacune coutait un ecran pour quatorze fois le meme mot.
+        """
+        retenues = self._withheld()
+        hauteur = int(top)
+        if retenues:
+            noms = ", ".join(str(row.get("category", "")) for row in retenues)
+            texte = (f"{len(retenues)} groupe(s) sans écart publiable — "
+                     f"effectif insuffisant d'un côté au moins : {noms}.")
+            item = self.canvas.create_text(
+                self.LABEL - 12, top + 10, anchor="nw", text=texte,
+                width=max(width - self.LABEL - 20, 120),
+                font=_font(10), fill=theme.FAINT)
+            cadre = self.canvas.bbox(item)
+            hauteur = int(cadre[3]) if cadre else hauteur
+        voulue = hauteur + 10
+        if self.winfo_height() != voulue:
+            self.configure(height=voulue)
 
 
 def _thousands_label(value: float) -> str:

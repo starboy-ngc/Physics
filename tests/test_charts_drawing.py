@@ -1318,13 +1318,32 @@ class TestTheGapChart(ChartCase):
         moitie = max(x2 - x1 for x1, x2 in self.barres(centre))
         self.assertGreater(large, moitie * 1.5)
 
-    def test_a_masked_category_keeps_its_line_but_has_no_bar(self):
-        """L'effacer laisserait croire qu'elle n'existe pas ; lui donner
-        une barre publierait un ecart que le seuil protege."""
+    def test_a_masked_category_is_named_but_takes_no_line(self):
+        """L'effacer laisserait croire qu'elle n'existe pas ; lui donner une
+        barre publierait un écart que le seuil protège ; lui donner une
+        ligne coûtait un écran pour quatorze fois le mot « masqué »."""
         graphique = self.chart([10.0, 0.0, 20.0], publiees=[True, False, True])
         self.assertEqual(len(self.barres(graphique)), 2)
-        self.assertIn("masqué", self.texts(graphique.canvas))
-        self.assertIn("Poste 1", " ".join(self.texts(graphique.canvas)))
+        joint = " ".join(self.texts(graphique.canvas))
+        self.assertIn("Poste 1", joint)
+        self.assertIn("sans écart publiable", joint)
+        self.assertNotIn("masqué", self.texts(graphique.canvas))
+
+    def test_clicking_lands_on_the_category_under_the_cursor(self):
+        """Les lignes masquées ayant disparu, l'ordonnée ne correspondait
+        plus aux catégories si le calcul les comptait encore."""
+        graphique = self.chart([10.0, 0.0, 20.0], publiees=[True, False, True])
+        self.root.update()
+        # La deuxième ligne tracée est « Poste 2 », la masquée n'en prend pas.
+        rang = graphique._row_at(int(graphique.ROW * 1.5) + 4)
+        self.assertEqual(rang["category"], "Poste 2")
+
+    def test_everything_masked_still_names_the_groups(self):
+        graphique = self.chart([0.0, 0.0], publiees=[False, False])
+        self.root.update()
+        joint = " ".join(self.texts(graphique.canvas))
+        self.assertIn("Poste 0", joint)
+        self.assertEqual(self.barres(graphique), [])
 
     def test_the_value_never_overlaps_its_own_bar(self):
         """Ecrite au bout de la barre, la valeur passait dessus des que la
@@ -1352,11 +1371,34 @@ class TestTheGapChart(ChartCase):
         self.assertEqual(retenus, ["Poste 1"])
         self.assertEqual(graphique.selected, "Poste 1")
 
-    def test_the_first_row_is_selected_when_nothing_is(self):
-        """Une page qui s'ouvre sur une fiche vide demande un clic pour ne
-        rien apprendre."""
+    def test_no_row_is_highlighted_until_one_is_chosen(self):
+        """Le premier groupe était surligné d'office, en gras et sur fond
+        teinté, pendant que le bloc du dessous demandait d'en choisir un :
+        la page montrait une sélection dont elle refusait le détail.
+
+        Deux décisions se contredisaient dans le code. Celle qui est tenue
+        est celle qui porte une raison : choisir à la place de l'utilisateur
+        lui ferait lire un détail qu'il n'a pas demandé — surtout après un
+        changement de regroupement, où la page change de question. Le vide
+        que l'autre voulait éviter se règle en repliant les tableaux vides,
+        pas en désignant un groupe.
+        """
         graphique = self.chart([10.0, 20.0])
-        self.assertEqual(graphique.selected, "Poste 0")
+        self.assertIsNone(graphique.selected)
+        self.root.update()
+        # Et rien n'est peint en fond : le surlignage suit la sélection.
+        fonds = [item for item in self.items(graphique.canvas, "rectangle")
+                 if graphique.canvas.coords(item)[0] == 0]
+        self.assertEqual(fonds, [])
+
+    def test_choosing_a_row_highlights_it(self):
+        graphique = self.chart([10.0, 20.0])
+        graphique.select("Poste 1")
+        self.root.update()
+        self.assertEqual(graphique.selected, "Poste 1")
+        fonds = [item for item in self.items(graphique.canvas, "rectangle")
+                 if graphique.canvas.coords(item)[0] == 0]
+        self.assertEqual(len(fonds), 1)
 
     def test_an_empty_chart_draws_nothing_and_does_not_raise(self):
         from hr_insight.ui.charts import GapChart

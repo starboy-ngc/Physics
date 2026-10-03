@@ -3200,6 +3200,24 @@ class Application(tk.Tk):
         self.surroundings_title.configure(text="")
         self._fill(self.surroundings_tree, [])
         self.surroundings_note.configure(text="")
+        # Deux tableaux vides, en-tetes compris, tenaient un demi-ecran sous
+        # un titre qui ne nommait rien. Ils se replient : la page descend
+        # alors du classement aux personnes sans traverser le vide, et ils
+        # reviennent des qu'un groupe est choisi.
+        self._fold_detail(True)
+
+    def _fold_detail(self, folded: bool) -> None:
+        """Replie ou deploie les deux tableaux du groupe retenu.
+
+        Le titre reste : c'est lui qui dit qu'il faut choisir un groupe. Ce
+        sont les en-tetes de colonnes et les cadres vides qui s'en vont.
+        """
+        for bloc in (self.profile_tree, self.surroundings_tree):
+            cadre = bloc.master
+            if folded:
+                cadre.pack_forget()
+            elif not cadre.winfo_manager():
+                cadre.pack(fill="both", expand=True, padx=18, pady=(0, 18))
 
     def _selected_group(self) -> Optional[str]:
         """Le groupe retenu, ou rien si la page parle de l'ensemble."""
@@ -3273,6 +3291,7 @@ class Application(tk.Tk):
             ], per_row=4)
             self.profile_kpis.pack_configure(padx=24)
 
+        self._fold_detail(False)
         self._fill(self.profile_tree,
                    self._breakdown_rows(breakdown, currency))
         seuil = breakdown.get("threshold", 5)
@@ -3386,7 +3405,8 @@ class Application(tk.Tk):
         # Le graphique ne montre qu'un groupe : superposer vingt echelles de
         # salaire sur une meme piste ne dirait rien. Sans groupe retenu, il
         # montre celui qui vient en tete du classement.
-        vedette = groupe or (self.gap_chart.selected or "")
+        vedette = groupe or (self.gap_chart.selected
+                             or self.gap_chart.featured or "")
         situé = self._people_points(vedette)
 
         if groupe:
@@ -3405,10 +3425,19 @@ class Application(tk.Tk):
         lignes = bloc["rows"]
         base = (bloc.get("basis") or {}).get("label") or ""
 
-        étiquette = (dimension_label(self.configuration,
-                                     self._explain_field())
-                     if self._explain_field() else "Lecture")
-        self.lagging_tree.heading("Lecture", text=étiquette)
+        # Tant que rien n'explique, la colonne ne contient que deux cents
+        # tirets : elle se retire au lieu de les afficher, et revient des
+        # qu'une dimension est choisie.
+        colonnes = ("Salarié", "Sexe", "Groupe", "Lecture",
+                    "Salaire à temps plein", "Écart au groupe")
+        if self._explain_field():
+            self.lagging_tree.heading(
+                "Lecture",
+                text=dimension_label(self.configuration, self._explain_field()))
+            self.lagging_tree.configure(displaycolumns=colonnes)
+        else:
+            self.lagging_tree.configure(
+                displaycolumns=[nom for nom in colonnes if nom != "Lecture"])
         self._fill(self.lagging_tree, [
             (self._identity_of(ligne["row"]) or ligne["reference"],
              {"F": "Femme", "H": "Homme"}.get(ligne["sex"], "—"),
@@ -3438,6 +3467,14 @@ class Application(tk.Tk):
                 "personnes.")
         if len(lignes) > 200:
             note.append("Les 200 plus grands décrochages sont affichés.")
+        if bloc.get("implausible_rows"):
+            combien = bloc["implausible_rows"]
+            note.append(
+                f"{combien} rémunération(s) sous "
+                f'{format_money(bloc.get("implausible_floor"), devise)} '
+                "figurent en fin de liste : un montant si bas donne le plus "
+                "grand décrochage possible sans rien dire d'un écart — "
+                "l'onglet Qualité les signale comme lignes à corriger.")
         note.append("Ces noms restent à l'écran : aucun document produit, "
                     "aucun export, aucun journal n'en porte.")
         self.lagging_note.configure(text=" ".join(note))

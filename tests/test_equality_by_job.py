@@ -417,6 +417,43 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
         self.assertEqual(sorted(ligne["sex"] for ligne in bloc["rows"]),
                          ["F", "F", "H"])
 
+    def test_an_implausible_amount_does_not_head_the_ranking(self):
+        """Un salaire à zéro donne le plus grand décrochage possible et
+        prenait la première place d'une liste qui sert à décider de
+        revalorisations. Ce n'est pas un écart, c'est une ligne à corriger.
+        """
+        from hr_insight.core.pay_equity import lagging_members
+
+        self.population.employees[7].base_salary = 0.0
+        bloc = lagging_members(self.population, self.config, "job_title")
+        self.assertEqual(bloc["implausible_rows"], 1)
+        # Elle est là — rien n'est caché — mais en dernier.
+        self.assertTrue(bloc["rows"][-1]["implausible"])
+        self.assertAlmostEqual(bloc["rows"][-1]["amount"], 0.0)
+        self.assertFalse(any(ligne["implausible"]
+                             for ligne in bloc["rows"][:-1]))
+        # Et le décrochage le plus grand parmi les montants plausibles
+        # reprend la tête.
+        self.assertAlmostEqual(bloc["rows"][0]["gap"], 15.0, places=6)
+
+    def test_the_floor_is_the_configured_one(self):
+        """Le seuil est celui du contrôle qualité, pas un nombre écrit dans
+        le moteur des écarts."""
+        from hr_insight.core.pay_equity import lagging_members
+
+        config = make_config({"salary_parameters.min_plausible": 35000.0})
+        bloc = lagging_members(self.population, config, "job_title")
+        self.assertAlmostEqual(bloc["implausible_floor"], 35000.0)
+        # Les trois à 34 000 passent désormais sous le plancher.
+        self.assertEqual(bloc["implausible_rows"], 3)
+
+    def test_nothing_is_flagged_when_every_amount_holds_up(self):
+        from hr_insight.core.pay_equity import lagging_members
+
+        bloc = lagging_members(self.population, self.config, "job_title")
+        self.assertEqual(bloc["implausible_rows"], 0)
+        self.assertFalse(any(ligne["implausible"] for ligne in bloc["rows"]))
+
     def test_it_carries_no_identity_at_all(self):
         from hr_insight.core.pay_equity import lagging_members
 

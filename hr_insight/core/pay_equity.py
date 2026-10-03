@@ -596,6 +596,13 @@ def _positions_of(membres: Sequence[Any], nom: str, config: Configuration,
     """
     champ = base["field"]
     montants = comparison_amounts(membres, champ, base["full_time"])
+    # Plancher de plausibilite, celui-la meme dont le controle qualite se
+    # sert. Un salaire a zero ou a deux cents euros donne le plus grand
+    # decrochage possible et prend la tete du classement : ce n'est pas un
+    # ecart de remuneration, c'est une ligne a corriger dans le fichier, et
+    # elle occupait la place d'un vrai cas.
+    plancher = config.number("salary_parameters.min_plausible", 1000.0,
+                             minimum=0.0)
     bloc: Dict[str, Any] = {
         "group": str(nom), "basis": base, "rows": [],
         "reference": None, "threshold": rules.min_publish,
@@ -635,6 +642,10 @@ def _positions_of(membres: Sequence[Any], nom: str, config: Configuration,
             "shortfall": (repère - float(montant)) if écart > 0 else 0.0,
             "lagging": écart > 0,
             "fte": salarié.value(FTE_FIELD),
+            # Signale, jamais retire : une remuneration reellement proche de
+            # zero est un cas a voir. Elle se range seulement apres les
+            # autres, et le dit.
+            "implausible": float(montant) < plancher,
             "explain": (str(salarié.value(explain_field) or "")
                         if explain_field else ""),
         })
@@ -701,12 +712,20 @@ def lagging_members(population: Population, config: Configuration,
             retenus += 1
             continue
         lignes.extend(ligne for ligne in bloc["rows"] if ligne["lagging"])
-    lignes.sort(key=lambda ligne: -ligne["gap"])
+    # Les montants invraisemblables ferment la marche. Les trier avec les
+    # autres mettait une erreur de saisie au premier rang d'une liste qui
+    # sert a decider de revalorisations.
+    lignes.sort(key=lambda ligne: (bool(ligne.get("implausible")),
+                                   -ligne["gap"]))
     return {
         "basis": base,
         "rows": lignes,
         "groups": len(groupes),
         "withheld_groups": retenus,
+        "implausible_rows": sum(1 for ligne in lignes
+                                if ligne.get("implausible")),
+        "implausible_floor": config.number("salary_parameters.min_plausible",
+                                           1000.0, minimum=0.0),
         "explain_field": explain_field,
         "threshold": rules.min_publish,
         "reference_label": "médiane du groupe",

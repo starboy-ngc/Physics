@@ -589,6 +589,40 @@ class TestTheSinglePage(PayTransparencyCase):
         # dans tous les groupes a la fois.
         self.assertTrue(self.app.lagging_tree.get_children())
 
+    def test_the_empty_detail_folds_instead_of_showing_bare_headers(self):
+        """Deux tableaux vides, en-têtes compris, tenaient un demi-écran
+        sous un titre qui ne nommait rien."""
+        from hr_insight.ui.app import ALL_CATEGORIES
+
+        self.app.category_value.set(ALL_CATEGORIES)
+        self.app._show_profile()
+        self.app.update()
+        self.assertFalse(self.app.profile_tree.master.winfo_manager())
+        self.assertFalse(self.app.surroundings_tree.master.winfo_manager())
+        # Le titre reste : c'est lui qui dit qu'il faut choisir un groupe.
+        self.assertIn("Choisissez", self.app.detail_title.cget("text"))
+
+    def test_choosing_a_group_brings_the_tables_back(self):
+        self.select()
+        self.app.update()
+        self.assertTrue(self.app.profile_tree.master.winfo_manager())
+        self.assertTrue(self.app.surroundings_tree.master.winfo_manager())
+
+    def test_the_people_graphic_still_has_a_group_without_a_selection(self):
+        """Le graphique ne montre qu'un groupe : sans sélection, celui que
+        le classement met en tête. C'est une vedette, pas un choix — elle
+        ne surligne aucune ligne."""
+        from hr_insight.ui.app import ALL_CATEGORIES
+
+        self.app.category_value.set(ALL_CATEGORIES)
+        self.app._show_profile()
+        self.app.update()
+        self.assertIsNone(self.app.gap_chart.selected)
+        self.assertTrue(self.app.gap_chart.featured)
+        self.assertTrue(self.app.people_chart.rows)
+        self.assertIn(self.app.gap_chart.featured,
+                      self.app.lagging_subtitle.cget("text"))
+
     def test_the_page_carries_no_name_where_it_should_not(self):
         """Le tableau des indicateurs ne porte jamais d'identite.
 
