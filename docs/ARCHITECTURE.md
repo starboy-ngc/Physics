@@ -189,6 +189,14 @@ moteur, et deux chiffres du même nom se contrediraient.
 
 ### Les axes du nuage
 
+Le cadrage garde une marge autour des points extrêmes, **mais ne franchit
+jamais zéro** quand les données ne le franchissent pas : une rémunération,
+une ancienneté, un âge ne sont pas négatifs, et un repère ouvert à −320 EUR
+montre un quart de cadre où aucune donnée ne peut exister. La règle ne cale
+pas l'origine à zéro pour autant — sur des salaires de 25 000 à 80 000, un
+axe partant de zéro écraserait le nuage dans son tiers supérieur, et c'est
+justement leur écart qu'on vient regarder.
+
 Ils sont lus dans `pay_equity_parameters.profile_fields`, qui les déclare
 déjà — champ, libellé et unité — pour la page des écarts. Une seconde liste
 aurait fini par en différer : une prime maison ajoutée au paramétrage serait

@@ -123,14 +123,23 @@ class TestScatterGeometry(unittest.TestCase):
     def test_bounds_add_a_margin(self):
         from hr_insight.ui.charts import ScatterChart
         bounds = ScatterChart._compute_bounds(
-            [{"x": 0, "y": 10}, {"x": 10, "y": 20}])
+            [{"x": 2, "y": 10}, {"x": 10, "y": 20}])
         self.assertIsNotNone(bounds)
         x_min, x_max, y_min, y_max = bounds
         # Sans marge, les points extremes collent aux axes.
-        self.assertLess(x_min, 0)
+        self.assertLess(x_min, 2)
         self.assertGreater(x_max, 10)
         self.assertLess(y_min, 10)
         self.assertGreater(y_max, 20)
+
+    def test_the_margin_never_opens_below_zero(self):
+        """Une anciennete a zero ouvrait le cadre a -0,4 an : un quart de
+        repere ou aucune donnee ne peut exister."""
+        from hr_insight.ui.charts import ScatterChart
+        x_min, _x_max, y_min, _y_max = ScatterChart._compute_bounds(
+            [{"x": 0, "y": 0}, {"x": 10, "y": 20}])
+        self.assertEqual(x_min, 0.0)
+        self.assertEqual(y_min, 0.0)
 
     def test_bounds_of_an_empty_cloud(self):
         from hr_insight.ui.charts import ScatterChart

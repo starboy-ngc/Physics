@@ -1323,3 +1323,66 @@ class TestScaleChart(ChartCase):
         self.root.update()
         self.assertIn("Les percentiles ne sont pas publiés pour cet effectif.",
                       self.texts(chart.canvas))
+
+
+@needs_display
+class TestTheScatterNeverShowsImpossibleValues(ChartCase):
+    """Un repère qui commence sous zéro montre un quart de cadre où aucune
+    donnée ne peut exister.
+
+    La marge qui écarte les points extrêmes des bords ouvrait le cadre de
+    part et d'autre sans réserve. Une rémunération, une ancienneté, un âge
+    ne sont jamais négatifs.
+    """
+
+    def test_a_positive_quantity_never_opens_below_zero(self):
+        from hr_insight.ui.charts import _axis_bounds
+
+        bas, haut = _axis_bounds(0.0, 8000.0)
+        self.assertEqual(bas, 0.0)
+        self.assertGreater(haut, 8000.0)
+
+    def test_the_margin_is_kept_away_from_zero(self):
+        """La règle ne vaut que pour franchir zéro : caler l'origine à zéro
+        sur des salaires de 25 000 à 80 000 écraserait le nuage dans son
+        tiers supérieur, et c'est justement leur écart qu'on regarde."""
+        from hr_insight.ui.charts import _axis_bounds
+
+        bas, haut = _axis_bounds(25000.0, 80000.0)
+        self.assertGreater(bas, 20000.0)
+        self.assertLess(bas, 25000.0)
+        self.assertGreater(haut, 80000.0)
+
+    def test_a_quantity_that_crosses_zero_keeps_its_margin(self):
+        """Une variation peut être négative : la règle ne s'applique qu'aux
+        grandeurs qui ne le sont jamais."""
+        from hr_insight.ui.charts import _axis_bounds
+
+        bas, haut = _axis_bounds(-5.0, 5.0)
+        self.assertLess(bas, -5.0)
+        self.assertGreater(haut, 5.0)
+
+    def test_a_flat_series_still_gets_a_frame(self):
+        """Tous au même montant : sans marge, le cadre serait d'épaisseur
+        nulle et la division par son étendue lèverait."""
+        from hr_insight.ui.charts import _axis_bounds
+
+        bas, haut = _axis_bounds(42.0, 42.0)
+        self.assertLess(bas, haut)
+
+    def test_the_drawn_chart_starts_at_the_origin(self):
+        from hr_insight.ui.charts import ScatterChart
+
+        chart = self.build(ScatterChart)
+        chart.set_dataset({
+            "available": True,
+            "points": [{"x": float(index), "y": float(index) * 100,
+                        "group": "A", "row": index, "reference": str(index)}
+                       for index in range(20)],
+            "groups": ["A"], "trend": None,
+            "x_axis": {"label": "Ancienneté", "kind": "years"},
+            "y_axis": {"label": "Salaire de base", "kind": "money"}}, "EUR")
+        self.root.update()
+        x_min, _x_max, y_min, _y_max = chart._bounds
+        self.assertEqual(x_min, 0.0)
+        self.assertEqual(y_min, 0.0)

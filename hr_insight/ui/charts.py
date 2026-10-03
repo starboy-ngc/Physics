@@ -102,6 +102,28 @@ def _text_width(widget: tk.Misc, text: str) -> float:
     return tkfont.Font(root=widget, font=axis_font()).measure(text)
 
 
+def _axis_bounds(low: float, high: float, margin: float = 0.04):
+    """Bornes d'un axe : une marge, mais jamais de l'autre cote de zero.
+
+    La marge evite que les points extremes collent aux bords. Appliquee sans
+    reserve, elle ouvrait le cadre sous zero : une remuneration ou une
+    anciennete ne sont jamais negatives, et un repere qui commence a
+    -320 EUR montre un quart de cadre ou aucune donnee ne peut exister.
+
+    La regle ne vaut que pour franchir zero. Elle ne cale pas l'origine a
+    zero pour autant : sur des salaires de 25 000 a 80 000, un axe partant
+    de zero ecraserait tout le nuage dans son tiers superieur, et c'est
+    justement l'ecart entre ces salaires qu'on vient regarder.
+    """
+    pad = (high - low) * margin or 1
+    bas, haut = low - pad, high + pad
+    if low >= 0:
+        bas = max(0.0, bas)
+    if high <= 0:
+        haut = min(0.0, haut)
+    return bas, haut
+
+
 def _shorten(widget: tk.Misc, text: str, limit: float, police=None) -> str:
     """Tronque un libelle a la largeur donnee, en mesurant plutot qu'en devinant.
 
@@ -250,12 +272,8 @@ class ScatterChart(tk.Frame):
             return None
         xs = [p["x"] for p in points]
         ys = [p["y"] for p in points]
-        x_min, x_max = min(xs), max(xs)
-        y_min, y_max = min(ys), max(ys)
-        # Une marge evite que les points extremes collent aux axes.
-        x_pad = (x_max - x_min) * 0.04 or 1
-        y_pad = (y_max - y_min) * 0.04 or 1
-        return (x_min - x_pad, x_max + x_pad, y_min - y_pad, y_max + y_pad)
+        return (*_axis_bounds(min(xs), max(xs)),
+                *_axis_bounds(min(ys), max(ys)))
 
     def visible_points(self) -> List[Dict[str, Any]]:
         return [p for p in self.points if p["group"] not in self.hidden]
