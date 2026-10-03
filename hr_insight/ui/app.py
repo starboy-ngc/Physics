@@ -959,8 +959,12 @@ class Application(tk.Tk):
                                           font=self.fonts.small)
         self.colour_choice.pack(side="left", padx=10)
         self.colour_choice.bind("<<ComboboxSelected>>", lambda _e: self._recolour())
-        ttk.Button(controls, text="Réinitialiser le cadrage", style="Ghost.TButton",
-                   command=lambda: self.scatter.reset_view()).pack(side="left")
+        # « Le cadrage » ne disait qu'une partie : les deux axes et la
+        # couleur se changent aussi, et il faut pouvoir revenir au nuage
+        # d'origine sans se souvenir de ce qu'il portait.
+        ttk.Button(controls, text="Réinitialiser le graphique",
+                   style="Ghost.TButton",
+                   command=self._reset_scatter).pack(side="left")
         self.selection_label = tk.Label(controls, text="", background=theme.CANVAS,
                                         foreground=theme.INK, font=self.fonts.small)
         self.selection_label.pack(side="right")
@@ -3562,6 +3566,32 @@ class Application(tk.Tk):
             box.current(champs.index(field))
         elif champs:
             box.current(0)
+
+    def _reset_scatter(self) -> None:
+        """Rend au nuage ses axes, sa couleur et son cadrage d'origine.
+
+        Les trois viennent du parametrage — `chart_parameters` —, jamais de
+        valeurs ecrites ici : un fichier qui declare d'autres axes par
+        defaut doit les retrouver, et non l'anciennete et le salaire de base
+        de la configuration livree.
+        """
+        if not self.result:
+            return
+        defauts = (
+            (self.x_choice, self.configuration.get(
+                "chart_parameters.scatter_x", "tenure_years")),
+            (self.y_choice, self.configuration.get(
+                "chart_parameters.scatter_y", "base_salary")),
+        )
+        for boite, champ in defauts:
+            self._fill_axis_box(boite, champ)
+        couleur = self.configuration.get("chart_parameters.scatter_color_by",
+                                         "business_unit")
+        champs = getattr(self, "_colour_fields", [])
+        if couleur in champs:
+            self.colour_choice.current(champs.index(couleur))
+        self._reaxis()
+        self.scatter.reset_view()
 
     def _reaxis(self) -> None:
         """Recalcule le nuage sur les deux axes choisis.

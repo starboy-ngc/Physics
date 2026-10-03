@@ -119,6 +119,12 @@ LANCER L'INTERFACE
       cliquez un point     -> le sélectionne et l'affiche en haut
       molette              -> zoom ; glisser -> déplacement
       double-clic          -> réinitialise le cadrage
+      « Réinitialiser le graphique » -> rend au nuage ses deux axes,
+                              sa couleur et son cadrage d'origine
+
+    Le déplacement et le zoom ne franchissent jamais zéro sur une
+    grandeur qui n'est jamais négative : il n'y a rien à voir sous
+    une ancienneté ou une rémunération nulle.
       clic sur la légende  -> masque une population
       « Colorer par »      -> change la dimension de couleur
 

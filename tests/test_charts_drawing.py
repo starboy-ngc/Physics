@@ -1386,3 +1386,73 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
         x_min, _x_max, y_min, _y_max = chart._bounds
         self.assertEqual(x_min, 0.0)
         self.assertEqual(y_min, 0.0)
+
+    def _chart(self):
+        from hr_insight.ui.charts import ScatterChart
+
+        chart = self.build(ScatterChart)
+        chart.set_dataset({
+            "available": True,
+            "points": [{"x": float(index), "y": float(index) * 100,
+                        "group": "A", "row": index, "reference": str(index)}
+                       for index in range(20)],
+            "groups": ["A"], "trend": None,
+            "x_axis": {"label": "Ancienneté", "kind": "years"},
+            "y_axis": {"label": "Salaire de base", "kind": "money"}}, "EUR")
+        self.root.update()
+        return chart
+
+    def test_dragging_never_shows_negative_values(self):
+        """Le cadrage d'origine ne franchissait pas zéro, mais le
+        déplacement promenait la fenêtre où il voulait : on se retrouvait à
+        regarder des anciennetés négatives."""
+        chart = self._chart()
+        chart._drag = (500, 300, chart._view)
+
+        class Glissement:
+            x, y = 900, 60
+
+        chart._on_drag(Glissement())
+        self.root.update()
+        x_min, _x_max, y_min, _y_max = chart._view
+        self.assertGreaterEqual(x_min, 0.0)
+        self.assertGreaterEqual(y_min, 0.0)
+
+    def test_dragging_keeps_the_zoom_level(self):
+        """On translate plutôt qu'on ne rogne : rogner changerait le niveau
+        de zoom sous les doigts de l'utilisateur."""
+        chart = self._chart()
+        avant = chart._view
+        largeur = avant[1] - avant[0]
+        chart._drag = (500, 300, avant)
+
+        class Glissement:
+            x, y = 900, 60
+
+        chart._on_drag(Glissement())
+        self.root.update()
+        self.assertAlmostEqual(chart._view[1] - chart._view[0], largeur,
+                               places=6)
+
+    def test_zooming_never_shows_negative_values(self):
+        chart = self._chart()
+        for _ in range(6):
+            chart._zoom(120, 40, 1.15)
+            self.root.update()
+        self.assertGreaterEqual(chart._view[0], 0.0)
+        self.assertGreaterEqual(chart._view[2], 0.0)
+
+    def test_a_quantity_that_can_be_negative_keeps_its_freedom(self):
+        """Une variation peut être négative : le plancher n'existe que pour
+        les grandeurs qui ne le sont jamais."""
+        from hr_insight.ui.charts import ScatterChart
+
+        chart = self.build(ScatterChart)
+        chart.set_dataset({
+            "available": True,
+            "points": [{"x": float(index) - 10, "y": float(index) - 10,
+                        "group": "A", "row": index, "reference": str(index)}
+                       for index in range(20)],
+            "groups": ["A"], "trend": None}, "EUR")
+        self.root.update()
+        self.assertEqual(chart._floors, (None, None))

@@ -197,6 +197,13 @@ pas l'origine à zéro pour autant — sur des salaires de 25 000 à 80 000, un
 axe partant de zéro écraserait le nuage dans son tiers supérieur, et c'est
 justement leur écart qu'on vient regarder.
 
+Le **déplacement et le zoom** s'y tiennent aussi : un plancher par axe,
+posé à zéro quand la grandeur ne descend jamais en dessous, et la fenêtre y
+est ramenée par translation — rogner changerait le niveau de zoom sous les
+doigts de l'utilisateur, ce qui se lit comme un défaut. Sans ce plancher, le
+cadrage d'origine respectait zéro mais un glissement promenait la fenêtre où
+il voulait.
+
 Ils sont lus dans `pay_equity_parameters.profile_fields`, qui les déclare
 déjà — champ, libellé et unité — pour la page des écarts. Une seconde liste
 aurait fini par en différer : une prime maison ajoutée au paramétrage serait

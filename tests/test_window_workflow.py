@@ -903,3 +903,40 @@ class TestTheScatterAxes(WindowCase):
         self.app._recolour()
         self.app.update()
         self.assertEqual(self.app.scatter.dataset["x_field"], "age_years")
+
+    def test_the_reset_button_restores_the_default_chart(self):
+        """« Le cadrage » ne disait qu'une partie : les deux axes et la
+        couleur se changent aussi, et il faut pouvoir revenir au nuage
+        d'origine sans se souvenir de ce qu'il portait."""
+        self._ouvrir()
+        self._choisir(self.app.x_choice, "base_salary")
+        self._choisir(self.app.y_choice, "age_years")
+        self.app._reaxis()
+        self.app.colour_choice.current(2)
+        self.app._recolour()
+        self.app.update()
+        self.assertEqual(self.app.scatter.dataset["x_field"], "base_salary")
+
+        self.app._reset_scatter()
+        self.app.update()
+        self.assertEqual(self.app.scatter.dataset["x_field"], "tenure_years")
+        self.assertEqual(self.app.scatter.dataset["y_field"], "base_salary")
+        self.assertEqual(self.app.x_choice.get(), "Ancienneté")
+        self.assertEqual(self.app.y_choice.get(), "Salaire de base")
+        self.assertEqual(self.app.scatter._view, self.app.scatter._bounds)
+
+    def test_the_reset_follows_the_configuration_not_a_hardcoded_pair(self):
+        """Un fichier qui déclare d'autres axes par défaut doit les
+        retrouver, et non l'ancienneté et le salaire de base de la
+        configuration livrée."""
+        self._ouvrir()
+        données = self.app.configuration.as_dict()
+        données["chart_parameters"]["scatter_x"] = "age_years"
+        données["chart_parameters"]["scatter_y"] = "variable_pay"
+        from hr_insight.core.config import Configuration
+
+        self.app.configuration = Configuration(données)
+        self.app._reset_scatter()
+        self.app.update()
+        self.assertEqual(self.app.scatter.dataset["x_field"], "age_years")
+        self.assertEqual(self.app.scatter.dataset["y_field"], "variable_pay")

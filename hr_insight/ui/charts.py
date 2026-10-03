@@ -200,6 +200,9 @@ class ScatterChart(tk.Frame):
         # et un ramassage les ferait disparaitre du canevas.
         self._dots: Dict[Any, tk.PhotoImage] = {}
         self._view = None            # (x_min, x_max, y_min, y_max) affichee
+        #: Plancher de chaque axe : le deplacement et le zoom ne descendent
+        #: pas en dessous. None quand la grandeur peut etre negative.
+        self._floors = (None, None)
         self._bounds = None          # etendue complete des donnees
         self._drag = None
 
@@ -263,6 +266,7 @@ class ScatterChart(tk.Frame):
         self.hidden.clear()
         self.selected = None
         self._bounds = self._compute_bounds(self.points)
+        self._floors = self._compute_floors(self.points)
         self._view = self._bounds
         self.redraw()
 
@@ -274,6 +278,36 @@ class ScatterChart(tk.Frame):
         ys = [p["y"] for p in points]
         return (*_axis_bounds(min(xs), max(xs)),
                 *_axis_bounds(min(ys), max(ys)))
+
+    def _compute_floors(self, points: Sequence[Dict[str, Any]]):
+        """Plancher de chaque axe, ou None s'il n'y en a pas.
+
+        Le cadrage d'origine ne franchit pas zero, mais le deplacement et le
+        zoom, eux, promenaient la fenetre ou ils voulaient : on se retrouvait
+        a regarder des anciennetes negatives. Un plancher par axe suffit a
+        l'interdire — et il n'existe que si la grandeur elle-meme ne descend
+        jamais sous zero.
+        """
+        if not points:
+            return (None, None)
+        return (0.0 if min(p["x"] for p in points) >= 0 else None,
+                0.0 if min(p["y"] for p in points) >= 0 else None)
+
+    def _clamp_view(self, view):
+        """Ramene la fenetre au-dessus des planchers, sans changer sa taille.
+
+        On translate plutot qu'on ne rogne : rogner changerait le niveau de
+        zoom sous les doigts de l'utilisateur, ce qui se lit comme un defaut.
+        """
+        x_min, x_max, y_min, y_max = view
+        x_floor, y_floor = getattr(self, "_floors", (None, None))
+        if x_floor is not None and x_min < x_floor:
+            decalage = x_floor - x_min
+            x_min, x_max = x_min + decalage, x_max + decalage
+        if y_floor is not None and y_min < y_floor:
+            decalage = y_floor - y_min
+            y_min, y_max = y_min + decalage, y_max + decalage
+        return (x_min, x_max, y_min, y_max)
 
     def visible_points(self) -> List[Dict[str, Any]]:
         return [p for p in self.points if p["group"] not in self.hidden]
@@ -446,7 +480,8 @@ class ScatterChart(tk.Frame):
         x_min, x_max, y_min, y_max = view
         dx = (event.x - start_x) / width * (x_max - x_min)
         dy = (event.y - start_y) / height * (y_max - y_min)
-        self._view = (x_min - dx, x_max - dx, y_min + dy, y_max + dy)
+        self._view = self._clamp_view(
+            (x_min - dx, x_max - dx, y_min + dy, y_max + dy))
         self.redraw()
 
     def _on_wheel(self, event) -> None:
@@ -474,8 +509,9 @@ class ScatterChart(tk.Frame):
             return
         if new_x < full_x / 200 or new_y < full_y / 200:
             return
-        self._view = (cx - fx * new_x, cx + (1 - fx) * new_x,
-                      cy - fy * new_y, cy + (1 - fy) * new_y)
+        self._view = self._clamp_view(
+            (cx - fx * new_x, cx + (1 - fx) * new_x,
+             cy - fy * new_y, cy + (1 - fy) * new_y))
         self.redraw()
 
 
