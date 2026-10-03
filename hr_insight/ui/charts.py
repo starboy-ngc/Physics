@@ -1108,8 +1108,11 @@ class BoxPlotChart(tk.Frame):
                   "centile.")
         withheld = self._withheld()
         if withheld:
+            # L'onglet Segments a disparu : la phrase renvoyait a un
+            # endroit qui n'existe plus. Le rapport et le classeur, eux,
+            # listent ces segments avec leur effectif.
             phrase += (f" {withheld} segment(s) trop peu nombreux pour être "
-                       "tracés — voir l'onglet Segments.")
+                       "tracés — le rapport et le classeur les listent.")
         canvas.create_text(left + wide + offset, mid - 5, anchor="nw",
                                 fill=theme.MUTED, font=axis_font(),
                                 width=room, text=phrase)

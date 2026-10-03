@@ -278,6 +278,37 @@ class TestHistogramBackToBack(ChartCase):
 
 
 @needs_display
+class TestTheWithheldSegmentsPointSomewhereReal(ChartCase):
+    """Le pied renvoyait a « l'onglet Segments », qui n'existe plus.
+
+    Une phrase qui envoie l'utilisateur chercher un onglet absent est pire
+    qu'une phrase absente : elle le fait douter de ce qu'il voit.
+    """
+
+    def test_the_note_names_a_place_that_exists(self):
+        from hr_insight.ui.charts import BoxPlotChart
+
+        chart = self.build(BoxPlotChart)
+        rows = [{"segment": f"Poste {index}", "headcount": 30,
+                 "chartable": True, "masked": False,
+                 "salary": {"p10": 30000.0, "p25": 34000.0, "median": 38000.0,
+                            "p75": 42000.0, "p90": 46000.0}}
+                for index in range(4)]
+        # Publiable, mais pas tracable : c'est exactement le cas que le
+        # pied compte.
+        rows.append({"segment": "Direction", "headcount": 7,
+                     "chartable": False, "masked": False,
+                     "salary": {"median": 60000.0}})
+        chart.set_rows(rows, "EUR")
+        self.root.update()
+        pied = " ".join(chart.footer.itemcget(item, "text")
+                        for item in chart.footer.find_all()
+                        if chart.footer.type(item) == "text")
+        self.assertIn("1 segment(s) trop peu nombreux", pied)
+        self.assertNotIn("onglet Segments", pied)
+
+
+@needs_display
 class TestScatter(ChartCase):
     def dataset(self, count=40):
         return {"available": True, "points": [
