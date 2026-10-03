@@ -11,6 +11,7 @@ l'ecran et le document racontent la meme chose.
 
 from __future__ import annotations
 
+import math
 import tkinter as tk
 from tkinter import ttk
 from typing import Any, Callable, Dict, List, Optional, Sequence
@@ -1200,7 +1201,11 @@ class PyramidChart(tk.Frame):
     plus courte pourrait representer le meme effectif.
     """
 
-    ROW = 26
+    #: Hauteur d'une tranche. A vingt-six, dix tranches d'anciennete
+    #: prenaient trois cents pixels a elles seules et la page ne tenait plus
+    #: sur un ecran ; a vingt et un, la barre garde sa hauteur et son
+    #: nombre reste lisible.
+    ROW = 21
     #: Gouttiere centrale reservee aux libelles de tranche, et colonnes de
     #: chiffres aux extremites. Sans cette reserve, les barres recouvraient
     #: les libelles.
@@ -1222,7 +1227,7 @@ class PyramidChart(tk.Frame):
     def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
         # La plus jeune tranche en bas : une pyramide se lit de bas en haut.
         self.rows = list(reversed([dict(row) for row in rows]))
-        self.configure(height=max(len(self.rows), 1) * self.ROW + 26)
+        self.configure(height=max(len(self.rows), 1) * self.ROW + 24)
         self.pack_propagate(False)
         self.redraw()
 
@@ -1255,7 +1260,7 @@ class PyramidChart(tk.Frame):
             male = row.get("male") or 0
             if female:
                 item = self.canvas.create_rectangle(
-                    left - wing * female / peak, y - 8, left, y + 8,
+                    left - wing * female / peak, y - 7, left, y + 7,
                     fill=theme.FEMALE, outline="")
                 self._items[item] = f'{row["label"]} · {female} femmes'
                 self.canvas.create_text(left - wing - 6, y, anchor="e",
@@ -1263,7 +1268,7 @@ class PyramidChart(tk.Frame):
                                         text=str(female))
             if male:
                 item = self.canvas.create_rectangle(
-                    right, y - 8, right + wing * male / peak, y + 8,
+                    right, y - 7, right + wing * male / peak, y + 7,
                     fill=theme.MALE, outline="")
                 self._items[item] = f'{row["label"]} · {male} hommes'
                 self.canvas.create_text(right + wing + 6, y, anchor="w",
@@ -2038,8 +2043,8 @@ class PieChart(tk.Frame):
     plus la place d'un libelle.
     """
 
-    RADIUS = 56
-    HOLE = 32
+    RADIUS = 50
+    HOLE = 29
     ROW = 20
     #: Place reservee a l'effectif et a la part, a droite de la legende.
     VALUES = 86
@@ -2056,12 +2061,26 @@ class PieChart(tk.Frame):
         self.canvas.pack(fill="both", expand=True)
         self.tooltip = Tooltip(self.canvas)
         self._items: Dict[int, str] = {}
+        #: L'anneau, dessine une fois en image lissee. Tk ne lisse pas ses
+        #: arcs : les bords d'un camembert y deviennent un escalier, et
+        #: c'est la premiere chose qu'on voit d'une page. L'image est
+        #: recalculee quand les donnees ou le theme changent, jamais a
+        #: chaque redimensionnement.
+        self._image: Optional[tk.PhotoImage] = None
         # Au premier trace, la colonne n'a pas encore sa largeur : la legende
         # se calait sur une largeur deux fois trop grande, et les libelles
         # s'ecrivaient par-dessus les effectifs.
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+        # Une image que plus personne ne reference disparait du canevas
+        # sans bruit : on la lache explicitement, et seulement a la
+        # destruction de ce cadre-ci.
+        self.bind("<Destroy>", self._forget_image, add="+")
+
+    def _forget_image(self, event) -> None:
+        if event.widget is self:
+            self._image = None
 
     def set_parts(self, parts: Sequence[Dict[str, Any]], total: int,
                   maximum: int = 6) -> None:
@@ -2077,6 +2096,7 @@ class PieChart(tk.Frame):
                                             sum(n for _l, n in queue))]
         self.slices = entrees
         self.total = total
+        self._image = None
         # Le cadre prend la hauteur du plus grand des deux — l'anneau ou la
         # legende : fixe, il laissait un trou sous un camembert a trois
         # parts, et aurait rogne une legende a sept.
@@ -2084,15 +2104,41 @@ class PieChart(tk.Frame):
                                   len(self.slices) * self.ROW + 16))
         self.redraw()
 
+    def _slice_at(self, x: float, y: float) -> Optional[tuple]:
+        """La part survolee, retrouvee par l'angle.
+
+        L'anneau est une seule image : le survol ne peut plus se lire sur
+        l'objet pointe, il se calcule. C'est la meme trigonometrie que le
+        trace, donc la meme part.
+        """
+        if not self.slices:
+            return None
+        cx = 4 + self.RADIUS
+        cy = self.winfo_height() / 2 or self.RADIUS
+        dx, dy = x - cx, y - cy
+        distance = math.hypot(dx, dy)
+        if not self.HOLE <= distance <= self.RADIUS:
+            return None
+        tour = (math.atan2(dx, -dy) / (2 * math.pi)) % 1.0
+        total = sum(n for _l, n in self.slices) or 1
+        position = 0.0
+        for libelle, nombre in self.slices:
+            position += nombre / total
+            if tour < position:
+                return libelle, nombre
+        return self.slices[-1]
+
     def _on_motion(self, event) -> None:
-        for item in self.canvas.find_overlapping(event.x, event.y,
-                                                 event.x, event.y):
-            if item in self._items:
-                self.tooltip.show(self._items[item],
-                                  self.canvas.winfo_rootx() + event.x,
-                                  self.canvas.winfo_rooty() + event.y)
-                return
-        self.tooltip.hide()
+        part = self._slice_at(event.x, event.y)
+        if part is None:
+            self.tooltip.hide()
+            return
+        libelle, nombre = part
+        total = sum(n for _l, n in self.slices) or 1
+        self.tooltip.show(f"{libelle}  ·  {nombre}  ·  "
+                          f"{format_percent(100.0 * nombre / total)}",
+                          self.canvas.winfo_rootx() + event.x,
+                          self.canvas.winfo_rooty() + event.y)
 
     def redraw(self) -> None:
         self.canvas.delete("all")
@@ -2112,21 +2158,12 @@ class PieChart(tk.Frame):
                                       neutral=theme.FAINT)
         cx = 4 + self.RADIUS
         cy = self.winfo_height() / 2 or self.RADIUS
-        depart = 90.0
-        for libelle, nombre in self.slices:
-            angle = 360.0 * nombre / total
-            item = self.canvas.create_arc(
-                cx - self.RADIUS, cy - self.RADIUS,
-                cx + self.RADIUS, cy + self.RADIUS,
-                start=depart - angle, extent=angle,
-                fill=couleurs.get(libelle, theme.ACCENT),
-                outline=theme.CANVAS, width=2)
-            self._items[item] = (f"{libelle}  ·  {nombre}  ·  "
-                                 f"{format_percent(100.0 * nombre / total)}")
-            depart -= angle
-        self.canvas.create_oval(cx - self.HOLE, cy - self.HOLE,
-                                cx + self.HOLE, cy + self.HOLE,
-                                fill=theme.CANVAS, outline="")
+        if self._image is None:
+            self._image = tk.PhotoImage(data=raster.ring(
+                2 * self.RADIUS, self.HOLE,
+                [(nombre / total, _rgb(couleurs.get(libelle, theme.ACCENT)))
+                 for libelle, nombre in self.slices]))
+        self.canvas.create_image(cx, cy, image=self._image)
         self.canvas.create_text(cx, cy - 6, text=format_number(self.total, 0),
                                 font=_font(SIZE_SECTION + 1, "bold"),
                                 fill=theme.INK)

@@ -231,6 +231,13 @@ sur un centimètre.
 Enfin la **dispersion** : Q3−Q1, Q3/Q1, P90/P10, moyenne/médiane, coefficient
 de variation.
 
+### Si la page ne tient pas
+
+Elle est dimensionnée pour tenir largement sur un écran de 1080 pixels de
+haut, y compris avec l'affichage Windows à 125 ou 150 % — qui grossit les
+polices, donc la page. Si elle défile quand même, c'est que la fenêtre n'est
+pas assez haute : agrandissez-la.
+
 ### Si la fenêtre est trop étroite
 
 Une colonne a besoin d'environ 330 pixels pour que la pyramide garde des ailes

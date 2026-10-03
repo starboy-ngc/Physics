@@ -2179,10 +2179,10 @@ class Application(tk.Tk):
         headcount = population.get("headcount", 0)
         if known is None or known >= headcount:
             return
-        missing = headcount - known
+        # Une ligne, et non deux : trois reserves de deux lignes chacune
+        # coutaient cinquante pixels a une page qui doit tenir sur un ecran.
         self._note(parent,
-                   f"Ancienneté établie sur {known} salariés : elle n'est pas "
-                   f"renseignée pour {missing} d'entre eux.")
+                   f"Ancienneté connue pour {known} salariés sur {headcount}.")
 
     def _note(self, parent, text: str) -> tk.Label:
         """Une reserve sous un bloc, dans la chasse des mentions."""
@@ -2218,8 +2218,11 @@ class Application(tk.Tk):
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:
         """Intitule, chiffre d'appoint a droite, filet. Chacun s'explique."""
+        # Vingt-six pixels sous chaque bloc, sept blocs : cent quatre-vingts
+        # pixels de blanc pour une page qui doit tenir sur un ecran. Seize
+        # separent encore nettement deux blocs.
         cell = tk.Frame(parent, background=theme.CANVAS)
-        cell.pack(fill="x", pady=(0, 26))
+        cell.pack(fill="x", pady=(0, 16))
         head = tk.Frame(cell, background=theme.CANVAS)
         head.pack(fill="x", pady=(0, 8))
         # Un intertitre doit primer sur ce qu'il introduit. Il partageait la
@@ -2283,7 +2286,7 @@ class Application(tk.Tk):
                     font=self.fonts.body_bold if highlighted else self.fonts.body,
                     anchor="w" if index == 0 else "e")
                 widget.grid(row=2 + position, column=index, sticky="ew",
-                            pady=6, padx=(0, 0) if index else (0, 24))
+                            pady=4, padx=(0, 0) if index else (0, 24))
                 self.hints.attach(widget, note)
         theme.rule(table).grid(row=2 + len(rows), column=0,
                                columnspan=columns, sticky="ew", pady=(4, 0))
@@ -2309,8 +2312,8 @@ class Application(tk.Tk):
             pyramid.pack(fill="x")
             if outside:
                 self._note(parent,
-                           f"{outside} salarié(s) au sexe non renseigné, hors "
-                           f"pyramide : ils comptent dans l'effectif.")
+                           f"{outside} salarié{'s' if outside > 1 else ''} au "
+                           f"sexe non renseigné, hors pyramide.")
             return
         # Sans la colonne « Sexe », une pyramide n'aurait qu'une aile : on
         # retombe sur la lecture en barres plutot que d'afficher un demi

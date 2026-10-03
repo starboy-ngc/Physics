@@ -199,3 +199,78 @@ def checkbox(size: int, checked: bool, fill: RGB, border: RGB,
                                    2.0 * scale), mark)
         _cache[key] = raster.to_data()
     return _cache[key]
+
+
+def ring(diameter: int, hole: float, parts: Sequence[Tuple[float, RGB]],
+         gap: float = 1.6) -> bytes:
+    """Anneau a secteurs, antialiase.
+
+    Le canevas Tk sait dessiner un arc, mais sans lissage : les bords d'un
+    camembert y deviennent un escalier, et c'est la premiere chose qu'on
+    voit d'une page. On le dessine donc ici, comme les disques du nuage de
+    points, en echantillonnant la couverture de chaque pixel.
+
+    Un seul passage, et non un par secteur : chaque echantillon decide
+    lui-meme de quelle part il releve. A seize echantillons par pixel et
+    trois parts, un passage par part couterait trois fois le prix pour le
+    meme resultat.
+
+    `parts` donne les fractions du tour — elles somment a un — et leur
+    couleur. `gap` est la coupure entre deux parts, en pixels : elle les
+    separe mieux qu'un filet, qui serait lui-meme a lisser.
+    """
+    key = ("ring", diameter, round(hole, 2), tuple(parts), gap)
+    if key in _cache:
+        return _cache[key]
+    size = int(diameter)
+    centre = size / 2.0
+    outer, inner = centre - 0.5, float(hole)
+    # Bornes angulaires cumulees, en tours (0 a 1), depuis midi et dans le
+    # sens des aiguilles — celui dans lequel on lit un camembert.
+    bornes, total = [], 0.0
+    for fraction, colour in parts:
+        bornes.append((total, total + fraction, colour))
+        total += fraction
+    step = 1.0 / SAMPLES
+    weight = 1.0 / (SAMPLES * SAMPLES)
+    rows = []
+    for y in range(size):
+        row = []
+        for x in range(size):
+            couverture: Dict[int, float] = {}
+            for sub_y in range(SAMPLES):
+                py = y + (sub_y + 0.5) * step - centre
+                for sub_x in range(SAMPLES):
+                    px = x + (sub_x + 0.5) * step - centre
+                    distance = math.hypot(px, py)
+                    if not inner <= distance <= outer:
+                        continue
+                    # Angle depuis midi, croissant dans le sens horaire.
+                    tour = (math.atan2(px, -py) / (2 * math.pi)) % 1.0
+                    for index, (debut, fin, _colour) in enumerate(bornes):
+                        if debut <= tour < fin or (index == len(bornes) - 1
+                                                   and tour >= fin):
+                            # La coupure se mesure en pixels le long de
+                            # l'arc : constante en angle, elle serait large
+                            # au bord et nulle au centre.
+                            if distance * 2 * math.pi * min(
+                                    tour - debut, fin - tour) < gap / 2:
+                                break
+                            couverture[index] = couverture.get(index,
+                                                               0.0) + weight
+                            break
+            if not couverture:
+                row += [0, 0, 0, 0]
+                continue
+            alpha = sum(couverture.values())
+            red = green = blue = 0.0
+            for index, part in couverture.items():
+                colour = bornes[index][2]
+                red += colour[0] * part
+                green += colour[1] * part
+                blue += colour[2] * part
+            row += [round(red / alpha), round(green / alpha),
+                    round(blue / alpha), round(alpha * 255)]
+        rows.append(row)
+    _cache[key] = image_data(size, size, rows)
+    return _cache[key]

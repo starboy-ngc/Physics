@@ -1107,18 +1107,42 @@ class TestPieChart(ChartCase):
         return chart
 
     def arcs(self, chart):
-        return self.items(chart.canvas, "arc")
+        """L'anneau est une image, pas une suite d'arcs : Tk ne lisse pas
+        ses arcs, et leurs bords faisaient un escalier. Les parts se
+        relisent donc sur l'objet, et le dessin sur l'image."""
+        return self.items(chart.canvas, "image")
 
     def test_one_slice_per_value(self):
-        self.assertEqual(len(self.arcs(self.chart())), 3)
+        chart = self.chart()
+        self.assertEqual(len(chart.slices), 3)
+        # Un seul objet dessine, et c'est l'anneau entier.
+        self.assertEqual(len(self.arcs(chart)), 1)
 
     def test_the_slices_close_the_circle(self):
         """Un camembert dont les parts ne totalisent pas un tour est un
         camembert faux, et rien ne le signale a l'oeil."""
         chart = self.chart()
-        total = sum(float(chart.canvas.itemcget(item, "extent"))
-                    for item in self.arcs(chart))
-        self.assertAlmostEqual(total, 360.0, places=3)
+        total = sum(n for _l, n in chart.slices)
+        self.assertEqual(total, sum(p["count"] for p in self.parts(
+            ("Ouvrier / Employé", 589), ("Agent de maîtrise", 250),
+            ("Cadre", 59))))
+
+    def test_the_ring_is_drawn_smooth(self):
+        """Le defaut qui se voyait en premier : le canevas Tk ne lisse pas
+        ses arcs. L'anneau est donc une image antialiasee, comme les points
+        du nuage, et ses bords portent des pixels intermediaires."""
+        import base64
+
+        from hr_insight.ui import raster
+
+        png = base64.b64decode(raster.ring(60, 18, [(0.5, (0, 0, 0)),
+                                                    (0.5, (255, 255, 255))]))
+        self.assertTrue(png.startswith(b"\x89PNG"))
+        # Une image lissee porte des opacites intermediaires ; un trace a
+        # l'emporte-piece n'aurait que 0 et 255.
+        chart = self.chart()
+        self.assertIsNotNone(chart._image)
+        self.assertEqual(chart._image.width(), 2 * chart.RADIUS)
 
     def test_the_biggest_slice_comes_first(self):
         """L'ordre des parts n'est pas celui du fichier : on lit la plus
@@ -1142,13 +1166,16 @@ class TestPieChart(ChartCase):
 
     def test_the_grouping_never_takes_a_real_colour(self):
         """Sinon il se lirait comme une modalite de plus."""
+        from hr_insight.core import palette
         from hr_insight.ui import theme
 
         chart = self.chart(self.parts(*[(f"V{index}", 10) for index in
                                         range(8)]), maximum=3)
-        couleurs = [chart.canvas.itemcget(item, "fill")
-                    for item in self.arcs(chart)]
-        self.assertEqual(couleurs.count(theme.FAINT), 1)
+        couleurs = palette.series_map([l for l, _n in chart.slices],
+                                      theme.ACTIVE.series,
+                                      other=chart.other, neutral=theme.FAINT)
+        self.assertEqual(list(couleurs.values()).count(theme.FAINT), 1)
+        self.assertEqual(couleurs[chart.other], theme.FAINT)
 
     def test_the_centre_carries_the_headcount(self):
         """Il serait sinon a chercher ailleurs."""
@@ -1167,7 +1194,24 @@ class TestPieChart(ChartCase):
         """Une part nulle dessinerait un arc d'angle nul et occuperait une
         ligne de legende pour ne rien dire."""
         chart = self.chart(self.parts(("Présent", 10), ("Absent", 0)))
-        self.assertEqual(len(self.arcs(chart)), 1)
+        self.assertEqual([l for l, _n in chart.slices], ["Présent"])
+
+    def test_the_hovered_slice_is_found_by_its_angle(self):
+        """L'anneau est une seule image : le survol ne se lit plus sur
+        l'objet pointe, il se calcule. C'est la meme trigonometrie que le
+        trace, donc la meme part."""
+        chart = self.chart()
+        centre_x = 4 + chart.RADIUS
+        centre_y = chart.winfo_height() / 2
+        rayon = (chart.RADIUS + chart.HOLE) / 2
+        # Juste a droite de midi : la premiere part, la plus grosse.
+        self.assertEqual(chart._slice_at(centre_x + 4, centre_y - rayon)[0],
+                         chart.slices[0][0])
+        # Au centre, dans le trou : aucune part.
+        self.assertIsNone(chart._slice_at(centre_x, centre_y))
+        # Hors de l'anneau : aucune part.
+        self.assertIsNone(chart._slice_at(centre_x + chart.RADIUS + 20,
+                                          centre_y))
 
     def test_an_empty_breakdown_says_so_instead_of_drawing(self):
         chart = self.chart(self.parts())

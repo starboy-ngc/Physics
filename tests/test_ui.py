@@ -1235,6 +1235,65 @@ class TestDrawnImages(unittest.TestCase):
         partial = [value for value in alphas if 0.0 < value < 1.0]
         self.assertTrue(partial, "aucun pixel de bord adouci")
 
+    def _ring_pixels(self, diameter=40, hole=12, parts=None):
+        """L'anneau relu pixel par pixel, en RVBA."""
+        import base64
+        import zlib
+
+        from hr_insight.ui import raster
+
+        parts = parts or [(0.5, (0, 0, 0)), (0.5, (255, 255, 255))]
+        png = base64.b64decode(raster.ring(diameter, hole, parts))
+        # IHDR fait 25 octets apres la signature ; vient ensuite IDAT.
+        donnees = png[8 + 25:]
+        taille = int.from_bytes(donnees[:4], "big")
+        brut = zlib.decompress(donnees[8:8 + taille])
+        lignes = []
+        pas = diameter * 4 + 1
+        for y in range(diameter):
+            debut = y * pas + 1
+            lignes.append(brut[debut:debut + diameter * 4])
+        return lignes
+
+    def test_the_ring_is_hollow_and_bounded(self):
+        """Le centre doit etre transparent — c'est le trou qui porte
+        l'effectif — et les coins aussi : un anneau carre serait un
+        rectangle."""
+        diameter = 40
+        lignes = self._ring_pixels(diameter)
+        centre = diameter // 2
+        self.assertEqual(lignes[centre][centre * 4 + 3], 0)
+        self.assertEqual(lignes[0][3], 0)
+
+    def test_the_ring_edges_are_softened(self):
+        """Sans pixel a opacite intermediaire, le bord est un escalier —
+        c'est le defaut qui se voyait en premier sur la page."""
+        lignes = self._ring_pixels()
+        alphas = {ligne[x * 4 + 3] for ligne in lignes
+                  for x in range(len(ligne) // 4)}
+        partiels = [value for value in alphas if 0 < value < 255]
+        self.assertTrue(partiels, "aucun bord adouci")
+
+    def test_each_part_takes_its_colour(self):
+        """Deux moities, deux couleurs, et la coupure entre elles."""
+        diameter = 40
+        lignes = self._ring_pixels(diameter)
+        milieu = lignes[diameter // 2]
+        # A gauche du centre, la seconde part ; a droite, la premiere.
+        gauche = milieu[2 * 4:2 * 4 + 4]
+        droite = milieu[(diameter - 3) * 4:(diameter - 3) * 4 + 4]
+        self.assertEqual(gauche[3], 255)
+        self.assertEqual(droite[3], 255)
+        self.assertNotEqual(gauche[:3], droite[:3])
+
+    def test_a_ring_is_computed_once(self):
+        """Quatre-vingts millisecondes par anneau : il ne se recalcule pas
+        a chaque redimensionnement."""
+        from hr_insight.ui import raster
+        parts = [(0.3, (1, 2, 3)), (0.7, (4, 5, 6))]
+        first = raster.ring(30, 10, parts)
+        self.assertIs(first, raster.ring(30, 10, parts))
+
     def test_the_images_are_valid_png(self):
         from hr_insight.ui import raster
         import base64
@@ -2173,13 +2232,19 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertNotEqual(str(camembert), str(echelle))
 
     def test_the_whole_page_fits_without_scrolling(self):
-        """La demande meme : tenir sur un ecran. La plus haute des trois
-        colonnes doit rester dans la hauteur offerte."""
+        """La demande meme : tenir sur un ecran.
+
+        Le seuil n'est pas la hauteur offerte ici mais nettement en dessous :
+        sur un poste Windows a 125 ou 150 % d'echelle, les polices grossissent
+        et la page avec elles. A cinq cent cinquante pixels, elle tient encore
+        une fois et demie plus haut.
+        """
         colonnes = self.app.overview_frame.winfo_children()[-1]
         hauteurs = [enfant.winfo_reqheight()
-                    for enfant in colonnes.winfo_children()]
+                    for enfant in colonnes.winfo_children()
+                    if enfant.winfo_manager()]
         self.assertTrue(hauteurs)
-        self.assertLess(max(hauteurs), 820)
+        self.assertLess(max(hauteurs), 560)
 
     def test_the_csp_breakdown_names_the_column_it_used(self):
         """« CSP » est le mot du metier, « Statut » la colonne du fichier :
@@ -2248,10 +2313,10 @@ class TestTheMergedOverview(unittest.TestCase):
         if population["tenure_known"] >= population["headcount"]:
             # Couverture complete : la ligne n'apprend rien et ne doit pas
             # occuper une place.
-            self.assertFalse(any("Ancienneté établie sur" in texte
+            self.assertFalse(any("Ancienneté connue pour" in texte
                                  for texte in texts))
         else:
-            self.assertTrue(any("Ancienneté établie sur" in texte
+            self.assertTrue(any("Ancienneté connue pour" in texte
                                 for texte in texts))
 
     def _pyramids(self):
@@ -2305,7 +2370,7 @@ class TestTheMergedOverview(unittest.TestCase):
         self.assertEqual([row["label"] for row in pyramide.rows], ["20-29"])
         textes = [item.cget("text") for item in walk(cadre)
                   if isinstance(item, tk.Label)]
-        self.assertTrue(any("3 salarié(s) au sexe non renseigné" in texte
+        self.assertTrue(any("3 salariés au sexe non renseigné" in texte
                             for texte in textes))
         cadre.destroy()
 

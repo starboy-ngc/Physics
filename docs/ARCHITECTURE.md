@@ -138,6 +138,15 @@ plus haut, prennent donc une colonne à elles. Sous `OVERVIEW_COLUMN` × 3, la
 disposition revient à deux colonnes et la page défile — mieux vaut défiler
 que rogner.
 
+L'anneau du camembert est une **image antialiasée** produite par `raster`,
+et non un `create_arc` : le canevas Tk ne lisse pas ses arcs, et les bords en
+escalier étaient la première chose qu'on voyait de la page. Un seul passage
+d'échantillonnage pour tout l'anneau — chaque échantillon décide de quelle
+part il relève —, environ 90 ms pour 100 pixels de diamètre, mis en cache et
+recalculé seulement quand les données ou le thème changent. Le survol ne peut
+donc plus se lire sur l'objet pointé : il retrouve la part par l'angle, avec
+la même trigonométrie que le tracé.
+
 `PieChart` et `ScaleChart` suivent la règle des autres graphiques : ils se
 retracent au redimensionnement, mesurent leurs libellés plutôt que de compter
 les lettres, et ne décident d'aucun seuil — `ScaleChart` lit les percentiles
