@@ -22,8 +22,8 @@ public partial class Door : Area3D
         Materials.BoxCollider(this, new Vector3(Size.X, 1f, Size.Y), new Vector3(0, 0.5f, 0));
         if (DrawMat)
         {
-            Materials.Box(this, new Vector3(Size.X, 0.04f, Size.Y), new Vector3(0, 0.02f, 0), Materials.Flat(new Color("3b2a1a")), "Mat");
-            Materials.Box(this, new Vector3(Size.X - 0.3f, 0.05f, Size.Y - 0.3f), new Vector3(0, 0.02f, 0), Materials.Flat(new Color("6b4a2a")), "MatInner");
+            Materials.Box(this, new Vector3(Size.X, 0.04f, Size.Y), new Vector3(0, 0.02f, 0), Materials.Flat(new Color("2e2219")), "Mat");
+            Materials.Box(this, new Vector3(Size.X - 0.3f, 0.05f, Size.Y - 0.3f), new Vector3(0, 0.02f, 0), Materials.Flat(new Color("5a4634")), "MatInner");
         }
     }
 

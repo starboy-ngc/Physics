@@ -9,8 +9,8 @@ namespace VillageDeBrume;
 /// </summary>
 public partial class Interior : Zone
 {
-    [Export] public Color FloorColor { get; set; } = new("c89a62");
-    [Export] public Color WallColor { get; set; } = new("e6d5b8");
+    [Export] public Color FloorColor { get; set; } = new("8a6a48");
+    [Export] public Color WallColor { get; set; } = new("b5ab96");
 
     private const float WallHeight = 2.5f;
     private const float WallDepth = 0.5f;

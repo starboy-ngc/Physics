@@ -32,10 +32,16 @@ public partial class FollowCamera : Camera3D
         Environment = new Godot.Environment
         {
             BackgroundMode = Godot.Environment.BGMode.Color,
-            BackgroundColor = new Color("263d26"),
+            BackgroundColor = new Color("7b857f"),
             AmbientLightSource = Godot.Environment.AmbientSource.Color,
-            AmbientLightColor = new Color(0.72f, 0.78f, 0.72f),
-            AmbientLightEnergy = 0.55f,
+            AmbientLightColor = new Color(0.70f, 0.74f, 0.76f),
+            AmbientLightEnergy = 0.6f,
+            // Brume légère : le fond de la vue se fond dans le gris du ciel.
+            FogEnabled = true,
+            FogLightColor = new Color("8d9892"),
+            FogLightEnergy = 1.0f,
+            FogDensity = 0.012f,
+            FogSkyAffect = 1.0f,
         };
     }
 

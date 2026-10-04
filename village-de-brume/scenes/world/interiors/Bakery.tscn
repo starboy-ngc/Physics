@@ -10,8 +10,8 @@ ZoneName = "Boulangerie"
 Bounds = Rect2(0, 0, 18, 12)
 WallTop = 1.75
 WallSides = 0.5
-FloorColor = Color(0.718, 0.584, 0.42, 1)
-WallColor = Color(0.941, 0.863, 0.698, 1)
+FloorColor = Color(0.5, 0.38, 0.27, 1)
+WallColor = Color(0.74, 0.68, 0.56, 1)
 
 [node name="Spawns" type="Node3D" parent="."]
 

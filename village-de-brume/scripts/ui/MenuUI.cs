@@ -11,12 +11,12 @@ namespace VillageDeBrume;
 /// </summary>
 public partial class MenuUI : CanvasLayer
 {
-    private static readonly Color Bg = new("f8f4ea");
-    private static readonly Color Border = new("3a3a5a");
-    private static readonly Color Text = new("2a2a3a");
-    private static readonly Color Muted = new("8a8a9a");
-    private static readonly Color Selected = new("2a5aa0");
-    private static readonly Color SelectedBg = new("dce6f5");
+    private static readonly Color Bg = new Color("1b1d22", 0.94f);
+    private static readonly Color Border = new("6b665c");
+    private static readonly Color Text = new("e3ded2");
+    private static readonly Color Muted = new("8d887c");
+    private static readonly Color Selected = new("f0e2b4");
+    private static readonly Color SelectedBg = new Color("d2a65a", 0.22f);
 
     private enum Column { Tabs, Content }
     private readonly string[] _tabs = { "Inventaire", "Carnet", "Quitter" };
@@ -139,8 +139,8 @@ public partial class MenuUI : CanvasLayer
     private static StyleBoxFlat MakeStyle(Color bg)
     {
         var style = new StyleBoxFlat { BgColor = bg, BorderColor = Border };
-        style.SetBorderWidthAll(2);
-        style.SetCornerRadiusAll(3);
+        style.SetBorderWidthAll(1);
+        style.SetCornerRadiusAll(1);
         style.SetContentMarginAll(6);
         return style;
     }
@@ -155,7 +155,7 @@ public partial class MenuUI : CanvasLayer
 
     private void Build()
     {
-        _dim = new ColorRect { Color = new Color(0, 0, 0, 0.45f), MouseFilter = Control.MouseFilterEnum.Ignore };
+        _dim = new ColorRect { Color = new Color(0, 0, 0, 0.55f), MouseFilter = Control.MouseFilterEnum.Ignore };
         _dim.SetAnchorsPreset(Control.LayoutPreset.FullRect);
         AddChild(_dim);
 

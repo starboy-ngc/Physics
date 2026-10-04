@@ -13,10 +13,10 @@ public static class CharacterSprites
     /// <summary>Pixels de texture par pixel « logique » (16 px logiques = 1 unité monde).</summary>
     public const int Scale = 4;
     /// <summary>Taille d'une cellule en pixels logiques ; les pieds sont à la ligne FeetRow.</summary>
-    public const int Cell = 32;
-    public const int FeetRow = 30;
+    public const int Cell = 36;
+    public const int FeetRow = 34;
 
-    private static readonly Color Outline = new("2a2a3a");
+    private static readonly Color Outline = new("23222a");
 
     public static ImageTexture Build(Color tunic, Color hair, Color skin, Color pants)
     {
@@ -32,6 +32,12 @@ public static class CharacterSprites
     }
 
     // --- Primitives (coordonnées logiques, flottantes) -----------------------
+
+    private static void Put(Image img, int x, int y, Color c)
+    {
+        if (x >= 0 && y >= 0 && x < img.GetWidth() && y < img.GetHeight())
+            img.SetPixel(x, y, c);
+    }
 
     private static void Rect(Image img, int ox, int oy, float x, float y, float w, float h, Color c)
     {
@@ -51,7 +57,7 @@ public static class CharacterSprites
                 float d = CornerDistance(px + 0.5f, py + 0.5f, ww, hh, rr);
                 if (d > 0f) continue;
                 bool edge = outline.HasValue && d > -Scale;
-                img.SetPixel(ox + x0 + px, oy + y0 + py, edge ? outline!.Value : fill);
+                Put(img, ox + x0 + px, oy + y0 + py, edge ? outline!.Value : fill);
             }
     }
 
@@ -76,60 +82,76 @@ public static class CharacterSprites
                 float inner = (rx * Scale - Scale) / (rx * Scale);
                 bool edge = outline.HasValue && d > inner * inner;
                 if (!edge && fill.A <= 0f) continue; // remplissage transparent = contour seul
-                img.SetPixel(ox + px, oy + py, edge ? outline!.Value : fill);
+                Put(img, ox + px, oy + py, edge ? outline!.Value : fill);
             }
     }
 
-    /// <summary>Dessine un personnage dont les pieds sont en (ox, oy) pixels texture.</summary>
+    /// <summary>Dessine un personnage dont les pieds sont en (ox, oy) pixels texture.
+    /// Proportions adultes (environ 5 têtes), silhouette fine, détails discrets.</summary>
     private static void DrawCharacter(Image img, int ox, int oy, CharacterVisual.Facing facing, int step,
         Color tunic, Color hair, Color skin, Color pants)
     {
         float bob = step >= 0 ? -0.5f : 0f;
         bool side = facing is CharacterVisual.Facing.Left or CharacterVisual.Facing.Right;
+        Color belt = tunic.Darkened(0.45f);
+        Color boots = pants.Darkened(0.35f);
 
-        // Jambes (deux petits rectangles arrondis, alternance pendant la marche)
-        float leftH = 7f - (step == 1 ? 2.5f : 0f);
-        float rightH = 7f - (step == 0 ? 2.5f : 0f);
-        RoundRect(img, ox, oy, -5f, -7f, 4.2f, leftH, 1.2f, pants, Outline);
-        RoundRect(img, ox, oy, 0.8f, -7f, 4.2f, rightH, 1.2f, pants, Outline);
+        // Jambes : fines, alternance pendant la marche ; bottes sombres
+        float leftH = 10f - (step == 1 ? 2.5f : 0f);
+        float rightH = 10f - (step == 0 ? 2.5f : 0f);
+        float legW = side ? 3.2f : 3.4f;
+        float lx = side ? -2.6f : -4.0f, rx = side ? -0.4f : 0.6f;
+        RoundRect(img, ox, oy, lx, -10f, legW, leftH, 1.0f, pants, Outline);
+        RoundRect(img, ox, oy, rx, -10f, legW, rightH, 1.0f, pants, Outline);
+        Rect(img, ox, oy, lx + 0.6f, -10f + leftH - 2.2f, legW - 1.2f, 1.6f, boots);
+        Rect(img, ox, oy, rx + 0.6f, -10f + rightH - 2.2f, legW - 1.2f, 1.6f, boots);
 
-        // Corps : tunique arrondie, légèrement plus large aux épaules
-        RoundRect(img, ox, oy, -6.5f, -15.5f + bob, 13f, 10f, 3f, tunic, Outline);
+        // Buste : tunique longue légèrement évasée, ceinture
+        float bw = side ? 7.5f : 10f;
+        RoundRect(img, ox, oy, -bw / 2f, -21.5f + bob, bw, 12.5f, 2.2f, tunic, Outline);
+        Rect(img, ox, oy, -bw / 2f + 0.8f, -14.5f + bob, bw - 1.6f, 1.2f, belt);
         if (side)
-            RoundRect(img, ox, oy, -2f, -13.5f + bob, 4f, 6.5f, 1.5f, tunic.Darkened(0.2f), null);
+        {
+            RoundRect(img, ox, oy, -1.6f, -19.5f + bob, 3.2f, 7.5f, 1.3f, tunic.Darkened(0.18f), Outline);
+        }
         else
         {
-            Ellipse(img, ox, oy, -7.2f, -10f + bob, 1.4f, 3.2f, skin, Outline);
-            Ellipse(img, ox, oy, 7.2f, -10f + bob, 1.4f, 3.2f, skin, Outline);
+            RoundRect(img, ox, oy, -bw / 2f - 2.2f, -20f + bob, 2.4f, 7.5f, 1.1f, tunic.Darkened(0.12f), Outline);
+            RoundRect(img, ox, oy, bw / 2f - 0.2f, -20f + bob, 2.4f, 7.5f, 1.1f, tunic.Darkened(0.12f), Outline);
+            Ellipse(img, ox, oy, -bw / 2f - 1f, -12.3f + bob, 1.1f, 1.2f, skin, Outline);
+            Ellipse(img, ox, oy, bw / 2f + 1f, -12.3f + bob, 1.1f, 1.2f, skin, Outline);
         }
 
-        // Tête : ellipse large, cheveux en calotte
-        float hcx = 0f, hcy = -21f + bob;
-        Ellipse(img, ox, oy, hcx, hcy, 7.5f, 6.5f, skin, Outline);
+        // Cou et tête : ovale modéré (environ 1/5 de la hauteur)
+        Rect(img, ox, oy, -1.2f, -23f + bob, 2.4f, 2f, skin.Darkened(0.12f));
+        float hcx = 0f, hcy = -26.2f + bob;
+        float hrx = side ? 3.6f : 4.0f, hry = 4.4f;
+        Ellipse(img, ox, oy, hcx, hcy, hrx, hry, skin, Outline);
         switch (facing)
         {
             case CharacterVisual.Facing.Up:
-                Ellipse(img, ox, oy, hcx, hcy - 0.5f, 7.0f, 6.0f, hair, null);
+                Ellipse(img, ox, oy, hcx, hcy - 0.4f, hrx - 0.3f, hry - 0.5f, hair, null);
                 break;
             case CharacterVisual.Facing.Down:
-                Ellipse(img, ox, oy, hcx, hcy - 2.5f, 7.0f, 3.6f, hair, null);
-                Rect(img, ox, oy, -7f, hcy - 2.5f, 1.8f, 4f, hair);
-                Rect(img, ox, oy, 5.2f, hcy - 2.5f, 1.8f, 4f, hair);
-                Ellipse(img, ox, oy, -2.8f, hcy + 1.2f, 1.0f, 1.5f, Outline, null);
-                Ellipse(img, ox, oy, 2.8f, hcy + 1.2f, 1.0f, 1.5f, Outline, null);
+                Ellipse(img, ox, oy, hcx, hcy - 2.2f, hrx - 0.2f, 2.3f, hair, null);
+                Rect(img, ox, oy, -hrx + 0.3f, hcy - 2.2f, 1.2f, 2.6f, hair);
+                Rect(img, ox, oy, hrx - 1.5f, hcy - 2.2f, 1.2f, 2.6f, hair);
+                Rect(img, ox, oy, -1.9f, hcy + 0.4f, 1.0f, 1.2f, Outline);
+                Rect(img, ox, oy, 0.9f, hcy + 0.4f, 1.0f, 1.2f, Outline);
+                Rect(img, ox, oy, -1.0f, hcy + 2.6f, 2.0f, 0.6f, skin.Darkened(0.35f));
                 break;
             case CharacterVisual.Facing.Left:
-                Ellipse(img, ox, oy, hcx + 1f, hcy - 2.3f, 6.8f, 3.8f, hair, null);
-                Rect(img, ox, oy, 1f, hcy - 2f, 6f, 5f, hair);
-                Ellipse(img, ox, oy, -4f, hcy + 1.2f, 1.0f, 1.5f, Outline, null);
+                Ellipse(img, ox, oy, hcx + 0.6f, hcy - 2.0f, hrx - 0.2f, 2.4f, hair, null);
+                Rect(img, ox, oy, 0.6f, hcy - 1.8f, hrx - 0.4f, 3.4f, hair);
+                Rect(img, ox, oy, -2.6f, hcy + 0.4f, 1.0f, 1.2f, Outline);
                 break;
             case CharacterVisual.Facing.Right:
-                Ellipse(img, ox, oy, hcx - 1f, hcy - 2.3f, 6.8f, 3.8f, hair, null);
-                Rect(img, ox, oy, -7f, hcy - 2f, 6f, 5f, hair);
-                Ellipse(img, ox, oy, 4f, hcy + 1.2f, 1.0f, 1.5f, Outline, null);
+                Ellipse(img, ox, oy, hcx - 0.6f, hcy - 2.0f, hrx - 0.2f, 2.4f, hair, null);
+                Rect(img, ox, oy, -hrx + 0.2f, hcy - 1.8f, hrx - 0.4f, 3.4f, hair);
+                Rect(img, ox, oy, 1.6f, hcy + 0.4f, 1.0f, 1.2f, Outline);
                 break;
         }
         // Contour de la tête repassé par-dessus les cheveux
-        Ellipse(img, ox, oy, hcx, hcy, 7.5f, 6.5f, new Color(0, 0, 0, 0), Outline);
+        Ellipse(img, ox, oy, hcx, hcy, hrx, hry, new Color(0, 0, 0, 0), Outline);
     }
 }

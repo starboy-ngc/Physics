@@ -10,8 +10,8 @@ ZoneName = "Maison de Jeanne"
 Bounds = Rect2(0, 0, 16, 12)
 WallTop = 1.75
 WallSides = 0.5
-FloorColor = Color(0.69, 0.639, 0.459, 1)
-WallColor = Color(0.816, 0.859, 0.757, 1)
+FloorColor = Color(0.47, 0.4, 0.3, 1)
+WallColor = Color(0.66, 0.68, 0.58, 1)
 
 [node name="Spawns" type="Node3D" parent="."]
 

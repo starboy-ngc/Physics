@@ -12,11 +12,11 @@ public partial class GameUI : CanvasLayer
 {
     private const int BoxHeight = 60;
     private const int Margin = 4;
-    private static readonly Color Bg = new("f8f4ea");
-    private static readonly Color Border = new("3a3a5a");
-    private static readonly Color Text = new("2a2a3a");
-    private static readonly Color NameColor = new("8c3a2c");
-    private static readonly Color Selected = new("2a5aa0");
+    private static readonly Color Bg = new Color("1b1d22", 0.93f);
+    private static readonly Color Border = new("6b665c");
+    private static readonly Color Text = new("e3ded2");
+    private static readonly Color NameColor = new("d2a65a");
+    private static readonly Color Selected = new("f0e2b4");
 
     private PanelContainer _promptPanel = null!;
     private Label _prompt = null!;
@@ -98,8 +98,8 @@ public partial class GameUI : CanvasLayer
     private static StyleBoxFlat MakeStyle()
     {
         var style = new StyleBoxFlat { BgColor = Bg, BorderColor = Border };
-        style.SetBorderWidthAll(2);
-        style.SetCornerRadiusAll(2);
+        style.SetBorderWidthAll(1);
+        style.SetCornerRadiusAll(1);
         style.SetContentMarginAll(5);
         return style;
     }

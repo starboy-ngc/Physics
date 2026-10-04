@@ -23,9 +23,9 @@ public partial class Prop : StaticBody3D
         ["shelf"] = new(2f, 2.4f, 1f), ["barrel"] = new(1f, 1.25f, 1f), ["sign"] = new(1.5f, 1.6f, 0.4f),
     };
 
-    private static readonly Color Wood = new("8a5a2b");
-    private static readonly Color WoodDark = new("5c3a1a");
-    private static readonly Color WoodLight = new("b08a5c");
+    private static readonly Color Wood = new("6e4e32");
+    private static readonly Color WoodDark = new("4a3324");
+    private static readonly Color WoodLight = new("8f7352");
 
     public Vector3 GetSize() => Sizes.TryGetValue(Kind, out var s) ? s : new Vector3(1, 1, 1);
 
@@ -46,8 +46,8 @@ public partial class Prop : StaticBody3D
         {
             case "bed":
                 Materials.Box(this, new Vector3(w, 0.35f, d), new Vector3(0, 0.175f, -d / 2f), Materials.Flat(Wood), "Frame");
-                Materials.Box(this, new Vector3(w - 0.2f, 0.3f, d - 0.2f), new Vector3(0, 0.5f, -d / 2f), Materials.Flat(new Color("c9544a")), "Blanket");
-                Materials.Box(this, new Vector3(w - 0.4f, 0.25f, 0.7f), new Vector3(0, 0.6f, -d + 0.5f), Materials.Flat(new Color("e8e2d0")), "Pillow");
+                Materials.Box(this, new Vector3(w - 0.2f, 0.3f, d - 0.2f), new Vector3(0, 0.5f, -d / 2f), Materials.Flat(new Color("7a4a46")), "Blanket");
+                Materials.Box(this, new Vector3(w - 0.4f, 0.25f, 0.7f), new Vector3(0, 0.6f, -d + 0.5f), Materials.Flat(new Color("cfc7b6")), "Pillow");
                 Materials.Box(this, new Vector3(w, 0.9f, 0.15f), new Vector3(0, 0.45f, -d + 0.075f), Materials.Flat(WoodDark), "Headboard");
                 break;
             case "table":
@@ -64,19 +64,19 @@ public partial class Prop : StaticBody3D
             case "chest":
                 Materials.Box(this, new Vector3(w, h * 0.7f, d), new Vector3(0, h * 0.35f, -d / 2f), Materials.Flat(Wood), "Body");
                 Materials.Box(this, new Vector3(w, h * 0.3f, d), new Vector3(0, h * 0.85f, -d / 2f), Materials.Flat(WoodDark), "Lid");
-                Materials.Box(this, new Vector3(0.25f, 0.25f, 0.08f), new Vector3(0, h * 0.6f, 0.04f), Materials.Flat(new Color("c8b060")), "Lock");
+                Materials.Box(this, new Vector3(0.25f, 0.25f, 0.08f), new Vector3(0, h * 0.6f, 0.04f), Materials.Flat(new Color("8f8255")), "Lock");
                 break;
             case "oven":
-                Materials.Box(this, s, c, Materials.Flat(new Color("8f8f88")), "Body");
+                Materials.Box(this, s, c, Materials.Flat(new Color("6f6e68")), "Body");
                 Materials.Box(this, new Vector3(1.2f, 0.8f, 0.1f), new Vector3(0, 0.8f, 0.05f), Materials.Flat(new Color("2a1f17")), "Mouth");
-                Materials.Box(this, new Vector3(1.0f, 0.5f, 0.12f), new Vector3(0, 0.75f, 0.06f), Materials.Flat(new Color("e8903a")), "Fire");
-                Materials.Box(this, new Vector3(0.8f, 0.8f, 0.8f), new Vector3(0, h + 0.4f, -d / 2f), Materials.Flat(new Color("6c6c66")), "Chimney");
+                Materials.Box(this, new Vector3(1.0f, 0.5f, 0.12f), new Vector3(0, 0.75f, 0.06f), Materials.Flat(new Color("c8742c")), "Fire");
+                Materials.Box(this, new Vector3(0.8f, 0.8f, 0.8f), new Vector3(0, h + 0.4f, -d / 2f), Materials.Flat(new Color("55544f")), "Chimney");
                 break;
             case "counter":
                 Materials.Box(this, new Vector3(w, h, d), c, Materials.Flat(WoodDark), "Body");
                 Materials.Box(this, new Vector3(w + 0.1f, 0.1f, d + 0.1f), new Vector3(0, h - 0.05f, -d / 2f), Materials.Flat(WoodLight), "Top");
                 for (int i = 0; i < 3; i++)
-                    Materials.Box(this, new Vector3(0.7f, 0.3f, 0.45f), new Vector3(-1.2f + i * 1.2f, h + 0.15f, -d / 2f), Materials.Flat(new Color("d9a05a")), "Bread");
+                    Materials.Box(this, new Vector3(0.7f, 0.3f, 0.45f), new Vector3(-1.2f + i * 1.2f, h + 0.15f, -d / 2f), Materials.Flat(new Color("b58a4c")), "Bread");
                 break;
             case "shelf":
                 Materials.Box(this, s, c, Materials.Flat(Wood), "Body");
@@ -84,8 +84,8 @@ public partial class Prop : StaticBody3D
                 {
                     float y = 0.6f + i * 0.7f;
                     Materials.Box(this, new Vector3(w - 0.2f, 0.06f, d), new Vector3(0, y, -d / 2f + 0.02f), Materials.Flat(WoodDark), "Board");
-                    Materials.Box(this, new Vector3(0.35f, 0.35f, 0.3f), new Vector3(-0.5f, y + 0.2f, -0.2f), Materials.Flat(new Color("5a9a4e")), "Herb");
-                    Materials.Box(this, new Vector3(0.35f, 0.35f, 0.3f), new Vector3(0.3f, y + 0.2f, -0.2f), Materials.Flat(new Color("d9a05a")), "Jar");
+                    Materials.Box(this, new Vector3(0.35f, 0.35f, 0.3f), new Vector3(-0.5f, y + 0.2f, -0.2f), Materials.Flat(new Color("4f6f45")), "Herb");
+                    Materials.Box(this, new Vector3(0.35f, 0.35f, 0.3f), new Vector3(0.3f, y + 0.2f, -0.2f), Materials.Flat(new Color("b58a4c")), "Jar");
                 }
                 break;
             case "barrel":

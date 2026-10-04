@@ -11,10 +11,10 @@ public partial class CharacterVisual : Node3D
 {
     public enum Facing { Down, Up, Left, Right }
 
-    [Export] public Color TunicColor { get; set; } = new("3a6ea5");
-    [Export] public Color HairColor { get; set; } = new("5a3a22");
-    [Export] public Color SkinColor { get; set; } = new("f1c9a5");
-    [Export] public Color PantsColor { get; set; } = new("2a2a3a");
+    [Export] public Color TunicColor { get; set; } = new("3f5a78");
+    [Export] public Color HairColor { get; set; } = new("3e2b1e");
+    [Export] public Color SkinColor { get; set; } = new("d9b894");
+    [Export] public Color PantsColor { get; set; } = new("2e2c30");
 
     private const float WalkAnimFps = 8f;
     private const float PixelSize = 1f / (16f * CharacterSprites.Scale);

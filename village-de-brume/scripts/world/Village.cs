@@ -51,6 +51,7 @@ public partial class Village : Zone
             var tree = treeScene.Instantiate<TreeProp>();
             tree.Position = new Vector3(p.X + rng.RandfRange(-0.4f, 0.4f), 0f, p.Y + rng.RandfRange(-0.25f, 0.25f));
             tree.CanopyRadius = rng.RandfRange(0.8f, 1.05f);
+            tree.Kind = rng.Randf() < 0.6f ? "pine" : "round";
             holder.AddChild(tree);
         }
     }

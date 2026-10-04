@@ -52,48 +52,66 @@ public static class Materials
     public static Image Grass()
     {
         var img = Image.CreateEmpty(32, 32, true, Image.Format.Rgba8);
-        var a = new Color("6fae4e"); var b = new Color("68a548");
-        var mark = new Color("5a9440"); var light = new Color("86c25f");
-        for (int ty = 0; ty < 2; ty++)
-            for (int tx = 0; tx < 2; tx++)
+        // Herbe sombre et désaturée, variations douces, quelques brins plus foncés.
+        var a = new Color("5a7345"); var b = new Color("566e42"); var c = new Color("5e7849");
+        var blade = new Color("46593a"); var dry = new Color("6e7d4e");
+        var rng = new RandomNumberGenerator { Seed = 7 };
+        for (int y = 0; y < 32; y++)
+            for (int x = 0; x < 32; x++)
             {
-                int ox = tx * 16, oy = ty * 16;
-                img.FillRect(new Rect2I(ox, oy, 16, 16), (tx + ty) % 2 == 0 ? a : b);
-                int k = (tx * 7 + ty * 13) % 5;
-                img.FillRect(new Rect2I(ox + 2 + k, oy + 4, 2, 2), mark);
-                img.FillRect(new Rect2I(ox + 9 - k, oy + 11, 2, 2), mark);
-                if ((tx + ty) == 0)
-                    img.FillRect(new Rect2I(ox + 6, oy + 7, 3, 2), light);
+                float n = rng.Randf();
+                img.SetPixel(x, y, n < 0.5f ? a : n < 0.8f ? b : c);
             }
+        for (int i = 0; i < 14; i++)
+        {
+            int x = rng.RandiRange(0, 31), y = rng.RandiRange(0, 30);
+            img.SetPixel(x, y, blade); img.SetPixel(x, y + 1, blade);
+        }
+        for (int i = 0; i < 5; i++)
+            img.SetPixel(rng.RandiRange(0, 31), rng.RandiRange(0, 31), dry);
         return img;
     }
 
     public static Image Dirt()
     {
         var img = Image.CreateEmpty(32, 32, true, Image.Format.Rgba8);
-        var a = new Color("d2b07a"); var b = new Color("c9a66e"); var edge = new Color("a88752");
-        for (int ty = 0; ty < 2; ty++)
-            for (int tx = 0; tx < 2; tx++)
+        // Terre battue : brun-gris, quelques cailloux.
+        var a = new Color("847358"); var b = new Color("7d6d53"); var c = new Color("8a7a60");
+        var pebble = new Color("9a8f7a"); var dark = new Color("6b5d46");
+        var rng = new RandomNumberGenerator { Seed = 11 };
+        for (int y = 0; y < 32; y++)
+            for (int x = 0; x < 32; x++)
             {
-                int ox = tx * 16, oy = ty * 16;
-                img.FillRect(new Rect2I(ox, oy, 16, 16), (tx + ty) % 2 == 0 ? a : b);
-                int k = (tx * 5 + ty * 3) % 4;
-                img.FillRect(new Rect2I(ox + 3 + k * 2, oy + 5 + k, 2, 2), edge);
+                float n = rng.Randf();
+                img.SetPixel(x, y, n < 0.45f ? a : n < 0.8f ? b : c);
             }
+        for (int i = 0; i < 6; i++)
+        {
+            int x = rng.RandiRange(0, 30), y = rng.RandiRange(0, 30);
+            img.FillRect(new Rect2I(x, y, 2, 2), pebble);
+            img.SetPixel(x, y + 1, dark);
+        }
         return img;
     }
 
     public static Image Stone()
     {
         var img = Image.CreateEmpty(32, 32, true, Image.Format.Rgba8);
-        var a = new Color("b9b6aa"); var b = new Color("adaa9e"); var edge = new Color("8a877c");
+        // Pavés gris irréguliers, joints sombres.
+        var tones = new[] { new Color("7f7d75"), new Color("868379"), new Color("77756d"), new Color("8c8a80") };
+        var joint = new Color("57564f");
+        var rng = new RandomNumberGenerator { Seed = 5 };
         for (int ty = 0; ty < 2; ty++)
             for (int tx = 0; tx < 2; tx++)
             {
                 int ox = tx * 16, oy = ty * 16;
-                img.FillRect(new Rect2I(ox, oy, 16, 16), (tx + ty) % 2 == 0 ? a : b);
-                img.FillRect(new Rect2I(ox, oy, 16, 1), edge);
-                img.FillRect(new Rect2I(ox, oy, 1, 16), edge);
+                // deux pavés par tuile, décalés une rangée sur deux
+                int split = ty == 0 ? 7 : 9;
+                img.FillRect(new Rect2I(ox, oy, 16, 16), tones[rng.RandiRange(0, 3)]);
+                img.FillRect(new Rect2I(ox + split, oy, 16 - split, 16), tones[rng.RandiRange(0, 3)]);
+                img.FillRect(new Rect2I(ox, oy, 16, 1), joint);
+                img.FillRect(new Rect2I(ox, oy, 1, 16), joint);
+                img.FillRect(new Rect2I(ox + split, oy, 1, 16), joint);
             }
         return img;
     }
@@ -123,11 +141,18 @@ public static class Materials
     public static Image RoofTiles(Color roof)
     {
         var img = Image.CreateEmpty(16, 16, true, Image.Format.Rgba8);
-        img.FillRect(new Rect2I(0, 0, 16, 16), roof);
-        img.FillRect(new Rect2I(0, 0, 16, 1), roof.Darkened(0.3f));
-        img.FillRect(new Rect2I(0, 8, 16, 1), roof.Darkened(0.3f));
-        img.FillRect(new Rect2I(8, 0, 1, 8), roof.Darkened(0.2f));
-        img.FillRect(new Rect2I(0, 8, 1, 8), roof.Darkened(0.2f));
+        // Ardoises : rangées fines, légère variation de teinte.
+        var rng = new RandomNumberGenerator { Seed = 3 };
+        for (int y = 0; y < 16; y++)
+            for (int x = 0; x < 16; x++)
+                img.SetPixel(x, y, rng.Randf() < 0.5f ? roof : roof.Lightened(0.06f));
+        for (int y = 0; y < 16; y += 4)
+        {
+            img.FillRect(new Rect2I(0, y, 16, 1), roof.Darkened(0.35f));
+            int off = (y / 4) % 2 == 0 ? 0 : 4;
+            for (int x = off; x < 16; x += 8)
+                img.FillRect(new Rect2I(x, y, 1, 4), roof.Darkened(0.25f));
+        }
         return img;
     }
 

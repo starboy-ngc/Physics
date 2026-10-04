@@ -66,22 +66,22 @@ DoorTargetZone = "house_player"
 
 [node name="Bakery" parent="." instance=ExtResource("3_building")]
 position = Vector3(38, 0, 12.5)
-WallColor = Color(0.941, 0.863, 0.698, 1)
-RoofColor = Color(0.616, 0.345, 0.2, 1)
+WallColor = Color(0.78, 0.72, 0.6, 1)
+RoofColor = Color(0.36, 0.27, 0.24, 1)
 Label = "Boulangerie"
 DoorTargetZone = "bakery"
 
 [node name="HouseJeanne" parent="." instance=ExtResource("3_building")]
 position = Vector3(10, 0, 31.25)
-WallColor = Color(0.816, 0.859, 0.757, 1)
-RoofColor = Color(0.333, 0.471, 0.361, 1)
+WallColor = Color(0.69, 0.71, 0.62, 1)
+RoofColor = Color(0.25, 0.33, 0.29, 1)
 Label = "Jeanne"
 DoorTargetZone = "house_jeanne"
 
 [node name="HouseMartin" parent="." instance=ExtResource("3_building")]
 position = Vector3(38, 0, 31.25)
-WallColor = Color(0.741, 0.741, 0.722, 1)
-RoofColor = Color(0.333, 0.353, 0.431, 1)
+WallColor = Color(0.6, 0.59, 0.56, 1)
+RoofColor = Color(0.24, 0.26, 0.31, 1)
 Label = "Martin"
 DoorTargetZone = "house_martin"
 

@@ -18,8 +18,9 @@ public partial class Main : Node
         AddChild(new DirectionalLight3D
         {
             Name = "Sun",
-            RotationDegrees = new Vector3(-55, -35, 0),
-            LightEnergy = 0.7f,
+            RotationDegrees = new Vector3(-50, -30, 0),
+            LightColor = new Color(0.96f, 0.94f, 0.88f),
+            LightEnergy = 0.55f,
             ShadowEnabled = true,
         });
         Game.Instance.Setup(zoneRoot, player, camera);

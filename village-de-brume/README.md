@@ -25,7 +25,10 @@ Format visuel (2.5D, façon RPG de console portable) :
   (4 directions × 3 poses, formes arrondies, 64 px par unité) est générée en
   code (`CharacterSprites.cs`) ;
 - rendu 3D à la résolution de la fenêtre avec MSAA 4x, textures filtrées.
-Direction artistique originale, aucun asset externe.
+Direction artistique originale, aucun asset externe : palette désaturée et
+froide, ciel couvert avec brume légère, maisons en torchis et colombages sous
+ardoise, sapins et feuillus sombres, personnages aux proportions adultes,
+interface sombre.
 
 Contenu de l'étape 2 :
 
