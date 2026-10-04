@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/interior.gd" id="1_interior"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/Prop.tscn" id="2_prop"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/Door.tscn" id="3_door"]
+
+[node name="HouseMartin" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_interior")
+zone_name = "Maison de Martin"
+bounds = Rect2(0, 0, 256, 192)
+wall_top = 28.0
+wall_sides = 8.0
+floor_color = Color(0.6, 0.502, 0.4, 1)
+wall_color = Color(0.741, 0.741, 0.722, 1)
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="entrance" type="Marker2D" parent="Spawns"]
+position = Vector2(128, 166)
+
+[node name="Bed" parent="." instance=ExtResource("2_prop")]
+position = Vector2(40, 100)
+kind = "bed"
+
+[node name="Table" parent="." instance=ExtResource("2_prop")]
+position = Vector2(128, 100)
+kind = "table"
+
+[node name="Chair" parent="." instance=ExtResource("2_prop")]
+position = Vector2(162, 98)
+kind = "chair"
+
+[node name="Chest1" parent="." instance=ExtResource("2_prop")]
+position = Vector2(200, 72)
+kind = "chest"
+
+[node name="Chest2" parent="." instance=ExtResource("2_prop")]
+position = Vector2(228, 72)
+kind = "chest"
+
+[node name="Barrel" parent="." instance=ExtResource("2_prop")]
+position = Vector2(232, 130)
+kind = "barrel"
+
+[node name="ExitDoor" parent="." instance=ExtResource("3_door")]
+position = Vector2(128, 184)
+target_zone = "village"
+target_spawn = "from_house_martin"
+draw_mat = true

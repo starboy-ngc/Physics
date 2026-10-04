@@ -1,0 +1,4 @@
+# Cache Godot (régénéré automatiquement)
+.godot/
+*.import
+export_presets.cfg
