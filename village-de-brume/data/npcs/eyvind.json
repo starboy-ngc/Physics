@@ -7,12 +7,6 @@
     "juste",
     "mélancolique"
   ],
-  "appearance": {
-    "tunic": "4a6a7a",
-    "hair": "d0d0d0",
-    "skin": "d8b898",
-    "pants": "3a3a40"
-  },
   "location": {
     "zone": "orion",
     "position": [
@@ -22,5 +16,6 @@
     "facing": "left"
   },
   "wander_radius": 0,
-  "dialogue": "res://data/dialogues/eyvind.json"
+  "dialogue": "res://data/dialogues/eyvind.json",
+  "sprite": 87
 }

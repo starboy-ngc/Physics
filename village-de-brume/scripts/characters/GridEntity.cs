@@ -15,10 +15,8 @@ public partial class GridEntity : Node2D
     public Zone? Zone { get; private set; }
     public bool IsMoving { get; private set; }
 
-    public Color TunicColor { get; set; } = new("3a6ea5");
-    public Color HairColor { get; set; } = new("5a3a22");
-    public Color SkinColor { get; set; } = new("f1c9a5");
-    public Color PantsColor { get; set; } = new("2a2a3a");
+    /// <summary>Index du sprite dans la planche Tiny Dungeon (voir assets/kenney/README.md).</summary>
+    public int SpriteIndex { get; set; } = 112;
 
     private CharacterSprites.Facing _facing = CharacterSprites.Facing.Down;
     public CharacterSprites.Facing Facing
@@ -38,10 +36,10 @@ public partial class GridEntity : Node2D
         Sprite = new Sprite2D
         {
             Name = "Sprite",
+            Texture = Art.Dungeon,
+            RegionEnabled = true,
             Centered = false,
-            Offset = new Vector2(-CharacterSprites.Cell / 2f, -(CharacterSprites.FeetRow + 1)),
-            Hframes = 3,
-            Vframes = 4,
+            Offset = new Vector2(-Art.Tile / 2f, -Art.Tile),
             TextureFilter = TextureFilterEnum.Nearest,
         };
         AddChild(Sprite);
@@ -51,7 +49,7 @@ public partial class GridEntity : Node2D
     public void RebuildSprite()
     {
         if (Sprite == null) return;
-        Sprite.Texture = CharacterSprites.Build(TunicColor, HairColor, SkinColor, PantsColor);
+        Sprite.RegionRect = new Cell(Art.Dungeon, SpriteIndex).Region;
         UpdateFrame();
     }
 
@@ -134,10 +132,12 @@ public partial class GridEntity : Node2D
         Facing = CharacterSprites.FacingFromDelta(d, Facing);
     }
 
+    /// <summary>Pas d'animation directionnelle dans le pack : on retourne le sprite à gauche et on le fait sautiller en marchant.</summary>
     private void UpdateFrame()
     {
         if (Sprite == null) return;
-        int pose = IsMoving ? 1 + (int)(_walkTime * 8f) % 2 : 0;
-        Sprite.Frame = (int)_facing * 3 + pose;
+        bool step = IsMoving && (int)(_walkTime * 8f) % 2 == 1;
+        Sprite.FlipH = _facing == CharacterSprites.Facing.Left;
+        Sprite.Offset = new Vector2(-Art.Tile / 2f, -Art.Tile - (step ? 1 : 0));
     }
 }

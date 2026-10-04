@@ -26,8 +26,13 @@ Prérequis :
   dialogues `data/dialogues/*.json` (noeuds, choix, action `shop` / `storage`).
 - **Menu** (Échap / Tab) : inventaire avec KP, carnet (réservé), quitter.
 - **Rendu** : monde en pixel art 256×192 (sous-viewport agrandi en pixels
-  entiers), interface dessinée à la résolution de la fenêtre. Tout le pixel
-  art est généré en code (`Art.cs`, `CharacterSprites.cs`), aucun asset externe.
+  entiers), interface dessinée à la résolution de la fenêtre.
+- **Graphismes** : packs **Kenney** (CC0) Tiny Town, Tiny Farm et Tiny
+  Dungeon dans `assets/kenney/` (voir le README de ce dossier). Les sols terre
+  et pavés se raccordent automatiquement avec l'herbe. Quelques éléments sans
+  équivalent dans les packs (eau, tente, longue-vue, lit) sont générés en code.
+  Les personnages sont les sprites 16 px de Tiny Dungeon (index `sprite` dans
+  `data/npcs/*.json`), retournés vers la gauche et sautillant en marchant.
 
 ## Lancer
 
@@ -70,13 +75,13 @@ scripts/
   systems/Inventory.cs      autoload : objets, pièces, inventaire, dépôt
   systems/DebugOverlay.cs   autoload (F3)
   systems/Main.cs           démarrage, répartition des actions de dialogue
-  world/Art.cs, PixelArt.cs  pixel art généré (atlas de tuiles, décors)
+  world/Art.cs, PixelArt.cs  accès aux atlas Kenney, auto-raccord, compléments générés
   world/GridMap.cs          grille : sol, cases bloquées, occupants
   world/Zone.cs             base des zones : plan ASCII, décors, portes, interactions
   world/Orion.cs, Home.cs   les deux zones
   world/PropNode.cs, Interactables.cs  décor posé sur la grille ; comptoir, coffre, objet examinable
   characters/GridEntity.cs  personnage sur grille (pas, animation, ombre)
-  characters/CharacterSprites.cs   planche de sprites et portrait générés
+  characters/CharacterSprites.cs   directions sur la grille
   player/Player.cs          entrées, interaction, portes
   npc/Npc.cs, NpcManager.cs, NpcData.cs   PNJ et autoload NpcManager
   ui/GameUI.cs              dialogue (portrait, choix), invite, message
@@ -94,7 +99,12 @@ docs/screenshots/           captures de référence
 
 ## Ajouter un PNJ
 
-1. `data/npcs/<id>.json` : zone, case `[x, y]`, couleurs, `wander_radius` (en
-   cases), dialogue, éventuellement `shop`.
+1. `data/npcs/<id>.json` : zone, case `[x, y]`, `sprite` (index Tiny Dungeon),
+   `wander_radius` (en cases), dialogue, éventuellement `shop`.
 2. `data/dialogues/<id>.json` : noeuds `text` + `next` ou `choices` ; un noeud
    peut porter `action` (`shop`, `storage`, `bank`).
+
+## Crédits
+
+Graphismes : [Kenney](https://kenney.nl) — Tiny Town, Tiny Farm, Tiny Dungeon
+(CC0 1.0). Merci à lui ; un don ou un crédit est apprécié mais non requis.

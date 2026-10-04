@@ -10,7 +10,8 @@ public class NpcData
     [JsonPropertyName("name")] public string Name { get; set; } = "???";
     [JsonPropertyName("role")] public string Role { get; set; } = "";
     [JsonPropertyName("personality")] public List<string> Personality { get; set; } = new();
-    [JsonPropertyName("appearance")] public Dictionary<string, string> Appearance { get; set; } = new();
+    /// <summary>Index du sprite dans la planche Tiny Dungeon.</summary>
+    [JsonPropertyName("sprite")] public int Sprite { get; set; } = 85;
     [JsonPropertyName("location")] public NpcLocation Location { get; set; } = new();
     [JsonPropertyName("wander_radius")] public float WanderRadius { get; set; }
     [JsonPropertyName("dialogue")] public string Dialogue { get; set; } = "";

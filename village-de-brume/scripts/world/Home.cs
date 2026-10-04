@@ -24,10 +24,12 @@ public partial class Home : Zone
     protected override void Build()
     {
         LoadLayout(Layout);
-        AddProp("Bed", Art.Bed(), new Vector2I(1, 2), new Vector2I(1, 2));
+        AddProp("Bed", Art.BedTexture(), new Vector2I(1, 2), new Vector2I(1, 2));
         AddInteractable(new Vector2I(1, 2), new Examinable("Dormir", "Pas maintenant. Les lumières n'attendent pas."));
         AddInteractable(new Vector2I(1, 3), new Examinable("Dormir", "Pas maintenant. Les lumières n'attendent pas."));
-        AddProp("Table", Art.Table(), new Vector2I(5, 2), new Vector2I(2, 1));
+        AddProp("Table", Art.Table(), new Vector2I(5, 2), new Vector2I(1, 1));
+        AddProp("Stool", Art.Stool(), new Vector2I(6, 2), new Vector2I(1, 1));
+        AddProp("Barrel", Art.Barrel(), new Vector2I(1, 7), new Vector2I(1, 1));
         AddProp("ChestA", Art.Chest(), new Vector2I(8, 2), new Vector2I(1, 1));
         AddProp("ChestB", Art.Chest(), new Vector2I(9, 2), new Vector2I(1, 1));
         AddInteractable(new Vector2I(8, 2), new StorageChest());

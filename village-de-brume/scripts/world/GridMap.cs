@@ -70,11 +70,26 @@ public partial class GridMap : Node2D
 
     public static Vector2I WorldToTile(Vector2 p) => new(Mathf.FloorToInt(p.X / Art.Tile), Mathf.FloorToInt((p.Y - 1) / Art.Tile));
 
+    /// <summary>Masque des voisins du même type (N=1, S=2, W=4, E=8) ; hors carte compte comme identique.</summary>
+    private int NeighborMask(int x, int y)
+    {
+        var id = _ground[x, y];
+        bool Same(int nx, int ny) => !InBounds(new Vector2I(nx, ny)) || _ground[nx, ny] == id || IsKin(id, _ground[nx, ny]);
+        return (Same(x, y - 1) ? 1 : 0) | (Same(x, y + 1) ? 2 : 0) | (Same(x - 1, y) ? 4 : 0) | (Same(x + 1, y) ? 8 : 0);
+    }
+
+    /// <summary>Sols qui se raccordent sans bord entre eux (terre et sable, par exemple).</summary>
+    private static bool IsKin(TileId a, TileId b) =>
+        (a is TileId.Path or TileId.Sand) && (b is TileId.Path or TileId.Sand or TileId.Shore or TileId.Plaza);
+
     public override void _Draw()
     {
-        var atlas = Art.TileAtlas;
         for (int y = 0; y < Height; y++)
             for (int x = 0; x < Width; x++)
-                DrawTextureRectRegion(atlas, new Rect2(x * Art.Tile, y * Art.Tile, Art.Tile, Art.Tile), Art.TileRegion(_ground[x, y]));
+            {
+                int variant = (x * 7 + y * 13 + x * y) % 97;
+                var (tex, region) = Art.GroundCell(_ground[x, y], NeighborMask(x, y), variant);
+                DrawTextureRectRegion(tex, new Rect2(x * Art.Tile, y * Art.Tile, Art.Tile, Art.Tile), region);
+            }
     }
 }

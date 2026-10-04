@@ -38,7 +38,7 @@ public partial class GameUI : CanvasLayer
     private IReadOnlyList<string> _choices = new List<string>();
     private string _speaker = "";
     private Player? _player;
-    private readonly Dictionary<string, ImageTexture> _portraits = new();
+    private readonly Dictionary<string, Texture2D> _portraits = new();
 
     public int ChoiceIndex => _choiceIndex;
     public IReadOnlyList<string> Choices => _choices;
@@ -213,14 +213,20 @@ public partial class GameUI : CanvasLayer
         _portraitFrame.Visible = tex != null;
     }
 
-    private ImageTexture? GetPortrait(string npcId)
+    /// <summary>Portrait : le sprite du PNJ, agrandi, sur fond bleu.</summary>
+    private Texture2D? GetPortrait(string npcId)
     {
         if (string.IsNullOrEmpty(npcId) || !NpcManager.Instance.Npcs.TryGetValue(npcId, out var data))
             return null;
         if (_portraits.TryGetValue(npcId, out var cached))
             return cached;
-        Color Get(string key, string fallback) => data.Appearance.TryGetValue(key, out var v) ? new Color(v) : new Color(fallback);
-        var tex = CharacterSprites.BuildPortrait(Get("tunic", "3a6ea5"), Get("hair", "5a3a22"), Get("skin", "f1c9a5"), PortraitBg);
+        var region = new Cell(Art.Dungeon, data.Sprite).Region;
+        var img = PixelArt.NewImage(32, 32);
+        PixelArt.Rect(img, 0, 0, 32, 32, PortraitBg);
+        var sprite = Art.Dungeon.GetImage().GetRegion(new Rect2I((int)region.Position.X, (int)region.Position.Y, 16, 16));
+        sprite.Resize(28, 28, Image.Interpolation.Nearest);
+        PixelArt.BlendBlit(img, sprite, 2, 3);
+        var tex = ImageTexture.CreateFromImage(img);
         _portraits[npcId] = tex;
         return tex;
     }

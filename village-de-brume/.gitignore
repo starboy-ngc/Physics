@@ -1,6 +1,6 @@
 # Cache Godot (régénéré automatiquement)
 .godot/
-*.import
+# *.import conservés pour les assets (réglages d'import Godot)
 export_presets.cfg
 # Build .NET
 bin/

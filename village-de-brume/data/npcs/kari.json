@@ -7,12 +7,6 @@
     "loyal",
     "curieux des histoires"
   ],
-  "appearance": {
-    "tunic": "6a9a5a",
-    "hair": "e0b060",
-    "skin": "f0c8a0",
-    "pants": "4a4a5a"
-  },
   "location": {
     "zone": "orion",
     "position": [
@@ -22,5 +16,6 @@
     "facing": "right"
   },
   "wander_radius": 2,
-  "dialogue": "res://data/dialogues/kari.json"
+  "dialogue": "res://data/dialogues/kari.json",
+  "sprite": 86
 }

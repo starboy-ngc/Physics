@@ -29,10 +29,7 @@ public partial class Npc : GridEntity, IGridInteractable
         WanderRadius = Mathf.RoundToInt(data.WanderRadius);
         _rng.Seed = (ulong)NpcId.GetHashCode();
         _wanderTimer = _rng.RandfRange(1f, 3f);
-        if (data.Appearance.TryGetValue("tunic", out var tunic)) TunicColor = new Color(tunic);
-        if (data.Appearance.TryGetValue("hair", out var hair)) HairColor = new Color(hair);
-        if (data.Appearance.TryGetValue("skin", out var skin)) SkinColor = new Color(skin);
-        if (data.Appearance.TryGetValue("pants", out var pants)) PantsColor = new Color(pants);
+        SpriteIndex = data.Sprite;
         RebuildSprite();
     }
 

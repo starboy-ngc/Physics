@@ -7,12 +7,6 @@
     "bavarde",
     "nourricière"
   ],
-  "appearance": {
-    "tunic": "c8603c",
-    "hair": "8a4a2a",
-    "skin": "f0c8a0",
-    "pants": "6a4a3a"
-  },
   "location": {
     "zone": "orion",
     "position": [
@@ -39,5 +33,6 @@
     {
       "id": "berry"
     }
-  ]
+  ],
+  "sprite": 99
 }
