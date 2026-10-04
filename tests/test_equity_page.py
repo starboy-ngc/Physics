@@ -106,7 +106,7 @@ class TestTheWholePageAnswers(EquityCase):
         self.assertTrue(self.lignes(self.app.equity_stats))
         self.assertTrue(self.app.equity_box.rows)
         self.assertTrue(self.lignes(self.app.equity_recap))
-        self.assertTrue(self.lignes(self.app.equity_lagging))
+        self.assertTrue(self.lignes(self.app.equity_list))
 
     def test_the_job_list_comes_from_the_file(self):
         propositions = list(self.app.equity_job.cget("values"))
@@ -159,11 +159,47 @@ class TestChoosingAJob(EquityCase):
         self.assertEqual(len(self.lignes(self.app.equity_recap)), avant)
         self.assertGreaterEqual(avant, len(POSTES))
 
-    def test_the_lagging_list_narrows_to_the_chosen_job(self):
+    def test_the_people_list_narrows_to_the_chosen_job(self):
         self.choisir(POSTES[2])
-        postes = {str(ligne[2]) for ligne in
-                  self.lignes(self.app.equity_lagging)}
+        colonnes = self.app._equity_columns
+        rang = colonnes.index("job_title")
+        postes = {str(ligne[rang]) for ligne in
+                  self.lignes(self.app.equity_list)}
         self.assertEqual(postes, {POSTES[2]})
+
+    def test_the_people_list_holds_every_employee_of_the_scope(self):
+        """Ce n'est pas un classement : c'est la liste de ceux dont les
+        chiffres de la page sont faits."""
+        self.choisir(POSTES[1])
+        attendu = sum(1 for employee in self.app.result.filtered
+                      if str(employee.value(self.app._equity_field) or "")
+                      == POSTES[1])
+        self.assertEqual(len(self.lignes(self.app.equity_list)), attendu)
+
+    def test_the_columns_come_from_the_configuration(self):
+        """Ajouter « Direction » ou retirer l'établissement ne demande
+        aucune modification du code."""
+        from hr_insight.core.pay_equity import people_columns
+
+        declarees = [colonne["field"] for colonne
+                     in people_columns(self.app.configuration)]
+        self.assertEqual(self.app._equity_columns, declarees)
+        intitules = [self.app.equity_list.heading(nom)["text"]
+                     for nom in self.app.equity_list.cget("columns")]
+        attendus = [colonne["label"].upper() for colonne
+                    in people_columns(self.app.configuration)]
+        self.assertEqual(intitules, attendus)
+
+    def test_the_engine_carries_no_name(self):
+        """Le moteur ne transporte jamais d'identité : c'est ce qui garantit
+        qu'aucun document produit ne peut en porter."""
+        from hr_insight.core.pay_equity import people_rows
+
+        bloc = people_rows(self.app.result.filtered, self.app.result.config)
+        texte = " ".join(str(valeur) for ligne in bloc["rows"]
+                         for valeur in ligne["values"].values())
+        self.assertNotIn("NOM", texte)
+        self.assertNotIn("PRENOM", texte)
 
     def test_going_back_to_all_restores_the_whole_population(self):
         self.choisir(POSTES[0])

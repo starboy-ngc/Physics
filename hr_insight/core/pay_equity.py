@@ -35,7 +35,7 @@ from . import statistics_engine as stats
 from .config import Configuration, analysis_field
 from .normalize import FTE_FIELD, Population, full_time_amount
 from .metrics import PrivacyRules
-from .segmentation import cross_key, dimension_label, split_by
+from .segmentation import personal_fields, cross_key, dimension_label, split_by
 
 FEMALE = "F"
 MALE = "H"
@@ -585,6 +585,65 @@ def _breakdown(members: List[Any], population: Population,
                              if base["full_time"] else "") + ")."),
         "threshold": rules.min_publish,
     }
+
+
+def people_columns(config: Configuration) -> List[Dict[str, Any]]:
+    """Colonnes declarees pour la liste nominative.
+
+    Rien n'est ecrit en dur : la liste vient du parametrage, et un champ
+    qu'aucune colonne du fichier n'alimente est ecarte — une colonne vide
+    sur toute la hauteur n'apprend rien et prend la place d'une autre.
+    """
+    colonnes = []
+    for entry in config.get("pay_equity_parameters.people_columns", []) or []:
+        champ = str(entry.get("field") or "")
+        if not champ:
+            continue
+        colonnes.append({
+            "field": champ,
+            "label": entry.get("label") or _field_title(config, champ),
+            "width": int(entry.get("width") or 140),
+        })
+    return colonnes
+
+
+def _field_title(config: Configuration, field_name: str) -> str:
+    """Intitule d'un champ, declare au mapping ou a defaut son nom."""
+    from .segmentation import dimension_labels
+
+    return dimension_labels(config).get(field_name, field_name)
+
+
+def people_rows(population: Population, config: Configuration,
+                field_name: Optional[str] = None,
+                value: Optional[str] = None) -> Dict[str, Any]:
+    """La population analysee, une ligne par salarie.
+
+    Ce n'est pas un classement et cela ne masque rien : c'est la liste de
+    ceux dont les chiffres de la page sont faits. Elle ne porte aucune
+    identite — le moteur n'en transporte jamais — mais le numero de ligne
+    par lequel la fenetre retrouve le salarie qu'elle detient deja.
+    """
+    colonnes = people_columns(config)
+    membres = (category_members(population, field_name, value)
+               if field_name and value is not None else list(population))
+    personnels = set(personal_fields(config))
+    lignes = []
+    for employee in membres:
+        lignes.append({
+            "row": employee.row_number,
+            "reference": employee.anonymous_id or str(employee.row_number),
+            # Les champs nominatifs ne sont pas recopies ici : la fenetre
+            # les resout depuis la population qu'elle detient, et sous le
+            # reglage d'affichage. Un bloc d'analyse qui porterait un nom
+            # finirait dans un document.
+            "values": {colonne["field"]:
+                       ("" if colonne["field"] in personnels
+                        else employee.value(colonne["field"]))
+                       for colonne in colonnes},
+        })
+    return {"columns": colonnes, "rows": lignes, "headcount": len(membres),
+            "personal_fields": sorted(personnels)}
 
 
 def sexes_of(members: Sequence[Any],

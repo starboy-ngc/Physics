@@ -270,11 +270,17 @@ sur tous les postes — c'est lui qui permet de situer celui qu'on regarde.
 Sans choix, la page compare les deux sexes sur toute la population
 analysée.
 
-**Effectifs et pyramide des âges.** Effectif, part, âge médian et
-ancienneté médiane, en trois colonnes : femmes, hommes, ensemble. La
-pyramide à droite emploie les tranches d'âge de la population entière, et
-non un découpage refait poste par poste : deux pyramides calculées sur des
-tranches différentes ne se compareraient pas.
+**Effectifs et deux pyramides.** Effectif, part, âge médian et ancienneté
+médiane, en trois colonnes : femmes, hommes, ensemble. Puis deux
+pyramides — les âges, et la structure d'ancienneté. L'âge dit qui est là,
+l'ancienneté dit depuis quand : un écart de rémunération ne se lit pas
+pareil selon que les deux sexes ont la même ancienneté ou non, le premier
+cas appelant une revalorisation et le second une revue de la grille.
+
+Les deux emploient les tranches de la population entière, et non un
+découpage refait poste par poste : deux pyramides calculées sur des
+tranches différentes ne se compareraient pas, et les barres sauteraient
+d'une ligne à l'autre en changeant de poste.
 
 **Nuage de points.** Deux axes au choix, dans la même liste de champs que
 l'onglet Graphiques. La couleur, elle, n'est pas au choix : c'est le sexe,
@@ -295,10 +301,21 @@ population.
 médianes, l'écart — positif quand les hommes sont mieux rémunérés,
 classement par écart décroissant.
 
-**Les salariés en dessous.** Chacun comparé à la médiane de son poste. Un
-écart de poste dit qu'il se passe quelque chose ; il ne dit pas à qui, et
-une revalorisation se décide personne par personne. Ces noms restent à
-l'écran : aucun document produit, aucun export, aucun journal n'en porte.
+**Population analysée.** La liste de ceux dont les chiffres de la page
+sont faits — ce n'est pas un classement, et elle ne retient rien. Ses
+**colonnes se déclarent au paramétrage**, dans
+`pay_equity_parameters.people_columns` : ajouter « Direction » ou retirer
+l'établissement ne demande aucune modification du code.
+
+Les champs nominatifs y font exception : le moteur n'en transporte jamais,
+et c'est la fenêtre qui les résout depuis le fichier chargé, sous le
+réglage « montrer les identités à l'écran ». Décoché, la liste porte la
+référence anonyme à la place du nom. Ces noms restent à l'écran : aucun
+document produit, aucun export, aucun journal n'en porte.
+
+**Les tableaux se replient sur leur contenu.** Un tableau d'une ligne ne
+garde pas douze lignes de blanc sous elle ; la hauteur déclarée n'est
+qu'un plafond, au-delà duquel le tableau défile.
 
 Les indicateurs de la directive 2023/970 — décomposition de l'écart
 global, répartition par quartile — restent dans le rapport HTML, les

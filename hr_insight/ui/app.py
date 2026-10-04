@@ -36,7 +36,7 @@ from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
 from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
-                               category_members, lagging_members,
+                               category_members, people_rows,
                                population_breakdown)
 from ..core.pipeline import (AnalysisRequest, load_population, run_analysis,
                              stage_labels)
@@ -1126,17 +1126,26 @@ class Application(tk.Tk):
         self.tabs[key].pack(fill="both", expand=True)
 
     def _tree(self, parent, columns, widths, expand: bool = True,
-              height: Optional[int] = None) -> ttk.Treeview:
+              height: Optional[int] = None, anchors=None) -> ttk.Treeview:
         wrapper = tk.Frame(parent, background=theme.CANVAS)
         wrapper.pack(fill="both" if expand else "x", expand=expand,
                      padx=18, pady=(0, 18 if expand else 10))
         options = {"height": height} if height else {}
         tree = ttk.Treeview(wrapper, columns=columns, show="headings", **options)
-        for name, width in zip(columns, widths):
+        # La hauteur demandee devient un plafond, non une taille : un
+        # tableau d'une ligne gardait douze lignes de blanc sous elle, et la
+        # page s'etirait autour d'un vide. `_fill` la ramene a son contenu.
+        tree.plafond = height or 0
+        for rang, (name, width) in enumerate(zip(columns, widths)):
             # L'en-tete suit l'alignement de sa colonne. Centre par defaut,
             # il flottait au-dessus de valeurs calees a gauche ou a droite,
             # et l'oeil ne retrouvait plus quelle colonne il coiffait.
-            alignement = "w" if width > 200 else "e"
+            #
+            # La largeur sert de regle par defaut — un libelle long tient a
+            # gauche, un nombre se cale a droite — mais une colonne peut
+            # imposer la sienne : « Nom » est un mot, meme court.
+            alignement = ("w" if width > 200 else "e") if anchors is None \
+                else anchors[rang]
             tree.heading(name, text=name.upper(), anchor=alignement)
             tree.column(name, width=width, anchor=alignement)
         scroll = ttk.Scrollbar(wrapper, orient="vertical", command=tree.yview,
@@ -1796,6 +1805,11 @@ class Application(tk.Tk):
             if flagged is not None and flagged(index):
                 tags = ["alerte"]
             tree.insert("", "end", values=row, tags=tuple(tags))
+        plafond = getattr(tree, "plafond", 0)
+        if plafond:
+            # Au moins une ligne : a zero, Tk reduit le tableau a ses
+            # en-tetes et la page se referme sur rien.
+            tree.configure(height=max(min(len(rows), plafond), 1))
 
     def _show_quality(self, quality: Optional[Dict[str, Any]] = None) -> None:
         if quality is None:
@@ -2534,19 +2548,32 @@ class Application(tk.Tk):
         haut.pack(fill="x", padx=24)
         gauche = tk.Frame(haut, background=theme.CANVAS)
         gauche.pack(side="left", fill="both", expand=True)
+        milieu = tk.Frame(haut, background=theme.CANVAS)
+        milieu.pack(side="left", fill="both", expand=True, padx=(24, 0))
         droite = tk.Frame(haut, background=theme.CANVAS)
         droite.pack(side="left", fill="both", expand=True, padx=(24, 0))
         self._equity_title(gauche, "Effectifs")
         self.equity_people = self._tree(
             gauche, ("Indicateur", "Femmes", "Hommes", "Ensemble"),
-            (220, 110, 110, 110), expand=False, height=5)
-        self._equity_title(droite, "Pyramide des âges")
-        self.equity_pyramid = PyramidChart(droite)
+            (190, 95, 95, 95), expand=False, height=5)
+        # Deux pyramides et non une : l'age dit qui est la, l'anciennete dit
+        # depuis quand. Un ecart de remuneration ne se lit pas pareil selon
+        # que les deux sexes ont la meme anciennete ou non — le premier cas
+        # appelle une revalorisation, le second une revue de la grille.
+        self._equity_title(milieu, "Pyramide des âges")
+        self.equity_pyramid = PyramidChart(milieu)
         self.equity_pyramid.pack(fill="x", padx=18, pady=(0, 10))
         self.equity_pyramid_note = tk.Label(
-            droite, text="", background=theme.CANVAS, foreground=theme.MUTED,
-            font=self.fonts.small, justify="left", anchor="w", wraplength=420)
+            milieu, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=380)
         self.equity_pyramid_note.pack(anchor="w", padx=18, pady=(0, 8))
+        self._equity_title(droite, "Structure d'ancienneté")
+        self.equity_tenure = PyramidChart(droite)
+        self.equity_tenure.pack(fill="x", padx=18, pady=(0, 10))
+        self.equity_tenure_note = tk.Label(
+            droite, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=380)
+        self.equity_tenure_note.pack(anchor="w", padx=18, pady=(0, 8))
 
         # --- 2. Le nuage, sur deux axes au choix -------------------------
         self._equity_rule()
@@ -2611,11 +2638,13 @@ class Application(tk.Tk):
 
         # --- 5. Les salaries sous la mediane de leur poste ---------------
         self._equity_rule()
-        self._equity_title(page, "Les salariés en dessous")
-        self.equity_lagging = self._tree(
-            page, ("Salarié", "Sexe", "Poste", "Salaire à temps plein",
-                   "Écart au poste"),
-            (250, 90, 240, 190, 150), expand=False, height=12)
+        self._equity_title(page, "Population analysée")
+        # Le tableau se construit a l'analyse : ses colonnes sont declarees
+        # au parametrage, et elles changent d'un fichier a l'autre.
+        self.equity_people_frame = tk.Frame(page, background=theme.CANVAS)
+        self.equity_people_frame.pack(fill="x")
+        self.equity_list = None
+        self._equity_columns: List[str] = []
         self.equity_lagging_note = tk.Label(
             page, text="", background=theme.CANVAS, foreground=theme.MUTED,
             font=self.fonts.small, justify="left", anchor="w", wraplength=980)
@@ -2688,17 +2717,23 @@ class Application(tk.Tk):
 
     def _clear_equity(self) -> None:
         """Vide les cinq blocs d'un coup."""
-        for arbre in (self.equity_people, self.equity_stats,
-                      self.equity_recap, self.equity_lagging):
+        arbres = [self.equity_people, self.equity_stats, self.equity_recap]
+        # La liste nominative n'existe qu'une fois les colonnes connues :
+        # elle se construit a l'analyse, et il n'y a rien a vider avant.
+        if self.equity_list is not None:
+            arbres.append(self.equity_list)
+        for arbre in arbres:
             self._fill(arbre, [])
         self.equity_pyramid.set_rows([])
+        self.equity_tenure.set_rows([])
         self.equity_box.set_rows([])
         self.equity_scatter.set_dataset({})
         for child in self.equity_legend.winfo_children():
             child.destroy()
         for note in (self.equity_scope_note, self.equity_pyramid_note,
-                     self.equity_scatter_note, self.equity_stats_note,
-                     self.equity_recap_note, self.equity_lagging_note):
+                     self.equity_tenure_note, self.equity_scatter_note,
+                     self.equity_stats_note, self.equity_recap_note,
+                     self.equity_lagging_note):
             note.configure(text="")
 
     def _show_equity_scope(self) -> None:
@@ -2753,10 +2788,12 @@ class Application(tk.Tk):
              format_years(ensemble.get("tenure_median"))),
         ])
         self.equity_pyramid.set_rows(ensemble.get("age_bands", []))
+        self.equity_tenure.set_rows(ensemble.get("tenure_bands", []))
         inconnus = len(population) - len(parts["female"]) - len(parts["male"])
-        self.equity_pyramid_note.configure(
-            text=(f"{inconnus} salarié(s) sans sexe renseigné, hors pyramide."
-                  if inconnus else ""))
+        avis = (f"{inconnus} salarié(s) sans sexe renseigné, hors pyramide."
+                if inconnus else "")
+        self.equity_pyramid_note.configure(text=avis)
+        self.equity_tenure_note.configure(text=avis)
 
     def _reaxis_equity(self) -> None:
         """Recalcule le nuage de cette page, sur les deux axes choisis.
@@ -2941,34 +2978,87 @@ class Application(tk.Tk):
         self.equity_recap_note.configure(text=" ".join(note))
 
     def _show_equity_lagging(self, poste: Optional[str]) -> None:
-        """Les salaries sous la mediane de leur poste."""
+        """La population analysée, une ligne par salarié.
+
+        Les colonnes viennent du paramétrage : ajouter « Direction » ou
+        retirer l'établissement ne demande aucune modification ici. Les
+        champs nominatifs font exception — le moteur n'en transporte
+        jamais, et c'est la fenêtre qui les résout, sous le réglage
+        d'affichage des identités.
+        """
         devise = self.result.payload["salary"].get("currency", "EUR")
-        bloc = lagging_members(self.result.filtered, self.result.config,
-                               self._equity_field, poste)
-        lignes = bloc["rows"]
-        self._fill(self.equity_lagging, [
-            (self._identity_of(ligne["row"]) or ligne["reference"],
-             {"F": "Femme", "H": "Homme"}.get(ligne["sex"], "—"),
-             ligne["group"],
-             format_money(ligne["amount"], devise),
-             f'−{format_percent(ligne["gap"])}')
-            for ligne in lignes[:200]])
-        note = [f"{len(lignes)} salariés sous la médiane de leur poste."]
-        if bloc.get("withheld_groups"):
-            note.append(f'{bloc["withheld_groups"]} poste(s) ne fournissent '
-                        f'pas de repère : moins de {bloc["threshold"]} '
-                        "salariés comparables.")
-        if len(lignes) > 200:
-            note.append("Les 200 plus grands décrochages sont affichés.")
-        if bloc.get("implausible_rows"):
-            note.append(
-                f'{bloc["implausible_rows"]} rémunération(s) sous '
-                f'{format_money(bloc.get("implausible_floor"), devise)} '
-                "figurent en fin de liste : un montant si bas donne le plus "
-                "grand décrochage possible sans rien dire d'un écart.")
+        bloc = people_rows(self.result.filtered, self.result.config,
+                           self._equity_field, poste)
+        colonnes = bloc["columns"]
+        if self.equity_list is None or self._equity_columns != [
+                colonne["field"] for colonne in colonnes]:
+            self._equity_columns = [colonne["field"] for colonne in colonnes]
+            for child in self.equity_people_frame.winfo_children():
+                child.destroy()
+            montants = {axis["field"] for axis in metrics.scatter_axes(
+                self.configuration)}
+            self.equity_list = self._tree(
+                self.equity_people_frame,
+                tuple(colonne["label"] for colonne in colonnes),
+                tuple(colonne["width"] for colonne in colonnes),
+                expand=False, height=self.EQUITY_LIST_ROWS,
+                # Un nombre se cale a droite, un libelle a gauche : « Nom »
+                # est un mot, et sa largeur ne dit rien de sa nature.
+                anchors=tuple("e" if colonne["field"] in montants else "w"
+                              for colonne in colonnes))
+        personnels = set(bloc["personal_fields"])
+        montants = {axis["field"] for axis in metrics.scatter_axes(
+            self.configuration) if axis.get("kind") == "money"}
+
+        def cellule(ligne, colonne):
+            champ = colonne["field"]
+            if champ in personnels:
+                # Resolu par la fenetre, jamais par le moteur.
+                return self._identity_part(ligne["row"], champ)
+            valeur = ligne["values"].get(champ)
+            if valeur is None or valeur == "":
+                return "—"
+            if champ in montants:
+                return format_money(valeur, devise)
+            return str(valeur)
+
+        self._fill(self.equity_list, [
+            tuple(cellule(ligne, colonne) for colonne in colonnes)
+            for ligne in bloc["rows"][:self.EQUITY_LIST_MAX]])
+        note = [f'{bloc["headcount"]} salariés dans le périmètre analysé.']
+        if bloc["headcount"] > self.EQUITY_LIST_MAX:
+            note.append(f"Les {self.EQUITY_LIST_MAX} premiers sont affichés.")
+        note.append("Les colonnes se déclarent dans Paramètres → "
+                    "« pay_equity_parameters.people_columns ».")
         note.append("Ces noms restent à l'écran : aucun document produit, "
                     "aucun export, aucun journal n'en porte.")
         self.equity_lagging_note.configure(text=" ".join(note))
+
+    #: Hauteur maximale de la liste, en lignes, et nombre de lignes au-dela
+    #: duquel on cesse d'en poser dans le tableau : trente mille lignes
+    #: dans un Treeview prennent huit secondes a inserer — mesure faite.
+    EQUITY_LIST_ROWS = 18
+    EQUITY_LIST_MAX = 500
+
+    def _identity_part(self, row: Optional[int], field: str) -> str:
+        """Un champ nominatif, resolu depuis la population detenue.
+
+        Sous le reglage « ne pas montrer les identites », la reference
+        anonyme prend la place du nom — une seule fois, sur la colonne qui
+        vient en premier, pour ne pas la repeter sur chaque champ.
+        """
+        if row is None or self.population is None:
+            return "—"
+        montrer = self.configuration.get(
+            "privacy_parameters.show_identities_on_screen", True)
+        for employee in self.population:
+            if employee.row_number != row:
+                continue
+            if not montrer:
+                return (employee.anonymous_id or str(row)
+                        if field == self._equity_columns[0] else "—")
+            return str(employee.value(field) or "—")
+        return "—"
 
 
 

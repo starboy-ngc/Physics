@@ -202,6 +202,21 @@ DEFAULTS: Dict[str, Any] = {
         # propre a l'entreprise s'y ajoute sans toucher au moteur.
         # « kind » commande la mise en forme et la nature de l'ecart :
         # « money » un pourcentage, « years » et « ratio » une difference.
+        # Colonnes de la liste nominative de la page des ecarts. Elles se
+        # declarent ici : ajouter « Direction » ou retirer le site ne
+        # demande aucune modification du code. « width » commande la
+        # largeur a l'ecran, et l'alignement qui en decoule.
+        "people_columns": [
+            {"field": "last_name", "label": "Nom", "width": 160},
+            {"field": "first_name", "label": "Prénom", "width": 140},
+            {"field": "gender", "label": "Sexe", "width": 70},
+            {"field": "job_title", "label": "Poste", "width": 210},
+            {"field": "business_unit", "label": "BU", "width": 130},
+            {"field": "site", "label": "Établissement", "width": 150},
+            {"field": "grade", "label": "Grade", "width": 90},
+            {"field": "base_salary", "label": "Salaire de base",
+             "width": 140},
+        ],
         "profile_fields": [
             {"field": "base_salary", "label": "Salaire de base",
              "kind": "money"},
