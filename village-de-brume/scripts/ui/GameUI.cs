@@ -244,11 +244,13 @@ public partial class GameUI : CanvasLayer
 
     private void RefreshChoices()
     {
-        foreach (var c in _choicesList.GetChildren()) c.QueueFree();
+        // Retirer immédiatement les anciens libellés : QueueFree seul les laisse
+        // compter dans la taille minimale jusqu'à la frame suivante.
+        foreach (var c in _choicesList.GetChildren()) { _choicesList.RemoveChild(c); c.QueueFree(); }
         _choicesBox.Visible = _choices.Count > 0;
         for (int i = 0; i < _choices.Count; i++)
             _choicesList.AddChild(MakeLabel((i == _choiceIndex ? "▶ " : "   ") + _choices[i], 8, Text));
-        _choicesBox.ResetSize();
+        _choicesBox.Size = _choicesBox.GetCombinedMinimumSize();
         _choicesBox.Position = new Vector2(256 - Margin - _choicesBox.Size.X, 192 - BoxHeight - Margin - 2 - _choicesBox.Size.Y);
     }
 }

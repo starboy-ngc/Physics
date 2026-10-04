@@ -1,0 +1,40 @@
+{
+  "id": "gunnar",
+  "name": "Gunnar",
+  "role": "Forgeron, armurier",
+  "personality": [
+    "bourru",
+    "fier",
+    "peu de mots"
+  ],
+  "appearance": {
+    "tunic": "5a5a62",
+    "hair": "3a2a1a",
+    "skin": "d8a888",
+    "pants": "3a2a2a"
+  },
+  "location": {
+    "zone": "orion",
+    "position": [
+      20,
+      6
+    ],
+    "facing": "down"
+  },
+  "wander_radius": 0,
+  "dialogue": "res://data/dialogues/gunnar.json",
+  "shop": [
+    {
+      "id": "staff"
+    },
+    {
+      "id": "cloak"
+    },
+    {
+      "id": "lantern"
+    },
+    {
+      "id": "rope"
+    }
+  ]
+}

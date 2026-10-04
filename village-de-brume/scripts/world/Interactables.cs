@@ -31,3 +31,10 @@ public class Counter : IGridInteractable
             npc.Interact(player);
     }
 }
+
+/// <summary>Coffre de la maison : ouvre le rangement.</summary>
+public class StorageChest : IGridInteractable
+{
+    public string Prompt => "Ouvrir";
+    public void Interact(Player player) => Main.Instance?.RunAction("storage", "");
+}

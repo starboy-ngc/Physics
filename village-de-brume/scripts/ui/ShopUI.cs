@@ -11,7 +11,7 @@ public partial class ShopUI : ListPanelUI
 
     protected override string Title => _merchantName;
     protected override string[] Tabs => new[] { "Acheter", "Vendre" };
-    protected override string Header => $"{Inventory.Instance.Coins} pièces";
+    protected override string Header => $"{Inventory.Instance.Coins} KP";
 
     public void OpenFor(NpcData merchant)
     {
@@ -33,7 +33,7 @@ public partial class ShopUI : ListPanelUI
                 var def = inv.GetDef(e.Id);
                 if (def == null) continue;
                 int price = PriceOf(e);
-                list.Add(new Entry(def.Name, $"{price} p.", inv.Coins >= price, def.Description));
+                list.Add(new Entry(def.Name, $"{price} KP", inv.Coins >= price, def.Description));
             }
         }
         else
@@ -42,7 +42,7 @@ public partial class ShopUI : ListPanelUI
             {
                 var def = inv.GetDef(s.Id);
                 if (def == null) continue;
-                string right = def.Price > 0 ? $"{def.SellPrice} p." + (s.Count > 1 ? $" x{s.Count}" : "") : "—";
+                string right = def.Price > 0 ? $"{def.SellPrice} KP" + (s.Count > 1 ? $" x{s.Count}" : "") : "—";
                 list.Add(new Entry(def.Name, right, def.Price > 0, def.Price > 0 ? def.Description : "Cet objet ne se vend pas."));
             }
         }
@@ -56,13 +56,13 @@ public partial class ShopUI : ListPanelUI
         {
             var e = _stock[index];
             var def = inv.GetDef(e.Id)!;
-            Feedback(inv.Buy(e.Id, PriceOf(e)) ? $"Acheté : {def.Name}." : "Pas assez de pièces.");
+            Feedback(inv.Buy(e.Id, PriceOf(e)) ? $"Acheté : {def.Name}." : "Pas assez de KP.");
         }
         else
         {
             var stack = inv.Stacks[index];
             var def = inv.GetDef(stack.Id)!;
-            Feedback(inv.Sell(stack.Id) ? $"Vendu : {def.Name} (+{def.SellPrice} p.)." : "Impossible de vendre cet objet.");
+            Feedback(inv.Sell(stack.Id) ? $"Vendu : {def.Name} (+{def.SellPrice} KP)." : "Impossible de vendre cet objet.");
         }
     }
 }

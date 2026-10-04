@@ -1,0 +1,34 @@
+{
+  "id": "birna",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "text": "Ah, te voilà ! Tu as mangé ? Non, ne réponds pas, je vois bien que non. Qu'est-ce qu'il te faut ?",
+      "choices": [
+        {
+          "text": "Voir ce que tu as.",
+          "next": "shop"
+        },
+        {
+          "text": "Des nouvelles du village ?",
+          "next": "news"
+        },
+        {
+          "text": "Rien, je passais.",
+          "next": "bye"
+        }
+      ]
+    },
+    "shop": {
+      "text": "Du pain du matin, du poisson séché, de la soupe pour les jours de vent. Prends ce qu'il faut, tu me paieras en KP.",
+      "action": "shop"
+    },
+    "news": {
+      "text": "Les lumières sont revenues cette nuit, au nord. Eyvind est resté dehors jusqu'à l'aube avec sa longue-vue. À son âge ! Et Kári qui te cherchait partout.",
+      "next": "bye"
+    },
+    "bye": {
+      "text": "Allez, file. Et reviens manger."
+    }
+  }
+}

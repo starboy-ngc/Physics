@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="2_player"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/MenuUI.tscn" id="5_menu"]
 [ext_resource type="PackedScene" path="res://scenes/ui/ShopUI.tscn" id="6_shop"]
 [ext_resource type="PackedScene" path="res://scenes/ui/StorageUI.tscn" id="7_storage"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BankUI.tscn" id="8_bank"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -40,3 +41,5 @@ position_smoothing_speed = 10.0
 [node name="ShopUI" parent="." instance=ExtResource("6_shop")]
 
 [node name="StorageUI" parent="." instance=ExtResource("7_storage")]
+
+[node name="BankUI" parent="." instance=ExtResource("8_bank")]

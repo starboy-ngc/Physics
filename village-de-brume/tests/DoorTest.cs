@@ -17,10 +17,10 @@ public partial class DoorTest : TestBase
             case 0:
                 // "start" = (4,6) ; le paillasson est en (6,8) : droite puis bas.
                 HoldOnly(p.Tile.X < 6 ? "move_right" : "move_down");
-                if (Game.CurrentZoneId == "village")
+                if (Game.CurrentZoneId == "orion")
                 {
                     ReleaseAll();
-                    Log($"sortie de la base OK -> village, case={p.Tile}");
+                    Log($"sortie de la maison OK -> village, case={p.Tile}");
                     _phase = 1; _phaseStart = Frame;
                 }
                 else if (Frame - _phaseStart > 600) Finish($"le joueur n'a pas atteint la sortie (case {p.Tile})");
@@ -30,13 +30,13 @@ public partial class DoorTest : TestBase
                 break;
             case 2:
                 HoldOnly("move_up");
-                if (Game.CurrentZoneId == "base")
+                if (Game.CurrentZoneId == "home")
                 {
                     ReleaseAll();
-                    Log($"retour dans la base OK, case={p.Tile}");
+                    Log($"retour dans la maison OK, case={p.Tile}");
                     Finish();
                 }
-                else if (Frame - _phaseStart > 600) Finish("le joueur n'a pas pu rentrer dans la base");
+                else if (Frame - _phaseStart > 600) Finish("le joueur n'a pas pu rentrer dans la maison");
                 break;
         }
     }

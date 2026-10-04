@@ -1,0 +1,34 @@
+{
+  "id": "gunnar",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "text": "Hm. Si c'est pour une clôture, c'est non. Si c'est pour partir là-haut... regarde.",
+      "choices": [
+        {
+          "text": "Voir l'équipement.",
+          "next": "shop"
+        },
+        {
+          "text": "Tu as déjà forgé une arme ?",
+          "next": "weapon"
+        },
+        {
+          "text": "Rien pour l'instant.",
+          "next": "bye"
+        }
+      ]
+    },
+    "shop": {
+      "text": "Bâton, cape, lanterne, corde. Le reste viendra quand j'aurai du bon fer. Et quand quelqu'un en aura besoin.",
+      "action": "shop"
+    },
+    "weapon": {
+      "text": "Des outils. Des haches. Un couteau pour Eyvind, il y a longtemps. Le jour où tu passes la palissade, reviens me voir. J'aurai quelque chose.",
+      "next": "bye"
+    },
+    "bye": {
+      "text": "Hm."
+    }
+  }
+}

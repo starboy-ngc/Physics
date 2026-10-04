@@ -6,9 +6,9 @@ namespace VillageDeBrume;
 /// <summary>Dépôt : onglet Déposer (inventaire -> dépôt) et Retirer (dépôt -> inventaire), une unité par validation.</summary>
 public partial class StorageUI : ListPanelUI
 {
-    protected override string Title => "Dépôt de Jeanne";
-    protected override string[] Tabs => new[] { "Déposer", "Retirer" };
-    protected override string Header => $"{Inventory.Instance.Storage.Count} pile(s) au dépôt";
+    protected override string Title => "Coffres de la maison";
+    protected override string[] Tabs => new[] { "Ranger", "Prendre" };
+    protected override string Header => $"{Inventory.Instance.Storage.Count} pile(s) rangée(s)";
 
     protected override List<Entry> GetEntries()
     {
@@ -29,12 +29,12 @@ public partial class StorageUI : ListPanelUI
         if (TabIndex == 0)
         {
             var stack = inv.Stacks[index];
-            Feedback(inv.Deposit(stack.Id) ? $"Déposé : {inv.GetDef(stack.Id)?.Name}." : "Impossible.");
+            Feedback(inv.Deposit(stack.Id) ? $"Rangé : {inv.GetDef(stack.Id)?.Name}." : "Impossible.");
         }
         else
         {
             var stack = inv.Storage[index];
-            Feedback(inv.Withdraw(stack.Id) ? $"Retiré : {inv.GetDef(stack.Id)?.Name}." : "Impossible.");
+            Feedback(inv.Withdraw(stack.Id) ? $"Pris : {inv.GetDef(stack.Id)?.Name}." : "Impossible.");
         }
     }
 }

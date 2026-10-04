@@ -49,6 +49,8 @@ public partial class Inventory : Node
     /// <summary>Objets confiés au dépôt (Jeanne).</summary>
     public List<ItemStack> Storage { get; } = new();
     public int Coins { get; private set; }
+    /// <summary>KP confiés à la banque.</summary>
+    public int BankBalance { get; private set; }
 
     public override void _EnterTree()
     {
@@ -114,6 +116,24 @@ public partial class Inventory : Node
         if (def == null || def.Price <= 0 || !Remove(id, 1))
             return false;
         AddCoins(def.SellPrice);
+        return true;
+    }
+
+    // --- Banque ------------------------------------------------------------------
+
+    public bool DepositCoins(int amount)
+    {
+        if (amount <= 0 || !SpendCoins(amount)) return false;
+        BankBalance += amount;
+        Changed?.Invoke();
+        return true;
+    }
+
+    public bool WithdrawCoins(int amount)
+    {
+        if (amount <= 0 || BankBalance < amount) return false;
+        BankBalance -= amount;
+        AddCoins(amount);
         return true;
     }
 

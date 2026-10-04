@@ -11,8 +11,8 @@ public partial class ScreenshotTest : TestBase
     protected override string Tag => "shot";
     private static readonly (string zone, string spawn)[] Shots =
     {
-        ("base", "start"), ("village", "from_base"), ("village", "start"), ("village", "dialogue"),
-        ("village", "shop"), ("village", "menu"), ("village", "near_jeanne"),
+        ("home", "start"), ("orion", "from_home"), ("orion", "start"), ("orion", "dialogue"),
+        ("orion", "shop"), ("orion", "cassegrain"), ("orion", "eyvind"), ("orion", "menu"),
     };
     private string _outDir = "user://screenshots";
     private int _index = -1;
@@ -36,15 +36,19 @@ public partial class ScreenshotTest : TestBase
             switch (spawn)
             {
                 case "dialogue":
-                    _ = Game.ChangeZone("village", "near_emile", true);
+                    _ = Game.ChangeZone("orion", "near_birna", true);
                     Game.Player.PlaceAt(Game.CurrentZone!, new Vector2I(10, 8), CharacterSprites.Facing.Up);
-                    if (Game.CurrentZone!.GetNodeOrNull<Npc>("NPC_emile") is { } npc) npc.Interact(Game.Player);
+                    if (Game.CurrentZone!.GetNodeOrNull<Npc>("NPC_birna") is { } npc) npc.Interact(Game.Player);
                     break;
                 case "shop":
-                    shop.OpenFor(NpcManager.Instance.Npcs["emile"]);
+                    shop.OpenFor(NpcManager.Instance.Npcs["birna"]);
+                    break;
+                case "eyvind":
+                    _ = Game.ChangeZone("orion", "cassegrain", true);
+                    if (Game.CurrentZone!.GetNodeOrNull<Npc>("NPC_eyvind") is { } eyvind) eyvind.Interact(Game.Player);
                     break;
                 case "menu":
-                    _ = Game.ChangeZone("village", "start", true);
+                    _ = Game.ChangeZone("orion", "start", true);
                     menu.Open();
                     break;
                 default:
@@ -58,9 +62,8 @@ public partial class ScreenshotTest : TestBase
             string path = $"{_outDir}/{_index:00}_{Shots[_index].zone}_{Shots[_index].spawn}.png";
             img.SavePng(path);
             Log(path);
-            if (Dialogue.IsActive && Shots[_index].spawn != "dialogue") Dialogue.End();
-            if (Shots[_index].spawn == "dialogue" && (_index + 1 >= Shots.Length || Shots[_index + 1].spawn != "shop")) Dialogue.End();
-            if (Shots[_index].spawn == "shop") { Dialogue.End(); shop.Close(); }
+            if (Shots[_index].spawn == "shop") shop.Close();
+            if (Dialogue.IsActive && (_index + 1 >= Shots.Length || Shots[_index + 1].spawn != "shop")) Dialogue.End();
             if (menu.IsOpen) menu.Close();
             if (_index + 1 >= Shots.Length) Finish();
         }

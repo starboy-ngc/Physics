@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace VillageDeBrume.Tests;
 
 /// <summary>
-/// Va dans la boulangerie, marche vers Émile, appuie sur E, descend d'un cran
+/// Marche vers le comptoir de Birna, appuie sur E, descend d'un cran
 /// dans les choix, valide, puis avance jusqu'à la fin du dialogue.
 /// </summary>
 public partial class DialogueTest : TestBase
@@ -27,7 +27,7 @@ public partial class DialogueTest : TestBase
         _nodesSeen++;
         if (choices.Count > 0)
             _choicesSeen++;
-        if (text.StartsWith("Alors bienvenue"))
+        if (text.StartsWith("Les lumières sont revenues"))
             _passingSeen = true;
         string excerpt = text.Length > 40 ? text[..40] : text;
         Log($"{speaker} : {excerpt}  (choix: {choices.Count})");
@@ -39,12 +39,12 @@ public partial class DialogueTest : TestBase
         switch (_phase)
         {
             case 0:
-                _ = Game.ChangeZone("village", "near_emile", true);
+                _ = Game.ChangeZone("orion", "near_birna", true);
                 _phase = 1;
                 _phaseStart = Frame;
                 break;
             case 1:
-                HoldOnly("move_up"); // vers le comptoir d'Émile
+                HoldOnly("move_up"); // vers le comptoir de Birna
                 if (player.Focused is Counter)
                 {
                     ReleaseAll();

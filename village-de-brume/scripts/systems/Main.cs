@@ -9,8 +9,10 @@ namespace VillageDeBrume;
 /// </summary>
 public partial class Main : Node
 {
+    public static Main? Instance { get; private set; }
     private ShopUI _shop = null!;
     private StorageUI _storage = null!;
+    private BankUI _bank = null!;
 
     public override void _Ready()
     {
@@ -19,13 +21,22 @@ public partial class Main : Node
         var ui = GetNode<GameUI>("GameUI");
         _shop = GetNode<ShopUI>("ShopUI");
         _storage = GetNode<StorageUI>("StorageUI");
+        _bank = GetNode<BankUI>("BankUI");
+        Instance = this;
         ui.BindPlayer(player);
         DialogueManager.Instance.ActionRequested += OnDialogueAction;
         Game.Instance.Setup(zoneRoot, player);
-        _ = Game.Instance.ChangeZone("base", "start", true);
+        _ = Game.Instance.ChangeZone("home", "start", true);
     }
 
-    public override void _ExitTree() => DialogueManager.Instance.ActionRequested -= OnDialogueAction;
+    public override void _ExitTree()
+    {
+        DialogueManager.Instance.ActionRequested -= OnDialogueAction;
+        Instance = null;
+    }
+
+    /// <summary>Exécute une action de jeu (boutique, dépôt, banque) demandée par un dialogue ou un objet.</summary>
+    public void RunAction(string action, string speakerId) => OnDialogueAction(action, speakerId);
 
     private void OnDialogueAction(string action, string speakerId)
     {
@@ -39,6 +50,9 @@ public partial class Main : Node
                 break;
             case "storage":
                 _storage.Open();
+                break;
+            case "bank":
+                _bank.Open();
                 break;
             default:
                 GD.PushWarning($"Action de dialogue inconnue : '{action}'");

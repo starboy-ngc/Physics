@@ -1,0 +1,43 @@
+{
+  "id": "birna",
+  "name": "Birna",
+  "role": "Tient l'échoppe",
+  "personality": [
+    "chaleureuse",
+    "bavarde",
+    "nourricière"
+  ],
+  "appearance": {
+    "tunic": "c8603c",
+    "hair": "8a4a2a",
+    "skin": "f0c8a0",
+    "pants": "6a4a3a"
+  },
+  "location": {
+    "zone": "orion",
+    "position": [
+      10,
+      6
+    ],
+    "facing": "down"
+  },
+  "wander_radius": 0,
+  "dialogue": "res://data/dialogues/birna.json",
+  "shop": [
+    {
+      "id": "bread"
+    },
+    {
+      "id": "apple"
+    },
+    {
+      "id": "fish"
+    },
+    {
+      "id": "soup"
+    },
+    {
+      "id": "berry"
+    }
+  ]
+}

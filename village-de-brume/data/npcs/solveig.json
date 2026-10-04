@@ -1,0 +1,26 @@
+{
+  "id": "solveig",
+  "name": "Solveig",
+  "role": "Banquière",
+  "personality": [
+    "précise",
+    "sèche",
+    "fiable"
+  ],
+  "appearance": {
+    "tunic": "3a5a9a",
+    "hair": "e8d8a0",
+    "skin": "f0d0b0",
+    "pants": "2a2a3a"
+  },
+  "location": {
+    "zone": "orion",
+    "position": [
+      15,
+      6
+    ],
+    "facing": "down"
+  },
+  "wander_radius": 0,
+  "dialogue": "res://data/dialogues/solveig.json"
+}

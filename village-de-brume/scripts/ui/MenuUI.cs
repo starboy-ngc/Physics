@@ -183,8 +183,8 @@ public partial class MenuUI : CanvasLayer
     {
         if (!IsOpen)
             return;
-        foreach (var c in _tabsList.GetChildren()) c.QueueFree();
-        foreach (var c in _contentList.GetChildren()) c.QueueFree();
+        foreach (var c in _tabsList.GetChildren()) { _tabsList.RemoveChild(c); c.QueueFree(); }
+        foreach (var c in _contentList.GetChildren()) { _contentList.RemoveChild(c); c.QueueFree(); }
 
         for (int i = 0; i < _tabs.Length; i++)
         {
@@ -198,7 +198,7 @@ public partial class MenuUI : CanvasLayer
         switch (TabIndex)
         {
             case 0:
-                _title.Text = $"Inventaire — {Inventory.Instance.Coins} pièces";
+                _title.Text = $"Inventaire — {Inventory.Instance.Coins} KP";
                 var stacks = Inventory.Instance.Stacks;
                 if (stacks.Count == 0)
                     _contentList.AddChild(MakeLabel("(vide)", 9, Muted));

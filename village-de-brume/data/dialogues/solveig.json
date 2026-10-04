@@ -1,0 +1,31 @@
+{
+  "id": "solveig",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "text": "Banque d'Orion. Vos KP sont plus en sûreté ici que dans vos poches, surtout si vous comptez passer la palissade.",
+      "choices": [
+        {
+          "text": "Déposer ou retirer des KP.",
+          "next": "bank"
+        },
+        {
+          "text": "Pourquoi une banque sur une île ?",
+          "next": "why"
+        },
+        {
+          "text": "Au revoir.",
+          "next": "end"
+        }
+      ]
+    },
+    "bank": {
+      "text": "Je note tout. Combien ?",
+      "action": "bank"
+    },
+    "why": {
+      "text": "Parce que les gens perdent tout dès qu'ils tombent dans un ruisseau. Pas ici. Ce que vous me confiez, vous le retrouverez, naufrage ou non.",
+      "next": "start"
+    }
+  }
+}

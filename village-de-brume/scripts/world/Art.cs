@@ -7,7 +7,7 @@ namespace VillageDeBrume;
 public enum TileId
 {
     Void, Grass, GrassB, GrassC, GrassDark, Path, Plaza, PlazaB, Water, WaterEdge, Flower,
-    Floor, FloorB, WallTop, Wall, Rug, Mat, Count
+    Floor, FloorB, WallTop, Wall, Rug, Mat, Shore, Sand, Count
 }
 
 /// <summary>
@@ -70,19 +70,33 @@ public static class Art
                 break;
             case TileId.Plaza:
             case TileId.PlazaB:
-                PixelArt.Rect(t, 0, 0, 16, 16, id == TileId.Plaza ? new Color("cdbf9f") : new Color("c6b796"));
-                PixelArt.Rect(t, 0, 0, 16, 1, new Color("ab9a76"));
-                PixelArt.Rect(t, 0, 0, 1, 16, new Color("ab9a76"));
-                PixelArt.Rect(t, 8, 8, 1, 8, new Color("ab9a76"));
-                PixelArt.Rect(t, 0, 8, 16, 1, new Color("ab9a76"));
-                PixelArt.Rect(t, 1, 1, 7, 1, new Color("ddd0b4"));
-                PixelArt.Rect(t, 9, 9, 6, 1, new Color("ddd0b4"));
+                PixelArt.Rect(t, 0, 0, 16, 16, id == TileId.Plaza ? new Color("8e949c") : new Color("868c94"));
+                PixelArt.Rect(t, 0, 0, 16, 1, new Color("656b74"));
+                PixelArt.Rect(t, 0, 0, 1, 16, new Color("656b74"));
+                PixelArt.Rect(t, 8, 8, 1, 8, new Color("656b74"));
+                PixelArt.Rect(t, 0, 8, 16, 1, new Color("656b74"));
+                PixelArt.Rect(t, 1, 1, 7, 1, new Color("a6acb4"));
+                PixelArt.Rect(t, 9, 9, 6, 1, new Color("a6acb4"));
+                if (rng.Randf() < 0.3f) PixelArt.Rect(t, rng.RandiRange(2, 12), rng.RandiRange(2, 12), 2, 1, new Color("6f8a52"));
                 break;
             case TileId.Water:
-                PixelArt.Rect(t, 0, 0, 16, 16, new Color("58a8f0"));
-                PixelArt.Rect(t, 2, 4, 5, 1, new Color("9ad0ff"));
-                PixelArt.Rect(t, 9, 11, 4, 1, new Color("9ad0ff"));
-                PixelArt.Rect(t, 5, 13, 3, 1, new Color("3d8ad8"));
+                PixelArt.Rect(t, 0, 0, 16, 16, new Color("3f86c8"));
+                PixelArt.Rect(t, 2, 4, 5, 1, new Color("7fbce8"));
+                PixelArt.Rect(t, 9, 11, 4, 1, new Color("7fbce8"));
+                PixelArt.Rect(t, 5, 13, 3, 1, new Color("2f6aa8"));
+                break;
+            case TileId.Shore:
+                // Mer en haut, plage de sable sombre en bas (rivage au nord du village)
+                PixelArt.Rect(t, 0, 0, 16, 16, new Color("3f86c8"));
+                PixelArt.Rect(t, 0, 8, 16, 2, new Color("cfe6f4"));
+                PixelArt.Rect(t, 0, 10, 16, 6, new Color("b9ad8a"));
+                PixelArt.Rect(t, 3, 12, 2, 1, new Color("9a8e6c"));
+                PixelArt.Rect(t, 10, 14, 2, 1, new Color("9a8e6c"));
+                break;
+            case TileId.Sand:
+                PixelArt.Rect(t, 0, 0, 16, 16, new Color("b9ad8a"));
+                for (int i = 0; i < 4; i++)
+                    PixelArt.Rect(t, rng.RandiRange(0, 14), rng.RandiRange(0, 14), 2, 1, new Color("9a8e6c"));
                 break;
             case TileId.WaterEdge:
                 PixelArt.Rect(t, 0, 0, 16, 16, new Color("58a8f0"));
@@ -200,19 +214,22 @@ public static class Art
     {
         var img = PixelArt.NewImage(64, 56);
         // Toit
+        // Toit de tourbe (herbe), bord en bois
         for (int y = 0; y < 22; y++)
         {
             int inset = (21 - y) * 6 / 21;
-            PixelArt.Rect(img, inset, y, 64 - 2 * inset, 1, y % 3 == 0 ? new Color("9a3a2c") : new Color("c8503c"));
+            PixelArt.Rect(img, inset, y, 64 - 2 * inset, 1, y % 4 == 0 ? new Color("5a9a3c") : new Color("6fae48"));
         }
-        PixelArt.Rect(img, 0, 22, 64, 3, new Color("7a2a20"));
-        // Murs
-        PixelArt.Rect(img, 4, 25, 56, 31, new Color("f0dcb0"));
-        PixelArt.Rect(img, 4, 50, 56, 6, new Color("b8a070"));
-        // Colombages discrets
-        PixelArt.Rect(img, 4, 25, 2, 31, new Color("8a5a2a"));
-        PixelArt.Rect(img, 58, 25, 2, 31, new Color("8a5a2a"));
-        PixelArt.Rect(img, 4, 25, 56, 2, new Color("8a5a2a"));
+        for (int i = 0; i < 14; i++)
+            PixelArt.Put(img, 6 + (i * 37) % 52, 3 + (i * 11) % 17, new Color("4b8c30"));
+        PixelArt.Rect(img, 0, 22, 64, 3, new Color("6a4020"));
+        // Murs en planches
+        PixelArt.Rect(img, 4, 25, 56, 31, new Color("b88a58"));
+        for (int y = 29; y < 56; y += 6)
+            PixelArt.Rect(img, 4, y, 56, 1, new Color("8a5a2a"));
+        PixelArt.Rect(img, 4, 50, 56, 6, new Color("8a6a4a"));
+        PixelArt.Rect(img, 4, 25, 2, 31, new Color("6a4020"));
+        PixelArt.Rect(img, 58, 25, 2, 31, new Color("6a4020"));
         // Fenêtres
         foreach (int wx in new[] { 10, 44 })
         {
@@ -332,6 +349,90 @@ public static class Art
         PixelArt.Rect(img, 27, 10, 3, 8, new Color("6a4020"));
         PixelArt.Rect(img, 0, 2, 32, 9, new Color("c89a5a"));
         PixelArt.Rect(img, 0, 9, 32, 2, new Color("a0703c"));
+        PixelArt.Outline(img, Outline);
+        return img;
+    });
+
+    /// <summary>Tente de toile 32x32, ouverture devant.</summary>
+    public static ImageTexture Tent(Color cloth) => Get("tent" + cloth.ToHtml(), () =>
+    {
+        var img = PixelArt.NewImage(32, 32);
+        for (int y = 2; y < 28; y++)
+        {
+            int half = 2 + (y - 2) * 14 / 26;
+            PixelArt.Rect(img, 16 - half, y, half * 2, 1, (y / 3) % 2 == 0 ? cloth : cloth.Darkened(0.12f));
+        }
+        PixelArt.Rect(img, 0, 28, 32, 3, cloth.Darkened(0.35f));
+        PixelArt.Rect(img, 15, 0, 2, 4, new Color("6a4020"));
+        // Ouverture sombre
+        for (int y = 14; y < 29; y++)
+        {
+            int half = (y - 14) * 5 / 15 + 1;
+            PixelArt.Rect(img, 16 - half, y, half * 2, 1, new Color("3a2a2a"));
+        }
+        PixelArt.Outline(img, Outline);
+        return img;
+    });
+
+    /// <summary>Longue-vue sur trépied 16x28.</summary>
+    public static ImageTexture Telescope() => Get("telescope", () =>
+    {
+        var img = PixelArt.NewImage(16, 28);
+        PixelArt.Rect(img, 7, 14, 2, 14, new Color("6a4020"));
+        PixelArt.Rect(img, 3, 18, 2, 10, new Color("6a4020"));
+        PixelArt.Rect(img, 11, 18, 2, 10, new Color("6a4020"));
+        for (int i = 0; i < 10; i++)
+            PixelArt.Rect(img, 2 + i, 12 - i, 3, 3, i < 4 ? new Color("c8a050") : new Color("b08a3a"));
+        PixelArt.Rect(img, 12, 2, 3, 3, new Color("e8d070"));
+        PixelArt.Outline(img, Outline);
+        return img;
+    });
+
+    /// <summary>Lanterne sur poteau 16x28.</summary>
+    public static ImageTexture LanternPost() => Get("lantern", () =>
+    {
+        var img = PixelArt.NewImage(16, 28);
+        PixelArt.Rect(img, 7, 10, 2, 18, new Color("6a4020"));
+        PixelArt.Rect(img, 5, 2, 6, 9, new Color("4a4a52"));
+        PixelArt.Rect(img, 6, 3, 4, 7, new Color("f8c040"));
+        PixelArt.Rect(img, 7, 5, 2, 3, new Color("ffe890"));
+        PixelArt.Rect(img, 4, 1, 8, 1, new Color("4a4a52"));
+        PixelArt.Outline(img, Outline);
+        return img;
+    });
+
+    public static ImageTexture Crate() => Get("crate", () =>
+    {
+        var img = PixelArt.NewImage(16, 16);
+        PixelArt.Rect(img, 1, 3, 14, 13, new Color("b08a4a"));
+        PixelArt.Stroke(img, 1, 3, 14, 13, new Color("6a4020"));
+        PixelArt.Rect(img, 1, 9, 14, 1, new Color("6a4020"));
+        PixelArt.Rect(img, 8, 3, 1, 13, new Color("6a4020"));
+        PixelArt.Outline(img, Outline);
+        return img;
+    });
+
+    public static ImageTexture Barrel() => Get("barrel", () =>
+    {
+        var img = PixelArt.NewImage(16, 18);
+        PixelArt.Ellipse(img, 8, 9, 6, 8, new Color("a0703c"));
+        PixelArt.Rect(img, 3, 5, 10, 1, new Color("4a4a52"));
+        PixelArt.Rect(img, 3, 12, 10, 1, new Color("4a4a52"));
+        PixelArt.Outline(img, Outline);
+        return img;
+    });
+
+    /// <summary>Palissade de rondins 16x20.</summary>
+    public static ImageTexture Palisade() => Get("palisade", () =>
+    {
+        var img = PixelArt.NewImage(16, 20);
+        for (int i = 0; i < 4; i++)
+        {
+            int x = i * 4;
+            PixelArt.Rect(img, x, 2 + (i % 2), 4, 18, i % 2 == 0 ? new Color("8a5a2a") : new Color("9a6a3a"));
+            PixelArt.Rect(img, x + 1, 0 + (i % 2), 2, 3, new Color("b08a4a"));
+        }
+        PixelArt.Rect(img, 0, 9, 16, 2, new Color("6a4020"));
         PixelArt.Outline(img, Outline);
         return img;
     });

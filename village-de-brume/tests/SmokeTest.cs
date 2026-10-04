@@ -8,7 +8,7 @@ public partial class SmokeTest : TestBase
     protected override string Tag => "smoke";
     private static readonly (string zone, string spawn)[] Steps =
     {
-        ("village", "from_base"), ("village", "near_emile"), ("base", "entrance"), ("village", "start"),
+        ("orion", "from_home"), ("orion", "near_birna"), ("orion", "cassegrain"), ("home", "entrance"), ("orion", "start"),
     };
     private int _step;
 
@@ -18,7 +18,7 @@ public partial class SmokeTest : TestBase
         if (_step == 0)
         {
             if (NpcManager.Instance.Npcs.Count == 0) Fail("aucune fiche PNJ chargée");
-            CheckZone("base", "start");
+            CheckZone("home", "start");
         }
         if (_step < Steps.Length)
         {

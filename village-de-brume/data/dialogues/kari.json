@@ -1,0 +1,34 @@
+{
+  "id": "kari",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "text": "Te voilà ! Tu as vu, cette nuit ? Le ciel était vert jusqu'au-dessus de la palissade. J'ai cru que ma grand-mère allait tomber de sa chaise.",
+      "choices": [
+        {
+          "text": "On ira voir, un jour.",
+          "next": "go"
+        },
+        {
+          "text": "Tu as peur ?",
+          "next": "fear"
+        },
+        {
+          "text": "Il faut que je range mes affaires.",
+          "next": "bye"
+        }
+      ]
+    },
+    "go": {
+      "text": "Un jour ? Eyvind a dit « bientôt ». Je viens avec toi. Ne discute pas. Quelqu'un doit se souvenir du chemin du retour.",
+      "next": "bye"
+    },
+    "fear": {
+      "text": "Évidemment que j'ai peur. Les anciens ne parlent jamais de ceux qui ne sont pas revenus. C'est ça qui fait peur. Mais je viens quand même.",
+      "next": "bye"
+    },
+    "bye": {
+      "text": "Passe à la maison avant de partir. Les coffres sont là pour ça."
+    }
+  }
+}

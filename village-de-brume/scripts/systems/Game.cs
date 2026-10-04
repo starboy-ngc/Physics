@@ -17,8 +17,8 @@ public partial class Game : Node
     /// <summary>Identifiant de zone -> fabrique. Ajouter ici toute nouvelle zone.</summary>
     public static readonly Dictionary<string, Func<Zone>> Zones = new()
     {
-        ["village"] = () => new Village(),
-        ["base"] = () => new BaseInterior(),
+        ["orion"] = () => new Orion(),
+        ["home"] = () => new Home(),
     };
 
     private const float FadeTime = 0.15f;

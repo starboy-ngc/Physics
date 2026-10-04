@@ -1,0 +1,38 @@
+{
+  "id": "eyvind",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "text": "Tu regardes la palissade comme je regardais la mer, gamin. Je connais ce regard. Il m'a coûté des amis.",
+      "choices": [
+        {
+          "text": "Je veux aller voir les lumières.",
+          "next": "lights"
+        },
+        {
+          "text": "Racontez-moi le naufrage.",
+          "next": "wreck"
+        },
+        {
+          "text": "Qu'y a-t-il derrière ?",
+          "next": "beyond"
+        }
+      ]
+    },
+    "lights": {
+      "text": "Les aurores. Elles dansent au nord depuis que nous sommes ici. Ceux qui ont voulu les rejoindre n'ont pas passé le premier hiver des hauteurs. Mais toi... tu es né ici. Peut-être que l'île te connaît.",
+      "next": "soon"
+    },
+    "wreck": {
+      "text": "L'Orion a touché les récifs une nuit sans lune. Quarante-deux à bord, vingt-neuf sur la plage au matin. Nous avons bâti avec ce que la mer a rendu. Cette longue-vue vient du pont. Elle a regardé l'horizon pendant des années. Maintenant elle regarde l'île.",
+      "next": "soon"
+    },
+    "beyond": {
+      "text": "La vallée d'abord, puis les plateaux. Plus loin, les glaciers, les volcans, les fjords. Des bêtes que personne n'a nommées. Et le froid. Toujours le froid.",
+      "next": "soon"
+    },
+    "soon": {
+      "text": "Les expéditions partiront d'ici, de Cassegrain. Prépare-toi : de quoi manger, une cape, une lanterne. Et ton ami. Je te dirai quand."
+    }
+  }
+}

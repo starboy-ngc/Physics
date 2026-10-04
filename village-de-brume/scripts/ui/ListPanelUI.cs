@@ -161,10 +161,10 @@ public abstract partial class ListPanelUI : CanvasLayer
         _title.Text = Title;
         _header.Text = Header;
         _hint.Text = Hint;
-        foreach (var c in _tabsRow.GetChildren()) c.QueueFree();
+        foreach (var c in _tabsRow.GetChildren()) { _tabsRow.RemoveChild(c); c.QueueFree(); }
         for (int i = 0; i < Tabs.Length; i++)
             _tabsRow.AddChild(MakeLabel((i == TabIndex ? "[ " : "  ") + Tabs[i] + (i == TabIndex ? " ]" : "  "), 9, i == TabIndex ? Selected : Muted));
-        foreach (var c in _list.GetChildren()) c.QueueFree();
+        foreach (var c in _list.GetChildren()) { _list.RemoveChild(c); c.QueueFree(); }
         var entries = GetEntries();
         if (entries.Count == 0)
             _list.AddChild(MakeLabel("(rien)", 9, Muted));
