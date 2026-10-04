@@ -239,7 +239,7 @@ AVEC VOTRE PROPRE FICHIER, EN LIGNE DE COMMANDE
 
   1. Vérifier que les colonnes sont reconnues
 
-     py hr-insight.pyz mapping mon-fichier.xlsx
+     py hr-analytics.pyz mapping mon-fichier.xlsx
 
      Seules "Matricule" et "Salaire de base" sont obligatoires.
      La casse et les accents n'ont pas d'importance. Si vos en-têtes
@@ -247,11 +247,11 @@ AVEC VOTRE PROPRE FICHIER, EN LIGNE DE COMMANDE
 
   2. Contrôler la qualité des données
 
-     py hr-insight.pyz controle mon-fichier.xlsx
+     py hr-analytics.pyz controle mon-fichier.xlsx
 
   3. Analyser
 
-     py hr-insight.pyz analyse mon-fichier.xlsx ^
+     py hr-analytics.pyz analyse mon-fichier.xlsx ^
          --segment grade --segment business_unit ^
          --sortie resultats
 
@@ -283,7 +283,7 @@ FILTRER
   le nom d'une personne en titre, et le masquage des montants n'y
   changerait rien. Segmentez sur une notion collective.
 
-     py hr-insight.pyz mapping mon-fichier.xlsx
+     py hr-analytics.pyz mapping mon-fichier.xlsx
 
   liste les noms de champ exacts reconnus dans votre fichier : ce
   sont eux qui s'écrivent à gauche du signe.
@@ -392,7 +392,7 @@ PARAMÉTRAGE
   Si le dossier est en lecture seule — installation gérée par l'IT —
   l'outil propose d'en choisir un autre. Il faut alors le lancer avec :
 
-     py hr-insight.pyz interface --config mon-dossier
+     py hr-analytics.pyz interface --config mon-dossier
 
   Les champs nominatifs (nom, prénom, matricule, date de naissance)
   ne sont jamais proposés comme axe d'analyse : un groupe d'une seule
@@ -494,7 +494,7 @@ CONTENU DE L'ARCHIVE
 
   lancer.bat / lancer.sh       ouvre l'interface graphique
   analyser-demo.bat / .sh      analyse en lot, sans interface
-  hr-insight.pyz   l'outil, en un seul fichier
+  hr-analytics.pyz   l'outil, en un seul fichier
   hr_analytics/      le code source, lisible et auditable
   config/                      les paramètres
   tools/                       générateur de population, banc de perf

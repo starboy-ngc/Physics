@@ -22,8 +22,8 @@ from hr_analytics.io.xlsx_writer import write_workbook  # noqa: E402
 HEADERS = [
     "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
     "Date de sortie", "BU", "Pays", "Établissement", "Métier", "Poste",
-    "Famille métier", "Grade", "Coefficient", "Statut", "Temps de travail",
-    "Salaire de base", "Variable", "Rémunération totale", "Manager",
+    "Famille métier", "Annexe", "Groupe", "Coefficient", "Statut",
+    "Temps de travail", "Salaire de base", "Variable", "Rémunération totale", "Manager",
 ]
 
 
@@ -49,8 +49,12 @@ JOB_FAMILIES = {
     "Production": ["Operateur", "Technicien", "Responsable production"],
     "Commerce": ["Commercial", "Key account manager", "Assistant commercial"],
 }
-GRADES = ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]
-GRADE_BASE = {
+GROUPES = ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]
+#: Annexe de la convention collective, par famille de metier. Une annexe
+#: regroupe les emplois d'une meme filiere et porte sa propre grille.
+ANNEXES = {famille: f"Annexe {rang + 1}"
+           for rang, famille in enumerate(sorted(JOB_FAMILIES))}
+GROUPE_BASE = {
     "G1": 24000, "G2": 28000, "G3": 33000, "G4": 39000,
     "G5": 47000, "G6": 58000, "G7": 74000, "G8": 96000,
 }
@@ -61,14 +65,14 @@ COUNTRY_FACTOR = {
 STATUSES = ["Non cadre", "Agent de maitrise", "Cadre"]
 
 #: Le poste precise le metier d'un niveau de responsabilite. C'est l'axe de
-#: comparaison le plus courant en remuneration : deux "Comptable" de grades
+#: comparaison le plus courant en remuneration : deux "Comptable" de groupes
 #: eloignes n'occupent pas le meme poste et ne se comparent pas.
 POSITION_LEVELS = ((2, "junior"), (5, ""), (8, "senior"))
 
 
-def position_for(job: str, grade_index: int) -> str:
+def position_for(job: str, groupe_index: int) -> str:
     for ceiling, level in POSITION_LEVELS:
-        if grade_index < ceiling:
+        if groupe_index < ceiling:
             return f"{job} {level}".strip()
     return job
 
@@ -79,11 +83,11 @@ def assign_managers(rows, rng, span: int = 8) -> None:
     Sans organigramme, la fonction « equipe » de l'outil ne s'essaie sur
     rien : le jeu de demonstration doit donc en porter un.
 
-    Il se construit BU par BU, du grade le plus eleve au plus bas, chacun
+    Il se construit BU par BU, du groupe le plus eleve au plus bas, chacun
     rejoignant le premier responsable qui n'encadre pas encore `span`
-    personnes. Le manager est ainsi toujours d'un grade au moins egal a
+    personnes. Le manager est ainsi toujours d'un groupe au moins egal a
     celui de son equipe, et l'encadrement reste borne. Un rattachement
-    tire au hasard parmi les grades superieurs, essaye d'abord, donnait
+    tire au hasard parmi les groupes superieurs, essaye d'abord, donnait
     1 150 responsables pour 2 000 salaries et un encadrement median de 1 :
     une chaine, pas un organigramme.
 
@@ -92,15 +96,15 @@ def assign_managers(rows, rng, span: int = 8) -> None:
     population, donc reproductible a graine egale.
     """
     identifier = column("Matricule")
-    unit, grade = column("BU"), column("Grade")
+    unit, groupe = column("BU"), column("Groupe")
     units: dict = {}
     for row in rows:
         units.setdefault(row[unit], []).append(row)
     for members in units.values():
-        # Le grade decide de l'ordre ; le tirage departage les ex aequo,
+        # Le groupe decide de l'ordre ; le tirage departage les ex aequo,
         # sans quoi l'organigramme suivrait l'ordre des matricules.
         rng.shuffle(members)
-        members.sort(key=lambda row: -GRADES.index(row[grade]))
+        members.sort(key=lambda row: -GROUPES.index(row[groupe]))
         placed: list = []
         for position, row in enumerate(members):
             # Encadrement borne : le premier responsable non complet.
@@ -117,9 +121,9 @@ def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
         country = COUNTRIES[business_unit]
         family = rng.choice(list(JOB_FAMILIES))
         job = rng.choice(JOB_FAMILIES[family])
-        grade = rng.choices(GRADES, weights=[10, 16, 18, 18, 14, 12, 8, 4])[0]
-        grade_index = GRADES.index(grade)
-        status = STATUSES[min(2, grade_index // 3)]
+        groupe = rng.choices(GROUPES, weights=[10, 16, 18, 18, 14, 12, 8, 4])[0]
+        groupe_index = GROUPES.index(groupe)
+        status = STATUSES[min(2, groupe_index // 3)]
         gender = rng.choice(["F", "H"])
 
         age = round(rng.triangular(22, 62, 39), 0)
@@ -128,22 +132,23 @@ def build_rows(count: int, seed: int, reference: _dt.date, defects: bool):
         tenure = round(rng.triangular(0, max(max_tenure, 1), 5), 1)
         hire = reference - _dt.timedelta(days=int(tenure * 365.2425))
 
-        base = GRADE_BASE[grade] * COUNTRY_FACTOR[country]
+        base = GROUPE_BASE[groupe] * COUNTRY_FACTOR[country]
         base *= 1 + 0.012 * tenure                      # effet anciennete
         base *= 1 + rng.gauss(0, 0.09)                  # dispersion individuelle
         if gender == "F":
             base *= 1 - abs(rng.gauss(0.02, 0.02))      # ecart a analyser
         fte = rng.choices([1.0, 0.8, 0.5], weights=[88, 9, 3])[0]
         base = round(base * fte, 0)
-        variable = round(base * max(0.0, rng.gauss(0.06 + 0.02 * grade_index, 0.04)), 0)
+        variable = round(base * max(0.0, rng.gauss(0.06 + 0.02 * groupe_index, 0.04)), 0)
 
         rows.append([
             f"E{index:06d}",
             f"NOM{index:05d}", f"PRENOM{index:05d}", gender,
             birth, hire, "",
             business_unit, country, rng.choice(SITES), job,
-            position_for(job, grade_index), family, grade,
-            100 + grade_index * 25, status, fte, base, variable, base + variable,
+            position_for(job, groupe_index), family, ANNEXES[family], groupe,
+            100 + groupe_index * 25, status, fte, base, variable,
+            base + variable,
         ])
 
     assign_managers(rows, rng)

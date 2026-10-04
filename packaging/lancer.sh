@@ -8,4 +8,4 @@ if [ -z "$PY" ]; then
     echo "Python 3.9 ou superieur est requis. https://www.python.org/downloads/"
     exit 1
 fi
-exec "$PY" hr-insight.pyz
+exec "$PY" hr-analytics.pyz

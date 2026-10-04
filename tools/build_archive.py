@@ -117,7 +117,7 @@ def build_tree(destination: str) -> str:
         if os.path.isfile(origin):
             shutil.copy2(origin, os.path.join(destination, target))
     _clean(destination)
-    build_pyz(os.path.join(destination, "hr-insight.pyz"))
+    build_pyz(os.path.join(destination, "hr-analytics.pyz"))
     for name in ("lancer.sh", "analyser-demo.sh"):
         path = os.path.join(destination, name)
         if os.path.isfile(path):
@@ -171,11 +171,11 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
 
     os.makedirs(args.sortie, exist_ok=True)
-    tree = os.path.join(args.sortie, "hr-insight")
+    tree = os.path.join(args.sortie, "hr-analytics")
     build_tree(tree)
     build_populations(tree, args.lignes, args.graine)
     archive = os.path.join(args.sortie,
-                           f"hr-insight-{__version__}.zip")
+                           f"hr-analytics-{__version__}.zip")
     zip_tree(tree, archive)
     size = os.path.getsize(archive) / 1024
     print(f"{archive}  ({size:.0f} Ko)")

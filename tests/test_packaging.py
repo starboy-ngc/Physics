@@ -6,6 +6,7 @@ livraison, quand il est le plus couteux.
 """
 
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -99,7 +100,7 @@ class TestTheDeliveredPackageIsReviewable(unittest.TestCase):
         import tempfile
         from tools.build_archive import build_tree
         cls.directory = tempfile.mkdtemp()
-        cls.tree = build_tree(os.path.join(cls.directory, "hr-insight"))
+        cls.tree = build_tree(os.path.join(cls.directory, "hr-analytics"))
 
     def _sources(self):
         for dossier, _d, fichiers in os.walk(self.tree):
@@ -289,6 +290,83 @@ class TestTheSingleFileLauncher(unittest.TestCase):
         for interdit in ("URLDownload", "WinHttp", "InternetOpen",
                          "RegCreateKey", "RegSetValue", "WinExec"):
             self.assertNotIn(interdit, self.source, interdit)
+
+
+class TestTheNetworkStackIsRemoved(unittest.TestCase):
+    """L'interpréteur livré ne porte pas de quoi ouvrir une connexion.
+
+    L'outil n'importe aucun module réseau — d'autres tests le vérifient sur
+    le source. Celui-ci vérifie l'étape d'après : que le Python embarqué
+    parte sans sa pile réseau, pour qu'une équipe qui homologue le paquet
+    n'ait pas à nous croire sur parole.
+    """
+
+    def _runtime_postiche(self):
+        """Une arborescence qui ressemble à un Python Windows extrait."""
+        racine = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, racine, True)
+        for dossier in ("DLLs", "Lib", os.path.join("Lib", "urllib"),
+                        os.path.join("Lib", "http"),
+                        os.path.join("Lib", "email")):
+            os.makedirs(os.path.join(racine, dossier), exist_ok=True)
+        for chemin in ("DLLs/_socket.pyd", "DLLs/_ssl.pyd", "DLLs/select.pyd",
+                       "DLLs/_hashlib.pyd", "libssl-3.dll",
+                       "libcrypto-3.dll", "Lib/socket.py", "Lib/ssl.py",
+                       "Lib/pathlib.py", "Lib/urllib/parse.py",
+                       "Lib/urllib/request.py", "Lib/http/client.py",
+                       "Lib/email/message.py"):
+            with open(os.path.join(racine, *chemin.split("/")), "wb") as flux:
+                flux.write(b"x")
+        return racine
+
+    def test_the_socket_module_is_what_decides(self):
+        """Sans « _socket.pyd », aucun code Python ne peut ouvrir de
+        connexion, quelle que soit la bibliothèque qui le demanderait."""
+        from tools.build_windows import RESEAU_DLLS
+
+        self.assertIn("_socket.pyd", RESEAU_DLLS)
+        self.assertIn("_ssl.pyd", RESEAU_DLLS)
+
+    def test_it_takes_the_network_stack_and_leaves_the_rest(self):
+        from tools.build_windows import reseau_a_retirer
+
+        racine = self._runtime_postiche()
+        retires = {os.path.relpath(chemin, racine).replace(os.sep, "/")
+                   for chemin in reseau_a_retirer(racine)}
+        for parti in ("DLLs/_socket.pyd", "DLLs/_ssl.pyd", "DLLs/select.pyd",
+                      "libssl-3.dll", "Lib/socket.py", "Lib/ssl.py",
+                      "Lib/http", "Lib/email", "Lib/urllib/request.py"):
+            self.assertIn(parti, retires, parti)
+        # Gardés : les empreintes SHA-256 et l'anonymisation en dépendent,
+        # et « pathlib » importe « urllib.parse » pour écrire une URL.
+        for reste in ("DLLs/_hashlib.pyd", "libcrypto-3.dll",
+                      "Lib/urllib/parse.py", "Lib/pathlib.py"):
+            self.assertNotIn(reste, retires, reste)
+
+    def test_removing_it_really_removes_it(self):
+        from tools.build_windows import retirer_reseau
+
+        racine = self._runtime_postiche()
+        retirer_reseau(racine)
+        for parti in ("DLLs/_socket.pyd", "Lib/http", "Lib/ssl.py"):
+            self.assertFalse(os.path.exists(os.path.join(racine,
+                                                         *parti.split("/"))),
+                             parti)
+        self.assertTrue(os.path.exists(os.path.join(racine, "DLLs",
+                                                    "_hashlib.pyd")))
+        self.assertTrue(os.path.exists(os.path.join(racine, "Lib", "urllib",
+                                                    "parse.py")))
+
+    def test_the_fingerprint_sheet_says_what_was_taken_out(self):
+        """Ce qui est retiré doit être écrit : une liste de hachages qui
+        tait les absences ne prouve rien."""
+        import inspect
+
+        from tools import build_windows
+
+        source = inspect.getsource(build_windows.empreintes)
+        self.assertIn("RESEAU_DLLS", source)
+        self.assertIn("Pile reseau retiree", source)
 
 
 class TestTheMarkIcon(unittest.TestCase):

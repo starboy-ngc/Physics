@@ -71,6 +71,32 @@ BASE_URL = f"https://www.python.org/ftp/python/{PYTHON_VERSION}/amd64"
 LIB_INUTILE = ("test", "idlelib", "lib2to3", "ensurepip", "turtledemo",
                "distutils", "site-packages", "__pycache__", "pydoc_data")
 
+#: La pile réseau de la bibliothèque standard. L'outil ne l'importe nulle
+#: part — un test le vérifie sur le source, et un relevé des modules
+#: effectivement chargés par une analyse complète le confirme —, mais la
+#: laisser dans le paquet obligerait l'équipe qui l'homologue à nous croire
+#: sur parole. Retirée, la question ne se pose plus : la capacité n'est pas
+#: là.
+#:
+#: « _socket.pyd » est la pièce qui décide : sans elle, aucun code Python
+#: ne peut ouvrir de connexion, quelle que soit la bibliothèque qui le
+#: demanderait. Le reste part pour que personne n'ait à le relire.
+#:
+#: Volontairement gardés : « libcrypto-3.dll » et « _hashlib.pyd », qui
+#: servent aux empreintes SHA-256 et à l'anonymisation, et
+#: « urllib/parse.py », que « pathlib » importe pour écrire un chemin en
+#: URL — ni l'un ni l'autre n'ouvre quoi que ce soit.
+RESEAU_DLLS = ("_socket.pyd", "_ssl.pyd", "select.pyd", "_asyncio.pyd",
+               "_overlapped.pyd", "libssl-3.dll")
+RESEAU_LIB = ("socket.py", "ssl.py", "selectors.py", "socketserver.py",
+              "ftplib.py", "smtplib.py", "poplib.py", "imaplib.py",
+              "telnetlib.py", "nntplib.py", "webbrowser.py", "cgi.py",
+              "cgitb.py", "http", "email", "xmlrpc", "asyncio", "wsgiref",
+              os.path.join("urllib", "request.py"),
+              os.path.join("urllib", "error.py"),
+              os.path.join("urllib", "response.py"),
+              os.path.join("urllib", "robotparser.py"))
+
 #: Arborescences reprises du dépôt.
 ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
           ("docs", "docs"))
@@ -159,9 +185,41 @@ def poser_runtime(extrait: str, destination: str) -> None:
         for nom in fichiers:
             if nom.endswith((".pyc", ".pyo")):
                 os.remove(os.path.join(dossier, nom))
+    retires = retirer_reseau(runtime)
+    _dire(f"  pile réseau retirée ({len(retires)} éléments)")
     shutil.copy2(
         os.path.join(ROOT, "packaging", "windows", f"python{PYTHON_TAG}._pth"),
         os.path.join(runtime, f"python{PYTHON_TAG}._pth"))
+
+
+def reseau_a_retirer(runtime: str) -> list:
+    """Ce qui serait retiré de cet interpréteur, sans rien toucher.
+
+    Séparé de la suppression pour être vérifiable : un test lui soumet une
+    arborescence postiche et lit ce qu'elle rendrait.
+    """
+    trouves = []
+    for nom in RESEAU_DLLS:
+        for dossier in (runtime, os.path.join(runtime, "DLLs")):
+            chemin = os.path.join(dossier, nom)
+            if os.path.exists(chemin):
+                trouves.append(chemin)
+    for nom in RESEAU_LIB:
+        chemin = os.path.join(runtime, "Lib", nom)
+        if os.path.exists(chemin):
+            trouves.append(chemin)
+    return trouves
+
+
+def retirer_reseau(runtime: str) -> list:
+    """Retire la pile réseau de l'interpréteur embarqué."""
+    retires = reseau_a_retirer(runtime)
+    for chemin in retires:
+        if os.path.isdir(chemin):
+            shutil.rmtree(chemin)
+        else:
+            os.remove(chemin)
+    return retires
 
 
 def empreintes(destination: str) -> str:
@@ -180,6 +238,10 @@ def empreintes(destination: str) -> str:
         "",
         "Composants repris : " + ", ".join(f"{n}.msi" for n in COMPOSANTS),
         "Retires de la bibliotheque standard : " + ", ".join(LIB_INUTILE),
+        "",
+        "Pile reseau retiree, de sorte que la capacite ne soit pas",
+        "seulement inutilisee mais absente : "
+        + ", ".join(RESEAU_DLLS + RESEAU_LIB),
         "",
         "SHA-256 de chaque fichier livre, chemin relatif au dossier :",
         "",
@@ -372,7 +434,7 @@ def main(argv=None) -> int:
 
     _dire("Composition :")
     dossier = composer(os.path.join(sortie, "HR Analytics"), extrait)
-    archive = os.path.join(sortie, f"HR-Insight-{__version__}-windows.zip")
+    archive = os.path.join(sortie, f"HR-Analytics-{__version__}-windows.zip")
     zipper(dossier, archive)
     produits = [archive]
 

@@ -15,4 +15,4 @@ if not defined PY (
     pause
     exit /b 1
 )
-start "" %PY% hr-insight.pyz
+start "" %PY% hr-analytics.pyz

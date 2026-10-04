@@ -121,6 +121,3 @@ if __name__ == "__main__":
         regenerate()
     else:
         unittest.main()
-
-if __name__ == "__main__":
-    unittest.main()

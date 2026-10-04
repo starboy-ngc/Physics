@@ -317,7 +317,7 @@ class TestAnonymousReference(unittest.TestCase):
         salt = anonymisation_salt(load_configuration())
         target = anonymise("E04217", salt)
         for index in range(5000):
-            self.assertNotEqual(anonymise(f"E{index:05d}", "hr-insight"),
+            self.assertNotEqual(anonymise(f"E{index:05d}", "un-autre-sel"),
                                 target)
 
     def test_the_salt_never_reaches_a_produced_document(self):

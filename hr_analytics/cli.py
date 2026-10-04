@@ -222,7 +222,7 @@ def command_config(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="hr-insight",
+        prog="hr-analytics",
         description=f"{ENGINE_NAME} v{__version__} — analyse locale, hors ligne.",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
@@ -297,7 +297,7 @@ def command_interface(args: argparse.Namespace) -> int:
         print("L'interface graphique necessite tkinter, absent de cette "
               "installation de Python.\n"
               "Les commandes en ligne restent disponibles : "
-              "hr-insight --help", file=sys.stderr)
+              "hr-analytics --help", file=sys.stderr)
         return 3
     return ui_main(getattr(args, "config", None) or default_config_dir())
 
