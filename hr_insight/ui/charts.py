@@ -182,6 +182,8 @@ class ScatterChart(tk.Frame):
         _fonts(self)
         self.canvas = tk.Canvas(self, background=theme.CANVAS, highlightthickness=0)
         self.canvas.pack(fill="both", expand=True)
+        #: Couleurs imposees par la page, s'il y a lieu : {modalite: teinte}.
+        self.series: Optional[Dict[str, str]] = None
         self.tooltip = Tooltip(self.canvas)
         self.on_select = on_select
         # Resolveur d'identite, pose par la fenetre : il rend « DUPONT
@@ -258,6 +260,11 @@ class ScatterChart(tk.Frame):
         unite = {"years": " (années)", "ratio": " (ETP)"}.get(
             axis.get("kind"), "")
         return f'{axis.get("label", "")}{unite}'
+
+    def set_series(self, colours: Optional[Dict[str, str]]) -> None:
+        """Impose la couleur de chaque modalite, ou rend la main a la serie."""
+        self.series = dict(colours) if colours else None
+        self.redraw()
 
     def set_dataset(self, dataset: Dict[str, Any], currency: str = "EUR") -> None:
         self.dataset = dataset or {}
@@ -370,7 +377,12 @@ class ScatterChart(tk.Frame):
 
         # La serie vient du theme actif et non d'une copie prise a
         # l'import : figee, elle gardait les couleurs du theme par defaut.
-        colours = palette.series_map(
+        #
+        # Une page peut imposer la sienne : sur un comparatif femmes /
+        # hommes, les deux teintes sont celles que la pyramide et les
+        # boites emploient dix centimetres plus haut, et non les deux
+        # premieres d'une serie categorielle.
+        colours = self.series or palette.series_map(
             self.dataset.get("groups") or [], theme.ACTIVE.series,
             other=self.dataset.get("other_label"), neutral=theme.FAINT)
 
@@ -1144,19 +1156,29 @@ class BoxPlotChart(tk.Frame):
                                     font=axis_font(), text=text)
 
         offset = 30
+        # La cle passe a la ligne quand elle ne tient pas a cote du schema :
+        # collee a droite, elle sortait du cadre et « Hommes » se coupait au
+        # milieu.
+        etroit = available - wide - 30 < 150
+        if etroit and self.split:
+            mid += 0
         if self.split:
             # Deux teintes qui ne se legendent pas ne sont qu'un decor : la
             # cle dit laquelle est laquelle, la ou on la lit.
+            ligne = mid + 26 if etroit else mid
+            depart = left if etroit else left + wide + offset
             for teinte, aplat, texte in (
                     (theme.FEMALE, theme.FEMALE_SOFT, "Femmes"),
                     (theme.MALE, theme.MALE_SOFT, "Hommes")):
-                start = left + wide + offset
-                canvas.create_rectangle(start, mid - 5, start + 18, mid + 5,
-                                        fill=aplat, outline=teinte)
-                canvas.create_text(start + 24, mid, anchor="w",
+                canvas.create_rectangle(depart, ligne - 5, depart + 18,
+                                        ligne + 5, fill=aplat, outline=teinte)
+                canvas.create_text(depart + 24, ligne, anchor="w",
                                    fill=theme.MUTED, font=axis_font(),
                                    text=texte)
-                offset += 24 + 18 + _text_width(self, texte)
+                largeur = 24 + 18 + _text_width(self, texte)
+                depart += largeur
+                if not etroit:
+                    offset += largeur
 
         # La phrase demande de la place : dans un bloc etroit, le schema
         # legende suffit, et une phrase coupee en trois mots par ligne
@@ -1251,11 +1273,22 @@ class BoxPlotChart(tk.Frame):
                                 font=axis_font(),
                                 text="FEMMES / HOMMES" if self.split else "EFF.")
         if self.reference is not None and low <= self.reference <= high:
-            self.header.create_text(
-                to_x(self.reference) + 5, y, anchor="w", fill=theme.ACCENT,
-                font=axis_font(),
-                text="Médiane d'ensemble · "
+            # Dans une colonne etroite, l'intitule du repere venait buter
+            # sur celui de la colonne de droite. Il cede la place : le trait
+            # pointille reste, et c'est lui qui porte l'information.
+            import tkinter.font as tkfont
+
+            police = tkfont.Font(root=self, font=axis_font())
+            texte = ("Médiane d'ensemble · "
                      f"{format_money(self.reference, self.currency)}")
+            depart = to_x(self.reference) + 5
+            bord = width - (self.GAP_COLUMN if self.split
+                            else (self._value_cols[1] - self._value_cols[0]
+                                  + 90 if self._value_cols else 30))
+            if depart + police.measure(texte) <= bord:
+                self.header.create_text(depart, y, anchor="w",
+                                        fill=theme.ACCENT, font=axis_font(),
+                                        text=texte)
         if self.split:
             self.header.create_text(width - 8, y, anchor="e", fill=theme.FAINT,
                                     font=axis_font(), text="ÉCART F/H")

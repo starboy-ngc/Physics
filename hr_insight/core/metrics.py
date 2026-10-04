@@ -539,41 +539,63 @@ def segment_by_sex(population: Population, config: Configuration,
     cinquante personnes dont quatre femmes ne donne pas le droit de dessiner
     les percentiles de ces quatre-la.
     """
-    rules = PrivacyRules.from_config(config)
     groups = split_by(population, field_name, include_empty=True)
-    rows: List[Dict[str, Any]] = []
-    for label, group in groups.items():
-        parts = {"female": [], "male": []}
-        for employee in group:
-            sex = _sex_of(employee, config)
-            if sex in parts:
-                parts[sex].append(employee)
-        entry: Dict[str, Any] = {"segment": label, "headcount": len(group)}
-        for sex, members in parts.items():
-            subset = Population(employees=members,
-                                age_bands=population.age_bands,
-                                tenure_bands=population.tenure_bands)
-            entry[sex] = calculate_salary_metrics(subset, config, salary_field)
-            entry[f"{sex}_count"] = len(members)
-            entry[f"{sex}_chartable"] = rules.may_chart(len(members))
-        # Le segment entier est fourni aussi : le graphique s'en sert pour
-        # l'echelle et pour le tri, et la ligne reste comparable a celle du
-        # mode simple.
-        overall = calculate_salary_metrics(group, config, salary_field)
-        entry["salary"] = overall
-        entry["masked"] = overall.get("masked", False)
-        entry["chartable"] = rules.may_chart(len(group))
-        entry["sex_chartable"] = (entry["female_chartable"]
-                                  or entry["male_chartable"])
-        # L'ecart est ce qu'on vient chercher en dedoublant : il se calcule
-        # ici, du meme cote que tout le reste, et non dans la vue. Un
-        # graphique qui ferait sa propre soustraction finirait par annoncer
-        # un chiffre que le document contredit. Formule de la directive
-        # 2023/970 : (hommes - femmes) / hommes.
-        entry["median_gap"] = _sex_gap(entry, "median")
-        entry["mean_gap"] = _sex_gap(entry, "mean")
-        rows.append(entry)
-    return rows
+    return [_sex_row(label, list(group), population, config, salary_field)
+            for label, group in groups.items()]
+
+
+def sex_pair(population: Population, config: Configuration,
+             label: str = "Ensemble",
+             salary_field: Optional[str] = None) -> List[Dict[str, Any]]:
+    """La meme ligne, sur toute la population plutot que par segment.
+
+    Une page qui compare les deux sexes doit pouvoir tracer la paire sans
+    choisir de segment. La ligne est batie par la meme fonction que celles
+    de `segment_by_sex` : un second assemblage finirait par differer, et le
+    graphique annoncerait un chiffre que le tableau d'a cote contredit.
+    """
+    return [_sex_row(label, list(population), population, config,
+                     salary_field)]
+
+
+def _sex_row(label: str, group: List[Any], population: Population,
+             config: Configuration,
+             salary_field: Optional[str]) -> Dict[str, Any]:
+    """Une ligne : les deux demi-populations, et le groupe entier."""
+    rules = PrivacyRules.from_config(config)
+    parts: Dict[str, List[Any]] = {"female": [], "male": []}
+    for employee in group:
+        sex = _sex_of(employee, config)
+        if sex in parts:
+            parts[sex].append(employee)
+    entry: Dict[str, Any] = {"segment": label, "headcount": len(group)}
+    for sex, members in parts.items():
+        subset = Population(employees=members,
+                            age_bands=population.age_bands,
+                            tenure_bands=population.tenure_bands)
+        entry[sex] = calculate_salary_metrics(subset, config, salary_field)
+        entry[f"{sex}_count"] = len(members)
+        entry[f"{sex}_chartable"] = rules.may_chart(len(members))
+    # Le segment entier est fourni aussi : le graphique s'en sert pour
+    # l'echelle et pour le tri, et la ligne reste comparable a celle du
+    # mode simple.
+    whole = Population(employees=list(group),
+                       age_bands=population.age_bands,
+                       tenure_bands=population.tenure_bands)
+    overall = calculate_salary_metrics(whole, config, salary_field)
+    entry["salary"] = overall
+    entry["masked"] = overall.get("masked", False)
+    entry["chartable"] = rules.may_chart(len(group))
+    entry["sex_chartable"] = (entry["female_chartable"]
+                              or entry["male_chartable"])
+    # L'ecart est ce qu'on vient chercher en dedoublant : il se calcule
+    # ici, du meme cote que tout le reste, et non dans la vue. Un
+    # graphique qui ferait sa propre soustraction finirait par annoncer
+    # un chiffre que le document contredit. Formule de la directive
+    # 2023/970 : (hommes - femmes) / hommes.
+    entry["median_gap"] = _sex_gap(entry, "median")
+    entry["mean_gap"] = _sex_gap(entry, "mean")
+    return entry
 
 
 def _sex_gap(entry: Dict[str, Any], key: str) -> Optional[float]:

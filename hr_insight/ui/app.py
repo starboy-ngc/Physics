@@ -35,6 +35,9 @@ from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
+from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
+                               category_members, lagging_members,
+                               population_breakdown)
 from ..core.pipeline import (AnalysisRequest, load_population, run_analysis,
                              stage_labels)
 from ..core.quality import run_quality_check
@@ -977,21 +980,7 @@ class Application(tk.Tk):
         self.legend_frame.pack(fill="x", padx=18, pady=(0, 14))
         self.legend_frame.bind("<Configure>", self._on_legend_resize)
 
-        # La page des ecarts repart de zero : elle se reconstruira
-        # indicateur par indicateur, sur une disposition posee d'avance.
-        #
-        # Le moteur, lui, n'a pas bouge. `pay_equity` alimente encore le
-        # rapport, le classeur et les slides, et sa lecture de la colonne
-        # du sexe sert a la Vue d'ensemble, a la Distribution, a la
-        # Dispersion et a l'Organigramme : l'effacer aurait casse quatre
-        # ecrans et trois documents pour vider une page.
-        equite = self.tabs["equite"]
-        self.equity_page = self._scrolling_page(equite)
-        self.equity_placeholder = tk.Label(
-            self.equity_page, text="", background=theme.CANVAS,
-            foreground=theme.MUTED, font=self.fonts.body,
-            justify="left", anchor="w", wraplength=900)
-        self.equity_placeholder.pack(anchor="w", padx=24, pady=(24, 0))
+        self._build_equity(self.tabs["equite"])
 
 
 
@@ -2488,17 +2477,498 @@ class Application(tk.Tk):
             return
         self.org_chart.select(self._org_keys.get(str(index), (None, None))[1])
 
-    def _show_pay_equity(self, equity) -> None:
-        """La page des ecarts, le temps qu'elle se reconstruise.
+    # --------------------------------------------- comparatif femmes / hommes
 
-        Le bloc du moteur arrive comme avant et n'est pas lu ici : il
-        part dans le rapport, le classeur et les slides, qui le rendent
-        toujours en entier.
+    #: Premiere entree du selecteur de poste : la page porte alors sur toute
+    #: la population analysee. Sans elle, on ne pourrait plus revenir a la
+    #: comparaison d'ensemble une fois un poste ouvert.
+    EQUITY_ALL = "(tous les postes)"
+
+    #: Lignes du tableau de gauche : intitule, cle du moteur, nature.
+    EQUITY_ROWS = (
+        ("Effectif comparé", "valued_headcount", "count"),
+        ("Minimum", "min", "money"),
+        ("P10", "p10", "money"),
+        ("Q1 (P25)", "p25", "money"),
+        ("Médiane (P50)", "median", "money"),
+        ("Moyenne", "mean", "money"),
+        ("Q3 (P75)", "p75", "money"),
+        ("P90", "p90", "money"),
+        ("Maximum", "max", "money"),
+    )
+
+    def _build_equity(self, parent: tk.Frame) -> None:
+        """Le comparatif femmes / hommes, de haut en bas.
+
+        Un poste en tete, puis cinq blocs qui en decoulent : qui compose la
+        population, comment elle se repartit sur deux axes au choix, ce que
+        disent les quartiles de chaque sexe, ou se situe chaque poste, et
+        enfin qui decroche de la mediane de son groupe.
         """
-        self.equity_placeholder.configure(
-            text="Page en cours de refonte."
-                 if equity.get("available")
-                 else (equity.get("warning") or ""))
+        self.equity_page = self._scrolling_page(parent)
+        page = self.equity_page
+
+        # --- Le poste ----------------------------------------------------
+        tete = tk.Frame(page, background=theme.CANVAS)
+        tete.pack(fill="x", padx=24, pady=(18, 4))
+        tk.Label(tete, text="POSTE", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left")
+        self.equity_job = ttk.Combobox(tete, state="readonly", width=34,
+                                       font=self.fonts.small)
+        self.equity_job.pack(side="left", padx=10)
+        self.equity_job.bind("<<ComboboxSelected>>",
+                             lambda _e: self._show_equity_scope())
+        self.equity_scope_note = tk.Label(
+            tete, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small)
+        self.equity_scope_note.pack(side="left", padx=(16, 0))
+
+        self.equity_warning = tk.Label(
+            page, text="", background=theme.CANVAS, foreground=theme.WARN,
+            font=self.fonts.body, justify="left", anchor="w", wraplength=900)
+
+        # --- 1. L'effectif, et la pyramide des ages ----------------------
+        self._equity_rule()
+        haut = tk.Frame(page, background=theme.CANVAS)
+        haut.pack(fill="x", padx=24)
+        gauche = tk.Frame(haut, background=theme.CANVAS)
+        gauche.pack(side="left", fill="both", expand=True)
+        droite = tk.Frame(haut, background=theme.CANVAS)
+        droite.pack(side="left", fill="both", expand=True, padx=(24, 0))
+        self._equity_title(gauche, "Effectifs")
+        self.equity_people = self._tree(
+            gauche, ("Indicateur", "Femmes", "Hommes", "Ensemble"),
+            (220, 110, 110, 110), expand=False, height=5)
+        self._equity_title(droite, "Pyramide des âges")
+        self.equity_pyramid = PyramidChart(droite)
+        self.equity_pyramid.pack(fill="x", padx=18, pady=(0, 10))
+        self.equity_pyramid_note = tk.Label(
+            droite, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=420)
+        self.equity_pyramid_note.pack(anchor="w", padx=18, pady=(0, 8))
+
+        # --- 2. Le nuage, sur deux axes au choix -------------------------
+        self._equity_rule()
+        self._equity_title(page, "Nuage de points")
+        axes = tk.Frame(page, background=theme.CANVAS)
+        axes.pack(fill="x", padx=24, pady=(0, 4))
+        self.equity_x = self._axis_box(axes, "EN ABSCISSE",
+                                       command=self._reaxis_equity)
+        self.equity_y = self._axis_box(axes, "EN ORDONNÉE",
+                                       command=self._reaxis_equity)
+        ttk.Button(axes, text="Réinitialiser le graphique",
+                   style="Ghost.TButton",
+                   command=self._reset_equity_scatter).pack(side="left")
+        self.equity_scatter = ScatterChart(page)
+        self.equity_scatter.identify = self._identity_of
+        self.equity_scatter.configure(height=self.EQUITY_SCATTER_HEIGHT)
+        self.equity_scatter.pack_propagate(False)
+        self.equity_scatter.pack(fill="x", padx=24, pady=(0, 4))
+        self.equity_legend = tk.Frame(page, background=theme.CANVAS)
+        self.equity_legend.pack(fill="x", padx=24, pady=(0, 2))
+        self.equity_scatter_note = tk.Label(
+            page, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=980)
+        self.equity_scatter_note.pack(anchor="w", padx=24, pady=(0, 8))
+
+        # --- 3. Les quartiles, et la boite a moustaches ------------------
+        self._equity_rule()
+        bas = tk.Frame(page, background=theme.CANVAS)
+        bas.pack(fill="x", padx=24)
+        colonne_g = tk.Frame(bas, background=theme.CANVAS)
+        colonne_g.pack(side="left", fill="both", expand=True)
+        colonne_d = tk.Frame(bas, background=theme.CANVAS)
+        colonne_d.pack(side="left", fill="both", expand=True, padx=(24, 0))
+        self._equity_title(colonne_g, "Rémunération comparée")
+        self.equity_stats = self._tree(
+            colonne_g, ("Indicateur", "Femmes", "Hommes", "Ensemble"),
+            (220, 110, 110, 110), expand=False, height=10)
+        self.equity_stats_note = tk.Label(
+            colonne_g, text="", background=theme.CANVAS,
+            foreground=theme.MUTED, font=self.fonts.small, justify="left",
+            anchor="w", wraplength=460)
+        self.equity_stats_note.pack(anchor="w", padx=18, pady=(0, 8))
+        self._equity_title(colonne_d, "Dispersion")
+        self.equity_box = BoxPlotChart(colonne_d)
+        # Une seule paire de boites a tracer : la ligne peut s'etaler, et
+        # c'est tout l'interet d'un gros trace — les moustaches se lisent.
+        self.equity_box.ROW_MAX = self.EQUITY_BOX_ROW
+        self.equity_box.ROW_SPLIT_MIN = self.EQUITY_BOX_ROW
+        self.equity_box.pack(fill="both", expand=True, padx=18, pady=(0, 10))
+
+        # --- 4. Le recapitulatif par poste -------------------------------
+        self._equity_rule()
+        self._equity_title(page, "Récapitulatif par poste")
+        self.equity_recap = self._tree(
+            page, ("Poste", "Femmes", "Hommes", "Médiane femmes",
+                   "Médiane hommes", "Écart"),
+            (260, 90, 90, 150, 150, 110), expand=False, height=12)
+        self.equity_recap_note = tk.Label(
+            page, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=980)
+        self.equity_recap_note.pack(anchor="w", padx=24, pady=(0, 8))
+
+        # --- 5. Les salaries sous la mediane de leur poste ---------------
+        self._equity_rule()
+        self._equity_title(page, "Les salariés en dessous")
+        self.equity_lagging = self._tree(
+            page, ("Salarié", "Sexe", "Poste", "Salaire à temps plein",
+                   "Écart au poste"),
+            (250, 90, 240, 190, 150), expand=False, height=12)
+        self.equity_lagging_note = tk.Label(
+            page, text="", background=theme.CANVAS, foreground=theme.MUTED,
+            font=self.fonts.small, justify="left", anchor="w", wraplength=980)
+        self.equity_lagging_note.pack(anchor="w", padx=24, pady=(2, 24))
+
+    #: Hauteur du nuage de cette page. Il est « petit » : la page en porte
+    #: cinq autres, et un nuage pleine page les renverrait sous la ligne de
+    #: flottaison.
+    EQUITY_SCATTER_HEIGHT = 300
+    #: Hauteur de la ligne du gros trace.
+    EQUITY_BOX_ROW = 120
+
+    def _equity_title(self, parent: tk.Widget, texte: str) -> None:
+        tk.Label(parent, text=texte, background=theme.CANVAS,
+                 foreground=theme.INK, font=self.fonts.section).pack(
+                     anchor="w", padx=18, pady=(0, 8))
+
+    def _equity_rule(self) -> None:
+        """Un filet entre deux blocs : sans lui, cinq blocs empiles se
+        lisent comme une seule longue page."""
+        tk.Frame(self.equity_page, background=theme.LINE, height=1).pack(
+            fill="x", padx=24, pady=(14, 12))
+
+    def _show_pay_equity(self, equity: Dict[str, Any]) -> None:
+        """Remplit la page : la liste des postes, puis les cinq blocs."""
+        self._equity_field = equity.get("category_field") or "job_title"
+        if not equity.get("available"):
+            self.equity_warning.configure(text=equity.get("warning") or "")
+            self.equity_warning.pack(anchor="w", padx=24, pady=(8, 0))
+            self.equity_job.configure(values=[self.EQUITY_ALL])
+            self.equity_job.current(0)
+            self._clear_equity()
+            return
+        self.equity_warning.pack_forget()
+        postes = sorted({str(employee.value(self._equity_field) or "")
+                         for employee in self.result.filtered} - {""})
+        self.equity_job.configure(values=[self.EQUITY_ALL] + postes)
+        if self.equity_job.get() not in [self.EQUITY_ALL] + postes:
+            self.equity_job.current(0)
+        self._scatter_axes = metrics.scatter_axes(self.configuration)
+        self._fill_axis_box(self.equity_x, self.configuration.get(
+            "chart_parameters.scatter_x", "tenure_years"))
+        self._fill_axis_box(self.equity_y, self.configuration.get(
+            "chart_parameters.scatter_y", "base_salary"))
+        self._show_equity_recap()
+        self._show_equity_scope()
+
+    def _equity_choice(self) -> Optional[str]:
+        """Le poste retenu, ou rien si la page porte sur l'ensemble."""
+        choix = self.equity_job.get()
+        return None if not choix or choix == self.EQUITY_ALL else choix
+
+    def _equity_population(self):
+        """La population sur laquelle portent les blocs du haut.
+
+        Les bandes d'age et d'anciennete sont celles de la population
+        entiere : recoupees sur un poste, elles changeraient d'un poste a
+        l'autre et deux pyramides ne se compareraient plus.
+        """
+        from ..core.normalize import Population
+
+        entiere = self.result.filtered
+        poste = self._equity_choice()
+        if poste is None:
+            return entiere
+        gens = category_members(entiere, self._equity_field, poste)
+        return Population(employees=list(gens),
+                          age_bands=entiere.age_bands,
+                          tenure_bands=entiere.tenure_bands)
+
+    def _clear_equity(self) -> None:
+        """Vide les cinq blocs d'un coup."""
+        for arbre in (self.equity_people, self.equity_stats,
+                      self.equity_recap, self.equity_lagging):
+            self._fill(arbre, [])
+        self.equity_pyramid.set_rows([])
+        self.equity_box.set_rows([])
+        self.equity_scatter.set_dataset({})
+        for child in self.equity_legend.winfo_children():
+            child.destroy()
+        for note in (self.equity_scope_note, self.equity_pyramid_note,
+                     self.equity_scatter_note, self.equity_stats_note,
+                     self.equity_recap_note, self.equity_lagging_note):
+            note.configure(text="")
+
+    def _show_equity_scope(self) -> None:
+        """Rejoue les quatre blocs qui dependent du poste retenu.
+
+        Le recapitulatif, lui, ne bouge pas : il porte sur tous les postes,
+        et c'est ce qui permet de situer celui qu'on regarde.
+        """
+        if self.result is None:
+            return
+        population = self._equity_population()
+        poste = self._equity_choice()
+        self.equity_scope_note.configure(
+            text=f"{len(population)} salariés"
+                 + ("" if poste else " · toute la population analysée"))
+        self._show_equity_people(population)
+        self._reaxis_equity()
+        self._show_equity_stats(poste)
+        self._show_equity_lagging(poste)
+
+    def _show_equity_people(self, population) -> None:
+        """Effectifs et pyramide des ages, femmes et hommes cote a cote."""
+        from ..core.normalize import Population
+
+        devise = self.result.payload["salary"].get("currency", "EUR")
+        parts = {"female": [], "male": []}
+        for employee in population:
+            sexe = metrics._sex_of(employee, self.result.config)
+            if sexe in parts:
+                parts[sexe].append(employee)
+
+        def bloc(gens):
+            sous = Population(employees=list(gens),
+                              age_bands=population.age_bands,
+                              tenure_bands=population.tenure_bands)
+            return metrics.calculate_population_metrics(sous,
+                                                        self.result.config)
+
+        femmes, hommes = bloc(parts["female"]), bloc(parts["male"])
+        ensemble = bloc(list(population))
+        total = len(population) or 1
+        self._fill(self.equity_people, [
+            ("Effectif", str(len(parts["female"])), str(len(parts["male"])),
+             str(len(population))),
+            ("Part", format_percent(len(parts["female"]) / total * 100, 0),
+             format_percent(len(parts["male"]) / total * 100, 0), "100 %"),
+            ("Âge médian", format_years(femmes.get("age_median")),
+             format_years(hommes.get("age_median")),
+             format_years(ensemble.get("age_median"))),
+            ("Ancienneté médiane", format_years(femmes.get("tenure_median")),
+             format_years(hommes.get("tenure_median")),
+             format_years(ensemble.get("tenure_median"))),
+        ])
+        self.equity_pyramid.set_rows(ensemble.get("age_bands", []))
+        inconnus = len(population) - len(parts["female"]) - len(parts["male"])
+        self.equity_pyramid_note.configure(
+            text=(f"{inconnus} salarié(s) sans sexe renseigné, hors pyramide."
+                  if inconnus else ""))
+
+    def _reaxis_equity(self) -> None:
+        """Recalcule le nuage de cette page, sur les deux axes choisis.
+
+        Le calcul est refait par le moteur, jamais par l'ecran. La couleur,
+        elle, est imposee : c'est le sexe — un comparatif femmes / hommes
+        colorie par business unit ne comparerait rien.
+        """
+        if self.result is None or not getattr(self, "_scatter_axes", None):
+            return
+        champs = [axis["field"] for axis in self._scatter_axes]
+        data = self.configuration.as_dict()
+        for box, clef in ((self.equity_x, "scatter_x"),
+                          (self.equity_y, "scatter_y")):
+            index = box.current()
+            if 0 <= index < len(champs):
+                data["chart_parameters"][clef] = champs[index]
+        data["chart_parameters"]["scatter_color_by"] = \
+            self.configuration.get("pay_equity_parameters.gender_field",
+                                   "gender")
+        dataset = metrics.scatter_dataset(self._equity_population(),
+                                          Configuration(data))
+        self.equity_scatter.set_dataset(
+            dataset, self.result.payload["salary"].get("currency", "EUR"))
+        self.equity_scatter.set_series(self._equity_colours(dataset))
+        self._equity_legend_row(dataset)
+        # Un nuage vide sans un mot passe pour une panne. Le moteur dit
+        # pourquoi il refuse — l'effectif du poste, le plus souvent.
+        self.equity_scatter_note.configure(
+            text="" if dataset.get("available")
+                 else (dataset.get("warning") or ""))
+
+    def _equity_colours(self, dataset: Dict[str, Any]) -> Dict[str, str]:
+        """Les teintes du nuage : celles des femmes et des hommes.
+
+        Les modalites sont les ecritures du fichier — « F », « Femme »,
+        « M »... — et c'est le moteur qui sait les lire. La fenetre ne
+        redecide pas de ce qu'est une femme.
+        """
+        from ..core.pay_equity import FEMALE, MALE, classify
+
+        section = self.configuration.section("pay_equity_parameters")
+        femmes = section.get("female_values", []) or []
+        hommes = section.get("male_values", []) or []
+        teintes = {}
+        for groupe in dataset.get("groups") or []:
+            trouve = classify(groupe, femmes, hommes)
+            teintes[groupe] = (theme.FEMALE if trouve == FEMALE else
+                               theme.MALE if trouve == MALE else theme.FAINT)
+        return teintes
+
+    def _equity_legend_row(self, dataset: Dict[str, Any]) -> None:
+        """Deux pastilles sous le nuage. Sans elles, deux couleurs ne
+        disent rien — et celles-ci sont le sujet de la page."""
+        for child in self.equity_legend.winfo_children():
+            child.destroy()
+        from ..core.pay_equity import FEMALE, MALE, classify
+
+        section = self.configuration.section("pay_equity_parameters")
+        femmes = section.get("female_values", []) or []
+        hommes = section.get("male_values", []) or []
+        teintes = self._equity_colours(dataset)
+        # « F » et « H » sont les écritures du fichier ; la page dit
+        # « Femmes » et « Hommes » partout ailleurs, et les femmes y passent
+        # en premier. Une légende qui emploie un autre vocabulaire que le
+        # graphique d'à côté fait douter qu'il s'agisse de la même chose.
+        rang = {FEMALE: 0, MALE: 1}
+        groupes = sorted(dataset.get("groups") or [],
+                         key=lambda g: rang.get(classify(g, femmes, hommes), 2))
+        for groupe in groupes:
+            trouve = classify(groupe, femmes, hommes)
+            libelle = {FEMALE: "Femmes", MALE: "Hommes"}.get(trouve,
+                                                            str(groupe))
+            case = tk.Frame(self.equity_legend, background=theme.CANVAS)
+            case.pack(side="left", padx=(0, 18))
+            tk.Frame(case, background=teintes.get(groupe, theme.FAINT),
+                     width=12, height=12).pack(side="left", pady=2)
+            tk.Label(case, text=libelle, background=theme.CANVAS,
+                     foreground=theme.MUTED,
+                     font=self.fonts.small).pack(side="left", padx=(6, 0))
+
+    def _reset_equity_scatter(self) -> None:
+        """Rend au nuage ses axes d'origine, ceux du parametrage."""
+        if self.result is None:
+            return
+        self._fill_axis_box(self.equity_x, self.configuration.get(
+            "chart_parameters.scatter_x", "tenure_years"))
+        self._fill_axis_box(self.equity_y, self.configuration.get(
+            "chart_parameters.scatter_y", "base_salary"))
+        self._reaxis_equity()
+        self.equity_scatter.reset_view()
+
+    def _show_equity_stats(self, poste: Optional[str]) -> None:
+        """Les quartiles des deux sexes, et le gros trace en regard.
+
+        Les deux lisent le meme decoupage : un tableau et un graphique qui
+        se contrediraient a l'ecran seraient pires que l'un des deux seul.
+        """
+        devise = self.result.payload["salary"].get("currency", "EUR")
+        bloc = (population_breakdown(self.result.filtered, self.result.config)
+                if poste is None
+                else category_breakdown(self.result.filtered,
+                                        self.result.config,
+                                        self._equity_field, poste))
+        colonnes = {c["key"]: c for c in bloc["columns"]}
+
+        def valeur(cle, mesure, nature):
+            colonne = colonnes.get(cle) or {}
+            if colonne.get("masked"):
+                return "masqué"
+            montant = (colonne.get("salary") or {}).get(mesure)
+            if montant is None:
+                return "—"
+            return (str(int(montant)) if nature == "count"
+                    else format_money(montant, devise))
+
+        self._fill(self.equity_stats, [
+            (libelle, valeur("female", mesure, nature),
+             valeur("male", mesure, nature), valeur("all", mesure, nature))
+            for libelle, mesure, nature in self.EQUITY_ROWS])
+        notes = []
+        if bloc.get("mean_gap") is not None:
+            notes.append(f'Écart de moyenne : {_signed_percent(bloc["mean_gap"])}'
+                         f' · écart de médiane : '
+                         f'{_signed_percent(bloc["median_gap"])}.')
+        if bloc.get("warning"):
+            notes.append(bloc["warning"])
+        base = (bloc.get("basis") or {}).get("label") or ""
+        if base:
+            notes.append(f"Comparaison sur le {base}.")
+        self.equity_stats_note.configure(text=" ".join(notes))
+
+        # Une seule ligne, toujours : la paire du poste retenu, ou celle de
+        # toute la population. Tracer les trente-neuf postes a cote d'un
+        # tableau qui n'en decrit qu'un ferait lire deux choses differentes
+        # dans deux colonnes voisines.
+        if poste is None:
+            lignes = metrics.sex_pair(self.result.filtered, self.result.config,
+                                      label="Toute la population")
+        else:
+            lignes = [ligne for ligne
+                      in metrics.segment_by_sex(self.result.filtered,
+                                                self.result.config,
+                                                self._equity_field)
+                      if str(ligne.get("segment")) == str(poste)]
+        self.equity_box.set_split(True)
+        self.equity_box.set_rows(
+            lignes, devise,
+            reference=self.result.payload["salary"].get("median"),
+            alert=self.configuration.number(
+                "pay_equity_parameters.gap_alert_threshold", 5.0,
+                minimum=0.0, maximum=100.0))
+
+    def _show_equity_recap(self) -> None:
+        """Un poste par ligne : effectifs, les deux medianes, l'ecart."""
+        devise = self.result.payload["salary"].get("currency", "EUR")
+        bloc = calculate_category_gaps(self.result.filtered,
+                                       self.result.config,
+                                       self._equity_field)
+        lignes = []
+        retenus = 0
+        for item in sorted(bloc.get("categories", []),
+                           key=lambda c: -(c.get("median_gap") or -1e9)):
+            if not item.get("published"):
+                retenus += 1
+                lignes.append((item["category"], str(item.get("female_count", 0)),
+                               str(item.get("male_count", 0)), "masqué",
+                               "masqué", "—"))
+                continue
+            lignes.append((
+                item["category"], str(item.get("female_count", 0)),
+                str(item.get("male_count", 0)),
+                format_money(item.get("female_median"), devise),
+                format_money(item.get("male_median"), devise),
+                _signed_percent(item.get("median_gap"))))
+        self._fill(self.equity_recap, lignes)
+        note = ["Écart de médiane, positif quand les hommes sont mieux "
+                "rémunérés. Classement par écart décroissant."]
+        if retenus:
+            note.append(f"{retenus} poste(s) sans écart publiable : effectif "
+                        "insuffisant d'un côté au moins.")
+        self.equity_recap_note.configure(text=" ".join(note))
+
+    def _show_equity_lagging(self, poste: Optional[str]) -> None:
+        """Les salaries sous la mediane de leur poste."""
+        devise = self.result.payload["salary"].get("currency", "EUR")
+        bloc = lagging_members(self.result.filtered, self.result.config,
+                               self._equity_field, poste)
+        lignes = bloc["rows"]
+        self._fill(self.equity_lagging, [
+            (self._identity_of(ligne["row"]) or ligne["reference"],
+             {"F": "Femme", "H": "Homme"}.get(ligne["sex"], "—"),
+             ligne["group"],
+             format_money(ligne["amount"], devise),
+             f'−{format_percent(ligne["gap"])}')
+            for ligne in lignes[:200]])
+        note = [f"{len(lignes)} salariés sous la médiane de leur poste."]
+        if bloc.get("withheld_groups"):
+            note.append(f'{bloc["withheld_groups"]} poste(s) ne fournissent '
+                        f'pas de repère : moins de {bloc["threshold"]} '
+                        "salariés comparables.")
+        if len(lignes) > 200:
+            note.append("Les 200 plus grands décrochages sont affichés.")
+        if bloc.get("implausible_rows"):
+            note.append(
+                f'{bloc["implausible_rows"]} rémunération(s) sous '
+                f'{format_money(bloc.get("implausible_floor"), devise)} '
+                "figurent en fin de liste : un montant si bas donne le plus "
+                "grand décrochage possible sans rien dire d'un écart.")
+        note.append("Ces noms restent à l'écran : aucun document produit, "
+                    "aucun export, aucun journal n'en porte.")
+        self.equity_lagging_note.configure(text=" ".join(note))
 
 
 
@@ -2532,15 +3002,22 @@ class Application(tk.Tk):
 
 
 
-    def _axis_box(self, parent: tk.Frame, label: str) -> ttk.Combobox:
-        """Un selecteur d'axe : son intitule, sa liste."""
+    def _axis_box(self, parent: tk.Frame, label: str,
+                  command=None) -> ttk.Combobox:
+        """Un selecteur d'axe : son intitule, sa liste.
+
+        Le rappel se passe en argument : deux pages portent un nuage, et
+        chacune recalcule le sien. Une seconde liste de champs aurait fini
+        par differer de celle-ci.
+        """
         tk.Label(parent, text=label, background=theme.CANVAS,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left", padx=(0, 0))
         box = ttk.Combobox(parent, state="readonly", width=18,
                            font=self.fonts.small)
         box.pack(side="left", padx=(10, 16))
-        box.bind("<<ComboboxSelected>>", lambda _e: self._reaxis())
+        rappel = command or self._reaxis
+        box.bind("<<ComboboxSelected>>", lambda _e: rappel())
         return box
 
     def _fill_axis_box(self, box: ttk.Combobox, field: str) -> None:

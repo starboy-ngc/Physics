@@ -481,6 +481,18 @@ BREAKDOWN_COLUMNS = (("female", "Femmes"), ("male", "Hommes"),
                      ("all", "Global"))
 
 
+def population_breakdown(population: Population,
+                         config: Configuration) -> Dict[str, Any]:
+    """Le meme decoupage en trois colonnes, sur toute la population.
+
+    Une page qui compare les deux sexes doit pouvoir le faire sans choisir
+    de categorie. Le calcul est celui de `category_breakdown` et non une
+    seconde version : deux chemins pour une meme comparaison finissent par
+    annoncer deux chiffres.
+    """
+    return _breakdown(list(population), population, config, "")
+
+
 def category_breakdown(population: Population, config: Configuration,
                        field_name, value: str) -> Dict[str, Any]:
     """Toute la remuneration d'une categorie, en trois colonnes.
@@ -499,6 +511,13 @@ def category_breakdown(population: Population, config: Configuration,
     quelqu'un. Le seuil est celui du parametrage, et il vaut ici ce qu'il
     vaut partout.
     """
+    return _breakdown(category_members(population, field_name, value),
+                      population, config, value)
+
+
+def _breakdown(members: List[Any], population: Population,
+               config: Configuration, value: str) -> Dict[str, Any]:
+    """Le calcul commun : trois colonnes sur un groupe deja constitue."""
     from . import metrics as _metrics
 
     rules = PrivacyRules.from_config(config)
@@ -507,7 +526,6 @@ def category_breakdown(population: Population, config: Configuration,
     # un poste dont personne n'a de temps de travail renseigne ne doit pas
     # changer en silence la base de comparaison de la page.
     base = basis_description(population, config)
-    members = category_members(population, field_name, value)
     groups = _split_members(members, config)
     séries = {"female": groups[FEMALE], "male": groups[MALE],
               "all": members}

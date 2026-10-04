@@ -264,18 +264,45 @@ retrouver les trois colonnes.
 
 ## 5 ter. L'onglet Écarts F/H
 
-**Cette page est en cours de refonte : elle est vide pour l'instant.**
+Un comparatif femmes / hommes, de haut en bas. **Un poste se choisit en
+tête** : les blocs en dépendent, sauf le récapitulatif, qui porte toujours
+sur tous les postes — c'est lui qui permet de situer celui qu'on regarde.
+Sans choix, la page compare les deux sexes sur toute la population
+analysée.
 
-Les écarts eux-mêmes n'ont pas disparu. Ils sont calculés comme avant et
-figurent **dans le rapport HTML, dans le jeu de slides et dans l'onglet
-« Pay Transparency » du classeur Excel** — décomposition de l'écart
-global, écart par poste, répartition par quartile, indicateurs de la
-directive 2023/970.
+**Effectifs et pyramide des âges.** Effectif, part, âge médian et
+ancienneté médiane, en trois colonnes : femmes, hommes, ensemble. La
+pyramide à droite emploie les tranches d'âge de la population entière, et
+non un découpage refait poste par poste : deux pyramides calculées sur des
+tranches différentes ne se compareraient pas.
 
-La lecture de la colonne du sexe, elle, continue de servir partout
-ailleurs : les pyramides de la Vue d'ensemble, la séparation H/F de la
-Distribution et le dédoublement de la Dispersion fonctionnent sans
-changement.
+**Nuage de points.** Deux axes au choix, dans la même liste de champs que
+l'onglet Graphiques. La couleur, elle, n'est pas au choix : c'est le sexe,
+dans les deux teintes employées partout ailleurs sur la page. Un
+comparatif femmes / hommes colorié par business unit ne comparerait rien.
+
+**Rémunération comparée, et dispersion.** À gauche, du minimum au maximum
+en passant par les quartiles, pour chaque sexe et pour l'ensemble. La
+troisième colonne n'est pas décorative : sans elle, on ne sait pas si un
+écart tient à un groupe tiré vers le bas ou à l'autre tiré vers le haut.
+Chaque colonne est masquée pour elle-même — un poste où trois femmes
+côtoient vingt hommes publie la colonne des hommes et tait celle des
+femmes, la seule qui désignerait quelqu'un. À droite, la même comparaison
+tracée : une paire de boîtes, celle du poste retenu ou celle de toute la
+population.
+
+**Récapitulatif par poste.** Une ligne par poste : effectifs, les deux
+médianes, l'écart — positif quand les hommes sont mieux rémunérés,
+classement par écart décroissant.
+
+**Les salariés en dessous.** Chacun comparé à la médiane de son poste. Un
+écart de poste dit qu'il se passe quelque chose ; il ne dit pas à qui, et
+une revalorisation se décide personne par personne. Ces noms restent à
+l'écran : aucun document produit, aucun export, aucun journal n'en porte.
+
+Les indicateurs de la directive 2023/970 — décomposition de l'écart
+global, répartition par quartile — restent dans le rapport HTML, les
+slides et l'onglet « Pay Transparency » du classeur.
 
 ## 4 bis. Associer les colonnes de votre fichier
 

@@ -115,7 +115,7 @@ python3 -m hr_insight.cli config --dossier config
 ## Tests
 
 ```bash
-python3 -m unittest discover -s tests -t .     # 1348 tests
+python3 -m unittest discover -s tests -t .     # 1365 tests
 python3 tools/benchmark.py                     # 1k → 100k salariés
 ```
 
