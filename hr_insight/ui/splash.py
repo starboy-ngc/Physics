@@ -37,15 +37,17 @@ TAGLINE = "Analyse de rémunération · local et hors ligne"
 class Splash(tk.Toplevel):
     """Fenetre sans cadre, centree, le temps du demarrage."""
 
-    WIDTH, HEIGHT = 580, 424
-    #: Cadre du symbole. Une aurore s'inscrit mal dans un carre : il y
-    #: resterait deux bandes vides.
-    LOGO = 236
-    LOGO_HEIGHT = 160
+    WIDTH, HEIGHT = 560, 420
+    #: Cadre du symbole. Carre : le jeton est rond, il n'a pas de sens de
+    #: lecture. Assez grand pour qu'on voie l'etoile, assez petit pour que
+    #: le nom de l'outil reste ce qu'on lit en premier.
+    LOGO = 150
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300
-    #: Images d'une ondulation complete, et cadence.
+    #: Largeur du trait de separation, sous le nom et sa promesse.
+    RULE_WIDTH = 96
+    #: Images d'un passage complet du reflet, et cadence.
     FRAMES = 24
     FRAME_MS = 70
     #: Images calculees d'un coup entre deux battements : elles arrivent
@@ -64,19 +66,18 @@ class Splash(tk.Toplevel):
         self._centre()
 
         grand = tkfont.Font(root=self, family=fonts.family,
-                            size=theme.SIZE_TITLE + 15)
+                            size=theme.SIZE_TITLE + 11)
         petite = (fonts.family, theme.SIZE_SMALL)
         minuscule = (fonts.family, theme.SIZE_LABEL)
 
         # Le symbole ne suit pas le theme : une marque qui change de
         # couleur avec un reglage d'affichage n'est plus une marque.
-        self.symbole = logo.Aurora(self.LOGO, self.FRAMES,
-                                   height=self.LOGO_HEIGHT)
+        self.symbole = logo.Star(self.LOGO, self.FRAMES)
         self._images: List[tk.PhotoImage] = []
         self._frame = 0
         self._next_ms = 0.0
         self.symbole_vu = tk.Label(self, background=theme.INK)
-        self.symbole_vu.pack(pady=(34, 14))
+        self.symbole_vu.pack(pady=(30, 6))
         # La premiere image suffit a montrer l'ecran ; les vingt-trois
         # autres arrivent pendant qu'il est deja la.
         self._render_next()
@@ -85,11 +86,18 @@ class Splash(tk.Toplevel):
         tk.Label(self, text=PRODUCT, background=theme.INK,
                  foreground=theme.CANVAS, font=grand).pack()
         tk.Label(self, text=TAGLINE, background=theme.INK,
-                 foreground=self.clair, font=petite).pack(pady=(6, 0))
+                 foreground=self.clair, font=petite).pack(pady=(8, 0))
+
+        # Un filet entre la marque et l'avancement : il separe ce qui ne
+        # change pas — le nom, la promesse — de ce qui se passe maintenant.
+        filet = tk.Frame(self, background=palette.mix(theme.INK, theme.CANVAS,
+                                                      0.20),
+                         width=self.RULE_WIDTH, height=1)
+        filet.pack(pady=(24, 0))
 
         piste = tk.Frame(self, background=theme.INK, width=self.BAR_WIDTH,
                          height=30)
-        piste.pack(pady=(30, 0))
+        piste.pack(pady=(22, 0))
         piste.pack_propagate(False)
         self.bar = LoadingBar(piste, ground=theme.INK,
                               track=palette.mix(theme.INK, theme.CANVAS, 0.16),
@@ -142,9 +150,9 @@ class Splash(tk.Toplevel):
         self.bar.announce(label, fraction)
 
     def tick(self) -> None:
-        """Un battement : la barre avance, l'aurore ondule.
+        """Un battement : la barre avance, le reflet traverse le symbole.
 
-        Tant que l'ondulation n'est pas complete, le battement sert a la
+        Tant que le passage n'est pas complet, le battement sert a la
         calculer — une image par passage, pour ne jamais bloquer l'ecran
         plus d'une douzaine de millisecondes d'affilee.
         """

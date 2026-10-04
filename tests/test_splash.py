@@ -1,11 +1,12 @@
-"""L'écran d'accueil, son aurore et son nom.
+"""L'écran d'accueil, son étoile et son nom.
 
 Un logo calculé plutôt que livré en fichier image : c'est la même exigence
 que partout ailleurs — rien d'opaque dans l'archive, aucune dépendance. Ce
 qui se vérifie ici : que le symbole soit le même à chaque ouverture et à
-toutes les tailles (un logo qui change de forme n'est pas un logo), que la
-lueur le parcoure sans le déformer, et que l'écran ne retarde ni la fenêtre
-ni les tests.
+toutes les tailles (un logo qui change de forme n'est pas un logo), que le
+reflet le traverse sans le déformer, que ce soit bien la marque de l'icône
+Windows — un outil n'a qu'une identité —, et que l'écran ne retarde ni la
+fenêtre ni les tests.
 
 Aucune donnée RH réelle.
 """
@@ -63,35 +64,40 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """Un rideau d'aurore : un bord ondulant, des rais qui s'en elevent.
+    """Une etoile a cinq branches sur un jeton rond.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
     toujours le meme, qu'il tienne a toutes les tailles, et qu'il se
     reconnaisse a vingt-quatre pixels.
     """
 
-    LARGEUR, HAUTEUR = 240, 163
+    COTE = 240
 
-    def symbole(self, largeur=None, hauteur=None, count=1):
-        return logo.Aurora(largeur or self.LARGEUR, count,
-                           height=hauteur or self.HAUTEUR)
+    def symbole(self, cote=None, hauteur=None, count=1):
+        return logo.Star(cote or self.COTE, count, height=hauteur)
 
     def test_a_frame_is_a_readable_image_of_the_right_size(self):
-        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
-        self.assertEqual(len(lignes), self.HAUTEUR)
-        self.assertEqual(len(lignes[0]), self.LARGEUR * 4)
+        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
+        self.assertEqual(len(lignes), self.COTE)
+        self.assertEqual(len(lignes[0]), self.COTE * 4)
+
+    def test_a_lower_frame_crops_the_drawing_without_flattening_it(self):
+        """« height » cadre le dessin : il ne l'ecrase pas."""
+        lignes = pixels(self.symbole(240, 160).frame(0), 240, 160)
+        self.assertEqual(len(lignes), 160)
+        self.assertEqual(len(lignes[0]), 240 * 4)
 
     def test_the_same_symbol_comes_back_every_time(self):
         """Rien n'est tire au hasard : le dessin vient d'une formule."""
         self.assertEqual(self.symbole().frame(0), self.symbole().frame(0))
 
     def test_the_shape_never_changes_from_one_frame_to_the_next(self):
-        """L'animation est une lueur qui parcourt le symbole, pas une
+        """L'animation est un reflet qui traverse le symbole, pas une
         deformation : un logo qui change de forme n'est plus un logo."""
         symbole = self.symbole(count=8)
         silhouettes = {
-            bytes(b"".join(encre(pixels(symbole.frame(index), self.LARGEUR,
-                                        self.HAUTEUR))))
+            bytes(b"".join(encre(pixels(symbole.frame(index), self.COTE,
+                                        self.COTE))))
             for index in range(8)}
         self.assertEqual(len(silhouettes), 1)
 
@@ -102,58 +108,101 @@ class TestTheSymbol(unittest.TestCase):
     def test_the_drawing_is_the_same_at_any_size(self):
         """Decrit par une formule et non par des pixels : la silhouette
         agrandie doit recouvrir la petite, a l'echelle pres."""
-        petit = pixels(self.symbole(120, 82).frame(0), 120, 82)
-        grand = pixels(self.symbole(480, 326).frame(0), 480, 326)
+        petit = pixels(self.symbole(120).frame(0), 120, 120)
+        grand = pixels(self.symbole(480).frame(0), 480, 480)
         part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in petit) / (120 * 82)
+                         for ligne in petit) / (120 * 120)
         part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in grand) / (480 * 326)
-        self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
+                         for ligne in grand) / (480 * 480)
+        self.assertAlmostEqual(part_petit, part_grand, delta=0.01)
 
     def test_it_never_touches_the_edge_of_its_frame(self):
         """Un symbole coupe au bord parait coupe des qu'on le pose contre
-        autre chose."""
-        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
+        autre chose. La lueur elle-meme a une portee finie."""
+        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
         self.assertEqual(max(lignes[0][3::4]), 0)
         self.assertEqual(max(lignes[-1][3::4]), 0)
         self.assertEqual(max(ligne[3] for ligne in lignes), 0)
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
-        lignes = pixels(self.symbole(32, 22).frame(0), 32, 22)
+        lignes = pixels(self.symbole(32).frame(0), 32, 32)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
-        self.assertGreater(encres, 40)
+        self.assertGreater(encres, 400)
 
-    def test_it_goes_from_green_below_to_violet_above(self):
-        """Les deux teintes d'une aurore. Elles ne suivent pas le theme :
-        une marque qui change de couleur n'est plus une marque."""
-        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
-        milieu = self.LARGEUR // 2
+    def test_the_star_is_white_on_a_slate_token(self):
+        """Les deux teintes de la marque — celles de l'icone Windows. Elles
+        ne suivent pas le theme : une marque qui change de couleur avec un
+        reglage d'affichage n'est plus une marque."""
+        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
+        milieu = self.COTE // 2
 
-        def couleur(rangs):
-            """Premier pixel franc rencontre en parcourant ces lignes."""
-            for y in rangs:
-                r, v, b, a = lignes[y][milieu * 4:milieu * 4 + 4]
-                if a > 200:
-                    return r, v, b
-            return None
+        def couleur(x, y):
+            return tuple(lignes[y][x * 4:x * 4 + 4])
 
-        haut = couleur(range(0, self.HAUTEUR))
-        bas = couleur(range(self.HAUTEUR - 1, -1, -1))
-        self.assertIsNotNone(haut)
-        self.assertIsNotNone(bas)
-        self.assertGreater(haut[2], haut[1],
-                           "la pointe des rais tire au violet")
-        self.assertGreater(bas[1], bas[2], "le bord du bas tire au vert")
+        # Le centre de l'etoile : blanc et pleinement opaque.
+        rouge, vert, bleu, alpha = couleur(milieu, milieu)
+        self.assertEqual(alpha, 255)
+        self.assertGreater(min(rouge, vert, bleu), 240)
+        # Le jeton, entre la pointe gauche de l'etoile et le bord : un bleu
+        # d'ardoise, donc sombre et bleu.
+        rouge, vert, bleu, alpha = couleur(int(self.COTE * 0.18), milieu)
+        self.assertEqual(alpha, 255)
+        self.assertLess(rouge, 90)
+        self.assertGreater(bleu, rouge)
+
+    def test_the_first_point_looks_up(self):
+        """Une etoile posee de travers se remarque immediatement, meme de
+        qui ne saurait pas dire pourquoi.
+
+        Une pointe en haut, deux en bas : la premiere ligne blanche est un
+        seul trait, centre ; la derniere en compte deux, les jambes.
+        """
+        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
+
+        def traits(y):
+            """Suites de pixels blancs sur cette ligne, en abscisses."""
+            ligne = lignes[y]
+            suites, courante = [], None
+            for x in range(self.COTE):
+                if min(ligne[x * 4:x * 4 + 3]) > 240:
+                    courante = [x, x] if courante is None else [courante[0], x]
+                elif courante is not None:
+                    suites.append(courante)
+                    courante = None
+            if courante is not None:
+                suites.append(courante)
+            return suites
+
+        blanches = [y for y in range(self.COTE) if traits(y)]
+        self.assertTrue(blanches)
+        premiere = traits(blanches[0])
+        self.assertEqual(len(premiere), 1, "une seule pointe en haut")
+        self.assertAlmostEqual(sum(premiere[0]) / 2, self.COTE / 2,
+                               delta=self.COTE * 0.02)
+        # Au ras du bas de l'etoile : les deux jambes, separees. La
+        # derniere ligne elle-meme ne vaut rien — a un pixel pres, un bord
+        # adouci tombe d'un cote ou de l'autre du seuil.
+        bas = blanches[0] + int(0.95 * (blanches[-1] - blanches[0]))
+        self.assertEqual(len(traits(bas)), 2, "deux pointes en bas")
+
+    def test_it_is_the_same_mark_as_the_windows_icon(self):
+        """Un outil n'a qu'une identite : l'ecran d'accueil et l'icone du
+        raccourci portent la meme etoile, au meme rapport de branches."""
+        chemin = os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "tools", "render_icon.py")
+        with open(chemin, encoding="utf-8") as fichier:
+            source = fichier.read()
+        self.assertIn(f"CREUX = {logo.CREUX}", source)
 
     def test_the_drawing_is_computed_once_and_only_once(self):
-        """Le trace est surechantillonne — donc lent —, mais les images ne
-        font que le colorer. L'ecran d'accueil les calcule pendant qu'il
-        est deja affiche : aucune ne doit bloquer l'affichage."""
+        """Le trace est calcule une fois, les images ne font que le
+        colorer. L'ecran d'accueil les calcule pendant qu'il est deja
+        affiche : aucune ne doit bloquer l'affichage."""
         import time
 
-        symbole = logo.Aurora(236, 24, height=160)
+        symbole = logo.Star(150, 24)
         debut = time.perf_counter()
         symbole.frame(0)
         trace = time.perf_counter() - debut
@@ -162,15 +211,7 @@ class TestTheSymbol(unittest.TestCase):
         suivante = time.perf_counter() - debut
         self.assertLess(trace, 0.8)
         self.assertLess(suivante, 0.06)
-        self.assertLess(suivante * 4, trace, "le trace doit etre garde")
-
-    def test_a_large_symbol_is_not_supersampled(self):
-        """Au-dela d'une certaine taille, la finesse du dessin depasse
-        celle de l'oeil : surechantillonner couterait sans rien rendre."""
-        petit = logo.Aurora(200, 1, height=136)
-        grand = logo.Aurora(900, 1, height=612)
-        self.assertLessEqual(petit.size, logo.SUPERSAMPLE_UNTIL)
-        self.assertGreater(grand.size, logo.SUPERSAMPLE_UNTIL)
+        self.assertLess(suivante, trace, "le trace doit etre garde")
 
 
 @needs_display
@@ -217,8 +258,17 @@ class TestTheSplash(unittest.TestCase):
         self.assertEqual(self.module.PRODUCT, ENGINE_NAME)
 
     def test_a_stage_moves_the_bar(self):
+        """La barre rejoint ce que le moteur annonce.
+
+        Elle se place sur l'horloge et non sur le nombre d'images — une
+        image tardive fait un pas plus grand, pas un arret. Le test attend
+        donc le temps qu'il faut, et non un nombre de battements.
+        """
+        import time
+
         self.ecran.announce("Pages et graphiques", 0.68)
-        for _ in range(60):
+        limite = time.perf_counter() + 2.0
+        while self.ecran.bar.shown <= 0.5 and time.perf_counter() < limite:
             self.ecran.tick()
         self.assertGreater(self.ecran.bar.shown, 0.5)
 

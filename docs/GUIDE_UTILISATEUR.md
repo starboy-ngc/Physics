@@ -5,7 +5,7 @@ Vous pouvez couper Internet avant de l'utiliser.
 
 ## 0. L'écran d'accueil
 
-À l'ouverture, **HR Insight** affiche son aurore, son nom et l'étape en
+À l'ouverture, **HR Insight** affiche son étoile, son nom et l'étape en
 cours : lecture des paramètres, thème, colonne de gauche, pages et
 graphiques. Ces étapes sont réelles — construire la fenêtre demande deux
 dixièmes de seconde ici, davantage sur un poste chargé.
@@ -22,10 +22,11 @@ le lire : cette attente-là est délibérée. Elle se règle dans
 un clic sur l'écran le passe sans attendre.
 
 Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture —
-un rideau : un bord ondulant, et onze rais qui s'en élèvent et se dissipent, du vert au violet — puis encodé en PNG
-par le même module qui dessine les points du nuage. Rien d'opaque dans
-l'archive, et rien de tiré au hasard : le même symbole à chaque fois, et le
-même dessin exactement à toutes les tailles, de l'icône à l'affiche.
+une étoile à cinq branches sur un jeton rond, la même marque que l'icône du
+raccourci Windows — puis encodé en PNG par le même module qui dessine les
+points du nuage. Rien d'opaque dans l'archive, et rien de tiré au hasard :
+le même symbole à chaque fois, et le même dessin exactement à toutes les
+tailles, de l'icône à l'affiche.
 
 Pour en tirer une image — une présentation, un intranet, une icône :
 

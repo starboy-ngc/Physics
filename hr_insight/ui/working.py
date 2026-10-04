@@ -16,10 +16,10 @@ choses, toutes vraies :
    une attente opaque en une attente bornee.
 3. *Le temps ecoule*, qui avance meme quand une etape est longue et muette.
 
-Et le symbole ondule, pour la meme raison qu'il ondule a l'ouverture : un
+Et un reflet traverse le symbole, pour la meme raison qu'a l'ouverture : un
 ecran parfaitement immobile pendant dix secondes se lit comme un ecran
-fige. L'ondulation est calculee une image a la fois, entre deux releves de
-la file, pour ne jamais retarder ni le calcul ni le trace.
+fige. Les images sont calculees une a la fois, entre deux releves de la
+file, pour ne jamais retarder ni le calcul ni le trace.
 
 Le panneau n'apparait qu'apres un court delai : sur un fichier de mille
 lignes, l'analyse dure moins qu'un clignement, et un panneau qui
@@ -43,8 +43,8 @@ class WorkPanel(tk.Frame):
 
     #: Cadre du symbole. Plus petit qu'a l'accueil : il accompagne ici, il
     #: ne se presente pas.
-    LOGO_WIDTH, LOGO_HEIGHT = 168, 112
-    #: Images d'une ondulation complete, et cadence.
+    LOGO = 108
+    #: Images d'un passage complet du reflet, et cadence.
     FRAMES = 20
     FRAME_MS = 80
     #: Largeur du filet d'avancement.
@@ -59,8 +59,7 @@ class WorkPanel(tk.Frame):
         self._frame = 0
         self._next_ms = 0.0
         self._images: List[tk.PhotoImage] = []
-        self._symbole = logo.Aurora(self.LOGO_WIDTH, self.FRAMES,
-                                    height=self.LOGO_HEIGHT)
+        self._symbole = logo.Star(self.LOGO, self.FRAMES)
         self._done: List[str] = []
         self.current = ""
 
@@ -175,9 +174,9 @@ class WorkPanel(tk.Frame):
         self.etape.configure(text=label)
 
     def tick(self) -> None:
-        """Un battement : le symbole ondule, le chronometre avance.
+        """Un battement : le reflet avance, le chronometre aussi.
 
-        Tant que l'ondulation n'est pas complete, le battement sert a la
+        Tant que le passage n'est pas complet, le battement sert a la
         calculer — une image par passage, pour ne jamais bloquer le trace
         plus de quelques millisecondes d'affilee.
         """
@@ -205,7 +204,7 @@ class WorkPanel(tk.Frame):
     # ---------------------------------------------------------- symbole
 
     def _render_next(self) -> bool:
-        """Calcule l'image suivante. Faux quand l'ondulation est complete."""
+        """Calcule l'image suivante. Faux quand le passage est complet."""
         if len(self._images) >= self.FRAMES:
             return False
         try:
