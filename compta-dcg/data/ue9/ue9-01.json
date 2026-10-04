@@ -1,0 +1,170 @@
+{
+ "id": "ue9-01",
+ "ue": "UE9",
+ "ordre": 1,
+ "title": "Le bilan et le compte de résultat",
+ "resume": "Patrimoine, actif / passif, charges / produits : les deux documents que tout le reste alimente.",
+ "duree": "25 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Le bilan : une photo du patrimoine",
+   "html": "<p>Le bilan décrit <b>ce que l'entreprise possède</b> et <b>ce qu'elle doit</b> à une date donnée, en général le 31 décembre. Il a deux colonnes qui sont toujours égales.</p>\n<ul>\n<li><b>Actif</b> (à gauche) : les emplois, ce que l'entreprise détient. Actif immobilisé (bâtiments, machines, matériel), puis actif circulant (stocks, créances clients, banque, caisse).</li>\n<li><b>Passif</b> (à droite) : les ressources, d'où vient l'argent. Capitaux propres (capital apporté, réserves, résultat), puis dettes (emprunts, fournisseurs, dettes fiscales et sociales).</li>\n</ul>\n<div class=\"note\"><b>Règle.</b> Actif = Passif, toujours. Chaque ressource finance un emploi : l'argent qu'on a (actif) vient forcément de quelque part (passif).</div>"
+  },
+  {
+   "h": "Trois opérations, trois bilans",
+   "html": "<p>Une SARL se crée avec <span class=\"mono\">50 000 €</span> de capital versé en banque. Bilan : Banque 50 000 à l'actif, Capital 50 000 au passif.</p>\n<p>Elle achète une machine <span class=\"mono\">20 000 €</span> payée comptant. L'actif se réorganise : Machine 20 000 + Banque 30 000. Le passif ne bouge pas.</p>\n<p>Elle emprunte <span class=\"mono\">10 000 €</span>. Actif : Banque 40 000 + Machine 20 000 = 60 000. Passif : Capital 50 000 + Emprunt 10 000 = 60 000.</p>"
+  },
+  {
+   "h": "Le compte de résultat : le film de l'exercice",
+   "html": "<p>Sur un exercice (12 mois), l'entreprise consomme des <b>charges</b> (achats, loyers, salaires, intérêts) et génère des <b>produits</b> (ventes, prestations). La différence est le <b>résultat</b>.</p>\n<ul>\n<li>Produits &gt; charges : <b>bénéfice</b>. Il enrichit l'entreprise et vient grossir les capitaux propres au passif du bilan.</li>\n<li>Charges &gt; produits : <b>perte</b>. Elle vient en moins des capitaux propres.</li>\n</ul>\n<div class=\"note\"><b>Lien entre les deux.</b> Le résultat de l'exercice apparaît dans les deux documents : en bas du compte de résultat, et dans les capitaux propres du bilan. C'est ce qui garde le bilan équilibré.</div>"
+  },
+  {
+   "h": "Vocabulaire à fixer",
+   "html": "<ul>\n<li><b>Créance</b> : somme qu'un client nous doit (actif). <b>Dette</b> : somme que nous devons (passif).</li>\n<li><b>Immobilisation</b> : bien durable utilisé plus d'un an (actif immobilisé). <b>Stock</b> : bien destiné à être vendu ou consommé (actif circulant).</li>\n<li><b>Disponibilités</b> : banque et caisse.</li>\n<li><b>Exercice</b> : période de 12 mois entre deux bilans.</li>\n</ul>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quelle égalité est vraie dans tout bilan ?",
+   "opts": [
+    "Actif = Passif",
+    "Produits = Charges",
+    "Capitaux propres = Dettes",
+    "Actif = Capitaux propres"
+   ],
+   "a": 0,
+   "why": "Les ressources (passif) financent les emplois (actif). Les deux colonnes sont donc toujours égales. Produits et charges ne sont égaux que si le résultat est nul.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un emprunt contracté auprès de la banque figure :",
+   "opts": [
+    "À l'actif, en disponibilités",
+    "Au passif, dans les dettes",
+    "Au passif, dans les capitaux propres",
+    "Dans les charges"
+   ],
+   "a": 1,
+   "why": "L'emprunt est une ressource externe qu'il faudra rembourser : c'est une dette (compte 164). L'argent reçu, lui, va à l'actif en banque.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément dans la bonne partie du bilan.",
+   "cats": [
+    "Actif immobilisé",
+    "Actif circulant",
+    "Capitaux propres",
+    "Dettes"
+   ],
+   "items": [
+    [
+     "Matériel informatique",
+     0
+    ],
+    [
+     "Stock de marchandises",
+     1
+    ],
+    [
+     "Capital social",
+     2
+    ],
+    [
+     "Dette envers un fournisseur",
+     3
+    ],
+    [
+     "Créance sur un client",
+     1
+    ],
+    [
+     "Emprunt bancaire",
+     3
+    ],
+    [
+     "Solde du compte en banque",
+     1
+    ],
+    [
+     "Réserves",
+     2
+    ]
+   ],
+   "why": "Actif immobilisé = biens durables. Actif circulant = stocks, créances, disponibilités. Capitaux propres = capital, réserves, résultat. Dettes = tout ce que l'entreprise doit à des tiers.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Total de l'actif : 180 000 €. Total des dettes : 110 000 €. Quel est le montant des capitaux propres ?",
+   "a": 70000,
+   "unit": "€",
+   "why": "Passif = Actif = 180 000. Capitaux propres = Passif − Dettes = 180 000 − 110 000 = 70 000 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le compte de résultat est :",
+   "opts": [
+    "Une photo du patrimoine à la clôture",
+    "Le film des charges et des produits de l'exercice",
+    "La liste des comptes de la classe 4",
+    "Le détail de la trésorerie"
+   ],
+   "a": 1,
+   "why": "Le bilan est la photo, le compte de résultat est le film : il cumule les charges et les produits sur 12 mois et en tire le résultat.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Produits de l'exercice : 250 000 €. Charges : 230 000 €. Quel est le résultat ? (Indiquez un nombre négatif pour une perte.)",
+   "a": 20000,
+   "unit": "€",
+   "why": "Résultat = Produits − Charges = 250 000 − 230 000 = 20 000 € de bénéfice.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un bénéfice de 20 000 € a quel effet sur le bilan de clôture ?",
+   "opts": [
+    "Il augmente les dettes de 20 000",
+    "Il augmente les capitaux propres de 20 000",
+    "Il diminue l'actif de 20 000",
+    "Il n'apparaît pas au bilan"
+   ],
+   "a": 1,
+   "why": "Le résultat est repris dans les capitaux propres (compte 120). Côté actif, il se retrouve dispersé : plus de banque, plus de créances, plus de stock…",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Une créance client est :",
+   "opts": [
+    "Une dette au passif",
+    "Un produit du compte de résultat",
+    "Un élément de l'actif circulant",
+    "Une immobilisation"
+   ],
+   "a": 2,
+   "why": "Le client nous doit de l'argent : c'est un droit que nous détenons, donc un actif. Comme il sera encaissé à court terme, il est circulant.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

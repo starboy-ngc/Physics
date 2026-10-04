@@ -1,0 +1,277 @@
+{
+ "id": "ue9-07",
+ "ue": "UE9",
+ "ordre": 7,
+ "title": "Clôture : régularisations et résultat",
+ "resume": "Charges à payer, produits à recevoir, charges et produits constatés d'avance, détermination et affectation du résultat.",
+ "duree": "50 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Le principe d'indépendance des exercices",
+   "html": "<p>Chaque exercice doit porter <b>toutes</b> ses charges et <b>tous</b> ses produits, et <b>rien que</b> les siens. À la clôture, on ajuste donc :</p>\n<ul>\n<li><b>Charges à payer</b> : consommées en N, pas encore facturées. Facture non parvenue : débit 6xx, débit <code>44586</code>, crédit <code>408</code>.</li>\n<li><b>Produits à recevoir</b> : livrés en N, pas encore facturés. Facture à établir : débit <code>418</code>, crédit 7xx, crédit <code>44587</code>.</li>\n<li><b>Charges constatées d'avance</b> (<code>486</code>) : déjà enregistrées mais concernant N+1. Débit 486, crédit 6xx (HT).</li>\n<li><b>Produits constatés d'avance</b> (<code>487</code>) : déjà facturés mais concernant N+1. Débit 7xx, crédit 487.</li>\n<li><b>Intérêts courus</b> sur emprunt : débit <code>661</code>, crédit <code>1688</code>.</li>\n</ul>\n<p>Toutes ces écritures sont <b>contre-passées</b> au 1er jour de N+1 pour que la facture réelle s'enregistre normalement.</p>"
+  },
+  {
+   "h": "Deux exemples",
+   "html": "<p>Loyer trimestriel de 3 000 € payé le 1er décembre N pour décembre, janvier et février : 2 000 € concernent N+1.</p>",
+   "entry": [
+    {
+     "a": "486",
+     "d": 2000,
+     "c": 0
+    },
+    {
+     "a": "613",
+     "d": 0,
+     "c": 2000
+    }
+   ],
+   "lib": "Charge constatée d'avance"
+  },
+  {
+   "h": "",
+   "html": "<p>Électricité de décembre consommée, facture non reçue : estimation 800 € HT, TVA 160.</p>",
+   "entry": [
+    {
+     "a": "6061",
+     "d": 800,
+     "c": 0
+    },
+    {
+     "a": "44586",
+     "d": 160,
+     "c": 0
+    },
+    {
+     "a": "408",
+     "d": 0,
+     "c": 960
+    }
+   ],
+   "lib": "Facture non parvenue"
+  },
+  {
+   "h": "Déterminer le résultat",
+   "html": "<p>Après les écritures d'inventaire, on dresse la <b>balance</b> (liste de tous les comptes avec leurs soldes ; total débits = total crédits). On solde ensuite tous les comptes 6 et 7 dans <code>120</code> (bénéfice) ou <code>129</code> (perte). Les comptes de bilan (1 à 5) sont reportés à nouveau en N+1.</p>"
+  },
+  {
+   "h": "Affecter le résultat (sociétés)",
+   "html": "<p>L'assemblée décide de l'affectation du bénéfice : <b>réserve légale</b> (<code>1061</code>) obligatoire à 5 % du bénéfice jusqu'à ce qu'elle atteigne 10 % du capital, puis réserves facultatives, <b>dividendes</b> (<code>457</code>) et <b>report à nouveau</b> (<code>110</code>).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "ecriture",
+   "q": "Le 1er décembre N, un loyer trimestriel de 3 000 € (décembre à février) a été enregistré en 613. Passez l'écriture de régularisation au 31 décembre.",
+   "lib": "Charge constatée d'avance",
+   "palette": [
+    "486",
+    "613",
+    "487",
+    "408"
+   ],
+   "sol": [
+    [
+     {
+      "a": "486",
+      "d": 2000,
+      "c": 0
+     },
+     {
+      "a": "613",
+      "d": 0,
+      "c": 2000
+     }
+    ]
+   ],
+   "why": "Janvier et février concernent N+1 : 2/3 × 3 000 = 2 000 € sortent des charges de N (crédit 613) et vont à l'actif en 486.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "L'électricité de décembre (800 € HT, TVA 160 €) a été consommée mais la facture n'est pas arrivée. Régularisez.",
+   "lib": "Facture non parvenue",
+   "palette": [
+    "6061",
+    "44586",
+    "44566",
+    "408",
+    "401"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6061",
+      "d": 800,
+      "c": 0
+     },
+     {
+      "a": "44586",
+      "d": 160,
+      "c": 0
+     },
+     {
+      "a": "408",
+      "d": 0,
+      "c": 960
+     }
+    ]
+   ],
+   "why": "Charge à payer : la charge est bien de N (débit 6061). La TVA en attente va en 44586 (pas 44566, car non encore déductible sans facture). La dette en 408.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Une prestation de 1 500 € HT (TVA 20 %) a été réalisée en décembre et sera facturée en janvier. Régularisez.",
+   "lib": "Facture à établir",
+   "palette": [
+    "418",
+    "411",
+    "706",
+    "44587",
+    "44571"
+   ],
+   "sol": [
+    [
+     {
+      "a": "418",
+      "d": 1800,
+      "c": 0
+     },
+     {
+      "a": "706",
+      "d": 0,
+      "c": 1500
+     },
+     {
+      "a": "44587",
+      "d": 0,
+      "c": 300
+     }
+    ]
+   ],
+   "why": "Produit à recevoir : le produit appartient à N (crédit 706). La créance en 418, la TVA en attente en 44587.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Emprunt de 60 000 € à 4 %, intérêts payés chaque 30 avril pour les 12 mois écoulés. Intérêts courus au 31 décembre ?",
+   "a": 1600,
+   "unit": "€",
+   "why": "Du 1er mai au 31 décembre : 8 mois. 60 000 × 4 % × 8/12 = 1 600 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Enregistrez ces intérêts courus de 1 600 € au 31 décembre.",
+   "lib": "Intérêts courus",
+   "palette": [
+    "661",
+    "1688",
+    "164",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "661",
+      "d": 1600,
+      "c": 0
+     },
+     {
+      "a": "1688",
+      "d": 0,
+      "c": 1600
+     }
+    ]
+   ],
+   "why": "La charge d'intérêts de N au débit de 661, la dette d'intérêts non encore payés au crédit de 1688.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un produit constaté d'avance figure :",
+   "opts": [
+    "À l'actif du bilan",
+    "Au passif du bilan",
+    "Dans les produits de l'exercice",
+    "Dans les charges de l'exercice"
+   ],
+   "a": 1,
+   "why": "487 est une dette : l'entreprise a facturé quelque chose qu'elle doit encore fournir. Symétriquement, 486 est un actif.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le 1er janvier N+1, que deviennent les écritures de régularisation ?",
+   "opts": [
+    "Elles sont conservées jusqu'à la facture",
+    "Elles sont contre-passées (écriture inverse)",
+    "Elles sont transférées en 120",
+    "Elles sont annulées par l'expert-comptable à la clôture suivante"
+   ],
+   "a": 1,
+   "why": "On passe l'écriture inverse au premier jour de N+1. Ainsi la facture réelle, quand elle arrive, s'enregistre normalement sans doublon.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Total des comptes de classe 7 : 540 000 €. Total des comptes de classe 6 : 498 000 €. Résultat de l'exercice ?",
+   "a": 42000,
+   "unit": "€",
+   "why": "540 000 − 498 000 = 42 000 € de bénéfice, porté au crédit du compte 120.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un solde créditeur du compte 120 signifie :",
+   "opts": [
+    "Une perte",
+    "Un bénéfice",
+    "Une dette fiscale",
+    "Un crédit de TVA"
+   ],
+   "a": 1,
+   "why": "120 reçoit au crédit la somme des produits et au débit la somme des charges. Créditeur = produits supérieurs aux charges = bénéfice.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Bénéfice 42 000 €, capital 100 000 €, réserve légale déjà constituée 6 000 €. Dotation à la réserve légale ?",
+   "a": 2100,
+   "unit": "€",
+   "why": "5 % × 42 000 = 2 100 €. Le plafond (10 % du capital = 10 000) n'est pas atteint (6 000 + 2 100 = 8 100), la dotation est donc entière.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "La balance est :",
+   "opts": [
+    "Le document qui remplace le bilan dans les petites entreprises",
+    "La liste de tous les comptes avec leurs totaux et soldes, débits = crédits",
+    "La liste des seules dettes et créances",
+    "Le relevé bancaire rapproché"
+   ],
+   "a": 1,
+   "why": "La balance vérifie la partie double avant d'établir le bilan (classes 1-5) et le compte de résultat (classes 6-7).",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

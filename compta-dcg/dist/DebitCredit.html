@@ -1,0 +1,637 @@
+<title>Débit Crédit</title>
+<meta name="description" content="Réviser le DCG matière par matière, avec tests quotidiens, plan comptable commenté et révisions espacées.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : un livre-journal (marge rouge, lignes réglées), onglets d'intercalaires, et un ciel d'expédition pour la progression. */
+:root {
+  --paper: #f5f7f1; --card: #ffffff; --ink: #1c2630; --muted: #5d6a74;
+  --rule: #cfd8cb; --rule-soft: #e4eae0; --margin: #b4302c;
+  --accent: #1f5f8b; --accent-soft: #e3eef6;
+  --ok: #2d7a4f; --ok-soft: #e2f1e7; --bad: #b4302c; --bad-soft: #f8e4e2; --warn: #9a6a12; --warn-soft: #f6ecd4;
+  --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
+  --display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
+    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
+  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 60px; }
+header.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
+.brand { font-family: var(--display); font-weight: 600; font-size: 1.65rem; letter-spacing: -0.01em; margin: 0; text-wrap: balance; cursor: pointer; }
+.brand span { color: var(--margin); }
+.tagline { color: var(--muted); font-size: 0.92rem; margin: 0; }
+.rank { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.rank b { color: var(--ink); font-weight: 500; }
+nav.tabs { display: flex; gap: 2px; margin-top: 12px; border-bottom: 1px solid var(--rule); overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { background: none; border: 1px solid transparent; border-bottom: none; color: var(--muted); font: 500 0.92rem var(--body); padding: 8px 12px; cursor: pointer; border-radius: 6px 6px 0 0; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); background: var(--card); border-color: var(--rule); position: relative; top: 1px; }
+button:focus-visible, select:focus-visible, input:focus-visible, .row:focus-visible, .acct:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.badge { display: inline-block; min-width: 1.4em; padding: 0 6px; border-radius: 999px; background: var(--margin); color: #fff; font: 500 0.72rem var(--mono); margin-left: 5px; vertical-align: 1px; }
+.badge.zero { background: var(--rule); color: var(--muted); }
+main { margin-top: 18px; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; margin: 0 0 8px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 1.1rem; margin: 22px 0 6px; text-wrap: balance; }
+p { margin: 0 0 10px; max-width: 70ch; }
+.muted { color: var(--muted); }
+.small { font-size: 0.86rem; }
+.eyebrow { font: 500 0.74rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.board { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 14px 0 18px; }
+.tile { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 13px; }
+.tile .big { font: 500 1.5rem var(--mono); font-variant-numeric: tabular-nums; }
+.tile .lab { color: var(--muted); font-size: 0.83rem; }
+.cta { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--margin); border-radius: 8px; padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.cta .t { font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
+.ledger { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.row { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px 12px 0; border-top: 1px solid var(--rule-soft); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-bottom: 0; color: inherit; font: inherit; }
+.row:first-child { border-top: none; }
+.row:hover { background: var(--accent-soft); }
+.row .num { font: 500 0.88rem var(--mono); color: var(--margin); text-align: center; border-right: 1px solid var(--margin); align-self: stretch; display: flex; align-items: center; justify-content: center; }
+.row .ttl { font-weight: 600; }
+.row .sub { color: var(--muted); font-size: 0.86rem; }
+.row .right { text-align: right; min-width: 110px; }
+.bar { height: 6px; background: var(--rule-soft); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.bar.full i { background: var(--ok); }
+.pill { display: inline-block; font: 500 0.7rem var(--mono); letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; background: var(--rule-soft); color: var(--muted); white-space: nowrap; }
+.pill.next { background: var(--accent-soft); color: var(--accent); }
+.pill.done { background: var(--ok-soft); color: var(--ok); }
+.pill.prog { background: var(--warn-soft); color: var(--warn); }
+.pill.year { background: var(--warn-soft); color: var(--warn); }
+.pill.new { background: var(--accent-soft); color: var(--accent); }
+.pill.del { background: var(--bad-soft); color: var(--bad); }
+.ues { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.ue { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; cursor: pointer; text-align: left; color: inherit; font: inherit; display: grid; gap: 4px; }
+.ue:hover { border-color: var(--accent); }
+.ue .code { font: 500 0.74rem var(--mono); letter-spacing: 0.08em; color: var(--margin); }
+.ue .nom { font-family: var(--display); font-weight: 600; font-size: 1.12rem; }
+.ue .intro { color: var(--muted); font-size: 0.86rem; }
+.lesson { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.lesson p, .lesson ul, .lesson ol { max-width: 70ch; }
+.lesson ul, .lesson ol { margin: 0 0 10px; padding-left: 20px; }
+.lesson li { margin-bottom: 4px; }
+.lesson table { border-collapse: collapse; margin: 8px 0 12px; font-size: 0.92rem; }
+.lesson th, .lesson td { border: 1px solid var(--rule); padding: 5px 8px; text-align: left; vertical-align: top; }
+.lesson th { background: var(--rule-soft); font-weight: 600; }
+.twrap-l { overflow-x: auto; }
+.note { border-left: 3px solid var(--margin); padding: 6px 12px; background: var(--paper); margin: 10px 0; max-width: 70ch; border-radius: 0 6px 6px 0; }
+.note b { color: var(--margin); }
+code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--rule-soft); padding: 0 4px; border-radius: 3px; }
+.sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
+.sources li { margin-bottom: 3px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
+button.btn { font: 500 0.95rem var(--body); padding: 9px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+button.btn.ghost { background: transparent; color: var(--accent); }
+button.btn.quiet { background: transparent; color: var(--muted); border-color: var(--rule); }
+button.btn.red { background: var(--margin); border-color: var(--margin); }
+button.btn:disabled { opacity: 0.5; cursor: default; }
+.crumb { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.crumb button { background: none; border: none; color: var(--accent); cursor: pointer; font: inherit; padding: 0; }
+.jwrap { overflow-x: auto; margin: 10px 0 14px; }
+table.journal { border-collapse: collapse; width: 100%; min-width: 420px; font-size: 0.93rem; background: var(--card); }
+table.journal th { text-align: left; font: 500 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--ink); }
+table.journal td { padding: 5px 8px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; }
+table.journal td.n { font-family: var(--mono); white-space: nowrap; }
+table.journal td.amt { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; width: 110px; border-left: 1px solid var(--rule); }
+table.journal tr.credit td.lib { padding-left: 32px; }
+table.journal tr.credit td.n { padding-left: 24px; }
+table.journal tr.total td { border-top: 1px solid var(--ink); border-bottom: none; font-weight: 600; }
+table.journal caption { caption-side: top; text-align: left; font-size: 0.85rem; color: var(--muted); padding: 0 0 4px; }
+.journal input, .journal select { font: inherit; color: inherit; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 5px 6px; width: 100%; min-width: 0; }
+.journal input.amt-in { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.journal td.del { width: 34px; text-align: center; }
+.journal td.del button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 2px 6px; }
+tr.ok-line td.lib::after { content: " ✓"; color: var(--ok); }
+tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
+.palette { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.chip { font: 0.82rem var(--body); border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 3px 10px; color: var(--ink); }
+.chip b { font-family: var(--mono); font-weight: 500; color: var(--accent); margin-right: 4px; }
+.exo { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.exo .meta { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; margin-bottom: 8px; }
+.exo .q { font-size: 1.05rem; font-weight: 500; max-width: 72ch; margin-bottom: 12px; white-space: pre-line; }
+.opts { display: grid; gap: 8px; }
+.opt { text-align: left; font: inherit; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: 10px 12px; cursor: pointer; display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: start; }
+.opt .k { font-family: var(--mono); color: var(--muted); }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opt.right { border-color: var(--ok); background: var(--ok-soft); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.opt.missed { border-color: var(--warn); background: var(--warn-soft); }
+.opt:disabled { cursor: default; }
+.calc { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.calc input { font: 1.05rem var(--mono); font-variant-numeric: tabular-nums; text-align: right; width: 180px; max-width: 100%; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.calc .unit { color: var(--muted); }
+.tri { display: grid; gap: 8px; }
+.tri-row { display: grid; grid-template-columns: 1fr minmax(160px, 240px); gap: 10px; align-items: center; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); }
+.tri-row select { font: inherit; color: inherit; background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: 6px; }
+.tri-row.right { border-color: var(--ok); }
+.tri-row.wrong { border-color: var(--bad); }
+.feedback { margin-top: 14px; padding: 12px 14px; border-radius: 6px; border: 1px solid; max-width: 72ch; }
+.feedback.ok { border-color: var(--ok); background: var(--ok-soft); }
+.feedback.bad { border-color: var(--bad); background: var(--bad-soft); }
+.feedback p:last-child { margin-bottom: 0; }
+.feedback .src { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+.progress { font: 500 0.85rem var(--mono); color: var(--muted); }
+.balance { font: 0.85rem var(--mono); color: var(--muted); margin-top: 4px; text-align: right; }
+.balance.off { color: var(--bad); }
+.balance.on { color: var(--ok); }
+.classes { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 8px; margin-bottom: 14px; }
+.cls { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; background: var(--card); font-size: 0.84rem; cursor: pointer; text-align: left; color: inherit; font-family: inherit; }
+.cls[aria-pressed="true"] { border-color: var(--margin); background: var(--accent-soft); }
+.cls .c { font: 500 1.3rem var(--mono); color: var(--margin); }
+.search { width: 100%; font: 1rem var(--body); padding: 10px 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); color: var(--ink); margin-bottom: 10px; }
+.acct { display: block; width: 100%; text-align: left; background: var(--card); border: none; border-top: 1px solid var(--rule-soft); padding: 9px 12px; color: inherit; font: inherit; cursor: pointer; }
+.acct:first-child { border-top: none; }
+.acct .n { font-family: var(--mono); color: var(--accent); display: inline-block; width: 68px; }
+.acct .s { float: right; color: var(--muted); font: 0.8rem var(--mono); }
+.acct-body { background: var(--paper); border-top: 1px solid var(--rule-soft); padding: 10px 14px 12px 80px; font-size: 0.93rem; }
+.acct-body p { max-width: 72ch; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
+.filters label { font-size: 0.86rem; color: var(--muted); display: flex; gap: 4px; align-items: center; }
+.sky { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: var(--sky1); margin-bottom: 14px; }
+.sky canvas { display: block; width: 100%; height: auto; }
+.sky .legend { position: absolute; right: 12px; bottom: 10px; text-align: right; color: #dfe7f3; font: 500 0.78rem var(--mono); letter-spacing: 0.05em; text-transform: uppercase; text-shadow: 0 1px 2px #000; }
+.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.bdg { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; background: var(--card); font-size: 0.86rem; }
+.bdg.off { opacity: 0.5; }
+.bdg .ic { font-size: 1.2rem; }
+.bdg b { display: block; }
+.hist { display: flex; gap: 3px; align-items: flex-end; height: 70px; margin: 8px 0 4px; }
+.hist i { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-width: 4px; opacity: 0.85; }
+.hist i.none { background: var(--rule-soft); }
+details.save { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+details.save summary { cursor: pointer; }
+details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono); margin-top: 8px; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 8px; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 90vw; }
+.toast.show { opacity: 1; }
+.xp-pop { position: fixed; right: 16px; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: #fff; font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
+.xp-pop.show { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .toast, .xp-pop { transition: none; } }
+@media (max-width: 480px) {
+  .row { grid-template-columns: 40px 1fr; }
+  .row .right { grid-column: 2; text-align: left; }
+  .tri-row { grid-template-columns: 1fr; }
+  .acct-body { padding-left: 14px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 class="brand" id="brand">Débit <span>·</span> Crédit</h1>
+      <p class="tagline">Réviser le DCG pour aborder le DSCG : six matières, un test chaque jour, le plan comptable expliqué.</p>
+    </div>
+    <div class="rank" id="rankBox"></div>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="accueil" aria-selected="true">Aujourd'hui</button>
+    <button role="tab" data-tab="matieres" aria-selected="false">Matières</button>
+    <button role="tab" data-tab="test" aria-selected="false">Test du jour</button>
+    <button role="tab" data-tab="revisions" aria-selected="false">Révisions <span class="badge zero" id="dueBadge">0</span></button>
+    <button role="tab" data-tab="pcg" aria-selected="false">Plan comptable</button>
+    <button role="tab" data-tab="expedition" aria-selected="false">Expédition</button>
+  </nav>
+  <main id="main"></main>
+  <details class="save">
+    <summary>Sauvegarde, transfert et informations</summary>
+    <p id="buildInfo"></p>
+    <p>La progression est gardée dans ce navigateur. Pour la transférer sur un autre ordinateur, copiez ce code, puis collez-le là-bas et appuyez sur « Restaurer ».</p>
+    <textarea id="saveBox" spellcheck="false" aria-label="Code de sauvegarde"></textarea>
+    <div class="actions">
+      <button class="btn quiet" id="copySave">Copier le code</button>
+      <button class="btn quiet" id="restoreSave">Restaurer depuis le code collé</button>
+      <button class="btn quiet" id="resetSave">Tout remettre à zéro</button>
+    </div>
+  </details>
+</div>
+<div class="toast" id="toast"></div>
+<div class="xp-pop" id="xpPop"></div>
+<script>
+const DATA = {"ues":[{"code":"UE9","nom":"Comptabilité","court":"Compta","intro":"Les fondations : documents de synthèse, PCG, écritures courantes, inventaire, clôture.","programme":"DCG UE9 Comptabilité (arrêté du 13 février 2019 ; intitulé conservé par l'arrêté du 4 août 2025)"},{"code":"UE6","nom":"Finance d'entreprise","court":"Finance","intro":"Diagnostic financier, flux, investissement, financement et trésorerie.","programme":"DCG UE6 Finance d'entreprise"}],"chapitres":[{"id":"ue9-01","ue":"UE9","ordre":1,"title":"Le bilan et le compte de résultat","resume":"Patrimoine, actif / passif, charges / produits : les deux documents que tout le reste alimente.","duree":"25 min","niveau":1,"lecon":[{"h":"Le bilan : une photo du patrimoine","html":"<p>Le bilan décrit <b>ce que l'entreprise possède</b> et <b>ce qu'elle doit</b> à une date donnée, en général le 31 décembre. Il a deux colonnes qui sont toujours égales.</p>\n<ul>\n<li><b>Actif</b> (à gauche) : les emplois, ce que l'entreprise détient. Actif immobilisé (bâtiments, machines, matériel), puis actif circulant (stocks, créances clients, banque, caisse).</li>\n<li><b>Passif</b> (à droite) : les ressources, d'où vient l'argent. Capitaux propres (capital apporté, réserves, résultat), puis dettes (emprunts, fournisseurs, dettes fiscales et sociales).</li>\n</ul>\n<div class=\"note\"><b>Règle.</b> Actif = Passif, toujours. Chaque ressource finance un emploi : l'argent qu'on a (actif) vient forcément de quelque part (passif).</div>"},{"h":"Trois opérations, trois bilans","html":"<p>Une SARL se crée avec <span class=\"mono\">50 000 €</span> de capital versé en banque. Bilan : Banque 50 000 à l'actif, Capital 50 000 au passif.</p>\n<p>Elle achète une machine <span class=\"mono\">20 000 €</span> payée comptant. L'actif se réorganise : Machine 20 000 + Banque 30 000. Le passif ne bouge pas.</p>\n<p>Elle emprunte <span class=\"mono\">10 000 €</span>. Actif : Banque 40 000 + Machine 20 000 = 60 000. Passif : Capital 50 000 + Emprunt 10 000 = 60 000.</p>"},{"h":"Le compte de résultat : le film de l'exercice","html":"<p>Sur un exercice (12 mois), l'entreprise consomme des <b>charges</b> (achats, loyers, salaires, intérêts) et génère des <b>produits</b> (ventes, prestations). La différence est le <b>résultat</b>.</p>\n<ul>\n<li>Produits &gt; charges : <b>bénéfice</b>. Il enrichit l'entreprise et vient grossir les capitaux propres au passif du bilan.</li>\n<li>Charges &gt; produits : <b>perte</b>. Elle vient en moins des capitaux propres.</li>\n</ul>\n<div class=\"note\"><b>Lien entre les deux.</b> Le résultat de l'exercice apparaît dans les deux documents : en bas du compte de résultat, et dans les capitaux propres du bilan. C'est ce qui garde le bilan équilibré.</div>"},{"h":"Vocabulaire à fixer","html":"<ul>\n<li><b>Créance</b> : somme qu'un client nous doit (actif). <b>Dette</b> : somme que nous devons (passif).</li>\n<li><b>Immobilisation</b> : bien durable utilisé plus d'un an (actif immobilisé). <b>Stock</b> : bien destiné à être vendu ou consommé (actif circulant).</li>\n<li><b>Disponibilités</b> : banque et caisse.</li>\n<li><b>Exercice</b> : période de 12 mois entre deux bilans.</li>\n</ul>"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"qcm","q":"Quelle égalité est vraie dans tout bilan ?","opts":["Actif = Passif","Produits = Charges","Capitaux propres = Dettes","Actif = Capitaux propres"],"a":0,"why":"Les ressources (passif) financent les emplois (actif). Les deux colonnes sont donc toujours égales. Produits et charges ne sont égaux que si le résultat est nul.","src":"PCG","fiab":"stable","id":"ue9-01-0","chap":"ue9-01"},{"type":"qcm","q":"Un emprunt contracté auprès de la banque figure :","opts":["À l'actif, en disponibilités","Au passif, dans les dettes","Au passif, dans les capitaux propres","Dans les charges"],"a":1,"why":"L'emprunt est une ressource externe qu'il faudra rembourser : c'est une dette (compte 164). L'argent reçu, lui, va à l'actif en banque.","src":"PCG","fiab":"stable","id":"ue9-01-1","chap":"ue9-01"},{"type":"tri","q":"Classez chaque élément dans la bonne partie du bilan.","cats":["Actif immobilisé","Actif circulant","Capitaux propres","Dettes"],"items":[["Matériel informatique",0],["Stock de marchandises",1],["Capital social",2],["Dette envers un fournisseur",3],["Créance sur un client",1],["Emprunt bancaire",3],["Solde du compte en banque",1],["Réserves",2]],"why":"Actif immobilisé = biens durables. Actif circulant = stocks, créances, disponibilités. Capitaux propres = capital, réserves, résultat. Dettes = tout ce que l'entreprise doit à des tiers.","src":"PCG","fiab":"stable","id":"ue9-01-2","chap":"ue9-01"},{"type":"calc","q":"Total de l'actif : 180 000 €. Total des dettes : 110 000 €. Quel est le montant des capitaux propres ?","a":70000,"unit":"€","why":"Passif = Actif = 180 000. Capitaux propres = Passif − Dettes = 180 000 − 110 000 = 70 000 €.","src":"PCG","fiab":"stable","id":"ue9-01-3","chap":"ue9-01"},{"type":"qcm","q":"Le compte de résultat est :","opts":["Une photo du patrimoine à la clôture","Le film des charges et des produits de l'exercice","La liste des comptes de la classe 4","Le détail de la trésorerie"],"a":1,"why":"Le bilan est la photo, le compte de résultat est le film : il cumule les charges et les produits sur 12 mois et en tire le résultat.","src":"PCG","fiab":"stable","id":"ue9-01-4","chap":"ue9-01"},{"type":"calc","q":"Produits de l'exercice : 250 000 €. Charges : 230 000 €. Quel est le résultat ? (Indiquez un nombre négatif pour une perte.)","a":20000,"unit":"€","why":"Résultat = Produits − Charges = 250 000 − 230 000 = 20 000 € de bénéfice.","src":"PCG","fiab":"stable","id":"ue9-01-5","chap":"ue9-01"},{"type":"qcm","q":"Un bénéfice de 20 000 € a quel effet sur le bilan de clôture ?","opts":["Il augmente les dettes de 20 000","Il augmente les capitaux propres de 20 000","Il diminue l'actif de 20 000","Il n'apparaît pas au bilan"],"a":1,"why":"Le résultat est repris dans les capitaux propres (compte 120). Côté actif, il se retrouve dispersé : plus de banque, plus de créances, plus de stock…","src":"PCG","fiab":"stable","id":"ue9-01-6","chap":"ue9-01"},{"type":"qcm","q":"Une créance client est :","opts":["Une dette au passif","Un produit du compte de résultat","Un élément de l'actif circulant","Une immobilisation"],"a":2,"why":"Le client nous doit de l'argent : c'est un droit que nous détenons, donc un actif. Comme il sera encaissé à court terme, il est circulant.","src":"PCG","fiab":"stable","id":"ue9-01-7","chap":"ue9-01"}]},{"id":"ue9-02","ue":"UE9","ordre":2,"title":"Le plan comptable et la partie double","resume":"Les 7 classes du PCG, le sens débit / crédit et vos premières écritures.","duree":"35 min","niveau":1,"lecon":[{"h":"Les 7 classes du Plan comptable général","html":"<p>Chaque compte porte un numéro dont le <b>premier chiffre</b> indique la classe. Les classes 1 à 5 sont des comptes de <b>bilan</b>, les classes 6 et 7 des comptes de <b>résultat</b>.</p>\n<ul>\n<li><b>1</b> Capitaux : capital <code>101</code>, réserves <code>106</code>, résultat <code>120</code>, emprunts <code>164</code>.</li>\n<li><b>2</b> Immobilisations : matériel industriel <code>2154</code>, informatique <code>2183</code>, amortissements <code>28…</code>.</li>\n<li><b>3</b> Stocks : marchandises <code>37</code>, matières <code>31</code>.</li>\n<li><b>4</b> Tiers : fournisseurs <code>401</code>, clients <code>411</code>, personnel <code>421</code>, État et TVA <code>44…</code>.</li>\n<li><b>5</b> Financiers : banque <code>512</code>, caisse <code>530</code>.</li>\n<li><b>6</b> Charges : achats <code>60</code>, services extérieurs <code>61/62</code>, personnel <code>64</code>, financières <code>66</code>, dotations <code>68</code>.</li>\n<li><b>7</b> Produits : ventes <code>70</code>, financiers <code>76</code>, exceptionnels <code>77</code>, reprises <code>78</code>.</li>\n</ul>\n<p>La numérotation est décimale : plus le numéro est long, plus le compte est précis (<code>4</code> → <code>44</code> → <code>445</code> → <code>44566</code>).</p>"},{"h":"Débit à gauche, crédit à droite","html":"<p>Tout compte a deux colonnes. <b>Débit</b> à gauche, <b>crédit</b> à droite. Le sens dépend de la nature du compte :</p>\n<ul>\n<li>Comptes d'<b>actif</b> (classes 2, 3, 5, clients) et de <b>charges</b> (classe 6) : ils <b>augmentent au débit</b>.</li>\n<li>Comptes de <b>passif</b> (classe 1, fournisseurs, dettes) et de <b>produits</b> (classe 7) : ils <b>augmentent au crédit</b>.</li>\n</ul>\n<div class=\"note\"><b>Mnémonique.</b> Débit = emploi (ce que l'opération donne ou utilise), à gauche comme l'actif. Crédit = ressource (d'où ça vient), à droite comme le passif.</div>\n<p>Le piège classique : la <b>banque</b>. Quand de l'argent <i>entre</i>, on <b>débite</b> 512. Quand il <i>sort</i>, on <b>crédite</b> 512. C'est l'inverse du relevé que vous envoie votre banque, car la banque tient le compte de son point de vue.</p>"},{"h":"La partie double","html":"<p>Toute opération touche au moins deux comptes et le <b>total des débits égale le total des crédits</b>. C'est ce qui garantit que le bilan reste équilibré.</p>\n<p>Exemple : achat de fournitures de bureau <span class=\"mono\">200 €</span> payé par chèque (on ignore la TVA pour l'instant).</p>","entry":[{"a":"6064","d":200,"c":0},{"a":"512","d":0,"c":200}],"lib":"Achat de fournitures, chèque n° 118"},{"h":"Lire une écriture","html":"<p>Dans un journal, les comptes débités sont écrits en premier et alignés à gauche ; les comptes crédités sont décalés (traditionnellement précédés de « à »). Les montants sont dans deux colonnes séparées.</p>\n<p>Exemple : les associés apportent <span class=\"mono\">30 000 €</span> versés sur le compte bancaire de la société.</p>","entry":[{"a":"512","d":30000,"c":0},{"a":"101","d":0,"c":30000}],"lib":"Apport en capital"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"tri","q":"À quelle classe appartient chaque compte ?","cats":["1 Capitaux","2 Immobilisations","3 Stocks","4 Tiers","5 Financiers","6 Charges","7 Produits"],"items":[["512 Banque",4],["401 Fournisseurs",3],["607 Achats de marchandises",5],["2183 Matériel informatique",1],["101 Capital",0],["707 Ventes de marchandises",6],["37 Stocks de marchandises",2],["164 Emprunts",0],["641 Rémunérations du personnel",5],["411 Clients",3]],"why":"Le premier chiffre du numéro donne la classe. Les emprunts (164) sont en classe 1 avec les capitaux : ce sont des ressources durables.","src":"PCG","fiab":"stable","id":"ue9-02-0","chap":"ue9-02"},{"type":"qcm","q":"Un compte d'actif (banque, matériel, clients) augmente :","opts":["Au débit","Au crédit","Des deux côtés","Cela dépend du montant"],"a":0,"why":"Les emplois augmentent au débit. Quand on reçoit de l'argent, 512 est débité ; quand on acquiert une machine, 2154 est débité.","src":"PCG","fiab":"stable","id":"ue9-02-1","chap":"ue9-02"},{"type":"qcm","q":"Un compte de produit (ventes) augmente :","opts":["Au débit","Au crédit","Jamais, il reste fixe","Au débit si le client paie comptant"],"a":1,"why":"Les produits sont des ressources : ils augmentent au crédit, comme le passif. Une vente crédite 707 (HT) et débite 411 ou 512.","src":"PCG","fiab":"stable","id":"ue9-02-2","chap":"ue9-02"},{"type":"qcm","q":"Un client règle sa facture par chèque. Quelle est l'écriture ?","opts":["Débit 411 Clients, crédit 512 Banque","Débit 512 Banque, crédit 411 Clients","Débit 707 Ventes, crédit 512 Banque","Débit 512 Banque, crédit 707 Ventes"],"a":1,"why":"L'argent entre : 512 est débité. La créance s'éteint : 411 (compte d'actif) diminue, donc est crédité. La vente (707) avait déjà été enregistrée lors de la facturation.","src":"PCG","fiab":"stable","id":"ue9-02-3","chap":"ue9-02"},{"type":"ecriture","q":"Achat de fournitures de bureau pour 350 €, payé par carte bancaire. On ignore la TVA.","lib":"Fournitures de bureau","palette":["6064","512","401","607"],"sol":[[{"a":"6064","d":350,"c":0},{"a":"512","d":0,"c":350}]],"why":"La charge (6064) augmente au débit. L'argent sort de la banque : 512 est crédité. Pas de 401 car le paiement est immédiat.","src":"PCG","fiab":"stable","id":"ue9-02-4","chap":"ue9-02"},{"type":"ecriture","q":"Les associés apportent 40 000 € en capital, versés sur le compte bancaire de la société.","lib":"Apport en capital","palette":["101","512","164","120"],"sol":[[{"a":"512","d":40000,"c":0},{"a":"101","d":0,"c":40000}]],"why":"La banque reçoit l'argent (débit 512). La ressource vient des associés : le capital (101) augmente au crédit.","src":"PCG","fiab":"stable","id":"ue9-02-5","chap":"ue9-02"},{"type":"ecriture","q":"La banque verse un emprunt de 15 000 € sur le compte de l'entreprise.","lib":"Déblocage de l'emprunt","palette":["164","512","661","101"],"sol":[[{"a":"512","d":15000,"c":0},{"a":"164","d":0,"c":15000}]],"why":"L'argent entre (débit 512). La dette envers la banque naît : 164 est crédité. Les intérêts (661) viendront plus tard, à chaque échéance.","src":"PCG","fiab":"stable","id":"ue9-02-6","chap":"ue9-02"},{"type":"qcm","q":"Le solde du compte 401 Fournisseurs est normalement :","opts":["Débiteur","Créditeur","Nul","Égal au solde de 411"],"a":1,"why":"401 est une dette : il augmente au crédit lors des factures reçues et diminue au débit lors des paiements. Il reste créditeur tant qu'on doit de l'argent.","src":"PCG","fiab":"stable","id":"ue9-02-7","chap":"ue9-02"},{"type":"qcm","q":"Les classes 6 et 7 alimentent :","opts":["Le bilan uniquement","Le compte de résultat","La déclaration de TVA","Le plan de trésorerie"],"a":1,"why":"Charges (6) et produits (7) constituent le compte de résultat. Leur solde, le résultat, est ensuite reporté au bilan dans les capitaux propres.","src":"PCG","fiab":"stable","id":"ue9-02-8","chap":"ue9-02"},{"type":"ecriture","q":"L'entreprise règle 2 300 € à un fournisseur par virement, pour une facture reçue le mois dernier.","lib":"Règlement fournisseur","palette":["401","512","607","44566"],"sol":[[{"a":"401","d":2300,"c":0},{"a":"512","d":0,"c":2300}]],"why":"La dette diminue : 401 est débité. L'argent sort : 512 est crédité. L'achat et la TVA ont été enregistrés lors de la réception de la facture, pas au paiement.","src":"PCG","fiab":"stable","id":"ue9-02-9","chap":"ue9-02"}]},{"id":"ue9-03","ue":"UE9","ordre":3,"title":"Achats, ventes et TVA","resume":"Factures d'achat et de vente, TVA collectée et déductible, réductions, déclaration.","duree":"45 min","niveau":1,"lecon":[{"h":"La TVA : collectée pour l'État, jamais une charge","html":"<p>L'entreprise facture la TVA à ses clients (<b>TVA collectée</b>, <code>44571</code>) et paie la TVA à ses fournisseurs (<b>TVA déductible</b>, <code>44566</code> sur biens et services, <code>44562</code> sur immobilisations). Elle reverse la différence à l'État.</p>\n<ul>\n<li>Taux normal <b>20 %</b> ; intermédiaire 10 % ; réduit 5,5 % ; particulier 2,1 %.</li>\n<li>HT × 1,20 = TTC. TTC ÷ 1,20 = HT. TVA = HT × 20 %.</li>\n</ul>\n<div class=\"note\"><b>Conséquence.</b> Les charges et les produits sont enregistrés <b>hors taxes</b>. Les comptes de tiers (401, 411) sont enregistrés <b>TTC</b>, car c'est ce qui se paie.</div>"},{"h":"Facture d'achat","html":"<p>Réception d'une facture de marchandises : <span class=\"mono\">4 000 € HT</span>, TVA 20 % = 800, TTC 4 800.</p>","entry":[{"a":"607","d":4000,"c":0},{"a":"44566","d":800,"c":0},{"a":"401","d":0,"c":4800}],"lib":"Facture n° A-512, fournisseur Nordal"},{"h":"Facture de vente","html":"<p>Vente de marchandises : <span class=\"mono\">10 000 € HT</span>, TVA 2 000, TTC 12 000. Le client paiera à 30 jours.</p>","entry":[{"a":"411","d":12000,"c":0},{"a":"707","d":0,"c":10000},{"a":"44571","d":0,"c":2000}],"lib":"Facture n° V-087, client Hekla"},{"h":"Réductions sur facture","html":"<ul>\n<li><b>Rabais, remise, ristourne</b> (réductions commerciales) <i>portées sur la facture</i> : on enregistre directement le <b>net commercial</b>. Aucun compte spécifique.</li>\n<li>Réductions commerciales accordées <i>après</i> la facture (avoir) : <code>609</code> chez l'acheteur, <code>709</code> chez le vendeur.</li>\n<li><b>Escompte de règlement</b> (réduction financière pour paiement rapide) : <code>665</code> Escomptes accordés (charge) chez le vendeur, <code>765</code> Escomptes obtenus (produit) chez l'acheteur. La TVA se calcule sur le net financier.</li>\n</ul>"},{"h":"La déclaration de TVA","html":"<p>Chaque mois : TVA à décaisser = TVA collectée − TVA déductible. On solde les comptes de TVA et on constate la dette en <code>44551</code>. Si la déductible dépasse la collectée, l'excédent va en <code>44567</code> Crédit de TVA.</p>\n<p>Exemple : collectée 9 600, déductible ABS 5 200, déductible immobilisations 1 400 → 3 000 à décaisser.</p>","entry":[{"a":"44571","d":9600,"c":0},{"a":"44566","d":0,"c":5200},{"a":"44562","d":0,"c":1400},{"a":"44551","d":0,"c":3000}],"lib":"Déclaration de TVA du mois"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"calc","q":"Un achat de 2 500 € HT au taux de 20 %. Quel est le montant de la TVA ?","a":500,"unit":"€","why":"2 500 × 20 % = 500 €. Le TTC est donc 3 000 €.","src":"PCG","fiab":"stable","id":"ue9-03-0","chap":"ue9-03"},{"type":"calc","q":"Une facture TTC de 1 800 € au taux de 20 %. Quel est le montant HT ?","a":1500,"unit":"€","why":"HT = TTC ÷ 1,20 = 1 800 ÷ 1,2 = 1 500 €. Erreur classique : retirer 20 % du TTC donne 1 440, ce qui est faux.","src":"PCG","fiab":"stable","id":"ue9-03-1","chap":"ue9-03"},{"type":"ecriture","q":"Réception d'une facture de marchandises : 4 000 € HT, TVA 20 %. Paiement à 30 jours.","lib":"Facture fournisseur","palette":["607","44566","401","512","44571"],"sol":[[{"a":"607","d":4000,"c":0},{"a":"44566","d":800,"c":0},{"a":"401","d":0,"c":4800}]],"why":"La charge HT au débit de 607, la TVA déductible au débit de 44566, la dette TTC au crédit de 401. La banque n'intervient qu'au paiement.","src":"PCG","fiab":"stable","id":"ue9-03-2","chap":"ue9-03"},{"type":"ecriture","q":"Vente de marchandises à un client : 10 000 € HT, TVA 20 %, règlement sous 30 jours.","lib":"Facture client","palette":["411","707","44571","512","44566"],"sol":[[{"a":"411","d":12000,"c":0},{"a":"707","d":0,"c":10000},{"a":"44571","d":0,"c":2000}]],"why":"La créance TTC au débit de 411. Le produit HT au crédit de 707. La TVA collectée au crédit de 44571 : c'est une dette envers l'État.","src":"PCG","fiab":"stable","id":"ue9-03-3","chap":"ue9-03"},{"type":"ecriture","q":"Règlement par virement de la facture fournisseur de 4 800 € TTC enregistrée précédemment.","lib":"Virement fournisseur","palette":["401","512","607","44566"],"sol":[[{"a":"401","d":4800,"c":0},{"a":"512","d":0,"c":4800}]],"why":"On éteint la dette (débit 401) et l'argent sort (crédit 512). Rien en charges ni en TVA : tout a été enregistré à la facture.","src":"PCG","fiab":"stable","id":"ue9-03-4","chap":"ue9-03"},{"type":"ecriture","q":"Vente de prestations de services : 2 000 € HT, TVA 20 %, à crédit.","lib":"Facture de prestation","palette":["411","706","707","44571"],"sol":[[{"a":"411","d":2400,"c":0},{"a":"706","d":0,"c":2000},{"a":"44571","d":0,"c":400}]],"why":"Les services se vendent en 706, pas en 707 (réservé aux marchandises revendues en l'état).","src":"PCG","fiab":"stable","id":"ue9-03-5","chap":"ue9-03"},{"type":"qcm","q":"Une remise de 10 % figure sur la facture d'achat. Comment l'enregistrer ?","opts":["Au crédit de 609 RRR obtenus","On enregistre directement le net commercial dans 607","Au crédit de 765 Escomptes obtenus","Au débit de 607 pour le montant de la remise"],"a":1,"why":"Une réduction commerciale sur la facture d'origine n'est jamais comptabilisée à part : on prend le net. 609 ne sert que pour les réductions obtenues après coup (avoir).","src":"PCG","fiab":"stable","id":"ue9-03-6","chap":"ue9-03"},{"type":"ecriture","q":"Facture d'achat de marchandises : brut 5 000 € HT, remise 10 %, TVA 20 % sur le net. À crédit.","lib":"Facture avec remise","palette":["607","609","44566","401"],"sol":[[{"a":"607","d":4500,"c":0},{"a":"44566","d":900,"c":0},{"a":"401","d":0,"c":5400}]],"why":"Net commercial = 5 000 − 500 = 4 500. TVA = 900. TTC = 5 400. La remise sur facture ne passe pas par 609.","src":"PCG","fiab":"stable","id":"ue9-03-7","chap":"ue9-03"},{"type":"qcm","q":"Le vendeur accorde un escompte de 2 % à un client qui paie comptant. Chez le vendeur, l'escompte est :","opts":["Un produit financier (765)","Une charge financière (665)","Une réduction du compte 707","Une charge d'exploitation (609)"],"a":1,"why":"L'escompte est une réduction financière : le vendeur renonce à une partie du prix pour être payé plus vite. C'est une charge financière pour lui (665) et un produit financier pour l'acheteur (765).","src":"PCG","fiab":"stable","id":"ue9-03-8","chap":"ue9-03"},{"type":"calc","q":"TVA collectée du mois : 9 600 €. TVA déductible sur biens et services : 5 200 €. TVA déductible sur immobilisations : 1 400 €. Quel est le montant de la TVA à décaisser ?","a":3000,"unit":"€","why":"9 600 − 5 200 − 1 400 = 3 000 €. Si le résultat avait été négatif, on aurait un crédit de TVA (44567) à reporter.","src":"PCG","fiab":"stable","id":"ue9-03-9","chap":"ue9-03"},{"type":"ecriture","q":"Enregistrez la déclaration de TVA : collectée 9 600 €, déductible ABS 5 200 €, déductible immobilisations 1 400 €.","lib":"Déclaration de TVA","palette":["44571","44566","44562","44551","44567","512"],"sol":[[{"a":"44571","d":9600,"c":0},{"a":"44566","d":0,"c":5200},{"a":"44562","d":0,"c":1400},{"a":"44551","d":0,"c":3000}]],"why":"On solde la collectée (débit 44571) et les déductibles (crédit 44566 et 44562), la différence devient une dette envers l'État (crédit 44551). Le paiement viendra ensuite : débit 44551, crédit 512.","src":"PCG","fiab":"stable","id":"ue9-03-10","chap":"ue9-03"}]},{"id":"ue9-04","ue":"UE9","ordre":4,"title":"Trésorerie, charges courantes et paie","resume":"Encaissements, décaissements, services extérieurs, salaires et échéances d'emprunt.","duree":"40 min","niveau":1,"lecon":[{"h":"Les flux de trésorerie","html":"<p>Chèque, virement, carte : <code>512</code> Banque. Espèces : <code>530</code> Caisse. Un encaissement client débite 512 et crédite 411. Un paiement fournisseur débite 401 et crédite 512.</p>\n<p>Pour un mouvement entre la caisse et la banque, le PCG recommande le compte de passage <code>580</code> Virements internes, qui évite les doubles comptages. En exercice simple, on passe souvent directement : débit 530, crédit 512 pour un retrait d'espèces.</p>"},{"h":"Les services extérieurs (61 / 62)","html":"<ul>\n<li><code>613</code> Locations, <code>615</code> Entretien, <code>616</code> Assurances (sans TVA), <code>6226</code> Honoraires, <code>623</code> Publicité, <code>626</code> Téléphone et poste, <code>6061</code> Électricité.</li>\n<li>Même logique que les achats : charge HT au débit, TVA déductible au débit, 401 ou 512 au crédit selon que la facture est réglée plus tard ou immédiatement.</li>\n</ul>\n<p>Exemple : loyer du mois, <span class=\"mono\">1 200 € HT</span> + 240 de TVA, prélevé en banque.</p>","entry":[{"a":"613","d":1200,"c":0},{"a":"44566","d":240,"c":0},{"a":"512","d":0,"c":1440}],"lib":"Loyer, prélèvement"},{"h":"La paie, version simplifiée","html":"<p>Le salaire <b>brut</b> est la charge de rémunération (<code>641</code>). On en retient les <b>cotisations salariales</b> dues aux organismes (<code>431</code>) ; le reste est le <b>net à payer</b> (<code>421</code>). L'employeur supporte en plus des <b>cotisations patronales</b> (<code>645</code>), également dues à <code>431</code>.</p>\n<p>Exemple : bruts 20 000, cotisations salariales 4 400, cotisations patronales 8 400.</p>","entry":[{"a":"641","d":20000,"c":0},{"a":"645","d":8400,"c":0},{"a":"421","d":0,"c":15600},{"a":"431","d":0,"c":12800}],"lib":"Paie du mois"},{"h":"Les échéances d'emprunt","html":"<p>Chaque échéance mélange deux choses : le <b>remboursement du capital</b>, qui réduit la dette (débit <code>164</code>), et les <b>intérêts</b>, qui sont une charge financière (débit <code>661</code>). Le total sort de la banque.</p>","entry":[{"a":"164","d":2000,"c":0},{"a":"661","d":300,"c":0},{"a":"512","d":0,"c":2300}],"lib":"Échéance d'emprunt"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"ecriture","q":"Encaissement d'un chèque de 3 600 € d'un client, en règlement de sa facture.","lib":"Encaissement client","palette":["512","411","707","530"],"sol":[[{"a":"512","d":3600,"c":0},{"a":"411","d":0,"c":3600}]],"why":"L'argent entre (débit 512), la créance s'éteint (crédit 411).","src":"PCG","fiab":"stable","id":"ue9-04-0","chap":"ue9-04"},{"type":"ecriture","q":"Facture de loyer : 1 200 € HT, TVA 20 %, prélevée directement sur le compte bancaire.","lib":"Loyer","palette":["613","44566","512","401"],"sol":[[{"a":"613","d":1200,"c":0},{"a":"44566","d":240,"c":0},{"a":"512","d":0,"c":1440}]],"why":"Charge HT en 613, TVA déductible en 44566, et comme le paiement est immédiat, la contrepartie est la banque et non 401.","src":"PCG","fiab":"stable","id":"ue9-04-1","chap":"ue9-04"},{"type":"ecriture","q":"Prime d'assurance annuelle de 900 € payée par virement. L'assurance n'est pas soumise à TVA.","lib":"Assurance","palette":["616","44566","512","613"],"sol":[[{"a":"616","d":900,"c":0},{"a":"512","d":0,"c":900}]],"why":"Les primes d'assurance sont hors champ de la TVA : aucune TVA déductible à enregistrer.","src":"PCG","fiab":"stable","id":"ue9-04-2","chap":"ue9-04"},{"type":"ecriture","q":"Paie du mois : salaires bruts 20 000 €, cotisations salariales 4 400 €, cotisations patronales 8 400 €. Enregistrez l'ensemble en une seule écriture.","lib":"Paie","palette":["641","645","421","431","512"],"sol":[[{"a":"641","d":20000,"c":0},{"a":"645","d":8400,"c":0},{"a":"421","d":0,"c":15600},{"a":"431","d":0,"c":12800}],[{"a":"641","d":20000,"c":0},{"a":"645","d":8400,"c":0},{"a":"421","d":0,"c":15600},{"a":"431","d":0,"c":4400},{"a":"431","d":0,"c":8400}]],"why":"Net à payer = 20 000 − 4 400 = 15 600 (crédit 421). Dette envers les organismes = 4 400 + 8 400 = 12 800 (crédit 431). Charges : 641 pour le brut, 645 pour le patronal. Total débit = 28 400 = total crédit.","src":"PCG","fiab":"stable","id":"ue9-04-3","chap":"ue9-04"},{"type":"qcm","q":"Le net à payer aux salariés est enregistré :","opts":["Au débit de 641","Au crédit de 421","Au crédit de 431","Au débit de 512"],"a":1,"why":"421 Personnel – Rémunérations dues est une dette envers les salariés, créditée à la paie et débitée au virement des salaires.","src":"PCG","fiab":"stable","id":"ue9-04-4","chap":"ue9-04"},{"type":"ecriture","q":"Échéance d'emprunt prélevée en banque : 2 000 € de capital et 300 € d'intérêts.","lib":"Échéance d'emprunt","palette":["164","661","512","1688"],"sol":[[{"a":"164","d":2000,"c":0},{"a":"661","d":300,"c":0},{"a":"512","d":0,"c":2300}]],"why":"Le capital remboursé réduit la dette (débit 164), les intérêts sont une charge financière (débit 661), le tout sort de la banque (crédit 512).","src":"PCG","fiab":"stable","id":"ue9-04-5","chap":"ue9-04"},{"type":"calc","q":"Emprunt de 100 000 € au taux annuel de 3 %. Quel est le montant des intérêts de la première année ?","a":3000,"unit":"€","why":"100 000 × 3 % = 3 000 €. Les années suivantes, les intérêts se calculent sur le capital restant dû, donc ils diminuent.","src":"PCG","fiab":"stable","id":"ue9-04-6","chap":"ue9-04"},{"type":"qcm","q":"Retrait de 500 € d'espèces à la banque pour alimenter la caisse. Écriture directe :","opts":["Débit 512, crédit 530","Débit 530, crédit 512","Débit 530, crédit 6064","Débit 580, crédit 530"],"a":1,"why":"La caisse reçoit (débit 530), la banque donne (crédit 512). Avec le compte de passage, on ferait 580/512 puis 530/580.","src":"PCG","fiab":"stable","id":"ue9-04-7","chap":"ue9-04"},{"type":"ecriture","q":"Facture de l'expert-comptable : honoraires 1 500 € HT, TVA 20 %, à payer le mois prochain.","lib":"Honoraires","palette":["6226","44566","401","512"],"sol":[[{"a":"6226","d":1500,"c":0},{"a":"44566","d":300,"c":0},{"a":"401","d":0,"c":1800}]],"why":"Honoraires en 6226, TVA déductible, et dette fournisseur puisque le paiement est différé.","src":"PCG","fiab":"stable","id":"ue9-04-8","chap":"ue9-04"}]},{"id":"ue9-05","ue":"UE9","ordre":5,"title":"Immobilisations et amortissements","resume":"Acquisition, amortissement linéaire et dégressif, valeur nette comptable, cession.","duree":"50 min","niveau":1,"lecon":[{"h":"Qu'est-ce qu'une immobilisation ?","html":"<p>Un bien <b>durable</b> (utilisé plus d'un an) que l'entreprise <b>utilise</b> plutôt que de le vendre : machine, véhicule, ordinateur, mobilier, logiciel. Par tolérance fiscale, le petit matériel de moins de 500 € HT peut passer en charges.</p>\n<p>Le <b>coût d'acquisition</b> = prix d'achat HT + frais directs (transport, installation, mise en service) − réductions commerciales. La TVA va en <code>44562</code> et la dette en <code>404</code> Fournisseurs d'immobilisations.</p>","entry":[{"a":"2154","d":24000,"c":0},{"a":"44562","d":4800,"c":0},{"a":"404","d":0,"c":28800}],"lib":"Acquisition d'une machine"},{"h":"L'amortissement linéaire","html":"<p>L'amortissement répartit le coût du bien sur sa <b>durée d'utilité</b>. C'est une <b>charge calculée</b> (pas de sortie d'argent) : débit <code>6811</code>, crédit <code>28xx</code>.</p>\n<ul>\n<li>Taux linéaire = 1 ÷ durée (5 ans → 20 %).</li>\n<li>Annuité = base amortissable × taux. Base = coût − valeur résiduelle éventuelle.</li>\n<li>La première année, <b>prorata temporis</b> à partir de la <b>mise en service</b> : en mois (9/12) ou en jours sur 360.</li>\n<li>Le dernier exercice récupère le complément.</li>\n</ul>\n<p>Exemple : machine 24 000 €, 5 ans, mise en service le 1er janvier → 4 800 € par an.</p>","entry":[{"a":"6811","d":4800,"c":0},{"a":"28154","d":0,"c":4800}],"lib":"Dotation annuelle"},{"h":"L'amortissement dégressif (fiscal)","html":"<p>Autorisé pour certains biens neufs (matériel industriel notamment). Taux dégressif = taux linéaire × coefficient : <b>1,25</b> (3-4 ans), <b>1,75</b> (5-6 ans), <b>2,25</b> (plus de 6 ans). Il s'applique à la <b>valeur nette comptable</b> de début d'exercice, et le prorata se compte en mois depuis le <b>1er jour du mois d'acquisition</b>.</p>\n<p>Quand le taux linéaire sur la durée restante dépasse le taux dégressif, on bascule en linéaire sur le reste.</p>"},{"h":"VNC et cession","html":"<p><b>Valeur nette comptable</b> = coût − amortissements cumulés. Quand on vend une immobilisation, deux écritures :</p>\n<ul>\n<li>Le <b>prix de cession</b> HT en produit exceptionnel <code>775</code>, TVA collectée, créance en <code>462</code> (ou 512).</li>\n<li>La <b>sortie du bien</b> : on solde le compte d'immobilisation (crédit 2xx pour le coût) et son amortissement (débit 28xx), la différence (la VNC) passe en charge <code>675</code>.</li>\n</ul>\n<p>Avant cela, on comptabilise la dotation complémentaire du 1er janvier à la date de cession.</p>","entry":[{"a":"675","d":6000,"c":0},{"a":"28182","d":24000,"c":0},{"a":"2182","d":0,"c":30000}],"lib":"Sortie du véhicule cédé"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"qcm","q":"Un ordinateur acheté 1 500 € HT, destiné à être utilisé 4 ans, est :","opts":["Une charge (6064)","Une immobilisation (2183)","Un stock (37)","Une charge constatée d'avance (486)"],"a":1,"why":"Bien durable utilisé par l'entreprise et au-dessus du seuil de 500 € HT : c'est une immobilisation, amortie sur sa durée d'utilité.","src":"PCG","fiab":"stable","id":"ue9-05-0","chap":"ue9-05"},{"type":"ecriture","q":"Acquisition d'une machine industrielle : 24 000 € HT, TVA 20 %, paiement à 60 jours.","lib":"Acquisition machine","palette":["2154","44562","44566","404","401"],"sol":[[{"a":"2154","d":24000,"c":0},{"a":"44562","d":4800,"c":0},{"a":"404","d":0,"c":28800}]],"why":"Immobilisation au débit de 2154, TVA sur immobilisations en 44562 (pas 44566), dette envers le fournisseur d'immobilisations en 404 (pas 401).","src":"PCG","fiab":"stable","id":"ue9-05-1","chap":"ue9-05"},{"type":"calc","q":"Machine de 24 000 €, amortie en linéaire sur 5 ans, mise en service le 1er janvier N. Dotation de l'exercice N ?","a":4800,"unit":"€","why":"Taux = 1/5 = 20 %. 24 000 × 20 % = 4 800 €. Année complète, pas de prorata.","src":"PCG","fiab":"stable","id":"ue9-05-2","chap":"ue9-05"},{"type":"calc","q":"Véhicule de 30 000 €, linéaire sur 5 ans, mis en service le 1er avril N. Dotation de l'exercice N (prorata en mois) ?","a":4500,"unit":"€","why":"30 000 × 20 % × 9/12 = 4 500 €. Neuf mois d'avril à décembre inclus.","src":"PCG","fiab":"stable","id":"ue9-05-3","chap":"ue9-05"},{"type":"ecriture","q":"Enregistrez la dotation annuelle de 4 800 € sur la machine industrielle.","lib":"Dotation aux amortissements","palette":["6811","28154","2154","512"],"sol":[[{"a":"6811","d":4800,"c":0},{"a":"28154","d":0,"c":4800}]],"why":"La charge calculée au débit de 6811, le cumul d'amortissement au crédit de 28154. Le compte 2154 reste au coût d'acquisition : on ne le diminue jamais directement.","src":"PCG","fiab":"stable","id":"ue9-05-4","chap":"ue9-05"},{"type":"calc","q":"Machine de 24 000 €, linéaire 5 ans depuis le 1er janvier N. Quelle est la valeur nette comptable au 31 décembre N+2 ?","a":9600,"unit":"€","why":"Trois dotations de 4 800 = 14 400 cumulés. VNC = 24 000 − 14 400 = 9 600 €.","src":"PCG","fiab":"stable","id":"ue9-05-5","chap":"ue9-05"},{"type":"calc","q":"Matériel industriel de 50 000 € acquis le 1er janvier, durée 5 ans, amortissement dégressif. Première annuité ?","a":17500,"unit":"€","why":"Taux linéaire 20 % × coefficient 1,75 = 35 %. 50 000 × 35 % = 17 500 €. La 2e annuité se calculera sur la VNC de 32 500.","src":"PCG","fiab":"stable","id":"ue9-05-6","chap":"ue9-05"},{"type":"qcm","q":"La dotation aux amortissements est :","opts":["Une charge décaissée","Une charge calculée, sans sortie de trésorerie","Un produit exceptionnel","Une dette fiscale"],"a":1,"why":"Aucun paiement n'a lieu : la trésorerie est sortie à l'achat. La dotation ne fait qu'étaler ce coût sur les exercices d'utilisation. C'est pourquoi on la réintègre dans la CAF.","src":"PCG","fiab":"stable","id":"ue9-05-7","chap":"ue9-05"},{"type":"calc","q":"Un bien coûte 20 000 € et a une valeur résiduelle estimée de 2 000 €. Quelle est la base amortissable ?","a":18000,"unit":"€","why":"Base = coût − valeur résiduelle = 18 000 €. Cette base n'est retenue que si la valeur résiduelle est significative et mesurable.","src":"PCG","fiab":"stable","id":"ue9-05-8","chap":"ue9-05"},{"type":"ecriture","q":"Cession d'un véhicule : coût 30 000 €, amortissements cumulés (y compris la dotation complémentaire) 24 000 €. Enregistrez la sortie du bien de l'actif.","lib":"Sortie d'immobilisation","palette":["675","28182","2182","775","462"],"sol":[[{"a":"675","d":6000,"c":0},{"a":"28182","d":24000,"c":0},{"a":"2182","d":0,"c":30000}]],"why":"On solde l'amortissement (débit 28182) et le compte d'immobilisation (crédit 2182). La VNC de 6 000 devient une charge exceptionnelle (675). Le prix de vente fait l'objet d'une écriture séparée en 775.","src":"PCG","fiab":"stable","id":"ue9-05-9","chap":"ue9-05"},{"type":"qcm","q":"Le véhicule précédent est vendu 8 000 € HT. Où va le prix de cession ?","opts":["Au crédit de 2182","Au crédit de 775 Produits des cessions d'éléments d'actif","Au crédit de 707 Ventes de marchandises","Au crédit de 28182"],"a":1,"why":"Vendre une immobilisation n'est pas l'activité courante : le produit est exceptionnel (775). Ici, 8 000 de produit contre 6 000 de VNC : plus-value de 2 000.","src":"PCG","fiab":"stable","id":"ue9-05-10","chap":"ue9-05"}]},{"id":"ue9-06","ue":"UE9","ordre":6,"title":"Stocks, dépréciations et provisions","resume":"Variation de stock, créances douteuses, dépréciations d'actif et provisions pour risques.","duree":"45 min","niveau":1,"lecon":[{"h":"L'inventaire intermittent","html":"<p>En cours d'année, les achats vont en <code>607</code> et le compte de stock <code>37</code> ne bouge pas. À la clôture, on <b>annule le stock initial</b> et on <b>constate le stock final</b> compté physiquement, via le compte <code>6037</code> Variation des stocks.</p>","entry":[{"a":"6037","d":40000,"c":0},{"a":"37","d":0,"c":40000}],"lib":"Annulation du stock initial"},{"h":"Lire la variation de stock","html":"<p>Variation (6037) = stock initial − stock final. Si le stock a augmenté, 6037 est <b>créditeur</b> : il diminue les charges, donc augmente le résultat. Logique : une partie des achats n'a pas été consommée.</p>\n<p><b>Coût d'achat des marchandises vendues</b> = achats + stock initial − stock final.</p>\n<p>Pour les produits finis, on utilise <code>355</code> et <code>7135</code> (production stockée), avec le signe inverse : stock final − stock initial.</p>","entry":[{"a":"37","d":55000,"c":0},{"a":"6037","d":0,"c":55000}],"lib":"Constatation du stock final"},{"h":"Dépréciations","html":"<p>Une <b>dépréciation</b> constate une perte de valeur <b>probable mais non définitive</b> d'un élément d'actif. C'est une charge calculée (<code>68…</code>) avec en contrepartie un compte en moins de l'actif (<code>29</code>, <code>39</code>, <code>49</code>).</p>\n<ul>\n<li>Stock : <code>68173</code> / <code>397</code>.</li>\n<li>Client en difficulté : on reclasse d'abord la créance <b>TTC</b> en <code>416</code> Clients douteux, puis on déprécie le montant <b>HT</b> probablement perdu : <code>68174</code> / <code>491</code>. La TVA n'est pas dépréciée car elle sera récupérée.</li>\n<li>Quand la situation s'améliore ou se dénoue : <b>reprise</b> <code>491</code> / <code>78174</code>.</li>\n</ul>"},{"h":"Provisions et créances perdues","html":"<p>Une <b>provision</b> (classe 15) constate une <b>dette probable</b> : litige, garantie, amende. C'est un passif, pas une correction d'actif. Débit <code>6815</code>, crédit <code>1511</code>.</p>\n<p>Quand une créance est <b>définitivement perdue</b>, on sort le client douteux : la perte HT en <code>654</code>, la TVA récupérée au débit de <code>44571</code>, le TTC au crédit de <code>416</code>. Puis on reprend la dépréciation devenue sans objet.</p>","entry":[{"a":"654","d":2000,"c":0},{"a":"44571","d":400,"c":0},{"a":"416","d":0,"c":2400}],"lib":"Créance irrécouvrable"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"calc","q":"Achats de marchandises de l'exercice : 300 000 €. Stock initial : 40 000 €. Stock final : 55 000 €. Coût d'achat des marchandises vendues ?","a":285000,"unit":"€","why":"300 000 + 40 000 − 55 000 = 285 000 €. Les 15 000 d'augmentation de stock n'ont pas été vendus, ils restent à l'actif.","src":"PCG","fiab":"stable","id":"ue9-06-0","chap":"ue9-06"},{"type":"ecriture","q":"À la clôture, annulez le stock initial de marchandises de 40 000 €.","lib":"Annulation stock initial","palette":["6037","37","607","355"],"sol":[[{"a":"6037","d":40000,"c":0},{"a":"37","d":0,"c":40000}]],"why":"Le stock initial disparaît de l'actif (crédit 37) et devient une charge via la variation (débit 6037).","src":"PCG","fiab":"stable","id":"ue9-06-1","chap":"ue9-06"},{"type":"ecriture","q":"Constatez le stock final de marchandises compté à l'inventaire : 55 000 €.","lib":"Stock final","palette":["37","6037","607","7135"],"sol":[[{"a":"37","d":55000,"c":0},{"a":"6037","d":0,"c":55000}]],"why":"Le stock final entre à l'actif (débit 37) et vient en déduction des charges (crédit 6037). Solde de 6037 : 40 000 − 55 000 = −15 000, créditeur.","src":"PCG","fiab":"stable","id":"ue9-06-2","chap":"ue9-06"},{"type":"qcm","q":"Le stock final est supérieur au stock initial. Effet sur le résultat :","opts":["Il diminue le résultat","Il augmente le résultat","Aucun effet","Il augmente la TVA à décaisser"],"a":1,"why":"6037 est créditeur : les charges de l'exercice diminuent d'autant, donc le résultat augmente. Une partie des achats est reportée sur l'exercice suivant.","src":"PCG","fiab":"stable","id":"ue9-06-3","chap":"ue9-06"},{"type":"calc","q":"Un client doit 3 600 € TTC (TVA 20 %) et risque de ne payer que la moitié. Montant de la dépréciation à constater ?","a":1500,"unit":"€","why":"Base HT = 3 600 ÷ 1,2 = 3 000. Perte probable 50 % → 1 500 €. La TVA n'est pas dépréciée : si la créance est perdue, l'État la rembourse.","src":"PCG","fiab":"stable","id":"ue9-06-4","chap":"ue9-06"},{"type":"ecriture","q":"Reclassez d'abord la créance de 3 600 € TTC de ce client en client douteux.","lib":"Client douteux","palette":["416","411","491","654"],"sol":[[{"a":"416","d":3600,"c":0},{"a":"411","d":0,"c":3600}]],"why":"Le reclassement se fait pour le montant TTC : la créance ne change pas de montant, seulement de catégorie.","src":"PCG","fiab":"stable","id":"ue9-06-5","chap":"ue9-06"},{"type":"ecriture","q":"Enregistrez la dépréciation de 1 500 € sur ce client douteux.","lib":"Dépréciation client","palette":["68174","491","416","654"],"sol":[[{"a":"68174","d":1500,"c":0},{"a":"491","d":0,"c":1500}]],"why":"Charge calculée au débit de 68174, dépréciation au crédit de 491 (qui viendra en moins des créances à l'actif du bilan).","src":"PCG","fiab":"stable","id":"ue9-06-6","chap":"ue9-06"},{"type":"qcm","q":"Quelle est la différence entre une dépréciation et une provision ?","opts":["Aucune, ce sont des synonymes","La dépréciation diminue la valeur d'un actif ; la provision constate un passif probable","La provision concerne les stocks, la dépréciation les clients","La dépréciation est définitive, la provision est probable"],"a":1,"why":"Dépréciation = correction en moins d'un élément d'actif (comptes 29, 39, 49). Provision = dette probable (classe 15). Les deux sont des charges calculées, réversibles par reprise.","src":"PCG","fiab":"stable","id":"ue9-06-7","chap":"ue9-06"},{"type":"ecriture","q":"Un litige avec un ancien salarié risque de coûter 5 000 €. Enregistrez la provision à la clôture.","lib":"Provision pour litige","palette":["6815","1511","491","421"],"sol":[[{"a":"6815","d":5000,"c":0},{"a":"1511","d":0,"c":5000}]],"why":"Dotation aux provisions d'exploitation au débit, provision pour litiges (passif) au crédit.","src":"PCG","fiab":"stable","id":"ue9-06-8","chap":"ue9-06"},{"type":"ecriture","q":"Un client douteux de 2 400 € TTC (HT 2 000, TVA 400) est en liquidation : la créance est définitivement perdue. Enregistrez la perte.","lib":"Créance irrécouvrable","palette":["654","44571","416","491","68174"],"sol":[[{"a":"654","d":2000,"c":0},{"a":"44571","d":400,"c":0},{"a":"416","d":0,"c":2400}]],"why":"La perte HT en charge (654), la TVA est récupérée en diminuant la TVA collectée (débit 44571), le client douteux est soldé pour le TTC. La dépréciation existante sera ensuite reprise (491 / 78174).","src":"PCG","fiab":"stable","id":"ue9-06-9","chap":"ue9-06"},{"type":"qcm","q":"Une dépréciation de stock se comptabilise :","opts":["Débit 68173, crédit 397","Débit 37, crédit 6037","Débit 397, crédit 68173","Débit 6037, crédit 397"],"a":0,"why":"Charge calculée au débit (68173), compte de dépréciation au crédit (397). Le stock lui-même (37) reste à sa valeur d'inventaire.","src":"PCG","fiab":"stable","id":"ue9-06-10","chap":"ue9-06"}]},{"id":"ue9-07","ue":"UE9","ordre":7,"title":"Clôture : régularisations et résultat","resume":"Charges à payer, produits à recevoir, charges et produits constatés d'avance, détermination et affectation du résultat.","duree":"50 min","niveau":1,"lecon":[{"h":"Le principe d'indépendance des exercices","html":"<p>Chaque exercice doit porter <b>toutes</b> ses charges et <b>tous</b> ses produits, et <b>rien que</b> les siens. À la clôture, on ajuste donc :</p>\n<ul>\n<li><b>Charges à payer</b> : consommées en N, pas encore facturées. Facture non parvenue : débit 6xx, débit <code>44586</code>, crédit <code>408</code>.</li>\n<li><b>Produits à recevoir</b> : livrés en N, pas encore facturés. Facture à établir : débit <code>418</code>, crédit 7xx, crédit <code>44587</code>.</li>\n<li><b>Charges constatées d'avance</b> (<code>486</code>) : déjà enregistrées mais concernant N+1. Débit 486, crédit 6xx (HT).</li>\n<li><b>Produits constatés d'avance</b> (<code>487</code>) : déjà facturés mais concernant N+1. Débit 7xx, crédit 487.</li>\n<li><b>Intérêts courus</b> sur emprunt : débit <code>661</code>, crédit <code>1688</code>.</li>\n</ul>\n<p>Toutes ces écritures sont <b>contre-passées</b> au 1er jour de N+1 pour que la facture réelle s'enregistre normalement.</p>"},{"h":"Deux exemples","html":"<p>Loyer trimestriel de 3 000 € payé le 1er décembre N pour décembre, janvier et février : 2 000 € concernent N+1.</p>","entry":[{"a":"486","d":2000,"c":0},{"a":"613","d":0,"c":2000}],"lib":"Charge constatée d'avance"},{"h":"","html":"<p>Électricité de décembre consommée, facture non reçue : estimation 800 € HT, TVA 160.</p>","entry":[{"a":"6061","d":800,"c":0},{"a":"44586","d":160,"c":0},{"a":"408","d":0,"c":960}],"lib":"Facture non parvenue"},{"h":"Déterminer le résultat","html":"<p>Après les écritures d'inventaire, on dresse la <b>balance</b> (liste de tous les comptes avec leurs soldes ; total débits = total crédits). On solde ensuite tous les comptes 6 et 7 dans <code>120</code> (bénéfice) ou <code>129</code> (perte). Les comptes de bilan (1 à 5) sont reportés à nouveau en N+1.</p>"},{"h":"Affecter le résultat (sociétés)","html":"<p>L'assemblée décide de l'affectation du bénéfice : <b>réserve légale</b> (<code>1061</code>) obligatoire à 5 % du bénéfice jusqu'à ce qu'elle atteigne 10 % du capital, puis réserves facultatives, <b>dividendes</b> (<code>457</code>) et <b>report à nouveau</b> (<code>110</code>).</p>"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"ecriture","q":"Le 1er décembre N, un loyer trimestriel de 3 000 € (décembre à février) a été enregistré en 613. Passez l'écriture de régularisation au 31 décembre.","lib":"Charge constatée d'avance","palette":["486","613","487","408"],"sol":[[{"a":"486","d":2000,"c":0},{"a":"613","d":0,"c":2000}]],"why":"Janvier et février concernent N+1 : 2/3 × 3 000 = 2 000 € sortent des charges de N (crédit 613) et vont à l'actif en 486.","src":"PCG","fiab":"stable","id":"ue9-07-0","chap":"ue9-07"},{"type":"ecriture","q":"L'électricité de décembre (800 € HT, TVA 160 €) a été consommée mais la facture n'est pas arrivée. Régularisez.","lib":"Facture non parvenue","palette":["6061","44586","44566","408","401"],"sol":[[{"a":"6061","d":800,"c":0},{"a":"44586","d":160,"c":0},{"a":"408","d":0,"c":960}]],"why":"Charge à payer : la charge est bien de N (débit 6061). La TVA en attente va en 44586 (pas 44566, car non encore déductible sans facture). La dette en 408.","src":"PCG","fiab":"stable","id":"ue9-07-1","chap":"ue9-07"},{"type":"ecriture","q":"Une prestation de 1 500 € HT (TVA 20 %) a été réalisée en décembre et sera facturée en janvier. Régularisez.","lib":"Facture à établir","palette":["418","411","706","44587","44571"],"sol":[[{"a":"418","d":1800,"c":0},{"a":"706","d":0,"c":1500},{"a":"44587","d":0,"c":300}]],"why":"Produit à recevoir : le produit appartient à N (crédit 706). La créance en 418, la TVA en attente en 44587.","src":"PCG","fiab":"stable","id":"ue9-07-2","chap":"ue9-07"},{"type":"calc","q":"Emprunt de 60 000 € à 4 %, intérêts payés chaque 30 avril pour les 12 mois écoulés. Intérêts courus au 31 décembre ?","a":1600,"unit":"€","why":"Du 1er mai au 31 décembre : 8 mois. 60 000 × 4 % × 8/12 = 1 600 €.","src":"PCG","fiab":"stable","id":"ue9-07-3","chap":"ue9-07"},{"type":"ecriture","q":"Enregistrez ces intérêts courus de 1 600 € au 31 décembre.","lib":"Intérêts courus","palette":["661","1688","164","512"],"sol":[[{"a":"661","d":1600,"c":0},{"a":"1688","d":0,"c":1600}]],"why":"La charge d'intérêts de N au débit de 661, la dette d'intérêts non encore payés au crédit de 1688.","src":"PCG","fiab":"stable","id":"ue9-07-4","chap":"ue9-07"},{"type":"qcm","q":"Un produit constaté d'avance figure :","opts":["À l'actif du bilan","Au passif du bilan","Dans les produits de l'exercice","Dans les charges de l'exercice"],"a":1,"why":"487 est une dette : l'entreprise a facturé quelque chose qu'elle doit encore fournir. Symétriquement, 486 est un actif.","src":"PCG","fiab":"stable","id":"ue9-07-5","chap":"ue9-07"},{"type":"qcm","q":"Le 1er janvier N+1, que deviennent les écritures de régularisation ?","opts":["Elles sont conservées jusqu'à la facture","Elles sont contre-passées (écriture inverse)","Elles sont transférées en 120","Elles sont annulées par l'expert-comptable à la clôture suivante"],"a":1,"why":"On passe l'écriture inverse au premier jour de N+1. Ainsi la facture réelle, quand elle arrive, s'enregistre normalement sans doublon.","src":"PCG","fiab":"stable","id":"ue9-07-6","chap":"ue9-07"},{"type":"calc","q":"Total des comptes de classe 7 : 540 000 €. Total des comptes de classe 6 : 498 000 €. Résultat de l'exercice ?","a":42000,"unit":"€","why":"540 000 − 498 000 = 42 000 € de bénéfice, porté au crédit du compte 120.","src":"PCG","fiab":"stable","id":"ue9-07-7","chap":"ue9-07"},{"type":"qcm","q":"Un solde créditeur du compte 120 signifie :","opts":["Une perte","Un bénéfice","Une dette fiscale","Un crédit de TVA"],"a":1,"why":"120 reçoit au crédit la somme des produits et au débit la somme des charges. Créditeur = produits supérieurs aux charges = bénéfice.","src":"PCG","fiab":"stable","id":"ue9-07-8","chap":"ue9-07"},{"type":"calc","q":"Bénéfice 42 000 €, capital 100 000 €, réserve légale déjà constituée 6 000 €. Dotation à la réserve légale ?","a":2100,"unit":"€","why":"5 % × 42 000 = 2 100 €. Le plafond (10 % du capital = 10 000) n'est pas atteint (6 000 + 2 100 = 8 100), la dotation est donc entière.","src":"PCG","fiab":"stable","id":"ue9-07-9","chap":"ue9-07"},{"type":"qcm","q":"La balance est :","opts":["Le document qui remplace le bilan dans les petites entreprises","La liste de tous les comptes avec leurs totaux et soldes, débits = crédits","La liste des seules dettes et créances","Le relevé bancaire rapproché"],"a":1,"why":"La balance vérifie la partie double avant d'établir le bilan (classes 1-5) et le compte de résultat (classes 6-7).","src":"PCG","fiab":"stable","id":"ue9-07-10","chap":"ue9-07"}]},{"id":"ue6-01","ue":"UE6","ordre":1,"title":"Lire les comptes : vers le DSCG","resume":"Soldes intermédiaires de gestion, CAF, bilan fonctionnel : les premiers outils d'analyse financière.","duree":"40 min","niveau":1,"lecon":[{"h":"Les soldes intermédiaires de gestion (SIG)","html":"<p>Le compte de résultat se relit en cascade pour comprendre d'où vient la performance :</p>\n<ul>\n<li><b>Marge commerciale</b> = ventes de marchandises − coût d'achat des marchandises vendues (achats ± variation de stock).</li>\n<li><b>Production de l'exercice</b> = production vendue + stockée + immobilisée.</li>\n<li><b>Valeur ajoutée</b> = marge commerciale + production − consommations en provenance des tiers (achats de matières, services extérieurs 61/62).</li>\n<li><b>Excédent brut d'exploitation (EBE)</b> = VA + subventions d'exploitation − impôts et taxes − charges de personnel. C'est la trésorerie potentielle de l'exploitation, avant amortissements et financement.</li>\n<li><b>Résultat d'exploitation</b> = EBE + reprises et autres produits − dotations et autres charges.</li>\n<li>Puis résultat financier, résultat exceptionnel, impôt, résultat net.</li>\n</ul>"},{"h":"La capacité d'autofinancement (CAF)","html":"<p>La CAF mesure les <b>ressources internes</b> dégagées par l'activité : ce qui reste pour investir, rembourser, distribuer. Méthode additive :</p>\n<p class=\"mono\">CAF = résultat net + dotations (68) − reprises (78) − produits des cessions (775) + valeurs comptables des actifs cédés (675)</p>\n<p>On neutralise les charges et produits <b>calculés</b> (non monétaires) et les éléments de cession, qui relèvent de l'investissement.</p>"},{"h":"Le bilan fonctionnel","html":"<p>On reclasse le bilan par fonction, en <b>valeurs brutes</b> (les amortissements et dépréciations passent en ressources stables).</p>\n<ul>\n<li><b>Fonds de roulement net global</b> (FRNG) = ressources stables (capitaux propres + amortissements + dettes financières) − emplois stables (immobilisations brutes).</li>\n<li><b>Besoin en fonds de roulement</b> (BFR) = actif circulant (stocks, créances) − dettes circulantes (fournisseurs, fiscales, sociales).</li>\n<li><b>Trésorerie nette</b> = FRNG − BFR = disponibilités − concours bancaires courants.</li>\n</ul>\n<div class=\"note\"><b>Lecture.</b> Un BFR positif signifie que le cycle d'exploitation consomme de l'argent (on paie les fournisseurs avant d'être payé par les clients). Il doit être couvert par le FRNG, sinon la trésorerie est négative.</div>"},{"h":"Et après ?","html":"<p>Ces notions sont celles de l'UE6 Finance d'entreprise du DCG, qui prépare directement l'UE2 Finance du DSCG. La comptabilité approfondie (UE10 DCG) et la consolidation (UE4 DSCG) s'appuient, elles, sur tout ce que vous avez revu dans les modules 1 à 7.</p>"}],"sources":[{"ref":"Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)","note":"Numéros et intitulés de comptes"}],"exercices":[{"type":"calc","q":"Ventes de marchandises : 500 000 €. Achats de marchandises : 300 000 €. Stock initial 40 000 €, stock final 55 000 €. Marge commerciale ?","a":215000,"unit":"€","why":"Coût d'achat des marchandises vendues = 300 000 + 40 000 − 55 000 = 285 000. Marge = 500 000 − 285 000 = 215 000 €.","src":"PCG","fiab":"stable","id":"ue6-01-0","chap":"ue6-01"},{"type":"calc","q":"Marge commerciale 215 000 €, pas de production, consommations en provenance des tiers 60 000 €. Valeur ajoutée ?","a":155000,"unit":"€","why":"VA = 215 000 − 60 000 = 155 000 €. C'est la richesse créée par l'entreprise, à partager entre personnel, État, prêteurs et actionnaires.","src":"PCG","fiab":"stable","id":"ue6-01-1","chap":"ue6-01"},{"type":"calc","q":"Valeur ajoutée 155 000 €, impôts et taxes 8 000 €, charges de personnel 95 000 €, pas de subvention. EBE ?","a":52000,"unit":"€","why":"EBE = 155 000 − 8 000 − 95 000 = 52 000 €.","src":"PCG","fiab":"stable","id":"ue6-01-2","chap":"ue6-01"},{"type":"calc","q":"Résultat net 20 000 €, dotations 18 000 €, reprises 2 000 €, produits des cessions d'actif 5 000 €, valeur comptable des actifs cédés 3 000 €. CAF ?","a":34000,"unit":"€","why":"20 000 + 18 000 − 2 000 − 5 000 + 3 000 = 34 000 €.","src":"PCG","fiab":"stable","id":"ue6-01-3","chap":"ue6-01"},{"type":"calc","q":"Ressources stables 420 000 €, emplois stables 350 000 €. FRNG ?","a":70000,"unit":"€","why":"FRNG = 420 000 − 350 000 = 70 000 €. L'entreprise finance ses immobilisations et dispose d'un excédent pour couvrir le BFR.","src":"PCG","fiab":"stable","id":"ue6-01-4","chap":"ue6-01"},{"type":"calc","q":"FRNG 70 000 €. Actif circulant d'exploitation 150 000 €, dettes d'exploitation 95 000 €. Trésorerie nette ?","a":15000,"unit":"€","why":"BFR = 150 000 − 95 000 = 55 000. Trésorerie nette = FRNG − BFR = 70 000 − 55 000 = 15 000 €.","src":"PCG","fiab":"stable","id":"ue6-01-5","chap":"ue6-01"},{"type":"qcm","q":"Un BFR positif signifie :","opts":["L'entreprise a trop de trésorerie","Le cycle d'exploitation génère un besoin de financement","Les fournisseurs financent intégralement les stocks et les clients","Le résultat est négatif"],"a":1,"why":"Stocks et créances clients immobilisent plus d'argent que les dettes fournisseurs n'en apportent. Ce besoin doit être couvert par le FRNG ou par de la trésorerie à court terme.","src":"PCG","fiab":"stable","id":"ue6-01-6","chap":"ue6-01"},{"type":"qcm","q":"La CAF mesure :","opts":["La trésorerie disponible en banque","Le résultat avant impôt","Les ressources internes dégagées par l'activité, potentiel de trésorerie","Le montant des dividendes à verser"],"a":2,"why":"La CAF n'est pas de la trésorerie réelle : les ventes ne sont pas forcément encaissées, les achats pas forcément payés. C'est un potentiel, à corriger de la variation du BFR pour obtenir le flux de trésorerie d'exploitation.","src":"PCG","fiab":"stable","id":"ue6-01-7","chap":"ue6-01"},{"type":"qcm","q":"L'EBE se calcule :","opts":["Avant dotations aux amortissements et charges financières","Après dotations aux amortissements","Après impôt sur les bénéfices","En retirant les charges exceptionnelles"],"a":0,"why":"L'EBE ne retient que les flux d'exploitation réels : il ignore les charges calculées (amortissements), la politique de financement (intérêts) et la fiscalité sur le bénéfice.","src":"PCG","fiab":"stable","id":"ue6-01-8","chap":"ue6-01"}]}],"pcg":[],"build":{"date":"4 octobre 2026"}};
+</script>
+<script>
+// ---------- Données ----------
+const UES = DATA.ues;
+const UE_BY = Object.fromEntries(UES.map(u => [u.code, u]));
+const CHAPS = DATA.chapitres;
+const CHAP_BY = Object.fromEntries(CHAPS.map(c => [c.id, c]));
+const EXO = {};
+CHAPS.forEach(c => c.exercices.forEach(e => { EXO[e.id] = e; }));
+const PCG = DATA.pcg || [];
+const LABEL = Object.fromEntries(PCG.map(a => [a.num, a.label]));
+const CLASSES = [["1", "Capitaux"], ["2", "Immobilisations"], ["3", "Stocks"], ["4", "Tiers"], ["5", "Financiers"], ["6", "Charges"], ["7", "Produits"]];
+const TYPE_LABEL = { qcm: "Question à choix unique", multi: "Plusieurs réponses possibles", calc: "Calcul", tri: "Classement", ecriture: "Écriture au journal" };
+
+// ---------- Utilitaires ----------
+const fmt = n => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n);
+const fmtAmt = n => n ? fmt(n) : "";
+function parseNum(s) { if (s == null) return NaN; const t = String(s).replace(/[\s  €%]/g, "").replace(",", "."); return t === "" ? NaN : Number(t); }
+const DAY = 86400000;
+const todayKey = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function mulberry(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function shuffle(a, rng) { const r = a.slice(); const rand = rng || Math.random; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+function toast(msg) { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2400); }
+function sanitize(html) { return String(html || "").replace(/<script[\s\S]*?<\/script>/gi, "").replace(/ on\w+="[^"]*"/gi, ""); }
+
+// ---------- État ----------
+const KEY = "debit-credit.v2";
+const INTERVALS = [1, 3, 7, 15, 30, 60];
+const ACQUIS = 3;
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {} });
+let state = EMPTY();
+function load() { try { const s = localStorage.getItem(KEY); if (s) state = Object.assign(EMPTY(), JSON.parse(s)); } catch (e) { } }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
+function card(id) { return state.cards[id] || { s: 0, due: 0, n: 0, ok: 0 }; }
+function record(id, ok, mode) {
+  const c = card(id); const ex = EXO[id];
+  c.n = (c.n || 0) + 1; if (ok) c.ok = (c.ok || 0) + 1;
+  if (ok) { c.s = Math.min(c.s + 1, INTERVALS.length); c.due = Date.now() + INTERVALS[c.s - 1] * DAY; }
+  else { c.s = 0; c.due = Date.now() + DAY; }
+  state.cards[id] = c;
+  const d = todayKey(); state.days[d] = (state.days[d] || 0) + 1;
+  if (ok && ex) addXp((mode === "revision" ? 5 : 10) * (ex.niveau || 1));
+  save(); updateBadge(); renderRank();
+}
+function addXp(n) { state.xp = (state.xp || 0) + n; const p = document.getElementById("xpPop"); p.textContent = `+${n} XP`; p.classList.add("show"); clearTimeout(addXp.h); addXp.h = setTimeout(() => p.classList.remove("show"), 1200); }
+const RANKS = [[0, "Mousse"], [400, "Matelot"], [1200, "Timonier"], [2500, "Second"], [4500, "Capitaine"], [7500, "Navigateur des aurores"], [12000, "Gardien du phare"]];
+function rank() { let r = RANKS[0], next = null; for (let i = 0; i < RANKS.length; i++) { if (state.xp >= RANKS[i][0]) { r = RANKS[i]; next = RANKS[i + 1] || null; } } return { name: r[1], from: r[0], next }; }
+function renderRank() { const r = rank(); document.getElementById("rankBox").innerHTML = `<b>${esc(r.name)}</b><br>${fmt(state.xp)} XP${r.next ? ` · ${fmt(r.next[0] - state.xp)} avant ${esc(r.next[1])}` : ""}`; }
+function chapMastery(ch) { if (!ch.exercices.length) return 0; return ch.exercices.reduce((a, e) => a + Math.min(card(e.id).s, ACQUIS), 0) / (ch.exercices.length * ACQUIS); }
+function ueChaps(code) { return CHAPS.filter(c => c.ue === code); }
+function ueMastery(code) { const cs = ueChaps(code); const n = cs.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return cs.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
+function globalMastery() { const n = CHAPS.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return CHAPS.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
+function chapStarted(ch) { return state.read[ch.id] || ch.exercices.some(e => card(e.id).n > 0); }
+function dueList() { const now = Date.now(); return Object.keys(EXO).filter(id => { const c = state.cards[id]; return c && c.n > 0 && c.due <= now; }); }
+function updateBadge() { const b = document.getElementById("dueBadge"); const n = dueList().length; b.textContent = n; b.classList.toggle("zero", n === 0); }
+function streak() { let n = 0; const d = new Date(); const k = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; if (!state.days[k(d)]) d.setDate(d.getDate() - 1); while (state.days[k(d)]) { n++; d.setDate(d.getDate() - 1); } return n; }
+function acquiredCount() { return Object.keys(EXO).filter(id => card(id).s >= ACQUIS).length; }
+function nextChapter() { for (const u of UES) { const c = ueChaps(u.code).find(ch => chapMastery(ch) < 0.999); if (c) return c; } return null; }
+
+// ---------- Journal ----------
+function journalHTML(lines, lib, caption) {
+  const debits = lines.filter(l => l.d), credits = lines.filter(l => l.c);
+  const td = debits.reduce((a, l) => a + l.d, 0), tc = credits.reduce((a, l) => a + l.c, 0);
+  const row = (l, cls) => `<tr class="${cls}"><td class="n">${esc(l.a)}</td><td class="lib">${esc(LABEL[l.a] || "")}</td><td class="amt">${fmtAmt(l.d)}</td><td class="amt">${fmtAmt(l.c)}</td></tr>`;
+  return `<div class="jwrap"><table class="journal">${caption ? `<caption>${esc(caption)}</caption>` : ""}<thead><tr><th>Compte</th><th>Intitulé</th><th style="text-align:right">Débit</th><th style="text-align:right">Crédit</th></tr></thead><tbody>${debits.map(l => row(l, "debit")).join("")}${credits.map(l => row(l, "credit")).join("")}${lib ? `<tr><td></td><td class="lib"><i class="muted">${esc(lib)}</i></td><td class="amt"></td><td class="amt"></td></tr>` : ""}<tr class="total"><td></td><td class="lib">Totaux</td><td class="amt">${fmt(td)}</td><td class="amt">${fmt(tc)}</td></tr></tbody></table></div>`;
+}
+
+// ---------- Rendu d'un exercice ----------
+function renderExercise(ex, host, onDone, meta) {
+  host.innerHTML = "";
+  const box = document.createElement("div"); box.className = "exo";
+  const fiab = /millésimé/.test(ex.fiab || "") ? `<span class="pill year">chiffres ${esc(ex.fiab.replace("millésimé ", ""))}</span>` : "";
+  box.innerHTML = `<div class="meta"><span class="eyebrow">${esc(meta || "")}</span><span class="progress">${TYPE_LABEL[ex.type] || ""} · niveau ${ex.niveau || 1} ${fiab}</span></div><div class="q">${esc(ex.q)}</div><div class="body"></div><div class="fb"></div><div class="actions"></div>`;
+  host.appendChild(box);
+  const body = box.querySelector(".body"), fb = box.querySelector(".fb"), act = box.querySelector(".actions");
+  let attempts = 0, finished = false;
+  const verify = document.createElement("button"); verify.className = "btn"; verify.textContent = "Vérifier";
+  const reveal = document.createElement("button"); reveal.className = "btn ghost"; reveal.textContent = "Voir la correction"; reveal.hidden = true;
+  const next = document.createElement("button"); next.className = "btn"; next.textContent = "Suivant"; next.hidden = true;
+  act.append(verify, reveal, next);
+  const srcLine = () => `<div class="src">Source : ${esc(ex.src || "")}${/millésimé/.test(ex.fiab || "") ? " · chiffre daté, à vérifier chaque année" : ""}</div>`;
+  function finish(ok, solutionHTML) {
+    finished = true; verify.hidden = true; reveal.hidden = true; next.hidden = false; next.focus();
+    const first = attempts === 1;
+    const head = ok ? (first ? "Juste du premier coup." : "Juste, après correction.") : "Voici la correction.";
+    fb.innerHTML = `<div class="feedback ${ok ? "ok" : "bad"}"><p><b>${head}</b></p>${solutionHTML || ""}<p>${sanitize(ex.why)}</p>${srcLine()}</div>`;
+    onDone(ok && first);
+  }
+  function miss(msg) { fb.innerHTML = `<div class="feedback bad"><p><b>Pas encore.</b> ${msg}</p></div>`; reveal.hidden = false; }
+  next.onclick = () => host.dispatchEvent(new CustomEvent("next", { bubbles: true }));
+
+  if (ex.type === "qcm" || ex.type === "multi") {
+    const multi = ex.type === "multi";
+    const answers = multi ? ex.a : [ex.a];
+    let chosen = new Set();
+    const order = shuffle(ex.opts.map((_, i) => i));
+    const wrap = document.createElement("div"); wrap.className = "opts";
+    order.forEach((oi, k) => {
+      const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.dataset.i = oi; b.setAttribute("aria-pressed", "false");
+      b.innerHTML = `<span class="k">${multi ? "☐" : "ABCDEF"[k]}</span><span>${esc(ex.opts[oi])}</span>`;
+      b.onclick = () => { if (finished) return; if (multi) { if (chosen.has(oi)) chosen.delete(oi); else chosen.add(oi); b.setAttribute("aria-pressed", chosen.has(oi) ? "true" : "false"); b.querySelector(".k").textContent = chosen.has(oi) ? "☑" : "☐"; } else { chosen = new Set([oi]); wrap.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b ? "true" : "false")); } };
+      wrap.appendChild(b);
+    });
+    body.appendChild(wrap);
+    const showSolution = () => wrap.querySelectorAll(".opt").forEach(o => { o.disabled = true; const i = +o.dataset.i; if (answers.includes(i)) o.classList.add(chosen.has(i) || !multi ? "right" : "missed"); else if (chosen.has(i)) o.classList.add("wrong"); });
+    verify.onclick = () => {
+      if (!chosen.size) { toast(multi ? "Cochez au moins une réponse." : "Choisissez une réponse."); return; }
+      attempts++;
+      const ok = answers.length === chosen.size && answers.every(a => chosen.has(a));
+      if (ok) { showSolution(); finish(true); }
+      else if (multi) { miss("La combinaison n'est pas la bonne. Vous pouvez modifier vos choix."); }
+      else { wrap.querySelector(`[data-i="${[...chosen][0]}"]`).classList.add("wrong"); miss("Cette réponse n'est pas la bonne. Vous pouvez en choisir une autre."); }
+    };
+    reveal.onclick = () => { attempts++; showSolution(); finish(false); };
+  }
+  if (ex.type === "calc") {
+    body.innerHTML = `<div class="calc"><input id="calc-${ex.id}" type="text" inputmode="decimal" autocomplete="off" placeholder="0"><span class="unit">${esc(ex.unit || "")}</span></div>`;
+    const inp = body.querySelector("input");
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); if (!finished) verify.click(); else next.click(); } });
+    const tol = ex.tol ?? 0.5;
+    const sol = `<p class="mono">Réponse : ${fmt(ex.a)} ${esc(ex.unit || "")}</p>`;
+    verify.onclick = () => { const v = parseNum(inp.value); if (isNaN(v)) { toast("Saisissez un nombre."); return; } attempts++; if (Math.abs(v - ex.a) <= tol) finish(true, sol); else miss(`${fmt(v)} n'est pas le résultat attendu. Revérifiez le calcul.`); };
+    reveal.onclick = () => { attempts++; inp.value = fmt(ex.a); finish(false, sol); };
+    setTimeout(() => inp.focus(), 50);
+  }
+  if (ex.type === "tri") {
+    const wrap = document.createElement("div"); wrap.className = "tri";
+    shuffle(ex.items).forEach((it, k) => { const r = document.createElement("div"); r.className = "tri-row"; r.innerHTML = `<span>${esc(it[0])}</span><select id="tri-${ex.id}-${k}" aria-label="Catégorie pour ${esc(it[0])}"><option value="">Choisir…</option>${ex.cats.map((c, ci) => `<option value="${ci}">${esc(c)}</option>`).join("")}</select>`; r.dataset.a = it[1]; wrap.appendChild(r); });
+    body.appendChild(wrap);
+    const grade = lock => { let all = true; wrap.querySelectorAll(".tri-row").forEach(r => { const s = r.querySelector("select"); const ok = s.value !== "" && +s.value === +r.dataset.a; r.classList.toggle("right", ok); r.classList.toggle("wrong", !ok); if (!ok) all = false; if (lock) { s.value = r.dataset.a; s.disabled = true; r.classList.add("right"); r.classList.remove("wrong"); } }); return all; };
+    verify.onclick = () => { if ([...wrap.querySelectorAll("select")].some(s => s.value === "")) { toast("Classez tous les éléments."); return; } attempts++; if (grade(false)) { wrap.querySelectorAll("select").forEach(s => s.disabled = true); finish(true); } else miss("Les lignes marquées en rouge sont à revoir."); };
+    reveal.onclick = () => { attempts++; grade(true); finish(false); };
+  }
+  if (ex.type === "ecriture") {
+    const palette = shuffle(ex.palette);
+    body.innerHTML = `<div class="eyebrow">Comptes disponibles</div><div class="palette">${palette.map(a => `<span class="chip"><b>${esc(a)}</b>${esc(LABEL[a] || "")}</span>`).join("")}</div>
+<div class="jwrap"><table class="journal"><thead><tr><th>Compte</th><th>Intitulé</th><th style="text-align:right">Débit</th><th style="text-align:right">Crédit</th><th></th></tr></thead><tbody></tbody><tfoot><tr class="total"><td></td><td class="lib">Totaux</td><td class="amt" id="td-${ex.id}">0</td><td class="amt" id="tc-${ex.id}">0</td><td></td></tr></tfoot></table></div>
+<div class="balance" id="bal-${ex.id}">Débit et crédit doivent être égaux.</div><div class="actions"><button class="btn quiet" type="button" id="add-${ex.id}">+ Ajouter une ligne</button></div>`;
+    const tbody = body.querySelector("tbody");
+    const addLine = () => { const k = tbody.children.length; const tr = document.createElement("tr"); tr.innerHTML = `<td class="n" style="width:140px"><select id="acc-${ex.id}-${k}" aria-label="Compte"><option value="">—</option>${palette.map(a => `<option value="${esc(a)}">${esc(a)}</option>`).join("")}</select></td><td class="lib muted"></td><td class="amt"><input class="amt-in" id="d-${ex.id}-${k}" inputmode="decimal" aria-label="Débit"></td><td class="amt"><input class="amt-in" id="c-${ex.id}-${k}" inputmode="decimal" aria-label="Crédit"></td><td class="del"><button type="button" aria-label="Supprimer la ligne">×</button></td>`; tr.querySelector("select").onchange = e => { tr.querySelector(".lib").textContent = LABEL[e.target.value] || ""; }; tr.querySelector(".del button").onclick = () => { if (finished) return; tr.remove(); totals(); }; tr.querySelectorAll("input").forEach(i => i.addEventListener("input", totals)); tbody.appendChild(tr); };
+    const readLines = () => [...tbody.children].map(tr => ({ a: tr.querySelector("select").value, d: parseNum(tr.querySelector('[id^="d-"]').value) || 0, c: parseNum(tr.querySelector('[id^="c-"]').value) || 0, tr })).filter(l => l.a || l.d || l.c);
+    const totals = () => { const ls = readLines(); const td = ls.reduce((s, l) => s + l.d, 0), tc = ls.reduce((s, l) => s + l.c, 0); body.querySelector(`#td-${ex.id}`).textContent = fmt(td); body.querySelector(`#tc-${ex.id}`).textContent = fmt(tc); const bal = body.querySelector(`#bal-${ex.id}`); if (!td && !tc) { bal.textContent = "Débit et crédit doivent être égaux."; bal.className = "balance"; } else if (Math.abs(td - tc) < 0.005) { bal.textContent = "Équilibrée."; bal.className = "balance on"; } else { bal.textContent = `Écart : ${fmt(Math.abs(td - tc))}`; bal.className = "balance off"; } };
+    body.querySelector(`#add-${ex.id}`).onclick = addLine; addLine(); addLine();
+    const key = l => `${l.a}|${l.d > 0 ? "D" : "C"}|${Math.round((l.d || l.c) * 100)}`;
+    const matches = (lines, sol) => { if (lines.length !== sol.length) return false; const pool = sol.map(key); for (const l of lines) { const i = pool.indexOf(key(l)); if (i < 0) return false; pool.splice(i, 1); } return true; };
+    const solHTML = () => journalHTML(ex.sol[0], ex.lib, "Correction");
+    verify.onclick = () => {
+      const ls = readLines();
+      if (!ls.length) { toast("Saisissez au moins deux lignes."); return; }
+      if (ls.some(l => !l.a)) { toast("Chaque ligne doit avoir un compte."); return; }
+      if (ls.some(l => (l.d && l.c) || (!l.d && !l.c))) { toast("Un montant par ligne, au débit ou au crédit."); return; }
+      attempts++;
+      const td = ls.reduce((s, l) => s + l.d, 0), tc = ls.reduce((s, l) => s + l.c, 0);
+      if (Math.abs(td - tc) >= 0.005) { miss("L'écriture n'est pas équilibrée : total débit ≠ total crédit."); return; }
+      if (ex.sol.some(s => matches(ls, s))) { tbody.querySelectorAll("input,select").forEach(i => i.disabled = true); finish(true); return; }
+      const pool = ex.sol[0].map(key); ls.forEach(l => { const i = pool.indexOf(key(l)); l.tr.classList.remove("ok-line", "bad-line"); l.tr.classList.add(i >= 0 ? "ok-line" : "bad-line"); if (i >= 0) pool.splice(i, 1); });
+      miss(`L'écriture est équilibrée mais ne correspond pas à la solution attendue${pool.length ? ` (${pool.length} ligne${pool.length > 1 ? "s" : ""} manquante${pool.length > 1 ? "s" : ""} ou incorrecte${pool.length > 1 ? "s" : ""})` : ""}. Vérifiez les comptes et les montants HT / TTC.`);
+    };
+    reveal.onclick = () => { attempts++; tbody.querySelectorAll("input,select").forEach(i => i.disabled = true); finish(false, solHTML()); };
+  }
+}
+
+// Déroule une liste d'exercices dans host ; onEach(ex, ok) ; onEnd(score)
+function runSeries(host, list, labelFn, onEach, onEnd, progressEl) {
+  let i = 0, score = 0;
+  const step = () => {
+    if (i >= list.length) { onEnd(score); return; }
+    if (progressEl) progressEl.textContent = `${i + 1} / ${list.length}`;
+    renderExercise(list[i], host, ok => { onEach(list[i], ok); if (ok) score++; }, labelFn(list[i]));
+  };
+  host.addEventListener("next", () => { i++; step(); window.scrollTo({ top: Math.max(0, host.getBoundingClientRect().top + window.scrollY - 80) }); });
+  step();
+  return { redo: () => { i = 0; score = 0; step(); } };
+}
+</script>
+<script>
+// ---------- Test du jour ----------
+function dailyPlan(dateKey) {
+  if (state.daily[dateKey] && state.daily[dateKey].ids) return state.daily[dateKey];
+  const rng = mulberry(hashStr(dateKey + "|dc"));
+  const N = 20;
+  const chosen = [];
+  const due = shuffle(dueList(), rng).slice(0, 10);
+  chosen.push(...due);
+  const started = CHAPS.filter(chapStarted);
+  const pool = (started.length ? started : CHAPS.slice(0, 3));
+  const weak = pool.slice().sort((a, b) => ueMastery(a.ue) - ueMastery(b.ue) || rng() - 0.5);
+  const fresh = [];
+  for (const ch of weak) for (const e of shuffle(ch.exercices, rng)) if (card(e.id).n === 0 && !chosen.includes(e.id)) fresh.push(e.id);
+  // garantir ≥ 60 % de questions à choix
+  const isQ = id => /^(qcm|multi)$/.test(EXO[id].type);
+  for (const id of fresh) { if (chosen.length >= N) break; chosen.push(id); }
+  if (chosen.length < N) for (const ch of CHAPS) for (const e of ch.exercices) { if (chosen.length >= N) break; if (!chosen.includes(e.id)) chosen.push(e.id); }
+  let q = chosen.filter(isQ).length;
+  if (q < Math.ceil(N * 0.6)) {
+    const extraQ = Object.keys(EXO).filter(id => isQ(id) && !chosen.includes(id)).sort(() => rng() - 0.5);
+    for (let i = chosen.length - 1; i >= 0 && q < Math.ceil(N * 0.6) && extraQ.length; i--) if (!isQ(chosen[i])) { chosen[i] = extraQ.pop(); q++; }
+  }
+  const plan = { ids: shuffle(chosen.slice(0, N), rng), answers: {}, done: false, score: 0 };
+  state.daily[dateKey] = plan; save();
+  return plan;
+}
+function dailyHistory(days) { const out = []; const d = new Date(); for (let i = days - 1; i >= 0; i--) { const x = new Date(d); x.setDate(d.getDate() - i); const k = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; const p = state.daily[k]; out.push({ k, p: p && p.done ? p.score / p.ids.length : null }); } return out; }
+
+// ---------- Badges ----------
+const BADGES = [
+  { id: "first", ic: "✎", nom: "Première ligne", desc: "Premier exercice réussi", test: () => Object.values(state.cards).some(c => c.ok > 0) },
+  { id: "ecriture", ic: "⚖", nom: "Partie double", desc: "Une écriture au journal juste du premier coup", test: () => Object.keys(state.cards).some(id => EXO[id] && EXO[id].type === "ecriture" && state.cards[id].ok > 0) },
+  { id: "test", ic: "☀", nom: "Rituel", desc: "Un test du jour terminé", test: () => Object.values(state.daily).some(p => p.done) },
+  { id: "parfait", ic: "★", nom: "Sans faute", desc: "Un test du jour à 100 %", test: () => Object.values(state.daily).some(p => p.done && p.score === p.ids.length) },
+  { id: "s7", ic: "🔥", nom: "Sept jours", desc: "Sept jours d'affilée", test: () => streak() >= 7 },
+  { id: "s30", ic: "🏔", nom: "Un mois", desc: "Trente jours d'affilée", test: () => streak() >= 30 },
+  { id: "chap", ic: "⛺", nom: "Premier camp", desc: "Un chapitre entièrement acquis", test: () => CHAPS.some(c => chapMastery(c) >= 0.999) },
+  { id: "ue", ic: "🧭", nom: "Une matière", desc: "Une matière entièrement acquise", test: () => UES.some(u => ueMastery(u.code) >= 0.999) },
+  { id: "n100", ic: "📚", nom: "Cent notions", desc: "Cent notions acquises", test: () => acquiredCount() >= 100 },
+  { id: "pcg", ic: "🔎", nom: "Plan comptable", desc: "Cinquante comptes consultés", test: () => Object.keys(state.seen).length >= 50 },
+  { id: "aurore", ic: "✦", nom: "Aurore", desc: "La moitié du parcours acquise", test: () => globalMastery() >= 0.5 },
+];
+
+// ---------- Vues ----------
+const main = document.getElementById("main");
+let view = { tab: "accueil" };
+const chapLabel = ex => { const ch = CHAP_BY[ex.chap]; return `${ch.ue} · ${ch.title}`; };
+
+function renderAccueil() {
+  const today = todayKey(); const plan = state.daily[today];
+  const due = dueList().length; const nc = nextChapter(); const todayN = state.days[today] || 0;
+  const hist = dailyHistory(30);
+  main.innerHTML = `
+<div class="cta"><div><div class="t">${plan && plan.done ? `Test du jour terminé : ${plan.score} / ${plan.ids.length}` : plan ? "Test du jour en cours" : "Le test du jour vous attend"}</div><div class="muted small">20 questions tirées de vos matières, les plus fragiles en priorité. Un par jour, environ 20 minutes.</div></div><button class="btn ${plan && plan.done ? "ghost" : "red"}" id="goTest">${plan && plan.done ? "Revoir le test" : plan ? "Reprendre" : "Commencer"}</button></div>
+<div class="board">
+  <div class="tile"><div class="big">${Math.round(globalMastery() * 100)}<span class="muted" style="font-size:1rem"> %</span></div><div class="lab">du parcours acquis · ${acquiredCount()} / ${Object.keys(EXO).length} notions</div></div>
+  <div class="tile"><div class="big">${due}</div><div class="lab">révision${due > 1 ? "s" : ""} à faire</div></div>
+  <div class="tile"><div class="big">${streak()}</div><div class="lab">jour${streak() > 1 ? "s" : ""} d'affilée · ${todayN} réponse${todayN > 1 ? "s" : ""} aujourd'hui</div></div>
+</div>
+<h3 style="margin-top:4px">Trente derniers jours</h3>
+<div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div>
+<p class="muted small">Chaque barre est le score d'un test du jour. Les barres grises sont les jours sans test.</p>
+<h3>Par matière</h3>
+<div class="ledger">${UES.map((u, i) => { const m = ueMastery(u.code); const n = ueChaps(u.code).length; return `<button class="row" data-ue="${u.code}"><span class="num">${esc(u.code.replace("UE", ""))}</span><span><span class="ttl">${esc(u.nom)}</span><br><span class="sub">${n} chapitre${n > 1 ? "s" : ""} · ${ueChaps(u.code).reduce((a, c) => a + c.exercices.length, 0)} exercices</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
+${nc ? `<div class="actions"><button class="btn ghost" id="goNext">Chapitre conseillé : ${esc(nc.ue)} · ${esc(nc.title)}</button></div>` : ""}`;
+  main.querySelector("#goTest").onclick = () => go({ tab: "test" });
+  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  if (nc) main.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
+}
+
+function renderMatieres() {
+  main.innerHTML = `<h2>Matières</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre comporte une leçon complète et ses exercices.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
+  main.querySelectorAll(".ue").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+}
+
+function renderUe(code) {
+  const u = UE_BY[code]; const cs = ueChaps(code); const nc = cs.find(c => chapMastery(c) < 0.999);
+  main.innerHTML = `<div class="crumb"><button id="back">← Matières</button></div><h2>${esc(u.code)} · ${esc(u.nom)}</h2><p class="muted">${esc(u.intro)} <span class="small">(${esc(u.programme)})</span></p>
+<div class="ledger">${cs.map(c => { const m = chapMastery(c); const started = chapStarted(c); const pill = m >= 0.999 ? '<span class="pill done">acquis</span>' : (nc && nc.id === c.id ? '<span class="pill next">conseillé</span>' : started ? '<span class="pill prog">en cours</span>' : '<span class="pill">à venir</span>'); return `<button class="row" data-c="${c.id}"><span class="num">${c.ordre}</span><span><span class="ttl">${esc(c.title)}</span><br><span class="sub">${esc(c.resume)}</span></span><span class="right">${pill}<div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted" style="font-size:.78rem">${c.exercices.length} exercices · ${esc(c.duree)}</span></span></button>`; }).join("")}${cs.length ? "" : '<div style="padding:14px 16px" class="muted">Chapitres en cours de rédaction.</div>'}</div>`;
+  main.querySelector("#back").onclick = () => go({ tab: "matieres" });
+  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
+}
+
+function renderChap(id, startAt) {
+  const c = CHAP_BY[id]; const u = UE_BY[c.ue]; const cs = ueChaps(c.ue); const idx = cs.indexOf(c);
+  main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} ${esc(u.nom)}</button><span class="muted">Chapitre ${idx + 1} / ${cs.length}</span></div><h2>${esc(c.title)}</h2><p class="muted">${esc(c.resume)}</p><div id="stage"></div>`;
+  main.querySelector("#back").onclick = () => go({ tab: "ue", code: c.ue });
+  const stage = main.querySelector("#stage");
+  const showLesson = () => {
+    state.read[c.id] = true; save();
+    stage.innerHTML = `<div class="lesson">${c.lecon.map(s => `${s.h ? `<h3>${esc(s.h)}</h3>` : ""}<div class="twrap-l">${sanitize(s.html)}</div>${s.entry ? journalHTML(s.entry, s.lib) : ""}`).join("")}
+${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.sources.map(s => `<li>${esc(s.ref)}${s.note ? ` — ${esc(s.note)}` : ""}</li>`).join("")}</ul></div>` : ""}</div>
+<div class="actions"><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
+    stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
+  };
+  const showExercises = () => {
+    stage.innerHTML = `<div class="crumb"><span class="progress" id="prog"></span><button id="toLesson">Revoir la leçon</button></div><div id="host"></div>`;
+    stage.querySelector("#toLesson").onclick = showLesson;
+    const host = stage.querySelector("#host"); const prog = stage.querySelector("#prog");
+    const series = runSeries(host, c.exercices, () => `${u.code} · ${c.title}`, (ex, ok) => record(ex.id, ok), score => {
+      state.done[c.id] = (state.done[c.id] || 0) + 1; addXp(30); save();
+      const nc = cs[idx + 1];
+      host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Chapitre terminé</h3><p>${score} exercice${score > 1 ? "s" : ""} sur ${c.exercices.length} réussi${score > 1 ? "s" : ""} du premier coup. Les notions ratées reviendront demain en révision, les autres dans trois jours.</p><div class="actions">${nc ? `<button class="btn" id="goNext">Chapitre suivant : ${esc(nc.title)}</button>` : ""}<button class="btn ghost" id="redo">Refaire les exercices</button><button class="btn quiet" id="toUe">Retour à la matière</button></div></div>`;
+      prog.textContent = "Terminé";
+      if (nc) host.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
+      host.querySelector("#redo").onclick = () => series.redo();
+      host.querySelector("#toUe").onclick = () => go({ tab: "ue", code: c.ue });
+    }, prog);
+  };
+  if (startAt === "exercises") showExercises(); else showLesson();
+}
+
+function renderTest() {
+  const today = todayKey(); const plan = dailyPlan(today);
+  const list = plan.ids.map(id => EXO[id]).filter(Boolean);
+  if (!list.length) { main.innerHTML = `<h2>Test du jour</h2><p>Aucune question disponible.</p>`; return; }
+  const remaining = list.filter(e => !(e.id in plan.answers));
+  main.innerHTML = `<h2>Test du jour · ${new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}</h2><p class="muted">${list.length} questions : révisions dues en priorité, puis notions nouvelles des matières les plus fragiles. Le score du jour est enregistré une fois le test terminé.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
+  const host = main.querySelector("#host"); const prog = main.querySelector("#prog");
+  const finishScreen = () => {
+    const score = Object.values(plan.answers).filter(Boolean).length;
+    if (!plan.done) { plan.done = true; plan.score = score; addXp(50 + (score === list.length ? 100 : 0)); save(); }
+    prog.textContent = "Terminé";
+    const byUe = {}; list.forEach(e => { const ue = CHAP_BY[e.chap].ue; byUe[ue] = byUe[ue] || [0, 0]; byUe[ue][1]++; if (plan.answers[e.id]) byUe[ue][0]++; });
+    host.innerHTML = `<div class="exo"><h3 style="margin-top:0">${plan.score} / ${list.length}${plan.score === list.length ? " · sans faute" : ""}</h3><p>${Object.entries(byUe).map(([u, [a, b]]) => `${esc(u)} : ${a}/${b}`).join(" · ")}</p><p class="muted small">Les questions ratées reviendront demain en révision. Revenez demain pour un nouveau test.</p><div class="actions"><button class="btn" id="toA">Retour à l'accueil</button><button class="btn ghost" id="toR">Réviser maintenant</button></div></div>`;
+    host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); host.querySelector("#toR").onclick = () => go({ tab: "revisions" });
+  };
+  if (!remaining.length) { finishScreen(); return; }
+  runSeries(host, remaining, chapLabel, (ex, ok) => { plan.answers[ex.id] = ok; record(ex.id, ok, "test"); save(); }, finishScreen, { set textContent(v) { const done = list.length - remaining.length; const i = parseInt(v) || 0; prog.textContent = `Question ${done + i} / ${list.length}`; } });
+}
+
+function renderRevisions() {
+  const due = shuffle(dueList()).slice(0, 25);
+  if (!due.length) {
+    const upcoming = Object.entries(state.cards).filter(([, c]) => c.n > 0).sort((a, b) => a[1].due - b[1].due)[0];
+    const when = upcoming ? Math.max(1, Math.ceil((upcoming[1].due - Date.now()) / DAY)) : null;
+    main.innerHTML = `<h2>Révisions</h2><p>Rien à revoir pour le moment.</p><p class="muted">${when ? `Prochaine révision dans ${when} jour${when > 1 ? "s" : ""}.` : "Les notions vues dans les chapitres et les tests reviendront ici à intervalles croissants (1, 3, 7, 15, 30, 60 jours)."}</p><div class="actions"><button class="btn" id="toM">Aller aux matières</button></div>`;
+    main.querySelector("#toM").onclick = () => go({ tab: "matieres" }); return;
+  }
+  main.innerHTML = `<h2>Révisions</h2><p class="muted">${due.length} notion${due.length > 1 ? "s" : ""} à revoir. Une bonne réponse espace la prochaine révision, une erreur la ramène à demain.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
+  const host = main.querySelector("#host");
+  runSeries(host, due.map(id => EXO[id]), chapLabel, (ex, ok) => record(ex.id, ok, "revision"), score => { host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Révisions terminées</h3><p>${score} sur ${due.length} du premier coup.</p><div class="actions"><button class="btn" id="toA">Retour à l'accueil</button></div></div>`; host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); }, main.querySelector("#prog"));
+}
+
+function renderPcg() {
+  let cls = "", q = "", onlyNew = false;
+  main.innerHTML = `<h2>Plan comptable général 2025</h2><p class="muted">${PCG.length} comptes expliqués : à quoi sert le compte, quand on le débite ou le crédite, un exemple, le piège classique. Les comptes touchés par la réforme du PCG 2025 (règlement ANC 2022-06) sont signalés.</p>
+<div class="classes">${CLASSES.map(c => `<button class="cls" data-c="${c[0]}" aria-pressed="false"><div class="c">${c[0]}</div>${esc(c[1])}</button>`).join("")}</div>
+<div class="filters"><input class="search" id="q" type="search" placeholder="Numéro ou mot (ex. 445, amortissement, client)" autocomplete="off" style="flex:1;min-width:200px;margin:0"><label><input type="checkbox" id="onlyNew"> réforme 2025 seulement</label></div>
+<div class="ledger" id="list"></div>`;
+  const list = main.querySelector("#list");
+  const draw = () => {
+    const t = q.trim().toLowerCase();
+    const rows = PCG.filter(a => (!cls || a.num[0] === cls) && (!onlyNew || a.pcg2025) && (!t || a.num.startsWith(t) || a.label.toLowerCase().includes(t) || (a.explication || "").toLowerCase().includes(t))).slice(0, 400);
+    list.innerHTML = rows.length ? rows.map(a => `<button class="acct" data-n="${a.num}" aria-expanded="false"><span class="n">${a.num}</span>${esc(a.label)} ${a.pcg2025 ? `<span class="pill ${/supprim/i.test(a.pcg2025) ? "del" : "new"}">${/supprim/i.test(a.pcg2025) ? "supprimé 2025" : "PCG 2025"}</span>` : ""}<span class="s">${esc(a.sens)}</span></button>`).join("") : `<div class="muted" style="padding:12px 14px">Aucun compte ne correspond.</div>`;
+    list.querySelectorAll(".acct").forEach(b => b.onclick = () => {
+      const open = b.getAttribute("aria-expanded") === "true"; const nxt = b.nextElementSibling;
+      if (open) { b.setAttribute("aria-expanded", "false"); if (nxt && nxt.classList.contains("acct-body")) nxt.remove(); return; }
+      const a = PCG.find(x => x.num === b.dataset.n); state.seen[a.num] = 1; save();
+      const d = document.createElement("div"); d.className = "acct-body";
+      d.innerHTML = `<p>${esc(a.explication)}</p>${a.exemple ? `<p><b>Exemple.</b> ${esc(a.exemple)}</p>` : ""}${a.entry ? journalHTML(a.entry, "") : ""}${a.piege ? `<p><b>Piège.</b> ${esc(a.piege)}</p>` : ""}${a.pcg2025 ? `<p class="muted"><b>Réforme PCG 2025.</b> ${esc(a.pcg2025)}</p>` : ""}<p class="muted small">Solde habituel : ${esc(a.sens)}${a.obligatoire === false ? " · compte facultatif" : ""}</p>`;
+      b.setAttribute("aria-expanded", "true"); b.after(d);
+    });
+  };
+  main.querySelectorAll(".cls").forEach(b => b.onclick = () => { cls = cls === b.dataset.c ? "" : b.dataset.c; main.querySelectorAll(".cls").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === cls ? "true" : "false")); draw(); });
+  main.querySelector("#q").addEventListener("input", e => { q = e.target.value; draw(); });
+  main.querySelector("#onlyNew").addEventListener("change", e => { onlyNew = e.target.checked; draw(); });
+  draw();
+}
+
+// ---------- Expédition ----------
+const ETAPES = [["UE9", "Les fjords"], ["UE10", "La vallée"], ["UE2", "Les plateaux"], ["UE3", "Les glaciers"], ["UE4", "Les volcans"], ["UE6", "Le cap des aurores"]];
+function renderExpedition() {
+  const r = rank(); const g = globalMastery();
+  main.innerHTML = `<h2>L'expédition vers les aurores</h2><p class="muted">Chaque chapitre acquis allume un camp sur la route. Plus vous avancez, plus le ciel s'illumine. Le test du jour entretient la lanterne : une série de jours d'affilée la garde allumée.</p>
+<div class="sky"><canvas id="skyC" width="960" height="420" aria-label="Carte de l'expédition"></canvas><div class="legend">Aurore à ${Math.round(g * 100)} % · lanterne ${streak() > 0 ? "allumée depuis " + streak() + " jour" + (streak() > 1 ? "s" : "") : "éteinte"}</div></div>
+<div class="board"><div class="tile"><div class="big">${esc(r.name)}</div><div class="lab">${fmt(state.xp)} XP${r.next ? ` · prochain grade « ${esc(r.next[1])} » à ${fmt(r.next[0])} XP` : " · grade maximal"}</div></div><div class="tile"><div class="big">${CHAPS.filter(c => chapMastery(c) >= 0.999).length}<span class="muted" style="font-size:1rem"> / ${CHAPS.length}</span></div><div class="lab">camps allumés</div></div><div class="tile"><div class="big">${BADGES.filter(b => b.test()).length}<span class="muted" style="font-size:1rem"> / ${BADGES.length}</span></div><div class="lab">insignes</div></div></div>
+<h3>Étapes</h3><div class="ledger">${ETAPES.map(([code, nom], i) => { const u = UE_BY[code]; if (!u) return ""; const m = ueMastery(code); return `<button class="row" data-ue="${code}"><span class="num">${i + 1}</span><span><span class="ttl">${esc(nom)}</span><br><span class="sub">${esc(u.nom)} · ${ueChaps(code).filter(c => chapMastery(c) >= 0.999).length}/${ueChaps(code).length} camps</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
+<h3>Insignes</h3><div class="badges">${BADGES.map(b => `<div class="bdg ${b.test() ? "" : "off"}"><span class="ic">${b.ic}</span><b>${esc(b.nom)}</b><span class="muted">${esc(b.desc)}</span></div>`).join("")}</div>
+<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute.</p>`;
+  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  drawSky(main.querySelector("#skyC"));
+}
+let skyAnim = 0;
+function drawSky(cv) {
+  cancelAnimationFrame(skyAnim);
+  const ctx = cv.getContext("2d"); const W = cv.width, H = cv.height; const g = globalMastery(); const lit = streak() > 0;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const camps = []; let x = 70; const stepX = (W - 140) / Math.max(1, CHAPS.length - 1);
+  CHAPS.forEach((c, i) => { const y = H - 70 - Math.sin(i / CHAPS.length * Math.PI) * 140 - (i % 3) * 14; camps.push({ x, y, m: chapMastery(c), started: chapStarted(c), ue: c.ue }); x += stepX; });
+  const frame = t => {
+    const sky = ctx.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, "#070d1f"); sky.addColorStop(1, "#1a2f56"); ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+    const rs = mulberry(7); for (let i = 0; i < 120; i++) { const sx = rs() * W, sy = rs() * H * 0.7, a = 0.3 + rs() * 0.7; ctx.fillStyle = `rgba(255,255,255,${a * (0.6 + 0.4 * Math.sin(t / 900 + i))})`; ctx.fillRect(sx, sy, 1.5, 1.5); }
+    if (g > 0.01) { const bands = [["57,229,140", 0.0], ["43,212,212", 0.35], ["122,92,255", 0.7]]; bands.forEach(([col, ph], bi) => { for (let k = 0; k < 40; k++) { const bx = k / 40 * W; const wave = Math.sin(bx / 90 + t / 1600 + ph * 6) * 22 + Math.sin(bx / 37 - t / 2300) * 10; const top = 30 + bi * 26 + wave; const h = 60 + 140 * g + Math.sin(bx / 50 + t / 1900) * 20; const gr = ctx.createLinearGradient(0, top, 0, top + h); gr.addColorStop(0, `rgba(${col},0)`); gr.addColorStop(0.3, `rgba(${col},${0.12 + 0.5 * g})`); gr.addColorStop(1, `rgba(${col},0)`); ctx.fillStyle = gr; ctx.fillRect(bx, top, W / 40 + 1, h); } }); }
+    ctx.fillStyle = "#0b1326"; ctx.beginPath(); ctx.moveTo(0, H); for (let i = 0; i <= 24; i++) { const mx = i / 24 * W; ctx.lineTo(mx, H - 60 - Math.abs(Math.sin(i * 1.7)) * 120 - Math.abs(Math.cos(i * 0.9)) * 40); } ctx.lineTo(W, H); ctx.fill();
+    ctx.strokeStyle = "rgba(223,231,243,0.35)"; ctx.setLineDash([4, 6]); ctx.lineWidth = 1.5; ctx.beginPath(); camps.forEach((c, i) => i ? ctx.lineTo(c.x, c.y) : ctx.moveTo(c.x, c.y)); ctx.stroke(); ctx.setLineDash([]);
+    camps.forEach(c => { const on = c.m >= 0.999; const r = on ? 6 : 4; if (on || c.started) { const glow = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, on ? 22 : 12); glow.addColorStop(0, on ? "rgba(255,214,120,0.9)" : "rgba(255,214,120,0.35)"); glow.addColorStop(1, "rgba(255,214,120,0)"); ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(c.x, c.y, on ? 22 : 12, 0, 7); ctx.fill(); } ctx.fillStyle = on ? "#ffd678" : c.started ? "#c9a85a" : "#4b5a73"; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 7); ctx.fill(); });
+    const lx = 40, ly = H - 36; ctx.fillStyle = lit ? "#ffd678" : "#3a4559"; ctx.fillRect(lx - 4, ly - 14, 8, 14); if (lit) { const gl = ctx.createRadialGradient(lx, ly - 8, 0, lx, ly - 8, 30 + Math.sin(t / 300) * 3); gl.addColorStop(0, "rgba(255,214,120,0.8)"); gl.addColorStop(1, "rgba(255,214,120,0)"); ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(lx, ly - 8, 34, 0, 7); ctx.fill(); }
+    ctx.fillStyle = "#dfe7f3"; ctx.font = "500 12px IBM Plex Mono, monospace"; ctx.fillText("Cassegrain", lx + 14, ly - 4); ctx.textAlign = "right"; ctx.fillText("Les aurores", W - 20, 24); ctx.textAlign = "left";
+    if (!reduce) skyAnim = requestAnimationFrame(frame);
+  };
+  frame(0);
+}
+
+// ---------- Navigation ----------
+function go(v) {
+  cancelAnimationFrame(skyAnim);
+  view = v;
+  const tab = { ue: "matieres", chap: "matieres" }[v.tab] || v.tab;
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
+  ({ accueil: renderAccueil, matieres: renderMatieres, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition })[v.tab]();
+  try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
+  updateBadge(); renderRank(); window.scrollTo({ top: 0 });
+}
+document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go({ tab: b.dataset.tab }));
+document.getElementById("brand").onclick = () => go({ tab: "accueil" });
+
+// ---------- Sauvegarde ----------
+function refreshSaveBox() { const box = document.getElementById("saveBox"); if (box && document.activeElement !== box) { try { box.value = btoa(unescape(encodeURIComponent(JSON.stringify(state)))); } catch (e) { } } }
+document.getElementById("copySave").onclick = () => { const box = document.getElementById("saveBox"); refreshSaveBox(); (navigator.clipboard ? navigator.clipboard.writeText(box.value) : Promise.reject()).then(() => toast("Code copié.")).catch(() => { box.select(); toast("Sélectionnez et copiez le code."); }); };
+document.getElementById("restoreSave").onclick = () => { const box = document.getElementById("saveBox"); try { const s = JSON.parse(decodeURIComponent(escape(atob(box.value.trim())))); if (!s.cards) throw 0; state = Object.assign(EMPTY(), s); save(); go({ tab: "accueil" }); toast("Progression restaurée."); } catch (e) { toast("Code illisible."); } };
+let resetArmed = false;
+document.getElementById("resetSave").onclick = e => { if (!resetArmed) { resetArmed = true; e.target.textContent = "Confirmer la remise à zéro"; setTimeout(() => { resetArmed = false; e.target.textContent = "Tout remettre à zéro"; }, 4000); return; } state = EMPTY(); save(); resetArmed = false; e.target.textContent = "Tout remettre à zéro"; go({ tab: "accueil" }); toast("Progression effacée."); };
+
+// ---------- Démarrage ----------
+load();
+document.getElementById("buildInfo").textContent = `Version du ${DATA.build.date} · ${CHAPS.length} chapitres · ${Object.keys(EXO).length} exercices · ${PCG.length} comptes. Ce fichier fonctionne hors ligne : enregistrez-le et ouvrez-le avec un navigateur.`;
+refreshSaveBox();
+(function boot() {
+  const h = (location.hash || "").slice(1);
+  if (["matieres", "test", "revisions", "pcg", "expedition"].includes(h)) go({ tab: h });
+  else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
+  else if (CHAP_BY[h]) go({ tab: "chap", id: h });
+  else go({ tab: "accueil" });
+})();
+</script>

@@ -1,0 +1,352 @@
+{
+ "id": "ue9-04",
+ "ue": "UE9",
+ "ordre": 4,
+ "title": "Trésorerie, charges courantes et paie",
+ "resume": "Encaissements, décaissements, services extérieurs, salaires et échéances d'emprunt.",
+ "duree": "40 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Les flux de trésorerie",
+   "html": "<p>Chèque, virement, carte : <code>512</code> Banque. Espèces : <code>530</code> Caisse. Un encaissement client débite 512 et crédite 411. Un paiement fournisseur débite 401 et crédite 512.</p>\n<p>Pour un mouvement entre la caisse et la banque, le PCG recommande le compte de passage <code>580</code> Virements internes, qui évite les doubles comptages. En exercice simple, on passe souvent directement : débit 530, crédit 512 pour un retrait d'espèces.</p>"
+  },
+  {
+   "h": "Les services extérieurs (61 / 62)",
+   "html": "<ul>\n<li><code>613</code> Locations, <code>615</code> Entretien, <code>616</code> Assurances (sans TVA), <code>6226</code> Honoraires, <code>623</code> Publicité, <code>626</code> Téléphone et poste, <code>6061</code> Électricité.</li>\n<li>Même logique que les achats : charge HT au débit, TVA déductible au débit, 401 ou 512 au crédit selon que la facture est réglée plus tard ou immédiatement.</li>\n</ul>\n<p>Exemple : loyer du mois, <span class=\"mono\">1 200 € HT</span> + 240 de TVA, prélevé en banque.</p>",
+   "entry": [
+    {
+     "a": "613",
+     "d": 1200,
+     "c": 0
+    },
+    {
+     "a": "44566",
+     "d": 240,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 1440
+    }
+   ],
+   "lib": "Loyer, prélèvement"
+  },
+  {
+   "h": "La paie, version simplifiée",
+   "html": "<p>Le salaire <b>brut</b> est la charge de rémunération (<code>641</code>). On en retient les <b>cotisations salariales</b> dues aux organismes (<code>431</code>) ; le reste est le <b>net à payer</b> (<code>421</code>). L'employeur supporte en plus des <b>cotisations patronales</b> (<code>645</code>), également dues à <code>431</code>.</p>\n<p>Exemple : bruts 20 000, cotisations salariales 4 400, cotisations patronales 8 400.</p>",
+   "entry": [
+    {
+     "a": "641",
+     "d": 20000,
+     "c": 0
+    },
+    {
+     "a": "645",
+     "d": 8400,
+     "c": 0
+    },
+    {
+     "a": "421",
+     "d": 0,
+     "c": 15600
+    },
+    {
+     "a": "431",
+     "d": 0,
+     "c": 12800
+    }
+   ],
+   "lib": "Paie du mois"
+  },
+  {
+   "h": "Les échéances d'emprunt",
+   "html": "<p>Chaque échéance mélange deux choses : le <b>remboursement du capital</b>, qui réduit la dette (débit <code>164</code>), et les <b>intérêts</b>, qui sont une charge financière (débit <code>661</code>). Le total sort de la banque.</p>",
+   "entry": [
+    {
+     "a": "164",
+     "d": 2000,
+     "c": 0
+    },
+    {
+     "a": "661",
+     "d": 300,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 2300
+    }
+   ],
+   "lib": "Échéance d'emprunt"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "ecriture",
+   "q": "Encaissement d'un chèque de 3 600 € d'un client, en règlement de sa facture.",
+   "lib": "Encaissement client",
+   "palette": [
+    "512",
+    "411",
+    "707",
+    "530"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 3600,
+      "c": 0
+     },
+     {
+      "a": "411",
+      "d": 0,
+      "c": 3600
+     }
+    ]
+   ],
+   "why": "L'argent entre (débit 512), la créance s'éteint (crédit 411).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Facture de loyer : 1 200 € HT, TVA 20 %, prélevée directement sur le compte bancaire.",
+   "lib": "Loyer",
+   "palette": [
+    "613",
+    "44566",
+    "512",
+    "401"
+   ],
+   "sol": [
+    [
+     {
+      "a": "613",
+      "d": 1200,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 240,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 1440
+     }
+    ]
+   ],
+   "why": "Charge HT en 613, TVA déductible en 44566, et comme le paiement est immédiat, la contrepartie est la banque et non 401.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Prime d'assurance annuelle de 900 € payée par virement. L'assurance n'est pas soumise à TVA.",
+   "lib": "Assurance",
+   "palette": [
+    "616",
+    "44566",
+    "512",
+    "613"
+   ],
+   "sol": [
+    [
+     {
+      "a": "616",
+      "d": 900,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 900
+     }
+    ]
+   ],
+   "why": "Les primes d'assurance sont hors champ de la TVA : aucune TVA déductible à enregistrer.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Paie du mois : salaires bruts 20 000 €, cotisations salariales 4 400 €, cotisations patronales 8 400 €. Enregistrez l'ensemble en une seule écriture.",
+   "lib": "Paie",
+   "palette": [
+    "641",
+    "645",
+    "421",
+    "431",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "641",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "645",
+      "d": 8400,
+      "c": 0
+     },
+     {
+      "a": "421",
+      "d": 0,
+      "c": 15600
+     },
+     {
+      "a": "431",
+      "d": 0,
+      "c": 12800
+     }
+    ],
+    [
+     {
+      "a": "641",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "645",
+      "d": 8400,
+      "c": 0
+     },
+     {
+      "a": "421",
+      "d": 0,
+      "c": 15600
+     },
+     {
+      "a": "431",
+      "d": 0,
+      "c": 4400
+     },
+     {
+      "a": "431",
+      "d": 0,
+      "c": 8400
+     }
+    ]
+   ],
+   "why": "Net à payer = 20 000 − 4 400 = 15 600 (crédit 421). Dette envers les organismes = 4 400 + 8 400 = 12 800 (crédit 431). Charges : 641 pour le brut, 645 pour le patronal. Total débit = 28 400 = total crédit.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le net à payer aux salariés est enregistré :",
+   "opts": [
+    "Au débit de 641",
+    "Au crédit de 421",
+    "Au crédit de 431",
+    "Au débit de 512"
+   ],
+   "a": 1,
+   "why": "421 Personnel – Rémunérations dues est une dette envers les salariés, créditée à la paie et débitée au virement des salaires.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Échéance d'emprunt prélevée en banque : 2 000 € de capital et 300 € d'intérêts.",
+   "lib": "Échéance d'emprunt",
+   "palette": [
+    "164",
+    "661",
+    "512",
+    "1688"
+   ],
+   "sol": [
+    [
+     {
+      "a": "164",
+      "d": 2000,
+      "c": 0
+     },
+     {
+      "a": "661",
+      "d": 300,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 2300
+     }
+    ]
+   ],
+   "why": "Le capital remboursé réduit la dette (débit 164), les intérêts sont une charge financière (débit 661), le tout sort de la banque (crédit 512).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Emprunt de 100 000 € au taux annuel de 3 %. Quel est le montant des intérêts de la première année ?",
+   "a": 3000,
+   "unit": "€",
+   "why": "100 000 × 3 % = 3 000 €. Les années suivantes, les intérêts se calculent sur le capital restant dû, donc ils diminuent.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Retrait de 500 € d'espèces à la banque pour alimenter la caisse. Écriture directe :",
+   "opts": [
+    "Débit 512, crédit 530",
+    "Débit 530, crédit 512",
+    "Débit 530, crédit 6064",
+    "Débit 580, crédit 530"
+   ],
+   "a": 1,
+   "why": "La caisse reçoit (débit 530), la banque donne (crédit 512). Avec le compte de passage, on ferait 580/512 puis 530/580.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Facture de l'expert-comptable : honoraires 1 500 € HT, TVA 20 %, à payer le mois prochain.",
+   "lib": "Honoraires",
+   "palette": [
+    "6226",
+    "44566",
+    "401",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6226",
+      "d": 1500,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 300,
+      "c": 0
+     },
+     {
+      "a": "401",
+      "d": 0,
+      "c": 1800
+     }
+    ]
+   ],
+   "why": "Honoraires en 6226, TVA déductible, et dette fournisseur puisque le paiement est différé.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

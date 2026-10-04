@@ -1,0 +1,301 @@
+{
+ "id": "ue9-02",
+ "ue": "UE9",
+ "ordre": 2,
+ "title": "Le plan comptable et la partie double",
+ "resume": "Les 7 classes du PCG, le sens débit / crédit et vos premières écritures.",
+ "duree": "35 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Les 7 classes du Plan comptable général",
+   "html": "<p>Chaque compte porte un numéro dont le <b>premier chiffre</b> indique la classe. Les classes 1 à 5 sont des comptes de <b>bilan</b>, les classes 6 et 7 des comptes de <b>résultat</b>.</p>\n<ul>\n<li><b>1</b> Capitaux : capital <code>101</code>, réserves <code>106</code>, résultat <code>120</code>, emprunts <code>164</code>.</li>\n<li><b>2</b> Immobilisations : matériel industriel <code>2154</code>, informatique <code>2183</code>, amortissements <code>28…</code>.</li>\n<li><b>3</b> Stocks : marchandises <code>37</code>, matières <code>31</code>.</li>\n<li><b>4</b> Tiers : fournisseurs <code>401</code>, clients <code>411</code>, personnel <code>421</code>, État et TVA <code>44…</code>.</li>\n<li><b>5</b> Financiers : banque <code>512</code>, caisse <code>530</code>.</li>\n<li><b>6</b> Charges : achats <code>60</code>, services extérieurs <code>61/62</code>, personnel <code>64</code>, financières <code>66</code>, dotations <code>68</code>.</li>\n<li><b>7</b> Produits : ventes <code>70</code>, financiers <code>76</code>, exceptionnels <code>77</code>, reprises <code>78</code>.</li>\n</ul>\n<p>La numérotation est décimale : plus le numéro est long, plus le compte est précis (<code>4</code> → <code>44</code> → <code>445</code> → <code>44566</code>).</p>"
+  },
+  {
+   "h": "Débit à gauche, crédit à droite",
+   "html": "<p>Tout compte a deux colonnes. <b>Débit</b> à gauche, <b>crédit</b> à droite. Le sens dépend de la nature du compte :</p>\n<ul>\n<li>Comptes d'<b>actif</b> (classes 2, 3, 5, clients) et de <b>charges</b> (classe 6) : ils <b>augmentent au débit</b>.</li>\n<li>Comptes de <b>passif</b> (classe 1, fournisseurs, dettes) et de <b>produits</b> (classe 7) : ils <b>augmentent au crédit</b>.</li>\n</ul>\n<div class=\"note\"><b>Mnémonique.</b> Débit = emploi (ce que l'opération donne ou utilise), à gauche comme l'actif. Crédit = ressource (d'où ça vient), à droite comme le passif.</div>\n<p>Le piège classique : la <b>banque</b>. Quand de l'argent <i>entre</i>, on <b>débite</b> 512. Quand il <i>sort</i>, on <b>crédite</b> 512. C'est l'inverse du relevé que vous envoie votre banque, car la banque tient le compte de son point de vue.</p>"
+  },
+  {
+   "h": "La partie double",
+   "html": "<p>Toute opération touche au moins deux comptes et le <b>total des débits égale le total des crédits</b>. C'est ce qui garantit que le bilan reste équilibré.</p>\n<p>Exemple : achat de fournitures de bureau <span class=\"mono\">200 €</span> payé par chèque (on ignore la TVA pour l'instant).</p>",
+   "entry": [
+    {
+     "a": "6064",
+     "d": 200,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 200
+    }
+   ],
+   "lib": "Achat de fournitures, chèque n° 118"
+  },
+  {
+   "h": "Lire une écriture",
+   "html": "<p>Dans un journal, les comptes débités sont écrits en premier et alignés à gauche ; les comptes crédités sont décalés (traditionnellement précédés de « à »). Les montants sont dans deux colonnes séparées.</p>\n<p>Exemple : les associés apportent <span class=\"mono\">30 000 €</span> versés sur le compte bancaire de la société.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 30000,
+     "c": 0
+    },
+    {
+     "a": "101",
+     "d": 0,
+     "c": 30000
+    }
+   ],
+   "lib": "Apport en capital"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "tri",
+   "q": "À quelle classe appartient chaque compte ?",
+   "cats": [
+    "1 Capitaux",
+    "2 Immobilisations",
+    "3 Stocks",
+    "4 Tiers",
+    "5 Financiers",
+    "6 Charges",
+    "7 Produits"
+   ],
+   "items": [
+    [
+     "512 Banque",
+     4
+    ],
+    [
+     "401 Fournisseurs",
+     3
+    ],
+    [
+     "607 Achats de marchandises",
+     5
+    ],
+    [
+     "2183 Matériel informatique",
+     1
+    ],
+    [
+     "101 Capital",
+     0
+    ],
+    [
+     "707 Ventes de marchandises",
+     6
+    ],
+    [
+     "37 Stocks de marchandises",
+     2
+    ],
+    [
+     "164 Emprunts",
+     0
+    ],
+    [
+     "641 Rémunérations du personnel",
+     5
+    ],
+    [
+     "411 Clients",
+     3
+    ]
+   ],
+   "why": "Le premier chiffre du numéro donne la classe. Les emprunts (164) sont en classe 1 avec les capitaux : ce sont des ressources durables.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un compte d'actif (banque, matériel, clients) augmente :",
+   "opts": [
+    "Au débit",
+    "Au crédit",
+    "Des deux côtés",
+    "Cela dépend du montant"
+   ],
+   "a": 0,
+   "why": "Les emplois augmentent au débit. Quand on reçoit de l'argent, 512 est débité ; quand on acquiert une machine, 2154 est débité.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un compte de produit (ventes) augmente :",
+   "opts": [
+    "Au débit",
+    "Au crédit",
+    "Jamais, il reste fixe",
+    "Au débit si le client paie comptant"
+   ],
+   "a": 1,
+   "why": "Les produits sont des ressources : ils augmentent au crédit, comme le passif. Une vente crédite 707 (HT) et débite 411 ou 512.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un client règle sa facture par chèque. Quelle est l'écriture ?",
+   "opts": [
+    "Débit 411 Clients, crédit 512 Banque",
+    "Débit 512 Banque, crédit 411 Clients",
+    "Débit 707 Ventes, crédit 512 Banque",
+    "Débit 512 Banque, crédit 707 Ventes"
+   ],
+   "a": 1,
+   "why": "L'argent entre : 512 est débité. La créance s'éteint : 411 (compte d'actif) diminue, donc est crédité. La vente (707) avait déjà été enregistrée lors de la facturation.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Achat de fournitures de bureau pour 350 €, payé par carte bancaire. On ignore la TVA.",
+   "lib": "Fournitures de bureau",
+   "palette": [
+    "6064",
+    "512",
+    "401",
+    "607"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6064",
+      "d": 350,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 350
+     }
+    ]
+   ],
+   "why": "La charge (6064) augmente au débit. L'argent sort de la banque : 512 est crédité. Pas de 401 car le paiement est immédiat.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Les associés apportent 40 000 € en capital, versés sur le compte bancaire de la société.",
+   "lib": "Apport en capital",
+   "palette": [
+    "101",
+    "512",
+    "164",
+    "120"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 40000,
+      "c": 0
+     },
+     {
+      "a": "101",
+      "d": 0,
+      "c": 40000
+     }
+    ]
+   ],
+   "why": "La banque reçoit l'argent (débit 512). La ressource vient des associés : le capital (101) augmente au crédit.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "La banque verse un emprunt de 15 000 € sur le compte de l'entreprise.",
+   "lib": "Déblocage de l'emprunt",
+   "palette": [
+    "164",
+    "512",
+    "661",
+    "101"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 15000,
+      "c": 0
+     },
+     {
+      "a": "164",
+      "d": 0,
+      "c": 15000
+     }
+    ]
+   ],
+   "why": "L'argent entre (débit 512). La dette envers la banque naît : 164 est crédité. Les intérêts (661) viendront plus tard, à chaque échéance.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le solde du compte 401 Fournisseurs est normalement :",
+   "opts": [
+    "Débiteur",
+    "Créditeur",
+    "Nul",
+    "Égal au solde de 411"
+   ],
+   "a": 1,
+   "why": "401 est une dette : il augmente au crédit lors des factures reçues et diminue au débit lors des paiements. Il reste créditeur tant qu'on doit de l'argent.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Les classes 6 et 7 alimentent :",
+   "opts": [
+    "Le bilan uniquement",
+    "Le compte de résultat",
+    "La déclaration de TVA",
+    "Le plan de trésorerie"
+   ],
+   "a": 1,
+   "why": "Charges (6) et produits (7) constituent le compte de résultat. Leur solde, le résultat, est ensuite reporté au bilan dans les capitaux propres.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "L'entreprise règle 2 300 € à un fournisseur par virement, pour une facture reçue le mois dernier.",
+   "lib": "Règlement fournisseur",
+   "palette": [
+    "401",
+    "512",
+    "607",
+    "44566"
+   ],
+   "sol": [
+    [
+     {
+      "a": "401",
+      "d": 2300,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 2300
+     }
+    ]
+   ],
+   "why": "La dette diminue : 401 est débité. L'argent sort : 512 est crédité. L'achat et la TVA ont été enregistrés lors de la réception de la facture, pas au paiement.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

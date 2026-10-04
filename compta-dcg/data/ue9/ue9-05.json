@@ -1,0 +1,267 @@
+{
+ "id": "ue9-05",
+ "ue": "UE9",
+ "ordre": 5,
+ "title": "Immobilisations et amortissements",
+ "resume": "Acquisition, amortissement linéaire et dégressif, valeur nette comptable, cession.",
+ "duree": "50 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Qu'est-ce qu'une immobilisation ?",
+   "html": "<p>Un bien <b>durable</b> (utilisé plus d'un an) que l'entreprise <b>utilise</b> plutôt que de le vendre : machine, véhicule, ordinateur, mobilier, logiciel. Par tolérance fiscale, le petit matériel de moins de 500 € HT peut passer en charges.</p>\n<p>Le <b>coût d'acquisition</b> = prix d'achat HT + frais directs (transport, installation, mise en service) − réductions commerciales. La TVA va en <code>44562</code> et la dette en <code>404</code> Fournisseurs d'immobilisations.</p>",
+   "entry": [
+    {
+     "a": "2154",
+     "d": 24000,
+     "c": 0
+    },
+    {
+     "a": "44562",
+     "d": 4800,
+     "c": 0
+    },
+    {
+     "a": "404",
+     "d": 0,
+     "c": 28800
+    }
+   ],
+   "lib": "Acquisition d'une machine"
+  },
+  {
+   "h": "L'amortissement linéaire",
+   "html": "<p>L'amortissement répartit le coût du bien sur sa <b>durée d'utilité</b>. C'est une <b>charge calculée</b> (pas de sortie d'argent) : débit <code>6811</code>, crédit <code>28xx</code>.</p>\n<ul>\n<li>Taux linéaire = 1 ÷ durée (5 ans → 20 %).</li>\n<li>Annuité = base amortissable × taux. Base = coût − valeur résiduelle éventuelle.</li>\n<li>La première année, <b>prorata temporis</b> à partir de la <b>mise en service</b> : en mois (9/12) ou en jours sur 360.</li>\n<li>Le dernier exercice récupère le complément.</li>\n</ul>\n<p>Exemple : machine 24 000 €, 5 ans, mise en service le 1er janvier → 4 800 € par an.</p>",
+   "entry": [
+    {
+     "a": "6811",
+     "d": 4800,
+     "c": 0
+    },
+    {
+     "a": "28154",
+     "d": 0,
+     "c": 4800
+    }
+   ],
+   "lib": "Dotation annuelle"
+  },
+  {
+   "h": "L'amortissement dégressif (fiscal)",
+   "html": "<p>Autorisé pour certains biens neufs (matériel industriel notamment). Taux dégressif = taux linéaire × coefficient : <b>1,25</b> (3-4 ans), <b>1,75</b> (5-6 ans), <b>2,25</b> (plus de 6 ans). Il s'applique à la <b>valeur nette comptable</b> de début d'exercice, et le prorata se compte en mois depuis le <b>1er jour du mois d'acquisition</b>.</p>\n<p>Quand le taux linéaire sur la durée restante dépasse le taux dégressif, on bascule en linéaire sur le reste.</p>"
+  },
+  {
+   "h": "VNC et cession",
+   "html": "<p><b>Valeur nette comptable</b> = coût − amortissements cumulés. Quand on vend une immobilisation, deux écritures :</p>\n<ul>\n<li>Le <b>prix de cession</b> HT en produit exceptionnel <code>775</code>, TVA collectée, créance en <code>462</code> (ou 512).</li>\n<li>La <b>sortie du bien</b> : on solde le compte d'immobilisation (crédit 2xx pour le coût) et son amortissement (débit 28xx), la différence (la VNC) passe en charge <code>675</code>.</li>\n</ul>\n<p>Avant cela, on comptabilise la dotation complémentaire du 1er janvier à la date de cession.</p>",
+   "entry": [
+    {
+     "a": "675",
+     "d": 6000,
+     "c": 0
+    },
+    {
+     "a": "28182",
+     "d": 24000,
+     "c": 0
+    },
+    {
+     "a": "2182",
+     "d": 0,
+     "c": 30000
+    }
+   ],
+   "lib": "Sortie du véhicule cédé"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Un ordinateur acheté 1 500 € HT, destiné à être utilisé 4 ans, est :",
+   "opts": [
+    "Une charge (6064)",
+    "Une immobilisation (2183)",
+    "Un stock (37)",
+    "Une charge constatée d'avance (486)"
+   ],
+   "a": 1,
+   "why": "Bien durable utilisé par l'entreprise et au-dessus du seuil de 500 € HT : c'est une immobilisation, amortie sur sa durée d'utilité.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Acquisition d'une machine industrielle : 24 000 € HT, TVA 20 %, paiement à 60 jours.",
+   "lib": "Acquisition machine",
+   "palette": [
+    "2154",
+    "44562",
+    "44566",
+    "404",
+    "401"
+   ],
+   "sol": [
+    [
+     {
+      "a": "2154",
+      "d": 24000,
+      "c": 0
+     },
+     {
+      "a": "44562",
+      "d": 4800,
+      "c": 0
+     },
+     {
+      "a": "404",
+      "d": 0,
+      "c": 28800
+     }
+    ]
+   ],
+   "why": "Immobilisation au débit de 2154, TVA sur immobilisations en 44562 (pas 44566), dette envers le fournisseur d'immobilisations en 404 (pas 401).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Machine de 24 000 €, amortie en linéaire sur 5 ans, mise en service le 1er janvier N. Dotation de l'exercice N ?",
+   "a": 4800,
+   "unit": "€",
+   "why": "Taux = 1/5 = 20 %. 24 000 × 20 % = 4 800 €. Année complète, pas de prorata.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Véhicule de 30 000 €, linéaire sur 5 ans, mis en service le 1er avril N. Dotation de l'exercice N (prorata en mois) ?",
+   "a": 4500,
+   "unit": "€",
+   "why": "30 000 × 20 % × 9/12 = 4 500 €. Neuf mois d'avril à décembre inclus.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Enregistrez la dotation annuelle de 4 800 € sur la machine industrielle.",
+   "lib": "Dotation aux amortissements",
+   "palette": [
+    "6811",
+    "28154",
+    "2154",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6811",
+      "d": 4800,
+      "c": 0
+     },
+     {
+      "a": "28154",
+      "d": 0,
+      "c": 4800
+     }
+    ]
+   ],
+   "why": "La charge calculée au débit de 6811, le cumul d'amortissement au crédit de 28154. Le compte 2154 reste au coût d'acquisition : on ne le diminue jamais directement.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Machine de 24 000 €, linéaire 5 ans depuis le 1er janvier N. Quelle est la valeur nette comptable au 31 décembre N+2 ?",
+   "a": 9600,
+   "unit": "€",
+   "why": "Trois dotations de 4 800 = 14 400 cumulés. VNC = 24 000 − 14 400 = 9 600 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Matériel industriel de 50 000 € acquis le 1er janvier, durée 5 ans, amortissement dégressif. Première annuité ?",
+   "a": 17500,
+   "unit": "€",
+   "why": "Taux linéaire 20 % × coefficient 1,75 = 35 %. 50 000 × 35 % = 17 500 €. La 2e annuité se calculera sur la VNC de 32 500.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "La dotation aux amortissements est :",
+   "opts": [
+    "Une charge décaissée",
+    "Une charge calculée, sans sortie de trésorerie",
+    "Un produit exceptionnel",
+    "Une dette fiscale"
+   ],
+   "a": 1,
+   "why": "Aucun paiement n'a lieu : la trésorerie est sortie à l'achat. La dotation ne fait qu'étaler ce coût sur les exercices d'utilisation. C'est pourquoi on la réintègre dans la CAF.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Un bien coûte 20 000 € et a une valeur résiduelle estimée de 2 000 €. Quelle est la base amortissable ?",
+   "a": 18000,
+   "unit": "€",
+   "why": "Base = coût − valeur résiduelle = 18 000 €. Cette base n'est retenue que si la valeur résiduelle est significative et mesurable.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Cession d'un véhicule : coût 30 000 €, amortissements cumulés (y compris la dotation complémentaire) 24 000 €. Enregistrez la sortie du bien de l'actif.",
+   "lib": "Sortie d'immobilisation",
+   "palette": [
+    "675",
+    "28182",
+    "2182",
+    "775",
+    "462"
+   ],
+   "sol": [
+    [
+     {
+      "a": "675",
+      "d": 6000,
+      "c": 0
+     },
+     {
+      "a": "28182",
+      "d": 24000,
+      "c": 0
+     },
+     {
+      "a": "2182",
+      "d": 0,
+      "c": 30000
+     }
+    ]
+   ],
+   "why": "On solde l'amortissement (débit 28182) et le compte d'immobilisation (crédit 2182). La VNC de 6 000 devient une charge exceptionnelle (675). Le prix de vente fait l'objet d'une écriture séparée en 775.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le véhicule précédent est vendu 8 000 € HT. Où va le prix de cession ?",
+   "opts": [
+    "Au crédit de 2182",
+    "Au crédit de 775 Produits des cessions d'éléments d'actif",
+    "Au crédit de 707 Ventes de marchandises",
+    "Au crédit de 28182"
+   ],
+   "a": 1,
+   "why": "Vendre une immobilisation n'est pas l'activité courante : le produit est exceptionnel (775). Ici, 8 000 de produit contre 6 000 de VNC : plus-value de 2 000.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

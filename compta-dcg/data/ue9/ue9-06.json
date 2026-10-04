@@ -1,0 +1,313 @@
+{
+ "id": "ue9-06",
+ "ue": "UE9",
+ "ordre": 6,
+ "title": "Stocks, dépréciations et provisions",
+ "resume": "Variation de stock, créances douteuses, dépréciations d'actif et provisions pour risques.",
+ "duree": "45 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "L'inventaire intermittent",
+   "html": "<p>En cours d'année, les achats vont en <code>607</code> et le compte de stock <code>37</code> ne bouge pas. À la clôture, on <b>annule le stock initial</b> et on <b>constate le stock final</b> compté physiquement, via le compte <code>6037</code> Variation des stocks.</p>",
+   "entry": [
+    {
+     "a": "6037",
+     "d": 40000,
+     "c": 0
+    },
+    {
+     "a": "37",
+     "d": 0,
+     "c": 40000
+    }
+   ],
+   "lib": "Annulation du stock initial"
+  },
+  {
+   "h": "Lire la variation de stock",
+   "html": "<p>Variation (6037) = stock initial − stock final. Si le stock a augmenté, 6037 est <b>créditeur</b> : il diminue les charges, donc augmente le résultat. Logique : une partie des achats n'a pas été consommée.</p>\n<p><b>Coût d'achat des marchandises vendues</b> = achats + stock initial − stock final.</p>\n<p>Pour les produits finis, on utilise <code>355</code> et <code>7135</code> (production stockée), avec le signe inverse : stock final − stock initial.</p>",
+   "entry": [
+    {
+     "a": "37",
+     "d": 55000,
+     "c": 0
+    },
+    {
+     "a": "6037",
+     "d": 0,
+     "c": 55000
+    }
+   ],
+   "lib": "Constatation du stock final"
+  },
+  {
+   "h": "Dépréciations",
+   "html": "<p>Une <b>dépréciation</b> constate une perte de valeur <b>probable mais non définitive</b> d'un élément d'actif. C'est une charge calculée (<code>68…</code>) avec en contrepartie un compte en moins de l'actif (<code>29</code>, <code>39</code>, <code>49</code>).</p>\n<ul>\n<li>Stock : <code>68173</code> / <code>397</code>.</li>\n<li>Client en difficulté : on reclasse d'abord la créance <b>TTC</b> en <code>416</code> Clients douteux, puis on déprécie le montant <b>HT</b> probablement perdu : <code>68174</code> / <code>491</code>. La TVA n'est pas dépréciée car elle sera récupérée.</li>\n<li>Quand la situation s'améliore ou se dénoue : <b>reprise</b> <code>491</code> / <code>78174</code>.</li>\n</ul>"
+  },
+  {
+   "h": "Provisions et créances perdues",
+   "html": "<p>Une <b>provision</b> (classe 15) constate une <b>dette probable</b> : litige, garantie, amende. C'est un passif, pas une correction d'actif. Débit <code>6815</code>, crédit <code>1511</code>.</p>\n<p>Quand une créance est <b>définitivement perdue</b>, on sort le client douteux : la perte HT en <code>654</code>, la TVA récupérée au débit de <code>44571</code>, le TTC au crédit de <code>416</code>. Puis on reprend la dépréciation devenue sans objet.</p>",
+   "entry": [
+    {
+     "a": "654",
+     "d": 2000,
+     "c": 0
+    },
+    {
+     "a": "44571",
+     "d": 400,
+     "c": 0
+    },
+    {
+     "a": "416",
+     "d": 0,
+     "c": 2400
+    }
+   ],
+   "lib": "Créance irrécouvrable"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "calc",
+   "q": "Achats de marchandises de l'exercice : 300 000 €. Stock initial : 40 000 €. Stock final : 55 000 €. Coût d'achat des marchandises vendues ?",
+   "a": 285000,
+   "unit": "€",
+   "why": "300 000 + 40 000 − 55 000 = 285 000 €. Les 15 000 d'augmentation de stock n'ont pas été vendus, ils restent à l'actif.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "À la clôture, annulez le stock initial de marchandises de 40 000 €.",
+   "lib": "Annulation stock initial",
+   "palette": [
+    "6037",
+    "37",
+    "607",
+    "355"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6037",
+      "d": 40000,
+      "c": 0
+     },
+     {
+      "a": "37",
+      "d": 0,
+      "c": 40000
+     }
+    ]
+   ],
+   "why": "Le stock initial disparaît de l'actif (crédit 37) et devient une charge via la variation (débit 6037).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Constatez le stock final de marchandises compté à l'inventaire : 55 000 €.",
+   "lib": "Stock final",
+   "palette": [
+    "37",
+    "6037",
+    "607",
+    "7135"
+   ],
+   "sol": [
+    [
+     {
+      "a": "37",
+      "d": 55000,
+      "c": 0
+     },
+     {
+      "a": "6037",
+      "d": 0,
+      "c": 55000
+     }
+    ]
+   ],
+   "why": "Le stock final entre à l'actif (débit 37) et vient en déduction des charges (crédit 6037). Solde de 6037 : 40 000 − 55 000 = −15 000, créditeur.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le stock final est supérieur au stock initial. Effet sur le résultat :",
+   "opts": [
+    "Il diminue le résultat",
+    "Il augmente le résultat",
+    "Aucun effet",
+    "Il augmente la TVA à décaisser"
+   ],
+   "a": 1,
+   "why": "6037 est créditeur : les charges de l'exercice diminuent d'autant, donc le résultat augmente. Une partie des achats est reportée sur l'exercice suivant.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Un client doit 3 600 € TTC (TVA 20 %) et risque de ne payer que la moitié. Montant de la dépréciation à constater ?",
+   "a": 1500,
+   "unit": "€",
+   "why": "Base HT = 3 600 ÷ 1,2 = 3 000. Perte probable 50 % → 1 500 €. La TVA n'est pas dépréciée : si la créance est perdue, l'État la rembourse.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Reclassez d'abord la créance de 3 600 € TTC de ce client en client douteux.",
+   "lib": "Client douteux",
+   "palette": [
+    "416",
+    "411",
+    "491",
+    "654"
+   ],
+   "sol": [
+    [
+     {
+      "a": "416",
+      "d": 3600,
+      "c": 0
+     },
+     {
+      "a": "411",
+      "d": 0,
+      "c": 3600
+     }
+    ]
+   ],
+   "why": "Le reclassement se fait pour le montant TTC : la créance ne change pas de montant, seulement de catégorie.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Enregistrez la dépréciation de 1 500 € sur ce client douteux.",
+   "lib": "Dépréciation client",
+   "palette": [
+    "68174",
+    "491",
+    "416",
+    "654"
+   ],
+   "sol": [
+    [
+     {
+      "a": "68174",
+      "d": 1500,
+      "c": 0
+     },
+     {
+      "a": "491",
+      "d": 0,
+      "c": 1500
+     }
+    ]
+   ],
+   "why": "Charge calculée au débit de 68174, dépréciation au crédit de 491 (qui viendra en moins des créances à l'actif du bilan).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la différence entre une dépréciation et une provision ?",
+   "opts": [
+    "Aucune, ce sont des synonymes",
+    "La dépréciation diminue la valeur d'un actif ; la provision constate un passif probable",
+    "La provision concerne les stocks, la dépréciation les clients",
+    "La dépréciation est définitive, la provision est probable"
+   ],
+   "a": 1,
+   "why": "Dépréciation = correction en moins d'un élément d'actif (comptes 29, 39, 49). Provision = dette probable (classe 15). Les deux sont des charges calculées, réversibles par reprise.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Un litige avec un ancien salarié risque de coûter 5 000 €. Enregistrez la provision à la clôture.",
+   "lib": "Provision pour litige",
+   "palette": [
+    "6815",
+    "1511",
+    "491",
+    "421"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6815",
+      "d": 5000,
+      "c": 0
+     },
+     {
+      "a": "1511",
+      "d": 0,
+      "c": 5000
+     }
+    ]
+   ],
+   "why": "Dotation aux provisions d'exploitation au débit, provision pour litiges (passif) au crédit.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Un client douteux de 2 400 € TTC (HT 2 000, TVA 400) est en liquidation : la créance est définitivement perdue. Enregistrez la perte.",
+   "lib": "Créance irrécouvrable",
+   "palette": [
+    "654",
+    "44571",
+    "416",
+    "491",
+    "68174"
+   ],
+   "sol": [
+    [
+     {
+      "a": "654",
+      "d": 2000,
+      "c": 0
+     },
+     {
+      "a": "44571",
+      "d": 400,
+      "c": 0
+     },
+     {
+      "a": "416",
+      "d": 0,
+      "c": 2400
+     }
+    ]
+   ],
+   "why": "La perte HT en charge (654), la TVA est récupérée en diminuant la TVA collectée (débit 44571), le client douteux est soldé pour le TTC. La dépréciation existante sera ensuite reprise (491 / 78174).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Une dépréciation de stock se comptabilise :",
+   "opts": [
+    "Débit 68173, crédit 397",
+    "Débit 37, crédit 6037",
+    "Débit 397, crédit 68173",
+    "Débit 6037, crédit 397"
+   ],
+   "a": 0,
+   "why": "Charge calculée au débit (68173), compte de dépréciation au crédit (397). Le stock lui-même (37) reste à sa valeur d'inventaire.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "id": "ue6-01",
+ "ue": "UE6",
+ "ordre": 1,
+ "title": "Lire les comptes : vers le DSCG",
+ "resume": "Soldes intermédiaires de gestion, CAF, bilan fonctionnel : les premiers outils d'analyse financière.",
+ "duree": "40 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Les soldes intermédiaires de gestion (SIG)",
+   "html": "<p>Le compte de résultat se relit en cascade pour comprendre d'où vient la performance :</p>\n<ul>\n<li><b>Marge commerciale</b> = ventes de marchandises − coût d'achat des marchandises vendues (achats ± variation de stock).</li>\n<li><b>Production de l'exercice</b> = production vendue + stockée + immobilisée.</li>\n<li><b>Valeur ajoutée</b> = marge commerciale + production − consommations en provenance des tiers (achats de matières, services extérieurs 61/62).</li>\n<li><b>Excédent brut d'exploitation (EBE)</b> = VA + subventions d'exploitation − impôts et taxes − charges de personnel. C'est la trésorerie potentielle de l'exploitation, avant amortissements et financement.</li>\n<li><b>Résultat d'exploitation</b> = EBE + reprises et autres produits − dotations et autres charges.</li>\n<li>Puis résultat financier, résultat exceptionnel, impôt, résultat net.</li>\n</ul>"
+  },
+  {
+   "h": "La capacité d'autofinancement (CAF)",
+   "html": "<p>La CAF mesure les <b>ressources internes</b> dégagées par l'activité : ce qui reste pour investir, rembourser, distribuer. Méthode additive :</p>\n<p class=\"mono\">CAF = résultat net + dotations (68) − reprises (78) − produits des cessions (775) + valeurs comptables des actifs cédés (675)</p>\n<p>On neutralise les charges et produits <b>calculés</b> (non monétaires) et les éléments de cession, qui relèvent de l'investissement.</p>"
+  },
+  {
+   "h": "Le bilan fonctionnel",
+   "html": "<p>On reclasse le bilan par fonction, en <b>valeurs brutes</b> (les amortissements et dépréciations passent en ressources stables).</p>\n<ul>\n<li><b>Fonds de roulement net global</b> (FRNG) = ressources stables (capitaux propres + amortissements + dettes financières) − emplois stables (immobilisations brutes).</li>\n<li><b>Besoin en fonds de roulement</b> (BFR) = actif circulant (stocks, créances) − dettes circulantes (fournisseurs, fiscales, sociales).</li>\n<li><b>Trésorerie nette</b> = FRNG − BFR = disponibilités − concours bancaires courants.</li>\n</ul>\n<div class=\"note\"><b>Lecture.</b> Un BFR positif signifie que le cycle d'exploitation consomme de l'argent (on paie les fournisseurs avant d'être payé par les clients). Il doit être couvert par le FRNG, sinon la trésorerie est négative.</div>"
+  },
+  {
+   "h": "Et après ?",
+   "html": "<p>Ces notions sont celles de l'UE6 Finance d'entreprise du DCG, qui prépare directement l'UE2 Finance du DSCG. La comptabilité approfondie (UE10 DCG) et la consolidation (UE4 DSCG) s'appuient, elles, sur tout ce que vous avez revu dans les modules 1 à 7.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "calc",
+   "q": "Ventes de marchandises : 500 000 €. Achats de marchandises : 300 000 €. Stock initial 40 000 €, stock final 55 000 €. Marge commerciale ?",
+   "a": 215000,
+   "unit": "€",
+   "why": "Coût d'achat des marchandises vendues = 300 000 + 40 000 − 55 000 = 285 000. Marge = 500 000 − 285 000 = 215 000 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Marge commerciale 215 000 €, pas de production, consommations en provenance des tiers 60 000 €. Valeur ajoutée ?",
+   "a": 155000,
+   "unit": "€",
+   "why": "VA = 215 000 − 60 000 = 155 000 €. C'est la richesse créée par l'entreprise, à partager entre personnel, État, prêteurs et actionnaires.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Valeur ajoutée 155 000 €, impôts et taxes 8 000 €, charges de personnel 95 000 €, pas de subvention. EBE ?",
+   "a": 52000,
+   "unit": "€",
+   "why": "EBE = 155 000 − 8 000 − 95 000 = 52 000 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Résultat net 20 000 €, dotations 18 000 €, reprises 2 000 €, produits des cessions d'actif 5 000 €, valeur comptable des actifs cédés 3 000 €. CAF ?",
+   "a": 34000,
+   "unit": "€",
+   "why": "20 000 + 18 000 − 2 000 − 5 000 + 3 000 = 34 000 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Ressources stables 420 000 €, emplois stables 350 000 €. FRNG ?",
+   "a": 70000,
+   "unit": "€",
+   "why": "FRNG = 420 000 − 350 000 = 70 000 €. L'entreprise finance ses immobilisations et dispose d'un excédent pour couvrir le BFR.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "FRNG 70 000 €. Actif circulant d'exploitation 150 000 €, dettes d'exploitation 95 000 €. Trésorerie nette ?",
+   "a": 15000,
+   "unit": "€",
+   "why": "BFR = 150 000 − 95 000 = 55 000. Trésorerie nette = FRNG − BFR = 70 000 − 55 000 = 15 000 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Un BFR positif signifie :",
+   "opts": [
+    "L'entreprise a trop de trésorerie",
+    "Le cycle d'exploitation génère un besoin de financement",
+    "Les fournisseurs financent intégralement les stocks et les clients",
+    "Le résultat est négatif"
+   ],
+   "a": 1,
+   "why": "Stocks et créances clients immobilisent plus d'argent que les dettes fournisseurs n'en apportent. Ce besoin doit être couvert par le FRNG ou par de la trésorerie à court terme.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "La CAF mesure :",
+   "opts": [
+    "La trésorerie disponible en banque",
+    "Le résultat avant impôt",
+    "Les ressources internes dégagées par l'activité, potentiel de trésorerie",
+    "Le montant des dividendes à verser"
+   ],
+   "a": 2,
+   "why": "La CAF n'est pas de la trésorerie réelle : les ventes ne sont pas forcément encaissées, les achats pas forcément payés. C'est un potentiel, à corriger de la variation du BFR pour obtenir le flux de trésorerie d'exploitation.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "L'EBE se calcule :",
+   "opts": [
+    "Avant dotations aux amortissements et charges financières",
+    "Après dotations aux amortissements",
+    "Après impôt sur les bénéfices",
+    "En retirant les charges exceptionnelles"
+   ],
+   "a": 0,
+   "why": "L'EBE ne retient que les flux d'exploitation réels : il ignore les charges calculées (amortissements), la politique de financement (intérêts) et la fiscalité sur le bénéfice.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

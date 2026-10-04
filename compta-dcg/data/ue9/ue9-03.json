@@ -1,0 +1,355 @@
+{
+ "id": "ue9-03",
+ "ue": "UE9",
+ "ordre": 3,
+ "title": "Achats, ventes et TVA",
+ "resume": "Factures d'achat et de vente, TVA collectée et déductible, réductions, déclaration.",
+ "duree": "45 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "La TVA : collectée pour l'État, jamais une charge",
+   "html": "<p>L'entreprise facture la TVA à ses clients (<b>TVA collectée</b>, <code>44571</code>) et paie la TVA à ses fournisseurs (<b>TVA déductible</b>, <code>44566</code> sur biens et services, <code>44562</code> sur immobilisations). Elle reverse la différence à l'État.</p>\n<ul>\n<li>Taux normal <b>20 %</b> ; intermédiaire 10 % ; réduit 5,5 % ; particulier 2,1 %.</li>\n<li>HT × 1,20 = TTC. TTC ÷ 1,20 = HT. TVA = HT × 20 %.</li>\n</ul>\n<div class=\"note\"><b>Conséquence.</b> Les charges et les produits sont enregistrés <b>hors taxes</b>. Les comptes de tiers (401, 411) sont enregistrés <b>TTC</b>, car c'est ce qui se paie.</div>"
+  },
+  {
+   "h": "Facture d'achat",
+   "html": "<p>Réception d'une facture de marchandises : <span class=\"mono\">4 000 € HT</span>, TVA 20 % = 800, TTC 4 800.</p>",
+   "entry": [
+    {
+     "a": "607",
+     "d": 4000,
+     "c": 0
+    },
+    {
+     "a": "44566",
+     "d": 800,
+     "c": 0
+    },
+    {
+     "a": "401",
+     "d": 0,
+     "c": 4800
+    }
+   ],
+   "lib": "Facture n° A-512, fournisseur Nordal"
+  },
+  {
+   "h": "Facture de vente",
+   "html": "<p>Vente de marchandises : <span class=\"mono\">10 000 € HT</span>, TVA 2 000, TTC 12 000. Le client paiera à 30 jours.</p>",
+   "entry": [
+    {
+     "a": "411",
+     "d": 12000,
+     "c": 0
+    },
+    {
+     "a": "707",
+     "d": 0,
+     "c": 10000
+    },
+    {
+     "a": "44571",
+     "d": 0,
+     "c": 2000
+    }
+   ],
+   "lib": "Facture n° V-087, client Hekla"
+  },
+  {
+   "h": "Réductions sur facture",
+   "html": "<ul>\n<li><b>Rabais, remise, ristourne</b> (réductions commerciales) <i>portées sur la facture</i> : on enregistre directement le <b>net commercial</b>. Aucun compte spécifique.</li>\n<li>Réductions commerciales accordées <i>après</i> la facture (avoir) : <code>609</code> chez l'acheteur, <code>709</code> chez le vendeur.</li>\n<li><b>Escompte de règlement</b> (réduction financière pour paiement rapide) : <code>665</code> Escomptes accordés (charge) chez le vendeur, <code>765</code> Escomptes obtenus (produit) chez l'acheteur. La TVA se calcule sur le net financier.</li>\n</ul>"
+  },
+  {
+   "h": "La déclaration de TVA",
+   "html": "<p>Chaque mois : TVA à décaisser = TVA collectée − TVA déductible. On solde les comptes de TVA et on constate la dette en <code>44551</code>. Si la déductible dépasse la collectée, l'excédent va en <code>44567</code> Crédit de TVA.</p>\n<p>Exemple : collectée 9 600, déductible ABS 5 200, déductible immobilisations 1 400 → 3 000 à décaisser.</p>",
+   "entry": [
+    {
+     "a": "44571",
+     "d": 9600,
+     "c": 0
+    },
+    {
+     "a": "44566",
+     "d": 0,
+     "c": 5200
+    },
+    {
+     "a": "44562",
+     "d": 0,
+     "c": 1400
+    },
+    {
+     "a": "44551",
+     "d": 0,
+     "c": 3000
+    }
+   ],
+   "lib": "Déclaration de TVA du mois"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
+   "note": "Numéros et intitulés de comptes"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "calc",
+   "q": "Un achat de 2 500 € HT au taux de 20 %. Quel est le montant de la TVA ?",
+   "a": 500,
+   "unit": "€",
+   "why": "2 500 × 20 % = 500 €. Le TTC est donc 3 000 €.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "Une facture TTC de 1 800 € au taux de 20 %. Quel est le montant HT ?",
+   "a": 1500,
+   "unit": "€",
+   "why": "HT = TTC ÷ 1,20 = 1 800 ÷ 1,2 = 1 500 €. Erreur classique : retirer 20 % du TTC donne 1 440, ce qui est faux.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Réception d'une facture de marchandises : 4 000 € HT, TVA 20 %. Paiement à 30 jours.",
+   "lib": "Facture fournisseur",
+   "palette": [
+    "607",
+    "44566",
+    "401",
+    "512",
+    "44571"
+   ],
+   "sol": [
+    [
+     {
+      "a": "607",
+      "d": 4000,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 800,
+      "c": 0
+     },
+     {
+      "a": "401",
+      "d": 0,
+      "c": 4800
+     }
+    ]
+   ],
+   "why": "La charge HT au débit de 607, la TVA déductible au débit de 44566, la dette TTC au crédit de 401. La banque n'intervient qu'au paiement.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Vente de marchandises à un client : 10 000 € HT, TVA 20 %, règlement sous 30 jours.",
+   "lib": "Facture client",
+   "palette": [
+    "411",
+    "707",
+    "44571",
+    "512",
+    "44566"
+   ],
+   "sol": [
+    [
+     {
+      "a": "411",
+      "d": 12000,
+      "c": 0
+     },
+     {
+      "a": "707",
+      "d": 0,
+      "c": 10000
+     },
+     {
+      "a": "44571",
+      "d": 0,
+      "c": 2000
+     }
+    ]
+   ],
+   "why": "La créance TTC au débit de 411. Le produit HT au crédit de 707. La TVA collectée au crédit de 44571 : c'est une dette envers l'État.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Règlement par virement de la facture fournisseur de 4 800 € TTC enregistrée précédemment.",
+   "lib": "Virement fournisseur",
+   "palette": [
+    "401",
+    "512",
+    "607",
+    "44566"
+   ],
+   "sol": [
+    [
+     {
+      "a": "401",
+      "d": 4800,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 4800
+     }
+    ]
+   ],
+   "why": "On éteint la dette (débit 401) et l'argent sort (crédit 512). Rien en charges ni en TVA : tout a été enregistré à la facture.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Vente de prestations de services : 2 000 € HT, TVA 20 %, à crédit.",
+   "lib": "Facture de prestation",
+   "palette": [
+    "411",
+    "706",
+    "707",
+    "44571"
+   ],
+   "sol": [
+    [
+     {
+      "a": "411",
+      "d": 2400,
+      "c": 0
+     },
+     {
+      "a": "706",
+      "d": 0,
+      "c": 2000
+     },
+     {
+      "a": "44571",
+      "d": 0,
+      "c": 400
+     }
+    ]
+   ],
+   "why": "Les services se vendent en 706, pas en 707 (réservé aux marchandises revendues en l'état).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Une remise de 10 % figure sur la facture d'achat. Comment l'enregistrer ?",
+   "opts": [
+    "Au crédit de 609 RRR obtenus",
+    "On enregistre directement le net commercial dans 607",
+    "Au crédit de 765 Escomptes obtenus",
+    "Au débit de 607 pour le montant de la remise"
+   ],
+   "a": 1,
+   "why": "Une réduction commerciale sur la facture d'origine n'est jamais comptabilisée à part : on prend le net. 609 ne sert que pour les réductions obtenues après coup (avoir).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Facture d'achat de marchandises : brut 5 000 € HT, remise 10 %, TVA 20 % sur le net. À crédit.",
+   "lib": "Facture avec remise",
+   "palette": [
+    "607",
+    "609",
+    "44566",
+    "401"
+   ],
+   "sol": [
+    [
+     {
+      "a": "607",
+      "d": 4500,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 900,
+      "c": 0
+     },
+     {
+      "a": "401",
+      "d": 0,
+      "c": 5400
+     }
+    ]
+   ],
+   "why": "Net commercial = 5 000 − 500 = 4 500. TVA = 900. TTC = 5 400. La remise sur facture ne passe pas par 609.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "q": "Le vendeur accorde un escompte de 2 % à un client qui paie comptant. Chez le vendeur, l'escompte est :",
+   "opts": [
+    "Un produit financier (765)",
+    "Une charge financière (665)",
+    "Une réduction du compte 707",
+    "Une charge d'exploitation (609)"
+   ],
+   "a": 1,
+   "why": "L'escompte est une réduction financière : le vendeur renonce à une partie du prix pour être payé plus vite. C'est une charge financière pour lui (665) et un produit financier pour l'acheteur (765).",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "q": "TVA collectée du mois : 9 600 €. TVA déductible sur biens et services : 5 200 €. TVA déductible sur immobilisations : 1 400 €. Quel est le montant de la TVA à décaisser ?",
+   "a": 3000,
+   "unit": "€",
+   "why": "9 600 − 5 200 − 1 400 = 3 000 €. Si le résultat avait été négatif, on aurait un crédit de TVA (44567) à reporter.",
+   "src": "PCG",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "q": "Enregistrez la déclaration de TVA : collectée 9 600 €, déductible ABS 5 200 €, déductible immobilisations 1 400 €.",
+   "lib": "Déclaration de TVA",
+   "palette": [
+    "44571",
+    "44566",
+    "44562",
+    "44551",
+    "44567",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "44571",
+      "d": 9600,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 0,
+      "c": 5200
+     },
+     {
+      "a": "44562",
+      "d": 0,
+      "c": 1400
+     },
+     {
+      "a": "44551",
+      "d": 0,
+      "c": 3000
+     }
+    ]
+   ],
+   "why": "On solde la collectée (débit 44571) et les déductibles (crédit 44566 et 44562), la différence devient une dette envers l'État (crédit 44551). Le paiement viendra ensuite : débit 44551, crédit 512.",
+   "src": "PCG",
+   "fiab": "stable"
+  }
+ ]
+}

@@ -1,0 +1,637 @@
+<title>Débit Crédit</title>
+<meta name="description" content="Réviser le DCG matière par matière, avec tests quotidiens, plan comptable commenté et révisions espacées.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : un livre-journal (marge rouge, lignes réglées), onglets d'intercalaires, et un ciel d'expédition pour la progression. */
+:root {
+  --paper: #f5f7f1; --card: #ffffff; --ink: #1c2630; --muted: #5d6a74;
+  --rule: #cfd8cb; --rule-soft: #e4eae0; --margin: #b4302c;
+  --accent: #1f5f8b; --accent-soft: #e3eef6;
+  --ok: #2d7a4f; --ok-soft: #e2f1e7; --bad: #b4302c; --bad-soft: #f8e4e2; --warn: #9a6a12; --warn-soft: #f6ecd4;
+  --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
+  --display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
+    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
+  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 60px; }
+header.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
+.brand { font-family: var(--display); font-weight: 600; font-size: 1.65rem; letter-spacing: -0.01em; margin: 0; text-wrap: balance; cursor: pointer; }
+.brand span { color: var(--margin); }
+.tagline { color: var(--muted); font-size: 0.92rem; margin: 0; }
+.rank { font: 500 0.78rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.rank b { color: var(--ink); font-weight: 500; }
+nav.tabs { display: flex; gap: 2px; margin-top: 12px; border-bottom: 1px solid var(--rule); overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { background: none; border: 1px solid transparent; border-bottom: none; color: var(--muted); font: 500 0.92rem var(--body); padding: 8px 12px; cursor: pointer; border-radius: 6px 6px 0 0; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); background: var(--card); border-color: var(--rule); position: relative; top: 1px; }
+button:focus-visible, select:focus-visible, input:focus-visible, .row:focus-visible, .acct:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.badge { display: inline-block; min-width: 1.4em; padding: 0 6px; border-radius: 999px; background: var(--margin); color: #fff; font: 500 0.72rem var(--mono); margin-left: 5px; vertical-align: 1px; }
+.badge.zero { background: var(--rule); color: var(--muted); }
+main { margin-top: 18px; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; margin: 0 0 8px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 1.1rem; margin: 22px 0 6px; text-wrap: balance; }
+p { margin: 0 0 10px; max-width: 70ch; }
+.muted { color: var(--muted); }
+.small { font-size: 0.86rem; }
+.eyebrow { font: 500 0.74rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.board { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin: 14px 0 18px; }
+.tile { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 13px; }
+.tile .big { font: 500 1.5rem var(--mono); font-variant-numeric: tabular-nums; }
+.tile .lab { color: var(--muted); font-size: 0.83rem; }
+.cta { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--margin); border-radius: 8px; padding: 14px 16px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.cta .t { font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
+.ledger { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.row { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px 12px 0; border-top: 1px solid var(--rule-soft); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-bottom: 0; color: inherit; font: inherit; }
+.row:first-child { border-top: none; }
+.row:hover { background: var(--accent-soft); }
+.row .num { font: 500 0.88rem var(--mono); color: var(--margin); text-align: center; border-right: 1px solid var(--margin); align-self: stretch; display: flex; align-items: center; justify-content: center; }
+.row .ttl { font-weight: 600; }
+.row .sub { color: var(--muted); font-size: 0.86rem; }
+.row .right { text-align: right; min-width: 110px; }
+.bar { height: 6px; background: var(--rule-soft); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.bar.full i { background: var(--ok); }
+.pill { display: inline-block; font: 500 0.7rem var(--mono); letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; background: var(--rule-soft); color: var(--muted); white-space: nowrap; }
+.pill.next { background: var(--accent-soft); color: var(--accent); }
+.pill.done { background: var(--ok-soft); color: var(--ok); }
+.pill.prog { background: var(--warn-soft); color: var(--warn); }
+.pill.year { background: var(--warn-soft); color: var(--warn); }
+.pill.new { background: var(--accent-soft); color: var(--accent); }
+.pill.del { background: var(--bad-soft); color: var(--bad); }
+.ues { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.ue { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; cursor: pointer; text-align: left; color: inherit; font: inherit; display: grid; gap: 4px; }
+.ue:hover { border-color: var(--accent); }
+.ue .code { font: 500 0.74rem var(--mono); letter-spacing: 0.08em; color: var(--margin); }
+.ue .nom { font-family: var(--display); font-weight: 600; font-size: 1.12rem; }
+.ue .intro { color: var(--muted); font-size: 0.86rem; }
+.lesson { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.lesson p, .lesson ul, .lesson ol { max-width: 70ch; }
+.lesson ul, .lesson ol { margin: 0 0 10px; padding-left: 20px; }
+.lesson li { margin-bottom: 4px; }
+.lesson table { border-collapse: collapse; margin: 8px 0 12px; font-size: 0.92rem; }
+.lesson th, .lesson td { border: 1px solid var(--rule); padding: 5px 8px; text-align: left; vertical-align: top; }
+.lesson th { background: var(--rule-soft); font-weight: 600; }
+.twrap-l { overflow-x: auto; }
+.note { border-left: 3px solid var(--margin); padding: 6px 12px; background: var(--paper); margin: 10px 0; max-width: 70ch; border-radius: 0 6px 6px 0; }
+.note b { color: var(--margin); }
+code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--rule-soft); padding: 0 4px; border-radius: 3px; }
+.sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
+.sources li { margin-bottom: 3px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
+button.btn { font: 500 0.95rem var(--body); padding: 9px 16px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+button.btn.ghost { background: transparent; color: var(--accent); }
+button.btn.quiet { background: transparent; color: var(--muted); border-color: var(--rule); }
+button.btn.red { background: var(--margin); border-color: var(--margin); }
+button.btn:disabled { opacity: 0.5; cursor: default; }
+.crumb { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.crumb button { background: none; border: none; color: var(--accent); cursor: pointer; font: inherit; padding: 0; }
+.jwrap { overflow-x: auto; margin: 10px 0 14px; }
+table.journal { border-collapse: collapse; width: 100%; min-width: 420px; font-size: 0.93rem; background: var(--card); }
+table.journal th { text-align: left; font: 500 0.72rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1px solid var(--ink); }
+table.journal td { padding: 5px 8px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; }
+table.journal td.n { font-family: var(--mono); white-space: nowrap; }
+table.journal td.amt { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; width: 110px; border-left: 1px solid var(--rule); }
+table.journal tr.credit td.lib { padding-left: 32px; }
+table.journal tr.credit td.n { padding-left: 24px; }
+table.journal tr.total td { border-top: 1px solid var(--ink); border-bottom: none; font-weight: 600; }
+table.journal caption { caption-side: top; text-align: left; font-size: 0.85rem; color: var(--muted); padding: 0 0 4px; }
+.journal input, .journal select { font: inherit; color: inherit; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 5px 6px; width: 100%; min-width: 0; }
+.journal input.amt-in { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.journal td.del { width: 34px; text-align: center; }
+.journal td.del button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 2px 6px; }
+tr.ok-line td.lib::after { content: " ✓"; color: var(--ok); }
+tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
+.palette { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.chip { font: 0.82rem var(--body); border: 1px solid var(--rule); background: var(--paper); border-radius: 999px; padding: 3px 10px; color: var(--ink); }
+.chip b { font-family: var(--mono); font-weight: 500; color: var(--accent); margin-right: 4px; }
+.exo { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.exo .meta { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; margin-bottom: 8px; }
+.exo .q { font-size: 1.05rem; font-weight: 500; max-width: 72ch; margin-bottom: 12px; white-space: pre-line; }
+.opts { display: grid; gap: 8px; }
+.opt { text-align: left; font: inherit; background: var(--paper); border: 1px solid var(--rule); color: var(--ink); border-radius: 6px; padding: 10px 12px; cursor: pointer; display: grid; grid-template-columns: 24px 1fr; gap: 8px; align-items: start; }
+.opt .k { font-family: var(--mono); color: var(--muted); }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opt.right { border-color: var(--ok); background: var(--ok-soft); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.opt.missed { border-color: var(--warn); background: var(--warn-soft); }
+.opt:disabled { cursor: default; }
+.calc { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.calc input { font: 1.05rem var(--mono); font-variant-numeric: tabular-nums; text-align: right; width: 180px; max-width: 100%; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.calc .unit { color: var(--muted); }
+.tri { display: grid; gap: 8px; }
+.tri-row { display: grid; grid-template-columns: 1fr minmax(160px, 240px); gap: 10px; align-items: center; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper); }
+.tri-row select { font: inherit; color: inherit; background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: 6px; }
+.tri-row.right { border-color: var(--ok); }
+.tri-row.wrong { border-color: var(--bad); }
+.feedback { margin-top: 14px; padding: 12px 14px; border-radius: 6px; border: 1px solid; max-width: 72ch; }
+.feedback.ok { border-color: var(--ok); background: var(--ok-soft); }
+.feedback.bad { border-color: var(--bad); background: var(--bad-soft); }
+.feedback p:last-child { margin-bottom: 0; }
+.feedback .src { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+.progress { font: 500 0.85rem var(--mono); color: var(--muted); }
+.balance { font: 0.85rem var(--mono); color: var(--muted); margin-top: 4px; text-align: right; }
+.balance.off { color: var(--bad); }
+.balance.on { color: var(--ok); }
+.classes { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 8px; margin-bottom: 14px; }
+.cls { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; background: var(--card); font-size: 0.84rem; cursor: pointer; text-align: left; color: inherit; font-family: inherit; }
+.cls[aria-pressed="true"] { border-color: var(--margin); background: var(--accent-soft); }
+.cls .c { font: 500 1.3rem var(--mono); color: var(--margin); }
+.search { width: 100%; font: 1rem var(--body); padding: 10px 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); color: var(--ink); margin-bottom: 10px; }
+.acct { display: block; width: 100%; text-align: left; background: var(--card); border: none; border-top: 1px solid var(--rule-soft); padding: 9px 12px; color: inherit; font: inherit; cursor: pointer; }
+.acct:first-child { border-top: none; }
+.acct .n { font-family: var(--mono); color: var(--accent); display: inline-block; width: 68px; }
+.acct .s { float: right; color: var(--muted); font: 0.8rem var(--mono); }
+.acct-body { background: var(--paper); border-top: 1px solid var(--rule-soft); padding: 10px 14px 12px 80px; font-size: 0.93rem; }
+.acct-body p { max-width: 72ch; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
+.filters label { font-size: 0.86rem; color: var(--muted); display: flex; gap: 4px; align-items: center; }
+.sky { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: var(--sky1); margin-bottom: 14px; }
+.sky canvas { display: block; width: 100%; height: auto; }
+.sky .legend { position: absolute; right: 12px; bottom: 10px; text-align: right; color: #dfe7f3; font: 500 0.78rem var(--mono); letter-spacing: 0.05em; text-transform: uppercase; text-shadow: 0 1px 2px #000; }
+.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.bdg { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; background: var(--card); font-size: 0.86rem; }
+.bdg.off { opacity: 0.5; }
+.bdg .ic { font-size: 1.2rem; }
+.bdg b { display: block; }
+.hist { display: flex; gap: 3px; align-items: flex-end; height: 70px; margin: 8px 0 4px; }
+.hist i { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-width: 4px; opacity: 0.85; }
+.hist i.none { background: var(--rule-soft); }
+details.save { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+details.save summary { cursor: pointer; }
+details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono); margin-top: 8px; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 8px; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 90vw; }
+.toast.show { opacity: 1; }
+.xp-pop { position: fixed; right: 16px; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: #fff; font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
+.xp-pop.show { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .toast, .xp-pop { transition: none; } }
+@media (max-width: 480px) {
+  .row { grid-template-columns: 40px 1fr; }
+  .row .right { grid-column: 2; text-align: left; }
+  .tri-row { grid-template-columns: 1fr; }
+  .acct-body { padding-left: 14px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 class="brand" id="brand">Débit <span>·</span> Crédit</h1>
+      <p class="tagline">Réviser le DCG pour aborder le DSCG : six matières, un test chaque jour, le plan comptable expliqué.</p>
+    </div>
+    <div class="rank" id="rankBox"></div>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="accueil" aria-selected="true">Aujourd'hui</button>
+    <button role="tab" data-tab="matieres" aria-selected="false">Matières</button>
+    <button role="tab" data-tab="test" aria-selected="false">Test du jour</button>
+    <button role="tab" data-tab="revisions" aria-selected="false">Révisions <span class="badge zero" id="dueBadge">0</span></button>
+    <button role="tab" data-tab="pcg" aria-selected="false">Plan comptable</button>
+    <button role="tab" data-tab="expedition" aria-selected="false">Expédition</button>
+  </nav>
+  <main id="main"></main>
+  <details class="save">
+    <summary>Sauvegarde, transfert et informations</summary>
+    <p id="buildInfo"></p>
+    <p>La progression est gardée dans ce navigateur. Pour la transférer sur un autre ordinateur, copiez ce code, puis collez-le là-bas et appuyez sur « Restaurer ».</p>
+    <textarea id="saveBox" spellcheck="false" aria-label="Code de sauvegarde"></textarea>
+    <div class="actions">
+      <button class="btn quiet" id="copySave">Copier le code</button>
+      <button class="btn quiet" id="restoreSave">Restaurer depuis le code collé</button>
+      <button class="btn quiet" id="resetSave">Tout remettre à zéro</button>
+    </div>
+  </details>
+</div>
+<div class="toast" id="toast"></div>
+<div class="xp-pop" id="xpPop"></div>
+<script>
+const DATA = /*__DATA__*/null;
+</script>
+<script>
+// ---------- Données ----------
+const UES = DATA.ues;
+const UE_BY = Object.fromEntries(UES.map(u => [u.code, u]));
+const CHAPS = DATA.chapitres;
+const CHAP_BY = Object.fromEntries(CHAPS.map(c => [c.id, c]));
+const EXO = {};
+CHAPS.forEach(c => c.exercices.forEach(e => { EXO[e.id] = e; }));
+const PCG = DATA.pcg || [];
+const LABEL = Object.fromEntries(PCG.map(a => [a.num, a.label]));
+const CLASSES = [["1", "Capitaux"], ["2", "Immobilisations"], ["3", "Stocks"], ["4", "Tiers"], ["5", "Financiers"], ["6", "Charges"], ["7", "Produits"]];
+const TYPE_LABEL = { qcm: "Question à choix unique", multi: "Plusieurs réponses possibles", calc: "Calcul", tri: "Classement", ecriture: "Écriture au journal" };
+
+// ---------- Utilitaires ----------
+const fmt = n => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(n);
+const fmtAmt = n => n ? fmt(n) : "";
+function parseNum(s) { if (s == null) return NaN; const t = String(s).replace(/[\s  €%]/g, "").replace(",", "."); return t === "" ? NaN : Number(t); }
+const DAY = 86400000;
+const todayKey = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function mulberry(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function shuffle(a, rng) { const r = a.slice(); const rand = rng || Math.random; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+function toast(msg) { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2400); }
+function sanitize(html) { return String(html || "").replace(/<script[\s\S]*?<\/script>/gi, "").replace(/ on\w+="[^"]*"/gi, ""); }
+
+// ---------- État ----------
+const KEY = "debit-credit.v2";
+const INTERVALS = [1, 3, 7, 15, 30, 60];
+const ACQUIS = 3;
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {} });
+let state = EMPTY();
+function load() { try { const s = localStorage.getItem(KEY); if (s) state = Object.assign(EMPTY(), JSON.parse(s)); } catch (e) { } }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
+function card(id) { return state.cards[id] || { s: 0, due: 0, n: 0, ok: 0 }; }
+function record(id, ok, mode) {
+  const c = card(id); const ex = EXO[id];
+  c.n = (c.n || 0) + 1; if (ok) c.ok = (c.ok || 0) + 1;
+  if (ok) { c.s = Math.min(c.s + 1, INTERVALS.length); c.due = Date.now() + INTERVALS[c.s - 1] * DAY; }
+  else { c.s = 0; c.due = Date.now() + DAY; }
+  state.cards[id] = c;
+  const d = todayKey(); state.days[d] = (state.days[d] || 0) + 1;
+  if (ok && ex) addXp((mode === "revision" ? 5 : 10) * (ex.niveau || 1));
+  save(); updateBadge(); renderRank();
+}
+function addXp(n) { state.xp = (state.xp || 0) + n; const p = document.getElementById("xpPop"); p.textContent = `+${n} XP`; p.classList.add("show"); clearTimeout(addXp.h); addXp.h = setTimeout(() => p.classList.remove("show"), 1200); }
+const RANKS = [[0, "Mousse"], [400, "Matelot"], [1200, "Timonier"], [2500, "Second"], [4500, "Capitaine"], [7500, "Navigateur des aurores"], [12000, "Gardien du phare"]];
+function rank() { let r = RANKS[0], next = null; for (let i = 0; i < RANKS.length; i++) { if (state.xp >= RANKS[i][0]) { r = RANKS[i]; next = RANKS[i + 1] || null; } } return { name: r[1], from: r[0], next }; }
+function renderRank() { const r = rank(); document.getElementById("rankBox").innerHTML = `<b>${esc(r.name)}</b><br>${fmt(state.xp)} XP${r.next ? ` · ${fmt(r.next[0] - state.xp)} avant ${esc(r.next[1])}` : ""}`; }
+function chapMastery(ch) { if (!ch.exercices.length) return 0; return ch.exercices.reduce((a, e) => a + Math.min(card(e.id).s, ACQUIS), 0) / (ch.exercices.length * ACQUIS); }
+function ueChaps(code) { return CHAPS.filter(c => c.ue === code); }
+function ueMastery(code) { const cs = ueChaps(code); const n = cs.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return cs.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
+function globalMastery() { const n = CHAPS.reduce((a, c) => a + c.exercices.length, 0); if (!n) return 0; return CHAPS.reduce((a, c) => a + chapMastery(c) * c.exercices.length, 0) / n; }
+function chapStarted(ch) { return state.read[ch.id] || ch.exercices.some(e => card(e.id).n > 0); }
+function dueList() { const now = Date.now(); return Object.keys(EXO).filter(id => { const c = state.cards[id]; return c && c.n > 0 && c.due <= now; }); }
+function updateBadge() { const b = document.getElementById("dueBadge"); const n = dueList().length; b.textContent = n; b.classList.toggle("zero", n === 0); }
+function streak() { let n = 0; const d = new Date(); const k = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; if (!state.days[k(d)]) d.setDate(d.getDate() - 1); while (state.days[k(d)]) { n++; d.setDate(d.getDate() - 1); } return n; }
+function acquiredCount() { return Object.keys(EXO).filter(id => card(id).s >= ACQUIS).length; }
+function nextChapter() { for (const u of UES) { const c = ueChaps(u.code).find(ch => chapMastery(ch) < 0.999); if (c) return c; } return null; }
+
+// ---------- Journal ----------
+function journalHTML(lines, lib, caption) {
+  const debits = lines.filter(l => l.d), credits = lines.filter(l => l.c);
+  const td = debits.reduce((a, l) => a + l.d, 0), tc = credits.reduce((a, l) => a + l.c, 0);
+  const row = (l, cls) => `<tr class="${cls}"><td class="n">${esc(l.a)}</td><td class="lib">${esc(LABEL[l.a] || "")}</td><td class="amt">${fmtAmt(l.d)}</td><td class="amt">${fmtAmt(l.c)}</td></tr>`;
+  return `<div class="jwrap"><table class="journal">${caption ? `<caption>${esc(caption)}</caption>` : ""}<thead><tr><th>Compte</th><th>Intitulé</th><th style="text-align:right">Débit</th><th style="text-align:right">Crédit</th></tr></thead><tbody>${debits.map(l => row(l, "debit")).join("")}${credits.map(l => row(l, "credit")).join("")}${lib ? `<tr><td></td><td class="lib"><i class="muted">${esc(lib)}</i></td><td class="amt"></td><td class="amt"></td></tr>` : ""}<tr class="total"><td></td><td class="lib">Totaux</td><td class="amt">${fmt(td)}</td><td class="amt">${fmt(tc)}</td></tr></tbody></table></div>`;
+}
+
+// ---------- Rendu d'un exercice ----------
+function renderExercise(ex, host, onDone, meta) {
+  host.innerHTML = "";
+  const box = document.createElement("div"); box.className = "exo";
+  const fiab = /millésimé/.test(ex.fiab || "") ? `<span class="pill year">chiffres ${esc(ex.fiab.replace("millésimé ", ""))}</span>` : "";
+  box.innerHTML = `<div class="meta"><span class="eyebrow">${esc(meta || "")}</span><span class="progress">${TYPE_LABEL[ex.type] || ""} · niveau ${ex.niveau || 1} ${fiab}</span></div><div class="q">${esc(ex.q)}</div><div class="body"></div><div class="fb"></div><div class="actions"></div>`;
+  host.appendChild(box);
+  const body = box.querySelector(".body"), fb = box.querySelector(".fb"), act = box.querySelector(".actions");
+  let attempts = 0, finished = false;
+  const verify = document.createElement("button"); verify.className = "btn"; verify.textContent = "Vérifier";
+  const reveal = document.createElement("button"); reveal.className = "btn ghost"; reveal.textContent = "Voir la correction"; reveal.hidden = true;
+  const next = document.createElement("button"); next.className = "btn"; next.textContent = "Suivant"; next.hidden = true;
+  act.append(verify, reveal, next);
+  const srcLine = () => `<div class="src">Source : ${esc(ex.src || "")}${/millésimé/.test(ex.fiab || "") ? " · chiffre daté, à vérifier chaque année" : ""}</div>`;
+  function finish(ok, solutionHTML) {
+    finished = true; verify.hidden = true; reveal.hidden = true; next.hidden = false; next.focus();
+    const first = attempts === 1;
+    const head = ok ? (first ? "Juste du premier coup." : "Juste, après correction.") : "Voici la correction.";
+    fb.innerHTML = `<div class="feedback ${ok ? "ok" : "bad"}"><p><b>${head}</b></p>${solutionHTML || ""}<p>${sanitize(ex.why)}</p>${srcLine()}</div>`;
+    onDone(ok && first);
+  }
+  function miss(msg) { fb.innerHTML = `<div class="feedback bad"><p><b>Pas encore.</b> ${msg}</p></div>`; reveal.hidden = false; }
+  next.onclick = () => host.dispatchEvent(new CustomEvent("next", { bubbles: true }));
+
+  if (ex.type === "qcm" || ex.type === "multi") {
+    const multi = ex.type === "multi";
+    const answers = multi ? ex.a : [ex.a];
+    let chosen = new Set();
+    const order = shuffle(ex.opts.map((_, i) => i));
+    const wrap = document.createElement("div"); wrap.className = "opts";
+    order.forEach((oi, k) => {
+      const b = document.createElement("button"); b.className = "opt"; b.type = "button"; b.dataset.i = oi; b.setAttribute("aria-pressed", "false");
+      b.innerHTML = `<span class="k">${multi ? "☐" : "ABCDEF"[k]}</span><span>${esc(ex.opts[oi])}</span>`;
+      b.onclick = () => { if (finished) return; if (multi) { if (chosen.has(oi)) chosen.delete(oi); else chosen.add(oi); b.setAttribute("aria-pressed", chosen.has(oi) ? "true" : "false"); b.querySelector(".k").textContent = chosen.has(oi) ? "☑" : "☐"; } else { chosen = new Set([oi]); wrap.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o === b ? "true" : "false")); } };
+      wrap.appendChild(b);
+    });
+    body.appendChild(wrap);
+    const showSolution = () => wrap.querySelectorAll(".opt").forEach(o => { o.disabled = true; const i = +o.dataset.i; if (answers.includes(i)) o.classList.add(chosen.has(i) || !multi ? "right" : "missed"); else if (chosen.has(i)) o.classList.add("wrong"); });
+    verify.onclick = () => {
+      if (!chosen.size) { toast(multi ? "Cochez au moins une réponse." : "Choisissez une réponse."); return; }
+      attempts++;
+      const ok = answers.length === chosen.size && answers.every(a => chosen.has(a));
+      if (ok) { showSolution(); finish(true); }
+      else if (multi) { miss("La combinaison n'est pas la bonne. Vous pouvez modifier vos choix."); }
+      else { wrap.querySelector(`[data-i="${[...chosen][0]}"]`).classList.add("wrong"); miss("Cette réponse n'est pas la bonne. Vous pouvez en choisir une autre."); }
+    };
+    reveal.onclick = () => { attempts++; showSolution(); finish(false); };
+  }
+  if (ex.type === "calc") {
+    body.innerHTML = `<div class="calc"><input id="calc-${ex.id}" type="text" inputmode="decimal" autocomplete="off" placeholder="0"><span class="unit">${esc(ex.unit || "")}</span></div>`;
+    const inp = body.querySelector("input");
+    inp.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); if (!finished) verify.click(); else next.click(); } });
+    const tol = ex.tol ?? 0.5;
+    const sol = `<p class="mono">Réponse : ${fmt(ex.a)} ${esc(ex.unit || "")}</p>`;
+    verify.onclick = () => { const v = parseNum(inp.value); if (isNaN(v)) { toast("Saisissez un nombre."); return; } attempts++; if (Math.abs(v - ex.a) <= tol) finish(true, sol); else miss(`${fmt(v)} n'est pas le résultat attendu. Revérifiez le calcul.`); };
+    reveal.onclick = () => { attempts++; inp.value = fmt(ex.a); finish(false, sol); };
+    setTimeout(() => inp.focus(), 50);
+  }
+  if (ex.type === "tri") {
+    const wrap = document.createElement("div"); wrap.className = "tri";
+    shuffle(ex.items).forEach((it, k) => { const r = document.createElement("div"); r.className = "tri-row"; r.innerHTML = `<span>${esc(it[0])}</span><select id="tri-${ex.id}-${k}" aria-label="Catégorie pour ${esc(it[0])}"><option value="">Choisir…</option>${ex.cats.map((c, ci) => `<option value="${ci}">${esc(c)}</option>`).join("")}</select>`; r.dataset.a = it[1]; wrap.appendChild(r); });
+    body.appendChild(wrap);
+    const grade = lock => { let all = true; wrap.querySelectorAll(".tri-row").forEach(r => { const s = r.querySelector("select"); const ok = s.value !== "" && +s.value === +r.dataset.a; r.classList.toggle("right", ok); r.classList.toggle("wrong", !ok); if (!ok) all = false; if (lock) { s.value = r.dataset.a; s.disabled = true; r.classList.add("right"); r.classList.remove("wrong"); } }); return all; };
+    verify.onclick = () => { if ([...wrap.querySelectorAll("select")].some(s => s.value === "")) { toast("Classez tous les éléments."); return; } attempts++; if (grade(false)) { wrap.querySelectorAll("select").forEach(s => s.disabled = true); finish(true); } else miss("Les lignes marquées en rouge sont à revoir."); };
+    reveal.onclick = () => { attempts++; grade(true); finish(false); };
+  }
+  if (ex.type === "ecriture") {
+    const palette = shuffle(ex.palette);
+    body.innerHTML = `<div class="eyebrow">Comptes disponibles</div><div class="palette">${palette.map(a => `<span class="chip"><b>${esc(a)}</b>${esc(LABEL[a] || "")}</span>`).join("")}</div>
+<div class="jwrap"><table class="journal"><thead><tr><th>Compte</th><th>Intitulé</th><th style="text-align:right">Débit</th><th style="text-align:right">Crédit</th><th></th></tr></thead><tbody></tbody><tfoot><tr class="total"><td></td><td class="lib">Totaux</td><td class="amt" id="td-${ex.id}">0</td><td class="amt" id="tc-${ex.id}">0</td><td></td></tr></tfoot></table></div>
+<div class="balance" id="bal-${ex.id}">Débit et crédit doivent être égaux.</div><div class="actions"><button class="btn quiet" type="button" id="add-${ex.id}">+ Ajouter une ligne</button></div>`;
+    const tbody = body.querySelector("tbody");
+    const addLine = () => { const k = tbody.children.length; const tr = document.createElement("tr"); tr.innerHTML = `<td class="n" style="width:140px"><select id="acc-${ex.id}-${k}" aria-label="Compte"><option value="">—</option>${palette.map(a => `<option value="${esc(a)}">${esc(a)}</option>`).join("")}</select></td><td class="lib muted"></td><td class="amt"><input class="amt-in" id="d-${ex.id}-${k}" inputmode="decimal" aria-label="Débit"></td><td class="amt"><input class="amt-in" id="c-${ex.id}-${k}" inputmode="decimal" aria-label="Crédit"></td><td class="del"><button type="button" aria-label="Supprimer la ligne">×</button></td>`; tr.querySelector("select").onchange = e => { tr.querySelector(".lib").textContent = LABEL[e.target.value] || ""; }; tr.querySelector(".del button").onclick = () => { if (finished) return; tr.remove(); totals(); }; tr.querySelectorAll("input").forEach(i => i.addEventListener("input", totals)); tbody.appendChild(tr); };
+    const readLines = () => [...tbody.children].map(tr => ({ a: tr.querySelector("select").value, d: parseNum(tr.querySelector('[id^="d-"]').value) || 0, c: parseNum(tr.querySelector('[id^="c-"]').value) || 0, tr })).filter(l => l.a || l.d || l.c);
+    const totals = () => { const ls = readLines(); const td = ls.reduce((s, l) => s + l.d, 0), tc = ls.reduce((s, l) => s + l.c, 0); body.querySelector(`#td-${ex.id}`).textContent = fmt(td); body.querySelector(`#tc-${ex.id}`).textContent = fmt(tc); const bal = body.querySelector(`#bal-${ex.id}`); if (!td && !tc) { bal.textContent = "Débit et crédit doivent être égaux."; bal.className = "balance"; } else if (Math.abs(td - tc) < 0.005) { bal.textContent = "Équilibrée."; bal.className = "balance on"; } else { bal.textContent = `Écart : ${fmt(Math.abs(td - tc))}`; bal.className = "balance off"; } };
+    body.querySelector(`#add-${ex.id}`).onclick = addLine; addLine(); addLine();
+    const key = l => `${l.a}|${l.d > 0 ? "D" : "C"}|${Math.round((l.d || l.c) * 100)}`;
+    const matches = (lines, sol) => { if (lines.length !== sol.length) return false; const pool = sol.map(key); for (const l of lines) { const i = pool.indexOf(key(l)); if (i < 0) return false; pool.splice(i, 1); } return true; };
+    const solHTML = () => journalHTML(ex.sol[0], ex.lib, "Correction");
+    verify.onclick = () => {
+      const ls = readLines();
+      if (!ls.length) { toast("Saisissez au moins deux lignes."); return; }
+      if (ls.some(l => !l.a)) { toast("Chaque ligne doit avoir un compte."); return; }
+      if (ls.some(l => (l.d && l.c) || (!l.d && !l.c))) { toast("Un montant par ligne, au débit ou au crédit."); return; }
+      attempts++;
+      const td = ls.reduce((s, l) => s + l.d, 0), tc = ls.reduce((s, l) => s + l.c, 0);
+      if (Math.abs(td - tc) >= 0.005) { miss("L'écriture n'est pas équilibrée : total débit ≠ total crédit."); return; }
+      if (ex.sol.some(s => matches(ls, s))) { tbody.querySelectorAll("input,select").forEach(i => i.disabled = true); finish(true); return; }
+      const pool = ex.sol[0].map(key); ls.forEach(l => { const i = pool.indexOf(key(l)); l.tr.classList.remove("ok-line", "bad-line"); l.tr.classList.add(i >= 0 ? "ok-line" : "bad-line"); if (i >= 0) pool.splice(i, 1); });
+      miss(`L'écriture est équilibrée mais ne correspond pas à la solution attendue${pool.length ? ` (${pool.length} ligne${pool.length > 1 ? "s" : ""} manquante${pool.length > 1 ? "s" : ""} ou incorrecte${pool.length > 1 ? "s" : ""})` : ""}. Vérifiez les comptes et les montants HT / TTC.`);
+    };
+    reveal.onclick = () => { attempts++; tbody.querySelectorAll("input,select").forEach(i => i.disabled = true); finish(false, solHTML()); };
+  }
+}
+
+// Déroule une liste d'exercices dans host ; onEach(ex, ok) ; onEnd(score)
+function runSeries(host, list, labelFn, onEach, onEnd, progressEl) {
+  let i = 0, score = 0;
+  const step = () => {
+    if (i >= list.length) { onEnd(score); return; }
+    if (progressEl) progressEl.textContent = `${i + 1} / ${list.length}`;
+    renderExercise(list[i], host, ok => { onEach(list[i], ok); if (ok) score++; }, labelFn(list[i]));
+  };
+  host.addEventListener("next", () => { i++; step(); window.scrollTo({ top: Math.max(0, host.getBoundingClientRect().top + window.scrollY - 80) }); });
+  step();
+  return { redo: () => { i = 0; score = 0; step(); } };
+}
+</script>
+<script>
+// ---------- Test du jour ----------
+function dailyPlan(dateKey) {
+  if (state.daily[dateKey] && state.daily[dateKey].ids) return state.daily[dateKey];
+  const rng = mulberry(hashStr(dateKey + "|dc"));
+  const N = 20;
+  const chosen = [];
+  const due = shuffle(dueList(), rng).slice(0, 10);
+  chosen.push(...due);
+  const started = CHAPS.filter(chapStarted);
+  const pool = (started.length ? started : CHAPS.slice(0, 3));
+  const weak = pool.slice().sort((a, b) => ueMastery(a.ue) - ueMastery(b.ue) || rng() - 0.5);
+  const fresh = [];
+  for (const ch of weak) for (const e of shuffle(ch.exercices, rng)) if (card(e.id).n === 0 && !chosen.includes(e.id)) fresh.push(e.id);
+  // garantir ≥ 60 % de questions à choix
+  const isQ = id => /^(qcm|multi)$/.test(EXO[id].type);
+  for (const id of fresh) { if (chosen.length >= N) break; chosen.push(id); }
+  if (chosen.length < N) for (const ch of CHAPS) for (const e of ch.exercices) { if (chosen.length >= N) break; if (!chosen.includes(e.id)) chosen.push(e.id); }
+  let q = chosen.filter(isQ).length;
+  if (q < Math.ceil(N * 0.6)) {
+    const extraQ = Object.keys(EXO).filter(id => isQ(id) && !chosen.includes(id)).sort(() => rng() - 0.5);
+    for (let i = chosen.length - 1; i >= 0 && q < Math.ceil(N * 0.6) && extraQ.length; i--) if (!isQ(chosen[i])) { chosen[i] = extraQ.pop(); q++; }
+  }
+  const plan = { ids: shuffle(chosen.slice(0, N), rng), answers: {}, done: false, score: 0 };
+  state.daily[dateKey] = plan; save();
+  return plan;
+}
+function dailyHistory(days) { const out = []; const d = new Date(); for (let i = days - 1; i >= 0; i--) { const x = new Date(d); x.setDate(d.getDate() - i); const k = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; const p = state.daily[k]; out.push({ k, p: p && p.done ? p.score / p.ids.length : null }); } return out; }
+
+// ---------- Badges ----------
+const BADGES = [
+  { id: "first", ic: "✎", nom: "Première ligne", desc: "Premier exercice réussi", test: () => Object.values(state.cards).some(c => c.ok > 0) },
+  { id: "ecriture", ic: "⚖", nom: "Partie double", desc: "Une écriture au journal juste du premier coup", test: () => Object.keys(state.cards).some(id => EXO[id] && EXO[id].type === "ecriture" && state.cards[id].ok > 0) },
+  { id: "test", ic: "☀", nom: "Rituel", desc: "Un test du jour terminé", test: () => Object.values(state.daily).some(p => p.done) },
+  { id: "parfait", ic: "★", nom: "Sans faute", desc: "Un test du jour à 100 %", test: () => Object.values(state.daily).some(p => p.done && p.score === p.ids.length) },
+  { id: "s7", ic: "🔥", nom: "Sept jours", desc: "Sept jours d'affilée", test: () => streak() >= 7 },
+  { id: "s30", ic: "🏔", nom: "Un mois", desc: "Trente jours d'affilée", test: () => streak() >= 30 },
+  { id: "chap", ic: "⛺", nom: "Premier camp", desc: "Un chapitre entièrement acquis", test: () => CHAPS.some(c => chapMastery(c) >= 0.999) },
+  { id: "ue", ic: "🧭", nom: "Une matière", desc: "Une matière entièrement acquise", test: () => UES.some(u => ueMastery(u.code) >= 0.999) },
+  { id: "n100", ic: "📚", nom: "Cent notions", desc: "Cent notions acquises", test: () => acquiredCount() >= 100 },
+  { id: "pcg", ic: "🔎", nom: "Plan comptable", desc: "Cinquante comptes consultés", test: () => Object.keys(state.seen).length >= 50 },
+  { id: "aurore", ic: "✦", nom: "Aurore", desc: "La moitié du parcours acquise", test: () => globalMastery() >= 0.5 },
+];
+
+// ---------- Vues ----------
+const main = document.getElementById("main");
+let view = { tab: "accueil" };
+const chapLabel = ex => { const ch = CHAP_BY[ex.chap]; return `${ch.ue} · ${ch.title}`; };
+
+function renderAccueil() {
+  const today = todayKey(); const plan = state.daily[today];
+  const due = dueList().length; const nc = nextChapter(); const todayN = state.days[today] || 0;
+  const hist = dailyHistory(30);
+  main.innerHTML = `
+<div class="cta"><div><div class="t">${plan && plan.done ? `Test du jour terminé : ${plan.score} / ${plan.ids.length}` : plan ? "Test du jour en cours" : "Le test du jour vous attend"}</div><div class="muted small">20 questions tirées de vos matières, les plus fragiles en priorité. Un par jour, environ 20 minutes.</div></div><button class="btn ${plan && plan.done ? "ghost" : "red"}" id="goTest">${plan && plan.done ? "Revoir le test" : plan ? "Reprendre" : "Commencer"}</button></div>
+<div class="board">
+  <div class="tile"><div class="big">${Math.round(globalMastery() * 100)}<span class="muted" style="font-size:1rem"> %</span></div><div class="lab">du parcours acquis · ${acquiredCount()} / ${Object.keys(EXO).length} notions</div></div>
+  <div class="tile"><div class="big">${due}</div><div class="lab">révision${due > 1 ? "s" : ""} à faire</div></div>
+  <div class="tile"><div class="big">${streak()}</div><div class="lab">jour${streak() > 1 ? "s" : ""} d'affilée · ${todayN} réponse${todayN > 1 ? "s" : ""} aujourd'hui</div></div>
+</div>
+<h3 style="margin-top:4px">Trente derniers jours</h3>
+<div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div>
+<p class="muted small">Chaque barre est le score d'un test du jour. Les barres grises sont les jours sans test.</p>
+<h3>Par matière</h3>
+<div class="ledger">${UES.map((u, i) => { const m = ueMastery(u.code); const n = ueChaps(u.code).length; return `<button class="row" data-ue="${u.code}"><span class="num">${esc(u.code.replace("UE", ""))}</span><span><span class="ttl">${esc(u.nom)}</span><br><span class="sub">${n} chapitre${n > 1 ? "s" : ""} · ${ueChaps(u.code).reduce((a, c) => a + c.exercices.length, 0)} exercices</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
+${nc ? `<div class="actions"><button class="btn ghost" id="goNext">Chapitre conseillé : ${esc(nc.ue)} · ${esc(nc.title)}</button></div>` : ""}`;
+  main.querySelector("#goTest").onclick = () => go({ tab: "test" });
+  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  if (nc) main.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
+}
+
+function renderMatieres() {
+  main.innerHTML = `<h2>Matières</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre comporte une leçon complète et ses exercices.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
+  main.querySelectorAll(".ue").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+}
+
+function renderUe(code) {
+  const u = UE_BY[code]; const cs = ueChaps(code); const nc = cs.find(c => chapMastery(c) < 0.999);
+  main.innerHTML = `<div class="crumb"><button id="back">← Matières</button></div><h2>${esc(u.code)} · ${esc(u.nom)}</h2><p class="muted">${esc(u.intro)} <span class="small">(${esc(u.programme)})</span></p>
+<div class="ledger">${cs.map(c => { const m = chapMastery(c); const started = chapStarted(c); const pill = m >= 0.999 ? '<span class="pill done">acquis</span>' : (nc && nc.id === c.id ? '<span class="pill next">conseillé</span>' : started ? '<span class="pill prog">en cours</span>' : '<span class="pill">à venir</span>'); return `<button class="row" data-c="${c.id}"><span class="num">${c.ordre}</span><span><span class="ttl">${esc(c.title)}</span><br><span class="sub">${esc(c.resume)}</span></span><span class="right">${pill}<div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted" style="font-size:.78rem">${c.exercices.length} exercices · ${esc(c.duree)}</span></span></button>`; }).join("")}${cs.length ? "" : '<div style="padding:14px 16px" class="muted">Chapitres en cours de rédaction.</div>'}</div>`;
+  main.querySelector("#back").onclick = () => go({ tab: "matieres" });
+  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
+}
+
+function renderChap(id, startAt) {
+  const c = CHAP_BY[id]; const u = UE_BY[c.ue]; const cs = ueChaps(c.ue); const idx = cs.indexOf(c);
+  main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} ${esc(u.nom)}</button><span class="muted">Chapitre ${idx + 1} / ${cs.length}</span></div><h2>${esc(c.title)}</h2><p class="muted">${esc(c.resume)}</p><div id="stage"></div>`;
+  main.querySelector("#back").onclick = () => go({ tab: "ue", code: c.ue });
+  const stage = main.querySelector("#stage");
+  const showLesson = () => {
+    state.read[c.id] = true; save();
+    stage.innerHTML = `<div class="lesson">${c.lecon.map(s => `${s.h ? `<h3>${esc(s.h)}</h3>` : ""}<div class="twrap-l">${sanitize(s.html)}</div>${s.entry ? journalHTML(s.entry, s.lib) : ""}`).join("")}
+${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.sources.map(s => `<li>${esc(s.ref)}${s.note ? ` — ${esc(s.note)}` : ""}</li>`).join("")}</ul></div>` : ""}</div>
+<div class="actions"><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
+    stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
+  };
+  const showExercises = () => {
+    stage.innerHTML = `<div class="crumb"><span class="progress" id="prog"></span><button id="toLesson">Revoir la leçon</button></div><div id="host"></div>`;
+    stage.querySelector("#toLesson").onclick = showLesson;
+    const host = stage.querySelector("#host"); const prog = stage.querySelector("#prog");
+    const series = runSeries(host, c.exercices, () => `${u.code} · ${c.title}`, (ex, ok) => record(ex.id, ok), score => {
+      state.done[c.id] = (state.done[c.id] || 0) + 1; addXp(30); save();
+      const nc = cs[idx + 1];
+      host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Chapitre terminé</h3><p>${score} exercice${score > 1 ? "s" : ""} sur ${c.exercices.length} réussi${score > 1 ? "s" : ""} du premier coup. Les notions ratées reviendront demain en révision, les autres dans trois jours.</p><div class="actions">${nc ? `<button class="btn" id="goNext">Chapitre suivant : ${esc(nc.title)}</button>` : ""}<button class="btn ghost" id="redo">Refaire les exercices</button><button class="btn quiet" id="toUe">Retour à la matière</button></div></div>`;
+      prog.textContent = "Terminé";
+      if (nc) host.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
+      host.querySelector("#redo").onclick = () => series.redo();
+      host.querySelector("#toUe").onclick = () => go({ tab: "ue", code: c.ue });
+    }, prog);
+  };
+  if (startAt === "exercises") showExercises(); else showLesson();
+}
+
+function renderTest() {
+  const today = todayKey(); const plan = dailyPlan(today);
+  const list = plan.ids.map(id => EXO[id]).filter(Boolean);
+  if (!list.length) { main.innerHTML = `<h2>Test du jour</h2><p>Aucune question disponible.</p>`; return; }
+  const remaining = list.filter(e => !(e.id in plan.answers));
+  main.innerHTML = `<h2>Test du jour · ${new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}</h2><p class="muted">${list.length} questions : révisions dues en priorité, puis notions nouvelles des matières les plus fragiles. Le score du jour est enregistré une fois le test terminé.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
+  const host = main.querySelector("#host"); const prog = main.querySelector("#prog");
+  const finishScreen = () => {
+    const score = Object.values(plan.answers).filter(Boolean).length;
+    if (!plan.done) { plan.done = true; plan.score = score; addXp(50 + (score === list.length ? 100 : 0)); save(); }
+    prog.textContent = "Terminé";
+    const byUe = {}; list.forEach(e => { const ue = CHAP_BY[e.chap].ue; byUe[ue] = byUe[ue] || [0, 0]; byUe[ue][1]++; if (plan.answers[e.id]) byUe[ue][0]++; });
+    host.innerHTML = `<div class="exo"><h3 style="margin-top:0">${plan.score} / ${list.length}${plan.score === list.length ? " · sans faute" : ""}</h3><p>${Object.entries(byUe).map(([u, [a, b]]) => `${esc(u)} : ${a}/${b}`).join(" · ")}</p><p class="muted small">Les questions ratées reviendront demain en révision. Revenez demain pour un nouveau test.</p><div class="actions"><button class="btn" id="toA">Retour à l'accueil</button><button class="btn ghost" id="toR">Réviser maintenant</button></div></div>`;
+    host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); host.querySelector("#toR").onclick = () => go({ tab: "revisions" });
+  };
+  if (!remaining.length) { finishScreen(); return; }
+  runSeries(host, remaining, chapLabel, (ex, ok) => { plan.answers[ex.id] = ok; record(ex.id, ok, "test"); save(); }, finishScreen, { set textContent(v) { const done = list.length - remaining.length; const i = parseInt(v) || 0; prog.textContent = `Question ${done + i} / ${list.length}`; } });
+}
+
+function renderRevisions() {
+  const due = shuffle(dueList()).slice(0, 25);
+  if (!due.length) {
+    const upcoming = Object.entries(state.cards).filter(([, c]) => c.n > 0).sort((a, b) => a[1].due - b[1].due)[0];
+    const when = upcoming ? Math.max(1, Math.ceil((upcoming[1].due - Date.now()) / DAY)) : null;
+    main.innerHTML = `<h2>Révisions</h2><p>Rien à revoir pour le moment.</p><p class="muted">${when ? `Prochaine révision dans ${when} jour${when > 1 ? "s" : ""}.` : "Les notions vues dans les chapitres et les tests reviendront ici à intervalles croissants (1, 3, 7, 15, 30, 60 jours)."}</p><div class="actions"><button class="btn" id="toM">Aller aux matières</button></div>`;
+    main.querySelector("#toM").onclick = () => go({ tab: "matieres" }); return;
+  }
+  main.innerHTML = `<h2>Révisions</h2><p class="muted">${due.length} notion${due.length > 1 ? "s" : ""} à revoir. Une bonne réponse espace la prochaine révision, une erreur la ramène à demain.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
+  const host = main.querySelector("#host");
+  runSeries(host, due.map(id => EXO[id]), chapLabel, (ex, ok) => record(ex.id, ok, "revision"), score => { host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Révisions terminées</h3><p>${score} sur ${due.length} du premier coup.</p><div class="actions"><button class="btn" id="toA">Retour à l'accueil</button></div></div>`; host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); }, main.querySelector("#prog"));
+}
+
+function renderPcg() {
+  let cls = "", q = "", onlyNew = false;
+  main.innerHTML = `<h2>Plan comptable général 2025</h2><p class="muted">${PCG.length} comptes expliqués : à quoi sert le compte, quand on le débite ou le crédite, un exemple, le piège classique. Les comptes touchés par la réforme du PCG 2025 (règlement ANC 2022-06) sont signalés.</p>
+<div class="classes">${CLASSES.map(c => `<button class="cls" data-c="${c[0]}" aria-pressed="false"><div class="c">${c[0]}</div>${esc(c[1])}</button>`).join("")}</div>
+<div class="filters"><input class="search" id="q" type="search" placeholder="Numéro ou mot (ex. 445, amortissement, client)" autocomplete="off" style="flex:1;min-width:200px;margin:0"><label><input type="checkbox" id="onlyNew"> réforme 2025 seulement</label></div>
+<div class="ledger" id="list"></div>`;
+  const list = main.querySelector("#list");
+  const draw = () => {
+    const t = q.trim().toLowerCase();
+    const rows = PCG.filter(a => (!cls || a.num[0] === cls) && (!onlyNew || a.pcg2025) && (!t || a.num.startsWith(t) || a.label.toLowerCase().includes(t) || (a.explication || "").toLowerCase().includes(t))).slice(0, 400);
+    list.innerHTML = rows.length ? rows.map(a => `<button class="acct" data-n="${a.num}" aria-expanded="false"><span class="n">${a.num}</span>${esc(a.label)} ${a.pcg2025 ? `<span class="pill ${/supprim/i.test(a.pcg2025) ? "del" : "new"}">${/supprim/i.test(a.pcg2025) ? "supprimé 2025" : "PCG 2025"}</span>` : ""}<span class="s">${esc(a.sens)}</span></button>`).join("") : `<div class="muted" style="padding:12px 14px">Aucun compte ne correspond.</div>`;
+    list.querySelectorAll(".acct").forEach(b => b.onclick = () => {
+      const open = b.getAttribute("aria-expanded") === "true"; const nxt = b.nextElementSibling;
+      if (open) { b.setAttribute("aria-expanded", "false"); if (nxt && nxt.classList.contains("acct-body")) nxt.remove(); return; }
+      const a = PCG.find(x => x.num === b.dataset.n); state.seen[a.num] = 1; save();
+      const d = document.createElement("div"); d.className = "acct-body";
+      d.innerHTML = `<p>${esc(a.explication)}</p>${a.exemple ? `<p><b>Exemple.</b> ${esc(a.exemple)}</p>` : ""}${a.entry ? journalHTML(a.entry, "") : ""}${a.piege ? `<p><b>Piège.</b> ${esc(a.piege)}</p>` : ""}${a.pcg2025 ? `<p class="muted"><b>Réforme PCG 2025.</b> ${esc(a.pcg2025)}</p>` : ""}<p class="muted small">Solde habituel : ${esc(a.sens)}${a.obligatoire === false ? " · compte facultatif" : ""}</p>`;
+      b.setAttribute("aria-expanded", "true"); b.after(d);
+    });
+  };
+  main.querySelectorAll(".cls").forEach(b => b.onclick = () => { cls = cls === b.dataset.c ? "" : b.dataset.c; main.querySelectorAll(".cls").forEach(x => x.setAttribute("aria-pressed", x.dataset.c === cls ? "true" : "false")); draw(); });
+  main.querySelector("#q").addEventListener("input", e => { q = e.target.value; draw(); });
+  main.querySelector("#onlyNew").addEventListener("change", e => { onlyNew = e.target.checked; draw(); });
+  draw();
+}
+
+// ---------- Expédition ----------
+const ETAPES = [["UE9", "Les fjords"], ["UE10", "La vallée"], ["UE2", "Les plateaux"], ["UE3", "Les glaciers"], ["UE4", "Les volcans"], ["UE6", "Le cap des aurores"]];
+function renderExpedition() {
+  const r = rank(); const g = globalMastery();
+  main.innerHTML = `<h2>L'expédition vers les aurores</h2><p class="muted">Chaque chapitre acquis allume un camp sur la route. Plus vous avancez, plus le ciel s'illumine. Le test du jour entretient la lanterne : une série de jours d'affilée la garde allumée.</p>
+<div class="sky"><canvas id="skyC" width="960" height="420" aria-label="Carte de l'expédition"></canvas><div class="legend">Aurore à ${Math.round(g * 100)} % · lanterne ${streak() > 0 ? "allumée depuis " + streak() + " jour" + (streak() > 1 ? "s" : "") : "éteinte"}</div></div>
+<div class="board"><div class="tile"><div class="big">${esc(r.name)}</div><div class="lab">${fmt(state.xp)} XP${r.next ? ` · prochain grade « ${esc(r.next[1])} » à ${fmt(r.next[0])} XP` : " · grade maximal"}</div></div><div class="tile"><div class="big">${CHAPS.filter(c => chapMastery(c) >= 0.999).length}<span class="muted" style="font-size:1rem"> / ${CHAPS.length}</span></div><div class="lab">camps allumés</div></div><div class="tile"><div class="big">${BADGES.filter(b => b.test()).length}<span class="muted" style="font-size:1rem"> / ${BADGES.length}</span></div><div class="lab">insignes</div></div></div>
+<h3>Étapes</h3><div class="ledger">${ETAPES.map(([code, nom], i) => { const u = UE_BY[code]; if (!u) return ""; const m = ueMastery(code); return `<button class="row" data-ue="${code}"><span class="num">${i + 1}</span><span><span class="ttl">${esc(nom)}</span><br><span class="sub">${esc(u.nom)} · ${ueChaps(code).filter(c => chapMastery(c) >= 0.999).length}/${ueChaps(code).length} camps</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
+<h3>Insignes</h3><div class="badges">${BADGES.map(b => `<div class="bdg ${b.test() ? "" : "off"}"><span class="ic">${b.ic}</span><b>${esc(b.nom)}</b><span class="muted">${esc(b.desc)}</span></div>`).join("")}</div>
+<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute.</p>`;
+  main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
+  drawSky(main.querySelector("#skyC"));
+}
+let skyAnim = 0;
+function drawSky(cv) {
+  cancelAnimationFrame(skyAnim);
+  const ctx = cv.getContext("2d"); const W = cv.width, H = cv.height; const g = globalMastery(); const lit = streak() > 0;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const camps = []; let x = 70; const stepX = (W - 140) / Math.max(1, CHAPS.length - 1);
+  CHAPS.forEach((c, i) => { const y = H - 70 - Math.sin(i / CHAPS.length * Math.PI) * 140 - (i % 3) * 14; camps.push({ x, y, m: chapMastery(c), started: chapStarted(c), ue: c.ue }); x += stepX; });
+  const frame = t => {
+    const sky = ctx.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, "#070d1f"); sky.addColorStop(1, "#1a2f56"); ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+    const rs = mulberry(7); for (let i = 0; i < 120; i++) { const sx = rs() * W, sy = rs() * H * 0.7, a = 0.3 + rs() * 0.7; ctx.fillStyle = `rgba(255,255,255,${a * (0.6 + 0.4 * Math.sin(t / 900 + i))})`; ctx.fillRect(sx, sy, 1.5, 1.5); }
+    if (g > 0.01) { const bands = [["57,229,140", 0.0], ["43,212,212", 0.35], ["122,92,255", 0.7]]; bands.forEach(([col, ph], bi) => { for (let k = 0; k < 40; k++) { const bx = k / 40 * W; const wave = Math.sin(bx / 90 + t / 1600 + ph * 6) * 22 + Math.sin(bx / 37 - t / 2300) * 10; const top = 30 + bi * 26 + wave; const h = 60 + 140 * g + Math.sin(bx / 50 + t / 1900) * 20; const gr = ctx.createLinearGradient(0, top, 0, top + h); gr.addColorStop(0, `rgba(${col},0)`); gr.addColorStop(0.3, `rgba(${col},${0.12 + 0.5 * g})`); gr.addColorStop(1, `rgba(${col},0)`); ctx.fillStyle = gr; ctx.fillRect(bx, top, W / 40 + 1, h); } }); }
+    ctx.fillStyle = "#0b1326"; ctx.beginPath(); ctx.moveTo(0, H); for (let i = 0; i <= 24; i++) { const mx = i / 24 * W; ctx.lineTo(mx, H - 60 - Math.abs(Math.sin(i * 1.7)) * 120 - Math.abs(Math.cos(i * 0.9)) * 40); } ctx.lineTo(W, H); ctx.fill();
+    ctx.strokeStyle = "rgba(223,231,243,0.35)"; ctx.setLineDash([4, 6]); ctx.lineWidth = 1.5; ctx.beginPath(); camps.forEach((c, i) => i ? ctx.lineTo(c.x, c.y) : ctx.moveTo(c.x, c.y)); ctx.stroke(); ctx.setLineDash([]);
+    camps.forEach(c => { const on = c.m >= 0.999; const r = on ? 6 : 4; if (on || c.started) { const glow = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, on ? 22 : 12); glow.addColorStop(0, on ? "rgba(255,214,120,0.9)" : "rgba(255,214,120,0.35)"); glow.addColorStop(1, "rgba(255,214,120,0)"); ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(c.x, c.y, on ? 22 : 12, 0, 7); ctx.fill(); } ctx.fillStyle = on ? "#ffd678" : c.started ? "#c9a85a" : "#4b5a73"; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 7); ctx.fill(); });
+    const lx = 40, ly = H - 36; ctx.fillStyle = lit ? "#ffd678" : "#3a4559"; ctx.fillRect(lx - 4, ly - 14, 8, 14); if (lit) { const gl = ctx.createRadialGradient(lx, ly - 8, 0, lx, ly - 8, 30 + Math.sin(t / 300) * 3); gl.addColorStop(0, "rgba(255,214,120,0.8)"); gl.addColorStop(1, "rgba(255,214,120,0)"); ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(lx, ly - 8, 34, 0, 7); ctx.fill(); }
+    ctx.fillStyle = "#dfe7f3"; ctx.font = "500 12px IBM Plex Mono, monospace"; ctx.fillText("Cassegrain", lx + 14, ly - 4); ctx.textAlign = "right"; ctx.fillText("Les aurores", W - 20, 24); ctx.textAlign = "left";
+    if (!reduce) skyAnim = requestAnimationFrame(frame);
+  };
+  frame(0);
+}
+
+// ---------- Navigation ----------
+function go(v) {
+  cancelAnimationFrame(skyAnim);
+  view = v;
+  const tab = { ue: "matieres", chap: "matieres" }[v.tab] || v.tab;
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
+  ({ accueil: renderAccueil, matieres: renderMatieres, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition })[v.tab]();
+  try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
+  updateBadge(); renderRank(); window.scrollTo({ top: 0 });
+}
+document.querySelectorAll("nav.tabs button").forEach(b => b.onclick = () => go({ tab: b.dataset.tab }));
+document.getElementById("brand").onclick = () => go({ tab: "accueil" });
+
+// ---------- Sauvegarde ----------
+function refreshSaveBox() { const box = document.getElementById("saveBox"); if (box && document.activeElement !== box) { try { box.value = btoa(unescape(encodeURIComponent(JSON.stringify(state)))); } catch (e) { } } }
+document.getElementById("copySave").onclick = () => { const box = document.getElementById("saveBox"); refreshSaveBox(); (navigator.clipboard ? navigator.clipboard.writeText(box.value) : Promise.reject()).then(() => toast("Code copié.")).catch(() => { box.select(); toast("Sélectionnez et copiez le code."); }); };
+document.getElementById("restoreSave").onclick = () => { const box = document.getElementById("saveBox"); try { const s = JSON.parse(decodeURIComponent(escape(atob(box.value.trim())))); if (!s.cards) throw 0; state = Object.assign(EMPTY(), s); save(); go({ tab: "accueil" }); toast("Progression restaurée."); } catch (e) { toast("Code illisible."); } };
+let resetArmed = false;
+document.getElementById("resetSave").onclick = e => { if (!resetArmed) { resetArmed = true; e.target.textContent = "Confirmer la remise à zéro"; setTimeout(() => { resetArmed = false; e.target.textContent = "Tout remettre à zéro"; }, 4000); return; } state = EMPTY(); save(); resetArmed = false; e.target.textContent = "Tout remettre à zéro"; go({ tab: "accueil" }); toast("Progression effacée."); };
+
+// ---------- Démarrage ----------
+load();
+document.getElementById("buildInfo").textContent = `Version du ${DATA.build.date} · ${CHAPS.length} chapitres · ${Object.keys(EXO).length} exercices · ${PCG.length} comptes. Ce fichier fonctionne hors ligne : enregistrez-le et ouvrez-le avec un navigateur.`;
+refreshSaveBox();
+(function boot() {
+  const h = (location.hash || "").slice(1);
+  if (["matieres", "test", "revisions", "pcg", "expedition"].includes(h)) go({ tab: h });
+  else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
+  else if (CHAP_BY[h]) go({ tab: "chap", id: h });
+  else go({ tab: "accueil" });
+})();
+</script>
