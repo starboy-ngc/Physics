@@ -16,8 +16,8 @@ import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.core.errors import ImportError_
-from hr_insight.io.tabular import read_table
+from hr_analytics.core.errors import ImportError_
+from hr_analytics.io.tabular import read_table
 
 try:
     import tkinter
@@ -122,7 +122,7 @@ class TestSavingKeepsWhatItDoesNotKnow(unittest.TestCase):
 
     def test_the_theme_section_is_completed_not_replaced(self):
         import inspect
-        from hr_insight.ui import settings
+        from hr_analytics.ui import settings
 
         source = inspect.getsource(settings.SettingsWindow.save)
         for section in ("theme_parameters", "privacy_parameters",
@@ -136,11 +136,11 @@ class TestSavingKeepsWhatItDoesNotKnow(unittest.TestCase):
     def test_an_unknown_key_survives_a_save(self):
         """Le contrôle qui compte : un réglage que l'écran ignore est
         toujours là après l'enregistrement."""
-        from hr_insight.core.config import (Configuration, load_configuration,
+        from hr_analytics.core.config import (Configuration, load_configuration,
                                             write_configuration)
 
         directory = tempfile.mkdtemp()
-        from hr_insight.core.config import write_default_configuration
+        from hr_analytics.core.config import write_default_configuration
         write_default_configuration(directory)
         chemin = os.path.join(directory, "theme_parameters.json")
         with open(chemin, encoding="utf-8") as handle:
@@ -178,8 +178,8 @@ class TestTheEmptyOrgTabSpeaks(unittest.TestCase):
 
     def _fenêtre(self, source):
         import time
-        from hr_insight.ui import app as module
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui import app as module
+        from hr_analytics.ui.app import Application
 
         sauvé = module.filedialog.askopenfilename
         module.filedialog.askopenfilename = lambda **k: source

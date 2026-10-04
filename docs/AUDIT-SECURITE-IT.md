@@ -1,4 +1,4 @@
-# Audit de sécurité IT — HR Insight 1.0.0
+# Audit de sécurité IT — HR Analytics 1.0.0
 
 *Conduit le 25 septembre 2026 sur la branche
 `claude/compensation-analytics-local-8mbxy0`.*
@@ -53,7 +53,7 @@ rien à résoudre, donc rien à télécharger, donc aucune chaîne
 d'approvisionnement à homologuer.
 
 L'archive livrée contient 66 entrées, dont un `.pyz` de 53 entrées qui ne
-porte que `hr_insight/` et `config/`. Aucun `.exe`, `.dll`, `.so`, `.msi`.
+porte que `hr_analytics/` et `config/`. Aucun `.exe`, `.dll`, `.so`, `.msi`.
 Les deux `.bat` sont des lanceurs : ils cherchent l'interpréteur Python
 installé et lancent le `.pyz`. Ils ne téléchargent rien, n'élèvent aucun
 privilège, ne touchent pas au registre.

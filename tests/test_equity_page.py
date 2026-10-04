@@ -52,7 +52,7 @@ class EquityCase(unittest.TestCase):
     def setUp(self):
         import tempfile
 
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
         from tests.test_window_workflow import Dialogs
 
         self.directory = tempfile.mkdtemp()
@@ -117,7 +117,7 @@ class TestTheWholePageAnswers(EquityCase):
     def test_the_headcounts_match_the_engine(self):
         """Les effectifs affichés sont ceux du moteur, pas un comptage
         refait par la fenêtre."""
-        from hr_insight.core import metrics
+        from hr_analytics.core import metrics
 
         lignes = {str(ligne[0]): ligne for ligne in
                   self.lignes(self.app.equity_people)}
@@ -179,7 +179,7 @@ class TestChoosingAJob(EquityCase):
     def test_the_columns_come_from_the_configuration(self):
         """Ajouter « Direction » ou retirer l'établissement ne demande
         aucune modification du code."""
-        from hr_insight.core.pay_equity import people_columns
+        from hr_analytics.core.pay_equity import people_columns
 
         declarees = [colonne["field"] for colonne
                      in people_columns(self.app.configuration)]
@@ -193,7 +193,7 @@ class TestChoosingAJob(EquityCase):
     def test_the_engine_carries_no_name(self):
         """Le moteur ne transporte jamais d'identité : c'est ce qui garantit
         qu'aucun document produit ne peut en porter."""
-        from hr_insight.core.pay_equity import people_rows
+        from hr_analytics.core.pay_equity import people_rows
 
         bloc = people_rows(self.app.result.filtered, self.app.result.config)
         texte = " ".join(str(valeur) for ligne in bloc["rows"]
@@ -213,7 +213,7 @@ class TestChoosingAJob(EquityCase):
 class TestTheScatterOfThisPage(EquityCase):
     def test_the_axes_are_the_ones_of_the_other_page(self):
         """Une seconde liste de champs aurait fini par différer."""
-        from hr_insight.core import metrics
+        from hr_analytics.core import metrics
 
         attendus = [axis["label"] for axis
                     in metrics.scatter_axes(self.app.configuration)]
@@ -221,7 +221,7 @@ class TestTheScatterOfThisPage(EquityCase):
         self.assertEqual(list(self.app.equity_y.cget("values")), attendus)
 
     def test_changing_an_axis_recomputes_the_cloud(self):
-        from hr_insight.core import metrics
+        from hr_analytics.core import metrics
 
         champs = [axis["field"] for axis
                   in metrics.scatter_axes(self.app.configuration)]
@@ -249,7 +249,7 @@ class TestTheScatterOfThisPage(EquityCase):
             self.app.configuration.get("pay_equity_parameters.gender_field"))
 
     def test_the_two_colours_are_those_of_the_rest_of_the_page(self):
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         teintes = set(self.app.equity_scatter.series.values())
         self.assertIn(theme.FEMALE, teintes)
@@ -276,8 +276,8 @@ class TestWhatTheStatsSay(EquityCase):
         """Le tableau de gauche lit le même découpage que la boîte de
         droite : deux chiffres qui se contrediraient à l'écran seraient
         pires que l'un des deux seul."""
-        from hr_insight.core.pay_equity import population_breakdown
-        from hr_insight.core.reporting import format_money
+        from hr_analytics.core.pay_equity import population_breakdown
+        from hr_analytics.core.reporting import format_money
 
         bloc = population_breakdown(self.app.result.filtered,
                                     self.app.result.config)
@@ -291,7 +291,7 @@ class TestWhatTheStatsSay(EquityCase):
         """Un poste où trois femmes côtoient vingt hommes publie la colonne
         des hommes et tait celle des femmes : c'est la seule qui
         désignerait quelqu'un."""
-        from hr_insight.core.pay_equity import category_breakdown
+        from hr_analytics.core.pay_equity import category_breakdown
 
         poste = POSTES[0]
         bloc = category_breakdown(self.app.result.filtered,

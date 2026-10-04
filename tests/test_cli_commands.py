@@ -20,7 +20,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
-from hr_insight.cli import main as cli_main
+from hr_analytics.cli import main as cli_main
 
 
 def run(argv):
@@ -270,7 +270,7 @@ class TestConfig(CommandCase):
     def test_what_is_written_can_be_read_back(self):
         """Une configuration ecrite puis relue doit donner exactement les
         memes reglages : sinon l'utilisateur qui l'edite part d'un faux."""
-        from hr_insight.core.config import load_configuration
+        from hr_analytics.core.config import load_configuration
 
         folder = os.path.join(self.directory, "aller-retour")
         run(["--logs", self.logs, "config", "--dossier", folder])

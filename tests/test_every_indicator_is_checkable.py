@@ -19,9 +19,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
 from tests.support_spreadsheet import Workbook, FormulaError
-from hr_insight.core import metrics, pay_equity
-from hr_insight.core.export import build_sheets
-from hr_insight.io.xlsx_writer import Formula
+from hr_analytics.core import metrics, pay_equity
+from hr_analytics.core.export import build_sheets
+from hr_analytics.io.xlsx_writer import Formula
 
 
 #: Valeurs qui ne sont pas des indicateurs mais des reglages recopies dans
@@ -48,7 +48,7 @@ class IndicatorCase(unittest.TestCase):
     def setUpClass(cls):
         donnees = make_config().as_dict()
         donnees["export_parameters"]["include_individual_data"] = True
-        from hr_insight.core.config import Configuration
+        from hr_analytics.core.config import Configuration
 
         cls.config = Configuration(donnees)
         cls.population = _population()
@@ -148,7 +148,7 @@ class TestTheArrayFormulasAreMarkedAsSuch(IndicatorCase):
     qu'une absence de feuille."""
 
     def test_no_matrix_formula_is_written_as_an_ordinary_one(self):
-        from hr_insight.core.formulas import needs_array
+        from hr_analytics.core.formulas import needs_array
 
         manquantes = [
             f"{nom} L{numero}C{colonne} : {cellule.expression[:50]}"

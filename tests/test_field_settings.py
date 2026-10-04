@@ -14,12 +14,12 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from hr_insight.core.config import (Configuration, DEFAULTS,
+from hr_analytics.core.config import (Configuration, DEFAULTS,
                                     write_default_configuration,
                                                 load_configuration,
                                                 write_configuration)
-from hr_insight.core.errors import ConfigError
-from hr_insight.core.segmentation import (dimension_fields,
+from hr_analytics.core.errors import ConfigError
+from hr_analytics.core.segmentation import (dimension_fields,
                                                       dimensions,
                                                       max_filter_values)
 
@@ -112,7 +112,7 @@ class TestWhereTheConfigurationLives(unittest.TestCase):
     """
 
     def setUp(self):
-        from hr_insight.core.config import default_config_dir
+        from hr_analytics.core.config import default_config_dir
         self.resolve = default_config_dir
         self.previous = os.getcwd()
         self.directory = tempfile.mkdtemp()
@@ -147,7 +147,7 @@ class TestComposingTheSection(unittest.TestCase):
     """La composition ne demande pas d'affichage : seul l'import le demande."""
 
     def _build(self, **kwargs):
-        from hr_insight.ui.settings import build_mapping_section
+        from hr_analytics.ui.settings import build_mapping_section
         return build_mapping_section(**kwargs)
 
     def test_an_assigned_column_becomes_the_first_alias(self):
@@ -187,7 +187,7 @@ class TestComposingTheSection(unittest.TestCase):
 
     def test_a_field_left_without_a_column_stops_being_an_amount(self):
         """Il posait au classeur une colonne titree et vide."""
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
         section = self._build(
             current={"fields": {"variable_pay": ["Variable"]},
                      "dimensions": [],
@@ -215,7 +215,7 @@ class TestComposingTheSection(unittest.TestCase):
         self.assertEqual(section["fields"]["groupe"].count("Groupe"), 1)
 
     def test_an_ignored_column_declares_nothing(self):
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
         section = self._build(
             current={"fields": {}, "dimensions": []},
             assignments={"Commentaire libre": IGNORED},
@@ -277,17 +277,17 @@ class TestFieldNameSuggestion(unittest.TestCase):
     def test_a_header_becomes_an_ascii_field_name(self):
         """Les noms de champ s'ecrivent en ligne de commande : un accent y
         serait une source d'erreur de saisie, pas un confort."""
-        from hr_insight.ui.settings import suggest_field_name
+        from hr_analytics.ui.settings import suggest_field_name
         self.assertEqual(suggest_field_name("Direction régionale", []),
                          "direction_regionale")
         self.assertEqual(suggest_field_name("N° de poste", []), "n_de_poste")
 
     def test_a_collision_is_suffixed(self):
-        from hr_insight.ui.settings import suggest_field_name
+        from hr_analytics.ui.settings import suggest_field_name
         self.assertEqual(suggest_field_name("Groupe", ["groupe"]), "groupe_2")
 
     def test_a_name_never_starts_with_a_digit(self):
-        from hr_insight.ui.settings import suggest_field_name
+        from hr_analytics.ui.settings import suggest_field_name
         self.assertFalse(suggest_field_name("2024", [])[0].isdigit())
 
 
@@ -296,7 +296,7 @@ class TestPrivacyOfTheDimensionList(unittest.TestCase):
     def test_nominative_fields_are_never_offered_as_an_axis(self):
         """Segmenter par nom produirait des groupes d'une personne et
         ferait entrer une identite dans une restitution."""
-        from hr_insight.ui.settings import candidate_dimensions
+        from hr_analytics.ui.settings import candidate_dimensions
         offered = candidate_dimensions(load_configuration())
         for field_name in ("last_name", "first_name", "employee_id",
                            "birth_date"):
@@ -304,13 +304,13 @@ class TestPrivacyOfTheDimensionList(unittest.TestCase):
 
     def test_computed_fields_are_never_offered_as_a_column(self):
         """Aucune colonne du fichier ne porte l'age : il est calcule."""
-        from hr_insight.ui.settings import candidate_fields
+        from hr_analytics.ui.settings import candidate_fields
         offered = candidate_fields(load_configuration())
         for field_name in ("age_years", "age_band", "tenure_band"):
             self.assertNotIn(field_name, offered)
 
     def test_computed_fields_remain_available_as_an_axis(self):
-        from hr_insight.ui.settings import candidate_dimensions
+        from hr_analytics.ui.settings import candidate_dimensions
         offered = candidate_dimensions(load_configuration())
         self.assertIn("age_band", offered)
         self.assertIn("tenure_band", offered)
@@ -326,7 +326,7 @@ class TestTheWholeRoundTrip(unittest.TestCase):
 
     def setUp(self):
         from tests.support import HEADERS, make_row
-        from hr_insight.io.xlsx_writer import write_workbook
+        from hr_analytics.io.xlsx_writer import write_workbook
         self.directory = tempfile.mkdtemp()
         self.config_dir = os.path.join(self.directory, "config")
         self.source = os.path.join(self.directory, "population.xlsx")
@@ -336,10 +336,10 @@ class TestTheWholeRoundTrip(unittest.TestCase):
              for index in range(30)])])
 
     def test_a_column_the_tool_never_saw_becomes_a_filter(self):
-        from hr_insight.core.pipeline import load_population
-        from hr_insight.core.segmentation import (apply_filters,
+        from hr_analytics.core.pipeline import load_population
+        from hr_analytics.core.segmentation import (apply_filters,
                                                               build_filters)
-        from hr_insight.ui.settings import build_mapping_section
+        from hr_analytics.ui.settings import build_mapping_section
 
         base = load_configuration()
         self.assertNotIn("direction", dimension_fields(base))
@@ -363,8 +363,8 @@ class TestTheWholeRoundTrip(unittest.TestCase):
 
     def test_the_columns_already_recognised_keep_working(self):
         """Declarer une colonne ne doit pas defaire le mapping existant."""
-        from hr_insight.core.pipeline import load_population
-        from hr_insight.ui.settings import build_mapping_section
+        from hr_analytics.core.pipeline import load_population
+        from hr_analytics.ui.settings import build_mapping_section
 
         base = load_configuration()
         section = build_mapping_section(
@@ -407,7 +407,7 @@ class TestShippedConfigurationMatchesTheDefaults(unittest.TestCase):
             found.append(f"{prefix} : défaut {expected!r}, livré {actual!r}")
 
     def test_no_shipped_value_contradicts_its_default(self):
-        from hr_insight.core.config import CONFIG_FILES
+        from hr_analytics.core.config import CONFIG_FILES
 
         problems = []
         for name in CONFIG_FILES:
@@ -420,7 +420,7 @@ class TestShippedConfigurationMatchesTheDefaults(unittest.TestCase):
     def test_every_section_is_shipped(self):
         """Un fichier manquant prive l'utilisateur des reglages qu'il
         contient : il ne saurait meme pas qu'ils existent."""
-        from hr_insight.core.config import CONFIG_FILES
+        from hr_analytics.core.config import CONFIG_FILES
 
         for name in CONFIG_FILES:
             self.assertIsNotNone(self._shipped(name), f"{name}.json absent")
@@ -440,7 +440,7 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
     """
 
     def _config(self, **reglages):
-        from hr_insight.core.config import Configuration
+        from hr_analytics.core.config import Configuration
 
         donnees = make_config().as_dict()
         for chemin, valeur in reglages.items():
@@ -449,8 +449,8 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
         return Configuration(donnees)
 
     def test_a_word_where_a_number_belongs_is_refused_by_name(self):
-        from hr_insight.core.errors import ConfigError
-        from hr_insight.core.metrics import PrivacyRules
+        from hr_analytics.core.errors import ConfigError
+        from hr_analytics.core.metrics import PrivacyRules
 
         config = self._config(**{
             "privacy_parameters.min_headcount_publish": "beaucoup"})
@@ -464,8 +464,8 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
     def test_a_publication_threshold_below_one_is_refused(self):
         """Le garde-fou ne doit pas pouvoir se desarmer par une faute de
         frappe."""
-        from hr_insight.core.errors import ConfigError
-        from hr_insight.core.metrics import PrivacyRules
+        from hr_analytics.core.errors import ConfigError
+        from hr_analytics.core.metrics import PrivacyRules
 
         for valeur in (0, -3):
             with self.subTest(valeur=valeur):
@@ -475,8 +475,8 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
                     PrivacyRules.from_config(config)
 
     def test_impossible_chart_settings_are_refused(self):
-        from hr_insight.core import metrics
-        from hr_insight.core.errors import ConfigError
+        from hr_analytics.core import metrics
+        from hr_analytics.core.errors import ConfigError
 
         population = build_population([make_row(i) for i in range(30)])
         for chemin, valeur in (("chart_parameters.histogram_bins", 0),
@@ -489,8 +489,8 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
     def test_a_missing_setting_still_falls_back_on_its_default(self):
         """Le controle ne doit pas transformer un fichier incomplet en
         refus : ce qui manque garde sa valeur d'origine."""
-        from hr_insight.core.config import Configuration
-        from hr_insight.core.metrics import PrivacyRules
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.core.metrics import PrivacyRules
 
         donnees = make_config().as_dict()
         donnees["privacy_parameters"].pop("min_headcount_publish", None)
@@ -500,7 +500,7 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
     def test_a_number_written_as_text_is_accepted(self):
         """« 5 » ecrit entre guillemets reste un cinq : refuser la forme
         quand le fond est juste ferait un outil tatillon."""
-        from hr_insight.core.metrics import PrivacyRules
+        from hr_analytics.core.metrics import PrivacyRules
 
         regles = PrivacyRules.from_config(self._config(**{
             "privacy_parameters.min_headcount_publish": "7"}))
@@ -511,7 +511,7 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
         table par axe, le profil d'un poste. Il doit y etre refuse de la
         meme facon, sans qu'un chemin encore lu « a la main » ne laisse
         passer une trace Python la ou les deux autres nomment le fichier."""
-        from hr_insight.core import pay_equity
+        from hr_analytics.core import pay_equity
 
         population = build_population([make_row(i) for i in range(40)])
         config = self._config(**{
@@ -536,7 +536,7 @@ class TestACosmeticSettingNeverBlocksTheWindow(unittest.TestCase):
     """
 
     def _duree(self, valeur):
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         donnees = make_config().as_dict()
         donnees.setdefault("theme_parameters", {})["splash_seconds"] = valeur
@@ -549,7 +549,7 @@ class TestACosmeticSettingNeverBlocksTheWindow(unittest.TestCase):
 
     @unittest.skipUnless(HAS_TK, "tkinter absent")
     def test_an_unreadable_duration_falls_back_on_the_default(self):
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         self.assertEqual(self._duree("longtemps"),
                          float(Application.SPLASH_SECONDS))
@@ -569,7 +569,7 @@ class TestACosmeticSettingNeverBlocksTheWindow(unittest.TestCase):
         """
         import json
 
-        from hr_insight.core.config import load_configuration
+        from hr_analytics.core.config import load_configuration
 
         dossier = tempfile.mkdtemp()
         write_default_configuration(dossier)

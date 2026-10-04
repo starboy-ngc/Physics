@@ -32,8 +32,8 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from hr_insight.core import statistics_engine as stats
-from hr_insight.core.pay_equity import (basis_description,
+from hr_analytics.core import statistics_engine as stats
+from hr_analytics.core.pay_equity import (basis_description,
                                         calculate_category_gaps,
                                         category_breakdown)
 
@@ -215,7 +215,7 @@ class TestTheComparisonIsFullTimeBaseSalary(unittest.TestCase):
         """« Salaire de base » est un defaut, pas une regle codee."""
         données = make_config().as_dict()
         données["salary_parameters"]["analysis_field"] = "total_compensation"
-        from hr_insight.core.config import Configuration
+        from hr_analytics.core.config import Configuration
 
         population = _population(60, postes=("Comptable",))
         for salarie in population.employees:
@@ -308,7 +308,7 @@ class TestTheMostSignificantJobsComeFirst(unittest.TestCase):
                         petit["significance"]["p_value"])
 
     def test_the_significance_level_is_configurable(self):
-        from hr_insight.core.config import Configuration
+        from hr_analytics.core.config import Configuration
 
         population = _population(60, postes=("Comptable",))
         for rang, salarie in enumerate(population.employees):
@@ -404,7 +404,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
             self.population.employees[rang].base_salary = 34000.0
 
     def test_it_finds_those_below_the_median_of_their_group(self):
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         bloc = lagging_members(self.population, self.config, "job_title")
         self.assertEqual(len(bloc["rows"]), 3)
@@ -422,7 +422,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
         prenait la première place d'une liste qui sert à décider de
         revalorisations. Ce n'est pas un écart, c'est une ligne à corriger.
         """
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         self.population.employees[7].base_salary = 0.0
         bloc = lagging_members(self.population, self.config, "job_title")
@@ -439,7 +439,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
     def test_the_floor_is_the_configured_one(self):
         """Le seuil est celui du contrôle qualité, pas un nombre écrit dans
         le moteur des écarts."""
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         config = make_config({"salary_parameters.min_plausible": 35000.0})
         bloc = lagging_members(self.population, config, "job_title")
@@ -448,14 +448,14 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
         self.assertEqual(bloc["implausible_rows"], 3)
 
     def test_nothing_is_flagged_when_every_amount_holds_up(self):
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         bloc = lagging_members(self.population, self.config, "job_title")
         self.assertEqual(bloc["implausible_rows"], 0)
         self.assertFalse(any(ligne["implausible"] for ligne in bloc["rows"]))
 
     def test_it_carries_no_identity_at_all(self):
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         bloc = lagging_members(self.population, self.config, "job_title")
         texte = " ".join(str(valeur) for ligne in bloc["rows"]
@@ -467,7 +467,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
 
     def test_a_group_too_small_gives_no_reference(self):
         """Une mediane calculee sur trois personnes les designerait."""
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         petite = _population(8, postes=("Comptable", "Technicien",
                                         "Chef de projet", "Assistant"))
@@ -479,7 +479,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
         self.assertEqual(bloc["withheld_groups"], bloc["groups"])
 
     def test_the_reading_column_is_read_not_computed(self):
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         for salarie in self.population.employees:
             salarie.status = "Cadre"
@@ -494,7 +494,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
 
     def test_the_positions_hold_the_whole_group(self):
         """Voir qui est en bas sans voir de quoi ne situerait personne."""
-        from hr_insight.core.pay_equity import group_positions
+        from hr_analytics.core.pay_equity import group_positions
 
         bloc = group_positions(self.population, self.config, "job_title",
                                "Comptable")
@@ -508,7 +508,7 @@ class TestThePeopleWhoLagBehind(unittest.TestCase):
         self.assertEqual(montants, sorted(montants))
 
     def test_the_positions_are_full_time_amounts(self):
-        from hr_insight.core.pay_equity import group_positions
+        from hr_analytics.core.pay_equity import group_positions
 
         for salarie in self.population.employees:
             if salarie.gender == "F":
@@ -546,9 +546,9 @@ class TestAPeopleReviewColumn(unittest.TestCase):
     def setUp(self):
         import datetime as _dt
 
-        from hr_insight.core.config import Configuration, load_configuration
-        from hr_insight.core.mapping import resolve_mapping
-        from hr_insight.core.normalize import normalise_table
+        from hr_analytics.core.config import Configuration, load_configuration
+        from hr_analytics.core.mapping import resolve_mapping
+        from hr_analytics.core.normalize import normalise_table
 
         données = load_configuration().as_dict()
         données["population_mapping"]["fields"]["people_review"] = [
@@ -579,7 +579,7 @@ class TestAPeopleReviewColumn(unittest.TestCase):
             reference_date=_dt.date(2025, 1, 1))
 
     def test_the_column_becomes_a_grouping_axis(self):
-        from hr_insight.core.segmentation import dimension_fields
+        from hr_analytics.core.segmentation import dimension_fields
 
         self.assertIn("people_review", dimension_fields(self.config))
         bloc = calculate_category_gaps(self.population, self.config,
@@ -597,7 +597,7 @@ class TestAPeopleReviewColumn(unittest.TestCase):
                                 for rubrique in self.RUBRIQUES))
 
     def test_it_reads_as_a_column_beside_each_person(self):
-        from hr_insight.core.pay_equity import lagging_members
+        from hr_analytics.core.pay_equity import lagging_members
 
         bloc = lagging_members(self.population, self.config, "people_review",
                                explain_field="people_review")

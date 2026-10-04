@@ -50,9 +50,9 @@ class SettingsCase(unittest.TestCase):
     def setUp(self):
         import tkinter as tk
 
-        from hr_insight.ui import theme
-        from hr_insight.ui.settings import SettingsWindow
-        from hr_insight.ui.theme import Fonts
+        from hr_analytics.ui import theme
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
 
         self.directory = tempfile.mkdtemp()
         self.root = tk.Tk()
@@ -93,7 +93,7 @@ class TestAnAmountColumn(SettingsCase):
     """
 
     def test_it_becomes_a_numeric_money_field(self):
-        from hr_insight.ui.settings import MONTANT
+        from hr_analytics.ui.settings import MONTANT
 
         self.choose("Prime de panier", MONTANT)
         section = self.window.collect()
@@ -104,7 +104,7 @@ class TestAnAmountColumn(SettingsCase):
         self.assertIn(champs[0], section["money"])
 
     def test_it_is_not_offered_as_an_axis(self):
-        from hr_insight.ui.settings import MONTANT
+        from hr_analytics.ui.settings import MONTANT
 
         self.choose("Prime de panier", MONTANT)
         section = self.window.collect()
@@ -113,8 +113,8 @@ class TestAnAmountColumn(SettingsCase):
         self.assertFalse(self.window.dimension_vars["Prime de panier"].get())
 
     def test_the_column_stops_being_flagged_as_unattached(self):
-        from hr_insight.ui import theme
-        from hr_insight.ui.settings import MONTANT
+        from hr_analytics.ui import theme
+        from hr_analytics.ui.settings import MONTANT
 
         self.choose("Prime de panier", MONTANT)
         étiquette = self.window._labels_widgets["Prime de panier"]
@@ -123,7 +123,7 @@ class TestAnAmountColumn(SettingsCase):
     def test_an_organisation_column_stays_a_text_axis(self):
         """Le role d'a cote n'a pas bouge : il reste un axe, et il
         n'entre ni dans les nombres ni dans les montants."""
-        from hr_insight.ui.settings import ORGANISATION
+        from hr_analytics.ui.settings import ORGANISATION
 
         self.choose("Prime de panier", ORGANISATION)
         section = self.window.collect()
@@ -156,7 +156,7 @@ class TestColumnAssignment(SettingsCase):
     def test_an_unrecognised_column_starts_ignored(self):
         """Elle doit paraitre a l'ecran pour qu'on puisse la rattacher, mais
         n'entre dans rien tant qu'on ne l'a pas fait."""
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
 
         self.assertEqual(self.window.assignments["Prime de panier"].get(),
                          IGNORED)
@@ -182,7 +182,7 @@ class TestRefusals(SettingsCase):
     def test_two_columns_on_one_field_are_refused(self):
         """L'une ecraserait l'autre en silence, et l'analyse porterait sur
         la mauvaise."""
-        from hr_insight.core.errors import CompensationError
+        from hr_analytics.core.errors import CompensationError
 
         self.assign("Prime de panier", "base_salary")
         with self.assertRaises(CompensationError) as caught:
@@ -199,8 +199,8 @@ class TestRefusals(SettingsCase):
         vide par defaut : sans cela il aurait laisse detacher la colonne
         de remuneration pour n'echouer qu'a l'analyse suivante.
         """
-        from hr_insight.core.errors import CompensationError
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.core.errors import CompensationError
+        from hr_analytics.ui.settings import IGNORED
 
         self.assign("Salaire de base", IGNORED)
         with self.assertRaises(CompensationError) as caught:
@@ -211,7 +211,7 @@ class TestRefusals(SettingsCase):
     def test_detaching_an_identifier_is_allowed(self):
         """Le matricule n'est plus exige : un fichier anonymise en amont
         reste analysable, et l'ecran ne doit pas l'interdire."""
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
 
         self.assign("Matricule", IGNORED)
         section = self.window.collect()
@@ -223,7 +223,7 @@ class TestRefusals(SettingsCase):
         les parametres : l'analyse suivante la relisait, sans que rien ne le
         signale. Une fenetre de reglage qui n'obtient pas ce qu'elle affiche
         ne sert a rien."""
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
 
         self.assign("Groupe", IGNORED)
         section = self.window.collect()
@@ -233,7 +233,7 @@ class TestRefusals(SettingsCase):
     def test_the_other_spellings_of_a_field_are_kept(self):
         """« Employee ID » vise un autre fichier : detacher la colonne de
         celui-ci ne doit pas l'effacer."""
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
 
         self.assign("Matricule", IGNORED)
         self.assign("Nom", "employee_id")
@@ -242,7 +242,7 @@ class TestRefusals(SettingsCase):
         self.assertNotIn("Matricule", section["fields"]["employee_id"])
 
     def test_a_non_numeric_threshold_is_refused(self):
-        from hr_insight.core.errors import CompensationError
+        from hr_analytics.core.errors import CompensationError
 
         self.window.limit_var.set("beaucoup")
         with self.assertRaises(CompensationError) as caught:
@@ -250,7 +250,7 @@ class TestRefusals(SettingsCase):
         self.assertIn("entier", caught.exception.message)
 
     def test_a_threshold_of_zero_is_refused_with_its_reason(self):
-        from hr_insight.core.errors import CompensationError
+        from hr_analytics.core.errors import CompensationError
 
         self.window.limit_var.set("0")
         with self.assertRaises(CompensationError) as caught:
@@ -258,7 +258,7 @@ class TestRefusals(SettingsCase):
         self.assertIn("au moins 1", caught.exception.message)
 
     def test_a_negative_threshold_is_refused(self):
-        from hr_insight.core.errors import CompensationError
+        from hr_analytics.core.errors import CompensationError
 
         self.window.limit_var.set("-5")
         with self.assertRaises(CompensationError):
@@ -308,7 +308,7 @@ class TestSaving(SettingsCase):
                              section["dimensions"])
 
     def test_the_saved_file_can_be_loaded_back(self):
-        from hr_insight.core.config import load_configuration
+        from hr_analytics.core.config import load_configuration
 
         self.window.rows["groupe"]["label"].set("Niveau")
         self.window.save()
@@ -344,14 +344,14 @@ class TestCreatingAField(SettingsCase):
 
     def _answer(self, text):
         """Remplace la boite de saisie du systeme."""
-        from hr_insight.ui import settings as module
+        from hr_analytics.ui import settings as module
 
         saved = module.simpledialog.askstring
         module.simpledialog.askstring = lambda *_a, **_k: text
         self.addCleanup(setattr, module.simpledialog, "askstring", saved)
 
     def _warnings(self):
-        from hr_insight.ui import settings as module
+        from hr_analytics.ui import settings as module
 
         caught = []
         saved = module.messagebox.showwarning
@@ -360,7 +360,7 @@ class TestCreatingAField(SettingsCase):
         return caught
 
     def _create(self, header="Prime de panier"):
-        from hr_insight.ui.settings import NEW_FIELD
+        from hr_analytics.ui.settings import NEW_FIELD
 
         box = self.window._boxes[list(self.window.assignments).index(header)]
         self.window.assignments[header].set(NEW_FIELD)
@@ -399,13 +399,13 @@ class TestCreatingAField(SettingsCase):
         self._answer("base_salary")
         self._create()
         self.assertTrue(warned)
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
 
         self.assertEqual(self.window.assignments["Prime de panier"].get(),
                          IGNORED)
 
     def test_cancelling_leaves_the_column_ignored(self):
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui.settings import IGNORED
 
         self._answer(None)
         self._create()
@@ -431,7 +431,7 @@ class TestSavingWhenTheFolderRefuses(SettingsCase):
     """
 
     def _dialogs(self, retry, chosen):
-        from hr_insight.ui import settings as module
+        from hr_analytics.ui import settings as module
 
         asked = []
         saved = (module.messagebox.askretrycancel,
@@ -495,8 +495,8 @@ class TestWithoutAFile(unittest.TestCase):
     def test_it_says_what_to_do_rather_than_showing_an_empty_list(self):
         import tkinter as tk
 
-        from hr_insight.ui.settings import SettingsWindow
-        from hr_insight.ui.theme import Fonts
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
 
         root = tk.Tk()
         root.withdraw()
@@ -556,7 +556,7 @@ class TestTheFourSections(SettingsCase):
     """
 
     def test_each_subject_has_its_own_page(self):
-        from hr_insight.ui.settings import SettingsWindow
+        from hr_analytics.ui.settings import SettingsWindow
 
         attendues = {clef for clef, _l in SettingsWindow.SECTIONS}
         self.assertEqual(set(self.window.pages), attendues)
@@ -580,7 +580,7 @@ class TestTheFourSections(SettingsCase):
 
     def test_each_section_says_where_it_is_saved(self):
         """Savoir où part un réglage fait partie du réglage."""
-        from hr_insight.ui.settings import SettingsWindow
+        from hr_analytics.ui.settings import SettingsWindow
 
         for clef, _intitule in SettingsWindow.SECTIONS:
             with self.subTest(section=clef):
@@ -632,7 +632,7 @@ class TestTheRoleOfAColumn(SettingsCase):
         personnel. Il demandait deux ecrans et un nom technique ; il
         demande un choix.
         """
-        from hr_insight.ui.settings import ORGANISATION
+        from hr_analytics.ui.settings import ORGANISATION
 
         colonne = "Prime de panier"
         self.window.assignments[colonne].set(ORGANISATION)
@@ -683,9 +683,9 @@ class TestTheFirstValuesAreShown(unittest.TestCase):
     """Voir ce que porte une colonne vaut mieux que lire son intitule."""
 
     def setUp(self):
-        from hr_insight.core.config import load_configuration
-        from hr_insight.ui.app import Application
-        from hr_insight.ui.settings import SettingsWindow
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.ui.app import Application
+        from hr_analytics.ui.settings import SettingsWindow
 
         self.app = Application()
         self.window = SettingsWindow(
@@ -721,14 +721,14 @@ class TestTheWarningFades(SettingsCase):
         return self.window._labels_widgets[header].cget("foreground")
 
     def test_an_unmapped_column_is_flagged(self):
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         self.assertEqual(self._colour_of("Prime de panier"), theme.WARN)
         self.assertEqual(self._colour_of("Groupe"), theme.INK_SOFT)
 
     def test_mapping_it_turns_the_flag_off(self):
-        from hr_insight.ui import theme
-        from hr_insight.ui.settings import ORGANISATION
+        from hr_analytics.ui import theme
+        from hr_analytics.ui.settings import ORGANISATION
 
         rang = [nom for nom in HEADERS
                 if str(nom).strip()].index("Prime de panier")
@@ -738,8 +738,8 @@ class TestTheWarningFades(SettingsCase):
         self.assertEqual(self._colour_of("Prime de panier"), theme.INK_SOFT)
 
     def test_ignoring_a_column_flags_it_again(self):
-        from hr_insight.ui import theme
-        from hr_insight.ui.settings import IGNORED
+        from hr_analytics.ui import theme
+        from hr_analytics.ui.settings import IGNORED
 
         rang = [nom for nom in HEADERS if str(nom).strip()].index("Groupe")
         self.window.assignments["Groupe"].set(IGNORED)

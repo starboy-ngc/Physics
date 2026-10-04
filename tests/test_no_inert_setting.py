@@ -19,10 +19,10 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.core.config import DEFAULTS
+from hr_analytics.core.config import DEFAULTS
 
 RACINE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                      "hr_insight")
+                      "hr_analytics")
 #: Fichier ou les defauts sont ecrits : leur propre declaration ne compte
 #: pas comme une lecture.
 DECLARATION = os.path.join(RACINE, "core", "config.py")

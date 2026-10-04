@@ -19,8 +19,8 @@ import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.ui import logo
-from hr_insight.version import ENGINE_NAME, PUBLISHER, __version__
+from hr_analytics.ui import logo
+from hr_analytics.version import ENGINE_NAME, PUBLISHER, __version__
 
 try:
     import tkinter
@@ -64,14 +64,14 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """Une boite a moustaches : l'etendue, la boite, la mediane en creux.
+    """Une courbe de distribution, et la mediane qui la partage.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
     toujours le meme, qu'il tienne a toutes les tailles, et qu'il ne dise
     rien que l'outil ne fasse.
     """
 
-    LARGEUR, HAUTEUR = 240, 124
+    LARGEUR, HAUTEUR = 240, 168
 
     def symbole(self, largeur=None, hauteur=None, count=1):
         return logo.Mark(largeur or self.LARGEUR, count,
@@ -110,12 +110,12 @@ class TestTheSymbol(unittest.TestCase):
     def test_the_drawing_is_the_same_at_any_size(self):
         """Decrit par une formule et non par des pixels : la silhouette
         agrandie doit recouvrir la petite, a l'echelle pres."""
-        petit = pixels(self.symbole(120, 62).frame(0), 120, 62)
-        grand = pixels(self.symbole(480, 248).frame(0), 480, 248)
+        petit = pixels(self.symbole(120, 84).frame(0), 120, 84)
+        grand = pixels(self.symbole(480, 336).frame(0), 480, 336)
         part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in petit) / (120 * 62)
+                         for ligne in petit) / (120 * 84)
         part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in grand) / (480 * 248)
+                         for ligne in grand) / (480 * 336)
         # Le lissage pese plus lourd dans une petite image qu'une grande :
         # la marque est fine, et ses bords y prennent une part plus large.
         self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
@@ -130,10 +130,10 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
-        lignes = pixels(self.symbole(32, 17).frame(0), 32, 17)
+        lignes = pixels(self.symbole(32, 22).frame(0), 32, 22)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
-        self.assertGreater(encres, 90)
+        self.assertGreater(encres, 60)
 
     def test_the_mark_is_one_steel_blue_tone_and_nothing_else(self):
         """Une seule teinte, pas de jeton, pas de degrade : une marque n'a
@@ -146,8 +146,8 @@ class TestTheSymbol(unittest.TestCase):
         def couleur(x):
             return tuple(lignes[milieu][x * 4:x * 4 + 4])
 
-        # Dans la boite, a gauche de la mediane : la teinte de la marque.
-        rouge, vert, bleu, alpha = couleur(int(self.LARGEUR * 0.40))
+        # Sur la mediane, a mi-hauteur : la teinte de la marque.
+        rouge, vert, bleu, alpha = couleur(self.LARGEUR // 2)
         self.assertEqual(alpha, 255)
         # A quelques unites pres : la lumiere qui traverse le symbole
         # eclaircit sa teinte, elle ne la remplace pas.
@@ -158,30 +158,51 @@ class TestTheSymbol(unittest.TestCase):
         self.assertGreater(bleu, rouge)
         self.assertLess(max(logo.ENCRE), 200)
         self.assertGreater(min(logo.ENCRE), 80)
-        # Au-dessus de la boite : rien. Pas de jeton.
-        haut = pixels(self.symbole().frame(0), self.LARGEUR,
-                      self.HAUTEUR)[2]
-        self.assertEqual(max(haut[3::4]), 0)
+        # Sous une queue de la courbe : rien. Pas de jeton, pas d'aplat.
+        self.assertEqual(couleur(int(self.LARGEUR * 0.12))[3], 0)
 
-    def test_it_reads_as_a_box_plot_and_not_as_a_bar(self):
-        """Trois choses, dans cet ordre : une moustache fine, la boite, et
-        la mediane qui la partage. C'est ce qui distingue la marque d'un
-        trait quelconque."""
+    def test_it_reads_as_a_distribution_and_not_as_a_hill(self):
+        """Trois choses, et dans cet ordre : des queues basses et fines, un
+        sommet au milieu, et la mediane qui descend sous la ligne de base.
+        C'est ce qui distingue la marque d'une colline."""
         lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
                               self.HAUTEUR))
-        milieu = self.HAUTEUR // 2
 
-        def hauteur_pleine(x):
-            return sum(1 for ligne in lignes if ligne[x] > 200)
+        def premier_plein(x):
+            """Hauteur du premier pixel plein de cette colonne."""
+            for y, ligne in enumerate(lignes):
+                if ligne[x] > 200:
+                    return y
+            return None
 
-        moustache = hauteur_pleine(int(self.LARGEUR * 0.15))
-        boite = hauteur_pleine(int(self.LARGEUR * 0.40))
-        self.assertGreater(moustache, 0, "la moustache est tracee")
-        self.assertGreater(boite, 3 * moustache, "la boite est plus haute")
-        # La mediane : un creux au milieu de la boite, et seulement la.
-        self.assertEqual(lignes[milieu][self.LARGEUR // 2], 0)
-        self.assertGreater(lignes[milieu][int(self.LARGEUR * 0.44)], 200)
-        self.assertGreater(lignes[milieu][int(self.LARGEUR * 0.56)], 200)
+        def dernier_plein(x):
+            for y in range(len(lignes) - 1, -1, -1):
+                if lignes[y][x] > 200:
+                    return y
+            return None
+
+        sommet = premier_plein(self.LARGEUR // 2)
+        queue = premier_plein(int(self.LARGEUR * 0.10))
+        flanc = premier_plein(int(self.LARGEUR * 0.30))
+        self.assertIsNotNone(sommet)
+        self.assertIsNotNone(queue)
+        # Le sommet est au milieu, les queues en bas, le flanc entre les
+        # deux : c'est une cloche, pas un trait ni un triangle.
+        self.assertLess(sommet, flanc)
+        self.assertLess(flanc, queue)
+        # La mediane descend plus bas que les queues.
+        self.assertGreater(dernier_plein(self.LARGEUR // 2),
+                           dernier_plein(int(self.LARGEUR * 0.10)))
+
+    def test_the_two_sides_are_mirror_images(self):
+        """Une distribution dessinee de travers se remarque."""
+        lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
+                              self.HAUTEUR))
+        for ligne in lignes:
+            gauche = bytes(ligne[:self.LARGEUR // 2])
+            droite = bytes(reversed(ligne[self.LARGEUR // 2:]))
+            ecart = max(abs(a - b) for a, b in zip(gauche, droite))
+            self.assertLessEqual(ecart, 2, "la cloche est symetrique")
 
     def test_the_mark_says_nothing_the_tool_does_not_do(self):
         """Une etoile dit « cinq etoiles », une coche dit « conforme » : un
@@ -190,7 +211,7 @@ class TestTheSymbol(unittest.TestCase):
         """
         with open(logo.__file__, encoding="utf-8") as fichier:
             source = fichier.read()
-        self.assertIn("boite a moustaches", source)
+        self.assertIn("courbe de distribution", source)
         for jugement in ("etoile dit", "coche dit", "balance dit"):
             self.assertIn(jugement, source)
 
@@ -217,8 +238,8 @@ class TestTheSplash(unittest.TestCase):
     def setUp(self):
         import tkinter as tk
 
-        from hr_insight.ui import splash, theme
-        from hr_insight.core.config import load_configuration
+        from hr_analytics.ui import splash, theme
+        from hr_analytics.core.config import load_configuration
 
         self.root = tk.Tk()
         self.root.withdraw()
@@ -305,7 +326,7 @@ class TestTheStartup(unittest.TestCase):
     """L'écran appartient au lancement, pas à la fenêtre."""
 
     def _app(self, **kwargs):
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         app = Application(**kwargs)
         self.addCleanup(app.destroy)
@@ -342,7 +363,7 @@ class TestTheStartup(unittest.TestCase):
         import json
         import tempfile
 
-        from hr_insight.core.config import write_default_configuration
+        from hr_analytics.core.config import write_default_configuration
 
         dossier = tempfile.mkdtemp()
         write_default_configuration(dossier)

@@ -4,7 +4,7 @@
     python3 tools/build_windows.py --sortie dist
 
 Le paquet produit tient dans un dossier que l'utilisateur pose où il veut.
-Il double-clique « HR Insight.exe » ; aucun Python n'a besoin d'exister sur
+Il double-clique « HR Analytics.exe » ; aucun Python n'a besoin d'exister sur
 son poste, parce que l'outil apporte le sien dans « runtime ».
 
 Pourquoi pas un exécutable « un seul fichier » (PyInstaller et semblables) :
@@ -48,7 +48,7 @@ import zlib
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from hr_insight.version import __version__                      # noqa: E402
+from hr_analytics.version import __version__                      # noqa: E402
 
 #: Version de CPython embarquée. Changer ces deux lignes suffit à suivre une
 #: version plus récente — avec la ligne correspondante de `lanceur.c`.
@@ -72,7 +72,7 @@ LIB_INUTILE = ("test", "idlelib", "lib2to3", "ensurepip", "turtledemo",
                "distutils", "site-packages", "__pycache__", "pydoc_data")
 
 #: Arborescences reprises du dépôt.
-ARBRES = (("hr_insight", "hr_insight"), ("config", "config"),
+ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
           ("docs", "docs"))
 
 #: Outils de fabrication de jeux d'essai : ils produisent des populations
@@ -111,8 +111,8 @@ def telecharger_runtime(cible: str) -> str:
 def compiler_lanceur(destination: str) -> str:
     """Compile le lanceur, ou reprend celui qui a déjà été compilé."""
     source = os.path.join(ROOT, "packaging", "windows", "lanceur.c")
-    deja = os.path.join(ROOT, "packaging", "windows", "HR Insight.exe")
-    cible = os.path.join(destination, "HR Insight.exe")
+    deja = os.path.join(ROOT, "packaging", "windows", "HR Analytics.exe")
+    cible = os.path.join(destination, "HR Analytics.exe")
     compilateur = shutil.which("x86_64-w64-mingw32-gcc")
     if compilateur is None:
         if os.path.isfile(deja):
@@ -122,7 +122,7 @@ def compiler_lanceur(destination: str) -> str:
         raise SystemExit(
             "x86_64-w64-mingw32-gcc est introuvable. Installez le paquet "
             "« mingw-w64 », ou placez un lanceur déjà compilé dans "
-            "packaging/windows/HR Insight.exe.")
+            "packaging/windows/HR Analytics.exe.")
     # -municode : le point d'entrée est wWinMain, donc les chemins Windows
     # en Unicode. -mwindows : pas de fenêtre de console derrière l'outil.
     subprocess.run([compilateur, "-O2", "-municode", "-mwindows",
@@ -229,7 +229,7 @@ def composer(destination: str, extrait: str) -> str:
 
 #: Marque posee en fin d'executable, juste avant la taille de la charge.
 #: Elle distingue un lanceur qui porte son paquet d'un lanceur nu.
-MARQUE = b"HRINSGHT"
+MARQUE = b"HRANALYT"
 
 
 def compiler_stub(destination: str) -> str:
@@ -318,7 +318,7 @@ def signer(executable: str, certificat: str, cle: str,
             "ou signez sur un poste Windows avec signtool.")
     signe = executable + ".signe"
     commande = ["osslsigncode", "sign", "-certs", certificat, "-key", cle,
-                "-n", "HR Insight", "-h", "sha256",
+                "-n", "HR Analytics", "-h", "sha256",
                 "-in", executable, "-out", signe]
     if mot_de_passe:
         commande += ["-pass", mot_de_passe]
@@ -371,7 +371,7 @@ def main(argv=None) -> int:
         raise SystemExit("Indiquez --runtime <dossier> ou --telecharger.")
 
     _dire("Composition :")
-    dossier = composer(os.path.join(sortie, "HR Insight"), extrait)
+    dossier = composer(os.path.join(sortie, "HR Analytics"), extrait)
     archive = os.path.join(sortie, f"HR-Insight-{__version__}-windows.zip")
     zipper(dossier, archive)
     produits = [archive]
@@ -383,7 +383,7 @@ def main(argv=None) -> int:
         cab = os.path.join(sortie, "paquet.cab")
         fabriquer_cab(dossier, cab)
         _dire(f"  archive repliée ({os.path.getsize(cab) // 1024} Ko)")
-        unique = os.path.join(sortie, "HR Insight.exe")
+        unique = os.path.join(sortie, "HR Analytics.exe")
         coudre(stub, cab, unique)
         os.remove(stub)
         os.remove(cab)

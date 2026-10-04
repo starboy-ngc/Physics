@@ -9,11 +9,11 @@ Il n'installe rien, ne tape rien, et n'a pas à savoir que Python existe. Son
 Un dossier, et rien d'autre.
 
 ```
-HR Insight\
-  HR Insight.exe     le programme à lancer
+HR Analytics\
+  HR Analytics.exe     le programme à lancer
   LISEZ-MOI.txt
   config\            les réglages, en texte, modifiables au bloc-notes
-  hr_insight\        le code de l'outil, lisible
+  hr_analytics\        le code de l'outil, lisible
   runtime\           l'interpréteur Python privé de l'outil
   docs\              guides, audits, et le source du lanceur
   population-*.xlsx  jeux d'essai, sans aucune donnée réelle
@@ -37,7 +37,7 @@ faire ici :
    Un outil que l'antivirus met en quarantaine le premier lundi n'est pas
    livré.
 2. **Le code y devient illisible.** Un outil qui traite des rémunérations
-   doit pouvoir être relu par l'équipe qui l'homologue. Ici `hr_insight\`
+   doit pouvoir être relu par l'équipe qui l'homologue. Ici `hr_analytics\`
    est du Python en clair, et le lanceur tient en une centaine de lignes de
    C fournies dans `docs\lanceur.c`.
 3. **La configuration se retrouverait dans l'archive**, donc dans un dossier
@@ -49,8 +49,8 @@ Le dossier livré n'a aucun de ces trois défauts.
 
 ## Le lanceur
 
-`HR Insight.exe` fait une chose : démarrer `runtime\pythonw.exe` sur
-`-I -m hr_insight`, avec le dossier de l'outil pour répertoire de travail.
+`HR Analytics.exe` fait une chose : démarrer `runtime\pythonw.exe` sur
+`-I -m hr_analytics`, avec le dossier de l'outil pour répertoire de travail.
 
 - **Aucun chemin en dur.** Tout se déduit de `GetModuleFileNameW` :
   l'emplacement du lanceur. Le dossier se déplace et se copie sans être
@@ -82,7 +82,7 @@ mécanisme ne se constate qu'en l'exécutant.** Le défaut n'était visible
 d'aucune relecture.
 
 On démarre donc `pythonw.exe`, comme le fait toute application Python sous
-Windows. L'arbre des processus montre `HR Insight.exe` puis `pythonw.exe` :
+Windows. L'arbre des processus montre `HR Analytics.exe` puis `pythonw.exe` :
 c'est lisible, et plus honnête qu'un interpréteur caché dans le lanceur.
 
 ## Composer le paquet
@@ -150,7 +150,7 @@ d'un premier déploiement.
 
 ## Le fichier unique
 
-Demandé après coup, et livré : `HR Insight.exe`, 16 Mo, **un seul fichier**,
+Demandé après coup, et livré : `HR Analytics.exe`, 16 Mo, **un seul fichier**,
 portant la marque de l'outil.
 
 ```
@@ -165,7 +165,7 @@ de la charge, son empreinte — permet au lanceur de la retrouver en se
 relisant lui-même.
 
 Au premier lancement, il la dépose dans
-`%LOCALAPPDATA%\HR Insight\<empreinte>\` et démarre l'outil. Aux lancements
+`%LOCALAPPDATA%\HR Analytics\<empreinte>\` et démarre l'outil. Aux lancements
 suivants il trouve le dépôt en place et démarre directement.
 
 Trois détails qui comptent :
@@ -176,7 +176,7 @@ Trois détails qui comptent :
 - **Le dossier de version porte l'empreinte de la charge.** Deux versions
   ne peuvent pas se mélanger, et la même version ne se réextrait jamais.
 - **La configuration vit au-dessus des versions**, dans
-  `%LOCALAPPDATA%\HR Insight\config\`. Une mise à jour ne la remet pas à
+  `%LOCALAPPDATA%\HR Analytics\config\`. Une mise à jour ne la remet pas à
   zéro — c'était le troisième défaut reproché aux exécutables repliés.
 
 C'est **Windows lui-même** qui déplie l'archive (`SetupIterateCabinetW`).

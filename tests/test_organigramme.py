@@ -27,9 +27,9 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.core import org
-from hr_insight.core.hierarchy import Tree
-from hr_insight.core.normalize import Employee, Population
+from hr_analytics.core import org
+from hr_analytics.core.hierarchy import Tree
+from hr_analytics.core.normalize import Employee, Population
 from tests.support import make_config
 
 
@@ -254,7 +254,7 @@ class TestConfidentiality(OrgCase):
         """La raison meme de l'exemption. Si une restitution venait un jour
         a porter cette page, ce test tomberait, et il faudrait rediscuter le
         seuil avant de la publier."""
-        from hr_insight.core import reporting, export, slides
+        from hr_analytics.core import reporting, export, slides
 
         for module in (reporting, export, slides):
             with open(module.__file__, encoding="utf-8") as handle:

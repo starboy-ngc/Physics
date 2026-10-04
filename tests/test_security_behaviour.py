@@ -23,14 +23,14 @@ import zipfile
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
-from hr_insight.core import slides as _slides
-from hr_insight.core.config import (load_configuration,
+from hr_analytics.core import slides as _slides
+from hr_analytics.core.config import (load_configuration,
                                                 write_default_configuration)
-from hr_insight.core.export import export_excel
-from hr_insight.core.logging_setup import configure_logging, log_event
-from hr_insight.core.normalize import anonymise, anonymisation_salt
-from hr_insight.core.pipeline import AnalysisRequest, run_analysis
-from hr_insight.core.reporting import render_report
+from hr_analytics.core.export import export_excel
+from hr_analytics.core.logging_setup import configure_logging, log_event
+from hr_analytics.core.normalize import anonymise, anonymisation_salt
+from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+from hr_analytics.core.reporting import render_report
 
 #: Ce qu'un libelle saisi a la main peut contenir de plus genant.
 TRAPS = [
@@ -167,7 +167,7 @@ class TestTheWindowRefusesTheProfilesOfTk(unittest.TestCase):
     def test_a_profile_dropped_in_the_home_directory_is_not_executed(self):
         import tkinter
 
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         ancien = os.environ.get("HOME")
         os.environ["HOME"] = self.maison
@@ -191,7 +191,7 @@ class TestTheWindowRefusesTheProfilesOfTk(unittest.TestCase):
         pas."""
         import tkinter
 
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         self.assertIsNot(Application.readprofile, tkinter.Tk.readprofile)
 
@@ -230,7 +230,7 @@ class TestWorkbook(HostileFileCase):
 
     def test_the_workbook_can_be_read_back(self):
         """Preuve qu'aucun caractere n'a corrompu l'archive."""
-        from hr_insight.io.tabular import read_table
+        from hr_analytics.io.tabular import read_table
 
         table = read_table(self.path, "Population")
         self.assertTrue(table.rows)
@@ -354,7 +354,7 @@ class TestFileSystemReach(unittest.TestCase):
             writer.writerow(HEADERS)
             for index in range(10):
                 writer.writerow(list(make_row(index)))
-        from hr_insight.io.tabular import read_table
+        from hr_analytics.io.tabular import read_table
 
         read_table(source)
         self.assertEqual(os.listdir(directory), ["p.csv"])

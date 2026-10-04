@@ -1,4 +1,4 @@
-# Audit complet — HR Insight 1.0.0
+# Audit complet — HR Analytics 1.0.0
 
 *Audit conduit le 20 septembre 2026 sur la branche
 `claude/hr-insight-local-8mbxy0`, révision `9cc4343`.*

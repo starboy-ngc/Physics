@@ -41,7 +41,7 @@ class Splash(tk.Toplevel):
     #: Largeur du symbole ; sa hauteur suit la proportion de la marque.
     #: Petit, et pose a cote du nom plutot qu'au-dessus : c'est le nom
     #: qu'on doit lire, la marque ne fait que l'accompagner.
-    LOGO = 46
+    LOGO = 42
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300

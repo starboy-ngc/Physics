@@ -12,7 +12,7 @@ import re
 import os
 from typing import Optional
 
-LOGGER_NAME = "hr_insight"
+LOGGER_NAME = "hr_analytics"
 _FORMAT = "%(asctime)s | %(module_name)s | %(action)s | %(status)s | %(duration)s | %(detail)s"
 
 

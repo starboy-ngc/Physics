@@ -61,7 +61,7 @@ class Dialogs:
         self.warnings = []
 
     def __enter__(self):
-        from hr_insight.ui import app as module
+        from hr_analytics.ui import app as module
 
         self.saved = (module.filedialog.askopenfilename,
                       module.filedialog.askdirectory,
@@ -79,7 +79,7 @@ class Dialogs:
         return self
 
     def __exit__(self, *_exception):
-        from hr_insight.ui import app as module
+        from hr_analytics.ui import app as module
 
         (module.filedialog.askopenfilename, module.filedialog.askdirectory,
          module.messagebox.showerror, module.messagebox.showinfo,
@@ -89,7 +89,7 @@ class Dialogs:
 @needs_display
 class WindowCase(unittest.TestCase):
     def setUp(self):
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
         self.app = Application()
@@ -219,7 +219,7 @@ class TestRunningTheAnalysis(WindowCase):
         """Le texte d'une exception Python peut citer la cellule qui l'a
         provoquee, donc une donnee RH."""
         self.load()
-        from hr_insight.ui import app as module
+        from hr_analytics.ui import app as module
 
         original = module.run_analysis
 
@@ -243,8 +243,8 @@ class TestRunningTheAnalysis(WindowCase):
 
     def test_a_business_refusal_shows_its_own_message(self):
         self.load()
-        from hr_insight.core.errors import ConfigError
-        from hr_insight.ui import app as module
+        from hr_analytics.core.errors import ConfigError
+        from hr_analytics.ui import app as module
 
         original = module.run_analysis
         module.run_analysis = lambda _r: (_ for _ in ()).throw(
@@ -344,8 +344,8 @@ class TestSettingsRoundTrip(WindowCase):
         self.assertNotIn("variable_pay", self.app.mapping.field_to_index)
         config_dir = os.path.join(self.directory, "config")
         os.makedirs(config_dir, exist_ok=True)
-        from hr_insight.core.config import write_configuration
-        from hr_insight.ui.settings import build_mapping_section
+        from hr_analytics.core.config import write_configuration
+        from hr_analytics.ui.settings import build_mapping_section
 
         assignments = {header: "" for header in self.app.headers}
         assignments["Prime de panier"] = "variable_pay"
@@ -633,7 +633,7 @@ class TestMappingAColumnFromTheWindow(WindowCase):
                                  900 + index])
 
     def _ecran(self):
-        from hr_insight.ui.settings import SettingsWindow
+        from hr_analytics.ui.settings import SettingsWindow
 
         fenêtre = SettingsWindow(
             self.app, self.app.configuration, self.directory, self.app.fonts,
@@ -643,7 +643,7 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         return fenêtre
 
     def test_the_window_is_enough_to_declare_a_column(self):
-        from hr_insight.ui.settings import ORGANISATION
+        from hr_analytics.ui.settings import ORGANISATION
 
         self.load(self._fichier())
         # Au depart, ces colonnes ne sont pas reconnues.
@@ -691,7 +691,7 @@ class TestMappingAColumnFromTheWindow(WindowCase):
 
         # 3. Et l'analyse sait grouper par elles.
         self.analyse()
-        from hr_insight.core.pay_equity import calculate_category_gaps
+        from hr_analytics.core.pay_equity import calculate_category_gaps
 
         bloc = calculate_category_gaps(self.app.result.filtered,
                                        self.app.result.config,
@@ -707,7 +707,7 @@ class TestMappingAColumnFromTheWindow(WindowCase):
     def test_the_new_axis_is_offered_on_the_gaps_page(self):
         """Declarer une notion sert a comparer avec : elle doit paraitre
         dans « Comparer par »."""
-        from hr_insight.ui.settings import ORGANISATION
+        from hr_analytics.ui.settings import ORGANISATION
 
         self.load(self._fichier())
         fenêtre = self._ecran()
@@ -970,7 +970,7 @@ class TestTheScatterAxes(WindowCase):
     def test_the_tab_and_the_chart_are_named_for_what_they_hold(self):
         """« Graphiques » : il y en a trois. « Nuage de points » : les deux
         axes se choisissent, le titre ne peut plus les nommer."""
-        from hr_insight.ui.app import CHARTS, TABS
+        from hr_analytics.ui.app import CHARTS, TABS
 
         self.assertIn(("graphique", "Graphiques"), TABS)
         self.assertIn(("nuage", "Nuage de points"), CHARTS)
@@ -1058,7 +1058,7 @@ class TestTheScatterAxes(WindowCase):
         données = self.app.configuration.as_dict()
         données["chart_parameters"]["scatter_x"] = "age_years"
         données["chart_parameters"]["scatter_y"] = "variable_pay"
-        from hr_insight.core.config import Configuration
+        from hr_analytics.core.config import Configuration
 
         self.app.configuration = Configuration(données)
         self.app._reset_scatter()

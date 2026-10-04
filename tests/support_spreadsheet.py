@@ -26,7 +26,7 @@ import math
 import re
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
-from hr_insight.io.xlsx_writer import Formula
+from hr_analytics.io.xlsx_writer import Formula
 
 
 class FormulaError(Exception):

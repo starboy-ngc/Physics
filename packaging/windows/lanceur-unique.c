@@ -1,5 +1,5 @@
 /*
- * HR Insight — lanceur a fichier unique.
+ * HR Analytics — lanceur a fichier unique.
  *
  * Un seul .exe. Il porte l'outil, l'interpreteur Python et Tcl/Tk, replies
  * derriere son propre code sous forme d'archive. Au premier lancement il
@@ -35,7 +35,7 @@
  * Compilation (chaine croisee, depuis Linux) :
  *   x86_64-w64-mingw32-windres icone.rc -o icone.o
  *   x86_64-w64-mingw32-gcc -O2 -municode -mwindows \
- *       lanceur-unique.c icone.o -lsetupapi -o "HR Insight.exe"
+ *       lanceur-unique.c icone.o -lsetupapi -o "HR Analytics.exe"
  * puis l'archive est ajoutee a la suite du fichier par build_windows.py.
  */
 
@@ -45,7 +45,7 @@
 
 /* Marque de fin, posee juste avant la taille de l'archive. Elle permet de
  * reconnaitre un executable qui porte sa charge d'un executable nu. */
-#define MARQUE "HRINSGHT"
+#define MARQUE "HRANALYT"
 #define MARQUE_TAILLE 8
 #define PIED_TAILLE (MARQUE_TAILLE + 8 + 4)
 
@@ -53,9 +53,9 @@
  * code pese quelques kilo-octets ; un mega-octet est large. */
 #define FENETRE_RECHERCHE (1024 * 1024)
 
-#define NOM_PRODUIT L"HR Insight"
+#define NOM_PRODUIT L"HR Analytics"
 #define RUNTIME_EXE L"\\runtime\\pythonw.exe"
-#define COMMANDE L"\" -I -m hr_insight"
+#define COMMANDE L"\" -I -m hr_analytics"
 
 static void erreur(const wchar_t *message)
 {
@@ -242,12 +242,12 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     }
     HeapFree(GetProcessHeap(), 0, fin);
     if (!trouve) {
-        erreur(L"Ce fichier ne porte pas HR Insight : il a ete tronque ou "
+        erreur(L"Ce fichier ne porte pas HR Analytics : il a ete tronque ou "
                L"modifie.\n\nRecopiez-le depuis sa source.");
         return 3;
     }
 
-    /* Le depot : %LOCALAPPDATA%\HR Insight\, et dedans un dossier par
+    /* Le depot : %LOCALAPPDATA%\HR Analytics\, et dedans un dossier par
      * version. L'empreinte de l'archive sert de numero : deux versions
      * differentes ne peuvent pas se melanger, et la meme version ne se
      * reextrait jamais. */
@@ -260,7 +260,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     lstrcatW(base, L"\\");
     lstrcatW(base, NOM_PRODUIT);
     if (!creer_dossier(base)) {
-        erreur(L"HR Insight n'a pas pu creer son dossier de travail.\n\n"
+        erreur(L"HR Analytics n'a pas pu creer son dossier de travail.\n\n"
                L"Verifiez vos droits sur votre profil utilisateur.");
         return 4;
     }
@@ -278,21 +278,21 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     if (GetFileAttributesW(interpreteur) == INVALID_FILE_ATTRIBUTES) {
         /* Premier lancement de cette version : on deplie. */
         if (!creer_dossier(depot)) {
-            erreur(L"HR Insight n'a pas pu creer son dossier de travail.");
+            erreur(L"HR Analytics n'a pas pu creer son dossier de travail.");
             return 4;
         }
         wchar_t archive[MAX_PATH];
         lstrcpynW(archive, depot, MAX_PATH);
         lstrcatW(archive, L"\\paquet.cab");
         if (!ecrire_archive(moi, debut_archive, taille_archive, archive)) {
-            erreur(L"HR Insight n'a pas pu preparer son installation.\n\n"
+            erreur(L"HR Analytics n'a pas pu preparer son installation.\n\n"
                    L"Verifiez l'espace disque disponible sur votre profil.");
             return 5;
         }
         BOOL deplie = SetupIterateCabinetW(archive, 0, deplier, (PVOID)depot);
         DeleteFileW(archive);
         if (!deplie) {
-            erreur(L"HR Insight n'a pas pu se deplier.\n\n"
+            erreur(L"HR Analytics n'a pas pu se deplier.\n\n"
                    L"Verifiez l'espace disque, puis relancez. Si le "
                    L"probleme persiste, recopiez le fichier depuis sa "
                    L"source.");
@@ -341,7 +341,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     if (!CreateProcessW(interpreteur, ligne, NULL, NULL, FALSE,
                         CREATE_NO_WINDOW, NULL, base,
                         &demarrage, &processus)) {
-        erreur(L"HR Insight n'a pas pu demarrer.\n\n"
+        erreur(L"HR Analytics n'a pas pu demarrer.\n\n"
                L"Verifiez que votre antivirus n'a pas mis le programme en "
                L"quarantaine.");
         return 6;
@@ -352,9 +352,9 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     CloseHandle(processus.hProcess);
     CloseHandle(processus.hThread);
     if (code != 0) {
-        erreur(L"HR Insight s'est arrete sur une erreur.\n\n"
+        erreur(L"HR Analytics s'est arrete sur une erreur.\n\n"
                L"Si le probleme se repete, supprimez le dossier "
-               L"« HR Insight » de votre profil utilisateur et relancez : "
+               L"« HR Analytics » de votre profil utilisateur et relancez : "
                L"le programme se reinstallera.");
     }
     return (int)code;

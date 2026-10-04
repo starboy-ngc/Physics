@@ -1,5 +1,5 @@
 /*
- * HR Insight — lanceur Windows.
+ * HR Analytics — lanceur Windows.
  *
  * Son seul travail : demarrer l'interpreteur Python prive qui dort dans le
  * sous-dossier « runtime », et lui demander d'ouvrir l'outil. L'utilisateur
@@ -34,12 +34,12 @@
  *
  * On demarre donc pythonw.exe — celui du dossier — comme le fait toute
  * application Python sous Windows. L'arbre des processus montre
- * « HR Insight.exe » puis « pythonw.exe » : c'est lisible, et plus honnete
+ * « HR Analytics.exe » puis « pythonw.exe » : c'est lisible, et plus honnete
  * qu'un interpreteur cache dans le lanceur.
  *
  * Compilation (chaine croisee, depuis Linux) :
  *   x86_64-w64-mingw32-gcc -O2 -municode -mwindows lanceur.c \
- *       -o "HR Insight.exe"
+ *       -o "HR Analytics.exe"
  */
 
 #include <windows.h>
@@ -53,11 +53,11 @@
 /* Ce qu'on lui demande d'executer. « -I » : mode isole — aucun paquet
  * installe ailleurs sur le poste, aucune variable d'environnement, aucun
  * repertoire de l'utilisateur ne peut s'inviter dans l'analyse. */
-#define COMMANDE L"\" -I -m hr_insight"
+#define COMMANDE L"\" -I -m hr_analytics"
 
 static void erreur(const wchar_t *message)
 {
-    MessageBoxW(NULL, message, L"HR Insight", MB_ICONERROR | MB_OK);
+    MessageBoxW(NULL, message, L"HR Analytics", MB_ICONERROR | MB_OK);
 }
 
 int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
@@ -70,8 +70,8 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     DWORD taille = GetModuleFileNameW(NULL, dossier, MAX_PATH);
     if (taille == 0 || taille >= MAX_PATH) {
         erreur(L"Le lanceur n'a pas pu determiner son propre emplacement.\n\n"
-               L"Placez le dossier HR Insight dans un chemin plus court, "
-               L"par exemple C:\\HR Insight.");
+               L"Placez le dossier HR Analytics dans un chemin plus court, "
+               L"par exemple C:\\HR Analytics.");
         return 1;
     }
     /* Retirer le nom du fichier : il reste le dossier. */
@@ -83,15 +83,15 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     lstrcpynW(interpreteur, dossier, MAX_PATH);
     lstrcatW(interpreteur, RUNTIME_EXE);
     if (GetFileAttributesW(interpreteur) == INVALID_FILE_ATTRIBUTES) {
-        erreur(L"Le moteur de HR Insight est introuvable.\n\n"
+        erreur(L"Le moteur de HR Analytics est introuvable.\n\n"
                L"Le sous-dossier « runtime » doit rester a cote du lanceur. "
                L"Si vous avez deplace le programme, recopiez le dossier "
-               L"HR Insight en entier.");
+               L"HR Analytics en entier.");
         return 2;
     }
 
     /* La ligne de commande, guillemets compris : le chemin peut contenir
-     * des espaces, et « C:\\Mes documents\\HR Insight » est le cas normal
+     * des espaces, et « C:\\Mes documents\\HR Analytics » est le cas normal
      * et non l'exception. */
     wchar_t ligne[MAX_PATH + 64];
     lstrcpynW(ligne, L"\"", 2);
@@ -113,7 +113,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
     if (!CreateProcessW(interpreteur, ligne, NULL, NULL, FALSE,
                         CREATE_NO_WINDOW, NULL, dossier,
                         &demarrage, &processus)) {
-        erreur(L"HR Insight n'a pas pu demarrer.\n\n"
+        erreur(L"HR Analytics n'a pas pu demarrer.\n\n"
                L"Verifiez que le dossier n'est pas en lecture seule et que "
                L"votre antivirus n'a pas mis le programme en quarantaine.");
         return 3;
@@ -133,8 +133,8 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE precedente,
      * presque toujours un dossier incomplet. Le dire vaut mieux que de
      * disparaitre. */
     if (code != 0) {
-        erreur(L"HR Insight s'est arrete sur une erreur.\n\n"
-               L"Si le probleme se repete, recopiez le dossier HR Insight "
+        erreur(L"HR Analytics s'est arrete sur une erreur.\n\n"
+               L"Si le probleme se repete, recopiez le dossier HR Analytics "
                L"en entier depuis sa source.");
     }
     return (int)code;

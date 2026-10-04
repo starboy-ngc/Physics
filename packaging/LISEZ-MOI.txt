@@ -495,7 +495,7 @@ CONTENU DE L'ARCHIVE
   lancer.bat / lancer.sh       ouvre l'interface graphique
   analyser-demo.bat / .sh      analyse en lot, sans interface
   hr-insight.pyz   l'outil, en un seul fichier
-  hr_insight/      le code source, lisible et auditable
+  hr_analytics/      le code source, lisible et auditable
   config/                      les paramètres
   tools/                       générateur de population, banc de perf
   docs/                        architecture et guide utilisateur

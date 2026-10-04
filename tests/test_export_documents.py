@@ -18,11 +18,11 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
-from hr_insight.core.config import write_default_configuration
-from hr_insight.core.export import build_sheets
-from hr_insight.core.pipeline import AnalysisRequest, run_analysis
-from hr_insight.core.reporting import boxplot_svg, pyramid_svg
-from hr_insight.core.statistics_engine import describe, dispersion
+from hr_analytics.core.config import write_default_configuration
+from hr_analytics.core.export import build_sheets
+from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+from hr_analytics.core.reporting import boxplot_svg, pyramid_svg
+from hr_analytics.core.statistics_engine import describe, dispersion
 
 
 class TestTheGapToTheMedian(unittest.TestCase):
@@ -88,7 +88,7 @@ class TestWorkbookOrder(unittest.TestCase):
         data = cls.result.config.as_dict()
         data["export_parameters"]["include_individual_data"] = True
         data["export_parameters"]["include_source_file"] = True
-        from hr_insight.core.config import Configuration
+        from hr_analytics.core.config import Configuration
         cls.names = [nom for nom, _ in build_sheets(
             cls.result.payload, cls.result.filtered, Configuration(data),
             table=cls.result.table, mapping=cls.result.mapping)]
@@ -142,7 +142,7 @@ class TestBoxPlotDrawing(unittest.TestCase):
     def test_the_whiskers_use_a_colour_the_stylesheet_defines(self):
         """Une variable CSS absente de la feuille ne peint rien : les
         moustaches disparaissaient sans que rien ne le signale."""
-        from hr_insight.core import slides
+        from hr_analytics.core import slides
         svg = boxplot_svg(self.SALAIRE, "EUR", width=400, height=180)
         feuille = slides._slide_css()
         for variable in set(re.findall(r"var\((--[\w-]+)\)", svg)):

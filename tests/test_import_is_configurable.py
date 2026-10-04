@@ -19,13 +19,13 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import make_config
-from hr_insight.core.config import Configuration, write_default_configuration
-from hr_insight.core.errors import MappingError
-from hr_insight.core.export import build_sheets
-from hr_insight.core.mapping import (ensure_required, required_fields,
+from hr_analytics.core.config import Configuration, write_default_configuration
+from hr_analytics.core.errors import MappingError
+from hr_analytics.core.export import build_sheets
+from hr_analytics.core.mapping import (ensure_required, required_fields,
                                      resolve_mapping)
-from hr_insight.core.pipeline import AnalysisRequest, run_analysis
-from hr_insight.core.segmentation import field_label, filterable_fields
+from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+from hr_analytics.core.segmentation import field_label, filterable_fields
 
 
 class TestWhatIsTrulyRequired(unittest.TestCase):

@@ -18,9 +18,9 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import build_population, make_config, make_row
-from hr_insight.core import metrics, pay_equity
-from hr_insight.core.config import Configuration
-from hr_insight.core.normalize import (Employee, apply_fte_scale,
+from hr_analytics.core import metrics, pay_equity
+from hr_analytics.core.config import Configuration
+from hr_analytics.core.normalize import (Employee, apply_fte_scale,
                                        full_time_amount, parse_fte)
 
 
@@ -163,7 +163,7 @@ class TestTheControlWorkbookCarriesTheFormula(unittest.TestCase):
     classeur : c'est toute la raison d'etre de l'onglet Contrôle."""
 
     def test_the_full_time_mean_is_written_as_a_formula(self):
-        from hr_insight.core import formulas as fx
+        from hr_analytics.core import formulas as fx
 
         ledger = fx.Ledger("Données individuelles",
                            ["Salaire de base", "Temps de travail"], 80)
@@ -176,7 +176,7 @@ class TestTheControlWorkbookCarriesTheFormula(unittest.TestCase):
 
     def test_the_formula_recomputes_the_published_value(self):
         from tests.support_spreadsheet import Workbook
-        from hr_insight.core import formulas as fx
+        from hr_analytics.core import formulas as fx
 
         lignes = [["Salaire de base", "Temps de travail"],
                   [32000, 0.8], [45000, 1.0], [45000, 1.0], [22500, 0.5]]

@@ -24,7 +24,7 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from hr_insight.version import __version__  # noqa: E402
+from hr_analytics.version import __version__  # noqa: E402
 
 #: `zipapp -m` produit un lanceur qui appelle main() sans retransmettre sa
 #: valeur : tous les codes de sortie seraient perdus dans l'archive, et
@@ -37,13 +37,13 @@ par lot de savoir qu'un controle qualite a echoue.
 """
 import sys
 
-from hr_insight.cli import main
+from hr_analytics.cli import main
 
 sys.exit(main())
 '''
 
 #: Ce que l'archive contient, en plus du code : dossier source -> destination.
-TREES = (("hr_insight", "hr_insight"),
+TREES = (("hr_analytics", "hr_analytics"),
          ("config", "config"),
          ("tools", "tools"),
          ("docs", "docs"))
@@ -56,7 +56,7 @@ FILES = (("packaging/lancer.bat", "lancer.bat"),
          ("README.md", "README.md"))
 
 #: Le .pyz n'embarque que ce qui est necessaire a l'execution.
-BUNDLED = ("hr_insight", "config")
+BUNDLED = ("hr_analytics", "config")
 
 
 #: Outils de developpement, qui n'ont rien a faire chez l'utilisateur.
@@ -144,7 +144,7 @@ def build_populations(destination: str, rows: int, seed: int) -> None:
     # anomalies toutes non bloquantes — l'analyse se lance, et l'on voit ce
     # que le controle signale sans qu'il refuse de travailler.
     from tools.generate_realistic_population import construire
-    from hr_insight.io.xlsx_writer import write_workbook
+    from hr_analytics.io.xlsx_writer import write_workbook
     from tools.generate_realistic_population import HEADERS as ENTETES
 
     lignes, _anomalies = construire(900, 20260910, _dt.date.today())

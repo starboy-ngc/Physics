@@ -3,8 +3,8 @@
 import unittest
 
 from tests.support import build_population, make_config, make_row
-from hr_insight.core import metrics
-from hr_insight.core.segmentation import build_filters, apply_filters, split_by
+from hr_analytics.core import metrics
+from hr_analytics.core.segmentation import build_filters, apply_filters, split_by
 
 
 class TestPopulationMetrics(unittest.TestCase):
@@ -350,7 +350,7 @@ class TestUnknownFilterField(unittest.TestCase):
     renvoyer une population vide en silence."""
 
     def test_unknown_field_raises_readable_error(self):
-        from hr_insight.core.errors import ConfigError
+        from hr_analytics.core.errors import ConfigError
         with self.assertRaises(ConfigError) as caught:
             build_filters([{"field": "team", "operator": "eq", "value": "Alpha"}])
         message = caught.exception.message
@@ -359,7 +359,7 @@ class TestUnknownFilterField(unittest.TestCase):
         self.assertIn("business_unit", message)  # liste les champs valides
 
     def test_misspelled_field_is_caught(self):
-        from hr_insight.core.errors import ConfigError
+        from hr_analytics.core.errors import ConfigError
         with self.assertRaises(ConfigError):
             build_filters([{"field": "gade", "operator": "eq", "value": "G5"}])
 
@@ -400,7 +400,7 @@ class TestKeyShares(unittest.TestCase):
         self.assertAlmostEqual(result["share_under_30"], 50.0)
 
     def test_shares_reach_the_spreadsheet(self):
-        from hr_insight.core.export import _rows_population
+        from hr_analytics.core.export import _rows_population
         config = make_config()
         rows = [make_row(i, age=25) for i in range(10)]
         population = metrics.calculate_population_metrics(
@@ -475,7 +475,7 @@ class TestTheCatchAllBandKeepsItsSexes(unittest.TestCase):
         return build_population(rows)
 
     def bands(self, rows, field="age_band"):
-        from hr_insight.core.metrics import calculate_population_metrics
+        from hr_analytics.core.metrics import calculate_population_metrics
 
         payload = calculate_population_metrics(self.population(rows),
                                                make_config())
@@ -537,7 +537,7 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
             for index in range(40)])
 
     def dataset(self, **chart):
-        from hr_insight.core.metrics import scatter_dataset
+        from hr_analytics.core.metrics import scatter_dataset
 
         reglages = {f"chart_parameters.{clef}": valeur
                     for clef, valeur in chart.items()}
@@ -547,7 +547,7 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
         """La même liste que la page des écarts : une seconde ici aurait
         fini par en différer, et une prime maison serait apparue d'un côté
         et pas de l'autre."""
-        from hr_insight.core.metrics import scatter_axes
+        from hr_analytics.core.metrics import scatter_axes
 
         axes = scatter_axes(make_config())
         champs = [axis["field"] for axis in axes]
@@ -561,8 +561,8 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
     def test_no_personal_field_can_carry_an_axis(self):
         """Un nuage dont l'axe porte un matricule n'est pas un nuage, et sa
         légende entrerait dans les documents."""
-        from hr_insight.core.metrics import scatter_axes
-        from hr_insight.core.segmentation import personal_fields
+        from hr_analytics.core.metrics import scatter_axes
+        from hr_analytics.core.segmentation import personal_fields
 
         config = make_config()
         interdits = set(personal_fields(config))
@@ -587,7 +587,7 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
         """Le nuage s'appelait « Rémunération/Ancienneté » et son titre
         disait pourquoi il disparaissait ; il s'appelle « Nuage de points »,
         c'est donc au message de le dire."""
-        from hr_insight.core.metrics import scatter_dataset
+        from hr_analytics.core.metrics import scatter_dataset
 
         population = build_population([
             make_row(index, salary=30000 + index * 100, hire_date="")
@@ -601,7 +601,7 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
     def test_a_small_population_still_blames_the_headcount(self):
         population = build_population([
             make_row(index, salary=30000) for index in range(4)])
-        from hr_insight.core.metrics import scatter_dataset
+        from hr_analytics.core.metrics import scatter_dataset
 
         données = scatter_dataset(population, make_config())
         self.assertFalse(données["available"])
@@ -612,7 +612,7 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
         vide, il doit quand même dire sur quoi il portait."""
         population = build_population([
             make_row(index, salary=30000) for index in range(4)])
-        from hr_insight.core.metrics import scatter_dataset
+        from hr_analytics.core.metrics import scatter_dataset
 
         données = scatter_dataset(population, make_config())
         self.assertEqual(données["x_axis"]["label"], "Ancienneté")

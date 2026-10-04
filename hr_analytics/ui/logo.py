@@ -6,15 +6,16 @@ informatique doit pouvoir relire irait contre tout le reste. Le symbole est
 donc *calcule*, puis encode en PNG par le module « raster », qui sait deja
 le faire pour les points du nuage.
 
-Ce qu'il montre : une boite a moustaches. L'etendue d'une population, la
-boite des deux quartiles du milieu, et la mediane qui la partage — l'objet
-meme que l'outil produit, reduit a sa silhouette.
+Ce qu'il montre : une courbe de distribution et sa mediane. La silhouette
+d'une population — beaucoup de monde autour du milieu, de moins en moins
+en s'en eloignant — et le trait qui la partage en deux moities egales.
+C'est l'objet meme que l'outil produit, reduit a sa silhouette.
 
 Le choix n'est pas qu'esthetique. Une etoile dit « cinq etoiles », une
 coche dit « conforme », une balance dit « justice » : un outil qui mesure
 des ecarts de remuneration ne doit porter aucun de ces jugements sur sa
-porte. Une boite a moustaches ne dit rien d'autre que ce que fait l'outil :
-elle montre une distribution, sans la noter.
+porte. Une courbe de distribution ne dit rien d'autre que ce que fait
+l'outil : elle montre une population, sans la noter.
 
 Sa teinte ne suit pas le theme et ne change pas avec le fond : un bleu
 d'acier, assez clair pour se detacher d'un ecran sombre, assez dense pour
@@ -23,11 +24,16 @@ l'encre, que pendant une analyse, sur la page.
 
 Tout est analytique. Chaque piece est decrite par sa *distance signee* —
 negative dedans, positive dehors —, les pieces se reunissent en prenant la
-plus petite, la mediane se creuse en prenant la plus grande de l'une et de
-l'opposee de l'autre, et l'opacite d'un pixel se deduit de la distance
-finale : un demi-pixel de part et d'autre du bord. Il n'y a donc ni tirage
-aleatoire, ni echantillonnage, ni surechantillonnage a payer : le meme
-dessin exactement a toutes les tailles, en un seul passage.
+plus petite, et l'opacite d'un pixel se deduit de la distance finale : un
+demi-pixel de part et d'autre du bord. Il n'y a donc ni tirage aleatoire,
+ni echantillonnage, ni surechantillonnage a payer : le meme dessin
+exactement a toutes les tailles, en un seul passage.
+
+La distance a la courbe se mesure a la perpendiculaire : l'ecart vertical
+au trace, rapporte a la pente. C'est exact pour une droite et juste a la
+courbure pres pour une cloche — l'erreur vaut quelques centiemes de pixel,
+la ou chercher le vrai point le plus proche couterait cent fois le prix
+pour le meme dessin.
 """
 
 from __future__ import annotations
@@ -44,28 +50,28 @@ RGB = Tuple[int, int, int]
 #: marque.
 ENCRE = (110, 148, 186)
 
-#: Proportion du cadre : la marque est couchee, comme l'objet qu'elle
-#: represente. Un cadre carre lui laisserait deux bandes vides.
-RATIO = 0.52
+#: Proportion du cadre : celle de la courbe, median compris. Un cadre
+#: carre lui laisserait deux bandes vides.
+RATIO = 0.70
 
-#: Les moustaches : de ou a ou elles vont, leur epaisseur, et le petit
-#: trait qui les termine. Sans ces bouts, la marque se lit comme un
-#: interrupteur ; avec eux, c'est une etendue bornee.
-MOUSTACHE = (0.07, 0.93)
-MOUSTACHE_TRAIT = 0.022
-BOUT_LARGEUR = 0.050
-BOUT_HAUTEUR = 0.105
+#: La cloche : la ligne de base ou retombent ses queues, la hauteur du
+#: sommet au-dessus d'elle, et sa largeur. Ces trois nombres suffisent a
+#: la decrire entierement — c'est la meme courbe a toutes les echelles.
+BASE = 0.648
+AMPLITUDE = 0.42
+LARGEUR = 0.185
 
-#: La boite des deux quartiles du milieu : sa demi-largeur, sa
-#: demi-hauteur, et l'arrondi de ses coins.
-BOITE_DEMI = 0.200
-BOITE_HAUTEUR = 0.155
-BOITE_COIN = 0.045
+#: De ou a ou la courbe est tracee, et la demi-epaisseur du trait. Au-dela
+#: de ces bornes, ses queues seraient confondues avec la ligne de base.
+COURBE = (0.06, 0.94)
+TRAIT = 0.038
 
-#: La mediane. Elle est *creusee* et non posee : un trait d'une autre
-#: couleur supposerait un fond connu, alors que la marque se pose aussi
-#: bien sur l'encre que sur la page.
-MEDIANE_DEMI = 0.018
+#: La mediane : de la pointe du sommet jusque sous la ligne de base, et sa
+#: demi-epaisseur. Elle part de l'interieur du trait — un trait qui
+#: s'arreterait au ras du sommet laisserait un interstice visible des
+#: qu'on agrandit.
+MEDIANE = (0.262, 0.784)
+MEDIANE_TRAIT = 0.026
 
 #: Le passage de lumiere, image par image : de combien il eclaircit, sur
 #: quelle largeur, son inclinaison, et jusqu'ou il voyage de part et
@@ -192,21 +198,35 @@ def _couverture(distance: float, pixel: float) -> float:
     return part
 
 
-def _barre(x: float, y: float, debut: float, fin: float,
-           rayon: float) -> float:
-    """Distance signee a un trait horizontal a bouts ronds."""
-    place = min(max(x, debut), fin)
-    return math.hypot(x - place, y - 0.5) - rayon
+def _cloche(x: float) -> float:
+    """Hauteur de la courbe a cette abscisse. Plus c'est haut sur l'ecran,
+    plus la valeur est petite : l'ordonnee descend."""
+    ecart = (x - 0.5) / LARGEUR
+    return BASE - AMPLITUDE * math.exp(-ecart * ecart)
 
 
-def _boite(x: float, y: float, demi_large: float, demi_haut: float,
-           coin: float, centre: float = 0.5) -> float:
-    """Distance signee a un rectangle a coins arrondis, centre sur la
-    ligne mediane du cadre."""
-    dx = abs(x - centre) - (demi_large - coin)
-    dy = abs(y - 0.5) - (demi_haut - coin)
-    dehors = math.hypot(max(dx, 0.0), max(dy, 0.0))
-    return dehors + min(max(dx, dy), 0.0) - coin
+def _pente(x: float) -> float:
+    """Pente de la courbe : elle corrige la distance la ou elle est
+    raide."""
+    ecart = (x - 0.5) / LARGEUR
+    return AMPLITUDE * 2 * ecart / LARGEUR * math.exp(-ecart * ecart)
+
+
+def _trait_courbe(x: float, y: float) -> float:
+    """Distance signee au trait de la courbe, bouts arrondis compris."""
+    debut, fin = COURBE
+    if x < debut:
+        return math.hypot(x - debut, y - _cloche(debut)) - TRAIT
+    if x > fin:
+        return math.hypot(x - fin, y - _cloche(fin)) - TRAIT
+    pente = _pente(x)
+    return abs(y - _cloche(x)) / math.sqrt(1.0 + pente * pente) - TRAIT
+
+
+def _trait_mediane(x: float, y: float) -> float:
+    """Distance signee au trait vertical de la mediane."""
+    haut, bas = MEDIANE
+    return math.hypot(x - 0.5, y - min(max(y, haut), bas)) - MEDIANE_TRAIT
 
 
 def distance(x: float, y: float) -> float:
@@ -215,12 +235,4 @@ def distance(x: float, y: float) -> float:
     Publique parce que l'icone Windows s'en sert : elle dessine la meme
     marque, en blanc sur un jeton rond. Un outil n'a qu'une identite.
     """
-    moustaches = _barre(x, y, MOUSTACHE[0], MOUSTACHE[1], MOUSTACHE_TRAIT)
-    gauche = _boite(x, y, BOUT_LARGEUR / 2, BOUT_HAUTEUR, MOUSTACHE_TRAIT,
-                    MOUSTACHE[0])
-    droite = _boite(x, y, BOUT_LARGEUR / 2, BOUT_HAUTEUR, MOUSTACHE_TRAIT,
-                    MOUSTACHE[1])
-    caisse = _boite(x, y, BOITE_DEMI, BOITE_HAUTEUR, BOITE_COIN)
-    forme = min(moustaches, gauche, droite, caisse)
-    mediane = _boite(x, y, MEDIANE_DEMI, BOITE_HAUTEUR + BOITE_COIN, 0.0)
-    return max(forme, -mediane)
+    return min(_trait_courbe(x, y), _trait_mediane(x, y))

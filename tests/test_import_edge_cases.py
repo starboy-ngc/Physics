@@ -18,8 +18,8 @@ import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.core.errors import ImportError_
-from hr_insight.io.tabular import read_table
+from hr_analytics.core.errors import ImportError_
+from hr_analytics.io.tabular import read_table
 
 NS = 'xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"'
 RELS = 'xmlns="http://schemas.openxmlformats.org/package/2006/relationships"'
@@ -690,9 +690,9 @@ class TestTheCeilingIsASetting(unittest.TestCase):
                                            sheet(entêtes + lignes))])
 
     def _analyse(self, mégaoctets=None):
-        from hr_insight.core.config import (load_configuration,
+        from hr_analytics.core.config import (load_configuration,
                                             write_default_configuration)
-        from hr_insight.core.pipeline import AnalysisRequest, run_analysis
+        from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
         import json
 
         config_dir = os.path.join(self.directory, f"config{mégaoctets}")

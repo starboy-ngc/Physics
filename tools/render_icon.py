@@ -3,10 +3,10 @@
 
     python3 tools/render_icon.py --sortie packaging/windows/marque.ico
 
-C'est le meme dessin que celui de l'ecran d'accueil — une boite a
-moustaches —, pose en blanc sur un jeton rond : une icone de raccourci
+C'est le meme dessin que celui de l'ecran d'accueil — une courbe de
+distribution et sa mediane —, pose en blanc sur un jeton rond : une icone de raccourci
 doit tenir sur n'importe quel fond de bureau, la ou la marque de la
-fenetre connait le sien. La forme vient de « hr_insight.ui.logo », pas
+fenetre connait le sien. La forme vient de « hr_analytics.ui.logo », pas
 d'une copie : un outil n'a qu'une identite, et une identite recopiee
 diverge.
 
@@ -30,7 +30,7 @@ import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.ui import logo
+from hr_analytics.ui import logo
 
 #: Tailles qu'un .ico doit porter pour que Windows n'ait jamais a
 #: reechantillonner. 256 est la plus grande qu'il sache lire.
@@ -41,10 +41,10 @@ TAILLES = (16, 20, 24, 32, 40, 48, 64, 128, 256)
 ENCRE = (0x1F, 0x3A, 0x55)          # bleu d'ardoise, le fond du jeton
 MARQUE = (0xFF, 0xFF, 0xFF)         # la marque elle-meme
 
-#: Part du jeton occupee par la marque, en largeur. Les moustaches vont
-#: d'un bord a l'autre de leur cadre : au-dela, leurs bouts sortiraient du
-#: disque.
-EMPRISE = 0.70
+#: Part du jeton occupee par la marque, en largeur. Les queues de la
+#: courbe vont d'un bord a l'autre de son cadre : au-dela, elles
+#: sortiraient du disque.
+EMPRISE = 0.82
 
 #: Echantillons par cote d'un pixel pour le bord du jeton. Quatre par
 #: quatre suffisent — a huit la difference ne se voit plus, et le calcul

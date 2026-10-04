@@ -22,11 +22,11 @@ from xml.etree import ElementTree
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
-from hr_insight.core import slides as _slides
-from hr_insight.core.config import write_default_configuration
-from hr_insight.core.pipeline import AnalysisRequest, run_analysis
-from hr_insight.core.reporting import render_report
-from hr_insight.core.segmentation import Filter
+from hr_analytics.core import slides as _slides
+from hr_analytics.core.config import write_default_configuration
+from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+from hr_analytics.core.reporting import render_report
+from hr_analytics.core.segmentation import Filter
 
 
 class DocumentCase(unittest.TestCase):
@@ -165,7 +165,7 @@ class TestSlides(DocumentCase):
             self.assertTrue(slide.title.strip())
 
     def test_the_html_renders_every_slide(self):
-        from hr_insight.core.slides import _html_escape
+        from hr_analytics.core.slides import _html_escape
 
         html = _slides.render_slides_html(self.deck, self.payload)
         for slide in self.deck:
@@ -278,7 +278,7 @@ class TestTheQualitySectionStaysShort(unittest.TestCase):
     """
 
     def _rapport(self):
-        from hr_insight.core.reporting import render_report
+        from hr_analytics.core.reporting import render_report
 
         analyse = {
             "quality": {
@@ -318,6 +318,6 @@ class TestTheQualitySectionStaysShort(unittest.TestCase):
         self.assertNotIn("tenure_non_numerique", html)
         # Le bloc qualite, lui, porte toujours ses constats : c'est lui que
         # l'onglet Qualite affiche et que la ligne de commande imprime.
-        from hr_insight.core.quality import run_quality_check
+        from hr_analytics.core.quality import run_quality_check
 
         self.assertTrue(callable(run_quality_check))

@@ -76,7 +76,7 @@ class TestTheBuiltArchive(unittest.TestCase):
         import zipfile
         with zipfile.ZipFile(self.pyz) as bundle:
             names = bundle.namelist()
-        self.assertIn("hr_insight/cli.py", names)
+        self.assertIn("hr_analytics/cli.py", names)
         self.assertIn("__main__.py", names)
         self.assertFalse([name for name in names if "__pycache__" in name],
                          "aucun cache compilé ne doit être distribué")
@@ -135,7 +135,7 @@ class TestTheDeliveredPackageIsReviewable(unittest.TestCase):
         livrés = [chemin for chemin, _ in self._sources()]
         for attendu in ("cli.py", os.path.join("core", "pipeline.py"),
                         os.path.join("ui", "app.py")):
-            self.assertIn(os.path.join("hr_insight", attendu), livrés)
+            self.assertIn(os.path.join("hr_analytics", attendu), livrés)
 
 
 class TestWhatIsShipped(unittest.TestCase):
@@ -183,7 +183,7 @@ class TestTheWindowsLauncher(unittest.TestCase):
     def test_it_runs_the_tool_in_isolated_mode(self):
         """Aucun paquet installé ailleurs sur le poste ne peut entrer dans
         l'analyse : deux postes font le même calcul."""
-        self.assertIn("-I -m hr_insight", self.source)
+        self.assertIn("-I -m hr_analytics", self.source)
 
     def test_it_opens_no_console_window(self):
         self.assertIn("CREATE_NO_WINDOW", self.source)
@@ -333,13 +333,13 @@ class TestTheMarkIcon(unittest.TestCase):
         pas la marque de la fenêtre, elle l'appelle."""
         import inspect
 
-        from hr_insight.ui import logo
+        from hr_analytics.ui import logo
         from tools import render_icon
 
         self.assertIn("logo.distance", inspect.getsource(render_icon.dessiner))
-        # Le centre de la boîte est plein, le creux de la médiane vide.
-        self.assertLess(logo.distance(0.40, 0.5), 0)
-        self.assertGreater(logo.distance(0.5, 0.5), 0)
+        # La médiane passe par le milieu ; le coin haut gauche est vide.
+        self.assertLess(logo.distance(0.5, 0.5), 0)
+        self.assertGreater(logo.distance(0.12, 0.2), 0)
 
     def test_the_mark_is_white_on_the_slate_token(self):
         """Une icône de raccourci se pose sur n'importe quel fond de
@@ -353,6 +353,6 @@ class TestTheMarkIcon(unittest.TestCase):
 
         self.assertEqual(point(32, 32)[3], 255, "le jeton est plein")
         self.assertEqual(point(0, 0)[3], 0, "le coin reste transparent")
-        # Au cœur de la boîte : du blanc. Dans l'angle du jeton : l'ardoise.
-        self.assertEqual(point(26, 32)[:3], MARQUE)
-        self.assertEqual(point(32, 12)[:3], ENCRE)
+        # Sur la médiane : du blanc. À côté d'elle : l'ardoise.
+        self.assertEqual(point(32, 36)[:3], MARQUE)
+        self.assertEqual(point(44, 18)[:3], ENCRE)

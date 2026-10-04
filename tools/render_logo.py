@@ -24,8 +24,8 @@ import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.core import palette
-from hr_insight.ui import logo, raster
+from hr_analytics.core import palette
+from hr_analytics.ui import logo, raster
 
 #: Proportion du cadre : celle de la marque elle-meme. La hauteur reste
 #: reglable pour une planche qui demande autre chose.

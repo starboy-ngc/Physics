@@ -3,17 +3,17 @@ HR INSIGHT — analyse de remuneration
 
 DEMARRER
 --------
-Double-cliquez sur « HR Insight.exe ».
+Double-cliquez sur « HR Analytics.exe ».
 
 Rien a installer. Aucun droit administrateur. Aucune connexion.
 
 
 CE QUE CE DOSSIER CONTIENT
 --------------------------
-  HR Insight.exe   le programme a lancer
+  HR Analytics.exe   le programme a lancer
   config\          vos reglages (colonnes, seuils, export) — fichiers
                    texte, modifiables au bloc-notes
-  hr_insight\      le code de l'outil, lisible
+  hr_analytics\      le code de l'outil, lisible
   runtime\         l'interpreteur Python prive de l'outil
   docs\            guide utilisateur, architecture, audits
   population-*.xlsx  jeux d'essai, sans aucune donnee reelle
@@ -24,7 +24,7 @@ OU LE METTRE
 N'importe ou : un disque local, une cle USB, un partage reseau. Le
 programme se repere a partir de son propre emplacement.
 
-Deplacez ou copiez TOUJOURS le dossier entier. « HR Insight.exe » seul ne
+Deplacez ou copiez TOUJOURS le dossier entier. « HR Analytics.exe » seul ne
 fonctionne pas : le moteur est dans « runtime », a cote de lui.
 
 Evitez un chemin tres long (plus de 200 caracteres) : Windows les tronque.
@@ -39,7 +39,7 @@ POUR L'EQUIPE INFORMATIQUE
     propre processus. L'arbre des processus ne montre qu'un programme.
   - Rien n'est decompresse dans %TEMP% au demarrage, contrairement aux
     executables « un seul fichier ». Tout est deja sur le disque.
-  - Le code est lisible : « hr_insight\ » est du source Python en clair,
+  - Le code est lisible : « hr_analytics\ » est du source Python en clair,
     et le lanceur tient en une centaine de lignes de C fournies dans
     « docs\ ». Rien n'est compile ni obscurci.
   - L'interpreteur de « runtime\ » est CPython officiel, repris tel quel

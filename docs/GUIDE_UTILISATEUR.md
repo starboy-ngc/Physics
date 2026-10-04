@@ -1,11 +1,11 @@
-# Guide utilisateur — HR Insight
+# Guide utilisateur — HR Analytics
 
 Logiciel **local et hors ligne** : aucune donnée ne quitte votre poste.
 Vous pouvez couper Internet avant de l'utiliser.
 
 ## 0. L'écran d'accueil
 
-À l'ouverture, **HR Insight** affiche sa marque, son nom et l'étape en
+À l'ouverture, **HR Analytics** affiche sa marque, son nom et l'étape en
 cours : lecture des paramètres, thème, colonne de gauche, pages et
 graphiques. Ces étapes sont réelles — construire la fenêtre demande deux
 dixièmes de seconde ici, davantage sur un poste chargé.
@@ -75,13 +75,13 @@ essayés se règle dans `encodings`, au mapping.
 ## 2. Vérifier que les colonnes sont reconnues
 
 ```
-python3 -m hr_insight.cli mapping population.xlsx
+python3 -m hr_analytics.cli mapping population.xlsx
 ```
 
 ## 3. Contrôler la qualité des données
 
 ```
-python3 -m hr_insight.cli controle population.xlsx
+python3 -m hr_analytics.cli controle population.xlsx
 ```
 
 Trois niveaux : **critique** (bloque l'analyse), **avertissement**,
@@ -105,7 +105,7 @@ contrôle qualité — l'outil ne devine pas en silence.
 ## 4. Lancer l'analyse
 
 ```
-python3 -m hr_insight.cli analyse population.xlsx --sortie resultats
+python3 -m hr_analytics.cli analyse population.xlsx --sortie resultats
 ```
 
 Les fichiers produits dans `resultats/` :
@@ -193,7 +193,7 @@ Pour ajouter une dimension propre a votre organisation, declarez-la dans
 ## 5. Adapter les paramètres
 
 ```
-python3 -m hr_insight.cli config --dossier config
+python3 -m hr_analytics.cli config --dossier config
 ```
 
 Puis éditez les fichiers JSON : tranches d'âge et d'ancienneté, percentiles,

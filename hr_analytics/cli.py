@@ -4,7 +4,7 @@ C'est la couche de pilotage du V1 : elle enchaine le pipeline et produit la
 restitution. Une interface graphique pourra s'appuyer sur les memes appels
 (`pipeline.run_analysis`), sans dupliquer la moindre regle.
 
-    python3 -m hr_insight.cli analyse data/population.xlsx \
+    python3 -m hr_analytics.cli analyse data/population.xlsx \
         --filtre "business_unit=France" --segment groupe --sortie output
 """
 

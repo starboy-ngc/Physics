@@ -21,8 +21,8 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests.support import HEADERS, make_row
-from hr_insight.io import restrict_to_owner
-from hr_insight.io.xlsx_writer import write_workbook
+from hr_analytics.io import restrict_to_owner
+from hr_analytics.io.xlsx_writer import write_workbook
 
 posix_seulement = unittest.skipUnless(
     os.name == "posix", "permissions POSIX")
@@ -61,20 +61,20 @@ class TestEveryProducedDocumentIsPrivate(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        from hr_insight.core.config import load_configuration
-        from hr_insight.core.export import export_excel
-        from hr_insight.core.pipeline import AnalysisRequest, run_analysis
-        from hr_insight.core.reporting import write_report
-        from hr_insight.core.slides import (build_deck, build_summary,
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.export import export_excel
+        from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+        from hr_analytics.core.reporting import write_report
+        from hr_analytics.core.slides import (build_deck, build_summary,
                                             write_slides_html)
-        from hr_insight.core.traceability import write_manifest
+        from hr_analytics.core.traceability import write_manifest
 
         cls.directory = tempfile.mkdtemp()
         source = os.path.join(cls.directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS]
                                  + [make_row(rang) for rang in range(40)])])
         config_dir = os.path.join(cls.directory, "config")
-        from hr_insight.core.config import write_default_configuration
+        from hr_analytics.core.config import write_default_configuration
         write_default_configuration(config_dir)
         config = load_configuration(config_dir)
         resultat = run_analysis(AnalysisRequest(source_path=source,

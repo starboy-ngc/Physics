@@ -56,7 +56,7 @@ class ChartCase(unittest.TestCase):
     def setUp(self):
         import tkinter as tk
 
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         self.root = tk.Tk()
         self.root.geometry(f"{self.WIDTH}x{self.HEIGHT}+0+0")
@@ -91,7 +91,7 @@ class TestHistogram(ChartCase):
              "count": count} for index, count in enumerate(counts)]}
 
     def chart(self, counts=(3, 12, 25, 9, 2)):
-        from hr_insight.ui.charts import HistogramChart
+        from hr_analytics.ui.charts import HistogramChart
 
         chart = self.build(HistogramChart)
         chart.set_distribution(self.bins(counts))
@@ -125,7 +125,7 @@ class TestHistogram(ChartCase):
             self.assertLessEqual(round(y2), height)
 
     def test_an_empty_distribution_says_so_instead_of_drawing(self):
-        from hr_insight.ui.charts import HistogramChart
+        from hr_analytics.ui.charts import HistogramChart
 
         chart = self.build(HistogramChart)
         chart.set_distribution({"available": False, "bins": [],
@@ -183,7 +183,7 @@ class TestHistogramBackToBack(ChartCase):
         }}
 
     def chart(self, **kwargs):
-        from hr_insight.ui.charts import HistogramChart
+        from hr_analytics.ui.charts import HistogramChart
 
         chart = self.build(HistogramChart)
         chart.set_distribution(self.distribution(**kwargs))
@@ -286,7 +286,7 @@ class TestTheWithheldSegmentsPointSomewhereReal(ChartCase):
     """
 
     def test_the_note_names_a_place_that_exists(self):
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
         rows = [{"segment": f"Poste {index}", "headcount": 30,
@@ -328,7 +328,7 @@ class TestTheDispersionColumns(ChartCase):
         return built
 
     def chart(self, **kwargs):
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
         chart.set_rows(self.rows(), "EUR", **kwargs)
@@ -360,14 +360,14 @@ class TestTheDispersionColumns(ChartCase):
             texte = chart.canvas.itemcget(item, "text")
             if texte.startswith("×"):
                 couleurs[texte] = chart.canvas.itemcget(item, "fill")
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
         self.assertEqual(couleurs["× 1,10"], theme.MUTED)
         self.assertEqual(couleurs["× 1,45"], theme.WARN)
         self.assertEqual(couleurs["× 1,95"], theme.CRIT)
 
     def test_a_higher_threshold_calms_the_column_down(self):
         """Le seuil se paramètre : il n'est pas écrit dans le graphique."""
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         chart = self.chart(spread_alert=2.0, spread_critical=3.0)
         for item in self.items(chart.canvas, "text"):
@@ -405,7 +405,7 @@ class TestTheScatterDots(ChartCase):
     """De vrais ronds, et un point choisi qui grossit sans se déguiser."""
 
     def chart(self):
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(ScatterChart)
         chart.set_dataset({
@@ -424,7 +424,7 @@ class TestTheScatterDots(ChartCase):
     def test_the_chosen_dot_keeps_its_colour_and_grows(self):
         """Il virait au rouge et portait un cerne : deux signaux pour dire
         une chose, et le rouge mentait sur sa population."""
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.chart()
         ordinaire = chart._dot("#c26b3f", False)
@@ -440,7 +440,7 @@ class TestTheScatterDots(ChartCase):
     def test_no_ring_surrounds_the_chosen_dot(self):
         """Un cerne d'encre ferait, sur le bord, une teinte étrangère à la
         couleur du point."""
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.chart()
         choisi = chart._dot("#c26b3f", True)
@@ -458,8 +458,8 @@ class TestTheScatterDots(ChartCase):
         Le dégradé vit dans le canal alpha, que `PhotoImage.get` ne rend
         pas : il se vérifie donc là où il est produit, sur le pochoir.
         """
-        from hr_insight.ui import raster
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui import raster
+        from hr_analytics.ui.charts import ScatterChart
 
         taille = ScatterChart.DOT
         pochoir = raster.Raster(taille)
@@ -475,8 +475,8 @@ class TestTheScatterDots(ChartCase):
     def test_the_sampling_actually_reaches_the_pixels(self):
         """Monter l'échantillonnage doit changer l'image, sinon le réglage
         ne fait rien."""
-        from hr_insight.ui import raster
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui import raster
+        from hr_analytics.ui.charts import ScatterChart
 
         grossier = raster.disc(ScatterChart.DOT, (47, 93, 138), samples=2)
         fin = raster.disc(ScatterChart.DOT, (47, 93, 138),
@@ -489,7 +489,7 @@ class TestThePyramidLayout(ChartCase):
     """Tranches à gauche, effectifs au bout de leur barre."""
 
     def chart(self):
-        from hr_insight.ui.charts import PyramidChart
+        from hr_analytics.ui.charts import PyramidChart
 
         chart = self.build(PyramidChart)
         chart.set_rows([
@@ -541,7 +541,7 @@ class TestTheScaleEnds(ChartCase):
     """Le minimum et le maximum, au-dessus et non sur le tracé."""
 
     def chart(self):
-        from hr_insight.ui.charts import ScaleChart
+        from hr_analytics.ui.charts import ScaleChart
 
         chart = self.build(ScaleChart)
         chart.set_salary({
@@ -590,7 +590,7 @@ class TestScatter(ChartCase):
              "reference": f"REF{index}"} for index in range(count)]}
 
     def chart(self, dataset=None):
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(ScatterChart)
         chart.set_dataset(dataset if dataset is not None else self.dataset())
@@ -633,7 +633,7 @@ class TestScatter(ChartCase):
 
     def test_clicking_a_point_selects_it_and_names_it(self):
         chosen = []
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(lambda master: ScatterChart(master,
                                                        on_select=chosen.append))
@@ -686,8 +686,8 @@ class TestScatter(ChartCase):
         """Deux postes sans rapport devenaient la meme couleur quand la
         serie se recyclait ; le regroupement, lui, ne doit ressembler a
         aucune modalite."""
-        from hr_insight.core import palette
-        from hr_insight.ui import theme
+        from hr_analytics.core import palette
+        from hr_analytics.ui import theme
 
         groups = [f"BU{index}" for index in range(9)] + ["Autres (30 valeurs)"]
         couleurs = palette.series_map(groups, theme.ACTIVE.series,
@@ -719,7 +719,7 @@ class TestScatterExploration(ChartCase):
     """
 
     def chart(self, trend=False, count=40):
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         dataset = {"available": True, "points": [
             {"x": index % 20, "y": 30000 + (index % 20) * 900,
@@ -788,7 +788,7 @@ class TestScatterExploration(ChartCase):
         self.assertEqual(len(chart.visible_points()), 40)
 
     def test_zooming_an_empty_chart_does_nothing(self):
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(ScatterChart)
         chart.set_dataset({"available": False, "points": []})
@@ -858,7 +858,7 @@ class TestBoxPlot(ChartCase):
         return made
 
     def chart(self, rows=None, split=False):
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
         if split:
@@ -914,7 +914,7 @@ class TestBoxPlot(ChartCase):
             self.assertEqual(len(chart._items), 4)
 
     def test_the_reference_line_is_drawn_when_given(self):
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
         chart.set_rows(self.rows(), reference=45000)
@@ -977,7 +977,7 @@ class TestSplitPresentation(ChartCase):
         return made
 
     def chart(self, rows=None, alert=5.0):
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
         chart.set_split(True)
@@ -1009,7 +1009,7 @@ class TestSplitPresentation(ChartCase):
         self.assertTrue(all("," in text for text in ecarts), ecarts)
 
     def test_a_gap_beyond_the_threshold_is_coloured(self):
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         chart = self.chart(self.rows(count=2))          # ecart de 8 %
         couleurs = {chart.canvas.itemcget(item, "fill")
@@ -1019,7 +1019,7 @@ class TestSplitPresentation(ChartCase):
         self.assertIn(theme.WARN, couleurs)
 
     def test_a_small_gap_stays_neutral(self):
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         chart = self.chart(self.rows(count=2, ecart=False))
         couleurs = {chart.canvas.itemcget(item, "fill")
@@ -1033,7 +1033,7 @@ class TestSplitPresentation(ChartCase):
         """Il etait ecrit en dur dans le graphique alors qu'il existe deja
         en parametre : deux endroits pour une meme regle, c'est un des deux
         qui finit faux."""
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         def couleurs(alert):
             chart = self.chart(self.rows(count=2), alert=alert)
@@ -1075,7 +1075,7 @@ class TestSplitPresentation(ChartCase):
             self.assertEqual(hauteurs.count(niveau), 2)
 
     def test_each_headcount_wears_the_colour_of_its_sex(self):
-        from hr_insight.ui import theme
+        from hr_analytics.ui import theme
 
         chart = self.chart(self.rows(count=2, femmes=7, hommes=113))
         couleurs = {chart.canvas.itemcget(item, "text"):
@@ -1105,7 +1105,7 @@ class TestSplitPresentation(ChartCase):
     def test_the_row_is_taller_when_split(self):
         """Dix-sept pixels ont ete mesures pour une seule boite : deux
         boites et leurs effectifs n'y tiennent pas."""
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         self.assertGreater(BoxPlotChart.ROW_SPLIT_MIN, BoxPlotChart.ROW_MIN)
 
@@ -1135,7 +1135,7 @@ class TestSplitPresentation(ChartCase):
         largeur. Mesure faite, jusqu'a vingt-trois pixels de texte etaient
         coupes par le bas : c'est-a-dire la phrase qui explique le
         graphique."""
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         for largeur in (1200, 1000, 900, 800, 700):
             self.root.geometry(f"{largeur}x520+0+0")
@@ -1159,7 +1159,7 @@ class TestSplitPresentation(ChartCase):
         libellé à un nombre situé à l'autre bout de l'écran, et c'est là
         qu'il perd sa ligne.
         """
-        from hr_insight.ui.charts import BoxPlotChart
+        from hr_analytics.ui.charts import BoxPlotChart
 
         chart = self.build(BoxPlotChart)
         chart.set_rows(self.rows(count=4), "EUR")
@@ -1177,7 +1177,7 @@ class TestSmallCharts(ChartCase):
 
 
     def test_the_pyramid_draws_both_sexes(self):
-        from hr_insight.ui.charts import PyramidChart
+        from hr_analytics.ui.charts import PyramidChart
 
         chart = self.build(PyramidChart)
         chart.set_rows([{"label": f"{20 + index * 10}-{29 + index * 10}",
@@ -1187,7 +1187,7 @@ class TestSmallCharts(ChartCase):
         self.assertGreaterEqual(len(self.items(chart.canvas, "rectangle")), 8)
 
     def test_the_band_chart_draws_one_bar_per_band(self):
-        from hr_insight.ui.charts import BandChart
+        from hr_analytics.ui.charts import BandChart
 
         chart = self.build(BandChart)
         chart.set_rows([{"label": f"Tranche {index}", "count": 5 + index,
@@ -1196,7 +1196,7 @@ class TestSmallCharts(ChartCase):
         self.assertGreaterEqual(len(self.items(chart.canvas, "rectangle")), 5)
 
     def test_an_empty_set_draws_nothing_anywhere(self):
-        from hr_insight.ui.charts import BandChart, PyramidChart
+        from hr_analytics.ui.charts import BandChart, PyramidChart
 
         for factory in (PyramidChart, BandChart):
             chart = self.build(factory)
@@ -1206,7 +1206,7 @@ class TestSmallCharts(ChartCase):
                              factory.__name__)
 
     def test_bars_of_zero_do_not_divide_by_zero(self):
-        from hr_insight.ui.charts import BandChart
+        from hr_analytics.ui.charts import BandChart
 
         chart = self.build(BandChart)
         chart.set_rows([{"label": "Vide", "count": 0, "share": 0.0}])
@@ -1219,7 +1219,7 @@ class TestLabelShortening(ChartCase):
     """Une etiquette trop longue se coupe, elle ne deborde pas."""
 
     def test_a_long_label_is_cut_with_an_ellipsis(self):
-        from hr_insight.ui.charts import _shorten, _text_width
+        from hr_analytics.ui.charts import _shorten, _text_width
 
         long_label = "Direction des systèmes d'information et du numérique"
         cut = _shorten(self.root, long_label, 80)
@@ -1227,13 +1227,13 @@ class TestLabelShortening(ChartCase):
         self.assertTrue(cut.endswith("…"))
 
     def test_a_short_label_is_left_alone(self):
-        from hr_insight.ui.charts import _shorten
+        from hr_analytics.ui.charts import _shorten
 
         self.assertEqual(_shorten(self.root, "BU", 200), "BU")
 
     def test_an_impossible_width_still_returns_something(self):
         """Une colonne repliee a quelques pixels ne doit pas faire lever."""
-        from hr_insight.ui.charts import _shorten
+        from hr_analytics.ui.charts import _shorten
 
         self.assertIsInstance(_shorten(self.root, "Direction", 1), str)
 
@@ -1262,7 +1262,7 @@ class TestOrgChart(ChartCase):
                 "full_time": True, "children": list(enfants)}
 
     def chart(self, racine=None):
-        from hr_insight.ui.charts import OrgChart
+        from hr_analytics.ui.charts import OrgChart
 
         chart = self.build(OrgChart)
         chart.set_tree(racine if racine is not None else self.arbre())
@@ -1355,7 +1355,7 @@ class TestOrgChart(ChartCase):
         self.assertIn("médiane de l'équipe", bulle)
 
     def test_without_a_team_it_says_what_it_waits_for(self):
-        from hr_insight.ui.charts import OrgChart
+        from hr_analytics.ui.charts import OrgChart
 
         chart = self.build(OrgChart)
         chart.set_tree(None)
@@ -1399,7 +1399,7 @@ class TestPieChart(ChartCase):
                 for libelle, nombre in couples]
 
     def chart(self, parts=None, total=None, maximum=6):
-        from hr_insight.ui.charts import PieChart
+        from hr_analytics.ui.charts import PieChart
 
         parts = parts if parts is not None else self.parts(
             ("Ouvrier / Employé", 589), ("Agent de maîtrise", 250),
@@ -1437,7 +1437,7 @@ class TestPieChart(ChartCase):
         du nuage, et ses bords portent des pixels intermediaires."""
         import base64
 
-        from hr_insight.ui import raster
+        from hr_analytics.ui import raster
 
         png = base64.b64decode(raster.ring(60, 18, [(0.5, (0, 0, 0)),
                                                     (0.5, (255, 255, 255))]))
@@ -1470,8 +1470,8 @@ class TestPieChart(ChartCase):
 
     def test_the_grouping_never_takes_a_real_colour(self):
         """Sinon il se lirait comme une modalite de plus."""
-        from hr_insight.core import palette
-        from hr_insight.ui import theme
+        from hr_analytics.core import palette
+        from hr_analytics.ui import theme
 
         chart = self.chart(self.parts(*[(f"V{index}", 10) for index in
                                         range(8)]), maximum=3)
@@ -1554,7 +1554,7 @@ class TestScaleChart(ChartCase):
         return base
 
     def chart(self, **extra):
-        from hr_insight.ui.charts import ScaleChart
+        from hr_analytics.ui.charts import ScaleChart
 
         chart = self.build(ScaleChart)
         chart.set_salary(self.salary(**extra), "EUR")
@@ -1620,7 +1620,7 @@ class TestScaleChart(ChartCase):
                 self.assertLessEqual(premier[2], second[0] + 1)
 
     def test_a_masked_population_says_so_instead_of_drawing(self):
-        from hr_insight.ui.charts import ScaleChart
+        from hr_analytics.ui.charts import ScaleChart
 
         chart = self.build(ScaleChart)
         chart.set_salary({"masked": True}, "EUR")
@@ -1640,7 +1640,7 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
     """
 
     def test_a_positive_quantity_never_opens_below_zero(self):
-        from hr_insight.ui.charts import _axis_bounds
+        from hr_analytics.ui.charts import _axis_bounds
 
         bas, haut = _axis_bounds(0.0, 8000.0)
         self.assertEqual(bas, 0.0)
@@ -1650,7 +1650,7 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
         """La règle ne vaut que pour franchir zéro : caler l'origine à zéro
         sur des salaires de 25 000 à 80 000 écraserait le nuage dans son
         tiers supérieur, et c'est justement leur écart qu'on regarde."""
-        from hr_insight.ui.charts import _axis_bounds
+        from hr_analytics.ui.charts import _axis_bounds
 
         bas, haut = _axis_bounds(25000.0, 80000.0)
         self.assertGreater(bas, 20000.0)
@@ -1660,7 +1660,7 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
     def test_a_quantity_that_crosses_zero_keeps_its_margin(self):
         """Une variation peut être négative : la règle ne s'applique qu'aux
         grandeurs qui ne le sont jamais."""
-        from hr_insight.ui.charts import _axis_bounds
+        from hr_analytics.ui.charts import _axis_bounds
 
         bas, haut = _axis_bounds(-5.0, 5.0)
         self.assertLess(bas, -5.0)
@@ -1669,13 +1669,13 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
     def test_a_flat_series_still_gets_a_frame(self):
         """Tous au même montant : sans marge, le cadre serait d'épaisseur
         nulle et la division par son étendue lèverait."""
-        from hr_insight.ui.charts import _axis_bounds
+        from hr_analytics.ui.charts import _axis_bounds
 
         bas, haut = _axis_bounds(42.0, 42.0)
         self.assertLess(bas, haut)
 
     def test_the_drawn_chart_starts_at_the_origin(self):
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(ScatterChart)
         chart.set_dataset({
@@ -1692,7 +1692,7 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
         self.assertEqual(y_min, 0.0)
 
     def _chart(self):
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(ScatterChart)
         chart.set_dataset({
@@ -1749,7 +1749,7 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
     def test_a_quantity_that_can_be_negative_keeps_its_freedom(self):
         """Une variation peut être négative : le plancher n'existe que pour
         les grandeurs qui ne le sont jamais."""
-        from hr_insight.ui.charts import ScatterChart
+        from hr_analytics.ui.charts import ScatterChart
 
         chart = self.build(ScatterChart)
         chart.set_dataset({

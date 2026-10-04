@@ -1,4 +1,4 @@
-# Architecture — HR Insight
+# Architecture — HR Analytics
 
 Version du moteur : **1.0.0** (V1 / MVP).
 
@@ -33,7 +33,7 @@ chaîne d'approvisionnement logicielle à surveiller, packaging trivial.
 ## 3. Modules
 
 ```
-hr_insight/
+hr_analytics/
 ├── version.py              Version MAJOR.MINOR.PATCH portée par les restitutions
 ├── cli.py                  Pilotage (une IHM utiliserait les mêmes appels)
 ├── io/
@@ -709,7 +709,7 @@ L'option 2 est recommandée : rien à compiler, contenu auditable par l'IT.
 
 ## 13. Interface graphique
 
-`hr_insight/ui/` — tkinter, livre avec Python : aucune
+`hr_analytics/ui/` — tkinter, livre avec Python : aucune
 dependance, aucun telechargement, aucun droit administrateur.
 
     app.py       fenetre unique, parcours en quatre etapes

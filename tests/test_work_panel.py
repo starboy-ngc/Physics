@@ -18,7 +18,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from hr_insight.core.pipeline import stage_labels
+from hr_analytics.core.pipeline import stage_labels
 
 try:
     import tkinter
@@ -60,7 +60,7 @@ class TestTheStagesAreDeclaredOnce(unittest.TestCase):
         """Aucun intitule d'etape ne doit etre ecrit dans l'interface."""
         racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         for nom in ("working.py", "app.py"):
-            with open(os.path.join(racine, "hr_insight", "ui", nom),
+            with open(os.path.join(racine, "hr_analytics", "ui", nom),
                       encoding="utf-8") as fichier:
                 texte = fichier.read()
             for étape in stage_labels():
@@ -80,7 +80,7 @@ class TestThePanel(unittest.TestCase):
         abandonne le processus entier, resultats compris. Le panneau se
         teste donc la ou il vit.
         """
-        from hr_insight.ui.app import Application
+        from hr_analytics.ui.app import Application
 
         self.root = Application()
         self.traces = []
@@ -163,8 +163,8 @@ class TestThePanelInTheWindow(unittest.TestCase):
     def setUp(self):
         import time
 
-        from hr_insight.core.pipeline import load_population
-        from hr_insight.ui.app import Application
+        from hr_analytics.core.pipeline import load_population
+        from hr_analytics.ui.app import Application
 
         self.app = Application()
         self.traces = []

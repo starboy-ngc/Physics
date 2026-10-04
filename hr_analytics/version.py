@@ -8,7 +8,7 @@ la tracabilite douteuse.
 
 __version__ = "1.0.0"
 
-ENGINE_NAME = "HR Insight"
+ENGINE_NAME = "HR Analytics"
 
 #: Maison d'edition, affichee sur l'ecran d'accueil.
 PUBLISHER = "Pulsar Analytics"
