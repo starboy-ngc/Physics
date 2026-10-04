@@ -2339,8 +2339,21 @@ class Application(tk.Tk):
         scope = payload.get("scope") or {}
         team = scope.get("team") or {}
         key = team.get("manager") or ""
-        if not key or self.population is None:
-            self._clear_org()
+        if self.population is None:
+            self._clear_org("Chargez un fichier pour voir l'organigramme.")
+            return False
+        if not key:
+            # La page vide se taisait. L'utilisateur ouvrait l'onglet,
+            # n'y voyait rien, et rien ne lui disait que le dessin attend
+            # qu'on designe une equipe — ni que son fichier peut
+            # simplement ne pas porter de colonne « Manager ».
+            self._clear_org(
+                "Choisissez un responsable dans « Analyser une équipe », à "
+                "gauche : l'organigramme dessine son équipe."
+                if self._team_keys else
+                "Aucun rattachement hiérarchique n'a été lu dans ce "
+                "fichier. Déclarez une colonne « Manager » portant le "
+                "matricule du responsable pour voir l'organigramme.")
             return False
         observed = self.population
         if scope.get("period"):
@@ -2349,7 +2362,10 @@ class Application(tk.Tk):
                  if employee.period == scope["period"]])
         tree = Tree(observed)
         if key not in tree.employees:
-            self._clear_org()
+            self._clear_org(
+                "Le responsable choisi ne figure pas dans le périmètre "
+                "analysé : l'organigramme de son équipe ne peut pas être "
+                "dessiné.")
             return False
         keep = {employee.employee_id for employee in self.result.filtered}
         direct = bool(team.get("direct_only"))
@@ -2452,14 +2468,18 @@ class Application(tk.Tk):
         self.org_note.configure(text=explication)
         return True
 
-    def _clear_org(self) -> None:
-        """Vide la page. Une analyse sans equipe ne doit pas laisser en
-        place l'organigramme de la precedente a cote de chiffres qui ne sont
-        plus les siens."""
+    def _clear_org(self, raison: str = "") -> None:
+        """Vide la page, en disant pourquoi.
+
+        Une analyse sans equipe ne doit pas laisser en place
+        l'organigramme de la precedente a cote de chiffres qui ne sont
+        plus les siens. Mais une page vide sans un mot ne se distingue pas
+        d'une page en panne : la raison s'ecrit a la place du dessin.
+        """
         self.org_chart.set_tree(None)
         self._fill(self.org_jobs, [])
         self._fill(self.org_tree, [])
-        self.org_note.configure(text="")
+        self.org_note.configure(text=raison)
 
     def _on_org_node(self, node: Dict[str, Any]) -> None:
         """Une case choisie dans le dessin : la ligne correspondante se

@@ -272,6 +272,43 @@ def _refuse_if_too_large(archive: zipfile.ZipFile, name: str,
         )
 
 
+#: Debut de declaration de type de document. Un .xlsx n'en porte jamais :
+#: la specification OOXML ne l'autorise pas, et aucun tableur n'en ecrit.
+#: Dans un fichier recu par courriel, c'en est un signe suffisant.
+_DOCTYPE_RE = re.compile(rb"<!DOCTYPE", re.IGNORECASE)
+
+
+def _refuse_doctype(contenu: bytes, name: str) -> bytes:
+    """Refuse un morceau de classeur portant une declaration de type.
+
+    Un DOCTYPE peut definir des entites qui se citent entre elles : dix
+    niveaux de dix suffisent a transformer un kilo-octet en un gigaoctet
+    a l'expansion, et le processus meurt avant d'avoir pu dire quoi que
+    ce soit. C'est la « bombe a entites ».
+
+    Les versions recentes de libexpat s'en defendent seules, et le
+    lecteur de Python s'appuie sur elles. Mais cette defense appartient a
+    la bibliotheque du poste, pas a l'outil : un poste reste sur une
+    version plus ancienne ne l'a pas, et l'outil ne peut pas savoir
+    laquelle il trouvera. Refuser la declaration est la seule protection
+    qui voyage avec le code — et elle ne coute rien, puisqu'un classeur
+    legitime n'en porte pas.
+
+    Le contenu n'est pas analyse ici : il est seulement refuse ou rendu
+    tel quel. Chercher la chaine coute un parcours d'octets, sans
+    expansion possible.
+    """
+    if _DOCTYPE_RE.search(contenu):
+        raise ImportError_(
+            "Ce fichier Excel contient une déclaration de type de document, "
+            "ce qu'un classeur ne porte jamais. Il n'a pas été lu. "
+            "Si vous l'attendiez, demandez à son expéditeur de le "
+            "réenregistrer depuis Excel.",
+            technical=f"doctype declaration in {name}",
+        )
+    return contenu
+
+
 def _read_bounded(archive: zipfile.ZipFile, name: str, limit: int) -> bytes:
     """Lit un morceau, sans croire l'en-tete sur parole.
 
@@ -290,7 +327,7 @@ def _read_bounded(archive: zipfile.ZipFile, name: str, limit: int) -> bytes:
             f"{limit // (1024 * 1024)} Mo.",
             technical=f"member exceeds announced size: {name}",
         )
-    return contenu
+    return _refuse_doctype(contenu, name)
 
 
 def _read_shared_strings(archive: zipfile.ZipFile,
@@ -330,9 +367,10 @@ def _read_date_styles(archive: zipfile.ZipFile,
 
 
 def _resolve_sheet_path(archive: zipfile.ZipFile, sheet: str | None) -> str:
-    workbook = ElementTree.fromstring(archive.read("xl/workbook.xml"))
+    workbook = ElementTree.fromstring(_refuse_doctype(
+        archive.read("xl/workbook.xml"), "xl/workbook.xml"))
     rels_xml = archive.read("xl/_rels/workbook.xml.rels")
-    rels_root = ElementTree.fromstring(rels_xml)
+    rels_root = ElementTree.fromstring(_refuse_doctype(rels_xml, "xl/_rels/workbook.xml.rels"))
     targets = {
         node.get("Id"): node.get("Target", "")
         for node in rels_root

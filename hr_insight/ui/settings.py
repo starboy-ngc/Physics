@@ -1033,8 +1033,15 @@ class SettingsWindow(tk.Toplevel):
             break
         # Le theme part dans son propre fichier : une section par sujet, et
         # un utilisateur qui l'ouvre au bloc-notes y trouve une seule ligne.
-        write_configuration(directory, "theme_parameters",
-                            {"theme": self.theme_var.get()})
+        # Elle est relue puis completee, et non remplacee par la seule
+        # valeur que l'ecran connait : ecrite en dur, elle effacait les
+        # autres reglages du fichier — la duree de l'ecran d'accueil
+        # disparaissait a chaque enregistrement des colonnes. La page
+        # invite a editer ces fichiers au bloc-notes ; elle ne peut pas
+        # effacer ensuite ce qu'on y a ecrit.
+        theme = dict(self.configuration.section("theme_parameters"))
+        theme["theme"] = self.theme_var.get()
+        write_configuration(directory, "theme_parameters", theme)
         # La section est reecrite entiere : les seuils d'effectif qui la
         # partagent doivent survivre a l'enregistrement du reglage d'ecran.
         privacy = dict(self.configuration.section("privacy_parameters"))

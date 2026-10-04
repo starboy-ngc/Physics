@@ -59,6 +59,19 @@ FILES = (("packaging/lancer.bat", "lancer.bat"),
 BUNDLED = ("hr_insight", "config")
 
 
+#: Outils de developpement, qui n'ont rien a faire chez l'utilisateur.
+#: `build_archive` fabrique l'archive : il ne sert a personne une fois
+#: l'archive faite, et il etait le seul fichier du paquet livre a citer
+#: `shutil.rmtree` — un effacement recursif dans un livrable que l'IT
+#: doit homologuer, sans aucune raison de s'y trouver. `benchmark` et
+#: `render_logo` mesurent et dessinent pour le developpement.
+#:
+#: Les deux generateurs de population restent : ils produisent des jeux
+#: d'essai sans donnee reelle, ce qu'une equipe RH qui prend l'outil en
+#: main utilise avant d'y mettre son propre fichier.
+OUTILS_EXCLUS = ("build_archive.py", "benchmark.py", "render_logo.py")
+
+
 def _clean(path: str) -> None:
     """Retire ce qui n'a pas a etre distribue."""
     for folder, directories, names in os.walk(path):
@@ -68,6 +81,9 @@ def _clean(path: str) -> None:
                 directories.remove(name)
         for name in names:
             if name.endswith((".pyc", ".pyo")):
+                os.remove(os.path.join(folder, name))
+            elif (name in OUTILS_EXCLUS
+                  and os.path.basename(folder) == "tools"):
                 os.remove(os.path.join(folder, name))
 
 
