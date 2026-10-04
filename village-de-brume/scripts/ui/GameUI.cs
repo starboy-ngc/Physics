@@ -10,6 +10,8 @@ namespace VillageDeBrume;
 /// </summary>
 public partial class GameUI : CanvasLayer
 {
+    public static GameUI? Instance { get; private set; }
+
     private const int BoxHeight = 60;
     private const int Margin = 4;
     private static readonly Color Bg = new Color("1b1d22", 0.93f);
@@ -28,14 +30,19 @@ public partial class GameUI : CanvasLayer
     private int _choiceIndex;
     private IReadOnlyList<string> _choices = new List<string>();
     private Player? _player;
+    private PanelContainer _noticePanel = null!;
+    private Label _notice = null!;
+    private float _noticeTimer;
 
     public int ChoiceIndex => _choiceIndex;
     public IReadOnlyList<string> Choices => _choices;
 
     public override void _Ready()
     {
+        Instance = this;
         Layer = 10;
         BuildPrompt();
+        BuildNotice();
         BuildDialogueBox();
         var dm = DialogueManager.Instance;
         dm.DialogueStarted += OnDialogueStarted;
@@ -46,8 +53,38 @@ public partial class GameUI : CanvasLayer
         _promptPanel.Visible = false;
     }
 
+    /// <summary>Message court en haut de l'écran (pêche, objets ramassés...).</summary>
+    public void ShowNotice(string text, float seconds = 2f)
+    {
+        _notice.Text = text;
+        _noticePanel.Visible = true;
+        _noticeTimer = seconds;
+        _noticePanel.ResetSize();
+        _noticePanel.Position = new Vector2(128 - _noticePanel.Size.X / 2f, 8);
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_noticeTimer > 0f)
+        {
+            _noticeTimer -= (float)delta;
+            if (_noticeTimer <= 0f)
+                _noticePanel.Visible = false;
+        }
+    }
+
+    private void BuildNotice()
+    {
+        _noticePanel = new PanelContainer { Name = "NoticePanel", Visible = false };
+        _noticePanel.AddThemeStyleboxOverride("panel", MakeStyle());
+        _notice = MakeLabel(Selected);
+        _noticePanel.AddChild(_notice);
+        AddChild(_noticePanel);
+    }
+
     public override void _ExitTree()
     {
+        Instance = null;
         var dm = DialogueManager.Instance;
         dm.DialogueStarted -= OnDialogueStarted;
         dm.NodeChanged -= OnNodeChanged;
@@ -157,7 +194,7 @@ public partial class GameUI : CanvasLayer
 
     private void OnFocusChanged(Interactable? interactable)
     {
-        if (interactable == null || DialogueManager.Instance.IsActive)
+        if (interactable == null || interactable.Prompt == "" || DialogueManager.Instance.IsActive)
         {
             _promptPanel.Visible = false;
         }

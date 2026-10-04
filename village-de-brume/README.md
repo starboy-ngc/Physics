@@ -47,7 +47,11 @@ Contenu de l'étape 2 :
 - menu (Échap ou Tab) : met le jeu en pause ; onglets Inventaire (objets,
   quantités, description), Carnet (réservé à l'intrigue), Quitter ;
 - inventaire (`Inventory`, autoload) : définitions dans `data/items/items.json`,
-  inventaire de départ, piles pour les objets empilables.
+  inventaire de départ, piles pour les objets empilables ;
+- étang de pêche (`Pond`, `FishingSpot`) : face à l'eau, E lance la ligne, un
+  bouchon flotte ; après un délai aléatoire « Ça mord ! », E dans la seconde
+  ferre et met la prise (gardon, perche, carpe... ou vieille botte) dans
+  l'inventaire. Il faut la canne à pêche (dans l'inventaire de départ).
 
 Contenu de l'étape 1 :
 
@@ -78,6 +82,7 @@ Contrôles :
 |---|---|
 | Se déplacer (8 directions) | Flèches, ou ZQSD / WASD (touches physiques, fonctionne en AZERTY) |
 | Menu / inventaire | Échap ou Tab ; haut/bas pour choisir, droite ou E pour entrer, gauche pour revenir |
+| Pêcher | Face à l'étang : E pour lancer, E au « Ça mord ! » pour ferrer, E pendant l'attente pour remonter |
 | Entrer / sortir d'une maison | Marcher sur la porte |
 | Panneau de debug | F3 |
 | Parler / avancer le dialogue | E (ou Entrée) |
@@ -91,6 +96,7 @@ godot --headless --path . tests/SmokeTest.tscn     # visite toutes les zones
 godot --headless --path . tests/DoorTest.tscn      # entrée / sortie par les portes
 godot --headless --path . tests/DialogueTest.tscn  # parler à Émile, choix, fin
 godot --headless --path . tests/MenuTest.tscn      # menu, inventaire, pause
+godot --headless --path . tests/FishingTest.tscn   # pêche : lancer, touche, ferrage, prise
 ```
 
 Chaque test doit afficher `OK` et se terminer avec le code 0.
@@ -128,6 +134,8 @@ scripts/
   world/Door.cs             zone de passage vers une autre zone
   world/Materials.cs        matériaux et textures procédurales partagés
   world/Prop.cs, TreeProp.cs, Well.cs, GroundPatch.cs   décor en volumes
+  world/Pond.cs             étang (eau, berge, roseaux) + zone de pêche
+  systems/FishingSpot.cs    mini-jeu de pêche (lancer, touche, ferrage)
 data/npcs/*.json            fiches PNJ (nom, apparence, position, dialogue)
 data/dialogues/*.json       dialogues statiques
 data/items/items.json       objets et inventaire de départ

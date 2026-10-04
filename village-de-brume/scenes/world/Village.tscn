@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/Village.cs" id="1_village"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/GroundPatch.tscn" id="2_ground"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/world/props/Tree.tscn" id="4_tree"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/Well.tscn" id="5_well"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/Prop.tscn" id="6_prop"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/Pond.tscn" id="7_pond"]
 
 [node name="Village" type="Node3D"]
 script = ExtResource("1_village")
@@ -27,16 +28,16 @@ Rect = Rect2(9.25, 17.25, 29.5, 1.5)
 Rect = Rect2(29, 17.25, 19, 1.5)
 
 [node name="PathSouth" parent="Ground" instance=ExtResource("2_ground")]
-Rect = Rect2(23.25, 21.5, 1.5, 12.25)
+Rect = Rect2(23.25, 21.5, 1.5, 11.6)
 
 [node name="PathSouthRow" parent="Ground" instance=ExtResource("2_ground")]
-Rect = Rect2(9.25, 33, 29.5, 1.5)
+Rect = Rect2(9.25, 31.6, 29.5, 1.5)
 
 [node name="PathJeanne" parent="Ground" instance=ExtResource("2_ground")]
-Rect = Rect2(9.25, 31.25, 1.5, 1.75)
+Rect = Rect2(9.25, 31.25, 1.5, 0.5)
 
 [node name="PathMartin" parent="Ground" instance=ExtResource("2_ground")]
-Rect = Rect2(37.25, 31.25, 1.5, 1.75)
+Rect = Rect2(37.25, 31.25, 1.5, 0.5)
 
 [node name="Square" parent="Ground" instance=ExtResource("2_ground")]
 Rect = Rect2(19, 14.5, 10, 7)
@@ -93,11 +94,18 @@ position = Vector3(44.75, 0, 16.875)
 Kind = "sign"
 SignText = "Forêt"
 
+[node name="Pond" parent="." instance=ExtResource("7_pond")]
+position = Vector3(30, 0, 29)
+Size = Vector2(6.5, 4)
+
+[node name="near_pond" type="Marker3D" parent="Spawns"]
+position = Vector3(30, 0, 32.6)
+
 [node name="Tree1" parent="." instance=ExtResource("4_tree")]
 position = Vector3(17, 0, 26.25)
 
 [node name="Tree2" parent="." instance=ExtResource("4_tree")]
-position = Vector3(31, 0, 26.25)
+position = Vector3(20, 0, 26)
 CanopyRadius = 1.05
 
 [node name="Tree3" parent="." instance=ExtResource("4_tree")]
@@ -108,5 +116,5 @@ CanopyRadius = 0.85
 position = Vector3(30, 0, 10)
 
 [node name="Tree5" parent="." instance=ExtResource("4_tree")]
-position = Vector3(33.75, 0, 30)
+position = Vector3(33.5, 0, 24)
 CanopyRadius = 0.8

@@ -16,6 +16,8 @@ public partial class Player : CharacterBody3D
     public CharacterVisual Visual { get; private set; } = null!;
     public bool IsMoving { get; private set; }
     public Interactable? Focused { get; private set; }
+    /// <summary>Immobilisé par une action en cours (pêche...). Le dialogue a son propre verrou.</summary>
+    public bool Locked { get; set; }
 
     private CharacterVisual.Facing _facing = CharacterVisual.Facing.Down;
     public CharacterVisual.Facing FacingDirection
@@ -46,7 +48,7 @@ public partial class Player : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         Vector2 input = Vector2.Zero;
-        if (!DialogueManager.Instance.IsActive)
+        if (!DialogueManager.Instance.IsActive && !Locked)
             input = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
         input = input.Normalized();
 
@@ -69,7 +71,7 @@ public partial class Player : CharacterBody3D
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (DialogueManager.Instance.IsActive)
+        if (DialogueManager.Instance.IsActive || Locked)
             return;
         if (@event.IsActionPressed("interact") && Focused != null)
         {
@@ -79,6 +81,9 @@ public partial class Player : CharacterBody3D
     }
 
     public void Face(CharacterVisual.Facing direction) => FacingDirection = direction;
+
+    /// <summary>Ré-émet l'élément visé (par exemple quand son invite a changé).</summary>
+    public void RefreshFocus() => FocusChanged?.Invoke(Focused);
 
     public void FaceTowards(Vector3 target) => FacingDirection = CharacterVisual.FacingTowards(GlobalPosition, target);
 

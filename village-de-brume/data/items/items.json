@@ -1,13 +1,76 @@
 {
   "items": [
-    {"id": "map", "name": "Carte du village", "description": "Un plan griffonné de Brume : quatre maisons, un puits, et une flèche vers la forêt.", "stackable": false},
-    {"id": "bread", "name": "Pain de campagne", "description": "Encore tiède. Émile en est fier, à juste titre.", "stackable": true},
-    {"id": "letter", "name": "Lettre froissée", "description": "La lettre qui t'a amené ici. L'encre a coulé sur la signature.", "stackable": false},
-    {"id": "herb", "name": "Brin de sauge", "description": "Cueilli à la lisière de la forêt. Jeanne saurait quoi en faire.", "stackable": true}
+    {
+      "id": "map",
+      "name": "Carte du village",
+      "description": "Un plan griffonné de Brume : quatre maisons, un puits, et une flèche vers la forêt.",
+      "stackable": false
+    },
+    {
+      "id": "bread",
+      "name": "Pain de campagne",
+      "description": "Encore tiède. Émile en est fier, à juste titre.",
+      "stackable": true
+    },
+    {
+      "id": "letter",
+      "name": "Lettre froissée",
+      "description": "La lettre qui t'a amené ici. L'encre a coulé sur la signature.",
+      "stackable": false
+    },
+    {
+      "id": "herb",
+      "name": "Brin de sauge",
+      "description": "Cueilli à la lisière de la forêt. Jeanne saurait quoi en faire.",
+      "stackable": true
+    },
+    {
+      "id": "rod",
+      "name": "Canne à pêche",
+      "description": "Une canne en noisetier, fil un peu usé. Suffit pour l'étang.",
+      "stackable": false
+    },
+    {
+      "id": "roach",
+      "name": "Gardon",
+      "description": "Petit poisson argenté. Il y en a plein l'étang.",
+      "stackable": true
+    },
+    {
+      "id": "perch",
+      "name": "Perche",
+      "description": "Rayures sombres, nageoires rouges. Un bon repas.",
+      "stackable": true
+    },
+    {
+      "id": "carp",
+      "name": "Carpe",
+      "description": "Lourde et tranquille. Émile dit qu'elle est plus vieille que lui.",
+      "stackable": true
+    },
+    {
+      "id": "boot",
+      "name": "Vieille botte",
+      "description": "Trempée, trouée. Quelqu'un l'a perdue il y a longtemps.",
+      "stackable": true
+    }
   ],
   "starting_inventory": [
-    {"id": "map", "count": 1},
-    {"id": "letter", "count": 1},
-    {"id": "bread", "count": 2}
+    {
+      "id": "map",
+      "count": 1
+    },
+    {
+      "id": "letter",
+      "count": 1
+    },
+    {
+      "id": "bread",
+      "count": 2
+    },
+    {
+      "id": "rod",
+      "count": 1
+    }
   ]
 }

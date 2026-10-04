@@ -17,6 +17,7 @@ public partial class ScreenshotTest : TestBase
         ("village", "start"),
         ("bakery", "entrance"),
         ("bakery", "dialogue"),
+        ("village", "fishing"),
         ("village", "menu"),
         ("house_jeanne", "entrance"),
         ("house_martin", "entrance"),
@@ -40,7 +41,14 @@ public partial class ScreenshotTest : TestBase
         {
             _index++;
             var (zone, spawn) = Shots[_index];
-            if (spawn == "menu")
+            if (spawn == "fishing")
+            {
+                _ = Game.ChangeZone("village", "near_pond", true);
+                Game.Player.GlobalPosition = new Vector3(30, 0, 31.8f);
+                Game.Player.Face(CharacterVisual.Facing.Up);
+                Game.CurrentZone!.GetNode<Pond>("Pond").Spot.Interact(Game.Player);
+            }
+            else if (spawn == "menu")
             {
                 _ = Game.ChangeZone("village", "start", true);
                 GetNode<MenuUI>("Main/MenuUI").Open();
