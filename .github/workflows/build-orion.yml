@@ -1,0 +1,42 @@
+name: Build Orion
+
+on:
+  push:
+    branches: [etape-1-fondations, main]
+    paths: ["village-de-brume/**", ".github/workflows/build-orion.yml"]
+  workflow_dispatch:
+
+jobs:
+  windows:
+    name: Windows (.exe)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Godot 4.3 .NET + modèles d'export
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.3.0
+          use-dotnet: true
+          include-templates: true
+
+      - name: Compiler et exporter
+        working-directory: village-de-brume
+        run: |
+          dotnet restore
+          godot --headless --import || true
+          mkdir -p build/windows
+          godot --headless --export-release "Windows Desktop" build/windows/Orion.exe
+          ls -la build/windows
+
+      - name: Publier le zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: Orion-windows
+          path: village-de-brume/build/windows
+          if-no-files-found: error
