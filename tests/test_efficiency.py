@@ -137,7 +137,7 @@ class TestWholeRunStaysLinear(unittest.TestCase):
         return build_population([
             make_row(index, salary=30000 + (index % 500) * 90,
                      business_unit=["France", "Iberia", "Benelux"][index % 3],
-                     grade=f"G{3 + index % 6}",
+                     groupe=f"G{3 + index % 6}",
                      gender="F" if index % 2 else "H")
             for index in range(count)])
 
@@ -147,7 +147,7 @@ class TestWholeRunStaysLinear(unittest.TestCase):
         started = time.perf_counter()
         metrics.calculate_salary_metrics(people, config)
         metrics.calculate_population_metrics(people, config)
-        for field_name in ("business_unit", "grade"):
+        for field_name in ("business_unit", "groupe"):
             metrics.calculate_segment_metrics(people, config, field_name)
         return time.perf_counter() - started
 

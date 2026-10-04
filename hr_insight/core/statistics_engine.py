@@ -245,21 +245,6 @@ def linear_regression(
     }
 
 
-def iqr_outlier_bounds(
-    values: Sequence[float], factor: float = 1.5
-) -> Optional[Dict[str, float]]:
-    """Bornes de detection des points atypiques (methode de Tukey)."""
-    cleaned = clean(values)
-    if len(cleaned) < 4:
-        return None
-    q1 = percentile(cleaned, 25)
-    q3 = percentile(cleaned, 75)
-    if q1 is None or q3 is None:
-        return None
-    spread = q3 - q1
-    return {"lower": q1 - factor * spread, "upper": q3 + factor * spread}
-
-
 # --------------------------------------------------------------- comparaison
 #
 # Un ecart se lit avec sa fiabilite. Trente pour cent d'ecart entre trois

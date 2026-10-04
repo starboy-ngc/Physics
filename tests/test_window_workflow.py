@@ -109,7 +109,7 @@ class WindowCase(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=salary(index),
                     business_unit=["France", "Iberia"][index % 2],
-                    grade=f"G{3 + index % 4}",
+                    groupe=f"G{3 + index % 4}",
                     gender="F" if index % 2 else "H")) + list(extra(index)))
         return path
 
@@ -570,7 +570,7 @@ class TestThemeAndIdentities(WindowCase):
         self.analyse()
         before = set(self.app.scatter.dataset.get("groups") or [])
         wanted = next(index for index, field in
-                      enumerate(self.app._colour_fields) if field == "grade")
+                      enumerate(self.app._colour_fields) if field == "groupe")
         self.app.colour_choice.current(wanted)
         self.app._recolour()
         self.app.update()

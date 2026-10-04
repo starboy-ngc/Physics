@@ -64,8 +64,8 @@ class TestNoIdentityEntersAResult(unittest.TestCase):
     def test_a_collective_field_stays_a_segment(self):
         """Le garde-fou ne doit pas emporter l'usage normal."""
         config = make_config()
-        self.assertEqual(segmentation.validate_segments(["grade"], config),
-                         ["grade"])
+        self.assertEqual(segmentation.validate_segments(["groupe"], config),
+                         ["groupe"])
 
     def test_a_personal_field_is_refused_as_a_declared_dimension(self):
         """La fenetre de parametrage l'ecartait deja ; le fichier, non."""
@@ -100,7 +100,7 @@ class TestNoIdentityEntersAResult(unittest.TestCase):
     def test_a_collective_filter_keeps_its_value(self):
         config = make_config()
         filtres = segmentation.build_filters(
-            [{"field": "grade", "operator": "eq", "value": "G5"}], config)
+            [{"field": "groupe", "operator": "eq", "value": "G5"}], config)
         self.assertIn("G5", segmentation.describe_filters(filtres, config))
 
 

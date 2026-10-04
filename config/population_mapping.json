@@ -72,11 +72,19 @@
       "Famille métier",
       "Job family"
     ],
-    "grade": [
-      "Grade"
+    "annexe": [
+      "Annexe",
+      "Filière",
+      "Filiere"
+    ],
+    "groupe": [
+      "Groupe",
+      "Niveau",
+      "Classe"
     ],
     "coefficient": [
-      "Coefficient"
+      "Coefficient",
+      "Indice"
     ],
     "status": [
       "Statut",
@@ -124,8 +132,16 @@
       "label": "Famille métier"
     },
     {
-      "field": "grade",
-      "label": "Grade"
+      "field": "annexe",
+      "label": "Annexe"
+    },
+    {
+      "field": "groupe",
+      "label": "Groupe"
+    },
+    {
+      "field": "coefficient",
+      "label": "Coefficient"
     },
     {
       "field": "status",

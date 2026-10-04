@@ -55,22 +55,6 @@ class TestStatisticsOnNothing(unittest.TestCase):
         self.assertIsNone(stats.ratio(1.0, None))
         self.assertIsNone(stats.ratio(None, 1.0))
 
-    def test_outlier_bounds_need_enough_values(self):
-        """Sous quatre valeurs, un quartile ne veut rien dire : mieux vaut
-        ne rien reperer que designer un salarie sur trois."""
-        self.assertIsNone(stats.iqr_outlier_bounds([]))
-        self.assertIsNone(stats.iqr_outlier_bounds([1.0, 2.0, 3.0]))
-        bounds = stats.iqr_outlier_bounds([1.0, 2.0, 3.0, 4.0])
-        self.assertIsNotNone(bounds)
-        self.assertLess(bounds["lower"], bounds["upper"])
-
-    def test_the_outlier_factor_widens_the_bounds(self):
-        values = [float(index) for index in range(20)]
-        narrow = stats.iqr_outlier_bounds(values, 1.5)
-        wide = stats.iqr_outlier_bounds(values, 3.0)
-        self.assertLess(wide["lower"], narrow["lower"])
-        self.assertGreater(wide["upper"], narrow["upper"])
-
     def test_an_infinite_value_is_left_out(self):
         """Elle vient d'une division par zero dans le tableur source, et
         une moyenne qui la contient vaut l'infini."""
@@ -123,17 +107,6 @@ class TestMetricsGuards(unittest.TestCase):
         self.assertEqual(metrics._sex_of(Employee(row_number=1), None),
                          "unknown")
 
-    def test_a_missing_salary_is_never_an_outlier(self):
-        """Elle ne vaut pas zero : elle ne vaut rien."""
-        config = make_config()
-        rows = [make_row(index, salary=40000 + index * 10) for index in range(30)]
-        rows.append(make_row(99, salary=None))
-        distribution = metrics.calculate_distribution_metrics(
-            build_population(rows, config), config)
-        references = [item["reference"] for item in distribution["outliers"]]
-        self.assertNotIn("E00099", references)
-
-
 class TestHierarchyGuards(unittest.TestCase):
     def test_an_unknown_identifier_has_no_level(self):
         tree = Tree(Population([Employee(row_number=1, employee_id="A")]))
@@ -164,8 +137,8 @@ class TestWorkbookGuards(unittest.TestCase):
     def test_two_sheets_of_the_same_name_are_told_apart(self):
         """Excel refuse d'ouvrir un classeur a deux onglets homonymes."""
         path = os.path.join(self.directory, "double.xlsx")
-        write_workbook(path, [("Seg Grade", [["A"]]), ("Seg Grade", [["B"]]),
-                              ("Seg Grade", [["C"]])])
+        write_workbook(path, [("Seg Groupe", [["A"]]), ("Seg Groupe", [["B"]]),
+                              ("Seg Groupe", [["C"]])])
         import zipfile
         from xml.etree import ElementTree
 

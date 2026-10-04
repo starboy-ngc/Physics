@@ -5,7 +5,7 @@ restitution. Une interface graphique pourra s'appuyer sur les memes appels
 (`pipeline.run_analysis`), sans dupliquer la moindre regle.
 
     python3 -m hr_insight.cli analyse data/population.xlsx \
-        --filtre "business_unit=France" --segment grade --sortie output
+        --filtre "business_unit=France" --segment groupe --sortie output
 """
 
 from __future__ import annotations
@@ -251,7 +251,7 @@ def build_parser() -> argparse.ArgumentParser:
     analyse = sub.add_parser("analyse", parents=[common],
                              help="analyse complete et restitution")
     analyse.add_argument("--filtre", action="append",
-                         help="critère, ex. business_unit=France ou grade=G5|G6")
+                         help="critère, ex. business_unit=France ou groupe=G5|G6")
     analyse.add_argument("--segment", action="append",
                          help="dimension d'analyse declaree en configuration "
                               "(repetable)")

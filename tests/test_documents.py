@@ -43,7 +43,7 @@ class DocumentCase(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=38000 + index * 300,
                     business_unit=["France", "Iberia"][index % 2],
-                    grade=f"G{3 + index % 4}", tenure=index % 25,
+                    groupe=f"G{3 + index % 4}", tenure=index % 25,
                     gender="F" if index % 2 else "H"))
                     + [["Comptable", "Technicien"][(index // 2) % 2]])
             # Deux situations tres au-dessus : le critere interquartile les
@@ -84,9 +84,6 @@ class DocumentCase(unittest.TestCase):
 class TestTheAnalysisIsRichEnough(DocumentCase):
     """Sans quoi les tests suivants ne prouveraient rien."""
 
-    def test_there_are_outliers(self):
-        self.assertTrue(self.payload["distribution"]["outliers"])
-
     def test_there_is_a_comparison(self):
         self.assertIn("comparison", self.payload)
 
@@ -96,16 +93,25 @@ class TestTheAnalysisIsRichEnough(DocumentCase):
 
 class TestReport(DocumentCase):
     def test_the_distribution_section_shows_the_shape_only(self):
-        """La restitution donne la forme de la distribution, pas la liste des
-        cas : l'histogramme reste, le tableau des situations atypiques non.
+        """La restitution donne la forme de la distribution, et rien
+        d'autre : l'histogramme, pas une liste de cas.
 
-        Ce tableau tenait une page pour designer des salaries un par un. Il
-        s'analyse avec son contexte, donc la ou ce contexte est disponible :
-        la fenetre, l'export Excel, le support de presentation.
+        L'outil ne designe personne. Le tableau des « situations
+        atypiques » tenait une page a nommer des salaries un par un, sur
+        un critere statistique qui ne sait rien du marche, du metier ni de
+        l'historique. Juger appartient au lecteur.
         """
-        self.assertIn("4. Distribution", self.report)
-        self.assertIn("<svg", self.report.split("4. Distribution", 1)[1])
+        self.assertIn("Distribution", self.report)
+        self.assertIn("<svg", self.report.split("Distribution", 1)[1])
         self.assertNotIn("atypique", self.report)
+
+    def test_the_sections_are_numbered_in_the_order_they_appear(self):
+        """Les numeros etaient ecrits dans chaque section : une section
+        qui ne publiait rien laissait un trou dans la suite."""
+        import re
+        numeros = [int(n) for n in
+                   re.findall(r'<span class="num">(\d+)</span>', self.report)]
+        self.assertEqual(numeros, list(range(1, len(numeros) + 1)))
 
     def test_the_report_names_no_one(self):
         """Le tableau parti, il ne reste aucune ligne nominative : le document
@@ -114,12 +120,6 @@ class TestReport(DocumentCase):
                       for employee in self.result.filtered}
         for matricule in list(matricules)[:20]:
             self.assertNotIn(f">{matricule}<", self.report)
-
-    def test_the_outliers_are_still_carried_by_the_analysis(self):
-        """Retirees du document, elles restent lisibles ailleurs — avec la
-        mise en garde qui empeche de les lire comme une liste de fautifs."""
-        self.assertTrue(self.payload["distribution"]["outliers"])
-        self.assertIn("critère statistique", self.deck_text())
 
     def test_the_comparison_section_carries_both_labels(self):
         self.assertIn("Comparaison de populations", self.report)
@@ -151,11 +151,6 @@ class TestReport(DocumentCase):
 
 
 class TestSlides(DocumentCase):
-    def test_the_deck_has_an_outlier_slide(self):
-        titles = [slide.title for slide in self.deck]
-        self.assertTrue(any("atypique" in title.lower() for title in titles),
-                        titles)
-
     def test_the_deck_has_a_comparison_slide(self):
         titles = [slide.title for slide in self.deck]
         self.assertIn("Comparaison de populations", titles)

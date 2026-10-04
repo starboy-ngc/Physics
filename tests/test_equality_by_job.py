@@ -539,7 +539,7 @@ class TestAPeopleReviewColumn(unittest.TestCase):
     """
 
     HEADERS = ["Matricule", "Nom", "Prénom", "Sexe", "Date de naissance",
-               "Date d'entrée", "Date de sortie", "BU", "Pays", "Grade",
+               "Date d'entrée", "Date de sortie", "BU", "Pays", "Groupe",
                "Statut", "Salaire de base", "Revue du personnel"]
     RUBRIQUES = ["Talent", "Performance", "En décalage"]
 
@@ -590,7 +590,7 @@ class TestAPeopleReviewColumn(unittest.TestCase):
 
     def test_it_can_be_crossed_with_a_position(self):
         bloc = calculate_category_gaps(self.population, self.config,
-                                       ["grade", "people_review"])
+                                       ["groupe", "people_review"])
         self.assertEqual(sorted(item["category"] for item
                                 in bloc["categories"]),
                          sorted(f"G5 · {rubrique}"
@@ -618,10 +618,10 @@ class TestAPeopleReviewColumn(unittest.TestCase):
             if salarie.value("people_review") == "Talent":
                 salarie.gender = "H"
         sans = calculate_category_gaps(self.population, self.config,
-                                       "grade")["categories"][0]
+                                       "groupe")["categories"][0]
         avec = {item["category"]: item for item in calculate_category_gaps(
             self.population, self.config,
-            ["grade", "people_review"])["categories"]}
+            ["groupe", "people_review"])["categories"]}
         self.assertGreater(sans["comparison"]["mean_gap"], 5.0)
         for nom, item in avec.items():
             if item["comparison"]["published"]:

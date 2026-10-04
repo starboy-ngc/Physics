@@ -117,16 +117,16 @@ class TestAnalysisFieldValidation(unittest.TestCase):
     """Pointer analysis_field sur une colonne texte levait un TypeError brut."""
 
     def test_text_field_is_rejected_with_a_readable_message(self):
-        config = make_config({"salary_parameters.analysis_field": "grade"})
+        config = make_config({"salary_parameters.analysis_field": "groupe"})
         with self.assertRaises(ConfigError) as caught:
             analysis_field(config)
         message = caught.exception.message
-        self.assertIn("grade", message)
+        self.assertIn("groupe", message)
         self.assertIn("numérique", message)
         self.assertNotIn("TypeError", message)
 
     def test_quality_check_no_longer_crashes(self):
-        config = make_config({"salary_parameters.analysis_field": "grade"})
+        config = make_config({"salary_parameters.analysis_field": "groupe"})
         population = build_population([make_row(i) for i in range(10)], config)
         with self.assertRaises(ConfigError):
             run_quality_check(population, resolve_mapping(HEADERS, config), config)

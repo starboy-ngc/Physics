@@ -49,6 +49,13 @@ def _variables() -> str:
         ("line", ACTIVE.line), ("line-strong", ACTIVE.line_strong),
         ("grid", ACTIVE.grid), ("bg", ACTIVE.canvas), ("panel", ACTIVE.panel),
         ("stripe", ACTIVE.stripe), ("accent", ACTIVE.accent),
+        ("accent-deep", ACTIVE.accent_deep),
+        ("accent-soft", ACTIVE.accent_soft),
+        # Le fond sur lequel la feuille est posee, et le texte secondaire
+        # du bandeau colore : deux teintes deduites du theme, pour que le
+        # document entier suive la couleur choisie.
+        ("deck", palette.mix(ACTIVE.ink, palette.WHITE, 0.92)),
+        ("header-soft", palette.mix(ACTIVE.accent, palette.WHITE, 0.72)),
         ("warn", ACTIVE.warn), ("warn-bg", ACTIVE.warn_soft),
         ("crit", ACTIVE.crit), ("crit-bg", ACTIVE.crit_soft),
         ("female", ACTIVE.female), ("male", ACTIVE.male),
@@ -63,33 +70,110 @@ def _css() -> str:
 
 _CSS = """
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 "Segoe UI",Calibri,Arial,sans-serif}
-.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 64px}
-header{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:28px}
-h1{font-size:24px;margin:0 0 4px}
-h2{font-size:17px;margin:36px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-h3{font-size:14px;margin:20px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.meta{color:var(--muted);font-size:12px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-.kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
-.kpi .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.kpi .value{font-size:20px;font-weight:600;margin-top:4px}
-table{border-collapse:collapse;width:100%;font-size:13px}
-th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:right}
+body{margin:0;background:var(--deck);color:var(--ink);
+font:14px/1.55 "Segoe UI",Calibri,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+
+/* La page est une feuille posee sur un fond : elle a un bord, et le bord
+   dit ou elle s'arrete. Sans lui, le document flottait d'un cote a l'autre
+   de l'ecran sans qu'on sache ce qui en faisait partie. */
+.wrap{max-width:1140px;margin:28px auto;background:var(--bg);
+border:1px solid var(--line);border-radius:10px;overflow:hidden}
+
+/* --- bandeau de tete ---------------------------------------------------
+   Il porte la couleur du theme sur toute sa largeur. C'est le seul aplat
+   colore du document, et c'est ce qui lui donne un haut : la ou tout est
+   blanc, l'oeil ne sait pas par ou commencer. */
+header{background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+color:#fff;padding:30px 36px 26px}
+h1{font-size:27px;margin:0 0 10px;font-weight:600;letter-spacing:-.01em}
+.meta{display:flex;flex-wrap:wrap;gap:0 30px;font-size:12.5px;
+color:var(--header-soft)}
+.meta b{display:block;font-weight:600;color:#fff;font-size:13.5px;
+margin-top:2px}
+
+.corps{padding:4px 36px 40px}
+
+/* --- titres ------------------------------------------------------------
+   Le numero de section est un jeton, pas un prefixe de texte : il se
+   repere en descendant la page sans lire. */
+h2{font-size:17.5px;margin:38px 0 16px;font-weight:600;
+display:flex;align-items:center;gap:11px}
+h2 .num{display:inline-flex;align-items:center;justify-content:center;
+width:26px;height:26px;border-radius:7px;background:var(--accent-soft);
+color:var(--accent-deep);font-size:13px;font-weight:700;flex:none}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+h3{font-size:11.5px;margin:26px 0 9px;color:var(--faint);
+text-transform:uppercase;letter-spacing:.09em;font-weight:600}
+
+/* --- indicateurs -------------------------------------------------------
+   Deux rangs : les quatre premiers portent la lecture, les suivants la
+   completent. Tous de la meme taille, la page n'avait pas de sommet. */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+gap:12px;margin-bottom:4px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:9px;
+padding:14px 16px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+background:var(--line-strong)}
+.kpi .label{font-size:10.5px;color:var(--faint);text-transform:uppercase;
+letter-spacing:.07em;font-weight:600}
+.kpi .value{font-size:21px;font-weight:600;margin-top:5px;
+font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi.fort{background:var(--accent-soft);border-color:var(--accent-soft)}
+.kpi.fort::before{background:var(--accent)}
+.kpi.fort .value{color:var(--accent-deep);font-size:23px}
+.kpi.fort .label{color:var(--accent-deep);opacity:.75}
+
+/* --- tableaux ----------------------------------------------------------
+   Chiffres en chasse fixe : une colonne de montants doit s'aligner sur
+   l'unite, sinon on compare des longueurs au lieu de comparer des
+   valeurs. */
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+th,td{padding:9px 12px;text-align:right}
 th:first-child,td:first-child{text-align:left}
-thead th{background:var(--panel);font-weight:600;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.04em}
-tbody tr:hover{background:var(--stripe)}
-.scroll{overflow-x:auto}
-.note{border-left:3px solid var(--accent);background:var(--panel);padding:10px 14px;margin:12px 0;font-size:13px}
-.note.warn{border-color:var(--warn);background:var(--warn-bg);color:var(--warn)}
-.note.crit{border-color:var(--crit);background:var(--crit-bg);color:var(--crit)}
-.legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;font-size:12px}
-.legend span{display:inline-flex;align-items:center;gap:5px}
-.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
-figure{margin:0 0 8px}
-svg{max-width:100%;height:auto;background:var(--bg);border:1px solid var(--line);border-radius:6px}
-footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
-@media print{.wrap{max-width:none;padding:0}h2{page-break-after:avoid}figure,table{page-break-inside:avoid}}
+td{border-bottom:1px solid var(--grid);
+font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+thead th{background:var(--panel);color:var(--faint);text-transform:uppercase;
+font-size:10.5px;letter-spacing:.07em;font-weight:600;
+border-bottom:1px solid var(--line);white-space:nowrap}
+thead th:first-child{border-top-left-radius:8px}
+thead th:last-child{border-top-right-radius:8px}
+tbody tr:nth-child(even){background:var(--stripe)}
+tbody tr:hover{background:var(--accent-soft)}
+td:first-child{font-weight:500}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:9px}
+
+/* --- la part, en barre -------------------------------------------------
+   Une colonne de pourcentages se lit ligne a ligne ; une barre se lit
+   d'un seul regard, et c'est la forme de la repartition qu'on cherche. */
+.part{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.part i{display:block;height:7px;border-radius:4px;background:var(--accent);
+opacity:.85;flex:none;min-width:2px}
+.part span{font-variant-numeric:tabular-nums;min-width:54px;text-align:right}
+th:last-child,td:last-child{padding-right:16px}
+.scroll table td:last-child{min-width:230px}
+
+figure{margin:0 0 10px}
+svg{max-width:100%;height:auto;background:var(--bg);
+border:1px solid var(--line);border-radius:9px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:12px 0;font-size:12px;
+color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+footer{margin:0;padding:18px 36px 22px;border-top:1px solid var(--line);
+background:var(--panel);color:var(--faint);font-size:11px}
+
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;margin:0;border:none;border-radius:0}
+  header{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .kpi,.part i,h2 .num,thead th{-webkit-print-color-adjust:exact;
+  print-color-adjust:exact}
+  h2{page-break-after:avoid}
+  figure,table,.kpis{page-break-inside:avoid}
+}
 """
 
 # Interaction minimale : survol des points du nuage. Aucun code externe.
@@ -181,24 +265,67 @@ def format_percent(value: Optional[float], digits: int = 1) -> str:
             else f"{value:.{digits}f} %".replace(".", ","))
 
 
-def _kpi(label: str, value: str) -> str:
-    return f'<div class="kpi"><div class="label">{_e(label)}</div><div class="value">{_e(value)}</div></div>'
+def _kpi(label: str, value: str, fort: bool = False) -> str:
+    """Un indicateur. `fort` le met en avant.
+
+    Tous de la meme taille, un bandeau d'indicateurs n'a pas de sommet :
+    l'oeil se pose au hasard. Deux ou trois chiffres portent la lecture
+    d'une section — l'effectif, la mediane, l'ecart —, et ce sont ceux-la
+    qui prennent la couleur.
+    """
+    classe = "kpi fort" if fort else "kpi"
+    return (f'<div class="{classe}"><div class="label">{_e(label)}</div>'
+            f'<div class="value">{_e(value)}</div></div>')
 
 
-def _note(text: Optional[str], kind: str = "") -> str:
-    if not text:
-        return ""
-    css = f"note {kind}".strip()
-    return f'<div class="{css}">{_e(text)}</div>'
+#: Longueur de la plus grande barre d'un tableau, en pixels.
+PART_PISTE = 150.0
 
 
-def _table(headers: Sequence[str], rows: Sequence[Sequence[str]]) -> str:
+def _part_cell(part: Optional[float], texte: str,
+               sommet: float = 100.0) -> str:
+    """Une part, en barre et en chiffre.
+
+    Une colonne de pourcentages se lit ligne a ligne, en comparant des
+    nombres de tete. La meme colonne en barres donne la forme de la
+    repartition d'un seul regard — et le chiffre reste, pour qui veut la
+    valeur exacte.
+
+    L'echelle est celle de la plus grande part du tableau, non celle de
+    cent pour cent. Une repartition dont le maximum est a quarante pour
+    cent n'aurait occupe, sinon, que les deux cinquiemes de la place —
+    des barres timides ou l'on cherche a nouveau les nombres.
+    """
+    if part is None:
+        return f'<td><span>{_e(texte)}</span></td>'
+    largeur = max(0.0, float(part)) / (sommet or 1.0) * PART_PISTE
+    return (f'<td><div class="part">'
+            f'<i style="width:{max(largeur, 2.0):.1f}px"></i>'
+            f'<span>{_e(texte)}</span></div></td>')
+
+
+def _table(headers: Sequence[str], rows: Sequence[Sequence[str]],
+           parts: Optional[Sequence[Optional[float]]] = None,
+           colonne_part: int = -1) -> str:
+    """Un tableau. `parts` donne, ligne a ligne, la part a dessiner dans la
+    colonne `colonne_part` — la derniere par defaut."""
     head = "".join(f"<th>{_e(item)}</th>" for item in headers)
-    body = "".join(
-        "<tr>" + "".join(f"<td>{_e(cell)}</td>" for cell in row) + "</tr>"
-        for row in rows
-    )
-    return f'<div class="scroll"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+    sommet = max([abs(float(part)) for part in (parts or [])
+                  if part is not None] or [100.0])
+    corps = []
+    for rang, row in enumerate(rows):
+        cellules = []
+        index_part = colonne_part % len(row) if row else -1
+        for colonne, cell in enumerate(row):
+            if parts is not None and colonne == index_part:
+                cellules.append(_part_cell(
+                    parts[rang] if rang < len(parts) else None, str(cell),
+                    sommet))
+            else:
+                cellules.append(f"<td>{_e(cell)}</td>")
+        corps.append("<tr>" + "".join(cellules) + "</tr>")
+    return (f'<div class="scroll"><table><thead><tr>{head}</tr></thead>'
+            f'<tbody>{"".join(corps)}</tbody></table></div>')
 
 
 # ------------------------------------------------------------------ graphiques
@@ -478,9 +605,6 @@ def boxplot_svg(salary: Dict[str, Any], currency: str, width: int = 360,
     if extremes:
         parts.append(f'<text x="4" y="{axe + 14:.1f}" font-size="9" '
                      f'fill="var(--muted)">{_e(" · ".join(extremes))}</text>')
-    parts.append(f'<text x="4" y="{axe + 25:.1f}" font-size="8.5" '
-                 'fill="var(--faint)">Moustaches aux déciles P10 et P90 — '
-                 'la boîte va du premier au troisième quartile</text>')
     parts.append("</svg>")
     return "".join(parts)
 
@@ -540,49 +664,53 @@ def _quality_section(quality: Dict[str, Any]) -> str:
     # corriger le fichier, et il reste la ou l'on corrige : l'onglet
     # Qualite de la fenetre, et « controle --json » en ligne de commande.
     return (
-        f'<h2>1. Contrôle qualité des données</h2>'
-        f'{_note("Statut : " + status, kind)}'
-        f'<div class="kpis">{kpis}</div>'
+        '<h2>Contrôle qualité des données</h2>'
+        f'<div class="kpis">{_kpi("Statut", status, fort=True)}{kpis}</div>'
     )
 
 
 def _population_section(population: Dict[str, Any]) -> str:
     if population.get("masked"):
-        return f'<h2>2. Population</h2>{_note(population.get("warning"), "warn")}'
+        return ""
     kpis = "".join([
-        _kpi("Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")),
+        _kpi("Effectif", f'{population.get("headcount", 0):,}'.replace(",", " "),
+             fort=True),
+        _kpi("Âge médian", format_years(population.get("age_median")),
+             fort=True),
+        _kpi("Ancienneté médiane",
+             format_years(population.get("tenure_median")), fort=True),
         _kpi("Âge moyen", format_years(population.get("age_mean"))),
-        _kpi("Âge médian", format_years(population.get("age_median"))),
         _kpi("Ancienneté moyenne", format_years(population.get("tenure_mean"))),
-        _kpi("Ancienneté médiane", format_years(population.get("tenure_median"))),
     ])
-    age_rows = [
-        (row["label"], str(row["count"]), format_percent(row["share"]))
-        for row in population.get("age_bands", [])
-    ]
-    tenure_rows = [
-        (row["label"], str(row["count"]), format_percent(row["share"]))
-        for row in population.get("tenure_bands", [])
-    ]
+
+    def bandes(clef):
+        rangs = population.get(clef, []) or []
+        return ([(row["label"], str(row["count"]), format_percent(row["share"]))
+                 for row in rangs],
+                [row["share"] for row in rangs])
+
+    age_rows, age_parts = bandes("age_bands")
+    tenure_rows, tenure_parts = bandes("tenure_bands")
     return (
-        "<h2>2. Population</h2>"
-        f'{_note(population.get("warning"), "warn")}'
+        '<h2>Population</h2>'
         f'<div class="kpis">{kpis}</div>'
         f"<h3>Répartition par tranche d'âge</h3>"
-        f'{_table(["Tranche", "Effectif", "Part"], age_rows)}'
+        f'{_table(["Tranche", "Effectif", "Part"], age_rows, age_parts)}'
         f"<h3>Répartition par tranche d'ancienneté</h3>"
-        f'{_table(["Tranche", "Effectif", "Part"], tenure_rows)}'
+        f'{_table(["Tranche", "Effectif", "Part"], tenure_rows, tenure_parts)}'
     )
 
 
 def _salary_section(salary: Dict[str, Any]) -> str:
     currency = salary.get("currency", "EUR")
     if salary.get("masked"):
-        return f"<h2>3. Rémunération</h2>{_note(salary.get('warning'), 'warn')}"
+        return ""
     kpis = "".join([
-        _kpi("Masse salariale", format_money(salary.get("payroll"), currency)),
+        _kpi("Masse salariale", format_money(salary.get("payroll"), currency),
+             fort=True),
+        _kpi("Salaire médian", format_money(salary.get("median"), currency),
+             fort=True),
         _kpi("Salaire moyen", format_money(salary.get("mean"), currency)),
-        _kpi("Salaire médian", format_money(salary.get("median"), currency)),
         _kpi("Minimum", format_money(salary.get("min"), currency)),
         _kpi("Maximum", format_money(salary.get("max"), currency)),
         _kpi("Couverture", format_percent(salary.get("coverage"))),
@@ -603,19 +731,18 @@ def _salary_section(salary: Dict[str, Any]) -> str:
             else dispersion["coefficient_of_variation"] * 100)),
     ]
     field_label = salary.get("field_label") or salary.get("field", "")
-    technical_note = _note(
-        "L'écart-type est disponible comme statistique technique ("
-        + format_number(salary.get("std_dev"), 0)
-        + ") mais n'est pas un indicateur de pilotage."
-    )
+    # L'ecart-type fermait la section par une phrase. Il y a sa place en
+    # ligne, avec les autres mesures de dispersion : un chiffre se range,
+    # il ne se commente pas.
+    if salary.get("std_dev") is not None:
+        dispersion_rows.append(
+            ("Écart-type", format_money(salary.get("std_dev"), currency)))
     return (
-        f"<h2>3. Rémunération — {_e(field_label)}</h2>"
-        f'{_note(salary.get("warning"), "warn")}'
+        f"<h2>Rémunération — {_e(field_label)}</h2>"
         f'<div class="kpis">{kpis}</div>'
         f'<h3>Percentiles</h3>{_table(["Indicateur", "Valeur"], percentile_rows)}'
         f'<h3>Dispersion</h3>{_table(["Indicateur", "Valeur"], dispersion_rows)}'
         f"{_full_time_section(salary, currency)}"
-        f"{technical_note}"
     )
 
 
@@ -629,8 +756,7 @@ def _full_time_section(salary: Dict[str, Any], currency: str) -> str:
     if not bloc:
         return ""
     if bloc.get("masked"):
-        return (f"<h3>À temps plein</h3>"
-                f'{_note(bloc.get("warning"), "warn")}')
+        return ""
     rows = [
         ("Moyenne à temps plein", format_money(bloc.get("mean"), currency)),
         ("Médiane à temps plein", format_money(bloc.get("median"), currency)),
@@ -640,27 +766,16 @@ def _full_time_section(salary: Dict[str, Any], currency: str) -> str:
     ]
     return (
         "<h3>À temps plein</h3>"
-        + _note("Chaque rémunération est divisée par le temps de travail du "
-                "salarié : un 80 % à 32 000 € compte pour 40 000 €. Ces "
-                "montants répondent à « que paie-t-on pour un même temps de "
-                "travail ? », les précédents à « que verse-t-on ? ». Les "
-                "salariés dont le temps de travail est inconnu en sont "
-                "exclus — le supposer plein serait l'erreur que ce calcul "
-                "corrige.")
         + _table(["Indicateur", "Valeur"], rows)
     )
 
 
 def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
-    # Le rapport ne porte que la vue d'ensemble : l'histogramme. Les situations
-    # atypiques reperees par la methode interquartile restent a l'ecran et dans
-    # l'export Excel, ou elles s'analysent avec leur contexte. Les sortir d'ici
-    # retire du meme coup la seule donnee nominative du document.
     if not distribution.get("available"):
-        return f"<h2>4. Distribution</h2>{_note(distribution.get('warning'), 'warn')}"
+        return ""
     chart = histogram_svg(distribution.get("bins", []), currency)
     return (
-        "<h2>4. Distribution</h2>"
+        "<h2>Distribution</h2>"
         f"<figure>{chart}</figure>"
     )
 
@@ -669,21 +784,18 @@ def _scatter_section(dataset: Dict[str, Any], currency: str) -> str:
     titre = (f'5. {axis_label(dataset, "y")} et '
              f'{axis_label(dataset, "x").lower()}')
     if not dataset.get("available"):
-        return f"<h2>{_e(titre)}</h2>{_note(dataset.get('warning'), 'warn')}"
-    commentary = ""
+        return ""
     return (
         f"<h2>{_e(titre)}</h2>"
-        f'{_note(dataset.get("warning"), "warn")}'
         f"{_legend(dataset)}"
         f"<figure>{scatter_svg(dataset, currency)}</figure>"
-        f"{commentary}"
     )
 
 
 def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
     if not segments:
         return ""
-    blocks = ["<h2>6. Analyses par segment</h2>"]
+    blocks = ["<h2>Analyses par segment</h2>"]
     for segment in segments:
         rows = []
         for row in segment["rows"]:
@@ -705,10 +817,6 @@ def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
         blocks.append(_table(
             ["Segment", "Effectif", "Moyenne", "Médiane", "Q1", "Q3", "P90/P10"], rows
         ))
-        if segment.get("masked_segments"):
-            blocks.append(_note(
-                f'{segment["masked_segments"]} segment(s) masqué(s) : effectif '
-                "inférieur au seuil de confidentialité paramètre.", "warn"))
     return "".join(blocks)
 
 
@@ -717,7 +825,7 @@ def _comparison_section(comparison: Optional[Dict[str, Any]], currency: str) -> 
         return ""
     rows = [tuple(row) for row in comparison_rows(comparison, currency)]
     return (
-        "<h2>8. Comparaison de populations</h2>"
+        "<h2>Comparaison de populations</h2>"
         + _table([
             "Indicateur", comparison["left_label"], comparison["right_label"], "Écart"
         ], rows)
@@ -739,13 +847,13 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
     label = (equity.get("category_label") or "poste").lower()
 
     kpis = "".join([
-        _kpi("Écart global", format_percent(pay.get("mean_gap"))),
+        _kpi("Écart global", format_percent(pay.get("mean_gap")), fort=True),
         _kpi(f"À {label} comparable",
-             format_percent(equity.get("comparable_gap"))),
+             format_percent(equity.get("comparable_gap")), fort=True),
         _kpi("Effet de structure",
              format_percent(equity.get("structure_gap"))),
         _kpi("Rattrapage", format_money(equity.get("at_stake_total"),
-                                        currency)),
+                                        currency), fort=True),
         _kpi("Effectif femmes", str(equity.get("female_count", 0))),
         _kpi("Effectif hommes", str(equity.get("male_count", 0))),
     ])
@@ -788,62 +896,62 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
     quartile_table = _table(["Quartile", "Effectif", "Part femmes",
                              "Part hommes"], quartiles) if quartiles else ""
 
-    note_plein = ""
+    # Un paragraphe de quinze lignes fermait cette section : ce que chaque
+    # ecart signifie, ce qu'il commande, d'ou viennent les formules. Les
+    # chiffres qu'il portait — ecart median, ecart sur le variable, parts
+    # qui le percoivent, couverture, sexe non renseigne — n'etaient
+    # lisibles qu'en lisant la phrase. Ils se rangent ici en tableau, ou
+    # on les trouve sans lire. Ce qu'ils signifient appartient a qui les
+    # lit, non a l'outil qui les calcule.
+    détail = [("Écart médian", format_percent(pay.get("median_gap")))]
+    if variable.get("mean_gap") is not None:
+        détail += [
+            ("Écart sur la rémunération variable",
+             format_percent(variable.get("mean_gap"))),
+            ("Femmes percevant une part variable",
+             format_percent(coverage.get("female_share"))),
+            ("Hommes percevant une part variable",
+             format_percent(coverage.get("male_share"))),
+        ]
     if plein.get("published"):
-        note_plein = (
-            " Écart à temps plein : le même calcul, chaque rémunération "
-            "divisée par le temps de travail du salarié, sur "
-            f"{format_percent(plein.get('coverage'))} des rémunérations — "
-            "celles dont le temps de travail est connu. La différence entre "
-            "les deux écarts est la part que le temps de travail explique ; "
-            "ce qui reste est l'écart à temps de travail égal."
-        )
-    elif plein:
-        note_plein = (" " + (plein.get("warning") or "")) if plein.get("warning") else ""
-
-    # La note disait d'ou venaient les formules avant de dire ce que les
-    # chiffres signifient. Elle dit maintenant ce que chacun commande : un
-    # ecart a travail comparable se corrige en remuneration, un effet de
-    # structure en mobilite, un ecart de temps de travail ne se corrige
-    # pas. La provenance des formules se mentionne une fois, a la fin.
-    note = (
-        "Un écart positif signifie que les femmes sont moins rémunérées. "
-        f"L'écart global se partage en deux causes : à {label} comparable, "
-        "un même travail est payé différemment — cela se corrige en "
-        "rémunération ; l'effet de structure vient de ce que les deux sexes "
-        f"n'occupent pas les mêmes {label}s — cela se corrige en mobilité, "
-        "pas sur une grille. Le rattrapage est ce que coûterait l'alignement "
-        f"du sexe le moins rémunéré sur l'autre, {label} par {label} : un "
-        "ordre de grandeur pour arbitrer, non un engagement."
-        + note_plein
-        + f" Écart médian {format_percent(pay.get('median_gap'))}."
-        + (f" Sur la rémunération variable, l'écart est de "
-           f"{format_percent(variable.get('mean_gap'))}, perçue par "
-           f"{format_percent(coverage.get('female_share'))} des femmes et "
-           f"{format_percent(coverage.get('male_share'))} des hommes."
-           if variable.get("mean_gap") is not None
-           else " Aucune rémunération variable n'est renseignée.")
-        + f" La décomposition porte sur les "
-        f"{format_percent(equity.get('comparable_coverage'))} de l'effectif "
-        f"dont le {label} réunit assez de femmes et d'hommes pour être "
-        "comparé.")
+        détail += [
+            ("Écart à temps plein", format_percent(plein.get("mean_gap"))),
+            ("Couverture du temps plein",
+             format_percent(plein.get("coverage"))),
+        ]
+    détail.append(("Couverture de la décomposition",
+                   format_percent(equity.get("comparable_coverage"))))
     unknown = equity.get("unknown_count", 0)
     if unknown:
-        note += (f" {unknown} salarié(s) dont le sexe n'est pas renseigné "
-                 "sont exclus de tous les écarts.")
-    # Une mention, une seule, et a la fin : c'est la provenance des
-    # formules, non le sujet de la page.
-    note += (" Les écarts moyen et médian, celui sur la rémunération "
-             "variable et la part qui la perçoit sont les indicateurs que "
-             "la directive 2023/970 demande de publier.")
+        détail.append(("Sexe non renseigné, exclus des écarts",
+                       format_number(unknown, 0)))
 
     return (
-        "<h2>7. Écarts de rémunération femmes / hommes</h2>"
+        "<h2>Écarts de rémunération femmes / hommes</h2>"
         f'<div class="kpis">{kpis}</div>'
-        f"{_note(note, 'info')}"
+        f'<h3>Détail</h3>{_table(["Indicateur", "Valeur"], détail)}'
         f"<h3>Écart par {label}</h3>{table}"
         f"<h3>Répartition par quartile de rémunération</h3>{quartile_table}"
     )
+
+
+def _numeroter(sections: Sequence[str]) -> List[str]:
+    """Numerote les sections effectivement rendues.
+
+    Les numeros etaient ecrits dans chaque section. Une section qui ne
+    pouvait rien publier laissait alors un trou dans la suite — le lecteur
+    passait de 4 a 6 et cherchait ce qu'il avait manque. Ils se posent
+    donc ici, sur ce qui parait.
+    """
+    rendues: List[str] = []
+    numero = 0
+    for section in sections:
+        if not section:
+            continue
+        numero += 1
+        rendues.append(section.replace(
+            "<h2>", f'<h2><span class="num">{numero}</span>', 1))
+    return rendues
 
 
 def render_report(analysis: Dict[str, Any]) -> str:
@@ -865,6 +973,7 @@ def render_report(analysis: Dict[str, Any]) -> str:
         _pay_equity_section(analysis.get("pay_equity", {}), currency),
         _comparison_section(analysis.get("comparison"), currency),
     ]
+    sections = _numeroter(sections)
     return f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -878,17 +987,18 @@ def render_report(analysis: Dict[str, Any]) -> str:
 <header>
 <h1>{_e(title)}</h1>
 <div class="meta">
-Fichier source : {_e(manifest.get("fichier_source", "—"))} &nbsp;·&nbsp;
-Effectif analysé : {_e(manifest.get("effectif_analyse", "—"))} &nbsp;·&nbsp;
-Filtres : {_e(manifest.get("filtres", "Aucun filtre"))} &nbsp;·&nbsp;
-Généré le {_e(generated)}
+<div>Fichier source<b>{_e(manifest.get("fichier_source", "—"))}</b></div>
+<div>Effectif analysé<b>{_e(manifest.get("effectif_analyse", "—"))}</b></div>
+<div>Périmètre<b>{_e(manifest.get("filtres", "Aucun filtre"))}</b></div>
+<div>Date d'analyse<b>{_e(generated)}</b></div>
 </div>
 </header>
+<div class="corps">
 {''.join(sections)}
+</div>
 <footer>
-{_e(ENGINE_NAME)} v{_e(__version__)} — traitement local, hors ligne.
-Empreinte du fichier source : {_e((manifest.get("empreinte_source") or "—")[:16])}.
-Aucune donnée n'a quitté ce poste.
+{_e(ENGINE_NAME)} v{_e(__version__)} &nbsp;·&nbsp;
+empreinte du fichier source {_e((manifest.get("empreinte_source") or "—")[:16])}
 </footer>
 </div>
 <script>{_JS}</script>

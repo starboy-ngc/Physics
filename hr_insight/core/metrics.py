@@ -366,13 +366,24 @@ def _percentile_label(rank: float) -> str:
 def calculate_distribution_metrics(
     population: Population, config: Configuration, field_name: Optional[str] = None
 ) -> Dict[str, Any]:
-    """Histogramme et points atypiques, sous reserve de l'effectif minimal."""
+    """Histogramme de la remuneration, sous reserve de l'effectif minimal.
+
+    L'outil ne designe personne. Une version precedente sortait une liste
+    de « situations atypiques » : les remunerations au-dela d'une fois et
+    demie l'ecart interquartile, nommees une a une dans les documents.
+    C'etait l'outil qui decretait l'anomalie — sur un critere statistique,
+    sans rien savoir du marche, du metier, de l'historique ni de la
+    performance. Le lecteur recevait une liste de noms sous un titre qui
+    l'accusait a moitie.
+
+    L'histogramme montre la distribution entiere ; qui s'ecarte s'y voit.
+    Juger est le travail du lecteur, et il ne se delegue pas a un facteur
+    multiplicatif.
+    """
     field_name = field_name or analysis_field(config)
     rules = PrivacyRules.from_config(config)
     bins = config.number("chart_parameters.histogram_bins", 20,
                          minimum=1, maximum=500, integer=True)
-    factor = config.number("salary_parameters.outlier_factor", 1.5,
-                           minimum=0.1, maximum=10.0)
 
     values = _values(population, field_name)
     if not rules.may_chart(len(values)):
@@ -386,37 +397,15 @@ def calculate_distribution_metrics(
             "bins": [],
             "sex_split": _sex_distribution(population, config, field_name,
                                            [], rules),
-            "outliers": [],
         }
     histogram = stats.histogram(values, bins)
-    bounds = stats.iqr_outlier_bounds(values, factor)
-    outliers: List[Dict[str, Any]] = []
-    if bounds:
-        for employee in population:
-            value = employee.value(field_name)
-            if value is None:
-                continue
-            if value < bounds["lower"] or value > bounds["upper"]:
-                outliers.append(
-                    _atypical_entry(employee, field_name, value, bounds, config)
-                )
-    ordered_outliers = sorted(outliers, key=lambda item: item["value"])
     return {
         "field": field_name,
         "available": True,
         "warning": None,
-        "dimension_labels": _discriminating_dimensions(population, config),
         "bins": histogram,
         "sex_split": _sex_distribution(population, config, field_name,
                                        histogram, rules),
-        "bounds": bounds,
-        # La liste complete porte le comptage annonce ; seule la selection
-        # mise en avant est tronquee, sinon la restitution annoncerait moins
-        # de situations qu'il n'y en a.
-        "outliers": ordered_outliers,
-        "outliers_highlighted": _extremes(ordered_outliers),
-        # Libelle impose : jamais "anomalie RH", qui prejugerait du contexte.
-        "outlier_label": "Situation atypique à analyser",
     }
 
 
@@ -472,56 +461,6 @@ def _sex_distribution(
         f"(minimum paramétré : {rules.min_chart} salariés de chaque côté)."
     )
     return split
-
-
-def _discriminating_dimensions(
-    population: Population, config: Configuration
-) -> List[Dict[str, str]]:
-    """Dimensions qui varient reellement dans la population analysee.
-
-    Sous un filtre "BU = France", les colonnes BU et Pays sont constantes :
-    les afficher gaspille la place sans rien apprendre.
-    """
-    useful: List[Dict[str, str]] = []
-    for name in dimension_fields(config):
-        values = {str(employee.value(name) or "") for employee in population}
-        values.discard("")
-        if len(values) > 1:
-            useful.append({"field": name, "label": dimension_label(config, name)})
-    return useful
-
-
-def _extremes(ordered: List[Dict[str, Any]], per_side: int = 8) -> List[Dict[str, Any]]:
-    """Selection mise en avant : les cas les plus bas et les plus hauts.
-
-    Tronquer la liste triee ne montrerait que les remunerations basses et
-    masquerait completement les hautes — ou l'inverse.
-    """
-    if len(ordered) <= 2 * per_side:
-        return ordered
-    return ordered[:per_side] + ordered[-per_side:]
-
-
-def _atypical_entry(
-    employee: Employee,
-    field_name: str,
-    value: float,
-    bounds: Dict[str, float],
-    config: Configuration,
-) -> Dict[str, Any]:
-    return {
-        "reference": employee.anonymous_id or str(employee.row_number),
-        "row": employee.row_number,
-        "value": value,
-        "field": field_name,
-        "position": "basse" if value < bounds["lower"] else "haute",
-        "tenure_years": employee.tenure_years,
-        # Dimensions declarees en configuration, pas une liste codee en dur.
-        "dimensions": {
-            name: employee.value(name) or ""
-            for name in dimension_fields(config)
-        },
-    }
 
 
 def segment_by_sex(population: Population, config: Configuration,
@@ -898,8 +837,6 @@ def scatter_dataset(
             # population qu'il detient, sans qu'aucune identite ne transite
             # par le resultat d'analyse.
             "row": employee.row_number,
-            "grade": employee.grade,
-            "job_family": employee.job_family,
         })
     total_points = len(points)
     sampled = False

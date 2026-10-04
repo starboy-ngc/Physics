@@ -41,7 +41,7 @@ def _display_answers() -> bool:
 needs_display = unittest.skipUnless(
     _display_answers(), "aucun affichage disponible (test d'interface ignoré)")
 
-HEADERS = ["Matricule", "Nom", "Sexe", "BU", "Grade", "Salaire de base",
+HEADERS = ["Matricule", "Nom", "Sexe", "BU", "Groupe", "Salaire de base",
            "Prime de panier"]
 
 
@@ -225,10 +225,10 @@ class TestRefusals(SettingsCase):
         ne sert a rien."""
         from hr_insight.ui.settings import IGNORED
 
-        self.assign("Grade", IGNORED)
+        self.assign("Groupe", IGNORED)
         section = self.window.collect()
         for name, aliases in section["fields"].items():
-            self.assertNotIn("Grade", aliases, name)
+            self.assertNotIn("Groupe", aliases, name)
 
     def test_the_other_spellings_of_a_field_are_kept(self):
         """« Employee ID » vise un autre fichier : detacher la colonne de
@@ -271,16 +271,16 @@ class TestRefusals(SettingsCase):
 
 class TestDimensionFlags(SettingsCase):
     def test_a_dimension_can_be_renamed(self):
-        self.window.rows["grade"]["label"].set("Niveau")
+        self.window.rows["groupe"]["label"].set("Niveau")
         section = self.window.collect()
         labels = {entry["field"]: entry["label"]
                   for entry in section["dimensions"]}
-        self.assertEqual(labels["grade"], "Niveau")
+        self.assertEqual(labels["groupe"], "Niveau")
 
     def test_a_dimension_can_be_withdrawn(self):
-        self.window.rows["grade"]["declared"].set(False)
+        self.window.rows["groupe"]["declared"].set(False)
         section = self.window.collect()
-        self.assertNotIn("grade", [entry["field"]
+        self.assertNotIn("groupe", [entry["field"]
                                    for entry in section["dimensions"]])
 
     def test_a_field_can_become_a_dimension(self):
@@ -299,7 +299,7 @@ class TestSaving(SettingsCase):
             self.assertIn("fields", json.load(handle))
 
     def test_what_is_saved_is_what_the_screen_showed(self):
-        self.window.rows["grade"]["label"].set("Niveau")
+        self.window.rows["groupe"]["label"].set("Niveau")
         section = self.window.collect()
         self.window.save()
         with open(os.path.join(self.directory, "population_mapping.json"),
@@ -310,12 +310,12 @@ class TestSaving(SettingsCase):
     def test_the_saved_file_can_be_loaded_back(self):
         from hr_insight.core.config import load_configuration
 
-        self.window.rows["grade"]["label"].set("Niveau")
+        self.window.rows["groupe"]["label"].set("Niveau")
         self.window.save()
         reloaded = load_configuration(self.directory)
         labels = {entry["field"]: entry["label"]
                   for entry in reloaded.get("population_mapping.dimensions")}
-        self.assertEqual(labels["grade"], "Niveau")
+        self.assertEqual(labels["groupe"], "Niveau")
 
     def test_a_refused_screen_writes_nothing(self):
         """La saisie ne doit pas se perdre, et le fichier ne doit pas
@@ -651,10 +651,10 @@ class TestTheRoleOfAColumn(SettingsCase):
 
     def test_unticking_a_column_withdraws_its_field(self):
         """La case de la ligne commande l'etat du champ, sans doublon."""
-        self.window.dimension_vars["Grade"].set(False)
+        self.window.dimension_vars["Groupe"].set(False)
         self.window.update()
         section = self.window.collect()
-        self.assertNotIn("grade",
+        self.assertNotIn("groupe",
                          [entry["field"] for entry in section["dimensions"]])
 
     def test_ticking_a_column_proposes_its_field(self):
@@ -672,7 +672,7 @@ class TestTheRoleOfAColumn(SettingsCase):
         """Deux cases pour une decision finissent par se contredire."""
         libellés = [enfant.winfo_children()[0].get()
                     for enfant in self.window._dimension_area.winfo_children()]
-        self.assertNotIn("Grade", libellés)
+        self.assertNotIn("Groupe", libellés)
         # Mais l'age, qu'aucune colonne ne porte, s'y trouve.
         self.assertTrue(any("ge" in str(libellé) for libellé in libellés),
                         libellés)
@@ -724,7 +724,7 @@ class TestTheWarningFades(SettingsCase):
         from hr_insight.ui import theme
 
         self.assertEqual(self._colour_of("Prime de panier"), theme.WARN)
-        self.assertEqual(self._colour_of("Grade"), theme.INK_SOFT)
+        self.assertEqual(self._colour_of("Groupe"), theme.INK_SOFT)
 
     def test_mapping_it_turns_the_flag_off(self):
         from hr_insight.ui import theme
@@ -741,11 +741,11 @@ class TestTheWarningFades(SettingsCase):
         from hr_insight.ui import theme
         from hr_insight.ui.settings import IGNORED
 
-        rang = [nom for nom in HEADERS if str(nom).strip()].index("Grade")
-        self.window.assignments["Grade"].set(IGNORED)
-        self.window._chose("Grade", self.window._boxes[rang])
+        rang = [nom for nom in HEADERS if str(nom).strip()].index("Groupe")
+        self.window.assignments["Groupe"].set(IGNORED)
+        self.window._chose("Groupe", self.window._boxes[rang])
         self.window.update()
-        self.assertEqual(self._colour_of("Grade"), theme.WARN)
+        self.assertEqual(self._colour_of("Groupe"), theme.WARN)
 
 
 @needs_display

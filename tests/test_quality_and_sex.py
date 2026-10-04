@@ -60,14 +60,14 @@ class TestStructureFindings(unittest.TestCase):
         self.assertIn("Prime de panier", message)
 
     def test_a_duplicated_column_is_reported(self):
-        """Deux colonnes « Grade » : seule la premiere est lue, et
+        """Deux colonnes « Groupe » : seule la premiere est lue, et
         l'utilisateur doit savoir laquelle."""
         report = check([list(make_row(1)) + ["G9"]],
-                       headers=list(HEADERS) + ["Grade"])
+                       headers=list(HEADERS) + ["Groupe"])
         self.assertIn("duplicate_columns", codes(report))
         message = next(f.message for f in report.findings
                        if f.code == "duplicate_columns")
-        self.assertIn("Grade", message)
+        self.assertIn("Groupe", message)
         self.assertIn("première", message)
 
 
@@ -159,13 +159,6 @@ class TestSalaryFindings(unittest.TestCase):
         report = check([make_row(index, salary=60000) for index in range(5)],
                        config=config)
         self.assertIn("salary_above_threshold", codes(report))
-
-    def test_an_outlier_is_reported_for_information(self):
-        rows = [make_row(index, salary=40000) for index in range(30)]
-        rows.append(make_row(99, salary=400000))
-        report = check(rows)
-        self.assertIn("salary_outlier", codes(report))
-        self.assertFalse(report.blocking)
 
     def test_a_non_numeric_salary_is_reported_with_its_field(self):
         report = check([make_row(1, salary="quarante mille")])

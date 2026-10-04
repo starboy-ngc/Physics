@@ -48,7 +48,7 @@ class ControlCase(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=30000 + (index % 30) * 900,
                     business_unit=["France", "Iberia"][index % 2],
-                    grade=f"G{3 + index % 3}",
+                    groupe=f"G{3 + index % 3}",
                     gender="F" if index % 2 else "H",
                     age=25 + index % 35,
                     # Des anciennetes etalees : les tranches « <2 ans » et
@@ -375,13 +375,30 @@ class TestTheControlIsAnExplicitChoice(ControlCase):
     def test_the_workbook_says_what_it_carries(self):
         """La contrepartie du controle est un classeur qui porte des noms.
         Il doit le dire en tete, faute de quoi la difference entre un envoi
-        delibere et un envoi distrait n'existe plus."""
-        synthese = " ".join(str(cell) for ligne in
-                            self.named(self.sheets())["Synthèse"]
-                            for cell in ligne)
-        self.assertIn("CE QUE CONTIENT CE CLASSEUR", synthese)
-        self.assertIn("Fichier importé", synthese)
-        self.assertIn("include_individual_data", synthese)
+        delibere et un envoi distrait n'existe plus.
+
+        Il le disait en un paragraphe. Deux lignes du meme tableau le
+        disent aussi bien, et se lisent sans etre lues.
+        """
+        lignes = {str(ligne[0]): str(ligne[1])
+                  for ligne in self.named(self.sheets())["Synthèse"]
+                  if len(ligne) > 1}
+        self.assertEqual(lignes.get("Données individuelles"), "oui")
+        self.assertEqual(lignes.get("Copie du fichier source"), "oui")
+
+    def test_it_says_no_when_it_carries_nothing(self):
+        lignes = {str(ligne[0]): str(ligne[1])
+                  for ligne in self.named(self.sheets(individual=False))["Synthèse"]
+                  if len(ligne) > 1}
+        self.assertEqual(lignes.get("Données individuelles"), "non")
+
+    def test_no_prose_closes_the_summary_sheet(self):
+        """Un classeur ne se commente pas lui-meme."""
+        for ligne in self.named(self.sheets())["Synthèse"]:
+            for cellule in ligne:
+                self.assertLessEqual(
+                    len(str(cellule)), 90,
+                    f"cellule de prose dans la synthèse : {cellule}")
 
     def test_the_settings_still_withhold_everything(self):
         """La garantie durable n'est pas le defaut, c'est le reglage : a
@@ -430,17 +447,27 @@ class TestALargePopulationStaysOpenable(ControlCase):
 class TestTheMethodSheet(ControlCase):
     """Les controles prouvent l'accord ; celui-ci dit ce qui est calcule."""
 
-    def test_it_is_always_there_even_without_individual_data(self):
-        self.assertIn("Formules",
-                      [name for name, _ in self.sheets(individual=False)])
+    def test_it_does_not_appear_unless_it_is_asked_for(self):
+        """C'est de la prose : elle ne s'invite pas dans un classeur qui
+        doit rester un classeur de chiffres."""
+        self.assertNotIn("Formules", [name for name, _ in self.sheets()])
 
-    def test_it_names_the_percentile_method_and_the_directive(self):
-        rows = self.named(self.sheets())["Formules"]
+    def test_asked_for_it_names_the_method_and_the_directive(self):
+        sheets = self.sheets(overrides={
+            "export_parameters.include_method_sheet": True})
+        self.assertIn("Formules", [name for name, _ in sheets])
+        rows = self.named(sheets)["Formules"]
         texte = " ".join(str(cell) for ligne in rows for cell in ligne)
         self.assertIn("type 7", texte)
         self.assertIn("2023/970", texte)
         self.assertIn("365,2425", texte)
         self.assertIn("n−1", texte)
+
+    def test_the_control_sheets_stay_whatever_happens(self):
+        """Une formule est une donnée, pas un commentaire : elle reste."""
+        noms = [name for name, _ in self.sheets()]
+        self.assertIn("Contrôle", noms)
+        self.assertIn("Contrôle segments", noms)
 
 
 class TestDerivedColumnsCarryTheirRule(ControlCase):
@@ -495,7 +522,7 @@ class TestTheFullTimeGapOfEachJobIsCheckable(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=round(base * (0.8 if femme else 1.0)),
                     gender="F" if femme else "H",
-                    grade=f"G{3 + index % 3}")) +
+                    groupe=f"G{3 + index % 3}")) +
                     [poste, "0,8" if femme else "1"])
         cls.config_dir = os.path.join(cls.directory, "config")
         write_default_configuration(cls.config_dir)

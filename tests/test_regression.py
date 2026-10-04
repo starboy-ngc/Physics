@@ -44,7 +44,7 @@ def build_snapshot():
 
     result = run_analysis(AnalysisRequest(
         source_path=source, reference_date=REFERENCE_DATE,
-        segments=["business_unit", "grade", "gender"],
+        segments=["business_unit", "groupe", "gender"],
     ))
     payload = result.payload
     salary = payload["salary"]
@@ -63,7 +63,6 @@ def build_snapshot():
         "min": salary["min"], "max": salary["max"],
         "dispersion": salary["dispersion"],
         "qualite_statut": payload["quality"]["statut"],
-        "nb_atypiques": len(payload["distribution"]["outliers"]),
         # La droite de tendance n'est plus publiee, mais la regression reste
         # calculable : c'est elle que la reference surveille, pour detecter
         # une derive du calcul et non un changement de presentation.

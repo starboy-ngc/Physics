@@ -48,7 +48,7 @@ class CommandCase(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=40000 + index * 250,
                     business_unit=["France", "Iberia"][index % 2],
-                    grade=f"G{3 + index % 4}",
+                    groupe=f"G{3 + index % 4}",
                     gender="F" if index % 2 else "H")))
         return path
 
@@ -122,10 +122,10 @@ class TestAnalyse(CommandCase):
     def test_a_chosen_segment_is_recorded(self):
         out = os.path.join(self.directory, "segment")
         run(["--logs", self.logs, "analyse", self.source(), "--sortie", out,
-             "--restitution", "excel", "--segment", "grade"])
+             "--restitution", "excel", "--segment", "groupe"])
         manifest = glob.glob(os.path.join(out, "manifeste-*.json"))[0]
         with open(manifest, encoding="utf-8") as handle:
-            self.assertEqual(json.load(handle)["segments_analyses"], ["grade"])
+            self.assertEqual(json.load(handle)["segments_analyses"], ["groupe"])
 
     def test_a_title_reaches_the_report(self):
         out = os.path.join(self.directory, "titre")
@@ -226,7 +226,7 @@ class TestMapping(CommandCase):
     def test_declared_dimensions_are_shown_present_or_absent(self):
         _code, text, _ = run(["--logs", self.logs, "mapping", self.source()])
         self.assertIn("Dimensions d'analyse", text)
-        self.assertIn("grade", text)
+        self.assertIn("groupe", text)
 
     def test_unrecognised_columns_are_named(self):
         """C'est la reponse a « pourquoi ma colonne n'apparait pas ? »."""

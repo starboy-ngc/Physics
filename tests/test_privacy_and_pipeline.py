@@ -30,7 +30,7 @@ from hr_insight.version import __version__
 def build_source(directory, rows=None):
     rows = rows or [make_row(i, salary=35000 + (i % 40) * 900,
                              business_unit=["France", "DACH", "Iberia"][i % 3],
-                             grade=["G3", "G5", "G7"][i % 3],
+                             groupe=["G3", "G5", "G7"][i % 3],
                              gender=["F", "H"][i % 2],
                              age=28 + i % 30, tenure=i % 18)
                     for i in range(120)]
@@ -50,7 +50,7 @@ class TestPipeline(unittest.TestCase):
         return run_analysis(request)
 
     def test_end_to_end_produces_all_sections(self):
-        result = self._run(segments=["business_unit", "grade"])
+        result = self._run(segments=["business_unit", "groupe"])
         payload = result.payload
         for key in ("quality", "population", "salary", "distribution",
                     "scatter", "segments", "manifest"):
@@ -461,7 +461,7 @@ class TestCommandLine(unittest.TestCase):
     def test_filter_expressions(self):
         self.assertEqual(parse_filter("business_unit=France"),
                          {"field": "business_unit", "operator": "eq", "value": "France"})
-        self.assertEqual(parse_filter("grade=G5|G6")["operator"], "in")
+        self.assertEqual(parse_filter("groupe=G5|G6")["operator"], "in")
         self.assertEqual(parse_filter("base_salary>=50000")["operator"], "gte")
 
     def test_a_list_keeps_the_meaning_of_the_operator(self):
@@ -471,7 +471,7 @@ class TestCommandLine(unittest.TestCase):
         de ce qui etait ecrit, et sur une population entiere le resultat
         restait plausible : personne ne pouvait s'en apercevoir.
         """
-        exclusion = parse_filter("grade!=G1|G2")
+        exclusion = parse_filter("groupe!=G1|G2")
         self.assertEqual(exclusion["operator"], "not_in")
         self.assertEqual(exclusion["value"], ["G1", "G2"])
 
@@ -488,7 +488,7 @@ class TestCommandLine(unittest.TestCase):
         mort : la ligne de commande doit tous les exposer."""
         from hr_insight.core.segmentation import _OPERATORS
         reached = {parse_filter(expression)["operator"] for expression in (
-            "grade=G1", "grade!=G1", "grade=G1|G2", "grade!=G1|G2",
+            "groupe=G1", "groupe!=G1", "groupe=G1|G2", "groupe!=G1|G2",
             "base_salary>50000", "base_salary>=50000",
             "base_salary<50000", "base_salary<=50000", "job~=Ing")}
         self.assertEqual(set(_OPERATORS) - reached, {"between"},
@@ -500,7 +500,7 @@ class TestCommandLine(unittest.TestCase):
         code = cli_main([
             "analyse", self.source, "--sortie", output,
             "--date-reference", REFERENCE_DATE.isoformat(),
-            "--segment", "grade",
+            "--segment", "groupe",
         ])
         self.assertEqual(code, 0)
         self.assertTrue(glob.glob(os.path.join(output, "restitution-*.html")))
@@ -545,7 +545,7 @@ class TestTeamScope(unittest.TestCase):
                 for number, (key, manager) in enumerate(links):
                     row = make_row(number, salary=40000 + index * 1000
                                    + number * 50, employee_id=key,
-                                   grade=f"G{3 + number % 3}")
+                                   groupe=f"G{3 + number % 3}")
                     writer.writerow(list(row) + [manager, period])
         self.headcount = len(links)
         return path
@@ -614,7 +614,7 @@ class TestTeamScope(unittest.TestCase):
         whole = self._run(team="D0").payload["population"]["headcount"]
         narrowed = run_analysis(AnalysisRequest(
             source_path=self._source(), team="D0",
-            filters=[Filter(field="grade", operator="eq", value="G4")]))
+            filters=[Filter(field="groupe", operator="eq", value="G4")]))
         self.assertLess(narrowed.payload["population"]["headcount"], whole)
         self.assertGreater(narrowed.payload["population"]["headcount"], 0)
 

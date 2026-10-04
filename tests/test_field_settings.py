@@ -45,17 +45,17 @@ class TestDeclaredDimensions(unittest.TestCase):
     """
 
     def test_a_declared_dimension_is_available_everywhere(self):
-        config = configuration(dimensions=[{"field": "grade", "label": "Grade"}])
-        self.assertEqual(dimension_fields(config), ["grade"])
+        config = configuration(dimensions=[{"field": "groupe", "label": "Groupe"}])
+        self.assertEqual(dimension_fields(config), ["groupe"])
         self.assertEqual(dimensions(config),
-                         [{"field": "grade", "label": "Grade"}])
+                         [{"field": "groupe", "label": "Groupe"}])
 
     def test_a_bare_string_still_declares_a_dimension(self):
-        config = configuration(dimensions=["grade"])
-        self.assertEqual(dimension_fields(config), ["grade"])
+        config = configuration(dimensions=["groupe"])
+        self.assertEqual(dimension_fields(config), ["groupe"])
 
     def test_an_undeclared_field_is_offered_nowhere(self):
-        config = configuration(dimensions=[{"field": "grade", "label": "Grade"}])
+        config = configuration(dimensions=[{"field": "groupe", "label": "Groupe"}])
         self.assertNotIn("site", dimension_fields(config))
 
 
@@ -83,7 +83,7 @@ class TestWritingConfiguration(unittest.TestCase):
     def test_a_written_section_is_read_back_identically(self):
         section = {"fields": {"employee_id": ["Matricule"],
                               "base_salary": ["Salaire"]},
-                   "dimensions": [{"field": "grade", "label": "Grade"}],
+                   "dimensions": [{"field": "groupe", "label": "Groupe"}],
                    "required": ["employee_id", "base_salary"]}
         write_configuration(self.directory, "population_mapping", section)
         reloaded = load_configuration(self.directory)
@@ -210,9 +210,9 @@ class TestComposingTheSection(unittest.TestCase):
 
     def test_reassigning_the_same_column_does_not_duplicate_it(self):
         section = self._build(
-            current={"fields": {"grade": ["Grade"]}, "dimensions": []},
-            assignments={"Grade": "grade"}, dimension_flags={}, limit=60)
-        self.assertEqual(section["fields"]["grade"].count("Grade"), 1)
+            current={"fields": {"groupe": ["Groupe"]}, "dimensions": []},
+            assignments={"Groupe": "groupe"}, dimension_flags={}, limit=60)
+        self.assertEqual(section["fields"]["groupe"].count("Groupe"), 1)
 
     def test_an_ignored_column_declares_nothing(self):
         from hr_insight.ui.settings import IGNORED
@@ -238,11 +238,11 @@ class TestComposingTheSection(unittest.TestCase):
         section = self._build(
             current={"fields": {}, "dimensions": []}, assignments={},
             dimension_flags={
-                "grade": {"label": "Grade", "declared": True},
+                "groupe": {"label": "Groupe", "declared": True},
                 "site": {"label": "Site", "declared": True},
             }, limit=60)
         self.assertEqual(section["dimensions"], [
-            {"field": "grade", "label": "Grade"},
+            {"field": "groupe", "label": "Groupe"},
             {"field": "site", "label": "Site"},
         ])
 
@@ -261,7 +261,7 @@ class TestComposingTheSection(unittest.TestCase):
             current={"fields": {},
                      "dimensions": [{"field": "last_name", "label": "Nom"}]},
             assignments={},
-            dimension_flags={"grade": {"label": "Grade", "declared": True}},
+            dimension_flags={"groupe": {"label": "Groupe", "declared": True}},
             limit=60)
         self.assertIn({"field": "last_name", "label": "Nom"},
                       section["dimensions"])
@@ -284,7 +284,7 @@ class TestFieldNameSuggestion(unittest.TestCase):
 
     def test_a_collision_is_suffixed(self):
         from hr_insight.ui.settings import suggest_field_name
-        self.assertEqual(suggest_field_name("Grade", ["grade"]), "grade_2")
+        self.assertEqual(suggest_field_name("Groupe", ["groupe"]), "groupe_2")
 
     def test_a_name_never_starts_with_a_digit(self):
         from hr_insight.ui.settings import suggest_field_name
@@ -480,9 +480,7 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
 
         population = build_population([make_row(i) for i in range(30)])
         for chemin, valeur in (("chart_parameters.histogram_bins", 0),
-                               ("chart_parameters.histogram_bins", -7),
-                               ("salary_parameters.outlier_factor", 0),
-                               ("salary_parameters.outlier_factor", -1.5)):
+                               ("chart_parameters.histogram_bins", -7)):
             with self.subTest(chemin=chemin, valeur=valeur):
                 config = self._config(**{chemin: valeur})
                 with self.assertRaises(ConfigError):
@@ -521,7 +519,7 @@ class TestNumericSettingsAreCheckedWhenRead(unittest.TestCase):
         for appel in (lambda: pay_equity.calculate_pay_equity(population,
                                                               config),
                       lambda: pay_equity.calculate_category_gaps(
-                          population, config, "grade")):
+                          population, config, "groupe")):
             with self.subTest(appel=appel):
                 with self.assertRaises(ConfigError) as leve:
                     appel()

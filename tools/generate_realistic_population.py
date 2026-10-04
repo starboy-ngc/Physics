@@ -30,11 +30,12 @@ from hr_insight.io.xlsx_writer import write_workbook
 HEADERS = [
     "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
     "Date de sortie", "BU", "Pays", "Établissement", "Métier", "Poste",
-    "Famille métier", "Grade", "Coefficient", "Statut", "Temps de travail",
+    "Famille métier", "Annexe", "Groupe", "Coefficient", "Statut",
+    "Temps de travail",
     "Salaire de base", "Variable", "Rémunération totale", "Manager",
     # Deux colonnes de trop, volontaires : l'une n'est pas reconnue (simple
-    # information), l'autre fait doublon avec « Grade » (avertissement).
-    "Prime de panier", "Grade",
+    # information), l'autre fait doublon avec « Groupe » (avertissement).
+    "Prime de panier", "Groupe",
 ]
 
 PATRONYMES = [
@@ -151,9 +152,14 @@ PROPENSION_F = {
     "Informatique": 0.27,
 }
 
-GRADES = ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]
-#: Salaire median a temps plein, par grade.
-BASE_PAR_GRADE = {
+GROUPES = ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]
+#: Annexe de la convention collective, par famille de metier. Une annexe
+#: regroupe les emplois d'une meme filiere et porte sa propre grille.
+ANNEXES = {famille: f"Annexe {rang + 1}"
+           for rang, famille in enumerate(FAMILLES)}
+
+#: Salaire median a temps plein, par groupe.
+BASE_PAR_GROUPE = {
     "G1": 23500, "G2": 26500, "G3": 30000, "G4": 34500, "G5": 41000,
     "G6": 50000, "G7": 63000, "G8": 82000,
 }
@@ -172,15 +178,15 @@ def _prefixe(unite: str) -> str:
 
 
 def _grade_du_poste(rang: int, tirage: random.Random) -> str:
-    """Un poste junior n'est pas au meme grade qu'un poste senior."""
+    """Un poste junior n'est pas au meme groupe qu'un poste senior."""
     plancher = [0, 2, 4][rang]
-    return GRADES[min(len(GRADES) - 1,
+    return GROUPES[min(len(GROUPES) - 1,
                       plancher + tirage.choices([0, 1, 2],
                                                 weights=[55, 33, 12])[0])]
 
 
-def _statut(grade: str) -> str:
-    index = GRADES.index(grade)
+def _statut(groupe: str) -> str:
+    index = GROUPES.index(groupe)
     return STATUTS[0] if index <= 2 else (STATUTS[1] if index <= 4
                                           else STATUTS[2])
 
@@ -200,7 +206,7 @@ def construire(effectif: int, graine: int, reference: _dt.date):
         postes = FAMILLES[famille][metier]
         rang = tirage.choices([0, 1, 2], weights=[45, 38, 17])[0]
         poste = postes[rang]
-        grade = _grade_du_poste(rang, tirage)
+        groupe = _grade_du_poste(rang, tirage)
 
         femme = tirage.random() < PROPENSION_F[metier]
         sexe = "F" if femme else "H"
@@ -214,7 +220,7 @@ def construire(effectif: int, graine: int, reference: _dt.date):
                                              min(6 + rang * 2, age - 21)), 1)
         entree = reference - _dt.timedelta(days=int(anciennete * 365.2425))
 
-        base = BASE_PAR_GRADE[grade]
+        base = BASE_PAR_GROUPE[groupe]
         base *= 1 + 0.010 * min(anciennete, 25)        # effet anciennete
         base *= 1 + tirage.gauss(0, 0.055)             # dispersion
         if unite == "Siège":
@@ -231,7 +237,7 @@ def construire(effectif: int, graine: int, reference: _dt.date):
 
         part = tirage.choices([0.0, 0.03, 0.06, 0.10, 0.15],
                               weights=[30, 25, 22, 15, 8])[0]
-        part += GRADES.index(grade) * 0.01
+        part += GROUPES.index(groupe) * 0.01
         variable = round(base * max(0.0, part + tirage.gauss(0, 0.02)) / 50) * 50
 
         sortie = ""
@@ -244,9 +250,14 @@ def construire(effectif: int, graine: int, reference: _dt.date):
             "nom": nom.upper(), "prenom": prenom, "sexe": sexe,
             "naissance": naissance, "entree": entree, "sortie": sortie,
             "unite": unite, "site": site, "metier": metier, "poste": poste,
-            "famille": famille, "grade": grade,
-            "coefficient": 100 + GRADES.index(grade) * 30,
-            "statut": _statut(grade), "temps": temps,
+            "famille": famille,
+            # L'annexe d'une convention collective : la filiere a laquelle
+            # le poste se rattache. Elle se deduit ici de la famille de
+            # metier, comme dans la plupart des accords.
+            "annexe": ANNEXES[famille],
+            "groupe": groupe,
+            "coefficient": 100 + GROUPES.index(groupe) * 30,
+            "statut": _statut(groupe), "temps": temps,
             "base": base, "variable": variable, "rang": rang,
             "manager": "",
         })
@@ -264,7 +275,7 @@ def _rattacher(salaries, tirage, encadrement: int = 7) -> None:
         par_unite.setdefault(salarie["unite"], []).append(salarie)
     for membres in par_unite.values():
         tirage.shuffle(membres)
-        membres.sort(key=lambda s: -GRADES.index(s["grade"]))
+        membres.sort(key=lambda s: -GROUPES.index(s["groupe"]))
         for position, salarie in enumerate(membres):
             if position:
                 salarie["manager"] = membres[(position - 1)
@@ -275,13 +286,14 @@ def _ligne(s) -> list:
     return [
         s["matricule"], s["nom"], s["prenom"], s["sexe"], s["naissance"],
         s["entree"], s["sortie"], s["unite"], PAYS, s["site"], s["metier"],
-        s["poste"], s["famille"], s["grade"], s["coefficient"], s["statut"],
+        s["poste"], s["famille"], s["annexe"], s["groupe"], s["coefficient"],
+        s["statut"],
         s["temps"], s["base"], s["variable"], s["base"] + s["variable"],
         s["manager"],
         # Prime de panier : colonne non reconnue, volontaire.
         s["coefficient"] // 10,
-        # Seconde colonne « Grade » : doublon volontaire.
-        s["grade"],
+        # Seconde colonne « Groupe » : doublon volontaire.
+        s["groupe"],
     ]
 
 
@@ -354,14 +366,17 @@ def _poser_anomalies(lignes, tirage):
     poser(71, "ligne sans matricule")
     lignes[71][matricule] = ""
 
-    # Valeurs atypiques : deux remunerations tres au-dessus de leur poste.
+    # Deux remunerations tres au-dessus de leur poste. Elles ne sont plus
+    # designees par l'outil — juger n'est pas son travail —, mais elles
+    # restent dans le fichier : elles etirent l'echelle, et c'est ce qu'on
+    # veut voir sur un jeu d'essai.
     for index in (88, 103):
-        poser(index, "rémunération atypique pour le poste (écart interquartile)")
+        poser(index, "rémunération très au-dessus de celles du même poste")
         lignes[index][salaire] = round(lignes[index][salaire] * 3.4 / 100) * 100
         lignes[index][total] = lignes[index][salaire] + lignes[index][variable]
 
     posees.append(("colonne", '« Prime de panier » : colonne non reconnue'))
-    posees.append(("colonne", '« Grade » présent deux fois'))
+    posees.append(("colonne", '« Groupe » présent deux fois'))
     return posees
 
 

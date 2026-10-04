@@ -69,7 +69,13 @@ class Employee:
     site: str = ""
     job: str = ""
     job_family: str = ""
-    grade: str = ""
+    #: Classification conventionnelle : annexe, groupe, coefficient. Ce
+    #: sont les trois mots d'une convention collective francaise, et non
+    #: un « grade » d'entreprise qui ne se retrouve pas d'un fichier a
+    #: l'autre. Le coefficient est un nombre ; les deux autres non — un
+    #: groupe s'ecrit « B » ou « 3 bis » aussi souvent qu'un entier.
+    annexe: str = ""
+    groupe: str = ""
     coefficient: Optional[float] = None
     status: str = ""
     fte: Optional[float] = None

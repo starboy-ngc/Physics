@@ -97,13 +97,5 @@ class TestDistributionTools(unittest.TestCase):
     def test_linear_regression_flat_x(self):
         self.assertIsNone(stats.linear_regression([5, 5, 5], [1, 2, 3]))
 
-    def test_outlier_bounds(self):
-        bounds = stats.iqr_outlier_bounds([10, 12, 14, 16, 18, 20, 100], 1.5)
-        self.assertLess(bounds["upper"], 100)
-        self.assertIsNotNone(bounds["lower"])
-
-    def test_outlier_bounds_small_sample(self):
-        self.assertIsNone(stats.iqr_outlier_bounds([10, 20, 30], 1.5))
-
 if __name__ == "__main__":
     unittest.main()

@@ -50,10 +50,17 @@ class Slide:
 
 
 def _kpi_block(pairs: Sequence[Sequence[str]], width: str = "full",
-               compact: bool = False) -> Block:
+               compact: bool = False, forts: int = 0) -> Block:
+    """Un bandeau d'indicateurs. `forts` en met N en avant, les premiers.
+
+    Tous de la meme teinte, un bandeau n'a pas de sommet : l'oeil se pose
+    au hasard. Deux ou trois chiffres portent la lecture d'une page, et
+    ce sont ceux-la qui prennent la couleur.
+    """
     return Block("kpis",
-                 {"items": [{"label": label, "value": value}
-                            for label, value in pairs],
+                 {"items": [{"label": label, "value": value,
+                             "fort": rang < forts}
+                            for rang, (label, value) in enumerate(pairs)],
                   "compact": compact},
                  width=width)
 
@@ -205,7 +212,7 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
             ["Ancienneté médiane",
              format_years(population.get("tenure_median"))],
             ["Salaire médian", format_money(salary.get("median"), currency)],
-        ], compact=True),
+        ], compact=True, forts=1),
     ]
 
     # Les deux pyramides et la CSP, sur une rangee de trois. Une pyramide
@@ -241,9 +248,6 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         blocks.append(Block(
             "chart", {"type": "boxplot", "salary": salary},
             title="Boîte à moustaches", width="half"))
-
-    if salary.get("warning"):
-        blocks.append(Block("note", salary["warning"]))
 
     subtitle = (f'{manifest.get("effectif_analyse", "—")} salariés · '
                 f'{manifest.get("filtres", "Aucun filtre")}')
@@ -344,40 +348,12 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
         slides.append(Slide("Distribution des rémunérations", blocks=[
             Block("chart", {"type": "histogram", "bins": distribution.get("bins", [])}),
         ]))
-        outliers = distribution.get("outliers", [])
-        highlighted = (distribution.get("outliers_highlighted") or outliers)[:10]
-        if outliers:
-            shown = (distribution.get("dimension_labels") or [])[:3]
-            headers = (["Référence"] + [entry["label"] for entry in shown]
-                       + ["Ancienneté", "Rémunération", "Lecture"])
-            rows = [
-                [item["reference"]]
-                + [str(item.get("dimensions", {}).get(entry["field"]) or "—")
-                   for entry in shown]
-                + [format_years(item.get("tenure_years"), suffix=False),
-                   format_money(item["value"], currency),
-                   f'Position {item["position"]}']
-                for item in highlighted
-            ]
-            slides.append(Slide(
-                distribution.get("outlier_label", "Situations atypiques"),
-                f'{len(outliers)} situations repérées — '
-                f'{len(highlighted)} cas les plus extrêmes',
-                blocks=[
-                    Block("note", "Repéré par un critère statistique, pas par un "
-                                  "jugement RH. A analyser au regard du contexte "
-                                  "(marché, métier, historique, performance)."),
-                    _table_block(headers, rows),
-                ]))
-
     # Anciennete x remuneration
     scatter = analysis.get("scatter", {})
     if scatter.get("available"):
         subtitle = ""
         blocks = [Block("legend", scatter), Block("chart", {"type": "scatter",
                                                             "dataset": scatter})]
-        if scatter.get("warning"):
-            blocks.insert(0, Block("note", scatter["warning"]))
         slides.append(Slide(_scatter_title(analysis), subtitle, blocks=blocks))
 
     # Segments : une slide par dimension
@@ -399,10 +375,6 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
         slide = Slide(f'Analyse par {segment["label"].lower()}')
         slide.blocks = [_table_block(
             [segment["label"], "Effectif", "Moyenne", "Médiane", "Q1", "Q3"], rows)]
-        if segment.get("masked_segments"):
-            slide.blocks.append(Block(
-                "note", f'{segment["masked_segments"]} segment(s) masqué(s) : '
-                        "effectif sous le seuil de confidentialité."))
         slides.append(slide)
 
     # Pay Transparency : deux slides, l'ecart et son detail par poste
@@ -422,15 +394,12 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                      format_percent(equity.get("structure_gap"))],
                     ["Rattrapage", format_money(equity.get("at_stake_total"),
                                                 currency)],
-                ]),
-                Block("note",
-                      f"À {label} comparable : moyenne des écarts de chaque "
-                      f"{label}, pondérée par leur effectif, sur "
-                      f"{format_percent(equity.get('comparable_coverage'))} "
-                      "de l'effectif. Effet de structure : le reste — ce que "
-                      f"le {label} occupé explique de l'écart global. "
-                      "Rattrapage : coût de l'alignement du sexe le moins "
-                      "rémunéré sur l'autre."),
+                    # La couverture etait dite en toutes lettres sous le
+                    # bandeau. Un document ne commente pas ses chiffres :
+                    # elle en devient un.
+                    ["Couverture",
+                     format_percent(equity.get("comparable_coverage"))],
+                ], forts=2),
                 _table_block(["Quartile", "Part femmes", "Part hommes"],
                              [[f'Q{item["quartile"]}',
                                format_percent(item.get("female_share")),
@@ -459,11 +428,6 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             slide.blocks = [_table_block(
                 [equity.get("category_label") or "Catégorie", "Femmes",
                  "Hommes", "Écart moyen", "Rattrapage"], rows)]
-            above = equity.get("categories_above_threshold", 0)
-            total = len(equity.get("categories", []))
-            slide.blocks.append(Block(
-                "note", f"{above} {label}(s) sur {total} au-delà du seuil de "
-                        f"{format_percent(equity.get('threshold'))}."))
             slides.append(slide)
 
     # Comparaison
@@ -476,19 +440,22 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
 
     # Methodologie
     manifest = analysis.get("manifest", {})
-    slides.append(Slide("Méthodologie et traçabilité", kind="closing", blocks=[
-        Block("text", [
-            f'Moteur : {manifest.get("moteur", ENGINE_NAME)} v{manifest.get("version", __version__)}',
-            f'Date d\'analyse : {manifest.get("date_analyse", "—")}',
-            f'Fichier source : {manifest.get("fichier_source", "—")}',
-            f'Empreinte SHA-256 : {(manifest.get("empreinte_source") or "—")[:32]}...',
-            f'Périmètre : {manifest.get("filtres", "Aucun filtre")}',
-            "Percentiles : méthode inclusive à interpolation linéaire, "
-            "identique a PERCENTILE.INCLUSIVE d'Excel.",
-            "Situations atypiques : méthode interquartile (Tukey).",
-            "Les résultats portant sur un effectif insuffisant sont masqués.",
-            "Traitement local et hors ligne : aucune donnée n'a quitté ce poste.",
-        ]),
+    # Tracabilite : d'ou vient l'analyse, et rien d'autre. Les trois
+    # phrases de methode qui fermaient le jeu — la methode des percentiles,
+    # le masquage, le traitement local — en sont parties : un document ne
+    # se commente pas lui-meme. Ce qui reste se verifie : un fichier, une
+    # empreinte, une date, un perimetre.
+    slides.append(Slide("Traçabilité", kind="closing", blocks=[
+        _table_block(
+            ["", ""],
+            [["Fichier source", str(manifest.get("fichier_source", "—"))],
+             ["Empreinte SHA-256",
+              str(manifest.get("empreinte_source") or "—")],
+             ["Date d'analyse", str(manifest.get("date_analyse", "—"))],
+             ["Périmètre", str(manifest.get("filtres", "Aucun filtre"))],
+             ["Effectif analysé", str(manifest.get("effectif_analyse", "—"))],
+             ["Moteur", f'{manifest.get("moteur", ENGINE_NAME)} '
+                        f'v{manifest.get("version", __version__)}']]),
     ]))
     return slides
 
@@ -522,6 +489,7 @@ def _variables() -> str:
         ("grid", ACTIVE.grid), ("panel", ACTIVE.panel),
         ("bg", ACTIVE.canvas), ("accent", ACTIVE.accent),
         ("accent-deep", ACTIVE.accent_deep),
+        ("accent-soft", ACTIVE.accent_soft),
         # Le fond de la planche : un gris a peine plus dense que les pages,
         # pour que chaque slide se detache sans cadre.
         ("deck", palette.mix(ACTIVE.ink, palette.WHITE, 0.90)),
@@ -556,7 +524,10 @@ overflow:hidden}
 transform:scale(var(--slide-scale,1));transform-origin:top left;
 border:1px solid var(--line);border-radius:4px;padding:44px 56px 56px;
 display:flex;flex-direction:column;overflow:hidden}
-.slide h1{font-size:34px;margin:0 0 6px;font-weight:600}
+.slide h1{font-size:34px;margin:0 0 6px;font-weight:600;
+letter-spacing:-.012em}
+.kpi .value{font-variant-numeric:tabular-nums}
+td,th{font-variant-numeric:tabular-nums}
 .slide .sub{color:var(--muted);font-size:16px;margin-bottom:22px}
 .slide.cover{justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-deep));
 color:#fff;border:none}
@@ -575,8 +546,14 @@ min-height:0;overflow:hidden}
 .compact th,.compact td{padding:4px 8px}
 .compact table{font-size:13px}
 .kpis{display:flex;gap:14px;width:100%}
-.kpi{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:6px;
-padding:14px 16px}
+.kpi{flex:1;background:var(--panel);border:1px solid var(--line);
+border-radius:8px;padding:14px 16px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+background:var(--line)}
+.kpi.fort{background:var(--accent-soft);border-color:var(--accent-soft)}
+.kpi.fort::before{background:var(--accent)}
+.kpi.fort .value{color:var(--accent-deep)}
+.kpi.fort .label{color:var(--accent-deep);opacity:.75}
 .kpi .label{font-size:11px;color:var(--muted);text-transform:uppercase;
 letter-spacing:.05em}
 .kpi .value{font-size:23px;font-weight:600;margin-top:6px;white-space:nowrap}
@@ -690,7 +667,8 @@ def _render_block(block: Block, currency: str) -> str:
              if block.title else "")
     if block.kind == "kpis":
         cells = "".join(
-            f'<div class="kpi"><div class="label">{_html_escape(item["label"])}</div>'
+            f'<div class="kpi{" fort" if item.get("fort") else ""}">'
+            f'<div class="label">{_html_escape(item["label"])}</div>'
             f'<div class="value">{_html_escape(item["value"])}</div></div>'
             for item in block.payload["items"]
         )
@@ -817,14 +795,17 @@ def _rgb(hex_color: str) -> tuple:
 # quand le theme change — c'est le pendant du bloc `:root` du HTML.
 _INK = _MUTED = _ACCENT = _LINE = _PANEL = _WARN = _WARN_BG = (0.0, 0.0, 0.0)
 _FEMALE = _MALE = (0.0, 0.0, 0.0)
+_ACCENT_SOFT = _ACCENT_DEEP = (0.0, 0.0, 0.0)
 _WHITE = (1.0, 1.0, 1.0)
 _PDF_PALETTE: List[tuple] = []
 
 
 def _publish_pdf_colours() -> None:
     global _INK, _MUTED, _ACCENT, _LINE, _PANEL, _WARN, _WARN_BG, _PDF_PALETTE
-    global _FEMALE, _MALE
+    global _FEMALE, _MALE, _ACCENT_SOFT, _ACCENT_DEEP
     _INK, _MUTED = _rgb(ACTIVE.ink), _rgb(ACTIVE.muted)
+    _ACCENT_SOFT, _ACCENT_DEEP = (_rgb(ACTIVE.accent_soft),
+                                  _rgb(ACTIVE.accent_deep))
     _FEMALE, _MALE = _rgb(ACTIVE.female), _rgb(ACTIVE.male)
     _ACCENT, _LINE = _rgb(ACTIVE.accent), _rgb(ACTIVE.line)
     _PANEL = _rgb(ACTIVE.panel)
@@ -847,11 +828,20 @@ def _draw_kpis(page, payload, x, y, width) -> float:
     cell = (width - gap * (count - 1)) / count
     for index, item in enumerate(items):
         left = x + index * (cell + gap)
-        page.rect(left, y - height, cell, height, fill=_PANEL, stroke=_LINE)
+        fort = bool(item.get("fort"))
+        page.rect(left, y - height, cell, height,
+                  fill=_ACCENT_SOFT if fort else _PANEL, stroke=_LINE)
+        # Un filet vertical a gauche : il marque l'indicateur sans lui
+        # donner une taille differente, ce qui romprait l'alignement du
+        # bandeau.
+        page.rect(left, y - height, 2.4, height,
+                  fill=_ACCENT if fort else _LINE)
         page.text(left + 9, y - label_y, str(item["label"]).upper(),
-                  size=label_size, color=_MUTED, max_width=cell - 18)
+                  size=label_size, color=_ACCENT_DEEP if fort else _MUTED,
+                  max_width=cell - 18)
         page.text(left + 9, y - value_y, str(item["value"]), size=value_size,
-                  bold=True, color=_INK, max_width=cell - 18)
+                  bold=True, color=_ACCENT_DEEP if fort else _INK,
+                  max_width=cell - 18)
     return height
 
 
@@ -1106,9 +1096,6 @@ def _draw_boxplot(page, salary, currency, x, y, width, height) -> float:
     legende = " · ".join(extremes)
     if legende:
         page.text(x, axe - 10, legende, size=6.5, color=_MUTED, max_width=width)
-    page.text(x, axe - 19, "Moustaches aux déciles P10 et P90 — la boîte va "
-                           "du premier au troisième quartile",
-              size=6, color=_MUTED, max_width=width)
     return height
 
 

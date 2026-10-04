@@ -162,7 +162,7 @@ class TestWindow(unittest.TestCase):
         cls.source = os.path.join(cls.directory, "population.xlsx")
         rows = [make_row(i, salary=30000 + (i % 40) * 800,
                          business_unit=["France", "DACH"][i % 2],
-                         grade=["G3", "G5", "G7"][i % 3],
+                         groupe=["G3", "G5", "G7"][i % 3],
                          age=28 + i % 30, tenure=i % 18)
                 for i in range(120)]
         write_workbook(cls.source, [("Population", [HEADERS] + rows)])
@@ -1696,7 +1696,7 @@ class TestResettingTheChoices(unittest.TestCase):
         source = os.path.join(self.directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
             make_row(index, business_unit=["France", "DACH"][index % 2],
-                     grade=["G3", "G5", "G7"][index % 3])
+                     groupe=["G3", "G5", "G7"][index % 3])
             for index in range(60)])])
         self.app = Application()
         self.app.update()
@@ -1714,7 +1714,7 @@ class TestResettingTheChoices(unittest.TestCase):
 
     def test_resetting_clears_every_criterion(self):
         self.app.filter_vars["business_unit"].set("France")
-        self.app.filter_vars["grade"].set("G5")
+        self.app.filter_vars["groupe"].set("G5")
         self.assertEqual(len(self.app._current_filters()), 2)
         self.app.reset_filters()
         self.assertEqual(self.app._current_filters(), [])
@@ -2288,8 +2288,8 @@ class TestEverySegmentIsComputed(unittest.TestCase):
     limitait cette liste a ce qui avait ete coche. Le moteur segmente
     desormais sur toutes les dimensions reellement renseignees.
 
-    Un filtre ne remplace pas cette comparaison : filtrer sur un grade donne
-    la population d'un grade, pas l'ecart entre les huit.
+    Un filtre ne remplace pas cette comparaison : filtrer sur un groupe donne
+    la population d'un groupe, pas l'ecart entre les huit.
     """
 
     def setUp(self):
@@ -2300,7 +2300,7 @@ class TestEverySegmentIsComputed(unittest.TestCase):
         source = os.path.join(directory, "population.xlsx")
         write_workbook(source, [("Population", [HEADERS] + [
             make_row(index, business_unit=["France", "DACH"][index % 2],
-                     grade=["G3", "G5", "G7"][index % 3],
+                     groupe=["G3", "G5", "G7"][index % 3],
                      gender=["F", "H"][index % 2],
                      age=28 + index % 30, tenure=index % 15)
             for index in range(120)])])
@@ -2320,7 +2320,7 @@ class TestEverySegmentIsComputed(unittest.TestCase):
 
     def test_every_populated_dimension_is_comparable(self):
         computed = {block["field"] for block in self.app.result.payload["segments"]}
-        for expected in ("business_unit", "grade", "gender", "age_band",
+        for expected in ("business_unit", "groupe", "gender", "age_band",
                          "tenure_band"):
             self.assertIn(expected, computed)
 
@@ -2336,7 +2336,7 @@ class TestEverySegmentIsComputed(unittest.TestCase):
         """La distinction qui justifie de garder la segmentation : une
         comparaison porte sur plusieurs valeurs a la fois."""
         grades = [block for block in self.app.result.payload["segments"]
-                  if block["field"] == "grade"][0]
+                  if block["field"] == "groupe"][0]
         self.assertGreater(len(grades["rows"]), 1)
         self.assertIsNotNone(grades["reference_median"])
 
@@ -2427,7 +2427,7 @@ class TestNoTkCallbackEverRaises(unittest.TestCase):
         cls.source = os.path.join(cls.directory, "population.xlsx")
         rows = [make_row(i, salary=30000 + (i % 40) * 800,
                          business_unit=["France", "DACH"][i % 2],
-                         grade=["G3", "G5", "G7"][i % 3])
+                         groupe=["G3", "G5", "G7"][i % 3])
                 for i in range(80)]
         write_workbook(cls.source, [("Population", [HEADERS] + rows)])
 
@@ -2513,7 +2513,7 @@ class TestTheWholeWindowAnswersWithoutRaising(unittest.TestCase):
         cls.source = os.path.join(cls.directory, "population.xlsx")
         rows = [make_row(index, salary=30000 + (index % 40) * 800,
                          business_unit=["France", "DACH"][index % 2],
-                         grade=["G3", "G5", "G7"][index % 3],
+                         groupe=["G3", "G5", "G7"][index % 3],
                          gender="F" if index % 2 else "H",
                          age=25 + index % 35, tenure=(index % 18) / 1.4)
                 for index in range(90)]

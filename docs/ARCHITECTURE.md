@@ -220,11 +220,6 @@ l'échantillonnage et le regroupement des couleurs restent ceux du moteur.
 ## 7. Formulation des résultats
 
 Une valeur hors bornes interquartiles est présentée comme
-**« Situation atypique à analyser »**, jamais comme une anomalie RH : le
-critère est statistique, la lecture est contextuelle (marché, métier,
-historique, performance). Un test vérifie que la chaîne « anomalie RH »
-n'apparaît pas dans la restitution.
-
 Ces situations paraissent à l'écran, dans l'export Excel et dans le support
 de présentation, jamais dans la restitution HTML : celle-ci s'arrête à
 l'histogramme. Un document qui circule n'a pas à porter de ligne
@@ -616,7 +611,7 @@ de l'export individuel) sont declarees dans `population_mapping.json` :
 ```json
 "dimensions": [
   {"field": "business_unit", "label": "BU"},
-  {"field": "grade",         "label": "Grade"}
+  {"field": "groupe",        "label": "Groupe"}
 ]
 ```
 
@@ -675,7 +670,7 @@ figurer dans les restitutions :
 * le **R2** de la droite de tendance du nuage, retire des documents. Il
   demandait une explication pour etre lu, et sans cette explication il
   n'apportait rien. La pente chiffree est partie avec lui : annoncee seule,
-  sur une population melangeant tous les grades, elle affirmerait un lien que
+  sur une population melangeant tous les groupes, elle affirmerait un lien que
   rien n'etaye. La droite reste tracee comme repere visuel.
 
 `statistics_engine.linear_regression` continue de retourner les deux, ce qui

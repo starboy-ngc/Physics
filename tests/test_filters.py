@@ -27,17 +27,17 @@ from hr_insight.core.segmentation import (
 def population():
     """Six salaries, tous differents sur chaque axe utile."""
     return build_population([
-        make_row(1, salary=30000, business_unit="France", grade="G3",
+        make_row(1, salary=30000, business_unit="France", groupe="G3",
                  gender="F", age=25, tenure=1),
-        make_row(2, salary=45000, business_unit="France", grade="G5",
+        make_row(2, salary=45000, business_unit="France", groupe="G5",
                  gender="H", age=35, tenure=5),
-        make_row(3, salary=50000, business_unit="Iberia", grade="G5",
+        make_row(3, salary=50000, business_unit="Iberia", groupe="G5",
                  gender="F", age=45, tenure=10),
-        make_row(4, salary=60000, business_unit="Iberia", grade="G7",
+        make_row(4, salary=60000, business_unit="Iberia", groupe="G7",
                  gender="H", age=55, tenure=20),
-        make_row(5, salary=None, business_unit="Benelux", grade="G4",
+        make_row(5, salary=None, business_unit="Benelux", groupe="G4",
                  gender="F", age=30, tenure=2),
-        make_row(6, salary=90000, business_unit="Benelux", grade="G9",
+        make_row(6, salary=90000, business_unit="Benelux", groupe="G9",
                  gender="H", age=60, tenure=30),
     ])
 
@@ -59,12 +59,12 @@ class TestEachOperator(unittest.TestCase):
 
     def test_membership(self):
         self.assertEqual(
-            kept(Filter("grade", "in", ["G5", "G7"])),
+            kept(Filter("groupe", "in", ["G5", "G7"])),
             ["E00002", "E00003", "E00004"])
 
     def test_exclusion(self):
         self.assertEqual(
-            kept(Filter("grade", "not_in", ["G5", "G7"])),
+            kept(Filter("groupe", "not_in", ["G5", "G7"])),
             ["E00001", "E00005", "E00006"])
 
     def test_greater_than_is_strict(self):
@@ -159,7 +159,7 @@ class TestCombination(unittest.TestCase):
     def test_several_criteria_combine_by_and(self):
         people = population()
         selected = apply_filters(people, [
-            Filter("grade", "in", ["G5", "G7"]),
+            Filter("groupe", "in", ["G5", "G7"]),
             Filter("business_unit", "eq", "Iberia"),
         ])
         self.assertEqual(sorted(e.employee_id for e in selected),
@@ -173,7 +173,7 @@ class TestCombination(unittest.TestCase):
         """Les tranches posees a l'import doivent survivre au filtre :
         sinon les pyramides changent de decoupage selon le filtre."""
         people = population()
-        narrowed = apply_filters(people, [Filter("grade", "eq", "G5")])
+        narrowed = apply_filters(people, [Filter("groupe", "eq", "G5")])
         self.assertEqual(narrowed.age_bands, people.age_bands)
         self.assertEqual(narrowed.tenure_bands, people.tenure_bands)
 
@@ -199,9 +199,9 @@ class TestWrittenExpressions(unittest.TestCase):
     def test_a_list_keeps_the_meaning_of_the_sign(self):
         """« != » sur une liste doit exclure. Le traduire en « in » ferait
         dire a l'expression exactement l'inverse, sans message."""
-        self.assertEqual(parse_filter("grade=G5|G6")["operator"], "in")
-        self.assertEqual(parse_filter("grade!=G5|G6")["operator"], "not_in")
-        self.assertEqual(parse_filter("grade=G5|G6")["value"], ["G5", "G6"])
+        self.assertEqual(parse_filter("groupe=G5|G6")["operator"], "in")
+        self.assertEqual(parse_filter("groupe!=G5|G6")["operator"], "not_in")
+        self.assertEqual(parse_filter("groupe=G5|G6")["value"], ["G5", "G6"])
 
     def test_a_list_with_a_comparison_is_refused(self):
         with self.assertRaises(CompensationError) as caught:
@@ -246,12 +246,12 @@ class TestBuildingFilters(unittest.TestCase):
 
     def test_an_unknown_operator_is_refused_before_running(self):
         with self.assertRaises(ConfigError) as caught:
-            build_filters([{"field": "grade", "operator": "environ",
+            build_filters([{"field": "groupe", "operator": "environ",
                             "value": "G5"}], self.config)
         self.assertIn("environ", caught.exception.message)
 
     def test_the_default_operator_is_equality(self):
-        built = build_filters([{"field": "grade", "value": "G5"}], self.config)
+        built = build_filters([{"field": "groupe", "value": "G5"}], self.config)
         self.assertEqual(built[0].operator, "eq")
 
     def test_no_definition_gives_no_filter(self):
@@ -278,22 +278,22 @@ class TestDescription(unittest.TestCase):
                                ("not_in", "∉"), ("gt", ">"), ("gte", "≥"),
                                ("lt", "<"), ("lte", "≤"),
                                ("contains", "contient")):
-            described = Filter("grade", operator, ["G5"]).describe()
+            described = Filter("groupe", operator, ["G5"]).describe()
             self.assertIn(sign, described, operator)
 
     def test_a_list_is_written_out(self):
         self.assertIn("G5, G6",
-                      Filter("grade", "in", ["G5", "G6"]).describe())
+                      Filter("groupe", "in", ["G5", "G6"]).describe())
 
     def test_the_field_takes_its_declared_label(self):
-        described = Filter("grade", "eq", "G5").describe({"grade": "Niveau"})
+        described = Filter("groupe", "eq", "G5").describe({"groupe": "Niveau"})
         self.assertIn("Niveau", described)
 
     def test_no_filter_is_said_plainly(self):
         self.assertEqual(describe_filters([]), "Aucun filtre")
 
     def test_several_filters_are_joined(self):
-        text = describe_filters([Filter("grade", "eq", "G5"),
+        text = describe_filters([Filter("groupe", "eq", "G5"),
                                  Filter("business_unit", "eq", "France")])
         self.assertIn(" + ", text)
 
@@ -307,7 +307,7 @@ class TestSplitting(unittest.TestCase):
         self.assertEqual(len(groups["France"]), 2)
 
     def test_groups_are_sorted_by_label(self):
-        self.assertEqual(list(split_by(population(), "grade")),
+        self.assertEqual(list(split_by(population(), "groupe")),
                          ["G3", "G4", "G5", "G7", "G9"])
 
     def test_an_empty_value_is_left_out_by_default(self):
@@ -322,17 +322,17 @@ class TestSplitting(unittest.TestCase):
         self.assertEqual(sorted(groups), ["(non renseigne)", "France"])
 
     def test_two_dimensions_cross(self):
-        groups = split_by(population(), ["business_unit", "grade"])
+        groups = split_by(population(), ["business_unit", "groupe"])
         self.assertIn("France · G5", groups)
         self.assertEqual(len(groups["France · G5"]), 1)
 
     def test_a_missing_value_empties_the_crossed_key(self):
-        """Un salarie sans grade ne doit pas former la categorie
+        """Un salarie sans groupe ne doit pas former la categorie
         « France · » : confondre les deux diluerait l'ecart cherche."""
         people = build_population([make_row(1, business_unit="France",
-                                            grade="")])
+                                            groupe="")])
         self.assertEqual(cross_key(people.employees[0],
-                                   ["business_unit", "grade"]), "")
+                                   ["business_unit", "groupe"]), "")
 
 
 if __name__ == "__main__":

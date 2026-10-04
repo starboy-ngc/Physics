@@ -13,7 +13,7 @@ from typing import Dict, List, Optional
 from .config import Configuration, analysis_field
 from .mapping import MappingResult
 from .normalize import Population
-from .statistics_engine import clean, iqr_outlier_bounds
+from .statistics_engine import clean
 
 CRITICAL = "critique"
 WARNING = "avertissement"
@@ -333,16 +333,12 @@ def _check_salary(
     field_name = analysis_field(config)
     minimum = config.get("salary_parameters.min_plausible")
     maximum = config.get("salary_parameters.max_plausible")
-    factor = config.number("salary_parameters.outlier_factor", 1.5,
-                           minimum=0.1, maximum=10.0)
-
     missing: List[int] = []
     negative: List[int] = []
     zero: List[int] = []
     below: List[int] = []
     above: List[int] = []
     values: List[Optional[float]] = []
-    row_by_value: List[tuple] = []
 
     for employee in population:
         value = employee.value(field_name)
@@ -360,7 +356,6 @@ def _check_salary(
         if maximum is not None and value > float(maximum):
             above.append(employee.row_number)
         values.append(value)
-        row_by_value.append((value, employee.row_number))
 
     report.missing_salary = len(missing)
     _add(report, "missing_salary", CRITICAL,
@@ -373,12 +368,8 @@ def _check_salary(
     _add(report, "salary_above_threshold", WARNING,
          "Salaire supérieur au seuil de plausibilité paramètre.", above)
 
-    bounds = iqr_outlier_bounds(clean(values), factor)
-    if bounds:
-        extreme = [
-            row for value, row in row_by_value
-            if value < bounds["lower"] or value > bounds["upper"]
-        ]
-        _add(report, "salary_outlier", INFO,
-             "Valeurs de rémunération atypiques à analyser (méthode "
-             "interquartile).", extreme)
+    # Les seuils de plausibilite ci-dessus sont declares par l'utilisateur :
+    # ils disent « au-dela, c'est une erreur de saisie », et c'est une regle
+    # qu'il a posee. Un controle statistique d'ecart a la mediane, lui,
+    # aurait fait decreter par l'outil quelles remunerations sont anormales
+    # — ce qu'il n'a pas a juger.

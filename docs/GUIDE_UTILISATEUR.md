@@ -43,7 +43,7 @@ la forme : un logo qui se déforme n'est plus un logo.
 
 Un onglet, une ligne par salarié, une ligne d'en-têtes. Colonnes reconnues
 d'office : Matricule, Nom, Prénom, Sexe, Date de naissance, Date d'entrée,
-Date de sortie, BU, Pays, Établissement, Métier, Famille métier, Grade,
+Date de sortie, BU, Pays, Établissement, Métier, Famille métier, Annexe, Groupe,
 Coefficient, Statut, Temps de travail, Salaire de base, Variable,
 Rémunération totale.
 
@@ -160,7 +160,7 @@ salariés s'analysent en deux dixièmes de seconde.
 
 ```
 --filtre "business_unit=France"
---filtre "grade=G5|G6|G7"
+--filtre "groupe=G5|G6|G7"
 --filtre "base_salary>=50000"
 ```
 
@@ -169,11 +169,11 @@ Les filtres se cumulent (ET logique).
 ### Analyser par segment
 
 ```
---segment grade --segment gender --segment job_family
+--segment groupe --segment gender --segment job_family
 ```
 
 Dimensions livrees : `business_unit`, `country`, `site`, `job`, `job_family`,
-`grade`, `status`, `gender`, `age_band`, `tenure_band`.
+`groupe`, `status`, `gender`, `age_band`, `tenure_band`.
 
 Un champ mal orthographie est refuse avec la liste des champs valides — l'outil
 ne renvoie jamais une population vide en silence.
@@ -521,7 +521,7 @@ Le classeur gagne alors cinq onglets, dans l'ordre de la chaîne :
 | **Fichier importé** | le fichier tel qu'il a été lu, ligne pour ligne et colonne pour colonne — la ligne 7 de l'onglet est la ligne 7 du fichier |
 | **Colonnes lues** | ce que le mapping a fait de chaque colonne, et lesquelles il a ignorées |
 | **Données individuelles** | les salariés retenus, avec leur **ligne source**, le **sexe retenu** par la classification, les dates comprises à la lecture, et l'âge comme l'ancienneté **écrits en formules** |
-| **Contrôle** | chaque indicateur d'ensemble refait par le tableur : effectif, âge, ancienneté, tranches, parts remarquables, tous les percentiles, écart-type, dispersion, bornes atypiques, chaque classe de l'histogramme |
+| **Contrôle** | chaque indicateur d'ensemble refait par le tableur : effectif, âge, ancienneté, tranches, parts remarquables, tous les percentiles, écart-type, dispersion, chaque classe de l'histogramme |
 | **Contrôle segments** | chaque ligne de chaque segment : effectif, moyenne, médiane, P10, Q1, Q3, P90, âge et ancienneté médians |
 | **Contrôle Pay Transparency** | chaque catégorie : effectifs, moyennes, médianes, écarts et rattrapage |
 
@@ -821,18 +821,33 @@ exister sans lui — on ne vérifie pas un calcul sans ses valeurs.
   onglets de contrôle » pour un classeur d'agrégats seuls.
 - Le journal technique ne contient ni nom, ni matricule, ni salaire individuel.
 
-## 7. Lire les « situations atypiques »
+## 7. Ce que l'outil ne fait pas
 
-Ces situations sont repérées par un **critère statistique** (méthode
-interquartile), pas par un jugement RH. Une rémunération haute avec faible
-ancienneté peut refléter un recrutement en tension ; une rémunération faible
-avec forte ancienneté peut refléter un changement de métier. Elles sont à
-analyser, pas à corriger mécaniquement.
+**Il ne désigne personne.** Une version précédente sortait une liste de
+« situations atypiques » : les rémunérations au-delà d'une fois et demie
+l'écart interquartile, nommées une à une dans les documents. C'était
+l'outil qui décrétait l'anomalie — sur un critère statistique, sans rien
+savoir du marché, du métier, de l'historique ni de la performance. Le
+lecteur recevait une liste de noms sous un titre qui l'accusait à moitié.
 
-Elles se lisent **à l'écran, dans l'export Excel et dans le support de
-présentation** — là où le contexte du cas est à portée de main. La
-restitution HTML, elle, ne porte que l'histogramme : c'est un document qui
-circule, et une liste nominative n'y a pas sa place.
+L'histogramme et la boîte à moustaches montrent la distribution entière ;
+qui s'en écarte s'y voit. Juger est votre travail, et il ne se délègue pas
+à un facteur multiplicatif.
+
+Restent les **seuils de plausibilité** — `min_plausible`, `max_plausible`
+dans `salary_parameters.json`. Ceux-là, c'est vous qui les posez, et ils
+disent « au-delà, c'est une erreur de saisie », ce qui est une tout autre
+affirmation.
+
+**Il ne commente pas.** Les documents produits ne portent ni note, ni
+paragraphe d'explication, ni conseil. Ce qui était dit en prose est
+devenu un chiffre : la couverture d'un calcul, le nombre de segments
+masqués, l'écart médian. Un tableau se lit ; un paragraphe sous un
+tableau se saute.
+
+Si vous voulez les définitions de chaque indicateur dans le classeur,
+mettez `include_method_sheet` à `true` dans
+`config/export_parameters.json` : l'onglet « Formules » revient.
 
 ## 8. Messages d'erreur
 

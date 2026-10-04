@@ -35,11 +35,24 @@ class TestDeckStructure(unittest.TestCase):
         kinds = {block.kind for block in summary[0].blocks}
         self.assertIn("kpis", kinds)
 
-    def test_deck_opens_with_a_cover_and_closes_with_methodology(self):
+    def test_deck_opens_with_a_cover_and_closes_with_traceability(self):
         deck = build_deck(self.payload)
         self.assertEqual(deck[0].kind, "cover")
         self.assertEqual(deck[-1].kind, "closing")
-        self.assertIn("Méthodologie", deck[-1].title)
+        self.assertIn("Traçabilité", deck[-1].title)
+
+    def test_the_closing_page_states_facts_and_not_method(self):
+        """Elle portait trois phrases de méthode. Un document ne se
+        commente pas : il reste ce qui se vérifie."""
+        fermeture = build_deck(self.payload)[-1]
+        lignes = [bloc for bloc in fermeture.blocks if bloc.kind == "table"]
+        self.assertEqual(len(lignes), 1)
+        intitulés = [ligne[0] for ligne in lignes[0].payload["rows"]]
+        for attendu in ("Fichier source", "Empreinte SHA-256",
+                        "Date d'analyse", "Périmètre"):
+            self.assertIn(attendu, intitulés)
+        self.assertFalse([bloc for bloc in fermeture.blocks
+                          if bloc.kind == "text"])
 
     def test_deck_covers_the_expected_sections(self):
         titles = " | ".join(slide.title for slide in build_deck(self.payload))
@@ -51,10 +64,10 @@ class TestDeckStructure(unittest.TestCase):
             self.assertIn(expected, titles)
 
     def test_one_slide_per_segment_dimension(self):
-        payload = analysis_payload(self.directory, segments=["business_unit", "grade"])
+        payload = analysis_payload(self.directory, segments=["business_unit", "groupe"])
         titles = [slide.title for slide in build_deck(payload)]
         self.assertIn("Analyse par bu", titles)
-        self.assertIn("Analyse par grade", titles)
+        self.assertIn("Analyse par groupe", titles)
 
     def test_masked_population_produces_no_salary_slide(self):
         config = make_config({"privacy_parameters.min_headcount_publish": 50})
@@ -219,10 +232,10 @@ class TestReadability(unittest.TestCase):
     def test_ordinal_segments_follow_their_scale_not_headcount(self):
         # G1 a un effectif plus faible que G2 : un tri par population placerait
         # G2 en tete et rendrait la progression salariale illisible.
-        rows = ([make_row(i, grade="G2", salary=30000) for i in range(20)]
-                + [make_row(100 + i, grade="G1", salary=25000) for i in range(6)]
-                + [make_row(200 + i, grade="G3", salary=40000) for i in range(10)])
-        segment = self._segment("grade", rows)
+        rows = ([make_row(i, groupe="G2", salary=30000) for i in range(20)]
+                + [make_row(100 + i, groupe="G1", salary=25000) for i in range(6)]
+                + [make_row(200 + i, groupe="G3", salary=40000) for i in range(10)])
+        segment = self._segment("groupe", rows)
         self.assertEqual([row["segment"] for row in segment["rows"]],
                          ["G1", "G2", "G3"])
 
@@ -238,32 +251,6 @@ class TestReadability(unittest.TestCase):
                 + [make_row(100 + i, business_unit="France") for i in range(20)])
         labels = [row["segment"] for row in self._segment("business_unit", rows)["rows"]]
         self.assertEqual(labels, ["France", "DACH"])
-
-    def test_constant_dimensions_are_dropped_from_the_outlier_table(self):
-        from hr_insight.core import metrics
-        # Population filtree sur une seule BU : la colonne BU n'apprend rien.
-        rows = [make_row(i, business_unit="France", grade=f"G{i % 4 + 1}",
-                         salary=40000 + i * 200) for i in range(40)]
-        rows.append(make_row(99, business_unit="France", grade="G4", salary=400000))
-        population = build_population(rows, self.config)
-        distribution = metrics.calculate_distribution_metrics(population, self.config)
-        shown = [entry["field"] for entry in distribution["dimension_labels"]]
-        self.assertNotIn("business_unit", shown)
-        self.assertIn("grade", shown)
-
-    def test_highlighted_outliers_keep_both_extremes(self):
-        from hr_insight.core import metrics
-        rows = [make_row(i, salary=40000 + i * 50) for i in range(200)]
-        rows += [make_row(500 + i, salary=5000) for i in range(10)]
-        rows += [make_row(600 + i, salary=400000) for i in range(10)]
-        population = build_population(rows, self.config)
-        distribution = metrics.calculate_distribution_metrics(population, self.config)
-        highlighted = distribution["outliers_highlighted"]
-        positions = {item["position"] for item in highlighted}
-        self.assertEqual(positions, {"basse", "haute"})
-        # Le comptage annonce reste celui de la liste complete.
-        self.assertGreaterEqual(len(distribution["outliers"]), len(highlighted))
-
 
 class TestResponsiveSlides(unittest.TestCase):
     """La page garde une geometrie fixe mais doit tenir dans un ecran etroit.
@@ -510,13 +497,13 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
         from hr_insight.core import metrics
 
         # Le jeu de test n'a pas de colonne « Poste » : la categorie de la
-        # directive est portee par le grade, ce qui emprunte exactement le
+        # directive est portee par le groupe, ce qui emprunte exactement le
         # meme chemin de calcul.
-        config = make_config({"pay_equity_parameters.category_field": "grade"})
+        config = make_config({"pay_equity_parameters.category_field": "groupe"})
         lignes = ([("G5", "F", 90000)] * 12 + [("G5", "H", 100000)] * 12
                   + [("G7", "F", 45000)] * 12 + [("G7", "H", 50000)] * 12)
-        rows = [make_row(index, salary=salaire, gender=sexe, grade=grade)
-                for index, (grade, sexe, salaire) in enumerate(lignes)]
+        rows = [make_row(index, salary=salaire, gender=sexe, groupe=groupe)
+                for index, (groupe, sexe, salaire) in enumerate(lignes)]
         population = build_population(rows, config)
         return {
             "title": "essai",

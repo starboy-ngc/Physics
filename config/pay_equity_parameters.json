@@ -51,9 +51,19 @@
       "width": 150
     },
     {
-      "field": "grade",
-      "label": "Grade",
+      "field": "annexe",
+      "label": "Annexe",
+      "width": 110
+    },
+    {
+      "field": "groupe",
+      "label": "Groupe",
       "width": 90
+    },
+    {
+      "field": "coefficient",
+      "label": "Coefficient",
+      "width": 100
     },
     {
       "field": "base_salary",

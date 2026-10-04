@@ -146,32 +146,6 @@ class TestSmallHeadcountRules(unittest.TestCase):
 
 
 class TestDistributionAndScatter(unittest.TestCase):
-    def test_atypical_situations_use_neutral_wording(self):
-        config = make_config()
-        rows = [make_row(i, salary=40000 + i * 100) for i in range(30)]
-        rows.append(make_row(99, salary=500000))
-        population = build_population(rows, config)
-        distribution = metrics.calculate_distribution_metrics(population, config)
-        self.assertTrue(distribution["available"])
-        self.assertEqual(distribution["outlier_label"], "Situation atypique à analyser")
-        self.assertTrue(any(item["value"] == 500000 for item in distribution["outliers"]))
-
-    def test_outliers_reference_anonymous_identifier(self):
-        config = make_config({"privacy_parameters.anonymise_identifiers": True})
-        rows = [make_row(i, salary=40000 + i * 100) for i in range(30)]
-        rows.append(make_row(99, salary=500000))
-        population = build_population(rows, config)
-        outliers = metrics.calculate_distribution_metrics(population, config)["outliers"]
-        # « ne commence pas par E0 » etait un raccourci : avec un sel tire
-        # au hasard, une reference sur 256 commence par ces deux
-        # caracteres, et le test echouait sans qu'aucune donnee ne fuie.
-        # Ce qu'il faut verifier est l'inverse : aucun matricule du fichier
-        # ne se retrouve dans la restitution.
-        matricules = {employee.employee_id for employee in population}
-        self.assertTrue(outliers)
-        for item in outliers:
-            self.assertNotIn(item["reference"], matricules)
-
     def test_scatter_trend_line_and_grouping(self):
         config = make_config()
         rows = [make_row(i, tenure=i % 20, salary=30000 + (i % 20) * 1000)
@@ -292,13 +266,13 @@ class TestTheDistributionSplitsBySex(unittest.TestCase):
 class TestSegmentationAndComparison(unittest.TestCase):
     def test_filters_are_combinable(self):
         config = make_config()
-        rows = [make_row(0, business_unit="France", grade="G5"),
-                make_row(1, business_unit="France", grade="G2"),
-                make_row(2, business_unit="DACH", grade="G5")]
+        rows = [make_row(0, business_unit="France", groupe="G5"),
+                make_row(1, business_unit="France", groupe="G2"),
+                make_row(2, business_unit="DACH", groupe="G5")]
         population = build_population(rows, config)
         filters = build_filters([
             {"field": "business_unit", "operator": "eq", "value": "France"},
-            {"field": "grade", "operator": "in", "value": ["G5", "G6"]},
+            {"field": "groupe", "operator": "in", "value": ["G5", "G6"]},
         ])
         self.assertEqual(len(apply_filters(population, filters)), 1)
 
@@ -442,11 +416,11 @@ class TestSegmentComparison(unittest.TestCase):
 
     def _segment(self, **overrides):
         config = make_config(overrides)
-        rows = [make_row(index, grade=["G3", "G7"][index % 2],
+        rows = [make_row(index, groupe=["G3", "G7"][index % 2],
                          salary=30000 if index % 2 == 0 else 60000)
                 for index in range(40)]
         return metrics.calculate_segment_metrics(
-            build_population(rows, config), config, "grade")
+            build_population(rows, config), config, "groupe")
 
     def test_each_segment_carries_its_share_of_headcount(self):
         block = self._segment()
@@ -465,11 +439,11 @@ class TestSegmentComparison(unittest.TestCase):
         """On ne publie pas un ecart calcule sur un chiffre qu'on a refuse
         de montrer."""
         config = make_config()
-        rows = ([make_row(index, grade="G3", salary=30000) for index in range(20)]
-                + [make_row(20 + index, grade="G9", salary=90000)
+        rows = ([make_row(index, groupe="G3", salary=30000) for index in range(20)]
+                + [make_row(20 + index, groupe="G9", salary=90000)
                    for index in range(2)])
         block = metrics.calculate_segment_metrics(
-            build_population(rows, config), config, "grade")
+            build_population(rows, config), config, "groupe")
         small = [row for row in block["rows"] if row["segment"] == "G9"][0]
         self.assertTrue(small["masked"])
         self.assertIsNone(small["median_gap"])
@@ -477,10 +451,10 @@ class TestSegmentComparison(unittest.TestCase):
 
     def test_the_gap_is_zero_for_a_single_segment(self):
         config = make_config()
-        rows = [make_row(index, grade="G4", salary=40000 + index * 100)
+        rows = [make_row(index, groupe="G4", salary=40000 + index * 100)
                 for index in range(20)]
         block = metrics.calculate_segment_metrics(
-            build_population(rows, config), config, "grade")
+            build_population(rows, config), config, "groupe")
         self.assertAlmostEqual(block["rows"][0]["median_gap"], 0.0, places=6)
 
 if __name__ == "__main__":

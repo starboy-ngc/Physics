@@ -21,7 +21,7 @@ from hr_insight.core.pay_equity import (FEMALE, MALE, classify,
 
 def population(entries, config):
     """entries : liste de (sexe, salaire, poste)."""
-    rows = [make_row(index, gender=gender, salary=salary, grade="G4")
+    rows = [make_row(index, gender=gender, salary=salary, groupe="G4")
             for index, (gender, salary, _job) in enumerate(entries)]
     return build_population(rows, config)
 
@@ -96,15 +96,15 @@ class TestPrivacy(unittest.TestCase):
 
     def test_a_small_category_is_masked_but_still_counted(self):
         config = make_config()
-        rows = ([make_row(index, gender="F", salary=40000, grade="G4")
+        rows = ([make_row(index, gender="F", salary=40000, groupe="G4")
                  for index in range(10)]
-                + [make_row(10 + index, gender="H", salary=50000, grade="G4")
+                + [make_row(10 + index, gender="H", salary=50000, groupe="G4")
                    for index in range(10)]
-                + [make_row(20 + index, gender="F", salary=90000, grade="G8")
+                + [make_row(20 + index, gender="F", salary=90000, groupe="G8")
                    for index in range(2)]
-                + [make_row(22 + index, gender="H", salary=95000, grade="G8")
+                + [make_row(22 + index, gender="H", salary=95000, groupe="G8")
                    for index in range(2)])
-        config = make_config({"pay_equity_parameters.category_field": "grade"})
+        config = make_config({"pay_equity_parameters.category_field": "groupe"})
         result = calculate_pay_equity(build_population(rows, config), config)
         small = [item for item in result["categories"]
                  if item["category"] == "G8"][0]
@@ -137,15 +137,15 @@ class TestCategories(unittest.TestCase):
     def test_a_gap_above_the_threshold_is_flagged(self):
         """Au-dela du seuil, la directive impose une evaluation conjointe
         faute de justification objective."""
-        config = make_config({"pay_equity_parameters.category_field": "grade",
+        config = make_config({"pay_equity_parameters.category_field": "groupe",
                               "pay_equity_parameters.gap_alert_threshold": 5.0})
-        rows = ([make_row(index, gender="F", salary=40000, grade="G4")
+        rows = ([make_row(index, gender="F", salary=40000, groupe="G4")
                  for index in range(10)]
-                + [make_row(10 + index, gender="H", salary=50000, grade="G4")
+                + [make_row(10 + index, gender="H", salary=50000, groupe="G4")
                    for index in range(10)]
-                + [make_row(20 + index, gender="F", salary=45000, grade="G6")
+                + [make_row(20 + index, gender="F", salary=45000, groupe="G6")
                    for index in range(10)]
-                + [make_row(30 + index, gender="H", salary=45100, grade="G6")
+                + [make_row(30 + index, gender="H", salary=45100, groupe="G6")
                    for index in range(10)])
         result = calculate_pay_equity(build_population(rows, config), config)
         flagged = {item["category"]: item["above_threshold"]
@@ -157,10 +157,10 @@ class TestCategories(unittest.TestCase):
     def test_a_gap_favouring_women_is_flagged_too(self):
         """Le seuil porte sur l'ecart absolu : un desequilibre marque
         appelle un examen dans les deux sens."""
-        config = make_config({"pay_equity_parameters.category_field": "grade"})
-        rows = ([make_row(index, gender="F", salary=60000, grade="G4")
+        config = make_config({"pay_equity_parameters.category_field": "groupe"})
+        rows = ([make_row(index, gender="F", salary=60000, groupe="G4")
                  for index in range(10)]
-                + [make_row(10 + index, gender="H", salary=40000, grade="G4")
+                + [make_row(10 + index, gender="H", salary=40000, groupe="G4")
                    for index in range(10)])
         result = calculate_pay_equity(build_population(rows, config), config)
         self.assertTrue(result["categories"][0]["above_threshold"])
@@ -177,15 +177,15 @@ class TestCategories(unittest.TestCase):
         self.assertIn("n'est renseigné", result["category_warning"])
 
     def test_the_widest_gaps_come_first(self):
-        config = make_config({"pay_equity_parameters.category_field": "grade"})
+        config = make_config({"pay_equity_parameters.category_field": "groupe"})
         rows = []
-        for index, (grade, female_pay) in enumerate(
+        for index, (groupe, female_pay) in enumerate(
                 (("G3", 49000), ("G5", 30000), ("G7", 45000))):
             rows += [make_row(index * 100 + step, gender="F",
-                              salary=female_pay, grade=grade)
+                              salary=female_pay, groupe=groupe)
                      for step in range(10)]
             rows += [make_row(index * 100 + 50 + step, gender="H",
-                              salary=50000, grade=grade) for step in range(10)]
+                              salary=50000, groupe=groupe) for step in range(10)]
         result = calculate_pay_equity(build_population(rows, config), config)
         gaps = [abs(item["mean_gap"]) for item in result["categories"]]
         self.assertEqual(gaps, sorted(gaps, reverse=True))
@@ -242,7 +242,7 @@ class TestFiltersReachTheGap(unittest.TestCase):
 
 class TestTheCategoryAxisCanChange(unittest.TestCase):
     """« Travail de meme valeur » se lit selon le poste, mais aussi selon le
-    grade ou l'etablissement : l'axe doit pouvoir changer sans relancer
+    groupe ou l'etablissement : l'axe doit pouvoir changer sans relancer
     toute l'analyse."""
 
     def setUp(self):
@@ -255,13 +255,13 @@ class TestTheCategoryAxisCanChange(unittest.TestCase):
             female = index % 2 == 0
             rows.append(make_row(
                 index, gender="F" if female else "H",
-                grade="G7" if senior else "G3",
+                groupe="G7" if senior else "G3",
                 business_unit=["France", "DACH"][index % 2],
                 salary=(60000 if senior else 40000) - (4000 if female else 0)))
         self.population = build_population(rows, self.config)
 
     def test_the_same_population_reads_differently_on_two_axes(self):
-        by_grade = self.compute(self.population, self.config, "grade")
+        by_grade = self.compute(self.population, self.config, "groupe")
         by_unit = self.compute(self.population, self.config, "business_unit")
         self.assertEqual({item["category"] for item in by_grade["categories"]},
                          {"G3", "G7"})
@@ -269,9 +269,9 @@ class TestTheCategoryAxisCanChange(unittest.TestCase):
                          {"France", "DACH"})
 
     def test_the_axis_is_named_in_the_result(self):
-        block = self.compute(self.population, self.config, "grade")
-        self.assertEqual(block["category_field"], "grade")
-        self.assertEqual(block["category_label"], "Grade")
+        block = self.compute(self.population, self.config, "groupe")
+        self.assertEqual(block["category_field"], "groupe")
+        self.assertEqual(block["category_label"], "Groupe")
 
     def test_an_axis_absent_from_the_file_says_so(self):
         block = self.compute(self.population, self.config, "job_title")
@@ -328,13 +328,13 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
     def _population(self, lignes):
         """`lignes` : (categorie, sexe, salaire) repete autant que voulu.
 
-        La categorie est portee par le grade : le jeu de test n'a pas de
+        La categorie est portee par le groupe : le jeu de test n'a pas de
         colonne « Poste », et le calcul est le meme quel que soit l'axe —
-        c'est precisement ce qui permet de comparer par poste, par grade ou
+        c'est precisement ce qui permet de comparer par poste, par groupe ou
         par etablissement.
         """
         config = make_config()
-        rows = [make_row(index, salary=salaire, gender=sexe, grade=categorie)
+        rows = [make_row(index, salary=salaire, gender=sexe, groupe=categorie)
                 for index, (categorie, sexe, salaire) in enumerate(lignes)]
         return build_population(rows, config), config
 
@@ -346,7 +346,7 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
                   + [("Employe", "F", 45000)] * 5
                   + [("Employe", "H", 50000)] * 20)
         population, config = self._population(lignes)
-        block = calculate_category_gaps(population, config, "grade")
+        block = calculate_category_gaps(population, config, "groupe")
 
         # A poste egal, les femmes touchent 10 % de moins dans les deux cas.
         self.assertAlmostEqual(block["comparable_gap"], 10.0, places=6)
@@ -366,7 +366,7 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
                   + [("Employe", "F", 45000)] * 10
                   + [("Employe", "H", 50000)] * 10)
         population, config = self._population(lignes)
-        block = calculate_category_gaps(population, config, "grade")
+        block = calculate_category_gaps(population, config, "groupe")
         self.assertAlmostEqual(block["comparable_gap"], 10.0, places=6)
         self.assertAlmostEqual(block["structure_gap"], 0.0, places=6)
 
@@ -377,7 +377,7 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
                   # Poste trop petit pour publier : hors du calcul.
                   + [("Rare", "F", 40000)] * 2 + [("Rare", "H", 80000)] * 2)
         population, config = self._population(lignes)
-        block = calculate_category_gaps(population, config, "grade")
+        block = calculate_category_gaps(population, config, "groupe")
         self.assertEqual(block["comparable_headcount"], 20)
         self.assertAlmostEqual(block["comparable_coverage"],
                                20 / 24 * 100.0, places=6)
@@ -390,7 +390,7 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
                   + [("Grand", "F", 94000)] * 100
                   + [("Grand", "H", 100000)] * 100)
         population, config = self._population(lignes)
-        block = calculate_category_gaps(population, config, "grade")
+        block = calculate_category_gaps(population, config, "groupe")
         cout = {item["category"]: item["at_stake"]
                 for item in block["categories"]}
         self.assertAlmostEqual(cout["Petit"], (100000 - 80000) * 5)
@@ -403,7 +403,7 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
         """Un poste masque n'a pas un rattrapage nul : il est inconnu."""
         lignes = [("Rare", "F", 40000)] * 2 + [("Rare", "H", 80000)] * 2
         population, config = self._population(lignes)
-        block = calculate_category_gaps(population, config, "grade")
+        block = calculate_category_gaps(population, config, "groupe")
         self.assertIsNone(block["categories"][0]["at_stake"])
         self.assertIsNone(block["comparable_gap"])
         self.assertIsNone(block["structure_gap"])
@@ -413,7 +413,7 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
         lignes = ([("Poste", "F", 100000)] * 10
                   + [("Poste", "H", 90000)] * 10)
         population, config = self._population(lignes)
-        block = calculate_category_gaps(population, config, "grade")
+        block = calculate_category_gaps(population, config, "groupe")
         item = block["categories"][0]
         self.assertLess(item["mean_gap"], 0)
         self.assertAlmostEqual(item["at_stake"], (100000 - 90000) * 10)
@@ -430,12 +430,12 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
     """
 
     def _population(self, lignes, overrides=None):
-        reglages = {"pay_equity_parameters.category_field": "grade"}
+        reglages = {"pay_equity_parameters.category_field": "groupe"}
         reglages.update(overrides or {})
         config = make_config(reglages)
-        rows = [make_row(index, salary=salaire, gender=sexe, grade=grade,
+        rows = [make_row(index, salary=salaire, gender=sexe, groupe=groupe,
                          tenure=anciennete)
-                for index, (grade, sexe, salaire, anciennete)
+                for index, (groupe, sexe, salaire, anciennete)
                 in enumerate(lignes)]
         return build_population(rows, config), config
 
@@ -443,7 +443,7 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
         lignes = ([("G5", "F", 90000, 4)] * 10
                   + [("G5", "H", 100000, 9)] * 10)
         population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "grade", "G5")
+        fiche = calculate_category_profile(population, config, "groupe", "G5")
 
         self.assertTrue(fiche["published"])
         self.assertEqual(fiche["female_count"], 10)
@@ -471,7 +471,7 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
         lignes = ([("G5", "F", 90000, 4)] * 10
                   + [("G5", "H", 100000, 9)] * 10)
         population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "grade", "G5")
+        fiche = calculate_category_profile(population, config, "groupe", "G5")
         anciennete = next(row for row in fiche["rows"]
                           if row["field"] == "tenure_years")
         self.assertEqual(anciennete["kind"], "years")
@@ -486,7 +486,7 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
         """Une mediane calculee sur trois personnes les designe."""
         lignes = [("G5", "F", 90000, 4)] * 2 + [("G5", "H", 100000, 9)] * 2
         population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "grade", "G5")
+        fiche = calculate_category_profile(population, config, "groupe", "G5")
         self.assertFalse(fiche["published"])
         self.assertEqual(fiche["rows"], [])
         self.assertIn("Effectif insuffisant", fiche["warning"])
@@ -498,7 +498,7 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
         population, config = self._population(lignes, {
             "pay_equity_parameters.profile_fields": [
                 {"field": "base_salary", "label": "Fixe", "kind": "money"}]})
-        fiche = calculate_category_profile(population, config, "grade", "G5")
+        fiche = calculate_category_profile(population, config, "groupe", "G5")
         self.assertEqual([row["label"] for row in fiche["rows"]], ["Fixe"])
 
     def test_a_variable_absent_from_the_file_takes_no_row(self):
@@ -510,14 +510,14 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
                 {"field": "base_salary", "label": "Fixe", "kind": "money"},
                 {"field": "prime_inexistante", "label": "Prime",
                  "kind": "money"}]})
-        fiche = calculate_category_profile(population, config, "grade", "G5")
+        fiche = calculate_category_profile(population, config, "groupe", "G5")
         self.assertEqual([row["field"] for row in fiche["rows"]],
                          ["base_salary"])
 
     def test_an_unknown_category_yields_an_empty_profile(self):
         lignes = [("G5", "F", 90000, 4)] * 10 + [("G5", "H", 100000, 9)] * 10
         population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "grade",
+        fiche = calculate_category_profile(population, config, "groupe",
                                            "categorie_absente")
         self.assertEqual(fiche["headcount"], 0)
         self.assertFalse(fiche["published"])
@@ -526,7 +526,7 @@ class TestTheProfileOfOneCategory(unittest.TestCase):
 class TestCrossingTwoAxes(unittest.TestCase):
     """« Travail de meme valeur » se lit parfois sur deux axes a la fois.
 
-    Un comptable senior au grade G5 et un comptable senior au G7 ne font pas
+    Un comptable senior au groupe G5 et un comptable senior au G7 ne font pas
     le meme travail : les confondre dilue l'ecart que l'on cherche.
     """
 
@@ -534,44 +534,44 @@ class TestCrossingTwoAxes(unittest.TestCase):
         config = make_config()
         lignes = []
         for unite in ("France", "DACH"):
-            for grade in ("G5", "G7"):
-                # A grade et statut egaux, les femmes touchent 10 % de moins.
-                lignes += [(grade, unite, "F", 90000)] * 8
-                lignes += [(grade, unite, "H", 100000)] * 8
+            for groupe in ("G5", "G7"):
+                # A groupe et statut egaux, les femmes touchent 10 % de moins.
+                lignes += [(groupe, unite, "F", 90000)] * 8
+                lignes += [(groupe, unite, "H", 100000)] * 8
         # Le second axe est porte par la BU : le jeu de test l'expose en
         # parametre, et le croisement ne depend pas du champ choisi.
-        rows = [make_row(index, salary=salaire, gender=sexe, grade=grade,
+        rows = [make_row(index, salary=salaire, gender=sexe, groupe=groupe,
                          business_unit=unite)
-                for index, (grade, unite, sexe, salaire) in enumerate(lignes)]
+                for index, (groupe, unite, sexe, salaire) in enumerate(lignes)]
         return build_population(rows, config), config
 
     def test_the_crossed_axis_splits_finer_than_either_alone(self):
         population, config = self._population()
-        simple = calculate_category_gaps(population, config, "grade")
+        simple = calculate_category_gaps(population, config, "groupe")
         croise = calculate_category_gaps(population, config,
-                                         ["grade", "business_unit"])
+                                         ["groupe", "business_unit"])
         self.assertEqual(len(simple["categories"]), 2)
         self.assertEqual(len(croise["categories"]), 4)
-        self.assertEqual(croise["category_label"], "Grade + BU")
+        self.assertEqual(croise["category_label"], "Groupe + BU")
         for item in croise["categories"]:
             self.assertIn("·", item["category"])
 
     def test_the_gap_is_the_same_when_the_second_axis_explains_nothing(self):
         """Croiser sur un axe sans effet ne doit pas deplacer l'ecart."""
         population, config = self._population()
-        simple = calculate_category_gaps(population, config, "grade")
+        simple = calculate_category_gaps(population, config, "groupe")
         croise = calculate_category_gaps(population, config,
-                                         ["grade", "business_unit"])
+                                         ["groupe", "business_unit"])
         self.assertAlmostEqual(simple["comparable_gap"],
                                croise["comparable_gap"], places=6)
 
     def test_a_profile_can_be_opened_on_a_crossed_category(self):
         population, config = self._population()
         croise = calculate_category_gaps(population, config,
-                                         ["grade", "business_unit"])
+                                         ["groupe", "business_unit"])
         nom = croise["categories"][0]["category"]
         fiche = calculate_category_profile(population, config,
-                                           ["grade", "business_unit"], nom)
+                                           ["groupe", "business_unit"], nom)
         self.assertEqual(fiche["category"], nom)
         self.assertTrue(fiche["published"])
         self.assertEqual(fiche["female_count"], 8)
@@ -585,9 +585,9 @@ class TestCrossingTwoAxes(unittest.TestCase):
         population, config = self._population()
         salarie = population.employees[0]
         salarie.assign("business_unit", "")
-        self.assertEqual(cross_key(salarie, ["grade", "business_unit"]), "")
+        self.assertEqual(cross_key(salarie, ["groupe", "business_unit"]), "")
         croise = calculate_category_gaps(population, config,
-                                         ["grade", "business_unit"])
+                                         ["groupe", "business_unit"])
         total = sum(item["female_count"] + item["male_count"]
                     for item in croise["categories"])
         self.assertEqual(total, len(population.employees) - 1)

@@ -89,7 +89,7 @@ class WorkbookCase(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=30000 + index * 900,
                     business_unit=["France", "Iberia"][index % 2],
-                    grade=f"G{3 + index % 4}",
+                    groupe=f"G{3 + index % 4}",
                     gender="F" if index % 2 else "H"))
                     # Le poste ne suit pas le sexe : sinon chaque poste
                     # n'aurait qu'un seul sexe et aucun ecart ne serait
@@ -129,7 +129,7 @@ class TestSheetSet(WorkbookCase):
 
     def test_one_sheet_per_analysed_dimension(self):
         sheets = self.workbook(self.analyse())
-        self.assertIn("Seg Grade", sheets)
+        self.assertIn("Seg Groupe", sheets)
         self.assertIn("Seg BU", sheets)
 
     def test_the_pay_transparency_sheet_is_there_when_sex_is_known(self):
@@ -290,7 +290,7 @@ class TestMaskedContent(WorkbookCase):
 
     def test_a_masked_segment_writes_the_word_and_not_a_number(self):
         sheets = self.workbook(self.analyse(rows=12))
-        rows = [value for (_f, value) in sheets["Seg Grade"].values()]
+        rows = [value for (_f, value) in sheets["Seg Groupe"].values()]
         self.assertIn("masqué", rows)
 
 
@@ -309,32 +309,6 @@ class TestUnusualWorkbooks(WorkbookCase):
         self.assertTrue(any(isinstance(value, str)
                             and "seuil" in value.lower() for value in values),
                         values)
-
-    def test_the_outliers_are_listed_with_their_reference(self):
-        import csv
-
-        path = os.path.join(self.directory, "atypiques.csv")
-        with open(path, "w", encoding="utf-8", newline="") as handle:
-            writer = csv.writer(handle, delimiter=";")
-            writer.writerow(HEADERS)
-            for index in range(40):
-                writer.writerow(list(make_row(index, salary=40000 + index * 50)))
-            for index in (900, 901):
-                writer.writerow(list(make_row(index, salary=400000)))
-        from hr_insight.core.config import write_default_configuration
-
-        config_dir = os.path.join(self.directory, "config-atypiques")
-        write_default_configuration(config_dir)
-        result = run_analysis(AnalysisRequest(source_path=path,
-                                              config_dir=config_dir))
-        self.assertTrue(result.payload["distribution"]["outliers"])
-        sheets = self.workbook(result, "atypiques.xlsx")
-        values = [value for (_f, value) in sheets["Distribution"].values()]
-        self.assertIn("Référence", values)
-        self.assertIn("Position", values)
-        matricules = {employee.employee_id for employee in result.filtered}
-        for value in values:
-            self.assertNotIn(value, matricules)
 
     def test_a_missing_cell_leaves_a_plain_value_instead_of_a_formula(self):
         """Une formule qui pointe une case vide afficherait une erreur la ou

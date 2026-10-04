@@ -59,8 +59,15 @@ DEFAULTS: Dict[str, Any] = {
             "manager": ["Manager", "Responsable", "Manager ID",
                         "Matricule manager", "N+1"],
             "job_family": ["Famille métier", "Job family"],
-            "grade": ["Grade"],
-            "coefficient": ["Coefficient"],
+            # La classification conventionnelle francaise. Une convention
+            # collective classe un poste par une annexe (le metier ou la
+            # filiere), un groupe (le niveau) et un coefficient (le point
+            # d'indice). « Grade » n'est le mot d'aucune d'entre elles :
+            # c'est un terme d'entreprise, qui ne se retrouve pas d'un
+            # fichier de paie a l'autre.
+            "annexe": ["Annexe", "Filière", "Filiere"],
+            "groupe": ["Groupe", "Niveau", "Classe"],
+            "coefficient": ["Coefficient", "Indice"],
             "status": ["Statut", "Status"],
             "fte": ["Temps de travail", "FTE"],
             "base_salary": ["Salaire de base", "Base salary"],
@@ -78,7 +85,9 @@ DEFAULTS: Dict[str, Any] = {
             {"field": "job", "label": "Métier"},
             {"field": "job_title", "label": "Poste"},
             {"field": "job_family", "label": "Famille métier"},
-            {"field": "grade", "label": "Grade"},
+            {"field": "annexe", "label": "Annexe"},
+            {"field": "groupe", "label": "Groupe"},
+            {"field": "coefficient", "label": "Coefficient"},
             {"field": "status", "label": "Statut"},
             {"field": "gender", "label": "Sexe"},
             {"field": "age_band", "label": "Tranche d'âge"},
@@ -158,7 +167,6 @@ DEFAULTS: Dict[str, Any] = {
     "salary_parameters": {
         "analysis_field": "base_salary",
         "currency": "EUR",
-        "outlier_factor": 1.5,
         "min_plausible": 1000.0,
         "max_plausible": 1000000.0,
     },
@@ -230,7 +238,9 @@ DEFAULTS: Dict[str, Any] = {
             {"field": "job_title", "label": "Poste", "width": 210},
             {"field": "business_unit", "label": "BU", "width": 130},
             {"field": "site", "label": "Établissement", "width": 150},
-            {"field": "grade", "label": "Grade", "width": 90},
+            {"field": "annexe", "label": "Annexe", "width": 110},
+            {"field": "groupe", "label": "Groupe", "width": 90},
+            {"field": "coefficient", "label": "Coefficient", "width": 100},
             {"field": "base_salary", "label": "Salaire de base",
              "width": 140},
         ],
@@ -307,6 +317,11 @@ DEFAULTS: Dict[str, Any] = {
         # du fichier importe porte le fichier tel qu'il est arrive, noms
         # compris. Les deux reglages restent la pour qui veut un classeur
         # d'agregats seuls.
+        # L'onglet « Formules » dit en toutes lettres ce que chaque
+        # indicateur calcule. C'est utile en comite, et c'est de la prose :
+        # il ne parait que si on le demande. Les onglets de controle, eux,
+        # sont toujours la — une formule est une donnee, pas un commentaire.
+        "include_method_sheet": False,
         "include_individual_data": True,
         "include_source_file": True,
         # Au-dela, le fichier importe n'est pas recopie : un classeur de

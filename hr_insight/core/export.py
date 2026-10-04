@@ -157,18 +157,6 @@ def _rows_distribution(distribution: Dict[str, Any]) -> List[List[Any]]:
     rows: List[List[Any]] = [["Borne basse", "Borne haute", "Effectif"]]
     for item in distribution.get("bins", []) or []:
         rows.append([item["lower"], item["upper"], item["count"]])
-    outliers = distribution.get("outliers") or []
-    if outliers:
-        rows.append([])
-        rows.append([distribution.get("outlier_label", "Situation atypique à analyser")])
-        rows.append(["Référence", "BU", "Grade", "Famille métier", "Ancienneté",
-                     "Valeur", "Position"])
-        for item in outliers:
-            rows.append([
-                item["reference"], item.get("business_unit"), item.get("grade"),
-                item.get("job_family"), item.get("tenure_years"), item["value"],
-                item["position"],
-            ])
     return rows
 
 
@@ -668,23 +656,6 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
     if salaire and distribution.get("available"):
         rows.append([])
         rows.append(["DISTRIBUTION"])
-        bounds = distribution.get("bounds") or {}
-        if bounds:
-            ecart = (f"{ledger.percentile(salaire, 75)}-"
-                     f"{ledger.percentile(salaire, 25)}")
-            facteur = fx.number_literal(
-                config.number("salary_parameters.outlier_factor", 1.5,
-                              minimum=0.1, maximum=10.0))
-            poser("Borne basse (Q1 − facteur × (Q3−Q1))", bounds.get("lower"),
-                  f"{ledger.percentile(salaire, 25)}-{facteur}*({ecart})")
-            poser("Borne haute (Q3 + facteur × (Q3−Q1))", bounds.get("upper"),
-                  f"{ledger.percentile(salaire, 75)}+{facteur}*({ecart})")
-            poser("Situations atypiques",
-                  len(distribution.get("outliers") or []),
-                  f'COUNTIFS({ledger.range(salaire)},'
-                  f'"<{fx.number_literal(bounds["lower"])}")'
-                  f'+COUNTIFS({ledger.range(salaire)},'
-                  f'">{fx.number_literal(bounds["upper"])}")')
         bins = distribution.get("bins") or []
         for index, item in enumerate(bins):
             poser(f'Classe {index + 1} — de {item["lower"]:.0f} '
@@ -1171,7 +1142,8 @@ def build_sheets(
         sheets.append(("Pay Transparency", _rows_pay_equity(equity)))
     if analysis.get("comparison"):
         sheets.append(("Comparaison", _rows_comparison(analysis["comparison"])))
-    sheets.append(("Formules", _rows_method(analysis, config)))
+    if config.get("export_parameters.include_method_sheet", False):
+        sheets.append(("Formules", _rows_method(analysis, config)))
 
     if not config.get("export_parameters.include_individual_data", False):
         return sheets
@@ -1230,7 +1202,6 @@ def _rows_method(analysis: Dict[str, Any],
     reste une erreur, et c'est la definition qui se discute en comite.
     """
     rules = config.section("privacy_parameters")
-    facteur = config.get("salary_parameters.outlier_factor", 1.5)
     classes = config.get("chart_parameters.histogram_bins", 20)
     reference = (analysis.get("manifest") or {}).get("date_reference", "")
     rows: List[List[Any]] = [["Indicateur", "Règle appliquée",
@@ -1270,11 +1241,6 @@ def _rows_method(analysis: Dict[str, Any],
          "maximum ; chaque classe est fermée à gauche et ouverte à droite, "
          "la dernière exceptée",
          "COUNTIFS(plage;\">=borne basse\";plage;\"<borne haute\")",
-         "Contrôle"),
-        ("Situation atypique",
-         f"valeur hors de [Q1 − {facteur} × (Q3−Q1) ; "
-         f"Q3 + {facteur} × (Q3−Q1)]",
-         f"Q1-{facteur}*(Q3-Q1) et Q3+{facteur}*(Q3-Q1)",
          "Contrôle"),
         ("Écart de rémunération femmes / hommes",
          "(moyenne hommes − moyenne femmes) / moyenne hommes, en pourcentage "
@@ -1333,20 +1299,8 @@ def _rows_manifest(manifest: Dict[str, Any],
         ["Effectif analyse", manifest.get("effectif_analyse")],
         ["Filtres", manifest.get("filtres")],
     ]
-    if nominatif or source:
-        contenu = ["Ce classeur contient les données individuelles ayant "
-                   "servi aux calculs, sous référence anonymisée."]
-        if source:
-            contenu.append("L'onglet « Fichier importé » porte le fichier "
-                           "source tel qu'il a été lu, colonnes nominatives "
-                           "comprises.")
-        contenu.append("Vérifiez qui en est destinataire avant de le "
-                       "transmettre. Pour un classeur d'agrégats seuls, "
-                       "mettez « include_individual_data » et "
-                       "« include_source_file » à false dans "
-                       "config/export_parameters.json.")
-        rows.append([])
-        rows.append(["CE QUE CONTIENT CE CLASSEUR", " ".join(contenu)])
+    rows.append(["Données individuelles", "oui" if nominatif else "non"])
+    rows.append(["Copie du fichier source", "oui" if source else "non"])
     return rows
 
 

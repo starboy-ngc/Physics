@@ -51,7 +51,7 @@ python3 -m hr_insight.cli controle data/demo.xlsx
 # Analyse complète
 python3 -m hr_insight.cli analyse data/demo.xlsx \
     --filtre "business_unit=France" \
-    --segment grade --segment gender \
+    --segment groupe --segment gender \
     --sortie resultats --ignorer-anomalies
 ```
 
