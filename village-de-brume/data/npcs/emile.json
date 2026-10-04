@@ -2,9 +2,25 @@
   "id": "emile",
   "name": "Émile",
   "role": "Boulanger",
-  "personality": ["sociable", "bavard", "curieux"],
-  "appearance": {"tunic": "e8b24a", "hair": "7a4a20", "skin": "f1c9a5", "pants": "5a3a22"},
-  "location": {"zone": "bakery", "position": [144, 78], "facing": "down"},
+  "personality": [
+    "sociable",
+    "bavard",
+    "curieux"
+  ],
+  "appearance": {
+    "tunic": "e8b24a",
+    "hair": "7a4a20",
+    "skin": "f1c9a5",
+    "pants": "5a3a22"
+  },
+  "location": {
+    "zone": "bakery",
+    "position": [
+      9,
+      4.875
+    ],
+    "facing": "down"
+  },
   "wander_radius": 0,
   "dialogue": "res://data/dialogues/emile.json"
 }

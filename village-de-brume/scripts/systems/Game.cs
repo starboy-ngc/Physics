@@ -32,6 +32,7 @@ public partial class Game : Node
     public event Action<Zone>? ZoneChanged;
 
     public Player Player { get; private set; } = null!;
+    public FollowCamera Camera { get; private set; } = null!;
     public Zone? CurrentZone { get; private set; }
     public string CurrentZoneId { get; private set; } = "";
 
@@ -66,10 +67,12 @@ public partial class Game : Node
     }
 
     /// <summary>Appelé une fois par la scène principale.</summary>
-    public void Setup(Node zoneRoot, Player player)
+    public void Setup(Node zoneRoot, Player player, FollowCamera camera)
     {
         _zoneRoot = zoneRoot;
         Player = player;
+        Camera = camera;
+        camera.Target = player;
     }
 
     public bool IsReady => _zoneRoot != null && Player != null;
@@ -142,43 +145,14 @@ public partial class Game : Node
         // 3. Placer le joueur dans la zone, au point d'apparition demandé.
         zone.AddChild(Player);
         Player.GlobalPosition = zone.GetSpawnPosition(spawnName);
-        Player.Velocity = Vector2.Zero;
+        Player.Velocity = Vector3.Zero;
         Player.Face(spawnName != "entrance" ? CharacterVisual.Facing.Down : CharacterVisual.Facing.Up);
 
         // 4. Caméra : limites de la zone, sans glissement depuis l'ancienne position.
-        ApplyCameraLimits(zone);
-        Player.Camera.MakeCurrent();
-        Player.Camera.ResetSmoothing();
+        Camera.SetBounds(zone.Bounds);
+        Camera.Snap();
 
         ZoneChanged?.Invoke(zone);
-    }
-
-    /// <summary>
-    /// Les limites de la caméra épousent la zone. Si la zone est plus petite que
-    /// l'écran (intérieurs), les limites sont centrées sur la zone.
-    /// </summary>
-    private void ApplyCameraLimits(Zone zone)
-    {
-        var cam = Player.Camera;
-        Vector2 view = Player.GetViewportRect().Size / cam.Zoom;
-        Rect2 b = zone.Bounds;
-        float left = b.Position.X, right = b.End.X, top = b.Position.Y, bottom = b.End.Y;
-        if (b.Size.X < view.X)
-        {
-            float cx = b.GetCenter().X;
-            left = cx - view.X / 2f;
-            right = cx + view.X / 2f;
-        }
-        if (b.Size.Y < view.Y)
-        {
-            float cy = b.GetCenter().Y;
-            top = cy - view.Y / 2f;
-            bottom = cy + view.Y / 2f;
-        }
-        cam.LimitLeft = Mathf.FloorToInt(left);
-        cam.LimitRight = Mathf.CeilToInt(right);
-        cam.LimitTop = Mathf.FloorToInt(top);
-        cam.LimitBottom = Mathf.CeilToInt(bottom);
     }
 
     private async Task FadeTo(float alpha)

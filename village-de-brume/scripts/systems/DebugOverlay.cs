@@ -45,8 +45,8 @@ public partial class DebugOverlay : CanvasLayer
         };
         if (game.Player != null)
         {
-            lines.Add($"X: {(int)game.Player.GlobalPosition.X}");
-            lines.Add($"Y: {(int)game.Player.GlobalPosition.Y}");
+            lines.Add($"X: {game.Player.GlobalPosition.X:0.0}");
+            lines.Add($"Z: {game.Player.GlobalPosition.Z:0.0}");
             lines.Add($"FACING: {game.Player.FacingDirection}");
         }
         lines.Add("CURRENT LOCATION:");

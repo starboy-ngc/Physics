@@ -3,23 +3,19 @@
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_player"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterVisual.cs" id="2_visual"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_feet"]
-size = Vector2(12, 8)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_feet"]
+radius = 0.375
+height = 1.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 1
 motion_mode = 1
 script = ExtResource("1_player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_feet")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.5, 0)
+shape = SubResource("CylinderShape3D_feet")
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="Visual" type="Node3D" parent="."]
 script = ExtResource("2_visual")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -12)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0

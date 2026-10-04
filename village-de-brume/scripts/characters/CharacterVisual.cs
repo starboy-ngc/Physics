@@ -3,11 +3,11 @@ using Godot;
 namespace VillageDeBrume;
 
 /// <summary>
-/// Dessin d'un personnage (joueur ou PNJ) : proportions « tête large » façon
-/// RPG portable, contour sombre, 4 directions, marche en 2 poses.
-/// Origine aux pieds. Les couleurs sont paramétrables par personnage.
+/// Présence visuelle d'un personnage en 2.5D : un Sprite3D tourné vers la
+/// caméra (planche générée par CharacterSprites) et une ombre ronde au sol.
+/// Origine aux pieds. 1 unité monde = 16 px de sprite.
 /// </summary>
-public partial class CharacterVisual : Node2D
+public partial class CharacterVisual : Node3D
 {
     public enum Facing { Down, Up, Left, Right }
 
@@ -16,89 +16,78 @@ public partial class CharacterVisual : Node2D
     [Export] public Color SkinColor { get; set; } = new("f1c9a5");
     [Export] public Color PantsColor { get; set; } = new("2a2a3a");
 
-    private static readonly Color Outline = new("1e1e2e");
-    private static readonly Color Shadow = new(0, 0, 0, 0.25f);
     private const float WalkAnimFps = 8f;
+    private const float PixelSize = 1f / 16f;
 
+    private Sprite3D _sprite = null!;
     private Facing _facing = Facing.Down;
+    private float _walkTime;
+
     public Facing FacingDirection
     {
         get => _facing;
-        set { _facing = value; QueueRedraw(); }
+        set { _facing = value; UpdateFrame(); }
+    }
+    public bool IsMoving { get; private set; }
+
+    public override void _Ready()
+    {
+        _sprite = new Sprite3D
+        {
+            Name = "Sprite",
+            Hframes = 3,
+            Vframes = 4,
+            PixelSize = PixelSize,
+            Billboard = BaseMaterial3D.BillboardModeEnum.Enabled,
+            TextureFilter = BaseMaterial3D.TextureFilterEnum.Nearest,
+            AlphaCut = SpriteBase3D.AlphaCutMode.Discard,
+            Shaded = false,
+            CastShadow = GeometryInstance3D.ShadowCastingSetting.Off,
+            // Le sprite est un panneau face caméra centré sur ce point. On le monte
+            // pour que, à l'écran, la ligne des pieds (30) tombe exactement sur
+            // l'origine au sol : 14 px « vers le haut de l'écran » = 14 px / cos(pitch) en hauteur monde.
+            Position = new Vector3(0, (CharacterSprites.FeetRow - CharacterSprites.Cell / 2f) * PixelSize / Mathf.Cos(Mathf.DegToRad(FollowCamera.DefaultPitch)), 0),
+        };
+        AddChild(_sprite);
+        var shadow = new MeshInstance3D
+        {
+            Name = "Shadow",
+            Mesh = new CylinderMesh { TopRadius = 0.45f, BottomRadius = 0.45f, Height = 0.02f, RadialSegments = 10 },
+            MaterialOverride = Materials.Flat(new Color(0, 0, 0, 0.28f)),
+            Position = new Vector3(0, 0.012f, 0),
+            CastShadow = GeometryInstance3D.ShadowCastingSetting.Off,
+        };
+        AddChild(shadow);
+        Rebuild();
     }
 
-    public bool IsMoving { get; private set; }
-    private float _walkTime;
+    /// <summary>Régénère la planche de sprites avec les couleurs courantes.</summary>
+    public void Rebuild()
+    {
+        if (_sprite == null)
+            return;
+        _sprite.Texture = CharacterSprites.Build(TunicColor, HairColor, SkinColor, PantsColor);
+        UpdateFrame();
+    }
 
     public void Animate(float delta, bool moving)
     {
         IsMoving = moving;
         _walkTime = moving ? _walkTime + delta : 0f;
-        QueueRedraw();
+        UpdateFrame();
     }
 
-    public override void _Draw()
+    private void UpdateFrame()
     {
-        int step = IsMoving ? (int)(_walkTime * WalkAnimFps) % 2 : -1;
-        int bob = step >= 0 ? -1 : 0;
-
-        // Ombre
-        DrawRect(new Rect2(-7, -2, 14, 3), Shadow);
-
-        // Jambes
-        int leftH = 7 - (step == 1 ? 3 : 0);
-        int rightH = 7 - (step == 0 ? 3 : 0);
-        DrawRect(new Rect2(-5, -7, 4, leftH), PantsColor);
-        DrawRect(new Rect2(1, -7, 4, rightH), PantsColor);
-        DrawRect(new Rect2(-5, -7, 4, leftH), Outline, false, 1f);
-        DrawRect(new Rect2(1, -7, 4, rightH), Outline, false, 1f);
-
-        // Corps
-        var body = new Rect2(-6, -15 + bob, 12, 9);
-        DrawRect(body, TunicColor);
-        DrawRect(body, Outline, false, 1f);
-        // Bras
-        if (_facing is Facing.Left or Facing.Right)
-        {
-            DrawRect(new Rect2(-2, -13 + bob, 4, 6), TunicColor.Darkened(0.2f));
-        }
-        else
-        {
-            DrawRect(new Rect2(-8, -13 + bob, 2, 6), SkinColor);
-            DrawRect(new Rect2(6, -13 + bob, 2, 6), SkinColor);
-        }
-
-        // Tête
-        var head = new Rect2(-7, -26 + bob, 14, 12);
-        DrawRect(head, SkinColor);
-        float hy = head.Position.Y;
-        switch (_facing)
-        {
-            case Facing.Up:
-                DrawRect(new Rect2(-7, hy, 14, 9), HairColor);
-                break;
-            case Facing.Down:
-                DrawRect(new Rect2(-7, hy, 14, 4), HairColor);
-                DrawRect(new Rect2(-7, hy + 4, 2, 3), HairColor);
-                DrawRect(new Rect2(5, hy + 4, 2, 3), HairColor);
-                DrawRect(new Rect2(-4, hy + 6, 2, 3), Outline);
-                DrawRect(new Rect2(2, hy + 6, 2, 3), Outline);
-                break;
-            case Facing.Left:
-                DrawRect(new Rect2(-7, hy, 14, 4), HairColor);
-                DrawRect(new Rect2(-1, hy, 8, 8), HairColor);
-                DrawRect(new Rect2(-5, hy + 6, 2, 3), Outline);
-                break;
-            case Facing.Right:
-                DrawRect(new Rect2(-7, hy, 14, 4), HairColor);
-                DrawRect(new Rect2(-7, hy, 8, 8), HairColor);
-                DrawRect(new Rect2(3, hy + 6, 2, 3), Outline);
-                break;
-        }
-        DrawRect(head, Outline, false, 1f);
+        if (_sprite == null)
+            return;
+        int pose = IsMoving ? 1 + (int)(_walkTime * WalkAnimFps) % 2 : 0;
+        _sprite.Frame = (int)_facing * 3 + pose;
     }
 
-    public static Facing FacingFromVector(Vector2 v, Facing current)
+    // --- Aides de direction (monde : haut = -Z, bas = +Z, gauche = -X, droite = +X)
+
+    public static Facing FacingFromInput(Vector2 v, Facing current)
     {
         if (v.Y > 0f) return Facing.Down;
         if (v.Y < 0f) return Facing.Up;
@@ -115,12 +104,19 @@ public partial class CharacterVisual : Node2D
         _ => Facing.Down,
     };
 
-    /// <summary>Direction pour regarder `target` depuis `from` (axe dominant).</summary>
-    public static Facing FacingTowards(Vector2 from, Vector2 target)
+    public static Facing FacingTowards(Vector3 from, Vector3 target)
     {
-        Vector2 d = target - from;
-        if (Mathf.Abs(d.X) > Mathf.Abs(d.Y))
-            return d.X > 0f ? Facing.Right : Facing.Left;
-        return d.Y > 0f ? Facing.Down : Facing.Up;
+        float dx = target.X - from.X, dz = target.Z - from.Z;
+        if (Mathf.Abs(dx) > Mathf.Abs(dz))
+            return dx > 0f ? Facing.Right : Facing.Left;
+        return dz > 0f ? Facing.Down : Facing.Up;
     }
+
+    public static Vector3 ToVector(Facing f) => f switch
+    {
+        Facing.Up => new Vector3(0, 0, -1),
+        Facing.Down => new Vector3(0, 0, 1),
+        Facing.Left => new Vector3(-1, 0, 0),
+        _ => new Vector3(1, 0, 0),
+    };
 }

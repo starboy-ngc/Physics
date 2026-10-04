@@ -4,43 +4,42 @@
 [ext_resource type="PackedScene" path="res://scenes/world/props/Prop.tscn" id="2_prop"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/Door.tscn" id="3_door"]
 
-[node name="Bakery" type="Node2D"]
-y_sort_enabled = true
+[node name="Bakery" type="Node3D"]
 script = ExtResource("1_interior")
 ZoneName = "Boulangerie"
-Bounds = Rect2(0, 0, 288, 192)
-WallTop = 28.0
-WallSides = 8.0
+Bounds = Rect2(0, 0, 18, 12)
+WallTop = 1.75
+WallSides = 0.5
 FloorColor = Color(0.718, 0.584, 0.42, 1)
 WallColor = Color(0.941, 0.863, 0.698, 1)
 
-[node name="Spawns" type="Node2D" parent="."]
+[node name="Spawns" type="Node3D" parent="."]
 
-[node name="entrance" type="Marker2D" parent="Spawns"]
-position = Vector2(144, 166)
+[node name="entrance" type="Marker3D" parent="Spawns"]
+position = Vector3(9, 0, 10.375)
 
 [node name="Oven" parent="." instance=ExtResource("2_prop")]
-position = Vector2(48, 68)
+position = Vector3(3, 0, 4.25)
 Kind = "oven"
 
 [node name="Counter" parent="." instance=ExtResource("2_prop")]
-position = Vector2(144, 104)
+position = Vector3(9, 0, 6.5)
 Kind = "counter"
 
 [node name="Shelf" parent="." instance=ExtResource("2_prop")]
-position = Vector2(200, 68)
+position = Vector3(12.5, 0, 4.25)
 Kind = "shelf"
 
 [node name="Barrel1" parent="." instance=ExtResource("2_prop")]
-position = Vector2(256, 72)
+position = Vector3(16, 0, 4.5)
 Kind = "barrel"
 
 [node name="Barrel2" parent="." instance=ExtResource("2_prop")]
-position = Vector2(236, 78)
+position = Vector3(14.75, 0, 4.875)
 Kind = "barrel"
 
 [node name="ExitDoor" parent="." instance=ExtResource("3_door")]
-position = Vector2(144, 184)
+position = Vector3(9, 0, 11.5)
 TargetZone = "village"
 TargetSpawn = "from_bakery"
 DrawMat = true

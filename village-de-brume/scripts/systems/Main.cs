@@ -10,11 +10,19 @@ public partial class Main : Node
 {
     public override void _Ready()
     {
-        var zoneRoot = GetNode<Node2D>("ZoneRoot");
+        var zoneRoot = GetNode<Node3D>("ZoneRoot");
         var player = GetNode<Player>("Player");
+        var camera = GetNode<FollowCamera>("FollowCamera");
         var ui = GetNode<GameUI>("GameUI");
         ui.BindPlayer(player);
-        Game.Instance.Setup(zoneRoot, player);
+        AddChild(new DirectionalLight3D
+        {
+            Name = "Sun",
+            RotationDegrees = new Vector3(-55, -35, 0),
+            LightEnergy = 0.7f,
+            ShadowEnabled = true,
+        });
+        Game.Instance.Setup(zoneRoot, player, camera);
         _ = Game.Instance.ChangeZone("house_player", "start", true);
     }
 }

@@ -54,10 +54,10 @@ public partial class SmokeTest : TestBase
         var player = Game.Player;
         if (player.GetParent() != zone)
             Fail($"le joueur n'est pas dans la zone '{zoneId}'");
-        Vector2 expected = zone.GetSpawnPosition(spawnName);
+        Vector3 expected = zone.GetSpawnPosition(spawnName);
         if (player.GlobalPosition.DistanceTo(expected) > 0.5f)
             Fail($"position du joueur {player.GlobalPosition} != spawn {expected} dans '{zoneId}'");
-        if (!zone.Bounds.HasPoint(player.GlobalPosition))
+        if (!zone.Bounds.HasPoint(new Vector2(player.GlobalPosition.X, player.GlobalPosition.Z)))
             Fail($"le joueur est hors des limites de '{zoneId}'");
         if (zone.GetNodeOrNull("Boundaries") == null)
             Fail($"pas de murs invisibles dans '{zoneId}'");

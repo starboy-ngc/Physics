@@ -4,113 +4,113 @@ using System.Collections.Generic;
 namespace VillageDeBrume;
 
 /// <summary>
-/// Mobilier et petits objets (lit, table, chaise, coffre, four, panneau...).
-/// Origine au milieu du bas de l'objet (tri en Y). Collision = emprise dessinée.
+/// Mobilier et petits objets en volumes simples (lit, table, chaise, coffre,
+/// four, comptoir, étagère, tonneau, panneau). Origine au milieu de la face
+/// avant, au sol (comme les bâtiments) : l'objet s'étend vers -Z.
 /// </summary>
-public partial class Prop : StaticBody2D
+public partial class Prop : StaticBody3D
 {
-    private string _kind = "table";
     [Export(PropertyHint.Enum, "bed,table,chair,chest,oven,counter,shelf,barrel,sign")]
-    public string Kind { get => _kind; set { _kind = value; QueueRedraw(); } }
-    private string _signText = "";
+    public string Kind { get; set; } = "table";
     /// <summary>Texte du panneau (Kind = "sign").</summary>
-    [Export] public string SignText { get => _signText; set { _signText = value; QueueRedraw(); } }
+    [Export] public string SignText { get; set; } = "";
 
-    private static readonly Dictionary<string, Vector2> Sizes = new()
+    /// <summary>Emprise (largeur x, profondeur z) et hauteur par type.</summary>
+    private static readonly Dictionary<string, Vector3> Sizes = new()
     {
-        ["bed"] = new(32, 48), ["table"] = new(40, 24), ["chair"] = new(14, 16),
-        ["chest"] = new(24, 18), ["oven"] = new(40, 40), ["counter"] = new(64, 20),
-        ["shelf"] = new(32, 40), ["barrel"] = new(16, 20), ["sign"] = new(24, 28),
+        ["bed"] = new(2f, 0.7f, 3f), ["table"] = new(2.5f, 0.9f, 1.5f), ["chair"] = new(0.9f, 1.1f, 1f),
+        ["chest"] = new(1.5f, 0.8f, 1.1f), ["oven"] = new(2.5f, 2.0f, 2.5f), ["counter"] = new(4f, 1.0f, 1.25f),
+        ["shelf"] = new(2f, 2.4f, 1f), ["barrel"] = new(1f, 1.25f, 1f), ["sign"] = new(1.5f, 1.6f, 0.4f),
     };
 
     private static readonly Color Wood = new("8a5a2b");
     private static readonly Color WoodDark = new("5c3a1a");
     private static readonly Color WoodLight = new("b08a5c");
-    private static readonly Color Cloth = new("c9544a");
-    private static readonly Color Sheet = new("e8e2d0");
-    private static readonly Color Stone = new("8f8f88");
-    private static readonly Color Fire = new("e8903a");
-    private static readonly Color Metal = new("c8b060");
-    private static readonly Color Herb = new("5a9a4e");
-    private static readonly Color Bread = new("d9a05a");
-    private static readonly Color Outline = new("2a1f17");
 
-    public Vector2 GetSize() => Sizes.TryGetValue(Kind, out var s) ? s : new Vector2(16, 16);
+    public Vector3 GetSize() => Sizes.TryGetValue(Kind, out var s) ? s : new Vector3(1, 1, 1);
 
     public override void _Ready()
     {
         CollisionLayer = 1;
         CollisionMask = 0;
-        Vector2 s = GetSize();
-        bool sign = Kind == "sign";
-        AddChild(new CollisionShape2D
-        {
-            // Le panneau ne bloque que par son poteau ; le reste bloque entièrement.
-            Shape = new RectangleShape2D { Size = sign ? new Vector2(6, 6) : s },
-            Position = sign ? new Vector2(0, -3) : new Vector2(0, -s.Y / 2f),
-        });
-    }
+        Vector3 s = GetSize();
+        float w = s.X, h = s.Y, d = s.Z;
+        var c = new Vector3(0, h / 2f, -d / 2f); // centre du volume
 
-    public override void _Draw()
-    {
-        Vector2 s = GetSize();
-        var r = new Rect2(-s.X / 2f, -s.Y, s.X, s.Y);
+        if (Kind == "sign")
+            Materials.BoxCollider(this, new Vector3(0.4f, 1f, 0.4f), new Vector3(0, 0.5f, -0.2f));
+        else
+            Materials.BoxCollider(this, s, c);
+
         switch (Kind)
         {
             case "bed":
-                DrawRect(r, Wood);
-                DrawRect(new Rect2(r.Position.X + 2, r.Position.Y + 10, s.X - 4, s.Y - 12), Cloth);
-                DrawRect(new Rect2(r.Position.X + 2, r.Position.Y + 2, s.X - 4, 8), Sheet);
+                Materials.Box(this, new Vector3(w, 0.35f, d), new Vector3(0, 0.175f, -d / 2f), Materials.Flat(Wood), "Frame");
+                Materials.Box(this, new Vector3(w - 0.2f, 0.3f, d - 0.2f), new Vector3(0, 0.5f, -d / 2f), Materials.Flat(new Color("c9544a")), "Blanket");
+                Materials.Box(this, new Vector3(w - 0.4f, 0.25f, 0.7f), new Vector3(0, 0.6f, -d + 0.5f), Materials.Flat(new Color("e8e2d0")), "Pillow");
+                Materials.Box(this, new Vector3(w, 0.9f, 0.15f), new Vector3(0, 0.45f, -d + 0.075f), Materials.Flat(WoodDark), "Headboard");
                 break;
             case "table":
-                DrawRect(r, WoodLight);
-                DrawRect(new Rect2(r.Position.X, r.End.Y - 6, s.X, 6), WoodDark);
+                Materials.Box(this, new Vector3(w, 0.12f, d), new Vector3(0, h - 0.06f, -d / 2f), Materials.Flat(WoodLight), "Top");
+                foreach (var (lx, lz) in new[] { (-1f, -1f), (1f, -1f), (-1f, 1f), (1f, 1f) })
+                    Materials.Box(this, new Vector3(0.15f, h, 0.15f), new Vector3(lx * (w / 2f - 0.15f), h / 2f, -d / 2f + lz * (d / 2f - 0.15f)), Materials.Flat(WoodDark), "Leg");
                 break;
             case "chair":
-                DrawRect(new Rect2(r.Position.X, r.Position.Y, s.X, 6), WoodDark);
-                DrawRect(new Rect2(r.Position.X, r.Position.Y + 6, s.X, s.Y - 6), Wood);
+                Materials.Box(this, new Vector3(w, 0.1f, d), new Vector3(0, 0.5f, -d / 2f), Materials.Flat(Wood), "Seat");
+                Materials.Box(this, new Vector3(w, h, 0.12f), new Vector3(0, h / 2f, -d + 0.06f), Materials.Flat(WoodDark), "Back");
+                Materials.Box(this, new Vector3(0.1f, 0.5f, 0.1f), new Vector3(-w / 2f + 0.1f, 0.25f, -0.1f), Materials.Flat(WoodDark), "Leg");
+                Materials.Box(this, new Vector3(0.1f, 0.5f, 0.1f), new Vector3(w / 2f - 0.1f, 0.25f, -0.1f), Materials.Flat(WoodDark), "Leg2");
                 break;
             case "chest":
-                DrawRect(r, Wood);
-                DrawRect(new Rect2(r.Position.X, r.Position.Y, s.X, 6), WoodDark);
-                DrawRect(new Rect2(-2, r.Position.Y + 6, 4, 4), Metal);
+                Materials.Box(this, new Vector3(w, h * 0.7f, d), new Vector3(0, h * 0.35f, -d / 2f), Materials.Flat(Wood), "Body");
+                Materials.Box(this, new Vector3(w, h * 0.3f, d), new Vector3(0, h * 0.85f, -d / 2f), Materials.Flat(WoodDark), "Lid");
+                Materials.Box(this, new Vector3(0.25f, 0.25f, 0.08f), new Vector3(0, h * 0.6f, 0.04f), Materials.Flat(new Color("c8b060")), "Lock");
                 break;
             case "oven":
-                DrawRect(r, Stone);
-                DrawRect(new Rect2(-10, r.Position.Y + 18, 20, 12), Outline);
-                DrawRect(new Rect2(-8, r.Position.Y + 20, 16, 8), Fire);
+                Materials.Box(this, s, c, Materials.Flat(new Color("8f8f88")), "Body");
+                Materials.Box(this, new Vector3(1.2f, 0.8f, 0.1f), new Vector3(0, 0.8f, 0.05f), Materials.Flat(new Color("2a1f17")), "Mouth");
+                Materials.Box(this, new Vector3(1.0f, 0.5f, 0.12f), new Vector3(0, 0.75f, 0.06f), Materials.Flat(new Color("e8903a")), "Fire");
+                Materials.Box(this, new Vector3(0.8f, 0.8f, 0.8f), new Vector3(0, h + 0.4f, -d / 2f), Materials.Flat(new Color("6c6c66")), "Chimney");
                 break;
             case "counter":
-                DrawRect(r, WoodLight);
-                DrawRect(new Rect2(r.Position.X, r.End.Y - 8, s.X, 8), WoodDark);
+                Materials.Box(this, new Vector3(w, h, d), c, Materials.Flat(WoodDark), "Body");
+                Materials.Box(this, new Vector3(w + 0.1f, 0.1f, d + 0.1f), new Vector3(0, h - 0.05f, -d / 2f), Materials.Flat(WoodLight), "Top");
                 for (int i = 0; i < 3; i++)
-                    DrawRect(new Rect2(r.Position.X + 6 + i * 18, r.Position.Y + 3, 12, 6), Bread);
+                    Materials.Box(this, new Vector3(0.7f, 0.3f, 0.45f), new Vector3(-1.2f + i * 1.2f, h + 0.15f, -d / 2f), Materials.Flat(new Color("d9a05a")), "Bread");
                 break;
             case "shelf":
-                DrawRect(r, Wood);
+                Materials.Box(this, s, c, Materials.Flat(Wood), "Body");
                 for (int i = 0; i < 3; i++)
                 {
-                    float y = r.Position.Y + 8 + i * 12;
-                    DrawRect(new Rect2(r.Position.X + 2, y, s.X - 4, 2), WoodDark);
-                    DrawRect(new Rect2(r.Position.X + 4, y - 6, 6, 6), Herb);
-                    DrawRect(new Rect2(r.Position.X + 14, y - 6, 6, 6), Bread);
+                    float y = 0.6f + i * 0.7f;
+                    Materials.Box(this, new Vector3(w - 0.2f, 0.06f, d), new Vector3(0, y, -d / 2f + 0.02f), Materials.Flat(WoodDark), "Board");
+                    Materials.Box(this, new Vector3(0.35f, 0.35f, 0.3f), new Vector3(-0.5f, y + 0.2f, -0.2f), Materials.Flat(new Color("5a9a4e")), "Herb");
+                    Materials.Box(this, new Vector3(0.35f, 0.35f, 0.3f), new Vector3(0.3f, y + 0.2f, -0.2f), Materials.Flat(new Color("d9a05a")), "Jar");
                 }
                 break;
             case "barrel":
-                DrawRect(r, Wood);
-                DrawRect(new Rect2(r.Position.X, r.Position.Y + 4, s.X, 2), WoodDark);
-                DrawRect(new Rect2(r.Position.X, r.End.Y - 6, s.X, 2), WoodDark);
+                Materials.Cylinder(this, w / 2f, h, c, Materials.Flat(Wood), "Body");
+                Materials.Cylinder(this, w / 2f + 0.03f, 0.1f, new Vector3(0, 0.25f, -d / 2f), Materials.Flat(WoodDark), "Ring");
+                Materials.Cylinder(this, w / 2f + 0.03f, 0.1f, new Vector3(0, h - 0.3f, -d / 2f), Materials.Flat(WoodDark), "Ring2");
                 break;
             case "sign":
-                DrawRect(new Rect2(-2, -14, 4, 14), WoodDark);
-                var plank = new Rect2(r.Position.X, r.Position.Y, s.X, 14);
-                DrawRect(plank, WoodLight);
-                DrawRect(plank, Outline, false, 1f);
+                Materials.Cylinder(this, 0.08f, 1.0f, new Vector3(0, 0.5f, -0.2f), Materials.Flat(WoodDark), "Post");
+                Materials.Box(this, new Vector3(w + 0.5f, 0.8f, 0.1f), new Vector3(0, 1.25f, -0.2f), Materials.Flat(WoodLight), "Plank");
                 if (SignText != "")
-                    DrawString(ThemeDB.FallbackFont, new Vector2(plank.Position.X, plank.End.Y - 3f), SignText,
-                        HorizontalAlignment.Center, plank.Size.X, 8, Outline);
-                return;
+                    AddChild(new Label3D
+                    {
+                        Text = SignText,
+                        FontSize = 32,
+                        PixelSize = 0.02f,
+                        Modulate = new Color("2a1f17"),
+                        Position = new Vector3(0, 1.25f, -0.14f),
+                        Shaded = false,
+                        TextureFilter = BaseMaterial3D.TextureFilterEnum.Nearest,
+                    });
+                break;
+            default:
+                Materials.Box(this, s, c, Materials.Flat(Wood), "Body");
+                break;
         }
-        DrawRect(r, Outline, false, 1f);
     }
 }

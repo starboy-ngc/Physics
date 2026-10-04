@@ -2,37 +2,31 @@ using Godot;
 
 namespace VillageDeBrume;
 
-/// <summary>Puits de la place centrale. Origine au bas de la margelle.</summary>
-public partial class Well : StaticBody2D
+/// <summary>Puits de la place centrale : margelle, eau, deux poteaux et petit toit.</summary>
+public partial class Well : StaticBody3D
 {
-    private static readonly Color Stone = new("8f8f88");
-    private static readonly Color StoneDark = new("5c5c58");
-    private static readonly Color Water = new("2f5f8f");
-    private static readonly Color Wood = new("6b4a2a");
-    private static readonly Color Roof = new("8c4a3c");
-    private static readonly Color Outline = new("2a2a2a");
-
     public override void _Ready()
     {
         CollisionLayer = 1;
         CollisionMask = 0;
-        AddChild(new CollisionShape2D
+        AddChild(new CollisionShape3D
         {
-            Shape = new RectangleShape2D { Size = new Vector2(32, 20) },
-            Position = new Vector2(0, -8),
+            Shape = new CylinderShape3D { Radius = 1.1f, Height = 2f },
+            Position = new Vector3(0, 1f, 0),
         });
-    }
-
-    public override void _Draw()
-    {
-        DrawRect(new Rect2(-16, -18, 32, 18), Stone);
-        DrawRect(new Rect2(-16, -18, 32, 18), Outline, false, 1f);
-        DrawRect(new Rect2(-12, -16, 24, 8), Water);
-        DrawRect(new Rect2(-16, -4, 32, 4), StoneDark);
-        DrawRect(new Rect2(-14, -44, 3, 28), Wood);
-        DrawRect(new Rect2(11, -44, 3, 28), Wood);
-        var roof = new[] { new Vector2(-20, -42), new Vector2(20, -42), new Vector2(0, -56) };
-        DrawColoredPolygon(roof, Roof);
-        DrawPolyline(new[] { roof[0], roof[1], roof[2], roof[0] }, Outline, 1f);
+        Materials.Cylinder(this, 1.0f, 0.9f, new Vector3(0, 0.45f, 0), Materials.Flat(new Color("8f8f88")), "Rim");
+        Materials.Cylinder(this, 0.75f, 0.92f, new Vector3(0, 0.45f, 0), Materials.Flat(new Color("2f5f8f")), "Water");
+        var wood = Materials.Flat(new Color("6b4a2a"));
+        Materials.Box(this, new Vector3(0.15f, 2.0f, 0.15f), new Vector3(-0.85f, 1.0f, 0), wood, "PostL");
+        Materials.Box(this, new Vector3(0.15f, 2.0f, 0.15f), new Vector3(0.85f, 1.0f, 0), wood, "PostR");
+        var roof = new MeshInstance3D
+        {
+            Name = "Roof",
+            Mesh = new PrismMesh { Size = new Vector3(1.3f, 0.6f, 2.2f), LeftToRight = 0.5f },
+            MaterialOverride = Materials.Flat(new Color("8c4a3c")),
+            Position = new Vector3(0, 2.3f, 0),
+            RotationDegrees = new Vector3(0, 90, 0),
+        };
+        AddChild(roof);
     }
 }

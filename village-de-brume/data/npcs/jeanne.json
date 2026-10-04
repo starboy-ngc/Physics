@@ -2,9 +2,25 @@
   "id": "jeanne",
   "name": "Jeanne",
   "role": "Herboriste",
-  "personality": ["calme", "observatrice", "réservée"],
-  "appearance": {"tunic": "6a9a5a", "hair": "2a2a2a", "skin": "e8c0a0", "pants": "3a4a3a"},
-  "location": {"zone": "house_jeanne", "position": [128, 130], "facing": "down"},
-  "wander_radius": 24,
+  "personality": [
+    "calme",
+    "observatrice",
+    "réservée"
+  ],
+  "appearance": {
+    "tunic": "6a9a5a",
+    "hair": "2a2a2a",
+    "skin": "e8c0a0",
+    "pants": "3a4a3a"
+  },
+  "location": {
+    "zone": "house_jeanne",
+    "position": [
+      8,
+      8.125
+    ],
+    "facing": "down"
+  },
+  "wander_radius": 1.5,
   "dialogue": "res://data/dialogues/jeanne.json"
 }

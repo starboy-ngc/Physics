@@ -18,8 +18,8 @@ public partial class DoorTest : TestBase
         switch (_phase)
         {
             case 0:
-                // Depuis "start" (x=96) : se décaler vers la porte (x=128) puis descendre.
-                HoldOnly(p.GlobalPosition.X < 127f ? "move_right" : "move_down");
+                // Depuis "start" (x=6) : se décaler vers la porte (x=8) puis descendre (+Z).
+                HoldOnly(p.GlobalPosition.X < 7.95f ? "move_right" : "move_down");
                 if (Game.CurrentZoneId == "village")
                 {
                     ReleaseAll();

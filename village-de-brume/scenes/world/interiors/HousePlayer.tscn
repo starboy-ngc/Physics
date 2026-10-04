@@ -4,40 +4,39 @@
 [ext_resource type="PackedScene" path="res://scenes/world/props/Prop.tscn" id="2_prop"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/Door.tscn" id="3_door"]
 
-[node name="HousePlayer" type="Node2D"]
-y_sort_enabled = true
+[node name="HousePlayer" type="Node3D"]
 script = ExtResource("1_interior")
 ZoneName = "Ma maison"
-Bounds = Rect2(0, 0, 256, 192)
-WallTop = 28.0
-WallSides = 8.0
+Bounds = Rect2(0, 0, 16, 12)
+WallTop = 1.75
+WallSides = 0.5
 
-[node name="Spawns" type="Node2D" parent="."]
+[node name="Spawns" type="Node3D" parent="."]
 
-[node name="start" type="Marker2D" parent="Spawns"]
-position = Vector2(96, 124)
+[node name="start" type="Marker3D" parent="Spawns"]
+position = Vector3(6, 0, 7.75)
 
-[node name="entrance" type="Marker2D" parent="Spawns"]
-position = Vector2(128, 166)
+[node name="entrance" type="Marker3D" parent="Spawns"]
+position = Vector3(8, 0, 10.375)
 
 [node name="Bed" parent="." instance=ExtResource("2_prop")]
-position = Vector2(40, 100)
+position = Vector3(2.5, 0, 6.25)
 Kind = "bed"
 
 [node name="Table" parent="." instance=ExtResource("2_prop")]
-position = Vector2(128, 96)
+position = Vector3(8, 0, 6)
 Kind = "table"
 
 [node name="Chair" parent="." instance=ExtResource("2_prop")]
-position = Vector2(162, 94)
+position = Vector3(10.125, 0, 5.875)
 Kind = "chair"
 
 [node name="Chest" parent="." instance=ExtResource("2_prop")]
-position = Vector2(224, 72)
+position = Vector3(14, 0, 4.5)
 Kind = "chest"
 
 [node name="ExitDoor" parent="." instance=ExtResource("3_door")]
-position = Vector2(128, 184)
+position = Vector3(8, 0, 11.5)
 TargetZone = "village"
 TargetSpawn = "from_house_player"
 DrawMat = true

@@ -1,7 +1,9 @@
 # Village de Brume — prototype RPG (Godot 4.3 .NET, C#)
 
-Petit RPG d'exploration en vue 3/4 du dessus. Ce dossier est un projet Godot
-complet, écrit en **C#**.
+Petit RPG d'exploration en **2.5D** : décor en volumes 3D simples vu par une
+caméra en perspective inclinée, personnages en sprites 2D tournés vers la
+caméra, rendu interne en 256×192 agrandi en pixels entiers. Ce dossier est un
+projet Godot complet, écrit en **C#**.
 
 Prérequis :
 
@@ -10,9 +12,18 @@ Prérequis :
 
 ## État : ÉTAPE 2 — interactions, PNJ, dialogues statiques
 
-Format visuel : résolution interne 256×192 (façon console portable), agrandie
-par un facteur entier, tuiles de 16 px, personnages d'environ 24 px.
-Direction artistique originale, tout est dessiné en code.
+Format visuel (2.5D, façon RPG de console portable) :
+
+- le sol est le plan y = 0 ; 1 unité monde = 1 tuile de 16 px ; le village fait 48×36 ;
+- la caméra (`FollowCamera`) est inclinée de 55°, suit le joueur et reste dans
+  les limites de la zone (centrée dans les petites pièces) ;
+- maisons, meubles, arbres et puits sont des volumes (boîtes, prismes,
+  cylindres, sphères) avec des couleurs unies ou de petites textures pixel
+  générées en code (`Materials.cs`) ;
+- les personnages sont des `Sprite3D` face caméra dont la planche
+  (4 directions × 3 poses) est générée en code (`CharacterSprites.cs`) ;
+- rendu interne 256×192 (mode d'étirement « viewport ») pour le grain pixel.
+Direction artistique originale, aucun asset externe.
 
 Contenu de l'étape 2 :
 
@@ -31,13 +42,14 @@ Contenu de l'étape 2 :
 
 Contenu de l'étape 1 :
 
-- scène principale (`scenes/main/Main.tscn`) avec un joueur persistant ;
+- scène principale (`scenes/main/Main.tscn`) avec un joueur persistant, la
+  caméra et la lumière ;
 - village (4 maisons, place pavée, puits, chemins, arbres, panneau vers la forêt) ;
 - 4 intérieurs (maison du joueur avec lit, table, chaise, coffre ; boulangerie ;
   maison de Jeanne ; maison de Martin) ;
-- joueur : déplacement 4 directions, direction regardée, animation de marche simple ;
-- caméra qui suit le joueur, limitée aux bords de la zone (centrée dans les petites pièces) ;
-- collisions : murs, meubles, arbres, puits, bords de carte ;
+- joueur : déplacement 4 directions sur le plan, direction regardée, marche animée ;
+- caméra 2.5D qui suit le joueur, limitée aux bords de la zone ;
+- collisions 3D : murs, meubles, arbres, puits, bords de carte ;
 - portes : on entre/sort en marchant dessus, avec un fondu ;
 - panneau de debug (**F3**).
 
@@ -76,30 +88,33 @@ Chaque test doit afficher `OK` et se terminer avec le code 0.
 
 ```
 scenes/
-  main/Main.tscn            scène de départ : ZoneRoot + Player
-  player/Player.tscn        CharacterBody2D + Visual + Camera2D
+  main/Main.tscn            scène de départ : ZoneRoot + Player + FollowCamera + GameUI
+  player/Player.tscn        CharacterBody3D + Visual (sprite face caméra)
   npc/NPC.tscn              PNJ générique (rempli depuis data/npcs)
   ui/GameUI.tscn            invite d'interaction + boîte de dialogue
   world/Village.tscn        le village (instances de props + points d'apparition)
   world/interiors/*.tscn    les 4 intérieurs
-  world/props/*.tscn        Building, Door, Tree, Well, GroundPatch, Prop
+  world/props/*.tscn        Building, Door, Tree, Well, GroundPatch, Prop (volumes 3D)
 scripts/
-  systems/Game.cs           autoload Game : registre des zones, changement de zone, caméra
+  systems/Game.cs           autoload Game : registre des zones, changement de zone
+  systems/FollowCamera.cs   caméra 2.5D (inclinaison, suivi, limites, environnement)
   systems/DialogueManager.cs   autoload DialogueManager (événements C#)
   systems/DialogueData.cs   chargement/validation d'un dialogue JSON (System.Text.Json)
-  systems/Interactable.cs   base Interactable (Area2D, couche 3)
+  systems/Interactable.cs   base Interactable (Area3D, couche 3)
   systems/DebugOverlay.cs   autoload DebugOverlay (F3)
   systems/Main.cs           démarrage dans la maison du joueur
   npc/Npc.cs, NpcTalkArea.cs, NpcManager.cs, NpcData.cs   PNJ et autoload NpcManager
-  characters/CharacterVisual.cs   dessin partagé joueur / PNJ
+  characters/CharacterVisual.cs   sprite face caméra + ombre (joueur et PNJ)
+  characters/CharacterSprites.cs  génération de la planche de sprites
   ui/GameUI.cs              interface en jeu
   player/Player.cs          déplacement, direction, sonde d'interaction
-  world/Zone.cs             base Zone : nom, limites, murs invisibles, Spawns
-  world/Village.cs          herbe + arbres de bordure (générés)
-  world/Interior.cs         sol en planches + mur du fond
-  world/Building.cs         maison extérieure (crée sa porte)
+  world/Zone.cs             base Zone : nom, limites (x, z), murs invisibles, Spawns
+  world/Village.cs          sol d'herbe + arbres de bordure (générés)
+  world/Interior.cs         sol en planches, murs, mur du fond
+  world/Building.cs         maison en volumes (crée sa porte)
   world/Door.cs             zone de passage vers une autre zone
-  world/Prop.cs, TreeProp.cs, Well.cs, GroundPatch.cs   décor dessiné en code
+  world/Materials.cs        matériaux et textures procédurales partagés
+  world/Prop.cs, TreeProp.cs, Well.cs, GroundPatch.cs   décor en volumes
 data/npcs/*.json            fiches PNJ (nom, apparence, position, dialogue)
 data/dialogues/*.json       dialogues statiques
 tests/                      tests headless (scènes + scripts C#, base TestBase.cs)
@@ -107,21 +122,21 @@ VillageDeBrume.csproj / .sln   projet .NET (généré par Godot, versionné)
 docs/screenshots/           captures de référence
 ```
 
-Les graphismes sont dessinés en code (`_Draw`) : aucun asset externe pour
-l'instant, le dossier `assets/` est prêt pour les remplacer plus tard.
+Les graphismes sont construits en code : aucun asset externe pour l'instant,
+le dossier `assets/` est prêt pour accueillir de vrais modèles et sprites.
 
 ## Ajouter une zone (pour les étapes suivantes)
 
 1. Créer une scène dont la racine a le script `Zone.cs` (ou un dérivé) avec
-   `ZoneName` et `Bounds`, un noeud `Spawns` contenant des `Marker2D`.
+   `ZoneName` et `Bounds` (x, z en unités), un noeud `Spawns` contenant des `Marker3D`.
 2. L'enregistrer dans `Game.Zones` (`scripts/systems/Game.cs`).
 3. Placer une `Door` (ou un `Building` avec `DoorTargetZone`) qui pointe
    vers son identifiant et un nom de spawn.
 
 ## Ajouter un PNJ
 
-1. Créer `data/npcs/<id>.json` sur le modèle d'`emile.json` (zone, position,
-   couleurs, `wander_radius`, chemin du dialogue).
+1. Créer `data/npcs/<id>.json` sur le modèle d'`emile.json` (zone, position
+   [x, z] en unités, couleurs, `wander_radius`, chemin du dialogue).
 2. Créer `data/dialogues/<id>.json` : des noeuds avec `text`, et soit `next`,
    soit `choices` (liste de `{text, next}`). Un noeud sans `next` termine.
 3. C'est tout : `NpcManager` charge le dossier au démarrage.

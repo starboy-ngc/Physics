@@ -4,24 +4,25 @@
 [ext_resource type="Script" path="res://scripts/characters/CharacterVisual.cs" id="2_visual"]
 [ext_resource type="Script" path="res://scripts/npc/NpcTalkArea.cs" id="3_talk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_feet"]
-size = Vector2(12, 8)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_feet"]
+radius = 0.375
+height = 1.0
 
-[node name="NPC" type="CharacterBody2D"]
+[node name="NPC" type="CharacterBody3D"]
 collision_layer = 1
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_npc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_feet")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.5, 0)
+shape = SubResource("CylinderShape3D_feet")
 
-[node name="Visual" type="Node2D" parent="."]
+[node name="Visual" type="Node3D" parent="."]
 script = ExtResource("2_visual")
 
-[node name="TalkArea" type="Area2D" parent="."]
+[node name="TalkArea" type="Area3D" parent="."]
 script = ExtResource("3_talk")
 Prompt = "Parler"
-Size = Vector2(16, 30)
-Offset = Vector2(0, -9)
+Size = Vector3(1, 1.5, 1.9)
+Offset = Vector3(0, 0.75, -0.55)

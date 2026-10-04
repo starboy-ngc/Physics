@@ -92,7 +92,7 @@ public partial class NpcManager : Node
                 continue;
             var npc = _npcScene.Instantiate<Npc>();
             npc.Name = "NPC_" + id;
-            npc.Position = new Vector2(loc.Position[0], loc.Position[1]);
+            npc.Position = new Vector3(loc.Position[0], 0f, loc.Position[1]);
             npc.FacingDirection = CharacterVisual.FacingFromString(loc.Facing);
             zone.AddChild(npc);
             npc.ApplyData(data);

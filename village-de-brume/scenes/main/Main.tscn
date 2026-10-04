@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/Main.cs" id="1_main"]
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/ui/GameUI.tscn" id="3_ui"]
+[ext_resource type="Script" path="res://scripts/systems/FollowCamera.cs" id="3_camera"]
+[ext_resource type="PackedScene" path="res://scenes/ui/GameUI.tscn" id="4_ui"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
 
-[node name="ZoneRoot" type="Node2D" parent="."]
+[node name="ZoneRoot" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_player")]
 
-[node name="GameUI" parent="." instance=ExtResource("3_ui")]
+[node name="FollowCamera" type="Camera3D" parent="."]
+current = true
+script = ExtResource("3_camera")
+
+[node name="GameUI" parent="." instance=ExtResource("4_ui")]

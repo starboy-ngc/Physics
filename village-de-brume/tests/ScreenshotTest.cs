@@ -44,7 +44,7 @@ public partial class ScreenshotTest : TestBase
                 // Même zone : on déclenche le dialogue avec le PNJ présent.
                 if (Game.CurrentZone?.GetNodeOrNull<Npc>("NPC_emile") is { } npc)
                 {
-                    Game.Player.GlobalPosition = new Vector2(144, 112);
+                    Game.Player.GlobalPosition = new Vector3(9, 0, 7);
                     Game.Player.Face(CharacterVisual.Facing.Up);
                     npc.OnInteract(Game.Player);
                 }
