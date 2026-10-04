@@ -367,10 +367,10 @@ def basis_description(population: Population,
     reconstruisent pas, et ne peuvent donc pas annoncer une base que le
     moteur n'applique pas.
     """
-    from .metrics import _field_label
+    from .segmentation import field_label
 
     field_name = analysis_field(config)
-    label = _field_label(config, field_name)
+    label = field_label(config, field_name)
     connu = any(full_time_amount(employee, field_name) is not None
                 for employee in population)
     return {

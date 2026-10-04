@@ -272,10 +272,25 @@ FTE_COLUMN = "Temps de travail"
 #: formule qui ne s'ouvrira pas.
 FORMULA_MAX_CHARS = 6000
 
-#: Libelles des colonnes de remuneration, par champ du modele.
-_MONEY_COLUMNS = (("base_salary", "Salaire de base"),
-                  ("variable_pay", "Variable"),
-                  ("total_compensation", "Rémunération totale"))
+def _money_columns(config: Configuration) -> List[Tuple[str, str]]:
+    """Colonnes de remuneration du classeur : champ, puis libelle.
+
+    Les deux etaient ecrits en dur — trois champs, trois libelles
+    francais. Un fichier qui nomme sa colonne « Fixe annuel » voyait
+    quand meme « Salaire de base » en tete de l'export, et une quatrieme
+    colonne de montant declaree au mapping n'y apparaissait pas du tout.
+    La liste vient donc du mapping, et le libelle est celui que
+    l'utilisateur a declare.
+
+    Seuls les champs reellement numeriques sont retenus : un champ ecrit
+    dans « money » mais absent de « numeric » porterait du texte, et le
+    tableur en ferait une colonne monetaire illisible.
+    """
+    section = config.section("population_mapping")
+    numeriques = set(section.get("numeric", []) or [])
+    return [(champ, segmentation.field_label(config, champ))
+            for champ in (section.get("money", []) or [])
+            if champ in numeriques]
 
 
 def _sex_label(employee, config: Configuration) -> str:
@@ -320,7 +335,7 @@ def _rows_individual(
                + [entry["label"] for entry in dimensions]
                + [SEX_COLUMN, BIRTH_COLUMN, HIRE_COLUMN, LEAVE_COLUMN,
                   AGE_COLUMN, TENURE_COLUMN, FTE_COLUMN]
-               + [label for _, label in _MONEY_COLUMNS])
+               + [label for _, label in _money_columns(config)])
     rows: List[List[Any]] = [headers]
     naissance = fx.column_letter(len(dimensions) + 3)
     entree = fx.column_letter(len(dimensions) + 4)
@@ -339,7 +354,7 @@ def _rows_individual(
                             f"{sortie}{ligne}")
                if derived_as_formulas else employee.tenure_years,
                employee.fte]
-            + [employee.value(field) for field, _ in _MONEY_COLUMNS]
+            + [employee.value(field) for field, _ in _money_columns(config)]
         )
     return rows
 
@@ -703,7 +718,7 @@ def _salary_column(analysis: Dict[str, Any], config: Configuration,
     habitude.
     """
     champ = (analysis.get("salary") or {}).get("field") or analysis_field(config)
-    for field_name, label in _MONEY_COLUMNS:
+    for field_name, label in _money_columns(config):
         if field_name == champ and ledger.has(label):
             return label
     return None
@@ -785,9 +800,10 @@ def _rows_control_segments(ledger: fx.Ledger, analysis: Dict[str, Any],
     return rows
 
 
-def _money_column(field_name: str, ledger: fx.Ledger) -> Optional[str]:
+def _money_column(field_name: str, ledger: fx.Ledger,
+                  config: Configuration) -> Optional[str]:
     """Libelle de colonne d'un champ de remuneration, s'il est au classeur."""
-    for champ, label in _MONEY_COLUMNS:
+    for champ, label in _money_columns(config):
         if champ == field_name and ledger.has(label):
             return label
     return None
@@ -953,7 +969,9 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
     # aucune formule. Un ecart publie au titre d'un texte doit se refaire
     # comme les autres.
     variable = equity.get("variable") or {}
-    colonne_variable = _money_column("variable_pay", ledger)
+    colonne_variable = _money_column(
+        config.get("pay_equity_parameters.variable_field", "variable_pay"),
+        ledger, config)
     if variable.get("published") and colonne_variable is not None:
         _poser_couple(poser, ledger, "Part variable", colonne_variable,
                       variable, femme, homme)

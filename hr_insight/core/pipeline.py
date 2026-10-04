@@ -96,7 +96,9 @@ def load_population(
         progress.enter("lecture")
     table = read_table(source_path, sheet,
                        progress.within if progress else None,
-                       max_uncompressed=_uncompressed_limit(config))
+                       max_uncompressed=_uncompressed_limit(config),
+                       encodings=config.get("population_mapping.encodings")
+                       or None)
     log_event("import", "read_table", duration=_time.perf_counter() - started,
               detail=f"rows={table.row_count}")
 
@@ -270,7 +272,8 @@ def _run(request: AnalysisRequest, progress: "_Progress") -> AnalysisResult:
     )
 
     progress.enter("qualite")
-    quality = run_quality_check(population, mapping, config)
+    quality = run_quality_check(population, mapping, config,
+                                encoding=getattr(table, "encoding", ""))
     log_event(
         "quality", "run_check", status=quality.status,
         detail=(f"critical={quality.critical_count};warnings={quality.warning_count}"),

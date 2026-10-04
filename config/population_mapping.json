@@ -144,13 +144,15 @@
       "label": "Tranche d'ancienneté"
     }
   ],
-  "required": [
-    "employee_id",
-    "base_salary"
-  ],
+  "required": [],
   "numeric": [
     "coefficient",
     "fte",
+    "base_salary",
+    "variable_pay",
+    "total_compensation"
+  ],
+  "money": [
     "base_salary",
     "variable_pay",
     "total_compensation"
@@ -165,6 +167,10 @@
     "first_name",
     "birth_date",
     "employee_id"
+  ],
+  "encodings": [
+    "utf-8-sig",
+    "cp1252"
   ],
   "max_filter_values": 60,
   "max_uncompressed_mb": 512

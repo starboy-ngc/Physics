@@ -47,9 +47,29 @@ Date de sortie, BU, Pays, Établissement, Métier, Famille métier, Grade,
 Coefficient, Statut, Temps de travail, Salaire de base, Variable,
 Rémunération totale.
 
-Seules **Matricule** et **Salaire de base** sont obligatoires. La casse et les
-accents n'ont pas d'importance. Si vos en-têtes diffèrent, ajoutez-les dans
-`config/population_mapping.json` — sans toucher au logiciel.
+**Une seule colonne est obligatoire : celle que vous analysez.** Par défaut
+c'est le salaire de base ; si vous réglez l'analyse sur la rémunération
+totale, c'est elle qui devient obligatoire et le salaire de base cesse de
+l'être. L'outil n'exige donc jamais une colonne que votre fichier ne porte
+pas pour une analyse que vous ne faites pas.
+
+Tout le reste enrichit sans contraindre. Sans matricule, l'analyse tourne :
+le contrôle qualité signale simplement que le suivi des doublons n'est pas
+possible — un fichier anonymisé en amont reste exploitable. Sans date de
+naissance, pas de pyramide des âges, et c'est tout.
+
+Si votre organisation veut imposer sa propre discipline — un matricule, un
+établissement — inscrivez ces champs dans `required`, au mapping.
+
+La casse et les accents n'ont pas d'importance. Si vos en-têtes diffèrent,
+associez-les depuis l'écran « Associer les colonnes… » (voir § 4 bis) ou
+dans `config/population_mapping.json` — sans toucher au logiciel.
+
+**Encodage.** Un CSV est lu en UTF-8, et à défaut en Windows-1252, celui
+qu'Excel et la plupart des SIRH français produisent. Vous n'avez donc rien à
+réenregistrer avant d'analyser. Quand le second sert, le contrôle qualité le
+dit : vérifiez alors les accents des libellés. La liste des encodages
+essayés se règle dans `encodings`, au mapping.
 
 ## 2. Vérifier que les colonnes sont reconnues
 

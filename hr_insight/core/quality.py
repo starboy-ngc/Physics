@@ -115,12 +115,22 @@ def run_quality_check(
     population: Population,
     mapping: MappingResult,
     config: Configuration,
+    encoding: str = "",
 ) -> QualityReport:
-    """Execute l'ensemble des controles structure / dates / remuneration."""
+    """Execute l'ensemble des controles structure / dates / remuneration.
+
+    `encoding` est celui que le lecteur a reellement employe. Il entre
+    dans le controle parce qu'un repli sur un autre encodage que l'UTF-8
+    est une supposition : elle est juste neuf fois sur dix, et la
+    dixieme elle remplace les accents sans rien casser — un fichier qui
+    s'analyse normalement, avec « MULLER » devenu « MÜLLER » autrement.
+    Ce n'est pas une erreur, c'est un constat a verifier.
+    """
     report = QualityReport(
         imported_rows=population.raw_row_count,
         retained_rows=len(population),
     )
+    _check_encoding(encoding, config, report)
     _check_structure(population, mapping, report)
     _check_population(population, report)
     _check_dates(population, report)
@@ -135,6 +145,30 @@ def _add(report: QualityReport, code: str, severity: str, message: str,
     report.findings.append(
         Finding(code=code, severity=severity, message=message,
                 count=len(rows), rows=sorted(rows))
+    )
+
+
+def _check_encoding(encoding: str, config: Configuration,
+                    report: QualityReport) -> None:
+    """Signale la lecture d'un CSV sous un encodage de repli."""
+    declares = [str(nom) for nom
+                in (config.get("population_mapping.encodings") or []) if nom]
+    # Sans encodage (un classeur) ou avec le premier de la liste (le cas
+    # normal), il n'y a rien a dire.
+    if not encoding or not declares or encoding == declares[0]:
+        return
+    report.findings.append(
+        Finding(
+            code="fallback_encoding",
+            severity=INFO,
+            message=(
+                f"Le fichier n'est pas en {declares[0]} : il a été lu en "
+                f"{encoding}. Vérifiez les accents des libellés — en cas "
+                "de doute, réenregistrez le fichier au format "
+                "\"CSV UTF-8\" depuis Excel."
+            ),
+            count=0,
+        )
     )
 
 

@@ -132,17 +132,33 @@ class TestRefusals(SettingsCase):
         self.assertIn("Salaire de base", caught.exception.message)
         self.assertIn("Prime de panier", caught.exception.message)
 
-    def test_detaching_a_required_field_is_refused(self):
+    def test_detaching_the_analysed_pay_is_refused(self):
         """Un champ obligatoire garde volontiers d'autres orthographes,
         prevues pour d'autres fichiers : ce qui compte est qu'une colonne
-        *de ce fichier* le porte."""
+        *de ce fichier* le porte.
+
+        L'ecran applique la regle du moteur et non la liste brute, qui est
+        vide par defaut : sans cela il aurait laisse detacher la colonne
+        de remuneration pour n'echouer qu'a l'analyse suivante.
+        """
         from hr_insight.core.errors import CompensationError
         from hr_insight.ui.settings import IGNORED
 
-        self.assign("Matricule", IGNORED)
+        self.assign("Salaire de base", IGNORED)
         with self.assertRaises(CompensationError) as caught:
             self.window.collect()
-        self.assertIn("employee_id", caught.exception.message)
+        self.assertIn("Salaire de base", caught.exception.message)
+        self.assertNotIn("base_salary", caught.exception.message)
+
+    def test_detaching_an_identifier_is_allowed(self):
+        """Le matricule n'est plus exige : un fichier anonymise en amont
+        reste analysable, et l'ecran ne doit pas l'interdire."""
+        from hr_insight.ui.settings import IGNORED
+
+        self.assign("Matricule", IGNORED)
+        section = self.window.collect()
+        self.assertNotIn("Matricule",
+                         section["fields"].get("employee_id", []))
 
     def test_an_ignored_column_stops_being_an_alias(self):
         """L'ecran disait « ignoree » et la colonne restait declaree dans

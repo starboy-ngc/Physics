@@ -30,6 +30,19 @@ _EXCEL_EPOCH = _dt.date(1899, 12, 30)
 
 MAX_CSV_SNIFF_BYTES = 8192
 
+#: Encodages essayes a la lecture d'un CSV, dans l'ordre. L'UTF-8 d'abord,
+#: parce que c'est ce qu'un export propre produit ; puis le cp1252, parce
+#: que c'est ce que produisent la plupart des SIRH francais et Excel en
+#: « CSV (séparateur point-virgule) ». Refuser le second revenait a
+#: demander a l'utilisateur de reenregistrer son fichier avant de pouvoir
+#: s'en servir — une contrainte qui n'a rien d'analytique.
+#:
+#: L'ordre compte et ne doit pas s'inverser : le cp1252 accepte presque
+#: toute suite d'octets, donc il reussirait sur un fichier UTF-8 en le
+#: transformant en « Ã© ». L'UTF-8, lui, echoue franchement sur du cp1252.
+#: Essaye en premier, il ne peut pas se tromper.
+DEFAULT_ENCODINGS = ("utf-8-sig", "cp1252")
+
 #: Plafond de taille d'un morceau de classeur *une fois decompresse*, en
 #: octets. Un fichier .xlsx est une archive : trois megaoctets sur le disque
 #: peuvent en faire trois milliards en memoire, et la machine n'a alors plus
@@ -61,6 +74,11 @@ class Table:
     headers: List[str]
     rows: List[List[Any]] = field(default_factory=list)
     source_name: str = ""
+    #: Encodage effectivement employe a la lecture. Vide pour un classeur,
+    #: dont l'encodage est fixe par le format. Il est publie parce qu'un
+    #: repli silencieux sur le cp1252 changerait les accents sans que
+    #: personne le sache.
+    encoding: str = ""
 
     @property
     def row_count(self) -> int:
@@ -69,7 +87,8 @@ class Table:
 
 def read_table(path: str, sheet: str | None = None,
                progress: Optional[Progress] = None,
-               max_uncompressed: Optional[int] = None) -> Table:
+               max_uncompressed: Optional[int] = None,
+               encodings: Optional[Sequence[str]] = None) -> Table:
     """Point d'entree unique d'import.
 
     `progress` est appele au fil de la lecture avec la part du fichier deja
@@ -87,7 +106,7 @@ def read_table(path: str, sheet: str | None = None,
         )
     extension = os.path.splitext(path)[1].lower()
     if extension in (".csv", ".txt"):
-        return _read_csv(path, progress)
+        return _read_csv(path, progress, encodings)
     if extension in (".xlsx", ".xlsm"):
         return _read_xlsx(path, sheet, progress, max_uncompressed)
     raise ImportError_(
@@ -100,10 +119,38 @@ def read_table(path: str, sheet: str | None = None,
 # --------------------------------------------------------------------------- CSV
 
 
-def _read_csv(path: str, progress: Optional[Progress] = None) -> Table:
+def _read_csv(path: str, progress: Optional[Progress] = None,
+              encodings: Optional[Sequence[str]] = None) -> Table:
+    """Lit un CSV en essayant les encodages declares, dans l'ordre.
+
+    Chaque tentative repart du debut du fichier : un encodage ne se
+    constate qu'a la lecture, et un octet mal forme peut n'arriver qu'a
+    la millieme ligne — sur un nom accentue, precisement.
+    """
+    essais = [str(nom) for nom in (encodings or DEFAULT_ENCODINGS) if nom]
+    derniere: Optional[UnicodeDecodeError] = None
+    for rang, encodage in enumerate(essais):
+        try:
+            return _read_csv_as(path, encodage, progress)
+        except UnicodeDecodeError as exc:
+            derniere = exc
+            # Le dernier encodage de la liste a echoue : plus rien a
+            # essayer, et le message doit le dire en clair.
+            if rang == len(essais) - 1:
+                break
+    raise ImportError_(
+        "Le fichier CSV n'a pas pu être lu : son encodage n'est aucun de "
+        f"ceux que l'outil essaie ({', '.join(essais)}). Réenregistrez-le "
+        "au format \"CSV UTF-8\" depuis Excel.",
+        technical=f"{type(derniere).__name__}: {derniere}",
+    ) from derniere
+
+
+def _read_csv_as(path: str, encodage: str,
+                 progress: Optional[Progress] = None) -> Table:
     try:
         taille = os.path.getsize(path) or 1
-        with open(path, "r", encoding="utf-8-sig", newline="") as handle:
+        with open(path, "r", encoding=encodage, newline="") as handle:
             sample = handle.read(MAX_CSV_SNIFF_BYTES)
             handle.seek(0)
             delimiter = _sniff_delimiter(sample)
@@ -126,12 +173,6 @@ def _read_csv(path: str, progress: Optional[Progress] = None) -> Table:
             "Le fichier CSV n'a pas pu être ouvert.",
             technical=f"{type(exc).__name__}: {exc}",
         ) from exc
-    except UnicodeDecodeError as exc:
-        raise ImportError_(
-            "Le fichier CSV n'est pas encodé en UTF-8. "
-            "Enregistrez-le au format \"CSV UTF-8\" depuis Excel.",
-            technical=f"{type(exc).__name__}: {exc}",
-        ) from exc
     except csv.Error as exc:
         # Une cellule de deux cents megaoctets, un guillemet jamais referme :
         # le lecteur de Python s'arrete sur « field larger than field
@@ -151,7 +192,8 @@ def _read_csv(path: str, progress: Optional[Progress] = None) -> Table:
     keep = _named_columns(rows[0])
     headers = [str(rows[0][index]).strip() for index in keep]
     body = _select(rows[1:], keep)
-    return Table(headers=headers, rows=body, source_name=os.path.basename(path))
+    return Table(headers=headers, rows=body,
+                 source_name=os.path.basename(path), encoding=encodage)
 
 
 def _sniff_delimiter(sample: str) -> str:

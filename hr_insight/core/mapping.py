@@ -39,11 +39,38 @@ class MappingResult:
         return field_name in self.field_to_index
 
 
+def required_fields(config: Configuration) -> List[str]:
+    """Les colonnes sans lesquelles l'analyse n'a pas d'objet.
+
+    Il y en a une, et elle n'est pas nommee ici : c'est le champ de
+    remuneration que la configuration designe comme champ d'analyse. Un
+    outil d'analyse de remuneration sans remuneration n'analyse rien.
+
+    Elle etait ecrite en dur — « base_salary » — a cote d'un reglage qui
+    permettait d'analyser un autre champ. Un fichier ne portant que la
+    remuneration totale etait refuse au motif qu'il manquait « Salaire de
+    base », une colonne dont son auteur n'avait jamais entendu parler. La
+    contrainte suit desormais le reglage au lieu de le contredire.
+
+    Tout le reste s'ajoute par declaration : `population_mapping.required`
+    reste lu, pour une organisation qui veut imposer sa propre discipline
+    — un matricule, un etablissement. L'outil, lui, n'en impose aucune :
+    il signale ce qui manque et continue avec ce qu'il a.
+    """
+    section = config.section("population_mapping")
+    declarees = [str(nom) for nom in (section.get("required") or [])]
+    analyse = str(config.get("salary_parameters.analysis_field",
+                             "base_salary"))
+    if analyse and analyse not in declarees:
+        declarees.append(analyse)
+    return declarees
+
+
 def resolve_mapping(headers: List[str], config: Configuration) -> MappingResult:
     """Associe chaque en-tete du fichier a un champ normalise."""
     section = config.section("population_mapping")
     fields: Dict[str, List[str]] = section.get("fields", {})
-    required: List[str] = section.get("required", [])
+    required: List[str] = required_fields(config)
 
     alias_to_field: Dict[str, str] = {}
     for field_name, aliases in fields.items():
@@ -85,11 +112,18 @@ def ensure_required(result: MappingResult, config: Configuration) -> None:
     labels = []
     for name in result.missing_required:
         aliases = fields.get(name) or [name]
-        labels.append(f'"{aliases[0]}"')
-    listed = ", ".join(labels)
+        # Toutes les ecritures acceptees, et jamais le nom technique du
+        # champ : « base_salary » n'apprend rien a qui cherche sa colonne
+        # dans un fichier de paie. L'utilisateur voit du premier coup
+        # d'oeil s'il lui suffit de renommer la sienne.
+        principal = f"« {aliases[0]} »"
+        autres = ", ".join(f"« {alias} »" for alias in aliases[1:])
+        labels.append(f"{principal} (ou {autres})" if autres else principal)
+    listed = " ; ".join(labels)
     raise MappingError(
-        f"Les colonnes suivantes n'ont pas pu être identifiées : {listed}. "
-        "Veuillez vérifier le mapping des colonnes d'import "
-        "(config/population_mapping.json).",
+        "L'analyse a besoin d'une colonne qui n'a pas été reconnue dans "
+        f"votre fichier : {listed}. Renommez la colonne correspondante, ou "
+        "ajoutez son intitulé au mapping des colonnes (onglet Paramètres, "
+        "« Colonnes du fichier »).",
         technical=f"missing required fields: {result.missing_required}",
     )

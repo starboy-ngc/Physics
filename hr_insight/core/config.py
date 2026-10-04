@@ -84,10 +84,27 @@ DEFAULTS: Dict[str, Any] = {
             {"field": "age_band", "label": "Tranche d'âge"},
             {"field": "tenure_band", "label": "Tranche d'ancienneté"},
         ],
-        "required": ["employee_id", "base_salary"],
+        # Colonnes exigees en plus du champ d'analyse, que le moteur
+        # ajoute toujours (voir `mapping.required_fields`). La liste est
+        # vide : l'outil n'impose qu'une colonne, celle qui porte la
+        # remuneration analysee. Une organisation qui veut imposer sa
+        # propre discipline — un matricule, un etablissement — l'ecrit
+        # ici. Sans matricule, le controle qualite dit que le suivi des
+        # doublons n'est pas possible, et l'analyse se poursuit.
+        "required": [],
         "numeric": ["coefficient", "fte", "base_salary", "variable_pay", "total_compensation"],
+        # Parmi les champs numeriques, ceux qui portent un montant. Ils
+        # s'ecrivent en monnaie dans les exports et recoivent une colonne
+        # dans l'onglet des donnees individuelles. « coefficient » et
+        # « fte » sont numeriques sans etre des montants : ecrits en euros
+        # ils ne voudraient rien dire.
+        "money": ["base_salary", "variable_pay", "total_compensation"],
         "date": ["birth_date", "hire_date", "leave_date"],
         "personal": ["last_name", "first_name", "birth_date", "employee_id"],
+        # Encodages essayes a la lecture d'un CSV, dans l'ordre. Voir
+        # `tabular.DEFAULT_ENCODINGS` : l'ordre compte, l'UTF-8 doit venir
+        # en premier parce qu'il est le seul a echouer franchement.
+        "encodings": ["utf-8-sig", "cp1252"],
         # Au-dela de ce nombre de valeurs distinctes, une liste deroulante
         # n'est plus utilisable : la dimension reste analysable, mais n'est
         # pas proposee comme filtre dans l'interface.

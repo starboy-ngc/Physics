@@ -925,7 +925,14 @@ class SettingsWindow(tk.Toplevel):
             self.configuration.section("population_mapping"),
             assignments, flags, limit)
 
-        required = section.get("required") or []
+        # La meme regle que le moteur, et non la liste brute : celle-ci est
+        # vide par defaut, et l'ecran aurait laisse detacher la colonne de
+        # remuneration pour n'echouer qu'a l'analyse suivante.
+        from ..core.mapping import required_fields
+
+        données = self.configuration.as_dict()
+        données["population_mapping"] = section
+        required = required_fields(Configuration(données))
         # Ce qui compte est qu'une colonne *de ce fichier* porte le champ,
         # et non qu'il subsiste une orthographe dans les parametres : un
         # champ obligatoire garde volontiers d'autres alias, prevus pour
@@ -934,9 +941,12 @@ class SettingsWindow(tk.Toplevel):
         missing = ([name for name in required if name not in used]
                    if self.headers else [])
         if missing:
+            # Le libelle, jamais le nom technique : « base_salary » ne dit
+            # rien a qui cherche sa colonne dans un fichier de paie.
+            noms = ", ".join(f"« {self._label_of(name)} »" for name in missing)
             raise CompensationError(
-                "Les champs obligatoires suivants ne sont plus associés à "
-                f"aucune colonne : {', '.join(missing)}.",
+                "L'analyse a besoin de ces champs, et plus aucune colonne "
+                f"ne les porte : {noms}.",
                 technical=f"required fields unmapped: {missing}",
             )
         return section

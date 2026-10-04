@@ -16,7 +16,8 @@ from .config import Configuration, analysis_field, percentiles as configured_per
 from .normalize import Employee, Population, full_time_amount
 from .errors import ConfigError
 from .segmentation import (UNKNOWN_LABEL, dimension_fields,
-                           dimension_label, personal_fields, split_by)
+                           dimension_label, field_label, personal_fields,
+                           split_by)
 from . import statistics_engine as stats
 
 MASK_REASON = "Effectif insuffisant : résultat masqué pour préserver la confidentialité."
@@ -297,7 +298,7 @@ def calculate_amount_metrics(
     headcount = len(values) if headcount is None else headcount
     result: Dict[str, Any] = {
         "field": field_name,
-        "field_label": _field_label(config, field_name),
+        "field_label": field_label(config, field_name),
         "currency": config.get("salary_parameters.currency", "EUR"),
         "headcount": headcount,
         "valued_headcount": len(values),
@@ -350,13 +351,6 @@ def _full_time_block(population: Population, field_name: str,
     return bloc
 
 
-def _field_label(config: Configuration, field_name: str) -> str:
-    """Libelle metier d'un champ : le premier alias declare au mapping.
-
-    Un ecran RH ne doit jamais afficher "base_salary" mais "Salaire de base".
-    """
-    aliases = (config.get("population_mapping.fields", {}) or {}).get(field_name)
-    return aliases[0] if aliases else field_name
 
 
 def _percentile_key(rank: float) -> str:
@@ -847,7 +841,7 @@ def scatter_axes(config: Configuration) -> List[Dict[str, str]]:
         if not champ or champ in personnels:
             continue
         axes.append({"field": champ,
-                     "label": entry.get("label") or _field_label(config, champ),
+                     "label": entry.get("label") or field_label(config, champ),
                      "kind": entry.get("kind") or DEFAULT_AXIS_KIND})
     return axes
 
@@ -857,7 +851,7 @@ def _axis_of(config: Configuration, field_name: str) -> Dict[str, str]:
     for axis in scatter_axes(config):
         if axis["field"] == field_name:
             return axis
-    return {"field": field_name, "label": _field_label(config, field_name),
+    return {"field": field_name, "label": field_label(config, field_name),
             "kind": "years" if field_name.endswith("_years")
             else DEFAULT_AXIS_KIND}
 

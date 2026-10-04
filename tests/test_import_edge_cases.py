@@ -161,16 +161,57 @@ class TestCsvRefusals(ImportCase):
             read_table(self.csv("vide.csv", ""))
         self.assertIn("vide", caught.exception.message.lower())
 
-    def test_a_file_that_is_not_utf8_names_the_remedy(self):
+    def test_a_windows_file_is_read_and_not_refused(self):
         """Le cas le plus frequent en France : un CSV enregistre en
-        Windows-1252. Le message doit dire quoi faire, pas « codec »."""
+        Windows-1252 par Excel ou par un SIRH. Il etait refuse, ce qui
+        obligeait a reenregistrer le fichier avant de pouvoir s'en
+        servir — une contrainte qui n'a rien d'analytique."""
         path = os.path.join(self.directory, "cp1252.csv")
         with open(path, "wb") as handle:
             handle.write("Matricule;Établissement\nE1;Siège\n".encode("cp1252"))
+        table = read_table(path)
+        self.assertEqual(table.headers, ["Matricule", "Établissement"])
+        self.assertEqual(table.rows, [["E1", "Siège"]])
+
+    def test_the_encoding_used_is_published(self):
+        """Un repli silencieux remplacerait les accents sans que personne
+        le sache : le lecteur dit sous quel encodage il a lu."""
+        utf8 = self.csv("utf8.csv", "Matricule;Établissement\nE1;Siège\n")
+        self.assertEqual(read_table(utf8).encoding, "utf-8-sig")
+        path = os.path.join(self.directory, "windows.csv")
+        with open(path, "wb") as handle:
+            handle.write("Matricule;Établissement\nE1;Siège\n".encode("cp1252"))
+        self.assertEqual(read_table(path).encoding, "cp1252")
+
+    def test_utf8_is_tried_first_and_wins(self):
+        """L'ordre n'est pas indifferent : le cp1252 accepte presque toute
+        suite d'octets, donc essaye en premier il lirait « Siège » comme
+        « SiÃ¨ge » sans jamais echouer."""
+        path = self.csv("accents.csv", "Matricule;Ville\nE1;Créteil\n")
+        table = read_table(path)
+        self.assertEqual(table.rows, [["E1", "Créteil"]])
+
+    def test_a_file_in_no_known_encoding_names_the_remedy(self):
+        """0x81 n'existe ni en UTF-8 ni en cp1252. Le message doit dire
+        quoi faire, pas « codec »."""
+        path = os.path.join(self.directory, "illisible.csv")
+        with open(path, "wb") as handle:
+            handle.write(b"Matricule;Ville\nE1;\x81\x90\n")
         with self.assertRaises(ImportError_) as caught:
             read_table(path)
         self.assertIn("UTF-8", caught.exception.message)
         self.assertIn("Excel", caught.exception.message)
+
+    def test_the_list_of_encodings_is_configurable(self):
+        """Une organisation qui n'exporte qu'en UTF-8 peut refermer la
+        porte, et une autre ajouter l'encodage de son SIRH."""
+        path = os.path.join(self.directory, "strict.csv")
+        with open(path, "wb") as handle:
+            handle.write("Matricule;Ville\nE1;Créteil\n".encode("cp1252"))
+        with self.assertRaises(ImportError_):
+            read_table(path, encodings=["utf-8-sig"])
+        table = read_table(path, encodings=["utf-8-sig", "latin-1"])
+        self.assertEqual(table.encoding, "latin-1")
 
     def test_a_missing_file_is_refused(self):
         with self.assertRaises(ImportError_):

@@ -258,6 +258,24 @@ def dimension_label(config: Configuration, field_name: str) -> str:
     return dimension_labels(config).get(field_name, field_name)
 
 
+def field_label(config: Configuration, field_name: str) -> str:
+    """Libelle metier d'un champ : le premier alias declare au mapping.
+
+    Un ecran RH, un en-tete de colonne ou un titre de graphique ne doit
+    jamais afficher « base_salary » mais « Salaire de base » — et pas un
+    libelle francais ecrit dans le code, qui mentirait des qu'un fichier
+    nomme sa colonne autrement : celui que l'utilisateur a declare.
+
+    Une dimension garde le libelle qu'elle se donne, qui peut differer de
+    l'en-tete du fichier — « BU » pour une colonne « Business Unit ».
+    """
+    etiquettes = dimension_labels(config)
+    if field_name in etiquettes:
+        return etiquettes[field_name]
+    alias = (config.get("population_mapping.fields", {}) or {}).get(field_name)
+    return alias[0] if alias else field_name
+
+
 def filterable_fields(config: Optional[Configuration] = None) -> List[str]:
     """Champs sur lesquels un filtre a un sens.
 

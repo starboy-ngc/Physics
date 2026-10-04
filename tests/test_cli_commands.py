@@ -235,14 +235,26 @@ class TestMapping(CommandCase):
         self.assertIn("Prime de panier", text)
         self.assertIn("non reconnues", text)
 
-    def test_a_missing_required_column_returns_one(self):
+    def test_a_file_without_the_analysed_pay_returns_one(self):
+        """La seule colonne dont l'outil ne peut pas se passer."""
+        path = os.path.join(self.directory, "sans-remuneration.csv")
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write("Matricule;Nom\nE001;X\n")
+        code, text, _ = run(["--logs", self.logs, "mapping", path])
+        self.assertEqual(code, 1)
+        self.assertIn("obligatoires manquantes", text)
+        self.assertIn("base_salary", text)
+
+    def test_a_file_without_an_identifier_is_accepted(self):
+        """Le matricule n'est plus exige : son absence prive l'outil du
+        suivi des doublons, ce que le controle qualite dit, et rien de
+        plus. Un fichier anonymise en amont reste analysable."""
         path = os.path.join(self.directory, "sans-matricule.csv")
         with open(path, "w", encoding="utf-8") as handle:
             handle.write("Nom;Salaire de base\nX;40000\n")
         code, text, _ = run(["--logs", self.logs, "mapping", path])
-        self.assertEqual(code, 1)
-        self.assertIn("obligatoires manquantes", text)
-        self.assertIn("employee_id", text)
+        self.assertEqual(code, 0)
+        self.assertNotIn("obligatoires manquantes", text)
 
 
 class TestConfig(CommandCase):
