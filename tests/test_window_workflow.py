@@ -723,11 +723,11 @@ class TestMappingAColumnFromTheWindow(WindowCase):
             if fenêtre.winfo_exists():
                 fenêtre.destroy()
         self.analyse()
-        self.app.tabbar.select("equite")
+        # La page des écarts a été vidée : la dimension se vérifie là où
+        # elle sert encore, sur la dispersion par segment.
+        self.app.tabbar.select("graphique")
         self.app.update()
-        self.assertIn("direction", self.app._category_fields)
-        self.assertIn("Direction",
-                      list(self.app.category_choice.cget("values")))
+        self.assertIn("Direction", list(self.app.box_choice.cget("values")))
 
 
 class TestTheOrganisationChart(WindowCase):
