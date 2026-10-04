@@ -26,7 +26,7 @@ from ..core import palette
 from ..core.mapping import normalise_label
 from ..core.segmentation import CORE_FIELDS, max_filter_values
 from . import theme
-from .theme import (Card, CheckRow, Fonts, attach_scrollbar,
+from .theme import (Card, CheckRow, Fonts, TabBar, attach_scrollbar,
                     bind_wheel)
 
 #: Champ conserve mais jamais associe a une colonne.
@@ -201,24 +201,43 @@ class SettingsWindow(tk.Toplevel):
 
     # ------------------------------------------------------------- montage
 
+    #: Les quatre sujets de cette fenetre, dans l'ordre ou l'on s'en sert :
+    #: on associe d'abord ses colonnes, puis on regle ce qui se publie, ce
+    #: qui s'exporte, et enfin l'apparence.
+    SECTIONS = (("colonnes", "Colonnes du fichier"),
+                ("confidentialite", "Confidentialité"),
+                ("export", "Export"),
+                ("apparence", "Apparence"))
+
+    #: Ce que chaque section enregistre. La phrase se lit sous la barre :
+    #: savoir ou part un reglage fait partie du reglage.
+    FICHIERS = {
+        "colonnes": "population_mapping.json",
+        "confidentialite": "privacy_parameters.json",
+        "export": "export_parameters.json",
+        "apparence": "theme_parameters.json",
+    }
+
     def _build(self) -> None:
+        """Quatre sujets, quatre pages.
+
+        Les cinq sections s'empilaient dans une seule colonne defilante :
+        pour changer un seuil de confidentialite, il fallait traverser
+        vingt-deux lignes de colonnes et deux paragraphes sur l'export. On
+        ne cherchait pas un reglage, on le retrouvait.
+        """
         head = tk.Frame(self, background=theme.CANVAS)
         head.pack(fill="x")
-        tk.Label(head, text="Champs, filtres et affichage",
-                 background=theme.CANVAS,
-                 foreground=theme.INK, font=self.fonts.title).pack(anchor="w",
-                                                             padx=22, pady=(18, 2))
-        tk.Label(head, text="Ces réglages décident de ce qui vous sera "
-                            "proposé dans la fenêtre principale ; ils ne "
-                            "retirent aucun salarié. Ils sont enregistrés "
-                            "dans population_mapping.json, "
-                            "privacy_parameters.json, export_parameters.json "
-                            "et theme_parameters.json, et restent "
-                            "modifiables au bloc-notes.",
-                 background=theme.CANVAS, foreground=theme.MUTED, font=self.fonts.small,
-                 wraplength=900, justify="left").pack(anchor="w", padx=22,
-                                                      pady=(0, 16))
-        tk.Frame(head, height=1, background=theme.LINE).pack(fill="x")
+        tk.Label(head, text="Paramètres", background=theme.CANVAS,
+                 foreground=theme.INK,
+                 font=self.fonts.title).pack(anchor="w", padx=22,
+                                             pady=(18, 10))
+        self.tabbar = TabBar(head, self.fonts, on_change=self._show_section)
+        self.tabbar.pack(fill="x", padx=22)
+        self.origin = tk.Label(head, text="", background=theme.CANVAS,
+                               foreground=theme.FAINT, font=self.fonts.small,
+                               justify="left")
+        self.origin.pack(anchor="w", padx=22, pady=(8, 10))
 
         actions = tk.Frame(self, background=theme.GROUND)
         actions.pack(side="bottom", fill="x", padx=22, pady=16)
@@ -231,19 +250,35 @@ class SettingsWindow(tk.Toplevel):
                                  justify="left", wraplength=520)
         self.feedback.pack(side="left")
 
-        # Toute la fenetre defile. Empilees en hauteur fixe, les cinq
-        # sections se partageaient la place au prorata de ce qui restait :
-        # sur un ecran ordinaire, les colonnes du fichier — ce que cette
-        # fenetre existe pour regler — tombaient a deux pixels de haut,
-        # intitule compris. Ce n'etait pas une maladresse d'affichage :
-        # la fonction devenait introuvable.
-        page = self._scrollable(self, background=theme.GROUND)
+        # Le corps : un cadre par section, un seul empile a la fois. Chacun
+        # defile pour son compte, et la barre d'onglets reste visible.
+        self.body = tk.Frame(self, background=theme.GROUND)
+        self.body.pack(fill="both", expand=True)
+        self.pages: Dict[str, tk.Frame] = {}
+        for clef, intitule in self.SECTIONS:
+            self.pages[clef] = tk.Frame(self.body, background=theme.GROUND)
+            self.tabbar.add(clef, intitule)
+
         self._prepare_dimensions()
-        self._build_columns(page)
-        self._build_dimensions(page)
-        self._build_export(page)
-        self._build_privacy(page)
-        self._build_theme(page)
+        colonnes = self._scrollable(self.pages["colonnes"],
+                                    background=theme.GROUND)
+        self._build_columns(colonnes)
+        self._build_dimensions(colonnes)
+        self._build_privacy(self._scrollable(self.pages["confidentialite"],
+                                             background=theme.GROUND))
+        self._build_export(self._scrollable(self.pages["export"],
+                                            background=theme.GROUND))
+        self._build_theme(self._scrollable(self.pages["apparence"],
+                                           background=theme.GROUND))
+        self.tabbar.select(self.SECTIONS[0][0])
+
+    def _show_section(self, key: str) -> None:
+        for nom, cadre in self.pages.items():
+            cadre.pack_forget()
+        self.pages[key].pack(fill="both", expand=True)
+        self.origin.configure(
+            text=f"Enregistré dans {self.FICHIERS.get(key, '')} — "
+                 "modifiable au bloc-notes.")
 
     def _build_theme(self, parent: tk.Widget) -> None:
         """Choix du theme, montre plutot que decrit.
@@ -257,9 +292,6 @@ class SettingsWindow(tk.Toplevel):
         band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
-        tk.Label(band, text="APPARENCE", background=theme.GROUND,
-                 foreground=theme.FAINT,
-                 font=self.fonts.label).pack(anchor="w")
         tk.Label(band, text="Le thème colore la fenêtre et les documents "
                             "produits. Les documents en tiennent compte dès "
                             "l'enregistrement ; la fenêtre, au prochain "
@@ -292,9 +324,6 @@ class SettingsWindow(tk.Toplevel):
         band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
-        tk.Label(band, text="CONFIDENTIALITÉ", background=theme.GROUND,
-                 foreground=theme.FAINT,
-                 font=self.fonts.label).pack(anchor="w")
         # Le seuil de publication : le nombre en deca duquel aucun calcul
         # n'est pose. Il etait dans un fichier JSON, ou personne ne va le
         # chercher, alors que c'est le reglage qui decide de ce que la
@@ -307,19 +336,15 @@ class SettingsWindow(tk.Toplevel):
         self.threshold_var = self._threshold(
             band, "Ne rien calculer en dessous de",
             "privacy_parameters.min_headcount_publish", 5,
-            "Un groupe plus petit serait identifiable : ses moyennes, "
-            "médianes et quartiles ne sont publiés nulle part, ni à l'écran "
-            "ni dans les documents.")
+            "Un groupe plus petit serait identifiable : rien n'est publié pour lui, ni à l'écran ni dans les documents.")
         self.warning_var = self._threshold(
             band, "Avertir sur l'interprétation en dessous de",
             "privacy_parameters.min_headcount_warning", 10,
-            "Les chiffres restent publiés, accompagnés d'une mise en garde : "
-            "sur un petit effectif, une médiane bouge d'un recrutement.")
+            "Les chiffres restent publiés, avec une mise en garde : sur un petit effectif, une médiane bouge d'un recrutement.")
         self.chart_var = self._threshold(
             band, "Ne pas tracer de graphique en dessous de",
             "privacy_parameters.min_headcount_chart", 10,
-            "Une boîte à moustaches dessine des quartiles, donc la position "
-            "de chaque salarié : elle en demande plus que le tableau.")
+            "Une boîte à moustaches dessine la position de chaque salarié : elle en demande plus qu'un tableau.")
         tk.Label(band,
                  text="Une comparaison femmes / hommes demande le seuil de "
                       "publication DE CHAQUE CÔTÉ : avec 5, il faut 5 femmes "
@@ -390,9 +415,6 @@ class SettingsWindow(tk.Toplevel):
         band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
-        tk.Label(band, text="EXPORT", background=theme.GROUND,
-                 foreground=theme.FAINT,
-                 font=self.fonts.label).pack(anchor="w")
         self.individual_var = tk.BooleanVar(
             value=bool(self.configuration.get(
                 "export_parameters.include_individual_data", False)))
@@ -526,8 +548,6 @@ class SettingsWindow(tk.Toplevel):
         self._columns_card = card
         header = tk.Frame(card.inner, background=theme.CANVAS)
         header.pack(fill="x", padx=16, pady=(14, 8))
-        tk.Label(header, text="COLONNES DU FICHIER", background=theme.CANVAS,
-                 foreground=theme.FAINT, font=self.fonts.label).pack(anchor="w")
         if not self.headers:
             tk.Label(card.inner,
                      text="Chargez un fichier pour associer ses colonnes.",

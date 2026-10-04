@@ -472,6 +472,78 @@ class TestTheColumnsAreVisible(SettingsCase):
 
 
 @needs_display
+class TestTheFourSections(SettingsCase):
+    """Quatre sujets, quatre pages.
+
+    Les cinq sections s'empilaient dans une seule colonne défilante : pour
+    changer un seuil de confidentialité, il fallait traverser vingt-deux
+    lignes de colonnes et deux paragraphes sur l'export. On ne cherchait
+    pas un réglage, on le retrouvait.
+    """
+
+    def test_each_subject_has_its_own_page(self):
+        from hr_insight.ui.settings import SettingsWindow
+
+        attendues = {clef for clef, _l in SettingsWindow.SECTIONS}
+        self.assertEqual(set(self.window.pages), attendues)
+
+    def test_only_one_page_is_shown_at_a_time(self):
+        self.window.update()
+        montrees = [clef for clef, cadre in self.window.pages.items()
+                    if cadre.winfo_manager()]
+        self.assertEqual(montrees, ["colonnes"])
+
+    def test_the_window_opens_on_the_columns(self):
+        """C'est la première chose qu'on vient y faire."""
+        self.assertEqual(self.window.tabbar.active, "colonnes")
+
+    def test_changing_section_swaps_the_page(self):
+        self.window.tabbar.select("confidentialite")
+        self.window.update()
+        montrees = [clef for clef, cadre in self.window.pages.items()
+                    if cadre.winfo_manager()]
+        self.assertEqual(montrees, ["confidentialite"])
+
+    def test_each_section_says_where_it_is_saved(self):
+        """Savoir où part un réglage fait partie du réglage."""
+        from hr_insight.ui.settings import SettingsWindow
+
+        for clef, _intitule in SettingsWindow.SECTIONS:
+            with self.subTest(section=clef):
+                self.window.tabbar.select(clef)
+                self.window.update()
+                self.assertIn(SettingsWindow.FICHIERS[clef],
+                              self.window.origin.cget("text"))
+
+    def test_every_setting_survives_the_split(self):
+        """Les contrôles existent toujours, quelle que soit la page
+        affichée : les répartir ne doit en perdre aucun."""
+        for nom in ("threshold_var", "warning_var", "chart_var",
+                    "identities_var", "individual_var", "audit_var",
+                    "theme_var"):
+            with self.subTest(reglage=nom):
+                self.assertTrue(hasattr(self.window, nom))
+
+    def test_the_section_titles_do_not_repeat_the_tab(self):
+        """« CONFIDENTIALITÉ » sous l'onglet « Confidentialité » est du
+        bruit : l'onglet nomme déjà la page."""
+        self.window.tabbar.select("confidentialite")
+        self.window.update()
+        textes = []
+
+        def parcourir(widget):
+            for enfant in widget.winfo_children():
+                try:
+                    textes.append(str(enfant.cget("text")))
+                except Exception:
+                    pass
+                parcourir(enfant)
+
+        parcourir(self.window.pages["confidentialite"])
+        self.assertNotIn("CONFIDENTIALITÉ", textes)
+
+
+@needs_display
 class TestTheRoleOfAColumn(SettingsCase):
     """Une colonne, un rôle, une case : le geste tient en une ligne."""
 
