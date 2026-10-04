@@ -39,9 +39,11 @@ import argparse
 import hashlib
 import os
 import shutil
+import struct
 import subprocess
 import sys
 import zipfile
+import zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -225,6 +227,106 @@ def composer(destination: str, extrait: str) -> str:
     return destination
 
 
+#: Marque posee en fin d'executable, juste avant la taille de la charge.
+#: Elle distingue un lanceur qui porte son paquet d'un lanceur nu.
+MARQUE = b"HRINSGHT"
+
+
+def compiler_stub(destination: str) -> str:
+    """Compile le lanceur a fichier unique, icone comprise."""
+    fenetre = os.path.join(ROOT, "packaging", "windows")
+    compilateur = shutil.which("x86_64-w64-mingw32-gcc")
+    ressources = shutil.which("x86_64-w64-mingw32-windres")
+    if compilateur is None or ressources is None:
+        raise SystemExit(
+            "x86_64-w64-mingw32-gcc et -windres sont necessaires. "
+            "Installez le paquet « mingw-w64 ».")
+    icone = os.path.join(fenetre, "etoile.ico")
+    if not os.path.isfile(icone):
+        _dire("  icone : dessin de l'etoile")
+        from tools.render_icon import main as dessiner
+        dessiner(["--sortie", icone])
+    objet = os.path.join(destination, "icone.o")
+    subprocess.run([ressources, "-I", fenetre,
+                    os.path.join(fenetre, "icone.rc"), "-o", objet],
+                   check=True)
+    stub = os.path.join(destination, "stub.exe")
+    subprocess.run([compilateur, "-O2", "-municode", "-mwindows",
+                    os.path.join(fenetre, "lanceur-unique.c"), objet,
+                    "-lsetupapi", "-lshell32", "-lole32", "-o", stub],
+                   check=True)
+    os.remove(objet)
+    return stub
+
+
+def fabriquer_cab(dossier: str, archive: str) -> str:
+    """Replie l'arborescence en une archive CAB.
+
+    C'est Windows qui la depliera — SetupIterateCabinetW, presente depuis
+    toujours. Aucune bibliotheque de decompression n'est donc embarquee
+    dans le lanceur : rien a auditer de ce cote, rien qui puisse etre
+    vulnerable.
+    """
+    if shutil.which("gcab") is None:
+        raise SystemExit(
+            "gcab est introuvable. Installez le paquet « gcab », ou "
+            "composez le dossier plutot que le fichier unique.")
+    fichiers = []
+    for courant, _sous, noms in os.walk(dossier):
+        for nom in noms:
+            chemin = os.path.join(courant, nom)
+            fichiers.append(os.path.relpath(chemin, dossier))
+    fichiers.sort()
+    # -c : creer ; -z : compresser. Les chemins sont relatifs au dossier,
+    # et c'est sous ces chemins que Windows les depliera.
+    subprocess.run(["gcab", "-c", "-z", archive] + fichiers,
+                   check=True, cwd=dossier)
+    return archive
+
+
+def coudre(stub: str, cab: str, cible: str) -> str:
+    """Pose l'archive a la suite du lanceur, et signe la couture.
+
+    Un executable Windows ignore ce qui suit son dernier octet utile : on
+    peut donc lui accrocher n'importe quoi sans l'abimer. Le lanceur, lui,
+    se relit et retrouve sa charge grace au pied pose a la toute fin.
+    """
+    with open(stub, "rb") as flux:
+        code = flux.read()
+    with open(cab, "rb") as flux:
+        charge = flux.read()
+    empreinte = zlib.crc32(charge) & 0xFFFFFFFF
+    pied = MARQUE + struct.pack("<q", len(charge)) + struct.pack("<I",
+                                                                 empreinte)
+    with open(cible, "wb") as flux:
+        flux.write(code)
+        flux.write(charge)
+        flux.write(pied)
+    return cible
+
+
+def signer(executable: str, certificat: str, cle: str,
+           mot_de_passe: str = "") -> str:
+    """Signe l'executable, si l'on a fourni de quoi le faire.
+
+    La signature n'est pas produite ici : la cle privee appartient a celui
+    qui signe et n'a rien a faire dans un depot de code.
+    """
+    if shutil.which("osslsigncode") is None:
+        raise SystemExit(
+            "osslsigncode est introuvable. Installez le paquet du meme nom, "
+            "ou signez sur un poste Windows avec signtool.")
+    signe = executable + ".signe"
+    commande = ["osslsigncode", "sign", "-certs", certificat, "-key", cle,
+                "-n", "HR Insight", "-h", "sha256",
+                "-in", executable, "-out", signe]
+    if mot_de_passe:
+        commande += ["-pass", mot_de_passe]
+    subprocess.run(commande, check=True, stdout=subprocess.DEVNULL)
+    os.replace(signe, executable)
+    return executable
+
+
 def zipper(dossier: str, archive: str) -> str:
     base = os.path.basename(dossier)
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as sortie:
@@ -244,6 +346,13 @@ def main(argv=None) -> int:
                         help="interpréteur Windows déjà extrait")
     parser.add_argument("--telecharger", action="store_true",
                         help="récupère les composants officiels de python.org")
+    parser.add_argument("--exe", action="store_true",
+                        help="compose aussi un exécutable unique")
+    parser.add_argument("--certificat",
+                        help="certificat de signature (PEM ou SPC)")
+    parser.add_argument("--cle", help="clé privée de signature")
+    parser.add_argument("--mot-de-passe", default="",
+                        help="mot de passe de la clé, s'il y en a un")
     args = parser.parse_args(argv)
 
     sortie = os.path.abspath(args.sortie)
@@ -265,9 +374,29 @@ def main(argv=None) -> int:
     dossier = composer(os.path.join(sortie, "HR Insight"), extrait)
     archive = os.path.join(sortie, f"HR-Insight-{__version__}-windows.zip")
     zipper(dossier, archive)
-    poids = os.path.getsize(archive) // 1024
+    produits = [archive]
+
+    if args.exe:
+        _dire("Exécutable unique :")
+        stub = compiler_stub(sortie)
+        _dire("  lanceur compilé, icône comprise")
+        cab = os.path.join(sortie, "paquet.cab")
+        fabriquer_cab(dossier, cab)
+        _dire(f"  archive repliée ({os.path.getsize(cab) // 1024} Ko)")
+        unique = os.path.join(sortie, "HR Insight.exe")
+        coudre(stub, cab, unique)
+        os.remove(stub)
+        os.remove(cab)
+        if args.certificat and args.cle:
+            signer(unique, args.certificat, args.cle, args.mot_de_passe)
+            _dire("  signé")
+        else:
+            _dire("  NON SIGNÉ — SmartScreen avertira au premier lancement")
+        produits.append(unique)
+
     _dire(f"\n{dossier}")
-    _dire(f"{archive}  ({poids} Ko)")
+    for chemin in produits:
+        _dire(f"{chemin}  ({os.path.getsize(chemin) // 1024} Ko)")
     return 0
 
 

@@ -8,3 +8,10 @@ __pycache__/
 *.py[cod]
 .venv/
 dist/
+
+# Clefs et certificats de signature : ils appartiennent a qui signe, et
+# une clef privee dans un depot de code n'est plus une clef privee.
+*.pem
+*.pfx
+*.p12
+*.key

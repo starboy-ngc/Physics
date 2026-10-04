@@ -148,12 +148,116 @@ code, les droits NTFS d'un partage réseau, le rendu des polices, et les
 chemins de plus de 260 caractères. Ce sont les cinq points à éprouver lors
 d'un premier déploiement.
 
+## Le fichier unique
+
+Demandé après coup, et livré : `HR Insight.exe`, 16 Mo, **un seul fichier**,
+icône en étoile.
+
+```
+python3 tools/build_windows.py --sortie dist --runtime <python> --exe
+```
+
+### Comment il marche
+
+L'exécutable porte, repliée derrière son propre code, une archive CAB
+contenant tout le dossier. Un pied de douze octets — une marque, la taille
+de la charge, son empreinte — permet au lanceur de la retrouver en se
+relisant lui-même.
+
+Au premier lancement, il la dépose dans
+`%LOCALAPPDATA%\HR Insight\<empreinte>\` et démarre l'outil. Aux lancements
+suivants il trouve le dépôt en place et démarre directement.
+
+Trois détails qui comptent :
+
+- **Le dépôt est dans `%LOCALAPPDATA%`, pas dans `%TEMP%`.** `%TEMP%` est
+  effacé, surveillé de près, et souvent interdit d'exécution par stratégie
+  de groupe. `LOCALAPPDATA` est l'endroit prévu pour cela.
+- **Le dossier de version porte l'empreinte de la charge.** Deux versions
+  ne peuvent pas se mélanger, et la même version ne se réextrait jamais.
+- **La configuration vit au-dessus des versions**, dans
+  `%LOCALAPPDATA%\HR Insight\config\`. Une mise à jour ne la remet pas à
+  zéro — c'était le troisième défaut reproché aux exécutables repliés.
+
+C'est **Windows lui-même** qui déplie l'archive (`SetupIterateCabinetW`).
+Aucune bibliothèque de décompression n'est embarquée : rien à auditer de ce
+côté, rien qui puisse être vulnérable.
+
+### Un second défaut trouvé en exécutant
+
+Le lanceur lisait les vingt derniers octets du fichier pour y trouver son
+pied. **Signer l'exécutable ajoute la signature après la charge** : le pied
+n'est alors plus à la fin, et le programme signé refusait de démarrer. Le
+lanceur cherche désormais la marque à rebours dans le dernier méga-octet.
+
+Comme pour l'impasse de `Py_Main`, aucune relecture ne montrait ce défaut.
+Il a fallu signer, lancer, et regarder.
+
+### Ce qu'il coûte, et que le dossier ne coûte pas
+
+**Un exécutable qui écrit d'autres exécutables sur le disque puis les lance
+est exactement le motif qu'une protection de poste surveille.** Le dossier
+livré à côté ne fait rien de tel. Aucune astuce ne supprime ce coût : il est
+inhérent au fichier unique.
+
+Les deux formes sont produites par la même commande. Si le fichier unique
+est bloqué sur un poste, le dossier fonctionne sans rien changer d'autre.
+
 ## Signature de code
 
-Le lanceur n'est pas signé. Sans signature, Windows SmartScreen affichera un
-avertissement au premier lancement tant que le fichier n'est pas connu.
+```
+python3 tools/build_windows.py --sortie dist --runtime <python> --exe \
+    --certificat certificat.pem --cle cle.pem
+```
 
-Deux voies : signer `HR Insight.exe` avec le certificat de l'entreprise
-(`signtool`), ou distribuer le dossier par un canal interne déjà approuvé —
-un partage, un outil de déploiement — qui dispense de SmartScreen. La
-première est préférable si le certificat existe.
+Depuis Linux, `osslsigncode` signe le PE ; depuis Windows, `signtool` fait
+la même chose. **La clé privée n'est pas dans ce dépôt et ne doit jamais y
+entrer.** Elle appartient à celui qui signe.
+
+Un certificat auto-signé se fabrique ainsi :
+
+```
+openssl req -x509 -utf8 -newkey rsa:3072 -keyout cle.pem -out certificat.pem \
+    -sha256 -days 1095 -nodes \
+    -subj "/CN=Prénom Nom/O=Prénom Nom/C=FR" \
+    -addext "keyUsage=digitalSignature" \
+    -addext "extendedKeyUsage=codeSigning"
+```
+
+### Ce qu'une signature auto-signée fait, et ne fait pas
+
+**Elle fait :** le fichier porte un nom d'éditeur lisible dans ses
+propriétés ; toute modification ultérieure du fichier invalide la signature,
+ce qui est une vraie garantie d'intégrité ; et surtout, elle devient une
+**vraie** garantie dès que l'informatique dépose le certificat dans le
+magasin « Éditeurs approuvés » du parc, par stratégie de groupe. C'est
+l'usage normal d'un certificat interne, et c'est là que tout change.
+
+**Elle ne fait pas :** elle ne supprime pas l'avertissement SmartScreen. Ce
+dernier ne regarde pas la validité de la signature mais la **réputation** du
+fichier et de l'éditeur — réputation qu'un certificat auto-signé n'a pas, et
+qu'un certificat commercial ne gagne qu'après un certain volume de
+téléchargements. Un exécutable signé par un éditeur inconnu reste un
+exécutable signé par un éditeur inconnu.
+
+Il faut même le dire franchement : sur certains postes, une signature
+d'éditeur non reconnu est traitée avec **plus** de méfiance qu'une absence
+de signature, parce que c'est le motif d'un programme qui cherche à se
+donner l'air légitime.
+
+### Ce qui marche vraiment
+
+Une seule chose : que l'informatique connaisse le fichier avant
+l'utilisateur. Trois voies, par ordre d'efficacité.
+
+1. **Déposer le certificat dans « Éditeurs approuvés »** par stratégie de
+   groupe. La signature devient alors une vraie autorisation, et tout ce qui
+   est signé par cette clé passe.
+2. **Inscrire l'empreinte SHA-256 du fichier** dans les exceptions de
+   l'antivirus et du contrôle applicatif (AppLocker, WDAC).
+3. **Distribuer par un canal interne déjà approuvé** — partage, outil de
+   déploiement —, ce qui dispense de SmartScreen.
+
+Sans l'une de ces trois, l'utilisateur verra un avertissement, et dans un
+parc verrouillé le fichier sera simplement bloqué — **quelle que soit la
+signature.**

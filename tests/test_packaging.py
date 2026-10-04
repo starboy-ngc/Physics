@@ -236,3 +236,103 @@ class TestTheWindowsBuild(unittest.TestCase):
     def test_the_build_script_never_ships(self):
         from tools.build_archive import OUTILS_EXCLUS
         self.assertIn("build_windows.py", OUTILS_EXCLUS)
+
+
+class TestTheSingleFileLauncher(unittest.TestCase):
+    """Le lanceur à fichier unique : ce qu'il fait, et ce qu'il coûte."""
+
+    @classmethod
+    def setUpClass(cls):
+        chemin = os.path.join(ROOT, "packaging", "windows",
+                              "lanceur-unique.c")
+        with open(chemin, encoding="utf-8") as handle:
+            cls.source = handle.read()
+
+    def test_it_deposits_in_the_profile_not_in_temp(self):
+        """%TEMP% est effacé, surveillé de près, et souvent interdit
+        d'exécution par stratégie de groupe."""
+        self.assertIn("CSIDL_LOCAL_APPDATA", self.source)
+        self.assertNotIn("GetTempPath", self.source)
+
+    def test_windows_unfolds_the_archive_itself(self):
+        """Aucune bibliothèque de décompression embarquée : rien à
+        auditer de ce côté, rien qui puisse être vulnérable."""
+        self.assertIn("SetupIterateCabinetW", self.source)
+        for embarque in ("inflate", "zlib", "lzma", "BZ2"):
+            self.assertNotIn(embarque, self.source, embarque)
+
+    def test_the_footer_is_searched_and_never_assumed(self):
+        """Signer un exécutable ajoute la signature APRÈS la charge : lire
+        les derniers octets refusait net tout exécutable signé."""
+        self.assertIn("FENETRE_RECHERCHE", self.source)
+        self.assertIn("rang--", self.source)
+
+    def test_the_deposit_is_named_after_the_payload(self):
+        """Deux versions ne peuvent pas se mélanger, et la même version ne
+        se réextrait jamais."""
+        self.assertIn("empreinte", self.source)
+        self.assertIn("%08x", self.source)
+
+    def test_the_configuration_outlives_the_versions(self):
+        """Elle vit au-dessus du dossier de version : une mise à jour ne
+        la remet pas à zéro."""
+        indice_config = self.source.index("\\\\config")
+        indice_depot = self.source.index("wsprintfW(numero")
+        self.assertGreater(indice_config, indice_depot)
+
+    def test_the_cost_of_a_single_file_is_written_down(self):
+        """Le défaut d'un fichier unique doit être lisible par qui relit
+        le code, pas seulement connu de qui l'a écrit."""
+        self.assertIn("protection de poste", self.source)
+
+    def test_it_reaches_for_nothing_outside_the_machine(self):
+        for interdit in ("URLDownload", "WinHttp", "InternetOpen",
+                         "RegCreateKey", "RegSetValue", "WinExec"):
+            self.assertNotIn(interdit, self.source, interdit)
+
+
+class TestTheStarIcon(unittest.TestCase):
+    """L'icône est dessinée par une formule, pas posée en pixels."""
+
+    @classmethod
+    def setUpClass(cls):
+        chemin = os.path.join(ROOT, "packaging", "windows", "etoile.ico")
+        if not os.path.isfile(chemin):
+            raise unittest.SkipTest("icône absente")
+        with open(chemin, "rb") as handle:
+            cls.donnees = handle.read()
+
+    def test_it_is_a_real_icon_container(self):
+        import struct
+        reserve, genre, nombre = struct.unpack("<HHH", self.donnees[:6])
+        self.assertEqual((reserve, genre), (0, 1))
+        self.assertGreaterEqual(nombre, 5)
+
+    def test_every_size_windows_asks_for_is_there(self):
+        import struct
+        _r, _g, nombre = struct.unpack("<HHH", self.donnees[:6])
+        tailles = set()
+        for rang in range(nombre):
+            entree = struct.unpack("<BBBBHHII",
+                                   self.donnees[6 + 16 * rang:22 + 16 * rang])
+            tailles.add(entree[0] or 256)
+        for attendue in (16, 32, 48, 256):
+            self.assertIn(attendue, tailles)
+
+    def test_each_size_is_drawn_and_not_rescaled(self):
+        """Une icône de 16 pixels réduite depuis 256 est illisible : chaque
+        taille est rendue pour elle-même."""
+        from tools.render_icon import dessiner
+        petite = dessiner(16)
+        grande = dessiner(32)
+        self.assertEqual(len(petite), 16 * 16 * 4)
+        self.assertEqual(len(grande), 32 * 32 * 4)
+
+    def test_the_star_points_upward(self):
+        """Une étoile posée de travers se remarque, même de qui ne saurait
+        pas dire pourquoi."""
+        from tools.render_icon import sommets
+        points = sommets(rayon=10.0, centre=10.0)
+        premier = points[0]
+        self.assertAlmostEqual(premier[0], 10.0, places=6)
+        self.assertLess(premier[1], 10.0)
