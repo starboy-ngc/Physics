@@ -235,11 +235,92 @@ Sur 37 fichiers du paquet et les outils annexes :
 
 ---
 
+## 5bis. Le paquet Windows livré — la capacité réseau est *absente*
+
+Les sections précédentes portent sur le code. Celle-ci porte sur ce qui
+est réellement remis : `HR Analytics.exe` et le dossier qu'il déplie.
+L'argument change de nature — il ne s'agit plus de montrer que l'outil
+n'appelle pas le réseau, mais que **rien dans le paquet ne peut
+l'appeler**.
+
+### 5bis.1 Ce qui a été retiré de l'interpréteur embarqué
+
+Le Python de python.org porte sa bibliothèque standard entière, réseau
+compris. L'outil ne l'importe nulle part, mais la laisser dans le paquet
+obligerait l'équipe qui l'homologue à nous croire sur parole. Vingt-huit
+éléments sont donc retirés à la composition :
+
+| Retiré | Pourquoi |
+|---|---|
+| `_socket.pyd` | **la pièce qui décide** : sans elle, aucun code Python ne peut ouvrir de connexion, quelle que soit la bibliothèque qui le demanderait |
+| `_ssl.pyd`, `libssl-3.dll` | TLS |
+| `select.pyd`, `_asyncio.pyd`, `_overlapped.pyd` | boucles d'attente réseau |
+| `socket.py`, `ssl.py`, `selectors.py`, `socketserver.py` | leurs façades Python |
+| `urllib/request.py`, `urllib/error.py`, `urllib/response.py`, `urllib/robotparser.py` | HTTP client |
+| `http/`, `email/`, `xmlrpc/`, `asyncio/`, `wsgiref/` | protocoles et serveurs |
+| `ftplib`, `smtplib`, `poplib`, `imaplib`, `telnetlib`, `nntplib` | transferts et messagerie |
+| `webbrowser.py`, `cgi.py`, `cgitb.py` | ouverture de navigateur, CGI |
+
+Gardés, et pour cause : `libcrypto-3.dll` et `_hashlib.pyd` — les
+empreintes SHA-256 et l'anonymisation en dépendent — et
+`urllib/parse.py`, que `pathlib` importe pour écrire un chemin en URL.
+Ni l'un ni l'autre n'ouvre quoi que ce soit.
+
+La feuille d'empreintes livrée avec le paquet énumère ce qui a été
+retiré : une liste de hachages qui tairait les absences ne prouverait
+rien.
+
+### 5bis.2 Ce que les binaires livrés appellent
+
+Relevé sur la table d'import PE de **chaque** `.dll`, `.pyd` et `.exe` du
+paquet :
+
+| Mesure | Résultat |
+|---|---|
+| Binaires examinés | 155 |
+| Qui importent `ws2_32`, `wininet`, `winhttp`, `urlmon`, `wsock32`, `mswsock` ou `dnsapi` | **0** |
+
+Le lanceur lui-même n'appelle que cinq bibliothèques de Windows :
+
+    KERNEL32.dll   fichiers, processus, mémoire
+    msvcrt.dll     bibliothèque C
+    SETUPAPI.dll   dépliage du CAB embarqué
+    SHELL32.dll    création du dossier de travail
+    USER32.dll     boîtes de message d'erreur
+
+Aucune d'elles ne porte de fonction réseau.
+
+### 5bis.3 Ce que le parcours complet charge
+
+Une analyse complète suivie des quatre restitutions charge **218
+modules**. Aucun n'est un module réseau — `urllib.parse` y figure, tiré
+par `pathlib`, et il ne fait que découper des chaînes.
+
+### 5bis.4 Vérifié en exécution, pas seulement en lecture
+
+Le paquet ainsi dépouillé a été exécuté : l'interface s'ouvre, et une
+analyse en ligne de commande sur 400 salariés produit le rapport HTML, la
+synthèse, la vue détaillée, le classeur et le manifeste. Retirer la pile
+réseau ne retire donc rien à l'outil.
+
+### 5bis.5 La signature — ce qu'elle vaut et ce qu'elle ne vaut pas
+
+L'exécutable est signé « Clément Chevallier » avec un certificat
+auto-signé. Il faut être clair : **cela ne lève pas l'avertissement
+SmartScreen**. Un certificat auto-signé n'est pas rattaché à une autorité
+reconnue ; Windows affichera « éditeur inconnu » au premier lancement.
+La signature ne devient utile qu'une fois le certificat déployé par l'IT
+dans les éditeurs approuvés du parc — c'est à cette condition, et à elle
+seule, qu'elle sert.
+
+---
+
 ## 6. Ce que cet audit n'a pas couvert
 
-- **Windows.** Tout a été mesuré sous Linux. Les permissions NTFS, le
-  comportement des lanceurs `.bat` et le rendu de la fenêtre y restent non
-  vérifiés.
+- **Windows, en conditions réelles.** Le paquet a été exécuté (§5bis.4),
+  mais sous Wine et non sur un poste du parc : les permissions NTFS, le
+  comportement d'un antivirus d'entreprise et celui de SmartScreen y
+  restent non vérifiés.
 - **Le compte privilégié.** Le banc tourne en `root` : un refus lié aux
   droits de fichier ne s'y manifeste pas.
 - **L'interpréteur lui-même.** L'outil n'a aucune dépendance, mais il
