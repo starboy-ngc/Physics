@@ -15,7 +15,6 @@ public partial class NpcManager : Node
     public static NpcManager Instance { get; private set; } = null!;
 
     private const string NpcDir = "res://data/npcs";
-    private PackedScene _npcScene = null!;
 
     /// <summary>id -> fiche</summary>
     public Dictionary<string, NpcData> Npcs { get; } = new();
@@ -37,7 +36,6 @@ public partial class NpcManager : Node
 
     public override void _Ready()
     {
-        _npcScene = GD.Load<PackedScene>("res://scenes/npc/NPC.tscn");
         LoadAll();
         Game.Instance.ZoneChanged += OnZoneChanged;
     }
@@ -90,12 +88,13 @@ public partial class NpcManager : Node
             var loc = Locations[id];
             if (loc.Zone != Game.Instance.CurrentZoneId)
                 continue;
-            var npc = _npcScene.Instantiate<Npc>();
-            npc.Name = "NPC_" + id;
-            npc.Position = new Vector3(loc.Position[0], 0f, loc.Position[1]);
-            npc.FacingDirection = CharacterVisual.FacingFromString(loc.Facing);
+            var npc = new Npc { Name = "NPC_" + id };
+            var tile = new Vector2I(Mathf.RoundToInt(loc.Position[0]), Mathf.RoundToInt(loc.Position[1]));
+            var facing = CharacterSprites.FacingFromString(loc.Facing);
             zone.AddChild(npc);
             npc.ApplyData(data);
+            npc.SetHome(tile, facing);
+            npc.PlaceAt(zone, tile, facing);
             Instances[id] = npc;
         }
     }

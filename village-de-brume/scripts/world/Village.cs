@@ -1,58 +1,81 @@
 using Godot;
-using System.Collections.Generic;
 
 namespace VillageDeBrume;
 
 /// <summary>
-/// Le Village de Brume : sol d'herbe texturé, arbres en bordure (placés
-/// automatiquement), ouverture vers la forêt sur le bord droit (étape 5).
+/// La place du village : étang au nord, étals (boutique, dépôt) de part et
+/// d'autre du chemin, tableau des requêtes, puits au centre de la place pavée,
+/// base du joueur au sud, portail de l'est (futurs donjons).
 /// </summary>
 public partial class Village : Zone
 {
-    [Export] public bool BorderTrees { get; set; } = true;
-    /// <summary>Rectangle (x, z) sans arbre de bordure : ouverture vers la forêt.</summary>
-    [Export] public Rect2 ExitGap { get; set; } = new(43.75f, 15.6f, 5f, 5.6f);
+    public override string ZoneName => "Place de Brume";
 
-    protected override void BuildGround()
+    private static readonly string[] Layout =
     {
-        AddFloor(Bounds, 0f, Materials.Textured("grass", Bounds.Size, Materials.Grass, 2f), "Grass");
+        "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+        "T..........wwwwwwwwww..........T",
+        "T.t.......R~~~~~~~~~~R.......t.T",
+        "T.........R~~~~~~~~~~R.........T",
+        "T...*......~~~~~~~~~~......*...T",
+        "T..............::..............T",
+        "T...t..........::..........t...T",
+        "T..............::..............T",
+        "T........######::######........T",
+        "T.*......##############......*.T",
+        "T........##############........T",
+        "T........##############:::::::.T",
+        "T.t......##############:::::::.T",
+        "T........##############........T",
+        "T........##############........T",
+        "T........######::######.......tT",
+        "T....t.........::.........*....T",
+        "T..............::..............T",
+        "T.*............::..........t...T",
+        "T..............::..............T",
+        "T...t..........::....*.........T",
+        "T..............::..............T",
+        "T...*..........::.......t......T",
+        "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+    };
+
+    protected override void Build()
+    {
+        LoadLayout(Layout);
+
+        // Puits au centre de la place (2x2)
+        AddProp("Well", Art.Well(), new Vector2I(15, 11), new Vector2I(2, 2));
+
+        // Étals : le marchand se tient sur la case au-dessus du comptoir (3 cases).
+        AddStall("StallEmile", new Vector2I(9, 7), new Color("e05048"), "emile");
+        AddStall("StallJeanne", new Vector2I(20, 7), new Color("48a860"), "jeanne");
+
+        // Tableau des requêtes, gardé par Martin
+        AddProp("Board", Art.Board(), new Vector2I(12, 6), new Vector2I(1, 1));
+        AddInteractable(new Vector2I(12, 6), new Examinable("Lire", "Tableau des requêtes : rien pour l'instant. Martin le surveille."));
+
+        // Base du joueur (4x3), la porte est la case du bas au centre-gauche
+        AddProp("House", Art.House(), new Vector2I(14, 18), new Vector2I(4, 3));
+        var door = new Vector2I(15, 20);
+        Map.Block(door, false);
+        AddDoor(door, "base", "entrance");
+
+        // Portail de l'est (2x2), verrouillé
+        AddProp("Gate", Art.Gate(), new Vector2I(29, 10), new Vector2I(2, 2));
+        AddInteractable(new Vector2I(29, 10), new Examinable("Pousser", "Le portail est verrouillé. Derrière, la forêt, et les galeries dont parle Martin."));
+        AddInteractable(new Vector2I(30, 10), new Examinable("Pousser", "Le portail est verrouillé. Derrière, la forêt, et les galeries dont parle Martin."));
+
+        Spawns["start"] = new Vector2I(15, 14);
+        Spawns["from_base"] = new Vector2I(15, 21);
+        Spawns["near_emile"] = new Vector2I(10, 10);
+        Spawns["near_jeanne"] = new Vector2I(21, 10);
     }
 
-    public override void _Ready()
+    private void AddStall(string name, Vector2I counter, Color accent, string ownerId)
     {
-        base._Ready();
-        if (BorderTrees)
-            PlaceBorderTrees();
-    }
-
-    private void PlaceBorderTrees()
-    {
-        var treeScene = GD.Load<PackedScene>("res://scenes/world/props/Tree.tscn");
-        var rng = new RandomNumberGenerator { Seed = 1234 };
-        var holder = new Node3D { Name = "BorderTrees" };
-        AddChild(holder);
-
-        var positions = new List<Vector2>();
-        for (float x = Bounds.Position.X + 2.5f; x <= Bounds.End.X - 2.5f; x += 3f)
-        {
-            positions.Add(new Vector2(x, Bounds.Position.Y + 2.5f));
-            positions.Add(new Vector2(x, Bounds.End.Y - 1.5f));
-        }
-        for (float z = Bounds.Position.Y + 5.5f; z <= Bounds.End.Y - 4f; z += 3f)
-        {
-            positions.Add(new Vector2(Bounds.Position.X + 2.5f, z));
-            positions.Add(new Vector2(Bounds.End.X - 2.5f, z));
-        }
-
-        foreach (var p in positions)
-        {
-            if (ExitGap.HasPoint(p))
-                continue;
-            var tree = treeScene.Instantiate<TreeProp>();
-            tree.Position = new Vector3(p.X + rng.RandfRange(-0.4f, 0.4f), 0f, p.Y + rng.RandfRange(-0.25f, 0.25f));
-            tree.CanopyRadius = rng.RandfRange(0.8f, 1.05f);
-            tree.Kind = rng.Randf() < 0.6f ? "pine" : "round";
-            holder.AddChild(tree);
-        }
+        // Texture 48x56 : auvent en haut, comptoir sur la rangée `counter` (3 cases).
+        AddProp(name, Art.Stall(accent), counter, new Vector2I(3, 1));
+        for (int i = 0; i < 3; i++)
+            AddInteractable(counter + new Vector2I(i, 0), new Counter(ownerId));
     }
 }

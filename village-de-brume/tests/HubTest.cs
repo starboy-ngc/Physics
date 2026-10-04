@@ -29,8 +29,8 @@ public partial class HubTest : TestBase
                 break;
             case 1: // avancer vers l'étal jusqu'à l'invite
                 HoldOnly("move_up");
-                if (player.Focused is NpcTalkArea) { ReleaseAll(); Next(); }
-                else if (off > 300) Finish($"Émile non détecté (pos {player.GlobalPosition})");
+                if (player.Focused is Counter) { ReleaseAll(); Next(); }
+                else if (off > 300) Finish($"comptoir non détecté (case {player.Tile})");
                 break;
             case 2: // E : dialogue, premier choix = boutique
                 if (Dialogue.IsActive) Next();

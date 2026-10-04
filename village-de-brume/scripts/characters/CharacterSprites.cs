@@ -3,155 +3,178 @@ using Godot;
 namespace VillageDeBrume;
 
 /// <summary>
-/// Génère en code la planche de sprites d'un personnage (aucun asset externe) :
-/// 4 directions (lignes : bas, haut, gauche, droite) × 3 poses (colonnes :
-/// repos, pas 1, pas 2). Dessin vectoriel simple (rectangles arrondis et
-/// ellipses) rastérisé à Scale fois la grille de 16 px par unité monde.
+/// Planche de sprites d'un personnage, générée en code : 4 directions (lignes :
+/// bas, haut, gauche, droite) × 3 poses (colonnes : repos, pas 1, pas 2),
+/// cellules de 24x24 px, pieds à la ligne FeetRow. Dessinée en haute résolution
+/// (formes arrondies) puis réduite en pixel art avec contour.
+/// Fournit aussi le portrait 32x32 pour les boîtes de dialogue.
 /// </summary>
 public static class CharacterSprites
 {
-    /// <summary>Pixels de texture par pixel « logique » (16 px logiques = 1 unité monde).</summary>
-    public const int Scale = 4;
-    /// <summary>Taille d'une cellule en pixels logiques ; les pieds sont à la ligne FeetRow.</summary>
-    public const int Cell = 36;
-    public const int FeetRow = 34;
+    public const int Cell = 24;
+    public const int FeetRow = 22;
+    private const int Hi = 6;            // facteur de dessin haute résolution
+    private const float Unit = Cell * Hi / 36f; // 36 px logiques -> une cellule
 
-    private static readonly Color Outline = new("23222a");
+    private static readonly Color Outline = Art.Outline;
 
     public static ImageTexture Build(Color tunic, Color hair, Color skin, Color pants)
     {
-        int cell = Cell * Scale;
-        var img = Image.CreateEmpty(cell * 3, cell * 4, true, Image.Format.Rgba8);
-        img.Fill(new Color(0, 0, 0, 0));
+        int cellHi = Cell * Hi;
+        var hi = PixelArt.NewImage(cellHi * 3, cellHi * 4);
         for (int facing = 0; facing < 4; facing++)
             for (int pose = 0; pose < 3; pose++)
-                DrawCharacter(img, pose * cell + cell / 2, facing * cell + FeetRow * Scale,
-                    (CharacterVisual.Facing)facing, pose - 1, tunic, hair, skin, pants);
-        img.GenerateMipmaps();
-        return ImageTexture.CreateFromImage(img);
+                DrawCharacter(hi, pose * cellHi + cellHi / 2, facing * cellHi + Mathf.RoundToInt((FeetRow + 1) * Hi),
+                    (Facing)facing, pose - 1, tunic, hair, skin, pants);
+        return ImageTexture.CreateFromImage(Pixelize(hi, Cell * 3, Cell * 4));
     }
 
-    // --- Primitives (coordonnées logiques, flottantes) -----------------------
-
-    private static void Put(Image img, int x, int y, Color c)
+    /// <summary>Portrait buste 32x32 sur fond uni.</summary>
+    public static ImageTexture BuildPortrait(Color tunic, Color hair, Color skin, Color background)
     {
-        if (x >= 0 && y >= 0 && x < img.GetWidth() && y < img.GetHeight())
-            img.SetPixel(x, y, c);
+        int size = 32 * Hi;
+        var hi = PixelArt.NewImage(size, size);
+        PixelArt.Rect(hi, 0, 0, size, size, background);
+        float u = size / 32f;
+        // Épaules
+        PixelArt.Ellipse(hi, 16 * u, 36 * u, 14 * u, 10 * u, tunic);
+        PixelArt.EllipseOutline(hi, 16 * u, 36 * u, 14 * u, 10 * u, Outline);
+        // Cou et tête
+        PixelArt.Rect(hi, Mathf.RoundToInt(13.5f * u), Mathf.RoundToInt(22 * u), Mathf.RoundToInt(5 * u), Mathf.RoundToInt(5 * u), skin.Darkened(0.1f));
+        PixelArt.Ellipse(hi, 16 * u, 15 * u, 9.5f * u, 10.5f * u, skin);
+        PixelArt.Ellipse(hi, 16 * u, 9.5f * u, 9.2f * u, 5.5f * u, hair);
+        PixelArt.Rect(hi, Mathf.RoundToInt(6.5f * u), Mathf.RoundToInt(9 * u), Mathf.RoundToInt(2.5f * u), Mathf.RoundToInt(7 * u), hair);
+        PixelArt.Rect(hi, Mathf.RoundToInt(23 * u), Mathf.RoundToInt(9 * u), Mathf.RoundToInt(2.5f * u), Mathf.RoundToInt(7 * u), hair);
+        PixelArt.EllipseOutline(hi, 16 * u, 15 * u, 9.5f * u, 10.5f * u, Outline);
+        // Yeux et bouche
+        PixelArt.Ellipse(hi, 12.5f * u, 16.5f * u, 1.3f * u, 1.8f * u, Outline);
+        PixelArt.Ellipse(hi, 19.5f * u, 16.5f * u, 1.3f * u, 1.8f * u, Outline);
+        PixelArt.Put(hi, Mathf.RoundToInt(12 * u), Mathf.RoundToInt(16 * u), Colors.White);
+        PixelArt.Rect(hi, Mathf.RoundToInt(14.5f * u), Mathf.RoundToInt(21 * u), Mathf.RoundToInt(3 * u), Mathf.RoundToInt(0.8f * u), skin.Darkened(0.4f));
+        var lo = (Image)hi.Duplicate();
+        lo.Resize(32, 32, Image.Interpolation.Bilinear);
+        return ImageTexture.CreateFromImage(lo);
     }
 
-    private static void Rect(Image img, int ox, int oy, float x, float y, float w, float h, Color c)
+    /// <summary>Réduction + seuil d'alpha + contour : rendu pixel art net.</summary>
+    private static Image Pixelize(Image hi, int w, int h)
     {
-        img.FillRect(new Rect2I(ox + Mathf.RoundToInt(x * Scale), oy + Mathf.RoundToInt(y * Scale),
-            Mathf.RoundToInt(w * Scale), Mathf.RoundToInt(h * Scale)), c);
-    }
-
-    /// <summary>Rectangle à coins arrondis (rayon r en pixels logiques), avec contour.</summary>
-    private static void RoundRect(Image img, int ox, int oy, float x, float y, float w, float h, float r, Color fill, Color? outline)
-    {
-        int x0 = Mathf.RoundToInt(x * Scale), y0 = Mathf.RoundToInt(y * Scale);
-        int ww = Mathf.RoundToInt(w * Scale), hh = Mathf.RoundToInt(h * Scale);
-        float rr = r * Scale;
-        for (int py = 0; py < hh; py++)
-            for (int px = 0; px < ww; px++)
+        var lo = (Image)hi.Duplicate();
+        lo.Resize(w, h, Image.Interpolation.Bilinear);
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
             {
-                float d = CornerDistance(px + 0.5f, py + 0.5f, ww, hh, rr);
-                if (d > 0f) continue;
-                bool edge = outline.HasValue && d > -Scale;
-                Put(img, ox + x0 + px, oy + y0 + py, edge ? outline!.Value : fill);
+                var c = lo.GetPixel(x, y);
+                lo.SetPixel(x, y, c.A < 0.45f ? new Color(0, 0, 0, 0) : new Color(c.R, c.G, c.B, 1f));
             }
-    }
-
-    /// <summary>Distance signée au bord d'un rectangle arrondi (négatif = intérieur).</summary>
-    private static float CornerDistance(float px, float py, float w, float h, float r)
-    {
-        float cx = Mathf.Clamp(px, r, w - r), cy = Mathf.Clamp(py, r, h - r);
-        float dx = px - cx, dy = py - cy;
-        return Mathf.Sqrt(dx * dx + dy * dy) - r;
-    }
-
-    private static void Ellipse(Image img, int ox, int oy, float cx, float cy, float rx, float ry, Color fill, Color? outline)
-    {
-        int x0 = Mathf.FloorToInt((cx - rx) * Scale), x1 = Mathf.CeilToInt((cx + rx) * Scale);
-        int y0 = Mathf.FloorToInt((cy - ry) * Scale), y1 = Mathf.CeilToInt((cy + ry) * Scale);
-        for (int py = y0; py <= y1; py++)
-            for (int px = x0; px <= x1; px++)
+        // Contour cellule par cellule (évite les fuites entre cellules)
+        for (int cy = 0; cy < 4; cy++)
+            for (int cx = 0; cx < 3; cx++)
             {
-                float nx = (px + 0.5f - cx * Scale) / (rx * Scale), ny = (py + 0.5f - cy * Scale) / (ry * Scale);
-                float d = nx * nx + ny * ny;
-                if (d > 1f) continue;
-                float inner = (rx * Scale - Scale) / (rx * Scale);
-                bool edge = outline.HasValue && d > inner * inner;
-                if (!edge && fill.A <= 0f) continue; // remplissage transparent = contour seul
-                Put(img, ox + px, oy + py, edge ? outline!.Value : fill);
+                var cell = lo.GetRegion(new Rect2I(cx * Cell, cy * Cell, Cell, Cell));
+                PixelArt.Outline(cell, Outline);
+                lo.BlitRect(cell, new Rect2I(0, 0, Cell, Cell), new Vector2I(cx * Cell, cy * Cell));
             }
+        return lo;
     }
 
-    /// <summary>Dessine un personnage dont les pieds sont en (ox, oy) pixels texture.
-    /// Proportions adultes (environ 5 têtes), silhouette fine, détails discrets.</summary>
-    private static void DrawCharacter(Image img, int ox, int oy, CharacterVisual.Facing facing, int step,
+    public enum Facing { Down, Up, Left, Right }
+
+    // --- Dessin haute résolution (coordonnées logiques : 36 px = 1 cellule) ----
+
+    private static void R(Image img, int ox, int oy, float x, float y, float w, float h, Color c) =>
+        PixelArt.Rect(img, ox + Mathf.RoundToInt(x * Unit), oy + Mathf.RoundToInt(y * Unit), Mathf.RoundToInt(w * Unit), Mathf.RoundToInt(h * Unit), c);
+
+    private static void E(Image img, int ox, int oy, float cx, float cy, float rx, float ry, Color c) =>
+        PixelArt.Ellipse(img, ox + cx * Unit, oy + cy * Unit, rx * Unit, ry * Unit, c);
+
+    private static void DrawCharacter(Image img, int ox, int oy, Facing facing, int step,
         Color tunic, Color hair, Color skin, Color pants)
     {
         float bob = step >= 0 ? -0.5f : 0f;
-        bool side = facing is CharacterVisual.Facing.Left or CharacterVisual.Facing.Right;
+        bool side = facing is Facing.Left or Facing.Right;
         Color belt = tunic.Darkened(0.45f);
         Color boots = pants.Darkened(0.35f);
 
-        // Jambes : fines, alternance pendant la marche ; bottes sombres
+        // Jambes
         float leftH = 10f - (step == 1 ? 2.5f : 0f);
         float rightH = 10f - (step == 0 ? 2.5f : 0f);
-        float legW = side ? 3.2f : 3.4f;
-        float lx = side ? -2.6f : -4.0f, rx = side ? -0.4f : 0.6f;
-        RoundRect(img, ox, oy, lx, -10f, legW, leftH, 1.0f, pants, Outline);
-        RoundRect(img, ox, oy, rx, -10f, legW, rightH, 1.0f, pants, Outline);
-        Rect(img, ox, oy, lx + 0.6f, -10f + leftH - 2.2f, legW - 1.2f, 1.6f, boots);
-        Rect(img, ox, oy, rx + 0.6f, -10f + rightH - 2.2f, legW - 1.2f, 1.6f, boots);
+        float legW = side ? 3.4f : 3.6f;
+        float lx = side ? -2.8f : -4.2f, rx = side ? -0.6f : 0.6f;
+        R(img, ox, oy, lx, -10f, legW, leftH, pants);
+        R(img, ox, oy, rx, -10f, legW, rightH, pants);
+        R(img, ox, oy, lx, -10f + leftH - 2.2f, legW, 2.2f, boots);
+        R(img, ox, oy, rx, -10f + rightH - 2.2f, legW, 2.2f, boots);
 
-        // Buste : tunique longue légèrement évasée, ceinture
-        float bw = side ? 7.5f : 10f;
-        RoundRect(img, ox, oy, -bw / 2f, -21.5f + bob, bw, 12.5f, 2.2f, tunic, Outline);
-        Rect(img, ox, oy, -bw / 2f + 0.8f, -14.5f + bob, bw - 1.6f, 1.2f, belt);
+        // Buste
+        float bw = side ? 8f : 11f;
+        E(img, ox, oy, 0f, -16f + bob, bw / 2f, 6.5f, tunic);
+        R(img, ox, oy, -bw / 2f, -16f + bob, bw, 6.5f, tunic);
+        R(img, ox, oy, -bw / 2f + 0.8f, -14.5f + bob, bw - 1.6f, 1.2f, belt);
         if (side)
-        {
-            RoundRect(img, ox, oy, -1.6f, -19.5f + bob, 3.2f, 7.5f, 1.3f, tunic.Darkened(0.18f), Outline);
-        }
+            R(img, ox, oy, -1.6f, -19.5f + bob, 3.2f, 7.5f, tunic.Darkened(0.18f));
         else
         {
-            RoundRect(img, ox, oy, -bw / 2f - 2.2f, -20f + bob, 2.4f, 7.5f, 1.1f, tunic.Darkened(0.12f), Outline);
-            RoundRect(img, ox, oy, bw / 2f - 0.2f, -20f + bob, 2.4f, 7.5f, 1.1f, tunic.Darkened(0.12f), Outline);
-            Ellipse(img, ox, oy, -bw / 2f - 1f, -12.3f + bob, 1.1f, 1.2f, skin, Outline);
-            Ellipse(img, ox, oy, bw / 2f + 1f, -12.3f + bob, 1.1f, 1.2f, skin, Outline);
+            R(img, ox, oy, -bw / 2f - 2.2f, -20f + bob, 2.4f, 7.5f, tunic.Darkened(0.12f));
+            R(img, ox, oy, bw / 2f - 0.2f, -20f + bob, 2.4f, 7.5f, tunic.Darkened(0.12f));
+            E(img, ox, oy, -bw / 2f - 1f, -12.3f + bob, 1.2f, 1.3f, skin);
+            E(img, ox, oy, bw / 2f + 1f, -12.3f + bob, 1.2f, 1.3f, skin);
         }
 
-        // Cou et tête : ovale modéré (environ 1/5 de la hauteur)
-        Rect(img, ox, oy, -1.2f, -23f + bob, 2.4f, 2f, skin.Darkened(0.12f));
-        float hcx = 0f, hcy = -26.2f + bob;
-        float hrx = side ? 3.6f : 4.0f, hry = 4.4f;
-        Ellipse(img, ox, oy, hcx, hcy, hrx, hry, skin, Outline);
+        // Cou et tête
+        R(img, ox, oy, -1.2f, -23f + bob, 2.4f, 2f, skin.Darkened(0.12f));
+        float hcy = -26.5f + bob;
+        float hrx = side ? 4.2f : 4.8f, hry = 4.8f;
+        E(img, ox, oy, 0f, hcy, hrx, hry, skin);
         switch (facing)
         {
-            case CharacterVisual.Facing.Up:
-                Ellipse(img, ox, oy, hcx, hcy - 0.4f, hrx - 0.3f, hry - 0.5f, hair, null);
+            case Facing.Up:
+                E(img, ox, oy, 0f, hcy - 0.4f, hrx - 0.2f, hry - 0.4f, hair);
                 break;
-            case CharacterVisual.Facing.Down:
-                Ellipse(img, ox, oy, hcx, hcy - 2.2f, hrx - 0.2f, 2.3f, hair, null);
-                Rect(img, ox, oy, -hrx + 0.3f, hcy - 2.2f, 1.2f, 2.6f, hair);
-                Rect(img, ox, oy, hrx - 1.5f, hcy - 2.2f, 1.2f, 2.6f, hair);
-                Rect(img, ox, oy, -1.9f, hcy + 0.4f, 1.0f, 1.2f, Outline);
-                Rect(img, ox, oy, 0.9f, hcy + 0.4f, 1.0f, 1.2f, Outline);
-                Rect(img, ox, oy, -1.0f, hcy + 2.6f, 2.0f, 0.6f, skin.Darkened(0.35f));
+            case Facing.Down:
+                E(img, ox, oy, 0f, hcy - 2.4f, hrx - 0.1f, 2.6f, hair);
+                R(img, ox, oy, -hrx + 0.2f, hcy - 2.4f, 1.4f, 3f, hair);
+                R(img, ox, oy, hrx - 1.6f, hcy - 2.4f, 1.4f, 3f, hair);
+                R(img, ox, oy, -2.2f, hcy + 0.4f, 1.2f, 1.6f, Outline);
+                R(img, ox, oy, 1.0f, hcy + 0.4f, 1.2f, 1.6f, Outline);
                 break;
-            case CharacterVisual.Facing.Left:
-                Ellipse(img, ox, oy, hcx + 0.6f, hcy - 2.0f, hrx - 0.2f, 2.4f, hair, null);
-                Rect(img, ox, oy, 0.6f, hcy - 1.8f, hrx - 0.4f, 3.4f, hair);
-                Rect(img, ox, oy, -2.6f, hcy + 0.4f, 1.0f, 1.2f, Outline);
+            case Facing.Left:
+                E(img, ox, oy, 0.6f, hcy - 2.2f, hrx - 0.1f, 2.6f, hair);
+                R(img, ox, oy, 0.4f, hcy - 2f, hrx - 0.3f, 3.6f, hair);
+                R(img, ox, oy, -3.0f, hcy + 0.4f, 1.2f, 1.6f, Outline);
                 break;
-            case CharacterVisual.Facing.Right:
-                Ellipse(img, ox, oy, hcx - 0.6f, hcy - 2.0f, hrx - 0.2f, 2.4f, hair, null);
-                Rect(img, ox, oy, -hrx + 0.2f, hcy - 1.8f, hrx - 0.4f, 3.4f, hair);
-                Rect(img, ox, oy, 1.6f, hcy + 0.4f, 1.0f, 1.2f, Outline);
+            case Facing.Right:
+                E(img, ox, oy, -0.6f, hcy - 2.2f, hrx - 0.1f, 2.6f, hair);
+                R(img, ox, oy, -hrx + 0.1f, hcy - 2f, hrx - 0.3f, 3.6f, hair);
+                R(img, ox, oy, 1.8f, hcy + 0.4f, 1.2f, 1.6f, Outline);
                 break;
         }
-        // Contour de la tête repassé par-dessus les cheveux
-        Ellipse(img, ox, oy, hcx, hcy, hrx, hry, new Color(0, 0, 0, 0), Outline);
     }
+
+    // --- Aides de direction (grille : haut = -y, bas = +y) ----------------------
+
+    public static Facing FacingFromDelta(Vector2I d, Facing current)
+    {
+        if (d.Y > 0) return Facing.Down;
+        if (d.Y < 0) return Facing.Up;
+        if (d.X > 0) return Facing.Right;
+        if (d.X < 0) return Facing.Left;
+        return current;
+    }
+
+    public static Facing FacingFromString(string s) => s.ToLowerInvariant() switch
+    {
+        "up" => Facing.Up,
+        "left" => Facing.Left,
+        "right" => Facing.Right,
+        _ => Facing.Down,
+    };
+
+    public static Vector2I ToDelta(Facing f) => f switch
+    {
+        Facing.Up => new Vector2I(0, -1),
+        Facing.Down => new Vector2I(0, 1),
+        Facing.Left => new Vector2I(-1, 0),
+        _ => new Vector2I(1, 0),
+    };
 }

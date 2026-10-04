@@ -4,35 +4,41 @@ using System.Collections.Generic;
 namespace VillageDeBrume;
 
 /// <summary>
-/// Interface en jeu, construite en code (résolution 256x192) :
-/// invite « E — Parler » quand le joueur est face à un Interactable ;
-/// boîte de dialogue en bas de l'écran, choix navigables au clavier.
+/// Interface en jeu (256x192) : boîte de dialogue bleu nuit en bas avec
+/// portrait du locuteur, boîte de choix à droite avec curseur, invite
+/// d'interaction discrète et message temporaire en haut.
 /// </summary>
 public partial class GameUI : CanvasLayer
 {
     public static GameUI? Instance { get; private set; }
 
-    private const int BoxHeight = 60;
+    public static readonly Color BoxBg = new("1c2d70");
+    public static readonly Color BoxBgDark = new("142252");
+    public static readonly Color BoxBorder = new("f0f0ff");
+    public static readonly Color Text = new("ffffff");
+    public static readonly Color NameColor = new("f8e070");
+    public static readonly Color Cursor = new("ffffff");
+    public static readonly Color PortraitBg = new("3a5a9a");
+
+    private const int BoxHeight = 44;
     private const int Margin = 4;
-    private static readonly Color Bg = new Color("1b1d22", 0.93f);
-    private static readonly Color Border = new("6b665c");
-    private static readonly Color Text = new("e3ded2");
-    private static readonly Color NameColor = new("d2a65a");
-    private static readonly Color Selected = new("f0e2b4");
 
     private PanelContainer _promptPanel = null!;
     private Label _prompt = null!;
+    private PanelContainer _noticePanel = null!;
+    private Label _notice = null!;
+    private float _noticeTimer;
     private PanelContainer _box = null!;
-    private Label _nameLabel = null!;
-    private Label _textLabel = null!;
+    private RichTextLabel _textLabel = null!;
+    private PanelContainer _portraitFrame = null!;
+    private TextureRect _portrait = null!;
     private PanelContainer _choicesBox = null!;
     private VBoxContainer _choicesList = null!;
     private int _choiceIndex;
     private IReadOnlyList<string> _choices = new List<string>();
+    private string _speaker = "";
     private Player? _player;
-    private PanelContainer _noticePanel = null!;
-    private Label _notice = null!;
-    private float _noticeTimer;
+    private readonly Dictionary<string, ImageTexture> _portraits = new();
 
     public int ChoiceIndex => _choiceIndex;
     public IReadOnlyList<string> Choices => _choices;
@@ -49,37 +55,9 @@ public partial class GameUI : CanvasLayer
         dm.NodeChanged += OnNodeChanged;
         dm.DialogueEnded += OnDialogueEnded;
         _box.Visible = false;
+        _portraitFrame.Visible = false;
         _choicesBox.Visible = false;
         _promptPanel.Visible = false;
-    }
-
-    /// <summary>Message court en haut de l'écran (pêche, objets ramassés...).</summary>
-    public void ShowNotice(string text, float seconds = 2f)
-    {
-        _notice.Text = text;
-        _noticePanel.Visible = true;
-        _noticeTimer = seconds;
-        _noticePanel.ResetSize();
-        _noticePanel.Position = new Vector2(128 - _noticePanel.Size.X / 2f, 8);
-    }
-
-    public override void _Process(double delta)
-    {
-        if (_noticeTimer > 0f)
-        {
-            _noticeTimer -= (float)delta;
-            if (_noticeTimer <= 0f)
-                _noticePanel.Visible = false;
-        }
-    }
-
-    private void BuildNotice()
-    {
-        _noticePanel = new PanelContainer { Name = "NoticePanel", Visible = false };
-        _noticePanel.AddThemeStyleboxOverride("panel", MakeStyle());
-        _notice = MakeLabel(Selected);
-        _noticePanel.AddChild(_notice);
-        AddChild(_noticePanel);
     }
 
     public override void _ExitTree()
@@ -97,54 +75,64 @@ public partial class GameUI : CanvasLayer
         player.FocusChanged += OnFocusChanged;
     }
 
+    public void ShowNotice(string text, float seconds = 2f)
+    {
+        _notice.Text = text;
+        _noticePanel.Visible = true;
+        _noticeTimer = seconds;
+        _noticePanel.ResetSize();
+        _noticePanel.Position = new Vector2(128 - _noticePanel.Size.X / 2f, 6);
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_noticeTimer > 0f)
+        {
+            _noticeTimer -= (float)delta;
+            if (_noticeTimer <= 0f) _noticePanel.Visible = false;
+        }
+    }
+
     public override void _UnhandledInput(InputEvent @event)
     {
         var dm = DialogueManager.Instance;
         if (!dm.IsActive || GetTree().Paused)
             return;
-        // La touche qui a lancé le dialogue ne doit pas aussi le faire avancer.
         if (Engine.GetProcessFrames() == dm.StartedFrame)
             return;
         if (@event.IsActionPressed("interact") || @event.IsActionPressed("ui_accept"))
         {
-            if (_choices.Count == 0)
-                dm.Advance();
-            else
-                dm.Choose(_choiceIndex);
+            if (_choices.Count == 0) dm.Advance();
+            else dm.Choose(_choiceIndex);
             GetViewport().SetInputAsHandled();
         }
         else if (_choices.Count > 0)
         {
             if (@event.IsActionPressed("move_up") || @event.IsActionPressed("ui_up"))
-            {
-                _choiceIndex = Mathf.Wrap(_choiceIndex - 1, 0, _choices.Count);
-                RefreshChoices();
-                GetViewport().SetInputAsHandled();
-            }
+            { _choiceIndex = Mathf.Wrap(_choiceIndex - 1, 0, _choices.Count); RefreshChoices(); GetViewport().SetInputAsHandled(); }
             else if (@event.IsActionPressed("move_down") || @event.IsActionPressed("ui_down"))
-            {
-                _choiceIndex = Mathf.Wrap(_choiceIndex + 1, 0, _choices.Count);
-                RefreshChoices();
-                GetViewport().SetInputAsHandled();
-            }
+            { _choiceIndex = Mathf.Wrap(_choiceIndex + 1, 0, _choices.Count); RefreshChoices(); GetViewport().SetInputAsHandled(); }
         }
     }
 
     // --- Construction -------------------------------------------------------
 
-    private static StyleBoxFlat MakeStyle()
+    /// <summary>Boîte bleu nuit à double bordure (claire puis sombre), façon RPG portable.</summary>
+    public static StyleBoxFlat MakeBoxStyle(int margin = 4)
     {
-        var style = new StyleBoxFlat { BgColor = Bg, BorderColor = Border };
+        var style = new StyleBoxFlat { BgColor = BoxBg, BorderColor = BoxBorder };
         style.SetBorderWidthAll(1);
-        style.SetCornerRadiusAll(1);
-        style.SetContentMarginAll(5);
+        style.SetCornerRadiusAll(2);
+        style.SetContentMarginAll(margin);
+        style.ShadowColor = BoxBgDark;
+        style.ShadowSize = 1;
         return style;
     }
 
-    private static Label MakeLabel(Color color)
+    public static Label MakeLabel(string text, int size, Color color)
     {
-        var l = new Label();
-        l.AddThemeFontSizeOverride("font_size", 9);
+        var l = new Label { Text = text };
+        l.AddThemeFontSizeOverride("font_size", size);
         l.AddThemeColorOverride("font_color", color);
         return l;
     }
@@ -152,38 +140,48 @@ public partial class GameUI : CanvasLayer
     private void BuildPrompt()
     {
         _promptPanel = new PanelContainer { Name = "PromptPanel" };
-        _promptPanel.AddThemeStyleboxOverride("panel", MakeStyle());
-        _promptPanel.SetAnchorsPreset(Control.LayoutPreset.CenterBottom);
-        _promptPanel.Position = new Vector2(0, 192 - 22);
-        _promptPanel.GrowHorizontal = Control.GrowDirection.Both;
-        _prompt = MakeLabel(Text);
+        _promptPanel.AddThemeStyleboxOverride("panel", MakeBoxStyle(3));
+        _prompt = MakeLabel("", 8, Text);
         _promptPanel.AddChild(_prompt);
         AddChild(_promptPanel);
+    }
+
+    private void BuildNotice()
+    {
+        _noticePanel = new PanelContainer { Name = "NoticePanel", Visible = false };
+        _noticePanel.AddThemeStyleboxOverride("panel", MakeBoxStyle(3));
+        _notice = MakeLabel("", 8, Text);
+        _noticePanel.AddChild(_notice);
+        AddChild(_noticePanel);
     }
 
     private void BuildDialogueBox()
     {
         _box = new PanelContainer { Name = "DialogueBox" };
-        _box.AddThemeStyleboxOverride("panel", MakeStyle());
+        _box.AddThemeStyleboxOverride("panel", MakeBoxStyle(5));
         _box.SetAnchorsPreset(Control.LayoutPreset.BottomWide);
         _box.OffsetLeft = Margin;
         _box.OffsetRight = -Margin;
         _box.OffsetTop = -BoxHeight - Margin;
         _box.OffsetBottom = -Margin;
-        var vbox = new VBoxContainer();
-        vbox.AddThemeConstantOverride("separation", 1);
-        _nameLabel = MakeLabel(NameColor);
-        _textLabel = MakeLabel(Text);
-        _textLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        _textLabel = new RichTextLabel { BbcodeEnabled = true, ScrollActive = false, FitContent = false };
+        _textLabel.AddThemeFontSizeOverride("normal_font_size", 8);
+        _textLabel.AddThemeColorOverride("default_color", Text);
         _textLabel.SizeFlagsVertical = Control.SizeFlags.ExpandFill;
-        vbox.AddChild(_nameLabel);
-        vbox.AddChild(_textLabel);
-        _box.AddChild(vbox);
+        _box.AddChild(_textLabel);
         AddChild(_box);
 
-        // Boîte des choix, au-dessus de la boîte de dialogue, à droite.
+        // Portrait au-dessus de la boîte, à gauche
+        _portraitFrame = new PanelContainer { Name = "Portrait" };
+        _portraitFrame.AddThemeStyleboxOverride("panel", MakeBoxStyle(2));
+        _portraitFrame.Position = new Vector2(Margin + 2, 192 - BoxHeight - Margin - 40);
+        _portrait = new TextureRect { CustomMinimumSize = new Vector2(32, 32), TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
+        _portraitFrame.AddChild(_portrait);
+        AddChild(_portraitFrame);
+
+        // Choix : à droite, au-dessus de la boîte
         _choicesBox = new PanelContainer { Name = "ChoicesBox" };
-        _choicesBox.AddThemeStyleboxOverride("panel", MakeStyle());
+        _choicesBox.AddThemeStyleboxOverride("panel", MakeBoxStyle(4));
         _choicesList = new VBoxContainer();
         _choicesList.AddThemeConstantOverride("separation", 0);
         _choicesBox.AddChild(_choicesList);
@@ -192,30 +190,45 @@ public partial class GameUI : CanvasLayer
 
     // --- Réactions ----------------------------------------------------------
 
-    private void OnFocusChanged(Interactable? interactable)
+    private void OnFocusChanged(IGridInteractable? interactable)
     {
         if (interactable == null || interactable.Prompt == "" || DialogueManager.Instance.IsActive)
         {
             _promptPanel.Visible = false;
+            return;
         }
-        else
-        {
-            _prompt.Text = "E — " + interactable.Prompt;
-            _promptPanel.Visible = true;
-        }
+        _prompt.Text = "E  " + interactable.Prompt;
+        _promptPanel.Visible = true;
+        _promptPanel.ResetSize();
+        _promptPanel.Position = new Vector2(128 - _promptPanel.Size.X / 2f, 192 - 20);
     }
 
     private void OnDialogueStarted(string speaker)
     {
         _promptPanel.Visible = false;
         _box.Visible = true;
+        _speaker = speaker;
+        var tex = GetPortrait(DialogueManager.Instance.SpeakerId);
+        _portrait.Texture = tex;
+        _portraitFrame.Visible = tex != null;
+    }
+
+    private ImageTexture? GetPortrait(string npcId)
+    {
+        if (string.IsNullOrEmpty(npcId) || !NpcManager.Instance.Npcs.TryGetValue(npcId, out var data))
+            return null;
+        if (_portraits.TryGetValue(npcId, out var cached))
+            return cached;
+        Color Get(string key, string fallback) => data.Appearance.TryGetValue(key, out var v) ? new Color(v) : new Color(fallback);
+        var tex = CharacterSprites.BuildPortrait(Get("tunic", "3a6ea5"), Get("hair", "5a3a22"), Get("skin", "f1c9a5"), PortraitBg);
+        _portraits[npcId] = tex;
+        return tex;
     }
 
     private void OnNodeChanged(string speaker, string text, IReadOnlyList<string> choices)
     {
-        _nameLabel.Text = speaker;
-        _nameLabel.Visible = speaker != "";
-        _textLabel.Text = text;
+        string safe = text.Replace("[", "[lb]");
+        _textLabel.Text = speaker != "" ? $"[color=#{NameColor.ToHtml(false)}]{speaker}:[/color] {safe}" : safe;
         _choices = choices;
         _choiceIndex = 0;
         RefreshChoices();
@@ -224,26 +237,18 @@ public partial class GameUI : CanvasLayer
     private void OnDialogueEnded(string id)
     {
         _box.Visible = false;
+        _portraitFrame.Visible = false;
         _choicesBox.Visible = false;
-        if (_player != null)
-            OnFocusChanged(_player.Focused);
+        if (_player != null) OnFocusChanged(_player.Focused);
     }
 
     private void RefreshChoices()
     {
-        foreach (var c in _choicesList.GetChildren())
-            c.QueueFree();
+        foreach (var c in _choicesList.GetChildren()) c.QueueFree();
         _choicesBox.Visible = _choices.Count > 0;
         for (int i = 0; i < _choices.Count; i++)
-        {
-            var l = MakeLabel(i == _choiceIndex ? Selected : Text);
-            l.Text = (i == _choiceIndex ? "> " : "  ") + _choices[i];
-            _choicesList.AddChild(l);
-        }
-        // Repositionner en bas à droite, au-dessus de la boîte de dialogue.
+            _choicesList.AddChild(MakeLabel((i == _choiceIndex ? "▶ " : "   ") + _choices[i], 8, Text));
         _choicesBox.ResetSize();
-        _choicesBox.Position = new Vector2(
-            256 - Margin - _choicesBox.Size.X,
-            192 - BoxHeight - Margin - 2 - _choicesBox.Size.Y);
+        _choicesBox.Position = new Vector2(256 - Margin - _choicesBox.Size.X, 192 - BoxHeight - Margin - 2 - _choicesBox.Size.Y);
     }
 }

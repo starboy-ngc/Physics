@@ -11,12 +11,10 @@ namespace VillageDeBrume;
 /// </summary>
 public partial class MenuUI : CanvasLayer
 {
-    private static readonly Color Bg = new Color("1b1d22", 0.94f);
-    private static readonly Color Border = new("6b665c");
-    private static readonly Color Text = new("e3ded2");
-    private static readonly Color Muted = new("8d887c");
-    private static readonly Color Selected = new("f0e2b4");
-    private static readonly Color SelectedBg = new Color("d2a65a", 0.22f);
+    private static readonly Color Text = GameUI.Text;
+    private static readonly Color Muted = new("9aa8d0");
+    private static readonly Color Selected = GameUI.NameColor;
+    private static readonly Color SelectedBg = new Color("ffffff", 0.12f);
 
     private enum Column { Tabs, Content }
     private readonly string[] _tabs = { "Inventaire", "Carnet", "Quitter" };
@@ -136,32 +134,19 @@ public partial class MenuUI : CanvasLayer
 
     // --- Construction ---------------------------------------------------------
 
-    private static StyleBoxFlat MakeStyle(Color bg)
-    {
-        var style = new StyleBoxFlat { BgColor = bg, BorderColor = Border };
-        style.SetBorderWidthAll(1);
-        style.SetCornerRadiusAll(1);
-        style.SetContentMarginAll(6);
-        return style;
-    }
+    private static StyleBoxFlat MakeStyle() => GameUI.MakeBoxStyle(6);
 
-    private static Label MakeLabel(string text, int size, Color color)
-    {
-        var l = new Label { Text = text };
-        l.AddThemeFontSizeOverride("font_size", size);
-        l.AddThemeColorOverride("font_color", color);
-        return l;
-    }
+    private static Label MakeLabel(string text, int size, Color color) => GameUI.MakeLabel(text, size, color);
 
     private void Build()
     {
-        _dim = new ColorRect { Color = new Color(0, 0, 0, 0.55f), MouseFilter = Control.MouseFilterEnum.Ignore };
+        _dim = new ColorRect { Color = new Color(0, 0, 0, 0.35f), MouseFilter = Control.MouseFilterEnum.Ignore };
         _dim.SetAnchorsPreset(Control.LayoutPreset.FullRect);
         AddChild(_dim);
 
         // Colonne des onglets (gauche)
         _tabsPanel = new PanelContainer();
-        _tabsPanel.AddThemeStyleboxOverride("panel", MakeStyle(Bg));
+        _tabsPanel.AddThemeStyleboxOverride("panel", MakeStyle());
         _tabsPanel.Position = new Vector2(8, 8);
         _tabsPanel.Size = new Vector2(70, 176);
         _tabsList = new VBoxContainer();
@@ -171,7 +156,7 @@ public partial class MenuUI : CanvasLayer
 
         // Panneau de contenu (droite)
         _contentPanel = new PanelContainer();
-        _contentPanel.AddThemeStyleboxOverride("panel", MakeStyle(Bg));
+        _contentPanel.AddThemeStyleboxOverride("panel", MakeStyle());
         _contentPanel.Position = new Vector2(84, 8);
         _contentPanel.Size = new Vector2(164, 176);
         var vbox = new VBoxContainer();
@@ -206,7 +191,7 @@ public partial class MenuUI : CanvasLayer
             bool sel = i == TabIndex;
             var row = new PanelContainer();
             row.AddThemeStyleboxOverride("panel", RowStyle(sel && _column == Column.Tabs));
-            row.AddChild(MakeLabel((sel ? "> " : "  ") + _tabs[i], 9, sel ? Selected : Text));
+            row.AddChild(MakeLabel((sel ? "▶ " : "   ") + _tabs[i], 9, sel ? Selected : Text));
             _tabsList.AddChild(row);
         }
 
@@ -225,7 +210,7 @@ public partial class MenuUI : CanvasLayer
                     var row = new PanelContainer();
                     row.AddThemeStyleboxOverride("panel", RowStyle(sel));
                     var h = new HBoxContainer();
-                    var nameLabel = MakeLabel((sel ? "> " : "  ") + name, 9, sel ? Selected : Text);
+                    var nameLabel = MakeLabel((sel ? "▶ " : "   ") + name, 9, sel ? Selected : Text);
                     nameLabel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
                     h.AddChild(nameLabel);
                     h.AddChild(MakeLabel(stacks[i].Count > 1 ? $"x{stacks[i].Count}" : "", 9, Muted));

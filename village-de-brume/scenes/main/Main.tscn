@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/systems/Main.cs" id="1_main"]
-[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="2_player"]
-[ext_resource type="Script" path="res://scripts/systems/FollowCamera.cs" id="3_camera"]
+[ext_resource type="Script" path="res://scripts/player/Player.cs" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/ui/GameUI.tscn" id="4_ui"]
 [ext_resource type="PackedScene" path="res://scenes/ui/MenuUI.tscn" id="5_menu"]
 [ext_resource type="PackedScene" path="res://scenes/ui/ShopUI.tscn" id="6_shop"]
@@ -11,13 +10,28 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
 
-[node name="ZoneRoot" type="Node3D" parent="."]
+[node name="WorldContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="World" type="SubViewport" parent="WorldContainer"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(256, 192)
+render_target_update_mode = 4
 
-[node name="FollowCamera" type="Camera3D" parent="."]
-current = true
-script = ExtResource("3_camera")
+[node name="ZoneRoot" type="Node2D" parent="WorldContainer/World"]
+
+[node name="Player" type="Node2D" parent="WorldContainer/World"]
+script = ExtResource("2_player")
+
+[node name="Camera2D" type="Camera2D" parent="WorldContainer/World/Player"]
+position = Vector2(0, -12)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="GameUI" parent="." instance=ExtResource("4_ui")]
 

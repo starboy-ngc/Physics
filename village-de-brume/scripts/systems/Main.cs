@@ -3,9 +3,9 @@ using Godot;
 namespace VillageDeBrume;
 
 /// <summary>
-/// Scène principale : joueur persistant, conteneur de zones, caméra, lumière,
-/// interfaces. Le jeu commence dans la maison du joueur. Reçoit les actions
-/// demandées par les dialogues (boutique, dépôt) et ouvre l'interface voulue.
+/// Scène principale : joueur persistant, conteneur de zones, interfaces.
+/// Le jeu commence dans la base. Reçoit les actions demandées par les
+/// dialogues (boutique, dépôt) et ouvre l'interface voulue.
 /// </summary>
 public partial class Main : Node
 {
@@ -14,30 +14,18 @@ public partial class Main : Node
 
     public override void _Ready()
     {
-        var zoneRoot = GetNode<Node3D>("ZoneRoot");
-        var player = GetNode<Player>("Player");
-        var camera = GetNode<FollowCamera>("FollowCamera");
+        var zoneRoot = GetNode<Node2D>("WorldContainer/World/ZoneRoot");
+        var player = GetNode<Player>("WorldContainer/World/Player");
         var ui = GetNode<GameUI>("GameUI");
         _shop = GetNode<ShopUI>("ShopUI");
         _storage = GetNode<StorageUI>("StorageUI");
         ui.BindPlayer(player);
-        AddChild(new DirectionalLight3D
-        {
-            Name = "Sun",
-            RotationDegrees = new Vector3(-50, -30, 0),
-            LightColor = new Color(0.96f, 0.94f, 0.88f),
-            LightEnergy = 0.55f,
-            ShadowEnabled = true,
-        });
         DialogueManager.Instance.ActionRequested += OnDialogueAction;
-        Game.Instance.Setup(zoneRoot, player, camera);
-        _ = Game.Instance.ChangeZone("house_player", "start", true);
+        Game.Instance.Setup(zoneRoot, player);
+        _ = Game.Instance.ChangeZone("base", "start", true);
     }
 
-    public override void _ExitTree()
-    {
-        DialogueManager.Instance.ActionRequested -= OnDialogueAction;
-    }
+    public override void _ExitTree() => DialogueManager.Instance.ActionRequested -= OnDialogueAction;
 
     private void OnDialogueAction(string action, string speakerId)
     {

@@ -11,13 +11,11 @@ namespace VillageDeBrume;
 /// </summary>
 public abstract partial class ListPanelUI : CanvasLayer
 {
-    protected static readonly Color Bg = new Color("1b1d22", 0.94f);
-    protected static readonly Color Border = new("6b665c");
-    protected static readonly Color Text = new("e3ded2");
-    protected static readonly Color Muted = new("8d887c");
-    protected static readonly Color Accent = new("d2a65a");
-    protected static readonly Color Selected = new("f0e2b4");
-    protected static readonly Color SelectedBg = new Color("d2a65a", 0.22f);
+    protected static readonly Color Text = GameUI.Text;
+    protected static readonly Color Muted = new("9aa8d0");
+    protected static readonly Color Accent = GameUI.NameColor;
+    protected static readonly Color Selected = GameUI.Text;
+    protected static readonly Color SelectedBg = new Color("ffffff", 0.12f);
 
     public record Entry(string Label, string Right, bool Enabled, string Description);
 
@@ -118,33 +116,19 @@ public abstract partial class ListPanelUI : CanvasLayer
 
     // --- Construction ---------------------------------------------------------
 
-    protected static Label MakeLabel(string text, int size, Color color)
-    {
-        var l = new Label { Text = text };
-        l.AddThemeFontSizeOverride("font_size", size);
-        l.AddThemeColorOverride("font_color", color);
-        return l;
-    }
+    protected static Label MakeLabel(string text, int size, Color color) => GameUI.MakeLabel(text, size, color);
 
     private void Build()
     {
-        var dim = new ColorRect { Color = new Color(0, 0, 0, 0.4f), MouseFilter = Control.MouseFilterEnum.Ignore };
-        dim.SetAnchorsPreset(Control.LayoutPreset.FullRect);
-        AddChild(dim);
-
         _panel = new PanelContainer();
-        var style = new StyleBoxFlat { BgColor = Bg, BorderColor = Border };
-        style.SetBorderWidthAll(1);
-        style.SetCornerRadiusAll(1);
-        style.SetContentMarginAll(6);
-        _panel.AddThemeStyleboxOverride("panel", style);
+        _panel.AddThemeStyleboxOverride("panel", GameUI.MakeBoxStyle(6));
         _panel.Position = new Vector2(20, 10);
         _panel.CustomMinimumSize = new Vector2(216, 172);
         _panel.Size = new Vector2(216, 172);
         var vbox = new VBoxContainer();
         vbox.AddThemeConstantOverride("separation", 2);
         var top = new HBoxContainer();
-        _title = MakeLabel("", 10, Accent);
+        _title = MakeLabel("", 9, Accent);
         _title.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
         _header = MakeLabel("", 9, Selected);
         top.AddChild(_title);
@@ -195,7 +179,7 @@ public abstract partial class ListPanelUI : CanvasLayer
             row.AddThemeStyleboxOverride("panel", rs);
             var h = new HBoxContainer();
             Color c = !entries[i].Enabled ? Muted : sel ? Selected : Text;
-            var name = MakeLabel((sel ? "> " : "  ") + entries[i].Label, 9, c);
+            var name = MakeLabel((sel ? "▶ " : "   ") + entries[i].Label, 9, c);
             name.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
             h.AddChild(name);
             h.AddChild(MakeLabel(entries[i].Right, 9, c));

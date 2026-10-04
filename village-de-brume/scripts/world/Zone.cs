@@ -1,77 +1,103 @@
 using Godot;
+using System.Collections.Generic;
 
 namespace VillageDeBrume;
 
 /// <summary>
-/// Base de toute zone jouable (village, intérieur...) en 2.5D.
-/// Le sol est le plan y = 0 ; Bounds est le rectangle (x, z) de la zone en
-/// unités monde (1 unité = 1 tuile de 16 px). Les points d'apparition sont
-/// des Marker3D enfants d'un noeud "Spawns".
+/// Zone jouable 2D sur grille (village, base). Construit sa carte à partir d'un
+/// plan ASCII, pose les décors, connaît ses points d'apparition, ses portes
+/// (case -> zone) et ses interactions (case -> objet).
+/// Les enfants sont triés en Y : l'origine de chaque sprite est à sa base.
 /// </summary>
-public partial class Zone : Node3D
+public abstract partial class Zone : Node2D
 {
-    [Export] public string ZoneName { get; set; } = "Zone";
-    [Export] public Rect2 Bounds { get; set; } = new(0, 0, 48, 36);
-    /// <summary>Bande infranchissable au fond (-Z) : mur du fond des intérieurs.</summary>
-    [Export] public float WallTop { get; set; } = 0f;
-    /// <summary>Bande infranchissable sur les côtés et devant (+Z).</summary>
-    [Export] public float WallSides { get; set; } = 0f;
+    public abstract string ZoneName { get; }
+    public GridMap Map { get; private set; } = null!;
+    public Dictionary<string, Vector2I> Spawns { get; } = new();
+    public Dictionary<Vector2I, (string zone, string spawn)> Doors { get; } = new();
+    public Dictionary<Vector2I, IGridInteractable> Interactables { get; } = new();
 
-    private const float WallThickness = 2f;
-    private const float WallHeight = 4f;
+    public Rect2 Bounds => new(0, 0, Map.Width * Art.Tile, Map.Height * Art.Tile);
 
     public override void _Ready()
     {
-        BuildBoundaries();
-        BuildGround();
+        YSortEnabled = true;
+        Map = new GridMap { Name = "Map", ZIndex = -1 };
+        AddChild(Map);
+        Build();
+        Map.QueueRedraw();
     }
 
-    public Vector3 GetSpawnPosition(string spawnName)
+    /// <summary>Construit la zone (plan, décors, portes...).</summary>
+    protected abstract void Build();
+
+    public Vector2I GetSpawn(string name)
     {
-        var marker = GetNodeOrNull<Node3D>("Spawns/" + spawnName);
-        if (marker == null)
-        {
-            GD.PushWarning($"Zone '{ZoneName}' : point d'apparition '{spawnName}' introuvable, centre utilisé.");
-            Vector2 c = Bounds.GetCenter();
-            return new Vector3(c.X, 0f, c.Y);
-        }
-        Vector3 p = marker.GlobalPosition;
-        return new Vector3(p.X, 0f, p.Z);
+        if (Spawns.TryGetValue(name, out var t))
+            return t;
+        GD.PushWarning($"Zone '{ZoneName}' : point d'apparition '{name}' introuvable.");
+        return new Vector2I(Map.Width / 2, Map.Height / 2);
     }
 
-    /// <summary>Le sol de la zone. Redéfini par les zones concrètes.</summary>
-    protected virtual void BuildGround() { }
+    public IGridInteractable? GetInteractable(Vector2I tile) =>
+        Interactables.TryGetValue(tile, out var i) ? i : null;
 
-    /// <summary>Murs invisibles tout autour de la zone jouable.</summary>
-    private void BuildBoundaries()
+    /// <summary>
+    /// Charge un plan ASCII. Légende du sol : '.' herbe, 'd' herbe sombre,
+    /// ':' chemin, '#' pavés, '~' eau, 'w' bord d'eau, '*' fleurs, '=' plancher,
+    /// 'W' mur, 'U' haut de mur, 'r' tapis, 'm' paillasson, 'x' vide.
+    /// Décors : 'T' arbre, 't' buisson, 'o' rocher, 'F' barrière, 'R' roseaux (sur herbe).
+    /// </summary>
+    protected void LoadLayout(string[] rows)
     {
-        var body = new StaticBody3D { Name = "Boundaries", CollisionLayer = 1, CollisionMask = 0 };
-        var inner = new Rect2(
-            Bounds.Position + new Vector2(WallSides, WallTop),
-            Bounds.Size - new Vector2(WallSides * 2f, WallTop + WallSides));
-        float t = WallThickness, h = WallHeight;
-        AddWall(body, new Rect2(inner.Position.X - t, inner.Position.Y - t, inner.Size.X + 2f * t, t));
-        AddWall(body, new Rect2(inner.Position.X - t, inner.End.Y, inner.Size.X + 2f * t, t));
-        AddWall(body, new Rect2(inner.Position.X - t, inner.Position.Y, t, inner.Size.Y));
-        AddWall(body, new Rect2(inner.End.X, inner.Position.Y, t, inner.Size.Y));
-        AddChild(body);
-
-        void AddWall(StaticBody3D b, Rect2 r) =>
-            Materials.BoxCollider(b, new Vector3(r.Size.X, h, r.Size.Y), new Vector3(r.GetCenter().X, h / 2f, r.GetCenter().Y));
+        int h = rows.Length, w = rows[0].Length;
+        Map.Init(w, h);
+        var rng = new RandomNumberGenerator { Seed = 4242 };
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+            {
+                var t = new Vector2I(x, y);
+                char c = x < rows[y].Length ? rows[y][x] : 'x';
+                TileId ground = c switch
+                {
+                    '.' or 'T' or 't' or 'o' or 'F' or 'R' => rng.Randf() < 0.75f ? TileId.Grass : rng.Randf() < 0.5f ? TileId.GrassB : TileId.GrassC,
+                    'd' => TileId.GrassDark,
+                    ':' => TileId.Path,
+                    '#' => (x + y) % 2 == 0 ? TileId.Plaza : TileId.PlazaB,
+                    '~' => TileId.Water,
+                    'w' => TileId.WaterEdge,
+                    '*' => TileId.Flower,
+                    '=' => (x + y) % 2 == 0 ? TileId.Floor : TileId.FloorB,
+                    'W' => TileId.Wall,
+                    'U' => TileId.WallTop,
+                    'r' => TileId.Rug,
+                    'm' => TileId.Mat,
+                    _ => TileId.Void,
+                };
+                Map.SetGround(t, ground);
+                if (c is '~' or 'w' or 'W' or 'U' or 'x')
+                    Map.Block(t);
+                switch (c)
+                {
+                    case 'T': AddProp($"Tree_{x}_{y}", Art.Tree(), t, new Vector2I(1, 1)); break;
+                    case 't': AddProp($"Bush_{x}_{y}", Art.Bush(), t, new Vector2I(1, 1)); break;
+                    case 'o': AddProp($"Rock_{x}_{y}", Art.Rock(), t, new Vector2I(1, 1)); break;
+                    case 'F': AddProp($"Fence_{x}_{y}", Art.Fence(), t, new Vector2I(1, 1)); break;
+                    case 'R': AddProp($"Reeds_{x}_{y}", Art.Reeds(), t, new Vector2I(1, 1), false); break;
+                }
+            }
     }
 
-    /// <summary>Plan texturé horizontal couvrant `rect` (x, z) à la hauteur y.</summary>
-    protected MeshInstance3D AddFloor(Rect2 rect, float y, Material mat, string name)
+    protected PropNode AddProp(string name, Texture2D texture, Vector2I origin, Vector2I footprint, bool blocks = true)
     {
-        var mi = new MeshInstance3D
-        {
-            Name = name,
-            Mesh = new PlaneMesh { Size = rect.Size },
-            MaterialOverride = mat,
-            Position = new Vector3(rect.GetCenter().X, y, rect.GetCenter().Y),
-            CastShadow = GeometryInstance3D.ShadowCastingSetting.Off,
-        };
-        AddChild(mi);
-        return mi;
+        var prop = PropNode.Create(name, texture, origin, footprint, blocks);
+        AddChild(prop);
+        if (blocks)
+            Map.BlockRect(origin, footprint);
+        return prop;
     }
+
+    protected void AddDoor(Vector2I tile, string targetZone, string targetSpawn) => Doors[tile] = (targetZone, targetSpawn);
+
+    protected void AddInteractable(Vector2I tile, IGridInteractable interactable) => Interactables[tile] = interactable;
 }

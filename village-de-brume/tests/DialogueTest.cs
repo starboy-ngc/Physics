@@ -44,8 +44,8 @@ public partial class DialogueTest : TestBase
                 _phaseStart = Frame;
                 break;
             case 1:
-                HoldOnly("move_up"); // vers l'étal d'Émile (-Z)
-                if (player.Focused is NpcTalkArea)
+                HoldOnly("move_up"); // vers le comptoir d'Émile
+                if (player.Focused is Counter)
                 {
                     ReleaseAll();
                     Log($"invite : E — {player.Focused.Prompt}");
@@ -53,7 +53,7 @@ public partial class DialogueTest : TestBase
                     _phaseStart = Frame;
                 }
                 else if (Frame - _phaseStart > 300)
-                    Finish($"aucun Interactable détecté (pos {player.GlobalPosition})");
+                    Finish($"aucun comptoir détecté (case {player.Tile})");
                 break;
             case 2:
                 if (Dialogue.IsActive)

@@ -4,111 +4,61 @@ using System;
 namespace VillageDeBrume;
 
 /// <summary>
-/// Personnage jouable : déplacement 4 directions sur le plan (x, z), direction
-/// regardée, sonde d'interaction devant lui (E). Bloqué pendant un dialogue.
+/// Personnage jouable : déplacement case par case (8 directions), interaction
+/// avec la case devant lui (E), portes franchies en marchant dessus.
+/// Bloqué pendant un dialogue ou une interface.
 /// </summary>
-public partial class Player : CharacterBody3D
+public partial class Player : GridEntity
 {
-    public event Action<Interactable?>? FocusChanged;
+    public event Action<IGridInteractable?>? FocusChanged;
 
-    private const float Speed = 5f;
-
-    public CharacterVisual Visual { get; private set; } = null!;
-    public bool IsMoving { get; private set; }
-    public Interactable? Focused { get; private set; }
-    /// <summary>Immobilisé par une action en cours (pêche...). Le dialogue a son propre verrou.</summary>
+    public Camera2D Camera { get; private set; } = null!;
+    public IGridInteractable? Focused { get; private set; }
+    /// <summary>Immobilisé par une interface (boutique, dépôt...). Le dialogue a son propre verrou.</summary>
     public bool Locked { get; set; }
 
-    private CharacterVisual.Facing _facing = CharacterVisual.Facing.Down;
-    public CharacterVisual.Facing FacingDirection
-    {
-        get => _facing;
-        set
-        {
-            _facing = value;
-            if (Visual != null) Visual.FacingDirection = value;
-            UpdateProbe();
-        }
-    }
-
-    private Area3D _probe = null!;
-    private CollisionShape3D _probeShape = null!;
+    public bool CanAct => !Locked && !DialogueManager.Instance.IsActive;
 
     public override void _Ready()
     {
-        Visual = GetNode<CharacterVisual>("Visual");
-        Visual.FacingDirection = _facing;
-        _probe = new Area3D { Name = "InteractionProbe", CollisionLayer = 0, CollisionMask = 4, Monitorable = false };
-        _probeShape = new CollisionShape3D { Shape = new BoxShape3D() };
-        _probe.AddChild(_probeShape);
-        AddChild(_probe);
-        UpdateProbe();
+        base._Ready();
+        Camera = GetNode<Camera2D>("Camera2D");
     }
 
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
-        Vector2 input = Vector2.Zero;
-        if (!DialogueManager.Instance.IsActive && !Locked)
-            input = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
-        input = input.Normalized();
-
-        Velocity = new Vector3(input.X, 0f, input.Y) * Speed;
-        MoveAndSlide();
-        GlobalPosition = new Vector3(GlobalPosition.X, 0f, GlobalPosition.Z);
-
-        IsMoving = input != Vector2.Zero;
-        if (IsMoving)
+        if (!IsMoving && CanAct)
         {
-            // Le sprite regarde l'axe dominant ; en diagonale parfaite, on garde l'axe courant.
-            var dominant = Mathf.Abs(input.X) > Mathf.Abs(input.Y) + 0.01f ? new Vector2(input.X, 0)
-                : Mathf.Abs(input.Y) > Mathf.Abs(input.X) + 0.01f ? new Vector2(0, input.Y)
-                : (_facing is CharacterVisual.Facing.Left or CharacterVisual.Facing.Right ? new Vector2(input.X, 0) : new Vector2(0, input.Y));
-            FacingDirection = CharacterVisual.FacingFromInput(dominant, _facing);
+            var d = new Vector2I(
+                (Input.IsActionPressed("move_right") ? 1 : 0) - (Input.IsActionPressed("move_left") ? 1 : 0),
+                (Input.IsActionPressed("move_down") ? 1 : 0) - (Input.IsActionPressed("move_up") ? 1 : 0));
+            if (d != Vector2I.Zero)
+                TryStep(d);
         }
-        Visual.Animate((float)delta, IsMoving);
+        base._Process(delta);
         UpdateFocus();
-    }
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        if (DialogueManager.Instance.IsActive || Locked)
-            return;
-        if (@event.IsActionPressed("interact") && Focused != null)
-        {
+        if (CanAct && !IsMoving && Focused != null && Input.IsActionJustPressed("interact"))
             Focused.Interact(this);
-            GetViewport().SetInputAsHandled();
-        }
     }
 
-    public void Face(CharacterVisual.Facing direction) => FacingDirection = direction;
-
-    /// <summary>Ré-émet l'élément visé (par exemple quand son invite a changé).</summary>
-    public void RefreshFocus() => FocusChanged?.Invoke(Focused);
-
-    public void FaceTowards(Vector3 target) => FacingDirection = CharacterVisual.FacingTowards(GlobalPosition, target);
-
-    /// <summary>Place la sonde d'interaction devant le personnage.</summary>
-    private void UpdateProbe()
+    protected override void OnStepFinished()
     {
-        if (_probeShape == null)
-            return;
-        var box = (BoxShape3D)_probeShape.Shape;
-        Vector3 dir = CharacterVisual.ToVector(_facing);
-        bool alongZ = dir.Z != 0f;
-        box.Size = alongZ ? new Vector3(0.75f, 1.5f, 1.5f) : new Vector3(1.5f, 1.5f, 0.75f);
-        _probe.Position = dir * (alongZ ? 1.25f : 1.1f) + new Vector3(0, 0.75f, alongZ ? 0f : -0.4f);
+        if (Zone != null && Zone.Doors.TryGetValue(Tile, out var door))
+            Game.Instance.RequestZoneChange(door.zone, door.spawn);
     }
+
+    /// <summary>Case visée : celle devant le personnage.</summary>
+    public Vector2I FacingTile => Tile + CharacterSprites.ToDelta(Facing);
+
+    public void RefreshFocus() => FocusChanged?.Invoke(Focused);
 
     private void UpdateFocus()
     {
-        Interactable? best = null;
-        float bestDist = float.PositiveInfinity;
-        foreach (var area in _probe.GetOverlappingAreas())
+        IGridInteractable? best = null;
+        if (Zone != null && !IsMoving)
         {
-            if (area is not Interactable inter)
-                continue;
-            float d = GlobalPosition.DistanceSquaredTo(inter.GlobalPosition);
-            if (d < bestDist) { bestDist = d; best = inter; }
+            var ahead = FacingTile;
+            best = Zone.GetInteractable(ahead) ?? Zone.Map.GetOccupant(ahead) as IGridInteractable;
         }
         if (best != Focused)
         {
