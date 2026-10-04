@@ -67,6 +67,28 @@ class PrivacyRules:
             )
         return None
 
+    def warning_for_values(self, valued: int,
+                           headcount: int) -> Optional[str]:
+        """Prudence a appliquer a un montant.
+
+        Le masquage d'un montant porte sur le nombre de valeurs connues, et
+        non sur l'effectif : vingt salaries dont trois seulement ont un
+        salaire renseigne publieraient les trois. Mais « effectif
+        insuffisant » devant une equipe de vingt personnes se lit comme une
+        erreur de l'outil, et l'on cherche ou il est regle sur vingt. Quand
+        l'effectif suffit et que ce sont les valeurs qui manquent, la raison
+        le dit — c'est une colonne a completer, pas un filtre a elargir.
+        """
+        if headcount and not valued:
+            return ("Aucune valeur renseignée dans la colonne analysée : "
+                    "aucun indicateur de rémunération ne peut être calculé.")
+        if not self.may_publish(valued) and self.may_publish(headcount):
+            return (f"Résultat masqué : {valued} valeur(s) renseignée(s) sur "
+                    f"{headcount} dans la colonne analysée, en deçà du "
+                    f"minimum paramétré ({self.min_publish}). L'effectif, "
+                    "lui, suffit.")
+        return self.warning_for(valued)
+
 
 #: Champs portes par le modele lui-meme. Un champ declare au mapping mais
 #: absent du modele est range dans `extra` ; `assign` n'y met jamais un
@@ -303,7 +325,7 @@ def calculate_amount_metrics(
         "headcount": headcount,
         "valued_headcount": len(values),
         "coverage": _share(len(values), headcount),
-        "warning": rules.warning_for(len(values)),
+        "warning": rules.warning_for_values(len(values), headcount),
         "masked": not rules.may_publish(len(values)),
     }
     if result["masked"]:

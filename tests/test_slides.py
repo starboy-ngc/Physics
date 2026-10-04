@@ -69,7 +69,14 @@ class TestDeckStructure(unittest.TestCase):
         self.assertIn("Analyse par bu", titles)
         self.assertIn("Analyse par groupe", titles)
 
-    def test_masked_population_produces_no_salary_slide(self):
+    def test_a_masked_population_keeps_its_boards_but_no_figure(self):
+        """Masquer n'est pas supprimer.
+
+        Les planches disparaissaient entierement : le lecteur d'un document
+        ou manquent la population et la remuneration ne peut pas savoir
+        s'il manque un chiffre ou s'il n'y en avait pas. Elles restent, sans
+        aucune valeur, et portent la raison que le moteur a ecrite.
+        """
         config = make_config({"privacy_parameters.min_headcount_publish": 50})
         population = build_population([make_row(i) for i in range(6)], config)
         from hr_analytics.core import metrics
@@ -81,9 +88,20 @@ class TestDeckStructure(unittest.TestCase):
             "scatter": metrics.scatter_dataset(population, config),
             "segments": [],
         }
-        titles = [slide.title for slide in build_deck(payload)]
-        self.assertNotIn("Rémunération", titles)
-        self.assertNotIn("Population", titles)
+        planches = build_deck(payload)
+        titres = [planche.title for planche in planches]
+        self.assertIn("Population", titres)
+        self.assertIn("Salaire de base", titres)
+        for planche in planches:
+            if planche.title not in ("Population", "Salaire de base"):
+                continue
+            # Rien d'autre que du texte : ni indicateur, ni tableau, ni
+            # graphique. Aucune valeur masquee ne peut donc fuir.
+            self.assertEqual({bloc.kind for bloc in planche.blocks}, {"text"})
+            lignes = [ligne for bloc in planche.blocks
+                      for ligne in bloc.payload]
+            self.assertTrue(any("masqué" in ligne.lower() for ligne in lignes),
+                            planche.title)
 
 
 class TestSlidesHtml(unittest.TestCase):

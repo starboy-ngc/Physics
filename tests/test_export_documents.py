@@ -185,3 +185,58 @@ class TestPyramidDrawing(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestADocumentNeverDropsASectionInSilence(unittest.TestCase):
+    """Une section qui disparaît laisse son lecteur devant un manque.
+
+    La rémunération se masque sur le nombre de montants connus, non sur
+    l'effectif : un fichier de neuf salariés dont trois ont un salaire
+    publiait la population et faisait disparaître la rémunération — du
+    rapport comme des planches — sans un mot. La section reste, et porte
+    la raison : c'est l'état de la donnée, pas un commentaire.
+    """
+
+    def _analyse(self, rows=9, renseignes=3):
+        from hr_analytics.core.pipeline import run_analysis, AnalysisRequest
+        import csv as _csv
+        import os as _os
+        import tempfile as _tempfile
+
+        from tests.support import HEADERS, make_row
+
+        dossier = _tempfile.mkdtemp()
+        chemin = _os.path.join(dossier, "p.csv")
+        with open(chemin, "w", encoding="utf-8", newline="") as flux:
+            writer = _csv.writer(flux, delimiter=";")
+            writer.writerow(HEADERS)
+            for index in range(rows):
+                writer.writerow(make_row(
+                    index,
+                    salary=40000 + index * 250 if index < renseignes else None))
+        return run_analysis(AnalysisRequest(
+            source_path=chemin, ignore_quality_errors=True)).payload
+
+    def test_the_report_keeps_the_section_and_says_why(self):
+        from hr_analytics.core.reporting import render_report
+
+        html = render_report(self._analyse())
+        self.assertIn("Salaire de base", html)
+        self.assertIn("colonne analysée", html)
+
+    def test_the_slides_keep_the_board_and_say_why(self):
+        from hr_analytics.core.slides import build_deck
+
+        planches = build_deck(self._analyse())
+        titres = [planche.title for planche in planches]
+        self.assertIn("Salaire de base", titres)
+        textes = [ligne for planche in planches for bloc in planche.blocks
+                  if bloc.kind == "text" for ligne in bloc.payload]
+        self.assertTrue(any("colonne analysée" in ligne for ligne in textes))
+
+    def test_a_full_file_carries_the_figures_and_no_reason(self):
+        from hr_analytics.core.reporting import render_report
+
+        html = render_report(self._analyse(renseignes=9))
+        self.assertIn("Masse salariale", html)
+        self.assertNotIn("colonne analysée", html)

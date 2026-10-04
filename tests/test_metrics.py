@@ -617,3 +617,60 @@ class TestTheScatterAxesAreConfigurable(unittest.TestCase):
         données = scatter_dataset(population, make_config())
         self.assertEqual(données["x_axis"]["label"], "Ancienneté")
         self.assertEqual(données["y_axis"]["label"], "Salaire de base")
+
+
+class TestAHalfPublishedOverview(unittest.TestCase):
+    """Deux moitiés, deux seuils : l'une peut tomber quand l'autre tient.
+
+    La population se masque sur l'effectif, la rémunération sur le nombre
+    de montants connus. Une équipe de neuf dont trois salaires sont
+    renseignés publie donc la première et masque la seconde — et il faut
+    que la raison le dise, sans quoi « effectif insuffisant » devant neuf
+    salariés se lit comme une erreur de l'outil.
+    """
+
+    def _population(self, effectif=9, renseignes=3):
+        rows = [make_row(index,
+                         salary=40000 + index * 500 if index < renseignes
+                         else None)
+                for index in range(effectif)]
+        return build_population(rows)
+
+    def test_the_population_half_is_published(self):
+        config = make_config()
+        bloc = metrics.calculate_population_metrics(self._population(), config)
+        self.assertFalse(bloc["masked"])
+        self.assertEqual(bloc["headcount"], 9)
+
+    def test_the_salary_half_is_masked(self):
+        config = make_config()
+        bloc = metrics.calculate_salary_metrics(self._population(), config)
+        self.assertTrue(bloc["masked"])
+        self.assertEqual(bloc["valued_headcount"], 3)
+        self.assertEqual(bloc["headcount"], 9)
+
+    def test_the_reason_blames_the_values_and_not_the_headcount(self):
+        """« Effectif insuffisant » devant neuf salariés envoie chercher un
+        seuil réglé sur neuf. Il ne l'a jamais été."""
+        config = make_config()
+        bloc = metrics.calculate_salary_metrics(self._population(), config)
+        raison = bloc["warning"]
+        self.assertIn("3", raison)
+        self.assertIn("9", raison)
+        self.assertIn("colonne analysée", raison)
+        self.assertNotIn("Effectif insuffisant", raison)
+
+    def test_an_empty_column_says_so(self):
+        config = make_config()
+        bloc = metrics.calculate_salary_metrics(
+            self._population(renseignes=0), config)
+        self.assertTrue(bloc["masked"])
+        self.assertIn("Aucune valeur", bloc["warning"])
+
+    def test_a_small_team_still_blames_the_headcount(self):
+        """Quand l'effectif ne suffit pas non plus, c'est lui qu'on nomme."""
+        config = make_config()
+        bloc = metrics.calculate_salary_metrics(
+            self._population(effectif=3, renseignes=3), config)
+        self.assertTrue(bloc["masked"])
+        self.assertIn("Effectif insuffisant", bloc["warning"])

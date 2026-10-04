@@ -1639,6 +1639,17 @@ class Application(tk.Tk):
         if eligible["graphique"]:
             manquantes += [(label, raisons.get(key, ""))
                            for key, label in CHARTS if not charts[key]]
+        # La vue d'ensemble a deux moities, et deux seuils : l'une peut
+        # tomber quand l'autre tient. L'onglet reste alors ouvert, et c'est
+        # a ce titre-la qu'il faut annoncer la moitie absente — sans quoi
+        # la page montre un vide que rien n'explique.
+        if eligible["population"]:
+            for cle, titre in (("population", "Vue d'ensemble — population"),
+                               ("salary", "Vue d'ensemble — rémunération")):
+                bloc = payload.get(cle) or {}
+                if bloc.get("masked"):
+                    hidden.append(titre)
+                    manquantes.append((titre, bloc.get("warning", "")))
         headcount = payload["population"].get("headcount", 0)
         scope = payload.get("scope") or {}
         # Les filtres se lisent la plutot qu'en tete d'un onglet : ils
@@ -1932,7 +1943,13 @@ class Application(tk.Tk):
         # population, dont elles sont le detail.
         structures = right if wide else left
         pay = middle if wide else right
-        if not population.get("masked"):
+        if population.get("masked"):
+            # Une colonne vide au milieu d'une page se lit comme un defaut
+            # d'affichage, pas comme un masquage : la raison prend la place
+            # du contenu absent.
+            self._masked_panel(left, "Population",
+                               population.get("warning"), "population_summary")
+        else:
             self._ruled_panel(
                 left, "Population", (), [
                     ("Effectif", str(population.get("headcount", 0)),
@@ -1959,7 +1976,11 @@ class Application(tk.Tk):
                                 population.get("tenure_bands", []), None,
                                 key="tenure_bands", measure="d'ancienneté")
 
-        if not salary.get("masked"):
+        if salary.get("masked"):
+            self._masked_panel(
+                pay, salary.get("field_label") or "Rémunération",
+                salary.get("warning"), "salary_summary")
+        else:
             spread = salary.get("dispersion") or {}
             # Ni la mediane ni un percentile ici : ils sont l'echelle, juste
             # en dessous. Ne restent que les deux chiffres qui n'y figurent
@@ -2197,6 +2218,25 @@ class Application(tk.Tk):
         chart.pack(fill="x")
         chart.set_parts(parts, population.get("headcount", 0),
                         maximum=population.get("csp_max_slices", 6))
+
+    def _masked_panel(self, parent, title: str, reason: Optional[str],
+                      key: Optional[str] = None) -> None:
+        """Un bloc qui dit pourquoi il n'a rien a montrer.
+
+        La vue d'ensemble a deux moities independantes — qui compose la
+        population, ce qu'elle est payee — et deux seuils independants :
+        celle de remuneration tombe des que les montants connus sont trop
+        peu nombreux, meme quand l'effectif suffit largement. Sans ce bloc,
+        sa colonne disparaissait sans un mot et la page paraissait cassee.
+        """
+        self._panel_head(parent, title, key=key)
+        tk.Label(parent,
+                 text=reason or "Résultat masqué pour préserver la "
+                                "confidentialité.",
+                 background=theme.CANVAS, foreground=theme.WARN,
+                 font=self.fonts.body, anchor="w", justify="left",
+                 wraplength=self.OVERVIEW_COLUMN - 20).pack(anchor="w",
+                                                            pady=(0, 16))
 
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:

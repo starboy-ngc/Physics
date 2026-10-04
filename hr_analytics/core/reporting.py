@@ -94,6 +94,12 @@ margin-top:2px}
 
 .corps{padding:4px 36px 40px}
 
+/* Une section masquee : elle garde son titre et dit pourquoi elle est
+   vide. Un document d'ou une section disparait sans un mot laisse son
+   lecteur se demander s'il manque un chiffre. */
+p.masque{margin:0 0 8px;padding:12px 14px;border-radius:6px;
+background:var(--warn-bg);color:var(--warn);font-size:13px}
+
 /* --- titres ------------------------------------------------------------
    Le numero de section est un jeton, pas un prefixe de texte : il se
    repere en descendant la page sans lire. */
@@ -669,9 +675,24 @@ def _quality_section(quality: Dict[str, Any]) -> str:
     )
 
 
+#: Dit a defaut de mieux, quand le moteur n'a pas publie sa raison.
+_MASQUE = "Résultat masqué pour préserver la confidentialité."
+
+
+def _masquee(titre: str, raison: str) -> str:
+    """Une section qui dit pourquoi elle n'a rien a montrer.
+
+    Une section qui disparait sans un mot laisse un document dont le
+    lecteur ne sait pas s'il manque un chiffre ou s'il n'y en avait pas.
+    Ce n'est pas un commentaire : c'est l'etat de la donnee, au meme titre
+    que le « masque » des tableaux.
+    """
+    return f'<h2>{_e(titre)}</h2><p class="masque">{_e(raison)}</p>'
+
+
 def _population_section(population: Dict[str, Any]) -> str:
     if population.get("masked"):
-        return ""
+        return _masquee("Population", population.get("warning") or _MASQUE)
     kpis = "".join([
         _kpi("Effectif", f'{population.get("headcount", 0):,}'.replace(",", " "),
              fort=True),
@@ -704,7 +725,8 @@ def _population_section(population: Dict[str, Any]) -> str:
 def _salary_section(salary: Dict[str, Any]) -> str:
     currency = salary.get("currency", "EUR")
     if salary.get("masked"):
-        return ""
+        return _masquee(salary.get("field_label") or "Rémunération",
+                        salary.get("warning") or _MASQUE)
     kpis = "".join([
         _kpi("Masse salariale", format_money(salary.get("payroll"), currency),
              fort=True),

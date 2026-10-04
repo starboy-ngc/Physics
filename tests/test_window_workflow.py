@@ -1065,3 +1065,67 @@ class TestTheScatterAxes(WindowCase):
         self.app.update()
         self.assertEqual(self.app.scatter.dataset["x_field"], "age_years")
         self.assertEqual(self.app.scatter.dataset["y_field"], "variable_pay")
+
+
+class TestAnOverviewWithOnlyOneHalfPublished(WindowCase):
+    """La page a deux moitiés et deux seuils : l'une peut tomber seule.
+
+    La population se masque sur l'effectif, la rémunération sur le nombre
+    de montants connus. Un fichier de neuf salariés dont trois seulement
+    ont un salaire publiait donc la population et laissait la colonne de
+    rémunération entièrement vide — un tiers de page blanc, sans un mot.
+    """
+
+    def _charge(self, rows=9, renseignes=3):
+        chemin = self.source(
+            rows=rows,
+            salary=lambda index: 40000 + index * 250 if index < renseignes
+            else None)
+        self.load(chemin)
+        self.analyse()
+        return self.app.result.payload
+
+    def _textes(self, widget):
+        import tkinter as tk
+
+        trouves = []
+        for enfant in widget.winfo_children():
+            if isinstance(enfant, tk.Label):
+                trouves.append(str(enfant.cget("text")))
+            trouves += self._textes(enfant)
+        return trouves
+
+    def test_the_two_halves_disagree(self):
+        payload = self._charge()
+        self.assertFalse(payload["population"]["masked"])
+        self.assertTrue(payload["salary"]["masked"])
+
+    def test_the_overview_tab_stays_open(self):
+        self._charge()
+        self.assertTrue(self.app.tabbar._visible.get("population", True))
+
+    def test_the_empty_column_carries_its_reason(self):
+        """Une colonne vide au milieu d'une page se lit comme un défaut
+        d'affichage, pas comme un masquage."""
+        self._charge()
+        textes = " ".join(self._textes(self.app.overview_frame))
+        self.assertIn("colonne analysée", textes)
+        self.assertIn("Salaire de base", textes)
+
+    def test_the_population_half_is_still_there(self):
+        self._charge()
+        textes = " ".join(self._textes(self.app.overview_frame))
+        self.assertIn("Effectif", textes)
+        self.assertIn("Âge médian", textes)
+
+    def test_the_banner_counts_the_masked_half(self):
+        self._charge()
+        self.assertIn("rémunération", self.app.notice.cget("text").lower())
+        self.assertIn("vue(s) masquée(s)",
+                      self.app.status.cget("text"))
+
+    def test_nothing_is_masked_when_every_salary_is_there(self):
+        self._charge(renseignes=9)
+        textes = " ".join(self._textes(self.app.overview_frame))
+        self.assertNotIn("colonne analysée", textes)
+        self.assertIn("Masse salariale", textes)

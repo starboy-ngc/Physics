@@ -65,6 +65,10 @@ def _kpi_block(pairs: Sequence[Sequence[str]], width: str = "full",
                  width=width)
 
 
+#: Dit a defaut de mieux, quand le moteur n'a pas publie sa raison.
+_MASQUE = "Résultat masqué pour préserver la confidentialité."
+
+
 def _table_block(headers, rows, title="", width="full", compact=False) -> Block:
     return Block("table",
                  {"headers": list(headers), "rows": [list(r) for r in rows],
@@ -309,7 +313,13 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     slides.append(quality_slide)
 
     # Population
-    if not population.get("masked"):
+    if population.get("masked"):
+        # Une planche qui disparait laisse un document dont le lecteur ne
+        # sait pas s'il manque un chiffre ou s'il n'y en avait pas. Elle
+        # reste, et porte la raison.
+        slides.append(Slide("Population", "", blocks=[
+            Block("text", [population.get("warning") or _MASQUE])]))
+    else:
         slides.append(Slide("Population", "Structure d'âge et d'ancienneté", blocks=[
             _kpi_block(_population_kpis(population)),
             _table_block(["Tranche d'âge", "Effectif", "Part"],
@@ -323,7 +333,11 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
         ]))
 
     # Remuneration
-    if not salary.get("masked"):
+    if salary.get("masked"):
+        slides.append(Slide(salary.get("field_label") or "Rémunération", "",
+                            blocks=[Block("text",
+                                          [salary.get("warning") or _MASQUE])]))
+    else:
         slides.append(Slide("Rémunération",
                             f'Champ analyse : {salary.get("field_label") or salary.get("field", "")}',
                             blocks=[
