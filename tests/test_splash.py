@@ -3,8 +3,8 @@
 Un logo calculé plutôt que livré en fichier image : c'est la même exigence
 que partout ailleurs — rien d'opaque dans l'archive, aucune dépendance. Ce
 qui se vérifie ici : que le symbole soit le même à chaque ouverture et à
-toutes les tailles (un logo qui change de forme n'est pas un logo), que le
-reflet le traverse sans le déformer, que ce soit bien la marque de l'icône
+toutes les tailles (un logo qui change de forme n'est pas un logo), que la
+lumière le traverse sans le déformer, que ce soit bien la marque de l'icône
 Windows — un outil n'a qu'une identité —, et que l'écran ne retarde ni la
 fenêtre ni les tests.
 
@@ -64,7 +64,7 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """Une etoile a cinq branches sur un jeton rond.
+    """Une etoile a cinq branches, pleine, d'une seule teinte.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
     toujours le meme, qu'il tienne a toutes les tailles, et qu'il se
@@ -92,7 +92,7 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(self.symbole().frame(0), self.symbole().frame(0))
 
     def test_the_shape_never_changes_from_one_frame_to_the_next(self):
-        """L'animation est un reflet qui traverse le symbole, pas une
+        """L'animation est une lumiere qui traverse le symbole, pas une
         deformation : un logo qui change de forme n'est plus un logo."""
         symbole = self.symbole(count=8)
         silhouettes = {
@@ -126,47 +126,54 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
+        """Une etoile reguliere couvre environ le quart de son cadre : a
+        trente-deux pixels, il doit en rester de quoi la reconnaitre."""
         lignes = pixels(self.symbole(32).frame(0), 32, 32)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
-        self.assertGreater(encres, 400)
+        self.assertGreater(encres, 150)
 
-    def test_the_star_is_white_on_a_slate_token(self):
-        """Les deux teintes de la marque — celles de l'icone Windows. Elles
-        ne suivent pas le theme : une marque qui change de couleur avec un
-        reglage d'affichage n'est plus une marque."""
+    def test_the_mark_is_one_steel_blue_star_and_nothing_else(self):
+        """Une seule teinte, pas de jeton, pas de degrade : une marque n'a
+        pas a se faire remarquer. Et elle ne suit pas le theme — une marque
+        qui change de couleur avec un reglage d'affichage n'est plus une
+        marque."""
         lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
         milieu = self.COTE // 2
 
         def couleur(x, y):
             return tuple(lignes[y][x * 4:x * 4 + 4])
 
-        # Le centre de l'etoile : blanc et pleinement opaque.
+        # Le centre de l'etoile : la teinte de la marque, pleinement opaque.
         rouge, vert, bleu, alpha = couleur(milieu, milieu)
         self.assertEqual(alpha, 255)
-        self.assertGreater(min(rouge, vert, bleu), 240)
-        # Le jeton, entre la pointe gauche de l'etoile et le bord : un bleu
-        # d'ardoise, donc sombre et bleu.
-        rouge, vert, bleu, alpha = couleur(int(self.COTE * 0.18), milieu)
-        self.assertEqual(alpha, 255)
-        self.assertLess(rouge, 90)
+        # A quelques unites pres : la lumiere qui traverse le symbole
+        # eclaircit sa teinte, elle ne la remplace pas.
+        for mesure, attendue in zip((rouge, vert, bleu), logo.ETOILE):
+            self.assertAlmostEqual(mesure, attendue, delta=8)
+        # Un bleu d'acier : il se detache d'un ecran sombre comme d'une
+        # page blanche.
         self.assertGreater(bleu, rouge)
+        self.assertLess(max(logo.ETOILE), 200)
+        self.assertGreater(min(logo.ETOILE), 80)
+        # Entre deux branches, au ras du bord : rien. Pas de jeton.
+        self.assertEqual(couleur(int(self.COTE * 0.06), milieu)[3], 0)
 
     def test_the_first_point_looks_up(self):
         """Une etoile posee de travers se remarque immediatement, meme de
         qui ne saurait pas dire pourquoi.
 
-        Une pointe en haut, deux en bas : la premiere ligne blanche est un
+        Une pointe en haut, deux en bas : la premiere ligne pleine est un
         seul trait, centre ; la derniere en compte deux, les jambes.
         """
-        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
+        lignes = encre(pixels(self.symbole().frame(0), self.COTE, self.COTE))
 
         def traits(y):
-            """Suites de pixels blancs sur cette ligne, en abscisses."""
+            """Suites de pixels pleins sur cette ligne, en abscisses."""
             ligne = lignes[y]
             suites, courante = [], None
             for x in range(self.COTE):
-                if min(ligne[x * 4:x * 4 + 3]) > 240:
+                if ligne[x] > 200:
                     courante = [x, x] if courante is None else [courante[0], x]
                 elif courante is not None:
                     suites.append(courante)
@@ -175,16 +182,16 @@ class TestTheSymbol(unittest.TestCase):
                 suites.append(courante)
             return suites
 
-        blanches = [y for y in range(self.COTE) if traits(y)]
-        self.assertTrue(blanches)
-        premiere = traits(blanches[0])
+        pleines = [y for y in range(self.COTE) if traits(y)]
+        self.assertTrue(pleines)
+        premiere = traits(pleines[0])
         self.assertEqual(len(premiere), 1, "une seule pointe en haut")
         self.assertAlmostEqual(sum(premiere[0]) / 2, self.COTE / 2,
                                delta=self.COTE * 0.02)
         # Au ras du bas de l'etoile : les deux jambes, separees. La
         # derniere ligne elle-meme ne vaut rien — a un pixel pres, un bord
         # adouci tombe d'un cote ou de l'autre du seuil.
-        bas = blanches[0] + int(0.95 * (blanches[-1] - blanches[0]))
+        bas = pleines[0] + int(0.95 * (pleines[-1] - pleines[0]))
         self.assertEqual(len(traits(bas)), 2, "deux pointes en bas")
 
     def test_it_is_the_same_mark_as_the_windows_icon(self):
@@ -284,6 +291,23 @@ class TestTheSplash(unittest.TestCase):
         self.assertFalse(self.ecran.skipped)
         self.ecran.skip()
         self.assertTrue(self.ecran.skipped)
+
+    def test_the_click_is_caught_wherever_it_lands(self):
+        """Le nom et la marque sont poses dans un cadre : un clic sur eux
+        ne remonte pas jusqu'a la fenetre."""
+        import tkinter as tk
+
+        def descendre(widget):
+            trouves = [widget]
+            for enfant in widget.winfo_children():
+                trouves += descendre(enfant)
+            return trouves
+
+        for widget in descendre(self.ecran):
+            if isinstance(widget, tk.Canvas):
+                continue        # la barre dessine, elle ne se clique pas
+            self.assertTrue(widget.bind("<Button-1>"),
+                            f"{widget} ne passe pas l'ecran")
 
 
 @needs_display

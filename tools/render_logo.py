@@ -27,8 +27,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from hr_insight.core import palette
 from hr_insight.ui import logo, raster
 
-#: Proportion du cadre. Le jeton est rond : son cadre est carre. La
-#: hauteur reste reglable pour une planche qui demande autre chose.
+#: Proportion du cadre. L'etoile s'inscrit dans un carre ; la hauteur
+#: reste reglable pour une planche qui demande autre chose.
 RATIO = 1.0
 
 

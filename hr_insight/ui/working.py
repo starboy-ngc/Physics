@@ -41,9 +41,9 @@ from .progress import LoadingBar
 class WorkPanel(tk.Frame):
     """Le panneau d'attente : l'etape, les etapes, le temps, le symbole."""
 
-    #: Cadre du symbole. Plus petit qu'a l'accueil : il accompagne ici, il
-    #: ne se presente pas.
-    LOGO = 108
+    #: Cadre du symbole. Plus petit encore qu'a l'accueil : il accompagne
+    #: ici, il ne se presente pas.
+    LOGO = 28
     #: Images d'un passage complet du reflet, et cadence.
     FRAMES = 20
     FRAME_MS = 80

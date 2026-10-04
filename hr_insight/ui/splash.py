@@ -37,16 +37,15 @@ TAGLINE = "Analyse de rémunération · local et hors ligne"
 class Splash(tk.Toplevel):
     """Fenetre sans cadre, centree, le temps du demarrage."""
 
-    WIDTH, HEIGHT = 560, 420
-    #: Cadre du symbole. Carre : le jeton est rond, il n'a pas de sens de
-    #: lecture. Assez grand pour qu'on voie l'etoile, assez petit pour que
-    #: le nom de l'outil reste ce qu'on lit en premier.
-    LOGO = 150
+    WIDTH, HEIGHT = 520, 282
+    #: Cadre du symbole. Petit, et pose a cote du nom plutot qu'au-dessus :
+    #: c'est le nom qu'on doit lire, la marque ne fait que l'accompagner.
+    LOGO = 34
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300
     #: Largeur du trait de separation, sous le nom et sa promesse.
-    RULE_WIDTH = 96
+    RULE_WIDTH = 120
     #: Images d'un passage complet du reflet, et cadence.
     FRAMES = 24
     FRAME_MS = 70
@@ -76,28 +75,31 @@ class Splash(tk.Toplevel):
         self._images: List[tk.PhotoImage] = []
         self._frame = 0
         self._next_ms = 0.0
-        self.symbole_vu = tk.Label(self, background=theme.INK)
-        self.symbole_vu.pack(pady=(30, 6))
+        entete = tk.Frame(self, background=theme.INK)
+        entete.pack(pady=(46, 0))
+        self.symbole_vu = tk.Label(entete, background=theme.INK)
+        self.symbole_vu.pack(side="left")
         # La premiere image suffit a montrer l'ecran ; les vingt-trois
         # autres arrivent pendant qu'il est deja la.
         self._render_next()
         self._show(0)
 
-        tk.Label(self, text=PRODUCT, background=theme.INK,
-                 foreground=theme.CANVAS, font=grand).pack()
+        tk.Label(entete, text=PRODUCT, background=theme.INK,
+                 foreground=theme.CANVAS, font=grand).pack(side="left",
+                                                           padx=(14, 0))
         tk.Label(self, text=TAGLINE, background=theme.INK,
-                 foreground=self.clair, font=petite).pack(pady=(8, 0))
+                 foreground=self.clair, font=petite).pack(pady=(12, 0))
 
         # Un filet entre la marque et l'avancement : il separe ce qui ne
         # change pas — le nom, la promesse — de ce qui se passe maintenant.
         filet = tk.Frame(self, background=palette.mix(theme.INK, theme.CANVAS,
                                                       0.20),
                          width=self.RULE_WIDTH, height=1)
-        filet.pack(pady=(24, 0))
+        filet.pack(pady=(22, 0))
 
         piste = tk.Frame(self, background=theme.INK, width=self.BAR_WIDTH,
                          height=30)
-        piste.pack(pady=(22, 0))
+        piste.pack(pady=(20, 0))
         piste.pack_propagate(False)
         self.bar = LoadingBar(piste, ground=theme.INK,
                               track=palette.mix(theme.INK, theme.CANVAS, 0.16),
@@ -116,11 +118,17 @@ class Splash(tk.Toplevel):
                           foreground=self.discret, font=minuscule)
         maison.place(relx=0.5, rely=0.5, anchor="center")
 
-        self.bind("<Button-1>", lambda _e: self.skip())
-        for child in self.winfo_children():
-            child.bind("<Button-1>", lambda _e: self.skip())
+        # Le clic passe l'ecran ou qu'il tombe : chaque widget intercepte
+        # le sien, et le nom comme la marque sont maintenant poses dans un
+        # cadre — les enfants directs ne suffisent plus.
+        self._bind_skip(self)
 
     # ------------------------------------------------------------- cadre
+
+    def _bind_skip(self, widget: tk.Misc) -> None:
+        widget.bind("<Button-1>", lambda _e: self.skip())
+        for child in widget.winfo_children():
+            self._bind_skip(child)
 
     def _centre(self) -> None:
         ecran_l = self.winfo_screenwidth()
