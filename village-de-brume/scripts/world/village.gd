@@ -1,15 +1,18 @@
 extends Zone
-## Le Village de Brume : herbe, arbres en bordure (placés automatiquement),
-## sortie vers la forêt sur le bord droit (zone ajoutée à l'étape 5).
+## Le Village de Brume : herbe en tuiles, arbres en bordure (placés
+## automatiquement), sortie vers la forêt sur le bord droit (étape 5).
 
 const TREE_SCENE := preload("res://scenes/world/props/Tree.tscn")
+const TILE := 16.0
 
 @export var border_trees: bool = true
 ## Rectangle (en pixels) sans arbre de bordure : ouverture vers la forêt.
 @export var exit_gap: Rect2 = Rect2(700, 250, 80, 90)
 
-const COLOR_GRASS_DARK := Color("4f8a3c")
-const COLOR_GRASS_LIGHT := Color("7ab35c")
+const COLOR_GRASS_A := Color("6fae4e")
+const COLOR_GRASS_B := Color("68a548")
+const COLOR_GRASS_MARK := Color("5a9440")
+const COLOR_GRASS_LIGHT := Color("86c25f")
 
 
 func _ready() -> void:
@@ -48,12 +51,17 @@ func _place_border_trees() -> void:
 
 
 func _draw() -> void:
-	super()
-	# Touffes d'herbe déterministes pour casser l'uniformité.
-	var rng := RandomNumberGenerator.new()
-	rng.seed = 42
-	for i in 180:
-		var p := bounds.position + Vector2(rng.randf() * bounds.size.x, rng.randf() * bounds.size.y)
-		var c := COLOR_GRASS_DARK if rng.randf() < 0.6 else COLOR_GRASS_LIGHT
-		draw_rect(Rect2(p, Vector2(2, 2)), c)
-		draw_rect(Rect2(p + Vector2(3, -2), Vector2(2, 2)), c)
+	# Herbe en damier discret de tuiles 16x16, avec petites marques.
+	var cols := int(ceil(bounds.size.x / TILE))
+	var rows := int(ceil(bounds.size.y / TILE))
+	for ty in rows:
+		for tx in cols:
+			var origin := bounds.position + Vector2(tx, ty) * TILE
+			var c := COLOR_GRASS_A if (tx + ty) % 2 == 0 else COLOR_GRASS_B
+			draw_rect(Rect2(origin, Vector2(TILE, TILE)), c)
+			# Deux brins par tuile, placés de façon déterministe.
+			var k := (tx * 7 + ty * 13) % 5
+			draw_rect(Rect2(origin + Vector2(2 + k, 4), Vector2(2, 2)), COLOR_GRASS_MARK)
+			draw_rect(Rect2(origin + Vector2(9 - k, 11), Vector2(2, 2)), COLOR_GRASS_MARK)
+			if (tx * 3 + ty * 5) % 11 == 0:
+				draw_rect(Rect2(origin + Vector2(6, 7), Vector2(3, 2)), COLOR_GRASS_LIGHT)

@@ -28,7 +28,7 @@ func _process(_delta: float) -> bool:
 		0:
 			# Marcher vers le bas depuis le point "start" de la maison (x=96) :
 			# on se décale d'abord vers la porte (x=128) puis on descend.
-			var p: Player = _game.player
+			var p = _game.player
 			if p.global_position.x < 127.0:
 				_press_only("move_right")
 			else:
@@ -49,7 +49,7 @@ func _process(_delta: float) -> bool:
 			_press_only("move_up")
 			if _game.current_zone_id == "house_player":
 				_release_all()
-				print("[door] retour dans la maison OK, joueur=%s" % (_game.player as Player).global_position)
+				print("[door] retour dans la maison OK, joueur=%s" % _game.player.global_position)
 				return _finish("")
 			elif _frame - _phase_start > 600:
 				return _finish("le joueur n'a pas pu rentrer dans la maison")

@@ -12,7 +12,7 @@ func _ready() -> void:
 	panel.position = Vector2(8, 8)
 	panel.self_modulate = Color(1, 1, 1, 0.85)
 	_label = Label.new()
-	_label.add_theme_font_size_override("font_size", 10)
+	_label.add_theme_font_size_override("font_size", 8)
 	panel.add_child(_label)
 	add_child(panel)
 
@@ -35,5 +35,10 @@ func _process(_delta: float) -> void:
 		lines.append("FACING: %s" % Player.Facing.keys()[Game.player.facing])
 	lines.append("CURRENT LOCATION:")
 	lines.append(Game.current_zone.zone_name if Game.current_zone != null else "-")
+	lines.append("NPC:")
+	for id in NpcManager.npcs:
+		var here := "*" if NpcManager.instances.has(id) else " "
+		lines.append("%s %s  LOCATION: %s" % [here, NpcManager.get_npc_name(id), NpcManager.get_zone_of(id)])
+	lines.append("DIALOGUE: %s" % ("actif" if DialogueManager.is_active else "-"))
 	lines.append("FPS: %d" % Engine.get_frames_per_second())
 	_label.text = "\n".join(lines)

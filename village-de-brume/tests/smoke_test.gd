@@ -28,6 +28,7 @@ func _initialize() -> void:
 		quit(1)
 		return
 	var main: Node = load("res://scenes/main/Main.tscn").instantiate()
+	Engine.max_fps = 60
 	root.add_child(main)
 	print("[smoke] scène principale chargée")
 
@@ -58,16 +59,23 @@ func _check_zone(zone_id: String, spawn_name: String) -> void:
 	if zone == null or _game.current_zone_id != zone_id:
 		_fail("zone attendue '%s', obtenue '%s'" % [zone_id, _game.current_zone_id])
 		return
-	if (_game.player as Player).get_parent() != zone:
+	if _game.player.get_parent() != zone:
 		_fail("le joueur n'est pas dans la zone '%s'" % zone_id)
 	var expected: Vector2 = zone.get_spawn_position(spawn_name)
-	if (_game.player as Player).global_position.distance_to(expected) > 0.5:
-		_fail("position du joueur %s != spawn %s dans '%s'" % [(_game.player as Player).global_position, expected, zone_id])
-	if not zone.bounds.has_point((_game.player as Player).global_position):
+	if _game.player.global_position.distance_to(expected) > 0.5:
+		_fail("position du joueur %s != spawn %s dans '%s'" % [_game.player.global_position, expected, zone_id])
+	if not zone.bounds.has_point(_game.player.global_position):
 		_fail("le joueur est hors des limites de '%s'" % zone_id)
 	if zone.get_node_or_null("Boundaries") == null:
 		_fail("pas de murs invisibles dans '%s'" % zone_id)
-	print("[smoke] %-14s spawn=%-18s joueur=%s" % [zone_id, spawn_name, (_game.player as Player).global_position])
+	# Les PNJ attendus dans cette zone doivent y être instanciés.
+	var npc_manager := root.get_node("NpcManager")
+	for id in npc_manager.npcs:
+		var expected_here: bool = npc_manager.get_zone_of(id) == zone_id
+		var present: bool = zone.get_node_or_null("NPC_" + id) != null
+		if expected_here != present:
+			_fail("PNJ '%s' : attendu=%s présent=%s dans '%s'" % [id, expected_here, present, zone_id])
+	print("[smoke] %-14s spawn=%-18s joueur=%s" % [zone_id, spawn_name, _game.player.global_position])
 
 
 func _fail(msg: String) -> void:

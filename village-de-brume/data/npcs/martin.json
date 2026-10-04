@@ -1,0 +1,10 @@
+{
+  "id": "martin",
+  "name": "Martin",
+  "role": "Ancien garde",
+  "personality": ["méfiant", "direct", "protecteur"],
+  "appearance": {"tunic": "5a5a7a", "hair": "9a9a9a", "skin": "d9b090", "pants": "2a2a3a"},
+  "location": {"zone": "village", "position": [440, 380], "facing": "left"},
+  "wander_radius": 48,
+  "dialogue": "res://data/dialogues/martin.json"
+}

@@ -19,16 +19,25 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://scripts/systems/game.gd"
+DialogueManager="*res://scripts/systems/dialogue_manager.gd"
+NpcManager="*res://scripts/npc/npc_manager.gd"
 DebugOverlay="*res://scripts/systems/debug_overlay.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=256
+window/size/viewport_height=192
+window/size/window_width_override=1024
+window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep"
+window/stretch/scale_mode="integer"
+
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_hinting=2
+theme/default_font_subpixel_positioning=0
 
 [input]
 
@@ -71,6 +80,7 @@ debug_toggle={
 
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
+2d_physics/layer_3="interactable"
 
 [rendering]
 

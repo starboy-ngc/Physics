@@ -1,0 +1,28 @@
+{
+  "id": "jeanne_intro",
+  "start": "start",
+  "nodes": {
+    "start": {
+      "text": "... Oh. Je ne t'avais pas entendu entrer. Tu cherches quelque chose ?",
+      "choices": [
+        {"text": "Je découvre le village.", "next": "discover"},
+        {"text": "Vous êtes l'herboriste ?", "next": "herbs"},
+        {"text": "Rien, excusez-moi.", "next": "nothing"}
+      ]
+    },
+    "discover": {
+      "text": "Il n'y a pas grand-chose à voir. Quatre maisons, un puits, et la forêt. C'est calme. C'est ce que j'aime ici.",
+      "next": "bye"
+    },
+    "herbs": {
+      "text": "Oui. Je prépare des remèdes avec ce que je ramasse à la lisière de la forêt. Je n'y vais jamais la nuit, par contre.",
+      "next": "bye"
+    },
+    "nothing": {
+      "text": "Ce n'est rien. Tu peux rester un moment, si tu veux. Je ne suis pas très bavarde, mais je ne mords pas."
+    },
+    "bye": {
+      "text": "Si tu as besoin d'un remède, tu sais où me trouver."
+    }
+  }
+}
