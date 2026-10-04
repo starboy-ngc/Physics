@@ -1,0 +1,55 @@
+HR INSIGHT — analyse de remuneration
+====================================
+
+DEMARRER
+--------
+Double-cliquez sur « HR Insight.exe ».
+
+Rien a installer. Aucun droit administrateur. Aucune connexion.
+
+
+CE QUE CE DOSSIER CONTIENT
+--------------------------
+  HR Insight.exe   le programme a lancer
+  config\          vos reglages (colonnes, seuils, export) — fichiers
+                   texte, modifiables au bloc-notes
+  hr_insight\      le code de l'outil, lisible
+  runtime\         l'interpreteur Python prive de l'outil
+  docs\            guide utilisateur, architecture, audits
+  population-*.xlsx  jeux d'essai, sans aucune donnee reelle
+
+
+OU LE METTRE
+------------
+N'importe ou : un disque local, une cle USB, un partage reseau. Le
+programme se repere a partir de son propre emplacement.
+
+Deplacez ou copiez TOUJOURS le dossier entier. « HR Insight.exe » seul ne
+fonctionne pas : le moteur est dans « runtime », a cote de lui.
+
+Evitez un chemin tres long (plus de 200 caracteres) : Windows les tronque.
+
+
+POUR L'EQUIPE INFORMATIQUE
+--------------------------
+  - Rien n'est installe : pas de registre, pas de service, pas de tache
+    planifiee, aucune ecriture hors de ce dossier.
+  - Aucune connexion sortante. L'outil ne sait pas ouvrir de socket.
+  - Aucun processus fils : le lanceur charge l'interpreteur dans son
+    propre processus. L'arbre des processus ne montre qu'un programme.
+  - Rien n'est decompresse dans %TEMP% au demarrage, contrairement aux
+    executables « un seul fichier ». Tout est deja sur le disque.
+  - Le code est lisible : « hr_insight\ » est du source Python en clair,
+    et le lanceur tient en une centaine de lignes de C fournies dans
+    « docs\ ». Rien n'est compile ni obscurci.
+  - L'interpreteur de « runtime\ » est CPython officiel, repris tel quel
+    des paquets publies par python.org. Les empreintes sont dans
+    « docs\EMPREINTES-RUNTIME.txt ».
+  - L'interpreteur est en mode isole (fichier « runtime\python312._pth ») :
+    aucun paquet installe ailleurs sur le poste ne peut entrer dans
+    l'analyse.
+
+
+DESINSTALLER
+------------
+Supprimez le dossier. Il ne reste rien.

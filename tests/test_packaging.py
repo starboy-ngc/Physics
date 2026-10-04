@@ -158,3 +158,81 @@ class TestWhatIsShipped(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTheWindowsLauncher(unittest.TestCase):
+    """Le lanceur Windows : ce qu'il fait, et ce qu'il ne fait pas.
+
+    Il n'est pas compilable ici — sa compilation demande une chaîne
+    croisée —, mais son source est le livrable, et il doit rester lisible
+    par qui homologue le paquet.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        chemin = os.path.join(ROOT, "packaging", "windows", "lanceur.c")
+        with open(chemin, encoding="utf-8") as handle:
+            cls.source = handle.read()
+
+    def test_it_starts_the_interpreter_of_its_own_folder(self):
+        """Ni le PATH, ni le registre, ni une variable d'environnement :
+        l'interpréteur employé est celui du dossier, et lui seul."""
+        self.assertIn("GetModuleFileNameW", self.source)
+        self.assertIn("runtime\\\\pythonw.exe", self.source)
+
+    def test_it_runs_the_tool_in_isolated_mode(self):
+        """Aucun paquet installé ailleurs sur le poste ne peut entrer dans
+        l'analyse : deux postes font le même calcul."""
+        self.assertIn("-I -m hr_insight", self.source)
+
+    def test_it_opens_no_console_window(self):
+        self.assertIn("CREATE_NO_WINDOW", self.source)
+
+    def test_it_explains_every_failure_in_french(self):
+        """Un lanceur qui disparaît sans un mot ne laisse personne
+        comprendre."""
+        self.assertGreaterEqual(self.source.count("erreur(L\""), 3)
+        self.assertNotIn("printf", self.source)
+
+    def test_it_reaches_for_nothing_outside_its_folder(self):
+        for interdit in ("URLDownload", "WinHttp", "InternetOpen",
+                         "RegCreateKey", "RegSetValue", "ShellExecute",
+                         "system(", "WinExec"):
+            self.assertNotIn(interdit, self.source, interdit)
+
+    def test_the_path_file_keeps_the_interpreter_isolated(self):
+        chemin = os.path.join(ROOT, "packaging", "windows", "python312._pth")
+        with open(chemin, encoding="utf-8") as handle:
+            lignes = [l.strip() for l in handle
+                      if l.strip() and not l.startswith("#")]
+        self.assertEqual(lignes, ["Lib", "DLLs", ".."])
+
+
+class TestTheWindowsBuild(unittest.TestCase):
+    """Ce que le script de composition promet."""
+
+    @classmethod
+    def setUpClass(cls):
+        from tools import build_windows
+        cls.module = build_windows
+
+    def test_it_takes_only_the_components_it_needs(self):
+        """Ni pip, ni la documentation, ni la suite de tests de CPython :
+        l'outil n'installe rien et n'a pas à les embarquer."""
+        self.assertEqual(set(self.module.COMPOSANTS),
+                         {"core", "exe", "lib", "tcltk", "ucrt"})
+        for absent in ("pip", "doc", "test", "dev"):
+            self.assertNotIn(absent, self.module.COMPOSANTS)
+
+    def test_tcltk_is_taken_because_the_tool_has_a_window(self):
+        """L'oubli le plus facile : la distribution « embeddable » de
+        python.org ne porte pas tkinter, et l'outil ne démarrerait pas."""
+        self.assertIn("tcltk", self.module.COMPOSANTS)
+
+    def test_the_standard_library_is_trimmed(self):
+        for retiré in ("test", "idlelib", "ensurepip", "site-packages"):
+            self.assertIn(retiré, self.module.LIB_INUTILE)
+
+    def test_the_build_script_never_ships(self):
+        from tools.build_archive import OUTILS_EXCLUS
+        self.assertIn("build_windows.py", OUTILS_EXCLUS)

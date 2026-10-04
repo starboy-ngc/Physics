@@ -1,0 +1,11 @@
+# Chemins que l'interpreteur prive consulte, et rien d'autre.
+#
+# La presence de ce fichier a cote de python312.dll met l'interpreteur en
+# mode isole : ni PYTHONPATH, ni PYTHONHOME, ni site-packages, ni paquet
+# installe ailleurs sur le poste ne peuvent s'inviter dans l'analyse. Deux
+# postes font donc le meme calcul, quoi qu'ils aient installe par ailleurs.
+#
+# Les chemins sont relatifs a ce fichier.
+Lib
+DLLs
+..
