@@ -162,6 +162,52 @@ class TestComposingTheSection(unittest.TestCase):
         # Les alias existants sont conserves : d'autres fichiers en dependent.
         self.assertIn("Business Unit", section["fields"]["business_unit"])
 
+    def test_a_declared_amount_becomes_numeric_and_money(self):
+        """Un montant se lit en nombre et s'ecrit en monnaie : l'un sans
+        l'autre ne veut rien dire."""
+        section = self._build(
+            current={"fields": {}, "dimensions": [],
+                     "numeric": ["base_salary"], "money": ["base_salary"]},
+            assignments={"Prime de panier": "prime_de_panier"},
+            dimension_flags={}, limit=60, money=["prime_de_panier"])
+        self.assertIn("prime_de_panier", section["numeric"])
+        self.assertIn("prime_de_panier", section["money"])
+        # Ce qui etait declare avant ne bouge pas.
+        self.assertIn("base_salary", section["money"])
+
+    def test_an_amount_is_never_made_an_axis(self):
+        """Segmenter par « prime » ferait une modalite par valeur
+        distincte, soit une ligne par salarie."""
+        section = self._build(
+            current={"fields": {}, "dimensions": [], "numeric": [],
+                     "money": []},
+            assignments={"Prime de panier": "prime_de_panier"},
+            dimension_flags={}, limit=60, money=["prime_de_panier"])
+        self.assertEqual(section["dimensions"], [])
+
+    def test_a_field_left_without_a_column_stops_being_an_amount(self):
+        """Il posait au classeur une colonne titree et vide."""
+        from hr_insight.ui.settings import IGNORED
+        section = self._build(
+            current={"fields": {"variable_pay": ["Variable"]},
+                     "dimensions": [],
+                     "numeric": ["base_salary", "variable_pay"],
+                     "money": ["base_salary", "variable_pay"]},
+            assignments={"Variable": IGNORED}, dimension_flags={}, limit=60)
+        self.assertNotIn("variable_pay", section["numeric"])
+        self.assertNotIn("variable_pay", section["money"])
+
+    def test_a_field_the_screen_never_saw_is_left_alone(self):
+        """Un champ declare a la main pour un autre fichier ne doit pas
+        disparaitre parce qu'il est absent de celui-ci."""
+        section = self._build(
+            current={"fields": {}, "dimensions": [],
+                     "numeric": ["treizieme_mois"],
+                     "money": ["treizieme_mois"]},
+            assignments={}, dimension_flags={}, limit=60)
+        self.assertIn("treizieme_mois", section["numeric"])
+        self.assertIn("treizieme_mois", section["money"])
+
     def test_reassigning_the_same_column_does_not_duplicate_it(self):
         section = self._build(
             current={"fields": {"grade": ["Grade"]}, "dimensions": []},

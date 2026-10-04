@@ -365,7 +365,7 @@ Une ligne par colonne du fichier, et sur chaque ligne :
 | **Rôle** | ce qu'elle devient. |
 | **Filtre et axe** | cochée, la notion est proposée partout : dans « Filtrer », dans « Comparer par », dans « Colorer par ». |
 
-Trois rôles possibles :
+Quatre rôles possibles :
 
 - **Un champ du modèle** — Salaire de base, Sexe, Date d'entrée, Temps de
   travail… C'est ce que l'outil calcule. Une colonne rattachée au salaire
@@ -374,6 +374,11 @@ Trois rôles possibles :
   propre : direction, établissement, revue du personnel, filière. La notion
   est créée à partir de l'intitulé, et aussitôt proposée comme filtre et
   comme axe d'analyse. **C'est le cas courant.**
+- **Montant (rémunération, prime…)** — pour une prime maison, un treizième
+  mois, une indemnité. La colonne est lue comme un nombre, écrite en monnaie
+  dans le classeur, et devient un champ d'analyse possible. Elle n'est pas
+  proposée comme axe : segmenter par « prime » ferait une modalité par
+  valeur distincte, c'est-à-dire une ligne par salarié.
 - **(ignorée)** — la colonne n'est pas lue. Une colonne ignorée ne pèse rien
   et n'apparaît nulle part.
 

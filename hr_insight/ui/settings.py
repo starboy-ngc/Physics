@@ -41,6 +41,17 @@ NEW_FIELD = "+ nouveau champ…"
 #: l'intitule, et l'intitule reste celui du fichier.
 ORGANISATION = "Organisation (axe et filtre)"
 
+#: Entree de liste qui fait d'une colonne un montant : une prime maison,
+#: un treizieme mois, une indemnite. Elle devient une colonne du classeur,
+#: ecrite en monnaie, et peut servir de champ d'analyse. Sans elle, une
+#: colonne creee depuis l'ecran devenait toujours un axe de texte, et une
+#: prime ne pouvait se declarer qu'au bloc-notes.
+MONTANT = "Montant (rémunération, prime…)"
+
+#: Les entrees qui ne designent pas un champ existant : elles commandent
+#: quelque chose au lieu de nommer.
+_COMMANDES = (IGNORED, NEW_FIELD, ORGANISATION, MONTANT)
+
 #: Champs calcules a partir des dates : aucune colonne du fichier ne les
 #: porte, les proposer a l'association n'aurait pas de sens.
 DERIVED_FIELDS = ("age_years", "age_band", "tenure_years", "tenure_band")
@@ -107,11 +118,17 @@ def suggest_field_name(header: str, taken: Sequence[str]) -> str:
 def build_mapping_section(current: Dict[str, Any],
                           assignments: Dict[str, str],
                           dimension_flags: Dict[str, Dict[str, Any]],
-                          limit: int) -> Dict[str, Any]:
+                          limit: int,
+                          money: Optional[Sequence[str]] = None
+                          ) -> Dict[str, Any]:
     """Compose la section a ecrire, a partir des choix de la fenetre.
 
     Fonction pure : c'est elle que les tests exercent, sans ouvrir de
     fenetre. L'ecran ne fait que l'alimenter.
+
+    `money` liste les champs que l'ecran vient de declarer comme montants.
+    Ils entrent dans « numeric » et dans « money » : un montant se lit en
+    nombre et s'ecrit en monnaie, et l'un sans l'autre ne veut rien dire.
     """
     section = {key: value for key, value in current.items()}
     fields: Dict[str, List[str]] = {
@@ -162,6 +179,20 @@ def build_mapping_section(current: Dict[str, Any],
         ordered.append({"field": field_name,
                         "label": flags.get("label") or field_name})
     section["dimensions"] = ordered
+
+    # Un champ qui n'a plus aucune colonne n'est plus ni un nombre ni un
+    # montant : l'y laisser aurait pose au classeur une colonne titree et
+    # vide. Les champs que l'ecran ne connait pas — declares a la main
+    # pour un autre fichier — sont reconduits tels quels.
+    perdus = {name for name in (current.get("fields") or {})
+              if name not in fields}
+    nouveaux = [name for name in (money or []) if name in fields]
+    for clé in ("numeric", "money"):
+        retenus = [name for name in (current.get(clé) or [])
+                   if name not in perdus]
+        retenus += [name for name in nouveaux if name not in retenus]
+        section[clé] = retenus
+
     section["max_filter_values"] = limit
     return section
 
@@ -190,6 +221,10 @@ class SettingsWindow(tk.Toplevel):
         self._labels_widgets: Dict[str, tk.Label] = {}
         self.assignments: Dict[str, tk.StringVar] = {}
         self.rows: Dict[str, Dict[str, Any]] = {}
+        #: Champs que l'ecran vient de declarer comme montants. Ceux que la
+        #: configuration porte deja n'y figurent pas : `build_mapping_section`
+        #: part d'elle, et cet ensemble ne fait qu'ajouter.
+        self._money: set = set()
         self._boxes: List[ttk.Combobox] = []
         self.transient(master)
         # La fenetre s'ouvre sur ce qu'elle nomme — les colonnes — et non
@@ -589,7 +624,7 @@ class SettingsWindow(tk.Toplevel):
         # il reste accepte tel quel : un reglage se lit aussi au bloc-notes.
         self._labels = {name: self._label_of(name)
                         for name in candidate_fields(self.configuration)}
-        choices = ([IGNORED, ORGANISATION, NEW_FIELD]
+        choices = ([IGNORED, ORGANISATION, MONTANT, NEW_FIELD]
                    + sorted(self._labels.values(), key=str.lower))
 
         for index, header_name in enumerate(self.headers):
@@ -644,7 +679,7 @@ class SettingsWindow(tk.Toplevel):
         technique, qu'un fichier de parametres ecrit a la main peut porter
         et qu'un test peut poser directement.
         """
-        if value in (IGNORED, NEW_FIELD, ORGANISATION):
+        if value in _COMMANDES:
             return value
         for name, libellé in getattr(self, "_labels", {}).items():
             if value == libellé:
@@ -680,7 +715,7 @@ class SettingsWindow(tk.Toplevel):
         colonne ignoree n'a pas de champ ou ecrire, et sa case ne fait rien.
         """
         field_name = self._field_of(self.assignments[header].get())
-        if field_name in (IGNORED, NEW_FIELD, ORGANISATION):
+        if field_name in _COMMANDES:
             return
         coché = self.dimension_vars[header].get()
         ligne = self.rows.get(field_name)
@@ -807,6 +842,11 @@ class SettingsWindow(tk.Toplevel):
             self._declare(header, box,
                           suggest_field_name(header, self._taken()))
             return
+        if variable.get() == MONTANT:
+            self._declare(header, box,
+                          suggest_field_name(header, self._taken()),
+                          montant=True)
+            return
         if variable.get() != NEW_FIELD:
             # Un champ connu : la case suit l'etat de ce champ.
             case = self.dimension_vars.get(header)
@@ -836,7 +876,8 @@ class SettingsWindow(tk.Toplevel):
         étiquette = self._labels_widgets.get(header)
         if étiquette is None:
             return
-        rattachée = self.assignments[header].get() not in (IGNORED, NEW_FIELD)
+        rattachée = self.assignments[header].get() not in (IGNORED, NEW_FIELD,
+                                                            MONTANT)
         étiquette.configure(foreground=theme.INK_SOFT if rattachée
                             else theme.WARN)
 
@@ -844,12 +885,18 @@ class SettingsWindow(tk.Toplevel):
         """Noms de champ deja pris : ceux du modele et ceux de l'ecran."""
         return set(candidate_fields(self.configuration)) | set(self.rows)
 
-    def _declare(self, header: str, box: "ttk.Combobox", name: str) -> None:
+    def _declare(self, header: str, box: "ttk.Combobox", name: str,
+                 montant: bool = False) -> None:
         """Cree le champ porte par une colonne et l'offre a toutes les autres.
 
         Sans cette derniere partie, une notion declaree sur une colonne
         restait invisible pour les suivantes : deux colonnes d'un meme
         fichier ne pouvaient pas parler de la meme chose.
+
+        Un montant ne devient pas un axe : segmenter par « prime » ferait
+        une modalite par valeur distincte, soit une ligne par salarie. Il
+        devient une colonne chiffree du classeur, et un champ d'analyse
+        possible.
         """
         self._labels[name] = header
         values = [valeur for valeur in box.cget("values")] + [header]
@@ -857,6 +904,13 @@ class SettingsWindow(tk.Toplevel):
             other.configure(values=values)
         self.assignments[header].set(header)
         self._repaint(header)
+        if montant:
+            self._money.add(name)
+            case = self.dimension_vars.get(header)
+            if case is not None:
+                case.set(False)
+            return
+        self._money.discard(name)
         self.add_dimension_row(name, header, True)
         case = self.dimension_vars.get(header)
         if case is not None:
@@ -923,7 +977,7 @@ class SettingsWindow(tk.Toplevel):
                  for name, row in self.rows.items()}
         section = build_mapping_section(
             self.configuration.section("population_mapping"),
-            assignments, flags, limit)
+            assignments, flags, limit, money=sorted(self._money))
 
         # La meme regle que le moteur, et non la liste brute : celle-ci est
         # vide par defaut, et l'ecran aurait laisse detacher la colonne de

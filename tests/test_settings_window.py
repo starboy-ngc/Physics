@@ -73,6 +73,64 @@ class SettingsCase(unittest.TestCase):
     def assign(self, header, field_name):
         self.window.assignments[header].set(field_name)
 
+    def choose(self, header, role):
+        """Pose un role et declenche ce que la liste declenche a l'ecran.
+
+        `assign` ne fait qu'ecrire la variable ; les roles qui creent un
+        champ — organisation, montant — passent par la reaction de la
+        liste, et c'est elle que ces tests doivent exercer."""
+        self.assign(header, role)
+        boîte = self.window._boxes[HEADERS.index(header)]
+        self.window._chose(header, boîte)
+
+
+class TestAnAmountColumn(SettingsCase):
+    """Une prime maison se déclare à l'écran, et non au bloc-notes.
+
+    Une colonne creee depuis l'ecran devenait toujours un axe de texte :
+    une prime n'avait aucun moyen de devenir une colonne chiffree sans
+    ouvrir le fichier de parametres.
+    """
+
+    def test_it_becomes_a_numeric_money_field(self):
+        from hr_insight.ui.settings import MONTANT
+
+        self.choose("Prime de panier", MONTANT)
+        section = self.window.collect()
+        champs = [nom for nom, alias in section["fields"].items()
+                  if "Prime de panier" in alias]
+        self.assertEqual(len(champs), 1)
+        self.assertIn(champs[0], section["numeric"])
+        self.assertIn(champs[0], section["money"])
+
+    def test_it_is_not_offered_as_an_axis(self):
+        from hr_insight.ui.settings import MONTANT
+
+        self.choose("Prime de panier", MONTANT)
+        section = self.window.collect()
+        self.assertNotIn("prime_de_panier",
+                         [entrée["field"] for entrée in section["dimensions"]])
+        self.assertFalse(self.window.dimension_vars["Prime de panier"].get())
+
+    def test_the_column_stops_being_flagged_as_unattached(self):
+        from hr_insight.ui import theme
+        from hr_insight.ui.settings import MONTANT
+
+        self.choose("Prime de panier", MONTANT)
+        étiquette = self.window._labels_widgets["Prime de panier"]
+        self.assertNotEqual(str(étiquette.cget("foreground")), theme.WARN)
+
+    def test_an_organisation_column_stays_a_text_axis(self):
+        """Le role d'a cote n'a pas bouge : il reste un axe, et il
+        n'entre ni dans les nombres ni dans les montants."""
+        from hr_insight.ui.settings import ORGANISATION
+
+        self.choose("Prime de panier", ORGANISATION)
+        section = self.window.collect()
+        self.assertIn("prime_de_panier",
+                      [entrée["field"] for entrée in section["dimensions"]])
+        self.assertNotIn("prime_de_panier", section["money"])
+
 
 class TestColumnAssignment(SettingsCase):
     def test_the_file_columns_are_offered(self):
