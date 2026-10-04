@@ -2,3 +2,8 @@
 .godot/
 *.import
 export_presets.cfg
+# Build .NET
+bin/
+obj/
+.mono/
+*.user

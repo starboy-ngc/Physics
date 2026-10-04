@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://scripts/world/village.gd" id="1_village"]
+[ext_resource type="Script" path="res://scripts/world/Village.cs" id="1_village"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/GroundPatch.tscn" id="2_ground"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/Building.tscn" id="3_building"]
 [ext_resource type="PackedScene" path="res://scenes/world/props/Tree.tscn" id="4_tree"]
@@ -10,38 +10,38 @@
 [node name="Village" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_village")
-zone_name = "Village de Brume"
-bounds = Rect2(0, 0, 768, 576)
+ZoneName = "Village de Brume"
+Bounds = Rect2(0, 0, 768, 576)
 
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="PathHousePlayer" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(148, 200, 24, 88)
+Rect = Rect2(148, 200, 24, 88)
 
 [node name="PathBakery" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(596, 200, 24, 88)
+Rect = Rect2(596, 200, 24, 88)
 
 [node name="PathNorth" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(148, 276, 472, 24)
+Rect = Rect2(148, 276, 472, 24)
 
 [node name="PathForest" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(464, 276, 304, 24)
+Rect = Rect2(464, 276, 304, 24)
 
 [node name="PathSouth" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(372, 344, 24, 196)
+Rect = Rect2(372, 344, 24, 196)
 
 [node name="PathSouthRow" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(148, 528, 472, 24)
+Rect = Rect2(148, 528, 472, 24)
 
 [node name="PathJeanne" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(148, 500, 24, 28)
+Rect = Rect2(148, 500, 24, 28)
 
 [node name="PathMartin" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(596, 500, 24, 28)
+Rect = Rect2(596, 500, 24, 28)
 
 [node name="Square" parent="Ground" instance=ExtResource("2_ground")]
-rect = Rect2(304, 232, 160, 112)
-kind = 1
+Rect = Rect2(304, 232, 160, 112)
+Kind = 1
 
 [node name="Spawns" type="Node2D" parent="."]
 
@@ -62,52 +62,52 @@ position = Vector2(608, 522)
 
 [node name="HousePlayer" parent="." instance=ExtResource("3_building")]
 position = Vector2(160, 200)
-label = "Ma maison"
-door_target_zone = "house_player"
+Label = "Ma maison"
+DoorTargetZone = "house_player"
 
 [node name="Bakery" parent="." instance=ExtResource("3_building")]
 position = Vector2(608, 200)
-wall_color = Color(0.941, 0.863, 0.698, 1)
-roof_color = Color(0.616, 0.345, 0.2, 1)
-label = "Boulangerie"
-door_target_zone = "bakery"
+WallColor = Color(0.941, 0.863, 0.698, 1)
+RoofColor = Color(0.616, 0.345, 0.2, 1)
+Label = "Boulangerie"
+DoorTargetZone = "bakery"
 
 [node name="HouseJeanne" parent="." instance=ExtResource("3_building")]
 position = Vector2(160, 500)
-wall_color = Color(0.816, 0.859, 0.757, 1)
-roof_color = Color(0.333, 0.471, 0.361, 1)
-label = "Jeanne"
-door_target_zone = "house_jeanne"
+WallColor = Color(0.816, 0.859, 0.757, 1)
+RoofColor = Color(0.333, 0.471, 0.361, 1)
+Label = "Jeanne"
+DoorTargetZone = "house_jeanne"
 
 [node name="HouseMartin" parent="." instance=ExtResource("3_building")]
 position = Vector2(608, 500)
-wall_color = Color(0.741, 0.741, 0.722, 1)
-roof_color = Color(0.333, 0.353, 0.431, 1)
-label = "Martin"
-door_target_zone = "house_martin"
+WallColor = Color(0.741, 0.741, 0.722, 1)
+RoofColor = Color(0.333, 0.353, 0.431, 1)
+Label = "Martin"
+DoorTargetZone = "house_martin"
 
 [node name="Well" parent="." instance=ExtResource("5_well")]
 position = Vector2(384, 300)
 
 [node name="SignForest" parent="." instance=ExtResource("6_prop")]
 position = Vector2(716, 270)
-kind = "sign"
-sign_text = "Forêt"
+Kind = "sign"
+SignText = "Forêt"
 
 [node name="Tree1" parent="." instance=ExtResource("4_tree")]
 position = Vector2(272, 420)
 
 [node name="Tree2" parent="." instance=ExtResource("4_tree")]
 position = Vector2(496, 420)
-canopy_radius = 16.0
+CanopyRadius = 16.0
 
 [node name="Tree3" parent="." instance=ExtResource("4_tree")]
 position = Vector2(288, 160)
-canopy_radius = 13.0
+CanopyRadius = 13.0
 
 [node name="Tree4" parent="." instance=ExtResource("4_tree")]
 position = Vector2(480, 160)
 
 [node name="Tree5" parent="." instance=ExtResource("4_tree")]
 position = Vector2(540, 480)
-canopy_radius = 12.0
+CanopyRadius = 12.0

@@ -1,7 +1,12 @@
-# Village de Brume — prototype RPG (Godot 4.3, GDScript)
+# Village de Brume — prototype RPG (Godot 4.3 .NET, C#)
 
 Petit RPG d'exploration en vue 3/4 du dessus. Ce dossier est un projet Godot
-complet : ouvrir `project.godot` avec **Godot 4.3** (ou plus récent en 4.x).
+complet, écrit en **C#**.
+
+Prérequis :
+
+- **Godot 4.3 .NET** (la version « .NET » sur godotengine.org, pas la standard) ;
+- le **SDK .NET 8** (dotnet.microsoft.com). Godot le détecte automatiquement.
 
 ## État : ÉTAPE 2 — interactions, PNJ, dialogues statiques
 
@@ -41,8 +46,10 @@ forêt (étape 5), IA (étape 6+).
 
 ## Lancer
 
-1. Ouvrir Godot 4.3 → *Importer* → choisir `project.godot`.
-2. Appuyer sur **F5** (lancer le projet).
+1. Ouvrir Godot 4.3 .NET → *Importer* → choisir `project.godot`.
+2. Appuyer sur **F5** : Godot compile le projet C# puis lance le jeu.
+
+En ligne de commande : `dotnet build` dans ce dossier compile le projet.
 
 Contrôles :
 
@@ -57,9 +64,10 @@ Contrôles :
 ## Tester sans fenêtre (optionnel)
 
 ```bash
-godot --headless --path . -s tests/smoke_test.gd   # visite toutes les zones
-godot --headless --path . -s tests/door_test.gd    # entrée / sortie par les portes
-godot --headless --path . -s tests/dialogue_test.gd # parler à Émile, choix, fin
+dotnet build
+godot --headless --path . tests/SmokeTest.tscn     # visite toutes les zones
+godot --headless --path . tests/DoorTest.tscn      # entrée / sortie par les portes
+godot --headless --path . tests/DialogueTest.tscn  # parler à Émile, choix, fin
 ```
 
 Chaque test doit afficher `OK` et se terminer avec le code 0.
@@ -76,37 +84,38 @@ scenes/
   world/interiors/*.tscn    les 4 intérieurs
   world/props/*.tscn        Building, Door, Tree, Well, GroundPatch, Prop
 scripts/
-  systems/game.gd           autoload Game : registre des zones, changement de zone, caméra
-  systems/dialogue_manager.gd  autoload DialogueManager
-  systems/dialogue_data.gd  chargement/validation d'un dialogue JSON
-  systems/interactable.gd   base Interactable (Area2D, couche 3)
-  systems/debug_overlay.gd  autoload DebugOverlay (F3)
-  npc/npc.gd, npc_talk_area.gd, npc_manager.gd   PNJ et autoload NpcManager
-  characters/character_visual.gd   dessin partagé joueur / PNJ
-  ui/game_ui.gd             interface en jeu
-  systems/main.gd           démarrage dans la maison du joueur
-  player/player.gd          déplacement, direction, sonde d'interaction
-  world/zone.gd             base Zone : nom, limites, murs invisibles, Spawns
-  world/village.gd          herbe + arbres de bordure (générés)
-  world/interior.gd         sol en planches + mur du fond
-  world/building.gd         maison extérieure (crée sa porte)
-  world/door.gd             zone de passage vers une autre zone
-  world/prop.gd, tree.gd, well.gd, ground_patch.gd   décor dessiné en code
+  systems/Game.cs           autoload Game : registre des zones, changement de zone, caméra
+  systems/DialogueManager.cs   autoload DialogueManager (événements C#)
+  systems/DialogueData.cs   chargement/validation d'un dialogue JSON (System.Text.Json)
+  systems/Interactable.cs   base Interactable (Area2D, couche 3)
+  systems/DebugOverlay.cs   autoload DebugOverlay (F3)
+  systems/Main.cs           démarrage dans la maison du joueur
+  npc/Npc.cs, NpcTalkArea.cs, NpcManager.cs, NpcData.cs   PNJ et autoload NpcManager
+  characters/CharacterVisual.cs   dessin partagé joueur / PNJ
+  ui/GameUI.cs              interface en jeu
+  player/Player.cs          déplacement, direction, sonde d'interaction
+  world/Zone.cs             base Zone : nom, limites, murs invisibles, Spawns
+  world/Village.cs          herbe + arbres de bordure (générés)
+  world/Interior.cs         sol en planches + mur du fond
+  world/Building.cs         maison extérieure (crée sa porte)
+  world/Door.cs             zone de passage vers une autre zone
+  world/Prop.cs, TreeProp.cs, Well.cs, GroundPatch.cs   décor dessiné en code
 data/npcs/*.json            fiches PNJ (nom, apparence, position, dialogue)
 data/dialogues/*.json       dialogues statiques
-tests/                      tests headless
+tests/                      tests headless (scènes + scripts C#, base TestBase.cs)
+VillageDeBrume.csproj / .sln   projet .NET (généré par Godot, versionné)
 docs/screenshots/           captures de référence
 ```
 
-Les graphismes sont dessinés en code (`_draw`) : aucun asset externe pour
+Les graphismes sont dessinés en code (`_Draw`) : aucun asset externe pour
 l'instant, le dossier `assets/` est prêt pour les remplacer plus tard.
 
 ## Ajouter une zone (pour les étapes suivantes)
 
-1. Créer une scène dont la racine a le script `zone.gd` (ou un dérivé) avec
-   `zone_name` et `bounds`, un noeud `Spawns` contenant des `Marker2D`.
-2. L'enregistrer dans `Game.ZONES` (`scripts/systems/game.gd`).
-3. Placer une `Door` (ou un `Building` avec `door_target_zone`) qui pointe
+1. Créer une scène dont la racine a le script `Zone.cs` (ou un dérivé) avec
+   `ZoneName` et `Bounds`, un noeud `Spawns` contenant des `Marker2D`.
+2. L'enregistrer dans `Game.Zones` (`scripts/systems/Game.cs`).
+3. Placer une `Door` (ou un `Building` avec `DoorTargetZone`) qui pointe
    vers son identifiant et un nom de spawn.
 
 ## Ajouter un PNJ

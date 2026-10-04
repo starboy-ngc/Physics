@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/npc/npc.gd" id="1_npc"]
-[ext_resource type="Script" path="res://scripts/characters/character_visual.gd" id="2_visual"]
-[ext_resource type="Script" path="res://scripts/npc/npc_talk_area.gd" id="3_talk"]
+[ext_resource type="Script" path="res://scripts/npc/Npc.cs" id="1_npc"]
+[ext_resource type="Script" path="res://scripts/characters/CharacterVisual.cs" id="2_visual"]
+[ext_resource type="Script" path="res://scripts/npc/NpcTalkArea.cs" id="3_talk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feet"]
 size = Vector2(12, 8)
@@ -22,6 +22,6 @@ script = ExtResource("2_visual")
 
 [node name="TalkArea" type="Area2D" parent="."]
 script = ExtResource("3_talk")
-prompt = "Parler"
-size = Vector2(16, 30)
-offset = Vector2(0, -9)
+Prompt = "Parler"
+Size = Vector2(16, 30)
+Offset = Vector2(0, -9)
