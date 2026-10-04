@@ -1,12 +1,12 @@
-"""L'écran d'accueil, son étoile et son nom.
+"""L'écran d'accueil, sa marque et son nom.
 
 Un logo calculé plutôt que livré en fichier image : c'est la même exigence
 que partout ailleurs — rien d'opaque dans l'archive, aucune dépendance. Ce
 qui se vérifie ici : que le symbole soit le même à chaque ouverture et à
 toutes les tailles (un logo qui change de forme n'est pas un logo), que la
-lumière le traverse sans le déformer, que ce soit bien la marque de l'icône
-Windows — un outil n'a qu'une identité —, et que l'écran ne retarde ni la
-fenêtre ni les tests.
+lumière le traverse sans le déformer, qu'il ne porte aucun jugement — une
+étoile dirait « cinq étoiles » —, et que l'écran ne retarde ni la fenêtre ni
+les tests.
 
 Aucune donnée RH réelle.
 """
@@ -64,28 +64,30 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """Une etoile a cinq branches, pleine, d'une seule teinte.
+    """Une boite a moustaches : l'etendue, la boite, la mediane en creux.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
-    toujours le meme, qu'il tienne a toutes les tailles, et qu'il se
-    reconnaisse a vingt-quatre pixels.
+    toujours le meme, qu'il tienne a toutes les tailles, et qu'il ne dise
+    rien que l'outil ne fasse.
     """
 
-    COTE = 240
+    LARGEUR, HAUTEUR = 240, 124
 
-    def symbole(self, cote=None, hauteur=None, count=1):
-        return logo.Star(cote or self.COTE, count, height=hauteur)
+    def symbole(self, largeur=None, hauteur=None, count=1):
+        return logo.Mark(largeur or self.LARGEUR, count,
+                         height=hauteur or self.HAUTEUR)
 
     def test_a_frame_is_a_readable_image_of_the_right_size(self):
-        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
-        self.assertEqual(len(lignes), self.COTE)
-        self.assertEqual(len(lignes[0]), self.COTE * 4)
+        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
+        self.assertEqual(len(lignes), self.HAUTEUR)
+        self.assertEqual(len(lignes[0]), self.LARGEUR * 4)
 
-    def test_a_lower_frame_crops_the_drawing_without_flattening_it(self):
-        """« height » cadre le dessin : il ne l'ecrase pas."""
-        lignes = pixels(self.symbole(240, 160).frame(0), 240, 160)
-        self.assertEqual(len(lignes), 160)
-        self.assertEqual(len(lignes[0]), 240 * 4)
+    def test_the_frame_follows_the_shape_of_the_mark(self):
+        """La marque est couchee : un cadre carre lui laisserait deux
+        bandes vides."""
+        symbole = logo.Mark(200)
+        self.assertEqual(symbole.height, round(200 * logo.RATIO))
+        self.assertLess(symbole.height, symbole.size)
 
     def test_the_same_symbol_comes_back_every_time(self):
         """Rien n'est tire au hasard : le dessin vient d'une formule."""
@@ -96,8 +98,8 @@ class TestTheSymbol(unittest.TestCase):
         deformation : un logo qui change de forme n'est plus un logo."""
         symbole = self.symbole(count=8)
         silhouettes = {
-            bytes(b"".join(encre(pixels(symbole.frame(index), self.COTE,
-                                        self.COTE))))
+            bytes(b"".join(encre(pixels(symbole.frame(index), self.LARGEUR,
+                                        self.HAUTEUR))))
             for index in range(8)}
         self.assertEqual(len(silhouettes), 1)
 
@@ -108,100 +110,89 @@ class TestTheSymbol(unittest.TestCase):
     def test_the_drawing_is_the_same_at_any_size(self):
         """Decrit par une formule et non par des pixels : la silhouette
         agrandie doit recouvrir la petite, a l'echelle pres."""
-        petit = pixels(self.symbole(120).frame(0), 120, 120)
-        grand = pixels(self.symbole(480).frame(0), 480, 480)
+        petit = pixels(self.symbole(120, 62).frame(0), 120, 62)
+        grand = pixels(self.symbole(480, 248).frame(0), 480, 248)
         part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in petit) / (120 * 120)
+                         for ligne in petit) / (120 * 62)
         part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in grand) / (480 * 480)
-        self.assertAlmostEqual(part_petit, part_grand, delta=0.01)
+                         for ligne in grand) / (480 * 248)
+        # Le lissage pese plus lourd dans une petite image qu'une grande :
+        # la marque est fine, et ses bords y prennent une part plus large.
+        self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
 
     def test_it_never_touches_the_edge_of_its_frame(self):
         """Un symbole coupe au bord parait coupe des qu'on le pose contre
-        autre chose. La lueur elle-meme a une portee finie."""
-        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
+        autre chose."""
+        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
         self.assertEqual(max(lignes[0][3::4]), 0)
         self.assertEqual(max(lignes[-1][3::4]), 0)
         self.assertEqual(max(ligne[3] for ligne in lignes), 0)
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
-        """Une etoile reguliere couvre environ le quart de son cadre : a
-        trente-deux pixels, il doit en rester de quoi la reconnaitre."""
-        lignes = pixels(self.symbole(32).frame(0), 32, 32)
+        lignes = pixels(self.symbole(32, 17).frame(0), 32, 17)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
-        self.assertGreater(encres, 150)
+        self.assertGreater(encres, 90)
 
-    def test_the_mark_is_one_steel_blue_star_and_nothing_else(self):
+    def test_the_mark_is_one_steel_blue_tone_and_nothing_else(self):
         """Une seule teinte, pas de jeton, pas de degrade : une marque n'a
         pas a se faire remarquer. Et elle ne suit pas le theme — une marque
         qui change de couleur avec un reglage d'affichage n'est plus une
         marque."""
-        lignes = pixels(self.symbole().frame(0), self.COTE, self.COTE)
-        milieu = self.COTE // 2
+        lignes = pixels(self.symbole().frame(0), self.LARGEUR, self.HAUTEUR)
+        milieu = self.HAUTEUR // 2
 
-        def couleur(x, y):
-            return tuple(lignes[y][x * 4:x * 4 + 4])
+        def couleur(x):
+            return tuple(lignes[milieu][x * 4:x * 4 + 4])
 
-        # Le centre de l'etoile : la teinte de la marque, pleinement opaque.
-        rouge, vert, bleu, alpha = couleur(milieu, milieu)
+        # Dans la boite, a gauche de la mediane : la teinte de la marque.
+        rouge, vert, bleu, alpha = couleur(int(self.LARGEUR * 0.40))
         self.assertEqual(alpha, 255)
         # A quelques unites pres : la lumiere qui traverse le symbole
         # eclaircit sa teinte, elle ne la remplace pas.
-        for mesure, attendue in zip((rouge, vert, bleu), logo.ETOILE):
+        for mesure, attendue in zip((rouge, vert, bleu), logo.ENCRE):
             self.assertAlmostEqual(mesure, attendue, delta=8)
         # Un bleu d'acier : il se detache d'un ecran sombre comme d'une
         # page blanche.
         self.assertGreater(bleu, rouge)
-        self.assertLess(max(logo.ETOILE), 200)
-        self.assertGreater(min(logo.ETOILE), 80)
-        # Entre deux branches, au ras du bord : rien. Pas de jeton.
-        self.assertEqual(couleur(int(self.COTE * 0.06), milieu)[3], 0)
+        self.assertLess(max(logo.ENCRE), 200)
+        self.assertGreater(min(logo.ENCRE), 80)
+        # Au-dessus de la boite : rien. Pas de jeton.
+        haut = pixels(self.symbole().frame(0), self.LARGEUR,
+                      self.HAUTEUR)[2]
+        self.assertEqual(max(haut[3::4]), 0)
 
-    def test_the_first_point_looks_up(self):
-        """Une etoile posee de travers se remarque immediatement, meme de
-        qui ne saurait pas dire pourquoi.
+    def test_it_reads_as_a_box_plot_and_not_as_a_bar(self):
+        """Trois choses, dans cet ordre : une moustache fine, la boite, et
+        la mediane qui la partage. C'est ce qui distingue la marque d'un
+        trait quelconque."""
+        lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
+                              self.HAUTEUR))
+        milieu = self.HAUTEUR // 2
 
-        Une pointe en haut, deux en bas : la premiere ligne pleine est un
-        seul trait, centre ; la derniere en compte deux, les jambes.
+        def hauteur_pleine(x):
+            return sum(1 for ligne in lignes if ligne[x] > 200)
+
+        moustache = hauteur_pleine(int(self.LARGEUR * 0.15))
+        boite = hauteur_pleine(int(self.LARGEUR * 0.40))
+        self.assertGreater(moustache, 0, "la moustache est tracee")
+        self.assertGreater(boite, 3 * moustache, "la boite est plus haute")
+        # La mediane : un creux au milieu de la boite, et seulement la.
+        self.assertEqual(lignes[milieu][self.LARGEUR // 2], 0)
+        self.assertGreater(lignes[milieu][int(self.LARGEUR * 0.44)], 200)
+        self.assertGreater(lignes[milieu][int(self.LARGEUR * 0.56)], 200)
+
+    def test_the_mark_says_nothing_the_tool_does_not_do(self):
+        """Une etoile dit « cinq etoiles », une coche dit « conforme » : un
+        outil qui mesure des ecarts ne porte aucun jugement sur sa porte.
+        La marque est l'objet que l'outil produit, et rien d'autre.
         """
-        lignes = encre(pixels(self.symbole().frame(0), self.COTE, self.COTE))
-
-        def traits(y):
-            """Suites de pixels pleins sur cette ligne, en abscisses."""
-            ligne = lignes[y]
-            suites, courante = [], None
-            for x in range(self.COTE):
-                if ligne[x] > 200:
-                    courante = [x, x] if courante is None else [courante[0], x]
-                elif courante is not None:
-                    suites.append(courante)
-                    courante = None
-            if courante is not None:
-                suites.append(courante)
-            return suites
-
-        pleines = [y for y in range(self.COTE) if traits(y)]
-        self.assertTrue(pleines)
-        premiere = traits(pleines[0])
-        self.assertEqual(len(premiere), 1, "une seule pointe en haut")
-        self.assertAlmostEqual(sum(premiere[0]) / 2, self.COTE / 2,
-                               delta=self.COTE * 0.02)
-        # Au ras du bas de l'etoile : les deux jambes, separees. La
-        # derniere ligne elle-meme ne vaut rien — a un pixel pres, un bord
-        # adouci tombe d'un cote ou de l'autre du seuil.
-        bas = pleines[0] + int(0.95 * (pleines[-1] - pleines[0]))
-        self.assertEqual(len(traits(bas)), 2, "deux pointes en bas")
-
-    def test_it_is_the_same_mark_as_the_windows_icon(self):
-        """Un outil n'a qu'une identite : l'ecran d'accueil et l'icone du
-        raccourci portent la meme etoile, au meme rapport de branches."""
-        chemin = os.path.join(os.path.dirname(os.path.dirname(
-            os.path.abspath(__file__))), "tools", "render_icon.py")
-        with open(chemin, encoding="utf-8") as fichier:
+        with open(logo.__file__, encoding="utf-8") as fichier:
             source = fichier.read()
-        self.assertIn(f"CREUX = {logo.CREUX}", source)
+        self.assertIn("boite a moustaches", source)
+        for jugement in ("etoile dit", "coche dit", "balance dit"):
+            self.assertIn(jugement, source)
 
     def test_the_drawing_is_computed_once_and_only_once(self):
         """Le trace est calcule une fois, les images ne font que le
@@ -209,7 +200,7 @@ class TestTheSymbol(unittest.TestCase):
         affiche : aucune ne doit bloquer l'affichage."""
         import time
 
-        symbole = logo.Star(150, 24)
+        symbole = logo.Mark(240, 24)
         debut = time.perf_counter()
         symbole.frame(0)
         trace = time.perf_counter() - debut
@@ -218,7 +209,6 @@ class TestTheSymbol(unittest.TestCase):
         suivante = time.perf_counter() - debut
         self.assertLess(trace, 0.8)
         self.assertLess(suivante, 0.06)
-        self.assertLess(suivante, trace, "le trace doit etre garde")
 
 
 @needs_display

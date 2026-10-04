@@ -291,12 +291,12 @@ class TestTheSingleFileLauncher(unittest.TestCase):
             self.assertNotIn(interdit, self.source, interdit)
 
 
-class TestTheStarIcon(unittest.TestCase):
+class TestTheMarkIcon(unittest.TestCase):
     """L'icône est dessinée par une formule, pas posée en pixels."""
 
     @classmethod
     def setUpClass(cls):
-        chemin = os.path.join(ROOT, "packaging", "windows", "etoile.ico")
+        chemin = os.path.join(ROOT, "packaging", "windows", "marque.ico")
         if not os.path.isfile(chemin):
             raise unittest.SkipTest("icône absente")
         with open(chemin, "rb") as handle:
@@ -328,11 +328,31 @@ class TestTheStarIcon(unittest.TestCase):
         self.assertEqual(len(petite), 16 * 16 * 4)
         self.assertEqual(len(grande), 32 * 32 * 4)
 
-    def test_the_star_points_upward(self):
-        """Une étoile posée de travers se remarque, même de qui ne saurait
-        pas dire pourquoi."""
-        from tools.render_icon import sommets
-        points = sommets(rayon=10.0, centre=10.0)
-        premier = points[0]
-        self.assertAlmostEqual(premier[0], 10.0, places=6)
-        self.assertLess(premier[1], 10.0)
+    def test_it_draws_the_very_mark_the_window_shows(self):
+        """Un outil n'a qu'une identité : l'icône du raccourci ne recopie
+        pas la marque de la fenêtre, elle l'appelle."""
+        import inspect
+
+        from hr_insight.ui import logo
+        from tools import render_icon
+
+        self.assertIn("logo.distance", inspect.getsource(render_icon.dessiner))
+        # Le centre de la boîte est plein, le creux de la médiane vide.
+        self.assertLess(logo.distance(0.40, 0.5), 0)
+        self.assertGreater(logo.distance(0.5, 0.5), 0)
+
+    def test_the_mark_is_white_on_the_slate_token(self):
+        """Une icône de raccourci se pose sur n'importe quel fond de
+        bureau : elle porte le sien."""
+        from tools.render_icon import ENCRE, MARQUE, dessiner
+
+        pixels = dessiner(64)
+
+        def point(x, y):
+            return tuple(pixels[(y * 64 + x) * 4:(y * 64 + x) * 4 + 4])
+
+        self.assertEqual(point(32, 32)[3], 255, "le jeton est plein")
+        self.assertEqual(point(0, 0)[3], 0, "le coin reste transparent")
+        # Au cœur de la boîte : du blanc. Dans l'angle du jeton : l'ardoise.
+        self.assertEqual(point(26, 32)[:3], MARQUE)
+        self.assertEqual(point(32, 12)[:3], ENCRE)

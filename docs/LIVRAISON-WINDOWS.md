@@ -151,7 +151,7 @@ d'un premier déploiement.
 ## Le fichier unique
 
 Demandé après coup, et livré : `HR Insight.exe`, 16 Mo, **un seul fichier**,
-icône en étoile.
+portant la marque de l'outil.
 
 ```
 python3 tools/build_windows.py --sortie dist --runtime <python> --exe

@@ -1,4 +1,4 @@
-"""L'etoile de l'outil, dessinee a la formule.
+"""La marque de l'outil, dessinee a la formule.
 
 Un logo est un fichier image dans la plupart des logiciels. Ici il n'en est
 pas question : embarquer un binaire opaque dans une archive que le service
@@ -6,21 +6,26 @@ informatique doit pouvoir relire irait contre tout le reste. Le symbole est
 donc *calcule*, puis encode en PNG par le module « raster », qui sait deja
 le faire pour les points du nuage.
 
-Ce qu'il montre : une etoile a cinq branches, pleine, d'une seule teinte.
-Rien d'autre — pas de jeton, pas de degrade, pas de vernis. Une marque n'a
-pas a se faire remarquer : elle se pose a cote du nom, petite, et c'est le
-nom qu'on lit. C'est la meme etoile que celle de l'icone Windows
-(« packaging/windows/etoile.ico ») — un outil n'a qu'une identite, et
-celle-ci se redessine de memoire.
+Ce qu'il montre : une boite a moustaches. L'etendue d'une population, la
+boite des deux quartiles du milieu, et la mediane qui la partage — l'objet
+meme que l'outil produit, reduit a sa silhouette.
+
+Le choix n'est pas qu'esthetique. Une etoile dit « cinq etoiles », une
+coche dit « conforme », une balance dit « justice » : un outil qui mesure
+des ecarts de remuneration ne doit porter aucun de ces jugements sur sa
+porte. Une boite a moustaches ne dit rien d'autre que ce que fait l'outil :
+elle montre une distribution, sans la noter.
 
 Sa teinte ne suit pas le theme et ne change pas avec le fond : un bleu
 d'acier, assez clair pour se detacher d'un ecran sombre, assez dense pour
 tenir sur un fond blanc. Elle se lit donc aussi bien a l'accueil, sur
 l'encre, que pendant une analyse, sur la page.
 
-Tout est analytique. Le contour est donne par la *distance signee* a
-l'etoile — negative dedans, positive dehors —, et l'opacite d'un pixel s'en
-deduit : un demi-pixel de part et d'autre du bord. Il n'y a donc ni tirage
+Tout est analytique. Chaque piece est decrite par sa *distance signee* —
+negative dedans, positive dehors —, les pieces se reunissent en prenant la
+plus petite, la mediane se creuse en prenant la plus grande de l'une et de
+l'opposee de l'autre, et l'opacite d'un pixel se deduit de la distance
+finale : un demi-pixel de part et d'autre du bord. Il n'y a donc ni tirage
 aleatoire, ni echantillonnage, ni surechantillonnage a payer : le meme
 dessin exactement a toutes les tailles, en un seul passage.
 """
@@ -37,25 +42,36 @@ RGB = Tuple[int, int, int]
 #: La teinte de la marque. Elle ne suit pas le theme de la fenetre : une
 #: marque qui change de couleur avec un reglage d'affichage n'est plus une
 #: marque.
-ETOILE = (110, 148, 186)
+ENCRE = (110, 148, 186)
 
-#: Rayon de l'etoile, en parts de la largeur du cadre. Le symbole ne touche
-#: jamais le bord : il paraitrait coupe des qu'on le pose contre autre
-#: chose.
-RAYON = 0.455
+#: Proportion du cadre : la marque est couchee, comme l'objet qu'elle
+#: represente. Un cadre carre lui laisserait deux bandes vides.
+RATIO = 0.52
 
-#: Rayon interne de l'etoile, en part du rayon externe. 0,382 est le
-#: rapport de l'etoile a cinq branches reguliere — celle qu'on dessine d'un
-#: trait sans lever la main. Plus grand, les branches s'epaississent et le
-#: dessin perd sa pointe ; plus petit, elles deviennent des aiguilles
-#: illisibles a seize pixels.
-CREUX = 0.382
+#: Les moustaches : de ou a ou elles vont, leur epaisseur, et le petit
+#: trait qui les termine. Sans ces bouts, la marque se lit comme un
+#: interrupteur ; avec eux, c'est une etendue bornee.
+MOUSTACHE = (0.07, 0.93)
+MOUSTACHE_TRAIT = 0.022
+BOUT_LARGEUR = 0.050
+BOUT_HAUTEUR = 0.105
+
+#: La boite des deux quartiles du milieu : sa demi-largeur, sa
+#: demi-hauteur, et l'arrondi de ses coins.
+BOITE_DEMI = 0.200
+BOITE_HAUTEUR = 0.155
+BOITE_COIN = 0.045
+
+#: La mediane. Elle est *creusee* et non posee : un trait d'une autre
+#: couleur supposerait un fond connu, alors que la marque se pose aussi
+#: bien sur l'encre que sur la page.
+MEDIANE_DEMI = 0.018
 
 #: Le passage de lumiere, image par image : de combien il eclaircit, sur
 #: quelle largeur, son inclinaison, et jusqu'ou il voyage de part et
-#: d'autre du cadre. Il ne touche jamais au trace — seulement a sa couleur.
-#: Discret : un logo qui clignote pendant un demarrage se regarde au lieu
-#: de se laisser oublier.
+#: d'autre du cadre. Il ne touche jamais au trace — seulement a sa
+#: couleur. Discret : un logo qui clignote pendant un demarrage se regarde
+#: au lieu de se laisser oublier.
 REFLET_FORCE = 0.34
 REFLET_LARGEUR = 0.30
 REFLET_PENTE = 0.80
@@ -67,21 +83,16 @@ REFLET_MARGE = 0.45
 #: pour quelques kilooctets gagnes que personne ne transporte.
 RAPIDE_AU_DELA = 420
 
-#: Cosinus et sinus de trente-six degres : les deux normales qui replient
-#: le plan sur un dixieme de tour. L'etoile a cinq branches est symetrique
-#: dix fois ; la distance ne se calcule donc que sur un seul secteur.
-_PLI = (0.8090169943749475, -0.5877852522924731)
 
-
-class Star:
+class Mark:
     """Le symbole, et la lumiere qui le traverse, image par image."""
 
     def __init__(self, size: int, count: int = 1,
                  height: Optional[int] = None):
-        """`size` est la largeur ; `height` permet un cadre plus bas que
-        large. Le dessin n'est pas etire pour autant : il est cadre."""
+        """`size` est la largeur ; `height` cadre le dessin plus bas que
+        large. Par defaut, la proportion de la marque."""
         self.size = size
-        self.height = height or size
+        self.height = height or max(1, int(round(size * RATIO)))
         self.count = max(1, count)
         self._carte: Optional[List[bytearray]] = None
 
@@ -134,7 +145,7 @@ class Star:
         return self._carte
 
     def _trace(self) -> List[bytearray]:
-        """Pose l'etoile.
+        """Pose la marque.
 
         Tout est mesure en parts de la largeur, y compris a la verticale :
         un cadre plus bas que large recadre le dessin, il ne l'aplatit pas.
@@ -145,16 +156,16 @@ class Star:
         toile: List[bytearray] = []
         for ligne in range(self.height):
             rendu = bytearray(size * 4)
-            dy = (ligne + haut + 0.5) / size - 0.5
+            y = (ligne + haut + 0.5) / size
             for colonne in range(size):
-                dx = (colonne + 0.5) / size - 0.5
-                couverture = _couverture(_distance(dx, dy), pixel)
+                x = (colonne + 0.5) / size
+                couverture = _couverture(distance(x, y), pixel)
                 if couverture <= 0.0:
                     continue
                 position = colonne * 4
-                rendu[position] = ETOILE[0]
-                rendu[position + 1] = ETOILE[1]
-                rendu[position + 2] = ETOILE[2]
+                rendu[position] = ENCRE[0]
+                rendu[position + 1] = ENCRE[1]
+                rendu[position + 2] = ENCRE[2]
                 rendu[position + 3] = min(255, int(couverture * 255 + 0.5))
             toile.append(rendu)
         return toile
@@ -181,28 +192,35 @@ def _couverture(distance: float, pixel: float) -> float:
     return part
 
 
-def _distance(dx: float, dy: float) -> float:
-    """Distance signee a l'etoile : negative dedans, positive dehors.
+def _barre(x: float, y: float, debut: float, fin: float,
+           rayon: float) -> float:
+    """Distance signee a un trait horizontal a bouts ronds."""
+    place = min(max(x, debut), fin)
+    return math.hypot(x - place, y - 0.5) - rayon
 
-    Le plan est replie deux fois sur la premiere branche — l'etoile est
-    symetrique dix fois —, puis la distance se mesure au seul cote qui
-    reste. La premiere pointe regarde vers le haut : une etoile posee de
-    travers se remarque immediatement, meme de qui ne saurait pas dire
-    pourquoi.
+
+def _boite(x: float, y: float, demi_large: float, demi_haut: float,
+           coin: float, centre: float = 0.5) -> float:
+    """Distance signee a un rectangle a coins arrondis, centre sur la
+    ligne mediane du cadre."""
+    dx = abs(x - centre) - (demi_large - coin)
+    dy = abs(y - 0.5) - (demi_haut - coin)
+    dehors = math.hypot(max(dx, 0.0), max(dy, 0.0))
+    return dehors + min(max(dx, dy), 0.0) - coin
+
+
+def distance(x: float, y: float) -> float:
+    """Distance signee a la marque : negative dedans, positive dehors.
+
+    Publique parce que l'icone Windows s'en sert : elle dessine la meme
+    marque, en blanc sur un jeton rond. Un outil n'a qu'une identite.
     """
-    x, y = abs(dx), -dy
-    produit = x * _PLI[0] + y * _PLI[1]
-    if produit > 0.0:
-        x -= 2 * produit * _PLI[0]
-        y -= 2 * produit * _PLI[1]
-    produit = -x * _PLI[0] + y * _PLI[1]
-    if produit > 0.0:
-        x += 2 * produit * _PLI[0]
-        y -= 2 * produit * _PLI[1]
-    x = abs(x)
-    y -= RAYON
-    cote = (-_PLI[1] * CREUX, _PLI[0] * CREUX - 1.0)
-    longueur = cote[0] * cote[0] + cote[1] * cote[1]
-    place = max(0.0, min(RAYON, (x * cote[0] + y * cote[1]) / longueur))
-    reste = math.hypot(x - cote[0] * place, y - cote[1] * place)
-    return reste if y * cote[0] - x * cote[1] > 0 else -reste
+    moustaches = _barre(x, y, MOUSTACHE[0], MOUSTACHE[1], MOUSTACHE_TRAIT)
+    gauche = _boite(x, y, BOUT_LARGEUR / 2, BOUT_HAUTEUR, MOUSTACHE_TRAIT,
+                    MOUSTACHE[0])
+    droite = _boite(x, y, BOUT_LARGEUR / 2, BOUT_HAUTEUR, MOUSTACHE_TRAIT,
+                    MOUSTACHE[1])
+    caisse = _boite(x, y, BOITE_DEMI, BOITE_HAUTEUR, BOITE_COIN)
+    forme = min(moustaches, gauche, droite, caisse)
+    mediane = _boite(x, y, MEDIANE_DEMI, BOITE_HAUTEUR + BOITE_COIN, 0.0)
+    return max(forme, -mediane)

@@ -241,9 +241,9 @@ def compiler_stub(destination: str) -> str:
         raise SystemExit(
             "x86_64-w64-mingw32-gcc et -windres sont necessaires. "
             "Installez le paquet « mingw-w64 ».")
-    icone = os.path.join(fenetre, "etoile.ico")
+    icone = os.path.join(fenetre, "marque.ico")
     if not os.path.isfile(icone):
-        _dire("  icone : dessin de l'etoile")
+        _dire("  icone : dessin de la marque")
         from tools.render_icon import main as dessiner
         dessiner(["--sortie", icone])
     objet = os.path.join(destination, "icone.o")

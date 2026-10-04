@@ -1,4 +1,4 @@
-"""Produit le logo — l'etoile — en image PNG, a la taille demandee.
+"""Produit le logo — la marque — en image PNG, a la taille demandee.
 
 L'outil calcule son symbole a chaque ouverture, a la taille de son ecran
 d'accueil. Ce script sert a en tirer une image : une planche pour une
@@ -27,9 +27,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from hr_insight.core import palette
 from hr_insight.ui import logo, raster
 
-#: Proportion du cadre. L'etoile s'inscrit dans un carre ; la hauteur
-#: reste reglable pour une planche qui demande autre chose.
-RATIO = 1.0
+#: Proportion du cadre : celle de la marque elle-meme. La hauteur reste
+#: reglable pour une planche qui demande autre chose.
+RATIO = logo.RATIO
 
 
 def _lignes(data: bytes, largeur: int, hauteur: int):
@@ -69,7 +69,7 @@ def main(argv=None) -> int:
     parser.add_argument("--largeur", type=int, default=512,
                         help="largeur de l'image en pixels (defaut : 512)")
     parser.add_argument("--hauteur", type=int, default=None,
-                        help="hauteur ; par defaut, celle de la largeur")
+                        help="hauteur ; par defaut, la proportion de la marque")
     parser.add_argument("--sortie", default="logo.png",
                         help="fichier PNG a ecrire")
     parser.add_argument("--fond", default=None,
@@ -78,7 +78,7 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
 
     hauteur = args.hauteur or int(round(args.largeur * RATIO))
-    symbole = logo.Star(args.largeur, height=hauteur)
+    symbole = logo.Mark(args.largeur, height=hauteur)
     lignes = _lignes(symbole.frame(0), args.largeur, hauteur)
     if args.fond:
         lignes = _sur_fond(lignes, args.largeur, palette._rgb(args.fond))

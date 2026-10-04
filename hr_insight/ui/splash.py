@@ -38,9 +38,10 @@ class Splash(tk.Toplevel):
     """Fenetre sans cadre, centree, le temps du demarrage."""
 
     WIDTH, HEIGHT = 520, 282
-    #: Cadre du symbole. Petit, et pose a cote du nom plutot qu'au-dessus :
-    #: c'est le nom qu'on doit lire, la marque ne fait que l'accompagner.
-    LOGO = 34
+    #: Largeur du symbole ; sa hauteur suit la proportion de la marque.
+    #: Petit, et pose a cote du nom plutot qu'au-dessus : c'est le nom
+    #: qu'on doit lire, la marque ne fait que l'accompagner.
+    LOGO = 46
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300
@@ -71,7 +72,7 @@ class Splash(tk.Toplevel):
 
         # Le symbole ne suit pas le theme : une marque qui change de
         # couleur avec un reglage d'affichage n'est plus une marque.
-        self.symbole = logo.Star(self.LOGO, self.FRAMES)
+        self.symbole = logo.Mark(self.LOGO, self.FRAMES)
         self._images: List[tk.PhotoImage] = []
         self._frame = 0
         self._next_ms = 0.0

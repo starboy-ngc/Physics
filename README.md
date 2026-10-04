@@ -28,8 +28,8 @@ identifier, molette pour zoomer, clic sur la légende pour isoler une
 population.
 
 L'ouverture affiche un **écran d'accueil** — le symbole de l'outil, une
-étoile calculée à la formule plutôt que livrée en fichier image, et l'étape
-de démarrage en cours.
+marque calculée à la formule plutôt que livrée en fichier image, et
+l'étape de démarrage en cours.
 
 L'analyse tourne sur un fil séparé et **annonce son avancement étape par
 étape** — lecture du fichier, normalisation, indicateurs, segments — que la
