@@ -22,9 +22,9 @@ from .axes import nice_ticks
 from . import palette
 from . import reporting
 from ..io import restrict_to_owner
-from .reporting import (format_money, format_number, format_percent,
-                        format_years,
-                        histogram_svg, scatter_svg)
+from .reporting import (boxplot_svg, format_money, format_number,
+                        format_percent, format_years, histogram_svg,
+                        pyramid_svg, scatter_svg)
 
 @dataclass
 class Block:
@@ -121,31 +121,75 @@ def _cover(analysis: Dict[str, Any]) -> Slide:
     )
 
 
-def _structure_rows(population: Dict[str, Any]) -> List[List[str]]:
-    """Structure d'age et d'anciennete dans un seul tableau.
+def _median_gap_rows(salary: Dict[str, Any], currency: str) -> List[List[str]]:
+    """Dispersion de base : les quatre bornes, et leur ecart a la mediane.
 
-    Les deux series sont prefixees, ce qui evite deux blocs distincts et
-    libere une colonne pour le graphique.
+    Les bornes et l'ecart tiennent dans le meme tableau parce qu'ils se
+    lisent ensemble : « Q1 a 31 500 EUR » ne dit rien sans la mediane, et
+    « Q1 a 12 % sous la mediane » ne dit rien sans le montant. Les deux
+    colonnes cote a cote evitent au lecteur de faire la division.
+
+    Les ratios experts (Q3/Q1, P90/P10, coefficient de variation) n'y sont
+    pas : c'est la synthese, pas le dossier d'analyse. Ils restent dans la
+    vue detaillee et dans le classeur.
     """
+    dispersion = salary.get("dispersion") or {}
     rows: List[List[str]] = []
-    for prefix, key in (("Âge", "age_bands"), ("Anc.", "tenure_bands")):
-        for row in population.get(key) or []:
-            rows.append([f'{prefix} {row["label"]}', str(row["count"]),
-                         format_percent(row["share"])])
+    for libelle, cle, ecart in (("P10", "p10", "p10_to_median"),
+                                ("Q1 (P25)", "p25", "q1_to_median"),
+                                ("Médiane", "median", None),
+                                ("Q3 (P75)", "p75", "q3_to_median"),
+                                ("P90", "p90", "p90_to_median")):
+        valeur = salary.get(cle)
+        if valeur is None:
+            continue
+        part = None if ecart is None else dispersion.get(ecart)
+        rows.append([libelle, format_money(valeur, currency),
+                     "—" if part is None else _signed_percent(part)])
+    return rows
+
+
+def _signed_percent(fraction: float) -> str:
+    """Un ecart relatif, signe. Le signe est l'information : sans lui, on
+    ne sait pas de quel cote de la mediane se trouve la borne."""
+    texte = format_percent(abs(fraction) * 100, digits=0)
+    return texte if fraction == 0 else f'{"+" if fraction > 0 else "−"}{texte}'
+
+
+def _csp_rows(population: Dict[str, Any]) -> List[List[str]]:
+    """Repartition par CSP, la plus nombreuse d'abord.
+
+    Au-dela du nombre de modalites declare en configuration, la queue se
+    regroupe : une synthese d'une page n'a pas la hauteur de quinze
+    lignes, et les plus petites parts n'apprennent rien qu'un « autres »
+    ne dise aussi bien. Le seuil est celui que le moteur publie, donc
+    celui du camembert a l'ecran — le meme « Autres » des deux cotes.
+    """
+    limite = int(population.get("csp_max_slices") or 6)
+    parts = sorted(population.get("csp_split") or [],
+                   key=lambda item: -item["count"])
+    if not parts:
+        return []
+    retenues, reste = parts[:limite], parts[limite:]
+    rows = [[item["label"], str(item["count"]), format_percent(item["share"])]
+            for item in retenues]
+    if reste:
+        effectif = sum(item["count"] for item in reste)
+        rows.append([f"Autres ({len(reste)})", str(effectif),
+                     format_percent(sum(item["share"] for item in reste))])
     return rows
 
 
 def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
-    """Fiche standard : une seule page paysage.
+    """Synthese simplifiee : une seule page paysage.
 
-    Composition : un bandeau d'indicateurs, puis trois colonnes — niveaux de
-    remuneration, structure de la population, et nuage anciennete x
-    remuneration. Le nuage occupe une colonne plutot qu'une bande : il a
-    besoin de hauteur pour que la dispersion verticale se lise.
+    Composition demandee : les effectifs et les moyennes d'age et
+    d'anciennete en bandeau, puis les deux pyramides et la repartition par
+    CSP, puis la dispersion de base a cote de sa boite a moustaches.
 
-    Les ratios de dispersion (Q3/Q1, P90/P10) n'y figurent pas : ils demandent
-    une lecture experte et trouvent leur place dans le jeu de slides complet
-    et dans l'export Excel.
+    Pas de nuage de points ici : il demande de la hauteur pour que la
+    dispersion verticale se lise, et la page n'en a plus. Il reste dans la
+    vue detaillee, ou il a sa propre planche.
     """
     salary = analysis.get("salary", {})
     population = analysis.get("population", {})
@@ -153,36 +197,50 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     manifest = analysis.get("manifest", {})
 
     blocks: List[Block] = [
-        _kpi_block(
-            [["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
-             ["Masse salariale", format_money(salary.get("payroll"), currency)],
-             ["Salaire moyen", format_money(salary.get("mean"), currency)],
-             ["Salaire médian", format_money(salary.get("median"), currency)],
-             ["Âge médian", format_years(population.get("age_median"))],
-             ["Ancienneté médiane",
-              format_years(population.get("tenure_median"))]]
-        ),
-        _table_block(["Percentile", "Valeur"], _percentile_rows(salary, currency),
-                     title="Niveaux de rémunération", width="third", compact=True),
-        _table_block(["Structure", "Effectif", "Part"], _structure_rows(population),
-                     title="Structure de la population", width="third", compact=True),
+        _kpi_block([
+            ["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
+            ["Âge moyen", format_years(population.get("age_mean"))],
+            ["Âge médian", format_years(population.get("age_median"))],
+            ["Ancienneté moyenne", format_years(population.get("tenure_mean"))],
+            ["Ancienneté médiane",
+             format_years(population.get("tenure_median"))],
+            ["Salaire médian", format_money(salary.get("median"), currency)],
+        ], compact=True),
     ]
 
-    scatter = analysis.get("scatter", {})
-    distribution = analysis.get("distribution", {})
-    if scatter.get("available"):
+    # Les deux pyramides et la CSP, sur une rangee de trois. Une pyramide
+    # dont aucune tranche n'est ventilee par sexe ne se dessine pas : le
+    # trace se retire de lui-meme et la rangee se recompose.
+    for cle, titre in (("age_bands", "Pyramide des âges"),
+                       ("tenure_bands", "Pyramide des anciennetés")):
+        rangs = population.get(cle) or []
+        if not any(row.get("female") or row.get("male") for row in rangs):
+            continue
         blocks.append(Block(
-            "chart", {"type": "scatter", "dataset": scatter, "height": 345},
-            title=_scatter_title(analysis), width="third"))
-    elif distribution.get("available"):
-        # Repli : sous le seuil d'effectif, le nuage est desactive mais la
-        # distribution reste publiable.
+            "chart", {"type": "pyramid", "rows": rangs, "label": titre},
+            title=titre, width="third"))
+    csp = _csp_rows(population)
+    if csp:
+        blocks.append(_table_block(
+            [population.get("csp_label") or "CSP", "Effectif", "Part"], csp,
+            title=f'Répartition par {population.get("csp_label") or "CSP"}',
+            width="third", compact=True))
+
+    # La dispersion et sa boite, cote a cote : le tableau donne les
+    # montants, le dessin donne la forme.
+    dispersion_rows = _median_gap_rows(salary, currency)
+    if dispersion_rows:
+        blocks.append(_table_block(
+            ["Niveau", "Valeur", "Écart à la médiane"], dispersion_rows,
+            title="Dispersion", width="half", compact=True))
+    # La boite se pose a sa propre condition et non a celle du tableau :
+    # celui-ci se contente de la mediane, la boite a besoin de ses cinq
+    # reperes. Posee sans eux, elle laissait une colonne titree et vide.
+    if all(salary.get(cle) is not None
+           for cle in ("p10", "p25", "median", "p75", "p90")):
         blocks.append(Block(
-            "chart", {"type": "histogram", "bins": distribution.get("bins", []),
-                      "height": 345},
-            title="Distribution des rémunérations", width="third"))
-    elif scatter.get("warning"):
-        blocks.append(Block("note", scatter["warning"], width="third"))
+            "chart", {"type": "boxplot", "salary": salary},
+            title="Boîte à moustaches", width="half"))
 
     if salary.get("warning"):
         blocks.append(Block("note", salary["warning"]))
@@ -271,6 +329,14 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             _table_block(["Indicateur", "Valeur"], _dispersion_rows(salary, currency),
                          title="Dispersion", width="half"),
         ]))
+        # La meme dispersion, en image, sous les deux tableaux : les cinq
+        # reperes chiffres juste au-dessus prennent une forme, et la page
+        # ne se termine plus sur une demi-hauteur vide.
+        if all(salary.get(cle) is not None
+               for cle in ("p10", "p25", "median", "p75", "p90")):
+            slides[-1].blocks.append(Block(
+                "chart", {"type": "boxplot", "salary": salary},
+                title="Boîte à moustaches", width="full"))
 
     # Distribution
     distribution = analysis.get("distribution", {})
@@ -452,7 +518,8 @@ def _variables() -> str:
     """Les couleurs du theme, en variables CSS."""
     pairs = (
         ("ink", ACTIVE.ink), ("muted", ACTIVE.muted), ("faint", ACTIVE.faint),
-        ("line", ACTIVE.line), ("grid", ACTIVE.grid), ("panel", ACTIVE.panel),
+        ("line", ACTIVE.line), ("line-strong", ACTIVE.line_strong),
+        ("grid", ACTIVE.grid), ("panel", ACTIVE.panel),
         ("bg", ACTIVE.canvas), ("accent", ACTIVE.accent),
         ("accent-deep", ACTIVE.accent_deep),
         # Le fond de la planche : un gris a peine plus dense que les pages,
@@ -607,6 +674,17 @@ def _html_escape(value: Any) -> str:
     return _html.escape("" if value is None else str(value), quote=True)
 
 
+#: Hauteur de trace par defaut, par type de graphique et par largeur de
+#: bloc. Un nuage a besoin de hauteur pour montrer sa dispersion verticale ;
+#: une boite a moustaches est horizontale et n'en tire rien.
+_CHART_HEIGHTS = {
+    "histogram": {"full": 330, "half": 260, "third": 200},
+    "scatter": {"full": 430, "half": 300, "third": 220},
+    "pyramid": {"full": 200, "half": 180, "third": 165},
+    "boxplot": {"full": 150, "half": 150, "third": 145},
+}
+
+
 def _render_block(block: Block, currency: str) -> str:
     title = (f'<div class="block-title">{_html_escape(block.title)}</div>'
              if block.title else "")
@@ -634,13 +712,20 @@ def _render_block(block: Block, currency: str) -> str:
         # (7 px reduits de moitie deviennent illisibles) : le SVG est produit
         # a la largeur reelle de son conteneur.
         canvas = {"full": 1160, "half": 560, "third": 365}[block.width]
-        default = {"full": 330, "half": 260, "third": 200}[block.width]
-        height = spec.get("height", default if spec["type"] == "histogram"
-                          else {"full": 430, "half": 300, "third": 220}[block.width])
+        height = spec.get("height") or _CHART_HEIGHTS.get(
+            spec["type"], _CHART_HEIGHTS["scatter"])[block.width]
         if spec["type"] == "histogram":
             svg = histogram_svg(spec["bins"], currency, width=canvas, height=height)
+        elif spec["type"] == "pyramid":
+            svg = pyramid_svg(spec["rows"], width=canvas, height=height,
+                              label=spec.get("label", ""))
+        elif spec["type"] == "boxplot":
+            svg = boxplot_svg(spec["salary"], currency, width=canvas,
+                              height=height)
         else:
             svg = scatter_svg(spec["dataset"], currency, width=canvas, height=height)
+        if not svg:
+            return ""
         # `chart-fit` borne le graphique a la place restante : une hauteur mal
         # estimee ne peut plus deborder du bas de la page.
         return f'<div class="{block.width} chart-fit">{title}{svg}</div>'
@@ -731,13 +816,16 @@ def _rgb(hex_color: str) -> tuple:
 # relus par les fonctions de trace. `_publish_pdf_colours()` les recalcule
 # quand le theme change — c'est le pendant du bloc `:root` du HTML.
 _INK = _MUTED = _ACCENT = _LINE = _PANEL = _WARN = _WARN_BG = (0.0, 0.0, 0.0)
+_FEMALE = _MALE = (0.0, 0.0, 0.0)
 _WHITE = (1.0, 1.0, 1.0)
 _PDF_PALETTE: List[tuple] = []
 
 
 def _publish_pdf_colours() -> None:
     global _INK, _MUTED, _ACCENT, _LINE, _PANEL, _WARN, _WARN_BG, _PDF_PALETTE
+    global _FEMALE, _MALE
     _INK, _MUTED = _rgb(ACTIVE.ink), _rgb(ACTIVE.muted)
+    _FEMALE, _MALE = _rgb(ACTIVE.female), _rgb(ACTIVE.male)
     _ACCENT, _LINE = _rgb(ACTIVE.accent), _rgb(ACTIVE.line)
     _PANEL = _rgb(ACTIVE.panel)
     _WARN, _WARN_BG = _rgb(ACTIVE.warn), _rgb(ACTIVE.warn_soft)
@@ -895,6 +983,135 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
     return height
 
 
+#: Hauteur de trace par defaut dans le PDF, par type et par largeur. Les
+#: points du PDF ne sont pas les pixels du HTML : les memes valeurs y
+#: donneraient un nuage qui depasse de la page.
+_PDF_CHART_HEIGHTS = {
+    "histogram": {"full": 420, "half": 250, "third": 200},
+    "scatter": {"full": 420, "half": 250, "third": 200},
+    "pyramid": {"full": 240, "half": 220, "third": 200},
+    "boxplot": {"full": 210, "half": 200, "third": 190},
+}
+
+
+def _draw_pyramid(page, rows, x, y, width, height, label="") -> float:
+    """Pyramide femmes / hommes. Pendant PDF de `pyramid_svg`."""
+    rows = [row for row in (rows or []) if row.get("count")]
+    if not rows:
+        return 0.0
+    gouttiere, bout = 62.0, 24.0
+    aile = (width - gouttiere - 2 * bout - 8) / 2
+    if aile <= 8:
+        return 0.0
+    entete = 12.0 if label else 0.0
+    ligne = max((height - entete) / len(rows), 7.0)
+    barre = min(ligne - 2.0, 11.0)
+    sommet = max(max(row.get("female", 0), row.get("male", 0))
+                 for row in rows) or 1
+    centre = x + gouttiere + bout + aile + 4
+    if label:
+        page.text(x + gouttiere, y - 8, "Femmes", size=6.5, color=_FEMALE)
+        page.text(centre + 4, y - 8, "Hommes", size=6.5, color=_MALE)
+    haut = y - entete
+    for index, row in enumerate(rows):
+        milieu = haut - index * ligne - ligne / 2
+        page.text(x, milieu - 2.2, str(row.get("label", "")), size=6.5,
+                  color=_MUTED, max_width=gouttiere - 3)
+        for cle, couleur, gauche in (("female", _FEMALE, True),
+                                     ("male", _MALE, False)):
+            valeur = int(row.get(cle, 0) or 0)
+            if not valeur:
+                continue
+            longueur = max(aile * valeur / sommet, 0.6)
+            if gauche:
+                page.rect(centre - 4 - longueur, milieu - barre / 2, longueur,
+                          barre, fill=couleur)
+                page.text(centre - 7 - longueur, milieu - 2.2, str(valeur),
+                          size=6.5, color=_INK, align="right")
+            else:
+                page.rect(centre + 4, milieu - barre / 2, longueur, barre,
+                          fill=couleur)
+                page.text(centre + 7 + longueur, milieu - 2.2, str(valeur),
+                          size=6.5, color=_INK)
+    page.line(centre, haut, centre, haut - len(rows) * ligne, color=_LINE,
+              width=0.4)
+    return height
+
+
+def _draw_boxplot(page, salary, currency, x, y, width, height) -> float:
+    """Boite a moustaches P10 - Q1 - mediane - Q3 - P90.
+
+    Pendant PDF de `boxplot_svg` : meme echelle, meme regle de placement
+    des etiquettes. Les deux formats du meme document ne doivent pas
+    raconter deux dispersions differentes.
+    """
+    bornes = {cle: salary.get(cle)
+              for cle in ("min", "p10", "p25", "median", "p75", "p90", "max")}
+    if any(bornes[cle] is None
+           for cle in ("p10", "p25", "median", "p75", "p90")):
+        return 0.0
+    bas, haut = bornes["p10"], bornes["p90"]
+    if haut <= bas:
+        marge = abs(haut) * 0.1 or 1.0
+        bas, haut = bas - marge, haut + marge
+    cote = 26.0
+    plot = width - 2 * cote
+    if plot <= 20:
+        return 0.0
+    etendue = haut - bas
+
+    def to_x(valeur: float) -> float:
+        return x + cote + (valeur - bas) / etendue * plot
+
+    legende_h, etiquette_h = 30.0, 22.0
+    hauteur_boite = min(max(height - legende_h - 2 * etiquette_h - 4, 16.0), 40.0)
+    # Le trace s'accroche au haut de la bande et rend la hauteur qu'il a
+    # reellement prise. Cale sur le bas, il laissait entre son titre et
+    # lui un blanc de la taille de ce qu'il n'avait pas consomme.
+    height = legende_h + 2 * etiquette_h + hauteur_boite
+    pied = y - height
+    axe = pied + legende_h
+    base = axe + etiquette_h
+    milieu = base + hauteur_boite / 2
+    x10, x25 = to_x(bornes["p10"]), to_x(bornes["p25"])
+    x50, x75 = to_x(bornes["median"]), to_x(bornes["p75"])
+    x90 = to_x(bornes["p90"])
+    page.line(x10, milieu, x25, milieu, color=_MUTED, width=0.6)
+    page.line(x75, milieu, x90, milieu, color=_MUTED, width=0.6)
+    for borne in (x10, x90):
+        page.line(borne, base + 4, borne, base + hauteur_boite - 4,
+                  color=_MUTED, width=0.6)
+    page.rect(x25, base, max(x75 - x25, 0.6), hauteur_boite, fill=_PANEL)
+    page.rect(x25, base, max(x75 - x25, 0.6), 0.6, fill=_ACCENT)
+    page.rect(x25, base + hauteur_boite, max(x75 - x25, 0.6), 0.6, fill=_ACCENT)
+    page.line(x50, base, x50, base + hauteur_boite, color=_ACCENT, width=1.6)
+    reperes = (("P10", x10, bornes["p10"]), ("Q1", x25, bornes["p25"]),
+               ("Médiane", x50, bornes["median"]), ("Q3", x75, bornes["p75"]),
+               ("P90", x90, bornes["p90"]))
+    for (nom, abscisse, valeur), ligne in zip(
+            reperes, reporting._mark_rows([p for _, p, _ in reperes])):
+        if ligne == 0:
+            y_nom, y_valeur = base + hauteur_boite + 12, base + hauteur_boite + 3
+        else:
+            y_nom, y_valeur = base - 15, base - 7
+        page.text(abscisse, y_nom, nom, size=6, color=_MUTED, align="center")
+        page.text(abscisse, y_valeur, format_money(valeur, currency),
+                  size=6.5, color=_INK, align="center")
+    page.line(x, axe, x + width, axe, color=_LINE, width=0.4)
+    extremes = []
+    if bornes["min"] is not None:
+        extremes.append(f'minimum {format_money(bornes["min"], currency)}')
+    if bornes["max"] is not None:
+        extremes.append(f'maximum {format_money(bornes["max"], currency)}')
+    legende = " · ".join(extremes)
+    if legende:
+        page.text(x, axe - 10, legende, size=6.5, color=_MUTED, max_width=width)
+    page.text(x, axe - 19, "Moustaches aux déciles P10 et P90 — la boîte va "
+                           "du premier au troisième quartile",
+              size=6, color=_MUTED, max_width=width)
+    return height
+
+
 def _draw_legend(page, dataset, x, y, width) -> float:
     groups = dataset.get("groups") or []
     if not groups or len(groups) > 14:
@@ -994,12 +1211,21 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             spec = block.payload
             # Un graphique seul sur sa page occupe la hauteur disponible ;
             # place a cote d'un tableau, il reste dans une bande raisonnable.
-            cap = spec.get("height") or {"full": 420, "half": 250,
-                                         "third": 200}[block.width]
-            height = max(min(room - 8, cap), 120)
+            cap = spec.get("height") or _PDF_CHART_HEIGHTS.get(
+                spec["type"], _PDF_CHART_HEIGHTS["scatter"])[block.width]
+            # Un plancher unique rabotait la boite a moustaches, qui est
+            # horizontale et tient dans moins de place qu'un nuage.
+            height = max(min(room - 8, cap), min(cap, 120))
             if spec["type"] == "histogram":
                 return _draw_histogram(page, spec["bins"], currency, left, top,
                                        block_width, height)
+            if spec["type"] == "pyramid":
+                return _draw_pyramid(page, spec["rows"], left, top,
+                                     block_width, height,
+                                     label=spec.get("label", ""))
+            if spec["type"] == "boxplot":
+                return _draw_boxplot(page, spec["salary"], currency, left, top,
+                                     block_width, height)
             return _draw_scatter(page, spec["dataset"], currency, left, top,
                                  block_width, height)
         if block.kind == "legend":

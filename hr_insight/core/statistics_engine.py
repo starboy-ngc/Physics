@@ -145,13 +145,23 @@ def dispersion(stats: Dict[str, Optional[float]]) -> Dict[str, Optional[float]]:
     mean_value, median_value = stats.get("mean"), stats.get("median")
     std = stats.get("std_dev")
     interquartile = (q3 - q1) if (q1 is not None and q3 is not None) else None
-    return {
+    result = {
         "interquartile_range": interquartile,
         "q3_over_q1": ratio(q3, q1),
         "p90_over_p10": ratio(p90, p10),
         "mean_over_median": ratio(mean_value, median_value),
         "coefficient_of_variation": ratio(std, mean_value),
     }
+    # L'ecart autour de la mediane : de combien chaque borne s'en eloigne,
+    # en part de la mediane. C'est la lecture que demande une synthese —
+    # « le premier quartile est 18 % sous la mediane » se comprend sans
+    # connaitre l'echelle des salaires, ce que « Q3 / Q1 = 1,42 » ne
+    # permet pas. Signe conserve : negatif en dessous, positif au-dessus.
+    for nom, borne in (("p10", p10), ("q1", q1), ("q3", q3), ("p90", p90)):
+        result[f"{nom}_to_median"] = (
+            None if borne is None or not median_value
+            else (borne - median_value) / median_value)
+    return result
 
 
 def histogram(

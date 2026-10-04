@@ -104,6 +104,11 @@ def _rows_salary(salary: Dict[str, Any]) -> List[List[Any]]:
             ("Moyenne / Médiane", "mean_over_median", "B{mean}/B{median}"),
             ("Coefficient de variation", "coefficient_of_variation",
              "B{std_dev}/B{mean}"),
+            # L'ecart de chaque borne a la mediane, en part de celle-ci.
+            ("P10 / médiane - 1", "p10_to_median", "B{p10}/B{median}-1"),
+            ("Q1 / médiane - 1", "q1_to_median", "B{p25}/B{median}-1"),
+            ("Q3 / médiane - 1", "q3_to_median", "B{p75}/B{median}-1"),
+            ("P90 / médiane - 1", "p90_to_median", "B{p90}/B{median}-1"),
         ):
             rows.append([label, _derived(expression, ligne,
                                          dispersion.get(key))])
@@ -628,6 +633,18 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
              f"{ledger.average(salaire)}/{ledger.median(salaire)}"),
             ("Coefficient de variation", "coefficient_of_variation",
              f"{ledger.deviation(salaire)}/{ledger.average(salaire)}"),
+            ("P10 / médiane - 1", "p10_to_median",
+             f"{ledger.percentile(salaire, 10)}/"
+             f"{ledger.median(salaire)}-1"),
+            ("Q1 / médiane - 1", "q1_to_median",
+             f"{ledger.percentile(salaire, 25)}/"
+             f"{ledger.median(salaire)}-1"),
+            ("Q3 / médiane - 1", "q3_to_median",
+             f"{ledger.percentile(salaire, 75)}/"
+             f"{ledger.median(salaire)}-1"),
+            ("P90 / médiane - 1", "p90_to_median",
+             f"{ledger.percentile(salaire, 90)}/"
+             f"{ledger.median(salaire)}-1"),
         ):
             if key in dispersion:
                 poser(label, dispersion.get(key), expression)
@@ -1104,11 +1121,12 @@ def build_sheets(
 ) -> List[Tuple[str, Sequence[Sequence[Any]]]]:
     """Compose les onglets du classeur d'export.
 
-    Les onglets de resultat viennent d'abord ; le dossier de verification
-    vient ensuite, dans l'ordre de la chaine : le fichier importe, ce que le
-    mapping en a lu, les salaries retenus, puis les controles qui refont
-    chaque chiffre a partir d'eux. On peut donc descendre le classeur de
-    gauche a droite comme on remonte un calcul.
+    Les onglets de resultat viennent d'abord, puis les formules et les
+    controles qui refont chaque chiffre : tout ce qui calcule tient dans la
+    premiere moitie du classeur. La matiere premiere ferme la marche — le
+    fichier importe, ce que le mapping en a lu, les salaries retenus. On
+    ouvre donc le classeur sur des resultats, et on descend vers les
+    valeurs quand un resultat surprend.
 
     Ce dossier ne parait que si les donnees individuelles sont exportees :
     un controle se fait sur des valeurs, et les valeurs sont nominatives.
@@ -1140,21 +1158,28 @@ def build_sheets(
     if not config.get("export_parameters.include_individual_data", False):
         return sheets
 
+    # La matiere premiere — fichier importe, colonnes lues, donnees
+    # individuelles — se range apres les controles et non avant. Les
+    # onglets de calcul sont ceux qu'on ouvre ; les trois autres sont ceux
+    # qu'on consulte quand un calcul surprend. Ils restent dans l'ordre de
+    # la chaine entre eux, et les formules de controle les citent par leur
+    # nom d'onglet : la place dans le classeur ne change aucun calcul.
+    matiere: List[Tuple[str, Sequence[Sequence[Any]]]] = []
     if table is not None and config.get(
             "export_parameters.include_source_file", False):
-        sheets.append(("Fichier importé", _rows_source(table, config)))
+        matiere.append(("Fichier importé", _rows_source(table, config)))
         if mapping is not None:
-            sheets.append(("Colonnes lues", _rows_columns(mapping, config)))
+            matiere.append(("Colonnes lues", _rows_columns(mapping, config)))
     limite = config.number("export_parameters.control_max_rows",
                            CONTROL_MAX_ROWS, minimum=0, integer=True)
     detaille = not limite or len(population) <= limite
     individual = _rows_individual(population, config,
                                   derived_as_formulas=detaille)
-    sheets.append(("Données individuelles", individual))
+    matiere.append(("Données individuelles", individual))
     ledger = fx.Ledger("Données individuelles", individual[0],
                        len(individual) - 1)
     if ledger.empty:
-        return sheets
+        return sheets + matiere
     sheets.append(("Contrôle", _rows_control(ledger, analysis, config)))
     if not detaille:
         # Le controle d'ensemble reste : une centaine de formules sur une
@@ -1168,13 +1193,13 @@ def build_sheets(
              "chaque formule y relit toute la population, et le tableur "
              "mettrait plusieurs minutes à ouvrir le classeur. Le contrôle "
              "d'ensemble, lui, reste posé dans l'onglet « Contrôle »."]]))
-        return sheets
+        return sheets + matiere
     sheets.append(("Contrôle segments",
                    _rows_control_segments(ledger, analysis, config)))
     equity_rows = _rows_control_equity(ledger, analysis, config)
     if len(equity_rows) > 1:
         sheets.append(("Contrôle Pay Transparency", equity_rows))
-    return sheets
+    return sheets + matiere
 
 
 def _rows_method(analysis: Dict[str, Any],

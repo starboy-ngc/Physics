@@ -39,6 +39,7 @@ def make_row(
     salary: Optional[float] = 40000,
     business_unit: str = "France",
     grade: str = "G4",
+    status: str = "Cadre",
     gender: str = "F",
     age: float = 40,
     tenure: float = 5,
@@ -56,7 +57,7 @@ def make_row(
     return [
         employee_id if employee_id is not None else f"E{index:05d}",
         f"NOM{index}", f"PRENOM{index}", gender, birth, hire, leave_date,
-        business_unit, "France", grade, "Cadre",
+        business_unit, "France", grade, status,
         "" if salary is None else salary,
     ]
 

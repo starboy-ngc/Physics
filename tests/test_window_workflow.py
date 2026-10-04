@@ -274,7 +274,7 @@ class TestProducingDocuments(WindowCase):
         with Dialogs(directory=out) as dialogs:
             self.app.export_documents()
         names = sorted(os.path.basename(p) for p in glob.glob(f"{out}/*"))
-        for expected in ("restitution", "synthese", "slides", "analyse",
+        for expected in ("restitution", "synthese", "vue-detaillee", "analyse",
                          "manifeste"):
             self.assertTrue(any(n.startswith(expected) for n in names),
                             f"{expected} absent de {names}")

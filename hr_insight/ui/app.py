@@ -788,8 +788,8 @@ class Application(tk.Tk):
         self.outputs_frame = tk.Frame(steps, background=theme.GROUND)
         self.outputs_frame.pack(fill="x", pady=(0, 8))
         for key, label, default in (("rapport", "Rapport détaillé (HTML)", True),
-                                    ("synthese", "Fiche standard (PDF)", True),
-                                    ("slides", "Jeu de slides (PDF)", True),
+                                    ("synthese", "Synthèse 1 page (PDF)", True),
+                                    ("slides", "Vue détaillée (PDF)", True),
                                     ("excel", "Classeur Excel", True)):
             var = tk.BooleanVar(value=default)
             self.output_vars[key] = var
@@ -2196,9 +2196,7 @@ class Application(tk.Tk):
         chart = PieChart(cell)
         chart.pack(fill="x")
         chart.set_parts(parts, population.get("headcount", 0),
-                        maximum=self.configuration.number(
-                            "chart_parameters.csp_max_slices", 6,
-                            minimum=2, integer=True))
+                        maximum=population.get("csp_max_slices", 6))
 
     def _panel_head(self, parent, title: str, extra=None,
                     key: Optional[str] = None) -> tk.Frame:
@@ -3477,9 +3475,9 @@ class Application(tk.Tk):
             if self.output_vars["slides"].get():
                 deck = build_deck(payload)
                 produced.append(write_slides_html(
-                    deck, payload, os.path.join(directory, f"slides-{stamp}.html")))
+                    deck, payload, os.path.join(directory, f"vue-detaillee-{stamp}.html")))
                 produced.append(write_slides_pdf(
-                    deck, payload, os.path.join(directory, f"slides-{stamp}.pdf")))
+                    deck, payload, os.path.join(directory, f"vue-detaillee-{stamp}.pdf")))
             if self.output_vars["excel"].get():
                 produced.append(export_excel(
                     payload, self.result.filtered, self.result.config,

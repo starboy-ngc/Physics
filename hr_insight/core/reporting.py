@@ -305,6 +305,186 @@ def scatter_svg(dataset: Dict[str, Any], currency: str,
     return "".join(parts)
 
 
+def pyramid_svg(rows: Sequence[Dict[str, Any]], width: int = 360,
+                height: int = 240, label: str = "") -> str:
+    """Pyramide femmes / hommes : deux ailes se rejoignant au centre.
+
+    Les tranches se lisent a gauche et les effectifs en bout d'aile, comme
+    a l'ecran : une pyramide dont les nombres sont au centre fait lire
+    chaque ligne deux fois, une fois pour la tranche et une fois pour le
+    chiffre, sans jamais les voir ensemble.
+
+    Les deux ailes partagent la meme echelle, sinon la comparaison qui
+    fait tout l'interet du dessin serait fausse.
+    """
+    rows = [row for row in (rows or []) if row.get("count")]
+    if not rows:
+        return ""
+    gouttiere, bout = 86.0, 34.0
+    aile = (width - gouttiere - 2 * bout - 10) / 2
+    if aile <= 10:
+        return ""
+    haut = 16.0 if label else 4.0
+    ligne = max((height - haut - 6) / len(rows), 9.0)
+    barre = min(ligne - 3.0, 16.0)
+    sommet = max(max(row.get("female", 0), row.get("male", 0))
+                 for row in rows) or 1
+    centre = gouttiere + bout + aile + 5
+    parts = [f'<svg viewBox="0 0 {width} {height}" role="img" '
+             f'aria-label="Pyramide {_e(label) or "des effectifs"}">']
+    if label:
+        parts.append(
+            f'<text x="{gouttiere}" y="10" font-size="9" '
+            f'fill="var(--female)">Femmes</text>'
+            f'<text x="{centre + 5}" y="10" font-size="9" '
+            f'fill="var(--male)">Hommes</text>')
+    for index, row in enumerate(rows):
+        y = haut + index * ligne
+        milieu = y + ligne / 2
+        parts.append(
+            f'<text x="0" y="{milieu + 3:.1f}" font-size="9" '
+            f'fill="var(--muted)">{_e(str(row.get("label", "")))}</text>')
+        for cle, couleur, gauche in (("female", "var(--female)", True),
+                                     ("male", "var(--male)", False)):
+            valeur = int(row.get(cle, 0) or 0)
+            longueur = aile * valeur / sommet
+            if gauche:
+                x = centre - 5 - longueur
+                texte_x, ancrage = centre - 10 - longueur, "end"
+            else:
+                x = centre + 5
+                texte_x, ancrage = centre + 10 + longueur, "start"
+            if valeur:
+                parts.append(
+                    f'<rect x="{x:.1f}" y="{milieu - barre / 2:.1f}" '
+                    f'width="{max(longueur, 1.0):.1f}" height="{barre:.1f}" '
+                    f'fill="{couleur}" opacity="0.88"/>')
+                parts.append(
+                    f'<text x="{texte_x:.1f}" y="{milieu + 3:.1f}" '
+                    f'text-anchor="{ancrage}" font-size="9" '
+                    f'fill="var(--ink)">{valeur}</text>')
+    parts.append(f'<line x1="{centre:.1f}" y1="{haut}" x2="{centre:.1f}" '
+                 f'y2="{haut + len(rows) * ligne:.1f}" stroke="var(--line)"/>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+#: Place qu'il faut a un repere de boite a moustaches pour ne pas marcher
+#: sur son voisin : le montant le plus long, plus un blanc.
+_MARK_ROOM = 64.0
+
+
+def _mark_rows(positions: Sequence[float]) -> List[int]:
+    """Repartit les reperes sur deux lignes, au-dessus et en dessous.
+
+    Tout va au-dessus tant que les montants ne se touchent pas. Des que
+    deux reperes sont trop proches, le second bascule en dessous : les
+    alterner systematiquement ecartait des etiquettes qui tenaient tres
+    bien cote a cote, et faisait lire la boite en zigzag.
+    """
+    rows: List[int] = []
+    derniers = {0: None, 1: None}
+    for x in positions:
+        ligne = 0
+        if derniers[0] is not None and x - derniers[0] < _MARK_ROOM:
+            ligne = 1
+        rows.append(ligne)
+        derniers[ligne] = x
+    return rows
+
+
+def boxplot_svg(salary: Dict[str, Any], currency: str, width: int = 360,
+                height: int = 200) -> str:
+    """Boite a moustaches : P10 - Q1 - mediane - Q3 - P90, bornee min / max.
+
+    Les moustaches s'arretent a P10 et P90 et non au minimum et au maximum :
+    une seule remuneration aberrante etirerait le dessin jusqu'a aplatir la
+    boite, et le lecteur ne verrait plus rien de la dispersion reelle. Les
+    deux extremes restent ecrits sous l'axe, en clair.
+    """
+    bornes = {cle: salary.get(cle)
+              for cle in ("min", "p10", "p25", "median", "p75", "p90", "max")}
+    if any(bornes[cle] is None for cle in ("p10", "p25", "median", "p75", "p90")):
+        return ""
+    # L'echelle s'arrete aux moustaches : c'est la boite qui doit remplir
+    # le dessin. Minimum et maximum sont dits en texte, pas dessines.
+    bas, haut = bornes["p10"], bornes["p90"]
+    if haut <= bas:
+        marge = abs(haut) * 0.1 or 1.0
+        bas, haut = bas - marge, haut + marge
+    cote = 34.0
+    plot = width - 2 * cote
+    if plot <= 20:
+        return ""
+    etendue = haut - bas
+
+    def to_x(valeur: float) -> float:
+        return cote + (valeur - bas) / etendue * plot
+
+    # La page se partage du bas vers le haut : la legende, l'axe, la
+    # rangee basse d'etiquettes, la boite, la rangee haute.
+    legende_h, etiquette_h = 34.0, 26.0
+    axe = height - legende_h
+    hauteur_boite = min(max(height - legende_h - 2 * etiquette_h - 4, 22.0), 58.0)
+    sommet = axe - etiquette_h - hauteur_boite
+    milieu = sommet + hauteur_boite / 2
+    x10, x25 = to_x(bornes["p10"]), to_x(bornes["p25"])
+    x50, x75 = to_x(bornes["median"]), to_x(bornes["p75"])
+    x90 = to_x(bornes["p90"])
+    parts = [f'<svg viewBox="0 0 {width} {height}" role="img" '
+             'aria-label="Boîte à moustaches des rémunérations">']
+    parts.append(f'<line x1="{x10:.1f}" y1="{milieu:.1f}" x2="{x25:.1f}" '
+                 f'y2="{milieu:.1f}" stroke="var(--line-strong)"/>')
+    parts.append(f'<line x1="{x75:.1f}" y1="{milieu:.1f}" x2="{x90:.1f}" '
+                 f'y2="{milieu:.1f}" stroke="var(--line-strong)"/>')
+    for x in (x10, x90):
+        parts.append(f'<line x1="{x:.1f}" y1="{sommet + 5:.1f}" x2="{x:.1f}" '
+                     f'y2="{sommet + hauteur_boite - 5:.1f}" '
+                     'stroke="var(--line-strong)"/>')
+    parts.append(f'<rect x="{x25:.1f}" y="{sommet:.1f}" '
+                 f'width="{max(x75 - x25, 1.0):.1f}" '
+                 f'height="{hauteur_boite:.1f}" fill="var(--accent)" '
+                 'opacity="0.18" stroke="var(--accent)"/>')
+    parts.append(f'<line x1="{x50:.1f}" y1="{sommet:.1f}" x2="{x50:.1f}" '
+                 f'y2="{sommet + hauteur_boite:.1f}" stroke="var(--accent)" '
+                 'stroke-width="2.5"/>')
+    reperes = (("P10", x10, bornes["p10"]), ("Q1", x25, bornes["p25"]),
+               ("Médiane", x50, bornes["median"]), ("Q3", x75, bornes["p75"]),
+               ("P90", x90, bornes["p90"]))
+    lignes = _mark_rows([x for _, x, _ in reperes])
+    for (nom, x, valeur), ligne in zip(reperes, lignes):
+        if ligne == 0:
+            y_nom, y_valeur = sommet - 15, sommet - 5
+        else:
+            y_nom, y_valeur = sommet + hauteur_boite + 12, sommet + hauteur_boite + 22
+        ancrage = "middle"
+        if x < cote + 10:
+            ancrage = "start"
+        elif x > width - cote - 10:
+            ancrage = "end"
+        parts.append(f'<text x="{x:.1f}" y="{y_nom:.1f}" text-anchor="{ancrage}" '
+                     f'font-size="8.5" fill="var(--muted)">{nom}</text>')
+        parts.append(
+            f'<text x="{x:.1f}" y="{y_valeur:.1f}" text-anchor="{ancrage}" '
+            f'font-size="9.5" fill="var(--ink)">'
+            f'{_e(format_money(valeur, currency))}</text>')
+    parts.append(f'<line x1="4" y1="{axe:.1f}" x2="{width - 4}" '
+                 f'y2="{axe:.1f}" stroke="var(--line)"/>')
+    extremes = []
+    if bornes["min"] is not None:
+        extremes.append(f'minimum {format_money(bornes["min"], currency)}')
+    if bornes["max"] is not None:
+        extremes.append(f'maximum {format_money(bornes["max"], currency)}')
+    if extremes:
+        parts.append(f'<text x="4" y="{axe + 14:.1f}" font-size="9" '
+                     f'fill="var(--muted)">{_e(" · ".join(extremes))}</text>')
+    parts.append(f'<text x="4" y="{axe + 25:.1f}" font-size="8.5" '
+                 'fill="var(--faint)">Moustaches aux déciles P10 et P90 — '
+                 'la boîte va du premier au troisième quartile</text>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
 #: Unite ajoutee au titre d'un axe. Un nombre sans unite se lit toujours ;
 #: un montant annonce en annees, non.
 AXIS_UNITS = {"years": " (années)", "ratio": " (ETP)"}

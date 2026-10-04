@@ -306,9 +306,14 @@ class TestResponsiveSlides(unittest.TestCase):
 
 
 class TestSummaryComposition(unittest.TestCase):
-    """La fiche standard porte le nuage de points, pas les ratios de
-    dispersion : ceux-ci demandent une lecture experte et restent dans le jeu
-    de slides complet et dans l'export Excel."""
+    """La synthese simplifiee tient sur une page et ne porte que ce qui a
+    ete demande : effectifs, age et anciennete, les deux pyramides, la
+    repartition par CSP, la dispersion de base et sa boite a moustaches.
+
+    Pas de nuage de points : il demande de la hauteur pour que la
+    dispersion verticale se lise, et la page n'en a plus. Il garde sa
+    propre planche dans la vue detaillee.
+    """
 
     def setUp(self):
         self.directory = tempfile.mkdtemp()
@@ -319,38 +324,66 @@ class TestSummaryComposition(unittest.TestCase):
         return [block.payload["type"] for block in self.summary.blocks
                 if block.kind == "chart"]
 
-    def test_scatter_is_the_chart_of_the_summary(self):
-        self.assertEqual(self._charts(), ["scatter"])
+    def test_the_summary_is_a_single_page(self):
+        self.assertEqual(len(build_summary(self.payload)), 1)
 
-    def test_no_dispersion_ratio_anywhere_on_the_page(self):
+    def test_the_two_pyramids_and_the_boxplot_are_the_charts(self):
+        self.assertEqual(self._charts(), ["pyramid", "pyramid", "boxplot"])
+
+    def test_no_scatter_on_the_summary(self):
+        self.assertNotIn("scatter", self._charts())
+
+    def test_headcount_age_and_tenure_open_the_page(self):
+        bands = [b for b in self.summary.blocks if b.kind == "kpis"]
+        self.assertEqual(len(bands), 1)
+        labels = [item["label"] for item in bands[0].payload["items"]]
+        for attendu in ("Effectif", "Âge moyen", "Âge médian",
+                        "Ancienneté moyenne", "Ancienneté médiane"):
+            self.assertIn(attendu, labels)
+
+    def test_the_csp_split_is_published(self):
+        rendered = render_slides_html([self.summary], self.payload)
+        self.assertIn("Répartition par", rendered)
+
+    def test_the_basic_dispersion_names_its_four_bounds(self):
+        rendered = render_slides_html([self.summary], self.payload)
+        for label in ("P10", "Q1 (P25)", "Q3 (P75)", "P90"):
+            self.assertIn(label, rendered)
+
+    def test_each_bound_carries_its_gap_to_the_median(self):
+        """Le montant seul ne dit pas de combien la borne s'ecarte ; l'ecart
+        seul ne dit pas de quel montant on parle. Les deux vont ensemble."""
+        rendered = render_slides_html([self.summary], self.payload)
+        self.assertIn("Écart à la médiane", rendered)
+        self.assertRegex(rendered, r"[+−]\d+\s*%")
+
+    def test_the_expert_ratios_stay_out_of_the_summary(self):
         rendered = render_slides_html([self.summary], self.payload)
         for label in ("Q3 / Q1", "P90 / P10", "Coefficient de variation"):
             self.assertNotIn(label, rendered)
 
-    def test_percentiles_are_kept(self):
-        rendered = render_slides_html([self.summary], self.payload)
-        self.assertIn("Niveaux de rémunération", rendered)
-        for label in ("P10", "Q1 (P25)", "Médiane (P50)", "Q3 (P75)", "P90"):
-            self.assertIn(label, rendered)
+    def test_a_pyramid_without_any_sex_is_not_drawn(self):
+        """Une pyramide dont aucune tranche n'est ventilee par sexe n'est
+        pas une pyramide : c'est un cadre vide. Elle se retire."""
+        payload = dict(self.payload)
+        population = dict(payload["population"])
+        population["age_bands"] = [
+            dict(row, female=0, male=0) for row in population["age_bands"]]
+        payload["population"] = population
+        charts = [block.payload["type"]
+                  for block in build_summary(payload)[0].blocks
+                  if block.kind == "chart"]
+        self.assertEqual(charts, ["pyramid", "boxplot"])
 
-    def test_population_structure_is_present(self):
-        rendered = render_slides_html([self.summary], self.payload)
-        self.assertIn("Structure de la population", rendered)
-        self.assertIn("Âge 30-39", rendered)
-        self.assertIn("Anc. 2-5 ans", rendered)
-
-    def test_page_holds_one_indicator_band_and_three_columns(self):
-        widths = [block.width for block in self.summary.blocks]
-        self.assertEqual(widths.count("third"), 3)
-        self.assertEqual(widths.count("full"), 1)
-
-    def test_no_second_band_repeating_the_structure_table(self):
-        """Une bande de parts remarquables fermait la page ; elle repetait le
-        tableau de structure place juste au-dessus et se lisait comme un
-        remplissage. La page ne cherche plus a occuper toute sa hauteur."""
-        bands = [b for b in self.summary.blocks if b.kind == "kpis"]
-        self.assertEqual(len(bands), 1)
-        self.assertFalse(bands[0].payload["compact"])
+    def test_the_boxplot_goes_when_the_percentiles_do(self):
+        payload = dict(self.payload)
+        payload["salary"] = {cle: valeur
+                             for cle, valeur in self.payload["salary"].items()
+                             if cle not in ("p10", "p25", "p75", "p90")}
+        charts = [block.payload["type"]
+                  for block in build_summary(payload)[0].blocks
+                  if block.kind == "chart"]
+        self.assertNotIn("boxplot", charts)
 
     def test_coverage_is_announced_only_when_incomplete(self):
         """Une couverture partielle change la lecture de tous les montants :
@@ -361,27 +394,6 @@ class TestSummaryComposition(unittest.TestCase):
         subtitle = build_summary(partial)[0].subtitle
         self.assertIn("82,0 %", subtitle)
         self.assertIn("renseignées", subtitle)
-
-    def test_r_squared_is_not_repeated_in_the_block_title(self):
-        titles = [block.title for block in self.summary.blocks if block.kind == "chart"]
-        self.assertEqual(titles, ["Salaire de base et ancienneté"])
-
-    def test_falls_back_to_the_histogram_when_the_scatter_is_unavailable(self):
-        # Sous le seuil de graphique, le nuage est desactive ; la distribution
-        # peut rester publiable si son propre seuil est atteint.
-        payload = dict(self.payload)
-        payload["scatter"] = {"available": False, "warning": "effectif insuffisant"}
-        charts = [block.payload["type"] for block in build_summary(payload)[0].blocks
-                  if block.kind == "chart"]
-        self.assertEqual(charts, ["histogram"])
-
-    def test_explains_itself_when_no_chart_can_be_published(self):
-        payload = dict(self.payload)
-        payload["scatter"] = {"available": False, "warning": "effectif insuffisant"}
-        payload["distribution"] = {"available": False, "warning": "effectif insuffisant"}
-        notes = [block.payload for block in build_summary(payload)[0].blocks
-                 if block.kind == "note"]
-        self.assertIn("effectif insuffisant", notes)
 
 
 class TestNoRSquaredInDocuments(unittest.TestCase):

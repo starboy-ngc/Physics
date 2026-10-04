@@ -27,7 +27,7 @@ from hr_insight.io.xlsx_writer import Formula
 #: Valeurs qui ne sont pas des indicateurs mais des reglages recopies dans
 #: le resultat. Elles n'ont pas de formule parce qu'elles n'ont pas de
 #: calcul : elles viennent du fichier de configuration.
-REGLAGES = {"threshold"}
+REGLAGES = {"threshold", "csp_max_slices"}
 
 
 def _population(taille=60):

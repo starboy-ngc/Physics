@@ -151,11 +151,11 @@ def command_analyse(args: argparse.Namespace) -> int:
     if requested("slides", "slides_html_enabled"):
         deck = build_deck(result.payload)
         produced.append(write_slides_html(
-            deck, result.payload, os.path.join(output_dir, f"slides-{stamp}.html")
+            deck, result.payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.html")
         ))
         if result.config.get("export_parameters.slides_pdf_enabled", True):
             produced.append(write_slides_pdf(
-                deck, result.payload, os.path.join(output_dir, f"slides-{stamp}.pdf")
+                deck, result.payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.pdf")
             ))
     if requested("excel", "excel_enabled"):
         produced.append(export_excel(

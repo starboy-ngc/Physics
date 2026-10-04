@@ -59,7 +59,11 @@ class HostileFileCase(unittest.TestCase):
                 writer.writerow(list(make_row(
                     index, salary=40000 + index * 500,
                     gender="F" if index % 2 else "H",
-                    business_unit=TRAPS[index % len(TRAPS)]))
+                    business_unit=TRAPS[index % len(TRAPS)],
+                    # La CSP porte aussi un piege : c'est elle que la
+                    # synthese affiche, et un document ne se verifie que
+                    # sur les champs qu'il montre reellement.
+                    status=TRAPS[(index + 5) % len(TRAPS)]))
                     + [TRAPS[(index + 3) % len(TRAPS)]])
         cls.config_dir = os.path.join(cls.directory, "config")
         write_default_configuration(cls.config_dir)

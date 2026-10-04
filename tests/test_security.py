@@ -140,7 +140,8 @@ class TestCommandLineInterfaceStaysAscii(unittest.TestCase):
         import inspect
         from hr_insight import cli
         source = inspect.getsource(cli.command_analyse)
-        for pattern in ("restitution-", "synthese-", "slides-", "analyse-",
+        for pattern in ("restitution-", "synthese-", "vue-detaillee-",
+                        "analyse-",
                         "manifeste-"):
             self.assertIn(pattern, source)
 

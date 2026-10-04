@@ -140,6 +140,25 @@ GLOSSARY: Dict[str, Entry] = {
         "quel que soit le niveau de rémunération.",
         "Écart-type / Moyenne, en pourcentage. Écart-type sur échantillon "
         "(dénominateur n − 1)."),
+    # L'ecart a la mediane : la meme dispersion, dite sans ratio. « Q1 est
+    # 16 % sous la mediane » se comprend sans connaitre l'echelle des
+    # salaires, ce que « Q3 / Q1 = 1,43 » ne permet pas.
+    "p10_to_median": Entry(
+        "De combien le premier décile s'écarte de la médiane, en part de "
+        "celle-ci. Négatif : il lui est inférieur.",
+        "(P10 − Médiane) / Médiane."),
+    "q1_to_median": Entry(
+        "De combien le premier quartile s'écarte de la médiane, en part de "
+        "celle-ci. Négatif : il lui est inférieur.",
+        "(Q1 − Médiane) / Médiane."),
+    "q3_to_median": Entry(
+        "De combien le troisième quartile s'écarte de la médiane, en part "
+        "de celle-ci. Positif : il lui est supérieur.",
+        "(Q3 − Médiane) / Médiane."),
+    "p90_to_median": Entry(
+        "De combien le neuvième décile s'écarte de la médiane, en part de "
+        "celle-ci. Positif : il lui est supérieur.",
+        "(P90 − Médiane) / Médiane."),
     "std_dev": Entry(
         "Écart moyen à la moyenne. Statistique technique, sensible aux "
         "valeurs extrêmes.",

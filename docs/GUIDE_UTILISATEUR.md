@@ -91,17 +91,23 @@ Les fichiers produits dans `resultats/` :
 
 | Fichier | Usage |
 |---|---|
-| `restitution-*.html` | Rapport détaillé, à lire à l'écran |
-| `synthese-*.pdf` / `.html` | **Fiche standard, une page paysage** : indicateurs, percentiles, structure de la population et nuage ancienneté × rémunération |
-| `slides-*.pdf` / `.html` | **Jeu de slides paysage** : pour une présentation |
-| `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres |
+| `restitution-*.html` | **Rapport détaillé**, à lire à l'écran — s'enregistre en PDF par la fonction d'impression du navigateur |
+| `synthese-*.pdf` / `.html` | **Synthèse simplifiée, une seule page paysage** : effectif, âge et ancienneté (moyenne et médiane), pyramide des âges et des anciennetés, répartition par CSP, dispersion de base (P10, Q1, médiane, Q3, P90 et leur écart à la médiane) et boîte à moustaches |
+| `vue-detaillee-*.pdf` / `.html` | **Vue détaillée paysage**, une idée par page : qualité des données, population, rémunération, distribution, nuage de points, analyses par segment, écarts femmes / hommes, méthodologie |
+| `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres. Tout ce qui calcule vient d'abord — résultats, formules, contrôles ; la matière première (fichier importé, colonnes lues, données individuelles) ferme la marche |
 | `manifeste-*.json` | Paramètres utilisés, pour refaire l'analyse à l'identique |
 
-Les PDF sont générés directement par l'outil — pas besoin d'imprimer depuis le
-navigateur. Dans la version HTML des slides, les flèches ← → font défiler les
-pages et les info-bulles restent actives au survol des graphiques.
+La synthèse et la vue détaillée sont produites directement en PDF par l'outil —
+pas besoin d'imprimer depuis le navigateur. Le rapport détaillé, lui, n'existe
+qu'en HTML : pour en faire un PDF, ouvrez-le et utilisez « Imprimer » puis
+« Enregistrer au format PDF ». La feuille de style prévoit l'impression — les
+titres ne se détachent pas de leur section, et aucun tableau ni graphique n'est
+coupé en deux pages.
 
-Les slides s'adaptent à la taille de la fenêtre : sur un écran étroit la page
+Dans la version HTML de la synthèse et de la vue détaillée, les flèches ← → font
+défiler les pages et les info-bulles restent actives au survol des graphiques.
+
+Les pages s'adaptent à la taille de la fenêtre : sur un écran étroit la page
 se réduit proportionnellement, sans jamais imposer de défilement horizontal.
 Le rapport détaillé, lui, se réorganise (les indicateurs passent sur une
 colonne) et reste lisible sur téléphone.

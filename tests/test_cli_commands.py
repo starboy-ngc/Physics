@@ -64,7 +64,7 @@ class TestAnalyse(CommandCase):
                              "--sortie", out])
         self.assertEqual(code, 0)
         names = self.produced(out)
-        for expected in ("restitution", "synthese", "slides", "analyse",
+        for expected in ("restitution", "synthese", "vue-detaillee", "analyse",
                          "manifeste"):
             self.assertTrue(any(name.startswith(expected) for name in names),
                             f"{expected} absent de {names}")

@@ -127,6 +127,12 @@ def calculate_population_metrics(
     result["csp_field"] = champ
     result["csp_label"] = dimension_label(config, champ)
     result["csp_split"] = _distribution_share(population, champ, headcount)
+    # Le nombre de modalites montrees avant regroupement est declare une
+    # fois, et publie ici : la fenetre et les documents le lisent au meme
+    # endroit. Chacun chez soi, ils groupaient a six d'un cote et a huit
+    # de l'autre, et le meme « Autres » ne recouvrait pas les memes gens.
+    result["csp_max_slices"] = config.number(
+        "chart_parameters.csp_max_slices", 6, minimum=2, integer=True)
     result.update(_key_shares(population))
     return result
 
