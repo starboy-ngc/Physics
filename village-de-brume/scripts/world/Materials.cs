@@ -31,10 +31,13 @@ public static class Materials
         if (TextureCache.TryGetValue(cacheKey, out var m))
             return m;
         var image = painter();
+        // Agrandissement (voisin le plus proche) puis mipmaps : motif net, bords adoucis.
+        image.Resize(image.GetWidth() * 4, image.GetHeight() * 4, Image.Interpolation.Nearest);
+        image.GenerateMipmaps();
         m = new StandardMaterial3D
         {
             AlbedoTexture = ImageTexture.CreateFromImage(image),
-            TextureFilter = BaseMaterial3D.TextureFilterEnum.Nearest,
+            TextureFilter = BaseMaterial3D.TextureFilterEnum.LinearWithMipmapsAnisotropic,
             TextureRepeat = true,
             Roughness = 1f,
             Metallic = 0f,
@@ -48,7 +51,7 @@ public static class Materials
 
     public static Image Grass()
     {
-        var img = Image.CreateEmpty(32, 32, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(32, 32, true, Image.Format.Rgba8);
         var a = new Color("6fae4e"); var b = new Color("68a548");
         var mark = new Color("5a9440"); var light = new Color("86c25f");
         for (int ty = 0; ty < 2; ty++)
@@ -67,7 +70,7 @@ public static class Materials
 
     public static Image Dirt()
     {
-        var img = Image.CreateEmpty(32, 32, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(32, 32, true, Image.Format.Rgba8);
         var a = new Color("d2b07a"); var b = new Color("c9a66e"); var edge = new Color("a88752");
         for (int ty = 0; ty < 2; ty++)
             for (int tx = 0; tx < 2; tx++)
@@ -82,7 +85,7 @@ public static class Materials
 
     public static Image Stone()
     {
-        var img = Image.CreateEmpty(32, 32, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(32, 32, true, Image.Format.Rgba8);
         var a = new Color("b9b6aa"); var b = new Color("adaa9e"); var edge = new Color("8a877c");
         for (int ty = 0; ty < 2; ty++)
             for (int tx = 0; tx < 2; tx++)
@@ -97,7 +100,7 @@ public static class Materials
 
     public static Image Planks(Color floor)
     {
-        var img = Image.CreateEmpty(64, 32, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(64, 32, true, Image.Format.Rgba8);
         for (int row = 0; row < 2; row++)
         {
             int oy = row * 16;
@@ -111,7 +114,7 @@ public static class Materials
 
     public static Image Wallpaper(Color wall)
     {
-        var img = Image.CreateEmpty(16, 16, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(16, 16, true, Image.Format.Rgba8);
         img.FillRect(new Rect2I(0, 0, 16, 16), wall);
         img.FillRect(new Rect2I(0, 0, 4, 16), wall.Darkened(0.06f));
         return img;
@@ -119,7 +122,7 @@ public static class Materials
 
     public static Image RoofTiles(Color roof)
     {
-        var img = Image.CreateEmpty(16, 16, false, Image.Format.Rgba8);
+        var img = Image.CreateEmpty(16, 16, true, Image.Format.Rgba8);
         img.FillRect(new Rect2I(0, 0, 16, 16), roof);
         img.FillRect(new Rect2I(0, 0, 16, 1), roof.Darkened(0.3f));
         img.FillRect(new Rect2I(0, 8, 16, 1), roof.Darkened(0.3f));

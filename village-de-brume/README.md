@@ -2,8 +2,9 @@
 
 Petit RPG d'exploration en **2.5D** : décor en volumes 3D simples vu par une
 caméra en perspective inclinée, personnages en sprites 2D tournés vers la
-caméra, rendu interne en 256×192 agrandi en pixels entiers. Ce dossier est un
-projet Godot complet, écrit en **C#**.
+caméra. Rendu lissé à la résolution de la fenêtre (anticrénelage 4x) ; la
+grille de mise en page de l'interface est en 256×192. Ce dossier est un projet
+Godot complet, écrit en **C#**.
 
 Prérequis :
 
@@ -21,8 +22,9 @@ Format visuel (2.5D, façon RPG de console portable) :
   cylindres, sphères) avec des couleurs unies ou de petites textures pixel
   générées en code (`Materials.cs`) ;
 - les personnages sont des `Sprite3D` face caméra dont la planche
-  (4 directions × 3 poses) est générée en code (`CharacterSprites.cs`) ;
-- rendu interne 256×192 (mode d'étirement « viewport ») pour le grain pixel.
+  (4 directions × 3 poses, formes arrondies, 64 px par unité) est générée en
+  code (`CharacterSprites.cs`) ;
+- rendu 3D à la résolution de la fenêtre avec MSAA 4x, textures filtrées.
 Direction artistique originale, aucun asset externe.
 
 Contenu de l'étape 2 :
@@ -38,7 +40,11 @@ Contenu de l'étape 2 :
   `DialogueManager` (autoload, déroule les noeuds), `GameUI` (boîte de
   dialogue, choix navigables avec haut/bas, validation E) ;
 - trois PNJ : Émile (boulangerie), Jeanne (sa maison), Martin (place du village) ;
-- debug (F3) : liste des PNJ et leur zone, état du dialogue.
+- debug (F3) : liste des PNJ et leur zone, état du dialogue ;
+- menu (Échap ou Tab) : met le jeu en pause ; onglets Inventaire (objets,
+  quantités, description), Carnet (réservé à l'intrigue), Quitter ;
+- inventaire (`Inventory`, autoload) : définitions dans `data/items/items.json`,
+  inventaire de départ, piles pour les objets empilables.
 
 Contenu de l'étape 1 :
 
@@ -67,7 +73,8 @@ Contrôles :
 
 | Action | Touches |
 |---|---|
-| Se déplacer | Flèches, ou ZQSD / WASD (touches physiques, fonctionne en AZERTY) |
+| Se déplacer (8 directions) | Flèches, ou ZQSD / WASD (touches physiques, fonctionne en AZERTY) |
+| Menu / inventaire | Échap ou Tab ; haut/bas pour choisir, droite ou E pour entrer, gauche pour revenir |
 | Entrer / sortir d'une maison | Marcher sur la porte |
 | Panneau de debug | F3 |
 | Parler / avancer le dialogue | E (ou Entrée) |
@@ -80,6 +87,7 @@ dotnet build
 godot --headless --path . tests/SmokeTest.tscn     # visite toutes les zones
 godot --headless --path . tests/DoorTest.tscn      # entrée / sortie par les portes
 godot --headless --path . tests/DialogueTest.tscn  # parler à Émile, choix, fin
+godot --headless --path . tests/MenuTest.tscn      # menu, inventaire, pause
 ```
 
 Chaque test doit afficher `OK` et se terminer avec le code 0.
@@ -106,7 +114,9 @@ scripts/
   npc/Npc.cs, NpcTalkArea.cs, NpcManager.cs, NpcData.cs   PNJ et autoload NpcManager
   characters/CharacterVisual.cs   sprite face caméra + ombre (joueur et PNJ)
   characters/CharacterSprites.cs  génération de la planche de sprites
-  ui/GameUI.cs              interface en jeu
+  ui/GameUI.cs              interface en jeu (invite, dialogue)
+  ui/MenuUI.cs              menu pause : inventaire, carnet, quitter
+  systems/Inventory.cs      autoload Inventory : objets et inventaire du joueur
   player/Player.cs          déplacement, direction, sonde d'interaction
   world/Zone.cs             base Zone : nom, limites (x, z), murs invisibles, Spawns
   world/Village.cs          sol d'herbe + arbres de bordure (générés)
@@ -117,6 +127,7 @@ scripts/
   world/Prop.cs, TreeProp.cs, Well.cs, GroundPatch.cs   décor en volumes
 data/npcs/*.json            fiches PNJ (nom, apparence, position, dialogue)
 data/dialogues/*.json       dialogues statiques
+data/items/items.json       objets et inventaire de départ
 tests/                      tests headless (scènes + scripts C#, base TestBase.cs)
 VillageDeBrume.csproj / .sln   projet .NET (généré par Godot, versionné)
 docs/screenshots/           captures de référence

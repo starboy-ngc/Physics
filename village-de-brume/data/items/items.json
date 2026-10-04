@@ -1,0 +1,13 @@
+{
+  "items": [
+    {"id": "map", "name": "Carte du village", "description": "Un plan griffonné de Brume : quatre maisons, un puits, et une flèche vers la forêt.", "stackable": false},
+    {"id": "bread", "name": "Pain de campagne", "description": "Encore tiède. Émile en est fier, à juste titre.", "stackable": true},
+    {"id": "letter", "name": "Lettre froissée", "description": "La lettre qui t'a amené ici. L'encre a coulé sur la signature.", "stackable": false},
+    {"id": "herb", "name": "Brin de sauge", "description": "Cueilli à la lisière de la forêt. Jeanne saurait quoi en faire.", "stackable": true}
+  ],
+  "starting_inventory": [
+    {"id": "map", "count": 1},
+    {"id": "letter", "count": 1},
+    {"id": "bread", "count": 2}
+  ]
+}

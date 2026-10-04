@@ -48,13 +48,6 @@ public partial class Player : CharacterBody3D
         Vector2 input = Vector2.Zero;
         if (!DialogueManager.Instance.IsActive)
             input = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
-        // Déplacement strictement en 4 directions : si deux axes sont pressés,
-        // on garde l'axe de la direction actuelle.
-        if (input.X != 0f && input.Y != 0f)
-        {
-            if (_facing is CharacterVisual.Facing.Left or CharacterVisual.Facing.Right) input.Y = 0f;
-            else input.X = 0f;
-        }
         input = input.Normalized();
 
         Velocity = new Vector3(input.X, 0f, input.Y) * Speed;
@@ -63,7 +56,13 @@ public partial class Player : CharacterBody3D
 
         IsMoving = input != Vector2.Zero;
         if (IsMoving)
-            FacingDirection = CharacterVisual.FacingFromInput(input, _facing);
+        {
+            // Le sprite regarde l'axe dominant ; en diagonale parfaite, on garde l'axe courant.
+            var dominant = Mathf.Abs(input.X) > Mathf.Abs(input.Y) + 0.01f ? new Vector2(input.X, 0)
+                : Mathf.Abs(input.Y) > Mathf.Abs(input.X) + 0.01f ? new Vector2(0, input.Y)
+                : (_facing is CharacterVisual.Facing.Left or CharacterVisual.Facing.Right ? new Vector2(input.X, 0) : new Vector2(0, input.Y));
+            FacingDirection = CharacterVisual.FacingFromInput(dominant, _facing);
+        }
         Visual.Animate((float)delta, IsMoving);
         UpdateFocus();
     }

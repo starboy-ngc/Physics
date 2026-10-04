@@ -17,7 +17,7 @@ public partial class CharacterVisual : Node3D
     [Export] public Color PantsColor { get; set; } = new("2a2a3a");
 
     private const float WalkAnimFps = 8f;
-    private const float PixelSize = 1f / 16f;
+    private const float PixelSize = 1f / (16f * CharacterSprites.Scale);
 
     private Sprite3D _sprite = null!;
     private Facing _facing = Facing.Down;
@@ -39,14 +39,14 @@ public partial class CharacterVisual : Node3D
             Vframes = 4,
             PixelSize = PixelSize,
             Billboard = BaseMaterial3D.BillboardModeEnum.Enabled,
-            TextureFilter = BaseMaterial3D.TextureFilterEnum.Nearest,
+            TextureFilter = BaseMaterial3D.TextureFilterEnum.LinearWithMipmaps,
             AlphaCut = SpriteBase3D.AlphaCutMode.Discard,
             Shaded = false,
             CastShadow = GeometryInstance3D.ShadowCastingSetting.Off,
             // Le sprite est un panneau face caméra centré sur ce point. On le monte
             // pour que, à l'écran, la ligne des pieds (30) tombe exactement sur
             // l'origine au sol : 14 px « vers le haut de l'écran » = 14 px / cos(pitch) en hauteur monde.
-            Position = new Vector3(0, (CharacterSprites.FeetRow - CharacterSprites.Cell / 2f) * PixelSize / Mathf.Cos(Mathf.DegToRad(FollowCamera.DefaultPitch)), 0),
+            Position = new Vector3(0, (CharacterSprites.FeetRow - CharacterSprites.Cell / 2f) / 16f / Mathf.Cos(Mathf.DegToRad(FollowCamera.DefaultPitch)), 0),
         };
         AddChild(_sprite);
         var shadow = new MeshInstance3D

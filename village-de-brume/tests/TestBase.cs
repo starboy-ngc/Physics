@@ -23,6 +23,7 @@ public abstract partial class TestBase : Node
     public override void _Ready()
     {
         Engine.MaxFps = 60; // les délais du jeu sont en temps réel
+        ProcessMode = ProcessModeEnum.Always; // le test continue pendant la pause (menu)
         AddChild(GD.Load<PackedScene>("res://scenes/main/Main.tscn").Instantiate());
         Log("scène principale chargée");
     }

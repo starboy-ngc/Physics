@@ -63,7 +63,7 @@ public partial class GameUI : CanvasLayer
     public override void _UnhandledInput(InputEvent @event)
     {
         var dm = DialogueManager.Instance;
-        if (!dm.IsActive)
+        if (!dm.IsActive || GetTree().Paused)
             return;
         // La touche qui a lancé le dialogue ne doit pas aussi le faire avancer.
         if (Engine.GetProcessFrames() == dm.StartedFrame)

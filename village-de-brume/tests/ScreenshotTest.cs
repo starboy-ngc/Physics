@@ -17,6 +17,7 @@ public partial class ScreenshotTest : TestBase
         ("village", "start"),
         ("bakery", "entrance"),
         ("bakery", "dialogue"),
+        ("village", "menu"),
         ("house_jeanne", "entrance"),
         ("house_martin", "entrance"),
     };
@@ -39,7 +40,12 @@ public partial class ScreenshotTest : TestBase
         {
             _index++;
             var (zone, spawn) = Shots[_index];
-            if (spawn == "dialogue")
+            if (spawn == "menu")
+            {
+                _ = Game.ChangeZone("village", "start", true);
+                GetNode<MenuUI>("Main/MenuUI").Open();
+            }
+            else if (spawn == "dialogue")
             {
                 // Même zone : on déclenche le dialogue avec le PNJ présent.
                 if (Game.CurrentZone?.GetNodeOrNull<Npc>("NPC_emile") is { } npc)
@@ -56,10 +62,14 @@ public partial class ScreenshotTest : TestBase
         {
             if (Dialogue.IsActive && (_index + 1 >= Shots.Length || Shots[_index + 1].spawn != "dialogue"))
                 Dialogue.End();
+            var menu = GetNode<MenuUI>("Main/MenuUI");
+            if (menu.IsOpen && Shots[_index].spawn != "menu")
+                menu.Close();
             var img = GetViewport().GetTexture().GetImage();
             string path = $"{_outDir}/{_index:00}_{Shots[_index].zone}_{Shots[_index].spawn}.png";
             img.SavePng(path);
             Log(path);
+            if (menu.IsOpen) menu.Close();
             if (_index + 1 >= Shots.Length)
                 Finish();
         }
