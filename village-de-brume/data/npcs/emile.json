@@ -1,7 +1,7 @@
 {
   "id": "emile",
   "name": "Émile",
-  "role": "Boulanger",
+  "role": "Boulanger et marchand",
   "personality": [
     "sociable",
     "bavard",
@@ -14,13 +14,27 @@
     "pants": "4a3a2e"
   },
   "location": {
-    "zone": "bakery",
+    "zone": "village",
     "position": [
-      9,
-      4.875
+      19,
+      13.4
     ],
     "facing": "down"
   },
   "wander_radius": 0,
-  "dialogue": "res://data/dialogues/emile.json"
+  "dialogue": "res://data/dialogues/emile.json",
+  "shop": [
+    {
+      "id": "bread"
+    },
+    {
+      "id": "apple"
+    },
+    {
+      "id": "berry"
+    },
+    {
+      "id": "herb"
+    }
+  ]
 }

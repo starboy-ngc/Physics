@@ -1,7 +1,7 @@
 {
   "id": "jeanne",
   "name": "Jeanne",
-  "role": "Herboriste",
+  "role": "Herboriste, tient le dépôt",
   "personality": [
     "calme",
     "observatrice",
@@ -14,13 +14,13 @@
     "pants": "3b3f36"
   },
   "location": {
-    "zone": "house_jeanne",
+    "zone": "village",
     "position": [
-      8,
-      8.125
+      29,
+      13.4
     ],
     "facing": "down"
   },
-  "wander_radius": 1.5,
+  "wander_radius": 0,
   "dialogue": "res://data/dialogues/jeanne.json"
 }

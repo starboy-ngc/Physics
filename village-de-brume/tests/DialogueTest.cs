@@ -27,7 +27,7 @@ public partial class DialogueTest : TestBase
         _nodesSeen++;
         if (choices.Count > 0)
             _choicesSeen++;
-        if (text.StartsWith("Passer ?"))
+        if (text.StartsWith("Alors bienvenue"))
             _passingSeen = true;
         string excerpt = text.Length > 40 ? text[..40] : text;
         Log($"{speaker} : {excerpt}  (choix: {choices.Count})");
@@ -39,13 +39,13 @@ public partial class DialogueTest : TestBase
         switch (_phase)
         {
             case 0:
-                _ = Game.ChangeZone("bakery", "entrance", true);
+                _ = Game.ChangeZone("village", "near_emile", true);
                 _phase = 1;
                 _phaseStart = Frame;
                 break;
             case 1:
-                HoldOnly("move_up");
-                if (player.Focused != null)
+                HoldOnly("move_up"); // vers l'étal d'Émile (-Z)
+                if (player.Focused is NpcTalkArea)
                 {
                     ReleaseAll();
                     Log($"invite : E — {player.Focused.Prompt}");

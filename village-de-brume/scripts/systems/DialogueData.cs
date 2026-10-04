@@ -18,6 +18,8 @@ public class DialogueNode
     [JsonPropertyName("text")] public string Text { get; set; } = "";
     [JsonPropertyName("next")] public string? Next { get; set; }
     [JsonPropertyName("choices")] public List<DialogueChoice>? Choices { get; set; }
+    /// <summary>Action déclenchée par le moteur quand on quitte ce noeud (ex. "shop", "storage").</summary>
+    [JsonPropertyName("action")] public string? Action { get; set; }
 
     [JsonIgnore] public bool HasChoices => Choices != null && Choices.Count > 0;
 }

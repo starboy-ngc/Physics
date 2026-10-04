@@ -25,7 +25,7 @@ Rect = Rect2(37.25, 12.5, 1.5, 5.5)
 Rect = Rect2(9.25, 17.25, 29.5, 1.5)
 
 [node name="PathForest" parent="Ground" instance=ExtResource("2_ground")]
-Rect = Rect2(29, 17.25, 19, 1.5)
+Rect = Rect2(29, 17.25, 15.5, 1.5)
 
 [node name="PathSouth" parent="Ground" instance=ExtResource("2_ground")]
 Rect = Rect2(23.25, 21.5, 1.5, 11.6)
@@ -40,7 +40,7 @@ Rect = Rect2(9.25, 31.25, 1.5, 0.5)
 Rect = Rect2(37.25, 31.25, 1.5, 0.5)
 
 [node name="Square" parent="Ground" instance=ExtResource("2_ground")]
-Rect = Rect2(19, 14.5, 10, 7)
+Rect = Rect2(16, 12, 16, 11)
 Kind = 1
 
 [node name="Spawns" type="Node3D" parent="."]
@@ -87,16 +87,44 @@ Label = "Martin"
 DoorTargetZone = "house_martin"
 
 [node name="Well" parent="." instance=ExtResource("5_well")]
-position = Vector3(24, 0, 18.75)
+position = Vector3(24, 0, 19.5)
+
+[node name="StallEmile" parent="." instance=ExtResource("6_prop")]
+position = Vector3(19, 0, 14.6)
+Kind = "stall"
+Accent = Color(0.62, 0.4, 0.25, 1)
+
+[node name="StallJeanne" parent="." instance=ExtResource("6_prop")]
+position = Vector3(29, 0, 14.6)
+Kind = "stall"
+Accent = Color(0.33, 0.42, 0.33, 1)
+
+[node name="Board" parent="." instance=ExtResource("6_prop")]
+position = Vector3(24, 0, 13.4)
+Kind = "board"
+ExaminePrompt = "Lire"
+ExamineText = "Tableau des requêtes : rien pour l'instant. Martin le surveille."
+
+[node name="Gate" parent="." instance=ExtResource("6_prop")]
+position = Vector3(45, 0, 18.6)
+Kind = "gate"
+ExaminePrompt = "Pousser"
+ExamineText = "Le portail est verrouillé. Derrière, la forêt, et les galeries dont parle Martin."
 
 [node name="SignForest" parent="." instance=ExtResource("6_prop")]
-position = Vector3(44.75, 0, 16.875)
+position = Vector3(42.5, 0, 16.5)
 Kind = "sign"
 SignText = "Forêt"
 
 [node name="Pond" parent="." instance=ExtResource("7_pond")]
 position = Vector3(30, 0, 29)
 Size = Vector2(6.5, 4)
+
+[node name="near_emile" type="Marker3D" parent="Spawns"]
+position = Vector3(19, 0, 17)
+
+[node name="near_jeanne" type="Marker3D" parent="Spawns"]
+position = Vector3(29, 0, 17)
 
 [node name="near_pond" type="Marker3D" parent="Spawns"]
 position = Vector3(30, 0, 32.6)
@@ -109,11 +137,11 @@ position = Vector3(20, 0, 26)
 CanopyRadius = 1.05
 
 [node name="Tree3" parent="." instance=ExtResource("4_tree")]
-position = Vector3(18, 0, 10)
+position = Vector3(14, 0, 9.5)
 CanopyRadius = 0.85
 
 [node name="Tree4" parent="." instance=ExtResource("4_tree")]
-position = Vector3(30, 0, 10)
+position = Vector3(34, 0, 9.5)
 
 [node name="Tree5" parent="." instance=ExtResource("4_tree")]
 position = Vector3(33.5, 0, 24)

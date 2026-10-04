@@ -10,10 +10,15 @@ namespace VillageDeBrume;
 /// </summary>
 public partial class Prop : StaticBody3D
 {
-    [Export(PropertyHint.Enum, "bed,table,chair,chest,oven,counter,shelf,barrel,sign")]
+    [Export(PropertyHint.Enum, "bed,table,chair,chest,oven,counter,shelf,barrel,sign,stall,board,gate")]
     public string Kind { get; set; } = "table";
     /// <summary>Texte du panneau (Kind = "sign").</summary>
     [Export] public string SignText { get; set; } = "";
+    /// <summary>Si renseigné, l'objet est examinable (E) et affiche ce message.</summary>
+    [Export(PropertyHint.MultilineText)] public string ExamineText { get; set; } = "";
+    [Export] public string ExaminePrompt { get; set; } = "Examiner";
+    /// <summary>Couleur d'accent (toile de l'étal...).</summary>
+    [Export] public Color Accent { get; set; } = new("7a4a46");
 
     /// <summary>Emprise (largeur x, profondeur z) et hauteur par type.</summary>
     private static readonly Dictionary<string, Vector3> Sizes = new()
@@ -21,6 +26,7 @@ public partial class Prop : StaticBody3D
         ["bed"] = new(2f, 0.7f, 3f), ["table"] = new(2.5f, 0.9f, 1.5f), ["chair"] = new(0.9f, 1.1f, 1f),
         ["chest"] = new(1.5f, 0.8f, 1.1f), ["oven"] = new(2.5f, 2.0f, 2.5f), ["counter"] = new(4f, 1.0f, 1.25f),
         ["shelf"] = new(2f, 2.4f, 1f), ["barrel"] = new(1f, 1.25f, 1f), ["sign"] = new(1.5f, 1.6f, 0.4f),
+        ["stall"] = new(4f, 2.6f, 1.6f), ["board"] = new(3f, 2.2f, 0.4f), ["gate"] = new(4f, 3f, 0.6f),
     };
 
     private static readonly Color Wood = new("6e4e32");
@@ -39,8 +45,22 @@ public partial class Prop : StaticBody3D
 
         if (Kind == "sign")
             Materials.BoxCollider(this, new Vector3(0.4f, 1f, 0.4f), new Vector3(0, 0.5f, -0.2f));
+        else if (Kind == "stall")
+            Materials.BoxCollider(this, new Vector3(w, 1f, 0.9f), new Vector3(0, 0.5f, -0.45f)); // seul le comptoir bloque
         else
             Materials.BoxCollider(this, s, c);
+
+        if (ExamineText != "")
+        {
+            AddChild(new ExamineArea
+            {
+                Name = "Examine",
+                Prompt = ExaminePrompt,
+                Text = ExamineText,
+                Size = new Vector3(w + 1.2f, 1.5f, d + 1.2f),
+                Offset = new Vector3(0, 0.75f, -d / 2f),
+            });
+        }
 
         switch (Kind)
         {
@@ -107,6 +127,38 @@ public partial class Prop : StaticBody3D
                         Shaded = false,
                         TextureFilter = BaseMaterial3D.TextureFilterEnum.Nearest,
                     });
+                break;
+            case "stall":
+                // Comptoir devant, deux poteaux à l'arrière reliés par une bannière :
+                // pas d'auvent, pour que le marchand reste visible sous la caméra inclinée.
+                Materials.Box(this, new Vector3(w, 1.0f, 0.9f), new Vector3(0, 0.5f, -0.45f), Materials.Flat(WoodDark), "Counter");
+                Materials.Box(this, new Vector3(w + 0.1f, 0.1f, 1.0f), new Vector3(0, 1.0f, -0.45f), Materials.Flat(WoodLight), "CounterTop");
+                for (int i = 0; i < 3; i++)
+                    Materials.Box(this, new Vector3(0.5f, 0.3f, 0.4f), new Vector3(-1.2f + i * 1.2f, 1.2f, -0.45f), Materials.Flat(i == 1 ? new Color("8f7352") : new Color("b58a4c")), "Goods");
+                foreach (float px in new[] { -w / 2f + 0.15f, w / 2f - 0.15f })
+                    Materials.Box(this, new Vector3(0.14f, 3.0f, 0.14f), new Vector3(px, 1.5f, -d + 0.1f), Materials.Flat(WoodDark), "PostBack");
+                Materials.Box(this, new Vector3(w, 0.7f, 0.08f), new Vector3(0, 2.6f, -d + 0.1f), Materials.Flat(Accent), "Banner");
+                Materials.Box(this, new Vector3(w, 0.08f, 0.12f), new Vector3(0, 2.97f, -d + 0.1f), Materials.Flat(WoodDark), "BannerRail");
+                break;
+            case "board":
+                // Tableau d'affichage sur deux pieds, quelques feuilles
+                Materials.Box(this, new Vector3(0.14f, 2.2f, 0.14f), new Vector3(-w / 2f + 0.2f, 1.1f, -0.2f), Materials.Flat(WoodDark), "LegL");
+                Materials.Box(this, new Vector3(0.14f, 2.2f, 0.14f), new Vector3(w / 2f - 0.2f, 1.1f, -0.2f), Materials.Flat(WoodDark), "LegR");
+                Materials.Box(this, new Vector3(w, 1.4f, 0.12f), new Vector3(0, 1.5f, -0.2f), Materials.Flat(Wood), "Panel");
+                Materials.Box(this, new Vector3(w + 0.1f, 0.12f, 0.2f), new Vector3(0, 2.25f, -0.2f), Materials.Flat(WoodDark), "Cap");
+                Materials.Box(this, new Vector3(0.6f, 0.5f, 0.03f), new Vector3(-0.9f, 1.6f, -0.12f), Materials.Flat(new Color("d8d2c0")), "Paper");
+                Materials.Box(this, new Vector3(0.6f, 0.5f, 0.03f), new Vector3(0.4f, 1.4f, -0.12f), Materials.Flat(new Color("cfc7b6")), "Paper2");
+                break;
+            case "gate":
+                // Portail en bois entre deux piliers de pierre
+                var stone = Materials.Flat(new Color("6f6e68"));
+                Materials.Box(this, new Vector3(0.8f, 3.0f, 0.8f), new Vector3(-w / 2f + 0.4f, 1.5f, -0.3f), stone, "PillarL");
+                Materials.Box(this, new Vector3(0.8f, 3.0f, 0.8f), new Vector3(w / 2f - 0.4f, 1.5f, -0.3f), stone, "PillarR");
+                Materials.Box(this, new Vector3(w - 1.6f, 2.2f, 0.15f), new Vector3(0, 1.1f, -0.3f), Materials.Flat(WoodDark), "Doors");
+                Materials.Box(this, new Vector3(0.1f, 2.2f, 0.2f), new Vector3(0, 1.1f, -0.3f), Materials.Flat(new Color("3a2e24")), "Seam");
+                Materials.Box(this, new Vector3(w, 0.3f, 0.5f), new Vector3(0, 3.05f, -0.3f), stone, "Lintel");
+                for (int i = 0; i < 2; i++)
+                    Materials.Box(this, new Vector3(w - 1.6f, 0.12f, 0.2f), new Vector3(0, 0.6f + i * 1.0f, -0.2f), Materials.Flat(new Color("4a3b2e")), "Crossbar");
                 break;
             default:
                 Materials.Box(this, s, c, Materials.Flat(Wood), "Body");

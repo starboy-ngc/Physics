@@ -54,7 +54,7 @@ public partial class MenuUI : CanvasLayer
     {
         if (!IsOpen)
         {
-            if (@event.IsActionPressed("menu") && !DialogueManager.Instance.IsActive)
+            if (@event.IsActionPressed("menu") && !DialogueManager.Instance.IsActive && !Game.Instance.Player.Locked)
             {
                 Open();
                 GetViewport().SetInputAsHandled();
@@ -213,7 +213,7 @@ public partial class MenuUI : CanvasLayer
         switch (TabIndex)
         {
             case 0:
-                _title.Text = "Inventaire";
+                _title.Text = $"Inventaire — {Inventory.Instance.Coins} pièces";
                 var stacks = Inventory.Instance.Stacks;
                 if (stacks.Count == 0)
                     _contentList.AddChild(MakeLabel("(vide)", 9, Muted));

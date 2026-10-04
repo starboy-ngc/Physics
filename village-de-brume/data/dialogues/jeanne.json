@@ -3,11 +3,20 @@
   "start": "start",
   "nodes": {
     "start": {
-      "text": "... Oh. Je ne t'avais pas entendu entrer. Tu cherches quelque chose ?",
+      "text": "... Oh. Tu viens pour le dépôt ? Je garde ce qu'on me confie. Rien ne se perd, ici.",
       "choices": [
-        {"text": "Je découvre le village.", "next": "discover"},
-        {"text": "Vous êtes l'herboriste ?", "next": "herbs"},
-        {"text": "Rien, excusez-moi.", "next": "nothing"}
+        {
+          "text": "Déposer ou retirer des objets.",
+          "next": "storage"
+        },
+        {
+          "text": "Vous êtes l'herboriste ?",
+          "next": "herbs"
+        },
+        {
+          "text": "Rien, excusez-moi.",
+          "next": "nothing"
+        }
       ]
     },
     "discover": {
@@ -22,7 +31,21 @@
       "text": "Ce n'est rien. Tu peux rester un moment, si tu veux. Je ne suis pas très bavarde, mais je ne mords pas."
     },
     "bye": {
-      "text": "Si tu as besoin d'un remède, tu sais où me trouver."
+      "text": "Si tu pars dans la brume un jour, laisse-moi ce qui compte. Je veille dessus.",
+      "choices": [
+        {
+          "text": "Ouvrir le dépôt",
+          "next": "storage"
+        },
+        {
+          "text": "Merci, à bientôt.",
+          "next": "end"
+        }
+      ]
+    },
+    "storage": {
+      "text": "Pose ce que tu veux garder à l'abri. Tu le retrouveras quand tu reviendras.",
+      "action": "storage"
     }
   }
 }

@@ -11,7 +11,22 @@ Prérequis :
 - **Godot 4.3 .NET** (la version « .NET » sur godotengine.org, pas la standard) ;
 - le **SDK .NET 8** (dotnet.microsoft.com). Godot le détecte automatiquement.
 
-## État : ÉTAPE 2 — interactions, PNJ, dialogues statiques
+## État : hub du village (étape « base » avant les donjons)
+
+Le village sert de hub, dans l'esprit d'une place de jeu « Mystery Dungeon » :
+
+- **place centrale** pavée avec le puits ;
+- **étal d'Émile** : boutique (acheter / vendre avec des pièces) ;
+- **étal de Jeanne** : dépôt (déposer / retirer des objets, conservés) ;
+- **tableau des requêtes** gardé par Martin : vide pour l'instant, il se
+  remplira avec les donjons ;
+- **portail de l'est** verrouillé : future entrée des donjons ;
+- la maison du joueur (base), les autres maisons et l'étang de pêche.
+
+Les accès boutique / dépôt passent par les dialogues : un noeud de dialogue
+porte une `action` (`"shop"`, `"storage"`) que le moteur exécute à la fin du
+texte (`Main.OnDialogueAction`). Le stock d'un marchand est dans sa fiche
+(`data/npcs/emile.json`, clé `shop`), les prix dans `data/items/items.json`.
 
 Format visuel (2.5D, façon RPG de console portable) :
 
@@ -83,6 +98,8 @@ Contrôles :
 | Se déplacer (8 directions) | Flèches, ou ZQSD / WASD (touches physiques, fonctionne en AZERTY) |
 | Menu / inventaire | Échap ou Tab ; haut/bas pour choisir, droite ou E pour entrer, gauche pour revenir |
 | Pêcher | Face à l'étang : E pour lancer, E au « Ça mord ! » pour ferrer, E pendant l'attente pour remonter |
+| Boutique / dépôt | Parler à Émile ou Jeanne, choisir l'option ; puis haut/bas, gauche/droite (onglet), E valider, Échap fermer |
+| Examiner | E devant le tableau des requêtes ou le portail |
 | Entrer / sortir d'une maison | Marcher sur la porte |
 | Panneau de debug | F3 |
 | Parler / avancer le dialogue | E (ou Entrée) |
@@ -97,6 +114,7 @@ godot --headless --path . tests/DoorTest.tscn      # entrée / sortie par les po
 godot --headless --path . tests/DialogueTest.tscn  # parler à Émile, choix, fin
 godot --headless --path . tests/MenuTest.tscn      # menu, inventaire, pause
 godot --headless --path . tests/FishingTest.tscn   # pêche : lancer, touche, ferrage, prise
+godot --headless --path . tests/HubTest.tscn       # boutique (achat, vente) et dépôt
 ```
 
 Chaque test doit afficher `OK` et se terminer avec le code 0.
@@ -125,7 +143,10 @@ scripts/
   characters/CharacterSprites.cs  génération de la planche de sprites
   ui/GameUI.cs              interface en jeu (invite, dialogue)
   ui/MenuUI.cs              menu pause : inventaire, carnet, quitter
-  systems/Inventory.cs      autoload Inventory : objets et inventaire du joueur
+  ui/ListPanelUI.cs         panneau générique à onglets et liste (clavier)
+  ui/ShopUI.cs, StorageUI.cs   boutique et dépôt
+  systems/ExamineArea.cs    objet examinable (message)
+  systems/Inventory.cs      autoload Inventory : objets, pièces, inventaire, dépôt
   player/Player.cs          déplacement, direction, sonde d'interaction
   world/Zone.cs             base Zone : nom, limites (x, z), murs invisibles, Spawns
   world/Village.cs          sol d'herbe + arbres de bordure (générés)

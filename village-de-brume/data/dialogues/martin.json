@@ -3,10 +3,20 @@
   "start": "start",
   "nodes": {
     "start": {
-      "text": "Hé. Toi. Je ne t'ai jamais vu ici. Qu'est-ce que tu viens faire à Brume ?",
+      "text": "Hé. Toi. Tu regardes le tableau ? Il n'y a rien dessus. Personne ne passe le portail de l'est tant que je ne l'ai pas décidé.",
       "choices": [
-        {"text": "Je viens m'installer.", "next": "settle"},
-        {"text": "Ça ne vous regarde pas.", "next": "rude"}
+        {
+          "text": "Qu'est-ce qu'il y a derrière le portail ?",
+          "next": "gate"
+        },
+        {
+          "text": "Je viens m'installer.",
+          "next": "settle"
+        },
+        {
+          "text": "Ça ne vous regarde pas.",
+          "next": "rude"
+        }
       ]
     },
     "settle": {
@@ -19,6 +29,10 @@
     },
     "bye": {
       "text": "Allez, circule."
+    },
+    "gate": {
+      "text": "La forêt. Et sous la forêt, des galeries que personne n'a cartographiées. Quand quelqu'un disparaît, c'est là qu'on cherche. Si un jour une requête est affichée ici, tu seras le premier au courant.",
+      "next": "bye"
     }
   }
 }

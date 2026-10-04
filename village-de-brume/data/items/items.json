@@ -4,55 +4,78 @@
       "id": "map",
       "name": "Carte du village",
       "description": "Un plan griffonné de Brume : quatre maisons, un puits, et une flèche vers la forêt.",
-      "stackable": false
+      "stackable": false,
+      "price": 0
     },
     {
       "id": "bread",
       "name": "Pain de campagne",
       "description": "Encore tiède. Émile en est fier, à juste titre.",
-      "stackable": true
+      "stackable": true,
+      "price": 10
     },
     {
       "id": "letter",
       "name": "Lettre froissée",
       "description": "La lettre qui t'a amené ici. L'encre a coulé sur la signature.",
-      "stackable": false
+      "stackable": false,
+      "price": 0
     },
     {
       "id": "herb",
       "name": "Brin de sauge",
       "description": "Cueilli à la lisière de la forêt. Jeanne saurait quoi en faire.",
-      "stackable": true
+      "stackable": true,
+      "price": 12
     },
     {
       "id": "rod",
       "name": "Canne à pêche",
       "description": "Une canne en noisetier, fil un peu usé. Suffit pour l'étang.",
-      "stackable": false
+      "stackable": false,
+      "price": 0
     },
     {
       "id": "roach",
       "name": "Gardon",
       "description": "Petit poisson argenté. Il y en a plein l'étang.",
-      "stackable": true
+      "stackable": true,
+      "price": 8
     },
     {
       "id": "perch",
       "name": "Perche",
       "description": "Rayures sombres, nageoires rouges. Un bon repas.",
-      "stackable": true
+      "stackable": true,
+      "price": 20
     },
     {
       "id": "carp",
       "name": "Carpe",
       "description": "Lourde et tranquille. Émile dit qu'elle est plus vieille que lui.",
-      "stackable": true
+      "stackable": true,
+      "price": 60
     },
     {
       "id": "boot",
       "name": "Vieille botte",
       "description": "Trempée, trouée. Quelqu'un l'a perdue il y a longtemps.",
-      "stackable": true
+      "stackable": true,
+      "price": 1
+    },
+    {
+      "id": "apple",
+      "name": "Pomme",
+      "description": "Croquante. Calme la faim, utile en expédition.",
+      "stackable": true,
+      "price": 15
+    },
+    {
+      "id": "berry",
+      "name": "Baie de brume",
+      "description": "Petite baie bleutée qui pousse dans la brume. Redonne des forces.",
+      "stackable": true,
+      "price": 25
     }
   ],
   "starting_inventory": [
@@ -72,5 +95,6 @@
       "id": "rod",
       "count": 1
     }
-  ]
+  ],
+  "starting_coins": 300
 }

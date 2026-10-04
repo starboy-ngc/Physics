@@ -5,9 +5,18 @@
     "start": {
       "text": "Bonjour ! Tu es nouveau ici ? On ne voit pas souvent de nouvelles têtes à Brume.",
       "choices": [
-        {"text": "Oui, j'arrive à l'instant.", "next": "new"},
-        {"text": "Je ne fais que passer.", "next": "passing"},
-        {"text": "Qui êtes-vous ?", "next": "who"}
+        {
+          "text": "Qu'est-ce que tu vends ?",
+          "next": "shop"
+        },
+        {
+          "text": "Je suis nouveau ici.",
+          "next": "new"
+        },
+        {
+          "text": "Qui êtes-vous ?",
+          "next": "who"
+        }
       ]
     },
     "new": {
@@ -27,7 +36,21 @@
       "next": "bye"
     },
     "bye": {
-      "text": "Repasse quand tu veux, j'ai toujours quelque chose à raconter."
+      "text": "Repasse quand tu veux, l'étal est ouvert du matin au soir.",
+      "choices": [
+        {
+          "text": "Voir la boutique",
+          "next": "shop"
+        },
+        {
+          "text": "À plus tard.",
+          "next": "end"
+        }
+      ]
+    },
+    "shop": {
+      "text": "Du pain, des pommes, des baies de brume... Regarde, et dis-moi ce qui te plaît.",
+      "action": "shop"
     }
   }
 }

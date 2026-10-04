@@ -13,6 +13,9 @@ public class ItemDef
     [JsonPropertyName("name")] public string Name { get; set; } = "";
     [JsonPropertyName("description")] public string Description { get; set; } = "";
     [JsonPropertyName("stackable")] public bool Stackable { get; set; } = true;
+    /// <summary>Prix d'achat ; 0 = ni achetable ni vendable.</summary>
+    [JsonPropertyName("price")] public int Price { get; set; }
+    [JsonIgnore] public int SellPrice => Price / 2;
 }
 
 public class ItemStack
@@ -25,6 +28,7 @@ internal class ItemsFile
 {
     [JsonPropertyName("items")] public List<ItemDef> Items { get; set; } = new();
     [JsonPropertyName("starting_inventory")] public List<ItemStack> StartingInventory { get; set; } = new();
+    [JsonPropertyName("starting_coins")] public int StartingCoins { get; set; }
 }
 
 /// <summary>
@@ -42,6 +46,9 @@ public partial class Inventory : Node
     public Dictionary<string, ItemDef> Definitions { get; } = new();
     /// <summary>Piles dans l'ordre d'acquisition.</summary>
     public List<ItemStack> Stacks { get; } = new();
+    /// <summary>Objets confiés au dépôt (Jeanne).</summary>
+    public List<ItemStack> Storage { get; } = new();
+    public int Coins { get; private set; }
 
     public override void _EnterTree()
     {
@@ -71,6 +78,70 @@ public partial class Inventory : Node
             Definitions[def.Id] = def;
         foreach (var stack in file.StartingInventory)
             Add(stack.Id, stack.Count);
+        Coins = file.StartingCoins;
+    }
+
+    // --- Pièces ----------------------------------------------------------------
+
+    public void AddCoins(int amount)
+    {
+        Coins = Math.Max(0, Coins + amount);
+        Changed?.Invoke();
+    }
+
+    public bool SpendCoins(int amount)
+    {
+        if (amount < 0 || Coins < amount)
+            return false;
+        Coins -= amount;
+        Changed?.Invoke();
+        return true;
+    }
+
+    /// <summary>Achat auprès d'un marchand : vérifie les pièces, ajoute l'objet.</summary>
+    public bool Buy(string id, int price)
+    {
+        if (GetDef(id) == null || !SpendCoins(price))
+            return false;
+        Add(id, 1);
+        return true;
+    }
+
+    /// <summary>Vente d'une unité au prix de revente de l'objet.</summary>
+    public bool Sell(string id)
+    {
+        var def = GetDef(id);
+        if (def == null || def.Price <= 0 || !Remove(id, 1))
+            return false;
+        AddCoins(def.SellPrice);
+        return true;
+    }
+
+    // --- Dépôt -----------------------------------------------------------------
+
+    public bool Deposit(string id, int count = 1)
+    {
+        if (!Remove(id, count))
+            return false;
+        AddTo(Storage, id, count);
+        Changed?.Invoke();
+        return true;
+    }
+
+    public bool Withdraw(string id, int count = 1)
+    {
+        if (!RemoveFrom(Storage, id, count))
+            return false;
+        Add(id, count);
+        return true;
+    }
+
+    public int StoredCount(string id)
+    {
+        int total = 0;
+        foreach (var s in Storage)
+            if (s.Id == id) total += s.Count;
+        return total;
     }
 
     public ItemDef? GetDef(string id) => Definitions.TryGetValue(id, out var d) ? d : null;
@@ -85,40 +156,54 @@ public partial class Inventory : Node
 
     public bool Add(string id, int count = 1)
     {
-        var def = GetDef(id);
-        if (def == null || count <= 0)
+        if (GetDef(id) == null || count <= 0)
         {
             GD.PushWarning($"Inventory.Add : objet inconnu '{id}'");
             return false;
         }
-        if (def.Stackable)
-        {
-            var existing = Stacks.Find(s => s.Id == id);
-            if (existing != null) existing.Count += count;
-            else Stacks.Add(new ItemStack { Id = id, Count = count });
-        }
-        else
-        {
-            for (int i = 0; i < count; i++)
-                Stacks.Add(new ItemStack { Id = id, Count = 1 });
-        }
+        AddTo(Stacks, id, count);
         Changed?.Invoke();
         return true;
     }
 
     public bool Remove(string id, int count = 1)
     {
-        if (Count(id) < count)
+        if (!RemoveFrom(Stacks, id, count))
             return false;
-        for (int i = Stacks.Count - 1; i >= 0 && count > 0; i--)
-        {
-            if (Stacks[i].Id != id) continue;
-            int take = Math.Min(count, Stacks[i].Count);
-            Stacks[i].Count -= take;
-            count -= take;
-            if (Stacks[i].Count <= 0) Stacks.RemoveAt(i);
-        }
         Changed?.Invoke();
+        return true;
+    }
+
+    private void AddTo(List<ItemStack> list, string id, int count)
+    {
+        var def = GetDef(id)!;
+        if (def.Stackable)
+        {
+            var existing = list.Find(s => s.Id == id);
+            if (existing != null) existing.Count += count;
+            else list.Add(new ItemStack { Id = id, Count = count });
+        }
+        else
+        {
+            for (int i = 0; i < count; i++)
+                list.Add(new ItemStack { Id = id, Count = 1 });
+        }
+    }
+
+    private static bool RemoveFrom(List<ItemStack> list, string id, int count)
+    {
+        int have = 0;
+        foreach (var s in list) if (s.Id == id) have += s.Count;
+        if (have < count || count <= 0)
+            return false;
+        for (int i = list.Count - 1; i >= 0 && count > 0; i--)
+        {
+            if (list[i].Id != id) continue;
+            int take = Math.Min(count, list[i].Count);
+            list[i].Count -= take;
+            count -= take;
+            if (list[i].Count <= 0) list.RemoveAt(i);
+        }
         return true;
     }
 }

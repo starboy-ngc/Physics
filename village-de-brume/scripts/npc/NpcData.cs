@@ -14,6 +14,14 @@ public class NpcData
     [JsonPropertyName("location")] public NpcLocation Location { get; set; } = new();
     [JsonPropertyName("wander_radius")] public float WanderRadius { get; set; }
     [JsonPropertyName("dialogue")] public string Dialogue { get; set; } = "";
+    /// <summary>Objets en vente (prix pris dans la définition de l'objet sauf si précisé).</summary>
+    [JsonPropertyName("shop")] public List<ShopEntry>? Shop { get; set; }
+}
+
+public class ShopEntry
+{
+    [JsonPropertyName("id")] public string Id { get; set; } = "";
+    [JsonPropertyName("price")] public int? Price { get; set; }
 }
 
 public class NpcLocation

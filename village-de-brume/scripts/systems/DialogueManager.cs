@@ -16,6 +16,8 @@ public partial class DialogueManager : Node
     public event Action<string>? DialogueStarted;
     public event Action<string, string, IReadOnlyList<string>>? NodeChanged;
     public event Action<string>? DialogueEnded;
+    /// <summary>Action demandée par un noeud (nom de l'action, identifiant du locuteur).</summary>
+    public event Action<string, string>? ActionRequested;
 
     public bool IsActive { get; private set; }
     /// <summary>Frame à laquelle le dialogue a démarré (l'UI ignore la touche de cette frame).</summary>
@@ -23,6 +25,7 @@ public partial class DialogueManager : Node
 
     private DialogueData? _data;
     private string _speaker = "";
+    public string SpeakerId { get; private set; } = "";
     private DialogueNode? _node;
 
     public override void _EnterTree()
@@ -30,12 +33,13 @@ public partial class DialogueManager : Node
         Instance = this;
     }
 
-    public bool Start(DialogueData? data, string speaker)
+    public bool Start(DialogueData? data, string speaker, string speakerId = "")
     {
         if (IsActive || data == null)
             return false;
         _data = data;
         _speaker = speaker;
+        SpeakerId = speakerId;
         IsActive = true;
         StartedFrame = Engine.GetProcessFrames();
         DialogueStarted?.Invoke(speaker);
@@ -83,6 +87,15 @@ public partial class DialogueManager : Node
 
     private void Follow(string? next)
     {
+        string? action = _node?.Action;
+        if (!string.IsNullOrEmpty(action))
+        {
+            // Un noeud avec action termine le dialogue, puis le moteur exécute l'action.
+            string speakerId = SpeakerId;
+            End();
+            ActionRequested?.Invoke(action, speakerId);
+            return;
+        }
         if (string.IsNullOrEmpty(next) || next == "end")
             End();
         else

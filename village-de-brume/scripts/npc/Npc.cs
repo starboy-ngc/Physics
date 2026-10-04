@@ -142,7 +142,7 @@ public partial class Npc : CharacterBody3D
         var data = DialogueData.LoadFromFile(DialoguePath);
         if (data == null)
             return;
-        if (DialogueManager.Instance.Start(data, DisplayName))
+        if (DialogueManager.Instance.Start(data, DisplayName, NpcId))
         {
             _talking = true;
             Stop();

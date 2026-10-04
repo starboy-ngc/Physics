@@ -16,7 +16,8 @@ public partial class ScreenshotTest : TestBase
         ("village", "from_house_player"),
         ("village", "start"),
         ("bakery", "entrance"),
-        ("bakery", "dialogue"),
+        ("village", "dialogue"),
+        ("village", "shop"),
         ("village", "fishing"),
         ("village", "menu"),
         ("house_jeanne", "entrance"),
@@ -55,13 +56,18 @@ public partial class ScreenshotTest : TestBase
             }
             else if (spawn == "dialogue")
             {
-                // Même zone : on déclenche le dialogue avec le PNJ présent.
+                _ = Game.ChangeZone("village", "near_emile", true);
                 if (Game.CurrentZone?.GetNodeOrNull<Npc>("NPC_emile") is { } npc)
                 {
-                    Game.Player.GlobalPosition = new Vector3(9, 0, 7);
+                    Game.Player.GlobalPosition = new Vector3(19, 0, 16.2f);
                     Game.Player.Face(CharacterVisual.Facing.Up);
                     npc.OnInteract(Game.Player);
                 }
+            }
+            else if (spawn == "shop")
+            {
+                Game.Player.GlobalPosition = new Vector3(19, 0, 16.2f);
+                GetNode<ShopUI>("Main/ShopUI").OpenFor(NpcManager.Instance.Npcs["emile"]);
             }
             else
                 _ = Game.ChangeZone(zone, spawn, true);
@@ -70,6 +76,8 @@ public partial class ScreenshotTest : TestBase
         {
             if (Dialogue.IsActive && (_index + 1 >= Shots.Length || Shots[_index + 1].spawn != "dialogue"))
                 Dialogue.End();
+            var shop = GetNode<ShopUI>("Main/ShopUI");
+            if (shop.IsOpen && Shots[_index].spawn != "shop") shop.Close();
             var menu = GetNode<MenuUI>("Main/MenuUI");
             if (menu.IsOpen && Shots[_index].spawn != "menu")
                 menu.Close();
@@ -78,6 +86,7 @@ public partial class ScreenshotTest : TestBase
             img.SavePng(path);
             Log(path);
             if (menu.IsOpen) menu.Close();
+            if (shop.IsOpen) shop.Close();
             if (_index + 1 >= Shots.Length)
                 Finish();
         }

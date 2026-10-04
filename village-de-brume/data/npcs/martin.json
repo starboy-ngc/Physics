@@ -16,11 +16,11 @@
   "location": {
     "zone": "village",
     "position": [
-      27.5,
-      23.75
+      24,
+      21.5
     ],
-    "facing": "left"
+    "facing": "up"
   },
-  "wander_radius": 3,
+  "wander_radius": 2.5,
   "dialogue": "res://data/dialogues/martin.json"
 }
