@@ -1,0 +1,486 @@
+{
+ "classe": "5",
+ "titre": "Comptes financiers",
+ "comptes": [
+  {
+   "num": "50",
+   "label": "Valeurs mobilières de placement",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 50 enregistre les titres acquis en vue de réaliser un gain à brève échéance ou de placer des excédents de trésorerie (actions, obligations, bons, parts d'OPCVM), par opposition aux titres immobilisés (26, 27) détenus durablement. Il est débité du prix d'acquisition (frais inclus ou passés en 627 selon l'option) et crédité de la valeur comptable lors de la cession, le résultat net de cession allant en 7673 (gain) ou 6673 (perte). Il figure à l'actif circulant dans le poste Valeurs mobilières de placement, net de la dépréciation 590 ; en analyse financière, il est assimilé à la trésorerie active.",
+   "exemple": "Achat de 200 actions à 45 € : 503 D 9 000 / 512 C 9 000 ; cession à 50 € : 512 D 10 000 / 503 C 9 000 / 7673 C 1 000.",
+   "piege": "À la clôture, les VMP sont évaluées au cours moyen du dernier mois ; la moins-value latente est dépréciée (590), la plus-value latente ignorée.",
+   "pcg2025": "Les cessions de VMP passent par 7673 (produits) et 6673 (charges) depuis le règlement ANC 2022-06, subdivisions des comptes 767 et 667 renommés ; le compte 501 est supprimé."
+  },
+  {
+   "num": "501",
+   "label": "Parts dans des entreprises liées",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 501 enregistrait, dans le plan 2014, les titres de sociétés liées détenus à titre de simple placement de trésorerie, sans intention de conservation durable. Il était débité à l'acquisition et crédité à la cession. Le règlement ANC 2022-06 l'a supprimé : de tels titres se classent désormais en 503 ou 504 selon leur nature, ou en 261 si la détention est durable.",
+   "exemple": "Avant 2025 : 501 D 20 000 / 512 C 20 000 ; depuis 2025 : 503 D 20 000 / 512 C 20 000.",
+   "piege": "",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 503 ou 504 (ou 261 si la détention est durable)."
+  },
+  {
+   "num": "502",
+   "label": "Actions propres",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 502 enregistre les actions rachetées par la société dans le cadre d'un programme de rachat pour être attribuées aux salariés (5021 lorsqu'elles sont affectées à un plan déterminé) ou pour réguler le cours (5022 Actions disponibles pour être attribuées aux employés ou pour régularisation des cours). Il est débité du prix de rachat et crédité lors de l'attribution ou de la revente. Il figure à l'actif dans les VMP ; les actions destinées à être annulées vont en 2772, pas en 502.",
+   "exemple": "Rachat de 500 actions propres à 40 € pour un plan d'attribution gratuite : 5021 D 20 000 / 512 C 20 000.",
+   "piege": "Actions propres destinées à être annulées : 277 (immobilisations financières) ; destinées aux salariés ou à la régulation du cours : 502.",
+   "pcg2025": null
+  },
+  {
+   "num": "503",
+   "label": "Actions",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 503 enregistre les actions acquises à titre de placement : titres cotés (5031) et non cotés (5035). Il est débité du prix d'acquisition et crédité de la valeur comptable d'entrée lors de la cession (méthode PEPS ou CUMP pour des titres de même nature acquis à des prix différents). Il figure à l'actif dans les VMP ; les dividendes reçus sont des produits financiers (764).",
+   "exemple": "Cession de 100 actions acquises 45 € pour 42 € : 512 D 4 200 / 6673 D 300 / 5031 C 4 500.",
+   "piege": "Le résultat de cession des VMP est enregistré pour son montant net (6673 ou 7673), contrairement aux immobilisations où prix (757) et valeur comptable (657) sont enregistrés séparément.",
+   "pcg2025": null
+  },
+  {
+   "num": "5031",
+   "label": "Titres cotés",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5031 enregistre les actions cotées sur un marché réglementé détenues en placement. Il est débité à l'achat et crédité à la vente. Il figure à l'actif dans les VMP ; à la clôture, la valeur d'inventaire est le cours moyen du dernier mois, et une dépréciation (5903) est constatée si elle est inférieure au coût.",
+   "exemple": "5031 D 9 000 / 512 C 9 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5035",
+   "label": "Titres non cotés",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5035 enregistre les actions non cotées détenues en placement à court terme. Il est débité à l'achat et crédité à la vente ; à la clôture, la valeur d'inventaire est la valeur probable de négociation. Il figure à l'actif dans les VMP.",
+   "exemple": "5035 D 15 000 / 512 C 15 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "504",
+   "label": "Autres titres conférant un droit de propriété",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 504 enregistre les titres de placement conférant un droit de propriété autres que les actions : parts de SICAV et de fonds communs de placement, parts sociales de sociétés non par actions. Il est débité à la souscription et crédité au rachat ou à la cession, le gain net allant en 7673. Il figure à l'actif dans les VMP ; c'est le compte typique des placements de trésorerie en OPCVM monétaires.",
+   "exemple": "Souscription de parts de SICAV monétaire 50 000 € : 504 D 50 000 / 512 C 50 000 ; rachat à 50 300 € : 512 D 50 300 / 504 C 50 000 / 7673 C 300.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "505",
+   "label": "Obligations et bons émis par la société et rachetés par elle",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 505 enregistre les obligations de son propre emprunt que la société rachète en bourse, en vue de les annuler ou de les remettre en circulation. Il est débité du prix de rachat et crédité lors de l'annulation (contrepartie 163 pour la valeur de remboursement, l'écart allant en résultat financier) ou de la revente. Il figure à l'actif dans les VMP.",
+   "exemple": "Rachat de 100 obligations de nominal 500 € au cours de 480 € : 505 D 48 000 / 512 C 48 000 ; annulation : 163 D 50 000 / 505 C 48 000 / 7673 C 2 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "506",
+   "label": "Obligations",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 506 enregistre les obligations émises par d'autres entités et acquises en placement : cotées (5061) et non cotées (5065). Il est débité du prix d'acquisition hors coupon couru (le coupon couru à l'achat étant isolé en 5088) et crédité à la cession ou au remboursement. Il figure à l'actif dans les VMP ; les intérêts perçus vont en 764 et les intérêts courus à la clôture en 5088.",
+   "exemple": "Achat de 50 obligations à 1 000 € hors coupon, coupon couru 20 € par titre : 5061 D 50 000 / 5088 D 1 000 / 512 C 51 000.",
+   "piege": "Le coupon couru payé à l'achat n'est pas un produit financier négatif : il est porté en 5088 et soldé à l'encaissement du coupon.",
+   "pcg2025": null
+  },
+  {
+   "num": "507",
+   "label": "Bons du Trésor et bons de caisse à court terme",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 507 enregistre les bons du Trésor et les bons de caisse émis par des banques souscrits à court terme pour placer de la trésorerie. Il est débité à la souscription et crédité au remboursement, les intérêts allant en 764 (ou 7681 si précomptés). Il figure à l'actif dans les VMP.",
+   "exemple": "Souscription de bons de caisse 30 000 € à 3 mois : 507 D 30 000 / 512 C 30 000 ; remboursement avec 225 € d'intérêts : 512 D 30 225 / 507 C 30 000 / 764 C 225.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "508",
+   "label": "Autres valeurs mobilières de placement et autres créances assimilées",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 508 enregistre les autres placements : autres valeurs mobilières (5081, par exemple titres de créances négociables), bons de souscription (5082), et les intérêts courus sur obligations, bons et valeurs assimilées (5088). Il est débité à l'acquisition ou à la constatation des intérêts courus et crédité à la cession, au remboursement ou à l'encaissement du coupon. Il figure à l'actif dans les VMP.",
+   "exemple": "Intérêts courus au 31 décembre sur des obligations détenues (50 000 € à 4 %, coupon au 1er avril) : 5088 D 1 500 / 764 C 1 500.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5081",
+   "label": "Autres valeurs mobilières",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5081 enregistre les valeurs mobilières de placement qui n'entrent dans aucune autre subdivision du compte 50 : certificats de dépôt, billets de trésorerie, titres de créances négociables. Il est débité à la souscription et crédité au remboursement ou à la cession. Il figure à l'actif dans les VMP.",
+   "exemple": "Souscription d'un certificat de dépôt 100 000 € : 5081 D 100 000 / 512 C 100 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5082",
+   "label": "Bons de souscription",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5082 enregistre les bons de souscription d'actions ou d'obligations acquis en placement, détachés des titres ou achetés isolément. Il est débité du prix d'acquisition et crédité lors de l'exercice du bon (le prix est alors ajouté au coût des titres souscrits) ou de sa cession. Il figure à l'actif dans les VMP.",
+   "exemple": "Achat de 1 000 bons de souscription à 3 € : 5082 D 3 000 / 512 C 3 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5088",
+   "label": "Intérêts courus sur obligations, bons et valeurs assimilés",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5088 enregistre les intérêts courus et non échus à la clôture sur les obligations et bons détenus en placement, ainsi que le coupon couru payé lors de l'achat d'une obligation. Il est débité par le crédit du 764 à la clôture (ou par le crédit de la trésorerie à l'achat) et crédité lors de l'encaissement du coupon. Il figure à l'actif dans les VMP.",
+   "exemple": "5088 D 1 500 / 764 C 1 500 ; encaissement du coupon de 2 000 € le 1er avril : 512 D 2 000 / 5088 C 1 500 / 764 C 500.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "509",
+   "label": "Versements restant à effectuer sur valeurs mobilières de placement non libérées",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 509 enregistre la fraction non encore versée du prix de VMP souscrites et partiellement libérées. Il est crédité à la souscription, en contrepartie du débit du compte de titres pour la valeur totale, et débité lors des versements complémentaires. Il figure au passif dans les dettes (ou en déduction des VMP), malgré sa numérotation en classe 5.",
+   "exemple": "Souscription de 1 000 actions à 20 € libérées de moitié : 503 D 20 000 / 512 C 10 000 / 509 C 10 000.",
+   "piege": "Compte de classe 5 à solde créditeur, comme 269 et 279 en classe 2.",
+   "pcg2025": null
+  },
+  {
+   "num": "51",
+   "label": "Banques, établissements financiers et assimilés",
+   "sens": "D/C",
+   "obligatoire": true,
+   "explication": "Le compte 51 enregistre les avoirs et dettes à vue auprès des banques et établissements assimilés : valeurs à l'encaissement (511), comptes bancaires (512), autres organismes (514, 515, 517), intérêts courus (518), concours bancaires courants (519). Il est débité des encaissements et crédité des décaissements, selon les relevés de l'entreprise (et non ceux de la banque, qui sont inversés). Il figure à l'actif dans le poste Disponibilités pour les soldes débiteurs et au passif dans les emprunts et dettes auprès des établissements de crédit pour les soldes créditeurs (découverts, 519).",
+   "exemple": "Encaissement d'un chèque client de 6 000 € : 512 D 6 000 / 411 C 6 000.",
+   "piege": "Le compte 512 de l'entreprise est le miroir du compte tenu par la banque : un solde débiteur chez l'entreprise correspond à un solde créditeur sur le relevé bancaire.",
+   "pcg2025": "Le compte 516 Sociétés de bourse est supprimé par le règlement ANC 2022-06."
+  },
+  {
+   "num": "511",
+   "label": "Valeurs à l'encaissement",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 511 enregistre les valeurs remises à la banque et en attente d'encaissement effectif : coupons échus (5111), chèques à encaisser (5112), effets à l'encaissement (5113), effets à l'escompte (5114). Il est débité lors de la remise par le crédit du compte de tiers ou de l'effet (413) et crédité lors de la réception de l'avis de crédit de la banque, par le débit du 512. Il figure à l'actif dans les disponibilités. Le PCG ne prévoit que les subdivisions 5111 à 5114 ; les comptes 5115 Cartes bancaires à l'encaissement ou 5117 que l'on rencontre dans certains logiciels sont des subdivisions libres.",
+   "exemple": "Remise de chèques clients 3 500 € : 5112 D 3 500 / 411 C 3 500 ; avis de crédit : 512 D 3 500 / 5112 C 3 500.",
+   "piege": "Un chèque reçu n'est pas encore de l'argent en banque : il transite par 5112 jusqu'à l'avis de crédit.",
+   "pcg2025": null
+  },
+  {
+   "num": "5111",
+   "label": "Coupons échus à l'encaissement",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5111 enregistre les coupons d'intérêts ou de dividendes échus, détachés des titres détenus et remis à l'encaissement. Il est débité par le crédit du 762 ou 764 lors du détachement et crédité lors de l'encaissement effectif en 512. Il figure à l'actif dans les disponibilités.",
+   "exemple": "Coupon de 2 000 € échu sur obligations : 5111 D 2 000 / 764 C 2 000 ; encaissement : 512 D 2 000 / 5111 C 2 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5112",
+   "label": "Chèques à encaisser",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5112 enregistre les chèques reçus des clients et remis à la banque, dans l'attente de leur crédit effectif sur le compte. Il est débité à la remise (411 C) et crédité à la réception de l'avis de crédit (512 D). Il figure à l'actif dans les disponibilités ; à la clôture, son solde représente les chèques remis non encore crédités, à rapprocher avec le relevé bancaire.",
+   "exemple": "5112 D 3 500 / 411 C 3 500 puis 512 D 3 500 / 5112 C 3 500.",
+   "piege": "Un chèque impayé revient en 411 (ou 416) : 411 D / 5112 C, avec les frais bancaires en 627.",
+   "pcg2025": null
+  },
+  {
+   "num": "5113",
+   "label": "Effets à l'encaissement",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5113 enregistre les effets de commerce (lettres de change, billets à ordre) remis à la banque pour encaissement à l'échéance. Il est débité à la remise par le crédit du 413 et crédité lors de l'avis de crédit, net des commissions (627 et TVA). Il figure à l'actif dans les disponibilités.",
+   "exemple": "Remise à l'encaissement d'une traite de 6 000 € : 5113 D 6 000 / 413 C 6 000 ; avis de crédit avec 12 € de commission TTC (10 € HT) : 512 D 5 988 / 627 D 10 / 44566 D 2 / 5113 C 6 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5114",
+   "label": "Effets à l'escompte",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5114 enregistre les effets remis à la banque pour être escomptés, c'est-à-dire payés par anticipation moyennant agios. Il est débité à la remise par le crédit du 413 et crédité lors de l'avis de crédit, les agios (intérêts d'escompte en 6616, commissions en 627) venant diminuer le montant encaissé. Il figure à l'actif dans les disponibilités. L'effet escompté non échu constitue un engagement hors bilan mentionné en annexe.",
+   "exemple": "Escompte d'une traite de 6 000 € : 5114 D 6 000 / 413 C 6 000 ; avis de crédit : 512 D 5 880 / 6616 D 100 / 627 D 20 / 5114 C 6 000.",
+   "piege": "L'escompte transfère l'effet à la banque mais le risque d'impayé reste sur l'entreprise : d'où la mention en annexe des effets escomptés non échus.",
+   "pcg2025": null
+  },
+  {
+   "num": "512",
+   "label": "Banques",
+   "sens": "D/C",
+   "obligatoire": true,
+   "explication": "Le compte 512 enregistre les mouvements du ou des comptes bancaires de l'entreprise : comptes en monnaie nationale (5121) et comptes en devises (5124). Il est débité des encaissements (chèques et effets crédités, virements reçus, remises d'espèces) et crédité des décaissements (chèques émis, virements, prélèvements, frais bancaires). Il figure à l'actif dans les disponibilités s'il est débiteur ; un solde créditeur (découvert) est présenté au passif dans les concours bancaires courants. Son solde est contrôlé périodiquement par l'état de rapprochement bancaire.",
+   "exemple": "Règlement d'un fournisseur par virement 12 000 € : 401 D 12 000 / 512 C 12 000.",
+   "piege": "Les écritures du 512 se passent à la date des pièces de l'entreprise, pas à la date de valeur de la banque ; les écarts se justifient dans le rapprochement bancaire.",
+   "pcg2025": null
+  },
+  {
+   "num": "514",
+   "label": "Chèques postaux",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 514 enregistre les mouvements du compte courant postal de l'entreprise (aujourd'hui compte à La Banque Postale). Il fonctionne exactement comme le compte 512 : débité des encaissements, crédité des décaissements. Il figure à l'actif dans les disponibilités. En pratique, beaucoup d'entreprises enregistrent ce compte comme une banque ordinaire en 512.",
+   "exemple": "Encaissement d'un virement client sur le compte postal 2 000 € : 514 D 2 000 / 411 C 2 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "515",
+   "label": "« Caisses » du Trésor et des établissements publics",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 515 enregistre les fonds déposés auprès du Trésor public ou d'établissements publics, principalement par les entités tenues de déposer leurs fonds au Trésor. Il est débité des dépôts et crédité des retraits. Il figure à l'actif dans les disponibilités. Il est rarement utilisé par les entreprises commerciales.",
+   "exemple": "Dépôt de fonds au Trésor 10 000 € : 515 D 10 000 / 512 C 10 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "516",
+   "label": "Sociétés de bourse",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 516 enregistrait, dans le plan 2014, les fonds déposés auprès des sociétés de bourse (intermédiaires financiers) en attente d'emploi ou provenant de cessions de titres. Il était débité des dépôts et crédité des retraits ou des achats de titres. Il est supprimé par le règlement ANC 2022-06 : ces relations se comptabilisent en 517 Autres organismes financiers ou en 464 et 465 pour les opérations sur titres.",
+   "exemple": "Avant 2025 : 516 D 5 000 / 512 C 5 000 ; depuis 2025 : 517 D 5 000 / 512 C 5 000.",
+   "piege": "",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 517 Autres organismes financiers."
+  },
+  {
+   "num": "517",
+   "label": "Autres organismes financiers",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 517 enregistre les avoirs détenus auprès d'organismes financiers autres que les banques et le Trésor : établissements de paiement, plateformes de paiement en ligne, intermédiaires financiers, comptes espèces chez un courtier. Il est débité des sommes versées ou encaissées sur ces comptes et crédité des retraits. Il figure à l'actif dans les disponibilités.",
+   "exemple": "Encaissement de ventes en ligne crédité sur un compte de prestataire de paiement 4 800 € : 517 D 4 800 / 411 C 4 800 ; virement vers la banque : 512 D 4 800 / 517 C 4 800.",
+   "piege": "",
+   "pcg2025": "Reçoit les opérations anciennement enregistrées en 516 Sociétés de bourse, supprimé par le règlement ANC 2022-06."
+  },
+  {
+   "num": "518",
+   "label": "Intérêts courus",
+   "sens": "D/C",
+   "obligatoire": true,
+   "explication": "Le compte 518 enregistre, à la clôture, les intérêts courus et non échus sur les comptes bancaires et les concours bancaires : intérêts courus à payer (5181) sur découverts et crédits de trésorerie, intérêts courus à recevoir (5188) sur comptes rémunérés et placements à terme. Il est crédité par le débit du 6616 ou débité par le crédit du 768 à la clôture et contre-passé à l'ouverture. Il figure à l'actif dans les disponibilités (5188) ou au passif dans les concours bancaires (5181). Le PCG numérote les intérêts à recevoir 5188 (et non 5186).",
+   "exemple": "Intérêts courus sur un découvert bancaire 350 € : 6616 D 350 / 5181 C 350 ; intérêts courus sur un compte à terme 600 € : 5188 D 600 / 768 C 600.",
+   "piege": "Les intérêts courus sur emprunts (164) vont en 1648, pas en 5181 qui est réservé aux concours bancaires et comptes courants.",
+   "pcg2025": null
+  },
+  {
+   "num": "5181",
+   "label": "Intérêts courus à payer",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5181 enregistre les intérêts débiteurs courus et non encore prélevés par la banque à la clôture (agios de découvert du dernier trimestre, intérêts sur crédit de trésorerie). Il est crédité par le débit du 6616 et contre-passé à l'ouverture. Il figure au passif dans les emprunts et dettes auprès des établissements de crédit.",
+   "exemple": "6616 D 350 / 5181 C 350.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5188",
+   "label": "Intérêts courus à recevoir",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 5188 enregistre les intérêts créditeurs courus et non encore versés par la banque à la clôture (comptes rémunérés, dépôts à terme, livrets). Il est débité par le crédit du 768 Autres produits financiers et contre-passé à l'ouverture. Il figure à l'actif dans les disponibilités.",
+   "exemple": "Dépôt à terme 100 000 € à 2,4 % souscrit le 1er octobre : intérêts courus au 31 décembre 600 € : 5188 D 600 / 768 C 600.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "519",
+   "label": "Concours bancaires courants",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 519 enregistre les financements bancaires à court terme autres que le découvert en compte : crédit de mobilisation de créances commerciales (5191), mobilisation de créances nées à l'étranger (5193), intérêts courus sur ces concours (5198). Il est crédité lors de la mise à disposition des fonds par la banque et débité lors du remboursement. Il figure au passif dans le poste Emprunts et dettes auprès des établissements de crédit, avec mention en annexe des concours bancaires courants ; en analyse financière, il constitue la trésorerie passive.",
+   "exemple": "Crédit de trésorerie de 50 000 € à 90 jours : 512 D 50 000 / 5191 C 50 000 ; remboursement avec 500 € d'intérêts : 5191 D 50 000 / 6616 D 500 / 512 C 50 500.",
+   "piege": "Un découvert est le solde créditeur du 512 lui-même ; le 519 enregistre les crédits de trésorerie distincts du compte courant.",
+   "pcg2025": null
+  },
+  {
+   "num": "5191",
+   "label": "Crédit de mobilisation de créances commerciales",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5191 enregistre les crédits obtenus de la banque en contrepartie de la mobilisation d'un ensemble de créances clients (CMCC), sans transfert des créances comme dans l'escompte. Il est crédité lors de la mise à disposition des fonds et débité au remboursement à l'échéance. Il figure au passif dans les concours bancaires courants.",
+   "exemple": "512 D 50 000 / 5191 C 50 000.",
+   "piege": "Contrairement à l'escompte (5114), les créances mobilisées restent dans le compte 411 et le crédit apparaît en dette.",
+   "pcg2025": null
+  },
+  {
+   "num": "5193",
+   "label": "Mobilisation de créances nées à l'étranger",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5193 enregistre les avances bancaires consenties sur des créances détenues sur des clients étrangers (mobilisation de créances nées à l'étranger, MCNE). Il est crédité lors de la mise à disposition des fonds et débité lors du remboursement à l'encaissement de la créance. Il figure au passif dans les concours bancaires courants.",
+   "exemple": "Avance de 80 % sur une créance export de 100 000 € : 512 D 80 000 / 5193 C 80 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5198",
+   "label": "Intérêts courus sur concours bancaires courants",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5198 enregistre, à la clôture, les intérêts courus et non échus sur les crédits de trésorerie enregistrés en 519. Il est crédité par le débit du 6616 et contre-passé à l'ouverture. Il figure au passif dans les concours bancaires courants.",
+   "exemple": "Crédit de 50 000 € à 4 % obtenu le 1er décembre : intérêts courus au 31 décembre 167 € : 6616 D 167 / 5198 C 167.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "52",
+   "label": "Instruments financiers à terme et jetons détenus",
+   "sens": "D/C",
+   "obligatoire": true,
+   "explication": "Le compte 52 enregistre les opérations sur instruments financiers à terme (521 : contrats à terme, swaps, options utilisés en couverture ou en position ouverte, règlement ANC 2015-05) et les jetons numériques détenus (522, règlement ANC 2018-07), ainsi que les jetons auto-détenus (523) et empruntés (524). Il est débité des primes et dépôts versés ou de la valeur des jetons acquis et crédité lors du dénouement ou de la cession ; les variations de valeur à la clôture transitent par 474 et 475. Il figure à l'actif ou au passif selon le solde, dans les comptes financiers.",
+   "exemple": "Prime payée sur une option de change de couverture 1 200 € : 521 D 1 200 / 512 C 1 200.",
+   "piege": "Les gains et pertes sur instruments de couverture sont comptabilisés de manière symétrique à l'élément couvert ; ceux sur positions ouvertes suivent la prudence (perte latente provisionnée, gain latent différé en 475).",
+   "pcg2025": "Les différences d'évaluation sur ces instruments passent par 474 et 475 depuis le règlement ANC 2022-06 (anciens 4786 et 4787)."
+  },
+  {
+   "num": "521",
+   "label": "Instruments financiers à terme",
+   "sens": "D/C",
+   "obligatoire": false,
+   "explication": "Le compte 521 enregistre les flux liés aux contrats financiers à terme (futures, swaps de taux ou de change, options) : primes versées ou reçues, dépôts de garantie, appels de marge. Il est débité des sommes versées et crédité des sommes reçues ou du dénouement ; le résultat des opérations de couverture est rattaché au résultat de l'élément couvert (666/766 ou 6616/768 selon la nature). Il figure dans les comptes financiers, à l'actif ou au passif selon le solde.",
+   "exemple": "Appel de marge versé 2 500 € : 521 D 2 500 / 512 C 2 500.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "522",
+   "label": "Jetons détenus",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 522 enregistre les jetons numériques (actifs numériques, cryptoactifs) détenus par l'entreprise à titre de placement ou de moyen de paiement, évalués à la clôture à leur valeur de marché avec différences d'évaluation en 4742 ou 4752. Il est débité à l'acquisition et crédité à la cession ou à l'utilisation. Il figure dans les comptes financiers à l'actif.",
+   "exemple": "Acquisition de jetons pour 5 000 € : 522 D 5 000 / 512 C 5 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "53",
+   "label": "Caisse",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 53 enregistre les espèces (billets et pièces) détenues par l'entreprise. Il est débité des encaissements en espèces (ventes au comptant, retraits bancaires) et crédité des décaissements en espèces (petites dépenses, versements à la banque). Son solde est obligatoirement débiteur ou nul : une caisse ne peut pas être négative. Il figure à l'actif dans les disponibilités ; les paiements en espèces entre professionnels sont plafonnés à 1 000 € (C. mon. fin., art. L. 112-6 et D. 112-3).",
+   "exemple": "Ventes au comptant de la journée 1 200 € TTC : 530 D 1 200 / 707 C 1 000 / 44571 C 200 ; versement à la banque de 1 000 € : 512 D 1 000 / 530 C 1 000.",
+   "piege": "Un solde créditeur de caisse révèle une erreur ou une omission d'enregistrement : il est inadmissible comptablement et constitue un indice de comptabilité irrégulière pour l'administration fiscale.",
+   "pcg2025": "Le plan 2014 détaillait 531 Caisse siège social (5311 monnaie nationale, 5314 devises), 532 et 533 Caisses succursales ; le plan de comptes 2025 issu du règlement ANC 2022-06 simplifie ces subdivisions, l'entité ventilant librement (530, 531…) — à vérifier dans le plan de comptes ANC 2025."
+  },
+  {
+   "num": "530",
+   "label": "Caisse",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 530 est la subdivision la plus couramment utilisée dans les logiciels et les sujets d'examen pour enregistrer les espèces de l'entreprise lorsqu'il n'y a qu'une seule caisse. Il est débité des encaissements et crédité des décaissements en espèces, et son solde ne peut jamais être créditeur. Il figure à l'actif dans les disponibilités.",
+   "exemple": "Achat de fournitures de bureau en espèces 36 € TTC : 6064 D 30 / 44566 D 6 / 530 C 36.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "531",
+   "label": "Caisse siège social",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 531 enregistre les espèces détenues au siège de l'entreprise lorsque celle-ci distingue plusieurs caisses (siège, succursales) : caisse en monnaie nationale (5311) et caisse en devises (5314). Il fonctionne comme le compte 530 et son solde doit rester débiteur ou nul. Il figure à l'actif dans les disponibilités.",
+   "exemple": "Retrait d'espèces à la banque pour alimenter la caisse du siège 500 € : 531 D 500 / 512 C 500 (ou via 58).",
+   "piege": "",
+   "pcg2025": "Subdivision du plan 2014 ; le plan de comptes 2025 ne détaille plus les caisses par établissement (à vérifier) : son usage reste possible comme subdivision libre du compte 53."
+  },
+  {
+   "num": "532",
+   "label": "Caisse succursale (ou usine) A",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 532 enregistre les espèces détenues dans une succursale ou une usine lorsque l'entreprise suit plusieurs caisses. Il fonctionne comme les comptes 530 et 531 et son solde doit rester débiteur ou nul. Il figure à l'actif dans les disponibilités, regroupé avec les autres caisses.",
+   "exemple": "Ventes au comptant de la succursale 600 € TTC : 532 D 600 / 707 C 500 / 44571 C 100.",
+   "piege": "",
+   "pcg2025": "Subdivision du plan 2014 ; le plan de comptes 2025 ne détaille plus les caisses par établissement (à vérifier) : son usage reste possible comme subdivision libre du compte 53."
+  },
+  {
+   "num": "54",
+   "label": "Régies d'avances et accréditifs",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 54 enregistrait, dans le plan 2014, les fonds confiés à des régisseurs (régies d'avances pour les menues dépenses d'un service ou d'un chantier) et les accréditifs ouverts auprès d'une banque au profit d'un tiers. Il était débité des fonds mis à disposition et crédité lors de la justification des dépenses ou de la clôture de l'accréditif. Il est supprimé par le règlement ANC 2022-06 : les avances aux régisseurs se suivent en 425 (personnel) ou 467, et les accréditifs en 512 ou 517.",
+   "exemple": "Avant 2025 : 54 D 1 000 / 512 C 1 000 ; justification de dépenses 800 € : 6063 D 667 / 44566 D 133 / 54 C 800.",
+   "piege": "",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 425 ou 467 pour les avances aux régisseurs et 512 ou 517 pour les accréditifs."
+  },
+  {
+   "num": "58",
+   "label": "Virements internes",
+   "sens": "–",
+   "obligatoire": true,
+   "explication": "Le compte 58 est un compte de passage utilisé pour les mouvements de fonds entre comptes de trésorerie de l'entreprise (banque vers caisse, banque A vers banque B) afin d'éviter un double enregistrement lorsque les deux comptes sont tenus dans des journaux différents. Il est débité lors de la sortie du premier compte et crédité lors de l'entrée dans le second, de sorte qu'il est soldé une fois les deux mouvements enregistrés. Il ne doit jamais présenter de solde au bilan ; un solde à la clôture signale un virement en cours ou une erreur.",
+   "exemple": "Retrait de 500 € à la banque pour la caisse : au journal de banque 58 D 500 / 512 C 500 ; au journal de caisse 530 D 500 / 58 C 500.",
+   "piege": "Le 58 n'est pas un compte de trésorerie : il doit être soldé, et son solde résiduel à la clôture doit être justifié et apuré.",
+   "pcg2025": null
+  },
+  {
+   "num": "59",
+   "label": "Dépréciations des comptes financiers",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 59 enregistre les dépréciations des valeurs mobilières de placement (590) lorsque leur valeur d'inventaire (cours moyen du dernier mois pour les titres cotés, valeur probable de négociation sinon) est inférieure à leur coût d'acquisition. Il est crédité par le débit du 6866 Dotations aux dépréciations des éléments financiers et débité par le crédit du 7866 lors de la reprise ou de la cession. Il figure à l'actif en déduction des VMP. Le PCG ne prévoit qu'une subdivision, le compte 590 : les numéros 591 à 595 ne correspondent à aucun compte du plan.",
+   "exemple": "Actions acquises 9 000 €, cours moyen de décembre 8 200 € : 6866 D 800 / 5903 C 800.",
+   "piege": "Les plus-values latentes d'une ligne de titres ne compensent pas les moins-values d'une autre ligne : la dépréciation s'apprécie ligne par ligne.",
+   "pcg2025": null
+  },
+  {
+   "num": "590",
+   "label": "Dépréciations des valeurs mobilières de placement",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 590 enregistre la dépréciation des VMP par catégorie : actions (5903), autres titres conférant un droit de propriété (5904), obligations (5906), autres VMP et créances assimilées (5908). Il est crédité par le débit du 6866 lors de la constatation ou de l'augmentation de la dépréciation et débité par le crédit du 7866 lors de sa diminution, de sa reprise ou de la cession des titres. Il figure à l'actif en déduction du poste Valeurs mobilières de placement.",
+   "exemple": "Cession de titres précédemment dépréciés de 800 € : reprise 5903 D 800 / 7866 C 800, en plus de l'écriture de cession.",
+   "piege": "Dotation et reprise sur VMP relèvent du résultat financier (6866/7866), jamais de l'exploitation (6817/7817).",
+   "pcg2025": null
+  },
+  {
+   "num": "5903",
+   "label": "Actions",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5903 enregistre la dépréciation des actions de placement (503) dont la valeur d'inventaire est inférieure au coût d'acquisition. Il est crédité par le débit du 6866 et débité par le crédit du 7866 lors de la reprise ou de la cession. Il figure à l'actif en déduction du compte 503.",
+   "exemple": "6866 D 800 / 5903 C 800.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5904",
+   "label": "Autres titres conférant un droit de propriété",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5904 enregistre la dépréciation des parts d'OPCVM et autres titres de propriété de placement (504) dont la valeur liquidative est inférieure au coût. Il est crédité par le débit du 6866 et débité par le crédit du 7866. Il figure à l'actif en déduction du compte 504.",
+   "exemple": "Parts de FCP acquises 50 000 €, valeur liquidative 48 500 € : 6866 D 1 500 / 5904 C 1 500.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5906",
+   "label": "Obligations",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5906 enregistre la dépréciation des obligations de placement (506) dont le cours moyen du dernier mois est inférieur au coût d'acquisition (hausse des taux, risque émetteur). Il est crédité par le débit du 6866 et débité par le crédit du 7866. Il figure à l'actif en déduction du compte 506.",
+   "exemple": "Obligations acquises 50 000 €, cours moyen de décembre 47 000 € : 6866 D 3 000 / 5906 C 3 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "5908",
+   "label": "Autres valeurs mobilières de placement et créances assimilées",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 5908 enregistre la dépréciation des autres VMP (508) : titres de créances négociables, bons de souscription, créances assimilées. Il est crédité par le débit du 6866 et débité par le crédit du 7866. Il figure à l'actif en déduction du compte 508.",
+   "exemple": "Bons de souscription acquis 3 000 €, valeur 1 800 € : 6866 D 1 200 / 5908 C 1 200.",
+   "piege": "",
+   "pcg2025": null
+  }
+ ]
+}
