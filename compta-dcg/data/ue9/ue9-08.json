@@ -1,0 +1,801 @@
+{
+ "id": "ue9-08",
+ "ue": "UE9",
+ "ordre": 8,
+ "title": "Financement, placements, subventions et effets de commerce",
+ "resume": "Tableau d'amortissement d'un emprunt, valeurs mobilières de placement, subventions d'exploitation et d'investissement (747), lettre de change et billet à ordre, escompte, cautions et opérations en devises.",
+ "duree": "80 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "L'emprunt indivis : tableau d'amortissement",
+   "html": "<p>Un <b>emprunt indivis</b> est contracté auprès d'un seul prêteur (la banque), par opposition à l'emprunt obligataire divisé entre de nombreux souscripteurs. Le <b>tableau d'amortissement</b> détaille, pour chaque échéance : le <b>capital restant dû</b> en début de période, les <b>intérêts</b> (capital restant dû × taux), l'<b>amortissement</b> (part de capital remboursée) et l'<b>annuité</b> (intérêts + amortissement). Deux modalités classiques :</p><ul><li><b>Amortissements constants</b> : capital ÷ nombre d'échéances chaque année. Les intérêts et donc les annuités diminuent. Emprunt de 100 000 € à 4 % sur 5 ans : amortissement 20 000 ; annuités 24 000, 23 200, 22 400, 21 600, 20 800.</li><li><b>Annuités constantes</b> : même somme à chaque échéance, <span class=\"mono\">a = C × i ÷ (1 − (1 + i)^−n)</span>. Pour 100 000 € à 4 % sur 5 ans : a = 4 000 ÷ (1 − 1,04^−5) = 4 000 ÷ 0,17807 = <span class=\"mono\">22 462,71 €</span>. Année 1 : intérêts 4 000, amortissement 18 462,71 ; année 2 : capital restant 81 537,29, intérêts 3 261,49, amortissement 19 201,22. La part d'intérêts baisse, la part de capital monte.</li></ul><p>Vérifications : la somme des amortissements égale le capital emprunté ; le dernier amortissement égale le dernier capital restant dû.</p>"
+  },
+  {
+   "h": "Les écritures de l'emprunt",
+   "html": "<p>Au <b>déblocage</b> : débit 512, crédit <code>164</code> Emprunts auprès des établissements de crédit. Les frais de dossier sont des services bancaires (<code>627</code>) et l'assurance emprunteur une prime (<code>616</code>).</p><p>À chaque <b>échéance</b> : débit 164 pour l'amortissement, débit <code>661</code> (6611) pour les intérêts, crédit 512 pour l'annuité. Seuls les intérêts sont une charge ; le remboursement du capital est un simple mouvement de bilan.</p><p>À la <b>clôture</b>, si l'échéance ne coïncide pas avec la fin de l'exercice, on rattache les <b>intérêts courus non échus</b> : débit 661, crédit <code>1648</code> Intérêts courus sur emprunts auprès des établissements de crédit (compte issu du PCG 2025 ; avant 2025 : 16884). Écriture contre-passée au 1er janvier. Exemple : emprunt de 100 000 € à 4 % débloqué le 1er octobre N, première échéance le 30 septembre N+1 : intérêts courus au 31 décembre = 100 000 × 4 % × 3/12 = 1 000.</p><p>Au bilan, la dette 164 figure dans les emprunts et dettes financières ; l'annexe indique la part à moins d'un an.</p>",
+   "entry": [
+    {
+     "a": "164",
+     "d": 18462.71,
+     "c": 0
+    },
+    {
+     "a": "661",
+     "d": 4000,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 22462.71
+    }
+   ],
+   "lib": "Première annuité constante de l'emprunt Nordal"
+  },
+  {
+   "h": "Les valeurs mobilières de placement",
+   "html": "<p>Les <b>VMP</b> sont des titres acquis pour <b>placer un excédent de trésorerie</b> à court terme et en tirer un rendement : <code>503</code> actions, <code>506</code> obligations, <code>508</code> autres (bons, parts d'OPCVM). Elles se distinguent des titres immobilisés (26, 27), détenus durablement.</p><ul><li><b>Acquisition</b> au prix d'achat ; les frais (courtage, commissions) sont, au choix, incorporés au coût ou passés en charges en <code>627</code> avec leur TVA (PCG, art. 221-1 s.). Exemple : 200 actions à 50 € = 10 000, courtage 50 HT + 10 de TVA.</li><li><b>Revenus</b> : dividendes et coupons en <code>764</code> Revenus des VMP ; intérêts courus à la clôture en <code>5088</code>.</li><li><b>Dépréciation</b> à l'inventaire si le cours moyen du dernier mois est inférieur au coût : <code>6866</code> / <code>590</code>, reprise par <code>7866</code>.</li><li><b>Cession</b> : on constate seulement le <b>résultat net</b> : débit 512 pour le prix, crédit 503 pour le coût d'achat, et la différence au crédit de <code>7673</code> Produits nets sur cessions de VMP (plus-value) ou au débit de <code>6673</code> Charges nettes sur cessions de VMP (moins-value). Toute dépréciation existante sur les titres cédés est reprise.</li></ul><p>Les VMP sont dans le résultat <b>financier</b>, à la différence des cessions d'immobilisations corporelles (657/757, exploitation).</p>",
+   "entry": [
+    {
+     "a": "503",
+     "d": 10000,
+     "c": 0
+    },
+    {
+     "a": "627",
+     "d": 50,
+     "c": 0
+    },
+    {
+     "a": "44566",
+     "d": 10,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 10060
+    }
+   ],
+   "lib": "Achat de 200 actions Bêta, frais en charges"
+  },
+  {
+   "h": "Subventions d'exploitation et d'investissement",
+   "html": "<p>Une <b>subvention d'exploitation</b> compense des charges ou un prix de vente insuffisant (aide à l'embauche, aide énergie). C'est un produit d'exploitation de l'exercice : débit <code>441</code> État, subventions à recevoir, crédit <code>741</code> Subventions d'exploitation ; encaissement débit 512, crédit 441. La <b>subvention d'équilibre</b>, qui comble une perte, va en <code>742</code> (PCG 2025 ; avant 2025 : 7715).</p><p>Une <b>subvention d'investissement</b> finance l'acquisition d'une immobilisation. Elle n'est pas un produit immédiat : à l'octroi, débit 441, crédit <code>131</code> Subventions d'équipement (capitaux propres). Elle est ensuite <b>reprise</b> au résultat au même rythme que l'amortissement du bien financé (ou par dixièmes si le bien n'est pas amortissable, PCG art. 312-1 ; CGI art. 42 septies) : débit <code>139</code> Subventions d'investissement inscrites au compte de résultat, crédit <code>747</code> Quote-part des subventions d'investissement virée au résultat de l'exercice. Le compte 747 est un produit d'<b>exploitation</b> depuis le PCG 2025 ; avant 2025 on utilisait le compte exceptionnel 777, supprimé.</p><p>Exemple : subvention de 15 000 € pour une machine de 50 000 € amortie en linéaire sur 5 ans : reprise annuelle 15 000 ÷ 5 = 3 000 (soit 30 % de la dotation de 10 000). Quand la subvention est totalement reprise, on solde : débit 131, crédit 139 pour 15 000.</p>",
+   "entry": [
+    {
+     "a": "139",
+     "d": 3000,
+     "c": 0
+    },
+    {
+     "a": "747",
+     "d": 0,
+     "c": 3000
+    }
+   ],
+   "lib": "Quote-part de subvention d'investissement virée au résultat"
+  },
+  {
+   "h": "Lettre de change et billet à ordre",
+   "html": "<p>Un <b>effet de commerce</b> est un titre négociable qui matérialise une créance à échéance. La <b>lettre de change</b> (traite, C. com., art. L. 511-1 s.) est émise par le créancier, le <b>tireur</b>, qui donne l'ordre à son débiteur, le <b>tiré</b>, de payer à l'échéance au <b>bénéficiaire</b> (souvent le tireur lui-même) ; le tiré l'<b>accepte</b> par sa signature. Le <b>billet à ordre</b> (art. L. 512-1 s.) est au contraire émis par le débiteur, le <b>souscripteur</b>, qui s'engage à payer. Aujourd'hui, les effets circulent sous forme dématérialisée (LCR, BOR).</p><p>Chez le fournisseur (tireur ou bénéficiaire), la créance change de nature : débit <code>413</code> Clients, effets à recevoir, crédit 411. Chez le client (tiré ou souscripteur) : débit 401, crédit <code>403</code> Fournisseurs, effets à payer. À l'échéance, le fournisseur remet l'effet à l'encaissement (<code>5113</code> Effets à l'encaissement, puis 512 à réception de l'avis de crédit, commissions en 627 avec TVA) et le client voit son compte débité : débit 403, crédit 512.</p><p>Si l'effet revient <b>impayé</b>, le fournisseur reconstitue sa créance sur le client, augmentée des frais facturés par la banque qu'il lui refacture : débit 411 (ou 416), crédit 413 ou 512.</p>",
+   "entry": [
+    {
+     "a": "413",
+     "d": 6000,
+     "c": 0
+    },
+    {
+     "a": "411",
+     "d": 0,
+     "c": 6000
+    }
+   ],
+   "lib": "Acceptation d'une traite par le client Hekla, échéance 30 juin"
+  },
+  {
+   "h": "La remise à l'escompte",
+   "html": "<p>Plutôt que d'attendre l'échéance, le porteur peut <b>escompter</b> l'effet : la banque lui en avance le montant, moins des <b>agios</b> : l'<b>escompte</b> proprement dit (intérêts calculés sur le nominal, au taux d'escompte, pour le nombre de jours jusqu'à l'échéance, en général sur 360 jours ; exonéré de TVA) et des <b>commissions</b> (soumises à TVA). C'est un <b>crédit de trésorerie à court terme</b>.</p><ol><li>Remise : débit <code>5114</code> Effets à l'escompte, crédit 413, pour le nominal.</li><li>Avis de crédit : débit 512 (net), débit <code>6616</code> Intérêts bancaires et sur opérations de financement (escompte), débit <code>627</code> et <code>44566</code> (commission et sa TVA), crédit 5114 (nominal).</li></ol><p>Exemple : traite de 12 000 € remise 60 jours avant l'échéance, taux d'escompte 9 %, commission 20 € HT. Escompte = 12 000 × 9 % × 60/360 = 180. Agios = 180 + 20 + 4 de TVA = 204. Net porté en compte : 11 796.</p><p>Si l'effet escompté revient <b>impayé</b>, la banque reprend le nominal majoré de frais sur le compte de l'entreprise, qui reconstitue sa créance : débit 411 (nominal + frais), crédit 512. Les effets escomptés non échus à la clôture sont mentionnés en engagements hors bilan dans l'annexe : la créance a été cédée mais le risque d'impayé subsiste.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 11796,
+     "c": 0
+    },
+    {
+     "a": "6616",
+     "d": 180,
+     "c": 0
+    },
+    {
+     "a": "627",
+     "d": 20,
+     "c": 0
+    },
+    {
+     "a": "44566",
+     "d": 4,
+     "c": 0
+    },
+    {
+     "a": "5114",
+     "d": 0,
+     "c": 12000
+    }
+   ],
+   "lib": "Avis de crédit, escompte de la traite Hekla"
+  },
+  {
+   "h": "Cautions, dépôts et garanties",
+   "html": "<p>Un <b>dépôt de garantie</b> ou une <b>caution</b> versée (garantie de loyer, dépôt auprès d'un fournisseur d'énergie) est une somme <b>récupérable</b> à la fin du contrat : ce n'est pas une charge mais une immobilisation financière, <code>275</code> Dépôts et cautionnements versés (débit 275, crédit 512). À la restitution : débit 512, crédit 275. Si le bailleur en conserve une partie pour réparations, cette part devient une charge (615).</p><p>Symétriquement, l'entreprise qui <b>reçoit</b> un dépôt (un bailleur, un loueur de matériel) constate une dette à long terme en <code>165</code> Dépôts et cautionnements reçus : débit 512, crédit 165.</p><p>Les <b>cautions données</b> par l'entreprise pour garantir la dette d'un tiers (par exemple la société mère pour sa filiale) et les <b>garanties reçues</b> ne donnent lieu à aucune écriture au bilan tant qu'elles ne sont pas appelées : ce sont des <b>engagements hors bilan</b>, à mentionner dans l'annexe (C. com., art. R. 123-196). Si la caution est appelée, l'entreprise paie et constate une créance sur le débiteur défaillant, dépréciée s'il y a lieu.</p>",
+   "entry": [
+    {
+     "a": "275",
+     "d": 4000,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 4000
+    }
+   ],
+   "lib": "Dépôt de garantie versé au bailleur"
+  },
+  {
+   "h": "Opérations en devises : les bases",
+   "html": "<p>Une facture libellée en monnaie étrangère est convertie en euros au <b>cours du jour</b> de l'opération (PCG, art. 420-1 s.). Une vente de 10 000 $ quand 1 $ = 0,92 € donne une créance de 9 200 € (débit 411, crédit 707).</p><p>À la <b>clôture</b>, les créances et dettes en devises non réglées sont réévaluées au <b>cours de clôture</b> (art. 420-5). L'écart ne passe pas par le résultat : il est inscrit dans un compte transitoire de bilan, l'<b>écart de conversion</b>. Si le cours tombe à 0,90 €, la créance ne vaut plus que 9 000 : <b>perte latente</b> de 200 → débit <code>476</code> Différences de conversion, actif, crédit 411 ; par prudence, une <b>provision pour perte de change</b> est dotée : débit <code>6865</code>, crédit <code>1515</code>. Si le cours monte, le <b>gain latent</b> va au crédit de <code>477</code> Différences de conversion, passif (débit 411), sans provision ni produit : on n'anticipe pas les gains.</p><p>Au 1er janvier, les écarts 476/477 sont contre-passés. Au <b>règlement</b>, l'écart définitif entre le montant encaissé et la créance d'origine est une <b>perte de change</b> réalisée (<code>666</code>) ou un <b>gain de change</b> (<code>766</code>), et la provision éventuelle est reprise (<code>7865</code>). Ce traitement est approfondi en UE10.</p>",
+   "entry": [
+    {
+     "a": "476",
+     "d": 200,
+     "c": 0
+    },
+    {
+     "a": "411",
+     "d": 0,
+     "c": 200
+    }
+   ],
+   "lib": "Écart de conversion actif sur la créance en dollars (puis 6865 / 1515 pour 200)"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Comptes 164, 1648, 661, 503/506, 5088, 590, 6673/7673, 741/742/747, 131/139, 441, 403/413, 5113/5114, 6616, 275/165, 476/477, 1515, 666/766"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06",
+   "note": "Compte 747 remplaçant 777, 742 remplaçant 7715, 1648 remplaçant 16884 ; résultat exceptionnel restreint"
+  },
+  {
+   "ref": "PCG, art. 312-1",
+   "note": "Subventions d'investissement : inscription en capitaux propres et étalement au rythme de l'amortissement"
+  },
+  {
+   "ref": "CGI, art. 42 septies",
+   "note": "Régime fiscal d'étalement des subventions d'équipement"
+  },
+  {
+   "ref": "PCG, art. 221-1 s.",
+   "note": "Évaluation des titres : coût d'entrée, option sur les frais, valeur d'inventaire"
+  },
+  {
+   "ref": "PCG, art. 420-1 à 420-7",
+   "note": "Conversion des opérations en monnaies étrangères, écarts de conversion, provision pour perte de change"
+  },
+  {
+   "ref": "C. com., art. L. 511-1 s. et L. 512-1 s.",
+   "note": "Lettre de change et billet à ordre"
+  },
+  {
+   "ref": "CGI, art. 261 C, 1°",
+   "note": "Exonération de TVA des intérêts d'escompte ; commissions bancaires taxables"
+  },
+  {
+   "ref": "C. com., art. R. 123-196",
+   "note": "Engagements hors bilan (effets escomptés non échus, cautions) mentionnés dans l'annexe"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Dans une échéance d'emprunt, quelle partie constitue une charge pour l'entreprise ?",
+   "opts": [
+    "L'annuité entière",
+    "Le remboursement du capital",
+    "Les intérêts seulement",
+    "Aucune, c'est un mouvement de trésorerie"
+   ],
+   "a": 2,
+   "why": "Seuls les intérêts (661) appauvrissent l'entreprise : ils rémunèrent le prêteur. Le remboursement du capital éteint une dette (débit 164) : il sort de la trésorerie sans être une charge. L'annuité est la somme des deux.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 1,
+   "q": "Emprunt de 100 000 € à 4 % remboursable en 5 amortissements constants annuels. Quel est le montant de la 3e annuité (amortissement + intérêts) ?",
+   "a": 22400,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Amortissement constant = 100 000 ÷ 5 = 20 000. Capital restant dû au début de l'année 3 = 100 000 − 2 × 20 000 = 60 000. Intérêts = 60 000 × 4 % = 2 400. Annuité = 20 000 + 2 400 = 22 400 €. Les annuités décroissent de 800 par an (20 000 × 4 %).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Emprunt de 100 000 € à 4 % remboursable par 5 annuités constantes de fin d'année. Formule : a = C × i ÷ (1 − (1 + i)^−n), avec 1,04^−5 = 0,82193. Calculez l'annuité (arrondie au centime).",
+   "a": 22462.71,
+   "unit": "€",
+   "tol": 1,
+   "why": "a = 100 000 × 0,04 ÷ (1 − 0,82193) = 4 000 ÷ 0,17807 = 22 462,71 €. Vérification : 5 × 22 462,71 = 112 313,55, soit 12 313,55 d'intérêts totaux, plus que les 12 000 d'intérêts des amortissements constants, car le capital est remboursé plus lentement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Même emprunt (100 000 € à 4 %, annuité constante de 22 462,71 €). Quel est le montant des intérêts de la 2e année (arrondi au centime) ?",
+   "a": 3261.49,
+   "unit": "€",
+   "tol": 1,
+   "why": "Année 1 : intérêts 4 000, amortissement 22 462,71 − 4 000 = 18 462,71. Capital restant dû = 100 000 − 18 462,71 = 81 537,29. Intérêts année 2 = 81 537,29 × 4 % = 3 261,49 €. L'amortissement de l'année 2 vaut alors 19 201,22 : il augmente d'un facteur (1 + i) chaque année.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Enregistrez la 1re annuité constante de l'emprunt précédent, prélevée le 31 décembre : annuité 22 462,71 € dont intérêts 4 000 € et amortissement 18 462,71 €.",
+   "lib": "Première annuité",
+   "palette": [
+    "164",
+    "661",
+    "512",
+    "1648",
+    "627"
+   ],
+   "sol": [
+    [
+     {
+      "a": "164",
+      "d": 18462.71,
+      "c": 0
+     },
+     {
+      "a": "661",
+      "d": 4000,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 22462.71
+     }
+    ]
+   ],
+   "why": "Le capital remboursé réduit la dette (débit 164 : 18 462,71), les intérêts sont une charge financière (débit 661 : 4 000), le total sort de la banque (crédit 512 : 22 462,71). L'échéance tombant à la clôture, il n'y a pas d'intérêts courus (1648) à constater.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Emprunt de 60 000 € à 5 % débloqué le 1er mai N, intérêts payables chaque 30 avril. Quelle écriture au 31 décembre N ?",
+   "opts": [
+    "Débit 661 : 2 000 ; crédit 1648 : 2 000",
+    "Débit 661 : 3 000 ; crédit 512 : 3 000",
+    "Débit 1648 : 2 000 ; crédit 661 : 2 000",
+    "Aucune, les intérêts ne sont dus qu'en avril"
+   ],
+   "a": 0,
+   "why": "Intérêts courus du 1er mai au 31 décembre = 60 000 × 5 % × 8/12 = 2 000 €, charge de N rattachée par le crédit de 1648 Intérêts courus sur emprunts auprès des établissements de crédit (PCG 2025). Rien n'est décaissé (pas de 512), et ne rien enregistrer violerait l'indépendance des exercices.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "À propos d'un emprunt remboursable par annuités constantes, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'annuité est identique à chaque échéance",
+    "La part d'intérêts diminue au fil des échéances",
+    "La part de capital remboursé diminue au fil des échéances",
+    "La somme des amortissements égale le capital emprunté",
+    "Le total des intérêts versés est inférieur à celui d'un emprunt à amortissements constants de même durée et de même taux"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "À annuité constante, les intérêts (calculés sur un capital restant dû décroissant) baissent, donc la part de capital augmente d'une échéance à l'autre. La somme des amortissements reconstitue toujours le capital. Comme le capital est remboursé plus lentement qu'en amortissements constants, le total des intérêts est au contraire plus élevé.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 1,
+   "q": "Achat de 200 actions cotées pour placer un excédent de trésorerie : 50 € l'action, courtage 50 € HT, TVA 10 €, réglé par la banque. L'entreprise passe les frais en charges.",
+   "lib": "Acquisition de VMP",
+   "palette": [
+    "503",
+    "261",
+    "627",
+    "44566",
+    "512",
+    "764"
+   ],
+   "sol": [
+    [
+     {
+      "a": "503",
+      "d": 10000,
+      "c": 0
+     },
+     {
+      "a": "627",
+      "d": 50,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 10,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 10060
+     }
+    ]
+   ],
+   "why": "Les titres de placement vont en 503 Actions (VMP) pour le prix d'achat 10 000, et non en 261 qui suppose une détention durable avec influence. Les frais passés en charges vont en 627 avec leur TVA déductible. Total débit 10 060 = crédit 512.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 221-1 s.",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Les 200 actions (coût 10 000 €, aucune dépréciation) sont revendues 57,50 € l'unité, soit 11 500 € encaissés en banque (on néglige les frais).",
+   "lib": "Cession de VMP",
+   "palette": [
+    "512",
+    "503",
+    "7673",
+    "6673",
+    "757",
+    "657"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 11500,
+      "c": 0
+     },
+     {
+      "a": "503",
+      "d": 0,
+      "c": 10000
+     },
+     {
+      "a": "7673",
+      "d": 0,
+      "c": 1500
+     }
+    ]
+   ],
+   "why": "Pour les VMP, on constate le résultat net de cession : le prix encaissé (débit 512 : 11 500) contre le coût d'achat sorti du compte de titres (crédit 503 : 10 000), la plus-value de 1 500 allant en 7673 Produits nets sur cessions de VMP (résultat financier). Une moins-value aurait été débitée en 6673. Les comptes 657/757 sont réservés aux immobilisations corporelles et incorporelles.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Une entreprise détient 100 obligations (VMP, compte 506) achetées 1 000 € l'unité, qu'elle revend 950 € l'unité. Quelle écriture ?",
+   "opts": [
+    "Débit 512 : 95 000 ; débit 6673 : 5 000 ; crédit 506 : 100 000",
+    "Débit 512 : 95 000 ; crédit 506 : 95 000",
+    "Débit 512 : 95 000 ; débit 657 : 5 000 ; crédit 506 : 100 000",
+    "Débit 512 : 95 000 ; débit 6866 : 5 000 ; crédit 506 : 100 000"
+   ],
+   "a": 0,
+   "why": "La moins-value de 5 000 est une charge nette sur cession de VMP (6673). Le compte de titres doit être soldé pour son coût d'achat (100 000), pas pour le prix de vente. 657 concerne les immobilisations corporelles et incorporelles, et 6866 est une dotation aux dépréciations, qui constate une perte latente et non une perte réalisée.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles affirmations sur les valeurs mobilières de placement sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elles sont acquises pour placer un excédent de trésorerie à court terme",
+    "Elles figurent en classe 5",
+    "Leurs dividendes sont enregistrés en 764",
+    "Elles s'amortissent sur leur durée de détention",
+    "Leur cession passe par les comptes 657 et 757"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les VMP (50) sont des placements de trésorerie, classés en comptes financiers, dont les revenus vont en 764. Elles ne s'amortissent jamais (elles se déprécient en 590 si leur valeur baisse) et leur cession relève du résultat financier (6673/7673), pas des comptes 657/757 réservés aux immobilisations corporelles et incorporelles.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 221-1 s.",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "La société Orvalis reçoit la notification d'une aide à l'embauche de 4 000 € de l'État, qui sera versée dans deux mois. Écriture à la notification :",
+   "opts": [
+    "Débit 441 : 4 000 ; crédit 741 : 4 000",
+    "Débit 512 : 4 000 ; crédit 131 : 4 000",
+    "Débit 441 : 4 000 ; crédit 131 : 4 000",
+    "Débit 441 : 4 000 ; crédit 747 : 4 000"
+   ],
+   "a": 0,
+   "why": "Une aide qui compense des charges de personnel est une subvention d'exploitation : produit de l'exercice en 741, avec créance sur l'État en 441 tant qu'elle n'est pas versée. 131 est réservé aux subventions d'investissement qui financent une immobilisation, et 747 à la quote-part annuelle de ces dernières.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Deux mois après la notification de l'aide à l'embauche de 4 000 € (comptabilisée en 441/741), la société Orvalis reçoit le virement de l'État. Écriture à l'encaissement :",
+   "opts": [
+    "Débit 512 : 4 000 ; crédit 441 : 4 000",
+    "Débit 512 : 4 000 ; crédit 741 : 4 000",
+    "Débit 441 : 4 000 ; crédit 512 : 4 000",
+    "Débit 512 : 4 000 ; crédit 131 : 4 000"
+   ],
+   "a": 0,
+   "why": "Le produit (741) a été constaté à la notification, date à laquelle la subvention est acquise. L'encaissement ne fait qu'éteindre la créance sur l'État : débit 512, crédit 441. Créditer à nouveau 741 compterait le produit deux fois, et 131 est réservé aux subventions d'investissement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Une collectivité verse à la société Mirval une subvention destinée à compenser la perte globale de son exercice, sans lien avec une charge ou un investissement précis. Sous le PCG 2025, cette subvention est enregistrée :",
+   "opts": [
+    "Au crédit de 742 Subventions d'équilibre",
+    "Au crédit de 7715 Subventions d'équilibre",
+    "Au crédit de 131 Subventions d'équipement",
+    "Au crédit de 747 Quote-part des subventions d'investissement"
+   ],
+   "a": 0,
+   "why": "Une subvention qui comble un déficit est une subvention d'équilibre. Le règlement ANC n° 2022-06 l'a sortie du résultat exceptionnel : le compte 7715 est supprimé et remplacé par 742, dans le poste 74 Subventions, à côté de 741 (exploitation) et 747 (quote-part des subventions d'investissement). 131 suppose le financement d'une immobilisation.",
+   "src": "Règlement ANC n° 2022-06 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "La société Berlan obtient une subvention d'investissement de 15 000 € pour financer une machine de 50 000 € amortie en linéaire sur 5 ans, mise en service le 1er janvier N. Enregistrez, au 31 décembre N, la quote-part de subvention virée au résultat.",
+   "lib": "Quote-part de subvention d'investissement",
+   "palette": [
+    "139",
+    "131",
+    "747",
+    "777",
+    "441",
+    "6811"
+   ],
+   "sol": [
+    [
+     {
+      "a": "139",
+      "d": 3000,
+      "c": 0
+     },
+     {
+      "a": "747",
+      "d": 0,
+      "c": 3000
+     }
+    ]
+   ],
+   "why": "La subvention est reprise au rythme de l'amortissement du bien : 15 000 × (10 000 ÷ 50 000) = 15 000 ÷ 5 = 3 000 € par an (PCG, art. 312-1). Débit 139 Subventions d'investissement inscrites au compte de résultat, crédit 747 (produit d'exploitation depuis le PCG 2025, à la place de l'ancien 777). Le compte 131 n'est soldé qu'à la fin, contre 139.",
+   "src": "PCG, art. 312-1 ; PCG 2025, art. 1121-1 (plan de comptes) ; règlement ANC n° 2022-06",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Subvention d'investissement de 24 000 € finançant un matériel de 60 000 € amorti en linéaire sur 5 ans, mis en service le 1er octobre N. Quelle quote-part de subvention est virée au résultat en N ?",
+   "a": 1200,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Dotation N = 60 000 × 20 % × 3/12 = 3 000. La subvention représente 24 000 ÷ 60 000 = 40 % du bien ; quote-part N = 40 % × 3 000 = 1 200 € (ou 24 000 × 20 % × 3/12). La reprise suit exactement le prorata de l'amortissement.",
+   "src": "PCG, art. 312-1 ; CGI, art. 42 septies",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Sous le PCG 2025, la quote-part de subvention d'investissement virée au résultat est :",
+   "opts": [
+    "Un produit exceptionnel (777)",
+    "Un produit d'exploitation (747)",
+    "Un produit financier (767)",
+    "Une diminution des dotations aux amortissements (6811)"
+   ],
+   "a": 1,
+   "why": "Le règlement ANC n° 2022-06 a sorti les subventions d'investissement du résultat exceptionnel : la quote-part est un produit d'exploitation en 747. Le compte 777 est supprimé depuis les exercices ouverts en 2025. Diminuer la dotation violerait le principe de non-compensation.",
+   "src": "Règlement ANC n° 2022-06 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Dans une lettre de change, qui est le tiré ?",
+   "opts": [
+    "Le créancier qui émet l'effet",
+    "Le débiteur à qui l'ordre de payer est donné",
+    "La banque qui escompte l'effet",
+    "La personne qui recevra le paiement"
+   ],
+   "a": 1,
+   "why": "Le tireur (créancier, souvent le fournisseur) émet la traite et donne l'ordre au tiré (son débiteur, le client) de payer à l'échéance au bénéficiaire (C. com., art. L. 511-1). Le tiré manifeste son engagement par l'acceptation. Dans le billet à ordre, c'est au contraire le débiteur, souscripteur, qui émet le titre.",
+   "src": "C. com., art. L. 511-1",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 1,
+   "q": "La société Hekla (client) accepte une lettre de change de 6 000 € tirée par son fournisseur Nordal en règlement d'une facture. Enregistrez l'acceptation chez Hekla.",
+   "lib": "Acceptation d'une traite (chez le tiré)",
+   "palette": [
+    "401",
+    "403",
+    "411",
+    "413",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "401",
+      "d": 6000,
+      "c": 0
+     },
+     {
+      "a": "403",
+      "d": 0,
+      "c": 6000
+     }
+    ]
+   ],
+   "why": "Chez le client, la dette fournisseur ordinaire (401) devient une dette matérialisée par un effet : 403 Fournisseurs, effets à payer. Aucun décaissement à ce stade : la banque ne sera créditée qu'à l'échéance. Les comptes 411/413 sont ceux du fournisseur Nordal.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 511-1 s.",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Chez le fournisseur Nordal, la même traite acceptée par Hekla s'enregistre :",
+   "opts": [
+    "Débit 413 : 6 000 ; crédit 411 : 6 000",
+    "Débit 411 : 6 000 ; crédit 413 : 6 000",
+    "Débit 512 : 6 000 ; crédit 411 : 6 000",
+    "Débit 403 : 6 000 ; crédit 401 : 6 000"
+   ],
+   "a": 0,
+   "why": "La créance ordinaire (411) se transforme en effet à recevoir (413), négociable et escomptable. L'argent n'est pas encore encaissé (pas de 512). Les comptes 401/403 sont ceux du client.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Nordal remet à l'escompte une traite de 12 000 € 60 jours avant l'échéance. Taux d'escompte 9 % (année de 360 jours), commission 20 € HT (TVA 20 %). Quel montant net la banque porte-t-elle au crédit du compte de Nordal ?",
+   "a": 11796,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Escompte = 12 000 × 9 % × 60/360 = 180 (exonéré de TVA). Commission 20 + TVA 4 = 24. Agios totaux = 204. Net = 12 000 − 204 = 11 796 €. Le coût réel de ce financement sur 60 jours est de 200 HT, la TVA sur la commission étant récupérée.",
+   "src": "CGI, art. 261 C, 1° ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Enregistrez chez Nordal l'avis de crédit de la banque pour l'escompte précédent : nominal 12 000 € (déjà porté en 5114), escompte 180 €, commission 20 € HT, TVA 4 €, net 11 796 €.",
+   "lib": "Avis de crédit d'escompte",
+   "palette": [
+    "512",
+    "6616",
+    "627",
+    "44566",
+    "5114",
+    "413",
+    "665"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 11796,
+      "c": 0
+     },
+     {
+      "a": "6616",
+      "d": 180,
+      "c": 0
+     },
+     {
+      "a": "627",
+      "d": 20,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 4,
+      "c": 0
+     },
+     {
+      "a": "5114",
+      "d": 0,
+      "c": 12000
+     }
+    ]
+   ],
+   "why": "La banque crédite le net (débit 512 : 11 796). L'escompte est un intérêt, charge financière en 6616 (exonérée de TVA) ; la commission est un service bancaire en 627 avec sa TVA en 44566. Le compte 5114 Effets à l'escompte, débité du nominal à la remise, est soldé. Total débit 12 000 = crédit. 665 est l'escompte de règlement accordé aux clients, autre notion.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 261 C, 1°",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles affirmations sur l'escompte d'un effet de commerce sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'intérêt d'escompte est enregistré en 6616",
+    "La commission bancaire est enregistrée en 627 et soumise à TVA",
+    "L'escompte d'effet est enregistré en 665 Escomptes accordés",
+    "Si l'effet escompté revient impayé, l'entreprise reste tenue envers la banque",
+    "L'escompte supprime tout risque pour l'entreprise"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Les agios se décomposent en intérêts (6616, exonérés de TVA) et commissions (627, taxables). Le compte 665 concerne l'escompte de règlement accordé à un client pour paiement anticipé, qui n'a rien à voir avec la remise d'effets. L'escompte est un crédit : en cas d'impayé du tiré, la banque se retourne contre l'entreprise, d'où la mention des effets escomptés non échus en engagements hors bilan.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. R. 123-196",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La traite de 12 000 € escomptée par Nordal revient impayée à l'échéance. La banque débite le compte de Nordal de 12 000 € plus 30 € de frais d'impayé, que Nordal refacture au client Hekla. Écriture chez Nordal :",
+   "opts": [
+    "Débit 411 : 12 030 ; crédit 512 : 12 030",
+    "Débit 413 : 12 000 ; débit 627 : 30 ; crédit 512 : 12 030",
+    "Débit 654 : 12 030 ; crédit 512 : 12 030",
+    "Débit 5114 : 12 000 ; crédit 512 : 12 000"
+   ],
+   "a": 0,
+   "why": "La créance sur Hekla, éteinte lors de l'escompte, est reconstituée pour le nominal majoré des frais que Nordal lui refacture : débit 411 (ou 416 si le client est devenu douteux), crédit 512. L'effet n'existe plus (ni 413 ni 5114), les frais ne sont pas une charge de Nordal puisqu'ils sont répercutés, et la créance n'est pas encore irrécouvrable (654).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Un billet à ordre se distingue de la lettre de change parce que :",
+   "opts": [
+    "Il est émis par le débiteur qui s'engage à payer",
+    "Il n'est jamais escomptable",
+    "Il est émis par la banque",
+    "Il n'a pas d'échéance"
+   ],
+   "a": 0,
+   "why": "Le billet à ordre (C. com., art. L. 512-1) est souscrit par le débiteur lui-même, qui promet de payer le bénéficiaire à l'échéance ; la lettre de change est au contraire émise par le créancier. Les deux sont escomptables et comportent une échéance ; la comptabilisation (403/413) est identique.",
+   "src": "C. com., art. L. 512-1",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "La société Télia verse 3 000 € de dépôt de garantie à son nouveau bailleur, remboursable à la sortie des locaux. Écriture :",
+   "opts": [
+    "Débit 613 : 3 000 ; crédit 512 : 3 000",
+    "Débit 275 : 3 000 ; crédit 512 : 3 000",
+    "Débit 165 : 3 000 ; crédit 512 : 3 000",
+    "Débit 486 : 3 000 ; crédit 512 : 3 000"
+   ],
+   "a": 1,
+   "why": "Le dépôt est récupérable : c'est une immobilisation financière en 275 Dépôts et cautionnements versés, pas un loyer (613) ni une charge constatée d'avance (486). Le compte 165 est le miroir chez le bailleur qui reçoit le dépôt (dette).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Au 31 décembre N, la société Alcor détient une créance de 10 000 $ sur un client américain, comptabilisée 9 200 € au cours du jour de la vente (1 $ = 0,92 €). Le cours de clôture est de 1 $ = 0,90 €. Enregistrez l'écart de conversion (sans la provision).",
+   "lib": "Écart de conversion à la clôture",
+   "palette": [
+    "476",
+    "477",
+    "411",
+    "666",
+    "766",
+    "1515"
+   ],
+   "sol": [
+    [
+     {
+      "a": "476",
+      "d": 200,
+      "c": 0
+     },
+     {
+      "a": "411",
+      "d": 0,
+      "c": 200
+     }
+    ]
+   ],
+   "why": "Valeur au cours de clôture = 10 000 × 0,90 = 9 000 ; la créance a perdu 200 € : perte latente. Elle n'est pas constatée en résultat (666, réservé aux pertes réalisées) mais dans le compte transitoire 476 Différences de conversion, actif, la créance étant ramenée à 9 000 (PCG, art. 420-5). Par prudence, une provision pour perte de change suit : débit 6865, crédit 1515 pour 200.",
+   "src": "PCG, art. 420-5 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Alcor a aussi une dette de 20 000 $ envers un fournisseur, comptabilisée 18 400 € (cours 0,92). Au cours de clôture de 0,90 €, que constate-t-elle ?",
+   "opts": [
+    "Un écart de conversion passif de 400 € (gain latent), sans produit",
+    "Un gain de change de 400 € en 766",
+    "Un écart de conversion actif de 400 € et une provision de 400 €",
+    "Rien, les dettes ne sont pas réévaluées"
+   ],
+   "a": 0,
+   "why": "La dette ne vaut plus que 20 000 × 0,90 = 18 000 : gain latent de 400 (débit 401, crédit 477 Différences de conversion, passif). Par prudence, ce gain non réalisé ne passe pas en résultat (pas de 766) et n'appelle évidemment aucune provision. Les dettes comme les créances en devises sont réévaluées au cours de clôture (PCG, art. 420-5).",
+   "src": "PCG, art. 420-5 ; PCG, art. 121-4",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 3,
+   "q": "Quelles affirmations sur les opérations en devises sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une facture en devises est convertie au cours du jour de l'opération",
+    "Un écart de conversion actif (476) traduit une perte latente",
+    "Les gains latents sont enregistrés en produits financiers (766)",
+    "Une perte latente entraîne une provision pour perte de change (1515)",
+    "Les écarts de conversion sont contre-passés à l'ouverture de l'exercice suivant"
+   ],
+   "a": [
+    0,
+    1,
+    3,
+    4
+   ],
+   "why": "Les articles 420-1 et 420-5 du PCG prévoient la conversion au cours du jour, la réévaluation au cours de clôture par les comptes transitoires 476 (perte latente, provisionnée en 1515 par prudence) et 477 (gain latent, non comptabilisé en produit), puis la contre-passation à l'ouverture. Seuls les gains réalisés au règlement vont en 766.",
+   "src": "PCG, art. 420-1 à 420-7",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "La société Lioré a reçu en N−2 une subvention d'investissement de 20 000 € pour un bien amorti en linéaire sur 10 ans, mis en service le 1er janvier N−2, reprise au rythme de l'amortissement. Elle cède ce bien le 31 décembre N. Quel montant de subvention doit être viré au résultat au titre de N, y compris le solde dû à la cession ?",
+   "opts": [
+    "2 000 €",
+    "16 000 €",
+    "14 000 €",
+    "20 000 €"
+   ],
+   "a": 1,
+   "why": "Reprise annuelle normale = 20 000 ÷ 10 = 2 000, soit 4 000 repris en N−2 et N−1 ; il reste 16 000 au début de N. Lors de la cession, la subvention non encore reprise doit être rapportée en totalité au résultat de l'exercice de cession : 16 000 € en 747 (dont 2 000 de quote-part normale et 14 000 de solde). Le compte 131 est ensuite soldé contre 139 pour 20 000.",
+   "src": "PCG, art. 312-1 ; CGI, art. 42 septies",
+   "fiab": "stable"
+  }
+ ]
+}

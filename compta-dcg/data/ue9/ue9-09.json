@@ -1,0 +1,579 @@
+{
+ "id": "ue9-09",
+ "ue": "UE9",
+ "ordre": 9,
+ "title": "Organisation comptable et documents de synthèse",
+ "resume": "Obligations comptables du Code de commerce, livres et pièces, normalisation (ANC, PCG 2025) et principes, journaux auxiliaires, rapprochement bancaire, comptes annuels, liasse fiscale et facture électronique.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Les obligations comptables des commerçants",
+   "html": "<p>Toute personne physique ou morale ayant la qualité de <b>commerçant</b> doit procéder à l'<b>enregistrement comptable</b> des mouvements affectant le patrimoine de son entreprise, <b>chronologiquement</b> et <b>opération par opération</b> ; contrôler par <b>inventaire</b>, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs ; et établir des <b>comptes annuels</b> à la clôture (C. com., art. L. 123-12). Les comptes annuels comprennent le bilan, le compte de résultat et l'annexe, qui forment un tout indissociable (art. L. 123-13).</p><p>Les <b>livres obligatoires</b> sont le <b>livre-journal</b> et le <b>grand livre</b> (art. R. 123-173). Le livre d'inventaire n'est plus exigé des commerçants pour les exercices ouverts depuis le 1er janvier 2016, mais l'inventaire lui-même reste obligatoire. Les livres peuvent être tenus sous forme électronique à condition d'être identifiés, numérotés et datés dès leur établissement par des moyens offrant toute garantie en matière de preuve ; une comptabilité informatisée doit pouvoir produire le <b>fichier des écritures comptables</b> (FEC) en cas de contrôle (LPF, art. L. 47 A).</p><p>Tout enregistrement précise l'origine, le contenu et l'imputation de chaque donnée ainsi que les références de la <b>pièce justificative</b> qui l'appuie (art. R. 123-174). Les documents comptables et les pièces justificatives sont <b>conservés dix ans</b> (art. L. 123-22). Une comptabilité régulièrement tenue peut être admise en justice pour faire preuve entre commerçants (art. L. 123-23).</p>"
+  },
+  {
+   "h": "La normalisation : ANC, PCG et règlement 2022-06",
+   "html": "<p>Le droit comptable français repose sur une hiérarchie : les <b>directives européennes</b> (directive comptable 2013/34/UE), le <b>Code de commerce</b> (art. L. 123-12 à L. 123-28 et R. 123-172 s.), puis les <b>règlements de l'Autorité des normes comptables</b> (ANC), créée par l'ordonnance n° 2009-79 du 22 janvier 2009 et dont les règlements deviennent obligatoires après <b>homologation</b> par arrêté ministériel. L'ANC publie aussi des recommandations et des avis sans valeur réglementaire.</p><p>Le <b>Plan comptable général</b> est le règlement ANC n° 2014-03, régulièrement modifié et consolidé chaque 1er janvier. Le règlement <b>n° 2022-06</b> du 4 novembre 2022, homologué le 26 décembre 2023, l'a profondément modernisé pour les exercices ouverts à compter du <b>1er janvier 2025</b> : résultat exceptionnel limité aux événements majeurs et inhabituels (cessions d'immobilisations en 657/757, subventions en 747), suppression des transferts de charges (791/796/797), <b>plan de comptes unique</b> à la place des systèmes abrégé, de base et développé, nouveaux modèles de comptes annuels et d'annexe.</p><p>Le PCG s'impose à toutes les entreprises industrielles et commerciales tenant des comptes individuels ; les groupes cotés appliquent les normes IFRS pour leurs comptes consolidés (règlement européen 1606/2002), sujet du DSCG.</p>"
+  },
+  {
+   "h": "Les principes comptables",
+   "html": "<p>Les comptes annuels doivent être <b>réguliers</b> (conformes aux règles), <b>sincères</b> (application de bonne foi) et donner une <b>image fidèle</b> du patrimoine, de la situation financière et du résultat (C. com., art. L. 123-14 ; PCG, art. 121-1 et 121-3). Si l'application d'une règle ne suffit pas à l'image fidèle, des informations complémentaires sont données dans l'annexe ; si elle y fait obstacle, on y déroge en le justifiant.</p><ul><li><b>Continuité d'exploitation</b> : l'entreprise est présumée poursuivre son activité (L. 123-20 ; PCG 121-2).</li><li><b>Indépendance des exercices</b> : rattachement des charges et produits à l'exercice qu'ils concernent (L. 123-20).</li><li><b>Prudence</b> : les pertes probables sont comptabilisées, les gains latents ne le sont pas (L. 123-20 ; PCG 121-4).</li><li><b>Permanence des méthodes</b> : mêmes méthodes d'un exercice à l'autre, sauf changement justifié et expliqué dans l'annexe (L. 123-17 ; PCG 121-5).</li><li><b>Coût historique</b> : les biens sont enregistrés à leur coût d'entrée (L. 123-18).</li><li><b>Non-compensation</b> entre postes d'actif et de passif, de charges et de produits, et <b>intangibilité du bilan d'ouverture</b> (L. 123-19).</li><li><b>Importance relative</b> : l'annexe ne mentionne que les informations significatives.</li></ul><div class=\"note\"><b>À retenir.</b> Prudence et indépendance des exercices justifient toutes les écritures d'inventaire ; permanence et non-compensation garantissent la comparabilité et la lisibilité.</div>"
+  },
+  {
+   "h": "Partie double, journaux auxiliaires et centralisation",
+   "html": "<p>La <b>partie double</b> est la méthode imposée par le PCG : toute écriture affecte au moins deux comptes et le total des débits égale le total des crédits. Elle permet un autocontrôle permanent (la balance) et relie mécaniquement bilan et compte de résultat.</p><p>Quand le volume d'opérations est important, le livre-journal est <b>divisé en journaux auxiliaires</b> spécialisés : journal des achats, des ventes, de banque, de caisse, des opérations diverses (OD) pour les écritures d'inventaire et la paie. Chaque journal auxiliaire enregistre ses opérations au jour le jour ; leurs totaux sont <b>centralisés</b> au moins <b>une fois par mois</b> dans le livre-journal et le grand livre (C. com., art. R. 123-176). Le compte <code>580</code> Virements internes évite les doubles enregistrements entre journaux de trésorerie.</p><p>Dans une comptabilité informatisée, cette organisation est reproduite par des codes journaux (AC, VT, BQ, CA, OD) ; le logiciel assure la centralisation, la numérotation continue des écritures et l'irréversibilité des validations exigées par l'administration fiscale (LPF, art. L. 47 A ; BOI-CF-IOR-60-40). Les écritures validées ne peuvent plus être modifiées : une erreur se corrige par une <b>écriture de contre-passation</b> ou en négatif, jamais par effacement.</p>"
+  },
+  {
+   "h": "Le rapprochement bancaire : méthode et écritures",
+   "html": "<p>Le compte <code>512</code> de l'entreprise et le relevé de la banque doivent décrire les mêmes opérations, en sens inverse : notre débit est le crédit de la banque. Les différences viennent de <b>décalages</b> (chèques émis non encore débités, remises non encore créditées) et d'<b>opérations inconnues</b> de l'un des deux (frais, agios, prélèvements, virements reçus, erreurs). Méthode en quatre temps :</p><ol><li>Vérifier que le rapprochement précédent est apuré, puis <b>pointer</b> les opérations communes au 512 et au relevé.</li><li>Dresser l'<b>état de rapprochement</b> à deux colonnes : d'un côté le solde du 512 chez nous, corrigé des opérations figurant seulement sur le relevé ; de l'autre le solde du relevé, corrigé des opérations figurant seulement chez nous.</li><li>Vérifier que les deux <b>soldes rectifiés sont égaux</b>.</li><li><b>Comptabiliser</b> uniquement les opérations découvertes sur le relevé : frais <code>627</code> (et TVA), agios <code>6616</code>, virements de clients (crédit 411), prélèvements (débit 401 ou 6xx).</li></ol><p>Exemple : 512 débiteur de 14 250 ; relevé créditeur de 15 570 ; chèque émis de 2 400 non débité ; remise de 1 800 non créditée ; frais de 60, virement client de 1 500 et prélèvement d'assurance de 720 inconnus de l'entreprise. Côté entreprise : 14 250 − 60 + 1 500 − 720 = 14 970. Côté banque : 15 570 − 2 400 + 1 800 = 14 970. Le solde rectifié de 14 970 est le vrai solde disponible.</p>",
+   "entry": [
+    {
+     "a": "627",
+     "d": 60,
+     "c": 0
+    },
+    {
+     "a": "616",
+     "d": 720,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 1500,
+     "c": 0
+    },
+    {
+     "a": "411",
+     "d": 0,
+     "c": 1500
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 780
+    }
+   ],
+   "lib": "Écritures issues du rapprochement bancaire (frais exonérés de TVA dans cet exemple)"
+  },
+  {
+   "h": "Les comptes annuels et leur présentation PCG 2025",
+   "html": "<p>Le <b>bilan</b> présente l'actif en valeurs brutes, amortissements et dépréciations, et nettes, et le passif (capitaux propres, provisions, dettes), avec les chiffres de l'exercice précédent. Le <b>compte de résultat</b> classe charges et produits en exploitation, financier et exceptionnel, ce dernier étant depuis 2025 réservé aux événements majeurs et inhabituels, puis l'impôt sur les bénéfices et le résultat net. L'<b>annexe</b> explique les méthodes retenues et détaille les postes (immobilisations, amortissements, provisions, échéances, engagements hors bilan).</p><p>Le règlement ANC n° 2022-06 a remplacé les trois systèmes de présentation par des <b>modèles</b> de bilan et de compte de résultat (Livre IV du PCG) avec des allégements selon la taille. Les seuils de taille sont fixés par le Code de commerce (art. D. 123-200, décret du 28 février 2024, exercices ouverts depuis le 1er janvier 2024) : <b>micro-entreprise</b> si deux des trois seuils bilan 450 000 €, chiffre d'affaires 900 000 €, 10 salariés ne sont pas dépassés ; <b>petite entreprise</b> : 7,5 M€, 15 M€, 50 salariés ; <b>moyenne</b> : 25 M€, 50 M€, 250 salariés.</p><p>Les micro-entreprises sont dispensées d'annexe (art. L. 123-16-1), les petites adoptent une présentation simplifiée (art. L. 123-16) et peuvent demander la <b>confidentialité</b> des comptes déposés. Les comptes sont approuvés par les associés dans les six mois de la clôture et déposés au greffe dans le mois suivant (deux mois par voie électronique, art. L. 232-23).</p>"
+  },
+  {
+   "h": "Liasse fiscale et dématérialisation",
+   "html": "<p>Les comptes annuels servent de base à la <b>liasse fiscale</b> : la déclaration de résultats (n° 2065 pour l'IS, n° 2031 pour les BIC à l'IR) accompagnée des tableaux normalisés (2050 à 2059 au réel normal, 2033 au réel simplifié) : bilan, compte de résultat, immobilisations, amortissements, provisions et passage du résultat comptable au résultat fiscal. Elle est <b>télédéclarée</b> obligatoirement, dans les trois mois de la clôture ou, pour les clôtures au 31 décembre, au plus tard le deuxième jour ouvré suivant le 1er mai, avec un délai supplémentaire de quinze jours en télétransmission.</p><p>La <b>facturation électronique</b> entre entreprises assujetties établies en France devient obligatoire (CGI, art. 289 bis), selon un calendrier fixé par la loi de finances pour 2024 : à compter du <b>1er septembre 2026</b>, toutes les entreprises doivent être en mesure de <b>recevoir</b> des factures électroniques, et les grandes entreprises et entreprises de taille intermédiaire doivent les <b>émettre</b> ; à compter du <b>1er septembre 2027</b>, l'obligation d'émission s'étend aux PME et micro-entreprises. Les factures transitent par des <b>plateformes agréées</b> par l'administration, dans des formats structurés (Factur-X, UBL, CII). S'y ajoute l'<b>e-reporting</b> des données de transactions avec les particuliers et l'étranger.</p><p>Objectifs : lutte contre la fraude à la TVA, pré-remplissage des déclarations, automatisation de la saisie. La facture électronique reste la pièce justificative de l'écriture et sa conservation numérique vaut original.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 123-12 à L. 123-23",
+   "note": "Obligations comptables, comptes annuels, principes, conservation dix ans, valeur probante"
+  },
+  {
+   "ref": "C. com., art. R. 123-172 à R. 123-177",
+   "note": "Livre-journal, grand livre, pièces justificatives, journaux auxiliaires et centralisation mensuelle"
+  },
+  {
+   "ref": "C. com., art. L. 123-16, L. 123-16-1 et D. 123-200",
+   "note": "Présentation simplifiée, dispense d'annexe, seuils de taille (décret n° 2024-152 du 28 février 2024)"
+  },
+  {
+   "ref": "C. com., art. L. 232-22 et L. 232-23",
+   "note": "Approbation et dépôt des comptes annuels au greffe"
+  },
+  {
+   "ref": "Ordonnance n° 2009-79 du 22 janvier 2009",
+   "note": "Création de l'Autorité des normes comptables"
+  },
+  {
+   "ref": "Règlement ANC n° 2014-03 modifié par le règlement n° 2022-06",
+   "note": "Plan comptable général 2025, principes (art. 121-1 à 121-5), plan de comptes unique (art. 1121-1), modèles de comptes annuels"
+  },
+  {
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Comptes 512, 580, 627, 6616, 411"
+  },
+  {
+   "ref": "LPF, art. L. 47 A et BOI-CF-IOR-60-40",
+   "note": "Fichier des écritures comptables et comptabilités informatisées"
+  },
+  {
+   "ref": "CGI, art. 289 bis ; loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91",
+   "note": "Facturation électronique obligatoire : calendrier 2026-2027, plateformes agréées"
+  },
+  {
+   "ref": "CGI, art. 223 et 53 A",
+   "note": "Déclaration de résultats et liasse fiscale"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Quels sont les livres comptables obligatoires pour un commerçant ?",
+   "opts": [
+    "Le livre-journal et le grand livre",
+    "Le livre-journal, le grand livre et le livre d'inventaire",
+    "La balance et le bilan",
+    "Le livre de paie et le registre du personnel"
+   ],
+   "a": 0,
+   "why": "L'article R. 123-173 du Code de commerce impose le livre-journal et le grand livre. Le livre d'inventaire a été supprimé pour les exercices ouverts depuis le 1er janvier 2016 (l'inventaire annuel, lui, demeure obligatoire). La balance est un document de contrôle non obligatoire, le bilan un compte annuel, et le registre du personnel une obligation de droit du travail.",
+   "src": "C. com., art. R. 123-173",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Pendant combien de temps les documents comptables et les pièces justificatives doivent-ils être conservés ?",
+   "opts": [
+    "3 ans",
+    "6 ans",
+    "10 ans",
+    "30 ans"
+   ],
+   "a": 2,
+   "why": "L'article L. 123-22 du Code de commerce impose une conservation de dix ans. Le délai fiscal de conservation est de six ans (LPF, art. L. 102 B) mais le délai commercial, plus long, l'emporte en pratique. Trois ans correspond au délai de reprise fiscal ordinaire, autre notion.",
+   "src": "C. com., art. L. 123-22 ; LPF, art. L. 102 B",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 1,
+   "q": "La société Orvalis clôture son exercice le 31 décembre 2025. Jusqu'à la fin de quelle année doit-elle au minimum conserver les pièces justificatives de cet exercice en application du Code de commerce ? (Indiquez l'année.)",
+   "a": 2035,
+   "unit": "",
+   "tol": 0.5,
+   "why": "Dix ans à compter de la clôture de l'exercice (C. com., art. L. 123-22) : 2025 + 10 = 2035. Les pièces de l'exercice 2025 doivent donc être conservées au moins jusqu'au 31 décembre 2035.",
+   "src": "C. com., art. L. 123-22",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Qui édicte le Plan comptable général en France ?",
+   "opts": [
+    "L'Ordre des experts-comptables",
+    "L'Autorité des normes comptables, par règlements homologués par arrêté ministériel",
+    "La Direction générale des finances publiques",
+    "Le Parlement, par la loi de finances"
+   ],
+   "a": 1,
+   "why": "Depuis l'ordonnance n° 2009-79, l'ANC adopte les règlements comptables (dont le règlement n° 2014-03 relatif au PCG et le règlement n° 2022-06 qui le modernise), qui deviennent obligatoires après homologation par arrêté. L'Ordre des experts-comptables encadre la profession, la DGFiP applique la fiscalité, et le Parlement vote les lois mais non le détail du plan de comptes.",
+   "src": "Ordonnance n° 2009-79 du 22 janvier 2009",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Le règlement ANC n° 2022-06 modernisant le PCG s'applique obligatoirement :",
+   "opts": [
+    "Aux exercices ouverts à compter du 1er janvier 2023",
+    "Aux exercices ouverts à compter du 1er janvier 2025",
+    "Aux exercices clos à compter du 31 décembre 2026",
+    "Uniquement aux sociétés cotées"
+   ],
+   "a": 1,
+   "why": "Homologué par arrêté du 26 décembre 2023, le règlement n° 2022-06 est d'application obligatoire pour les exercices ouverts à compter du 1er janvier 2025 (application anticipée possible). Il concerne toutes les entités tenant des comptes individuels selon le PCG ; les sociétés cotées appliquent les IFRS pour leurs comptes consolidés seulement.",
+   "src": "Règlement ANC n° 2022-06, art. 2 (entrée en vigueur)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 1,
+   "q": "Quelles sont les principales nouveautés du PCG 2025 issues du règlement ANC n° 2022-06 ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les cessions d'immobilisations corporelles passent par 657/757 dans l'exploitation",
+    "Les comptes de transferts de charges (791, 796, 797) sont supprimés",
+    "Un plan de comptes unique remplace les systèmes abrégé, de base et développé",
+    "La partie double est abandonnée pour les micro-entreprises",
+    "La TVA devient une charge d'exploitation"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le règlement n° 2022-06 restreint le résultat exceptionnel (d'où 657/757 et 747 dans l'exploitation), supprime les transferts de charges au profit de comptes par nature (708, 649, 7587) et instaure un plan de comptes unique. La partie double reste le fondement de toute comptabilité commerciale et la TVA demeure neutre pour le résultat.",
+   "src": "Règlement ANC n° 2022-06",
+   "fiab": "stable"
+  },
+  {
+   "type": "tri",
+   "niveau": 1,
+   "q": "Associez chaque situation au principe comptable qu'elle illustre.",
+   "cats": [
+    "Prudence",
+    "Indépendance des exercices",
+    "Permanence des méthodes",
+    "Non-compensation"
+   ],
+   "items": [
+    [
+     "Déprécier un stock dont la valeur a baissé sans comptabiliser la hausse d'un autre",
+     0
+    ],
+    [
+     "Enregistrer une charge à payer pour une facture non reçue",
+     1
+    ],
+    [
+     "Conserver la méthode CMP d'un exercice à l'autre",
+     2
+    ],
+    [
+     "Présenter séparément la créance et la dette envers un même tiers",
+     3
+    ],
+    [
+     "Ne pas enregistrer une plus-value latente sur des actions",
+     0
+    ],
+    [
+     "Constater un produit constaté d'avance",
+     1
+    ]
+   ],
+   "why": "La prudence interdit d'anticiper les gains et impose de constater les pertes probables ; l'indépendance des exercices rattache charges et produits à la bonne période (régularisations) ; la permanence des méthodes assure la comparabilité ; la non-compensation (C. com., art. L. 123-19) interdit de fusionner un actif et un passif.",
+   "src": "C. com., art. L. 123-17 à L. 123-20 ; PCG, art. 121-4 et 121-5",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Berlan envisage de changer sa méthode de valorisation des stocks de CMP vers PEPS parce que cela augmenterait son résultat cette année. Que prévoient les textes ?",
+   "opts": [
+    "Le changement est libre chaque année",
+    "Il n'est possible que s'il est justifié par la recherche d'une meilleure information et doit être décrit et justifié dans l'annexe",
+    "Il est interdit dans tous les cas",
+    "Il nécessite l'accord de l'administration fiscale"
+   ],
+   "a": 1,
+   "why": "Le principe de permanence des méthodes (C. com., art. L. 123-17 ; PCG, art. 121-5 et 122-1 s.) n'autorise un changement que s'il procure une information plus fiable et plus pertinente ; il doit alors être décrit et justifié dans l'annexe, avec son effet chiffré. L'opportunisme fiscal ou la simple amélioration du résultat ne sont pas des motifs valables. Aucun accord administratif préalable n'est requis.",
+   "src": "C. com., art. L. 123-17 ; PCG, art. 121-5 et 122-1",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Les écritures d'un journal auxiliaire des ventes doivent être centralisées dans le livre-journal :",
+   "opts": [
+    "Au moins une fois par mois",
+    "Une fois par an, à la clôture",
+    "Chaque jour",
+    "Jamais, le journal auxiliaire se substitue au livre-journal"
+   ],
+   "a": 0,
+   "why": "L'article R. 123-176 du Code de commerce autorise les journaux auxiliaires à condition de centraliser leurs écritures au moins une fois par mois dans le livre-journal et le grand livre. La centralisation annuelle ne suffirait pas et la centralisation quotidienne n'est pas exigée.",
+   "src": "C. com., art. R. 123-176",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles mentions doit comporter tout enregistrement comptable selon le Code de commerce ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'origine de l'opération",
+    "Le contenu et l'imputation de l'opération",
+    "La référence de la pièce justificative",
+    "L'identité du salarié ayant saisi l'écriture",
+    "Le numéro SIRET du tiers"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article R. 123-174 exige que chaque enregistrement précise l'origine, le contenu et l'imputation de chaque donnée ainsi que les références de la pièce justificative qui l'appuie. L'identité du saisisseur et le SIRET du tiers peuvent figurer dans le logiciel mais ne sont pas des mentions légales de l'écriture.",
+   "src": "C. com., art. R. 123-174",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Une écriture validée dans un logiciel de comptabilité comporte une erreur d'imputation. Comment la corriger ?",
+   "opts": [
+    "En la supprimant directement dans le logiciel",
+    "En passant une écriture de contre-passation ou une écriture en négatif, l'écriture d'origine restant visible",
+    "En modifiant le montant dans le grand livre uniquement",
+    "En attendant la clôture suivante"
+   ],
+   "a": 1,
+   "why": "Les livres doivent être tenus sans blanc ni altération et les écritures validées sont irréversibles (C. com., art. R. 123-173 ; LPF, art. L. 47 A pour les comptabilités informatisées). L'erreur se corrige par une écriture inverse (ou en négatif) suivie de l'écriture correcte, ce qui laisse une trace. Supprimer une écriture ou retoucher le grand livre rendrait la comptabilité irrégulière et non probante.",
+   "src": "C. com., art. R. 123-173 ; LPF, art. L. 47 A",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Lors d'un contrôle fiscal, une entreprise qui tient sa comptabilité sur informatique doit remettre :",
+   "opts": [
+    "Une impression papier de la balance",
+    "Le fichier des écritures comptables (FEC) sous forme dématérialisée",
+    "Uniquement ses déclarations de TVA",
+    "Le fichier des écritures comptables est facultatif"
+   ],
+   "a": 1,
+   "why": "L'article L. 47 A du Livre des procédures fiscales impose la remise du FEC, fichier normé contenant l'ensemble des écritures de l'exercice (journal, date, compte, libellé, débit, crédit, pièce). Son absence ou sa non-conformité est sanctionnée par une amende et peut conduire à un rejet de comptabilité.",
+   "src": "LPF, art. L. 47 A",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Au 31 décembre, le compte 512 de la société Orvalis présente un solde débiteur de 14 250 €. Le relevé bancaire affiche un solde créditeur de 15 570 €. Différences relevées : un chèque de 2 400 € émis le 29 décembre non encore débité par la banque ; une remise de chèques de 1 800 € déposée le 31 décembre non encore créditée ; des frais bancaires de 60 € prélevés par la banque et inconnus de l'entreprise ; un virement d'un client de 1 500 € reçu par la banque et non enregistré ; un prélèvement d'assurance de 720 € non enregistré. Quel est le solde rectifié du compte 512 ?",
+   "a": 14970,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Côté entreprise : 14 250 − 60 (frais) + 1 500 (virement client) − 720 (assurance) = 14 970 €. Côté banque : 15 570 − 2 400 (chèque non débité) + 1 800 (remise non créditée) = 14 970 €. Les deux soldes rectifiés coïncident, ce qui valide le rapprochement. Seules les trois opérations découvertes sur le relevé donneront lieu à des écritures.",
+   "src": "C. com., art. R. 123-174 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "À la suite du rapprochement précédent, enregistrez le virement du client de 1 500 € découvert sur le relevé bancaire.",
+   "lib": "Virement client découvert au rapprochement",
+   "palette": [
+    "512",
+    "411",
+    "707",
+    "627",
+    "401"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 1500,
+      "c": 0
+     },
+     {
+      "a": "411",
+      "d": 0,
+      "c": 1500
+     }
+    ]
+   ],
+   "why": "L'entreprise ignorait cet encaissement : elle le comptabilise comme tout règlement client, débit 512, crédit 411. La vente (707) avait été enregistrée à la facturation. Les décalages (chèque non débité, remise non créditée), eux, n'appellent aucune écriture.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Toujours à la suite du rapprochement, enregistrez en une seule écriture les frais bancaires de 60 € (exonérés de TVA dans ce cas) et le prélèvement de la prime d'assurance de 720 € apparus sur le relevé.",
+   "lib": "Frais et prélèvement découverts au rapprochement",
+   "palette": [
+    "627",
+    "616",
+    "6616",
+    "512",
+    "44566",
+    "401"
+   ],
+   "sol": [
+    [
+     {
+      "a": "627",
+      "d": 60,
+      "c": 0
+     },
+     {
+      "a": "616",
+      "d": 720,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 780
+     }
+    ]
+   ],
+   "why": "Les frais de tenue de compte sont des services bancaires (627), la prime d'assurance une charge en 616 exonérée de TVA ; les deux ont déjà été prélevés par la banque, donc la contrepartie est 512 pour 780. Le compte 6616 est réservé aux intérêts (agios), et 401 ne sert pas puisqu'il n'y a pas de dette en suspens.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 261 C",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Un chèque émis par l'entreprise le 30 décembre et non encore débité par la banque au 31 décembre doit, dans l'état de rapprochement :",
+   "opts": [
+    "Être ajouté au solde du compte 512 de l'entreprise",
+    "Être déduit du solde du relevé bancaire",
+    "Donner lieu à une écriture de régularisation chez l'entreprise",
+    "Être ajouté au solde du relevé bancaire"
+   ],
+   "a": 1,
+   "why": "Le chèque est déjà comptabilisé chez l'entreprise (crédit 512). La banque, elle, ne l'a pas encore débité : pour rendre son solde comparable, on le déduit du solde du relevé. Aucune écriture n'est passée, il s'agit d'un simple décalage qui se résorbera à la présentation du chèque.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Dans un état de rapprochement bancaire, quelles opérations donnent lieu à une écriture dans les livres de l'entreprise ? (plusieurs réponses possibles)",
+   "opts": [
+    "Des agios de découvert prélevés par la banque",
+    "Un chèque émis par l'entreprise non encore présenté à la banque",
+    "Un virement reçu d'un client figurant seulement sur le relevé",
+    "Une remise de chèques déposée la veille, non encore créditée",
+    "Un prélèvement d'électricité figurant seulement sur le relevé"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Seules les opérations que l'entreprise ignorait et qui figurent sur le relevé sont comptabilisées : agios (6616), virement client (512/411), prélèvement (6061 ou 401 / 512). Le chèque émis et la remise déposée sont déjà dans le 512 ; ce sont des décalages à reporter dans l'état de rapprochement côté banque, sans écriture.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Les comptes annuels comprennent :",
+   "opts": [
+    "Le bilan, le compte de résultat et l'annexe",
+    "Le bilan, la balance et le grand livre",
+    "Le compte de résultat et la liasse fiscale",
+    "Le bilan et le rapport de gestion"
+   ],
+   "a": 0,
+   "why": "L'article L. 123-12 du Code de commerce impose trois documents formant un tout indissociable (art. L. 123-13) : bilan, compte de résultat et annexe. La balance et le grand livre sont des documents de travail, la liasse fiscale un document déclaratif, et le rapport de gestion un document distinct des comptes annuels établi par les dirigeants.",
+   "src": "C. com., art. L. 123-12 et L. 123-13",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "En 2025, la SARL Nerval présente un total de bilan de 300 000 €, un chiffre d'affaires de 700 000 € et emploie 6 salariés. Au regard des seuils du Code de commerce, elle est une :",
+   "opts": [
+    "Micro-entreprise, dispensée d'établir une annexe",
+    "Petite entreprise, tenue à l'annexe simplifiée",
+    "Moyenne entreprise",
+    "Grande entreprise"
+   ],
+   "a": 0,
+   "why": "Depuis le décret du 28 février 2024 (art. D. 123-200), la micro-entreprise comptable ne dépasse pas deux des trois seuils : 450 000 € de bilan, 900 000 € de chiffre d'affaires, 10 salariés. Nerval est sous les trois : c'est une micro-entreprise, dispensée d'annexe (art. L. 123-16-1). Les petites entreprises relèvent des seuils 7,5 M€ / 15 M€ / 50 salariés.",
+   "src": "C. com., art. L. 123-16-1 et D. 123-200",
+   "fiab": "millésimé 2025"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles informations figurent dans l'annexe des comptes annuels ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les méthodes d'évaluation retenues et les changements de méthode",
+    "Le tableau des immobilisations et des amortissements",
+    "Les engagements hors bilan (cautions données, effets escomptés non échus)",
+    "Le détail de chaque facture de vente de l'exercice",
+    "La liste nominative des clients"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'annexe complète et commente le bilan et le compte de résultat : règles et méthodes, tableaux des immobilisations, amortissements, dépréciations et provisions, état des échéances des créances et dettes, engagements hors bilan, informations significatives. Elle ne reproduit pas le détail des opérations ni la liste des clients, qui relèvent de la comptabilité auxiliaire.",
+   "src": "C. com., art. L. 123-13 et R. 123-195 s. ; PCG 2025, Livre IV",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Dans quel délai les comptes annuels d'une SARL clôturés le 31 décembre doivent-ils être approuvés par les associés ?",
+   "opts": [
+    "Dans le mois suivant la clôture",
+    "Dans les six mois suivant la clôture, soit avant le 30 juin",
+    "Dans les douze mois suivant la clôture",
+    "Il n'y a pas de délai légal"
+   ],
+   "a": 1,
+   "why": "L'assemblée d'approbation des comptes doit se tenir dans les six mois de la clôture (C. com., art. L. 223-26 pour la SARL, L. 225-100 pour la SA), prorogeable par décision de justice. Les comptes approuvés sont ensuite déposés au greffe dans le mois suivant l'approbation (deux mois en cas de dépôt électronique, art. L. 232-23).",
+   "src": "C. com., art. L. 223-26 et L. 232-23",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La liasse fiscale est :",
+   "opts": [
+    "Un document comptable obligatoire remplaçant les comptes annuels",
+    "La déclaration de résultats accompagnée de tableaux normalisés établis à partir des comptes annuels",
+    "Le relevé des déclarations de TVA de l'année",
+    "La liste des pièces justificatives de l'exercice"
+   ],
+   "a": 1,
+   "why": "La liasse comprend la déclaration de résultats (2065 pour l'IS) et les tableaux 2050 à 2059 (réel normal) ou 2033 (réel simplifié) : bilan, compte de résultat, immobilisations, amortissements, provisions, détermination du résultat fiscal. Elle est télétransmise dans les trois mois de la clôture ou début mai pour les clôtures au 31 décembre. Elle dérive des comptes annuels mais ne s'y substitue pas.",
+   "src": "CGI, art. 223 et 53 A",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "À compter de quelle date toutes les entreprises assujetties à la TVA établies en France doivent-elles être en mesure de recevoir des factures électroniques ?",
+   "opts": [
+    "1er janvier 2025",
+    "1er septembre 2026",
+    "1er septembre 2027",
+    "1er janvier 2028"
+   ],
+   "a": 1,
+   "why": "Le calendrier fixé par la loi de finances pour 2024 (CGI, art. 289 bis) impose l'obligation de réception à toutes les entreprises au 1er septembre 2026, date à laquelle les grandes entreprises et les ETI doivent aussi émettre leurs factures sous forme électronique. L'obligation d'émission est reportée au 1er septembre 2027 pour les PME et les micro-entreprises.",
+   "src": "CGI, art. 289 bis ; LF 2024, art. 91",
+   "fiab": "millésimé 2026"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Une PME de 30 salariés devra émettre ses factures sous forme électronique à ses clients professionnels français à compter du :",
+   "opts": [
+    "1er septembre 2026",
+    "1er septembre 2027",
+    "1er janvier 2026",
+    "Elle n'y est pas tenue"
+   ],
+   "a": 1,
+   "why": "Les PME et micro-entreprises ne sont tenues à l'émission qu'à partir du 1er septembre 2027, un an après les grandes entreprises et les ETI. En revanche, dès le 1er septembre 2026 elles doivent pouvoir recevoir les factures électroniques de leurs fournisseurs. Toutes les entreprises assujetties établies en France sont concernées pour leurs opérations entre professionnels.",
+   "src": "CGI, art. 289 bis ; LF 2024, art. 91",
+   "fiab": "millésimé 2026"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles affirmations sur la réforme de la facturation électronique sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle concerne les opérations entre entreprises assujetties établies en France",
+    "Les factures transitent par des plateformes agréées par l'administration",
+    "Un simple PDF envoyé par courriel constitue une facture électronique au sens de la réforme",
+    "Les transactions avec les particuliers font l'objet d'un e-reporting de données",
+    "Elle supprime l'obligation de conserver les factures"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "La réforme vise les factures B2B domestiques, transmises dans un format structuré (Factur-X, UBL, CII) via des plateformes agréées ; un PDF par courriel n'en est pas une. Les ventes aux particuliers et les opérations internationales relèvent de l'e-reporting. La conservation reste obligatoire (dix ans), la facture électronique conservée sous forme numérique valant original.",
+   "src": "CGI, art. 289 bis",
+   "fiab": "millésimé 2026"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "Le relevé bancaire d'Orvalis au 31 décembre affiche un solde créditeur de 15 570 €. Pourquoi la banque présente-t-elle un solde créditeur alors que l'entreprise a de l'argent en banque ?",
+   "opts": [
+    "Parce que l'entreprise est à découvert",
+    "Parce que la banque tient le compte de son point de vue : les fonds déposés sont pour elle une dette envers le client",
+    "Parce que le relevé est établi en partie simple",
+    "Parce qu'il s'agit d'une erreur de la banque"
+   ],
+   "a": 1,
+   "why": "Les dépôts de la clientèle sont des dettes au passif de la banque : notre compte y est créditeur quand nous avons des fonds, et débiteur en cas de découvert. C'est le miroir exact de notre compte 512, débiteur quand nous avons de l'argent. Cette inversion des sens est la première chose à garder en tête dans un rapprochement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  }
+ ]
+}

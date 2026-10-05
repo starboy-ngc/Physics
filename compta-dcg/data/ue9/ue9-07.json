@@ -3,34 +3,17 @@
  "ue": "UE9",
  "ordre": 7,
  "title": "Clôture : régularisations et résultat",
- "resume": "Charges à payer, produits à recevoir, charges et produits constatés d'avance, détermination et affectation du résultat.",
- "duree": "50 min",
- "niveau": 1,
+ "resume": "Charges à payer, produits à recevoir, charges et produits constatés d'avance, intérêts courus, contre-passation, balance après inventaire, résultat, impôt sur les sociétés et affectation du résultat.",
+ "duree": "65 min",
+ "niveau": 2,
  "lecon": [
   {
    "h": "Le principe d'indépendance des exercices",
-   "html": "<p>Chaque exercice doit porter <b>toutes</b> ses charges et <b>tous</b> ses produits, et <b>rien que</b> les siens. À la clôture, on ajuste donc :</p>\n<ul>\n<li><b>Charges à payer</b> : consommées en N, pas encore facturées. Facture non parvenue : débit 6xx, débit <code>44586</code>, crédit <code>408</code>.</li>\n<li><b>Produits à recevoir</b> : livrés en N, pas encore facturés. Facture à établir : débit <code>418</code>, crédit 7xx, crédit <code>44587</code>.</li>\n<li><b>Charges constatées d'avance</b> (<code>486</code>) : déjà enregistrées mais concernant N+1. Débit 486, crédit 6xx (HT).</li>\n<li><b>Produits constatés d'avance</b> (<code>487</code>) : déjà facturés mais concernant N+1. Débit 7xx, crédit 487.</li>\n<li><b>Intérêts courus</b> sur emprunt : débit <code>661</code>, crédit <code>1688</code>.</li>\n</ul>\n<p>Toutes ces écritures sont <b>contre-passées</b> au 1er jour de N+1 pour que la facture réelle s'enregistre normalement.</p>"
+   "html": "<p>Chaque exercice doit porter <b>toutes</b> ses charges et <b>tous</b> ses produits, et <b>rien que</b> les siens, quelle que soit la date de la facture ou du paiement. Le Code de commerce impose même de tenir compte des charges et produits de l'exercice connus entre la clôture et l'établissement des comptes (art. L. 123-20). À la clôture, après l'inventaire physique, on passe donc des <b>écritures de régularisation</b> qui corrigent les décalages entre la facturation et la consommation réelle :</p><ul><li>une charge consommée en N mais facturée en N+1 → <b>charge à payer</b> ;</li><li>un produit acquis en N mais facturé en N+1 → <b>produit à recevoir</b> ;</li><li>une charge facturée en N mais qui concerne N+1 → <b>charge constatée d'avance</b> ;</li><li>un produit facturé en N mais qui concerne N+1 → <b>produit constaté d'avance</b>.</li></ul><p>Ces écritures sont provisoires : elles n'ont pour but que de donner une image fidèle du résultat de N. Elles seront <b>contre-passées</b> au début de N+1. S'y ajoutent les écritures d'inventaire vues aux chapitres précédents : variation des stocks, amortissements, dépréciations, provisions.</p><div class=\"note\"><b>Repère.</b> Les comptes de régularisation se reconnaissent au 8 en troisième position : 408, 418, 4286, 4386, 4486, 4487, 486, 487, et aux comptes d'intérêts courus 1648, 2768, 5088.</div>"
   },
   {
-   "h": "Deux exemples",
-   "html": "<p>Loyer trimestriel de 3 000 € payé le 1er décembre N pour décembre, janvier et février : 2 000 € concernent N+1.</p>",
-   "entry": [
-    {
-     "a": "486",
-     "d": 2000,
-     "c": 0
-    },
-    {
-     "a": "613",
-     "d": 0,
-     "c": 2000
-    }
-   ],
-   "lib": "Charge constatée d'avance"
-  },
-  {
-   "h": "",
-   "html": "<p>Électricité de décembre consommée, facture non reçue : estimation 800 € HT, TVA 160.</p>",
+   "h": "Charges à payer",
+   "html": "<p>La charge est <b>certaine</b> et rattachée à N, mais la facture ou le paiement n'interviendra qu'en N+1. On enregistre la charge HT dans son compte de classe 6 et la dette dans un compte de régularisation du tiers concerné :</p><ul><li>Fournisseur, facture non parvenue : débit 6xx, débit <code>44586</code> TVA sur factures non parvenues (la TVA n'est déductible qu'à la réception de la facture), crédit <code>408</code> Fournisseurs, factures non parvenues.</li><li>Personnel : congés payés acquis non pris, primes à verser : débit 641 et 645, crédit <code>4286</code> et <code>4386</code> (charges sociales).</li><li>État : impôts dus non encore liquidés : crédit <code>4486</code>.</li><li>Clients : ristournes à accorder : débit 709, crédit <code>4198</code>.</li><li>Emprunt : <b>intérêts courus non échus</b> : débit <code>661</code>, crédit <code>1648</code> Intérêts courus sur emprunts auprès des établissements de crédit (depuis le PCG 2025 ; avant 2025 : 16884, et 1688 reste réservé aux autres emprunts).</li></ul><p>Exemple : électricité de décembre consommée, facture non reçue, estimation 800 HT, TVA 160.</p>",
    "entry": [
     {
      "a": "6061",
@@ -48,26 +31,144 @@
      "c": 960
     }
    ],
-   "lib": "Facture non parvenue"
+   "lib": "Facture non parvenue, électricité de décembre"
   },
   {
-   "h": "Déterminer le résultat",
-   "html": "<p>Après les écritures d'inventaire, on dresse la <b>balance</b> (liste de tous les comptes avec leurs soldes ; total débits = total crédits). On solde ensuite tous les comptes 6 et 7 dans <code>120</code> (bénéfice) ou <code>129</code> (perte). Les comptes de bilan (1 à 5) sont reportés à nouveau en N+1.</p>"
+   "h": "Produits à recevoir",
+   "html": "<p>Symétriquement, le produit est <b>acquis</b> en N (livraison faite, prestation exécutée, intérêts courus) mais la facture n'est pas encore émise. On enregistre le produit HT au crédit du compte de classe 7 et la créance dans un compte de régularisation :</p><ul><li>Client, facture à établir : débit <code>418</code> Clients, produits non encore facturés, crédit 7xx, crédit <code>44587</code> TVA sur factures à établir.</li><li>Fournisseur : ristourne à obtenir : débit <code>4098</code>, crédit 609.</li><li>État : subvention acquise non encore versée : débit <code>4487</code> ou 441.</li><li>Intérêts courus sur un placement : débit <code>5088</code> (VMP) ou <code>2768</code> (immobilisations financières), crédit <code>764</code> Revenus des VMP ou <code>762</code> pour les titres immobilisés.</li></ul><p>Exemple : prestation de 1 500 HT réalisée en décembre, facturée en janvier.</p><div class=\"note\"><b>TVA.</b> La TVA sur les charges à payer et les produits à recevoir passe par les comptes d'attente 44586 et 44587, jamais par 44566 et 44571 : sans facture, elle n'est ni déductible ni exigible.</div>",
+   "entry": [
+    {
+     "a": "418",
+     "d": 1800,
+     "c": 0
+    },
+    {
+     "a": "706",
+     "d": 0,
+     "c": 1500
+    },
+    {
+     "a": "44587",
+     "d": 0,
+     "c": 300
+    }
+   ],
+   "lib": "Facture à établir, prestation de décembre"
+  },
+  {
+   "h": "Charges et produits constatés d'avance",
+   "html": "<p>Ici la facture existe et a été enregistrée en N, mais tout ou partie de la prestation concerne N+1. On retire la part étrangère à l'exercice :</p><ul><li><b>Charge constatée d'avance</b> : débit <code>486</code>, crédit 6xx pour le montant <b>HT</b> concernant N+1. La TVA a été correctement déduite à la facture ; on n'y touche pas. Loyers payés d'avance, abonnements, assurances, fournitures non consommées non stockées.</li><li><b>Produit constaté d'avance</b> : débit 7xx, crédit <code>487</code> pour le montant HT concernant N+1. Loyers encaissés d'avance, contrats de maintenance facturés en début de période.</li></ul><p>Au bilan, 486 est un <b>actif</b> (un droit à recevoir une prestation) et 487 un <b>passif</b> (une obligation de fournir une prestation). Le calcul se fait au prorata temporis : loyer trimestriel de 3 000 payé le 1er décembre pour décembre, janvier et février → 2/3, soit 2 000, concernent N+1.</p>",
+   "entry": [
+    {
+     "a": "486",
+     "d": 2000,
+     "c": 0
+    },
+    {
+     "a": "613",
+     "d": 0,
+     "c": 2000
+    }
+   ],
+   "lib": "Charge constatée d'avance, loyer de janvier et février"
+  },
+  {
+   "h": "La contre-passation au 1er janvier",
+   "html": "<p>Toutes les écritures de régularisation (408, 418, 486, 487, 4286, 1648, 5088…) sont <b>contre-passées</b> au premier jour de N+1 : on passe exactement l'écriture inverse. Ainsi, quand la facture réelle arrive en N+1, elle s'enregistre <b>normalement</b> (débit 6xx, débit 44566, crédit 401), et le compte de charge, qui a été crédité par la contre-passation, ne porte en N+1 que la part qui lui revient.</p><p>Exemple sur l'électricité : au 1er janvier, débit 408 pour 960, crédit 44586 pour 160, crédit 6061 pour 800. Le 10 janvier, facture de 820 HT : débit 6061 pour 820, débit 44566 pour 164, crédit 401 pour 984. Solde de 6061 en N+1 : 820 − 800 = 20, l'écart entre l'estimation et le réel, correctement rattaché à N+1.</p><p>Les <b>dépréciations et provisions</b>, elles, ne sont pas contre-passées : elles restent au bilan et sont ajustées à la clôture suivante par dotation complémentaire ou reprise. Les stocks ne sont pas contre-passés non plus : le stock final de N devient le stock initial de N+1, annulé à la clôture de N+1.</p>",
+   "entry": [
+    {
+     "a": "408",
+     "d": 960,
+     "c": 0
+    },
+    {
+     "a": "44586",
+     "d": 0,
+     "c": 160
+    },
+    {
+     "a": "6061",
+     "d": 0,
+     "c": 800
+    }
+   ],
+   "lib": "Contre-passation au 1er janvier N+1"
+  },
+  {
+   "h": "Balance, résultat et impôt sur les sociétés",
+   "html": "<p>Après toutes les écritures d'inventaire, on dresse la <b>balance après inventaire</b> : liste de tous les comptes avec totaux et soldes, total débit = total crédit. Les soldes des classes 1 à 5 alimentent le bilan, ceux des classes 6 et 7 le compte de résultat.</p><p>Dans les sociétés soumises à l'<b>impôt sur les sociétés</b>, l'IS est lui-même une charge de l'exercice : débit <code>695</code> Impôts sur les bénéfices, crédit <code>444</code> État, impôt sur les bénéfices. En cours d'année, la société a versé quatre <b>acomptes</b> (15 mars, 15 juin, 15 septembre, 15 décembre ; débit 444, crédit 512) ; le solde est réglé le 15 du quatrième mois suivant la clôture (15 mai pour une clôture au 31 décembre). En 2025, le taux normal est de 25 % et un taux réduit de 15 % s'applique aux PME sur les 42 500 premiers euros de bénéfice (CGI, art. 219).</p><p>On <b>solde ensuite</b> tous les comptes 6 et 7 dans <code>120</code> Résultat de l'exercice (bénéfice, solde créditeur) ou <code>129</code> (perte, solde débiteur) : débit des comptes 7, crédit des comptes 6, la différence dans 120 ou 129. Les comptes de bilan sont reportés à nouveau en N+1.</p>",
+   "entry": [
+    {
+     "a": "695",
+     "d": 10500,
+     "c": 0
+    },
+    {
+     "a": "444",
+     "d": 0,
+     "c": 10500
+    }
+   ],
+   "lib": "IS de l'exercice (bénéfice fiscal 42 000 × 25 %)"
   },
   {
    "h": "Affecter le résultat (sociétés)",
-   "html": "<p>L'assemblée décide de l'affectation du bénéfice : <b>réserve légale</b> (<code>1061</code>) obligatoire à 5 % du bénéfice jusqu'à ce qu'elle atteigne 10 % du capital, puis réserves facultatives, <b>dividendes</b> (<code>457</code>) et <b>report à nouveau</b> (<code>110</code>).</p>"
+   "html": "<p>Dans les six mois de la clôture, l'assemblée des associés approuve les comptes et décide de l'<b>affectation du bénéfice</b> (C. com., art. L. 232-10 à L. 232-12) :</p><ol><li><b>Réserve légale</b> (<code>1061</code>) : dotation obligatoire de <b>5 %</b> du bénéfice de l'exercice (diminué des pertes antérieures), jusqu'à ce qu'elle atteigne <b>10 % du capital</b> social (SARL et sociétés par actions).</li><li>Réserves statutaires (<code>1063</code>) si les statuts l'imposent, puis réserves facultatives (<code>1068</code>) selon la décision de l'assemblée.</li><li><b>Dividendes</b> : dette envers les associés en <code>457</code> Associés, dividendes à payer, à régler dans les neuf mois de la clôture.</li><li>Le reste en <b>report à nouveau</b> créditeur (<code>110</code>).</li></ol><p>Bénéfice distribuable = bénéfice de l'exercice − pertes antérieures − dotation à la réserve légale et statutaire + report à nouveau créditeur antérieur (art. L. 232-11). Une perte est affectée en report à nouveau débiteur (<code>119</code>) ou imputée sur les réserves.</p><p>Exemple : bénéfice 42 000, réserve légale 2 100, dividendes 20 000, report à nouveau 19 900.</p>",
+   "entry": [
+    {
+     "a": "120",
+     "d": 42000,
+     "c": 0
+    },
+    {
+     "a": "1061",
+     "d": 0,
+     "c": 2100
+    },
+    {
+     "a": "457",
+     "d": 0,
+     "c": 20000
+    },
+    {
+     "a": "110",
+     "d": 0,
+     "c": 19900
+    }
+   ],
+   "lib": "Affectation du résultat N (AGO du 20 mai N+1)"
   }
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "C. com., art. L. 123-12 et L. 123-20",
+   "note": "Exercice comptable, rattachement des charges et produits à l'exercice, prudence"
+  },
+  {
+   "ref": "C. com., art. L. 123-19",
+   "note": "Non-compensation et intangibilité du bilan d'ouverture"
+  },
+  {
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Comptes 408, 418, 4286, 4386, 44586, 44587, 486, 487, 1648, 5088, 120/129, 695/444, 1061, 457, 110/119"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06",
+   "note": "Intérêts courus sur emprunts bancaires en 1648 (remplace 16884)"
+  },
+  {
+   "ref": "C. com., art. L. 232-10 à L. 232-12",
+   "note": "Réserve légale (5 %, plafond 10 % du capital), bénéfice distribuable, dividendes"
+  },
+  {
+   "ref": "CGI, art. 219 et 1668",
+   "note": "Taux de l'IS (25 %, 15 % PME), acomptes et solde"
   }
  ],
  "exercices": [
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Le 1er décembre N, un loyer trimestriel de 3 000 € (décembre à février) a été enregistré en 613. Passez l'écriture de régularisation au 31 décembre.",
    "lib": "Charge constatée d'avance",
    "palette": [
@@ -90,13 +191,14 @@
      }
     ]
    ],
-   "why": "Janvier et février concernent N+1 : 2/3 × 3 000 = 2 000 € sortent des charges de N (crédit 613) et vont à l'actif en 486.",
-   "src": "PCG",
+   "why": "Janvier et février concernent N+1 : 2/3 × 3 000 = 2 000 € sortent des charges de N (crédit 613) et vont à l'actif en 486 Charges constatées d'avance. 487 est le compte des produits constatés d'avance, 408 celui des factures non parvenues.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "L'électricité de décembre (800 € HT, TVA 160 €) a été consommée mais la facture n'est pas arrivée. Régularisez.",
+   "niveau": 1,
+   "q": "L'électricité de décembre (800 € HT, TVA 160 €) a été consommée mais la facture n'est pas arrivée. Régularisez au 31 décembre.",
    "lib": "Facture non parvenue",
    "palette": [
     "6061",
@@ -124,13 +226,14 @@
      }
     ]
    ],
-   "why": "Charge à payer : la charge est bien de N (débit 6061). La TVA en attente va en 44586 (pas 44566, car non encore déductible sans facture). La dette en 408.",
-   "src": "PCG",
+   "why": "Charge à payer : la charge est bien de N (débit 6061). La TVA en attente va en 44586 (pas 44566, car non déductible sans facture). La dette va en 408 Fournisseurs, factures non parvenues, et non en 401.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "Une prestation de 1 500 € HT (TVA 20 %) a été réalisée en décembre et sera facturée en janvier. Régularisez.",
+   "niveau": 1,
+   "q": "Une prestation de 1 500 € HT (TVA 20 %) a été réalisée en décembre et sera facturée en janvier. Régularisez au 31 décembre.",
    "lib": "Facture à établir",
    "palette": [
     "418",
@@ -158,28 +261,32 @@
      }
     ]
    ],
-   "why": "Produit à recevoir : le produit appartient à N (crédit 706). La créance en 418, la TVA en attente en 44587.",
-   "src": "PCG",
+   "why": "Produit à recevoir : le produit appartient à N (crédit 706). La créance va en 418 Clients, produits non encore facturés, la TVA en attente en 44587. 411 et 44571 ne seront utilisés qu'à la facturation en janvier.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
    "fiab": "stable"
   },
   {
    "type": "calc",
-   "q": "Emprunt de 60 000 € à 4 %, intérêts payés chaque 30 avril pour les 12 mois écoulés. Intérêts courus au 31 décembre ?",
+   "niveau": 1,
+   "q": "Emprunt bancaire de 60 000 € à 4 %, intérêts payés chaque 30 avril pour les 12 mois écoulés. Intérêts courus au 31 décembre ?",
    "a": 1600,
    "unit": "€",
-   "why": "Du 1er mai au 31 décembre : 8 mois. 60 000 × 4 % × 8/12 = 1 600 €.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "Du 1er mai au 31 décembre : 8 mois. 60 000 × 4 % × 8/12 = 1 600 €. Ces intérêts sont une charge de N bien qu'ils ne soient payés qu'en avril N+1.",
+   "src": "C. com., art. L. 123-20",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "Enregistrez ces intérêts courus de 1 600 € au 31 décembre.",
-   "lib": "Intérêts courus",
+   "niveau": 2,
+   "q": "Enregistrez ces intérêts courus de 1 600 € au 31 décembre sur l'emprunt bancaire.",
+   "lib": "Intérêts courus non échus",
    "palette": [
     "661",
-    "1688",
+    "1648",
     "164",
-    "512"
+    "512",
+    "1688"
    ],
    "sol": [
     [
@@ -189,18 +296,19 @@
       "c": 0
      },
      {
-      "a": "1688",
+      "a": "1648",
       "d": 0,
       "c": 1600
      }
     ]
    ],
-   "why": "La charge d'intérêts de N au débit de 661, la dette d'intérêts non encore payés au crédit de 1688.",
-   "src": "PCG",
+   "why": "La charge d'intérêts de N au débit de 661, la dette d'intérêts non encore payés au crédit de 1648 Intérêts courus sur emprunts auprès des établissements de crédit (PCG 2025 ; avant 2025 on utilisait 16884). Le compte 1688 est désormais réservé aux intérêts courus sur les autres emprunts et dettes assimilées, et 164 n'est touché que par le capital.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; règlement ANC n° 2022-06",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un produit constaté d'avance figure :",
    "opts": [
     "À l'actif du bilan",
@@ -209,13 +317,14 @@
     "Dans les charges de l'exercice"
    ],
    "a": 1,
-   "why": "487 est une dette : l'entreprise a facturé quelque chose qu'elle doit encore fournir. Symétriquement, 486 est un actif.",
-   "src": "PCG",
+   "why": "487 est une dette : l'entreprise a facturé quelque chose qu'elle doit encore fournir. Il a précisément été retiré des produits de l'exercice. Symétriquement, 486 est un actif.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
-   "q": "Le 1er janvier N+1, que deviennent les écritures de régularisation ?",
+   "niveau": 1,
+   "q": "Le 1er janvier N+1, que deviennent les écritures de régularisation (408, 418, 486, 487) ?",
    "opts": [
     "Elles sont conservées jusqu'à la facture",
     "Elles sont contre-passées (écriture inverse)",
@@ -223,21 +332,24 @@
     "Elles sont annulées par l'expert-comptable à la clôture suivante"
    ],
    "a": 1,
-   "why": "On passe l'écriture inverse au premier jour de N+1. Ainsi la facture réelle, quand elle arrive, s'enregistre normalement sans doublon.",
-   "src": "PCG",
+   "why": "On passe l'écriture inverse au premier jour de N+1. Ainsi la facture réelle, quand elle arrive, s'enregistre normalement sans doublon, et seul l'écart entre l'estimation et le réel affecte N+1. Les dépréciations et provisions, en revanche, ne sont pas contre-passées.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "calc",
-   "q": "Total des comptes de classe 7 : 540 000 €. Total des comptes de classe 6 : 498 000 €. Résultat de l'exercice ?",
+   "niveau": 1,
+   "q": "Total des comptes de classe 7 : 540 000 €. Total des comptes de classe 6 (IS compris) : 498 000 €. Résultat de l'exercice ?",
    "a": 42000,
    "unit": "€",
-   "why": "540 000 − 498 000 = 42 000 € de bénéfice, porté au crédit du compte 120.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "540 000 − 498 000 = 42 000 € de bénéfice, porté au crédit du compte 120 lorsqu'on solde les comptes de gestion. Une perte aurait été portée au débit de 129.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un solde créditeur du compte 120 signifie :",
    "opts": [
     "Une perte",
@@ -246,31 +358,284 @@
     "Un crédit de TVA"
    ],
    "a": 1,
-   "why": "120 reçoit au crédit la somme des produits et au débit la somme des charges. Créditeur = produits supérieurs aux charges = bénéfice.",
-   "src": "PCG",
+   "why": "120 reçoit au crédit la somme des produits et au débit la somme des charges. Créditeur = produits supérieurs aux charges = bénéfice, qui augmente les capitaux propres. La perte figure au débit de 129.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "calc",
-   "q": "Bénéfice 42 000 €, capital 100 000 €, réserve légale déjà constituée 6 000 €. Dotation à la réserve légale ?",
+   "niveau": 2,
+   "q": "Bénéfice 42 000 €, capital 100 000 €, réserve légale déjà constituée 6 000 €, aucune perte antérieure. Dotation à la réserve légale ?",
    "a": 2100,
    "unit": "€",
-   "why": "5 % × 42 000 = 2 100 €. Le plafond (10 % du capital = 10 000) n'est pas atteint (6 000 + 2 100 = 8 100), la dotation est donc entière.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "5 % × 42 000 = 2 100 €. Le plafond (10 % du capital = 10 000) n'est pas atteint (6 000 + 2 100 = 8 100), la dotation est donc entière. Si la réserve avait été de 9 000, on n'aurait doté que 1 000 pour atteindre le plafond.",
+   "src": "C. com., art. L. 232-10",
    "fiab": "stable"
   },
   {
    "type": "qcm",
-   "q": "La balance est :",
+   "niveau": 1,
+   "q": "La balance après inventaire est :",
    "opts": [
     "Le document qui remplace le bilan dans les petites entreprises",
-    "La liste de tous les comptes avec leurs totaux et soldes, débits = crédits",
+    "La liste de tous les comptes avec leurs totaux et soldes, débits = crédits, après les écritures d'inventaire",
     "La liste des seules dettes et créances",
     "Le relevé bancaire rapproché"
    ],
    "a": 1,
-   "why": "La balance vérifie la partie double avant d'établir le bilan (classes 1-5) et le compte de résultat (classes 6-7).",
-   "src": "PCG",
+   "why": "La balance vérifie la partie double avant d'établir le bilan (classes 1 à 5) et le compte de résultat (classes 6 et 7). Celle d'après inventaire intègre les régularisations, amortissements, dépréciations, provisions et stocks ; elle est la base directe des comptes annuels.",
+   "src": "C. com., art. R. 123-175 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le 1er octobre N, la société Orvalis encaisse 12 000 € HT pour un contrat de maintenance couvrant douze mois, enregistré en 706. Régularisation au 31 décembre N :",
+   "opts": [
+    "Débit 706 : 9 000 ; crédit 487 : 9 000",
+    "Débit 487 : 9 000 ; crédit 706 : 9 000",
+    "Débit 706 : 3 000 ; crédit 487 : 3 000",
+    "Débit 486 : 9 000 ; crédit 706 : 9 000"
+   ],
+   "a": 0,
+   "why": "Neuf mois (janvier à septembre N+1) sur douze concernent N+1 : 12 000 × 9/12 = 9 000 € de produit constaté d'avance. On retire ce montant des produits de N (débit 706) et on constate l'obligation de fournir la prestation au passif (crédit 487). 3 000 est la part qui reste bien en N. 486 est le compte des charges constatées d'avance.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au 31 décembre, les salariés ont acquis des congés payés non encore pris, évalués à 18 000 € bruts plus 7 200 € de charges patronales. Écriture de clôture :",
+   "opts": [
+    "Débit 641 : 18 000 ; débit 645 : 7 200 ; crédit 4286 : 18 000 ; crédit 4386 : 7 200",
+    "Débit 641 : 25 200 ; crédit 421 : 25 200",
+    "Débit 6815 : 25 200 ; crédit 1511 : 25 200",
+    "Aucune, les congés seront payés l'an prochain"
+   ],
+   "a": 0,
+   "why": "Les congés acquis sont une charge certaine de N, payable en N+1 : charge à payer. Le brut va en 641 et la dette en 4286 Personnel, charges à payer ; les cotisations patronales en 645 et 4386 Organismes sociaux, charges à payer. Ce n'est pas une rémunération due (421, réservé aux salaires liquidés) ni une provision (le montant est connu avec précision).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles affirmations sur les charges constatées d'avance sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elles figurent à l'actif du bilan",
+    "Leur montant est calculé hors taxes",
+    "Elles passent par le compte 486",
+    "Elles donnent lieu à un ajustement de la TVA déductible",
+    "Elles sont contre-passées à l'ouverture de l'exercice suivant"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "why": "La charge constatée d'avance (486) est un actif : un droit à une prestation future. Elle est calculée HT car la TVA, correctement déduite à la réception de la facture, n'a pas à être corrigée. Elle est contre-passée au 1er janvier pour que la charge retombe sur N+1.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles écritures d'inventaire ne sont pas contre-passées au 1er janvier N+1 ? (plusieurs réponses possibles)",
+   "opts": [
+    "Dotation aux amortissements",
+    "Facture non parvenue (408)",
+    "Dépréciation d'un client douteux",
+    "Produit constaté d'avance (487)",
+    "Provision pour litige"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Les amortissements, dépréciations et provisions restent au bilan : ils sont ajustés à la clôture suivante par dotation complémentaire ou reprise. Seuls les comptes de régularisation (408, 418, 486, 487, charges à payer, intérêts courus) sont contre-passés pour éviter les doublons avec les factures de N+1.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Berlan détient des obligations (VMP) de 20 000 € au taux de 3 %, coupon annuel versé le 1er avril. Au 31 décembre, quelle écriture d'intérêts courus passe-t-elle ?",
+   "opts": [
+    "Débit 5088 : 450 ; crédit 764 : 450",
+    "Débit 1648 : 450 ; crédit 661 : 450",
+    "Débit 512 : 450 ; crédit 764 : 450",
+    "Débit 5088 : 600 ; crédit 764 : 600"
+   ],
+   "a": 0,
+   "why": "Produit à recevoir : intérêts courus du 1er avril au 31 décembre = 20 000 × 3 % × 9/12 = 450 €. La créance d'intérêts sur VMP va en 5088 Intérêts courus sur obligations, bons et valeurs assimilés, le produit en 764 Revenus des valeurs mobilières de placement. 600 serait le coupon annuel entier ; 1648/661 concernent les intérêts dus sur emprunts ; la banque n'est créditée qu'au versement du coupon en avril.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au 1er janvier N+1, la facture non parvenue d'électricité (800 € HT, TVA 160 €, soit 960 € en 408) est contre-passée. Le 12 janvier, la facture réelle arrive : 850 € HT, TVA 170 €. Quelle charge d'électricité porte finalement l'exercice N+1 au titre de décembre N ?",
+   "opts": [
+    "850 €",
+    "50 €",
+    "0 €",
+    "800 €"
+   ],
+   "a": 1,
+   "why": "La contre-passation crédite 6061 de 800 ; la facture le débite de 850 ; solde net sur N+1 : 50 €, soit l'écart entre l'estimation et le réel. L'exercice N a bien supporté 800 et N+1 ne supporte que la différence. C'est tout l'intérêt de la contre-passation : la facture s'enregistre normalement sans retraitement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-20",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Lioré (PME, exercice clos le 31 décembre N) calcule un IS de 10 500 € pour N. Elle a versé 8 000 € d'acomptes en N. Comment comptabilise-t-elle l'IS au 31 décembre N ?",
+   "opts": [
+    "Débit 695 : 10 500 ; crédit 444 : 10 500 (le compte 444 présentera un solde créditeur de 2 500)",
+    "Débit 695 : 2 500 ; crédit 444 : 2 500",
+    "Débit 695 : 10 500 ; crédit 512 : 10 500",
+    "Débit 444 : 10 500 ; crédit 695 : 10 500"
+   ],
+   "a": 0,
+   "why": "La charge d'IS de l'exercice est enregistrée pour son montant total (débit 695, crédit 444). Les acomptes ayant déjà été débités en 444 (8 000), le compte présente un solde créditeur de 2 500 : c'est le solde à payer le 15 mai N+1 (CGI, art. 1668). N'enregistrer que 2 500 sous-évaluerait la charge d'impôt de N, et la banque n'est pas encore mouvementée.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 1668",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "En 2025, la SARL Nerval, PME éligible au taux réduit, dégage un bénéfice fiscal de 60 000 €. Taux réduit 15 % jusqu'à 42 500 €, taux normal 25 % au-delà. Quel est le montant de l'IS ?",
+   "a": 10750,
+   "unit": "€",
+   "tol": 1,
+   "why": "42 500 × 15 % = 6 375 ; (60 000 − 42 500) × 25 % = 17 500 × 25 % = 4 375. IS = 6 375 + 4 375 = 10 750 €. Le taux réduit est réservé aux PME dont le chiffre d'affaires est inférieur à 10 M€ et dont le capital est détenu à 75 % au moins par des personnes physiques (CGI, art. 219, I-b).",
+   "src": "CGI, art. 219, I-b",
+   "fiab": "millésimé 2025"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Vézac présente une perte de 15 000 € en N. L'assemblée décide de la reporter. Écriture d'affectation :",
+   "opts": [
+    "Débit 119 : 15 000 ; crédit 129 : 15 000",
+    "Débit 129 : 15 000 ; crédit 119 : 15 000",
+    "Débit 110 : 15 000 ; crédit 129 : 15 000",
+    "Débit 1061 : 15 000 ; crédit 129 : 15 000"
+   ],
+   "a": 0,
+   "why": "La perte est au débit de 129 ; pour la solder, on crédite 129 et on débite 119 Report à nouveau (solde débiteur), qui diminue les capitaux propres. 110 est le report à nouveau créditeur (bénéfices non distribués), et la réserve légale ne peut pas être dotée en l'absence de bénéfice (elle pourrait, au contraire, absorber la perte sur décision de l'assemblée).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 232-11",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quels éléments entrent dans le calcul du bénéfice distribuable au sens de l'article L. 232-11 du Code de commerce ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le bénéfice de l'exercice",
+    "Les pertes antérieures (en moins)",
+    "La dotation à la réserve légale (en moins)",
+    "Le report à nouveau créditeur antérieur (en plus)",
+    "Le capital social (en plus)"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "why": "Bénéfice distribuable = bénéfice de l'exercice − pertes antérieures − sommes à porter en réserve légale ou statutaire + report à nouveau bénéficiaire. Le capital social n'est jamais distribuable : le distribuer serait une distribution de dividendes fictifs, pénalement sanctionnée.",
+   "src": "C. com., art. L. 232-11",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La SA Mirval (capital 200 000 €, réserve légale 19 000 €) réalise un bénéfice de 50 000 € en N, sans perte antérieure. Quelle dotation à la réserve légale l'assemblée doit-elle décider ?",
+   "opts": [
+    "2 500 €",
+    "1 000 €",
+    "0 €",
+    "5 000 €"
+   ],
+   "a": 1,
+   "why": "5 % × 50 000 = 2 500, mais la réserve légale est plafonnée à 10 % du capital = 20 000. Elle est déjà à 19 000 : la dotation est limitée à 20 000 − 19 000 = 1 000 €. Au-delà, la dotation cesse d'être obligatoire (C. com., art. L. 232-10).",
+   "src": "C. com., art. L. 232-10",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Affectation du bénéfice N de 42 000 € décidée par l'AGO : réserve légale 2 100 €, dividendes 20 000 €, le solde en report à nouveau. Enregistrez l'affectation.",
+   "lib": "Affectation du résultat",
+   "palette": [
+    "120",
+    "1061",
+    "457",
+    "110",
+    "119",
+    "512",
+    "101"
+   ],
+   "sol": [
+    [
+     {
+      "a": "120",
+      "d": 42000,
+      "c": 0
+     },
+     {
+      "a": "1061",
+      "d": 0,
+      "c": 2100
+     },
+     {
+      "a": "457",
+      "d": 0,
+      "c": 20000
+     },
+     {
+      "a": "110",
+      "d": 0,
+      "c": 19900
+     }
+    ]
+   ],
+   "why": "On solde 120 par son débit (42 000) et l'on répartit au crédit : réserve légale 1061 (2 100), dette envers les associés 457 (20 000), report à nouveau créditeur 110 (42 000 − 2 100 − 20 000 = 19 900). Le paiement des dividendes (débit 457, crédit 512) est une écriture ultérieure ; 119 est le report débiteur d'une perte, et le capital n'est pas concerné.",
+   "src": "C. com., art. L. 232-10 à L. 232-12 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "La société Télia a souscrit le 1er novembre N une assurance annuelle de 2 400 € (hors TVA), enregistrée en 616 et payée en totalité. Elle a aussi facturé le 15 décembre N 6 000 € HT de marchandises livrées le 10 janvier N+1 (enregistré en 707). Quel est l'effet cumulé des régularisations sur le résultat de N ?",
+   "opts": [
+    "+ 2 000 − 6 000 = − 4 000 €",
+    "+ 2 400 − 6 000 = − 3 600 €",
+    "− 2 000 − 6 000 = − 8 000 €",
+    "+ 2 000 − 7 200 = − 5 200 €"
+   ],
+   "a": 0,
+   "why": "Assurance : 10 mois sur 12 concernent N+1 → charge constatée d'avance de 2 400 × 10/12 = 2 000, qui diminue les charges de N (+ 2 000 sur le résultat). Vente : la livraison ayant lieu en N+1, le produit de 6 000 HT n'appartient pas à N → produit constaté d'avance de 6 000 (− 6 000). Les régularisations se font HT, donc 7 200 est faux. Effet net : − 4 000 €.",
+   "src": "C. com., art. L. 123-20 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "La SARL Alcor doit payer son solde d'IS pour l'exercice clos le 31 décembre N. Les acomptes versés en N ont dépassé l'IS dû de 1 200 €. Quelle est la situation au 31 décembre N ?",
+   "opts": [
+    "Le compte 444 présente un solde débiteur de 1 200 € : créance sur l'État, remboursable ou imputable",
+    "Le compte 695 est créditeur de 1 200 €",
+    "L'excédent est perdu",
+    "Le compte 444 présente un solde créditeur de 1 200 €"
+   ],
+   "a": 0,
+   "why": "Les acomptes ont été débités en 444 ; la charge d'IS créditée en 444 est inférieure de 1 200 : le compte reste débiteur, c'est une créance sur l'État. L'excédent est remboursé par l'administration (ou imputé sur l'acompte suivant), il n'est jamais perdu. Le compte 695 reste débiteur du montant de la charge réelle d'impôt.",
+   "src": "CGI, art. 1668 ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   }
  ]

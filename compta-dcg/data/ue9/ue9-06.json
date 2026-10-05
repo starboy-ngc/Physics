@@ -3,13 +3,13 @@
  "ue": "UE9",
  "ordre": 6,
  "title": "Stocks, dépréciations et provisions",
- "resume": "Variation de stock, créances douteuses, dépréciations d'actif et provisions pour risques.",
- "duree": "45 min",
- "niveau": 1,
+ "resume": "Inventaire intermittent et variation des stocks, évaluation des stocks, dépréciations (stocks, clients douteux, titres), créances irrécouvrables, provisions pour risques et charges et reprises.",
+ "duree": "65 min",
+ "niveau": 2,
  "lecon": [
   {
-   "h": "L'inventaire intermittent",
-   "html": "<p>En cours d'année, les achats vont en <code>607</code> et le compte de stock <code>37</code> ne bouge pas. À la clôture, on <b>annule le stock initial</b> et on <b>constate le stock final</b> compté physiquement, via le compte <code>6037</code> Variation des stocks.</p>",
+   "h": "L'inventaire intermittent des marchandises",
+   "html": "<p>Un <b>stock</b> est un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production (PCG, art. 211-7). En <b>inventaire intermittent</b>, le système courant du PCG, les achats de l'année vont en <code>607</code> et le compte de stock <code>37</code> <b>ne bouge pas en cours d'exercice</b>. À la clôture, après comptage physique (l'inventaire est obligatoire au moins une fois par an, C. com., art. L. 123-12), on <b>annule le stock initial</b> et on <b>constate le stock final</b> via le compte <code>6037</code> Variation des stocks de marchandises.</p><p>Exemple : stock initial 40 000, stock final 55 000. Première écriture : annulation du stock initial.</p>",
    "entry": [
     {
      "a": "6037",
@@ -22,11 +22,11 @@
      "c": 40000
     }
    ],
-   "lib": "Annulation du stock initial"
+   "lib": "Annulation du stock initial de marchandises"
   },
   {
    "h": "Lire la variation de stock",
-   "html": "<p>Variation (6037) = stock initial − stock final. Si le stock a augmenté, 6037 est <b>créditeur</b> : il diminue les charges, donc augmente le résultat. Logique : une partie des achats n'a pas été consommée.</p>\n<p><b>Coût d'achat des marchandises vendues</b> = achats + stock initial − stock final.</p>\n<p>Pour les produits finis, on utilise <code>355</code> et <code>7135</code> (production stockée), avec le signe inverse : stock final − stock initial.</p>",
+   "html": "<p>Solde de <code>6037</code> = stock initial − stock final. Si le stock a <b>augmenté</b>, 6037 est <b>créditeur</b> : il vient en moins des achats et augmente le résultat. Logique : une partie des achats n'a pas été consommée et reste à l'actif. Si le stock a diminué, 6037 est débiteur : on a vendu plus qu'on n'a acheté.</p><p><b>Coût d'achat des marchandises vendues</b> = achats + stock initial − stock final = achats + variation. Avec 300 000 d'achats : 300 000 + 40 000 − 55 000 = 285 000.</p><p>Même mécanisme pour les <b>matières premières</b> : <code>31</code> et <code>6031</code>. Pour les <b>produits finis</b> fabriqués par l'entreprise, le compte de stock est <code>355</code> et la variation passe par un <b>produit</b>, <code>7135</code> Variation des stocks de produits, avec le signe inverse : solde créditeur si le stock de produits a augmenté (production stockée). Dans le compte de résultat, 603 figure côté charges et 713 côté produits.</p>",
    "entry": [
     {
      "a": "37",
@@ -39,15 +39,32 @@
      "c": 55000
     }
    ],
-   "lib": "Constatation du stock final"
+   "lib": "Constatation du stock final de marchandises"
   },
   {
-   "h": "Dépréciations",
-   "html": "<p>Une <b>dépréciation</b> constate une perte de valeur <b>probable mais non définitive</b> d'un élément d'actif. C'est une charge calculée (<code>68…</code>) avec en contrepartie un compte en moins de l'actif (<code>29</code>, <code>39</code>, <code>49</code>).</p>\n<ul>\n<li>Stock : <code>68173</code> / <code>397</code>.</li>\n<li>Client en difficulté : on reclasse d'abord la créance <b>TTC</b> en <code>416</code> Clients douteux, puis on déprécie le montant <b>HT</b> probablement perdu : <code>68174</code> / <code>491</code>. La TVA n'est pas dépréciée car elle sera récupérée.</li>\n<li>Quand la situation s'améliore ou se dénoue : <b>reprise</b> <code>491</code> / <code>78174</code>.</li>\n</ul>"
+   "h": "Évaluer un stock à l'inventaire",
+   "html": "<p>Les stocks entrent au <b>coût d'acquisition</b> (prix d'achat net des réductions + frais accessoires : transport, droits de douane, hors TVA récupérable) pour les marchandises et matières, et au <b>coût de production</b> (matières consommées + charges directes et indirectes de production, hors frais administratifs et sous-activité) pour les produits (PCG, art. 213-30 s.).</p><p>Quand des articles identiques ont été achetés à des prix différents, le stock final est valorisé par le <b>coût moyen pondéré</b> (CMP) ou la méthode <b>premier entré, premier sorti</b> (PEPS). CMP = (valeur du stock initial + valeur des entrées) ÷ (quantité initiale + quantités entrées). Exemple : 100 unités à 10 € en stock, achat de 300 unités à 12 € ; CMP = (1 000 + 3 600) ÷ 400 = 11,50 €. Un stock final de 150 unités vaut 1 725 €. En PEPS, les 150 unités restantes sont les dernières entrées : 150 × 12 = 1 800 €.</p><div class=\"note\"><b>Règle.</b> La méthode choisie (CMP ou PEPS) doit être conservée d'un exercice à l'autre : principe de permanence des méthodes (PCG, art. 121-5). Le « dernier entré, premier sorti » est interdit en comptes individuels.</div>"
   },
   {
-   "h": "Provisions et créances perdues",
-   "html": "<p>Une <b>provision</b> (classe 15) constate une <b>dette probable</b> : litige, garantie, amende. C'est un passif, pas une correction d'actif. Débit <code>6815</code>, crédit <code>1511</code>.</p>\n<p>Quand une créance est <b>définitivement perdue</b>, on sort le client douteux : la perte HT en <code>654</code>, la TVA récupérée au débit de <code>44571</code>, le TTC au crédit de <code>416</code>. Puis on reprend la dépréciation devenue sans objet.</p>",
+   "h": "Dépréciation des stocks et des créances",
+   "html": "<p>Une <b>dépréciation</b> constate que la <b>valeur actuelle</b> d'un actif est devenue inférieure à sa valeur nette comptable (PCG, art. 214-5 ; stocks : art. 214-22). La perte est <b>probable mais non définitive</b>. C'est une charge calculée (<code>68</code>) avec en contrepartie un compte soustractif d'actif (<code>29</code>, <code>39</code>, <code>49</code>, <code>59</code>) ; l'actif lui-même reste à son coût.</p><ul><li><b>Stock</b> dont le prix de vente probable (net des frais de vente) est passé sous le coût : <code>68173</code> / <code>397</code> (marchandises), <code>391</code> (matières), <code>395</code> (produits).</li><li><b>Client en difficulté</b> : on reclasse d'abord la créance <b>TTC</b> en <code>416</code> Clients douteux ou litigieux, puis on déprécie le montant <b>HT</b> probablement perdu : <code>68174</code> / <code>491</code>. La TVA n'est pas dépréciée, car elle sera récupérée sur l'État si la créance est perdue.</li><li>À chaque clôture, la dépréciation est <b>ajustée</b> : dotation complémentaire si le risque augmente, <b>reprise</b> (<code>491</code> / <code>78174</code>, ou <code>397</code> / <code>78173</code>) s'il diminue ou disparaît.</li></ul><p>Exemple : client Hekla, créance 3 600 TTC, perte probable 50 % → dépréciation 1 500 (3 000 HT × 50 %).</p>",
+   "entry": [
+    {
+     "a": "68174",
+     "d": 1500,
+     "c": 0
+    },
+    {
+     "a": "491",
+     "d": 0,
+     "c": 1500
+    }
+   ],
+   "lib": "Dépréciation du client douteux Hekla"
+  },
+  {
+   "h": "Créances irrécouvrables",
+   "html": "<p>Quand une créance est <b>définitivement perdue</b> (liquidation judiciaire clôturée, certificat d'irrécouvrabilité), on sort le client : la perte HT en <code>654</code> Pertes sur créances irrécouvrables, la <b>TVA récupérée</b> au débit de <code>44571</code> (la TVA collectée sur une vente impayée est restituée par l'État, CGI art. 272, sur rectification de la facture), le TTC au crédit de <code>416</code> (ou 411 si le client n'avait pas été reclassé). Depuis le PCG 2025, l'ancien compte 6714 (pertes sur créances irrécouvrables exceptionnelles) est supprimé : toutes les pertes passent par 654.</p><p>Puis on <b>reprend</b> la dépréciation devenue sans objet : débit 491, crédit 78174. Le résultat net de l'opération sur l'exercice est : perte 654 − reprise 78174. Si la créance avait été intégralement dépréciée l'année précédente, l'effet sur le résultat de l'exercice est nul : la charge avait été anticipée, c'est tout l'intérêt du principe de prudence (PCG, art. 121-4).</p><p>Exemple : client douteux de 2 400 TTC (HT 2 000, TVA 400) en liquidation, créance perdue.</p>",
    "entry": [
     {
      "a": "654",
@@ -65,27 +82,88 @@
      "c": 2400
     }
    ],
-   "lib": "Créance irrécouvrable"
+   "lib": "Créance irrécouvrable, client Marsac"
+  },
+  {
+   "h": "Dépréciation des titres",
+   "html": "<p>Les titres ne s'amortissent pas, ils se déprécient. À l'inventaire, chaque ligne de titres est comparée à sa <b>valeur d'inventaire</b> : pour les titres cotés, le <b>cours moyen du dernier mois</b> ; pour les titres de participation, la <b>valeur d'utilité</b> (ce que l'entreprise accepterait de payer pour les acquérir). Si la valeur d'inventaire est inférieure au coût d'achat, on déprécie la différence ; si elle est supérieure, la plus-value latente <b>n'est pas comptabilisée</b> (prudence).</p><ul><li>Titres immobilisés : <code>6866</code> Dotations aux dépréciations des éléments financiers / <code>296</code> (participations) ou <code>297</code> (autres titres immobilisés).</li><li>Valeurs mobilières de placement : <code>6866</code> / <code>590</code>.</li><li>Reprise : <code>296</code>, <code>297</code> ou <code>590</code> / <code>7866</code>.</li></ul><p>Aucune compensation entre lignes : une plus-value latente sur les actions Alpha ne compense pas la moins-value latente sur les actions Bêta (C. com., art. L. 123-19). Exemple : 200 actions Bêta achetées 50 € (10 000), cours moyen de décembre 42 € : dépréciation 200 × 8 = 1 600.</p>",
+   "entry": [
+    {
+     "a": "6866",
+     "d": 1600,
+     "c": 0
+    },
+    {
+     "a": "590",
+     "d": 0,
+     "c": 1600
+    }
+   ],
+   "lib": "Dépréciation des VMP Bêta"
+  },
+  {
+   "h": "Provisions pour risques et charges",
+   "html": "<p>Une <b>provision</b> est un <b>passif</b> dont l'échéance ou le montant n'est pas fixé de façon précise (PCG, art. 321-5). Elle est comptabilisée lorsque trois conditions sont réunies à la clôture (art. 322-1) : une <b>obligation</b> envers un tiers existe, elle entraînera <b>probablement une sortie de ressources</b> sans contrepartie équivalente, et son montant peut être <b>estimé de façon fiable</b>. Litige avec un salarié ou un client, garantie donnée aux clients, amende probable, perte de change latente.</p><p>Comptes : <code>1511</code> litiges, <code>1512</code> garanties données aux clients, <code>1514</code> amendes et pénalités, <code>1515</code> pertes de change, <code>152</code> provisions pour charges (dont <code>1521</code> pensions). Dotation : débit <code>6815</code> (exploitation), <code>6865</code> (financier) ou <code>6875</code> (exceptionnel), crédit 15. Reprise quand le risque disparaît ou se réalise : débit 15, crédit <code>7815</code>, <code>7865</code> ou <code>7875</code>.</p><div class=\"note\"><b>Dépréciation ≠ provision.</b> La dépréciation corrige la valeur d'un <b>actif</b> (29, 39, 49, 59). La provision est un <b>passif</b> (15). Les deux sont des charges calculées, réversibles par reprise, et obéissent au même principe de prudence.</div><p>Quand le litige se dénoue (paiement de 4 800 au salarié), on enregistre la charge réelle (débit 6xx, crédit 512) et l'on reprend la provision devenue sans objet (débit 1511, crédit 7815).</p>",
+   "entry": [
+    {
+     "a": "6815",
+     "d": 5000,
+     "c": 0
+    },
+    {
+     "a": "1511",
+     "d": 0,
+     "c": 5000
+    }
+   ],
+   "lib": "Provision pour litige prud'homal"
   }
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "PCG, art. 211-7 et 213-30 s.",
+   "note": "Définition et coût d'entrée des stocks, méthodes CMP et PEPS"
+  },
+  {
+   "ref": "PCG, art. 214-5, 214-15 s. et 214-22",
+   "note": "Définition de la dépréciation, test de dépréciation, dépréciation des stocks"
+  },
+  {
+   "ref": "PCG, art. 321-5 et 322-1",
+   "note": "Définition et conditions de comptabilisation des provisions"
+  },
+  {
+   "ref": "PCG, art. 121-4 et 121-5",
+   "note": "Principes de prudence et de permanence des méthodes"
+  },
+  {
+   "ref": "C. com., art. L. 123-12 et L. 123-19",
+   "note": "Inventaire annuel obligatoire, non-compensation"
+  },
+  {
+   "ref": "CGI, art. 272",
+   "note": "Récupération de la TVA sur créances irrécouvrables"
+  },
+  {
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Comptes 31/37/355, 603/7135, 39, 416, 491, 590, 296, 15, 6815/7815, 6866/7866, 654 ; suppression de 6714 par le règlement ANC n° 2022-06"
   }
  ],
  "exercices": [
   {
    "type": "calc",
+   "niveau": 1,
    "q": "Achats de marchandises de l'exercice : 300 000 €. Stock initial : 40 000 €. Stock final : 55 000 €. Coût d'achat des marchandises vendues ?",
    "a": 285000,
    "unit": "€",
-   "why": "300 000 + 40 000 − 55 000 = 285 000 €. Les 15 000 d'augmentation de stock n'ont pas été vendus, ils restent à l'actif.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "Coût d'achat des marchandises vendues = achats + stock initial − stock final = 300 000 + 40 000 − 55 000 = 285 000 €. Les 15 000 d'augmentation de stock n'ont pas été vendus : ils restent à l'actif et viennent en moins des charges via 6037.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "À la clôture, annulez le stock initial de marchandises de 40 000 €.",
    "lib": "Annulation stock initial",
    "palette": [
@@ -108,12 +186,13 @@
      }
     ]
    ],
-   "why": "Le stock initial disparaît de l'actif (crédit 37) et devient une charge via la variation (débit 6037).",
-   "src": "PCG",
+   "why": "Le stock initial disparaît de l'actif (crédit 37) et devient une charge via la variation (débit 6037). On ne touche jamais à 607, qui a reçu les achats de l'année, et 355 est le compte des produits finis.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Constatez le stock final de marchandises compté à l'inventaire : 55 000 €.",
    "lib": "Stock final",
    "palette": [
@@ -136,13 +215,14 @@
      }
     ]
    ],
-   "why": "Le stock final entre à l'actif (débit 37) et vient en déduction des charges (crédit 6037). Solde de 6037 : 40 000 − 55 000 = −15 000, créditeur.",
-   "src": "PCG",
+   "why": "Le stock final entre à l'actif (débit 37) et vient en déduction des charges (crédit 6037). Solde de 6037 après les deux écritures : 40 000 − 55 000 = −15 000, créditeur. 7135 est réservé à la variation des stocks de produits.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
-   "q": "Le stock final est supérieur au stock initial. Effet sur le résultat :",
+   "niveau": 1,
+   "q": "Le stock final de marchandises est supérieur au stock initial. Effet sur le résultat :",
    "opts": [
     "Il diminue le résultat",
     "Il augmente le résultat",
@@ -150,21 +230,24 @@
     "Il augmente la TVA à décaisser"
    ],
    "a": 1,
-   "why": "6037 est créditeur : les charges de l'exercice diminuent d'autant, donc le résultat augmente. Une partie des achats est reportée sur l'exercice suivant.",
-   "src": "PCG",
+   "why": "6037 est créditeur : les charges de l'exercice diminuent d'autant, donc le résultat augmente. Une partie des achats est reportée sur l'exercice suivant. La TVA n'est pas concernée : elle a été déduite à l'achat quelle que soit la date de revente.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "calc",
+   "niveau": 1,
    "q": "Un client doit 3 600 € TTC (TVA 20 %) et risque de ne payer que la moitié. Montant de la dépréciation à constater ?",
    "a": 1500,
    "unit": "€",
-   "why": "Base HT = 3 600 ÷ 1,2 = 3 000. Perte probable 50 % → 1 500 €. La TVA n'est pas dépréciée : si la créance est perdue, l'État la rembourse.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "Base HT = 3 600 ÷ 1,2 = 3 000. Perte probable 50 % → 1 500 €. La TVA n'est pas dépréciée : si la créance est perdue, l'État la restitue (CGI, art. 272). Déprécier 1 800 (50 % du TTC) serait une erreur classique.",
+   "src": "PCG, art. 214-5 ; CGI, art. 272",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Reclassez d'abord la créance de 3 600 € TTC de ce client en client douteux.",
    "lib": "Client douteux",
    "palette": [
@@ -187,12 +270,13 @@
      }
     ]
    ],
-   "why": "Le reclassement se fait pour le montant TTC : la créance ne change pas de montant, seulement de catégorie.",
-   "src": "PCG",
+   "why": "Le reclassement se fait pour le montant TTC : la créance ne change pas de montant, seulement de catégorie, pour isoler les clients à risque. La dépréciation (491) viendra dans une écriture distincte, et 654 n'intervient qu'en cas de perte définitive.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Enregistrez la dépréciation de 1 500 € sur ce client douteux.",
    "lib": "Dépréciation client",
    "palette": [
@@ -215,12 +299,13 @@
      }
     ]
    ],
-   "why": "Charge calculée au débit de 68174, dépréciation au crédit de 491 (qui viendra en moins des créances à l'actif du bilan).",
-   "src": "PCG",
+   "why": "Charge calculée au débit de 68174 Dotations pour dépréciations des créances, dépréciation au crédit de 491 (qui viendra en moins des créances à l'actif du bilan). Le compte 416 reste au TTC : on ne diminue jamais directement la créance tant que la perte n'est pas certaine.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 214-5",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Quelle est la différence entre une dépréciation et une provision ?",
    "opts": [
     "Aucune, ce sont des synonymes",
@@ -229,12 +314,13 @@
     "La dépréciation est définitive, la provision est probable"
    ],
    "a": 1,
-   "why": "Dépréciation = correction en moins d'un élément d'actif (comptes 29, 39, 49). Provision = dette probable (classe 15). Les deux sont des charges calculées, réversibles par reprise.",
-   "src": "PCG",
+   "why": "Dépréciation = correction en moins d'un élément d'actif (comptes 29, 39, 49, 59 ; PCG art. 214-5). Provision = passif dont l'échéance ou le montant est incertain (classe 15 ; art. 321-5). Les deux sont des charges calculées, réversibles par reprise ; aucune n'est définitive.",
+   "src": "PCG, art. 214-5 et 321-5",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Un litige avec un ancien salarié risque de coûter 5 000 €. Enregistrez la provision à la clôture.",
    "lib": "Provision pour litige",
    "palette": [
@@ -257,13 +343,14 @@
      }
     ]
    ],
-   "why": "Dotation aux provisions d'exploitation au débit, provision pour litiges (passif) au crédit.",
-   "src": "PCG",
+   "why": "Dotation aux provisions d'exploitation au débit de 6815, provision pour litiges (passif) au crédit de 1511. Les trois conditions de l'article 322-1 sont réunies : obligation probable, sortie de ressources, montant estimable. On ne crédite pas 421, car rien n'est encore dû de façon certaine au salarié.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 322-1",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "Un client douteux de 2 400 € TTC (HT 2 000, TVA 400) est en liquidation : la créance est définitivement perdue. Enregistrez la perte.",
+   "niveau": 2,
+   "q": "Un client douteux de 2 400 € TTC (HT 2 000, TVA 400) est en liquidation judiciaire clôturée : la créance est définitivement perdue. Enregistrez la perte.",
    "lib": "Créance irrécouvrable",
    "palette": [
     "654",
@@ -291,13 +378,14 @@
      }
     ]
    ],
-   "why": "La perte HT en charge (654), la TVA est récupérée en diminuant la TVA collectée (débit 44571), le client douteux est soldé pour le TTC. La dépréciation existante sera ensuite reprise (491 / 78174).",
-   "src": "PCG",
+   "why": "La perte HT en charge (654), la TVA est récupérée en diminuant la TVA collectée (débit 44571, CGI art. 272), le client douteux est soldé pour le TTC. La dépréciation existante sera ensuite reprise par une écriture distincte (débit 491, crédit 78174).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 272",
    "fiab": "stable"
   },
   {
    "type": "qcm",
-   "q": "Une dépréciation de stock se comptabilise :",
+   "niveau": 1,
+   "q": "Une dépréciation de stock de marchandises se comptabilise :",
    "opts": [
     "Débit 68173, crédit 397",
     "Débit 37, crédit 6037",
@@ -305,8 +393,234 @@
     "Débit 6037, crédit 397"
    ],
    "a": 0,
-   "why": "Charge calculée au débit (68173), compte de dépréciation au crédit (397). Le stock lui-même (37) reste à sa valeur d'inventaire.",
-   "src": "PCG",
+   "why": "Charge calculée au débit (68173 Dotations pour dépréciations des stocks et en-cours), compte de dépréciation au crédit (397). Le stock lui-même (37) reste à son coût d'entrée ; l'option 3 est la reprise à l'envers (la reprise crédite 78173, pas 68173).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "La société Télia fabrique des meubles. Son stock de produits finis passe de 80 000 € à 95 000 € sur l'exercice. Comment cette variation apparaît-elle au compte de résultat ?",
+   "opts": [
+    "En charges, compte 6037 débiteur de 15 000",
+    "En produits, compte 7135 créditeur de 15 000",
+    "En charges, compte 6031 créditeur de 15 000",
+    "Elle n'apparaît pas, seul le bilan change"
+   ],
+   "a": 1,
+   "why": "Pour les produits finis, la variation passe par le compte de produits 7135 Variation des stocks de produits : stock final − stock initial = + 15 000, solde créditeur, qui s'ajoute à la production vendue pour former la production de l'exercice. 6037 concerne les marchandises et 6031 les matières premières, avec le signe inverse.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Stock initial de matières : 200 kg à 5,00 €. Entrées de l'exercice : 600 kg à 6,00 €. Sorties : 500 kg. Valorisez le stock final au coût moyen pondéré de fin de période (arrondi à l'euro).",
+   "a": 1725,
+   "unit": "€",
+   "tol": 1,
+   "why": "CMP = (200 × 5 + 600 × 6) ÷ (200 + 600) = (1 000 + 3 600) ÷ 800 = 5,75 €. Stock final en quantité = 200 + 600 − 500 = 300 kg. Valeur = 300 × 5,75 = 1 725 €. En PEPS, les 300 kg restants seraient les dernières entrées : 300 × 6 = 1 800 €.",
+   "src": "PCG, art. 213-30 s.",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quels éléments entrent dans le coût d'acquisition d'un stock de marchandises ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le prix d'achat net des remises",
+    "Les frais de transport sur achats",
+    "La TVA déductible",
+    "Les droits de douane",
+    "Les frais de stockage après réception"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Le coût d'acquisition comprend le prix d'achat après réductions, les droits de douane et taxes non récupérables, et les frais accessoires engagés pour amener le stock à l'endroit et dans l'état où il se trouve (transport, manutention). La TVA récupérable n'est pas un coût, et les frais de stockage postérieurs à la réception sont des charges de la période.",
+   "src": "PCG, art. 213-30 s.",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au 31 décembre N, la dépréciation du client Hekla était de 1 500 €. Au 31 décembre N+1, la perte probable est réévaluée à 2 100 €. Quelle écriture passe-t-on en N+1 ?",
+   "opts": [
+    "Débit 68174 : 2 100 ; crédit 491 : 2 100",
+    "Débit 68174 : 600 ; crédit 491 : 600",
+    "Débit 491 : 600 ; crédit 78174 : 600",
+    "Aucune, la dépréciation de N est maintenue"
+   ],
+   "a": 1,
+   "why": "La dépréciation existante est ajustée au montant nécessaire : 2 100 − 1 500 = 600 de dotation complémentaire. Doter 2 100 ferait doublon avec la dépréciation déjà au bilan. L'option 3 est une reprise, qui ne s'impose que si le risque diminue.",
+   "src": "PCG, art. 214-5 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au 31 décembre N, la dépréciation du client Marsac était de 2 000 €. En N+1, Marsac a finalement payé l'intégralité de sa dette. Quelle écriture passe-t-on au 31 décembre N+1 ?",
+   "opts": [
+    "Débit 491 : 2 000 ; crédit 78174 : 2 000",
+    "Débit 68174 : 2 000 ; crédit 491 : 2 000",
+    "Débit 654 : 2 000 ; crédit 416 : 2 000",
+    "Débit 491 : 2 000 ; crédit 416 : 2 000"
+   ],
+   "a": 0,
+   "why": "Le risque a disparu : la dépréciation est devenue sans objet et doit être reprise en produit (78174 Reprises sur dépréciations des créances). L'option 2 doterait à nouveau, l'option 3 constaterait une perte alors que le client a payé, et 416 a été soldé par l'encaissement (débit 512, crédit 416).",
+   "src": "PCG, art. 214-5 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles conditions doivent être réunies à la clôture pour comptabiliser une provision ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une obligation de l'entité envers un tiers existe",
+    "Une sortie de ressources sans contrepartie équivalente est probable",
+    "Le montant peut être estimé avec une fiabilité suffisante",
+    "La date de paiement est connue avec précision",
+    "Le tiers a déjà adressé une facture"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 322-1 du PCG pose trois conditions : obligation à la clôture, sortie probable de ressources, estimation fiable. Si la date et le montant étaient connus avec précision, ce serait une dette (art. 321-4), pas une provision ; et une facture reçue donne lieu à une charge à payer, non à une provision.",
+   "src": "PCG, art. 321-4, 321-5 et 322-1",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Alcor détient 500 actions cotées (VMP) achetées 40 € l'unité. Au 31 décembre, le cours moyen de décembre est de 34 €. Quelle écriture ?",
+   "opts": [
+    "Débit 6866 : 3 000 ; crédit 590 : 3 000",
+    "Débit 6817 : 3 000 ; crédit 503 : 3 000",
+    "Débit 503 : 3 000 ; crédit 7866 : 3 000",
+    "Aucune, la perte n'est pas réalisée"
+   ],
+   "a": 0,
+   "why": "Valeur d'inventaire = 500 × 34 = 17 000 contre un coût de 20 000 : moins-value latente de 3 000 à déprécier (prudence). La dotation financière passe par 6866 et la dépréciation des VMP par 590 ; le compte de titres 503 reste au coût d'achat. Les plus-values latentes, elles, ne seraient pas comptabilisées.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 121-4",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Alcor détient aussi des actions Gamma (VMP) achetées 8 000 € dont le cours moyen de décembre vaut 9 500 €, et les actions Bêta ci-dessus en moins-value latente de 3 000 €. Quelle dépréciation globale sur VMP constate-t-elle ?",
+   "opts": [
+    "3 000 €",
+    "1 500 €",
+    "0 €",
+    "4 500 €"
+   ],
+   "a": 0,
+   "why": "Le principe de non-compensation (C. com., art. L. 123-19) interdit de compenser la plus-value latente sur Gamma avec la moins-value sur Bêta : chaque ligne est évaluée séparément. La plus-value latente de 1 500 n'est pas comptabilisée (prudence), la moins-value de 3 000 est dépréciée intégralement.",
+   "src": "C. com., art. L. 123-19 ; PCG, art. 121-4",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "En N+1, le litige provisionné pour 5 000 € en N se termine : l'entreprise verse 4 800 € au salarié par virement. Quelle écriture de clôture N+1 concerne la provision ?",
+   "opts": [
+    "Débit 1511 : 5 000 ; crédit 7815 : 5 000",
+    "Débit 1511 : 4 800 ; crédit 512 : 4 800",
+    "Débit 6815 : 4 800 ; crédit 1511 : 4 800",
+    "Débit 1511 : 200 ; crédit 7815 : 200"
+   ],
+   "a": 0,
+   "why": "La charge réelle de 4 800 est enregistrée normalement (débit 6xx, crédit 512). La provision, devenue sans objet, est reprise en totalité : débit 1511, crédit 7815 pour 5 000. On ne paie jamais directement avec le compte de provision. Effet net sur N+1 : 4 800 − 5 000 = + 200 ; l'exercice N a supporté 5 000, ce qui respecte le rattachement du risque à l'exercice où il est né.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 322-1",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quels comptes sont des comptes de dépréciation d'actif ? (plusieurs réponses possibles)",
+   "opts": [
+    "397 Dépréciations des stocks de marchandises",
+    "491 Dépréciations des comptes de clients",
+    "1511 Provisions pour litiges",
+    "590 Dépréciations des valeurs mobilières de placement",
+    "6817 Dotations pour dépréciations des actifs circulants"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Les dépréciations sont des comptes soustractifs d'actif dont le deuxième chiffre est un 9 : 397, 491, 590 (et 29 pour les immobilisations). 1511 est une provision, c'est-à-dire un passif, et 6817 est le compte de charge (dotation), non le compte de bilan.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Nerval vend des appareils garantis deux ans. Elle estime à 12 000 € le coût probable des réparations futures sur les ventes de l'exercice. Comment traduire cette obligation ?",
+   "opts": [
+    "Débit 6815 : 12 000 ; crédit 1512 : 12 000",
+    "Débit 615 : 12 000 ; crédit 401 : 12 000",
+    "Débit 68174 : 12 000 ; crédit 491 : 12 000",
+    "Aucune écriture tant que les pannes ne se produisent pas"
+   ],
+   "a": 0,
+   "why": "La garantie donnée crée une obligation à la clôture dont la sortie de ressources est probable et estimable : provision pour garanties données aux clients (1512) par dotation d'exploitation 6815 (PCG, art. 322-1). Ce n'est pas une facture reçue (401) ni une dépréciation de créances (491). Attendre les pannes rattacherait la charge au mauvais exercice.",
+   "src": "PCG, art. 322-1 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "Un stock de 1 000 articles achetés 20 € l'unité a un prix de vente probable de 18 € l'unité au 31 décembre, avec 1 € de frais de vente unitaires. Une dépréciation de 1 200 € existait déjà. Quelle écriture passe-t-on ?",
+   "opts": [
+    "Débit 68173 : 3 000 ; crédit 397 : 3 000",
+    "Débit 68173 : 1 800 ; crédit 397 : 1 800",
+    "Débit 397 : 1 200 ; crédit 78173 : 1 200",
+    "Débit 68173 : 2 000 ; crédit 397 : 2 000"
+   ],
+   "a": 1,
+   "why": "Valeur actuelle = valeur vénale nette = (18 − 1) × 1 000 = 17 000. Coût = 20 000. Dépréciation nécessaire = 3 000 ; déjà constatée 1 200 ; dotation complémentaire = 1 800 (PCG, art. 214-22). Doter 3 000 doublonnerait, 2 000 oublie les frais de vente, et une reprise supposerait que la valeur ait remonté.",
+   "src": "PCG, art. 214-22",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "Au 31 décembre N, une créance douteuse de 6 000 € TTC (TVA 20 %) était dépréciée à 60 %. En N+1, le client verse 2 400 € pour solde de tout compte ; le reste est irrécouvrable. Quel est l'effet net sur le résultat de N+1 (perte 654 nette de la reprise 78174) ?",
+   "opts": [
+    "Perte nette de 3 000 €",
+    "Produit net de 0 €",
+    "Perte nette de 600 €",
+    "Perte nette de 3 600 €"
+   ],
+   "a": 1,
+   "why": "HT de la créance = 5 000 ; dépréciation N = 60 % × 5 000 = 3 000. En N+1, perte définitive TTC = 6 000 − 2 400 = 3 600, soit HT 3 000 en 654 et TVA 600 récupérée en 44571. Reprise de la dépréciation devenue sans objet : 3 000 en 78174. Effet net N+1 = −3 000 + 3 000 = 0 : la perte avait été exactement anticipée en N grâce à la dépréciation.",
+   "src": "PCG, art. 214-5 ; CGI, art. 272 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 3,
+   "q": "Sous le PCG 2025, quelles affirmations sur les créances irrécouvrables sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "La perte HT est enregistrée en 654",
+    "La TVA collectée correspondante est récupérable sur l'État",
+    "La perte est enregistrée TTC en 654",
+    "Le compte 6714 n'existe plus",
+    "La dépréciation antérieure est maintenue au bilan"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "La perte est enregistrée pour son montant HT en 654 Pertes sur créances irrécouvrables, la TVA étant récupérée par le débit de 44571 (CGI, art. 272). Le règlement ANC n° 2022-06 a supprimé le compte 6714 : plus de distinction entre pertes courantes et exceptionnelles. La dépréciation devenue sans objet doit être reprise, pas maintenue.",
+   "src": "Règlement ANC n° 2022-06 ; CGI, art. 272 ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   }
  ]
