@@ -60,18 +60,18 @@ RGB = Tuple[int, int, int]
 ENCRE = (110, 148, 186)
 
 #: Le noyau : son rayon, en parts de la largeur du cadre.
-NOYAU = 0.085
+NOYAU = 0.075
 
 #: Les bras : rayon de depart, rayon d'arrivee, et nombre de tours. Le
 #: facteur de croissance s'en deduit — c'est le « b » de la spirale
 #: logarithmique, et il n'a donc pas a etre devine.
-BRAS_DEPART = 0.215
-BRAS_FIN = 0.450
-TOURS = 0.60
+BRAS_DEPART = 0.145
+BRAS_FIN = 0.445
+TOURS = 0.85
 
 #: Demi-epaisseur d'un bras, a son depart et a son extremite.
-TRAIT_DEPART = 0.064
-TRAIT_FIN = 0.028
+TRAIT_DEPART = 0.046
+TRAIT_FIN = 0.022
 
 #: Nombre de bras, repartis sur le tour. Deux : c'est ce qui fait une
 #: spirale plutot qu'une rosace.
