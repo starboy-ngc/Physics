@@ -415,12 +415,10 @@ class TestTheMarkIcon(unittest.TestCase):
         from tools import render_icon
 
         source = inspect.getsource(render_icon.dessiner)
-        self.assertIn("logo.MARQUE", source)
-        self.assertIn("trace.distance", source)
-        # L'icône choisit entre les deux traces de « logo », elle n'en
-        # dessine aucun elle-même.
-        self.assertIn("logo.COURT", source)
-        # Le coin du cadre est vide : la marque ne touche pas son bord.
+        self.assertIn("logo.distance", source)
+        # Le noyau est plein, le coin du cadre est vide : la marque ne
+        # touche pas son bord.
+        self.assertLess(logo.distance(0.5, 0.5), 0)
         self.assertGreater(logo.distance(0.01, 0.02), 0)
 
     def test_the_mark_is_white_on_the_slate_token(self):
@@ -435,8 +433,7 @@ class TestTheMarkIcon(unittest.TestCase):
 
         self.assertEqual(point(32, 32)[3], 255, "le jeton est plein")
         self.assertEqual(point(0, 0)[3], 0, "le coin reste transparent")
-        # Quelque part dans le mot : du blanc franc. Au-dessus de lui,
-        # dans le jeton : l'ardoise.
-        milieu = [point(x, 32)[:3] for x in range(8, 56)]
-        self.assertIn(MARQUE, milieu, "aucune lettre à mi-hauteur")
-        self.assertEqual(point(32, 8)[:3], ENCRE)
+        # Au centre : le noyau, donc du blanc franc. Au ras du bord du
+        # jeton : l'ardoise.
+        self.assertEqual(point(32, 32)[:3], MARQUE, "pas de noyau")
+        self.assertEqual(point(32, 4)[:3], ENCRE)

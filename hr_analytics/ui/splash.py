@@ -37,11 +37,11 @@ TAGLINE = "Analyse de rémunération · local et hors ligne"
 class Splash(tk.Toplevel):
     """Fenetre sans cadre, centree, le temps du demarrage."""
 
-    WIDTH, HEIGHT = 520, 340
+    WIDTH, HEIGHT = 520, 378
     #: Largeur du symbole ; sa hauteur suit la proportion de la marque.
     #: Petit, et pose a cote du nom plutot qu'au-dessus : c'est le nom
     #: qu'on doit lire, la marque ne fait que l'accompagner.
-    LOGO = 188
+    LOGO = 104
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300

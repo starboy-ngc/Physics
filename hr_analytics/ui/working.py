@@ -43,7 +43,7 @@ class WorkPanel(tk.Frame):
 
     #: Largeur du symbole. Plus petit encore qu'a l'accueil : il
     #: accompagne ici, il ne se presente pas.
-    LOGO = 132
+    LOGO = 84
     #: Images d'un passage complet du reflet, et cadence.
     FRAMES = 20
     FRAME_MS = 80

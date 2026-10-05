@@ -64,14 +64,14 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """La formule « =ln(RH) », tracee au trait.
+    """Une galaxie : un noyau et deux bras en spirale logarithmique.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
     toujours le meme, qu'il tienne a toutes les tailles, et qu'il ne dise
     rien que l'outil ne fasse.
     """
 
-    LARGEUR, HAUTEUR = 360, 122
+    LARGEUR, HAUTEUR = 260, 260
 
     def symbole(self, largeur=None, hauteur=None, count=1):
         return logo.Mark(largeur or self.LARGEUR, count,
@@ -83,11 +83,11 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(len(lignes[0]), self.LARGEUR * 4)
 
     def test_the_frame_follows_the_shape_of_the_mark(self):
-        """La marque est couchee : un cadre carre lui laisserait deux
-        bandes vides."""
+        """Le cadre suit la marque : une galaxie s'inscrit dans un carre,
+        et c'est « RATIO » qui le dit — la fenetre n'a pas a le savoir."""
         symbole = logo.Mark(200)
         self.assertEqual(symbole.height, round(200 * logo.RATIO))
-        self.assertLess(symbole.height, symbole.size)
+        self.assertEqual(logo.RATIO, 1.0)
 
     def test_the_same_symbol_comes_back_every_time(self):
         """Rien n'est tire au hasard : le dessin vient d'une formule."""
@@ -110,12 +110,12 @@ class TestTheSymbol(unittest.TestCase):
     def test_the_drawing_is_the_same_at_any_size(self):
         """Decrit par une formule et non par des pixels : la silhouette
         agrandie doit recouvrir la petite, a l'echelle pres."""
-        petit = pixels(self.symbole(180, 61).frame(0), 180, 61)
-        grand = pixels(self.symbole(540, 183).frame(0), 540, 183)
+        petit = pixels(self.symbole(130, 130).frame(0), 130, 130)
+        grand = pixels(self.symbole(520, 520).frame(0), 520, 520)
         part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in petit) / (180 * 61)
+                         for ligne in petit) / (130 * 130)
         part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in grand) / (540 * 183)
+                         for ligne in grand) / (520 * 520)
         # Le lissage pese plus lourd dans une petite image qu'une grande :
         # la marque est fine, et ses bords y prennent une part plus large.
         self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
@@ -130,10 +130,10 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
-        lignes = pixels(self.symbole(96, 33).frame(0), 96, 33)
+        lignes = pixels(self.symbole(32, 32).frame(0), 32, 32)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
-        self.assertGreater(encres, 150)
+        self.assertGreater(encres, 120)
 
     def test_the_mark_is_one_steel_blue_tone_and_nothing_else(self):
         """Une seule teinte, pas de jeton, pas de degrade : une marque n'a
@@ -146,8 +146,8 @@ class TestTheSymbol(unittest.TestCase):
         def couleur(x):
             return tuple(lignes[milieu][x * 4:x * 4 + 4])
 
-        # Dans un fut de lettre, a mi-hauteur : la teinte de la marque.
-        rouge, vert, bleu, alpha = couleur(self._colonne_pleine())
+        # Au centre : le noyau, donc la teinte de la marque.
+        rouge, vert, bleu, alpha = couleur(self.LARGEUR // 2)
         self.assertEqual(alpha, 255)
         # A quelques unites pres : la lumiere qui traverse le symbole
         # eclaircit sa teinte, elle ne la remplace pas.
@@ -161,64 +161,59 @@ class TestTheSymbol(unittest.TestCase):
         # Au ras du bord : rien. Pas de jeton, pas d'aplat.
         self.assertEqual(couleur(1)[3], 0)
 
-    def _colonne_pleine(self):
-        """Une colonne traversee par un fut de lettre, a mi-hauteur."""
-        lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
-                              self.HAUTEUR))
-        milieu = self.HAUTEUR // 2
-        for x in range(self.LARGEUR // 3, self.LARGEUR):
-            if lignes[milieu][x] == 255:
-                return x
-        raise AssertionError("aucun fut plein a mi-hauteur")
+    def test_it_has_a_core_and_two_arms(self):
+        """Un noyau au centre, et deux bras qui en partent.
 
-    def test_it_reads_as_a_word_and_not_as_a_blob(self):
-        """Sept glyphes, donc des blancs entre eux.
-
-        Une marque dessinee trop serree se referme en tache des qu'on la
-        reduit : ce qui se verifie ici, c'est qu'a mi-hauteur le trace
-        alterne bien encre et blanc, et plusieurs fois.
+        Sur la ligne mediane, le trace se lit comme une suite d'encres et
+        de blancs : les deux bras de part et d'autre, puis le noyau. Moins
+        de trois taches et ce n'est plus une galaxie.
         """
         lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
                               self.HAUTEUR))
         milieu = self.HAUTEUR // 2
-        suites, dedans = 0, False
+        taches, dedans = 0, False
         for valeur in lignes[milieu]:
             plein = valeur > 180
             if plein and not dedans:
-                suites += 1
+                taches += 1
             dedans = plein
-        # « =ln(RH) » coupe la ligne mediane en au moins sept endroits :
-        # le signe egal, le « l », les deux futs du « n », la parenthese,
-        # le « R », les deux futs du « H », la parenthese fermante.
-        self.assertGreaterEqual(suites, 7,
-                                f"le mot se referme : {suites} traits")
+        self.assertGreaterEqual(taches, 3,
+                                f"ni noyau ni bras : {taches} tache(s)")
 
-    def test_the_formula_opens_and_closes_its_bracket(self):
-        """Une parenthese ouverte et jamais refermee se remarque.
-
-        Les deux sont des arcs, donc les seules formes dont l'encre, sur
-        la ligne mediane, se trouve aux deux extremites du mot.
-        """
+    def test_the_two_arms_answer_each_other(self):
+        """Les bras sont poses a un demi-tour l'un de l'autre : le dessin
+        se superpose a lui-meme par rotation d'un demi-tour."""
         lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
                               self.HAUTEUR))
-        milieu = self.HAUTEUR // 2
-        pleins = [x for x, valeur in enumerate(lignes[milieu]) if valeur > 180]
-        self.assertTrue(pleins)
-        # La derniere encre de la ligne est la parenthese fermante : elle
-        # se tient dans le dernier dixieme du mot.
-        self.assertGreater(pleins[-1], self.LARGEUR * 0.90)
-        # Et la premiere est le signe egal, dans le premier dixieme.
-        self.assertLess(pleins[0], self.LARGEUR * 0.10)
+        ecart = 0
+        for y, ligne in enumerate(lignes):
+            opposee = lignes[self.HAUTEUR - 1 - y]
+            for x, valeur in enumerate(ligne):
+                ecart = max(ecart, abs(valeur - opposee[self.LARGEUR - 1 - x]))
+        self.assertLessEqual(ecart, 2, "les deux bras ne se repondent pas")
 
-    def test_the_short_form_is_the_same_alphabet(self):
-        """Sous une trentaine de points, la formule se reduit a son
-        operateur. Ce n'est pas un second dessin : c'est le meme mot,
-        plus court."""
-        self.assertEqual(logo.COURT.mot, "ln")
-        self.assertEqual(logo.MARQUE.mot, logo.MOT)
-        self.assertEqual(logo.COURT.epaisseur > 0, True)
-        # La forme courte est presque carree, la complete est couchee.
-        self.assertGreater(logo.COURT.ratio, logo.MARQUE.ratio * 2)
+    def test_the_arms_thin_out_as_they_go(self):
+        """Une spirale d'epaisseur constante se lit comme un ressort.
+
+        L'epaisseur du bras pres du noyau doit depasser celle de son bout.
+        """
+        self.assertGreater(logo.TRAIT_DEPART, logo.TRAIT_FIN * 1.5)
+
+    def test_the_arms_are_logarithmic_spirals(self):
+        """La forme que prennent reellement les galaxies spirales, et
+        l'echelle sur laquelle une distribution de remunerations se lit.
+
+        Le facteur de croissance n'est pas devine : il se deduit des deux
+        rayons et du nombre de tours.
+        """
+        import math
+
+        attendu = (math.log(logo.BRAS_FIN / logo.BRAS_DEPART)
+                   / (logo.TOURS * 2 * math.pi))
+        self.assertAlmostEqual(logo._CROISSANCE, attendu)
+        # Le rayon au bout du parcours est bien celui qui a ete demande.
+        bout = logo.BRAS_DEPART * math.exp(logo._CROISSANCE * logo._ANGLE)
+        self.assertAlmostEqual(bout, logo.BRAS_FIN, places=6)
 
     def test_the_mark_says_nothing_the_tool_does_not_do(self):
         """Une etoile dit « cinq etoiles », une coche dit « conforme » : un
@@ -227,7 +222,7 @@ class TestTheSymbol(unittest.TestCase):
         """
         with open(logo.__file__, encoding="utf-8") as fichier:
             source = fichier.read()
-        self.assertIn("formule", source)
+        self.assertIn("galaxie", source)
         self.assertIn("ne juge personne", source)
         for jugement in ("etoile dit", "coche dit", "balance dit"):
             self.assertIn(jugement, source)
