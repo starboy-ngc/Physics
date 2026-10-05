@@ -118,7 +118,6 @@ Les fichiers produits dans `resultats/` :
 | `synthese-*.pdf` / `.html` | **Synthèse simplifiée, une seule page paysage** : effectif, âge et ancienneté (moyenne et médiane), pyramide des âges et des anciennetés, répartition par CSP, dispersion de base (P10, Q1, médiane, Q3, P90 et leur écart à la médiane) et boîte à moustaches |
 | `vue-detaillee-*.pdf` / `.html` | **Vue détaillée paysage**, une idée par page : qualité des données, population, rémunération, distribution, nuage de points, analyses par segment, écarts femmes / hommes, méthodologie |
 | `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres. Tout ce qui calcule vient d'abord — résultats, formules, contrôles ; la matière première (fichier importé, colonnes lues, données individuelles) ferme la marche |
-| `manifeste-*.json` | Paramètres utilisés, pour refaire l'analyse à l'identique |
 
 La synthèse et la vue détaillée sont produites directement en PDF par l'outil —
 pas besoin d'imprimer depuis le navigateur. Le rapport détaillé, lui, n'existe
@@ -586,8 +585,9 @@ Ce qui change :
   tomberait entre deux années sans correspondre à aucune.
 - Un bloc **Période** apparaît dans la colonne de gauche, avant les filtres.
   Il reste caché si le fichier n'en porte qu'une.
-- La période analysée figure dans la barre d'état, et **dans le manifeste** :
-  refaire l'analyse à l'identique exige de savoir laquelle a servi.
+- La période analysée figure dans la barre d'état, et en tête de la
+  restitution : refaire l'analyse à l'identique exige de savoir laquelle a
+  servi.
 
 En ligne de commande : `--periode 2025`. Une période absente du fichier est
 refusée avec la liste de celles qui existent — une faute de frappe rendrait
@@ -625,7 +625,7 @@ Ce qui apparaît :
 - Sous la liste, **les deux effectifs** de l'équipe choisie : une équipe
   directe de 4 personnes et une équipe totale de 40 ne donnent pas la même
   page.
-- L'équipe analysée figure dans la barre d'état et **dans le manifeste**.
+- L'équipe analysée figure dans la barre d'état et en tête de la restitution.
 
 En ligne de commande : `--equipe M0042`, et `--equipe-directe` pour s'arrêter
 au premier niveau. Un matricule absent du fichier est refusé : sans refus,
@@ -791,8 +791,9 @@ références deviennent stables d'une analyse à l'autre sur ce poste. Seul celu
 qui détient ce fichier de paramètres peut alors les rapprocher d'un matricule.
 
 **Ne communiquez pas ce fichier avec les documents produits.** Le manifeste
-recopie toute la configuration — c'est ce qui permet de refaire une analyse à
-l'identique — mais le sel en est retiré et remplacé par « (non publié) ».
+que la ligne de commande écrit recopie toute la configuration — c'est ce qui
+permet de refaire une analyse à l'identique — mais le sel en est retiré et
+remplacé par « (non publié) ».
 
 ### Voir qui se cache derrière un point
 

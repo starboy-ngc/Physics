@@ -48,7 +48,6 @@ from ..core.segmentation import (build_filters, dimension_fields,
                                  dimension_label, max_filter_values)
 from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
-from ..core.traceability import write_manifest
 from . import logo as marque
 from . import theme
 from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
@@ -3657,9 +3656,12 @@ class Application(tk.Tk):
                     payload, self.result.filtered, self.result.config,
                     os.path.join(directory, f"analyse-{stamp}.xlsx"),
                     table=self.result.table, mapping=self.result.mapping))
-            produced.append(write_manifest(
-                payload["manifest"],
-                os.path.join(directory, f"manifeste-{stamp}.json")))
+            # Pas de manifeste JSON. Ce qu'il portait de lisible — fichier
+            # source, perimetre, date, effectif — est deja en tete de la
+            # restitution et sur la garde de la synthese ; le reste etait
+            # du JSON qu'aucun des destinataires de ces documents n'ouvre.
+            # La ligne de commande, elle, l'ecrit toujours : c'est sa seule
+            # sortie exploitable par un programme.
         except OSError as error:
             messagebox.showerror(
                 "Enregistrement impossible",

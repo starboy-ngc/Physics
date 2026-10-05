@@ -274,8 +274,8 @@ class TestProducingDocuments(WindowCase):
         with Dialogs(directory=out) as dialogs:
             self.app.export_documents()
         names = sorted(os.path.basename(p) for p in glob.glob(f"{out}/*"))
-        for expected in ("restitution", "synthese", "vue-detaillee", "analyse",
-                         "manifeste"):
+        for expected in ("restitution", "synthese", "vue-detaillee",
+                         "analyse"):
             self.assertTrue(any(n.startswith(expected) for n in names),
                             f"{expected} absent de {names}")
         self.assertTrue(dialogs.infos)
@@ -292,15 +292,28 @@ class TestProducingDocuments(WindowCase):
         self.assertTrue(any(n.endswith(".xlsx") for n in names))
         self.assertFalse(any(n.endswith(".pdf") for n in names))
 
-    def test_the_manifest_is_written_whatever_the_choice(self):
+    def test_no_manifest_is_written_beside_the_documents(self):
+        """Il accompagnait chaque export, sans qu'on l'ait demandé. Ce
+        qu'il portait de lisible — fichier source, périmètre, date,
+        effectif — est déjà en tête de la restitution et sur la garde de
+        la synthèse ; le reste était du JSON que personne n'ouvre."""
+        self.load()
+        self.analyse()
+        out = self.output("sans-manifeste")
+        with Dialogs(directory=out):
+            self.app.export_documents()
+        self.assertEqual(glob.glob(os.path.join(out, "manifeste-*.json")), [])
+
+    def test_nothing_at_all_is_written_when_nothing_is_asked(self):
+        """Décocher tout et exporter n'écrit plus un fichier solitaire."""
         self.load()
         self.analyse()
         for variable in self.app.output_vars.values():
             variable.set(False)
-        out = self.output("manifeste-seul")
+        out = self.output("rien-demande")
         with Dialogs(directory=out):
             self.app.export_documents()
-        self.assertTrue(glob.glob(os.path.join(out, "manifeste-*.json")))
+        self.assertEqual(os.listdir(out), [])
 
     def test_cancelling_writes_nothing(self):
         self.load()
