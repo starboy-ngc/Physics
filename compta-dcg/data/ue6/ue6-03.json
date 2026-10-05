@@ -282,14 +282,14 @@
     "La CAF ignore les décalages d'encaissement et de décaissement",
     "Flux de trésorerie d'activité = CAF − variation du BFR lié à l'activité",
     "La CAF est égale à la trésorerie encaissée au cours de l'exercice",
-    "Une variation de stocks n'affecte pas la CAF mais affecte le flux de trésorerie d'activité"
+    "La CAF se calcule à partir du compte de résultat, en comptabilité d'engagement"
    ],
    "a": [
     0,
     1,
     3
    ],
-   "why": "La CAF est calculée à partir du compte de résultat, en comptabilité d'engagement : elle est un potentiel de trésorerie. Pour obtenir la trésorerie réellement dégagée, on retranche la variation du BFR lié à l'activité. La variation de stocks est neutre dans la CAF (produit stocké compensé par la charge de production) mais représente un flux réel de décaissement non compensé par une vente.",
+   "why": "La CAF est calculée à partir du compte de résultat, en comptabilité d'engagement : elle est un potentiel de trésorerie. Pour obtenir la trésorerie réellement dégagée, on retranche la variation du BFR lié à l'activité. La CAF n'est donc jamais égale à la trésorerie encaissée : une vente à crédit non encaissée à la clôture entre dans la CAF mais pas dans le flux de trésorerie, l'écart étant précisément la variation du BFR.",
    "src": "OEC, tableau des flux de trésorerie (méthode indirecte)",
    "fiab": "stable",
    "niveau": 2
