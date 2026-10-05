@@ -43,8 +43,17 @@ MARQUE = (0xFF, 0xFF, 0xFF)         # la marque elle-meme
 
 #: Part du jeton occupee par la marque, en largeur. La galaxie est ronde
 #: comme le jeton : elle doit donc rester nettement plus petite que lui,
-#: sans quoi ses bras viennent toucher le bord.
-EMPRISE = 0.80
+#: sans quoi ses bras viennent toucher le bord. L'air autour de la marque
+#: fait autant que la marque elle-meme : une icone qui remplit son jeton
+#: se lit comme une pastille, pas comme un symbole.
+EMPRISE = 0.70
+
+#: Amincissement du trace, en parts de la largeur de la marque. Une forme
+#: claire sur un fond sombre parait plus epaisse qu'elle ne l'est — l'oeil
+#: deborde sur le fond, et un trait blanc gagne visuellement ce que le
+#: meme trait en bleu sur l'ecran d'accueil n'a pas. On lui retire donc ce
+#: qu'il gagne, pour que les deux dessins se ressemblent vraiment.
+CORRECTION = 0.004
 
 #: Echantillons par cote d'un pixel pour le bord du jeton. Quatre par
 #: quatre suffisent — a huit la difference ne se voit plus, et le calcul
@@ -82,7 +91,8 @@ def dessiner(taille: int) -> bytes:
             # demander sa distance.
             part = _couverture(
                 logo.distance((x + 0.5 - centre) / emprise + 0.5,
-                              (y + 0.5 - centre) / emprise + 0.5), pixel)
+                              (y + 0.5 - centre) / emprise + 0.5)
+                + CORRECTION, pixel)
             couleur = tuple(round(ENCRE[canal] * (1 - part)
                                   + MARQUE[canal] * part) for canal in range(3))
             pixels += bytes(couleur) + bytes((round(255 * jeton / total),))
