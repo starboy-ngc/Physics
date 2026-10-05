@@ -97,6 +97,36 @@ RESEAU_LIB = ("socket.py", "ssl.py", "selectors.py", "socketserver.py",
               os.path.join("urllib", "response.py"),
               os.path.join("urllib", "robotparser.py"))
 
+#: Ce qui part ensuite : les capacités que l'outil n'utilise jamais, et
+#: qu'un poste n'a aucune raison de lui prêter.
+#:
+#: Le raisonnement est le même que pour le réseau. L'analyse statique du
+#: code montre qu'aucune n'est importée — mais « non utilisé » est une
+#: propriété du code d'aujourd'hui, que la relecture doit refaire à chaque
+#: version. « Absent » est une propriété du livrable, et elle se constate
+#: en listant un dossier.
+#:
+#: « _ctypes.pyd » est la pièce qui décide pour l'appel système : sans
+#: elle, aucun code Python ne peut appeler une fonction de Windows qui ne
+#: lui soit pas déjà exposée. « _multiprocessing.pyd » et
+#: « subprocess.py » sont celles du lancement de processus : sans elles,
+#: rien ne peut démarrer un programme, pas même « cmd.exe ».
+#:
+#: Volontairement gardés : « pyexpat.pyd » (lecture du XML d'un .xlsx),
+#: « _elementtree.pyd » (idem), « _hashlib.pyd » (SHA-256),
+#: « _decimal.pyd » (montants), « _tkinter.pyd » (la fenêtre),
+#: « _bz2.pyd » et « _lzma.pyd » (zipfile les demande à l'import).
+CAPACITES_DLLS = ("_ctypes.pyd", "_ctypes_test.pyd", "_multiprocessing.pyd",
+                  "_msi.pyd", "_wmi.pyd", "_sqlite3.pyd", "winsound.pyd",
+                  "_testcapi.pyd", "_testbuffer.pyd",
+                  "_testinternalcapi.pyd", "_testimportmultiple.pyd",
+                  "sqlite3.dll", "libffi-8.dll")
+CAPACITES_LIB = ("subprocess.py", "multiprocessing", "concurrent", "ctypes",
+                 "sqlite3", "shelve.py", "dbm", "pty.py", "tty.py",
+                 "pdb.py", "bdb.py", "pydoc.py", "pydoc_data",
+                 "antigravity.py", "turtle.py", "turtledemo",
+                 "idlelib", "lib2to3", "ensurepip", "venv", "distutils")
+
 #: Arborescences reprises du dépôt.
 ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
           ("docs", "docs"))
@@ -215,39 +245,63 @@ def poser_runtime(extrait: str, destination: str) -> None:
                 os.remove(os.path.join(dossier, nom))
     retires = retirer_reseau(runtime)
     _dire(f"  pile réseau retirée ({len(retires)} éléments)")
+    otes = retirer_capacites(runtime)
+    _dire(f"  processus, appel système et base locale retirés "
+          f"({len(otes)} éléments)")
     shutil.copy2(
         os.path.join(ROOT, "packaging", "windows", f"python{PYTHON_TAG}._pth"),
         os.path.join(runtime, f"python{PYTHON_TAG}._pth"))
 
 
-def reseau_a_retirer(runtime: str) -> list:
+def a_retirer(runtime: str, dlls, lib) -> list:
     """Ce qui serait retiré de cet interpréteur, sans rien toucher.
 
     Séparé de la suppression pour être vérifiable : un test lui soumet une
     arborescence postiche et lit ce qu'elle rendrait.
     """
     trouves = []
-    for nom in RESEAU_DLLS:
+    for nom in dlls:
         for dossier in (runtime, os.path.join(runtime, "DLLs")):
             chemin = os.path.join(dossier, nom)
             if os.path.exists(chemin):
                 trouves.append(chemin)
-    for nom in RESEAU_LIB:
+    for nom in lib:
         chemin = os.path.join(runtime, "Lib", nom)
         if os.path.exists(chemin):
             trouves.append(chemin)
     return trouves
 
 
-def retirer_reseau(runtime: str) -> list:
-    """Retire la pile réseau de l'interpréteur embarqué."""
-    retires = reseau_a_retirer(runtime)
-    for chemin in retires:
+def retirer(runtime: str, dlls, lib) -> list:
+    """Retire ces pièces, et rend la liste de ce qui est parti."""
+    partis = []
+    for chemin in a_retirer(runtime, dlls, lib):
         if os.path.isdir(chemin):
             shutil.rmtree(chemin)
         else:
             os.remove(chemin)
-    return retires
+        partis.append(os.path.relpath(chemin, runtime))
+    return partis
+
+
+def reseau_a_retirer(runtime: str) -> list:
+    """Ce que la pile réseau laisserait partir de cet interpréteur."""
+    return a_retirer(runtime, RESEAU_DLLS, RESEAU_LIB)
+
+
+def capacites_a_retirer(runtime: str) -> list:
+    """Ce que les capacités inutilisées laisseraient partir."""
+    return a_retirer(runtime, CAPACITES_DLLS, CAPACITES_LIB)
+
+
+def retirer_reseau(runtime: str) -> list:
+    """Retire la pile réseau de l'interpréteur embarqué."""
+    return retirer(runtime, RESEAU_DLLS, RESEAU_LIB)
+
+
+def retirer_capacites(runtime: str) -> list:
+    """Retire les capacités que l'outil n'utilise jamais."""
+    return retirer(runtime, CAPACITES_DLLS, CAPACITES_LIB)
 
 
 def empreintes(destination: str) -> str:
@@ -270,6 +324,9 @@ def empreintes(destination: str) -> str:
         "Pile reseau retiree, de sorte que la capacite ne soit pas",
         "seulement inutilisee mais absente : "
         + ", ".join(RESEAU_DLLS + RESEAU_LIB),
+        "",
+        "Processus, appel systeme et base locale retires, pour la meme",
+        "raison : " + ", ".join(CAPACITES_DLLS + CAPACITES_LIB),
         "",
         "SHA-256 de chaque fichier livre, chemin relatif au dossier :",
         "",

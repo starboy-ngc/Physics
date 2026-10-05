@@ -307,14 +307,25 @@ class TestTheNetworkStackIsRemoved(unittest.TestCase):
         self.addCleanup(shutil.rmtree, racine, True)
         for dossier in ("DLLs", "Lib", os.path.join("Lib", "urllib"),
                         os.path.join("Lib", "http"),
-                        os.path.join("Lib", "email")):
+                        os.path.join("Lib", "email"),
+                        os.path.join("Lib", "ctypes"),
+                        os.path.join("Lib", "multiprocessing"),
+                        os.path.join("Lib", "sqlite3")):
             os.makedirs(os.path.join(racine, dossier), exist_ok=True)
         for chemin in ("DLLs/_socket.pyd", "DLLs/_ssl.pyd", "DLLs/select.pyd",
                        "DLLs/_hashlib.pyd", "libssl-3.dll",
                        "libcrypto-3.dll", "Lib/socket.py", "Lib/ssl.py",
                        "Lib/pathlib.py", "Lib/urllib/parse.py",
                        "Lib/urllib/request.py", "Lib/http/client.py",
-                       "Lib/email/message.py"):
+                       "Lib/email/message.py",
+                       "DLLs/_ctypes.pyd", "DLLs/_multiprocessing.pyd",
+                       "DLLs/_sqlite3.pyd", "DLLs/_wmi.pyd",
+                       "DLLs/winsound.pyd", "DLLs/pyexpat.pyd",
+                       "DLLs/_elementtree.pyd", "DLLs/_tkinter.pyd",
+                       "DLLs/_decimal.pyd", "DLLs/_bz2.pyd", "DLLs/_lzma.pyd",
+                       "Lib/subprocess.py", "Lib/ctypes/__init__.py",
+                       "Lib/multiprocessing/__init__.py",
+                       "Lib/sqlite3/__init__.py", "Lib/zipfile.py"):
             with open(os.path.join(racine, *chemin.split("/")), "wb") as flux:
                 flux.write(b"x")
         return racine
@@ -356,6 +367,92 @@ class TestTheNetworkStackIsRemoved(unittest.TestCase):
                                                     "_hashlib.pyd")))
         self.assertTrue(os.path.exists(os.path.join(racine, "Lib", "urllib",
                                                     "parse.py")))
+
+    def test_ctypes_and_subprocess_are_what_decide(self):
+        """Sans « _ctypes.pyd », aucun code Python ne peut appeler une
+        fonction de Windows qui ne lui soit pas déjà exposée. Sans
+        « subprocess » ni « _multiprocessing.pyd », rien ne peut démarrer
+        un programme — pas même « cmd.exe »."""
+        from tools.build_windows import CAPACITES_DLLS, CAPACITES_LIB
+
+        self.assertIn("_ctypes.pyd", CAPACITES_DLLS)
+        self.assertIn("_multiprocessing.pyd", CAPACITES_DLLS)
+        self.assertIn("subprocess.py", CAPACITES_LIB)
+
+    def test_it_takes_the_unused_powers_and_leaves_what_the_tool_needs(self):
+        """« Non utilisé » est une propriété du code d'aujourd'hui, que la
+        relecture doit refaire à chaque version. « Absent » est une
+        propriété du livrable, et elle se constate en listant un dossier.
+        """
+        from tools.build_windows import capacites_a_retirer
+
+        racine = self._runtime_postiche()
+        retires = {os.path.relpath(chemin, racine).replace(os.sep, "/")
+                   for chemin in capacites_a_retirer(racine)}
+        for parti in ("DLLs/_ctypes.pyd", "DLLs/_multiprocessing.pyd",
+                      "DLLs/_sqlite3.pyd", "DLLs/_wmi.pyd",
+                      "DLLs/winsound.pyd", "Lib/subprocess.py",
+                      "Lib/ctypes", "Lib/multiprocessing", "Lib/sqlite3"):
+            self.assertIn(parti, retires, parti)
+        # Gardés : la lecture d'un .xlsx, les montants, la fenêtre, et les
+        # deux modules de décompression que « zipfile » importe.
+        for reste in ("DLLs/pyexpat.pyd", "DLLs/_elementtree.pyd",
+                      "DLLs/_tkinter.pyd", "DLLs/_decimal.pyd",
+                      "DLLs/_hashlib.pyd", "DLLs/_bz2.pyd", "DLLs/_lzma.pyd",
+                      "Lib/zipfile.py"):
+            self.assertNotIn(reste, retires, reste)
+
+    def test_removing_the_powers_really_removes_them(self):
+        from tools.build_windows import retirer_capacites
+
+        racine = self._runtime_postiche()
+        retirer_capacites(racine)
+        for parti in ("DLLs/_ctypes.pyd", "Lib/subprocess.py", "Lib/ctypes"):
+            self.assertFalse(os.path.exists(os.path.join(racine,
+                                                         *parti.split("/"))),
+                             parti)
+        for reste in ("DLLs/pyexpat.pyd", "DLLs/_tkinter.pyd",
+                      "Lib/zipfile.py"):
+            self.assertTrue(os.path.exists(os.path.join(racine,
+                                                        *reste.split("/"))),
+                            reste)
+
+    def test_nothing_the_tool_imports_is_on_a_removal_list(self):
+        """La preuve que les deux listes ne peuvent pas emporter une pièce
+        dont l'outil a besoin : elles sont confrontées à ce qu'il importe
+        vraiment, relevé dans le code et non recopié à la main."""
+        import ast
+
+        from tools.build_windows import (CAPACITES_DLLS, CAPACITES_LIB,
+                                         RESEAU_DLLS, RESEAU_LIB)
+
+        paquet = os.path.join(ROOT, "hr_analytics")
+        importes = set()
+        for dossier, _sous, fichiers in os.walk(paquet):
+            if "__pycache__" in dossier:
+                continue
+            for nom in fichiers:
+                if not nom.endswith(".py"):
+                    continue
+                with open(os.path.join(dossier, nom), encoding="utf-8") as flux:
+                    arbre = ast.parse(flux.read())
+                for noeud in ast.walk(arbre):
+                    if isinstance(noeud, ast.Import):
+                        importes.update(a.name.split(".")[0]
+                                        for a in noeud.names)
+                    elif isinstance(noeud, ast.ImportFrom) and not noeud.level:
+                        if noeud.module:
+                            importes.add(noeud.module.split(".")[0])
+        self.assertIn("zipfile", importes, "le relevé n'a rien relevé")
+        retires = {nom[:-4] if nom.endswith((".pyd", ".dll")) else nom
+                   for nom in RESEAU_DLLS + CAPACITES_DLLS}
+        retires |= {os.path.basename(nom).removesuffix(".py")
+                    for nom in RESEAU_LIB + CAPACITES_LIB}
+        # « urllib » reste : seul « urllib.parse » est gardé, et le relevé
+        # ne descend pas jusqu'au sous-module.
+        for nom in sorted(importes & retires):
+            self.assertEqual(nom, "urllib",
+                             f"l'outil importe « {nom} », qui est retiré")
 
     def test_the_fingerprint_sheet_says_what_was_taken_out(self):
         """Ce qui est retiré doit être écrit : une liste de hachages qui
