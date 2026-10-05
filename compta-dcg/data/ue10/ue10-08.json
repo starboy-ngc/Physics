@@ -1,0 +1,667 @@
+{
+ "id": "ue10-08",
+ "ue": "UE10",
+ "ordre": 8,
+ "title": "Entités spécifiques, groupes et contrôle des comptes",
+ "resume": "Comptabilité des associations, des entreprises individuelles, des sociétés civiles et des GIE ; introduction aux comptes consolidés (périmètre, méthodes, pourcentages) ; mission du commissaire aux comptes et contrôle interne.",
+ "duree": "65 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Associations et fondations : le règlement ANC 2018-06",
+   "html": "<p>Une association n'établit des comptes annuels que si un texte l'y oblige : subventions publiques supérieures à <span class=\"mono\">153 000 €</span> (C. com., art. L. 612-4, avec CAC), dépassement de deux des seuils de l'article L. 612-1 (50 salariés, 3,1 M€ de ressources, 1,55 M€ de bilan), appel public à la générosité au-delà de 153 000 €, reconnaissance d'utilité publique. Elle applique alors le <b>règlement ANC 2018-06</b>, qui adapte le PCG :</p><ul><li><b>Fonds propres</b> : 102 fonds propres sans droit de reprise, 103 avec droit de reprise ; le résultat est un <b>excédent</b> ou un <b>déficit</b>.</li><li><b>Fonds dédiés</b> (19) : ressources affectées par un tiers financeur non encore utilisées à la clôture, transférées par le débit de <b>689</b> Reports en fonds dédiés, puis reprise par <b>789</b> Utilisations des fonds dédiés lors de son emploi.</li><li><b>Ressources liées à la générosité du public</b> (754) : dons manuels (7541), mécénat (7542), legs, donations et assurances-vie (7543).</li><li><b>Contributions volontaires en nature</b> (bénévolat, dons en nature, mises à disposition gratuites) : enregistrées en classe 8 (86 emplois, 87 ressources) au pied du compte de résultat lorsqu'elles sont significatives et quantifiables.</li></ul><p>Exemple : l'association Solid'R a reçu <span class=\"mono\">50 000 €</span> de subvention pour un projet ; <span class=\"mono\">20 000 €</span> ne sont pas encore dépensés à la clôture.</p>",
+   "entry": [
+    {
+     "a": "689",
+     "d": 20000,
+     "c": 0
+    },
+    {
+     "a": "19",
+     "d": 0,
+     "c": 20000
+    }
+   ],
+   "lib": "Report en fonds dédiés de la fraction non utilisée de la subvention"
+  },
+  {
+   "h": "Entreprises individuelles, sociétés civiles, professions libérales, GIE",
+   "html": "<p>L'<b>entrepreneur individuel</b> commerçant tient une comptabilité d'engagement selon le PCG, avec un <b>compte de l'exploitant</b> (108) pour ses apports et prélèvements ; sa rémunération n'est pas déductible et son résultat relève des BIC (option IS possible depuis la loi 2022-172). Au <b>régime simplifié</b>, il peut tenir une comptabilité <b>super-simplifiée</b> : trésorerie en cours d'année, créances et dettes constatées à la clôture, stocks évalués forfaitairement (C. com., art. L. 123-25 à L. 123-27). Le micro-entrepreneur tient un livre des recettes et un registre des achats (art. L. 123-28).</p><p>Les <b>professions libérales</b> (BNC) tiennent une comptabilité de <b>trésorerie</b> : recettes encaissées et dépenses payées (CGI art. 93), livre-journal et registre des immobilisations, avec option pour les créances et dettes (art. 93 A).</p><p>Les <b>sociétés civiles</b> ne relèvent des obligations comptables du Code de commerce que si elles sont à l'IS ou dépassent les seuils de l'article L. 612-1 ; une SCI à l'IR tient une comptabilité à des fins fiscales et statutaires.</p><p>Le <b>GIE</b> (C. com., art. L. 251-1 s.) prolonge l'activité de ses membres sans but lucratif propre ; CAC obligatoire à partir de 100 salariés ou en cas d'émission d'obligations ; membres indéfiniment et solidairement responsables.</p><p>Exemple : l'exploitant Marchal prélève <span class=\"mono\">2 500 €</span> en banque pour ses besoins personnels.</p>",
+   "entry": [
+    {
+     "a": "108",
+     "d": 2500,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 2500
+    }
+   ],
+   "lib": "Prélèvement personnel de l'exploitant individuel"
+  },
+  {
+   "h": "Comptes consolidés : obligation, périmètre et exemptions",
+   "html": "<p>Toute société commerciale qui <b>contrôle</b> une ou plusieurs entreprises ou exerce sur elles une influence notable établit des <b>comptes consolidés</b> et un rapport de gestion du groupe (C. com., art. L. 233-16). Le périmètre dépend du type de lien :</p><ul><li><b>Contrôle exclusif</b> : de droit (majorité des droits de vote), de fait (désignation pendant deux exercices de la majorité des organes de direction, présumée au-delà de 40 % des droits de vote sans associé plus important) ou contractuel ;</li><li><b>Contrôle conjoint</b> : partage du contrôle par un nombre limité d'associés, les décisions requérant leur accord ;</li><li><b>Influence notable</b> : présumée à partir de <span class=\"mono\">20 %</span> des droits de vote.</li></ul><p><b>Exemptions</b> (art. L. 233-17) : la société mère elle-même comprise dans les comptes consolidés d'une entité supérieure (sous-groupe), sauf opposition d'actionnaires détenant au moins 10 % du capital ; les <b>petits groupes</b> ne dépassant pas, pendant deux exercices, deux des trois seuils fixés par l'article R. 233-16 : <span class=\"mono\">30 M€</span> de total de bilan, <span class=\"mono\">60 M€</span> de chiffre d'affaires, <span class=\"mono\">250</span> salariés (décret n° 2024-152), sauf entité d'intérêt public ; filiales d'importance négligeable.</p><p>Référentiel : <b>IFRS</b> obligatoires pour les sociétés cotées (règlement 1606/2002), règlement <b>ANC 2020-01</b> pour les autres, avec option pour les IFRS.</p>"
+  },
+  {
+   "h": "Méthodes de consolidation, pourcentage de contrôle et pourcentage d'intérêt",
+   "html": "<table><thead><tr><th>Nature du contrôle</th><th>Méthode (ANC 2020-01)</th><th>Principe</th></tr></thead><tbody><tr><td>Contrôle exclusif</td><td>Intégration globale</td><td>100 % des actifs, passifs, charges et produits ; intérêts minoritaires distingués</td></tr><tr><td>Contrôle conjoint</td><td>Intégration proportionnelle</td><td>Quote-part des actifs, passifs, charges et produits</td></tr><tr><td>Influence notable</td><td>Mise en équivalence</td><td>Titres remplacés par la quote-part des capitaux propres</td></tr></tbody></table><p>En IFRS (IFRS 11), les coentreprises sont mises en équivalence.</p><p>Deux pourcentages à ne pas confondre :</p><ul><li>Le <b>pourcentage de contrôle</b> mesure les <b>droits de vote</b> détenus directement et indirectement par des sociétés <b>contrôlées</b> ; il détermine la méthode. Dans une chaîne, les droits détenus par une société non contrôlée ne comptent pas (chaîne rompue).</li><li>Le <b>pourcentage d'intérêt</b> mesure la part du <b>capital</b> revenant à la mère : produit des pourcentages de chaque chaîne, additionné entre chaînes ; il répartit capitaux propres et résultat entre groupe et minoritaires.</li></ul><p>Exemple : M détient <span class=\"mono\">80 %</span> de F1, F1 détient <span class=\"mono\">60 %</span> de F2 et M détient directement <span class=\"mono\">10 %</span> de F2. Contrôle de M sur F2 : 60 % + 10 % = <span class=\"mono\">70 %</span> (F1 est contrôlée) : intégration globale. Intérêt : 0,8 × 0,6 + 0,1 = <span class=\"mono\">58 %</span>. Avec 30 % seulement de F1, le contrôle sur F2 tomberait à 10 % (chaîne rompue) et l'intérêt à 28 %.</p><div class=\"note\"><b>Lien DSCG (UE 4).</b> Retraitements, éliminations intra-groupe et écart d'acquisition.</div>"
+  },
+  {
+   "h": "Le commissaire aux comptes : mission de certification et démarche d'audit",
+   "html": "<p>Le CAC <b>certifie</b> que les comptes annuels sont réguliers, sincères et donnent une image fidèle (C. com., ex-art. L. 823-9, livre VIII recodifié en 2024). Son opinion prend trois formes : <b>certification sans réserve</b>, <b>avec réserve(s)</b> (désaccord ou limitation d'étendue), <b>refus de certifier</b>. Il exerce selon les <b>NEP</b> et le code de déontologie (indépendance, secret professionnel), sous le contrôle de la H2A.</p><p>La démarche d'audit : prise de connaissance de l'entité et de son contrôle interne, évaluation du <b>risque d'anomalies significatives</b> (NEP 315), fixation du <b>seuil de signification</b> (NEP 320), montant au-delà duquel une anomalie peut influencer le jugement des utilisateurs des comptes ; puis <b>procédures d'audit</b> (NEP 500) : tests de procédures, contrôles de substance, inspection, <b>observation physique</b> des inventaires, <b>confirmation directe</b> des tiers (circularisation), procédures analytiques, lettre d'affirmation de la direction. L'audit procure une <b>assurance raisonnable</b>, jamais absolue.</p><p>Le CAC rédige un <b>rapport</b> sur les comptes annuels (NEP 700) avec la justification de ses appréciations, effectue des <b>vérifications spécifiques</b> (rapport de gestion, égalité entre actionnaires) et établit un <b>rapport spécial</b> sur les conventions réglementées. Il ne s'immisce pas dans la gestion. Un <b>examen limité</b> (comptes semestriels, mission contractuelle de l'expert-comptable) se limite à des entretiens et procédures analytiques : il procure une assurance <b>modérée</b>, exprimée sous forme négative.</p>"
+  },
+  {
+   "h": "Contrôle interne, alerte et révélation des faits délictueux",
+   "html": "<p>Le <b>contrôle interne</b> est l'ensemble des dispositifs mis en œuvre par la direction pour assurer la <b>fiabilité de l'information financière</b>, la <b>conformité</b> aux lois, l'<b>efficacité</b> des opérations et la <b>protection des actifs</b>. Le référentiel COSO distingue cinq composantes : environnement de contrôle, évaluation des risques, activités de contrôle (séparation des fonctions, autorisations, rapprochements), information et communication, pilotage. Le CAC l'évalue pour orienter ses travaux (NEP 315) et signale ses faiblesses, mais ne le certifie pas.</p><p><b>Procédure d'alerte</b> (C. com., art. L. 234-1 pour la SA, L. 234-2 pour les autres sociétés) : lorsqu'il relève des faits de nature à compromettre la <b>continuité de l'exploitation</b>, le CAC demande des explications au dirigeant (réponse sous quinze jours) ; à défaut de réponse satisfaisante, il invite à réunir le conseil d'administration, puis établit un rapport spécial présenté à l'assemblée et peut informer le président du tribunal de commerce. L'alerte vise à provoquer une réaction, non à gérer.</p><p><b>Révélation des faits délictueux</b> (ex-art. L. 823-12) : le CAC signale au procureur de la République les faits délictueux dont il a connaissance, sans que sa responsabilité puisse être engagée par cette révélation ; il déclare en outre à TRACFIN les soupçons de blanchiment. Il signale aussi à l'assemblée les irrégularités et inexactitudes relevées. Le défaut de révélation est une infraction pénale.</p>"
+  },
+  {
+   "h": "Fiscalité et comptabilité : une liaison étroite",
+   "html": "<p>En France, le résultat fiscal <b>dérive du résultat comptable</b> : les entreprises doivent respecter les définitions du PCG sous réserve des règles fiscales incompatibles (CGI art. 38 quater). Les divergences sont traitées de façon <b>extra-comptable</b> sur le tableau 2058-A (réintégrations et déductions), sans écriture, sauf pour les avantages dont le bénéfice est subordonné à une comptabilisation effective : amortissements et provisions doivent être <b>constatés dans les écritures</b> pour être déduits (CGI art. 39, 1-2° et 5°), d'où les amortissements dérogatoires et provisions réglementées.</p><p>La comptabilité est aussi la base du contrôle fiscal : présentation du <b>fichier des écritures comptables</b> (FEC, LPF art. L. 47 A) en cas de vérification, conservation des documents comptables pendant <b>dix ans</b> (C. com., art. L. 123-22) et des pièces justificatives pendant six ans au moins en matière fiscale (LPF art. L. 102 B), logiciels de caisse sécurisés. L'<b>intangibilité du bilan d'ouverture</b> (CGI art. 38, 4 bis) encadre la correction des erreurs anciennes.</p><p>Enfin, la <b>décision de gestion</b> (choix régulier entre options : durée d'amortissement, méthode de stock) est opposable à l'entreprise, alors que l'<b>erreur comptable</b> (violation d'une règle) peut être corrigée par elle comme par l'administration : cette distinction, vue en UE 4, relie directement les deux matières.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Règlement ANC n° 2018-06",
+   "note": "Comptes annuels des associations et fondations : fonds propres, fonds dédiés, contributions volontaires en nature, générosité du public"
+  },
+  {
+   "ref": "C. com., art. L. 612-1 et L. 612-4 ; D. 612-5",
+   "note": "Obligations comptables des personnes morales non commerçantes et des associations subventionnées (153 000 €)"
+  },
+  {
+   "ref": "C. com., art. L. 123-25 à L. 123-28",
+   "note": "Comptabilité super-simplifiée et obligations allégées des micro-entrepreneurs"
+  },
+  {
+   "ref": "CGI art. 93 et 93 A",
+   "note": "Comptabilité de trésorerie des titulaires de BNC et option créances-dettes"
+  },
+  {
+   "ref": "C. com., art. L. 251-1 s.",
+   "note": "Groupement d'intérêt économique"
+  },
+  {
+   "ref": "C. com., art. L. 233-16 à L. 233-18 et R. 233-16 (décret n° 2024-152)",
+   "note": "Obligation de consolidation, contrôle et influence notable, méthodes, exemption des petits groupes (30 M€ / 60 M€ / 250)"
+  },
+  {
+   "ref": "Règlement ANC n° 2020-01",
+   "note": "Comptes consolidés en règles françaises"
+  },
+  {
+   "ref": "C. com., livre VIII (ord. n° 2023-1142), ex-art. L. 823-9 à L. 823-12",
+   "note": "Certification, rapport, révélation des faits délictueux"
+  },
+  {
+   "ref": "C. com., art. L. 234-1 et L. 234-2",
+   "note": "Procédure d'alerte"
+  },
+  {
+   "ref": "NEP 315, 320, 500 et 700 ; CGI art. 38 quater ; LPF art. L. 47 A",
+   "note": "Risque d'audit, seuil de signification, éléments probants, rapport ; connexion fiscalité-comptabilité et FEC"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Une association reçoit annuellement 200 000 € de subventions publiques. Quelle obligation en découle ?",
+   "opts": [
+    "Aucune obligation comptable particulière, s'agissant d'une association",
+    "Établir des comptes annuels et nommer un commissaire aux comptes",
+    "Tenir uniquement un livre de recettes",
+    "Établir des comptes consolidés"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 612-4 et D. 612-5 : au-delà de 153 000 € de subventions publiques par an, l'association établit des comptes annuels selon le règlement ANC 2018-06, les publie et nomme un CAC et un suppléant. Le livre des recettes suffit aux micro-entrepreneurs, pas aux associations subventionnées ; la consolidation n'est pas en cause.",
+   "src": "C. com., art. L. 612-4 ; D. 612-5",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "ecriture",
+   "q": "L'association Solid'R a reçu en N une subvention de 50 000 € affectée à un projet précis ; au 31 décembre N, 20 000 € n'ont pas encore été utilisés et le seront en N+1. Enregistrez l'écriture de clôture.",
+   "lib": "Report en fonds dédiés",
+   "palette": [
+    "689",
+    "19",
+    "789",
+    "74",
+    "131",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "689",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "19",
+      "d": 0,
+      "c": 20000
+     }
+    ]
+   ],
+   "why": "La subvention a été intégralement enregistrée en produit (74) en N ; la fraction non consommée, affectée par le financeur, est transférée au passif en fonds dédiés (19) par une charge de report (689 Reports en fonds dédiés), de sorte que le résultat de N ne comprend que la part utilisée. En N+1, l'utilisation donnera lieu à la reprise 19 / 789. Le compte 131 (subvention d'investissement) ne convient pas à une subvention de fonctionnement.",
+   "src": "Règlement ANC n° 2018-06, art. 132-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "En N+1, Solid'R dépense les 20 000 € de subvention qui figuraient en fonds dédiés à la clôture de N. Enregistrez l'écriture constatant l'utilisation des fonds dédiés.",
+   "lib": "Utilisation des fonds dédiés",
+   "palette": [
+    "19",
+    "789",
+    "689",
+    "74",
+    "758",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "19",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "789",
+      "d": 0,
+      "c": 20000
+     }
+    ]
+   ],
+   "why": "L'emploi des ressources reportées libère les fonds dédiés : débit 19, crédit 789 Utilisations des fonds dédiés, produit qui vient compenser les charges du projet engagées en N+1. On ne réenregistre pas la subvention en 74 (elle l'a été en N) et 689 servirait à un nouveau report. Les dépenses elles-mêmes sont enregistrées par nature avec leur paiement (512).",
+   "src": "Règlement ANC n° 2018-06, art. 132-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le bénévolat dont bénéficie une association, significatif et quantifiable, est, selon le règlement ANC 2018-06 :",
+   "opts": [
+    "Comptabilisé en charges de personnel 641 avec une contrepartie en produits 74",
+    "Inscrit en classe 8 (contributions volontaires en nature) au pied du compte de résultat, sans effet sur le résultat",
+    "Ignoré, faute de flux financier",
+    "Inscrit en fonds propres"
+   ],
+   "a": 1,
+   "why": "Les contributions volontaires en nature (bénévolat, dons en nature, mises à disposition gratuites) sont valorisées et présentées en classe 8 : 86 emplois (864 personnel bénévole) et 87 ressources (875 bénévolat), au pied du compte de résultat, lorsqu'elles sont significatives et peuvent être quantifiées. Elles n'affectent ni le résultat ni les fonds propres et ne passent pas par les comptes 6 et 7.",
+   "src": "Règlement ANC n° 2018-06, art. 211-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "L'association Solid'R, tenue d'établir des comptes annuels, encaisse par banque un legs en numéraire de 15 000 € accepté par son conseil d'administration. Enregistrez l'opération.",
+   "lib": "Legs reçu en numéraire",
+   "palette": [
+    "512",
+    "7543",
+    "7541",
+    "74",
+    "102",
+    "19"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 15000,
+      "c": 0
+     },
+     {
+      "a": "7543",
+      "d": 0,
+      "c": 15000
+     }
+    ]
+   ],
+   "why": "Le legs est une ressource liée à la générosité du public : 754, subdivision 7543 Legs, donations et assurances-vie, et non 7541 réservé aux dons manuels. Ce n'est pas une subvention (74) ni un apport en fonds propres (102) ; un report en fonds dédiés (19) n'interviendrait que si le legs était affecté à un projet non encore réalisé à la clôture.",
+   "src": "Règlement ANC n° 2018-06, art. 142-3 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles particularités du règlement ANC 2018-06 distinguent les comptes d'une association de ceux d'une société commerciale ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le résultat est qualifié d'excédent ou de déficit",
+    "Les ressources affectées non utilisées sont reportées en fonds dédiés",
+    "Les fonds propres distinguent ceux avec et sans droit de reprise",
+    "Les dividendes sont versés aux membres",
+    "Le compte 101 Capital social est obligatoire"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le règlement 2018-06 remplace capital et réserves par des fonds propres (102 sans droit de reprise, 103 avec droit de reprise), qualifie le résultat d'excédent ou de déficit et introduit les fonds dédiés (19) pour les ressources affectées non consommées. Une association ne distribue pas de bénéfices à ses membres et n'a pas de capital social.",
+   "src": "Règlement ANC n° 2018-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un commerçant individuel relevant du régime réel simplifié peut tenir une comptabilité super-simplifiée. Cela signifie qu'il :",
+   "opts": [
+    "Est dispensé de tenir une comptabilité",
+    "N'enregistre que les opérations de trésorerie en cours d'exercice et constate les créances et dettes à la clôture",
+    "N'établit pas de bilan",
+    "Tient une comptabilité de trésorerie définitive, sans jamais constater les créances et dettes"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 123-25 : au régime simplifié, l'enregistrement journalier se limite aux encaissements et décaissements ; créances et dettes sont constatées à la clôture, ce qui aboutit à un bilan et un compte de résultat complets (avec évaluation simplifiée des stocks, art. L. 123-26). La dispense de comptabilité ou de bilan n'existe pas pour un commerçant au réel ; la comptabilité de trésorerie pure est propre aux BNC.",
+   "src": "C. com., art. L. 123-25 à L. 123-27",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans la comptabilité d'un entrepreneur individuel, les sommes qu'il prélève sur le compte bancaire de l'entreprise pour ses besoins personnels sont enregistrées :",
+   "opts": [
+    "Au débit de 641 Rémunérations du personnel",
+    "Au débit de 108 Compte de l'exploitant",
+    "Au débit de 455 Associés – comptes courants",
+    "Au débit de 457 Dividendes à payer"
+   ],
+   "a": 1,
+   "why": "Le compte 108 Compte de l'exploitant enregistre les apports et retraits personnels de l'entrepreneur ; il est soldé en fin d'exercice avec le résultat. L'exploitant n'est pas un salarié (641) ni un associé (455, 457) : son prélèvement n'est pas une charge et n'affecte pas le résultat (sa rémunération, même inscrite en 644, est réintégrée fiscalement).",
+   "src": "PCG art. 941-10 (compte 108)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "ecriture",
+   "q": "L'exploitant individuel Marchal retire 2 500 € du compte bancaire de son entreprise pour régler des dépenses personnelles. Enregistrez l'opération dans la comptabilité de l'entreprise.",
+   "lib": "Prélèvement personnel de l'exploitant",
+   "palette": [
+    "108",
+    "512",
+    "644",
+    "421",
+    "455",
+    "6411"
+   ],
+   "sol": [
+    [
+     {
+      "a": "108",
+      "d": 2500,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 2500
+     }
+    ]
+   ],
+   "why": "Le prélèvement est un retrait de capital propre : débit 108 Compte de l'exploitant, crédit 512. Il ne constitue ni un salaire (421, 6411) ni une rémunération du travail de l'exploitant (644, utilisé seulement si l'exploitant décide de se verser une rémunération comptabilisée, de toute façon non déductible fiscalement), ni un compte courant d'associé (455), inexistant dans une entreprise individuelle.",
+   "src": "PCG art. 941-10 (compte 108)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un médecin libéral soumis au régime de la déclaration contrôlée (BNC) détermine son résultat :",
+   "opts": [
+    "Selon une comptabilité d'engagement obligatoire",
+    "Selon une comptabilité de trésorerie, avec option possible pour les créances et dettes",
+    "Selon le chiffre d'affaires facturé au cours de l'année",
+    "Selon les règles des bénéfices industriels et commerciaux"
+   ],
+   "a": 1,
+   "why": "CGI art. 93 : le bénéfice non commercial est l'excédent des recettes encaissées sur les dépenses payées au cours de l'année (comptabilité de trésorerie), consigné dans un livre-journal et un registre des immobilisations. L'article 93 A permet d'opter pour les créances acquises et dépenses engagées. Les règles BIC (engagement) ne s'appliquent pas de plein droit.",
+   "src": "CGI art. 93 et 93 A",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Concernant le groupement d'intérêt économique (GIE), quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il a pour but de faciliter ou développer l'activité économique de ses membres, non de réaliser des bénéfices pour lui-même",
+    "Ses membres sont indéfiniment et solidairement responsables de ses dettes",
+    "Il doit nommer un commissaire aux comptes s'il emploie au moins 100 salariés",
+    "Il est toujours soumis à l'IS",
+    "Il ne peut pas être constitué sans capital"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "C. com., art. L. 251-1 s. : le GIE prolonge l'activité de ses membres sans but lucratif propre, peut être constitué sans capital, et ses membres répondent solidairement et indéfiniment des dettes. Le CAC est obligatoire à partir de 100 salariés (L. 251-12) ou en cas d'émission d'obligations. Fiscalement, le GIE est translucide : ses résultats sont imposés chez les membres, sauf option.",
+   "src": "C. com., art. L. 251-1, L. 251-6 et L. 251-12",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SCI soumise à l'IR, propriétaire d'un immeuble loué nu, sans salarié :",
+   "opts": [
+    "Doit établir des comptes annuels selon le PCG et les déposer au greffe",
+    "Échappe aux obligations comptables du Code de commerce mais tient une comptabilité fiscale et statutaire",
+    "Doit nommer un commissaire aux comptes dès sa constitution",
+    "Doit établir des comptes consolidés avec ses associés"
+   ],
+   "a": 1,
+   "why": "Les obligations comptables du Code de commerce visent les commerçants (L. 123-12) et les personnes morales non commerçantes ayant une activité économique au-delà des seuils de l'article L. 612-1 ; une SCI à l'IR de gestion patrimoniale y échappe, mais doit justifier ses revenus fonciers (déclaration 2072) et rendre compte aux associés. Une SCI à l'IS, en revanche, tient une comptabilité commerciale complète.",
+   "src": "C. com., art. L. 123-12 et L. 612-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Selon l'article L. 233-16 du Code de commerce, le contrôle exclusif de fait est présumé lorsqu'une société :",
+   "opts": [
+    "Détient plus de 20 % des droits de vote dans la société",
+    "Dispose de plus de 40 % des droits de vote, aucun autre associé n'en détenant davantage",
+    "Détient plus de 50 % du capital",
+    "A conclu un pacte d'actionnaires avec les autres associés"
+   ],
+   "a": 1,
+   "why": "Le contrôle de fait résulte de la désignation, pendant deux exercices successifs, de la majorité des organes de direction ; il est présumé lorsque la société détient plus de 40 % des droits de vote sans qu'un autre associé en détienne davantage. Plus de 50 % des droits de vote caractérise le contrôle de droit ; 20 % fait présumer l'influence notable ; le contrôle contractuel suppose un contrat ou des clauses statutaires.",
+   "src": "C. com., art. L. 233-16",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Associez chaque situation à la méthode de consolidation applicable en règles françaises (règlement ANC 2020-01).",
+   "cats": [
+    "Intégration globale",
+    "Intégration proportionnelle",
+    "Mise en équivalence",
+    "Hors périmètre"
+   ],
+   "items": [
+    [
+     "Filiale détenue à 75 % des droits de vote",
+     0
+    ],
+    [
+     "Société détenue à 50 % avec un partenaire, les décisions exigeant l'accord des deux",
+     1
+    ],
+    [
+     "Participation de 25 % avec représentation au conseil d'administration",
+     2
+    ],
+    [
+     "Participation de 8 % sans aucune influence",
+     3
+    ],
+    [
+     "Société dont la mère détient 45 % des droits de vote et désigne depuis trois ans la majorité du conseil",
+     0
+    ],
+    [
+     "Participation de 30 % sans contrôle",
+     2
+    ]
+   ],
+   "why": "Contrôle exclusif (droit, fait ou contractuel) : intégration globale ; contrôle conjoint : intégration proportionnelle (spécificité française, IFRS 11 impose la mise en équivalence) ; influence notable (présumée dès 20 %) : mise en équivalence. Une participation sans influence reste un titre immobilisé évalué au coût, hors périmètre.",
+   "src": "C. com., art. L. 233-16 et L. 233-18 ; règlement ANC n° 2020-01",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "La société M détient 80 % des droits de vote de F1 ; F1 détient 60 % de F2 ; M détient en outre directement 10 % de F2. Calculez le pourcentage d'intérêt de M dans F2 (en %).",
+   "a": 58,
+   "unit": "%",
+   "tol": 0.1,
+   "why": "Le pourcentage d'intérêt est multiplicatif le long de chaque chaîne et additif entre chaînes : chaîne indirecte 0,8 × 0,6 = 48 % ; chaîne directe 10 %. Total : 58 %. Les minoritaires détiennent donc 42 % de F2. Ce pourcentage sert à partager les capitaux propres et le résultat de F2, pas à choisir la méthode.",
+   "src": "Règlement ANC n° 2020-01, § 1000 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Mêmes données : M détient 80 % des droits de vote de F1, F1 détient 60 % de F2 et M détient directement 10 % de F2. Calculez le pourcentage de contrôle de M sur F2 (en %).",
+   "a": 70,
+   "unit": "%",
+   "tol": 0.1,
+   "why": "Le pourcentage de contrôle additionne les droits de vote détenus directement (10 %) et ceux détenus par les sociétés que M contrôle : F1 est contrôlée (80 %), donc ses 60 % dans F2 comptent en totalité. Contrôle = 60 + 10 = 70 % : contrôle exclusif de droit, intégration globale. Multiplier (48 %) est l'erreur typique : c'est le calcul de l'intérêt, non du contrôle.",
+   "src": "C. com., art. L. 233-16 ; règlement ANC n° 2020-01",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "La société M détient 30 % des droits de vote de F1 (sans la contrôler) ; F1 détient 60 % de F2 ; M détient directement 10 % de F2. Calculez le pourcentage d'intérêt de M dans F2 (en %).",
+   "a": 28,
+   "unit": "%",
+   "tol": 0.1,
+   "why": "L'intérêt reste multiplicatif même sans contrôle : 0,3 × 0,6 = 18 %, plus 10 % en direct, soit 28 %. En revanche, le pourcentage de contrôle n'est que de 10 % (chaîne rompue : F1 n'étant pas contrôlée, ses droits de vote dans F2 ne sont pas retenus) : F2 est hors du périmètre de M, sauf influence notable démontrée.",
+   "src": "Règlement ANC n° 2020-01, § 1000 s.",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, un groupe non coté présente, pour la deuxième année, un total de bilan cumulé de 28 M€, un chiffre d'affaires cumulé de 65 M€ et 300 salariés. Les seuils d'exemption de consolidation des petits groupes sont 30 M€ de bilan, 60 M€ de chiffre d'affaires et 250 salariés. Combien de seuils sont dépassés ?",
+   "a": 2,
+   "unit": "",
+   "tol": 0,
+   "why": "Bilan 28 < 30 : non. CA 65 > 60 : oui. Effectif 300 > 250 : oui. Deux seuils sur trois sont dépassés : le groupe n'est pas un petit groupe et doit établir des comptes consolidés (C. com., art. L. 233-17 et R. 233-16, seuils relevés par le décret n° 2024-152). L'exemption n'aurait joué que si deux critères au plus étaient respectés.",
+   "src": "C. com., art. L. 233-17 et R. 233-16 (décret n° 2024-152)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Dans quels cas une société mère est-elle dispensée d'établir des comptes consolidés ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle est elle-même comprise dans les comptes consolidés d'une entreprise supérieure, sans opposition d'actionnaires détenant au moins 10 % du capital",
+    "Le groupe ne dépasse pas deux des trois seuils des petits groupes et aucune entité n'est d'intérêt public",
+    "L'ensemble des entreprises contrôlées présente un intérêt négligeable",
+    "La société mère est une SAS",
+    "La société mère est déficitaire"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "C. com., art. L. 233-17 et L. 233-17-1 : exemption de sous-groupe, exemption des petits groupes (seuils R. 233-16) hors entités d'intérêt public, et dispense lorsque les filiales sont, ensemble, d'importance négligeable. La forme sociale et le résultat de la mère sont sans incidence : toute société commerciale qui contrôle est en principe tenue de consolider.",
+   "src": "C. com., art. L. 233-17 et L. 233-17-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une société cotée sur un marché réglementé établit ses comptes consolidés :",
+   "opts": [
+    "Selon le règlement ANC 2020-01",
+    "Selon les normes IFRS adoptées par l'UE",
+    "Selon le PCG, comme ses comptes individuels",
+    "Au choix entre PCG et IFRS"
+   ],
+   "a": 1,
+   "why": "Le règlement (CE) n° 1606/2002 impose les IFRS adoptées par l'UE aux comptes consolidés des sociétés cotées. Le règlement ANC 2020-01 s'applique aux groupes non cotés (avec option pour les IFRS) ; le PCG ne régit que les comptes individuels. Il n'existe aucune option pour une société cotée.",
+   "src": "Règlement (CE) n° 1606/2002 ; C. com., art. L. 233-24",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Le seuil de signification fixé par le commissaire aux comptes (NEP 320) est :",
+   "opts": [
+    "Le montant minimal des honoraires fixés par le barème",
+    "Le montant au-delà duquel une anomalie peut influencer le jugement d'un utilisateur des comptes",
+    "Le pourcentage de postes du bilan à contrôler",
+    "Le seuil de nomination obligatoire du CAC"
+   ],
+   "a": 1,
+   "why": "NEP 320 : le seuil de signification est le montant au-delà duquel les décisions économiques ou le jugement fondé sur les comptes sont susceptibles d'être influencés ; il oriente la planification et l'évaluation des anomalies relevées. Il n'a rien à voir avec les honoraires, un taux de couverture ou les seuils légaux de nomination (5 M€ / 10 M€ / 50).",
+   "src": "NEP 320",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque technique de contrôle utilisée par le commissaire aux comptes.",
+   "cats": [
+    "Observation physique",
+    "Confirmation directe (circularisation)",
+    "Procédure analytique",
+    "Test de procédures"
+   ],
+   "items": [
+    [
+     "Assister à l'inventaire des stocks au 31 décembre",
+     0
+    ],
+    [
+     "Demander à la banque de confirmer le solde des comptes",
+     1
+    ],
+    [
+     "Comparer le taux de marge de N à celui de N−1 et au secteur",
+     2
+    ],
+    [
+     "Vérifier qu'un échantillon de bons de commande porte bien le visa du responsable des achats",
+     3
+    ],
+    [
+     "Envoyer aux avocats une demande d'information sur les litiges en cours",
+     1
+    ],
+    [
+     "Rapprocher l'évolution des charges de personnel de celle des effectifs",
+     2
+    ]
+   ],
+   "why": "NEP 500 : l'observation physique porte sur l'existence des actifs (inventaire) ; la confirmation directe consiste à obtenir d'un tiers (banque, client, avocat) une information écrite ; les procédures analytiques comparent des données et ratios ; les tests de procédures vérifient le fonctionnement du contrôle interne. Le choix des techniques dépend du risque et des assertions à couvrir.",
+   "src": "NEP 500",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles sont les formes possibles de l'opinion du commissaire aux comptes dans son rapport sur les comptes annuels ? (plusieurs réponses possibles)",
+   "opts": [
+    "Certification sans réserve",
+    "Certification avec réserve(s)",
+    "Refus de certifier",
+    "Certification provisoire",
+    "Attestation de cohérence et de vraisemblance"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "NEP 700 : trois formes d'opinion, la certification pure et simple, la certification avec réserve(s) pour désaccord ou limitation, et le refus de certifier lorsque les anomalies ou limitations sont trop importantes. La certification provisoire n'existe pas ; l'attestation de cohérence et de vraisemblance est la conclusion de la mission de présentation de l'expert-comptable.",
+   "src": "NEP 700",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle différence sépare l'audit (certification) de l'examen limité ?",
+   "opts": [
+    "L'examen limité donne une assurance raisonnable et l'audit une assurance modérée",
+    "L'audit donne une assurance raisonnable, l'examen limité une assurance modérée fondée sur entretiens et procédures analytiques",
+    "L'examen limité porte uniquement sur les comptes consolidés des groupes",
+    "L'audit ne concerne que les sociétés cotées sur un marché réglementé"
+   ],
+   "a": 1,
+   "why": "L'audit (NEP 200) vise une assurance raisonnable, élevée mais non absolue, à l'issue de contrôles étendus ; l'examen limité (NEP 2410 pour les comptes intermédiaires, NP 2400 de l'Ordre) se limite à des entretiens et procédures analytiques et aboutit à une assurance modérée exprimée négativement. Ni le périmètre (consolidés) ni la cotation ne définissent la frontière entre les deux.",
+   "src": "NEP 200 ; NEP 2410",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quels sont les objectifs du contrôle interne selon le référentiel COSO ? (plusieurs réponses possibles)",
+   "opts": [
+    "La fiabilité de l'information financière",
+    "La conformité aux lois et règlements",
+    "L'efficacité et l'efficience des opérations",
+    "La certification des comptes par le CAC",
+    "La maximisation du résultat fiscal"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le contrôle interne vise la fiabilité de l'information financière, la conformité aux lois et règlements et l'efficacité des opérations (auxquelles la doctrine française ajoute la protection des actifs). La certification est la mission du CAC, qui s'appuie sur le contrôle interne sans en être une composante ; l'optimisation fiscale n'est pas un objectif du contrôle interne.",
+   "src": "Référentiel COSO ; NEP 315",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Le commissaire aux comptes relève des faits de nature à compromettre la continuité de l'exploitation d'une SA. Quelle est la première phase de la procédure d'alerte ?",
+   "opts": [
+    "Informer le procureur de la République des difficultés constatées",
+    "Demander des explications au président du conseil, qui répond sous quinze jours",
+    "Convoquer lui-même l'assemblée générale",
+    "Saisir le président du tribunal de commerce par un rapport écrit"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 234-1 : phase 1, demande d'explications au président du conseil (réponse sous quinze jours) ; phase 2, invitation à réunir le conseil d'administration ; phase 3, rapport spécial présenté à l'assemblée ; phase 4, information du président du tribunal de commerce. Le procureur n'est saisi qu'en cas de faits délictueux, procédure distincte. Le CAC ne convoque l'assemblée qu'à défaut de convocation par les dirigeants.",
+   "src": "C. com., art. L. 234-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le commissaire aux comptes découvre des faits délictueux au cours de sa mission. Il doit :",
+   "opts": [
+    "Les garder confidentiels au nom du secret professionnel",
+    "Les révéler au procureur de la République, sans engager sa responsabilité",
+    "Démissionner immédiatement de son mandat",
+    "Les signaler uniquement au dirigeant, par courrier confidentiel"
+   ],
+   "a": 1,
+   "why": "Le CAC révèle au procureur de la République les faits délictueux dont il a eu connaissance (ex-art. L. 823-12 C. com., recodifié au livre VIII) ; le secret professionnel ne lui est pas opposable pour cette révélation et le défaut de révélation est pénalement sanctionné. Il signale par ailleurs à l'assemblée les irrégularités relevées. La démission ne le dispenserait pas de son obligation.",
+   "src": "C. com., ex-art. L. 823-12 (livre VIII, ord. n° 2023-1142)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quel principe résume la relation entre comptabilité et fiscalité en France ?",
+   "opts": [
+    "Déconnexion totale : le résultat fiscal est calculé indépendamment des comptes",
+    "Connexion : le résultat fiscal est déterminé à partir du résultat comptable, corrigé extra-comptablement des divergences",
+    "Primauté fiscale : les comptes annuels sont établis selon les règles du CGI",
+    "Alignement obligatoire des durées d'amortissement comptables sur les durées fiscales"
+   ],
+   "a": 1,
+   "why": "CGI art. 38 quater : les entreprises respectent les définitions du PCG sous réserve des règles fiscales incompatibles ; le résultat fiscal part du résultat comptable et les écarts sont traités sur le tableau 2058-A. Les comptes restent régis par le PCG (image fidèle) ; seules les déductions subordonnées à une comptabilisation effective (amortissements, provisions) créent une influence fiscale, via les dérogatoires par exemple.",
+   "src": "CGI art. 38 quater ; CGI art. 39, 1-2° et 5°",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Lors d'une vérification de comptabilité, l'entreprise qui tient sa comptabilité au moyen d'un logiciel doit remettre à l'administration :",
+   "opts": [
+    "Une copie papier du grand livre et des journaux",
+    "Le fichier des écritures comptables (FEC)",
+    "Uniquement la liasse fiscale de l'exercice vérifié",
+    "Le rapport du commissaire aux comptes"
+   ],
+   "a": 1,
+   "why": "LPF art. L. 47 A : l'entreprise présente ses documents comptables sous forme de fichiers dématérialisés répondant aux normes fixées par arrêté (le FEC), dès le début des opérations de contrôle ; le défaut de présentation est sanctionné par une amende. La liasse et le rapport du CAC ne remplacent pas la comptabilité elle-même, qui doit être conservée dix ans (C. com., art. L. 123-22).",
+   "src": "LPF art. L. 47 A ; C. com., art. L. 123-22",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}
