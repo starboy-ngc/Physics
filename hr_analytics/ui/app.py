@@ -49,6 +49,7 @@ from ..core.segmentation import (build_filters, dimension_fields,
 from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from ..core.traceability import write_manifest
+from . import logo as marque
 from . import theme
 from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
                      PieChart, PyramidChart, ScaleChart, ScatterChart)
@@ -183,6 +184,7 @@ class Application(tk.Tk):
                  splash: bool = False) -> None:
         super().__init__()
         self.title(WINDOW_TITLE)
+        self._pose_icone()
         self.geometry("1380x880")
         self.minsize(1120, 720)
         # Retiree de l'ecran le temps de la construction : une fenetre qui
@@ -309,6 +311,34 @@ class Application(tk.Tk):
         ecran.close()
 
     # -------------------------------------------------------------- layout
+
+    #: Tailles de l'icone de fenetre. Windows prend la premiere pour la
+    #: barre des taches et la seconde pour le coin du titre ; les autres
+    #: systemes choisissent. Deux suffisent : au-dela, chaque taille coute
+    #: son dessin au demarrage.
+    ICONE_TAILLES = (32, 16)
+
+    def _pose_icone(self) -> None:
+        """Pose la marque sur la fenetre et dans la barre des taches.
+
+        Sans elle, la fenetre porte l'icone du programme qui l'a ouverte —
+        sous Windows, celle de l'interpreteur, puisque le lanceur demarre
+        « pythonw.exe ». L'utilisateur voit alors une icone qui n'est pas
+        celle de l'outil, et qu'aucune reprise de la marque ne change.
+
+        C'est le jeton, pas la marque nue : une barre des taches a son
+        propre fond, clair ou sombre selon le theme du poste.
+
+        Un echec ici ne doit pas empecher l'outil de s'ouvrir : une icone
+        est un confort, pas une fonction. Certains gestionnaires de
+        fenetres refusent « iconphoto », et aucun ne le dit a l'avance.
+        """
+        try:
+            self._icones = [tk.PhotoImage(data=marque.jeton(taille))
+                            for taille in self.ICONE_TAILLES]
+            self.iconphoto(True, *self._icones)
+        except tk.TclError:
+            self._icones = []
 
     def _build_layout(self) -> None:
         header = tk.Frame(self, background=theme.CANVAS)

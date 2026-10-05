@@ -260,3 +260,79 @@ def distance(x: float, y: float) -> float:
             if valeur < plus_proche:
                 plus_proche = valeur
     return plus_proche
+
+
+#: Le jeton : la meme galaxie, blanche sur un disque bleu d'ardoise. C'est
+#: sous cette forme que l'outil se montre partout ou il n'a pas choisi son
+#: fond — l'icone du raccourci, celle de la barre des taches, celle du
+#: coin de la fenetre. Un raccourci se pose sur le fond d'ecran de
+#: l'utilisateur, qui peut etre de n'importe quelle teinte : une marque
+#: posee a nu y disparait un poste sur deux. Le disque lui donne son fond.
+JETON_FOND = (0x1F, 0x3A, 0x55)
+JETON_MARQUE = (0xFF, 0xFF, 0xFF)
+
+#: Part du jeton occupee par la marque, en largeur. L'air autour fait
+#: autant que la marque elle-meme : une icone qui remplit son jeton se lit
+#: comme une pastille, pas comme un symbole.
+JETON_EMPRISE = 0.70
+
+#: Amincissement du trace, en parts de la largeur de la marque. Une forme
+#: claire sur un fond sombre parait plus epaisse qu'elle ne l'est — l'oeil
+#: deborde sur le fond, et un trait blanc gagne visuellement ce que le
+#: meme trait en bleu sur l'ecran d'accueil n'a pas. On lui retire donc ce
+#: qu'il gagne, pour que les deux dessins se ressemblent vraiment.
+JETON_CORRECTION = 0.004
+
+#: Echantillons par cote d'un pixel pour le bord du disque. Quatre par
+#: quatre suffisent — a huit la difference ne se voit plus, et le calcul
+#: quadruple. La marque, elle, a sa distance signee : son bord est exact.
+JETON_FINESSE = 4
+
+
+def jeton_pixels(taille: int) -> bytes:
+    """Le jeton a cette taille, en pixels RGBA bruts.
+
+    Un disque plutot qu'un carre : une icone carree se confond avec les
+    tuiles du bureau, un disque se reconnait de loin.
+    """
+    centre = taille / 2.0
+    rayon = centre - max(taille * 0.02, 0.5)
+    emprise = taille * JETON_EMPRISE
+    pixel = 1.0 / emprise
+    pas = 1.0 / JETON_FINESSE
+    total = JETON_FINESSE * JETON_FINESSE
+    pixels = bytearray()
+    for y in range(taille):
+        for x in range(taille):
+            dedans = 0
+            for sy in range(JETON_FINESSE):
+                for sx in range(JETON_FINESSE):
+                    px = x + (sx + 0.5) * pas - centre
+                    py = y + (sy + 0.5) * pas - centre
+                    if px * px + py * py <= rayon * rayon:
+                        dedans += 1
+            if dedans == 0:
+                pixels += bytes((0, 0, 0, 0))
+                continue
+            # La marque vit dans un cadre de largeur 1 dont la ligne
+            # mediane est a 0,5 : on y ramene le point avant de lui
+            # demander sa distance.
+            part = _couverture(
+                distance((x + 0.5 - centre) / emprise + 0.5,
+                         (y + 0.5 - centre) / emprise + 0.5)
+                + JETON_CORRECTION, pixel)
+            pixels += bytes(round(JETON_FOND[canal] * (1 - part)
+                                  + JETON_MARQUE[canal] * part)
+                            for canal in range(3))
+            pixels += bytes((round(255 * dedans / total),))
+    return bytes(pixels)
+
+
+def jeton(taille: int) -> bytes:
+    """Le jeton a cette taille, en PNG, pret pour PhotoImage."""
+    brut = jeton_pixels(taille)
+    largeur = taille * 4
+    lignes = [bytearray(brut[y * largeur:(y + 1) * largeur])
+              for y in range(taille)]
+    niveau = 6 if taille <= RAPIDE_AU_DELA else 1
+    return raster.image_data(taille, taille, lignes, niveau)

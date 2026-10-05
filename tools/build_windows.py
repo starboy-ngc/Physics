@@ -134,6 +134,32 @@ def telecharger_runtime(cible: str) -> str:
     return extrait
 
 
+def compiler_icone(destination: str) -> str:
+    """Compile la marque en ressource Windows, prête à être liée.
+
+    C'est elle que l'explorateur, le bureau et la barre des tâches
+    montrent. Un lanceur compilé sans elle porte l'icône que mingw lui
+    donne par défaut — celle que l'utilisateur voit ne vient alors pas de
+    l'outil, et aucune reprise de la marque ne la change.
+    """
+    fenetre = os.path.join(ROOT, "packaging", "windows")
+    ressources = shutil.which("x86_64-w64-mingw32-windres")
+    if ressources is None:
+        raise SystemExit(
+            "x86_64-w64-mingw32-windres est nécessaire. Installez le "
+            "paquet « mingw-w64 ».")
+    icone = os.path.join(fenetre, "marque.ico")
+    if not os.path.isfile(icone):
+        _dire("  icône : dessin de la marque")
+        from tools.render_icon import main as dessiner
+        dessiner(["--sortie", icone])
+    objet = os.path.join(destination, "icone.o")
+    subprocess.run([ressources, "-I", fenetre,
+                    os.path.join(fenetre, "icone.rc"), "-o", objet],
+                   check=True)
+    return objet
+
+
 def compiler_lanceur(destination: str) -> str:
     """Compile le lanceur, ou reprend celui qui a déjà été compilé."""
     source = os.path.join(ROOT, "packaging", "windows", "lanceur.c")
@@ -149,11 +175,13 @@ def compiler_lanceur(destination: str) -> str:
             "x86_64-w64-mingw32-gcc est introuvable. Installez le paquet "
             "« mingw-w64 », ou placez un lanceur déjà compilé dans "
             "packaging/windows/HR Analytics.exe.")
+    objet = compiler_icone(destination)
     # -municode : le point d'entrée est wWinMain, donc les chemins Windows
     # en Unicode. -mwindows : pas de fenêtre de console derrière l'outil.
     subprocess.run([compilateur, "-O2", "-municode", "-mwindows",
-                    "-o", cible, source], check=True)
-    _dire("  lanceur : compilé")
+                    "-o", cible, source, objet], check=True)
+    os.remove(objet)
+    _dire("  lanceur : compilé, icône comprise")
     return cible
 
 
@@ -303,15 +331,7 @@ def compiler_stub(destination: str) -> str:
         raise SystemExit(
             "x86_64-w64-mingw32-gcc et -windres sont necessaires. "
             "Installez le paquet « mingw-w64 ».")
-    icone = os.path.join(fenetre, "marque.ico")
-    if not os.path.isfile(icone):
-        _dire("  icone : dessin de la marque")
-        from tools.render_icon import main as dessiner
-        dessiner(["--sortie", icone])
-    objet = os.path.join(destination, "icone.o")
-    subprocess.run([ressources, "-I", fenetre,
-                    os.path.join(fenetre, "icone.rc"), "-o", objet],
-                   check=True)
+    objet = compiler_icone(destination)
     stub = os.path.join(destination, "stub.exe")
     subprocess.run([compilateur, "-O2", "-municode", "-mwindows",
                     os.path.join(fenetre, "lanceur-unique.c"), objet,

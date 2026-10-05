@@ -22,7 +22,6 @@ avec struct. Ce sont les deux seules choses dont ces formats ont besoin.
 from __future__ import annotations
 
 import argparse
-import math
 import os
 import struct
 import sys
@@ -36,73 +35,15 @@ from hr_analytics.ui import logo
 #: reechantillonner. 256 est la plus grande qu'il sache lire.
 TAILLES = (16, 20, 24, 32, 40, 48, 64, 128, 256)
 
-#: Les deux teintes du dessin. Elles viennent de la palette de l'outil :
-#: l'icone et la fenetre qu'elle ouvre doivent se reconnaitre.
-ENCRE = (0x1F, 0x3A, 0x55)          # bleu d'ardoise, le fond du jeton
-MARQUE = (0xFF, 0xFF, 0xFF)         # la marque elle-meme
-
-#: Part du jeton occupee par la marque, en largeur. La galaxie est ronde
-#: comme le jeton : elle doit donc rester nettement plus petite que lui,
-#: sans quoi ses bras viennent toucher le bord. L'air autour de la marque
-#: fait autant que la marque elle-meme : une icone qui remplit son jeton
-#: se lit comme une pastille, pas comme un symbole.
-EMPRISE = 0.70
-
-#: Amincissement du trace, en parts de la largeur de la marque. Une forme
-#: claire sur un fond sombre parait plus epaisse qu'elle ne l'est — l'oeil
-#: deborde sur le fond, et un trait blanc gagne visuellement ce que le
-#: meme trait en bleu sur l'ecran d'accueil n'a pas. On lui retire donc ce
-#: qu'il gagne, pour que les deux dessins se ressemblent vraiment.
-CORRECTION = 0.004
-
-#: Echantillons par cote d'un pixel pour le bord du jeton. Quatre par
-#: quatre suffisent — a huit la difference ne se voit plus, et le calcul
-#: quadruple. La marque, elle, a sa distance signee : son bord est exact.
-FINESSE = 4
-
-
 def dessiner(taille: int) -> bytes:
     """Rend l'icone a la taille demandee, en pixels RGBA bruts.
 
-    Le jeton est un disque : une icone carree se confond avec les tuiles
-    du bureau, un disque se reconnait de loin.
+    Le dessin lui-meme appartient a « hr_analytics.ui.logo » : c'est la
+    meme fonction qui pose l'icone de la fenetre pendant que l'outil
+    tourne. Une icone de raccourci et une icone de barre des taches qui
+    divergent, c'est deux identites pour un seul outil.
     """
-    centre = taille / 2.0
-    rayon_jeton = centre - max(taille * 0.02, 0.5)
-    emprise = taille * EMPRISE
-    pixel = 1.0 / emprise
-    pixels = bytearray()
-    pas = 1.0 / FINESSE
-    for y in range(taille):
-        for x in range(taille):
-            jeton = 0
-            for sy in range(FINESSE):
-                for sx in range(FINESSE):
-                    px = x + (sx + 0.5) * pas - centre
-                    py = y + (sy + 0.5) * pas - centre
-                    if px * px + py * py <= rayon_jeton * rayon_jeton:
-                        jeton += 1
-            total = FINESSE * FINESSE
-            if jeton == 0:
-                pixels += bytes((0, 0, 0, 0))
-                continue
-            # La marque vit dans un cadre de largeur 1 dont la ligne
-            # mediane est a 0,5 : on y ramene le point avant de lui
-            # demander sa distance.
-            part = _couverture(
-                logo.distance((x + 0.5 - centre) / emprise + 0.5,
-                              (y + 0.5 - centre) / emprise + 0.5)
-                + CORRECTION, pixel)
-            couleur = tuple(round(ENCRE[canal] * (1 - part)
-                                  + MARQUE[canal] * part) for canal in range(3))
-            pixels += bytes(couleur) + bytes((round(255 * jeton / total),))
-    return bytes(pixels)
-
-
-def _couverture(distance: float, pixel: float) -> float:
-    """Part d'un pixel couverte, d'apres sa distance au bord de la forme."""
-    part = 0.5 - distance / pixel
-    return 0.0 if part <= 0.0 else (1.0 if part >= 1.0 else part)
+    return logo.jeton_pixels(taille)
 
 
 def png(taille: int, pixels: bytes) -> bytes:

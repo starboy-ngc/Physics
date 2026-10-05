@@ -415,7 +415,7 @@ class TestTheMarkIcon(unittest.TestCase):
         from tools import render_icon
 
         source = inspect.getsource(render_icon.dessiner)
-        self.assertIn("logo.distance", source)
+        self.assertIn("logo.jeton_pixels", source)
         # Le noyau est plein, le coin du cadre est vide : la marque ne
         # touche pas son bord.
         self.assertLess(logo.distance(0.5, 0.5), 0)
@@ -424,7 +424,9 @@ class TestTheMarkIcon(unittest.TestCase):
     def test_the_mark_is_white_on_the_slate_token(self):
         """Une icône de raccourci se pose sur n'importe quel fond de
         bureau : elle porte le sien."""
-        from tools.render_icon import ENCRE, MARQUE, dessiner
+        from hr_analytics.ui.logo import JETON_FOND as ENCRE
+        from hr_analytics.ui.logo import JETON_MARQUE as MARQUE
+        from tools.render_icon import dessiner
 
         pixels = dessiner(64)
 
@@ -437,3 +439,47 @@ class TestTheMarkIcon(unittest.TestCase):
         # jeton : l'ardoise.
         self.assertEqual(point(32, 32)[:3], MARQUE, "pas de noyau")
         self.assertEqual(point(32, 4)[:3], ENCRE)
+
+    def test_the_mark_keeps_its_air_inside_the_token(self):
+        """Une icône qui remplit son jeton se lit comme une pastille, pas
+        comme un symbole : la marque s'arrête bien avant le bord."""
+        from hr_analytics.ui import logo
+
+        pixels = logo.jeton_pixels(64)
+
+        def point(x, y):
+            return tuple(pixels[(y * 64 + x) * 4:(y * 64 + x) * 4 + 4])
+
+        # L'anneau entre la marque et le bord du jeton : de l'ardoise
+        # pleine, sur toute la couronne. Le rayon se déduit du dessin — le
+        # bras le plus long, plus son épaisseur — et non d'un nombre
+        # recopié qui survivrait au prochain réglage.
+        import math
+        portee = 64 * logo.JETON_EMPRISE * (logo.BRAS_FIN + logo.TRAIT_FIN)
+        bord = 32 - max(64 * 0.02, 0.5)
+        rayon = portee + 2
+        self.assertLess(rayon, bord - 1, "la marque ne laisse aucun air")
+        for degres in range(0, 360, 15):
+            angle = math.radians(degres)
+            x = int(32 + rayon * math.cos(angle))
+            y = int(32 + rayon * math.sin(angle))
+            self.assertEqual(point(x, y)[:3], logo.JETON_FOND,
+                             "la marque touche le bord du jeton")
+
+
+class TestTheFolderLauncherCarriesTheMark(unittest.TestCase):
+    """Le dossier Windows et l'exécutable unique sont deux livrables : une
+    icône posée sur un seul laisse l'autre avec celle de mingw."""
+
+    def test_both_launchers_are_linked_against_the_icon(self):
+        import inspect
+
+        from tools import build_windows
+
+        for fabrique in (build_windows.compiler_lanceur,
+                         build_windows.compiler_stub):
+            source = inspect.getsource(fabrique)
+            self.assertIn("compiler_icone(destination)", source,
+                          f"{fabrique.__name__} ne pose pas l'icône")
+            self.assertIn("objet", source.split("subprocess.run")[1],
+                          f"{fabrique.__name__} ne lie pas la ressource")

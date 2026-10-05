@@ -1364,3 +1364,49 @@ class TestTheOverviewDoesNotDependOnThePathTaken(WindowCase):
         faits = self.app._overview_fitted
         self.assertTrue(faits is None or all(
             largeur != 0 for _hauteur, largeur in faits[1]))
+
+
+class TestTheWindowCarriesTheMark(WindowCase):
+    """Sans icône posée, la fenêtre porte celle du programme qui l'a
+    ouverte — sous Windows, celle de l'interpréteur, puisque le lanceur
+    démarre « pythonw.exe ». L'utilisateur voit alors une icône qui n'est
+    pas celle de l'outil, et qu'aucune reprise de la marque ne change."""
+
+    def test_the_window_sets_its_own_icon(self):
+        self.assertTrue(self.app._icones, "aucune icône posée")
+        self.assertEqual([image.width() for image in self.app._icones],
+                         list(self.app.ICONE_TAILLES))
+        for image in self.app._icones:
+            self.assertEqual(image.width(), image.height())
+
+    def test_it_is_the_token_and_not_the_bare_mark(self):
+        """Une barre des tâches a son propre fond, clair ou sombre selon le
+        thème du poste : la marque y est posée sur son jeton."""
+        from hr_analytics.ui import logo
+
+        image = self.app._icones[0]
+        taille = image.width()
+        # Le centre du jeton est opaque, son coin est transparent : c'est
+        # un disque, pas un carré.
+        self.assertEqual(image.transparency_get(taille // 2, taille // 2),
+                         False)
+        self.assertEqual(image.transparency_get(0, 0), True)
+        self.assertEqual(image.get(taille // 2, taille // 2),
+                         logo.JETON_MARQUE)
+
+    def test_a_refused_icon_never_stops_the_tool(self):
+        """Certains gestionnaires de fenêtres refusent « iconphoto », et
+        aucun ne le dit à l'avance : une icône est un confort, pas une
+        fonction."""
+        import tkinter as tk
+
+        def refuser(*_args, **_kwargs):
+            raise tk.TclError("wm iconphoto refusé")
+
+        pose = self.app.iconphoto
+        self.app.iconphoto = refuser
+        try:
+            self.app._pose_icone()
+        finally:
+            self.app.iconphoto = pose
+        self.assertEqual(self.app._icones, [])
