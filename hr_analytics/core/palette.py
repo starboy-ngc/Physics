@@ -19,9 +19,11 @@ Trois familles ne suivent pas le theme, et c'est deliberé :
 * la palette categorielle sert a *distinguer* des modalites, pas a signer
   un document ; seule sa premiere couleur suit l'accent.
 
-Aucune couleur n'est saisie par l'utilisateur : il choisit un theme dans
-une liste, et un test verifie le contraste de chacun. On ne peut donc pas
-rendre l'outil illisible depuis les parametres.
+L'utilisateur choisit son accent — dans une palette integree, ou en
+tapant le code couleur de sa charte. Ce qu'il ne peut pas faire, c'est
+rendre l'outil illisible : tout accent, choisi ou tape, doit laisser le
+blanc lisible sur lui, et il est refuse sinon. Le reste de la palette —
+encre, gris, filets, severites — ne se saisit pas : il se deduit.
 """
 
 from __future__ import annotations
@@ -31,7 +33,7 @@ from typing import Any, Dict, List, NamedTuple, Optional, Sequence, Tuple
 WHITE = "#ffffff"
 
 #: Theme applique quand rien n'est configure.
-DEFAULT_THEME = "ardoise"
+DEFAULT_THEME = "auroral"
 
 
 # --------------------------------------------------------------- melanges
@@ -220,26 +222,37 @@ class Theme(NamedTuple):
 
 THEMES: Dict[str, Theme] = {
     theme.key: theme for theme in (
-        Theme("ardoise", "Ardoise",
-              "Bleu ardoise sobre. Le thème d'origine de l'outil.",
-              _build("ardoise", "#111c26", "#2f5d8a")),
-        Theme("graphite", "Graphite",
-              "Neutre, sans couleur dominante. Le meilleur rendu à "
-              "l'impression en noir et blanc.",
-              _build("graphite", "#17191c", "#4c5764")),
-        Theme("foret", "Forêt",
-              "Vert profond. Se distingue nettement des documents "
-              "financiers habituels.",
-              _build("foret", "#131f1a", "#2f6b4f")),
-        Theme("prune", "Prune",
-              "Aubergine sourd. Chaleureux sans être vif.",
-              _build("prune", "#1d1620", "#6d3f63")),
         Theme("auroral", "Auroral",
-              "Bleu-vert lumineux sur nuit polaire. Le plus contrasté des "
-              "accents, pour un écran très éclairé.",
+              "Bleu-vert lumineux sur nuit polaire.",
               _build("auroral", "#0b1d26", "#00768c")),
     )
 }
+
+
+#: Contraste minimal entre le blanc et un accent. C'est le seuil AA pour le
+#: texte courant : le bouton principal ecrit en blanc sur l'accent, et un
+#: accent trop clair rendrait son libelle illisible.
+ACCENT_CONTRAST = 4.5
+
+#: La palette integree : des accents tout faits, repartis sur le cercle des
+#: teintes. Aucun n'est la pour faire joli — chacun tient le contraste
+#: ci-dessus, et un test le verifie, de sorte qu'un clic ne peut pas rendre
+#: l'outil illisible. Celui qui veut exactement la couleur de sa maison la
+#: tape ; elle passe le meme controle, et elle est refusee si elle le rate.
+ACCENTS: Tuple[Tuple[str, str], ...] = (
+    ("Auroral", "#00768c"),
+    ("Ardoise", "#2f5d8a"),
+    ("Marine", "#17457a"),
+    ("Indigo", "#4a3f9e"),
+    ("Prune", "#6d3f63"),
+    ("Grenat", "#8c2f4a"),
+    ("Brique", "#9c4221"),
+    ("Bronze", "#80601c"),
+    ("Forêt", "#2f6b4f"),
+    ("Olive", "#5c6b1f"),
+    ("Graphite", "#4c5764"),
+    ("Encre", "#2b3440"),
+)
 
 
 def names() -> List[Tuple[str, str]]:
@@ -247,19 +260,79 @@ def names() -> List[Tuple[str, str]]:
     return [(theme.key, theme.label) for theme in THEMES.values()]
 
 
-def by_name(name: Optional[str]) -> Palette:
-    """Palette d'un theme. Un nom inconnu retombe sur le theme par defaut.
+def normalise_accent(value: Any) -> Optional[str]:
+    """Un code couleur ecrit a la main, ramene a « #rrggbb ».
 
-    Une configuration ecrite a la main peut nommer un theme qui n'existe
-    pas : l'outil doit s'ouvrir quand meme, avec ses couleurs d'origine.
+    Accepte la forme courte a trois chiffres et le croisillon facultatif,
+    parce que c'est sous ces trois formes qu'une charte graphique donne
+    une couleur. Rend None sur tout le reste : mieux vaut garder l'accent
+    en place que poser une couleur devinee.
     """
-    theme = THEMES.get(str(name or "").strip().lower())
-    return (theme or THEMES[DEFAULT_THEME]).palette
+    texte = str(value or "").strip().lstrip("#").lower()
+    if len(texte) == 3 and all(car in "0123456789abcdef" for car in texte):
+        texte = "".join(car * 2 for car in texte)
+    if len(texte) != 6 or not all(car in "0123456789abcdef" for car in texte):
+        return None
+    return f"#{texte}"
+
+
+def accent_is_readable(colour: Optional[str]) -> bool:
+    """Le blanc tient-il sur cet accent, et sur son survol ?
+
+    Le survol est verifie lui aussi : il fonce l'accent vers l'encre, donc
+    il ne peut qu'ameliorer le contraste au blanc — mais la regle est
+    posee ici une fois pour toutes plutot que deduite d'un melange qui
+    pourrait changer.
+    """
+    teinte = normalise_accent(colour)
+    if teinte is None:
+        return False
+    fonce = mix(teinte, THEMES[DEFAULT_THEME].palette.ink, 0.28)
+    return (contrast(WHITE, teinte) >= ACCENT_CONTRAST
+            and contrast(WHITE, fonce) >= ACCENT_CONTRAST)
+
+
+def by_name(name: Optional[str]) -> Palette:
+    """Palette d'un theme, accent personnalise compris.
+
+    Le nom peut porter un accent apres deux-points — « auroral:#8c2f4a ».
+    C'est ce qui permet au theme de voyager dans un resultat d'analyse
+    sous la forme d'une seule chaine, et donc a un document de se rejouer
+    exactement tel qu'il a ete produit.
+
+    Un nom inconnu retombe sur le theme par defaut, et un accent illisible
+    ou mal ecrit est ignore : une configuration editee a la main doit
+    pouvoir ouvrir l'outil, jamais l'empecher de s'ouvrir.
+    """
+    texte = str(name or "").strip().lower()
+    base, _, accent = texte.partition(":")
+    theme = THEMES.get(base) or THEMES[DEFAULT_THEME]
+    if not accent:
+        return theme.palette
+    teinte = normalise_accent(accent)
+    if teinte is None or not accent_is_readable(teinte):
+        return theme.palette
+    return _build(f"{theme.key}:{teinte}", theme.palette.ink, teinte)
+
+
+def compose(theme_name: Optional[str], accent: Optional[str]) -> str:
+    """Le nom que `by_name` relit, depuis un theme et un accent choisis."""
+    base = str(theme_name or DEFAULT_THEME).strip().lower()
+    teinte = normalise_accent(accent)
+    if teinte is None or not accent_is_readable(teinte):
+        return base
+    if teinte == (THEMES.get(base) or THEMES[DEFAULT_THEME]).palette.accent:
+        # L'accent d'origine n'est pas une personnalisation : l'ecrire
+        # ferait porter au document un nom de theme qui n'existe pas.
+        return base
+    return f"{base}:{teinte}"
 
 
 def resolve(config) -> Palette:
-    """Palette du theme configure."""
-    return by_name(config.get("theme_parameters.theme", DEFAULT_THEME))
+    """Palette du theme configure, accent personnalise compris."""
+    return by_name(compose(
+        config.get("theme_parameters.theme", DEFAULT_THEME),
+        config.get("theme_parameters.accent", "")))
 
 
 def from_analysis(analysis) -> Palette:

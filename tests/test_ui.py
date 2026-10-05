@@ -1885,7 +1885,7 @@ class TestTheMergedOverview(unittest.TestCase):
         ligne = next(w for w in labels if w.cget("text") == "Q3 / Q1")
         self.assertGreater(taille(titre), taille(ligne))
         self.assertGreater(taille(titre), taille(entete))
-        blanc = palette.by_name("ardoise").canvas
+        blanc = palette.by_name(None).canvas
         contraste = lambda w: palette.contrast(w.cget("foreground"), blanc)
         self.assertGreater(contraste(titre), contraste(ligne))
         self.assertGreater(contraste(titre), contraste(entete))

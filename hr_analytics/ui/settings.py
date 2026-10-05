@@ -315,35 +315,138 @@ class SettingsWindow(tk.Toplevel):
             text=f"Enregistré dans {self.FICHIERS.get(key, '')} — "
                  "modifiable au bloc-notes.")
 
-    def _build_theme(self, parent: tk.Widget) -> None:
-        """Choix du theme, montre plutot que decrit.
+    #: Nombre de pastilles par rangee dans la palette integree.
+    ACCENTS_PAR_RANGEE = 6
 
-        Les couleurs ne se saisissent pas une par une : quatre jeux complets
-        sont proposes, tous verifies en contraste. On ne peut donc pas rendre
-        l'outil illisible depuis cet ecran, ni donner du vert a « critique ».
-        Chaque jeu montre ses teintes : c'est plus court a lire qu'un nom.
+    def _build_theme(self, parent: tk.Widget) -> None:
+        """La couleur de l'outil : une seule a choisir, et elle est montree.
+
+        Il y avait cinq jeux complets a comparer. Personne ne compare cinq
+        jeux : on en prend un et on n'y revient jamais. Reste donc le
+        theme, et le seul reglage dont on ait vu quelqu'un avoir besoin —
+        mettre la couleur de sa maison.
+
+        Cette couleur ne se saisit pas a l'aveugle : une palette integree
+        propose des teintes deja verifiees, et un code tape a la main
+        passe le meme controle. Le blanc doit rester lisible dessus,
+        puisque c'est sur elle que s'ecrit le bouton principal. Le reste
+        de la palette — encre, gris, filets, severites — ne se touche pas :
+        il se deduit, ce qui empeche de donner du vert a « critique ».
         """
         band = tk.Frame(parent, background=theme.GROUND)
         band.pack(fill="x", padx=22, pady=(4, 0))
         tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
                                                              pady=(0, 12))
-        tk.Label(band, text="Le thème colore la fenêtre et les documents "
-                            "produits. Les documents en tiennent compte dès "
-                            "l'enregistrement ; la fenêtre, au prochain "
-                            "démarrage.",
+        tk.Label(band, text="La couleur d'accent porte les titres, les "
+                            "boutons et les graphiques, à l'écran comme "
+                            "dans les documents produits. Les documents en "
+                            "tiennent compte dès l'enregistrement ; la "
+                            "fenêtre, au prochain démarrage.",
                  background=theme.GROUND, foreground=theme.MUTED,
                  font=self.fonts.small, wraplength=880,
-                 justify="left").pack(anchor="w", pady=(2, 10))
+                 justify="left").pack(anchor="w", pady=(2, 12))
 
-        row = tk.Frame(band, background=theme.GROUND)
-        row.pack(fill="x", pady=(0, 4))
         self.theme_var = tk.StringVar(
             value=str(self.configuration.get("theme_parameters.theme",
                                              palette.DEFAULT_THEME)))
-        self._theme_cards: Dict[str, Dict[str, Any]] = {}
-        for entry in palette.THEMES.values():
-            self._theme_card(row, entry)
-        self._show_theme()
+        depart = palette.normalise_accent(
+            self.configuration.get("theme_parameters.accent", ""))
+        self.accent_var = tk.StringVar(
+            value=depart or palette.by_name(self.theme_var.get()).accent)
+
+        self._accent_chips: Dict[str, tk.Frame] = {}
+        grille = tk.Frame(band, background=theme.GROUND)
+        grille.pack(anchor="w")
+        for rang, (nom, teinte) in enumerate(palette.ACCENTS):
+            if rang % self.ACCENTS_PAR_RANGEE == 0:
+                rangee = tk.Frame(grille, background=theme.GROUND)
+                rangee.pack(anchor="w", pady=(0, 6))
+            self._accent_chip(rangee, nom, teinte)
+
+        saisie = tk.Frame(band, background=theme.GROUND)
+        saisie.pack(anchor="w", pady=(8, 2))
+        tk.Label(saisie, text="Ou le code de votre charte :",
+                 background=theme.GROUND, foreground=theme.INK,
+                 font=self.fonts.body).pack(side="left")
+        self.accent_entry = tk.Entry(saisie, textvariable=self.accent_var,
+                                     width=10, font=self.fonts.body,
+                                     background=theme.CANVAS,
+                                     foreground=theme.INK,
+                                     insertbackground=theme.INK,
+                                     relief="flat", highlightthickness=1,
+                                     highlightbackground=theme.LINE,
+                                     highlightcolor=theme.ACCENT)
+        self.accent_entry.pack(side="left", padx=(8, 10))
+        self.accent_entry.bind("<KeyRelease>", lambda _e: self._show_accent())
+        #: L'apercu : la couleur telle qu'elle sera, a cote de son code.
+        #: Un code hexadecimal ne se lit pas — il se regarde.
+        self.accent_preview = tk.Frame(saisie, width=26, height=18,
+                                       background=self.accent_var.get())
+        self.accent_preview.pack_propagate(False)
+        self.accent_preview.pack(side="left")
+        self.accent_note = tk.Label(band, text="", background=theme.GROUND,
+                                    foreground=theme.MUTED,
+                                    font=self.fonts.small, wraplength=880,
+                                    justify="left")
+        self.accent_note.pack(anchor="w", pady=(4, 10))
+        self._show_accent()
+
+    def _accent_chip(self, parent: tk.Widget, nom: str, teinte: str) -> None:
+        """Une pastille de la palette integree."""
+        case = tk.Frame(parent, background=theme.GROUND)
+        case.pack(side="left", padx=(0, 8))
+        pastille = tk.Frame(case, background=teinte, width=34, height=24,
+                            cursor="hand2", highlightthickness=2,
+                            highlightbackground=theme.GROUND,
+                            highlightcolor=theme.GROUND)
+        pastille.pack_propagate(False)
+        pastille.pack()
+        self._accent_chips[teinte] = pastille
+        for widget in (case, pastille):
+            widget.bind("<Button-1>",
+                        lambda _e, valeur=teinte: self._choose_accent(valeur))
+            widget.bind("<Enter>",
+                        lambda _e, texte=nom:
+                        self.feedback.configure(text=texte), add="+")
+            widget.bind("<Leave>",
+                        lambda _e: self.feedback.configure(text=""), add="+")
+
+    def _choose_accent(self, teinte: str) -> None:
+        self.accent_var.set(teinte)
+        self._show_accent()
+
+    def _show_accent(self) -> None:
+        """Marque la pastille retenue, et dit pourquoi une couleur est
+        refusee plutot que de la laisser croire retenue."""
+        teinte = palette.normalise_accent(self.accent_var.get())
+        lisible = palette.accent_is_readable(teinte)
+        for valeur, pastille in self._accent_chips.items():
+            marque = theme.INK if valeur == teinte else theme.GROUND
+            pastille.configure(highlightbackground=marque,
+                               highlightcolor=marque)
+        if teinte is None:
+            self.accent_note.configure(
+                text="Code couleur attendu, par exemple « #8c2f4a ». "
+                     "La couleur en place est gardée.")
+            return
+        self.accent_preview.configure(background=teinte)
+        if not lisible:
+            self.accent_note.configure(
+                text="Trop claire : le libellé blanc des boutons n'y serait "
+                     "plus lisible. La couleur en place est gardée.")
+            return
+        self.accent_note.configure(text="")
+
+    def _accent_to_save(self) -> str:
+        """L'accent a ecrire : vide si c'est celui du theme, ou s'il est
+        refuse. Une couleur refusee ne doit pas s'installer dans le
+        fichier, ou elle serait relue sans que personne ne le voie."""
+        teinte = palette.normalise_accent(self.accent_var.get())
+        if teinte is None or not palette.accent_is_readable(teinte):
+            return str(self.configuration.get("theme_parameters.accent", ""))
+        if teinte == palette.by_name(self.theme_var.get()).accent:
+            return ""
+        return teinte
 
     def _build_privacy(self, parent: tk.Widget) -> None:
         """Ce que l'ecran a le droit de montrer — et lui seul.
@@ -487,57 +590,9 @@ class SettingsWindow(tk.Toplevel):
         if not self.individual_var.get():
             self.audit_var.set(False)
 
-    def _theme_card(self, parent: tk.Widget, entry) -> None:
-        card = tk.Frame(parent, background=theme.GROUND, cursor="hand2")
-        card.pack(side="left", padx=(0, 26))
-        chips = tk.Frame(card, background=theme.GROUND)
-        chips.pack(anchor="w")
-        # Les teintes montrees sont celles qui portent la lecture : l'accent,
-        # l'encre, le gris secondaire, puis le couple femmes / hommes.
-        shown = (entry.palette.accent, entry.palette.ink, entry.palette.muted,
-                 entry.palette.female, entry.palette.male)
-        for colour in shown:
-            chip = tk.Frame(chips, background=colour, width=17, height=17)
-            chip.pack_propagate(False)
-            chip.pack(side="left", padx=(0, 3))
-        name = tk.Label(card, text=entry.label, background=theme.GROUND,
-                        foreground=theme.INK, font=self.fonts.body_bold)
-        name.pack(anchor="w", pady=(6, 0))
-        mark = tk.Frame(card, height=2, background=theme.GROUND)
-        mark.pack(fill="x", pady=(4, 0))
-        self._theme_cards[entry.key] = {"name": name, "mark": mark,
-                                        "help": entry.description}
-        for widget in (card, chips, name, *chips.winfo_children()):
-            widget.bind("<Button-1>",
-                        lambda _e, key=entry.key: self._choose_theme(key))
-        self._describe_on_hover(card, entry)
 
-    def _describe_on_hover(self, card: tk.Widget, entry) -> None:
-        """Le detail du theme s'affiche au survol, pres des boutons.
 
-        Quatre descriptions ecrites en toutes lettres tiendraient plus
-        de place que la bande entiere.
-        """
-        for widget in [card] + list(card.winfo_children()):
-            widget.bind("<Enter>",
-                        lambda _e, text=entry.description:
-                        self.feedback.configure(text=text), add="+")
-            widget.bind("<Leave>",
-                        lambda _e: self.feedback.configure(text=""), add="+")
 
-    def _choose_theme(self, key: str) -> None:
-        self.theme_var.set(key)
-        self._show_theme()
-
-    def _show_theme(self) -> None:
-        """Marque le theme retenu d'un filet, sans cadre ni case a cocher."""
-        chosen = self.theme_var.get()
-        for key, card in self._theme_cards.items():
-            selected = key == chosen
-            card["name"].configure(
-                foreground=theme.INK if selected else theme.MUTED)
-            card["mark"].configure(
-                background=theme.ACCENT if selected else theme.GROUND)
 
     def _scrollable(self, parent: tk.Widget,
                     background: Optional[str] = None) -> tk.Frame:
@@ -1041,6 +1096,7 @@ class SettingsWindow(tk.Toplevel):
         # effacer ensuite ce qu'on y a ecrit.
         theme = dict(self.configuration.section("theme_parameters"))
         theme["theme"] = self.theme_var.get()
+        theme["accent"] = self._accent_to_save()
         write_configuration(directory, "theme_parameters", theme)
         # La section est reecrite entiere : les seuils d'effectif qui la
         # partagent doivent survivre a l'enregistrement du reglage d'ecran.

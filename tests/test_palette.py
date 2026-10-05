@@ -108,24 +108,45 @@ class TestEveryThemeStaysReadable(unittest.TestCase):
                     min(palette.distance(series[0], other)
                         for other in series[1:]), palette.SERIES_GAP)
 
-    def test_two_themes_never_look_alike(self):
-        """Un theme qui ressemble a un autre n'apporte rien.
+    def test_two_swatches_never_look_alike(self):
+        """Une pastille qui ressemble a sa voisine n'apporte rien : on ne
+        sait pas laquelle on vient de choisir."""
+        entrees = list(palette.ACCENTS)
+        self.assertGreaterEqual(len(entrees), 8)
+        for index, (nom, teinte) in enumerate(entrees):
+            for autre_nom, autre in entrees[index + 1:]:
+                with self.subTest(paire=(nom, autre_nom)):
+                    self.assertGreater(palette.distance(teinte, autre), 30,
+                                       f"{nom} et {autre_nom} se confondent")
+                    self.assertNotEqual(nom, autre_nom)
 
-        C'est pourtant la seule regle qu'aucune autre ne couvrait : un
-        accent recopie sur un theme existant passait tous les contrastes,
-        toutes les series et toutes les neutres, et remplissait la bande de
-        choix d'une pastille qu'on ne sait pas distinguer de sa voisine.
-        """
-        entrees = list(self.themes())
-        for index, theme in enumerate(entrees):
-            for autre in entrees[index + 1:]:
-                with self.subTest(paire=(theme.key, autre.key)):
-                    self.assertGreater(
-                        palette.distance(theme.palette.accent,
-                                         autre.palette.accent), 30,
-                        f"{theme.label} et {autre.label} ont le meme accent")
-                    self.assertNotEqual(theme.palette.ink, autre.palette.ink)
-                    self.assertNotEqual(theme.label, autre.label)
+    def test_every_built_in_swatch_keeps_white_legible(self):
+        """La palette integree est la pour qu'un clic ne puisse pas rendre
+        l'outil illisible : c'est a verifier, pas a supposer."""
+        for nom, teinte in palette.ACCENTS:
+            with self.subTest(accent=nom):
+                self.assertTrue(palette.accent_is_readable(teinte))
+                self.assertGreaterEqual(
+                    palette.contrast(palette.WHITE, teinte),
+                    palette.ACCENT_CONTRAST)
+
+    def test_a_custom_accent_keeps_the_rest_of_the_palette_sound(self):
+        """L'accent se change ; l'encre, les gris et les severites non.
+        Un accent personnalise ne doit donc rien casser ailleurs."""
+        pal = palette.by_name("auroral:#8c2f4a")
+        origine = palette.by_name("auroral")
+        self.assertEqual(pal.accent, "#8c2f4a")
+        self.assertEqual(pal.series[0], "#8c2f4a")
+        for role in ("ink", "muted", "line", "canvas", "warn", "crit",
+                     "ok", "female", "male"):
+            self.assertEqual(getattr(pal, role), getattr(origine, role), role)
+        self.assertGreaterEqual(
+            palette.contrast(pal.ink, pal.canvas), BODY_CONTRAST)
+        self.assertGreaterEqual(
+            palette.contrast(pal.canvas, pal.accent_hover), SECONDARY_CONTRAST)
+        self.assertGreaterEqual(
+            min(palette.distance(pal.series[0], autre)
+                for autre in pal.series[1:]), palette.SERIES_GAP)
 
     def test_the_neutrals_go_from_dense_to_light_without_crossing(self):
         """Une hierarchie de lecture inversee ferait ressortir l'accessoire."""
@@ -145,13 +166,19 @@ class TestChoosingAThemeCannotBreakTheTool(unittest.TestCase):
     def test_an_unknown_name_falls_back_instead_of_failing(self):
         """La configuration se modifie au bloc-notes : une faute de frappe
         ne doit pas empecher l'outil de s'ouvrir."""
-        for name in ("bleu-ciel", "", None, "ARDOISE ", 42):
+        for name in ("bleu-ciel", "", None, "AURORAL ", 42):
             with self.subTest(name=name):
                 self.assertIsInstance(palette.by_name(name), palette.Palette)
         self.assertEqual(palette.by_name("inconnu").theme,
                          palette.DEFAULT_THEME)
         # Une casse ou un espace de trop restent compris.
-        self.assertEqual(palette.by_name("ARDOISE ").theme, "ardoise")
+        self.assertEqual(palette.by_name("AURORAL ").theme, "auroral")
+        # Et un accent mal ecrit ou illisible laisse celui du theme en
+        # place, plutot que d'ouvrir l'outil sans couleur d'accent.
+        for suffixe in (":bleu", ":#ffee00", ":", ":#12"):
+            with self.subTest(nom=suffixe):
+                self.assertEqual(palette.by_name("auroral" + suffixe).accent,
+                                 palette.by_name("auroral").accent)
 
     def test_the_shipped_configuration_names_a_real_theme(self):
         self.assertIn("theme_parameters", CONFIG_FILES)
@@ -225,7 +252,7 @@ class TestTheDocumentsFollowTheTheme(unittest.TestCase):
         from hr_analytics.core.slides import (build_deck,
                                                         render_slides_html,
                                                         write_slides_pdf)
-        for name in ("ardoise", "prune"):
+        for name in ("auroral", "auroral:#8c2f4a"):
             payload = self._payload(name)
             deck = build_deck(payload)
             html = render_slides_html(deck, payload)
@@ -241,11 +268,11 @@ class TestTheDocumentsFollowTheTheme(unittest.TestCase):
                                  slides._rgb(expected.accent))
                 self.assertTrue(os.path.getsize(path) > 1000)
 
-    def test_rendering_one_theme_then_another_leaves_no_trace(self):
-        reporting.render_report(self._payload("prune"))
-        html = reporting.render_report(self._payload("ardoise"))
-        self.assertIn(f"--accent:{palette.by_name('ardoise').accent}", html)
-        self.assertNotIn(palette.by_name("prune").accent, html)
+    def test_rendering_one_accent_then_another_leaves_no_trace(self):
+        reporting.render_report(self._payload("auroral:#8c2f4a"))
+        html = reporting.render_report(self._payload("auroral"))
+        self.assertIn(f"--accent:{palette.by_name('auroral').accent}", html)
+        self.assertNotIn("#8c2f4a", html.lower())
 
 
 @needs_display
@@ -272,20 +299,20 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
         self.app.update()
         return window
 
-    def test_the_window_offers_every_theme_and_marks_the_current_one(self):
+    def test_the_window_offers_the_whole_built_in_palette(self):
         window = self._window()
         try:
-            self.assertEqual(set(window._theme_cards), set(palette.THEMES))
-            self.assertEqual(window.theme_var.get(),
-                             self.app.configuration.get(
-                                 "theme_parameters.theme"))
+            self.assertEqual(set(window._accent_chips),
+                             {teinte for _nom, teinte in palette.ACCENTS})
+            self.assertEqual(window.accent_var.get(),
+                             palette.by_name(window.theme_var.get()).accent)
         finally:
             window.destroy()
 
-    def test_choosing_and_saving_writes_the_theme(self):
+    def test_choosing_and_saving_writes_the_accent(self):
         window = self._window()
         try:
-            window._choose_theme("foret")
+            window._choose_accent("#8c2f4a")
             self.app.update()
             window.save()
             self.app.update()
@@ -293,10 +320,55 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
             if window.winfo_exists():
                 window.destroy()
         reloaded = load_configuration(self.config_dir)
-        self.assertEqual(reloaded.get("theme_parameters.theme"), "foret")
+        self.assertEqual(reloaded.get("theme_parameters.accent"), "#8c2f4a")
+        self.assertEqual(palette.resolve(reloaded).accent, "#8c2f4a")
         # Le mapping n'a pas ete abime au passage : les deux sections sont
         # ecrites, pas l'une a la place de l'autre.
         self.assertTrue(reloaded.get("population_mapping.fields"))
+
+    def test_the_theme_accent_is_saved_as_no_accent_at_all(self):
+        """Choisir la couleur d'origine n'est pas une personnalisation :
+        l'écrire ferait porter au document un nom de thème inexistant."""
+        window = self._window()
+        try:
+            window._choose_accent(palette.by_name(None).accent)
+            self.app.update()
+            window.save()
+            self.app.update()
+        finally:
+            if window.winfo_exists():
+                window.destroy()
+        reloaded = load_configuration(self.config_dir)
+        self.assertEqual(reloaded.get("theme_parameters.accent"), "")
+        self.assertEqual(palette.resolve(reloaded).theme, "auroral")
+
+    def test_an_unreadable_colour_is_never_installed(self):
+        """Tapée dans le champ, elle ne doit pas s'installer dans le
+        fichier : elle y serait relue sans que personne ne la voie."""
+        window = self._window()
+        try:
+            window.accent_var.set("#ffee00")
+            window._show_accent()
+            self.app.update()
+            self.assertIn("lisible", window.accent_note.cget("text"))
+            window.save()
+            self.app.update()
+        finally:
+            if window.winfo_exists():
+                window.destroy()
+        reloaded = load_configuration(self.config_dir)
+        self.assertEqual(reloaded.get("theme_parameters.accent"), "")
+
+    def test_a_typo_says_so_instead_of_guessing(self):
+        window = self._window()
+        try:
+            window.accent_var.set("bleu")
+            window._show_accent()
+            self.app.update()
+            self.assertIn("Code couleur attendu",
+                          window.accent_note.cget("text"))
+        finally:
+            window.destroy()
 
     def test_the_window_opens_under_every_theme(self):
         """Un theme ne doit pas seulement s'enregistrer : il doit s'ouvrir."""

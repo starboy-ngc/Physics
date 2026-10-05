@@ -152,13 +152,13 @@ class TestSavingKeepsWhatItDoesNotKnow(unittest.TestCase):
         configuration = load_configuration(directory)
         # Le geste de `save()`, isolé : relire la section, poser le thème.
         thème = dict(configuration.section("theme_parameters"))
-        thème["theme"] = "ardoise"
+        thème["theme"] = "auroral"
         write_configuration(directory, "theme_parameters", thème)
 
         with open(chemin, encoding="utf-8") as handle:
             après = json.load(handle)
         self.assertEqual(après.get("splash_seconds"), 7.5)
-        self.assertEqual(après.get("theme"), "ardoise")
+        self.assertEqual(après.get("theme"), "auroral")
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")

@@ -286,11 +286,15 @@ DEFAULTS: Dict[str, Any] = {
         "spread_critical_threshold": 1.8,
     },
     "theme_parameters": {
-        # Nom du theme applique a l'ecran et aux documents. La liste est
-        # fermee : « palette.THEMES » en tient les quatre jeux, verifies en
-        # contraste. Un nom inconnu retombe sur le theme d'origine plutot
-        # que d'ouvrir l'outil sans couleurs.
-        "theme": "ardoise",
+        # Nom du theme applique a l'ecran et aux documents. Un nom inconnu
+        # retombe sur le theme d'origine plutot que d'ouvrir l'outil sans
+        # couleurs.
+        "theme": "auroral",
+        # Couleur d'accent, si l'on ne veut pas celle du theme : « #8c2f4a »,
+        # ou vide pour garder la sienne. Elle est refusee — et l'accent du
+        # theme garde — si le blanc n'y est pas lisible : c'est la couleur
+        # sur laquelle s'ecrit le bouton principal.
+        "accent": "",
         # Duree minimale d'affichage de l'ecran d'accueil, en secondes.
         # Zero : pas d'ecran d'accueil, la fenetre s'ouvre directement.
         "splash_seconds": 3.0,

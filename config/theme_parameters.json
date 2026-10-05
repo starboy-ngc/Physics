@@ -1,4 +1,5 @@
 {
-  "theme": "ardoise",
-  "splash_seconds": 3.0
+  "theme": "auroral",
+  "splash_seconds": 3.0,
+  "accent": ""
 }

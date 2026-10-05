@@ -15,7 +15,7 @@ le lire : cette attente-là est délibérée. Elle se règle dans
 `config/theme_parameters.json` :
 
 ```json
-{ "theme": "ardoise", "splash_seconds": 3.0 }
+{ "theme": "auroral", "accent": "", "splash_seconds": 3.0 }
 ```
 
 À **0**, pas d'écran d'accueil du tout : la fenêtre s'ouvre directement. Et
@@ -203,15 +203,30 @@ Aucune modification du logiciel n'est nécessaire.
 
 ### Couleurs
 
-Cinq thèmes, dans **Paramètres → Apparence** : **Ardoise** (d'origine),
-**Graphite** (neutre, le meilleur rendu à l'impression en noir et blanc),
-**Forêt**, **Prune** et **Auroral** (bleu-vert lumineux sur nuit polaire,
-l'accent le plus contrasté — pour un écran très éclairé).
+Un seul thème, **Auroral** — bleu-vert lumineux sur nuit polaire —, et une
+couleur d'accent que vous choisissez, dans **Paramètres → Apparence**. Douze
+teintes sont proposées ; si votre charte graphique en impose une autre, tapez
+son code (`#8c2f4a`, ou la forme courte `#8a4`).
 
-Le thème colore la fenêtre **et** les documents produits. Trois teintes n'en
-dépendent jamais : le rouge de « critique », l'orange d'« avertissement » et
-le couple femmes/hommes du nuage et des pyramides — les changer serait un
-contresens, pas une préférence.
+L'accent porte les titres, les boutons et les graphiques, à l'écran **et**
+dans les documents produits. Les documents en tiennent compte dès
+l'enregistrement ; la fenêtre, au prochain démarrage.
+
+**Une couleur peut être refusée.** C'est sur l'accent que s'écrit le libellé
+blanc du bouton principal : une teinte trop claire le rendrait illisible. Le
+contrôle est le rapport de contraste WCAG, seuil AA (4,5). La couleur en
+place est alors gardée, et l'écran dit pourquoi. Les douze teintes proposées
+passent toutes ce contrôle, et un test le vérifie à chaque version.
+
+**Le reste de la palette ne se règle pas, et c'est délibéré.** Les gris de
+lecture, les filets et les aplats sont *déduits* de l'encre par mélange avec
+le blanc, ce qui garantit une hiérarchie de lecture cohérente sans avoir à
+accorder vingt valeurs à la main. Et trois familles ne suivent jamais
+l'accent : le rouge de « critique », l'orange d'« avertissement » et le
+couple femmes/hommes du nuage et des pyramides — les changer serait un
+contresens, pas une préférence. Le couple femmes/hommes reste en outre dans
+la famille bleu-orange, la seule qui demeure distinguable pour un daltonisme
+deutan, le plus répandu.
 
 ## 5 bis ter. Lire la « Vue d'ensemble »
 

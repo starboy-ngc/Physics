@@ -126,14 +126,14 @@ class TestColoursAreNeverReused(unittest.TestCase):
 
     def test_each_modality_gets_its_own_colour(self):
         groups = [f"BU{index}" for index in range(9)] + ["Autres (30 valeurs)"]
-        couleurs = palette.series_map(groups, palette.THEMES["ardoise"].palette.series,
+        couleurs = palette.series_map(groups, palette.by_name(None).series,
                                       other="Autres (30 valeurs)",
                                       neutral="#999999")
         nommees = [couleurs[group] for group in groups[:-1]]
         self.assertEqual(len(set(nommees)), len(nommees))
 
     def test_the_grouping_takes_the_neutral_and_no_series_colour(self):
-        serie = palette.THEMES["ardoise"].palette.series
+        serie = palette.by_name(None).series
         groups = [f"BU{index}" for index in range(9)] + ["Autres"]
         couleurs = palette.series_map(groups, serie, other="Autres",
                                       neutral="#999999")
@@ -141,7 +141,7 @@ class TestColoursAreNeverReused(unittest.TestCase):
         self.assertNotIn("#999999", serie)
 
     def test_without_a_grouping_the_series_is_used_in_order(self):
-        serie = palette.THEMES["ardoise"].palette.series
+        serie = palette.by_name(None).series
         couleurs = palette.series_map(["A", "B", "C"], serie)
         self.assertEqual([couleurs[key] for key in ("A", "B", "C")],
                          list(serie[:3]))
