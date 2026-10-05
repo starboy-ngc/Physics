@@ -70,7 +70,7 @@ BUNDLED = ("hr_analytics", "config")
 #: d'essai sans donnee reelle, ce qu'une equipe RH qui prend l'outil en
 #: main utilise avant d'y mettre son propre fichier.
 OUTILS_EXCLUS = ("build_archive.py", "build_windows.py", "benchmark.py",
-                 "render_logo.py")
+                 "render_logo.py", "check_layout.py")
 
 
 def _clean(path: str) -> None:
