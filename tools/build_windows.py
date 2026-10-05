@@ -304,8 +304,9 @@ def composer(destination: str, extrait: str) -> str:
         origine = os.path.join(ROOT, "tools", nom)
         if os.path.isfile(origine):
             shutil.copy2(origine, os.path.join(outils, nom))
-    shutil.copy2(os.path.join(ROOT, "packaging", "windows", "LISEZ-MOI.txt"),
-                 os.path.join(destination, "LISEZ-MOI.txt"))
+    # Pas de « LISEZ-MOI.txt » a la racine du dossier. Il disait quoi
+    # double-cliquer et ou poser le dossier — ce que l'utilisateur a deja
+    # fait quand il le lit. Le guide utilisateur, lui, reste dans « docs ».
     shutil.copy2(os.path.join(ROOT, "packaging", "windows", "lanceur.c"),
                  os.path.join(destination, "docs", "lanceur.c"))
     compiler_lanceur(destination)

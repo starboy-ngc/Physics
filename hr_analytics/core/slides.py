@@ -13,16 +13,17 @@ chose.
 
 from __future__ import annotations
 
+import math
 import os
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Sequence
+from typing import Any, Dict, List, Optional, Sequence
 
 from ..version import ENGINE_NAME, __version__
 from .axes import nice_ticks
 from . import palette
 from . import reporting
 from ..io import restrict_to_owner
-from .reporting import (boxplot_svg, format_money, format_number,
+from .reporting import (boxplot_svg, donut_svg, format_money, format_number,
                         format_percent, format_years, histogram_svg,
                         pyramid_svg, scatter_svg)
 
@@ -127,18 +128,60 @@ def _cover(analysis: Dict[str, Any]) -> Slide:
             f'Périmètre : {manifest.get("filtres", "Aucun filtre")}',
             f'Fichier source : {manifest.get("fichier_source", "—")}',
             f'Date d\'analyse : {manifest.get("date_analyse", "—")}',
-            f'{ENGINE_NAME} v{__version__} — traitement local, hors ligne',
         ])],
     )
 
 
-def _median_gap_rows(salary: Dict[str, Any], currency: str) -> List[List[str]]:
-    """Dispersion de base : les quatre bornes, et leur ecart a la mediane.
+#: Les bornes de la dispersion, et le nom de leur ecart a la mediane dans
+#: le bloc que publie le moteur. La mediane n'a pas d'ecart a elle-meme.
+_BORNES = (("P10", "p10", "p10_to_median"),
+           ("Q1 (P25)", "p25", "q1_to_median"),
+           ("Médiane", "median", None),
+           ("Q3 (P75)", "p75", "q3_to_median"),
+           ("P90", "p90", "p90_to_median"))
+
+
+def _median_gap_header(bounds: Dict[str, Any]) -> List[str]:
+    """Les intitules de colonnes du tableau de dispersion."""
+    if not bounds:
+        return ["Niveau", "Valeur", "Écart à la médiane"]
+    return ["Niveau", "Femmes", "Hommes", "Ensemble", "Écart méd."]
+
+
+def _sex_bounds(pay_equity: Dict[str, Any]) -> Dict[str, Any]:
+    """Les bornes des deux sexes, ou rien du tout.
+
+    Rien du tout dans trois cas, et c'est voulu : pas de champ de sexe
+    exploitable, un des deux groupes sous le seuil de publication, ou un
+    des deux sans assez de montants connus. Une colonne « Femmes » remplie
+    de tirets ne dirait pas laquelle de ces trois raisons s'applique ; le
+    tableau a deux colonnes, lui, ne promet rien qu'il ne tienne.
+    """
+    bloc = (pay_equity or {}).get("bounds_by_sex") or {}
+    femmes, hommes = bloc.get("female") or {}, bloc.get("male") or {}
+    if not femmes or not hommes:
+        return {}
+    if femmes.get("masked") or hommes.get("masked"):
+        return {}
+    return {"female": femmes, "male": hommes}
+
+
+def _median_gap_rows(salary: Dict[str, Any], currency: str,
+                     bounds: Optional[Dict[str, Any]] = None
+                     ) -> List[List[str]]:
+    """Dispersion de base : les bornes, et leur ecart a la mediane.
 
     Les bornes et l'ecart tiennent dans le meme tableau parce qu'ils se
     lisent ensemble : « Q1 a 31 500 EUR » ne dit rien sans la mediane, et
     « Q1 a 12 % sous la mediane » ne dit rien sans le montant. Les deux
     colonnes cote a cote evitent au lecteur de faire la division.
+
+    Quand les deux sexes sont publiables, chaque borne se lit sur trois
+    colonnes. C'est la seule facon de voir qu'un ecart de medianes
+    modeste peut cacher deux distributions de formes differentes : deux
+    groupes peuvent se croiser a la mediane et diverger aux extremes.
+    L'ecart, lui, reste celui de l'ensemble — c'est de sa mediane qu'on
+    parle.
 
     Les ratios experts (Q3/Q1, P90/P10, coefficient de variation) n'y sont
     pas : c'est la synthese, pas le dossier d'analyse. Ils restent dans la
@@ -146,17 +189,20 @@ def _median_gap_rows(salary: Dict[str, Any], currency: str) -> List[List[str]]:
     """
     dispersion = salary.get("dispersion") or {}
     rows: List[List[str]] = []
-    for libelle, cle, ecart in (("P10", "p10", "p10_to_median"),
-                                ("Q1 (P25)", "p25", "q1_to_median"),
-                                ("Médiane", "median", None),
-                                ("Q3 (P75)", "p75", "q3_to_median"),
-                                ("P90", "p90", "p90_to_median")):
+    for libelle, cle, ecart in _BORNES:
         valeur = salary.get(cle)
         if valeur is None:
             continue
         part = None if ecart is None else dispersion.get(ecart)
-        rows.append([libelle, format_money(valeur, currency),
-                     "—" if part is None else _signed_percent(part)])
+        ligne = [libelle]
+        if bounds:
+            for sexe in ("female", "male"):
+                montant = bounds[sexe].get(cle)
+                ligne.append("—" if montant is None
+                             else format_money(montant, currency))
+        ligne.append(format_money(valeur, currency))
+        ligne.append("—" if part is None else _signed_percent(part))
+        rows.append(ligne)
     return rows
 
 
@@ -167,7 +213,7 @@ def _signed_percent(fraction: float) -> str:
     return texte if fraction == 0 else f'{"+" if fraction > 0 else "−"}{texte}'
 
 
-def _csp_rows(population: Dict[str, Any]) -> List[List[str]]:
+def _csp_parts(population: Dict[str, Any]) -> List[Dict[str, Any]]:
     """Repartition par CSP, la plus nombreuse d'abord.
 
     Au-dela du nombre de modalites declare en configuration, la queue se
@@ -182,13 +228,13 @@ def _csp_rows(population: Dict[str, Any]) -> List[List[str]]:
     if not parts:
         return []
     retenues, reste = parts[:limite], parts[limite:]
-    rows = [[item["label"], str(item["count"]), format_percent(item["share"])]
-            for item in retenues]
+    morceaux = [{"label": item["label"], "count": item["count"],
+                 "share": item["share"]} for item in retenues]
     if reste:
-        effectif = sum(item["count"] for item in reste)
-        rows.append([f"Autres ({len(reste)})", str(effectif),
-                     format_percent(sum(item["share"] for item in reste))])
-    return rows
+        morceaux.append({"label": f"Autres ({len(reste)})",
+                         "count": sum(item["count"] for item in reste),
+                         "share": sum(item["share"] for item in reste)})
+    return morceaux
 
 
 def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
@@ -230,19 +276,26 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         blocks.append(Block(
             "chart", {"type": "pyramid", "rows": rangs, "label": titre},
             title=titre, width="third"))
-    csp = _csp_rows(population)
+    # La repartition en anneau plutot qu'en tableau. Trois modalites sur
+    # sept se lisent d'un coup d'oeil quand elles sont des arcs ; en
+    # colonne, il faut comparer des pourcentages deux a deux. Le nombre et
+    # la part restent ecrits dans la legende : le dessin range la meme
+    # information, il n'en retire aucune.
+    csp = _csp_parts(population)
     if csp:
-        blocks.append(_table_block(
-            [population.get("csp_label") or "CSP", "Effectif", "Part"], csp,
-            title=f'Répartition par {population.get("csp_label") or "CSP"}',
-            width="third", compact=True))
+        intitule = population.get("csp_label") or "CSP"
+        blocks.append(Block(
+            "chart", {"type": "donut", "parts": csp, "label": intitule,
+                      "total": population.get("headcount")},
+            title=f'Répartition par {intitule}', width="third"))
 
     # La dispersion et sa boite, cote a cote : le tableau donne les
     # montants, le dessin donne la forme.
-    dispersion_rows = _median_gap_rows(salary, currency)
+    bornes = _sex_bounds(analysis.get("pay_equity") or {})
+    dispersion_rows = _median_gap_rows(salary, currency, bornes)
     if dispersion_rows:
         blocks.append(_table_block(
-            ["Niveau", "Valeur", "Écart à la médiane"], dispersion_rows,
+            _median_gap_header(bornes), dispersion_rows,
             title="Dispersion", width="half", compact=True))
     # La boite se pose a sa propre condition et non a celle du tableau :
     # celui-ci se contente de la mediane, la boite a besoin de ses cinq
@@ -452,25 +505,11 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             ["Indicateur", comparison["left_label"], comparison["right_label"], "Écart"],
             rows)]))
 
-    # Methodologie
-    manifest = analysis.get("manifest", {})
-    # Tracabilite : d'ou vient l'analyse, et rien d'autre. Les trois
-    # phrases de methode qui fermaient le jeu — la methode des percentiles,
-    # le masquage, le traitement local — en sont parties : un document ne
-    # se commente pas lui-meme. Ce qui reste se verifie : un fichier, une
-    # empreinte, une date, un perimetre.
-    slides.append(Slide("Traçabilité", kind="closing", blocks=[
-        _table_block(
-            ["", ""],
-            [["Fichier source", str(manifest.get("fichier_source", "—"))],
-             ["Empreinte SHA-256",
-              str(manifest.get("empreinte_source") or "—")],
-             ["Date d'analyse", str(manifest.get("date_analyse", "—"))],
-             ["Périmètre", str(manifest.get("filtres", "Aucun filtre"))],
-             ["Effectif analysé", str(manifest.get("effectif_analyse", "—"))],
-             ["Moteur", f'{manifest.get("moteur", ENGINE_NAME)} '
-                        f'v{manifest.get("version", __version__)}']]),
-    ]))
+    # Pas de diapositive de tracabilite. Le fichier source, la date et le
+    # perimetre sont deja sur la garde, qui est la premiere chose que le
+    # lecteur voit ; l'empreinte et la version du moteur appartiennent au
+    # manifeste, qui est ecrit a cote des documents et fait pour ca. Une
+    # page de fin qui les repete ne sert qu'a allonger le jeu.
     return slides
 
 
@@ -673,6 +712,9 @@ _CHART_HEIGHTS = {
     "scatter": {"full": 430, "half": 300, "third": 220},
     "pyramid": {"full": 200, "half": 180, "third": 165},
     "boxplot": {"full": 150, "half": 150, "third": 145},
+    # L'anneau est aussi haut que large : sa hauteur est ce qui fixe sa
+    # taille, pas la place restante.
+    "donut": {"full": 190, "half": 180, "third": 165},
 }
 
 
@@ -714,6 +756,10 @@ def _render_block(block: Block, currency: str) -> str:
         elif spec["type"] == "boxplot":
             svg = boxplot_svg(spec["salary"], currency, width=canvas,
                               height=height)
+        elif spec["type"] == "donut":
+            svg = donut_svg(spec["parts"], width=canvas, height=height,
+                            label=spec.get("label", ""),
+                            total=spec.get("total"))
         else:
             svg = scatter_svg(spec["dataset"], currency, width=canvas, height=height)
         if not svg:
@@ -995,6 +1041,7 @@ _PDF_CHART_HEIGHTS = {
     "scatter": {"full": 420, "half": 250, "third": 200},
     "pyramid": {"full": 240, "half": 220, "third": 200},
     "boxplot": {"full": 210, "half": 200, "third": 190},
+    "donut": {"full": 190, "half": 180, "third": 165},
 }
 
 
@@ -1039,6 +1086,59 @@ def _draw_pyramid(page, rows, x, y, width, height, label="") -> float:
                           size=6.5, color=_INK)
     page.line(centre, haut, centre, haut - len(rows) * ligne, color=_LINE,
               width=0.4)
+    return height
+
+
+def _draw_donut(page, parts, x, y, width, height, label="",
+                total=None) -> float:
+    """Repartition par modalite, en anneau.
+
+    Pendant PDF de `donut_svg` : meme ordre des parts, memes couleurs,
+    meme legende. Les deux formats du meme document ne doivent pas
+    raconter deux repartitions differentes.
+
+    Le repere du PDF part du bas a gauche, celui du SVG part du haut :
+    les angles tournent donc dans l'autre sens pour que les parts se
+    suivent dans le meme ordre a l'oeil, du haut vers la droite.
+    """
+    parts = [item for item in (parts or []) if item.get("count")]
+    if not parts:
+        return 0.0
+    effectif = total if total is not None else sum(int(item["count"])
+                                                   for item in parts)
+    if effectif <= 0:
+        return 0.0
+    rayon = min(height / 2.0 - 2.0, (width - 150.0) / 2.0)
+    if rayon < 24.0:
+        return 0.0
+    trou = rayon * 0.58
+    cx, cy = x + rayon + 3.0, y - height / 2.0
+    couleurs = palette.series_map([str(item["label"]) for item in parts],
+                                  ACTIVE.series, neutral=ACTIVE.muted)
+    debut = math.pi / 2.0
+    for item in parts:
+        portion = int(item["count"]) / effectif
+        fin = debut - portion * 2 * math.pi
+        page.wedge(cx, cy, rayon, trou, fin, debut,
+                   _rgb(couleurs[str(item["label"])]))
+        debut = fin
+    page.text(cx, cy - 1, format_number(effectif, 0), size=13, bold=True,
+              color=_INK, align="center")
+    page.text(cx, cy - 13, "salariés", size=7, color=_MUTED, align="center")
+
+    ligne = 14.0
+    gauche = cx + rayon + 14.0
+    haut = y - max(6.0, (height - len(parts) * ligne) / 2.0) - 8.0
+    for rang, item in enumerate(parts):
+        ligne_y = haut - rang * ligne
+        page.rect(gauche, ligne_y - 1, 7, 7,
+                  fill=_rgb(couleurs[str(item["label"])]))
+        page.text(gauche + 12, ligne_y, str(item["label"]), size=8,
+                  color=_INK, max_width=width - 150.0)
+        page.text(x + width - 44, ligne_y, str(int(item["count"])), size=8,
+                  color=_INK, align="right")
+        page.text(x + width - 2, ligne_y, format_percent(item.get("share")),
+                  size=8, color=_MUTED, align="right")
     return height
 
 
@@ -1227,6 +1327,11 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             if spec["type"] == "boxplot":
                 return _draw_boxplot(page, spec["salary"], currency, left, top,
                                      block_width, height)
+            if spec["type"] == "donut":
+                return _draw_donut(page, spec["parts"], left, top,
+                                   block_width, height,
+                                   label=spec.get("label", ""),
+                                   total=spec.get("total"))
             return _draw_scatter(page, spec["dataset"], currency, left, top,
                                  block_width, height)
         if block.kind == "legend":

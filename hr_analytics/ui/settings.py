@@ -375,7 +375,7 @@ class SettingsWindow(tk.Toplevel):
         self.warning_var = self._threshold(
             band, "Avertir sur l'interprétation en dessous de",
             "privacy_parameters.min_headcount_warning", 10,
-            "Les chiffres restent publiés, avec une mise en garde : sur un petit effectif, une médiane bouge d'un recrutement.")
+            "Les chiffres restent publiés, avec une mise en garde : sur un petit effectif, ils sont trompeurs.")
         self.chart_var = self._threshold(
             band, "Ne pas tracer de graphique en dessous de",
             "privacy_parameters.min_headcount_chart", 10,

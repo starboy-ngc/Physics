@@ -321,3 +321,19 @@ class TestTheQualitySectionStaysShort(unittest.TestCase):
         from hr_analytics.core.quality import run_quality_check
 
         self.assertTrue(callable(run_quality_check))
+
+
+class TestTheDocumentsNeverRepeatThemselves(DocumentCase):
+    """Un document dit d'où vient l'analyse. Il ne se décrit pas lui-même,
+    et ne répète pas en pied de page ce qu'il porte déjà."""
+
+    def test_the_report_footer_carries_no_fingerprint(self):
+        """L'empreinte du fichier source est une donnée de traçabilité :
+        elle vit dans le manifeste, écrit à côté des documents."""
+        empreinte = self.payload["manifest"].get("empreinte_source") or ""
+        self.assertTrue(empreinte, "le manifeste devrait porter l'empreinte")
+        pied = self.report.split("<footer>")[1].split("</footer>")[0]
+        self.assertNotIn("empreinte", pied.lower())
+        self.assertNotIn(empreinte[:16], pied)
+        # Ce qui reste : de quoi savoir quel outil a produit la page.
+        self.assertIn("v", pied)

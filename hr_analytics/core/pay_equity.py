@@ -34,7 +34,7 @@ from typing import Any, Dict, List, Optional, Sequence
 from . import statistics_engine as stats
 from .config import Configuration, analysis_field
 from .normalize import FTE_FIELD, Population, full_time_amount
-from .metrics import PrivacyRules
+from .metrics import PrivacyRules, calculate_amount_metrics
 from .segmentation import personal_fields, cross_key, dimension_label, split_by
 
 FEMALE = "F"
@@ -254,6 +254,37 @@ def _quartiles(population: Population, config: Configuration, field_name: str,
     return result
 
 
+#: Les bornes que la synthese publie cote a cote. Ce sont celles de la
+#: dispersion, et seulement celles-la : la synthese tient sur une page.
+_BORNES = ("p10", "p25", "median", "p75", "p90")
+
+
+def _bounds(employees: Sequence[Any], config: Configuration,
+            field_name: str) -> Dict[str, Any]:
+    """Les cinq bornes de dispersion d'un groupe, ou le silence.
+
+    Passe par `calculate_amount_metrics`, comme le reste : un second
+    chemin de calcul finirait par donner une mediane differente de celle
+    de la page des ecarts, sur la meme population.
+
+    Le masquage vient de la, lui aussi. Il porte sur le nombre de montants
+    exploitables et non sur l'effectif : un groupe de vingt dont trois ont
+    un salaire connu publierait les trois.
+    """
+    mesures = calculate_amount_metrics(
+        _amounts(employees, field_name), config, field_name,
+        headcount=len(employees))
+    bornes: Dict[str, Any] = {
+        "headcount": len(employees),
+        "masked": bool(mesures.get("masked")),
+        "warning": mesures.get("warning"),
+    }
+    if not bornes["masked"]:
+        for cle in _BORNES:
+            bornes[cle] = mesures.get(cle)
+    return bornes
+
+
 def calculate_pay_equity(population: Population,
                          config: Configuration) -> Dict[str, Any]:
     """Tableau complet des ecarts, pret a etre affiche ou exporte."""
@@ -293,6 +324,15 @@ def calculate_pay_equity(population: Population,
     result["available"] = True
     result["pay"] = _pair(_amounts(women, salary_field),
                           _amounts(men, salary_field), rules)
+
+    # Les memes bornes de dispersion, de chaque cote. Un ecart de medianes
+    # dit de combien les deux centres different ; il ne dit pas si les deux
+    # distributions ont la meme forme. Deux groupes peuvent avoir la meme
+    # mediane et des P10 separes de quinze mille euros.
+    result["bounds_by_sex"] = {
+        "female": _bounds(women, config, salary_field),
+        "male": _bounds(men, config, salary_field),
+    }
 
     # Le meme ecart, une fois les temps partiels ramenes au temps plein.
     # Il ne remplace pas le precedent : les deux ensemble disent ce que le

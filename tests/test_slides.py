@@ -10,6 +10,7 @@ from tests.support import (REFERENCE_DATE, build_population, make_config,
                            make_row)
 from tests.test_privacy_and_pipeline import build_source
 from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+from hr_analytics.core.reporting import format_money
 from hr_analytics.core.slides import (build_deck, build_summary,
                                                 render_slides_html,
                                                 write_slides_html, write_slides_pdf)
@@ -35,24 +36,31 @@ class TestDeckStructure(unittest.TestCase):
         kinds = {block.kind for block in summary[0].blocks}
         self.assertIn("kpis", kinds)
 
-    def test_deck_opens_with_a_cover_and_closes_with_traceability(self):
+    def test_deck_opens_with_a_cover(self):
         deck = build_deck(self.payload)
         self.assertEqual(deck[0].kind, "cover")
-        self.assertEqual(deck[-1].kind, "closing")
-        self.assertIn("Traçabilité", deck[-1].title)
 
-    def test_the_closing_page_states_facts_and_not_method(self):
-        """Elle portait trois phrases de méthode. Un document ne se
-        commente pas : il reste ce qui se vérifie."""
-        fermeture = build_deck(self.payload)[-1]
-        lignes = [bloc for bloc in fermeture.blocks if bloc.kind == "table"]
-        self.assertEqual(len(lignes), 1)
-        intitulés = [ligne[0] for ligne in lignes[0].payload["rows"]]
-        for attendu in ("Fichier source", "Empreinte SHA-256",
-                        "Date d'analyse", "Périmètre"):
-            self.assertIn(attendu, intitulés)
-        self.assertFalse([bloc for bloc in fermeture.blocks
-                          if bloc.kind == "text"])
+    def test_the_deck_never_closes_on_a_traceability_page(self):
+        """Elle répétait ce que la garde porte déjà — fichier source, date,
+        périmètre — et une empreinte que le manifeste écrit à côté des
+        documents. Une page de fin qui répète allonge le jeu, rien de
+        plus."""
+        deck = build_deck(self.payload)
+        for diapositive in deck:
+            self.assertNotIn("Traçabilité", diapositive.title)
+        rendu = render_slides_html(deck, self.payload)
+        self.assertNotIn("Empreinte SHA-256", rendu)
+
+    def test_the_cover_never_says_what_the_user_already_knows(self):
+        """« traitement local, hors ligne » : l'utilisateur vient de lancer
+        l'outil sur son poste. Une garde dit d'où vient l'analyse, pas ce
+        que l'outil est."""
+        garde = build_deck(self.payload)[0]
+        textes = [ligne for bloc in garde.blocks if bloc.kind == "text"
+                  for ligne in bloc.payload]
+        self.assertFalse([ligne for ligne in textes if "hors ligne" in ligne])
+        self.assertTrue([ligne for ligne in textes
+                         if ligne.startswith("Fichier source")])
 
     def test_deck_covers_the_expected_sections(self):
         titles = " | ".join(slide.title for slide in build_deck(self.payload))
@@ -332,8 +340,9 @@ class TestSummaryComposition(unittest.TestCase):
     def test_the_summary_is_a_single_page(self):
         self.assertEqual(len(build_summary(self.payload)), 1)
 
-    def test_the_two_pyramids_and_the_boxplot_are_the_charts(self):
-        self.assertEqual(self._charts(), ["pyramid", "pyramid", "boxplot"])
+    def test_the_two_pyramids_the_donut_and_the_boxplot_are_the_charts(self):
+        self.assertEqual(self._charts(),
+                         ["pyramid", "pyramid", "donut", "boxplot"])
 
     def test_no_scatter_on_the_summary(self):
         self.assertNotIn("scatter", self._charts())
@@ -346,20 +355,71 @@ class TestSummaryComposition(unittest.TestCase):
                         "Ancienneté moyenne", "Ancienneté médiane"):
             self.assertIn(attendu, labels)
 
-    def test_the_csp_split_is_published(self):
+    def test_the_csp_split_is_published_as_a_ring(self):
+        """En anneau plutôt qu'en tableau : des parts se comparent à l'œil
+        quand elles sont des arcs. Le nombre et la part restent écrits
+        dans la légende — le dessin range la même information, il n'en
+        retire aucune."""
         rendered = render_slides_html([self.summary], self.payload)
         self.assertIn("Répartition par", rendered)
+        anneau = [block for block in self.summary.blocks
+                  if block.kind == "chart"
+                  and block.payload["type"] == "donut"]
+        self.assertEqual(len(anneau), 1)
+        parts = anneau[0].payload["parts"]
+        self.assertTrue(parts)
+        for part in parts:
+            self.assertIn(str(part["label"]), rendered)
+            self.assertIn(f">{int(part['count'])}<", rendered)
+        # L'effectif total au centre : c'est ce que le trou de l'anneau
+        # sert à porter.
+        self.assertIn("salariés</text>", rendered)
 
     def test_the_basic_dispersion_names_its_four_bounds(self):
         rendered = render_slides_html([self.summary], self.payload)
         for label in ("P10", "Q1 (P25)", "Q3 (P75)", "P90"):
             self.assertIn(label, rendered)
 
+    def test_each_bound_is_read_on_three_columns(self):
+        """Un écart de médianes modeste peut cacher deux distributions de
+        formes différentes : deux groupes peuvent se croiser à la médiane
+        et diverger aux extrêmes. Les trois colonnes le montrent."""
+        rendered = render_slides_html([self.summary], self.payload)
+        for intitulé in ("Femmes", "Hommes", "Ensemble"):
+            self.assertIn(f"<th>{intitulé}</th>", rendered)
+        bornes = self.payload["pay_equity"]["bounds_by_sex"]
+        for sexe in ("female", "male"):
+            self.assertIn(format_money(bornes[sexe]["p10"], "EUR"), rendered)
+        # Et l'ensemble reste la colonne de référence : c'est de sa médiane
+        # que parle l'écart.
+        self.assertIn(format_money(self.payload["salary"]["p10"], "EUR"),
+                      rendered)
+
+    def test_a_masked_sex_takes_its_whole_column_away(self):
+        """Une colonne « Femmes » remplie de tirets ne dirait pas pourquoi
+        elle est vide. Sous le seuil, le tableau reprend sa forme simple
+        plutôt que de promettre ce qu'il ne tient pas."""
+        payload = dict(self.payload)
+        equity = dict(payload["pay_equity"])
+        bornes = dict(equity["bounds_by_sex"])
+        bornes["female"] = {"headcount": 3, "masked": True,
+                            "warning": "Effectif insuffisant."}
+        equity["bounds_by_sex"] = bornes
+        payload["pay_equity"] = equity
+        rendered = render_slides_html(build_summary(payload), payload)
+        self.assertNotIn("<th>Femmes</th>", rendered)
+        self.assertIn("<th>Valeur</th>", rendered)
+        self.assertIn("Écart à la médiane", rendered)
+
     def test_each_bound_carries_its_gap_to_the_median(self):
         """Le montant seul ne dit pas de combien la borne s'ecarte ; l'ecart
-        seul ne dit pas de quel montant on parle. Les deux vont ensemble."""
+        seul ne dit pas de quel montant on parle. Les deux vont ensemble.
+
+        L'intitulé se raccourcit quand les deux sexes prennent leur
+        colonne : cinq colonnes sur une demi-page ne laissent pas la place
+        d'écrire « Écart à la médiane » en entier. La colonne, elle, reste."""
         rendered = render_slides_html([self.summary], self.payload)
-        self.assertIn("Écart à la médiane", rendered)
+        self.assertIn("Écart méd.", rendered)
         self.assertRegex(rendered, r"[+−]\d+\s*%")
 
     def test_the_expert_ratios_stay_out_of_the_summary(self):
@@ -378,7 +438,7 @@ class TestSummaryComposition(unittest.TestCase):
         charts = [block.payload["type"]
                   for block in build_summary(payload)[0].blocks
                   if block.kind == "chart"]
-        self.assertEqual(charts, ["pyramid", "boxplot"])
+        self.assertEqual(charts, ["pyramid", "donut", "boxplot"])
 
     def test_the_boxplot_goes_when_the_percentiles_do(self):
         payload = dict(self.payload)

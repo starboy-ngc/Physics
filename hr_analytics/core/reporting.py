@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import html
+import math
 import os
 from typing import Any, Dict, List, Optional, Sequence
 
@@ -500,6 +501,107 @@ def pyramid_svg(rows: Sequence[Dict[str, Any]], width: int = 360,
                  f'y2="{haut + len(rows) * ligne:.1f}" stroke="var(--line)"/>')
     parts.append("</svg>")
     return "".join(parts)
+
+
+#: Rayon de l'anneau et de son trou, en parts de la hauteur disponible.
+#: Le trou fait un peu moins des trois cinquiemes : plus etroit, l'anneau
+#: redevient un disque ou l'effectif total n'a plus de place ; plus large,
+#: les parts deviennent des filets ou l'oeil ne compare plus rien.
+_DONUT_TROU = 0.58
+
+
+def donut_svg(parts: Sequence[Dict[str, Any]], width: int = 360,
+              height: int = 180, label: str = "",
+              total: Optional[int] = None) -> str:
+    """Repartition d'un effectif par modalite, en anneau.
+
+    Le meme dessin qu'a l'ecran, et pour les memes raisons : un anneau
+    plutot qu'un disque plein, parce que le centre rend l'effectif total
+    qu'il faudrait sinon chercher ailleurs, et parce que deux parts se
+    comparent sur leur arc dans les deux cas.
+
+    La legende porte le nombre et la part. Lus dans le camembert ils se
+    devinent ; ecrits, ils se citent — et c'est ce qu'on fait d'une
+    repartition. Le dessin ne remplace donc pas le tableau qu'il
+    remplace : il le range autrement.
+    """
+    parts = [item for item in (parts or []) if item.get("count")]
+    if not parts:
+        return ""
+    effectif = total if total is not None else sum(int(item["count"])
+                                                   for item in parts)
+    if effectif <= 0:
+        return ""
+    ligne = 14.0
+    # L'anneau prend la hauteur, la legende prend ce qui reste en largeur.
+    rayon = min(height, max(height - 6.0, 0.0)) / 2.0 - 2.0
+    rayon = min(rayon, (width - 150.0) / 2.0)
+    if rayon < 24.0:
+        return ""
+    trou = rayon * _DONUT_TROU
+    cx, cy = rayon + 3.0, height / 2.0
+    colors = palette.series_map([str(item["label"]) for item in parts],
+                                _PALETTE, neutral="var(--muted)")
+    morceaux = [f'<svg viewBox="0 0 {width} {height}" role="img" '
+                f'aria-label="Répartition {_e(label)}">']
+    debut = -math.pi / 2.0
+
+    def point(rayon_: float, angle: float) -> str:
+        return (f"{cx + rayon_ * math.cos(angle):.2f},"
+                f"{cy + rayon_ * math.sin(angle):.2f}")
+
+    for item in parts:
+        portion = int(item["count"]) / effectif
+        fin = debut + portion * 2 * math.pi
+        couleur = colors[str(item["label"])]
+        if portion >= 0.9999:
+            # Une part unique fait un tour complet : un arc de 360 degres
+            # n'a pas de corde, et le chemin se refermerait sur rien. Deux
+            # cercles concentriques, perces l'un dans l'autre, le disent
+            # sans cas particulier a la lecture.
+            morceaux.append(
+                f'<path d="M {cx - rayon:.2f},{cy:.2f} '
+                f'a {rayon:.2f},{rayon:.2f} 0 1,0 {2 * rayon:.2f},0 '
+                f'a {rayon:.2f},{rayon:.2f} 0 1,0 {-2 * rayon:.2f},0 '
+                f'M {cx - trou:.2f},{cy:.2f} '
+                f'a {trou:.2f},{trou:.2f} 0 1,1 {2 * trou:.2f},0 '
+                f'a {trou:.2f},{trou:.2f} 0 1,1 {-2 * trou:.2f},0 Z" '
+                f'fill="{couleur}" fill-rule="evenodd"/>')
+        else:
+            grand = 1 if portion > 0.5 else 0
+            morceaux.append(
+                f'<path d="M {point(rayon, debut)} '
+                f'A {rayon:.2f},{rayon:.2f} 0 {grand},1 {point(rayon, fin)} '
+                f'L {point(trou, fin)} '
+                f'A {trou:.2f},{trou:.2f} 0 {grand},0 {point(trou, debut)} Z" '
+                f'fill="{couleur}"/>')
+        debut = fin
+    morceaux.append(
+        f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" '
+        f'font-size="15" font-weight="600" fill="var(--ink)">'
+        f'{_e(format_number(effectif, 0))}</text>'
+        f'<text x="{cx:.2f}" y="{cy + 14:.2f}" text-anchor="middle" '
+        f'font-size="8" fill="var(--muted)">salariés</text>')
+
+    # La legende : une pastille, le libelle, puis le nombre et la part
+    # alignes a droite, comme a l'ecran.
+    gauche = cx + rayon + 14.0
+    haut = max(6.0, (height - len(parts) * ligne) / 2.0 + 9.0)
+    for rang, item in enumerate(parts):
+        y = haut + rang * ligne
+        couleur = colors[str(item["label"])]
+        morceaux.append(
+            f'<rect x="{gauche:.1f}" y="{y - 7:.1f}" width="7" height="7" '
+            f'rx="1.5" fill="{couleur}"/>'
+            f'<text x="{gauche + 12:.1f}" y="{y:.1f}" font-size="9" '
+            f'fill="var(--ink)">{_e(str(item["label"]))}</text>'
+            f'<text x="{width - 44:.1f}" y="{y:.1f}" text-anchor="end" '
+            f'font-size="9" fill="var(--ink)">{int(item["count"])}</text>'
+            f'<text x="{width - 2:.1f}" y="{y:.1f}" text-anchor="end" '
+            f'font-size="9" fill="var(--muted)">'
+            f'{_e(format_percent(item.get("share")))}</text>')
+    morceaux.append("</svg>")
+    return "".join(morceaux)
 
 
 #: Place qu'il faut a un repere de boite a moustaches pour ne pas marcher
@@ -1019,8 +1121,7 @@ def render_report(analysis: Dict[str, Any]) -> str:
 {''.join(sections)}
 </div>
 <footer>
-{_e(ENGINE_NAME)} v{_e(__version__)} &nbsp;·&nbsp;
-empreinte du fichier source {_e((manifest.get("empreinte_source") or "—")[:16])}
+{_e(ENGINE_NAME)} v{_e(__version__)}
 </footer>
 </div>
 <script>{_JS}</script>

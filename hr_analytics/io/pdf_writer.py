@@ -12,10 +12,13 @@ Choix qui rendent l'exercice tenable :
 * les largeurs de glyphes Helvetica sont tabulees ici, ce qui permet de
   centrer, aligner a droite et tronquer proprement ;
 * le dessin se limite aux primitives dont les graphiques ont besoin :
-  rectangles, lignes, cercles, texte — exactement ce que produit deja le SVG.
+  rectangles, lignes, cercles, secteurs d'anneau, texte — exactement ce que
+  produit deja le SVG.
 """
 
 from __future__ import annotations
+
+import math
 
 import os
 import unicodedata
@@ -188,6 +191,47 @@ class Page:
         self._parts.append(f"{x + k:.2f} {y - radius:.2f} {x + radius:.2f} {y - k:.2f} "
                            f"{x + radius:.2f} {y:.2f} c")
         self._parts.append("f")
+
+    def wedge(self, x: float, y: float, outer: float, inner: float,
+              start: float, end: float,
+              fill: Tuple[float, float, float]) -> None:
+        """Secteur d'anneau, du rayon `inner` au rayon `outer`.
+
+        Le PDF ne connait pas l'arc de cercle : il ne sait tracer que des
+        courbes de Bezier cubiques. Un arc s'en approche d'autant mieux
+        qu'il est court, et l'erreur reste invisible jusqu'a un quart de
+        tour — on decoupe donc le secteur en tranches d'au plus 90 degres.
+        La longueur des poignees, « 4/3 · tan(angle/4) », est celle qui
+        fait passer la courbe exactement par le milieu de l'arc.
+        """
+        if end <= start or outer <= inner:
+            return
+        self._parts.append(f"{fill[0]:.3f} {fill[1]:.3f} {fill[2]:.3f} rg")
+        morceaux = max(1, int(math.ceil((end - start) / (math.pi / 2))))
+        pas = (end - start) / morceaux
+
+        def arc(rayon: float, depuis: float, vers: float, sens: int) -> None:
+            poignee = 4.0 / 3.0 * math.tan((vers - depuis) / 4.0) * rayon * sens
+            x1 = x + rayon * math.cos(depuis)
+            y1 = y + rayon * math.sin(depuis)
+            x2 = x + rayon * math.cos(vers)
+            y2 = y + rayon * math.sin(vers)
+            self._parts.append(
+                f"{x1 - poignee * math.sin(depuis):.2f} "
+                f"{y1 + poignee * math.cos(depuis):.2f} "
+                f"{x2 + poignee * math.sin(vers):.2f} "
+                f"{y2 - poignee * math.cos(vers):.2f} "
+                f"{x2:.2f} {y2:.2f} c")
+
+        self._parts.append(f"{x + outer * math.cos(start):.2f} "
+                           f"{y + outer * math.sin(start):.2f} m")
+        for rang in range(morceaux):
+            arc(outer, start + rang * pas, start + (rang + 1) * pas, 1)
+        self._parts.append(f"{x + inner * math.cos(end):.2f} "
+                           f"{y + inner * math.sin(end):.2f} l")
+        for rang in range(morceaux, 0, -1):
+            arc(inner, start + rang * pas, start + (rang - 1) * pas, 1)
+        self._parts.append("h f")
 
     # -- texte -------------------------------------------------------------
 
