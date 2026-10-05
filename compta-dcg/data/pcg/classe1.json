@@ -510,7 +510,7 @@
    "num": "152",
    "label": "Provisions pour charges",
    "sens": "C",
-   "explication": "Le compte 152 regroupe depuis 2025 toutes les provisions pour charges : pensions et obligations similaires (1521), restructurations (1522), impôts (1523), renouvellement des immobilisations des concessionnaires (1524), gros entretien ou grandes révisions (1525) et autres charges (1526). Il est crédité par le débit du 6815 (ou 6875) et débité par le crédit du 7815 (ou 7875) lorsque la charge est engagée. Il figure au passif dans le poste Provisions. Il remplace les anciens comptes 153 à 158.",
+   "explication": "Le compte 152 regroupe depuis 2025 toutes les provisions pour charges : pensions et obligations similaires (1521), restructurations (1522), impôts (1523), renouvellement des immobilisations des concessionnaires (1524), gros entretien ou grandes révisions (1525) remise en état (1526) et autres charges (1527). Il est crédité par le débit du 6815 (ou 6875) et débité par le crédit du 7815 (ou 7875) lorsque la charge est engagée. Il figure au passif dans le poste Provisions. Il remplace les anciens comptes 153 à 158.",
    "exemple": "Programme pluriannuel de gros entretien : 6815 D 20 000 / 1525 C 20 000.",
    "piege": "Les anciens numéros 153 (pensions), 154 (restructurations), 155 (impôts) ne sont plus valables : ils deviennent 1521, 1522, 1523.",
    "pcg2025": "Créé par le règlement ANC 2022-06 comme racine unique des provisions pour charges, remplaçant les comptes 153 à 158 du plan 2014."
@@ -562,11 +562,20 @@
   },
   {
    "num": "1526",
+   "label": "Provisions pour remise en état",
+   "sens": "C",
+   "explication": "Le compte 1526 enregistre les provisions constituées pour couvrir le coût estimé de la remise en état d'un site, d'un terrain ou de locaux loués, lorsque l'entreprise y est tenue par contrat ou par la loi à la fin de l'exploitation ou du bail. Il est crédité par le débit du 6815 (ou, si l'obligation est née dès l acquisition d'une immobilisation, par le débit du compte d'immobilisation concerné au titre des coûts de démantèlement) et débité par le crédit du 7815 ou lors de la réalisation des travaux. Il figure au passif du bilan.",
+   "exemple": "Obligation de remise en état d'un terrain loué estimée 25 000 € : 6815 D 25 000 / 1526 C 25 000.",
+   "piege": "Avant 2025, ces provisions étaient logées en 1581 ; le 1526 est une subdivision créée par la réforme.",
+   "pcg2025": "Créé par le règlement ANC 2022-06 (subdivision de la racine 152 Provisions pour charges)."
+  },
+  {
+   "num": "1527",
    "label": "Autres provisions pour charges",
    "sens": "C",
-   "explication": "Le compte 1526 enregistre les provisions pour charges non classées ailleurs : remise en état de site, démantèlement non immobilisé, charges sociales différées, etc. Il est crédité par le débit du 6815 et débité par le crédit du 7815 lorsque la charge se réalise. Il figure au passif dans les provisions.",
-   "exemple": "Obligation de remise en état d'un terrain loué estimée 25 000 € : 6815 D 25 000 / 1526 C 25 000.",
-   "piege": "",
+   "explication": "Le compte 1527 enregistre les provisions pour charges qui ne relèvent d aucune autre subdivision du 152 : charges probables, nettement précisées quant à leur objet, dont l'échéance ou le montant est incertain. Il est crédité par le débit du 6815 (ou 6875 si l'événement est majeur et inhabituel) et débité par le crédit du 7815 lors de la reprise. Il figure au passif du bilan dans les provisions.",
+   "exemple": "Charge probable de 12 000 € non rattachable à une autre subdivision : 6815 D 12 000 / 1527 C 12 000.",
+   "piege": "Ne pas y loger une remise en état de site (1526) ni un gros entretien (1525), qui ont leur propre compte.",
    "pcg2025": "Remplace le compte 158 du plan 2014 (règlement ANC 2022-06)."
   },
   {
@@ -627,10 +636,10 @@
    "num": "158",
    "label": "Autres provisions pour charges",
    "sens": "C",
-   "explication": "Le compte 158 enregistrait, avant 2025, les autres provisions pour charges, notamment les provisions pour remises en état (1581). Il était crédité par le débit du 6815 et débité par le crédit du 7815. Il est remplacé par le 1526.",
+   "explication": "Le compte 158 enregistrait, avant 2025, les autres provisions pour charges, notamment les provisions pour remises en état (1581). Il était crédité par le débit du 6815 et débité par le crédit du 7815. Il est remplacé par le 1527 (et le 1526 pour la remise en état).",
    "exemple": "Avant 2025 : 6815 D 25 000 / 1581 C 25 000.",
    "piege": "",
-   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 1526."
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 1527 (autres provisions pour charges) ou 1526 (remise en état)."
   },
   {
    "num": "16",
@@ -874,6 +883,15 @@
    "exemple": "Le gérant répartit un bénéfice commun de 20 000 € dont 8 000 € pour le coparticipant : 655 D 8 000 / 188 C 8 000.",
    "piege": "",
    "pcg2025": null
+  },
+  {
+   "num": "19",
+   "label": "Fonds dédiés (associations et fondations)",
+   "sens": "C",
+   "explication": "Dans le plan comptable des associations (règlement ANC n° 2018-06), le compte 19 enregistre à la clôture la part des ressources affectées par un tiers financeur à un projet défini (subvention, don, legs) qui n'a pas encore été utilisée. Il est crédité par le débit du 689 Engagements à réaliser sur ressources affectées, puis débité par le crédit du 789 Utilisation des fonds dédiés lorsque la dépense est engagée l'exercice suivant. Il figure au passif du bilan de l'association, entre les fonds propres et les provisions.",
+   "exemple": "Subvention de 50 000 € affectée à un projet, dont 20 000 € non encore dépensés à la clôture : 689 D 20 000 / 19 C 20 000.",
+   "piege": "Ce n'est ni une provision ni un produit constaté d'avance : c'est un mécanisme propre aux entités du secteur non lucratif.",
+   "pcg2025": "Compte du plan comptable des associations et fondations (règlement ANC n° 2018-06), hors plan de comptes des entreprises commerciales."
   }
  ]
 }

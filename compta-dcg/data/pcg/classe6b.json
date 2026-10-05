@@ -597,6 +597,15 @@
    "pcg2025": null
   },
   {
+   "num": "689",
+   "label": "Engagements à réaliser sur ressources affectées",
+   "sens": "D",
+   "explication": "Compte de charges du plan des associations (règlement ANC n° 2018-06) : à la clôture, il constate la part non utilisée des ressources affectées (subventions, dons, legs) et la transfère en fonds dédiés (compte 19). Il est débité par le crédit du 19 ; l'exercice suivant, l'utilisation des fonds est constatée en produit par le 789. Il neutralise ainsi, dans le résultat, les ressources reçues mais non encore consommées.",
+   "exemple": "Ressources affectées non utilisées à la clôture : 689 D 20 000 / 19 C 20 000.",
+   "piege": "À ne pas confondre avec une dotation aux provisions (68) : il ne couvre pas un risque, il reporte une ressource.",
+   "pcg2025": "Compte du plan comptable des associations et fondations (règlement ANC n° 2018-06), hors plan de comptes des entreprises commerciales."
+  },
+  {
    "num": "69",
    "label": "Participation des salariés - Impôts sur les bénéfices et assimilés",
    "sens": "D",

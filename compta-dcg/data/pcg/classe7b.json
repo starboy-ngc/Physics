@@ -48,6 +48,24 @@
    "pcg2025": null
   },
   {
+   "num": "7541",
+   "label": "Dons manuels (générosité du public)",
+   "sens": "C",
+   "explication": "Dans le plan des associations (règlement ANC n° 2018-06), le compte 754 Ressources liées à la générosité du public est subdivisé en 7541 Dons manuels, 7542 Mécénat et 7543 Legs, donations et assurances-vie. Le 7541 est crédité des dons manuels reçus, par le débit de la banque ou de la caisse. Il ne doit pas être confondu avec le 754 du plan des entreprises (ristournes perçues des coopératives).",
+   "exemple": "Don de 500 € reçu par virement : 512 D 500 / 7541 C 500.",
+   "piege": "Un don affecté à un projet non encore réalisé donne lieu à un fonds dédié (689 / 19) à la clôture.",
+   "pcg2025": "Compte du plan comptable des associations et fondations (règlement ANC n° 2018-06), hors plan de comptes des entreprises commerciales."
+  },
+  {
+   "num": "7543",
+   "label": "Legs, donations et assurances-vie",
+   "sens": "C",
+   "explication": "Subdivision du 754 Ressources liées à la générosité du public dans le plan des associations (règlement ANC n° 2018-06). Le 7543 est crédité des legs, donations et capitaux d'assurance-vie acceptés par l'entité, par le débit du compte de banque ou du compte d'actif reçu. Les legs portant sur des biens durables destinés à être conservés sont, eux, inscrits en fonds propres (compte 10) et non en produits.",
+   "exemple": "Legs de 30 000 € en numéraire accepté : 512 D 30 000 / 7543 C 30 000.",
+   "piege": "Un legs immobilier conservé par l'association n'est pas un produit : il va en fonds propres.",
+   "pcg2025": "Compte du plan comptable des associations et fondations (règlement ANC n° 2018-06), hors plan de comptes des entreprises commerciales."
+  },
+  {
    "num": "755",
    "label": "Quotes-parts de résultat sur opérations faites en commun",
    "sens": "C",
@@ -406,6 +424,15 @@
    "sens": "C",
    "explication": "Le compte 78725 enregistre la reprise des amortissements dérogatoires : lorsque l'amortissement économique comptabilisé au 6811 devient supérieur à l'amortissement fiscal, ou lorsque le bien est cédé, le compte 145 est débité pour la différence (ou pour son solde) par le crédit du 78725. Il figure dans les produits exceptionnels, en symétrie du 68725.",
    "exemple": "Cession d'une machine dont le compte 145 présente un solde de 6 000 € : 145 D 6 000 / 78725 C 6 000, en plus des écritures de sortie (657, 28154, 2154) et de prix de cession (757)."
+  },
+  {
+   "num": "789",
+   "label": "Utilisation des fonds dédiés",
+   "sens": "C",
+   "explication": "Compte de produits du plan des associations (règlement ANC n° 2018-06) : il constate, lors de l'exercice où la dépense financée est engagée, la reprise des fonds dédiés constitués antérieurement. Il est crédité par le débit du 19 Fonds dédiés. Le produit vient ainsi compenser la charge réalisée sur le projet.",
+   "exemple": "Dépense de 20 000 € engagée sur un projet financé l an dernier : 19 D 20 000 / 789 C 20 000.",
+   "piege": "Symétrique du 689 ; les deux comptes n'existent pas dans le plan des entreprises commerciales.",
+   "pcg2025": "Compte du plan comptable des associations et fondations (règlement ANC n° 2018-06), hors plan de comptes des entreprises commerciales."
   },
   {
    "num": "79",
