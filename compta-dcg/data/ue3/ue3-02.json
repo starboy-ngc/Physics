@@ -243,7 +243,7 @@
    "type": "qcm",
    "niveau": 2,
    "fiab": "stable",
-   "src": "Cass. soc., 10 juillet 2002 ; Cass. soc., 15 janvier 2014",
+   "src": "Cass. soc., 10 juillet 2002, n° 00-45.135 ; Cass. soc., 25 mai 2016, n° 14-20.578",
    "q": "Un contrat de travail contient une clause de non-concurrence d'un an sur la région, sans aucune contrepartie financière. Quelle est la sanction ?",
    "opts": [
     "La clause est valable, la contrepartie n'étant exigée que pour les cadres",
@@ -252,7 +252,7 @@
     "Le contrat de travail est entièrement annulé"
    ],
    "a": 1,
-   "why": "L'absence de contrepartie financière entraîne la nullité de la clause, que seul le salarié peut invoquer. Le salarié qui a néanmoins respecté une clause nulle subit un préjudice indemnisable. Le juge peut réduire une contrepartie dérisoire ou une durée excessive, mais il ne crée pas une contrepartie absente. La nullité ne frappe que la clause, pas le contrat."
+   "why": "L'absence de contrepartie financière entraîne la nullité de la clause, que seul le salarié peut invoquer. Le salarié qui a néanmoins respecté une clause nulle peut obtenir des dommages-intérêts, à condition de prouver le préjudice subi (Cass. soc., 25 mai 2016 : le préjudice n'est plus présumé). Le juge peut réduire une contrepartie dérisoire ou une durée excessive, mais il ne crée pas une contrepartie absente. La nullité ne frappe que la clause, pas le contrat."
   },
   {
    "type": "qcm",

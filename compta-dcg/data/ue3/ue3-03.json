@@ -252,7 +252,7 @@
    "type": "qcm",
    "niveau": 2,
    "fiab": "stable",
-   "src": "C. trav., art. L. 3231-3 et L. 3231-5",
+   "src": "C. trav., art. L. 3231-4 à L. 3231-8",
    "q": "Le SMIC est revalorisé :",
    "opts": [
     "Uniquement par décision discrétionnaire du gouvernement, sans règle",
@@ -261,7 +261,7 @@
     "Par accord national interprofessionnel entre partenaires sociaux"
    ],
    "a": 1,
-   "why": "La revalorisation annuelle au 1er janvier combine l'inflation constatée pour les 20 % de ménages aux revenus les plus faibles et la moitié du gain de pouvoir d'achat du salaire horaire de base ouvrier et employé (L. 3231-2 et s.) ; le gouvernement peut accorder un « coup de pouce ». Une revalorisation automatique intervient en cours d'année lorsque l'indice des prix progresse d'au moins 2 % depuis la dernière hausse (L. 3231-5), comme en novembre 2024. Les partenaires sociaux ne fixent pas le SMIC."
+   "why": "La revalorisation annuelle au 1er janvier combine l'inflation constatée pour les 20 % de ménages aux revenus les plus faibles et la moitié du gain de pouvoir d'achat du salaire horaire de base ouvrier et employé (L. 3231-4, L. 3231-6 et L. 3231-8) ; le gouvernement peut accorder un « coup de pouce ». Une revalorisation automatique intervient en cours d'année lorsque l'indice des prix progresse d'au moins 2 % depuis la dernière hausse (L. 3231-5), comme en novembre 2024. Les partenaires sociaux ne fixent pas le SMIC."
   },
   {
    "type": "qcm",
@@ -475,7 +475,7 @@
      0
     ],
     [
-     "Nouvelle répartition des 35 heures du lundi-vendredi au mardi-samedi, sans horaire contractualisé",
+     "Nouvelle répartition des horaires dans la journée (9 h-17 h au lieu de 8 h-16 h), sans horaire contractualisé",
      1
     ],
     [
