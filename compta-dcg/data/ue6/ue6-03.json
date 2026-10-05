@@ -25,7 +25,7 @@
   },
   {
    "h": "Le tableau des flux de trésorerie de l'OEC",
-   "html": "<p>Le modèle de l'OEC classe tous les flux monétaires de l'exercice en trois fonctions et aboutit à la <b>variation de trésorerie</b> (trésorerie de clôture − trésorerie d'ouverture, les deux nettes des concours bancaires courants).</p>\n<p><b>Flux de trésorerie liés à l'activité</b>, calculés par la méthode indirecte : résultat net + dotations nettes des reprises − plus-values de cession + moins-values (on neutralise 757 et 657) − quote-part des subventions d'investissement (747) = <b>marge brute d'autofinancement</b> (proche de la CAF) ; puis − variation du BFR lié à l'activité (stocks, créances et dettes d'exploitation, et créances et dettes diverses liées à l'activité). On peut aussi partir directement de la CAF : flux d'activité = CAF − variation du BFR lié à l'activité. Les intérêts payés et l'IS restent dans l'activité.</p>\n<p><b>Flux liés à l'investissement</b> : − acquisitions d'immobilisations décaissées + cessions encaissées ± variation des dettes sur immobilisations et des créances sur cessions.</p>\n<p><b>Flux liés au financement</b> : + augmentation de capital en numéraire + subventions d'investissement reçues + emprunts souscrits − remboursements d'emprunts − dividendes versés.</p>\n<p class=\"mono\">Variation de trésorerie = flux d'activité + flux d'investissement + flux de financement</p>\n<p>Exemple (Orbis) : CAF 200 000, variation du BFR lié à l'activité +45 000 : flux d'activité 155 000. Acquisitions 180 000, cessions 30 000, dettes sur immobilisations +10 000 : flux d'investissement −140 000. Emprunt 100 000, remboursements 60 000, dividendes 30 000 : flux de financement +10 000. Variation de trésorerie = +25 000 €.</p>"
+   "html": "<p>Le modèle de l'OEC classe tous les flux monétaires de l'exercice en trois fonctions et aboutit à la <b>variation de trésorerie</b> (trésorerie de clôture − trésorerie d'ouverture, nettes des concours bancaires courants).</p>\n<p><b>Flux liés à l'activité</b>, méthode indirecte : résultat net + dotations nettes des reprises − plus-values de cession + moins-values (on neutralise 757 et 657) − quote-part des subventions d'investissement (747) = <b>marge brute d'autofinancement</b> ; puis − variation du BFR lié à l'activité. On peut aussi partir de la CAF : flux d'activité = CAF − variation du BFR lié à l'activité. Intérêts payés et IS restent dans l'activité.</p>\n<p><b>Flux liés à l'investissement</b> : − acquisitions décaissées + cessions encaissées ± variation des dettes sur immobilisations et des créances sur cessions.</p>\n<p><b>Flux liés au financement</b> : + augmentation de capital en numéraire + subventions d'investissement reçues + emprunts souscrits − remboursements − dividendes versés.</p>\n<p class=\"mono\">Variation de trésorerie = flux d'activité + flux d'investissement + flux de financement</p>\n<p>Exemple (Orbis) : CAF 200 000, variation du BFR +45 000 : flux d'activité 155 000. Acquisitions 180 000, cessions 30 000, dettes sur immobilisations +10 000 : flux d'investissement −140 000. Emprunt 100 000, remboursements 60 000, dividendes 30 000 : flux de financement +10 000. Variation de trésorerie : +25 000 €.</p>"
   },
   {
    "h": "L'excédent de trésorerie d'exploitation (ETE)",
@@ -85,7 +85,11 @@
     "Acquisitions d'immobilisations",
     "Charges à répartir sur plusieurs exercices"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "Les ressources durables regroupent la CAF, les cessions ou réductions d'actif immobilisé, l'augmentation des capitaux propres (capital appelé, subventions d'investissement) et les nouveaux emprunts. Dividendes, acquisitions et charges à répartir sont des emplois stables.",
    "src": "PCG, tableau de financement (ressources durables)",
    "fiab": "stable",
@@ -101,7 +105,11 @@
     "Nouveaux emprunts souscrits",
     "Capacité d'autofinancement"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "Les emplois stables sont les utilisations durables de ressources : dividendes versés, investissements, remboursements d'emprunts, charges à répartir, réductions de capital. Les nouveaux emprunts et la CAF sont au contraire des ressources durables.",
    "src": "PCG, tableau de financement (emplois stables)",
    "fiab": "stable",
@@ -276,7 +284,11 @@
     "La CAF est égale à la trésorerie encaissée au cours de l'exercice",
     "Une variation de stocks n'affecte pas la CAF mais affecte le flux de trésorerie d'activité"
    ],
-   "a": [0, 1, 3],
+   "a": [
+    0,
+    1,
+    3
+   ],
    "why": "La CAF est calculée à partir du compte de résultat, en comptabilité d'engagement : elle est un potentiel de trésorerie. Pour obtenir la trésorerie réellement dégagée, on retranche la variation du BFR lié à l'activité. La variation de stocks est neutre dans la CAF (produit stocké compensé par la charge de production) mais représente un flux réel de décaissement non compensé par une vente.",
    "src": "OEC, tableau des flux de trésorerie (méthode indirecte)",
    "fiab": "stable",
@@ -324,14 +336,38 @@
     "Flux liés au financement"
    ],
    "items": [
-    ["Capacité d'autofinancement", 0],
-    ["Variation du BFR lié à l'activité", 0],
-    ["Acquisition d'un matériel industriel", 1],
-    ["Prix de cession d'un terrain", 1],
-    ["Remboursement du capital d'un emprunt", 2],
-    ["Dividendes versés aux associés", 2],
-    ["Augmentation de capital en numéraire", 2],
-    ["Subvention d'investissement encaissée", 2]
+    [
+     "Capacité d'autofinancement",
+     0
+    ],
+    [
+     "Variation du BFR lié à l'activité",
+     0
+    ],
+    [
+     "Acquisition d'un matériel industriel",
+     1
+    ],
+    [
+     "Prix de cession d'un terrain",
+     1
+    ],
+    [
+     "Remboursement du capital d'un emprunt",
+     2
+    ],
+    [
+     "Dividendes versés aux associés",
+     2
+    ],
+    [
+     "Augmentation de capital en numéraire",
+     2
+    ],
+    [
+     "Subvention d'investissement encaissée",
+     2
+    ]
    ],
    "why": "L'activité regroupe la CAF (ou marge brute d'autofinancement) et la variation du BFR qui s'y rattache. L'investissement enregistre les acquisitions et cessions d'immobilisations. Le financement retrace les flux avec les apporteurs de capitaux : capital, subventions d'investissement, emprunts, remboursements et dividendes.",
    "src": "OEC, tableau des flux de trésorerie (trois fonctions)",

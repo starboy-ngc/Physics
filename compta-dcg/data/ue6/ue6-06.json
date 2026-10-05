@@ -1,0 +1,472 @@
+{
+ "id": "ue6-06",
+ "ue": "UE6",
+ "ordre": 6,
+ "title": "Trésorerie et marchés financiers",
+ "resume": "Construire un budget de trésorerie, choisir et chiffrer les financements et placements à court terme, comprendre les marchés financiers, les actions, les obligations et la couverture des risques.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Le budget de trésorerie : principes",
+   "html": "<p>Le <b>budget de trésorerie</b> prévoit, mois par mois, les encaissements et les décaissements pour anticiper les déficits à financer et les excédents à placer. Il se construit à partir des budgets d'exploitation (ventes, achats, personnel), d'investissement et de financement.</p>\n<p>Trois règles de construction :</p>\n<ul>\n<li>Raisonner en <b>flux de trésorerie</b>, donc en montants <b>TTC</b> pour les opérations soumises à TVA (ventes, achats, immobilisations), et exclure tout ce qui n'est pas un mouvement de fonds : dotations, variations de stocks, quote-part de subvention (747), charges à payer non encore réglées.</li>\n<li>Respecter les <b>décalages</b> de paiement : une vente de mars encaissée à 30 jours est un encaissement d'avril ; les salaires nets sont payés le mois même, les charges sociales le mois suivant (régime général des entreprises de moins de 50 salariés : le 15 du mois suivant).</li>\n<li>Calculer la <b>TVA à décaisser</b> du mois (TVA collectée − TVA déductible sur biens et services − TVA déductible sur immobilisations − crédit de TVA antérieur) et la décaisser le mois <b>suivant</b> (régime du réel normal, déclaration CA3 mensuelle).</li>\n</ul>\n<p>Exemple (société Lumen) : ventes HT de janvier 100 000, février 120 000, mars 150 000, TVA 20 %, clients payant 40 % au comptant et 60 % à 30 jours. Encaissements de mars = 150 000 × 1,2 × 40 % + 120 000 × 1,2 × 60 % = 72 000 + 86 400 = 158 400 €.</p>"
+  },
+  {
+   "h": "Construire le budget et lire le solde cumulé",
+   "html": "<p>Le budget se présente en quatre tableaux enchaînés :</p>\n<ol>\n<li><b>Budget des encaissements</b> : ventes TTC selon les délais, cessions d'immobilisations, emprunts reçus, apports en capital, subventions.</li>\n<li><b>Budget de TVA</b> : TVA collectée du mois − TVA déductible du mois = TVA à décaisser, payée le mois suivant. Exemple (Lumen, mars) : TVA collectée 150 000 × 20 % = 30 000 ; TVA déductible sur achats 80 000 × 20 % = 16 000 ; TVA déductible sur une immobilisation acquise 10 000. TVA à décaisser 4 000 €, payée en avril.</li>\n<li><b>Budget des décaissements</b> : achats TTC selon les délais fournisseurs, salaires nets, charges sociales, autres charges externes TTC, impôts (acomptes d'IS, CFE), TVA à décaisser, investissements TTC, remboursements d'emprunts et intérêts, dividendes.</li>\n<li><b>Budget général de trésorerie</b> : trésorerie initiale + encaissements − décaissements = trésorerie finale, reportée en début du mois suivant.</li>\n</ol>\n<p>Exemple : trésorerie au 1er janvier 15 000 ; soldes mensuels janvier −8 000, février +3 000, mars −12 000 : trésorerie fin mars = 15 000 − 8 000 + 3 000 − 12 000 = −2 000 €.</p>\n<p>Lecture : un solde cumulé négatif ponctuel se finance par un crédit de trésorerie ; un déficit durable et croissant révèle un problème de structure (FRNG insuffisant) qui appelle un financement long. Un excédent persistant doit être placé pour ne pas rester improductif.</p>"
+  },
+  {
+   "h": "Financer les déficits : les crédits de trésorerie",
+   "html": "<p>Pour couvrir un déficit de trésorerie, l'entreprise dispose de plusieurs instruments :</p>\n<ul>\n<li><b>Découvert</b> (facilité de caisse pour quelques jours, découvert autorisé pour plus longtemps) : la banque laisse le compte devenir débiteur. Souple mais coûteux et révocable.</li>\n<li><b>Escompte d'effets de commerce</b> : la banque achète une lettre de change avant son échéance et verse le montant diminué des agios. Le risque d'impayé reste sur l'entreprise (recours).</li>\n<li><b>Cession de créances professionnelles « Dailly »</b> (loi du 2 janvier 1981) : transfert de créances à la banque par un bordereau, en garantie d'un crédit ou en pleine propriété. Plus simple que l'escompte car il ne nécessite pas d'effet de commerce.</li>\n<li><b>Affacturage</b> : une société spécialisée (factor) achète les créances, les finance immédiatement, en assure le recouvrement et, souvent, garantit le risque d'impayé. Elle facture une commission d'affacturage (gestion et risque) et une commission de financement (intérêts), et retient une partie (retenue de garantie, restituée à l'encaissement).</li>\n<li><b>Crédit de campagne</b> : crédit de plusieurs mois destiné aux activités saisonnières (jouets, agriculture) dont les décaissements précèdent les encaissements.</li>\n<li><b>Billets de trésorerie</b>, devenus <b>NEU CP</b> (negotiable european commercial paper) : titres de créances négociables à court terme émis sur le marché monétaire par les grandes entreprises, moins chers que le crédit bancaire mais réservés aux émetteurs notés.</li>\n</ul>\n<p>Le choix dépend du coût réel, de la durée du besoin et des garanties disponibles.</p>"
+  },
+  {
+   "h": "Chiffrer le coût d'un financement à court terme",
+   "html": "<p><b>Découvert</b> : intérêts = montant × taux × jours / 360, calculés sur les soldes débiteurs réels, plus la <b>commission du plus fort découvert</b> (CPFD, par exemple 0,05 % du plus fort solde débiteur du mois). Exemple : 50 000 € pendant 20 jours à 9 % : intérêts 250 € ; CPFD 25 € ; agios 275 €.</p>\n<p><b>Escompte</b> : agios = escompte + commission d'endos + commissions fixes. Escompte et endos sont proportionnels : montant × (taux d'escompte + taux d'endos) × durée / 360, la durée allant de la remise à l'échéance, majorée de <b>jours de banque</b> (1 à 2 jours fictifs). Exemple : effet de 36 000 € remis 58 jours avant l'échéance, taux 7,5 %, endos 0,6 %, 2 jours de banque, commission fixe 12 € : 36 000 × 8,1 % × 60 / 360 = 486 € + 12 € = 498 €. Net reçu : 35 502 €.</p>\n<p>Le <b>taux réel</b> rapporte le coût total au montant reçu et à la durée réelle : 498 / 35 502 × 360 / 58 = 8,71 %, bien au-dessus du taux affiché.</p>\n<p><b>Affacturage</b> : créances cédées 100 000 € ; commission d'affacturage 1,5 % (1 500) ; commission de financement 6 % pour 60 jours (1 000) ; retenue de garantie 10 % (10 000) : disponible 87 500 €.</p>\n<div class=\"note\"><b>Règle.</b> Comparer les financements sur leur taux réel après commissions et jours de banque, jamais sur le taux nominal.</div>"
+  },
+  {
+   "h": "Placer les excédents",
+   "html": "<p>Un excédent de trésorerie durable doit être placé sans compromettre la liquidité ni la sécurité. Les supports classiques à court terme :</p>\n<ul>\n<li><b>Comptes à terme</b> (CAT) et dépôts à terme : rémunération fixée à l'avance pour une durée donnée (1 mois à quelques années) ; sortie anticipée pénalisée. Sécurité maximale, rendement modeste.</li>\n<li><b>OPCVM monétaires</b> (SICAV et FCP) : parts d'un portefeuille de titres à court terme ; liquidité quotidienne, rendement proche des taux du marché monétaire (€STR), faible risque. Les SICAV sont des sociétés, les FCP des copropriétés de valeurs mobilières, gérés par une société de gestion agréée par l'AMF.</li>\n<li><b>Titres de créances négociables</b> (TCN) : certificats de dépôt négociables émis par les banques et NEU CP émis par les entreprises, achetés directement sur le marché monétaire ; montants unitaires élevés (150 000 € minimum), réservés aux trésoreries importantes.</li>\n<li><b>Bons du Trésor</b> (BTF) : titres à court terme de l'État, sans risque de crédit.</li>\n<li><b>Escompte de règlement</b> obtenu des fournisseurs : payer comptant contre une remise (par exemple 1 % pour 30 jours) équivaut à un placement à 12 % annuel, souvent le meilleur rendement disponible.</li>\n</ul>\n<p>Le trésorier arbitre entre rendement, liquidité (délai pour récupérer les fonds) et risque (de taux, de crédit). Il évite les placements en actions pour des excédents de court terme, trop volatils.</p>"
+  },
+  {
+   "h": "Marchés financiers, actions et obligations",
+   "html": "<p>Le <b>marché primaire</b> est celui des émissions nouvelles (introduction en Bourse, augmentation de capital, émission obligataire) ; le <b>marché secondaire</b> celui des échanges de titres déjà émis, qui assure la liquidité. L'<b>AMF</b> protège l'épargne, veille à l'information des investisseurs et au bon fonctionnement des marchés ; <b>Euronext Paris</b> gère le marché réglementé (compartiments A, B, C selon la capitalisation) et Euronext Growth, destiné aux PME.</p>\n<p><b>Actions</b> : titres de propriété donnant droit au vote, aux dividendes, à l'information et au boni de liquidation. <b>Rendement</b> = dividende / cours (3 € / 60 € = 5 %) ; <b>PER</b> = cours / bénéfice par action (60 / 4 = 15 : l'investisseur paie 15 années de bénéfice).</p>\n<p><b>Obligations</b> : titres de créance. Cours exprimé en <b>% du nominal, au pied du coupon</b> ; prix payé = cours + coupon couru. Exemple : nominal 1 000 €, cote 98,5 %, coupon couru 2 % : 1 005 €. La <b>valeur</b> d'une obligation est la valeur actuelle de ses coupons et de son remboursement au taux du marché : nominal 1 000, coupon 5 %, 3 ans, taux 6 % : 50 × 0,9434 + 50 × 0,8900 + 1 050 × 0,8396 = 973 €. Le <b>taux actuariel</b> égalise prix et flux actualisés.</p>\n<p>Quand les taux montent, le prix des obligations existantes baisse. La <b>sensibilité</b> mesure la variation en % du prix pour 1 point de taux ; elle est proportionnelle à la <b>duration</b> (durée moyenne pondérée des flux actualisés), plus grande pour une obligation longue à faible coupon.</p>"
+  },
+  {
+   "h": "Taux d'intérêt, risques financiers et couverture",
+   "html": "<p>Taux de référence du marché monétaire en zone euro : l'<b>€STR</b> (taux au jour le jour publié par la BCE) et l'<b>Euribor</b> (interbancaire à 1 semaine, 1, 3, 6 et 12 mois). La <b>courbe des taux</b> relie taux et maturité ; normalement croissante, elle peut s'aplatir ou s'inverser en période de tension.</p>\n<p><b>Risque de taux</b> : l'emprunteur à taux variable craint la hausse ; le détenteur d'obligations craint la hausse pour la valeur de ses titres. <b>Risque de change</b> : l'entreprise qui facture ou paie en devise subit la variation du cours entre facturation et règlement (l'exportateur payé en dollars craint la baisse du dollar).</p>\n<p>Instruments de <b>couverture</b> (en principe) :</p>\n<ul>\n<li><b>Contrat à terme</b> (vente ou achat à terme de devises, FRA pour les taux) : le cours ou le taux futur est fixé aujourd'hui ; protection totale, aucun gain si l'évolution est favorable.</li>\n<li><b>Option</b> : droit, non obligation, d'acheter ou de vendre à un prix fixé, contre une prime ; protège contre l'évolution défavorable en conservant le gain éventuel.</li>\n<li><b>Swap de taux</b> : échange d'intérêts à taux fixe contre taux variable sur un même notionnel, pour changer la nature d'une dette.</li>\n</ul>\n<p><b>Portefeuille</b> : la <b>diversification</b> élimine le risque spécifique de chaque titre, pas le risque de marché, mesuré par le <b>bêta</b> (1 pour le marché, 0,5 pour un portefeuille qui en amortit les variations).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Programme du DCG UE6 Finance d'entreprise (arrêté du 13 février 2019 ; arrêté du 4 août 2025, BOESR n° 32 du 28 août 2025), partie 4 : la trésorerie (budget, financements et placements à court terme, marchés financiers, gestion du risque)",
+   "note": "Périmètre du chapitre"
+  },
+  {
+   "ref": "C. mon. fin., art. L. 313-23 à L. 313-34 (cession de créances professionnelles « Dailly », loi n° 81-1 du 2 janvier 1981) ; art. L. 621-1 (missions de l'AMF)",
+   "note": "Cession Dailly, rôle de l'Autorité des marchés financiers"
+  },
+  {
+   "ref": "CGI, art. 287 et 1693 : déclaration et paiement mensuels de la TVA (régime réel normal, déclaration CA3)",
+   "note": "Décalage de la TVA à décaisser dans le budget de trésorerie"
+  },
+  {
+   "ref": "Banque de France, NEU CP et NEU MTN : cadre juridique des titres de créances négociables (art. L. 213-1 et suivants, D. 213-1 et suivants du Code monétaire et financier)",
+   "note": "Billets de trésorerie, certificats de dépôt et TCN"
+  },
+  {
+   "ref": "BCE, méthodologie de l'€STR ; EMMI, Euribor",
+   "note": "Taux de référence du marché monétaire"
+  },
+  {
+   "ref": "P. Recroix, DCG 6 Finance d'entreprise, Gualino, éd. 2025-2026 ; J. Delahaye, F. Duprat, DCG 6, Dunod, éd. 2025-2026",
+   "note": "Budget de trésorerie, coût de l'escompte et du découvert, évaluation des obligations"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Dans un budget de trésorerie, les ventes et les achats soumis à TVA sont inscrits :",
+   "opts": [
+    "Pour leur montant TTC, aux dates d'encaissement et de décaissement prévues",
+    "Pour leur montant HT, aux dates de facturation",
+    "Pour leur montant HT, aux dates d'encaissement",
+    "Pour leur montant TTC, aux dates de facturation"
+   ],
+   "a": 0,
+   "why": "Le budget de trésorerie suit les mouvements de fonds réels : le client paie le prix TTC, le fournisseur est réglé TTC, et ce aux dates de règlement, pas de facturation. La TVA correspondante est ensuite reversée ou récupérée via le budget de TVA. Raisonner en HT ou à la facturation décrirait le compte de résultat, pas la trésorerie.",
+   "src": "Programme DCG UE6, budget de trésorerie",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Société Lumen. Ventes HT : janvier 100 000 €, février 120 000 €, mars 150 000 €, toutes soumises à la TVA à 20 %. Les clients paient 40 % au comptant et 60 % à 30 jours. Calculez les encaissements du mois de mars (en euros).",
+   "a": 158400,
+   "unit": "€",
+   "tol": 1,
+   "why": "Encaissements de mars = 40 % des ventes TTC de mars + 60 % des ventes TTC de février = 150 000 × 1,2 × 0,4 + 120 000 × 1,2 × 0,6 = 72 000 + 86 400 = 158 400 €. Les ventes de janvier sont intégralement encaissées en janvier et février ; raisonner en HT donnerait 132 000 €, ce qui sous-estime la trésorerie.",
+   "src": "Programme DCG UE6, budget des encaissements",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Société Lumen, mois de mars (régime réel normal, pas de crédit de TVA antérieur). Ventes HT 150 000 € ; achats de biens et services HT 80 000 € ; acquisition d'une immobilisation : TVA déductible 10 000 €. Taux de TVA 20 %. Calculez la TVA à décaisser au titre de mars (en euros).",
+   "a": 4000,
+   "unit": "€",
+   "tol": 1,
+   "why": "TVA collectée = 150 000 × 20 % = 30 000 €. TVA déductible = 80 000 × 20 % + 10 000 = 16 000 + 10 000 = 26 000 €. TVA à décaisser = 30 000 − 26 000 = 4 000 €. Elle figure dans les décaissements d'avril (déclaration CA3 du mois suivant), pas de mars.",
+   "src": "CGI, art. 287 ; programme DCG UE6, budget de TVA",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La TVA à décaisser calculée au titre du mois de mars (régime réel normal) apparaît dans le budget de trésorerie :",
+   "opts": [
+    "En décaissement d'avril",
+    "En décaissement de mars",
+    "En encaissement d'avril",
+    "Elle n'apparaît pas, la TVA étant neutre pour l'entreprise"
+   ],
+   "a": 0,
+   "why": "La TVA du mois est déclarée et payée le mois suivant (CA3 déposée entre le 15 et le 24 avril selon l'entreprise). La TVA est économiquement neutre sur l'exercice, mais elle crée des décalages de trésorerie réels : collectée à l'encaissement des ventes, reversée un mois plus tard.",
+   "src": "CGI, art. 287 et 1693 ; programme DCG UE6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments ne figurent pas dans un budget de trésorerie ?",
+   "opts": [
+    "Dotations aux amortissements",
+    "Quote-part de subvention d'investissement virée au résultat (747)",
+    "Salaires nets payés",
+    "Acquisition d'une machine (montant TTC)",
+    "Acompte d'impôt sur les sociétés versé"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "Le budget de trésorerie ne retient que les mouvements de fonds. Les dotations et la quote-part de subvention sont des charges et produits calculés sans flux monétaire. Salaires nets, investissement TTC et acomptes d'IS sont bien décaissés.",
+   "src": "Programme DCG UE6, budget de trésorerie ; PCG 2025, compte 747",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Trésorerie au 1er janvier : 15 000 €. Soldes mensuels prévus (encaissements − décaissements) : janvier −8 000 €, février +3 000 €, mars −12 000 €. Calculez la trésorerie prévue au 31 mars (en euros, signe compris).",
+   "a": -2000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Trésorerie fin mars = 15 000 − 8 000 + 3 000 − 12 000 = −2 000 €. Fin janvier 7 000, fin février 10 000, fin mars −2 000 : un découvert ou un escompte sera nécessaire en mars, pour un besoin modeste et probablement temporaire.",
+   "src": "Programme DCG UE6, budget général de trésorerie",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise a été à découvert de 50 000 € pendant 20 jours. Taux du découvert 9 % (année de 360 jours). Commission du plus fort découvert : 0,05 % du plus fort solde débiteur du mois (50 000 €). Calculez le total des agios du mois (en euros).",
+   "a": 275,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Intérêts = 50 000 × 9 % × 20 / 360 = 250 €. Commission du plus fort découvert = 50 000 × 0,05 % = 25 €. Agios = 250 + 25 = 275 €. Rapportés aux 50 000 € sur 20 jours, ces 275 € représentent un taux réel de 275 / 50 000 × 360 / 20 = 9,9 %.",
+   "src": "Programme DCG UE6, coût du découvert",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La commission du plus fort découvert (CPFD) se calcule :",
+   "opts": [
+    "En appliquant un pourcentage au solde débiteur le plus élevé de chaque mois",
+    "En appliquant un pourcentage à la somme des soldes débiteurs quotidiens",
+    "Sur le montant total des mouvements débiteurs du compte",
+    "Sur le montant du découvert autorisé, qu'il soit utilisé ou non"
+   ],
+   "a": 0,
+   "why": "La CPFD (souvent 0,05 %) frappe le pic de découvert de chaque mois, indépendamment de sa durée : un découvert important d'un seul jour la déclenche en totalité. Les intérêts, eux, se calculent sur les soldes débiteurs jour par jour. La commission de mouvement porte sur les débits ; des frais d'engagement portent sur l'autorisation.",
+   "src": "Programme DCG UE6, coût du découvert",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un effet de commerce de 36 000 € est remis à l'escompte 58 jours avant son échéance. Conditions : taux d'escompte 7,5 %, commission d'endos 0,6 % (proportionnelle, même base que l'escompte), 2 jours de banque, commission fixe de 12 € HT. Année de 360 jours. Calculez le total des agios HT (en euros).",
+   "a": 498,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Durée retenue par la banque = 58 + 2 jours de banque = 60 jours. Escompte + endos = 36 000 × (7,5 % + 0,6 %) × 60 / 360 = 36 000 × 8,1 % / 6 = 486 €. Agios = 486 + 12 = 498 €. L'entreprise reçoit 36 000 − 498 = 35 502 €.",
+   "src": "Programme DCG UE6, coût de l'escompte",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Suite : agios de 498 € sur un effet de 36 000 € ; montant net reçu 35 502 € ; durée réelle du crédit 58 jours. Calculez le taux réel de l'escompte, en %, arrondi à 0,01 % (année de 360 jours).",
+   "a": 8.71,
+   "unit": "%",
+   "tol": 0.02,
+   "why": "Taux réel = agios / montant net reçu × 360 / durée réelle = 498 / 35 502 × 360 / 58 = 0,014027 × 6,2069 = 8,71 %. Il dépasse le taux affiché (7,5 %) à cause de la commission d'endos, des jours de banque, de la commission fixe et du fait que les agios sont précomptés sur un net inférieur au nominal.",
+   "src": "Programme DCG UE6, taux réel de l'escompte",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Les « jours de banque » ajoutés par la banque lors d'un escompte ont pour effet :",
+   "opts": [
+    "D'allonger la durée de calcul des intérêts et donc d'augmenter le coût réel du crédit",
+    "De retarder la date d'échéance de l'effet pour le client",
+    "De réduire le montant des agios",
+    "D'augmenter le montant net versé à l'entreprise"
+   ],
+   "a": 0,
+   "why": "Les jours de banque sont des jours fictifs ajoutés au nombre de jours réellement courus entre la remise et l'échéance : la base de calcul de l'escompte s'allonge alors que l'entreprise ne dispose pas des fonds plus longtemps. Le coût augmente et le net versé diminue. L'échéance de l'effet, elle, ne change pas.",
+   "src": "Programme DCG UE6, coût de l'escompte",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise cède 100 000 € de créances à un factor. Conditions : commission d'affacturage 1,5 % du montant cédé ; commission de financement 6 % l'an pour 60 jours (année de 360 jours) ; retenue de garantie 10 %, restituée à l'encaissement. Calculez le montant immédiatement mis à disposition (en euros).",
+   "a": 87500,
+   "unit": "€",
+   "tol": 1,
+   "why": "Commission d'affacturage = 100 000 × 1,5 % = 1 500 €. Commission de financement = 100 000 × 6 % × 60 / 360 = 1 000 €. Retenue de garantie = 10 000 €. Disponible = 100 000 − 1 500 − 1 000 − 10 000 = 87 500 €. La retenue de 10 000 € sera reversée lorsque les clients auront payé.",
+   "src": "Programme DCG UE6, affacturage",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La cession de créances professionnelles « Dailly » se caractérise par :",
+   "opts": [
+    "Le transfert de créances à la banque au moyen d'un bordereau, sans qu'un effet de commerce soit nécessaire",
+    "La vente des créances à une société d'affacturage qui en assure le recouvrement",
+    "L'émission de titres de créances négociables sur le marché monétaire",
+    "L'obtention d'un découvert garanti par une hypothèque"
+   ],
+   "a": 0,
+   "why": "La loi Dailly (2 janvier 1981, codifiée aux art. L. 313-23 et s. du Code monétaire et financier) permet de céder ou nantir en bloc des créances professionnelles par simple bordereau, en garantie d'un crédit bancaire. C'est plus simple que l'escompte (pas de lettre de change) et distinct de l'affacturage (pas de factor, pas de gestion du poste clients).",
+   "src": "C. mon. fin., art. L. 313-23 et s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les NEU CP (anciens billets de trésorerie) sont :",
+   "opts": [
+    "Des titres de créances négociables à court terme émis par les grandes entreprises sur le marché monétaire",
+    "Des prêts bancaires à moyen terme",
+    "Des actions sans droit de vote",
+    "Des obligations convertibles émises par les PME"
+   ],
+   "a": 0,
+   "why": "Les NEU CP (negotiable european commercial paper) sont des titres de créances négociables de durée inférieure ou égale à un an, émis par des entreprises notées pour financer leur trésorerie directement auprès des investisseurs, à un coût souvent inférieur au crédit bancaire. Leur montant unitaire minimal (150 000 €) les réserve aux grands émetteurs.",
+   "src": "C. mon. fin., art. L. 213-1 et s. ; Banque de France, NEU CP",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque instrument selon sa fonction principale pour le trésorier.",
+   "cats": [
+    "Financement à court terme",
+    "Placement à court terme",
+    "Couverture d'un risque"
+   ],
+   "items": [
+    [
+     "Découvert bancaire",
+     0
+    ],
+    [
+     "Escompte d'effets de commerce",
+     0
+    ],
+    [
+     "Cession Dailly",
+     0
+    ],
+    [
+     "Crédit de campagne",
+     0
+    ],
+    [
+     "Compte à terme",
+     1
+    ],
+    [
+     "SICAV monétaire",
+     1
+    ],
+    [
+     "Certificat de dépôt négociable acheté",
+     1
+    ],
+    [
+     "Vente à terme de devises",
+     2
+    ],
+    [
+     "Swap de taux",
+     2
+    ],
+    [
+     "Option de change",
+     2
+    ]
+   ],
+   "why": "Découvert, escompte, Dailly et crédit de campagne procurent des fonds pour couvrir un déficit. Compte à terme, SICAV monétaire et certificat de dépôt acheté rémunèrent un excédent. Vente à terme, swap et option ne financent ni ne placent : ils neutralisent un risque de change ou de taux.",
+   "src": "Programme DCG UE6, gestion de trésorerie et gestion du risque",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quel est le rôle de l'Autorité des marchés financiers (AMF) ?",
+   "opts": [
+    "Protéger l'épargne investie en produits financiers, veiller à l'information des investisseurs et au bon fonctionnement des marchés",
+    "Organiser les cotations et gérer la plateforme de négociation d'Euronext Paris",
+    "Fixer les taux directeurs de la zone euro",
+    "Garantir les dépôts bancaires des particuliers"
+   ],
+   "a": 0,
+   "why": "L'AMF est l'autorité publique indépendante de régulation des marchés (C. mon. fin., art. L. 621-1) : agrément des sociétés de gestion, visa des prospectus, surveillance et sanction des abus de marché. La gestion de la cote relève d'Euronext, entreprise de marché ; les taux directeurs de la BCE ; la garantie des dépôts du FGDR.",
+   "src": "C. mon. fin., art. L. 621-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels droits sont attachés à une action ordinaire ?",
+   "opts": [
+    "Droit de vote aux assemblées",
+    "Droit aux dividendes décidés par l'assemblée",
+    "Droit à l'information",
+    "Droit au boni de liquidation",
+    "Droit à un intérêt fixe annuel",
+    "Droit au remboursement du nominal à une date fixée"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "why": "L'action est un titre de propriété : droits politiques (vote, information) et droits financiers (dividende, boni de liquidation, droit préférentiel de souscription). L'intérêt fixe et le remboursement à échéance caractérisent l'obligation, titre de créance.",
+   "src": "C. com., art. L. 225-122 et s. ; programme DCG UE6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une action cote 60 € et verse un dividende de 3 €. Quel est son rendement ?",
+   "opts": [
+    "5 %",
+    "20 %",
+    "3 %",
+    "15 %"
+   ],
+   "a": 0,
+   "why": "Rendement = dividende / cours = 3 / 60 = 5 %. 20 % inverse le rapport ; 15 serait le PER si le bénéfice par action était de 4 € ; 3 % confond le dividende en euros et le pourcentage.",
+   "src": "Programme DCG UE6, valeurs mobilières (rendement d'une action)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une société a réalisé un résultat net de 4 000 000 € pour 1 000 000 d'actions ; son cours est de 60 €. Calculez le PER (price earning ratio), arrondi à 0,1.",
+   "a": 15,
+   "unit": "",
+   "tol": 0.05,
+   "why": "Bénéfice par action = 4 000 000 / 1 000 000 = 4 €. PER = cours / BPA = 60 / 4 = 15 : l'investisseur paie 15 fois le bénéfice annuel. Un PER élevé traduit des anticipations de croissance (ou une surévaluation), un PER faible une valorisation prudente.",
+   "src": "Programme DCG UE6, valeurs mobilières (PER)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une obligation de nominal 1 000 € cote 98,5 % au pied du coupon ; le coupon couru est de 2 %. Quel prix l'acheteur paie-t-il ?",
+   "opts": [
+    "1 005 €",
+    "985 €",
+    "965 €",
+    "1 020 €"
+   ],
+   "a": 0,
+   "why": "Les obligations cotent en pourcentage du nominal, hors coupon couru. Prix payé = nominal × (cote + coupon couru) = 1 000 × (98,5 % + 2 %) = 1 005 €. 985 € oublie le coupon couru, que l'acheteur doit rembourser au vendeur puisqu'il percevra le coupon entier à la prochaine échéance.",
+   "src": "Programme DCG UE6, cotation des obligations",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Obligation de nominal 1 000 €, coupon annuel 5 %, remboursée au pair dans 3 ans (le prochain coupon est dans un an). Taux du marché pour cette échéance : 6 %. Coefficients d'actualisation à 6 % : 0,9434 (1 an), 0,8900 (2 ans), 0,8396 (3 ans). Calculez la valeur de l'obligation, arrondie à l'euro.",
+   "a": 973,
+   "unit": "€",
+   "tol": 1,
+   "why": "Flux : 50 € dans 1 an, 50 € dans 2 ans, 1 050 € dans 3 ans. Valeur = 50 × 0,9434 + 50 × 0,8900 + 1 050 × 0,8396 = 47,17 + 44,50 + 881,58 = 973,25 €, soit 973 €. L'obligation vaut moins que le nominal car son coupon (5 %) est inférieur au taux du marché (6 %).",
+   "src": "Programme DCG UE6, évaluation d'une obligation",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Les taux d'intérêt du marché augmentent. Quel est l'effet sur le prix des obligations à taux fixe déjà émises ?",
+   "opts": [
+    "Il baisse, car leurs coupons fixes deviennent moins attractifs que ceux des nouvelles émissions",
+    "Il monte, car les obligations rapportent davantage",
+    "Il ne change pas, le nominal étant garanti",
+    "Il monte pour les obligations longues et baisse pour les courtes"
+   ],
+   "a": 0,
+   "why": "La valeur d'une obligation est la valeur actuelle de ses flux fixes : un taux d'actualisation plus élevé la fait baisser, jusqu'à ce que son rendement rejoigne celui du marché. Le nominal n'est garanti qu'à l'échéance, pas en cours de vie. Les obligations longues baissent plus que les courtes (sensibilité plus forte).",
+   "src": "Programme DCG UE6, risque de taux sur les obligations",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La sensibilité d'une obligation :",
+   "opts": [
+    "Mesure la variation en pourcentage de son prix pour une variation de 1 point du taux d'intérêt ; elle est d'autant plus forte que la duration est longue",
+    "Mesure le risque de défaut de l'émetteur",
+    "Est nulle pour les obligations à taux fixe",
+    "Est plus forte pour les obligations à échéance courte et à coupon élevé"
+   ],
+   "a": 0,
+   "why": "La sensibilité est la dérivée relative du prix par rapport au taux ; elle est proportionnelle à la duration, durée moyenne pondérée des flux actualisés. Une obligation longue à faible coupon a une duration élevée, donc une forte sensibilité ; une obligation courte à coupon élevé est peu sensible. Le risque de défaut est mesuré par la notation, pas par la sensibilité.",
+   "src": "Programme DCG UE6, sensibilité et duration (en principe)",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un exportateur français facture 500 000 dollars payables dans 90 jours et craint une baisse du dollar. Quelle couverture ferme est adaptée ?",
+   "opts": [
+    "Vendre à terme 500 000 dollars à 90 jours",
+    "Acheter à terme 500 000 dollars à 90 jours",
+    "Souscrire un swap de taux",
+    "Placer 500 000 euros sur un compte à terme"
+   ],
+   "a": 0,
+   "why": "L'exportateur recevra des dollars : il fixe dès aujourd'hui le cours auquel il les convertira en vendant à terme. L'achat à terme couvrirait un importateur qui doit payer en dollars. Le swap de taux couvre un risque de taux, pas de change. Une option de vente de dollars serait l'alternative conditionnelle, moyennant une prime.",
+   "src": "Programme DCG UE6, couverture du risque de change (en principe)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un swap de taux d'intérêt consiste à :",
+   "opts": [
+    "Échanger avec une contrepartie un flux d'intérêts à taux fixe contre un flux à taux variable sur un même capital notionnel",
+    "Rembourser un emprunt par anticipation pour en souscrire un autre",
+    "Acheter le droit d'emprunter à un taux plafonné moyennant une prime",
+    "Échanger des devises au comptant et à terme"
+   ],
+   "a": 0,
+   "why": "Le swap de taux transforme la nature d'une dette sans la rembourser : une entreprise endettée à taux variable qui craint la hausse des taux reçoit le variable et paie le fixe. L'achat du droit d'emprunter à un taux plafonné est un cap (option de taux) ; l'échange de devises est un swap de change.",
+   "src": "Programme DCG UE6, couverture du risque de taux (en principe)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La diversification d'un portefeuille de titres permet de :",
+   "opts": [
+    "Réduire le risque spécifique de chaque titre, mais pas le risque systématique mesuré par le bêta",
+    "Supprimer tout risque, y compris le risque de marché",
+    "Augmenter le bêta du portefeuille",
+    "Garantir un rendement égal au taux sans risque"
+   ],
+   "a": 0,
+   "why": "En combinant des titres dont les variations ne sont pas parfaitement corrélées, les risques propres à chaque entreprise se compensent (risque spécifique). Reste le risque de marché, commun à tous les titres, que le MEDAF rémunère via le bêta. Un portefeuille très diversifié tend vers le bêta du marché (1), il ne devient pas sans risque.",
+   "src": "Programme DCG UE6, gestion du risque de portefeuille (diversification, bêta)",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

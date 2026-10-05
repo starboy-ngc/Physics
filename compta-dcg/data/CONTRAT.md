@@ -68,3 +68,9 @@ Types :
 - Ton direct, phrases courtes, exemples chiffrés réalistes, noms d'entreprises fictifs neutres.
 - Une leçon enseigne : définition, règle, exemple, piège classique, lien avec le DSCG quand il existe.
 - `why` ne se contente jamais de « la réponse est B » : elle explique.
+
+## 6. Compléments PCG 2025 confirmés (recoupés par deux sources le 5 octobre 2026)
+
+- Provisions pour charges : les comptes 153 à 158 sont remplacés par la racine `152` : `1521` pensions et obligations similaires, `1522` restructurations, `1523` impôts, `1524` renouvellement des immobilisations (concessionnaires), `1525` gros entretien ou grandes révisions (ex-1572), `1526` autres provisions pour charges. Le compte `151` (provisions pour risques : 1511 litiges, 1514 amendes et pénalités, 1515 pertes de change, 1516 pertes sur contrats, 1518 autres) demeure.
+- Intérêts courus sur emprunts : le compte `1688` est presque entièrement supprimé ; les intérêts courus sont enregistrés par nature : `1618` (emprunts obligataires convertibles), `1638` (autres emprunts obligataires), `1648` (emprunts auprès des établissements de crédit). `1688` ne subsiste que pour les intérêts courus sur autres emprunts et dettes assimilées.
+- Un chapitre qui parle d'intérêts courus sur un emprunt bancaire utilise donc `1648` (en signalant « avant 2025 : 1688 »).

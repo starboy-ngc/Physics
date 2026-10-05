@@ -25,7 +25,7 @@
   },
   {
    "h": "Coût des capitaux propres, coût de la dette, CMPC",
-   "html": "<p>Le <b>coût des capitaux propres</b> est la rentabilité exigée par les actionnaires. Deux modèles :</p>\n<ul>\n<li><b>MEDAF</b> (modèle d'évaluation des actifs financiers) : <span class=\"mono\">kCP = Rf + β × (Rm − Rf)</span>, avec Rf le taux sans risque, Rm la rentabilité du marché, β la sensibilité du titre au marché (β > 1 : plus risqué que le marché). Exemple : Rf 3 %, β 1,2, Rm 8 % : kCP = 3 % + 1,2 × 5 % = 9 %.</li>\n<li><b>Gordon-Shapiro</b> (dividendes croissant au taux constant g) : <span class=\"mono\">kCP = D1 / P0 + g</span>, D1 étant le dividende attendu dans un an et P0 le cours actuel. Exemple : D1 = 3 €, P0 = 60 €, g = 2 % : kCP = 5 % + 2 % = 7 %. Condition : g < kCP.</li>\n</ul>\n<p>Le <b>coût de la dette après impôt</b> tient compte de la déductibilité des intérêts : <span class=\"mono\">kD = i × (1 − t)</span>. Exemple (IS à 25 %) : 5 % × 0,75 = 3,75 %.</p>\n<p>Le <b>coût moyen pondéré du capital</b> (CMPC) pondère les deux coûts par la part de chaque ressource, en principe en valeurs de marché :</p>\n<p class=\"mono\">CMPC = kCP × CP / (CP + D) + i × (1 − t) × D / (CP + D)</p>\n<p>Exemple : CP 600 000 à 9 %, D 400 000 à 5 % avant IS (25 %) : CMPC = 0,6 × 9 % + 0,4 × 3,75 % = 5,4 % + 1,5 % = 6,9 %. C'est le taux d'actualisation des projets de risque moyen (chapitre 4).</p>"
+   "html": "<p>Le <b>coût des capitaux propres</b> est la rentabilité exigée par les actionnaires. Deux modèles :</p>\n<ul>\n<li><b>MEDAF</b> : <span class=\"mono\">kCP = Rf + β × (Rm − Rf)</span>, Rf taux sans risque, Rm rentabilité du marché, β sensibilité du titre au marché (β > 1 : plus risqué que le marché). Exemple : Rf 3 %, β 1,2, Rm 8 % : kCP = 3 % + 1,2 × 5 % = 9 %.</li>\n<li><b>Gordon-Shapiro</b> (dividendes croissant au taux constant g) : <span class=\"mono\">kCP = D1 / P0 + g</span>, D1 dividende attendu dans un an, P0 cours actuel. Exemple : D1 = 3 €, P0 = 60 €, g = 2 % : 7 %. Condition : g < kCP.</li>\n</ul>\n<p><b>Coût de la dette après impôt</b>, intérêts déductibles : <span class=\"mono\">kD = i × (1 − t)</span>. Exemple (IS à 25 %) : 5 % × 0,75 = 3,75 %.</p>\n<p>Le <b>coût moyen pondéré du capital</b> (CMPC) pondère les deux coûts par le poids de chaque ressource, en principe en valeurs de marché :</p>\n<p class=\"mono\">CMPC = kCP × CP / (CP + D) + i × (1 − t) × D / (CP + D)</p>\n<p>Exemple : CP 600 000 à 9 %, D 400 000 à 5 % avant IS (25 %) : CMPC = 0,6 × 9 % + 0,4 × 3,75 % = 6,9 %. C'est le taux d'actualisation des projets de risque moyen (chapitre 4).</p>"
   },
   {
    "h": "Structure financière et contraintes",
@@ -92,7 +92,11 @@
     "Emprunt bancaire classique sur 5 ans",
     "Subvention d'exploitation"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "Les quasi-fonds propres sont des ressources stables qui ne sont ni du capital ni de la dette ordinaire : remboursement subordonné (prêts participatifs), conversion possible en capital (obligations convertibles), engagement de blocage (comptes courants d'associés bloqués). L'emprunt classique est une dette ; la subvention d'exploitation est un produit, pas un financement durable.",
    "src": "Programme DCG UE6, quasi-fonds propres",
    "fiab": "stable",
@@ -108,15 +112,42 @@
     "Location-financement (sans propriété du bien)"
    ],
    "items": [
-    ["Augmentation de capital en numéraire", 0],
-    ["Autofinancement", 0],
-    ["Subvention d'investissement", 0],
-    ["Compte courant d'associé bloqué", 1],
-    ["Obligations convertibles", 1],
-    ["Prêt participatif", 1],
-    ["Emprunt obligataire ordinaire", 2],
-    ["Emprunt indivis bancaire", 2],
-    ["Crédit-bail mobilier", 3]
+    [
+     "Augmentation de capital en numéraire",
+     0
+    ],
+    [
+     "Autofinancement",
+     0
+    ],
+    [
+     "Subvention d'investissement",
+     0
+    ],
+    [
+     "Compte courant d'associé bloqué",
+     1
+    ],
+    [
+     "Obligations convertibles",
+     1
+    ],
+    [
+     "Prêt participatif",
+     1
+    ],
+    [
+     "Emprunt obligataire ordinaire",
+     2
+    ],
+    [
+     "Emprunt indivis bancaire",
+     2
+    ],
+    [
+     "Crédit-bail mobilier",
+     3
+    ]
    ],
    "why": "Capital, autofinancement et subventions d'investissement (compte 13, dans les capitaux propres) sont des fonds propres. Comptes courants bloqués, obligations convertibles et prêts participatifs sont des quasi-fonds propres. Emprunts indivis et obligataires ordinaires sont des dettes. Le crédit-bail est une location : le bien n'appartient pas à l'entreprise avant la levée de l'option.",
    "src": "Programme DCG UE6, modes de financement",
@@ -267,7 +298,11 @@
     "L'entreprise est propriétaire du bien dès la signature",
     "L'entreprise amortit le bien pendant la durée du contrat"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "Le crédit-bail est une location assortie d'une promesse de vente : le bailleur reste propriétaire, le bien est hors bilan chez le locataire (engagement en annexe), les loyers (612) sont déductibles et l'option d'achat permet d'acquérir le bien pour sa valeur résiduelle. Le locataire n'amortit pas un bien qui ne lui appartient pas (sauf en consolidation ou après la levée de l'option).",
    "src": "PCG, compte 612 ; programme DCG UE6, crédit-bail",
    "fiab": "stable",
@@ -403,7 +438,12 @@
     "Capacité d'autofinancement",
     "Emprunt nouveau"
    ],
-   "a": [0, 1, 2, 3],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ],
    "why": "Les emplois sont les décaissements durables : investissements, remboursements d'emprunts (capital seulement, les intérêts étant déjà dans la CAF), variation du BFR et dividendes. La CAF et les emprunts nouveaux sont des ressources.",
    "src": "Programme DCG UE6, plan de financement",
    "fiab": "stable",

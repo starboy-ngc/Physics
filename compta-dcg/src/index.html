@@ -231,7 +231,9 @@ const CHAP_BY = Object.fromEntries(CHAPS.map(c => [c.id, c]));
 const EXO = {};
 CHAPS.forEach(c => c.exercices.forEach(e => { EXO[e.id] = e; }));
 const PCG = DATA.pcg || [];
-const LABEL = Object.fromEntries(PCG.map(a => [a.num, a.label]));
+const LABEL_RAW = Object.fromEntries(PCG.map(a => [a.num, a.label]));
+// Libellé d'un compte : le sien, sinon celui du compte parent le plus précis (28154 → 2815).
+const LABEL = new Proxy(LABEL_RAW, { get(t, k) { if (typeof k !== "string") return undefined; for (let n = k; n.length >= 2; n = n.slice(0, -1)) if (t[n]) return t[n]; return ""; } });
 const CLASSES = [["1", "Capitaux"], ["2", "Immobilisations"], ["3", "Stocks"], ["4", "Tiers"], ["5", "Financiers"], ["6", "Charges"], ["7", "Produits"]];
 const TYPE_LABEL = { qcm: "Question à choix unique", multi: "Plusieurs réponses possibles", calc: "Calcul", tri: "Classement", ecriture: "Écriture au journal" };
 

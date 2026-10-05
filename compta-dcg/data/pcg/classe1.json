@@ -643,7 +643,7 @@
    "pcg2025": "Remplace le compte 1572 du plan 2014 (règlement ANC 2022-06)."
   },
   {
-   "num": "1527",
+   "num": "1526",
    "label": "Autres provisions pour charges",
    "sens": "C",
    "obligatoire": false,
@@ -720,7 +720,7 @@
    "explication": "Le compte 158 enregistrait, avant 2025, les autres provisions pour charges, notamment les provisions pour remises en état (1581). Il était crédité par le débit du 6815 et débité par le crédit du 7815. Il est remplacé par le 1527.",
    "exemple": "Avant 2025 : 6815 D 25 000 / 1581 C 25 000.",
    "piege": "",
-   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 1527."
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 1526."
   },
   {
    "num": "16",
@@ -840,7 +840,7 @@
    "explication": "Le compte 168 enregistre les emprunts et dettes financières qui ne proviennent ni d'obligations ni d'établissements de crédit : emprunts auprès de particuliers ou d'entreprises non liées (1681), rentes viagères capitalisées (1685), autres dettes (1687). Il est crédité à la réception des fonds et débité lors des remboursements. Il figure au passif dans les emprunts et dettes financières divers.",
    "exemple": "Emprunt de 50 000 € auprès d'un investisseur privé : 512 D 50 000 / 1681 C 50 000.",
    "piege": "Le compte 1688 Intérêts courus a disparu : les intérêts courus sur un emprunt 1681 ne peuvent plus y être enregistrés et sont rattachés au compte d'emprunt lui-même.",
-   "pcg2025": "Le compte 1688 Intérêts courus est supprimé par le règlement ANC 2022-06 ; les intérêts courus sont enregistrés dans une subdivision du compte d'emprunt concerné (1618, 1638, 1648)."
+   "pcg2025": "Le compte 1688 ne sert plus qu'aux intérêts courus sur autres emprunts et dettes assimilées ; les intérêts courus sur emprunts obligataires et bancaires sont en 1618, 1638 et 1648 (règlement ANC 2022-06)."
   },
   {
    "num": "1681",
@@ -874,13 +874,13 @@
   },
   {
    "num": "1688",
-   "label": "Intérêts courus",
+   "label": "Intérêts courus sur autres emprunts et dettes assimilées",
    "sens": "C",
    "obligatoire": false,
    "explication": "Le compte 1688 enregistrait, avant 2025, l'ensemble des intérêts courus non échus sur les emprunts (16881 sur emprunts convertibles, 16883 sur autres emprunts obligataires, 16884 sur emprunts bancaires, etc.). Il était crédité par le débit du 6611 à la clôture et contre-passé à l'ouverture. La réforme a réparti ces intérêts dans chaque compte d'emprunt : 1618, 1638, 1648.",
    "exemple": "Avant 2025 : 6611 D 4 500 / 16884 C 4 500 ; depuis 2025 : 6611 D 4 500 / 1648 C 4 500.",
    "piege": "Un sujet ancien qui mentionne 1688 doit être traduit en 1648 (emprunt bancaire) ou 1638 (emprunt obligataire).",
-   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 1618, 1638 ou 1648 selon la nature de l'emprunt."
+   "pcg2025": "Réduit par le règlement ANC 2022-06 : les intérêts courus sur emprunts obligataires et bancaires passent en 1618, 1638 et 1648 ; 1688 ne sert plus qu'aux intérêts courus sur les autres emprunts et dettes assimilées (168)."
   },
   {
    "num": "169",

@@ -33,7 +33,7 @@
   },
   {
    "h": "Inflation et risque",
-   "html": "<p><b>Inflation.</b> Les flux doivent être cohérents avec le taux : flux en euros courants (nominaux) actualisés au taux nominal, ou flux en euros constants (réels) actualisés au taux réel. Relation de <b>Fisher</b> : <span class=\"mono\">(1 + taux nominal) = (1 + taux réel) × (1 + inflation)</span>. Exemple : nominal 10,25 % et inflation 5 % : taux réel = 1,1025 / 1,05 − 1 = 5 %. L'approximation « réel ≈ nominal − inflation » est acceptable pour de faibles taux.</p>\n<p><b>Avenir probabilisable.</b> À chaque scénario on associe une probabilité ; on calcule l'<b>espérance</b> de la VAN, E(VAN) = Σ pk × VANk, et son <b>écart-type</b> σ = √(Σ pk × (VANk − E)²), mesure du risque. Le coefficient de variation σ / E permet de comparer des projets d'espérances différentes. Exemple : VAN de −20 000 (p 0,2), 30 000 (p 0,5), 60 000 (p 0,3) : E = 29 000 ; variance = 0,2 × 49 000² + 0,5 × 1 000² + 0,3 × 31 000² = 769 000 000 ; σ = 27 731.</p>\n<p><b>Arbre de décision</b> : décisions séquentielles, on calcule l'espérance de VAN à chaque nœud en remontant de la fin vers le début.</p>\n<p><b>Analyse de sensibilité</b> : on fait varier une hypothèse (prix, volume, coût) et on observe l'effet sur la VAN pour repérer les variables critiques. Le <b>seuil de rentabilité</b> (charges fixes / taux de marge sur coût variable) indique le CA minimum : charges fixes 120 000 et taux de MCV 40 % donnent 300 000 €.</p>"
+   "html": "<p><b>Inflation.</b> Flux en euros courants actualisés au taux nominal, ou flux en euros constants actualisés au taux réel. Relation de <b>Fisher</b> : <span class=\"mono\">(1 + nominal) = (1 + réel) × (1 + inflation)</span>. Exemple : nominal 10,25 %, inflation 5 % : réel = 1,1025 / 1,05 − 1 = 5 %. L'approximation « réel ≈ nominal − inflation » n'est acceptable que pour de faibles taux.</p>\n<p><b>Avenir probabilisable.</b> À chaque scénario on associe une probabilité ; on calcule l'<b>espérance</b> E(VAN) = Σ pk × VANk et l'<b>écart-type</b> σ = √(Σ pk × (VANk − E)²), mesure du risque. Le coefficient de variation σ / E compare des projets d'espérances différentes. Exemple : VAN de −20 000 (p 0,2), 30 000 (p 0,5), 60 000 (p 0,3) : E = 29 000 ; variance = 769 000 000 ; σ = 27 731.</p>\n<p><b>Arbre de décision</b> : pour des décisions séquentielles, on calcule l'espérance de VAN à chaque nœud en remontant de la fin vers le début.</p>\n<p><b>Analyse de sensibilité</b> : on fait varier une hypothèse (prix, volume, coût) et on mesure l'effet sur la VAN pour repérer les variables critiques. Le <b>seuil de rentabilité</b> (charges fixes / taux de marge sur coût variable) donne le CA minimum : charges fixes 120 000 et taux de MCV 40 % donnent 300 000 €.</p>"
   }
  ],
  "sources": [
@@ -136,7 +136,11 @@
     "TVA déductible sur l'acquisition",
     "Intérêts de l'emprunt finançant le projet"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "L'investissement initial comprend tout ce qui est décaissé pour rendre le projet opérationnel : prix HT, frais accessoires et le BFR supplémentaire (qui sera récupéré en fin de projet). La TVA déductible est récupérée, donc neutre. Les intérêts relèvent du financement : ils sont pris en compte via le taux d'actualisation, pas dans les flux.",
    "src": "Programme DCG UE6, flux d'investissement",
    "fiab": "stable",
@@ -177,7 +181,10 @@
     "L'IS calculé sur le résultat d'exploitation du projet",
     "La variation du BFR liée au projet"
    ],
-   "a": [0, 1],
+   "a": [
+    0,
+    1
+   ],
    "why": "On sépare la décision d'investissement de la décision de financement : les intérêts sont exclus des flux (le coût des fonds est dans le taux d'actualisation). Les dotations ne sont pas des décaissements ; seule leur économie d'impôt compte. En revanche, l'IS est bien un décaissement, et la variation du BFR un flux réel à inclure.",
    "src": "Programme DCG UE6, flux nets de trésorerie",
    "fiab": "stable",
@@ -204,15 +211,42 @@
     "Non pris en compte dans les flux"
    ],
    "items": [
-    ["Prix d'achat HT de la machine", 0],
-    ["Frais d'installation", 0],
-    ["Constitution du BFR", 0],
-    ["EBE − IS sur le résultat d'exploitation", 1],
-    ["Économie d'IS sur les amortissements", 1],
-    ["Valeur résiduelle nette d'impôt", 2],
-    ["Récupération du BFR", 2],
-    ["Intérêts de l'emprunt", 3],
-    ["TVA déductible sur l'acquisition", 3]
+    [
+     "Prix d'achat HT de la machine",
+     0
+    ],
+    [
+     "Frais d'installation",
+     0
+    ],
+    [
+     "Constitution du BFR",
+     0
+    ],
+    [
+     "EBE − IS sur le résultat d'exploitation",
+     1
+    ],
+    [
+     "Économie d'IS sur les amortissements",
+     1
+    ],
+    [
+     "Valeur résiduelle nette d'impôt",
+     2
+    ],
+    [
+     "Récupération du BFR",
+     2
+    ],
+    [
+     "Intérêts de l'emprunt",
+     3
+    ],
+    [
+     "TVA déductible sur l'acquisition",
+     3
+    ]
    ],
    "why": "La date 0 regroupe tous les décaissements nécessaires au démarrage, BFR compris. Les années 1 à n reçoivent les flux d'exploitation après impôt (l'économie d'IS sur amortissements y est déjà incluse quand on calcule EBE − IS). La dernière année ajoute la valeur résiduelle nette et la récupération du BFR. Intérêts (financement) et TVA récupérable sont exclus.",
    "src": "Programme DCG UE6, échéancier des flux d'un projet",
