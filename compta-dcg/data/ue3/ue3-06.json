@@ -1,0 +1,521 @@
+{
+ "id": "ue3-06",
+ "ue": "UE3",
+ "ordre": 6,
+ "title": "Protection sociale : cotisations, prestations et contrôle",
+ "resume": "Situer les régimes et les branches, calculer les cotisations courantes (assiette, PASS, CSG), les IJSS et les trimestres de retraite, connaître les conditions des prestations et la procédure de contrôle URSSAF.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Architecture de la protection sociale",
+   "html": "<p>La <b>sécurité sociale</b> (ordonnances de 1945) repose sur la solidarité nationale et le financement par cotisations et impôts affectés. Le <b>régime général</b> des salariés du privé comporte six <b>branches</b> : <b>maladie</b> (CNAM, CPAM : soins, indemnités journalières, maternité, invalidité, décès), <b>accidents du travail et maladies professionnelles</b> (gérée par la CNAM, financée par les seuls employeurs), <b>famille</b> (CNAF, CAF), <b>vieillesse</b> (CNAV, CARSAT), <b>autonomie</b> (CNSA, 5e branche créée en 2020) et <b>recouvrement</b> (réseau des URSSAF).</p>\n<p>À côté subsistent des <b>régimes spéciaux</b> (fonctionnaires, SNCF et RATP fermés aux nouveaux entrants, marins, clercs de notaires) et le régime agricole (MSA). Les <b>travailleurs indépendants</b>, après la suppression du RSI, sont rattachés au régime général depuis 2020 pour la maladie, la retraite de base et le recouvrement.</p>\n<p>L'<b>assurance chômage</b> est gérée paritairement par l'<b>Unédic</b> ; <b>France Travail</b> (ex-Pôle emploi, depuis le 1er janvier 2024) inscrit et accompagne les demandeurs d'emploi et verse l'allocation ; les contributions sont recouvrées par l'URSSAF. La <b>retraite complémentaire</b> obligatoire des salariés est l'<b>Agirc-Arrco</b> (régime par points, fusion en 2019). La <b>protection sociale complémentaire</b> ajoute une <b>couverture santé</b> collective obligatoire financée au moins à 50 % par l'employeur (ANI de 2013, loi de 2013) et, pour les cadres, une cotisation <b>prévoyance</b> patronale d'au moins <span class=\"mono\">1,50 %</span> de la tranche 1, affectée majoritairement au risque décès (ANI du 17 novembre 2017).</p>"
+  },
+  {
+   "h": "Cotisations : assiette, plafond et principaux taux",
+   "html": "<p>L'<b>assiette</b> des cotisations est constituée de toutes les sommes versées en contrepartie ou à l'occasion du travail (<span class=\"mono\">CSS, art. L. 242-1</span>) : salaire, primes, avantages en nature, indemnités de congés ; en sont exclus, sous conditions, les frais professionnels, l'intéressement, la participation et la part patronale de prévoyance dans certaines limites. Certaines cotisations sont <b>plafonnées</b> au <b>PASS</b> (plafond annuel de la sécurité sociale) : en 2025, <span class=\"mono\">47 100 €</span> par an, <span class=\"mono\">3 925 €</span> par mois.</p>\n<table><thead><tr><th>Cotisation (2025)</th><th>Salarié</th><th>Employeur</th><th>Assiette</th></tr></thead>\n<tbody>\n<tr><td>Maladie, maternité, invalidité, décès</td><td>–</td><td>13 % (7 % si salaire ≤ 2,25 SMIC)</td><td>totalité</td></tr>\n<tr><td>Vieillesse plafonnée</td><td>6,90 %</td><td>8,55 %</td><td>jusqu'au PASS</td></tr>\n<tr><td>Vieillesse déplafonnée</td><td>0,40 %</td><td>2,02 %</td><td>totalité</td></tr>\n<tr><td>Allocations familiales</td><td>–</td><td>5,25 % (3,45 % si salaire ≤ 3,3 SMIC)</td><td>totalité</td></tr>\n<tr><td>AT/MP</td><td>–</td><td>taux notifié par la CARSAT</td><td>totalité</td></tr>\n<tr><td>Assurance chômage</td><td>–</td><td>4,05 %</td><td>jusqu'à 4 PASS</td></tr>\n<tr><td>Agirc-Arrco T1 / T2</td><td>3,15 % / 8,64 %</td><td>4,72 % / 12,95 %</td><td>T1 ≤ PASS ; T2 de 1 à 8 PASS</td></tr>\n<tr><td>CSG / CRDS</td><td>9,2 % / 0,5 %</td><td>–</td><td>98,25 % du brut</td></tr>\n</tbody></table>\n<p>S'ajoutent l'AGS, le FNAL, la contribution solidarité autonomie, le versement mobilité, la formation et la taxe d'apprentissage, toutes patronales. La <b>CSG</b> se décompose en <span class=\"mono\">6,8 %</span> déductible du revenu imposable et <span class=\"mono\">2,4 %</span> non déductible ; CSG et CRDS s'appliquent sur <span class=\"mono\">98,25 %</span> du brut (abattement de 1,75 % pour frais, limité à 4 PASS). Tous ces taux sont millésimés : les seuils de 2,25 et 3,3 SMIC ont été abaissés en 2025 et la LFSS pour 2025 programme leur disparition en 2026.</p>"
+  },
+  {
+   "h": "Réduction générale, déclaration et paiement",
+   "html": "<p>La <b>réduction générale des cotisations patronales</b> (ex-« réduction Fillon », <span class=\"mono\">CSS, art. L. 241-13</span>) allège les cotisations sur les bas salaires. En 2025, elle s'applique aux rémunérations annuelles inférieures à <span class=\"mono\">1,6 SMIC</span> et porte sur les cotisations maladie, vieillesse, famille, FNAL, CSA, une fraction de l'AT, l'assurance chômage et la retraite complémentaire. Formule : coefficient = <span class=\"mono\">(T / 0,6) × (1,6 × SMIC annuel / rémunération annuelle brute − 1)</span>, T étant la somme des taux concernés (de l'ordre de 0,32, selon la taille de l'entreprise) ; la réduction = coefficient × rémunération. Elle est maximale au SMIC et nulle à 1,6 SMIC. La LFSS pour 2025 remplace, à compter de 2026, les réductions de taux maladie et famille et la réduction générale par une <b>réduction unique dégressive</b> jusqu'à 3 SMIC.</p>\n<p><b>Déclaration</b> : la <b>DSN</b> (déclaration sociale nominative) mensuelle, issue de la paie, remplace la plupart des déclarations sociales et transmet les données aux organismes. <b>Paiement</b> à l'URSSAF : le <span class=\"mono\">5</span> du mois suivant pour les employeurs d'au moins 50 salariés payant les salaires le même mois, le <span class=\"mono\">15</span> pour les autres ; les employeurs de moins de 11 salariés peuvent opter pour un paiement trimestriel. L'employeur <b>précompte</b> la part salariale et en est seul redevable : le non-versement des cotisations précomptées est pénalement sanctionné.</p>\n<p><b>Prescription</b> (<span class=\"mono\">CSS, art. L. 244-3</span>) : les cotisations se prescrivent par <b>3 ans</b> à compter de l'expiration de l'année civile au titre de laquelle elles sont dues (<b>5 ans</b> en cas de travail dissimulé) ; l'action en remboursement du cotisant est aussi de 3 ans. Majorations de retard : 5 % puis 0,2 % par mois.</p>"
+  },
+  {
+   "h": "Prestations maladie, maternité, invalidité, décès",
+   "html": "<p><b>Indemnités journalières maladie</b> (<span class=\"mono\">CSS, art. L. 321-1, R. 323-1 et s.</span>) : conditions d'ouverture pour un arrêt de moins de 6 mois : avoir travaillé au moins <b>150 heures</b> au cours des 3 mois précédents ou cotisé sur un salaire d'au moins 1 015 fois le SMIC horaire sur 6 mois. <b>Délai de carence</b> de <span class=\"mono\">3 jours</span> (sauf reprise d'un arrêt lié à une affection de longue durée). Montant : <span class=\"mono\">50 %</span> du <b>salaire journalier de base</b> = somme des 3 derniers salaires bruts / 91,25, les salaires étant retenus dans la limite de <span class=\"mono\">1,4 SMIC</span> mensuel pour les arrêts débutant à compter du <b>1er avril 2025</b> (1,8 SMIC auparavant, décret n° 2025-160) : IJ maximale <span class=\"mono\">41,47 €</span> en 2025. Limite de 360 IJ sur 3 ans, hors affection de longue durée (3 ans par affection). Les IJ sont imposables et soumises à CSG-CRDS ; elles sont souvent complétées par l'employeur (chapitre 3) ou la prévoyance.</p>\n<p><b>Maternité</b> : 10 mois d'immatriculation à la date présumée de l'accouchement et les mêmes conditions d'activité ; IJ égale au salaire journalier <b>net</b> (brut des 3 derniers mois plafonné au PASS, diminué de 21 %), sans carence, pendant le congé de 16 semaines ; paternité : mêmes règles pendant 25 jours.</p>\n<p><b>Invalidité</b> : capacité de travail ou de gain réduite d'au moins <b>2/3</b> ; pension de <b>catégorie 1</b> (peut travailler) = 30 % du salaire annuel moyen des 10 meilleures années, <b>catégorie 2</b> = 50 %, <b>catégorie 3</b> = 50 % + majoration pour tierce personne. <b>Décès</b> : capital décès forfaitaire versé aux ayants droit prioritaires (conjoint, enfants) si l'assuré était en activité, indemnisé ou invalide.</p>"
+  },
+  {
+   "h": "Accidents du travail et maladies professionnelles",
+   "html": "<p>L'<b>accident du travail</b> est celui survenu « par le fait ou à l'occasion du travail » (<span class=\"mono\">CSS, art. L. 411-1</span>) : tout accident survenu au temps et au lieu du travail est <b>présumé</b> imputable au travail, sauf preuve d'une cause totalement étrangère. L'<b>accident de trajet</b> (<span class=\"mono\">L. 411-2</span>) couvre le parcours normal entre la résidence (ou le lieu de repas) et le travail (mêmes prestations, sans la protection de l'emploi du Code du travail). La <b>maladie professionnelle</b> est présumée d'origine professionnelle si elle figure dans un <b>tableau</b> et remplit ses conditions ; sinon, le comité régional de reconnaissance (CRRMP) peut la reconnaître si elle est essentiellement causée par le travail et entraîne une incapacité d'au moins 25 %.</p>\n<p><b>Procédure</b> : le salarié informe l'employeur dans les <span class=\"mono\">24 heures</span> ; l'employeur <b>déclare</b> à la CPAM dans les <span class=\"mono\">48 heures</span> (hors dimanches et jours fériés) et peut émettre des <b>réserves motivées</b> dans les 10 jours ; la caisse statue dans les 30 jours (90 en cas d'investigations).</p>\n<p><b>Prestations</b> : soins pris en charge à 100 %, <b>IJ sans délai de carence</b> (le jour de l'accident est payé par l'employeur) égales à <span class=\"mono\">60 %</span> du salaire journalier pendant 28 jours puis <span class=\"mono\">80 %</span> à partir du 29e jour, dans la limite d'un plafond ; en cas d'<b>incapacité permanente</b>, capital si le taux est inférieur à 10 %, <b>rente</b> au-delà ; rente aux ayants droit en cas de décès.</p>\n<p><b>Faute inexcusable</b> de l'employeur (Cass. soc., 28 février 2002, arrêts « amiante ») : manquement à l'obligation de sécurité alors qu'il avait ou aurait dû avoir conscience du danger et n'a pas pris les mesures nécessaires ; elle ouvre droit à la majoration de la rente et à la réparation des préjudices personnels.</p>"
+  },
+  {
+   "h": "Famille et retraite de base",
+   "html": "<p><b>Prestations familiales</b> (CAF) : les <b>allocations familiales</b> sont versées à partir du <b>deuxième enfant</b> à charge de moins de 20 ans, avec un montant <b>modulé selon les ressources</b> depuis 2015 ; s'y ajoutent la PAJE (naissance, allocation de base, PreParE, garde), le complément familial (3 enfants), l'allocation de rentrée scolaire, l'AAH et les aides au logement, le plus souvent sous conditions de ressources.</p>\n<p><b>Retraite de base</b> : régime par <b>répartition</b> en annuités. Pension = <span class=\"mono\">SAM × taux × (trimestres validés / durée requise)</span>, où le salaire annuel moyen (SAM) porte sur les <b>25 meilleures années</b> et le taux plein est de <span class=\"mono\">50 %</span>. Un <b>trimestre</b> est validé par un salaire soumis à cotisations égal à <b>150 fois le SMIC horaire</b> (en 2025 : 150 × 11,88 = <span class=\"mono\">1 782 €</span>), au plus 4 par an ; s'y ajoutent des trimestres assimilés et de majoration.</p>\n<p><b>Réforme du 14 avril 2023</b> : l'<b>âge légal</b> passe progressivement de 62 à <span class=\"mono\">64 ans</span> à raison de 3 mois par génération (à partir des assurés nés le 1er septembre 1961 ; 64 ans pour la génération 1968) et la <b>durée d'assurance</b> requise atteint <span class=\"mono\">172 trimestres</span> dès la génération 1965. L'âge du <b>taux plein automatique</b> reste <span class=\"mono\">67 ans</span>. <b>Décote</b> : 1,25 % par trimestre manquant (au plus 20), appliquée au taux de 50 % (soit −0,625 point par trimestre) ; <b>surcote</b> : +1,25 % par trimestre cotisé au-delà de l'âge légal et de la durée requise. <b>Minimum contributif</b> pour les carrières complètes à bas salaires ; carrières longues, retraite progressive, cumul emploi-retraite. La loi de financement de la sécurité sociale pour 2026 a suspendu la montée en charge de ce calendrier (gel de l'âge et de la durée pour les générations suivantes) dans l'attente d'une nouvelle réforme : vérifier le calendrier applicable à la date de l'examen.</p>"
+  },
+  {
+   "h": "Assurance chômage et minima sociaux",
+   "html": "<p>L'<b>allocation d'aide au retour à l'emploi</b> (ARE) suppose : une <b>privation involontaire d'emploi</b> (licenciement, fin de CDD ou de mission, rupture conventionnelle, <b>démission légitime</b> : suivi du conjoint, non-paiement des salaires, violences, projet de reconversion après 5 ans d'activité continue…), une <b>durée d'affiliation</b> d'au moins <span class=\"mono\">6 mois</span> (130 jours ou 910 heures) au cours des <span class=\"mono\">24 derniers mois</span> (36 mois à partir de 55 ans depuis le 1er avril 2025), l'inscription à France Travail, la recherche active d'emploi, l'aptitude physique et l'absence de retraite à taux plein.</p>\n<p><b>Durée</b> : un jour indemnisé par jour d'affiliation, modulée par un coefficient de contracyclicité de 0,75 lorsque le chômage est inférieur à 9 %, avec un minimum de 6 mois et un maximum de <span class=\"mono\">18 mois</span> avant 55 ans, 22,5 mois à 55-56 ans, 27 mois à partir de 57 ans (règles 2025). <b>Montant</b> : le plus élevé entre 57 % du salaire journalier de référence et 40,4 % de ce salaire plus une partie fixe, encadré par un minimum et un plafond de 75 % ; <b>dégressivité</b> de 30 % à partir du 7e mois pour les allocataires de moins de 57 ans dont le salaire antérieur dépassait un seuil élevé. Un <b>délai d'attente</b> de 7 jours et des différés (congés payés, indemnités supra-légales) retardent le versement.</p>\n<p><b>Minima sociaux</b> (solidarité, financés par l'impôt) : <b>RSA</b> (depuis 2025, inscription à France Travail et contrat d'engagement avec 15 heures d'activité hebdomadaires), <b>ASS</b> pour les chômeurs en fin de droits, <b>prime d'activité</b>, <b>ASPA</b> (minimum vieillesse), <b>AAH</b>. Ils sont différentiels et soumis à conditions de ressources.</p>"
+  },
+  {
+   "h": "Contrôle URSSAF, travail dissimulé et contentieux",
+   "html": "<p>L'URSSAF <b>contrôle</b> l'assiette, le taux et le calcul des cotisations (<span class=\"mono\">CSS, art. L. 243-7</span>). Procédure : <b>avis de contrôle</b> envoyé au moins <b>30 jours</b> avant la première visite (sauf travail dissimulé), mentionnant la charte du cotisant contrôlé ; vérifications sur place ou sur pièces (petites entreprises) ; <b>lettre d'observations</b> motivée ouvrant une <b>période contradictoire</b> de <span class=\"mono\">30 jours</span> (prolongeable de 30 jours sur demande) pendant laquelle le cotisant répond ; réponse de l'inspecteur ; puis <b>mise en demeure</b> et recouvrement. L'absence d'observation sur une pratique vérifiée lors d'un contrôle antérieur vaut <b>accord tacite</b> opposable.</p>\n<p><b>Travail dissimulé</b> (<span class=\"mono\">C. trav., art. L. 8221-3 et L. 8221-5</span>) : dissimulation d'activité (défaut d'immatriculation) ou d'emploi salarié (absence de DPAE ou de bulletin de paie, minoration des heures). Sanctions : redressement <b>sans limitation de la réduction générale</b> (annulation des exonérations), <b>majoration de 25 %</b> du redressement (40 % en cas de circonstances aggravantes : mineurs, personnes vulnérables, bande organisée), prescription portée à 5 ans, <b>indemnité forfaitaire</b> de 6 mois de salaire au salarié (<span class=\"mono\">L. 8223-1</span>), peines pénales (jusqu'à 3 ans d'emprisonnement et 45 000 € d'amende pour une personne physique, 225 000 € pour une personne morale), exclusion des aides publiques.</p>\n<p><b>Contentieux</b> : la contestation d'une mise en demeure ou d'une décision de la caisse est portée dans les <span class=\"mono\">2 mois</span> devant la <b>commission de recours amiable</b> (CRA) de l'organisme, préalable obligatoire ; en cas de rejet (ou de silence pendant 2 mois), saisine du <b>pôle social du tribunal judiciaire</b> dans les 2 mois, puis appel devant la cour d'appel spécialement désignée.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CSS, art. L. 200-1 et L. 200-2",
+   "note": "Branches du régime général (maladie, AT/MP, vieillesse, famille, autonomie) et recouvrement"
+  },
+  {
+   "ref": "CSS, art. L. 242-1 et D. 242-17 ; arrêté du 19 décembre 2024 (PASS 2025 : 47 100 €)",
+   "note": "Assiette des cotisations et plafond annuel de la sécurité sociale"
+  },
+  {
+   "ref": "CSS, art. L. 241-2, L. 241-3, L. 241-6, L. 241-13 ; D. 241-7",
+   "note": "Taux maladie, vieillesse, allocations familiales ; réduction générale (1,6 SMIC) et sa formule"
+  },
+  {
+   "ref": "CSS, art. L. 136-1-1 et L. 136-8 ; CGI, art. 154 quinquies",
+   "note": "CSG 9,2 % sur 98,25 % du salaire, dont 6,8 % déductible ; CRDS 0,5 %"
+  },
+  {
+   "ref": "CSS, art. L. 321-1, R. 313-3, R. 323-1, R. 323-4 et R. 323-9 ; décret n° 2025-160 du 20 février 2025",
+   "note": "IJ maladie : conditions, carence de 3 jours, 50 % du salaire journalier plafonné à 1,4 SMIC depuis le 1er avril 2025"
+  },
+  {
+   "ref": "CSS, art. L. 411-1, L. 411-2, L. 433-1, R. 433-1 et R. 433-3 ; L. 452-1 ; Cass. soc., 28 février 2002 (amiante)",
+   "note": "AT/MP : présomption d'imputabilité, IJ 60 % puis 80 %, faute inexcusable"
+  },
+  {
+   "ref": "CSS, art. L. 161-17-2, L. 161-17-3 et L. 351-1 ; loi n° 2023-270 du 14 avril 2023 ; R. 351-9",
+   "note": "Âge légal (64 ans), durée d'assurance (172 trimestres), validation d'un trimestre (150 SMIC horaires), décote et surcote"
+  },
+  {
+   "ref": "C. trav., art. L. 5422-1 et s. ; décret n° 2024-1260 du 30 décembre 2024 (règlement d'assurance chômage 2025)",
+   "note": "ARE : affiliation de 6 mois sur 24 (36 à partir de 55 ans), durées maximales, dégressivité"
+  },
+  {
+   "ref": "CSS, art. L. 243-7, R. 243-59, L. 243-7-7 et L. 244-3 ; C. trav., art. L. 8221-5 et L. 8223-1",
+   "note": "Contrôle URSSAF (avis, lettre d'observations, période contradictoire), majoration de 25 %/40 %, prescription 3 ans/5 ans, indemnité de 6 mois"
+  },
+  {
+   "ref": "CSS, art. L. 142-1, L. 142-4 et R. 142-1",
+   "note": "Commission de recours amiable (2 mois) puis pôle social du tribunal judiciaire"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "CSS, art. L. 200-2",
+   "q": "La cinquième branche du régime général de la sécurité sociale, créée en 2020, est la branche :",
+   "opts": [
+    "Chômage",
+    "Autonomie",
+    "Dépendance hospitalière",
+    "Retraite complémentaire"
+   ],
+   "a": 1,
+   "why": "La loi du 7 août 2020 a créé la branche autonomie, gérée par la Caisse nationale de solidarité pour l'autonomie (CNSA), à côté des branches maladie, AT/MP, famille et vieillesse ; le recouvrement constitue une sixième mission confiée aux URSSAF. L'assurance chômage n'est pas une branche de la sécurité sociale (régime paritaire Unédic/France Travail), pas plus que la retraite complémentaire Agirc-Arrco."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "Loi n° 2017-1836 du 30 décembre 2017 ; CSS, art. L. 611-1",
+   "q": "Depuis 2020, la protection sociale des travailleurs indépendants (artisans, commerçants, professions libérales non réglementées) est assurée :",
+   "opts": [
+    "Par le RSI, régime autonome",
+    "Par le régime général, auquel ils sont rattachés",
+    "Par la MSA",
+    "Par l'Unédic"
+   ],
+   "a": 1,
+   "why": "Le régime social des indépendants (RSI) a été supprimé par la LFSS pour 2018 ; après une période transitoire achevée en 2020, les indépendants relèvent du régime général (CPAM pour la maladie, CARSAT pour la retraite de base, URSSAF pour le recouvrement), avec des règles de cotisation propres. La MSA concerne le secteur agricole et l'Unédic l'assurance chômage des salariés."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "millésimé 2025",
+   "src": "Arrêté du 19 décembre 2024 fixant le PASS 2025",
+   "q": "En 2025, le plafond annuel de la sécurité sociale (PASS) est fixé à :",
+   "opts": [
+    "43 992 €",
+    "46 368 €",
+    "47 100 €",
+    "48 060 €"
+   ],
+   "a": 2,
+   "why": "Le PASS 2025 s'élève à 47 100 € par an, soit 3 925 € par mois (hausse de 1,6 % par rapport à 46 368 € en 2024). Il sert d'assiette plafond à la cotisation vieillesse plafonnée et à la tranche 1 Agirc-Arrco, et de référence à de nombreux plafonds d'exonération (indemnités de rupture, épargne salariale). Il est revalorisé chaque 1er janvier : c'est un chiffre millésimé."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. L. 241-2, L. 241-3, L. 241-6 ; C. trav., art. L. 5422-9",
+   "q": "Plusieurs réponses possibles. En 2025, quelles cotisations ou contributions sont exclusivement à la charge de l'employeur ?",
+   "opts": [
+    "Cotisation d'assurance maladie",
+    "Cotisation d'allocations familiales",
+    "Cotisation d'accidents du travail et maladies professionnelles",
+    "Cotisation vieillesse plafonnée",
+    "Contribution sociale généralisée (CSG)"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Depuis 2018, la cotisation maladie n'a plus de part salariale (hors Alsace-Moselle) ; les allocations familiales et l'AT/MP sont depuis toujours patronales, de même que la contribution d'assurance chômage (4,05 %). La cotisation vieillesse plafonnée est partagée (6,90 % salarié / 8,55 % employeur) et la CSG est une contribution salariale (9,2 %), précomptée mais à la charge du salarié."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. L. 136-1-1 et L. 136-8 ; CGI, art. 154 quinquies",
+   "q": "En 2025, un salarié perçoit un salaire brut mensuel de 3 000 €. Calculez le montant de la CSG déductible (taux de 6,8 %) prélevée sur sa paie, sachant que l'assiette est de 98,25 % du brut (en €, arrondi au centime).",
+   "a": 200.43,
+   "unit": "€",
+   "tol": 0.05,
+   "why": "Assiette : 3 000 × 98,25 % = 2 947,50 €. CSG déductible : 2 947,50 × 6,8 % = 200,43 €. La CSG non déductible (2,4 %) s'élève à 70,74 € et la CRDS (0,5 %) à 14,74 €, soit un total CSG-CRDS de 285,91 €. Oublier l'abattement de 1,75 % (calcul sur 3 000 €) donnerait 204 €. L'abattement ne s'applique que dans la limite de 4 PASS et uniquement aux revenus d'activité."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. L. 241-3 et D. 242-4 ; PASS 2025",
+   "q": "En 2025 (plafond mensuel de la sécurité sociale : 3 925 €), un salarié perçoit 4 500 € bruts dans le mois. Calculez le total de ses cotisations salariales d'assurance vieillesse : part plafonnée au taux de 6,90 % et part déplafonnée au taux de 0,40 % (en €, arrondi au centime).",
+   "a": 288.83,
+   "unit": "€",
+   "tol": 0.05,
+   "why": "La cotisation plafonnée se calcule sur la rémunération limitée au plafond : 3 925 × 6,90 % = 270,83 €. La cotisation déplafonnée porte sur la totalité : 4 500 × 0,40 % = 18,00 €. Total : 288,83 €. Appliquer 6,90 % aux 4 500 € (310,50 €) oublierait le plafonnement, qui est précisément la raison d'être du PASS."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. L. 241-13",
+   "q": "En 2025, la réduction générale des cotisations patronales (ex-réduction Fillon) s'applique aux rémunérations annuelles brutes :",
+   "opts": [
+    "Inférieures au SMIC uniquement",
+    "Inférieures à 1,6 SMIC, de façon dégressive",
+    "Inférieures à 2,5 SMIC, de façon uniforme",
+    "Supérieures à 3 SMIC"
+   ],
+   "a": 1,
+   "why": "La réduction générale (L. 241-13) est dégressive : maximale au niveau du SMIC, elle s'annule lorsque la rémunération annuelle atteint 1,6 SMIC. Son coefficient vaut (T/0,6) × (1,6 × SMIC annuel / rémunération − 1). La LFSS pour 2025 prévoit sa fusion avec les réductions de taux maladie et famille en une réduction unique dégressive jusqu'à 3 SMIC à compter de 2026 : le seuil de 1,6 SMIC est donc millésimé."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. L. 241-13 et D. 241-7",
+   "q": "En 2025, le SMIC annuel brut pour 35 heures est de 21 621,60 €. Un salarié à temps plein d'une entreprise de 30 salariés a perçu 24 000 € bruts dans l'année. On retient pour l'exercice un paramètre T de 0,32. Calculez la réduction générale de cotisations patronales annuelle selon la formule coefficient = (T / 0,6) × (1,6 × SMIC annuel / rémunération − 1), sans arrondi intermédiaire (en €, arrondi à l'euro).",
+   "a": 5650,
+   "unit": "€",
+   "tol": 5,
+   "why": "1,6 × 21 621,60 = 34 594,56 € ; 34 594,56 / 24 000 = 1,44144 ; 1,44144 − 1 = 0,44144 ; coefficient = (0,32 / 0,6) × 0,44144 = 0,23544. Réduction = 0,23544 × 24 000 ≈ 5 650 €. La rémunération (1,11 SMIC) est bien inférieure à 1,6 SMIC. À 1,6 SMIC exactement (34 594,56 €), le coefficient serait nul ; au SMIC, il serait égal à T, soit une réduction de 0,32 × 21 621,60 = 6 919 €."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. L. 244-3",
+   "q": "L'URSSAF souhaite en 2025 recouvrer des cotisations dues au titre des salaires de l'année 2022. Elle dispose pour le faire, hors travail dissimulé, d'un délai expirant le :",
+   "opts": [
+    "31 décembre 2024",
+    "31 décembre 2025",
+    "31 décembre 2027",
+    "31 décembre 2032"
+   ],
+   "a": 1,
+   "why": "Les cotisations se prescrivent par trois ans à compter de l'expiration de l'année civile au titre de laquelle elles sont dues (L. 244-3) : pour 2022, le délai court du 1er janvier 2023 au 31 décembre 2025. La mise en demeure doit donc être envoyée avant cette date. En cas de travail dissimulé constaté par procès-verbal, le délai est porté à cinq ans (31 décembre 2027)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "CSS, art. R. 323-1",
+   "q": "En cas d'arrêt de travail pour maladie non professionnelle, les indemnités journalières de la sécurité sociale sont versées :",
+   "opts": [
+    "Dès le premier jour d'arrêt",
+    "À partir du 2e jour",
+    "À partir du 4e jour, après un délai de carence de 3 jours",
+    "À partir du 8e jour, après un délai de carence de 7 jours"
+   ],
+   "a": 2,
+   "why": "Le délai de carence des IJ maladie est de trois jours (R. 323-1) : l'indemnisation commence le quatrième jour. Il ne s'applique pas en cas de prolongation d'un arrêt ou d'arrêts successifs liés à une affection de longue durée, ni en cas d'accident du travail (le jour de l'accident est payé par l'employeur). Le délai de 7 jours est celui du maintien de salaire par l'employeur au titre de la loi de mensualisation."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. R. 323-4 et R. 323-9",
+   "q": "Nadia, en arrêt maladie à partir du 10 mai 2025, a perçu 2 100 € bruts au cours de chacun des trois mois précédant l'arrêt. Calculez le montant brut de son indemnité journalière de sécurité sociale (50 % du salaire journalier de base, obtenu en divisant la somme des trois derniers salaires par 91,25), en €, arrondi au centime.",
+   "a": 34.52,
+   "unit": "€",
+   "tol": 0.05,
+   "why": "Salaire journalier de base = (3 × 2 100) / 91,25 = 6 300 / 91,25 = 69,04 €. IJ = 50 % × 69,04 = 34,52 €. Le salaire mensuel de 2 100 € est inférieur au plafond de 1,4 SMIC (2 522,52 € en 2025), le plafonnement ne joue donc pas. L'IJ est versée à partir du 4e jour d'arrêt, après la carence de 3 jours, et l'employeur peut compléter au titre de la mensualisation."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. R. 323-4 (décret n° 2025-160 du 20 février 2025)",
+   "q": "Depuis le 1er avril 2025, le salaire pris en compte pour les IJ maladie est plafonné à 1,4 fois le SMIC mensuel brut, soit 1,4 × 1 801,80 € en 2025. Un cadre payé 3 600 € bruts par mois est en arrêt à compter du 2 juin 2025. Calculez son IJ maladie brute maximale (50 % du salaire journalier de base = 3 salaires plafonnés / 91,25), en €, arrondi au centime.",
+   "a": 41.47,
+   "unit": "€",
+   "tol": 0.05,
+   "why": "Salaire mensuel plafonné : 1,4 × 1 801,80 = 2 522,52 € (inférieur aux 3 600 € perçus). Salaire journalier de base = 3 × 2 522,52 / 91,25 = 82,93 €. IJ = 50 % × 82,93 = 41,47 €. C'est l'IJ maximale de 2025 ; avant le 1er avril 2025, avec le plafond de 1,8 SMIC, elle atteignait 53,31 €. La perte est généralement compensée par l'employeur ou la prévoyance d'entreprise."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. L. 411-1",
+   "q": "Un salarié se blesse en tombant dans l'atelier pendant ses heures de travail. Pour la reconnaissance de l'accident du travail :",
+   "opts": [
+    "Il doit prouver que la chute est due à une faute de l'employeur",
+    "L'accident survenu au temps et au lieu du travail est présumé imputable au travail ; l'employeur ou la caisse doit prouver une cause totalement étrangère pour l'écarter",
+    "Il doit prouver qu'il n'a commis aucune faute",
+    "La reconnaissance dépend de l'accord écrit de l'employeur"
+   ],
+   "a": 1,
+   "why": "L'article L. 411-1 pose une présomption d'imputabilité : toute lésion survenue au temps et au lieu du travail est présumée accident du travail, sans que le salarié ait à prouver une faute de quiconque. Cette présomption ne tombe que si la caisse ou l'employeur établit que la lésion a une cause totalement étrangère au travail. L'employeur peut émettre des réserves motivées, mais il ne détient pas de droit de veto sur la reconnaissance."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. L. 441-2 et R. 441-3",
+   "q": "Informé d'un accident du travail, l'employeur doit le déclarer à la CPAM :",
+   "opts": [
+    "Dans les 24 heures",
+    "Dans les 48 heures, dimanches et jours fériés non compris",
+    "Dans les 8 jours",
+    "Dans le mois suivant"
+   ],
+   "a": 1,
+   "why": "Le salarié informe l'employeur dans les 24 heures (sauf force majeure) et l'employeur déclare l'accident à la caisse dans les 48 heures, dimanches et jours fériés non compris (L. 441-2, R. 441-3), en pouvant formuler des réserves motivées dans les 10 jours. À défaut de déclaration, le salarié peut la faire lui-même dans les deux ans et l'employeur encourt une amende et le remboursement des prestations. Le délai de 8 jours concerne la DPAE, le délai d'un mois rien de pertinent ici."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. L. 433-1 et R. 433-1 à R. 433-3",
+   "q": "Un salarié victime d'un accident du travail a un salaire journalier de référence de 80 €. Il est arrêté 45 jours. Quel est le montant brut de son indemnité journalière AT à partir du 29e jour d'arrêt (en €) ?",
+   "a": 64,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Les IJ accident du travail sont égales à 60 % du salaire journalier pendant les 28 premiers jours (80 × 60 % = 48 €) puis à 80 % à compter du 29e jour (80 × 80 % = 64 €), dans la limite de plafonds réglementaires. Il n'y a pas de délai de carence : le jour de l'accident est payé par l'employeur et les IJ courent dès le lendemain. En maladie ordinaire, l'IJ serait de 50 % après trois jours de carence."
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "CSS, art. L. 452-1 ; Cass. soc., 28 février 2002",
+   "q": "La faute inexcusable de l'employeur en matière d'accident du travail est caractérisée lorsque :",
+   "opts": [
+    "L'employeur a voulu blesser le salarié",
+    "L'employeur avait ou aurait dû avoir conscience du danger auquel était exposé le salarié et n'a pas pris les mesures nécessaires pour l'en préserver",
+    "Le salarié n'a commis aucune faute",
+    "L'accident a entraîné une incapacité permanente d'au moins 10 %"
+   ],
+   "a": 1,
+   "why": "Depuis les arrêts « amiante » du 28 février 2002, la faute inexcusable résulte du manquement à l'obligation de sécurité lorsque l'employeur avait ou aurait dû avoir conscience du danger et n'a pas pris les mesures nécessaires. L'intention de nuire caractériserait une faute intentionnelle, régime distinct. La reconnaissance ouvre droit à la majoration de la rente et à la réparation des préjudices personnels, que la caisse avance puis récupère auprès de l'employeur."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. L. 341-1 et L. 341-4",
+   "q": "Un assuré dont la capacité de travail est réduite d'au moins deux tiers et qui reste capable d'exercer une activité rémunérée relève de l'invalidité de :",
+   "opts": [
+    "Catégorie 1, pension de 30 % du salaire annuel moyen",
+    "Catégorie 2, pension de 50 % du salaire annuel moyen",
+    "Catégorie 3, pension de 50 % majorée pour tierce personne",
+    "Aucune catégorie, l'invalidité exigeant une incapacité totale"
+   ],
+   "a": 0,
+   "why": "L'invalidité suppose une réduction d'au moins 2/3 de la capacité de travail ou de gain (L. 341-1). La catégorie 1 vise l'invalide capable d'exercer une activité (30 % du salaire annuel moyen des 10 meilleures années), la catégorie 2 celui qui est absolument incapable d'exercer une profession (50 %), la catégorie 3 celui qui a de plus besoin de l'assistance d'une tierce personne (50 % + majoration). La pension est remplacée par la retraite à l'âge légal."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "CSS, art. L. 521-1",
+   "q": "Les allocations familiales sont versées :",
+   "opts": [
+    "Dès le premier enfant, sans condition",
+    "À partir du deuxième enfant à charge, avec un montant modulé selon les ressources du foyer",
+    "Uniquement aux familles de trois enfants et plus",
+    "Uniquement aux foyers non imposables"
+   ],
+   "a": 1,
+   "why": "Les allocations familiales sont dues à partir du deuxième enfant à charge de moins de 20 ans (L. 521-1) ; depuis le 1er juillet 2015, leur montant est modulé en trois tranches selon les ressources du foyer, mais elles ne sont pas supprimées pour les hauts revenus. Le complément familial concerne les familles de trois enfants et plus sous condition de ressources ; le premier enfant ouvre droit à d'autres prestations (PAJE)."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "CSS, art. R. 351-9",
+   "q": "En 2025, un trimestre de retraite est validé par un salaire soumis à cotisations égal à 150 fois le SMIC horaire (11,88 €). Un étudiant a perçu 5 500 € bruts au total au cours de l'année 2025. Combien de trimestres valide-t-il pour cette année ?",
+   "a": 3,
+   "unit": "trimestres",
+   "tol": 0.5,
+   "why": "Seuil de validation : 150 × 11,88 = 1 782 €. Nombre de trimestres = 5 500 / 1 782 = 3,09, arrondi à l'entier inférieur : 3 trimestres. Pour en valider 4, il aurait fallu au moins 7 128 €. Le nombre de trimestres validés dans une année civile est plafonné à 4, quel que soit le salaire, et ne dépend pas de la durée effectivement travaillée mais du montant cotisé."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "Loi n° 2023-270 du 14 avril 2023 ; CSS, art. L. 161-17-2",
+   "q": "La réforme des retraites du 14 avril 2023 a prévu de porter progressivement l'âge légal de départ à :",
+   "opts": [
+    "62 ans",
+    "63 ans",
+    "64 ans",
+    "65 ans"
+   ],
+   "a": 2,
+   "why": "La loi du 14 avril 2023 relève l'âge légal de 62 à 64 ans à raison de trois mois par génération à partir des assurés nés le 1er septembre 1961 (64 ans pour la génération 1968), et accélère le passage à 172 trimestres (43 ans) dès la génération 1965 ; l'âge du taux plein automatique reste fixé à 67 ans. La loi de financement pour 2026 a suspendu la montée en charge de ce calendrier : le point mérite d'être vérifié à la date de l'examen."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "CSS, art. L. 351-1 et R. 351-27",
+   "q": "Un assuré liquide sa retraite de base à l'âge légal avec 4 trimestres manquants par rapport à la durée requise. La décote est de 1,25 % du taux plein de 50 % par trimestre manquant. Quel taux de liquidation (en %) lui est appliqué ?",
+   "a": 47.5,
+   "unit": "%",
+   "tol": 0.05,
+   "why": "Décote = 4 × 1,25 % = 5 % du taux plein ; taux = 50 % × (1 − 0,05) = 47,5 %, soit une baisse de 0,625 point par trimestre manquant. La pension est en outre proratisée (trimestres validés / durée requise), ce qui constitue une seconde minoration. La décote est plafonnée à 20 trimestres et disparaît à l'âge du taux plein automatique (67 ans). Retrancher 5 points (45 %) serait l'erreur classique."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage 2025",
+   "q": "En 2025, pour ouvrir un droit à l'allocation d'aide au retour à l'emploi, un salarié de 40 ans privé involontairement d'emploi doit justifier d'une durée d'affiliation d'au moins :",
+   "opts": [
+    "4 mois au cours des 28 derniers mois",
+    "6 mois (130 jours ou 910 heures) au cours des 24 derniers mois",
+    "12 mois au cours des 36 derniers mois",
+    "24 mois au cours des 48 derniers mois"
+   ],
+   "a": 1,
+   "why": "La condition d'affiliation minimale est de 6 mois, soit 130 jours travaillés ou 910 heures, au cours des 24 mois précédant la fin du contrat (36 mois pour les allocataires d'au moins 55 ans depuis le 1er avril 2025). Les 4 mois sur 28 correspondent aux règles antérieures à 2019. Il faut en outre être inscrit à France Travail, rechercher activement un emploi, être apte et ne pas avoir atteint l'âge de la retraite à taux plein."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage, accord d'application n° 14",
+   "q": "Plusieurs réponses possibles. Quelles ruptures du contrat de travail ouvrent droit à l'allocation chômage (sous réserve des autres conditions) ?",
+   "opts": [
+    "Licenciement pour faute grave",
+    "Rupture conventionnelle homologuée",
+    "Démission pour suivre son conjoint qui change de résidence pour un nouvel emploi",
+    "Démission sans motif pour convenance personnelle",
+    "Fin de CDD"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "why": "La privation involontaire d'emploi couvre tous les licenciements, quel qu'en soit le motif y compris la faute grave ou lourde, les fins de CDD et de mission, et la rupture conventionnelle, assimilée par la loi. La démission n'ouvre droit à l'ARE que si elle est légitime (suivi de conjoint, non-paiement des salaires, violences, projet de reconversion après 5 ans d'activité…) ou après réexamen de la situation au bout de 4 mois ; une démission pour convenance personnelle n'est pas indemnisée."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "millésimé 2025",
+   "src": "Règlement d'assurance chômage 2025, art. 9",
+   "q": "En 2025, la durée maximale d'indemnisation au titre de l'ARE pour un allocataire âgé de 45 ans à la fin de son contrat est de :",
+   "opts": [
+    "12 mois",
+    "18 mois",
+    "24 mois",
+    "36 mois"
+   ],
+   "a": 1,
+   "why": "Depuis la réforme de 2023, la durée d'indemnisation (un jour par jour d'affiliation) est réduite de 25 % par le coefficient de contracyclicité tant que le chômage reste inférieur à 9 %, avec un plancher de 6 mois et un plafond de 18 mois (548 jours) pour les moins de 55 ans ; les plafonds sont de 22,5 mois à 55-56 ans et de 27 mois à partir de 57 ans (règles applicables depuis le 1er avril 2025). Les 24 mois correspondent au régime antérieur à 2023."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. R. 243-59",
+   "q": "À l'issue d'un contrôle sur place, l'inspecteur du recouvrement adresse une lettre d'observations. L'employeur dispose alors pour y répondre d'un délai de :",
+   "opts": [
+    "8 jours",
+    "15 jours",
+    "30 jours, prolongeable de 30 jours sur demande",
+    "6 mois"
+   ],
+   "a": 2,
+   "why": "La lettre d'observations ouvre une période contradictoire de 30 jours pendant laquelle le cotisant peut répondre, par lui-même ou par un conseil ; ce délai peut être prolongé de 30 jours à sa demande, sauf en cas de travail dissimulé (R. 243-59). L'inspecteur répond aux observations avant que l'URSSAF n'engage le recouvrement par mise en demeure. Le non-respect de cette procédure contradictoire entraîne la nullité du redressement."
+  },
+  {
+   "type": "multi",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "CSS, art. L. 243-7-7, L. 133-4-2 ; C. trav., art. L. 8223-1, L. 8224-1",
+   "q": "Plusieurs réponses possibles. Quelles conséquences s'attachent au constat d'un travail dissimulé par dissimulation d'emploi salarié ?",
+   "opts": [
+    "Majoration du redressement de cotisations de 25 % (40 % avec circonstances aggravantes)",
+    "Annulation des réductions et exonérations de cotisations dont a bénéficié l'employeur",
+    "Indemnité forfaitaire de 6 mois de salaire due au salarié en cas de rupture",
+    "Simple rappel à la loi sans redressement",
+    "Allongement de la prescription du recouvrement à 5 ans"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "why": "Le travail dissimulé déclenche un cumul de sanctions : majoration du redressement de 25 %, portée à 40 % en cas de mineur, de personne vulnérable ou de bande organisée (L. 243-7-7) ; annulation des exonérations (L. 133-4-2) ; indemnité forfaitaire de 6 mois au salarié dont le contrat est rompu (C. trav., L. 8223-1) ; prescription de 5 ans (L. 244-3) ; sanctions pénales (3 ans et 45 000 € pour une personne physique) et exclusion des aides publiques. Un simple rappel à la loi est exclu."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. R. 142-1 et L. 142-8",
+   "q": "Un employeur conteste une mise en demeure de l'URSSAF. Il doit d'abord :",
+   "opts": [
+    "Saisir directement le pôle social du tribunal judiciaire",
+    "Saisir la commission de recours amiable de l'URSSAF dans les deux mois",
+    "Saisir le conseil de prud'hommes",
+    "Saisir le tribunal administratif"
+   ],
+   "a": 1,
+   "why": "Le recours préalable devant la commission de recours amiable (CRA) de l'organisme est obligatoire et doit être formé dans les deux mois de la notification (R. 142-1). Le silence de la CRA pendant deux mois vaut rejet ; le cotisant saisit alors, dans les deux mois, le pôle social du tribunal judiciaire (L. 142-8), puis la cour d'appel. Le CPH ne connaît que des litiges employeur-salarié et le tribunal administratif ne traite pas du contentieux général de la sécurité sociale."
+  },
+  {
+   "type": "tri",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "CSS, art. L. 200-2 ; C. trav., art. L. 5422-1 ; ANI du 17 novembre 2017",
+   "q": "Rattachez chaque prestation ou cotisation à l'organisme ou au régime qui la gère.",
+   "cats": [
+    "Régime général de sécurité sociale",
+    "Assurance chômage (Unédic / France Travail)",
+    "Agirc-Arrco",
+    "Protection sociale complémentaire d'entreprise"
+   ],
+   "items": [
+    [
+     "Indemnités journalières maladie",
+     0
+    ],
+    [
+     "Allocation d'aide au retour à l'emploi",
+     1
+    ],
+    [
+     "Retraite complémentaire par points des salariés du privé",
+     2
+    ],
+    [
+     "Couverture santé collective financée au moins à 50 % par l'employeur",
+     3
+    ],
+    [
+     "Rente d'incapacité permanente après accident du travail",
+     0
+    ],
+    [
+     "Cotisation prévoyance de 1,50 % de la tranche 1 pour les cadres",
+     3
+    ],
+    [
+     "Allocations familiales",
+     0
+    ]
+   ],
+   "why": "IJ maladie, rentes AT/MP et allocations familiales relèvent des branches du régime général (CPAM, CAF). L'ARE est une prestation de l'assurance chômage gérée par l'Unédic et versée par France Travail. L'Agirc-Arrco est le régime complémentaire obligatoire par points. La couverture santé obligatoire et la prévoyance cadres (1,50 %) sont des garanties complémentaires d'entreprise auprès d'assureurs, mutuelles ou institutions de prévoyance."
+  }
+ ]
+}

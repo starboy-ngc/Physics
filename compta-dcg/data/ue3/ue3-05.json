@@ -1,0 +1,565 @@
+{
+ "id": "ue3-05",
+ "ue": "UE3",
+ "ordre": 5,
+ "title": "Relations collectives : représentation, négociation, conflits",
+ "resume": "Comprendre qui représente les salariés (syndicats représentatifs, CSE), comment un accord collectif devient valable et vit, comment la grève est encadrée, et ce que l'entreprise doit en matière de partage de la valeur, d'égalité et de sécurité.",
+ "duree": "65 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Syndicats : liberté, représentativité, présence dans l'entreprise",
+   "html": "<p>La <b>liberté syndicale</b> est constitutionnelle : tout salarié peut adhérer ou non au syndicat de son choix, et toute discrimination syndicale est interdite (<span class=\"mono\">C. trav., art. L. 2141-5</span>). Les syndicats défendent les intérêts matériels et moraux de la profession, agissent en justice et négocient.</p>\n<p>La <b>représentativité</b> (<span class=\"mono\">L. 2121-1</span>, loi du 20 août 2008) repose sur <b>7 critères cumulatifs</b> : respect des valeurs républicaines, indépendance, transparence financière, ancienneté de 2 ans, <b>audience électorale</b>, influence (activité et expérience), effectifs d'adhérents et cotisations. L'audience se mesure au <b>premier tour</b> des élections des titulaires du CSE : au moins <span class=\"mono\">10 %</span> des suffrages exprimés dans l'<b>entreprise</b> (<span class=\"mono\">L. 2122-1</span>), <span class=\"mono\">8 %</span> au niveau de la <b>branche</b> et au niveau <b>national interprofessionnel</b> (mesure tous les 4 ans). Seuls les syndicats représentatifs négocient et signent des accords collectifs.</p>\n<ul>\n<li><b>Section syndicale</b> (<span class=\"mono\">L. 2142-1</span>) : tout syndicat légalement constitué depuis 2 ans ayant au moins deux adhérents peut la créer, quel que soit l'effectif ; un syndicat non représentatif désigne, dans les entreprises de 50 salariés et plus, un <b>représentant de la section syndicale</b> (RSS, 4 heures de délégation, sans pouvoir de négocier).</li>\n<li><b>Délégué syndical</b> (<span class=\"mono\">L. 2143-3</span>) : désigné par un syndicat représentatif dans les entreprises d'<b>au moins 50 salariés</b>, parmi les candidats ayant obtenu personnellement 10 % des suffrages ; il négocie les accords. Dans les entreprises de moins de 50 salariés, un élu du CSE peut être désigné délégué syndical. Heures de délégation : 12 h (50 à 150 salariés), 18 h (151 à 499), 24 h (500 et plus).</li>\n</ul>"
+  },
+  {
+   "h": "Le comité social et économique : mise en place et attributions",
+   "html": "<p>Le <b>CSE</b> (ordonnances de 2017) est obligatoire dans les entreprises d'<b>au moins 11 salariés</b> pendant 12 mois consécutifs (<span class=\"mono\">L. 2311-2</span>). Les membres sont <b>élus pour 4 ans</b> (2 à 4 par accord), par collèges, au scrutin de liste à deux tours : le <b>premier tour</b> est réservé aux listes syndicales (il est valable si le nombre de votants atteint la moitié des inscrits, quorum), le <b>second tour</b> est ouvert à toutes les candidatures. L'employeur préside le comité.</p>\n<p><b>Attributions</b> :</p>\n<ul>\n<li><b>11 à 49 salariés</b> : présentation des <b>réclamations</b> individuelles et collectives, promotion de la santé-sécurité, saisine de l'inspection du travail, droit d'alerte ; réunion mensuelle.</li>\n<li><b>50 salariés et plus</b> : le comité est doté de la <b>personnalité civile</b>, assure l'expression collective des salariés, est <b>informé et consulté</b> sur les décisions importantes (organisation, effectifs, conditions de travail) et rend un avis dans trois <b>consultations récurrentes</b> (<span class=\"mono\">L. 2312-17</span>) : orientations stratégiques, situation économique et financière, politique sociale, emploi et conditions de travail. Il gère les activités sociales et culturelles, peut recourir à des experts et dispose de la <b>BDESE</b> (base de données économiques, sociales et environnementales, <span class=\"mono\">L. 2312-18</span>) alimentée par l'employeur.</li>\n</ul>\n<p>Un accord peut instituer des <b>représentants de proximité</b> (<span class=\"mono\">L. 2313-7</span>) ou transformer le CSE en <b>conseil d'entreprise</b> compétent pour négocier les accords (<span class=\"mono\">L. 2321-1</span>).</p>"
+  },
+  {
+   "h": "CSE : moyens, commissions, protection, entrave",
+   "html": "<p><b>Heures de délégation</b> mensuelles par titulaire (<span class=\"mono\">R. 2314-1</span>) : <span class=\"mono\">10 h</span> en dessous de 50 salariés, <span class=\"mono\">18 h</span> de 50 à 74, 19 h de 75 à 99, 21 h de 100 à 199, 22 h de 200 à 499, 24 h de 500 à 1 499…</p>\n<p><b>Budgets</b> (entreprises de 50 salariés et plus) : <b>budget de fonctionnement</b> de <span class=\"mono\">0,20 %</span> de la masse salariale brute (<span class=\"mono\">0,22 %</span> à partir de 2 000 salariés, <span class=\"mono\">L. 2315-61</span>) ; budget des <b>activités sociales et culturelles</b> fixé par accord, sans minimum légal mais sans régression du rapport à la masse salariale.</p>\n<p><b>Commissions</b> : la <b>commission santé, sécurité et conditions de travail</b> (CSSCT) est obligatoire à partir de <span class=\"mono\">300 salariés</span> et dans les établissements à risques (<span class=\"mono\">L. 2315-36</span>) ; à partir de 300 s'ajoutent les commissions formation, égalité professionnelle et logement, et à partir de 1 000 la commission économique.</p>\n<p><b>Statut protecteur</b> (<span class=\"mono\">L. 2411-1 et s.</span>) : le licenciement d'un élu ou candidat au CSE, d'un délégué syndical ou d'un RSS, pendant le mandat et 6 mois après (12 mois pour un délégué syndical), exige l'<b>autorisation de l'inspecteur du travail</b> après avis du CSE ; il en va de même pour la rupture conventionnelle et le non-renouvellement d'un CDD. Le licenciement sans autorisation est <b>nul</b> : réintégration et indemnisation jusqu'à la fin de la protection (plafonnée à 30 mois).</p>\n<p><b>Délit d'entrave</b> (<span class=\"mono\">L. 2317-1</span>) : entraver la constitution ou la libre désignation des membres est puni d'un an d'emprisonnement et 7 500 € d'amende ; entraver le fonctionnement, de 7 500 € d'amende.</p>"
+  },
+  {
+   "h": "La négociation collective : validité des accords et négociations obligatoires",
+   "html": "<p><b>Accord d'entreprise majoritaire</b> (<span class=\"mono\">L. 2232-12</span>) : il est valable s'il est signé par des syndicats représentatifs ayant recueilli <b>plus de 50 %</b> des suffrages exprimés en faveur d'organisations représentatives au premier tour des dernières élections des titulaires du CSE. Si les signataires ne pèsent qu'entre <b>30 % et 50 %</b>, ils peuvent, dans le mois, demander une <b>consultation des salariés</b> (référendum) ; l'employeur peut aussi la demander sauf opposition unanime des syndicats signataires ; l'accord est validé à la <b>majorité des suffrages exprimés</b>. Sans délégué syndical : dans les entreprises de moins de 11 salariés (ou de 11 à 20 sans élu), l'employeur soumet un projet à l'approbation des <b>deux tiers</b> du personnel ; de 11 à 49, négociation avec des élus ou un salarié mandaté ; à partir de 50, avec des élus mandatés, à défaut des élus non mandatés (thèmes limités) ou un salarié mandaté.</p>\n<p><b>Négociations obligatoires</b> dans les entreprises dotées d'un délégué syndical (<span class=\"mono\">L. 2242-1</span>) : <b>rémunération, temps de travail et partage de la valeur ajoutée</b> (annuelle à défaut d'accord), <b>égalité professionnelle</b> femmes-hommes et qualité de vie et des conditions de travail (annuelle), <b>gestion des emplois et des parcours professionnels</b> (GEPP) tous les 3 ans dans les entreprises d'au moins 300 salariés. Un accord de méthode peut porter la périodicité jusqu'à 4 ans. La branche négocie notamment les salaires minima (chaque année) et les classifications (tous les 5 ans).</p>\n<p>L'<b>accord de performance collective</b> (<span class=\"mono\">L. 2254-2</span>) aménage durée du travail, rémunération ou mobilité pour répondre aux nécessités de fonctionnement ou préserver l'emploi ; ses clauses s'imposent au contrat (chapitre 1).</p>"
+  },
+  {
+   "h": "Vie de l'accord : durée, dénonciation, révision",
+   "html": "<p>Un accord collectif est conclu pour une <b>durée déterminée</b> ou <b>indéterminée</b> ; à défaut de stipulation, sa durée est de <b>5 ans</b> (<span class=\"mono\">L. 2222-4</span>) et il cesse de produire effet à l'échéance. Il est déposé sur la plateforme TéléAccords et au greffe du conseil de prud'hommes, puis publié dans une base nationale.</p>\n<p><b>Dénonciation</b> (<span class=\"mono\">L. 2261-9 et s.</span>) : un accord à durée indéterminée peut être dénoncé par les signataires (employeur ou syndicats majoritaires) avec un <b>préavis de 3 mois</b>. Une nouvelle négociation s'engage dans les trois mois. L'accord dénoncé <b>survit</b> pendant <b>12 mois</b> à compter de l'expiration du préavis, sauf accord de substitution plus rapide : l'accord disparaît donc <span class=\"mono\">3 + 12 = 15 mois</span> après la dénonciation. Si aucun accord de substitution n'est conclu, les salariés conservent, depuis la loi du 8 août 2016, une <b>garantie de rémunération</b> (le montant annuel perçu les 12 derniers mois, <span class=\"mono\">L. 2261-13</span>) qui remplace les anciens « avantages individuels acquis ».</p>\n<p>La <b>mise en cause</b> (fusion, cession, scission) produit les mêmes effets qu'une dénonciation : préavis, survie, négociation d'un accord d'adaptation ou de transition. La <b>révision</b> suit les règles de validité de l'accord initial ; les syndicats non signataires mais représentatifs peuvent y participer après le cycle électoral.</p>\n<div class=\"note\"><b>À retenir.</b> Dénonciation = 3 mois de préavis + 12 mois de survie ; au terme, sans accord de substitution, maintien de la rémunération perçue, et non des avantages individuels acquis.</div>"
+  },
+  {
+   "h": "Les conflits collectifs : droit de grève et règlement des conflits",
+   "html": "<p>Le <b>droit de grève</b> est garanti par le préambule de 1946. La grève est une <b>cessation collective et concertée du travail</b> destinée à appuyer des <b>revendications professionnelles</b> (salaires, conditions de travail, emploi). Dans le secteur privé, aucun préavis n'est exigé et une minorité de salariés, voire un seul s'il suit un mouvement national, peut faire grève ; dans les services publics, un syndicat représentatif doit déposer un <b>préavis de 5 jours</b> (<span class=\"mono\">L. 2512-2</span>). Ne sont pas des grèves licites : la <b>grève perlée</b> (ralentissement sans arrêt), la <b>grève d'autosatisfaction</b> (les salariés s'octroient eux-mêmes la revendication) et la grève <b>purement politique</b>.</p>\n<p><b>Effets</b> : le contrat est <b>suspendu</b> ; l'employeur pratique une <b>retenue strictement proportionnelle</b> à la durée de l'arrêt (toute retenue supérieure est une sanction pécuniaire interdite). La grève ne peut justifier un licenciement, sauf <b>faute lourde</b> du salarié (séquestration, violences, entrave à la liberté du travail) ; tout licenciement contraire est nul (<span class=\"mono\">L. 2511-1</span>). Les <b>piquets de grève</b> sont licites tant qu'ils n'empêchent pas les non-grévistes de travailler ; l'occupation des locaux peut être levée par le juge des référés. Le <b>lock-out</b> (fermeture décidée par l'employeur) est en principe illicite et oblige à payer les salaires, sauf force majeure ou situation contraignante (impossibilité de fournir du travail, sécurité).</p>\n<p><b>Règlement</b> : la <b>conciliation</b> (procédures conventionnelles ou commission), la <b>médiation</b> (le médiateur propose une recommandation) et l'<b>arbitrage</b> (sentence s'imposant aux parties, recours devant la Cour supérieure d'arbitrage) restent facultatifs, l'issue la plus fréquente restant l'accord de fin de grève.</p>"
+  },
+  {
+   "h": "Participation, intéressement et épargne salariale",
+   "html": "<p>La <b>participation</b> aux résultats (<span class=\"mono\">L. 3322-1 et s.</span>) est <b>obligatoire</b> dans les entreprises d'au moins <b>50 salariés</b> pendant 5 années civiles consécutives, facultative en dessous. La <b>réserve spéciale de participation</b> (RSP) légale se calcule par la formule :</p>\n<p><span class=\"mono\">RSP = 1/2 × (B − 5 % C) × S / VA</span>, où B = bénéfice net fiscal, C = capitaux propres, S = salaires bruts, VA = valeur ajoutée. Un accord peut retenir une formule dérogatoire au moins aussi favorable. La répartition entre salariés est uniforme, proportionnelle aux salaires et/ou au temps de présence ; les sommes sont bloquées <b>5 ans</b> sauf demande de versement immédiat ou déblocage anticipé (mariage, naissance du 3e enfant, acquisition de la résidence principale, rupture du contrat…). Elles sont exonérées de cotisations sociales (hors CSG-CRDS) et, si elles sont bloquées, d'impôt sur le revenu ; l'employeur paie un forfait social de 20 % à partir de 50 salariés.</p>\n<p>L'<b>intéressement</b> (<span class=\"mono\">L. 3312-1 et s.</span>) est <b>facultatif</b>, collectif et <b>aléatoire</b> (lié aux résultats ou aux performances), institué par accord de 1 à 5 ans (ou décision unilatérale dans les petites entreprises). Depuis la loi du 29 novembre 2023, les entreprises de <b>11 à 49 salariés</b> réalisant un bénéfice net fiscal d'au moins 1 % du chiffre d'affaires pendant trois exercices doivent, à compter de 2025, mettre en place un dispositif de partage de la valeur (participation, intéressement, PPV ou abondement).</p>\n<p><b>Épargne salariale</b> : le <b>PEE</b> (blocage 5 ans) et le <b>PERECO</b> (plan d'épargne retraite collectif, blocage jusqu'à la retraite) reçoivent participation, intéressement et versements volontaires, complétés par un <b>abondement</b> de l'employeur plafonné (triple du versement et pourcentage du PASS).</p>"
+  },
+  {
+   "h": "Égalité professionnelle, discriminations, harcèlement, santé-sécurité",
+   "html": "<p><b>Égalité femmes-hommes</b> : les entreprises d'<b>au moins 50 salariés</b> publient chaque année avant le 1er mars un <b>index de l'égalité professionnelle</b> noté sur 100 (écart de rémunération, d'augmentations, de promotions, retour de congé maternité, parité des dix plus hautes rémunérations) ; un score inférieur à <span class=\"mono\">75</span> impose des mesures de correction dans un délai de <b>3 ans</b>, sous peine d'une pénalité pouvant atteindre <b>1 % de la masse salariale</b> (<span class=\"mono\">L. 1142-8 et s.</span>).</p>\n<p><b>Discriminations</b> (<span class=\"mono\">L. 1132-1</span>) : toute mesure fondée sur un critère prohibé est nulle ; la <b>charge de la preuve est aménagée</b> (<span class=\"mono\">L. 1134-1</span>) : le salarié présente des éléments laissant supposer une discrimination, l'employeur doit prouver que sa décision est justifiée par des éléments objectifs. Le <b>harcèlement moral</b> (<span class=\"mono\">L. 1152-1</span>, agissements répétés dégradant les conditions de travail) et le <b>harcèlement sexuel</b> (<span class=\"mono\">L. 1153-1</span>) sont interdits et pénalement sanctionnés ; l'employeur doit prévenir, et désigner un <b>référent</b> à partir de 250 salariés (le CSE désigne le sien dans toutes les entreprises).</p>\n<p><b>Santé-sécurité</b> : l'employeur est tenu d'une <b>obligation de sécurité</b> (<span class=\"mono\">L. 4121-1</span>), obligation de moyens renforcée depuis l'arrêt <i>Air France</i> (Cass. soc., 25 novembre 2015) : il s'exonère en prouvant avoir pris toutes les mesures de prévention. Il établit le <b>document unique d'évaluation des risques professionnels</b> (DUERP, <span class=\"mono\">R. 4121-1</span>), quel que soit l'effectif, mis à jour au moins chaque année à partir de 11 salariés et conservé 40 ans ; à partir de 50 salariés il en découle un programme annuel de prévention. Le salarié dispose d'un <b>droit d'alerte et de retrait</b> face à un danger grave et imminent (<span class=\"mono\">L. 4131-1</span>), sans sanction ni retenue.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. trav., art. L. 2121-1, L. 2122-1, L. 2122-5 et L. 2122-9",
+   "note": "Sept critères de représentativité ; audience de 10 % (entreprise) et 8 % (branche, national)"
+  },
+  {
+   "ref": "C. trav., art. L. 2142-1, L. 2142-1-1 et L. 2143-3",
+   "note": "Section syndicale, représentant de la section syndicale, délégué syndical (50 salariés)"
+  },
+  {
+   "ref": "C. trav., art. L. 2311-2, L. 2312-5, L. 2312-8 et L. 2312-17",
+   "note": "CSE : seuil de 11 salariés, attributions selon l'effectif, consultations récurrentes"
+  },
+  {
+   "ref": "C. trav., art. R. 2314-1, L. 2315-61 et L. 2315-36",
+   "note": "Heures de délégation, budget de fonctionnement 0,20 %/0,22 %, CSSCT à partir de 300"
+  },
+  {
+   "ref": "C. trav., art. L. 2411-1 et s., L. 2421-3 ; L. 2317-1",
+   "note": "Statut protecteur (autorisation de l'inspecteur du travail) ; délit d'entrave"
+  },
+  {
+   "ref": "C. trav., art. L. 2232-12, L. 2232-21 à L. 2232-26",
+   "note": "Accord majoritaire (50 %), référendum (30 %), négociation sans délégué syndical"
+  },
+  {
+   "ref": "C. trav., art. L. 2242-1, L. 2242-13 et L. 2222-4",
+   "note": "Négociations obligatoires et périodicité ; durée de 5 ans par défaut"
+  },
+  {
+   "ref": "C. trav., art. L. 2261-9 à L. 2261-13",
+   "note": "Dénonciation : préavis de 3 mois, survie de 12 mois, garantie de rémunération"
+  },
+  {
+   "ref": "C. trav., art. L. 2511-1 et L. 2512-2 ; Cass. soc., 2 juin 1992 (définition de la grève)",
+   "note": "Droit de grève : définition, nullité du licenciement sauf faute lourde, préavis dans les services publics"
+  },
+  {
+   "ref": "C. trav., art. L. 3322-1, L. 3324-1, L. 3312-1 ; L. 1142-8 ; L. 4121-1 et R. 4121-1 ; Cass. soc., 25 novembre 2015, n° 14-24.444",
+   "note": "Participation (formule légale), intéressement, index égalité, obligation de sécurité, DUERP"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2122-1",
+   "q": "Pour être représentatif dans une entreprise, un syndicat doit notamment avoir recueilli au premier tour des élections des titulaires du CSE au moins :",
+   "opts": [
+    "5 % des suffrages exprimés",
+    "8 % des suffrages exprimés",
+    "10 % des suffrages exprimés",
+    "30 % des suffrages exprimés"
+   ],
+   "a": 2,
+   "why": "L'article L. 2122-1 fixe le seuil d'audience à 10 % des suffrages exprimés au premier tour des dernières élections des titulaires du CSE, quel que soit le nombre de votants. Le seuil de 8 % vaut pour la branche et le niveau national interprofessionnel (L. 2122-5 et L. 2122-9). Le seuil de 30 % n'est pas un critère de représentativité mais la condition pour demander un référendum de validation d'un accord."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2121-1",
+   "q": "Plusieurs réponses possibles. Quels éléments figurent parmi les sept critères légaux de représentativité syndicale ?",
+   "opts": [
+    "Le respect des valeurs républicaines",
+    "La transparence financière",
+    "Une ancienneté minimale de deux ans",
+    "L'affiliation à une confédération nationale",
+    "La présence d'au moins un délégué syndical dans l'entreprise"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les sept critères de l'article L. 2121-1 sont : respect des valeurs républicaines, indépendance, transparence financière, ancienneté minimale de deux ans dans le champ concerné, audience électorale, influence (activité et expérience), effectifs d'adhérents et cotisations. L'affiliation à une confédération n'est plus exigée depuis 2008 (fin de la présomption irréfragable) et la désignation d'un délégué syndical est une conséquence de la représentativité, non une condition."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2143-3",
+   "q": "Un syndicat représentatif peut désigner un délégué syndical dans une entreprise employant au moins :",
+   "opts": [
+    "11 salariés",
+    "20 salariés",
+    "50 salariés",
+    "300 salariés"
+   ],
+   "a": 2,
+   "why": "Le délégué syndical est désigné dans les entreprises d'au moins 50 salariés (L. 2143-3), parmi les candidats ayant obtenu personnellement au moins 10 % des suffrages au premier tour. En dessous de 50 salariés, le syndicat représentatif peut seulement désigner un élu du CSE comme délégué syndical, sans crédit d'heures supplémentaire (L. 2143-6). Le seuil de 11 est celui du CSE."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2142-1-1",
+   "q": "Dans une entreprise de 80 salariés, un syndicat non représentatif ayant constitué une section syndicale peut désigner :",
+   "opts": [
+    "Un délégué syndical habilité à négocier",
+    "Un représentant de la section syndicale, qui ne peut pas négocier d'accord collectif",
+    "Un représentant de proximité",
+    "Aucun représentant tant qu'il n'est pas représentatif"
+   ],
+   "a": 1,
+   "why": "Depuis 2008, un syndicat non représentatif qui a créé une section syndicale dans une entreprise de 50 salariés et plus désigne un représentant de la section syndicale (RSS, L. 2142-1-1). Celui-ci dispose de 4 heures de délégation et du statut protecteur, mais ne peut pas négocier ni signer d'accords, pouvoir réservé au délégué syndical d'un syndicat représentatif. Le représentant de proximité est une institution créée par accord d'entreprise, sans lien avec les syndicats non représentatifs."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2311-2",
+   "q": "La mise en place d'un comité social et économique est obligatoire lorsque l'effectif de l'entreprise atteint au moins :",
+   "opts": [
+    "5 salariés pendant 6 mois",
+    "11 salariés pendant 12 mois consécutifs",
+    "20 salariés pendant 12 mois consécutifs",
+    "50 salariés pendant 12 mois consécutifs"
+   ],
+   "a": 1,
+   "why": "Le CSE est obligatoire dès que l'effectif atteint 11 salariés pendant 12 mois consécutifs (L. 2311-2). Le seuil de 50 salariés ne déclenche pas la création du comité mais l'élargissement de ses attributions (consultations récurrentes, budgets, personnalité civile). Le seuil de 20 est celui du règlement intérieur avant 2020, source fréquente de confusion."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2314-33 et L. 2314-29",
+   "q": "Concernant l'élection des membres du CSE, quelle affirmation est exacte ?",
+   "opts": [
+    "Les membres sont élus pour 2 ans, sans possibilité de modification par accord",
+    "Le premier tour est ouvert à toutes les candidatures, le second réservé aux syndicats",
+    "Les membres sont élus pour 4 ans (durée réductible à 2 ou 3 ans par accord) et le premier tour est réservé aux listes syndicales",
+    "Le vote est uninominal majoritaire à un tour"
+   ],
+   "a": 2,
+   "why": "La durée du mandat est de 4 ans (L. 2314-33), un accord pouvant la fixer entre 2 et 4 ans. Le scrutin est de liste à la représentation proportionnelle, à deux tours : le premier tour est réservé aux listes présentées par les organisations syndicales et n'est valable que si le quorum (votants au moins égaux à la moitié des inscrits) est atteint ; le second tour est ouvert aux candidatures libres (L. 2314-29). Le premier tour sert aussi à mesurer l'audience syndicale."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2314-29",
+   "q": "Au premier tour des élections du CSE, le collège unique compte 300 électeurs inscrits. Quel est le nombre minimal de votants pour que le quorum soit atteint et que les résultats du premier tour soient valables ?",
+   "a": 150,
+   "unit": "votants",
+   "tol": 0.5,
+   "why": "Le quorum du premier tour est atteint lorsque le nombre de votants (bulletins trouvés dans l'urne, y compris blancs et nuls) est au moins égal à la moitié des électeurs inscrits : 300 / 2 = 150 (L. 2314-29). En dessous, un second tour est organisé où les candidatures libres sont admises ; l'audience syndicale reste toutefois mesurée sur les suffrages exprimés au premier tour, quel que soit le quorum."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2122-1",
+   "q": "Au premier tour des élections des titulaires du CSE, 220 salariés ont voté ; 20 bulletins sont blancs ou nuls. La liste du syndicat Alpha a obtenu 90 voix. Quel est le pourcentage d'audience du syndicat Alpha (en %, arrondi au dixième) ?",
+   "a": 45,
+   "unit": "%",
+   "tol": 0.1,
+   "why": "L'audience se calcule par rapport aux suffrages valablement exprimés, c'est-à-dire hors blancs et nuls : 220 − 20 = 200. Audience d'Alpha = 90 / 200 = 45 %. Rapporter les voix aux votants (90 / 220 = 40,9 %) ou aux inscrits serait une erreur. Avec 45 %, Alpha est représentatif (≥ 10 %), mais ne peut signer seul un accord majoritaire (plus de 50 % requis) ; il peut en revanche demander un référendum (≥ 30 %)."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2312-5 et L. 2312-8",
+   "q": "Plusieurs réponses possibles. Quelles attributions appartiennent au CSE d'une entreprise de 30 salariés ?",
+   "opts": [
+    "Présenter à l'employeur les réclamations individuelles et collectives des salariés",
+    "Rendre un avis dans la consultation récurrente sur les orientations stratégiques",
+    "Saisir l'inspection du travail des plaintes relatives à l'application du droit du travail",
+    "Gérer un budget de fonctionnement de 0,20 % de la masse salariale",
+    "Exercer un droit d'alerte en cas d'atteinte aux droits des personnes ou de danger grave et imminent"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Dans les entreprises de 11 à 49 salariés, le CSE exerce les anciennes attributions des délégués du personnel (L. 2312-5) : réclamations, saisine de l'inspection du travail, promotion de la santé-sécurité, droits d'alerte. Les consultations récurrentes (L. 2312-17), la personnalité civile et le budget de fonctionnement de 0,20 % ne concernent que les CSE des entreprises de 50 salariés et plus."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. R. 2314-1",
+   "q": "Dans une entreprise de 60 salariés, chaque membre titulaire du CSE dispose d'un crédit d'heures de délégation mensuel de :",
+   "opts": [
+    "10 heures",
+    "18 heures",
+    "20 heures",
+    "24 heures"
+   ],
+   "a": 1,
+   "why": "Le tableau de l'article R. 2314-1 accorde 10 heures par mois en dessous de 50 salariés, 18 heures de 50 à 74 salariés, 19 heures de 75 à 99, 21 heures de 100 à 199, 22 heures de 200 à 499 et 24 heures de 500 à 1 499. Une entreprise de 60 salariés relève de la tranche 50-74 : 18 heures. Ces heures sont payées comme temps de travail et peuvent être mutualisées entre élus ou reportées dans certaines limites."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2315-61",
+   "q": "Une entreprise de 120 salariés a une masse salariale brute annuelle de 4 000 000 €. Quel est le montant annuel minimal de la subvention de fonctionnement que l'employeur doit verser au CSE (en €) ?",
+   "a": 8000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Dans les entreprises de 50 à moins de 2 000 salariés, la subvention de fonctionnement est de 0,20 % de la masse salariale brute (L. 2315-61) : 4 000 000 × 0,20 % = 8 000 €. Le taux de 0,22 % (8 800 €) ne s'applique qu'à partir de 2 000 salariés. Cette subvention est distincte de la contribution aux activités sociales et culturelles, dont le taux est fixé par accord ou par l'usage."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2315-36",
+   "q": "La création d'une commission santé, sécurité et conditions de travail (CSSCT) au sein du CSE est obligatoire dans les entreprises et établissements distincts d'au moins :",
+   "opts": [
+    "11 salariés",
+    "50 salariés",
+    "300 salariés",
+    "1 000 salariés"
+   ],
+   "a": 2,
+   "why": "L'article L. 2315-36 impose la CSSCT dans les entreprises et établissements distincts d'au moins 300 salariés, ainsi que dans les établissements à risques (Seveso, nucléaire) quel que soit l'effectif. En dessous, l'inspecteur du travail peut l'imposer et un accord peut la créer. Le seuil de 300 déclenche aussi les commissions formation, égalité professionnelle et logement ; la commission économique n'est obligatoire qu'à partir de 1 000 salariés."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2411-1 et L. 2421-3",
+   "q": "Un employeur souhaite licencier pour motif économique un membre titulaire du CSE. Il doit :",
+   "opts": [
+    "Appliquer la procédure ordinaire, le motif économique n'étant pas lié au mandat",
+    "Consulter le CSE puis obtenir l'autorisation de l'inspecteur du travail avant de notifier le licenciement",
+    "Obtenir l'homologation de la DREETS",
+    "Saisir le conseil de prud'hommes pour obtenir l'autorisation"
+   ],
+   "a": 1,
+   "why": "Quel que soit le motif (personnel, disciplinaire ou économique), le licenciement d'un salarié protégé exige l'autorisation préalable de l'inspecteur du travail (L. 2411-1), précédée pour les élus de la consultation du CSE (L. 2421-3). L'inspecteur vérifie la réalité du motif et l'absence de lien avec le mandat. Un licenciement notifié sans autorisation est nul : réintégration et indemnisation. Ni la DREETS (homologation) ni le CPH n'ont de rôle d'autorisation ici."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2317-1",
+   "q": "Un employeur de 40 salariés refuse d'organiser les élections du CSE malgré une demande d'un salarié et d'un syndicat. Il s'expose à :",
+   "opts": [
+    "Une simple amende administrative de la DREETS",
+    "Une condamnation pour délit d'entrave à la constitution du CSE : un an d'emprisonnement et 7 500 € d'amende",
+    "La nullité de tous les contrats de travail conclus depuis",
+    "Aucune sanction, l'organisation des élections étant facultative sous 50 salariés"
+   ],
+   "a": 1,
+   "why": "L'entrave à la constitution du CSE ou à la libre désignation de ses membres est un délit puni d'un an d'emprisonnement et de 7 500 € d'amende (L. 2317-1) ; l'entrave au fonctionnement est punie de la seule amende de 7 500 € depuis la loi Macron de 2015. L'employeur doit en outre organiser les élections dans le mois suivant la demande. En l'absence de représentants du personnel sans procès-verbal de carence, les salariés peuvent aussi réclamer des dommages-intérêts."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2232-12",
+   "q": "Dans une entreprise, trois syndicats représentatifs ont obtenu au premier tour 45 %, 35 % et 20 % des suffrages exprimés en faveur d'organisations représentatives. Un accord d'entreprise est signé par le seul syndicat à 45 %. Cet accord :",
+   "opts": [
+    "Est valable, 45 % étant supérieur au seuil de 30 %",
+    "N'est pas majoritaire ; il peut être validé par une consultation des salariés demandée par le signataire dans le mois",
+    "Est nul et ne peut plus être validé",
+    "Est valable si l'employeur le ratifie"
+   ],
+   "a": 1,
+   "why": "Un accord d'entreprise doit être signé par des syndicats représentatifs totalisant plus de 50 % des suffrages exprimés en faveur d'organisations représentatives (L. 2232-12). À 45 %, le seuil n'est pas atteint. Toutefois, les signataires pesant au moins 30 % peuvent, dans le mois suivant la signature, demander une consultation des salariés ; l'employeur peut aussi la demander sauf opposition unanime des signataires. L'accord est validé s'il recueille la majorité des suffrages exprimés. La ratification par l'employeur n'existe pas."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2232-21 et L. 2232-22",
+   "q": "Une entreprise de 8 salariés dépourvue de délégué syndical et de CSE souhaite conclure un accord sur l'aménagement du temps de travail. L'employeur peut :",
+   "opts": [
+    "Conclure l'accord seul par décision unilatérale",
+    "Soumettre un projet d'accord à l'approbation des salariés, qui doit être ratifié à la majorité des deux tiers du personnel",
+    "Négocier obligatoirement avec un syndicat de branche",
+    "Renoncer, aucun accord collectif n'étant possible sous 11 salariés"
+   ],
+   "a": 1,
+   "why": "Dans les entreprises de moins de 11 salariés (et de 11 à 20 sans élu), l'employeur peut proposer un projet d'accord portant sur tous les thèmes ouverts à la négociation d'entreprise ; il est valable s'il est approuvé à la majorité des deux tiers du personnel (L. 2232-21 et L. 2232-22). Entre 11 et 49 salariés, la négociation se fait avec des élus ou un salarié mandaté. Une décision unilatérale ne vaut pas accord collectif et n'ouvre pas les dérogations réservées aux accords."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2242-1 et L. 2242-2",
+   "q": "Plusieurs réponses possibles. Quels thèmes font l'objet d'une négociation obligatoire dans une entreprise de 400 salariés dotée d'un délégué syndical ?",
+   "opts": [
+    "La rémunération, le temps de travail et le partage de la valeur ajoutée",
+    "L'égalité professionnelle entre les femmes et les hommes et la qualité de vie et des conditions de travail",
+    "La gestion des emplois et des parcours professionnels (GEPP)",
+    "Le montant des dividendes versés aux actionnaires",
+    "La révision du règlement intérieur"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article L. 2242-1 impose deux négociations périodiques (annuelles à défaut d'accord de méthode) : rémunération, temps de travail et partage de la valeur ajoutée ; égalité professionnelle et QVCT. L'article L. 2242-2 ajoute, dans les entreprises d'au moins 300 salariés, la négociation triennale sur la GEPP. Les dividendes relèvent de l'assemblée des associés et le règlement intérieur est un acte unilatéral soumis à l'avis du CSE, non à la négociation."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2222-4",
+   "q": "Un accord d'entreprise signé en 2024 ne précise pas sa durée. Il est réputé conclu pour :",
+   "opts": [
+    "Une durée indéterminée",
+    "Une durée de 5 ans",
+    "Une durée d'un an renouvelable",
+    "La durée du mandat des élus du CSE"
+   ],
+   "a": 1,
+   "why": "Depuis la loi du 8 août 2016, à défaut de stipulation sur sa durée, un accord collectif est conclu pour cinq ans et cesse de produire effet à son terme (L. 2222-4). Auparavant, le silence valait durée indéterminée. Les parties peuvent toujours choisir expressément une durée déterminée (au plus 5 ans) ou indéterminée ; seul un accord à durée indéterminée peut être dénoncé."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2261-9 et L. 2261-10",
+   "q": "L'employeur dénonce régulièrement le 1er mars 2025 un accord d'entreprise à durée indéterminée prévoyant une prime de vacances. Aucun accord de substitution n'est conclu. Pendant combien de mois au total, à compter de la dénonciation, l'accord continue-t-il de produire ses effets ?",
+   "a": 15,
+   "unit": "mois",
+   "tol": 0.5,
+   "why": "La dénonciation ouvre un préavis de 3 mois (L. 2261-9), pendant lequel l'accord s'applique pleinement ; à l'expiration du préavis, l'accord survit encore 12 mois, sauf accord de substitution conclu plus tôt (L. 2261-10). Durée totale : 3 + 12 = 15 mois, soit jusqu'au 1er juin 2026. Au-delà, sans nouvel accord, les salariés conservent une garantie de rémunération (L. 2261-13) et non la prime en tant que telle."
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2261-13",
+   "q": "À l'issue du délai de survie d'un accord dénoncé, aucun accord de substitution n'a été conclu. Que conservent les salariés ?",
+   "opts": [
+    "Tous les avantages individuels acquis, y compris les jours de congés conventionnels",
+    "Une garantie de rémunération dont le montant annuel ne peut être inférieur à la rémunération versée au cours des 12 derniers mois",
+    "Rien, l'accord disparaît sans compensation",
+    "L'intégralité de l'accord, prolongé tacitement"
+   ],
+   "a": 1,
+   "why": "Depuis la loi du 8 août 2016, l'article L. 2261-13 remplace le maintien des avantages individuels acquis par une garantie de rémunération : les salariés conservent une rémunération annuelle au moins égale à celle perçue lors des 12 derniers mois, versée le cas échéant par une indemnité différentielle. Les autres avantages (congés, primes en tant que telles) disparaissent. Le piège classique consiste à répondre avec la règle antérieure à 2016."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "Cass. soc., 2 juin 1992 ; C. trav., art. L. 2511-1",
+   "q": "La grève se définit comme :",
+   "opts": [
+    "Toute cessation du travail, même individuelle et sans revendication",
+    "Une cessation collective et concertée du travail en vue d'appuyer des revendications professionnelles",
+    "Un ralentissement volontaire de la cadence de travail",
+    "Un refus collectif d'exécuter les seules heures supplémentaires"
+   ],
+   "a": 1,
+   "why": "La définition jurisprudentielle exige une cessation complète du travail, collective et concertée, destinée à appuyer des revendications professionnelles. Le ralentissement (grève perlée) et l'exécution défectueuse ne sont pas des grèves mais des manquements contractuels. Un refus collectif d'heures supplémentaires peut constituer une grève si ces heures étaient obligatoires et si le refus appuie des revendications ; isolé, il ne caractérise pas la cessation du travail."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2511-1, L. 2512-2 ; jurisprudence",
+   "q": "Plusieurs réponses possibles. Quelles affirmations relatives au droit de grève dans le secteur privé sont exactes ?",
+   "opts": [
+    "Aucun préavis légal n'est exigé des salariés",
+    "Le licenciement d'un gréviste est nul, sauf faute lourde",
+    "L'employeur peut remplacer les grévistes par des intérimaires",
+    "La retenue sur salaire doit être strictement proportionnelle à la durée de l'arrêt",
+    "Une grève menée par une minorité de salariés est illicite"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Dans le privé, aucun préavis n'est imposé (le préavis de 5 jours ne concerne que les services publics, L. 2512-2) ; la grève ne peut justifier un licenciement sauf faute lourde, à peine de nullité (L. 2511-1) ; la retenue doit être proportionnelle, toute retenue supérieure étant une sanction pécuniaire interdite. Le recours aux CDD ou à l'intérim pour remplacer des grévistes est interdit (L. 1242-6, L. 1251-10). Une grève minoritaire est licite dès qu'elle est collective et concertée."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2511-1 ; Cass. soc., 8 juillet 1992",
+   "q": "Un salarié mensualisé perçoit 2 275,05 € bruts pour 151,67 heures par mois. Il participe à une grève de 4 heures. Quelle retenue sur salaire l'employeur peut-il opérer (en €, arrondi au centime) ?",
+   "a": 60,
+   "unit": "€",
+   "tol": 0.05,
+   "why": "La retenue doit être strictement proportionnelle à la durée de l'absence : taux horaire = 2 275,05 / 151,67 = 15,00 € ; retenue = 4 × 15,00 = 60,00 €. Retenir une journée entière ou appliquer une majoration constituerait une sanction pécuniaire interdite (L. 1331-2), et le licenciement d'un gréviste hors faute lourde serait nul."
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "Cass. soc., 4 juillet 2000 ; jurisprudence constante",
+   "q": "Face à une grève partielle, un employeur ferme l'entreprise à tous les salariés, grévistes et non-grévistes, pendant trois jours. Quelle est la règle ?",
+   "opts": [
+    "Le lock-out est un droit symétrique du droit de grève, librement exercé",
+    "Le lock-out est en principe illicite : l'employeur doit payer les salaires des non-grévistes, sauf situation contraignante ou force majeure rendant impossible la fourniture de travail",
+    "Le lock-out est licite s'il est notifié avec un préavis de 5 jours",
+    "Le lock-out est licite à condition d'indemniser les grévistes"
+   ],
+   "a": 1,
+   "why": "Le lock-out n'est pas reconnu comme un droit en France : l'employeur qui ferme l'entreprise manque à son obligation de fournir du travail et doit payer les non-grévistes. Il n'est exonéré que s'il prouve une situation contraignante (impossibilité matérielle de faire fonctionner l'entreprise, impératif de sécurité) ou la force majeure. Aucun préavis ne le rend licite, et les grévistes ne sont de toute façon pas payés pendant la grève."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3322-1 et L. 3322-2",
+   "q": "La participation des salariés aux résultats de l'entreprise est obligatoire dans les entreprises employant au moins :",
+   "opts": [
+    "11 salariés",
+    "20 salariés",
+    "50 salariés pendant 5 années civiles consécutives",
+    "250 salariés"
+   ],
+   "a": 2,
+   "why": "La participation est obligatoire dans les entreprises d'au moins 50 salariés (L. 3322-1), le seuil devant être atteint ou dépassé pendant cinq années civiles consécutives depuis la loi PACTE (L. 3322-2 renvoyant à L. 130-1 CSS). En dessous, elle est facultative. Depuis 2025, les entreprises de 11 à 49 salariés suffisamment bénéficiaires doivent mettre en place un dispositif de partage de la valeur, mais pas nécessairement la participation."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3324-1",
+   "q": "Pour l'exercice 2025, la société Orvel (120 salariés) présente : bénéfice net fiscal B = 300 000 €, capitaux propres C = 2 000 000 €, salaires bruts S = 1 500 000 €, valeur ajoutée VA = 3 000 000 €. Calculez la réserve spéciale de participation selon la formule légale (en €).",
+   "a": 50000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Formule légale (L. 3324-1) : RSP = 1/2 × (B − 5 % × C) × S / VA = 0,5 × (300 000 − 100 000) × (1 500 000 / 3 000 000) = 0,5 × 200 000 × 0,5 = 50 000 €. Oublier la rémunération des capitaux propres à 5 % donnerait 75 000 € ; oublier le coefficient 1/2 donnerait 100 000 €. Un accord dérogatoire peut retenir une formule plus favorable, jamais moins."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3312-1 et L. 3312-5",
+   "q": "Quelle caractéristique distingue l'intéressement de la participation ?",
+   "opts": [
+    "L'intéressement est obligatoire dès 50 salariés",
+    "L'intéressement est facultatif et présente un caractère aléatoire lié aux résultats ou aux performances de l'entreprise",
+    "L'intéressement est réservé aux cadres",
+    "L'intéressement est nécessairement bloqué cinq ans"
+   ],
+   "a": 1,
+   "why": "L'intéressement est un dispositif facultatif, collectif, institué par accord (ou décision unilatérale dans certaines petites entreprises) pour 1 à 5 ans, dont la formule doit être aléatoire, c'est-à-dire liée aux résultats ou aux performances (L. 3312-1). La participation est au contraire obligatoire à partir de 50 salariés et calculée par une formule légale minimale. Les deux concernent tous les salariés (ancienneté de 3 mois maximum) et peuvent être perçus immédiatement ou placés sur un plan d'épargne."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1142-8 et L. 1142-10",
+   "q": "Une entreprise de 300 salariés obtient un index de l'égalité professionnelle de 68 points sur 100. Quelle est la conséquence légale ?",
+   "opts": [
+    "Aucune, l'index étant purement informatif",
+    "Elle doit prendre des mesures de correction pour atteindre au moins 75 points dans un délai de 3 ans, sous peine d'une pénalité pouvant atteindre 1 % de la masse salariale",
+    "Elle est immédiatement sanctionnée d'une amende de 1 % de la masse salariale",
+    "Elle doit licencier des salariés masculins pour rétablir la parité"
+   ],
+   "a": 1,
+   "why": "Les entreprises d'au moins 50 salariés publient chaque année leur index (L. 1142-8). En dessous de 75 points, elles disposent de trois ans pour adopter des mesures de correction, et le cas échéant de rattrapage salarial, négociées ou décidées unilatéralement ; à défaut de résultat, la DREETS peut prononcer une pénalité allant jusqu'à 1 % de la masse salariale (L. 1142-10). Depuis 2022, les entreprises sous 85 points fixent aussi des objectifs de progression."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. R. 4121-1 et R. 4121-4",
+   "q": "Le document unique d'évaluation des risques professionnels (DUERP) :",
+   "opts": [
+    "N'est obligatoire qu'à partir de 50 salariés",
+    "Est obligatoire pour tout employeur, mis à jour au moins chaque année dans les entreprises d'au moins 11 salariés et conservé 40 ans",
+    "Est établi par le médecin du travail",
+    "Est facultatif si l'entreprise dispose d'une CSSCT"
+   ],
+   "a": 1,
+   "why": "Tout employeur, dès le premier salarié, doit transcrire dans le DUERP les résultats de l'évaluation des risques (R. 4121-1). Depuis la loi du 2 août 2021, la mise à jour annuelle n'est obligatoire qu'à partir de 11 salariés (mise à jour lors de tout changement important dans tous les cas) et le document est conservé 40 ans avec ses versions successives. Il est établi par l'employeur, avec le concours du CSE et du service de santé au travail, et débouche à partir de 50 salariés sur un programme annuel de prévention."
+  },
+  {
+   "type": "tri",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2311-2, L. 2143-3, L. 2315-36, L. 3322-1, L. 1142-8, L. 1311-2",
+   "q": "Associez chaque obligation ou institution au seuil d'effectif qui la déclenche.",
+   "cats": [
+    "11 salariés",
+    "50 salariés",
+    "300 salariés"
+   ],
+   "items": [
+    [
+     "Mise en place du CSE",
+     0
+    ],
+    [
+     "Désignation d'un délégué syndical par un syndicat représentatif",
+     1
+    ],
+    [
+     "Commission santé, sécurité et conditions de travail obligatoire",
+     2
+    ],
+    [
+     "Participation obligatoire aux résultats (seuil atteint 5 ans)",
+     1
+    ],
+    [
+     "Publication de l'index de l'égalité professionnelle",
+     1
+    ],
+    [
+     "Négociation triennale sur la gestion des emplois et des parcours professionnels",
+     2
+    ],
+    [
+     "Mise à jour au moins annuelle du DUERP",
+     0
+    ],
+    [
+     "Règlement intérieur obligatoire",
+     1
+    ]
+   ],
+   "why": "Le seuil de 11 salariés déclenche le CSE et la mise à jour annuelle du DUERP ; celui de 50 salariés, le délégué syndical, la participation, l'index égalité, le règlement intérieur et les attributions élargies du CSE ; celui de 300 salariés, la CSSCT, les commissions du CSE et la négociation GEPP."
+  }
+ ]
+}
