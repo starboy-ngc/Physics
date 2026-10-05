@@ -1,0 +1,436 @@
+{
+ "classe": "7",
+ "titre": "Produits : comptes 75 à 79",
+ "comptes": [
+  {
+   "num": "75",
+   "label": "Autres produits de gestion courante",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 75 regroupe les produits d'exploitation qui ne relèvent pas du chiffre d'affaires : redevances perçues (751), revenus des immeubles non professionnels (752), rémunérations d'administrateurs (753), ristournes de coopératives (754), quotes-parts de résultat sur opérations faites en commun (755), gains de change commerciaux (756), produits des cessions d'immobilisations (757) et indemnités et autres produits (758). Il se crédite par le débit du tiers ou du compte de trésorerie concerné. Il figure dans les produits d'exploitation, ligne « Autres produits ». Ces produits n'entrent pas dans l'excédent brut d'exploitation mais dans le résultat d'exploitation.",
+   "exemple": "Redevance de licence encaissée 2 000 € HT : 512 D 2 400 / 751 C 2 000 / 44571 C 400.",
+   "piege": "Depuis 2025, la plupart des anciens produits exceptionnels de gestion (pénalités perçues, rentrées sur créances amorties, dégrèvements) sont au 75 et non plus au 77.",
+   "pcg2025": "Le compte 75 accueille depuis 2025 le 757 (produits des cessions d'immobilisations, ex-775) et les anciens produits exceptionnels sur opérations de gestion (ex-771) via le 758 renommé « Indemnités et autres produits »."
+  },
+  {
+   "num": "751",
+   "label": "Redevances pour concessions, brevets, licences, marques, procédés, logiciels, droits et valeurs similaires",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 751 enregistre les redevances que l'entreprise perçoit pour la mise à disposition de ses droits de propriété intellectuelle : licences de brevets ou de logiciels (7511), droits d'auteur et de reproduction (7516), autres droits (7518). Il se crédite du montant HT par le débit du 411 et du 44587. Il figure dans les autres produits d'exploitation. Si la concession de licences est l'activité principale, les redevances relèvent du chiffre d'affaires (706).",
+   "exemple": "Redevance trimestrielle de licence de brevet 5 000 € HT : 411 D 6 000 / 7511 C 5 000 / 44587 C 1 000.",
+   "piege": "La cession définitive d'un brevet n'est pas une redevance : le prix de cession va au 757 et la VNC au 657.",
+   "pcg2025": null
+  },
+  {
+   "num": "752",
+   "label": "Revenus des immeubles non affectés aux activités professionnelles",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 752 enregistre les loyers des immeubles que l'entreprise possède sans les utiliser pour son exploitation : immeuble de rapport, logements loués à des tiers. Il se crédite du loyer, HT si le bailleur a opté pour la TVA, par le débit du 411 ou du 512. Il figure dans les autres produits d'exploitation. La location accessoire d'un bien professionnel relève du 7083.",
+   "exemple": "Loyer mensuel d'un appartement détenu par la société, 900 € : 411 D 900 / 752 C 900.",
+   "piege": "Confondre 752 (immeuble non affecté à l'exploitation) et 7083 (sous-location de locaux professionnels).",
+   "pcg2025": null
+  },
+  {
+   "num": "753",
+   "label": "Jetons de présence et rémunérations d'administrateurs, gérants...",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 753 enregistre les rémunérations perçues par l'entreprise lorsqu'elle est elle-même administratrice ou gérante d'une autre société (personne morale membre d'un conseil d'administration, gérant d'une société civile). Il se crédite du montant attribué par le débit du 467 ou du 512. Il figure dans les autres produits d'exploitation. Son pendant en charges, chez la société versante, est le 653.",
+   "exemple": "Rémunération d'administrateur perçue par une holding membre du conseil d'une filiale, 8 000 € : 512 D 8 000 / 753 C 8 000.",
+   "piege": "Les dividendes reçus d'une participation ne sont pas des rémunérations d'administrateur : ils vont au 761.",
+   "pcg2025": "La loi PACTE a remplacé le terme « jetons de présence » par « rémunération des administrateurs » ; le libellé du 753 varie selon l'édition du plan de comptes."
+  },
+  {
+   "num": "754",
+   "label": "Ristournes perçues des coopératives (provenant des excédents)",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 754 enregistre les ristournes qu'une entreprise reçoit en tant qu'associée d'une coopérative, lorsque celle-ci redistribue ses excédents au prorata des opérations réalisées avec chaque membre. Il se crédite du montant attribué par le débit du 512 ou du 467. Il figure dans les autres produits d'exploitation. Une ristourne commerciale ordinaire obtenue d'un fournisseur relève au contraire du 609.",
+   "exemple": "Ristourne de 1 500 € versée par une coopérative agricole à un adhérent : 512 D 1 500 / 754 C 1 500.",
+   "piege": "Ne pas confondre avec le 609 : la ristourne coopérative provient de la répartition d'un excédent, pas d'une réduction de prix négociée.",
+   "pcg2025": null
+  },
+  {
+   "num": "755",
+   "label": "Quotes-parts de résultat sur opérations faites en commun",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 755 enregistre la quote-part de bénéfice revenant à l'entreprise dans une société en participation ou un GIE (7551 chez le non-gérant) ou la quote-part de perte transférée aux coparticipants par le gérant (7555). Il se crédite par le débit du compte 458 « Opérations faites en commun et en GIE ». Il figure dans les autres produits d'exploitation ; son pendant en charges est le 655.",
+   "exemple": "Quote-part de bénéfice de 6 000 € attribuée par le gérant d'une SEP : 458 D 6 000 / 7551 C 6 000.",
+   "piege": "Les résultats des filiales ne transitent jamais par le 755 en comptes individuels : seuls les dividendes effectivement distribués sont enregistrés (761).",
+   "pcg2025": null
+  },
+  {
+   "num": "756",
+   "label": "Gains de change sur créances et dettes commerciales",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 756 enregistre les gains de change réalisés sur les créances clients et dettes fournisseurs en devises, lorsqu'elles sont réglées à un cours plus favorable que celui d'enregistrement. Il se crédite de l'écart favorable par le débit du 512 ou du 401. Il figure dans les autres produits d'exploitation, son pendant en charges étant le 656. Les gains de change sur emprunts et placements sont financiers (766).",
+   "exemple": "Dette fournisseur de 10 000 USD enregistrée 9 200 €, réglée 9 000 € : 401 D 9 200 / 512 C 9 000 / 756 C 200.",
+   "piege": "Le gain de change latent à la clôture (écart de conversion passif 477) n'est jamais constaté en produit : seul le gain réalisé passe au 756.",
+   "pcg2025": "Compte introduit par le règlement ANC n° 2015-05 et maintenu dans le plan 2025 : les gains de change commerciaux relèvent de l'exploitation, les gains financiers du 766."
+  },
+  {
+   "num": "757",
+   "label": "Produits des cessions d'immobilisations incorporelles et corporelles",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 757 enregistre le prix de vente des immobilisations incorporelles et corporelles cédées. Il se crédite du prix de cession HT par le débit du 462 « Créances sur cessions d'immobilisations » ou du 512, la TVA collectée étant portée au 44571. La valeur nette comptable du bien sorti est débitée au 657 : la différence entre les deux donne le résultat de cession, désormais inclus dans le résultat d'exploitation. Avant 2025, ce prix était un produit exceptionnel au 775.",
+   "exemple": "Cession d'un véhicule 12 000 € HT : 462 D 14 400 / 757 C 12 000 / 44571 C 2 400 ; sortie du bien de VNC 9 000 € : 657 D 9 000 / 28182 D 11 000 / 2182 C 20 000.",
+   "piege": "Le prix de cession n'est pas du chiffre d'affaires (70) : il va au 757, et le compte 775 n'existe plus.",
+   "pcg2025": "Compte créé par le règlement ANC n° 2022-06 en remplacement du 775 « Produits des cessions d'éléments d'actif », supprimé ; les plus ou moins-values de cession sont d'exploitation."
+  },
+  {
+   "num": "758",
+   "label": "Indemnités et autres produits",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 758, anciennement « Produits divers de gestion courante », regroupe les produits courants sans compte spécifique : dédits et pénalités perçus (7581), libéralités reçues (7582), rentrées sur créances amorties (7583), dégrèvements d'impôts autres que l'IS (7584), bonis provenant de clauses d'indexation (7585), lots (7586), indemnités d'assurance (7587), opérations de constitution ou de liquidation de fiducies (7588). Il se crédite par le débit du tiers ou du 512. Il figure dans les autres produits d'exploitation. Depuis 2025, il récupère l'essentiel des anciens produits exceptionnels sur opérations de gestion (771) et les indemnités d'assurance qui passaient par le 791 ou le 797.",
+   "exemple": "Pénalité de retard facturée à un client défaillant 400 € : 411 D 400 / 7581 C 400.",
+   "piege": "Un dégrèvement d'IS n'est pas au 7584 : il réduit la charge du 695 (ou passe au 444) ; seuls les dégrèvements d'autres impôts sont des produits du 758.",
+   "pcg2025": "Renommé « Indemnités et autres produits » par le règlement ANC n° 2022-06 ; il reçoit les anciens 7711, 7713, 7714, 7717 (supprimés) et les indemnités d'assurance (7587) auparavant comptabilisées en transferts de charges."
+  },
+  {
+   "num": "7581",
+   "label": "Dédits et pénalités perçus sur achats et ventes",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7581 enregistre les pénalités contractuelles et dédits reçus de clients ou de fournisseurs : pénalités de retard de paiement facturées, indemnité forfaitaire de recouvrement, dédit perçu en cas de renonciation d'un client à une commande, pénalités pour livraison tardive d'un fournisseur. Il se crédite du montant par le débit du 411, du 401 ou du 512. Il figure dans les autres produits d'exploitation ; avant 2025, ces produits étaient exceptionnels (7711).",
+   "exemple": "Pénalités de retard de paiement réclamées à un client et encaissées 250 € : 512 D 250 / 7581 C 250.",
+   "piege": "Les pénalités de retard ne sont comptabilisées en produit qu'une fois certaines et acceptées : une simple mention sur la facture ne suffit pas.",
+   "pcg2025": "Remplace l'ancien compte 7711 « Dédits et pénalités perçus sur achats et sur ventes », supprimé."
+  },
+  {
+   "num": "7587",
+   "label": "Indemnités d'assurance",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7587 enregistre les indemnités versées par les assureurs à la suite d'un sinistre : dommages aux biens, perte d'exploitation, vol, bris de machine. Il se crédite du montant de l'indemnité acquise par le débit du 512 ou du 467 lorsque le règlement n'est pas encore intervenu. Il figure dans les autres produits d'exploitation, face aux charges liées au sinistre qui restent dans leurs comptes par nature. Avant 2025, ces indemnités transitaient par les transferts de charges (791 ou 797).",
+   "exemple": "Indemnité de 15 000 € reçue après un dégât des eaux : 512 D 15 000 / 7587 C 15 000.",
+   "piege": "L'indemnité reçue pour la destruction d'une immobilisation n'est pas un prix de cession (757) : elle va au 7587, et la sortie du bien détruit passe au 657.",
+   "pcg2025": "Compte créé par le règlement ANC n° 2022-06 pour remplacer l'enregistrement des indemnités d'assurance en transferts de charges (791, 797 supprimés)."
+  },
+  {
+   "num": "7588",
+   "label": "Opérations de constitution ou liquidation des fiducies",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7588 enregistre les produits constatés par le constituant lors de la mise en place ou du dénouement d'un contrat de fiducie, lorsque le transfert des actifs dans le patrimoine fiduciaire ou leur retour dégage un produit. Il se crédite par le débit du compte de fiducie concerné (voir les comptes 4 et 5 dédiés). Il figure dans les autres produits d'exploitation. Son pendant en charges est le 6588. C'est un compte très spécialisé, rarement rencontré au DCG.",
+   "exemple": "Retour d'un bien fiduciaire dégageant un produit de 2 000 € au constituant : 2x D 2 000 / 7588 C 2 000.",
+   "piege": "Dans les éditions antérieures à 2025, le 7588 était « Autres produits divers de gestion courante » : le contenu a changé.",
+   "pcg2025": "Dans le plan 2025, le 7588 est consacré aux fiducies ; les produits divers sans compte précis se répartissent dans les autres subdivisions du 758."
+  },
+  {
+   "num": "76",
+   "label": "Produits financiers",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 76 regroupe les produits issus des placements et du financement : produits de participations (761), produits des autres immobilisations financières (762), revenus des autres créances (763), revenus des VMP (764), escomptes obtenus (765), gains de change financiers (766), produits des cessions d'immobilisations financières et de VMP (767), autres produits financiers (768). Il se crédite par le débit du 512, du 2768 ou du compte de titres concerné. Il figure dans la rubrique « Produits financiers » du compte de résultat et forme, avec le 66, le résultat financier.",
+   "exemple": "Intérêts annuels d'un prêt accordé à une filiale 1 200 € : 512 D 1 200 / 7626 C 1 200.",
+   "piege": "La plus-value sur cession d'une immobilisation corporelle est d'exploitation (757) alors que celle sur titres de participation est financière (7671) : la nature de l'actif commande la rubrique.",
+   "pcg2025": "Le compte 767 est devenu « Produits des cessions d'immobilisations financières et de VMP » : 7671 reprend l'ancien 7756 et 7673 l'ancien 767."
+  },
+  {
+   "num": "761",
+   "label": "Produits de participations",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 761 enregistre les revenus des titres de participation : dividendes (7611), revenus sur autres formes de participation (7616), intérêts des créances rattachées à des participations (7617). Il se crédite du montant du dividende voté ou de l'intérêt acquis par le débit du 512 ou du 2678. Les dividendes sont enregistrés à la date de la décision de distribution par l'assemblée de la filiale. Il figure dans les produits financiers. Fiscalement, le régime mère-fille permet d'exonérer 95 % des dividendes.",
+   "exemple": "Dividende de 30 000 € voté par une filiale détenue à 60 % : 4621 D 30 000 / 7611 C 30 000 (ou 512 à l'encaissement).",
+   "piege": "Le dividende n'est pas comptabilisé au prorata temporis ni au moment de la clôture de la filiale : c'est la décision d'assemblée qui crée le droit.",
+   "pcg2025": null
+  },
+  {
+   "num": "762",
+   "label": "Produits des autres immobilisations financières",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 762 enregistre les revenus des immobilisations financières autres que les participations : revenus des titres immobilisés (7621), revenus des prêts (7626), revenus des créances immobilisées (7627). Il se crédite des intérêts ou dividendes acquis par le débit du 512 ou du 2768 pour les intérêts courus non échus. Il figure dans les produits financiers.",
+   "exemple": "Intérêts courus au 31 décembre sur un prêt au personnel 300 € : 2768 D 300 / 7626 C 300.",
+   "piege": "Les intérêts d'un prêt consenti à une filiale relèvent du 7617 (créances rattachées à des participations), pas du 7626.",
+   "pcg2025": null
+  },
+  {
+   "num": "763",
+   "label": "Revenus des autres créances",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 763 enregistre les intérêts perçus sur les créances de l'actif circulant : intérêts de retard facturés sur créances commerciales (7631), intérêts sur créances diverses comme un compte courant d'associé débiteur (7638). Il se crédite par le débit du 411, du 455 ou du 512. Il figure dans les produits financiers. Les pénalités forfaitaires sans caractère d'intérêt vont au 7581.",
+   "exemple": "Intérêts moratoires facturés à un client pour paiement tardif 80 € : 411 D 80 / 7631 C 80.",
+   "piege": "Confondre les intérêts de retard (7631, financier) et l'indemnité forfaitaire de recouvrement de 40 € (7581, exploitation).",
+   "pcg2025": null
+  },
+  {
+   "num": "764",
+   "label": "Revenus des valeurs mobilières de placement",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 764 enregistre les revenus courants des VMP : dividendes d'actions de placement, coupons d'obligations, intérêts de bons et de titres de créances négociables. Il se crédite du revenu acquis par le débit du 512 ou du 5088 pour les intérêts courus. Il figure dans les produits financiers. La plus-value de cession des VMP n'y figure pas : elle est au 7673.",
+   "exemple": "Coupon annuel de 4 % sur 50 000 € d'obligations détenues en placement : 512 D 2 000 / 764 C 2 000.",
+   "piege": "Les parts d'OPCVM de capitalisation ne distribuent rien : leur gain n'apparaît qu'à la cession (7673), pas au 764.",
+   "pcg2025": null
+  },
+  {
+   "num": "765",
+   "label": "Escomptes obtenus",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 765 enregistre les escomptes de règlement que les fournisseurs accordent à l'entreprise lorsqu'elle paie avant l'échéance. Il se crédite du montant HT de l'escompte par le débit du 401, la TVA déductible étant réduite au 44566. C'est un produit financier : l'escompte ne réduit pas le coût d'achat des biens. Il figure dans les produits financiers.",
+   "exemple": "Règlement comptant d'une facture de 6 000 € TTC avec escompte de 2 % sur 5 000 € HT : 401 D 6 000 / 512 C 5 880 / 765 C 100 / 44566 C 20.",
+   "piege": "Confondre escompte obtenu (765, financier) et remise obtenue (609, réduction d'achat).",
+   "pcg2025": null
+  },
+  {
+   "num": "766",
+   "label": "Gains de change financiers",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 766 enregistre les gains de change réalisés sur les opérations financières en devises : remboursement d'emprunts, encaissement de prêts, cessions de titres étrangers, soldes de comptes bancaires en devises. Il se crédite de l'écart favorable par le débit du compte de dette ou de trésorerie. Il figure dans les produits financiers. Les gains sur créances et dettes commerciales relèvent du 756.",
+   "exemple": "Remboursement d'un emprunt de 100 000 USD comptabilisé 92 000 €, payé 90 000 € : 164 D 92 000 / 512 C 90 000 / 766 C 2 000.",
+   "piege": "Le gain latent à la clôture est un écart de conversion passif (477) : il n'est pas constaté au 766 par prudence.",
+   "pcg2025": "L'intitulé « Gains de change financiers » date du règlement ANC n° 2015-05 (auparavant « Gains de change ») ; le plan 2025 le conserve, les gains commerciaux étant au 756."
+  },
+  {
+   "num": "767",
+   "label": "Produits des cessions d'immobilisations financières et des valeurs mobilières de placement",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 767 enregistre la sortie des actifs financiers cédés côté produits : produits des cessions d'immobilisations financières (7671), produits nets sur cessions de titres immobilisés de l'activité de portefeuille (7672) et produits nets sur cessions de valeurs mobilières de placement (7673). Il se crédite par le débit du 512 ou du 465 « Créances sur cessions de VMP ». Il figure dans les produits financiers, face au 667 pour la valeur comptable ou la charge nette. Avant 2025, le prix de cession des immobilisations financières passait au 7756.",
+   "exemple": "Cession de titres de participation acquis 30 000 € pour 36 000 € : 512 D 36 000 / 7671 C 36 000 ; 6671 D 30 000 / 261 C 30 000.",
+   "piege": "Pour les VMP, seule la plus-value nette est enregistrée au 7673 ; pour les titres de participation, le prix de cession brut va au 7671 et la valeur comptable au 6671.",
+   "pcg2025": "Réorganisé par le règlement ANC n° 2022-06 : le 7671 « Produits des cessions d'immobilisations financières » remplace l'ancien 7756 et le 7673 reprend l'ancien 767 « Produits nets sur cessions de VMP »."
+  },
+  {
+   "num": "7671",
+   "label": "Produits des cessions d'immobilisations financières",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7671 enregistre le prix de cession des immobilisations financières autres que les titres immobilisés de l'activité de portefeuille : titres de participation, autres titres immobilisés, prêts cédés. Il se crédite du prix de vente par le débit du 512 ou du 462. La valeur comptable des titres sortis est débitée au 6671 et la dépréciation existante reprise au 7866. Il figure dans les produits financiers.",
+   "exemple": "Vente de 1 000 actions d'une filiale à 25 € : 462 D 25 000 / 7671 C 25 000.",
+   "piege": "Ne pas utiliser le 7756 ni le 775 : ils ont disparu avec le PCG 2025.",
+   "pcg2025": "Remplace l'ancien compte 7756 « Produits des cessions d'immobilisations financières », supprimé avec le 775."
+  },
+  {
+   "num": "7672",
+   "label": "Produits nets sur cessions de titres immobilisés de l'activité de portefeuille",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7672 enregistre le gain net dégagé sur la cession de titres immobilisés de l'activité de portefeuille (TIAP, compte 273). Il se crédite de l'excédent du prix de cession sur la valeur comptable par le débit du 512, le compte 273 étant crédité de la valeur comptable. Il figure dans les produits financiers ; en cas de perte nette, c'est le 6672 qui est débité.",
+   "exemple": "TIAP acquis 15 000 € cédés 17 500 € : 512 D 17 500 / 273 C 15 000 / 7672 C 2 500.",
+   "piege": "Le 7672 fonctionne en net (gain seulement), contrairement au 7671 qui enregistre le prix de cession brut.",
+   "pcg2025": null
+  },
+  {
+   "num": "7673",
+   "label": "Produits nets sur cessions de valeurs mobilières de placement",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7673 enregistre la plus-value nette réalisée lors de la cession de valeurs mobilières de placement (compte 50). Il se crédite de la différence entre le prix de cession et la valeur comptable, lorsque le prix est supérieur, par le débit du 512 ou du 465, le compte 50 étant crédité de la valeur d'origine. Il figure dans les produits financiers. En cas de perte nette, c'est le 6673 qui est débité ; une dépréciation existante est reprise au 7866.",
+   "exemple": "Cession de SICAV acquises 8 000 € pour 8 600 € : 512 D 8 600 / 503 C 8 000 / 7673 C 600.",
+   "piege": "On n'enregistre jamais à la fois le prix de cession brut et la valeur comptable des VMP : seul le résultat net passe au 7673 ou au 6673.",
+   "pcg2025": "Reprend l'ancien compte 767 « Produits nets sur cessions de valeurs mobilières de placement », devenu une subdivision."
+  },
+  {
+   "num": "768",
+   "label": "Autres produits financiers",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 768 enregistre les produits financiers sans compte dédié : produits sur instruments financiers à terme, gains sur opérations de couverture, intérêts de comptes bancaires rémunérés, quote-part de résultat financier sur opérations faites en commun. Il se crédite par le débit du 512 ou du tiers concerné. Il figure dans les produits financiers.",
+   "exemple": "Intérêts créditeurs d'un compte à terme 450 € : 512 D 450 / 768 C 450.",
+   "piege": "Les intérêts d'un compte à terme bancaire peuvent aussi être classés au 764 si le placement est inscrit en VMP : l'important est la cohérence avec le classement du placement au bilan.",
+   "pcg2025": null
+  },
+  {
+   "num": "77",
+   "label": "Produits exceptionnels",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Depuis le règlement ANC n° 2022-06, le compte 77 ne reçoit que les produits liés à un événement majeur et inhabituel, étranger à l'activité normale (indemnité d'expropriation, produit lié à une catastrophe, abandon d'une branche d'activité), ainsi que les éléments exceptionnels par nature comme les changements de méthode et corrections d'erreurs significatives. Il est réduit au compte 778 « Autres produits exceptionnels » et au compte transitoire 772. Il se crédite par le débit du tiers ou du 512 et figure dans la rubrique « Produits exceptionnels » du compte de résultat. Les anciens produits exceptionnels de gestion sont désormais au 75, les cessions d'immobilisations au 757 et la quote-part de subvention d'investissement au 747.",
+   "exemple": "Indemnité d'expropriation d'un terrain, 400 000 € : 462 D 400 000 / 778 C 400 000.",
+   "piege": "Une rentrée sur créance amortie ou un dégrèvement d'impôt n'est plus exceptionnel : 7583 et 7584, pas 77.",
+   "pcg2025": "Le règlement ANC n° 2022-06 supprime les comptes 771 (7711 à 7718), 775 (7751 à 7758), 777 et les subdivisions historiques du 778 ; seuls subsistent le 778 et le 772 utilisé en cours d'exercice."
+  },
+  {
+   "num": "771",
+   "label": "Produits exceptionnels sur opérations de gestion (ancien compte)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 771 regroupait les produits exceptionnels de gestion : dédits et pénalités perçus (7711), libéralités reçues (7713), rentrées sur créances amorties (7714), subventions d'équilibre (7715), dégrèvements d'impôts autres que l'IS (7717) et autres (7718). Il se créditait par le débit du tiers ou du 512 et figurait dans les produits exceptionnels. Le règlement ANC n° 2022-06 l'a supprimé : ces produits sont rattachés à l'exploitation.",
+   "exemple": "Avant 2025 : encaissement de 1 200 € sur une créance passée en perte l'année précédente : 512 D 1 200 / 7714 C 1 200. Depuis 2025 : 512 D 1 200 / 7583 C 1 200.",
+   "piege": "Un sujet ou un manuel qui utilise encore le 771 décrit le plan antérieur à 2025 : à l'examen, utiliser 758 (7581, 7582, 7583, 7584), 742 ou, pour les seuls événements majeurs et inhabituels, 778.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 7581 (dédits et pénalités), 7582 (libéralités), 7583 (rentrées sur créances amorties), 742 (subventions d'équilibre), 7584 (dégrèvements) ou 778 pour les seuls événements majeurs et inhabituels."
+  },
+  {
+   "num": "772",
+   "label": "Produits sur exercices antérieurs (compte de transit)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 772 est un compte à la disposition des entreprises pour enregistrer, en cours d'exercice, les produits qui se rattachent à des exercices antérieurs (facture de vente omise, régularisation). Il se crédite par le débit du tiers concerné. Avant la clôture, son solde doit être réimputé dans les comptes de produits par nature (70 à 75) auxquels ces produits correspondent, de sorte qu'il n'apparaît pas dans les comptes annuels. Seule une correction d'erreur significative reste exceptionnelle au 778.",
+   "exemple": "Prestation de 2024 facturée en février 2025, 1 500 € HT : 411 D 1 800 / 772 C 1 500 / 44587 C 300, puis en fin d'exercice 772 D 1 500 / 706 C 1 500.",
+   "piege": "Laisser un solde au 772 à la clôture : le compte doit être vide dans les états financiers.",
+   "pcg2025": "Maintenu par le règlement ANC n° 2022-06 comme compte transitoire à solder avant la clôture ; il n'est plus une rubrique du résultat exceptionnel (confirmation par une seule source)."
+  },
+  {
+   "num": "775",
+   "label": "Produits des cessions d'éléments d'actif (ancien compte)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Jusqu'aux exercices ouverts avant le 1er janvier 2025, le compte 775 enregistrait le prix de cession de tout élément d'actif immobilisé : immobilisations incorporelles (7751), corporelles (7752) et financières (7756). Il se créditait du prix de vente HT par le débit du 462 et figurait dans les produits exceptionnels, face au 675. Le règlement ANC n° 2022-06 l'a supprimé pour reclasser les cessions dans l'exploitation (757) ou le financier (7671).",
+   "exemple": "Avant 2025 : cession d'un matériel 25 000 € HT : 462 D 30 000 / 775 C 25 000 / 44571 C 5 000. Depuis 2025 : 462 D 30 000 / 757 C 25 000 / 44571 C 5 000.",
+   "piege": "À l'examen, le 775 est une erreur : les cessions d'immobilisations corporelles et incorporelles passent au 757, celles d'immobilisations financières au 7671.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 757 pour les immobilisations incorporelles et corporelles et 7671 pour les immobilisations financières."
+  },
+  {
+   "num": "777",
+   "label": "Quote-part des subventions d'investissement virée au résultat de l'exercice (ancien compte)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 777 recevait chaque année la fraction de subvention d'investissement rapportée au résultat, au rythme de l'amortissement du bien financé. Il se créditait par le débit du 139 et figurait dans les produits exceptionnels. Le règlement ANC n° 2022-06 l'a supprimé : la reprise est désormais un produit d'exploitation au 747, puisque la subvention finance l'activité courante.",
+   "exemple": "Avant 2025 : 139 D 4 000 / 777 C 4 000. Depuis 2025 : 139 D 4 000 / 747 C 4 000.",
+   "piege": "La mécanique (131, 139, reprise au rythme des amortissements) n'a pas changé : seul le compte de produit passe du 777 au 747.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 747 « Quote-part des subventions d'investissement virée au résultat de l'exercice »."
+  },
+  {
+   "num": "778",
+   "label": "Autres produits exceptionnels",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 778 est désormais le seul compte de produits exceptionnels proprement dits. Il enregistre les produits nés d'un événement majeur et inhabituel (indemnité d'expropriation, produit lié à une catastrophe, résultat d'une opération de restructuration d'ampleur), ainsi que l'effet des changements de méthode comptable et des corrections d'erreurs significatives lorsque leur traitement passe par le résultat. Il se crédite par le débit du tiers, du 512 ou du compte d'actif concerné, et l'entreprise peut le subdiviser librement (par exemple 7788 « Produits exceptionnels divers »). Il figure dans les produits exceptionnels du compte de résultat et doit être détaillé dans l'annexe.",
+   "exemple": "Indemnité reçue de l'État pour la fermeture imposée d'un site classé, 200 000 € : 441 D 200 000 / 778 C 200 000.",
+   "piege": "Qualifier d'exceptionnel tout produit inhabituel : il faut un événement à la fois majeur et inhabituel ; une indemnité d'assurance ordinaire reste au 7587.",
+   "pcg2025": "Le règlement ANC n° 2022-06 fait du 778 l'unique compte de produits exceptionnels ; ses anciennes subdivisions (7781 bonis d'indexation, 7782 lots, 7783 bonis sur rachat d'actions) sont reclassées en 7585 et 7586, et les subdivisions sont laissées libres."
+  },
+  {
+   "num": "7788",
+   "label": "Produits exceptionnels divers",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7788 est la subdivision usuelle du 778 pour les produits exceptionnels qui ne font pas l'objet d'une sous-rubrique dédiée par l'entreprise. Il se crédite du produit lié à l'événement majeur et inhabituel par le débit du tiers ou du 512. Il figure dans les produits exceptionnels du compte de résultat et son contenu est explicité dans l'annexe.",
+   "exemple": "Produit net d'une opération d'abandon de branche d'activité, 60 000 € : 467 D 60 000 / 7788 C 60 000.",
+   "piege": "Ne pas y loger des produits courants atypiques (pénalité perçue, rentrée sur créance amortie) : ils relèvent du 758.",
+   "pcg2025": "Subdivision du 778 ; les subdivisions du 778 sont laissées à l'initiative de l'entreprise depuis 2025 et l'existence d'un 7788 normé dans le plan 2025 n'a pu être confirmée."
+  },
+  {
+   "num": "78",
+   "label": "Reprises sur amortissements, dépréciations et provisions",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 78 enregistre les produits calculés qui annulent tout ou partie d'une dotation antérieure : lorsque le risque provisionné disparaît ou se réalise, lorsque la dépréciation n'est plus justifiée, ou lorsque l'amortissement doit être corrigé. Il est ventilé selon la rubrique du compte de résultat : exploitation (781), financier (786), exceptionnel (787). Il se crédite par le débit du compte 15, 28, 29, 39, 49, 59 ou 14 concerné. Ces produits ne correspondent à aucun encaissement : on les retranche pour calculer la capacité d'autofinancement.",
+   "exemple": "Litige provisionné 12 000 € réglé pour 10 000 € : 1511 D 12 000 / 7815 C 12 000 et 6xx D 10 000 / 512 C 10 000.",
+   "piege": "Une reprise se fait toujours dans la même rubrique que la dotation d'origine : une dotation au 6815 se reprend au 7815, jamais au 7875.",
+   "pcg2025": null
+  },
+  {
+   "num": "781",
+   "label": "Reprises sur amortissements, dépréciations et provisions (à inscrire dans les produits d'exploitation)",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 781 enregistre les reprises relevant de l'exploitation : reprises sur amortissements des immobilisations incorporelles et corporelles (7811), sur provisions d'exploitation (7815), sur dépréciations des immobilisations incorporelles et corporelles (7816), sur dépréciations des actifs circulants (7817). Il se crédite du montant repris par le débit du compte de bilan correspondant. Il figure dans les produits d'exploitation, ligne « Reprises sur amortissements, dépréciations et provisions, transferts de charges » dont l'intitulé perd sa seconde partie avec la suppression du 791.",
+   "exemple": "Créance douteuse dépréciée à 1 000 € finalement encaissée en totalité : 491 D 1 000 / 7817 C 1 000.",
+   "piege": "Lorsqu'une créance dépréciée devient définitivement irrécouvrable, on reprend toute la dépréciation (7817) et on constate la perte au 654 : les deux écritures sont nécessaires.",
+   "pcg2025": null
+  },
+  {
+   "num": "7811",
+   "label": "Reprises sur amortissements des immobilisations incorporelles et corporelles",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Le compte 7811 enregistre les reprises d'amortissements d'exploitation, cas rare puisque l'amortissement constate une consommation définitive : il sert essentiellement à corriger un amortissement excessif à la suite d'une erreur ou d'une révision du plan ayant un effet rétrospectif admis. Il se crédite par le débit du compte 28 concerné. Il figure dans les produits d'exploitation. La révision prospective d'un plan d'amortissement ne donne lieu à aucune reprise.",
+   "exemple": "Correction d'un amortissement comptabilisé deux fois sur un matériel, 2 500 € : 2815 D 2 500 / 7811 C 2 500.",
+   "piege": "Lors d'une cession, les amortissements cumulés sont soldés directement par le débit du 28 contre le compte d'immobilisation : on ne passe pas par le 7811.",
+   "pcg2025": null
+  },
+  {
+   "num": "7815",
+   "label": "Reprises sur provisions d'exploitation",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 7815 enregistre la reprise des provisions pour risques et charges d'exploitation (litiges, garanties, grosses réparations) lorsque le risque s'est réalisé ou a disparu, ou lorsque la provision doit être ajustée à la baisse. Il se crédite du montant repris par le débit du compte 15 concerné. Il figure dans les produits d'exploitation. La charge réelle, si elle survient, est enregistrée dans son compte par nature : la provision ne la compense pas directement.",
+   "exemple": "Provision pour garantie de 8 000 € devenue sans objet : 1512 D 8 000 / 7815 C 8 000.",
+   "piege": "Ne jamais débiter la provision (15) directement contre la charge réelle : il faut une reprise au 7815 et la charge dans son compte propre.",
+   "pcg2025": null
+  },
+  {
+   "num": "7816",
+   "label": "Reprises sur dépréciations des immobilisations incorporelles et corporelles",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 7816 enregistre la reprise d'une dépréciation d'immobilisation incorporelle ou corporelle lorsque la valeur actuelle du bien remonte, ou lors de la sortie du bien. Il se crédite par le débit du compte 29 concerné. La reprise ne peut ramener la valeur nette comptable au-dessus de ce qu'elle aurait été sans dépréciation. Il figure dans les produits d'exploitation. La dépréciation du fonds commercial, elle, est irréversible et ne se reprend jamais.",
+   "exemple": "Cession d'une machine dépréciée de 5 000 € : 2915 D 5 000 / 7816 C 5 000, en plus de la sortie du bien (657 et 28).",
+   "piege": "Reprendre la dépréciation d'un fonds commercial est interdit (PCG art. 214-19) : seul ce cas fait exception à la réversibilité.",
+   "pcg2025": null
+  },
+  {
+   "num": "7817",
+   "label": "Reprises sur dépréciations des actifs circulants",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 7817 enregistre les reprises de dépréciations des stocks (78173) et des créances (78174) : à chaque inventaire, la dépréciation antérieure sur stocks est annulée en totalité puis la nouvelle constatée, et la dépréciation d'une créance est reprise quand le client paie ou quand la perte devient définitive. Il se crédite par le débit du 39 ou du 49. Il figure dans les produits d'exploitation.",
+   "exemple": "Dépréciation de stock de l'an dernier 5 000 € annulée à l'inventaire : 397 D 5 000 / 78173 C 5 000 ; nouvelle dépréciation 4 200 € : 68173 D 4 200 / 397 C 4 200.",
+   "piege": "Pour les créances, on ajuste la dépréciation (dotation ou reprise de la différence) alors que pour les stocks on annule et on reconstitue : les deux techniques sont admises mais ne se mélangent pas.",
+   "pcg2025": null
+  },
+  {
+   "num": "786",
+   "label": "Reprises sur dépréciations et provisions (à inscrire dans les produits financiers)",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 786 enregistre les reprises de nature financière : reprises sur provisions financières (7865), notamment la provision pour perte de change, et reprises sur dépréciations des éléments financiers (7866) comme les titres de participation ou les VMP. Il se crédite par le débit du compte 15, 29 ou 59 concerné. Il figure dans les produits financiers. La reprise intervient quand le risque disparaît, quand la valeur des titres remonte ou lors de leur cession.",
+   "exemple": "Dette en devises réglée : la provision pour perte de change de 400 € est reprise : 1515 D 400 / 7865 C 400.",
+   "piege": "Lors de la cession de titres dépréciés, la dépréciation est reprise au 7866 et ne vient pas réduire la valeur comptable débitée au 6671 ou au 6673.",
+   "pcg2025": null
+  },
+  {
+   "num": "787",
+   "label": "Reprises sur dépréciations et provisions (à inscrire dans les produits exceptionnels)",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 787 enregistre les reprises relevant du résultat exceptionnel : reprises sur provisions réglementées relatives aux immobilisations dont les amortissements dérogatoires (7872), aux stocks (7873), autres provisions réglementées (7874), reprises sur provisions pour risques et charges exceptionnels (7875) et sur dépréciations exceptionnelles (7876). Il se crédite par le débit du compte 14, 15 ou 29 concerné. Il figure dans les produits exceptionnels. Les reprises de provisions réglementées restent exceptionnelles après la réforme, comme les dotations correspondantes.",
+   "exemple": "Reprise d'amortissement dérogatoire quand l'amortissement comptable dépasse l'amortissement fiscal, 2 000 € : 145 D 2 000 / 78725 C 2 000.",
+   "piege": "Lors de la cession d'un bien ayant donné lieu à des amortissements dérogatoires, le solde du 145 est repris au 78725 : oublier cette écriture fausse le résultat exceptionnel.",
+   "pcg2025": "Le règlement ANC n° 2022-06 maintient les reprises sur provisions réglementées (7872 à 7874) dans le résultat exceptionnel ; le 7875 est réservé aux provisions liées à des événements majeurs et inhabituels."
+  },
+  {
+   "num": "79",
+   "label": "Transferts de charges (supprimé)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 79 permettait de transférer une charge enregistrée par nature vers un autre compte de charge, vers un compte de bilan (charges à répartir, immobilisation) ou de neutraliser une charge remboursée par un tiers, sans passer par un produit « réel » : transferts de charges d'exploitation (791), financières (796), exceptionnelles (797). Il se créditait par le débit du compte de tiers ou de bilan concerné. Le règlement ANC n° 2022-06 l'a supprimé intégralement : les remboursements de charges de personnel vont au 649, les refacturations au 708, les indemnités d'assurance au 7587 et les frais d'émission d'emprunt à étaler sont portés directement au 4816.",
+   "exemple": "Avant 2025 : indemnités journalières subrogées 1 500 € : 512 D 1 500 / 791 C 1 500. Depuis 2025 : 512 D 1 500 / 649 C 1 500.",
+   "piege": "La ligne du compte de résultat « Reprises sur provisions et transferts de charges » perd son second volet : aucun produit ne doit plus être enregistré en 79.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 (791, 796, 797) ; utiliser 649 (remboursements de charges de personnel), 708 (refacturations), 7587 (indemnités d'assurance) ou l'inscription directe au compte de bilan concerné."
+  },
+  {
+   "num": "791",
+   "label": "Transferts de charges d'exploitation (ancien compte)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 791 neutralisait des charges d'exploitation remboursées par des tiers ou à transférer vers un compte de bilan : indemnités journalières subrogées, remboursements de formation, refacturations de charges, indemnités d'assurance, frais d'émission d'emprunt portés en charges à répartir, avantages en nature. Il se créditait par le débit du 512, du 43, du 467 ou du 481 et figurait dans les produits d'exploitation. Le règlement ANC n° 2022-06 l'a supprimé pour imposer une imputation par nature.",
+   "exemple": "Avant 2025 : refacturation d'une quote-part d'assurance à une société sœur 1 200 € : 451 D 1 200 / 791 C 1 200. Depuis 2025 : 451 D 1 200 / 7088 C 1 200.",
+   "piege": "Un manuel qui crédite le 791 pour les indemnités journalières, les refacturations ou les indemnités d'assurance décrit le plan antérieur à 2025.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 649 pour les remboursements de charges de personnel, 708 pour les refacturations, 7587 pour les indemnités d'assurance et le 4816 directement pour les frais d'émission d'emprunt à étaler."
+  },
+  {
+   "num": "796",
+   "label": "Transferts de charges financières (ancien compte)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 796 permettait de transférer une charge financière vers un autre compte, par exemple des intérêts d'emprunt incorporés au coût d'une immobilisation en cours ou des frais financiers refacturés à une filiale. Il se créditait par le débit du 23 ou du 451 et figurait dans les produits financiers. Le règlement ANC n° 2022-06 l'a supprimé : l'incorporation des intérêts au coût de production se fait désormais par crédit direct du compte 661 concerné ou par le 72, et les refacturations par un produit financier (768).",
+   "exemple": "Avant 2025 : intérêts intercalaires 3 000 € incorporés à une construction en cours : 231 D 3 000 / 796 C 3 000. Depuis 2025 : 231 D 3 000 / 6611 C 3 000 (ou 722 selon la méthode retenue).",
+   "piege": "Il n'existe plus aucun compte de transfert : une charge financière à incorporer ou à refacturer doit trouver sa contrepartie dans un compte par nature.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser le crédit direct du compte de charge d'intérêts (661) pour l'incorporation au coût d'une immobilisation ou le 768 pour une refacturation."
+  },
+  {
+   "num": "797",
+   "label": "Transferts de charges exceptionnelles (ancien compte)",
+   "sens": "C",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 797 neutralisait des charges exceptionnelles couvertes par un tiers, typiquement l'indemnité d'assurance reçue après un sinistre comptabilisé au 671 ou au 675. Il se créditait par le débit du 512 ou du 467 et figurait dans les produits exceptionnels. Le règlement ANC n° 2022-06 l'a supprimé : l'indemnité d'assurance est désormais un produit d'exploitation au 7587, ou au 778 si le sinistre constitue un événement majeur et inhabituel.",
+   "exemple": "Avant 2025 : indemnité d'assurance de 20 000 € après un incendie : 512 D 20 000 / 797 C 20 000. Depuis 2025 : 512 D 20 000 / 7587 C 20 000.",
+   "piege": "Croire que l'indemnité d'assurance reste exceptionnelle : elle est d'exploitation (7587) sauf événement majeur et inhabituel.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 7587 « Indemnités d'assurance » ou 778 pour un événement majeur et inhabituel."
+  }
+ ]
+}
