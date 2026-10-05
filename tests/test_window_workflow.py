@@ -1129,3 +1129,140 @@ class TestAnOverviewWithOnlyOneHalfPublished(WindowCase):
         textes = " ".join(self._textes(self.app.overview_frame))
         self.assertNotIn("colonne analysée", textes)
         self.assertIn("Masse salariale", textes)
+
+
+class TestTheOverviewSettlesInsteadOfTrembling(WindowCase):
+    """La page s'accorde à la hauteur disponible, puis s'arrête.
+
+    Elle mesurait la place libre sur une colonne *déjà agrandie* : au
+    deuxième passage, la place valait zéro et les graphiques rendaient tout
+    ce que le premier leur avait donné. La page oscillait donc entre deux
+    hauteurs — et comme l'une des deux fait apparaître l'ascenseur, qui
+    prend seize pixels de large, elle oscillait aussi entre deux largeurs :
+    un tremblement gauche-droite, une centaine d'aller-retours par seconde.
+
+    Ce qui se vérifie ici n'est pas l'absence de tremblement à l'écran — il
+    dépend de la hauteur de la fenêtre au pixel près — mais l'invariant qui
+    le rend impossible : à place égale, deux accords successifs donnent
+    exactement la même page.
+    """
+
+    def _petite_equipe(self):
+        """Un responsable et sa ligne directe : la page la plus courte, donc
+        celle qui laisse le plus de place a redistribuer.
+
+        Le jeu d'essai commun ne porte pas de colonne « Manager » — il n'a
+        pas de hierarchie. On en ajoute une : tout le monde sous le premier
+        matricule.
+        """
+        chemin = self.source(
+            rows=9, extra_headers=("Manager",),
+            extra=lambda index: ("" if index == 0 else "E00000",))
+        self.load(chemin)
+        self.analyse()
+        label = next(nom for nom in self.app._team_keys
+                     if self.app._team_rows[
+                         self.app._team_keys[nom]]["direct"] >= 3)
+        self.app.team_var.set(label)
+        self.app.team_direct_var.set(True)
+        self.app.update()
+        self.analyse()
+        self.app.tabbar.select("population")
+        for _ in range(20):
+            self.app.update()
+            time.sleep(0.01)
+
+    def _tailles(self):
+        """Les dimensions que l'accord pose, graphique par graphique."""
+        from hr_analytics.ui.charts import PieChart, PyramidChart, ScaleChart
+
+        mesures = []
+        for frame in getattr(self.app, "_overview_frames", []):
+            for chart in self.app._of_type(frame, PyramidChart):
+                mesures.append(("pyramide", chart.ROW))
+            for chart in self.app._of_type(frame, PieChart):
+                mesures.append(("anneau", chart.RADIUS))
+            for chart in self.app._of_type(frame, ScaleChart):
+                mesures.append(("echelle", chart.HEIGHT))
+        return mesures
+
+    def test_two_fits_in_a_row_give_the_same_page(self):
+        self._petite_equipe()
+        self.app._overview_fitted = None
+        self.app._fit_overview()
+        self.app.update()
+        premier = self._tailles()
+        self.assertTrue(premier, "la page doit porter des graphiques")
+        self.app._overview_fitted = None          # on force un second accord
+        self.app._fit_overview()
+        self.app.update()
+        self.assertEqual(premier, self._tailles(),
+                         "un second accord ne doit rien rendre de ce que le "
+                         "premier a donné")
+
+    def test_the_height_of_the_page_stops_moving(self):
+        self._petite_equipe()
+        hauteurs = []
+        for _ in range(4):
+            self.app._overview_fitted = None
+            self.app._fit_overview()
+            self.app.update()
+            hauteurs.append(self.app.overview_frame.winfo_reqheight())
+        self.assertEqual(len(set(hauteurs)), 1,
+                         f"la page oscille entre {sorted(set(hauteurs))}")
+
+    def test_a_settled_page_is_not_fitted_again(self):
+        """Le second verrou : à page, hauteur et largeur inchangées, il n'y
+        a rien à refaire — et c'est ce qui coupe la boucle à la racine."""
+        self._petite_equipe()
+        self.app._fit_overview()
+        self.assertIsNotNone(self.app._overview_fitted)
+        appels = []
+        grow = self.app._grow_column
+        self.app._grow_column = lambda *a, **k: appels.append(a) or grow(*a, **k)
+        self.app._fit_overview()
+        self.assertEqual(appels, [], "la page était déjà accordée")
+
+    def test_going_back_to_a_width_already_fitted_changes_nothing(self):
+        """Le cas qui a survécu au premier correctif.
+
+        L'ascenseur fait alterner la largeur entre deux valeurs : A sans
+        lui, B avec. Une mémoire d'une seule empreinte se laisse contourner
+        par l'aller-retour — A puis B puis A diffère toujours de la
+        dernière, et l'accord se refait indéfiniment. Les empreintes déjà
+        accordées sont donc retenues ensemble, et la page finit toujours
+        par se poser.
+        """
+        self._petite_equipe()
+        self.app._fit_overview()
+        appels = []
+        grow = self.app._grow_column
+        self.app._grow_column = lambda *a, **k: appels.append(a) or grow(*a, **k)
+
+        largeur = self.app.overview_canvas.winfo_width()
+        hauteur = self.app.overview_canvas.winfo_height() - 40
+        faits = self.app._overview_fitted[1]
+        # On simule l'aller-retour : une largeur B, puis le retour en A.
+        faits.add((hauteur, largeur - 16))
+        self.app._fit_overview()        # retour en A, deja accorde
+        self.assertEqual(appels, [], "A avait déjà été accordé")
+
+    def test_rebuilding_the_page_releases_the_lock(self):
+        """Une recomposition change la génération : l'accord se refait.
+
+        Sans cela, le verrou qui coupe la boucle figerait aussi une page
+        neuve à la taille de l'ancienne.
+        """
+        self._petite_equipe()
+        self.app._fit_overview()
+        ancienne = self.app._overview_fitted
+        self.assertIsNotNone(ancienne)
+        self.app._show_overview(self.app.result.payload)
+        for _ in range(10):
+            self.app.update()
+            time.sleep(0.01)
+        # La page recomposée a été réaccordée : l'empreinte a changé de
+        # génération, et les graphiques ont de nouveau été dimensionnés.
+        self.assertIsNotNone(self.app._overview_fitted)
+        self.assertIsNot(self.app._overview_fitted[0], ancienne[0])
+        self.assertTrue(self._tailles())

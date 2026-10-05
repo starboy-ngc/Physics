@@ -2032,12 +2032,30 @@ class Application(tk.Tk):
         lisent d'autant mieux qu'ils sont grands, puis en ecartant les blocs
         les uns des autres.
 
-        Aucune boucle a craindre : grandir ne change pas la largeur, et
-        c'est la largeur qui declenche une recomposition.
+        Grandir ne change pas la largeur de la page — mais grandir peut
+        faire apparaitre l'ascenseur, et l'ascenseur, lui, prend seize
+        pixels de large. La page se reaccordait alors, rendait ce qu'elle
+        venait de prendre, l'ascenseur disparaissait, et tout recommencait :
+        un tremblement gauche-droite, une centaine d'aller-retours par
+        seconde. Deux verrous l'empechent.
+
+        Le premier est dans `_grow_column`, qui mesure desormais la place
+        libre sur une colonne ramenee a sa taille de base : pour une hauteur
+        donnee, il rend toujours le meme resultat. Le second est ici : un
+        accord deja fait pour cette page, cette hauteur et cette largeur
+        n'est pas refait. Une recomposition change la generation et le
+        libere.
         """
         if generation is not None and generation is not getattr(
                 self, "_overview_build", None):
             return
+        # L'accord mesure, et mesurer demande de vider la file d'attente
+        # d'affichage : un « <Configure> » peut donc arriver au milieu et
+        # rappeler l'accord par-dessus celui qui court. Tant qu'il court,
+        # il ne se rappelle pas.
+        if getattr(self, "_overview_fitting", False):
+            return
+        self._overview_fitting = True
         try:
             frames = [frame for frame in getattr(self, "_overview_frames", [])
                       if frame.winfo_exists() and frame.winfo_manager()]
@@ -2047,6 +2065,21 @@ class Application(tk.Tk):
             available = self.overview_canvas.winfo_height() - 40
             if available < 200:
                 return
+            # Les empreintes deja accordees pour CETTE page, et non la
+            # derniere seulement : l'ascenseur fait alterner la largeur
+            # entre deux valeurs, et une memoire d'une seule empreinte se
+            # laisse contourner par un aller-retour. Les accords possibles
+            # sont en nombre fini ; chacun n'est fait qu'une fois, et la
+            # page finit donc toujours par se poser.
+            generation_courante = getattr(self, "_overview_build", None)
+            faits = getattr(self, "_overview_fitted", None)
+            if not faits or faits[0] is not generation_courante:
+                faits = (generation_courante, set())
+                self._overview_fitted = faits
+            empreinte = (available, self.overview_canvas.winfo_width())
+            if empreinte in faits[1]:
+                return
+            faits[1].add(empreinte)
             for frame in frames:
                 self._grow_column(frame, available)
             self.overview_frame.update_idletasks()
@@ -2056,12 +2089,31 @@ class Application(tk.Tk):
             # Un widget detruit entre la mesure et l'ajustement : la page
             # vient d'etre recomposee, et c'est elle qui fait foi.
             return
+        finally:
+            self._overview_fitting = False
 
     def _grow_column(self, frame: tk.Frame, available: int) -> None:
-        """Rend la place libre aux graphiques de la colonne."""
+        """Rend la place libre aux graphiques de la colonne.
+
+        La mesure part toujours de la taille de base. Elle partait de la
+        taille courante : au deuxieme passage, la colonne etait deja
+        agrandie, la place libre valait zero, et les graphiques rendaient
+        tout ce que le premier passage leur avait donne. La page oscillait
+        alors entre deux hauteurs — et comme l'une des deux fait apparaitre
+        l'ascenseur, elle oscillait aussi entre deux largeurs.
+        """
         pyramids = self._of_type(frame, PyramidChart)
         pies = self._of_type(frame, PieChart)
         scales = self._of_type(frame, ScaleChart)
+        if not (pyramids or pies or scales):
+            return
+        for chart in pyramids:
+            chart.set_row_height(PyramidChart.ROW)
+        for chart in pies:
+            chart.set_radius(PieChart.RADIUS)
+        for chart in scales:
+            chart.set_height(ScaleChart.HEIGHT)
+        frame.update_idletasks()
         rows = sum(max(len(chart.rows), 1) for chart in pyramids)
         if pyramids and rows:
             slack = available - frame.winfo_reqheight()
