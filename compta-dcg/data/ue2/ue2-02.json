@@ -288,7 +288,7 @@
     "La révocation du gérant"
    ],
    "a": 2,
-   "why": "La transformation d'une SARL en SAS exige l'unanimité des associés (L. 227-3), comme la transformation en SNC, le changement de nationalité et toute augmentation des engagements des associés. Le transfert de siège et l'augmentation de capital en numéraire sont des modifications statutaires à la majorité extraordinaire ; la révocation du gérant relève de la majorité ordinaire.",
+   "why": "La transformation d'une SARL en SAS exige l'unanimité des associés (L. 227-3), comme la transformation en SNC, le changement de nationalité et toute augmentation des engagements des associés. Le transfert de siège et l'augmentation de capital en numéraire sont des modifications statutaires qui ne requièrent pas l'unanimité (majorité extraordinaire ; le déplacement du siège sur le territoire français peut même être décidé par le gérant sous réserve de ratification par les associés représentant plus de la moitié des parts, L. 223-18) ; la révocation du gérant relève de la majorité ordinaire.",
    "src": "C. com., art. L. 227-3 et L. 223-30",
    "fiab": "stable",
    "niveau": 2

@@ -74,7 +74,7 @@
    "note": "Responsabilité pénale des personnes morales (amende quintuple), escroquerie, abus de confiance, prescription des délits (six ans, butoir douze ans)"
   },
   {
-   "ref": "CMF, art. L. 465-1 ; C. com., art. L. 821-6 et L. 820-7 (devenu L. 821-10)",
+   "ref": "CMF, art. L. 465-1 ; C. com., ex-art. L. 820-4 et L. 820-7 (dispositions pénales recodifiées au titre II du livre VIII par l'ordonnance n° 2023-1142)",
    "note": "Délit d'initié ; entrave aux fonctions du commissaire aux comptes ; non-révélation de faits délictueux"
   }
  ],
@@ -489,7 +489,7 @@
    ],
    "a": 1,
    "why": "La révélation au procureur des faits délictueux dont il a eu connaissance est une obligation légale du commissaire aux comptes ; s'en abstenir est un délit puni de cinq ans d'emprisonnement et de 75 000 € d'amende (C. com., ex-L. 820-7, recodifié au titre II du livre VIII par l'ordonnance n° 2023-1142), le secret professionnel étant levé à l'égard du procureur. Les mêmes peines sanctionnent l'entrave aux fonctions du commissaire par les dirigeants.",
-   "src": "C. com., art. L. 820-7 (devenu L. 821-10) et L. 821-6",
+   "src": "C. com., ex-art. L. 820-7 (non-révélation) et L. 820-4 (entrave), recodifiés au titre II du livre VIII par l'ordonnance n° 2023-1142",
    "fiab": "stable",
    "niveau": 2
   },

@@ -33,7 +33,7 @@
   },
   {
    "h": "Nullité, dissolution, liquidation",
-   "html": "<p><b>Nullité.</b> Causes limitées (art. 1844-10) : violation des art. 1832 et 1833 ou cause de nullité des contrats. Prescription <b>trois ans</b> (art. 1844-14), régularisation encouragée. La nullité <b>n'est pas rétroactive</b> : elle met fin à la société comme une dissolution (art. 1844-15) ; la société annulée est dite « société de fait ».</p><p><b>Dissolution</b> (art. 1844-7) : arrivée du terme, réalisation ou extinction de l'objet, annulation du contrat, <b>décision des associés</b> (dissolution anticipée), <b>dissolution judiciaire pour justes motifs</b> (inexécution de ses obligations par un associé, mésentente paralysant le fonctionnement), réunion de toutes les parts en une main non régularisée dans l'année (sauf EURL et SASU), jugement de liquidation judiciaire, cause statutaire.</p><p><b>Liquidation.</b> La personnalité morale <b>subsiste pour les besoins de la liquidation</b> jusqu'à la publication de sa clôture (art. 1844-8). Le liquidateur réalise l'actif, paie les dettes, puis partage : chaque associé reprend son apport ; l'excédent, le <b>boni de liquidation</b>, est réparti dans la proportion des droits aux bénéfices sauf clause contraire (art. 1844-9). Droit de partage de <span class=\"mono\">2,5 %</span> (CGI, art. 746) s'il y a plusieurs associés.</p><div class=\"note\"><b>Piège.</b> Décès d'un associé, perte de la moitié du capital, absence de dividendes : aucune de ces situations ne dissout à elle seule une SARL ou une SA.</div>"
+   "html": "<p><b>Nullité.</b> Régime unifié dans le Code civil par l'ordonnance n° 2025-229 du 12 mars 2025 (en vigueur le 1er octobre 2025 ; les anciens art. L. 235-1 et s. C. com. sont abrogés). La nullité de la <b>société</b> ne peut résulter que de deux causes (art. 1844-10) : l'<b>incapacité de tous les fondateurs</b> ou la violation des dispositions fixant un <b>nombre minimal de deux associés</b>. La nullité des <b>décisions sociales</b> suppose la violation d'une disposition impérative du droit des sociétés ou une cause de nullité des contrats, et le juge applique un <b>triple test</b> (art. 1844-12-1) : grief du demandeur, influence de l'irrégularité sur le sens de la décision, proportionnalité. Prescription <b>deux ans</b> (art. 1844-14 ; trois ans avant la réforme), régularisation encouragée. La nullité <b>n'est pas rétroactive</b> : elle met fin à la société comme une dissolution (art. 1844-15) et n'est pas opposable aux tiers de bonne foi (art. 1844-16) ; la société annulée est dite « société de fait ».</p><p><b>Dissolution</b> (art. 1844-7) : arrivée du terme, réalisation ou extinction de l'objet, annulation du contrat, <b>décision des associés</b> (dissolution anticipée), <b>dissolution judiciaire pour justes motifs</b> (inexécution de ses obligations par un associé, mésentente paralysant le fonctionnement), réunion de toutes les parts en une main non régularisée dans l'année (sauf EURL et SASU), jugement de liquidation judiciaire, cause statutaire.</p><p><b>Liquidation.</b> La personnalité morale <b>subsiste pour les besoins de la liquidation</b> jusqu'à la publication de sa clôture (art. 1844-8). Le liquidateur réalise l'actif, paie les dettes, puis partage : chaque associé reprend son apport ; l'excédent, le <b>boni de liquidation</b>, est réparti dans la proportion des droits aux bénéfices sauf clause contraire (art. 1844-9). Droit de partage de <span class=\"mono\">2,5 %</span> (CGI, art. 746) s'il y a plusieurs associés.</p><div class=\"note\"><b>Piège.</b> Décès d'un associé, perte de la moitié du capital, absence de dividendes : aucune de ces situations ne dissout à elle seule une SARL ou une SA.</div>"
   }
  ],
  "sources": [
@@ -72,6 +72,10 @@
   {
    "ref": "CGI, art. 746",
    "note": "Droit de partage de 2,5 % sur le boni de liquidation"
+  },
+  {
+   "ref": "Ordonnance n° 2025-229 du 12 mars 2025 ; C. civ., art. 1844-10, 1844-12-1 et 1844-14",
+   "note": "Réforme des nullités en droit des sociétés : causes limitées, triple test, prescription de deux ans (en vigueur le 1er octobre 2025)"
   }
  ],
  "exercices": [
@@ -453,7 +457,7 @@
      2
     ],
     [
-     "Capitaux propres devenus inférieurs à la moitié du capital",
+     "Capitaux propres inférieurs à la moitié du capital, les associés ayant décidé de poursuivre l'activité",
      2
     ],
     [
@@ -465,7 +469,7 @@
      2
     ]
    ],
-   "why": "L'article 1844-7 distingue les causes de plein droit (terme, réalisation ou extinction de l'objet, annulation) et la dissolution judiciaire pour justes motifs (inexécution par un associé, mésentente paralysante). Le décès d'un associé n'affecte pas la SARL (les parts sont transmises aux héritiers), la perte de la moitié du capital déclenche seulement une procédure de consultation (L. 223-42), et l'absence de dividendes ne constitue pas en soi une cause de dissolution.",
+   "why": "L'article 1844-7 distingue les causes de plein droit (terme, réalisation ou extinction de l'objet, annulation) et la dissolution judiciaire pour justes motifs (inexécution par un associé, mésentente paralysante). Le décès d'un associé n'affecte pas la SARL (les parts sont transmises aux héritiers, L. 223-41). La perte de la moitié du capital déclenche seulement une consultation des associés sur la dissolution anticipée (L. 223-42) : s'ils décident de poursuivre, il n'y a pas de dissolution (la dissolution ne pourrait être demandée en justice qu'à défaut de consultation ou de régularisation dans les délais). L'absence de dividendes ne constitue pas en soi une cause de dissolution.",
    "src": "C. civ., art. 1844-7 ; C. com., art. L. 223-41 et L. 223-42",
    "fiab": "stable",
    "niveau": 2
@@ -492,7 +496,7 @@
     "Le gérant de SARL révoqué sans juste motif peut obtenir des dommages-intérêts, mais la révocation reste valable",
     "Les administrateurs de SA sont révocables à tout moment par l'assemblée générale ordinaire, sans motif",
     "La loi impose que le président de SAS ne soit révocable que pour justes motifs",
-    "Le gérant associé statutaire de SNC n'est révocable qu'à l'unanimité des autres associés, sauf clause contraire",
+    "Le gérant associé désigné dans les statuts d'une SNC n'est révocable qu'à l'unanimité des autres associés",
     "La révocation du gérant de SARL exige une décision de justice"
    ],
    "a": [
@@ -500,14 +504,14 @@
     1,
     3
    ],
-   "why": "Le gérant de SARL est révoqué par les associés représentant plus de la moitié des parts ; sans juste motif, la révocation est valable mais ouvre droit à des dommages-intérêts (L. 223-25). Les administrateurs de SA sont révocables ad nutum (L. 225-18). Le gérant statutaire associé de SNC est révocable à l'unanimité des autres associés, sauf clause contraire (L. 221-12). Dans la SAS, les statuts fixent librement les conditions de révocation du président (L. 227-5) : la loi n'impose rien. La révocation judiciaire du gérant de SARL pour cause légitime est une voie supplémentaire, pas une condition.",
+   "why": "Le gérant de SARL est révoqué par les associés représentant plus de la moitié des parts ; sans juste motif, la révocation est valable mais ouvre droit à des dommages-intérêts (L. 223-25). Les administrateurs de SA sont révocables ad nutum (L. 225-18). Le gérant associé désigné dans les statuts d'une SNC n'est révocable qu'à l'unanimité des autres associés (L. 221-12), révocation qui entraîne en principe la dissolution de la société sauf clause ou décision unanime de continuation. Dans la SAS, les statuts fixent librement les conditions de révocation du président (L. 227-5) : la loi n'impose rien. La révocation judiciaire du gérant de SARL pour cause légitime est une voie supplémentaire, pas une condition.",
    "src": "C. com., art. L. 223-25, L. 225-18, L. 221-12, L. 227-5",
    "fiab": "stable",
    "niveau": 2
   },
   {
    "type": "qcm",
-   "q": "Le tribunal prononce la nullité d'une SARL pour vice du consentement d'un associé fondateur, trois ans après son immatriculation. Quel est l'effet de cette nullité ?",
+   "q": "Le tribunal prononce la nullité d'une SARL constituée par deux fondateurs qui étaient tous deux frappés d'incapacité lors de la signature des statuts (cause de nullité de l'art. 1844-10 C. civ.), trois ans après son immatriculation. Quel est l'effet de cette nullité ?",
    "opts": [
     "Elle efface rétroactivement tous les actes passés par la société",
     "Elle met fin à la société sans rétroactivité, comme une dissolution, et entraîne sa liquidation",
@@ -515,8 +519,8 @@
     "Elle transforme automatiquement la SARL en société en participation"
    ],
    "a": 1,
-   "why": "L'article 1844-15 du Code civil précise que lorsque la nullité de la société est prononcée, elle met fin, sans rétroactivité, à l'exécution du contrat : la société est liquidée comme si elle était dissoute. Les engagements envers les tiers de bonne foi ne sont pas remis en cause (art. 1844-16). On parle alors de « société de fait ». La rétroactivité, principe des nullités en droit commun des contrats, est écartée pour protéger les tiers.",
-   "src": "C. civ., art. 1844-15 et 1844-16",
+   "why": "L'article 1844-15 du Code civil précise que lorsque la nullité de la société est prononcée, elle met fin, sans rétroactivité, à l'exécution du contrat : la société est liquidée comme si elle était dissoute. Les engagements envers les tiers de bonne foi ne sont pas remis en cause (art. 1844-16). On parle alors de « société de fait ». La rétroactivité, principe des nullités en droit commun des contrats, est écartée pour protéger les tiers. Rappel : depuis l'ordonnance n° 2025-229 (1er octobre 2025), la nullité de la société ne peut résulter que de l'incapacité de tous les fondateurs ou de la violation des règles fixant un nombre minimal de deux associés (art. 1844-10).",
+   "src": "C. civ., art. 1844-10, 1844-15 et 1844-16",
    "fiab": "stable",
    "niveau": 3
   },

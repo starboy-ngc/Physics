@@ -9,7 +9,7 @@
  "lecon": [
   {
    "h": "Actes de commerce et commerçant",
-   "html": "<p>Les <b>actes de commerce par nature</b> sont énumérés à l'article L. 110-1 : achat de biens pour les revendre, location de meubles, entreprises de manufacture, de transport, de fournitures, de spectacles, opérations de banque et de change, courtage, etc. S'y ajoutent les actes de commerce <b>par la forme</b> (lettre de change, actes des sociétés commerciales par la forme : SNC, SCS, SARL, SA, SAS), et les actes <b>par accessoire</b>, civils par nature mais accomplis par un commerçant pour les besoins de son commerce. L'<b>acte mixte</b> est commercial pour une partie et civil pour l'autre (vente d'un commerçant à un particulier).</p><p>Est <b>commerçant</b> celui qui exerce des actes de commerce et en fait sa <b>profession habituelle</b> (L. 121-1), en son nom et pour son compte, de manière indépendante : les salariés, mandataires et dirigeants sociaux ne sont pas commerçants. Ne le sont pas non plus les <b>artisans</b>, les <b>agriculteurs</b> et les <b>professions libérales</b>, dont l'activité est civile.</p><p><b>Capacité</b> : le mineur non émancipé ne peut pas être commerçant ; le <b>mineur émancipé</b> peut l'être sur autorisation du juge des tutelles lors de l'émancipation ou du président du tribunal judiciaire ensuite (L. 121-2). Le majeur en tutelle ou curatelle ne peut pas exercer le commerce. Des <b>incompatibilités</b> (fonctionnaires, avocats, notaires, experts-comptables) et des <b>interdictions</b> (condamnations, faillite personnelle) limitent l'accès. Le <b>conjoint</b> du commerçant qui participe à l'activité choisit un statut : collaborateur, salarié ou associé (L. 121-4).</p>"
+   "html": "<p>Les <b>actes de commerce par nature</b> sont énumérés à l'article L. 110-1 : achat de biens pour les revendre, location de meubles, entreprises de manufacture, de transport, de fournitures, de spectacles, opérations de banque et de change, courtage, etc. S'y ajoutent les actes de commerce <b>par la forme</b> (lettre de change, actes des sociétés commerciales par la forme : SNC, SCS, SARL, SA, SAS), et les actes <b>par accessoire</b>, civils par nature mais accomplis par un commerçant pour les besoins de son commerce. L'<b>acte mixte</b> est commercial pour une partie et civil pour l'autre (vente d'un commerçant à un particulier).</p><p>Est <b>commerçant</b> celui qui exerce des actes de commerce et en fait sa <b>profession habituelle</b> (L. 121-1), en son nom et pour son compte, de manière indépendante : les salariés, mandataires et dirigeants sociaux ne sont pas commerçants. Ne le sont pas non plus les <b>artisans</b>, les <b>agriculteurs</b> et les <b>professions libérales</b>, dont l'activité est civile.</p><p><b>Capacité</b> : le mineur non émancipé ne peut pas être commerçant ; le <b>mineur émancipé</b> peut l'être sur autorisation du juge des tutelles lors de l'émancipation ou du président du tribunal judiciaire ensuite (L. 121-2). Le majeur en tutelle ne peut pas exercer le commerce (et le majeur en curatelle, qui ne peut agir seul, en est en pratique exclu). Des <b>incompatibilités</b> (fonctionnaires, avocats, notaires, experts-comptables) et des <b>interdictions</b> (condamnations, faillite personnelle) limitent l'accès. Le <b>conjoint</b> du commerçant qui participe à l'activité choisit un statut : collaborateur, salarié ou associé (L. 121-4).</p>"
   },
   {
    "h": "Obligations et régime du commerçant",
@@ -25,7 +25,7 @@
   },
   {
    "h": "Nantissement et location-gérance",
-   "html": "<p><b>Nantissement du fonds de commerce</b> (L. 142-1 et s.) : sûreté <b>sans dépossession</b>, constatée par un acte écrit (authentique ou sous seing privé enregistré) et inscrite au greffe du tribunal de commerce dans les 30 jours. Il porte sur l'enseigne, le nom commercial, le droit au bail, la clientèle, le matériel et les droits de propriété industrielle, mais <b>jamais sur les marchandises</b>, sauf convention particulière. Le créancier nanti dispose d'un droit de préférence et d'un droit de suite ; il est averti en cas de vente ou de déplacement du fonds. Un nantissement judiciaire (mesure conservatoire) est aussi possible.</p><p><b>Location-gérance</b> (L. 144-1 et s.) : contrat par lequel le propriétaire du fonds (le <b>loueur</b>) en concède l'exploitation à un <b>locataire-gérant</b>, commerçant qui exploite à ses risques et périls moyennant une redevance. Depuis la loi PACTE de 2019, la condition d'exploitation préalable du fonds pendant deux ans par le loueur est supprimée. Le contrat est publié dans un support d'annonces légales dans les 15 jours. Jusqu'à la publication et pendant <b>six mois</b> à compter de celle-ci, le loueur est <b>solidairement responsable</b> avec le locataire-gérant des dettes contractées par celui-ci à l'occasion de l'exploitation (L. 144-7) ; la solidarité pour les impôts directs d'exploitation subsiste pendant toute la durée du contrat (CGI, art. 1684, 3). La fin de la location-gérance rend immédiatement exigibles les dettes du locataire-gérant afférentes à l'exploitation (L. 144-9). Le locataire-gérant n'a aucun droit au renouvellement et ne devient jamais propriétaire du fonds, à la différence du locataire d'un bail commercial qui est propriétaire de son fonds.</p>"
+   "html": "<p><b>Nantissement du fonds de commerce</b> (L. 142-1 et s.) : sûreté <b>sans dépossession</b>, constatée par un acte écrit (authentique ou sous seing privé enregistré) et inscrite au greffe du tribunal de commerce dans les 30 jours. Il porte sur l'enseigne, le nom commercial, le droit au bail, la clientèle, le matériel et les droits de propriété industrielle, mais <b>jamais sur les marchandises</b> (qui relèvent du gage des stocks, L. 527-1) ; à défaut de désignation expresse dans l'acte, il ne comprend que l'enseigne, le nom commercial, le droit au bail, la clientèle et l'achalandage (L. 142-2). Le créancier nanti dispose d'un droit de préférence et d'un droit de suite ; il est averti en cas de vente ou de déplacement du fonds. Un nantissement judiciaire (mesure conservatoire) est aussi possible.</p><p><b>Location-gérance</b> (L. 144-1 et s.) : contrat par lequel le propriétaire du fonds (le <b>loueur</b>) en concède l'exploitation à un <b>locataire-gérant</b>, commerçant qui exploite à ses risques et périls moyennant une redevance. Depuis la loi PACTE de 2019, la condition d'exploitation préalable du fonds pendant deux ans par le loueur est supprimée. Le contrat est publié dans un support d'annonces légales dans les 15 jours. Jusqu'à la publication et pendant <b>six mois</b> à compter de celle-ci, le loueur est <b>solidairement responsable</b> avec le locataire-gérant des dettes contractées par celui-ci à l'occasion de l'exploitation (L. 144-7) ; la solidarité pour les impôts directs d'exploitation subsiste pendant toute la durée du contrat (CGI, art. 1684, 3). La fin de la location-gérance rend immédiatement exigibles les dettes du locataire-gérant afférentes à l'exploitation (L. 144-9). Le locataire-gérant n'a aucun droit au renouvellement et ne devient jamais propriétaire du fonds, à la différence du locataire d'un bail commercial qui est propriétaire de son fonds.</p>"
   },
   {
    "h": "Le bail commercial : durée, loyer, renouvellement",
@@ -33,25 +33,57 @@
   },
   {
    "h": "Bail commercial : déspécialisation, cession, baux dérogatoires ; propriété intellectuelle",
-   "html": "<p><b>Déspécialisation</b> : le preneur peut ajouter des activités <b>connexes ou complémentaires</b> par simple notification au bailleur, qui dispose de deux mois pour contester la connexité (<b>déspécialisation partielle</b>, L. 145-47) ; pour changer totalement d'activité (<b>déspécialisation plénière</b>, L. 145-48 et s.), il demande l'autorisation du bailleur, dont le silence pendant <b>trois mois</b> vaut acceptation, avec possible réajustement du loyer et indemnité.</p><p><b>Cession du bail</b> : la clause interdisant au locataire de céder son bail <b>à l'acquéreur de son fonds</b> est réputée non écrite (L. 145-16) ; la cession isolée du bail peut, elle, être interdite ou soumise à agrément. La garantie du cédant envers le bailleur est limitée à trois ans. La <b>sous-location</b> est interdite sauf clause ou accord du bailleur. Le bailleur bénéficie d'un <b>privilège</b> sur les meubles garnissant les lieux.</p><p><b>Bail dérogatoire</b> (L. 145-5) : les parties peuvent écarter le statut pour une durée totale, baux successifs compris, n'excédant pas <b>trois ans</b> (deux ans avant la loi Pinel de 2014). Si le preneur reste dans les lieux au-delà, un bail commercial de neuf ans soumis au statut naît automatiquement, sauf nouveau bail conclu dans le mois. À distinguer de la <b>convention d'occupation précaire</b>, justifiée par des circonstances particulières indépendantes de la volonté des parties.</p><p><b>Propriété intellectuelle</b> : la <b>marque</b> (CPI, L. 711-1 et s.), déposée à l'INPI, est protégée <b>dix ans</b> indéfiniment renouvelables (L. 712-1) ; le <b>brevet</b> (L. 611-1 et s.) protège une invention nouvelle, impliquant une activité inventive et susceptible d'application industrielle pendant <b>vingt ans</b> à compter du dépôt (L. 611-2), sans renouvellement ; les <b>dessins et modèles</b> sont protégés cinq ans renouvelables jusqu'à vingt-cinq ans. Ces droits sont des éléments incorporels du fonds de commerce.</p>"
+   "html": "<p><b>Déspécialisation</b> : le preneur peut ajouter des activités <b>connexes ou complémentaires</b> par simple notification au bailleur, qui dispose de deux mois pour contester la connexité (<b>déspécialisation partielle</b>, L. 145-47) ; pour changer totalement d'activité (<b>déspécialisation plénière</b>, L. 145-48 et s.), il demande l'autorisation du bailleur, dont le silence pendant <b>trois mois</b> vaut acceptation, avec possible réajustement du loyer et indemnité.</p><p><b>Cession du bail</b> : la clause interdisant au locataire de céder son bail <b>à l'acquéreur de son fonds</b> est réputée non écrite (L. 145-16) ; la cession isolée du bail peut, elle, être interdite ou soumise à agrément. La garantie du cédant envers le bailleur est limitée à trois ans. La <b>sous-location</b> est interdite sauf clause ou accord du bailleur. Le bailleur bénéficie d'un <b>privilège</b> sur les meubles garnissant les lieux.</p><p><b>Bail dérogatoire</b> (L. 145-5) : les parties peuvent écarter le statut pour une durée totale, baux successifs compris, n'excédant pas <b>trois ans</b> (deux ans avant la loi Pinel de 2014). Si, à l'expiration de cette durée, le preneur reste et est laissé en possession au-delà d'un mois, un bail commercial de neuf ans soumis au statut se forme automatiquement ; les parties ne peuvent plus conclure de nouveau bail dérogatoire pour le même fonds dans les mêmes locaux. À distinguer de la <b>convention d'occupation précaire</b>, justifiée par des circonstances particulières indépendantes de la volonté des parties.</p><p><b>Propriété intellectuelle</b> : la <b>marque</b> (CPI, L. 711-1 et s.), déposée à l'INPI, est protégée <b>dix ans</b> indéfiniment renouvelables (L. 712-1) ; le <b>brevet</b> (L. 611-1 et s.) protège une invention nouvelle, impliquant une activité inventive et susceptible d'application industrielle pendant <b>vingt ans</b> à compter du dépôt (L. 611-2), sans renouvellement ; les <b>dessins et modèles</b> sont protégés cinq ans renouvelables jusqu'à vingt-cinq ans. Ces droits sont des éléments incorporels du fonds de commerce.</p>"
   }
  ],
  "sources": [
-  { "ref": "C. com., art. L. 110-1 à L. 110-4", "note": "Actes de commerce, preuve libre entre commerçants, prescription quinquennale" },
-  { "ref": "C. com., art. L. 121-1 à L. 121-4 et L. 123-1 et s.", "note": "Définition du commerçant, capacité, conjoint, registre du commerce et des sociétés, obligations comptables" },
-  { "ref": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 à 28", "note": "Expérimentation des tribunaux des activités économiques du 1er janvier 2025 pour quatre ans dans douze tribunaux" },
-  { "ref": "C. com., art. L. 141-1 à L. 141-22 (loi n° 2019-744 du 19 juillet 2019)", "note": "Vente du fonds de commerce : publicité, opposition des créanciers (dix jours), surenchère du sixième, privilège du vendeur" },
-  { "ref": "CGI, art. 719 et 1684", "note": "Droits d'enregistrement sur les cessions de fonds (0 %, 3 %, 5 %) et solidarité fiscale de l'acquéreur" },
-  { "ref": "C. com., art. L. 142-1 à L. 142-5", "note": "Nantissement du fonds de commerce : assiette, inscription, exclusion des marchandises" },
-  { "ref": "C. com., art. L. 144-1 à L. 144-13", "note": "Location-gérance : conditions, publicité, solidarité du loueur pendant six mois (L. 144-7)" },
-  { "ref": "C. com., art. L. 145-1 à L. 145-60", "note": "Statut des baux commerciaux : durée, résiliation triennale, révision (L. 145-38), renouvellement et indemnité d'éviction (L. 145-14), déspécialisation, cession (L. 145-16), bail dérogatoire (L. 145-5)" },
-  { "ref": "CPI, art. L. 611-2 et L. 712-1", "note": "Durée de protection du brevet (vingt ans) et de la marque (dix ans renouvelables)" }
+  {
+   "ref": "C. com., art. L. 110-1 à L. 110-4",
+   "note": "Actes de commerce, preuve libre entre commerçants, prescription quinquennale"
+  },
+  {
+   "ref": "C. com., art. L. 121-1 à L. 121-4 et L. 123-1 et s.",
+   "note": "Définition du commerçant, capacité, conjoint, registre du commerce et des sociétés, obligations comptables"
+  },
+  {
+   "ref": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 à 28",
+   "note": "Expérimentation des tribunaux des activités économiques du 1er janvier 2025 pour quatre ans dans douze tribunaux"
+  },
+  {
+   "ref": "C. com., art. L. 141-1 à L. 141-22 (loi n° 2019-744 du 19 juillet 2019)",
+   "note": "Vente du fonds de commerce : publicité, opposition des créanciers (dix jours), surenchère du sixième, privilège du vendeur"
+  },
+  {
+   "ref": "CGI, art. 719 et 1684",
+   "note": "Droits d'enregistrement sur les cessions de fonds (0 %, 3 %, 5 %) et solidarité fiscale de l'acquéreur"
+  },
+  {
+   "ref": "C. com., art. L. 142-1 à L. 142-5",
+   "note": "Nantissement du fonds de commerce : assiette, inscription, exclusion des marchandises"
+  },
+  {
+   "ref": "C. com., art. L. 144-1 à L. 144-13",
+   "note": "Location-gérance : conditions, publicité, solidarité du loueur pendant six mois (L. 144-7)"
+  },
+  {
+   "ref": "C. com., art. L. 145-1 à L. 145-60",
+   "note": "Statut des baux commerciaux : durée, résiliation triennale, révision (L. 145-38), renouvellement et indemnité d'éviction (L. 145-14), déspécialisation, cession (L. 145-16), bail dérogatoire (L. 145-5)"
+  },
+  {
+   "ref": "CPI, art. L. 611-2 et L. 712-1",
+   "note": "Durée de protection du brevet (vingt ans) et de la marque (dix ans renouvelables)"
+  }
  ],
  "exercices": [
   {
    "type": "qcm",
    "q": "Selon l'article L. 121-1 du Code de commerce, qui est commerçant ?",
-   "opts": ["Toute personne immatriculée au RCS", "Celui qui exerce des actes de commerce et en fait sa profession habituelle", "Toute personne qui vend des biens", "Le dirigeant d'une société commerciale"],
+   "opts": [
+    "Toute personne immatriculée au RCS",
+    "Celui qui exerce des actes de commerce et en fait sa profession habituelle",
+    "Toute personne qui vend des biens",
+    "Le dirigeant d'une société commerciale"
+   ],
    "a": 1,
    "why": "L'article L. 121-1 définit le commerçant par deux critères : accomplir des actes de commerce et en faire sa profession habituelle, la jurisprudence ajoutant qu'il agit en son nom et pour son compte. L'immatriculation ne crée qu'une présomption. Un particulier qui vend occasionnellement n'est pas commerçant, et le dirigeant d'une société commerciale est un mandataire social : c'est la société qui est commerçante.",
    "src": "C. com., art. L. 121-1",
@@ -61,7 +93,12 @@
   {
    "type": "qcm",
    "q": "Un professeur de lycée signe une lettre de change pour un achat personnel. Quelle est la nature de cet acte ?",
-   "opts": ["Un acte civil, l'auteur n'étant pas commerçant", "Un acte de commerce par la forme", "Un acte de commerce par accessoire", "Un acte mixte"],
+   "opts": [
+    "Un acte civil, l'auteur n'étant pas commerçant",
+    "Un acte de commerce par la forme",
+    "Un acte de commerce par accessoire",
+    "Un acte mixte"
+   ],
    "a": 1,
    "why": "L'article L. 110-1, 10° range la lettre de change parmi les actes de commerce « entre toutes personnes » : elle est commerciale par la forme, quelle que soit la qualité du signataire et la nature de l'opération sous-jacente. Il en va de même des actes des sociétés commerciales par la forme. L'acte par accessoire suppose un commerçant agissant pour les besoins de son commerce, ce qui n'est pas le cas.",
    "src": "C. com., art. L. 110-1, 10°",
@@ -71,9 +108,14 @@
   {
    "type": "qcm",
    "q": "Lequel de ces professionnels a la qualité de commerçant ?",
-   "opts": ["Un exploitant agricole qui vend sa production", "Un architecte libéral", "Un exploitant de salon de coiffure employant dix salariés qui achète et revend des produits capillaires à titre habituel", "Un salarié directeur commercial d'une SA"],
+   "opts": [
+    "Un exploitant agricole qui vend sa production",
+    "Un architecte libéral",
+    "Un exploitant de magasin de vêtements qui achète des articles pour les revendre à titre habituel, en son nom et pour son compte",
+    "Un salarié directeur commercial d'une SA"
+   ],
    "a": 2,
-   "why": "L'achat pour revendre à titre habituel est l'acte de commerce par nature type (L. 110-1, 1°) ; au-delà d'une petite structure, l'exploitant qui spécule sur la revente et le travail d'autrui relève du commerce et non de l'artisanat. L'agriculteur et le professionnel libéral exercent des activités civiles. Le salarié agit pour le compte de son employeur, sous subordination : il n'est pas commerçant.",
+   "why": "L'achat de biens pour les revendre, exercé à titre de profession habituelle, en son nom et pour son compte, est l'acte de commerce par nature type (L. 110-1, 1°) : le commerçant de détail est commerçant. L'agriculteur et le professionnel libéral (architecte) exercent des activités civiles. Le salarié agit pour le compte de son employeur, sous subordination : il n'est pas commerçant, c'est la SA qui l'est.",
    "src": "C. com., art. L. 110-1 et L. 121-1",
    "fiab": "stable",
    "niveau": 2
@@ -81,7 +123,12 @@
   {
    "type": "qcm",
    "q": "Deux commerçants sont en litige sur un contrat de 30 000 € conclu oralement. Comment ce contrat peut-il être prouvé ?",
-   "opts": ["Uniquement par écrit, le montant dépassant 1 500 €", "Par tout moyen, la preuve étant libre à l'égard des commerçants", "Uniquement par témoins", "Uniquement par l'aveu"],
+   "opts": [
+    "Uniquement par écrit, le montant dépassant 1 500 €",
+    "Par tout moyen, la preuve étant libre à l'égard des commerçants",
+    "Uniquement par témoins",
+    "Uniquement par l'aveu"
+   ],
    "a": 1,
    "why": "L'article L. 110-3 pose que les actes de commerce peuvent se prouver par tous moyens à l'égard des commerçants, sauf disposition légale contraire : factures, correspondances, comptabilité, témoignages. L'exigence d'un écrit au-delà de 1 500 € (C. civ., art. 1359) ne s'applique qu'en matière civile ; dans un acte mixte, elle ne vaut que contre le non-commerçant.",
    "src": "C. com., art. L. 110-3",
@@ -91,7 +138,12 @@
   {
    "type": "qcm",
    "q": "Quel est le délai de prescription des obligations nées à l'occasion de leur commerce entre commerçants ?",
-   "opts": ["2 ans", "5 ans", "10 ans", "30 ans"],
+   "opts": [
+    "2 ans",
+    "5 ans",
+    "10 ans",
+    "30 ans"
+   ],
    "a": 1,
    "why": "L'article L. 110-4 fixe à cinq ans la prescription des obligations nées à l'occasion de leur commerce entre commerçants ou entre commerçants et non-commerçants, aligné depuis la loi de 2008 sur le délai de droit commun de l'article 2224 du Code civil. Le délai de deux ans concerne les actions des professionnels contre les consommateurs (C. consom., L. 218-2) ; dix ans était l'ancien délai commercial.",
    "src": "C. com., art. L. 110-4",
@@ -112,7 +164,12 @@
   {
    "type": "qcm",
    "q": "Un particulier achète une cuisine à un commerçant et souhaite l'assigner pour défaut de livraison. Quelle juridiction peut-il saisir ?",
-   "opts": ["Uniquement le tribunal judiciaire", "Uniquement le tribunal de commerce", "Au choix, le tribunal judiciaire ou le tribunal de commerce", "Le conseil de prud'hommes"],
+   "opts": [
+    "Uniquement le tribunal judiciaire",
+    "Uniquement le tribunal de commerce",
+    "Au choix, le tribunal judiciaire ou le tribunal de commerce",
+    "Le conseil de prud'hommes"
+   ],
    "a": 2,
    "why": "Dans un acte mixte, le non-commerçant demandeur dispose d'une option : il peut assigner le commerçant devant le tribunal de commerce ou devant le tribunal judiciaire. Inversement, le commerçant qui agit contre le non-commerçant doit saisir le tribunal judiciaire, et une clause attributive de compétence au tribunal de commerce lui serait inopposable (CPC, art. 48, réservé aux commerçants).",
    "src": "C. com., art. L. 721-3 ; CPC, art. 48",
@@ -122,7 +179,12 @@
   {
    "type": "qcm",
    "q": "Depuis le 1er janvier 2025, une SCI en cessation des paiements dont le siège est à Lyon relève, pour sa procédure collective, de quelle juridiction ?",
-   "opts": ["Du tribunal judiciaire, les SCI étant civiles", "Du tribunal des activités économiques de Lyon, dans le cadre de l'expérimentation", "Du tribunal de commerce de Paris", "Du conseil de prud'hommes"],
+   "opts": [
+    "Du tribunal judiciaire, les SCI étant civiles",
+    "Du tribunal des activités économiques de Lyon, dans le cadre de l'expérimentation",
+    "Du tribunal de commerce de Paris",
+    "Du conseil de prud'hommes"
+   ],
    "a": 1,
    "why": "La loi n° 2023-1059 du 20 novembre 2023 expérimente, du 1er janvier 2025 au 31 décembre 2028, douze tribunaux des activités économiques (dont Lyon) compétents pour les procédures amiables et collectives de tous les débiteurs, y compris les sociétés civiles, agriculteurs, associations et professions libérales, à l'exception des professions du droit. Hors de ces douze ressorts, la SCI relèverait encore du tribunal judiciaire.",
    "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26",
@@ -132,8 +194,18 @@
   {
    "type": "multi",
    "q": "À propos de l'expérimentation des tribunaux des activités économiques, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
-   "opts": ["Elle a débuté le 1er janvier 2025 pour une durée de quatre ans", "Elle concerne douze tribunaux de commerce désignés", "Les TAE connaissent des procédures collectives des agriculteurs et des associations de leur ressort", "Les TAE remplacent définitivement tous les tribunaux de commerce de France", "Les TAE sont compétents pour les procédures collectives des avocats"],
-   "a": [0, 1, 2],
+   "opts": [
+    "Elle a débuté le 1er janvier 2025 pour une durée de quatre ans",
+    "Elle concerne douze tribunaux de commerce désignés",
+    "Les TAE connaissent des procédures collectives des agriculteurs et des associations de leur ressort",
+    "Les TAE remplacent définitivement tous les tribunaux de commerce de France",
+    "Les TAE sont compétents pour les procédures collectives des avocats"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "L'expérimentation prévue par la loi d'orientation et de programmation de la justice 2023-2027 porte sur douze tribunaux de commerce rebaptisés TAE (Paris, Lyon, Marseille, Nanterre, Versailles, Avignon, Auxerre, Le Havre, Le Mans, Limoges, Nancy, Saint-Brieuc), du 1er janvier 2025 pour quatre ans. Ils absorbent les procédures amiables et collectives de tous les débiteurs sauf les professions du droit (avocats, notaires). Les autres tribunaux de commerce subsistent inchangés.",
    "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024",
    "fiab": "millésimé 2025",
@@ -142,7 +214,12 @@
   {
    "type": "qcm",
    "q": "Depuis le 1er janvier 2023, où un commerçant personne physique dépose-t-il sa demande d'immatriculation ?",
-   "opts": ["Au centre de formalités des entreprises de la chambre de commerce", "Sur le guichet unique électronique géré par l'INPI", "Directement à la préfecture", "Auprès de l'URSSAF uniquement"],
+   "opts": [
+    "Au centre de formalités des entreprises de la chambre de commerce",
+    "Sur le guichet unique électronique géré par l'INPI",
+    "Directement à la préfecture",
+    "Auprès de l'URSSAF uniquement"
+   ],
    "a": 1,
    "why": "La loi PACTE a remplacé les centres de formalités des entreprises par un guichet unique électronique, géré par l'INPI, obligatoire depuis le 1er janvier 2023 pour toutes les formalités de création, modification et cessation ; il transmet les informations au greffe (RCS), à l'URSSAF et à l'administration fiscale et alimente le registre national des entreprises. Les CFE n'existent plus.",
    "src": "C. com., art. L. 123-33 et R. 123-1 et s.",
@@ -152,7 +229,12 @@
   {
    "type": "qcm",
    "q": "Deux commerçants achètent ensemble un stock à un grossiste, sans préciser la répartition de la dette. Le grossiste peut-il réclamer la totalité du prix à l'un d'eux ?",
-   "opts": ["Non, chacun ne doit que la moitié", "Oui, la solidarité étant présumée en matière commerciale", "Oui, mais seulement si une clause de solidarité a été stipulée", "Non, la solidarité est interdite entre commerçants"],
+   "opts": [
+    "Non, chacun ne doit que la moitié",
+    "Oui, la solidarité étant présumée en matière commerciale",
+    "Oui, mais seulement si une clause de solidarité a été stipulée",
+    "Non, la solidarité est interdite entre commerçants"
+   ],
    "a": 1,
    "why": "En droit civil, la solidarité ne se présume pas (C. civ., art. 1310) ; en matière commerciale, un usage constant, consacré par la jurisprudence, présume au contraire la solidarité entre codébiteurs commerçants. Le grossiste peut donc réclamer la totalité à l'un des deux, qui exercera un recours contre l'autre. Une clause expresse n'est nécessaire qu'en matière civile.",
    "src": "C. civ., art. 1310 ; usage commercial (Cass. req., 20 octobre 1920)",
@@ -162,7 +244,12 @@
   {
    "type": "qcm",
    "q": "Quel élément est indispensable à l'existence d'un fonds de commerce ?",
-   "opts": ["Le matériel", "La clientèle", "L'immeuble d'exploitation", "Le stock de marchandises"],
+   "opts": [
+    "Le matériel",
+    "La clientèle",
+    "L'immeuble d'exploitation",
+    "Le stock de marchandises"
+   ],
    "a": 1,
    "why": "La clientèle est l'élément essentiel du fonds de commerce : sans clientèle réelle, certaine et personnelle, il n'y a pas de fonds (jurisprudence constante). Le matériel et les marchandises sont des éléments corporels facultatifs ; l'immeuble n'en fait jamais partie, le fonds étant un meuble incorporel.",
    "src": "C. com., art. L. 141-5 et L. 142-2 ; jurisprudence",
@@ -172,8 +259,19 @@
   {
    "type": "multi",
    "q": "Parmi les éléments suivants, lesquels font partie du fonds de commerce d'une boulangerie exploitée dans des locaux loués ? (plusieurs réponses possibles)",
-   "opts": ["Le droit au bail", "Le stock de farine", "L'immeuble dans lequel le fonds est exploité", "Les créances sur les clients professionnels", "L'enseigne « Au Pain Doré »", "Les dettes envers les fournisseurs"],
-   "a": [0, 1, 4],
+   "opts": [
+    "Le droit au bail",
+    "Le stock de farine",
+    "L'immeuble dans lequel le fonds est exploité",
+    "Les créances sur les clients professionnels",
+    "L'enseigne « Au Pain Doré »",
+    "Les dettes envers les fournisseurs"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
    "why": "Le fonds comprend des éléments incorporels (clientèle, nom commercial, enseigne, droit au bail, licences, droits de propriété industrielle) et corporels (matériel, marchandises). En sont exclus l'immeuble (le fonds est un meuble), ainsi que les créances et les dettes, qui ne sont pas transmises avec le fonds sauf stipulation expresse ou exception légale (contrats de travail, assurances, bail).",
    "src": "C. com., art. L. 142-2 ; jurisprudence",
    "fiab": "stable",
@@ -182,7 +280,12 @@
   {
    "type": "qcm",
    "q": "Quelle est la nature juridique du fonds de commerce ?",
-   "opts": ["Un immeuble par destination", "Un meuble incorporel constituant une universalité de fait", "Une personne morale", "Un meuble corporel"],
+   "opts": [
+    "Un immeuble par destination",
+    "Un meuble incorporel constituant une universalité de fait",
+    "Une personne morale",
+    "Un meuble corporel"
+   ],
    "a": 1,
    "why": "Le fonds de commerce est un bien meuble incorporel, universalité de fait réunissant des éléments distincts affectés à l'exploitation d'une clientèle. Il n'a pas la personnalité morale (c'est le commerçant ou la société qui l'exploite qui en est titulaire) et ne peut pas être hypothéqué, mais seulement nanti. Sa nature mobilière explique le régime particulier de sa vente et de son nantissement.",
    "src": "C. com., art. L. 141-5 et L. 142-1",
@@ -214,7 +317,12 @@
   {
    "type": "qcm",
    "q": "La vente d'un fonds de commerce est publiée au BODACC le 3 mars. Jusqu'à quelle date les créanciers du vendeur peuvent-ils faire opposition au paiement du prix ?",
-   "opts": ["Le 13 mars, soit dix jours après la publication", "Le 3 avril, soit un mois après", "Le 3 mai, soit deux mois après", "Il n'existe pas de délai d'opposition"],
+   "opts": [
+    "Le 13 mars, soit dix jours après la publication",
+    "Le 3 avril, soit un mois après",
+    "Le 3 mai, soit deux mois après",
+    "Il n'existe pas de délai d'opposition"
+   ],
    "a": 0,
    "why": "L'article L. 141-14 ouvre aux créanciers du vendeur un délai de dix jours à compter de la publication au BODACC pour former opposition au paiement du prix, par acte extrajudiciaire ou lettre recommandée, en indiquant le montant et la cause de la créance. Le prix est séquestré jusqu'à l'expiration de ce délai. Les délais d'un ou deux mois correspondent à d'autres procédures (réduction de capital, déclaration de créances).",
    "src": "C. com., art. L. 141-14",
@@ -224,9 +332,14 @@
   {
    "type": "qcm",
    "q": "Qu'est-ce qui caractérise le nantissement conventionnel d'un fonds de commerce ?",
-   "opts": ["Une sûreté avec dépossession du commerçant", "Une sûreté sans dépossession, inscrite au greffe, qui exclut les marchandises sauf convention", "Une hypothèque sur l'immeuble d'exploitation", "Une garantie limitée au stock de marchandises"],
+   "opts": [
+    "Une sûreté avec dépossession du commerçant",
+    "Une sûreté sans dépossession, inscrite au greffe, qui ne peut jamais porter sur les marchandises",
+    "Une hypothèque sur l'immeuble d'exploitation",
+    "Une garantie limitée au stock de marchandises"
+   ],
    "a": 1,
-   "why": "Le nantissement du fonds (L. 142-1 et s.) permet au commerçant de continuer à exploiter : il est sans dépossession, constaté par écrit et inscrit au greffe du tribunal de commerce dans les 30 jours. Il porte sur l'enseigne, le nom commercial, le droit au bail, la clientèle, le matériel et les droits de propriété industrielle, mais pas sur les marchandises, qui tournent trop vite pour servir d'assiette. L'hypothèque est réservée aux immeubles.",
+   "why": "Le nantissement du fonds (L. 142-1 et s.) permet au commerçant de continuer à exploiter : il est sans dépossession, constaté par écrit et inscrit au greffe du tribunal de commerce dans les 30 jours. Il peut porter sur l'enseigne, le nom commercial, le droit au bail, la clientèle, le matériel et les droits de propriété industrielle (L. 142-2), à défaut de désignation expresse sur les quatre premiers seulement, mais jamais sur les marchandises, qui tournent trop vite pour servir d'assiette (elles relèvent du gage des stocks). L'hypothèque est réservée aux immeubles.",
    "src": "C. com., art. L. 142-1 et L. 142-2",
    "fiab": "stable",
    "niveau": 2
@@ -234,7 +347,12 @@
   {
    "type": "qcm",
    "q": "Un commerçant donne son fonds en location-gérance ; le contrat est publié le 10 février 2025. Un fournisseur du locataire-gérant détient une facture d'exploitation impayée née le 15 mai 2025. Peut-il poursuivre le propriétaire du fonds ?",
-   "opts": ["Non, le loueur n'est jamais tenu des dettes du locataire-gérant", "Oui, le loueur est solidairement responsable des dettes d'exploitation jusqu'à la publication et pendant six mois après celle-ci", "Oui, le loueur est solidairement responsable pendant toute la durée du contrat", "Oui, mais seulement pour la moitié de la dette"],
+   "opts": [
+    "Non, le loueur n'est jamais tenu des dettes du locataire-gérant",
+    "Oui, le loueur est solidairement responsable des dettes d'exploitation jusqu'à la publication et pendant six mois après celle-ci",
+    "Oui, le loueur est solidairement responsable pendant toute la durée du contrat",
+    "Oui, mais seulement pour la moitié de la dette"
+   ],
    "a": 1,
    "why": "L'article L. 144-7 rend le loueur solidairement responsable avec le locataire-gérant des dettes contractées par celui-ci à l'occasion de l'exploitation du fonds, jusqu'à la publication du contrat et pendant un délai de six mois à compter de cette publication. Une dette née le 15 mai 2025, soit moins de six mois après le 10 février 2025, engage donc le loueur. Seule la solidarité fiscale pour les impôts directs d'exploitation dure toute la location (CGI, art. 1684, 3).",
    "src": "C. com., art. L. 144-7",
@@ -255,7 +373,12 @@
   {
    "type": "qcm",
    "q": "Un bailleur et un commerçant signent un bail de deux ans « hors statut », puis un second de deux ans pour les mêmes locaux. Quelle est la situation à la fin du second bail si le commerçant reste dans les lieux ?",
-   "opts": ["Un nouveau bail dérogatoire de deux ans se forme tacitement", "Un bail commercial de neuf ans soumis au statut s'est formé, la durée totale dérogatoire ayant dépassé trois ans", "Le commerçant est occupant sans droit ni titre", "Le bail se poursuit pour une durée indéterminée hors statut"],
+   "opts": [
+    "Un nouveau bail dérogatoire de deux ans se forme tacitement",
+    "Un bail commercial de neuf ans soumis au statut s'est formé, la durée totale dérogatoire ayant dépassé trois ans",
+    "Le commerçant est occupant sans droit ni titre",
+    "Le bail se poursuit pour une durée indéterminée hors statut"
+   ],
    "a": 1,
    "why": "L'article L. 145-5 permet d'écarter le statut à condition que la durée totale du bail ou des baux successifs n'excède pas trois ans (loi Pinel de 2014 ; deux ans auparavant). Deux baux de deux ans dépassent ce plafond : dès l'expiration de la durée dérogatoire admise, si le preneur reste en possession, il s'opère un nouveau bail soumis au statut des baux commerciaux, donc de neuf ans avec droit au renouvellement.",
    "src": "C. com., art. L. 145-5",
@@ -265,7 +388,12 @@
   {
    "type": "qcm",
    "q": "Un locataire commerçant souhaite quitter ses locaux à la fin de la première période triennale de son bail de neuf ans. Quelle formalité doit-il respecter ?",
-   "opts": ["Aucune, le départ est libre à chaque échéance triennale", "Donner congé au moins six mois avant la fin de la période triennale, par acte de commissaire de justice ou lettre recommandée avec avis de réception", "Obtenir l'accord écrit du bailleur", "Donner congé un an à l'avance par simple courriel"],
+   "opts": [
+    "Aucune, le départ est libre à chaque échéance triennale",
+    "Donner congé au moins six mois avant la fin de la période triennale, par acte de commissaire de justice ou lettre recommandée avec avis de réception",
+    "Obtenir l'accord écrit du bailleur",
+    "Donner congé un an à l'avance par simple courriel"
+   ],
    "a": 1,
    "why": "L'article L. 145-4 permet au preneur de résilier à l'expiration de chaque période triennale, à condition de donner congé au moins six mois à l'avance, par acte extrajudiciaire ou, depuis la loi Macron de 2015, par lettre recommandée avec avis de réception. Aucun accord du bailleur n'est requis. Le bailleur, lui, ne peut résilier tous les trois ans que pour des motifs limités (construire, surélever, reprendre des locaux d'habitation).",
    "src": "C. com., art. L. 145-4 et L. 145-9",
@@ -275,7 +403,12 @@
   {
    "type": "qcm",
    "q": "À l'expiration d'un bail commercial, le bailleur refuse le renouvellement sans invoquer aucun motif. Que doit-il au locataire ?",
-   "opts": ["Rien, le bail étant arrivé à son terme", "Une indemnité d'éviction égale au préjudice causé par le défaut de renouvellement, comprenant notamment la valeur du fonds", "Le remboursement du dépôt de garantie uniquement", "Trois mois de loyer"],
+   "opts": [
+    "Rien, le bail étant arrivé à son terme",
+    "Une indemnité d'éviction égale au préjudice causé par le défaut de renouvellement, comprenant notamment la valeur du fonds",
+    "Le remboursement du dépôt de garantie uniquement",
+    "Trois mois de loyer"
+   ],
    "a": 1,
    "why": "Le droit au renouvellement est le cœur de la « propriété commerciale » : le bailleur peut refuser, mais il doit alors une indemnité d'éviction réparant le préjudice (valeur marchande du fonds, frais de déménagement et de réinstallation, droits de mutation d'un fonds de même valeur), sauf motif grave et légitime contre le locataire ou reprise pour habiter, démolir ou reconstruire (L. 145-14 et L. 145-17). Le bailleur dispose d'un droit de repentir pendant quinze jours après la fixation de l'indemnité.",
    "src": "C. com., art. L. 145-14 et L. 145-17",
@@ -285,7 +418,12 @@
   {
    "type": "qcm",
    "q": "Un locataire exploitant une librairie souhaite vendre aussi de la papeterie. Quelle procédure doit-il suivre ?",
-   "opts": ["Obtenir l'autorisation expresse du bailleur, qui peut refuser librement", "Notifier son intention au bailleur, qui dispose de deux mois pour contester le caractère connexe ou complémentaire de l'activité", "Saisir le tribunal pour obtenir une déspécialisation plénière", "Résilier le bail et en conclure un nouveau"],
+   "opts": [
+    "Obtenir l'autorisation expresse du bailleur, qui peut refuser librement",
+    "Notifier son intention au bailleur, qui dispose de deux mois pour contester le caractère connexe ou complémentaire de l'activité",
+    "Saisir le tribunal pour obtenir une déspécialisation plénière",
+    "Résilier le bail et en conclure un nouveau"
+   ],
    "a": 1,
    "why": "Adjoindre une activité connexe ou complémentaire relève de la déspécialisation partielle (L. 145-47) : simple notification au bailleur par acte extrajudiciaire ou lettre recommandée, le bailleur ayant deux mois pour contester la connexité devant le tribunal. La déspécialisation plénière (changement total d'activité, L. 145-48) exige une demande d'autorisation, le silence du bailleur pendant trois mois valant acceptation.",
    "src": "C. com., art. L. 145-47",
@@ -295,7 +433,12 @@
   {
    "type": "qcm",
    "q": "Un bail commercial interdit toute cession du bail sans l'accord du bailleur. Le locataire vend son fonds de commerce et entend céder le bail à l'acquéreur. Quelle est la portée de la clause ?",
-   "opts": ["Elle est valable et le bailleur peut refuser la cession", "Elle est réputée non écrite en ce qu'elle interdit la cession du bail à l'acquéreur du fonds", "Elle impose une cession par acte authentique", "Elle rend la vente du fonds nulle"],
+   "opts": [
+    "Elle est valable et le bailleur peut refuser la cession",
+    "Elle est réputée non écrite en ce qu'elle interdit la cession du bail à l'acquéreur du fonds",
+    "Elle impose une cession par acte authentique",
+    "Elle rend la vente du fonds nulle"
+   ],
    "a": 1,
    "why": "L'article L. 145-16 répute non écrites les clauses tendant à interdire au locataire de céder son bail à l'acquéreur de son fonds de commerce, car le droit au bail est un élément du fonds dont la cession serait sinon paralysée. Les clauses encadrant la cession (agrément, intervention du bailleur à l'acte, garantie solidaire limitée à trois ans) restent valables, et la cession isolée du bail sans le fonds peut être interdite.",
    "src": "C. com., art. L. 145-16",
@@ -305,7 +448,12 @@
   {
    "type": "qcm",
    "q": "Dans quel cas le loyer peut-il être déplafonné lors d'une révision triennale ?",
-   "opts": ["Dès que la valeur locative dépasse le loyer en cours", "En cas de modification matérielle des facteurs locaux de commercialité ayant entraîné une variation de plus de 10 % de la valeur locative", "À chaque révision, le bailleur ayant un droit au loyer de marché", "Uniquement si le bail a été conclu depuis plus de douze ans"],
+   "opts": [
+    "Dès que la valeur locative dépasse le loyer en cours",
+    "En cas de modification matérielle des facteurs locaux de commercialité ayant entraîné une variation de plus de 10 % de la valeur locative",
+    "À chaque révision, le bailleur ayant un droit au loyer de marché",
+    "Uniquement si le bail a été conclu depuis plus de douze ans"
+   ],
    "a": 1,
    "why": "En révision triennale, l'article L. 145-38 limite la variation du loyer à celle de l'ILC ou de l'ILAT, sauf preuve d'une modification matérielle des facteurs locaux de commercialité (nouvelle ligne de transport, piétonnisation, implantation d'un centre commercial) ayant entraîné par elle-même une variation de plus de 10 % de la valeur locative. Le critère du bail de plus de douze ans concerne le déplafonnement du loyer de renouvellement (L. 145-34).",
    "src": "C. com., art. L. 145-38",
@@ -315,7 +463,12 @@
   {
    "type": "qcm",
    "q": "Quelle est la durée de protection d'une marque déposée à l'INPI et d'un brevet d'invention ?",
-   "opts": ["Marque : 10 ans renouvelables indéfiniment ; brevet : 20 ans non renouvelables", "Marque : 20 ans ; brevet : 10 ans renouvelables", "Marque : illimitée sans formalité ; brevet : 25 ans", "Marque : 5 ans ; brevet : 70 ans"],
+   "opts": [
+    "Marque : 10 ans renouvelables indéfiniment ; brevet : 20 ans non renouvelables",
+    "Marque : 20 ans ; brevet : 10 ans renouvelables",
+    "Marque : illimitée sans formalité ; brevet : 25 ans",
+    "Marque : 5 ans ; brevet : 70 ans"
+   ],
    "a": 0,
    "why": "L'enregistrement d'une marque produit ses effets pendant dix ans à compter du dépôt et peut être renouvelé indéfiniment (CPI, L. 712-1), sous réserve d'un usage sérieux. Le brevet confère un monopole de vingt ans à compter du dépôt (CPI, L. 611-2), sans renouvellement possible, l'invention tombant ensuite dans le domaine public. Les dessins et modèles sont protégés cinq ans renouvelables jusqu'à vingt-cinq ans ; les 70 ans concernent le droit d'auteur après la mort de l'auteur.",
    "src": "CPI, art. L. 611-2 et L. 712-1",
@@ -325,16 +478,47 @@
   {
    "type": "tri",
    "q": "Associez chaque règle à la durée ou au délai correspondant.",
-   "cats": ["10 jours", "6 mois", "3 ans", "5 ans", "9 ans", "10 ans"],
+   "cats": [
+    "10 jours",
+    "6 mois",
+    "3 ans",
+    "5 ans",
+    "9 ans",
+    "10 ans"
+   ],
    "items": [
-    ["Opposition des créanciers du vendeur au paiement du prix d'un fonds de commerce", 0],
-    ["Solidarité du loueur après publication du contrat de location-gérance", 1],
-    ["Préavis de congé du preneur en fin de période triennale", 1],
-    ["Durée totale maximale des baux dérogatoires au statut", 2],
-    ["Prescription des obligations commerciales", 3],
-    ["Durée minimale d'un bail commercial", 4],
-    ["Durée de protection d'une marque avant renouvellement", 5],
-    ["Conservation des documents comptables par le commerçant", 5]
+    [
+     "Opposition des créanciers du vendeur au paiement du prix d'un fonds de commerce",
+     0
+    ],
+    [
+     "Solidarité du loueur après publication du contrat de location-gérance",
+     1
+    ],
+    [
+     "Préavis de congé du preneur en fin de période triennale",
+     1
+    ],
+    [
+     "Durée totale maximale des baux dérogatoires au statut",
+     2
+    ],
+    [
+     "Prescription des obligations commerciales",
+     3
+    ],
+    [
+     "Durée minimale d'un bail commercial",
+     4
+    ],
+    [
+     "Durée de protection d'une marque avant renouvellement",
+     5
+    ],
+    [
+     "Conservation des documents comptables par le commerçant",
+     5
+    ]
    ],
    "why": "Opposition des créanciers : dix jours (L. 141-14). Solidarité du loueur : six mois après publication (L. 144-7) ; congé triennal : six mois (L. 145-4). Bail dérogatoire : trois ans au total (L. 145-5). Prescription commerciale : cinq ans (L. 110-4). Bail commercial : neuf ans minimum (L. 145-4). Marque : dix ans renouvelables (CPI, L. 712-1) ; conservation des livres comptables : dix ans (L. 123-22).",
    "src": "C. com., art. L. 110-4, L. 123-22, L. 141-14, L. 144-7, L. 145-4, L. 145-5 ; CPI, art. L. 712-1",
@@ -344,7 +528,12 @@
   {
    "type": "qcm",
    "q": "Un micro-entrepreneur a réalisé 12 000 € de chiffre d'affaires en 2023 et 14 000 € en 2024. Est-il tenu d'ouvrir un compte bancaire dédié à son activité ?",
-   "opts": ["Non, les micro-entrepreneurs en sont toujours dispensés", "Oui, car son chiffre d'affaires a dépassé 10 000 € pendant deux années civiles consécutives", "Oui, tout entrepreneur individuel doit ouvrir un compte professionnel dès le premier euro", "Non, le seuil est de 20 000 €"],
+   "opts": [
+    "Non, les micro-entrepreneurs en sont toujours dispensés",
+    "Oui, car son chiffre d'affaires a dépassé 10 000 € pendant deux années civiles consécutives",
+    "Oui, tout entrepreneur individuel doit ouvrir un compte professionnel dès le premier euro",
+    "Non, le seuil est de 20 000 €"
+   ],
    "a": 1,
    "why": "Depuis la loi PACTE de 2019, l'entrepreneur relevant du régime micro-social n'est tenu de dédier un compte bancaire à son activité que si son chiffre d'affaires dépasse 10 000 € pendant deux années civiles consécutives (CSS, art. L. 613-10). Deux années au-dessus du seuil : obligation en 2025. Le compte peut être un compte courant ordinaire séparé, pas nécessairement un compte « professionnel ».",
    "src": "CSS, art. L. 613-10",
@@ -354,7 +543,12 @@
   {
    "type": "qcm",
    "q": "Un mineur de 17 ans émancipé souhaite exploiter un commerce de vente en ligne. Est-ce possible ?",
-   "opts": ["Non, il faut avoir 18 ans pour être commerçant", "Oui, s'il a été autorisé par le juge des tutelles lors de l'émancipation ou par le président du tribunal judiciaire ensuite", "Oui, sans aucune autorisation puisqu'il est émancipé", "Oui, mais seulement comme associé d'une SNC"],
+   "opts": [
+    "Non, il faut avoir 18 ans pour être commerçant",
+    "Oui, s'il a été autorisé par le juge des tutelles lors de l'émancipation ou par le président du tribunal judiciaire ensuite",
+    "Oui, sans aucune autorisation puisqu'il est émancipé",
+    "Oui, mais seulement comme associé d'une SNC"
+   ],
    "a": 1,
    "why": "Depuis la loi du 15 juin 2010, l'article L. 121-2 autorise le mineur émancipé à être commerçant sur autorisation du juge des tutelles au moment de la décision d'émancipation, ou du président du tribunal judiciaire s'il en fait la demande après avoir été émancipé. L'émancipation seule ne suffit pas, et le mineur non émancipé reste exclu, y compris comme associé de SNC puisque cette qualité emporte celle de commerçant.",
    "src": "C. com., art. L. 121-2 ; C. civ., art. 413-8",
