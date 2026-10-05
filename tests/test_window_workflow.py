@@ -1266,3 +1266,101 @@ class TestTheOverviewSettlesInsteadOfTrembling(WindowCase):
         self.assertIsNotNone(self.app._overview_fitted)
         self.assertIsNot(self.app._overview_fitted[0], ancienne[0])
         self.assertTrue(self._tailles())
+
+
+class TestTheOverviewDoesNotDependOnThePathTaken(WindowCase):
+    """Revenir à une taille de fenêtre doit redonner la même page.
+
+    Trouvé en passant la revue du correctif précédent : la mémoire qui
+    coupe la boucle empêchait aussi un réaccord légitime, et les écarts
+    entre blocs se mesuraient sur une colonne portant encore ceux du
+    passage d'avant. Agrandir la fenêtre puis la ramener donnait une page
+    différente — graphiques dimensionnés pour une fenêtre qui n'est plus
+    là.
+    """
+
+    def _page(self):
+        self.load(self.source(rows=40))
+        self.analyse()
+        self.app.tabbar.select("population")
+        self._poser()
+
+    def _poser(self, secondes=0.35):
+        fin = time.time() + secondes
+        while time.time() < fin:
+            self.app.update()
+            time.sleep(0.01)
+
+    def _etat(self):
+        """Les tailles posées et les écarts entre blocs."""
+        from hr_analytics.ui.charts import PieChart, PyramidChart, ScaleChart
+
+        mesures = []
+        for frame in getattr(self.app, "_overview_frames", []):
+            for chart in self.app._of_type(frame, PyramidChart):
+                mesures.append(("pyramide", chart.ROW))
+            for chart in self.app._of_type(frame, PieChart):
+                mesures.append(("anneau", chart.RADIUS))
+            for chart in self.app._of_type(frame, ScaleChart):
+                mesures.append(("echelle", chart.HEIGHT))
+            for bloc in frame.winfo_children():
+                if bloc.winfo_manager():
+                    mesures.append(("ecart",
+                                    str(bloc.pack_info().get("pady", ""))))
+        return mesures
+
+    def test_going_bigger_and_back_gives_the_same_page(self):
+        self._page()
+        self.app.geometry("1400x900+0+0")
+        self._poser()
+        depart = self._etat()
+        self.assertTrue(depart, "la page doit porter des blocs")
+        for _ in range(2):
+            self.app.geometry("1900x1050+0+0")
+            self._poser()
+            self.app.geometry("1400x900+0+0")
+            self._poser()
+        self.assertEqual(depart, self._etat(),
+                         "la page dépend du chemin parcouru")
+
+    def test_going_smaller_and_back_gives_the_same_page(self):
+        self._page()
+        self.app.geometry("1400x900+0+0")
+        self._poser()
+        depart = self._etat()
+        for _ in range(2):
+            self.app.geometry("1180x700+0+0")
+            self._poser()
+            self.app.geometry("1400x900+0+0")
+            self._poser()
+        self.assertEqual(depart, self._etat(),
+                         "la page dépend du chemin parcouru")
+
+    def test_the_gaps_never_pile_up(self):
+        """L'écart posé remplace le précédent, il ne s'y ajoute pas."""
+        self._page()
+        ecarts = []
+        for _ in range(4):
+            self.app.geometry("1700x980+0+0")
+            self._poser(0.25)
+            ecarts.append([valeur for genre, valeur in self._etat()
+                           if genre == "ecart"])
+        self.assertTrue(ecarts[0])
+        self.assertEqual(len(set(map(tuple, ecarts))), 1,
+                         f"les écarts grandissent : {ecarts}")
+
+    def test_a_real_resize_forgets_the_fits(self):
+        """La mémoire coupe la boucle, elle ne fige pas la page : un vrai
+        redimensionnement l'efface."""
+        self._page()
+        self.app.geometry("1400x900+0+0")
+        self._poser()
+        self.app._fit_overview()
+        self.assertIsNotNone(self.app._overview_fitted)
+        self.app.geometry("1500x940+0+0")
+        self._poser()
+        # Après un vrai redimensionnement, la mémoire ne porte plus les
+        # empreintes de l'ancienne taille.
+        faits = self.app._overview_fitted
+        self.assertTrue(faits is None or all(
+            largeur != 0 for _hauteur, largeur in faits[1]))

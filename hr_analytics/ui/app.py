@@ -250,6 +250,10 @@ class Application(tk.Tk):
         self._work_job: Optional[str] = None
 
         self._build_layout()
+        # Un vrai redimensionnement de la fenetre efface la memoire des
+        # accords deja faits : sans cela, revenir a une taille deja visitee
+        # rendait la page telle qu'elle etait a l'autre taille.
+        self.bind("<Configure>", self._on_window_resize, add="+")
         # La composition enregistree est relue avant le premier affichage :
         # c'est la promesse du bouton « Enregistrer », et elle ne tient que
         # si la page survit a la fermeture.
@@ -2145,6 +2149,21 @@ class Application(tk.Tk):
                   if child.winfo_manager()]
         if len(blocks) < 2:
             return
+        # Les ecarts reviennent a leur valeur de depart avant la mesure.
+        # L'ecart de depart est retenu au premier passage : ajoute au
+        # precedent, il grandirait a chaque redimensionnement. Mais le
+        # retenir ne suffisait pas : la place libre se mesurait sur une
+        # colonne portant encore les ecarts du passage precedent, si bien
+        # que le resultat dependait du chemin — une fenetre agrandie puis
+        # ramenee a sa taille ne retrouvait pas sa page.
+        for block in blocks:
+            base = getattr(block, "_base_gap", None)
+            if base is None:
+                info = block.pack_info()
+                base = int(str(info.get("pady", 0)).split()[-1].strip("()"))
+                block._base_gap = base
+            block.pack_configure(pady=(0, base))
+        frame.update_idletasks()
         slack = available - frame.winfo_reqheight()
         if slack <= 0:
             return
@@ -2152,14 +2171,7 @@ class Application(tk.Tk):
         if extra <= 0:
             return
         for block in blocks[:-1]:
-            # L'ecart de depart est retenu au premier passage : ajoute au
-            # precedent, il grandirait a chaque redimensionnement.
-            base = getattr(block, "_base_gap", None)
-            if base is None:
-                info = block.pack_info()
-                base = int(str(info.get("pady", 0)).split()[-1].strip("()"))
-                block._base_gap = base
-            block.pack_configure(pady=(0, base + extra))
+            block.pack_configure(pady=(0, block._base_gap + extra))
 
     @staticmethod
     def _of_type(widget: tk.Misc, kind) -> List[tk.Misc]:
@@ -2199,6 +2211,26 @@ class Application(tk.Tk):
         if not width:
             return 3
         return 3 if width >= 3 * self.OVERVIEW_COLUMN + 52 else 2
+
+    def _on_window_resize(self, event) -> None:
+        """Oublie les accords deja faits quand la fenetre change de taille.
+
+        La memoire des accords existe pour couper une boucle : l'ascenseur
+        qui apparait change la largeur, qui redemande un accord, qui le
+        fait disparaitre. Elle ne doit pas aller plus loin que cela. Sans
+        cet oubli, revenir a une taille deja visitee laissait la page telle
+        qu'elle etait a l'autre taille — des graphiques dimensionnes pour
+        une fenetre qui n'est plus la.
+
+        Les evenements des enfants passent aussi par la fenetre : seuls les
+        siens comptent.
+        """
+        if event.widget is not self:
+            return
+        taille = (event.width, event.height)
+        if taille != getattr(self, "_window_size", None):
+            self._window_size = taille
+            self._overview_fitted = None
 
     def _on_overview_resize(self, event) -> None:
         """Suit la largeur, et redispose la page si le compte change.
