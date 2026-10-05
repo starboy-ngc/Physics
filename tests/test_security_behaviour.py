@@ -369,3 +369,150 @@ class TestFileSystemReach(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAHostileWorkbookNeverGetsParsed(unittest.TestCase):
+    """Un classeur arrive par courriel. Les trois pièges connus de ce
+    format sont donc à écarter avant d'analyser quoi que ce soit.
+
+    Ces essais partent d'un classeur **valide**, produit par l'outil
+    lui-même, dont un seul morceau est remplacé. Une première version
+    fabriquait les classeurs de toutes pièces : ils étaient mal formés
+    ailleurs, l'analyseur les refusait pour cette raison-là, et les essais
+    passaient au vert sans jamais atteindre la garde qu'ils prétendaient
+    vérifier.
+    """
+
+    def setUp(self):
+        from hr_analytics.io.xlsx_writer import write_workbook
+        self.directory = tempfile.mkdtemp()
+        self.base = os.path.join(self.directory, "base.xlsx")
+        write_workbook(self.base, [("Population",
+                                    [["Nom", "Salaire"], ["A", 1000]])])
+        with zipfile.ZipFile(self.base) as archive:
+            self.sheet = next(nom for nom in archive.namelist()
+                              if "worksheets" in nom)
+            self.saine = archive.read(self.sheet).decode("utf-8")
+
+    def _rebuild(self, nom, feuille=None, extra=()):
+        chemin = os.path.join(self.directory, nom)
+        with zipfile.ZipFile(self.base) as src, \
+                zipfile.ZipFile(chemin, "w", zipfile.ZIP_DEFLATED) as out:
+            for info in src.infolist():
+                contenu = src.read(info.filename)
+                if feuille is not None and info.filename == self.sheet:
+                    contenu = feuille.encode("utf-8")
+                out.writestr(info.filename, contenu)
+            for interne, donnees in extra:
+                out.writestr(interne, donnees)
+        return chemin
+
+    def _corps(self, suffixe=""):
+        return self.saine.split("?>", 1)[1].replace(
+            "</sheetData>", f"{suffixe}</sheetData>")
+
+    def test_the_healthy_workbook_still_reads(self):
+        """Sans ce témoin, les essais qui suivent prouveraient seulement
+        que l'outil refuse tout."""
+        from hr_analytics.io.tabular import read_table
+        self.assertEqual(len(read_table(self.base).rows), 1)
+
+    def test_an_entity_bomb_in_the_sheet_is_refused(self):
+        """Dix entités s'appelant l'une l'autre sur neuf niveaux font d'un
+        fichier de deux kilo-octets dix gigaoctets à l'expansion.
+
+        libexpat s'en défend depuis sa version 2.6 — mais cette défense
+        appartient à la bibliothèque du poste, pas à l'outil. C'est la
+        déclaration de type elle-même qui est refusée, et c'est la seule
+        protection qui voyage avec le code.
+        """
+        from hr_analytics.core.errors import CompensationError
+        from hr_analytics.io.tabular import read_table
+        niveaux = 9
+        doctype = ('<?xml version="1.0"?>\n<!DOCTYPE x [\n'
+                   '<!ENTITY a0 "aaaaaaaaaa">\n'
+                   + "".join(f'<!ENTITY a{rang} "{("&a%d;" % (rang - 1)) * 10}">\n'
+                             for rang in range(1, niveaux + 1))
+                   + ']>\n')
+        corps = self._corps(
+            f'<row r="9"><c r="A9" t="inlineStr"><is><t>&a{niveaux};</t>'
+            '</is></c></row>')
+        chemin = self._rebuild("bombe.xlsx", doctype + corps)
+        self.assertLess(os.path.getsize(chemin), 10 * 1024)
+        with self.assertRaises(CompensationError) as piege:
+            read_table(chemin)
+        self.assertIn("doctype", piege.exception.technical.lower())
+
+    def test_an_external_entity_in_the_sheet_is_refused(self):
+        """« file:///etc/passwd » dans une cellule : le classeur lirait le
+        poste et recopierait ce qu'il y trouve dans l'analyse."""
+        from hr_analytics.core.errors import CompensationError
+        from hr_analytics.io.tabular import read_table
+        doctype = ('<?xml version="1.0"?><!DOCTYPE x '
+                   '[<!ENTITY secret SYSTEM "file:///etc/passwd">]>')
+        corps = self._corps('<row r="9"><c r="A9" t="inlineStr"><is>'
+                            '<t>&secret;</t></is></c></row>')
+        with self.assertRaises(CompensationError) as piege:
+            read_table(self._rebuild("xxe.xlsx", doctype + corps))
+        self.assertIn("doctype", piege.exception.technical.lower())
+
+    def test_a_zip_bomb_is_refused_on_its_announced_size(self):
+        """Un demi-giga-octet dans un onglet, pour quelques kilo-octets sur
+        le disque. Il est refusé sans être lu."""
+        from hr_analytics.core.errors import CompensationError
+        from hr_analytics.io.tabular import read_table
+        from hr_analytics.io.tabular import DEFAULT_MAX_UNCOMPRESSED
+        gonflee = self.saine + "<!--" + "A" * (4 * 1024 * 1024) + "-->"
+        chemin = self._rebuild("bombe-zip.xlsx", gonflee)
+        # Quelques kilo-octets sur le disque pour quatre méga-octets lus.
+        self.assertLess(os.path.getsize(chemin), 64 * 1024)
+        with self.assertRaises(CompensationError) as piege:
+            read_table(chemin, max_uncompressed=1024 * 1024)
+        self.assertIn("too large", piege.exception.technical.lower())
+        # Le plafond d'origine reste assez haut pour un vrai classeur :
+        # l'essai ci-dessus abaisse le plafond, il ne le suppose pas bas.
+        self.assertGreaterEqual(DEFAULT_MAX_UNCOMPRESSED, 128 * 1024 * 1024)
+        self.assertEqual(len(read_table(chemin).rows), 1)
+
+    def test_a_member_pointing_outside_the_folder_writes_nothing(self):
+        """Le lecteur n'extrait rien : il lit les morceaux qu'il nomme. Un
+        membre « ../../.. » est donc inerte, et le classeur se lit."""
+        from hr_analytics.io.tabular import read_table
+        cible = os.path.join(self.directory, "evade.txt")
+        interne = "../" * 8 + cible.lstrip("/")
+        chemin = self._rebuild("traversee.xlsx",
+                               extra=[(interne, b"evade")])
+        self.assertEqual(len(read_table(chemin).rows), 1)
+        self.assertFalse(os.path.exists(cible))
+
+    def test_the_guard_does_not_blind_the_progress_bar(self):
+        """La lecture d'un classeur montre son avancement, et l'avancement
+        se mesure sur la position dans l'onglet. Le flux rendu par la
+        garde doit donc la rendre comme le flux d'origine — faute de quoi
+        l'import d'un gros fichier se fait sans un geste à l'écran."""
+        from hr_analytics.io import tabular
+        with zipfile.ZipFile(self.base) as archive:
+            flux = tabular._without_doctype(archive, self.sheet)
+            try:
+                self.assertEqual(flux.tell(), 0)
+                flux.read(10)
+                self.assertEqual(flux.tell(), 10)
+                reste = flux.read()
+                self.assertEqual(flux.tell(), 10 + len(reste))
+                self.assertEqual(flux.tell(), len(self.saine.encode("utf-8")))
+            finally:
+                flux.close()
+
+    def test_the_sheet_is_still_read_as_a_stream(self):
+        """La garde inspecte le début de l'onglet. Elle ne doit pas pour
+        autant le charger entier : c'est la seule protection qui tienne
+        contre un classeur de plusieurs centaines de méga-octets."""
+        import io as _io
+        from hr_analytics.io import tabular
+        with zipfile.ZipFile(self.base) as archive:
+            flux = tabular._without_doctype(archive, self.sheet)
+            try:
+                self.assertIsInstance(flux, _io.RawIOBase)
+                self.assertEqual(flux.read(), self.saine.encode("utf-8"))
+            finally:
+                flux.close()

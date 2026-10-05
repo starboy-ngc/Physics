@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import csv
 import datetime as _dt
+import io
 import os
 import re
 import zipfile
@@ -309,6 +310,81 @@ def _refuse_doctype(contenu: bytes, name: str) -> bytes:
     return contenu
 
 
+#: Longueur du prologue inspecte avant de laisser l'analyseur travailler.
+#: Une declaration de type precede obligatoirement l'element racine : la
+#: trouver ne demande donc jamais de lire au-dela du debut du fichier.
+#: Seize kilo-octets laissent la place a une declaration d'encodage, a des
+#: commentaires et a des instructions de traitement avant elle.
+PROLOGUE = 16 * 1024
+
+
+def _without_doctype(archive: zipfile.ZipFile, name: str):
+    """Le flux d'un onglet, son prologue verifie.
+
+    L'onglet est le seul morceau que l'outil lit en flux plutot que d'un
+    bloc : c'est aussi le plus gros, et le lire entier pour le verifier
+    reviendrait a abandonner la seule protection qui tienne contre un
+    classeur de plusieurs centaines de mega-octets. On inspecte donc ce
+    qu'il faut — le debut — puis on rend un flux qui reprend ou il en
+    etait, sans que rien ait ete recopie.
+
+    Sans cela, la declaration de type etait refusee partout sauf a
+    l'endroit qu'un fichier recu controle vraiment. La defense restait
+    celle de libexpat, et c'est precisement ce que `_refuse_doctype` dit
+    ne pas vouloir supposer : elle appartient a la bibliotheque du poste,
+    pas a l'outil.
+    """
+    flux = archive.open(name)
+    try:
+        debut = flux.read(PROLOGUE)
+        _refuse_doctype(debut, name)
+    except BaseException:
+        flux.close()
+        raise
+    return _Rejoint(debut, flux)
+
+
+class _Rejoint(io.RawIOBase):
+    """Un flux qui rend d'abord ce qu'on lui a repris, puis la suite."""
+
+    def __init__(self, debut: bytes, suite):
+        self._debut = debut
+        self._suite = suite
+        self._pose = 0
+        #: Octets deja rendus. C'est la position dans le morceau
+        #: decompresse, celle-la meme que rendait le flux d'origine : la
+        #: barre d'avancement la divise par la taille annoncee, et sans
+        #: elle la lecture d'un classeur se faisait sans un geste.
+        self._lus = 0
+
+    def readable(self) -> bool:
+        return True
+
+    def seekable(self) -> bool:
+        return False
+
+    def tell(self) -> int:
+        return self._lus
+
+    def readinto(self, cible) -> int:
+        reste = len(self._debut) - self._pose
+        if reste > 0:
+            taille = min(reste, len(cible))
+            cible[:taille] = self._debut[self._pose:self._pose + taille]
+            self._pose += taille
+            self._lus += taille
+            return taille
+        taille = self._suite.readinto(cible)
+        self._lus += taille or 0
+        return taille
+
+    def close(self) -> None:
+        try:
+            self._suite.close()
+        finally:
+            super().close()
+
+
 def _read_bounded(archive: zipfile.ZipFile, name: str, limit: int) -> bytes:
     """Lit un morceau, sans croire l'en-tete sur parole.
 
@@ -413,7 +489,7 @@ def _read_sheet(
     # de ce qu'il reste a lire. Le nombre de lignes, lui, ne se sait qu'a la
     # fin.
     taille = archive.getinfo(sheet_path).file_size or 1
-    with archive.open(sheet_path) as stream:
+    with _without_doctype(archive, sheet_path) as stream:
         for _, element in ElementTree.iterparse(stream, events=("end",)):
             if element.tag != f"{_NS}row":
                 continue
