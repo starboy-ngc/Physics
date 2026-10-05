@@ -64,7 +64,7 @@
   },
   {
    "h": "Sortie des immobilisations : cession, rebut, sinistre, échange",
-   "html": "<p>Depuis le PCG 2025, la cession d'une immobilisation incorporelle ou corporelle n'est plus exceptionnelle : la VNC sortie est inscrite en <b>657</b> et le prix de cession en <b>757</b> (avant 2025 : 675 et 775, supprimés). Trois étapes :</p><ol><li><b>Dotation complémentaire</b> d'amortissement du 1er janvier à la date de cession (6811 / 28xx) et, le cas échéant, dérogatoire ;</li><li><b>Prix de cession</b> : débit 462 Créances sur cessions d'immobilisations (ou 512), crédit 757 et 44571 pour la TVA collectée ;</li><li><b>Sortie</b> : débit 28xx (amortissements cumulés), débit 657 (VNC), crédit 2xx (coût d'entrée). Le solde du compte 145 lié au bien est repris (78725) et le solde de la subvention d'investissement est viré au résultat (139 / 747).</li></ol><p><b>Mise au rebut</b> : aucun prix, la VNC est constatée en charge (657) ; le bien détruit avant la fin du plan peut auparavant faire l'objet d'un amortissement exceptionnel (6871). <b>Sinistre</b> : la sortie suit le même schéma et l'<b>indemnité d'assurance</b> est un produit d'exploitation en <b>7587</b> (plus de transfert de charges 797 ni de 771). <b>Échange</b> : analysé comme une cession suivie d'une acquisition, le bien reçu étant évalué à sa valeur vénale.</p><p>Exemple : véhicule coût <span class=\"mono\">30 000</span>, amortissements cumulés à la date de cession <span class=\"mono\">25 000</span>, cédé <span class=\"mono\">12 000 € HT</span> (TVA 20 %).</p>",
+   "html": "<p>Depuis le PCG 2025, la cession d'une immobilisation incorporelle ou corporelle n'est plus exceptionnelle : la VNC sortie est inscrite en <b>657</b> et le prix de cession en <b>757</b> (avant 2025 : 675 et 775, supprimés). Trois étapes :</p><ol><li><b>Dotation complémentaire</b> d'amortissement du 1er janvier à la date de cession (6811 / 28xx) et, le cas échéant, dérogatoire ;</li><li><b>Prix de cession</b> : débit 462 Créances sur cessions d'immobilisations (ou 512), crédit 757 et 44571 pour la TVA collectée ;</li><li><b>Sortie</b> : débit 28xx (amortissements cumulés), débit 657 (VNC), crédit 2xx (coût d'entrée). Le solde du compte 145 lié au bien est repris (78725) et le solde de la subvention d'investissement est viré au résultat (139 / 747).</li></ol><p><b>Mise au rebut</b> : aucun prix, la VNC est constatée en charge (657) après la dotation complémentaire de l'exercice ; sous le PCG 2025, l'amortissement exceptionnel (6871) est réservé aux événements majeurs et inhabituels. <b>Sinistre</b> : la sortie suit le même schéma et l'<b>indemnité d'assurance</b> est un produit d'exploitation en <b>7587</b> (plus de transfert de charges 797 ni de 771). <b>Échange</b> : analysé comme une cession suivie d'une acquisition, le bien reçu étant évalué à sa valeur vénale.</p><p>Exemple : véhicule coût <span class=\"mono\">30 000</span>, amortissements cumulés à la date de cession <span class=\"mono\">25 000</span>, cédé <span class=\"mono\">12 000 € HT</span> (TVA 20 %).</p>",
    "entry": [
     {
      "a": "462",
@@ -101,7 +101,7 @@
   },
   {
    "h": "Crédit-bail et location-financement",
-   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (PCG art. 833-11/2 ; C. com., art. R. 123-196).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01), le retraitement de la <b>location-financement</b> (inscription du bien à l'actif et de la dette au passif) est la méthode préférentielle ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
+   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (C. com., art. R. 123-195 s. ; PCG, contenu de l'annexe, art. 831-1 s.).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01), le retraitement de la <b>location-financement</b> (inscription du bien à l'actif et de la dette au passif) est la méthode préférentielle ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
   }
  ],
  "sources": [
@@ -130,11 +130,11 @@
    "note": "Comptes 657 / 757 pour les cessions, 7587 indemnités d'assurance, maintien de 6872 / 7872 et 145"
   },
   {
-   "ref": "C. com., art. R. 123-196 ; PCG art. 833-11",
+   "ref": "C. com., art. R. 123-195 s. ; PCG art. 831-1 s.",
    "note": "Information en annexe sur le crédit-bail"
   },
   {
-   "ref": "PCG art. 942-61 et 947-57",
+   "ref": "PCG, titre IX (fonctionnement des comptes 61, 65 et 75)",
    "note": "Fonctionnement des comptes 6122/6125 et 657/757"
   }
  ],
@@ -219,7 +219,7 @@
     "6811",
     "28154",
     "78725",
-    "1572"
+    "1525"
    ],
    "sol": [
     [
@@ -235,7 +235,7 @@
      }
     ]
    ],
-   "why": "Fiscal 15 750 − comptable 9 000 = 6 750 € de dérogatoire : charge exceptionnelle 68725 (dotation aux provisions réglementées – amortissements dérogatoires, compte maintenu par le PCG 2025) et provision réglementée 145 au passif, dans les capitaux propres. Le compte 28154 n'enregistre que l'amortissement économique ; 78725 servirait à la reprise ; 1572 est la provision pour gros entretien.",
+   "why": "Fiscal 15 750 − comptable 9 000 = 6 750 € de dérogatoire : charge exceptionnelle 68725 (dotation aux provisions réglementées – amortissements dérogatoires, compte maintenu par le PCG 2025) et provision réglementée 145 au passif, dans les capitaux propres. Le compte 28154 n'enregistre que l'amortissement économique ; 78725 servirait à la reprise ; 1525 est la provision pour gros entretien ou grandes révisions (ex-1572).",
    "src": "PCG art. 214-13 ; règlement ANC n° 2022-06",
    "fiab": "stable",
    "niveau": 2
@@ -377,8 +377,8 @@
     "10 000 €"
    ],
    "a": 1,
-   "why": "La dépréciation modifie le plan de façon prospective (PCG art. 214-19) : la nouvelle base est la VNC dépréciée, 48 000 / 4 = 12 000 € par an. Continuer à amortir 15 000 (60 000 / 4) conduirait à une VNC négative ; les autres montants n'ont pas de fondement. Fiscalement, l'écart avec l'amortissement initial est neutralisé par la déduction de la dépréciation.",
-   "src": "PCG art. 214-19",
+   "why": "La dépréciation modifie le plan de façon prospective (PCG art. 214-17) : la nouvelle base est la VNC dépréciée, 48 000 / 4 = 12 000 € par an. Continuer à amortir 15 000 (60 000 / 4) conduirait à une VNC négative ; les autres montants n'ont pas de fondement. Fiscalement, l'écart avec l'amortissement initial est neutralisé par la déduction de la dépréciation.",
+   "src": "PCG art. 214-17",
    "fiab": "stable",
    "niveau": 2
   },
@@ -443,7 +443,7 @@
    ],
    "a": 1,
    "why": "Le règlement ANC 2022-06 a sorti les cessions d'immobilisations du résultat exceptionnel : la VNC va en 657 Valeurs comptables des immobilisations incorporelles et corporelles cédées et le prix en 757 Produits des cessions d'immobilisations incorporelles et corporelles. Les comptes 675/775 sont supprimés ; 667/767 concernent les immobilisations financières et VMP ; 678/778 les charges et produits exceptionnels liés à des événements majeurs et inhabituels.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-57",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 657 et 757)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -496,7 +496,7 @@
     ]
    ],
    "why": "Prix : créance sur cession 462 (et non 411, réservé aux clients de l'activité courante) pour 14 400 TTC, produit 757 pour 12 000 et TVA collectée 44571 pour 2 400. Sortie : on solde les amortissements 28182 (25 000) et le coût 2182 (30 000) ; la VNC 30 000 − 25 000 = 5 000 va en 657. Résultat de cession : 12 000 − 5 000 = + 7 000. Le compte 6871 (amortissement exceptionnel) n'a pas sa place dans une cession.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-57",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 657 et 757)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -521,7 +521,7 @@
     "On maintient le bien à l'actif jusqu'à la fin du plan"
    ],
    "a": 1,
-   "why": "Un bien hors d'usage ne procure plus d'avantages économiques : il doit sortir de l'actif. Faute de prix, aucun produit n'est constaté ; la VNC de 3 000 est une charge (657, la valeur comptable sortie ; l'amortissement exceptionnel 6871 peut aussi être pratiqué avant la sortie). Laisser le bien au bilan violerait l'image fidèle.",
+   "why": "Un bien hors d'usage ne procure plus d'avantages économiques : il doit sortir de l'actif. Faute de prix, aucun produit n'est constaté ; la VNC de 3 000 est une charge (657, valeur comptable de l'immobilisation sortie). Laisser le bien au bilan violerait l'image fidèle.",
    "src": "PCG art. 211-1 ; règlement ANC n° 2022-06",
    "fiab": "stable",
    "niveau": 2
@@ -572,7 +572,7 @@
    ],
    "a": 1,
    "why": "Le PCG retient l'approche juridique : le preneur n'est pas propriétaire, le bien n'est pas à son actif et la redevance est une charge externe (6122 pour un bien mobilier, 6125 pour un immeuble). Le compte 275 n'enregistre que le dépôt de garantie. L'inscription à l'actif avec une dette financière est le retraitement des comptes consolidés et d'IFRS 16.",
-   "src": "PCG art. 942-61",
+   "src": "PCG, titre IX (fonctionnement du compte 612)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -587,7 +587,7 @@
    ],
    "a": 1,
    "why": "La levée d'option est une acquisition : le bien entre à l'actif pour le prix de levée (3 000 €), augmenté des frais directement attribuables, et est amorti sur sa durée d'utilisation résiduelle (2 ans). La valeur d'origine de 45 000 € ne figure qu'en annexe (retraitement). Le prix de levée n'est pas une redevance, et 275 ne concerne que le dépôt de garantie, qui est d'ailleurs restitué ou imputé à ce moment.",
-   "src": "PCG art. 213-8 et 833-11",
+   "src": "PCG art. 213-8",
    "fiab": "stable",
    "niveau": 2
   },
@@ -643,7 +643,7 @@
    ],
    "a": 1,
    "why": "IFRS 16 impose au preneur un modèle unique : actif « droit d'utilisation » amorti et dette de location actualisée, quelle que soit la qualification juridique (sauf exemptions pour les contrats courts ou de faible valeur). Le PCG conserve l'approche juridique (charge 612), le retraitement n'intervenant qu'en annexe ou en consolidation. C'est une divergence majeure à connaître pour le DSCG.",
-   "src": "IFRS 16 ; PCG art. 942-61",
+   "src": "IFRS 16 ; PCG, titre IX (compte 612)",
    "fiab": "stable",
    "niveau": 3
   },

@@ -43,7 +43,7 @@
   },
   {
    "h": "Comptes consolidés : obligation, périmètre et exemptions",
-   "html": "<p>Toute société commerciale qui <b>contrôle</b> une ou plusieurs entreprises ou exerce sur elles une influence notable établit des <b>comptes consolidés</b> et un rapport de gestion du groupe (C. com., art. L. 233-16). Le périmètre dépend du type de lien :</p><ul><li><b>Contrôle exclusif</b> : de droit (majorité des droits de vote), de fait (désignation pendant deux exercices de la majorité des organes de direction, présumée au-delà de 40 % des droits de vote sans associé plus important) ou contractuel ;</li><li><b>Contrôle conjoint</b> : partage du contrôle par un nombre limité d'associés, les décisions requérant leur accord ;</li><li><b>Influence notable</b> : présumée à partir de <span class=\"mono\">20 %</span> des droits de vote.</li></ul><p><b>Exemptions</b> (art. L. 233-17) : la société mère elle-même comprise dans les comptes consolidés d'une entité supérieure (sous-groupe), sauf opposition d'actionnaires détenant au moins 10 % du capital ; les <b>petits groupes</b> ne dépassant pas, pendant deux exercices, deux des trois seuils fixés par l'article R. 233-16 : <span class=\"mono\">30 M€</span> de total de bilan, <span class=\"mono\">60 M€</span> de chiffre d'affaires, <span class=\"mono\">250</span> salariés (décret n° 2024-152), sauf entité d'intérêt public ; filiales d'importance négligeable.</p><p>Référentiel : <b>IFRS</b> obligatoires pour les sociétés cotées (règlement 1606/2002), règlement <b>ANC 2020-01</b> pour les autres, avec option pour les IFRS.</p>"
+   "html": "<p>Toute société commerciale qui <b>contrôle</b> une ou plusieurs entreprises ou exerce sur elles une influence notable établit des <b>comptes consolidés</b> et un rapport de gestion du groupe (C. com., art. L. 233-16). Le périmètre dépend du type de lien :</p><ul><li><b>Contrôle exclusif</b> : de droit (majorité des droits de vote), de fait (désignation pendant deux exercices de la majorité des organes de direction, présumée au-delà de 40 % des droits de vote sans associé plus important) ou contractuel ;</li><li><b>Contrôle conjoint</b> : partage du contrôle par un nombre limité d'associés, les décisions requérant leur accord ;</li><li><b>Influence notable</b> : présumée à partir de <span class=\"mono\">20 %</span> des droits de vote.</li></ul><p><b>Exemptions</b> (art. L. 233-17) : la société mère elle-même comprise dans les comptes consolidés d'une entité supérieure (sous-groupe), sauf opposition d'actionnaires détenant au moins 10 % du capital ; les <b>petits groupes</b> ne dépassant pas, pendant deux exercices, deux des trois seuils fixés par l'article D. 230-2 (ex-R. 233-16, décret n° 2024-152) : <span class=\"mono\">30 M€</span> de total de bilan, <span class=\"mono\">60 M€</span> de chiffre d'affaires, <span class=\"mono\">250</span> salariés, sauf entité d'intérêt public ; filiales d'importance négligeable.</p><p>Référentiel : <b>IFRS</b> obligatoires pour les sociétés cotées (règlement 1606/2002), règlement <b>ANC 2020-01</b> pour les autres, avec option pour les IFRS.</p>"
   },
   {
    "h": "Méthodes de consolidation, pourcentage de contrôle et pourcentage d'intérêt",
@@ -84,7 +84,7 @@
    "note": "Groupement d'intérêt économique"
   },
   {
-   "ref": "C. com., art. L. 233-16 à L. 233-18 et R. 233-16 (décret n° 2024-152)",
+   "ref": "C. com., art. L. 233-16 à L. 233-18 et D. 230-2 (décret n° 2024-152, ex-R. 233-16)",
    "note": "Obligation de consolidation, contrôle et influence notable, méthodes, exemption des petits groupes (30 M€ / 60 M€ / 250)"
   },
   {
@@ -147,7 +147,7 @@
     ]
    ],
    "why": "La subvention a été intégralement enregistrée en produit (74) en N ; la fraction non consommée, affectée par le financeur, est transférée au passif en fonds dédiés (19) par une charge de report (689 Reports en fonds dédiés), de sorte que le résultat de N ne comprend que la part utilisée. En N+1, l'utilisation donnera lieu à la reprise 19 / 789. Le compte 131 (subvention d'investissement) ne convient pas à une subvention de fonctionnement.",
-   "src": "Règlement ANC n° 2018-06, art. 132-1 s.",
+   "src": "Règlement ANC n° 2018-06 (fonds dédiés : comptes 19, 689 et 789)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -178,7 +178,7 @@
     ]
    ],
    "why": "L'emploi des ressources reportées libère les fonds dédiés : débit 19, crédit 789 Utilisations des fonds dédiés, produit qui vient compenser les charges du projet engagées en N+1. On ne réenregistre pas la subvention en 74 (elle l'a été en N) et 689 servirait à un nouveau report. Les dépenses elles-mêmes sont enregistrées par nature avec leur paiement (512).",
-   "src": "Règlement ANC n° 2018-06, art. 132-1 s.",
+   "src": "Règlement ANC n° 2018-06 (fonds dédiés : comptes 19, 689 et 789)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -193,7 +193,7 @@
    ],
    "a": 1,
    "why": "Les contributions volontaires en nature (bénévolat, dons en nature, mises à disposition gratuites) sont valorisées et présentées en classe 8 : 86 emplois (864 personnel bénévole) et 87 ressources (875 bénévolat), au pied du compte de résultat, lorsqu'elles sont significatives et peuvent être quantifiées. Elles n'affectent ni le résultat ni les fonds propres et ne passent pas par les comptes 6 et 7.",
-   "src": "Règlement ANC n° 2018-06, art. 211-1 s.",
+   "src": "Règlement ANC n° 2018-06 (contributions volontaires en nature, comptes 86 et 87)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -224,7 +224,7 @@
     ]
    ],
    "why": "Le legs est une ressource liée à la générosité du public : 754, subdivision 7543 Legs, donations et assurances-vie, et non 7541 réservé aux dons manuels. Ce n'est pas une subvention (74) ni un apport en fonds propres (102) ; un report en fonds dédiés (19) n'interviendrait que si le legs était affecté à un projet non encore réalisé à la clôture.",
-   "src": "Règlement ANC n° 2018-06, art. 142-3 s.",
+   "src": "Règlement ANC n° 2018-06 (ressources liées à la générosité du public, compte 754)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -274,7 +274,7 @@
    ],
    "a": 1,
    "why": "Le compte 108 Compte de l'exploitant enregistre les apports et retraits personnels de l'entrepreneur ; il est soldé en fin d'exercice avec le résultat. L'exploitant n'est pas un salarié (641) ni un associé (455, 457) : son prélèvement n'est pas une charge et n'affecte pas le résultat (sa rémunération, même inscrite en 644, est réintégrée fiscalement).",
-   "src": "PCG art. 941-10 (compte 108)",
+   "src": "PCG, titre IX (compte 108)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -305,7 +305,7 @@
     ]
    ],
    "why": "Le prélèvement est un retrait de capital propre : débit 108 Compte de l'exploitant, crédit 512. Il ne constitue ni un salaire (421, 6411) ni une rémunération du travail de l'exploitant (644, utilisé seulement si l'exploitant décide de se verser une rémunération comptabilisée, de toute façon non déductible fiscalement), ni un compte courant d'associé (455), inexistant dans une entreprise individuelle.",
-   "src": "PCG art. 941-10 (compte 108)",
+   "src": "PCG, titre IX (compte 108)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -453,8 +453,8 @@
    "a": 2,
    "unit": "",
    "tol": 0,
-   "why": "Bilan 28 < 30 : non. CA 65 > 60 : oui. Effectif 300 > 250 : oui. Deux seuils sur trois sont dépassés : le groupe n'est pas un petit groupe et doit établir des comptes consolidés (C. com., art. L. 233-17 et R. 233-16, seuils relevés par le décret n° 2024-152). L'exemption n'aurait joué que si deux critères au plus étaient respectés.",
-   "src": "C. com., art. L. 233-17 et R. 233-16 (décret n° 2024-152)",
+   "why": "Bilan 28 < 30 : non. CA 65 > 60 : oui. Effectif 300 > 250 : oui. Deux seuils sur trois sont dépassés : le groupe n'est pas un petit groupe et doit établir des comptes consolidés (C. com., art. L. 233-17 et D. 230-2, ex-R. 233-16, seuils relevés par le décret n° 2024-152). L'exemption n'aurait joué que si deux critères au plus étaient respectés.",
+   "src": "C. com., art. L. 233-17 et D. 230-2 (décret n° 2024-152, ex-R. 233-16)",
    "fiab": "millésimé 2025",
    "niveau": 2
   },
@@ -473,7 +473,7 @@
     1,
     2
    ],
-   "why": "C. com., art. L. 233-17 et L. 233-17-1 : exemption de sous-groupe, exemption des petits groupes (seuils R. 233-16) hors entités d'intérêt public, et dispense lorsque les filiales sont, ensemble, d'importance négligeable. La forme sociale et le résultat de la mère sont sans incidence : toute société commerciale qui contrôle est en principe tenue de consolider.",
+   "why": "C. com., art. L. 233-17 et L. 233-17-1 : exemption de sous-groupe, exemption des petits groupes (seuils de l'article D. 230-2, ex-R. 233-16) hors entités d'intérêt public, et dispense lorsque les filiales sont, ensemble, d'importance négligeable. La forme sociale et le résultat de la mère sont sans incidence : toute société commerciale qui contrôle est en principe tenue de consolider.",
    "src": "C. com., art. L. 233-17 et L. 233-17-1",
    "fiab": "stable",
    "niveau": 2

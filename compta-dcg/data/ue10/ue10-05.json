@@ -92,7 +92,7 @@
   },
   {
    "h": "L'emprunt obligataire : émission, prime, frais, remboursement",
-   "html": "<p>Une société émet des obligations de <b>valeur nominale</b> N à un <b>prix d'émission</b> E (souvent inférieur au nominal) et les rembourse à un <b>prix de remboursement</b> R (égal ou supérieur au nominal). À l'émission :</p><ul><li>débit 512 (ou 4711 à la souscription) pour le prix d'émission encaissé,</li><li>débit <b>169 Primes de remboursement des obligations</b> pour (R − E) × nombre d'obligations,</li><li>crédit <b>163 Autres emprunts obligataires</b> pour le prix de remboursement total.</li></ul><p>La prime, inscrite à l'actif, est <b>amortie</b> sur la durée de l'emprunt (linéairement ou au prorata des intérêts courus) : débit <b>6861</b> Dotations aux amortissements des primes de remboursement des obligations, crédit 169. Les <b>frais d'émission</b> sont soit comptabilisés en charges (627), soit étalés sur la durée de l'emprunt via <b>4816</b> Frais d'émission des emprunts, amorti par 6812.</p><p>Les <b>intérêts</b> (661) sont calculés sur le nominal au taux nominal ; à la clôture, les intérêts courus non échus sont rattachés en <b>16883</b>. Le remboursement peut être <b>in fine</b> (totalité à l'échéance), par <b>amortissements constants</b> (même nombre d'obligations chaque année, tirées au sort) ou par <b>annuités constantes</b>.</p><p>Exemple : Oblix émet <span class=\"mono\">1 000 obligations</span>, nominal 500 €, émises <span class=\"mono\">490 €</span>, remboursables <span class=\"mono\">510 €</span> dans 5 ans.</p>",
+   "html": "<p>Une société émet des obligations de <b>valeur nominale</b> N à un <b>prix d'émission</b> E (souvent inférieur au nominal) et les rembourse à un <b>prix de remboursement</b> R (égal ou supérieur au nominal). À l'émission :</p><ul><li>débit 512 (ou 4711 à la souscription) pour le prix d'émission encaissé,</li><li>débit <b>169 Primes de remboursement des emprunts</b> (intitulé du plan 2025 ; « Primes de remboursement des obligations » avant 2025) pour (R − E) × nombre d'obligations,</li><li>crédit <b>163 Autres emprunts obligataires</b> pour le prix de remboursement total.</li></ul><p>La prime, inscrite à l'actif, est <b>amortie</b> sur la durée de l'emprunt (linéairement ou au prorata des intérêts courus) : débit <b>6861</b> Dotations aux amortissements des primes de remboursement des emprunts, crédit 169. Les <b>frais d'émission</b> sont soit comptabilisés en charges (627), soit étalés sur la durée de l'emprunt via <b>481</b> Frais d'émission des emprunts, amorti par <b>6862</b> Dotations aux amortissements des frais d'émission des emprunts, charge financière (avant 2025 : 4816 amorti par 6812).</p><p>Les <b>intérêts</b> (661) sont calculés sur le nominal au taux nominal ; à la clôture, les intérêts courus non échus sont rattachés en <b>1638</b> Intérêts courus sur autres emprunts obligataires (avant 2025 : 16883) ; pour un emprunt bancaire, <b>1648</b> (avant 2025 : 16884). Le remboursement peut être <b>in fine</b> (totalité à l'échéance), par <b>amortissements constants</b> (même nombre d'obligations chaque année, tirées au sort) ou par <b>annuités constantes</b>.</p><p>Exemple : Oblix émet <span class=\"mono\">1 000 obligations</span>, nominal 500 €, émises <span class=\"mono\">490 €</span>, remboursables <span class=\"mono\">510 €</span> dans 5 ans.</p>",
    "entry": [
     {
      "a": "512",
@@ -114,7 +114,7 @@
   },
   {
    "h": "Passifs, dettes, charges à payer et provisions",
-   "html": "<p>Un <b>passif</b> (PCG art. 321-1) est un élément du patrimoine ayant une valeur économique négative : une <b>obligation</b> de l'entité à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une <b>sortie de ressources</b> sans contrepartie au moins équivalente. On distingue :</p><ul><li>la <b>dette</b> : montant et échéance fixés de façon précise ;</li><li>la <b>charge à payer</b> : dette certaine dont le montant ou l'échéance comporte une légère incertitude (408, 4286, 4486) ;</li><li>la <b>provision</b> (art. 321-5) : passif dont l'échéance <b>ou</b> le montant n'est pas fixé de façon précise ;</li><li>le <b>passif éventuel</b> : obligation potentielle ou non probable ; <b>non comptabilisé</b>, mentionné en annexe.</li></ul><p>Une provision est comptabilisée (art. 322-1) si, à la clôture, l'obligation existe, la sortie est probable et le montant estimable de façon fiable ; elle est évaluée à la <b>meilleure estimation</b> et révisée à chaque clôture. Principaux comptes : <b>1511</b> litiges, <b>1512</b> garanties données aux clients, <b>1515</b> pertes de change, <b>1516</b> pertes sur contrats, <b>153</b> pensions (option, art. 324-1), <b>154</b> restructurations (plan annoncé avant la clôture), <b>155</b> impôts, <b>1572</b> gros entretien, <b>158</b> autres. Dotations : <b>6815</b>, <b>6865</b>, <b>6875</b> selon la nature ; reprises 7815, 7865, 7875.</p><p>Exemple : un salarié licencié réclame <span class=\"mono\">40 000 €</span> ; l'avocat estime la condamnation probable à <span class=\"mono\">15 000 €</span>.</p>",
+   "html": "<p>Un <b>passif</b> (PCG art. 321-1) est un élément du patrimoine ayant une valeur économique négative : une <b>obligation</b> de l'entité à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une <b>sortie de ressources</b> sans contrepartie au moins équivalente. On distingue :</p><ul><li>la <b>dette</b> : montant et échéance fixés de façon précise ;</li><li>la <b>charge à payer</b> : dette certaine dont le montant ou l'échéance comporte une légère incertitude (408, 4286, 4486) ;</li><li>la <b>provision</b> (art. 321-5) : passif dont l'échéance <b>ou</b> le montant n'est pas fixé de façon précise ;</li><li>le <b>passif éventuel</b> : obligation potentielle ou non probable ; <b>non comptabilisé</b>, mentionné en annexe.</li></ul><p>Une provision est comptabilisée (art. 322-1) si, à la clôture, l'obligation existe, la sortie est probable et le montant estimable de façon fiable ; elle est évaluée à la <b>meilleure estimation</b> et révisée à chaque clôture. Principaux comptes : <b>1511</b> litiges, <b>1512</b> garanties données aux clients, <b>1515</b> pertes de change, <b>1516</b> pertes sur contrats, <b>1521</b> pensions et obligations similaires (option, art. 324-1), <b>1522</b> restructurations (plan annoncé avant la clôture), <b>1523</b> impôts, <b>1525</b> gros entretien ou grandes révisions (la racine 152 remplace depuis 2025 les comptes 153 à 158). Dotations : <b>6815</b>, <b>6865</b>, <b>6875</b> selon la nature ; reprises 7815, 7865, 7875.</p><p>Exemple : un salarié licencié réclame <span class=\"mono\">40 000 €</span> ; l'avocat estime la condamnation probable à <span class=\"mono\">15 000 €</span>.</p>",
    "entry": [
     {
      "a": "6815",
@@ -131,7 +131,7 @@
   },
   {
    "h": "Provisions réglementées et fiscalité des provisions",
-   "html": "<p>Les <b>provisions réglementées</b> (compte 14) ne correspondent pas à une obligation envers un tiers : elles sont constituées uniquement en application de dispositions <b>fiscales</b> et figurent dans les <b>capitaux propres</b>. Principales : <b>143</b> provisions pour hausse des prix, <b>145</b> amortissements dérogatoires, <b>146</b> provision spéciale de réévaluation, <b>147</b> plus-values réinvesties, <b>148</b> autres. Dotations et reprises passent par le résultat exceptionnel : <b>6872</b> (immobilisations, dont 68725 dérogatoires), <b>6873</b> (stocks), <b>6874</b> (autres) et symétriquement <b>7872</b>, 7873, 7874, comptes maintenus par le PCG 2025.</p><p>Côté <b>déductibilité</b> (CGI art. 39, 1-5°), une provision pour risques et charges est déductible si elle couvre une charge elle-même déductible, nettement précisée, probable (non simplement éventuelle), résultant d'un événement en cours à la clôture, et si elle est effectivement comptabilisée. Ne sont pas déductibles, par exemple, les provisions pour engagements de retraite (CGI art. 39, 1-5°, al. 1), pour pertes de change (double emploi avec l'article 38, 4), pour propre assureur ou pour impôt sur les sociétés.</p><div class=\"note\"><b>Piège.</b> Une provision pour perte à terminaison, pour garantie ou pour litige est déductible si elle est chiffrée avec précision à partir d'éléments objectifs (statistiques de garantie, estimation de l'avocat) ; une provision forfaitaire « par prudence » ne l'est pas.</div>"
+   "html": "<p>Les <b>provisions réglementées</b> (compte 14) ne correspondent pas à une obligation envers un tiers : elles sont constituées uniquement en application de dispositions <b>fiscales</b> et figurent dans les <b>capitaux propres</b>. Principales : <b>143</b> provisions pour hausse des prix, <b>145</b> amortissements dérogatoires, <b>148</b> autres provisions réglementées. Dotations et reprises passent par le résultat exceptionnel : <b>687</b> Dotations aux provisions réglementées (dont <b>68725</b> amortissements dérogatoires) et symétriquement <b>787</b> (dont <b>78725</b>), comptes maintenus par le PCG 2025.</p><p>Côté <b>déductibilité</b> (CGI art. 39, 1-5°), une provision pour risques et charges est déductible si elle couvre une charge elle-même déductible, nettement précisée, probable (non simplement éventuelle), résultant d'un événement en cours à la clôture, et si elle est effectivement comptabilisée. Ne sont pas déductibles, par exemple, les provisions pour engagements de retraite (CGI art. 39, 1-5°, al. 1), pour pertes de change (double emploi avec l'article 38, 4), pour propre assureur ou pour impôt sur les sociétés.</p><div class=\"note\"><b>Piège.</b> Une provision pour perte à terminaison, pour garantie ou pour litige est déductible si elle est chiffrée avec précision à partir d'éléments objectifs (statistiques de garantie, estimation de l'avocat) ; une provision forfaitaire « par prudence » ne l'est pas.</div>"
   }
  ],
  "sources": [
@@ -144,12 +144,12 @@
    "note": "Présomption de titres de participation au-delà de 10 % du capital"
   },
   {
-   "ref": "Règlement ANC n° 2022-06 ; PCG art. 946-66 et 947-76",
+   "ref": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 667 et 767)",
    "note": "Comptes 6671/7671 (immobilisations financières) et 6673/7673 (VMP)"
   },
   {
-   "ref": "PCG art. 941-16 et 946-68",
-   "note": "Comptes 163, 169 et 6861 : emprunt obligataire et amortissement de la prime"
+   "ref": "PCG, titre IX (comptes 163, 169, 481, 6861 et 6862)",
+   "note": "Emprunt obligataire : prime de remboursement, frais d'émission et leur amortissement"
   },
   {
    "ref": "PCG art. 321-1, 321-5, 322-1 et 323-1",
@@ -160,7 +160,7 @@
    "note": "Engagements de retraite : option provision (méthode préférentielle) ou annexe"
   },
   {
-   "ref": "PCG art. 941-14",
+   "ref": "PCG, titre IX (compte 14)",
    "note": "Provisions réglementées (compte 14)"
   },
   {
@@ -380,7 +380,7 @@
    ],
    "a": 1,
    "why": "Les immobilisations financières relèvent du résultat financier : valeur comptable sortie en 6671 Valeurs comptables des immobilisations financières cédées, prix en 7671 Produits des cessions d'immobilisations financières, en montants bruts. Les comptes 657/757 sont réservés aux immobilisations incorporelles et corporelles, 6673/7673 aux VMP (résultat net) et 675/775 sont supprimés depuis 2025.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 946-66 et 947-76",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 667 et 767)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -417,7 +417,7 @@
     ]
    ],
    "why": "Pour les VMP, seul le résultat net de cession est enregistré : le compte 503 est crédité du coût d'entrée (5 000), la banque débitée du prix (5 400) et la différence positive (400) va en 7673 Produits nets sur cessions de VMP. En cas de perte, on aurait débité 6673. Les comptes 6671/7671 (immobilisations financières) et 261 sont hors sujet pour des VMP.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-76",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (compte 767)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -454,7 +454,7 @@
    "unit": "€",
    "tol": 1,
    "why": "Les intérêts courent du 1er avril (dernier coupon) au 31 décembre : 9 mois. Intérêts courus = 100 × 1 000 × 4 % × 9/12 = 3 000 €, débit 5088 Intérêts courus sur obligations, crédit 764 Revenus des VMP. Compter 12 mois (4 000) ou 3 mois (1 000) sont les erreurs fréquentes : on rattache la fraction écoulée depuis le dernier coupon.",
-   "src": "PCG art. 945-50 (compte 5088) ; C. com., art. L. 123-12",
+   "src": "PCG, titre IX (compte 5088) ; C. com., art. L. 123-12",
    "fiab": "stable",
    "niveau": 2
   },
@@ -469,7 +469,7 @@
    ],
    "a": 2,
    "why": "Les dépréciations des VMP sont enregistrées en 590 Dépréciations des valeurs mobilières de placement, par le débit de 6866. Le compte 2961 concerne les titres de participation, 297 les autres titres immobilisés et 39 les stocks. La logique du plan : le 9 en deuxième position signale toujours une dépréciation (29, 39, 49, 59).",
-   "src": "PCG art. 945-59 (compte 590)",
+   "src": "PCG, titre IX (compte 590)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -484,7 +484,7 @@
    ],
    "a": 1,
    "why": "Le coupon couru acheté (1 000 × 4 % × 3/12 = 10 €) correspond à des intérêts déjà courus que l'acquéreur récupérera au prochain coupon : c'est une créance d'intérêts (5088 pour une VMP, 2768 pour un titre immobilisé) et non un élément du coût du titre, inscrit pour 1 020. Ce n'est ni une charge ni un produit de l'acquéreur.",
-   "src": "PCG art. 221-1 ; art. 945-50 (compte 5088)",
+   "src": "PCG art. 221-1 ; PCG, titre IX (compte 5088)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -498,8 +498,8 @@
     "En 764 Revenus des VMP"
    ],
    "a": 1,
-   "why": "Le droit au dividende naît de la décision de l'assemblée : la créance (4571 ou 4671) et le produit 761 sont enregistrés à cette date, l'encaissement ne faisant que solder la créance. Aucun produit n'est anticipé à la clôture de la filiale (le résultat n'est pas encore affecté). Le compte 764 concerne les VMP, pas les participations.",
-   "src": "PCG art. 947-76 (compte 761)",
+   "why": "Le droit au dividende naît de la décision de l'assemblée : la créance (467 ou 451) et le produit 761 sont enregistrés à cette date, l'encaissement ne faisant que solder la créance. Aucun produit n'est anticipé à la clôture de la filiale (le résultat n'est pas encore affecté). Le compte 764 concerne les VMP, pas les participations.",
+   "src": "PCG, titre IX (compte 761)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -514,7 +514,7 @@
     "164",
     "6861",
     "661",
-    "16883"
+    "1638"
    ],
    "sol": [
     [
@@ -535,8 +535,8 @@
      }
     ]
    ],
-   "why": "Encaissement : 1 000 × 490 = 490 000 (512). Dette au prix de remboursement : 1 000 × 510 = 510 000 (163 Autres emprunts obligataires). Prime de remboursement = (510 − 490) × 1 000 = 20 000 au débit de 169, actif amorti sur 5 ans par 6861 (4 000 par an). Le compte 164 vise les emprunts bancaires ; 661 et 16883 concernent les intérêts.",
-   "src": "PCG art. 941-16",
+   "why": "Encaissement : 1 000 × 490 = 490 000 (512). Dette au prix de remboursement : 1 000 × 510 = 510 000 (163 Autres emprunts obligataires). Prime de remboursement = (510 − 490) × 1 000 = 20 000 au débit de 169, actif amorti sur 5 ans par 6861 (4 000 par an). Le compte 164 vise les emprunts bancaires ; 661 et 1638 concernent les intérêts.",
+   "src": "PCG, titre IX (comptes 163 et 169)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -547,7 +547,7 @@
    "unit": "€",
    "tol": 1,
    "why": "Prime totale = (510 − 490) × 1 000 = 20 000 €. Amortissement linéaire sur 5 ans : 20 000 / 5 = 4 000 € par an, débit 6861, crédit 169. La prime se calcule entre prix de remboursement et prix d'émission : utiliser le nominal (510 − 500 ou 500 − 490) donnerait 10 000, soit la moitié de la prime réelle.",
-   "src": "PCG art. 941-16 et 946-68",
+   "src": "PCG, titre IX (comptes 169 et 6861)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -556,7 +556,7 @@
    "q": "Concernant les frais d'émission d'un emprunt obligataire (commissions bancaires, frais de publicité légale), quelles options sont admises ? (plusieurs réponses possibles)",
    "opts": [
     "Les comptabiliser en charges de l'exercice d'émission",
-    "Les étaler sur la durée de l'emprunt via le compte 4816 Frais d'émission des emprunts",
+    "Les étaler sur la durée de l'emprunt via le compte 481 Frais d'émission des emprunts",
     "Les ajouter à la prime de remboursement en 169",
     "Les imputer sur le capital social",
     "Les inscrire en immobilisation incorporelle 201"
@@ -565,8 +565,8 @@
     0,
     1
    ],
-   "why": "Le PCG laisse le choix entre la charge immédiate (627) et l'étalement sur la durée de l'emprunt, de façon linéaire ou au prorata des intérêts courus, via 4816 amorti par 6812. Les frais ne se confondent pas avec la prime de remboursement (169), qui résulte de l'écart entre prix de remboursement et prix d'émission ; ils ne touchent ni le capital ni les frais d'établissement.",
-   "src": "PCG art. 944-48 (compte 4816)",
+   "why": "Le PCG laisse le choix entre la charge immédiate (627) et l'étalement sur la durée de l'emprunt, de façon linéaire ou au prorata des intérêts courus, via 481 Frais d'émission des emprunts, amorti par 6862 Dotations aux amortissements des frais d'émission des emprunts (avant 2025 : 4816 et 6812). Les frais ne se confondent pas avec la prime de remboursement (169), qui résulte de l'écart entre prix de remboursement et prix d'émission ; ils ne touchent ni le capital ni les frais d'établissement.",
+   "src": "PCG, titre IX (comptes 481 et 6862) ; règlement ANC n° 2022-06",
    "fiab": "stable",
    "niveau": 2
   },
@@ -574,14 +574,14 @@
    "type": "qcm",
    "q": "Emprunt obligataire de 2 000 000 € (nominal), taux 3 %, coupon payable le 1er octobre, émis le 1er octobre N−1. Au 31 décembre N, quelle écriture d'inventaire passe-t-on ?",
    "opts": [
-    "Débit 661 pour 15 000, crédit 16883 pour 15 000",
-    "Débit 661 pour 60 000, crédit 16883 pour 60 000",
+    "Débit 661 pour 15 000, crédit 1638 pour 15 000",
+    "Débit 661 pour 60 000, crédit 1638 pour 60 000",
     "Débit 661 pour 45 000, crédit 512 pour 45 000",
     "Aucune écriture : le coupon a été payé le 1er octobre N"
    ],
    "a": 0,
-   "why": "Les intérêts courus du 1er octobre au 31 décembre N (3 mois) doivent être rattachés à N : 2 000 000 × 3 % × 3/12 = 15 000, débit 661 Charges d'intérêts, crédit 16883 Intérêts courus sur autres emprunts obligataires. Le coupon payé le 1er octobre N (60 000) couvrait octobre N−1 à septembre N ; 45 000 correspondrait à 9 mois.",
-   "src": "PCG art. 941-16 (compte 1688)",
+   "why": "Les intérêts courus du 1er octobre au 31 décembre N (3 mois) doivent être rattachés à N : 2 000 000 × 3 % × 3/12 = 15 000, débit 661 Charges d'intérêts, crédit 1638 Intérêts courus sur autres emprunts obligataires (avant 2025 : 16883). Le coupon payé le 1er octobre N (60 000) couvrait octobre N−1 à septembre N ; 45 000 correspondrait à 9 mois.",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (compte 1638)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -596,7 +596,7 @@
    ],
    "a": 0,
    "why": "Amortissements constants (ou séries égales) : un nombre identique d'obligations, tiré au sort, est remboursé chaque année ; les intérêts décroissant avec le capital restant dû, l'annuité totale diminue. L'annuité constante est un autre mode ; le remboursement global à l'échéance est le remboursement in fine, où seuls les intérêts sont payés chaque année.",
-   "src": "PCG art. 941-16 ; C. com., art. L. 228-38 s.",
+   "src": "C. com., art. L. 228-38 s. ; PCG, titre IX (compte 163)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -717,7 +717,7 @@
     ]
    ],
    "why": "La facture non reçue est une charge à payer (dette certaine, montant estimé). Le litige probable et la restructuration annoncée avant la clôture sont des provisions (PCG art. 322-1). La caution sur un débiteur sain et la réclamation infondée sont des passifs éventuels, non comptabilisés. Les amortissements dérogatoires et la provision pour hausse des prix sont des provisions réglementées (14), d'origine fiscale.",
-   "src": "PCG art. 321-1 à 322-1 ; art. 941-14",
+   "src": "PCG art. 321-1 à 322-1 ; PCG, titre IX (compte 14)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -732,7 +732,7 @@
    ],
    "a": 1,
    "why": "Une provision suppose une obligation envers des tiers à la clôture (PCG art. 322-1). Une décision interne non communiquée ne crée aucune attente fondée chez les salariés ou partenaires : l'obligation naît de l'annonce du plan détaillé ou du début de sa mise en œuvre. Faute d'annonce avant le 31 décembre, pas de provision pour restructuration en N (mention éventuelle en annexe comme événement postérieur). Le CAC ne crée pas d'obligation.",
-   "src": "PCG art. 322-1 et 322-2",
+   "src": "PCG art. 322-1 s.",
    "fiab": "stable",
    "niveau": 3
   },
@@ -746,7 +746,7 @@
     "Leur inscription en provision réglementée 14"
    ],
    "a": 2,
-   "why": "PCG art. 324-1 : les engagements de retraite et avantages similaires peuvent être provisionnés (153), ce qui constitue la méthode préférentielle, ou seulement mentionnés en annexe. Le passage de l'annexe à la provision est un changement de méthode (effet en report à nouveau). La provision n'est pas déductible fiscalement (CGI art. 39, 1-5°) ; ce n'est pas une provision réglementée.",
+   "why": "PCG art. 324-1 : les engagements de retraite et avantages similaires peuvent être provisionnés (compte 1521, ex-153), ce qui constitue la méthode préférentielle, ou seulement mentionnés en annexe. Le passage de l'annexe à la provision est un changement de méthode (effet en report à nouveau). La provision n'est pas déductible fiscalement (CGI art. 39, 1-5°) ; ce n'est pas une provision réglementée.",
    "src": "PCG art. 324-1 ; CGI art. 39, 1-5°",
    "fiab": "stable",
    "niveau": 2
@@ -781,8 +781,8 @@
     "Sont obligatoirement reprises dans l'exercice suivant"
    ],
    "a": 1,
-   "why": "Les provisions réglementées (hausse des prix, amortissements dérogatoires, etc.) n'ont pas la nature de passif : elles traduisent un avantage fiscal et sont classées dans les capitaux propres (PCG art. 941-14). Elles sont dotées par 687 (6872, 6873, 6874) et reprises par 787 selon le rythme prévu par le texte fiscal (6 ans pour la hausse des prix, fin de plan pour les dérogatoires), pas systématiquement l'année suivante.",
-   "src": "PCG art. 941-14",
+   "why": "Les provisions réglementées (hausse des prix, amortissements dérogatoires, etc.) n'ont pas la nature de passif : elles traduisent un avantage fiscal et sont classées dans les capitaux propres (PCG, titre IX). Elles sont dotées par 687 (dont 68725) et reprises par 787 selon le rythme prévu par le texte fiscal (6 ans pour la hausse des prix, fin de plan pour les dérogatoires), pas systématiquement l'année suivante.",
+   "src": "PCG, titre IX (compte 14)",
    "fiab": "stable",
    "niveau": 2
   },

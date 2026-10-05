@@ -51,7 +51,7 @@
   },
   {
    "h": "Subventions d'exploitation, d'équilibre et aides publiques",
-   "html": "<p>Une <b>subvention d'exploitation</b> compense une insuffisance de prix de vente ou des charges d'exploitation (aides à l'embauche, aide unique à l'apprentissage, aides à la création d'emplois, compensation de tarifs sociaux). Elle est un <b>produit d'exploitation</b> de l'exercice où son octroi est acquis : débit <b>441</b> État – subventions à recevoir (ou 4418 subventions d'exploitation à recevoir), crédit <b>74</b> Subventions d'exploitation ; encaissement 512 / 441. Elle est imposable l'exercice de son acquisition et entre dans le calcul de la valeur ajoutée pour la participation si elle compense un prix.</p><p>La <b>subvention d'équilibre</b> est accordée (par l'État ou la société mère) pour compenser tout ou partie d'une perte globale. Avant 2025, elle était un produit exceptionnel (7715) ; le PCG 2025 réservant l'exceptionnel aux événements majeurs et inhabituels, elle est désormais classée selon la nature de la perte qu'elle compense, le plus souvent en produit d'exploitation.</p><p>Les <b>aides publiques</b> prennent aussi la forme d'exonérations de charges (comptabilisées en moins de la charge), de crédits d'impôt (444/695) ou de prêts à taux zéro (dette 164, avantage non comptabilisé). Un remboursement conditionnel transforme la subvention en avance : <b>1674</b> Avances conditionnées.</p><p>Exemple : Mécano reçoit la notification d'une aide à l'embauche d'apprenti de <span class=\"mono\">6 000 €</span>.</p>",
+   "html": "<p>Une <b>subvention d'exploitation</b> compense une insuffisance de prix de vente ou des charges d'exploitation (aides à l'embauche, aide unique à l'apprentissage, aides à la création d'emplois, compensation de tarifs sociaux). Elle est un <b>produit d'exploitation</b> de l'exercice où son octroi est acquis : débit <b>441</b> État – subventions à recevoir (ou 4418 subventions d'exploitation à recevoir), crédit <b>741</b> Subventions d'exploitation (le compte 74 n'était pas subdivisé avant 2025) ; encaissement 512 / 441. Elle est imposable l'exercice de son acquisition et entre dans le calcul de la valeur ajoutée pour la participation si elle compense un prix.</p><p>La <b>subvention d'équilibre</b> est accordée (par l'État ou la société mère) pour compenser tout ou partie d'une perte globale. Avant 2025, elle était un produit exceptionnel (7715) ; le PCG 2025 réservant l'exceptionnel aux événements majeurs et inhabituels, elle est désormais un produit d'exploitation inscrit au compte <b>742</b> Subventions d'équilibre.</p><p>Les <b>aides publiques</b> prennent aussi la forme d'exonérations de charges (comptabilisées en moins de la charge), de crédits d'impôt (444/695) ou de prêts à taux zéro (dette 164, avantage non comptabilisé). Un remboursement conditionnel transforme la subvention en avance : <b>1674</b> Avances conditionnées.</p><p>Exemple : Mécano reçoit la notification d'une aide à l'embauche d'apprenti de <span class=\"mono\">6 000 €</span>.</p>",
    "entry": [
     {
      "a": "441",
@@ -59,7 +59,7 @@
      "c": 0
     },
     {
-     "a": "74",
+     "a": "741",
      "d": 0,
      "c": 6000
     }
@@ -68,7 +68,7 @@
   },
   {
    "h": "Subventions d'investissement : étalement et reprise au résultat",
-   "html": "<p>La <b>subvention d'investissement</b> finance une immobilisation ou une activité à long terme. Le PCG (art. 312-1) laisse le choix entre la comptabilisation immédiate en produits et le <b>maintien au passif</b> dans les capitaux propres (131 Subventions d'équipement, 138 Autres subventions d'investissement) avec <b>reprise échelonnée</b> au résultat :</p><ul><li>bien <b>amortissable</b> : reprise au même rythme que l'amortissement du bien, soit <span class=\"mono\">subvention × dotation / coût du bien</span> ;</li><li>bien <b>non amortissable</b> : reprise par fractions égales sur la durée d'inaliénabilité prévue au contrat ou, à défaut, sur <b>dix ans</b>.</li></ul><p>La reprise s'enregistre au débit de <b>139</b> Subventions d'investissement inscrites au compte de résultat et au crédit de <b>747</b> Quote-part des subventions d'investissement virée au résultat de l'exercice, produit d'exploitation depuis le PCG 2025 (avant 2025 : 777, exceptionnel). Au bilan, 131 et 139 sont présentés en net et soldés l'un par l'autre en fin d'étalement. En cas de <b>cession</b> du bien, le solde non repris est viré au résultat.</p><p>Le régime fiscal (CGI art. 42 septies) prévoit un étalement identique.</p><p>Exemple : subvention de <span class=\"mono\">20 000 €</span> pour une machine de <span class=\"mono\">100 000 €</span> amortie linéairement sur 5 ans : reprise annuelle 20 000 × 20 000 / 100 000 = <span class=\"mono\">4 000 €</span>.</p>",
+   "html": "<p>La <b>subvention d'investissement</b> finance une immobilisation ou une activité à long terme. Le PCG (art. 312-1) laisse le choix entre la comptabilisation immédiate en produits et le <b>maintien au passif</b> dans les capitaux propres (131 Subventions d'investissement octroyées, intitulé « Subventions d'équipement » avant 2025 ; 138 Autres subventions d'investissement) avec <b>reprise échelonnée</b> au résultat :</p><ul><li>bien <b>amortissable</b> : reprise au même rythme que l'amortissement du bien, soit <span class=\"mono\">subvention × dotation / coût du bien</span> ;</li><li>bien <b>non amortissable</b> : reprise par fractions égales sur la durée d'inaliénabilité prévue au contrat ou, à défaut, sur <b>dix ans</b>.</li></ul><p>La reprise s'enregistre au débit de <b>139</b> Subventions d'investissement inscrites au compte de résultat et au crédit de <b>747</b> Quote-part des subventions d'investissement virée au résultat de l'exercice, produit d'exploitation depuis le PCG 2025 (avant 2025 : 777, exceptionnel). Au bilan, 131 et 139 sont présentés en net et soldés l'un par l'autre en fin d'étalement. En cas de <b>cession</b> du bien, le solde non repris est viré au résultat.</p><p>Le régime fiscal (CGI art. 42 septies) prévoit un étalement identique.</p><p>Exemple : subvention de <span class=\"mono\">20 000 €</span> pour une machine de <span class=\"mono\">100 000 €</span> amortie linéairement sur 5 ans : reprise annuelle 20 000 × 20 000 / 100 000 = <span class=\"mono\">4 000 €</span>.</p>",
    "entry": [
     {
      "a": "139",
@@ -85,7 +85,7 @@
   },
   {
    "h": "Abandons de créances : commercial ou financier",
-   "html": "<p>Un <b>abandon de créance</b> est la renonciation volontaire d'un créancier à sa créance, souvent avec clause de <b>retour à meilleure fortune</b>. Sa qualification commande le traitement :</p><ul><li><b>Caractère commercial</b> : relation client-fournisseur, préservation de débouchés ou d'approvisionnements. Chez le créancier : charge d'exploitation <b>658</b> Charges diverses de gestion courante (crédit 411) ; chez le débiteur : produit d'exploitation <b>758</b> Produits divers de gestion courante (débit 401).</li><li><b>Caractère financier</b> : liens en capital (mère aidant sa filiale) sans relation commerciale prépondérante. Créancier : <b>668</b> Autres charges financières ; débiteur : <b>768</b> Autres produits financiers.</li></ul><p>Avant 2025 : 6788 / 7788 (exceptionnel) ; le PCG 2025 les reclasse selon leur nature.</p><p><b>Fiscalité</b> : l'abandon à caractère commercial est déductible chez le créancier s'il relève d'une gestion normale, et imposable chez le débiteur. L'abandon à caractère financier n'est <b>pas déductible</b> (CGI art. 39, 13), sauf au profit d'une entreprise en procédure collective (conciliation, sauvegarde, redressement, liquidation), dans la limite de la situation nette négative et de la quote-part des autres associés. Le débiteur est imposé, sauf option de l'article 216 A du CGI (engagement d'augmenter son capital dans les deux ans).</p><p>Exemple : Fournitex abandonne <span class=\"mono\">30 000 €</span> de créance sur un client distributeur en difficulté pour maintenir ce débouché.</p>",
+   "html": "<p>Un <b>abandon de créance</b> est la renonciation volontaire d'un créancier à sa créance, souvent avec clause de <b>retour à meilleure fortune</b>. Sa qualification commande le traitement :</p><ul><li><b>Caractère commercial</b> : relation client-fournisseur, préservation de débouchés ou d'approvisionnements. Chez le créancier : charge d'exploitation <b>658</b> (autres charges de gestion courante ; crédit 411) ; chez le débiteur : produit d'exploitation <b>758</b> (autres produits de gestion courante ; débit 401).</li><li><b>Caractère financier</b> : liens en capital (mère aidant sa filiale) sans relation commerciale prépondérante. Créancier : <b>668</b> Autres charges financières (ou <b>664</b> Pertes sur créances liées à des participations lorsque la créance est liée à une participation) ; débiteur : <b>768</b> Autres produits financiers.</li></ul><p>Avant 2025, ces abandons étaient souvent classés en résultat exceptionnel (6788 / 7788) ; le PCG 2025 les reclasse selon leur nature, commerciale ou financière.</p><p><b>Fiscalité</b> : l'abandon à caractère commercial est déductible chez le créancier s'il relève d'une gestion normale, et imposable chez le débiteur. L'abandon à caractère financier n'est <b>pas déductible</b> (CGI art. 39, 13), sauf au profit d'une entreprise en procédure collective (conciliation, sauvegarde, redressement, liquidation), dans la limite de la situation nette négative et de la quote-part des autres associés. Le débiteur est imposé, sauf option de l'article 216 A du CGI (engagement d'augmenter son capital dans les deux ans).</p><p>Exemple : Fournitex abandonne <span class=\"mono\">30 000 €</span> de créance sur un client distributeur en difficulté pour maintenir ce débouché.</p>",
    "entry": [
     {
      "a": "658",
@@ -131,15 +131,15 @@
    "note": "Subventions d'investissement : inscription au passif et reprise (139 / 747)"
   },
   {
-   "ref": "PCG art. 947-74 ; règlement ANC n° 2022-06",
-   "note": "Compte 74 Subventions d'exploitation et compte 747 ; reclassement des éléments exceptionnels"
+   "ref": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 741, 742 et 747)",
+   "note": "Subventions d'exploitation (741), d'équilibre (742) et quote-part de subvention d'investissement (747) ; reclassement des éléments exceptionnels"
   },
   {
    "ref": "CGI art. 39, 13 et 216 A",
    "note": "Régime fiscal des abandons de créances financiers et commerciaux"
   },
   {
-   "ref": "PCG art. 944-44 et 946-69",
+   "ref": "PCG, titre IX (comptes 444, 4284, 691 et 695)",
    "note": "Comptes 444, 4284, 691 et 695"
   }
  ],
@@ -155,7 +155,7 @@
    ],
    "a": 1,
    "why": "La charge d'impôt (695 Impôts sur les bénéfices) est constatée par le crédit du compte de tiers 444 État – impôts sur les bénéfices, qui a déjà été débité des acomptes versés en cours d'année ; son solde représente le solde à payer (ou l'excédent à récupérer). 444/512 est l'écriture de paiement, 444/695 celle d'un crédit d'impôt, 691/4284 celle de la participation.",
-   "src": "PCG art. 944-44 et 946-69",
+   "src": "PCG, titre IX (comptes 444 et 695)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -223,7 +223,7 @@
     ]
    ],
    "why": "La charge totale d'IS (60 000) est enregistrée en 695 par le crédit de 444 ; après cette écriture, le compte 444 présente un solde créditeur de 12 000 correspondant au solde à payer en mai N+1. Le paiement (512) n'intervient pas à la clôture ; 44551 concerne la TVA, 691 la participation et 699 le produit de carry-back.",
-   "src": "PCG art. 944-44 et 946-69",
+   "src": "PCG, titre IX (comptes 444 et 695)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -311,7 +311,7 @@
    ],
    "a": 0,
    "why": "L'option pour le carry-back (CGI art. 220 quinquies) fait naître une créance sur l'État égale au déficit reporté × taux d'IS, remboursable au bout de cinq ans ou imputable sur l'IS futur : débit 444, crédit 699, produit qui diminue la charge d'impôt nette. Elle doit être comptabilisée dès que l'option est exercée. Le report en avant, lui, ne donne lieu à aucune écriture en comptes individuels.",
-   "src": "CGI art. 220 quinquies ; PCG art. 946-69",
+   "src": "CGI art. 220 quinquies ; PCG, titre IX (compte 699)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -388,7 +388,7 @@
     ]
    ],
    "why": "La participation est une charge de l'exercice (691 Participation des salariés aux résultats) et une dette provisionnée envers le personnel (4284), le montant n'étant définitif qu'après l'arrêté des comptes. Le compte 6414 et 4286 concernent l'intéressement ; 1661 (comptes bloqués) n'intervient qu'en N+1 pour les droits laissés dans l'entreprise ; le versement (512) est postérieur.",
-   "src": "PCG art. 944-42 et 946-69",
+   "src": "PCG, titre IX (comptes 4284 et 691)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -438,7 +438,7 @@
    ],
    "a": 1,
    "why": "L'intéressement est une charge de personnel rattachée à l'exercice de référence (indépendance des exercices) : 6414 Indemnités et avantages divers, par le crédit de 4286 Personnel – autres charges à payer puisque le versement est postérieur. Le couple 691/4284 est réservé à la participation ; 512 n'intervient qu'au paiement ; ne rien comptabiliser violerait le rattachement des charges.",
-   "src": "C. trav., art. L. 3311-1 ; PCG art. 944-42",
+   "src": "C. trav., art. L. 3311-1 ; PCG, titre IX (comptes 641 et 428)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -446,14 +446,14 @@
    "type": "qcm",
    "q": "Une aide à l'embauche d'un apprenti de 6 000 € est notifiée à l'entreprise en N. Elle est comptabilisée :",
    "opts": [
-    "En 131 Subventions d'équipement",
-    "En 74 Subventions d'exploitation, par le débit de 441",
+    "En 131 Subventions d'investissement octroyées",
+    "En 741 Subventions d'exploitation, par le débit de 441",
     "En 747 Quote-part des subventions d'investissement",
     "En diminution du compte 641 Rémunérations du personnel"
    ],
    "a": 1,
-   "why": "L'aide compense une charge d'exploitation (le coût du salarié) sans financer d'immobilisation : c'est une subvention d'exploitation, produit de l'exercice de son octroi (74), avec créance en 441 jusqu'à l'encaissement. Le compte 131 est réservé aux subventions finançant des actifs et 747 à leur reprise. On ne compense pas une charge par un produit (non-compensation).",
-   "src": "PCG art. 947-74 ; C. com., art. L. 123-19",
+   "why": "L'aide compense une charge d'exploitation (le coût du salarié) sans financer d'immobilisation : c'est une subvention d'exploitation, produit de l'exercice de son octroi (741 Subventions d'exploitation ; compte 74 non subdivisé avant 2025), avec créance en 441 jusqu'à l'encaissement. Le compte 131 est réservé aux subventions finançant des actifs et 747 à leur reprise. On ne compense pas une charge par un produit (non-compensation).",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (compte 741) ; C. com., art. L. 123-19",
    "fiab": "stable",
    "niveau": 1
   },
@@ -463,7 +463,7 @@
    "lib": "Subvention d'exploitation acquise",
    "palette": [
     "441",
-    "74",
+    "741",
     "131",
     "747",
     "512",
@@ -477,14 +477,14 @@
       "c": 0
      },
      {
-      "a": "74",
+      "a": "741",
       "d": 0,
       "c": 6000
      }
     ]
    ],
-   "why": "Le droit à la subvention est acquis à la notification : créance 441 État – subventions à recevoir et produit d'exploitation 74 en N, exercice de rattachement, même si l'encaissement (512 / 441) intervient en N+1. Les comptes 131/747 concernent les subventions d'investissement ; 758 enregistre d'autres produits de gestion courante (par exemple un abandon de créance reçu), pas une subvention.",
-   "src": "PCG art. 947-74",
+   "why": "Le droit à la subvention est acquis à la notification : créance 441 État – subventions à recevoir et produit d'exploitation 741 Subventions d'exploitation (compte 74 non subdivisé avant 2025) en N, exercice de rattachement, même si l'encaissement (512 / 441) intervient en N+1. Les comptes 131/747 concernent les subventions d'investissement ; 758 enregistre d'autres produits de gestion courante (par exemple un abandon de créance reçu), pas une subvention.",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (compte 741)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -529,7 +529,7 @@
      }
     ]
    ],
-   "why": "La reprise ne passe pas par 131, qui conserve le montant d'origine jusqu'au terme : on débite 139 Subventions d'investissement inscrites au compte de résultat et on crédite 747 Quote-part des subventions d'investissement virée au résultat de l'exercice (produit d'exploitation, PCG 2025 ; avant 2025 : 777). Le compte 74 est réservé aux subventions d'exploitation, 6811 à l'amortissement de la machine, 7587 aux indemnités d'assurance.",
+   "why": "La reprise ne passe pas par 131, qui conserve le montant d'origine jusqu'au terme : on débite 139 Subventions d'investissement inscrites au compte de résultat et on crédite 747 Quote-part des subventions d'investissement virée au résultat de l'exercice (produit d'exploitation, PCG 2025 ; avant 2025 : 777). Le compte 74 (741) est réservé aux subventions d'exploitation, 6811 à l'amortissement de la machine, 7587 aux indemnités d'assurance.",
    "src": "PCG art. 312-1 ; règlement ANC n° 2022-06",
    "fiab": "stable",
    "niveau": 1
@@ -570,13 +570,13 @@
    "q": "Un fournisseur abandonne une créance de 30 000 € sur un client distributeur afin de préserver ce débouché commercial. Chez le fournisseur, sous le PCG 2025, l'écriture est :",
    "opts": [
     "Débit 6788, crédit 411",
-    "Débit 658 Charges diverses de gestion courante, crédit 411",
+    "Débit 658 (autres charges de gestion courante), crédit 411",
     "Débit 668 Autres charges financières, crédit 411",
     "Débit 654 Pertes sur créances irrécouvrables, crédit 411"
    ],
    "a": 1,
    "why": "L'abandon motivé par la relation commerciale est une charge d'exploitation : 658 (le PCG 2025 ne le classe plus en exceptionnel, 6788 relevant de l'ancien plan). Le compte 668 vise les abandons à caractère financier (liens en capital). Le compte 654 enregistre une perte subie sur une créance devenue irrécouvrable, pas une renonciation volontaire.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 946-65",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 65 et 66)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -606,8 +606,8 @@
      }
     ]
    ],
-   "why": "Chez le débiteur, l'abandon éteint la dette fournisseur (débit 401) et constitue un produit d'exploitation 758 Produits divers de gestion courante, imposable. Le compte 768 serait utilisé pour un abandon à caractère financier (par exemple consenti par la société mère) ; 7788 relève de l'ancien plan ; 74 est réservé aux subventions ; 411 est le compte du créancier, pas du débiteur.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-75",
+   "why": "Chez le débiteur, l'abandon éteint la dette fournisseur (débit 401) et constitue un produit d'exploitation 758 (autres produits de gestion courante), imposable. Le compte 768 serait utilisé pour un abandon à caractère financier (par exemple consenti par la société mère) ; 7788 relève de l'ancien plan ; 74 est réservé aux subventions ; 411 est le compte du créancier, pas du débiteur.",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 75 et 76)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -652,7 +652,7 @@
    ],
    "a": 0,
    "why": "La clause de retour à meilleure fortune conditionne le caractère définitif de l'abandon : si le débiteur redevient bénéficiaire ou atteint certains indicateurs, la dette renaît pour tout ou partie. L'abandon est néanmoins comptabilisé immédiatement en charge/produit ; la reconstitution ultérieure donne lieu à une nouvelle écriture (charge chez le débiteur, produit chez le créancier). L'engagement est mentionné en annexe (engagement hors bilan).",
-   "src": "PCG art. 833-13 (engagements hors bilan) ; doctrine",
+   "src": "Doctrine comptable (CNCC) ; PCG, contenu de l'annexe (engagements hors bilan)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -666,8 +666,8 @@
     "Jamais : les subventions publiques sont exonérées"
    ],
    "a": 1,
-   "why": "La subvention d'exploitation est un produit de l'exercice au cours duquel son attribution est devenue certaine (créance acquise), indépendamment de la date d'encaissement : comptabilisée en 74 en N (441 / 74), elle est imposable en N. L'étalement est réservé aux subventions d'équipement (CGI art. 42 septies). Aucune exonération générale n'existe pour les subventions publiques.",
-   "src": "CGI art. 38, 2 et 38, 2 bis ; PCG art. 947-74",
+   "why": "La subvention d'exploitation est un produit de l'exercice au cours duquel son attribution est devenue certaine (créance acquise), indépendamment de la date d'encaissement : comptabilisée en 741 en N (441 / 741), elle est imposable en N. L'étalement est réservé aux subventions d'équipement (CGI art. 42 septies). Aucune exonération générale n'existe pour les subventions publiques.",
+   "src": "CGI art. 38, 2 ; PCG, titre IX (compte 741)",
    "fiab": "stable",
    "niveau": 2
   },

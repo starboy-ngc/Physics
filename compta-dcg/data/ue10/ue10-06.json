@@ -211,7 +211,7 @@
    "note": "Déductibilité des intérêts de comptes courants d'associés"
   },
   {
-   "ref": "PCG art. 941-10 et 944-45",
+   "ref": "PCG, titre IX (fonctionnement des comptes 101, 104, 106, 109 et 45)",
    "note": "Fonctionnement des comptes 101, 104, 106, 109 et 45"
   }
  ],
@@ -280,7 +280,7 @@
     ]
    ],
    "why": "Capital 200 000. Partie appelée (moitié, L. 225-3) : créance sur les apporteurs en 4561 (100 000) et capital souscrit appelé non versé 1012. Partie non appelée : 109 Actionnaires – capital souscrit non appelé (100 000) et 1011 capital souscrit non appelé. Le compte 1013 n'est crédité qu'après versement, 512 à l'encaissement, 4562 lors d'un appel ultérieur.",
-   "src": "C. com., art. L. 225-3 ; PCG art. 941-10",
+   "src": "C. com., art. L. 225-3 ; PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -295,7 +295,7 @@
    ],
    "a": 1,
    "why": "Le compte 109 enregistre la fraction du capital souscrit que la société n'a pas encore appelée : c'est un compte d'actif soustractif présenté en tête du bilan. En analyse financière, on le retranche des capitaux propres pour obtenir les capitaux propres effectivement apportés. Il ne s'agit ni d'une dette ni d'une charge constatée d'avance.",
-   "src": "PCG art. 941-10",
+   "src": "PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -314,7 +314,7 @@
     1
    ],
    "why": "L'appel transforme le capital non appelé en capital appelé non versé : créance sur les actionnaires (4562 / 109) et reclassement du capital (1011 / 1012). Le virement 1012 → 1013 n'intervient qu'au versement effectif, qui passe par 512 / 4562 (et non 512 / 1013 directement). Débiter 109 irait dans le mauvais sens.",
-   "src": "PCG art. 941-10 et 944-45",
+   "src": "PCG, titre IX (comptes 10 et 45)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -329,7 +329,7 @@
    ],
    "a": 1,
    "why": "C. com., art. L. 228-27 : après mise en demeure restée sans effet pendant un mois, la société poursuit la vente des actions non libérées (en bourse ou aux enchères) ; le défaillant est redevable des intérêts de retard et des frais, et le produit de la vente lui revient déduction faite des sommes dues. Le suivi se fait en 4566. Il n'y a ni annulation gratuite ni réduction de capital, et aucune solidarité des autres actionnaires.",
-   "src": "C. com., art. L. 228-27 ; PCG art. 944-45",
+   "src": "C. com., art. L. 228-27 ; PCG, titre IX (compte 456)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -381,7 +381,7 @@
     ]
    ],
    "why": "Les subdivisions du compte 101 suivent l'état de libération : 1011 non appelé, 1012 appelé non versé, 1013 appelé versé. Le compte 109 est la contrepartie à l'actif du capital non appelé. Les versements anticipés sont des dettes envers les associés (4564) jusqu'à l'appel correspondant.",
-   "src": "PCG art. 941-10 et 944-45",
+   "src": "PCG, titre IX (comptes 10 et 45)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -444,7 +444,7 @@
     ]
    ],
    "why": "Fonds reçus : 2 500 × 110 = 275 000. Capital : 2 500 × 10 = 25 000 en 1013 (appelé et versé). Prime d'émission : 2 500 × (110 − 10) = 250 000 en 1041, qui fait partie des capitaux propres mais pas du capital social. La prime n'est ni une réserve légale (1061) ni une réserve facultative (1068) ; 1011 et 4561 n'ont pas d'objet pour une libération intégrale immédiate.",
-   "src": "C. com., art. L. 225-128 ; PCG art. 941-10",
+   "src": "C. com., art. L. 225-128 ; PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -459,7 +459,7 @@
    ],
    "a": 1,
    "why": "Les actions anciennes valent plus que leur nominal (réserves accumulées) ; émettre au nominal diluerait les anciens actionnaires. La prime, versée par les nouveaux souscripteurs, égalise les droits. Elle entre dans les capitaux propres sans faire partie du capital social ; elle est librement utilisable (incorporation, imputation des frais d'augmentation) et ne constitue pas la réserve légale.",
-   "src": "C. com., art. L. 225-128 ; PCG art. 941-10",
+   "src": "C. com., art. L. 225-128 ; PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -521,13 +521,13 @@
     ]
    ],
    "why": "L'incorporation est un simple virement interne aux capitaux propres : débit 1068 Autres réserves, crédit 1013 Capital souscrit appelé versé. Aucune trésorerie (512) ni dette envers les associés (457) n'intervient. La réserve légale (1061) ne peut pas être distribuée mais peut être incorporée ; ici l'énoncé vise les autres réserves. Aucune prime (1041) n'est créée puisqu'il n'y a pas de souscription.",
-   "src": "C. com., art. L. 225-130 ; PCG art. 941-10",
+   "src": "C. com., art. L. 225-130 ; PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 1
   },
   {
    "type": "qcm",
-   "q": "Un associé détient une créance en compte courant de 40 000 € sur la SARL. L'AGE décide d'augmenter le capital par compensation avec cette créance (4 000 parts de 10 €). L'écriture est :",
+   "q": "Un actionnaire détient une créance en compte courant de 40 000 € sur la SA. L'AGE décide d'augmenter le capital par compensation avec cette créance liquide et exigible (4 000 actions de 10 €). L'écriture est :",
    "opts": [
     "Débit 512 pour 40 000, crédit 1013 pour 40 000",
     "Débit 455 pour 40 000, crédit 1013 pour 40 000",
@@ -536,7 +536,7 @@
    ],
    "a": 1,
    "why": "La conversion d'une dette en capital éteint la dette (débit 455 Associés – comptes courants) et crée du capital (crédit 1013), sans mouvement de trésorerie : 512 n'intervient pas. La créance doit être liquide et exigible et un arrêté de compte certifié est établi. Inverser les sens (option 3) réduirait le capital ; 401/1041 ne correspondent ni au créancier ni à la nature de l'opération (pas de prime ici).",
-   "src": "C. com., art. L. 225-128 ; PCG art. 944-45",
+   "src": "C. com., art. L. 225-128 ; PCG, titre IX (compte 455)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -567,7 +567,7 @@
     ]
    ],
    "why": "Le capital absorbe les pertes : débit 1013, crédit 119 Report à nouveau (solde débiteur), qui est ainsi soldé. Aucun remboursement (512, 4567) : il s'agit d'un assainissement du bilan, les créanciers ne peuvent s'y opposer. Le compte 129 (perte de l'exercice) n'est utilisé que si l'on impute directement la perte de l'exercice en cours d'affectation ; ici les pertes sont déjà en report à nouveau.",
-   "src": "C. com., art. L. 225-204 ; PCG art. 941-10",
+   "src": "C. com., art. L. 225-204 ; PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -691,7 +691,7 @@
     ]
    ],
    "why": "Le compte 120 est soldé par le débit. Au crédit : 119 pour apurer les pertes antérieures (10 000), 1061 réserve légale (5 500), 1063 réserves statutaires (10 000), 457 dividendes à payer (60 000) et 110 report à nouveau créditeur pour le solde : 120 000 − 10 000 − 5 500 − 10 000 − 60 000 = 34 500. Le paiement effectif (512) est une écriture distincte ; 129 n'existe que pour une perte.",
-   "src": "C. com., art. L. 232-10 et L. 232-11 ; PCG art. 941-12",
+   "src": "C. com., art. L. 232-10 et L. 232-11 ; PCG, titre IX (compte 12)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -773,7 +773,7 @@
     ]
    ],
    "why": "La dette envers les associés (457) est soldée pour le brut. Les prélèvements (30 % × 60 000 = 18 000) sont dus au Trésor pour le compte des associés : 442 État – impôts et taxes recouvrables sur des tiers. Le net, 42 000, sort de la banque. Ce n'est pas l'impôt de la société (695/444) ni une charge d'intérêts (6611).",
-   "src": "CGI art. 117 quater ; PCG art. 944-44",
+   "src": "CGI art. 117 quater ; PCG, titre IX (compte 442)",
    "fiab": "millésimé 2025",
    "niveau": 2
   },
@@ -803,13 +803,13 @@
    ],
    "a": 2,
    "why": "L'incorporation est un virement interne (1068 / 1013) : aucune ressource nouvelle n'entre, aucune ne sort ; les capitaux propres totaux sont identiques. La valeur de l'entreprise est inchangée, d'où la baisse mécanique de la valeur unitaire des actions (V' = V × N / (N + n)) compensée par les droits d'attribution.",
-   "src": "C. com., art. L. 225-130 ; PCG art. 941-10",
+   "src": "C. com., art. L. 225-130 ; PCG, titre IX (compte 10)",
    "fiab": "stable",
    "niveau": 1
   },
   {
    "type": "qcm",
-   "q": "Au DSCG, l'analyse des capitaux propres selon le PCG (art. 934-1) retient comme capitaux propres :",
+   "q": "Au DSCG, l'analyse des capitaux propres selon le PCG retient comme capitaux propres :",
    "opts": [
     "Le capital social et les réserves uniquement, hors résultat de l'exercice et report à nouveau",
     "Apports, écarts de réévaluation, résultats non distribués, subventions d'investissement, provisions réglementées",
@@ -817,8 +817,8 @@
     "Le capital social diminué des dettes financières"
    ],
    "a": 1,
-   "why": "PCG art. 934-1 : les capitaux propres regroupent les apports (capital, primes), les écarts de réévaluation, les résultats accumulés non distribués (réserves, report à nouveau, résultat), les pertes, ainsi que les subventions d'investissement (13) et les provisions réglementées (14). Les provisions pour risques (15) sont des passifs, et les dettes financières n'entrent pas dans la définition.",
-   "src": "PCG art. 934-1",
+   "why": "Selon le PCG, les capitaux propres regroupent les apports (capital, primes), les écarts de réévaluation, les résultats accumulés non distribués (réserves, report à nouveau, résultat), les pertes, ainsi que les subventions d'investissement (13) et les provisions réglementées (14). Les provisions pour risques (15) sont des passifs, et les dettes financières n'entrent pas dans la définition.",
+   "src": "PCG, titre IX (définition des capitaux propres)",
    "fiab": "stable",
    "niveau": 3
   }

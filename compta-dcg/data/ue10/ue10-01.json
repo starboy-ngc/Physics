@@ -25,7 +25,7 @@
   },
   {
    "h": "Changements de méthodes, d'estimation et corrections d'erreurs",
-   "html": "<p>Le PCG (art. 122-1 à 122-5) distingue trois situations.</p><ul><li><b>Changement de méthode comptable</b> (art. 122-2) : adoption d'une méthode plus pertinente ou imposée par une nouvelle réglementation. Il s'applique de façon <b>rétrospective</b> : l'effet, calculé net d'impôt, est imputé sur les <b>capitaux propres d'ouverture</b> (compte 110 Report à nouveau), sauf si des règles fiscales imposent de passer par le résultat. Information comparative pro forma en annexe.</li><li><b>Changement d'estimation</b> (art. 122-3) : révision d'une durée d'utilité, d'une valeur résiduelle, d'un taux de provision. Il n'affecte que l'exercice en cours et les suivants (application <b>prospective</b>), par le résultat.</li><li><b>Correction d'erreur</b> (art. 122-5) : omission ou inexactitude d'un exercice antérieur. Elle est comptabilisée dans le <b>résultat de l'exercice au cours duquel elle est découverte</b>, avec mention en annexe ; les comptes antérieurs ne sont pas modifiés.</li></ul><p>Exemple : Sitral décide de provisionner ses engagements de retraite (méthode préférentielle) à compter du 1er janvier N. L'engagement à l'ouverture est de <span class=\"mono\">100 000 €</span>.</p><div class=\"note\"><b>Piège.</b> Un changement de durée d'amortissement n'est pas un changement de méthode : c'est une estimation, donc prospectif et sans retraitement du report à nouveau.</div>",
+   "html": "<p>Le PCG (art. 122-1 à 122-5) distingue trois situations.</p><ul><li><b>Changement de méthode comptable</b> (art. 122-2) : adoption d'une méthode plus pertinente ou imposée par une nouvelle réglementation. Il s'applique de façon <b>rétrospective</b> : l'effet, calculé net d'impôt, est imputé sur les <b>capitaux propres d'ouverture</b> (compte 110 Report à nouveau), sauf si des règles fiscales imposent de passer par le résultat. Information comparative pro forma en annexe.</li><li><b>Changement d'estimation</b> (art. 122-3) : révision d'une durée d'utilité, d'une valeur résiduelle, d'un taux de provision. Il n'affecte que l'exercice en cours et les suivants (application <b>prospective</b>), par le résultat.</li><li><b>Correction d'erreur</b> (art. 122-5) : omission ou inexactitude d'un exercice antérieur. Elle est comptabilisée dans le <b>résultat de l'exercice au cours duquel elle est découverte</b>, avec mention en annexe ; les comptes antérieurs ne sont pas modifiés.</li></ul><p>Exemple : Sitral décide de provisionner ses engagements de retraite (méthode préférentielle) à compter du 1er janvier N. L'engagement à l'ouverture est de <span class=\"mono\">100 000 €</span> ; la provision est inscrite au compte <b>1521</b> Provisions pour pensions et obligations similaires (avant 2025 : 153).</p><div class=\"note\"><b>Piège.</b> Un changement de durée d'amortissement n'est pas un changement de méthode : c'est une estimation, donc prospectif et sans retraitement du report à nouveau.</div>",
    "entry": [
     {
      "a": "110",
@@ -33,7 +33,7 @@
      "c": 0
     },
     {
-     "a": "153",
+     "a": "1521",
      "d": 0,
      "c": 100000
     }
@@ -178,7 +178,7 @@
     "Un règlement de la Commission européenne"
    ],
    "a": 1,
-   "why": "Les NEP sont adoptées par la Haute autorité de l'audit (avant 2024, élaborées par la CNCC et avis du H3C) puis homologuées par arrêté du ministre de la justice. L'ANC ne traite que des normes comptables, pas des normes d'audit ; la CNCC n'a pas de pouvoir réglementaire propre.",
+   "why": "Les NEP sont adoptées par la Haute autorité de l'audit (avant 2024, élaborées par la CNCC puis adoptées par le H3C) puis homologuées par arrêté du ministre de la justice. L'ANC ne traite que des normes comptables, pas des normes d'audit ; la CNCC n'a pas de pouvoir réglementaire propre.",
    "src": "C. com., livre VIII (ord. n° 2023-1142)",
    "fiab": "stable",
    "niveau": 2
@@ -279,7 +279,7 @@
     ]
    ],
    "why": "La mission de présentation, la plus répandue, aboutit à une attestation de cohérence et de vraisemblance. L'examen limité donne une assurance modérée exprimée sous forme négative. L'audit contractuel, le plus étendu, donne une assurance raisonnable et une opinion, comme l'audit légal mais sans mandat légal.",
-   "src": "Référentiel normatif de l'Ordre des experts-comptables (NP 2300, NP 2400, NP 2500)",
+   "src": "Référentiel normatif de l'Ordre des experts-comptables (missions de présentation, d'examen limité et d'audit contractuel)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -396,7 +396,7 @@
    "unit": "€",
    "tol": 1,
    "why": "Amortissements cumulés fin N+2 : 120 000 / 10 × 3 = 36 000. VNC au 1er janvier N+3 : 120 000 − 36 000 = 84 000. Changement d'estimation (PCG art. 122-3) : application prospective, la VNC est répartie sur la nouvelle durée résiduelle : 84 000 / 4 = 21 000 € par an. On ne recalcule pas les exercices passés (ce serait un traitement rétrospectif réservé aux changements de méthode).",
-   "src": "PCG art. 122-3 et 214-13",
+   "src": "PCG art. 122-3 (changement d'estimation) ; PCG art. 214-1 s. (plan d'amortissement)",
    "fiab": "stable",
    "niveau": 2
   },

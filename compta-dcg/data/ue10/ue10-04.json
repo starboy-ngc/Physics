@@ -56,7 +56,7 @@
   },
   {
    "h": "Perte à terminaison et suivi du contrat",
-   "html": "<p>Lorsqu'il devient probable que le coût total du contrat dépassera le prix, une <b>perte à terminaison</b> doit être provisionnée dès qu'elle est connue, quelle que soit la méthode (PCG art. 622-4), en vertu du principe de prudence :</p><ul><li>À l'<b>avancement</b>, la part de perte correspondant aux travaux réalisés est déjà passée par le résultat (produits à l'avancement inférieurs aux coûts engagés) ; on provisionne la <b>fraction restante</b> : perte totale × (1 − % d'avancement), au crédit de <b>1516 Provisions pour pertes sur contrats</b> par le débit de 6815.</li><li>À l'<b>achèvement</b>, aucun résultat n'ayant été constaté, la perte probable est couverte en priorité par une <b>dépréciation des en-cours</b> à hauteur des coûts engagés, le complément étant provisionné en 1516.</li></ul><p>La provision est ajustée à chaque clôture et reprise à la livraison. En annexe figurent la méthode retenue, les hypothèses d'avancement et l'incidence d'un changement d'estimation. Le passage de l'achèvement à l'avancement est un changement de méthode comptable (effet sur le report à nouveau).</p><p>Exemple : contrat <span class=\"mono\">900 000</span>, coût total révisé <span class=\"mono\">1 000 000</span>, avancement 30 % à la clôture. Perte totale 100 000 ; déjà constatée à l'avancement 30 000 ; provision <span class=\"mono\">70 000</span>.</p>",
+   "html": "<p>Lorsqu'il devient probable que le coût total du contrat dépassera le prix, une <b>perte à terminaison</b> doit être provisionnée dès qu'elle est connue, quelle que soit la méthode (PCG art. 622-1 s.), en vertu du principe de prudence :</p><ul><li>À l'<b>avancement</b>, la part de perte correspondant aux travaux réalisés est déjà passée par le résultat (produits à l'avancement inférieurs aux coûts engagés) ; on provisionne la <b>fraction restante</b> : perte totale × (1 − % d'avancement), au crédit de <b>1516 Provisions pour pertes sur contrats</b> par le débit de 6815.</li><li>À l'<b>achèvement</b>, aucun résultat n'ayant été constaté, la perte probable est couverte en priorité par une <b>dépréciation des en-cours</b> à hauteur des coûts engagés, le complément étant provisionné en 1516.</li></ul><p>La provision est ajustée à chaque clôture et reprise à la livraison. En annexe figurent la méthode retenue, les hypothèses d'avancement et l'incidence d'un changement d'estimation. Le passage de l'achèvement à l'avancement est un changement de méthode comptable (effet sur le report à nouveau).</p><p>Exemple : contrat <span class=\"mono\">900 000</span>, coût total révisé <span class=\"mono\">1 000 000</span>, avancement 30 % à la clôture. Perte totale 100 000 ; déjà constatée à l'avancement 30 000 ; provision <span class=\"mono\">70 000</span>.</p>",
    "entry": [
     {
      "a": "6815",
@@ -135,15 +135,15 @@
    "note": "Option d'incorporation des coûts d'emprunt"
   },
   {
-   "ref": "PCG art. 214-6 et 214-16 s.",
+   "ref": "PCG art. 214-6 et 214-15 s.",
    "note": "Valeur actuelle et dépréciation des stocks"
   },
   {
-   "ref": "PCG art. 622-1 à 622-7",
+   "ref": "PCG art. 622-1 s.",
    "note": "Contrats à long terme : achèvement, avancement (méthode préférentielle), perte à terminaison"
   },
   {
-   "ref": "PCG art. 420-1 à 420-8",
+   "ref": "PCG art. 420-1 s. (dont 420-5 à 420-7)",
    "note": "Opérations en devises, écarts de conversion 476/477, provision pour pertes de change"
   },
   {
@@ -292,7 +292,7 @@
     ]
    ],
    "why": "On annule le stock initial (débit 6037, crédit 37 pour 30 000) puis on constate le stock final (débit 37, crédit 6037 pour 42 000). Le solde de 6037 est créditeur de 12 000 : stockage, qui vient diminuer les achats consommés. L'écriture nette pour 12 000 est admise. Les comptes 6031/31 concernent les matières premières, 713 les produits fabriqués, et 607 enregistre les achats, pas leur variation.",
-   "src": "PCG art. 946-60 (fonctionnement du compte 603)",
+   "src": "PCG, titre IX (fonctionnement du compte 603)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -307,7 +307,7 @@
    ],
    "a": 1,
    "why": "Le compte 713 est crédité du stock final et débité du stock initial : un solde créditeur traduit une augmentation du stock de produits (production stockée), produit qui s'ajoute à la production vendue. Un solde débiteur signalerait un déstockage. Les ventes passent par 701 et la dépréciation par 6817/39.",
-   "src": "PCG art. 947-71 (fonctionnement du compte 713)",
+   "src": "PCG, titre IX (fonctionnement du compte 713)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -337,8 +337,8 @@
      }
     ]
    ],
-   "why": "Valeur nette de réalisation = 64 000 − 7 000 = 57 000 < coût 60 000 : dépréciation de 3 000 € (PCG art. 214-6 et 214-16). Dotation aux dépréciations des actifs circulants 6817, compte de dépréciation 395 (produits finis) ; 397 vise les marchandises. Le compte 355 (stock de produits) n'est pas réduit directement : la dépréciation est un compte distinct. 6815 concerne les provisions, 7817 une reprise.",
-   "src": "PCG art. 214-6 et 214-16",
+   "why": "Valeur nette de réalisation = 64 000 − 7 000 = 57 000 < coût 60 000 : dépréciation de 3 000 € (PCG art. 214-6 et 214-15 s.). Dotation aux dépréciations des actifs circulants 6817, compte de dépréciation 395 (produits finis) ; 397 vise les marchandises. Le compte 355 (stock de produits) n'est pas réduit directement : la dépréciation est un compte distinct. 6815 concerne les provisions, 7817 une reprise.",
+   "src": "PCG art. 214-6 ; PCG, dépréciation des stocks (art. 214-15 s.)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -353,7 +353,7 @@
    ],
    "a": 1,
    "why": "La valeur actuelle d'une matière s'apprécie au travers du produit fini : si celui-ci se vend au-dessus de son coût de production, la matière conserve son utilité et aucune dépréciation n'est constatée malgré la baisse des cours (logique d'IAS 2 reprise par la doctrine française). Une dépréciation interviendrait si la baisse rendait les produits finis déficitaires. Les matières peuvent évidemment se déprécier dans d'autres cas (détérioration, obsolescence).",
-   "src": "PCG art. 214-6 ; IAS 2, § 32",
+   "src": "PCG, dépréciation des stocks (art. 214-15 s.) ; IAS 2, § 32",
    "fiab": "stable",
    "niveau": 3
   },
@@ -491,7 +491,7 @@
    ],
    "a": 1,
    "why": "L'acompte reçu est une dette envers le client tant que la prestation n'est pas réalisée : 4191 Clients – avances et acomptes reçus sur commandes, au passif. Le compte 4181 enregistre au contraire une créance pour prestations réalisées non facturées ; 704 ne sera crédité qu'au rythme de l'avancement ou à l'achèvement ; 4091 concerne les acomptes versés par l'entreprise à ses fournisseurs.",
-   "src": "PCG art. 944-41 (fonctionnement des comptes 418 et 419)",
+   "src": "PCG, titre IX (fonctionnement des comptes 418 et 419)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -506,7 +506,7 @@
    ],
    "a": 1,
    "why": "À l'achèvement, aucun produit n'est reconnu avant la livraison ; les charges engagées sont neutralisées par la constatation d'un stock d'en-cours (7133/7134) évalué à leur coût de production, ce qui aboutit à un résultat nul sur le contrat (hors perte à terminaison). Le chiffre d'affaires n'apparaît qu'à la livraison et il ne s'agit pas d'une immobilisation puisque le bien est destiné au client.",
-   "src": "PCG art. 622-3",
+   "src": "PCG art. 622-2",
    "fiab": "stable",
    "niveau": 2
   },
@@ -516,8 +516,8 @@
    "a": 70000,
    "unit": "€",
    "tol": 1,
-   "why": "Perte totale à terminaison = 1 000 000 − 900 000 = 100 000. À l'avancement, 30 % de cette perte est déjà passée par le résultat (produits 270 000 contre coûts 300 000). La fraction restante, 100 000 × 70 % = 70 000 €, est provisionnée en 1516 par le débit de 6815 (PCG art. 622-4). Provisionner 100 000 compterait deux fois la perte déjà constatée.",
-   "src": "PCG art. 622-4",
+   "why": "Perte totale à terminaison = 1 000 000 − 900 000 = 100 000. À l'avancement, 30 % de cette perte est déjà passée par le résultat (produits 270 000 contre coûts 300 000). La fraction restante, 100 000 × 70 % = 70 000 €, est provisionnée en 1516 par le débit de 6815 (PCG art. 622-1 s.). Provisionner 100 000 compterait deux fois la perte déjà constatée.",
+   "src": "PCG art. 622-1 s. (perte à terminaison)",
    "fiab": "stable",
    "niveau": 3
   },
@@ -529,15 +529,15 @@
     "Avec la méthode à l'achèvement, la perte probable est couverte d'abord par une dépréciation des en-cours, puis par une provision pour le complément",
     "Elle n'est comptabilisée qu'à la livraison du bien",
     "Avec la méthode à l'avancement, seule la part de perte non encore constatée par le résultat est provisionnée",
-    "Elle est enregistrée en 1572"
+    "Elle est enregistrée en 1525 Provisions pour gros entretien ou grandes révisions"
    ],
    "a": [
     0,
     1,
     3
    ],
-   "why": "PCG art. 622-4 : la perte globale probable est provisionnée dès qu'elle est connue (prudence). À l'achèvement, la dépréciation des en-cours absorbe la perte à hauteur des coûts engagés et la provision 1516 couvre le reste ; à l'avancement, la provision 1516 ne porte que sur la fraction restante. Attendre la livraison violerait la prudence ; 1572 est la provision pour gros entretien.",
-   "src": "PCG art. 622-4",
+   "why": "PCG art. 622-1 s. : la perte globale probable est provisionnée dès qu'elle est connue (prudence). À l'achèvement, la dépréciation des en-cours absorbe la perte à hauteur des coûts engagés et la provision 1516 couvre le reste ; à l'avancement, la provision 1516 ne porte que sur la fraction restante. Attendre la livraison violerait la prudence ; 1525 est la provision pour gros entretien, sans rapport avec un contrat.",
+   "src": "PCG art. 622-1 s. (perte à terminaison)",
    "fiab": "stable",
    "niveau": 3
   },
@@ -605,7 +605,7 @@
    "unit": "€",
    "tol": 0.5,
    "why": "Montant encaissé : 10 000 × 0,89 = 8 900 €. Valeur d'origine de la créance : 9 200 €. Perte de change réalisée = 9 200 − 8 900 = 300 € en 666. La provision de 200 constituée à la clôture (cours 0,90) est reprise en 7865, de sorte que le résultat de N+1 ne supporte que 100 € nets, correspondant à la baisse du cours entre la clôture et l'encaissement.",
-   "src": "PCG art. 420-4",
+   "src": "PCG art. 420-1 s.",
    "fiab": "stable",
    "niveau": 2
   },
@@ -619,8 +619,8 @@
     "Crédit 766 Gains de change pour 500, débit 512"
    ],
    "a": 1,
-   "why": "Les comptes 476/477 et la provision 1515 ne concernent que les créances et dettes. Les disponibilités en devises sont converties au cours de clôture et l'écart est enregistré immédiatement en résultat : 666 en cas de perte (ici 46 000 − 45 500 = 500), 766 en cas de gain (PCG art. 420-8). Ne pas réévaluer violerait l'image fidèle.",
-   "src": "PCG art. 420-8",
+   "why": "Les comptes 476/477 et la provision 1515 ne concernent que les créances et dettes. Les disponibilités en devises sont converties au cours de clôture et l'écart est enregistré immédiatement en résultat : 666 en cas de perte (ici 46 000 − 45 500 = 500), 766 en cas de gain (PCG art. 420-1 s.). Ne pas réévaluer violerait l'image fidèle.",
+   "src": "PCG art. 420-1 s.",
    "fiab": "stable",
    "niveau": 3
   },
