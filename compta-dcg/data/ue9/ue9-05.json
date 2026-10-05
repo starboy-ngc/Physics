@@ -78,7 +78,7 @@
   },
   {
    "h": "Mise au rebut, sinistre et immobilisations incorporelles",
-   "html": "<p><b>Mise au rebut</b> : le bien est détruit ou abandonné sans contrepartie. On passe la dotation complémentaire, puis la sortie (débit 28xx, débit 657 pour la VNC, crédit 2xx). Aucun produit : la VNC est entièrement perdue. <b>Sinistre</b> : même sortie, et l'indemnité versée par l'assureur est un produit en <code>7587</code> Indemnités d'assurance (avant 2025 : transfert de charges 791, supprimé).</p><p><b>Immobilisations incorporelles</b> (compte 20) : <code>205</code> logiciels et <b>brevets</b> acquis (amortissables sur leur durée d'utilité, souvent 1 à 5 ans pour un logiciel), <code>207</code> <b>fonds commercial</b> (présumé à durée d'utilité non limitée, donc non amorti mais soumis chaque année à un test de dépréciation ; les petites entreprises peuvent l'amortir sur 10 ans), <code>201</code> frais d'établissement (option). Leur amortissement passe par <code>6811</code> et <code>280x</code>, et leur cession par 657/757 comme pour les corporelles.</p><p>Un logiciel <b>créé</b> en interne pour les besoins de l'entreprise peut être immobilisé à son coût de production via <code>721</code> Production immobilisée, immobilisations incorporelles, sous conditions strictes étudiées en UE10 (art. 611-1 s.).</p>"
+   "html": "<p><b>Mise au rebut</b> : le bien est détruit ou abandonné sans contrepartie. On passe la dotation complémentaire, puis la sortie (débit 28xx, débit 657 pour la VNC, crédit 2xx). Aucun produit : la VNC est entièrement perdue. <b>Sinistre</b> : même sortie, et l'indemnité versée par l'assureur est un produit en <code>7587</code> Indemnités d'assurance (avant 2025 : transfert de charges 791, supprimé).</p><p><b>Immobilisations incorporelles</b> (compte 20) : <code>205</code> logiciels et <b>brevets</b> acquis (amortissables sur leur durée d'utilité, souvent 1 à 5 ans pour un logiciel), <code>207</code> <b>fonds commercial</b> (présumé à durée d'utilité non limitée, donc non amorti mais soumis chaque année à un test de dépréciation ; les petites entreprises peuvent l'amortir sur 10 ans), <code>201</code> frais d'établissement (option). Leur amortissement passe par <code>6811</code> et <code>280x</code>, et leur cession par 657/757 comme pour les corporelles.</p><p>Un logiciel <b>créé</b> en interne pour les besoins de l'entreprise peut être immobilisé à son coût de production via <code>721</code> Production immobilisée, immobilisations incorporelles, sous conditions strictes étudiées en UE10 (PCG, art. 611-1 et s.).</p>"
   },
   {
    "h": "Immobilisations financières de base",
@@ -375,7 +375,7 @@
     "41 500 €"
    ],
    "a": 1,
-   "why": "Le coût d'acquisition comprend le prix d'achat et tous les coûts directement attribuables pour mettre l'actif en état de fonctionner : transport et installation (PCG, art. 213-8). 40 000 + 1 500 + 2 500 = 44 000 €. La formation du personnel est expressément exclue et reste une charge (6228 ou 6333).",
+   "why": "Le coût d'acquisition comprend le prix d'achat et tous les coûts directement attribuables pour mettre l'actif en état de fonctionner : transport et installation (PCG, art. 213-8). 40 000 + 1 500 + 2 500 = 44 000 €. La formation du personnel est expressément exclue et reste une charge de l'exercice (compte 62).",
    "src": "PCG, art. 213-8",
    "fiab": "stable"
   },
@@ -425,7 +425,7 @@
     "1 875 €"
    ],
    "a": 0,
-   "why": "Taux dégressif = 25 % × 1,25 (durée de 3 ou 4 ans) = 31,25 %. En dégressif, le prorata se compte en mois à partir du 1er jour du mois d'acquisition : octobre, novembre, décembre = 3 mois. 36 000 × 31,25 % × 3/12 = 2 812,50 €. 11 250 oublie le prorata ; 2 250 applique le taux linéaire ; 1 875 utiliserait un prorata en jours depuis le 15.",
+   "why": "Taux dégressif = 25 % × 1,25 (durée de 3 ou 4 ans) = 31,25 %. En dégressif, le prorata se compte en mois à partir du 1er jour du mois d'acquisition : octobre, novembre, décembre = 3 mois. 36 000 × 31,25 % × 3/12 = 2 812,50 €. 11 250 oublie le prorata ; 2 250 applique le taux linéaire ; 1 875 ne compterait que deux mois.",
    "src": "CGI, art. 39 A ; ann. II, art. 22",
    "fiab": "stable"
   },
@@ -576,7 +576,7 @@
    ],
    "a": 1,
    "why": "Au début de N+3, il reste 2 années (N+3 et N+4) : taux linéaire sur la durée restante = 1/2 = 50 %, supérieur au taux dégressif de 35 %. On amortit donc la VNC en linéaire : 13 731,25 ÷ 2 = 6 865,63 € (puis 6 865,62 en N+4 pour solder). 4 805,94 serait 35 % de la VNC, 2 746,25 le taux de 20 % sur la VNC.",
-   "src": "CGI, ann. II, art. 23",
+   "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 et s. (amortissement dégressif)",
    "fiab": "stable"
   },
   {

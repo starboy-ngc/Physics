@@ -48,7 +48,7 @@
   },
   {
    "h": "Les impôts et taxes (63)",
-   "html": "<p>Le poste <code>63</code> Impôts, taxes et versements assimilés regroupe les impôts qui sont des <b>charges d'exploitation</b>, à ne pas confondre avec l'impôt sur les bénéfices (<code>695</code>) ni avec la TVA (qui transite par 445 sans jamais être une charge).</p><ul><li><code>631</code> et <code>633</code> : impôts et versements assis sur les <b>rémunérations</b> (taxe sur les salaires, taxe d'apprentissage, participation à la formation professionnelle, versement mobilité).</li><li><code>635</code> : autres impôts directs et indirects : cotisation foncière des entreprises (CFE) et CVAE, taxes foncières (<code>63512</code>), droits d'enregistrement (<code>6354</code>), taxes sur les véhicules de société.</li></ul><p>La contrepartie est l'État : <code>447</code> Autres impôts, taxes et versements assimilés (ou 512 si le paiement est immédiat). Exemple : avis de CFE de <span class=\"mono\">2 300 €</span> reçu en novembre, payable le 15 décembre.</p><p>Les amendes et pénalités (majorations de retard fiscales, amendes de circulation) ne sont pas des impôts : elles vont en <code>6712</code> Pénalités, amendes fiscales et pénales, et ne sont pas déductibles fiscalement.</p>",
+   "html": "<p>Le poste <code>63</code> Impôts, taxes et versements assimilés regroupe les impôts qui sont des <b>charges d'exploitation</b>, à ne pas confondre avec l'impôt sur les bénéfices (<code>695</code>) ni avec la TVA (qui transite par 445 sans jamais être une charge).</p><ul><li><code>631</code> et <code>633</code> : impôts et versements assis sur les <b>rémunérations</b> (taxe sur les salaires, taxe d'apprentissage, participation à la formation professionnelle, versement mobilité).</li><li><code>635</code> : autres impôts directs et indirects : cotisation foncière des entreprises (CFE) et CVAE, taxes foncières (<code>63512</code>), droits d'enregistrement (<code>6354</code>), taxes sur les véhicules de société.</li></ul><p>La contrepartie est l'État : <code>447</code> Autres impôts, taxes et versements assimilés (ou 512 si le paiement est immédiat). Exemple : avis de CFE de <span class=\"mono\">2 300 €</span> reçu en novembre, payable le 15 décembre.</p><p>Les amendes et pénalités (majorations de retard fiscales, amendes de circulation) ne sont pas des impôts : elles vont, depuis le PCG 2025, en <code>6582</code> Pénalités, amendes fiscales et pénales (subdivision du compte 658, dans les charges de gestion courante ; avant 2025 : 6712, charge exceptionnelle, compte supprimé par le règlement ANC n° 2022-06), et ne sont pas déductibles fiscalement (CGI, art. 39, 2).</p>",
    "entry": [
     {
      "a": "635",
@@ -540,15 +540,15 @@
   {
    "type": "qcm",
    "niveau": 2,
-   "q": "La société Ambre paie une amende de stationnement de 135 € pour un véhicule de livraison. Imputation :",
+   "q": "La société Ambre paie une amende de stationnement de 135 € pour un véhicule de livraison. Imputation sous le PCG 2025 :",
    "opts": [
     "635 Autres impôts, taxes et versements assimilés",
-    "6712 Pénalités, amendes fiscales et pénales",
+    "6582 Pénalités, amendes fiscales et pénales",
     "625 Déplacements, missions et réceptions",
     "6616 Intérêts bancaires"
    ],
    "a": 1,
-   "why": "Une amende n'est pas un impôt mais une sanction : elle relève de 6712, dans les charges exceptionnelles, et n'est pas déductible fiscalement (CGI, art. 39, 2). Le poste 63 est réservé aux impôts et taxes proprement dits, 625 aux frais de déplacement et 6616 aux intérêts.",
+   "why": "Une amende n'est pas un impôt mais une sanction. Depuis le PCG 2025 (règlement ANC n° 2022-06), elle relève de 6582 Pénalités, amendes fiscales et pénales, subdivision du compte 658 dans les charges de gestion courante ; l'ancien compte exceptionnel 6712 est supprimé. Elle n'est pas déductible fiscalement (CGI, art. 39, 2). Le poste 63 est réservé aux impôts et taxes proprement dits, 625 aux frais de déplacement et 6616 aux intérêts.",
    "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 39, 2",
    "fiab": "stable"
   },

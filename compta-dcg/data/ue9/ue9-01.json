@@ -29,7 +29,7 @@
   },
   {
    "h": "Les comptes annuels : un tout indissociable",
-   "html": "<p>Le Code de commerce impose à tout commerçant d'établir à la clôture des <b>comptes annuels</b> composés du <b>bilan</b>, du <b>compte de résultat</b> et d'une <b>annexe</b> qui les complète et les commente ; ils <b>forment un tout indissociable</b> (C. com., art. L. 123-12 et L. 123-13). Les comptes doivent être <b>réguliers, sincères</b> et donner une <b>image fidèle</b> du patrimoine, de la situation financière et du résultat (art. L. 123-14 ; PCG art. 121-1 à 121-3).</p><p>Le PCG 2025 propose des <b>modèles</b> de bilan et de compte de résultat (Livre IV du règlement ANC n° 2014-03 modifié). Le bilan se présente en tableau (actif à gauche, passif à droite), le compte de résultat en tableau (charges à gauche, produits à droite) ou en liste. Les petites entreprises peuvent adopter une présentation simplifiée et les micro-entreprises sont dispensées d'annexe (art. L. 123-16 et L. 123-16-1).</p><p><b>Lien DSCG.</b> Le diagnostic financier (UE6 du DCG, puis DSCG UE2) repose entièrement sur la lecture de ces deux documents : bilan fonctionnel, soldes intermédiaires de gestion, capacité d'autofinancement. Savoir où va chaque élément est donc la base de tout.</p>"
+   "html": "<p>Le Code de commerce impose à tout commerçant d'établir à la clôture des <b>comptes annuels</b> composés du <b>bilan</b>, du <b>compte de résultat</b> et d'une <b>annexe</b> qui les complète et les commente ; ils <b>forment un tout indissociable</b> (C. com., art. L. 123-12 et L. 123-13). Les comptes doivent être <b>réguliers, sincères</b> et donner une <b>image fidèle</b> du patrimoine, de la situation financière et du résultat (art. L. 123-14 ; PCG, art. 121-1 et s.).</p><p>Le PCG 2025 (règlement ANC n° 2014-03 modifié par le règlement n° 2022-06) fixe des <b>modèles</b> de bilan et de compte de résultat. Le bilan se présente en tableau (actif à gauche, passif à droite) ; le compte de résultat oppose charges et produits niveau par niveau (exploitation, financier, exceptionnel), que l'on retienne une présentation en tableau ou en liste. Les petites entreprises peuvent adopter une présentation simplifiée et les micro-entreprises sont dispensées d'annexe (art. L. 123-16 et L. 123-16-1).</p><p><b>Lien DSCG.</b> Le diagnostic financier (UE6 du DCG, puis DSCG UE2) repose entièrement sur la lecture de ces deux documents : bilan fonctionnel, soldes intermédiaires de gestion, capacité d'autofinancement. Savoir où va chaque élément est donc la base de tout.</p>"
   }
  ],
  "sources": [
@@ -50,7 +50,7 @@
    "note": "Définitions de l'actif et du passif"
   },
   {
-   "ref": "PCG 2025, art. 1121-1 (plan de comptes) et Livre IV (modèles de comptes annuels)",
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes) et modèles de comptes annuels (règlement ANC n° 2022-06)",
    "note": "Numéros de comptes et modèles de bilan et de compte de résultat issus du règlement ANC n° 2022-06"
   },
   {
@@ -71,7 +71,7 @@
    ],
    "a": 0,
    "why": "Les ressources (passif) financent les emplois (actif) : les deux colonnes sont donc toujours égales. Produits et charges ne sont égaux que si le résultat est nul, et capitaux propres et dettes n'ont aucune raison d'être égaux : ce sont les deux composantes du passif, dont la somme égale l'actif.",
-   "src": "C. com., art. L. 123-13 ; PCG 2025, Livre IV (modèle de bilan)",
+   "src": "C. com., art. L. 123-13 ; PCG 2025, modèle de bilan (règlement ANC n° 2022-06)",
    "fiab": "stable"
   },
   {
@@ -134,7 +134,7 @@
     ]
    ],
    "why": "Actif immobilisé = biens durables. Actif circulant = stocks, créances, disponibilités. Capitaux propres = capital, réserves, résultat. Dettes = tout ce que l'entreprise doit à des tiers (fournisseurs, banque, État). Le modèle de bilan du PCG suit exactement cet ordre.",
-   "src": "PCG 2025, Livre IV (modèle de bilan)",
+   "src": "PCG 2025, modèle de bilan (règlement ANC n° 2022-06)",
    "fiab": "stable"
   },
   {
@@ -281,7 +281,7 @@
    ],
    "a": 1,
    "why": "La perte (compte 129) est inscrite dans les capitaux propres avec un signe négatif : elle appauvrit les associés. Elle n'est ni une créance ni une dette envers un tiers. Elle ne disparaît pas non plus : l'assemblée l'affectera ensuite en report à nouveau débiteur (119) ou l'imputera sur les réserves.",
-   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG 2025, Livre IV (modèle de bilan)",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG 2025, modèle de bilan (règlement ANC n° 2022-06)",
    "fiab": "stable"
   },
   {
@@ -296,7 +296,7 @@
    ],
    "a": 1,
    "why": "Le produit a été enregistré lors de la facturation (vente). L'encaissement ne fait que transformer une créance (411) en disponibilités (512) : c'est un mouvement entre deux postes de l'actif, sans effet sur le résultat. Confondre produit et encaissement est l'erreur la plus fréquente des débutants.",
-   "src": "C. com., art. L. 123-20 (rattachement des produits à l'exercice)",
+   "src": "C. com., art. L. 123-12 (comptabilité d'engagement) ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
@@ -407,7 +407,7 @@
    ],
    "a": 1,
    "why": "Capitaux propres = Actif − Dettes : c'est la part du patrimoine qui revient aux associés, d'où le nom de « situation nette ». Ce n'est pas de la trésorerie (l'argent peut être investi en machines ou en stocks), ni la valeur de marché (qui dépend des perspectives), et le capital social n'en est qu'une composante aux côtés des réserves et du résultat.",
-   "src": "PCG 2025, Livre IV (modèle de bilan, rubrique capitaux propres)",
+   "src": "PCG 2025, modèle de bilan, rubrique capitaux propres (règlement ANC n° 2022-06)",
    "fiab": "stable"
   },
   {
@@ -453,7 +453,7 @@
     4
    ],
    "why": "Le compte de résultat est bâti sur trois niveaux (exploitation, financier, exceptionnel), il contient les dotations (charges calculées) et son solde, le résultat, est reporté au passif du bilan. En revanche il couvre une période (le « film »), pas une date, et depuis 2025 les cessions d'immobilisations corporelles et incorporelles (657/757) sont dans l'exploitation, pas dans l'exceptionnel.",
-   "src": "Règlement ANC n° 2022-06 ; PCG 2025, Livre IV (modèle de compte de résultat)",
+   "src": "Règlement ANC n° 2022-06 ; PCG 2025, modèle de compte de résultat (règlement ANC n° 2022-06)",
    "fiab": "stable"
   },
   {
@@ -468,7 +468,7 @@
    ],
    "a": 0,
    "why": "Capitaux propres = 300 000 − 210 000 = 90 000. Le capital en représente 50 000, donc réserves + résultat = 40 000 €. On ne peut pas dire si l'exercice est bénéficiaire (les 40 000 peuvent être des réserves anciennes avec une petite perte), les capitaux propres ne se limitent pas au capital, et rien n'indique la répartition de l'actif entre immobilisé et circulant.",
-   "src": "PCG 2025, Livre IV (modèle de bilan)",
+   "src": "PCG 2025, modèle de bilan (règlement ANC n° 2022-06)",
    "fiab": "stable"
   },
   {

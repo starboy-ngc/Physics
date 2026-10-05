@@ -103,7 +103,7 @@
   },
   {
    "h": "Provisions pour risques et charges",
-   "html": "<p>Une <b>provision</b> est un <b>passif</b> dont l'échéance ou le montant n'est pas fixé de façon précise (PCG, art. 321-5). Elle est comptabilisée lorsque trois conditions sont réunies à la clôture (art. 322-1) : une <b>obligation</b> envers un tiers existe, elle entraînera <b>probablement une sortie de ressources</b> sans contrepartie équivalente, et son montant peut être <b>estimé de façon fiable</b>. Litige avec un salarié ou un client, garantie donnée aux clients, amende probable, perte de change latente.</p><p>Comptes : <code>1511</code> litiges, <code>1512</code> garanties données aux clients, <code>1514</code> amendes et pénalités, <code>1515</code> pertes de change, <code>152</code> provisions pour charges (dont <code>1521</code> pensions). Dotation : débit <code>6815</code> (exploitation), <code>6865</code> (financier) ou <code>6875</code> (exceptionnel), crédit 15. Reprise quand le risque disparaît ou se réalise : débit 15, crédit <code>7815</code>, <code>7865</code> ou <code>7875</code>.</p><div class=\"note\"><b>Dépréciation ≠ provision.</b> La dépréciation corrige la valeur d'un <b>actif</b> (29, 39, 49, 59). La provision est un <b>passif</b> (15). Les deux sont des charges calculées, réversibles par reprise, et obéissent au même principe de prudence.</div><p>Quand le litige se dénoue (paiement de 4 800 au salarié), on enregistre la charge réelle (débit 6xx, crédit 512) et l'on reprend la provision devenue sans objet (débit 1511, crédit 7815).</p>",
+   "html": "<p>Une <b>provision</b> est un <b>passif</b> dont l'échéance ou le montant n'est pas fixé de façon précise (PCG, art. 321-1 et s.). Elle est comptabilisée lorsque trois conditions sont réunies à la clôture (art. 322-1) : une <b>obligation</b> envers un tiers existe, elle entraînera <b>probablement une sortie de ressources</b> sans contrepartie équivalente, et son montant peut être <b>estimé de façon fiable</b>. Litige avec un salarié ou un client, garantie donnée aux clients, amende probable, perte de change latente.</p><p>Comptes : <code>1511</code> litiges, <code>1512</code> garanties données aux clients, <code>1514</code> amendes et pénalités, <code>1515</code> pertes de change, <code>152</code> provisions pour charges (dont <code>1521</code> pensions). Dotation : débit <code>6815</code> (exploitation), <code>6865</code> (financier) ou <code>6875</code> (exceptionnel), crédit 15. Reprise quand le risque disparaît ou se réalise : débit 15, crédit <code>7815</code>, <code>7865</code> ou <code>7875</code>.</p><div class=\"note\"><b>Dépréciation ≠ provision.</b> La dépréciation corrige la valeur d'un <b>actif</b> (29, 39, 49, 59). La provision est un <b>passif</b> (15). Les deux sont des charges calculées, réversibles par reprise, et obéissent au même principe de prudence.</div><p>Quand le litige se dénoue (paiement de 4 800 au salarié), on enregistre la charge réelle (débit 6xx, crédit 512) et l'on reprend la provision devenue sans objet (débit 1511, crédit 7815).</p>",
    "entry": [
     {
      "a": "6815",
@@ -129,7 +129,7 @@
    "note": "Définition de la dépréciation, test de dépréciation, dépréciation des stocks"
   },
   {
-   "ref": "PCG, art. 321-5 et 322-1",
+   "ref": "PCG, art. 321-1 et s. et 322-1",
    "note": "Définition et conditions de comptabilisation des provisions"
   },
   {
@@ -314,8 +314,8 @@
     "La dépréciation est définitive, la provision est probable"
    ],
    "a": 1,
-   "why": "Dépréciation = correction en moins d'un élément d'actif (comptes 29, 39, 49, 59 ; PCG art. 214-5). Provision = passif dont l'échéance ou le montant est incertain (classe 15 ; art. 321-5). Les deux sont des charges calculées, réversibles par reprise ; aucune n'est définitive.",
-   "src": "PCG, art. 214-5 et 321-5",
+   "why": "Dépréciation = correction en moins d'un élément d'actif (comptes 29, 39, 49, 59 ; PCG art. 214-5). Provision = passif dont l'échéance ou le montant est incertain (classe 15 ; art. 321-1 et s.). Les deux sont des charges calculées, réversibles par reprise ; aucune n'est définitive.",
+   "src": "PCG, art. 214-5 et 321-1 et s.",
    "fiab": "stable"
   },
   {
@@ -490,7 +490,7 @@
     2
    ],
    "why": "L'article 322-1 du PCG pose trois conditions : obligation à la clôture, sortie probable de ressources, estimation fiable. Si la date et le montant étaient connus avec précision, ce serait une dette (art. 321-4), pas une provision ; et une facture reçue donne lieu à une charge à payer, non à une provision.",
-   "src": "PCG, art. 321-4, 321-5 et 322-1",
+   "src": "PCG, art. 321-1 et s. et 322-1",
    "fiab": "stable"
   },
   {
