@@ -1,0 +1,546 @@
+{
+ "id": "ue2-03",
+ "ue": "UE2",
+ "ordre": 3,
+ "title": "La SA et la SAS",
+ "resume": "Les deux sociétés par actions : la SA, cadre rigide et hiérarchisé (conseil, assemblées, quorums), et la SAS, cadre souple organisé par les statuts.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "La SA : constitution et capital",
+   "html": "<p>La <b>société anonyme</b> (C. com., art. L. 225-1 et s.) est la société par actions des grandes entreprises et des sociétés cotées. Règles de constitution :</p><ul><li><b>Capital minimum</b> : <span class=\"mono\">37 000 €</span> (L. 224-2), divisé en actions ; aucun maximum.</li><li><b>Actionnaires</b> : au moins <b>deux</b> ; au moins <b>sept</b> si les actions sont admises sur un marché réglementé ou un système multilatéral de négociation (L. 225-1). Pas de maximum.</li><li><b>Apports en numéraire</b> : libérés d'au moins la <b>moitié</b> à la souscription, le solde dans les <b>cinq ans</b> de l'immatriculation (L. 225-3).</li><li><b>Apports en nature</b> : évaluation obligatoire par un <b>commissaire aux apports</b> désigné par le président du tribunal de commerce ; aucune dispense possible dans la SA.</li><li><b>Apports en industrie</b> : <b>interdits</b> (L. 225-3).</li></ul><p>La SA est la seule forme, avec la SCA, à pouvoir procéder à une <b>offre au public</b> de titres financiers et à être cotée. Les actions sont <b>négociables</b> : leur cession est libre sauf clause d'agrément statutaire (impossible dans les sociétés cotées), et s'opère par virement de compte à compte. Les cessions d'actions supportent un droit d'enregistrement de <span class=\"mono\">0,1 %</span> (CGI, art. 726).</p><p>Depuis la loi PACTE de 2019, le <b>commissaire aux comptes</b> n'est plus obligatoire dans toute SA : seules celles qui dépassent deux des trois seuils (5 M€ de bilan, 10 M€ de CA, 50 salariés pour les exercices ouverts depuis 2024), ou qui sont cotées, doivent en nommer un.</p>"
+  },
+  {
+   "h": "La SA moniste : conseil d'administration et direction générale",
+   "html": "<p><b>Conseil d'administration</b> (L. 225-17 et s.) : <b>3 à 18</b> membres (24 pendant trois ans après une fusion), personnes physiques ou morales ; la personne morale désigne un <b>représentant permanent</b> soumis aux mêmes responsabilités. Nommés par les statuts puis par l'<b>AGO</b> pour six ans au plus, <b>révocables ad nutum</b>. Limite d'âge : sauf clause statutaire, pas plus d'un tiers des administrateurs de plus de <b>70 ans</b> (L. 225-19). Une personne physique ne peut cumuler plus de <b>cinq</b> mandats d'administrateur de SA (L. 225-21). Rémunération : somme fixe annuelle votée par l'AGO et répartie par le conseil. Les sociétés cotées et les grandes sociétés respectent une proportion d'au moins <b>40 %</b> de chaque sexe (L. 225-18-1).</p><p>Le conseil fixe les orientations, se saisit de toute question intéressant la bonne marche de la société, arrête les comptes, convoque les assemblées, autorise les conventions réglementées et les cautions, avals et garanties. Il élit un <b>président</b>, personne physique, qui organise ses travaux.</p><p><b>Direction générale</b> (L. 225-51-1) : assumée soit par le président (<b>PDG</b>), soit par un <b>directeur général</b> distinct, personne physique, administrateur ou non. Le DG a les pouvoirs les plus étendus envers les tiers et peut être assisté de <b>cinq DG délégués</b> au plus. Limite d'âge légale par défaut : <b>65 ans</b>. Le DG non président n'est révocable que pour <b>justes motifs</b> (sinon dommages-intérêts) ; le président est révocable ad nutum.</p>"
+  },
+  {
+   "h": "La SA dualiste : directoire et conseil de surveillance",
+   "html": "<p>La formule à <b>directoire</b> (L. 225-57 et s.) sépare la direction et le contrôle.</p><ul><li><b>Directoire</b> : <b>2 à 5</b> membres (<b>7</b> si la société est cotée), obligatoirement personnes physiques, actionnaires ou non ; dans les SA dont le capital est inférieur à <span class=\"mono\">150 000 €</span>, une seule personne peut exercer les fonctions, sous le titre de <b>directeur général unique</b>. Les membres sont nommés par le conseil de surveillance pour une durée statutaire de deux à six ans (quatre ans à défaut), révocables par l'<b>assemblée générale</b> ou, si les statuts le prévoient, par le conseil de surveillance ; sans juste motif, la révocation donne lieu à dommages-intérêts. Le directoire dirige collégialement ; son président représente la société envers les tiers. Limite d'âge par défaut : 65 ans.</li><li><b>Conseil de surveillance</b> : <b>3 à 18</b> membres (personnes physiques ou morales), nommés par l'AGO, révocables ad nutum, qui exercent le <b>contrôle permanent</b> de la gestion du directoire (rapport trimestriel du directoire, vérification des comptes, autorisation des cessions d'immeubles et des cautions). Les membres du conseil de surveillance ne peuvent pas être membres du directoire. Limite d'âge : un tiers au plus de membres de plus de 70 ans.</li></ul><div class=\"note\"><b>Repère.</b> Le conseil d'administration « administre » (il décide et contrôle à la fois) ; le conseil de surveillance « surveille » seulement, la direction appartenant au directoire. La SA peut passer d'une formule à l'autre par simple modification des statuts.</div>"
+  },
+  {
+   "h": "Les conventions dans la SA et la SAS",
+   "html": "<p><b>Conventions réglementées</b> dans la SA (L. 225-38 à L. 225-42) : toute convention entre la société et son DG, un DG délégué, un administrateur, un actionnaire détenant plus de <b>10 %</b> des droits de vote (ou la société le contrôlant), ou conclue par personne interposée, ainsi que les conventions avec une entreprise ayant un dirigeant commun. Procédure : <b>autorisation préalable du conseil d'administration</b> (l'intéressé ne vote pas), information du commissaire aux comptes qui établit un <b>rapport spécial</b>, puis <b>approbation par l'AGO</b> sans participation de l'intéressé. Une convention non autorisée peut être annulée si elle a eu des conséquences dommageables ; une convention autorisée mais non approuvée produit ses effets, les conséquences préjudiciables étant à la charge de l'intéressé.</p><p><b>Conventions interdites</b> (L. 225-43) : emprunts, découverts, cautions et avals consentis par la société aux administrateurs <b>personnes physiques</b>, au DG, aux DG délégués, aux représentants permanents et à leurs proches ; nullité absolue. Les administrateurs personnes morales ne sont pas visés (hors établissements de crédit).</p><p><b>Conventions libres</b> : opérations courantes conclues à des conditions normales.</p><p>Dans la <b>SAS</b> (L. 227-10), le contrôle est <b>a posteriori</b> : le commissaire aux comptes ou, à défaut, le président présente un rapport aux associés, qui statuent ; aucune autorisation préalable n'est requise, et les conventions interdites (L. 227-12) visent les dirigeants personnes physiques. Dans la SASU, les conventions avec l'associé unique sont simplement mentionnées au registre des décisions.</p>"
+  },
+  {
+   "h": "Les assemblées d'actionnaires de la SA",
+   "html": "<p>Chaque action donne droit à une voix au moins ; les statuts peuvent créer un <b>droit de vote double</b> pour les actions nominatives entièrement libérées détenues depuis au moins <b>deux ans</b> par le même actionnaire (L. 225-123) ; dans les sociétés cotées, ce droit de vote double est de plein droit sauf clause contraire (loi Florange de 2014). Depuis la loi Soilihi de 2019, les majorités se calculent sur les <b>voix exprimées</b> : les abstentions et les votes blancs ou nuls ne sont plus comptés comme des votes contre.</p><table><thead><tr><th>Assemblée</th><th>Quorum 1re convocation</th><th>Quorum 2e convocation</th><th>Majorité</th></tr></thead><tbody><tr><td><b>AGO</b> (L. 225-98) : comptes, dividendes, nomination et révocation des administrateurs, nomination du CAC, conventions</td><td>1/5 des actions ayant droit de vote</td><td>Aucun</td><td>Majorité des voix exprimées</td></tr><tr><td><b>AGE</b> (L. 225-96) : modification des statuts, augmentation et réduction de capital, fusion, transformation, dissolution</td><td>1/4</td><td>1/5</td><td>2/3 des voix exprimées</td></tr><tr><td><b>Assemblée spéciale</b> (L. 225-99) : titulaires d'une catégorie d'actions</td><td>1/3</td><td>1/5</td><td>2/3 des voix exprimées</td></tr></tbody></table><p>L'unanimité reste requise pour augmenter les engagements des actionnaires ou changer la nationalité hors UE. Les <b>actions de préférence</b> (L. 228-11) peuvent être assorties de droits particuliers (dividende prioritaire, vote double ou sans droit de vote dans la limite de la moitié du capital). La SA peut émettre des <b>obligations</b>, titres de créance négociables, sur décision du conseil d'administration ou du directoire sauf clause contraire. L'<b>expertise de gestion</b> peut être demandée par des actionnaires détenant au moins <b>5 %</b> du capital, après questions écrites restées sans réponse satisfaisante (L. 225-231).</p>"
+  },
+  {
+   "h": "La SAS : liberté statutaire encadrée",
+   "html": "<p>La <b>société par actions simplifiée</b> (L. 227-1 et s.) emprunte à la SA ses règles sur le capital et les titres, mais laisse les statuts organiser direction et décisions. Points fixes :</p><ul><li><b>Associés</b> : un (SASU) ou plusieurs, personnes physiques ou morales, sans maximum. <b>Capital libre</b>, libération de la <b>moitié</b> du numéraire, solde sous cinq ans. Apports en industrie possibles. Commissaire aux apports obligatoire sauf dispense aux conditions de la SARL (unanimité, 30 000 €, moitié du capital).</li><li><b>Pas d'offre au public</b> de titres financiers (L. 227-2) ; placements privés et financement participatif possibles.</li><li><b>Président obligatoire</b>, personne physique <b>ou morale</b>, représentant la société envers les tiers (L. 227-6) ; les statuts peuvent créer d'autres organes. Les dirigeants sont <b>assimilés salariés</b> (régime général, sans assurance chômage).</li><li><b>Décisions collectives obligatoires</b> (L. 227-9) : opérations sur le capital, fusion, scission, dissolution, transformation, nomination du commissaire aux comptes, approbation des comptes et affectation du résultat. Le reste (nomination du président, siège) peut relever d'un autre organe. Les décisions prises en violation des statuts sont annulables (L. 227-20).</li><li><b>Clauses statutaires</b> : <b>inaliénabilité</b> dix ans au plus (L. 227-13), <b>agrément</b> (L. 227-14), <b>exclusion</b> (L. 227-16), changement de contrôle d'un associé (L. 227-17) ; adoption et modification aux conditions prévues par les statuts (unanimité jusqu'en 2019).</li></ul><p>Commissaire aux comptes : mêmes seuils que la SA ; l'obligation liée au seul contrôle d'une autre société a été supprimée par la loi PACTE.</p>"
+  },
+  {
+   "h": "Comparaison et pièges d'examen",
+   "html": "<table><thead><tr><th>Critère</th><th>SARL</th><th>SA</th><th>SAS</th></tr></thead><tbody><tr><td>Titres</td><td>Parts sociales</td><td>Actions</td><td>Actions</td></tr><tr><td>Capital minimum</td><td>Libre</td><td>37 000 €</td><td>Libre</td></tr><tr><td>Libération numéraire</td><td>1/5</td><td>1/2</td><td>1/2</td></tr><tr><td>Direction</td><td>Gérant(s), personne physique</td><td>CA + DG, ou directoire + CS</td><td>Président (personne physique ou morale), organes libres</td></tr><tr><td>Quorum/majorité</td><td>Loi (ordinaire : plus de la moitié des parts ; extraordinaire : 2/3)</td><td>Loi (AGO 1/5 ; AGE 1/4 puis 1/5, 2/3)</td><td>Statuts, sauf unanimité pour certaines clauses</td></tr><tr><td>Offre au public</td><td>Non</td><td>Oui</td><td>Non</td></tr><tr><td>Statut social du dirigeant</td><td>TNS si majoritaire</td><td>Assimilé salarié</td><td>Assimilé salarié</td></tr><tr><td>Cession à un tiers</td><td>Agrément légal</td><td>Libre sauf clause</td><td>Libre sauf clause</td></tr></tbody></table><div class=\"note\"><b>Pièges fréquents.</b> « Deux tiers des voix exprimées » (SA) n'est pas « deux tiers des parts présentes ou représentées » (SARL). Le quorum d'AGO disparaît sur seconde convocation ; celui d'AGE tombe à 1/5. Le directeur général de SA peut ne pas être administrateur ; le président de SAS peut être une société. La SAS ne peut pas être cotée.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 224-2 et L. 225-1 à L. 225-3",
+   "note": "Capital minimum de 37 000 €, nombre d'actionnaires, libération de la moitié, interdiction des apports en industrie"
+  },
+  {
+   "ref": "C. com., art. L. 225-17 à L. 225-56",
+   "note": "Conseil d'administration (3 à 18 membres, limite d'âge, révocation), président, directeur général et DG délégués"
+  },
+  {
+   "ref": "C. com., art. L. 225-57 à L. 225-93",
+   "note": "Directoire (2 à 5 membres, 7 si cotée, DG unique sous 150 000 €) et conseil de surveillance"
+  },
+  {
+   "ref": "C. com., art. L. 225-38 à L. 225-43",
+   "note": "Conventions réglementées, libres et interdites dans la SA"
+  },
+  {
+   "ref": "C. com., art. L. 225-96 à L. 225-99 et L. 225-123",
+   "note": "Quorums et majorités des AGE, AGO et assemblées spéciales ; droit de vote double"
+  },
+  {
+   "ref": "C. com., art. L. 225-231",
+   "note": "Expertise de gestion : actionnaires détenant au moins 5 % du capital"
+  },
+  {
+   "ref": "C. com., art. L. 227-1 à L. 227-20",
+   "note": "Régime de la SAS : président, décisions collectives (L. 227-9), clauses statutaires, conventions"
+  },
+  {
+   "ref": "C. com., art. L. 821-40 et D. 221-5 (décret n° 2024-152 du 28 février 2024)",
+   "note": "Désignation du commissaire aux comptes : seuils 5 M€ / 10 M€ / 50 salariés, deux sur trois"
+  },
+  {
+   "ref": "CGI, art. 726",
+   "note": "Droit d'enregistrement de 0,1 % sur les cessions d'actions"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quel est le capital social minimum d'une société anonyme non cotée ?",
+   "opts": [
+    "18 500 €",
+    "37 000 €",
+    "225 000 €",
+    "Aucun minimum"
+   ],
+   "a": 1,
+   "why": "L'article L. 224-2 fixe le capital minimum de la SA à 37 000 €, qu'elle soit cotée ou non ; le seuil de 225 000 € pour les sociétés faisant appel public à l'épargne a été supprimé en 2009. SARL et SAS n'ont pas de minimum, 18 500 € correspond à l'ancien seuil des sociétés coopératives.",
+   "src": "C. com., art. L. 224-2",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Combien d'actionnaires au minimum faut-il pour constituer une SA dont les actions ne sont pas admises aux négociations sur un marché ?",
+   "opts": [
+    "1",
+    "2",
+    "7",
+    "10"
+   ],
+   "a": 1,
+   "why": "Depuis l'ordonnance n° 2015-1127 du 10 septembre 2015, la SA non cotée peut être constituée par deux actionnaires (L. 225-1). Le minimum de sept subsiste uniquement pour les sociétés dont les titres sont admis sur un marché réglementé ou un système multilatéral de négociation. La SA ne peut pas être unipersonnelle, contrairement à la SAS et à la SARL.",
+   "src": "C. com., art. L. 225-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une SA est constituée avec un capital de 100 000 € entièrement souscrit en numéraire. Quel montant minimal (en €) doit être libéré lors de la souscription ?",
+   "a": 50000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Dans la SA, les actions de numéraire sont libérées d'au moins la moitié de leur valeur nominale à la souscription (L. 225-3) : 100 000 × 1/2 = 50 000 €. Le solde est appelé par le conseil d'administration ou le directoire dans les cinq ans de l'immatriculation. La même règle s'applique à la SAS ; la SARL n'exige qu'un cinquième.",
+   "src": "C. com., art. L. 225-3",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un ingénieur souhaite entrer dans une SA en apportant exclusivement son savoir-faire technique. Est-ce possible ?",
+   "opts": [
+    "Oui, s'il est évalué par un commissaire aux apports",
+    "Non, les apports en industrie sont interdits dans la SA",
+    "Oui, si les statuts fixent les modalités de souscription",
+    "Oui, mais sans droit de vote"
+   ],
+   "a": 1,
+   "why": "L'article L. 225-3 interdit les apports en industrie dans la société anonyme, car le capital doit être constitué d'éléments saisissables et la SA peut faire appel au public. La SARL et la SAS les admettent lorsque les statuts en fixent les modalités. L'ingénieur pourra être rémunéré par un contrat de travail ou recevoir des actions par ailleurs.",
+   "src": "C. com., art. L. 225-3",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la composition légale du conseil d'administration d'une SA (hors cas de fusion) ?",
+   "opts": [
+    "2 à 12 membres",
+    "3 à 18 membres",
+    "3 à 24 membres",
+    "5 à 15 membres"
+   ],
+   "a": 1,
+   "why": "L'article L. 225-17 fixe le conseil d'administration à trois membres au moins et dix-huit au plus ; le plafond peut être porté à 24 pendant trois ans en cas de fusion. Les mêmes bornes s'appliquent au conseil de surveillance. Les autres fourchettes ne correspondent à aucun texte.",
+   "src": "C. com., art. L. 225-17",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SAS Capital Invest est nommée administratrice d'une SA. Quelle obligation en découle ?",
+   "opts": [
+    "Elle doit se transformer en SA",
+    "Elle doit désigner un représentant permanent, personne physique, soumis aux mêmes responsabilités qu'un administrateur en nom propre",
+    "Elle ne peut pas être nommée : seules les personnes physiques peuvent être administratrices",
+    "Elle doit détenir au moins 10 % du capital de la SA"
+   ],
+   "a": 1,
+   "why": "Une personne morale peut être administratrice de SA ; elle doit alors désigner un représentant permanent soumis aux mêmes conditions et obligations et encourant les mêmes responsabilités civile et pénale que s'il était administrateur en son nom propre (L. 225-20). Seuls le président du conseil, le DG et les membres du directoire doivent être des personnes physiques. Aucune détention minimale d'actions n'est imposée par la loi.",
+   "src": "C. com., art. L. 225-20",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SA ne contiennent aucune disposition sur l'âge des administrateurs. Le conseil compte 9 membres. Combien peuvent, au maximum, avoir plus de 70 ans ?",
+   "opts": [
+    "Aucun",
+    "3",
+    "4",
+    "9"
+   ],
+   "a": 1,
+   "why": "À défaut de disposition statutaire, le nombre d'administrateurs ayant dépassé 70 ans ne peut excéder le tiers des administrateurs en fonction (L. 225-19) : 9 / 3 = 3. Toute nomination contraire est nulle et, en cas de dépassement en cours de mandat, l'administrateur le plus âgé est réputé démissionnaire d'office. La limite de 65 ans concerne le président, le DG et les DG délégués.",
+   "src": "C. com., art. L. 225-19",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "L'assemblée générale ordinaire d'une SA révoque un administrateur en cours de mandat, sans motif et sans que la question figure à l'ordre du jour. Cette révocation est-elle valable ?",
+   "opts": [
+    "Non, la révocation doit figurer à l'ordre du jour",
+    "Oui : les administrateurs sont révocables à tout moment par l'AGO, sans motif",
+    "Non, l'administrateur n'est révocable que pour justes motifs",
+    "Oui, mais seulement par décision du conseil d'administration"
+   ],
+   "a": 1,
+   "why": "Les administrateurs sont révocables ad nutum par l'assemblée générale ordinaire (L. 225-18), même si la question n'était pas inscrite à l'ordre du jour (L. 225-105 : « incidents de séance »). Aucun motif n'est requis et aucune indemnité n'est due, sauf révocation vexatoire ou sans respect du contradictoire. Le conseil d'administration ne peut pas révoquer un administrateur ; il révoque en revanche le président et le DG.",
+   "src": "C. com., art. L. 225-18 et L. 225-105",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "À propos de la direction générale d'une SA à conseil d'administration, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le directeur général peut ne pas être administrateur",
+    "Le conseil peut nommer au plus cinq directeurs généraux délégués",
+    "Le directeur général non président révoqué sans juste motif peut obtenir des dommages-intérêts",
+    "Le président du conseil d'administration peut être une personne morale",
+    "Le directeur général est nommé par l'assemblée générale ordinaire"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le conseil choisit entre le cumul (PDG) et la dissociation ; le DG est alors une personne physique, administrateur ou non, nommée par le conseil, pas par l'assemblée (L. 225-51-1 et L. 225-53). Le conseil peut nommer jusqu'à cinq DG délégués (L. 225-53). La révocation du DG sans juste motif ouvre droit à dommages-intérêts, sauf s'il cumule les fonctions de président (L. 225-55). Le président du conseil est obligatoirement une personne physique (L. 225-47).",
+   "src": "C. com., art. L. 225-47, L. 225-51-1, L. 225-53, L. 225-55",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA à directoire a un capital de 120 000 €. Peut-elle n'avoir qu'un seul dirigeant exécutif ?",
+   "opts": [
+    "Non, le directoire comprend toujours au moins deux membres",
+    "Oui, un directeur général unique, car le capital est inférieur à 150 000 €",
+    "Oui, mais uniquement si elle n'a pas de conseil de surveillance",
+    "Non, le directoire doit compter au moins trois membres comme le conseil"
+   ],
+   "a": 1,
+   "why": "L'article L. 225-58 fixe le directoire à cinq membres au plus (sept si la société est cotée). Dans les SA dont le capital est inférieur à 150 000 €, les fonctions dévolues au directoire peuvent être exercées par une seule personne, le directeur général unique. Le conseil de surveillance reste obligatoire dans toute SA dualiste. Le minimum de trois concerne le conseil, pas le directoire.",
+   "src": "C. com., art. L. 225-58",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une SA dualiste, qui exerce le contrôle permanent de la gestion de la société ?",
+   "opts": [
+    "Le directoire",
+    "Le conseil de surveillance",
+    "Le commissaire aux comptes",
+    "L'assemblée générale ordinaire"
+   ],
+   "a": 1,
+   "why": "Le conseil de surveillance exerce le contrôle permanent de la gestion de la société par le directoire (L. 225-68) : il reçoit un rapport trimestriel, vérifie les comptes et autorise certaines opérations (cautions, cessions d'immeubles). Le directoire dirige, le commissaire aux comptes certifie les comptes sans s'immiscer dans la gestion, et l'assemblée n'intervient qu'annuellement ou ponctuellement.",
+   "src": "C. com., art. L. 225-68",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le directeur général d'une SA souhaite louer à la société un entrepôt dont il est propriétaire. Quelle est la première étape obligatoire de la procédure ?",
+   "opts": [
+    "L'approbation de la convention par l'assemblée générale ordinaire",
+    "L'autorisation préalable du conseil d'administration, le DG ne prenant pas part au vote s'il est administrateur",
+    "Le rapport spécial du commissaire aux comptes",
+    "La publication de la convention au BODACC"
+   ],
+   "a": 1,
+   "why": "La convention réglementée de SA (L. 225-38) obéit à un contrôle a priori : autorisation préalable motivée du conseil d'administration (l'intéressé ne vote pas), puis information du commissaire aux comptes qui rédige un rapport spécial, puis approbation par l'AGO, l'intéressé ne votant pas. L'approbation de l'assemblée et le rapport du CAC viennent après l'autorisation. La SAS, elle, ne connaît qu'un contrôle a posteriori.",
+   "src": "C. com., art. L. 225-38 à L. 225-40",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Parmi ces opérations, laquelle est interdite dans une SA, à peine de nullité ?",
+   "opts": [
+    "Un prêt consenti par la société à un administrateur personne physique",
+    "Un prêt consenti par la société à une société administratrice",
+    "La vente d'un véhicule de la société à un actionnaire minoritaire au prix du marché",
+    "Le cautionnement par la société d'un emprunt contracté par une filiale"
+   ],
+   "a": 0,
+   "why": "L'article L. 225-43 interdit, à peine de nullité, aux administrateurs personnes physiques, au DG, aux DG délégués et aux représentants permanents de contracter des emprunts auprès de la société ou d'en obtenir cautions et avals. Les administrateurs personnes morales échappent à l'interdiction : leurs prêts relèvent de la procédure des conventions réglementées. La vente au prix du marché à un petit actionnaire est une convention libre, et le cautionnement d'une filiale relève de l'autorisation du conseil (L. 225-35).",
+   "src": "C. com., art. L. 225-43",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Le capital d'une SA est composé de 50 000 actions ayant toutes le droit de vote. Combien d'actions au minimum doivent être présentes ou représentées pour que l'assemblée générale ordinaire délibère valablement sur première convocation ?",
+   "a": 10000,
+   "unit": "actions",
+   "tol": 0.5,
+   "why": "Le quorum de l'AGO sur première convocation est du cinquième des actions ayant le droit de vote (L. 225-98) : 50 000 / 5 = 10 000 actions. Sur seconde convocation, aucun quorum n'est requis. Pour une AGE, il faudrait le quart (12 500) puis le cinquième (10 000).",
+   "src": "C. com., art. L. 225-98",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Lors d'une assemblée générale extraordinaire de SA, 30 000 voix sont exprimées (votes pour et contre, hors abstentions). Combien de voix favorables au minimum sont nécessaires pour adopter la modification des statuts ?",
+   "a": 20000,
+   "unit": "voix",
+   "tol": 0.5,
+   "why": "L'AGE statue à la majorité des deux tiers des voix exprimées par les actionnaires présents ou représentés (L. 225-96) : 30 000 × 2/3 = 20 000 voix. Depuis la loi n° 2019-744, les abstentions ne sont plus comptées comme des votes défavorables, ce qui explique que la base soit constituée des seules voix exprimées.",
+   "src": "C. com., art. L. 225-96",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Faute de quorum, une AGO de SA n'a pu se tenir sur première convocation. Quel quorum est exigé sur seconde convocation ?",
+   "opts": [
+    "Un cinquième des actions ayant droit de vote",
+    "Un quart",
+    "Aucun quorum",
+    "La moitié"
+   ],
+   "a": 2,
+   "why": "Sur seconde convocation, l'assemblée générale ordinaire délibère valablement quel que soit le nombre d'actions représentées (L. 225-98). Le quorum du cinquième ne vaut que pour la première convocation. C'est l'AGE qui conserve un quorum réduit (un cinquième) sur seconde convocation.",
+   "src": "C. com., art. L. 225-98",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Lors d'une AGO de SA, 1 000 voix sont présentes : 450 pour, 400 contre, 150 abstentions. La résolution est-elle adoptée ?",
+   "opts": [
+    "Non, car 450 voix sur 1 000 ne représentent pas la majorité",
+    "Oui, car la majorité se calcule sur les 850 voix exprimées",
+    "Non, car les abstentions sont comptées comme des votes contre",
+    "Oui, car la majorité relative suffit dès la première convocation"
+   ],
+   "a": 1,
+   "why": "Depuis la loi n° 2019-744 du 19 juillet 2019, l'AGO statue à la majorité des voix exprimées par les actionnaires présents ou représentés, les abstentions et votes blancs ou nuls n'étant pas comptés (L. 225-98). Base : 450 + 400 = 850 ; majorité : plus de 425 ; 450 voix pour : résolution adoptée. Avant 2019, les abstentions valaient votes contre et la résolution aurait été rejetée.",
+   "src": "C. com., art. L. 225-98",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SA non cotée instituent un droit de vote double. Quelle condition légale minimale les actions doivent-elles remplir ?",
+   "opts": [
+    "Être au porteur depuis un an",
+    "Être nominatives, entièrement libérées et inscrites au nom du même actionnaire depuis au moins deux ans",
+    "Représenter au moins 5 % du capital",
+    "Avoir été souscrites lors de la constitution"
+   ],
+   "a": 1,
+   "why": "L'article L. 225-123 réserve le vote double statutaire aux actions entièrement libérées pour lesquelles une inscription nominative depuis deux ans au moins au nom du même actionnaire est justifiée ; les statuts peuvent allonger ce délai. Dans les sociétés cotées, le vote double est de plein droit après deux ans sauf clause contraire. Les actions au porteur sont exclues.",
+   "src": "C. com., art. L. 225-123",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA non cotée emploie 20 salariés, réalise 4 M€ de chiffre d'affaires et présente un bilan de 2 M€. Doit-elle obligatoirement avoir un commissaire aux comptes ?",
+   "opts": [
+    "Oui, le commissaire aux comptes est toujours obligatoire dans une SA",
+    "Non, depuis la loi PACTE la SA n'y est tenue que si elle dépasse deux des trois seuils légaux",
+    "Oui, car son chiffre d'affaires dépasse 2 M€",
+    "Non, car seule une SA cotée doit avoir un commissaire aux comptes"
+   ],
+   "a": 1,
+   "why": "La loi PACTE du 22 mai 2019 a aligné la SA sur les autres formes : la nomination d'un commissaire aux comptes n'est obligatoire que si deux des trois seuils (bilan, chiffre d'affaires, effectif) sont dépassés, ou si la société est cotée. Cette SA, en dessous de tous les seuils, n'y est pas tenue. L'option « seule une SA cotée » est trop restrictive puisque le dépassement des seuils suffit.",
+   "src": "C. com., art. L. 821-40 (ex-L. 823-1 et L. 225-218)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À la clôture de l'exercice 2025, une SAS présente un total de bilan de 6 M€, un chiffre d'affaires HT de 9 M€ et 60 salariés. Au regard des seuils applicables aux exercices ouverts depuis 2024, doit-elle nommer un commissaire aux comptes ?",
+   "opts": [
+    "Non, car son chiffre d'affaires est inférieur à 10 M€",
+    "Oui, car elle dépasse deux seuils sur trois : le bilan (5 M€) et l'effectif (50 salariés)",
+    "Non, car la SAS n'est jamais tenue de nommer un commissaire aux comptes",
+    "Oui, car toute SAS de plus de 50 salariés doit en nommer un, quels que soient les autres critères"
+   ],
+   "a": 1,
+   "why": "Les seuils fixés par le décret n° 2024-152 sont 5 M€ de bilan, 10 M€ de chiffre d'affaires HT et 50 salariés ; la nomination est obligatoire dès que deux d'entre eux sont dépassés à la clôture. Bilan 6 M€ > 5 M€ et effectif 60 > 50 : deux seuils dépassés, obligation. Le chiffre d'affaires sous 10 M€ n'empêche rien, et l'effectif seul ne suffirait pas.",
+   "src": "C. com., art. L. 821-40 et D. 221-5",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Qui peut être président d'une SAS ?",
+   "opts": [
+    "Uniquement une personne physique associée",
+    "Une personne physique ou une personne morale, associée ou non, selon les statuts",
+    "Uniquement une personne physique, associée ou non",
+    "Uniquement une personne morale"
+   ],
+   "a": 1,
+   "why": "L'article L. 227-7 prévoit expressément qu'une personne morale peut être nommée président ou dirigeant de SAS ; ses dirigeants sont alors soumis aux mêmes conditions et responsabilités que s'ils exerçaient en leur nom. Les statuts fixent librement les conditions de nomination. C'est une différence majeure avec la SARL (gérant personne physique) et la SA (président et DG personnes physiques).",
+   "src": "C. com., art. L. 227-7",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quelles décisions doivent obligatoirement être prises collectivement par les associés d'une SAS, quelle que soit la rédaction des statuts ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'approbation des comptes annuels et l'affectation du résultat",
+    "L'augmentation de capital",
+    "La nomination du président",
+    "La fusion",
+    "Le transfert du siège social",
+    "La nomination du commissaire aux comptes"
+   ],
+   "a": [
+    0,
+    1,
+    3,
+    5
+   ],
+   "why": "L'article L. 227-9 alinéa 2 réserve à la collectivité des associés : les opérations sur le capital (augmentation, amortissement, réduction), la fusion, la scission, la dissolution, la transformation, la nomination des commissaires aux comptes, l'approbation des comptes annuels et l'affectation des bénéfices. La nomination du président et le transfert de siège peuvent être confiés par les statuts à un autre organe ou à une personne.",
+   "src": "C. com., art. L. 227-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SAS stipulent que les actions sont inaliénables pendant quinze ans à compter de l'immatriculation. Quelle est la portée de cette clause ?",
+   "opts": [
+    "Elle est valable, la SAS étant régie par la liberté statutaire",
+    "Elle est illicite : la durée d'inaliénabilité ne peut excéder dix ans",
+    "Elle est valable si elle a été adoptée à l'unanimité",
+    "Elle est valable pour les seules personnes morales associées"
+   ],
+   "a": 1,
+   "why": "L'article L. 227-13 autorise les clauses d'inaliénabilité dans la SAS pour une durée n'excédant pas dix ans. La liberté statutaire ne permet pas de dépasser ce plafond, même à l'unanimité. Une clause de quinze ans encourt la nullité, sauf réduction à dix ans par le juge selon les cas.",
+   "src": "C. com., art. L. 227-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SAS en croissance souhaite lever des fonds en proposant ses actions au grand public via une introduction en bourse. Est-ce possible ?",
+   "opts": [
+    "Oui, comme toute société par actions",
+    "Non, la SAS ne peut pas procéder à une offre au public de titres financiers ni être admise sur un marché réglementé",
+    "Oui, si le capital dépasse 37 000 €",
+    "Oui, après décision unanime des associés"
+   ],
+   "a": 1,
+   "why": "L'article L. 227-2 interdit à la SAS de procéder à une offre au public de titres financiers et d'admettre ses actions sur un marché réglementé ; elle peut seulement recourir à des placements auprès d'investisseurs qualifiés ou au financement participatif. Pour une introduction en bourse, elle doit se transformer en SA. Le capital et l'unanimité ne changent rien.",
+   "src": "C. com., art. L. 227-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Julie est présidente et associée à 80 % d'une SAS ; elle perçoit une rémunération pour son mandat. Quel est son statut social ?",
+   "opts": [
+    "Travailleuse non salariée, car elle est majoritaire",
+    "Assimilée salariée, affiliée au régime général",
+    "Salariée de droit commun avec assurance chômage",
+    "Sans statut obligatoire, la rémunération d'un mandat n'étant pas soumise à cotisations"
+   ],
+   "a": 1,
+   "why": "Les présidents et dirigeants de SAS rémunérés sont assimilés salariés et affiliés au régime général (CSS, L. 311-3, 23°), quelle que soit leur participation au capital : la notion de gérance majoritaire est propre à la SARL. Ils ne cotisent toutefois pas à l'assurance chômage, faute de contrat de travail. C'est un critère de choix fréquent entre SARL et SAS.",
+   "src": "CSS, art. L. 311-3, 23°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Attribuez chaque caractéristique à la forme sociale qu'elle désigne exclusivement.",
+   "cats": [
+    "SA",
+    "SAS",
+    "SARL"
+   ],
+   "items": [
+    [
+     "Quorum légal du cinquième pour l'assemblée ordinaire",
+     0
+    ],
+    [
+     "Direction organisée librement par les statuts, sous réserve d'un président",
+     1
+    ],
+    [
+     "Dirigeant obligatoirement personne physique appelé gérant",
+     2
+    ],
+    [
+     "Choix entre conseil d'administration et directoire",
+     0
+    ],
+    [
+     "Titres pouvant être admis sur un marché réglementé",
+     0
+    ],
+    [
+     "Clause statutaire d'exclusion d'un associé expressément prévue par la loi",
+     1
+    ],
+    [
+     "Titres appelés parts sociales",
+     2
+    ],
+    [
+     "Dirigeant assimilé salarié même s'il détient 100 % du capital, forme unipersonnelle possible",
+     1
+    ]
+   ],
+   "why": "La SA est seule à connaître les quorums légaux d'AGO (L. 225-98), l'option moniste/dualiste et la cotation. La SAS se caractérise par la liberté statutaire sous un président obligatoire (L. 227-5 et L. 227-6), la clause d'exclusion de l'article L. 227-16 et le statut d'assimilé salarié de son dirigeant quelle que soit sa participation (la SASU étant unipersonnelle). La SARL a un gérant personne physique et des parts sociales.",
+   "src": "C. com., art. L. 223-18, L. 225-57, L. 225-98, L. 227-2, L. 227-5, L. 227-16",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Des actionnaires détenant ensemble 6 % du capital d'une SA s'inquiètent d'une opération de gestion. Que doivent-ils faire avant de pouvoir demander en justice une expertise de gestion ?",
+   "opts": [
+    "Rien, ils peuvent saisir directement le juge",
+    "Poser des questions écrites au président du conseil ou au directoire ; à défaut de réponse satisfaisante dans le mois, ils peuvent saisir le juge",
+    "Obtenir l'accord du commissaire aux comptes",
+    "Réunir au moins 10 % du capital"
+   ],
+   "a": 1,
+   "why": "Dans la SA, l'expertise de gestion (L. 225-231) est ouverte aux actionnaires représentant au moins 5 % du capital, mais ils doivent d'abord poser des questions écrites sur l'opération ; c'est seulement à défaut de réponse dans un mois ou en cas de réponse insuffisante qu'ils peuvent demander au juge la désignation d'un expert. Le seuil de 10 % et l'absence de questions préalables caractérisent la SARL (L. 223-37).",
+   "src": "C. com., art. L. 225-231",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA a émis des actions de préférence à dividende prioritaire. Une modification des droits attachés à ces actions est envisagée. Quel organe doit, outre l'AGE, l'approuver ?",
+   "opts": [
+    "Le conseil d'administration",
+    "L'assemblée spéciale des titulaires d'actions de préférence",
+    "Le commissaire aux comptes",
+    "Le directoire"
+   ],
+   "a": 1,
+   "why": "La décision d'une assemblée générale de modifier les droits relatifs à une catégorie d'actions n'est définitive qu'après approbation par l'assemblée spéciale des actionnaires de cette catégorie (L. 225-99), qui délibère au quorum du tiers puis du cinquième et à la majorité des deux tiers des voix exprimées. Le conseil, le directoire et le commissaire aux comptes n'ont pas ce pouvoir d'approbation.",
+   "src": "C. com., art. L. 225-99",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Marc crée seul une société par actions simplifiée. Comment cette société est-elle désignée et qui exerce les pouvoirs de la collectivité des associés ?",
+   "opts": [
+    "Une EURL ; les pouvoirs sont exercés par le gérant",
+    "Une SASU ; l'associé unique exerce les pouvoirs dévolus aux associés et ses décisions sont consignées dans un registre",
+    "Une SA unipersonnelle ; le conseil d'administration exerce les pouvoirs",
+    "Une société en participation"
+   ],
+   "a": 1,
+   "why": "La SAS peut être instituée par une seule personne (L. 227-1) : on parle de SASU. L'associé unique exerce les pouvoirs dévolus aux associés par la loi et les statuts, ses décisions étant répertoriées dans un registre (L. 227-9). L'EURL est la SARL unipersonnelle ; la SA exige au moins deux actionnaires et ne peut pas être unipersonnelle.",
+   "src": "C. com., art. L. 227-1 et L. 227-9",
+   "fiab": "stable",
+   "niveau": 1
+  }
+ ]
+}

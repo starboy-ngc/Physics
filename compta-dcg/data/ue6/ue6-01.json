@@ -2,130 +2,400 @@
  "id": "ue6-01",
  "ue": "UE6",
  "ordre": 1,
- "title": "Lire les comptes : vers le DSCG",
- "resume": "Soldes intermédiaires de gestion, CAF, bilan fonctionnel : les premiers outils d'analyse financière.",
- "duree": "40 min",
+ "title": "Lire les comptes : SIG, CAF et retraitements",
+ "resume": "Soldes intermédiaires de gestion sous PCG 2025, capacité d'autofinancement, retraitements de la Centrale de bilans, ratios de profitabilité et analyse de l'activité.",
+ "duree": "60 min",
  "niveau": 1,
  "lecon": [
   {
-   "h": "Les soldes intermédiaires de gestion (SIG)",
-   "html": "<p>Le compte de résultat se relit en cascade pour comprendre d'où vient la performance :</p>\n<ul>\n<li><b>Marge commerciale</b> = ventes de marchandises − coût d'achat des marchandises vendues (achats ± variation de stock).</li>\n<li><b>Production de l'exercice</b> = production vendue + stockée + immobilisée.</li>\n<li><b>Valeur ajoutée</b> = marge commerciale + production − consommations en provenance des tiers (achats de matières, services extérieurs 61/62).</li>\n<li><b>Excédent brut d'exploitation (EBE)</b> = VA + subventions d'exploitation − impôts et taxes − charges de personnel. C'est la trésorerie potentielle de l'exploitation, avant amortissements et financement.</li>\n<li><b>Résultat d'exploitation</b> = EBE + reprises et autres produits − dotations et autres charges.</li>\n<li>Puis résultat financier, résultat exceptionnel, impôt, résultat net.</li>\n</ul>"
+   "h": "Les SIG : de la marge commerciale à l'EBE",
+   "html": "<p>Le tableau des <b>soldes intermédiaires de gestion</b> (SIG) relit le compte de résultat en cascade pour localiser l'origine de la performance. Les quatre premiers soldes décrivent l'exploitation avant toute charge calculée :</p>\n<ul>\n<li><b>Marge commerciale</b> = ventes de marchandises (<span class=\"mono\">707</span>) − coût d'achat des marchandises vendues, soit achats (<span class=\"mono\">607</span>) ± variation de stock (<span class=\"mono\">6037</span>). Un stock final supérieur au stock initial diminue le coût d'achat : la marge augmente.</li>\n<li><b>Production de l'exercice</b> = production vendue (<span class=\"mono\">70</span> hors 707) + production stockée (<span class=\"mono\">713</span>) + production immobilisée (<span class=\"mono\">72</span>).</li>\n<li><b>Valeur ajoutée</b> (VA) = marge commerciale + production − consommations en provenance des tiers (achats de matières et autres approvisionnements <span class=\"mono\">601 à 606</span>, variation de leurs stocks <span class=\"mono\">6031/6032</span>, services extérieurs <span class=\"mono\">61</span> et <span class=\"mono\">62</span>). C'est la richesse créée, à partager entre personnel, État, prêteurs et associés.</li>\n<li><b>Excédent brut d'exploitation</b> (EBE) = VA + subventions d'exploitation (<span class=\"mono\">74</span>) − impôts et taxes (<span class=\"mono\">63</span>) − charges de personnel (<span class=\"mono\">64</span>). S'il est négatif, on parle d'insuffisance brute d'exploitation.</li>\n</ul>\n<p>Exemple (société Valtex) : ventes de marchandises 500 000, achats 300 000, stock initial 40 000, stock final 55 000. Coût d'achat des marchandises vendues = 300 000 + 40 000 − 55 000 = 285 000 ; marge commerciale = 215 000 €, soit un taux de marge de 43 %.</p>"
   },
   {
-   "h": "La capacité d'autofinancement (CAF)",
-   "html": "<p>La CAF mesure les <b>ressources internes</b> dégagées par l'activité : ce qui reste pour investir, rembourser, distribuer. Méthode additive :</p>\n<p class=\"mono\">CAF = résultat net + dotations (68) − reprises (78) − produits des cessions (775) + valeurs comptables des actifs cédés (675)</p>\n<p>On neutralise les charges et produits <b>calculés</b> (non monétaires) et les éléments de cession, qui relèvent de l'investissement.</p>"
+   "h": "Du résultat d'exploitation au résultat net (PCG 2025)",
+   "html": "<p><b>Résultat d'exploitation</b> (REX) = EBE + reprises sur amortissements, dépréciations et provisions (<span class=\"mono\">781</span>) + autres produits de gestion courante (<span class=\"mono\">75</span>) − dotations d'exploitation (<span class=\"mono\">681</span>) − autres charges de gestion courante (<span class=\"mono\">65</span>).</p>\n<p>Depuis les exercices ouverts le 1er janvier 2025 (règlement ANC n° 2022-06), les cessions d'immobilisations incorporelles et corporelles sont des opérations d'exploitation : le prix de cession est en <span class=\"mono\">757</span> et la valeur comptable des éléments cédés en <span class=\"mono\">657</span>. La plus ou moins-value de cession est donc <b>dans le résultat d'exploitation</b>. Avant 2025, ces comptes étaient <span class=\"mono\">675</span> et <span class=\"mono\">775</span>, classés en exceptionnel ; ils sont supprimés. Même logique pour la quote-part de subvention d'investissement virée au résultat : <span class=\"mono\">747</span> remplace l'ancien 777.</p>\n<p><b>Résultat courant avant impôt</b> (RCAI) = REX ± quotes-parts de résultat sur opérations faites en commun + produits financiers − charges financières.</p>\n<p>Le <b>résultat exceptionnel</b> ne retient plus que les produits et charges liés à un événement <b>majeur et inhabituel</b> (expropriation, catastrophe naturelle, abandon d'une activité) : comptes <span class=\"mono\">67</span> (dont 678) et <span class=\"mono\">77</span>, dotations et reprises exceptionnelles <span class=\"mono\">6875</span>/<span class=\"mono\">7875</span>.</p>\n<p><b>Résultat net</b> = RCAI + résultat exceptionnel − participation des salariés (<span class=\"mono\">691</span>) − impôt sur les bénéfices (<span class=\"mono\">695</span>).</p>\n<div class=\"note\"><b>À retenir.</b> Sous PCG 2025, une plus-value de cession de machine améliore le REX, pas le résultat exceptionnel. Les anciens manuels (675/775) ne sont plus à jour sur ce point.</div>"
   },
   {
-   "h": "Le bilan fonctionnel",
-   "html": "<p>On reclasse le bilan par fonction, en <b>valeurs brutes</b> (les amortissements et dépréciations passent en ressources stables).</p>\n<ul>\n<li><b>Fonds de roulement net global</b> (FRNG) = ressources stables (capitaux propres + amortissements + dettes financières) − emplois stables (immobilisations brutes).</li>\n<li><b>Besoin en fonds de roulement</b> (BFR) = actif circulant (stocks, créances) − dettes circulantes (fournisseurs, fiscales, sociales).</li>\n<li><b>Trésorerie nette</b> = FRNG − BFR = disponibilités − concours bancaires courants.</li>\n</ul>\n<div class=\"note\"><b>Lecture.</b> Un BFR positif signifie que le cycle d'exploitation consomme de l'argent (on paie les fournisseurs avant d'être payé par les clients). Il doit être couvert par le FRNG, sinon la trésorerie est négative.</div>"
+   "h": "La CAF par la méthode soustractive",
+   "html": "<p>La <b>capacité d'autofinancement</b> (CAF) mesure les ressources internes dégagées par l'activité : le surplus monétaire potentiel disponible pour investir, rembourser les emprunts et rémunérer les associés. Elle n'est pas de la trésorerie : les ventes ne sont pas toutes encaissées à la clôture.</p>\n<p>La méthode <b>soustractive</b>, de référence dans le PCG, part de l'EBE et ajoute les autres produits <i>encaissables</i>, retranche les autres charges <i>décaissables</i> :</p>\n<p class=\"mono\">CAF = EBE + autres produits d'exploitation encaissables (75 hors 757) − autres charges d'exploitation décaissables (65 hors 657) + produits financiers encaissables (76) − charges financières décaissables (66) + produits exceptionnels encaissables (77 hors 7875) − charges exceptionnelles décaissables (67 hors 6875) − participation (691) − impôt sur les bénéfices (695)</p>\n<p>Sont exclus : les dotations et reprises (charges et produits calculés), le prix de cession <span class=\"mono\">757</span> et la valeur comptable <span class=\"mono\">657</span> (opérations d'investissement, pas d'activité), la quote-part de subvention <span class=\"mono\">747</span> (produit non encaissable).</p>\n<p>Exemple (Valtex) : EBE 180 000 ; autres produits encaissables 4 000 ; autres charges décaissables 6 000 ; produits financiers 2 000 ; charges d'intérêts 15 000 ; charges exceptionnelles décaissables 3 000 ; participation 5 000 ; IS 30 000. CAF = 180 000 + 4 000 − 6 000 + 2 000 − 15 000 − 3 000 − 5 000 − 30 000 = <span class=\"mono\">127 000 €</span>.</p>"
   },
   {
-   "h": "Et après ?",
-   "html": "<p>Ces notions sont celles de l'UE6 Finance d'entreprise du DCG, qui prépare directement l'UE2 Finance du DSCG. La comptabilité approfondie (UE10 DCG) et la consolidation (UE4 DSCG) s'appuient, elles, sur tout ce que vous avez revu dans les modules 1 à 7.</p>"
+   "h": "La CAF par la méthode additive et l'autofinancement",
+   "html": "<p>La méthode <b>additive</b> part du résultat net et neutralise ce qui n'est pas un flux d'activité :</p>\n<p class=\"mono\">CAF = résultat net + dotations aux amortissements, dépréciations et provisions (681, 686, 6875) − reprises (781, 786, 7875) + valeurs comptables des immobilisations cédées (657, 6671) − produits des cessions d'immobilisations (757, 7671) − quote-part des subventions d'investissement virée au résultat (747)</p>\n<p>Avant 2025, les cessions figuraient en 675/775 et la quote-part en 777 : la formule est identique, seuls les numéros ont changé. Les deux méthodes donnent exactement le même montant, ce qui permet de se vérifier à l'examen.</p>\n<p>Exemple : résultat net 20 000, dotations 18 000, reprises 2 000, produits des cessions 5 000, valeur comptable des actifs cédés 3 000. CAF = 20 000 + 18 000 − 2 000 − 5 000 + 3 000 = <span class=\"mono\">34 000 €</span>.</p>\n<p>L'<b>autofinancement</b> est la part de la CAF qui reste dans l'entreprise après rémunération des associés :</p>\n<p class=\"mono\">Autofinancement = CAF − dividendes distribués au cours de l'exercice</p>\n<p>Piège classique : ce sont les dividendes <i>versés</i> pendant l'exercice N (au titre de N−1), pas ceux qui seront proposés sur le résultat N.</p>"
+  },
+  {
+   "h": "Les retraitements de la Centrale de bilans",
+   "html": "<p>Pour comparer des entreprises aux choix de gestion différents, la méthode de la Centrale de bilans (Banque de France) retraite les SIG du PCG vers une lecture <b>économique</b> :</p>\n<ul>\n<li><b>Crédit-bail</b> : la redevance (compte 612, dans les consommations) est éclatée en une dotation aux amortissements fictive et une charge d'intérêts, comme si le bien avait été acheté à crédit. La VA et l'EBE augmentent du montant de la redevance ; le REX n'augmente que de la part intérêts ; le RCAI est inchangé.</li>\n<li><b>Personnel extérieur</b> (intérim, compte 621) : reclassé des services extérieurs vers les charges de personnel. La VA augmente, l'EBE ne change pas.</li>\n<li><b>Participation des salariés</b> (691) : traitée comme une charge de personnel, donc remontée avant l'EBE.</li>\n<li><b>Sous-traitance</b> : retirée de la production pour obtenir la production propre et retirée des consommations, ce qui laisse la VA inchangée.</li>\n<li><b>Subventions d'exploitation</b> : considérées comme un complément de prix de vente et intégrées à la VA.</li>\n</ul>\n<p>Exemple : VA 500 000 et EBE 200 000 avant retraitement, redevance de crédit-bail 30 000 (dont 24 000 d'amortissement et 6 000 d'intérêts). VA retraitée = 530 000 ; EBE retraité = 230 000 ; REX retraité = REX + 6 000.</p>"
+  },
+  {
+   "h": "Profitabilité et partage de la valeur ajoutée",
+   "html": "<p>Les ratios de <b>profitabilité</b> rapportent un solde au chiffre d'affaires HT et se lisent en pourcentage :</p>\n<ul>\n<li>Taux de marge commerciale = marge commerciale / ventes de marchandises HT.</li>\n<li>Taux de valeur ajoutée = VA / (CA HT ou production). Il mesure le degré d'intégration : une entreprise qui sous-traite beaucoup a un taux faible.</li>\n<li>Taux de marge brute d'exploitation = EBE / CA HT. C'est l'indicateur le plus suivi par les banques, car il est indépendant des politiques d'amortissement et de financement.</li>\n<li>Taux de marge nette = résultat net / CA HT.</li>\n</ul>\n<p>Le <b>partage de la VA</b> montre qui capte la richesse créée : personnel (charges de personnel + participation) / VA ; État (impôts et taxes + IS) / VA ; prêteurs (charges d'intérêts) / VA ; associés (dividendes) / VA ; entreprise (autofinancement) / VA.</p>\n<p>Exemple : VA 155 000, charges de personnel 95 000. Part du personnel = 95 000 / 155 000 = 61,3 %. Une hausse de cette part sur plusieurs exercices signale une pression sur la rentabilité.</p>\n<p>Lien DSCG : ces ratios sont repris dans le diagnostic financier de l'UE2 Finance, avec les comparaisons sectorielles.</p>"
+  },
+  {
+   "h": "Analyser l'activité : variation du CA, effets volume et prix",
+   "html": "<p>Le diagnostic commence par l'<b>évolution du chiffre d'affaires</b> : taux de variation = (CA N − CA N−1) / CA N−1. On le compare à la croissance du secteur et à l'inflation.</p>\n<p>Une hausse du CA peut venir des quantités ou des prix. On décompose :</p>\n<ul>\n<li><b>Effet volume</b> = (quantité N − quantité N−1) × prix N−1</li>\n<li><b>Effet prix</b> = (prix N − prix N−1) × quantité N</li>\n</ul>\n<p>La somme des deux effets redonne exactement la variation du CA. Exemple : N−1, 1 000 unités à 50 € (CA 50 000) ; N, 1 100 unités à 52 € (CA 57 200). Effet volume = 100 × 50 = 5 000 ; effet prix = 2 × 1 100 = 2 200 ; total 7 200 = 57 200 − 50 000.</p>\n<p>Autres angles : la structure du CA par activité ou zone géographique, la comparaison de la croissance du CA et de celle de la VA (une VA qui croît moins vite que le CA signale une hausse des consommations), l'évolution de l'EBE par rapport au CA (effet de ciseaux si les charges de personnel progressent plus vite que la VA).</p>\n<div class=\"note\"><b>Méthode à l'examen.</b> Toujours chiffrer (taux de variation, ratio), puis comparer (N−1, secteur), puis expliquer (cause probable) et conclure (risque ou atout).</div>"
   }
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022 modifiant le règlement ANC n° 2014-03 (PCG), applicable aux exercices ouverts à compter du 1er janvier 2025",
+   "note": "Comptes 657/757, suppression de 675/775 et 777, résultat exceptionnel limité aux événements majeurs et inhabituels"
+  },
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025), titre V, chap. III, section 2 : modèles de tableau des soldes intermédiaires de gestion et de détermination de la CAF",
+   "note": "Définition des soldes et des deux méthodes de calcul de la CAF"
+  },
+  {
+   "ref": "Banque de France, Centrale de bilans, Méthode d'analyse financière (retraitements des SIG : crédit-bail, personnel extérieur, sous-traitance, subventions d'exploitation)",
+   "note": "Retraitements économiques des SIG"
+  },
+  {
+   "ref": "Programme du DCG UE6 Finance d'entreprise (arrêté du 13 février 2019 ; arrêté du 4 août 2025, BOESR n° 32 du 28 août 2025 pour la session 2027), partie 1 : le diagnostic financier des comptes sociaux",
+   "note": "Analyse de l'activité, de la profitabilité et de la CAF"
+  },
+  {
+   "ref": "P. Recroix, DCG 6 Finance d'entreprise, Gualino, éd. 2025-2026 (intègre le PCG 2025)",
+   "note": "Manuel de référence : SIG, CAF, retraitements"
   }
  ],
  "exercices": [
   {
    "type": "calc",
-   "q": "Ventes de marchandises : 500 000 €. Achats de marchandises : 300 000 €. Stock initial 40 000 €, stock final 55 000 €. Marge commerciale ?",
+   "q": "Société Valtex, exercice N. Ventes de marchandises : 500 000 €. Achats de marchandises : 300 000 €. Stock initial de marchandises 40 000 €, stock final 55 000 €. Calculez la marge commerciale (en euros).",
    "a": 215000,
    "unit": "€",
-   "why": "Coût d'achat des marchandises vendues = 300 000 + 40 000 − 55 000 = 285 000. Marge = 500 000 − 285 000 = 215 000 €.",
-   "src": "PCG",
-   "fiab": "stable"
+   "tol": 1,
+   "why": "Coût d'achat des marchandises vendues = achats + stock initial − stock final = 300 000 + 40 000 − 55 000 = 285 000 €. Marge commerciale = 500 000 − 285 000 = 215 000 €. Le stock final supérieur au stock initial réduit le coût d'achat des marchandises vendues (compte 6037 créditeur).",
+   "src": "PCG, tableau des SIG (marge commerciale)",
+   "fiab": "stable",
+   "niveau": 1
   },
   {
    "type": "calc",
-   "q": "Marge commerciale 215 000 €, pas de production, consommations en provenance des tiers 60 000 €. Valeur ajoutée ?",
+   "q": "Marge commerciale 215 000 €, aucune production, consommations en provenance des tiers 60 000 €. Calculez la valeur ajoutée (en euros).",
    "a": 155000,
    "unit": "€",
-   "why": "VA = 215 000 − 60 000 = 155 000 €. C'est la richesse créée par l'entreprise, à partager entre personnel, État, prêteurs et actionnaires.",
-   "src": "PCG",
-   "fiab": "stable"
+   "tol": 1,
+   "why": "VA = marge commerciale + production de l'exercice − consommations en provenance des tiers = 215 000 + 0 − 60 000 = 155 000 €. C'est la richesse créée par l'entreprise, à partager entre personnel, État, prêteurs et associés.",
+   "src": "PCG, tableau des SIG (valeur ajoutée)",
+   "fiab": "stable",
+   "niveau": 1
   },
   {
    "type": "calc",
-   "q": "Valeur ajoutée 155 000 €, impôts et taxes 8 000 €, charges de personnel 95 000 €, pas de subvention. EBE ?",
+   "q": "Valeur ajoutée 155 000 €, impôts et taxes 8 000 €, charges de personnel 95 000 €, aucune subvention d'exploitation. Calculez l'excédent brut d'exploitation (en euros).",
    "a": 52000,
    "unit": "€",
-   "why": "EBE = 155 000 − 8 000 − 95 000 = 52 000 €.",
-   "src": "PCG",
-   "fiab": "stable"
-  },
-  {
-   "type": "calc",
-   "q": "Résultat net 20 000 €, dotations 18 000 €, reprises 2 000 €, produits des cessions d'actif 5 000 €, valeur comptable des actifs cédés 3 000 €. CAF ?",
-   "a": 34000,
-   "unit": "€",
-   "why": "20 000 + 18 000 − 2 000 − 5 000 + 3 000 = 34 000 €.",
-   "src": "PCG",
-   "fiab": "stable"
-  },
-  {
-   "type": "calc",
-   "q": "Ressources stables 420 000 €, emplois stables 350 000 €. FRNG ?",
-   "a": 70000,
-   "unit": "€",
-   "why": "FRNG = 420 000 − 350 000 = 70 000 €. L'entreprise finance ses immobilisations et dispose d'un excédent pour couvrir le BFR.",
-   "src": "PCG",
-   "fiab": "stable"
-  },
-  {
-   "type": "calc",
-   "q": "FRNG 70 000 €. Actif circulant d'exploitation 150 000 €, dettes d'exploitation 95 000 €. Trésorerie nette ?",
-   "a": 15000,
-   "unit": "€",
-   "why": "BFR = 150 000 − 95 000 = 55 000. Trésorerie nette = FRNG − BFR = 70 000 − 55 000 = 15 000 €.",
-   "src": "PCG",
-   "fiab": "stable"
+   "tol": 1,
+   "why": "EBE = VA + subventions d'exploitation − impôts et taxes − charges de personnel = 155 000 + 0 − 8 000 − 95 000 = 52 000 €. L'EBE ignore les dotations, le financement et l'IS : c'est la performance brute de l'exploitation.",
+   "src": "PCG, tableau des SIG (EBE)",
+   "fiab": "stable",
+   "niveau": 1
   },
   {
    "type": "qcm",
-   "q": "Un BFR positif signifie :",
+   "q": "L'excédent brut d'exploitation se calcule :",
    "opts": [
-    "L'entreprise a trop de trésorerie",
-    "Le cycle d'exploitation génère un besoin de financement",
-    "Les fournisseurs financent intégralement les stocks et les clients",
-    "Le résultat est négatif"
+    "Avant dotations aux amortissements et avant charges financières",
+    "Après dotations aux amortissements",
+    "Après impôt sur les bénéfices",
+    "Après déduction des charges exceptionnelles"
    ],
-   "a": 1,
-   "why": "Stocks et créances clients immobilisent plus d'argent que les dettes fournisseurs n'en apportent. Ce besoin doit être couvert par le FRNG ou par de la trésorerie à court terme.",
-   "src": "PCG",
-   "fiab": "stable"
+   "a": 0,
+   "why": "L'EBE ne retient que les produits et charges d'exploitation à caractère monétaire : il ignore les charges calculées (dotations), la politique de financement (intérêts), les éléments exceptionnels et la fiscalité sur le bénéfice. Les options 2 à 4 décrivent des soldes situés plus bas dans la cascade (REX, résultat net).",
+   "src": "PCG, tableau des SIG (EBE)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments composent la production de l'exercice dans le tableau des SIG ?",
+   "opts": [
+    "Production vendue (biens et services)",
+    "Production stockée",
+    "Production immobilisée",
+    "Ventes de marchandises",
+    "Subventions d'exploitation"
+   ],
+   "a": [0, 1, 2],
+   "why": "Production de l'exercice = production vendue + production stockée (713) + production immobilisée (72). Les ventes de marchandises entrent dans la marge commerciale, pas dans la production. Les subventions d'exploitation (74) interviennent au niveau de l'EBE.",
+   "src": "PCG, tableau des SIG (production de l'exercice)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels postes font partie des consommations en provenance des tiers déduites pour calculer la valeur ajoutée ?",
+   "opts": [
+    "Achats de matières premières",
+    "Variation des stocks de matières premières",
+    "Services extérieurs (comptes 61 et 62)",
+    "Charges de personnel",
+    "Impôts et taxes"
+   ],
+   "a": [0, 1, 2],
+   "why": "Les consommations en provenance des tiers regroupent les achats de matières et autres approvisionnements corrigés de la variation de leurs stocks, ainsi que les autres achats et charges externes (61, 62). Charges de personnel et impôts et taxes sont déduits plus bas, pour passer de la VA à l'EBE.",
+   "src": "PCG, tableau des SIG (valeur ajoutée)",
+   "fiab": "stable",
+   "niveau": 1
   },
   {
    "type": "qcm",
-   "q": "La CAF mesure :",
+   "q": "Le stock final de marchandises (70 000 €) est supérieur au stock initial (50 000 €). Quel est l'effet de cette variation sur la marge commerciale ?",
    "opts": [
-    "La trésorerie disponible en banque",
+    "Elle augmente la marge de 20 000 € car le coût d'achat des marchandises vendues diminue",
+    "Elle diminue la marge de 20 000 €",
+    "Elle n'a aucun effet : la variation de stock n'entre pas dans la marge",
+    "Elle augmente les ventes de marchandises de 20 000 €"
+   ],
+   "a": 0,
+   "why": "Coût d'achat des marchandises vendues = achats + SI − SF. Avec SF > SI, la variation de stock (6037) est créditrice de 20 000 € : une partie des achats n'a pas été vendue et reste en stock. Le coût des marchandises vendues baisse donc de 20 000 € et la marge augmente d'autant. Les ventes ne sont pas concernées.",
+   "src": "PCG, compte 6037 et tableau des SIG",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En N, une entreprise cède une machine pour 8 000 € ; sa valeur nette comptable était de 5 000 €. Sous PCG 2025, dans quel solde apparaît la plus-value de 3 000 € ?",
+   "opts": [
+    "Dans le résultat d'exploitation (757 − 657)",
+    "Dans le résultat exceptionnel (775 − 675)",
+    "Dans le résultat financier",
+    "Dans la valeur ajoutée"
+   ],
+   "a": 0,
+   "why": "Depuis le règlement ANC 2022-06 (exercices ouverts à compter du 1er janvier 2025), le prix de cession d'une immobilisation corporelle est en 757 et sa valeur comptable en 657 : deux comptes d'exploitation. La plus-value est donc dans le REX. Les comptes 675/775 (résultat exceptionnel) sont supprimés. La VA n'est pas concernée car il ne s'agit ni d'une vente de marchandises ni d'une production.",
+   "src": "PCG 2025, comptes 657 et 757 (règl. ANC 2022-06)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Sous PCG 2025, quels éléments relèvent du résultat exceptionnel ?",
+   "opts": [
+    "Coût de destruction d'un entrepôt lors d'une inondation exceptionnelle",
+    "Indemnité reçue à la suite d'une expropriation",
+    "Produit de la cession d'un véhicule utilitaire remplacé",
+    "Quote-part de subvention d'investissement virée au résultat"
+   ],
+   "a": [0, 1],
+   "why": "Le règlement ANC 2022-06 limite le résultat exceptionnel aux produits et charges directement liés à un événement majeur et inhabituel : catastrophe naturelle, expropriation, abandon d'activité. La cession d'un véhicule remplacé est une opération de gestion courante (657/757, résultat d'exploitation). La quote-part de subvention d'investissement est en 747, dans l'exploitation.",
+   "src": "Règl. ANC 2022-06 ; PCG 2025, comptes 67, 77, 747",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le résultat courant avant impôt (RCAI) est égal à :",
+   "opts": [
+    "Résultat d'exploitation ± quotes-parts de résultat sur opérations faites en commun + produits financiers − charges financières",
+    "EBE − dotations aux amortissements",
+    "Résultat d'exploitation + résultat exceptionnel",
+    "Résultat net + impôt sur les bénéfices"
+   ],
+   "a": 0,
+   "why": "Le RCAI additionne le résultat d'exploitation et le résultat financier (ainsi que les quotes-parts d'opérations faites en commun). Il exclut l'exceptionnel, la participation et l'IS. Résultat net + IS redonne le résultat avant impôt mais inclut l'exceptionnel et la participation : ce n'est pas le RCAI.",
+   "src": "PCG, tableau des SIG (RCAI)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "RCAI 100 000 €, résultat exceptionnel −10 000 €, participation des salariés 5 000 €, impôt sur les bénéfices 21 250 €. Quel est le résultat net ?",
+   "opts": [
+    "63 750 €",
+    "85 000 €",
+    "73 750 €",
+    "68 750 €"
+   ],
+   "a": 0,
+   "why": "Résultat net = RCAI + résultat exceptionnel − participation − IS = 100 000 − 10 000 − 5 000 − 21 250 = 63 750 €. 85 000 oublie la participation et l'IS ; 73 750 oublie le résultat exceptionnel ; 68 750 oublie la participation.",
+   "src": "PCG, tableau des SIG (résultat net)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "La capacité d'autofinancement mesure :",
+   "opts": [
+    "La trésorerie disponible en banque à la clôture",
     "Le résultat avant impôt",
     "Les ressources internes dégagées par l'activité, potentiel de trésorerie",
     "Le montant des dividendes à verser"
    ],
    "a": 2,
-   "why": "La CAF n'est pas de la trésorerie réelle : les ventes ne sont pas forcément encaissées, les achats pas forcément payés. C'est un potentiel, à corriger de la variation du BFR pour obtenir le flux de trésorerie d'exploitation.",
-   "src": "PCG",
-   "fiab": "stable"
+   "why": "La CAF est un surplus monétaire potentiel : différence entre produits encaissables et charges décaissables de l'exercice. Ce n'est pas la trésorerie réelle, car les ventes ne sont pas toutes encaissées ni les achats tous payés : il faut la corriger de la variation du BFR pour obtenir le flux de trésorerie d'activité (chapitre 3).",
+   "src": "PCG, détermination de la CAF",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Société Valtex, exercice N : EBE 180 000 € ; autres produits d'exploitation encaissables 4 000 € ; autres charges d'exploitation décaissables 6 000 € ; produits financiers encaissables 2 000 € ; charges d'intérêts 15 000 € ; charges exceptionnelles décaissables 3 000 € ; participation des salariés 5 000 € ; impôt sur les bénéfices 30 000 €. Calculez la CAF par la méthode soustractive (en euros).",
+   "a": 127000,
+   "unit": "€",
+   "tol": 1,
+   "why": "CAF = EBE + autres produits encaissables − autres charges décaissables + produits financiers − charges financières + produits exceptionnels encaissables − charges exceptionnelles décaissables − participation − IS = 180 000 + 4 000 − 6 000 + 2 000 − 15 000 + 0 − 3 000 − 5 000 − 30 000 = 127 000 €.",
+   "src": "PCG, détermination de la CAF (méthode soustractive)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Résultat net 20 000 €, dotations aux amortissements et dépréciations 18 000 €, reprises 2 000 €, produits des cessions d'immobilisations (compte 757) 5 000 €, valeur comptable des immobilisations cédées (compte 657) 3 000 €. Calculez la CAF par la méthode additive (en euros).",
+   "a": 34000,
+   "unit": "€",
+   "tol": 1,
+   "why": "CAF = résultat net + dotations − reprises − produits des cessions (757) + valeur comptable des éléments cédés (657) = 20 000 + 18 000 − 2 000 − 5 000 + 3 000 = 34 000 €. Avant 2025, les mêmes éléments étaient en 775 et 675 : la formule n'a pas changé, seuls les numéros de comptes ont changé.",
+   "src": "PCG 2025, détermination de la CAF (méthode additive), comptes 657/757",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments n'entrent pas dans le calcul de la CAF ?",
+   "opts": [
+    "Dotations aux amortissements",
+    "Reprises sur dépréciations",
+    "Produits des cessions d'immobilisations (757)",
+    "Charges de personnel",
+    "Impôt sur les bénéfices",
+    "Charges d'intérêts"
+   ],
+   "a": [0, 1, 2],
+   "why": "La CAF ne retient que les produits encaissables et les charges décaissables liés à l'activité. Les dotations et reprises sont des charges et produits calculés, sans flux monétaire. Le produit de cession (757) est un flux d'investissement, pas d'activité, exclu avec la valeur comptable (657). Charges de personnel, IS et intérêts sont décaissables et bien pris en compte.",
+   "src": "PCG, détermination de la CAF",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "CAF de l'exercice N : 127 000 €. Dividendes versés en N au titre de N−1 : 40 000 €. Dividendes qui seront proposés sur le résultat N : 45 000 €. Calculez l'autofinancement de l'exercice N (en euros).",
+   "a": 87000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Autofinancement = CAF − dividendes distribués au cours de l'exercice = 127 000 − 40 000 = 87 000 €. Les dividendes proposés sur N (45 000) seront versés en N+1 : ils ne réduisent pas l'autofinancement de N.",
+   "src": "PCG, tableau de financement (CAF et distributions)",
+   "fiab": "stable",
+   "niveau": 2
   },
   {
    "type": "qcm",
-   "q": "L'EBE se calcule :",
+   "q": "L'autofinancement se définit comme :",
    "opts": [
-    "Avant dotations aux amortissements et charges financières",
-    "Après dotations aux amortissements",
-    "Après impôt sur les bénéfices",
-    "En retirant les charges exceptionnelles"
+    "CAF − dividendes distribués au cours de l'exercice",
+    "CAF + dividendes distribués",
+    "Résultat net − dotations",
+    "EBE − impôt sur les bénéfices"
    ],
    "a": 0,
-   "why": "L'EBE ne retient que les flux d'exploitation réels : il ignore les charges calculées (amortissements), la politique de financement (intérêts) et la fiscalité sur le bénéfice.",
-   "src": "PCG",
-   "fiab": "stable"
+   "why": "L'autofinancement est la fraction de la CAF conservée dans l'entreprise après rémunération des associés. On retranche les dividendes effectivement versés pendant l'exercice (ceux de l'exercice précédent). Les autres options mélangent des soldes sans rapport.",
+   "src": "PCG, tableau de financement (ressources durables)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Retraitement du personnel intérimaire selon la méthode de la Centrale de bilans : quel est l'effet sur les SIG ?",
+   "opts": [
+    "La valeur ajoutée augmente, l'EBE est inchangé",
+    "La valeur ajoutée et l'EBE augmentent",
+    "La valeur ajoutée diminue, l'EBE augmente",
+    "Aucun solde ne change"
+   ],
+   "a": 0,
+   "why": "Le personnel extérieur (621) est reclassé des services extérieurs vers les charges de personnel. Il sort des consommations en provenance des tiers, donc la VA augmente. Mais il est déduit juste après, au niveau des charges de personnel : l'EBE reste identique.",
+   "src": "Centrale de bilans (Banque de France), retraitements des SIG",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Avant retraitement : VA 500 000 €, EBE 200 000 €. Redevance de crédit-bail de l'exercice : 30 000 €, dont 24 000 € assimilables à un amortissement et 6 000 € à des intérêts. Calculez l'EBE retraité selon la méthode de la Centrale de bilans (en euros).",
+   "a": 230000,
+   "unit": "€",
+   "tol": 1,
+   "why": "La redevance de crédit-bail (612) est retirée des consommations en provenance des tiers : VA retraitée = 500 000 + 30 000 = 530 000 € et EBE retraité = 200 000 + 30 000 = 230 000 €. La part amortissement (24 000) est ensuite déduite en dotations et la part intérêts (6 000) en charges financières : le REX retraité augmente seulement de 6 000 et le RCAI est inchangé.",
+   "src": "Centrale de bilans (Banque de France), retraitement du crédit-bail",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans la méthode de la Centrale de bilans, les subventions d'exploitation sont :",
+   "opts": [
+    "Intégrées à la valeur ajoutée comme complément de prix de vente",
+    "Reclassées en produits financiers",
+    "Exclues de tous les soldes",
+    "Reclassées en produits exceptionnels"
+   ],
+   "a": 0,
+   "why": "La Centrale de bilans considère la subvention d'exploitation comme un complément du chiffre d'affaires (elle compense souvent un prix de vente administré ou insuffisant) : elle entre dans la VA retraitée. Dans le tableau du PCG, elle n'intervient qu'au niveau de l'EBE.",
+   "src": "Centrale de bilans (Banque de France), retraitements des SIG",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément selon le traitement que lui applique la méthode de la Centrale de bilans.",
+   "cats": [
+    "Reclassé en charges de personnel",
+    "Reclassé en dotations aux amortissements",
+    "Reclassé en charges financières",
+    "Ajouté à la valeur ajoutée"
+   ],
+   "items": [
+    ["Personnel intérimaire (compte 621)", 0],
+    ["Participation des salariés (691)", 0],
+    ["Part « amortissement » de la redevance de crédit-bail", 1],
+    ["Part « intérêts » de la redevance de crédit-bail", 2],
+    ["Subventions d'exploitation", 3]
+   ],
+   "why": "La Centrale de bilans cherche le coût économique des facteurs : tout ce qui rémunère le travail (intérim, participation) va en charges de personnel ; la redevance de crédit-bail est éclatée entre amortissement et intérêts, comme pour un bien acheté à crédit ; les subventions d'exploitation complètent le prix de vente et rejoignent la VA.",
+   "src": "Centrale de bilans (Banque de France), retraitements des SIG",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Ventes de marchandises HT 500 000 €, marge commerciale 215 000 €. Quel est le taux de marge commerciale ?",
+   "opts": [
+    "43 %",
+    "57 %",
+    "75,4 %",
+    "30 %"
+   ],
+   "a": 0,
+   "why": "Taux de marge commerciale = marge commerciale / ventes de marchandises HT = 215 000 / 500 000 = 43 %. 57 % est la part du coût d'achat dans les ventes ; 75,4 % rapporte la marge au coût d'achat (215 000 / 285 000), ce qui est un taux de marque inversé, pas le ratio attendu.",
+   "src": "Programme DCG UE6, ratios de profitabilité",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Valeur ajoutée 155 000 €, charges de personnel 95 000 €, aucune participation. Quelle est la part du personnel dans le partage de la valeur ajoutée (arrondie à 0,1 %) ?",
+   "opts": [
+    "61,3 %",
+    "38,7 %",
+    "95,0 %",
+    "163,2 %"
+   ],
+   "a": 0,
+   "why": "Part du personnel = (charges de personnel + participation) / VA = 95 000 / 155 000 = 61,3 %. 38,7 % est le complément (part restante pour l'État, les prêteurs, les associés et l'entreprise) ; 163,2 % inverse le ratio.",
+   "src": "Programme DCG UE6, partage de la valeur ajoutée",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "En N−1, l'entreprise a vendu 1 000 unités à 50 € ; en N, 1 100 unités à 52 €. Calculez l'effet volume sur la variation du chiffre d'affaires, en valorisant la variation de quantité au prix de N−1 (en euros).",
+   "a": 5000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Effet volume = (quantité N − quantité N−1) × prix N−1 = (1 100 − 1 000) × 50 = 5 000 €. L'effet prix = (52 − 50) × 1 100 = 2 200 €. Total 7 200 € = 57 200 − 50 000 : la décomposition redonne bien la variation du CA (+14,4 %).",
+   "src": "Programme DCG UE6, analyse de l'activité (effets volume et prix)",
+   "fiab": "stable",
+   "niveau": 3
   }
  ]
 }

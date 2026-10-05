@@ -1,0 +1,454 @@
+{
+ "id": "ue6-04",
+ "ue": "UE6",
+ "ordre": 4,
+ "title": "Choix d'investissement : actualisation, VAN, TRI",
+ "resume": "Maîtriser la valeur temps de l'argent, construire les flux de trésorerie d'un projet et le juger avec la VAN, le TRI, l'indice de profitabilité et le délai de récupération, en intégrant inflation et risque.",
+ "duree": "75 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "La valeur temps de l'argent : capitalisation et actualisation",
+   "html": "<p>Un euro aujourd'hui vaut plus qu'un euro demain : il peut être placé et rapporter un intérêt. À intérêts <b>composés</b>, les intérêts de chaque période s'ajoutent au capital et produisent eux-mêmes des intérêts.</p>\n<ul>\n<li><b>Capitalisation</b> : valeur acquise dans n périodes d'un capital C placé au taux i : <span class=\"mono\">Cn = C × (1 + i)^n</span>. Exemple : 10 000 € à 5 % pendant 3 ans : 10 000 × 1,05³ = 11 576,25 €.</li>\n<li><b>Actualisation</b> : opération inverse, valeur aujourd'hui d'un flux F reçu dans n périodes : <span class=\"mono\">V0 = F × (1 + i)^-n</span>. Exemple : 20 000 € dans 4 ans à 6 % : 20 000 × 1,06^-4 = 20 000 × 0,7921 = 15 842 €.</li>\n</ul>\n<p>Le coefficient (1 + i)^-n est le <b>facteur d'actualisation</b> ; les sujets le fournissent souvent dans une table. Plus le taux est élevé ou l'échéance lointaine, plus la valeur actuelle est faible.</p>\n<p>En finance d'entreprise, le taux d'actualisation d'un projet est le <b>coût du capital</b> (coût moyen pondéré des ressources, chapitre 5), éventuellement majoré d'une prime pour les projets plus risqués que l'activité habituelle. Actualiser à ce taux revient à exiger du projet qu'il rémunère au moins les apporteurs de fonds.</p>"
+  },
+  {
+   "h": "Annuités constantes et rente perpétuelle",
+   "html": "<p>Une <b>annuité constante</b> est une suite de n flux égaux a, versés en fin de période. Sa valeur actuelle au taux i s'obtient par :</p>\n<p class=\"mono\">V0 = a × [1 − (1 + i)^-n] / i</p>\n<p>Le coefficient [1 − (1 + i)^-n] / i est tabulé. Exemple : 4 000 € par an pendant 5 ans à 8 % : coefficient (1 − 1,08^-5) / 0,08 = 3,9927 ; V0 = 4 000 × 3,9927 = 15 971 €.</p>\n<p>La valeur acquise de la même suite à la date du dernier versement est <span class=\"mono\">Vn = a × [(1 + i)^n − 1] / i</span>.</p>\n<p>Quand n tend vers l'infini, le coefficient tend vers 1 / i : la <b>rente perpétuelle</b> vaut <span class=\"mono\">V0 = a / i</span>. Exemple : 3 000 € par an indéfiniment à 6 % : 50 000 €. Avec une croissance g du flux, V0 = a1 / (i − g) (modèle utilisé par Gordon-Shapiro au chapitre 5).</p>\n<p>Usage : la formule de l'annuité sert à actualiser des flux de projet constants, à calculer l'annuité d'un emprunt (a = C × i / [1 − (1 + i)^-n]) et à ramener une VAN à une annuité équivalente.</p>\n<p>Piège : la formule suppose des flux de <b>fin</b> de période ; si les flux sont en début de période, multiplier le résultat par (1 + i).</p>"
+  },
+  {
+   "h": "Les flux de trésorerie d'un projet",
+   "html": "<p>Un investissement se juge sur ses <b>flux de trésorerie</b>, jamais sur son résultat comptable, et indépendamment de son financement (les intérêts d'emprunt sont exclus : le coût des fonds est dans le taux d'actualisation).</p>\n<ul>\n<li><b>Investissement initial</b> (date 0) : prix d'acquisition HT + frais d'installation et de mise en service + augmentation du BFR induite par le projet. La TVA récupérable est exclue.</li>\n<li><b>Flux nets de trésorerie d'exploitation</b> (FNT) des années 1 à n : <span class=\"mono\">FNT = EBE − IS sur le résultat d'exploitation</span>, ce qui équivaut à <span class=\"mono\">résultat net d'exploitation + dotations</span>. L'amortissement n'est pas un décaissement, mais il réduit l'IS : l'<b>économie d'impôt</b> vaut dotation × taux d'IS.</li>\n<li><b>Flux de fin de projet</b> (année n) : valeur résiduelle nette d'impôt (la plus-value éventuelle est imposée) + récupération du BFR.</li>\n</ul>\n<p>Exemple (IS à 25 %) : CA 300 000, charges décaissables 180 000, dotation 40 000. EBE 120 000 ; REX 80 000 ; IS 20 000 ; FNT = 120 000 − 20 000 = 100 000 (= 60 000 + 40 000). Si en dernière année la valeur résiduelle est 20 000 (VNC nulle, imposée à 25 %) et le BFR récupéré 30 000 : flux final = 100 000 + 15 000 + 30 000 = 145 000 €.</p>\n<p>L'<b>horizon</b> retenu est la durée de vie économique du projet, souvent la durée d'amortissement.</p>"
+  },
+  {
+   "h": "VAN et indice de profitabilité",
+   "html": "<p>La <b>valeur actuelle nette</b> compare la valeur actuelle des flux futurs à l'investissement initial :</p>\n<p class=\"mono\">VAN = Σ FNTk × (1 + i)^-k + VR × (1 + i)^-n − I0</p>\n<p>Décision : un projet est acceptable si VAN > 0 (il rapporte plus que le coût du capital exigé) ; entre projets exclusifs de même taille et durée, on retient la VAN la plus élevée. La VAN mesure la <b>création de valeur</b> en euros d'aujourd'hui.</p>\n<p>Exemple : I0 = 24 000, FNT = 10 000 par an pendant 3 ans, taux 10 %, coefficient (1 − 1,1^-3) / 0,1 = 2,4869. VAN = 10 000 × 2,4869 − 24 000 = 869 € > 0 : projet acceptable.</p>\n<p>L'<b>indice de profitabilité</b> ramène la VAN à l'euro investi, utile pour comparer des projets de tailles différentes :</p>\n<p class=\"mono\">IP = valeur actuelle des flux / I0 = 1 + VAN / I0</p>\n<p>Exemple : valeur actuelle des flux 300 000, I0 250 000 : IP = 1,2, soit 0,20 € de valeur créée par euro investi. Acceptable si IP > 1.</p>\n<div class=\"note\"><b>Règle.</b> Le taux d'actualisation traduit l'exigence des apporteurs de fonds. Une VAN nulle ne signifie pas « gain nul » : le projet rapporte exactement le coût du capital.</div>"
+  },
+  {
+   "h": "TRI et délai de récupération",
+   "html": "<p>Le <b>taux de rentabilité interne</b> (TRI) est le taux d'actualisation qui annule la VAN : Σ FNTk × (1 + TRI)^-k = I0. Le projet est acceptable si TRI > coût du capital. Sans calculatrice financière, on procède par <b>interpolation linéaire</b> entre deux taux encadrant la VAN nulle :</p>\n<p class=\"mono\">TRI ≈ t1 + (t2 − t1) × VAN(t1) / [VAN(t1) − VAN(t2)]</p>\n<p>Exemple : I0 = 100 000, FNT = 40 000 sur 3 ans. VAN à 9 % = 40 000 × 2,5313 − 100 000 = +1 252 ; VAN à 10 % = 40 000 × 2,4869 − 100 000 = −524. TRI ≈ 9 % + 1 % × 1 252 / (1 252 + 524) = 9,70 %.</p>\n<p>Le <b>délai de récupération</b> (pay-back) est le temps nécessaire pour que les flux cumulés remboursent l'investissement. Version simple : cumul des FNT non actualisés ; version actualisée : cumul des FNT actualisés. Exemple : I0 = 200 000, flux 60 000, 70 000, 80 000, 90 000 ; cumul 60 000, 130 000, 210 000 : récupération en 2 + (200 000 − 130 000) / 80 000 = 2,875 ans, soit 2 ans et 10,5 mois.</p>\n<p>Le délai privilégie la liquidité et la prudence, mais il ignore les flux postérieurs à la récupération et, dans sa version simple, la valeur temps. Il complète la VAN sans la remplacer.</p>"
+  },
+  {
+   "h": "Comparer des projets : conflits de critères, annuité équivalente, VAN globale",
+   "html": "<p>VAN et TRI peuvent se contredire quand les projets diffèrent par la taille ou par le profil des flux. Cause : le TRI suppose implicitement que les flux intermédiaires sont réinvestis <b>au TRI</b>, hypothèse irréaliste pour un TRI élevé, alors que la VAN suppose un réinvestissement au coût du capital. En cas de conflit, la théorie privilégie la <b>VAN</b>, qui mesure directement la valeur créée pour les associés.</p>\n<p><b>Durées différentes</b> : on ramène chaque VAN à une <b>annuité équivalente</b> sur la durée du projet, et on retient l'annuité la plus forte :</p>\n<p class=\"mono\">Annuité équivalente = VAN / {[1 − (1 + i)^-n] / i}</p>\n<p>Exemple : VAN 12 000 sur 4 ans à 8 %, coefficient 3,3121 : annuité équivalente = 12 000 / 3,3121 = 3 623 €. Autre méthode : renouveler les projets sur le plus petit commun multiple des durées.</p>\n<p><b>VAN globale et TRI global</b> : pour lever l'ambiguïté du réinvestissement, on capitalise les flux intermédiaires jusqu'en n à un taux de réinvestissement explicite r, puis on actualise cette valeur acquise au coût du capital : VAN globale = (Σ FNTk × (1 + r)^(n−k)) × (1 + i)^-n − I0. Le TRI global est le taux qui égalise I0 et la valeur acquise actualisée.</p>\n<p>Lien DSCG : ces outils sont repris en UE2 avec les options réelles et la VAN ajustée.</p>"
+  },
+  {
+   "h": "Inflation et risque",
+   "html": "<p><b>Inflation.</b> Les flux doivent être cohérents avec le taux : flux en euros courants (nominaux) actualisés au taux nominal, ou flux en euros constants (réels) actualisés au taux réel. Relation de <b>Fisher</b> : <span class=\"mono\">(1 + taux nominal) = (1 + taux réel) × (1 + inflation)</span>. Exemple : nominal 10,25 % et inflation 5 % : taux réel = 1,1025 / 1,05 − 1 = 5 %. L'approximation « réel ≈ nominal − inflation » est acceptable pour de faibles taux.</p>\n<p><b>Avenir probabilisable.</b> À chaque scénario on associe une probabilité ; on calcule l'<b>espérance</b> de la VAN, E(VAN) = Σ pk × VANk, et son <b>écart-type</b> σ = √(Σ pk × (VANk − E)²), mesure du risque. Le coefficient de variation σ / E permet de comparer des projets d'espérances différentes. Exemple : VAN de −20 000 (p 0,2), 30 000 (p 0,5), 60 000 (p 0,3) : E = 29 000 ; variance = 0,2 × 49 000² + 0,5 × 1 000² + 0,3 × 31 000² = 769 000 000 ; σ = 27 731.</p>\n<p><b>Arbre de décision</b> : décisions séquentielles, on calcule l'espérance de VAN à chaque nœud en remontant de la fin vers le début.</p>\n<p><b>Analyse de sensibilité</b> : on fait varier une hypothèse (prix, volume, coût) et on observe l'effet sur la VAN pour repérer les variables critiques. Le <b>seuil de rentabilité</b> (charges fixes / taux de marge sur coût variable) indique le CA minimum : charges fixes 120 000 et taux de MCV 40 % donnent 300 000 €.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Programme du DCG UE6 Finance d'entreprise (arrêté du 13 février 2019 ; arrêté du 4 août 2025, BOESR n° 32 du 28 août 2025), partie 2 : la politique d'investissement (valeur temps, flux, VAN, TRI, délai de récupération, risque)",
+   "note": "Périmètre des critères de choix d'investissement"
+  },
+  {
+   "ref": "P. Recroix, DCG 6 Finance d'entreprise, Gualino, éd. 2025-2026, chapitres sur la rentabilité des investissements",
+   "note": "Formules de capitalisation, d'actualisation, d'annuité et des critères"
+  },
+  {
+   "ref": "J. Delahaye, F. Duprat, DCG 6 Finance d'entreprise, Dunod, éd. 2025-2026",
+   "note": "Flux nets de trésorerie, VAN globale, annuité équivalente"
+  },
+  {
+   "ref": "P. Vernimmen, P. Quiry, Y. Le Fur, Finance d'entreprise, Dalloz, éd. 2025, chapitres « la valeur et le temps » et « choix d'investissement »",
+   "note": "Fondements théoriques : VAN, TRI, relation de Fisher"
+  },
+  {
+   "ref": "CGI, art. 219, I : taux normal de l'impôt sur les sociétés (25 %)",
+   "note": "Taux d'IS utilisé dans les flux après impôt"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "L'actualisation consiste à :",
+   "opts": [
+    "Calculer la valeur aujourd'hui d'un flux futur en le divisant par (1 + i)^n",
+    "Calculer la valeur future d'un capital en le multipliant par (1 + i)^n",
+    "Ajouter l'inflation à un flux futur",
+    "Répartir un investissement sur sa durée d'utilisation"
+   ],
+   "a": 0,
+   "why": "Actualiser, c'est ramener un flux futur à sa valeur présente en lui appliquant le coefficient (1 + i)^-n. L'opération inverse, qui projette un capital dans le futur, est la capitalisation. La dernière option décrit l'amortissement comptable.",
+   "src": "Programme DCG UE6, valeur temps de l'argent",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un capital de 10 000 € est placé pendant 3 ans à 5 % l'an, à intérêts composés. Calculez la valeur acquise au bout de 3 ans, arrondie à l'euro.",
+   "a": 11576,
+   "unit": "€",
+   "tol": 1,
+   "why": "Valeur acquise = 10 000 × 1,05³ = 10 000 × 1,157625 = 11 576,25 €, soit 11 576 € arrondi. À intérêts simples, on n'aurait que 10 000 + 3 × 500 = 11 500 € : la différence de 76 € vient des intérêts produits par les intérêts.",
+   "src": "Programme DCG UE6, capitalisation à intérêts composés",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la valeur actuelle de 20 000 € reçus dans 4 ans, au taux de 6 % (1,06^-4 = 0,7921) ?",
+   "opts": [
+    "15 842 €",
+    "25 250 €",
+    "18 868 €",
+    "16 000 €"
+   ],
+   "a": 0,
+   "why": "V0 = 20 000 × 1,06^-4 = 20 000 × 0,7921 = 15 842 €. 25 250 € est la valeur acquise (capitalisation, 20 000 × 1,06^4) ; 18 868 € actualise sur un an seulement ; 16 000 € applique une décote simple de 4 × 5 %.",
+   "src": "Programme DCG UE6, actualisation",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un projet procure 4 000 € par an, en fin d'année, pendant 5 ans. Taux d'actualisation 8 %. Coefficient (1 − 1,08^-5) / 0,08 = 3,9927. Calculez la valeur actuelle de ces flux, arrondie à l'euro.",
+   "a": 15971,
+   "unit": "€",
+   "tol": 1,
+   "why": "Valeur actuelle d'une annuité constante = a × [1 − (1 + i)^-n] / i = 4 000 × 3,9927 = 15 970,8 €, soit 15 971 €. Les 20 000 € nominaux ne valent que 15 971 € aujourd'hui, car chaque flux est reçu avec retard.",
+   "src": "Programme DCG UE6, valeur actuelle d'une annuité constante",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la valeur actuelle d'une rente perpétuelle de 3 000 € par an au taux de 6 % ?",
+   "opts": [
+    "50 000 €",
+    "18 000 €",
+    "3 180 €",
+    "Infinie"
+   ],
+   "a": 0,
+   "why": "Quand n tend vers l'infini, le coefficient [1 − (1 + i)^-n] / i tend vers 1 / i : V0 = a / i = 3 000 / 0,06 = 50 000 €. La valeur n'est pas infinie car les flux lointains, fortement actualisés, tendent vers zéro. 18 000 € multiplie au lieu de diviser.",
+   "src": "Programme DCG UE6, rente perpétuelle",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments entrent dans l'investissement initial d'un projet (flux de la date 0) ?",
+   "opts": [
+    "Prix d'acquisition HT du matériel",
+    "Frais d'installation et de mise en service",
+    "Augmentation du BFR induite par le projet",
+    "TVA déductible sur l'acquisition",
+    "Intérêts de l'emprunt finançant le projet"
+   ],
+   "a": [0, 1, 2],
+   "why": "L'investissement initial comprend tout ce qui est décaissé pour rendre le projet opérationnel : prix HT, frais accessoires et le BFR supplémentaire (qui sera récupéré en fin de projet). La TVA déductible est récupérée, donc neutre. Les intérêts relèvent du financement : ils sont pris en compte via le taux d'actualisation, pas dans les flux.",
+   "src": "Programme DCG UE6, flux d'investissement",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "IS à 25 %. Un projet génère chaque année un chiffre d'affaires de 300 000 €, des charges d'exploitation décaissables de 180 000 € et une dotation aux amortissements de 40 000 €. Calculez le flux net de trésorerie d'exploitation annuel (en euros).",
+   "a": 100000,
+   "unit": "€",
+   "tol": 1,
+   "why": "EBE = 300 000 − 180 000 = 120 000 €. Résultat d'exploitation = 120 000 − 40 000 = 80 000 € ; IS = 80 000 × 25 % = 20 000 €. FNT = EBE − IS = 120 000 − 20 000 = 100 000 €. Vérification par l'autre méthode : résultat net 60 000 + dotation 40 000 = 100 000 €.",
+   "src": "Programme DCG UE6, flux nets de trésorerie d'exploitation",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "IS à 25 %. Un matériel est amorti de 40 000 € par an. Quelle économie d'impôt annuelle cet amortissement procure-t-il ?",
+   "opts": [
+    "10 000 €",
+    "40 000 €",
+    "30 000 €",
+    "Aucune : l'amortissement n'est pas un flux de trésorerie"
+   ],
+   "a": 0,
+   "why": "L'amortissement n'est pas décaissé, mais il est déductible : il réduit le résultat imposable de 40 000 € et donc l'IS de 40 000 × 25 % = 10 000 €. C'est ce flux positif qu'on retrouve dans le FNT. 30 000 € est la charge nette d'impôt, pas l'économie.",
+   "src": "Programme DCG UE6, économie d'impôt sur amortissements ; CGI art. 219, I",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments doivent être exclus du calcul des flux nets de trésorerie d'exploitation d'un projet ?",
+   "opts": [
+    "Les intérêts de l'emprunt qui finance le projet",
+    "Les dotations aux amortissements elles-mêmes (hors leur effet sur l'IS)",
+    "L'IS calculé sur le résultat d'exploitation du projet",
+    "La variation du BFR liée au projet"
+   ],
+   "a": [0, 1],
+   "why": "On sépare la décision d'investissement de la décision de financement : les intérêts sont exclus des flux (le coût des fonds est dans le taux d'actualisation). Les dotations ne sont pas des décaissements ; seule leur économie d'impôt compte. En revanche, l'IS est bien un décaissement, et la variation du BFR un flux réel à inclure.",
+   "src": "Programme DCG UE6, flux nets de trésorerie",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "IS à 25 %. Dernière année d'un projet : FNT d'exploitation 100 000 € ; le matériel, totalement amorti, est revendu 20 000 € (plus-value imposée au taux de l'IS) ; le BFR de 30 000 € constitué au départ est récupéré. Calculez le flux de trésorerie total de la dernière année (en euros).",
+   "a": 145000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Valeur résiduelle nette d'impôt = 20 000 − 20 000 × 25 % = 15 000 € (la VNC étant nulle, toute la cession est une plus-value imposable). Récupération du BFR : 30 000 €, sans impôt (ce n'est pas un produit). Flux final = 100 000 + 15 000 + 30 000 = 145 000 €.",
+   "src": "Programme DCG UE6, valeur résiduelle et récupération du BFR",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément selon sa place dans l'échéancier des flux d'un projet d'investissement.",
+   "cats": [
+    "Investissement initial (date 0)",
+    "Flux d'exploitation (années 1 à n)",
+    "Flux de fin de projet (année n)",
+    "Non pris en compte dans les flux"
+   ],
+   "items": [
+    ["Prix d'achat HT de la machine", 0],
+    ["Frais d'installation", 0],
+    ["Constitution du BFR", 0],
+    ["EBE − IS sur le résultat d'exploitation", 1],
+    ["Économie d'IS sur les amortissements", 1],
+    ["Valeur résiduelle nette d'impôt", 2],
+    ["Récupération du BFR", 2],
+    ["Intérêts de l'emprunt", 3],
+    ["TVA déductible sur l'acquisition", 3]
+   ],
+   "why": "La date 0 regroupe tous les décaissements nécessaires au démarrage, BFR compris. Les années 1 à n reçoivent les flux d'exploitation après impôt (l'économie d'IS sur amortissements y est déjà incluse quand on calcule EBE − IS). La dernière année ajoute la valeur résiduelle nette et la récupération du BFR. Intérêts (financement) et TVA récupérable sont exclus.",
+   "src": "Programme DCG UE6, échéancier des flux d'un projet",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quel taux d'actualisation utilise-t-on normalement pour calculer la VAN d'un projet ?",
+   "opts": [
+    "Le coût du capital de l'entreprise (CMPC), éventuellement ajusté du risque du projet",
+    "Le taux d'inflation",
+    "Le taux de l'emprunt qui finance le projet",
+    "Le taux de rentabilité interne du projet"
+   ],
+   "a": 0,
+   "why": "Le taux d'actualisation représente le rendement exigé par l'ensemble des apporteurs de fonds : c'est le coût moyen pondéré du capital. Le seul taux de l'emprunt sous-estimerait l'exigence des actionnaires. Actualiser au TRI donnerait par définition une VAN nulle.",
+   "src": "Programme DCG UE6, taux d'actualisation et coût du capital",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Investissement initial 24 000 €. Flux nets de trésorerie de 10 000 € par an pendant 3 ans (fin d'année). Taux d'actualisation 10 %. Utilisez le coefficient (1 − 1,1^-3) / 0,1 = 2,4869. Calculez la VAN, arrondie à l'euro.",
+   "a": 869,
+   "unit": "€",
+   "tol": 1,
+   "why": "Valeur actuelle des flux = 10 000 × 2,4869 = 24 869 €. VAN = 24 869 − 24 000 = +869 €. La VAN est positive : le projet rembourse l'investissement, rémunère les fonds à 10 % et crée 869 € de valeur supplémentaire.",
+   "src": "Programme DCG UE6, valeur actuelle nette",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une VAN positive signifie que :",
+   "opts": [
+    "Le projet rapporte plus que le taux exigé par les apporteurs de fonds et crée de la valeur",
+    "Le projet est bénéficiaire au sens comptable dès la première année",
+    "Le projet se rembourse en moins d'un an",
+    "Le TRI du projet est inférieur au coût du capital"
+   ],
+   "a": 0,
+   "why": "La VAN actualise les flux au coût du capital : si elle est positive, les flux font mieux que rémunérer les apporteurs de fonds au taux exigé. Cela n'implique rien sur le résultat comptable annuel ni sur le délai de récupération. Une VAN positive correspond au contraire à un TRI supérieur au coût du capital.",
+   "src": "Programme DCG UE6, interprétation de la VAN",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Valeur actuelle des flux d'un projet : 300 000 € ; investissement initial : 250 000 €. Quel est l'indice de profitabilité ?",
+   "opts": [
+    "1,2",
+    "0,83",
+    "50 000",
+    "0,2"
+   ],
+   "a": 0,
+   "why": "IP = valeur actuelle des flux / I0 = 300 000 / 250 000 = 1,2 : chaque euro investi rapporte 1,20 € en valeur actuelle, soit 0,20 € de valeur créée. 50 000 est la VAN ; 0,83 inverse le ratio ; 0,2 est VAN / I0, c'est-à-dire IP − 1.",
+   "src": "Programme DCG UE6, indice de profitabilité",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Le taux de rentabilité interne (TRI) d'un projet est :",
+   "opts": [
+    "Le taux d'actualisation pour lequel la VAN est nulle",
+    "Le rapport résultat net / investissement",
+    "Le taux d'intérêt de l'emprunt finançant le projet",
+    "Le taux de croissance annuel des flux"
+   ],
+   "a": 0,
+   "why": "Le TRI est le taux qui égalise la valeur actuelle des flux futurs et l'investissement initial (VAN = 0). On accepte le projet si TRI > coût du capital. Résultat net / investissement est un taux de rentabilité comptable, qui ignore la valeur temps.",
+   "src": "Programme DCG UE6, taux de rentabilité interne",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Pour un projet, la VAN vaut +1 252 € au taux de 9 % et −526 € au taux de 10 %. Calculez le TRI par interpolation linéaire, en %, arrondi à 0,01 %.",
+   "a": 9.7,
+   "unit": "%",
+   "tol": 0.05,
+   "why": "TRI ≈ 9 % + (10 % − 9 %) × 1 252 / (1 252 + 526) = 9 % + 1 % × 0,7042 = 9,70 %. L'interpolation suppose la VAN linéaire entre les deux taux ; l'approximation est bonne car l'intervalle est étroit (le TRI exact est 9,70 %).",
+   "src": "Programme DCG UE6, TRI par interpolation linéaire",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Investissement initial 200 000 €. Flux nets de trésorerie : 60 000 € (année 1), 70 000 € (année 2), 80 000 € (année 3), 90 000 € (année 4), supposés répartis uniformément dans l'année. Calculez le délai de récupération non actualisé, en années, arrondi à 2 décimales.",
+   "a": 2.88,
+   "unit": "",
+   "tol": 0.01,
+   "why": "Flux cumulés : 60 000 après 1 an, 130 000 après 2 ans, 210 000 après 3 ans. L'investissement est récupéré au cours de l'année 3 : il manque 200 000 − 130 000 = 70 000 € sur un flux annuel de 80 000 €, soit 0,875 an. Délai = 2,875 ans, arrondi 2,88 (environ 2 ans et 10,5 mois).",
+   "src": "Programme DCG UE6, délai de récupération",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la principale limite du délai de récupération comme critère de choix ?",
+   "opts": [
+    "Il ignore les flux de trésorerie postérieurs à la récupération",
+    "Il nécessite de connaître le coût du capital",
+    "Il ne peut pas être calculé pour des flux variables",
+    "Il favorise systématiquement les projets longs"
+   ],
+   "a": 0,
+   "why": "Le délai mesure la vitesse de remboursement, pas la rentabilité : un projet très rentable sur longue durée peut être rejeté au profit d'un projet médiocre vite remboursé. Il favorise donc les projets courts. La version simple n'a pas besoin du coût du capital, et le calcul fonctionne avec des flux variables (cumul).",
+   "src": "Programme DCG UE6, limites du délai de récupération",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Deux projets exclusifs : le projet A a la VAN la plus élevée, le projet B le TRI le plus élevé. Que faire ?",
+   "opts": [
+    "Retenir A : la VAN mesure directement la valeur créée, et le TRI repose sur une hypothèse de réinvestissement au TRI",
+    "Retenir B : le TRI est toujours le critère prioritaire",
+    "Retenir le projet au délai de récupération le plus court",
+    "Les deux critères sont équivalents, il n'y a jamais de conflit"
+   ],
+   "a": 0,
+   "why": "Le conflit vient de l'hypothèse implicite de réinvestissement des flux intermédiaires : au TRI pour le TRI, au coût du capital pour la VAN. Réinvestir à un TRI élevé est irréaliste. La VAN, qui mesure l'enrichissement des associés en euros, est le critère théoriquement privilégié ; la VAN globale permet de lever l'ambiguïté avec un taux de réinvestissement explicite.",
+   "src": "Programme DCG UE6, conflits entre VAN et TRI",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "La VAN globale d'un projet se calcule :",
+   "opts": [
+    "En capitalisant les flux intermédiaires à un taux de réinvestissement explicite jusqu'à la fin du projet, puis en actualisant cette valeur acquise au coût du capital",
+    "En additionnant les VAN de tous les projets de l'entreprise",
+    "En actualisant les flux au TRI",
+    "En ajoutant l'inflation à la VAN simple"
+   ],
+   "a": 0,
+   "why": "La VAN globale remplace l'hypothèse implicite de réinvestissement par un taux choisi (taux de placement réellement accessible) : on capitalise les flux jusqu'en n, puis on actualise au coût du capital et on retranche I0. Le TRI global est le taux qui égalise l'investissement et cette valeur acquise.",
+   "src": "Programme DCG UE6, VAN globale et TRI global",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Un projet de 4 ans a une VAN de 12 000 € au taux de 8 %. Coefficient (1 − 1,08^-4) / 0,08 = 3,3121. Calculez l'annuité équivalente, arrondie à l'euro.",
+   "a": 3623,
+   "unit": "€",
+   "tol": 1,
+   "why": "Annuité équivalente = VAN / coefficient d'annuité = 12 000 / 3,3121 = 3 623 €. Elle représente la création de valeur annuelle du projet et permet de le comparer à un projet de durée différente (par exemple un projet de 6 ans avec une VAN plus élevée mais une annuité équivalente plus faible).",
+   "src": "Programme DCG UE6, annuité équivalente",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Pour comparer deux projets de durées différentes (4 ans et 6 ans), quelle méthode est appropriée ?",
+   "opts": [
+    "Comparer leurs annuités équivalentes (VAN / coefficient d'annuité de chaque durée)",
+    "Comparer directement leurs VAN",
+    "Retenir celui qui a la durée la plus longue",
+    "Comparer leurs résultats comptables cumulés"
+   ],
+   "a": 0,
+   "why": "Une VAN sur 6 ans n'est pas comparable à une VAN sur 4 ans : le projet court libère des fonds réinvestissables plus tôt. L'annuité équivalente ramène chaque VAN à une création de valeur annuelle. Autre méthode : renouveler les projets sur le plus petit commun multiple des durées (12 ans).",
+   "src": "Programme DCG UE6, projets de durées différentes",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le taux d'actualisation nominal est de 10,25 % et l'inflation attendue de 5 %. Quel est le taux réel selon la relation de Fisher ?",
+   "opts": [
+    "5 %",
+    "5,25 %",
+    "15,25 %",
+    "4,75 %"
+   ],
+   "a": 0,
+   "why": "(1 + nominal) = (1 + réel) × (1 + inflation), donc réel = 1,1025 / 1,05 − 1 = 1,05 − 1 = 5 %. L'approximation nominal − inflation donnerait 5,25 %, légèrement surestimée. Les flux en euros constants s'actualisent au taux réel, les flux en euros courants au taux nominal.",
+   "src": "Programme DCG UE6, inflation et relation de Fisher",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Trois scénarios pour la VAN d'un projet : −20 000 € avec une probabilité de 0,2 ; 30 000 € avec une probabilité de 0,5 ; 60 000 € avec une probabilité de 0,3. Calculez l'espérance mathématique de la VAN (en euros).",
+   "a": 29000,
+   "unit": "€",
+   "tol": 1,
+   "why": "E(VAN) = Σ pk × VANk = 0,2 × (−20 000) + 0,5 × 30 000 + 0,3 × 60 000 = −4 000 + 15 000 + 18 000 = 29 000 €. L'espérance est positive : en moyenne le projet crée de la valeur, mais il existe 20 % de risque de perte.",
+   "src": "Programme DCG UE6, décision en avenir probabilisable",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Mêmes données : VAN de −20 000 € (p = 0,2), 30 000 € (p = 0,5), 60 000 € (p = 0,3), espérance 29 000 €. Calculez l'écart-type de la VAN, arrondi à l'euro.",
+   "a": 27731,
+   "unit": "€",
+   "tol": 1,
+   "why": "Variance = 0,2 × (−20 000 − 29 000)² + 0,5 × (30 000 − 29 000)² + 0,3 × (60 000 − 29 000)² = 0,2 × 2 401 000 000 + 0,5 × 1 000 000 + 0,3 × 961 000 000 = 480 200 000 + 500 000 + 288 300 000 = 769 000 000. Écart-type = √769 000 000 = 27 731 €. Le coefficient de variation 27 731 / 29 000 = 0,96 traduit un risque élevé.",
+   "src": "Programme DCG UE6, espérance et écart-type de la VAN",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Projet X : E(VAN) = 29 000 €, σ = 27 731 €. Projet Y : E(VAN) = 20 000 €, σ = 8 000 €. Quel projet est le moins risqué relativement à son espérance de gain ?",
+   "opts": [
+    "Y : coefficient de variation 0,40 contre 0,96 pour X",
+    "X : son écart-type est plus élevé donc il est plus sûr",
+    "X : son espérance est plus élevée",
+    "Les deux présentent le même risque relatif"
+   ],
+   "a": 0,
+   "why": "Le coefficient de variation σ / E mesure le risque par euro d'espérance : X = 27 731 / 29 000 = 0,96 ; Y = 8 000 / 20 000 = 0,40. Y est nettement moins risqué relativement. Le choix final dépend de l'aversion au risque du décideur : X gagne plus en moyenne mais avec une forte dispersion.",
+   "src": "Programme DCG UE6, coefficient de variation",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Charges fixes annuelles d'un projet 120 000 €, taux de marge sur coût variable 40 %. Quel chiffre d'affaires annuel minimum rend le projet rentable au sens du seuil de rentabilité ?",
+   "opts": [
+    "300 000 €",
+    "48 000 €",
+    "200 000 €",
+    "120 000 €"
+   ],
+   "a": 0,
+   "why": "Seuil de rentabilité = charges fixes / taux de marge sur coût variable = 120 000 / 0,40 = 300 000 €. À ce niveau, la marge sur coût variable (120 000) couvre exactement les charges fixes. 48 000 multiplie au lieu de diviser ; 200 000 utiliserait un taux de 60 %.",
+   "src": "Programme DCG UE6, seuil de rentabilité (analyse du risque d'exploitation)",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

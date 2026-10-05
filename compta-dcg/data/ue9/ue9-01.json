@@ -3,36 +3,65 @@
  "ue": "UE9",
  "ordre": 1,
  "title": "Le bilan et le compte de résultat",
- "resume": "Patrimoine, actif / passif, charges / produits : les deux documents que tout le reste alimente.",
- "duree": "25 min",
+ "resume": "Patrimoine, actif / passif, charges / produits, résultat : les deux documents que tout le reste de la comptabilité alimente.",
+ "duree": "45 min",
  "niveau": 1,
  "lecon": [
   {
    "h": "Le bilan : une photo du patrimoine",
-   "html": "<p>Le bilan décrit <b>ce que l'entreprise possède</b> et <b>ce qu'elle doit</b> à une date donnée, en général le 31 décembre. Il a deux colonnes qui sont toujours égales.</p>\n<ul>\n<li><b>Actif</b> (à gauche) : les emplois, ce que l'entreprise détient. Actif immobilisé (bâtiments, machines, matériel), puis actif circulant (stocks, créances clients, banque, caisse).</li>\n<li><b>Passif</b> (à droite) : les ressources, d'où vient l'argent. Capitaux propres (capital apporté, réserves, résultat), puis dettes (emprunts, fournisseurs, dettes fiscales et sociales).</li>\n</ul>\n<div class=\"note\"><b>Règle.</b> Actif = Passif, toujours. Chaque ressource finance un emploi : l'argent qu'on a (actif) vient forcément de quelque part (passif).</div>"
+   "html": "<p>Le bilan décrit <b>ce que l'entreprise possède</b> et <b>ce qu'elle doit</b> à une date donnée, en général le 31 décembre. C'est une <b>photographie du patrimoine</b>. Il a deux colonnes qui sont toujours égales.</p><ul><li><b>Actif</b> (à gauche) : les <b>emplois</b>, ce que l'entreprise détient. D'abord l'<b>actif immobilisé</b> (terrains, bâtiments, machines, matériel, logiciels, titres détenus durablement), puis l'<b>actif circulant</b> (stocks, créances clients, disponibilités en banque et en caisse).</li><li><b>Passif</b> (à droite) : les <b>ressources</b>, d'où vient l'argent. D'abord les <b>capitaux propres</b> (capital apporté par les associés, réserves, résultat de l'exercice), puis les <b>dettes</b> (emprunts, fournisseurs, dettes fiscales et sociales).</li></ul><p>Le PCG définit l'actif comme un élément du patrimoine ayant une <b>valeur économique positive</b> pour l'entité (art. 211-1) et le passif comme un élément ayant une <b>valeur économique négative</b>, c'est-à-dire une obligation envers un tiers (art. 321-1).</p><div class=\"note\"><b>Règle.</b> Actif = Passif, toujours. Chaque ressource finance un emploi : l'argent que l'on a (actif) vient forcément de quelque part (passif).</div>"
   },
   {
    "h": "Trois opérations, trois bilans",
-   "html": "<p>Une SARL se crée avec <span class=\"mono\">50 000 €</span> de capital versé en banque. Bilan : Banque 50 000 à l'actif, Capital 50 000 au passif.</p>\n<p>Elle achète une machine <span class=\"mono\">20 000 €</span> payée comptant. L'actif se réorganise : Machine 20 000 + Banque 30 000. Le passif ne bouge pas.</p>\n<p>Elle emprunte <span class=\"mono\">10 000 €</span>. Actif : Banque 40 000 + Machine 20 000 = 60 000. Passif : Capital 50 000 + Emprunt 10 000 = 60 000.</p>"
+   "html": "<p>Suivons la SARL Orvalis à sa création.</p><ol><li>Les associés versent <span class=\"mono\">50 000 €</span> de capital en banque. Bilan : Banque 50 000 à l'actif ; Capital 50 000 au passif. Total 50 000 des deux côtés.</li><li>Elle achète une machine <span class=\"mono\">20 000 €</span> payée comptant. L'actif se réorganise : Machine 20 000 + Banque 30 000 = 50 000. Le passif ne bouge pas : l'entreprise n'est ni plus riche ni plus pauvre, elle a seulement changé la forme de son patrimoine.</li><li>Elle emprunte <span class=\"mono\">10 000 €</span>. Actif : Banque 40 000 + Machine 20 000 = 60 000. Passif : Capital 50 000 + Emprunt 10 000 = 60 000.</li></ol><p>Observez : une opération peut faire varier l'actif et le passif du même montant (apport, emprunt), ou seulement l'actif (achat comptant, encaissement d'une créance), ou seulement le passif (un emprunt qui rembourse une dette fournisseur). Dans tous les cas l'égalité tient.</p><p>Le total du bilan est le <b>total de l'actif</b> (égal au total du passif). Ne le confondez pas avec les capitaux propres, qui ne sont qu'une partie du passif.</p>"
   },
   {
    "h": "Le compte de résultat : le film de l'exercice",
-   "html": "<p>Sur un exercice (12 mois), l'entreprise consomme des <b>charges</b> (achats, loyers, salaires, intérêts) et génère des <b>produits</b> (ventes, prestations). La différence est le <b>résultat</b>.</p>\n<ul>\n<li>Produits &gt; charges : <b>bénéfice</b>. Il enrichit l'entreprise et vient grossir les capitaux propres au passif du bilan.</li>\n<li>Charges &gt; produits : <b>perte</b>. Elle vient en moins des capitaux propres.</li>\n</ul>\n<div class=\"note\"><b>Lien entre les deux.</b> Le résultat de l'exercice apparaît dans les deux documents : en bas du compte de résultat, et dans les capitaux propres du bilan. C'est ce qui garde le bilan équilibré.</div>"
+   "html": "<p>Sur un exercice (en principe 12 mois), l'entreprise consomme des <b>charges</b> (achats de marchandises, loyers, salaires, intérêts d'emprunt, dotations aux amortissements) et génère des <b>produits</b> (ventes de marchandises, prestations de services, produits financiers). La différence est le <b>résultat</b>.</p><ul><li>Produits &gt; charges : <b>bénéfice</b>.</li><li>Charges &gt; produits : <b>perte</b>.</li></ul><p>Le compte de résultat classe charges et produits en trois niveaux : <b>exploitation</b> (l'activité normale), <b>financier</b> (intérêts, placements, change) et <b>exceptionnel</b>. Depuis le PCG 2025 (règlement ANC n° 2022-06), le résultat exceptionnel est réservé aux <b>événements majeurs et inhabituels</b> : la vente d'une machine ou d'un véhicule relève désormais de l'exploitation (comptes <code>657</code> et <code>757</code>), alors qu'avant 2025 elle était exceptionnelle (anciens comptes 675 et 775, supprimés).</p><div class=\"note\"><b>Charge ≠ décaissement.</b> Une charge est une consommation de ressources, pas une sortie d'argent. L'achat d'une machine n'est pas une charge (c'est une immobilisation) ; une dotation aux amortissements est une charge sans aucun paiement.</div>"
+  },
+  {
+   "h": "Le lien entre bilan et compte de résultat",
+   "html": "<p>Le résultat de l'exercice apparaît dans les <b>deux</b> documents : en bas du compte de résultat, et dans les <b>capitaux propres</b> du bilan (compte <code>120</code> pour un bénéfice, <code>129</code> pour une perte). C'est ce qui garde le bilan équilibré.</p><p>Exemple : Orvalis vend pour <span class=\"mono\">30 000 €</span> des marchandises qu'elle avait achetées <span class=\"mono\">18 000 €</span>, le tout réglé en banque. Produits 30 000, charges 18 000, bénéfice <span class=\"mono\">12 000</span>. Au bilan, la banque a augmenté de 12 000 (encaissé 30 000, décaissé 18 000) et, au passif, le résultat 12 000 s'ajoute aux capitaux propres. L'égalité est préservée.</p><p>Un bénéfice <b>enrichit</b> l'entreprise : capitaux propres de fin = capitaux propres de début + bénéfice − dividendes distribués (+ apports éventuels). Une perte les <b>diminue</b>. Attention : un bénéfice ne signifie pas que la banque est bien garnie, l'argent peut avoir été investi ou être encore chez les clients.</p><p>Au premier jour de l'exercice suivant, les comptes de charges et de produits repartent de zéro ; les comptes de bilan, eux, conservent leur solde (C. com., art. L. 123-19 : le bilan d'ouverture correspond au bilan de clôture précédent).</p>"
   },
   {
    "h": "Vocabulaire à fixer",
-   "html": "<ul>\n<li><b>Créance</b> : somme qu'un client nous doit (actif). <b>Dette</b> : somme que nous devons (passif).</li>\n<li><b>Immobilisation</b> : bien durable utilisé plus d'un an (actif immobilisé). <b>Stock</b> : bien destiné à être vendu ou consommé (actif circulant).</li>\n<li><b>Disponibilités</b> : banque et caisse.</li>\n<li><b>Exercice</b> : période de 12 mois entre deux bilans.</li>\n</ul>"
+   "html": "<ul><li><b>Créance</b> : somme qu'un tiers (client) nous doit. C'est un <b>actif</b>. <b>Dette</b> : somme que nous devons (fournisseur, banque, État, salariés). C'est un <b>passif</b>.</li><li><b>Immobilisation</b> : bien destiné à servir <b>durablement</b> l'activité, plus d'un exercice (actif immobilisé). <b>Stock</b> : bien destiné à être <b>vendu</b> ou consommé dans le cycle d'exploitation (actif circulant). Le même ordinateur est une immobilisation chez l'entreprise qui l'utilise et un stock chez le revendeur.</li><li><b>Disponibilités</b> : banque et caisse, l'argent immédiatement mobilisable.</li><li><b>Exercice</b> : période, en principe de 12 mois, entre deux bilans. Il ne coïncide pas forcément avec l'année civile.</li><li><b>Charge</b> / <b>produit</b> : flux qui appauvrissent / enrichissent l'entreprise pendant l'exercice. <b>Décaissement</b> / <b>encaissement</b> : mouvements de trésorerie. Un emprunt reçu est un encaissement, pas un produit ; son remboursement est un décaissement, pas une charge (seuls les intérêts sont une charge).</li><li><b>Capitaux propres</b> : capital + réserves + report à nouveau + résultat. C'est ce qui resterait aux associés si l'on vendait tout l'actif et payait toutes les dettes.</li></ul>"
+  },
+  {
+   "h": "Les comptes annuels : un tout indissociable",
+   "html": "<p>Le Code de commerce impose à tout commerçant d'établir à la clôture des <b>comptes annuels</b> composés du <b>bilan</b>, du <b>compte de résultat</b> et d'une <b>annexe</b> qui les complète et les commente ; ils <b>forment un tout indissociable</b> (C. com., art. L. 123-12 et L. 123-13). Les comptes doivent être <b>réguliers, sincères</b> et donner une <b>image fidèle</b> du patrimoine, de la situation financière et du résultat (art. L. 123-14 ; PCG art. 121-1 à 121-3).</p><p>Le PCG 2025 propose des <b>modèles</b> de bilan et de compte de résultat (Livre IV du règlement ANC n° 2014-03 modifié). Le bilan se présente en tableau (actif à gauche, passif à droite), le compte de résultat en tableau (charges à gauche, produits à droite) ou en liste. Les petites entreprises peuvent adopter une présentation simplifiée et les micro-entreprises sont dispensées d'annexe (art. L. 123-16 et L. 123-16-1).</p><p><b>Lien DSCG.</b> Le diagnostic financier (UE6 du DCG, puis DSCG UE2) repose entièrement sur la lecture de ces deux documents : bilan fonctionnel, soldes intermédiaires de gestion, capacité d'autofinancement. Savoir où va chaque élément est donc la base de tout.</p>"
   }
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "C. com., art. L. 123-12 et L. 123-13",
+   "note": "Obligation d'établir des comptes annuels (bilan, compte de résultat, annexe) formant un tout indissociable"
+  },
+  {
+   "ref": "C. com., art. L. 123-14",
+   "note": "Régularité, sincérité, image fidèle"
+  },
+  {
+   "ref": "C. com., art. L. 123-16 et L. 123-16-1",
+   "note": "Présentation simplifiée des petites entreprises, dispense d'annexe des micro-entreprises"
+  },
+  {
+   "ref": "PCG, art. 211-1 et 321-1",
+   "note": "Définitions de l'actif et du passif"
+  },
+  {
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes) et Livre IV (modèles de comptes annuels)",
+   "note": "Numéros de comptes et modèles de bilan et de compte de résultat issus du règlement ANC n° 2022-06"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "note": "Nouvelle définition du résultat exceptionnel, comptes 657/757 remplaçant 675/775"
   }
  ],
  "exercices": [
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Quelle égalité est vraie dans tout bilan ?",
    "opts": [
     "Actif = Passif",
@@ -41,26 +70,28 @@
     "Actif = Capitaux propres"
    ],
    "a": 0,
-   "why": "Les ressources (passif) financent les emplois (actif). Les deux colonnes sont donc toujours égales. Produits et charges ne sont égaux que si le résultat est nul.",
-   "src": "PCG",
+   "why": "Les ressources (passif) financent les emplois (actif) : les deux colonnes sont donc toujours égales. Produits et charges ne sont égaux que si le résultat est nul, et capitaux propres et dettes n'ont aucune raison d'être égaux : ce sont les deux composantes du passif, dont la somme égale l'actif.",
+   "src": "C. com., art. L. 123-13 ; PCG 2025, Livre IV (modèle de bilan)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un emprunt contracté auprès de la banque figure :",
    "opts": [
     "À l'actif, en disponibilités",
     "Au passif, dans les dettes",
     "Au passif, dans les capitaux propres",
-    "Dans les charges"
+    "Dans les charges du compte de résultat"
    ],
    "a": 1,
-   "why": "L'emprunt est une ressource externe qu'il faudra rembourser : c'est une dette (compte 164). L'argent reçu, lui, va à l'actif en banque.",
-   "src": "PCG",
+   "why": "L'emprunt est une ressource externe qu'il faudra rembourser : c'est une dette (compte 164). L'argent reçu, lui, va à l'actif en banque (512). Ce n'est pas une charge : recevoir un emprunt n'appauvrit pas l'entreprise, seuls les intérêts futurs seront des charges.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "tri",
+   "niveau": 1,
    "q": "Classez chaque élément dans la bonne partie du bilan.",
    "cats": [
     "Actif immobilisé",
@@ -102,21 +133,24 @@
      2
     ]
    ],
-   "why": "Actif immobilisé = biens durables. Actif circulant = stocks, créances, disponibilités. Capitaux propres = capital, réserves, résultat. Dettes = tout ce que l'entreprise doit à des tiers.",
-   "src": "PCG",
+   "why": "Actif immobilisé = biens durables. Actif circulant = stocks, créances, disponibilités. Capitaux propres = capital, réserves, résultat. Dettes = tout ce que l'entreprise doit à des tiers (fournisseurs, banque, État). Le modèle de bilan du PCG suit exactement cet ordre.",
+   "src": "PCG 2025, Livre IV (modèle de bilan)",
    "fiab": "stable"
   },
   {
    "type": "calc",
+   "niveau": 1,
    "q": "Total de l'actif : 180 000 €. Total des dettes : 110 000 €. Quel est le montant des capitaux propres ?",
    "a": 70000,
    "unit": "€",
-   "why": "Passif = Actif = 180 000. Capitaux propres = Passif − Dettes = 180 000 − 110 000 = 70 000 €.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "Passif = Actif = 180 000. Le passif se compose des capitaux propres et des dettes, donc capitaux propres = 180 000 − 110 000 = 70 000 €.",
+   "src": "C. com., art. L. 123-13",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Le compte de résultat est :",
    "opts": [
     "Une photo du patrimoine à la clôture",
@@ -125,21 +159,24 @@
     "Le détail de la trésorerie"
    ],
    "a": 1,
-   "why": "Le bilan est la photo, le compte de résultat est le film : il cumule les charges et les produits sur 12 mois et en tire le résultat.",
-   "src": "PCG",
+   "why": "Le bilan est la photo, le compte de résultat est le film : il cumule les charges et les produits sur l'exercice et en tire le résultat. La classe 4 (tiers) et la trésorerie (classe 5) sont des comptes de bilan.",
+   "src": "C. com., art. L. 123-13",
    "fiab": "stable"
   },
   {
    "type": "calc",
+   "niveau": 1,
    "q": "Produits de l'exercice : 250 000 €. Charges : 230 000 €. Quel est le résultat ? (Indiquez un nombre négatif pour une perte.)",
    "a": 20000,
    "unit": "€",
-   "why": "Résultat = Produits − Charges = 250 000 − 230 000 = 20 000 € de bénéfice.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "Résultat = Produits − Charges = 250 000 − 230 000 = 20 000 €. Les produits dépassent les charges : c'est un bénéfice, qui viendra grossir les capitaux propres au passif du bilan.",
+   "src": "C. com., art. L. 123-13",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un bénéfice de 20 000 € a quel effet sur le bilan de clôture ?",
    "opts": [
     "Il augmente les dettes de 20 000",
@@ -148,12 +185,13 @@
     "Il n'apparaît pas au bilan"
    ],
    "a": 1,
-   "why": "Le résultat est repris dans les capitaux propres (compte 120). Côté actif, il se retrouve dispersé : plus de banque, plus de créances, plus de stock…",
-   "src": "PCG",
+   "why": "Le résultat est repris dans les capitaux propres (compte 120). Côté actif, il se retrouve dispersé : plus de banque, plus de créances, plus de stock. Un bénéfice n'est pas une dette, l'entreprise ne doit rien à personne à ce titre tant que l'assemblée n'a pas décidé de distribuer des dividendes.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Une créance client est :",
    "opts": [
     "Une dette au passif",
@@ -162,9 +200,291 @@
     "Une immobilisation"
    ],
    "a": 2,
-   "why": "Le client nous doit de l'argent : c'est un droit que nous détenons, donc un actif. Comme il sera encaissé à court terme, il est circulant.",
-   "src": "PCG",
+   "why": "Le client nous doit de l'argent : c'est un droit que nous détenons, donc un actif. Comme il sera encaissé à court terme, il est circulant (compte 411). Le produit, c'est la vente elle-même (707), enregistrée au compte de résultat ; la créance n'en est que la contrepartie au bilan.",
+   "src": "PCG, art. 211-1 ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 1,
+   "q": "Parmi les éléments suivants, lesquels sont des charges du compte de résultat ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le loyer du local commercial",
+    "L'achat d'une camionnette utilisée 5 ans",
+    "Les salaires du personnel",
+    "Le remboursement du capital d'un emprunt",
+    "Les intérêts d'un emprunt"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Loyer, salaires et intérêts sont des consommations de l'exercice : des charges (613, 641, 661). La camionnette est une immobilisation (2182) : sa consommation passera en charges au fil des années par l'amortissement, pas à l'achat. Le remboursement du capital emprunté diminue une dette (164) ; ce n'est pas une charge, même si c'est un décaissement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 1,
+   "q": "Quelles opérations augmentent le total du bilan ? (plusieurs réponses possibles)",
+   "opts": [
+    "Apport de capital en banque",
+    "Achat d'une machine payée comptant",
+    "Encaissement d'une créance client",
+    "Réception d'un emprunt bancaire",
+    "Paiement d'une dette fournisseur"
+   ],
+   "a": [
+    0,
+    3
+   ],
+   "why": "L'apport et l'emprunt créent une ressource nouvelle (passif) et un emploi nouveau (banque à l'actif) : le total augmente. L'achat comptant et l'encaissement d'une créance déplacent de la valeur à l'intérieur de l'actif (banque contre machine, banque contre créance) : total inchangé. Le paiement d'une dette diminue l'actif (banque) et le passif (dette) du même montant : le total baisse, il n'augmente pas.",
+   "src": "C. com., art. L. 123-13",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "La société Berlan achète 8 000 € de marchandises au comptant pour les revendre. Immédiatement après cet achat, que constate-t-on ?",
+   "opts": [
+    "Une charge de 8 000 et une baisse de la banque de 8 000",
+    "Une immobilisation de 8 000 à l'actif",
+    "Une dette de 8 000 au passif",
+    "Une augmentation du total du bilan de 8 000"
+   ],
+   "a": 0,
+   "why": "Les marchandises achetées pour être revendues sont une charge (607 Achats de marchandises) et l'argent sort de la banque. Ce ne sont pas des immobilisations car elles ne sont pas destinées à servir durablement. Aucune dette puisque le paiement est comptant, et le total du bilan ne monte pas : l'actif (banque) baisse et le résultat (capitaux propres) baisse d'autant. Le stock non vendu sera constaté en fin d'exercice (voir chapitre 6).",
+   "src": "PCG, art. 211-7 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Au 1er janvier N, les capitaux propres de la SARL Orvalis sont de 120 000 €. L'exercice N dégage un bénéfice de 35 000 €. En juin N, 15 000 € de dividendes (au titre de N−1) ont été versés aux associés. Aucun apport. Quel est le montant des capitaux propres au 31 décembre N ?",
+   "a": 140000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Capitaux propres de fin = capitaux propres de début + bénéfice − dividendes distribués = 120 000 + 35 000 − 15 000 = 140 000 €. Les dividendes sortent des capitaux propres (ils sont prélevés sur le résultat ou les réserves) pour devenir une dette envers les associés, puis un décaissement.",
+   "src": "C. com., art. L. 232-11",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au bilan de clôture, le résultat de l'exercice est une perte de 9 000 €. Comment figure-t-il ?",
+   "opts": [
+    "À l'actif, comme une créance",
+    "Au passif, en diminution des capitaux propres",
+    "Au passif, dans les dettes",
+    "Il est reporté au compte de résultat de l'exercice suivant"
+   ],
+   "a": 1,
+   "why": "La perte (compte 129) est inscrite dans les capitaux propres avec un signe négatif : elle appauvrit les associés. Elle n'est ni une créance ni une dette envers un tiers. Elle ne disparaît pas non plus : l'assemblée l'affectera ensuite en report à nouveau débiteur (119) ou l'imputera sur les réserves.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG 2025, Livre IV (modèle de bilan)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Une entreprise encaisse 6 000 € d'un client qui règle une facture émise le mois précédent. Effet sur le compte de résultat du mois de l'encaissement :",
+   "opts": [
+    "Un produit de 6 000",
+    "Aucun effet",
+    "Une charge de 6 000",
+    "Un produit de 5 000 et une TVA de 1 000"
+   ],
+   "a": 1,
+   "why": "Le produit a été enregistré lors de la facturation (vente). L'encaissement ne fait que transformer une créance (411) en disponibilités (512) : c'est un mouvement entre deux postes de l'actif, sans effet sur le résultat. Confondre produit et encaissement est l'erreur la plus fréquente des débutants.",
+   "src": "C. com., art. L. 123-20 (rattachement des produits à l'exercice)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Un exercice comptable :",
+   "opts": [
+    "Dure obligatoirement du 1er janvier au 31 décembre",
+    "Dure en principe 12 mois, sans coïncider forcément avec l'année civile",
+    "Dure 6 mois pour les petites entreprises",
+    "N'a pas de durée fixée"
+   ],
+   "a": 1,
+   "why": "La durée de l'exercice est en principe de 12 mois, mais la date de clôture est libre (30 juin, 30 septembre…) : une entreprise saisonnière peut clôturer après sa haute saison. Le premier exercice peut être plus court ou plus long par exception. Seules les entreprises relevant des BNC doivent clôturer au 31 décembre, ce qui est une règle fiscale et non comptable.",
+   "src": "C. com., art. L. 123-12",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "La société Télia a réalisé un bénéfice de 40 000 € mais son solde bancaire a baissé de 25 000 € sur l'exercice. Quelles explications sont cohérentes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle a acheté une machine payée comptant",
+    "Ses clients ne l'ont pas encore payée",
+    "Elle a enregistré trop de charges",
+    "Elle a remboursé une grosse part de son emprunt",
+    "Un bénéfice fait toujours baisser la banque"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Le résultat mesure l'enrichissement, pas la trésorerie. Un investissement payé comptant, des créances clients non encaissées ou le remboursement du capital d'un emprunt font sortir de l'argent sans être des charges : le bénéfice reste intact alors que la banque baisse. Enregistrer trop de charges aurait au contraire diminué le bénéfice, et un bénéfice n'a aucun lien mécanique avec le solde bancaire.",
+   "src": "C. com., art. L. 123-13",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au 31 décembre N, la société Mirval vend un camion qu'elle utilisait depuis quatre ans. Sous le PCG 2025, le produit de cette cession est :",
+   "opts": [
+    "Un produit exceptionnel (ancien compte 775)",
+    "Un produit d'exploitation (compte 757)",
+    "Un produit financier (compte 767)",
+    "Une diminution des charges d'exploitation"
+   ],
+   "a": 1,
+   "why": "Depuis les exercices ouverts au 1er janvier 2025, la cession d'une immobilisation corporelle ou incorporelle relève de l'exploitation : produit en 757 et valeur comptable sortie en 657. Le résultat exceptionnel ne retient plus que les événements majeurs et inhabituels (règlement ANC n° 2022-06). Avant 2025 on utilisait 775 et 675, aujourd'hui supprimés. Le compte 767 est réservé aux cessions d'immobilisations financières et de VMP.",
+   "src": "Règlement ANC n° 2022-06 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "tri",
+   "niveau": 1,
+   "q": "Dans quel document de synthèse figure chaque élément ?",
+   "cats": [
+    "Bilan",
+    "Compte de résultat"
+   ],
+   "items": [
+    [
+     "Stock de matières premières",
+     0
+    ],
+    [
+     "Achats de marchandises",
+     1
+    ],
+    [
+     "Salaires et traitements",
+     1
+    ],
+    [
+     "Emprunt auprès de la banque",
+     0
+    ],
+    [
+     "Ventes de prestations de services",
+     1
+    ],
+    [
+     "Dette envers l'URSSAF",
+     0
+    ],
+    [
+     "Dotation aux amortissements",
+     1
+    ],
+    [
+     "Capital social",
+     0
+    ]
+   ],
+   "why": "Le bilan rassemble les éléments de patrimoine (classes 1 à 5 : capitaux, immobilisations, stocks, tiers, trésorerie). Le compte de résultat rassemble les charges (classe 6) et les produits (classe 7). La dotation aux amortissements est une charge même si elle ne coûte rien en trésorerie ; la dette URSSAF est un passif.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Les capitaux propres représentent :",
+   "opts": [
+    "La trésorerie disponible pour les associés",
+    "Ce qui resterait aux associés si l'on vendait tout l'actif à sa valeur comptable et payait toutes les dettes",
+    "La valeur de marché de l'entreprise",
+    "Le montant du capital social uniquement"
+   ],
+   "a": 1,
+   "why": "Capitaux propres = Actif − Dettes : c'est la part du patrimoine qui revient aux associés, d'où le nom de « situation nette ». Ce n'est pas de la trésorerie (l'argent peut être investi en machines ou en stocks), ni la valeur de marché (qui dépend des perspectives), et le capital social n'en est qu'une composante aux côtés des réserves et du résultat.",
+   "src": "PCG 2025, Livre IV (modèle de bilan, rubrique capitaux propres)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Bilan de la société Nerval au 31 décembre N : immobilisations 95 000 €, stocks 22 000 €, créances clients 31 000 €, banque 12 000 €. Au passif : capital 60 000 €, réserves 25 000 €, emprunt 40 000 €, dettes fournisseurs 28 000 €. Quel est le résultat de l'exercice N ? (nombre négatif si perte)",
+   "a": 7000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Total actif = 95 000 + 22 000 + 31 000 + 12 000 = 160 000. Passif hors résultat = 60 000 + 25 000 + 40 000 + 28 000 = 153 000. Le résultat équilibre le bilan : 160 000 − 153 000 = 7 000 € de bénéfice. C'est le lien fondamental : le résultat est la variable qui rend Actif = Passif.",
+   "src": "C. com., art. L. 123-13",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Les comptes annuels comprennent :",
+   "opts": [
+    "Le bilan et le compte de résultat seulement",
+    "Le bilan, le compte de résultat et l'annexe",
+    "Le bilan, la balance et le grand livre",
+    "Le compte de résultat et la déclaration de TVA"
+   ],
+   "a": 1,
+   "why": "L'article L. 123-12 du Code de commerce impose trois documents formant un tout indissociable : bilan, compte de résultat et annexe (qui explique et complète les deux premiers). La balance et le grand livre sont des documents de travail, pas des comptes annuels ; la déclaration de TVA est fiscale.",
+   "src": "C. com., art. L. 123-12 et L. 123-13",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles affirmations sur le compte de résultat sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il distingue un niveau d'exploitation, un niveau financier et un niveau exceptionnel",
+    "Il est établi à une date donnée, comme une photographie",
+    "Les dotations aux amortissements y figurent en charges",
+    "Sous le PCG 2025, les plus-values sur cession de matériel sont dans le résultat exceptionnel",
+    "Son solde est repris dans les capitaux propres du bilan"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Le compte de résultat est bâti sur trois niveaux (exploitation, financier, exceptionnel), il contient les dotations (charges calculées) et son solde, le résultat, est reporté au passif du bilan. En revanche il couvre une période (le « film »), pas une date, et depuis 2025 les cessions d'immobilisations corporelles et incorporelles (657/757) sont dans l'exploitation, pas dans l'exceptionnel.",
+   "src": "Règlement ANC n° 2022-06 ; PCG 2025, Livre IV (modèle de compte de résultat)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "La société Alcor a un total de bilan de 300 000 €, des dettes de 210 000 € et un capital de 50 000 €. Elle n'a ni report à nouveau ni résultat en instance d'affectation. Que peut-on en déduire ?",
+   "opts": [
+    "Ses réserves et son résultat de l'exercice totalisent 40 000 €",
+    "Elle est en perte",
+    "Ses capitaux propres sont de 50 000 €",
+    "Son actif immobilisé est de 90 000 €"
+   ],
+   "a": 0,
+   "why": "Capitaux propres = 300 000 − 210 000 = 90 000. Le capital en représente 50 000, donc réserves + résultat = 40 000 €. On ne peut pas dire si l'exercice est bénéficiaire (les 40 000 peuvent être des réserves anciennes avec une petite perte), les capitaux propres ne se limitent pas au capital, et rien n'indique la répartition de l'actif entre immobilisé et circulant.",
+   "src": "PCG 2025, Livre IV (modèle de bilan)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "En 2025, une micro-entreprise au sens comptable (par exemple : total de bilan 300 000 €, chiffre d'affaires 600 000 €, 5 salariés) établit ses comptes annuels. De quelle dispense peut-elle bénéficier ?",
+   "opts": [
+    "Elle n'a pas à établir de bilan",
+    "Elle est dispensée d'établir une annexe",
+    "Elle est dispensée de compte de résultat",
+    "Elle n'a aucune obligation comptable"
+   ],
+   "a": 1,
+   "why": "L'article L. 123-16-1 du Code de commerce dispense les micro-entreprises (depuis le décret du 28 février 2024 : ne pas dépasser deux des trois seuils 450 000 € de bilan, 900 000 € de CA, 10 salariés) d'établir une annexe. Le bilan et le compte de résultat restent obligatoires, ainsi que la tenue d'une comptabilité. Les petites entreprises (7,5 M€, 15 M€, 50 salariés) bénéficient seulement d'une présentation simplifiée.",
+   "src": "C. com., art. L. 123-16-1 et D. 123-200 (seuils du décret n° 2024-152 du 28 février 2024)",
+   "fiab": "millésimé 2025"
   }
  ]
 }

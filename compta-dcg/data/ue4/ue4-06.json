@@ -1,0 +1,614 @@
+{
+ "id": "ue4-06",
+ "ue": "UE4",
+ "ordre": 6,
+ "title": "Impôts locaux, droits d'enregistrement, IFI et procédures fiscales",
+ "resume": "CET, taxes foncières, taxes assises sur les salaires, droits d'enregistrement, succession et IFI, puis le contrôle fiscal : délais de reprise, rectification, sanctions et recours.",
+ "duree": "80 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "La contribution économique territoriale : CFE et CVAE",
+   "html": "<p>La CET (CGI, art. 1447-0) a remplacé la taxe professionnelle en 2010 ; elle comprend deux cotisations perçues par les collectivités locales.</p><p><b>Cotisation foncière des entreprises</b> (art. 1447 et s.) : due par toute personne exerçant au 1er janvier une activité professionnelle non salariée habituelle. <b>Base</b> : valeur locative des biens passibles de taxe foncière (locaux, terrains) dont l'entreprise a disposé pour son activité au cours de l'année <b>N-2</b> (période de référence). Les équipements et biens mobiliers ne sont plus taxés. À défaut de local ou en cas de faible valeur locative, une <b>cotisation minimum</b> est due sur une base fixée par la commune selon un barème dépendant du chiffre d'affaires (six tranches ; en 2025 la base va de 243 € à un maximum variant de 579 € à 7 533 € selon le CA). Exonération totale si le CA n'excède pas 5 000 €. <b>Création</b> : aucune CFE l'année de création ; la base de la première année d'imposition est réduite de <b>50 %</b>. Exonérations de plein droit (agriculteurs, artisans travaillant seuls, certains artistes) ou facultatives (ZFU, France Ruralités Revitalisation, jeunes entreprises innovantes). Paiement au <b>15 décembre</b>, avec un acompte de 50 % au 15 juin si la cotisation N-1 a dépassé 3 000 € ; déclaration 1447-C l'année de création, puis déclaration 1447-M seulement en cas de changement.</p><p><b>Cotisation sur la valeur ajoutée des entreprises</b> (art. 1586 ter et s.) : due par les entreprises dont le CA HT dépasse <span class=\"mono\">500 000 €</span> (déclaration 1330-CVAE dès 152 500 €). <b>Base</b> : valeur ajoutée produite, plafonnée à 80 % du CA (85 % si CA &gt; 7,6 M€). <b>Taux</b> progressif selon le CA, dégressif par étapes jusqu'à sa suppression : pour <b>2025</b>, le taux maximal est de <span class=\"mono\">0,19 %</span> (CA &gt; 50 M€), auquel la LF 2025 ajoute une <b>contribution complémentaire</b> exceptionnelle de 47,4 % de la CVAE 2025 ; les LF 2025 et 2026 fixent un taux maximal de 0,28 % pour 2026 et 2027, puis 0,19 % en 2028, 0,09 % en 2029 et la <b>suppression en 2030</b>. Cotisation minimum de <span class=\"mono\">63 €</span>. Deux acomptes de 50 % (15 juin, 15 septembre) si la CVAE N-1 dépasse 1 500 €, solde en mai. La CET est <b>plafonnée</b> en fonction de la valeur ajoutée (dégrèvement sur demande), et CFE comme CVAE sont des charges déductibles du résultat.</p>"
+  },
+  {
+   "h": "Taxes foncières et taxe d'habitation sur les résidences secondaires",
+   "html": "<p><b>Taxe foncière sur les propriétés bâties</b> (art. 1380 et s.) : due par le <b>propriétaire</b> (ou usufruitier) au 1er janvier, quel que soit l'occupant. Base = <b>valeur locative cadastrale</b> (révisée pour les locaux professionnels depuis 2017, revalorisée chaque année pour les locaux d'habitation) diminuée d'un <b>abattement forfaitaire de 50 %</b> pour frais de gestion, assurance et entretien ; taux votés par la commune et l'intercommunalité. Exonérations : bâtiments ruraux, constructions neuves pendant 2 ans (sauf délibération contraire pour la part communale), personnes âgées ou handicapées de condition modeste, logements sociaux (durée longue). La taxe d'enlèvement des ordures ménagères (TEOM) y est adossée.</p><p><b>Taxe foncière sur les propriétés non bâties</b> (art. 1393 et s.) : terres, carrières, étangs ; base = valeur locative cadastrale diminuée d'un abattement de <b>20 %</b>. Exonération permanente de la part départementale pour les terres agricoles.</p><p><b>Taxe d'habitation</b> : supprimée pour les résidences principales depuis 2023, elle subsiste sous le nom de <b>taxe d'habitation sur les résidences secondaires et autres locaux meublés non affectés à l'habitation principale</b> (THRS, art. 1407). Elle est due par l'occupant au 1er janvier (propriétaire ou locataire), calculée sur la valeur locative sans abattement ; dans les communes en zone tendue, elle peut être <b>majorée de 5 % à 60 %</b>. Les locaux vacants peuvent subir la taxe sur les logements vacants (TLV) ou la taxe d'habitation sur les logements vacants (THLV). Une déclaration d'occupation des locaux est exigée des propriétaires depuis 2023.</p><div class=\"note\"><b>Repère.</b> La taxe foncière suit le <i>propriétaire</i>, la CFE et la THRS suivent l'<i>occupant</i>. Un commerçant locataire de son local paie la CFE ; son bailleur paie la taxe foncière (sauf clause du bail la lui refacturant, fréquente en bail commercial).</div>"
+  },
+  {
+   "h": "Taxes assises sur les salaires et taxes sur les véhicules",
+   "html": "<ul><li><b>Taxe sur les salaires</b> (art. 231) : due par les employeurs <b>non assujettis à la TVA</b> ou assujettis sur moins de 10 % de leur chiffre d'affaires (banques, assurances, associations, professions médicales, bailleurs exonérés, holdings), sur l'assiette des cotisations de sécurité sociale. <b>Barème 2025</b> par salarié et par an : <span class=\"mono\">4,25 %</span> jusqu'à 9 147 € ; <span class=\"mono\">8,50 %</span> de 9 147 à 18 258 € ; <span class=\"mono\">13,60 %</span> au-delà (taux unique de 2,95 % dans les DOM). Franchise si la taxe annuelle n'excède pas <span class=\"mono\">1 200 €</span>, décote entre 1 200 et 2 040 €, abattement de <span class=\"mono\">24 041 €</span> pour les associations en 2025. Les assujettis partiels appliquent un rapport d'assujettissement. Paiement mensuel, trimestriel ou annuel selon le montant de l'année précédente.</li><li><b>Taxe d'apprentissage</b> (art. 1599 ter A ; C. trav.) : <span class=\"mono\">0,68 %</span> de la masse salariale (0,44 % en Alsace-Moselle), composée d'une part principale (0,59 %) et d'un solde (0,09 %) affectable par l'employeur ; recouvrée en DSN par l'URSSAF.</li><li><b>Contribution à la formation professionnelle</b> : <span class=\"mono\">0,55 %</span> de la masse salariale pour les employeurs de moins de 11 salariés, <span class=\"mono\">1 %</span> à partir de 11 salariés (plus 1 % de contribution CPF-CDD sur les salaires des CDD).</li><li><b>Participation des employeurs à l'effort de construction</b> (PEEC, art. 235 bis) : <span class=\"mono\">0,45 %</span> de la masse salariale pour les employeurs d'au moins <b>50 salariés</b> (après 5 ans de franchissement progressif), à investir dans le logement sous peine d'une cotisation de 2 %.</li><li><b>Taxes annuelles sur les véhicules de tourisme affectés à des fins économiques</b> (CIBS, art. L. 421-93 et s. ; ex-TVS) : deux taxes dues par les entreprises pour les véhicules de tourisme qu'elles possèdent, louent longue durée ou dont elles remboursent les frais kilométriques : la <b>taxe sur les émissions de CO2</b> (barème par gramme, selon WLTP) et la <b>taxe sur les émissions de polluants atmosphériques</b> (selon la norme Euro et la motorisation, qui a remplacé la taxe sur l'ancienneté en 2024). Exonérations : véhicules électriques, hybrides rechargeables sous conditions, véhicules destinés à la vente ou à la location, taxis. Déclarées en janvier avec la TVA (CA3 ou annexe 3310 A) ; <b>non déductibles</b> pour les sociétés soumises à l'IS.</li></ul>"
+  },
+  {
+   "h": "Droits d'enregistrement : droits sociaux, fonds de commerce, immeubles, apports",
+   "html": "<p>Les droits d'enregistrement sont perçus lors de la formalité (obligatoire pour certains actes) et supportés en principe par l'<b>acquéreur</b>. Le DCG retient les taux suivants :</p><table><thead><tr><th>Opération</th><th>Droit (art. CGI)</th></tr></thead><tbody><tr><td>Cession d'<b>actions</b> (SA, SAS, SCA) non à prépondérance immobilière</td><td><span class=\"mono\">0,1 %</span> du prix (art. 726, I-1°), sans plafond ; même sans acte depuis 2012</td></tr><tr><td>Cession de <b>parts sociales</b> (SARL, SNC, sociétés civiles)</td><td><span class=\"mono\">3 %</span> après un <b>abattement de 23 000 €</b> proratisé au pourcentage de parts cédées (art. 726, I-1° bis)</td></tr><tr><td>Cession de titres de sociétés à <b>prépondérance immobilière</b></td><td><span class=\"mono\">5 %</span>, sans abattement</td></tr><tr><td>Cession de <b>fonds de commerce</b>, clientèle, droit au bail (art. 719)</td><td>0 % jusqu'à 23 000 € ; <span class=\"mono\">3 %</span> de 23 000 à 200 000 € ; <span class=\"mono\">5 %</span> au-delà (taux globaux État + département + commune) ; minimum 25 €. Les marchandises neuves sont exclues (TVA)</td></tr><tr><td>Vente d'<b>immeuble</b> ancien (droits de mutation à titre onéreux, DMTO)</td><td>Droit départemental 4,50 % (jusqu'à 5 % sur délibération pour les actes d'avril 2025 à mars 2028, hors primo-accédants) + taxe communale 1,20 % + frais d'assiette 2,37 % du droit départemental, soit <span class=\"mono\">5,80 %</span> environ (6,32 % au taux majoré) ; immeubles neufs soumis à TVA : 0,715 %</td></tr></tbody></table><p><b>Apports en société</b> (art. 809 et 810) : les apports <b>purs et simples</b> (rémunérés par des titres) sont exonérés, qu'ils soient faits à la constitution ou lors d'une augmentation de capital. Exception : l'apport d'un immeuble, d'un fonds de commerce ou d'une clientèle par une personne <b>non soumise à l'IS</b> à une société <b>soumise à l'IS</b> est taxé comme une vente (5 % pour l'immeuble, barème du fonds), sauf si l'apporteur s'engage à conserver les titres reçus pendant <b>3 ans</b>. Les apports <b>à titre onéreux</b> (reprise d'un passif par la société) sont taxés comme des ventes selon la nature du bien. Depuis 2019, la plupart des actes de la vie des sociétés (constitution, augmentation de capital en numéraire, fusions, dissolution) sont enregistrés gratuitement ; les cessions de droits sociaux doivent être déclarées (formulaire 2759) dans le mois.</p>"
+  },
+  {
+   "h": "Successions, donations et IFI",
+   "html": "<p><b>Droits de mutation à titre gratuit</b> (art. 777 et s.) : la part nette reçue par chaque héritier ou donataire est diminuée d'un <b>abattement</b> puis soumise à un barème propre au lien de parenté. Les donations et successions entre les mêmes personnes sont cumulées sur <b>15 ans</b> (rappel fiscal).</p><ul><li>Abattements (montants non indexés depuis 2011) : <span class=\"mono\">100 000 €</span> par enfant et par parent (ligne directe) ; 15 932 € entre frères et sœurs ; 7 967 € pour les neveux et nièces ; 31 865 € pour les petits-enfants (donations) ; 80 724 € entre époux ou partenaires (donations) ; 159 325 € supplémentaires pour un héritier handicapé ; 1 594 € à défaut. Le <b>conjoint survivant</b> et le partenaire de PACS sont <b>exonérés</b> de droits de succession. Dons familiaux de sommes d'argent exonérés jusqu'à 31 865 € (donateur de moins de 80 ans, bénéficiaire majeur, tous les 15 ans).</li><li>Barème en <b>ligne directe</b> : 5 % jusqu'à 8 072 € ; 10 % de 8 072 à 12 109 € ; 15 % de 12 109 à 15 932 € ; <b>20 %</b> de 15 932 à 552 324 € ; 30 % jusqu'à 902 838 € ; 40 % jusqu'à 1 805 677 € ; 45 % au-delà. Frères et sœurs : 35 % jusqu'à 24 430 €, 45 % au-delà ; parents jusqu'au 4e degré : 55 % ; au-delà et non-parents : 60 %.</li><li>Réductions et exonérations : pacte <b>Dutreil</b> (exonération de 75 % de la valeur des titres ou de l'entreprise transmise, sous engagements de conservation), démembrement (barème de l'usufruit art. 669), assurance-vie (régime propre, art. 757 B et 990 I).</li></ul><p><b>Impôt sur la fortune immobilière</b> (art. 964 et s.) : dû par les personnes physiques dont le <b>patrimoine immobilier net</b> taxable au 1er janvier excède <span class=\"mono\">1 300 000 €</span> (foyer fiscal). Actif : immeubles et droits immobiliers, parts de sociétés à hauteur des immeubles détenus, SCPI, OPCI ; la résidence principale bénéficie d'un <b>abattement de 30 %</b> ; les <b>biens professionnels</b> (immeubles affectés à l'activité principale de l'exploitant) sont exonérés. Passif : dettes afférentes aux biens taxables (emprunts, taxe foncière, IFI théorique), avec un plafonnement pour les patrimoines supérieurs à 5 M€. Barème progressif dès <span class=\"mono\">800 000 €</span> : 0,50 % jusqu'à 1,3 M€ ; 0,70 % jusqu'à 2,57 M€ ; 1 % jusqu'à 5 M€ ; 1,25 % jusqu'à 10 M€ ; 1,50 % au-delà. <b>Décote</b> pour les patrimoines entre 1,3 et 1,4 M€ : 17 500 € − 1,25 % du patrimoine. Réduction de 75 % des dons à certains organismes (plafond 50 000 €) ; plafonnement : IFI + IR ne peuvent excéder 75 % des revenus. Déclaré avec la 2042 (annexe 2042-IFI), payé en septembre.</p>"
+  },
+  {
+   "h": "Obligations déclaratives et formes du contrôle",
+   "html": "<p>Le système fiscal français est <b>déclaratif</b> : le contribuable déclare, l'administration contrôle a posteriori dans le délai de reprise. Principales échéances : déclaration de revenus (fin mai – début juin), liasse BIC/IS (2e jour ouvré suivant le 1er mai pour les exercices clos au 31 décembre, + 15 jours en ligne), CA3 (entre le 15 et le 24 du mois suivant), CA12 (2e jour ouvré suivant le 1er mai), DSN mensuelle, CFE au 15 décembre.</p><p>Formes du contrôle (LPF) :</p><ul><li><b>Contrôle sur pièces</b> : depuis le bureau, examen des déclarations et recoupements ; demandes de <b>renseignements</b> (L. 10, réponse non obligatoire), d'<b>éclaircissements ou de justifications</b> (L. 16, délai de réponse de <b>2 mois</b>, à défaut taxation d'office).</li><li><b>Vérification de comptabilité</b> (L. 13) : contrôle sur place de la comptabilité d'une entreprise. Garanties : envoi préalable d'un <b>avis de vérification</b> (L. 47) accompagné de la <b>charte des droits et obligations du contribuable vérifié</b>, dont les dispositions sont opposables ; droit à l'assistance d'un conseil ; <b>débat oral et contradictoire</b> ; durée sur place limitée à <b>3 mois</b> pour les entreprises dont le CA n'excède pas les limites du régime simplifié (L. 52), portée à 6 mois si la comptabilité présente de graves irrégularités ; interdiction de renouveler une vérification achevée pour la même période et le même impôt (L. 51) ; présentation du fichier des écritures comptables (FEC) sous peine d'amende.</li><li><b>Examen de comptabilité</b> (L. 13 G) : contrôle à distance à partir du FEC transmis dans les 15 jours, conclusions dans les <b>6 mois</b>.</li><li><b>Examen contradictoire de la situation fiscale personnelle</b> (ESFP, L. 12) : cohérence entre les revenus déclarés d'un particulier et sa situation patrimoniale et de trésorerie ; durée maximale d'<b>un an</b> (2 ans en cas d'activité occulte ou de demande d'assistance internationale).</li></ul><p><b>Délai de reprise</b> (prescription) : IR, IS, CVAE : jusqu'au <b>31 décembre de la 3e année</b> suivant celle au titre de laquelle l'impôt est dû (L. 169) ; TVA : 3 ans après l'année de l'exigibilité (L. 176) ; droits d'enregistrement et IFI : 3 ans si l'acte ou la déclaration permettait de liquider l'impôt, <b>6 ans</b> sinon (L. 180 et L. 186) ; <b>10 ans</b> en cas d'activité occulte, de flagrance fiscale ou d'avoirs non déclarés à l'étranger (L. 169, 2e et 5e alinéas). Exemple : les revenus 2023, déclarés en 2024, peuvent être rectifiés jusqu'au 31 décembre 2026.</p>"
+  },
+  {
+   "h": "Rectification, taxation d'office et sanctions",
+   "html": "<p><b>Procédure de rectification contradictoire</b> (L. 55 à L. 61 A) : procédure de droit commun quand le contribuable a déposé ses déclarations. L'administration adresse une <b>proposition de rectification</b> motivée (imprimé 2120 ou 3924), qui interrompt la prescription et ouvre un délai de réponse de <b>30 jours</b>, prorogé de 30 jours sur demande (soit 60 jours). Si le contribuable conteste, l'administration doit répondre (réponse aux observations, 3924-R), dans les <b>60 jours</b> pour les PME vérifiées sur place (à défaut, acceptation tacite des observations). En cas de désaccord persistant sur une question de fait : saisine de la <b>commission des impôts directs et des taxes sur le chiffre d'affaires</b> (BIC, BNC, TVA) ou de la <b>commission départementale de conciliation</b> (enregistrement, IFI) ; recours hiérarchique auprès du supérieur du vérificateur puis de l'interlocuteur départemental. La mise en recouvrement intervient ensuite.</p><p><b>Procédures d'office</b> : <b>taxation d'office</b> en l'absence de déclaration <b>30 jours</b> après une mise en demeure (L. 66 et L. 67), en cas de défaut de réponse à une demande d'éclaircissements (L. 69) ou d'opposition à contrôle ; <b>évaluation d'office</b> des bénéfices professionnels (L. 73). Le contribuable perd les garanties du contradictoire et supporte la charge de la preuve devant le juge.</p><p><b>Sanctions</b> :</p><table><thead><tr><th>Sanction</th><th>Taux</th><th>Cas</th></tr></thead><tbody><tr><td><b>Intérêt de retard</b> (art. 1727)</td><td><span class=\"mono\">0,20 %</span> par mois (2,4 % par an)</td><td>Toute insuffisance ou retard, sans caractère de sanction ; réduit de 50 % en cas de régularisation spontanée hors contrôle (art. 1727, V) et de 30 % en cours de contrôle (L. 62)</td></tr><tr><td>Majoration de <b>10 %</b> (art. 1728 et 1758 A)</td><td>10 %</td><td>Déclaration tardive sans mise en demeure ou dans les 30 jours de celle-ci ; insuffisance de déclaration d'IR sans manquement délibéré ; retard de paiement des impôts recouvrés par voie de rôle</td></tr><tr><td>Majoration de <b>40 %</b> (art. 1728 et 1729)</td><td>40 %</td><td>Déclaration déposée plus de 30 jours après mise en demeure ; <b>manquement délibéré</b> (mauvaise foi)</td></tr><tr><td>Majoration de <b>80 %</b> (art. 1728 et 1729)</td><td>80 %</td><td><b>Manœuvres frauduleuses</b>, <b>abus de droit</b> (40 % si le contribuable n'en est pas l'initiateur principal), activité occulte, opposition à contrôle (100 %)</td></tr></tbody></table><p>Le <b>droit à l'erreur</b> (loi ESSOC 2018) permet d'éviter la majoration de 10 % en cas de régularisation de bonne foi. La fraude fiscale (art. 1741) est aussi un délit pénal (jusqu'à 5 ans d'emprisonnement et 500 000 € d'amende, 7 ans et 3 M€ en bande organisée).</p>"
+  },
+  {
+   "h": "Recours, rescrit, abus de droit et transaction",
+   "html": "<p><b>Réclamation préalable</b> (L. 190, R*196-1) : tout contentieux fiscal commence par une réclamation écrite au service des impôts, jusqu'au <b>31 décembre de la 2e année</b> suivant la mise en recouvrement du rôle ou la notification de l'avis de mise en recouvrement (ou le versement spontané de l'impôt) ; délai spécial égal au délai de reprise pour les impositions consécutives à une rectification (R*196-3). Le contribuable peut demander le <b>sursis de paiement</b> (L. 277), avec garanties au-delà de 4 500 €. L'administration dispose de <b>6 mois</b> pour répondre ; son silence vaut rejet implicite.</p><p><b>Juridictions</b> : le <b>tribunal administratif</b> pour les impôts directs et la TVA (saisine dans les 2 mois du rejet, puis cour administrative d'appel et Conseil d'État) ; le <b>tribunal judiciaire</b> pour les droits d'enregistrement, l'IFI et les contributions indirectes (puis cour d'appel et Cour de cassation). Le <b>recours gracieux</b> (L. 247) permet de demander une remise des pénalités, ou de l'impôt en cas de gêne ou d'indigence (jamais pour les droits d'enregistrement en principal ni la TVA). Le <b>conciliateur fiscal</b> et le <b>médiateur</b> de Bercy sont des voies amiables.</p><p><b>Rescrit</b> (L. 80 B) : le contribuable de bonne foi interroge l'administration sur l'application d'un texte à sa situation ; la réponse (en principe dans les <b>3 mois</b>) l'engage ; dans certains rescrits spécifiques (crédit d'impôt recherche, entreprise nouvelle, établissement stable, mécénat), l'absence de réponse dans le délai vaut accord tacite. Un second examen collégial peut être demandé.</p><p><b>Abus de droit</b> (L. 64) : l'administration écarte les actes <b>fictifs</b> ou ceux qui, recherchant le bénéfice d'une application littérale des textes contraire à leur objectif, n'ont pu être inspirés par aucun autre motif que celui d'éluder l'impôt (but <b>exclusivement</b> fiscal) ; majoration de 80 % (ou 40 %). Le <b>mini-abus de droit</b> (L. 64 A, actes depuis 2020) vise les montages à but <b>principalement</b> fiscal, sans majoration automatique. Le comité de l'abus de droit fiscal peut être saisi.</p><p><b>Transaction</b> (L. 247, 3°) : accord écrit par lequel l'administration atténue les <b>pénalités</b> (jamais les droits en principal) en contrepartie de la renonciation du contribuable à tout recours ; elle devient définitive après exécution.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CGI, art. 1447 à 1478 et 1586 ter à 1586 nonies ; LF 2025 (loi n° 2025-127), art. 62",
+   "note": "CFE (base, cotisation minimum, création) et CVAE (seuil 500 000 €, taux 2025, contribution complémentaire, calendrier de suppression)"
+  },
+  {
+   "ref": "CGI, art. 1380 à 1400 et 1407",
+   "note": "Taxes foncières (abattements 50 % et 20 %) et taxe d'habitation sur les résidences secondaires"
+  },
+  {
+   "ref": "CGI, art. 231, 235 bis et 1599 ter A ; CIBS, art. L. 421-93 et s.",
+   "note": "Taxe sur les salaires (barème 2025), PEEC 0,45 %, taxe d'apprentissage 0,68 %, taxes annuelles sur les véhicules de tourisme"
+  },
+  {
+   "ref": "CGI, art. 719, 726, 809, 810 et 1594 D",
+   "note": "Droits d'enregistrement : fonds de commerce, droits sociaux (0,1 % / 3 % / 5 %), apports, DMTO immobiliers"
+  },
+  {
+   "ref": "CGI, art. 777 à 790 G et 964 à 983",
+   "note": "Droits de succession et de donation (abattements, barème), impôt sur la fortune immobilière (seuil 1,3 M€, barème, décote)"
+  },
+  {
+   "ref": "LPF, art. L. 10 à L. 13 G, L. 47 à L. 52, L. 169 à L. 186",
+   "note": "Formes du contrôle, garanties du contribuable vérifié, délais de reprise (3, 6 et 10 ans)"
+  },
+  {
+   "ref": "LPF, art. L. 55 à L. 76, L. 64, L. 64 A, L. 80 B et L. 247",
+   "note": "Rectification contradictoire (30 + 30 jours), procédures d'office, abus de droit, rescrit, transaction"
+  },
+  {
+   "ref": "CGI, art. 1727 à 1729 et 1758 A",
+   "note": "Intérêt de retard 0,20 % par mois, majorations de 10 %, 40 % et 80 %"
+  },
+  {
+   "ref": "LPF, art. L. 190, L. 277 et R*196-1 ; BOI-CF-PGR-20-30",
+   "note": "Réclamation préalable (délai), sursis de paiement, limitation de la durée des vérifications"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quelle est la base d'imposition de la cotisation foncière des entreprises (CFE) ?",
+   "opts": [
+    "La valeur locative des biens passibles de taxe foncière dont l'entreprise a disposé pour son activité en N-2",
+    "La valeur ajoutée produite par l'entreprise",
+    "Le chiffre d'affaires de l'année précédente",
+    "La valeur locative des biens immobiliers et des équipements mobiliers"
+   ],
+   "a": 0,
+   "why": "Depuis 2010, la CFE (art. 1467) est assise sur la seule valeur locative foncière des biens passibles de taxe foncière utilisés pour l'activité au cours de la période de référence (N-2) ; les équipements et biens mobiliers, autrefois taxés par la taxe professionnelle, sont exclus. La valeur ajoutée est la base de la CVAE ; le chiffre d'affaires ne sert qu'à fixer la tranche de la cotisation minimum.",
+   "src": "CGI, art. 1467 et 1467 A",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL est créée le 1er mars 2025 et occupe un local commercial. Quelle est sa situation au regard de la CFE ?",
+   "opts": [
+    "Aucune CFE en 2025 ; en 2026, première année d'imposition, sa base est réduite de 50 %",
+    "CFE due dès 2025 au prorata des mois d'activité",
+    "CFE due dès 2025 sur la base entière",
+    "Exonération de CFE pendant les trois premières années"
+   ],
+   "a": 0,
+   "why": "L'article 1478, II dispense de CFE l'année de la création (la CFE étant due par le redevable exerçant au 1er janvier) et réduit de moitié la base de la première année d'imposition (2026). La société doit déposer la déclaration 1447-C avant le 1er janvier 2026. Il n'existe pas d'exonération générale de trois ans.",
+   "src": "CGI, art. 1478, II",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À partir de quel chiffre d'affaires hors taxes une entreprise est-elle redevable de la cotisation sur la valeur ajoutée des entreprises (CVAE) ?",
+   "opts": [
+    "Plus de 500 000 €",
+    "Plus de 152 500 €",
+    "Plus de 7 630 000 €",
+    "Plus de 50 000 000 €"
+   ],
+   "a": 0,
+   "why": "La CVAE (art. 1586 ter) est due par les entreprises dont le CA HT excède 500 000 € ; une déclaration de valeur ajoutée (1330-CVAE) est toutefois exigée dès 152 500 € de CA. Le seuil de 7,63 M€ concerne la contribution sociale sur l'IS et celui de 50 M€ est le niveau de CA à partir duquel le taux maximal de CVAE s'applique.",
+   "src": "CGI, art. 1586 ter",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Pour l'année 2025, quelles dispositions la loi de finances pour 2025 a-t-elle retenues pour la CVAE ?",
+   "opts": [
+    "Maintien du taux maximal de 0,19 % et création d'une contribution complémentaire de 47,4 % de la CVAE 2025, la suppression étant reportée à 2030",
+    "Suppression définitive de la CVAE dès le 1er janvier 2025",
+    "Taux maximal porté à 1,5 % comme avant 2021",
+    "Suppression de la CVAE pour les seules PME"
+   ],
+   "a": 0,
+   "why": "La LF 2025 (art. 62) a reporté la suppression de la CVAE, initialement prévue pour 2027, à 2030 : le taux maximal de 0,19 % est maintenu en 2025 avec une contribution complémentaire exceptionnelle de 47,4 % de la CVAE due au titre de 2025 (acompte unique au 15 septembre 2025), puis 0,28 % en 2026 et 2027, 0,19 % en 2028, 0,09 % en 2029 et suppression en 2030.",
+   "src": "Loi n° 2025-127 du 14 février 2025, art. 62 ; CGI, art. 1586 quater",
+   "fiab": "millésimé 2025",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Comment est calculée la base de la taxe foncière sur les propriétés bâties ?",
+   "opts": [
+    "Valeur locative cadastrale diminuée d'un abattement forfaitaire de 50 %",
+    "Valeur vénale du bien au 1er janvier",
+    "Valeur locative cadastrale diminuée d'un abattement de 20 %",
+    "Loyer réellement perçu par le propriétaire"
+   ],
+   "a": 0,
+   "why": "L'article 1388 retient la valeur locative cadastrale sous déduction de 50 % pour frais de gestion, d'assurance, d'amortissement, d'entretien et de réparation. L'abattement de 20 % concerne les propriétés non bâties (art. 1396). La valeur vénale sert à l'IFI et aux droits de mutation, pas aux taxes foncières.",
+   "src": "CGI, art. 1388",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un commerçant loue le local dans lequel il exploite son magasin. Qui est redevable de la taxe foncière et de la CFE ?",
+   "opts": [
+    "Taxe foncière : le propriétaire ; CFE : le commerçant locataire",
+    "Taxe foncière et CFE : le commerçant locataire",
+    "Taxe foncière et CFE : le propriétaire",
+    "Taxe foncière : le commerçant ; CFE : le propriétaire"
+   ],
+   "a": 0,
+   "why": "La taxe foncière est due par le propriétaire au 1er janvier (art. 1400), même si le bail commercial prévoit souvent sa refacturation au locataire. La CFE est due par la personne qui exerce l'activité professionnelle dans les locaux dont elle dispose, ici le locataire (art. 1447 et 1467).",
+   "src": "CGI, art. 1400 et 1447",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quels employeurs sont redevables de la taxe sur les salaires ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une banque dont l'activité est en quasi-totalité exonérée de TVA",
+    "Une association employant des salariés et non assujettie à la TVA",
+    "Un cabinet médical de groupe employant des secrétaires",
+    "Une entreprise industrielle soumise à la TVA sur l'ensemble de son chiffre d'affaires",
+    "Un commerce de détail soumis à la TVA"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "La taxe sur les salaires (art. 231) frappe les employeurs qui ne sont pas assujettis à la TVA ou qui ne l'ont pas été sur 90 % au moins de leur chiffre d'affaires l'année précédente : banques, assurances, associations, professions médicales exonérées, bailleurs exonérés. Les entreprises soumises à la TVA sur l'essentiel de leur activité en sont dispensées.",
+   "src": "CGI, art. 231",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Barème 2025 de la taxe sur les salaires (par salarié et par an) : 4,25 % jusqu'à 9 147 € ; 8,50 % de 9 147 à 18 258 € ; 13,60 % au-delà. Une association non assujettie à la TVA (aucun abattement ni franchise applicable ici) verse à son unique salarié une rémunération annuelle brute de 30 000 €. Calculez la taxe sur les salaires due, arrondie à l'euro.",
+   "a": 2760,
+   "unit": "€",
+   "tol": 1,
+   "why": "Tranche 1 : 9 147 × 4,25 % = 388,75 €. Tranche 2 : (18 258 − 9 147) × 8,50 % = 9 111 × 8,5 % = 774,44 €. Tranche 3 : (30 000 − 18 258) × 13,60 % = 11 742 × 13,6 % = 1 596,91 €. Total : 2 760,10 €, soit 2 760 €. Les taux majorés ne s'appliquent qu'à la fraction du salaire dépassant chaque seuil, pas à l'ensemble.",
+   "src": "CGI, art. 231, 2 bis (barème 2025)",
+   "fiab": "millésimé 2025",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Quel est le taux de la taxe d'apprentissage (hors Alsace-Moselle) ?",
+   "opts": [
+    "0,68 % de la masse salariale",
+    "0,55 % de la masse salariale",
+    "0,45 % de la masse salariale",
+    "1 % de la masse salariale"
+   ],
+   "a": 0,
+   "why": "La taxe d'apprentissage (art. 1599 ter A et C. trav., art. L. 6241-1) est de 0,68 % de la masse salariale (0,44 % en Alsace-Moselle), répartie entre une part principale de 0,59 % et un solde de 0,09 %. 0,55 % et 1 % sont les taux de la contribution à la formation professionnelle selon l'effectif ; 0,45 % est la participation à l'effort de construction.",
+   "src": "CGI, art. 1599 ter A ; C. trav., art. L. 6241-2",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise emploie 60 salariés depuis plus de cinq ans. Quelle obligation de participation à l'effort de construction (PEEC) a-t-elle ?",
+   "opts": [
+    "Investir 0,45 % de sa masse salariale dans le logement, sous peine d'une cotisation de 2 %",
+    "Verser 0,55 % de sa masse salariale à l'URSSAF",
+    "Aucune : la PEEC ne concerne que les entreprises de plus de 250 salariés",
+    "Verser 1 % de sa masse salariale au titre de la formation"
+   ],
+   "a": 0,
+   "why": "La PEEC (art. 235 bis) s'impose aux employeurs d'au moins 50 salariés : 0,45 % des rémunérations versées l'année précédente doivent être investis dans le logement (en pratique versés à Action Logement) ; à défaut, une cotisation de 2 % est due. Le taux de 1 % correspond à la contribution formation des entreprises de 11 salariés et plus.",
+   "src": "CGI, art. 235 bis",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Depuis 2024, les sociétés doivent déclarer deux taxes annuelles sur leurs véhicules de tourisme (anciennement TVS). Lesquelles ?",
+   "opts": [
+    "La taxe sur les émissions de CO2 et la taxe sur les émissions de polluants atmosphériques",
+    "La taxe sur les émissions de CO2 et la taxe sur l'ancienneté du véhicule",
+    "La taxe à l'essieu et la taxe sur les émissions de CO2",
+    "La taxe sur la puissance fiscale et la taxe sur le prix d'achat"
+   ],
+   "a": 0,
+   "why": "Les taxes sur l'affectation des véhicules à des fins économiques (CIBS, art. L. 421-93 et s.) comprennent la taxe annuelle sur les émissions de CO2 et, depuis 2024, la taxe annuelle sur les émissions de polluants atmosphériques (selon la catégorie Euro), qui a remplacé la taxe sur l'ancienneté. Elles sont déclarées en janvier et ne sont pas déductibles de l'IS.",
+   "src": "CIBS, art. L. 421-93 et s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un associé cède la totalité des parts d'une SARL (non à prépondérance immobilière) pour 150 000 €. Droit d'enregistrement : 3 % après abattement de 23 000 €. Calculez les droits dus.",
+   "a": 3810,
+   "unit": "€",
+   "tol": 1,
+   "why": "Cession de 100 % des parts : abattement intégral de 23 000 €. Base : 150 000 − 23 000 = 127 000 €. Droits : 127 000 × 3 % = 3 810 € (art. 726, I-1° bis). Pour des actions, le droit aurait été de 0,1 % sans abattement, soit 150 €.",
+   "src": "CGI, art. 726, I-1° bis",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un associé cède 50 % des parts d'une SARL pour 100 000 €. L'abattement de 23 000 € est proratisé au pourcentage de parts cédées et le droit est de 3 %. Calculez les droits d'enregistrement.",
+   "a": 2655,
+   "unit": "€",
+   "tol": 1,
+   "why": "L'abattement est égal à 23 000 € × nombre de parts cédées / nombre total de parts : 23 000 × 50 % = 11 500 €. Base : 100 000 − 11 500 = 88 500 €. Droits : 88 500 × 3 % = 2 655 €. Appliquer l'abattement entier (2 310 €) est l'erreur classique.",
+   "src": "CGI, art. 726, I-1° bis",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Un actionnaire cède des actions d'une SAS (non à prépondérance immobilière) pour 500 000 €. Quel est le montant des droits d'enregistrement ?",
+   "a": 500,
+   "unit": "€",
+   "tol": 1,
+   "why": "Les cessions d'actions sont soumises au droit de 0,1 % sans plafond ni abattement (art. 726, I-1°) : 500 000 × 0,1 % = 500 €. Le taux de 3 % avec abattement de 23 000 € concerne les parts sociales ; 5 % les titres de sociétés à prépondérance immobilière. C'est l'une des raisons fiscales du choix de la SAS.",
+   "src": "CGI, art. 726, I-1°",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un fonds de commerce (hors marchandises) est cédé pour 300 000 €. Barème : 0 % jusqu'à 23 000 €, 3 % de 23 000 à 200 000 €, 5 % au-delà de 200 000 €. Calculez les droits d'enregistrement.",
+   "a": 10310,
+   "unit": "€",
+   "tol": 1,
+   "why": "Première tranche : 0 €. Deuxième : (200 000 − 23 000) × 3 % = 177 000 × 3 % = 5 310 €. Troisième : (300 000 − 200 000) × 5 % = 5 000 €. Total : 10 310 € (art. 719). Le barème est progressif par tranches : appliquer 5 % à l'ensemble (15 000 €) est faux. Les marchandises neuves cédées avec le fonds relèvent de la TVA.",
+   "src": "CGI, art. 719",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Lors de la constitution d'une SAS, un associé apporte un immeuble en échange d'actions (apport pur et simple). Quel droit d'enregistrement est dû ?",
+   "opts": [
+    "Aucun : l'apport pur et simple est exonéré, l'apporteur n'étant pas une personne non soumise à l'IS apportant à une société à l'IS… sauf s'il est une personne physique, cas où un droit de 5 % est dû à défaut d'engagement de conserver les titres 3 ans",
+    "Le droit de vente d'immeuble de 5,80 % dans tous les cas",
+    "Un droit fixe de 375 € ou 500 €",
+    "Le droit de 0,1 % applicable aux actions"
+   ],
+   "a": 0,
+   "why": "Les apports purs et simples sont en principe exonérés (art. 810, I). Par exception (art. 809, I-3°), l'apport d'un immeuble, d'un fonds ou d'une clientèle par une personne non soumise à l'IS (personne physique, société de personnes) à une société soumise à l'IS est assimilé à une mutation à titre onéreux (5 % pour l'immeuble), sauf engagement de conserver les titres reçus pendant trois ans. Le droit fixe a été supprimé en 2019.",
+   "src": "CGI, art. 809, I-3° et 810",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Un fils hérite de 250 000 € de son père en 2025. Abattement en ligne directe : 100 000 €. Barème : 5 % jusqu'à 8 072 € ; 10 % de 8 072 à 12 109 € ; 15 % de 12 109 à 15 932 € ; 20 % de 15 932 à 552 324 €. Calculez les droits de succession, arrondis à l'euro.",
+   "a": 28194,
+   "unit": "€",
+   "tol": 1,
+   "why": "Part taxable : 250 000 − 100 000 = 150 000 €. Droits : 8 072 × 5 % = 403,60 ; (12 109 − 8 072) × 10 % = 403,70 ; (15 932 − 12 109) × 15 % = 573,45 ; (150 000 − 15 932) × 20 % = 134 068 × 20 % = 26 813,60. Total : 28 194,35 €, soit 28 194 €. Appliquer 20 % à toute la part taxable (30 000 €) néglige les premières tranches.",
+   "src": "CGI, art. 777 et 779",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Quel est le régime du conjoint survivant en matière de droits de succession ?",
+   "opts": [
+    "Exonération totale de droits de succession",
+    "Abattement de 100 000 € puis barème en ligne directe",
+    "Abattement de 80 724 € puis barème des époux",
+    "Taxation à 60 % comme un non-parent"
+   ],
+   "a": 0,
+   "why": "Depuis la loi TEPA de 2007, le conjoint survivant et le partenaire de PACS sont totalement exonérés de droits de succession (art. 796-0 bis). L'abattement de 80 724 € ne concerne que les donations entre époux ou partenaires ; celui de 100 000 € s'applique en ligne directe (enfants, parents).",
+   "src": "CGI, art. 796-0 bis",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un père a donné 100 000 € à sa fille en 2015. Il décède en 2025 en lui laissant 150 000 €. Quel abattement reste disponible pour la succession ?",
+   "opts": [
+    "0 € : l'abattement de 100 000 € a été utilisé par la donation de 2015, intervenue il y a moins de 15 ans",
+    "100 000 €, chaque transmission bénéficiant de son propre abattement",
+    "50 000 €, moitié de l'abattement",
+    "100 000 € car la donation remonte à plus de 10 ans"
+   ],
+   "a": 0,
+   "why": "Les donations consenties depuis moins de 15 ans sont rappelées fiscalement dans la succession (art. 784) : l'abattement de 100 000 € déjà consommé en 2015 n'est pas reconstitué en 2025 (10 ans seulement). La fille sera donc taxée sur 150 000 € dès le premier euro, en poursuivant le barème là où la donation l'avait laissé. Le délai de rappel était de 10 ans avant 2012.",
+   "src": "CGI, art. 779 et 784",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À partir de quel montant de patrimoine immobilier net taxable un foyer est-il redevable de l'IFI, et à partir de quel montant le barème s'applique-t-il ?",
+   "opts": [
+    "Redevable à partir de 1 300 000 € ; barème appliqué dès 800 000 €",
+    "Redevable et barème à partir de 1 300 000 €",
+    "Redevable à partir de 800 000 € ; barème dès 1 300 000 €",
+    "Redevable à partir de 1 000 000 € ; barème dès 800 000 €"
+   ],
+   "a": 0,
+   "why": "L'IFI (art. 964) est dû lorsque le patrimoine immobilier net taxable excède 1,3 M€ au 1er janvier, mais le barème (art. 977) s'applique dès 800 000 € (0,5 % entre 800 000 et 1,3 M€). Une décote lisse l'effet de seuil entre 1,3 et 1,4 M€.",
+   "src": "CGI, art. 964 et 977",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un foyer détient au 1er janvier 2025 un patrimoine immobilier net taxable de 1 500 000 € (après abattement sur la résidence principale et déduction des dettes). Barème IFI : 0,50 % de 800 000 à 1 300 000 € ; 0,70 % de 1 300 000 à 2 570 000 €. Calculez l'IFI dû (aucune décote au-delà de 1,4 M€).",
+   "a": 3900,
+   "unit": "€",
+   "tol": 1,
+   "why": "Tranche à 0,50 % : (1 300 000 − 800 000) × 0,5 % = 2 500 €. Tranche à 0,70 % : (1 500 000 − 1 300 000) × 0,7 % = 1 400 €. IFI : 3 900 €. La première tranche (jusqu'à 800 000 €) est à 0 % ; la décote (17 500 € − 1,25 % du patrimoine) ne joue qu'entre 1,3 et 1,4 M€.",
+   "src": "CGI, art. 977",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quels éléments sont exonérés ou bénéficient d'un abattement dans l'assiette de l'IFI ? (plusieurs réponses possibles)",
+   "opts": [
+    "La résidence principale, à hauteur de 30 % de sa valeur",
+    "Les immeubles affectés à l'activité professionnelle principale du redevable",
+    "Un appartement loué nu à un tiers",
+    "Les parts de SCPI détenues dans un contrat d'assurance-vie",
+    "Une résidence secondaire"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "L'article 973 prévoit un abattement de 30 % sur la résidence principale et les articles 975 et 976 exonèrent les biens immobiliers professionnels (affectés à l'activité principale) et, partiellement, les bois et forêts. Les immeubles de rapport, résidences secondaires et parts de SCPI, même via l'assurance-vie, sont imposables.",
+   "src": "CGI, art. 973, 975 et 976",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la durée maximale, en principe, d'une vérification de comptabilité sur place pour une entreprise dont le chiffre d'affaires n'excède pas les limites du régime simplifié ?",
+   "opts": [
+    "3 mois",
+    "1 an",
+    "6 mois",
+    "Aucune limite"
+   ],
+   "a": 0,
+   "why": "L'article L. 52 du LPF limite à 3 mois la durée des interventions sur place pour les entreprises dont le CA ne dépasse pas les limites du régime simplifié (840 000 € / 254 000 € en 2025), sous peine de nullité ; le délai est porté à 6 mois en cas de comptabilité gravement irrégulière. La durée d'un an concerne l'ESFP (L. 12) et 6 mois l'examen de comptabilité à distance (L. 13 G).",
+   "src": "LPF, art. L. 52",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quelles garanties entourent une vérification de comptabilité ? (plusieurs réponses possibles)",
+   "opts": [
+    "Envoi préalable d'un avis de vérification accompagné de la charte du contribuable vérifié",
+    "Droit de se faire assister par un conseil de son choix",
+    "Débat oral et contradictoire avec le vérificateur",
+    "Droit de refuser toute communication de la comptabilité",
+    "Interdiction pour l'administration de rectifier plus d'un exercice"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les articles L. 47 et suivants du LPF imposent l'avis préalable (avec la charte, dont les dispositions sont opposables), mentionnant la faculté de se faire assister d'un conseil ; la jurisprudence consacre le débat oral et contradictoire. Refuser la comptabilité constitue une opposition à contrôle (évaluation d'office, majoration de 100 %) ; tous les exercices non prescrits peuvent être vérifiés.",
+   "src": "LPF, art. L. 47, L. 10 et L. 51",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un contribuable a perçu des revenus en 2023, déclarés en 2024. Jusqu'au 31 décembre de quelle année l'administration peut-elle rectifier son impôt sur le revenu (délai de reprise de droit commun) ? Indiquez l'année.",
+   "a": 2026,
+   "unit": "",
+   "tol": 0,
+   "why": "L'article L. 169 du LPF permet à l'administration d'exercer son droit de reprise jusqu'à la fin de la troisième année suivant celle au titre de laquelle l'imposition est due : revenus 2023, donc 2023 + 3 = 31 décembre 2026. La date de la déclaration (2024) n'est pas le point de départ. Le délai est porté à 10 ans en cas d'activité occulte.",
+   "src": "LPF, art. L. 169",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une succession ouverte en 2020 n'a donné lieu à aucune déclaration. Jusqu'à quand l'administration peut-elle réclamer les droits de succession ?",
+   "opts": [
+    "Jusqu'au 31 décembre 2026 (délai de 6 ans)",
+    "Jusqu'au 31 décembre 2023 (délai de 3 ans)",
+    "Jusqu'au 31 décembre 2030 (délai de 10 ans)",
+    "Sans limite de durée"
+   ],
+   "a": 0,
+   "why": "En matière de droits d'enregistrement, le délai de reprise est de 3 ans lorsque l'exigibilité est suffisamment révélée par un acte ou une déclaration (L. 180), mais de 6 ans à défaut de déclaration ou lorsque des recherches ultérieures sont nécessaires (L. 186) : 2020 + 6 = 31 décembre 2026. Le délai de 10 ans concerne l'IR et l'IS en cas d'activité occulte ou d'avoirs étrangers.",
+   "src": "LPF, art. L. 180 et L. 186",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un contribuable reçoit une proposition de rectification le 10 mars. De quel délai dispose-t-il pour présenter ses observations ?",
+   "opts": [
+    "30 jours, prorogeables de 30 jours supplémentaires sur demande formulée dans le délai initial",
+    "15 jours non prorogeables",
+    "2 mois, comme pour une demande d'éclaircissements",
+    "6 mois"
+   ],
+   "a": 0,
+   "why": "L'article L. 57 du LPF accorde 30 jours à compter de la réception de la proposition de rectification, délai prorogé de 30 jours à la demande du contribuable formulée avant l'expiration du premier délai (soit 60 jours au total). Le délai de 2 mois est celui de la réponse à une demande d'éclaircissements (L. 16) ; 6 mois est le délai de réponse de l'administration à une réclamation.",
+   "src": "LPF, art. L. 57",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un contribuable n'a pas déposé sa déclaration de revenus malgré une mise en demeure restée sans réponse pendant plus de 30 jours. Quelle procédure l'administration applique-t-elle et avec quelle majoration ?",
+   "opts": [
+    "Taxation d'office, avec une majoration de 40 %",
+    "Rectification contradictoire, avec une majoration de 10 %",
+    "Taxation d'office, avec une majoration de 80 %",
+    "Évaluation d'office, avec le seul intérêt de retard"
+   ],
+   "a": 0,
+   "why": "Le défaut de déclaration dans les 30 jours d'une mise en demeure autorise la taxation d'office (LPF, art. L. 66 et L. 67) et entraîne la majoration de 40 % de l'article 1728, 1-b (10 % si la déclaration est déposée tardivement avant mise en demeure ou dans les 30 jours ; 80 % en cas d'activité occulte). L'intérêt de retard de 0,20 % par mois s'y ajoute.",
+   "src": "LPF, art. L. 66 et L. 67 ; CGI, art. 1728",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Associez chaque situation à la sanction fiscale applicable (hors intérêt de retard).",
+   "cats": [
+    "Majoration de 10 %",
+    "Majoration de 40 %",
+    "Majoration de 80 %"
+   ],
+   "items": [
+    [
+     "Déclaration de revenus déposée en retard, avant toute mise en demeure",
+     0
+    ],
+    [
+     "Insuffisance de déclaration résultant d'un manquement délibéré (mauvaise foi)",
+     1
+    ],
+    [
+     "Manœuvres frauduleuses (factures fictives)",
+     2
+    ],
+    [
+     "Déclaration déposée plus de 30 jours après une mise en demeure",
+     1
+    ],
+    [
+     "Abus de droit dont le contribuable est l'initiateur principal",
+     2
+    ],
+    [
+     "Retard de paiement d'un impôt recouvré par voie de rôle",
+     0
+    ],
+    [
+     "Découverte d'une activité occulte",
+     2
+    ]
+   ],
+   "why": "Articles 1728, 1729 et 1730 du CGI : 10 % pour les retards sans mise en demeure et les retards de paiement ; 40 % pour le manquement délibéré et le dépôt plus de 30 jours après mise en demeure ; 80 % pour les manœuvres frauduleuses, l'abus de droit (40 % si le contribuable n'en est pas l'initiateur principal ou le principal bénéficiaire) et l'activité occulte.",
+   "src": "CGI, art. 1728, 1729 et 1730",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un contribuable a sous-évalué son impôt sur le revenu de 10 000 €. Le retard est de 8 mois. Intérêt de retard : 0,20 % par mois. Calculez le montant de l'intérêt de retard (hors majorations).",
+   "a": 160,
+   "unit": "€",
+   "tol": 1,
+   "why": "L'intérêt de retard (art. 1727) est de 0,20 % par mois, soit 2,4 % par an : 10 000 × 0,20 % × 8 = 160 €. Il court du premier jour du mois suivant celui où l'impôt devait être acquitté jusqu'au dernier jour du mois de la proposition de rectification. Il n'est pas une sanction et se cumule avec les majorations éventuelles.",
+   "src": "CGI, art. 1727",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un avis d'imposition d'IR est mis en recouvrement le 31 juillet 2025. Jusqu'à quelle date le contribuable peut-il déposer une réclamation contentieuse ?",
+   "opts": [
+    "Le 31 décembre 2027",
+    "Le 31 décembre 2025",
+    "Le 30 septembre 2025 (deux mois)",
+    "Le 31 décembre 2028"
+   ],
+   "a": 0,
+   "why": "L'article R*196-1 du LPF fixe le délai général de réclamation au 31 décembre de la deuxième année suivant celle de la mise en recouvrement du rôle : 2025 + 2 = 31 décembre 2027. Le délai de deux mois est celui de la saisine du tribunal administratif après rejet de la réclamation. Un délai spécial, égal au délai de reprise, s'applique après une rectification.",
+   "src": "LPF, art. R*196-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Après rejet de sa réclamation relative à des droits d'enregistrement, quel tribunal le contribuable doit-il saisir ?",
+   "opts": [
+    "Le tribunal judiciaire",
+    "Le tribunal administratif",
+    "Le tribunal de commerce",
+    "Le Conseil d'État directement"
+   ],
+   "a": 0,
+   "why": "La répartition du contentieux fiscal (LPF, art. L. 199) attribue les impôts directs et la TVA au juge administratif (tribunal administratif, cour administrative d'appel, Conseil d'État) et les droits d'enregistrement, l'IFI et les contributions indirectes au juge judiciaire (tribunal judiciaire, cour d'appel, Cour de cassation). La saisine doit intervenir dans les 2 mois de la décision de rejet.",
+   "src": "LPF, art. L. 199",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Qu'est-ce qu'un rescrit fiscal au sens de l'article L. 80 B du LPF ?",
+   "opts": [
+    "Une prise de position formelle de l'administration sur l'application d'un texte à la situation du contribuable, qui l'engage pour l'avenir",
+    "Une remise gracieuse de pénalités",
+    "Un recours contre une proposition de rectification",
+    "Une décision de justice du Conseil d'État"
+   ],
+   "a": 0,
+   "why": "Le rescrit général (L. 80 B, 1°) permet au contribuable de bonne foi d'interroger l'administration sur sa situation au regard d'un texte fiscal ; la réponse formelle est opposable, et pour certains rescrits spécifiques (crédit d'impôt recherche, entreprise nouvelle, mécénat) le silence pendant 3 mois vaut accord. La remise de pénalités relève du recours gracieux (L. 247).",
+   "src": "LPF, art. L. 80 B",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quel cas l'administration peut-elle mettre en œuvre la procédure de l'abus de droit de l'article L. 64 du LPF ?",
+   "opts": [
+    "Lorsque l'acte est fictif, ou lorsqu'il recherche le bénéfice d'une application littérale des textes contraire à leurs objectifs dans un but exclusivement fiscal",
+    "Dès qu'un contribuable choisit la solution fiscalement la moins coûteuse",
+    "Lorsque le contribuable a commis une simple erreur de bonne foi",
+    "Uniquement en cas de fraude pénalement sanctionnée"
+   ],
+   "a": 0,
+   "why": "L'article L. 64 vise deux branches : la simulation (acte fictif) et la fraude à la loi (application littérale contraire à l'objectif des auteurs, motivée exclusivement par l'évitement de l'impôt). Le choix de la voie la moins imposée reste licite ; depuis 2020, l'article L. 64 A permet toutefois d'écarter les montages à but principalement fiscal. La majoration est de 80 % (40 % pour le non-initiateur).",
+   "src": "LPF, art. L. 64 et L. 64 A",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une transaction conclue avec l'administration fiscale (LPF, art. L. 247) peut porter :",
+   "opts": [
+    "Sur les pénalités (majorations et intérêts de retard), jamais sur les droits en principal",
+    "Sur les droits en principal et les pénalités",
+    "Uniquement sur les droits d'enregistrement",
+    "Sur l'impôt dû par un tiers"
+   ],
+   "a": 0,
+   "why": "La transaction atténue les pénalités et, en matière d'impôts directs, peut aussi s'appliquer à l'intérêt de retard ; elle ne peut jamais porter sur les droits en principal, qui ne peuvent faire l'objet que d'une remise gracieuse en cas de gêne ou d'indigence (L. 247, 1°), elle-même exclue pour les droits d'enregistrement et la TVA. En contrepartie, le contribuable renonce à tout recours.",
+   "src": "LPF, art. L. 247",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

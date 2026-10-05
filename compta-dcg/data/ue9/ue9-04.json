@@ -3,17 +3,30 @@
  "ue": "UE9",
  "ordre": 4,
  "title": "Trésorerie, charges courantes et paie",
- "resume": "Encaissements, décaissements, services extérieurs, salaires et échéances d'emprunt.",
- "duree": "40 min",
+ "resume": "Encaissements et décaissements, virements internes, services extérieurs, impôts et taxes, paie complète, échéances d'emprunt et principe du rapprochement bancaire.",
+ "duree": "60 min",
  "niveau": 1,
  "lecon": [
   {
-   "h": "Les flux de trésorerie",
-   "html": "<p>Chèque, virement, carte : <code>512</code> Banque. Espèces : <code>530</code> Caisse. Un encaissement client débite 512 et crédite 411. Un paiement fournisseur débite 401 et crédite 512.</p>\n<p>Pour un mouvement entre la caisse et la banque, le PCG recommande le compte de passage <code>580</code> Virements internes, qui évite les doubles comptages. En exercice simple, on passe souvent directement : débit 530, crédit 512 pour un retrait d'espèces.</p>"
+   "h": "Les flux de trésorerie et les virements internes",
+   "html": "<p>Chèque, virement, carte, prélèvement : <code>512</code> Banque. Espèces : <code>530</code> Caisse. Un encaissement client débite 512 et crédite 411. Un paiement fournisseur débite 401 et crédite 512. Un chèque reçu mais pas encore déposé peut transiter par <code>5112</code> Chèques à encaisser.</p><p>Pour un mouvement <b>entre deux comptes de trésorerie</b> (retrait d'espèces, virement de la banque A vers la banque B), le PCG prévoit le compte de passage <code>580</code> Virements internes. Il évite qu'une même opération soit enregistrée deux fois quand elle apparaît dans deux journaux de trésorerie (journal de banque et journal de caisse) : chaque journal passe sa moitié via 580, qui se solde.</p><p>Exemple : retrait de <span class=\"mono\">500 €</span> au distributeur pour alimenter la caisse. Journal de banque : débit 580, crédit 512. Journal de caisse : débit 530, crédit 580. En exercice simple, on passe souvent directement débit 530, crédit 512.</p><div class=\"note\"><b>Rappel.</b> Le compte 580 doit toujours être soldé à la clôture. Un solde en 580 signale qu'une des deux moitiés de l'opération n'a pas été enregistrée.</div>",
+   "entry": [
+    {
+     "a": "580",
+     "d": 500,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 500
+    }
+   ],
+   "lib": "Retrait d'espèces, journal de banque (puis 530 / 580 au journal de caisse)"
   },
   {
    "h": "Les services extérieurs (61 / 62)",
-   "html": "<ul>\n<li><code>613</code> Locations, <code>615</code> Entretien, <code>616</code> Assurances (sans TVA), <code>6226</code> Honoraires, <code>623</code> Publicité, <code>626</code> Téléphone et poste, <code>6061</code> Électricité.</li>\n<li>Même logique que les achats : charge HT au débit, TVA déductible au débit, 401 ou 512 au crédit selon que la facture est réglée plus tard ou immédiatement.</li>\n</ul>\n<p>Exemple : loyer du mois, <span class=\"mono\">1 200 € HT</span> + 240 de TVA, prélevé en banque.</p>",
+   "html": "<p>Les charges externes autres que les achats stockés se répartissent entre <code>61</code> Services extérieurs et <code>62</code> Autres services extérieurs :</p><ul><li><code>611</code> sous-traitance, <code>612</code> redevances de crédit-bail, <code>613</code> locations, <code>614</code> charges locatives, <code>615</code> entretien et réparations, <code>616</code> primes d'assurance, <code>618</code> documentation ;</li><li><code>621</code> personnel extérieur (intérim), <code>622</code> honoraires (<code>6226</code>), <code>623</code> publicité, <code>624</code> transports, <code>625</code> déplacements et réceptions, <code>626</code> frais postaux et télécommunications, <code>627</code> services bancaires, <code>628</code> divers (cotisations).</li></ul><p>Même logique que les achats : charge HT au débit, TVA déductible <code>44566</code> au débit, <code>401</code> ou <code>512</code> au crédit selon que la facture est réglée plus tard ou immédiatement. Attention aux opérations <b>exonérées de TVA</b> : primes d'assurance (CGI, art. 261 C, 2°), intérêts et agios bancaires (art. 261 C, 1°), timbres, certaines locations nues. Aucune TVA à déduire dans ces cas.</p><p>Exemple : loyer du mois, <span class=\"mono\">1 200 € HT</span> + 240 de TVA, prélevé en banque.</p>",
    "entry": [
     {
      "a": "613",
@@ -34,8 +47,25 @@
    "lib": "Loyer, prélèvement"
   },
   {
-   "h": "La paie, version simplifiée",
-   "html": "<p>Le salaire <b>brut</b> est la charge de rémunération (<code>641</code>). On en retient les <b>cotisations salariales</b> dues aux organismes (<code>431</code>) ; le reste est le <b>net à payer</b> (<code>421</code>). L'employeur supporte en plus des <b>cotisations patronales</b> (<code>645</code>), également dues à <code>431</code>.</p>\n<p>Exemple : bruts 20 000, cotisations salariales 4 400, cotisations patronales 8 400.</p>",
+   "h": "Les impôts et taxes (63)",
+   "html": "<p>Le poste <code>63</code> Impôts, taxes et versements assimilés regroupe les impôts qui sont des <b>charges d'exploitation</b>, à ne pas confondre avec l'impôt sur les bénéfices (<code>695</code>) ni avec la TVA (qui transite par 445 sans jamais être une charge).</p><ul><li><code>631</code> et <code>633</code> : impôts et versements assis sur les <b>rémunérations</b> (taxe sur les salaires, taxe d'apprentissage, participation à la formation professionnelle, versement mobilité).</li><li><code>635</code> : autres impôts directs et indirects : cotisation foncière des entreprises (CFE) et CVAE, taxes foncières (<code>63512</code>), droits d'enregistrement (<code>6354</code>), taxes sur les véhicules de société.</li></ul><p>La contrepartie est l'État : <code>447</code> Autres impôts, taxes et versements assimilés (ou 512 si le paiement est immédiat). Exemple : avis de CFE de <span class=\"mono\">2 300 €</span> reçu en novembre, payable le 15 décembre.</p><p>Les amendes et pénalités (majorations de retard fiscales, amendes de circulation) ne sont pas des impôts : elles vont en <code>6712</code> Pénalités, amendes fiscales et pénales, et ne sont pas déductibles fiscalement.</p>",
+   "entry": [
+    {
+     "a": "635",
+     "d": 2300,
+     "c": 0
+    },
+    {
+     "a": "447",
+     "d": 0,
+     "c": 2300
+    }
+   ],
+   "lib": "Avis de CFE"
+  },
+  {
+   "h": "La paie complète",
+   "html": "<p>Le <b>salaire brut</b> est la charge de rémunération (<code>641</code>). Le bulletin de paie (C. trav., art. L. 3243-2) en retient les <b>cotisations salariales</b> et, depuis 2019, le <b>prélèvement à la source</b> de l'impôt sur le revenu ; le reste est le <b>net à payer</b> (<code>421</code>). L'employeur supporte en plus des <b>cotisations patronales</b> (<code>645</code>), environ 40 % du brut.</p><p>Les dettes sociales sont ventilées par organisme : <code>431</code> Sécurité sociale (URSSAF : maladie, vieillesse de base, famille, chômage, CSG-CRDS) et <code>437</code> Autres organismes sociaux (retraite complémentaire Agirc-Arrco, prévoyance, mutuelle). Le prélèvement à la source est une dette envers l'État en <code>4421</code>. Les acomptes versés en cours de mois sont en <code>425</code> et viennent en déduction du net.</p><p>Exemple : bruts 20 000, cotisations salariales 4 400 (dont 3 000 URSSAF et 1 400 retraite), prélèvement à la source 900, cotisations patronales 8 400 (dont 6 000 URSSAF et 2 400 retraite). Net à payer = 20 000 − 4 400 − 900 = 14 700.</p>",
    "entry": [
     {
      "a": "641",
@@ -50,19 +80,29 @@
     {
      "a": "421",
      "d": 0,
-     "c": 15600
+     "c": 14700
     },
     {
      "a": "431",
      "d": 0,
-     "c": 12800
+     "c": 9000
+    },
+    {
+     "a": "437",
+     "d": 0,
+     "c": 3800
+    },
+    {
+     "a": "4421",
+     "d": 0,
+     "c": 900
     }
    ],
-   "lib": "Paie du mois"
+   "lib": "Paie du mois (bulletins et charges patronales)"
   },
   {
    "h": "Les échéances d'emprunt",
-   "html": "<p>Chaque échéance mélange deux choses : le <b>remboursement du capital</b>, qui réduit la dette (débit <code>164</code>), et les <b>intérêts</b>, qui sont une charge financière (débit <code>661</code>). Le total sort de la banque.</p>",
+   "html": "<p>Au déblocage, l'emprunt est une ressource : débit 512, crédit <code>164</code> Emprunts auprès des établissements de crédit. Chaque échéance mélange ensuite deux choses : le <b>remboursement du capital</b> (l'amortissement de l'emprunt), qui réduit la dette (débit 164), et les <b>intérêts</b>, qui sont une charge financière (débit <code>661</code>, subdivision <code>6611</code>). Le total, l'<b>annuité</b> (ou mensualité), sort de la banque.</p><p>Les intérêts d'une période se calculent sur le <b>capital restant dû</b> au début de la période : capital × taux × durée/12 pour une période en mois. À annuité constante, la part d'intérêts baisse et la part de capital monte au fil du temps. Le tableau d'amortissement complet est au chapitre 8.</p><p>Exemple : échéance annuelle d'un emprunt de 10 000 € à 3 % remboursable en 5 amortissements constants de 2 000 € : intérêts de la 1re année = 10 000 × 3 % = 300.</p><p>Les frais de dossier prélevés par la banque sont des <code>627</code> Services bancaires (avec TVA si la banque l'applique), et l'assurance emprunteur une prime en <code>616</code>.</p>",
    "entry": [
     {
      "a": "164",
@@ -80,19 +120,48 @@
      "c": 2300
     }
    ],
-   "lib": "Échéance d'emprunt"
+   "lib": "Première échéance d'emprunt"
+  },
+  {
+   "h": "Le rapprochement bancaire : le principe",
+   "html": "<p>Le compte <code>512</code> tenu par l'entreprise et le <b>relevé</b> envoyé par la banque enregistrent les mêmes opérations, mais <b>en sens inverse</b> (la banque tient notre compte de son point de vue : notre débit est son crédit) et <b>avec des décalages</b> : un chèque émis n'est débité par la banque que lorsque le bénéficiaire l'encaisse ; des frais, agios ou virements reçus apparaissent sur le relevé avant que l'entreprise les connaisse.</p><p>L'<b>état de rapprochement</b> part des deux soldes, pointe les opérations communes et liste de chaque côté celles qui manquent. Les deux soldes corrigés doivent être égaux. Ensuite, l'entreprise <b>comptabilise uniquement</b> les opérations qu'elle a découvertes sur le relevé (frais bancaires <code>627</code>, agios <code>6616</code>, virement d'un client, prélèvement) ; les opérations qu'elle avait déjà enregistrées et que la banque n'a pas encore passées n'appellent aucune écriture.</p><div class=\"note\"><b>Méthode.</b> Solde du 512 chez nous + encaissements vus sur le relevé − décaissements vus sur le relevé = solde du relevé + chèques émis non encore débités − remises non encore créditées. La méthode détaillée et un cas complet sont au chapitre 9.</div>"
   }
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Comptes 512, 530, 580, 61/62, 63, 64, 421, 431, 437, 4421, 164, 661"
+  },
+  {
+   "ref": "C. trav., art. L. 3243-2 et R. 3243-1",
+   "note": "Bulletin de paie obligatoire et ses mentions"
+  },
+  {
+   "ref": "CSS, art. L. 242-1",
+   "note": "Assiette des cotisations de sécurité sociale : rémunération brute"
+  },
+  {
+   "ref": "CGI, art. 204 A et suivants",
+   "note": "Prélèvement à la source de l'impôt sur le revenu retenu par l'employeur"
+  },
+  {
+   "ref": "CGI, art. 261 C",
+   "note": "Exonération de TVA des opérations d'assurance et des intérêts bancaires"
+  },
+  {
+   "ref": "CGI, art. 1447 et 1380",
+   "note": "Cotisation foncière des entreprises et taxe foncière, charges du poste 63"
+  },
+  {
+   "ref": "C. com., art. R. 123-174",
+   "note": "Enregistrement sur pièces justificatives : relevé bancaire, bulletins, factures"
   }
  ],
  "exercices": [
   {
    "type": "ecriture",
-   "q": "Encaissement d'un chèque de 3 600 € d'un client, en règlement de sa facture.",
+   "niveau": 1,
+   "q": "Encaissement d'un chèque de 3 600 € d'un client, en règlement de sa facture, déposé le jour même en banque.",
    "lib": "Encaissement client",
    "palette": [
     "512",
@@ -114,12 +183,13 @@
      }
     ]
    ],
-   "why": "L'argent entre (débit 512), la créance s'éteint (crédit 411).",
-   "src": "PCG",
+   "why": "L'argent entre (débit 512), la créance s'éteint (crédit 411). Le produit 707 avait été constaté à la facturation ; le chèque n'est pas une recette en espèces, donc pas de 530.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Facture de loyer : 1 200 € HT, TVA 20 %, prélevée directement sur le compte bancaire.",
    "lib": "Loyer",
    "palette": [
@@ -147,12 +217,13 @@
      }
     ]
    ],
-   "why": "Charge HT en 613, TVA déductible en 44566, et comme le paiement est immédiat, la contrepartie est la banque et non 401.",
-   "src": "PCG",
+   "why": "Charge HT en 613 Locations, TVA déductible en 44566. Comme le paiement est immédiat par prélèvement, la contrepartie est la banque (1 440 TTC) et non 401, qui ne sert que lorsque la facture est réglée plus tard.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Prime d'assurance annuelle de 900 € payée par virement. L'assurance n'est pas soumise à TVA.",
    "lib": "Assurance",
    "palette": [
@@ -175,13 +246,14 @@
      }
     ]
    ],
-   "why": "Les primes d'assurance sont hors champ de la TVA : aucune TVA déductible à enregistrer.",
-   "src": "PCG",
+   "why": "Les opérations d'assurance sont exonérées de TVA (CGI, art. 261 C, 2°) : aucune TVA déductible à enregistrer, la prime passe intégralement en 616 Primes d'assurance.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 261 C",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "Paie du mois : salaires bruts 20 000 €, cotisations salariales 4 400 €, cotisations patronales 8 400 €. Enregistrez l'ensemble en une seule écriture.",
+   "niveau": 2,
+   "q": "Paie du mois : salaires bruts 20 000 €, cotisations salariales 4 400 €, cotisations patronales 8 400 €. Il n'y a pas de prélèvement à la source ce mois-ci. Enregistrez l'ensemble en une seule écriture, toutes les cotisations étant dues à l'URSSAF.",
    "lib": "Paie",
    "palette": [
     "641",
@@ -241,12 +313,13 @@
      }
     ]
    ],
-   "why": "Net à payer = 20 000 − 4 400 = 15 600 (crédit 421). Dette envers les organismes = 4 400 + 8 400 = 12 800 (crédit 431). Charges : 641 pour le brut, 645 pour le patronal. Total débit = 28 400 = total crédit.",
-   "src": "PCG",
+   "why": "Net à payer = 20 000 − 4 400 = 15 600 (crédit 421). Dette envers l'URSSAF = 4 400 + 8 400 = 12 800 (crédit 431). Charges : 641 pour le brut, 645 pour le patronal. Total débit = 28 400 = total crédit. Le paiement des salaires (débit 421, crédit 512) et des cotisations (débit 431, crédit 512) viendra plus tard.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CSS, art. L. 242-1",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Le net à payer aux salariés est enregistré :",
    "opts": [
     "Au débit de 641",
@@ -255,19 +328,20 @@
     "Au débit de 512"
    ],
    "a": 1,
-   "why": "421 Personnel – Rémunérations dues est une dette envers les salariés, créditée à la paie et débitée au virement des salaires.",
-   "src": "PCG",
+   "why": "421 Personnel, rémunérations dues est une dette envers les salariés, créditée à la paie et débitée au virement des salaires. 641 reçoit le brut (charge), 431 les cotisations dues aux organismes, et 512 n'est crédité qu'au paiement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Échéance d'emprunt prélevée en banque : 2 000 € de capital et 300 € d'intérêts.",
    "lib": "Échéance d'emprunt",
    "palette": [
     "164",
     "661",
     "512",
-    "1688"
+    "1648"
    ],
    "sol": [
     [
@@ -288,22 +362,25 @@
      }
     ]
    ],
-   "why": "Le capital remboursé réduit la dette (débit 164), les intérêts sont une charge financière (débit 661), le tout sort de la banque (crédit 512).",
-   "src": "PCG",
+   "why": "Le capital remboursé réduit la dette (débit 164), les intérêts sont une charge financière (débit 661), le tout sort de la banque (crédit 512). Le compte 1648 ne sert qu'à la clôture pour les intérêts courus non échus.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "calc",
-   "q": "Emprunt de 100 000 € au taux annuel de 3 %. Quel est le montant des intérêts de la première année ?",
+   "niveau": 1,
+   "q": "Emprunt de 100 000 € au taux annuel de 3 %, débloqué le 1er janvier, remboursable par annuités en fin d'année. Quel est le montant des intérêts de la première année ?",
    "a": 3000,
    "unit": "€",
-   "why": "100 000 × 3 % = 3 000 €. Les années suivantes, les intérêts se calculent sur le capital restant dû, donc ils diminuent.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "Intérêts = capital restant dû × taux = 100 000 × 3 % = 3 000 €. Les années suivantes, les intérêts se calculent sur le capital restant dû après chaque remboursement, donc ils diminuent.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
-   "q": "Retrait de 500 € d'espèces à la banque pour alimenter la caisse. Écriture directe :",
+   "niveau": 1,
+   "q": "Retrait de 500 € d'espèces à la banque pour alimenter la caisse. Écriture directe (sans compte de passage) :",
    "opts": [
     "Débit 512, crédit 530",
     "Débit 530, crédit 512",
@@ -311,12 +388,13 @@
     "Débit 580, crédit 530"
    ],
    "a": 1,
-   "why": "La caisse reçoit (débit 530), la banque donne (crédit 512). Avec le compte de passage, on ferait 580/512 puis 530/580.",
-   "src": "PCG",
+   "why": "La caisse reçoit (débit 530), la banque donne (crédit 512). Avec le compte de passage, on ferait 580/512 au journal de banque puis 530/580 au journal de caisse. L'option 3 transforme à tort un simple transfert en charge.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Facture de l'expert-comptable : honoraires 1 500 € HT, TVA 20 %, à payer le mois prochain.",
    "lib": "Honoraires",
    "palette": [
@@ -344,8 +422,282 @@
      }
     ]
    ],
-   "why": "Honoraires en 6226, TVA déductible, et dette fournisseur puisque le paiement est différé.",
-   "src": "PCG",
+   "why": "Honoraires en 6226, TVA déductible en 44566, et dette fournisseur de 1 800 TTC en 401 puisque le paiement est différé. La banque sera créditée au règlement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "À quoi sert le compte 580 Virements internes ?",
+   "opts": [
+    "À enregistrer les virements reçus des clients",
+    "À éviter le double enregistrement d'un mouvement entre deux comptes de trésorerie tenus dans des journaux distincts",
+    "À comptabiliser les virements de salaires",
+    "À enregistrer les transferts de charges"
+   ],
+   "a": 1,
+   "why": "Quand une opération (retrait d'espèces, virement entre deux banques) apparaît à la fois dans le journal de banque et dans le journal de caisse ou de l'autre banque, chaque journal l'enregistre pour sa part en contrepartie de 580, qui se solde. Les virements clients passent par 411/512, les salaires par 421/512, et les transferts de charges ont disparu du PCG 2025.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "La banque prélève 25 € HT de frais de tenue de compte, plus 5 € de TVA. Écriture :",
+   "opts": [
+    "Débit 627 : 25 ; débit 44566 : 5 ; crédit 512 : 30",
+    "Débit 6616 : 30 ; crédit 512 : 30",
+    "Débit 627 : 30 ; crédit 512 : 30",
+    "Débit 661 : 25 ; débit 44566 : 5 ; crédit 512 : 30"
+   ],
+   "a": 0,
+   "why": "Les commissions et frais bancaires sont des services extérieurs en 627 Services bancaires et assimilés ; lorsqu'ils sont soumis à TVA, celle-ci est déductible en 44566. Le compte 6616 est réservé aux intérêts (agios de découvert, escompte), qui sont des charges financières exonérées de TVA.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 261 C",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 1,
+   "q": "Quelles dépenses relèvent du poste 63 Impôts, taxes et versements assimilés ? (plusieurs réponses possibles)",
+   "opts": [
+    "La cotisation foncière des entreprises (CFE)",
+    "La taxe foncière sur l'entrepôt",
+    "L'impôt sur les sociétés",
+    "La TVA à décaisser",
+    "La taxe d'apprentissage"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "La CFE et la taxe foncière (635) et la taxe d'apprentissage (633) sont des impôts d'exploitation en 63. L'impôt sur les sociétés est une charge à part en 695, en bas du compte de résultat. La TVA à décaisser n'est jamais une charge : elle transite par les comptes 445.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Sur le bulletin de paie, le prélèvement à la source de l'impôt sur le revenu retenu par l'employeur est comptabilisé :",
+   "opts": [
+    "Au débit de 641, comme charge supplémentaire",
+    "Au crédit de 4421, dette envers l'État reversée à la DGFiP",
+    "Au crédit de 431, avec les cotisations URSSAF",
+    "Au crédit de 421, il reste dû au salarié"
+   ],
+   "a": 1,
+   "why": "L'employeur retient l'impôt sur le net imposable du salarié et le reverse à l'administration fiscale : c'est une dette envers l'État en 4421 Prélèvements à la source (impôt sur le revenu). Ce n'est pas une charge de l'employeur (le brut en 641 n'augmente pas), ni une cotisation sociale (431), et il n'est pas dû au salarié (il diminue au contraire son net à payer).",
+   "src": "CGI, art. 204 A ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Salaires bruts du mois : 32 000 €. Cotisations salariales : 7 040 €. Prélèvement à la source : 1 450 €. Un salarié a reçu un acompte de 600 € le 15 du mois. Quel est le net à payer en fin de mois (compte 421 à virer) ?",
+   "a": 22910,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Net à payer = brut − cotisations salariales − prélèvement à la source − acompte déjà versé = 32 000 − 7 040 − 1 450 − 600 = 22 910 €. Les cotisations patronales ne jouent pas : elles s'ajoutent aux charges de l'employeur sans toucher le net du salarié. L'acompte, enregistré en 425 lors de son versement, est imputé sur la paie.",
+   "src": "C. trav., art. L. 3243-2 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Dans l'écriture de paie, quels comptes sont crédités ? (plusieurs réponses possibles)",
+   "opts": [
+    "421 Personnel, rémunérations dues",
+    "431 Sécurité sociale",
+    "641 Rémunérations du personnel",
+    "437 Autres organismes sociaux",
+    "645 Charges de sécurité sociale et de prévoyance"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Les dettes nées de la paie sont créditées : le net envers les salariés (421), les cotisations envers l'URSSAF (431) et envers les caisses de retraite, prévoyance et mutuelle (437). Les charges (641 brut, 645 cotisations patronales) sont débitées.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le 5 du mois suivant, l'entreprise vire les salaires nets (14 700 €) aux salariés. Écriture :",
+   "opts": [
+    "Débit 641 : 14 700 ; crédit 512 : 14 700",
+    "Débit 421 : 14 700 ; crédit 512 : 14 700",
+    "Débit 512 : 14 700 ; crédit 421 : 14 700",
+    "Débit 421 : 14 700 ; crédit 431 : 14 700"
+   ],
+   "a": 1,
+   "why": "La paie a déjà constaté la charge (641) et la dette (421) à la fin du mois travaillé. Le virement éteint la dette : débit 421, crédit 512. Repasser 641 doublerait la charge ; l'option 3 inverse les sens ; l'option 4 confond salariés et organismes sociaux.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Ambre paie une amende de stationnement de 135 € pour un véhicule de livraison. Imputation :",
+   "opts": [
+    "635 Autres impôts, taxes et versements assimilés",
+    "6712 Pénalités, amendes fiscales et pénales",
+    "625 Déplacements, missions et réceptions",
+    "6616 Intérêts bancaires"
+   ],
+   "a": 1,
+   "why": "Une amende n'est pas un impôt mais une sanction : elle relève de 6712, dans les charges exceptionnelles, et n'est pas déductible fiscalement (CGI, art. 39, 2). Le poste 63 est réservé aux impôts et taxes proprement dits, 625 aux frais de déplacement et 6616 aux intérêts.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 39, 2",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles opérations ne comportent aucune TVA déductible à enregistrer ? (plusieurs réponses possibles)",
+   "opts": [
+    "Prime d'assurance multirisque",
+    "Agios de découvert bancaire",
+    "Facture de téléphone",
+    "Achat de timbres-poste à La Poste",
+    "Honoraires de l'avocat"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Les assurances et les intérêts bancaires sont exonérés de TVA (CGI, art. 261 C) et les timbres-poste vendus par La Poste au titre du service universel le sont aussi (art. 261, 4-11°) : la charge est enregistrée pour son montant total. Le téléphone et les honoraires d'avocat sont soumis à la TVA à 20 %, déductible en 44566.",
+   "src": "CGI, art. 261 et 261 C",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Emprunt de 60 000 € à 4 % remboursable par 4 amortissements constants annuels de 15 000 €. Quel est le montant de la 2e annuité (capital + intérêts) ?",
+   "opts": [
+    "17 400 €",
+    "16 800 €",
+    "15 600 €",
+    "18 000 €"
+   ],
+   "a": 1,
+   "why": "Après la 1re échéance, le capital restant dû est 60 000 − 15 000 = 45 000. Intérêts de la 2e année = 45 000 × 4 % = 1 800. Annuité = 15 000 + 1 800 = 16 800 €. 17 400 serait la 1re annuité (intérêts sur 60 000), 15 600 la 4e (intérêts sur 15 000) ; les annuités diminuent car les intérêts sont calculés sur un capital décroissant.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Lors du rapprochement bancaire, un chèque de 1 200 € émis par l'entreprise le 28 décembre n'apparaît pas sur le relevé au 31 décembre. Que doit faire l'entreprise ?",
+   "opts": [
+    "Annuler l'écriture du chèque",
+    "Rien : l'opération est déjà comptabilisée, elle figure seulement sur l'état de rapprochement",
+    "Enregistrer à nouveau le chèque",
+    "Créditer le compte 512 une seconde fois"
+   ],
+   "a": 1,
+   "why": "Le chèque a été comptabilisé à son émission (débit 401, crédit 512). La banque ne le débitera qu'à sa présentation par le bénéficiaire : c'est un simple décalage. Il est reporté sur l'état de rapprochement en diminution du solde du relevé, sans aucune écriture. Seules les opérations découvertes sur le relevé et absentes du 512 donnent lieu à écriture.",
+   "src": "C. com., art. R. 123-174 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le relevé bancaire mentionne un virement de 2 500 € reçu du client Hekla, non encore enregistré par l'entreprise. À l'issue du rapprochement, l'entreprise passe :",
+   "opts": [
+    "Débit 512 : 2 500 ; crédit 411 : 2 500",
+    "Débit 411 : 2 500 ; crédit 512 : 2 500",
+    "Aucune écriture, la banque l'a déjà enregistré",
+    "Débit 512 : 2 500 ; crédit 707 : 2 500"
+   ],
+   "a": 0,
+   "why": "L'entreprise ignorait l'encaissement : elle doit le comptabiliser (débit 512, crédit 411) pour que son compte 512 reflète la réalité. C'est précisément l'intérêt du rapprochement. Le produit 707 a été constaté à la facturation, et l'écriture de la banque dans ses propres livres ne remplace jamais celle de l'entreprise.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Un salarié reçoit un acompte de 600 € par virement le 15 du mois, avant l'établissement de la paie. Écriture au 15 :",
+   "opts": [
+    "Débit 641 : 600 ; crédit 512 : 600",
+    "Débit 425 : 600 ; crédit 512 : 600",
+    "Débit 421 : 600 ; crédit 512 : 600",
+    "Débit 421 : 600 ; crédit 425 : 600"
+   ],
+   "a": 1,
+   "why": "L'acompte est une avance sur un salaire pas encore dû : créance temporaire sur le salarié en 425 Personnel, avances et acomptes. En fin de mois, la paie constate la charge (641) et le net ; 425 est alors soldé par le crédit en contrepartie du débit de 421. Débiter 641 au 15 anticiperait une charge non encore calculée.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "Au 31 décembre, le compte 512 de la société Lioré présente un solde débiteur de 8 400 €. Le relevé bancaire affiche un solde créditeur de 9 150 €. Les seules différences sont : un chèque de 1 000 € émis par Lioré et non encore débité par la banque, et des frais bancaires de 250 € prélevés par la banque et inconnus de Lioré. Quel est le solde du 512 après les écritures de régularisation ?",
+   "opts": [
+    "8 150 €",
+    "8 400 €",
+    "9 150 €",
+    "7 400 €"
+   ],
+   "a": 0,
+   "why": "Vérification : relevé 9 150 − chèque non débité 1 000 = 8 150 ; livre 8 400 − frais 250 = 8 150. Les deux soldes rapprochés coïncident. Seuls les frais bancaires, découverts sur le relevé, donnent lieu à une écriture (débit 627, crédit 512 : 250) ; le chèque est déjà comptabilisé. Le 512 passe donc de 8 400 à 8 150 €. Le solde du relevé est créditeur chez la banque parce que notre argent est pour elle une dette.",
+   "src": "C. com., art. R. 123-174 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 3,
+   "q": "Paie de la société Vézac : bruts 20 000 €, cotisations salariales 4 400 € (dont 3 000 € URSSAF et 1 400 € caisse de retraite), prélèvement à la source 900 €, cotisations patronales 8 400 € (dont 6 000 € URSSAF et 2 400 € retraite). Enregistrez la paie complète en une écriture, en ventilant les dettes par organisme (une seule ligne par compte).",
+   "lib": "Paie complète",
+   "palette": [
+    "641",
+    "645",
+    "421",
+    "431",
+    "437",
+    "4421",
+    "512",
+    "425"
+   ],
+   "sol": [
+    [
+     {
+      "a": "641",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "645",
+      "d": 8400,
+      "c": 0
+     },
+     {
+      "a": "421",
+      "d": 0,
+      "c": 14700
+     },
+     {
+      "a": "431",
+      "d": 0,
+      "c": 9000
+     },
+     {
+      "a": "437",
+      "d": 0,
+      "c": 3800
+     },
+     {
+      "a": "4421",
+      "d": 0,
+      "c": 900
+     }
+    ]
+   ],
+   "why": "Net à payer = 20 000 − 4 400 − 900 = 14 700 (421). URSSAF = 3 000 salarial + 6 000 patronal = 9 000 (431). Retraite = 1 400 + 2 400 = 3 800 (437). Prélèvement à la source 900 (4421). Débits : 20 000 + 8 400 = 28 400 ; crédits : 14 700 + 9 000 + 3 800 + 900 = 28 400. Les cotisations salariales ne sont pas une charge distincte : elles sont comprises dans le brut (641) et simplement réorientées vers les organismes.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CSS, art. L. 242-1 ; CGI, art. 204 A",
    "fiab": "stable"
   }
  ]

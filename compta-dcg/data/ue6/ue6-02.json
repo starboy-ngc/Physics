@@ -1,0 +1,437 @@
+{
+ "id": "ue6-02",
+ "ue": "UE6",
+ "ordre": 2,
+ "title": "Bilan fonctionnel, ratios et rentabilité",
+ "resume": "Construire le bilan fonctionnel, calculer FRNG, BFR et trésorerie nette, lire les ratios de structure, de rotation, de rentabilité et de liquidité, comprendre l'effet de levier.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Le bilan fonctionnel : logique et construction",
+   "html": "<p>Le bilan comptable classe les postes par nature juridique. Le <b>bilan fonctionnel</b> les reclasse par <b>cycle</b> : investissement, financement, exploitation, trésorerie. Il se construit en <b>valeurs brutes</b> : les amortissements et dépréciations ne sont pas soustraits de l'actif mais ajoutés aux <b>ressources stables</b>, car ils représentent une ressource conservée dans l'entreprise (ils ont réduit le résultat distribuable sans être décaissés).</p>\n<p>Quatre masses à l'actif : <b>emplois stables</b> (immobilisations brutes), <b>actif circulant d'exploitation</b> (stocks, créances clients, autres créances d'exploitation, charges constatées d'avance d'exploitation), <b>actif circulant hors exploitation</b> (créances sur cessions d'immobilisations, créances d'IS, capital souscrit appelé non versé), <b>trésorerie active</b> (disponibilités).</p>\n<p>Quatre masses au passif : <b>ressources stables</b> (capitaux propres, amortissements et dépréciations, provisions, dettes financières hors concours bancaires courants), <b>dettes d'exploitation</b> (fournisseurs, dettes fiscales et sociales, produits constatés d'avance d'exploitation), <b>dettes hors exploitation</b> (fournisseurs d'immobilisations, dette d'IS, dividendes à payer), <b>trésorerie passive</b> (concours bancaires courants et soldes créditeurs de banque).</p>\n<p>Exemple (société Nordia) : immobilisations brutes 480 000 ; capitaux propres 300 000 ; amortissements et dépréciations 120 000 ; emprunts 180 000. Ressources stables = 600 000.</p>"
+  },
+  {
+   "h": "Les retraitements du bilan fonctionnel",
+   "html": "<p>Pour donner une image économique, on corrige certains postes :</p>\n<ul>\n<li><b>Crédit-bail</b> : le bien est ajouté aux emplois stables pour sa valeur d'origine ; en contrepartie, les amortissements qu'il aurait subis vont en ressources stables (amortissements) et la valeur nette en dettes financières. Le FRNG ne change pas.</li>\n<li><b>Effets escomptés non échus</b> (EENE) : réintégrés dans les créances clients et ajoutés à la trésorerie passive (c'est un crédit bancaire déguisé).</li>\n<li><b>Concours bancaires courants</b> et soldes créditeurs de banque : sortis des dettes financières, placés en trésorerie passive.</li>\n<li><b>Charges et produits constatés d'avance</b> : en exploitation (cas général) ou hors exploitation selon leur nature.</li>\n<li><b>Écarts de conversion</b> : on revient à la valeur d'origine de la créance ou de la dette (écart actif sur créance : ajouté à la créance ; écart passif sur dette : ajouté à la dette, etc.).</li>\n<li><b>Intérêts courus non échus</b> sur emprunts : retirés des dettes financières, classés en dettes hors exploitation ; sur prêts : retirés des immobilisations financières, classés en créances hors exploitation.</li>\n<li><b>Capital souscrit non appelé</b> : déduit des capitaux propres (il ne constitue pas encore une ressource).</li>\n<li><b>Primes de remboursement des obligations</b> : déduites des dettes financières (ressources stables) pour ne retenir que le montant réellement emprunté.</li>\n</ul>\n<p>Exemple : bien en crédit-bail de valeur d'origine 100 000, amortissements théoriques cumulés 40 000. Emplois stables +100 000 ; ressources stables +40 000 (amortissements) +60 000 (dettes financières).</p>"
+  },
+  {
+   "h": "FRNG, BFR et trésorerie nette",
+   "html": "<p>Trois agrégats résument le bilan fonctionnel :</p>\n<ul>\n<li><b>Fonds de roulement net global</b> : FRNG = ressources stables − emplois stables. C'est l'excédent de financement long disponible pour le cycle d'exploitation.</li>\n<li><b>Besoin en fonds de roulement d'exploitation</b> : BFRE = actif circulant d'exploitation − dettes d'exploitation. <b>BFR hors exploitation</b> : BFRHE = actif circulant hors exploitation − dettes hors exploitation. BFR = BFRE + BFRHE.</li>\n<li><b>Trésorerie nette</b> : TN = trésorerie active − trésorerie passive.</li>\n</ul>\n<div class=\"note\"><b>Relation fondamentale.</b> FRNG − BFR = trésorerie nette. Le FRNG finance le BFR ; ce qui reste (ou manque) se lit dans la trésorerie.</div>\n<p>Exemple (Nordia) : ressources stables 600 000, emplois stables 480 000 : FRNG = 120 000. Stocks 90 000, créances clients 110 000, charges constatées d'avance 5 000, fournisseurs 85 000, dettes fiscales et sociales 30 000 : BFRE = 205 000 − 115 000 = 90 000. BFRHE = 10 000. TN = 120 000 − 100 000 = 20 000 €.</p>\n<p>Situations types : FRNG > BFR > 0, trésorerie positive, équilibre sain. BFR > FRNG > 0, trésorerie négative : l'exploitation est financée par des concours bancaires, situation fragile si durable. FRNG négatif : des immobilisations sont financées par des dettes courtes, déséquilibre grave sauf dans la grande distribution, dont le BFR est structurellement négatif (clients payent comptant, fournisseurs à 60 jours).</p>"
+  },
+  {
+   "h": "Ratios de structure financière",
+   "html": "<p>Les ratios de structure jugent l'équilibre du financement long. Les plus demandés :</p>\n<ul>\n<li><b>Couverture des emplois stables</b> = ressources stables / emplois stables. Doit dépasser 1 : c'est l'expression du FRNG en ratio.</li>\n<li><b>Autonomie financière</b> = capitaux propres / dettes financières (norme usuelle : supérieur à 1, les banques refusant en général de prêter plus que les fonds propres), ou sa variante capitaux propres / ressources stables (supérieur à 50 %).</li>\n<li><b>Taux d'endettement</b> = dettes financières / capitaux propres (c'est le levier financier D/CP de la section sur l'effet de levier).</li>\n<li><b>Capacité de remboursement</b> = dettes financières / CAF. Exprimée en années : la norme bancaire est de ne pas dépasser 3 à 4 ans.</li>\n<li><b>Poids des charges financières</b> = charges d'intérêts / EBE, à maintenir sous 30 à 40 %.</li>\n</ul>\n<p>Exemple : capitaux propres 400 000, dettes financières 250 000 : autonomie = 1,6. Dettes financières 480 000, CAF 160 000 : capacité de remboursement = 3 ans, limite acceptable.</p>\n<p>Piège : toujours préciser la définition retenue dans la copie, car les manuels varient sur le dénominateur. Dans un sujet, utiliser la formule fournie en annexe.</p>"
+  },
+  {
+   "h": "Ratios de rotation et BFR en jours de chiffre d'affaires",
+   "html": "<p>Les ratios de rotation traduisent les postes du BFRE en <b>durées</b>, ce qui permet de comparer entre exercices et avec le secteur :</p>\n<ul>\n<li><b>Durée du crédit clients</b> = (créances clients + EENE − avances reçues) / CA TTC × 360.</li>\n<li><b>Durée du crédit fournisseurs</b> = (dettes fournisseurs − avances versées) / (achats et services extérieurs TTC) × 360.</li>\n<li><b>Rotation des stocks de marchandises</b> = stock moyen de marchandises / coût d'achat des marchandises vendues × 360.</li>\n<li><b>Rotation des stocks de matières</b> = stock moyen de matières / coût d'achat des matières consommées × 360.</li>\n<li><b>Rotation des stocks de produits finis</b> = stock moyen de produits / coût de production des produits vendus × 360.</li>\n</ul>\n<p>Numérateur et dénominateur doivent être homogènes : les créances et dettes sont TTC, donc le CA et les achats doivent l'être aussi.</p>\n<p>Exemple : créances clients 120 000, EENE 24 000, CA HT 900 000 au taux de TVA de 20 % (CA TTC 1 080 000). Durée = 144 000 / 1 080 000 × 360 = 48 jours. Dettes fournisseurs 96 000, achats et services HT 480 000 (TTC 576 000) : 60 jours.</p>\n<p><b>BFRE en jours de CA</b> = BFRE / CA HT × 360 : 90 000 / 900 000 × 360 = 36 jours. Une hausse de ce ratio signale que la croissance consomme de la trésorerie.</p>"
+  },
+  {
+   "h": "Rentabilité économique, rentabilité financière, effet de levier",
+   "html": "<p>La <b>rentabilité économique</b> mesure ce que rapportent les capitaux investis, quel que soit leur financement : Re = résultat d'exploitation / (capitaux propres + dettes financières). On la calcule parfois après IS : REX × (1 − t) / capitaux investis.</p>\n<p>La <b>rentabilité financière</b> mesure ce que gagnent les associés : Rf = résultat net / capitaux propres.</p>\n<p>L'<b>effet de levier</b> relie les deux. Avec i le taux d'intérêt de la dette, t le taux d'IS, D les dettes financières et CP les capitaux propres :</p>\n<p class=\"mono\">Rf = [Re + (Re − i) × D / CP] × (1 − t)</p>\n<p>avec Re avant impôt. De façon équivalente, avec Re après impôt et i après impôt : Rf = Re(1−t) + [Re(1−t) − i(1−t)] × D/CP. Si Re > i, l'endettement augmente la rentabilité des associés (levier positif) ; si Re < i, il la dégrade (effet de massue).</p>\n<p>Exemple (IS à 25 %) : REX 120 000, CP 500 000, D 300 000 à 4 %. Re = 120 000 / 800 000 = 15 % ; Rf = [15 % + (15 % − 4 %) × 0,6] × 0,75 = 21,6 % × 0,75 = 16,2 %. Vérification : résultat net = (120 000 − 12 000) × 0,75 = 81 000 ; 81 000 / 500 000 = 16,2 %.</p>\n<p>Lien DSCG : l'effet de levier est au cœur de la politique de financement et de l'évaluation en UE2.</p>"
+  },
+  {
+   "h": "Bilan financier, liquidité et solvabilité",
+   "html": "<p>Le <b>bilan financier</b> (ou bilan liquidité) répond à la question du prêteur : l'entreprise peut-elle payer ses dettes à l'échéance ? Il est établi en <b>valeurs nettes</b>, à la valeur réelle des actifs, en classant l'actif par <b>liquidité croissante</b> et le passif par <b>exigibilité croissante</b>, avec une coupure à un an. On élimine l'actif fictif (frais d'établissement, charges à répartir) des capitaux propres, on reclasse la part des emprunts à moins d'un an en dettes à court terme et les dividendes à payer en dettes.</p>\n<p>Ratios de <b>liquidité</b> :</p>\n<ul>\n<li>Liquidité générale = actif à moins d'un an / dettes à moins d'un an (souhaitée supérieure à 1).</li>\n<li>Liquidité réduite = (créances à moins d'un an + disponibilités) / dettes à moins d'un an (on exclut les stocks, moins liquides).</li>\n<li>Liquidité immédiate = disponibilités / dettes à moins d'un an.</li>\n</ul>\n<p>Exemple : stocks 100 000, créances 150 000, disponibilités 50 000, dettes à moins d'un an 200 000. Liquidité générale 1,5 ; réduite 1,0 ; immédiate 0,25.</p>\n<p>La <b>solvabilité</b> est la capacité à rembourser l'ensemble des dettes en cas de liquidation : actif réel net / total des dettes, ou capitaux propres / total du bilan (souhaité supérieur à 20 à 25 %). Liquidité (court terme) et solvabilité (long terme) sont deux questions distinctes : une entreprise solvable peut connaître une crise de liquidité.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025), modèles de bilan et définition du fonds de roulement net global (tableau de financement)",
+   "note": "Bilan en valeurs brutes, FRNG, variation du BFR"
+  },
+  {
+   "ref": "Banque de France, Centrale de bilans, Méthode d'analyse financière : bilan fonctionnel et retraitements (crédit-bail, EENE, concours bancaires courants)",
+   "note": "Retraitements du bilan fonctionnel"
+  },
+  {
+   "ref": "Programme du DCG UE6 Finance d'entreprise (arrêté du 13 février 2019 ; arrêté du 4 août 2025, BOESR n° 32 du 28 août 2025), partie 1 : analyse de la structure financière, de la rentabilité et des risques",
+   "note": "Bilan fonctionnel, ratios, effet de levier, bilan financier"
+  },
+  {
+   "ref": "P. Recroix, DCG 6 Finance d'entreprise, Gualino, éd. 2025-2026",
+   "note": "Formules des ratios de structure, de rotation et de liquidité"
+  },
+  {
+   "ref": "J. Delahaye, F. Duprat, DCG 6 Finance d'entreprise, Dunod, éd. 2025-2026",
+   "note": "Effet de levier et rentabilité"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Pourquoi le bilan fonctionnel est-il établi en valeurs brutes ?",
+   "opts": [
+    "Parce que les amortissements et dépréciations sont une ressource conservée dans l'entreprise, reclassée en ressources stables",
+    "Parce que les amortissements sont des dettes envers les fournisseurs d'immobilisations",
+    "Parce que la valeur brute correspond à la valeur de marché des immobilisations",
+    "Parce que le PCG interdit de présenter des valeurs nettes"
+   ],
+   "a": 0,
+   "why": "Les amortissements et dépréciations ont diminué le résultat sans sortie de trésorerie : ils constituent un financement interne conservé par l'entreprise. Le bilan fonctionnel les ajoute donc aux ressources stables et conserve l'actif pour son coût d'origine. Ce n'est ni une dette ni une valeur de marché.",
+   "src": "Programme DCG UE6, bilan fonctionnel",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans le bilan fonctionnel, les concours bancaires courants et soldes créditeurs de banque sont classés :",
+   "opts": [
+    "En trésorerie passive",
+    "En ressources stables, avec les emprunts",
+    "En dettes d'exploitation",
+    "En dettes hors exploitation"
+   ],
+   "a": 0,
+   "why": "Les concours bancaires courants sont des financements à très court terme, renouvelables, qui relèvent du cycle de trésorerie : ils sont retirés des dettes financières et placés en trésorerie passive. La trésorerie nette = disponibilités − concours bancaires courants.",
+   "src": "Programme DCG UE6, bilan fonctionnel (trésorerie passive)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "L'annexe indique des effets escomptés non échus (EENE) de 24 000 €. Quel retraitement opérer dans le bilan fonctionnel ?",
+   "opts": [
+    "Ajouter 24 000 € aux créances clients et 24 000 € à la trésorerie passive",
+    "Retirer 24 000 € des créances clients",
+    "Ajouter 24 000 € aux dettes financières stables",
+    "Ajouter 24 000 € aux disponibilités"
+   ],
+   "a": 0,
+   "why": "L'escompte a fait sortir les créances du bilan contre une avance de trésorerie de la banque. Économiquement, la créance existe encore et l'entreprise a un crédit bancaire court : on réintègre les EENE dans l'actif circulant d'exploitation et on les ajoute à la trésorerie passive. Le BFRE augmente et la trésorerie nette diminue d'autant.",
+   "src": "Centrale de bilans, retraitement des EENE",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le capital souscrit non appelé (compte 109) figure à l'actif pour 50 000 €. Dans le bilan fonctionnel, il est :",
+   "opts": [
+    "Déduit des capitaux propres dans les ressources stables",
+    "Maintenu en emplois stables",
+    "Classé en actif circulant d'exploitation",
+    "Classé en trésorerie active"
+   ],
+   "a": 0,
+   "why": "La part du capital non encore appelée n'a pas été versée et ne le sera pas avant la décision d'appel : ce n'est pas une ressource disponible. On la retranche des capitaux propres. En revanche, le capital appelé non versé est une créance à court terme (actif circulant hors exploitation).",
+   "src": "Programme DCG UE6, retraitements du bilan fonctionnel",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les intérêts courus non échus sur emprunts (3 000 €) sont inclus dans le poste « Emprunts et dettes auprès des établissements de crédit ». Dans le bilan fonctionnel, ils sont :",
+   "opts": [
+    "Retirés des dettes financières et classés en dettes hors exploitation",
+    "Maintenus en ressources stables",
+    "Classés en trésorerie passive",
+    "Classés en dettes d'exploitation"
+   ],
+   "a": 0,
+   "why": "Les intérêts courus seront payés dans quelques mois : ce sont des dettes à court terme, sans lien avec le cycle d'exploitation (ils relèvent du financement). On les sort des ressources stables pour les placer en dettes hors exploitation. Ils ne sont pas un concours bancaire, donc pas en trésorerie passive.",
+   "src": "Programme DCG UE6, retraitements du bilan fonctionnel",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un écart de conversion actif de 2 000 € provient d'une créance client en dollars dont le cours a baissé. Quel retraitement dans le bilan fonctionnel ?",
+   "opts": [
+    "Ajouter 2 000 € aux créances clients pour revenir à leur valeur d'origine",
+    "Ajouter 2 000 € aux dettes d'exploitation",
+    "Le classer en emplois stables",
+    "Le déduire des capitaux propres"
+   ],
+   "a": 0,
+   "why": "L'écart de conversion actif traduit une perte latente : la créance a été ramenée au cours de clôture et l'écart isolé à l'actif (476). Le bilan fonctionnel annule cet ajustement et rétablit la créance pour son montant d'origine. L'écart lié à une dette suivrait la logique inverse (déduit de la dette).",
+   "src": "Programme DCG UE6, retraitements du bilan fonctionnel (écarts de conversion)",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque poste dans la masse du bilan fonctionnel qui lui correspond.",
+   "cats": [
+    "Emplois stables",
+    "Actif circulant d'exploitation",
+    "Actif circulant hors exploitation",
+    "Ressources stables",
+    "Dettes d'exploitation",
+    "Dettes hors exploitation",
+    "Trésorerie"
+   ],
+   "items": [
+    ["Fonds commercial (valeur brute)", 0],
+    ["Stocks de matières premières", 1],
+    ["Créance sur cession d'immobilisation", 2],
+    ["Amortissements cumulés des immobilisations", 3],
+    ["Emprunt obligataire", 3],
+    ["Dettes sociales", 4],
+    ["Charges constatées d'avance d'exploitation", 1],
+    ["Dettes fournisseurs d'immobilisations", 5],
+    ["Dette d'impôt sur les bénéfices", 5],
+    ["Concours bancaires courants", 6]
+   ],
+   "why": "Les immobilisations brutes sont des emplois stables ; les amortissements et l'emprunt obligataire sont des ressources stables. Stocks et charges constatées d'avance relèvent du cycle d'exploitation ; les dettes sociales aussi. La créance sur cession, la dette sur immobilisations et la dette d'IS sont hors exploitation. Les concours bancaires courants sont de la trésorerie passive.",
+   "src": "Programme DCG UE6, bilan fonctionnel",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Société Nordia. Capitaux propres 300 000 € ; amortissements et dépréciations 120 000 € ; emprunts auprès des établissements de crédit 180 000 € (sans concours bancaires courants) ; immobilisations brutes 480 000 €. Calculez le FRNG (en euros).",
+   "a": 120000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Ressources stables = 300 000 + 120 000 + 180 000 = 600 000 €. Emplois stables = 480 000 €. FRNG = 600 000 − 480 000 = 120 000 €. Les amortissements font partie des ressources stables puisque le bilan fonctionnel est en valeurs brutes.",
+   "src": "PCG, tableau de financement (définition du FRNG)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Société Nordia. Stocks 90 000 € ; créances clients 110 000 € ; charges constatées d'avance (exploitation) 5 000 € ; dettes fournisseurs 85 000 € ; dettes fiscales et sociales (hors IS) 30 000 €. Calculez le BFR d'exploitation (en euros).",
+   "a": 90000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Actif circulant d'exploitation = 90 000 + 110 000 + 5 000 = 205 000 €. Dettes d'exploitation = 85 000 + 30 000 = 115 000 €. BFRE = 205 000 − 115 000 = 90 000 €. Les charges constatées d'avance liées à l'exploitation sont assimilées à des créances d'exploitation.",
+   "src": "Programme DCG UE6, BFR d'exploitation",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Société Nordia. FRNG 120 000 € ; BFR d'exploitation 90 000 € ; BFR hors exploitation 10 000 €. Calculez la trésorerie nette (en euros).",
+   "a": 20000,
+   "unit": "€",
+   "tol": 1,
+   "why": "BFR total = 90 000 + 10 000 = 100 000 €. Trésorerie nette = FRNG − BFR = 120 000 − 100 000 = 20 000 €. On retrouverait le même montant par trésorerie active − trésorerie passive : c'est la relation fondamentale du bilan fonctionnel.",
+   "src": "Programme DCG UE6, relation FRNG − BFR = TN",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un matériel financé par crédit-bail a une valeur d'origine de 100 000 € ; s'il avait été acheté, il serait amorti à hauteur de 40 000 € à la clôture. Quel montant est ajouté aux dettes financières (ressources stables) lors du retraitement du bilan fonctionnel (en euros) ?",
+   "a": 60000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Le bien est ajouté aux emplois stables pour 100 000 €. En contrepartie, 40 000 € d'amortissements vont en ressources stables (amortissements) et la valeur nette, 100 000 − 40 000 = 60 000 €, est assimilée à un emprunt (dettes financières). Au total, ressources stables +100 000 et emplois stables +100 000 : le FRNG est inchangé.",
+   "src": "Centrale de bilans, retraitement du crédit-bail",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Le retraitement d'un bien en crédit-bail dans le bilan fonctionnel a pour effets :",
+   "opts": [
+    "D'augmenter les emplois stables de la valeur d'origine du bien",
+    "D'augmenter les ressources stables du montant des amortissements théoriques",
+    "D'augmenter les dettes financières de la valeur nette du bien",
+    "De modifier la trésorerie nette",
+    "De modifier le FRNG"
+   ],
+   "a": [0, 1, 2],
+   "why": "Le retraitement ajoute la valeur d'origine en emplois stables et, au passif, les amortissements théoriques plus la valeur nette en dettes financières : les ressources stables augmentent du même montant que les emplois stables. FRNG, BFR et trésorerie sont donc inchangés ; seuls les ratios (endettement, couverture des emplois stables) sont modifiés.",
+   "src": "Centrale de bilans, retraitement du crédit-bail",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la relation fondamentale du bilan fonctionnel ?",
+   "opts": [
+    "FRNG − BFR = trésorerie nette",
+    "FRNG + BFR = trésorerie nette",
+    "BFR − trésorerie nette = capitaux propres",
+    "FRNG = actif circulant − dettes circulantes"
+   ],
+   "a": 0,
+   "why": "Le FRNG (excédent des ressources stables sur les emplois stables) sert à financer le BFR ; le solde constitue la trésorerie nette. L'égalité découle de l'équilibre du bilan. La dernière option décrit le BFR (ou le fonds de roulement calculé par le bas du bilan), pas le FRNG tel que défini par le PCG.",
+   "src": "PCG, tableau de financement ; programme DCG UE6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise présente un FRNG de 80 000 €, un BFR de 150 000 € et donc une trésorerie nette de −70 000 €. Quel diagnostic ?",
+   "opts": [
+    "Le FRNG ne couvre pas le BFR : l'exploitation est financée par des concours bancaires courants, situation fragile",
+    "La situation est saine car le FRNG est positif",
+    "Les immobilisations sont financées par des dettes à court terme",
+    "L'entreprise a un excédent de trésorerie à placer"
+   ],
+   "a": 0,
+   "why": "Le FRNG est positif, les immobilisations sont bien financées par des ressources longues (l'option 3 est fausse). Mais le BFR dépasse le FRNG : l'écart de 70 000 € est financé par de la trésorerie passive (découvert, escompte), coûteuse et révocable. Il faut soit augmenter le FRNG (capital, emprunt long), soit réduire le BFR (stocks, délais clients).",
+   "src": "Programme DCG UE6, interprétation du bilan fonctionnel",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Capitaux propres 400 000 €, dettes financières 250 000 €. Quel est le ratio d'autonomie financière défini comme capitaux propres / dettes financières ?",
+   "opts": [
+    "1,6",
+    "0,625",
+    "0,615",
+    "2,6"
+   ],
+   "a": 0,
+   "why": "400 000 / 250 000 = 1,6 : les capitaux propres dépassent les dettes financières, l'entreprise conserve une capacité d'endettement. 0,625 est le taux d'endettement (dettes / capitaux propres) ; 0,615 rapporte les capitaux propres aux ressources totales (400 / 650) ; 2,6 n'a pas de sens ici.",
+   "src": "Programme DCG UE6, ratios de structure",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dettes financières 480 000 €, CAF 160 000 €. Quelle est la capacité de remboursement et comment l'interpréter ?",
+   "opts": [
+    "3 ans : limite haute acceptable selon la norme bancaire (3 à 4 ans)",
+    "0,33 an : excellente",
+    "3 ans : largement insuffisante, car il faudrait moins de 1 an",
+    "30 % : trop élevée"
+   ],
+   "a": 0,
+   "why": "Capacité de remboursement = dettes financières / CAF = 480 000 / 160 000 = 3 : il faudrait trois années de CAF pour rembourser toute la dette. Les banques considèrent qu'au-delà de 3 à 4 ans, l'entreprise est trop endettée. 0,33 est le ratio inversé.",
+   "src": "Programme DCG UE6, ratios de structure (capacité de remboursement)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Créances clients 120 000 € ; effets escomptés non échus 24 000 € ; chiffre d'affaires HT 900 000 €, intégralement soumis à la TVA au taux de 20 %. Calculez la durée du crédit clients en jours (année de 360 jours, arrondir à l'entier).",
+   "a": 48,
+   "unit": "jours",
+   "tol": 1,
+   "why": "Les créances sont TTC, le CA doit l'être aussi : CA TTC = 900 000 × 1,2 = 1 080 000 €. Numérateur = 120 000 + 24 000 = 144 000 € (les EENE sont réintégrés). Durée = 144 000 / 1 080 000 × 360 = 48 jours. Oublier la TVA donnerait 57,6 jours, oublier les EENE 40 jours.",
+   "src": "Programme DCG UE6, ratios de rotation (crédit clients)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Dettes fournisseurs 96 000 € ; achats et services extérieurs HT de l'exercice 480 000 €, tous soumis à la TVA à 20 %. Calculez la durée du crédit fournisseurs en jours (année de 360 jours, arrondir à l'entier).",
+   "a": 60,
+   "unit": "jours",
+   "tol": 1,
+   "why": "Achats et services TTC = 480 000 × 1,2 = 576 000 €. Durée = 96 000 / 576 000 × 360 = 60 jours. L'entreprise paie en moyenne à 60 jours et encaisse à 48 jours (exercice précédent) : le crédit fournisseurs finance en partie le crédit clients.",
+   "src": "Programme DCG UE6, ratios de rotation (crédit fournisseurs)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Stock de marchandises : 40 000 € à l'ouverture, 50 000 € à la clôture. Achats de marchandises de l'exercice : 300 000 €. Calculez la durée de rotation du stock de marchandises en jours, à partir du stock moyen (année de 360 jours, arrondir à l'entier).",
+   "a": 56,
+   "unit": "jours",
+   "tol": 1,
+   "why": "Stock moyen = (40 000 + 50 000) / 2 = 45 000 €. Coût d'achat des marchandises vendues = 300 000 + 40 000 − 50 000 = 290 000 €. Rotation = 45 000 / 290 000 × 360 = 55,9 soit 56 jours. Utiliser les achats au dénominateur (300 000) donnerait 54 jours : le ratio correct rapporte le stock à ce qui en sort, le coût des marchandises vendues.",
+   "src": "Programme DCG UE6, ratios de rotation (stocks)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "BFR d'exploitation 90 000 €, chiffre d'affaires HT 900 000 €. Quel est le BFRE exprimé en jours de chiffre d'affaires (année de 360 jours) ?",
+   "opts": [
+    "36 jours",
+    "10 jours",
+    "30 jours",
+    "100 jours"
+   ],
+   "a": 0,
+   "why": "BFRE en jours de CA = BFRE / CA HT × 360 = 90 000 / 900 000 × 360 = 0,1 × 360 = 36 jours. 10 % est le ratio sans conversion en jours ; 30 jours correspondrait à une base mensuelle (× 300 ou 1/12 du CA), ce qui n'est pas la convention.",
+   "src": "Programme DCG UE6, BFR en jours de CA",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "La rentabilité économique se mesure par :",
+   "opts": [
+    "Résultat d'exploitation / (capitaux propres + dettes financières)",
+    "Résultat net / capitaux propres",
+    "Résultat net / chiffre d'affaires",
+    "EBE / chiffre d'affaires"
+   ],
+   "a": 0,
+   "why": "La rentabilité économique rapporte le résultat de l'exploitation aux capitaux investis (capitaux propres + dettes financières), indépendamment du mode de financement. Résultat net / capitaux propres est la rentabilité financière ; les deux dernières options sont des ratios de profitabilité (rapportés au CA), pas de rentabilité (rapportés aux capitaux).",
+   "src": "Programme DCG UE6, rentabilité économique et financière",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "IS à 25 %. Résultat d'exploitation 120 000 € ; capitaux propres 500 000 € ; dettes financières 300 000 € au taux de 4 %. Aucun autre élément de résultat. Calculez la rentabilité financière (résultat net / capitaux propres), en %, arrondie à 0,1 %.",
+   "a": 16.2,
+   "unit": "%",
+   "tol": 0.1,
+   "why": "Méthode directe : charges d'intérêts = 300 000 × 4 % = 12 000 ; résultat net = (120 000 − 12 000) × (1 − 0,25) = 81 000 ; Rf = 81 000 / 500 000 = 16,2 %. Par l'effet de levier : Re = 120 000 / 800 000 = 15 % ; Rf = [15 % + (15 % − 4 %) × 300 / 500] × 0,75 = (15 % + 6,6 %) × 0,75 = 16,2 %. Le levier est positif car Re (15 %) > i (4 %).",
+   "src": "Programme DCG UE6, effet de levier",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise a une rentabilité économique de 5 % et emprunte à 7 %. Quel est l'effet de l'endettement sur sa rentabilité financière ?",
+   "opts": [
+    "Négatif (effet de massue) : plus elle s'endette, plus la rentabilité des capitaux propres baisse",
+    "Positif : l'endettement augmente toujours la rentabilité financière",
+    "Nul : la rentabilité financière est indépendante de l'endettement",
+    "Positif, car le taux d'intérêt est déductible de l'IS"
+   ],
+   "a": 0,
+   "why": "Dans la formule Rf = [Re + (Re − i) × D/CP] × (1 − t), le terme (Re − i) est négatif (5 % − 7 % = −2 %) : chaque euro emprunté coûte plus qu'il ne rapporte et la rentabilité financière diminue avec le levier D/CP. La déductibilité fiscale réduit le coût de la dette mais ne change pas le signe ici.",
+   "src": "Programme DCG UE6, effet de levier",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quelles affirmations décrivent correctement le bilan financier (bilan liquidité) ?",
+   "opts": [
+    "Il est établi en valeurs nettes, à la valeur réelle des actifs",
+    "L'actif est classé par liquidité croissante et le passif par exigibilité croissante",
+    "Il distingue les dettes à plus et à moins d'un an",
+    "Il est établi en valeurs brutes",
+    "Les amortissements y sont classés en ressources stables"
+   ],
+   "a": [0, 1, 2],
+   "why": "Le bilan financier adopte le point de vue du prêteur : actifs à leur valeur réelle nette, classés selon leur délai de transformation en liquidités, passifs selon leur échéance, avec une coupure à un an. Les valeurs brutes et le reclassement des amortissements en ressources stables sont les caractéristiques du bilan fonctionnel, pas du bilan financier.",
+   "src": "Programme DCG UE6, bilan financier",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Stocks 100 000 €, créances à moins d'un an 150 000 €, disponibilités 50 000 €, dettes à moins d'un an 200 000 €. Quel est le ratio de liquidité réduite ?",
+   "opts": [
+    "1,0",
+    "1,5",
+    "0,25",
+    "0,75"
+   ],
+   "a": 0,
+   "why": "Liquidité réduite = (créances à moins d'un an + disponibilités) / dettes à moins d'un an = (150 000 + 50 000) / 200 000 = 1,0 : hors stocks, l'entreprise couvre juste ses dettes courtes. 1,5 est la liquidité générale (avec les stocks) ; 0,25 est la liquidité immédiate (disponibilités seules).",
+   "src": "Programme DCG UE6, ratios de liquidité",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La solvabilité d'une entreprise désigne :",
+   "opts": [
+    "Sa capacité à rembourser l'ensemble de ses dettes, y compris par liquidation de ses actifs",
+    "Sa capacité à payer ses dettes à moins d'un an avec ses actifs à moins d'un an",
+    "Le niveau de son excédent brut d'exploitation",
+    "La part de ses ventes encaissées au comptant"
+   ],
+   "a": 0,
+   "why": "La solvabilité est une notion de long terme : l'actif réel suffit-il à couvrir la totalité des dettes ? On la mesure par actif net réel / total des dettes ou capitaux propres / total du bilan. La capacité à payer les dettes courtes avec les actifs courts est la liquidité, notion distincte : une entreprise solvable peut manquer de liquidités.",
+   "src": "Programme DCG UE6, solvabilité et liquidité",
+   "fiab": "stable",
+   "niveau": 1
+  }
+ ]
+}

@@ -3,17 +3,17 @@
  "ue": "UE9",
  "ordre": 3,
  "title": "Achats, ventes et TVA",
- "resume": "Factures d'achat et de vente, TVA collectée et déductible, réductions, déclaration.",
- "duree": "45 min",
+ "resume": "Factures d'achat et de vente, TVA collectée et déductible, réductions commerciales et financières, avoirs, frais de port, acomptes et déclaration de TVA.",
+ "duree": "60 min",
  "niveau": 1,
  "lecon": [
   {
    "h": "La TVA : collectée pour l'État, jamais une charge",
-   "html": "<p>L'entreprise facture la TVA à ses clients (<b>TVA collectée</b>, <code>44571</code>) et paie la TVA à ses fournisseurs (<b>TVA déductible</b>, <code>44566</code> sur biens et services, <code>44562</code> sur immobilisations). Elle reverse la différence à l'État.</p>\n<ul>\n<li>Taux normal <b>20 %</b> ; intermédiaire 10 % ; réduit 5,5 % ; particulier 2,1 %.</li>\n<li>HT × 1,20 = TTC. TTC ÷ 1,20 = HT. TVA = HT × 20 %.</li>\n</ul>\n<div class=\"note\"><b>Conséquence.</b> Les charges et les produits sont enregistrés <b>hors taxes</b>. Les comptes de tiers (401, 411) sont enregistrés <b>TTC</b>, car c'est ce qui se paie.</div>"
+   "html": "<p>La TVA est un impôt sur la consommation supporté par le consommateur final. L'entreprise n'en est que le <b>collecteur</b> : elle facture la TVA à ses clients (<b>TVA collectée</b>, <code>44571</code>) et paie la TVA à ses fournisseurs (<b>TVA déductible</b>, <code>44566</code> sur biens et services, <code>44562</code> sur immobilisations). Elle reverse à l'État la différence.</p><ul><li>Taux normal <b>20 %</b> (CGI, art. 278) ; intermédiaire <b>10 %</b> (restauration, transports, travaux dans les logements) ; réduit <b>5,5 %</b> (produits alimentaires, livres, énergie) ; particulier <b>2,1 %</b> (médicaments remboursables, presse).</li><li>HT × 1,20 = TTC. TTC ÷ 1,20 = HT. TVA = HT × 20 %. Pour retrouver la TVA depuis le TTC : TTC × 20 ÷ 120.</li></ul><p><b>Exigibilité</b> (CGI, art. 269) : pour les <b>livraisons de biens</b>, la TVA est due à la livraison ; pour les <b>prestations de services</b>, à l'encaissement du prix (sauf option pour les débits). Depuis 2023, la TVA sur un acompte reçu pour une livraison de biens est elle aussi exigible à l'encaissement.</p><div class=\"note\"><b>Conséquence.</b> Les charges et les produits sont enregistrés <b>hors taxes</b>. Les comptes de tiers (401, 411) sont enregistrés <b>TTC</b>, car c'est ce qui se paie. La TVA transite par les comptes 445 et n'affecte jamais le résultat.</div>"
   },
   {
-   "h": "Facture d'achat",
-   "html": "<p>Réception d'une facture de marchandises : <span class=\"mono\">4 000 € HT</span>, TVA 20 % = 800, TTC 4 800.</p>",
+   "h": "La facture d'achat",
+   "html": "<p>Une facture est obligatoire entre professionnels (C. com., art. L. 441-9 ; CGI, art. 289). Elle doit mentionner : identité et numéro de TVA des parties, date, numéro, désignation et quantité, prix unitaire HT, réductions, taux et montant de TVA, date d'échéance et pénalités de retard. Elle est la <b>pièce justificative</b> de l'écriture.</p><p>Chez l'acheteur, la charge va dans le compte adapté à sa nature : <code>601</code> matières premières, <code>606</code> fournitures non stockées (énergie <code>6061</code>, petit équipement <code>6063</code>, fournitures de bureau <code>6064</code>), <code>607</code> marchandises destinées à la revente, <code>604</code> achats de prestations. La dette est en <code>401</code> ; si la facture concerne une immobilisation, c'est <code>404</code> et <code>44562</code>.</p><p>Exemple : réception d'une facture de marchandises, <span class=\"mono\">4 000 € HT</span>, TVA 20 % = 800, TTC 4 800, payable à 30 jours.</p>",
    "entry": [
     {
      "a": "607",
@@ -34,8 +34,8 @@
    "lib": "Facture n° A-512, fournisseur Nordal"
   },
   {
-   "h": "Facture de vente",
-   "html": "<p>Vente de marchandises : <span class=\"mono\">10 000 € HT</span>, TVA 2 000, TTC 12 000. Le client paiera à 30 jours.</p>",
+   "h": "La facture de vente",
+   "html": "<p>Chez le vendeur, le produit est enregistré HT dans le compte correspondant à l'activité : <code>701</code> ventes de produits finis (fabriqués par l'entreprise), <code>706</code> prestations de services, <code>707</code> ventes de marchandises (revendues en l'état), <code>708</code> produits des activités annexes (dont <code>7085</code> ports facturés et les refacturations de frais, qui remplacent depuis 2025 les anciens transferts de charges 791). La créance TTC est en <code>411</code> et la TVA collectée en <code>44571</code>.</p><p>Exemple : vente de marchandises, <span class=\"mono\">10 000 € HT</span>, TVA 2 000, TTC 12 000. Le client paiera à 30 jours.</p><p>Le règlement du client, plus tard, ne touche plus ni le produit ni la TVA : débit 512, crédit 411 pour 12 000. Vente et encaissement sont deux opérations distinctes, c'est le principe de la comptabilité d'engagement.</p>",
    "entry": [
     {
      "a": "411",
@@ -56,12 +56,29 @@
    "lib": "Facture n° V-087, client Hekla"
   },
   {
-   "h": "Réductions sur facture",
-   "html": "<ul>\n<li><b>Rabais, remise, ristourne</b> (réductions commerciales) <i>portées sur la facture</i> : on enregistre directement le <b>net commercial</b>. Aucun compte spécifique.</li>\n<li>Réductions commerciales accordées <i>après</i> la facture (avoir) : <code>609</code> chez l'acheteur, <code>709</code> chez le vendeur.</li>\n<li><b>Escompte de règlement</b> (réduction financière pour paiement rapide) : <code>665</code> Escomptes accordés (charge) chez le vendeur, <code>765</code> Escomptes obtenus (produit) chez l'acheteur. La TVA se calcule sur le net financier.</li>\n</ul>"
+   "h": "Réductions commerciales et financières",
+   "html": "<ul><li><b>Rabais</b> (défaut de qualité), <b>remise</b> (quantité, fidélité), <b>ristourne</b> (volume sur une période) sont des <b>réductions commerciales</b>. Portées <i>sur la facture d'origine</i>, elles ne s'enregistrent pas : on comptabilise directement le <b>net commercial</b>.</li><li>Accordées <i>après</i> la facture, par une <b>facture d'avoir</b>, elles passent par <code>609</code> RRR obtenus (acheteur, compte de charges à solde créditeur) et <code>709</code> RRR accordés (vendeur, compte de produits à solde débiteur), avec régularisation de la TVA.</li><li>L'<b>escompte de règlement</b> est une <b>réduction financière</b> accordée pour paiement anticipé ou comptant : <code>665</code> Escomptes accordés (charge financière du vendeur) et <code>765</code> Escomptes obtenus (produit financier de l'acheteur). Il se calcule sur le net commercial, et la TVA se calcule sur le <b>net financier</b>.</li></ul><p>Ordre de calcul sur une facture : brut − réductions commerciales successives = net commercial ; − escompte = net financier ; + port HT ; = base TVA ; + TVA = net à payer TTC.</p><p>Exemple : brut 5 000, remise 10 % → net commercial 4 500 ; escompte 2 % → net financier 4 410 ; TVA 882 ; net à payer <span class=\"mono\">5 292 €</span>. Chez le vendeur : débit 411 pour 5 292 et 665 pour 90, crédit 707 pour 4 500 et 44571 pour 882.</p>"
+  },
+  {
+   "h": "Frais de port, avoirs pour retour et acomptes",
+   "html": "<p><b>Port facturé par le fournisseur</b> : chez l'acheteur, charge accessoire en <code>6241</code> Transports sur achats (ou incorporé au compte d'achat 607, les deux présentations sont admises), soumis à la TVA au taux du bien transporté. Chez le vendeur, produit en <code>7085</code> Ports et frais accessoires facturés. Le port payé par le vendeur à un transporteur est pour lui une charge <code>6242</code> Transports sur ventes.</p><p><b>Retour de marchandises</b> : le vendeur émet un avoir qui annule la vente à hauteur du retour : débit 707 et 44571, crédit 411. Chez l'acheteur, débit 401, crédit 607 et 44566.</p><p><b>Acompte</b> versé à la commande : chez le vendeur, l'encaissement crée une dette envers le client en <code>4191</code> Clients, avances et acomptes reçus (débit 512, crédit 4191). À la facturation, la créance 411 n'est débitée que du solde restant dû et 4191 est débité de l'acompte. Chez l'acheteur, symétriquement, l'acompte versé est une créance en <code>4091</code> Fournisseurs, avances et acomptes versés.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 1200,
+     "c": 0
+    },
+    {
+     "a": "4191",
+     "d": 0,
+     "c": 1200
+    }
+   ],
+   "lib": "Acompte reçu à la commande, client Hekla"
   },
   {
    "h": "La déclaration de TVA",
-   "html": "<p>Chaque mois : TVA à décaisser = TVA collectée − TVA déductible. On solde les comptes de TVA et on constate la dette en <code>44551</code>. Si la déductible dépasse la collectée, l'excédent va en <code>44567</code> Crédit de TVA.</p>\n<p>Exemple : collectée 9 600, déductible ABS 5 200, déductible immobilisations 1 400 → 3 000 à décaisser.</p>",
+   "html": "<p>Au régime <b>réel normal</b>, l'entreprise dépose chaque mois une déclaration CA3 (CGI, art. 287) : TVA à décaisser = TVA collectée du mois − TVA déductible (biens et services + immobilisations) − crédit de TVA antérieur. Au régime <b>réel simplifié</b>, elle verse deux acomptes (juillet et décembre) et dépose une déclaration annuelle CA12. En dessous des seuils de la <b>franchise en base</b> (en 2025 : 85 000 € pour les ventes, 37 500 € pour les services, CGI art. 293 B), elle ne facture pas de TVA et ne la déduit pas.</p><p>Comptablement, on solde les comptes de TVA du mois et l'on constate la dette en <code>44551</code> TVA à décaisser. Si la déductible dépasse la collectée, l'excédent est un <b>crédit de TVA</b> (<code>44567</code>), à reporter sur la déclaration suivante ou à demander en remboursement.</p><p>Exemple : collectée 9 600, déductible sur biens et services 5 200, déductible sur immobilisations 1 400 → 3 000 à décaisser. Le paiement, le mois suivant, s'enregistre par débit 44551, crédit 512.</p>",
    "entry": [
     {
      "a": "44571",
@@ -89,31 +106,60 @@
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Comptes 60, 70, 609/709, 665/765, 4091/4191, 445"
+  },
+  {
+   "ref": "CGI, art. 256 et 269",
+   "note": "Champ d'application, fait générateur et exigibilité de la TVA (livraison / encaissement, acomptes)"
+  },
+  {
+   "ref": "CGI, art. 278, 278-0 bis, 278 bis et 281 quater",
+   "note": "Taux de TVA 20 %, 5,5 %, 10 % et 2,1 %"
+  },
+  {
+   "ref": "CGI, art. 271 et 287",
+   "note": "Droit à déduction, déclaration et paiement, crédit de TVA"
+  },
+  {
+   "ref": "CGI, art. 289 et C. com., art. L. 441-9",
+   "note": "Obligation et mentions de la facture"
+  },
+  {
+   "ref": "CGI, art. 293 B",
+   "note": "Franchise en base de TVA, seuils 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06",
+   "note": "Suppression des transferts de charges : refacturations en 708"
   }
  ],
  "exercices": [
   {
    "type": "calc",
+   "niveau": 1,
    "q": "Un achat de 2 500 € HT au taux de 20 %. Quel est le montant de la TVA ?",
    "a": 500,
    "unit": "€",
-   "why": "2 500 × 20 % = 500 €. Le TTC est donc 3 000 €.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "TVA = HT × 20 % = 2 500 × 0,20 = 500 €. Le TTC est donc 3 000 €. Le taux normal de 20 % est fixé par l'article 278 du CGI.",
+   "src": "CGI, art. 278",
    "fiab": "stable"
   },
   {
    "type": "calc",
+   "niveau": 1,
    "q": "Une facture TTC de 1 800 € au taux de 20 %. Quel est le montant HT ?",
    "a": 1500,
    "unit": "€",
-   "why": "HT = TTC ÷ 1,20 = 1 800 ÷ 1,2 = 1 500 €. Erreur classique : retirer 20 % du TTC donne 1 440, ce qui est faux.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "HT = TTC ÷ 1,20 = 1 800 ÷ 1,2 = 1 500 € (TVA 300). Erreur classique : retirer 20 % du TTC donne 1 440, ce qui est faux, car la TVA se calcule sur le HT et non sur le TTC.",
+   "src": "CGI, art. 278",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Réception d'une facture de marchandises : 4 000 € HT, TVA 20 %. Paiement à 30 jours.",
    "lib": "Facture fournisseur",
    "palette": [
@@ -142,12 +188,13 @@
      }
     ]
    ],
-   "why": "La charge HT au débit de 607, la TVA déductible au débit de 44566, la dette TTC au crédit de 401. La banque n'intervient qu'au paiement.",
-   "src": "PCG",
+   "why": "La charge HT au débit de 607, la TVA déductible au débit de 44566 (créance sur l'État), la dette TTC au crédit de 401. La banque n'intervient qu'au paiement, et 44571 est réservé à la TVA collectée sur les ventes.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Vente de marchandises à un client : 10 000 € HT, TVA 20 %, règlement sous 30 jours.",
    "lib": "Facture client",
    "palette": [
@@ -176,40 +223,13 @@
      }
     ]
    ],
-   "why": "La créance TTC au débit de 411. Le produit HT au crédit de 707. La TVA collectée au crédit de 44571 : c'est une dette envers l'État.",
-   "src": "PCG",
+   "why": "La créance TTC au débit de 411. Le produit HT au crédit de 707. La TVA collectée au crédit de 44571 : c'est une dette envers l'État, pas un produit de l'entreprise.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "Règlement par virement de la facture fournisseur de 4 800 € TTC enregistrée précédemment.",
-   "lib": "Virement fournisseur",
-   "palette": [
-    "401",
-    "512",
-    "607",
-    "44566"
-   ],
-   "sol": [
-    [
-     {
-      "a": "401",
-      "d": 4800,
-      "c": 0
-     },
-     {
-      "a": "512",
-      "d": 0,
-      "c": 4800
-     }
-    ]
-   ],
-   "why": "On éteint la dette (débit 401) et l'argent sort (crédit 512). Rien en charges ni en TVA : tout a été enregistré à la facture.",
-   "src": "PCG",
-   "fiab": "stable"
-  },
-  {
-   "type": "ecriture",
+   "niveau": 1,
    "q": "Vente de prestations de services : 2 000 € HT, TVA 20 %, à crédit.",
    "lib": "Facture de prestation",
    "palette": [
@@ -237,12 +257,13 @@
      }
     ]
    ],
-   "why": "Les services se vendent en 706, pas en 707 (réservé aux marchandises revendues en l'état).",
-   "src": "PCG",
+   "why": "Les services se vendent en 706 Prestations de services, pas en 707 (réservé aux marchandises revendues en l'état). La créance TTC 2 400 au débit de 411, la TVA 400 au crédit de 44571.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Une remise de 10 % figure sur la facture d'achat. Comment l'enregistrer ?",
    "opts": [
     "Au crédit de 609 RRR obtenus",
@@ -251,12 +272,13 @@
     "Au débit de 607 pour le montant de la remise"
    ],
    "a": 1,
-   "why": "Une réduction commerciale sur la facture d'origine n'est jamais comptabilisée à part : on prend le net. 609 ne sert que pour les réductions obtenues après coup (avoir).",
-   "src": "PCG",
+   "why": "Une réduction commerciale sur la facture d'origine n'est jamais comptabilisée à part : on prend le net commercial. 609 ne sert que pour les réductions obtenues après coup par un avoir, et 765 concerne l'escompte, qui est une réduction financière.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 2,
    "q": "Facture d'achat de marchandises : brut 5 000 € HT, remise 10 %, TVA 20 % sur le net. À crédit.",
    "lib": "Facture avec remise",
    "palette": [
@@ -284,12 +306,13 @@
      }
     ]
    ],
-   "why": "Net commercial = 5 000 − 500 = 4 500. TVA = 900. TTC = 5 400. La remise sur facture ne passe pas par 609.",
-   "src": "PCG",
+   "why": "Net commercial = 5 000 − 500 = 4 500. TVA = 4 500 × 20 % = 900. TTC = 5 400. La remise sur facture ne passe pas par 609, qui est réservé aux avoirs postérieurs.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Le vendeur accorde un escompte de 2 % à un client qui paie comptant. Chez le vendeur, l'escompte est :",
    "opts": [
     "Un produit financier (765)",
@@ -298,22 +321,25 @@
     "Une charge d'exploitation (609)"
    ],
    "a": 1,
-   "why": "L'escompte est une réduction financière : le vendeur renonce à une partie du prix pour être payé plus vite. C'est une charge financière pour lui (665) et un produit financier pour l'acheteur (765).",
-   "src": "PCG",
+   "why": "L'escompte est une réduction financière : le vendeur renonce à une partie du prix pour être payé plus vite, ce qui s'analyse comme un coût de financement. C'est une charge financière pour lui (665) et un produit financier pour l'acheteur (765). Il ne diminue pas 707, qui reste au net commercial.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "calc",
+   "niveau": 1,
    "q": "TVA collectée du mois : 9 600 €. TVA déductible sur biens et services : 5 200 €. TVA déductible sur immobilisations : 1 400 €. Quel est le montant de la TVA à décaisser ?",
    "a": 3000,
    "unit": "€",
-   "why": "9 600 − 5 200 − 1 400 = 3 000 €. Si le résultat avait été négatif, on aurait un crédit de TVA (44567) à reporter.",
-   "src": "PCG",
+   "tol": 0.5,
+   "why": "9 600 − 5 200 − 1 400 = 3 000 €. Si le résultat avait été négatif, on aurait eu un crédit de TVA (44567) à reporter sur la déclaration suivante ou à demander en remboursement (CGI, art. 271).",
+   "src": "CGI, art. 271 et 287",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
-   "q": "Enregistrez la déclaration de TVA : collectée 9 600 €, déductible ABS 5 200 €, déductible immobilisations 1 400 €.",
+   "niveau": 2,
+   "q": "Enregistrez la déclaration de TVA : collectée 9 600 €, déductible sur biens et services 5 200 €, déductible sur immobilisations 1 400 €.",
    "lib": "Déclaration de TVA",
    "palette": [
     "44571",
@@ -347,8 +373,364 @@
      }
     ]
    ],
-   "why": "On solde la collectée (débit 44571) et les déductibles (crédit 44566 et 44562), la différence devient une dette envers l'État (crédit 44551). Le paiement viendra ensuite : débit 44551, crédit 512.",
-   "src": "PCG",
+   "why": "On solde la collectée (débit 44571) et les déductibles (crédit 44566 et 44562) ; la différence devient une dette envers l'État (crédit 44551). Le paiement viendra ensuite : débit 44551, crédit 512. 44567 ne servirait qu'en cas de crédit de TVA.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 287",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Pour l'entreprise assujettie, la TVA facturée à ses clients est :",
+   "opts": [
+    "Un produit, puisqu'elle est encaissée",
+    "Une dette envers l'État, enregistrée en 44571",
+    "Une charge d'exploitation",
+    "Une créance sur le client, distincte de la facture"
+   ],
+   "a": 1,
+   "why": "L'entreprise collecte la TVA pour le compte de l'État et devra la reverser : c'est une dette (44571 au crédit). Elle n'enrichit pas l'entreprise, donc ce n'est pas un produit, et elle n'appauvrit pas non plus, donc ce n'est pas une charge. La TVA est neutre pour le résultat de l'assujetti.",
+   "src": "CGI, art. 256 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Rivaud (commerce de détail) achète pour 3 000 € HT de livres destinés à la revente. Quel est le montant de TVA déductible, sachant que les livres relèvent du taux réduit de 5,5 % ?",
+   "opts": [
+    "600 €",
+    "300 €",
+    "165 €",
+    "63 €"
+   ],
+   "a": 2,
+   "why": "3 000 × 5,5 % = 165 €. Le taux applicable est celui du bien, ici le taux réduit de l'article 278-0 bis du CGI, pas le taux normal (600 €) ni le taux intermédiaire de 10 % (300 €). 63 € correspondrait au taux particulier de 2,1 %, réservé notamment aux médicaments remboursables et à la presse.",
+   "src": "CGI, art. 278-0 bis",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Après livraison, le fournisseur Nordal accorde une ristourne de 300 € HT (TVA 20 %) par facture d'avoir. Écriture chez l'acheteur :",
+   "opts": [
+    "Débit 401 : 360 ; crédit 609 : 300 ; crédit 44566 : 60",
+    "Débit 609 : 300 ; débit 44566 : 60 ; crédit 401 : 360",
+    "Débit 401 : 300 ; crédit 607 : 300",
+    "Débit 512 : 360 ; crédit 709 : 300 ; crédit 44571 : 60"
+   ],
+   "a": 0,
+   "why": "La réduction obtenue après facture passe par 609 RRR obtenus (crédité, car il diminue les achats) avec régularisation de la TVA déductible (crédit 44566), et la dette fournisseur diminue (débit 401 pour le TTC). L'option 2 inverse les sens, l'option 3 oublie la TVA et utilise 607 au lieu de 609, l'option 4 décrit l'écriture du vendeur avec un encaissement qui n'existe pas.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles mentions sont obligatoires sur une facture entre professionnels ? (plusieurs réponses possibles)",
+   "opts": [
+    "La date d'émission et le numéro de la facture",
+    "Le numéro d'identification à la TVA du vendeur",
+    "Le taux et le montant de la TVA",
+    "Le résultat de l'exercice du vendeur",
+    "Le mode de calcul du salaire du commercial"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 289 du CGI et l'article L. 441-9 du Code de commerce imposent notamment : date, numéro unique, identité et numéro de TVA des parties, désignation, prix HT, réductions, taux et montant de TVA, date d'échéance et pénalités de retard. Le résultat du vendeur et la rémunération de ses salariés sont des informations internes sans rapport avec la facture.",
+   "src": "CGI, art. 289 ; C. com., art. L. 441-9",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Facture de vente : brut 8 000 € HT, remise 5 %, escompte de 2 % pour règlement comptant, TVA 20 %. Quel est le net à payer TTC ?",
+   "a": 8937.6,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Net commercial = 8 000 × 0,95 = 7 600. Escompte = 7 600 × 2 % = 152, net financier = 7 448. TVA = 7 448 × 20 % = 1 489,60. Net à payer = 7 448 + 1 489,60 = 8 937,60 €. La TVA se calcule sur le net financier, après l'escompte, et non sur le net commercial.",
+   "src": "CGI, art. 267 (base d'imposition) ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Chez le vendeur, enregistrez la facture précédente : net commercial 7 600 € HT, escompte 152 €, TVA 1 489,60 €, net à payer 8 937,60 €, encaissé par virement le jour même.",
+   "lib": "Vente avec escompte, règlement comptant",
+   "palette": [
+    "512",
+    "411",
+    "665",
+    "765",
+    "707",
+    "44571",
+    "709"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 8937.6,
+      "c": 0
+     },
+     {
+      "a": "665",
+      "d": 152,
+      "c": 0
+     },
+     {
+      "a": "707",
+      "d": 0,
+      "c": 7600
+     },
+     {
+      "a": "44571",
+      "d": 0,
+      "c": 1489.6
+     }
+    ],
+    [
+     {
+      "a": "411",
+      "d": 8937.6,
+      "c": 0
+     },
+     {
+      "a": "665",
+      "d": 152,
+      "c": 0
+     },
+     {
+      "a": "707",
+      "d": 0,
+      "c": 7600
+     },
+     {
+      "a": "44571",
+      "d": 0,
+      "c": 1489.6
+     }
+    ]
+   ],
+   "why": "Le produit reste au net commercial (707 : 7 600). L'escompte est une charge financière du vendeur (débit 665 : 152). La TVA collectée est calculée sur le net financier (1 489,60). L'encaissement immédiat débite 512 (ou 411 si l'on constate d'abord la créance). Total débit = 8 937,60 + 152 = 9 089,60 = total crédit. 765 et 709 sont des distracteurs : 765 est le compte de l'acheteur, 709 concerne les réductions commerciales.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le fournisseur facture 60 € HT de frais de port en plus des marchandises. Chez l'acheteur, ce port est :",
+   "opts": [
+    "Une charge de transport (6241) ou un accessoire du coût d'achat (607), soumis à TVA",
+    "Un produit en 7085",
+    "Exclu de la base de TVA",
+    "Une immobilisation"
+   ],
+   "a": 0,
+   "why": "Le port facturé par le fournisseur est un frais accessoire d'achat : le PCG admet soit le compte 6241 Transports sur achats, soit l'incorporation au compte d'achat. Il entre dans la base de TVA au taux du bien transporté (CGI, art. 267). Le compte 7085 est celui du vendeur qui facture le port.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; CGI, art. 267",
+   "fiab": "stable"
+  },
+  {
+   "type": "ecriture",
+   "niveau": 2,
+   "q": "Le client Hekla avait versé un acompte de 1 200 € (comptabilisé en 4191). Facture définitive de marchandises : 3 000 € HT, TVA 20 %, le solde est payable à 30 jours. Enregistrez la facture (le compte 4191 est soldé).",
+   "lib": "Facture définitive après acompte",
+   "palette": [
+    "411",
+    "4191",
+    "707",
+    "44571",
+    "512",
+    "4091"
+   ],
+   "sol": [
+    [
+     {
+      "a": "411",
+      "d": 2400,
+      "c": 0
+     },
+     {
+      "a": "4191",
+      "d": 1200,
+      "c": 0
+     },
+     {
+      "a": "707",
+      "d": 0,
+      "c": 3000
+     },
+     {
+      "a": "44571",
+      "d": 0,
+      "c": 600
+     }
+    ]
+   ],
+   "why": "TTC = 3 600. L'acompte déjà reçu (1 200) est imputé en débitant 4191, qui se solde ; le client ne doit plus que 2 400 (débit 411). Le produit HT 3 000 et la TVA collectée 600 sont enregistrés en totalité. Total débit 3 600 = total crédit. 4091 est le compte symétrique chez l'acheteur, et 512 n'intervient qu'au règlement du solde.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quels éléments entrent dans la base de calcul de la TVA d'une facture de vente ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le net commercial après remise",
+    "Les frais de port facturés forfaitairement au client",
+    "L'escompte de règlement accordé (il la diminue)",
+    "La TVA elle-même",
+    "Les emballages consignés qui seront restitués"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "La base d'imposition (CGI, art. 267) comprend le prix après réductions commerciales et les frais accessoires comme le port facturé ; l'escompte accordé la réduit (TVA sur le net financier). La TVA ne s'applique pas à elle-même et les emballages consignés, destinés à être rendus, sont exclus tant qu'ils ne sont pas conservés par le client.",
+   "src": "CGI, art. 267",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Au mois de mars, la TVA déductible (7 800 €) dépasse la TVA collectée (6 500 €). Que constate l'entreprise ?",
+   "opts": [
+    "Une TVA à décaisser de 1 300 €",
+    "Un crédit de TVA de 1 300 € en 44567, reportable ou remboursable",
+    "Une charge exceptionnelle de 1 300 €",
+    "Rien, les deux comptes restent ouverts"
+   ],
+   "a": 1,
+   "why": "Quand la déductible excède la collectée, l'État doit la différence à l'entreprise : 7 800 − 6 500 = 1 300 € de crédit de TVA (débit 44567). Il s'impute sur la TVA due des mois suivants ou peut être remboursé sous conditions (CGI, art. 271). Ce n'est pas une charge : la TVA est neutre pour le résultat. Les comptes 44571 et 44566 sont soldés par la déclaration.",
+   "src": "CGI, art. 271 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Ambre vend des prestations de conseil. Pour quelle date la TVA sur une prestation facturée le 20 juin et encaissée le 15 juillet est-elle exigible, sans option pour les débits ?",
+   "opts": [
+    "Le 20 juin, date de la facture",
+    "Le 15 juillet, date de l'encaissement",
+    "Le 30 juin, fin du mois de facturation",
+    "Le 31 décembre, à la clôture"
+   ],
+   "a": 1,
+   "why": "Pour les prestations de services, la TVA est exigible à l'encaissement du prix (CGI, art. 269, 2-c) : la société la déclarera sur la CA3 de juillet. Pour une livraison de biens, elle aurait été exigible à la livraison. L'option pour les débits permettrait de la rendre exigible à la facturation, ce qui n'est pas le cas ici.",
+   "src": "CGI, art. 269, 2-c",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Berlan refacture à un client 400 € HT de frais de déplacement qu'elle a elle-même supportés. Sous le PCG 2025, cette refacturation est enregistrée :",
+   "opts": [
+    "Au crédit de 791 Transferts de charges d'exploitation",
+    "Au crédit de 708 Produits des activités annexes",
+    "Au crédit de 625 Déplacements, en diminution de la charge",
+    "Au crédit de 758 Produits divers de gestion courante"
+   ],
+   "a": 1,
+   "why": "Le règlement ANC n° 2022-06 a supprimé les comptes de transferts de charges (791, 796, 797) à compter des exercices ouverts en 2025. Les refacturations de frais sont désormais des produits d'activités annexes en 708. Créditer directement la charge est interdit par le principe de non-compensation, et 758 est réservé aux produits divers de gestion.",
+   "src": "Règlement ANC n° 2022-06 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "En 2025, un prestataire de services dont le chiffre d'affaires annuel est de 30 000 € relève, sauf option, de la franchise en base de TVA. Quelle en est la conséquence ?",
+   "opts": [
+    "Il facture la TVA mais ne la reverse pas",
+    "Il ne facture pas de TVA et ne peut pas déduire celle de ses achats",
+    "Il facture la TVA à 10 % seulement",
+    "Il déduit la TVA de ses achats sans en collecter"
+   ],
+   "a": 1,
+   "why": "En 2025, la franchise en base (CGI, art. 293 B) s'applique en dessous de 37 500 € pour les services (85 000 € pour les ventes). Le bénéficiaire n'applique pas la TVA sur ses factures, qui portent la mention « TVA non applicable, art. 293 B du CGI », et en contrepartie ne récupère pas la TVA sur ses achats : elle devient pour lui une charge. Facturer sans reverser serait une fraude, et déduire sans collecter est impossible.",
+   "src": "CGI, art. 293 B",
+   "fiab": "millésimé 2025"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "La société Berlan verse par virement un acompte de 2 000 € à son fournisseur à la commande d'un lot de marchandises. Écriture chez Berlan :",
+   "opts": [
+    "Débit 4091 : 2 000 ; crédit 512 : 2 000",
+    "Débit 607 : 2 000 ; crédit 512 : 2 000",
+    "Débit 401 : 2 000 ; crédit 512 : 2 000",
+    "Débit 4191 : 2 000 ; crédit 512 : 2 000"
+   ],
+   "a": 0,
+   "why": "Tant que la marchandise n'est pas livrée ni facturée, il n'y a ni charge (607) ni dette (401) : l'acompte versé est une créance sur le fournisseur, en 4091 Fournisseurs, avances et acomptes versés sur commandes. Le compte 4191 est le compte symétrique chez le vendeur (dette envers le client). Au bilan, 4091 figure à l'actif.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Hekla vend des marchandises franco de port et paie elle-même 150 € HT à un transporteur pour livrer son client. Chez Hekla, ces 150 € sont :",
+   "opts": [
+    "Une charge en 6242 Transports sur ventes",
+    "Un produit en 7085 Ports facturés",
+    "Une diminution du compte 707",
+    "Un accessoire du coût d'achat en 6241"
+   ],
+   "a": 0,
+   "why": "Le vendeur qui supporte le transport de ses ventes enregistre une charge en 6242 Transports sur ventes, avec TVA déductible. 7085 ne servirait que s'il refacturait le port au client ; 6241 concerne le transport sur achats ; et diminuer 707 violerait le principe de non-compensation entre charges et produits.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; C. com., art. L. 123-19",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Une PME relève du régime réel simplifié d'imposition en matière de TVA. Quelles sont ses obligations déclaratives ?",
+   "opts": [
+    "Une déclaration CA3 chaque mois",
+    "Deux acomptes semestriels (juillet et décembre) et une déclaration annuelle CA12",
+    "Aucune déclaration, elle bénéficie de la franchise",
+    "Une déclaration CA3 chaque trimestre sans acompte"
+   ],
+   "a": 1,
+   "why": "Au réel simplifié (CGI, art. 302 septies A), l'entreprise verse un acompte en juillet (55 % de la TVA due l'année précédente) et un en décembre (40 %), puis régularise sur la déclaration annuelle CA12. La CA3 mensuelle est le régime réel normal (ou trimestrielle si la TVA annuelle est inférieure à 4 000 €), et la franchise suppose un chiffre d'affaires inférieur aux seuils de l'article 293 B.",
+   "src": "CGI, art. 302 septies A et 287",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 3,
+   "q": "Un client retourne pour 500 € HT de marchandises (TVA 20 %) ; le vendeur émet un avoir. Chez le vendeur, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le compte 707 est débité de 500",
+    "Le compte 44571 est débité de 100",
+    "Le compte 411 est crédité de 600",
+    "Le compte 709 est débité de 500",
+    "Le compte 609 est crédité de 500"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Un retour annule une partie de la vente : on passe l'écriture inverse de la facture, débit 707 (500) et 44571 (100), crédit 411 (600). Le compte 709 est réservé aux réductions commerciales accordées hors facture (rabais, remise, ristourne), pas aux retours de biens ; 609 est un compte de l'acheteur.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "La société Télia achète un véhicule utilitaire pour 25 000 € HT (TVA 20 %) et des pneus de rechange pour 600 € HT. Quelle imputation de la TVA est correcte ?",
+   "opts": [
+    "5 000 € en 44562 pour le véhicule et 120 € en 44566 pour les pneus",
+    "5 120 € en 44566",
+    "5 120 € en 44562",
+    "5 000 € en 44566 et 120 € en 44562"
+   ],
+   "a": 0,
+   "why": "La TVA sur immobilisations va en 44562 et la TVA sur autres biens et services en 44566. Le véhicule utilitaire est une immobilisation (2182), les pneus de rechange une charge (6068 ou 6155). La distinction compte pour la déclaration de TVA, qui isole la TVA sur immobilisations, et pour l'analyse financière.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   }
  ]

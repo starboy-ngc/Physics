@@ -1,0 +1,517 @@
+{
+ "id": "ue4-02",
+ "ue": "UE4",
+ "ordre": 2,
+ "title": "Les revenus catégoriels de l'IR",
+ "resume": "Comment chaque catégorie de revenu (salaires, pensions, capitaux mobiliers, fonciers, plus-values, BNC, BA, BIC non professionnels) est déterminée avant d'entrer dans le revenu global.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Traitements et salaires : revenu imposable et exonérations",
+   "html": "<p>Sont imposables dans la catégorie des traitements et salaires (CGI, art. 79 à 81) toutes les sommes perçues en contrepartie d'un travail subordonné : salaire de base, primes, heures supplémentaires, indemnités de congés payés, <b>avantages en nature</b> (logement, véhicule, nourriture, évalués forfaitairement ou à leur valeur réelle), indemnités journalières de sécurité sociale (sauf maladie longue durée), allocations chômage et de préretraite. Le revenu imposable est le salaire <b>net</b> de cotisations sociales obligatoires et de la CSG déductible, mais la CRDS et la fraction non déductible de CSG (2,4 points) restent imposables.</p><p>Principales <b>exonérations</b> (art. 81) :</p><ul><li>heures supplémentaires et complémentaires : exonérées d'IR dans la limite de <span class=\"mono\">7 500 €</span> par an (art. 81 quater) ; le surplus est imposable ;</li><li>indemnité de licenciement : exonérée pour sa fraction légale ou conventionnelle, ou si elle est supérieure, dans la limite de 2 fois la rémunération annuelle brute de l'année précédente ou de 50 % de l'indemnité, sans dépasser 6 PASS ; l'indemnité de départ volontaire à la retraite est imposable ;</li><li>participation et intéressement bloqués sur un plan d'épargne salariale, abondement de l'employeur ;</li><li>remboursements de frais professionnels, titres-restaurant et chèques-vacances dans les limites légales, prise en charge de 50 % des transports en commun ;</li><li>indemnité de stage dans la limite du SMIC annuel, salaires des apprentis dans la même limite.</li></ul><div class=\"note\"><b>Piège.</b> La prime de partage de la valeur n'est exonérée d'IR que dans les entreprises de moins de 50 salariés pour les salariés gagnant moins de 3 SMIC (jusqu'en 2026) ; les indemnités de rupture conventionnelle suivent le régime des indemnités de licenciement.</div>"
+  },
+  {
+   "h": "Frais professionnels, dirigeants (art. 62) et pensions",
+   "html": "<p><b>Frais professionnels</b> : le salaire net est diminué, au choix du contribuable, soit de la <b>déduction forfaitaire de 10 %</b>, soit des <b>frais réels</b> justifiés (art. 83, 3°). La déduction de 10 % a, pour les revenus 2024, un minimum de <span class=\"mono\">504 €</span> et un plafond de <span class=\"mono\">14 426 €</span> par membre du foyer ; ces bornes sont indexées chaque année. Les frais réels (trajets domicile-travail selon le barème kilométrique, repas, documentation, double résidence) impliquent de réintégrer les allocations pour frais versées par l'employeur. L'option est individuelle et annuelle.</p><p><b>Rémunérations de l'article 62</b> : gérants majoritaires de SARL, gérants de sociétés en commandite, associés de sociétés de personnes ayant opté pour l'IS. Leur rémunération, déductible du résultat de la société, est imposée comme un salaire (déduction de 10 % ou frais réels, après déduction des cotisations sociales), bien qu'ils ne soient pas salariés au sens du droit du travail. Les gérants minoritaires et présidents de SAS sont, eux, directement dans la catégorie des traitements et salaires.</p><p><b>Pensions et rentes</b> (art. 79 et 158, 5) : pensions de retraite et d'invalidité, pensions alimentaires reçues ; elles bénéficient d'un abattement de 10 % distinct de celui des salaires, avec un minimum de <span class=\"mono\">450 €</span> par pensionné et un plafond de <span class=\"mono\">4 399 €</span> par foyer (revenus 2024). Les <b>rentes viagères à titre onéreux</b> ne sont imposables que pour une fraction fixée une fois pour toutes selon l'âge du crédirentier lors de l'entrée en jouissance : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.</p>"
+  },
+  {
+   "h": "Revenus de capitaux mobiliers : PFU ou barème",
+   "html": "<p>Les RCM (art. 108 à 125) regroupent les <b>produits de placements à revenu variable</b> (dividendes, distributions, revenus réputés distribués) et les <b>produits de placements à revenu fixe</b> (intérêts d'obligations, de comptes courants d'associés, de livrets non réglementés). Sont exonérés : Livret A, LDDS, LEP, livret jeune, produits du PEA après 5 ans, intérêts des PEL ouverts avant 2018 jusqu'à 12 ans.</p><p>Deux étapes :</p><ol><li><b>À l'encaissement</b> : l'établissement payeur prélève un <b>prélèvement forfaitaire non libératoire</b> de 12,8 % (acompte d'IR, art. 117 quater et 125 A) et les prélèvements sociaux de <span class=\"mono\">17,2 %</span>. Dispense d'acompte sur demande avant le 30 novembre si le RFR de N-2 est inférieur à 25 000 € (personne seule) ou 50 000 € (couple) pour les intérêts, 50 000 € / 75 000 € pour les dividendes.</li><li><b>À la liquidation</b> : par défaut, imposition au <b>prélèvement forfaitaire unique</b> (PFU, art. 200 A) de 12,8 %, l'acompte venant en déduction ; soit au total 30 % avec les prélèvements sociaux. Sur <b>option globale, expresse et irrévocable</b> pour l'année (case 2OP), l'ensemble des RCM et plus-values mobilières est soumis au barème progressif : les dividendes bénéficient alors de l'<b>abattement de 40 %</b> (art. 158, 3-2°) et la CSG est déductible à hauteur de 6,8 points du revenu global de l'année suivante ; les frais de garde sont déductibles.</li></ol><div class=\"note\"><b>Règle de décision.</b> L'option pour le barème est avantageuse quand le taux marginal est de 0 % ou 11 % : 60 % × 11 % = 6,6 % d'IR sur les dividendes, contre 12,8 % au PFU. À partir de la tranche à 30 %, 60 % × 30 % = 18 % dépasse le PFU. L'option est globale : on ne peut pas choisir le barème pour les dividendes et le PFU pour les plus-values.</div>"
+  },
+  {
+   "h": "Revenus fonciers",
+   "html": "<p>Les revenus fonciers (art. 14 à 33 quinquies) proviennent de la location d'immeubles <b>nus</b> (bâtis ou non bâtis) et des parts de SCI non soumises à l'IS. La location meublée relève des BIC. L'exercice est l'année civile, selon la règle des encaissements et décaissements.</p><ul><li><b>Micro-foncier</b> (art. 32) : régime de droit si le revenu brut foncier du foyer n'excède pas <span class=\"mono\">15 000 €</span> et si aucun bien ne relève d'un régime spécial (Pinel, monuments historiques…). Le revenu net est obtenu par un <b>abattement forfaitaire de 30 %</b> ; aucune autre charge n'est déductible et un déficit est impossible. Option possible pour le réel, irrévocable 3 ans.</li><li><b>Régime réel</b> (déclaration 2044) : revenu brut (loyers encaissés, charges récupérées non remboursées, subventions) moins charges déductibles (art. 31) : réparations et entretien, travaux d'amélioration dans les logements (pas d'agrandissement ni de construction), frais de gestion (forfait 20 € par local plus honoraires réels), primes d'assurance, taxe foncière (hors taxe d'enlèvement des ordures ménagères récupérable), provisions pour charges de copropriété, <b>intérêts d'emprunt</b> et frais d'emprunt.</li></ul><p><b>Déficit foncier</b> (art. 156, I-3°) : la fraction du déficit provenant des charges <i>autres</i> que les intérêts d'emprunt s'impute sur le <b>revenu global</b> dans la limite de <span class=\"mono\">10 700 €</span> par an (<span class=\"mono\">21 400 €</span> pour les travaux de rénovation énergétique faisant sortir le bien des classes E, F ou G, dispositif prorogé par la LF 2026 jusqu'au 31 décembre 2027). La fraction liée aux intérêts et le surplus se reportent sur les revenus fonciers des <b>10 années</b> suivantes. L'imputation sur le revenu global exige de maintenir la location jusqu'au 31 décembre de la 3e année suivante.</p><p>Méthode de calcul : on impute d'abord les intérêts sur les loyers ; si les intérêts excèdent les loyers, cet excédent est reportable uniquement sur les revenus fonciers ; les autres charges créent ensuite le déficit imputable sur le revenu global.</p>"
+  },
+  {
+   "h": "Plus-values immobilières des particuliers",
+   "html": "<p>Les cessions d'immeubles, de droits immobiliers et de parts de sociétés à prépondérance immobilière par des particuliers relèvent des articles 150 U à 150 VH. La plus-value brute = prix de cession (diminué des frais de cession) − prix d'acquisition majoré des <b>frais d'acquisition</b> (réels ou forfait de 7,5 %) et des <b>travaux</b> (réels justifiés ou forfait de 15 % du prix d'acquisition si le bien est détenu depuis plus de 5 ans).</p><p><b>Abattements pour durée de détention</b>, calculés par année pleine au-delà de la 5e :</p><table><thead><tr><th>Durée</th><th>IR (19 %)</th><th>Prélèvements sociaux (17,2 %)</th></tr></thead><tbody><tr><td>de la 6e à la 21e année</td><td>6 % par an</td><td>1,65 % par an</td></tr><tr><td>22e année</td><td>4 %</td><td>1,60 %</td></tr><tr><td>de la 23e à la 30e année</td><td>exonéré</td><td>9 % par an</td></tr></tbody></table><p>L'exonération d'IR est donc acquise après <b>22 ans</b>, celle des prélèvements sociaux après <b>30 ans</b>. L'impôt est de <span class=\"mono\">19 %</span> (art. 200 B) plus <span class=\"mono\">17,2 %</span> de prélèvements sociaux, soit 36,2 %, auxquels s'ajoute une <b>surtaxe</b> de 2 % à 6 % sur les plus-values nettes imposables supérieures à 50 000 € (art. 1609 nonies G). L'impôt est déclaré (2048-IMM) et payé par le notaire lors de la vente.</p><p><b>Exonérations</b> (art. 150 U, II) : <b>résidence principale</b> du cédant au jour de la cession (et ses dépendances) ; cessions d'un prix inférieur ou égal à <span class=\"mono\">15 000 €</span> ; première cession d'un logement autre que la résidence principale si le vendeur n'était pas propriétaire de sa résidence principale depuis 4 ans et remploie le prix dans les 24 mois pour acquérir sa résidence principale ; expropriations avec remploi ; cessions au profit d'organismes de logement social ; retraités et invalides de condition modeste.</p>"
+  },
+  {
+   "h": "Plus-values de cession de valeurs mobilières",
+   "html": "<p>Les gains de cession d'actions, de parts sociales, d'obligations et d'OPC réalisés par les particuliers (art. 150-0 A et s.) sont imposés l'année de la cession. Plus-value = prix de cession net de frais − prix d'acquisition (méthode du prix moyen pondéré pour les titres fongibles). Les <b>moins-values</b> de l'année s'imputent sur les plus-values de même nature de l'année, l'excédent étant reportable <b>10 ans</b>.</p><ul><li><b>Régime de droit commun</b> : PFU de 12,8 % plus 17,2 % de prélèvements sociaux, soit <span class=\"mono\">30 %</span>, sans aucun abattement.</li><li><b>Option globale pour le barème</b> (la même que pour les RCM) : seuls les titres <b>acquis avant le 1er janvier 2018</b> bénéficient encore d'un abattement pour durée de détention : droit commun 50 % (2 à 8 ans) et 65 % (plus de 8 ans) ; abattement renforcé 50 % (1 à 4 ans), 65 % (4 à 8 ans) et <b>85 %</b> (plus de 8 ans) pour les titres de PME de moins de 10 ans à la souscription. Les prélèvements sociaux restent calculés sur la plus-value sans abattement ; la CSG est déductible à 6,8 points.</li><li><b>Dirigeant de PME partant à la retraite</b> (art. 150-0 D ter) : abattement fixe de <span class=\"mono\">500 000 €</span>, applicable au PFU comme au barème (prorogé jusqu'au 31 décembre 2031), non cumulable avec les abattements proportionnels.</li></ul><p>Le PEA (plafond de versements 150 000 €) exonère les plus-values d'IR après 5 ans ; seuls les prélèvements sociaux restent dus. Les cessions de titres de sociétés à prépondérance immobilière suivent le régime des plus-values immobilières.</p>"
+  },
+  {
+   "h": "BNC, bénéfices agricoles et BIC non professionnels",
+   "html": "<p><b>Bénéfices non commerciaux</b> (art. 92) : professions libérales (médecins, avocats, experts-comptables, architectes), titulaires de charges et offices (notaires, huissiers), et toutes les activités lucratives non rattachables à une autre catégorie (droits d'auteur, revenus d'influenceurs sans activité commerciale). Deux régimes :</p><ul><li><b>Micro-BNC</b> (art. 102 ter) : recettes HT de l'année précédente (ou de l'avant-dernière) ≤ <span class=\"mono\">77 700 €</span> (seuil 2023-2025) ; bénéfice = recettes − abattement forfaitaire de <b>34 %</b> (minimum 305 €) ; aucune charge réelle déductible, pas de déficit possible. Les micro-entrepreneurs peuvent opter pour le versement libératoire (2,2 % des recettes BNC) sous condition de RFR.</li><li><b>Déclaration contrôlée</b> (2035) : bénéfice = recettes encaissées − dépenses payées (comptabilité de trésorerie), avec option possible pour les créances acquises et dépenses engagées. Les règles des BIC s'appliquent pour les amortissements et les plus-values professionnelles.</li></ul><p><b>Bénéfices agricoles</b> (art. 63) : exploitation de biens ruraux, élevage, vente de produits de la ferme. Le <b>micro-BA</b> s'applique si la moyenne triennale des recettes n'excède pas <span class=\"mono\">120 000 €</span> (seuil applicable en 2025) : bénéfice = moyenne triennale des recettes − abattement de <b>87 %</b> (minimum 305 €). Au-delà : réel simplifié, puis réel normal pour les plus grandes exploitations.</p><p><b>BIC non professionnels</b> : la <b>location meublée</b> est commerciale par nature. Le loueur est <i>professionnel</i> (LMP) si ses recettes dépassent 23 000 € et excèdent les autres revenus d'activité du foyer ; sinon il est <b>LMNP</b> et ses déficits ne s'imputent que sur les bénéfices de location meublée non professionnelle des 10 années suivantes. Régime micro-BIC : location meublée classique ou meublé de tourisme classé, seuil <span class=\"mono\">77 700 €</span> et abattement <b>50 %</b> ; <b>meublé de tourisme non classé</b> : seuil <span class=\"mono\">15 000 €</span> et abattement <b>30 %</b> pour les revenus 2025 (loi n° 2024-1039 du 19 novembre 2024). Au réel, l'amortissement du bien est déductible (dans la limite de l'article 39 C) ; depuis 2025, les amortissements déduits par un LMNP sont réintégrés dans le calcul de la plus-value de cession (LF 2025).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CGI, art. 79 à 83, 81 quater et 62",
+   "note": "Traitements et salaires, exonérations (heures supplémentaires), frais professionnels, rémunérations des gérants majoritaires"
+  },
+  {
+   "ref": "CGI, art. 117 quater, 125 A, 158, 3 et 200 A",
+   "note": "RCM : prélèvement forfaitaire non libératoire, PFU 12,8 %, option barème et abattement de 40 %"
+  },
+  {
+   "ref": "CGI, art. 14 à 32 et 156, I-3°",
+   "note": "Revenus fonciers : micro-foncier, charges déductibles, déficit foncier 10 700 € / 21 400 €"
+  },
+  {
+   "ref": "CGI, art. 150 U à 150 VH, 200 B et 1609 nonies G",
+   "note": "Plus-values immobilières des particuliers : abattements, taux de 19 %, surtaxe"
+  },
+  {
+   "ref": "CGI, art. 150-0 A à 150-0 D ter",
+   "note": "Plus-values mobilières : PFU, abattements pour durée de détention, abattement fixe dirigeant"
+  },
+  {
+   "ref": "CGI, art. 92 à 103, 64 bis et 50-0",
+   "note": "BNC (micro-BNC 34 %, déclaration contrôlée), micro-BA 87 %, micro-BIC location meublée"
+  },
+  {
+   "ref": "Loi n° 2024-1039 du 19 novembre 2024 (loi Le Meur), art. 7",
+   "note": "Meublés de tourisme non classés : seuil 15 000 € et abattement 30 % à compter des revenus 2025"
+  },
+  {
+   "ref": "BOI-RSA-BASE-30-50-10 ; BOI-RFPI-BASE-30-20",
+   "note": "Déduction forfaitaire de 10 % et ses limites ; déficits fonciers"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "tri",
+   "q": "Classez chaque revenu dans sa catégorie d'imposition à l'IR.",
+   "cats": [
+    "Traitements et salaires",
+    "Rémunérations art. 62",
+    "RCM",
+    "Revenus fonciers",
+    "BIC",
+    "BNC"
+   ],
+   "items": [
+    [
+     "Salaire d'un cadre de banque",
+     0
+    ],
+    [
+     "Rémunération du gérant majoritaire d'une SARL à l'IS",
+     1
+    ],
+    [
+     "Dividendes d'actions TotalEnergies",
+     2
+    ],
+    [
+     "Loyers d'un appartement loué vide",
+     3
+    ],
+    [
+     "Loyers d'un studio loué meublé à l'année",
+     4
+    ],
+    [
+     "Honoraires d'un médecin libéral",
+     5
+    ],
+    [
+     "Rémunération du président d'une SAS",
+     0
+    ],
+    [
+     "Intérêts d'un compte courant d'associé",
+     2
+    ]
+   ],
+   "why": "Le président de SAS et le gérant minoritaire relèvent des salaires ; seul le gérant majoritaire de SARL (et assimilés) relève de l'article 62. La location nue est foncière, la location meublée est commerciale par nature (BIC). Les honoraires des professions libérales sont des BNC. Dividendes et intérêts sont des RCM, même perçus d'une société dont on est associé.",
+   "src": "CGI, art. 62, 79, 92, 108, 14, 35",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un salarié a perçu en 2024 un salaire de base de 30 000 € et 9 000 € d'heures supplémentaires. Quel montant d'heures supplémentaires est imposable à l'IR ?",
+   "opts": [
+    "1 500 €",
+    "9 000 €",
+    "0 €",
+    "4 500 €"
+   ],
+   "a": 0,
+   "why": "La rémunération des heures supplémentaires et complémentaires est exonérée d'IR dans la limite annuelle de 7 500 € (art. 81 quater, plafond porté de 5 000 à 7 500 € en 2022). Le surplus, 9 000 − 7 500 = 1 500 €, est imposable avec le salaire. L'exonération ne porte pas sur la totalité et n'est pas de 50 %.",
+   "src": "CGI, art. 81 quater",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Revenus 2024 : un cadre a perçu un salaire net imposable de 180 000 € et n'opte pas pour les frais réels. La déduction forfaitaire de 10 % est plafonnée à 14 426 €. Quel est son salaire net imposable après déduction des frais professionnels ?",
+   "a": 165574,
+   "unit": "€",
+   "tol": 1,
+   "why": "10 % de 180 000 € = 18 000 €, mais la déduction est plafonnée à 14 426 € pour les revenus 2024. Salaire net imposable : 180 000 − 14 426 = 165 574 €. Répondre 162 000 € reviendrait à ignorer le plafond. Le plafond s'applique par personne, pas par foyer.",
+   "src": "CGI, art. 83, 3° (revenus 2024) ; BOI-RSA-BASE-30-50-10",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Revenus 2024 : un étudiant a perçu un salaire imposable de 4 000 € pour un job d'été. La déduction forfaitaire de 10 % ne peut être inférieure à 504 €. Quel est son salaire net imposable ?",
+   "a": 3496,
+   "unit": "€",
+   "tol": 1,
+   "why": "10 % de 4 000 € = 400 €, inférieur au minimum de 504 € applicable aux revenus 2024 : on retient 504 €. Salaire net imposable = 4 000 − 504 = 3 496 €. Le minimum ne peut toutefois pas excéder le salaire lui-même.",
+   "src": "CGI, art. 83, 3° (revenus 2024)",
+   "fiab": "millésimé 2025",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un salarié opte pour la déduction de ses frais réels. Quelle conséquence oublie-t-on souvent ?",
+   "opts": [
+    "Il doit ajouter à son salaire imposable les allocations et remboursements de frais versés par l'employeur",
+    "Il perd le bénéfice de l'exonération des heures supplémentaires",
+    "Il doit opter pour cinq ans",
+    "Son conjoint doit aussi opter pour les frais réels"
+   ],
+   "a": 0,
+   "why": "Les allocations pour frais d'emploi sont exonérées (art. 81, 1°) uniquement si le salarié est au forfait de 10 % ; en cas d'option pour les frais réels, elles redeviennent imposables, les frais correspondants étant déduits. L'option est annuelle et individuelle : chaque membre du foyer choisit séparément.",
+   "src": "CGI, art. 81, 1° et 83, 3° ; BOI-RSA-BASE-30-50-30",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La rémunération versée par une SARL soumise à l'IS à son gérant majoritaire est imposée :",
+   "opts": [
+    "Dans la catégorie de l'article 62, selon les règles des traitements et salaires (déduction de 10 % ou frais réels)",
+    "Dans la catégorie des BIC, comme un exploitant individuel",
+    "Dans la catégorie des RCM, comme un dividende",
+    "Dans la catégorie des BNC"
+   ],
+   "a": 0,
+   "why": "L'article 62 vise les gérants majoritaires de SARL, gérants de commandite et associés de sociétés de personnes ayant opté pour l'IS : la rémunération, déductible pour la société, est imposée chez le dirigeant selon les règles des salaires après déduction des cotisations sociales. Elle n'est ni un BIC (pas d'entreprise individuelle) ni un dividende (contrepartie d'un travail).",
+   "src": "CGI, art. 62",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Revenus 2024 : un retraité perçoit 30 000 € de pensions. L'abattement de 10 % sur les pensions a un minimum de 450 € par pensionné et un plafond de 4 399 € par foyer. Quel est le montant net imposable de ses pensions ?",
+   "a": 27000,
+   "unit": "€",
+   "tol": 1,
+   "why": "10 % de 30 000 € = 3 000 €, compris entre le minimum (450 €) et le plafond (4 399 €) : on retient 3 000 €. Pension nette imposable : 30 000 − 3 000 = 27 000 €. L'abattement sur les pensions est distinct de la déduction de 10 % sur les salaires, dont les bornes sont différentes (504 € / 14 426 €).",
+   "src": "CGI, art. 158, 5-a (revenus 2024)",
+   "fiab": "millésimé 2025",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une personne de 65 ans vend sa maison en viager et perçoit une rente viagère de 12 000 € par an. Quelle fraction de la rente est imposable ?",
+   "opts": [
+    "40 %, soit 4 800 €",
+    "50 %, soit 6 000 €",
+    "100 %, soit 12 000 €",
+    "30 %, soit 3 600 €"
+   ],
+   "a": 0,
+   "why": "Les rentes viagères constituées à titre onéreux ne sont imposables que pour une fraction dépendant de l'âge du crédirentier lors de l'entrée en jouissance : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans (art. 158, 6). À 65 ans, la fraction est de 40 %, fixée définitivement.",
+   "src": "CGI, art. 158, 6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, un contribuable célibataire perçoit 10 000 € de dividendes d'une SA française. Il n'opte pas pour le barème. Quel est le montant total des prélèvements (impôt sur le revenu au PFU et prélèvements sociaux) sur ces dividendes ?",
+   "a": 3000,
+   "unit": "€",
+   "tol": 1,
+   "why": "PFU : 12,8 % × 10 000 = 1 280 € d'IR. Prélèvements sociaux : 17,2 % × 10 000 = 1 720 €. Total 3 000 €, soit 30 %. Au PFU, aucun abattement de 40 % ne s'applique : l'abattement est réservé à l'option pour le barème progressif.",
+   "src": "CGI, art. 200 A, 1 ; CSS, art. L. 136-6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un contribuable perçoit 10 000 € de dividendes et opte pour l'imposition au barème progressif (option globale). Quel est le montant de dividendes soumis au barème après abattement ?",
+   "a": 6000,
+   "unit": "€",
+   "tol": 1,
+   "why": "L'option pour le barème ouvre droit à l'abattement de 40 % de l'article 158, 3-2° : 10 000 × 60 % = 6 000 € entrent dans le revenu imposable. Les prélèvements sociaux de 17,2 % restent calculés sur 10 000 €, et 6,8 % de CSG deviennent déductibles du revenu global de l'année suivante.",
+   "src": "CGI, art. 158, 3-2° et 200 A, 2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un contribuable dont le taux marginal d'imposition est de 11 % perçoit 5 000 € de dividendes. Quelle option minimise son impôt sur le revenu (hors prélèvements sociaux) ?",
+   "opts": [
+    "L'option pour le barème : 5 000 × 60 % × 11 % = 330 €, contre 640 € au PFU",
+    "Le PFU : 640 €, contre 550 € au barème",
+    "Les deux solutions donnent 640 €",
+    "Le PFU, car le barème ne s'applique jamais aux dividendes"
+   ],
+   "a": 0,
+   "why": "Au PFU : 5 000 × 12,8 % = 640 €. Au barème, après abattement de 40 % : 3 000 × 11 % = 330 €, auxquels s'ajoute l'avantage de la CSG déductible. Le barème l'emporte dans les tranches à 0 % et 11 % ; à partir de 30 %, 60 % × 30 % = 18 % dépasse 12,8 %. L'option est globale et porte sur l'ensemble des RCM et plus-values de l'année.",
+   "src": "CGI, art. 158, 3-2° et 200 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quels produits sont exonérés d'impôt sur le revenu ? (plusieurs réponses possibles)",
+   "opts": [
+    "Intérêts du Livret A",
+    "Intérêts du LDDS",
+    "Intérêts d'un livret bancaire ordinaire",
+    "Dividendes d'actions détenues sur un compte-titres ordinaire",
+    "Intérêts du livret d'épargne populaire (LEP)"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "Les livrets réglementés (Livret A, LDDS, LEP, livret jeune) sont exonérés d'IR et de prélèvements sociaux (art. 157). Les intérêts des livrets bancaires fiscalisés et les dividendes d'un compte-titres ordinaire supportent le PFU de 12,8 % et les prélèvements sociaux de 17,2 %. Les dividendes ne sont exonérés que dans le cadre d'un PEA après 5 ans.",
+   "src": "CGI, art. 157",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Le prélèvement forfaitaire non libératoire de 12,8 % opéré par la banque sur des intérêts est :",
+   "opts": [
+    "Un acompte d'impôt sur le revenu imputable sur l'impôt dû l'année suivante",
+    "Un impôt définitif qui libère de toute autre imposition",
+    "Un prélèvement social",
+    "Une retenue réservée aux non-résidents"
+   ],
+   "a": 0,
+   "why": "Depuis 2018, le prélèvement de 12,8 % opéré à la source sur les intérêts et dividendes (art. 125 A et 117 quater) est non libératoire : c'est un acompte imputé sur l'IR calculé l'année suivante (PFU ou barème), l'excédent étant restitué. Il est distinct des prélèvements sociaux de 17,2 %. Une dispense est possible sous condition de revenu fiscal de référence.",
+   "src": "CGI, art. 117 quater et 125 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un contribuable perçoit 12 000 € de loyers bruts d'un appartement loué nu (aucun régime spécial). Il ne fait aucune option. Quel est son revenu foncier net imposable ?",
+   "opts": [
+    "8 400 €",
+    "12 000 €",
+    "7 200 €",
+    "3 600 €"
+   ],
+   "a": 0,
+   "why": "Le revenu brut foncier n'excède pas 15 000 € : le micro-foncier s'applique de plein droit avec un abattement de 30 % (art. 32) : 12 000 × 70 % = 8 400 €. L'abattement n'est ni de 40 % (dividendes) ni de 50 % (micro-BIC) ; 3 600 € est le montant de l'abattement et non du revenu net.",
+   "src": "CGI, art. 32",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Régime réel : un propriétaire encaisse en 2025 9 000 € de loyers d'un appartement loué nu. Il paie 4 000 € d'intérêts d'emprunt et 18 000 € de travaux de réparation déductibles. Quel montant de déficit foncier peut-il imputer sur son revenu global de 2025 (plafond de droit commun) ?",
+   "a": 10700,
+   "unit": "€",
+   "tol": 1,
+   "why": "On impute d'abord les intérêts : 9 000 − 4 000 = 5 000 € ; les intérêts sont donc entièrement absorbés. Les autres charges créent un déficit de 5 000 − 18 000 = −13 000 €, imputable sur le revenu global dans la limite de 10 700 € (art. 156, I-3°). Le surplus de 2 300 € est reportable sur les revenus fonciers des 10 années suivantes. Répondre 13 000 € ignore le plafond.",
+   "src": "CGI, art. 156, I-3° ; BOI-RFPI-BASE-30-20",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle fraction d'un déficit foncier ne peut jamais s'imputer sur le revenu global ?",
+   "opts": [
+    "Celle qui provient des intérêts d'emprunt",
+    "Celle qui provient des travaux de réparation",
+    "Celle qui provient de la taxe foncière",
+    "Celle qui provient des primes d'assurance"
+   ],
+   "a": 0,
+   "why": "L'article 156, I-3° réserve les intérêts d'emprunt : la fraction du déficit qui en résulte s'impute uniquement sur les revenus fonciers des 10 années suivantes. Les autres charges (travaux, taxe foncière, assurance, frais de gestion) forment le déficit imputable sur le revenu global jusqu'à 10 700 €.",
+   "src": "CGI, art. 156, I-3°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Parmi ces charges, lesquelles sont déductibles des revenus fonciers au régime réel ? (plusieurs réponses possibles)",
+   "opts": [
+    "Travaux de réfection de la toiture",
+    "Taxe foncière (hors taxe d'enlèvement des ordures ménagères récupérée)",
+    "Construction d'une extension de 20 m²",
+    "Intérêts de l'emprunt ayant financé l'acquisition",
+    "Amortissement de l'immeuble"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "L'article 31 admet les dépenses de réparation, d'entretien et d'amélioration (hors construction, reconstruction et agrandissement), les impôts fonciers, les intérêts et frais d'emprunt, les primes d'assurance et frais de gestion. L'agrandissement n'est pas déductible ; les immeubles loués nus ne s'amortissent pas (sauf régimes spéciaux anciens).",
+   "src": "CGI, art. 31, I-1°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un particulier vend en 2025 un appartement locatif détenu depuis 10 années pleines, avec une plus-value brute (après frais et forfaits) de 40 000 €. Abattement pour durée de détention au titre de l'IR : 6 % par an de la 6e à la 21e année. Taux d'IR : 19 %. Quel est le montant de l'impôt sur le revenu (hors prélèvements sociaux) ?",
+   "a": 5320,
+   "unit": "€",
+   "tol": 1,
+   "why": "Années 6 à 10 incluses : 5 années d'abattement × 6 % = 30 %. Plus-value imposable à l'IR : 40 000 × 70 % = 28 000 €. IR : 28 000 × 19 % = 5 320 €. Erreur fréquente : compter 10 × 6 % = 60 % (l'abattement ne commence qu'à la 6e année). Les prélèvements sociaux se calculent à part avec un abattement de 1,65 % par an (8,25 % ici).",
+   "src": "CGI, art. 150 VC et 200 B",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Après quelle durée de détention une plus-value immobilière d'un particulier est-elle totalement exonérée d'impôt sur le revenu, puis de prélèvements sociaux ?",
+   "opts": [
+    "22 ans pour l'IR, 30 ans pour les prélèvements sociaux",
+    "15 ans pour l'IR et les prélèvements sociaux",
+    "30 ans pour l'IR, 22 ans pour les prélèvements sociaux",
+    "22 ans pour l'IR et les prélèvements sociaux"
+   ],
+   "a": 0,
+   "why": "Depuis 2013, l'abattement d'IR atteint 100 % à l'issue de la 22e année (16 × 6 % + 4 %), tandis que l'abattement de prélèvements sociaux n'atteint 100 % qu'à l'issue de la 30e année (16 × 1,65 % + 1,60 % + 8 × 9 %). La durée de 15 ans correspond au régime antérieur à 2012.",
+   "src": "CGI, art. 150 VC, I",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quelles cessions immobilières sont exonérées de l'impôt sur la plus-value ? (plusieurs réponses possibles)",
+   "opts": [
+    "Cession de la résidence principale occupée au jour de la vente",
+    "Cession d'un garage isolé pour 12 000 €",
+    "Cession d'une résidence secondaire détenue depuis 12 ans",
+    "Cession d'un immeuble détenu depuis plus de 30 ans",
+    "Cession d'un terrain à bâtir détenu depuis 8 ans"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "La résidence principale (art. 150 U, II-1°) et les cessions d'un prix inférieur ou égal à 15 000 € (II-6°) sont exonérées, de même que les biens détenus plus de 30 ans par l'effet des abattements. Une résidence secondaire détenue 12 ans et un terrain détenu 8 ans restent imposables, avec seulement un abattement partiel.",
+   "src": "CGI, art. 150 U, II et 150 VC",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un particulier a réalisé en 2025 une plus-value de 20 000 € sur des actions acquises en 2021 et une moins-value de 8 000 € sur d'autres actions. Sans option pour le barème, quelle est la base soumise au PFU ?",
+   "opts": [
+    "12 000 €",
+    "20 000 €",
+    "8 000 €",
+    "0 €, les moins-values s'imputant sur le revenu global"
+   ],
+   "a": 0,
+   "why": "Les moins-values de l'année s'imputent obligatoirement sur les plus-values de même nature de la même année (art. 150-0 D, 11) : 20 000 − 8 000 = 12 000 €, soumis au PFU de 12,8 % et aux prélèvements sociaux. Une moins-value nette ne s'impute jamais sur le revenu global ; elle se reporte 10 ans sur les plus-values mobilières. Aucun abattement de durée pour des titres acquis après 2017.",
+   "src": "CGI, art. 150-0 D, 1 et 11 ; art. 200 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Pour quels titres l'abattement pour durée de détention (50 %, 65 %, voire 85 %) est-il encore possible en cas d'option pour le barème ?",
+   "opts": [
+    "Les titres acquis avant le 1er janvier 2018",
+    "Tous les titres détenus depuis plus de 2 ans",
+    "Les titres acquis après 2018 dans une PME",
+    "Les titres cotés uniquement"
+   ],
+   "a": 0,
+   "why": "Depuis l'instauration du PFU, les abattements pour durée de détention (droit commun 50 % / 65 % ; renforcé 50 % / 65 % / 85 % pour les titres de PME de moins de 10 ans) sont maintenus seulement pour les titres acquis ou souscrits avant le 1er janvier 2018 et à condition d'opter pour le barème (clause de sauvegarde, art. 150-0 D, 1 ter et 1 quater). Au PFU, aucun abattement.",
+   "src": "CGI, art. 150-0 D, 1 ter et 1 quater",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un consultant indépendant a encaissé 60 000 € HT d'honoraires en 2024 et 65 000 € en 2025, sans option. Quel est son régime d'imposition et son bénéfice imposable 2025 ?",
+   "opts": [
+    "Micro-BNC ; bénéfice = 65 000 × 66 % = 42 900 €",
+    "Déclaration contrôlée obligatoire ; bénéfice = recettes − dépenses réelles",
+    "Micro-BNC ; bénéfice = 65 000 × 50 % = 32 500 €",
+    "Micro-BIC ; bénéfice = 65 000 × 29 % = 18 850 €"
+   ],
+   "a": 0,
+   "why": "Le conseil est une activité libérale (BNC). Les recettes sont inférieures au seuil de 77 700 € (2023-2025) : le micro-BNC s'applique de plein droit avec un abattement de 34 % : 65 000 × 66 % = 42 900 €. L'abattement de 50 % est celui du micro-BIC prestations de services, 71 % celui des ventes. La déclaration contrôlée reste possible sur option.",
+   "src": "CGI, art. 102 ter",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En déclaration contrôlée, le bénéfice non commercial est déterminé en principe :",
+   "opts": [
+    "Selon les recettes encaissées et les dépenses payées au cours de l'année",
+    "Selon les créances acquises et les dettes certaines, comme en BIC",
+    "Par application d'un abattement forfaitaire de 34 %",
+    "Selon la méthode choisie chaque année librement"
+   ],
+   "a": 0,
+   "why": "L'article 93 retient une comptabilité de trésorerie (encaissements/décaissements) pour les BNC, à la différence des BIC (créances acquises). Une option pour les créances acquises et dépenses engagées est possible (art. 93 A) mais elle n'est pas le principe. L'abattement de 34 % relève du micro-BNC.",
+   "src": "CGI, art. 93 et 93 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un exploitant agricole réalise une moyenne triennale de recettes de 90 000 € (seuil du micro-BA : 120 000 € en 2025). Comment est déterminé son bénéfice agricole ?",
+   "opts": [
+    "Moyenne triennale des recettes diminuée d'un abattement de 87 %",
+    "Recettes de l'année diminuées d'un abattement de 71 %",
+    "Recettes diminuées des charges réelles obligatoirement",
+    "Recettes de l'année diminuées d'un abattement de 34 %"
+   ],
+   "a": 0,
+   "why": "Le micro-BA (art. 64 bis) s'applique lorsque la moyenne des recettes des trois années précédentes n'excède pas le seuil (120 000 € pour 2025) ; le bénéfice imposable est égal à la moyenne triennale des recettes diminuée d'un abattement de 87 % (minimum 305 €). Les abattements de 71 % et 34 % relèvent du micro-BIC ventes et du micro-BNC.",
+   "src": "CGI, art. 64 bis",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un particulier loue en 2025 via une plateforme un studio en meublé de tourisme non classé et encaisse 12 000 € de loyers. Sans option pour le réel, quel est son bénéfice imposable ?",
+   "opts": [
+    "8 400 € (abattement de 30 %)",
+    "6 000 € (abattement de 50 %)",
+    "3 480 € (abattement de 71 %)",
+    "12 000 € (aucun abattement)"
+   ],
+   "a": 0,
+   "why": "Depuis les revenus 2025 (loi Le Meur du 19 novembre 2024), les meublés de tourisme non classés relèvent du micro-BIC avec un seuil de 15 000 € et un abattement de 30 % : 12 000 × 70 % = 8 400 €. L'abattement de 50 % (seuil 77 700 €) reste applicable à la location meublée classique et aux meublés de tourisme classés ; 71 % concerne les ventes de marchandises.",
+   "src": "CGI, art. 50-0 (loi n° 2024-1039 du 19 novembre 2024)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un loueur en meublé non professionnel (LMNP) au régime réel dégage un déficit de 3 000 € en 2025. Ce déficit :",
+   "opts": [
+    "S'impute sur les bénéfices de location meublée non professionnelle des 10 années suivantes",
+    "S'impute sur le revenu global de 2025",
+    "S'impute sur les revenus fonciers",
+    "Est définitivement perdu"
+   ],
+   "a": 0,
+   "why": "Les déficits de location meublée non professionnelle s'imputent exclusivement sur les bénéfices de même nature (BIC non professionnels de location meublée) réalisés au cours des dix années suivantes (art. 156, I-1° ter). Seul le loueur professionnel (LMP) peut imputer son déficit sur le revenu global. Les revenus fonciers concernent la location nue.",
+   "src": "CGI, art. 156, I-1° ter",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "À quelles conditions un loueur en meublé est-il qualifié de professionnel (LMP) ?",
+   "opts": [
+    "Recettes annuelles supérieures à 23 000 € et supérieures aux autres revenus d'activité du foyer",
+    "Inscription au registre du commerce uniquement",
+    "Recettes supérieures à 77 700 €",
+    "Détention de plus de trois logements meublés"
+   ],
+   "a": 0,
+   "why": "L'article 155, IV pose deux conditions cumulatives : recettes de location meublée du foyer supérieures à 23 000 € et excédant les revenus professionnels du foyer (salaires, BIC, BNC, BA, art. 62). La condition d'inscription au RCS a été supprimée en 2018 et le nombre de logements est indifférent ; 77 700 € est le seuil du micro-BIC.",
+   "src": "CGI, art. 155, IV",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

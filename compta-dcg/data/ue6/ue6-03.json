@@ -1,0 +1,417 @@
+{
+ "id": "ue6-03",
+ "ue": "UE6",
+ "ordre": 3,
+ "title": "Tableaux de flux : tableau de financement et flux de trésorerie",
+ "resume": "Construire et lire le tableau de financement du PCG et le tableau des flux de trésorerie de l'OEC, calculer l'ETE et distinguer CAF et trésorerie.",
+ "duree": "65 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Pourquoi des tableaux de flux ?",
+   "html": "<p>Le bilan est une photographie, le compte de résultat mesure un enrichissement, mais aucun des deux ne dit <b>d'où vient l'argent et où il est allé</b>. Une entreprise bénéficiaire peut être en cessation de paiements si ses clients paient tard et si elle investit trop vite. Les tableaux de flux comparent deux bilans successifs pour expliquer la variation de la trésorerie.</p>\n<p>Deux modèles au programme :</p>\n<ul>\n<li>Le <b>tableau de financement du PCG</b> (tableau des emplois et des ressources), fondé sur la logique fonctionnelle : il explique la variation du FRNG puis son utilisation (variation du BFR et de la trésorerie).</li>\n<li>Le <b>tableau des flux de trésorerie</b> préconisé par l'Ordre des experts-comptables (OEC), inspiré des normes internationales : il classe les flux en trois fonctions (activité, investissement, financement) et aboutit directement à la variation de trésorerie.</li>\n</ul>\n<p>La notion centrale est la différence entre la <b>CAF</b>, surplus monétaire potentiel, et le <b>flux de trésorerie</b> réellement encaissé, qui tient compte des décalages de paiement mesurés par la variation du BFR. Lien DSCG : le tableau de flux de trésorerie consolidé est au programme de l'UE4 Comptabilité et audit.</p>"
+  },
+  {
+   "h": "Tableau de financement du PCG : première partie",
+   "html": "<p>La première partie compare les <b>ressources durables</b> et les <b>emplois stables</b> de l'exercice. Le solde est la <b>variation du FRNG</b>.</p>\n<p><b>Ressources durables</b> : capacité d'autofinancement de l'exercice ; cessions ou réductions d'éléments de l'actif immobilisé (prix de cession des immobilisations, remboursements de prêts reçus) ; augmentation des capitaux propres (augmentation de capital en numéraire appelée, subventions d'investissement reçues) ; augmentation des dettes financières (nouveaux emprunts, hors concours bancaires courants, nets des primes de remboursement).</p>\n<p><b>Emplois stables</b> : distributions de dividendes mises en paiement au cours de l'exercice ; acquisitions d'éléments de l'actif immobilisé (incorporelles, corporelles, financières) ; charges à répartir sur plusieurs exercices (frais d'émission d'emprunts portés en 481) ; réduction des capitaux propres (remboursement de capital) ; remboursements de dettes financières.</p>\n<p class=\"mono\">Variation du FRNG = ressources durables − emplois stables</p>\n<p>Exemple (société Orbis, exercice N) : CAF 200 000, cessions 30 000, nouvel emprunt 120 000 ; dividendes 50 000, acquisitions 200 000, remboursements 40 000. Ressources 350 000, emplois 290 000 : variation du FRNG = +60 000 €, ressource nette.</p>\n<p>Piège : la cession figure pour son <b>prix de cession</b> (compte 757, anciennement 775), jamais pour la valeur nette comptable ; et une augmentation de capital par incorporation de réserves n'est pas une ressource, car elle ne crée aucun flux.</p>"
+  },
+  {
+   "h": "Retrouver les flux à partir des bilans et de l'annexe",
+   "html": "<p>Le sujet ne donne presque jamais les flux directement : il faut les reconstituer à partir des deux bilans et des tableaux de l'annexe (immobilisations, amortissements, provisions, affectation du résultat).</p>\n<ul>\n<li><b>Acquisitions</b> = immobilisations brutes N − immobilisations brutes N−1 + valeur d'origine des immobilisations cédées (ou sorties).</li>\n<li><b>Cessions</b> : prix de cession = compte 757 du compte de résultat (ou créance sur cession si non encaissée). Valeur nette comptable = compte 657.</li>\n<li><b>Remboursements d'emprunts</b> = dettes financières N−1 + nouveaux emprunts − dettes financières N (hors concours bancaires courants et intérêts courus).</li>\n<li><b>Dividendes versés en N</b> = résultat N−1 − (réserves N − réserves N−1) − (report à nouveau N − report à nouveau N−1), hors incorporation au capital.</li>\n<li><b>Augmentation de capital en numéraire</b> = variation du capital + variation des primes d'émission, moins la part par incorporation de réserves.</li>\n</ul>\n<p>Exemple : immobilisations corporelles brutes 800 000 en N−1, 920 000 en N ; cession en N d'un matériel de valeur d'origine 60 000 : acquisitions = 920 000 − 800 000 + 60 000 = 180 000 €. Dettes financières 300 000 puis 340 000 avec un nouvel emprunt de 100 000 : remboursements = 300 000 + 100 000 − 340 000 = 60 000 €. Résultat N−1 80 000, réserves passées de 200 000 à 250 000 : dividendes = 80 000 − 50 000 = 30 000 €.</p>"
+  },
+  {
+   "h": "Tableau de financement : deuxième partie",
+   "html": "<p>La deuxième partie explique <b>l'utilisation</b> de la variation du FRNG. Elle détaille, poste par poste, les variations du bilan à court terme en distinguant trois blocs :</p>\n<ul>\n<li><b>Variation du BFR d'exploitation</b> : stocks, créances clients et autres créances d'exploitation (y compris EENE), dettes fournisseurs, dettes fiscales et sociales.</li>\n<li><b>Variation du BFR hors exploitation</b> : créances et dettes diverses, créances sur cessions, dettes sur immobilisations, dette d'IS.</li>\n<li><b>Variation de la trésorerie</b> : disponibilités et concours bancaires courants.</li>\n</ul>\n<p>Convention du PCG : une augmentation d'un poste d'actif ou une diminution d'un poste de passif est un <b>besoin</b> ; une diminution d'actif ou une augmentation de passif est un <b>dégagement</b>. Le total des trois blocs (besoins nets) est égal à la variation du FRNG de la première partie, au signe près :</p>\n<p class=\"mono\">Variation du FRNG = variation du BFRE + variation du BFRHE + variation de la trésorerie nette</p>\n<p>Exemple : stocks +20 000, créances d'exploitation +35 000, dettes d'exploitation +15 000. Variation du BFRE = 20 000 + 35 000 − 15 000 = +40 000 (besoin). Si la variation du FRNG est de +60 000 et celle du BFRHE de −5 000 (dégagement), la trésorerie nette varie de 60 000 − 40 000 + 5 000 = +25 000 €.</p>"
+  },
+  {
+   "h": "Le tableau des flux de trésorerie de l'OEC",
+   "html": "<p>Le modèle de l'OEC classe tous les flux monétaires de l'exercice en trois fonctions et aboutit à la <b>variation de trésorerie</b> (trésorerie de clôture − trésorerie d'ouverture, les deux nettes des concours bancaires courants).</p>\n<p><b>Flux de trésorerie liés à l'activité</b>, calculés par la méthode indirecte : résultat net + dotations nettes des reprises − plus-values de cession + moins-values (on neutralise 757 et 657) − quote-part des subventions d'investissement (747) = <b>marge brute d'autofinancement</b> (proche de la CAF) ; puis − variation du BFR lié à l'activité (stocks, créances et dettes d'exploitation, et créances et dettes diverses liées à l'activité). On peut aussi partir directement de la CAF : flux d'activité = CAF − variation du BFR lié à l'activité. Les intérêts payés et l'IS restent dans l'activité.</p>\n<p><b>Flux liés à l'investissement</b> : − acquisitions d'immobilisations décaissées + cessions encaissées ± variation des dettes sur immobilisations et des créances sur cessions.</p>\n<p><b>Flux liés au financement</b> : + augmentation de capital en numéraire + subventions d'investissement reçues + emprunts souscrits − remboursements d'emprunts − dividendes versés.</p>\n<p class=\"mono\">Variation de trésorerie = flux d'activité + flux d'investissement + flux de financement</p>\n<p>Exemple (Orbis) : CAF 200 000, variation du BFR lié à l'activité +45 000 : flux d'activité 155 000. Acquisitions 180 000, cessions 30 000, dettes sur immobilisations +10 000 : flux d'investissement −140 000. Emprunt 100 000, remboursements 60 000, dividendes 30 000 : flux de financement +10 000. Variation de trésorerie = +25 000 €.</p>"
+  },
+  {
+   "h": "L'excédent de trésorerie d'exploitation (ETE)",
+   "html": "<p>L'<b>ETE</b> mesure la trésorerie effectivement dégagée par la seule exploitation au cours de l'exercice :</p>\n<p class=\"mono\">ETE = EBE − variation du BFR d'exploitation</p>\n<p>L'EBE est un surplus monétaire potentiel : il suppose que toutes les ventes sont encaissées et tous les achats payés. La variation du BFRE corrige ces décalages. Exemple : EBE 150 000, variation du BFRE +40 000 : ETE = 110 000 €. Une partie de l'EBE est restée immobilisée dans les stocks et les créances.</p>\n<p>Intérêts de l'indicateur : il est indépendant de la politique d'amortissement et de provision, des choix de financement et de la fiscalité ; il signale précocement le risque de défaillance. Un ETE négatif signifie que l'exploitation consomme de la trésorerie, ce qui n'est tenable que temporairement.</p>\n<div class=\"note\"><b>Effet de ciseaux.</b> En forte croissance, le BFRE augmente souvent plus vite que l'EBE : l'ETE chute alors que le résultat progresse. C'est le piège de l'entreprise rentable qui « meurt de sa croissance ».</div>\n<p>Même logique pour l'ensemble de l'activité : flux de trésorerie d'activité = CAF − variation du BFR. La CAF ne devient de la trésorerie que si le BFR est stable.</p>"
+  },
+  {
+   "h": "Interprétation et limites",
+   "html": "<p>Lire un tableau de flux, c'est répondre à trois questions : comment l'entreprise a-t-elle financé sa croissance ? Les investissements sont-ils couverts par les ressources internes (CAF ou flux d'activité) ? Les dividendes et les remboursements sont-ils soutenables ?</p>\n<ul>\n<li>Flux d'activité positif et supérieur aux investissements : l'entreprise s'autofinance, elle peut réduire sa dette ou distribuer.</li>\n<li>Flux d'activité positif mais inférieur aux investissements : la croissance est financée par emprunt ou capital, ce qui est normal en phase d'expansion si l'endettement reste maîtrisé.</li>\n<li>Flux d'activité négatif : alerte, l'exploitation détruit de la trésorerie ; les emprunts ou les cessions ne font que gagner du temps.</li>\n<li>Dividendes supérieurs au flux d'activité disponible : distribution financée par la dette, non durable.</li>\n</ul>\n<p><b>Limites du tableau de financement</b> : il repose sur le FRNG, agrégat sensible aux conventions de classement (crédit-bail, EENE) ; il mêle flux réels et variations de postes calculés ; il ne distingue pas la trésorerie générée par l'exploitation de celle issue des opérations financières. Le tableau de l'OEC corrige ces défauts en raisonnant uniquement en trésorerie, mais la méthode indirecte reste dépendante de la qualité du résultat et des retraitements d'inventaire.</p>\n<p>À l'examen : conclure sur la cohérence entre croissance, investissement, financement et trésorerie, en chiffrant chaque affirmation.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025), titre V, chap. III, section 2 : modèle de tableau de financement en compte (tableau des emplois et des ressources)",
+   "note": "Première et deuxième partie du tableau de financement"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 (PCG 2025) : comptes 657 et 757 pour les cessions d'immobilisations, 747 pour la quote-part de subvention d'investissement",
+   "note": "Éléments neutralisés dans la CAF et la méthode indirecte"
+  },
+  {
+   "ref": "Ordre des experts-comptables, avis n° 30 (1997) : le tableau des flux de trésorerie (activité, investissement, financement)",
+   "note": "Modèle OEC et méthode indirecte"
+  },
+  {
+   "ref": "Programme du DCG UE6 Finance d'entreprise (arrêté du 13 février 2019 ; arrêté du 4 août 2025, BOESR n° 32 du 28 août 2025), partie 1 : analyse par les tableaux de flux",
+   "note": "Tableau de financement, tableau de flux de trésorerie, ETE"
+  },
+  {
+   "ref": "P. Recroix, DCG 6 Finance d'entreprise, Gualino, éd. 2025-2026 ; J. Delahaye, F. Duprat, DCG 6, Dunod, éd. 2025-2026",
+   "note": "Méthodes de reconstitution des flux à partir des bilans et de l'annexe"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Dans le tableau de financement du PCG, la capacité d'autofinancement est :",
+   "opts": [
+    "Une ressource durable de la première partie",
+    "Un emploi stable de la première partie",
+    "Un élément de la variation du BFR d'exploitation",
+    "Un élément de la variation de trésorerie"
+   ],
+   "a": 0,
+   "why": "La CAF est la première ressource durable du tableau : le surplus monétaire potentiel dégagé par l'activité qui finance les emplois stables (investissements, remboursements, dividendes). Les variations du BFR et de la trésorerie relèvent de la deuxième partie.",
+   "src": "PCG, tableau de financement (ressources durables)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments sont des ressources durables dans la première partie du tableau de financement ?",
+   "opts": [
+    "Capacité d'autofinancement",
+    "Prix de cession des immobilisations",
+    "Augmentation de capital en numéraire appelée",
+    "Dividendes versés",
+    "Acquisitions d'immobilisations",
+    "Charges à répartir sur plusieurs exercices"
+   ],
+   "a": [0, 1, 2],
+   "why": "Les ressources durables regroupent la CAF, les cessions ou réductions d'actif immobilisé, l'augmentation des capitaux propres (capital appelé, subventions d'investissement) et les nouveaux emprunts. Dividendes, acquisitions et charges à répartir sont des emplois stables.",
+   "src": "PCG, tableau de financement (ressources durables)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments sont des emplois stables dans la première partie du tableau de financement ?",
+   "opts": [
+    "Distributions de dividendes mises en paiement au cours de l'exercice",
+    "Remboursements de dettes financières",
+    "Acquisitions d'immobilisations",
+    "Nouveaux emprunts souscrits",
+    "Capacité d'autofinancement"
+   ],
+   "a": [0, 1, 2],
+   "why": "Les emplois stables sont les utilisations durables de ressources : dividendes versés, investissements, remboursements d'emprunts, charges à répartir, réductions de capital. Les nouveaux emprunts et la CAF sont au contraire des ressources durables.",
+   "src": "PCG, tableau de financement (emplois stables)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une immobilisation de valeur nette comptable 20 000 € est cédée pour 35 000 €. Pour quel montant la cession figure-t-elle dans les ressources durables du tableau de financement ?",
+   "opts": [
+    "35 000 € (prix de cession)",
+    "20 000 € (valeur nette comptable)",
+    "15 000 € (plus-value)",
+    "55 000 € (prix de cession + VNC)"
+   ],
+   "a": 0,
+   "why": "La ressource est l'encaissement réel : le prix de cession, soit 35 000 € (compte 757, anciennement 775). La VNC (657) n'est pas un flux. La plus-value de 15 000 € est déjà dans le résultat, donc neutralisée dans la CAF ; retenir seulement 15 000 reviendrait à oublier la récupération de la VNC.",
+   "src": "PCG, tableau de financement (cessions d'actif immobilisé)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une société augmente son capital de 100 000 € par incorporation de réserves. Dans le tableau de financement, cette opération :",
+   "opts": [
+    "N'apparaît pas, car elle ne génère aucun flux",
+    "Est une ressource durable de 100 000 €",
+    "Est un emploi stable de 100 000 €",
+    "Est un dégagement dans la variation du BFR hors exploitation"
+   ],
+   "a": 0,
+   "why": "L'incorporation de réserves est un simple virement entre comptes de capitaux propres (106 vers 101) : aucune ressource nouvelle n'entre dans l'entreprise. Seule l'augmentation de capital en numéraire (ou en nature) appelée constitue une ressource durable.",
+   "src": "PCG, tableau de financement (augmentation des capitaux propres)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans le tableau de financement, les concours bancaires courants sont traités :",
+   "opts": [
+    "En variation de la trésorerie (deuxième partie)",
+    "En augmentation des dettes financières (ressources durables)",
+    "En variation du BFR d'exploitation",
+    "En emplois stables"
+   ],
+   "a": 0,
+   "why": "Les concours bancaires courants et soldes créditeurs de banque sont exclus des dettes financières stables et traités comme de la trésorerie passive : leur variation figure dans le bloc « trésorerie » de la deuxième partie, cohérent avec le bilan fonctionnel.",
+   "src": "PCG, tableau de financement (variation de la trésorerie)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les frais d'émission d'un emprunt, portés à l'actif en charges à répartir (compte 481), figurent dans le tableau de financement :",
+   "opts": [
+    "En emplois stables",
+    "En ressources durables",
+    "En variation du BFR hors exploitation",
+    "Nulle part : ils sont neutralisés dans la CAF"
+   ],
+   "a": 0,
+   "why": "Le modèle du PCG prévoit une ligne « charges à répartir sur plusieurs exercices » parmi les emplois stables : ces frais sont décaissés et étalés sur la durée de l'emprunt, comme un investissement. Leur amortissement ultérieur est une dotation neutralisée dans la CAF.",
+   "src": "PCG, tableau de financement (emplois stables) ; compte 481",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Société Orbis, exercice N. Ressources durables : CAF 200 000 €, prix de cession d'immobilisations 30 000 €, nouvel emprunt 120 000 €. Emplois stables : dividendes versés 50 000 €, acquisitions d'immobilisations 200 000 €, remboursements d'emprunts 40 000 €. Calculez la variation du FRNG (en euros).",
+   "a": 60000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Ressources durables = 200 000 + 30 000 + 120 000 = 350 000 €. Emplois stables = 50 000 + 200 000 + 40 000 = 290 000 €. Variation du FRNG = 350 000 − 290 000 = +60 000 € : les ressources longues ont dépassé les emplois longs, le FRNG a augmenté.",
+   "src": "PCG, tableau de financement (première partie)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Immobilisations corporelles brutes : 800 000 € au bilan N−1, 920 000 € au bilan N. Au cours de N, un matériel de valeur d'origine 60 000 € a été cédé. Calculez le montant des acquisitions d'immobilisations corporelles de l'exercice N (en euros).",
+   "a": 180000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Brut N = brut N−1 + acquisitions − valeur d'origine des sorties, donc acquisitions = 920 000 − 800 000 + 60 000 = 180 000 €. Oublier la sortie donnerait 120 000 € : la variation du brut sous-estime les achats quand il y a eu des cessions.",
+   "src": "PCG, tableau des immobilisations (annexe) ; tableau de financement",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Dettes financières (hors concours bancaires courants et intérêts courus) : 300 000 € au bilan N−1, 340 000 € au bilan N. Un nouvel emprunt de 100 000 € a été souscrit en N. Calculez les remboursements d'emprunts de l'exercice N (en euros).",
+   "a": 60000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Dettes N = dettes N−1 + nouveaux emprunts − remboursements, donc remboursements = 300 000 + 100 000 − 340 000 = 60 000 €. Le tableau de financement présente séparément la ressource (emprunt 100 000) et l'emploi (remboursement 60 000), jamais la variation nette de 40 000.",
+   "src": "PCG, tableau de financement (dettes financières)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Résultat de l'exercice N−1 : 80 000 €. Réserves : 200 000 € au bilan N−1, 250 000 € au bilan N. Report à nouveau nul aux deux dates, aucune incorporation au capital. Calculez les dividendes versés au cours de N (en euros).",
+   "a": 30000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Le résultat N−1 est affecté en N : la part mise en réserves est 250 000 − 200 000 = 50 000 €, le reste est distribué : 80 000 − 50 000 = 30 000 €. Ce montant figure en emplois stables ; les dividendes qui seront votés sur le résultat N ne concernent pas l'exercice N.",
+   "src": "PCG, tableau de financement (distributions mises en paiement)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans la deuxième partie du tableau de financement, une augmentation des créances clients de 35 000 € est présentée comme :",
+   "opts": [
+    "Un besoin de 35 000 €",
+    "Un dégagement de 35 000 €",
+    "Une ressource durable de 35 000 €",
+    "Une variation de trésorerie de −35 000 €"
+   ],
+   "a": 0,
+   "why": "Convention du PCG : l'augmentation d'un poste d'actif circulant immobilise des fonds, c'est un besoin ; une diminution d'actif ou une augmentation de dette libère des fonds, c'est un dégagement. La variation des créances relève du BFR d'exploitation, pas de la trésorerie.",
+   "src": "PCG, tableau de financement (deuxième partie : besoins et dégagements)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "EBE de l'exercice 150 000 €. Variations des postes d'exploitation : stocks +20 000 €, créances d'exploitation +35 000 €, dettes d'exploitation +15 000 €. Calculez l'excédent de trésorerie d'exploitation (en euros).",
+   "a": 110000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Variation du BFRE = variation des stocks + variation des créances − variation des dettes d'exploitation = 20 000 + 35 000 − 15 000 = +40 000 €. ETE = EBE − variation du BFRE = 150 000 − 40 000 = 110 000 €. Sur 150 000 € de surplus potentiel, 40 000 € sont restés bloqués dans le cycle d'exploitation.",
+   "src": "Programme DCG UE6, excédent de trésorerie d'exploitation",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la formule de l'excédent de trésorerie d'exploitation (ETE) ?",
+   "opts": [
+    "ETE = EBE − variation du BFR d'exploitation",
+    "ETE = EBE + variation du BFR d'exploitation",
+    "ETE = CAF − dividendes",
+    "ETE = résultat d'exploitation − dotations"
+   ],
+   "a": 0,
+   "why": "L'EBE suppose ventes encaissées et achats payés ; la hausse du BFRE (stocks, créances non encaissées, nettes des dettes non payées) représente la partie de l'EBE qui n'est pas encore devenue de la trésorerie, d'où la soustraction. CAF − dividendes est l'autofinancement.",
+   "src": "Programme DCG UE6, excédent de trésorerie d'exploitation",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise en forte croissance voit son EBE passer de 100 000 € à 130 000 € tandis que son ETE passe de 90 000 € à 40 000 €. Quelle explication ?",
+   "opts": [
+    "Son BFR d'exploitation a fortement augmenté : la croissance immobilise de la trésorerie dans les stocks et les créances (effet de ciseaux)",
+    "Ses dotations aux amortissements ont augmenté",
+    "Elle a versé davantage de dividendes",
+    "Ses charges financières ont augmenté"
+   ],
+   "a": 0,
+   "why": "ETE = EBE − variation du BFRE. Si l'EBE monte de 30 000 alors que l'ETE chute de 50 000, la variation du BFRE a augmenté de 80 000 : la croissance consomme de la trésorerie. Dotations, dividendes et charges financières n'entrent ni dans l'EBE ni dans l'ETE.",
+   "src": "Programme DCG UE6, ETE et effet de ciseaux",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quelles affirmations sur la CAF et le flux de trésorerie d'activité sont exactes ?",
+   "opts": [
+    "La CAF ignore les décalages d'encaissement et de décaissement",
+    "Flux de trésorerie d'activité = CAF − variation du BFR lié à l'activité",
+    "La CAF est égale à la trésorerie encaissée au cours de l'exercice",
+    "Une variation de stocks n'affecte pas la CAF mais affecte le flux de trésorerie d'activité"
+   ],
+   "a": [0, 1, 3],
+   "why": "La CAF est calculée à partir du compte de résultat, en comptabilité d'engagement : elle est un potentiel de trésorerie. Pour obtenir la trésorerie réellement dégagée, on retranche la variation du BFR lié à l'activité. La variation de stocks est neutre dans la CAF (produit stocké compensé par la charge de production) mais représente un flux réel de décaissement non compensé par une vente.",
+   "src": "OEC, tableau des flux de trésorerie (méthode indirecte)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Tableau de flux de trésorerie (modèle OEC). CAF de l'exercice 200 000 € ; variation du BFR lié à l'activité +45 000 €. Calculez le flux net de trésorerie généré par l'activité (en euros).",
+   "a": 155000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Flux d'activité = CAF − variation du BFR lié à l'activité = 200 000 − 45 000 = 155 000 €. L'augmentation du BFR est un emploi de trésorerie : une partie de la CAF a servi à financer la hausse des stocks et des créances.",
+   "src": "OEC, tableau des flux de trésorerie (flux liés à l'activité)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Tableau de flux de trésorerie (modèle OEC). Acquisitions d'immobilisations de l'exercice 180 000 € ; prix de cession des immobilisations 30 000 € encaissé ; les dettes sur immobilisations ont augmenté de 10 000 €. Calculez le flux net de trésorerie lié aux opérations d'investissement (en euros, signe compris).",
+   "a": -140000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Flux d'investissement = − acquisitions + cessions encaissées + variation des dettes sur immobilisations = −180 000 + 30 000 + 10 000 = −140 000 €. La hausse de 10 000 € des dettes fournisseurs d'immobilisations signifie qu'une partie des acquisitions n'a pas encore été payée : le décaissement réel est inférieur aux acquisitions.",
+   "src": "OEC, tableau des flux de trésorerie (flux liés à l'investissement)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Tableau de flux de trésorerie (modèle OEC). Flux d'activité +155 000 € ; flux d'investissement −140 000 € ; emprunt souscrit 100 000 € ; remboursements d'emprunts 60 000 € ; dividendes versés 30 000 €. Calculez la variation de trésorerie de l'exercice (en euros).",
+   "a": 25000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Flux de financement = 100 000 − 60 000 − 30 000 = +10 000 €. Variation de trésorerie = 155 000 − 140 000 + 10 000 = +25 000 €. L'activité couvre les investissements (155 000 > 140 000) et l'excédent, complété par l'emprunt net, finance les dividendes et renforce la trésorerie.",
+   "src": "OEC, tableau des flux de trésorerie (variation de trésorerie)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque flux dans la fonction du tableau des flux de trésorerie de l'OEC qui lui correspond.",
+   "cats": [
+    "Flux liés à l'activité",
+    "Flux liés à l'investissement",
+    "Flux liés au financement"
+   ],
+   "items": [
+    ["Capacité d'autofinancement", 0],
+    ["Variation du BFR lié à l'activité", 0],
+    ["Acquisition d'un matériel industriel", 1],
+    ["Prix de cession d'un terrain", 1],
+    ["Remboursement du capital d'un emprunt", 2],
+    ["Dividendes versés aux associés", 2],
+    ["Augmentation de capital en numéraire", 2],
+    ["Subvention d'investissement encaissée", 2]
+   ],
+   "why": "L'activité regroupe la CAF (ou marge brute d'autofinancement) et la variation du BFR qui s'y rattache. L'investissement enregistre les acquisitions et cessions d'immobilisations. Le financement retrace les flux avec les apporteurs de capitaux : capital, subventions d'investissement, emprunts, remboursements et dividendes.",
+   "src": "OEC, tableau des flux de trésorerie (trois fonctions)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans le tableau des flux de trésorerie de l'OEC, les dividendes versés aux associés figurent :",
+   "opts": [
+    "Dans les flux de financement",
+    "Dans les flux d'activité",
+    "Dans les flux d'investissement",
+    "Nulle part, car ils sont déjà déduits du résultat"
+   ],
+   "a": 0,
+   "why": "Les dividendes rémunèrent les apporteurs de capitaux propres : ils relèvent de la fonction financement, comme les remboursements d'emprunts. Ils ne sont pas déduits du résultat (ce sont des affectations du résultat, pas des charges), donc ils doivent bien apparaître comme un décaissement.",
+   "src": "OEC, tableau des flux de trésorerie (flux de financement)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans le modèle OEC, les charges d'intérêts payées sur les emprunts sont classées :",
+   "opts": [
+    "Dans les flux liés à l'activité",
+    "Dans les flux liés au financement",
+    "Dans les flux liés à l'investissement",
+    "Hors du tableau, car elles sont calculées"
+   ],
+   "a": 0,
+   "why": "Le modèle de l'OEC conserve les intérêts dans le flux d'activité : ils sont inclus dans le résultat net et dans la CAF, point de départ de la méthode indirecte, et ne sont pas retraités. Seul le remboursement du capital emprunté est un flux de financement. Les intérêts sont bien décaissés, donc pas « calculés ».",
+   "src": "OEC, tableau des flux de trésorerie (méthode indirecte)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En méthode indirecte, pourquoi retranche-t-on la plus-value de cession d'immobilisation du résultat net pour obtenir le flux d'activité ?",
+   "opts": [
+    "Parce que l'encaissement de la cession est déjà intégralement classé dans les flux d'investissement",
+    "Parce que la plus-value n'est jamais encaissée",
+    "Parce que la plus-value est imposée séparément",
+    "Parce qu'elle relève du résultat exceptionnel"
+   ],
+   "a": 0,
+   "why": "Le prix de cession (757) est encaissé et figure en totalité dans le flux d'investissement. Laisser la plus-value (757 − 657) dans le flux d'activité la compterait deux fois : on la neutralise donc. Sous PCG 2025, la cession est en résultat d'exploitation, ce qui ne change rien au raisonnement de trésorerie.",
+   "src": "OEC, tableau des flux de trésorerie ; PCG 2025, comptes 657/757",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une subvention d'investissement de 50 000 € est encaissée en N. Comment est-elle traitée dans les tableaux de flux ?",
+   "opts": [
+    "Ressource durable (tableau de financement) et flux de financement (modèle OEC)",
+    "Produit encaissable intégré à la CAF",
+    "Flux d'investissement venant réduire les acquisitions",
+    "Dégagement dans la variation du BFR hors exploitation"
+   ],
+   "a": 0,
+   "why": "La subvention reçue est une augmentation des capitaux propres (compte 131) : ressource durable dans le tableau de financement et flux de financement dans le modèle OEC. Ce qui entre dans le résultat, c'est la quote-part annuelle (747, ancien 777), produit non encaissable neutralisé dans la CAF.",
+   "src": "PCG, tableau de financement ; OEC, flux de financement ; PCG 2025, compte 747",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le flux de trésorerie d'activité d'une entreprise est de 80 000 € ; elle a investi 200 000 €, emprunté 150 000 € et versé 20 000 € de dividendes. Quelle lecture ?",
+   "opts": [
+    "La croissance est financée par la dette ; soutenable si la capacité de remboursement reste correcte",
+    "L'entreprise s'autofinance intégralement",
+    "L'exploitation détruit de la trésorerie",
+    "La trésorerie a diminué de 70 000 €"
+   ],
+   "a": 0,
+   "why": "Le flux d'activité (80 000) est positif mais couvre moins de la moitié des investissements (200 000) : le complément vient de l'emprunt (150 000). Variation de trésorerie = 80 000 − 200 000 + 150 000 − 20 000 = +10 000 €, la trésorerie augmente légèrement. Situation classique d'expansion, à surveiller via le ratio dettes / CAF.",
+   "src": "Programme DCG UE6, interprétation des tableaux de flux",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

@@ -1,0 +1,510 @@
+{
+ "id": "ue4-04",
+ "ue": "UE4",
+ "ordre": 4,
+ "title": "L'impôt sur les sociétés",
+ "resume": "Qui paie l'IS, comment le résultat imposable se distingue du BIC, quels taux et contributions s'appliquent, comment traiter déficits, acomptes, dividendes et groupes.",
+ "duree": "75 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Champ d'application : qui est soumis à l'IS ?",
+   "html": "<p>L'IS (CGI, art. 205 et s.) est un impôt sur le bénéfice des <b>personnes morales</b>, au taux proportionnel, dû par la société elle-même et non par ses associés.</p><ul><li><b>Sociétés soumises de plein droit</b> (art. 206, 1) : SA, SAS, SARL (hors option), sociétés en commandite par actions, sociétés en commandite simple pour la part des commanditaires, sociétés civiles exerçant une activité commerciale, établissements publics et associations pour leurs activités lucratives.</li><li><b>Sociétés de personnes</b> (art. 8) : SNC, sociétés civiles, EURL dont l'associé est une personne physique, SCS pour les commandités, sociétés en participation. Elles sont <b>translucides</b> : le résultat est déterminé au niveau de la société puis imposé au nom de chaque associé pour sa quote-part (IR dans la catégorie correspondant à l'activité pour une personne physique, IS pour un associé personne morale). Elles peuvent <b>opter pour l'IS</b> (art. 206, 3), option révocable dans les 5 ans de son exercice puis irrévocable. Depuis 2022, l'entrepreneur individuel peut aussi opter en demandant son assimilation à une EURL.</li><li><b>Option inverse pour l'IR</b> : la <b>SARL de famille</b> (associés parents en ligne directe, frères et sœurs, conjoints ou pacsés) exerçant une activité industrielle, commerciale, artisanale ou agricole peut opter pour le régime des sociétés de personnes sans limite de durée (art. 239 bis AA). Les <b>SA, SAS et SARL de moins de 5 ans</b> non cotées, employant moins de 50 salariés, avec un CA ou total de bilan inférieur à 10 M€, détenues à 50 % au moins par des personnes physiques et à 34 % par les dirigeants, peuvent opter pour l'IR pour <b>5 exercices</b> au maximum (art. 239 bis AB).</li></ul><p><b>Territorialité</b> (art. 209, I) : l'IS frappe les bénéfices des <b>entreprises exploitées en France</b>, quel que soit le siège : établissement autonome, représentant dépendant, ou cycle commercial complet en France. Les bénéfices d'une succursale étrangère d'une société française ne sont pas imposables en France, et ses pertes n'y sont pas déductibles. Les filiales étrangères sont des personnes distinctes ; seuls leurs dividendes remontent.</p>"
+  },
+  {
+   "h": "Détermination du résultat : les règles BIC et leurs adaptations",
+   "html": "<p>Le bénéfice imposable est déterminé selon les règles des BIC (art. 209, I renvoie aux art. 34 à 45) avec des <b>spécificités</b> :</p><ul><li><b>Rémunérations des dirigeants</b> (gérants, présidents, directeurs généraux) : déductibles si elles correspondent à un <b>travail effectif</b> et ne sont pas <b>excessives</b> au regard du service rendu (art. 39, 1-1°) ; la fraction excessive est réintégrée et traitée comme un revenu distribué chez le bénéficiaire.</li><li><b>Rémunération des administrateurs</b> de SA (ex-jetons de présence) : déductible dans la limite de <b>5 %</b> du produit de la rémunération moyenne des 5 personnes les mieux payées (10 si l'effectif dépasse 200 salariés) par le nombre d'administrateurs (art. 210 sexies) ; 457 € par administrateur dans les sociétés de moins de 5 salariés.</li><li><b>Intérêts des comptes courants d'associés</b> (art. 39, 1-3° et 212) : déductibles à deux conditions : le <b>capital est entièrement libéré</b> ; le taux n'excède pas la moyenne annuelle des taux effectifs moyens des prêts à taux variable aux entreprises d'une durée supérieure à 2 ans, soit <span class=\"mono\">4,55 %</span> pour les exercices de 12 mois clos le 31 décembre 2025. L'excédent est réintégré (et distribué chez l'associé).</li><li><b>Impôts non déductibles</b> : l'IS lui-même, la contribution sociale sur l'IS, la contribution exceptionnelle, les taxes annuelles sur les véhicules de tourisme (ex-TVS). La CFE, la CVAE, la taxe foncière et la taxe d'apprentissage sont déductibles.</li><li><b>Pas d'étalement</b> des plus-values à court terme ; les plus-values à long terme sont en principe imposées au taux normal, sauf titres de participation (voir ci-dessous) et certains cas particuliers (brevets 10 %, titres de FCPR).</li></ul><div class=\"note\"><b>Règle à retenir.</b> Toute charge réintégrée parce qu'elle profite à un associé (intérêts excédentaires, rémunération excessive, dépense personnelle) a une double conséquence : réintégration dans le résultat de la société <i>et</i> imposition chez le bénéficiaire comme revenu distribué (art. 109 et 111), sans abattement de 40 %.</div>"
+  },
+  {
+   "h": "Dividendes reçus et plus-values sur titres : mère-fille et titres de participation",
+   "html": "<p><b>Régime des sociétés mères</b> (art. 145 et 216) : sur option, les dividendes reçus de filiales sont <b>exonérés</b> à condition que la mère, soumise à l'IS, détienne au moins <b>5 %</b> du capital de la filiale (titres nominatifs en pleine propriété) et les conserve pendant au moins <b>2 ans</b> (l'engagement de conservation peut être pris à la réception du dividende). Le dividende est déduit extra-comptablement, et une <b>quote-part de frais et charges</b> de <b>5 %</b> du dividende brut est réintégrée : 95 % du dividende échappe donc à l'IS. Dans un groupe fiscalement intégré, la quote-part est réduite à 1 %. Sans le régime, le dividende est imposé au taux normal, sans abattement de 40 % (réservé aux personnes physiques).</p><p><b>Plus-values sur titres de participation</b> (art. 219, I-a quinquies) : les plus-values nettes à long terme sur des titres de participation détenus depuis au moins <b>2 ans</b> sont <b>exonérées</b>, sous réserve de la réintégration d'une quote-part de frais et charges de <b>12 %</b> du montant <i>brut</i> des plus-values de cession. Taux effectif : 12 % × 25 % = 3 %. Les moins-values à long terme sur ces titres ne sont ni déductibles ni reportables. Sont des titres de participation : les titres qualifiés tels au plan comptable, les titres ouvrant droit au régime mère-fille (5 %) inscrits dans une subdivision spéciale, les actions acquises par OPA/OPE. Les titres de sociétés à prépondérance immobilière et les titres de placement restent imposés au taux normal de 25 %.</p><p><b>Plus-values sur les autres éléments</b> : pour les sociétés à l'IS, les plus-values de cession d'immobilisations (matériel, immeubles, fonds) sont imposées au <b>taux normal</b> comme un bénéfice ordinaire ; la distinction court terme/long terme ne joue que pour les titres de participation, les produits de la propriété industrielle (régime à 10 %, art. 238) et quelques cas résiduels.</p>"
+  },
+  {
+   "h": "Taux et contributions additionnelles",
+   "html": "<table><thead><tr><th>Imposition</th><th>Taux</th><th>Conditions</th></tr></thead><tbody><tr><td><b>Taux normal</b> (art. 219, I)</td><td><span class=\"mono\">25 %</span></td><td>Toutes les sociétés, depuis les exercices ouverts en 2022</td></tr><tr><td><b>Taux réduit PME</b> (art. 219, I-b)</td><td><span class=\"mono\">15 %</span> sur les premiers <span class=\"mono\">42 500 €</span> de bénéfice par période de 12 mois</td><td>CA HT &lt; <span class=\"mono\">10 M€</span> ; capital entièrement libéré ; détenu de manière continue à 75 % au moins par des personnes physiques (ou par des sociétés remplissant elles-mêmes ces conditions)</td></tr><tr><td><b>Contribution sociale</b> (art. 235 ter ZC)</td><td><span class=\"mono\">3,3 %</span> de l'IS diminué d'un abattement de <span class=\"mono\">763 000 €</span></td><td>CA ≥ 7 630 000 € ou non-respect des conditions de détention du taux réduit</td></tr><tr><td><b>Contribution exceptionnelle 2025</b> (LF 2025, art. 48)</td><td>20,6 % de l'IS (CA de 1 à 3 Md€) ; 41,2 % (CA ≥ 3 Md€)</td><td>Premier exercice clos à compter du 31 décembre 2025 ; prolongée d'un an par la LF 2026 avec un seuil relevé à 1,5 Md€</td></tr></tbody></table><p>Le plafond de 42 500 € s'apprécie par exercice de 12 mois (prorata pour un exercice plus court ou plus long) et le CA de 10 M€ s'entend hors taxes et ramené à 12 mois. Dans un groupe, la condition de détention s'apprécie au niveau de la mère. Le taux réduit s'applique au <i>bénéfice</i> imposable, pas au chiffre d'affaires.</p><p>Exemple : une SARL (CA 2 M€, capital libéré détenu par deux personnes physiques) réalise un bénéfice fiscal de 100 000 € : IS = 42 500 × 15 % + 57 500 × 25 % = 6 375 + 14 375 = <span class=\"mono\">20 750 €</span>.</p>"
+  },
+  {
+   "h": "Les déficits : report en avant et report en arrière",
+   "html": "<p>Contrairement à l'IR, le déficit d'une société soumise à l'IS ne remonte jamais chez les associés : il appartient à la société.</p><ul><li><b>Report en avant</b> (art. 209, I, 3e alinéa) : le déficit est reportable <b>sans limitation de durée</b> sur les bénéfices ultérieurs, mais l'imputation sur un exercice bénéficiaire est <b>plafonnée</b> à <span class=\"mono\">1 000 000 €</span> majoré de <b>50 %</b> de la fraction du bénéfice excédant ce montant. Le surplus non imputé reste reportable sur les exercices suivants, dans les mêmes limites. Le report est perdu en cas de changement d'activité réelle ou de régime fiscal.</li><li><b>Report en arrière</b> ou <b>carry-back</b> (art. 220 quinquies) : sur option exercée dans le délai de dépôt de la déclaration de résultats, le déficit de l'exercice est imputé sur le <b>bénéfice de l'exercice précédent uniquement</b>, dans la limite de <span class=\"mono\">1 000 000 €</span> et de la fraction de ce bénéfice non distribuée et effectivement soumise à l'IS au taux normal ou réduit (hors bénéfices exonérés ou ayant donné lieu à un crédit d'impôt). Il naît une <b>créance sur le Trésor</b> égale au déficit imputé multiplié par le taux d'IS de l'exercice d'origine du bénéfice. Cette créance sert à payer l'IS des 5 années suivantes ; le solde non utilisé est <b>remboursé</b> à l'issue de ces 5 ans (immédiatement pour les entreprises en procédure collective). Elle est comptabilisée en produit (compte 699), ce qui améliore le résultat comptable de l'exercice déficitaire.</li></ul><p>Exemple : déficit N de 1,5 M€, bénéfice N-1 de 2 M€ imposé à 25 % et non distribué : carry-back limité à 1 M€, créance = 1 000 000 × 25 % = <span class=\"mono\">250 000 €</span> ; le solde du déficit (500 000 €) reste reportable en avant.</p>"
+  },
+  {
+   "h": "Liquidation, paiement et crédits d'impôt",
+   "html": "<p>L'IS est <b>auto-liquidé</b> : la société calcule et verse spontanément l'impôt, sans rôle.</p><ul><li><b>Déclaration de résultats</b> n° 2065 et liasse : dans les 3 mois de la clôture, ou pour une clôture au 31 décembre, au plus tard le 2e jour ouvré suivant le 1er mai (délai supplémentaire de 15 jours en télédéclaration).</li><li><b>Quatre acomptes</b> (art. 1668) les <b>15 mars, 15 juin, 15 septembre et 15 décembre</b>, chacun égal à 25 % de l'IS de référence calculé sur le résultat de l'exercice précédent (soit 6,25 % du bénéfice au taux de 25 %, 3,75 % de la fraction au taux de 15 %). Le premier acompte de l'exercice, dû avant que N-1 soit connu, est calculé sur N-2 puis régularisé. <b>Dispense</b> : sociétés nouvelles pour leur premier exercice, et sociétés dont l'IS de référence est inférieur à <span class=\"mono\">3 000 €</span>. La société peut réduire ou suspendre ses acomptes si elle estime que l'IS de l'exercice sera inférieur.</li><li><b>Solde</b> (relevé 2572) : au plus tard le 15 du 4e mois suivant la clôture, soit le <b>15 mai</b> pour une clôture au 31 décembre. L'excédent de versement est remboursé d'office sous 30 jours. Les contributions additionnelles suivent le même calendrier.</li></ul><p><b>Crédits et réductions d'impôt</b> imputables sur l'IS :</p><ul><li><b>Crédit d'impôt recherche</b> (art. 244 quater B) : 30 % des dépenses de recherche éligibles jusqu'à 100 M€, 5 % au-delà ; restitution immédiate pour les PME, sinon imputation sur l'IS des 3 années suivantes puis remboursement.</li><li><b>Crédit d'impôt innovation</b> (PME) : 20 % des dépenses de conception de prototypes et installations pilotes de produits nouveaux, dans la limite de 400 000 € de dépenses par an (taux abaissé de 30 à 20 % par la LF 2025, dispositif prorogé jusqu'au 31 décembre 2027).</li><li><b>Réduction d'impôt mécénat</b> (art. 238 bis) : 60 % des dons (40 % au-delà de 2 M€ de dons), dans la limite de 20 000 € ou de 5 ‰ du CA, excédent reportable 5 ans.</li></ul>"
+  },
+  {
+   "h": "Intégration fiscale et distributions",
+   "html": "<p><b>Intégration fiscale</b> (art. 223 A et s.) : une société mère soumise à l'IS, dont le capital n'est pas détenu à 95 % ou plus par une autre société française à l'IS, peut se constituer seule redevable de l'IS dû sur le <b>résultat d'ensemble</b> du groupe formé avec les filiales françaises qu'elle détient, directement ou indirectement, à <b>95 % au moins</b> de façon continue pendant l'exercice. L'option, valable <b>5 exercices</b> renouvelables, exige des exercices de même durée et de mêmes dates. Avantages : compensation immédiate des bénéfices et déficits des sociétés du groupe ; neutralisation de certaines opérations internes (abandons de créances, subventions, provisions intragroupe) ; quote-part de frais et charges mère-fille réduite à 1 %. Les déficits antérieurs à l'entrée dans le groupe restent imputables uniquement sur les bénéfices propres de la société qui les a subis.</p><p><b>Revenus distribués</b> (art. 109 à 117) : sont des revenus distribués les dividendes décidés par l'assemblée, mais aussi les sommes mises à la disposition des associés et non prélevées sur les bénéfices (avances, prêts non remboursés), les rémunérations excessives et dépenses non déductibles profitant aux associés, les intérêts excédentaires de comptes courants. Chez l'associé personne physique, ils sont imposés en RCM : PFU 12,8 % ou barème avec abattement de 40 % (ce dernier étant refusé aux distributions irrégulières et aux revenus occultes, qui subissent au contraire une majoration de 25 %). Chez l'associé société, ils relèvent du régime mère-fille ou du taux normal.</p><p><b>Sociétés de personnes</b> : en l'absence d'option pour l'IS, la société n'est pas redevable ; chaque associé est imposé sur sa part de résultat, qu'elle soit distribuée ou non (translucidité), et les distributions ultérieures ne sont pas imposées une seconde fois. Un associé personne morale soumise à l'IS calcule sa quote-part selon les règles de l'IS (art. 238 bis K).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CGI, art. 206, 8, 239 bis AA et 239 bis AB",
+   "note": "Champ de l'IS, sociétés de personnes translucides, options IS/IR, SARL de famille, option IR des sociétés de moins de 5 ans"
+  },
+  {
+   "ref": "CGI, art. 209, I",
+   "note": "Territorialité (entreprises exploitées en France), renvoi aux règles BIC, report en avant plafonné des déficits"
+  },
+  {
+   "ref": "CGI, art. 39, 1-3°, 212 et 210 sexies",
+   "note": "Intérêts des comptes courants d'associés (capital libéré, taux maximal), rémunération des administrateurs"
+  },
+  {
+   "ref": "CGI, art. 145 et 216 ; art. 219, I-a quinquies",
+   "note": "Régime mère-fille (5 %, 2 ans, quote-part 5 %) ; plus-values sur titres de participation (quote-part 12 %)"
+  },
+  {
+   "ref": "CGI, art. 219, I et I-b ; art. 235 ter ZC ; LF 2025, art. 48",
+   "note": "Taux normal 25 %, taux réduit 15 % jusqu'à 42 500 €, contribution sociale 3,3 %, contribution exceptionnelle 2025"
+  },
+  {
+   "ref": "CGI, art. 220 quinquies",
+   "note": "Report en arrière des déficits (carry-back) : 1 M€, exercice précédent, créance"
+  },
+  {
+   "ref": "CGI, art. 1668 et 223 ; CGI, ann. III, art. 358 à 366",
+   "note": "Acomptes (15 mars, 15 juin, 15 septembre, 15 décembre), solde, dispense sous 3 000 €, déclaration 2065"
+  },
+  {
+   "ref": "CGI, art. 244 quater B et 223 A et s.",
+   "note": "Crédit d'impôt recherche et innovation ; intégration fiscale (95 %)"
+  },
+  {
+   "ref": "BOI-IS-BASE-35-10 ; BOI-IS-LIQ-10",
+   "note": "Déductibilité des intérêts servis aux associés ; taux réduit des PME"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "tri",
+   "q": "Classez ces sociétés selon leur régime d'imposition de plein droit (en l'absence de toute option).",
+   "cats": [
+    "Impôt sur les sociétés",
+    "Régime des sociétés de personnes (IR chez les associés)"
+   ],
+   "items": [
+    [
+     "SA",
+     0
+    ],
+    [
+     "SAS",
+     0
+    ],
+    [
+     "SARL à plusieurs associés",
+     0
+    ],
+    [
+     "SNC",
+     1
+    ],
+    [
+     "EURL dont l'associé unique est une personne physique",
+     1
+    ],
+    [
+     "Société civile immobilière de gestion",
+     1
+    ],
+    [
+     "Société en commandite par actions",
+     0
+    ],
+    [
+     "Société civile professionnelle d'avocats",
+     1
+    ]
+   ],
+   "why": "L'article 206, 1 soumet de plein droit à l'IS les sociétés de capitaux (SA, SAS, SARL, SCA). Les sociétés de personnes de l'article 8 (SNC, EURL à associé personne physique, sociétés civiles non commerciales, SCP) sont translucides : leurs associés sont imposés à l'IR sur leur quote-part. Chacune peut changer de régime par option.",
+   "src": "CGI, art. 8 et 206",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une SNC exerçant une activité commerciale réalise un bénéfice de 90 000 € réparti entre deux associés personnes physiques à parts égales, et n'en distribue que 20 000 €. Comment ce bénéfice est-il imposé ?",
+   "opts": [
+    "Chaque associé est imposé à l'IR dans la catégorie des BIC sur 45 000 €, distribués ou non",
+    "La SNC paie l'IS sur 90 000 € puis les associés sont imposés sur 20 000 € de dividendes",
+    "Chaque associé est imposé sur 10 000 € de dividendes au PFU",
+    "La SNC paie l'IS au taux réduit de 15 %"
+   ],
+   "a": 0,
+   "why": "Les sociétés de personnes sont translucides (art. 8) : le résultat est déterminé au niveau de la société puis imposé entre les mains de chaque associé pour sa quote-part dans les droits sociaux, qu'il soit distribué ou non ; la catégorie est celle de l'activité (BIC ici). La distribution ultérieure n'est pas imposée. La SNC n'est à l'IS que sur option.",
+   "src": "CGI, art. 8 et 218 bis",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions une SAS doit-elle remplir pour opter pour le régime des sociétés de personnes (article 239 bis AB) ? (plusieurs réponses possibles)",
+   "opts": [
+    "Être créée depuis moins de 5 ans",
+    "Employer moins de 50 salariés et réaliser un CA ou un total de bilan inférieur à 10 M€",
+    "Avoir ses titres non admis sur un marché réglementé et un capital détenu à 50 % au moins par des personnes physiques",
+    "Être détenue uniquement par des membres d'une même famille",
+    "Avoir un bénéfice inférieur à 42 500 €"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 239 bis AB réserve l'option (valable 5 exercices) aux SA, SAS et SARL non cotées, créées depuis moins de 5 ans, de moins de 50 salariés, avec un CA ou un total de bilan inférieur à 10 M€, dont les droits de vote sont détenus à 50 % au moins par des personnes physiques et à 34 % au moins par les dirigeants. La condition familiale concerne la SARL de famille (art. 239 bis AA) ; le seuil de 42 500 € concerne le taux réduit d'IS.",
+   "src": "CGI, art. 239 bis AB",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA française exploite une succursale (sans personnalité juridique) en Espagne qui dégage une perte de 300 000 €. Au regard de l'IS français :",
+   "opts": [
+    "La perte n'est pas déductible, la succursale étant une entreprise exploitée hors de France",
+    "La perte est déductible du résultat français",
+    "La perte est déductible à 50 %",
+    "La perte est déductible si la SA opte pour le régime mère-fille"
+   ],
+   "a": 0,
+   "why": "L'article 209, I limite l'IS aux bénéfices des entreprises exploitées en France : les résultats, bénéficiaires comme déficitaires, d'un établissement stable étranger échappent à l'IS français (sous réserve des conventions). Le régime mère-fille ne concerne que les dividendes de filiales, personnes morales distinctes.",
+   "src": "CGI, art. 209, I",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le président d'une SAS perçoit une rémunération de 300 000 € alors que la société réalise 400 000 € de CA et que sa fonction est exercée à mi-temps. L'administration estime la rémunération normale à 120 000 €. Quelle conséquence ?",
+   "opts": [
+    "Les 180 000 € excessifs sont réintégrés au résultat de la SAS et imposés chez le président comme revenu distribué",
+    "La totalité de la rémunération est réintégrée",
+    "Aucune : la rémunération d'un dirigeant est toujours déductible",
+    "Les 180 000 € sont déductibles mais soumis à une majoration de 10 %"
+   ],
+   "a": 0,
+   "why": "L'article 39, 1-1° n'admet la déduction des rémunérations que si elles correspondent à un travail effectif et ne sont pas excessives eu égard à l'importance du service rendu. Seule la fraction excessive est réintégrée (art. 39, 1-1°, 2e alinéa) et constitue un revenu distribué imposable chez le bénéficiaire (art. 111, d), sans abattement de 40 %.",
+   "src": "CGI, art. 39, 1-1° et 111, d",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un associé d'une SARL (capital entièrement libéré, exercice de 12 mois clos le 31 décembre 2025) laisse 200 000 € en compte courant toute l'année, rémunérés au taux de 6 %. Le taux maximal d'intérêts déductibles pour cet exercice est de 4,55 %. Quel montant d'intérêts doit être réintégré au résultat fiscal ?",
+   "a": 2900,
+   "unit": "€",
+   "tol": 1,
+   "why": "Intérêts versés : 200 000 × 6 % = 12 000 €. Intérêts déductibles : 200 000 × 4,55 % = 9 100 €. Réintégration : 12 000 − 9 100 = 2 900 €. Si le capital n'était pas entièrement libéré, la totalité des intérêts serait non déductible. L'excédent est en outre un revenu distribué chez l'associé.",
+   "src": "CGI, art. 39, 1-3° (taux exercice clos le 31 décembre 2025)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle condition, en plus du plafonnement du taux, est exigée pour déduire les intérêts versés aux associés au titre de leurs comptes courants ?",
+   "opts": [
+    "Le capital social doit être entièrement libéré",
+    "Les associés doivent détenir plus de 50 % du capital",
+    "Les sommes doivent être bloquées pendant 5 ans",
+    "La société doit être soumise au taux réduit d'IS"
+   ],
+   "a": 0,
+   "why": "L'article 39, 1-3° subordonne la déduction des intérêts servis aux associés à la libération intégrale du capital. Si le capital n'est pas entièrement libéré, aucun intérêt n'est déductible, même à un taux inférieur au plafond. Les autres conditions proposées n'existent pas dans le texte.",
+   "src": "CGI, art. 39, 1-3°",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SA Horizon détient 30 % de la SAS Delta depuis 4 ans et a opté pour le régime mère-fille. Elle reçoit en 2025 un dividende de 50 000 €. Quel montant relatif à ce dividende reste finalement compris dans son résultat imposable ?",
+   "a": 2500,
+   "unit": "€",
+   "tol": 1,
+   "why": "Le dividende de 50 000 € est déduit extra-comptablement (art. 216) et une quote-part de frais et charges de 5 % est réintégrée : 50 000 × 5 % = 2 500 €. L'exonération porte donc sur 95 %. Les conditions (participation ≥ 5 %, conservation 2 ans, société mère à l'IS) sont remplies. En intégration fiscale, la quote-part serait de 1 %.",
+   "src": "CGI, art. 145 et 216",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions doivent être réunies pour appliquer le régime des sociétés mères et filiales ? (plusieurs réponses possibles)",
+   "opts": [
+    "La société mère est soumise à l'IS",
+    "La participation représente au moins 5 % du capital de la filiale",
+    "Les titres sont conservés (ou l'engagement est pris de les conserver) pendant au moins 2 ans",
+    "La filiale est détenue à 95 % au moins",
+    "La filiale est obligatoirement française"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 145 exige une mère à l'IS, une participation d'au moins 5 % du capital (titres nominatifs ou déposés) et une conservation de 2 ans. Le seuil de 95 % est celui de l'intégration fiscale. La filiale peut être étrangère (hors États non coopératifs), le régime ayant précisément pour objet d'éviter la double imposition des dividendes de source étrangère.",
+   "src": "CGI, art. 145",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une société à l'IS cède pour 500 000 € des titres de participation acquis 300 000 € il y a 3 ans. Quel montant est finalement soumis à l'IS au titre de cette cession ?",
+   "a": 24000,
+   "unit": "€",
+   "tol": 1,
+   "why": "La plus-value à long terme (titres de participation détenus ≥ 2 ans) est de 200 000 €, exonérée sous réserve d'une quote-part de frais et charges de 12 % calculée sur la plus-value brute : 200 000 × 12 % = 24 000 € imposables au taux normal (IS de 6 000 €, soit 3 % de la plus-value). Répondre 200 000 € (taux normal) ou 10 000 € (5 %) confond avec les titres de placement ou le régime mère-fille.",
+   "src": "CGI, art. 219, I-a quinquies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL dont le capital, entièrement libéré, est détenu par trois personnes physiques réalise un CA HT de 2 000 000 € et un bénéfice imposable de 100 000 € (exercice de 12 mois en 2025). Quel est son IS ?",
+   "opts": [
+    "20 750 €",
+    "25 000 €",
+    "15 000 €",
+    "21 875 €"
+   ],
+   "a": 0,
+   "why": "Les conditions du taux réduit (CA < 10 M€, capital libéré, détention à 75 % au moins par des personnes physiques) sont remplies : 42 500 × 15 % = 6 375 € ; (100 000 − 42 500) × 25 % = 14 375 €. IS total : 20 750 €. 25 000 € correspond au taux normal sur tout le bénéfice ; 15 000 € appliquerait 15 % à l'ensemble, ce qui est faux.",
+   "src": "CGI, art. 219, I et I-b",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une SAS (CA HT 1,5 M€, capital de 100 000 € entièrement libéré, détenu à 80 % par des personnes physiques et 20 % par une holding) réalise un bénéfice fiscal de 60 000 € sur un exercice de 12 mois en 2025. Calculez son IS.",
+   "a": 10750,
+   "unit": "€",
+   "tol": 1,
+   "why": "Le capital est détenu à 80 % par des personnes physiques, soit au moins 75 % : taux réduit applicable. IS = 42 500 × 15 % + (60 000 − 42 500) × 25 % = 6 375 + 4 375 = 10 750 €. Si la holding avait détenu plus de 25 % sans remplir elle-même les conditions, le taux normal de 25 % se serait appliqué à tout le bénéfice (15 000 €).",
+   "src": "CGI, art. 219, I-b",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions une société doit-elle remplir pour bénéficier du taux réduit d'IS de 15 % ? (plusieurs réponses possibles)",
+   "opts": [
+    "Chiffre d'affaires HT inférieur à 10 millions d'euros",
+    "Capital entièrement libéré",
+    "Capital détenu de manière continue pour 75 % au moins par des personnes physiques (ou des sociétés remplissant ces conditions)",
+    "Effectif inférieur à 10 salariés",
+    "Bénéfice inférieur à 42 500 €"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 219, I-b pose trois conditions : CA < 10 M€, capital entièrement libéré et détenu à 75 % au moins par des personnes physiques. Il n'y a aucune condition d'effectif. Le seuil de 42 500 € n'est pas une condition d'éligibilité : c'est la fraction du bénéfice taxée à 15 %, le surplus relevant du taux normal.",
+   "src": "CGI, art. 219, I-b",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une société dont le CA est de 50 M€ est redevable d'un IS de 1 000 000 € au titre de 2025. Calculez sa contribution sociale sur les bénéfices (3,3 % de l'IS après abattement de 763 000 €).",
+   "a": 7821,
+   "unit": "€",
+   "tol": 1,
+   "why": "La contribution sociale (art. 235 ter ZC) frappe les sociétés dont le CA est au moins égal à 7 630 000 € : 3,3 % × (1 000 000 − 763 000) = 3,3 % × 237 000 = 7 821 €. Elle n'est pas déductible de l'IS. Les PME remplissant les conditions du taux réduit en sont exonérées.",
+   "src": "CGI, art. 235 ter ZC",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La contribution exceptionnelle sur les bénéfices des grandes entreprises instaurée par la loi de finances pour 2025 s'applique aux sociétés dont le chiffre d'affaires atteint au moins :",
+   "opts": [
+    "1 milliard d'euros, au taux de 20,6 % de l'IS (41,2 % à partir de 3 milliards)",
+    "7,63 millions d'euros, au taux de 3,3 %",
+    "10 millions d'euros, au taux de 25 %",
+    "100 millions d'euros, au taux de 10 %"
+   ],
+   "a": 0,
+   "why": "L'article 48 de la LF 2025 crée, pour le premier exercice clos à compter du 31 décembre 2025, une contribution de 20,6 % de l'IS pour les redevables dont le CA est compris entre 1 et 3 milliards d'euros et de 41,2 % au-delà de 3 milliards (avec un lissage aux seuils). Le seuil de 7,63 M€ et le taux de 3,3 % sont ceux de la contribution sociale permanente.",
+   "src": "Loi n° 2025-127 du 14 février 2025, art. 48 ; BOI-IS-AUT-60",
+   "fiab": "millésimé 2025",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Une société dispose d'un déficit reportable de 3 000 000 € et réalise en N un bénéfice fiscal de 2 500 000 €. Le déficit imputable est plafonné à 1 000 000 € majoré de 50 % du bénéfice excédant 1 000 000 €. Quel est le bénéfice imposable de N ?",
+   "a": 750000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Plafond d'imputation : 1 000 000 + 50 % × (2 500 000 − 1 000 000) = 1 000 000 + 750 000 = 1 750 000 €. Bénéfice imposable : 2 500 000 − 1 750 000 = 750 000 €. Le déficit non imputé (3 000 000 − 1 750 000 = 1 250 000 €) reste reportable sans limite de durée. Répondre 0 € ignore le plafonnement.",
+   "src": "CGI, art. 209, I, 3e alinéa",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Une société a réalisé en N-1 un bénéfice de 2 000 000 € intégralement soumis à l'IS au taux de 25 % et non distribué. Elle subit en N un déficit de 1 500 000 € et opte pour le report en arrière. Quel est le montant de sa créance de carry-back ?",
+   "a": 250000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Le report en arrière est limité au bénéfice de l'exercice précédent et à 1 000 000 € (art. 220 quinquies). Déficit imputé : 1 000 000 €. Créance = 1 000 000 × 25 % = 250 000 €. Le solde du déficit (500 000 €) reste reportable en avant. Répondre 375 000 € (1,5 M€ × 25 %) oublie le plafond.",
+   "src": "CGI, art. 220 quinquies",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "La créance de carry-back non utilisée pour payer l'IS est remboursée :",
+   "opts": [
+    "À l'issue d'un délai de 5 ans suivant la clôture de l'exercice déficitaire",
+    "Immédiatement, dans tous les cas",
+    "Jamais : elle ne peut que s'imputer sur l'IS",
+    "À l'issue d'un délai de 10 ans"
+   ],
+   "a": 0,
+   "why": "La créance née du report en arrière sert au paiement de l'IS dû au titre des exercices clos au cours des cinq années suivantes ; la fraction non utilisée est remboursée au terme de ces cinq années (art. 220 quinquies, I). Le remboursement immédiat est réservé aux entreprises en procédure de sauvegarde, redressement ou liquidation judiciaire.",
+   "src": "CGI, art. 220 quinquies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles sont les dates limites de versement des acomptes d'IS pour une société clôturant au 31 décembre ? (plusieurs réponses possibles)",
+   "opts": [
+    "15 mars",
+    "15 juin",
+    "15 septembre",
+    "15 décembre",
+    "15 mai",
+    "31 décembre"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "why": "L'article 1668 et l'article 360 bis de l'annexe III prévoient quatre acomptes trimestriels les 15 mars, 15 juin, 15 septembre et 15 décembre, chacun égal au quart de l'IS de référence de l'exercice précédent. Le 15 mai est la date limite du solde (15 du 4e mois suivant la clôture) pour une clôture au 31 décembre.",
+   "src": "CGI, art. 1668 ; CGI, ann. III, art. 360 bis",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une SA (CA 20 M€, non éligible au taux réduit) a réalisé en N-1 un bénéfice imposable de 400 000 € taxé à 25 %. Quel est le montant de chaque acompte d'IS à verser en N ?",
+   "a": 25000,
+   "unit": "€",
+   "tol": 1,
+   "why": "IS de référence : 400 000 × 25 % = 100 000 €. Chaque acompte est égal à 25 % de cet IS : 25 000 €, soit 6,25 % du bénéfice de référence. Le premier acompte (15 mars) est provisoirement calculé sur N-2 puis régularisé au deuxième. Si l'IS de référence était inférieur à 3 000 €, la société serait dispensée d'acomptes.",
+   "src": "CGI, art. 1668, 1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL a payé 2 400 € d'IS au titre de l'exercice N-1. Pour l'exercice N, elle :",
+   "opts": [
+    "Est dispensée du versement des acomptes et paiera l'IS en une fois lors du solde",
+    "Verse quatre acomptes de 600 €",
+    "Verse un acompte unique de 2 400 € le 15 mars",
+    "Verse deux acomptes de 1 200 €"
+   ],
+   "a": 0,
+   "why": "L'article 1668, 1 dispense d'acomptes les sociétés dont l'IS de référence (impôt de l'exercice précédent) n'excède pas 3 000 €, ainsi que les sociétés nouvellement créées pour leur premier exercice. L'IS de l'exercice N sera intégralement versé avec le solde, le 15 du 4e mois suivant la clôture.",
+   "src": "CGI, art. 1668, 1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Pour une société clôturant son exercice le 30 juin N, à quelle date le solde de l'IS doit-il être versé ?",
+   "opts": [
+    "Le 15 octobre N",
+    "Le 15 mai N+1",
+    "Le 30 septembre N",
+    "Le 15 juillet N"
+   ],
+   "a": 0,
+   "why": "Le solde de l'IS est dû au plus tard le 15 du quatrième mois suivant la clôture de l'exercice (art. 1668, 2 ; ann. III, art. 360). Clôture au 30 juin : juillet, août, septembre, octobre, donc le 15 octobre. Le 15 mai est la date du solde pour les seules clôtures au 31 décembre.",
+   "src": "CGI, art. 1668, 2 ; CGI, ann. III, art. 360",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une PME engage en 2025 des dépenses de recherche éligibles de 800 000 €. Quel est le montant de son crédit d'impôt recherche ?",
+   "opts": [
+    "240 000 €",
+    "400 000 €",
+    "160 000 €",
+    "40 000 €"
+   ],
+   "a": 0,
+   "why": "Le CIR est égal à 30 % des dépenses de recherche éligibles jusqu'à 100 M€ (5 % au-delà) : 800 000 × 30 % = 240 000 €. Le taux de 20 % (160 000 €) est celui du crédit d'impôt innovation depuis 2025 ; 5 % ne s'applique qu'à la fraction des dépenses dépassant 100 M€. Une PME obtient le remboursement immédiat de la créance non imputée.",
+   "src": "CGI, art. 244 quater B",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quel pourcentage minimal de détention du capital des filiales est exigé pour constituer un groupe fiscalement intégré ?",
+   "opts": [
+    "95 %",
+    "50 %",
+    "5 %",
+    "75 %"
+   ],
+   "a": 0,
+   "why": "L'intégration fiscale (art. 223 A) suppose une détention directe ou indirecte d'au moins 95 % du capital des filiales, de manière continue pendant l'exercice, la mère n'étant pas elle-même détenue à 95 % par une société à l'IS. Le seuil de 5 % est celui du régime mère-fille, 75 % celui de la détention par des personnes physiques pour le taux réduit.",
+   "src": "CGI, art. 223 A",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quels sont les avantages de l'intégration fiscale ? (plusieurs réponses possibles)",
+   "opts": [
+    "Compensation des bénéfices et des déficits des sociétés du groupe au sein du résultat d'ensemble",
+    "Quote-part de frais et charges sur dividendes intragroupe réduite à 1 %",
+    "Neutralisation de certaines opérations intragroupe (subventions, abandons de créances)",
+    "Exonération totale d'IS pour les filiales détenues à 100 %",
+    "Suppression de l'obligation de déposer une déclaration de résultats pour chaque filiale"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'intégration permet de compenser immédiatement les résultats positifs et négatifs du groupe, de neutraliser certaines opérations internes et de ramener la quote-part mère-fille à 1 %. Le groupe reste imposé sur son résultat d'ensemble (pas d'exonération) et chaque filiale continue de déposer sa propre liasse, en plus de la déclaration du résultat d'ensemble par la mère.",
+   "src": "CGI, art. 223 A, 223 B et 216",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un gérant associé d'une SARL à l'IS utilise à titre personnel un véhicule de la société sans que cet avantage soit déclaré ni comptabilisé. Pour l'administration, la dépense correspondante constitue :",
+   "opts": [
+    "Un revenu distribué imposable chez le gérant, réintégré au résultat de la société",
+    "Un salaire déductible pour la société",
+    "Un dividende ouvrant droit à l'abattement de 40 %",
+    "Une charge déductible sans conséquence pour le gérant"
+   ],
+   "a": 0,
+   "why": "Les dépenses non engagées dans l'intérêt de l'entreprise et profitant à un associé sont réintégrées et constituent des revenus réputés distribués (art. 109, 1-1° et 111, c). Chez le bénéficiaire, ces distributions irrégulières sont imposées en RCM sans abattement de 40 % et avec une majoration de 25 % de leur base (art. 158, 7). Un avantage en nature régulièrement déclaré aurait été un complément de rémunération déductible.",
+   "src": "CGI, art. 109, 111 et 158, 7",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une société à l'IS cède une machine (VNC 10 000 €) pour 25 000 €, après 4 ans de détention. Comment la plus-value de 15 000 € est-elle imposée ?",
+   "opts": [
+    "Au taux normal de l'IS, comme un bénéfice ordinaire",
+    "Au taux réduit de 12,8 %, comme une plus-value à long terme",
+    "Par étalement sur trois exercices",
+    "Au taux de 15 % propre aux plus-values à long terme des sociétés"
+   ],
+   "a": 0,
+   "why": "Pour les sociétés soumises à l'IS, les plus-values sur immobilisations corporelles et incorporelles (hors brevets et titres de participation) relèvent du régime du court terme et sont imposées au taux normal avec le résultat (art. 219, I-a quater). Le taux de 12,8 % et l'étalement sur 3 ans sont propres aux entreprises relevant de l'IR.",
+   "src": "CGI, art. 219, I-a quater",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

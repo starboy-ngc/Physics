@@ -1,0 +1,518 @@
+{
+ "id": "ue4-01",
+ "ue": "UE4",
+ "ordre": 1,
+ "title": "Introduction au droit fiscal et mécanismes généraux de l'impôt sur le revenu",
+ "resume": "Sources et principes du droit fiscal, puis la mécanique complète de l'IR : foyer, revenu global, quotient familial, barème, décote, réductions et crédits, prélèvement à la source.",
+ "duree": "60 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Les sources du droit fiscal",
+   "html": "<p>L'impôt est une <b>prestation pécuniaire obligatoire, sans contrepartie directe</b>, destinée à couvrir les charges publiques. Son régime relève de la loi : l'article 34 de la Constitution réserve au Parlement la fixation de « l'assiette, du taux et des modalités de recouvrement des impositions de toutes natures ». Chaque année, la <b>loi de finances</b> autorise la perception des impôts et modifie le Code général des impôts.</p><ul><li><b>Code général des impôts (CGI)</b> : règles de fond (champ, assiette, taux). Ses annexes (I à IV) contiennent les décrets et arrêtés d'application.</li><li><b>Livre des procédures fiscales (LPF)</b> : contrôle, contentieux, délais de reprise, garanties du contribuable.</li><li><b>Doctrine administrative</b> : le BOFiP-Impôts (bulletin officiel des finances publiques) publie l'interprétation de l'administration. Elle est <b>opposable à l'administration</b> (LPF, art. L. 80 A) : un contribuable qui a appliqué de bonne foi une doctrine publiée ne peut pas être redressé, même si cette doctrine est contraire à la loi. L'inverse n'est pas vrai : la doctrine ne s'impose pas au contribuable ni au juge.</li><li><b>Conventions fiscales internationales</b> : traités bilatéraux contre la double imposition ; supérieurs à la loi interne (Constitution, art. 55) mais ils ne créent pas d'impôt (principe de subsidiarité).</li><li><b>Droit de l'Union européenne</b> : directives (TVA, mère-fille, fusions) et jurisprudence de la CJUE.</li><li><b>Jurisprudence</b> : Conseil d'État (impôts directs et TVA), Cour de cassation (droits d'enregistrement, IFI).</li></ul>"
+  },
+  {
+   "h": "Principes et classification des impôts",
+   "html": "<p>Quatre principes structurent la matière :</p><ul><li><b>Légalité</b> : seule la loi crée l'impôt (Constitution, art. 34 ; DDHC, art. 14).</li><li><b>Égalité devant l'impôt</b> et devant les charges publiques (DDHC, art. 6 et 13) : contrôle du Conseil constitutionnel sur les discriminations injustifiées.</li><li><b>Nécessité</b> de l'impôt (DDHC, art. 13 et 14) : fonde le droit de contrôle de l'administration.</li><li><b>Annualité</b> : l'autorisation de percevoir l'impôt est votée chaque année en loi de finances ; l'IR est établi pour une année civile.</li></ul><p>Classifications classiques :</p><table><thead><tr><th>Critère</th><th>Catégories</th><th>Exemples</th></tr></thead><tbody><tr><td>Incidence</td><td>Direct / indirect</td><td>IR, IS, taxe foncière / TVA, droits d'accise</td></tr><tr><td>Assiette</td><td>Réel / personnel</td><td>Taxe foncière (le bien) / IR (la situation familiale)</td></tr><tr><td>Taux</td><td>Proportionnel / progressif</td><td>IS, TVA, PFU / IR, droits de succession, IFI</td></tr><tr><td>Bénéficiaire</td><td>État / collectivités locales / sécurité sociale</td><td>IR, IS, TVA / CFE, taxes foncières / CSG, CRDS</td></tr></tbody></table><p>L'administration fiscale est la <b>DGFiP</b> (direction générale des finances publiques), rattachée au ministère de l'Économie et des Finances. Les particuliers relèvent du <b>SIP</b> (service des impôts des particuliers), les entreprises du <b>SIE</b> (service des impôts des entreprises) ; les grandes entreprises de la DGE. Les droits de douane et certaines accises relèvent de la DGDDI.</p>"
+  },
+  {
+   "h": "L'impôt sur le revenu : champ d'application et foyer fiscal",
+   "html": "<p>L'IR (CGI, art. 1 A et s.) frappe le revenu net global <b>annuel</b> des <b>personnes physiques</b>. L'imposition est établie par <b>foyer fiscal</b> (art. 6) : les époux et partenaires de PACS font une déclaration commune (sauf séparation de biens et vie séparée, ou instance de divorce avec résidences séparées) ; les enfants mineurs sont rattachés de droit ; les enfants majeurs de moins de 21 ans (25 ans s'ils poursuivent des études) peuvent demander leur rattachement. Les concubins forment deux foyers distincts.</p><p><b>Domicile fiscal</b> (art. 4 B) : est domiciliée en France la personne qui remplit <i>l'un</i> des critères suivants : foyer ou lieu de séjour principal en France (plus de 183 jours) ; activité professionnelle principale en France ; centre des intérêts économiques en France. Les agents de l'État en poste à l'étranger sont réputés domiciliés en France.</p><ul><li>Personne domiciliée en France : <b>obligation fiscale illimitée</b>, imposée sur ses revenus mondiaux (art. 4 A), sous réserve des conventions.</li><li>Personne non domiciliée : imposée sur ses seuls <b>revenus de source française</b> (art. 164 B), avec un taux minimum de 20 % (30 % au-delà de la limite de la 2e tranche).</li></ul><div class=\"note\"><b>Règle à retenir.</b> Un seul des trois critères de l'article 4 B suffit à fixer le domicile fiscal en France. En cas de conflit avec un autre État, la convention bilatérale tranche (critères successifs : foyer permanent, centre des intérêts vitaux, séjour habituel, nationalité).</div>"
+  },
+  {
+   "h": "Du revenu catégoriel au revenu net global",
+   "html": "<p>L'IR est un impôt <b>synthétique</b> : chaque revenu est d'abord déterminé selon les règles de sa <b>catégorie</b>, puis les revenus nets catégoriels sont additionnés.</p><ol><li>Les huit catégories : traitements, salaires, pensions et rentes ; rémunérations de certains dirigeants (art. 62) ; bénéfices industriels et commerciaux (BIC) ; bénéfices non commerciaux (BNC) ; bénéfices agricoles (BA) ; revenus fonciers ; revenus de capitaux mobiliers ; plus-values des particuliers.</li><li>Somme algébrique = <b>revenu brut global</b>. Les déficits catégoriels s'imputent en principe sur le revenu global de l'année, puis se reportent sur le revenu global des <b>6 années</b> suivantes (art. 156, I). Exceptions : les déficits fonciers (au-delà de 10 700 €), les déficits BIC et BNC <b>non professionnels</b> et les moins-values mobilières ne s'imputent que sur les revenus de même nature (10 ans pour les déficits fonciers, les moins-values mobilières et la location meublée non professionnelle ; 6 ans pour les autres BIC et BNC non professionnels).</li><li>Moins les <b>charges déductibles du revenu global</b> (art. 156, II) : pensions alimentaires versées en vertu d'une obligation alimentaire (enfant majeur : plafond <span class=\"mono\">6 674 €</span> pour les revenus 2024), fraction déductible de la CSG (<span class=\"mono\">6,8 points</span>) sur les revenus du patrimoine imposés au barème, cotisations d'épargne retraite (PER) dans la limite d'un plafond, pensions alimentaires fixées par jugement. = <b>revenu net global</b>.</li><li>Moins les abattements spéciaux (personnes âgées ou invalides de condition modeste, enfants mariés rattachés) = <b>revenu net imposable</b>.</li></ol><p>Piège classique : la pension versée à un enfant <i>mineur</i> dont on a la garde n'est pas déductible, et un enfant majeur ne peut pas être à la fois rattaché et bénéficiaire d'une pension déduite.</p>"
+  },
+  {
+   "h": "Quotient familial et barème progressif",
+   "html": "<p>Le <b>quotient familial</b> (art. 194) divise le revenu net imposable par un nombre de parts pour atténuer la progressivité en fonction des charges de famille.</p><table><thead><tr><th>Situation</th><th>Parts</th></tr></thead><tbody><tr><td>Célibataire, divorcé, veuf sans enfant</td><td>1</td></tr><tr><td>Couple marié ou pacsé</td><td>2</td></tr><tr><td>1er et 2e enfant à charge</td><td>+ 0,5 chacun</td></tr><tr><td>À partir du 3e enfant</td><td>+ 1 chacun</td></tr><tr><td>Parent isolé (case T), premier enfant</td><td>+ 0,5 supplémentaire</td></tr><tr><td>Invalidité, carte du combattant (conditions)</td><td>+ 0,5</td></tr></tbody></table><p><b>Barème 2025</b> (LF 2025, applicable aux revenus 2024 ; chiffres millésimés, revalorisés chaque année) appliqué au revenu par part :</p><table><thead><tr><th>Fraction du revenu par part</th><th>Taux</th></tr></thead><tbody><tr><td>jusqu'à <span class=\"mono\">11 497 €</span></td><td>0 %</td></tr><tr><td>de 11 497 à <span class=\"mono\">29 315 €</span></td><td>11 %</td></tr><tr><td>de 29 315 à <span class=\"mono\">83 823 €</span></td><td>30 %</td></tr><tr><td>de 83 823 à <span class=\"mono\">180 294 €</span></td><td>41 %</td></tr><tr><td>au-delà de <span class=\"mono\">180 294 €</span></td><td>45 %</td></tr></tbody></table><p>Méthode : impôt par part × nombre de parts = <b>impôt brut</b>. L'avantage procuré par les demi-parts liées aux enfants est <b>plafonné</b> (art. 197, I-2) : <span class=\"mono\">1 791 €</span> par demi-part pour l'impôt 2025 (3 582 € par part). On compare l'impôt calculé avec les parts réelles à l'impôt calculé avec 1 ou 2 parts diminué du plafond : on retient le plus élevé.</p><div class=\"note\"><b>Piège.</b> Le taux marginal (TMI) n'est pas le taux moyen : un revenu par part de 30 000 € n'est imposé à 30 % que sur 685 €, le reste à 0 % et 11 %.</div>"
+  },
+  {
+   "h": "Décote, réductions et crédits d'impôt, contribution sur les hauts revenus",
+   "html": "<p>La <b>décote</b> (art. 197, I-4) allège l'entrée dans l'impôt. Pour l'impôt 2025 (revenus 2024) : si l'impôt brut est inférieur à <span class=\"mono\">1 964 €</span> (personne seule) ou <span class=\"mono\">3 248 €</span> (couple), on retranche <span class=\"mono\">889 € − 45,25 %</span> de l'impôt brut (<span class=\"mono\">1 470 € − 45,25 %</span> pour un couple).</p><p>Ensuite viennent les <b>réductions d'impôt</b>, puis les <b>crédits d'impôt</b> :</p><ul><li>Une <b>réduction</b> diminue l'impôt sans pouvoir le rendre négatif : l'excédent est perdu. Exemples : dons aux organismes d'intérêt général 66 % (plafond 20 % du revenu imposable, report 5 ans) ; dons aux organismes d'aide aux personnes en difficulté 75 % jusqu'à <span class=\"mono\">1 000 €</span> (dons 2024 ; le plafond est porté à 2 000 € pour les dons versés à compter du 14 octobre 2025) ; souscription au capital de PME ; frais de scolarité.</li><li>Un <b>crédit</b> est remboursé s'il excède l'impôt. Exemples : emploi d'un salarié à domicile 50 % des dépenses dans la limite de 12 000 € (majorée de 1 500 € par enfant ou personne de plus de 65 ans, plafond 15 000 €, et 15 000 € la première année) ; frais de garde des enfants de moins de 6 ans 50 % (plafond 3 500 € par enfant) ; cotisations syndicales 66 %.</li></ul><p>Les réductions et crédits dits « niches » sont globalement plafonnés à <span class=\"mono\">10 000 €</span> par an (art. 200-0 A) ; les dons et cotisations syndicales ne sont pas concernés.</p><p>La <b>contribution exceptionnelle sur les hauts revenus</b> (CEHR, art. 223 sexies) s'ajoute à l'IR : 3 % de la fraction du revenu fiscal de référence comprise entre 250 000 et 500 000 € (personne seule) et 4 % au-delà ; seuils doublés pour un couple (500 000 € et 1 000 000 €). La LF 2025 a ajouté, pour les revenus 2025, une contribution différentielle (CDHR) garantissant une imposition minimale de 20 % aux foyers dont le RFR dépasse ces mêmes seuils.</p>"
+  },
+  {
+   "h": "Prélèvement à la source et obligations déclaratives",
+   "html": "<p>Depuis 2019, l'IR est collecté au fil de l'eau (art. 204 A et s.) mais reste <b>liquidé l'année suivante</b> sur la déclaration : le PAS est une avance, régularisée en septembre.</p><ul><li><b>Retenue à la source</b> opérée par le tiers payeur (employeur, caisse de retraite) sur les salaires et pensions.</li><li><b>Acomptes</b> prélevés par la DGFiP sur le compte du contribuable, le 15 de chaque mois (ou par trimestre sur option), pour les BIC, BNC, BA, revenus fonciers, pensions alimentaires et rentes.</li><li><b>Taux</b> : le taux <b>personnalisé</b> du foyer est calculé par l'administration à partir de la dernière déclaration (actualisé en septembre). Les couples peuvent opter pour un taux <b>individualisé</b> (devenu le taux par défaut à compter du 1er septembre 2025) qui répartit l'impôt selon les revenus de chacun, sans changer le total. Le salarié peut refuser la transmission de son taux à l'employeur : celui-ci applique alors le taux <b>neutre</b> (grille par défaut, art. 204 H), avec complément à verser par le contribuable si le taux neutre est trop faible.</li><li>Le contribuable peut <b>moduler</b> à la baisse son taux si l'écart excède 5 % de l'impôt estimé.</li></ul><p><b>Déclaration</b> (art. 170) : déclaration annuelle n° 2042 (et annexes 2042 C, 2044, 2074…) souscrite au printemps de l'année N+1, en ligne (obligatoire sauf impossibilité), avec des dates limites échelonnées par département de fin mai à début juin ; le dépôt papier intervient plus tôt (vers le 20 mai). Depuis 2020, la déclaration tacite (automatique) vaut pour les foyers dont les revenus sont intégralement préremplis et inchangés. Le non-respect expose à la majoration de 10 % (art. 1758 A) et à l'intérêt de retard. Les revenus des indépendants (BIC, BNC, BA) passent par la liasse professionnelle déposée début mai, dont le résultat est reporté sur la 2042 C PRO.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Constitution du 4 octobre 1958, art. 34 et 55 ; DDHC, art. 13 et 14",
+   "note": "Principes de légalité, d'égalité et de nécessité de l'impôt ; primauté des traités"
+  },
+  {
+   "ref": "LPF, art. L. 80 A et L. 80 B",
+   "note": "Opposabilité de la doctrine administrative (BOFiP) et rescrit"
+  },
+  {
+   "ref": "CGI, art. 4 A, 4 B, 6 et 164 B",
+   "note": "Territorialité de l'IR, domicile fiscal, foyer fiscal, revenus de source française"
+  },
+  {
+   "ref": "CGI, art. 156",
+   "note": "Revenu global, imputation des déficits, charges déductibles du revenu global"
+  },
+  {
+   "ref": "CGI, art. 194, 195 et 197 (LF 2025, loi n° 2025-127 du 14 février 2025)",
+   "note": "Quotient familial, barème 2025, plafonnement, décote"
+  },
+  {
+   "ref": "CGI, art. 199 sexdecies, 200 et 200-0 A",
+   "note": "Crédit d'impôt emploi à domicile, réduction pour dons, plafonnement global des avantages fiscaux"
+  },
+  {
+   "ref": "CGI, art. 204 A à 204 N",
+   "note": "Prélèvement à la source : retenue, acomptes, taux personnalisé, individualisé et neutre"
+  },
+  {
+   "ref": "CGI, art. 223 sexies",
+   "note": "Contribution exceptionnelle sur les hauts revenus"
+  },
+  {
+   "ref": "BOI-IR-LIQ-20-20-20",
+   "note": "Plafonnement des effets du quotient familial"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quel texte réserve au Parlement la fixation de l'assiette, du taux et des modalités de recouvrement des impositions de toutes natures ?",
+   "opts": [
+    "L'article 34 de la Constitution",
+    "L'article 1er du Code général des impôts",
+    "L'article L. 80 A du Livre des procédures fiscales",
+    "Le règlement de l'Assemblée nationale"
+   ],
+   "a": 0,
+   "why": "Le principe de légalité de l'impôt découle de l'article 34 de la Constitution : seule la loi fixe l'assiette, le taux et le recouvrement. Le CGI est lui-même une loi, il ne fonde pas la compétence du Parlement. L'article L. 80 A du LPF traite de l'opposabilité de la doctrine administrative, pas de la compétence législative.",
+   "src": "Constitution, art. 34",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un contribuable a appliqué de bonne foi une instruction publiée au BOFiP, que l'administration estime ensuite contraire à la loi. Que peut faire l'administration ?",
+   "opts": [
+    "Rien : la doctrine publiée lui est opposable, le contribuable est protégé",
+    "Redresser le contribuable, la loi primant toujours sur la doctrine",
+    "Redresser le contribuable avec une majoration de 10 %",
+    "Redresser uniquement si le contribuable est une entreprise"
+   ],
+   "a": 0,
+   "why": "L'article L. 80 A du LPF interdit tout rehaussement fondé sur une interprétation différente de celle que l'administration avait formellement admise dans sa doctrine publiée, dès lors que le contribuable l'a appliquée de bonne foi. La garantie joue pour tous les contribuables, particuliers comme entreprises. La loi prime sur la doctrine pour le juge, mais le contribuable peut invoquer la doctrine en sa faveur ; l'inverse n'est pas possible.",
+   "src": "LPF, art. L. 80 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Parmi ces impôts, lesquels sont des impôts directs ? (plusieurs réponses possibles)",
+   "opts": [
+    "Impôt sur le revenu",
+    "TVA",
+    "Taxe foncière",
+    "Droits d'accise sur les alcools",
+    "Impôt sur les sociétés"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Un impôt direct est supporté et versé par la même personne, nommément désignée, en général par voie de rôle ou de déclaration : IR, IS, taxe foncière, CFE. La TVA et les accises sont des impôts indirects : ils sont collectés par l'entreprise mais supportés par le consommateur final.",
+   "src": "CGI, art. 1 A, 205, 1380 ; art. 256",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Le principe d'annualité de l'impôt signifie que :",
+   "opts": [
+    "L'autorisation de percevoir les impôts est votée chaque année en loi de finances",
+    "Chaque impôt ne peut être payé qu'une fois par an",
+    "Les taux d'imposition doivent être modifiés chaque année",
+    "Le contribuable choisit chaque année son régime d'imposition"
+   ],
+   "a": 0,
+   "why": "L'annualité est un principe budgétaire : la loi de finances autorise chaque année la perception des impôts existants ; l'IR est par ailleurs établi par année civile. Les taux peuvent rester stables d'une année sur l'autre (le taux normal de TVA est à 20 % depuis 2014), et la TVA est payée mensuellement par les entreprises au réel normal.",
+   "src": "LOLF, art. 1er et 34 ; CGI, art. 12",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Lequel de ces impôts est à la fois progressif et personnel ?",
+   "opts": [
+    "L'impôt sur le revenu",
+    "La TVA",
+    "L'impôt sur les sociétés",
+    "La taxe foncière"
+   ],
+   "a": 0,
+   "why": "L'IR est progressif (barème par tranches de 0 à 45 %) et personnel (il tient compte de la situation familiale par le quotient familial). La TVA est proportionnelle et réelle. L'IS a un taux proportionnel (25 %, avec un taux réduit de 15 % pour les PME, mais pas de barème progressif à proprement parler). La taxe foncière est un impôt réel assis sur le bien, sans considération de la personne.",
+   "src": "CGI, art. 193 et 197",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quel service de la DGFiP est l'interlocuteur d'une SARL pour sa TVA et son impôt sur les sociétés ?",
+   "opts": [
+    "Le service des impôts des entreprises (SIE)",
+    "Le service des impôts des particuliers (SIP)",
+    "La direction générale des douanes et droits indirects (DGDDI)",
+    "Le centre des finances publiques du gérant"
+   ],
+   "a": 0,
+   "why": "Les entreprises (sociétés, indépendants) déclarent et paient la TVA, l'IS, la CFE auprès du SIE dont dépend leur siège. Le SIP gère l'IR et la taxe d'habitation des particuliers. La douane (DGDDI) ne gère plus la TVA à l'importation des assujettis depuis 2022 (autoliquidation sur la CA3) ; elle conserve les droits de douane et certaines accises.",
+   "src": "CGI, ann. III, art. 38 quater ; art. 287",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Selon l'article 4 B du CGI, quels critères suffisent, chacun à lui seul, à fixer le domicile fiscal d'une personne en France ? (plusieurs réponses possibles)",
+   "opts": [
+    "Avoir son foyer ou son lieu de séjour principal en France",
+    "Exercer en France son activité professionnelle principale",
+    "Avoir en France le centre de ses intérêts économiques",
+    "Avoir la nationalité française",
+    "Posséder un bien immobilier en France"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 4 B retient trois critères alternatifs : critère personnel (foyer ou séjour principal, plus de 183 jours), critère professionnel (activité principale) et critère économique (centre des intérêts économiques). Un seul suffit. La nationalité n'est pas un critère en droit interne (elle n'intervient qu'en dernier rang dans les conventions). Détenir un immeuble en France rend seulement les revenus de cet immeuble imposables en France.",
+   "src": "CGI, art. 4 B",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un ingénieur allemand, domicilié fiscalement en Allemagne, perçoit des loyers d'un appartement situé à Lyon. En France, il est :",
+   "opts": [
+    "Imposable à l'IR sur ces seuls revenus de source française",
+    "Imposable à l'IR sur l'ensemble de ses revenus mondiaux",
+    "Totalement exonéré d'IR en France",
+    "Imposable à l'IS sur ses loyers"
+   ],
+   "a": 0,
+   "why": "Une personne non domiciliée en France n'est imposable que sur ses revenus de source française (art. 4 A et 164 B), dont font partie les revenus d'immeubles situés en France, avec un taux minimum d'imposition de 20 %. L'obligation illimitée (revenus mondiaux) ne vise que les personnes domiciliées. Une personne physique n'est jamais soumise à l'IS.",
+   "src": "CGI, art. 4 A, 164 B et 197 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Deux concubins vivent ensemble avec leur enfant commun de 5 ans. Combien de déclarations de revenus déposent-ils ?",
+   "opts": [
+    "Deux déclarations, l'enfant étant rattaché à l'un des deux",
+    "Une déclaration commune avec 2,5 parts",
+    "Une déclaration commune avec 2 parts",
+    "Deux déclarations, chacune comptant l'enfant pour une demi-part"
+   ],
+   "a": 0,
+   "why": "Seuls les époux et les partenaires de PACS forment un foyer fiscal unique (art. 6). Les concubins déposent chacun leur déclaration ; l'enfant ne peut être compté qu'à la charge d'un seul des deux (celui qui l'a à charge peut même bénéficier de la demi-part « parent isolé » s'il ne vit pas en concubinage, ce qui n'est pas le cas ici).",
+   "src": "CGI, art. 6 et 194",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Jusqu'à quel âge un enfant majeur poursuivant ses études peut-il demander son rattachement au foyer fiscal de ses parents ?",
+   "opts": [
+    "Moins de 25 ans au 1er janvier de l'année d'imposition",
+    "Moins de 21 ans sans condition d'études",
+    "Moins de 18 ans",
+    "Sans limite d'âge tant que durent les études"
+   ],
+   "a": 0,
+   "why": "L'article 6, 3 permet le rattachement des enfants majeurs de moins de 21 ans, ou de moins de 25 ans s'ils poursuivent des études, appréciés au 1er janvier de l'année d'imposition. Au-delà, les parents peuvent seulement déduire une pension alimentaire plafonnée. Les mineurs sont rattachés de droit, sans demande.",
+   "src": "CGI, art. 6, 3 et 196 B",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un couple marié a trois enfants à charge. Combien de parts de quotient familial compte le foyer ?",
+   "a": 4,
+   "unit": "",
+   "tol": 0.5,
+   "why": "Couple marié = 2 parts. Les deux premiers enfants donnent une demi-part chacun (+ 1 part), le troisième donne une part entière (+ 1). Total : 2 + 0,5 + 0,5 + 1 = 4 parts. Erreur fréquente : compter 0,5 part pour chaque enfant, soit 3,5.",
+   "src": "CGI, art. 194",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une personne divorcée élève seule ses deux enfants (case T, parent isolé, aucune vie en concubinage). Combien de parts compte le foyer ?",
+   "a": 2.5,
+   "unit": "",
+   "tol": 0.5,
+   "why": "Personne seule = 1 part ; deux enfants = 0,5 + 0,5 = 1 part ; la demi-part supplémentaire « parent isolé » de l'article 194, II porte le total à 2,5 parts. Sans la case T, le foyer n'aurait que 2 parts. L'avantage de cette demi-part supplémentaire est lui aussi plafonné (art. 197, I-2).",
+   "src": "CGI, art. 194, II",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Barème 2025 (revenus 2024) : 0 % jusqu'à 11 497 € ; 11 % de 11 497 à 29 315 € ; 30 % de 29 315 à 83 823 € ; 41 % de 83 823 à 180 294 € ; 45 % au-delà. Un célibataire sans enfant (1 part) a un revenu net imposable de 40 000 €. Calculez son impôt brut, arrondi à l'euro.",
+   "a": 5165,
+   "unit": "€",
+   "tol": 1,
+   "why": "Tranche à 11 % : (29 315 − 11 497) × 11 % = 17 818 × 0,11 = 1 959,98 €. Tranche à 30 % : (40 000 − 29 315) × 30 % = 10 685 × 0,30 = 3 205,50 €. Impôt brut = 1 959,98 + 3 205,50 = 5 165,48 €, arrondi à 5 165 €. Le taux moyen n'est que de 12,9 % alors que le taux marginal est de 30 %. Erreur classique : appliquer 30 % à tout le revenu (12 000 €) ou oublier la tranche à 11 %.",
+   "src": "CGI, art. 197, I-1 (LF 2025)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Barème 2025 (revenus 2024) : 0 % jusqu'à 11 497 € ; 11 % de 11 497 à 29 315 € ; 30 % de 29 315 à 83 823 €. Un couple marié avec deux enfants (3 parts) dispose d'un revenu net imposable de 60 000 €. Calculez l'impôt brut du foyer, arrondi à l'euro (vérifiez que le plafonnement du quotient familial, 1 791 € par demi-part, ne joue pas).",
+   "a": 2806,
+   "unit": "€",
+   "tol": 1,
+   "why": "Quotient : 60 000 / 3 = 20 000 € par part. Impôt par part : (20 000 − 11 497) × 11 % = 935,33 €. Impôt brut : 935,33 × 3 = 2 805,99 €, soit 2 806 €. Vérification du plafonnement : avec 2 parts, quotient 30 000 €, impôt par part = 1 959,98 + (30 000 − 29 315) × 30 % = 2 165,48 €, soit 4 330,96 € ; l'avantage des deux demi-parts (4 331 − 2 806 = 1 525 €) est inférieur au plafond 2 × 1 791 = 3 582 € : pas de plafonnement.",
+   "src": "CGI, art. 197, I-1 et I-2 (LF 2025)",
+   "fiab": "millésimé 2025",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Impôt 2025 (revenus 2024) : la décote s'applique si l'impôt brut d'une personne seule est inférieur à 1 964 € ; elle est égale à 889 € − 45,25 % de l'impôt brut. Un célibataire a un impôt brut de 1 200 €. Quel est son impôt après décote, arrondi à l'euro ?",
+   "a": 854,
+   "unit": "€",
+   "tol": 1,
+   "why": "Décote = 889 − 0,4525 × 1 200 = 889 − 543 = 346 €. Impôt après décote = 1 200 − 346 = 854 €. Piège : la décote est un montant soustrait de l'impôt, pas l'impôt lui-même ; répondre 346 € serait faux. Pour un couple, les paramètres sont 3 248 € et 1 470 €.",
+   "src": "CGI, art. 197, I-4 (LF 2025)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la différence essentielle entre une réduction d'impôt et un crédit d'impôt ?",
+   "opts": [
+    "Le crédit est restitué s'il dépasse l'impôt dû, la réduction est perdue au-delà de l'impôt",
+    "La réduction s'applique avant la décote, le crédit après",
+    "La réduction est réservée aux dépenses professionnelles",
+    "Le crédit d'impôt n'est accordé qu'aux foyers non imposables"
+   ],
+   "a": 0,
+   "why": "Les deux s'imputent après la décote, dans l'ordre réductions puis crédits. Une réduction ne peut ramener l'impôt en dessous de zéro ; un crédit d'impôt (emploi à domicile, frais de garde, cotisations syndicales) donne lieu à remboursement de l'excédent, ce qui en fait profiter aussi les foyers non imposables, sans leur être réservé.",
+   "src": "CGI, art. 197, I-5 ; art. 199 sexdecies",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Impôt 2025 sur les revenus 2024 : un contribuable a versé en 2024 un don de 1 500 € aux Restos du cœur (organisme d'aide aux personnes en difficulté, taux 75 % dans la limite de 1 000 €, puis 66 % au-delà ; le plafond de 20 % du revenu imposable n'est pas atteint). Quel est le montant de sa réduction d'impôt ?",
+   "a": 1080,
+   "unit": "€",
+   "tol": 1,
+   "why": "Les premiers 1 000 € ouvrent droit à 75 % : 750 €. Le surplus de 500 € relève du régime général à 66 % : 330 €. Total : 1 080 €. Répondre 1 125 € (75 % du tout) ou 990 € (66 % du tout) ignore le mécanisme à deux étages de l'article 200, 1 ter. Pour les dons versés à compter du 14 octobre 2025, le plafond du taux de 75 % est porté à 2 000 €.",
+   "src": "CGI, art. 200, 1 et 1 ter (LF 2025)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un couple marié a employé une aide ménagère à domicile en 2024 pour 8 000 € de dépenses (ce n'est pas la première année ; pas de majoration). Son impôt avant crédits est de 1 500 €. Que se passe-t-il ?",
+   "opts": [
+    "Le crédit d'impôt de 4 000 € efface l'impôt et 2 500 € sont remboursés",
+    "La réduction de 4 000 € efface l'impôt et l'excédent est perdu",
+    "Le crédit est limité à 1 500 €, montant de l'impôt",
+    "Le crédit est de 8 000 € puisque la dépense est inférieure au plafond"
+   ],
+   "a": 0,
+   "why": "L'avantage pour emploi d'un salarié à domicile est un crédit d'impôt égal à 50 % des dépenses, dans la limite de 12 000 € de dépenses : 8 000 × 50 % = 4 000 €. Comme c'est un crédit, l'excédent sur l'impôt (4 000 − 1 500 = 2 500 €) est restitué. Il s'agit d'un crédit depuis 2017, et non d'une réduction.",
+   "src": "CGI, art. 199 sexdecies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément selon la façon dont il intervient dans le calcul de l'IR.",
+   "cats": [
+    "Charge déductible du revenu global",
+    "Réduction d'impôt",
+    "Crédit d'impôt"
+   ],
+   "items": [
+    [
+     "Pension alimentaire versée à un enfant majeur non rattaché",
+     0
+    ],
+    [
+     "Don de 200 € à une association culturelle d'intérêt général",
+     1
+    ],
+    [
+     "Salaire d'une femme de ménage à domicile",
+     2
+    ],
+    [
+     "CSG déductible sur des revenus fonciers imposés au barème",
+     0
+    ],
+    [
+     "Frais de garde d'un enfant de 4 ans en crèche",
+     2
+    ],
+    [
+     "Souscription au capital d'une PME",
+     1
+    ],
+    [
+     "Cotisation syndicale d'un salarié",
+     2
+    ]
+   ],
+   "why": "Les charges du revenu global (art. 156, II) diminuent la base imposable : pensions alimentaires, CSG déductible. Les réductions (dons art. 200, souscription PME art. 199 terdecies-0 A) diminuent l'impôt sans restitution. Les crédits (emploi à domicile art. 199 sexdecies, frais de garde art. 200 quater B, cotisations syndicales art. 199 quater C) sont restituables.",
+   "src": "CGI, art. 156, 199 sexdecies, 199 quater C, 200, 200 quater B",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un déficit industriel et commercial provenant d'une activité exercée à titre non professionnel (sans participation personnelle, continue et directe) :",
+   "opts": [
+    "S'impute uniquement sur les bénéfices de même nature des 6 années suivantes",
+    "S'impute sur le revenu global de l'année",
+    "S'impute sur le revenu global des 6 années suivantes",
+    "N'est jamais reportable"
+   ],
+   "a": 0,
+   "why": "L'article 156, I-1° bis réserve les déficits BIC non professionnels (par exemple une location meublée non professionnelle) : ils ne s'imputent que sur les bénéfices tirés d'activités de même nature au cours de la même année et des six années suivantes. Seuls les déficits BIC professionnels s'imputent sur le revenu global, puis se reportent 6 ans.",
+   "src": "CGI, art. 156, I-1° bis",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le plafonnement du quotient familial (1 791 € par demi-part pour l'impôt 2025) vise à :",
+   "opts": [
+    "Limiter l'économie d'impôt procurée par chaque demi-part liée aux charges de famille",
+    "Limiter le nombre de parts à 4 par foyer",
+    "Plafonner l'impôt des familles nombreuses",
+    "Interdire le rattachement d'enfants majeurs aux hauts revenus"
+   ],
+   "a": 0,
+   "why": "Le quotient familial avantage d'autant plus que le revenu est élevé. L'article 197, I-2 plafonne donc la réduction d'impôt résultant de chaque demi-part supplémentaire au-delà de 1 ou 2 parts. Il n'y a pas de plafond au nombre de parts et la mesure augmente l'impôt des foyers aisés, elle ne le plafonne pas.",
+   "src": "CGI, art. 197, I-2 (LF 2025) ; BOI-IR-LIQ-20-20-20",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un salarié ne souhaite pas que son employeur connaisse son taux personnalisé de prélèvement à la source. Quelle est la conséquence ?",
+   "opts": [
+    "L'employeur applique le taux neutre et le salarié verse lui-même le complément éventuel",
+    "Le salarié est dispensé de prélèvement à la source jusqu'à la déclaration",
+    "L'employeur applique le taux maximal de 45 %",
+    "Le salarié doit payer une amende de 10 %"
+   ],
+   "a": 0,
+   "why": "L'option pour la non-transmission du taux conduit à appliquer la grille de taux par défaut (taux neutre, art. 204 H, III). Si ce taux est inférieur au taux personnalisé, le contribuable doit verser lui-même la différence chaque mois. Aucune pénalité n'est attachée à ce choix ; la dispense de PAS n'existe pas pour les salaires.",
+   "src": "CGI, art. 204 H",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quels revenus donnent lieu au paiement d'acomptes de prélèvement à la source prélevés par la DGFiP sur le compte bancaire du contribuable ? (plusieurs réponses possibles)",
+   "opts": [
+    "Revenus fonciers",
+    "Bénéfices non commerciaux",
+    "Salaires versés par un employeur français",
+    "Pensions de retraite",
+    "Bénéfices industriels et commerciaux"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "Les revenus sans tiers collecteur (BIC, BNC, BA, revenus fonciers, pensions alimentaires, rentes viagères à titre onéreux, certains revenus de source étrangère) font l'objet d'acomptes prélevés le 15 de chaque mois (ou trimestriellement sur option). Les salaires et pensions subissent une retenue à la source opérée par l'employeur ou la caisse de retraite.",
+   "src": "CGI, art. 204 B et 204 C",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le prélèvement à la source a-t-il supprimé l'obligation de déposer une déclaration de revenus ?",
+   "opts": [
+    "Non : l'impôt est toujours liquidé l'année suivante sur la déclaration, le PAS n'est qu'une avance",
+    "Oui, pour tous les contribuables depuis 2019",
+    "Oui, pour les seuls salariés",
+    "Non, mais la déclaration n'est plus obligatoire que tous les trois ans"
+   ],
+   "a": 0,
+   "why": "Le PAS est un mode de recouvrement contemporain ; la déclaration (art. 170) demeure nécessaire pour calculer l'impôt définitif, régularisé en septembre N+1. La déclaration automatique (tacite) de certains foyers préremplis est une simplification de la formalité, pas une suppression de l'obligation.",
+   "src": "CGI, art. 170 et 204 A",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un célibataire a, pour l'imposition de ses revenus 2024, un revenu fiscal de référence de 320 000 €. La CEHR est de 3 % sur la fraction comprise entre 250 000 et 500 000 € pour une personne seule, 4 % au-delà. Quel est le montant de sa contribution exceptionnelle sur les hauts revenus ?",
+   "a": 2100,
+   "unit": "€",
+   "tol": 1,
+   "why": "Fraction taxable : 320 000 − 250 000 = 70 000 €, entièrement dans la tranche à 3 % : 70 000 × 3 % = 2 100 €. Les 250 000 premiers euros ne supportent pas de contribution. Le taux de 4 % ne s'appliquerait qu'au-delà de 500 000 € (1 000 000 € pour un couple). Ces seuils ne sont pas indexés.",
+   "src": "CGI, art. 223 sexies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un contribuable verse 9 000 € par an à son fils de 23 ans, étudiant, qui vit dans son propre logement et n'est pas rattaché. Pour l'imposition des revenus 2024, quelle somme peut-il déduire de son revenu global ?",
+   "opts": [
+    "6 674 €, montant du plafond de déduction",
+    "9 000 €, la totalité de la pension versée",
+    "3 968 €, forfait sans justificatif",
+    "Rien : seule la demi-part de rattachement est possible"
+   ],
+   "a": 0,
+   "why": "La pension versée à un enfant majeur non rattaché est déductible dans la limite d'un plafond fixé à 6 674 € pour les revenus 2024 (art. 156, II-2°). Le forfait de 3 968 € sans justificatif ne concerne que l'enfant hébergé chez ses parents. Le choix entre rattachement et déduction d'une pension est exclusif mais la déduction reste possible ici.",
+   "src": "CGI, art. 156, II-2° (revenus 2024)",
+   "fiab": "millésimé 2025",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conventions ou normes priment sur la loi fiscale française en cas de conflit ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une convention fiscale bilatérale régulièrement ratifiée",
+    "Une directive de l'Union européenne transposée",
+    "Une réponse ministérielle publiée",
+    "Une instruction du BOFiP",
+    "La jurisprudence du tribunal administratif de Paris"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "L'article 55 de la Constitution donne aux traités ratifiés une autorité supérieure aux lois ; le droit de l'UE prime également (directives TVA, mère-fille). La doctrine administrative (BOFiP, réponses ministérielles) est seulement opposable à l'administration, elle ne prime pas sur la loi. La jurisprudence d'un tribunal n'a pas force normative générale.",
+   "src": "Constitution, art. 55 ; LPF, art. L. 80 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le revenu fiscal de référence (RFR) sert notamment à :",
+   "opts": [
+    "Apprécier le droit à certains dispositifs (dispense de prélèvement forfaitaire, CEHR, exonérations locales)",
+    "Calculer l'impôt brut à la place du revenu net imposable",
+    "Déterminer le nombre de parts du foyer",
+    "Fixer le taux de la TVA applicable au foyer"
+   ],
+   "a": 0,
+   "why": "Le RFR (art. 1417, IV) ajoute au revenu net imposable certains revenus exonérés ou taxés à taux forfaitaire (PFU, plus-values) et des abattements. Il conditionne les seuils de la CEHR, de la dispense d'acompte sur les revenus de capitaux mobiliers, de nombreux allègements locaux. L'impôt brut se calcule sur le revenu net imposable, non sur le RFR.",
+   "src": "CGI, art. 1417, IV",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

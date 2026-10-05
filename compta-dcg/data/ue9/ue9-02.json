@@ -3,21 +3,25 @@
  "ue": "UE9",
  "ordre": 2,
  "title": "Le plan comptable et la partie double",
- "resume": "Les 7 classes du PCG, le sens débit / crédit et vos premières écritures.",
- "duree": "35 min",
+ "resume": "Les 7 classes du PCG, le sens débit / crédit, la partie double, et le chemin journal → grand livre → balance.",
+ "duree": "50 min",
  "niveau": 1,
  "lecon": [
   {
    "h": "Les 7 classes du Plan comptable général",
-   "html": "<p>Chaque compte porte un numéro dont le <b>premier chiffre</b> indique la classe. Les classes 1 à 5 sont des comptes de <b>bilan</b>, les classes 6 et 7 des comptes de <b>résultat</b>.</p>\n<ul>\n<li><b>1</b> Capitaux : capital <code>101</code>, réserves <code>106</code>, résultat <code>120</code>, emprunts <code>164</code>.</li>\n<li><b>2</b> Immobilisations : matériel industriel <code>2154</code>, informatique <code>2183</code>, amortissements <code>28…</code>.</li>\n<li><b>3</b> Stocks : marchandises <code>37</code>, matières <code>31</code>.</li>\n<li><b>4</b> Tiers : fournisseurs <code>401</code>, clients <code>411</code>, personnel <code>421</code>, État et TVA <code>44…</code>.</li>\n<li><b>5</b> Financiers : banque <code>512</code>, caisse <code>530</code>.</li>\n<li><b>6</b> Charges : achats <code>60</code>, services extérieurs <code>61/62</code>, personnel <code>64</code>, financières <code>66</code>, dotations <code>68</code>.</li>\n<li><b>7</b> Produits : ventes <code>70</code>, financiers <code>76</code>, exceptionnels <code>77</code>, reprises <code>78</code>.</li>\n</ul>\n<p>La numérotation est décimale : plus le numéro est long, plus le compte est précis (<code>4</code> → <code>44</code> → <code>445</code> → <code>44566</code>).</p>"
+   "html": "<p>Chaque compte porte un numéro dont le <b>premier chiffre</b> indique la classe. Les classes 1 à 5 sont des comptes de <b>bilan</b>, les classes 6 et 7 des comptes de <b>résultat</b> (gestion).</p><ul><li><b>1</b> Capitaux : capital <code>101</code>, réserves <code>106</code>, résultat <code>120</code>, provisions <code>15</code>, emprunts <code>164</code>.</li><li><b>2</b> Immobilisations : logiciels <code>205</code>, matériel industriel <code>2154</code>, informatique <code>2183</code>, titres de participation <code>261</code>, amortissements <code>28</code>.</li><li><b>3</b> Stocks : matières <code>31</code>, produits finis <code>355</code>, marchandises <code>37</code>.</li><li><b>4</b> Tiers : fournisseurs <code>401</code>, clients <code>411</code>, personnel <code>421</code>, organismes sociaux <code>43</code>, État et TVA <code>44</code>.</li><li><b>5</b> Financiers : VMP <code>50</code>, banque <code>512</code>, caisse <code>530</code>.</li><li><b>6</b> Charges : achats <code>60</code>, services extérieurs <code>61/62</code>, impôts <code>63</code>, personnel <code>64</code>, autres charges de gestion <code>65</code>, financières <code>66</code>, exceptionnelles <code>67</code>, dotations <code>68</code>, IS <code>69</code>.</li><li><b>7</b> Produits : ventes <code>70</code>, production stockée <code>71</code>, immobilisée <code>72</code>, subventions <code>74</code>, autres produits de gestion <code>75</code>, financiers <code>76</code>, exceptionnels <code>77</code>, reprises <code>78</code>.</li></ul><p>Depuis le PCG 2025, il n'existe plus qu'<b>un seul plan de comptes</b> (fin des systèmes abrégé et développé), qui distingue des comptes obligatoires et des comptes facultatifs.</p>"
+  },
+  {
+   "h": "La numérotation décimale",
+   "html": "<p>La codification est <b>décimale</b> : chaque chiffre ajouté à droite précise le compte. <code>4</code> Tiers → <code>44</code> État → <code>445</code> Taxes sur le chiffre d'affaires → <code>4456</code> TVA déductible → <code>44566</code> TVA déductible sur autres biens et services. Un compte à deux chiffres est un <b>poste</b>, à trois chiffres un compte principal, au-delà des subdivisions.</p><p>Quelques conventions utiles :</p><ul><li>Le <b>8</b> en deuxième position d'une classe indique souvent un compte d'amortissement (<code>28</code>), de dépréciation (<code>29</code>, <code>39</code>, <code>49</code>, <code>59</code>) ou de régularisation (<code>408</code> factures non parvenues, <code>418</code> factures à établir, <code>48</code>).</li><li>Le <b>9</b> en deuxième ou troisième position signale un compte qui fonctionne <b>à l'inverse</b> de sa famille : <code>109</code> capital souscrit non appelé, <code>129</code> perte, <code>139</code> subventions virées au résultat, <code>609</code> RRR obtenus (produit dans une classe de charges), <code>709</code> RRR accordés.</li><li>Les classes 6 et 7 se répondent : <code>60</code>/<code>70</code>, <code>66</code>/<code>76</code>, <code>67</code>/<code>77</code>, <code>68</code>/<code>78</code>.</li></ul><p>L'entreprise peut créer des subdivisions (<code>4111</code> client Durand) tant qu'elle respecte la structure du plan.</p>"
   },
   {
    "h": "Débit à gauche, crédit à droite",
-   "html": "<p>Tout compte a deux colonnes. <b>Débit</b> à gauche, <b>crédit</b> à droite. Le sens dépend de la nature du compte :</p>\n<ul>\n<li>Comptes d'<b>actif</b> (classes 2, 3, 5, clients) et de <b>charges</b> (classe 6) : ils <b>augmentent au débit</b>.</li>\n<li>Comptes de <b>passif</b> (classe 1, fournisseurs, dettes) et de <b>produits</b> (classe 7) : ils <b>augmentent au crédit</b>.</li>\n</ul>\n<div class=\"note\"><b>Mnémonique.</b> Débit = emploi (ce que l'opération donne ou utilise), à gauche comme l'actif. Crédit = ressource (d'où ça vient), à droite comme le passif.</div>\n<p>Le piège classique : la <b>banque</b>. Quand de l'argent <i>entre</i>, on <b>débite</b> 512. Quand il <i>sort</i>, on <b>crédite</b> 512. C'est l'inverse du relevé que vous envoie votre banque, car la banque tient le compte de son point de vue.</p>"
+   "html": "<p>Tout compte a deux colonnes. <b>Débit</b> à gauche, <b>crédit</b> à droite. Le sens dépend de la nature du compte :</p><ul><li>Comptes d'<b>actif</b> (classes 2, 3, 5, clients 411) et de <b>charges</b> (classe 6) : ils <b>augmentent au débit</b> et diminuent au crédit.</li><li>Comptes de <b>passif</b> (classe 1, fournisseurs 401, dettes fiscales et sociales) et de <b>produits</b> (classe 7) : ils <b>augmentent au crédit</b> et diminuent au débit.</li></ul><div class=\"note\"><b>Mnémonique.</b> Débit = emploi (ce que l'opération donne ou utilise), à gauche comme l'actif. Crédit = ressource (d'où ça vient), à droite comme le passif.</div><p>Le piège classique : la <b>banque</b>. Quand de l'argent <i>entre</i>, on <b>débite</b> 512. Quand il <i>sort</i>, on <b>crédite</b> 512. C'est l'inverse du relevé que vous envoie votre banque, car la banque tient le compte de son propre point de vue : votre dépôt est pour elle une dette, donc un crédit.</p><p>Les comptes d'amortissement et de dépréciation (28, 29, 39, 49) sont des comptes d'actif <b>soustractifs</b> : ils augmentent au crédit, puisqu'ils viennent en moins de l'actif.</p>"
   },
   {
    "h": "La partie double",
-   "html": "<p>Toute opération touche au moins deux comptes et le <b>total des débits égale le total des crédits</b>. C'est ce qui garantit que le bilan reste équilibré.</p>\n<p>Exemple : achat de fournitures de bureau <span class=\"mono\">200 €</span> payé par chèque (on ignore la TVA pour l'instant).</p>",
+   "html": "<p>Toute opération touche au moins deux comptes et le <b>total des débits égale le total des crédits</b>. C'est ce qui garantit que le bilan reste équilibré : chaque emploi a sa ressource. Une écriture peut avoir plusieurs lignes au débit et plusieurs au crédit, l'égalité porte sur les totaux.</p><p>Méthode en trois questions pour chaque opération : <b>quels comptes</b> sont concernés ? Pour chacun, est-ce un actif, un passif, une charge ou un produit ? <b>Augmente-t-il ou diminue-t-il</b> ? On en déduit débit ou crédit.</p><p>Exemple : achat de fournitures de bureau <span class=\"mono\">200 €</span> payé par chèque (on ignore la TVA pour l'instant). La charge 6064 augmente → débit. La banque 512 (actif) diminue → crédit.</p>",
    "entry": [
     {
      "a": "6064",
@@ -33,8 +37,8 @@
    "lib": "Achat de fournitures, chèque n° 118"
   },
   {
-   "h": "Lire une écriture",
-   "html": "<p>Dans un journal, les comptes débités sont écrits en premier et alignés à gauche ; les comptes crédités sont décalés (traditionnellement précédés de « à »). Les montants sont dans deux colonnes séparées.</p>\n<p>Exemple : les associés apportent <span class=\"mono\">30 000 €</span> versés sur le compte bancaire de la société.</p>",
+   "h": "Le journal : lire et écrire une écriture",
+   "html": "<p>Le <b>livre-journal</b> enregistre les opérations <b>chronologiquement</b>, opération par opération et jour par jour (C. com., art. R. 123-174). Chaque écriture comporte : la date, les comptes débités puis crédités, les montants, un <b>libellé</b> et la <b>référence de la pièce justificative</b> (facture, relevé, bulletin de paie). Sans pièce, pas d'écriture : c'est la base du contrôle.</p><p>Par convention, les comptes débités sont écrits en premier et alignés à gauche ; les comptes crédités sont décalés (traditionnellement précédés de « à »). Les montants occupent deux colonnes séparées.</p><p>Exemple : les associés apportent <span class=\"mono\">30 000 €</span> versés sur le compte bancaire de la société. La banque (actif) augmente → débit 512. Le capital (passif) augmente → crédit 101.</p>",
    "entry": [
     {
      "a": "512",
@@ -47,18 +51,39 @@
      "c": 30000
     }
    ],
-   "lib": "Apport en capital"
+   "lib": "Apport en capital, PV de constitution"
+  },
+  {
+   "h": "Grand livre, balance et notion de solde",
+   "html": "<p>Les écritures du journal sont ensuite <b>reportées</b> compte par compte dans le <b>grand livre</b> (C. com., art. R. 123-175) : on y voit, pour chaque compte, tous ses mouvements au débit et au crédit.</p><p>Le <b>solde</b> d'un compte est la différence entre le total de ses débits et le total de ses crédits. Si débits &gt; crédits, le solde est <b>débiteur</b> (normal pour un actif ou une charge) ; sinon il est <b>créditeur</b> (normal pour un passif ou un produit). Un compte 512 créditeur signale un découvert ; un compte 401 débiteur, un fournisseur que l'on a trop payé ou un acompte versé.</p><p>La <b>balance</b> liste tous les comptes avec leurs totaux débit et crédit et leurs soldes. Grâce à la partie double, <b>total des débits = total des crédits</b> et <b>total des soldes débiteurs = total des soldes créditeurs</b>. Une balance équilibrée ne prouve pas l'absence d'erreur (une écriture passée sur un mauvais compte reste équilibrée), mais une balance déséquilibrée prouve qu'il y en a une.</p><div class=\"note\"><b>Chaîne à retenir.</b> Pièce justificative → journal → grand livre → balance → bilan (soldes des classes 1 à 5) et compte de résultat (soldes des classes 6 et 7).</div>"
   }
  ],
  "sources": [
   {
-   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025)",
-   "note": "Numéros et intitulés de comptes"
+   "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "note": "Classes, numérotation décimale, plan de comptes unique issu du règlement ANC n° 2022-06"
+  },
+  {
+   "ref": "C. com., art. L. 123-12",
+   "note": "Enregistrement chronologique des mouvements affectant le patrimoine"
+  },
+  {
+   "ref": "C. com., art. R. 123-173 à R. 123-176",
+   "note": "Livre-journal, grand livre, pièces justificatives, journaux auxiliaires et centralisation"
+  },
+  {
+   "ref": "C. com., art. L. 123-14",
+   "note": "Régularité et sincérité des comptes"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "note": "Suppression des systèmes abrégé et développé, comptes 657/757"
   }
  ],
  "exercices": [
   {
    "type": "tri",
+   "niveau": 1,
    "q": "À quelle classe appartient chaque compte ?",
    "cats": [
     "1 Capitaux",
@@ -111,26 +136,28 @@
      3
     ]
    ],
-   "why": "Le premier chiffre du numéro donne la classe. Les emprunts (164) sont en classe 1 avec les capitaux : ce sont des ressources durables.",
-   "src": "PCG",
+   "why": "Le premier chiffre du numéro donne la classe. Les emprunts (164) sont en classe 1 avec les capitaux : ce sont des ressources durables, à la différence des dettes fournisseurs (classe 4) qui sont des ressources d'exploitation à court terme.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un compte d'actif (banque, matériel, clients) augmente :",
    "opts": [
     "Au débit",
     "Au crédit",
-    "Des deux côtés",
+    "Des deux côtés selon l'opération",
     "Cela dépend du montant"
    ],
    "a": 0,
-   "why": "Les emplois augmentent au débit. Quand on reçoit de l'argent, 512 est débité ; quand on acquiert une machine, 2154 est débité.",
-   "src": "PCG",
+   "why": "Les emplois augmentent au débit. Quand on reçoit de l'argent, 512 est débité ; quand on acquiert une machine, 2154 est débité ; quand on facture un client, 411 est débité. Ils diminuent au crédit (sortie d'argent, cession, encaissement de la créance).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un compte de produit (ventes) augmente :",
    "opts": [
     "Au débit",
@@ -139,12 +166,13 @@
     "Au débit si le client paie comptant"
    ],
    "a": 1,
-   "why": "Les produits sont des ressources : ils augmentent au crédit, comme le passif. Une vente crédite 707 (HT) et débite 411 ou 512.",
-   "src": "PCG",
+   "why": "Les produits sont des ressources : ils augmentent au crédit, comme le passif. Une vente crédite 707 (HT) et débite 411 ou 512. Le mode de règlement du client ne change que le compte débité, jamais le sens du compte de produit.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Un client règle sa facture par chèque. Quelle est l'écriture ?",
    "opts": [
     "Débit 411 Clients, crédit 512 Banque",
@@ -153,12 +181,13 @@
     "Débit 512 Banque, crédit 707 Ventes"
    ],
    "a": 1,
-   "why": "L'argent entre : 512 est débité. La créance s'éteint : 411 (compte d'actif) diminue, donc est crédité. La vente (707) avait déjà été enregistrée lors de la facturation.",
-   "src": "PCG",
+   "why": "L'argent entre : 512 est débité. La créance s'éteint : 411 (compte d'actif) diminue, donc est crédité. La vente (707) avait déjà été enregistrée lors de la facturation ; la réenregistrer à l'encaissement compterait le produit deux fois.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Achat de fournitures de bureau pour 350 €, payé par carte bancaire. On ignore la TVA.",
    "lib": "Fournitures de bureau",
    "palette": [
@@ -181,12 +210,13 @@
      }
     ]
    ],
-   "why": "La charge (6064) augmente au débit. L'argent sort de la banque : 512 est crédité. Pas de 401 car le paiement est immédiat.",
-   "src": "PCG",
+   "why": "La charge (6064 Fournitures administratives) augmente au débit. L'argent sort de la banque : 512 est crédité. Pas de 401 car le paiement est immédiat, et pas de 607 qui est réservé aux marchandises destinées à la revente.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "Les associés apportent 40 000 € en capital, versés sur le compte bancaire de la société.",
    "lib": "Apport en capital",
    "palette": [
@@ -209,12 +239,13 @@
      }
     ]
    ],
-   "why": "La banque reçoit l'argent (débit 512). La ressource vient des associés : le capital (101) augmente au crédit.",
-   "src": "PCG",
+   "why": "La banque reçoit l'argent (débit 512). La ressource vient des associés : le capital (101) augmente au crédit. Ce n'est ni un emprunt (164, à rembourser) ni un résultat (120, qui ne provient que de l'activité).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "La banque verse un emprunt de 15 000 € sur le compte de l'entreprise.",
    "lib": "Déblocage de l'emprunt",
    "palette": [
@@ -237,12 +268,13 @@
      }
     ]
    ],
-   "why": "L'argent entre (débit 512). La dette envers la banque naît : 164 est crédité. Les intérêts (661) viendront plus tard, à chaque échéance.",
-   "src": "PCG",
+   "why": "L'argent entre (débit 512). La dette envers la banque naît : 164 est crédité. Les intérêts (661) viendront plus tard, à chaque échéance ; au déblocage, aucune charge n'est constatée.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Le solde du compte 401 Fournisseurs est normalement :",
    "opts": [
     "Débiteur",
@@ -251,12 +283,13 @@
     "Égal au solde de 411"
    ],
    "a": 1,
-   "why": "401 est une dette : il augmente au crédit lors des factures reçues et diminue au débit lors des paiements. Il reste créditeur tant qu'on doit de l'argent.",
-   "src": "PCG",
+   "why": "401 est une dette : il augmente au crédit lors des factures reçues et diminue au débit lors des paiements. Il reste créditeur tant qu'on doit de l'argent. Un solde débiteur serait anormal (trop-payé ou acompte à reclasser en 4091).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "qcm",
+   "niveau": 1,
    "q": "Les classes 6 et 7 alimentent :",
    "opts": [
     "Le bilan uniquement",
@@ -265,12 +298,13 @@
     "Le plan de trésorerie"
    ],
    "a": 1,
-   "why": "Charges (6) et produits (7) constituent le compte de résultat. Leur solde, le résultat, est ensuite reporté au bilan dans les capitaux propres.",
-   "src": "PCG",
+   "why": "Charges (6) et produits (7) constituent le compte de résultat. Leur solde, le résultat, est ensuite reporté au bilan dans les capitaux propres. Les classes 1 à 5 forment le bilan.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
    "type": "ecriture",
+   "niveau": 1,
    "q": "L'entreprise règle 2 300 € à un fournisseur par virement, pour une facture reçue le mois dernier.",
    "lib": "Règlement fournisseur",
    "palette": [
@@ -293,8 +327,226 @@
      }
     ]
    ],
-   "why": "La dette diminue : 401 est débité. L'argent sort : 512 est crédité. L'achat et la TVA ont été enregistrés lors de la réception de la facture, pas au paiement.",
-   "src": "PCG",
+   "why": "La dette diminue : 401 est débité. L'argent sort : 512 est crédité. L'achat (607) et la TVA (44566) ont été enregistrés lors de la réception de la facture, pas au paiement.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Le compte 44566 est une subdivision de :",
+   "opts": [
+    "44 État et collectivités publiques",
+    "4456 Taxes sur le chiffre d'affaires déductibles",
+    "4457 Taxes sur le chiffre d'affaires collectées",
+    "4455 Taxes sur le chiffre d'affaires à décaisser"
+   ],
+   "a": 1,
+   "why": "La numérotation est décimale : 44566 (TVA déductible sur autres biens et services) détaille 4456 (TVA déductible), lui-même sous 445 et 44. L'option 44 est trop large (c'est le poste), et 4457 / 4455 sont des comptes frères, pas des parents.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "q": "Quel document enregistre les opérations dans l'ordre chronologique, opération par opération ?",
+   "opts": [
+    "Le grand livre",
+    "La balance",
+    "Le livre-journal",
+    "Le bilan"
+   ],
+   "a": 2,
+   "why": "Le livre-journal est le registre chronologique (C. com., art. R. 123-174). Le grand livre reclasse ensuite les mêmes écritures par compte, la balance récapitule les totaux et soldes de tous les comptes, et le bilan est un document de synthèse établi à partir de la balance.",
+   "src": "C. com., art. R. 123-173 et R. 123-174",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 1,
+   "q": "Le compte 512 Banque présente un total de débits de 48 300 € et un total de crédits de 41 150 €. Quel est son solde ? (Indiquez un nombre positif pour un solde débiteur, négatif pour un solde créditeur.)",
+   "a": 7150,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Solde = débits − crédits = 48 300 − 41 150 = 7 150 €, solde débiteur : l'entreprise a 7 150 € en banque. Un solde créditeur de 512 aurait signifié un découvert.",
+   "src": "C. com., art. R. 123-175 (grand livre)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le compte 512 Banque présente un solde créditeur de 2 400 €. Cela signifie :",
+   "opts": [
+    "L'entreprise dispose de 2 400 € en banque",
+    "L'entreprise est à découvert de 2 400 €",
+    "La banque doit 2 400 € à l'entreprise",
+    "Une erreur de saisie, 512 ne peut pas être créditeur"
+   ],
+   "a": 1,
+   "why": "512 est un compte d'actif : il augmente au débit (entrées) et diminue au crédit (sorties). Un solde créditeur signifie que les sorties ont dépassé les entrées et le solde initial : c'est un découvert, une dette envers la banque. Au bilan, ce solde sera présenté au passif en concours bancaires courants (519), pas en négatif à l'actif.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 1,
+   "q": "Quels comptes ont normalement un solde créditeur ? (plusieurs réponses possibles)",
+   "opts": [
+    "101 Capital",
+    "411 Clients",
+    "707 Ventes de marchandises",
+    "2154 Matériel industriel",
+    "164 Emprunts auprès des établissements de crédit",
+    "607 Achats de marchandises"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ],
+   "why": "Les comptes de passif (101, 164) et de produits (707) augmentent au crédit et présentent un solde créditeur. Les comptes d'actif (411, 2154) et de charges (607) augmentent au débit et ont un solde débiteur.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Dans quels cas une opération est-elle correctement enregistrée en partie double ? (plusieurs réponses possibles)",
+   "opts": [
+    "Débit 2183 : 1 200 ; crédit 404 : 1 200",
+    "Débit 607 : 500 ; débit 44566 : 100 ; crédit 401 : 600",
+    "Débit 411 : 1 200 ; crédit 706 : 1 200 ; crédit 44571 : 240",
+    "Débit 512 : 3 000 ; crédit 411 : 3 000",
+    "Débit 641 : 2 000 ; crédit 421 : 1 500"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "La partie double exige total débit = total crédit. 1 200 = 1 200 ; 500 + 100 = 600 ; 3 000 = 3 000 : équilibrées. L'option 3 crédite 1 440 contre 1 200 débités (le client aurait dû être débité du TTC 1 440) et l'option 5 débite 2 000 contre 1 500 crédités (il manque les cotisations salariales au crédit de 431) : elles sont déséquilibrées, donc impossibles à enregistrer.",
+   "src": "C. com., art. L. 123-12 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La balance de la société Vézac est équilibrée (total débits = total crédits). Que peut-on en conclure ?",
+   "opts": [
+    "Toutes les écritures sont justes",
+    "La partie double a été respectée, mais des erreurs d'imputation restent possibles",
+    "Le résultat de l'exercice est nul",
+    "Tous les comptes ont un solde nul"
+   ],
+   "a": 1,
+   "why": "L'égalité des totaux vérifie seulement l'arithmétique de la partie double. Une écriture passée sur un mauvais compte (613 au lieu de 615), un montant erroné débité et crédité à l'identique ou une opération oubliée ne déséquilibrent rien. La balance ne dit rien du résultat et les soldes individuels ne sont évidemment pas nuls.",
+   "src": "C. com., art. L. 123-14",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Dans quel ordre s'enchaînent les documents comptables ?",
+   "opts": [
+    "Balance → journal → grand livre → bilan",
+    "Journal → grand livre → balance → bilan et compte de résultat",
+    "Grand livre → journal → bilan → balance",
+    "Bilan → balance → grand livre → journal"
+   ],
+   "a": 1,
+   "why": "Les pièces justificatives sont enregistrées au journal (chronologie), reportées au grand livre (par compte), récapitulées dans la balance (totaux et soldes), d'où l'on tire le bilan (classes 1 à 5) et le compte de résultat (classes 6 et 7). Articles R. 123-174 et R. 123-175 du Code de commerce.",
+   "src": "C. com., art. R. 123-174 et R. 123-175",
+   "fiab": "stable"
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "q": "Balance de la société Lioré après inventaire : total des soldes débiteurs des comptes de classes 1 à 5 = 412 000 € ; total des soldes créditeurs des comptes de classes 1 à 5 = 376 000 €. Les comptes de classe 6 et 7 ne sont pas encore soldés. Quel est le résultat de l'exercice ? (nombre négatif si perte)",
+   "a": 36000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Dans une balance, total des soldes débiteurs = total des soldes créditeurs. Les comptes de bilan (1 à 5) présentent un excédent débiteur de 412 000 − 376 000 = 36 000 € ; il est forcément compensé par un excédent créditeur identique des comptes de gestion (6 et 7), c'est-à-dire produits − charges = 36 000 € de bénéfice. Même raisonnement que le résultat qui équilibre le bilan.",
+   "src": "C. com., art. L. 123-12 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le compte 28154 Amortissements du matériel industriel est :",
+   "opts": [
+    "Un compte de charges, débiteur",
+    "Un compte d'actif soustractif, créditeur",
+    "Un compte de passif, dette envers l'État",
+    "Un compte de produit"
+   ],
+   "a": 1,
+   "why": "Les comptes 28 enregistrent les amortissements cumulés qui viennent en moins de la valeur des immobilisations à l'actif. Comme ils diminuent un actif, ils fonctionnent à l'inverse : ils augmentent au crédit et présentent un solde créditeur. La charge, elle, est le compte 6811 (dotation).",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "Le compte 609 Rabais, remises et ristournes obtenus sur achats est classé en 60 alors qu'il enregistre une diminution de charges. Quel est son sens de fonctionnement ?",
+   "opts": [
+    "Il est débité, comme tout compte de classe 6",
+    "Il est crédité : c'est un compte de charges à solde créditeur",
+    "Il est débité ou crédité selon le fournisseur",
+    "Il n'est jamais mouvementé, c'est un compte de totalisation"
+   ],
+   "a": 1,
+   "why": "Le 9 en troisième position signale un compte qui fonctionne à l'inverse de sa famille. 609 vient diminuer les achats : il est crédité à la réception d'un avoir pour réduction commerciale hors facture. Son solde créditeur se retranche des achats au compte de résultat. Symétriquement, 709 (RRR accordés) est un compte de produits à solde débiteur.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes)",
+   "fiab": "stable"
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "q": "Quelles mentions doit obligatoirement comporter une écriture au livre-journal ? (plusieurs réponses possibles)",
+   "opts": [
+    "La référence de la pièce justificative",
+    "La date de l'opération",
+    "Les comptes mouvementés et les montants",
+    "Le nom du salarié qui a saisi l'écriture",
+    "Le taux de TVA applicable"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article R. 123-174 du Code de commerce exige que tout enregistrement précise l'origine, le contenu et l'imputation de chaque donnée ainsi que les références de la pièce justificative ; les écritures sont datées et chronologiques. L'identité du saisisseur et le taux de TVA ne sont pas des mentions légales de l'écriture (le taux figure sur la facture).",
+   "src": "C. com., art. R. 123-174",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "q": "La société Marsac a 300 clients. Plutôt que de passer chaque facture dans le journal général, elle les enregistre dans un journal des ventes. Que doit-elle faire au minimum ?",
+   "opts": [
+    "Rien, le journal auxiliaire remplace le livre-journal",
+    "Centraliser les totaux du journal des ventes dans le livre-journal au moins une fois par mois",
+    "Recopier chaque facture dans le livre-journal en fin d'année",
+    "Demander l'autorisation du greffe du tribunal de commerce"
+   ],
+   "a": 1,
+   "why": "L'article R. 123-176 du Code de commerce autorise à détailler le livre-journal en journaux auxiliaires (ventes, achats, banque, caisse, opérations diverses) à condition de centraliser leurs écritures au moins une fois par mois dans le livre-journal et le grand livre. Aucune autorisation n'est requise et la recopie facture par facture est précisément ce que la centralisation évite.",
+   "src": "C. com., art. R. 123-176",
+   "fiab": "stable"
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "q": "Au 31 décembre, le compte 401 Fournisseur Roques présente un solde débiteur de 1 500 €, car l'entreprise a versé un acompte sur une commande non encore livrée. Comment ce solde doit-il apparaître au bilan ?",
+   "opts": [
+    "En moins des dettes fournisseurs au passif",
+    "À l'actif, en avances et acomptes versés sur commandes (4091)",
+    "En charges constatées d'avance (486)",
+    "En immobilisations en cours (23)"
+   ],
+   "a": 1,
+   "why": "Le principe de non-compensation (C. com., art. L. 123-19) interdit de retrancher une créance d'une dette. Un fournisseur débiteur est une créance : l'acompte est reclassé au débit de 4091 et figure à l'actif du bilan. Ce n'est pas une charge constatée d'avance (rien n'a été consommé ni facturé) ni une immobilisation en cours (la commande porte sur une livraison, pas sur un bien produit).",
+   "src": "C. com., art. L. 123-19 ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   }
  ]

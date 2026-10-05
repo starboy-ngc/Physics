@@ -1,0 +1,539 @@
+{
+ "id": "ue2-01",
+ "ue": "UE2",
+ "ordre": 1,
+ "title": "L'entreprise en société : contrat, personnalité morale, associés et dirigeants",
+ "resume": "Ce que la société ajoute à l'entreprise individuelle : un contrat (art. 1832), une personne morale, des associés qui votent et partagent, des dirigeants qui engagent la société.",
+ "duree": "60 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Entreprise individuelle ou société ?",
+   "html": "<p>Deux façons d'exercer une activité. L'<b>entrepreneur individuel</b> (EI) exerce en son nom propre : il n'y a qu'une personne juridique, lui. Depuis la loi n° 2022-172 du 14 février 2022 (en vigueur le 15 mai 2022), tout EI bénéficie d'un <b>statut unique</b> : son patrimoine est divisé de plein droit, sans déclaration, entre un <b>patrimoine professionnel</b> (biens utiles à l'activité) et un patrimoine personnel. Les créanciers professionnels ne peuvent saisir que le patrimoine professionnel, sauf renonciation écrite de l'entrepreneur ou fraude. L'ancienne EIRL (déclaration d'affectation) ne peut plus être créée depuis le 15 février 2022.</p><p>La <b>société</b> crée une personne juridique distincte : elle a son patrimoine, ses dettes, ses dirigeants. L'entrepreneur devient associé (et souvent dirigeant). Une société peut n'avoir qu'un associé : EURL (SARL unipersonnelle) ou SASU.</p><ul><li>EI : simplicité, pas de capital, mais pas de personnalité morale distincte et imposition à l'IR dans la catégorie de l'activité (option IS possible depuis 2022 par assimilation à une EURL).</li><li>Société : séparation nette, transmission facilitée (cession de parts ou d'actions), choix du régime fiscal et du statut social du dirigeant, mais formalisme (statuts, assemblées, dépôt des comptes).</li></ul>"
+  },
+  {
+   "h": "Le contrat de société (art. 1832 du Code civil)",
+   "html": "<p>« La société est instituée par deux ou plusieurs personnes qui conviennent par un contrat d'affecter à une entreprise commune des biens ou leur industrie en vue de partager le bénéfice ou de profiter de l'économie qui pourra en résulter. » Trois éléments <b>spécifiques</b> s'ajoutent aux conditions de tout contrat (consentement, capacité, contenu licite et certain) :</p><ol><li>des <b>apports</b> de chaque associé ;</li><li>une <b>vocation aux bénéfices et aux économies</b>, et une <b>contribution aux pertes</b> ;</li><li>l'<b>affectio societatis</b> : volonté de collaborer sur un pied d'égalité à une entreprise commune (critère jurisprudentiel, décisif pour requalifier une relation en société créée de fait).</li></ol><p>Les statuts sont écrits (art. 1835) et mentionnent apports, forme, objet, dénomination, siège, capital, durée (99 ans au plus, prorogeable, art. 1838) et modalités de fonctionnement. La <b>clause léonine</b> (art. 1844-1 al. 2), qui attribue à un associé la totalité du profit ou l'exonère de toute perte, est <b>réputée non écrite</b> : la société reste valable, seule la clause disparaît.</p><div class=\"note\"><b>À retenir.</b> Pas de capital minimum dans le droit commun des sociétés : seul le droit spécial impose un montant (SA : 37 000 €). SARL, SAS, SNC, sociétés civiles : capital libre.</div>"
+  },
+  {
+   "h": "Les apports : numéraire, nature, industrie",
+   "html": "<p><b>Apport en numéraire</b> : une somme d'argent. La <i>souscription</i> est l'engagement, la <i>libération</i> le versement. Libération minimale à la constitution : un cinquième dans la SARL, la moitié dans la SA et la SAS, le solde dans les cinq ans ; libre dans la SNC et les sociétés civiles. L'associé en retard devient de plein droit débiteur des intérêts (art. 1843-3).</p><p><b>Apport en nature</b> : un bien autre que de l'argent (immeuble, fonds de commerce, brevet), apporté en propriété, en jouissance ou en usufruit. Il doit être <b>évalué</b> ; une surévaluation lèse les créanciers, d'où le <b>commissaire aux apports</b> dans les sociétés à risque limité (obligatoire dans la SA ; dispense sous conditions dans la SARL et la SAS).</p><p><b>Apport en industrie</b> : un travail, un savoir-faire. Il ne concourt pas au capital (il n'est pas saisissable) mais donne droit à des parts, au vote et aux bénéfices. <b>Interdit dans la SA</b>, possible dans la SARL, la SAS, la SNC et les sociétés civiles.</p><p><b>Répartition des résultats</b> (art. 1844-1 al. 1) : sauf clause contraire, proportionnelle à l'apport dans le capital ; l'apporteur en industrie reçoit la part de celui qui a le moins apporté en numéraire ou en nature.</p>"
+  },
+  {
+   "h": "La personnalité morale et la période de formation",
+   "html": "<p>La société acquiert la <b>personnalité morale</b> à son <b>immatriculation</b> au registre du commerce et des sociétés (art. 1842 C. civ., L. 210-6 C. com.), demandée depuis le 1er janvier 2023 par le <b>guichet unique</b> électronique de l'INPI, qui alimente aussi le registre national des entreprises (RNE). Attributs :</p><ul><li>une <b>dénomination</b> et un <b>siège</b> (nationalité, loi applicable, tribunal compétent) ;</li><li>un <b>patrimoine propre</b> : les créanciers sociaux n'atteignent les associés que dans les sociétés à risque illimité ;</li><li>une <b>capacité</b> limitée par l'objet social (spécialité), exercée par les représentants légaux.</li></ul><p><b>Période de formation.</b> Entre la signature des statuts et l'immatriculation, la société n'existe pas. Les fondateurs contractent « au nom et pour le compte de la société en formation ». Trois voies de <b>reprise</b> (art. 1843 C. civ. ; R. 210-5 et R. 210-6 C. com.) : l'<b>état des actes</b> annexé aux statuts (reprise automatique à l'immatriculation) ; le <b>mandat</b> donné par les associés ; une <b>décision des associés</b> postérieure à l'immatriculation, à la majorité sauf clause contraire. L'acte repris est réputé conclu dès l'origine par la société. Sans reprise, ceux qui ont agi restent tenus <b>personnellement</b>, solidairement si la société est commerciale.</p>"
+  },
+  {
+   "h": "Les associés : droits, obligations, abus",
+   "html": "<p><b>Droits politiques</b> : participer aux décisions collectives et voter (art. 1844 : droit d'ordre public, nul ne peut en être privé sauf exceptions légales) ; être informé (communication des comptes, du rapport de gestion, questions écrites). <b>Droits financiers</b> : dividendes lorsque l'assemblée décide de distribuer, réserves, boni de liquidation. <b>Droits patrimoniaux</b> : céder ses titres, les nantir ; le droit de rester associé (pas d'exclusion sans texte ou clause).</p><p><b>Obligations</b> : libérer son apport, contribuer aux pertes (limitée à l'apport dans la SARL, la SA, la SAS ; indéfinie dans la SNC et les sociétés civiles), respecter l'intérêt social.</p><p><b>Abus de majorité</b> : décision prise contrairement à l'intérêt social et dans l'unique dessein de favoriser les majoritaires au détriment des minoritaires (exemple type : mise en réserve systématique des bénéfices pendant des années alors que les majoritaires dirigeants se versent des rémunérations élevées). Sanction : nullité de la décision et dommages-intérêts. <b>Abus de minorité</b> : refus de voter une décision essentielle à la survie de la société (par exemple une augmentation de capital nécessaire) dans le seul intérêt des minoritaires. Le juge ne peut pas voter à leur place : il désigne un <b>mandataire ad hoc</b> chargé de voter dans le sens de l'intérêt social (Cass. com., 9 mars 1993, Flandin).</p>"
+  },
+  {
+   "h": "Les dirigeants : pouvoirs, responsabilité, révocation",
+   "html": "<p><b>Nomination</b> : par les statuts ou par décision des associés, selon la forme. Le dirigeant est un mandataire social, pas un salarié (le cumul avec un contrat de travail obéit à des conditions strictes).</p><p><b>Pouvoirs.</b> À l'égard des <b>associés</b>, le dirigeant respecte l'objet social et les statuts. À l'égard des <b>tiers</b>, deux régimes :</p><ul><li>sociétés à risque limité (SARL, SA, SAS) : la société est <b>engagée même par les actes qui dépassent l'objet social</b>, sauf si elle prouve que le tiers savait ou ne pouvait l'ignorer ; les clauses statutaires limitant les pouvoirs sont <b>inopposables aux tiers</b> ;</li><li>sociétés à risque illimité (SNC, sociétés civiles) : le dirigeant n'engage la société que par les actes <b>entrant dans l'objet social</b>.</li></ul><p><b>Responsabilité civile</b> envers la société et les associés pour infraction aux lois, violation des statuts ou <b>faute de gestion</b> ; action sociale exercée par la société ou par un associé pour son compte (<b>ut singuli</b>) ; prescription <b>trois ans</b> (L. 223-23, L. 225-254). Envers les tiers, seule une <b>faute séparable des fonctions</b> (intentionnelle, d'une particulière gravité) engage le dirigeant personnellement. <b>Responsabilité pénale</b> : abus de biens sociaux, comptes infidèles (chapitre 6).</p><p><b>Révocation</b> : <i>ad nutum</i> (sans motif ni indemnité) pour l'administrateur de SA ; pour <b>justes motifs</b> (sinon dommages-intérêts, révocation valable) pour le gérant de SARL et le DG de SA non président ; selon les statuts pour le président de SAS.</p>"
+  },
+  {
+   "h": "Nullité, dissolution, liquidation",
+   "html": "<p><b>Nullité.</b> Causes limitées (art. 1844-10) : violation des art. 1832 et 1833 ou cause de nullité des contrats. Prescription <b>trois ans</b> (art. 1844-14), régularisation encouragée. La nullité <b>n'est pas rétroactive</b> : elle met fin à la société comme une dissolution (art. 1844-15) ; la société annulée est dite « société de fait ».</p><p><b>Dissolution</b> (art. 1844-7) : arrivée du terme, réalisation ou extinction de l'objet, annulation du contrat, <b>décision des associés</b> (dissolution anticipée), <b>dissolution judiciaire pour justes motifs</b> (inexécution de ses obligations par un associé, mésentente paralysant le fonctionnement), réunion de toutes les parts en une main non régularisée dans l'année (sauf EURL et SASU), jugement de liquidation judiciaire, cause statutaire.</p><p><b>Liquidation.</b> La personnalité morale <b>subsiste pour les besoins de la liquidation</b> jusqu'à la publication de sa clôture (art. 1844-8). Le liquidateur réalise l'actif, paie les dettes, puis partage : chaque associé reprend son apport ; l'excédent, le <b>boni de liquidation</b>, est réparti dans la proportion des droits aux bénéfices sauf clause contraire (art. 1844-9). Droit de partage de <span class=\"mono\">2,5 %</span> (CGI, art. 746) s'il y a plusieurs associés.</p><div class=\"note\"><b>Piège.</b> Décès d'un associé, perte de la moitié du capital, absence de dividendes : aucune de ces situations ne dissout à elle seule une SARL ou une SA.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. civ., art. 1832 à 1844-17",
+   "note": "Dispositions générales : contrat de société, apports, personnalité morale, nullités, dissolution, liquidation"
+  },
+  {
+   "ref": "C. civ., art. 1844-1",
+   "note": "Répartition des bénéfices et des pertes ; clauses léonines réputées non écrites"
+  },
+  {
+   "ref": "C. civ., art. 1843 ; C. com., art. R. 210-5 et R. 210-6",
+   "note": "Actes accomplis pour le compte d'une société en formation et modalités de reprise"
+  },
+  {
+   "ref": "C. com., art. L. 210-6",
+   "note": "Jouissance de la personnalité morale à compter de l'immatriculation au RCS"
+  },
+  {
+   "ref": "C. com., art. L. 526-22 et s. (loi n° 2022-172 du 14 février 2022)",
+   "note": "Statut unique de l'entrepreneur individuel et séparation des patrimoines"
+  },
+  {
+   "ref": "C. com., art. L. 223-18, L. 225-35, L. 225-56, L. 227-6, L. 221-5",
+   "note": "Pouvoirs des dirigeants et opposabilité aux tiers selon la forme sociale"
+  },
+  {
+   "ref": "C. com., art. L. 223-23 et L. 225-254",
+   "note": "Prescription triennale de l'action en responsabilité contre les dirigeants"
+  },
+  {
+   "ref": "Cass. com., 9 mars 1993, n° 91-14.685 (Flandin)",
+   "note": "Abus de minorité : désignation d'un mandataire ad hoc"
+  },
+  {
+   "ref": "CGI, art. 746",
+   "note": "Droit de partage de 2,5 % sur le boni de liquidation"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Parmi les éléments suivants, lequel n'est PAS une condition spécifique du contrat de société au sens de l'article 1832 du Code civil ?",
+   "opts": [
+    "La réalisation d'apports par chaque associé",
+    "La vocation à partager les bénéfices et à contribuer aux pertes",
+    "L'affectio societatis",
+    "Un capital social minimum de 1 000 €"
+   ],
+   "a": 3,
+   "why": "L'article 1832 exige des apports, une vocation aux bénéfices (ou aux économies) et aux pertes, et la jurisprudence y ajoute l'affectio societatis. Le droit commun ne fixe aucun capital minimum : seul le droit spécial de certaines formes le fait (37 000 € pour la SA). Une SARL ou une SAS peut être constituée avec 1 € de capital.",
+   "src": "C. civ., art. 1832",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Marc exerce une activité de plombier en entreprise individuelle depuis 2023. La séparation entre son patrimoine professionnel et son patrimoine personnel résulte :",
+   "opts": [
+    "D'une déclaration d'affectation déposée au greffe",
+    "De la loi, automatiquement et sans formalité",
+    "De l'immatriculation d'une société unipersonnelle",
+    "D'une décision du tribunal de commerce"
+   ],
+   "a": 1,
+   "why": "Depuis la loi n° 2022-172 du 14 février 2022 (en vigueur le 15 mai 2022), tout entrepreneur individuel bénéficie de plein droit d'un patrimoine professionnel distinct, sans déclaration. La déclaration d'affectation était le mécanisme de l'EIRL, qui ne peut plus être créée depuis le 15 février 2022. L'EI n'a pas de personnalité morale distincte : il n'y a pas de société.",
+   "src": "C. com., art. L. 526-22",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SNC prévoient que l'associé Durand percevra 100 % des bénéfices et sera dispensé de toute contribution aux pertes. Quelle est la sanction ?",
+   "opts": [
+    "La nullité de la société",
+    "La clause est réputée non écrite, la société subsiste",
+    "La clause est valable si elle a été adoptée à l'unanimité",
+    "La requalification de la SNC en société en participation"
+   ],
+   "a": 1,
+   "why": "Il s'agit d'une clause léonine (art. 1844-1 al. 2 C. civ.) : elle est réputée non écrite, c'est-à-dire effacée, et la répartition redevient proportionnelle aux apports. La société elle-même n'est pas annulée. L'unanimité ne sauve pas la clause, car la règle est d'ordre public.",
+   "src": "C. civ., art. 1844-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "À propos de l'apport en industrie, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il est interdit dans la société anonyme",
+    "Il concourt à la formation du capital social",
+    "Il donne droit à des parts ouvrant droit au partage des bénéfices",
+    "Il est possible dans la SARL",
+    "Il se libère par un virement sur le compte de la société"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ],
+   "why": "L'apport en industrie (travail, savoir-faire) est interdit dans la SA (L. 225-3) mais admis dans la SARL (L. 223-7), la SAS, la SNC et les sociétés civiles. Il ne concourt pas à la formation du capital, car il n'est pas saisissable par les créanciers, mais il donne des parts avec droit de vote et droit aux bénéfices. Il se « libère » par la fourniture effective du travail promis, pas par un versement d'argent.",
+   "src": "C. civ., art. 1843-2 et 1844-1 ; C. com., art. L. 223-7 et L. 225-3",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SARL Trivex a trois associés : Anne a apporté 60 000 €, Bruno 30 000 € et Chloé 10 000 €, tous en numéraire. Les statuts ne contiennent aucune clause de répartition particulière. L'assemblée décide de distribuer 25 000 € de bénéfice. Quel montant revient à Bruno (en €) ?",
+   "a": 7500,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "À défaut de clause, la part de chaque associé est proportionnelle à son apport dans le capital (art. 1844-1 C. civ.). Capital total 100 000 € ; Bruno détient 30 000 / 100 000 = 30 %. Part de Bruno : 25 000 × 30 % = 7 500 €.",
+   "src": "C. civ., art. 1844-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Dans la SNC Alba, Aline a apporté 40 000 € en numéraire, Benoît un matériel évalué à 20 000 € et Clément son industrie. Les statuts ne fixent pas la part de l'apporteur en industrie. Le bénéfice distribué est de 36 000 €. Quelle est la part de Clément (en €) ?",
+   "a": 9000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Faute de clause, l'apporteur en industrie a la part de l'associé qui a le moins apporté en numéraire ou en nature (art. 1844-1 C. civ.), ici Benoît (20 000). Les droits se répartissent donc 40 / 20 / 20, soit 80 parts fictives : Clément reçoit 36 000 × 20 / 80 = 9 000 €. Aline reçoit 18 000 € et Benoît 9 000 €.",
+   "src": "C. civ., art. 1844-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Deux entreprises concluent un contrat de société en participation pour réaliser un chantier commun. Quelle est la caractéristique de cette société ?",
+   "opts": [
+    "Elle acquiert la personnalité morale à la signature du contrat",
+    "Elle n'est pas immatriculée et n'a pas la personnalité morale",
+    "Elle doit obligatoirement être révélée aux tiers",
+    "Elle ne peut avoir qu'un objet civil"
+   ],
+   "a": 1,
+   "why": "La société en participation (art. 1871 C. civ.) est une société que les associés conviennent de ne pas immatriculer : elle n'a donc pas la personnalité morale, ni patrimoine ni dénomination opposable. Elle peut être ostensible ou occulte, et avoir un objet civil ou commercial. La personnalité morale ne s'acquiert jamais par la simple signature d'un contrat.",
+   "src": "C. civ., art. 1871",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Deux concubins exploitent ensemble un restaurant pendant huit ans, partagent les recettes et les décisions, sans jamais rédiger de statuts ni s'immatriculer. Comment le juge qualifie-t-il leur relation s'il constate apports, partage des résultats et affectio societatis ?",
+   "opts": [
+    "Une société de fait",
+    "Une société créée de fait",
+    "Une société en participation",
+    "Une entreprise individuelle à deux exploitants"
+   ],
+   "a": 1,
+   "why": "La société créée de fait (art. 1873 C. civ.) naît du comportement de personnes qui agissent comme des associés sans en avoir organisé la constitution. La société de fait désigne au contraire une société régulièrement constituée puis annulée. La société en participation suppose une volonté consciente de créer une société sans l'immatriculer. Le régime applicable à la société créée de fait est celui de la société en participation.",
+   "src": "C. civ., art. 1873",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À quel moment une SARL acquiert-elle la personnalité morale ?",
+   "opts": [
+    "À la signature des statuts",
+    "Au dépôt des fonds sur le compte bloqué",
+    "À la publication de l'avis dans un support d'annonces légales",
+    "À l'immatriculation au registre du commerce et des sociétés"
+   ],
+   "a": 3,
+   "why": "La personnalité morale naît de l'immatriculation au RCS (art. 1842 C. civ. et L. 210-6 C. com.), demandée via le guichet unique de l'INPI. La signature des statuts, le dépôt des fonds et la publicité sont des étapes préalables qui ne créent pas la personne morale : tant que l'immatriculation n'a pas eu lieu, la société est « en formation ».",
+   "src": "C. civ., art. 1842 ; C. com., art. L. 210-6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quels sont les attributs d'une société dotée de la personnalité morale ? (plusieurs réponses possibles)",
+   "opts": [
+    "Un patrimoine distinct de celui des associés",
+    "Une nationalité, en principe déterminée par le siège social",
+    "L'obligation de répondre des dettes personnelles de ses associés",
+    "Une dénomination sociale",
+    "Une capacité juridique illimitée, sans lien avec l'objet social"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "La personne morale a un nom (dénomination), un domicile (siège) qui fixe sa nationalité, un patrimoine propre et une capacité limitée par son objet (principe de spécialité). Le patrimoine social est distinct : la société ne répond pas des dettes personnelles des associés, et inversement les créanciers sociaux n'atteignent les associés que dans les sociétés à risque illimité.",
+   "src": "C. civ., art. 1835, 1837, 1842",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Avant l'immatriculation de la SAS Novalis, le fondateur signe un bail commercial « au nom et pour le compte de la société en formation ». Ce bail figure dans l'état des actes annexé aux statuts. Quelle est la situation après l'immatriculation ?",
+   "opts": [
+    "La société était engagée dès la signature du bail",
+    "Le bail est repris automatiquement par la société, qui est réputée l'avoir conclu dès l'origine",
+    "La reprise exige une décision unanime des associés postérieure à l'immatriculation",
+    "Le fondateur reste seul engagé, la reprise étant impossible pour un bail"
+   ],
+   "a": 1,
+   "why": "L'état des actes accomplis pour le compte de la société en formation, annexé aux statuts, emporte reprise automatique à l'immatriculation (R. 210-5 C. com. ; art. 1843 C. civ.) : la société est réputée avoir contracté dès l'origine. Avant l'immatriculation, la société n'existait pas et ne pouvait donc pas être engagée. La décision postérieure des associés est une autre voie de reprise, prise à la majorité (sauf clause), pas à l'unanimité.",
+   "src": "C. civ., art. 1843 ; C. com., art. R. 210-5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Trois fondateurs d'une SARL ont acheté du matériel pour la société en formation. L'acte n'a été ni annexé aux statuts, ni couvert par un mandat, ni repris après l'immatriculation. Qui est tenu envers le fournisseur ?",
+   "opts": [
+    "La société, qui bénéficie du matériel",
+    "Les fondateurs qui ont agi, solidairement",
+    "Le gérant nommé après l'immatriculation",
+    "Personne : l'acte est nul"
+   ],
+   "a": 1,
+   "why": "Faute de reprise, les personnes qui ont agi pour une société en formation restent tenues des obligations nées de ces actes, solidairement si la société est commerciale (ce qui est le cas d'une SARL), sans solidarité sinon (art. 1843 C. civ. ; L. 210-6 C. com.). La société n'est pas engagée et l'acte n'est pas nul : il existe, mais lie ses signataires.",
+   "src": "C. civ., art. 1843 ; C. com., art. L. 210-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quels droits appartiennent à tout associé, quelle que soit la forme de la société ? (plusieurs réponses possibles)",
+   "opts": [
+    "Participer aux décisions collectives et voter",
+    "Diriger la société",
+    "Être informé sur les affaires sociales",
+    "Percevoir des dividendes lorsque l'assemblée en décide la distribution",
+    "Obtenir chaque année un dividende minimum égal à 5 % de son apport"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ],
+   "why": "Le droit de participer aux décisions et de voter (art. 1844 C. civ.) et le droit à l'information sont attachés à la qualité d'associé. Le droit aux bénéfices se concrétise seulement si l'assemblée décide de distribuer : aucun dividende minimum n'est garanti. La direction n'est pas un droit de l'associé mais une fonction confiée à un mandataire social, qui peut d'ailleurs être un tiers dans la plupart des formes.",
+   "src": "C. civ., art. 1844 ; C. com., art. L. 232-11 et L. 232-12",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Depuis douze ans, les associés majoritaires d'une SARL, également gérants, font voter la mise en réserve intégrale des bénéfices tout en augmentant chaque année leur rémunération. Aucun projet d'investissement ne justifie ces réserves. Comment qualifier ces décisions ?",
+   "opts": [
+    "Un abus de minorité",
+    "Un abus de majorité",
+    "Des décisions régulières puisque la majorité a été respectée",
+    "Un abus de biens sociaux commis par les minoritaires"
+   ],
+   "a": 1,
+   "why": "L'abus de majorité suppose une décision contraire à l'intérêt social prise dans l'unique dessein de favoriser les majoritaires au détriment des minoritaires. La thésaurisation systématique sans projet, combinée à des rémunérations croissantes des majoritaires dirigeants, en est l'illustration classique (Cass. com., 18 avril 1961 ; jurisprudence constante). Le respect formel de la majorité ne suffit pas à valider une décision abusive. L'abus de minorité vise au contraire un blocage par les minoritaires.",
+   "src": "C. civ., art. 1833 ; Cass. com., 18 avril 1961",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Des associés minoritaires refusent sans motif légitime de voter une augmentation de capital indispensable à la survie de la société. Le juge constate un abus de minorité. Que peut-il décider ?",
+   "opts": [
+    "Adopter lui-même la résolution à la place des associés",
+    "Désigner un mandataire ad hoc chargé de voter au nom des minoritaires dans le sens de l'intérêt social",
+    "Exclure automatiquement les minoritaires de la société",
+    "Prononcer la dissolution immédiate de la société"
+   ],
+   "a": 1,
+   "why": "Depuis l'arrêt Flandin (Cass. com., 9 mars 1993), le juge ne peut pas se substituer aux associés pour prendre la décision, car il violerait leur liberté de vote. Il peut en revanche désigner un mandataire ad hoc qui votera à la place des minoritaires défaillants, et condamner ces derniers à des dommages-intérêts. Aucun texte ne prévoit d'exclusion automatique ni de dissolution en pareil cas.",
+   "src": "Cass. com., 9 mars 1993, n° 91-14.685",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le gérant d'une SARL dont l'objet est la vente de matériel informatique achète, au nom de la société, un véhicule de collection sans rapport avec l'activité. Le vendeur ignorait l'objet social. La société est-elle engagée ?",
+   "opts": [
+    "Non, l'acte est nul car hors objet social",
+    "Oui, sauf si la société prouve que le vendeur savait ou ne pouvait ignorer le dépassement d'objet",
+    "Non, la société n'est jamais engagée au-delà de son objet social",
+    "Oui, mais seulement si l'assemblée ratifie l'achat"
+   ],
+   "a": 1,
+   "why": "Dans les sociétés à risque limité (SARL, SA, SAS), la société est engagée même par les actes du dirigeant qui ne relèvent pas de l'objet social, à moins qu'elle prouve que le tiers savait ou ne pouvait l'ignorer, la seule publication des statuts ne suffisant pas à constituer cette preuve (L. 223-18 C. com.). La règle inverse (société engagée uniquement dans l'objet) vaut pour la SNC et les sociétés civiles. La ratification n'est pas nécessaire.",
+   "src": "C. com., art. L. 223-18",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le gérant d'une SNC de transport routier souscrit au nom de la société un emprunt destiné à acheter un hôtel, activité étrangère à l'objet social. La banque n'a pas vérifié les statuts. La SNC est-elle engagée ?",
+   "opts": [
+    "Oui, car la banque est de bonne foi",
+    "Non, car dans la SNC le gérant n'engage la société que par les actes entrant dans l'objet social",
+    "Oui, car les limitations de pouvoirs sont inopposables aux tiers",
+    "Non, car un emprunt exige toujours l'accord unanime des associés"
+   ],
+   "a": 1,
+   "why": "Dans la SNC (L. 221-5 C. com.) comme dans les sociétés civiles (art. 1849 C. civ.), le gérant n'engage la société envers les tiers que par les actes entrant dans l'objet social : les associés étant indéfiniment et solidairement tenus, la loi les protège. La bonne foi du tiers est indifférente ici. L'inopposabilité aux tiers concerne les clauses statutaires limitant les pouvoirs, pas la limite de l'objet social.",
+   "src": "C. com., art. L. 221-5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SAS interdisent au président de conclure tout contrat supérieur à 50 000 € sans l'accord du comité stratégique. Le président signe seul un contrat de 80 000 € avec un fournisseur. Quelle est la portée de cette clause à l'égard du fournisseur ?",
+   "opts": [
+    "Elle est opposable au fournisseur car les statuts sont publiés au RCS",
+    "Elle est inopposable au fournisseur : la société est engagée",
+    "Elle rend le contrat nul de plein droit",
+    "Elle n'est opposable qu'aux fournisseurs ayant un compte ouvert chez la société"
+   ],
+   "a": 1,
+   "why": "Les clauses statutaires limitant les pouvoirs du représentant légal sont inopposables aux tiers (L. 227-6 C. com. pour la SAS ; règle identique en SARL et SA) : la société est engagée. Le président engage en revanche sa responsabilité envers la société pour violation des statuts. La publication des statuts ne rend pas la clause opposable.",
+   "src": "C. com., art. L. 227-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un fournisseur subit un préjudice du fait d'une faute du gérant d'une SARL. Dans quel cas peut-il engager la responsabilité personnelle du gérant plutôt que celle de la société ?",
+   "opts": [
+    "Dans tous les cas, le gérant étant le signataire",
+    "Seulement si le gérant a commis une faute séparable de ses fonctions",
+    "Jamais, le gérant n'étant responsable qu'envers la société",
+    "Seulement si la société est en liquidation judiciaire"
+   ],
+   "a": 1,
+   "why": "À l'égard des tiers, le dirigeant n'est personnellement responsable que s'il a commis une faute séparable (détachable) de ses fonctions : faute intentionnelle, d'une particulière gravité, incompatible avec l'exercice normal des fonctions sociales (Cass. com., 20 mai 2003, Seusse). Sinon, c'est la société, représentée par lui, qui répond. L'option « jamais » est fausse car la faute séparable existe ; la liquidation judiciaire ouvre d'autres actions (insuffisance d'actif) mais n'est pas la condition ici.",
+   "src": "C. com., art. L. 223-22 ; Cass. com., 20 mai 2003, n° 99-17.092",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un associé détenant 3 % des parts d'une SARL agit en justice contre le gérant pour une faute de gestion ayant causé une perte de 200 000 € à la société. Il exerce l'action sociale ut singuli. À qui seront versés les dommages-intérêts en cas de succès ?",
+   "opts": [
+    "À l'associé demandeur, à proportion de sa participation",
+    "À l'associé demandeur, en totalité",
+    "À la société",
+    "Aux créanciers de la société"
+   ],
+   "a": 2,
+   "why": "L'action sociale ut singuli est exercée par un associé au nom et pour le compte de la société, qui a seule subi le préjudice : les dommages-intérêts lui sont alloués (L. 223-22 C. com. ; art. 1843-5 C. civ.). L'associé ne perçoit rien directement ; il bénéficie indirectement de la reconstitution de l'actif social. Une action individuelle ne serait possible que pour un préjudice personnel distinct de celui de la société.",
+   "src": "C. civ., art. 1843-5 ; C. com., art. L. 223-22",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "La SARL Horizon, au capital de 100 000 € (Alex 70 %, Betty 30 %), est dissoute. Après réalisation de l'actif et paiement de toutes les dettes et frais, il reste 160 000 € à partager. Les statuts ne contiennent aucune clause de répartition particulière. Quel montant total (remboursement d'apport et boni) Betty reçoit-elle (en €) ?",
+   "a": 48000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Le partage commence par le remboursement des apports : Betty récupère 30 % de 100 000 = 30 000 €. Le boni de liquidation est l'excédent : 160 000 − 100 000 = 60 000 €, réparti dans la proportion des droits aux bénéfices (art. 1844-9 C. civ.), soit 30 % × 60 000 = 18 000 € pour Betty. Total : 30 000 + 18 000 = 48 000 €.",
+   "src": "C. civ., art. 1844-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la durée maximale pour laquelle une société peut être constituée ?",
+   "opts": [
+    "50 ans",
+    "99 ans",
+    "Illimitée",
+    "30 ans renouvelables une fois"
+   ],
+   "a": 1,
+   "why": "L'article 1838 du Code civil limite la durée de la société à 99 ans. Cette durée est prorogeable par décision des associés prise aux conditions de modification des statuts, avant l'arrivée du terme (depuis 2019, une régularisation judiciaire est possible dans l'année suivant le terme oublié). Une durée illimitée est impossible.",
+   "src": "C. civ., art. 1838 et 1844-6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une SARL à deux associés égalitaires, les relations sont rompues : aucune décision collective n'est possible depuis deux ans, les comptes ne sont plus approuvés. Quel fondement permet à un associé d'obtenir la dissolution ?",
+   "opts": [
+    "La perte d'un tiers du capital social",
+    "La dissolution judiciaire pour justes motifs, en raison d'une mésentente paralysant le fonctionnement",
+    "La dissolution de plein droit pour défaut d'approbation des comptes",
+    "La révocation judiciaire du gérant"
+   ],
+   "a": 1,
+   "why": "L'article 1844-7, 5° du Code civil permet à tout associé de demander la dissolution pour justes motifs, notamment en cas de mésentente entre associés paralysant le fonctionnement de la société. La paralysie doit être démontrée : une simple mésentente ne suffit pas. Le défaut d'approbation des comptes n'entraîne aucune dissolution automatique, et la perte d'un tiers du capital n'est pas une cause légale.",
+   "src": "C. civ., art. 1844-7, 5°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque événement selon son effet sur une SARL pluripersonnelle (statuts sans clause particulière).",
+   "cats": [
+    "Dissolution de plein droit",
+    "Dissolution judiciaire possible",
+    "Pas une cause de dissolution"
+   ],
+   "items": [
+    [
+     "Arrivée du terme statutaire sans prorogation",
+     0
+    ],
+    [
+     "Réalisation complète de l'objet social",
+     0
+    ],
+    [
+     "Mésentente entre associés paralysant le fonctionnement",
+     1
+    ],
+    [
+     "Annulation du contrat de société",
+     0
+    ],
+    [
+     "Décès d'un associé",
+     2
+    ],
+    [
+     "Capitaux propres devenus inférieurs à la moitié du capital",
+     2
+    ],
+    [
+     "Inexécution grave de ses obligations par un associé",
+     1
+    ],
+    [
+     "Absence de distribution de dividendes pendant trois ans",
+     2
+    ]
+   ],
+   "why": "L'article 1844-7 distingue les causes de plein droit (terme, réalisation ou extinction de l'objet, annulation) et la dissolution judiciaire pour justes motifs (inexécution par un associé, mésentente paralysante). Le décès d'un associé n'affecte pas la SARL (les parts sont transmises aux héritiers), la perte de la moitié du capital déclenche seulement une procédure de consultation (L. 223-42), et l'absence de dividendes ne constitue pas en soi une cause de dissolution.",
+   "src": "C. civ., art. 1844-7 ; C. com., art. L. 223-41 et L. 223-42",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SAS est dissoute par décision de ses associés le 1er mars. La liquidation dure dix mois. Pendant cette période, la société :",
+   "opts": [
+    "N'a plus la personnalité morale depuis le 1er mars",
+    "Conserve la personnalité morale pour les besoins de la liquidation, jusqu'à la publication de la clôture",
+    "Conserve la personnalité morale mais ne peut plus agir en justice",
+    "Transfère sa personnalité morale au liquidateur"
+   ],
+   "a": 1,
+   "why": "L'article 1844-8 du Code civil prévoit que la personnalité morale subsiste pour les besoins de la liquidation jusqu'à la publication de la clôture de celle-ci. La société peut donc continuer à agir en justice, recouvrer ses créances et vendre ses actifs par l'intermédiaire du liquidateur, qui est un représentant et non le titulaire de la personnalité. La dénomination doit être suivie de la mention « société en liquidation ».",
+   "src": "C. civ., art. 1844-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant la révocation des dirigeants, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le gérant de SARL révoqué sans juste motif peut obtenir des dommages-intérêts, mais la révocation reste valable",
+    "Les administrateurs de SA sont révocables à tout moment par l'assemblée générale ordinaire, sans motif",
+    "La loi impose que le président de SAS ne soit révocable que pour justes motifs",
+    "Le gérant associé statutaire de SNC n'est révocable qu'à l'unanimité des autres associés, sauf clause contraire",
+    "La révocation du gérant de SARL exige une décision de justice"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Le gérant de SARL est révoqué par les associés représentant plus de la moitié des parts ; sans juste motif, la révocation est valable mais ouvre droit à des dommages-intérêts (L. 223-25). Les administrateurs de SA sont révocables ad nutum (L. 225-18). Le gérant statutaire associé de SNC est révocable à l'unanimité des autres associés, sauf clause contraire (L. 221-12). Dans la SAS, les statuts fixent librement les conditions de révocation du président (L. 227-5) : la loi n'impose rien. La révocation judiciaire du gérant de SARL pour cause légitime est une voie supplémentaire, pas une condition.",
+   "src": "C. com., art. L. 223-25, L. 225-18, L. 221-12, L. 227-5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le tribunal prononce la nullité d'une SARL pour vice du consentement d'un associé fondateur, trois ans après son immatriculation. Quel est l'effet de cette nullité ?",
+   "opts": [
+    "Elle efface rétroactivement tous les actes passés par la société",
+    "Elle met fin à la société sans rétroactivité, comme une dissolution, et entraîne sa liquidation",
+    "Elle ne produit effet qu'à l'égard des tiers",
+    "Elle transforme automatiquement la SARL en société en participation"
+   ],
+   "a": 1,
+   "why": "L'article 1844-15 du Code civil précise que lorsque la nullité de la société est prononcée, elle met fin, sans rétroactivité, à l'exécution du contrat : la société est liquidée comme si elle était dissoute. Les engagements envers les tiers de bonne foi ne sont pas remis en cause (art. 1844-16). On parle alors de « société de fait ». La rétroactivité, principe des nullités en droit commun des contrats, est écartée pour protéger les tiers.",
+   "src": "C. civ., art. 1844-15 et 1844-16",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un mineur non émancipé de 16 ans reçoit par donation des titres de société. Peut-il être associé ?",
+   "opts": [
+    "Oui, dans toute société, y compris une SNC",
+    "Oui, dans une SARL, une SA ou une SAS, mais pas dans une SNC",
+    "Non, jamais avant 18 ans",
+    "Oui, mais uniquement avec l'autorisation du tribunal de commerce"
+   ],
+   "a": 1,
+   "why": "Être associé d'une société à risque limité (SARL, SA, SAS) ne requiert pas la capacité commerciale : un mineur peut détenir des parts ou actions, représenté par son administrateur légal. En revanche, les associés de SNC ont tous la qualité de commerçant (L. 221-1 C. com.), qualité fermée au mineur non émancipé (L. 121-2 : seul le mineur émancipé peut être commerçant sur autorisation). Il en va de même pour les commandités de SCS.",
+   "src": "C. com., art. L. 121-2 et L. 221-1",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

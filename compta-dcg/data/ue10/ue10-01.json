@@ -1,0 +1,545 @@
+{
+ "id": "ue10-01",
+ "ue": "UE10",
+ "ordre": 1,
+ "title": "Cadre conceptuel, normalisation et profession comptable",
+ "resume": "Qui écrit les règles comptables, qui les applique et qui les contrôle : sources, principes, changements de méthodes, événements postérieurs et annexe.",
+ "duree": "55 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Les sources du droit comptable et leur hiérarchie",
+   "html": "<p>Le droit comptable français est une pyramide. Au sommet, le <b>droit de l'Union européenne</b> : le règlement (CE) n° 1606/2002 impose les normes IFRS aux <b>comptes consolidés des sociétés cotées</b> ; la directive 2013/34/UE fixe le cadre des comptes annuels. Ensuite, la <b>loi</b> : Code de commerce, art. L. 123-12 à L. 123-28 (obligation de tenir une comptabilité, inventaire, comptes annuels, image fidèle, principes). Puis les <b>décrets</b> (art. R. 123-172 s.) et enfin les <b>règlements de l'ANC</b>, dont le règlement n° 2014-03 qui constitue le <b>Plan comptable général (PCG)</b>, modifié par le règlement n° 2022-06 applicable aux exercices ouverts à compter du 1er janvier 2025.</p><ul><li>Un règlement ANC n'est obligatoire qu'après <b>homologation par arrêté ministériel</b> et publication au Journal officiel.</li><li>Les recommandations, avis et notes de présentation de l'ANC, la doctrine de la CNCC et de l'Ordre complètent le dispositif sans force obligatoire.</li><li>Le PCG s'applique aux <b>comptes individuels</b> de toute entité tenue d'établir des comptes annuels ; les IFRS ne s'appliquent jamais aux comptes individuels français.</li></ul><div class=\"note\"><b>Règle à retenir.</b> Comptes individuels : PCG (règlement ANC 2014-03 modifié). Comptes consolidés des sociétés cotées : IFRS (règlement 1606/2002). Comptes consolidés des groupes non cotés : règlement ANC 2020-01 ou IFRS sur option.</div>"
+  },
+  {
+   "h": "Les normalisateurs : ANC, H2A, IASB",
+   "html": "<p>L'<b>Autorité des normes comptables (ANC)</b>, créée par l'ordonnance n° 2009-79 du 22 janvier 2009, a remplacé le CNC et le CRC. Elle établit sous forme de règlements les prescriptions comptables des personnes soumises à l'obligation d'établir des comptes, donne un avis sur toute disposition législative ou réglementaire contenant des mesures comptables et représente la France dans la normalisation internationale (influence sur l'IASB et l'EFRAG). Elle comprend un <b>collège</b> présidé par une personnalité nommée par décret, des commissions spécialisées et un comité consultatif.</p><p>Le <b>Haut Conseil du commissariat aux comptes (H3C)</b> est devenu la <b>Haute autorité de l'audit (H2A)</b> le 1er janvier 2024 (ordonnance n° 2023-1142 transposant la directive CSRD). Elle supervise les commissaires aux comptes et désormais les auditeurs de durabilité : inscription, contrôle qualité, discipline, adoption des normes d'exercice professionnel (<b>NEP</b>) homologuées par arrêté du garde des Sceaux.</p><p>L'<b>IASB</b> (International Accounting Standards Board), organisme privé basé à Londres, publie les normes IFRS, qui n'ont de force juridique en Europe qu'après adoption par règlement de la Commission européenne.</p>"
+  },
+  {
+   "h": "La profession : expert-comptable et commissaire aux comptes",
+   "html": "<p>L'<b>expert-comptable</b> exerce une profession réglementée par l'ordonnance n° 45-2138 du 19 septembre 1945 ; il est inscrit au tableau de l'<b>Ordre des experts-comptables</b> (conseil national et conseils régionaux). Ses missions normalisées sur les comptes sont graduées : <b>présentation</b> des comptes (attestation qu'il n'a rien relevé qui remette en cause la cohérence et la vraisemblance), <b>examen limité</b> (assurance modérée), <b>audit contractuel</b> (assurance raisonnable, opinion). Il est choisi par le client et lié par une lettre de mission.</p><p>Le <b>commissaire aux comptes (CAC)</b> est inscrit auprès de la H2A et membre de la <b>CNCC</b>. Il est nommé par l'assemblée générale pour <b>six exercices</b> (mission classique) ou <b>trois exercices</b> dans la mission « audit légal des petites entreprises » (ALPE) ouverte aux sociétés qui le désignent volontairement. Sa mission est légale : certifier que les comptes annuels sont réguliers, sincères et donnent une image fidèle, selon les NEP.</p><p>Depuis la loi PACTE, la nomination est obligatoire pour toute société commerciale qui dépasse <b>deux des trois seuils</b> suivants, relevés par le décret n° 2024-152 pour les exercices ouverts à compter du 1er janvier 2024 : <span class=\"mono\">5 000 000 €</span> de total de bilan, <span class=\"mono\">10 000 000 €</span> de chiffre d'affaires HT, <span class=\"mono\">50</span> salariés. Une société mère de petit groupe dépassant ces seuils en cumulé y est tenue.</p>"
+  },
+  {
+   "h": "Principes comptables et conventions d'évaluation",
+   "html": "<p>Les comptes doivent être <b>réguliers, sincères et donner une image fidèle</b> (C. com., art. L. 123-14 ; PCG art. 121-1 à 121-5). Les principes qui en découlent :</p><ul><li><b>Continuité d'exploitation</b> : l'entité est présumée poursuivre ses activités (L. 123-20).</li><li><b>Indépendance (séparation) des exercices</b> : rattachement des charges et produits à l'exercice concerné.</li><li><b>Prudence</b> : les pertes probables sont comptabilisées, les gains latents ne le sont pas (L. 123-20 et L. 123-21).</li><li><b>Permanence des méthodes</b> (L. 123-17) ; <b>non-compensation</b> et <b>intangibilité du bilan d'ouverture</b> (L. 123-19) ; <b>importance relative</b>.</li><li><b>Coût historique</b> (L. 123-18) : les biens sont inscrits au coût d'acquisition, au coût de production ou à la valeur vénale (acquisition à titre gratuit).</li></ul><p>Trois valeurs structurent l'évaluation : la <b>valeur d'entrée</b> (coût historique), la <b>valeur actuelle</b> à l'inventaire (la plus élevée de la valeur vénale et de la valeur d'usage) et la <b>valeur d'inventaire</b>. À la clôture, on compare la valeur nette comptable à la valeur actuelle : si celle-ci est inférieure, une dépréciation est constatée ; si elle est supérieure, la plus-value latente est ignorée (prudence). Si l'image fidèle ne peut être atteinte en appliquant une règle, une dérogation est possible mais doit être justifiée en annexe (L. 123-14, al. 3).</p>"
+  },
+  {
+   "h": "Changements de méthodes, d'estimation et corrections d'erreurs",
+   "html": "<p>Le PCG (art. 122-1 à 122-5) distingue trois situations.</p><ul><li><b>Changement de méthode comptable</b> (art. 122-2) : adoption d'une méthode plus pertinente ou imposée par une nouvelle réglementation. Il s'applique de façon <b>rétrospective</b> : l'effet, calculé net d'impôt, est imputé sur les <b>capitaux propres d'ouverture</b> (compte 110 Report à nouveau), sauf si des règles fiscales imposent de passer par le résultat. Information comparative pro forma en annexe.</li><li><b>Changement d'estimation</b> (art. 122-3) : révision d'une durée d'utilité, d'une valeur résiduelle, d'un taux de provision. Il n'affecte que l'exercice en cours et les suivants (application <b>prospective</b>), par le résultat.</li><li><b>Correction d'erreur</b> (art. 122-5) : omission ou inexactitude d'un exercice antérieur. Elle est comptabilisée dans le <b>résultat de l'exercice au cours duquel elle est découverte</b>, avec mention en annexe ; les comptes antérieurs ne sont pas modifiés.</li></ul><p>Exemple : Sitral décide de provisionner ses engagements de retraite (méthode préférentielle) à compter du 1er janvier N. L'engagement à l'ouverture est de <span class=\"mono\">100 000 €</span>.</p><div class=\"note\"><b>Piège.</b> Un changement de durée d'amortissement n'est pas un changement de méthode : c'est une estimation, donc prospectif et sans retraitement du report à nouveau.</div>",
+   "entry": [
+    {
+     "a": "110",
+     "d": 100000,
+     "c": 0
+    },
+    {
+     "a": "153",
+     "d": 0,
+     "c": 100000
+    }
+   ],
+   "lib": "Première comptabilisation des engagements de retraite : effet du changement de méthode imputé sur le report à nouveau"
+  },
+  {
+   "h": "Événements postérieurs à la clôture",
+   "html": "<p>Entre la date de clôture et la date d'arrêté des comptes par l'organe compétent (conseil d'administration, gérant), des événements peuvent survenir. Le Code de commerce (art. L. 123-20) impose de tenir compte des <b>risques et pertes</b> nés au cours de l'exercice, même s'ils ne sont connus qu'après la clôture. Le critère est le <b>lien direct et prépondérant</b> avec une situation existant à la clôture :</p><ul><li>Lien existant (procès en cours jugé en janvier, client en difficulté à la clôture et mis en liquidation en février) : <b>ajustement des comptes</b> (provision, dépréciation).</li><li>Pas de lien (incendie en janvier, baisse des cours de bourse après la clôture) : <b>pas d'ajustement</b>, mais mention en annexe si l'événement est significatif ; s'il remet en cause la continuité d'exploitation, les comptes sont établis en valeurs liquidatives.</li></ul><p>Les événements connus après l'arrêté mais avant l'assemblée générale ne modifient pas les comptes : ils font l'objet d'une information à l'assemblée (rapport de gestion, communication du CAC).</p>"
+  },
+  {
+   "h": "L'annexe : contenu et seuils de dispense",
+   "html": "<p>L'annexe fait partie des comptes annuels avec le bilan et le compte de résultat (L. 123-12) ; elle « complète et commente l'information donnée par le bilan et le compte de résultat ». Son contenu (PCG art. 831-1 s.) comprend les règles et méthodes comptables, les changements de méthodes, les tableaux d'immobilisations, d'amortissements, de dépréciations et de provisions, l'état des échéances des créances et dettes, les engagements hors bilan (crédit-bail, cautions), les effectifs et la rémunération des dirigeants (sauf si cela permet d'identifier une personne).</p><p>Le contenu est modulé par la taille (C. com., art. L. 123-16 et L. 123-16-1 ; seuils du décret n° 2024-152 applicables aux exercices ouverts à compter du 1er janvier 2024, deux critères sur trois) :</p><table><thead><tr><th>Catégorie</th><th>Total bilan</th><th>CA net</th><th>Salariés</th><th>Annexe</th></tr></thead><tbody><tr><td>Micro-entreprise</td><td>450 000 €</td><td>900 000 €</td><td>10</td><td>Dispense (L. 123-16-1)</td></tr><tr><td>Petite entreprise</td><td>7 500 000 €</td><td>15 000 000 €</td><td>50</td><td>Annexe abrégée</td></tr><tr><td>Moyenne entreprise</td><td>25 000 000 €</td><td>50 000 000 €</td><td>250</td><td>Annexe simplifiée</td></tr></tbody></table><p>La dispense d'annexe ne vaut pas pour les sociétés dont l'activité consiste à gérer des titres de participation, ni pour les établissements financiers et les entités d'intérêt public.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 123-12 à L. 123-21",
+   "note": "Obligations comptables, image fidèle, principes (continuité, prudence, permanence, coût historique)"
+  },
+  {
+   "ref": "C. com., art. L. 123-16 et L. 123-16-1 ; D. 123-200 (décret n° 2024-152 du 28 février 2024)",
+   "note": "Catégories d'entreprises et dispense d'annexe pour les micro-entreprises"
+  },
+  {
+   "ref": "Règlement (CE) n° 1606/2002 et directive 2013/34/UE",
+   "note": "IFRS pour les comptes consolidés des sociétés cotées ; cadre européen des comptes annuels"
+  },
+  {
+   "ref": "Ordonnance n° 2009-79 du 22 janvier 2009",
+   "note": "Création et missions de l'Autorité des normes comptables"
+  },
+  {
+   "ref": "Ordonnance n° 2023-1142 du 6 décembre 2023",
+   "note": "Haute autorité de l'audit (H2A), succédant au H3C au 1er janvier 2024"
+  },
+  {
+   "ref": "Ordonnance n° 45-2138 du 19 septembre 1945",
+   "note": "Profession d'expert-comptable et Ordre"
+  },
+  {
+   "ref": "C. com., ex-art. L. 823-3 et L. 823-12-1 (livre VIII recodifié en 2024) ; décret n° 2024-152 (D. 221-5)",
+   "note": "Durée du mandat du CAC (6 ou 3 exercices) et seuils de nomination 5 M€ / 10 M€ / 50 salariés"
+  },
+  {
+   "ref": "PCG art. 121-1 à 122-5",
+   "note": "Principes comptables, changements de méthodes, d'estimation et corrections d'erreurs"
+  },
+  {
+   "ref": "PCG art. 831-1 s.",
+   "note": "Contenu de l'annexe"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quel texte constitue le Plan comptable général applicable aux comptes individuels des exercices ouverts à compter du 1er janvier 2025 ?",
+   "opts": [
+    "Le règlement ANC n° 2014-03 modifié",
+    "Le règlement (CE) n° 1606/2002 du 19 juillet 2002",
+    "Le règlement ANC n° 2020-01 du 9 octobre 2020",
+    "La directive 2013/34/UE du 26 juin 2013"
+   ],
+   "a": 0,
+   "why": "Le PCG est le règlement ANC n° 2014-03, consolidé au fil des règlements modificatifs ; le règlement 2022-06 (modernisation des états financiers) s'applique aux exercices ouverts à compter du 1er janvier 2025. Le règlement 1606/2002 impose les IFRS aux comptes consolidés des sociétés cotées, le règlement 2020-01 régit les comptes consolidés en règles françaises et la directive 2013/34 doit être transposée : elle ne s'applique pas directement.",
+   "src": "Règlement ANC n° 2014-03 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un règlement de l'Autorité des normes comptables devient obligatoire :",
+   "opts": [
+    "Dès son adoption par le collège de l'ANC",
+    "Après homologation par arrêté ministériel publié au Journal officiel",
+    "Après avis conforme de la Compagnie nationale des commissaires aux comptes",
+    "Après adoption par règlement de la Commission européenne"
+   ],
+   "a": 1,
+   "why": "L'ANC adopte des règlements, mais ceux-ci n'ont force obligatoire qu'après homologation par arrêté du ministre chargé de l'économie (et des ministres de la justice et du budget) et publication au JO (ord. 2009-79, art. 4). La CNCC n'a aucun pouvoir normatif ; l'adoption par règlement européen concerne les normes IFRS, pas les règlements ANC.",
+   "src": "Ordonnance n° 2009-79, art. 4",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Les normes IFRS sont obligatoires en France pour :",
+   "opts": [
+    "Les comptes individuels de toutes les sociétés anonymes",
+    "Les comptes consolidés des sociétés dont les titres sont admis sur un marché réglementé",
+    "Les comptes individuels des sociétés cotées",
+    "Les comptes consolidés de tous les groupes dépassant les seuils de consolidation"
+   ],
+   "a": 1,
+   "why": "Le règlement (CE) n° 1606/2002 impose les IFRS adoptées par l'UE aux seuls comptes consolidés des sociétés cotées sur un marché réglementé. Les comptes individuels restent toujours en PCG, même pour une société cotée. Les groupes non cotés établissent leurs comptes consolidés selon le règlement ANC 2020-01, avec option pour les IFRS.",
+   "src": "Règlement (CE) n° 1606/2002, art. 4 ; C. com., art. L. 233-24",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Parmi les propositions suivantes concernant l'Autorité des normes comptables, lesquelles sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle a été créée par l'ordonnance du 22 janvier 2009 en remplacement du CNC et du CRC",
+    "Elle établit les prescriptions comptables sous forme de règlements",
+    "Elle homologue elle-même ses règlements",
+    "Elle donne un avis sur les projets de textes comportant des dispositions comptables",
+    "Elle certifie les comptes des sociétés cotées"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "L'ANC est issue de la fusion du Conseil national de la comptabilité et du Comité de la réglementation comptable (ord. 2009-79). Elle adopte des règlements et émet des avis sur les textes contenant des mesures comptables. L'homologation relève du ministre (arrêté), pas de l'ANC ; la certification des comptes est la mission du commissaire aux comptes, jamais du normalisateur.",
+   "src": "Ordonnance n° 2009-79, art. 1 et 4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Depuis le 1er janvier 2024, l'autorité de supervision des commissaires aux comptes en France est :",
+   "opts": [
+    "Le Haut Conseil du commissariat aux comptes (H3C)",
+    "La Haute autorité de l'audit (H2A)",
+    "L'Autorité des marchés financiers",
+    "La Compagnie nationale des commissaires aux comptes"
+   ],
+   "a": 1,
+   "why": "L'ordonnance n° 2023-1142 du 6 décembre 2023, transposant la directive CSRD, a transformé le H3C en Haute autorité de l'audit (H2A) au 1er janvier 2024, avec compétence étendue aux auditeurs de durabilité. L'AMF supervise les marchés, pas la profession ; la CNCC est l'organisation professionnelle des CAC, pas leur régulateur.",
+   "src": "Ordonnance n° 2023-1142 du 6 décembre 2023",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Les normes d'exercice professionnel (NEP) des commissaires aux comptes sont rendues obligatoires par :",
+   "opts": [
+    "Un règlement de l'ANC",
+    "Un arrêté du garde des Sceaux, ministre de la justice, après adoption par la H2A",
+    "Une décision de l'assemblée générale de la CNCC",
+    "Un règlement de la Commission européenne"
+   ],
+   "a": 1,
+   "why": "Les NEP sont adoptées par la Haute autorité de l'audit (avant 2024, élaborées par la CNCC et avis du H3C) puis homologuées par arrêté du ministre de la justice. L'ANC ne traite que des normes comptables, pas des normes d'audit ; la CNCC n'a pas de pouvoir réglementaire propre.",
+   "src": "C. com., livre VIII (ord. n° 2023-1142)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En 2025, une SAS doit nommer un commissaire aux comptes dès lors qu'elle dépasse, à la clôture de l'exercice, deux des trois seuils suivants :",
+   "opts": [
+    "4 M€ de bilan, 8 M€ de CA HT, 50 salariés",
+    "5 M€ de bilan, 10 M€ de CA HT, 50 salariés",
+    "7,5 M€ de bilan, 15 M€ de CA HT, 50 salariés",
+    "1 M€ de bilan, 2 M€ de CA HT, 20 salariés"
+   ],
+   "a": 1,
+   "why": "Le décret n° 2024-152 du 28 février 2024 a relevé les seuils de nomination obligatoire du CAC à 5 000 000 € de total de bilan, 10 000 000 € de chiffre d'affaires HT et 50 salariés, pour les exercices ouverts à compter du 1er janvier 2024. Les seuils 4 M€ / 8 M€ étaient ceux de la loi PACTE (2019-2023) ; 7,5 M€ / 15 M€ correspondent à la catégorie des petites entreprises (annexe abrégée), pas au CAC.",
+   "src": "C. com., art. L. 227-9-1 et D. 221-5 (décret n° 2024-152)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, la SAS Verdon présente à la clôture un total de bilan de 5 200 000 €, un chiffre d'affaires HT de 9 400 000 € et 62 salariés. Combien de seuils de nomination obligatoire d'un commissaire aux comptes (5 M€ de bilan, 10 M€ de CA, 50 salariés) sont dépassés ?",
+   "a": 2,
+   "unit": "",
+   "tol": 0,
+   "why": "Bilan 5 200 000 > 5 000 000 : dépassé. CA 9 400 000 < 10 000 000 : non dépassé. Salariés 62 > 50 : dépassé. Deux seuils sur trois sont franchis, donc la nomination d'un CAC est obligatoire (la règle est « deux des trois critères »).",
+   "src": "C. com., art. D. 221-5 (décret n° 2024-152)",
+   "fiab": "millésimé 2025",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "La durée du mandat d'un commissaire aux comptes nommé dans le cadre d'une mission classique est de :",
+   "opts": [
+    "Trois exercices",
+    "Six exercices",
+    "Un exercice renouvelable",
+    "Dix exercices"
+   ],
+   "a": 1,
+   "why": "Le CAC est nommé pour six exercices (ex-art. L. 823-3 C. com., recodifié en 2024). La durée de trois exercices concerne uniquement la mission « audit légal des petites entreprises » (ALPE) des sociétés qui désignent volontairement un CAC sous les seuils. Un mandat annuel ou de dix ans n'existe pas pour les CAC.",
+   "src": "C. com., ex-art. L. 823-3 et L. 823-12-1 (livre VIII recodifié par l'ord. n° 2023-1142)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quelles affirmations distinguent correctement l'expert-comptable du commissaire aux comptes ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'expert-comptable est lié au client par une lettre de mission contractuelle",
+    "Le commissaire aux comptes est nommé par l'assemblée générale pour une durée légale",
+    "L'expert-comptable certifie les comptes annuels",
+    "Le commissaire aux comptes est inscrit à l'Ordre des experts-comptables",
+    "L'expert-comptable relève de l'ordonnance du 19 septembre 1945"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "L'expert-comptable (ord. 45-2138) exerce une mission contractuelle définie par une lettre de mission ; le CAC exerce une mission légale confiée par l'assemblée générale pour six (ou trois) exercices. Seul le CAC certifie les comptes : l'expert-comptable présente, examine ou audite contractuellement. Le CAC est inscrit auprès de la H2A et membre de la CNCC, pas de l'Ordre (sauf double inscription personnelle).",
+   "src": "Ordonnance n° 45-2138 ; C. com., livre VIII",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque mission normalisée de l'expert-comptable selon le niveau d'assurance qu'elle procure.",
+   "cats": [
+    "Présentation des comptes",
+    "Examen limité",
+    "Audit contractuel"
+   ],
+   "items": [
+    [
+     "Attestation d'absence d'éléments remettant en cause la cohérence et la vraisemblance",
+     0
+    ],
+    [
+     "Assurance modérée fondée sur des entretiens et procédures analytiques",
+     1
+    ],
+    [
+     "Assurance raisonnable débouchant sur une opinion",
+     2
+    ],
+    [
+     "Mission la plus courante pour une TPE sans CAC",
+     0
+    ],
+    [
+     "Contrôles de substance étendus et vérification des pièces",
+     2
+    ],
+    [
+     "Conclusion négative : « nous n'avons pas relevé d'anomalies significatives »",
+     1
+    ]
+   ],
+   "why": "La mission de présentation, la plus répandue, aboutit à une attestation de cohérence et de vraisemblance. L'examen limité donne une assurance modérée exprimée sous forme négative. L'audit contractuel, le plus étendu, donne une assurance raisonnable et une opinion, comme l'audit légal mais sans mandat légal.",
+   "src": "Référentiel normatif de l'Ordre des experts-comptables (NP 2300, NP 2400, NP 2500)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Selon le Code de commerce, les comptes annuels doivent être :",
+   "opts": [
+    "Exacts, exhaustifs et certifiés chaque année",
+    "Réguliers, sincères et donner une image fidèle",
+    "Conformes aux IFRS et établis avec prudence",
+    "Certifiés par un expert-comptable"
+   ],
+   "a": 1,
+   "why": "L'article L. 123-14 du Code de commerce fixe la triple exigence : régularité (conformité aux règles), sincérité (application de bonne foi) et image fidèle. L'exactitude absolue n'est pas une notion comptable (importance relative) ; les IFRS ne régissent pas les comptes individuels ; la certification relève du CAC et n'est pas une qualité des comptes.",
+   "src": "C. com., art. L. 123-14",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "q": "Associez chaque situation au principe comptable qu'elle illustre.",
+   "cats": [
+    "Prudence",
+    "Indépendance des exercices",
+    "Permanence des méthodes",
+    "Non-compensation",
+    "Coût historique"
+   ],
+   "items": [
+    [
+     "Une créance douteuse est dépréciée alors qu'une plus-value latente sur un terrain est ignorée",
+     0
+    ],
+    [
+     "Un loyer payé en décembre pour janvier est inscrit en charge constatée d'avance",
+     1
+    ],
+    [
+     "La société conserve la méthode CMP pour ses stocks d'un exercice à l'autre",
+     2
+    ],
+    [
+     "Une créance et une dette envers le même tiers sont présentées séparément au bilan",
+     3
+    ],
+    [
+     "Un immeuble acheté en 1995 reste inscrit à son prix d'achat malgré la hausse du marché",
+     4
+    ],
+    [
+     "Les intérêts courus non échus d'un emprunt sont rattachés à l'exercice",
+     1
+    ]
+   ],
+   "why": "La prudence (L. 123-20) interdit d'anticiper les gains mais impose de constater les pertes probables. L'indépendance des exercices rattache charges et produits à la période concernée (CCA, intérêts courus). La permanence des méthodes (L. 123-17) assure la comparabilité. La non-compensation (L. 123-19) interdit de compenser actifs et passifs. Le coût historique (L. 123-18) fige la valeur d'entrée.",
+   "src": "C. com., art. L. 123-17 à L. 123-21",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "La valeur actuelle d'un actif, au sens du PCG, est :",
+   "opts": [
+    "Son coût d'acquisition diminué des amortissements",
+    "La plus élevée de la valeur vénale et de la valeur d'usage",
+    "Sa valeur de remplacement à neuf",
+    "La plus faible de la valeur vénale et de la valeur d'usage"
+   ],
+   "a": 1,
+   "why": "Le PCG définit la valeur actuelle comme la valeur la plus élevée de la valeur vénale (prix de cession net) et de la valeur d'usage (flux futurs attendus). Le coût diminué des amortissements est la valeur nette comptable, qu'on compare à la valeur actuelle pour déceler une dépréciation. Retenir la plus faible des deux reviendrait à déprécier à tort un bien que l'entreprise a intérêt à conserver.",
+   "src": "PCG art. 214-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles opérations constituent un changement de méthode comptable au sens du PCG ? (plusieurs réponses possibles)",
+   "opts": [
+    "Première comptabilisation en provision des engagements de retraite jusque-là mentionnés en annexe",
+    "Passage de la méthode à l'achèvement à la méthode à l'avancement pour les contrats à long terme",
+    "Réduction de 8 à 5 ans de la durée d'amortissement d'une machine devenue obsolète",
+    "Activation des frais de développement alors qu'ils étaient auparavant passés en charges",
+    "Révision du taux de dépréciation statistique des créances clients"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Un changement de méthode est l'adoption d'une autre méthode admise (souvent la méthode préférentielle : provision des retraites, avancement, activation des frais de développement) ; son effet est imputé sur les capitaux propres d'ouverture (PCG art. 122-2). La révision d'une durée d'amortissement ou d'un taux de dépréciation est un changement d'estimation (art. 122-3), traité de façon prospective par le résultat.",
+   "src": "PCG art. 122-2 et 122-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "L'effet d'un changement de méthode comptable à l'initiative de l'entreprise est, sauf disposition fiscale contraire, comptabilisé :",
+   "opts": [
+    "En charges ou produits exceptionnels de l'exercice du changement",
+    "Dans le report à nouveau à l'ouverture de l'exercice, net d'impôt",
+    "Par étalement sur cinq exercices",
+    "Dans le résultat de l'exercice précédent, qui est corrigé"
+   ],
+   "a": 1,
+   "why": "PCG art. 122-2 : l'impact du changement de méthode, calculé de façon rétrospective et après effet d'impôt, est imputé en report à nouveau (compte 110 ou 119) à l'ouverture, sauf si des règles fiscales imposent de le constater en résultat. Les comptes de l'exercice précédent ne sont jamais modifiés (intangibilité du bilan d'ouverture) : seule une information pro forma figure en annexe. L'étalement sur cinq ans n'existe pas.",
+   "src": "PCG art. 122-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une machine acquise 120 000 € le 1er janvier N est amortie en linéaire sur 10 ans sans valeur résiduelle. Au 1er janvier N+3, l'entreprise révise la durée d'utilité résiduelle : la machine ne servira plus que 4 ans. Calculez la dotation aux amortissements de l'exercice N+3 (en euros).",
+   "a": 21000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Amortissements cumulés fin N+2 : 120 000 / 10 × 3 = 36 000. VNC au 1er janvier N+3 : 120 000 − 36 000 = 84 000. Changement d'estimation (PCG art. 122-3) : application prospective, la VNC est répartie sur la nouvelle durée résiduelle : 84 000 / 4 = 21 000 € par an. On ne recalcule pas les exercices passés (ce serait un traitement rétrospectif réservé aux changements de méthode).",
+   "src": "PCG art. 122-3 et 214-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En N, une entreprise découvre qu'une facture de maintenance de 30 000 € relative à N−2 n'a jamais été comptabilisée. Comment traiter cette correction d'erreur selon le PCG ?",
+   "opts": [
+    "Corriger les comptes de N−2 et les republier",
+    "Imputer 30 000 € sur le report à nouveau à l'ouverture de N",
+    "Comptabiliser la charge dans le résultat de l'exercice N, avec information en annexe",
+    "Ne rien comptabiliser puisque l'exercice N−2 est clos"
+   ],
+   "a": 2,
+   "why": "PCG art. 122-5 : les corrections d'erreurs sont comptabilisées dans le résultat de l'exercice au cours duquel elles sont constatées, avec mention en annexe de leur nature et de leur incidence. Les comptes antérieurs, approuvés, ne sont pas rouverts (intangibilité). L'imputation sur le report à nouveau est réservée aux changements de méthode, pas aux erreurs. Ignorer la charge violerait l'image fidèle.",
+   "src": "PCG art. 122-5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Clôture au 31 décembre N, arrêté des comptes le 15 mars N+1. Le 20 janvier N+1, un client dont la créance de 40 000 € figurait au bilan, déjà en redressement judiciaire en décembre, est mis en liquidation. Quel traitement dans les comptes de N ?",
+   "opts": [
+    "Aucun traitement : l'événement est postérieur à la clôture",
+    "Simple mention en annexe",
+    "Dépréciation de la créance dans les comptes de N",
+    "Passage de la perte en charge dans les comptes de N+1 uniquement"
+   ],
+   "a": 2,
+   "why": "Le client était déjà en difficulté à la clôture : la liquidation prononcée avant l'arrêté des comptes confirme une situation existante (lien direct et prépondérant). L'article L. 123-20 du Code de commerce impose de tenir compte des risques et pertes nés au cours de l'exercice même s'ils ne sont connus qu'entre la clôture et l'établissement des comptes : on déprécie la créance en N. La simple mention en annexe vaut pour les événements sans lien avec la clôture.",
+   "src": "C. com., art. L. 123-20",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le 10 février N+1, avant l'arrêté des comptes de N, un incendie détruit un entrepôt de l'entreprise, sans remettre en cause la continuité d'exploitation. Dans les comptes de N :",
+   "opts": [
+    "On constate une dépréciation de l'entrepôt",
+    "On passe la valeur nette comptable en charge exceptionnelle",
+    "On ne modifie pas les comptes mais on mentionne l'événement en annexe s'il est significatif",
+    "On provisionne les coûts de reconstruction"
+   ],
+   "a": 2,
+   "why": "L'incendie est né après la clôture et n'a aucun lien avec une situation existant au 31 décembre N : les comptes de N ne sont pas ajustés (l'entrepôt existait et valait sa VNC à la clôture). L'événement, significatif, est mentionné en annexe ; la perte sera comptabilisée en N+1. Seul un événement remettant en cause la continuité d'exploitation conduirait à établir les comptes de N en valeurs liquidatives.",
+   "src": "C. com., art. L. 123-20 ; PCG art. 513-4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles informations figurent obligatoirement dans l'annexe des comptes annuels d'une société de taille moyenne ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les règles et méthodes comptables retenues et leurs changements",
+    "Le tableau des immobilisations, amortissements et dépréciations",
+    "Les engagements hors bilan tels que le crédit-bail et les cautions",
+    "Le détail nominatif des salaires de chaque salarié",
+    "Le budget prévisionnel de l'exercice suivant"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'annexe (PCG art. 831-1 s.) comporte les méthodes comptables et leurs changements, les tableaux de variation des immobilisations, amortissements, dépréciations et provisions, l'état des échéances des créances et dettes et les engagements hors bilan. Elle ne contient ni information nominative sur les salariés (seuls l'effectif moyen et la rémunération globale des dirigeants, sous condition) ni données prévisionnelles, qui relèvent des documents de gestion prévisionnelle.",
+   "src": "PCG art. 831-1 s. ; C. com., art. R. 123-195 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En 2025, une SARL commerciale ne dépassant pas deux des seuils 450 000 € de total de bilan, 900 000 € de chiffre d'affaires net et 10 salariés :",
+   "opts": [
+    "Est dispensée d'établir une annexe",
+    "Est dispensée d'établir un compte de résultat",
+    "Doit obligatoirement nommer un CAC",
+    "Est dispensée de tenir une comptabilité"
+   ],
+   "a": 0,
+   "why": "Il s'agit d'une micro-entreprise au sens de l'article L. 123-16-1 du Code de commerce (seuils fixés par le décret n° 2024-152) : elle peut ne pas établir d'annexe, sauf si elle gère des titres de participation ou relève du secteur financier. Elle reste tenue d'une comptabilité complète, d'un bilan et d'un compte de résultat (présentation simplifiée). Le CAC n'est obligatoire qu'au-delà des seuils 5 M€ / 10 M€ / 50.",
+   "src": "C. com., art. L. 123-16-1 et D. 123-200 (décret n° 2024-152)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, la SAS Mirabel affiche un total de bilan de 6 800 000 €, un chiffre d'affaires net de 16 200 000 € et 45 salariés. Les seuils de la catégorie « petite entreprise » sont 7 500 000 € de bilan, 15 000 000 € de CA et 50 salariés (il faut dépasser deux critères pour changer de catégorie). Combien de ces seuils la société dépasse-t-elle ?",
+   "a": 1,
+   "unit": "",
+   "tol": 0,
+   "why": "Bilan 6,8 M€ < 7,5 M€ : non. CA 16,2 M€ > 15 M€ : oui. Effectif 45 < 50 : non. Un seul critère est dépassé, la société reste une petite entreprise et peut établir une annexe abrégée et une présentation simplifiée des comptes (L. 123-16). Le dépassement d'un seul seuil ne suffit jamais : la règle exige deux critères sur trois.",
+   "src": "C. com., art. L. 123-16 et D. 123-200 (décret n° 2024-152)",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise déroge à une prescription comptable parce que son application donnerait une image non fidèle. Quelle obligation en découle ?",
+   "opts": [
+    "Obtenir l'autorisation préalable de l'ANC avant la clôture",
+    "Mentionner et motiver la dérogation en annexe, avec son incidence chiffrée",
+    "Faire certifier la dérogation par un expert-comptable",
+    "Aucune obligation : la dérogation est laissée à la libre appréciation du dirigeant"
+   ],
+   "a": 1,
+   "why": "L'article L. 123-14, alinéa 3, du Code de commerce autorise la dérogation lorsque l'application d'une règle se révèle impropre à donner une image fidèle, à condition de la mentionner et de la motiver en annexe avec son incidence chiffrée. Aucune autorisation administrative n'est requise et l'expert-comptable n'a pas de rôle de certification.",
+   "src": "C. com., art. L. 123-14, al. 3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles entités sont tenues d'établir des comptes annuels conformes au PCG ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une SARL de négoce",
+    "Une SA cotée, pour ses comptes individuels",
+    "Une SA cotée, pour ses comptes consolidés",
+    "Un commerçant personne physique soumis au régime réel",
+    "Une association sans activité économique ni subvention, non tenue d'établir des comptes annuels"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Toute personne physique ou morale ayant la qualité de commerçant tient une comptabilité selon le PCG (L. 123-12). La SA cotée applique le PCG à ses comptes individuels mais les IFRS à ses comptes consolidés (règlement 1606/2002). L'association qui n'est soumise à aucune obligation légale d'établir des comptes annuels n'est pas tenue d'appliquer le PCG ni le règlement ANC 2018-06.",
+   "src": "C. com., art. L. 123-12 ; règlement (CE) n° 1606/2002",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Au DSCG, l'UE 4 (comptabilité et audit) s'appuie sur la hiérarchie des normes vue au DCG. Quelle affirmation est exacte concernant l'articulation PCG / IFRS ?",
+   "opts": [
+    "Le PCG renvoie aux IFRS pour toute question qu'il ne traite pas",
+    "Une norme IFRS adoptée par l'UE prime sur le PCG dans les comptes individuels",
+    "Deux référentiels distincts : PCG pour les comptes individuels, IFRS pour les comptes consolidés des sociétés cotées",
+    "Les IFRS sont adoptées par un règlement de l'ANC homologué par arrêté"
+   ],
+   "a": 2,
+   "why": "Les deux référentiels coexistent sans hiérarchie entre eux : le PCG régit les comptes individuels, les IFRS adoptées par règlement européen régissent les comptes consolidés des sociétés cotées. Le PCG ne renvoie pas aux IFRS ; une norme IFRS ne s'applique jamais aux comptes individuels français ; les IFRS émanent de l'IASB et sont adoptées par la Commission européenne, non par l'ANC.",
+   "src": "Règlement (CE) n° 1606/2002 ; règlement ANC n° 2014-03",
+   "fiab": "stable",
+   "niveau": 1
+  }
+ ]
+}

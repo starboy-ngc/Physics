@@ -1,0 +1,666 @@
+{
+ "id": "ue10-03",
+ "ue": "UE10",
+ "ordre": 3,
+ "title": "Amortissements, dépréciations et sortie des immobilisations",
+ "resume": "Construire et réviser un plan d'amortissement, calculer les amortissements dérogatoires, tester la dépréciation et comptabiliser la sortie d'une immobilisation (cession, rebut, sinistre) sous le PCG 2025.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Le plan d'amortissement comptable",
+   "html": "<p>L'<b>amortissement</b> est la répartition systématique du montant amortissable d'un actif sur sa <b>durée d'utilisation</b> (PCG art. 214-1 et 214-13), c'est-à-dire la durée réelle d'usage prévue par l'entreprise, non la durée fiscale. Le plan est défini à l'entrée du bien :</p><ul><li><b>Base amortissable</b> : coût d'entrée diminué de la <b>valeur résiduelle</b> si celle-ci est significative et mesurable (prix de revente prévu net des coûts de sortie) ;</li><li><b>Point de départ</b> : date de mise en service, avec prorata temporis ;</li><li><b>Mode</b> : celui qui traduit le rythme de consommation des avantages économiques : <b>linéaire</b> (par défaut), <b>dégressif</b> (consommation plus rapide au début), <b>unités d'œuvre</b> (heures, kilomètres, pièces produites).</li></ul><p>La dotation est enregistrée au débit de <b>6811</b> et au crédit du compte d'amortissement <b>28xx</b> (le 8 en deuxième position reprend le numéro de l'immobilisation : 2154 → 28154). Toute modification significative de l'utilisation prévue (durée, mode, valeur résiduelle) entraîne une <b>révision prospective</b> du plan (changement d'estimation) : la VNC restante est répartie sur la nouvelle durée résiduelle.</p><p>Exemple : machine <span class=\"mono\">60 000 €</span> mise en service le 1er avril N, durée d'utilisation 5 ans, linéaire. Dotation N : <span class=\"mono\">60 000 × 20 % × 9/12 = 9 000 €</span>.</p>",
+   "entry": [
+    {
+     "a": "6811",
+     "d": 9000,
+     "c": 0
+    },
+    {
+     "a": "28154",
+     "d": 0,
+     "c": 9000
+    }
+   ],
+   "lib": "Dotation aux amortissements de l'exercice N"
+  },
+  {
+   "h": "Amortissement fiscal et amortissements dérogatoires",
+   "html": "<p>Le fisc raisonne avec la <b>durée d'usage</b> de la profession et autorise le <b>mode dégressif</b> (CGI art. 39 A) pour les biens d'équipement neufs d'une durée au moins égale à 3 ans : taux dégressif = taux linéaire × coefficient (<span class=\"mono\">1,25</span> pour 3 ou 4 ans, <span class=\"mono\">1,75</span> pour 5 ou 6 ans, <span class=\"mono\">2,25</span> au-delà), appliqué à la VNC, prorata en <b>mois</b> dès le premier jour du mois d'acquisition ; lorsque le taux linéaire sur la durée restante devient supérieur, on bascule en linéaire.</p><p>Quand l'amortissement fiscal dépasse l'amortissement comptable, la différence est enregistrée en <b>amortissement dérogatoire</b>, provision réglementée : débit <b>68725</b>, crédit <b>145</b>. Lorsque la situation s'inverse, on reprend : débit 145, crédit <b>78725</b>. Le compte 145 est ainsi soldé à la fin du plan ; les comptes 6872/7872 (dotations et reprises sur provisions réglementées) sont maintenus par le PCG 2025 au sein des charges et produits exceptionnels.</p><p><b>Simplification pour les petites entreprises</b> (PCG art. 214-13) : elles peuvent retenir la durée d'usage fiscale pour les immobilisations non décomposables, ce qui évite les dérogatoires liés à la durée.</p><p>Exemple (machine ci-dessus, dégressif fiscal 5 ans, taux <span class=\"mono\">20 % × 1,75 = 35 %</span>) : fiscal N = <span class=\"mono\">60 000 × 35 % × 9/12 = 15 750</span> ; comptable 9 000 ; dérogatoire <span class=\"mono\">6 750</span>.</p>",
+   "entry": [
+    {
+     "a": "68725",
+     "d": 6750,
+     "c": 0
+    },
+    {
+     "a": "145",
+     "d": 0,
+     "c": 6750
+    }
+   ],
+   "lib": "Dotation aux amortissements dérogatoires de l'exercice N"
+  },
+  {
+   "h": "Le test de dépréciation",
+   "html": "<p>À chaque clôture, l'entreprise recherche s'il existe un <b>indice de perte de valeur</b> (PCG art. 214-15 à 214-19) : indices externes (baisse de la valeur de marché, évolution technologique, économique ou juridique défavorable, hausse des taux d'intérêt) ou internes (obsolescence, dégradation physique, performances inférieures aux prévisions, abandon programmé). En présence d'un indice, on compare la <b>VNC</b> à la <b>valeur actuelle</b>, qui est la plus élevée de la <b>valeur vénale</b> (prix de vente net) et de la <b>valeur d'usage</b> (flux nets de trésorerie attendus).</p><ul><li>VNC &gt; valeur actuelle : <b>dépréciation</b> égale à l'écart, débit <b>6816</b>, crédit <b>29xx</b> ;</li><li>VNC ≤ valeur actuelle : rien, la plus-value latente est ignorée.</li></ul><p>La dépréciation <b>modifie le plan de façon prospective</b> : la nouvelle base amortissable est la VNC dépréciée, répartie sur la durée résiduelle. Si la valeur actuelle remonte, la dépréciation est <b>reprise</b> (débit 29xx, crédit <b>7816</b>) sans que la VNC puisse dépasser celle qui aurait existé sans dépréciation. Exception : la dépréciation d'un fonds commercial n'est jamais reprise.</p><p>Exemple : VNC d'une machine <span class=\"mono\">60 000</span>, valeur vénale <span class=\"mono\">42 000</span>, valeur d'usage <span class=\"mono\">48 000</span> : valeur actuelle 48 000, dépréciation <span class=\"mono\">12 000</span>.</p>",
+   "entry": [
+    {
+     "a": "6816",
+     "d": 12000,
+     "c": 0
+    },
+    {
+     "a": "2915",
+     "d": 0,
+     "c": 12000
+    }
+   ],
+   "lib": "Dépréciation d'un matériel industriel"
+  },
+  {
+   "h": "Le cas du fonds commercial",
+   "html": "<p>Le <b>fonds commercial</b> (207) est présumé avoir une durée d'utilisation <b>non limitée</b> : il n'est <b>pas amorti</b>, mais fait l'objet d'un <b>test de dépréciation obligatoire à chaque clôture</b>, qu'il existe ou non un indice de perte de valeur (PCG art. 214-3 et 214-15). Lorsque sa durée d'utilisation est limitée (clause contractuelle, activité promise à disparaître), il est amorti sur cette durée ou, si elle ne peut être déterminée de façon fiable, sur <b>10 ans</b>.</p><p>Les <b>petites entreprises</b> (au sens de l'art. L. 123-16 C. com.) peuvent, sur option, amortir tous leurs fonds commerciaux sur <b>10 ans</b> ; elles sont alors dispensées du test systématique, qui ne s'applique qu'en présence d'indice.</p><div class=\"note\"><b>Règle à retenir.</b> La dépréciation du fonds commercial est <b>définitive</b> : elle n'est jamais reprise, même si la valeur remonte (PCG art. 214-19).</div><p>Côté fiscal, l'amortissement du fonds commercial n'est en principe pas déductible ; à titre temporaire, la loi de finances pour 2022 a admis la déduction de l'amortissement comptable des fonds <b>acquis entre le 1er janvier 2022 et le 31 décembre 2025</b> (CGI art. 39, 1-2°). Pour les autres, l'amortissement comptable est réintégré extra-comptablement.</p>"
+  },
+  {
+   "h": "Sortie des immobilisations : cession, rebut, sinistre, échange",
+   "html": "<p>Depuis le PCG 2025, la cession d'une immobilisation incorporelle ou corporelle n'est plus exceptionnelle : la VNC sortie est inscrite en <b>657</b> et le prix de cession en <b>757</b> (avant 2025 : 675 et 775, supprimés). Trois étapes :</p><ol><li><b>Dotation complémentaire</b> d'amortissement du 1er janvier à la date de cession (6811 / 28xx) et, le cas échéant, dérogatoire ;</li><li><b>Prix de cession</b> : débit 462 Créances sur cessions d'immobilisations (ou 512), crédit 757 et 44571 pour la TVA collectée ;</li><li><b>Sortie</b> : débit 28xx (amortissements cumulés), débit 657 (VNC), crédit 2xx (coût d'entrée). Le solde du compte 145 lié au bien est repris (78725) et le solde de la subvention d'investissement est viré au résultat (139 / 747).</li></ol><p><b>Mise au rebut</b> : aucun prix, la VNC est constatée en charge (657) ; le bien détruit avant la fin du plan peut auparavant faire l'objet d'un amortissement exceptionnel (6871). <b>Sinistre</b> : la sortie suit le même schéma et l'<b>indemnité d'assurance</b> est un produit d'exploitation en <b>7587</b> (plus de transfert de charges 797 ni de 771). <b>Échange</b> : analysé comme une cession suivie d'une acquisition, le bien reçu étant évalué à sa valeur vénale.</p><p>Exemple : véhicule coût <span class=\"mono\">30 000</span>, amortissements cumulés à la date de cession <span class=\"mono\">25 000</span>, cédé <span class=\"mono\">12 000 € HT</span> (TVA 20 %).</p>",
+   "entry": [
+    {
+     "a": "462",
+     "d": 14400,
+     "c": 0
+    },
+    {
+     "a": "757",
+     "d": 0,
+     "c": 12000
+    },
+    {
+     "a": "44571",
+     "d": 0,
+     "c": 2400
+    },
+    {
+     "a": "28182",
+     "d": 25000,
+     "c": 0
+    },
+    {
+     "a": "657",
+     "d": 5000,
+     "c": 0
+    },
+    {
+     "a": "2182",
+     "d": 0,
+     "c": 30000
+    }
+   ],
+   "lib": "Cession d'un véhicule : prix de cession et sortie de l'actif"
+  },
+  {
+   "h": "Crédit-bail et location-financement",
+   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (PCG art. 833-11/2 ; C. com., art. R. 123-196).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01), le retraitement de la <b>location-financement</b> (inscription du bien à l'actif et de la dette au passif) est la méthode préférentielle ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "PCG art. 214-1 et 214-13",
+   "note": "Définition de l'amortissement, durée d'utilisation, révision du plan, option durée d'usage pour les petites entreprises"
+  },
+  {
+   "ref": "PCG art. 214-3",
+   "note": "Fonds commercial : non-amortissement présumé, option 10 ans pour les petites entreprises"
+  },
+  {
+   "ref": "PCG art. 214-15 à 214-19",
+   "note": "Indices de perte de valeur, test de dépréciation, modification prospective du plan, dépréciation irréversible du fonds commercial"
+  },
+  {
+   "ref": "CGI art. 39 A et 39 B ; CGI ann. II, art. 22 à 24",
+   "note": "Amortissement dégressif, coefficients 1,25 / 1,75 / 2,25, amortissement minimal linéaire"
+  },
+  {
+   "ref": "CGI art. 39, 1-2°",
+   "note": "Déductibilité temporaire de l'amortissement des fonds commerciaux acquis entre 2022 et 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06",
+   "note": "Comptes 657 / 757 pour les cessions, 7587 indemnités d'assurance, maintien de 6872 / 7872 et 145"
+  },
+  {
+   "ref": "C. com., art. R. 123-196 ; PCG art. 833-11",
+   "note": "Information en annexe sur le crédit-bail"
+  },
+  {
+   "ref": "PCG art. 942-61 et 947-57",
+   "note": "Fonctionnement des comptes 6122/6125 et 657/757"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "La durée d'amortissement comptable d'une immobilisation est en principe :",
+   "opts": [
+    "La durée d'usage admise par l'administration fiscale",
+    "La durée d'utilisation réelle prévue par l'entreprise",
+    "Toujours cinq ans pour le matériel",
+    "La durée de l'emprunt qui finance le bien"
+   ],
+   "a": 1,
+   "why": "PCG art. 214-13 : le plan d'amortissement repose sur la durée d'utilisation propre à l'entreprise, qui peut différer de la durée d'usage fiscale ; l'écart donne lieu à un amortissement dérogatoire. Seules les petites entreprises peuvent, par simplification, retenir la durée d'usage. La durée de l'emprunt est sans lien avec la consommation des avantages économiques.",
+   "src": "PCG art. 214-13",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Un camion acquis 50 000 € le 1er janvier N a une durée d'utilisation de 4 ans ; l'entreprise prévoit de le revendre 10 000 € à l'issue de cette période (valeur résiduelle significative et mesurable). Calculez la dotation linéaire annuelle (en euros).",
+   "a": 10000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Base amortissable = coût − valeur résiduelle = 50 000 − 10 000 = 40 000 (PCG art. 214-1). Dotation = 40 000 / 4 = 10 000 € par an. Amortir 50 000 (12 500 par an) ignorerait la valeur résiduelle, ce qui surestimerait la consommation des avantages économiques. Fiscalement, la base reste 50 000 : l'écart de 2 500 par an est traité en amortissement dérogatoire.",
+   "src": "PCG art. 214-1 et 214-13",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une machine de 90 000 € est amortie en unités d'œuvre : production totale prévue 300 000 pièces, valeur résiduelle nulle. En N, elle a produit 45 000 pièces. Calculez la dotation de N (en euros).",
+   "a": 13500,
+   "unit": "€",
+   "tol": 1,
+   "why": "Dotation = base × unités de l'exercice / unités totales prévues = 90 000 × 45 000 / 300 000 = 13 500 €. Le mode des unités d'œuvre est admis quand il reflète mieux le rythme de consommation des avantages économiques que le temps (PCG art. 214-13). Fiscalement, le minimum linéaire (CGI art. 39 B) doit être vérifié sur la durée totale.",
+   "src": "PCG art. 214-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un matériel de 60 000 € HT est acquis et mis en service le 1er avril N. Durée fiscale 5 ans, mode dégressif (coefficient 1,75). Calculez l'annuité d'amortissement dégressif fiscal de N (en euros).",
+   "a": 15750,
+   "unit": "€",
+   "tol": 1,
+   "why": "Taux dégressif = 100 % / 5 × 1,75 = 35 %. Première annuité : prorata en mois à compter du premier jour du mois d'acquisition (avril à décembre = 9 mois) : 60 000 × 35 % × 9/12 = 15 750 €. En dégressif, le prorata se calcule en mois et non en jours, et la première annuité porte sur le coût d'entrée.",
+   "src": "CGI art. 39 A ; CGI ann. II, art. 23 et 24",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Suite : le même matériel (60 000 €, 1er avril N, dégressif 35 %, annuité N de 15 750 €). Calculez l'annuité dégressive de N+1 (en euros, deux décimales).",
+   "a": 15487.5,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Le dégressif s'applique à la VNC fiscale en début d'exercice : 60 000 − 15 750 = 44 250. Annuité N+1 = 44 250 × 35 % = 15 487,50 €. On vérifie que le taux linéaire sur la durée restante (100 % / 4,25 ans ≈ 23,5 %) reste inférieur à 35 % : on conserve le dégressif. Une annuité pleine sur 12 mois, sans prorata, s'applique dès la deuxième année.",
+   "src": "CGI art. 39 A ; CGI ann. II, art. 23",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Matériel de 60 000 € mis en service le 1er avril N : amortissement comptable linéaire sur 5 ans, amortissement fiscal dégressif de 15 750 € en N. Calculez l'amortissement dérogatoire à doter en N (en euros).",
+   "a": 6750,
+   "unit": "€",
+   "tol": 1,
+   "why": "Amortissement comptable N = 60 000 × 20 % × 9/12 = 9 000. Amortissement fiscal N = 15 750. Dérogatoire = fiscal − comptable = 15 750 − 9 000 = 6 750 €, comptabilisé au débit de 68725 et au crédit de 145 (provision réglementée). Si le comptable avait dépassé le fiscal, il aurait fallu reprendre (145 / 78725) et non doter.",
+   "src": "PCG art. 214-13 ; CGI art. 39 A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, l'amortissement fiscal d'un matériel s'élève à 15 750 € et son amortissement comptable à 9 000 €. L'écriture de dotation comptable (6811 / 28154) a déjà été passée. Enregistrez l'amortissement dérogatoire.",
+   "lib": "Dotation aux amortissements dérogatoires",
+   "palette": [
+    "68725",
+    "145",
+    "6811",
+    "28154",
+    "78725",
+    "1572"
+   ],
+   "sol": [
+    [
+     {
+      "a": "68725",
+      "d": 6750,
+      "c": 0
+     },
+     {
+      "a": "145",
+      "d": 0,
+      "c": 6750
+     }
+    ]
+   ],
+   "why": "Fiscal 15 750 − comptable 9 000 = 6 750 € de dérogatoire : charge exceptionnelle 68725 (dotation aux provisions réglementées – amortissements dérogatoires, compte maintenu par le PCG 2025) et provision réglementée 145 au passif, dans les capitaux propres. Le compte 28154 n'enregistre que l'amortissement économique ; 78725 servirait à la reprise ; 1572 est la provision pour gros entretien.",
+   "src": "PCG art. 214-13 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En N+4, l'amortissement comptable d'un bien est de 12 000 € et son amortissement fiscal de 8 000 €. Le compte 145 présente un solde créditeur de 9 000 € relatif à ce bien. Quelle écriture passe-t-on ?",
+   "opts": [
+    "Débit 68725, crédit 145 pour 4 000",
+    "Débit 145, crédit 78725 pour 4 000",
+    "Débit 145, crédit 78725 pour 9 000",
+    "Débit 6811, crédit 145 pour 4 000"
+   ],
+   "a": 1,
+   "why": "Quand l'amortissement comptable dépasse l'amortissement fiscal, l'entreprise reprend l'amortissement dérogatoire antérieur pour la différence : 12 000 − 8 000 = 4 000, débit 145, crédit 78725. La reprise totale de 9 000 n'interviendrait qu'à la cession ou en fin de plan ; une dotation (68725) irait dans le mauvais sens ; 6811 est réservé à l'amortissement économique.",
+   "src": "PCG art. 214-13 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions l'amortissement dégressif fiscal exige-t-il ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le bien est acquis neuf",
+    "La durée normale d'utilisation est au moins égale à trois ans",
+    "Le bien figure parmi les biens d'équipement éligibles (pas les véhicules de tourisme, par exemple)",
+    "Le bien est financé par emprunt",
+    "Le bien est un immeuble d'habitation"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "CGI art. 39 A et ann. II art. 22 : le dégressif est réservé aux biens d'équipement neufs (matériels et outillages industriels, matériels de manutention, installations de sécurité, matériels informatiques, immeubles industriels à construction légère…) d'une durée au moins égale à trois ans. Les voitures particulières et les immeubles d'habitation en sont exclus ; le mode de financement est indifférent.",
+   "src": "CGI art. 39 A ; CGI ann. II, art. 22",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une petite entreprise au sens de l'article L. 123-16 du Code de commerce acquiert une machine non décomposable dont la durée d'usage fiscale est de 5 ans alors qu'elle prévoit de l'utiliser 8 ans. Que lui permet le PCG ?",
+   "opts": [
+    "De l'amortir sur 5 ans dans ses comptes individuels, par simplification, sans dérogatoire",
+    "De ne pas l'amortir",
+    "De l'amortir obligatoirement sur 8 ans avec dérogatoire",
+    "De choisir chaque année la durée la plus avantageuse"
+   ],
+   "a": 0,
+   "why": "PCG art. 214-13 : les petites entreprises peuvent retenir la durée d'usage fiscale pour amortir, dans leurs comptes individuels, les immobilisations non décomposables à l'origine. Cette mesure de simplification évite la double tenue (plan comptable sur 8 ans et dérogatoires). Le choix doit être permanent, pas annuel ; un bien utilisé s'amortit toujours.",
+   "src": "PCG art. 214-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Machine acquise 100 000 € le 1er janvier N, amortie en linéaire sur 10 ans. Début N+4, l'entreprise estime que la durée résiduelle n'est plus que de 3 ans. Quelle est la dotation de N+4 ?",
+   "opts": [
+    "10 000 €",
+    "20 000 €",
+    "33 333 €",
+    "16 667 €"
+   ],
+   "a": 1,
+   "why": "Amortissements cumulés fin N+3 : 10 000 × 4 = 40 000 ; VNC 60 000. Révision prospective (changement d'estimation, PCG art. 122-3 et 214-13) : 60 000 / 3 = 20 000 € par an. Garder 10 000 ignorerait la révision ; 33 333 répartirait à tort le coût d'origine sur 3 ans ; 16 667 correspond à une VNC erronée de 50 000.",
+   "src": "PCG art. 122-3 et 214-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Parmi les situations suivantes, lesquelles constituent un indice de perte de valeur imposant un test de dépréciation ? (plusieurs réponses possibles)",
+   "opts": [
+    "La valeur de marché de l'actif a baissé bien plus que ne le laissait prévoir le passage du temps",
+    "Un changement technologique rend le matériel partiellement obsolète",
+    "Les performances de l'actif sont nettement inférieures aux prévisions",
+    "L'actif a été intégralement financé par subvention",
+    "La durée d'utilisation prévue est de dix ans"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 214-15 : les indices externes (baisse de valeur de marché, évolution technologique, économique ou juridique, hausse des taux) et internes (obsolescence, dégradation, performances inférieures, abandon programmé) déclenchent le test. Le mode de financement et la durée du plan ne sont pas des indices de perte de valeur.",
+   "src": "PCG art. 214-15",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "À la clôture N, une installation a une VNC de 60 000 €. Un indice de perte de valeur existe : sa valeur vénale nette est estimée à 42 000 € et sa valeur d'usage à 48 000 €. Calculez la dépréciation à comptabiliser (en euros).",
+   "a": 12000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Valeur actuelle = max(valeur vénale 42 000 ; valeur d'usage 48 000) = 48 000 (PCG art. 214-6). Dépréciation = VNC − valeur actuelle = 60 000 − 48 000 = 12 000 € (6816 / 29xx). Retenir la valeur vénale (dépréciation de 18 000) serait une erreur : l'entreprise qui conserve l'actif en tirera 48 000 d'avantages économiques.",
+   "src": "PCG art. 214-6 et 214-16",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, le test de dépréciation d'un matériel industriel (VNC 60 000 €, valeur actuelle 48 000 €) conduit à constater une dépréciation. Enregistrez-la.",
+   "lib": "Dépréciation d'un matériel industriel",
+   "palette": [
+    "6816",
+    "2915",
+    "6811",
+    "28154",
+    "7816",
+    "6876"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6816",
+      "d": 12000,
+      "c": 0
+     },
+     {
+      "a": "2915",
+      "d": 0,
+      "c": 12000
+     }
+    ]
+   ],
+   "why": "Dépréciation = 60 000 − 48 000 = 12 000. Dotation aux dépréciations des immobilisations (charge d'exploitation 6816) et compte de dépréciation 2915 (le 9 en deuxième position : dépréciation, par opposition au 8 des amortissements 28154). Le compte 6811 est réservé aux amortissements, 7816 à la reprise de dépréciation ; 6876 (dépréciations exceptionnelles) ne vaut que pour un événement majeur et inhabituel.",
+   "src": "PCG art. 214-16 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Après la dépréciation de 12 000 € constatée fin N, la VNC du matériel est de 48 000 € pour une durée résiduelle de 4 ans (linéaire). Quelle est la dotation aux amortissements de N+1 ?",
+   "opts": [
+    "15 000 €",
+    "12 000 €",
+    "20 000 €",
+    "10 000 €"
+   ],
+   "a": 1,
+   "why": "La dépréciation modifie le plan de façon prospective (PCG art. 214-19) : la nouvelle base est la VNC dépréciée, 48 000 / 4 = 12 000 € par an. Continuer à amortir 15 000 (60 000 / 4) conduirait à une VNC négative ; les autres montants n'ont pas de fondement. Fiscalement, l'écart avec l'amortissement initial est neutralisé par la déduction de la dépréciation.",
+   "src": "PCG art. 214-19",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Fin N+1, la valeur actuelle du matériel déprécié en N remonte nettement. Quelle règle encadre la reprise de la dépréciation ?",
+   "opts": [
+    "La reprise est interdite pour toutes les immobilisations",
+    "La reprise est limitée : la VNC après reprise ne peut dépasser la VNC qui aurait existé sans dépréciation",
+    "La reprise est intégrale et porte sur le montant initial de 12 000 €",
+    "La reprise est enregistrée en 7811"
+   ],
+   "a": 1,
+   "why": "PCG art. 214-19 : la dépréciation est reprise (29xx / 7816) lorsque la valeur actuelle redevient supérieure à la VNC, mais sans porter la VNC au-delà de celle qu'aurait donnée le plan initial sans dépréciation. Ce plafond diminue chaque année avec l'amortissement. Le compte 7811 concerne les reprises d'amortissements ; l'interdiction de reprise ne vise que le fonds commercial.",
+   "src": "PCG art. 214-19",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "q": "Concernant le fonds commercial dans les comptes individuels, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il est présumé avoir une durée d'utilisation non limitée et n'est alors pas amorti",
+    "Il fait l'objet d'un test de dépréciation à chaque clôture, même sans indice de perte de valeur",
+    "Une petite entreprise peut l'amortir sur dix ans",
+    "Sa dépréciation peut être reprise lorsque sa valeur remonte",
+    "Il est obligatoirement amorti sur cinq ans"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 214-3 : présomption de durée non limitée (pas d'amortissement) assortie d'un test annuel systématique ; option d'amortissement sur dix ans pour les petites entreprises ; amortissement sur la durée limitée lorsqu'elle existe. La dépréciation du fonds commercial est irréversible (art. 214-19) et il n'existe aucune durée obligatoire de cinq ans.",
+   "src": "PCG art. 214-3 et 214-19",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le fonds commercial acquis par une petite entreprise en 2024 et amorti comptablement sur dix ans :",
+   "opts": [
+    "Donne lieu à un amortissement jamais déductible fiscalement",
+    "Donne lieu à un amortissement déductible fiscalement grâce au dispositif temporaire visant les fonds acquis entre 2022 et 2025",
+    "Doit être réintégré intégralement l'année de l'acquisition",
+    "N'est amortissable que si un CAC l'autorise"
+   ],
+   "a": 1,
+   "why": "Par principe, l'amortissement du fonds commercial n'est pas déductible (CGI art. 39, 1-2°). La loi de finances pour 2022 a ouvert une exception temporaire : l'amortissement comptabilisé des fonds acquis entre le 1er janvier 2022 et le 31 décembre 2025 est déductible, ce qui vise précisément les petites entreprises utilisant l'option de dix ans. Hors de cette fenêtre, l'amortissement est réintégré chaque année sur le tableau 2058-A.",
+   "src": "CGI art. 39, 1-2° (LF 2022, art. 23)",
+   "fiab": "millésimé 2025",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Sous le PCG 2025, la cession d'un matériel industriel se comptabilise avec les comptes :",
+   "opts": [
+    "675 et 775",
+    "657 et 757",
+    "667 et 767",
+    "678 et 778"
+   ],
+   "a": 1,
+   "why": "Le règlement ANC 2022-06 a sorti les cessions d'immobilisations du résultat exceptionnel : la VNC va en 657 Valeurs comptables des immobilisations incorporelles et corporelles cédées et le prix en 757 Produits des cessions d'immobilisations incorporelles et corporelles. Les comptes 675/775 sont supprimés ; 667/767 concernent les immobilisations financières et VMP ; 678/778 les charges et produits exceptionnels liés à des événements majeurs et inhabituels.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-57",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "ecriture",
+   "q": "Le 30 juin N, Transmo cède un véhicule utilitaire (coût 30 000 €, amortissements cumulés à cette date après dotation complémentaire : 25 000 €) pour 12 000 € HT, TVA 20 %, à crédit. Enregistrez le prix de cession et la sortie de l'actif.",
+   "lib": "Cession d'un véhicule utilitaire",
+   "palette": [
+    "462",
+    "757",
+    "44571",
+    "28182",
+    "657",
+    "2182",
+    "411",
+    "6871"
+   ],
+   "sol": [
+    [
+     {
+      "a": "462",
+      "d": 14400,
+      "c": 0
+     },
+     {
+      "a": "757",
+      "d": 0,
+      "c": 12000
+     },
+     {
+      "a": "44571",
+      "d": 0,
+      "c": 2400
+     },
+     {
+      "a": "28182",
+      "d": 25000,
+      "c": 0
+     },
+     {
+      "a": "657",
+      "d": 5000,
+      "c": 0
+     },
+     {
+      "a": "2182",
+      "d": 0,
+      "c": 30000
+     }
+    ]
+   ],
+   "why": "Prix : créance sur cession 462 (et non 411, réservé aux clients de l'activité courante) pour 14 400 TTC, produit 757 pour 12 000 et TVA collectée 44571 pour 2 400. Sortie : on solde les amortissements 28182 (25 000) et le coût 2182 (30 000) ; la VNC 30 000 − 25 000 = 5 000 va en 657. Résultat de cession : 12 000 − 5 000 = + 7 000. Le compte 6871 (amortissement exceptionnel) n'a pas sa place dans une cession.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-57",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un matériel acquis 48 000 € le 1er janvier N−3 est amorti en linéaire sur 6 ans. Il est cédé le 30 juin N pour 22 000 € HT. Calculez le résultat de cession (en euros ; nombre négatif si moins-value).",
+   "a": 2000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Dotation annuelle 48 000 / 6 = 8 000. Amortissements cumulés : 3 années pleines (N−3, N−2, N−1) = 24 000, plus 6 mois de N : 4 000, soit 28 000. VNC = 48 000 − 28 000 = 20 000. Résultat de cession = 757 − 657 = 22 000 − 20 000 = + 2 000 € (plus-value). Oublier la dotation complémentaire de N donnerait une VNC de 24 000 et une moins-value fictive de 2 000.",
+   "src": "PCG art. 214-13 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un matériel totalement obsolète (coût 20 000 €, amortissements cumulés 17 000 €) est mis au rebut sans aucune valeur de récupération. Quelle affirmation est exacte ?",
+   "opts": [
+    "Aucune écriture n'est nécessaire puisque rien n'est encaissé",
+    "On constate la sortie : débit 28xx pour 17 000, débit 657 pour la VNC de 3 000, crédit 2xx pour 20 000",
+    "On enregistre un produit de cession 757 égal à la VNC",
+    "On maintient le bien à l'actif jusqu'à la fin du plan"
+   ],
+   "a": 1,
+   "why": "Un bien hors d'usage ne procure plus d'avantages économiques : il doit sortir de l'actif. Faute de prix, aucun produit n'est constaté ; la VNC de 3 000 est une charge (657, la valeur comptable sortie ; l'amortissement exceptionnel 6871 peut aussi être pratiqué avant la sortie). Laisser le bien au bilan violerait l'image fidèle.",
+   "src": "PCG art. 211-1 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un entrepôt détruit par un incendie donne lieu à une indemnité d'assurance de 180 000 €. Sous le PCG 2025, l'indemnité est enregistrée :",
+   "opts": [
+    "En 797 Transferts de charges exceptionnelles",
+    "En 7587 Indemnités d'assurance, produit d'exploitation",
+    "En 757 Produits des cessions d'immobilisations",
+    "En 771 Produits exceptionnels sur opérations de gestion"
+   ],
+   "a": 1,
+   "why": "Le règlement ANC 2022-06 supprime les transferts de charges (791, 796, 797) et crée le compte 7587 pour les indemnités d'assurance reçues, classées en produits d'exploitation. Le bien détruit sort de l'actif par 657 ; il n'y a pas de cession (757). Le compte 771 n'existe plus sous cette forme : l'exceptionnel est limité aux événements majeurs et inhabituels (678/778).",
+   "src": "Règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Lors de la cession d'une immobilisation, quelles opérations complémentaires doivent être réalisées ? (plusieurs réponses possibles)",
+   "opts": [
+    "Doter l'amortissement du 1er janvier à la date de cession",
+    "Reprendre le solde des amortissements dérogatoires relatifs au bien",
+    "Virer au résultat le solde de la subvention d'investissement ayant financé le bien",
+    "Annuler les amortissements des exercices antérieurs par le crédit de 7811",
+    "Reprendre la TVA déduite à l'acquisition dans tous les cas"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "La cession suppose une dotation complémentaire, la reprise du compte 145 (78725) pour la part liée au bien et la reprise du reliquat de subvention (139 / 747). Les amortissements antérieurs ne sont pas annulés par 7811 : ils sont soldés par le débit de 28xx lors de la sortie. La régularisation de TVA ne vise que les cessions non soumises à TVA dans le délai de régularisation.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 312-1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Dans les comptes individuels du preneur, la redevance annuelle d'un crédit-bail mobilier de 9 000 € HT est comptabilisée :",
+   "opts": [
+    "Au débit de 2154 (le bien est à l'actif) et de 164 en remboursement",
+    "Au débit de 6122 Crédit-bail mobilier",
+    "Au débit de 6125 Crédit-bail immobilier",
+    "Au débit de 275 Dépôts et cautionnements versés"
+   ],
+   "a": 1,
+   "why": "Le PCG retient l'approche juridique : le preneur n'est pas propriétaire, le bien n'est pas à son actif et la redevance est une charge externe (6122 pour un bien mobilier, 6125 pour un immeuble). Le compte 275 n'enregistre que le dépôt de garantie. L'inscription à l'actif avec une dette financière est le retraitement des comptes consolidés et d'IFRS 16.",
+   "src": "PCG art. 942-61",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "À la levée d'option d'un crédit-bail, le prix de levée est de 3 000 € pour un matériel dont la valeur d'origine était de 45 000 € et dont l'entreprise prévoit encore 2 ans d'utilisation. Que fait-on ?",
+   "opts": [
+    "On inscrit le matériel à l'actif pour 45 000 € et on l'amortit sur sa durée d'origine",
+    "On inscrit le matériel à l'actif pour 3 000 € et on l'amortit sur 2 ans",
+    "On passe 3 000 € en charges de crédit-bail 6122",
+    "On inscrit 3 000 € en 275"
+   ],
+   "a": 1,
+   "why": "La levée d'option est une acquisition : le bien entre à l'actif pour le prix de levée (3 000 €), augmenté des frais directement attribuables, et est amorti sur sa durée d'utilisation résiduelle (2 ans). La valeur d'origine de 45 000 € ne figure qu'en annexe (retraitement). Le prix de levée n'est pas une redevance, et 275 ne concerne que le dépôt de garantie, qui est d'ailleurs restitué ou imputé à ce moment.",
+   "src": "PCG art. 213-8 et 833-11",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément selon le compte où il figure dans les comptes individuels sous le PCG 2025.",
+   "cats": [
+    "657",
+    "757",
+    "7587",
+    "6122",
+    "68725"
+   ],
+   "items": [
+    [
+     "VNC d'un matériel cédé",
+     0
+    ],
+    [
+     "Prix de vente HT d'un véhicule cédé",
+     1
+    ],
+    [
+     "Indemnité versée par l'assureur après un sinistre",
+     2
+    ],
+    [
+     "Redevance de crédit-bail d'une machine",
+     3
+    ],
+    [
+     "Excédent de l'amortissement fiscal dégressif sur l'amortissement comptable",
+     4
+    ],
+    [
+     "VNC d'un brevet cédé",
+     0
+    ]
+   ],
+   "why": "657 reçoit la valeur comptable des immobilisations incorporelles et corporelles sorties (matériel, brevet), 757 le prix de cession, 7587 les indemnités d'assurance (nouveau compte du PCG 2025, en remplacement des transferts de charges), 6122 les redevances de crédit-bail mobilier et 68725 les dotations aux amortissements dérogatoires.",
+   "src": "Règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "En IFRS (IFRS 16), le locataire d'un contrat de location de trois ans sur un matériel comptabilise, contrairement au PCG :",
+   "opts": [
+    "Une charge de loyer et rien d'autre",
+    "Un droit d'utilisation à l'actif et une dette de loyers au passif",
+    "Le bien en stock",
+    "Une provision pour loyers futurs"
+   ],
+   "a": 1,
+   "why": "IFRS 16 impose au preneur un modèle unique : actif « droit d'utilisation » amorti et dette de location actualisée, quelle que soit la qualification juridique (sauf exemptions pour les contrats courts ou de faible valeur). Le PCG conserve l'approche juridique (charge 612), le retraitement n'intervenant qu'en annexe ou en consolidation. C'est une divergence majeure à connaître pour le DSCG.",
+   "src": "IFRS 16 ; PCG art. 942-61",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un bien acquis 36 000 € est amorti en linéaire sur 6 ans en comptabilité ; fiscalement l'entreprise applique la durée d'usage de 4 ans en linéaire. Quelle est la dotation aux amortissements dérogatoires de la première année pleine ?",
+   "opts": [
+    "3 000 €",
+    "6 000 €",
+    "9 000 €",
+    "15 000 €"
+   ],
+   "a": 0,
+   "why": "Comptable : 36 000 / 6 = 6 000. Fiscal : 36 000 / 4 = 9 000. Dérogatoire = 9 000 − 6 000 = 3 000 € (68725 / 145) pendant quatre ans, puis reprise de 6 000 par an (145 / 78725) les deux dernières années, quand l'amortissement fiscal est nul et le comptable de 6 000. Le total des dotations (12 000) égale celui des reprises : le compte 145 est soldé en fin de plan.",
+   "src": "PCG art. 214-13 ; CGI art. 39 B",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

@@ -1,0 +1,520 @@
+{
+ "id": "ue3-03",
+ "ue": "UE3",
+ "ordre": 3,
+ "title": "Exécution du contrat : durée du travail, rémunération, pouvoir de l'employeur, suspension",
+ "resume": "Compter les heures supplémentaires et les congés, appliquer le SMIC et les règles de paie, exercer le pouvoir disciplinaire dans les délais et gérer maladie, maternité et inaptitude.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Durée légale, heures supplémentaires et durées maximales",
+   "html": "<p>La <b>durée légale</b> est de <span class=\"mono\">35 heures</span> par semaine civile (<span class=\"mono\">C. trav., art. L. 3121-27</span>) ; c'est un seuil de déclenchement des heures supplémentaires, pas un maximum. Seul le <b>temps de travail effectif</b> compte : le salarié est à la disposition de l'employeur et ne peut vaquer à ses occupations (pauses et trajets domicile-travail exclus).</p>\n<p><b>Heures supplémentaires</b> : décomptées par semaine, à la demande au moins implicite de l'employeur. Majoration légale de <b>25 %</b> pour les 8 premières (36e à 43e heure) et <b>50 %</b> au-delà (<span class=\"mono\">L. 3121-36</span>) ; un accord collectif peut fixer un autre taux, au minimum <b>10 %</b>. <b>Contingent annuel</b> : 220 heures par salarié à défaut d'accord (<span class=\"mono\">D. 3121-24</span>). Au-delà du contingent, chaque heure ouvre droit à une <b>contrepartie obligatoire en repos</b> : <span class=\"mono\">50 %</span> dans les entreprises de 20 salariés au plus, <span class=\"mono\">100 %</span> au-delà (<span class=\"mono\">L. 3121-38</span>). Un accord peut remplacer le paiement par un repos compensateur équivalent. Les heures supplémentaires sont exonérées d'impôt sur le revenu dans la limite de 7 500 € par an et bénéficient d'une réduction de cotisations salariales.</p>\n<p><b>Durées maximales</b> : <span class=\"mono\">10 h</span> par jour (12 h par accord), <span class=\"mono\">48 h</span> par semaine absolue, <span class=\"mono\">44 h</span> en moyenne sur 12 semaines consécutives (46 h par accord). <b>Repos quotidien</b> de 11 h consécutives, <b>repos hebdomadaire</b> de 24 h + 11 h = <span class=\"mono\">35 h</span>, en principe le dimanche ; pause de 20 minutes dès 6 h de travail.</p>"
+  },
+  {
+   "h": "Forfaits, aménagement du temps, travail de nuit, jours fériés",
+   "html": "<p><b>Forfait annuel en jours</b> (<span class=\"mono\">L. 3121-58 et s.</span>) : réservé aux cadres autonomes et aux salariés dont la durée ne peut être prédéterminée ; il suppose un <b>accord collectif</b> et une <b>convention individuelle écrite</b>. Plafond légal de <span class=\"mono\">218 jours</span> par an ; renonciation à des jours de repos possible avec majoration d'au moins 10 % ; l'employeur doit suivre la charge de travail et garantir les repos (à défaut, le forfait est privé d'effet et les heures supplémentaires sont dues). Le forfait en heures (hebdomadaire, mensuel ou annuel) inclut un nombre déterminé d'heures supplémentaires.</p>\n<p><b>Aménagement du temps de travail</b> sur une période supérieure à la semaine, jusqu'à trois ans par accord collectif ; sans accord, l'employeur peut organiser le temps sur 4 semaines au plus (9 semaines dans les entreprises de moins de 50 salariés). Les heures supplémentaires sont alors celles qui dépassent 1 607 h par an ou la moyenne de 35 h sur la période.</p>\n<p><b>Travail de nuit</b> : tout travail entre 21 h et 6 h (période de 9 h comprenant l'intervalle minuit-5 h). Le travailleur de nuit (au moins 3 h de nuit deux fois par semaine ou 270 h par an) bénéficie de contreparties en repos, d'un suivi médical renforcé et de durées limitées (8 h par jour, 40 h en moyenne sur 12 semaines). Le recours est exceptionnel et justifié par la continuité de l'activité.</p>\n<p><b>Jours fériés</b> : 11 fêtes légales ; seul le <b>1er mai</b> est obligatoirement chômé et payé (salaire doublé s'il est travaillé). Les autres jours fériés sont chômés selon l'accord collectif ou l'usage ; le chômage d'un jour férié n'entraîne pas de perte de salaire pour les salariés mensualisés ayant trois mois d'ancienneté. La <b>journée de solidarité</b> (7 h non rémunérées) finance l'autonomie.</p>"
+  },
+  {
+   "h": "Les congés payés : acquisition, prise, indemnité, maladie",
+   "html": "<p><b>Acquisition</b> : <span class=\"mono\">2,5 jours ouvrables</span> par mois de travail effectif, soit <span class=\"mono\">30 jours</span> (5 semaines) par an (<span class=\"mono\">L. 3141-3</span>), période de référence du 1er juin au 31 mai à défaut d'accord. Sont assimilés à du travail effectif : congé maternité et paternité, formation, repos compensateur, accident du travail. Le résultat est arrondi au nombre entier supérieur.</p>\n<p><b>Depuis la loi n° 2024-364 du 22 avril 2024</b>, le salarié en arrêt pour maladie ou accident <b>non professionnel</b> acquiert <span class=\"mono\">2 jours ouvrables</span> par mois, dans la limite de <span class=\"mono\">24 jours</span> par période de référence ; en cas d'accident du travail ou de maladie professionnelle, l'acquisition est de 2,5 jours par mois sans limite de durée. Les congés non pris du fait d'un arrêt sont <b>reportés 15 mois</b> à compter de l'information donnée par l'employeur dans le mois suivant la reprise.</p>\n<p><b>Prise</b> : la période de prise inclut toujours le <b>1er mai – 31 octobre</b> ; le congé principal est de 12 jours ouvrables continus au minimum et 24 au maximum ; des <b>jours de fractionnement</b> sont dus si une partie du congé principal est prise hors période (2 jours si 6 jours ou plus, 1 jour pour 3 à 5 jours). L'employeur fixe l'ordre des départs après avis du CSE et ne peut modifier les dates moins d'un mois avant, sauf circonstances exceptionnelles.</p>\n<p><b>Indemnité de congés payés</b> (<span class=\"mono\">L. 3141-24</span>) : le plus élevé entre le <b>dixième</b> de la rémunération brute de la période de référence et le <b>maintien de salaire</b>. À la rupture, les congés non pris sont payés par une indemnité compensatrice.</p>"
+  },
+  {
+   "h": "Rémunération : SMIC, égalité, bulletin de paie, saisies, partage de la valeur",
+   "html": "<p>Le <b>SMIC</b> (<span class=\"mono\">L. 3231-2 et s.</span>) est revalorisé chaque 1er janvier (inflation des 20 % des ménages les plus modestes + moitié du gain de pouvoir d'achat du salaire horaire de base ouvrier), et automatiquement en cours d'année si l'inflation dépasse 2 %. Après la hausse du 1er novembre 2024, il est resté en 2025 à <span class=\"mono\">11,88 €</span> bruts de l'heure, soit <span class=\"mono\">1 801,80 €</span> par mois pour 35 h (151,67 h). Payer moins est une infraction ; l'indexation des salaires sur le SMIC est interdite. Les <b>minima conventionnels</b> s'ajoutent : le salarié reçoit le plus élevé des deux.</p>\n<p><b>Égalité</b> : « à travail égal, salaire égal » (Cass. soc. 29 octobre 1996, <i>Ponsolle</i>) ; égalité de rémunération femmes-hommes pour un même travail ou un travail de valeur égale (<span class=\"mono\">L. 3221-2</span>) ; différences admises si justifiées par des éléments objectifs et pertinents.</p>\n<p><b>Paiement</b> : au moins une fois par mois (mensualisation), acompte possible à la quinzaine ; <b>bulletin de paie</b> obligatoire, remis par défaut sous forme électronique sauf opposition, mentions obligatoires (convention, emploi, brut, cotisations, net à payer, net social, cumul des heures supplémentaires) ; l'acceptation sans réserve ne vaut pas renonciation (prescription 3 ans). <b>Saisie sur rémunération</b> : barème progressif par tranches, fraction totalement insaisissable égale au RSA d'une personne seule ; depuis le 1er juillet 2025 la procédure est confiée aux commissaires de justice.</p>\n<p><b>Prime de partage de la valeur</b> (PPV) : facultative, jusqu'à 3 000 € (6 000 € avec intéressement ou participation), exonérée de cotisations sociales. Depuis 2025, les entreprises de 11 à 49 salariés réalisant un bénéfice d'au moins 1 % du chiffre d'affaires trois années de suite doivent mettre en place un dispositif de partage de la valeur.</p>"
+  },
+  {
+   "h": "Pouvoir de direction et pouvoir disciplinaire",
+   "html": "<p>L'employeur dirige, contrôle et sanctionne, dans le respect des libertés individuelles (restrictions justifiées par la tâche et proportionnées, <span class=\"mono\">L. 1121-1</span>) et après information du CSE et des salariés pour tout dispositif de surveillance.</p>\n<p>Une <b>sanction</b> est toute mesure, autre que des observations verbales, prise à la suite d'un agissement fautif et de nature à affecter la présence, la fonction, la carrière ou la rémunération (<span class=\"mono\">L. 1331-1</span>). Échelle usuelle : avertissement, blâme, <b>mise à pied disciplinaire</b> (durée maximale à fixer dans le règlement intérieur), mutation, rétrogradation (qui suppose l'accord du salarié car elle modifie le contrat), licenciement. Les <b>amendes et sanctions pécuniaires</b> sont interdites (<span class=\"mono\">L. 1331-2</span>) ; une même faute ne peut être sanctionnée deux fois.</p>\n<p><b>Procédure</b> (<span class=\"mono\">L. 1332-1 et s.</span>) : l'avertissement exige une notification écrite motivée. Pour toute sanction plus lourde : <b>convocation</b> écrite à un entretien (objet, date, heure, lieu, possibilité d'assistance), <b>entretien</b> où le salarié s'explique, puis <b>notification</b> écrite et motivée au plus tôt <span class=\"mono\">2 jours ouvrables</span> et au plus tard <span class=\"mono\">1 mois</span> après l'entretien. Une <b>mise à pied conservatoire</b> immédiate est possible dans l'attente d'une sanction pour faute grave.</p>\n<div class=\"note\"><b>Délais à retenir.</b> Aucun fait fautif ne peut être poursuivi au-delà de <b>2 mois</b> après que l'employeur en a eu connaissance (<span class=\"mono\">L. 1332-4</span>), et une sanction antérieure de plus de <b>3 ans</b> ne peut plus être invoquée (<span class=\"mono\">L. 1332-5</span>).</div>\n<p>Le juge contrôle la régularité, la réalité de la faute et la proportionnalité ; il peut annuler toute sanction irrégulière ou injustifiée, sauf le licenciement qui relève d'un régime propre.</p>"
+  },
+  {
+   "h": "Modification du contrat et changement des conditions de travail",
+   "html": "<p>La distinction gouverne le droit de refus du salarié.</p>\n<ul>\n<li><b>Modification du contrat de travail</b> : elle touche un <b>élément essentiel</b> (rémunération, même pour un montant minime ; qualification ; durée du travail ; lieu de travail hors du <b>secteur géographique</b> sans clause de mobilité ; passage d'un horaire de jour à un horaire de nuit). Elle exige l'<b>accord exprès</b> du salarié ; son refus n'est jamais fautif. L'employeur renonce ou engage un licenciement fondé sur le motif à l'origine de la modification.</li>\n<li><b>Changement des conditions de travail</b> : il relève du pouvoir de direction (nouvelle répartition des horaires sans changement de durée, mutation dans le même secteur géographique, nouvelles tâches conformes à la qualification). Il <b>s'impose</b> au salarié ; le refus constitue une faute pouvant justifier un licenciement, mais pas nécessairement une faute grave.</li>\n</ul>\n<p>Un changement en apparence mineur devient une modification s'il bouleverse l'économie du contrat (atteinte excessive à la vie personnelle, horaires discontinus) ou si l'horaire avait été <b>contractualisé</b>.</p>\n<p><b>Modification pour motif économique</b> (<span class=\"mono\">L. 1222-6</span>) : proposition par lettre recommandée avec avis de réception, délai de réflexion d'<b>un mois</b> (15 jours en redressement ou liquidation) ; le <b>silence vaut acceptation</b>. Le refus conduit, le cas échéant, à un licenciement économique avec ses garanties (reclassement, CSP). L'accord de performance collective permet en revanche d'imposer collectivement une modification (voir chapitre 1).</p>"
+  },
+  {
+   "h": "Suspension : maladie, inaptitude, maternité, accident du travail",
+   "html": "<p><b>Maladie non professionnelle</b> : le salarié justifie son absence dans les 48 h (certificat). La sécurité sociale verse des <b>indemnités journalières</b> (50 % du salaire journalier de base, après 3 jours de carence). L'employeur complète en vertu de la loi de <b>mensualisation</b> (<span class=\"mono\">L. 1226-1</span>, <span class=\"mono\">D. 1226-1</span>) : à partir d'<b>un an d'ancienneté</b>, après 7 jours de carence (aucune pour un accident du travail), <span class=\"mono\">90 %</span> du brut pendant 30 jours puis <span class=\"mono\">2/3</span> pendant 30 jours, chaque durée augmentant de 10 jours par tranche de 5 ans d'ancienneté (maximum 90 jours chacune). La maladie ne rompt pas le contrat ; licencier en raison de l'état de santé est discriminatoire, sauf perturbation du fonctionnement de l'entreprise exigeant un remplacement définitif.</p>\n<p><b>Inaptitude</b> : constatée par le médecin du travail (étude de poste, échange avec l'employeur). L'employeur doit rechercher un <b>reclassement</b> adapté après avis du CSE, sauf dispense expresse de l'avis médical. À défaut de reclassement ou de licenciement dans le <b>mois</b> suivant l'avis, il reprend le paiement du salaire (<span class=\"mono\">L. 1226-4</span>). En cas d'inaptitude d'origine professionnelle : indemnité spéciale de licenciement <b>doublée</b> et indemnité compensatrice de préavis (<span class=\"mono\">L. 1226-14</span>).</p>\n<p><b>Maternité</b> : congé de <span class=\"mono\">16 semaines</span> (6 avant, 10 après), 26 semaines à partir du 3e enfant, 34 pour des jumeaux. <b>Protection</b> (<span class=\"mono\">L. 1225-4</span>) : licenciement interdit pendant la grossesse, le congé et les 10 semaines suivantes (sauf faute grave non liée à la grossesse ou impossibilité de maintenir le contrat), et absolue pendant le congé ; la nullité est encourue.</p>\n<p><b>Accident du travail</b> : contrat suspendu, licenciement interdit sauf faute grave ou impossibilité de maintien (<span class=\"mono\">L. 1226-9</span>), période assimilée à du travail pour l'ancienneté et les congés.</p>"
+  },
+  {
+   "h": "Congés familiaux et formation professionnelle",
+   "html": "<p><b>Congé de paternité et d'accueil de l'enfant</b> : <span class=\"mono\">25 jours</span> calendaires (32 en cas de naissances multiples), dont 4 jours obligatoires pris immédiatement après les 3 jours de congé de naissance payés par l'employeur ; le reste dans les 6 mois, fractionnable en deux périodes. <b>Congé parental d'éducation</b> : jusqu'aux 3 ans de l'enfant (1 an d'ancienneté), total ou à temps partiel. Autres congés : événements familiaux (mariage 4 jours, PACS 4, décès du conjoint 3, décès d'un enfant 12 ou 14), congé de proche aidant, de présence parentale, de solidarité familiale, <b>congé sabbatique</b> (6 à 11 mois, 36 mois d'activité professionnelle dont 6 dans l'entreprise), congé pour création d'entreprise.</p>\n<p><b>Formation</b> : l'employeur assure l'<b>adaptation</b> des salariés à leur poste et le maintien de leur capacité à occuper un emploi (<span class=\"mono\">L. 6321-1</span>). Le <b>plan de développement des compétences</b> regroupe les actions décidées par l'employeur : les formations obligatoires se déroulent sur le temps de travail et sont rémunérées. Le <b>compte personnel de formation</b> (CPF) est alimenté en euros (500 € par an, plafond 5 000 € ; 800 € et 8 000 € pour les salariés peu qualifiés) et mobilisé à l'initiative du salarié, avec une participation forfaitaire du titulaire depuis 2024 ; hors temps de travail, l'accord de l'employeur n'est pas requis. <b>Entretien professionnel</b> tous les 2 ans et état des lieux récapitulatif tous les 6 ans ; dans les entreprises de 50 salariés et plus, le défaut d'entretiens et d'au moins une formation non obligatoire entraîne un abondement correctif de 3 000 € sur le CPF. Autres dispositifs : projet de transition professionnelle, VAE, reconversion ou promotion par alternance (Pro-A).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. trav., art. L. 3121-27, L. 3121-36 et L. 3121-38 ; D. 3121-24",
+   "note": "Durée légale, majorations des heures supplémentaires, contrepartie obligatoire en repos, contingent de 220 heures"
+  },
+  {
+   "ref": "C. trav., art. L. 3121-18 à L. 3121-22, L. 3131-1, L. 3132-2",
+   "note": "Durées maximales, repos quotidien et hebdomadaire"
+  },
+  {
+   "ref": "C. trav., art. L. 3121-58 à L. 3121-64",
+   "note": "Forfait annuel en jours : 218 jours, accord collectif et convention individuelle"
+  },
+  {
+   "ref": "C. trav., art. L. 3141-3, L. 3141-5, L. 3141-5-1 et L. 3141-24 (loi n° 2024-364 du 22 avril 2024)",
+   "note": "Congés payés : acquisition, maladie, report, indemnité"
+  },
+  {
+   "ref": "C. trav., art. L. 3231-2 et s. ; décret n° 2024-951 du 23 octobre 2024",
+   "note": "SMIC : mécanisme de revalorisation et montant 2025 (11,88 €)"
+  },
+  {
+   "ref": "C. trav., art. L. 1331-1 à L. 1332-5",
+   "note": "Droit disciplinaire : définition, interdiction des amendes, procédure, prescriptions de 2 mois et 3 ans"
+  },
+  {
+   "ref": "C. trav., art. L. 1222-6",
+   "note": "Modification du contrat pour motif économique : délai de réflexion d'un mois"
+  },
+  {
+   "ref": "C. trav., art. L. 1226-1 et D. 1226-1 ; L. 1226-2 à L. 1226-4 ; L. 1226-14",
+   "note": "Maintien de salaire, inaptitude, reclassement, indemnité spéciale"
+  },
+  {
+   "ref": "C. trav., art. L. 1225-4, L. 1225-17 et L. 1225-35",
+   "note": "Maternité : durée du congé, protection ; congé de paternité de 25 jours"
+  },
+  {
+   "ref": "Cass. soc., 29 octobre 1996, n° 92-43.680 (Ponsolle)",
+   "note": "Principe « à travail égal, salaire égal »"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3121-27 et L. 3121-36",
+   "q": "Un salarié soumis à la durée légale travaille 40 heures au cours d'une semaine civile. Sans accord collectif particulier, les 5 heures au-delà de 35 heures sont :",
+   "opts": [
+    "Des heures normales, la durée maximale n'étant pas atteinte",
+    "Des heures supplémentaires majorées de 25 %",
+    "Des heures supplémentaires majorées de 50 %",
+    "Des heures complémentaires majorées de 10 %"
+   ],
+   "a": 1,
+   "why": "La durée légale de 35 h est le seuil de déclenchement des heures supplémentaires, non un maximum. Les huit premières heures supplémentaires (36e à 43e) sont majorées de 25 %, les suivantes de 50 % (L. 3121-36). Les heures complémentaires ne concernent que les salariés à temps partiel. La durée maximale (48 h) n'a rien à voir avec la qualification des heures."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3121-36",
+   "q": "Paul, payé 15 € bruts de l'heure et soumis à la durée légale, a travaillé 44 heures au cours d'une semaine. Aucun accord collectif ne modifie les majorations légales. Calculez le montant brut total de ses heures supplémentaires de la semaine (en €).",
+   "a": 172.5,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Heures supplémentaires : 44 − 35 = 9 h. Les 8 premières (36e à 43e) sont majorées de 25 % : 8 × 15 × 1,25 = 150 €. La 9e (44e heure) est majorée de 50 % : 1 × 15 × 1,50 = 22,50 €. Total : 172,50 €. Appliquer 25 % aux 9 heures donnerait 168,75 € et 50 % à toutes 202,50 € : ces deux réponses oublient le seuil de 8 heures."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3121-38 et D. 3121-24",
+   "q": "Dans une entreprise de 35 salariés sans accord sur le contingent, un salarié a effectué 235 heures supplémentaires au cours de l'année. Combien d'heures de contrepartie obligatoire en repos a-t-il acquises ?",
+   "a": 15,
+   "unit": "heures",
+   "tol": 0.5,
+   "why": "Le contingent légal est de 220 heures (D. 3121-24). Les heures effectuées au-delà, soit 235 − 220 = 15 h, ouvrent droit à une contrepartie obligatoire en repos de 100 % dans les entreprises de plus de 20 salariés (L. 3121-38) : 15 × 100 % = 15 heures de repos. Dans une entreprise de 20 salariés au plus, la contrepartie serait de 50 %, soit 7,5 heures. Les 220 premières heures sont simplement payées avec majoration."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3121-18, L. 3121-20, L. 3121-22, L. 3131-1, L. 3132-2",
+   "q": "Plusieurs réponses possibles. Quelles limites légales s'imposent à un salarié à temps plein en l'absence d'accord dérogatoire ?",
+   "opts": [
+    "10 heures de travail effectif par jour",
+    "48 heures de travail au cours d'une même semaine",
+    "44 heures en moyenne sur une période de 12 semaines consécutives",
+    "60 heures par semaine en cas de surcroît d'activité, sans autorisation",
+    "Un repos hebdomadaire de 24 heures seulement, sans repos quotidien accolé"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les durées maximales sont de 10 h par jour (12 h par accord), 48 h par semaine et 44 h en moyenne sur 12 semaines (46 h par accord). Dépasser 48 h jusqu'à 60 h n'est possible que sur autorisation administrative exceptionnelle. Le repos hebdomadaire est de 24 h auxquelles s'ajoutent les 11 h de repos quotidien, soit 35 h consécutives."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3121-58 et L. 3121-64",
+   "q": "Une convention de forfait annuel en jours :",
+   "opts": [
+    "Peut être imposée à tout salarié par une simple clause du contrat",
+    "Suppose un accord collectif et une convention individuelle écrite, et ne peut dépasser 218 jours par an sauf renonciation à des jours de repos",
+    "Est réservée aux ouvriers postés",
+    "Dispense l'employeur de tout suivi de la charge de travail"
+   ],
+   "a": 1,
+   "why": "Le forfait jours exige un accord collectif (ou de branche) fixant les catégories de salariés concernés et les modalités de suivi, plus l'accord écrit du salarié, cadre autonome ou salarié dont la durée ne peut être prédéterminée (L. 3121-58). Le plafond est de 218 jours (L. 3121-64), le salarié pouvant y renoncer avec majoration d'au moins 10 %. L'employeur doit garantir le suivi de la charge de travail, faute de quoi le forfait est privé d'effet."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3133-4 à L. 3133-6",
+   "q": "Parmi les onze jours fériés légaux, le seul qui soit obligatoirement chômé et payé pour tous les salariés (sauf établissements ne pouvant interrompre le travail) est :",
+   "opts": [
+    "Le 14 juillet",
+    "Le 1er janvier",
+    "Le 1er mai",
+    "Le 25 décembre"
+   ],
+   "a": 2,
+   "why": "Seul le 1er mai est légalement chômé et payé (L. 3133-4) ; s'il est travaillé dans un établissement qui ne peut interrompre son activité, le salaire est doublé (L. 3133-6). Les autres jours fériés sont chômés selon l'accord collectif ou l'usage, sans majoration légale lorsqu'ils sont travaillés et sans perte de salaire pour les mensualisés lorsqu'ils sont chômés."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3141-3",
+   "q": "Un salarié à temps plein acquiert, par mois de travail effectif, un droit à congés payés de :",
+   "opts": [
+    "2 jours ouvrés",
+    "2 jours ouvrables",
+    "2,5 jours ouvrables",
+    "3 jours ouvrables"
+   ],
+   "a": 2,
+   "why": "L'article L. 3141-3 accorde 2,5 jours ouvrables par mois de travail effectif, soit 30 jours ouvrables (5 semaines) pour une année complète. Les 2 jours ouvrables correspondent à l'acquisition pendant un arrêt maladie non professionnel depuis la loi du 22 avril 2024. Un décompte en jours ouvrés (2,08 par mois, 25 par an) est possible par accord s'il n'est pas moins favorable."
+  },
+  {
+   "type": "calc",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3141-3",
+   "q": "Inès est embauchée le 1er octobre 2024 à temps plein et travaille sans interruption jusqu'à la fin de la période de référence, le 31 mai 2025. Combien de jours ouvrables de congés payés a-t-elle acquis au titre de cette période ?",
+   "a": 20,
+   "unit": "jours",
+   "tol": 0.5,
+   "why": "Du 1er octobre 2024 au 31 mai 2025, Inès a travaillé 8 mois complets. Acquisition : 8 × 2,5 = 20 jours ouvrables (L. 3141-3). Le plafond de 30 jours ne joue que pour 12 mois complets. En jours ouvrés, on trouverait 8 × 2,08 ≈ 16,67, arrondis à 17, mais l'énoncé demande des jours ouvrables."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3141-3 et L. 3141-5-1",
+   "q": "Au cours de la période de référence du 1er juin 2024 au 31 mai 2025, Karim a travaillé 8 mois et a été en arrêt pour une maladie non professionnelle pendant 4 mois complets. Combien de jours ouvrables de congés payés a-t-il acquis au total pour la période ?",
+   "a": 28,
+   "unit": "jours",
+   "tol": 0.5,
+   "why": "Mois travaillés : 8 × 2,5 = 20 jours. Mois d'arrêt non professionnel : depuis la loi du 22 avril 2024 (L. 3141-5-1), 2 jours ouvrables par mois, soit 4 × 2 = 8 jours (le plafond de 24 jours pour l'arrêt n'est pas atteint). Total : 28 jours, inférieur au maximum global de 30. Avant la loi de 2024, les 4 mois d'arrêt n'auraient rien rapporté (20 jours) ; pour un accident du travail, on aurait compté 2,5 jours par mois (30 jours)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3141-19-1 et L. 3141-19-2",
+   "q": "Un salarié n'a pas pu prendre ses congés acquis en raison d'un arrêt maladie de longue durée. Depuis la loi du 22 avril 2024, ces congés :",
+   "opts": [
+    "Sont définitivement perdus à la fin de la période de prise",
+    "Sont reportés pendant 15 mois à compter de l'information donnée par l'employeur après la reprise",
+    "Sont automatiquement payés sous forme d'indemnité à la fin de la période",
+    "Sont reportés sans aucune limite de durée"
+   ],
+   "a": 1,
+   "why": "La loi n° 2024-364 a créé une période de report de 15 mois (L. 3141-19-1). Elle court à compter du moment où l'employeur, dans le mois suivant la reprise, informe le salarié du nombre de jours dont il dispose et de la date limite de prise (L. 3141-19-3). Sans information, le report ne commence pas à courir, mais le report n'est pas illimité pour autant. Les congés ne sont monétisés qu'à la rupture du contrat."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3141-24",
+   "q": "Au cours de la période de référence, Léo a perçu 27 000 € bruts. Son salaire mensuel est de 2 250 € pour un mois comptant 26 jours ouvrables. Il prend 12 jours ouvrables de congés. Quelle indemnité de congés payés brute lui est due (en €, arrondi au centime), en retenant la méthode la plus favorable ?",
+   "a": 1080,
+   "unit": "€",
+   "tol": 1,
+   "why": "Règle du dixième : 27 000 / 10 = 2 700 € pour 30 jours, soit 2 700 × 12 / 30 = 1 080 €. Maintien de salaire : 2 250 × 12 / 26 = 1 038,46 €. L'article L. 3141-24 impose de retenir le montant le plus élevé : 1 080 €. Le dixième l'emporte ici parce que la rémunération de référence inclut des éléments variables (primes) supérieurs au salaire de base."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "millésimé 2025",
+   "src": "C. trav., art. L. 3231-2 ; décret n° 2024-951 du 23 octobre 2024",
+   "q": "En 2025, le SMIC horaire brut applicable en France métropolitaine s'élève à :",
+   "opts": [
+    "11,07 €",
+    "11,52 €",
+    "11,65 €",
+    "11,88 €"
+   ],
+   "a": 3,
+   "why": "Le SMIC a été porté à 11,88 € bruts de l'heure au 1er novembre 2024 (revalorisation anticipée de 2 %) et n'a pas été revalorisé au 1er janvier 2025, soit 1 801,80 € bruts par mois pour 35 heures. Les autres montants correspondent à des valeurs antérieures (11,07 € en 2022, 11,52 € en mai 2023, 11,65 € en janvier 2024). Chiffre millésimé : il évolue au moins chaque 1er janvier."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3231-3 et L. 3231-5",
+   "q": "Le SMIC est revalorisé :",
+   "opts": [
+    "Uniquement par décision discrétionnaire du gouvernement, sans règle",
+    "Chaque 1er janvier selon l'inflation et la moitié du gain de pouvoir d'achat du salaire horaire ouvrier, et en cours d'année si l'inflation dépasse 2 %",
+    "Tous les cinq ans par la loi",
+    "Par accord national interprofessionnel entre partenaires sociaux"
+   ],
+   "a": 1,
+   "why": "La revalorisation annuelle au 1er janvier combine l'inflation constatée pour les 20 % de ménages aux revenus les plus faibles et la moitié du gain de pouvoir d'achat du salaire horaire de base ouvrier et employé (L. 3231-2 et s.) ; le gouvernement peut accorder un « coup de pouce ». Une revalorisation automatique intervient en cours d'année lorsque l'indice des prix progresse d'au moins 2 % depuis la dernière hausse (L. 3231-5), comme en novembre 2024. Les partenaires sociaux ne fixent pas le SMIC."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1331-2",
+   "q": "Un employeur retient 50 € sur le salaire d'un salarié arrivé trois fois en retard, en application d'une grille prévue par le règlement intérieur. Cette mesure est :",
+   "opts": [
+    "Licite car prévue par le règlement intérieur",
+    "Licite si le CSE a donné un avis favorable",
+    "Illicite : les amendes et autres sanctions pécuniaires sont interdites",
+    "Licite dans la limite de 10 % du salaire"
+   ],
+   "a": 2,
+   "why": "L'article L. 1331-2 interdit les amendes ou autres sanctions pécuniaires ; toute disposition contraire, même dans le règlement intérieur validé par le CSE, est nulle. L'employeur peut en revanche ne pas payer le temps non travaillé (retenue proportionnelle au retard, qui n'est pas une sanction) ou prononcer un avertissement ou une mise à pied disciplinaire. Il n'existe aucune tolérance de 10 %."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1332-2",
+   "q": "Après un entretien préalable à sanction tenu le lundi 3 mars 2025, l'employeur peut notifier une mise à pied disciplinaire :",
+   "opts": [
+    "Le jour même de l'entretien",
+    "Au plus tôt le mercredi 5 mars et au plus tard le 3 avril 2025",
+    "Dans les 48 heures seulement",
+    "À tout moment dans les deux mois suivant l'entretien"
+   ],
+   "a": 1,
+   "why": "La sanction ne peut intervenir moins de deux jours ouvrables ni plus d'un mois après le jour fixé pour l'entretien (L. 1332-2). Entretien le lundi 3 mars : notification possible à partir du mercredi 5 mars (mardi 4 étant le premier jour ouvrable, mercredi le second) jusqu'au 3 avril 2025. Le délai de deux mois est celui de la prescription des faits fautifs (L. 1332-4), qui court à compter de la connaissance des faits, pas de l'entretien."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1332-4",
+   "q": "Un employeur découvre le 10 janvier qu'un salarié a falsifié une note de frais le 15 novembre précédent. Jusqu'à quelle date peut-il engager des poursuites disciplinaires ?",
+   "opts": [
+    "Jusqu'au 15 janvier (deux mois après les faits)",
+    "Jusqu'au 10 mars (deux mois après la connaissance des faits)",
+    "Jusqu'au 10 avril (trois mois après la connaissance des faits)",
+    "Sans limite, la faute étant intentionnelle"
+   ],
+   "a": 1,
+   "why": "Aucun fait fautif ne peut donner lieu à l'engagement de poursuites au-delà de deux mois à compter du jour où l'employeur en a eu connaissance (L. 1332-4), sauf poursuites pénales en cours. Le point de départ est la connaissance, non la commission des faits : ici le 10 janvier, d'où le 10 mars. Le délai de trois ans (L. 1332-5) concerne autre chose : l'impossibilité d'invoquer une sanction antérieure trop ancienne."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1332-2 et L. 1331-1",
+   "q": "Plusieurs réponses possibles. Quelles sanctions obligent l'employeur à convoquer le salarié à un entretien préalable ?",
+   "opts": [
+    "Avertissement écrit",
+    "Mise à pied disciplinaire de trois jours",
+    "Rétrogradation",
+    "Mutation disciplinaire",
+    "Simple observation verbale"
+   ],
+   "a": [
+    1,
+    2,
+    3
+   ],
+   "why": "La procédure complète (convocation, entretien, notification motivée) s'impose pour toute sanction ayant une incidence immédiate ou non sur la présence, la fonction, la carrière ou la rémunération (L. 1332-2) : mise à pied, mutation, rétrogradation, licenciement. L'avertissement et le blâme n'exigent qu'une notification écrite et motivée (L. 1332-1), sauf règlement intérieur plus exigeant. L'observation verbale n'est pas une sanction (L. 1331-1)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "Cass. soc., 10 mai 1999 ; Cass. soc., 3 juin 2003",
+   "q": "Sans clause de mobilité, l'employeur mute un salarié d'une agence à une autre située dans la même agglomération, à 15 km, avec les mêmes horaires et la même rémunération. Le salarié refuse. Quelle est l'analyse juridique ?",
+   "opts": [
+    "Modification du contrat : le refus n'est pas fautif",
+    "Changement des conditions de travail : le refus peut constituer une faute",
+    "Modification du contrat nécessitant un avenant signé par le CSE",
+    "Licenciement économique automatique"
+   ],
+   "a": 1,
+   "why": "Une mutation à l'intérieur du même secteur géographique relève du pouvoir de direction : c'est un changement des conditions de travail qui s'impose au salarié (jurisprudence constante depuis 1999). Son refus peut justifier un licenciement disciplinaire, sans être nécessairement une faute grave. La mutation ne devient une modification du contrat que si elle sort du secteur géographique (sans clause de mobilité) ou bouleverse les conditions de vie du salarié."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1222-6",
+   "q": "Un employeur propose par lettre recommandée une baisse de salaire pour motif économique. Le salarié ne répond pas pendant six semaines. Quelle est la conséquence ?",
+   "opts": [
+    "Il est réputé avoir refusé la modification",
+    "Il est réputé avoir accepté la modification, le délai de réflexion d'un mois étant expiré",
+    "La proposition est caduque",
+    "Il est considéré comme démissionnaire"
+   ],
+   "a": 1,
+   "why": "L'article L. 1222-6 impose une proposition par lettre recommandée avec avis de réception mentionnant un délai de réflexion d'un mois (15 jours en redressement ou liquidation judiciaire) ; à défaut de réponse dans ce délai, le salarié est réputé avoir accepté. C'est l'exception au principe selon lequel le silence ne vaut pas acceptation d'une modification du contrat. Un refus exprès conduirait, le cas échéant, à un licenciement pour motif économique."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1226-1 et D. 1226-1",
+   "q": "Le maintien légal de salaire par l'employeur en cas de maladie non professionnelle (loi de mensualisation) suppose notamment :",
+   "opts": [
+    "Aucune condition d'ancienneté",
+    "Une ancienneté d'au moins un an et un délai de carence de 7 jours",
+    "Une ancienneté de trois ans et aucun délai de carence",
+    "Une ancienneté de six mois et un délai de carence de 3 jours"
+   ],
+   "a": 1,
+   "why": "L'article L. 1226-1 exige un an d'ancienneté, la justification de l'arrêt dans les 48 heures, la prise en charge par la sécurité sociale et des soins en France ou dans l'UE. Le complément est versé après 7 jours de carence (aucune carence en cas d'accident du travail) à hauteur de 90 % du brut pendant 30 jours, puis 2/3 pendant 30 jours, ces durées augmentant de 10 jours par tranche de 5 ans d'ancienneté (D. 1226-1 et D. 1226-2). Le délai de 3 jours est la carence des IJSS, pas du maintien employeur."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. D. 1226-1 et D. 1226-2",
+   "q": "Un salarié ayant 12 ans d'ancienneté est en arrêt pour maladie non professionnelle. Pendant combien de jours au total (à 90 % puis aux 2/3) l'employeur doit-il lui maintenir son salaire au titre de la loi de mensualisation, après le délai de carence ?",
+   "a": 100,
+   "unit": "jours",
+   "tol": 0.5,
+   "why": "Durée de base : 30 jours à 90 % et 30 jours aux 2/3, chacune majorée de 10 jours par période entière de 5 ans d'ancienneté au-delà d'un an (D. 1226-2). Avec 12 ans, le salarié compte deux tranches de 5 ans : 30 + 20 = 50 jours à 90 % et 50 jours aux 2/3, soit 100 jours au total. Le maximum légal est de 90 + 90 = 180 jours (31 ans d'ancienneté et plus)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1226-4",
+   "q": "Un salarié a été déclaré inapte par le médecin du travail le 1er mars. Au 15 avril, il n'est ni reclassé ni licencié. Que doit faire l'employeur ?",
+   "opts": [
+    "Rien, le contrat est suspendu sans salaire tant que dure l'inaptitude",
+    "Reprendre le versement du salaire depuis le 1er avril",
+    "Verser des indemnités journalières à la place de la sécurité sociale",
+    "Rompre le contrat de plein droit"
+   ],
+   "a": 1,
+   "why": "L'article L. 1226-4 impose à l'employeur, si le salarié n'est ni reclassé ni licencié dans le délai d'un mois à compter de l'examen médical de reprise constatant l'inaptitude, de reprendre le paiement du salaire correspondant à l'emploi occupé avant la suspension. Le délai expire ici le 1er avril. L'inaptitude n'entraîne jamais une rupture de plein droit : seul un licenciement, après recherche de reclassement, peut y mettre fin."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1225-17",
+   "q": "La durée légale du congé de maternité pour la naissance d'un premier enfant est de :",
+   "opts": [
+    "10 semaines",
+    "14 semaines",
+    "16 semaines",
+    "26 semaines"
+   ],
+   "a": 2,
+   "why": "Le congé de maternité est de 16 semaines (6 semaines prénatales et 10 postnatales) pour un premier ou un deuxième enfant (L. 1225-17). Il passe à 26 semaines à partir du troisième enfant (8 + 18), à 34 semaines pour des jumeaux et 46 pour des triplés. La durée de 10 semaines correspond à la seule période postnatale."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1225-4",
+   "q": "Une salariée en congé de maternité commet une faute grave sans lien avec sa grossesse. L'employeur peut-il la licencier pendant le congé ?",
+   "opts": [
+    "Oui, la faute grave lève toujours la protection",
+    "Non : pendant le congé de maternité, la protection est absolue, le licenciement ne peut ni être notifié ni prendre effet",
+    "Oui, avec l'autorisation de l'inspection du travail",
+    "Oui, mais seulement pour motif économique"
+   ],
+   "a": 1,
+   "why": "L'article L. 1225-4 distingue deux périodes. Pendant la grossesse et les dix semaines suivant le congé, le licenciement est possible uniquement pour faute grave non liée à l'état de grossesse ou impossibilité de maintenir le contrat pour un motif étranger à la grossesse. Pendant le congé lui-même (et les congés payés pris immédiatement après), la protection est absolue : aucun licenciement ne peut être notifié ni prendre effet, même pour faute grave. Aucune autorisation administrative ne permet d'y déroger."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1225-35 ; CSS, art. L. 331-8",
+   "q": "La durée du congé de paternité et d'accueil de l'enfant pour une naissance simple est de :",
+   "opts": [
+    "11 jours calendaires",
+    "14 jours ouvrables",
+    "25 jours calendaires",
+    "28 jours calendaires"
+   ],
+   "a": 2,
+   "why": "Depuis le 1er juillet 2021, le congé de paternité est de 25 jours calendaires (32 en cas de naissances multiples), dont une période de 4 jours obligatoire immédiatement après le congé de naissance de 3 jours payé par l'employeur ; le solde se prend dans les six mois, fractionnable en deux périodes. Les 11 jours sont l'ancienne durée. Les 28 jours correspondent aux 25 jours additionnés aux 3 jours de congé de naissance, qui sont deux congés distincts."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 6323-11 et L. 6321-1",
+   "q": "Le compte personnel de formation (CPF) d'un salarié à temps plein non qualifié de niveau inférieur au CAP est alimenté chaque année de :",
+   "opts": [
+    "24 heures, plafonnées à 150 heures",
+    "500 €, plafonnés à 5 000 €",
+    "800 €, plafonnés à 8 000 €",
+    "1 000 €, sans plafond"
+   ],
+   "a": 2,
+   "why": "Depuis 2019, le CPF est alimenté en euros : 500 € par an avec un plafond de 5 000 € pour le droit commun, portés à 800 € et 8 000 € pour les salariés peu qualifiés (niveau inférieur au CAP/BEP) et les personnes handicapées (L. 6323-11 et L. 6323-11-1). L'alimentation en heures (24 h, plafond 150 h) est l'ancien système antérieur à 2019. Une participation forfaitaire du titulaire est due depuis 2024."
+  },
+  {
+   "type": "tri",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1121-1 ; jurisprudence sur la modification du contrat",
+   "q": "Classez chaque décision de l'employeur selon qu'elle constitue une modification du contrat de travail (accord du salarié requis) ou un simple changement des conditions de travail (qui s'impose au salarié).",
+   "cats": [
+    "Modification du contrat de travail",
+    "Changement des conditions de travail"
+   ],
+   "items": [
+    [
+     "Baisse de la prime contractuelle de 100 € par mois",
+     0
+    ],
+    [
+     "Nouvelle répartition des 35 heures du lundi-vendredi au mardi-samedi, sans horaire contractualisé",
+     1
+    ],
+    [
+     "Passage d'un horaire de jour à un horaire de nuit",
+     0
+    ],
+    [
+     "Mutation dans un autre établissement de la même agglomération, sans clause de mobilité",
+     1
+    ],
+    [
+     "Rétrogradation d'un chef d'équipe au poste d'opérateur",
+     0
+    ],
+    [
+     "Attribution de nouvelles tâches conformes à la qualification",
+     1
+    ],
+    [
+     "Passage d'un temps plein à un temps partiel",
+     0
+    ]
+   ],
+   "why": "Rémunération, qualification, durée du travail et passage jour/nuit sont des éléments essentiels : leur modification exige l'accord exprès du salarié, dont le refus n'est pas fautif. La répartition des horaires dans la journée ou la semaine, la mutation dans le même secteur géographique et les tâches relevant de la qualification sont des changements des conditions de travail relevant du pouvoir de direction."
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1226-14",
+   "q": "Un salarié est licencié pour inaptitude d'origine professionnelle (suite d'un accident du travail) après impossibilité de reclassement. Quelles indemnités lui sont dues ?",
+   "opts": [
+    "Aucune indemnité, l'inaptitude n'étant pas imputable à l'employeur",
+    "L'indemnité légale de licenciement simple, sans préavis",
+    "Une indemnité spéciale de licenciement égale au double de l'indemnité légale et une indemnité compensatrice de préavis",
+    "Uniquement une indemnité compensatrice de congés payés"
+   ],
+   "a": 2,
+   "why": "Lorsque l'inaptitude a une origine professionnelle, l'article L. 1226-14 prévoit une indemnité spéciale de licenciement égale au double de l'indemnité légale (sauf disposition conventionnelle plus favorable) et une indemnité compensatrice d'un montant égal à l'indemnité de préavis, bien que le préavis ne soit pas exécuté. Pour une inaptitude non professionnelle, seule l'indemnité légale simple est due, sans indemnité de préavis."
+  }
+ ]
+}

@@ -1,0 +1,696 @@
+{
+ "classe": "6",
+ "titre": "Charges : comptes 64 à 69",
+ "comptes": [
+  {
+   "num": "64",
+   "label": "Charges de personnel",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 64 regroupe l'ensemble du coût du personnel salarié : rémunérations brutes (641), rémunération de l'exploitant (644), cotisations sociales patronales (645), autres charges sociales (647) et autres charges de personnel (648), diminuées des remboursements de charges de personnel (649). Il se débite lors de l'enregistrement de la paie par le crédit des comptes 421 (net à payer) et 43 (organismes sociaux). Il figure dans les charges d'exploitation, ligne « Salaires et traitements » et « Charges sociales », et entre dans le calcul de l'excédent brut d'exploitation. Les cotisations salariales ne sont pas une charge distincte : elles font partie du brut du 641.",
+   "exemple": "Paie du mois : 641 D 20 000 / 645 D 8 400 / 421 C 15 600 / 431 C 12 800.",
+   "piege": "Le personnel intérimaire n'est pas au 64 mais au 621 : seuls les salariés de l'entreprise relèvent des charges de personnel.",
+   "pcg2025": "Création du compte 649 « Remboursements de charges de personnel », qui remplace le 791 pour les remboursements reçus (indemnités journalières, aides à l'embauche)."
+  },
+  {
+   "num": "641",
+   "label": "Rémunérations du personnel",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 641 enregistre les rémunérations brutes des salariés : salaires et appointements (6411), congés payés (6412), primes et gratifications (6413), indemnités et avantages divers (6414), supplément familial (6415). Il se débite du salaire brut, cotisations salariales comprises, par le crédit du 421 pour le net et des comptes 43 pour les retenues. Les avantages en nature y figurent pour leur valeur. Il figure dans les charges d'exploitation, ligne « Salaires et traitements ».",
+   "exemple": "Salaire brut 3 000 €, cotisations salariales 660 €, prélèvement à la source 150 € : 641 D 3 000 / 421 C 2 190 / 431 C 660 / 4421 C 150.",
+   "piege": "Le 641 enregistre le brut et non le net : les cotisations salariales sont retenues sur le brut mais restent une charge de l'entreprise comptabilisée au 641.",
+   "pcg2025": null
+  },
+  {
+   "num": "6411",
+   "label": "Salaires, appointements",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6411 enregistre les salaires de base bruts des salariés, heures supplémentaires comprises. Il se débite lors de la comptabilisation de la paie par le crédit du 421 et des comptes de retenues (43, 4421, 427). Il figure dans les charges d'exploitation. Les primes et indemnités font l'objet de subdivisions distinctes (6413, 6414).",
+   "exemple": "Salaires de base bruts du mois 45 000 € : 6411 D 45 000 / 421 C 45 000 (avant retenues).",
+   "piege": "Les acomptes versés en cours de mois sont débités au 425 et non au 6411 : la charge n'est constatée qu'à l'établissement de la paie.",
+   "pcg2025": null
+  },
+  {
+   "num": "6412",
+   "label": "Congés payés",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6412 enregistre les indemnités de congés payés versées aux salariés et, à la clôture, la provision pour congés payés acquis et non pris. Il se débite de l'indemnité brute par le crédit du 421 et, pour la dette à la clôture, par le crédit du 4282 « Dettes provisionnées pour congés à payer ». Il figure dans les charges d'exploitation. La charge sociale correspondante est inscrite au 645 par le crédit du 4382.",
+   "exemple": "Congés acquis non pris au 31 décembre : 24 000 € bruts et 10 000 € de charges patronales : 6412 D 24 000 / 4282 C 24 000 ; 645 D 10 000 / 4382 C 10 000.",
+   "piege": "Dans le BTP, les congés sont payés par une caisse : l'entreprise cotise à la caisse (6412 ou 645 selon les usages) et ne provisionne pas elle-même les congés.",
+   "pcg2025": null
+  },
+  {
+   "num": "6413",
+   "label": "Primes et gratifications",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6413 enregistre les primes brutes versées aux salariés : treizième mois, primes d'objectifs, primes d'ancienneté, gratifications exceptionnelles. Il se débite lors de la paie par le crédit du 421 et des comptes de retenues. À la clôture, les primes acquises mais non versées sont rattachées par le 4286. Il figure dans les charges d'exploitation.",
+   "exemple": "Treizième mois brut versé en décembre 30 000 € : 6413 D 30 000 / 421 C 30 000 (avant retenues).",
+   "piege": "La participation des salariés aux résultats n'est pas une prime du 6413 : c'est une charge spécifique du 691, hors résultat d'exploitation.",
+   "pcg2025": null
+  },
+  {
+   "num": "6414",
+   "label": "Indemnités et avantages divers",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6414 enregistre les indemnités versées aux salariés (indemnités de licenciement, de départ en retraite, de préavis, de précarité) et les avantages en nature (logement, véhicule, repas). Il se débite par le crédit du 421 ; l'avantage en nature est ajouté au brut puis retranché du net. Il figure dans les charges d'exploitation. Les indemnités de licenciement liées à une restructuration majeure peuvent relever du résultat exceptionnel (678) si l'événement est majeur et inhabituel.",
+   "exemple": "Indemnité de licenciement 8 000 € : 6414 D 8 000 / 421 C 8 000.",
+   "piege": "Les indemnités kilométriques et remboursements de frais professionnels ne sont pas des rémunérations : ils vont au 625.",
+   "pcg2025": null
+  },
+  {
+   "num": "644",
+   "label": "Rémunération du travail de l'exploitant",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 644 enregistre, dans une entreprise individuelle, les prélèvements effectués par l'exploitant au titre de la rémunération de son travail, ainsi que ses cotisations sociales personnelles (646 dans certains plans, ou subdivision du 644). Il se débite par le crédit du 108 « Compte de l'exploitant » ou du 512. Fiscalement, cette rémunération n'est pas déductible du bénéfice BIC : elle est réintégrée. Il figure dans les charges d'exploitation.",
+   "exemple": "Prélèvement mensuel de l'exploitant 2 500 € : 644 D 2 500 / 512 C 2 500.",
+   "piege": "La rémunération du gérant majoritaire de SARL n'est pas au 644 : elle relève du 641 (ou du 6411) même si elle est imposée en traitements et salaires selon l'article 62 du CGI.",
+   "pcg2025": null
+  },
+  {
+   "num": "645",
+   "label": "Charges de sécurité sociale et de prévoyance",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 645 enregistre les cotisations sociales patronales : URSSAF (6451), mutuelles (6452), caisses de retraite (6453), assurance chômage (6454), autres organismes sociaux (6458). Il se débite du montant des cotisations employeur lors de la paie par le crédit des comptes 431 et 437. Les cotisations salariales n'y figurent pas : elles sont comprises dans le brut du 641. Il figure dans les charges d'exploitation, ligne « Charges sociales ».",
+   "exemple": "Charges patronales du mois : 6451 D 6 000 / 6453 D 1 800 / 6452 D 400 / 431 C 6 000 / 437 C 2 200.",
+   "piege": "Le compte 431 reçoit à la fois les cotisations salariales (retenues sur le brut) et patronales (645) : son crédit total dépasse donc le débit du 645.",
+   "pcg2025": null
+  },
+  {
+   "num": "6451",
+   "label": "Cotisations à l'URSSAF",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6451 enregistre les cotisations patronales recouvrées par l'URSSAF : maladie, vieillesse de base, allocations familiales, accidents du travail, CSA, FNAL, et depuis 2011 la contribution d'assurance chômage lorsque l'entreprise choisit de ne pas la distinguer au 6454. Il se débite du montant employeur à chaque paie par le crédit du 431. Il figure dans les charges d'exploitation. La réduction générale de cotisations (ex-Fillon) vient diminuer la charge.",
+   "exemple": "Cotisations patronales URSSAF sur 20 000 € de brut : 6451 D 5 800 / 431 C 5 800.",
+   "piege": "La CSG et la CRDS sont des prélèvements salariaux retenus sur le brut : elles ne passent jamais au 6451.",
+   "pcg2025": null
+  },
+  {
+   "num": "6452",
+   "label": "Cotisations aux mutuelles",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6452 enregistre la part patronale des cotisations de complémentaire santé (mutuelle obligatoire d'entreprise, au moins 50 % de la cotisation) et de prévoyance complémentaire. Il se débite à chaque paie par le crédit du 437 « Autres organismes sociaux ». Il figure dans les charges d'exploitation. La part salariale est retenue sur le brut et créditée au 437 sans passer par le 6452.",
+   "exemple": "Mutuelle : part patronale 600 €, part salariale 600 € : 6452 D 600 / 437 C 600 ; la part salariale est incluse dans les retenues du 641.",
+   "piege": "La part patronale de mutuelle est un avantage soumis à CSG et imposable pour le salarié, mais elle reste intégralement une charge de l'entreprise au 6452.",
+   "pcg2025": null
+  },
+  {
+   "num": "6453",
+   "label": "Cotisations aux caisses de retraites",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6453 enregistre la part patronale des cotisations de retraite complémentaire (AGIRC-ARRCO, contribution d'équilibre général et technique) et des régimes supplémentaires éventuels. Il se débite à chaque paie par le crédit du 437. Il figure dans les charges d'exploitation. La retraite de base, recouvrée par l'URSSAF, relève du 6451.",
+   "exemple": "Cotisations patronales AGIRC-ARRCO 1 850 € : 6453 D 1 850 / 437 C 1 850.",
+   "piege": "Les cotisations de retraite de base (vieillesse plafonnée et déplafonnée) vont au 6451 et non au 6453, parce qu'elles sont recouvrées par l'URSSAF.",
+   "pcg2025": null
+  },
+  {
+   "num": "6454",
+   "label": "Cotisations à Pôle emploi",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6454 enregistre la contribution patronale d'assurance chômage (4,05 % en 2025) et la cotisation AGS, qui financent l'indemnisation des demandeurs d'emploi via France Travail (ex-Pôle emploi). Depuis 2011, ces contributions sont recouvrées par l'URSSAF, de sorte que beaucoup d'entreprises les enregistrent au 6451 ; le 6454 reste disponible pour les isoler. Il se débite à chaque paie par le crédit du 431. Il figure dans les charges d'exploitation.",
+   "exemple": "Contribution chômage patronale sur 20 000 € de brut : 6454 D 810 / 431 C 810.",
+   "piege": "Il n'existe plus de cotisation salariale d'assurance chômage depuis octobre 2018 : la charge est entièrement patronale.",
+   "pcg2025": "L'intitulé du plan de comptes conserve « Pôle emploi » alors que l'opérateur s'appelle France Travail depuis le 1er janvier 2024 ; l'ancien libellé « Cotisations aux ASSEDIC » se rencontre dans les manuels antérieurs à 2014."
+  },
+  {
+   "num": "6458",
+   "label": "Cotisations aux autres organismes sociaux",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6458 enregistre les cotisations patronales versées à des organismes sociaux qui n'ont pas de subdivision propre : caisses de congés payés du BTP, caisses de prévoyance spécifiques, régimes spéciaux. Il se débite à chaque paie par le crédit du 437 ou d'une subdivision du 43. Il figure dans les charges d'exploitation.",
+   "exemple": "Cotisation à la caisse de congés payés du bâtiment 2 400 € : 6458 D 2 400 / 437 C 2 400.",
+   "piege": "Les impôts assis sur les salaires recouvrés par l'URSSAF (versement mobilité, contribution formation) ne sont pas des cotisations sociales : ils vont au 633.",
+   "pcg2025": null
+  },
+  {
+   "num": "647",
+   "label": "Autres charges sociales",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 647 enregistre les charges sociales qui ne sont pas des cotisations obligatoires : prestations directes versées aux salariés (6471), versements au comité social et économique (6472), versements aux comités d'hygiène et de sécurité (6473), versements aux autres œuvres sociales (6474), médecine du travail et pharmacie (6475), autres (6478). Il se débite par le crédit du 401, du 421 ou du 512. Il figure dans les charges d'exploitation, ligne « Charges sociales ». La part patronale des titres-restaurant et le remboursement des frais de transport domicile-travail y sont enregistrés.",
+   "exemple": "Subvention de fonctionnement et budget des activités sociales du CSE 5 000 € : 6472 D 5 000 / 512 C 5 000.",
+   "piege": "La cotisation au service de santé au travail va au 6475 et non en honoraires (6226).",
+   "pcg2025": null
+  },
+  {
+   "num": "648",
+   "label": "Autres charges de personnel",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 648 enregistre les charges de personnel qui ne sont ni des rémunérations ni des cotisations : charges liées à l'actionnariat salarié et aux attributions gratuites d'actions, versements aux plans d'épargne, charges diverses de personnel. Il se débite par le crédit du 421, du 512 ou d'un compte de capitaux propres selon l'opération. Il figure dans les charges d'exploitation.",
+   "exemple": "Abondement de l'entreprise au plan d'épargne entreprise 4 000 € : 648 D 4 000 / 512 C 4 000.",
+   "piege": "L'abondement au PEE est au 648, mais la participation légale aux résultats relève du 691, hors exploitation.",
+   "pcg2025": null
+  },
+  {
+   "num": "649",
+   "label": "Remboursements de charges de personnel",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 649 enregistre les remboursements de charges de personnel reçus de tiers : indemnités journalières de sécurité sociale subrogées, remboursements de formation par un opérateur de compétences, aides à l'embauche, remboursements de salaires de personnel détaché. Il se crédite du montant reçu ou à recevoir par le débit du 431, du 4387 ou du 512. Son solde créditeur vient en déduction des charges de personnel dans le résultat d'exploitation. Il remplace l'ancien transfert de charges 791 pour ces opérations.",
+   "exemple": "Indemnités journalières subrogées reçues de la CPAM 1 500 € : 512 D 1 500 / 649 C 1 500.",
+   "piege": "Ne pas créditer le 641 du remboursement : le brut reste la charge réelle, et le remboursement s'inscrit séparément au 649.",
+   "pcg2025": "Compte créé par le règlement ANC n° 2022-06 : il reçoit les remboursements de charges de personnel qui passaient avant 2025 par le 791 « Transferts de charges d'exploitation », supprimé."
+  },
+  {
+   "num": "65",
+   "label": "Autres charges de gestion courante",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 65 regroupe les charges d'exploitation qui ne sont ni des achats, ni des services extérieurs, ni des impôts, ni des charges de personnel : redevances (651), rémunérations des administrateurs (653), pertes sur créances irrécouvrables (654), quotes-parts de résultat sur opérations faites en commun (655), pertes de change commerciales (656), valeurs comptables des immobilisations cédées (657) et charges diverses (658). Il se débite par le crédit du tiers ou du compte d'actif concerné. Il figure dans les charges d'exploitation, ligne « Autres charges ». Ces charges n'entrent pas dans l'excédent brut d'exploitation mais dans le résultat d'exploitation.",
+   "exemple": "Redevance de licence de logiciel 1 200 € HT : 651 D 1 200 / 44566 D 240 / 401 C 1 440.",
+   "piege": "Depuis 2025, la plupart des anciennes charges exceptionnelles de gestion (pénalités, amendes, dons, créances irrécouvrables) sont au 65 et non plus au 67.",
+   "pcg2025": "Le compte 65 accueille depuis 2025 les comptes 657 (valeurs comptables des immobilisations cédées, ex-675) et les anciennes charges exceptionnelles sur opérations de gestion (ex-671) via le 658."
+  },
+  {
+   "num": "651",
+   "label": "Redevances pour concessions, brevets, licences, marques, procédés, logiciels, droits et valeurs similaires",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 651 enregistre les redevances versées pour l'utilisation de droits de propriété intellectuelle appartenant à des tiers : licences de logiciels, brevets, marques, franchises, droits d'auteur (6516). Il se débite HT à la facturation par le crédit du 401. L'acquisition définitive d'un tel droit est en revanche une immobilisation incorporelle (205). Il figure dans les autres charges d'exploitation.",
+   "exemple": "Redevance annuelle de franchise 3 % sur 200 000 € de chiffre d'affaires : 651 D 6 000 / 44566 D 1 200 / 401 C 7 200.",
+   "piege": "Un abonnement à un logiciel en ligne peut être analysé comme une redevance (651) ou une prestation de service (6181/6228) : l'important est la cohérence, mais le 651 est le compte prévu pour les licences.",
+   "pcg2025": null
+  },
+  {
+   "num": "653",
+   "label": "Jetons de présence",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 653 enregistre la rémunération allouée par l'assemblée générale aux membres du conseil d'administration ou de surveillance en contrepartie de leur activité, appelée « jetons de présence » jusqu'à la loi PACTE de 2019 et désormais « rémunération des administrateurs ». Il se débite du montant attribué par le crédit du 4551 ou du 467, le prélèvement forfaitaire non libératoire étant retenu à la source. Il figure dans les autres charges d'exploitation. La déductibilité fiscale est plafonnée selon l'effectif de la société.",
+   "exemple": "Rémunération annuelle des administrateurs 30 000 € : 653 D 30 000 / 467 C 30 000.",
+   "piege": "La rémunération du président ou du directeur général au titre de son mandat relève du 641 et non du 653.",
+   "pcg2025": "La loi PACTE a remplacé le terme « jetons de présence » par « rémunération des administrateurs » ; selon l'édition du plan de comptes, le libellé du 653 peut reprendre l'un ou l'autre."
+  },
+  {
+   "num": "654",
+   "label": "Pertes sur créances irrécouvrables",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 654 enregistre la perte définitive subie lorsqu'une créance client devient irrécouvrable (liquidation judiciaire clôturée pour insuffisance d'actif, débiteur disparu). Il se débite du montant HT de la créance par le crédit du 416 ou du 411, la TVA collectée étant récupérée au débit du 44571. La dépréciation antérieurement constituée est alors reprise au 7817. Il figure dans les autres charges d'exploitation ; avant 2025 les pertes exceptionnelles passaient au 6714.",
+   "exemple": "Créance de 2 400 € TTC définitivement perdue : 654 D 2 000 / 44571 D 400 / 416 C 2 400 ; reprise de la dépréciation : 491 D 2 000 / 7817 C 2 000.",
+   "piege": "La TVA n'est récupérable qu'avec une facture rectificative ou un certificat d'irrécouvrabilité : sans cela, la perte est enregistrée TTC.",
+   "pcg2025": "Le compte 6714 « Créances devenues irrécouvrables dans l'exercice » a été supprimé : toutes les pertes sur créances passent au 654."
+  },
+  {
+   "num": "655",
+   "label": "Quotes-parts de résultat sur opérations faites en commun",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 655 enregistre, dans les sociétés en participation ou les groupements, la quote-part de bénéfice transférée aux coparticipants (6551, chez le gérant) ou la quote-part de perte supportée par l'entreprise non gérante (6555). Il se débite par le crédit du compte 458 « Opérations faites en commun et en GIE ». Il figure dans les autres charges d'exploitation, et son pendant en produits est le 755.",
+   "exemple": "Le gérant d'une société en participation transfère 10 000 € de bénéfice aux coparticipants : 6551 D 10 000 / 458 C 10 000.",
+   "piege": "Le 655 ne s'utilise que pour les opérations faites en commun (SEP, GIE) : la part de résultat d'une filiale n'y figure jamais en comptes individuels.",
+   "pcg2025": null
+  },
+  {
+   "num": "656",
+   "label": "Pertes de change sur créances et dettes commerciales",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 656 enregistre les pertes de change réalisées sur les créances clients et dettes fournisseurs libellées en devises, lorsqu'elles sont réglées à un cours moins favorable que celui d'enregistrement. Il se débite de l'écart défavorable par le crédit du 411 ou du 512 (ou le débit du 401). Il figure dans les autres charges d'exploitation, et son pendant est le 756 pour les gains. Les pertes de change sur emprunts et placements, elles, sont financières (666).",
+   "exemple": "Créance de 10 000 USD enregistrée pour 9 200 €, encaissée 9 000 € : 512 D 9 000 / 656 D 200 / 411 C 9 200.",
+   "piege": "Les écarts de conversion à la clôture (476/477) ne sont pas des pertes réalisées : la perte latente donne lieu à une provision (6865), pas à une écriture au 656.",
+   "pcg2025": "Compte introduit par le règlement ANC n° 2015-05 (couverture) et maintenu dans le plan 2025 : les pertes de change commerciales relèvent de l'exploitation, les pertes financières du 666."
+  },
+  {
+   "num": "657",
+   "label": "Valeurs comptables des immobilisations incorporelles et corporelles cédées",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 657 enregistre la valeur nette comptable des immobilisations incorporelles et corporelles qui sortent de l'actif par cession, mise au rebut ou destruction. Il se débite de la valeur d'origine diminuée des amortissements cumulés par le crédit du compte d'immobilisation (classe 2), les amortissements (28) étant soldés. Il figure dans les charges d'exploitation, face au prix de cession porté au 757 : la différence donne le résultat de cession. Avant 2025, cette valeur était une charge exceptionnelle au 675.",
+   "exemple": "Cession d'un matériel acquis 50 000 €, amorti de 30 000 € : 657 D 20 000 / 2815 D 30 000 / 215 C 50 000 ; prix de vente 25 000 € HT : 462 D 30 000 / 757 C 25 000 / 44571 C 5 000.",
+   "piege": "Ne pas inscrire la VNC au 675 : ce compte est supprimé depuis les exercices ouverts en 2025 et la cession n'est plus exceptionnelle.",
+   "pcg2025": "Compte créé par le règlement ANC n° 2022-06 en remplacement du 675 « Valeurs comptables des éléments d'actif cédés », supprimé ; les cessions d'immobilisations relèvent désormais du résultat d'exploitation."
+  },
+  {
+   "num": "658",
+   "label": "Charges diverses de gestion courante",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 658 enregistre les charges courantes sans compte spécifique : pénalités sur marchés et dédits payés (6581), pénalités et amendes fiscales et pénales (6582), malis provenant de clauses d'indexation (6583), opérations de constitution ou de liquidation de fiducies (6588), ainsi que les dons et libéralités et les charges sur exercices antérieurs non exceptionnelles. Il se débite par le crédit du tiers ou du 512. Il figure dans les autres charges d'exploitation. Depuis 2025, il récupère l'essentiel des anciennes charges exceptionnelles sur opérations de gestion du 671.",
+   "exemple": "Majoration de 10 % pour retard de paiement de la CFE, 180 € : 6582 D 180 / 447 C 180.",
+   "piege": "Les amendes et pénalités fiscales sont enregistrées au 6582 mais ne sont pas déductibles du résultat fiscal : réintégration extra-comptable.",
+   "pcg2025": "Le 658 reçoit depuis 2025 les pénalités, amendes et dons qui relevaient des anciens comptes 6711, 6712 et 6713, supprimés ; les subdivisions 6581 à 6588 ont été réorganisées."
+  },
+  {
+   "num": "66",
+   "label": "Charges financières",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 66 regroupe les charges liées au financement et aux placements : intérêts (661), pertes sur créances liées à des participations (664), escomptes accordés (665), pertes de change financières (666), valeurs comptables des immobilisations financières et des VMP cédées (667), autres charges financières (668). Il se débite par le crédit du 512, du 1688 ou du compte d'actif financier concerné. Il figure dans la rubrique « Charges financières » du compte de résultat, et participe au résultat financier avec le 76. Les frais bancaires sans caractère d'intérêt relèvent du 627.",
+   "exemple": "Intérêts trimestriels d'un emprunt 1 500 € : 66116 D 1 500 / 512 C 1 500.",
+   "piege": "Les commissions bancaires sont des charges externes (627), pas des charges financières : seuls les intérêts et assimilés vont au 66.",
+   "pcg2025": "Le compte 667 est devenu « Valeurs comptables des immobilisations financières et des VMP cédées », avec le 6671 pour les immobilisations financières (ex-6756) et le 6673 pour les VMP."
+  },
+  {
+   "num": "661",
+   "label": "Charges d'intérêts",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 661 enregistre les intérêts dus par l'entreprise : intérêts des emprunts et dettes (6611), des comptes courants et dépôts créditeurs (6615), intérêts bancaires et sur opérations de financement comme l'escompte (6616), intérêts des obligations cautionnées (6617), intérêts des autres dettes (6618). Il se débite lors de l'échéance par le crédit du 512 et, à la clôture, des intérêts courus non échus par le crédit du 1688. Il figure dans les charges financières.",
+   "exemple": "Échéance d'emprunt : capital 5 000 €, intérêts 800 € : 164 D 5 000 / 66116 D 800 / 512 C 5 800.",
+   "piege": "L'échéance d'emprunt se ventile : seule la part d'intérêts est une charge (661), le remboursement du capital diminue la dette (164).",
+   "pcg2025": null
+  },
+  {
+   "num": "6611",
+   "label": "Intérêts des emprunts et dettes",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6611 enregistre les intérêts des emprunts obligataires et des emprunts auprès des établissements de crédit (66116) ainsi que ceux des dettes rattachées à des participations (66117). Il se débite à chaque échéance par le crédit du 512 et, à la clôture, des intérêts courus par le crédit du 1688. La charge constatée d'avance éventuelle est régularisée au 486. Il figure dans les charges financières.",
+   "exemple": "Intérêts courus au 31 décembre sur un emprunt (dernière échéance le 30 septembre) : 66116 D 600 / 1688 C 600, contrepassés le 1er janvier.",
+   "piege": "Les intérêts d'un emprunt destiné à financer une immobilisation en cours peuvent, sur option, être incorporés au coût de l'immobilisation au lieu d'être passés au 6611.",
+   "pcg2025": null
+  },
+  {
+   "num": "6615",
+   "label": "Intérêts des comptes courants et des dépôts créditeurs",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6615 enregistre les intérêts servis par l'entreprise sur les comptes courants d'associés créditeurs (455) et sur les dépôts et cautionnements reçus (165). Il se débite du montant des intérêts par le crédit du 455 ou du 512. Il figure dans les charges financières. La déductibilité fiscale des intérêts des comptes courants d'associés est plafonnée au taux moyen des prêts bancaires aux entreprises.",
+   "exemple": "Intérêts annuels de 4 % sur un compte courant d'associé de 50 000 € : 6615 D 2 000 / 455 C 2 000.",
+   "piege": "Les intérêts excédant le taux fiscal maximal restent une charge comptable au 6615 mais sont réintégrés fiscalement.",
+   "pcg2025": null
+  },
+  {
+   "num": "6616",
+   "label": "Intérêts bancaires et sur opérations de financement (escompte...)",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6616 enregistre les intérêts facturés par la banque sur les concours de trésorerie : agios de découvert, intérêts d'escompte d'effets de commerce, intérêts sur mobilisation de créances (Dailly, affacturage pour la partie financière). Il se débite par le crédit du 512 ou du 5114. Il figure dans les charges financières. La commission d'escompte, non assimilable à un intérêt, va au 6275.",
+   "exemple": "Remise à l'escompte d'un effet de 10 000 € : intérêts 150 €, commission 20 € HT, TVA 4 € : 512 D 9 826 / 6616 D 150 / 6275 D 20 / 44566 D 4 / 5114 C 10 000.",
+   "piege": "Confondre agios (6616, financiers) et frais de tenue de compte (627, exploitation) : la banque les facture ensemble mais ils n'ont pas la même nature.",
+   "pcg2025": null
+  },
+  {
+   "num": "6617",
+   "label": "Intérêts des obligations cautionnées",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6617 enregistre les intérêts dus à l'administration fiscale ou douanière lorsque l'entreprise obtient un délai de paiement de TVA ou de droits de douane au moyen d'obligations cautionnées, c'est-à-dire d'effets garantis par une caution bancaire. Il se débite des intérêts par le crédit du 512 ou du 4196. Il figure dans les charges financières. Le mécanisme est aujourd'hui rare.",
+   "exemple": "Intérêts sur obligations cautionnées de droits de douane 300 € : 6617 D 300 / 512 C 300.",
+   "piege": "La commission de caution versée à la banque est un service bancaire (627), seuls les intérêts dus au Trésor vont au 6617.",
+   "pcg2025": null
+  },
+  {
+   "num": "6618",
+   "label": "Intérêts des autres dettes",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6618 enregistre les intérêts des dettes qui ne sont ni des emprunts ni des concours bancaires : intérêts de retard versés à un fournisseur sur dettes commerciales (66181), intérêts sur dettes diverses (66188). Il se débite par le crédit du 401 ou du 512. Il figure dans les charges financières. Les pénalités de retard forfaitaires sans caractère d'intérêt relèvent plutôt du 6581.",
+   "exemple": "Intérêts moratoires réglés à un fournisseur pour paiement tardif 120 € : 66181 D 120 / 512 C 120.",
+   "piege": "Les intérêts de retard dus au Trésor sur un impôt sont assimilés à des pénalités fiscales (6582) et ne sont pas déductibles.",
+   "pcg2025": null
+  },
+  {
+   "num": "664",
+   "label": "Pertes sur créances liées à des participations",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 664 enregistre la perte définitive subie sur une créance détenue sur une société dans laquelle l'entreprise a une participation (prêt ou avance en compte courant devenue irrécouvrable, abandon de créance à caractère financier). Il se débite de la créance abandonnée ou perdue par le crédit du 267 « Créances rattachées à des participations » ou du 451. Il figure dans les charges financières. La dépréciation constituée est reprise au 7866.",
+   "exemple": "Abandon de créance de 40 000 € consenti à une filiale en difficulté : 664 D 40 000 / 267 C 40 000.",
+   "piege": "Un abandon de créance à caractère commercial (fournisseur-client) relève du 654 ou du 658, pas du 664, et sa déductibilité fiscale n'obéit pas aux mêmes règles.",
+   "pcg2025": null
+  },
+  {
+   "num": "665",
+   "label": "Escomptes accordés",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 665 enregistre les escomptes de règlement accordés aux clients qui paient avant l'échéance, qu'ils figurent sur la facture ou qu'ils soient consentis ensuite par avoir. Il se débite du montant HT de l'escompte par le crédit du 411, la TVA collectée étant régularisée au 44571. C'est une charge financière et non une réduction commerciale : il ne diminue pas le chiffre d'affaires. Il figure dans les charges financières.",
+   "exemple": "Client réglant comptant avec un escompte de 2 % sur 5 000 € HT : 512 D 5 880 / 665 D 100 / 44571 D 20 / 411 C 6 000.",
+   "piege": "Confondre escompte (665, financier) et rabais ou remise (709, réduction du chiffre d'affaires) : l'escompte récompense un paiement anticipé, pas un volume d'achat.",
+   "pcg2025": null
+  },
+  {
+   "num": "666",
+   "label": "Pertes de change financières",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 666 enregistre les pertes de change réalisées sur les opérations financières en devises : remboursement d'emprunts, encaissement de prêts, cessions de titres étrangers, soldes de comptes bancaires en devises. Il se débite de l'écart défavorable par le crédit du compte de trésorerie ou de dette. Il figure dans les charges financières. Les pertes de change sur créances et dettes commerciales relèvent du 656 depuis le règlement ANC 2015-05.",
+   "exemple": "Remboursement d'un emprunt de 100 000 USD comptabilisé 90 000 €, payé 92 000 € : 164 D 90 000 / 666 D 2 000 / 512 C 92 000.",
+   "piege": "La perte de change latente à la clôture ne passe pas au 666 : elle s'inscrit en écart de conversion actif (476) et donne lieu à une provision pour perte de change (1515 par le 6865).",
+   "pcg2025": "L'intitulé « Pertes de change financières » date du règlement ANC n° 2015-05 (auparavant « Pertes de change ») ; le plan 2025 le conserve, les pertes commerciales étant au 656."
+  },
+  {
+   "num": "667",
+   "label": "Valeurs comptables des immobilisations financières et des valeurs mobilières de placement cédées",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 667 enregistre la sortie des actifs financiers cédés : valeurs comptables des immobilisations financières cédées (6671), charges nettes sur cessions de titres immobilisés de l'activité de portefeuille (6672) et charges nettes sur cessions de valeurs mobilières de placement (6673). Il se débite de la valeur comptable des titres sortis par le crédit du compte 26, 27 ou 50 concerné. Il figure dans les charges financières, face au 767. Avant 2025, la VNC des immobilisations financières passait au 6756.",
+   "exemple": "Cession de titres de participation acquis 30 000 € pour 36 000 € : 6671 D 30 000 / 261 C 30 000 ; 512 D 36 000 / 7671 C 36 000.",
+   "piege": "Pour les VMP, le PCG raisonne en charge nette ou produit net : on n'enregistre au 6673 que la perte nette, et au 7673 que le gain net.",
+   "pcg2025": "Réorganisé par le règlement ANC n° 2022-06 : le 6671 « Valeurs comptables des immobilisations financières cédées » remplace l'ancien 6756 et le 6673 reprend l'ancien 667 « Charges nettes sur cessions de VMP »."
+  },
+  {
+   "num": "6671",
+   "label": "Valeurs comptables des immobilisations financières cédées",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6671 enregistre la valeur comptable des immobilisations financières cédées autres que les titres immobilisés de l'activité de portefeuille : titres de participation, autres titres immobilisés, prêts et dépôts cédés. Il se débite du coût d'acquisition des titres par le crédit du 261, 271 ou 272 ; la dépréciation éventuelle est reprise au 7866. Le prix de cession est porté au 7671. Il figure dans les charges financières.",
+   "exemple": "Cession de 1 000 actions d'une filiale acquises 20 € l'une : 6671 D 20 000 / 261 C 20 000.",
+   "piege": "Ne pas utiliser le 6756 (ou le 675) : ces comptes ont disparu avec le PCG 2025.",
+   "pcg2025": "Remplace l'ancien compte 6756 « Valeurs comptables des immobilisations financières cédées », supprimé avec le 675."
+  },
+  {
+   "num": "6672",
+   "label": "Charges nettes sur cessions de titres immobilisés de l'activité de portefeuille",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6672 enregistre la perte nette dégagée sur la cession de titres immobilisés de l'activité de portefeuille (TIAP, compte 273), c'est-à-dire des titres détenus par des sociétés dont c'est l'objet d'investir pour en retirer une rentabilité à moyen terme. Il se débite de l'excédent de la valeur comptable sur le prix de cession, par le crédit du 273. Il figure dans les charges financières ; en cas de gain net, on utilise le 7672.",
+   "exemple": "TIAP acquis 15 000 € cédés 13 000 € : 512 D 13 000 / 6672 D 2 000 / 273 C 15 000.",
+   "piege": "Le 6672 fonctionne en net (perte seulement), contrairement au 6671 qui enregistre la valeur comptable brute.",
+   "pcg2025": null
+  },
+  {
+   "num": "6673",
+   "label": "Charges nettes sur cessions de valeurs mobilières de placement",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6673 enregistre la perte nette réalisée lors de la cession de valeurs mobilières de placement (actions, obligations, parts d'OPCVM du compte 50). Il se débite de la différence entre la valeur comptable et le prix de cession, lorsque celui-ci est inférieur, par le crédit du compte 50 concerné. Il figure dans les charges financières. En cas de gain net, c'est le 7673 qui est crédité ; une dépréciation existante est reprise au 7866.",
+   "exemple": "Cession de SICAV acquises 8 000 € pour 7 700 € : 512 D 7 700 / 6673 D 300 / 503 C 8 000.",
+   "piege": "La perte nette sur VMP est financière (6673) alors que la perte sur cession d'une immobilisation corporelle est désormais d'exploitation (657).",
+   "pcg2025": "Reprend l'ancien compte 667 « Charges nettes sur cessions de valeurs mobilières de placement », devenu une subdivision."
+  },
+  {
+   "num": "668",
+   "label": "Autres charges financières",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 668 enregistre les charges financières qui n'ont pas de compte spécifique : charges sur instruments financiers à terme, frais liés aux opérations de couverture, soultes de swaps, quote-part de résultat financier sur opérations faites en commun. Il se débite par le crédit du 512 ou du tiers concerné. Il figure dans les charges financières.",
+   "exemple": "Prime payée pour l'achat d'une option de change arrivée à échéance sans exercice, 500 € : 668 D 500 / 512 C 500.",
+   "piege": "Les frais bancaires d'exécution d'opérations sur titres sont au 6271, pas au 668.",
+   "pcg2025": null
+  },
+  {
+   "num": "67",
+   "label": "Charges exceptionnelles",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Depuis le règlement ANC n° 2022-06, le compte 67 ne reçoit que les charges liées à un événement majeur et inhabituel, étranger à l'activité normale de l'entreprise (sinistre grave, restructuration profonde, expropriation), ainsi que les éléments qualifiés d'exceptionnels par nature comme les changements de méthode comptable et les corrections d'erreurs significatives. Il est réduit au compte 678 « Autres charges exceptionnelles » et au compte transitoire 672. Il se débite par le crédit du tiers ou du compte d'actif concerné et figure dans la rubrique « Charges exceptionnelles » du compte de résultat. Les anciennes charges exceptionnelles de gestion sont désormais au 65 et les cessions d'immobilisations au 657.",
+   "exemple": "Coûts d'une fermeture définitive d'usine qualifiée d'événement majeur et inhabituel, 250 000 € : 678 D 250 000 / 428 C 250 000.",
+   "piege": "Une amende fiscale ou une créance irrécouvrable n'est plus exceptionnelle : 6582 et 654, pas 67.",
+   "pcg2025": "Le règlement ANC n° 2022-06 supprime les comptes 671 (6711 à 6718), 675 (6751 à 6758) et les subdivisions historiques du 678 ; seuls subsistent le 678 et le 672 utilisé en cours d'exercice."
+  },
+  {
+   "num": "671",
+   "label": "Charges exceptionnelles sur opérations de gestion (ancien compte)",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Avant 2025, le compte 671 regroupait les charges exceptionnelles de gestion : pénalités sur marchés (6711), pénalités et amendes fiscales et pénales (6712), dons et libéralités (6713), créances devenues irrécouvrables dans l'exercice (6714), subventions accordées (6715), rappels d'impôts autres que l'IS (6717) et autres (6718). Il se débitait par le crédit du tiers ou du 512 et figurait dans les charges exceptionnelles. Le règlement ANC n° 2022-06 l'a supprimé : ces charges sont rattachées à l'exploitation.",
+   "exemple": "Avant 2025 : amende pour infraction au code de la route 135 € : 6712 D 135 / 512 C 135. Depuis 2025 : 6582 D 135 / 512 C 135.",
+   "piege": "Un sujet ou un manuel qui utilise encore le 671 décrit le plan antérieur à 2025 : à l'examen, utiliser 654, 658 ou, si l'événement est majeur et inhabituel, 678.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 6581 (pénalités sur marchés), 6582 (amendes et pénalités), 658 (dons, rappels d'impôts, subventions accordées), 654 (créances irrécouvrables) ou 678 pour les seuls événements majeurs et inhabituels."
+  },
+  {
+   "num": "672",
+   "label": "Charges sur exercices antérieurs (compte de transit)",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 672 est un compte à la disposition des entreprises pour enregistrer, en cours d'exercice, les charges qui se rattachent à des exercices antérieurs (facture oubliée, régularisation). Il se débite par le crédit du tiers concerné. Avant la clôture, son solde doit être réimputé dans les comptes de charges par nature (60 à 65) auxquels ces charges correspondent, de sorte qu'il n'apparaît pas dans les comptes annuels. Seule une correction d'erreur significative reste exceptionnelle au 678.",
+   "exemple": "Facture d'honoraires 2024 reçue en mars 2025, 1 000 € HT : 672 D 1 000 / 44566 D 200 / 401 C 1 200, puis en fin d'exercice 6226 D 1 000 / 672 C 1 000.",
+   "piege": "Laisser un solde au 672 à la clôture : le compte doit être vide dans les états financiers, les charges étant reclassées par nature.",
+   "pcg2025": "Maintenu par le règlement ANC n° 2022-06 comme compte transitoire à solder avant la clôture ; il n'est plus une rubrique du résultat exceptionnel."
+  },
+  {
+   "num": "675",
+   "label": "Valeurs comptables des éléments d'actif cédés (ancien compte)",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Jusqu'aux exercices ouverts avant le 1er janvier 2025, le compte 675 enregistrait la valeur nette comptable de tout élément d'actif cédé : immobilisations incorporelles (6751), corporelles (6752) et financières (6756). Il se débitait de la VNC par le crédit du compte d'immobilisation et figurait dans les charges exceptionnelles, face au 775. Le règlement ANC n° 2022-06 l'a supprimé pour reclasser les cessions dans l'exploitation (657) ou le financier (6671).",
+   "exemple": "Avant 2025 : cession d'un véhicule de VNC 6 000 € : 675 D 6 000 / 28182 D 14 000 / 2182 C 20 000. Depuis 2025 : 657 D 6 000 / 28182 D 14 000 / 2182 C 20 000.",
+   "piege": "À l'examen, le 675 est une erreur : les cessions d'immobilisations corporelles et incorporelles passent au 657, celles d'immobilisations financières au 6671.",
+   "pcg2025": "Supprimé par le règlement ANC n° 2022-06 ; utiliser 657 pour les immobilisations incorporelles et corporelles et 6671 pour les immobilisations financières."
+  },
+  {
+   "num": "678",
+   "label": "Autres charges exceptionnelles",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 678 est désormais le seul compte de charges exceptionnelles proprement dites. Il enregistre les charges nées d'un événement majeur et inhabituel (sinistre non assuré, expropriation, abandon d'une branche d'activité, restructuration d'ampleur), ainsi que l'effet des changements de méthode comptable et des corrections d'erreurs significatives, lorsque leur traitement passe par le résultat. Il se débite par le crédit du tiers, du 512 ou du compte d'actif concerné, et l'entreprise est libre de le subdiviser (par exemple 6788 « Charges exceptionnelles diverses »). Il figure dans les charges exceptionnelles du compte de résultat et doit être détaillé dans l'annexe.",
+   "exemple": "Destruction d'un stock de 40 000 € dans un incendie non couvert, événement majeur et inhabituel : 678 D 40 000 / 37 C 40 000 (via la variation de stock selon la méthode retenue).",
+   "piege": "Qualifier d'exceptionnelle toute charge inhabituelle : il faut que l'événement soit à la fois majeur et inhabituel ; un litige ordinaire ou une pénalité restent d'exploitation.",
+   "pcg2025": "Le règlement ANC n° 2022-06 fait du 678 l'unique compte de charges exceptionnelles ; ses anciennes subdivisions (6781 malis d'indexation, 6783 malis sur rachat d'actions) sont reclassées en 658 et les subdivisions sont laissées libres."
+  },
+  {
+   "num": "6788",
+   "label": "Charges exceptionnelles diverses",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6788 est la subdivision usuelle du 678 pour les charges exceptionnelles qui ne font pas l'objet d'une sous-rubrique dédiée par l'entreprise. Il se débite du montant de la charge liée à l'événement majeur et inhabituel par le crédit du tiers ou du compte d'actif concerné. Il figure dans les charges exceptionnelles du compte de résultat. Son contenu doit être explicité dans l'annexe.",
+   "exemple": "Indemnités versées à des riverains à la suite d'une catastrophe industrielle, 120 000 € : 6788 D 120 000 / 467 C 120 000.",
+   "piege": "Ne pas y loger des charges courantes atypiques (pénalité de retard, perte sur créance) : elles relèvent du 65.",
+   "pcg2025": "Subdivision du 678 ; les subdivisions du 678 sont laissées à l'initiative de l'entreprise depuis 2025 et l'existence d'un 6788 normé dans le plan 2025 n'a pu être confirmée."
+  },
+  {
+   "num": "68",
+   "label": "Dotations aux amortissements, aux dépréciations et aux provisions",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 68 enregistre les charges calculées de fin d'exercice : amortissements des immobilisations, dépréciations d'actifs et provisions pour risques et charges. Il est ventilé selon la rubrique du compte de résultat concernée : exploitation (681), financier (686), exceptionnel (687). Il se débite à l'inventaire par le crédit des comptes 28, 29, 39, 49, 59 ou 15. Ces charges ne donnent lieu à aucun décaissement : on les réintègre pour calculer la capacité d'autofinancement.",
+   "exemple": "Amortissement annuel d'un matériel de 50 000 € sur 5 ans : 6811 D 10 000 / 2815 C 10 000.",
+   "piege": "Le compte 68 ne se crédite jamais pour annuler une dotation : la reprise passe par le 78.",
+   "pcg2025": null
+  },
+  {
+   "num": "681",
+   "label": "Dotations aux amortissements, aux dépréciations et aux provisions - Charges d'exploitation",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 681 enregistre les dotations qui relèvent de l'exploitation : amortissements des immobilisations incorporelles et corporelles (6811), amortissements des charges d'exploitation à répartir (6812), provisions d'exploitation (6815), dépréciations des immobilisations incorporelles et corporelles (6816), dépréciations des actifs circulants (6817). Il se débite à la clôture par le crédit du compte d'amortissement, de dépréciation ou de provision concerné. Il figure dans les charges d'exploitation, ligne « Dotations aux amortissements et dépréciations » ou « Dotations aux provisions ».",
+   "exemple": "Dépréciation d'une créance douteuse de 2 000 € HT estimée irrécouvrable à 50 % : 68174 D 1 000 / 491 C 1 000.",
+   "piege": "Les dotations pour litiges ou garanties clients sont d'exploitation (6815) : seuls les risques majeurs et inhabituels justifient le 6875.",
+   "pcg2025": null
+  },
+  {
+   "num": "6811",
+   "label": "Dotations aux amortissements sur immobilisations incorporelles et corporelles",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6811 enregistre l'amortissement annuel des immobilisations incorporelles (68111) et corporelles (68112), calculé selon le plan d'amortissement (linéaire, dégressif pour la seule comptabilité si justifié économiquement, unités d'œuvre). Il se débite de la dotation par le crédit du compte 28 concerné. Il figure dans les charges d'exploitation. L'amortissement dérogatoire, d'origine fiscale, ne passe pas ici mais au 6872.",
+   "exemple": "Véhicule de 24 000 € acquis le 1er avril, amorti sur 4 ans en linéaire : dotation de la première année 24 000 × 25 % × 9/12 = 4 500 : 68112 D 4 500 / 28182 C 4 500.",
+   "piege": "Les terrains ne s'amortissent pas, et les immobilisations en cours (23) non plus : seules les immobilisations mises en service sont amorties.",
+   "pcg2025": null
+  },
+  {
+   "num": "6812",
+   "label": "Dotations aux amortissements des charges d'exploitation à répartir",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6812 enregistre l'étalement des charges à répartir sur plusieurs exercices inscrites au 481, ce qui ne concerne plus, depuis 2005, que les frais d'émission des emprunts (4816) lorsqu'ils ne sont pas amortis au 6861. Il se débite de la fraction annuelle par le crédit du 481. Il figure dans les charges d'exploitation. Les anciens frais d'établissement s'amortissent au 6811 (68111).",
+   "exemple": "Frais d'émission d'emprunt de 6 000 € étalés sur 3 ans : 6812 D 2 000 / 4816 C 2 000.",
+   "piege": "Il n'est plus possible d'inscrire en charges à répartir des grosses réparations ou des frais de développement : seule l'option sur les frais d'émission d'emprunt subsiste.",
+   "pcg2025": null
+  },
+  {
+   "num": "6815",
+   "label": "Dotations aux provisions d'exploitation",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6815 enregistre les dotations aux provisions pour risques et charges liées à l'exploitation : litiges avec un client ou un salarié, garanties données aux clients, pertes sur marchés à terme, engagements de retraite si l'entreprise les comptabilise, grosses réparations. Il se débite du montant estimé de l'obligation par le crédit du compte 15 concerné. Il figure dans les charges d'exploitation, ligne « Dotations aux provisions ». La reprise, lorsque le risque disparaît ou se réalise, passe par le 7815.",
+   "exemple": "Litige prud'homal, indemnité probable 12 000 € : 6815 D 12 000 / 1511 C 12 000.",
+   "piege": "La provision ne doit couvrir qu'une obligation existante à la clôture ; un risque général ou une perte future d'exploitation ne se provisionne pas.",
+   "pcg2025": null
+  },
+  {
+   "num": "6816",
+   "label": "Dotations aux dépréciations des immobilisations incorporelles et corporelles",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6816 enregistre la dépréciation d'une immobilisation incorporelle ou corporelle dont la valeur actuelle (la plus élevée entre valeur vénale et valeur d'usage) est devenue inférieure à la valeur nette comptable, après un test de dépréciation déclenché par un indice de perte de valeur. Il se débite de la perte de valeur par le crédit du compte 29 concerné. Il figure dans les charges d'exploitation. La dépréciation modifie prospectivement la base amortissable.",
+   "exemple": "Machine de VNC 30 000 € dont la valeur actuelle tombe à 22 000 € : 6816 D 8 000 / 2915 C 8 000.",
+   "piege": "La dépréciation d'un fonds commercial est irréversible : elle ne peut jamais être reprise, contrairement aux autres dépréciations.",
+   "pcg2025": null
+  },
+  {
+   "num": "6817",
+   "label": "Dotations aux dépréciations des actifs circulants",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6817 enregistre les dépréciations des stocks et en-cours (68173) et des créances (68174) lorsque leur valeur actuelle devient inférieure à leur valeur comptable. Il se débite du montant estimé de la perte par le crédit des comptes 39 ou 49. La dépréciation des créances se calcule sur le montant HT. Il figure dans les charges d'exploitation. La reprise, en cas de disparition du risque ou de constatation de la perte définitive, passe au 7817.",
+   "exemple": "Stock de marchandises de 50 000 € dont la valeur de marché n'est plus que 45 000 € : 68173 D 5 000 / 397 C 5 000.",
+   "piege": "La dépréciation d'une créance se calcule hors TVA, car la TVA collectée sera récupérée si la créance devient irrécouvrable.",
+   "pcg2025": null
+  },
+  {
+   "num": "686",
+   "label": "Dotations aux amortissements, aux dépréciations et aux provisions - Charges financières",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 686 enregistre les dotations de nature financière : amortissement des primes de remboursement des obligations (6861), provisions financières dont la provision pour perte de change (6865), dépréciations des éléments financiers comme les titres de participation ou les VMP (6866), autres dotations (6868). Il se débite à la clôture par le crédit du compte 169, 15, 29 ou 59 concerné. Il figure dans les charges financières.",
+   "exemple": "Titres de participation acquis 50 000 €, valeur d'utilité 42 000 € à la clôture : 68662 D 8 000 / 2961 C 8 000.",
+   "piege": "La dépréciation des VMP est financière (68665) tandis que celle des stocks est d'exploitation (68173) : la nature de l'actif commande la rubrique.",
+   "pcg2025": null
+  },
+  {
+   "num": "6861",
+   "label": "Dotations aux amortissements des primes de remboursement des obligations",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6861 enregistre l'amortissement de la prime de remboursement d'un emprunt obligataire (différence entre prix de remboursement et prix d'émission inscrite au 169), étalé sur la durée de l'emprunt au prorata des intérêts courus ou de manière linéaire. Il se débite de la fraction annuelle par le crédit du 169. Il figure dans les charges financières. Les frais d'émission d'emprunt, eux, s'étalent au 6812.",
+   "exemple": "Emprunt obligataire émis à 980 €, remboursable à 1 000 €, 10 000 obligations sur 5 ans, étalement linéaire : 6861 D 40 000 / 169 C 40 000.",
+   "piege": "La prime de remboursement n'est pas un intérêt : elle ne passe pas au 661 mais s'amortit via le 6861.",
+   "pcg2025": null
+  },
+  {
+   "num": "6865",
+   "label": "Dotations aux provisions financières",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6865 enregistre les dotations aux provisions pour risques et charges de nature financière, la plus courante étant la provision pour perte de change (1515) constituée face à un écart de conversion actif (476). Il se débite du montant de la perte latente par le crédit du compte 15 concerné. Il figure dans les charges financières. La reprise, à l'exercice suivant, passe au 7865.",
+   "exemple": "Dette fournisseur de 10 000 USD comptabilisée 9 000 €, valant 9 400 € au cours de clôture : 476 D 400 / 401 C 400, puis 6865 D 400 / 1515 C 400.",
+   "piege": "Le gain latent (écart de conversion passif 477) ne donne lieu à aucun produit : la prudence interdit de le constater au 766.",
+   "pcg2025": null
+  },
+  {
+   "num": "6866",
+   "label": "Dotations aux dépréciations des éléments financiers",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6866 enregistre les dépréciations des immobilisations financières (68662 : titres de participation, prêts, créances rattachées) et des valeurs mobilières de placement (68665) lorsque leur valeur d'inventaire est inférieure au coût d'acquisition. Il se débite de la perte latente par le crédit du 296, 297 ou 590. Les plus-values latentes ne sont pas constatées et aucune compensation n'est possible entre titres de catégories différentes. Il figure dans les charges financières.",
+   "exemple": "VMP acquises 12 000 €, cours de clôture 11 000 € : 68665 D 1 000 / 590 C 1 000.",
+   "piege": "Pour les titres cotés, la compensation entre plus et moins-values latentes n'est admise qu'à l'intérieur d'une même catégorie de titres et dans des cas limités : la règle générale est l'évaluation titre par titre.",
+   "pcg2025": null
+  },
+  {
+   "num": "6868",
+   "label": "Autres dotations financières",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6868 enregistre les dotations financières qui ne relèvent ni des primes de remboursement, ni des provisions, ni des dépréciations d'éléments financiers : par exemple l'amortissement de certains frais financiers étalés ou les dotations liées aux instruments de couverture. Il se débite à la clôture par le crédit du compte de régularisation concerné. Il figure dans les charges financières. Son usage est marginal.",
+   "exemple": "Étalement d'une soulte de swap de 3 000 € sur 3 ans : 6868 D 1 000 / 4816 C 1 000.",
+   "piege": "Ne pas y mettre une dépréciation de titres : elle a son compte dédié, le 6866.",
+   "pcg2025": null
+  },
+  {
+   "num": "687",
+   "label": "Dotations aux amortissements, aux dépréciations et aux provisions - Charges exceptionnelles",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 687 enregistre les dotations qui relèvent du résultat exceptionnel : amortissements exceptionnels des immobilisations (6871), provisions réglementées sur immobilisations dont les amortissements dérogatoires (6872), provisions réglementées sur stocks (6873), autres provisions réglementées (6874), provisions pour risques et charges exceptionnels (6875) et dépréciations exceptionnelles (6876). Il se débite à la clôture par le crédit du compte 28, 29, 14 ou 15 concerné. Il figure dans les charges exceptionnelles. Les provisions réglementées, purement fiscales, restent exceptionnelles même après la réforme.",
+   "exemple": "Amortissement dérogatoire de l'année 3 000 € : 68725 D 3 000 / 145 C 3 000.",
+   "piege": "Les dotations aux provisions pour litiges courants vont au 6815 et non au 6875, qui est réservé aux événements majeurs et inhabituels.",
+   "pcg2025": "Le règlement ANC n° 2022-06 maintient les provisions réglementées (6872 à 6874) dans le résultat exceptionnel ; le 6875 est réservé aux provisions liées à des événements majeurs et inhabituels."
+  },
+  {
+   "num": "6871",
+   "label": "Dotations aux amortissements exceptionnels des immobilisations",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 6871 enregistre les amortissements exceptionnels pratiqués en dehors du plan d'amortissement normal lorsqu'un événement majeur et inhabituel réduit brutalement la durée d'utilisation d'une immobilisation, par exemple l'abandon d'une activité. Il se débite de la dotation complémentaire par le crédit du compte 28 concerné. Il figure dans les charges exceptionnelles. Une simple perte de valeur réversible relève de la dépréciation (6816).",
+   "exemple": "Arrêt définitif d'une ligne de production : amortissement du solde non amorti d'un matériel, 15 000 € : 6871 D 15 000 / 2815 C 15 000.",
+   "piege": "L'amortissement exceptionnel est définitif, la dépréciation réversible : c'est l'irréversibilité de la perte qui justifie le 6871.",
+   "pcg2025": "Compte conservé dans la logique du plan 2025, mais son emploi est limité aux événements majeurs et inhabituels ; son maintien dans le plan de comptes officiel n'a pu être recoupé."
+  },
+  {
+   "num": "6872",
+   "label": "Dotations aux provisions réglementées (immobilisations)",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6872 enregistre les dotations aux provisions réglementées relatives aux immobilisations, essentiellement les amortissements dérogatoires (68725) qui constatent l'écart entre l'amortissement fiscal (dégressif, exceptionnel) et l'amortissement comptable économique, ainsi que les provisions pour investissement ou reconstitution de gisements. Il se débite de la dotation par le crédit du compte 14 (145 pour les amortissements dérogatoires). Il figure dans les charges exceptionnelles. Lorsque l'amortissement comptable dépasse l'amortissement fiscal, la reprise passe par le 78725.",
+   "exemple": "Amortissement fiscal dégressif 14 000 €, amortissement comptable linéaire 10 000 € : 6811 D 10 000 / 2815 C 10 000 et 68725 D 4 000 / 145 C 4 000.",
+   "piege": "L'amortissement dérogatoire n'est pas porté au 28 : il va au 145 (capitaux propres), car il ne traduit pas une perte de valeur du bien.",
+   "pcg2025": "Maintenu par le règlement ANC n° 2022-06 : les provisions réglementées restent dans le résultat exceptionnel."
+  },
+  {
+   "num": "6875",
+   "label": "Dotations aux provisions pour risques et charges exceptionnels",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6875 enregistre les dotations aux provisions pour risques et charges liées à un événement majeur et inhabituel : coûts d'une restructuration d'ampleur annoncée avant la clôture, risques nés d'une catastrophe, obligation de dépollution exceptionnelle. Il se débite du montant estimé de l'obligation par le crédit du compte 15 concerné. Il figure dans les charges exceptionnelles. Pour tout risque lié à l'activité courante (litige, garantie), c'est le 6815 qu'il faut utiliser ; la reprise correspondante passe au 7875.",
+   "exemple": "Plan de restructuration majeur annoncé en décembre, coûts estimés 300 000 € : 6875 D 300 000 / 1518 C 300 000.",
+   "piege": "La provision pour restructuration n'est constituée que si le plan est détaillé et annoncé aux intéressés avant la clôture : une simple intention ne suffit pas.",
+   "pcg2025": "Son champ est restreint par le règlement ANC n° 2022-06 aux provisions liées à des événements majeurs et inhabituels ; les autres provisions pour risques relèvent du 6815."
+  },
+  {
+   "num": "6876",
+   "label": "Dotations aux dépréciations exceptionnelles",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 6876 enregistre les dépréciations d'actifs provoquées par un événement majeur et inhabituel, par exemple la perte de valeur d'un site à la suite d'une catastrophe ou d'une expropriation annoncée. Il se débite de la perte de valeur par le crédit du compte 29, 39 ou 49 concerné. Il figure dans les charges exceptionnelles. Les dépréciations résultant de l'activité courante restent au 6816 ou au 6817 ; la reprise correspondante passe au 7876.",
+   "exemple": "Dépréciation d'un entrepôt rendu inutilisable par une inondation majeure, 80 000 € : 6876 D 80 000 / 2913 C 80 000.",
+   "piege": "Confondre dépréciation exceptionnelle (6876, réversible) et amortissement exceptionnel (6871, définitif).",
+   "pcg2025": null
+  },
+  {
+   "num": "69",
+   "label": "Participation des salariés - Impôts sur les bénéfices et assimilés",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 69 regroupe les charges qui s'imputent sur le résultat avant de donner le résultat net : participation des salariés aux résultats (691), impôt sur les bénéfices (695), suppléments d'impôt liés aux distributions (696), intégration fiscale (698) et produits de report en arrière des déficits (699). Il se débite par le crédit du 428, du 444 ou du 451. Au compte de résultat, ces charges figurent après le résultat exceptionnel, sur des lignes dédiées. Elles n'entrent dans aucun solde intermédiaire avant le résultat net.",
+   "exemple": "IS de l'exercice 25 000 € : 695 D 25 000 / 444 C 25 000.",
+   "piege": "La CVAE et la CFE ne sont pas des impôts sur les bénéfices : elles sont au 63511, dans l'exploitation.",
+   "pcg2025": null
+  },
+  {
+   "num": "691",
+   "label": "Participation des salariés aux résultats",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 691 enregistre la participation des salariés aux résultats de l'entreprise, obligatoire dans les entreprises d'au moins 50 salariés et calculée selon la formule légale ou un accord dérogatoire. Il se débite du montant de la réserve spéciale de participation par le crédit du 4284 « Dettes provisionnées pour participation des salariés », puis du 4246 lors de la répartition. Il figure au compte de résultat sur la ligne « Participation des salariés aux résultats », après le résultat exceptionnel. La charge est déductible fiscalement l'exercice suivant son attribution.",
+   "exemple": "Réserve spéciale de participation calculée à 18 000 € : 691 D 18 000 / 4284 C 18 000.",
+   "piege": "L'intéressement n'est pas la participation : il est facultatif et s'enregistre en charges de personnel (6414 ou 648), dans l'exploitation.",
+   "pcg2025": null
+  },
+  {
+   "num": "695",
+   "label": "Impôts sur les bénéfices",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 695 enregistre l'impôt sur les sociétés dû au titre de l'exercice : impôt dû en France (6951), contribution additionnelle à l'IS (6952), impôt dû à l'étranger (6954). Il se débite de l'IS brut à la clôture par le crédit du 444 « État - Impôts sur les bénéfices », les acomptes déjà versés ayant été débités au 444. Il figure au compte de résultat sur la ligne « Impôts sur les bénéfices », après la participation. Les crédits d'impôt (CIR, mécénat) viennent le diminuer ou sont portés au 444.",
+   "exemple": "IS de 32 000 € dont 24 000 € d'acomptes déjà versés : 695 D 32 000 / 444 C 32 000 ; solde à payer 444 : 8 000 €.",
+   "piege": "L'IS est une charge non déductible du résultat fiscal : il doit être réintégré pour passer du résultat comptable au résultat fiscal.",
+   "pcg2025": null
+  },
+  {
+   "num": "696",
+   "label": "Suppléments d'impôt sur les sociétés liés aux distributions",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 696 enregistre les impositions complémentaires déclenchées par la distribution de dividendes, comme l'ancien précompte ou la contribution de 3 % sur les montants distribués (abrogée en 2018). Il se débite du supplément d'impôt par le crédit du 444. Il figure au compte de résultat parmi les impôts sur les bénéfices. Il est aujourd'hui pratiquement sans objet mais subsiste dans le plan de comptes.",
+   "exemple": "Supplément d'imposition lié à une distribution 1 500 € : 696 D 1 500 / 444 C 1 500.",
+   "piege": "Les dividendes versés ne sont pas une charge : ils s'imputent sur le résultat (120) et les réserves, le 696 ne concerne que l'impôt éventuel qu'ils génèrent.",
+   "pcg2025": null
+  },
+  {
+   "num": "697",
+   "label": "Imposition forfaitaire annuelle des sociétés",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 697 enregistrait l'imposition forfaitaire annuelle (IFA), impôt dû par les sociétés en fonction de leur chiffre d'affaires indépendamment de leur bénéfice. L'IFA a été supprimée à compter du 1er janvier 2014, de sorte que le compte n'a plus d'emploi courant. Il se débitait de l'IFA due par le crédit du 444 et figurait parmi les impôts sur les bénéfices.",
+   "exemple": "Avant 2014 : IFA de 3 750 € : 697 D 3 750 / 444 C 3 750.",
+   "piege": "Ne pas y enregistrer la cotisation minimale de CFE, qui est un impôt local au 63511.",
+   "pcg2025": "L'IFA n'existe plus depuis 2014 ; le maintien du compte 697 dans le plan de comptes 2025 n'a pu être recoupé, il est présenté ici pour la lecture des manuels anciens."
+  },
+  {
+   "num": "698",
+   "label": "Intégration fiscale",
+   "sens": "D/C",
+   "obligatoire": true,
+   "explication": "Le compte 698 enregistre, dans un groupe fiscalement intégré, les flux d'impôt entre la société mère et les filiales : charge d'impôt supplémentaire supportée par une société du groupe au titre de l'intégration (6981, débiteur) ou produit lorsque l'intégration lui procure une économie, par exemple l'utilisation de son déficit par le groupe (6989, créditeur). Il fonctionne par le crédit ou le débit du 451 « Groupe » ou du 444. Il figure au compte de résultat parmi les impôts sur les bénéfices.",
+   "exemple": "Filiale intégrée dont l'IS théorique est de 10 000 € versé à la mère : 6981 D 10 000 / 451 C 10 000.",
+   "piege": "Dans la filiale intégrée, c'est généralement le 698 et non le 695 qui est mouvementé, puisque la mère est seule redevable de l'IS du groupe.",
+   "pcg2025": null
+  },
+  {
+   "num": "699",
+   "label": "Produits - Reports en arrière des déficits",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 699 enregistre la créance d'impôt née de l'option pour le report en arrière du déficit (carry-back) : le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent, dans la limite de 1 000 000 €, et génère une créance sur le Trésor. Il se crédite du montant de la créance par le débit du 444 (ou du 4487). Il figure au compte de résultat en diminution de la charge d'impôt sur les bénéfices. La créance est remboursable au bout de cinq ans si elle n'a pas été utilisée.",
+   "exemple": "Déficit de 200 000 € reporté en arrière sur un bénéfice taxé à 25 % : créance 50 000 € : 444 D 50 000 / 699 C 50 000.",
+   "piege": "Le report en avant du déficit ne donne lieu à aucune écriture en comptabilité individuelle : seul le report en arrière crée une créance comptabilisée.",
+   "pcg2025": null
+  }
+ ]
+}

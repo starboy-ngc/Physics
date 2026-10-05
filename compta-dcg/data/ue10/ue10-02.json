@@ -1,0 +1,721 @@
+{
+ "id": "ue10-02",
+ "ue": "UE10",
+ "ordre": 2,
+ "title": "Immobilisations incorporelles et corporelles : entrée et évaluation",
+ "resume": "Reconnaître un actif, calculer son coût d'entrée (acquisition ou production), décomposer, activer ou non les dépenses incorporelles et comptabiliser l'entrée au bilan.",
+ "duree": "60 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Qu'est-ce qu'un actif ? Définition et critères de comptabilisation",
+   "html": "<p>Le PCG (art. 211-1) définit un <b>actif</b> comme un élément identifiable du patrimoine ayant une <b>valeur économique positive</b> pour l'entité, c'est-à-dire une ressource qu'elle <b>contrôle</b> du fait d'événements passés et dont elle attend des <b>avantages économiques futurs</b>. Le contrôle, non la propriété juridique, est le critère décisif : un bien pris en crédit-bail n'est pas un actif dans les comptes individuels, faute de transfert de propriété ; un bien acheté avec clause de réserve de propriété est un actif dès la livraison.</p><p>Une <b>immobilisation corporelle</b> est un actif physique détenu pour être utilisé dans la production, la fourniture de biens ou services, la location ou la gestion interne, au-delà de l'exercice en cours. Une <b>immobilisation incorporelle</b> est un actif non monétaire sans substance physique (brevet, logiciel, fonds commercial).</p><p>Un actif est comptabilisé (art. 212-1) lorsque deux conditions sont réunies : il est <b>probable</b> que l'entité bénéficiera des avantages économiques futurs et son coût peut être <b>évalué avec une fiabilité suffisante</b>. Les biens de faible valeur peuvent être passés en charges : la tolérance fiscale admet les matériels, outillages, mobiliers et logiciels d'une valeur unitaire inférieure à <span class=\"mono\">500 € HT</span>.</p>"
+  },
+  {
+   "h": "Le coût d'acquisition d'une immobilisation",
+   "html": "<p>À son entrée, une immobilisation acquise à titre onéreux est évaluée à son <b>coût d'acquisition</b> (PCG art. 213-8) :</p><ul><li><b>Prix d'achat</b>, y compris droits de douane et taxes non récupérables, <b>après déduction</b> des remises, rabais, ristournes et <b>escomptes de règlement</b> ;</li><li><b>Coûts directement attribuables</b> pour mettre l'actif en place et en état de fonctionner : transport, installation, montage, honoraires d'architectes et d'ingénieurs, frais de préparation du site, coûts des essais de bon fonctionnement ;</li><li>Estimation initiale des <b>coûts de démantèlement</b>, d'enlèvement et de remise en état du site lorsqu'une obligation existe (contrepartie : provision 158) ;</li><li>Sur <b>option</b>, les <b>coûts d'emprunt</b> attribuables à l'acquisition d'un actif exigeant une longue période de préparation (art. 213-9) ; l'option vaut pour toutes les immobilisations et tous les stocks éligibles.</li></ul><p>Sont <b>exclus</b> : frais administratifs et généraux, coûts de formation du personnel, pertes d'exploitation initiales, coûts de lancement d'un produit. Les <b>frais d'acquisition</b> (droits de mutation, honoraires, commissions, frais d'actes) peuvent, sur option globale, être inclus dans le coût ou passés en charges (6354, 6226) ; l'option est irrévocable pour un même exercice et commune aux immobilisations corporelles et incorporelles.</p><p>Exemple : Lamar achète une machine <span class=\"mono\">50 000 € HT</span>, transport <span class=\"mono\">2 000 €</span>, installation <span class=\"mono\">3 000 €</span>, TVA <span class=\"mono\">20 %</span>.</p>",
+   "entry": [
+    {
+     "a": "2154",
+     "d": 55000,
+     "c": 0
+    },
+    {
+     "a": "44562",
+     "d": 11000,
+     "c": 0
+    },
+    {
+     "a": "404",
+     "d": 0,
+     "c": 66000
+    }
+   ],
+   "lib": "Acquisition d'un matériel industriel, frais de transport et d'installation inclus dans le coût"
+  },
+  {
+   "h": "Le coût de production et les immobilisations en cours",
+   "html": "<p>Une immobilisation produite par l'entreprise pour elle-même est évaluée à son <b>coût de production</b> (PCG art. 213-14) : coût d'acquisition des matières consommées, <b>charges directes</b> de production (main-d'œuvre, sous-traitance) et <b>charges indirectes</b> de production rationnellement rattachables (amortissement des ateliers, énergie). On exclut la quote-part de charges fixes correspondant à la <b>sous-activité</b> (imputation rationnelle), les frais de recherche, les frais d'administration générale et les frais de distribution. Les coûts d'emprunt suivent la même option que pour l'acquisition.</p><p>La contrepartie des charges déjà enregistrées par nature (classe 6) est le compte <b>72 Production immobilisée</b> : <b>721</b> pour les immobilisations incorporelles, <b>722</b> pour les corporelles. Tant que l'immobilisation n'est pas achevée, les coûts engagés sont portés en <b>23 Immobilisations en cours</b> (231 corporelles, 232 incorporelles) ; à l'achèvement, le compte 23 est viré au compte d'immobilisation définitif.</p><div class=\"note\"><b>Règle à retenir.</b> Le compte 72 neutralise des charges déjà comptabilisées : le résultat n'est pas affecté par la production immobilisée, l'actif est simplement créé.</div><p>Exemple : au 31 décembre N, Bâtex a engagé <span class=\"mono\">40 000 €</span> de coûts pour un hangar qu'elle construit elle-même et qui sera achevé en N+1.</p>",
+   "entry": [
+    {
+     "a": "231",
+     "d": 40000,
+     "c": 0
+    },
+    {
+     "a": "722",
+     "d": 0,
+     "c": 40000
+    }
+   ],
+   "lib": "Constatation de l'immobilisation corporelle en cours à la clôture"
+  },
+  {
+   "h": "Composants, dépenses ultérieures et gros entretien",
+   "html": "<p><b>Approche par composants</b> (PCG art. 214-9) : lorsque des éléments d'une immobilisation ont des durées d'utilisation différentes ou procurent des avantages selon un rythme différent, chacun est comptabilisé séparément et amorti selon son propre plan (structure d'un immeuble, toiture, ascenseur, chaudière). Le remplacement d'un composant est traité comme la sortie de l'ancien et l'acquisition d'un nouveau.</p><p><b>Dépenses ultérieures</b> : elles sont immobilisées si elles augmentent la valeur de l'actif, prolongent sa durée d'utilisation ou améliorent sa performance (<b>amélioration</b>) ; elles sont passées en charges (615 Entretien et réparations) si elles maintiennent seulement l'actif en état de fonctionnement (<b>entretien courant</b>).</p><p><b>Gros entretien et grandes révisions</b> (dépenses programmées sur plusieurs années : carénage d'un navire, révision quinquennale d'un four) : deux méthodes au choix, appliquées de façon permanente :</p><ul><li><b>Composant de deuxième catégorie</b> : une fraction du coût d'entrée est isolée et amortie sur la durée séparant deux révisions ;</li><li><b>Provision pour gros entretien</b> (compte 1572, dotation 6815), constituée progressivement jusqu'à la date de la révision.</li></ul><p>La méthode de la provision est seule admise fiscalement : l'option composant conduit à des retraitements extra-comptables. Le remplacement d'une pièce lors d'une panne reste une charge d'entretien.</p>"
+  },
+  {
+   "h": "Immobilisations incorporelles : frais d'établissement, recherche et développement, fonds commercial",
+   "html": "<p><b>Frais d'établissement</b> (201) : frais de constitution, de premier établissement, d'augmentation de capital. La méthode préférentielle est leur comptabilisation en charges ; sur option ils peuvent être inscrits à l'actif et amortis sur <b>cinq ans au maximum</b> (PCG art. 212-9). </p><p><b>Frais de recherche</b> : toujours en charges (617). <b>Frais de développement</b> (203) : option entre charges et activation, l'activation étant la méthode préférentielle, à condition de respecter les six critères de l'article 212-3 : faisabilité technique, intention d'achever et d'utiliser ou de vendre, capacité de le faire, avantages économiques futurs probables (existence d'un marché ou utilité interne), disponibilité des ressources, évaluation fiable des dépenses. Seules les dépenses engagées <b>à partir de la date</b> où les critères sont remplis sont activées ; elles sont amorties sur la durée d'utilisation et dépréciées immédiatement en cas d'échec.</p><div class=\"note\"><b>Piège.</b> Tant que les frais d'établissement ou de développement ne sont pas totalement amortis, aucune distribution de dividendes n'est possible, sauf si les réserves libres sont au moins égales à leur montant net (C. com., art. L. 232-9).</div><p>Le <b>fonds commercial</b> acquis (207) est un actif ; le fonds créé en interne, les marques, fichiers clients ou titres de journaux générés en interne ne sont jamais activés. Les <b>brevets</b> et <b>marques</b> acquis sont inscrits en 205.</p>"
+  },
+  {
+   "h": "Logiciels et sites internet",
+   "html": "<p>Un <b>logiciel acquis</b> est une immobilisation incorporelle (205) amortie sur sa durée d'utilisation ; un logiciel indissociable d'un matériel suit le matériel. Un <b>logiciel créé</b> pour un usage interne ou commercial peut être immobilisé à son coût de production (PCG art. 611-1 s.) si le projet a de sérieuses chances de réussite technique et si l'entité manifeste sa volonté de le produire et de l'utiliser durablement. Seules certaines phases sont activables :</p><table><thead><tr><th>Phase</th><th>Traitement</th></tr></thead><tbody><tr><td>Étude préalable, analyse fonctionnelle</td><td>Charges</td></tr><tr><td>Analyse organique, programmation, tests, documentation technique</td><td>Coût de production immobilisé</td></tr><tr><td>Formation des utilisateurs, maintenance</td><td>Charges</td></tr></tbody></table><p>Les <b>sites internet</b> (art. 612-1 s.) suivent une logique proche : les coûts de développement d'un site actif (prise de commandes, services) sont activables s'il remplit les conditions des frais de développement ; les sites de simple présentation (vitrines publicitaires) restent en charges.</p><p>Exemple : Codex achève un logiciel de gestion interne dont le coût de production activable s'élève à <span class=\"mono\">24 000 €</span>.</p>",
+   "entry": [
+    {
+     "a": "205",
+     "d": 24000,
+     "c": 0
+    },
+    {
+     "a": "721",
+     "d": 0,
+     "c": 24000
+    }
+   ],
+   "lib": "Immobilisation du logiciel créé en interne"
+  },
+  {
+   "h": "Subventions d'investissement rattachées à l'actif",
+   "html": "<p>Une <b>subvention d'investissement</b> finance l'acquisition ou la création d'une immobilisation (subvention d'équipement). Elle n'est pas déduite du coût de l'actif : celui-ci reste inscrit à son coût d'acquisition ou de production. La subvention est inscrite dans les <b>capitaux propres</b> (compte 131 Subventions d'équipement ou 138 Autres subventions d'investissement) dès que son octroi est acquis, par le débit de 441 État – subventions à recevoir, puis 512 à l'encaissement.</p><p>Elle est ensuite <b>reprise au compte de résultat</b> au rythme des amortissements de l'actif financé (ou sur dix ans pour un bien non amortissable, ou sur la durée d'inaliénabilité) : débit 139 Subventions d'investissement inscrites au compte de résultat, crédit <b>747</b> Quote-part des subventions d'investissement virée au résultat de l'exercice. Depuis le PCG 2025, cette reprise est un produit d'exploitation (avant 2025 : 777, produit exceptionnel). Le détail du rythme de reprise et le traitement fiscal sont vus au chapitre 7.</p><p>Exemple : la région notifie à Lamar une subvention de <span class=\"mono\">15 000 €</span> pour la machine acquise ci-dessus.</p>",
+   "entry": [
+    {
+     "a": "441",
+     "d": 15000,
+     "c": 0
+    },
+    {
+     "a": "131",
+     "d": 0,
+     "c": 15000
+    }
+   ],
+   "lib": "Octroi d'une subvention d'équipement"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "PCG art. 211-1 et 212-1",
+   "note": "Définition d'un actif et conditions de comptabilisation"
+  },
+  {
+   "ref": "PCG art. 213-8 et 213-9",
+   "note": "Coût d'acquisition, frais d'acquisition sur option, coûts d'emprunt sur option"
+  },
+  {
+   "ref": "PCG art. 213-14",
+   "note": "Coût de production, exclusion de la sous-activité"
+  },
+  {
+   "ref": "PCG art. 214-9",
+   "note": "Approche par composants et gros entretien"
+  },
+  {
+   "ref": "PCG art. 212-3 et 212-9",
+   "note": "Frais de développement (six critères) ; frais d'établissement"
+  },
+  {
+   "ref": "PCG art. 611-1 s. et 612-1 s.",
+   "note": "Logiciels créés et sites internet"
+  },
+  {
+   "ref": "PCG art. 312-1",
+   "note": "Subventions d'investissement : inscription en capitaux propres et reprise"
+  },
+  {
+   "ref": "C. com., art. L. 232-9",
+   "note": "Interdiction de distribuer tant que les frais d'établissement et de développement ne sont pas amortis"
+  },
+  {
+   "ref": "BOI-BIC-CHG-20-30-10",
+   "note": "Tolérance fiscale de 500 € HT pour les petits matériels"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Selon le PCG, le critère déterminant pour inscrire un bien à l'actif est :",
+   "opts": [
+    "La propriété juridique du bien",
+    "Le contrôle du bien et l'attente d'avantages économiques futurs",
+    "Le paiement intégral du prix",
+    "La durée d'utilisation supérieure à cinq ans"
+   ],
+   "a": 1,
+   "why": "L'article 211-1 du PCG définit l'actif par le contrôle d'une ressource procurant des avantages économiques futurs, indépendamment de la propriété juridique (un bien sous réserve de propriété est un actif ; un bien en crédit-bail ne l'est pas dans les comptes individuels). Le paiement n'a aucune incidence et la durée exigée est seulement supérieure à l'exercice.",
+   "src": "PCG art. 211-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Parmi les éléments suivants, lesquels entrent dans le coût d'acquisition d'une machine industrielle ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les frais de transport et d'installation",
+    "Les droits de douane",
+    "Les coûts de formation des opérateurs",
+    "Les coûts des essais de bon fonctionnement",
+    "Les frais généraux du service achats"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "PCG art. 213-8 : le coût comprend le prix d'achat, droits de douane et taxes non récupérables inclus, et tous les coûts directement attribuables pour mettre l'actif en état de fonctionner (transport, installation, essais). La formation du personnel et les frais administratifs généraux sont expressément exclus et restent des charges.",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Fabrix achète une presse : prix catalogue 80 000 € HT, remise commerciale 5 %, escompte de règlement 1 % sur le prix net de remise, transport 1 500 € HT, installation 2 500 € HT, formation des opérateurs 3 000 € HT. Calculez le coût d'acquisition de la presse (en euros, arrondi à l'euro).",
+   "a": 79240,
+   "unit": "€",
+   "tol": 1,
+   "why": "Prix net de remise : 80 000 × 0,95 = 76 000. Escompte déduit : 76 000 × 0,99 = 75 240 (PCG art. 213-8 impose de déduire remises et escomptes). Coûts directement attribuables : 1 500 + 2 500 = 4 000. Coût = 75 240 + 4 000 = 79 240 €. La formation (3 000) est exclue : c'est une charge de l'exercice. Une erreur fréquente consiste à laisser l'escompte en produit financier (765), ce qui n'est plus admis pour les immobilisations.",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Le 5 mars N, Lamar reçoit la facture d'un matériel industriel : prix 40 000 € HT, installation 2 000 € HT, TVA 20 % sur le total, paiement à 60 jours. Enregistrez la facture.",
+   "lib": "Acquisition d'un matériel industriel",
+   "palette": [
+    "2154",
+    "44562",
+    "404",
+    "401",
+    "44566",
+    "615",
+    "6063"
+   ],
+   "sol": [
+    [
+     {
+      "a": "2154",
+      "d": 42000,
+      "c": 0
+     },
+     {
+      "a": "44562",
+      "d": 8400,
+      "c": 0
+     },
+     {
+      "a": "404",
+      "d": 0,
+      "c": 50400
+     }
+    ]
+   ],
+   "why": "L'installation est un coût directement attribuable : coût = 40 000 + 2 000 = 42 000 € au débit de 2154. La TVA déductible sur immobilisations est le compte 44562 (et non 44566, réservé aux biens et services) : 42 000 × 20 % = 8 400. La dette envers un fournisseur d'immobilisation va en 404 (et non 401) : 50 400. Le compte 615 serait une erreur : l'installation initiale n'est pas de l'entretien.",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Les droits de mutation et honoraires de notaire payés lors de l'achat d'un immeuble sont, dans les comptes individuels :",
+   "opts": [
+    "Obligatoirement inclus dans le coût d'acquisition de l'immeuble",
+    "Obligatoirement comptabilisés en charges de l'exercice",
+    "Au choix de l'entreprise, inclus dans le coût ou comptabilisés en charges",
+    "Inclus dans le coût pour l'immeuble et en charges pour le terrain"
+   ],
+   "a": 2,
+   "why": "PCG art. 213-8 : les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes) peuvent sur option être rattachés au coût ou comptabilisés en charges. L'option est globale : elle s'applique à l'ensemble des immobilisations corporelles et incorporelles, sans distinction terrain/construction, et une option distincte existe pour les titres. Le choix a un effet fiscal direct (déduction immédiate ou étalée).",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Terrex acquiert un terrain 150 000 €. Les droits d'enregistrement s'élèvent à 9 000 € et les honoraires du notaire à 3 000 € HT (TVA 600 €). L'entreprise a opté pour la comptabilisation des frais d'acquisition en charges. Le tout est réglé par banque. Enregistrez l'opération.",
+   "lib": "Acquisition d'un terrain, frais d'acquisition en charges",
+   "palette": [
+    "211",
+    "6354",
+    "6226",
+    "44566",
+    "512",
+    "404",
+    "2131",
+    "44562"
+   ],
+   "sol": [
+    [
+     {
+      "a": "211",
+      "d": 150000,
+      "c": 0
+     },
+     {
+      "a": "6354",
+      "d": 9000,
+      "c": 0
+     },
+     {
+      "a": "6226",
+      "d": 3000,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 600,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 162600
+     }
+    ]
+   ],
+   "why": "Option charges : le terrain est inscrit en 211 pour son seul prix (150 000). Les droits d'enregistrement vont en 6354 Droits d'enregistrement et de timbre, les honoraires en 6226 avec leur TVA déductible sur biens et services (44566, 600). Total payé : 150 000 + 9 000 + 3 000 + 600 = 162 600 au crédit de 512. Avec l'option inverse, le terrain aurait été inscrit pour 162 000. Le compte 2131 est réservé aux constructions.",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise opte pour l'incorporation des coûts d'emprunt dans le coût des actifs. Quelle condition doit remplir l'actif ?",
+   "opts": [
+    "Être financé par un emprunt affecté d'au moins 100 000 €",
+    "Exiger une longue période de préparation avant de pouvoir être utilisé ou vendu",
+    "Être une construction",
+    "Avoir une durée d'utilité supérieure à dix ans"
+   ],
+   "a": 1,
+   "why": "PCG art. 213-9 : les coûts d'emprunt peuvent être incorporés dans le coût des actifs éligibles, c'est-à-dire ceux qui exigent une longue période de préparation ou de construction avant d'être utilisés ou vendus (immeuble construit sur deux ans, stocks à maturation longue). Aucun seuil de montant, aucune restriction aux constructions ni condition de durée d'utilité ne sont posés. L'option vaut pour tous les actifs éligibles, immobilisations et stocks.",
+   "src": "PCG art. 213-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Chimex installe une cuve pour 500 000 € HT. Le contrat l'oblige à démanteler l'installation et à remettre le site en état en fin d'exploitation ; le coût estimé de ces travaux est de 60 000 €. Les frais de formation de l'équipe s'élèvent à 8 000 €. Quel est le coût d'entrée de la cuve à l'actif (en euros) ?",
+   "a": 560000,
+   "unit": "€",
+   "tol": 1,
+   "why": "PCG art. 213-8 : l'estimation initiale des coûts de démantèlement et de remise en état, lorsqu'une obligation existe à l'entrée, est incluse dans le coût de l'actif : 500 000 + 60 000 = 560 000 €, la contrepartie étant une provision pour remise en état (158). Les 8 000 € de formation sont exclus du coût. L'actif de démantèlement est amorti sur la durée d'exploitation de la cuve.",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Meca construit elle-même une machine. Coûts engagés : matières 30 000 €, main-d'œuvre directe 20 000 €, charges indirectes fixes de l'atelier 20 000 € pour une activité réelle représentant 80 % de l'activité normale, frais d'administration générale 5 000 €. Calculez le coût de production de la machine (en euros).",
+   "a": 66000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Le coût de production comprend les matières (30 000), les charges directes (20 000) et les charges indirectes de production rationnellement rattachables : 20 000 × 80 % = 16 000, la part de sous-activité (4 000) étant exclue (PCG art. 213-14). Les frais d'administration générale ne sont pas incorporables. Total : 30 000 + 20 000 + 16 000 = 66 000 €. Retenir 20 000 de charges fixes (75 000) ou inclure l'administration (71 000) sont les erreurs classiques.",
+   "src": "PCG art. 213-14",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, Bâtex a engagé 25 000 € de coûts (déjà enregistrés en charges par nature) pour la construction d'un entrepôt qui sera achevé en N+1. Enregistrez l'écriture de clôture.",
+   "lib": "Immobilisation corporelle en cours",
+   "palette": [
+    "231",
+    "722",
+    "721",
+    "213",
+    "601",
+    "232"
+   ],
+   "sol": [
+    [
+     {
+      "a": "231",
+      "d": 25000,
+      "c": 0
+     },
+     {
+      "a": "722",
+      "d": 0,
+      "c": 25000
+     }
+    ]
+   ],
+   "why": "L'entrepôt n'est pas achevé : les coûts vont en 231 Immobilisations corporelles en cours (pas en 213, réservé aux constructions achevées), par le crédit de 722 Production immobilisée – immobilisations corporelles, qui neutralise les charges déjà comptabilisées. Le compte 721 concerne les immobilisations incorporelles et 232 les incorporelles en cours ; 601 est un compte d'achat, sans objet ici.",
+   "src": "PCG art. 213-14",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "À l'achèvement en N+1 d'une construction dont 25 000 € figuraient en 231 à la clôture de N et dont les coûts supplémentaires de N+1 s'élèvent à 55 000 €, l'écriture est :",
+   "opts": [
+    "Débit 213 pour 80 000, crédit 231 pour 25 000 et crédit 722 pour 55 000",
+    "Débit 213 pour 80 000, crédit 722 pour 80 000",
+    "Débit 213 pour 55 000, crédit 722 pour 55 000",
+    "Débit 231 pour 55 000, crédit 213 pour 55 000"
+   ],
+   "a": 0,
+   "why": "Le compte 231 est soldé par virement au compte définitif 213 pour les coûts de N (25 000, déjà passés par 722 en N) ; les coûts de N+1 (55 000) passent par 722 en N+1. La construction est inscrite pour son coût total de 80 000. Créditer 722 pour 80 000 compterait deux fois la production de N ; débiter 213 pour 55 000 seulement laisserait 25 000 en 231 à tort.",
+   "src": "PCG art. 213-14",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque dépense selon son traitement comptable.",
+   "cats": [
+    "Immobilisation (actif)",
+    "Charge de l'exercice"
+   ],
+   "items": [
+    [
+     "Remplacement du moteur d'un camion par un moteur plus puissant allongeant sa durée d'utilisation",
+     0
+    ],
+    [
+     "Vidange et changement des plaquettes de frein du camion",
+     1
+    ],
+    [
+     "Honoraires d'architecte pour la construction d'un atelier",
+     0
+    ],
+    [
+     "Frais de formation du personnel au nouveau logiciel",
+     1
+    ],
+    [
+     "Pertes d'exploitation des trois premiers mois d'une nouvelle usine",
+     1
+    ],
+    [
+     "Coûts d'essais de bon fonctionnement d'une machine avant sa mise en service",
+     0
+    ],
+    [
+     "Frais d'étude préalable d'un logiciel créé en interne",
+     1
+    ]
+   ],
+   "why": "Sont immobilisées les dépenses d'amélioration (prolongement de la durée, hausse de la performance) et les coûts directement attribuables à la mise en état de fonctionnement (honoraires d'architecte, essais). Restent en charges l'entretien courant (615), la formation, les pertes de démarrage et l'étude préalable d'un logiciel (seules les phases d'analyse organique, de programmation et de tests sont activables).",
+   "src": "PCG art. 213-8, 214-9 et 611-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un immeuble est acquis 1 200 000 €. La toiture (durée 20 ans) représente 150 000 €, les ascenseurs (15 ans) 100 000 €, la structure (50 ans) le reste. Que prévoit le PCG ?",
+   "opts": [
+    "Amortir l'ensemble sur la durée de la structure",
+    "Comptabiliser et amortir séparément chaque composant selon sa propre durée",
+    "Amortir l'ensemble sur la durée moyenne pondérée",
+    "Ne pas amortir la toiture ni les ascenseurs"
+   ],
+   "a": 1,
+   "why": "PCG art. 214-9 : lorsque des éléments d'un actif ont des durées d'utilisation différentes, ils sont comptabilisés séparément et chacun suit un plan d'amortissement propre (structure 950 000 sur 50 ans, toiture 150 000 sur 20 ans, ascenseurs 100 000 sur 15 ans). Une durée unique, même moyenne, ne refléterait pas la consommation des avantages économiques de chaque composant.",
+   "src": "PCG art. 214-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant les dépenses de gros entretien ou de grandes révisions, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elles peuvent être traitées comme un composant distinct amorti sur la durée séparant deux révisions",
+    "Elles peuvent faire l'objet d'une provision pour gros entretien (1572)",
+    "Seule la méthode de la provision est admise fiscalement",
+    "Elles sont obligatoirement passées en charges l'année de la révision",
+    "La méthode choisie peut varier chaque année selon le résultat"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Le PCG (art. 214-9) offre le choix entre un composant de deuxième catégorie et une provision pour gros entretien, dotée progressivement jusqu'à la révision. Fiscalement, seule la provision est déductible ; le composant conduit à des retraitements. La méthode retenue est appliquée de façon permanente (permanence des méthodes) et les dépenses ne sont pas laissées en charges l'année de la révision si l'une des deux méthodes est retenue.",
+   "src": "PCG art. 214-9 ; CGI art. 39, 1-5°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les frais de constitution d'une société peuvent être :",
+   "opts": [
+    "Uniquement comptabilisés en charges de l'exercice",
+    "Uniquement inscrits à l'actif en 201 sans amortissement",
+    "En charges (méthode préférentielle) ou à l'actif en 201, amortis sur cinq ans au plus",
+    "Inscrits à l'actif et amortis sur dix ans au minimum"
+   ],
+   "a": 2,
+   "why": "PCG art. 212-9 : les frais d'établissement (constitution, premier établissement, augmentation de capital) peuvent être inscrits à l'actif, mais leur comptabilisation en charges est la méthode préférentielle. S'ils sont activés, ils sont amortis selon un plan sur cinq ans au maximum et bloquent les distributions tant qu'ils ne sont pas amortis (C. com., art. L. 232-9). Il n'existe aucune durée minimale de dix ans.",
+   "src": "PCG art. 212-9 ; C. com., art. L. 232-9",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quels critères l'article 212-3 du PCG exige-t-il pour activer des frais de développement ? (plusieurs réponses possibles)",
+   "opts": [
+    "La faisabilité technique de l'achèvement du projet",
+    "L'intention d'achever le projet et de l'utiliser ou de le vendre",
+    "La probabilité d'avantages économiques futurs",
+    "L'obtention d'un brevet avant la clôture",
+    "Un montant de dépenses supérieur à 100 000 €"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les six critères de l'article 212-3 sont : faisabilité technique, intention d'achever et d'utiliser ou vendre, capacité de le faire, avantages économiques futurs probables, disponibilité des ressources, évaluation fiable des dépenses. Aucun brevet ni montant minimal n'est requis. Les frais de recherche, eux, sont toujours comptabilisés en charges.",
+   "src": "PCG art. 212-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "En N, Innovex engage pour un projet : recherche fondamentale 12 000 €, frais de développement 45 000 € (dont 30 000 € engagés après le 1er avril N, date à laquelle les six critères d'activation sont remplis, et 15 000 € avant), frais d'administration générale 6 000 €. L'entreprise a opté pour l'activation des frais de développement. Quel montant est inscrit au compte 203 (en euros) ?",
+   "a": 30000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Seules les dépenses de développement engagées à partir de la date où les critères de l'article 212-3 sont remplis sont activables : 30 000 €. Les 15 000 € antérieurs restent définitivement en charges (pas de réactivation rétroactive), de même que la recherche (12 000) et les frais administratifs (6 000), non incorporables au coût de production.",
+   "src": "PCG art. 212-3",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, Innovex active 60 000 € de frais de développement engagés au cours de l'exercice (déjà comptabilisés en charges par nature) pour un projet achevé et prêt à être exploité. Enregistrez l'écriture.",
+   "lib": "Activation des frais de développement",
+   "palette": [
+    "203",
+    "721",
+    "722",
+    "201",
+    "617",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "203",
+      "d": 60000,
+      "c": 0
+     },
+     {
+      "a": "721",
+      "d": 0,
+      "c": 60000
+     }
+    ]
+   ],
+   "why": "Les frais de développement activés sont portés au débit de 203 Frais de recherche et de développement par le crédit de 721 Production immobilisée – immobilisations incorporelles, qui neutralise les charges par nature déjà enregistrées. Le compte 201 est réservé aux frais d'établissement, 722 aux immobilisations corporelles ; 617 est le compte de charges d'études et recherches, qui n'est pas crédité directement.",
+   "src": "PCG art. 212-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise a développé en interne une marque dont la notoriété est évaluée à 2 millions d'euros par un expert. Dans ses comptes individuels :",
+   "opts": [
+    "La marque est inscrite à l'actif pour 2 millions",
+    "La marque est inscrite à l'actif pour le montant des dépenses publicitaires engagées",
+    "La marque n'est pas inscrite à l'actif : les dépenses de création interne de marques sont des charges",
+    "La marque est inscrite à l'actif et amortie sur dix ans"
+   ],
+   "a": 2,
+   "why": "Le PCG (art. 212-3) interdit d'activer les marques, fonds commerciaux, titres de journaux et fichiers clients créés en interne : leurs coûts ne peuvent être distingués de ceux du développement global de l'entreprise. Seules les marques acquises sont inscrites en 205. La valeur d'expertise n'est jamais un coût d'entrée (coût historique).",
+   "src": "PCG art. 212-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Pour un logiciel créé en interne destiné à un usage durable, classez chaque phase selon son traitement.",
+   "cats": [
+    "Coût de production immobilisé",
+    "Charge de l'exercice"
+   ],
+   "items": [
+    [
+     "Analyse organique",
+     0
+    ],
+    [
+     "Programmation",
+     0
+    ],
+    [
+     "Étude préalable d'opportunité",
+     1
+    ],
+    [
+     "Analyse fonctionnelle",
+     1
+    ],
+    [
+     "Tests et jeux d'essais",
+     0
+    ],
+    [
+     "Rédaction de la documentation technique",
+     0
+    ],
+    [
+     "Formation des utilisateurs",
+     1
+    ],
+    [
+     "Maintenance évolutive courante",
+     1
+    ]
+   ],
+   "why": "PCG art. 611-1 s. : la phase de conception détaillée (analyse organique, programmation, tests, documentation) constitue le coût de production du logiciel ; les phases amont (étude préalable, analyse fonctionnelle) et aval (formation, maintenance) restent en charges. C'est la même logique que pour les frais de développement : on n'active qu'à partir du moment où la réussite technique est sérieusement probable.",
+   "src": "PCG art. 611-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les coûts de développement d'un site internet marchand permettant la prise de commandes en ligne sont :",
+   "opts": [
+    "Toujours comptabilisés en charges de publicité",
+    "Activables si les conditions d'activation des frais de développement sont réunies",
+    "Toujours immobilisés en 2183 matériel informatique",
+    "Comptabilisés en frais d'établissement"
+   ],
+   "a": 1,
+   "why": "PCG art. 612-1 s. : les coûts de développement d'un site actif (commandes, services, interactivité) peuvent être immobilisés s'il remplit les six critères des frais de développement ; les sites de simple présentation publicitaire restent en charges. Un site n'est pas un matériel (2183) ni un frais d'établissement (201).",
+   "src": "PCG art. 612-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL a inscrit à l'actif 40 000 € de frais de développement amortis à hauteur de 10 000 €. Ses réserves libres s'élèvent à 20 000 €. Peut-elle distribuer des dividendes ?",
+   "opts": [
+    "Oui, sans condition",
+    "Non : les réserves libres (20 000) sont inférieures au montant net des frais de développement (30 000)",
+    "Oui, à condition que le bénéfice dépasse 30 000 €",
+    "Non, tant qu'un seul euro de frais de développement figure à l'actif"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 232-9 : aucune distribution n'est possible tant que les frais d'établissement et de développement ne sont pas complètement amortis, sauf si les réserves libres sont au moins égales à la partie non amortie. Montant net : 40 000 − 10 000 = 30 000 > réserves libres 20 000 : la distribution est interdite. Si les réserves libres atteignaient 30 000, la distribution redeviendrait possible même avec des frais à l'actif.",
+   "src": "C. com., art. L. 232-9",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "ecriture",
+   "q": "Le 10 juin N, la région notifie à Lamar l'octroi d'une subvention d'équipement de 30 000 € pour financer une machine. Enregistrez l'écriture à la date de notification.",
+   "lib": "Octroi d'une subvention d'équipement",
+   "palette": [
+    "441",
+    "131",
+    "74",
+    "139",
+    "512",
+    "747"
+   ],
+   "sol": [
+    [
+     {
+      "a": "441",
+      "d": 30000,
+      "c": 0
+     },
+     {
+      "a": "131",
+      "d": 0,
+      "c": 30000
+     }
+    ]
+   ],
+   "why": "La subvention d'investissement est acquise à la notification : créance sur l'État ou la collectivité en 441 et inscription en capitaux propres en 131 Subventions d'équipement (PCG art. 312-1). Le compte 74 concerne les subventions d'exploitation, 139 et 747 servent à la reprise ultérieure au résultat, et 512 n'intervient qu'à l'encaissement.",
+   "src": "PCG art. 312-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une machine de 100 000 € est financée à 30 % par une subvention d'investissement. À quelle valeur la machine est-elle inscrite à l'actif ?",
+   "opts": [
+    "70 000 €",
+    "100 000 €",
+    "130 000 €",
+    "30 000 €"
+   ],
+   "a": 1,
+   "why": "La subvention ne vient pas en déduction du coût de l'actif : la machine est inscrite pour son coût d'acquisition de 100 000 € et amortie sur cette base ; la subvention (30 000) est portée en capitaux propres (131) puis reprise au résultat (747) au rythme des amortissements (PCG art. 312-1). La présentation nette (70 000), admise en IFRS, est exclue en PCG.",
+   "src": "PCG art. 312-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un matériel de bureau de 420 € HT est acquis en N. Quel traitement est admis ?",
+   "opts": [
+    "Il doit obligatoirement être immobilisé en 2183 et amorti",
+    "Il peut être passé en charges (6063) au titre de la tolérance des petits matériels",
+    "Il doit être immobilisé et amorti sur un an",
+    "Il doit être inscrit en stock"
+   ],
+   "a": 1,
+   "why": "L'administration fiscale admet la déduction immédiate des matériels, outillages, mobiliers et logiciels dont la valeur unitaire HT n'excède pas 500 € (BOI-BIC-CHG-20-30-10), tolérance reprise en pratique comptable au nom de l'importance relative. L'immobilisation reste possible mais n'est pas obligatoire ; le bien étant utilisé durablement par l'entreprise, il ne s'agit pas d'un stock.",
+   "src": "BOI-BIC-CHG-20-30-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quels éléments sont exclus du coût d'entrée d'une immobilisation selon le PCG ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les pertes d'exploitation initiales",
+    "Les coûts de relocalisation d'une partie des activités",
+    "Les frais de montage sur le site",
+    "Les coûts de lancement d'un nouveau produit",
+    "L'estimation des coûts de démantèlement lorsqu'une obligation existe"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "PCG art. 213-8 : les coûts de montage sont directement attribuables et les coûts de démantèlement obligatoires sont inclus. En revanche, les pertes de démarrage, les coûts de relocalisation ou de réorganisation et les coûts de lancement de produits (publicité, promotion) ne contribuent pas à mettre l'actif en état de fonctionner : ce sont des charges.",
+   "src": "PCG art. 213-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un fonds commercial acquis 80 000 € lors du rachat d'un commerce est inscrit :",
+   "opts": [
+    "En charges de l'exercice d'acquisition",
+    "À l'actif en 207 Fonds commercial, pour 80 000 €",
+    "À l'actif en 205 Brevets et marques",
+    "En capitaux propres"
+   ],
+   "a": 1,
+   "why": "Le fonds commercial acquis est une immobilisation incorporelle inscrite en 207 pour son coût d'acquisition (PCG art. 212-3 et 213-8). Seul le fonds créé en interne ne peut être activé. Le compte 205 est réservé aux concessions, brevets, licences, marques et logiciels ; un actif acquis n'est jamais une charge ni un élément de capitaux propres.",
+   "src": "PCG art. 212-3",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Au DSCG (IFRS, IAS 16), quelle différence avec le PCG constate-t-on sur la comptabilisation des immobilisations corporelles ?",
+   "opts": [
+    "Les IFRS interdisent l'approche par composants, obligatoire en PCG",
+    "IAS 16 admet un modèle de réévaluation par catégorie d'actifs, là où le PCG retient le coût historique",
+    "Le PCG impose d'incorporer les coûts d'emprunt, les IFRS l'interdisent",
+    "Les IFRS excluent les coûts de démantèlement du coût d'entrée, inclus en PCG"
+   ],
+   "a": 1,
+   "why": "IAS 16 propose un modèle du coût ou un modèle de la réévaluation par catégorie d'actifs ; le PCG repose sur le coût historique (C. com., art. L. 123-18) et n'admet qu'une réévaluation libre portant sur l'ensemble des immobilisations corporelles et financières (écart en 105). L'approche par composants et l'inclusion des coûts de démantèlement sont communes aux deux référentiels ; les coûts d'emprunt sont obligatoires en IFRS (IAS 23) et optionnels en PCG.",
+   "src": "C. com., art. L. 123-18 ; PCG art. 213-9 ; IAS 16 ; IAS 23",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

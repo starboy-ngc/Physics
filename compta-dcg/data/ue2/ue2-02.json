@@ -1,0 +1,525 @@
+{
+ "id": "ue2-02",
+ "ue": "UE2",
+ "ordre": 2,
+ "title": "La SARL et l'EURL",
+ "resume": "La forme la plus répandue des PME : constitution, gérance, majorités d'assemblée, agrément des cessions, conventions réglementées et régime de l'associé unique.",
+ "duree": "60 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Constitution de la SARL",
+   "html": "<p>La société à responsabilité limitée (C. com., art. L. 223-1 et s.) est une société commerciale par la forme dont les associés ne supportent les pertes qu'à concurrence de leurs apports. Elle compte de <b>2 à 100 associés</b> (L. 223-3) ; au-delà, elle a un an pour régulariser (transformation ou réduction du nombre) sous peine de dissolution. Avec un seul associé, c'est une <b>EURL</b>.</p><ul><li><b>Capital</b> : montant libre, fixé par les statuts (L. 223-2), divisé en parts sociales égales. Les apports en <b>numéraire</b> sont libérés d'au moins <b>un cinquième</b> à la constitution, le solde dans les <b>cinq ans</b> de l'immatriculation (L. 223-7).</li><li><b>Apports en nature</b> : évalués par un <b>commissaire aux apports</b> désigné à l'unanimité ou par le président du tribunal de commerce. Dispense possible si les futurs associés en décident à l'<b>unanimité</b>, qu'aucun apport ne dépasse <span class=\"mono\">30 000 €</span> et que le total des apports en nature n'excède pas la <b>moitié du capital</b> (L. 223-9). Sans commissaire ou en retenant une valeur différente, les associés sont solidairement responsables pendant cinq ans de la valeur attribuée.</li><li><b>Apports en industrie</b> : autorisés si les statuts en fixent les modalités (L. 223-7 al. 2) ; ils ne concourent pas au capital.</li></ul><p>Formalités : statuts écrits, dépôt des fonds (banque, notaire), publicité dans un support d'annonces légales, immatriculation par le guichet unique. La SARL est constituée pour 99 ans au plus.</p>"
+  },
+  {
+   "h": "La gérance",
+   "html": "<p>La SARL est dirigée par un ou plusieurs <b>gérants</b>, obligatoirement <b>personnes physiques</b>, associés ou non (L. 223-18). Nomination par les statuts ou par décision des associés représentant <b>plus de la moitié des parts</b> (L. 223-18 et L. 223-29) ; durée : celle de la société sauf clause.</p><p><b>Pouvoirs</b> : les plus étendus dans les rapports avec les tiers ; la société est engagée même hors objet social, sauf tiers de mauvaise foi ; clauses limitatives inopposables aux tiers. En cas de pluralité de gérants, chacun peut agir seul, l'opposition d'un gérant étant sans effet envers les tiers de bonne foi.</p><p><b>Révocation</b> par les associés représentant plus de la moitié des parts (sauf majorité statutaire plus forte) ; sans <b>juste motif</b>, elle est valable mais donne lieu à dommages-intérêts (L. 223-25). Révocation judiciaire possible pour cause légitime à la demande de tout associé.</p><p><b>Cumul avec un contrat de travail</b> : possible si l'emploi est effectif, distinct du mandat et exercé sous un lien de subordination, ce qui exclut en pratique le gérant majoritaire.</p><p><b>Statut social</b> : le <b>gérant majoritaire</b> (plus de la moitié des parts, en comptant celles du conjoint, du partenaire de PACS, des enfants mineurs et des cogérants formant collège) est <b>travailleur non salarié</b> (CSS, art. L. 311-3, 11° a contrario) ; le gérant <b>minoritaire ou égalitaire</b> rémunéré est <b>assimilé salarié</b> au régime général, sans assurance chômage. Le gérant non associé rémunéré est assimilé salarié.</p>"
+  },
+  {
+   "h": "Les décisions collectives",
+   "html": "<p>Les décisions sont prises en assemblée ou, si les statuts le prévoient, par <b>consultation écrite</b> ou acte unanime, sauf l'assemblée annuelle d'approbation des comptes qui doit se tenir en assemblée dans les <b>six mois</b> de la clôture (L. 223-26 et L. 223-27). Chaque part donne droit à une voix.</p><p><b>Décisions ordinaires</b> (L. 223-29) : approbation des comptes, nomination et révocation du gérant, conventions réglementées. Sur <b>première consultation</b>, majorité <b>absolue</b> : un ou plusieurs associés représentant <b>plus de la moitié des parts sociales</b> (toutes les parts, présentes ou non). À défaut, sur <b>seconde consultation</b>, majorité <b>relative</b> des votes émis, sauf clause contraire. Aucun quorum.</p><p><b>Décisions extraordinaires</b> (modification des statuts, L. 223-30). Pour les SARL constituées <b>depuis le 4 août 2005</b> : <b>quorum</b> d'<b>un quart</b> des parts sur première convocation, <b>un cinquième</b> sur seconde ; majorité des <b>deux tiers des parts détenues par les associés présents ou représentés</b>. Pour les SARL antérieures : majorité des <b>trois quarts des parts sociales</b> sans quorum, sauf option pour le nouveau régime. Cas particuliers : l'<b>incorporation de réserves</b> au capital exige seulement les associés représentant au moins la moitié des parts ; l'<b>unanimité</b> s'impose pour changer la nationalité, transformer en SNC ou en SAS et augmenter les engagements des associés.</p><div class=\"note\"><b>Piège.</b> Majorité ordinaire : « plus de la moitié des parts <i>existantes</i> » (première consultation). Majorité extraordinaire : « deux tiers des parts <i>présentes ou représentées</i> ». Ne pas confondre la base de calcul.</div>"
+  },
+  {
+   "h": "La cession des parts sociales",
+   "html": "<p>Les parts ne sont pas négociables : la cession suppose un <b>écrit</b>, opposable à la société par dépôt d'un original au siège ou par signification, et aux tiers après publicité au RCS.</p><p><b>Cession à un tiers étranger à la société</b> : <b>agrément obligatoire</b>, d'ordre public (L. 223-14). Le projet est notifié à la société et à chaque associé ; l'agrément est donné par la <b>majorité des associés représentant au moins la moitié des parts</b> (double majorité, en nombre et en capital), sauf majorité statutaire plus forte. Sans réponse dans les <b>trois mois</b>, l'agrément est <b>réputé acquis</b>. En cas de refus, les associés achètent ou font acheter les parts dans les <b>trois mois</b> (prolongation judiciaire de six mois au plus), ou la société les rachète en réduisant son capital ; faute de rachat, le cédant peut réaliser la cession prévue. Le cédant détenant ses parts depuis moins de deux ans ne peut exiger ce rachat, sauf succession, liquidation de communauté ou donation familiale. <b>Droit de repentir</b> : le cédant peut renoncer à la cession.</p><p><b>Cessions entre associés, au conjoint, aux ascendants et descendants</b> : libres, sauf clause d'agrément statutaire (L. 223-13 et L. 223-16).</p><p><b>Droits d'enregistrement</b> (CGI, art. 726) : <span class=\"mono\">3 %</span> du prix après un <b>abattement de 23 000 €</b> rapporté au pourcentage de parts cédées (abattement × parts cédées / total des parts). Les cessions d'actions ne supportent que 0,1 %.</p>"
+  },
+  {
+   "h": "Conventions, contrôle et comptes annuels",
+   "html": "<p><b>Conventions entre la société et un gérant ou un associé</b> (L. 223-19 à L. 223-21) :</p><ul><li><b>interdites</b> : emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés <b>personnes physiques</b> (et à leurs conjoints, ascendants, descendants) ; sanction : nullité absolue ;</li><li><b>libres</b> : opérations courantes conclues à des conditions normales ;</li><li><b>réglementées</b> : toutes les autres. Contrôle <b>a posteriori</b> : rapport du gérant (ou du commissaire aux comptes) à l'assemblée, qui statue ; l'intéressé ne vote pas. La convention non approuvée reste valable, mais ses conséquences préjudiciables sont à la charge du gérant ou de l'associé.</li></ul><p><b>Commissaire aux comptes</b> : facultatif, sauf dépassement, à la clôture de l'exercice, de <b>deux des trois seuils</b> fixés par décret (pour les exercices ouverts depuis le 1er janvier 2024 : <span class=\"mono\">5 M€</span> de bilan, <span class=\"mono\">10 M€</span> de chiffre d'affaires HT, <span class=\"mono\">50</span> salariés, décret n° 2024-152) ; nomination aussi possible à la demande d'associés représentant au moins le dixième du capital (L. 223-35).</p><p><b>Information et contrôle par les associés</b> : droit de communication avant l'assemblée annuelle, <b>questions écrites</b> au gérant deux fois par exercice sur tout fait de nature à compromettre la continuité de l'exploitation (L. 223-36), <b>expertise de gestion</b> demandée par des associés détenant au moins le dixième du capital (L. 223-37).</p><p><b>Comptes annuels</b> : arrêtés par le gérant, approuvés dans les <b>six mois</b> de la clôture, déposés au greffe dans le <b>mois</b> suivant l'approbation (<b>deux mois</b> par voie électronique, L. 232-23).</p>"
+  },
+  {
+   "h": "L'EURL : la SARL à associé unique",
+   "html": "<p>L'<b>entreprise unipersonnelle à responsabilité limitée</b> est une SARL dont toutes les parts sont réunies en une seule main (L. 223-1). L'associé unique peut être une personne physique ou une personne morale. Il exerce seul les pouvoirs de l'assemblée : ses décisions sont <b>répertoriées dans un registre</b> ; il ne peut déléguer ses pouvoirs.</p><ul><li><b>Gérance</b> : l'associé unique ou un tiers, personne physique. Lorsque l'associé unique personne physique est gérant, le <b>dépôt des comptes au RCS vaut approbation</b> et il est dispensé de rapport de gestion sous conditions de taille (L. 223-31).</li><li><b>Conventions</b> : celles conclues avec l'associé unique sont seulement mentionnées au registre des décisions.</li><li><b>Régime fiscal</b> : associé unique personne physique : <b>impôt sur le revenu</b> par défaut (régime des sociétés de personnes, CGI, art. 8), avec <b>option pour l'IS</b> révocable jusqu'au cinquième exercice (CGI, art. 239) ; associé unique <b>personne morale</b> : IS de plein droit.</li><li><b>Statut social</b> : le gérant associé unique est <b>travailleur non salarié</b> (il est nécessairement majoritaire).</li></ul><p>L'EURL devient SARL par simple cession de parts à un second associé ; la SARL devient EURL par réunion des parts, sans dissolution. La transformation en SASU exige une décision de l'associé unique et le respect des conditions de la SAS.</p>"
+  },
+  {
+   "h": "Pièges classiques SARL / SA / SAS",
+   "html": "<table><thead><tr><th>Point</th><th>SARL</th><th>SA</th><th>SAS</th></tr></thead><tbody><tr><td>Associés</td><td>1 à 100</td><td>2 (7 si cotée), pas de maximum</td><td>1 ou plus, pas de maximum</td></tr><tr><td>Capital minimum</td><td>Libre</td><td>37 000 €</td><td>Libre</td></tr><tr><td>Libération du numéraire</td><td>1/5 puis 5 ans</td><td>1/2 puis 5 ans</td><td>1/2 puis 5 ans</td></tr><tr><td>Apport en industrie</td><td>Possible</td><td>Interdit</td><td>Possible</td></tr><tr><td>Dirigeant</td><td>Gérant personne physique</td><td>CA + DG ou directoire</td><td>Président, personne physique ou morale</td></tr><tr><td>Cession à un tiers</td><td>Agrément légal obligatoire</td><td>Libre sauf clause</td><td>Libre sauf clause</td></tr><tr><td>Dirigeant majoritaire</td><td>TNS</td><td>Assimilé salarié</td><td>Assimilé salarié</td></tr></tbody></table><p>Retenez aussi : la SARL ne peut pas <b>émettre d'actions</b> ni faire d'offre au public de titres financiers ; elle peut émettre des obligations nominatives si elle a un commissaire aux comptes et trois exercices approuvés (L. 223-11). La <b>SARL de famille</b> (associés parents en ligne directe, frères et sœurs, conjoints, partenaires) peut opter pour l'IR sans limitation de durée (CGI, art. 239 bis AA).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 223-1 à L. 223-43",
+   "note": "Régime de la SARL : constitution, gérance, décisions collectives, cessions, conventions, EURL"
+  },
+  {
+   "ref": "C. com., art. L. 223-9",
+   "note": "Commissaire aux apports et conditions de dispense (30 000 €, moitié du capital, unanimité)"
+  },
+  {
+   "ref": "C. com., art. L. 223-14",
+   "note": "Agrément des cessions de parts à des tiers : double majorité, délai de trois mois, rachat"
+  },
+  {
+   "ref": "C. com., art. L. 223-29 et L. 223-30",
+   "note": "Majorités ordinaires et extraordinaires, quorums des SARL constituées depuis 2005"
+  },
+  {
+   "ref": "C. com., art. L. 223-35 et D. 221-5 (décret n° 2024-152 du 28 février 2024)",
+   "note": "Seuils de nomination obligatoire du commissaire aux comptes : 5 M€, 10 M€, 50 salariés"
+  },
+  {
+   "ref": "C. com., art. L. 232-22 et L. 232-23",
+   "note": "Approbation et dépôt des comptes annuels au greffe"
+  },
+  {
+   "ref": "CGI, art. 726",
+   "note": "Droits d'enregistrement : 3 % sur les cessions de parts après abattement de 23 000 €, 0,1 % sur les actions"
+  },
+  {
+   "ref": "CGI, art. 8 et 239",
+   "note": "Imposition de l'EURL à l'IR et option pour l'IS"
+  },
+  {
+   "ref": "CSS, art. L. 311-3, 11°",
+   "note": "Affiliation au régime général des gérants minoritaires ou égalitaires rémunérés"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quel est le nombre maximal d'associés d'une SARL ?",
+   "opts": [
+    "50",
+    "100",
+    "150",
+    "Aucune limite"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-3 du Code de commerce limite la SARL à 100 associés. Si ce nombre est dépassé, la société dispose d'un an pour régulariser (transformation en SA ou SAS, cession de parts) sous peine de dissolution. Le seuil de 50 était l'ancienne limite, supprimée en 2004. La SA et la SAS n'ont pas de maximum.",
+   "src": "C. com., art. L. 223-3",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quel est le capital social minimum d'une SARL ?",
+   "opts": [
+    "1 €, le montant étant librement fixé par les statuts",
+    "7 500 €",
+    "37 000 €",
+    "18 500 €"
+   ],
+   "a": 0,
+   "why": "Depuis la loi pour l'initiative économique de 2003, le capital de la SARL est librement fixé par les statuts (L. 223-2) : il peut être de 1 €. Le minimum de 7 500 € est l'ancien seuil, 37 000 € est celui de la SA. Un capital trop faible peut toutefois constituer une faute de gestion en cas de sous-capitalisation manifeste.",
+   "src": "C. com., art. L. 223-2",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SARL Belair est constituée avec un capital de 40 000 € intégralement souscrit en numéraire. Quel est le montant minimal (en €) que les associés doivent libérer au moment de la constitution ?",
+   "a": 8000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Les parts représentant des apports en numéraire doivent être libérées d'au moins un cinquième de leur montant à la constitution (L. 223-7) : 40 000 × 1/5 = 8 000 €. Le solde (32 000 €) est appelé par le gérant dans les cinq ans de l'immatriculation. Dans une SA ou une SAS, le minimum aurait été de la moitié, soit 20 000 €.",
+   "src": "C. com., art. L. 223-7",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Trois personnes constituent une SARL au capital de 40 000 € : 15 000 € en numéraire et un véhicule utilitaire évalué à 25 000 €. Elles souhaitent, à l'unanimité, ne pas désigner de commissaire aux apports. Est-ce possible ?",
+   "opts": [
+    "Oui, car aucun apport en nature ne dépasse 30 000 €",
+    "Non, car le total des apports en nature dépasse la moitié du capital",
+    "Oui, car la décision est unanime",
+    "Non, car le commissaire aux apports est toujours obligatoire en SARL"
+   ],
+   "a": 1,
+   "why": "La dispense (L. 223-9) exige trois conditions cumulatives : unanimité des futurs associés, aucun apport en nature supérieur à 30 000 € et valeur totale des apports en nature n'excédant pas la moitié du capital. Ici 25 000 € est inférieur à 30 000 €, mais 25 000 € représente 62,5 % du capital (> 20 000 €) : la troisième condition fait défaut, le commissaire aux apports est obligatoire. L'unanimité seule ne suffit jamais.",
+   "src": "C. com., art. L. 223-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions doivent être réunies pour que les associés fondateurs d'une SARL puissent se dispenser de commissaire aux apports ? (plusieurs réponses possibles)",
+   "opts": [
+    "Décision unanime des futurs associés",
+    "Aucun apport en nature d'une valeur supérieure à 30 000 €",
+    "Valeur totale des apports en nature inférieure ou égale à la moitié du capital",
+    "Capital social supérieur à 37 000 €",
+    "Accord du greffier du tribunal de commerce"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article L. 223-9 pose trois conditions cumulatives : unanimité, plafond de 30 000 € par apport et plafond global de la moitié du capital. Le capital de 37 000 € est le minimum de la SA, sans rapport avec cette dispense, et le greffier n'intervient pas. En cas de dispense, les associés répondent solidairement pendant cinq ans, envers les tiers, de la valeur attribuée aux apports.",
+   "src": "C. com., art. L. 223-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SAS Holdco, associée majoritaire d'une SARL, souhaite être nommée gérante de cette SARL. Est-ce possible ?",
+   "opts": [
+    "Oui, toute personne morale associée peut être gérante",
+    "Non, le gérant de SARL est obligatoirement une personne physique",
+    "Oui, si les statuts le prévoient expressément",
+    "Oui, à condition de désigner un représentant permanent"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-18 impose que le gérant de SARL soit une personne physique, associée ou non. La SAS Holdco ne peut donc pas être gérante ; elle peut en revanche faire nommer l'un de ses dirigeants, personne physique. Le mécanisme du représentant permanent concerne les administrateurs personnes morales de SA et le président personne morale de SAS, pas la gérance de SARL.",
+   "src": "C. com., art. L. 223-18",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Paul est gérant d'une SARL et détient 45 % des parts ; son épouse, non gérante, en détient 10 % ; un tiers détient le reste. Quel est le statut social de Paul ?",
+   "opts": [
+    "Assimilé salarié, car il détient personnellement moins de 50 %",
+    "Travailleur non salarié, car la gérance est majoritaire en comptant les parts du conjoint",
+    "Salarié de droit commun avec assurance chômage",
+    "Il n'a aucun statut social obligatoire"
+   ],
+   "a": 1,
+   "why": "Pour apprécier le caractère majoritaire de la gérance, on ajoute aux parts du gérant celles de son conjoint (ou partenaire de PACS), de ses enfants mineurs non émancipés et des éventuels cogérants : 45 % + 10 % = 55 % > 50 %. Paul est gérant majoritaire, donc travailleur non salarié affilié à la sécurité sociale des indépendants. Seul le gérant minoritaire ou égalitaire rémunéré est assimilé salarié (CSS, L. 311-3, 11°), et dans aucun cas il n'a l'assurance chômage.",
+   "src": "CSS, art. L. 311-3, 11°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL a trois cogérants détenant respectivement 20 %, 15 % et 20 % des parts, le solde appartenant à des associés non gérants. Quel est le statut social de chacun des cogérants ?",
+   "opts": [
+    "Assimilé salarié, chacun étant minoritaire",
+    "Travailleur non salarié, car le collège de gérance détient 55 % des parts",
+    "Travailleur non salarié pour les deux détenant 20 %, assimilé salarié pour celui qui détient 15 %",
+    "Salarié de droit commun"
+   ],
+   "a": 1,
+   "why": "En cas de cogérance, on apprécie le caractère majoritaire au niveau du collège de gérance : 20 % + 15 % + 20 % = 55 % > 50 %. Chaque cogérant est alors réputé majoritaire et relève du régime des travailleurs non salariés, même celui qui ne détient que 15 %. Le raisonnement individuel (option A ou C) est le piège classique.",
+   "src": "CSS, art. L. 311-3, 11°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le gérant majoritaire d'une SARL souhaite cumuler son mandat avec un contrat de travail de directeur commercial. Qu'en est-il ?",
+   "opts": [
+    "Le cumul est possible si le contrat est approuvé par l'assemblée",
+    "Le cumul est en pratique impossible, faute de lien de subordination",
+    "Le cumul est possible sans condition",
+    "Le cumul est possible uniquement pour un emploi à temps partiel"
+   ],
+   "a": 1,
+   "why": "Le cumul mandat social/contrat de travail exige un emploi effectif, des fonctions techniques distinctes du mandat et un lien de subordination. Le gérant majoritaire, qui contrôle l'assemblée appelée à le révoquer, ne peut pas être subordonné à la société : la jurisprudence refuse de reconnaître son contrat de travail. Le cumul reste envisageable pour un gérant minoritaire ou égalitaire, sous réserve de la procédure des conventions réglementées.",
+   "src": "C. com., art. L. 223-19 ; Cass. soc., jurisprudence constante",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les associés représentant 60 % des parts d'une SARL révoquent le gérant sans invoquer aucun motif. Quelle est la conséquence ?",
+   "opts": [
+    "La révocation est nulle faute de juste motif",
+    "La révocation est valable, mais le gérant peut obtenir des dommages-intérêts",
+    "La révocation est valable et n'ouvre droit à aucune indemnité",
+    "La révocation exige l'unanimité des autres associés"
+   ],
+   "a": 1,
+   "why": "Le gérant de SARL est révocable par décision des associés représentant plus de la moitié des parts (L. 223-25). Si la révocation est décidée sans juste motif, elle produit effet mais donne lieu à des dommages-intérêts. La nullité n'est pas la sanction. L'absence totale d'indemnité (révocation ad nutum) caractérise les administrateurs de SA, pas le gérant de SARL. L'unanimité des autres associés concerne le gérant statutaire de SNC.",
+   "src": "C. com., art. L. 223-25",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le capital d'une SARL est divisé en 1 000 parts. Lors d'une première consultation ordinaire, 600 parts sont présentes ou représentées ; 450 votent pour l'approbation des comptes et 150 contre. Les statuts ne prévoient rien. La résolution est-elle adoptée ?",
+   "opts": [
+    "Oui, car 450 voix sur 600 représentent 75 % des votes",
+    "Non, car il faut plus de la moitié des parts sociales, soit au moins 501 parts favorables",
+    "Oui, car le quorum du quart est atteint",
+    "Non, car le quorum de la moitié des parts n'est pas atteint"
+   ],
+   "a": 1,
+   "why": "Sur première consultation, les décisions ordinaires sont adoptées par un ou plusieurs associés représentant plus de la moitié des parts sociales existantes (L. 223-29), soit au moins 501 parts sur 1 000 : 450 ne suffisent pas, même si la proportion des votes exprimés est élevée. Il n'existe aucun quorum pour les décisions ordinaires. Sur seconde consultation, la majorité relative des votes émis suffirait.",
+   "src": "C. com., art. L. 223-29",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une SARL constituée en 2010 a un capital divisé en 2 000 parts. À une assemblée extraordinaire sur première convocation, 1 200 parts sont présentes ou représentées. Combien de parts favorables au minimum sont nécessaires pour adopter la modification des statuts ?",
+   "a": 800,
+   "unit": "parts",
+   "tol": 0.5,
+   "why": "Pour les SARL constituées depuis le 4 août 2005, les modifications statutaires sont adoptées à la majorité des deux tiers des parts détenues par les associés présents ou représentés (L. 223-30) : 1 200 × 2/3 = 800 parts. Le quorum du quart (500 parts) est bien atteint avec 1 200 parts. Pour une SARL constituée avant 2005, il aurait fallu les trois quarts de toutes les parts, soit 1 500.",
+   "src": "C. com., art. L. 223-30",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une SARL constituée en 2015 a un capital de 2 000 parts. Quel est le nombre minimal de parts qui doivent être présentes ou représentées pour que l'assemblée extraordinaire puisse valablement délibérer sur première convocation ?",
+   "a": 500,
+   "unit": "parts",
+   "tol": 0.5,
+   "why": "Le quorum légal des assemblées extraordinaires de SARL constituées depuis 2005 est d'un quart des parts sur première convocation (L. 223-30) : 2 000 / 4 = 500 parts. Sur seconde convocation, il tombe à un cinquième, soit 400 parts. Les statuts peuvent prévoir des quorums plus élevés.",
+   "src": "C. com., art. L. 223-30",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL constituée en 1998 n'a jamais modifié ses statuts sur ce point. Quelle majorité s'applique au changement de dénomination sociale ?",
+   "opts": [
+    "Deux tiers des parts présentes ou représentées, avec quorum du quart",
+    "Trois quarts des parts sociales, sans quorum",
+    "Plus de la moitié des parts sociales",
+    "Unanimité"
+   ],
+   "a": 1,
+   "why": "Les SARL constituées avant le 4 août 2005 restent soumises à l'ancien régime : majorité des trois quarts des parts sociales, sans quorum, sauf si les associés ont opté (à l'unanimité) pour le régime issu de la loi de 2005. Le régime quorum 1/4 et majorité 2/3 des parts présentes ne s'applique de plein droit qu'aux SARL constituées depuis cette date. Le changement de dénomination est une modification statutaire ordinaire, pas une décision unanime.",
+   "src": "C. com., art. L. 223-30",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Laquelle de ces décisions exige l'unanimité des associés d'une SARL ?",
+   "opts": [
+    "Le transfert du siège social dans un autre département",
+    "L'augmentation de capital par apport en numéraire",
+    "La transformation en société par actions simplifiée",
+    "La révocation du gérant"
+   ],
+   "a": 2,
+   "why": "La transformation d'une SARL en SAS exige l'unanimité des associés (L. 227-3), comme la transformation en SNC, le changement de nationalité et toute augmentation des engagements des associés. Le transfert de siège et l'augmentation de capital en numéraire sont des modifications statutaires à la majorité extraordinaire ; la révocation du gérant relève de la majorité ordinaire.",
+   "src": "C. com., art. L. 227-3 et L. 223-30",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL compte quatre associés : Anna (55 % des parts), Bob (20 %), Carl (15 %) et Dina (10 %). Anna veut céder la moitié de ses parts à un tiers. Anna vote pour l'agrément, les trois autres votent contre. Les statuts ne prévoient rien. Le tiers est-il agréé ?",
+   "opts": [
+    "Oui, car Anna représente plus de la moitié des parts",
+    "Non, car la majorité en nombre des associés n'est pas atteinte",
+    "Oui, car la cédante ne doit pas être comptée et les autres sont minoritaires en capital",
+    "Non, car l'agrément d'un tiers exige l'unanimité"
+   ],
+   "a": 1,
+   "why": "L'agrément d'un tiers est donné par la majorité des associés représentant au moins la moitié des parts sociales (L. 223-14) : double condition, en nombre de personnes et en capital. Anna atteint la moitié des parts mais ne représente qu'un associé sur quatre : la majorité en nombre fait défaut, l'agrément est refusé. Le cédant participe au vote. L'unanimité est la règle de la SNC, pas de la SARL.",
+   "src": "C. com., art. L. 223-14",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un associé notifie à sa SARL et à ses coassociés un projet de cession de parts à un tiers le 1er février. Au 15 mai, la société n'a toujours pas fait connaître sa décision. Quelle est la situation ?",
+   "opts": [
+    "L'agrément est réputé refusé",
+    "L'agrément est réputé acquis",
+    "Le cédant doit renouveler sa notification",
+    "Le délai est suspendu jusqu'à la prochaine assemblée annuelle"
+   ],
+   "a": 1,
+   "why": "Si la société n'a pas fait connaître sa décision dans les trois mois à compter de la dernière notification, le consentement à la cession est réputé acquis (L. 223-14). Du 1er février au 15 mai, plus de trois mois se sont écoulés : le tiers est agréé. Ce délai est d'ordre public, toute clause contraire étant réputée non écrite.",
+   "src": "C. com., art. L. 223-14",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Le capital d'une SARL est divisé en 1 000 parts. Un associé cède 300 parts à un tiers pour 90 000 €. Calculez les droits d'enregistrement dus (en €, arrondi à l'euro).",
+   "a": 2493,
+   "unit": "€",
+   "tol": 1,
+   "why": "Les cessions de parts sociales sont taxées à 3 % après un abattement de 23 000 € proratisé selon la fraction du capital cédée (CGI, art. 726). Abattement : 23 000 × 300 / 1 000 = 6 900 €. Base : 90 000 − 6 900 = 83 100 €. Droits : 83 100 × 3 % = 2 493 €. S'il s'était agi d'actions de SAS, le droit aurait été de 0,1 %, soit 90 €.",
+   "src": "CGI, art. 726",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une SARL dont les statuts ne contiennent aucune clause d'agrément, un associé cède ses parts à un autre associé. Quelle procédure s'applique ?",
+   "opts": [
+    "Agrément à la majorité des associés représentant la moitié des parts",
+    "Aucun agrément : la cession entre associés est libre",
+    "Agrément à l'unanimité",
+    "Autorisation préalable du gérant"
+   ],
+   "a": 1,
+   "why": "Les cessions entre associés sont libres (L. 223-16), sauf si les statuts ont institué une clause d'agrément, qui ne peut alors être plus contraignante que la double majorité légale applicable aux tiers. Il en va de même des cessions au conjoint, aux ascendants et descendants (L. 223-13). L'agrément légal obligatoire ne vise que les tiers étrangers à la société.",
+   "src": "C. com., art. L. 223-16",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant les conventions entre une SARL et ses dirigeants ou associés, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Un emprunt consenti par la société à son gérant personne physique est interdit, à peine de nullité",
+    "Une vente de marchandises à un associé aux conditions habituelles de la société est une convention libre",
+    "Une convention réglementée est soumise à l'approbation a posteriori de l'assemblée des associés",
+    "Le gérant intéressé participe au vote d'approbation de la convention qui le concerne",
+    "Une convention conclue avec un associé personne morale est interdite"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article L. 223-21 interdit, à peine de nullité, les emprunts, découverts, cautions et avals consentis aux gérants et associés personnes physiques ; les personnes morales associées ne sont pas visées : leurs conventions relèvent du régime réglementé, pas de l'interdiction. Les opérations courantes à conditions normales sont libres (L. 223-20). Les conventions réglementées sont approuvées a posteriori par l'assemblée sur rapport du gérant ou du commissaire aux comptes, et l'intéressé ne prend pas part au vote (L. 223-19).",
+   "src": "C. com., art. L. 223-19 à L. 223-21",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À la clôture de son exercice 2025, une SARL présente un total de bilan de 3 M€, un chiffre d'affaires HT de 12 M€ et 30 salariés. En application des seuils en vigueur pour les exercices ouverts depuis 2024, doit-elle nommer un commissaire aux comptes ?",
+   "opts": [
+    "Oui, car le chiffre d'affaires dépasse 10 M€",
+    "Non, car un seul des trois seuils est dépassé",
+    "Oui, car toute SARL de plus de 20 salariés doit en nommer un",
+    "Non, car le commissaire aux comptes n'est jamais obligatoire en SARL"
+   ],
+   "a": 1,
+   "why": "La nomination est obligatoire lorsque deux des trois seuils sont dépassés à la clôture de l'exercice (L. 223-35 ; décret n° 2024-152) : 5 M€ de total de bilan, 10 M€ de chiffre d'affaires HT, 50 salariés. Ici seul le chiffre d'affaires dépasse son seuil : pas d'obligation. La SARL peut toujours nommer volontairement un commissaire, et des associés détenant le dixième du capital peuvent en demander la désignation en justice.",
+   "src": "C. com., art. L. 223-35 et D. 221-5",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL clôture son exercice le 31 décembre. Avant quelle date l'assemblée d'approbation des comptes doit-elle en principe se tenir ?",
+   "opts": [
+    "Le 31 mars de l'année suivante",
+    "Le 30 juin de l'année suivante",
+    "Le 30 septembre de l'année suivante",
+    "Le 31 décembre de l'année suivante"
+   ],
+   "a": 1,
+   "why": "L'approbation des comptes doit intervenir dans les six mois de la clôture (L. 223-26), soit au plus tard le 30 juin pour un exercice clos le 31 décembre ; une prolongation peut être demandée au président du tribunal de commerce. Les comptes sont ensuite déposés au greffe dans le mois de l'approbation (deux mois par voie électronique).",
+   "src": "C. com., art. L. 223-26",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Sophie, personne physique, crée une EURL dont elle est l'associée unique et la gérante. Quel est le régime fiscal applicable à défaut d'option ?",
+   "opts": [
+    "Impôt sur les sociétés de plein droit",
+    "Impôt sur le revenu entre les mains de Sophie, dans la catégorie correspondant à l'activité",
+    "Prélèvement forfaitaire unique de 30 %",
+    "Exonération pendant les deux premières années"
+   ],
+   "a": 1,
+   "why": "L'EURL dont l'associé unique est une personne physique relève de plein droit du régime des sociétés de personnes (CGI, art. 8) : le résultat est imposé à l'IR au nom de l'associé (BIC, BNC ou BA). Elle peut opter pour l'IS (CGI, art. 239), option révocable jusqu'au cinquième exercice suivant. L'IS de plein droit ne concerne que l'EURL dont l'associé unique est une personne morale.",
+   "src": "CGI, art. 8 et 239",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SAS Groupe détient 100 % des parts d'une EURL. Quel est le régime fiscal de cette EURL ?",
+   "opts": [
+    "Impôt sur le revenu par transparence",
+    "Impôt sur les sociétés de plein droit",
+    "Impôt sur les sociétés uniquement sur option",
+    "Régime micro-entreprise"
+   ],
+   "a": 1,
+   "why": "Lorsque l'associé unique d'une EURL est une personne morale, la société est soumise de plein droit à l'impôt sur les sociétés (CGI, art. 206, 1 et 8) : la transparence fiscale est réservée à l'associé unique personne physique. Aucune option n'est donc nécessaire, et le régime micro est fermé aux sociétés détenues par une personne morale.",
+   "src": "CGI, art. 8 et 206",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une EURL dont l'associé unique personne physique est également gérant, comment les comptes annuels sont-ils approuvés ?",
+   "opts": [
+    "Par une assemblée générale convoquée dans les formes de la SARL",
+    "Le dépôt des comptes au registre du commerce et des sociétés vaut approbation",
+    "Par le commissaire aux comptes",
+    "Par le greffier du tribunal de commerce"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-31 prévoit que, lorsque l'associé unique est seul gérant, le dépôt au RCS de l'inventaire et des comptes annuels, dûment signés, vaut approbation des comptes, et il est dispensé d'établir un rapport de gestion sous conditions de taille. Il n'y a pas d'assemblée dans une EURL : l'associé unique prend ses décisions seul et les consigne dans un registre. Le commissaire aux comptes, s'il existe, certifie mais n'approuve pas.",
+   "src": "C. com., art. L. 223-31",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Attribuez chaque règle à la forme sociale qu'elle caractérise exclusivement.",
+   "cats": [
+    "SARL",
+    "SA",
+    "SAS"
+   ],
+   "items": [
+    [
+     "Capital minimum de 37 000 €",
+     1
+    ],
+    [
+     "Au moins sept actionnaires lorsque les titres sont cotés",
+     1
+    ],
+    [
+     "Au plus 100 associés",
+     0
+    ],
+    [
+     "Libération d'un cinquième du numéraire à la constitution",
+     0
+    ],
+    [
+     "Le président peut être une personne morale",
+     2
+    ],
+    [
+     "Apports en industrie interdits",
+     1
+    ],
+    [
+     "Liste légale de décisions obligatoirement collectives (art. L. 227-9)",
+     2
+    ],
+    [
+     "Agrément légal obligatoire pour toute cession de parts à un tiers",
+     0
+    ]
+   ],
+   "why": "La SA se distingue par son capital minimum (L. 224-2), le minimum de sept actionnaires en cas de cotation (L. 225-1) et l'interdiction des apports en industrie (L. 225-3). La SARL impose un maximum de 100 associés, une libération du cinquième et un agrément légal des tiers (L. 223-3, L. 223-7, L. 223-14). La SAS admet un président personne morale (L. 227-7) et encadre seulement une liste de décisions collectives (L. 227-9).",
+   "src": "C. com., art. L. 223-3, L. 223-7, L. 223-14, L. 224-2, L. 225-1, L. 225-3, L. 227-7, L. 227-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un associé a acquis ses parts de SARL il y a dix-huit mois par achat. Il notifie un projet de cession à un tiers ; l'agrément est refusé. Peut-il exiger que les associés ou la société rachètent ses parts ?",
+   "opts": [
+    "Oui, le rachat est toujours obligatoire en cas de refus d'agrément",
+    "Non, car il détient ses parts depuis moins de deux ans et ne les a pas reçues par succession, liquidation de communauté ou donation familiale",
+    "Oui, mais seulement par la société au moyen d'une réduction de capital",
+    "Non, car le refus d'agrément n'ouvre jamais droit au rachat"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-14 réserve l'obligation de rachat à l'associé qui détient ses parts depuis au moins deux ans, sauf s'il les a reçues par succession, liquidation de communauté entre époux, ou donation à son conjoint, un ascendant ou un descendant. Un acquéreur depuis dix-huit mois reste donc prisonnier de ses parts jusqu'au terme des deux ans. Dans le cas général, le rachat par les associés, un tiers agréé ou la société est bien obligatoire dans les trois mois du refus.",
+   "src": "C. com., art. L. 223-14",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SARL autorisent la consultation écrite des associés. Quelle décision ne peut pas être prise par cette voie ?",
+   "opts": [
+    "La nomination d'un nouveau gérant",
+    "L'approbation annuelle des comptes",
+    "L'autorisation d'une convention réglementée",
+    "Le transfert du siège social"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-27 permet la consultation écrite si les statuts le prévoient, à l'exception de l'assemblée annuelle d'approbation des comptes, qui doit obligatoirement se tenir en assemblée (sauf dispense propre à l'EURL). Les autres décisions, ordinaires ou extraordinaires, peuvent être adoptées par écrit dès lors que les statuts l'autorisent.",
+   "src": "C. com., art. L. 223-27",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

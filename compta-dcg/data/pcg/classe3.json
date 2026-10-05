@@ -1,0 +1,236 @@
+{
+ "classe": "3",
+ "titre": "Comptes de stocks et en-cours",
+ "comptes": [
+  {
+   "num": "31",
+   "label": "Matières premières (et fournitures)",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 31 enregistre le stock de matières premières et fournitures destinées à être incorporées aux produits fabriqués. En inventaire intermittent (méthode du PCG pour la plupart des entreprises), il n'est mouvementé qu'à la clôture : on annule le stock initial (6031 D / 31 C) et on constate le stock final (31 D / 6031 C), évalué au coût d'acquisition (prix d'achat + frais accessoires) selon le CUMP ou le PEPS. Il figure à l'actif circulant dans le poste Stocks et en-cours ; la variation passe par le compte 6031, qui corrige les achats de l'exercice (601).",
+   "exemple": "Stock initial de matières 40 000 €, stock final 52 000 € : 6031 D 40 000 / 31 C 40 000 puis 31 D 52 000 / 6031 C 52 000 (variation de stock : − 12 000 €, le résultat augmente).",
+   "piege": "Une augmentation de stock de matières diminue les charges (6031 créditeur) : la variation de stock de la classe 6 s'interprète à l'inverse de celle de la classe 7.",
+   "pcg2025": null
+  },
+  {
+   "num": "32",
+   "label": "Autres approvisionnements",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 32 enregistre les stocks d'approvisionnements qui ne sont pas incorporés directement aux produits : matières consommables (321), fournitures consommables (322), emballages (326). Il est mouvementé à la clôture en inventaire intermittent : annulation du stock initial par 6032, constatation du stock final, évalué au coût d'acquisition. Il figure à l'actif circulant dans les stocks ; sa variation (6032) corrige les achats du compte 602.",
+   "exemple": "Stock final de fournitures consommables 3 500 € (stock initial 2 800 €) : 6032 D 2 800 / 322 C 2 800 puis 322 D 3 500 / 6032 C 3 500.",
+   "piege": "Les fournitures non stockables (eau, énergie) passent en 6061 et ne sont jamais stockées en 32.",
+   "pcg2025": null
+  },
+  {
+   "num": "321",
+   "label": "Matières consommables",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 321 enregistre le stock des matières qui concourent à la fabrication sans entrer dans la composition du produit : combustibles, lubrifiants, produits d'entretien des machines. Il est débité du stock final et crédité du stock initial à la clôture, par le compte 6032. Il figure à l'actif dans les stocks d'autres approvisionnements.",
+   "exemple": "Stock final de combustibles 6 000 € : 321 D 6 000 / 6032 C 6 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "322",
+   "label": "Fournitures consommables",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 322 enregistre les stocks de fournitures d'atelier, de bureau ou d'entretien que l'entreprise choisit de suivre en stock plutôt que de passer directement en charges. Il est mouvementé à la clôture par le compte 6032. Il figure à l'actif dans les stocks d'autres approvisionnements.",
+   "exemple": "Stock final de fournitures d'atelier 2 200 € : 322 D 2 200 / 6032 C 2 200.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "326",
+   "label": "Emballages",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 326 enregistre le stock d'emballages perdus (vendus avec la marchandise) et d'emballages récupérables non identifiables, achetés via le compte 6026. Il est mouvementé à la clôture par le compte 6032. Il figure à l'actif dans les stocks d'autres approvisionnements. Les emballages récupérables identifiables sont des immobilisations (2186).",
+   "exemple": "Stock final de cartons et emballages perdus 1 800 € : 326 D 1 800 / 6032 C 1 800.",
+   "piege": "Les emballages consignés aux clients ne sont pas sortis du stock : la consignation est une dette (4196), pas une vente.",
+   "pcg2025": null
+  },
+  {
+   "num": "33",
+   "label": "En-cours de production de biens",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 33 enregistre la valeur des biens en cours de fabrication à la clôture (produits en cours 331, travaux en cours 335), évaluée au coût de production engagé à ce stade (matières consommées, main-d'œuvre directe, charges indirectes de production). Il est débité du stock final et crédité du stock initial par le compte 7133 Variation des en-cours de production de biens. Il figure à l'actif circulant dans les stocks ; comme tous les stocks produits, sa variation est un produit (classe 7).",
+   "exemple": "En-cours initial 15 000 €, en-cours final 20 000 € : 7133 D 15 000 / 331 C 15 000 puis 331 D 20 000 / 7133 C 20 000.",
+   "piege": "Les en-cours sont évalués au coût de production, jamais au prix de vente, et sans incorporer la quote-part de charges de sous-activité.",
+   "pcg2025": null
+  },
+  {
+   "num": "331",
+   "label": "Produits en cours",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 331 enregistre la valeur des produits dont la fabrication est commencée mais non achevée à la clôture. Il est mouvementé en fin d'exercice par le compte 7133 : annulation de l'en-cours initial, constatation de l'en-cours final au coût de production. Il figure à l'actif dans les stocks.",
+   "exemple": "En-cours final de produits 20 000 € : 331 D 20 000 / 7133 C 20 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "335",
+   "label": "Travaux en cours",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 335 enregistre la valeur des travaux (chantiers, constructions pour des tiers) non achevés à la clôture, évaluée au coût de production, lorsque l'entreprise applique la méthode de l'achèvement pour ses contrats à long terme. Il est mouvementé par le compte 7133 à chaque clôture. Il figure à l'actif dans les stocks ; en méthode de l'avancement, le chiffre d'affaires partiel est constaté et l'en-cours est réduit d'autant.",
+   "exemple": "Chantier non achevé, coûts engagés 120 000 € : 335 D 120 000 / 7133 C 120 000.",
+   "piege": "Méthode de l'achèvement : résultat constaté à la livraison, en-cours en 335 ; méthode de l'avancement (préférentielle) : produit en 704 au prorata, via 418 Factures à établir.",
+   "pcg2025": null
+  },
+  {
+   "num": "34",
+   "label": "En-cours de production de services",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 34 enregistre la valeur des prestations en cours d'exécution à la clôture : études en cours (341) et prestations de services en cours (345), évaluées au coût de production (heures de personnel, frais directs). Il est débité du stock final et crédité du stock initial par le compte 7134 Variation des en-cours de production de services. Il figure à l'actif circulant dans les stocks.",
+   "exemple": "Mission de conseil en cours, coûts engagés 9 000 € non encore facturés : 345 D 9 000 / 7134 C 9 000.",
+   "piege": "Si la prestation est partiellement facturable, on utilise 418 Clients – produits non encore facturés au prix de vente, pas un en-cours au coût.",
+   "pcg2025": null
+  },
+  {
+   "num": "341",
+   "label": "Études en cours",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 341 enregistre le coût des études et travaux intellectuels (bureaux d'études, ingénierie) commencés pour des clients et non achevés à la clôture. Il est mouvementé à la clôture par le compte 7134. Il figure à l'actif dans les stocks.",
+   "exemple": "Étude non achevée, coût engagé 14 000 € : 341 D 14 000 / 7134 C 14 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "345",
+   "label": "Prestations de services en cours",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 345 enregistre le coût des prestations de services en cours d'exécution à la clôture (missions, chantiers de maintenance, formations) non encore terminées ni facturées. Il est mouvementé par le compte 7134. Il figure à l'actif dans les stocks.",
+   "exemple": "345 D 9 000 / 7134 C 9 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "35",
+   "label": "Stocks de produits",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 35 enregistre les produits fabriqués par l'entreprise : produits intermédiaires (351), produits finis (355), produits résiduels (358). En inventaire intermittent, il est crédité du stock initial et débité du stock final à la clôture, par le compte 7135 Variation des stocks de produits ; le stock est évalué au coût de production (PCG art. 213-32 : charges directes et indirectes de production, hors frais de sous-activité, hors charges financières sauf option). Il figure à l'actif circulant dans les stocks. Une hausse du stock de produits augmente le résultat (7135 créditeur).",
+   "exemple": "Stock initial de produits finis 60 000 €, stock final 75 000 € : 7135 D 60 000 / 355 C 60 000 puis 355 D 75 000 / 7135 C 75 000 (production stockée + 15 000 €).",
+   "piege": "Stocks achetés (31, 32, 37) : variation en classe 6 ; stocks produits (33, 34, 35) : variation en classe 7.",
+   "pcg2025": null
+  },
+  {
+   "num": "351",
+   "label": "Produits intermédiaires",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 351 enregistre les produits qui ont atteint un stade d'achèvement mais sont destinés à entrer dans une nouvelle phase de production (pièces usinées à assembler, par exemple). Il est mouvementé à la clôture par le compte 7135, au coût de production du stade atteint. Il figure à l'actif dans les stocks de produits.",
+   "exemple": "Stock final de pièces usinées 12 000 € : 351 D 12 000 / 7135 C 12 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "355",
+   "label": "Produits finis",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 355 enregistre les produits qui ont atteint le stade final de fabrication et sont prêts à être vendus. Il est mouvementé à la clôture par le compte 7135 : annulation du stock initial, constatation du stock final au coût de production complet. Il figure à l'actif dans les stocks de produits ; si la valeur nette de réalisation (prix de vente probable − frais restant à engager) est inférieure au coût, une dépréciation (3955) est constatée.",
+   "exemple": "Stock final de produits finis 75 000 € : 355 D 75 000 / 7135 C 75 000.",
+   "piege": "Le stock de produits finis se valorise au coût de production, jamais au prix de vente, même si une commande est signée.",
+   "pcg2025": null
+  },
+  {
+   "num": "358",
+   "label": "Produits résiduels",
+   "sens": "D",
+   "obligatoire": false,
+   "explication": "Le compte 358 enregistre les déchets, rebuts et sous-produits issus de la fabrication qui ont une valeur de revente (chutes de métal, copeaux). Il est mouvementé à la clôture par le compte 7135 et évalué au cours du marché diminué des frais de vente, faute de coût de production individualisable. Il figure à l'actif dans les stocks de produits.",
+   "exemple": "Chutes de métal en stock valorisées 1 500 € : 358 D 1 500 / 7135 C 1 500.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "37",
+   "label": "Stocks de marchandises",
+   "sens": "D",
+   "obligatoire": true,
+   "explication": "Le compte 37 enregistre les biens achetés pour être revendus en l'état, sans transformation. En inventaire intermittent, il est crédité du stock initial et débité du stock final à la clôture, par le compte 6037 Variation des stocks de marchandises ; le stock est évalué au coût d'acquisition (prix d'achat net de remises + frais accessoires d'achat : transport, droits de douane) par le CUMP ou le PEPS. Il figure à l'actif circulant dans les stocks. Coût d'achat des marchandises vendues = achats (607) + variation de stock (6037).",
+   "exemple": "Stock initial de marchandises 30 000 €, stock final 25 000 € : 6037 D 30 000 / 37 C 30 000 puis 37 D 25 000 / 6037 C 25 000 (variation + 5 000 € : charge).",
+   "piege": "La méthode du dernier entré premier sorti (DEPS) est interdite par le PCG : seuls le CUMP et le PEPS sont admis.",
+   "pcg2025": null
+  },
+  {
+   "num": "39",
+   "label": "Dépréciations des stocks et en-cours",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 39 enregistre la perte de valeur probable des stocks lorsque leur valeur actuelle (valeur nette de réalisation) est inférieure à leur coût d'entrée (PCG art. 214-22) : matières (391), autres approvisionnements (392), en-cours de biens (393), en-cours de services (394), produits (395), marchandises (397). Il est crédité par le débit du 68173 (dotations aux dépréciations des stocks) et débité par le crédit du 78173 lors de la reprise. En pratique, à chaque clôture, la dépréciation du stock initial est reprise en totalité et celle du stock final est dotée. Il figure à l'actif en déduction des stocks.",
+   "exemple": "Dépréciation sur le stock initial 2 000 €, dépréciation nécessaire sur le stock final 3 500 € : 39 D 2 000 / 78173 C 2 000 puis 68173 D 3 500 / 39 C 3 500.",
+   "piege": "La dépréciation s'apprécie article par article (ou par catégorie homogène), sans compenser les plus-values latentes d'un article par les moins-values d'un autre.",
+   "pcg2025": null
+  },
+  {
+   "num": "391",
+   "label": "Dépréciations des matières premières (et fournitures)",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 391 enregistre la dépréciation des matières premières dont la valeur actuelle est inférieure au coût d'acquisition (baisse du cours, détérioration, obsolescence). Il est crédité par le débit du 68173 et débité par le crédit du 78173 lors de la reprise à la clôture suivante. Il figure à l'actif en déduction du compte 31.",
+   "exemple": "Matières en stock 52 000 €, valeur actuelle 49 000 € : 68173 D 3 000 / 391 C 3 000.",
+   "piege": "Une matière destinée à un produit fini vendu avec marge n'est pas dépréciée même si son cours a baissé, si le produit final reste rentable.",
+   "pcg2025": null
+  },
+  {
+   "num": "392",
+   "label": "Dépréciations des autres approvisionnements",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 392 enregistre la dépréciation des matières et fournitures consommables et des emballages en stock (32) dont la valeur actuelle est inférieure au coût. Il est crédité par le débit du 68173 et débité par le crédit du 78173. Il figure à l'actif en déduction du compte 32.",
+   "exemple": "Emballages obsolètes : coût 1 800 €, valeur 600 € : 68173 D 1 200 / 392 C 1 200.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "393",
+   "label": "Dépréciations des en-cours de production de biens",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 393 enregistre la dépréciation des produits et travaux en cours (33) lorsque leur coût engagé plus les coûts restant à engager dépasse le prix de vente attendu. Il est crédité par le débit du 68173 et débité par le crédit du 78173. Il figure à l'actif en déduction du compte 33.",
+   "exemple": "En-cours 20 000 €, prix de vente attendu 24 000 €, coûts restant à engager 6 000 € : dépréciation 2 000 € : 68173 D 2 000 / 393 C 2 000.",
+   "piege": "Si la perte attendue dépasse la valeur de l'en-cours, le complément est une provision pour perte sur contrat (1516), pas une dépréciation.",
+   "pcg2025": null
+  },
+  {
+   "num": "394",
+   "label": "Dépréciations des en-cours de production de services",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 394 enregistre la dépréciation des études et prestations en cours (34) dont le coût engagé ne sera pas couvert par le prix convenu. Il est crédité par le débit du 68173 et débité par le crédit du 78173. Il figure à l'actif en déduction du compte 34.",
+   "exemple": "Étude en cours 14 000 €, honoraires attendus 11 000 €, rien à engager de plus : 68173 D 3 000 / 394 C 3 000.",
+   "piege": "",
+   "pcg2025": null
+  },
+  {
+   "num": "395",
+   "label": "Dépréciations des stocks de produits",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 395 enregistre la dépréciation des produits intermédiaires (3951), finis (3955) et résiduels (3958) dont la valeur nette de réalisation est inférieure au coût de production. Il est crédité par le débit du 68173 et débité par le crédit du 78173 à la clôture suivante. Il figure à l'actif en déduction du compte 35.",
+   "exemple": "Produits finis 75 000 €, dont une série démodée : coût 8 000 €, prix de vente probable 5 000 € : 68173 D 3 000 / 3955 C 3 000.",
+   "piege": "La dépréciation est calculée sur la valeur nette de réalisation (prix de vente − frais de commercialisation), pas sur le prix de vente brut.",
+   "pcg2025": null
+  },
+  {
+   "num": "397",
+   "label": "Dépréciations des stocks de marchandises",
+   "sens": "C",
+   "obligatoire": true,
+   "explication": "Le compte 397 enregistre la dépréciation des marchandises en stock dont le prix de vente probable, diminué des frais de vente, est inférieur au coût d'acquisition (soldes, invendus, produits périssables). Il est crédité par le débit du 68173 et débité par le crédit du 78173 lors de la reprise. Il figure à l'actif en déduction du compte 37.",
+   "exemple": "Marchandises en stock 25 000 €, dont invendus coût 4 000 € soldés à 2 500 € : 68173 D 1 500 / 397 C 1 500.",
+   "piege": "Reprise systématique de l'ancienne dépréciation et dotation de la nouvelle : ne pas comptabiliser seulement la variation si le sujet demande les deux écritures.",
+   "pcg2025": null
+  }
+ ]
+}

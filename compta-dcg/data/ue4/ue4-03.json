@@ -1,0 +1,555 @@
+{
+ "id": "ue4-03",
+ "ue": "UE4",
+ "ordre": 3,
+ "title": "Les bénéfices industriels et commerciaux",
+ "resume": "Du résultat comptable au résultat fiscal d'une entreprise individuelle : régimes, produits imposables, charges déductibles, amortissements et provisions, plus-values professionnelles, déficits.",
+ "duree": "75 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Champ d'application et régimes d'imposition",
+   "html": "<p>Relèvent des BIC (CGI, art. 34 et 35) les bénéfices des personnes physiques exerçant une activité <b>commerciale</b> (achat-revente, prestations commerciales), <b>industrielle</b> ou <b>artisanale</b>, ainsi que, par détermination de la loi, les marchands de biens, lotisseurs, loueurs d'établissements équipés et loueurs en meublé. Les associés de sociétés de personnes (SNC, EURL à l'IR) exerçant une activité commerciale sont imposés dans cette catégorie pour leur quote-part. Le BIC est <b>professionnel</b> si l'exploitant participe personnellement, directement et de façon continue à l'activité ; sinon il est <b>non professionnel</b> (déficits cantonnés).</p><p>Trois régimes selon le chiffre d'affaires HT (seuils 2023-2025, actualisés tous les trois ans) :</p><table><thead><tr><th>Régime</th><th>Ventes, hébergement</th><th>Prestations de services</th><th>Bénéfice</th></tr></thead><tbody><tr><td><b>Micro-BIC</b> (art. 50-0)</td><td>≤ <span class=\"mono\">188 700 €</span></td><td>≤ <span class=\"mono\">77 700 €</span></td><td>CA − abattement <b>71 %</b> (ventes) ou <b>50 %</b> (services), minimum 305 €</td></tr><tr><td><b>Réel simplifié</b> (art. 302 septies A bis)</td><td>≤ <span class=\"mono\">840 000 €</span></td><td>≤ <span class=\"mono\">254 000 €</span></td><td>Résultat réel, liasse 2033 allégée</td></tr><tr><td><b>Réel normal</b></td><td>&gt; 840 000 €</td><td>&gt; 254 000 €</td><td>Résultat réel, liasse 2050 à 2059</td></tr></tbody></table><p>Le micro-BIC s'apprécie sur le CA de l'année précédente (N-1) ou de l'avant-dernière (N-2) ; en cas d'activité mixte, le CA global ne doit pas dépasser 188 700 € et la part des services 77 700 €. L'exploitant au micro peut opter pour le réel ; l'option est valable un an et reconduite tacitement. Le micro-entrepreneur peut choisir le <b>versement libératoire</b> de l'IR (1 % du CA ventes, 1,7 % services) sous condition de revenu fiscal de référence.</p>"
+  },
+  {
+   "h": "Du résultat comptable au résultat fiscal",
+   "html": "<p>Le bénéfice imposable est le <b>bénéfice net</b> déterminé d'après les résultats d'ensemble des opérations de toute nature (art. 38, 1), égal à la variation de l'actif net entre l'ouverture et la clôture (art. 38, 2). Il part du résultat comptable (PCG) et subit des <b>corrections extra-comptables</b> portées sur le tableau <b>2058-A</b> (réel normal) ou 2033-B (réel simplifié) :</p><ul><li><b>Réintégrations</b> : charges comptabilisées mais non déductibles fiscalement (amendes, rémunération de l'exploitant, fraction excédentaire d'amortissement d'un véhicule, provisions non déductibles, dépenses somptuaires, impôt sur les bénéfices).</li><li><b>Déductions</b> : produits comptabilisés mais non imposables ou imposés séparément (plus-value nette à long terme, quote-part de plus-value à court terme étalée, reprises de provisions antérieurement réintégrées, produits exonérés).</li></ul><p><b>Résultat fiscal = résultat comptable + réintégrations − déductions.</b> Il est ensuite reporté sur la déclaration 2042 C PRO du foyer dans la catégorie BIC, et il sert de base aux cotisations sociales de l'exploitant.</p><div class=\"note\"><b>Méthode d'examen.</b> Pour chaque opération, poser trois questions : la charge (ou le produit) est-elle correctement comptabilisée ? Est-elle déductible (imposable) fiscalement ? Si non, dans quel sens corriger ? Une charge non déductible se réintègre ; un produit non imposable se déduit. Une charge oubliée en comptabilité ne se « déduit » pas extra-comptablement : il faut corriger la comptabilité.</div>"
+  },
+  {
+   "h": "Produits imposables",
+   "html": "<p>Les produits sont rattachés à l'exercice selon la règle des <b>créances acquises</b> (art. 38, 2 bis) : une vente de biens est imposable à la <b>livraison</b>, une prestation de services à son <b>achèvement</b> ; les prestations continues (loyers, intérêts) et les prestations discontinues à échéances successives sont imposées <b>au fur et à mesure de l'exécution</b>. La date de facturation ou d'encaissement est indifférente : une vente livrée le 28 décembre et facturée le 5 janvier appartient à l'exercice de la livraison.</p><ul><li><b>Ventes et prestations</b> : prix hors TVA, après rabais, remises et ristournes accordés.</li><li><b>Produits accessoires</b> : loyers d'immeubles inscrits à l'actif, redevances de brevets (régime de faveur possible), commissions.</li><li><b>Produits financiers</b> : intérêts de créances et de placements inscrits au bilan (créances acquises) ; les dividendes de titres inscrits à l'actif d'une entreprise individuelle peuvent être extournés pour être imposés en RCM chez l'exploitant.</li><li><b>Subventions</b> : les subventions d'exploitation et d'équilibre sont imposables immédiatement. Les <b>subventions d'équipement</b> accordées par l'État, les collectivités ou l'Union européenne peuvent, sur option (art. 42 septies), être rapportées au résultat au même rythme que l'amortissement du bien financé (ou par parts égales sur 10 ans pour un bien non amortissable, ou sur la durée d'inaliénabilité).</li><li><b>Indemnités d'assurance</b> : imposables ; celles qui compensent la perte d'un élément d'actif suivent le régime des plus-values.</li><li><b>Reprises de provisions</b> : imposables si la dotation avait été déduite ; à déduire extra-comptablement sinon.</li></ul><p><b>Exonérations</b> temporaires : entreprises nouvelles en zones d'aide (art. 44 sexies), zones franches urbaines (44 octies A), bassins d'emploi à redynamiser, jeunes entreprises innovantes (44 sexies A), zones de revitalisation rurale puis France Ruralités Revitalisation (44 quindecies A).</p>"
+  },
+  {
+   "h": "Charges déductibles et charges exclues",
+   "html": "<p>Quatre <b>conditions générales</b> de déduction (art. 39, 1 et jurisprudence) : la charge est engagée dans l'<b>intérêt de l'exploitation</b> (pas de dépense personnelle, pas d'acte anormal de gestion) ; elle correspond à une <b>charge effective</b> appuyée de <b>justifications</b> ; elle entraîne une <b>diminution de l'actif net</b> (ce n'est pas une immobilisation : seuil de tolérance de 500 € HT pour le petit matériel) ; elle est rattachée à l'exercice au cours duquel elle est <b>engagée</b> (dettes certaines).</p><p><b>Charges non déductibles</b> ou limitées :</p><ul><li><b>Rémunération de l'exploitant individuel</b> et de son conjoint au-delà des limites (le salaire du conjoint est déductible en totalité si l'exploitant est adhérent d'un organisme de gestion agréé ou si le conjoint est marié sous un régime séparatiste ; sinon plafond de 17 500 €) ; la rémunération de l'exploitant est une affectation du bénéfice, pas une charge.</li><li><b>Amendes et pénalités</b> de toute nature (fiscales, sociales, pénales, infractions au Code de la route) : art. 39, 2.</li><li><b>Dépenses somptuaires</b> (art. 39, 4) : chasse, pêche non professionnelle, résidences de plaisance, yachts et bateaux de plaisance, et la fraction d'amortissement des véhicules de tourisme excédant les plafonds.</li><li><b>Impôt sur le revenu</b> de l'exploitant, et pour les sociétés l'IS et les taxes annuelles sur les véhicules de tourisme (ex-TVS).</li><li><b>Cadeaux et réceptions</b> : déductibles s'ils sont dans l'intérêt de l'entreprise et d'un montant non exagéré ; les cadeaux d'une valeur globale supérieure à 3 000 € et les frais de réception supérieurs à 6 100 € doivent figurer sur le <b>relevé des frais généraux</b> (2067) ; les dépenses de parrainage sont déductibles (art. 39, 1-7°).</li><li><b>CSG</b> sur le revenu d'activité de l'exploitant : déductible à hauteur de 6,8 points, non déductible pour 2,4 points ; CRDS non déductible.</li></ul><p><b>Charges déductibles</b> couramment testées : taxe foncière et CFE des biens affectés à l'exploitation, cotisations sociales personnelles de l'exploitant (y compris contrats Madelin dans la limite d'un plafond), loyers, assurances, intérêts d'emprunt contractés pour l'exploitation, créances irrécouvrables, salaires et charges du personnel, honoraires (déclaration DAS 2 au-delà de 1 200 € par bénéficiaire).</p>"
+  },
+  {
+   "h": "Amortissements fiscaux",
+   "html": "<p>L'amortissement est déductible s'il est <b>comptabilisé</b> (art. 39, 1-2°), pratiqué sur des biens inscrits à l'actif et soumis à dépréciation, dans la limite des usages de la profession. L'administration tolère un écart de 20 % sur les durées d'usage.</p><ul><li><b>Linéaire</b> : annuité constante = base × taux, calculée prorata temporis en jours à partir de la mise en service.</li><li><b>Dégressif</b> (art. 39 A) : option pour les <b>biens neufs</b> d'une durée d'utilisation ≥ 3 ans appartenant à certaines catégories (matériels et outillages industriels, matériels de manutention, installations de sécurité, matériel informatique, bâtiments industriels légers, véhicules utilitaires). Exclus : véhicules de tourisme, biens d'occasion, mobilier, constructions ordinaires. Taux = taux linéaire × coefficient : <span class=\"mono\">1,25</span> (3 ou 4 ans), <span class=\"mono\">1,75</span> (5 ou 6 ans), <span class=\"mono\">2,25</span> (plus de 6 ans). La première annuité se calcule en <b>mois</b> à compter du premier jour du mois d'acquisition ; les suivantes s'appliquent à la valeur nette ; quand le taux dégressif devient inférieur au taux linéaire sur la durée restante, on passe au linéaire. Le dégressif étant fiscal, l'excédent sur l'amortissement économique est comptabilisé en <b>amortissement dérogatoire</b> (compte 145).</li><li><b>Amortissement minimal</b> (art. 39 B) : à la clôture de chaque exercice, le cumul des amortissements déduits ne peut être inférieur au cumul linéaire. Les amortissements <i>régulièrement</i> différés (en période bénéficiaire, au-dessus du minimum) sont récupérables ; ceux <i>irrégulièrement</i> différés (sous le minimum linéaire) sont définitivement perdus.</li><li><b>Véhicules de tourisme</b> (art. 39, 4) : l'amortissement (ou le loyer de location longue durée) n'est déductible que sur la fraction du prix d'acquisition TTC n'excédant pas, selon le taux d'émission de CO2 (norme WLTP, véhicules acquis depuis 2021) : <span class=\"mono\">30 000 €</span> (moins de 20 g/km), <span class=\"mono\">20 300 €</span> (20 à 49 g), <span class=\"mono\">18 300 €</span> (50 à 160 g), <span class=\"mono\">9 900 €</span> (plus de 160 g). L'excédent est réintégré chaque année sur le 2058-A.</li><li><b>Amortissements exceptionnels</b> : dispositifs temporaires (imprimantes 3D, robots, logiciels autrefois sur 12 mois) ; vérifier l'applicabilité à la date de l'acquisition.</li></ul>"
+  },
+  {
+   "h": "Provisions",
+   "html": "<p>Une provision est déductible (art. 39, 1-5°) si elle respecte quatre conditions : elle couvre une <b>perte ou une charge elle-même déductible</b> ; cette perte ou charge est <b>nettement précisée</b> dans sa nature et évaluée avec une approximation suffisante ; elle est <b>probable</b> (pas seulement éventuelle) et résulte d'événements <b>en cours à la clôture</b> ; elle est effectivement <b>comptabilisée</b> et figure sur le relevé des provisions (2056).</p><p>Provisions <b>déductibles</b> : dépréciation des stocks et des créances douteuses (client en redressement judiciaire : probable ; simple retard de paiement : non), litiges en cours, garanties données aux clients (méthode statistique admise), gros entretien (si pas de composant), provision pour hausse des prix (art. 39, 1-5°, 10e alinéa), dépréciation de titres (régime des moins-values à long terme pour les titres de participation).</p><p>Provisions <b>non déductibles</b> :</p><ul><li>indemnités de départ à la <b>retraite</b> et engagements assimilés (art. 39, 1-5°, dernier alinéa), pourtant comptabilisées ou mentionnées en annexe ;</li><li>provisions pour <b>propre assureur</b>, pour <b>amendes et pénalités</b>, pour impôt non déductible (IS), pour pertes de change (l'écart de conversion est directement pris en compte dans le résultat fiscal, art. 38, 4) ;</li><li>provisions pour <b>congés payés</b> dans les seules entreprises ayant opté avant 1987 pour le maintien du régime antérieur (déduction lors du paiement, art. 39, 1-1° bis) ; pour toutes les autres, l'indemnité de congés payés acquise est déductible dès l'exercice d'acquisition des droits ;</li><li>provisions pour charges non déductibles ou dépenses à immobiliser (acquisition d'un élément d'actif).</li></ul><p>Sort ultérieur : une provision déduite devenue sans objet est reprise et <b>imposée</b> ; si l'entreprise omet la reprise, l'administration la rapporte au résultat de l'exercice de contrôle. Une provision réintégrée lors de sa dotation est déduite extra-comptablement lors de sa reprise, pour éviter une double imposition.</p>"
+  },
+  {
+   "h": "Plus-values et moins-values professionnelles",
+   "html": "<p>La cession d'un élément d'actif immobilisé (vente, mise au rebut, retrait dans le patrimoine privé, expropriation, indemnité d'assurance) dégage une plus-value = prix de cession − valeur nette comptable. Le régime (art. 39 duodecies) dépend de la <b>durée de détention</b> (2 ans) et du caractère <b>amortissable</b> du bien :</p><table><thead><tr><th>Bien</th><th>Détenu moins de 2 ans</th><th>Détenu 2 ans ou plus</th></tr></thead><tbody><tr><td>Non amortissable (terrain, fonds, titres)</td><td>PV court terme ; MV court terme</td><td>PV long terme ; MV long terme</td></tr><tr><td>Amortissable (machine, construction, véhicule)</td><td>PV court terme ; MV court terme</td><td>PV à court terme à hauteur des <b>amortissements déduits</b>, long terme au-delà ; MV toujours court terme</td></tr></tbody></table><p>On compense ensuite les plus et moins-values de chaque catégorie :</p><ul><li><b>Plus-value nette à court terme</b> : ajoutée au bénéfice imposable au barème ; sur option, <b>étalement par tiers</b> sur l'exercice et les deux suivants (art. 39 quaterdecies). Une moins-value nette à court terme se déduit du résultat.</li><li><b>Plus-value nette à long terme</b> : imposée séparément au taux de <span class=\"mono\">12,8 %</span> (art. 39 quindecies) plus 17,2 % de prélèvements sociaux, soit 30 % ; elle est donc <i>déduite</i> sur le 2058-A. Elle peut d'abord absorber le déficit de l'exercice et les moins-values nettes à long terme des <b>10 exercices</b> précédents. Une moins-value nette à long terme ne s'impute que sur les PVLT des 10 exercices suivants.</li></ul><p><b>Exonérations</b> : <b>art. 151 septies</b> (activité exercée depuis au moins 5 ans) : totale si la moyenne des recettes HT des deux années précédentes ≤ <span class=\"mono\">250 000 €</span> (ventes) ou <span class=\"mono\">90 000 €</span> (services), dégressive jusqu'à 350 000 € / 126 000 €, la fraction exonérée étant (350 000 − recettes)/100 000 ou (126 000 − recettes)/36 000 ; les terrains à bâtir sont exclus. <b>Art. 238 quindecies</b> (transmission d'une entreprise ou branche complète, activité ≥ 5 ans) : totale si la valeur des éléments transmis ≤ 500 000 €, dégressive jusqu'à 1 000 000 €. <b>Art. 151 septies A</b> : départ à la retraite dans les 2 ans (exonération d'IR, pas des prélèvements sociaux). <b>Art. 151 septies B</b> : abattement de 10 % par année de détention au-delà de la 5e sur les PVLT immobilières affectées à l'exploitation.</p>"
+  },
+  {
+   "h": "Déficits, charges sociales de l'exploitant et CFE",
+   "html": "<p><b>Déficit BIC professionnel</b> : il s'impute sur le revenu global du foyer de l'année (art. 156, I) ; l'excédent se reporte sur le revenu global des <b>6 années</b> suivantes. Un déficit BIC <b>non professionnel</b> ne s'impute que sur des bénéfices de même nature (6 ans ; 10 ans pour la location meublée non professionnelle). Le déficit micro-BIC n'existe pas : l'abattement forfaitaire ne peut créer de perte.</p><p><b>Charges sociales de l'exploitant</b> : les cotisations obligatoires (maladie, retraite de base et complémentaire, allocations familiales, invalidité-décès) versées à l'URSSAF sont des charges déductibles du BIC ; les cotisations facultatives de retraite et de prévoyance (contrats Madelin, PER) sont déductibles dans des plafonds liés au PASS. Depuis 2025, l'assiette des cotisations est unifiée et une partie de la CSG a été basculée en cotisations ; la CSG reste déductible à 6,8 points et non déductible pour le reste.</p><p><b>Cotisation foncière des entreprises</b> : l'exploitant est redevable de la CFE sur la valeur locative de ses locaux professionnels, avec une cotisation minimum fixée par la commune ; elle est exonérée l'année de création et son montant est une charge déductible du BIC. La cotisation sur la valeur ajoutée (CVAE) ne concerne que les entreprises réalisant plus de 500 000 € de chiffre d'affaires.</p><div class=\"note\"><b>Lien DSCG.</b> Ces règles BIC sont la base de l'IS (chapitre suivant) : l'article 209, I renvoie aux articles 34 à 45 pour déterminer le bénéfice des sociétés. Les différences tiennent surtout au traitement des dirigeants, des dividendes et du taux d'imposition des plus-values.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CGI, art. 34, 35, 38 et 50-0",
+   "note": "Champ des BIC, bénéfice net, créances acquises, micro-BIC (seuils 2023-2025)"
+  },
+  {
+   "ref": "CGI, art. 39, 1 à 5",
+   "note": "Conditions de déduction des charges, amendes, dépenses somptuaires, plafond d'amortissement des véhicules de tourisme, provisions"
+  },
+  {
+   "ref": "CGI, art. 39 A et 39 B",
+   "note": "Amortissement dégressif (coefficients) et amortissement minimal obligatoire"
+  },
+  {
+   "ref": "CGI, art. 39 duodecies à 39 quindecies",
+   "note": "Plus-values professionnelles : court terme / long terme, étalement, taux de 12,8 %"
+  },
+  {
+   "ref": "CGI, art. 151 septies, 151 septies A, 151 septies B et 238 quindecies",
+   "note": "Exonérations des plus-values des petites entreprises et des transmissions"
+  },
+  {
+   "ref": "CGI, art. 42 septies et 156, I",
+   "note": "Étalement des subventions d'équipement ; imputation des déficits BIC"
+  },
+  {
+   "ref": "CGI, art. 302 septies A bis",
+   "note": "Régime simplifié d'imposition : seuils 840 000 € / 254 000 €"
+  },
+  {
+   "ref": "BOI-BIC-AMT-20-40-50 ; BOI-BIC-PVMV-40-10-10",
+   "note": "Amortissement des véhicules de tourisme ; exonération article 151 septies"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Un plombier exerçant en entreprise individuelle réalise des travaux chez des particuliers. Ses bénéfices relèvent de la catégorie :",
+   "opts": [
+    "Des BIC, l'activité artisanale étant assimilée aux activités commerciales",
+    "Des BNC, car il exerce seul",
+    "Des traitements et salaires",
+    "Des bénéfices agricoles"
+   ],
+   "a": 0,
+   "why": "L'article 34 soumet aux BIC les bénéfices des professions commerciales, industrielles ou artisanales. L'artisan relève donc des BIC, quelle que soit la taille de l'entreprise. Les BNC visent les professions libérales et activités intellectuelles ; exercer seul ne change pas la nature de l'activité.",
+   "src": "CGI, art. 34",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "En 2025, une commerçante (vente de vêtements) a réalisé 150 000 € de chiffre d'affaires HT en 2024 et 160 000 € en 2023. Sans option, quel est son régime et comment est calculé son bénéfice ?",
+   "opts": [
+    "Micro-BIC : CA − abattement de 71 %",
+    "Micro-BIC : CA − abattement de 50 %",
+    "Réel simplifié obligatoire : produits − charges",
+    "Micro-BNC : CA − abattement de 34 %"
+   ],
+   "a": 0,
+   "why": "Le CA des années N-1 et N-2 est inférieur au seuil de 188 700 € applicable aux ventes (2023-2025) : le micro-BIC s'applique de plein droit, avec l'abattement de 71 % propre aux ventes de marchandises (art. 50-0). L'abattement de 50 % concerne les prestations de services, 34 % le micro-BNC. Le réel n'est obligatoire qu'au-delà du seuil ou sur option.",
+   "src": "CGI, art. 50-0",
+   "fiab": "millésimé 2025",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, un consultant informatique en micro-BIC (prestations de services, abattement de 50 %) a encaissé 60 000 € HT de chiffre d'affaires. Quel est son bénéfice imposable ?",
+   "a": 30000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Prestations de services : abattement forfaitaire de 50 % (art. 50-0) : 60 000 × 50 % = 30 000 €. Les charges réelles ne sont pas déductibles en plus de l'abattement. S'il s'agissait de ventes, l'abattement serait de 71 % (bénéfice 17 400 €).",
+   "src": "CGI, art. 50-0",
+   "fiab": "millésimé 2025",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "En 2025, un négociant réalise 900 000 € HT de chiffre d'affaires annuel. À quel régime d'imposition des BIC est-il soumis de plein droit ?",
+   "opts": [
+    "Réel normal",
+    "Réel simplifié",
+    "Micro-BIC",
+    "Déclaration contrôlée"
+   ],
+   "a": 0,
+   "why": "Le réel simplifié s'applique aux entreprises dont le CA HT n'excède pas 840 000 € (ventes) ou 254 000 € (services) pour 2023-2025 (art. 302 septies A bis). Au-delà, le réel normal est obligatoire. Le micro-BIC est limité à 188 700 € et la déclaration contrôlée est un régime BNC.",
+   "src": "CGI, art. 302 septies A bis",
+   "fiab": "millésimé 2025",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Sur le tableau 2058-A, une « réintégration » correspond à :",
+   "opts": [
+    "Une charge comptabilisée mais non déductible fiscalement, ajoutée au résultat comptable",
+    "Un produit comptabilisé mais non imposable, retranché du résultat comptable",
+    "Une charge oubliée en comptabilité que l'on déduit fiscalement",
+    "Une correction du bilan comptable"
+   ],
+   "a": 0,
+   "why": "Le résultat fiscal se calcule à partir du résultat comptable : les charges comptabilisées non déductibles sont réintégrées (ajoutées), les produits non imposables ou imposés séparément sont déduits. Une charge omise en comptabilité ne peut pas être déduite extra-comptablement : il faut la comptabiliser. Le 2058-A ne modifie pas le bilan.",
+   "src": "CGI, art. 38 ; imprimé 2058-A",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "q": "Pour chaque élément figurant dans le résultat comptable d'une entreprise individuelle, indiquez le retraitement à opérer sur le 2058-A.",
+   "cats": [
+    "Réintégration",
+    "Déduction",
+    "Aucun retraitement"
+   ],
+   "items": [
+    [
+     "Amende pour excès de vitesse du véhicule de livraison",
+     0
+    ],
+    [
+     "Rémunération que s'est versée l'exploitant",
+     0
+    ],
+    [
+     "Plus-value nette à long terme comprise dans le résultat comptable",
+     1
+    ],
+    [
+     "Taxe foncière du local commercial",
+     2
+    ],
+    [
+     "Fraction d'amortissement d'un véhicule de tourisme excédant le plafond",
+     0
+    ],
+    [
+     "Reprise d'une provision réintégrée lors de sa dotation",
+     1
+    ],
+    [
+     "Cotisations sociales obligatoires de l'exploitant",
+     2
+    ],
+    [
+     "Salaires du personnel",
+     2
+    ]
+   ],
+   "why": "Les amendes (art. 39, 2), la rémunération de l'exploitant (affectation du bénéfice) et l'amortissement excédentaire (art. 39, 4) sont réintégrés. La PVLT est imposée séparément à 12,8 % et la reprise d'une provision non déduite ne doit pas être imposée deux fois : déductions. Taxe foncière, cotisations sociales de l'exploitant et salaires sont des charges normalement déductibles.",
+   "src": "CGI, art. 39, 39 quindecies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Résultat comptable d'une entreprise individuelle : 80 000 €. Il comprend : une amende fiscale de 2 000 €, des frais de chasse (dépense somptuaire) de 5 000 €, la rémunération de l'exploitant de 30 000 € et une plus-value nette à long terme de 10 000 € (imposée séparément). Calculez le résultat fiscal BIC imposable au barème.",
+   "a": 107000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Réintégrations : amende 2 000 + dépense somptuaire 5 000 + rémunération de l'exploitant 30 000 = 37 000 €. Déduction : PVLT 10 000 € (taxée à part à 12,8 %). Résultat fiscal = 80 000 + 37 000 − 10 000 = 107 000 €. Oublier de déduire la PVLT ou de réintégrer la rémunération de l'exploitant sont les deux erreurs classiques.",
+   "src": "CGI, art. 39, 2 et 4 ; art. 39 quindecies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise clôture le 31 décembre N. Une marchandise est livrée au client le 28 décembre N, la facture est émise le 5 janvier N+1 et payée le 20 février N+1. À quel exercice le produit est-il imposable ?",
+   "opts": [
+    "N, date de la livraison",
+    "N+1, date de la facture",
+    "N+1, date de l'encaissement",
+    "Au choix de l'entreprise"
+   ],
+   "a": 0,
+   "why": "En BIC, les produits sont rattachés à l'exercice de la créance acquise (art. 38, 2 bis) : pour une vente de biens, la livraison. Facture et paiement sont indifférents. La règle de l'encaissement vaut pour les BNC (comptabilité de trésorerie), pas pour les BIC.",
+   "src": "CGI, art. 38, 2 bis",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise loue un entrepôt à un tiers pour 24 000 € par an, loyer encaissé d'avance le 1er octobre N pour la période du 1er octobre N au 30 septembre N+1. Quel montant est imposable en N (clôture au 31 décembre) ?",
+   "opts": [
+    "6 000 €",
+    "24 000 €",
+    "0 €",
+    "12 000 €"
+   ],
+   "a": 0,
+   "why": "Le loyer est une prestation continue : le produit est imposable au fur et à mesure de l'exécution (art. 38, 2 bis). Trois mois sur douze sont courus en N : 24 000 × 3/12 = 6 000 €. Le solde (18 000 €) est un produit constaté d'avance imposable en N+1. L'encaissement anticipé ne rend pas le produit imposable.",
+   "src": "CGI, art. 38, 2 bis",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise reçoit de la région une subvention d'équipement de 20 000 € pour financer une machine amortie sur 5 ans en linéaire. Que permet l'article 42 septies ?",
+   "opts": [
+    "Imposer la subvention par cinquièmes, au rythme des amortissements de la machine",
+    "Exonérer définitivement la subvention",
+    "Imposer la subvention en totalité l'année de la cession de la machine",
+    "Déduire la subvention du prix d'acquisition de la machine"
+   ],
+   "a": 0,
+   "why": "Sur option, les subventions d'équipement versées par l'État, les collectivités ou l'UE sont rapportées au résultat au même rythme que l'amortissement du bien financé : 4 000 € par an ici. Sans option, la subvention est imposable immédiatement. Elle n'est jamais définitivement exonérée et ne réduit pas la base amortissable.",
+   "src": "CGI, art. 42 septies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions une charge doit-elle remplir pour être déductible du résultat imposable ? (plusieurs réponses possibles)",
+   "opts": [
+    "Être engagée dans l'intérêt de l'exploitation",
+    "Être appuyée de justifications suffisantes",
+    "Se traduire par une diminution de l'actif net (ne pas être une immobilisation)",
+    "Avoir été payée avant la clôture de l'exercice",
+    "Être inférieure à 500 € HT"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "Les conditions de l'article 39, 1 : intérêt de l'entreprise, charge effective et justifiée, diminution de l'actif net, rattachement à l'exercice d'engagement (dette certaine). Le paiement n'est pas requis : les BIC suivent les dettes engagées, pas les décaissements. Le seuil de 500 € HT est une tolérance pour passer en charges du petit matériel, pas une condition de déduction.",
+   "src": "CGI, art. 39, 1 ; BOI-BIC-CHG-10-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez les dépenses suivantes supportées par une entreprise individuelle (BIC).",
+   "cats": [
+    "Charge déductible",
+    "Charge non déductible"
+   ],
+   "items": [
+    [
+     "Majoration de retard de paiement des cotisations URSSAF",
+     1
+    ],
+    [
+     "Taxe foncière du magasin",
+     0
+    ],
+    [
+     "Cadeau de fin d'année de 60 € à chaque bon client",
+     0
+    ],
+    [
+     "Location d'un bateau de plaisance pour recevoir des clients",
+     1
+    ],
+    [
+     "Rémunération de l'exploitant",
+     1
+    ],
+    [
+     "Cotisation foncière des entreprises",
+     0
+    ],
+    [
+     "Cotisations sociales obligatoires de l'exploitant",
+     0
+    ],
+    [
+     "Impôt sur le revenu de l'exploitant",
+     1
+    ]
+   ],
+   "why": "Les pénalités et majorations de toute nature sont exclues (art. 39, 2), comme les dépenses somptuaires (bateaux de plaisance, art. 39, 4), la rémunération de l'exploitant et son impôt personnel. Taxe foncière et CFE des biens affectés à l'exploitation, cadeaux d'un montant raisonnable dans l'intérêt de l'entreprise et cotisations sociales personnelles obligatoires sont déductibles.",
+   "src": "CGI, art. 39, 1, 2 et 4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Parmi ces dépenses, laquelle est une dépense somptuaire non déductible au sens de l'article 39, 4 du CGI ?",
+   "opts": [
+    "Les frais d'entretien d'un pavillon de chasse utilisé pour les relations publiques",
+    "Un repas d'affaires de 150 € avec un client",
+    "Le parrainage d'un club sportif local portant le nom de l'entreprise",
+    "La location d'un stand dans un salon professionnel"
+   ],
+   "a": 0,
+   "why": "L'article 39, 4 exclut expressément les dépenses de chasse et de pêche non professionnelle, les résidences de plaisance ou d'agrément, les yachts et bateaux de plaisance, quelle que soit la contrepartie commerciale. Les repas d'affaires raisonnables, le parrainage (art. 39, 1-7°) et les salons sont déductibles s'ils sont engagés dans l'intérêt de l'entreprise.",
+   "src": "CGI, art. 39, 4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise acquiert le 1er juillet N une machine-outil neuve pour 60 000 € HT, amortissable sur 5 ans, et opte pour l'amortissement dégressif (coefficient 1,75 pour une durée de 5 ans). Calculez la première annuité d'amortissement dégressif (exercice clos le 31 décembre N).",
+   "a": 10500,
+   "unit": "€",
+   "tol": 1,
+   "why": "Taux dégressif = taux linéaire × coefficient = 20 % × 1,75 = 35 %. La première annuité est calculée en mois à compter du premier jour du mois d'acquisition : 6 mois (juillet à décembre). Annuité = 60 000 × 35 % × 6/12 = 10 500 €. Un calcul en jours (184/365) est propre au linéaire ; un calcul en année pleine (21 000 €) oublie le prorata.",
+   "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 à 25",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Lequel de ces biens peut être amorti selon le mode dégressif ?",
+   "opts": [
+    "Un matériel informatique neuf d'une durée d'utilisation de 3 ans",
+    "Un véhicule de tourisme neuf affecté au dirigeant",
+    "Une machine industrielle achetée d'occasion",
+    "Du mobilier de bureau neuf"
+   ],
+   "a": 0,
+   "why": "Le dégressif (art. 39 A, ann. II art. 22) est réservé aux biens neufs d'une durée normale d'utilisation d'au moins 3 ans appartenant aux catégories énumérées : matériels et outillages industriels, matériel informatique, manutention, installations de sécurité, véhicules utilitaires, bâtiments industriels légers, etc. Sont exclus les biens d'occasion, les véhicules de tourisme et le mobilier.",
+   "src": "CGI, art. 39 A ; CGI, ann. II, art. 22",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise acquiert le 1er janvier N un véhicule de tourisme neuf pour 32 000 € TTC, émettant 120 g de CO2/km (norme WLTP), amorti en linéaire sur 5 ans. Le plafond fiscal de déduction est de 18 300 € pour cette tranche d'émission. Quel montant d'amortissement doit être réintégré sur le 2058-A au titre de l'exercice N (12 mois) ?",
+   "a": 2740,
+   "unit": "€",
+   "tol": 1,
+   "why": "Amortissement comptable : 32 000 / 5 = 6 400 €. Amortissement fiscalement déductible : 18 300 / 5 = 3 660 €. Réintégration : 6 400 − 3 660 = 2 740 €. Le plafond s'apprécie sur le prix TTC (la TVA n'est pas déductible sur les véhicules de tourisme). Entre 50 et 160 g/km, le plafond est de 18 300 € ; il tombe à 9 900 € au-delà de 160 g.",
+   "src": "CGI, art. 39, 4 ; BOI-BIC-AMT-20-40-50",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise achète en N un véhicule de tourisme neuf émettant 200 g de CO2/km (WLTP). Sur quelle fraction maximale du prix d'acquisition l'amortissement est-il déductible ?",
+   "opts": [
+    "9 900 €",
+    "18 300 €",
+    "20 300 €",
+    "30 000 €"
+   ],
+   "a": 0,
+   "why": "L'article 39, 4 fixe quatre plafonds selon les émissions de CO2 des véhicules acquis depuis 2021 (norme WLTP) : 30 000 € en dessous de 20 g, 20 300 € de 20 à 49 g, 18 300 € de 50 à 160 g et 9 900 € au-delà de 160 g. Un véhicule très émetteur (200 g) relève du plafond le plus bas.",
+   "src": "CGI, art. 39, 4",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise déficitaire n'a pas comptabilisé d'amortissement sur une machine en N, alors que l'annuité linéaire aurait été de 8 000 €. Quelle est la conséquence fiscale (art. 39 B) ?",
+   "opts": [
+    "La fraction irrégulièrement différée est définitivement perdue : le cumul des amortissements déduits ne peut être inférieur au cumul linéaire",
+    "L'annuité est simplement reportée et déduite en N+1",
+    "L'administration applique une majoration de 10 %",
+    "L'amortissement est déduit d'office par l'administration en N"
+   ],
+   "a": 0,
+   "why": "L'article 39 B impose qu'à la clôture de chaque exercice la somme des amortissements pratiqués soit au moins égale au cumul des amortissements linéaires. Les amortissements irrégulièrement différés (sous ce minimum) ne sont plus déductibles ultérieurement, même en période bénéficiaire. Seuls les amortissements régulièrement différés (excédent dégressif, au-dessus du minimum) sont récupérables.",
+   "src": "CGI, art. 39 B",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions une provision doit-elle remplir pour être fiscalement déductible ? (plusieurs réponses possibles)",
+   "opts": [
+    "Couvrir une perte ou une charge elle-même déductible",
+    "Être nettement précisée quant à sa nature et évaluée avec une approximation suffisante",
+    "Résulter d'événements en cours à la clôture rendant la perte probable",
+    "Être payée avant la clôture de l'exercice",
+    "Concerner exclusivement des créances clients"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article 39, 1-5° exige une perte ou charge déductible, nettement précisée, probable (et non simplement éventuelle) du fait d'événements en cours à la clôture, et effectivement comptabilisée. Une provision n'est par définition pas payée. Elle peut couvrir des stocks, litiges, garanties, titres, et pas seulement des créances.",
+   "src": "CGI, art. 39, 1-5°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise comptabilise une provision de 40 000 € pour indemnités de départ à la retraite de ses salariés, évaluée par un actuaire. Fiscalement :",
+   "opts": [
+    "Elle n'est pas déductible et doit être réintégrée",
+    "Elle est déductible, car probable et évaluée précisément",
+    "Elle est déductible à hauteur de 50 %",
+    "Elle est déductible si l'entreprise emploie moins de 50 salariés"
+   ],
+   "a": 0,
+   "why": "L'article 39, 1-5°, dernier alinéa, exclut expressément la déduction des provisions pour indemnités de départ à la retraite et engagements de retraite, même lorsqu'elles sont correctement évaluées et comptabilisées (le PCG les recommande). La réintégration se fait sur le 2058-A ; la charge sera déductible lors du versement effectif.",
+   "src": "CGI, art. 39, 1-5°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un client doit 12 000 € HT à l'entreprise ; il est placé en redressement judiciaire en décembre N et l'entreprise estime la perte à 50 %. Quelle provision est déductible en N ?",
+   "opts": [
+    "6 000 €, calculés sur le montant hors taxes",
+    "7 200 €, calculés sur le montant TTC",
+    "12 000 €, la totalité de la créance HT",
+    "Aucune, la perte n'étant pas certaine"
+   ],
+   "a": 0,
+   "why": "Le redressement judiciaire rend la perte probable : la provision est déductible pour la fraction estimée (art. 39, 1-5°). Elle se calcule sur le montant HT, car la TVA collectée pourra être récupérée en cas d'impayé définitif (art. 272). Une perte seulement éventuelle (simple retard) ne justifierait pas de provision, mais ici l'événement est précis.",
+   "src": "CGI, art. 39, 1-5° et 272",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une machine acquise 50 000 € a été amortie à hauteur de 30 000 € (VNC 20 000 €). Elle est cédée pour 60 000 € après 3 ans de détention. Quel est le montant de la plus-value à court terme ?",
+   "a": 30000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Plus-value = 60 000 − 20 000 = 40 000 €. Pour un bien amortissable détenu depuis au moins 2 ans, la plus-value est à court terme à hauteur des amortissements déduits (30 000 €) et à long terme au-delà (10 000 €) (art. 39 duodecies, 2-b). Répondre 40 000 € ignore la fraction à long terme ; répondre 10 000 € inverse les deux.",
+   "src": "CGI, art. 39 duodecies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un terrain acquis 100 000 € il y a 6 ans est vendu 130 000 €. Un camion acquis il y a 3 ans (VNC 15 000 €) est vendu 12 000 €. Comment se qualifient ces résultats ?",
+   "opts": [
+    "Plus-value à long terme de 30 000 € et moins-value à court terme de 3 000 €",
+    "Plus-value à court terme de 30 000 € et moins-value à long terme de 3 000 €",
+    "Plus-value à long terme de 30 000 € et moins-value à long terme de 3 000 €",
+    "Plus-value à court terme de 30 000 € et moins-value à court terme de 3 000 €"
+   ],
+   "a": 0,
+   "why": "Le terrain est non amortissable et détenu plus de 2 ans : la plus-value est à long terme. Le camion est amortissable : sa moins-value est toujours à court terme, quelle que soit la durée de détention (art. 39 duodecies, 4). Les deux ne se compensent pas entre elles : la MVCT se déduit du résultat ordinaire, la PVLT est taxée à 12,8 %.",
+   "src": "CGI, art. 39 duodecies",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise individuelle dégage en 2025 une plus-value nette à long terme de 30 000 € (aucun déficit ni moins-value à imputer). Quel est le montant de l'impôt sur le revenu dû sur cette plus-value, hors prélèvements sociaux ?",
+   "a": 3840,
+   "unit": "€",
+   "tol": 1,
+   "why": "La plus-value nette à long terme est imposée séparément au taux de 12,8 % (art. 39 quindecies) : 30 000 × 12,8 % = 3 840 €. S'y ajoutent 17,2 % de prélèvements sociaux (5 160 €), soit 30 % au total. Elle n'est pas soumise au barème progressif, contrairement à la plus-value à court terme.",
+   "src": "CGI, art. 39 quindecies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise individuelle réalise en N une plus-value nette à court terme de 30 000 € et opte pour l'étalement de l'article 39 quaterdecies. Quel montant est imposable au titre de N ?",
+   "a": 10000,
+   "unit": "€",
+   "tol": 1,
+   "why": "L'étalement se fait par fractions égales sur trois exercices : l'exercice de réalisation et les deux suivants. 30 000 / 3 = 10 000 € imposables en N, les 20 000 € restants étant déduits sur le 2058-A puis réintégrés par tiers en N+1 et N+2. L'étalement ne concerne pas les plus-values à long terme ni les sociétés soumises à l'IS.",
+   "src": "CGI, art. 39 quaterdecies, 1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Un commerçant (ventes) exerce depuis 8 ans. Sa moyenne de recettes HT des deux années précédant la cession est de 300 000 €. Il réalise une plus-value de 40 000 € sur la cession de son fonds. Exonération art. 151 septies : totale jusqu'à 250 000 € de recettes, dégressive jusqu'à 350 000 € selon la fraction (350 000 − recettes) / 100 000. Quel montant de plus-value reste imposable ?",
+   "a": 20000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Recettes comprises entre 250 000 et 350 000 € : exonération partielle. Fraction exonérée = (350 000 − 300 000) / 100 000 = 50 %. Plus-value exonérée : 40 000 × 50 % = 20 000 € ; plus-value imposable : 20 000 €. L'activité est exercée depuis plus de 5 ans, condition remplie. Pour une prestation de services les bornes seraient 90 000 et 126 000 €.",
+   "src": "CGI, art. 151 septies",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle condition de durée est exigée pour bénéficier de l'exonération des plus-values professionnelles de l'article 151 septies ?",
+   "opts": [
+    "L'activité doit avoir été exercée depuis au moins 5 ans",
+    "Le bien cédé doit avoir été détenu au moins 2 ans",
+    "L'exploitant doit partir à la retraite dans les 2 ans",
+    "L'entreprise doit exister depuis au moins 10 ans"
+   ],
+   "a": 0,
+   "why": "L'article 151 septies exige que l'activité ait été exercée pendant au moins cinq ans à la date de la cession (sauf pour les indemnités d'expropriation ou d'assurance). La durée de détention de 2 ans sert à distinguer court et long terme ; le départ à la retraite dans les 2 ans est la condition de l'article 151 septies A.",
+   "src": "CGI, art. 151 septies, II",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un artisan cède l'intégralité de son entreprise (activité exercée depuis 12 ans) pour une valeur de 450 000 €, dégageant une plus-value de 120 000 €. Au titre de l'article 238 quindecies :",
+   "opts": [
+    "La plus-value est totalement exonérée, la valeur des éléments transmis n'excédant pas 500 000 €",
+    "La plus-value est exonérée à 50 %",
+    "L'exonération ne s'applique pas, le prix dépassant 300 000 €",
+    "Seule la fraction à long terme est exonérée"
+   ],
+   "a": 0,
+   "why": "L'article 238 quindecies exonère les plus-values de transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins 5 ans lorsque la valeur des éléments transmis n'excède pas 500 000 € (exonération dégressive jusqu'à 1 000 000 €). Les plus-values immobilières restent toutefois exclues du dispositif.",
+   "src": "CGI, art. 238 quindecies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un commerçant exploitant personnellement son fonds dégage un déficit BIC de 25 000 € en 2025, alors que son conjoint perçoit 45 000 € de salaires. Comment ce déficit est-il traité ?",
+   "opts": [
+    "Il s'impute sur le revenu global du foyer en 2025, l'excédent éventuel étant reportable 6 ans",
+    "Il ne s'impute que sur les BIC des 6 années suivantes",
+    "Il est perdu, l'entreprise étant au micro-BIC",
+    "Il s'impute sur les salaires du conjoint sur option uniquement"
+   ],
+   "a": 0,
+   "why": "Le déficit d'une activité BIC exercée à titre professionnel s'impute sur le revenu global du foyer (art. 156, I), ici les salaires du conjoint, sans option ; l'excédent se reporte sur le revenu global des six années suivantes. Le cantonnement aux bénéfices de même nature ne concerne que les BIC non professionnels. Un commerçant qui dégage un déficit est nécessairement au réel.",
+   "src": "CGI, art. 156, I",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

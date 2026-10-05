@@ -1,0 +1,563 @@
+{
+ "id": "ue3-01",
+ "ue": "UE3",
+ "ordre": 1,
+ "title": "Sources du droit social et institutions",
+ "resume": "Savoir d'où viennent les règles du travail (international, loi, accords collectifs, usages, contrat), comment elles s'articulent depuis 2017 et qui les fait respecter (inspection du travail, prud'hommes, pôle social).",
+ "duree": "50 min",
+ "niveau": 1,
+ "lecon": [
+  {
+   "h": "Les sources internationales et européennes",
+   "html": "<p>Le droit du travail français est encadré par des normes supérieures à la loi.</p>\n<ul>\n<li><b>OIT</b> (Organisation internationale du travail, 1919) : elle adopte des <b>conventions</b> qui ne lient la France qu'une fois <b>ratifiées</b> (ex. convention n° 158 sur le licenciement, qui exige un « motif valable »). Le juge peut écarter une loi contraire à une convention ratifiée.</li>\n<li><b>Union européenne</b> : les <b>règlements</b> s'appliquent directement ; les <b>directives</b> fixent un objectif que l'État doit <b>transposer</b> (temps de travail 2003/88, transferts d'entreprise, égalité de traitement). La <b>CJUE</b> interprète ce droit ; c'est elle qui a imposé l'acquisition de congés payés pendant la maladie, d'où la loi du 22 avril 2024.</li>\n<li><b>Charte des droits fondamentaux de l'UE</b> et <b>Convention européenne des droits de l'homme</b> (Cour EDH) : liberté syndicale, vie privée du salarié.</li>\n</ul>\n<p>Piège classique : une directive non transposée ne crée pas d'obligation directe entre un salarié et un employeur privé ; elle permet surtout une interprétation conforme du droit national et une action contre l'État.</p>"
+  },
+  {
+   "h": "Les sources étatiques : Constitution, loi, règlement, Code du travail",
+   "html": "<p>La <b>Constitution</b> et le préambule de 1946 garantissent le droit au travail, la liberté syndicale, le <b>droit de grève</b> (« s'exerce dans le cadre des lois qui le réglementent »), le droit à la négociation collective et à la participation. Le Conseil constitutionnel contrôle les lois sociales.</p>\n<p>La <b>loi</b> fixe les principes fondamentaux du droit du travail (art. 34 de la Constitution) ; le <b>règlement</b> (décrets, arrêtés) les précise. Le <b>Code du travail</b> reflète cette répartition :</p>\n<ul>\n<li>partie <b>L</b> : articles législatifs (ex. <span class=\"mono\">L. 1234-1</span>) ;</li>\n<li>partie <b>R</b> : décrets en Conseil d'État (ex. <span class=\"mono\">R. 1234-2</span>, taux de l'indemnité de licenciement) ;</li>\n<li>partie <b>D</b> : décrets simples (ex. <span class=\"mono\">D. 3141-5</span>).</li>\n</ul>\n<p>Le premier chiffre indique la partie : 1 relations individuelles, 2 relations collectives, 3 durée du travail et salaire, 4 santé-sécurité, 5 emploi, 6 formation, 7 professions particulières, 8 contrôle. Les <b>ordonnances</b> (ex. ordonnances « Macron » du 22 septembre 2017) ont valeur de loi une fois ratifiées. La jurisprudence de la <b>chambre sociale de la Cour de cassation</b> complète ces textes.</p>"
+  },
+  {
+   "h": "Les conventions et accords collectifs",
+   "html": "<p>Une <b>convention collective</b> traite de l'ensemble des conditions d'emploi ; un <b>accord collectif</b> ne traite que de certains thèmes. Ils sont négociés entre syndicats <b>représentatifs</b> et employeurs au niveau interprofessionnel, de la <b>branche</b>, du groupe, de l'<b>entreprise</b> ou de l'établissement.</p>\n<ul>\n<li>Un accord de branche ne s'applique en principe qu'aux employeurs <b>adhérents</b> d'une organisation signataire. L'<b>extension</b> par arrêté du ministre du Travail le rend obligatoire pour <b>tous</b> les employeurs du champ professionnel et géographique ; l'<b>élargissement</b> étend un texte déjà étendu à un secteur ou une zone dépourvus d'accord.</li>\n<li>Depuis les ordonnances de 2017 (<span class=\"mono\">C. trav., art. L. 2253-1 à L. 2253-3</span>), trois <b>blocs</b> règlent l'articulation branche/entreprise :\n<ol>\n<li><b>bloc 1</b> (13 matières) : la branche prime, sauf accord d'entreprise offrant des <b>garanties au moins équivalentes</b> : minima hiérarchiques, classifications, égalité professionnelle, mutualisation formation et prévoyance, période d'essai, durée et renouvellements des CDD, CDI de chantier… ;</li>\n<li><b>bloc 2</b> (4 matières) : la branche prime seulement si elle le <b>stipule expressément</b> (pénibilité, handicap, délégués syndicaux, primes pour travaux dangereux) ;</li>\n<li><b>bloc 3</b> : toutes les autres matières (primes, 13e mois, majoration des heures supplémentaires…) : l'<b>accord d'entreprise prime</b>, même moins favorable.</li>\n</ol></li>\n</ul>\n<div class=\"note\"><b>À retenir.</b> Depuis 2017, l'accord d'entreprise est la norme de droit commun ; la branche n'est protégée que dans les blocs 1 et 2.</div>"
+  },
+  {
+   "h": "Usages, engagement unilatéral, règlement intérieur et contrat",
+   "html": "<p>L'<b>usage d'entreprise</b> est une pratique <b>constante</b>, <b>générale</b> (tout le personnel ou une catégorie) et <b>fixe</b> (mode de calcul stable), par exemple une prime de fin d'année versée depuis cinq ans. Il engage l'employeur. Il peut être <b>dénoncé</b> sans l'accord des salariés, mais à trois conditions cumulatives posées par la Cour de cassation (Cass. soc. 25 février 1988) : information du <b>CSE</b>, information <b>individuelle</b> de chaque salarié concerné et respect d'un <b>délai de prévenance suffisant</b>. L'<b>engagement unilatéral</b> (note de service promettant un avantage) suit le même régime.</p>\n<p>Le <b>règlement intérieur</b> (<span class=\"mono\">C. trav., art. L. 1311-2</span>) est obligatoire dans les entreprises d'au moins <b>50 salariés</b> (seuil atteint pendant 12 mois consécutifs). Son contenu est <b>limité</b> : hygiène et sécurité, discipline (nature et échelle des sanctions), droits de la défense, rappel des règles sur le harcèlement, protection des lanceurs d'alerte, éventuelle clause de neutralité. Il ne fixe pas les salaires et ne peut restreindre les libertés au-delà de ce que justifie la tâche. Procédure : avis du CSE, transmission à l'inspection du travail (qui peut exiger le retrait d'une clause), dépôt au greffe du conseil de prud'hommes, publicité ; entrée en vigueur <b>un mois</b> après ces formalités.</p>\n<p>Le <b>contrat de travail</b> ne peut qu'améliorer le sort du salarié par rapport à la loi et à la convention collective.</p>"
+  },
+  {
+   "h": "Hiérarchie des normes : ordre public et principe de faveur",
+   "html": "<p>En droit du travail, la pyramide classique est corrigée par le <b>principe de faveur</b> : une norme inférieure peut déroger à une norme supérieure si elle est <b>plus favorable</b> au salarié (<span class=\"mono\">C. trav., art. L. 2251-1</span>). On distingue trois niveaux :</p>\n<ul>\n<li>l'<b>ordre public absolu</b> : aucune dérogation, même favorable (compétence du conseil de prud'hommes, indexation des salaires sur le SMIC interdite) ;</li>\n<li>l'<b>ordre public social</b> : dérogation possible seulement dans un sens plus favorable (SMIC, durée légale, congés payés légaux) ;</li>\n<li>les <b>dispositions supplétives</b> : la loi ne s'applique qu'à défaut d'accord collectif, qui peut être moins favorable (majoration des heures supplémentaires jusqu'à 10 %, contingent, modalités de prise des congés).</li>\n</ul>\n<p>La comparaison se fait <b>avantage par avantage</b>, pour l'ensemble des salariés et non en additionnant des éléments de nature différente. Entre le contrat et l'accord collectif, les clauses contractuelles plus favorables l'emportent ; une convention collective ne peut pas réduire les droits nés du contrat sans l'accord du salarié, sauf <b>accord de performance collective</b> (<span class=\"mono\">L. 2254-2</span>) dont les stipulations se substituent au contrat, le refus du salarié ouvrant un licenciement pour motif spécifique.</p>"
+  },
+  {
+   "h": "Les institutions administratives : inspection du travail, DREETS, médecine du travail",
+   "html": "<p>L'<b>inspection du travail</b> (<span class=\"mono\">C. trav., art. L. 8112-1 et s.</span>) contrôle l'application du droit du travail. Ses agents disposent d'un <b>droit d'entrée</b> dans les locaux de jour comme de nuit sans prévenir, d'un droit de <b>communication</b> des documents (registre du personnel, bulletins de paie, décomptes d'heures), d'un droit de <b>prélèvement</b>. Ils peuvent adresser des <b>observations</b>, une <b>mise en demeure</b>, dresser un <b>procès-verbal</b> transmis au procureur, ordonner l'<b>arrêt temporaire de travaux</b> en cas de danger grave et imminent, saisir le juge des référés et proposer des <b>amendes administratives</b> prononcées par la DREETS (durée du travail, SMIC, hygiène). Ils <b>autorisent</b> le licenciement des salariés protégés et des apprentis. Faire <b>obstacle</b> à leurs fonctions est un délit. Ils sont indépendants (convention OIT n° 81) et tenus au secret des plaintes.</p>\n<p>La <b>DREETS</b> (direction régionale de l'économie, de l'emploi, du travail et des solidarités) homologue les ruptures conventionnelles, valide ou homologue les PSE, reçoit les dépôts d'accords et le règlement intérieur.</p>\n<p>La <b>médecine du travail</b> est assurée par les <b>services de prévention et de santé au travail</b> (SPST) : rôle exclusivement préventif, <b>visite d'information et de prévention</b> dans les 3 mois de l'embauche (renouvelée au plus tous les 5 ans), <b>suivi individuel renforcé</b> pour les postes à risque, avis d'inaptitude, tiers-temps en entreprise.</p>"
+  },
+  {
+   "h": "Les juridictions, les délais de prescription et les sanctions",
+   "html": "<p>Le <b>conseil de prud'hommes</b> (CPH, <span class=\"mono\">C. trav., art. L. 1411-1</span>) juge les <b>litiges individuels</b> nés du contrat de travail entre employeur et salarié. Il est <b>paritaire</b> (conseillers employeurs et salariés en nombre égal, désignés depuis 2017 selon l'audience des organisations) et compte <b>5 sections</b> : encadrement, industrie, commerce, agriculture, activités diverses. Procédure : <b>bureau de conciliation et d'orientation</b> (BCO), puis <b>bureau de jugement</b> ; en cas de partage des voix, <b>formation de départage</b> présidée par un juge du tribunal judiciaire ; <b>référé</b> pour l'urgence. Appel devant la cour d'appel si la demande dépasse <span class=\"mono\">5 000 €</span> (taux de ressort), puis pourvoi en cassation.</p>\n<p>Le <b>tribunal judiciaire</b> juge les litiges collectifs et, par son <b>pôle social</b>, le contentieux de la sécurité sociale ; le <b>tribunal administratif</b> contrôle les décisions de l'administration (protégés, PSE) ; le <b>tribunal correctionnel</b> juge les délits (entrave, travail dissimulé).</p>\n<p><b>Prescriptions</b> (<span class=\"mono\">L. 1471-1</span>, <span class=\"mono\">L. 3245-1</span>) : <b>12 mois</b> pour contester la <b>rupture</b> du contrat à compter de sa notification ; <b>2 ans</b> pour une action sur l'<b>exécution</b> du contrat ; <b>3 ans</b> pour les <b>salaires</b> (les trois années précédant la demande ou, si le contrat est rompu, la rupture) ; <b>5 ans</b> pour la discrimination et le harcèlement ; 12 mois pour contester une rupture conventionnelle homologuée.</p>\n<p><b>Sanctions</b> : <b>civiles</b> (nullité, dommages-intérêts, rappel de salaire), <b>pénales</b> (contraventions, délits), <b>administratives</b> (amendes DREETS).</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. trav., art. L. 2251-1",
+   "note": "Principe de faveur : la convention peut comporter des stipulations plus favorables que la loi"
+  },
+  {
+   "ref": "C. trav., art. L. 2253-1 à L. 2253-3",
+   "note": "Articulation branche / entreprise en trois blocs (ordonnance n° 2017-1385)"
+  },
+  {
+   "ref": "C. trav., art. L. 2261-15 et L. 2261-17",
+   "note": "Extension et élargissement des conventions de branche"
+  },
+  {
+   "ref": "C. trav., art. L. 1311-2 et L. 1321-1 à L. 1321-3",
+   "note": "Règlement intérieur : seuil de 50 salariés, contenu obligatoire et clauses interdites"
+  },
+  {
+   "ref": "Cass. soc., 25 février 1988, n° 85-40.821",
+   "note": "Dénonciation d'un usage : information du comité, information individuelle, délai de prévenance"
+  },
+  {
+   "ref": "C. trav., art. L. 1471-1 et L. 3245-1",
+   "note": "Prescriptions : 12 mois (rupture), 2 ans (exécution), 3 ans (salaires)"
+  },
+  {
+   "ref": "C. trav., art. L. 1411-1 et R. 1461-1",
+   "note": "Compétence du conseil de prud'hommes ; taux de ressort de 5 000 €"
+  },
+  {
+   "ref": "C. trav., art. L. 8112-1 et s., L. 8113-1 et s.",
+   "note": "Pouvoirs de l'inspection du travail"
+  },
+  {
+   "ref": "C. trav., art. L. 4624-1",
+   "note": "Suivi médical des salariés : visite d'information et de prévention, suivi renforcé"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., partie législative et réglementaire",
+   "q": "Dans le Code du travail, un article numéroté « R. 1234-2 » est :",
+   "opts": [
+    "Un article de loi votée par le Parlement",
+    "Un article issu d'un décret en Conseil d'État",
+    "Un article issu d'un décret simple",
+    "Une recommandation sans valeur contraignante"
+   ],
+   "a": 1,
+   "why": "La lettre indique la nature du texte : L pour la loi, R pour les décrets en Conseil d'État, D pour les décrets simples. R. 1234-2 (taux de l'indemnité légale de licenciement) est donc réglementaire, mais parfaitement contraignant : une partie R n'est pas une « recommandation ». Le chiffre 1 renvoie à la première partie (relations individuelles de travail)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2251-1",
+   "q": "Le principe de faveur signifie que :",
+   "opts": [
+    "L'employeur choisit la norme qu'il préfère appliquer",
+    "Une norme inférieure peut déroger à une norme supérieure si elle est plus favorable au salarié",
+    "La loi prime toujours sur la convention collective",
+    "Le contrat de travail ne peut jamais déroger à la convention collective"
+   ],
+   "a": 1,
+   "why": "L'article L. 2251-1 autorise une convention collective à contenir des stipulations plus favorables que la loi ; de même, le contrat peut être plus favorable que la convention. La loi ne prime donc pas « toujours » (option C) et le contrat peut déroger à la convention dans un sens favorable (option D). Le choix n'appartient pas à l'employeur mais résulte de la comparaison objective des normes."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "Convention OIT n° 158 ; Constitution, art. 55",
+   "q": "Une convention de l'Organisation internationale du travail s'impose en France :",
+   "opts": [
+    "Dès son adoption par la conférence de l'OIT",
+    "Uniquement si elle a été ratifiée par la France",
+    "Jamais, l'OIT n'émet que des recommandations",
+    "Seulement si elle est reprise dans une directive européenne"
+   ],
+   "a": 1,
+   "why": "Les conventions de l'OIT sont des traités internationaux : elles ne lient un État qu'après ratification (art. 55 de la Constitution pour leur autorité supérieure à la loi). L'adoption par la conférence ne suffit pas. L'OIT adopte aussi des recommandations, mais ses conventions sont bien des normes contraignantes une fois ratifiées (ex. convention n° 158 sur le licenciement, invoquée par la Cour de cassation)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "TFUE, art. 288",
+   "q": "Une directive de l'Union européenne en matière sociale :",
+   "opts": [
+    "S'applique directement dans tous ses éléments comme une loi française",
+    "Fixe un objectif que chaque État doit transposer dans son droit national",
+    "N'a aucune valeur juridique tant que la CJUE ne l'a pas validée",
+    "Ne concerne que les fonctionnaires des institutions européennes"
+   ],
+   "a": 1,
+   "why": "La directive lie l'État quant au résultat à atteindre et laisse le choix des moyens ; elle doit être transposée (loi, décret). C'est le règlement européen qui est directement applicable (option A). La CJUE interprète les directives mais ne les « valide » pas préalablement. Exemple : la directive 2003/88 sur le temps de travail, dont l'interprétation par la CJUE a conduit à la loi du 22 avril 2024 sur les congés payés pendant la maladie."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1311-2",
+   "q": "L'établissement d'un règlement intérieur est obligatoire dans les entreprises employant habituellement au moins :",
+   "opts": [
+    "11 salariés",
+    "20 salariés",
+    "50 salariés",
+    "250 salariés"
+   ],
+   "a": 2,
+   "why": "Depuis la loi PACTE (seuil applicable à compter de 2020), le règlement intérieur est obligatoire à partir de 50 salariés, le seuil devant être atteint pendant 12 mois consécutifs (art. L. 1311-2). Le seuil de 20 est l'ancien seuil, piège fréquent dans les manuels antérieurs. 11 est le seuil du CSE, pas du règlement intérieur."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1321-1 et L. 1321-3",
+   "q": "Plusieurs réponses possibles. Quels éléments peuvent ou doivent figurer dans le règlement intérieur ?",
+   "opts": [
+    "Les règles d'hygiène et de sécurité",
+    "La nature et l'échelle des sanctions disciplinaires",
+    "La grille des salaires par catégorie",
+    "Le rappel des dispositions relatives au harcèlement moral et sexuel",
+    "Les modalités de calcul de la participation aux résultats"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "Le contenu du règlement intérieur est limité par l'article L. 1321-1 : hygiène et sécurité, discipline (nature et échelle des sanctions), droits de la défense, rappel des règles sur le harcèlement et les agissements sexistes, protection des lanceurs d'alerte. Les salaires et la participation ne relèvent pas du règlement intérieur mais du contrat, de la convention collective ou d'un accord de participation ; une clause salariale serait d'ailleurs inopposable."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1321-4",
+   "q": "Un règlement intérieur déposé au greffe du conseil de prud'hommes et affiché le 1er mars entre en vigueur :",
+   "opts": [
+    "Le jour même du dépôt",
+    "Au plus tôt le 1er avril, un mois après l'accomplissement des formalités",
+    "Après homologation par la DREETS",
+    "Après ratification par référendum du personnel"
+   ],
+   "a": 1,
+   "why": "L'article L. 1321-4 fixe la date d'entrée en vigueur au plus tôt un mois après l'accomplissement des formalités de dépôt et de publicité (ici le 1er avril). Le texte doit aussi avoir été soumis pour avis au CSE et transmis à l'inspection du travail, mais celle-ci ne l'« homologue » pas : elle peut seulement exiger le retrait ou la modification de clauses illicites, à tout moment. Il n'existe aucun référendum du personnel."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "Cass. soc., 25 février 1988, n° 85-40.821",
+   "q": "Depuis six ans, la société Verlan verse à tous ses salariés une prime de 300 € chaque mois de décembre, sans aucun texte. Pour supprimer cette prime, l'employeur doit :",
+   "opts": [
+    "Obtenir l'accord écrit de chaque salarié",
+    "Dénoncer l'usage après information du CSE et de chaque salarié, avec un délai de prévenance suffisant",
+    "Simplement cesser le versement, l'usage n'ayant aucune valeur juridique",
+    "Saisir le conseil de prud'hommes d'une demande d'autorisation"
+   ],
+   "a": 1,
+   "why": "La prime est constante (six ans), générale (tous les salariés) et fixe (300 €) : c'est un usage, qui engage l'employeur. La jurisprudence constante depuis 1988 permet sa dénonciation unilatérale, sans accord des salariés ni autorisation du juge, mais sous trois conditions cumulatives : informer les représentants du personnel, informer individuellement chaque salarié et respecter un préavis suffisant pour permettre une négociation. Cesser de payer sans formalités exposerait à un rappel de prime."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2261-15",
+   "q": "L'extension d'une convention collective de branche par arrêté ministériel a pour effet de :",
+   "opts": [
+    "L'appliquer à toutes les entreprises de France, quel que soit leur secteur",
+    "La rendre obligatoire pour tous les employeurs entrant dans son champ professionnel et territorial, même non adhérents à une organisation signataire",
+    "La transformer en loi votée par le Parlement",
+    "L'appliquer à un secteur voisin dépourvu de convention"
+   ],
+   "a": 1,
+   "why": "Sans extension, une convention ne lie que les employeurs adhérents aux organisations patronales signataires. L'arrêté d'extension (L. 2261-15) l'impose à tous les employeurs du champ d'application, adhérents ou non. L'option D décrit l'élargissement (L. 2261-17), qui étend une convention déjà étendue à un secteur ou une zone où aucun accord n'a pu être conclu. L'extension ne change pas la nature conventionnelle du texte."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2253-3",
+   "q": "Depuis les ordonnances de 2017, un accord d'entreprise prévoit une prime d'ancienneté inférieure à celle fixée par la convention de branche (la branche n'a rien verrouillé sur ce point). Quel texte s'applique ?",
+   "opts": [
+    "La convention de branche, toujours plus favorable",
+    "L'accord d'entreprise, car la prime d'ancienneté relève du bloc 3 où il prime",
+    "La loi, qui fixe la prime d'ancienneté minimale",
+    "Le texte le plus favorable choisi par chaque salarié"
+   ],
+   "a": 1,
+   "why": "Les primes (hors salaires minima hiérarchiques et primes pour travaux dangereux) ne figurent ni dans le bloc 1 (L. 2253-1) ni dans le bloc 2 (L. 2253-2). Elles relèvent donc du bloc 3 (L. 2253-3) : l'accord d'entreprise prime sur la branche, qu'il soit plus ou moins favorable. La loi ne prévoit aucune prime d'ancienneté minimale. Le principe de faveur ne joue plus dans cette articulation depuis 2017, ce qui constitue le piège classique."
+  },
+  {
+   "type": "multi",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2253-1",
+   "q": "Plusieurs réponses possibles. Quelles matières relèvent du bloc 1, dans lequel la convention de branche prime sur l'accord d'entreprise (sauf garanties au moins équivalentes) ?",
+   "opts": [
+    "Les salaires minima hiérarchiques",
+    "Les classifications professionnelles",
+    "La durée maximale et le nombre de renouvellements des CDD",
+    "Le taux de majoration des heures supplémentaires",
+    "Le montant du 13e mois"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article L. 2253-1 énumère 13 matières de primauté de la branche : salaires minima hiérarchiques, classifications, mutualisation des fonds de formation et de prévoyance, égalité professionnelle, période d'essai, durée et renouvellement des CDD et de l'intérim, CDI de chantier, etc. La majoration des heures supplémentaires et les primes comme le 13e mois relèvent du bloc 3 : l'accord d'entreprise peut y être moins favorable (la majoration peut descendre jusqu'à 10 %)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2253-2",
+   "q": "Le bloc 2 de l'articulation branche/entreprise (prévention de la pénibilité, insertion des travailleurs handicapés, effectif à partir duquel les délégués syndicaux peuvent être désignés, primes pour travaux dangereux ou insalubres) obéit à la règle suivante :",
+   "opts": [
+    "La branche prime toujours, sans possibilité de dérogation",
+    "La branche prime seulement si l'accord de branche le stipule expressément",
+    "L'accord d'entreprise prime toujours",
+    "La loi interdit toute négociation sur ces thèmes"
+   ],
+   "a": 1,
+   "why": "Dans ces quatre matières (L. 2253-2), la branche peut « verrouiller » : si l'accord de branche le prévoit expressément, l'accord d'entreprise ne peut déroger qu'en offrant des garanties au moins équivalentes. Sans clause de verrouillage, on retombe dans le bloc 3 et l'accord d'entreprise prime. Ce bloc se distingue du bloc 1 où la primauté de la branche est automatique."
+  },
+  {
+   "type": "tri",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2253-1 à L. 2253-3",
+   "q": "Classez chaque thème de négociation dans le bloc d'articulation branche/entreprise auquel il appartient.",
+   "cats": [
+    "Bloc 1 : primauté de la branche",
+    "Bloc 2 : primauté de la branche si elle le stipule",
+    "Bloc 3 : primauté de l'accord d'entreprise"
+   ],
+   "items": [
+    [
+     "Salaires minima hiérarchiques",
+     0
+    ],
+    [
+     "Prévention des effets de l'exposition aux facteurs de risques professionnels (pénibilité)",
+     1
+    ],
+    [
+     "Taux de majoration des heures supplémentaires",
+     2
+    ],
+    [
+     "Classifications",
+     0
+    ],
+    [
+     "Insertion professionnelle des travailleurs handicapés",
+     1
+    ],
+    [
+     "Prime de 13e mois",
+     2
+    ],
+    [
+     "Durée de la période d'essai",
+     0
+    ],
+    [
+     "Primes pour travaux dangereux ou insalubres",
+     1
+    ]
+   ],
+   "why": "Bloc 1 (L. 2253-1) : minima hiérarchiques, classifications, période d'essai, CDD, égalité, mutualisation. Bloc 2 (L. 2253-2) : pénibilité, handicap, délégués syndicaux, primes pour travaux dangereux. Tout le reste, dont la majoration des heures supplémentaires et les primes diverses, relève du bloc 3 (L. 2253-3) où l'accord d'entreprise prime même s'il est moins favorable."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2254-2",
+   "q": "Un accord de performance collective réduit la rémunération prévue par les contrats de travail. Un salarié refuse par écrit la modification. Que se passe-t-il ?",
+   "opts": [
+    "Son contrat reste inchangé, la clause contractuelle plus favorable l'emportant",
+    "L'employeur peut le licencier pour un motif spécifique constituant une cause réelle et sérieuse",
+    "L'accord est annulé pour l'ensemble du personnel",
+    "Le salarié est réputé démissionnaire"
+   ],
+   "a": 1,
+   "why": "L'accord de performance collective (L. 2254-2) est l'exception au principe selon lequel l'accord collectif ne peut pas modifier le contrat : ses stipulations se substituent de plein droit aux clauses contraires du contrat. Le salarié dispose d'un mois pour refuser ; l'employeur a alors deux mois pour engager un licenciement « sui generis » reposant sur un motif spécifique qui constitue une cause réelle et sérieuse, avec indemnités de licenciement et abondement du CPF. Ni démission ni annulation de l'accord."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1411-1",
+   "q": "Un salarié conteste le montant de son indemnité de licenciement. La juridiction compétente est :",
+   "opts": [
+    "Le tribunal de commerce",
+    "Le conseil de prud'hommes",
+    "Le tribunal administratif",
+    "Le pôle social du tribunal judiciaire"
+   ],
+   "a": 1,
+   "why": "Le conseil de prud'hommes règle les différends individuels nés à l'occasion du contrat de travail entre employeur et salarié (L. 1411-1) : c'est une compétence d'ordre public absolu. Le pôle social du tribunal judiciaire traite du contentieux de la sécurité sociale (cotisations, prestations), le tribunal administratif des décisions de l'administration (autorisation de licencier un salarié protégé, PSE) et le tribunal de commerce des litiges entre commerçants."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1421-1 et R. 1423-1",
+   "q": "Le conseil de prud'hommes se caractérise par :",
+   "opts": [
+    "Une composition paritaire de conseillers employeurs et salariés, répartie en cinq sections",
+    "Un juge professionnel unique statuant seul",
+    "Trois magistrats de carrière spécialisés en droit du travail",
+    "Des jurés tirés au sort sur les listes électorales"
+   ],
+   "a": 0,
+   "why": "Le CPH est une juridiction paritaire : autant de conseillers employeurs que de conseillers salariés, désignés depuis 2017 (et non plus élus) sur proposition des organisations en fonction de leur audience. Il comprend cinq sections : encadrement, industrie, commerce et services commerciaux, agriculture, activités diverses. Un juge professionnel du tribunal judiciaire n'intervient qu'en formation de départage, en cas de partage des voix."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1454-1 et s.",
+   "q": "Devant le conseil de prud'hommes, la première étape de la procédure ordinaire est :",
+   "opts": [
+    "L'audience du bureau de jugement",
+    "La formation de départage présidée par un juge du tribunal judiciaire",
+    "Le bureau de conciliation et d'orientation",
+    "L'audience de référé"
+   ],
+   "a": 2,
+   "why": "Sauf exceptions (requalification de CDD, prise d'acte), l'affaire passe d'abord devant le bureau de conciliation et d'orientation (BCO), composé d'un conseiller employeur et d'un conseiller salarié, qui tente de concilier les parties, met l'affaire en état et l'oriente vers le bureau de jugement. La formation de départage n'intervient qu'en cas de partage des voix. Le référé est une procédure d'urgence distincte."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. R. 1462-1 et D. 1462-3",
+   "q": "Un salarié obtient 4 200 € de rappel de primes devant le conseil de prud'hommes ; sa demande totale était de 4 800 €. L'employeur peut-il faire appel ?",
+   "opts": [
+    "Oui, l'appel est toujours possible en matière prud'homale",
+    "Non, la demande n'excède pas le taux de ressort de 5 000 € : seul un pourvoi en cassation est ouvert",
+    "Oui, mais seulement devant le tribunal judiciaire",
+    "Non, les jugements prud'homaux sont insusceptibles de recours"
+   ],
+   "a": 1,
+   "why": "Le taux de ressort du conseil de prud'hommes est fixé à 5 000 € (D. 1462-3). Au-dessous, le CPH statue en premier et dernier ressort : pas d'appel, mais un pourvoi en cassation reste possible. Au-delà de 5 000 € (ou pour les demandes indéterminées), l'appel est porté devant la chambre sociale de la cour d'appel, jamais devant le tribunal judiciaire."
+  },
+  {
+   "type": "multi",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 8113-1 et s.",
+   "q": "Plusieurs réponses possibles. Quels pouvoirs l'inspecteur du travail détient-il ?",
+   "opts": [
+    "Pénétrer dans l'entreprise à toute heure sans avertissement préalable",
+    "Prononcer lui-même le licenciement d'un salarié fautif",
+    "Dresser un procès-verbal transmis au procureur de la République",
+    "Ordonner l'arrêt temporaire de travaux en cas de danger grave et imminent",
+    "Condamner l'employeur à une peine d'emprisonnement"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ],
+   "why": "L'inspecteur dispose d'un droit d'entrée de jour et de nuit sans avertissement (L. 8113-1), du droit de dresser procès-verbal (L. 8113-7), de mise en demeure, d'arrêt de travaux (L. 4731-1) et de proposer des amendes administratives à la DREETS. Il ne prononce jamais de sanction pénale (compétence du tribunal correctionnel) et ne licencie pas : il autorise ou refuse le licenciement des salariés protégés, décision prise par l'employeur."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 4624-1 et R. 4624-10",
+   "q": "Un salarié embauché sur un poste sans risque particulier bénéficie d'une visite d'information et de prévention :",
+   "opts": [
+    "Avant l'embauche obligatoirement, sous forme d'examen médical d'aptitude",
+    "Dans les trois mois suivant la prise de poste, renouvelée au plus tous les cinq ans",
+    "Uniquement s'il en fait la demande",
+    "Tous les ans, sans exception"
+   ],
+   "a": 1,
+   "why": "Depuis 2017, la visite médicale d'embauche systématique a été remplacée par la visite d'information et de prévention (VIP), réalisée dans les trois mois suivant la prise de poste, avec une périodicité maximale de cinq ans (R. 4624-10 et R. 4624-16). L'examen médical d'aptitude préalable à l'embauche subsiste seulement pour les postes à risque relevant du suivi individuel renforcé (renouvelé au plus tous les quatre ans)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1471-1, al. 2",
+   "q": "Un salarié licencié le 10 mars 2025 (notification reçue ce jour) souhaite contester la cause de son licenciement. Jusqu'à quand peut-il saisir le conseil de prud'hommes ?",
+   "opts": [
+    "Jusqu'au 10 mars 2026",
+    "Jusqu'au 10 mars 2027",
+    "Jusqu'au 10 mars 2028",
+    "Jusqu'au 10 mars 2030"
+   ],
+   "a": 0,
+   "why": "L'action portant sur la rupture du contrat se prescrit par 12 mois à compter de la notification de la rupture (L. 1471-1, al. 2, issu de l'ordonnance de 2017). Les deux ans concernent l'exécution du contrat, les trois ans les salaires et les cinq ans la discrimination ou le harcèlement. Passé le 10 mars 2026, l'action est irrecevable."
+  },
+  {
+   "type": "qcm",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1134-5",
+   "q": "Une salariée estime avoir subi une discrimination salariale liée à son sexe pendant toute sa carrière. Le délai de prescription de son action est de :",
+   "opts": [
+    "12 mois",
+    "2 ans",
+    "3 ans",
+    "5 ans à compter de la révélation de la discrimination"
+   ],
+   "a": 3,
+   "why": "L'action en réparation d'une discrimination se prescrit par cinq ans à compter de la révélation de la discrimination (L. 1134-5), et les dommages-intérêts réparent l'entier préjudice pendant toute sa durée. Les délais de 12 mois (rupture), 2 ans (exécution) et 3 ans (salaires) ne s'appliquent pas aux actions fondées sur une discrimination ou un harcèlement, pour lesquelles le législateur a maintenu le délai civil de droit commun."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3245-1",
+   "q": "Depuis le 1er janvier 2020, Léa perçoit chaque mois 120 € de moins que le minimum conventionnel applicable. Toujours en poste, elle saisit le conseil de prud'hommes le 1er janvier 2025. Quel montant total de rappel de salaire peut-elle obtenir au maximum (en €, arrondi à l'euro) ?",
+   "a": 4320,
+   "unit": "€",
+   "tol": 1,
+   "why": "L'action en paiement du salaire se prescrit par trois ans (L. 3245-1) et la demande peut porter sur les sommes dues au titre des trois dernières années à compter de la saisine : du 1er janvier 2022 au 31 décembre 2024, soit 36 mois. Rappel = 36 × 120 = 4 320 €. Les 24 mois de 2020-2021 sont prescrits. Avec 5 ans (règle civile) on trouverait 7 200 €, mais le Code du travail a réduit le délai à 3 ans depuis 2013."
+  },
+  {
+   "type": "calc",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1471-1",
+   "q": "Un salarié a reçu la notification de son licenciement le 15 février 2025. Il consulte un avocat le 15 septembre 2025. De combien de mois entiers dispose-t-il encore pour saisir le conseil de prud'hommes afin de contester son licenciement ?",
+   "a": 5,
+   "unit": "mois",
+   "tol": 0.5,
+   "why": "Le délai pour contester la rupture est de 12 mois à compter de la notification (L. 1471-1, al. 2), soit jusqu'au 15 février 2026. Du 15 septembre 2025 au 15 février 2026, il reste 5 mois. Si l'on appliquait à tort le délai de 2 ans de l'exécution du contrat, on trouverait 17 mois ; c'est l'erreur classique depuis la réforme de 2017 qui a aligné tous les cas de rupture sur 12 mois."
+  },
+  {
+   "type": "calc",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 3245-1",
+   "q": "Marc a été licencié le 30 juin 2024 ; son employeur ne lui a jamais payé une prime mensuelle conventionnelle de 80 € due depuis son embauche le 1er janvier 2019. Il saisit le conseil de prud'hommes le 1er avril 2025. Quel rappel total peut-il obtenir au maximum (en €) ?",
+   "a": 2880,
+   "unit": "€",
+   "tol": 1,
+   "why": "Lorsque le contrat est rompu, la demande peut porter sur les sommes dues au titre des trois années précédant la rupture (L. 3245-1) : du 1er juillet 2021 au 30 juin 2024, soit 36 mois × 80 € = 2 880 €. La saisine intervient moins de trois ans après la dernière échéance (juin 2024), l'action n'est donc pas prescrite. Compter à partir de la saisine (avril 2022-mars 2025) serait faux puisque le contrat a cessé en juin 2024."
+  },
+  {
+   "type": "tri",
+   "niveau": 2,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 1411-1 ; CSS, art. L. 142-1 ; C. trav., art. L. 2411-1",
+   "q": "Associez chaque litige à la juridiction compétente en première instance.",
+   "cats": [
+    "Conseil de prud'hommes",
+    "Tribunal judiciaire (pôle social)",
+    "Tribunal administratif",
+    "Tribunal correctionnel"
+   ],
+   "items": [
+    [
+     "Contestation d'un licenciement par un salarié",
+     0
+    ],
+    [
+     "Redressement de cotisations URSSAF contesté par l'employeur",
+     1
+    ],
+    [
+     "Recours contre le refus de l'inspecteur du travail d'autoriser le licenciement d'un délégué syndical",
+     2
+    ],
+    [
+     "Poursuites pour délit d'entrave au fonctionnement du CSE",
+     3
+    ],
+    [
+     "Demande de rappel d'heures supplémentaires",
+     0
+    ],
+    [
+     "Recours contre la décision de validation d'un PSE par la DREETS",
+     2
+    ],
+    [
+     "Refus de reconnaissance d'un accident du travail par la CPAM",
+     1
+    ]
+   ],
+   "why": "Le CPH connaît des litiges individuels entre employeur et salarié ; le pôle social du tribunal judiciaire du contentieux général de la sécurité sociale (cotisations, prestations, AT/MP) ; le tribunal administratif des décisions de l'administration du travail (autorisations de licenciement, PSE) ; le tribunal correctionnel des délits (entrave, travail dissimulé)."
+  },
+  {
+   "type": "qcm",
+   "niveau": 3,
+   "fiab": "stable",
+   "src": "Cass. soc., 17 juillet 1996 ; C. trav., art. L. 2251-1",
+   "q": "Pour déterminer si un accord collectif est plus favorable que la loi, la comparaison s'effectue :",
+   "opts": [
+    "Globalement, en additionnant tous les avantages de l'accord",
+    "Avantage par avantage, pour l'ensemble des salariés concernés",
+    "Salarié par salarié, selon sa situation personnelle",
+    "En ne retenant que la rémunération totale"
+   ],
+   "a": 1,
+   "why": "La Cour de cassation compare les avantages ayant le même objet ou la même cause, un par un, et apprécie le caractère plus favorable pour la collectivité des salariés, non pour chaque individu. Une compensation globale entre avantages de nature différente (par exemple moins de congés contre plus de salaire) n'est pas admise dans ce cadre. Cette méthode s'applique au conflit loi/convention ; entre branche et entreprise, les blocs de 2017 ont remplacé le principe de faveur."
+  },
+  {
+   "type": "qcm",
+   "niveau": 1,
+   "fiab": "stable",
+   "src": "C. trav., art. L. 2263-1 ; L. 8224-1",
+   "q": "Le non-respect d'une règle de droit du travail peut entraîner une amende administrative prononcée par la DREETS sur rapport de l'inspection du travail. Il s'agit d'une sanction :",
+   "opts": [
+    "Civile",
+    "Pénale",
+    "Administrative",
+    "Disciplinaire"
+   ],
+   "a": 2,
+   "why": "Depuis 2016, certains manquements (durée du travail, repos, SMIC, installations sanitaires) peuvent être sanctionnés par une amende administrative prononcée par le directeur de la DREETS : c'est une sanction administrative, distincte des sanctions pénales (prononcées par le juge correctionnel : entrave, travail dissimulé) et des sanctions civiles (nullité, dommages-intérêts prononcés par le CPH). La sanction disciplinaire est celle que l'employeur inflige au salarié."
+  }
+ ]
+}

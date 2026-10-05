@@ -1,0 +1,465 @@
+{
+ "id": "ue6-05",
+ "ue": "UE6",
+ "ordre": 5,
+ "title": "Financement : modes, coût du capital et plan de financement",
+ "resume": "Connaître les modes de financement, calculer le coût des capitaux propres (MEDAF, Gordon-Shapiro), de la dette et le CMPC, construire un plan de financement et choisir un financement.",
+ "duree": "75 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Panorama des modes de financement",
+   "html": "<p>Une entreprise finance ses investissements par trois grandes familles de ressources :</p>\n<ul>\n<li><b>Fonds propres</b> : autofinancement (CAF − dividendes), augmentation de capital en numéraire, subventions d'investissement (compte 131, reprises au résultat via 747), cessions d'actifs.</li>\n<li><b>Quasi-fonds propres</b> : ressources à mi-chemin entre capital et dette : comptes courants d'associés bloqués, obligations convertibles ou remboursables en actions, prêts participatifs, titres subordonnés. Les banques les assimilent souvent aux fonds propres pour apprécier l'autonomie financière.</li>\n<li><b>Endettement</b> : emprunt indivis (un seul prêteur, en général une banque), emprunt obligataire (multitude de prêteurs, réservé aux grandes entreprises), crédit-bail (location avec option d'achat, le bien restant propriété du bailleur), financement participatif sous forme de prêt (crowdlending).</li>\n</ul>\n<p>L'autofinancement est gratuit en apparence mais a un coût d'opportunité : les associés renoncent à des dividendes et exigent en contrepartie une rentabilité au moins égale au coût des capitaux propres. Il préserve l'indépendance mais peut limiter la croissance.</p>\n<p>Le <b>financement participatif</b> (crowdfunding) permet de collecter des fonds auprès du public via une plateforme agréée, sous forme de dons, de prêts ou de souscriptions de titres.</p>\n<p>Le choix s'apprécie avec trois contraintes : coût, risque (autonomie, capacité de remboursement) et flexibilité.</p>"
+  },
+  {
+   "h": "L'augmentation de capital : DPS et dilution",
+   "html": "<p>Une augmentation de capital en numéraire émet de nouvelles actions, en général à un <b>prix d'émission</b> inférieur au cours pour attirer les souscripteurs. Pour protéger les anciens actionnaires de la baisse mécanique du cours, chaque action ancienne reçoit un <b>droit préférentiel de souscription</b> (DPS), négociable.</p>\n<p>Valeur théorique de l'action après l'opération :</p>\n<p class=\"mono\">V' = (N × cours + n × prix d'émission) / (N + n)</p>\n<p class=\"mono\">DPS = cours − V' = (cours − prix d'émission) × n / (N + n)</p>\n<p>Exemple (société Albéric) : 100 000 actions cotées 60 €, émission de 25 000 actions à 48 €. V' = (6 000 000 + 1 200 000) / 125 000 = 57,60 € ; DPS = 60 − 57,60 = 2,40 €. L'ancien actionnaire qui vend son DPS compense exactement la baisse de son action ; celui qui souscrit paie 48 € + 4 DPS (4 anciennes pour 1 nouvelle) = 48 + 9,60 = 57,60 €, le prix de l'action après.</p>\n<p><b>Dilution</b> : l'actionnaire qui ne souscrit pas voit sa part du capital baisser. Avec 10 % du capital avant (10 000 actions), il détient 10 000 / 125 000 = 8 % après. La dilution du bénéfice par action suit la même logique si le résultat n'augmente pas.</p>\n<p>Avantages : pas de remboursement, renforce l'autonomie. Inconvénients : coût élevé (les actionnaires exigent plus que les prêteurs), dilution du contrôle, dividendes non déductibles.</p>"
+  },
+  {
+   "h": "L'emprunt indivis : tableau d'amortissement et taux effectif",
+   "html": "<p>L'emprunt indivis est remboursé selon un échéancier. Chaque <b>annuité</b> comprend l'intérêt de la période (capital restant dû × taux) et l'<b>amortissement</b> du capital. Trois modalités :</p>\n<ul>\n<li><b>Amortissements constants</b> : capital / n chaque année ; les annuités décroissent.</li>\n<li><b>Annuités constantes</b> : <span class=\"mono\">a = C × i / [1 − (1 + i)^-n]</span> ; les amortissements croissent en progression géométrique de raison (1 + i).</li>\n<li><b>In fine</b> : intérêts chaque année, capital remboursé en une fois à l'échéance.</li>\n</ul>\n<p>Exemple : 200 000 € à 5 % sur 5 ans par annuités constantes, 1,05^-5 = 0,783526. a = 200 000 × 0,05 / (1 − 0,783526) = 10 000 / 0,216474 = 46 195 €. Année 1 : intérêts 10 000, amortissement 36 195, capital restant dû 163 805. Année 2 : intérêts 8 190, amortissement 38 005 (= 36 195 × 1,05).</p>\n<p>Le <b>taux effectif</b> (ou coût actuariel) de l'emprunt est le taux qui égalise le montant net reçu (capital − frais de dossier − assurance) et la valeur actuelle des annuités. Les frais le rendent supérieur au taux nominal ; la déductibilité des intérêts le rend inférieur après IS : coût de la dette après impôt ≈ i × (1 − t).</p>"
+  },
+  {
+   "h": "L'emprunt obligataire et le crédit-bail",
+   "html": "<p>L'<b>emprunt obligataire</b> est divisé en titres de même valeur nominale. Vocabulaire :</p>\n<ul>\n<li><b>Valeur nominale</b> : base de calcul du coupon. <b>Coupon</b> = nominal × taux nominal (facial).</li>\n<li><b>Prix d'émission</b> : somme versée par le souscripteur. S'il est inférieur au nominal, l'écart est une <b>prime d'émission</b>.</li>\n<li><b>Prix de remboursement</b> : somme reçue à l'échéance. S'il dépasse le nominal, l'écart est une <b>prime de remboursement</b> (compte 169, amortie sur la durée de l'emprunt).</li>\n<li><b>Taux actuariel brut</b> : taux qui égalise prix d'émission et valeur actuelle des coupons et du remboursement. Il dépasse le taux nominal dès que le prix d'émission est inférieur au nominal ou le remboursement supérieur.</li>\n</ul>\n<p>Exemple : 10 000 obligations de nominal 100 €, émises à 98 €, remboursées à 102 € in fine dans 5 ans, coupon 4 %. Coupon annuel : 4 € par titre, 40 000 € au total. Prime de remboursement totale : (102 − 98) × 10 000 = 40 000 €. Le taux actuariel est supérieur à 4 %.</p>\n<p>Le <b>crédit-bail</b> : loyers déductibles, option d'achat en fin de contrat, bien non inscrit au bilan des comptes individuels (engagement mentionné en annexe), pas d'apport initial. Son coût actuariel se calcule sur les flux après IS : loyers nets de l'économie d'impôt, perte de l'économie d'impôt sur les amortissements que l'achat aurait permis, prix de l'option.</p>"
+  },
+  {
+   "h": "Coût des capitaux propres, coût de la dette, CMPC",
+   "html": "<p>Le <b>coût des capitaux propres</b> est la rentabilité exigée par les actionnaires. Deux modèles :</p>\n<ul>\n<li><b>MEDAF</b> (modèle d'évaluation des actifs financiers) : <span class=\"mono\">kCP = Rf + β × (Rm − Rf)</span>, avec Rf le taux sans risque, Rm la rentabilité du marché, β la sensibilité du titre au marché (β > 1 : plus risqué que le marché). Exemple : Rf 3 %, β 1,2, Rm 8 % : kCP = 3 % + 1,2 × 5 % = 9 %.</li>\n<li><b>Gordon-Shapiro</b> (dividendes croissant au taux constant g) : <span class=\"mono\">kCP = D1 / P0 + g</span>, D1 étant le dividende attendu dans un an et P0 le cours actuel. Exemple : D1 = 3 €, P0 = 60 €, g = 2 % : kCP = 5 % + 2 % = 7 %. Condition : g < kCP.</li>\n</ul>\n<p>Le <b>coût de la dette après impôt</b> tient compte de la déductibilité des intérêts : <span class=\"mono\">kD = i × (1 − t)</span>. Exemple (IS à 25 %) : 5 % × 0,75 = 3,75 %.</p>\n<p>Le <b>coût moyen pondéré du capital</b> (CMPC) pondère les deux coûts par la part de chaque ressource, en principe en valeurs de marché :</p>\n<p class=\"mono\">CMPC = kCP × CP / (CP + D) + i × (1 − t) × D / (CP + D)</p>\n<p>Exemple : CP 600 000 à 9 %, D 400 000 à 5 % avant IS (25 %) : CMPC = 0,6 × 9 % + 0,4 × 3,75 % = 5,4 % + 1,5 % = 6,9 %. C'est le taux d'actualisation des projets de risque moyen (chapitre 4).</p>"
+  },
+  {
+   "h": "Structure financière et contraintes",
+   "html": "<p>Faut-il s'endetter ? L'<b>effet de levier</b> (chapitre 2) montre que la dette accroît la rentabilité financière tant que la rentabilité économique dépasse le coût de la dette, mais elle accroît aussi le risque : charges fixes d'intérêts, risque de défaillance. En théorie, Modigliani et Miller ont montré qu'en l'absence d'impôt la structure financière n'affecte pas la valeur de l'entreprise ; avec l'impôt, la déductibilité des intérêts favorise la dette, jusqu'à ce que les coûts de faillite l'emportent. En pratique, on cherche un endettement « raisonnable ».</p>\n<p>Les <b>contraintes</b> habituelles des prêteurs :</p>\n<ul>\n<li>Autonomie financière : dettes financières ≤ capitaux propres (ratio dettes / CP ≤ 1).</li>\n<li>Capacité de remboursement : dettes financières / CAF ≤ 3 à 4 ans. Exemple : CAF 120 000, dettes existantes 200 000, plafond 3 ans : endettement maximal 360 000, soit 160 000 de dette nouvelle possible.</li>\n<li>Financement minimum par fonds propres : les banques exigent souvent un apport de 20 à 30 % de l'investissement.</li>\n<li>Couverture des frais financiers : charges d'intérêts / EBE sous 30 à 40 %.</li>\n</ul>\n<p>À ces contraintes s'ajoutent la volonté des dirigeants de garder le contrôle (frein à l'ouverture du capital) et la flexibilité : une entreprise peu endettée garde une capacité d'emprunt pour les occasions futures.</p>\n<p>Lien DSCG : la théorie du compromis et la théorie du financement hiérarchique sont développées en UE2.</p>"
+  },
+  {
+   "h": "Le plan de financement",
+   "html": "<p>Le <b>plan de financement</b> est un tableau pluriannuel (3 à 5 ans) qui confronte, année par année, les <b>emplois</b> et les <b>ressources</b> prévisionnels et vérifie que la trésorerie reste positive.</p>\n<table><thead><tr><th>Ressources</th><th>Emplois</th></tr></thead><tbody><tr><td>CAF prévisionnelle</td><td>Investissements (HT)</td></tr><tr><td>Augmentation de capital</td><td>Augmentation du BFR</td></tr><tr><td>Emprunts nouveaux</td><td>Remboursements d'emprunts (capital)</td></tr><tr><td>Subventions d'investissement</td><td>Dividendes versés</td></tr><tr><td>Cessions d'immobilisations</td><td>Réduction de capital</td></tr></tbody></table>\n<p>Pour chaque année : solde = ressources − emplois ; trésorerie cumulée = trésorerie initiale + soldes cumulés. Exemple (société Albéric) : trésorerie initiale 20 000 ; année 1 : CAF 100 000 + emprunt 50 000 = 150 000 de ressources ; investissement 150 000 + dividendes 10 000 + remboursement 20 000 = 180 000 d'emplois ; solde −30 000 ; trésorerie cumulée fin d'année 1 : −10 000 €.</p>\n<p><b>Équilibrage</b> : une trésorerie cumulée négative impose de trouver des ressources (emprunt complémentaire, apport en capital, report d'investissement, réduction des dividendes). Attention aux effets induits : un emprunt supplémentaire augmente les intérêts (CAF plus faible) et les remboursements des années suivantes ; il faut itérer.</p>\n<p>La CAF prévisionnelle se calcule <b>après</b> charges financières des emprunts du plan, et les intérêts ne figurent pas dans les emplois (ils sont déjà dans la CAF).</p>"
+  },
+  {
+   "h": "Choisir un financement : décaissements actualisés et VAN ajustée",
+   "html": "<p>Pour comparer emprunt, crédit-bail et autofinancement, on retient la solution qui minimise la <b>valeur actuelle des décaissements nets après impôt</b>, ou qui maximise la VAN des flux du projet financé.</p>\n<ul>\n<li><b>Emprunt</b> : décaissements = annuités − économie d'IS sur les intérêts − économie d'IS sur les amortissements du bien (puisque l'entreprise en est propriétaire).</li>\n<li><b>Crédit-bail</b> : décaissements = loyers − économie d'IS sur les loyers + prix de l'option (puis économie d'IS sur l'amortissement de l'option). L'entreprise perd l'économie d'impôt sur les amortissements du bien.</li>\n<li><b>Autofinancement</b> : décaissement immédiat du prix, économie d'IS sur les amortissements.</li>\n</ul>\n<p>Le taux d'actualisation est le coût du capital ou, pour des financements de même risque, le coût de la dette après impôt.</p>\n<p>Exemple (IS à 25 %) : loyers de crédit-bail 30 000 € par an pendant 3 ans, payés en fin d'année, sans option. Décaissement net annuel = 30 000 × 0,75 = 22 500 € ; coefficient à 6 % sur 3 ans = 2,6730 ; valeur actuelle des décaissements = 60 143 €. On compare ce montant à celui des autres solutions.</p>\n<p>La <b>VAN ajustée</b> (adjusted present value) sépare la décision d'investissement et son financement : VAN ajustée = VAN du projet financé entièrement par fonds propres + valeur actuelle des économies d'impôt liées à la dette − coûts du financement (frais d'émission, coûts de faillite anticipés). Un financement est intéressant s'il augmente la VAN ajustée.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "Programme du DCG UE6 Finance d'entreprise (arrêté du 13 février 2019 ; arrêté du 4 août 2025, BOESR n° 32 du 28 août 2025), partie 3 : la politique de financement (modes de financement, coût du capital, structure, plan de financement)",
+   "note": "Périmètre du chapitre"
+  },
+  {
+   "ref": "C. com., art. L. 225-132 à L. 225-135 : droit préférentiel de souscription des actionnaires de SA",
+   "note": "Fondement juridique du DPS"
+  },
+  {
+   "ref": "CGI, art. 219, I (taux normal d'IS 25 %) et art. 39, 1-1° (déductibilité des charges financières, dans la limite des art. 212 bis et 39, 1-3°)",
+   "note": "Économie d'impôt sur intérêts et loyers"
+  },
+  {
+   "ref": "Plan comptable général (règlement ANC n° 2014-03 consolidé au 1er janvier 2025) : comptes 131, 163, 169, 455, 612, 747",
+   "note": "Subventions d'investissement, emprunts obligataires, primes de remboursement, comptes courants d'associés, redevances de crédit-bail"
+  },
+  {
+   "ref": "P. Recroix, DCG 6 Finance d'entreprise, Gualino, éd. 2025-2026 ; J. Delahaye, F. Duprat, DCG 6, Dunod, éd. 2025-2026",
+   "note": "MEDAF, Gordon-Shapiro, CMPC, plan de financement"
+  },
+  {
+   "ref": "P. Vernimmen, P. Quiry, Y. Le Fur, Finance d'entreprise, Dalloz, éd. 2025, chapitres « coût du capital » et « structure financière »",
+   "note": "Fondements théoriques (Modigliani-Miller, VAN ajustée)"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "L'autofinancement est souvent qualifié de ressource « gratuite ». Pourquoi cette affirmation est-elle inexacte ?",
+   "opts": [
+    "Parce qu'il a un coût d'opportunité : les associés renoncent à des dividendes et exigent une rentabilité égale au coût des capitaux propres",
+    "Parce qu'il génère des intérêts à verser à la banque",
+    "Parce qu'il est imposé au taux de l'IS",
+    "Parce qu'il doit être remboursé dans un délai fixé"
+   ],
+   "a": 0,
+   "why": "L'autofinancement ne coûte ni intérêts ni remboursement, mais les bénéfices conservés appartiennent aux associés : ils attendent qu'ils soient investis à un taux au moins égal à ce qu'ils exigent (coût des capitaux propres). Il est donc évalué au même coût que le capital, pas à zéro.",
+   "src": "Programme DCG UE6, autofinancement et coût des capitaux propres",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels financements sont classés parmi les quasi-fonds propres ?",
+   "opts": [
+    "Comptes courants d'associés bloqués",
+    "Obligations convertibles en actions",
+    "Prêts participatifs",
+    "Emprunt bancaire classique sur 5 ans",
+    "Subvention d'exploitation"
+   ],
+   "a": [0, 1, 2],
+   "why": "Les quasi-fonds propres sont des ressources stables qui ne sont ni du capital ni de la dette ordinaire : remboursement subordonné (prêts participatifs), conversion possible en capital (obligations convertibles), engagement de blocage (comptes courants d'associés bloqués). L'emprunt classique est une dette ; la subvention d'exploitation est un produit, pas un financement durable.",
+   "src": "Programme DCG UE6, quasi-fonds propres",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque mode de financement dans sa catégorie.",
+   "cats": [
+    "Fonds propres",
+    "Quasi-fonds propres",
+    "Dettes financières",
+    "Location-financement (sans propriété du bien)"
+   ],
+   "items": [
+    ["Augmentation de capital en numéraire", 0],
+    ["Autofinancement", 0],
+    ["Subvention d'investissement", 0],
+    ["Compte courant d'associé bloqué", 1],
+    ["Obligations convertibles", 1],
+    ["Prêt participatif", 1],
+    ["Emprunt obligataire ordinaire", 2],
+    ["Emprunt indivis bancaire", 2],
+    ["Crédit-bail mobilier", 3]
+   ],
+   "why": "Capital, autofinancement et subventions d'investissement (compte 13, dans les capitaux propres) sont des fonds propres. Comptes courants bloqués, obligations convertibles et prêts participatifs sont des quasi-fonds propres. Emprunts indivis et obligataires ordinaires sont des dettes. Le crédit-bail est une location : le bien n'appartient pas à l'entreprise avant la levée de l'option.",
+   "src": "Programme DCG UE6, modes de financement",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "À quoi sert le droit préférentiel de souscription (DPS) lors d'une augmentation de capital en numéraire ?",
+   "opts": [
+    "À compenser pour les anciens actionnaires la baisse du cours due à l'émission à un prix inférieur au cours",
+    "À garantir aux nouveaux actionnaires un dividende minimum",
+    "À permettre à la société de racheter ses propres actions",
+    "À imposer aux anciens actionnaires de souscrire"
+   ],
+   "a": 0,
+   "why": "L'émission à un prix inférieur au cours fait baisser la valeur de chaque action. Le DPS, attaché à chaque action ancienne, donne priorité pour souscrire et peut être vendu : l'ancien actionnaire qui ne souscrit pas récupère en le cédant la perte de valeur de son action. Il n'oblige à rien.",
+   "src": "C. com., art. L. 225-132 ; programme DCG UE6",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Société Albéric : 100 000 actions cotées 60 €. Émission de 25 000 actions nouvelles au prix de 48 €. Calculez la valeur théorique du droit préférentiel de souscription (en euros, arrondie au centime).",
+   "a": 2.4,
+   "unit": "€",
+   "tol": 0.01,
+   "why": "Valeur de l'action après émission = (100 000 × 60 + 25 000 × 48) / 125 000 = 7 200 000 / 125 000 = 57,60 €. DPS = 60 − 57,60 = 2,40 €. Vérification : (60 − 48) × 25 000 / 125 000 = 12 × 0,2 = 2,40 €. Un souscripteur paie 48 € + 4 DPS (9,60 €) = 57,60 €, le prix de l'action après.",
+   "src": "Programme DCG UE6, droit préférentiel de souscription",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un actionnaire détient 10 000 des 100 000 actions d'une société (10 %). La société émet 25 000 actions nouvelles et il ne souscrit pas. Quelle est sa part du capital après l'opération ?",
+   "opts": [
+    "8 %",
+    "10 %",
+    "7,5 %",
+    "12,5 %"
+   ],
+   "a": 0,
+   "why": "Il détient toujours 10 000 actions sur un total de 125 000 : 10 000 / 125 000 = 8 %. C'est la dilution du contrôle. Pour conserver 10 %, il aurait dû souscrire 2 500 actions nouvelles (10 % de 25 000).",
+   "src": "Programme DCG UE6, dilution lors d'une augmentation de capital",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Emprunt de 200 000 € au taux de 5 % remboursable par 5 annuités constantes de fin d'année. On donne 1,05^-5 = 0,783526. Calculez l'annuité constante, arrondie à l'euro.",
+   "a": 46195,
+   "unit": "€",
+   "tol": 1,
+   "why": "a = C × i / [1 − (1 + i)^-n] = 200 000 × 0,05 / (1 − 0,783526) = 10 000 / 0,216474 = 46 195 €. Sur 5 ans, l'entreprise verse 230 975 €, dont 30 975 € d'intérêts.",
+   "src": "Programme DCG UE6, emprunt indivis à annuités constantes",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Même emprunt : 200 000 € à 5 %, annuité constante de 46 195 €. Calculez l'amortissement du capital compris dans la première annuité (en euros).",
+   "a": 36195,
+   "unit": "€",
+   "tol": 1,
+   "why": "Intérêts de la première année = capital restant dû × taux = 200 000 × 5 % = 10 000 €. Amortissement = annuité − intérêts = 46 195 − 10 000 = 36 195 €. Capital restant dû fin d'année 1 : 163 805 €. L'amortissement de l'année 2 sera 36 195 × 1,05 = 38 005 €.",
+   "src": "Programme DCG UE6, tableau d'amortissement d'un emprunt",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans un emprunt remboursé par annuités constantes :",
+   "opts": [
+    "Les amortissements du capital croissent en progression géométrique de raison (1 + i)",
+    "Les amortissements du capital sont identiques chaque année",
+    "Les intérêts sont identiques chaque année",
+    "Le capital est remboursé en totalité à l'échéance"
+   ],
+   "a": 0,
+   "why": "L'annuité est fixe ; comme les intérêts diminuent avec le capital restant dû, la part d'amortissement augmente d'autant, chaque amortissement valant le précédent multiplié par (1 + i). Des amortissements constants correspondent à des annuités décroissantes ; des intérêts constants et un remboursement final caractérisent l'emprunt in fine.",
+   "src": "Programme DCG UE6, modalités de remboursement",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une banque prête 100 000 € à 4 % mais prélève 2 000 € de frais de dossier à la mise en place. Le taux effectif de cet emprunt est :",
+   "opts": [
+    "Supérieur à 4 %, car l'entreprise ne reçoit que 98 000 € mais rembourse sur 100 000 €",
+    "Égal à 4 %, les frais étant une charge distincte",
+    "Inférieur à 4 %, car les frais sont déductibles",
+    "Égal à 2 %"
+   ],
+   "a": 0,
+   "why": "Le taux effectif (coût actuariel) est le taux qui égalise le net reçu (98 000 €) et la valeur actuelle des annuités calculées sur 100 000 € : il est nécessairement supérieur au taux nominal. La déductibilité fiscale des intérêts et des frais réduit ensuite le coût après impôt, mais c'est un autre calcul.",
+   "src": "Programme DCG UE6, taux effectif d'un emprunt",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une obligation de valeur nominale 100 € est émise à 98 €. La prime d'émission est de :",
+   "opts": [
+    "2 € par obligation",
+    "98 € par obligation",
+    "4 € par obligation",
+    "Il n'y a pas de prime, le nominal étant supérieur au prix d'émission"
+   ],
+   "a": 0,
+   "why": "Prime d'émission = valeur nominale − prix d'émission = 100 − 98 = 2 €. Elle rend l'obligation plus attractive sans modifier le coupon, calculé sur le nominal. Si en plus le remboursement se fait au-dessus du pair (102 €), il s'y ajoute une prime de remboursement de 2 €.",
+   "src": "Programme DCG UE6, emprunt obligataire (primes)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Emprunt obligataire : 10 000 obligations de nominal 100 €, émises à 98 €, remboursées in fine à 102 €, coupon 4 %. Calculez la prime de remboursement totale, au sens de l'écart entre les sommes remboursées et les sommes reçues à l'émission (en euros).",
+   "a": 40000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Par obligation, l'entreprise reçoit 98 € et rembourse 102 € : écart de 4 €. Pour 10 000 titres : 4 × 10 000 = 40 000 €. Cette prime est inscrite au compte 169 et amortie sur la durée de l'emprunt. Le coupon annuel, calculé sur le nominal, s'élève à 100 × 4 % × 10 000 = 40 000 € par an.",
+   "src": "PCG, compte 169 ; programme DCG UE6, emprunt obligataire",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une obligation est émise sous le pair (98 € pour un nominal de 100 €) et remboursée au-dessus du pair (102 €), avec un coupon de 4 %. Son taux actuariel brut est :",
+   "opts": [
+    "Supérieur à 4 %",
+    "Égal à 4 %",
+    "Inférieur à 4 %",
+    "Égal à 2 %"
+   ],
+   "a": 0,
+   "why": "Le taux actuariel égalise le prix payé (98) et la valeur actuelle des coupons (4 par an) et du remboursement (102). Le souscripteur paie moins que le nominal et reçoit plus à l'échéance : son rendement dépasse le taux facial de 4 %. Pour l'émetteur, c'est symétriquement un coût supérieur à 4 %.",
+   "src": "Programme DCG UE6, taux actuariel d'un emprunt obligataire",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quelles affirmations sur le crédit-bail sont exactes ?",
+   "opts": [
+    "Les loyers sont des charges déductibles",
+    "Le bien ne figure pas à l'actif du bilan des comptes individuels du locataire",
+    "Le contrat comporte une option d'achat en fin de période",
+    "L'entreprise est propriétaire du bien dès la signature",
+    "L'entreprise amortit le bien pendant la durée du contrat"
+   ],
+   "a": [0, 1, 2],
+   "why": "Le crédit-bail est une location assortie d'une promesse de vente : le bailleur reste propriétaire, le bien est hors bilan chez le locataire (engagement en annexe), les loyers (612) sont déductibles et l'option d'achat permet d'acquérir le bien pour sa valeur résiduelle. Le locataire n'amortit pas un bien qui ne lui appartient pas (sauf en consolidation ou après la levée de l'option).",
+   "src": "PCG, compte 612 ; programme DCG UE6, crédit-bail",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une subvention d'investissement de 60 000 € finance un matériel amorti sur 5 ans. Sous PCG 2025, comment est-elle traitée ?",
+   "opts": [
+    "Inscrite en capitaux propres (131) et rapportée au résultat au rythme de l'amortissement par le compte 747",
+    "Enregistrée intégralement en produit exceptionnel l'année de réception",
+    "Inscrite en dettes financières et remboursée sur 5 ans",
+    "Déduite du coût d'acquisition du matériel"
+   ],
+   "a": 0,
+   "why": "La subvention d'investissement est une ressource de fonds propres (compte 131). Elle est reprise au résultat chaque année (ici 12 000 €) par le compte 747 « Quote-part des subventions d'investissement virée au résultat », qui remplace le 777 depuis le PCG 2025 ; cette quote-part n'est plus un produit exceptionnel. Elle n'est pas remboursable, donc pas une dette.",
+   "src": "PCG 2025, comptes 131 et 747 (règl. ANC 2022-06)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Taux sans risque 3 %, rentabilité attendue du marché 8 %, bêta de l'action 1,2. Calculez le coût des capitaux propres selon le MEDAF, en %.",
+   "a": 9,
+   "unit": "%",
+   "tol": 0.05,
+   "why": "kCP = Rf + β × (Rm − Rf) = 3 % + 1,2 × (8 % − 3 %) = 3 % + 6 % = 9 %. La prime de risque du marché est de 5 % ; avec un bêta de 1,2, l'action est plus sensible que le marché et sa prime de risque est de 6 %.",
+   "src": "Programme DCG UE6, MEDAF",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une action a un bêta de 1,5. Cela signifie que :",
+   "opts": [
+    "Son cours varie en moyenne 1,5 fois plus que le marché : elle est plus risquée que le marché",
+    "Elle rapporte 1,5 % de plus que le taux sans risque",
+    "Elle est moins risquée que le marché",
+    "Son dividende croît de 1,5 % par an"
+   ],
+   "a": 0,
+   "why": "Le bêta mesure le risque systématique : la sensibilité de la rentabilité du titre à celle du marché. β = 1 pour le marché lui-même ; β > 1 amplifie les mouvements (titre risqué), β < 1 les amortit. Dans le MEDAF, la prime de risque exigée est β × (Rm − Rf), pas 1,5 % en valeur absolue.",
+   "src": "Programme DCG UE6, MEDAF et bêta",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Le cours actuel d'une action est de 60 €. Le dividende attendu dans un an est de 3 € et devrait croître ensuite de 2 % par an indéfiniment. Calculez le coût des capitaux propres selon le modèle de Gordon-Shapiro, en %.",
+   "a": 7,
+   "unit": "%",
+   "tol": 0.05,
+   "why": "kCP = D1 / P0 + g = 3 / 60 + 2 % = 5 % + 2 % = 7 %. Le rendement courant (5 %) est complété par la croissance attendue des dividendes (2 %). Le modèle suppose une croissance constante à l'infini et g < kCP.",
+   "src": "Programme DCG UE6, modèle de Gordon-Shapiro",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le modèle de Gordon-Shapiro repose sur l'hypothèse :",
+   "opts": [
+    "D'un dividende croissant à un taux constant g, inférieur au coût des capitaux propres, sur un horizon infini",
+    "D'un dividende constant pendant 5 ans puis nul",
+    "D'une absence totale de dividende",
+    "D'un taux de croissance supérieur au coût des capitaux propres"
+   ],
+   "a": 0,
+   "why": "P0 = D1 / (k − g) n'a de sens que si g < k (sinon la valeur serait infinie ou négative) et suppose une croissance perpétuelle régulière. C'est une rente perpétuelle croissante. Le modèle est inapplicable aux sociétés qui ne distribuent pas.",
+   "src": "Programme DCG UE6, modèle de Gordon-Shapiro",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "IS à 25 %. Une entreprise emprunte au taux de 5 %. Calculez le coût de la dette après impôt, en %.",
+   "a": 3.75,
+   "unit": "%",
+   "tol": 0.01,
+   "why": "Les intérêts sont déductibles du résultat imposable : chaque euro d'intérêt fait économiser 0,25 € d'IS. Coût après impôt = i × (1 − t) = 5 % × (1 − 0,25) = 3,75 %. Cette économie suppose que l'entreprise est bénéficiaire.",
+   "src": "Programme DCG UE6, coût de la dette ; CGI art. 219, I et art. 39, 1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "IS à 25 %. Capitaux propres 600 000 € (coût 9 %), dettes financières 400 000 € (taux 5 % avant impôt). Calculez le coût moyen pondéré du capital, en %, arrondi à 0,01 %.",
+   "a": 6.9,
+   "unit": "%",
+   "tol": 0.01,
+   "why": "Coût de la dette après IS = 5 % × 0,75 = 3,75 %. Pondérations : CP 600 / 1 000 = 60 %, D 400 / 1 000 = 40 %. CMPC = 0,6 × 9 % + 0,4 × 3,75 % = 5,4 % + 1,5 % = 6,9 %. Oublier l'économie d'impôt donnerait 7,4 %.",
+   "src": "Programme DCG UE6, coût moyen pondéré du capital",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans le calcul du CMPC, les pondérations des capitaux propres et de la dette doivent en principe être :",
+   "opts": [
+    "Des valeurs de marché (capitalisation boursière, valeur de la dette)",
+    "Des valeurs comptables historiques exclusivement",
+    "Toujours égales à 50 % / 50 %",
+    "Les montants du capital social et des emprunts à l'origine"
+   ],
+   "a": 0,
+   "why": "Le CMPC est le coût d'opportunité des fonds aujourd'hui : il se pondère par la valeur actuelle de chaque ressource, donc par les valeurs de marché quand elles existent. Faute de cotation, on retient les valeurs comptables ou une structure cible. Il n'y a pas de pondération fixe.",
+   "src": "Programme DCG UE6, CMPC",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "CAF prévisionnelle 120 000 € par an ; dettes financières actuelles 200 000 €. La banque exige un ratio dettes financières / CAF au plus égal à 3. Quel emprunt supplémentaire maximal l'entreprise peut-elle contracter ?",
+   "opts": [
+    "160 000 €",
+    "360 000 €",
+    "40 000 €",
+    "120 000 €"
+   ],
+   "a": 0,
+   "why": "Endettement maximal = 3 × CAF = 360 000 €. Dette nouvelle possible = 360 000 − 200 000 = 160 000 €. 360 000 € oublie la dette existante ; 40 000 € correspondrait à un plafond de 2 ans.",
+   "src": "Programme DCG UE6, contraintes de financement (capacité de remboursement)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Plusieurs réponses possibles. Quels éléments figurent parmi les emplois d'un plan de financement ?",
+   "opts": [
+    "Acquisitions d'immobilisations",
+    "Remboursement du capital des emprunts",
+    "Augmentation du BFR",
+    "Dividendes versés",
+    "Capacité d'autofinancement",
+    "Emprunt nouveau"
+   ],
+   "a": [0, 1, 2, 3],
+   "why": "Les emplois sont les décaissements durables : investissements, remboursements d'emprunts (capital seulement, les intérêts étant déjà dans la CAF), variation du BFR et dividendes. La CAF et les emprunts nouveaux sont des ressources.",
+   "src": "Programme DCG UE6, plan de financement",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Plan de financement, année 1. Trésorerie initiale 20 000 €. Ressources : CAF 100 000 €, emprunt nouveau 50 000 €. Emplois : investissement 150 000 €, dividendes 10 000 €, remboursement d'emprunt 20 000 €. Calculez la trésorerie cumulée en fin d'année 1 (en euros, signe compris).",
+   "a": -10000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Ressources = 100 000 + 50 000 = 150 000 €. Emplois = 150 000 + 10 000 + 20 000 = 180 000 €. Solde de l'année = −30 000 €. Trésorerie cumulée = 20 000 − 30 000 = −10 000 € : le plan est déséquilibré, il faut une ressource complémentaire (emprunt, apport) ou réduire un emploi (dividendes, report d'investissement).",
+   "src": "Programme DCG UE6, plan de financement (trésorerie cumulée)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Pour équilibrer un plan de financement dont la trésorerie cumulée est négative en année 1, on ajoute un emprunt. Quel effet induit faut-il intégrer ?",
+   "opts": [
+    "La CAF des années suivantes baisse du montant des intérêts nets d'IS et les remboursements s'ajoutent aux emplois",
+    "Aucun : l'emprunt est une ressource sans contrepartie",
+    "Les dividendes augmentent automatiquement",
+    "Le BFR diminue du montant emprunté"
+   ],
+   "a": 0,
+   "why": "Un emprunt supplémentaire crée des intérêts (qui réduisent la CAF prévisionnelle, nets de l'économie d'IS) et des annuités de remboursement en capital (emplois des années suivantes). Il faut donc recalculer le plan de façon itérative. Il n'a pas d'effet direct sur les dividendes ou le BFR.",
+   "src": "Programme DCG UE6, équilibrage du plan de financement",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "IS à 25 %. Un matériel peut être financé par crédit-bail : 3 loyers annuels de 30 000 € payés en fin d'année, sans option d'achat. Taux d'actualisation 6 % ; coefficient (1 − 1,06^-3) / 0,06 = 2,6730. Calculez la valeur actuelle des décaissements nets d'impôt liés au crédit-bail, arrondie à l'euro.",
+   "a": 60143,
+   "unit": "€",
+   "tol": 1,
+   "why": "Les loyers sont déductibles : décaissement net annuel = 30 000 × (1 − 0,25) = 22 500 €. Valeur actuelle = 22 500 × 2,6730 = 60 142,5 €, soit 60 143 €. On compare ce montant à la valeur actuelle des décaissements nets d'un emprunt (annuités − économies d'IS sur intérêts et amortissements) pour choisir le financement le moins coûteux.",
+   "src": "Programme DCG UE6, choix de financement par les décaissements actualisés",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "La VAN ajustée d'un projet se définit comme :",
+   "opts": [
+    "La VAN du projet financé entièrement par fonds propres, plus la valeur actuelle des économies d'impôt liées à la dette, moins les coûts du financement",
+    "La VAN calculée avec le taux d'intérêt de l'emprunt",
+    "La VAN corrigée de l'inflation",
+    "La somme des VAN des projets du portefeuille"
+   ],
+   "a": 0,
+   "why": "La VAN ajustée sépare la valeur créée par l'investissement lui-même (actualisée au coût des fonds propres d'une entreprise non endettée) et la valeur créée par son financement (économies d'IS sur intérêts, subventions, nettes des frais d'émission). Elle évite d'intégrer le financement dans le taux d'actualisation.",
+   "src": "Programme DCG UE6, VAN ajustée",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}
