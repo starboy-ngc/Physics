@@ -6,16 +6,21 @@ informatique doit pouvoir relire irait contre tout le reste. Le symbole est
 donc *calcule*, puis encode en PNG par le module « raster », qui sait deja
 le faire pour les points du nuage.
 
-Ce qu'il montre : une courbe de distribution et sa mediane. La silhouette
-d'une population — beaucoup de monde autour du milieu, de moins en moins
-en s'en eloignant — et le trait qui la partage en deux moities egales.
-C'est l'objet meme que l'outil produit, reduit a sa silhouette.
+Ce qu'il montre : « =ln(RH) ». Une formule de tableur — tout tableur
+commence une formule par un signe egal — appliquee a la matiere de
+l'outil. Le logarithme n'est pas un ornement : c'est l'echelle sur
+laquelle une distribution de remunerations se lit, parce que les ecarts
+y sont multiplicatifs et non additifs.
 
 Le choix n'est pas qu'esthetique. Une etoile dit « cinq etoiles », une
 coche dit « conforme », une balance dit « justice » : un outil qui mesure
 des ecarts de remuneration ne doit porter aucun de ces jugements sur sa
-porte. Une courbe de distribution ne dit rien d'autre que ce que fait
-l'outil : elle montre une population, sans la noter.
+porte. Une formule ne juge personne : elle dit ce qu'on calcule.
+
+Les lettres sont tracees, pas composees : aucune police n'est embarquee,
+et le dessin ne depend donc d'aucune fonte installee sur le poste. Chaque
+glyphe est une poignee de traits et d'arcs, decrits en cadratin — hauteur
+de capitale valant un — puis mis a l'echelle du cadre.
 
 Sa teinte ne suit pas le theme et ne change pas avec le fond : un bleu
 d'acier, assez clair pour se detacher d'un ecran sombre, assez dense pour
@@ -29,11 +34,9 @@ demi-pixel de part et d'autre du bord. Il n'y a donc ni tirage aleatoire,
 ni echantillonnage, ni surechantillonnage a payer : le meme dessin
 exactement a toutes les tailles, en un seul passage.
 
-La distance a la courbe se mesure a la perpendiculaire : l'ecart vertical
-au trace, rapporte a la pente. C'est exact pour une droite et juste a la
-courbure pres pour une cloche — l'erreur vaut quelques centiemes de pixel,
-la ou chercher le vrai point le plus proche couterait cent fois le prix
-pour le meme dessin.
+Deux primitives suffisent a tout ecrire : le trait a bouts ronds et l'arc
+de cercle. Leurs distances sont exactes, et le dessin entier est leur
+minimum.
 """
 
 from __future__ import annotations
@@ -50,28 +53,171 @@ RGB = Tuple[int, int, int]
 #: marque.
 ENCRE = (110, 148, 186)
 
-#: Proportion du cadre : celle de la courbe, median compris. Un cadre
-#: carre lui laisserait deux bandes vides.
-RATIO = 0.70
+#: Demi-epaisseur du trait, en cadratin. Monoline : toutes les lettres ont
+#: la meme chasse, ce qui tient a toutes les tailles la ou un contraste
+#: plein-delie se referme des que le dessin rapetisse.
+TRAIT = 0.088
 
-#: La cloche : la ligne de base ou retombent ses queues, la hauteur du
-#: sommet au-dessus d'elle, et sa largeur. Ces trois nombres suffisent a
-#: la decrire entierement — c'est la meme courbe a toutes les echelles.
-BASE = 0.648
-AMPLITUDE = 0.42
-LARGEUR = 0.185
+#: Chasse entre deux glyphes, en cadratin.
+CHASSE = 0.105
 
-#: De ou a ou la courbe est tracee, et la demi-epaisseur du trait. Au-dela
-#: de ces bornes, ses queues seraient confondues avec la ligne de base.
-COURBE = (0.06, 0.94)
-TRAIT = 0.038
+#: Marge laissee autour de la marque, en parts de la largeur du cadre.
+INSET = 0.035
 
-#: La mediane : de la pointe du sommet jusque sous la ligne de base, et sa
-#: demi-epaisseur. Elle part de l'interieur du trait — un trait qui
-#: s'arreterait au ras du sommet laisserait un interstice visible des
-#: qu'on agrandit.
-MEDIANE = (0.262, 0.784)
-MEDIANE_TRAIT = 0.026
+#: Les glyphes, en cadratin : hauteur de capitale valant un, ligne de base
+#: a zero, les ordonnees negatives montent. Deux primitives seulement :
+#:
+#:   ("trait", x1, y1, x2, y2)      un segment a bouts ronds
+#:   ("arc", cx, cy, rayon, a0, a1) un arc, en degres, zero a droite et
+#:                                  croissant vers le bas
+#:
+#: Aucune chasse n'est donnee a la main : l'encombrement reel de chaque
+#: lettre — epaisseur du trait comprise — est calcule depuis ses
+#: primitives, et c'est lui qui pousse la suivante. Des chasses ecrites a
+#: l'oeil laissaient les lettres se chevaucher.
+HAUTEUR_X = 0.60
+GLYPHES = {
+    "=": (("trait", 0.00, -0.30, 0.44, -0.30),
+          ("trait", 0.00, -0.56, 0.44, -0.56)),
+    # Le « l » porte une queue : en lineale, un « l » droit est un « I »
+    # majuscule, et « =In(RH) » ne veut rien dire.
+    "l": (("trait", 0.00, -1.00, 0.00, -0.14),
+          ("arc", 0.14, -0.14, 0.14, 90.0, 180.0)),
+    "n": (("trait", 0.00, -HAUTEUR_X, 0.00, 0.00),
+          ("arc", 0.25, -HAUTEUR_X, 0.25, 180.0, 360.0),
+          ("trait", 0.50, -HAUTEUR_X, 0.50, 0.00)),
+    # La parenthese : un arc dont on choisit la profondeur et la hauteur,
+    # le rayon et les angles s'en deduisant. Les poser a l'oeil donnait un
+    # arc qui sortait du mot.
+    "(": (("arc", 0.7733, -0.50, 0.7733, 133.6, 226.4),),
+    ")": (("arc", -0.5333, -0.50, 0.7733, -46.4, 46.4),),
+    "R": (("trait", 0.00, -1.00, 0.00, 0.00),
+          ("trait", 0.00, -1.00, 0.24, -1.00),
+          ("arc", 0.24, -0.76, 0.24, 270.0, 450.0),
+          ("trait", 0.24, -0.52, 0.00, -0.52),
+          ("trait", 0.22, -0.52, 0.54, 0.00)),
+    "H": (("trait", 0.00, -1.00, 0.00, 0.00),
+          ("trait", 0.50, -1.00, 0.50, 0.00),
+          ("trait", 0.00, -0.52, 0.50, -0.52)),
+}
+
+#: Ce qui est ecrit. Le signe egal d'abord : c'est lui qui fait la formule.
+MOT = "=ln(RH)"
+
+
+def _bornes(forme):
+    """Encombrement d'une primitive, epaisseur du trait comprise."""
+    if forme[0] == "trait":
+        gauche, droite = min(forme[1], forme[3]), max(forme[1], forme[3])
+        haut, bas = min(forme[2], forme[4]), max(forme[2], forme[4])
+    else:
+        _genre, cx, cy, rayon, a0, a1 = forme
+        points = [(cx + rayon * math.cos(math.radians(a)),
+                   cy + rayon * math.sin(math.radians(a))) for a in (a0, a1)]
+        # Les quarts de tour compris dans l'arc en sont les extremes.
+        milieu = math.radians((a0 + a1) / 2.0)
+        demi = math.radians(abs(a1 - a0) / 2.0)
+        for quart in range(-4, 8):
+            angle = math.radians(quart * 90.0)
+            ecart = (angle - milieu + math.pi) % (2 * math.pi) - math.pi
+            if abs(ecart) <= demi:
+                points.append((cx + rayon * math.cos(angle),
+                               cy + rayon * math.sin(angle)))
+        gauche = min(point[0] for point in points)
+        droite = max(point[0] for point in points)
+        haut = min(point[1] for point in points)
+        bas = max(point[1] for point in points)
+    return (gauche - TRAIT, droite + TRAIT, haut - TRAIT, bas + TRAIT)
+
+
+def _decaler(forme, pas: float):
+    return (("trait", forme[1] + pas, forme[2], forme[3] + pas, forme[4])
+            if forme[0] == "trait"
+            else ("arc", forme[1] + pas, forme[2], forme[3], forme[4],
+                  forme[5]))
+
+
+def _composer(mot: str):
+    """Place les glyphes, et rend le trace en parts de la largeur du cadre.
+
+    Le mot est d'abord assemble en cadratin — chaque lettre posee contre la
+    precedente, a une chasse pres —, puis l'ensemble est mis a l'echelle du
+    cadre et centre. Compose une fois pour toutes a l'import : c'est le
+    meme mot a chaque ouverture et a toutes les tailles.
+    """
+    pieces, curseur = [], 0.0
+    for lettre in mot:
+        primitives = GLYPHES[lettre]
+        bornes = [_bornes(forme) for forme in primitives]
+        gauche = min(borne[0] for borne in bornes)
+        droite = max(borne[1] for borne in bornes)
+        pas = curseur - gauche
+        pieces.extend(_decaler(forme, pas) for forme in primitives)
+        curseur += (droite - gauche) + CHASSE
+    largeur = curseur - CHASSE
+    bornes = [_bornes(forme) for forme in pieces]
+    haut = min(borne[2] for borne in bornes)
+    bas = max(borne[3] for borne in bornes)
+    echelle = (1.0 - 2 * INSET) / largeur
+    milieu = (haut + bas) / 2.0
+    posees = []
+    for forme in pieces:
+        if forme[0] == "trait":
+            posees.append(("trait",
+                           INSET + forme[1] * echelle,
+                           0.5 + (forme[2] - milieu) * echelle,
+                           INSET + forme[3] * echelle,
+                           0.5 + (forme[4] - milieu) * echelle))
+        else:
+            posees.append(("arc",
+                           INSET + forme[1] * echelle,
+                           0.5 + (forme[2] - milieu) * echelle,
+                           forme[3] * echelle, forme[4], forme[5]))
+    return posees, TRAIT * echelle, (bas - haut) * echelle
+
+
+class Trace:
+    """Un mot compose, et la distance signee a son trace.
+
+    La marque complete et sa forme courte sont deux traces du meme
+    alphabet : rien n'est redessine, seule la chaine change.
+    """
+
+    def __init__(self, mot: str):
+        self.mot = mot
+        self.pieces, self.epaisseur, hauteur = _composer(mot)
+        #: Proportion du cadre : celle du mot, epaisseur comprise, plus la
+        #: meme marge en haut et en bas qu'a gauche et a droite.
+        self.ratio = hauteur + 2 * INSET
+
+    def distance(self, x: float, y: float) -> float:
+        """Distance signee au trace : negative dedans, positive dehors."""
+        plus_proche = 9.9
+        for forme in self.pieces:
+            if forme[0] == "trait":
+                valeur = _trait(x, y, forme[1], forme[2], forme[3], forme[4],
+                                self.epaisseur)
+            else:
+                valeur = _arc(x, y, forme[1], forme[2], forme[3], forme[4],
+                              forme[5], self.epaisseur)
+            if valeur < plus_proche:
+                plus_proche = valeur
+        return plus_proche
+
+
+#: La marque, et sa forme courte.
+#:
+#: Sous une trentaine de points, sept glyphes ne font plus qu'une tache :
+#: l'icone de la barre des taches, celle de l'explorateur en liste, celle
+#: du cadre de la fenetre. La formule se reduit alors a son operateur —
+#: « ln » tient a seize points la ou « =ln(RH) » ne tient pas. Ce qui ne
+#: se lit pas ne vaut pas d'etre dessine.
+MARQUE = Trace(MOT)
+COURT = Trace("ln")
+
+#: Proportion du cadre de la marque complete, pour qui compose une page
+#: autour d'elle.
+RATIO = MARQUE.ratio
 
 #: Le passage de lumiere, image par image : de combien il eclaircit, sur
 #: quelle largeur, son inclinaison, et jusqu'ou il voyage de part et
@@ -198,41 +344,46 @@ def _couverture(distance: float, pixel: float) -> float:
     return part
 
 
-def _cloche(x: float) -> float:
-    """Hauteur de la courbe a cette abscisse. Plus c'est haut sur l'ecran,
-    plus la valeur est petite : l'ordonnee descend."""
-    ecart = (x - 0.5) / LARGEUR
-    return BASE - AMPLITUDE * math.exp(-ecart * ecart)
+def _trait(x: float, y: float, x1: float, y1: float,
+           x2: float, y2: float, epaisseur: float) -> float:
+    """Distance signee a un segment a bouts ronds."""
+    dx, dy = x2 - x1, y2 - y1
+    carre = dx * dx + dy * dy
+    if carre <= 0.0:
+        place = 0.0
+    else:
+        place = ((x - x1) * dx + (y - y1) * dy) / carre
+        place = 0.0 if place < 0.0 else (1.0 if place > 1.0 else place)
+    return math.hypot(x - (x1 + place * dx),
+                      y - (y1 + place * dy)) - epaisseur
 
 
-def _pente(x: float) -> float:
-    """Pente de la courbe : elle corrige la distance la ou elle est
-    raide."""
-    ecart = (x - 0.5) / LARGEUR
-    return AMPLITUDE * 2 * ecart / LARGEUR * math.exp(-ecart * ecart)
+def _arc(x: float, y: float, cx: float, cy: float, rayon: float,
+         debut: float, fin: float, epaisseur: float) -> float:
+    """Distance signee a un arc de cercle a bouts ronds.
 
-
-def _trait_courbe(x: float, y: float) -> float:
-    """Distance signee au trait de la courbe, bouts arrondis compris."""
-    debut, fin = COURBE
-    if x < debut:
-        return math.hypot(x - debut, y - _cloche(debut)) - TRAIT
-    if x > fin:
-        return math.hypot(x - fin, y - _cloche(fin)) - TRAIT
-    pente = _pente(x)
-    return abs(y - _cloche(x)) / math.sqrt(1.0 + pente * pente) - TRAIT
-
-
-def _trait_mediane(x: float, y: float) -> float:
-    """Distance signee au trait vertical de la mediane."""
-    haut, bas = MEDIANE
-    return math.hypot(x - 0.5, y - min(max(y, haut), bas)) - MEDIANE_TRAIT
+    Dans le secteur, c'est l'ecart au cercle ; au-dela, c'est la distance
+    au bout le plus proche. L'angle se compare au milieu de l'arc, replie
+    dans un demi-tour : c'est ce qui evite d'avoir a traiter les arcs qui
+    enjambent le zero.
+    """
+    milieu = math.radians((debut + fin) / 2.0)
+    demi = math.radians(abs(fin - debut) / 2.0)
+    ecart = math.atan2(y - cy, x - cx) - milieu
+    ecart = (ecart + math.pi) % (2 * math.pi) - math.pi
+    if abs(ecart) <= demi:
+        return abs(math.hypot(x - cx, y - cy) - rayon) - epaisseur
+    proche = 9.9
+    for angle in (math.radians(debut), math.radians(fin)):
+        proche = min(proche, math.hypot(x - (cx + rayon * math.cos(angle)),
+                                        y - (cy + rayon * math.sin(angle))))
+    return proche - epaisseur
 
 
 def distance(x: float, y: float) -> float:
-    """Distance signee a la marque : negative dedans, positive dehors.
+    """Distance signee a la marque complete.
 
     Publique parce que l'icone Windows s'en sert : elle dessine la meme
     marque, en blanc sur un jeton rond. Un outil n'a qu'une identite.
     """
-    return min(_trait_courbe(x, y), _trait_mediane(x, y))
+    return MARQUE.distance(x, y)

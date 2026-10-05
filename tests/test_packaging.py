@@ -414,10 +414,14 @@ class TestTheMarkIcon(unittest.TestCase):
         from hr_analytics.ui import logo
         from tools import render_icon
 
-        self.assertIn("logo.distance", inspect.getsource(render_icon.dessiner))
-        # La médiane passe par le milieu ; le coin haut gauche est vide.
-        self.assertLess(logo.distance(0.5, 0.5), 0)
-        self.assertGreater(logo.distance(0.12, 0.2), 0)
+        source = inspect.getsource(render_icon.dessiner)
+        self.assertIn("logo.MARQUE", source)
+        self.assertIn("trace.distance", source)
+        # L'icône choisit entre les deux traces de « logo », elle n'en
+        # dessine aucun elle-même.
+        self.assertIn("logo.COURT", source)
+        # Le coin du cadre est vide : la marque ne touche pas son bord.
+        self.assertGreater(logo.distance(0.01, 0.02), 0)
 
     def test_the_mark_is_white_on_the_slate_token(self):
         """Une icône de raccourci se pose sur n'importe quel fond de
@@ -431,6 +435,8 @@ class TestTheMarkIcon(unittest.TestCase):
 
         self.assertEqual(point(32, 32)[3], 255, "le jeton est plein")
         self.assertEqual(point(0, 0)[3], 0, "le coin reste transparent")
-        # Sur la médiane : du blanc. À côté d'elle : l'ardoise.
-        self.assertEqual(point(32, 36)[:3], MARQUE)
-        self.assertEqual(point(44, 18)[:3], ENCRE)
+        # Quelque part dans le mot : du blanc franc. Au-dessus de lui,
+        # dans le jeton : l'ardoise.
+        milieu = [point(x, 32)[:3] for x in range(8, 56)]
+        self.assertIn(MARQUE, milieu, "aucune lettre à mi-hauteur")
+        self.assertEqual(point(32, 8)[:3], ENCRE)

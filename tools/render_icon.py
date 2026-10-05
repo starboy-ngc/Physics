@@ -3,8 +3,8 @@
 
     python3 tools/render_icon.py --sortie packaging/windows/marque.ico
 
-C'est le meme dessin que celui de l'ecran d'accueil — une courbe de
-distribution et sa mediane —, pose en blanc sur un jeton rond : une icone de raccourci
+C'est le meme dessin que celui de l'ecran d'accueil — la formule
+« =ln(RH) » —, pose en blanc sur un jeton rond : une icone de raccourci
 doit tenir sur n'importe quel fond de bureau, la ou la marque de la
 fenetre connait le sien. La forme vient de « hr_analytics.ui.logo », pas
 d'une copie : un outil n'a qu'une identite, et une identite recopiee
@@ -41,10 +41,18 @@ TAILLES = (16, 20, 24, 32, 40, 48, 64, 128, 256)
 ENCRE = (0x1F, 0x3A, 0x55)          # bleu d'ardoise, le fond du jeton
 MARQUE = (0xFF, 0xFF, 0xFF)         # la marque elle-meme
 
-#: Part du jeton occupee par la marque, en largeur. Les queues de la
-#: courbe vont d'un bord a l'autre de son cadre : au-dela, elles
-#: sortiraient du disque.
-EMPRISE = 0.82
+#: Part du jeton occupee par la marque, en largeur. La marque complete est
+#: large et basse : elle traverse le disque. La forme courte est presque
+#: carree, et doit donc rester plus petite que lui.
+EMPRISE = 0.86
+EMPRISE_COURTE = 0.52
+
+#: Taille sous laquelle la formule se reduit a son operateur. Mesuree
+#: plutot que devinee, en regardant les rendus : a quarante-huit points
+#: « =ln(RH) » se lit franchement ; a trente-deux il devient pateux ; a
+#: vingt-quatre les sept glyphes ne font plus qu'une tache. L'icone de la
+#: barre des taches et celle du cadre de la fenetre sont a seize.
+SEUIL_COURT = 48
 
 #: Echantillons par cote d'un pixel pour le bord du jeton. Quatre par
 #: quatre suffisent — a huit la difference ne se voit plus, et le calcul
@@ -60,7 +68,8 @@ def dessiner(taille: int) -> bytes:
     """
     centre = taille / 2.0
     rayon_jeton = centre - max(taille * 0.02, 0.5)
-    emprise = taille * EMPRISE
+    trace = logo.MARQUE if taille >= SEUIL_COURT else logo.COURT
+    emprise = taille * (EMPRISE if trace is logo.MARQUE else EMPRISE_COURTE)
     pixel = 1.0 / emprise
     pixels = bytearray()
     pas = 1.0 / FINESSE
@@ -81,8 +90,8 @@ def dessiner(taille: int) -> bytes:
             # mediane est a 0,5 : on y ramene le point avant de lui
             # demander sa distance.
             part = _couverture(
-                logo.distance((x + 0.5 - centre) / emprise + 0.5,
-                              (y + 0.5 - centre) / emprise + 0.5), pixel)
+                trace.distance((x + 0.5 - centre) / emprise + 0.5,
+                               (y + 0.5 - centre) / emprise + 0.5), pixel)
             couleur = tuple(round(ENCRE[canal] * (1 - part)
                                   + MARQUE[canal] * part) for canal in range(3))
             pixels += bytes(couleur) + bytes((round(255 * jeton / total),))

@@ -64,14 +64,14 @@ def encre(lignes):
 
 
 class TestTheSymbol(unittest.TestCase):
-    """Une courbe de distribution, et la mediane qui la partage.
+    """La formule « =ln(RH) », tracee au trait.
 
     Ce qui compte pour un logo n'est pas qu'il soit joli — c'est qu'il soit
     toujours le meme, qu'il tienne a toutes les tailles, et qu'il ne dise
     rien que l'outil ne fasse.
     """
 
-    LARGEUR, HAUTEUR = 240, 168
+    LARGEUR, HAUTEUR = 360, 122
 
     def symbole(self, largeur=None, hauteur=None, count=1):
         return logo.Mark(largeur or self.LARGEUR, count,
@@ -110,12 +110,12 @@ class TestTheSymbol(unittest.TestCase):
     def test_the_drawing_is_the_same_at_any_size(self):
         """Decrit par une formule et non par des pixels : la silhouette
         agrandie doit recouvrir la petite, a l'echelle pres."""
-        petit = pixels(self.symbole(120, 84).frame(0), 120, 84)
-        grand = pixels(self.symbole(480, 336).frame(0), 480, 336)
+        petit = pixels(self.symbole(180, 61).frame(0), 180, 61)
+        grand = pixels(self.symbole(540, 183).frame(0), 540, 183)
         part_petit = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in petit) / (120 * 84)
+                         for ligne in petit) / (180 * 61)
         part_grand = sum(sum(1 for valeur in ligne[3::4] if valeur > 127)
-                         for ligne in grand) / (480 * 336)
+                         for ligne in grand) / (540 * 183)
         # Le lissage pese plus lourd dans une petite image qu'une grande :
         # la marque est fine, et ses bords y prennent une part plus large.
         self.assertAlmostEqual(part_petit, part_grand, delta=0.02)
@@ -130,10 +130,10 @@ class TestTheSymbol(unittest.TestCase):
         self.assertEqual(max(ligne[-1] for ligne in lignes), 0)
 
     def test_it_survives_at_the_size_of_an_icon(self):
-        lignes = pixels(self.symbole(32, 22).frame(0), 32, 22)
+        lignes = pixels(self.symbole(96, 33).frame(0), 96, 33)
         encres = sum(1 for ligne in lignes for valeur in ligne[3::4]
                      if valeur > 60)
-        self.assertGreater(encres, 60)
+        self.assertGreater(encres, 150)
 
     def test_the_mark_is_one_steel_blue_tone_and_nothing_else(self):
         """Une seule teinte, pas de jeton, pas de degrade : une marque n'a
@@ -146,8 +146,8 @@ class TestTheSymbol(unittest.TestCase):
         def couleur(x):
             return tuple(lignes[milieu][x * 4:x * 4 + 4])
 
-        # Sur la mediane, a mi-hauteur : la teinte de la marque.
-        rouge, vert, bleu, alpha = couleur(self.LARGEUR // 2)
+        # Dans un fut de lettre, a mi-hauteur : la teinte de la marque.
+        rouge, vert, bleu, alpha = couleur(self._colonne_pleine())
         self.assertEqual(alpha, 255)
         # A quelques unites pres : la lumiere qui traverse le symbole
         # eclaircit sa teinte, elle ne la remplace pas.
@@ -158,51 +158,67 @@ class TestTheSymbol(unittest.TestCase):
         self.assertGreater(bleu, rouge)
         self.assertLess(max(logo.ENCRE), 200)
         self.assertGreater(min(logo.ENCRE), 80)
-        # Sous une queue de la courbe : rien. Pas de jeton, pas d'aplat.
-        self.assertEqual(couleur(int(self.LARGEUR * 0.12))[3], 0)
+        # Au ras du bord : rien. Pas de jeton, pas d'aplat.
+        self.assertEqual(couleur(1)[3], 0)
 
-    def test_it_reads_as_a_distribution_and_not_as_a_hill(self):
-        """Trois choses, et dans cet ordre : des queues basses et fines, un
-        sommet au milieu, et la mediane qui descend sous la ligne de base.
-        C'est ce qui distingue la marque d'une colline."""
+    def _colonne_pleine(self):
+        """Une colonne traversee par un fut de lettre, a mi-hauteur."""
         lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
                               self.HAUTEUR))
+        milieu = self.HAUTEUR // 2
+        for x in range(self.LARGEUR // 3, self.LARGEUR):
+            if lignes[milieu][x] == 255:
+                return x
+        raise AssertionError("aucun fut plein a mi-hauteur")
 
-        def premier_plein(x):
-            """Hauteur du premier pixel plein de cette colonne."""
-            for y, ligne in enumerate(lignes):
-                if ligne[x] > 200:
-                    return y
-            return None
+    def test_it_reads_as_a_word_and_not_as_a_blob(self):
+        """Sept glyphes, donc des blancs entre eux.
 
-        def dernier_plein(x):
-            for y in range(len(lignes) - 1, -1, -1):
-                if lignes[y][x] > 200:
-                    return y
-            return None
-
-        sommet = premier_plein(self.LARGEUR // 2)
-        queue = premier_plein(int(self.LARGEUR * 0.10))
-        flanc = premier_plein(int(self.LARGEUR * 0.30))
-        self.assertIsNotNone(sommet)
-        self.assertIsNotNone(queue)
-        # Le sommet est au milieu, les queues en bas, le flanc entre les
-        # deux : c'est une cloche, pas un trait ni un triangle.
-        self.assertLess(sommet, flanc)
-        self.assertLess(flanc, queue)
-        # La mediane descend plus bas que les queues.
-        self.assertGreater(dernier_plein(self.LARGEUR // 2),
-                           dernier_plein(int(self.LARGEUR * 0.10)))
-
-    def test_the_two_sides_are_mirror_images(self):
-        """Une distribution dessinee de travers se remarque."""
+        Une marque dessinee trop serree se referme en tache des qu'on la
+        reduit : ce qui se verifie ici, c'est qu'a mi-hauteur le trace
+        alterne bien encre et blanc, et plusieurs fois.
+        """
         lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
                               self.HAUTEUR))
-        for ligne in lignes:
-            gauche = bytes(ligne[:self.LARGEUR // 2])
-            droite = bytes(reversed(ligne[self.LARGEUR // 2:]))
-            ecart = max(abs(a - b) for a, b in zip(gauche, droite))
-            self.assertLessEqual(ecart, 2, "la cloche est symetrique")
+        milieu = self.HAUTEUR // 2
+        suites, dedans = 0, False
+        for valeur in lignes[milieu]:
+            plein = valeur > 180
+            if plein and not dedans:
+                suites += 1
+            dedans = plein
+        # « =ln(RH) » coupe la ligne mediane en au moins sept endroits :
+        # le signe egal, le « l », les deux futs du « n », la parenthese,
+        # le « R », les deux futs du « H », la parenthese fermante.
+        self.assertGreaterEqual(suites, 7,
+                                f"le mot se referme : {suites} traits")
+
+    def test_the_formula_opens_and_closes_its_bracket(self):
+        """Une parenthese ouverte et jamais refermee se remarque.
+
+        Les deux sont des arcs, donc les seules formes dont l'encre, sur
+        la ligne mediane, se trouve aux deux extremites du mot.
+        """
+        lignes = encre(pixels(self.symbole().frame(0), self.LARGEUR,
+                              self.HAUTEUR))
+        milieu = self.HAUTEUR // 2
+        pleins = [x for x, valeur in enumerate(lignes[milieu]) if valeur > 180]
+        self.assertTrue(pleins)
+        # La derniere encre de la ligne est la parenthese fermante : elle
+        # se tient dans le dernier dixieme du mot.
+        self.assertGreater(pleins[-1], self.LARGEUR * 0.90)
+        # Et la premiere est le signe egal, dans le premier dixieme.
+        self.assertLess(pleins[0], self.LARGEUR * 0.10)
+
+    def test_the_short_form_is_the_same_alphabet(self):
+        """Sous une trentaine de points, la formule se reduit a son
+        operateur. Ce n'est pas un second dessin : c'est le meme mot,
+        plus court."""
+        self.assertEqual(logo.COURT.mot, "ln")
+        self.assertEqual(logo.MARQUE.mot, logo.MOT)
+        self.assertEqual(logo.COURT.epaisseur > 0, True)
+        # La forme courte est presque carree, la complete est couchee.
+        self.assertGreater(logo.COURT.ratio, logo.MARQUE.ratio * 2)
 
     def test_the_mark_says_nothing_the_tool_does_not_do(self):
         """Une etoile dit « cinq etoiles », une coche dit « conforme » : un
@@ -211,7 +227,8 @@ class TestTheSymbol(unittest.TestCase):
         """
         with open(logo.__file__, encoding="utf-8") as fichier:
             source = fichier.read()
-        self.assertIn("courbe de distribution", source)
+        self.assertIn("formule", source)
+        self.assertIn("ne juge personne", source)
         for jugement in ("etoile dit", "coche dit", "balance dit"):
             self.assertIn(jugement, source)
 

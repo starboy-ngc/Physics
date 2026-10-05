@@ -37,11 +37,11 @@ TAGLINE = "Analyse de rémunération · local et hors ligne"
 class Splash(tk.Toplevel):
     """Fenetre sans cadre, centree, le temps du demarrage."""
 
-    WIDTH, HEIGHT = 520, 282
+    WIDTH, HEIGHT = 520, 340
     #: Largeur du symbole ; sa hauteur suit la proportion de la marque.
     #: Petit, et pose a cote du nom plutot qu'au-dessus : c'est le nom
     #: qu'on doit lire, la marque ne fait que l'accompagner.
-    LOGO = 42
+    LOGO = 188
     #: Largeur du filet d'avancement. Plus etroit que l'ecran : une barre
     #: qui va d'un bord a l'autre appartient a la fenetre, pas a la marque.
     BAR_WIDTH = 300
@@ -77,17 +77,16 @@ class Splash(tk.Toplevel):
         self._frame = 0
         self._next_ms = 0.0
         entete = tk.Frame(self, background=theme.INK)
-        entete.pack(pady=(46, 0))
+        entete.pack(pady=(40, 0))
         self.symbole_vu = tk.Label(entete, background=theme.INK)
-        self.symbole_vu.pack(side="left")
+        self.symbole_vu.pack()
         # La premiere image suffit a montrer l'ecran ; les vingt-trois
         # autres arrivent pendant qu'il est deja la.
         self._render_next()
         self._show(0)
 
         tk.Label(entete, text=PRODUCT, background=theme.INK,
-                 foreground=theme.CANVAS, font=grand).pack(side="left",
-                                                           padx=(14, 0))
+                 foreground=theme.CANVAS, font=grand).pack(pady=(14, 0))
         tk.Label(self, text=TAGLINE, background=theme.INK,
                  foreground=self.clair, font=petite).pack(pady=(12, 0))
 

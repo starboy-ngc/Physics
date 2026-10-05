@@ -21,12 +21,18 @@ le lire : cette attente-là est délibérée. Elle se règle dans
 À **0**, pas d'écran d'accueil du tout : la fenêtre s'ouvre directement. Et
 un clic sur l'écran le passe sans attendre.
 
-Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture —
-une petite boîte à moustaches, la même que celle de l'icône du
-raccourci Windows — puis encodé en PNG par le même module qui dessine les
-points du nuage. Rien d'opaque dans l'archive, et rien de tiré au hasard :
-le même symbole à chaque fois, et le même dessin exactement à toutes les
-tailles, de l'icône à l'affiche.
+Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture
+— la formule `=ln(RH)`, la même que celle de l'icône du raccourci Windows
+— puis encodé en PNG par le même module qui dessine les points du nuage.
+Les lettres sont tracées, pas composées : aucune police n'est embarquée,
+et le dessin ne dépend donc d'aucune fonte installée sur le poste. Rien
+d'opaque dans l'archive, et rien de tiré au hasard : le même symbole à
+chaque fois, et le même dessin exactement à toutes les tailles.
+
+Sous une trentaine de points — l'icône de la barre des tâches, celle du
+cadre de la fenêtre — sept glyphes ne feraient plus qu'une tache : la
+formule s'y réduit à son opérateur, `ln`. Ce qui ne se lit pas ne vaut pas
+d'être dessiné.
 
 Pour en tirer une image — une présentation, un intranet, une icône :
 
