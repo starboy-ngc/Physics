@@ -1,0 +1,708 @@
+{
+ "id": "ue10-04",
+ "ue": "UE10",
+ "ordre": 4,
+ "title": "Stocks, contrats à long terme et opérations en devises",
+ "resume": "Évaluer les stocks (coût d'entrée, CMP, PEPS, dépréciation), comptabiliser un contrat à long terme à l'achèvement ou à l'avancement et traiter les créances et dettes en devises à la clôture.",
+ "duree": "65 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Stocks : définition et coût d'entrée",
+   "html": "<p>Un <b>stock</b> est un actif détenu pour être vendu dans le cours normal de l'activité, en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production (PCG art. 211-7). Il entre au bilan à son coût (C. com., art. L. 123-18) :</p><ul><li><b>Coût d'acquisition</b> (art. 213-31) pour les marchandises et matières : prix d'achat, droits de douane et taxes non récupérables, <b>moins</b> remises, rabais, ristournes et escomptes, <b>plus</b> frais de transport, de manutention et autres coûts directement attribuables. Les frais de stockage sont exclus, sauf s'ils sont nécessaires au processus de production (vieillissement).</li><li><b>Coût de production</b> (art. 213-32) pour les en-cours et produits : coût des matières consommées, <b>charges directes</b> de production et <b>charges indirectes</b> de production, variables et fixes, rationnellement rattachables. Les charges fixes sont imputées sur la base de la <b>capacité normale</b> : la quote-part de <b>sous-activité</b> reste en charges de l'exercice.</li></ul><p>Sont exclus du coût de production : frais de recherche, frais d'administration générale, frais de distribution, pertes et gaspillages anormaux. Les <b>coûts d'emprunt</b> peuvent être incorporés sur option (art. 213-9) pour les stocks exigeant une longue période de préparation, la même option s'appliquant aux immobilisations.</p><div class=\"note\"><b>Règle à retenir.</b> Sous-activité = charges fixes × (1 − activité réelle / activité normale) : jamais dans le stock, toujours en charges.</div>"
+  },
+  {
+   "h": "Méthodes de valorisation des sorties : CMP et PEPS",
+   "html": "<p>Pour les biens interchangeables, le PCG admet deux méthodes (art. 213-34) : le <b>coût moyen pondéré</b> (CMP), calculé <b>après chaque entrée</b> ou <b>en fin de période</b>, et le <b>premier entré, premier sorti</b> (PEPS ou FIFO). La méthode du dernier entré, premier sorti (LIFO) est interdite dans les comptes individuels. </p><p>Exemple (article Z) : stock initial <span class=\"mono\">100 unités à 10 €</span> ; entrée le 1er mars <span class=\"mono\">200 à 13 €</span> ; sortie le 15 mars <span class=\"mono\">150</span> ; entrée le 1er avril <span class=\"mono\">100 à 16 €</span> ; sortie le 20 avril <span class=\"mono\">200</span>. Stock final : 50 unités.</p><table><thead><tr><th>Méthode</th><th>Calcul</th><th>Stock final</th></tr></thead><tbody><tr><td>CMP après chaque entrée</td><td>(1 000 + 2 600)/300 = 12 ; puis (150 × 12 + 1 600)/250 = 13,60</td><td>50 × 13,60 = 680</td></tr><tr><td>CMP fin de période</td><td>(1 000 + 2 600 + 1 600)/400 = 13</td><td>50 × 13 = 650</td></tr><tr><td>PEPS</td><td>Les 50 unités restantes sont les dernières entrées (16 €)</td><td>50 × 16 = 800</td></tr></tbody></table><p>En période de hausse des prix, le PEPS donne le stock final le plus élevé et donc le résultat le plus fort ; le CMP lisse les variations. Le choix doit être permanent ; le fisc admet les deux (CGI ann. III, art. 38 nonies).</p>"
+  },
+  {
+   "h": "Inventaire intermittent, variation de stocks et dépréciation",
+   "html": "<p>En <b>inventaire permanent</b>, les comptes de stocks sont mouvementés à chaque entrée et sortie. En <b>inventaire intermittent</b>, méthode de la comptabilité générale, les comptes de stocks ne bougent qu'à la clôture : on <b>annule le stock initial</b> et on <b>constate le stock final</b> à partir de l'inventaire physique.</p><ul><li>Marchandises et matières : contrepartie <b>603 Variation des stocks</b> (6031 matières, 6037 marchandises) ; solde débiteur = déstockage (charge), créditeur = stockage.</li><li>Produits et en-cours : contrepartie <b>713 Variation des stocks (en-cours, produits)</b> (7133, 7134, 7135), qui corrige la production vendue pour obtenir la production de l'exercice.</li></ul><p>À la clôture, la <b>valeur actuelle</b> de chaque catégorie de stock est comparée au coût. Pour les produits et marchandises, c'est la <b>valeur nette de réalisation</b> : prix de vente probable diminué des coûts d'achèvement et de commercialisation. Si elle est inférieure au coût, on constate une <b>dépréciation</b> : débit <b>6817</b>, crédit <b>39x</b> ; elle est ajustée chaque année (reprise par 7817). Les matières ne sont pas dépréciées si les produits finis auxquels elles sont destinées se vendent au-dessus de leur coût.</p><p>Exemple : stock final de marchandises <span class=\"mono\">42 000 €</span> au coût, valeur nette de réalisation <span class=\"mono\">38 500 €</span>.</p>",
+   "entry": [
+    {
+     "a": "6817",
+     "d": 3500,
+     "c": 0
+    },
+    {
+     "a": "397",
+     "d": 0,
+     "c": 3500
+    }
+   ],
+   "lib": "Dépréciation du stock de marchandises à la clôture"
+  },
+  {
+   "h": "Contrats à long terme : achèvement ou avancement",
+   "html": "<p>Un <b>contrat à long terme</b> (PCG art. 622-1) est un contrat d'une durée généralement longue, spécifiquement négocié dans le cadre d'un projet unique portant sur la construction, la réalisation ou la participation à la réalisation d'un bien, d'un service ou d'un ensemble complexes, dont l'exécution s'étend sur au moins deux exercices. Deux méthodes :</p><ul><li><b>Méthode à l'achèvement</b> : le chiffre d'affaires et le résultat sont constatés à la livraison. En cours de contrat, les coûts engagés sont stockés en <b>en-cours de production</b> (33 / 34, par 7133 / 7134) ; aucun bénéfice intermédiaire.</li><li><b>Méthode à l'avancement</b> (<b>méthode préférentielle</b>, art. 622-2) : le chiffre d'affaires et le résultat sont dégagés au rythme de l'avancement, mesuré par le rapport coûts engagés / coûts totaux estimés ou par des mesures physiques. Le produit non encore facturé est un <b>produit à recevoir</b> : débit <b>4181 Clients – factures à établir</b>, crédit 704 (ou 706) et 44587 pour la TVA.</li></ul><p>L'avancement exige une estimation fiable du résultat à terminaison ; sinon, le produit est limité aux coûts engagés (marge nulle).</p><p>Exemple : contrat <span class=\"mono\">1 000 000 € HT</span>, coût total estimé <span class=\"mono\">800 000</span>, coûts engagés fin N <span class=\"mono\">320 000</span> (40 %), rien n'a encore été facturé. Produit N = <span class=\"mono\">400 000</span>, TVA 20 %.</p>",
+   "entry": [
+    {
+     "a": "4181",
+     "d": 480000,
+     "c": 0
+    },
+    {
+     "a": "704",
+     "d": 0,
+     "c": 400000
+    },
+    {
+     "a": "44587",
+     "d": 0,
+     "c": 80000
+    }
+   ],
+   "lib": "Chiffre d'affaires à l'avancement : facture à établir"
+  },
+  {
+   "h": "Perte à terminaison et suivi du contrat",
+   "html": "<p>Lorsqu'il devient probable que le coût total du contrat dépassera le prix, une <b>perte à terminaison</b> doit être provisionnée dès qu'elle est connue, quelle que soit la méthode (PCG art. 622-4), en vertu du principe de prudence :</p><ul><li>À l'<b>avancement</b>, la part de perte correspondant aux travaux réalisés est déjà passée par le résultat (produits à l'avancement inférieurs aux coûts engagés) ; on provisionne la <b>fraction restante</b> : perte totale × (1 − % d'avancement), au crédit de <b>1516 Provisions pour pertes sur contrats</b> par le débit de 6815.</li><li>À l'<b>achèvement</b>, aucun résultat n'ayant été constaté, la perte probable est couverte en priorité par une <b>dépréciation des en-cours</b> à hauteur des coûts engagés, le complément étant provisionné en 1516.</li></ul><p>La provision est ajustée à chaque clôture et reprise à la livraison. En annexe figurent la méthode retenue, les hypothèses d'avancement et l'incidence d'un changement d'estimation. Le passage de l'achèvement à l'avancement est un changement de méthode comptable (effet sur le report à nouveau).</p><p>Exemple : contrat <span class=\"mono\">900 000</span>, coût total révisé <span class=\"mono\">1 000 000</span>, avancement 30 % à la clôture. Perte totale 100 000 ; déjà constatée à l'avancement 30 000 ; provision <span class=\"mono\">70 000</span>.</p>",
+   "entry": [
+    {
+     "a": "6815",
+     "d": 70000,
+     "c": 0
+    },
+    {
+     "a": "1516",
+     "d": 0,
+     "c": 70000
+    }
+   ],
+   "lib": "Provision pour perte à terminaison (méthode à l'avancement)"
+  },
+  {
+   "h": "Opérations en devises : conversion et écarts à la clôture",
+   "html": "<p>Les créances et dettes libellées en monnaie étrangère sont converties en euros au <b>cours du jour</b> de l'opération (PCG art. 420-1 s.), ou au cours de couverture si l'opération est couverte. À la <b>clôture</b>, elles sont réévaluées au cours de clôture ; la différence avec la valeur d'entrée est portée dans des comptes transitoires de bilan :</p><ul><li><b>476 Différences de conversion – Actif</b> : pertes latentes (baisse d'une créance, hausse d'une dette) ;</li><li><b>477 Différences de conversion – Passif</b> : gains latents.</li></ul><p>Par prudence, les <b>pertes latentes</b> donnent lieu à une <b>provision pour pertes de change</b> : débit 6865, crédit <b>1515</b> (compte maintenu par le PCG 2025). Les <b>gains latents</b> ne sont pas comptabilisés en résultat. La provision peut être limitée en cas de couverture de change, de position globale de change par devise et par échéance, ou d'emprunt en devises finançant une immobilisation (étalement). À l'ouverture de l'exercice suivant, les écarts 476/477 sont <b>contrepassés</b>. Les disponibilités en devises sont converties au cours de clôture directement par 666/766.</p><p>Exemple : créance de <span class=\"mono\">10 000 USD</span> comptabilisée à <span class=\"mono\">0,92 €</span> (9 200 €) ; cours de clôture <span class=\"mono\">0,90 €</span> (9 000 €). Perte latente 200 €.</p>",
+   "entry": [
+    {
+     "a": "476",
+     "d": 200,
+     "c": 0
+    },
+    {
+     "a": "411",
+     "d": 0,
+     "c": 200
+    },
+    {
+     "a": "6865",
+     "d": 200,
+     "c": 0
+    },
+    {
+     "a": "1515",
+     "d": 0,
+     "c": 200
+    }
+   ],
+   "lib": "Écart de conversion actif sur créance en dollars et provision pour perte de change"
+  },
+  {
+   "h": "Écarts de change réalisés, couverture et fiscalité",
+   "html": "<p>Au <b>règlement</b>, la différence entre le montant encaissé ou décaissé en euros et la valeur comptable d'origine est un écart de change <b>réalisé</b>, charge financière <b>666 Pertes de change</b> ou produit financier <b>766 Gains de change</b>. La provision 1515 constituée est reprise (7865) et l'écart de conversion a été contrepassé à l'ouverture, de sorte que le résultat de N+1 ne supporte que la variation intervenue depuis la clôture, le reste étant neutralisé par la reprise.</p><p>Exemple (suite) : la créance de 10 000 USD est encaissée en N+1 à <span class=\"mono\">0,89 €</span> : 8 900 € reçus pour une créance de 9 200 €, perte de change réalisée <span class=\"mono\">300 €</span>.</p><p><b>Couverture</b> : une vente à terme de devises fige le cours ; la créance couverte est alors maintenue au cours de couverture et aucune provision n'est nécessaire sur la partie couverte (règlement ANC 2015-05 sur les instruments financiers à terme).</p><p><b>Fiscalité</b> : les écarts de conversion sont pris en compte immédiatement dans le résultat fiscal (CGI art. 38, 4) : la perte latente (476) est déduite extra-comptablement et le gain latent (477) réintégré ; corrélativement, la provision 1515 n'est <b>pas déductible</b> (réintégration) et sa reprise est déduite. C'est une source classique de retraitements sur le tableau 2058-A.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 8900,
+     "c": 0
+    },
+    {
+     "a": "666",
+     "d": 300,
+     "c": 0
+    },
+    {
+     "a": "411",
+     "d": 0,
+     "c": 9200
+    }
+   ],
+   "lib": "Encaissement de la créance en dollars avec perte de change réalisée"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "PCG art. 211-7",
+   "note": "Définition des stocks"
+  },
+  {
+   "ref": "PCG art. 213-30 à 213-35",
+   "note": "Coût d'acquisition, coût de production, sous-activité, CMP et PEPS"
+  },
+  {
+   "ref": "PCG art. 213-9",
+   "note": "Option d'incorporation des coûts d'emprunt"
+  },
+  {
+   "ref": "PCG art. 214-6 et 214-16 s.",
+   "note": "Valeur actuelle et dépréciation des stocks"
+  },
+  {
+   "ref": "PCG art. 622-1 à 622-7",
+   "note": "Contrats à long terme : achèvement, avancement (méthode préférentielle), perte à terminaison"
+  },
+  {
+   "ref": "PCG art. 420-1 à 420-8",
+   "note": "Opérations en devises, écarts de conversion 476/477, provision pour pertes de change"
+  },
+  {
+   "ref": "CGI art. 38, 4",
+   "note": "Prise en compte fiscale immédiate des écarts de conversion"
+  },
+  {
+   "ref": "CGI ann. III, art. 38 nonies",
+   "note": "Évaluation fiscale des stocks (coût de revient, CMP ou PEPS)"
+  },
+  {
+   "ref": "C. com., art. L. 123-18",
+   "note": "Évaluation au coût d'acquisition ou de production"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "multi",
+   "q": "Quels éléments entrent dans le coût d'acquisition d'un stock de marchandises ? (plusieurs réponses possibles)",
+   "opts": [
+    "Le prix d'achat net des remises obtenues",
+    "Les droits de douane",
+    "Les frais de transport jusqu'à l'entrepôt",
+    "Les frais de publicité pour écouler les marchandises",
+    "La TVA déductible"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 213-31 : le coût d'acquisition comprend le prix d'achat net des réductions commerciales et escomptes, les droits de douane et taxes non récupérables, ainsi que les frais directement attribuables (transport, manutention). La TVA récupérable n'est pas un coût et les frais de commercialisation sont exclus de toute valorisation de stock.",
+   "src": "PCG art. 213-31",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise a produit 8 000 unités d'un produit en N alors que sa capacité normale est de 10 000 unités. Coûts de production de l'exercice : matières 120 000 €, main-d'œuvre directe 80 000 €, charges indirectes variables de production 40 000 €, charges indirectes fixes de production 50 000 €, frais d'administration générale 30 000 €. Calculez le coût de production total à retenir pour valoriser la production de N (en euros).",
+   "a": 280000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Charges incorporables : matières 120 000 + MOD 80 000 + indirectes variables 40 000 = 240 000. Charges fixes imputées sur la base de la capacité normale : 50 000 × 8 000 / 10 000 = 40 000 (la sous-activité de 10 000 reste en charges, PCG art. 213-32). Frais d'administration exclus. Coût de production = 240 000 + 40 000 = 280 000 €, soit 35 € par unité.",
+   "src": "PCG art. 213-32",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Parmi les méthodes suivantes de valorisation des sorties de stocks de biens interchangeables, laquelle est interdite dans les comptes individuels français ?",
+   "opts": [
+    "Coût moyen pondéré après chaque entrée",
+    "Premier entré, premier sorti (PEPS)",
+    "Dernier entré, premier sorti (DEPS / LIFO)",
+    "Coût moyen pondéré de fin de période"
+   ],
+   "a": 2,
+   "why": "PCG art. 213-34 : seuls le CMP (après chaque entrée ou en fin de période) et le PEPS sont admis pour les biens interchangeables. Le LIFO (DEPS), qui valorise le stock aux coûts les plus anciens et minore le résultat en période de hausse, est interdit en comptes individuels comme en IFRS (IAS 2), et refusé fiscalement.",
+   "src": "PCG art. 213-34",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Article Z : stock initial 100 unités à 10 € ; entrée le 1er mars de 200 unités à 13 € ; sortie le 15 mars de 150 unités ; entrée le 1er avril de 100 unités à 16 € ; sortie le 20 avril de 200 unités. Valorisez le stock final (50 unités) selon la méthode du CMP calculé après chaque entrée (en euros).",
+   "a": 680,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Après l'entrée du 1er mars : (100 × 10 + 200 × 13) / 300 = 3 600 / 300 = 12 €. Sortie de 150 à 12 € ; il reste 150 unités à 12 € = 1 800. Après l'entrée du 1er avril : (1 800 + 100 × 16) / 250 = 3 400 / 250 = 13,60 €. Sortie de 200 à 13,60 € ; stock final 50 × 13,60 = 680 €. Le CMP est recalculé à chaque entrée, jamais aux sorties.",
+   "src": "PCG art. 213-34",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Mêmes données : stock initial 100 unités à 10 € ; entrée le 1er mars de 200 unités à 13 € ; sortie le 15 mars de 150 unités ; entrée le 1er avril de 100 unités à 16 € ; sortie le 20 avril de 200 unités. Valorisez le stock final (50 unités) selon la méthode PEPS (en euros).",
+   "a": 800,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "En PEPS, les sorties épuisent d'abord les lots les plus anciens : la sortie du 15 mars prend 100 à 10 € et 50 à 13 € ; il reste 150 à 13 €. La sortie du 20 avril prend 150 à 13 € et 50 à 16 €. Les 50 unités restantes proviennent du lot du 1er avril : 50 × 16 = 800 €. En hausse des prix, le PEPS donne le stock final le plus élevé (680 en CMP après chaque entrée, 650 en CMP de période).",
+   "src": "PCG art. 213-34",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Mêmes données : stock initial 100 unités à 10 € ; entrées de 200 unités à 13 € et de 100 unités à 16 € ; sorties totales 350 unités au cours de la période. Quelle est la valeur du stock final de 50 unités selon le CMP calculé en fin de période ?",
+   "opts": [
+    "650 €",
+    "680 €",
+    "800 €",
+    "500 €"
+   ],
+   "a": 0,
+   "why": "CMP de période = (stock initial + entrées en valeur) / (stock initial + entrées en quantité) = (1 000 + 2 600 + 1 600) / 400 = 5 200 / 400 = 13 €. Stock final = 50 × 13 = 650 €. Cette variante ne tient pas compte de la chronologie des sorties, d'où un résultat différent du CMP après chaque entrée (680).",
+   "src": "PCG art. 213-34",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Inventaire intermittent. Stock de marchandises au 1er janvier N : 30 000 €. Stock au 31 décembre N : 42 000 €. Enregistrez les écritures de clôture relatives au stock de marchandises (annulation du stock initial et constatation du stock final).",
+   "lib": "Variation du stock de marchandises",
+   "palette": [
+    "6037",
+    "37",
+    "6031",
+    "31",
+    "607",
+    "713"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6037",
+      "d": 30000,
+      "c": 0
+     },
+     {
+      "a": "37",
+      "d": 0,
+      "c": 30000
+     },
+     {
+      "a": "37",
+      "d": 42000,
+      "c": 0
+     },
+     {
+      "a": "6037",
+      "d": 0,
+      "c": 42000
+     }
+    ],
+    [
+     {
+      "a": "37",
+      "d": 12000,
+      "c": 0
+     },
+     {
+      "a": "6037",
+      "d": 0,
+      "c": 12000
+     }
+    ]
+   ],
+   "why": "On annule le stock initial (débit 6037, crédit 37 pour 30 000) puis on constate le stock final (débit 37, crédit 6037 pour 42 000). Le solde de 6037 est créditeur de 12 000 : stockage, qui vient diminuer les achats consommés. L'écriture nette pour 12 000 est admise. Les comptes 6031/31 concernent les matières premières, 713 les produits fabriqués, et 607 enregistre les achats, pas leur variation.",
+   "src": "PCG art. 946-60 (fonctionnement du compte 603)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Le compte 713 « Variation des stocks (en-cours de production, produits) » présente à la clôture un solde créditeur de 25 000 €. Cela signifie :",
+   "opts": [
+    "Que le stock de produits a diminué de 25 000 € et que le résultat baisse d'autant",
+    "Que le stock de produits a augmenté de 25 000 €, ce qui accroît la production de l'exercice",
+    "Que les ventes de produits ont augmenté de 25 000 €",
+    "Que 25 000 € de produits ont été dépréciés"
+   ],
+   "a": 1,
+   "why": "Le compte 713 est crédité du stock final et débité du stock initial : un solde créditeur traduit une augmentation du stock de produits (production stockée), produit qui s'ajoute à la production vendue. Un solde débiteur signalerait un déstockage. Les ventes passent par 701 et la dépréciation par 6817/39.",
+   "src": "PCG art. 947-71 (fonctionnement du compte 713)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, le stock de produits finis est évalué à 60 000 € au coût de production. Son prix de vente probable est de 64 000 € et les frais de commercialisation restant à engager sont estimés à 7 000 €. Aucune dépréciation n'existait. Enregistrez l'écriture nécessaire.",
+   "lib": "Dépréciation du stock de produits finis",
+   "palette": [
+    "6817",
+    "395",
+    "7817",
+    "355",
+    "6815",
+    "397"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6817",
+      "d": 3000,
+      "c": 0
+     },
+     {
+      "a": "395",
+      "d": 0,
+      "c": 3000
+     }
+    ]
+   ],
+   "why": "Valeur nette de réalisation = 64 000 − 7 000 = 57 000 < coût 60 000 : dépréciation de 3 000 € (PCG art. 214-6 et 214-16). Dotation aux dépréciations des actifs circulants 6817, compte de dépréciation 395 (produits finis) ; 397 vise les marchandises. Le compte 355 (stock de produits) n'est pas réduit directement : la dépréciation est un compte distinct. 6815 concerne les provisions, 7817 une reprise.",
+   "src": "PCG art. 214-6 et 214-16",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À la clôture, le prix de vente des produits finis reste supérieur à leur coût de production, mais le cours de la matière première qu'ils incorporent a chuté de 20 % par rapport au coût du stock de matières. Faut-il déprécier le stock de matières ?",
+   "opts": [
+    "Oui, de 20 % obligatoirement, pour refléter le cours du marché",
+    "Non, tant que les produits finis correspondants se vendent au-dessus de leur coût",
+    "Oui, à hauteur de la moitié de la baisse",
+    "Non, les matières ne se déprécient jamais"
+   ],
+   "a": 1,
+   "why": "La valeur actuelle d'une matière s'apprécie au travers du produit fini : si celui-ci se vend au-dessus de son coût de production, la matière conserve son utilité et aucune dépréciation n'est constatée malgré la baisse des cours (logique d'IAS 2 reprise par la doctrine française). Une dépréciation interviendrait si la baisse rendait les produits finis déficitaires. Les matières peuvent évidemment se déprécier dans d'autres cas (détérioration, obsolescence).",
+   "src": "PCG art. 214-6 ; IAS 2, § 32",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément selon qu'il est inclus ou exclu du coût de production d'un stock de produits finis.",
+   "cats": [
+    "Inclus dans le coût de production",
+    "Exclu (charge de l'exercice)"
+   ],
+   "items": [
+    [
+     "Matières premières consommées",
+     0
+    ],
+    [
+     "Salaires des ouvriers de l'atelier",
+     0
+    ],
+    [
+     "Amortissement des machines de production",
+     0
+    ],
+    [
+     "Quote-part de charges fixes correspondant à la sous-activité",
+     1
+    ],
+    [
+     "Salaires du service comptable",
+     1
+    ],
+    [
+     "Commissions des vendeurs",
+     1
+    ],
+    [
+     "Énergie consommée par l'atelier",
+     0
+    ],
+    [
+     "Frais de recherche sur un nouveau produit",
+     1
+    ]
+   ],
+   "why": "PCG art. 213-32 : le coût de production regroupe les matières, les charges directes de production et les charges indirectes de production (amortissements des machines, énergie de l'atelier), les charges fixes étant imputées sur la base de l'activité normale. La sous-activité, les frais administratifs, la distribution et la recherche sont exclus.",
+   "src": "PCG art. 213-32",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle caractéristique est nécessaire pour qualifier un contrat de « contrat à long terme » au sens du PCG ?",
+   "opts": [
+    "Un montant supérieur à 1 million d'euros",
+    "Une exécution s'étendant sur au moins deux exercices, pour un projet unique",
+    "Un paiement intégral à la livraison, sans acompte",
+    "Un client public ou une collectivité territoriale"
+   ],
+   "a": 1,
+   "why": "PCG art. 622-1 : contrat d'une durée généralement longue, spécifiquement négocié dans le cadre d'un projet unique portant sur un bien, un service ou un ensemble complexes, dont l'exécution s'étend sur au moins deux exercices. Ni le montant, ni les modalités de paiement, ni la nature du client ne sont des critères.",
+   "src": "PCG art. 622-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Pour les contrats à long terme, la méthode préférentielle selon le PCG est :",
+   "opts": [
+    "La méthode à l'achèvement",
+    "La méthode à l'avancement",
+    "La méthode du bénéfice partiel limité aux coûts",
+    "La méthode de la marge nulle"
+   ],
+   "a": 1,
+   "why": "PCG art. 622-2 : la méthode à l'avancement est considérée comme préférentielle car elle donne une meilleure information sur le résultat de chaque exercice. L'achèvement reste autorisé. Si le résultat à terminaison ne peut être estimé de façon fiable, l'avancement s'applique avec une marge nulle (produits limités aux coûts), ce qui n'est pas une méthode distincte. Le passage de l'achèvement à l'avancement est un changement de méthode.",
+   "src": "PCG art. 622-2",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Contrat à long terme : prix de vente 1 000 000 € HT, coût total estimé 800 000 €, coûts engagés à la clôture N 320 000 € (avancement mesuré par les coûts). Méthode à l'avancement. Calculez le chiffre d'affaires à constater en N (en euros).",
+   "a": 400000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Pourcentage d'avancement = coûts engagés / coûts totaux estimés = 320 000 / 800 000 = 40 %. Chiffre d'affaires N = 1 000 000 × 40 % = 400 000 €, enregistré en 704 par le débit de 4181 Clients – factures à établir (avec la TVA en 44587) si rien n'a été facturé. Résultat N = 400 000 − 320 000 = 80 000, soit 40 % de la marge totale de 200 000.",
+   "src": "PCG art. 622-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, le chiffre d'affaires à l'avancement d'un contrat s'élève à 400 000 € HT ; aucune facture n'a encore été émise au client. TVA 20 %. Enregistrez le produit à recevoir.",
+   "lib": "Produit à recevoir sur contrat à long terme",
+   "palette": [
+    "4181",
+    "704",
+    "44587",
+    "411",
+    "44571",
+    "4191"
+   ],
+   "sol": [
+    [
+     {
+      "a": "4181",
+      "d": 480000,
+      "c": 0
+     },
+     {
+      "a": "704",
+      "d": 0,
+      "c": 400000
+     },
+     {
+      "a": "44587",
+      "d": 0,
+      "c": 80000
+     }
+    ]
+   ],
+   "why": "Le produit non facturé est une facture à établir : débit 4181 (et non 411, qui n'enregistre que les factures émises) pour le TTC 480 000, crédit 704 Travaux pour 400 000 et 44587 TVA sur factures à établir pour 80 000 (la TVA n'est pas encore exigible, d'où un compte d'attente distinct de 44571). Le compte 4191 enregistre les acomptes reçus des clients, sans objet ici.",
+   "src": "PCG art. 622-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un client verse un acompte de 100 000 € sur un contrat à long terme avant tout commencement des travaux. Dans quel compte cet acompte est-il enregistré chez l'entreprise qui réalise le contrat ?",
+   "opts": [
+    "4181 Clients – factures à établir",
+    "4191 Clients – avances et acomptes reçus sur commandes",
+    "704 Travaux",
+    "4091 Fournisseurs – avances et acomptes versés"
+   ],
+   "a": 1,
+   "why": "L'acompte reçu est une dette envers le client tant que la prestation n'est pas réalisée : 4191 Clients – avances et acomptes reçus sur commandes, au passif. Le compte 4181 enregistre au contraire une créance pour prestations réalisées non facturées ; 704 ne sera crédité qu'au rythme de l'avancement ou à l'achèvement ; 4091 concerne les acomptes versés par l'entreprise à ses fournisseurs.",
+   "src": "PCG art. 944-41 (fonctionnement des comptes 418 et 419)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Avec la méthode à l'achèvement, en cours de contrat, les coûts engagés sur un chantier non terminé sont :",
+   "opts": [
+    "Passés en charges sans contrepartie, ce qui dégage une perte provisoire",
+    "Inscrits en en-cours de production (33 ou 34) par le crédit de 713, de sorte que le résultat intermédiaire est nul",
+    "Comptabilisés en chiffre d'affaires",
+    "Immobilisés en 231"
+   ],
+   "a": 1,
+   "why": "À l'achèvement, aucun produit n'est reconnu avant la livraison ; les charges engagées sont neutralisées par la constatation d'un stock d'en-cours (7133/7134) évalué à leur coût de production, ce qui aboutit à un résultat nul sur le contrat (hors perte à terminaison). Le chiffre d'affaires n'apparaît qu'à la livraison et il ne s'agit pas d'une immobilisation puisque le bien est destiné au client.",
+   "src": "PCG art. 622-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Contrat au prix de 900 000 € HT comptabilisé à l'avancement. À la clôture N, le coût total est réévalué à 1 000 000 € et l'avancement est de 30 %. Calculez la provision pour perte à terminaison à constituer au 31 décembre N (en euros).",
+   "a": 70000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Perte totale à terminaison = 1 000 000 − 900 000 = 100 000. À l'avancement, 30 % de cette perte est déjà passée par le résultat (produits 270 000 contre coûts 300 000). La fraction restante, 100 000 × 70 % = 70 000 €, est provisionnée en 1516 par le débit de 6815 (PCG art. 622-4). Provisionner 100 000 compterait deux fois la perte déjà constatée.",
+   "src": "PCG art. 622-4",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "q": "Concernant la perte à terminaison d'un contrat à long terme, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle doit être provisionnée dès qu'elle devient probable, quelle que soit la méthode retenue",
+    "Avec la méthode à l'achèvement, la perte probable est couverte d'abord par une dépréciation des en-cours, puis par une provision pour le complément",
+    "Elle n'est comptabilisée qu'à la livraison du bien",
+    "Avec la méthode à l'avancement, seule la part de perte non encore constatée par le résultat est provisionnée",
+    "Elle est enregistrée en 1572"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "PCG art. 622-4 : la perte globale probable est provisionnée dès qu'elle est connue (prudence). À l'achèvement, la dépréciation des en-cours absorbe la perte à hauteur des coûts engagés et la provision 1516 couvre le reste ; à l'avancement, la provision 1516 ne porte que sur la fraction restante. Attendre la livraison violerait la prudence ; 1572 est la provision pour gros entretien.",
+   "src": "PCG art. 622-4",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise française facture le 15 novembre N un client américain 10 000 USD, cours 1 USD = 0,92 €. Au 31 décembre N, 1 USD = 0,90 €. Quelle écriture passe-t-on à la clôture ?",
+   "opts": [
+    "Débit 666 pour 200, crédit 411 pour 200",
+    "Débit 476 pour 200, crédit 411 pour 200, et provision 6865 / 1515 pour 200",
+    "Débit 411 pour 200, crédit 477 pour 200",
+    "Aucune écriture : la créance n'est pas encore encaissée"
+   ],
+   "a": 1,
+   "why": "La créance passe de 9 200 € à 9 000 € : perte latente de 200. PCG art. 420-5 s. : elle est portée en 476 Différences de conversion – Actif (compte transitoire, pas une charge) et, par prudence, provisionnée (6865 / 1515). Le compte 666 est réservé aux pertes réalisées au règlement ; 477 enregistrerait un gain latent ; ne rien faire ignorerait la perte probable.",
+   "src": "PCG art. 420-5 à 420-7",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, une dette fournisseur de 20 000 USD comptabilisée à 0,91 € (18 200 €) doit être réévaluée au cours de clôture de 0,94 €. Enregistrez l'écart de conversion et la provision correspondante.",
+   "lib": "Écart de conversion sur dette en devises et provision pour perte de change",
+   "palette": [
+    "476",
+    "401",
+    "6865",
+    "1515",
+    "477",
+    "666",
+    "766"
+   ],
+   "sol": [
+    [
+     {
+      "a": "476",
+      "d": 600,
+      "c": 0
+     },
+     {
+      "a": "401",
+      "d": 0,
+      "c": 600
+     },
+     {
+      "a": "6865",
+      "d": 600,
+      "c": 0
+     },
+     {
+      "a": "1515",
+      "d": 0,
+      "c": 600
+     }
+    ]
+   ],
+   "why": "Dette au cours de clôture : 20 000 × 0,94 = 18 800 €, contre 18 200 € : la dette augmente de 600 € (crédit 401), perte latente en 476 (différence de conversion actif). Provision pour pertes de change : 6865 / 1515 pour 600. Le compte 477 ne servirait que pour un gain latent (baisse de la dette) ; 666 et 766 sont réservés aux écarts réalisés au règlement.",
+   "src": "PCG art. 420-5 à 420-7",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une créance de 10 000 USD comptabilisée 9 200 € (cours 0,92) est encaissée le 20 février N+1 au cours de 0,89 €. L'écart de conversion constaté à la clôture a été contrepassé à l'ouverture. Calculez la perte de change réalisée enregistrée en 666 (en euros).",
+   "a": 300,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Montant encaissé : 10 000 × 0,89 = 8 900 €. Valeur d'origine de la créance : 9 200 €. Perte de change réalisée = 9 200 − 8 900 = 300 € en 666. La provision de 200 constituée à la clôture (cours 0,90) est reprise en 7865, de sorte que le résultat de N+1 ne supporte que 100 € nets, correspondant à la baisse du cours entre la clôture et l'encaissement.",
+   "src": "PCG art. 420-4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Au 31 décembre N, une entreprise détient 50 000 USD sur un compte bancaire en devises, comptabilisés 46 000 € ; le cours de clôture donne 45 500 €. Quel traitement ?",
+   "opts": [
+    "Débit 476 pour 500 et provision pour perte de change",
+    "Débit 666 pour 500, crédit 512 pour 500 : perte constatée directement en résultat",
+    "Aucun traitement : les disponibilités ne sont jamais réévaluées",
+    "Crédit 766 Gains de change pour 500, débit 512"
+   ],
+   "a": 1,
+   "why": "Les comptes 476/477 et la provision 1515 ne concernent que les créances et dettes. Les disponibilités en devises sont converties au cours de clôture et l'écart est enregistré immédiatement en résultat : 666 en cas de perte (ici 46 000 − 45 500 = 500), 766 en cas de gain (PCG art. 420-8). Ne pas réévaluer violerait l'image fidèle.",
+   "src": "PCG art. 420-8",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "multi",
+   "q": "Dans quels cas la provision pour perte de change peut-elle être limitée ou non constituée malgré une perte latente ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'opération est couverte par une vente à terme de devises",
+    "L'entreprise a une position globale de change créditrice sur la même devise et des échéances voisines",
+    "L'emprunt en devises finance une immobilisation acquise dans le pays de cette devise",
+    "La perte latente est inférieure à 10 000 €",
+    "Le client est situé dans l'Union européenne"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 420-6 et 420-7 : la provision peut être ajustée en cas de couverture de change (cours garanti), de position globale de change par devise (compensation des pertes et gains latents de même échéance) et d'emprunt en devises finançant une immobilisation (étalement de la perte sur la durée restante). Aucun seuil de montant n'existe et la localisation du client est indifférente.",
+   "src": "PCG art. 420-6 et 420-7",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Fiscalement, la provision pour perte de change (1515) constituée à la clôture est :",
+   "opts": [
+    "Déductible comme toute provision pour risques",
+    "Non déductible, la perte latente (476) étant déjà déduite fiscalement",
+    "Déductible à hauteur de 50 % de son montant",
+    "Déductible uniquement si la devise est le dollar américain"
+   ],
+   "a": 1,
+   "why": "CGI art. 38, 4 : les écarts de conversion sur créances et dettes en devises sont pris en compte immédiatement dans le résultat imposable (déduction extra-comptable de 476, réintégration de 477). La provision 1515, qui couvre la même perte, ferait double emploi : elle est réintégrée et sa reprise ultérieure est déduite. Il n'existe aucun régime de déduction partielle ou lié à la devise.",
+   "src": "CGI art. 38, 4",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quel compte figure, au bilan de clôture, un gain latent de change sur une dette fournisseur en yens ?",
+   "opts": [
+    "766 Gains de change",
+    "477 Différences de conversion – Passif",
+    "476 Différences de conversion – Actif",
+    "1515 Provisions pour pertes de change"
+   ],
+   "a": 1,
+   "why": "Un gain latent (baisse de la dette convertie au cours de clôture) est inscrit en 477, compte transitoire du passif ; il n'est pas pris en résultat (prudence, PCG art. 420-5). Le compte 766 n'enregistre que les gains réalisés au règlement ; 476 reçoit les pertes latentes et 1515 les provisionne.",
+   "src": "PCG art. 420-5",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quel est l'effet du choix du PEPS plutôt que du CMP sur le résultat d'une entreprise commerciale en période de hausse continue des prix d'achat ?",
+   "opts": [
+    "Le résultat est plus faible avec le PEPS",
+    "Le résultat est plus élevé avec le PEPS, le stock final étant valorisé aux coûts récents",
+    "Le résultat est identique quelle que soit la méthode",
+    "Le PEPS n'a d'effet que sur la trésorerie"
+   ],
+   "a": 1,
+   "why": "En PEPS, les sorties sont valorisées aux coûts anciens (plus bas) et le stock final aux coûts récents (plus hauts) : les achats consommés sont minorés, le résultat majoré. Le CMP lisse l'effet. Les méthodes de valorisation n'ont aucun impact sur la trésorerie, seulement sur la répartition du résultat entre exercices.",
+   "src": "PCG art. 213-34",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Au DSCG, en IFRS (IFRS 15), la comptabilisation du chiffre d'affaires des contrats de construction repose sur :",
+   "opts": [
+    "Le libre choix entre achèvement et avancement, comme en PCG",
+    "La reconnaissance progressive du revenu à mesure du transfert du contrôle au client",
+    "La méthode à l'achèvement exclusivement, par prudence",
+    "La facturation émise au client au cours de l'exercice"
+   ],
+   "a": 1,
+   "why": "IFRS 15 ne laisse pas d'option : le revenu est reconnu progressivement quand l'une des conditions de transfert continu du contrôle est remplie (ce qui est le cas de la plupart des contrats de construction), sinon à un instant donné. Le PCG, lui, laisse le choix entre achèvement et avancement (préférentiel). La facturation n'est jamais le critère de reconnaissance du produit.",
+   "src": "IFRS 15, § 35 ; PCG art. 622-2",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

@@ -1,0 +1,555 @@
+{
+ "id": "ue2-06",
+ "ue": "UE2",
+ "ordre": 6,
+ "title": "Entreprises en difficulté et droit pénal des affaires",
+ "resume": "Du mandat ad hoc à la liquidation judiciaire, puis les infractions du dirigeant : abus de biens sociaux, banqueroute, comptes infidèles, avec les délais et les peines à connaître par cœur.",
+ "duree": "75 min",
+ "niveau": 3,
+ "lecon": [
+  {
+   "h": "Prévention : information, alerte, mandat ad hoc, conciliation",
+   "html": "<p><b>Détection.</b> Les sociétés d'au moins <span class=\"mono\">300</span> salariés ou <span class=\"mono\">18 M€</span> de chiffre d'affaires établissent des documents prévisionnels (L. 232-2). Les <b>groupements de prévention agréés</b> analysent les informations comptables de leurs adhérents (L. 611-1). Le <b>président du tribunal</b> peut convoquer le dirigeant d'une entreprise en difficulté (L. 611-2).</p><p><b>Procédure d'alerte</b> : le <b>commissaire aux comptes</b> qui relève des faits de nature à compromettre la continuité de l'exploitation demande des explications au dirigeant (réponse sous <b>15 jours</b>), puis fait délibérer le conseil, puis saisit l'assemblée et informe le président du tribunal (L. 234-1 et s.). Le <b>CSE</b> dispose aussi d'un droit d'alerte économique ; les <b>associés</b> peuvent poser deux fois par exercice des questions écrites (L. 223-36, L. 225-232).</p><p><b>Mandat ad hoc</b> (L. 611-3) : à la demande du seul débiteur, non en cessation des paiements, le président du tribunal désigne un mandataire pour négocier avec les créanciers ; procédure <b>confidentielle</b>, sans durée légale, le dirigeant conservant tous ses pouvoirs.</p><p><b>Conciliation</b> (L. 611-4 et s.) : ouverte au débiteur qui éprouve une difficulté juridique, économique ou financière avérée ou prévisible, et qui n'est pas en cessation des paiements depuis <b>plus de 45 jours</b>. Durée : <b>quatre mois</b>, prorogeable d'<b>un mois</b> au plus (L. 611-6). L'accord peut être <b>constaté</b> (confidentiel) ou <b>homologué</b> par le tribunal (publié ; débiteur plus en cessation des paiements ; <b>privilège de conciliation</b> ou « new money » pour les apporteurs d'argent frais, L. 611-11). Échec : passage possible vers une sauvegarde accélérée.</p>"
+  },
+  {
+   "h": "La sauvegarde",
+   "html": "<p>Procédure <b>préventive</b> ouverte à la demande du <b>seul débiteur</b> qui, <b>sans être en cessation des paiements</b>, justifie de difficultés qu'il n'est pas en mesure de surmonter (L. 620-1). Bénéficiaires : commerçants, artisans, agriculteurs, professionnels indépendants, personnes morales de droit privé.</p><p>Le jugement d'ouverture ouvre une <b>période d'observation</b> de <b>six mois</b>, renouvelable une fois par décision motivée (<b>douze mois</b> maximum, L. 621-3). Le tribunal nomme un <b>juge-commissaire</b>, un <b>mandataire judiciaire</b> (représente les créanciers) et, facultativement sous certains seuils, un <b>administrateur judiciaire</b> chargé de surveiller ou d'assister le dirigeant, qui reste en fonctions. Un bilan économique, social et environnemental est dressé.</p><p>Issue : un <b>plan de sauvegarde</b> arrêté par le tribunal pour <b>dix ans</b> au plus (quinze pour les agriculteurs), comportant délais et remises ; à défaut, conversion en redressement ou liquidation si la situation s'est dégradée. Lorsque l'entreprise dépasse certains seuils (<span class=\"mono\">250</span> salariés et <span class=\"mono\">20 M€</span> de chiffre d'affaires, ou <span class=\"mono\">40 M€</span> de chiffre d'affaires, R. 626-52), les créanciers sont réunis en <b>classes de parties affectées</b> (ordonnance du 15 septembre 2021) qui votent le plan, le tribunal pouvant l'imposer à une classe dissidente (<i>cross-class cram-down</i>).</p><p><b>Sauvegarde accélérée</b> (L. 628-1 et s.) : réservée au débiteur engagé dans une <b>conciliation</b> et dont les comptes sont certifiés ou établis par un expert-comptable ; classes de parties affectées obligatoires ; durée de <b>deux mois</b>, prorogeable jusqu'à <b>quatre mois</b> au total. Elle permet d'imposer aux créanciers récalcitrants un plan négocié avec la majorité.</p>"
+  },
+  {
+   "h": "Le redressement judiciaire",
+   "html": "<p><b>Cessation des paiements</b> : impossibilité de faire face au <b>passif exigible</b> avec l'<b>actif disponible</b> (L. 631-1), compte tenu des réserves de crédit et des moratoires. Le débiteur doit demander l'ouverture d'un redressement (ou d'une liquidation) dans les <b>45 jours</b>, sauf demande de conciliation (L. 631-4) ; le tribunal peut aussi être saisi par un <b>créancier</b> ou le <b>ministère public</b>, mais plus d'office.</p><p><b>Période d'observation</b> : six mois, renouvelable une fois, plus une prolongation exceptionnelle de six mois à la demande du procureur (<b>18 mois</b> au plus, L. 631-7). L'administrateur judiciaire assiste ou représente le dirigeant. Issue : <b>plan de redressement</b> (dix ans au plus) ou <b>plan de cession</b> à un tiers, voire conversion en liquidation.</p><p><b>Période suspecte</b> : entre la date de cessation des paiements, que le tribunal peut faire remonter jusqu'à <b>18 mois</b> avant le jugement d'ouverture (L. 631-8), et ce jugement. <b>Nullités de droit</b> (L. 632-1) : actes à titre gratuit, contrats déséquilibrés, paiements de dettes non échues, paiements par des moyens anormaux, sûretés constituées pour des dettes antérieures. <b>Nullités facultatives</b> (L. 632-2) : paiements de dettes échues et actes à titre onéreux si le cocontractant connaissait la cessation des paiements.</p><div class=\"note\"><b>Repère.</b> Sauvegarde = pas de cessation des paiements, demande du débiteur seul. Redressement = cessation des paiements, redressement possible. Liquidation = cessation des paiements, redressement manifestement impossible.</div>"
+  },
+  {
+   "h": "La liquidation judiciaire",
+   "html": "<p>Ouverte lorsque le débiteur est en <b>cessation des paiements</b> et que son redressement est <b>manifestement impossible</b> (L. 640-1), d'emblée ou par conversion. Le <b>liquidateur</b> remplace le dirigeant, <b>dessaisi</b> de l'administration de ses biens ; il réalise les actifs (cession d'unités de production ou vente isolée), licencie les salariés dans les 15 jours (21 en cas de PSE) et répartit le produit selon le rang des créanciers (super-privilège des salaires, frais de justice, privilège de conciliation, créances postérieures utiles, sûretés, chirographaires).</p><p><b>Liquidation judiciaire simplifiée</b> (L. 641-2 et D. 641-10) : <b>obligatoire</b> lorsque le débiteur n'a pas d'immeuble, a employé au plus <b>cinq salariés</b> au cours des six mois précédents et réalise un chiffre d'affaires hors taxes inférieur ou égal à <span class=\"mono\">750 000 €</span>. Elle dure six mois (prolongeable de trois mois), avec une vérification des créances limitée.</p><p><b>Clôture</b> : pour <b>extinction du passif</b> (rare) ou pour <b>insuffisance d'actif</b> ; dans ce dernier cas, les créanciers ne recouvrent pas leur droit de poursuite individuelle, sauf exceptions (fraude, sanctions, créances personnelles telles que les pensions alimentaires, caution ayant payé).</p><p><b>Rétablissement professionnel</b> (L. 645-1 et s.) : pour l'entrepreneur <b>personne physique</b> sans salarié depuis six mois, dont l'actif est inférieur à <span class=\"mono\">15 000 €</span> et sans procédure en cours ; quatre mois d'enquête, puis effacement des dettes sans liquidation.</p>"
+  },
+  {
+   "h": "Organes, créanciers et sanctions",
+   "html": "<p><b>Tribunal</b> : tribunal de commerce (ou tribunal des activités économiques dans les douze juridictions de l'expérimentation ouverte le 1er janvier 2025) pour les commerçants et artisans, tribunal judiciaire pour les autres débiteurs. <b>Juge-commissaire</b> : veille au déroulement de la procédure. <b>Administrateur judiciaire</b> : surveille, assiste ou représente le débiteur. <b>Mandataire judiciaire</b> : représente l'intérêt collectif des créanciers. <b>Liquidateur</b> : en liquidation. <b>Contrôleurs</b> : un à cinq créanciers. Le <b>ministère public</b> est informé et peut agir.</p><p><b>Créanciers antérieurs</b> : interdiction de payer leurs créances, <b>arrêt des poursuites individuelles</b>, arrêt du cours des intérêts (sauf prêts d'au moins un an). Ils <b>déclarent leurs créances</b> au mandataire dans les <b>deux mois</b> de la publication du jugement au <b>BODACC</b> (R. 622-24) ; à défaut, inopposabilité, sauf <b>relevé de forclusion</b> demandé dans les six mois. Les créances <b>postérieures</b> utiles sont payées à l'échéance ou privilégiées (L. 622-17).</p><p><b>Sanctions du dirigeant</b> : <b>responsabilité pour insuffisance d'actif</b> (L. 651-2) en liquidation seulement, pour une faute de gestion ayant contribué à l'insuffisance d'actif (simple négligence exclue), action dans les <b>trois ans</b> du jugement ; <b>faillite personnelle</b> et <b>interdiction de gérer</b> (L. 653-1 et s.), quinze ans au plus, pour détournement d'actif, comptabilité fictive ou absente, poursuite abusive d'une exploitation déficitaire, ou omission <b>sciemment</b> de déclarer la cessation des paiements dans les 45 jours (L. 653-8).</p>"
+  },
+  {
+   "h": "Droit pénal des affaires : principes",
+   "html": "<p>Une <b>infraction</b> suppose trois éléments : <b>légal</b> (texte d'incrimination, principe de légalité et d'interprétation stricte), <b>matériel</b> (acte ou omission, résultat, lien de causalité ; la tentative n'est punissable pour les délits que si la loi le prévoit) et <b>moral</b> (intention pour les délits, sauf imprudence prévue par la loi). Classification : contraventions (amende), délits (jusqu'à dix ans d'emprisonnement), crimes.</p><p><b>Prescription de l'action publique</b> (loi n° 2017-242 du 27 février 2017) : <b>six ans</b> pour les délits, vingt ans pour les crimes, un an pour les contraventions, à compter du jour de l'infraction ; pour les infractions <b>occultes ou dissimulées</b>, le délai court du jour où l'infraction est apparue et a pu être constatée, dans la limite d'un délai butoir de <b>douze ans</b> pour les délits (C. proc. pén., art. 9-1).</p><p><b>Responsabilité pénale des personnes morales</b> (C. pén., art. 121-2) : toute personne morale, sauf l'État, est responsable des infractions commises <b>pour son compte</b> par ses <b>organes ou représentants</b>. Peines : amende dont le maximum est le <b>quintuple</b> de celui prévu pour les personnes physiques (art. 131-38), dissolution, interdiction d'exercer, exclusion des marchés publics, affichage. Elle n'exclut pas la responsabilité des personnes physiques auteurs ou complices.</p><p><b>Dirigeant de fait</b> : celui qui exerce en toute indépendance une activité positive de gestion et de direction est traité comme le dirigeant de droit pour la plupart des infractions du droit des sociétés (ABS, banqueroute). Le dirigeant de droit peut s'exonérer en prouvant une <b>délégation de pouvoirs</b> valable (délégataire compétent, pourvu de l'autorité et des moyens).</p>"
+  },
+  {
+   "h": "Les infractions à connaître",
+   "html": "<table><thead><tr><th>Infraction</th><th>Éléments</th><th>Peines maximales</th></tr></thead><tbody><tr><td><b>Abus de biens sociaux</b> (L. 241-3 SARL, L. 242-6 SA, applicable à la SAS)</td><td>Dirigeant de droit ou de fait ; usage des biens, du crédit, des pouvoirs ou des voix contraire à l'intérêt social ; à des fins personnelles ou pour favoriser une autre société ; mauvaise foi. Un simple risque suffit, pas besoin de préjudice réalisé. Inapplicable aux SNC et sociétés civiles (abus de confiance).</td><td>5 ans, 375 000 €</td></tr><tr><td><b>Présentation ou publication de comptes infidèles</b></td><td>Comptes annuels ne donnant pas une image fidèle, en vue de dissimuler la situation ; intention requise.</td><td>5 ans, 375 000 €</td></tr><tr><td><b>Distribution de dividendes fictifs</b></td><td>Répartition sans inventaire ou au moyen d'un inventaire frauduleux (L. 232-12).</td><td>5 ans, 375 000 €</td></tr><tr><td><b>Banqueroute</b> (L. 654-1 et s.)</td><td>Procédure de redressement ou de liquidation ouverte ; achats pour revente au-dessous du cours ou moyens ruineux pour retarder l'ouverture, détournement d'actif, augmentation frauduleuse du passif, comptabilité fictive, disparue ou incomplète.</td><td>5 ans, 75 000 €</td></tr><tr><td><b>Abus de confiance</b> (C. pén., 314-1)</td><td>Détournement d'un bien remis à titre précaire.</td><td>3 ans, 375 000 €</td></tr><tr><td><b>Escroquerie</b> (C. pén., 313-1)</td><td>Remise obtenue par faux nom, fausse qualité, abus de qualité vraie ou manœuvres frauduleuses.</td><td>5 ans, 375 000 €</td></tr><tr><td><b>Délit d'initié</b> (CMF, L. 465-1)</td><td>Utilisation d'une information privilégiée sur un instrument financier coté.</td><td>5 ans, 100 M€ (portable au décuple de l'avantage)</td></tr><tr><td><b>Entrave aux fonctions du CAC</b> et <b>non-révélation</b> de faits délictueux par le CAC</td><td>Obstacle aux vérifications ; silence du CAC sur des faits délictueux connus.</td><td>5 ans, 75 000 €</td></tr></tbody></table><p>Les montants d'amende sont ceux encourus par les personnes physiques ; pour une personne morale, multiplier par cinq. L'ABS est le délit le plus fréquent aux examens : vérifier successivement la qualité de l'auteur, la nature de l'acte, sa contrariété à l'intérêt social et l'intérêt personnel poursuivi.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 611-1 à L. 611-16",
+   "note": "Prévention : groupements de prévention, mandat ad hoc, conciliation (quatre mois + un), accord constaté ou homologué, privilège de conciliation"
+  },
+  {
+   "ref": "C. com., art. L. 234-1 à L. 234-4",
+   "note": "Procédure d'alerte du commissaire aux comptes"
+  },
+  {
+   "ref": "C. com., art. L. 620-1, L. 621-3, L. 626-1 et s., L. 628-1 et s. ; R. 626-52",
+   "note": "Sauvegarde : conditions, période d'observation (6 + 6 mois), plan, classes de parties affectées (seuils 250 salariés / 20 M€ ou 40 M€), sauvegarde accélérée"
+  },
+  {
+   "ref": "C. com., art. L. 631-1, L. 631-4, L. 631-7, L. 631-8, L. 632-1 et L. 632-2",
+   "note": "Redressement judiciaire : cessation des paiements, déclaration sous 45 jours, période d'observation (18 mois au plus), période suspecte et nullités"
+  },
+  {
+   "ref": "C. com., art. L. 640-1, L. 641-2, D. 641-10, L. 643-11, L. 645-1",
+   "note": "Liquidation judiciaire, liquidation simplifiée (5 salariés, 750 000 €), clôture pour insuffisance d'actif, rétablissement professionnel"
+  },
+  {
+   "ref": "C. com., art. L. 622-21, L. 622-24, R. 622-24, L. 622-17",
+   "note": "Arrêt des poursuites, déclaration des créances dans les deux mois du BODACC, créances postérieures privilégiées"
+  },
+  {
+   "ref": "C. com., art. L. 651-2, L. 653-1 à L. 653-11, L. 654-1 à L. 654-3",
+   "note": "Responsabilité pour insuffisance d'actif (3 ans), faillite personnelle et interdiction de gérer (15 ans au plus), banqueroute (5 ans, 75 000 €)"
+  },
+  {
+   "ref": "C. com., art. L. 241-3 et L. 242-6 ; L. 232-12",
+   "note": "Abus de biens sociaux, comptes infidèles, dividendes fictifs : 5 ans et 375 000 €"
+  },
+  {
+   "ref": "C. pén., art. 121-2, 131-38, 313-1, 314-1 ; C. proc. pén., art. 8 et 9-1",
+   "note": "Responsabilité pénale des personnes morales (amende quintuple), escroquerie, abus de confiance, prescription des délits (six ans, butoir douze ans)"
+  },
+  {
+   "ref": "CMF, art. L. 465-1 ; C. com., art. L. 821-6 et L. 820-7 (devenu L. 821-10)",
+   "note": "Délit d'initié ; entrave aux fonctions du commissaire aux comptes ; non-révélation de faits délictueux"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Comment la loi définit-elle l'état de cessation des paiements ?",
+   "opts": [
+    "Un résultat net négatif sur deux exercices consécutifs",
+    "L'impossibilité de faire face au passif exigible avec l'actif disponible",
+    "Des capitaux propres inférieurs à la moitié du capital social",
+    "Un refus de crédit opposé par la banque"
+   ],
+   "a": 1,
+   "why": "L'article L. 631-1 définit la cessation des paiements comme l'impossibilité de faire face au passif exigible avec l'actif disponible, compte tenu des réserves de crédit et des moratoires accordés par les créanciers. C'est une notion de trésorerie, distincte de la perte comptable (option A) et de la perte de la moitié du capital (option C), qui relèvent du droit des sociétés et n'impliquent pas une procédure collective.",
+   "src": "C. com., art. L. 631-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quel délai le dirigeant d'une société en cessation des paiements doit-il demander l'ouverture d'un redressement ou d'une liquidation judiciaire ?",
+   "opts": [
+    "15 jours",
+    "30 jours",
+    "45 jours",
+    "Deux mois"
+   ],
+   "a": 2,
+   "why": "L'article L. 631-4 impose au débiteur de demander l'ouverture de la procédure au plus tard dans les 45 jours qui suivent la cessation des paiements, sauf s'il a demandé dans ce délai l'ouverture d'une conciliation. L'omission volontaire expose le dirigeant à une interdiction de gérer (L. 653-8). Le délai de deux mois est celui de la déclaration des créances.",
+   "src": "C. com., art. L. 631-4",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SARL Vexin se trouve en état de cessation des paiements le 10 mars 2025. Son gérant n'envisage pas de conciliation. Quel est le dernier jour (numéro du jour dans le mois d'avril 2025) pour déposer la déclaration de cessation des paiements ?",
+   "a": 24,
+   "unit": "",
+   "tol": 0.5,
+   "why": "Le délai est de 45 jours à compter de la cessation des paiements (L. 631-4). Du 10 mars au 31 mars, 21 jours s'écoulent ; il reste 24 jours, ce qui conduit au 24 avril 2025. Déposer après cette date expose le gérant à une interdiction de gérer si l'omission est volontaire, et constitue un indice de faute de gestion.",
+   "src": "C. com., art. L. 631-4",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la durée maximale d'une procédure de conciliation ?",
+   "opts": [
+    "Trois mois, non prorogeables",
+    "Quatre mois, prorogeables d'un mois au plus, soit cinq mois",
+    "Six mois renouvelables une fois",
+    "Dix-huit mois"
+   ],
+   "a": 1,
+   "why": "L'article L. 611-6 fixe la mission du conciliateur à quatre mois au plus, prorogeable par décision motivée à la demande du conciliateur sans que la durée totale excède cinq mois. Si une demande d'homologation est déposée avant l'expiration, la procédure se prolonge jusqu'à la décision. Six mois renouvelables correspond à la période d'observation de la sauvegarde, dix-huit mois au maximum du redressement.",
+   "src": "C. com., art. L. 611-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une société est en cessation des paiements depuis 30 jours. Son dirigeant peut-il demander l'ouverture d'une conciliation ?",
+   "opts": [
+    "Non, la conciliation est réservée aux entreprises qui ne sont pas en cessation des paiements",
+    "Oui, car elle n'est pas en cessation des paiements depuis plus de 45 jours",
+    "Oui, sans aucune condition de délai",
+    "Non, seule la sauvegarde est possible"
+   ],
+   "a": 1,
+   "why": "La conciliation est ouverte au débiteur qui éprouve une difficulté avérée ou prévisible et qui n'est pas en cessation des paiements depuis plus de 45 jours (L. 611-4) : une cessation des paiements récente n'y fait pas obstacle, contrairement à la sauvegarde, qui exige l'absence de cessation des paiements. Au-delà de 45 jours, seuls le redressement ou la liquidation sont ouverts.",
+   "src": "C. com., art. L. 611-4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle caractéristique distingue le mandat ad hoc de la conciliation ?",
+   "opts": [
+    "Le mandat ad hoc est public, la conciliation confidentielle",
+    "Le mandat ad hoc n'a pas de durée légale maximale et le dirigeant conserve tous ses pouvoirs, la procédure restant confidentielle",
+    "Le mandat ad hoc suppose la cessation des paiements",
+    "Le mandat ad hoc est ouvert à la demande des créanciers"
+   ],
+   "a": 1,
+   "why": "Le mandat ad hoc (L. 611-3) est demandé par le seul débiteur, non en cessation des paiements ; le président du tribunal fixe librement la mission et la durée du mandataire, sans plafond légal, et la procédure est strictement confidentielle. La conciliation est également confidentielle (sauf homologation) mais plafonnée à cinq mois et accessible même en cessation des paiements de moins de 45 jours.",
+   "src": "C. com., art. L. 611-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le commissaire aux comptes d'une SA relève des faits de nature à compromettre la continuité de l'exploitation. Quelle est la première phase de la procédure d'alerte ?",
+   "opts": [
+    "La convocation immédiate de l'assemblée générale",
+    "L'information du président du tribunal de commerce",
+    "La demande d'explications au président du conseil d'administration, qui doit répondre sous 15 jours",
+    "La déclaration de cessation des paiements au greffe"
+   ],
+   "a": 2,
+   "why": "La procédure d'alerte (L. 234-1) commence par une demande d'explications adressée au président du conseil d'administration ou au directoire, qui répond dans les 15 jours. À défaut de réponse satisfaisante, le commissaire fait délibérer le conseil, puis saisit l'assemblée générale, et enfin informe le président du tribunal. Il n'appartient jamais au commissaire aux comptes de déclarer la cessation des paiements.",
+   "src": "C. com., art. L. 234-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle condition la SAS Lumen doit-elle remplir pour obtenir l'ouverture d'une procédure de sauvegarde ?",
+   "opts": [
+    "Être en cessation des paiements depuis moins de 45 jours",
+    "Justifier de difficultés qu'elle n'est pas en mesure de surmonter, sans être en cessation des paiements",
+    "Avoir obtenu l'accord de la majorité de ses créanciers",
+    "Avoir des capitaux propres négatifs"
+   ],
+   "a": 1,
+   "why": "La sauvegarde (L. 620-1) est réservée au débiteur qui, sans être en cessation des paiements, justifie de difficultés qu'il n'est pas en mesure de surmonter ; seul le débiteur peut la demander. Une cessation des paiements, même récente, conduit vers la conciliation ou le redressement. L'accord des créanciers n'est pas requis à l'ouverture, et les capitaux propres négatifs ne sont ni nécessaires ni suffisants.",
+   "src": "C. com., art. L. 620-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une procédure de redressement judiciaire est ouverte. En tenant compte du renouvellement et de la prolongation exceptionnelle à la demande du ministère public, quelle est la durée maximale totale de la période d'observation (en mois) ?",
+   "a": 18,
+   "unit": "mois",
+   "tol": 0.5,
+   "why": "La période d'observation est de six mois, renouvelable une fois par décision motivée (L. 621-3 sur renvoi de L. 631-7), soit douze mois ; elle peut être exceptionnellement prolongée de six mois à la demande du procureur de la République : 6 + 6 + 6 = 18 mois. En sauvegarde, la prolongation exceptionnelle n'existe plus et le maximum est de douze mois.",
+   "src": "C. com., art. L. 621-3 et L. 631-7",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la condition d'accès propre à la sauvegarde accélérée ?",
+   "opts": [
+    "Être en liquidation judiciaire",
+    "Être engagé dans une procédure de conciliation en cours et justifier d'un projet de plan susceptible de recueillir un soutien suffisamment large",
+    "Avoir moins de dix salariés",
+    "Avoir obtenu l'accord unanime des créanciers"
+   ],
+   "a": 1,
+   "why": "La sauvegarde accélérée (L. 628-1) est ouverte au débiteur engagé dans une conciliation, dont les comptes sont certifiés ou établis par un expert-comptable, et qui justifie d'un projet de plan susceptible d'être adopté rapidement par les classes de parties affectées. Elle dure deux mois, prorogeable jusqu'à quatre mois. Elle permet justement de passer outre une minorité de créanciers récalcitrants : l'unanimité n'est pas requise.",
+   "src": "C. com., art. L. 628-1 et L. 628-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quelle situation la constitution de classes de parties affectées est-elle obligatoire en sauvegarde de droit commun ?",
+   "opts": [
+    "Dans toute sauvegarde",
+    "Lorsque le débiteur emploie au moins 250 salariés et réalise au moins 20 M€ de chiffre d'affaires net, ou réalise au moins 40 M€ de chiffre d'affaires net",
+    "Lorsque le passif dépasse 1 M€",
+    "Jamais, les classes étant réservées au redressement judiciaire"
+   ],
+   "a": 1,
+   "why": "Depuis l'ordonnance du 15 septembre 2021, les classes de parties affectées remplacent les comités de créanciers ; elles sont obligatoires au-dessus des seuils de l'article R. 626-52 (250 salariés et 20 M€ de chiffre d'affaires net, ou 40 M€ de chiffre d'affaires net), appréciés à la date de la demande. En dessous, le débiteur peut demander leur constitution. En sauvegarde accélérée, elles sont toujours obligatoires.",
+   "src": "C. com., art. L. 626-29 et R. 626-52",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Qui peut saisir le tribunal pour ouvrir un redressement judiciaire ?",
+   "opts": [
+    "Le débiteur, un créancier par assignation, ou le ministère public",
+    "Le débiteur uniquement",
+    "Le tribunal lui-même, qui peut se saisir d'office",
+    "Le commissaire aux comptes"
+   ],
+   "a": 0,
+   "why": "Le redressement peut être demandé par le débiteur (obligation sous 45 jours), par un créancier qui assigne, ou par le ministère public (L. 631-5). Depuis la décision du Conseil constitutionnel du 7 décembre 2012 et l'ordonnance de 2014, le tribunal ne peut plus se saisir d'office. Le commissaire aux comptes alerte mais n'a pas qualité pour saisir le tribunal. La sauvegarde, elle, n'est ouverte qu'à la demande du débiteur.",
+   "src": "C. com., art. L. 631-5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le jugement d'ouverture d'un redressement judiciaire est rendu le 1er juin 2025. Jusqu'à quelle date au plus tôt le tribunal peut-il fixer la date de cessation des paiements ?",
+   "opts": [
+    "1er juin 2024",
+    "1er décembre 2023",
+    "1er janvier 2025",
+    "Il ne peut pas remonter avant le jugement"
+   ],
+   "a": 1,
+   "why": "Le tribunal fixe la date de cessation des paiements, à défaut au jour du jugement ; il peut la reporter une ou plusieurs fois, sans qu'elle soit antérieure de plus de 18 mois au jugement d'ouverture (L. 631-8). Dix-huit mois avant le 1er juin 2025 : 1er décembre 2023. La période suspecte, qui court de cette date au jugement, permet l'annulation des actes anormaux.",
+   "src": "C. com., art. L. 631-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Parmi les actes suivants accomplis pendant la période suspecte, lesquels sont nuls de droit ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une donation d'un immeuble de la société au fils du gérant",
+    "Le paiement anticipé d'une dette dont l'échéance était postérieure au jugement",
+    "La constitution d'une hypothèque pour garantir une dette contractée antérieurement",
+    "Le paiement par virement, à l'échéance, d'une facture de fournisseur",
+    "La vente d'un véhicule au prix du marché à un tiers ignorant les difficultés"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'article L. 632-1 frappe de nullité de droit les actes à titre gratuit translatifs de propriété, les paiements de dettes non échues, les paiements par des moyens anormaux et les sûretés constituées pour des dettes antérieures. Le paiement normal d'une dette échue et une vente au prix du marché ne sont annulables (L. 632-2, nullité facultative) que si le cocontractant connaissait la cessation des paiements, ce qui n'est pas le cas ici.",
+   "src": "C. com., art. L. 632-1 et L. 632-2",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un fournisseur apprend l'ouverture d'un redressement judiciaire contre son client. Dans quel délai doit-il déclarer sa créance, et à qui ?",
+   "opts": [
+    "Dans le mois du jugement, au greffe",
+    "Dans les deux mois de la publication du jugement au BODACC, au mandataire judiciaire",
+    "Dans les 45 jours, à l'administrateur judiciaire",
+    "Dans les six mois, au juge-commissaire"
+   ],
+   "a": 1,
+   "why": "Les créanciers antérieurs adressent leur déclaration de créance au mandataire judiciaire dans les deux mois de la publication du jugement d'ouverture au BODACC (L. 622-24 et R. 622-24 ; quatre mois hors métropole). Passé ce délai, la créance est inopposable à la procédure, sauf relevé de forclusion demandé dans les six mois. Le délai de 45 jours est celui de la déclaration de cessation des paiements par le débiteur.",
+   "src": "C. com., art. L. 622-24 et R. 622-24",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Le jugement d'ouverture d'une sauvegarde est publié au BODACC le 12 mai 2025. Un créancier déclare sa créance le 20 juillet 2025. De combien de jours la déclaration est-elle tardive ?",
+   "a": 8,
+   "unit": "jours",
+   "tol": 0.5,
+   "why": "Le délai de déclaration est de deux mois à compter de la publication au BODACC (R. 622-24) : il expire le 12 juillet 2025. Du 12 juillet au 20 juillet, la déclaration est en retard de 8 jours. Le créancier devra demander un relevé de forclusion au juge-commissaire, dans les six mois de la publication, en prouvant que sa défaillance n'est pas due à son fait.",
+   "src": "C. com., art. R. 622-24 et L. 622-26",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une EURL de services informatiques sans immeuble, employant trois salariés et réalisant 400 000 € de chiffre d'affaires, est mise en liquidation judiciaire. Quel régime s'applique ?",
+   "opts": [
+    "La liquidation judiciaire de droit commun",
+    "La liquidation judiciaire simplifiée, obligatoire car les trois critères sont réunis",
+    "Le rétablissement professionnel",
+    "La sauvegarde accélérée"
+   ],
+   "a": 1,
+   "why": "La liquidation judiciaire simplifiée est obligatoire (L. 641-2) lorsque le débiteur n'a pas de bien immobilier, n'a pas employé plus de cinq salariés au cours des six derniers mois et réalise un chiffre d'affaires hors taxes d'au plus 750 000 € (D. 641-10) : c'est le cas. Le rétablissement professionnel est réservé aux personnes physiques sans salarié avec un actif inférieur à 15 000 €, et une EURL est une personne morale.",
+   "src": "C. com., art. L. 641-2 et D. 641-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Qui représente l'intérêt collectif des créanciers dans une procédure de sauvegarde ou de redressement ?",
+   "opts": [
+    "L'administrateur judiciaire",
+    "Le mandataire judiciaire",
+    "Le juge-commissaire",
+    "Le procureur de la République"
+   ],
+   "a": 1,
+   "why": "Le mandataire judiciaire a seul qualité pour agir au nom et dans l'intérêt collectif des créanciers (L. 622-20) ; il reçoit et vérifie les déclarations de créances. L'administrateur judiciaire surveille, assiste ou représente le débiteur dans la gestion ; le juge-commissaire veille au déroulement de la procédure ; le ministère public défend l'ordre public économique.",
+   "src": "C. com., art. L. 622-20",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la durée maximale de la faillite personnelle ou de l'interdiction de gérer prononcée contre un dirigeant ?",
+   "opts": [
+    "5 ans",
+    "10 ans",
+    "15 ans",
+    "Illimitée"
+   ],
+   "a": 2,
+   "why": "L'article L. 653-11 fixe à quinze ans la durée maximale de la faillite personnelle et de l'interdiction de gérer, que le tribunal module selon la gravité des faits. Le dirigeant peut en être relevé s'il apporte une contribution suffisante au paiement du passif. Il s'agit de sanctions professionnelles, distinctes des peines pénales de la banqueroute.",
+   "src": "C. com., art. L. 653-11",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quel cas un dirigeant peut-il être condamné à supporter personnellement tout ou partie de l'insuffisance d'actif de sa société ?",
+   "opts": [
+    "En sauvegarde, dès qu'un plan est arrêté",
+    "En liquidation judiciaire, s'il a commis une faute de gestion ayant contribué à l'insuffisance d'actif, la simple négligence étant exclue",
+    "En redressement judiciaire, automatiquement",
+    "Dans toute procédure, dès que le passif dépasse l'actif"
+   ],
+   "a": 1,
+   "why": "L'action en responsabilité pour insuffisance d'actif (L. 651-2) n'existe qu'en liquidation judiciaire : le tribunal peut condamner le dirigeant de droit ou de fait dont la faute de gestion a contribué à l'insuffisance d'actif, mais la loi Sapin 2 (2016) exclut la simple négligence. L'action, exercée par le liquidateur ou le ministère public, se prescrit par trois ans à compter du jugement de liquidation.",
+   "src": "C. com., art. L. 651-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelles sont les peines maximales encourues par une personne physique pour banqueroute, et quelle condition préalable est exigée ?",
+   "opts": [
+    "3 ans et 375 000 €, sans condition",
+    "5 ans et 75 000 €, à condition qu'un redressement ou une liquidation judiciaire ait été ouvert",
+    "5 ans et 375 000 €, en cas de simple cessation des paiements",
+    "10 ans et 150 000 €"
+   ],
+   "a": 1,
+   "why": "La banqueroute (L. 654-2) suppose l'ouverture d'une procédure de redressement ou de liquidation judiciaire et l'un des faits énumérés (détournement d'actif, comptabilité fictive ou disparue, moyens ruineux pour retarder l'ouverture, augmentation frauduleuse du passif). Elle est punie de cinq ans d'emprisonnement et de 75 000 € d'amende (L. 654-3), à ne pas confondre avec les 375 000 € de l'abus de biens sociaux.",
+   "src": "C. com., art. L. 654-2 et L. 654-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelles sont les peines maximales encourues par le gérant d'une SARL auteur d'un abus de biens sociaux ?",
+   "opts": [
+    "3 ans d'emprisonnement et 375 000 € d'amende",
+    "5 ans d'emprisonnement et 375 000 € d'amende",
+    "5 ans d'emprisonnement et 75 000 € d'amende",
+    "7 ans d'emprisonnement et 750 000 € d'amende"
+   ],
+   "a": 1,
+   "why": "L'abus de biens sociaux est puni de cinq ans d'emprisonnement et de 375 000 € d'amende (L. 241-3, 4° pour la SARL ; L. 242-6, 3° pour la SA), peines portées à sept ans et 500 000 € en cas de recours à des sociétés étrangères ou de personnes interposées. Trois ans et 375 000 € correspondent à l'abus de confiance ; cinq ans et 75 000 € à la banqueroute.",
+   "src": "C. com., art. L. 241-3 et L. 242-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "À propos de l'abus de biens sociaux, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il peut être commis par un dirigeant de fait",
+    "L'usage doit être contraire à l'intérêt social",
+    "La mauvaise foi du dirigeant est requise",
+    "Il s'applique au gérant d'une SNC",
+    "Il suppose un préjudice financier effectivement chiffré pour la société"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'ABS vise les dirigeants de droit ou de fait de SARL, SA, SAS et SCA qui font, de mauvaise foi, un usage des biens ou du crédit de la société contraire à son intérêt, à des fins personnelles ou pour favoriser une autre société. La jurisprudence retient l'infraction dès que la société est exposée à un risque anormal, sans exiger un préjudice réalisé. Les sociétés de personnes (SNC) et les sociétés civiles ne sont pas visées : on applique l'abus de confiance.",
+   "src": "C. com., art. L. 241-3 et L. 242-6",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Un gérant a dissimulé en 2016 des détournements dans la comptabilité ; ils sont découverts lors d'un contrôle en 2025. L'action publique est-elle prescrite ?",
+   "opts": [
+    "Oui, le délai de six ans court depuis 2016",
+    "Non : pour une infraction dissimulée, le délai de six ans court du jour où le délit est apparu et a pu être constaté, dans la limite d'un délai butoir de douze ans à compter des faits",
+    "Non, l'abus de biens sociaux est imprescriptible",
+    "Oui, le délai est de trois ans pour les délits"
+   ],
+   "a": 1,
+   "why": "Le délai de prescription des délits est de six ans (C. proc. pén., art. 8, loi du 27 février 2017). Pour les infractions occultes ou dissimulées comme un ABS masqué en comptabilité, il court du jour où l'infraction est apparue et a pu être constatée dans des conditions permettant l'exercice de l'action publique, sans pouvoir excéder douze ans révolus à compter des faits (art. 9-1). Faits de 2016 découverts en 2025 : moins de douze ans, l'action est recevable.",
+   "src": "C. proc. pén., art. 8 et 9-1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une SAS est poursuivie pour une infraction commise pour son compte par son président. Quelle est la condition posée par l'article 121-2 du Code pénal ?",
+   "opts": [
+    "L'infraction doit avoir été commise par n'importe quel salarié",
+    "L'infraction doit avoir été commise, pour le compte de la personne morale, par ses organes ou représentants",
+    "La personne morale doit avoir été préalablement dissoute",
+    "La responsabilité de la personne morale exclut celle du président"
+   ],
+   "a": 1,
+   "why": "L'article 121-2 du Code pénal rend les personnes morales (sauf l'État) responsables des infractions commises pour leur compte par leurs organes ou représentants ; un simple salarié sans délégation de pouvoirs n'est pas un représentant. Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits (art. 121-2 al. 3).",
+   "src": "C. pén., art. 121-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une personne morale est déclarée coupable d'un délit pour lequel la personne physique encourt une amende maximale de 375 000 €. Quel est le montant maximal de l'amende encourue par la personne morale (en €) ?",
+   "a": 1875000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "L'article 131-38 du Code pénal fixe le maximum de l'amende applicable aux personnes morales au quintuple de celui prévu pour les personnes physiques : 375 000 × 5 = 1 875 000 €. Lorsqu'aucune amende n'est prévue pour les personnes physiques (cas d'un crime), le maximum est de 1 000 000 €. Des peines complémentaires (dissolution, exclusion des marchés publics) peuvent s'ajouter.",
+   "src": "C. pén., art. 131-38",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le conseil d'administration d'une SA fait voter la distribution d'un dividende alors qu'aucun inventaire n'a été dressé et que les comptes révèlent une perte. Quelle infraction est caractérisée ?",
+   "opts": [
+    "L'escroquerie",
+    "La distribution de dividendes fictifs, punie de 5 ans et 375 000 €",
+    "La banqueroute",
+    "Le délit d'initié"
+   ],
+   "a": 1,
+   "why": "Opérer entre les actionnaires la répartition de dividendes fictifs, en l'absence d'inventaire ou au moyen d'un inventaire frauduleux, est un délit puni de cinq ans d'emprisonnement et de 375 000 € d'amende (L. 242-6, 1° ; L. 241-3, 2° pour la SARL). Est fictif tout dividende prélevé en dehors d'un bénéfice distribuable (L. 232-12). La banqueroute suppose une procédure collective, et l'escroquerie des manœuvres frauduleuses envers une victime.",
+   "src": "C. com., art. L. 232-12 et L. 242-6, 1°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le commissaire aux comptes d'une SA constate des faits délictueux commis par le directeur général et décide de ne pas les signaler au procureur de la République. Qu'encourt-il ?",
+   "opts": [
+    "Aucune sanction, le secret professionnel l'emportant",
+    "Une sanction pénale : la non-révélation de faits délictueux est punie de 5 ans d'emprisonnement et de 75 000 € d'amende",
+    "Une simple sanction disciplinaire",
+    "La même peine que l'auteur des faits"
+   ],
+   "a": 1,
+   "why": "La révélation au procureur des faits délictueux dont il a eu connaissance est une obligation légale du commissaire aux comptes ; s'en abstenir est un délit puni de cinq ans d'emprisonnement et de 75 000 € d'amende (C. com., ex-L. 820-7, recodifié au titre II du livre VIII par l'ordonnance n° 2023-1142), le secret professionnel étant levé à l'égard du procureur. Les mêmes peines sanctionnent l'entrave aux fonctions du commissaire par les dirigeants.",
+   "src": "C. com., art. L. 820-7 (devenu L. 821-10) et L. 821-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelles sont les peines maximales encourues par une personne physique pour délit d'initié ?",
+   "opts": [
+    "2 ans et 1,5 M€",
+    "5 ans et 100 M€, montant pouvant être porté au décuple de l'avantage retiré",
+    "5 ans et 375 000 €",
+    "10 ans et 10 M€"
+   ],
+   "a": 1,
+   "why": "Depuis la loi du 21 juin 2016, l'article L. 465-1 du Code monétaire et financier punit l'utilisation d'une information privilégiée de cinq ans d'emprisonnement et de 100 millions d'euros d'amende, ce montant pouvant être porté au décuple de l'avantage retiré sans pouvoir lui être inférieur. Les 375 000 € sont l'amende de l'ABS. Le cumul avec une sanction administrative de l'AMF est interdit depuis 2016 (aiguillage entre AMF et parquet).",
+   "src": "CMF, art. L. 465-1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque mesure selon la nature de la sanction qu'elle représente pour le dirigeant.",
+   "cats": [
+    "Sanction pénale",
+    "Sanction patrimoniale (civile)",
+    "Sanction professionnelle"
+   ],
+   "items": [
+    [
+     "Banqueroute",
+     0
+    ],
+    [
+     "Responsabilité pour insuffisance d'actif",
+     1
+    ],
+    [
+     "Faillite personnelle",
+     2
+    ],
+    [
+     "Interdiction de gérer",
+     2
+    ],
+    [
+     "Abus de biens sociaux",
+     0
+    ],
+    [
+     "Présentation de comptes infidèles",
+     0
+    ],
+    [
+     "Condamnation à des dommages-intérêts pour faute de gestion",
+     1
+    ]
+   ],
+   "why": "La banqueroute, l'ABS et la présentation de comptes infidèles sont des délits (emprisonnement et amende). La responsabilité pour insuffisance d'actif (L. 651-2) et l'action en responsabilité civile pour faute de gestion aboutissent à une condamnation pécuniaire. La faillite personnelle et l'interdiction de gérer (L. 653-1 et s.) sont des déchéances professionnelles prononcées par le tribunal de la procédure collective, cumulables avec les précédentes.",
+   "src": "C. com., art. L. 241-3, L. 242-6, L. 651-2, L. 653-1 à L. 653-11, L. 654-2",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

@@ -1,0 +1,546 @@
+{
+ "id": "ue2-05",
+ "ue": "UE2",
+ "ordre": 5,
+ "title": "Opérations sur le capital, transformation, fusion, dissolution et contrôle",
+ "resume": "Les grands événements de la vie sociale : augmenter ou réduire le capital, réagir à la perte de la moitié du capital, changer de forme, fusionner, dissoudre et liquider, sous le regard du commissaire aux comptes.",
+ "duree": "70 min",
+ "niveau": 3,
+ "lecon": [
+  {
+   "h": "L'augmentation de capital en numéraire",
+   "html": "<p>Décision de l'<b>assemblée extraordinaire</b> (AGE en SA, L. 225-129 ; décision collective extraordinaire en SARL et SAS). Deux préalables : le capital existant doit être <b>intégralement libéré</b> (L. 225-131 pour la SA, L. 223-7 pour la SARL, à peine de nullité) et les nouveaux titres sont libérés d'au moins <b>un quart</b> à la souscription, le solde dans les cinq ans (L. 225-144, L. 223-32).</p><p><b>Droit préférentiel de souscription</b> (DPS, L. 225-132) : dans la SA et la SAS, chaque actionnaire peut souscrire, à titre irréductible, un nombre d'actions nouvelles proportionnel à sa participation ; le DPS est négociable et protège contre la dilution. L'AGE peut le <b>supprimer</b> sur rapports du conseil et du commissaire aux comptes, ou l'actionnaire peut y renoncer individuellement. En SARL, le DPS n'existe que si les statuts le prévoient.</p><p><b>Prime d'émission</b> : différence entre le prix d'émission et la valeur nominale ; elle compense la perte de valeur des anciens titres et appartient à tous les actionnaires. Valeur théorique du DPS = valeur de l'action avant − valeur après l'opération.</p><p><b>Délégations</b> en SA : l'AGE peut déléguer au conseil ou au directoire sa <b>compétence</b> pour décider l'augmentation (durée maximale <b>26 mois</b>, plafond global, L. 225-129-2) ou seulement le <b>pouvoir</b> d'en fixer les modalités. Les nouvelles actions sont aussi émises par compensation avec des créances liquides et exigibles.</p>"
+  },
+  {
+   "h": "Apports en nature, incorporation de réserves, réduction de capital",
+   "html": "<p><b>Augmentation par apport en nature</b> : commissaire aux apports obligatoire dans la SA (L. 225-147) ; dispense possible en SARL et SAS aux conditions de la constitution. <b>Incorporation de réserves</b>, bénéfices ou primes : opération interne, sans apport, réalisée par élévation du nominal ou distribution d'actions gratuites ; en SA, l'AGE statue aux <b>conditions de quorum et de majorité de l'AGO</b> (L. 225-130) ; en SARL, décision des associés représentant au moins la <b>moitié des parts</b> (L. 223-30).</p><p><b>Réduction de capital</b> (AGE, L. 225-204 ; L. 223-34) : par diminution du nominal ou du nombre de titres, dans le respect de l'égalité des associés.</p><ul><li><b>Motivée par des pertes</b> : elle apure le report à nouveau débiteur ; les créanciers ne peuvent pas s'y opposer.</li><li><b>Non motivée par des pertes</b> (remboursement aux associés, rachat de titres) : les créanciers antérieurs peuvent former <b>opposition</b> devant le tribunal dans les <b>20 jours</b> du dépôt du procès-verbal au greffe pour la SA (R. 225-152), <b>un mois</b> pour la SARL (R. 223-35) ; l'opération ne peut commencer avant l'expiration du délai.</li></ul><p><b>Coup d'accordéon</b> : réduction du capital à zéro (ou presque) pour absorber les pertes, immédiatement suivie d'une augmentation souscrite par les anciens ou de nouveaux actionnaires. Il est licite s'il est commandé par l'intérêt social et si le DPS est maintenu, même s'il évince les associés qui ne suivent pas (Cass. com., 17 mai 1994, Usinor).</p>"
+  },
+  {
+   "h": "Capitaux propres inférieurs à la moitié du capital (procédure rénovée en 2023)",
+   "html": "<p>Lorsque les comptes approuvés font apparaître des <b>capitaux propres inférieurs à la moitié du capital social</b>, la SARL (L. 223-42), la SA (L. 225-248) et la SAS suivent une procédure d'alerte des tiers :</p><ol><li>dans les <b>quatre mois</b> suivant l'approbation des comptes, les associés décident s'il y a lieu à <b>dissolution anticipée</b> (majorité des modifications statutaires) ;</li><li>la décision est <b>publiée</b> (annonce légale, greffe) ;</li><li>si la poursuite est décidée, la société doit, au plus tard à la clôture du <b>deuxième exercice suivant</b> celui de la constatation, <b>reconstituer</b> ses capitaux propres à la moitié du capital ou <b>réduire son capital</b> du montant des pertes non imputées sur les réserves.</li></ol><p><b>Loi n° 2023-171 du 9 mars 2023</b> et <b>décret n° 2023-657 du 25 juillet 2023</b> : à défaut de régularisation dans ce délai, la société n'encourt plus immédiatement la dissolution. Elle dispose d'un <b>délai supplémentaire de deux exercices</b> pour réduire son capital à un montant inférieur ou égal à un seuil : <span class=\"mono\">1 %</span> du total du bilan du dernier exercice clos pour la SARL et la SAS ; pour la SA, la plus élevée des deux valeurs entre 1 % du bilan et 37 000 €. Si le capital est déjà sous le seuil, aucune réduction n'est exigée.</p><p>Ce n'est qu'à défaut de cette réduction que <b>tout intéressé</b> peut demander la dissolution ; le tribunal peut encore accorder six mois pour régulariser. L'absence de consultation ou de publicité ouvre aussi l'action en dissolution, régularisable jusqu'au jugement.</p>"
+  },
+  {
+   "h": "La transformation",
+   "html": "<p>La <b>transformation</b> est le changement de forme juridique d'une société sans création d'une personne morale nouvelle (C. civ., art. 1844-3) : la société conserve son patrimoine, ses contrats, son immatriculation (et, fiscalement, l'absence de cessation d'entreprise si le régime fiscal ne change pas). Elle est décidée aux conditions de modification des statuts, sauf exigences renforcées :</p><ul><li>SARL vers <b>SAS</b> ou <b>SNC</b> : <b>unanimité</b> des associés (L. 227-3, L. 223-43) ;</li><li>SARL vers SA : majorité des modifications statutaires, et simple majorité des parts si les capitaux propres dépassent 750 000 € ;</li><li>SA vers une autre forme : la SA doit avoir au moins <b>deux ans</b> d'existence et deux bilans approuvés (L. 225-243) ; SA vers SNC : unanimité ; SA vers SAS : unanimité (L. 227-3).</li></ul><p><b>Rapports</b> : lorsqu'une société <b>dépourvue de commissaire aux comptes</b> se transforme en société par actions, un <b>commissaire à la transformation</b> (désigné à l'unanimité ou par le tribunal) apprécie la valeur des biens composant l'actif et les avantages particuliers, et atteste que les capitaux propres sont au moins égaux au capital (L. 224-3). Dans la SA, le commissaire aux comptes atteste cette même condition (L. 225-244). Il faut aussi vérifier que la nouvelle forme est compatible avec la société : capital de 37 000 € pour une SA, qualité de commerçant des associés pour une SNC.</p><p><b>Effets</b> : les dirigeants cessent leurs fonctions, les cautions données restent valables pour les dettes antérieures, les contrats de travail continuent. Publicité au RCS et dans un support d'annonces légales.</p>"
+  },
+  {
+   "h": "Fusion, scission, apport partiel d'actif",
+   "html": "<p>Le régime (C. com., art. L. 236-1 et s.) a été réécrit par l'<b>ordonnance n° 2023-393 du 24 mai 2023</b> (opérations depuis le 1er juillet 2023). La <b>fusion</b> réunit deux sociétés en une : par <b>absorption</b> (l'absorbée disparaît) ou par création d'une société nouvelle. La <b>scission</b> répartit le patrimoine d'une société dissoute entre plusieurs sociétés ; l'<b>apport partiel d'actif</b> transfère une branche d'activité sans dissolution, avec option pour le régime des scissions.</p><p><b>Effets</b> : <b>transmission universelle du patrimoine</b> (actif et passif), <b>dissolution sans liquidation</b> de l'absorbée, remise aux associés de l'absorbée de titres de l'absorbante selon la <b>parité d'échange</b> (valeur du titre absorbé / valeur du titre absorbant), <b>soulte</b> en espèces limitée à <b>10 %</b> de la valeur nominale des titres attribués. Actif net apporté − augmentation de capital = <b>prime de fusion</b>.</p><p><b>Procédure</b> : projet de fusion arrêté par les dirigeants, déposé au greffe et publié au moins <b>30 jours</b> avant les assemblées ; <b>opposition des créanciers</b> non obligataires dans les 30 jours de la publication ; <b>commissaire à la fusion</b> désigné par le tribunal, sauf renonciation <b>unanime</b> des associés de toutes les sociétés ; approbation par l'<b>AGE</b> de chaque société. <b>Fusion simplifiée</b> : si l'absorbante détient <b>100 %</b> de l'absorbée, aucune assemblée (sauf demande d'associés détenant 5 % de l'absorbante) ni commissaire à la fusion ; régime allégé dès 90 %. Les contrats de travail sont transférés (C. trav., L. 1224-1). Fiscalement, le régime de faveur (CGI, art. 210 A) évite l'imposition immédiate des plus-values.</p>"
+  },
+  {
+   "h": "Dissolution, liquidation, TUP",
+   "html": "<p><b>Dissolution</b> (C. civ., art. 1844-7) : terme, extinction de l'objet, décision des associés (dissolution anticipée aux conditions de l'AGE), dissolution judiciaire pour justes motifs, jugement de liquidation judiciaire, réunion des parts en une seule main non régularisée dans l'année. La dissolution est publiée au RCS et dans un support d'annonces légales ; les tiers ne peuvent s'en prévaloir qu'après publicité.</p><p><b>Liquidation amiable</b> (L. 237-1 et s.) : un <b>liquidateur</b> (associé, dirigeant ou tiers) est nommé par les associés pour <b>trois ans</b> au plus, renouvelable ; les dirigeants cessent leurs fonctions ; la dénomination est suivie de « société en liquidation » ; la personnalité morale subsiste pour les besoins de la liquidation. Le liquidateur réalise l'actif, paie les créanciers, établit les comptes de liquidation et convoque l'assemblée de clôture qui lui donne quitus. Les associés reçoivent le remboursement de leur apport puis le <b>boni de liquidation</b> (actif net − capital), réparti selon leurs droits aux bénéfices. Le partage du boni supporte le <b>droit de partage de 2,5 %</b> (CGI, art. 746) ; il n'y a pas de partage, donc pas de droit, dans une société unipersonnelle. Radiation du RCS après publication de la clôture.</p><p><b>Transmission universelle du patrimoine</b> (C. civ., art. 1844-5 al. 3) : la dissolution d'une société dont l'associé unique est une <b>personne morale</b> entraîne la transmission de tout son patrimoine à cet associé <b>sans liquidation</b> ; les créanciers disposent de <b>30 jours</b> à compter de la publication pour s'opposer. Ce mécanisme ne s'applique pas lorsque l'associé unique est une personne physique (EURL, SASU détenue par un particulier), qui doit liquider.</p>"
+  },
+  {
+   "h": "Le contrôle : commissaire aux comptes et publicité légale",
+   "html": "<p><b>Nomination</b> (L. 821-40 et s., issus de l'ordonnance n° 2023-1142) : obligatoire lorsque deux des trois seuils sont dépassés à la clôture (exercices ouverts depuis 2024 : <span class=\"mono\">5 M€</span> de bilan, <span class=\"mono\">10 M€</span> de chiffre d'affaires, <span class=\"mono\">50</span> salariés ; 2,5 M€ / 5 M€ / 25 pour les filiales significatives d'un groupe tenu au contrôle), pour les sociétés cotées, ou volontairement. Désigné par l'assemblée ordinaire pour <b>six exercices</b> (L. 821-44) ; <b>incompatibilités</b> : aucun lien personnel, financier ou professionnel avec l'entité ; <b>rotation</b> du signataire après six exercices dans les entités d'intérêt public. Révocation seulement en justice pour faute ou empêchement ; récusation possible par des associés détenant 5 % du capital.</p><p><b>Mission</b> : certifier que les comptes sont réguliers, sincères et donnent une image fidèle ; vérifications spécifiques (rapport de gestion, conventions réglementées, égalité entre associés) ; <b>procédure d'alerte</b> en cas de faits de nature à compromettre la continuité de l'exploitation ; <b>révélation au procureur</b> des faits délictueux. Il ne s'immisce pas dans la gestion.</p><p><b>Publicité légale</b> : dépôt des comptes au greffe dans le <b>mois</b> suivant l'approbation (deux mois par voie électronique, L. 232-23), option de confidentialité pour les micro et petites entreprises ; inscriptions modificatives au RCS via le guichet unique ; annonces légales et BODACC. <b>Expertise de gestion</b> : 10 % du capital en SARL, 5 % en SA et SAS.</p>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 225-127 à L. 225-150",
+   "note": "Augmentation de capital dans la SA : libération préalable, DPS, prime d'émission, délégations de 26 mois, apports en nature"
+  },
+  {
+   "ref": "C. com., art. L. 223-7, L. 223-30, L. 223-32 à L. 223-34 ; R. 223-35",
+   "note": "Augmentation et réduction de capital de la SARL ; opposition des créanciers (un mois)"
+  },
+  {
+   "ref": "C. com., art. L. 225-204 à L. 225-205 ; R. 225-152",
+   "note": "Réduction de capital de la SA ; opposition des créanciers (20 jours)"
+  },
+  {
+   "ref": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171 du 9 mars 2023) ; R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023)",
+   "note": "Capitaux propres inférieurs à la moitié du capital : consultation, délais, seuil de 1 % du bilan"
+  },
+  {
+   "ref": "C. civ., art. 1844-3 ; C. com., art. L. 224-3, L. 225-243, L. 225-244, L. 227-3",
+   "note": "Transformation : absence de personne morale nouvelle, commissaire à la transformation, conditions propres à la SA et à la SAS"
+  },
+  {
+   "ref": "C. com., art. L. 236-1 et s. (ordonnance n° 2023-393 du 24 mai 2023)",
+   "note": "Fusions, scissions, apports partiels d'actif : effets, commissaire à la fusion, fusion simplifiée, opposition des créanciers"
+  },
+  {
+   "ref": "C. civ., art. 1844-5, 1844-7 à 1844-9 ; C. com., art. L. 237-1 à L. 237-31",
+   "note": "Dissolution, TUP, liquidation amiable, liquidateur (trois ans), boni"
+  },
+  {
+   "ref": "CGI, art. 746",
+   "note": "Droit de partage de 2,5 % sur le boni de liquidation"
+  },
+  {
+   "ref": "C. com., art. L. 821-40 à L. 821-66 et D. 221-5 (décret n° 2024-152)",
+   "note": "Commissaire aux comptes : seuils 5 M€ / 10 M€ / 50, mandat de six exercices, mission, alerte, révélation"
+  },
+  {
+   "ref": "C. com., art. L. 232-23",
+   "note": "Dépôt des comptes annuels au greffe : un mois, deux mois par voie électronique"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quel organe est compétent pour décider une augmentation de capital dans une société anonyme ?",
+   "opts": [
+    "Le conseil d'administration seul",
+    "L'assemblée générale extraordinaire, qui peut déléguer sa compétence ou ses pouvoirs au conseil",
+    "L'assemblée générale ordinaire",
+    "Le directeur général"
+   ],
+   "a": 1,
+   "why": "L'augmentation de capital modifie les statuts : elle relève de l'AGE (L. 225-129), qui peut toutefois déléguer au conseil d'administration ou au directoire soit sa compétence pour décider l'opération (26 mois maximum, plafond fixé), soit le pouvoir d'en arrêter les modalités. Le conseil ne peut pas se saisir seul, et l'AGO n'est compétente que par dérogation pour l'incorporation de réserves (quorum et majorité d'AGO, mais décision formellement extraordinaire).",
+   "src": "C. com., art. L. 225-129 et L. 225-129-2",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL dont le capital n'est libéré qu'à hauteur de 60 % décide une augmentation de capital par souscription en numéraire. Quelle est la sanction ?",
+   "opts": [
+    "Aucune, la libération partielle étant admise",
+    "La nullité de l'augmentation : le capital doit être intégralement libéré avant toute souscription de nouvelles parts en numéraire",
+    "Une amende civile pour le gérant",
+    "La transformation obligatoire en SAS"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-7 impose que le capital soit intégralement libéré avant toute souscription de nouvelles parts à libérer en numéraire, à peine de nullité de l'opération ; la même règle vaut dans la SA (L. 225-131). L'objectif est d'empêcher d'appeler de nouveaux fonds alors que les associés doivent encore le solde de leurs apports. Une augmentation par apport en nature ou par incorporation de réserves n'est en revanche pas soumise à cette condition.",
+   "src": "C. com., art. L. 223-7 et L. 225-131",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une SA au capital de 10 000 actions émet 2 500 actions nouvelles en numéraire avec maintien du droit préférentiel de souscription. Combien d'actions anciennes faut-il détenir pour pouvoir souscrire une action nouvelle à titre irréductible ?",
+   "a": 4,
+   "unit": "actions anciennes",
+   "tol": 0.01,
+   "why": "Le DPS est proportionnel à la participation (L. 225-132) : 10 000 actions anciennes donnent droit à 2 500 actions nouvelles, soit un rapport de 10 000 / 2 500 = 4 actions anciennes pour 1 action nouvelle. Un actionnaire qui détient 400 actions peut donc souscrire 100 actions nouvelles ; s'il en détient 402, il doit vendre ou acheter des droits pour les rompus.",
+   "src": "C. com., art. L. 225-132",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Une SA émet 5 000 actions nouvelles de valeur nominale 10 € au prix d'émission de 16 €. Quel est le montant total de la prime d'émission (en €) ?",
+   "a": 30000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "La prime d'émission est la différence entre le prix d'émission et la valeur nominale : (16 − 10) × 5 000 = 30 000 €. Le capital augmente de 5 000 × 10 = 50 000 € et la prime, inscrite au compte 1041, appartient à l'ensemble des actionnaires. Elle compense la part des réserves à laquelle les nouveaux actionnaires accèdent.",
+   "src": "C. com., art. L. 225-128",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Avant augmentation, une SA compte 10 000 actions valant chacune 30 €. Elle émet 2 500 actions nouvelles au prix de 18 €. Calculez la valeur théorique d'un droit préférentiel de souscription (en €, arrondi au centime).",
+   "a": 2.4,
+   "unit": "€",
+   "tol": 0.05,
+   "why": "Valeur de l'action après l'opération : (10 000 × 30 + 2 500 × 18) / 12 500 = (300 000 + 45 000) / 12 500 = 27,60 €. Valeur théorique du DPS = valeur avant − valeur après = 30 − 27,60 = 2,40 €. Vérification par la formule : il faut 4 DPS pour une action nouvelle, et 4 × 2,40 + 18 = 27,60 € : le souscripteur paie bien la valeur de l'action après l'opération.",
+   "src": "C. com., art. L. 225-132",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA veut réserver une augmentation de capital à un investisseur extérieur. Quelle procédure doit-elle suivre pour écarter le droit préférentiel de souscription des actionnaires ?",
+   "opts": [
+    "Une décision du conseil d'administration suffit",
+    "Une décision de l'AGE, sur rapport du conseil d'administration et rapport spécial du commissaire aux comptes",
+    "Une décision de l'AGO à la majorité simple",
+    "Le DPS ne peut jamais être supprimé"
+   ],
+   "a": 1,
+   "why": "L'AGE qui décide l'augmentation peut supprimer le DPS, en totalité ou pour une tranche, au profit de personnes dénommées ou de catégories de personnes, sur rapport du conseil d'administration (ou du directoire) et rapport spécial du commissaire aux comptes (L. 225-135 et L. 225-138) ; les bénéficiaires de la suppression ne votent pas. Un actionnaire peut aussi renoncer individuellement à son droit. Le conseil ne peut pas décider seul cette suppression.",
+   "src": "C. com., art. L. 225-135 et L. 225-138",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "L'AGE d'une SA délègue au conseil d'administration sa compétence pour décider une ou plusieurs augmentations de capital. Quelle est la durée maximale de cette délégation ?",
+   "opts": [
+    "12 mois",
+    "18 mois",
+    "26 mois",
+    "5 ans"
+   ],
+   "a": 2,
+   "why": "L'article L. 225-129-2 limite à 26 mois la durée pendant laquelle le conseil d'administration ou le directoire peut utiliser la délégation de compétence consentie par l'AGE, qui doit aussi fixer un plafond global. Les durées de 12 ou 18 mois correspondent à d'autres autorisations (programmes de rachat d'actions : 18 mois). Au-delà de 26 mois, une nouvelle AGE est nécessaire.",
+   "src": "C. com., art. L. 225-129-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA décide d'augmenter son capital par incorporation de réserves, avec attribution d'actions gratuites. Dans quelles conditions de quorum et de majorité l'assemblée statue-t-elle ?",
+   "opts": [
+    "Celles de l'AGE : quorum 1/4 puis 1/5, majorité des 2/3",
+    "Celles de l'AGO : quorum 1/5 puis aucun, majorité des voix exprimées",
+    "À l'unanimité des actionnaires",
+    "Aucune assemblée n'est nécessaire, le conseil décide"
+   ],
+   "a": 1,
+   "why": "Par dérogation, l'article L. 225-130 prévoit que l'augmentation de capital par incorporation de réserves, bénéfices ou primes d'émission est décidée par l'assemblée générale aux conditions de quorum et de majorité des assemblées ordinaires (L. 225-98) : l'opération ne modifie pas la richesse des actionnaires, elle ne fait que transférer des réserves au capital. Il s'agit néanmoins d'une modification statutaire qui requiert une assemblée.",
+   "src": "C. com., art. L. 225-130",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une SARL constituée en 2012, quelle majorité est requise pour augmenter le capital par incorporation de réserves ?",
+   "opts": [
+    "Les deux tiers des parts présentes ou représentées, avec quorum du quart",
+    "Les associés représentant au moins la moitié des parts sociales",
+    "L'unanimité",
+    "Plus de la moitié des parts sur première consultation, majorité relative sur seconde"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-30 alinéa 2 prévoit que la décision d'augmenter le capital par incorporation de bénéfices ou de réserves est prise par les associés représentant au moins la moitié des parts sociales, par dérogation à la majorité des deux tiers des parts présentes applicable aux autres modifications statutaires. L'option D décrit la majorité ordinaire, qui n'est pas celle retenue ici.",
+   "src": "C. com., art. L. 223-30",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA prospère décide de réduire son capital pour rembourser une partie de leurs apports aux actionnaires. Quelle protection la loi accorde-t-elle aux créanciers ?",
+   "opts": [
+    "Aucune, la réduction relevant de la liberté des actionnaires",
+    "Les créanciers dont la créance est antérieure peuvent former opposition dans les 20 jours du dépôt du procès-verbal au greffe",
+    "Les créanciers doivent approuver l'opération en assemblée",
+    "Les créanciers peuvent exiger le remboursement immédiat de toutes leurs créances"
+   ],
+   "a": 1,
+   "why": "Pour une réduction de capital non motivée par des pertes, les créanciers antérieurs peuvent former opposition devant le tribunal de commerce dans les 20 jours du dépôt au greffe du procès-verbal de l'AGE (L. 225-205 et R. 225-152) ; le tribunal rejette l'opposition ou ordonne le remboursement ou la constitution de garanties. En SARL, le délai est d'un mois (R. 223-35). Aucune opposition n'est ouverte si la réduction est motivée par des pertes.",
+   "src": "C. com., art. L. 225-205 et R. 225-152",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SA dont les pertes ont absorbé la quasi-totalité des capitaux propres réduit son capital à zéro puis l'augmente immédiatement, en maintenant le droit préférentiel de souscription des anciens actionnaires. Comment s'appelle cette opération et est-elle licite ?",
+   "opts": [
+    "Une fusion-absorption, licite",
+    "Un coup d'accordéon, licite s'il est justifié par l'intérêt social et respecte le droit préférentiel de souscription",
+    "Une liquidation amiable, illicite",
+    "Un coup d'accordéon, toujours illicite car il évince les actionnaires"
+   ],
+   "a": 1,
+   "why": "Le coup d'accordéon (réduction du capital à zéro suivie d'une augmentation) est validé par la jurisprudence (Cass. com., 17 mai 1994, Usinor) dès lors qu'il est commandé par la survie de la société et que les actionnaires conservent leur DPS : ceux qui ne souscrivent pas sont évincés, mais cette éviction résulte de leur choix et non d'une expropriation. Il n'y a ni fusion ni liquidation.",
+   "src": "C. com., art. L. 225-204 ; Cass. com., 17 mai 1994, n° 91-21.364",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les comptes d'une SARL, approuvés en assemblée, font apparaître des capitaux propres inférieurs à la moitié du capital. Dans quel délai le gérant doit-il consulter les associés sur l'éventuelle dissolution anticipée ?",
+   "opts": [
+    "Dans le mois suivant l'approbation des comptes",
+    "Dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte",
+    "Avant la clôture de l'exercice suivant",
+    "Dans les deux ans"
+   ],
+   "a": 1,
+   "why": "L'article L. 223-42 (L. 225-248 pour la SA) impose la consultation des associés dans les quatre mois qui suivent l'approbation des comptes ayant fait apparaître la perte, afin de décider s'il y a lieu à dissolution anticipée. La décision est ensuite publiée. Le délai de deux exercices concerne la régularisation, pas la consultation.",
+   "src": "C. com., art. L. 223-42 et L. 225-248",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "L'assemblée d'une SA réunie le 30 juin 2025 approuve les comptes de l'exercice 2024 et constate des capitaux propres inférieurs à la moitié du capital ; les actionnaires décident de poursuivre l'activité. Jusqu'à quelle date au plus tard la société doit-elle avoir reconstitué ses capitaux propres ou réduit son capital ?",
+   "opts": [
+    "31 décembre 2025",
+    "30 juin 2027",
+    "31 décembre 2027",
+    "31 décembre 2026"
+   ],
+   "a": 2,
+   "why": "La régularisation doit intervenir au plus tard à la clôture du deuxième exercice suivant celui au cours duquel la constatation des pertes est intervenue (L. 225-248). La constatation a lieu en 2025 ; les deux exercices suivants sont 2026 et 2027 : date limite le 31 décembre 2027. Faute de régularisation, la loi de 2023 ouvre un délai supplémentaire de deux exercices pour réduire le capital au seuil réglementaire.",
+   "src": "C. com., art. L. 225-248",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SAS n'a pas reconstitué ses capitaux propres à la moitié du capital dans le délai de deux exercices. Depuis la loi du 9 mars 2023, quelle est la conséquence ?",
+   "opts": [
+    "Elle est dissoute de plein droit",
+    "Tout intéressé peut immédiatement demander sa dissolution sans qu'elle puisse l'éviter",
+    "Elle dispose d'un délai supplémentaire de deux exercices pour réduire son capital à un montant inférieur ou égal à 1 % du total de son bilan ; ce n'est qu'à défaut que la dissolution peut être demandée",
+    "Elle doit obligatoirement se transformer en SARL"
+   ],
+   "a": 2,
+   "why": "La loi n° 2023-171 (art. 14) a assoupli les articles L. 223-42 et L. 225-248 : la société qui n'a pas reconstitué ses capitaux propres n'encourt plus la dissolution si, dans un délai supplémentaire de deux exercices, elle réduit son capital à un montant inférieur ou égal au seuil fixé par le décret n° 2023-657, soit 1 % du total du bilan pour les SARL et SAS. La dissolution ne peut être demandée par tout intéressé qu'à l'issue de ce second délai, le tribunal pouvant encore accorder six mois.",
+   "src": "C. com., art. L. 225-248 et R. 225-166-1 (loi n° 2023-171 ; décret n° 2023-657)",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Pour une SA dont le total du bilan est de 2 M€, quel est le seuil de capital en dessous duquel elle doit se placer, à défaut de reconstitution des capitaux propres, pour échapper à la dissolution ?",
+   "opts": [
+    "20 000 €, soit 1 % du bilan",
+    "37 000 €, le minimum légal de la SA étant supérieur à 1 % du bilan",
+    "1 000 €",
+    "Aucun seuil ne s'applique à la SA"
+   ],
+   "a": 1,
+   "why": "Le décret n° 2023-657 fixe le seuil à 1 % du total du bilan pour les SARL et SAS, et, pour la SA, à la valeur la plus élevée entre 1 % du bilan et le capital minimum légal de 37 000 €. Ici 1 % × 2 000 000 = 20 000 € < 37 000 € : le seuil est de 37 000 €, car une SA ne peut pas descendre sous son capital minimum. Pour un bilan de 10 M€, le seuil aurait été de 100 000 €.",
+   "src": "C. com., art. R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023)",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Une SARL se transforme en SAS. Quel est l'effet de la transformation sur la personnalité morale ?",
+   "opts": [
+    "Une nouvelle personne morale est créée et reprend les contrats",
+    "La personnalité morale subsiste : il n'y a pas de création d'une personne morale nouvelle",
+    "La personnalité morale est suspendue jusqu'à la nouvelle immatriculation",
+    "La société doit être liquidée puis reconstituée"
+   ],
+   "a": 1,
+   "why": "L'article 1844-3 du Code civil dispose que la transformation régulière d'une société en une société d'une autre forme n'entraîne pas la création d'une personne morale nouvelle. La société conserve son patrimoine, ses contrats, ses créances et dettes, son numéro RCS. Fiscalement, l'absence de changement de régime (IS vers IS) évite les conséquences d'une cessation d'entreprise.",
+   "src": "C. civ., art. 1844-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle majorité est requise pour transformer une SARL en SAS ?",
+   "opts": [
+    "Les deux tiers des parts présentes ou représentées",
+    "Plus de la moitié des parts sociales",
+    "L'unanimité des associés",
+    "Les trois quarts des parts sociales"
+   ],
+   "a": 2,
+   "why": "L'article L. 227-3 exige l'unanimité des associés pour toute transformation en SAS, quelle que soit la forme d'origine, car la SAS peut comporter des clauses lourdes (inaliénabilité, exclusion) et augmenter les engagements des associés. L'unanimité vaut aussi pour la transformation en SNC. La transformation en SA relève des majorités de modification statutaire.",
+   "src": "C. com., art. L. 227-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SA Alpha absorbe la SA Bêta. Quel est l'effet de la fusion sur le patrimoine et la personnalité de Bêta ?",
+   "opts": [
+    "Bêta est liquidée et ses actifs vendus à Alpha",
+    "Le patrimoine de Bêta est transmis universellement à Alpha et Bêta est dissoute sans liquidation",
+    "Bêta subsiste comme filiale d'Alpha",
+    "Seuls les actifs sont transférés, les dettes restant à la charge des anciens actionnaires de Bêta"
+   ],
+   "a": 1,
+   "why": "La fusion entraîne la dissolution sans liquidation de la société absorbée et la transmission universelle de son patrimoine (actif et passif) à l'absorbante dans l'état où il se trouve à la date de réalisation (L. 236-3). Les actionnaires de Bêta deviennent actionnaires d'Alpha selon la parité d'échange. Les dettes suivent le patrimoine : les créanciers de Bêta deviennent créanciers d'Alpha, d'où leur droit d'opposition.",
+   "src": "C. com., art. L. 236-3",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "La SA Alpha (valeur de l'action : 150 €) absorbe la SA Bêta, dont les 10 000 actions valent chacune 60 €. Combien d'actions nouvelles Alpha doit-elle émettre pour rémunérer les actionnaires de Bêta ?",
+   "a": 4000,
+   "unit": "actions",
+   "tol": 0.5,
+   "why": "Parité d'échange = valeur de l'action absorbée / valeur de l'action absorbante = 60 / 150 = 0,4, soit 2 actions Alpha pour 5 actions Bêta. Actions à émettre : 10 000 × 0,4 = 4 000. Vérification : 4 000 × 150 = 600 000 € = 10 000 × 60 €, la valeur reçue par les actionnaires de Bêta égale la valeur apportée.",
+   "src": "C. com., art. L. 236-1 et s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Pour rémunérer l'absorption de Bêta, Alpha émet 4 000 actions de valeur nominale 20 €. L'actif net apporté par Bêta s'élève à 600 000 €. Quel est le montant de la prime de fusion (en €) ?",
+   "a": 520000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Augmentation de capital = 4 000 × 20 = 80 000 €. Prime de fusion = actif net apporté − augmentation de capital = 600 000 − 80 000 = 520 000 €. Elle est inscrite au compte 1042 « Primes de fusion » et joue le même rôle que la prime d'émission : préserver les droits des anciens actionnaires d'Alpha sur les réserves.",
+   "src": "C. com., art. L. 236-1 et s. ; PCG, compte 1042",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SAS Holding détient 100 % du capital de la SAS Filiale et l'absorbe. Quelle simplification la loi prévoit-elle ?",
+   "opts": [
+    "Aucune, la procédure de fusion est identique",
+    "Il n'y a lieu ni à approbation par les assemblées des deux sociétés, sauf demande d'associés de l'absorbante détenant au moins 5 % du capital, ni à rapport du commissaire à la fusion",
+    "Seule l'assemblée de la filiale doit approuver la fusion",
+    "La fusion est réalisée par simple déclaration au greffe sans publicité"
+   ],
+   "a": 1,
+   "why": "En cas d'absorption d'une filiale détenue à 100 %, la fusion simplifiée dispense d'assemblée générale dans l'absorbante et dans l'absorbée (sauf si des associés de l'absorbante représentant au moins 5 % du capital demandent la convocation), ainsi que des rapports des dirigeants et du commissaire à la fusion. Le projet de fusion doit toutefois être déposé au greffe et publié, et les créanciers conservent leur droit d'opposition.",
+   "src": "C. com., art. L. 236-11 (ordonnance n° 2023-393)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Deux SA de taille comparable fusionnent. Leurs actionnaires souhaitent éviter la désignation d'un commissaire à la fusion. Est-ce possible ?",
+   "opts": [
+    "Non, le commissaire à la fusion est toujours obligatoire entre SA",
+    "Oui, si les actionnaires de toutes les sociétés participantes en décident à l'unanimité",
+    "Oui, par décision du conseil d'administration de l'absorbante",
+    "Oui, si la fusion est approuvée aux deux tiers des voix"
+   ],
+   "a": 1,
+   "why": "Le commissaire à la fusion, désigné par le président du tribunal de commerce, établit un rapport sur les modalités de la fusion et la parité d'échange ; les associés de toutes les sociétés participant à l'opération peuvent toutefois décider à l'unanimité de ne pas le désigner (L. 236-10). La fusion simplifiée en dispense aussi. Un rapport sur la valeur des apports en nature reste nécessaire dans la SA, par un commissaire aux apports.",
+   "src": "C. com., art. L. 236-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un fournisseur de la société absorbée craint que la fusion ne compromette le paiement de sa créance. De quel délai dispose-t-il pour former opposition ?",
+   "opts": [
+    "10 jours à compter de la publication du projet de fusion",
+    "30 jours à compter de la publication du projet de fusion",
+    "Deux mois à compter de la réalisation de la fusion",
+    "Il ne peut pas s'opposer, la créance étant transmise à l'absorbante"
+   ],
+   "a": 1,
+   "why": "Les créanciers non obligataires des sociétés participantes dont la créance est antérieure à la publicité du projet de fusion peuvent former opposition dans les 30 jours de cette publication (L. 236-15 et R. 236-8 ; ordonnance n° 2023-393) ; le tribunal rejette l'opposition ou ordonne le remboursement ou la constitution de garanties. L'opposition n'empêche pas la poursuite de l'opération. Le délai de 10 jours concerne les créanciers du vendeur d'un fonds de commerce.",
+   "src": "C. com., art. L. 236-15 et R. 236-8",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les associés d'une SARL décident sa dissolution anticipée et nomment un liquidateur. Quelle est la durée maximale de son mandat ?",
+   "opts": [
+    "Un an, non renouvelable",
+    "Trois ans, renouvelable",
+    "Six exercices",
+    "Illimitée, jusqu'à la clôture"
+   ],
+   "a": 1,
+   "why": "L'article L. 237-21 limite le mandat du liquidateur amiable à trois ans ; il peut être renouvelé par les associés ou par décision de justice, le liquidateur devant alors indiquer les raisons pour lesquelles la liquidation n'a pu être clôturée. Les six exercices sont la durée du mandat du commissaire aux comptes.",
+   "src": "C. com., art. L. 237-21",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SARL Oméga (trois associés, capital de 50 000 €) est liquidée à l'amiable. Après réalisation de l'actif et paiement de toutes les dettes, l'actif net à partager s'élève à 80 000 €. Calculez le droit de partage dû sur le boni de liquidation (en €).",
+   "a": 750,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Le boni de liquidation est l'excédent de l'actif net sur les apports remboursés : 80 000 − 50 000 = 30 000 €. Le droit de partage de 2,5 % (CGI, art. 746) s'applique à ce boni : 30 000 × 2,5 % = 750 €. Le remboursement du capital n'est pas taxé. Dans une EURL ou une SASU, il n'y aurait ni partage ni droit de partage.",
+   "src": "CGI, art. 746",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SA Mère détient 100 % des parts de l'EURL Fille et décide de la dissoudre. Quel régime s'applique ?",
+   "opts": [
+    "Une liquidation amiable classique avec nomination d'un liquidateur",
+    "La transmission universelle du patrimoine de Fille à Mère, sans liquidation, les créanciers pouvant s'opposer dans les 30 jours de la publication",
+    "La fusion simplifiée obligatoire",
+    "La dissolution est impossible tant que Fille a des dettes"
+   ],
+   "a": 1,
+   "why": "L'article 1844-5 alinéa 3 du Code civil prévoit que la dissolution d'une société dont l'associé unique est une personne morale entraîne la transmission universelle de son patrimoine à cet associé, sans liquidation ; les créanciers disposent de 30 jours à compter de la publication pour former opposition, et la transmission n'est réalisée qu'à l'expiration de ce délai ou après rejet des oppositions. Si l'associé unique était une personne physique, une liquidation serait nécessaire.",
+   "src": "C. civ., art. 1844-5",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Pour quelle durée le commissaire aux comptes d'une société est-il nommé par l'assemblée ?",
+   "opts": [
+    "Trois exercices renouvelables une fois",
+    "Six exercices",
+    "Un exercice, renouvelable chaque année",
+    "Pour la durée de la société"
+   ],
+   "a": 1,
+   "why": "Le commissaire aux comptes est nommé pour six exercices (L. 821-44, ex-L. 823-3), ses fonctions expirant après l'assemblée statuant sur les comptes du sixième exercice ; le mandat est renouvelable sous réserve des règles de rotation dans les entités d'intérêt public. Un mandat de trois exercices n'existe que pour la nomination volontaire dans les sociétés sous les seuils (audit légal des petites entreprises). Il ne peut être révoqué qu'en justice pour faute ou empêchement.",
+   "src": "C. com., art. L. 821-44",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Parmi les affirmations suivantes relatives à la mission du commissaire aux comptes, lesquelles sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Il certifie que les comptes annuels sont réguliers, sincères et donnent une image fidèle",
+    "Il déclenche la procédure d'alerte s'il relève des faits de nature à compromettre la continuité de l'exploitation",
+    "Il révèle au procureur de la République les faits délictueux dont il a eu connaissance",
+    "Il peut s'immiscer dans la gestion pour corriger les décisions du dirigeant",
+    "Il établit les comptes annuels à la place du dirigeant"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "La mission légale comprend la certification des comptes, les vérifications spécifiques, l'alerte (L. 234-1 et s.) et la révélation des faits délictueux au procureur (sanction pénale de la non-révélation). Le principe de non-immixtion dans la gestion lui interdit de se substituer aux dirigeants, et l'établissement des comptes relève de l'organe de direction : il contrôle, il ne tient pas la comptabilité.",
+   "src": "C. com., art. L. 821-53 à L. 821-56 et L. 234-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À la clôture de l'exercice 2025, une SARL présente un total de bilan de 6 M€, un chiffre d'affaires de 11 M€ et 40 salariés. Au regard des seuils applicables depuis 2024, doit-elle nommer un commissaire aux comptes ?",
+   "opts": [
+    "Non, car elle a moins de 50 salariés",
+    "Oui, car elle dépasse deux des trois seuils : 5 M€ de bilan et 10 M€ de chiffre d'affaires",
+    "Non, la SARL n'est jamais tenue de nommer un commissaire aux comptes",
+    "Oui, car toute société dépassant 10 M€ de chiffre d'affaires y est tenue"
+   ],
+   "a": 1,
+   "why": "Depuis le décret n° 2024-152, la nomination est obligatoire lorsque deux des trois seuils sont dépassés à la clôture : 5 M€ de bilan, 10 M€ de chiffre d'affaires HT, 50 salariés. Bilan 6 M€ et CA 11 M€ dépassent leurs seuils : obligation, même avec 40 salariés. Le seul dépassement du chiffre d'affaires ne suffirait pas. La société est dispensée lorsqu'elle ne dépasse plus deux seuils pendant deux exercices consécutifs.",
+   "src": "C. com., art. L. 821-40 et D. 221-5",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Dans une SA à conseil d'administration, attribuez chaque décision à l'organe compétent.",
+   "cats": [
+    "Assemblée générale extraordinaire",
+    "Assemblée générale ordinaire",
+    "Conseil d'administration"
+   ],
+   "items": [
+    [
+     "Modification de l'objet social",
+     0
+    ],
+    [
+     "Approbation des comptes annuels",
+     1
+    ],
+    [
+     "Nomination du commissaire aux comptes",
+     1
+    ],
+    [
+     "Cooptation d'un administrateur en cas de vacance",
+     2
+    ],
+    [
+     "Autorisation préalable d'une convention réglementée",
+     2
+    ],
+    [
+     "Réduction du capital",
+     0
+    ],
+    [
+     "Nomination du directeur général",
+     2
+    ],
+    [
+     "Transformation en SAS",
+     0
+    ]
+   ],
+   "why": "L'AGE est seule compétente pour modifier les statuts : objet, capital, transformation (L. 225-96, L. 225-204, L. 227-3 avec unanimité). L'AGO approuve les comptes, nomme les administrateurs et le commissaire aux comptes (L. 225-98, L. 821-40). Le conseil d'administration coopte les administrateurs entre deux assemblées (L. 225-24), autorise les conventions réglementées (L. 225-38) et nomme le directeur général (L. 225-51-1).",
+   "src": "C. com., art. L. 225-24, L. 225-38, L. 225-51-1, L. 225-96, L. 225-98, L. 225-204",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

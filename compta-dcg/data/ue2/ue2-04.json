@@ -1,0 +1,530 @@
+{
+ "id": "ue2-04",
+ "ue": "UE2",
+ "ordre": 4,
+ "title": "Sociétés de personnes, sociétés civiles et autres groupements",
+ "resume": "SNC, SCS, sociétés civiles, SEL, GIE, associations, coopératives et fondations : qui répond des dettes, qui décide, qui est imposé, et comment choisir sa forme.",
+ "duree": "60 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "La société en nom collectif",
+   "html": "<p>La <b>SNC</b> (C. com., art. L. 221-1 et s.) est la société de personnes par excellence. Tous les associés (deux au moins) ont la <b>qualité de commerçant</b> : un mineur non émancipé ne peut pas en être associé. Pas de capital minimum, libération libre, apports en industrie possibles.</p><p><b>Responsabilité</b> : les associés répondent <b>indéfiniment et solidairement</b> des dettes sociales (L. 221-1). Le créancier met d'abord la société en demeure par acte extrajudiciaire ; <b>huit jours</b> après une mise en demeure vaine, il peut poursuivre n'importe quel associé pour la <b>totalité</b> (R. 221-10), celui-ci se retournant ensuite contre ses coassociés.</p><p><b>Gérance</b> : tous les associés sont gérants sauf clause contraire ; le gérant peut être un tiers. Il n'engage la société que par les actes entrant dans l'<b>objet social</b> (L. 221-5). Le gérant associé statutaire n'est révocable qu'à l'<b>unanimité des autres associés</b> ; sa révocation dissout la société sauf clause contraire (L. 221-12).</p><p><b>Décisions</b> : unanimité sauf clause statutaire ; la <b>cession de parts</b> exige toujours l'<b>unanimité</b>, toute clause contraire étant réputée non écrite (L. 221-13). Le <b>décès</b> d'un associé dissout la société sauf clause de continuation (L. 221-15).</p><p><b>Fiscalité</b> : <b>IR</b> par transparence (CGI, art. 8), option IS révocable jusqu'au cinquième exercice (CGI, art. 239). Associés : travailleurs non salariés.</p>"
+  },
+  {
+   "h": "La société en commandite simple",
+   "html": "<p>La <b>SCS</b> (L. 222-1 et s.) réunit deux catégories d'associés :</p><ul><li>les <b>commandités</b>, soumis au statut des associés de SNC : commerçants, responsables indéfiniment et solidairement, seuls aptes à gérer ;</li><li>les <b>commanditaires</b>, bailleurs de fonds, responsables seulement à hauteur de leur apport, qui ne peuvent pas apporter leur industrie et ne doivent accomplir <b>aucun acte de gestion externe</b>, même par procuration (défense d'immixtion, L. 222-6) : sinon ils deviennent solidairement tenus des engagements qu'ils ont conclus, voire de toutes les dettes.</li></ul><p><b>Décisions</b> : les modifications statutaires exigent l'accord de tous les commandités et de la majorité en nombre et en capital des commanditaires (L. 222-9). <b>Cessions</b> : unanimité en principe, mais les statuts peuvent libérer les cessions entre commanditaires ou vers des tiers avec consentement des commandités et de la majorité des commanditaires (L. 222-8). Le <b>décès d'un commanditaire</b> ne dissout pas la société (L. 222-10) ; celui d'un commandité la dissout sauf clause.</p><p>Fiscalité : la part des commandités est imposée à l'IR comme en SNC ; celle des commanditaires relève de l'IS. La <b>société en commandite par actions</b> (SCA) applique le même schéma avec des actionnaires commanditaires (trois au minimum) et un capital de 37 000 € : elle sert de défense anti-OPA aux groupes familiaux. Formes rares à l'examen, mais classiques en QCM comparatif.</p>"
+  },
+  {
+   "h": "Les sociétés civiles : SCI, SCP, SCM, sociétés agricoles",
+   "html": "<p>Une société est <b>civile</b> par son objet (gestion immobilière, activité libérale, agricole) lorsqu'elle n'a pas adopté une forme commerciale (C. civ., art. 1845 et s.). Pas de capital minimum, apports en industrie possibles, immatriculation au RCS obligatoire pour avoir la personnalité morale.</p><p><b>Responsabilité</b> : les associés répondent <b>indéfiniment</b> des dettes sociales, mais de façon <b>conjointe</b> (non solidaire), chacun à proportion de sa part dans le capital à la date de l'exigibilité (art. 1857) ; le créancier doit avoir préalablement et <b>vainement poursuivi la société</b> (art. 1858). Un associé à 30 % ne peut donc être poursuivi que pour 30 % de la dette.</p><p><b>Gérance</b> : un ou plusieurs gérants, associés ou non, personnes physiques ou morales (art. 1846) ; révocation à la majorité des associés sauf clause, révocation sans juste motif ouvrant droit à dommages-intérêts ; le gérant n'engage la société que dans la limite de l'objet social (art. 1849). <b>Cessions</b> : agrément de <b>tous les associés</b> sauf clause contraire (art. 1861) ; cessions aux ascendants et descendants libres sauf clause. <b>Fiscalité</b> : IR par transparence, option IS possible.</p><ul><li><b>SCI</b> : détention et gestion d'immeubles ; la location meublée habituelle ou l'achat-revente la rendraient commerciale et imposable à l'IS.</li><li><b>SCP</b> : exercice en commun d'une profession libérale réglementée, associés obligatoirement professionnels.</li><li><b>SCM</b> : mise en commun de <b>moyens</b> (locaux, personnel) sans exercice de la profession ni partage de bénéfices.</li><li>Sociétés civiles agricoles : GAEC, EARL, SCEA.</li></ul>"
+  },
+  {
+   "h": "Les sociétés d'exercice libéral après l'ordonnance 2023-77",
+   "html": "<p>Les professions libérales <b>réglementées</b> (avocats, experts-comptables, médecins, architectes, notaires, etc.) peuvent exercer en <b>SEL</b> : société commerciale par la forme (SELARL, SELAFA, SELAS, SELCA) dont l'objet est l'exercice de la profession. L'<b>ordonnance n° 2023-77 du 8 février 2023</b>, entrée en vigueur le <b>1er septembre 2024</b>, remplace la loi du 31 décembre 1990 et la loi de 1966 sur les SCP par un <b>texte unique</b>, organisé autour de trois familles : professions de santé, professions juridiques et judiciaires, professions techniques et du cadre de vie.</p><p>Règles clés, maintenues ou précisées :</p><ul><li><b>plus de la moitié du capital et des droits de vote</b> doit être détenue par des professionnels <b>exerçant au sein de la société</b> (ou, selon les professions, par des professionnels de la même profession), afin de garantir l'indépendance ;</li><li>les dirigeants et la majorité des organes de direction sont des professionnels exerçant dans la société ;</li><li>chaque professionnel répond <b>sur son patrimoine</b> de ses actes professionnels, la société étant solidairement responsable avec lui ; les dettes non professionnelles suivent le régime de la forme choisie ;</li><li>les <b>sociétés de participations financières de professions libérales</b> (SPFPL, holdings) ont un périmètre élargi ;</li><li>obligation d'<b>information annuelle</b> de l'ordre ou de l'autorité professionnelle sur la composition du capital et les conventions ; les sociétés existantes avaient un an pour mettre leurs statuts en conformité.</li></ul><p>Les professionnels peuvent aussi exercer en <b>SCP</b> (société civile) ou en société pluri-professionnelle d'exercice (SPE), désormais régies par la même ordonnance.</p>"
+  },
+  {
+   "h": "Sociétés sans personnalité morale et GIE",
+   "html": "<p><b>Société en participation</b> (C. civ., art. 1871 à 1872-2) : les associés conviennent de ne pas l'immatriculer ; ni personnalité morale, ni patrimoine, ni dénomination. Chaque associé reste propriétaire de ses apports sauf indivision convenue. <b>Occulte</b> : seul le gérant est engagé envers les tiers. <b>Ostensible</b> : les associés révélés sont tenus indéfiniment, solidairement si l'objet est commercial, conjointement sinon (art. 1872-1). La <b>société créée de fait</b> (art. 1873) suit le même régime.</p><p><b>Groupement d'intérêt économique</b> (C. com., art. L. 251-1 et s.) : deux personnes au moins, physiques ou morales, pour <b>faciliter ou développer l'activité économique de ses membres</b> ; il ne recherche pas de bénéfices pour lui-même mais peut en faire à titre accessoire. Constitution possible <b>sans capital</b> ; <b>personnalité morale</b> dès l'immatriculation au RCS ; objet civil ou commercial. Les membres sont tenus des dettes <b>indéfiniment et solidairement</b> (L. 251-6), sauf convention contraire avec un tiers. Administration libre ; contrôle de la gestion et des comptes par des personnes désignées par l'assemblée. Fiscalité : transparence, chaque membre imposé sur sa part.</p><p>Le <b>GEIE</b> (règlement CEE n° 2137/85) est l'équivalent européen : au moins deux membres relevant de deux États membres différents.</p>"
+  },
+  {
+   "h": "Associations, coopératives, ESS, fondations",
+   "html": "<p><b>Association</b> (loi du 1er juillet 1901) : mise en commun de connaissances ou d'activités dans un but <b>autre que de partager des bénéfices</b> ; elle peut faire des excédents, jamais les distribuer. <b>Non déclarée</b> : pas de personnalité morale. <b>Déclarée</b> (préfecture, publication au JO) : petite capacité (agir en justice, cotisations, dons manuels, subventions, immeubles nécessaires au but). <b>Reconnue d'utilité publique</b> (décret) : legs et donations. Dirigeants fixés par les statuts, bénévoles en principe. <b>Fiscalité</b> : exonération d'IS, de TVA et de CET si la gestion est <b>désintéressée</b> et si l'activité ne concurrence pas le secteur commercial (règle des « 4 P » : produit, public, prix, publicité) ; sinon imposition comme une entreprise.</p><p><b>Coopératives</b> (loi du 10 septembre 1947) : double qualité des membres, « <b>une personne, une voix</b> », ristournes proportionnelles à l'activité, réserves impartageables. <b>SCOP</b> : SA, SARL ou SAS dont les <b>salariés</b> détiennent au moins <b>51 % du capital et 65 % des droits de vote</b>. <b>SCIC</b> : coopérative d'utilité sociale à multisociétariat, au moins 57,5 % des résultats mis en réserves impartageables. La <b>loi n° 2014-856 du 31 juillet 2014</b> définit l'<b>économie sociale et solidaire</b> (but autre que le seul partage des bénéfices, gouvernance démocratique, lucrativité limitée).</p><p><b>Fondation</b> : affectation <b>irrévocable</b> de biens à une œuvre d'intérêt général ; personnalité morale par décret de reconnaissance d'utilité publique. <b>Fonds de dotation</b> (loi LME de 2008) : simple déclaration, dotation initiale minimale de <span class=\"mono\">15 000 €</span>, capacité à recevoir des libéralités.</p>"
+  },
+  {
+   "h": "Choisir la forme : les critères qui tombent à l'examen",
+   "html": "<table><thead><tr><th>Critère</th><th>SNC / sociétés civiles</th><th>SARL</th><th>SA / SAS</th></tr></thead><tbody><tr><td>Responsabilité des associés</td><td>Indéfinie (solidaire en SNC et GIE, conjointe en société civile)</td><td>Limitée aux apports</td><td>Limitée aux apports</td></tr><tr><td>Capital minimum</td><td>Aucun</td><td>Aucun</td><td>37 000 € (SA) / aucun (SAS)</td></tr><tr><td>Fiscalité par défaut</td><td>IR (transparence), option IS</td><td>IS (IR pour l'EURL à associé personne physique, option IR SARL de famille)</td><td>IS, option IR temporaire possible pour les jeunes PME</td></tr><tr><td>Statut social du dirigeant</td><td>TNS</td><td>TNS si gérant majoritaire, sinon assimilé salarié</td><td>Assimilé salarié</td></tr><tr><td>Cession des titres</td><td>Unanimité (SNC, société civile sauf clause)</td><td>Agrément légal des tiers ; 3 % d'enregistrement</td><td>Libre sauf clause ; 0,1 %</td></tr><tr><td>Ouverture à des investisseurs</td><td>Faible</td><td>Moyenne (100 associés max)</td><td>Forte ; offre au public réservée à la SA</td></tr></tbody></table><div class=\"note\"><b>Méthode.</b> Face à un cas de choix de forme, examiner dans l'ordre : nombre et qualité des associés (commerçants ? personnes morales ?), degré de risque accepté, besoin de capitaux et d'investisseurs, régime fiscal souhaité (imputation de pertes à l'IR versus taux d'IS), statut social du dirigeant, contraintes de transmission.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 221-1 à L. 221-17 et R. 221-10",
+   "note": "SNC : qualité de commerçant, responsabilité indéfinie et solidaire, mise en demeure préalable de huit jours, gérance, cessions, décès"
+  },
+  {
+   "ref": "C. com., art. L. 222-1 à L. 222-12",
+   "note": "Société en commandite simple : commandités et commanditaires, défense d'immixtion, décès"
+  },
+  {
+   "ref": "C. civ., art. 1845 à 1870-1",
+   "note": "Sociétés civiles : responsabilité conjointe proportionnelle (1857), poursuite préalable et vaine (1858), gérance, agrément (1861)"
+  },
+  {
+   "ref": "C. civ., art. 1871 à 1873",
+   "note": "Société en participation et société créée de fait"
+  },
+  {
+   "ref": "Ordonnance n° 2023-77 du 8 février 2023 (en vigueur le 1er septembre 2024)",
+   "note": "Exercice en société des professions libérales réglementées : SEL, SCP, SPFPL, détention majoritaire par les professionnels en exercice"
+  },
+  {
+   "ref": "C. com., art. L. 251-1 à L. 251-23",
+   "note": "Groupement d'intérêt économique : objet, absence de capital, responsabilité indéfinie et solidaire des membres (L. 251-6)"
+  },
+  {
+   "ref": "Loi du 1er juillet 1901 relative au contrat d'association ; CGI, art. 206, 1 bis",
+   "note": "Associations : définition, capacité, régime fiscal des organismes sans but lucratif"
+  },
+  {
+   "ref": "Loi n° 47-1775 du 10 septembre 1947 ; loi n° 78-763 du 19 juillet 1978 (SCOP) ; loi n° 2014-856 du 31 juillet 2014 (ESS)",
+   "note": "Coopératives, SCOP (51 % du capital, 65 % des voix aux salariés), SCIC, économie sociale et solidaire"
+  },
+  {
+   "ref": "CGI, art. 8 et 239",
+   "note": "Transparence fiscale des sociétés de personnes et option pour l'IS révocable jusqu'au cinquième exercice"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Quelle qualité ont obligatoirement tous les associés d'une société en nom collectif ?",
+   "opts": [
+    "Celle de commerçant",
+    "Celle de gérant",
+    "Celle de salarié de la société",
+    "Celle de personne morale"
+   ],
+   "a": 0,
+   "why": "L'article L. 221-1 du Code de commerce dispose que les associés en nom collectif ont tous la qualité de commerçant et répondent indéfiniment et solidairement des dettes sociales. Ils ne sont pas nécessairement gérants (les statuts peuvent désigner un gérant, associé ou non) et peuvent être des personnes physiques ou morales. La qualité de commerçant exclut les incapables et les personnes frappées d'une interdiction.",
+   "src": "C. com., art. L. 221-1",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "La SNC Lambert et Fils doit 50 000 € à un fournisseur et ne paie pas. Que doit faire le fournisseur avant de poursuivre personnellement un associé ?",
+   "opts": [
+    "Rien, il peut agir directement contre l'associé le plus solvable",
+    "Mettre vainement en demeure la société par acte extrajudiciaire et attendre huit jours",
+    "Obtenir un jugement de liquidation judiciaire de la SNC",
+    "Poursuivre chaque associé pour sa seule quote-part"
+   ],
+   "a": 1,
+   "why": "Le créancier d'une SNC ne peut poursuivre un associé qu'après avoir vainement mis en demeure la société par acte extrajudiciaire ; la poursuite est possible huit jours au moins après cette mise en demeure (L. 221-1 et R. 221-10). Ensuite, grâce à la solidarité, il peut demander la totalité de la dette à un seul associé, qui se retournera contre les autres. Aucune liquidation judiciaire préalable n'est exigée, et la division par quote-part est la règle des sociétés civiles, pas de la SNC.",
+   "src": "C. com., art. L. 221-1 et R. 221-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une SNC prévoient que les cessions de parts à des tiers sont autorisées à la majorité des deux tiers des associés. Quelle est la valeur de cette clause ?",
+   "opts": [
+    "Valable, les statuts de SNC étant libres",
+    "Réputée non écrite : la cession de parts de SNC exige le consentement unanime des associés",
+    "Valable uniquement pour les cessions entre associés",
+    "Valable si elle est publiée au RCS"
+   ],
+   "a": 1,
+   "why": "L'article L. 221-13 impose que les parts sociales de SNC ne soient cédées qu'avec le consentement de tous les associés et précise que toute clause contraire est réputée non écrite. L'intuitu personae et la responsabilité indéfinie et solidaire justifient cette rigueur, qui s'applique aussi aux cessions entre associés. La publication au RCS ne valide pas une clause contraire à une règle d'ordre public.",
+   "src": "C. com., art. L. 221-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un associé d'une SNC décède. Les statuts ne contiennent aucune clause relative au décès. Quelle est la conséquence ?",
+   "opts": [
+    "La société continue avec les héritiers, qui deviennent associés",
+    "La société est dissoute",
+    "Les parts sont annulées et le capital réduit",
+    "La société se transforme automatiquement en SARL"
+   ],
+   "a": 1,
+   "why": "L'article L. 221-15 prévoit que la SNC prend fin par le décès de l'un des associés, sauf clause statutaire de continuation (avec les associés survivants, avec les héritiers ou avec certains d'entre eux). À défaut de clause, la dissolution est de plein droit. Dans une SARL ou une SA, au contraire, le décès n'affecte pas la société et les titres passent aux héritiers.",
+   "src": "C. com., art. L. 221-15",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SNC composée de deux personnes physiques réalise un bénéfice de 80 000 € et n'a exercé aucune option fiscale. Comment ce bénéfice est-il imposé ?",
+   "opts": [
+    "À l'impôt sur les sociétés au niveau de la SNC",
+    "À l'impôt sur le revenu au nom de chaque associé, pour sa quote-part, même si le bénéfice n'est pas distribué",
+    "À l'impôt sur le revenu seulement si le bénéfice est distribué",
+    "Il est exonéré jusqu'à distribution"
+   ],
+   "a": 1,
+   "why": "La SNC relève de plein droit du régime des sociétés de personnes (CGI, art. 8) : elle est « translucide », chaque associé est personnellement imposé à l'IR sur la part de bénéfice correspondant à ses droits, qu'elle soit distribuée ou non. L'IS ne s'applique que sur option (CGI, art. 239), révocable jusqu'au cinquième exercice suivant celui de l'option.",
+   "src": "CGI, art. 8 et 239",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une société en commandite simple, un associé commanditaire signe au nom de la société un contrat avec un fournisseur, muni d'une procuration du gérant commandité. Quelle est la sanction ?",
+   "opts": [
+    "Aucune, la procuration couvre l'acte",
+    "Il devient tenu solidairement avec les commandités des engagements résultant de cet acte, et éventuellement de tous les engagements sociaux selon la gravité",
+    "Le contrat est nul",
+    "Il perd automatiquement sa qualité d'associé"
+   ],
+   "a": 1,
+   "why": "L'article L. 222-6 interdit au commanditaire tout acte de gestion externe, même en vertu d'une procuration (défense d'immixtion). S'il contrevient à cette interdiction, il est tenu solidairement avec les commandités des dettes et engagements résultant des actes prohibés et, selon leur nombre et leur importance, peut être déclaré solidairement tenu de tous les engagements de la société. Le contrat conclu reste valable à l'égard du tiers.",
+   "src": "C. com., art. L. 222-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Comment les associés d'une société civile immobilière répondent-ils des dettes sociales ?",
+   "opts": [
+    "Indéfiniment et solidairement",
+    "Indéfiniment mais conjointement, chacun à proportion de sa part dans le capital",
+    "Dans la limite de leurs apports",
+    "Uniquement le gérant répond des dettes"
+   ],
+   "a": 1,
+   "why": "L'article 1857 du Code civil pose que les associés d'une société civile répondent indéfiniment des dettes sociales à proportion de leur part dans le capital social à la date de l'exigibilité : la responsabilité est indéfinie (sur le patrimoine personnel) mais conjointe, non solidaire. La solidarité caractérise la SNC et le GIE. La limitation aux apports est propre aux sociétés à risque limité.",
+   "src": "C. civ., art. 1857",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SCI Les Tilleuls doit 120 000 € à une banque et ne peut pas payer ; la banque a vainement poursuivi la société. Les associés détiennent respectivement 50 % (Alain), 30 % (Brigitte) et 20 % (Carole) du capital. Quel montant maximal (en €) la banque peut-elle réclamer à Brigitte ?",
+   "a": 36000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Dans une société civile, chaque associé est tenu indéfiniment mais conjointement, à proportion de sa part dans le capital (art. 1857 C. civ.), après poursuite préalable et vaine de la société (art. 1858). Brigitte peut donc être poursuivie pour 30 % × 120 000 = 36 000 €, pas davantage, même si Alain et Carole sont insolvables. Dans une SNC, la solidarité aurait permis de lui réclamer les 120 000 €.",
+   "src": "C. civ., art. 1857 et 1858",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "La SNC Delta doit 120 000 € à un fournisseur. Les trois associés détiennent 50 %, 30 % et 20 % du capital. Après mise en demeure de la société restée vaine depuis plus de huit jours, quel montant maximal (en €) le fournisseur peut-il réclamer à l'associé détenant 20 % ?",
+   "a": 120000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Les associés de SNC sont tenus indéfiniment et solidairement (L. 221-1) : la solidarité permet au créancier de réclamer l'intégralité de la dette, 120 000 €, à n'importe quel associé, quelle que soit sa participation, une fois la mise en demeure de la société restée infructueuse pendant huit jours (R. 221-10). L'associé qui paie dispose ensuite d'un recours contre ses coassociés pour leurs parts (60 000 € et 36 000 €).",
+   "src": "C. com., art. L. 221-1 et R. 221-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un créancier d'une société civile professionnelle d'architectes veut poursuivre directement un associé pour une dette sociale. Quelle condition préalable l'article 1858 du Code civil lui impose-t-il ?",
+   "opts": [
+    "Avoir obtenu l'accord du gérant",
+    "Avoir préalablement et vainement poursuivi la société",
+    "Avoir attendu la clôture de l'exercice",
+    "Avoir déclaré sa créance au greffe"
+   ],
+   "a": 1,
+   "why": "L'article 1858 du Code civil subordonne la poursuite des associés d'une société civile à une poursuite préalable et vaine de la personne morale : il faut démontrer que les actions contre la société n'ont pas permis d'obtenir paiement (et non une simple mise en demeure, qui suffit en SNC). Les autres options ne correspondent à aucune exigence légale.",
+   "src": "C. civ., art. 1858",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les statuts d'une société civile ne contiennent aucune clause sur la cession des parts. Un associé veut vendre ses parts à un tiers. Quelle règle s'applique ?",
+   "opts": [
+    "La cession est libre",
+    "La cession requiert l'agrément de tous les associés",
+    "La cession requiert l'agrément de la majorité des associés représentant la moitié des parts",
+    "La cession requiert l'autorisation du gérant"
+   ],
+   "a": 1,
+   "why": "L'article 1861 du Code civil prévoit que les parts sociales d'une société civile ne peuvent être cédées qu'avec l'agrément de tous les associés, sauf clause statutaire organisant un agrément par une majorité ou par les gérants. La double majorité est la règle légale de la SARL (L. 223-14). Seules les cessions aux ascendants ou descendants sont libres à défaut de clause.",
+   "src": "C. civ., art. 1861",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Trois médecins créent une structure pour partager un secrétariat, des locaux et du matériel, chacun continuant à exercer et à facturer ses patients en son nom. Quelle forme correspond à ce projet ?",
+   "opts": [
+    "Une société civile professionnelle (SCP)",
+    "Une société civile de moyens (SCM)",
+    "Une SELARL",
+    "Une société en participation"
+   ],
+   "a": 1,
+   "why": "La société civile de moyens a pour seul objet de faciliter l'exercice de la profession de ses membres par la mise en commun de moyens matériels et humains ; elle n'exerce pas la profession et ne partage pas de bénéfices d'exploitation, chaque associé conservant sa clientèle et ses honoraires. La SCP et la SELARL sont des sociétés d'exercice : les honoraires y sont perçus par la société.",
+   "src": "Ordonnance n° 2023-77 du 8 février 2023 ; C. civ., art. 1845",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "À propos des sociétés d'exercice libéral après l'ordonnance n° 2023-77, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'ordonnance est entrée en vigueur le 1er septembre 2024",
+    "Plus de la moitié du capital et des droits de vote doit être détenue par des professionnels exerçant au sein de la société",
+    "Une SEL peut emprunter la forme de la SARL, de la SA, de la SAS ou de la SCA",
+    "Une SEL peut exercer toute activité commerciale en plus de la profession",
+    "Le professionnel qui exerce en SEL n'engage plus sa responsabilité personnelle pour ses actes professionnels"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'ordonnance n° 2023-77 du 8 février 2023, applicable depuis le 1er septembre 2024, consolide le régime des SEL : formes SELARL, SELAFA, SELAS et SELCA ; détention de plus de la moitié du capital et des droits de vote par des professionnels en exercice dans la société. L'objet reste limité à l'exercice de la profession (et des activités accessoires autorisées), et chaque professionnel répond sur son patrimoine de ses actes professionnels, la société étant solidairement responsable.",
+   "src": "Ordonnance n° 2023-77 du 8 février 2023",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Deux entreprises de BTP constituent une société en participation occulte pour répondre à un appel d'offres ; l'une d'elles, désignée gérante, signe seule les contrats avec les tiers en son nom. Qui est engagé envers ces tiers ?",
+   "opts": [
+    "La société en participation, dotée de la personnalité morale",
+    "Le gérant seul, les tiers ignorant l'existence des autres participants",
+    "Les deux entreprises, solidairement",
+    "Personne, la société occulte étant illicite"
+   ],
+   "a": 1,
+   "why": "La société en participation n'a pas la personnalité morale (art. 1871 C. civ.). Lorsqu'elle est occulte, chaque associé contracte en son nom personnel et est seul engagé envers les tiers (art. 1872-1) : ici le gérant. La solidarité des participants ne joue que si la société est ostensible et commerciale, les associés s'étant révélés aux tiers. La société occulte est parfaitement licite.",
+   "src": "C. civ., art. 1871 et 1872-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quel est le but légal d'un groupement d'intérêt économique ?",
+   "opts": [
+    "Réaliser des bénéfices pour lui-même et les distribuer",
+    "Faciliter ou développer l'activité économique de ses membres et améliorer les résultats de cette activité",
+    "Gérer un patrimoine immobilier",
+    "Exercer une profession libérale en commun"
+   ],
+   "a": 1,
+   "why": "L'article L. 251-1 définit le GIE comme un groupement destiné à faciliter ou développer l'activité économique de ses membres, à améliorer ou accroître les résultats de cette activité ; il n'a pas pour but de réaliser des bénéfices pour lui-même, même s'il peut en faire à titre accessoire. Son activité doit se rattacher à celle de ses membres et avoir un caractère auxiliaire : il n'est ni une SCI ni une société d'exercice.",
+   "src": "C. com., art. L. 251-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quatre PME constituent un GIE sans capital pour mutualiser leurs achats. Le GIE ne paie pas une facture de 90 000 €. Que peut faire le fournisseur ?",
+   "opts": [
+    "Rien, le GIE sans capital ne peut pas être poursuivi",
+    "Poursuivre n'importe quel membre pour la totalité, les membres étant tenus indéfiniment et solidairement des dettes du GIE",
+    "Poursuivre chaque membre pour un quart de la dette",
+    "Poursuivre uniquement l'administrateur du GIE"
+   ],
+   "a": 1,
+   "why": "Les membres du GIE sont tenus des dettes de celui-ci sur leur patrimoine propre, indéfiniment et solidairement, sauf convention contraire avec le tiers cocontractant (L. 251-6). L'absence de capital, licite pour un GIE, ne change rien. Le fournisseur peut donc réclamer 90 000 € à un seul membre après avoir vainement mis le groupement en demeure. La division par parts égales est la logique conjointe des sociétés civiles.",
+   "src": "C. com., art. L. 251-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une association loi 1901 réalise un excédent de 12 000 € sur l'exercice. Peut-elle le distribuer à ses membres ?",
+   "opts": [
+    "Oui, à proportion des cotisations versées",
+    "Non : l'association ne peut pas partager des bénéfices entre ses membres, l'excédent reste affecté à son objet",
+    "Oui, si l'assemblée générale le décide à l'unanimité",
+    "Oui, dans la limite de 10 % des cotisations"
+   ],
+   "a": 1,
+   "why": "L'article 1er de la loi du 1er juillet 1901 définit l'association comme la mise en commun d'une activité dans un but autre que de partager des bénéfices. Elle peut dégager des excédents, mais ne peut jamais les distribuer à ses membres, ni en cours de vie, ni à la dissolution (le boni est dévolu à un autre organisme). Toute distribution révélerait une gestion intéressée et exposerait l'association à la requalification en société créée de fait et à l'imposition commerciale.",
+   "src": "Loi du 1er juillet 1901, art. 1er",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un club de randonnée fonctionne depuis cinq ans sans avoir déposé de déclaration en préfecture. Peut-il agir en justice contre un fournisseur ?",
+   "opts": [
+    "Oui, comme toute association",
+    "Non : une association non déclarée n'a pas la personnalité morale et ne peut pas agir en justice en son nom",
+    "Oui, si ses statuts le prévoient",
+    "Oui, après autorisation du tribunal judiciaire"
+   ],
+   "a": 1,
+   "why": "L'association non déclarée est licite mais n'a pas la personnalité morale (loi 1901, art. 2 et 5) : elle ne peut ni contracter, ni posséder, ni agir en justice en son nom. Seule la déclaration en préfecture suivie de la publication au Journal officiel lui confère la « petite capacité » (actions en justice, dons manuels, subventions, immeubles nécessaires au but). Les statuts ne peuvent pas suppléer l'absence de déclaration.",
+   "src": "Loi du 1er juillet 1901, art. 2, 5 et 6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une association de soutien scolaire est gérée par des bénévoles, propose ses services à un public défavorisé à des prix très inférieurs au marché et ne fait aucune publicité commerciale. Quel est son régime fiscal ?",
+   "opts": [
+    "Elle est soumise à l'IS et à la TVA comme une entreprise",
+    "Elle est exonérée d'IS, de TVA et de CET, sa gestion étant désintéressée et son activité non concurrentielle",
+    "Elle est soumise à l'IS au taux réduit sur l'ensemble de ses recettes",
+    "Elle est soumise à la TVA mais exonérée d'IS"
+   ],
+   "a": 1,
+   "why": "Un organisme sans but lucratif échappe aux impôts commerciaux (IS, TVA, CET) lorsque sa gestion est désintéressée et que son activité ne concurrence pas le secteur commercial ou s'en distingue par la règle des « 4 P » (produit, public, prix, publicité) : c'est le cas ici (BOI-IS-CHAMP-10-50-10-20). Les associations supportent seulement l'IS à taux réduits sur leurs revenus patrimoniaux (CGI, art. 206, 5).",
+   "src": "CGI, art. 206, 1 bis et 206, 5 ; BOI-IS-CHAMP-10-50-10-20",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Quel principe de vote caractérise les sociétés coopératives ?",
+   "opts": [
+    "Une action, une voix",
+    "Une personne, une voix, quel que soit le capital détenu",
+    "Vote proportionnel aux apports",
+    "Vote réservé aux fondateurs"
+   ],
+   "a": 1,
+   "why": "La loi du 10 septembre 1947 portant statut de la coopération consacre la gouvernance démocratique : chaque associé dispose d'une voix à l'assemblée, indépendamment de sa part de capital (sauf aménagements limités pour certaines catégories). Les autres principes coopératifs sont la double qualité des membres, la ristourne proportionnelle à l'activité et l'impartageabilité des réserves.",
+   "src": "Loi n° 47-1775 du 10 septembre 1947, art. 4",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Qu'est-ce qui distingue fondamentalement une SCIC d'une SCOP ?",
+   "opts": [
+    "La SCIC est une association, la SCOP une société",
+    "La SCIC associe plusieurs catégories de sociétaires (salariés, bénéficiaires, collectivités) autour d'un projet d'utilité sociale, alors que la SCOP est contrôlée par ses salariés",
+    "La SCIC n'a pas de personnalité morale",
+    "La SCIC peut distribuer tous ses bénéfices"
+   ],
+   "a": 1,
+   "why": "La SCOP est une société commerciale dont les salariés détiennent au moins 51 % du capital et 65 % des droits de vote. La SCIC (loi du 17 juillet 2001) est aussi une société commerciale coopérative, mais à multisociétariat obligatoire (au moins trois catégories, dont salariés ou producteurs et bénéficiaires), avec un objet d'utilité sociale et l'affectation d'au moins 57,5 % des résultats aux réserves impartageables.",
+   "src": "Loi n° 78-763 du 19 juillet 1978 ; loi n° 47-1775, art. 19 quinquies et s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une entreprise souhaite créer rapidement une structure philanthropique capable de recevoir des dons et de financer des projets d'intérêt général, sans attendre un décret en Conseil d'État. Quelle structure est adaptée ?",
+   "opts": [
+    "Une fondation reconnue d'utilité publique",
+    "Un fonds de dotation, créé par simple déclaration avec une dotation initiale d'au moins 15 000 €",
+    "Une SCOP",
+    "Une SCI"
+   ],
+   "a": 1,
+   "why": "Le fonds de dotation (loi LME du 4 août 2008, art. 140) se crée par déclaration en préfecture, avec une dotation initiale en numéraire d'au moins 15 000 € (décret n° 2015-49), et peut recevoir des libéralités pour financer des missions d'intérêt général. La fondation reconnue d'utilité publique nécessite un décret et une dotation bien plus importante. SCOP et SCI sont des sociétés sans vocation philanthropique.",
+   "src": "Loi n° 2008-776 du 4 août 2008, art. 140 ; décret n° 2015-49 du 22 janvier 2015",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque groupement selon le régime de responsabilité de ses associés ou membres pour les dettes du groupement.",
+   "cats": [
+    "Indéfinie et solidaire",
+    "Indéfinie et conjointe (proportionnelle)",
+    "Limitée aux apports"
+   ],
+   "items": [
+    [
+     "Associés d'une SNC",
+     0
+    ],
+    [
+     "Associés commandités d'une SCS",
+     0
+    ],
+    [
+     "Membres d'un GIE",
+     0
+    ],
+    [
+     "Associés d'une SCI",
+     1
+    ],
+    [
+     "Associés d'une SARL",
+     2
+    ],
+    [
+     "Associés commanditaires d'une SCS",
+     2
+    ],
+    [
+     "Associés d'une SAS",
+     2
+    ],
+    [
+     "Associés d'une société en participation ostensible à objet civil",
+     1
+    ]
+   ],
+   "why": "SNC (L. 221-1), commandités (L. 222-1) et membres de GIE (L. 251-6) sont tenus indéfiniment et solidairement. Les associés de société civile répondent indéfiniment mais à proportion de leur part (art. 1857), de même que les participants révélés d'une société en participation à objet civil (art. 1872-1 : solidarité seulement si l'objet est commercial). SARL, SAS et commanditaires ne supportent les pertes qu'à hauteur de leurs apports.",
+   "src": "C. com., art. L. 221-1, L. 222-1, L. 223-1, L. 227-1, L. 251-6 ; C. civ., art. 1857 et 1872-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles formes limitent la responsabilité de tous leurs associés au montant de leurs apports ? (plusieurs réponses possibles)",
+   "opts": [
+    "SARL",
+    "SAS",
+    "SA",
+    "SNC",
+    "SCI",
+    "GIE"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "SARL (L. 223-1), SAS (L. 227-1) et SA (L. 225-1) sont des sociétés à risque limité : les associés ne supportent les pertes qu'à concurrence de leurs apports. Les associés de SNC et les membres de GIE sont tenus indéfiniment et solidairement ; ceux d'une SCI indéfiniment et conjointement. Le choix d'une forme à risque limité est le premier critère pour un entrepreneur qui veut protéger son patrimoine personnel.",
+   "src": "C. com., art. L. 221-1, L. 223-1, L. 225-1, L. 227-1, L. 251-6 ; C. civ., art. 1857",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une SNC a opté pour l'impôt sur les sociétés au titre de l'exercice 2023. Ses associés souhaitent revenir à l'impôt sur le revenu. Est-ce possible ?",
+   "opts": [
+    "Non, l'option pour l'IS est irrévocable dès son exercice",
+    "Oui, en renonçant à l'option jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée ; passé ce délai, elle devient irrévocable",
+    "Oui, à tout moment et sans limite de durée",
+    "Oui, mais uniquement si la société se transforme en SARL"
+   ],
+   "a": 1,
+   "why": "Depuis la loi de finances pour 2019, l'article 239 du CGI permet aux sociétés de personnes ayant opté pour l'IS de renoncer à cette option jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée ; à défaut de renonciation dans ce délai, l'option devient irrévocable. La renonciation est elle-même définitive : la société ne pourra plus opter à nouveau pour l'IS.",
+   "src": "CGI, art. 239, 1",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Quelle est la condition propre au groupement européen d'intérêt économique par rapport au GIE français ?",
+   "opts": [
+    "Il doit avoir un capital d'au moins 37 000 €",
+    "Il doit compter au moins deux membres relevant d'États membres différents de l'Union européenne",
+    "Ses membres bénéficient d'une responsabilité limitée",
+    "Il doit être coté en bourse"
+   ],
+   "a": 1,
+   "why": "Le GEIE, créé par le règlement CEE n° 2137/85 du 25 juillet 1985, exige au moins deux membres ayant leur administration centrale ou exerçant leur activité dans des États membres différents. Comme le GIE, il peut être constitué sans capital et ses membres répondent indéfiniment et solidairement des dettes. La cotation n'a aucun sens pour un groupement.",
+   "src": "Règlement (CEE) n° 2137/85 du 25 juillet 1985, art. 4 et 24",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Des salariés veulent transformer leur entreprise en SCOP sous forme de SARL au capital de 200 000 €. Quel montant minimal de capital (en €) les salariés associés doivent-ils détenir ensemble pour respecter la loi sur les SCOP ?",
+   "a": 102000,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "La loi n° 78-763 du 19 juillet 1978 impose que les associés salariés détiennent au moins 51 % du capital social de la SCOP et au moins 65 % des droits de vote : 200 000 × 51 % = 102 000 €. Les associés extérieurs ne peuvent donc détenir plus de 98 000 € de capital, et au plus 35 % des voix quelle que soit leur part de capital.",
+   "src": "Loi n° 78-763 du 19 juillet 1978, art. 3 bis et 15",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une société en commandite simple, un associé commanditaire décède. Les statuts sont muets. Quelle est la conséquence ?",
+   "opts": [
+    "La société est dissoute, comme en SNC",
+    "La société continue, le décès d'un commanditaire n'étant pas une cause de dissolution",
+    "Les commandités doivent racheter ses parts dans les trois mois",
+    "La société se transforme en SNC"
+   ],
+   "a": 1,
+   "why": "L'article L. 222-10 prévoit que la SCS continue malgré le décès d'un commanditaire : celui-ci n'est qu'un bailleur de fonds dont la personne importe peu, ses parts passent à ses héritiers. En revanche, le décès d'un commandité entraîne la dissolution sauf clause de continuation, par application du régime de la SNC. Aucun rachat obligatoire ni transformation n'est prévu.",
+   "src": "C. com., art. L. 222-10",
+   "fiab": "stable",
+   "niveau": 2
+  }
+ ]
+}

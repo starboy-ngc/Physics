@@ -1,0 +1,690 @@
+{
+ "id": "ue10-07",
+ "ue": "UE10",
+ "ordre": 7,
+ "title": "Impôt sur les bénéfices, participation, subventions et abandons de créances",
+ "resume": "Comptabiliser l'IS et ses acomptes, les crédits d'impôt, la participation et l'intéressement, les subventions d'exploitation et d'investissement et les abandons de créances, avec leurs effets fiscaux.",
+ "duree": "65 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "L'impôt sur les sociétés : calcul et comptabilisation",
+   "html": "<p>L'IS est dû par les sociétés de capitaux (et les sociétés de personnes ayant opté) sur leur <b>résultat fiscal</b>. En 2025, le taux normal est de <span class=\"mono\">25 %</span> (CGI art. 219, I). Les PME dont le chiffre d'affaires est inférieur à <span class=\"mono\">10 M€</span> et dont le capital, entièrement libéré, est détenu à 75 % au moins par des personnes physiques bénéficient du taux réduit de <span class=\"mono\">15 %</span> sur les <span class=\"mono\">42 500</span> premiers euros de bénéfice. S'ajoutent la contribution sociale de <span class=\"mono\">3,3 %</span> sur l'IS excédant 763 000 € (CGI art. 235 ter ZC, CA ≥ 7,63 M€) et, pour le seul exercice clos à compter du 31 décembre 2025, la contribution exceptionnelle des très grandes entreprises (CA ≥ 1 Md€, loi de finances pour 2025).</p><p>L'IS est une charge non déductible, enregistrée à la clôture : débit <b>695</b> Impôts sur les bénéfices (6951 impôt dû en France, 6952 contributions additionnelles), crédit <b>444</b> État – impôts sur les bénéfices. Il est payé par <b>quatre acomptes</b> (15 mars, 15 juin, 15 septembre, 15 décembre) égaux chacun à un quart de l'IS de référence de l'exercice précédent (CGI art. 1668), enregistrés en débit de 444 ; le <b>solde</b> est versé au plus tard le 15 du quatrième mois suivant la clôture (15 mai pour un exercice civil). Les sociétés dont l'IS de N−1 n'excède pas 3 000 € sont dispensées d'acomptes ; un excédent de versements est une créance sur l'État (444 débiteur), remboursée.</p><p>Exemple : Fiscal SA doit <span class=\"mono\">60 000 €</span> d'IS pour N et a versé <span class=\"mono\">48 000 €</span> d'acomptes.</p>",
+   "entry": [
+    {
+     "a": "695",
+     "d": 60000,
+     "c": 0
+    },
+    {
+     "a": "444",
+     "d": 0,
+     "c": 60000
+    }
+   ],
+   "lib": "Constatation de l'impôt sur les sociétés de l'exercice N (solde à payer : 12 000 €)"
+  },
+  {
+   "h": "Du résultat comptable au résultat fiscal ; crédits d'impôt",
+   "html": "<p>Le résultat fiscal se détermine sur le tableau 2058-A à partir du résultat comptable : <span class=\"mono\">Résultat fiscal = résultat comptable + réintégrations − déductions</span>. <b>Réintégrations</b> fréquentes : l'IS lui-même (695), les amendes et pénalités, les provisions non déductibles (retraites, pertes de change), l'amortissement excédentaire des voitures particulières, la part des intérêts de comptes courants excédant le taux plafond, la participation de l'exercice (déductible seulement l'année suivante). <b>Déductions</b> : reprises de provisions antérieurement réintégrées, dividendes de filiales sous régime mère-fille (à hauteur de 95 %), pertes latentes de change (476), participation de l'exercice précédent.</p><p>Les <b>crédits d'impôt</b> s'imputent sur l'IS ; l'excédent est remboursé (immédiatement pour les PME dans le cas du CIR). Le <b>crédit d'impôt recherche</b> (CGI art. 244 quater B) est égal à <span class=\"mono\">30 %</span> des dépenses de recherche éligibles jusqu'à 100 M€ ; le <b>crédit d'impôt innovation</b> des PME a été prorogé jusqu'en 2027 au taux de <span class=\"mono\">20 %</span> à compter de 2025. Comptablement, la doctrine dominante (CNCC) enregistre le CIR en diminution de la charge d'impôt : débit 444, crédit 695 ; le report en arrière des déficits (carry-back, CGI art. 220 quinquies) crée une créance 444 par le crédit de <b>699</b> Produits – report en arrière des déficits.</p><div class=\"note\"><b>Règle à retenir.</b> Le compte 695 n'est jamais déductible : il figure toujours en réintégration. Un crédit d'impôt n'est pas un produit imposable.</div>"
+  },
+  {
+   "h": "La participation des salariés aux résultats",
+   "html": "<p>La <b>participation</b> est obligatoire dans les entreprises employant au moins <b>50 salariés</b> pendant cinq années civiles consécutives (C. trav., art. L. 3322-1 s.). La <b>réserve spéciale de participation</b> (RSP) est calculée, à défaut d'accord dérogatoire au moins aussi favorable, par la formule légale (art. L. 3324-1) :</p><div class=\"note\"><span class=\"mono\">RSP = ½ × (B − 5 % × C) × S / VA</span><br/>B = bénéfice net fiscal (bénéfice imposable diminué de l'IS correspondant) ; C = capitaux propres (capital, primes, réserves, report à nouveau, provisions réglementées exonérées) ; S = salaires bruts ; VA = valeur ajoutée.</div><p>Comptabilisation : à la clôture de N, la participation calculée est une charge de personnel : débit <b>691</b> Participation des salariés aux résultats, crédit <b>4284</b> Dettes provisionnées pour participation des salariés aux résultats. En N+1, après l'arrêté définitif, la dette est transférée en <b>4246</b> Réserve spéciale de participation, puis versée aux salariés qui le demandent (512) ou, pour les droits bloqués cinq ans, placée dans un plan d'épargne ou inscrite en <b>166</b> Participation des salariés aux résultats (1661 comptes bloqués) si les fonds restent dans l'entreprise. Un supplément de participation peut être décidé.</p><p><b>Fiscalité</b> : la participation est déductible du résultat de l'exercice au cours duquel elle est répartie, soit N+1 (CGI art. 237 bis A) : réintégration en N, déduction en N+1. Le forfait social de 20 % s'applique aux entreprises de 50 salariés et plus.</p><p>Exemple : B = <span class=\"mono\">300 000</span>, C = <span class=\"mono\">1 000 000</span>, S = <span class=\"mono\">800 000</span>, VA = <span class=\"mono\">1 600 000</span>. RSP = ½ × (300 000 − 50 000) × 0,5 = <span class=\"mono\">62 500 €</span>.</p>",
+   "entry": [
+    {
+     "a": "691",
+     "d": 62500,
+     "c": 0
+    },
+    {
+     "a": "4284",
+     "d": 0,
+     "c": 62500
+    }
+   ],
+   "lib": "Participation des salariés aux résultats de l'exercice N"
+  },
+  {
+   "h": "Intéressement et autres dispositifs de partage de la valeur",
+   "html": "<p>L'<b>intéressement</b> (C. trav., art. L. 3311-1 s.) est <b>facultatif</b> et résulte d'un accord collectif conclu pour une durée de un à cinq ans. Il est lié aux résultats ou aux performances de l'entreprise selon une formule aléatoire ; le montant global est plafonné à <span class=\"mono\">20 %</span> des salaires bruts et le montant individuel aux trois quarts du plafond annuel de la sécurité sociale. Il n'a pas le caractère de salaire (exonération de cotisations sociales, hors CSG-CRDS) mais le forfait social s'applique dans les entreprises de 250 salariés et plus.</p><p>Comptabilisation : charge de personnel de l'exercice auquel elle se rattache, débit <b>6414</b> Indemnités et avantages divers, crédit <b>4286</b> Personnel – autres charges à payer (puis 421 au versement). Contrairement à la participation, l'intéressement est <b>déductible de l'exercice</b> au cours duquel il est constaté (CGI art. 237 ter), sous réserve que l'accord soit déposé dans les délais.</p><p>Autres dispositifs : la <b>prime de partage de la valeur</b> (PPV, loi 2022-1158), facultative et exonérée de cotisations sous plafond, enregistrée en 6414 ; l'<b>abondement</b> de l'employeur au plan d'épargne entreprise (6474) ; le <b>plan de partage de la valorisation de l'entreprise</b> (loi 2023-1107). Depuis 2025, les entreprises de 11 à 49 salariés réalisant un bénéfice net fiscal d'au moins 1 % du chiffre d'affaires trois années consécutives doivent mettre en place, à titre expérimental, l'un de ces dispositifs.</p>"
+  },
+  {
+   "h": "Subventions d'exploitation, d'équilibre et aides publiques",
+   "html": "<p>Une <b>subvention d'exploitation</b> compense une insuffisance de prix de vente ou des charges d'exploitation (aides à l'embauche, aide unique à l'apprentissage, aides à la création d'emplois, compensation de tarifs sociaux). Elle est un <b>produit d'exploitation</b> de l'exercice où son octroi est acquis : débit <b>441</b> État – subventions à recevoir (ou 4418 subventions d'exploitation à recevoir), crédit <b>74</b> Subventions d'exploitation ; encaissement 512 / 441. Elle est imposable l'exercice de son acquisition et entre dans le calcul de la valeur ajoutée pour la participation si elle compense un prix.</p><p>La <b>subvention d'équilibre</b> est accordée (par l'État ou la société mère) pour compenser tout ou partie d'une perte globale. Avant 2025, elle était un produit exceptionnel (7715) ; le PCG 2025 réservant l'exceptionnel aux événements majeurs et inhabituels, elle est désormais classée selon la nature de la perte qu'elle compense, le plus souvent en produit d'exploitation.</p><p>Les <b>aides publiques</b> prennent aussi la forme d'exonérations de charges (comptabilisées en moins de la charge), de crédits d'impôt (444/695) ou de prêts à taux zéro (dette 164, avantage non comptabilisé). Un remboursement conditionnel transforme la subvention en avance : <b>1674</b> Avances conditionnées.</p><p>Exemple : Mécano reçoit la notification d'une aide à l'embauche d'apprenti de <span class=\"mono\">6 000 €</span>.</p>",
+   "entry": [
+    {
+     "a": "441",
+     "d": 6000,
+     "c": 0
+    },
+    {
+     "a": "74",
+     "d": 0,
+     "c": 6000
+    }
+   ],
+   "lib": "Aide à l'embauche d'un apprenti : subvention d'exploitation acquise"
+  },
+  {
+   "h": "Subventions d'investissement : étalement et reprise au résultat",
+   "html": "<p>La <b>subvention d'investissement</b> finance une immobilisation ou une activité à long terme. Le PCG (art. 312-1) laisse le choix entre la comptabilisation immédiate en produits et le <b>maintien au passif</b> dans les capitaux propres (131 Subventions d'équipement, 138 Autres subventions d'investissement) avec <b>reprise échelonnée</b> au résultat :</p><ul><li>bien <b>amortissable</b> : reprise au même rythme que l'amortissement du bien, soit <span class=\"mono\">subvention × dotation / coût du bien</span> ;</li><li>bien <b>non amortissable</b> : reprise par fractions égales sur la durée d'inaliénabilité prévue au contrat ou, à défaut, sur <b>dix ans</b>.</li></ul><p>La reprise s'enregistre au débit de <b>139</b> Subventions d'investissement inscrites au compte de résultat et au crédit de <b>747</b> Quote-part des subventions d'investissement virée au résultat de l'exercice, produit d'exploitation depuis le PCG 2025 (avant 2025 : 777, exceptionnel). Au bilan, 131 et 139 sont présentés pour leur montant net ; en fin d'étalement, les deux comptes sont soldés l'un par l'autre. En cas de <b>cession</b> du bien, le solde non repris est viré au résultat de l'exercice de cession.</p><p>Le régime fiscal (CGI art. 42 septies) autorise un étalement identique, aligné sur les amortissements pratiqués ; il est donc neutre si la comptabilité suit la même règle.</p><p>Exemple : subvention de <span class=\"mono\">20 000 €</span> pour une machine de <span class=\"mono\">100 000 €</span> amortie linéairement sur 5 ans : reprise annuelle 20 000 × 20 000 / 100 000 = <span class=\"mono\">4 000 €</span>.</p>",
+   "entry": [
+    {
+     "a": "139",
+     "d": 4000,
+     "c": 0
+    },
+    {
+     "a": "747",
+     "d": 0,
+     "c": 4000
+    }
+   ],
+   "lib": "Quote-part de subvention d'investissement virée au résultat"
+  },
+  {
+   "h": "Abandons de créances : commercial ou financier",
+   "html": "<p>Un <b>abandon de créance</b> est la renonciation volontaire d'un créancier à tout ou partie de sa créance, souvent assortie d'une clause de <b>retour à meilleure fortune</b>. Sa qualification commande le traitement :</p><ul><li><b>Caractère commercial</b> : il s'inscrit dans une relation client-fournisseur et vise à préserver des débouchés ou des sources d'approvisionnement. Chez le créancier : charge d'exploitation <b>658</b> Charges diverses de gestion courante (crédit 411) ; chez le débiteur : produit d'exploitation <b>758</b> Produits divers de gestion courante (débit 401).</li><li><b>Caractère financier</b> : il relève de liens en capital (société mère aidant une filiale) sans relation commerciale prépondérante. Créancier : <b>668</b> Autres charges financières ; débiteur : <b>768</b> Autres produits financiers.</li></ul><p>Avant 2025, les abandons étaient enregistrés en 6788 / 7788 (exceptionnel) ; le PCG 2025 les reclasse selon leur nature, l'exceptionnel étant réservé aux événements majeurs et inhabituels.</p><p><b>Fiscalité</b> : l'abandon à caractère commercial est déductible chez le créancier s'il relève d'une gestion normale, et imposable chez le débiteur. L'abandon à caractère financier n'est <b>pas déductible</b> (CGI art. 39, 13), sauf au profit d'une entreprise en procédure de conciliation, de sauvegarde, de redressement ou de liquidation judiciaire, dans la limite de la situation nette négative de la filiale et de la quote-part des autres associés. Le débiteur est imposé sur le produit, sauf option de l'article 216 A du CGI (engagement d'augmenter son capital dans les deux ans à hauteur de la fraction non déductible chez la mère).</p><p>Exemple : Fournitex abandonne <span class=\"mono\">30 000 €</span> de créance sur un client distributeur en difficulté pour maintenir ce débouché.</p>",
+   "entry": [
+    {
+     "a": "658",
+     "d": 30000,
+     "c": 0
+    },
+    {
+     "a": "411",
+     "d": 0,
+     "c": 30000
+    }
+   ],
+   "lib": "Abandon de créance à caractère commercial chez le créancier"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "CGI art. 219, I et 235 ter ZC",
+   "note": "Taux de l'IS (25 %, 15 % jusqu'à 42 500 € pour les PME) et contribution sociale de 3,3 %"
+  },
+  {
+   "ref": "CGI art. 1668",
+   "note": "Acomptes d'IS (15 mars, 15 juin, 15 septembre, 15 décembre) et solde"
+  },
+  {
+   "ref": "CGI art. 244 quater B et 220 quinquies",
+   "note": "Crédit d'impôt recherche ; report en arrière des déficits (compte 699)"
+  },
+  {
+   "ref": "C. trav., art. L. 3322-1 et L. 3324-1",
+   "note": "Participation obligatoire à partir de 50 salariés ; formule légale de la RSP"
+  },
+  {
+   "ref": "CGI art. 237 bis A et 237 ter",
+   "note": "Déductibilité de la participation (exercice de répartition) et de l'intéressement"
+  },
+  {
+   "ref": "C. trav., art. L. 3311-1 s. et L. 3314-8",
+   "note": "Intéressement : accord, caractère aléatoire, plafonds"
+  },
+  {
+   "ref": "PCG art. 312-1 ; CGI art. 42 septies",
+   "note": "Subventions d'investissement : inscription au passif et reprise (139 / 747)"
+  },
+  {
+   "ref": "PCG art. 947-74 ; règlement ANC n° 2022-06",
+   "note": "Compte 74 Subventions d'exploitation et compte 747 ; reclassement des éléments exceptionnels"
+  },
+  {
+   "ref": "CGI art. 39, 13 et 216 A",
+   "note": "Régime fiscal des abandons de créances financiers et commerciaux"
+  },
+  {
+   "ref": "PCG art. 944-44 et 946-69",
+   "note": "Comptes 444, 4284, 691 et 695"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "À la clôture, la charge d'impôt sur les sociétés de l'exercice est enregistrée par :",
+   "opts": [
+    "Débit 444, crédit 512",
+    "Débit 695, crédit 444",
+    "Débit 444, crédit 695",
+    "Débit 691, crédit 4284"
+   ],
+   "a": 1,
+   "why": "La charge d'impôt (695 Impôts sur les bénéfices) est constatée par le crédit du compte de tiers 444 État – impôts sur les bénéfices, qui a déjà été débité des acomptes versés en cours d'année ; son solde représente le solde à payer (ou l'excédent à récupérer). 444/512 est l'écriture de paiement, 444/695 celle d'un crédit d'impôt, 691/4284 celle de la participation.",
+   "src": "PCG art. 944-44 et 946-69",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, la SARL Ludix (chiffre d'affaires 3 M€, capital entièrement libéré détenu à 100 % par des personnes physiques) réalise un bénéfice fiscal de 100 000 €. Calculez l'IS brut dû, avec un taux réduit de 15 % sur les 42 500 premiers euros et un taux normal de 25 % au-delà (en euros).",
+   "a": 20750,
+   "unit": "€",
+   "tol": 1,
+   "why": "Tranche à 15 % : 42 500 × 15 % = 6 375. Tranche à 25 % : (100 000 − 42 500) × 25 % = 57 500 × 25 % = 14 375. IS = 6 375 + 14 375 = 20 750 €. Les conditions du taux réduit (CGI art. 219, I-b) sont remplies : CA < 10 M€, capital libéré et détenu à 75 % au moins par des personnes physiques. Appliquer 25 % à tout le bénéfice donnerait 25 000.",
+   "src": "CGI art. 219, I",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Fiscal SA a versé en N quatre acomptes d'IS de 12 000 € chacun. L'IS définitif de N s'élève à 60 000 €. Quel montant devra-t-elle verser lors de la liquidation du solde le 15 mai N+1 (en euros) ?",
+   "a": 12000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Acomptes versés : 4 × 12 000 = 48 000 (débit 444). IS dû : 60 000 (crédit 444 par le débit de 695). Solde créditeur de 444 = 60 000 − 48 000 = 12 000 €, à payer au plus tard le 15 du quatrième mois suivant la clôture (CGI art. 1668), soit le 15 mai pour un exercice clos le 31 décembre. Si les acomptes avaient dépassé l'IS, l'excédent aurait été remboursé.",
+   "src": "CGI art. 1668",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Les acomptes d'IS d'une société clôturant au 31 décembre sont exigibles :",
+   "opts": [
+    "Le 15 janvier, 15 avril, 15 juillet et 15 octobre",
+    "Le 15 mars, 15 juin, 15 septembre et 15 décembre, chacun égal en principe au quart de l'IS de référence de l'exercice précédent",
+    "Le 31 mars et le 30 septembre, pour moitié chacun",
+    "Le 15 mai, en une seule fois"
+   ],
+   "a": 1,
+   "why": "CGI art. 1668 : quatre acomptes trimestriels (15 mars, 15 juin, 15 septembre, 15 décembre) calculés sur l'impôt de référence de l'exercice précédent (le premier acompte est provisoirement calculé sur N−2 puis régularisé). Le 15 mai est la date du solde. Les sociétés dont l'IS de référence n'excède pas 3 000 € sont dispensées d'acomptes.",
+   "src": "CGI art. 1668",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, Fiscal SA calcule un IS de 60 000 € pour l'exercice. Les acomptes versés en cours d'année (48 000 €) figurent déjà au débit du compte 444. Enregistrez la charge d'impôt de l'exercice.",
+   "lib": "Impôt sur les sociétés de l'exercice",
+   "palette": [
+    "695",
+    "444",
+    "512",
+    "44551",
+    "691",
+    "699"
+   ],
+   "sol": [
+    [
+     {
+      "a": "695",
+      "d": 60000,
+      "c": 0
+     },
+     {
+      "a": "444",
+      "d": 0,
+      "c": 60000
+     }
+    ]
+   ],
+   "why": "La charge totale d'IS (60 000) est enregistrée en 695 par le crédit de 444 ; après cette écriture, le compte 444 présente un solde créditeur de 12 000 correspondant au solde à payer en mai N+1. Le paiement (512) n'intervient pas à la clôture ; 44551 concerne la TVA, 691 la participation et 699 le produit de carry-back.",
+   "src": "PCG art. 944-44 et 946-69",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "q": "Pour le passage du résultat comptable au résultat fiscal d'une société soumise à l'IS, classez chaque élément.",
+   "cats": [
+    "Réintégration",
+    "Déduction",
+    "Aucun retraitement"
+   ],
+   "items": [
+    [
+     "Impôt sur les sociétés comptabilisé en 695",
+     0
+    ],
+    [
+     "Amende pour retard de paiement de la TVA",
+     0
+    ],
+    [
+     "Dotation à la provision pour engagements de retraite",
+     0
+    ],
+    [
+     "Reprise d'une provision pour retraite réintégrée l'année précédente",
+     1
+    ],
+    [
+     "Dividendes reçus d'une filiale sous régime mère-fille (à hauteur de 95 %)",
+     1
+    ],
+    [
+     "Salaires du personnel",
+     2
+    ],
+    [
+     "Participation des salariés calculée au titre de l'exercice",
+     0
+    ],
+    [
+     "Perte latente de change inscrite en 476",
+     1
+    ]
+   ],
+   "why": "L'IS, les amendes, la provision pour retraite (CGI art. 39, 1-5°) et la participation de l'exercice (déductible seulement l'année de sa répartition, CGI art. 237 bis A) sont réintégrés. Les reprises de provisions non déduites, les dividendes mère-fille (95 %) et les pertes latentes de change (CGI art. 38, 4) sont déduits. Les salaires sont déductibles tels quels : aucun retraitement.",
+   "src": "CGI art. 39, 1 ; 38, 4 ; 216 ; 237 bis A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Résultat comptable avant impôt de Nexa : 200 000 €. Réintégrations : amendes 2 000 €, provision pour retraite 8 000 €. Déductions : reprise d'une provision non déduite antérieurement 3 000 €, dividendes de filiale sous régime mère-fille 20 000 € (déductibles à 95 %). Calculez le résultat fiscal (en euros).",
+   "a": 188000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Réintégrations : amendes 2 000 + provision retraite 8 000 = 10 000. Déductions : reprise 3 000 + dividendes 20 000 × 95 % = 19 000, soit 22 000 (la quote-part de frais et charges de 5 %, 1 000, reste imposée : CGI art. 216). Résultat fiscal = 200 000 + 10 000 − 22 000 = 188 000 €. Déduire les dividendes en totalité donnerait 187 000 ; oublier la réintégration de la provision pour retraite, 180 000.",
+   "src": "CGI art. 39, 1-5° ; 216",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Selon la doctrine comptable dominante (CNCC), le crédit d'impôt recherche d'une société soumise à l'IS est comptabilisé :",
+   "opts": [
+    "En produit exceptionnel 778",
+    "En diminution de la charge d'impôt : débit 444, crédit 695",
+    "En subvention d'investissement 131",
+    "En produit financier 768"
+   ],
+   "a": 1,
+   "why": "Le CIR est un crédit imputable sur l'IS (et remboursable à défaut) : la position de la CNCC le traite comme une réduction de la charge d'impôt, débit 444 (créance sur l'État), crédit 695. Il ne s'agit ni d'un produit exceptionnel (événement courant), ni d'une subvention d'investissement (pas d'actif financé), ni d'un produit financier. Le CIR n'est pas imposable, ce que traduit la réintégration automatique via le compte 695.",
+   "src": "CGI art. 244 quater B ; doctrine CNCC",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une société constate un déficit fiscal et opte pour le report en arrière (carry-back) sur le bénéfice de l'exercice précédent. L'écriture est :",
+   "opts": [
+    "Débit 444, crédit 699 Produits – report en arrière des déficits",
+    "Débit 695, crédit 444",
+    "Débit 512, crédit 695",
+    "Aucune écriture : le carry-back est purement fiscal"
+   ],
+   "a": 0,
+   "why": "L'option pour le carry-back (CGI art. 220 quinquies) fait naître une créance sur l'État égale au déficit reporté × taux d'IS, remboursable au bout de cinq ans ou imputable sur l'IS futur : débit 444, crédit 699, produit qui diminue la charge d'impôt nette. Elle doit être comptabilisée dès que l'option est exercée. Le report en avant, lui, ne donne lieu à aucune écriture en comptes individuels.",
+   "src": "CGI art. 220 quinquies ; PCG art. 946-69",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La participation des salariés aux résultats est obligatoire dans les entreprises :",
+   "opts": [
+    "Employant au moins 11 salariés",
+    "Employant au moins 50 salariés pendant cinq années civiles consécutives",
+    "Employant au moins 250 salariés",
+    "Soumises à l'IS, quel que soit leur effectif"
+   ],
+   "a": 1,
+   "why": "C. trav., art. L. 3322-1 s. : la participation s'impose aux entreprises de 50 salariés et plus, le seuil devant avoir été atteint ou dépassé pendant cinq années civiles consécutives (mécanisme de la loi PACTE). Les entreprises plus petites peuvent la mettre en place volontairement. Le régime fiscal (IS ou IR) et le seuil de 250 (forfait social sur l'intéressement) sont sans incidence.",
+   "src": "C. trav., art. L. 3322-1 et L. 3322-2",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Calculez la réserve spéciale de participation selon la formule légale (RSP = ½ × (B − 5 % × C) × S / VA) avec B = 300 000 €, C = 1 000 000 €, S = 800 000 € et VA = 1 600 000 € (en euros).",
+   "a": 62500,
+   "unit": "€",
+   "tol": 1,
+   "why": "5 % × C = 50 000. B − 50 000 = 250 000. S / VA = 800 000 / 1 600 000 = 0,5. RSP = ½ × 250 000 × 0,5 = 62 500 € (C. trav., art. L. 3324-1). Les erreurs classiques : oublier le facteur ½ (125 000) ou appliquer le rapport S/VA avant de retrancher 5 % de C.",
+   "src": "C. trav., art. L. 3324-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Dans la formule légale de la participation, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "B est le bénéfice fiscal net de l'impôt sur les sociétés correspondant",
+    "C représente les capitaux propres de l'entreprise",
+    "S / VA mesure la part des salaires dans la valeur ajoutée",
+    "La formule prend en compte 10 % des capitaux propres",
+    "Un accord ne peut pas prévoir une formule différente de la formule légale"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "RSP = ½ × (B − 5 % × C) × S / VA : B est le bénéfice fiscal diminué de l'IS, C les capitaux propres (capital, primes, réserves, report à nouveau, provisions réglementées exonérées), S les salaires et VA la valeur ajoutée. La rémunération des capitaux propres retenue est de 5 %, pas 10 %. Un accord dérogatoire peut retenir une autre formule à condition qu'elle soit au moins aussi favorable aux salariés.",
+   "src": "C. trav., art. L. 3324-1 et L. 3324-2",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, la réserve spéciale de participation de Nexa est calculée à 62 500 €. Enregistrez l'écriture de clôture.",
+   "lib": "Participation des salariés aux résultats",
+   "palette": [
+    "691",
+    "4284",
+    "6414",
+    "4286",
+    "1661",
+    "512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "691",
+      "d": 62500,
+      "c": 0
+     },
+     {
+      "a": "4284",
+      "d": 0,
+      "c": 62500
+     }
+    ]
+   ],
+   "why": "La participation est une charge de l'exercice (691 Participation des salariés aux résultats) et une dette provisionnée envers le personnel (4284), le montant n'étant définitif qu'après l'arrêté des comptes. Le compte 6414 et 4286 concernent l'intéressement ; 1661 (comptes bloqués) n'intervient qu'en N+1 pour les droits laissés dans l'entreprise ; le versement (512) est postérieur.",
+   "src": "PCG art. 944-42 et 946-69",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "La participation calculée au titre de l'exercice N (62 500 €) est, sur le plan fiscal :",
+   "opts": [
+    "Déductible du résultat de N",
+    "Réintégrée en N et déduite du résultat de N+1, exercice de sa répartition entre les salariés",
+    "Jamais déductible",
+    "Déductible pour moitié en N et pour moitié en N+1"
+   ],
+   "a": 1,
+   "why": "CGI art. 237 bis A : la participation est déductible des bénéfices imposables de l'exercice au cours duquel elle est répartie, c'est-à-dire N+1 après l'arrêté des comptes de N. La charge comptabilisée en N est donc réintégrée sur le 2058-A de N et déduite sur celui de N+1. L'intéressement, lui, est déductible dès l'exercice de sa constatation (CGI art. 237 ter).",
+   "src": "CGI art. 237 bis A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles caractéristiques distinguent l'intéressement de la participation ? (plusieurs réponses possibles)",
+   "opts": [
+    "L'intéressement est facultatif alors que la participation est obligatoire à partir de 50 salariés",
+    "L'intéressement est comptabilisé en 6414 et la participation en 691",
+    "L'intéressement est déductible de l'exercice où il est constaté, la participation de l'exercice de sa répartition",
+    "L'intéressement est obligatoirement bloqué cinq ans",
+    "L'intéressement est calculé selon la formule légale ½ × (B − 5 % C) × S/VA"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L'intéressement résulte d'un accord facultatif (C. trav., art. L. 3311-1) fondé sur une formule propre à l'entreprise, aléatoire et liée aux résultats ou performances ; il est immédiatement disponible sauf affectation volontaire à un plan d'épargne. La participation, obligatoire dès 50 salariés, suit la formule légale et ses droits sont en principe bloqués cinq ans. Les comptes (6414 / 691) et les règles de déduction (237 ter / 237 bis A) diffèrent.",
+   "src": "C. trav., art. L. 3311-1 s. ; CGI art. 237 ter et 237 bis A",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Au 31 décembre N, l'intéressement dû aux salariés au titre de N est estimé à 40 000 € ; il sera versé en mai N+1. L'écriture de clôture est :",
+   "opts": [
+    "Débit 691, crédit 4284 pour 40 000",
+    "Débit 6414, crédit 4286 pour 40 000",
+    "Débit 6414, crédit 512 pour 40 000",
+    "Aucune écriture avant le versement"
+   ],
+   "a": 1,
+   "why": "L'intéressement est une charge de personnel rattachée à l'exercice de référence (indépendance des exercices) : 6414 Indemnités et avantages divers, par le crédit de 4286 Personnel – autres charges à payer puisque le versement est postérieur. Le couple 691/4284 est réservé à la participation ; 512 n'intervient qu'au paiement ; ne rien comptabiliser violerait le rattachement des charges.",
+   "src": "C. trav., art. L. 3311-1 ; PCG art. 944-42",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une aide à l'embauche d'un apprenti de 6 000 € est notifiée à l'entreprise en N. Elle est comptabilisée :",
+   "opts": [
+    "En 131 Subventions d'équipement",
+    "En 74 Subventions d'exploitation, par le débit de 441",
+    "En 747 Quote-part des subventions d'investissement",
+    "En diminution du compte 641 Rémunérations du personnel"
+   ],
+   "a": 1,
+   "why": "L'aide compense une charge d'exploitation (le coût du salarié) sans financer d'immobilisation : c'est une subvention d'exploitation, produit de l'exercice de son octroi (74), avec créance en 441 jusqu'à l'encaissement. Le compte 131 est réservé aux subventions finançant des actifs et 747 à leur reprise. On ne compense pas une charge par un produit (non-compensation).",
+   "src": "PCG art. 947-74 ; C. com., art. L. 123-19",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "ecriture",
+   "q": "Le 10 septembre N, Mécano reçoit la notification d'une subvention d'exploitation de 6 000 € de l'État au titre d'une aide à l'embauche ; elle sera versée en janvier N+1. Enregistrez la notification.",
+   "lib": "Subvention d'exploitation acquise",
+   "palette": [
+    "441",
+    "74",
+    "131",
+    "747",
+    "512",
+    "758"
+   ],
+   "sol": [
+    [
+     {
+      "a": "441",
+      "d": 6000,
+      "c": 0
+     },
+     {
+      "a": "74",
+      "d": 0,
+      "c": 6000
+     }
+    ]
+   ],
+   "why": "Le droit à la subvention est acquis à la notification : créance 441 État – subventions à recevoir et produit d'exploitation 74 en N, exercice de rattachement, même si l'encaissement (512 / 441) intervient en N+1. Les comptes 131/747 concernent les subventions d'investissement ; 758 enregistre d'autres produits de gestion courante (par exemple un abandon de créance reçu), pas une subvention.",
+   "src": "PCG art. 947-74",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une subvention d'investissement de 20 000 € finance une machine de 100 000 € amortie en linéaire sur 5 ans. La société choisit l'étalement. Quelle est la reprise annuelle au compte 747 ?",
+   "opts": [
+    "20 000 €",
+    "4 000 €",
+    "2 000 €",
+    "5 000 €"
+   ],
+   "a": 1,
+   "why": "PCG art. 312-1 : la reprise suit le rythme de l'amortissement du bien financé : 20 000 × (20 000 / 100 000) = 4 000 € par an pendant 5 ans, débit 139, crédit 747. 20 000 correspondrait à une comptabilisation immédiate en produit ; 2 000 à un étalement sur 10 ans, réservé aux biens non amortissables sans clause d'inaliénabilité.",
+   "src": "PCG art. 312-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, Mécano vire au résultat la quote-part annuelle (4 000 €) de la subvention d'équipement de 20 000 € ayant financé une machine amortie sur 5 ans. Enregistrez l'écriture.",
+   "lib": "Reprise de la subvention d'investissement",
+   "palette": [
+    "139",
+    "747",
+    "131",
+    "74",
+    "6811",
+    "7587"
+   ],
+   "sol": [
+    [
+     {
+      "a": "139",
+      "d": 4000,
+      "c": 0
+     },
+     {
+      "a": "747",
+      "d": 0,
+      "c": 4000
+     }
+    ]
+   ],
+   "why": "La reprise ne passe pas par 131, qui conserve le montant d'origine jusqu'au terme : on débite 139 Subventions d'investissement inscrites au compte de résultat et on crédite 747 Quote-part des subventions d'investissement virée au résultat de l'exercice (produit d'exploitation, PCG 2025 ; avant 2025 : 777). Le compte 74 est réservé aux subventions d'exploitation, 6811 à l'amortissement de la machine, 7587 aux indemnités d'assurance.",
+   "src": "PCG art. 312-1 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une collectivité verse 50 000 € de subvention pour l'acquisition d'un terrain (non amortissable) sans clause d'inaliénabilité. L'entreprise opte pour l'étalement. Calculez la reprise annuelle au compte 747 (en euros).",
+   "a": 5000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Pour un bien non amortissable, la reprise se fait par fractions égales sur la durée d'inaliénabilité prévue au contrat ou, à défaut, sur dix ans (PCG art. 312-1 ; CGI art. 42 septies) : 50 000 / 10 = 5 000 € par an. Il n'y a pas d'amortissement du terrain sur lequel caler la reprise.",
+   "src": "PCG art. 312-1 ; CGI art. 42 septies",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant les subventions d'investissement, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elles peuvent être comptabilisées immédiatement en produits ou maintenues au passif et reprises progressivement",
+    "Au bilan, le compte 131 est présenté net du compte 139",
+    "En cas de cession du bien financé, le solde non encore repris est viré au résultat de l'exercice de cession",
+    "Elles viennent en déduction du coût d'entrée de l'immobilisation",
+    "La reprise est enregistrée en produit exceptionnel 777"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 312-1 : choix entre produit immédiat et étalement ; présentation nette (131 − 139) dans les capitaux propres ; reprise accélérée du reliquat lors de la cession. La subvention ne réduit jamais le coût de l'actif, qui reste inscrit à son coût total. Depuis le PCG 2025, la reprise est un produit d'exploitation (747) : le compte 777 est supprimé.",
+   "src": "PCG art. 312-1 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un fournisseur abandonne une créance de 30 000 € sur un client distributeur afin de préserver ce débouché commercial. Chez le fournisseur, sous le PCG 2025, l'écriture est :",
+   "opts": [
+    "Débit 6788, crédit 411",
+    "Débit 658 Charges diverses de gestion courante, crédit 411",
+    "Débit 668 Autres charges financières, crédit 411",
+    "Débit 654 Pertes sur créances irrécouvrables, crédit 411"
+   ],
+   "a": 1,
+   "why": "L'abandon motivé par la relation commerciale est une charge d'exploitation : 658 (le PCG 2025 ne le classe plus en exceptionnel, 6788 relevant de l'ancien plan). Le compte 668 vise les abandons à caractère financier (liens en capital). Le compte 654 enregistre une perte subie sur une créance devenue irrécouvrable, pas une renonciation volontaire.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 946-65",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "La société Distrix, en difficulté, obtient de son fournisseur Fournitex l'abandon d'une dette de 30 000 € au titre de leurs relations commerciales. Enregistrez l'écriture chez Distrix (le débiteur).",
+   "lib": "Abandon de créance commercial reçu",
+   "palette": [
+    "401",
+    "758",
+    "768",
+    "7788",
+    "74",
+    "411"
+   ],
+   "sol": [
+    [
+     {
+      "a": "401",
+      "d": 30000,
+      "c": 0
+     },
+     {
+      "a": "758",
+      "d": 0,
+      "c": 30000
+     }
+    ]
+   ],
+   "why": "Chez le débiteur, l'abandon éteint la dette fournisseur (débit 401) et constitue un produit d'exploitation 758 Produits divers de gestion courante, imposable. Le compte 768 serait utilisé pour un abandon à caractère financier (par exemple consenti par la société mère) ; 7788 relève de l'ancien plan ; 74 est réservé aux subventions ; 411 est le compte du créancier, pas du débiteur.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-75",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une société mère abandonne une créance de 200 000 € en compte courant sur sa filiale en difficulté, avec laquelle elle n'entretient aucune relation commerciale. La filiale n'est pas en procédure collective. Fiscalement, chez la mère :",
+   "opts": [
+    "L'abandon est déductible en totalité",
+    "L'abandon, à caractère financier, n'est pas déductible (CGI art. 39, 13)",
+    "L'abandon est déductible à hauteur de 50 %",
+    "L'abandon est déductible si la filiale est détenue à plus de 95 %"
+   ],
+   "a": 1,
+   "why": "Depuis 2012, l'article 39, 13 du CGI exclut la déduction des aides à caractère autre que commercial, sauf lorsqu'elles sont consenties à une entreprise faisant l'objet d'une procédure de conciliation, de sauvegarde, de redressement ou de liquidation judiciaire, et alors dans la limite de la situation nette négative et de la quote-part des autres associés. Hors procédure, aucune déduction, quel que soit le pourcentage de détention.",
+   "src": "CGI art. 39, 13",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "La filiale qui reçoit de sa mère un abandon de créance à caractère financier non déductible chez cette dernière peut éviter l'imposition du produit si :",
+   "opts": [
+    "Elle le comptabilise en capitaux propres",
+    "Elle s'engage à augmenter son capital, dans les deux ans, d'un montant au moins égal à la fraction non déductible chez la mère (CGI art. 216 A)",
+    "Elle le rembourse dans les cinq ans",
+    "Elle est détenue à 100 %"
+   ],
+   "a": 1,
+   "why": "CGI art. 216 A : le produit correspondant à l'abandon non déductible chez la société mère (régime mère-fille) n'est pas imposable chez la filiale si celle-ci s'engage à augmenter son capital d'un montant égal avant la clôture du second exercice suivant. Comptablement, le produit est néanmoins enregistré (768) et la neutralisation est extra-comptable. Les autres conditions n'existent pas.",
+   "src": "CGI art. 216 A",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Qu'est-ce qu'une clause de « retour à meilleure fortune » dans un abandon de créance ?",
+   "opts": [
+    "Une clause permettant au créancier de récupérer sa créance si la situation du débiteur se rétablit",
+    "Une clause de révision du taux d'intérêt",
+    "Une garantie hypothécaire",
+    "Une clause d'indexation sur l'inflation"
+   ],
+   "a": 0,
+   "why": "La clause de retour à meilleure fortune conditionne le caractère définitif de l'abandon : si le débiteur redevient bénéficiaire ou atteint certains indicateurs, la dette renaît pour tout ou partie. L'abandon est néanmoins comptabilisé immédiatement en charge/produit ; la reconstitution ultérieure donne lieu à une nouvelle écriture (charge chez le débiteur, produit chez le créancier). L'engagement est mentionné en annexe (engagement hors bilan).",
+   "src": "PCG art. 833-13 (engagements hors bilan) ; doctrine",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une subvention d'exploitation de 15 000 € notifiée en décembre N et encaissée en février N+1 est imposable :",
+   "opts": [
+    "Au titre de l'exercice N+1, à l'encaissement",
+    "Au titre de l'exercice N, exercice au cours duquel son octroi est acquis",
+    "Par étalement sur cinq ans",
+    "Jamais : les subventions publiques sont exonérées"
+   ],
+   "a": 1,
+   "why": "La subvention d'exploitation est un produit de l'exercice au cours duquel son attribution est devenue certaine (créance acquise), indépendamment de la date d'encaissement : comptabilisée en 74 en N (441 / 74), elle est imposable en N. L'étalement est réservé aux subventions d'équipement (CGI art. 42 septies). Aucune exonération générale n'existe pour les subventions publiques.",
+   "src": "CGI art. 38, 2 et 38, 2 bis ; PCG art. 947-74",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Au DSCG, en IFRS (IAS 20), une subvention liée à un actif peut être présentée :",
+   "opts": [
+    "Uniquement en capitaux propres, comme en PCG",
+    "Soit en produit différé au passif, soit en déduction de la valeur comptable de l'actif, les deux méthodes étant admises",
+    "Uniquement en déduction de l'actif",
+    "En produit exceptionnel immédiat"
+   ],
+   "a": 1,
+   "why": "IAS 20 autorise deux présentations : produit différé repris au rythme de l'amortissement, ou déduction du coût de l'actif (ce qui réduit les dotations). Le PCG impose l'inscription en capitaux propres (131/139) ou en produit immédiat et interdit la présentation nette. IAS 20 interdit par ailleurs la comptabilisation directe en capitaux propres.",
+   "src": "IAS 20, § 24 ; PCG art. 312-1",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

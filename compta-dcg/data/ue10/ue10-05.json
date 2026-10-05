@@ -1,0 +1,805 @@
+{
+ "id": "ue10-05",
+ "ue": "UE10",
+ "ordre": 5,
+ "title": "Actifs financiers, passifs financiers et provisions",
+ "resume": "Classer, évaluer et céder les titres, comptabiliser un emprunt obligataire de l'émission au remboursement, et distinguer dettes, provisions, provisions réglementées et passifs éventuels.",
+ "duree": "70 min",
+ "niveau": 3,
+ "lecon": [
+  {
+   "h": "Classification et coût d'entrée des titres",
+   "html": "<p>Le classement d'un titre dépend de l'<b>intention</b> de l'entreprise à l'acquisition (PCG art. 221-1 s.) :</p><table><thead><tr><th>Compte</th><th>Nature</th><th>Intention</th></tr></thead><tbody><tr><td>261 Titres de participation</td><td>Actions</td><td>Exercer une influence ou un contrôle ; présumés au-delà de 10 % du capital (C. com., art. R. 123-184)</td></tr><tr><td>271 Titres immobilisés (droit de propriété)</td><td>Actions</td><td>Conservation durable sans influence</td></tr><tr><td>272 Titres immobilisés (droit de créance)</td><td>Obligations</td><td>Conservation durable</td></tr><tr><td>273 TIAP</td><td>Actions</td><td>Activité de portefeuille : rentabilité à moyen terme</td></tr><tr><td>50 VMP (503 actions, 506 obligations)</td><td>Tous</td><td>Placement de trésorerie à court terme</td></tr></tbody></table><p>Les titres entrent au <b>prix d'achat</b>. Les <b>frais d'acquisition</b> (courtages, commissions, honoraires) sont, sur <b>option</b>, incorporés au coût ou comptabilisés en charges (627) ; cette option est distincte de celle retenue pour les immobilisations corporelles et incorporelles. Le coupon couru acheté avec une obligation n'est pas un coût du titre mais une créance d'intérêts.</p><p>Exemple : Holdex achète <span class=\"mono\">500 actions</span> de sa filiale à <span class=\"mono\">40 €</span> ; frais de courtage <span class=\"mono\">300 € HT</span>, TVA 60 €, option charges.</p>",
+   "entry": [
+    {
+     "a": "261",
+     "d": 20000,
+     "c": 0
+    },
+    {
+     "a": "627",
+     "d": 300,
+     "c": 0
+    },
+    {
+     "a": "44566",
+     "d": 60,
+     "c": 0
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 20360
+    }
+   ],
+   "lib": "Acquisition de titres de participation, frais en charges"
+  },
+  {
+   "h": "Évaluation des titres à la clôture",
+   "html": "<p>À l'inventaire, chaque <b>ligne de titres</b> est évaluée à sa <b>valeur d'inventaire</b> (PCG art. 221-3 à 221-6) :</p><ul><li><b>Titres de participation</b> : <b>valeur d'utilité</b>, ce que l'entreprise accepterait de décaisser pour les acquérir si elle devait le faire, appréciée à partir de la rentabilité, des perspectives, des capitaux propres, du cours éventuel ;</li><li><b>Titres cotés</b> (autres titres immobilisés, VMP) : <b>cours moyen du dernier mois</b> de l'exercice ;</li><li><b>Titres non cotés</b> : valeur probable de négociation ;</li><li><b>TIAP</b> : valeur qui tient compte des perspectives d'évolution générale de l'entreprise.</li></ul><p>Si la valeur d'inventaire est inférieure au coût d'entrée, une <b>dépréciation</b> est constatée : débit <b>6866</b> Dotations aux dépréciations des éléments financiers, crédit <b>296</b> (participations), <b>297</b> (autres titres immobilisés) ou <b>590</b> (VMP). Les plus-values latentes ne sont pas comptabilisées et <b>aucune compensation</b> n'est admise entre lignes de titres, sauf, pour les VMP cotées, en cas de baisse anormale et momentanée. La dépréciation est ajustée à chaque clôture et reprise par <b>7866</b>.</p><p>Exemple : les 500 actions Holdex acquises 20 000 € ont une valeur d'utilité de <span class=\"mono\">18 000 €</span> à la clôture.</p>",
+   "entry": [
+    {
+     "a": "6866",
+     "d": 2000,
+     "c": 0
+    },
+    {
+     "a": "2961",
+     "d": 0,
+     "c": 2000
+    }
+   ],
+   "lib": "Dépréciation des titres de participation"
+  },
+  {
+   "h": "Cession des titres sous le PCG 2025",
+   "html": "<p>La cession d'<b>immobilisations financières</b> (261, 271, 272, 273) s'enregistre en deux comptes bruts, dans le résultat <b>financier</b> : la valeur comptable sortie au débit de <b>6671</b> Valeurs comptables des immobilisations financières cédées et le prix de cession au crédit de <b>7671</b> Produits des cessions d'immobilisations financières. La dépréciation existante est reprise (7866) et les frais de cession sont des charges (627).</p><p>La cession de <b>VMP</b> est enregistrée pour son <b>résultat net</b> : <b>7673</b> Produits nets sur cessions de VMP en cas de gain, <b>6673</b> Charges nettes sur cessions de VMP en cas de perte, le compte de titres (50x) étant crédité du coût d'entrée.</p><p>Lorsque des titres de même nature ont été acquis à des prix différents, le coût des titres cédés est déterminé par le <b>coût moyen pondéré</b> ou la méthode <b>PEPS</b>, la méthode retenue devant être permanente. Fiscalement, le PEPS est la règle pour les titres (CGI art. 39 duodecies).</p><div class=\"note\"><b>Règle à retenir.</b> Immobilisations incorporelles et corporelles : 657/757 (exploitation). Immobilisations financières : 6671/7671 (financier, montants bruts). VMP : 6673 ou 7673 (financier, montant net).</div><p>Exemple : <span class=\"mono\">100 actions</span> en VMP acquises <span class=\"mono\">5 000 €</span> sont cédées <span class=\"mono\">5 400 €</span>.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 5400,
+     "c": 0
+    },
+    {
+     "a": "503",
+     "d": 0,
+     "c": 5000
+    },
+    {
+     "a": "7673",
+     "d": 0,
+     "c": 400
+    }
+   ],
+   "lib": "Cession de VMP avec gain net"
+  },
+  {
+   "h": "Revenus des titres et intérêts courus",
+   "html": "<p>Les <b>dividendes</b> sont comptabilisés à la date de la décision de distribution par l'assemblée de la société émettrice : <b>761</b> Produits de participations, <b>762</b> Produits des autres immobilisations financières, <b>764</b> Revenus des VMP. Aucun produit n'est anticipé avant cette décision.</p><p>Les <b>intérêts d'obligations</b> courent jour après jour : à la clôture, l'entreprise rattache à l'exercice le coupon couru non échu (indépendance des exercices) : débit <b>2768</b> Intérêts courus (titres immobilisés) ou <b>5088</b> Intérêts courus sur obligations, bons et valeurs assimilés (VMP), crédit 762 ou 764. L'écriture est contrepassée à l'ouverture et le coupon encaissé est enregistré en produit pour son montant total.</p><p>Exemple : Placia détient en VMP <span class=\"mono\">100 obligations</span> de nominal <span class=\"mono\">1 000 €</span> au taux de <span class=\"mono\">4 %</span>, coupon payable le 1er avril. Au 31 décembre, intérêts courus depuis le 1er avril : <span class=\"mono\">100 000 × 4 % × 9/12 = 3 000 €</span>.</p><p>Fiscalement, les dividendes de titres de participation bénéficient du régime mère-fille (exonération sous déduction d'une quote-part de frais et charges de 5 %) : la liaison avec l'UE 4 se fait sur le tableau 2058-A.</p>",
+   "entry": [
+    {
+     "a": "5088",
+     "d": 3000,
+     "c": 0
+    },
+    {
+     "a": "764",
+     "d": 0,
+     "c": 3000
+    }
+   ],
+   "lib": "Intérêts courus non échus sur obligations détenues en VMP"
+  },
+  {
+   "h": "L'emprunt obligataire : émission, prime, frais, remboursement",
+   "html": "<p>Une société émet des obligations de <b>valeur nominale</b> N à un <b>prix d'émission</b> E (souvent inférieur au nominal) et les rembourse à un <b>prix de remboursement</b> R (égal ou supérieur au nominal). À l'émission :</p><ul><li>débit 512 (ou 4711 à la souscription) pour le prix d'émission encaissé,</li><li>débit <b>169 Primes de remboursement des obligations</b> pour (R − E) × nombre d'obligations,</li><li>crédit <b>163 Autres emprunts obligataires</b> pour le prix de remboursement total.</li></ul><p>La prime, inscrite à l'actif, est <b>amortie</b> sur la durée de l'emprunt (linéairement ou au prorata des intérêts courus) : débit <b>6861</b> Dotations aux amortissements des primes de remboursement des obligations, crédit 169. Les <b>frais d'émission</b> sont soit comptabilisés en charges (627), soit étalés sur la durée de l'emprunt via <b>4816</b> Frais d'émission des emprunts, amorti par 6812.</p><p>Les <b>intérêts</b> (661) sont calculés sur le nominal au taux nominal ; à la clôture, les intérêts courus non échus sont rattachés en <b>16883</b>. Le remboursement peut être <b>in fine</b> (totalité à l'échéance), par <b>amortissements constants</b> (même nombre d'obligations chaque année, tirées au sort) ou par <b>annuités constantes</b>.</p><p>Exemple : Oblix émet <span class=\"mono\">1 000 obligations</span>, nominal 500 €, émises <span class=\"mono\">490 €</span>, remboursables <span class=\"mono\">510 €</span> dans 5 ans.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 490000,
+     "c": 0
+    },
+    {
+     "a": "169",
+     "d": 20000,
+     "c": 0
+    },
+    {
+     "a": "163",
+     "d": 0,
+     "c": 510000
+    }
+   ],
+   "lib": "Émission d'un emprunt obligataire avec prime de remboursement"
+  },
+  {
+   "h": "Passifs, dettes, charges à payer et provisions",
+   "html": "<p>Un <b>passif</b> (PCG art. 321-1) est un élément du patrimoine ayant une valeur économique négative : une <b>obligation</b> de l'entité à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une <b>sortie de ressources</b> sans contrepartie au moins équivalente. On distingue :</p><ul><li>la <b>dette</b> : montant et échéance fixés de façon précise ;</li><li>la <b>charge à payer</b> : dette certaine dont le montant ou l'échéance comporte une légère incertitude (408, 4286, 4486) ;</li><li>la <b>provision</b> (art. 321-5) : passif dont l'échéance <b>ou</b> le montant n'est pas fixé de façon précise ;</li><li>le <b>passif éventuel</b> : obligation potentielle ou non probable ; <b>non comptabilisé</b>, mentionné en annexe.</li></ul><p>Une provision est comptabilisée (art. 322-1) si, à la clôture, l'obligation existe, la sortie est probable et le montant estimable de façon fiable ; elle est évaluée à la <b>meilleure estimation</b> et révisée à chaque clôture. Principaux comptes : <b>1511</b> litiges, <b>1512</b> garanties données aux clients, <b>1515</b> pertes de change, <b>1516</b> pertes sur contrats, <b>153</b> pensions (option, art. 324-1), <b>154</b> restructurations (plan annoncé avant la clôture), <b>155</b> impôts, <b>1572</b> gros entretien, <b>158</b> autres. Dotations : <b>6815</b>, <b>6865</b>, <b>6875</b> selon la nature ; reprises 7815, 7865, 7875.</p><p>Exemple : un salarié licencié réclame <span class=\"mono\">40 000 €</span> ; l'avocat estime la condamnation probable à <span class=\"mono\">15 000 €</span>.</p>",
+   "entry": [
+    {
+     "a": "6815",
+     "d": 15000,
+     "c": 0
+    },
+    {
+     "a": "1511",
+     "d": 0,
+     "c": 15000
+    }
+   ],
+   "lib": "Provision pour litige prud'homal"
+  },
+  {
+   "h": "Provisions réglementées et fiscalité des provisions",
+   "html": "<p>Les <b>provisions réglementées</b> (compte 14) ne correspondent pas à une obligation envers un tiers : elles sont constituées uniquement en application de dispositions <b>fiscales</b> et figurent dans les <b>capitaux propres</b>. Principales : <b>143</b> provisions pour hausse des prix, <b>145</b> amortissements dérogatoires, <b>146</b> provision spéciale de réévaluation, <b>147</b> plus-values réinvesties, <b>148</b> autres. Dotations et reprises passent par le résultat exceptionnel : <b>6872</b> (immobilisations, dont 68725 dérogatoires), <b>6873</b> (stocks), <b>6874</b> (autres) et symétriquement <b>7872</b>, 7873, 7874, comptes maintenus par le PCG 2025.</p><p>Côté <b>déductibilité</b> (CGI art. 39, 1-5°), une provision pour risques et charges est déductible si elle couvre une charge elle-même déductible, nettement précisée, probable (non simplement éventuelle), résultant d'un événement en cours à la clôture, et si elle est effectivement comptabilisée. Ne sont pas déductibles, par exemple, les provisions pour engagements de retraite (CGI art. 39, 1-5°, al. 1), pour pertes de change (double emploi avec l'article 38, 4), pour propre assureur ou pour impôt sur les sociétés.</p><div class=\"note\"><b>Piège.</b> Une provision pour perte à terminaison, pour garantie ou pour litige est déductible si elle est chiffrée avec précision à partir d'éléments objectifs (statistiques de garantie, estimation de l'avocat) ; une provision forfaitaire « par prudence » ne l'est pas.</div>"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "PCG art. 221-1 à 221-7",
+   "note": "Titres : classement, coût d'entrée, option sur les frais, valeur d'inventaire, dépréciation"
+  },
+  {
+   "ref": "C. com., art. R. 123-184",
+   "note": "Présomption de titres de participation au-delà de 10 % du capital"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 ; PCG art. 946-66 et 947-76",
+   "note": "Comptes 6671/7671 (immobilisations financières) et 6673/7673 (VMP)"
+  },
+  {
+   "ref": "PCG art. 941-16 et 946-68",
+   "note": "Comptes 163, 169 et 6861 : emprunt obligataire et amortissement de la prime"
+  },
+  {
+   "ref": "PCG art. 321-1, 321-5, 322-1 et 323-1",
+   "note": "Définition du passif, de la provision ; conditions de comptabilisation ; évaluation"
+  },
+  {
+   "ref": "PCG art. 324-1",
+   "note": "Engagements de retraite : option provision (méthode préférentielle) ou annexe"
+  },
+  {
+   "ref": "PCG art. 941-14",
+   "note": "Provisions réglementées (compte 14)"
+  },
+  {
+   "ref": "CGI art. 39, 1-5°",
+   "note": "Conditions de déductibilité des provisions"
+  },
+  {
+   "ref": "CGI art. 39 duodecies",
+   "note": "Méthode PEPS pour les titres cédés en fiscalité"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Une société acquiert 15 % du capital d'une autre société afin de peser sur sa stratégie et de nouer des relations commerciales durables. Dans quel compte inscrit-elle ces actions ?",
+   "opts": [
+    "503 Actions (VMP)",
+    "261 Titres de participation",
+    "271 Titres immobilisés (droit de propriété)",
+    "273 Titres immobilisés de l'activité de portefeuille"
+   ],
+   "a": 1,
+   "why": "L'intention d'exercer une influence et de créer des liens durables caractérise les titres de participation (PCG art. 221-1), présumés au-delà de 10 % du capital (C. com., art. R. 123-184). Les VMP visent un placement à court terme, les 271 une conservation durable sans influence, les TIAP une activité de portefeuille axée sur la rentabilité.",
+   "src": "PCG art. 221-1 ; C. com., art. R. 123-184",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque titre dans le compte approprié selon l'intention de l'entreprise.",
+   "cats": [
+    "261 Titres de participation",
+    "271/272 Titres immobilisés",
+    "273 TIAP",
+    "50 Valeurs mobilières de placement"
+   ],
+   "items": [
+    [
+     "Actions d'une filiale détenue à 60 %",
+     0
+    ],
+    [
+     "Obligations d'État conservées jusqu'à l'échéance dans dix ans",
+     1
+    ],
+    [
+     "Actions d'une société cotée achetées pour placer un excédent de trésorerie trois mois",
+     3
+    ],
+    [
+     "Portefeuille d'actions de start-up géré pour la revente avec plus-value à moyen terme, sans intervention dans la gestion",
+     2
+    ],
+    [
+     "Parts de SICAV monétaire",
+     3
+    ],
+    [
+     "5 % d'une société partenaire conservés durablement sans influence",
+     1
+    ]
+   ],
+   "why": "Le classement dépend de l'intention : contrôle ou influence (261), conservation durable sans influence (271 pour les actions, 272 pour les obligations), activité de portefeuille (273), placement court terme (50, dont les SICAV en 50). Le pourcentage détenu n'est qu'une présomption.",
+   "src": "PCG art. 221-1 s.",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Holdex acquiert le 3 mai N 500 actions de sa filiale à 40 € l'unité. Frais de courtage : 300 € HT, TVA 60 €. L'entreprise a opté pour la comptabilisation des frais d'acquisition de titres en charges. Règlement par banque. Enregistrez l'opération.",
+   "lib": "Acquisition de titres de participation, frais en charges",
+   "palette": [
+    "261",
+    "627",
+    "44566",
+    "512",
+    "503",
+    "6271",
+    "271"
+   ],
+   "sol": [
+    [
+     {
+      "a": "261",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "627",
+      "d": 300,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 60,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 20360
+     }
+    ],
+    [
+     {
+      "a": "261",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "6271",
+      "d": 300,
+      "c": 0
+     },
+     {
+      "a": "44566",
+      "d": 60,
+      "c": 0
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 20360
+     }
+    ]
+   ],
+   "why": "Titres de participation (filiale) : 261 pour 500 × 40 = 20 000. Option charges : les frais vont en 627 Services bancaires et assimilés (ou sa subdivision 6271 Frais sur titres) avec leur TVA déductible 44566. Avec l'option coût, 261 aurait été débité de 20 300. Les comptes 503 et 271 ne conviennent pas : il s'agit d'une filiale, donc d'une participation.",
+   "src": "PCG art. 221-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "À la clôture, les titres de participation sont évalués à leur :",
+   "opts": [
+    "Cours de bourse du dernier jour de l'exercice",
+    "Valeur d'utilité, fondée sur la rentabilité et les perspectives de la filiale",
+    "Valeur nominale figurant dans les statuts",
+    "Coût d'acquisition majoré des dividendes reçus"
+   ],
+   "a": 1,
+   "why": "PCG art. 221-3 : la valeur d'inventaire des titres de participation est leur valeur d'utilité, c'est-à-dire ce que l'entreprise accepterait de décaisser pour les acquérir si elle devait le faire ; elle intègre la rentabilité, les perspectives, la valeur des capitaux propres et éventuellement le cours. Le cours du jour de clôture ne vaut pas même pour les VMP (cours moyen du dernier mois) ; la valeur nominale et les dividendes sont sans rapport.",
+   "src": "PCG art. 221-3",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Placia détient 200 actions cotées en VMP acquises 45 € l'unité. Le cours moyen du mois de décembre N est de 41 € ; le cours au 31 décembre est de 43 €. Calculez la dépréciation à constater au 31 décembre N (en euros).",
+   "a": 800,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "Les titres cotés sont évalués au cours moyen du dernier mois (PCG art. 221-6), soit 41 €, et non au cours du jour de clôture (43 €). Valeur d'inventaire : 200 × 41 = 8 200 ; coût : 200 × 45 = 9 000. Dépréciation = 9 000 − 8 200 = 800 € (6866 / 590). Avec le cours de clôture, on aurait obtenu 400, ce qui est l'erreur classique.",
+   "src": "PCG art. 221-6",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Au 31 décembre N, les 500 titres de participation Holdex (coût 20 000 €) ont une valeur d'utilité de 18 000 €. Aucune dépréciation n'existait. Enregistrez l'écriture d'inventaire.",
+   "lib": "Dépréciation des titres de participation",
+   "palette": [
+    "6866",
+    "2961",
+    "6816",
+    "590",
+    "7866",
+    "261"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6866",
+      "d": 2000,
+      "c": 0
+     },
+     {
+      "a": "2961",
+      "d": 0,
+      "c": 2000
+     }
+    ]
+   ],
+   "why": "Dépréciation = 20 000 − 18 000 = 2 000 : charge financière 6866 Dotations aux dépréciations des éléments financiers et compte de dépréciation 2961 (titres de participation). On ne crédite jamais le compte 261 lui-même ; 590 concerne les VMP ; 6816 vise les immobilisations incorporelles et corporelles ; 7866 est une reprise.",
+   "src": "PCG art. 221-3 et 221-7",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant la dépréciation des titres à la clôture, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Elle est calculée ligne de titres par ligne de titres",
+    "Une plus-value latente sur une ligne ne compense pas une moins-value latente sur une autre ligne, sauf cas particulier des VMP cotées en baisse anormale et momentanée",
+    "Les plus-values latentes sont comptabilisées en 767",
+    "Elle est enregistrée par le débit de 6866 et le crédit de 296, 297 ou 590",
+    "Elle est irréversible comme celle du fonds commercial"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ],
+   "why": "PCG art. 221-7 : évaluation par ligne, sans compensation entre lignes (exception limitée aux VMP cotées), moins-values latentes dépréciées via 6866 et comptes 29/59, plus-values latentes ignorées par prudence. La dépréciation des titres est reprise (7866) si la valeur remonte : seule la dépréciation du fonds commercial est irréversible.",
+   "src": "PCG art. 221-7",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Sous le PCG 2025, la cession de titres de participation s'enregistre avec :",
+   "opts": [
+    "657 pour la valeur comptable et 757 pour le prix",
+    "6671 pour la valeur comptable et 7671 pour le prix",
+    "7673 ou 6673 pour le résultat net",
+    "675 et 775"
+   ],
+   "a": 1,
+   "why": "Les immobilisations financières relèvent du résultat financier : valeur comptable sortie en 6671 Valeurs comptables des immobilisations financières cédées, prix en 7671 Produits des cessions d'immobilisations financières, en montants bruts. Les comptes 657/757 sont réservés aux immobilisations incorporelles et corporelles, 6673/7673 aux VMP (résultat net) et 675/775 sont supprimés depuis 2025.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 946-66 et 947-76",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "ecriture",
+   "q": "Placia cède 100 actions détenues en VMP, acquises 5 000 €, pour 5 400 € encaissés par banque. Enregistrez la cession.",
+   "lib": "Cession de VMP",
+   "palette": [
+    "512",
+    "503",
+    "7673",
+    "6673",
+    "7671",
+    "261",
+    "6671"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 5400,
+      "c": 0
+     },
+     {
+      "a": "503",
+      "d": 0,
+      "c": 5000
+     },
+     {
+      "a": "7673",
+      "d": 0,
+      "c": 400
+     }
+    ]
+   ],
+   "why": "Pour les VMP, seul le résultat net de cession est enregistré : le compte 503 est crédité du coût d'entrée (5 000), la banque débitée du prix (5 400) et la différence positive (400) va en 7673 Produits nets sur cessions de VMP. En cas de perte, on aurait débité 6673. Les comptes 6671/7671 (immobilisations financières) et 261 sont hors sujet pour des VMP.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 947-76",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une entreprise détient 100 actions X acquises 50 € en mars N et 100 actions X acquises 60 € en septembre N, classées en VMP et valorisées au coût moyen pondéré. Le 10 décembre N, elle cède 150 actions à 58 €. Calculez le résultat net de cession (en euros, négatif si perte).",
+   "a": 450,
+   "unit": "€",
+   "tol": 0.5,
+   "why": "CMP = (100 × 50 + 100 × 60) / 200 = 55 €. Coût des titres cédés : 150 × 55 = 8 250. Prix : 150 × 58 = 8 700. Résultat net = + 450 €, enregistré en 7673. En PEPS, on aurait sorti 100 à 50 et 50 à 60 (8 000), soit un gain de 700 : la méthode change le résultat, d'où l'exigence de permanence.",
+   "src": "PCG art. 221-1 s. ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une participation (coût 20 000 €, dépréciée de 2 000 €) est cédée 26 000 €. Quel est l'ensemble des écritures correctes ?",
+   "opts": [
+    "512 D 26 000 / 7671 C 26 000 ; 6671 D 20 000 / 261 C 20 000 ; 2961 D 2 000 / 7866 C 2 000",
+    "512 D 26 000 / 261 C 20 000 / 7673 C 6 000",
+    "512 D 26 000 / 757 C 26 000 ; 657 D 20 000 / 261 C 20 000",
+    "512 D 26 000 / 7671 C 26 000 ; 6671 D 18 000 / 261 C 18 000"
+   ],
+   "a": 0,
+   "why": "Immobilisation financière : prix brut en 7671, valeur comptable brute (coût d'entrée 20 000, pas la valeur nette) en 6671, et reprise de la dépréciation devenue sans objet (2961 / 7866). La présentation nette en 7673 est réservée aux VMP ; 657/757 aux immobilisations corporelles et incorporelles ; sortir 18 000 ferait disparaître la dépréciation sans la reprendre et laisserait 2 000 au compte 261.",
+   "src": "Règlement ANC n° 2022-06 ; PCG art. 221-7",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "calc",
+   "q": "Placia détient en VMP 100 obligations de nominal 1 000 €, taux 4 %, coupon annuel payable le 1er avril. Calculez les intérêts courus non échus à rattacher à l'exercice clos le 31 décembre N (en euros).",
+   "a": 3000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Les intérêts courent du 1er avril (dernier coupon) au 31 décembre : 9 mois. Intérêts courus = 100 × 1 000 × 4 % × 9/12 = 3 000 €, débit 5088 Intérêts courus sur obligations, crédit 764 Revenus des VMP. Compter 12 mois (4 000) ou 3 mois (1 000) sont les erreurs fréquentes : on rattache la fraction écoulée depuis le dernier coupon.",
+   "src": "PCG art. 945-50 (compte 5088) ; C. com., art. L. 123-12",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quel compte figure, au bilan, la dépréciation d'actions cotées classées en valeurs mobilières de placement ?",
+   "opts": [
+    "2961",
+    "297",
+    "590",
+    "39"
+   ],
+   "a": 2,
+   "why": "Les dépréciations des VMP sont enregistrées en 590 Dépréciations des valeurs mobilières de placement, par le débit de 6866. Le compte 2961 concerne les titres de participation, 297 les autres titres immobilisés et 39 les stocks. La logique du plan : le 9 en deuxième position signale toujours une dépréciation (29, 39, 49, 59).",
+   "src": "PCG art. 945-59 (compte 590)",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Une obligation de nominal 1 000 € est acquise le 1er septembre 1 030 € coupon couru inclus ; le coupon annuel de 4 % est payable le 1er juin. Comment traiter la fraction de coupon couru acquise (10 €) ?",
+   "opts": [
+    "L'inclure dans le coût d'entrée du titre, inscrit pour 1 030 €",
+    "L'enregistrer à part en intérêts courus (5088 ou 2768), comme une créance",
+    "La passer en charges financières 661 à la date d'achat",
+    "L'enregistrer en produit 764 immédiatement"
+   ],
+   "a": 1,
+   "why": "Le coupon couru acheté (1 000 × 4 % × 3/12 = 10 €) correspond à des intérêts déjà courus que l'acquéreur récupérera au prochain coupon : c'est une créance d'intérêts (5088 pour une VMP, 2768 pour un titre immobilisé) et non un élément du coût du titre, inscrit pour 1 020. Ce n'est ni une charge ni un produit de l'acquéreur.",
+   "src": "PCG art. 221-1 ; art. 945-50 (compte 5088)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un dividende voté par l'assemblée de la filiale le 15 juin N et mis en paiement le 10 juillet N est comptabilisé chez la société mère :",
+   "opts": [
+    "À la clôture de l'exercice de la filiale, au prorata",
+    "Le 15 juin N, date de la décision de distribution, en 761 Produits de participations",
+    "Le 10 juillet N seulement, à l'encaissement",
+    "En 764 Revenus des VMP"
+   ],
+   "a": 1,
+   "why": "Le droit au dividende naît de la décision de l'assemblée : la créance (4571 ou 4671) et le produit 761 sont enregistrés à cette date, l'encaissement ne faisant que solder la créance. Aucun produit n'est anticipé à la clôture de la filiale (le résultat n'est pas encore affecté). Le compte 764 concerne les VMP, pas les participations.",
+   "src": "PCG art. 947-76 (compte 761)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Oblix émet le 1er juillet N 1 000 obligations de valeur nominale 500 €, au prix d'émission de 490 €, remboursables in fine dans 5 ans au prix de 510 €. Les fonds sont encaissés le jour même. Enregistrez l'émission (hors frais).",
+   "lib": "Émission d'un emprunt obligataire",
+   "palette": [
+    "512",
+    "169",
+    "163",
+    "164",
+    "6861",
+    "661",
+    "16883"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 490000,
+      "c": 0
+     },
+     {
+      "a": "169",
+      "d": 20000,
+      "c": 0
+     },
+     {
+      "a": "163",
+      "d": 0,
+      "c": 510000
+     }
+    ]
+   ],
+   "why": "Encaissement : 1 000 × 490 = 490 000 (512). Dette au prix de remboursement : 1 000 × 510 = 510 000 (163 Autres emprunts obligataires). Prime de remboursement = (510 − 490) × 1 000 = 20 000 au débit de 169, actif amorti sur 5 ans par 6861 (4 000 par an). Le compte 164 vise les emprunts bancaires ; 661 et 16883 concernent les intérêts.",
+   "src": "PCG art. 941-16",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Emprunt obligataire : 1 000 obligations, nominal 500 €, prix d'émission 490 €, prix de remboursement 510 €, durée 5 ans, émis le 1er janvier N. La prime de remboursement est amortie linéairement sur la durée de l'emprunt. Calculez la dotation annuelle d'amortissement de la prime (en euros).",
+   "a": 4000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Prime totale = (510 − 490) × 1 000 = 20 000 €. Amortissement linéaire sur 5 ans : 20 000 / 5 = 4 000 € par an, débit 6861, crédit 169. La prime se calcule entre prix de remboursement et prix d'émission : utiliser le nominal (510 − 500 ou 500 − 490) donnerait 10 000, soit la moitié de la prime réelle.",
+   "src": "PCG art. 941-16 et 946-68",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant les frais d'émission d'un emprunt obligataire (commissions bancaires, frais de publicité légale), quelles options sont admises ? (plusieurs réponses possibles)",
+   "opts": [
+    "Les comptabiliser en charges de l'exercice d'émission",
+    "Les étaler sur la durée de l'emprunt via le compte 4816 Frais d'émission des emprunts",
+    "Les ajouter à la prime de remboursement en 169",
+    "Les imputer sur le capital social",
+    "Les inscrire en immobilisation incorporelle 201"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "Le PCG laisse le choix entre la charge immédiate (627) et l'étalement sur la durée de l'emprunt, de façon linéaire ou au prorata des intérêts courus, via 4816 amorti par 6812. Les frais ne se confondent pas avec la prime de remboursement (169), qui résulte de l'écart entre prix de remboursement et prix d'émission ; ils ne touchent ni le capital ni les frais d'établissement.",
+   "src": "PCG art. 944-48 (compte 4816)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Emprunt obligataire de 2 000 000 € (nominal), taux 3 %, coupon payable le 1er octobre, émis le 1er octobre N−1. Au 31 décembre N, quelle écriture d'inventaire passe-t-on ?",
+   "opts": [
+    "Débit 661 pour 15 000, crédit 16883 pour 15 000",
+    "Débit 661 pour 60 000, crédit 16883 pour 60 000",
+    "Débit 661 pour 45 000, crédit 512 pour 45 000",
+    "Aucune écriture : le coupon a été payé le 1er octobre N"
+   ],
+   "a": 0,
+   "why": "Les intérêts courus du 1er octobre au 31 décembre N (3 mois) doivent être rattachés à N : 2 000 000 × 3 % × 3/12 = 15 000, débit 661 Charges d'intérêts, crédit 16883 Intérêts courus sur autres emprunts obligataires. Le coupon payé le 1er octobre N (60 000) couvrait octobre N−1 à septembre N ; 45 000 correspondrait à 9 mois.",
+   "src": "PCG art. 941-16 (compte 1688)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un emprunt obligataire est remboursé par « amortissements constants ». Cela signifie que :",
+   "opts": [
+    "Le même nombre d'obligations est remboursé chaque année, l'annuité totale diminuant au fil du temps",
+    "L'annuité (intérêts + remboursement) est identique chaque année",
+    "La totalité est remboursée à l'échéance finale",
+    "Seuls les intérêts sont payés chaque année"
+   ],
+   "a": 0,
+   "why": "Amortissements constants (ou séries égales) : un nombre identique d'obligations, tiré au sort, est remboursé chaque année ; les intérêts décroissant avec le capital restant dû, l'annuité totale diminue. L'annuité constante est un autre mode ; le remboursement global à l'échéance est le remboursement in fine, où seuls les intérêts sont payés chaque année.",
+   "src": "PCG art. 941-16 ; C. com., art. L. 228-38 s.",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Selon le PCG, une provision est un passif :",
+   "opts": [
+    "Dont le montant et l'échéance sont fixés de façon précise",
+    "Dont l'échéance ou le montant n'est pas fixé de façon précise",
+    "Qui n'est pas probable et figure seulement en annexe",
+    "Constitué uniquement en application de règles fiscales"
+   ],
+   "a": 1,
+   "why": "PCG art. 321-5 : la provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise, par opposition à la dette (montant et échéance connus). Une obligation non probable est un passif éventuel, mentionné en annexe et non comptabilisé. Les passifs constitués pour des raisons fiscales sont les provisions réglementées (compte 14), classées en capitaux propres.",
+   "src": "PCG art. 321-5",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Quelles conditions doivent être réunies à la clôture pour comptabiliser une provision pour risques et charges ? (plusieurs réponses possibles)",
+   "opts": [
+    "Une obligation de l'entité à l'égard d'un tiers existe à la date de clôture",
+    "Il est probable ou certain que cette obligation provoquera une sortie de ressources sans contrepartie au moins équivalente",
+    "Le montant peut être estimé avec une fiabilité suffisante",
+    "La charge correspondante a déjà été facturée",
+    "La décision de provisionner a été prise par l'assemblée générale"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 321-1 et 322-1 : obligation existante à la clôture, sortie probable ou certaine de ressources sans contrepartie équivalente, estimation fiable. Une charge facturée serait une dette (ou une charge à payer), non une provision, et la constitution d'une provision relève des dirigeants qui arrêtent les comptes, pas de l'assemblée.",
+   "src": "PCG art. 321-1 et 322-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Un ancien salarié a assigné la société Sitral aux prud'hommes et réclame 40 000 €. Au 31 décembre N, l'avocat estime probable une condamnation de 15 000 €. Enregistrez la provision.",
+   "lib": "Provision pour litige",
+   "palette": [
+    "6815",
+    "1511",
+    "6875",
+    "4286",
+    "641",
+    "1512"
+   ],
+   "sol": [
+    [
+     {
+      "a": "6815",
+      "d": 15000,
+      "c": 0
+     },
+     {
+      "a": "1511",
+      "d": 0,
+      "c": 15000
+     }
+    ]
+   ],
+   "why": "L'obligation existe (assignation), la sortie est probable et estimée à 15 000 (meilleure estimation, pas le montant réclamé) : provision pour litiges 1511 par le débit de 6815 Dotations aux provisions d'exploitation. Un litige courant n'est pas un événement majeur et inhabituel, donc pas de 6875. Le compte 4286 (charges à payer) suppose une dette certaine ; 641 est une charge de salaire ; 1512 vise les garanties clients.",
+   "src": "PCG art. 322-1 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Électra accorde une garantie d'un an sur ses ventes. Statistiquement, les coûts de garantie représentent 1,5 % du chiffre d'affaires ; le chiffre d'affaires de N est de 2 000 000 €. La provision pour garanties figurant au bilan d'ouverture est de 22 000 €. Calculez la dotation (en euros) à comptabiliser au 31 décembre N pour porter la provision au niveau requis.",
+   "a": 8000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Provision nécessaire à la clôture : 2 000 000 × 1,5 % = 30 000. Provision existante : 22 000. Dotation complémentaire = 30 000 − 22 000 = 8 000 € (6815 / 1512). On ajuste la provision à la meilleure estimation (PCG art. 323-1) et non en cumulant une dotation de 30 000 à l'ancienne provision. Si l'existant avait dépassé 30 000, il aurait fallu une reprise (7815).",
+   "src": "PCG art. 322-1 et 323-1",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque situation à la clôture N selon son traitement comptable.",
+   "cats": [
+    "Dette ou charge à payer",
+    "Provision",
+    "Passif éventuel (annexe seulement)",
+    "Provision réglementée"
+   ],
+   "items": [
+    [
+     "Facture d'électricité de décembre non encore reçue, montant estimé 1 800 €",
+     0
+    ],
+    [
+     "Procès en cours, condamnation probable estimée 15 000 €",
+     1
+    ],
+    [
+     "Caution donnée pour un emprunt d'une filiale en bonne santé financière",
+     2
+    ],
+    [
+     "Excédent de l'amortissement fiscal dégressif sur l'amortissement comptable",
+     3
+    ],
+    [
+     "Plan de restructuration détaillé annoncé aux salariés en novembre N",
+     1
+    ],
+    [
+     "Réclamation d'un client jugée sans fondement par les avocats",
+     2
+    ],
+    [
+     "Provision pour hausse des prix constituée pour bénéficier d'un avantage fiscal",
+     3
+    ]
+   ],
+   "why": "La facture non reçue est une charge à payer (dette certaine, montant estimé). Le litige probable et la restructuration annoncée avant la clôture sont des provisions (PCG art. 322-1). La caution sur un débiteur sain et la réclamation infondée sont des passifs éventuels, non comptabilisés. Les amortissements dérogatoires et la provision pour hausse des prix sont des provisions réglementées (14), d'origine fiscale.",
+   "src": "PCG art. 321-1 à 322-1 ; art. 941-14",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Une société envisage de fermer un site. Au 31 décembre N, la direction a établi un plan détaillé mais ne l'a annoncé ni aux salariés ni aux représentants du personnel ; l'annonce est prévue en février N+1. Peut-on provisionner les coûts de restructuration dans les comptes de N ?",
+   "opts": [
+    "Oui, dès que la direction a pris sa décision en interne",
+    "Non : sans annonce ni début d'exécution avant la clôture, aucune obligation n'existe",
+    "Oui, mais seulement à hauteur de 50 % des coûts estimés",
+    "Oui, si le commissaire aux comptes l'exige dans son rapport"
+   ],
+   "a": 1,
+   "why": "Une provision suppose une obligation envers des tiers à la clôture (PCG art. 322-1). Une décision interne non communiquée ne crée aucune attente fondée chez les salariés ou partenaires : l'obligation naît de l'annonce du plan détaillé ou du début de sa mise en œuvre. Faute d'annonce avant le 31 décembre, pas de provision pour restructuration en N (mention éventuelle en annexe comme événement postérieur). Le CAC ne crée pas d'obligation.",
+   "src": "PCG art. 322-1 et 322-2",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Concernant les engagements de retraite (indemnités de fin de carrière) dans les comptes individuels, le PCG prévoit :",
+   "opts": [
+    "L'obligation de les provisionner intégralement",
+    "L'interdiction de les provisionner",
+    "Une option : provision (méthode préférentielle) ou simple information en annexe",
+    "Leur inscription en provision réglementée 14"
+   ],
+   "a": 2,
+   "why": "PCG art. 324-1 : les engagements de retraite et avantages similaires peuvent être provisionnés (153), ce qui constitue la méthode préférentielle, ou seulement mentionnés en annexe. Le passage de l'annexe à la provision est un changement de méthode (effet en report à nouveau). La provision n'est pas déductible fiscalement (CGI art. 39, 1-5°) ; ce n'est pas une provision réglementée.",
+   "src": "PCG art. 324-1 ; CGI art. 39, 1-5°",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Quelles provisions sont déductibles du résultat fiscal lorsqu'elles sont correctement comptabilisées et chiffrées ? (plusieurs réponses possibles)",
+   "opts": [
+    "Provision pour litige prud'homal estimée par l'avocat",
+    "Provision pour garanties données aux clients fondée sur des statistiques",
+    "Provision pour engagements de retraite",
+    "Provision pour pertes de change",
+    "Provision pour perte à terminaison sur un contrat à long terme"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ],
+   "why": "CGI art. 39, 1-5° : sont déductibles les provisions couvrant une charge déductible, probable, nettement précisée et liée à un événement en cours : litige, garantie statistique, perte à terminaison. Sont exclues la provision pour retraites (texte exprès) et la provision pour pertes de change, qui ferait double emploi avec la prise en compte immédiate des écarts de conversion (CGI art. 38, 4).",
+   "src": "CGI art. 39, 1-5° ; CGI art. 38, 4",
+   "fiab": "stable",
+   "niveau": 3
+  },
+  {
+   "type": "qcm",
+   "q": "Les provisions réglementées (compte 14) se distinguent des provisions pour risques et charges (compte 15) parce qu'elles :",
+   "opts": [
+    "Couvrent des litiges et garanties envers des tiers identifiés",
+    "Ne correspondent à aucune obligation envers un tiers et relèvent des capitaux propres",
+    "Sont dotées par le compte 6815 comme les provisions d'exploitation",
+    "Sont obligatoirement reprises dans l'exercice suivant"
+   ],
+   "a": 1,
+   "why": "Les provisions réglementées (hausse des prix, amortissements dérogatoires, etc.) n'ont pas la nature de passif : elles traduisent un avantage fiscal et sont classées dans les capitaux propres (PCG art. 941-14). Elles sont dotées par 687 (6872, 6873, 6874) et reprises par 787 selon le rythme prévu par le texte fiscal (6 ans pour la hausse des prix, fin de plan pour les dérogatoires), pas systématiquement l'année suivante.",
+   "src": "PCG art. 941-14",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le prix de cession de titres de participation est encaissé mais la société a oublié de reprendre la dépréciation de 2 000 € qui existait sur ces titres. Quelle est la conséquence ?",
+   "opts": [
+    "Aucune conséquence : la dépréciation disparaît automatiquement avec les titres",
+    "Le compte 2961 garde un solde sans objet et le résultat financier est sous-évalué de 2 000 €",
+    "Le résultat financier de l'exercice est surévalué de 2 000 €",
+    "La dépréciation doit être virée en 657"
+   ],
+   "a": 1,
+   "why": "La dépréciation ne se solde pas d'elle-même : il faut la reprendre (2961 / 7866) lors de la cession, sinon le bilan présente une dépréciation sur des titres qui n'existent plus et le produit de reprise de 2 000 manque au résultat financier, qui est donc sous-évalué. Le compte 657 concerne les immobilisations incorporelles et corporelles.",
+   "src": "PCG art. 221-7 ; règlement ANC n° 2022-06",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}

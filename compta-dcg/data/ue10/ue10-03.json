@@ -26,7 +26,7 @@
   },
   {
    "h": "Amortissement fiscal et amortissements dérogatoires",
-   "html": "<p>Le fisc raisonne avec la <b>durée d'usage</b> de la profession et autorise le <b>mode dégressif</b> (CGI art. 39 A) pour les biens d'équipement neufs d'une durée au moins égale à 3 ans : taux dégressif = taux linéaire × coefficient (<span class=\"mono\">1,25</span> pour 3 ou 4 ans, <span class=\"mono\">1,75</span> pour 5 ou 6 ans, <span class=\"mono\">2,25</span> au-delà), appliqué à la VNC, prorata en <b>mois</b> dès le premier jour du mois d'acquisition ; lorsque le taux linéaire sur la durée restante devient supérieur, on bascule en linéaire.</p><p>Quand l'amortissement fiscal dépasse l'amortissement comptable, la différence est enregistrée en <b>amortissement dérogatoire</b>, provision réglementée : débit <b>68725</b>, crédit <b>145</b>. Lorsque la situation s'inverse, on reprend : débit 145, crédit <b>78725</b>. Le compte 145 est ainsi soldé à la fin du plan ; les comptes 6872/7872 (dotations et reprises sur provisions réglementées) sont maintenus par le PCG 2025 au sein des charges et produits exceptionnels.</p><p><b>Simplification pour les petites entreprises</b> (PCG art. 214-13) : elles peuvent retenir la durée d'usage fiscale pour les immobilisations non décomposables, ce qui évite les dérogatoires liés à la durée.</p><p>Exemple (machine ci-dessus, dégressif fiscal 5 ans, taux <span class=\"mono\">20 % × 1,75 = 35 %</span>) : fiscal N = <span class=\"mono\">60 000 × 35 % × 9/12 = 15 750</span> ; comptable 9 000 ; dérogatoire <span class=\"mono\">6 750</span>.</p>",
+   "html": "<p>Le fisc raisonne avec la <b>durée d'usage</b> de la profession et autorise le <b>mode dégressif</b> (CGI art. 39 A) pour les biens d'équipement neufs d'une durée au moins égale à 3 ans : taux dégressif = taux linéaire × coefficient (<span class=\"mono\">1,25</span> pour 3 ou 4 ans, <span class=\"mono\">1,75</span> pour 5 ou 6 ans, <span class=\"mono\">2,25</span> au-delà), appliqué à la VNC, prorata en <b>mois</b> dès le premier jour du mois d'acquisition ; on bascule en linéaire quand ce taux devient supérieur.</p><p>Quand l'amortissement fiscal dépasse l'amortissement comptable, la différence est enregistrée en <b>amortissement dérogatoire</b>, provision réglementée : débit <b>68725</b>, crédit <b>145</b>. Lorsque la situation s'inverse, on reprend : débit 145, crédit <b>78725</b>. Le compte 145 est ainsi soldé à la fin du plan ; les comptes 6872/7872 (dotations et reprises sur provisions réglementées) sont maintenus par le PCG 2025 au sein des charges et produits exceptionnels.</p><p><b>Simplification pour les petites entreprises</b> (PCG art. 214-13) : elles peuvent retenir la durée d'usage fiscale pour les immobilisations non décomposables, ce qui évite les dérogatoires liés à la durée.</p><p>Exemple (machine ci-dessus, dégressif fiscal 5 ans, taux <span class=\"mono\">20 % × 1,75 = 35 %</span>) : fiscal N = <span class=\"mono\">60 000 × 35 % × 9/12 = 15 750</span> ; comptable 9 000 ; dérogatoire <span class=\"mono\">6 750</span>.</p>",
    "entry": [
     {
      "a": "68725",
@@ -421,10 +421,10 @@
    "type": "qcm",
    "q": "Le fonds commercial acquis par une petite entreprise en 2024 et amorti comptablement sur dix ans :",
    "opts": [
-    "Donne lieu à un amortissement jamais déductible fiscalement",
-    "Donne lieu à un amortissement déductible fiscalement grâce au dispositif temporaire visant les fonds acquis entre 2022 et 2025",
+    "Donne lieu à un amortissement jamais déductible, quelle que soit la date d'acquisition",
+    "Donne lieu à un amortissement déductible grâce au dispositif temporaire 2022-2025",
     "Doit être réintégré intégralement l'année de l'acquisition",
-    "N'est amortissable que si un CAC l'autorise"
+    "N'est amortissable que si le commissaire aux comptes l'autorise expressément"
    ],
    "a": 1,
    "why": "Par principe, l'amortissement du fonds commercial n'est pas déductible (CGI art. 39, 1-2°). La loi de finances pour 2022 a ouvert une exception temporaire : l'amortissement comptabilisé des fonds acquis entre le 1er janvier 2022 et le 31 décembre 2025 est déductible, ce qui vise précisément les petites entreprises utilisant l'option de dix ans. Hors de cette fenêtre, l'amortissement est réintégré chaque année sur le tableau 2058-A.",
@@ -636,9 +636,9 @@
    "type": "qcm",
    "q": "En IFRS (IFRS 16), le locataire d'un contrat de location de trois ans sur un matériel comptabilise, contrairement au PCG :",
    "opts": [
-    "Une charge de loyer et rien d'autre",
-    "Un droit d'utilisation à l'actif et une dette de loyers au passif",
-    "Le bien en stock",
+    "Une simple charge de loyer, comme en PCG",
+    "Un droit d'utilisation à l'actif et une dette de location",
+    "Le bien en stock de marchandises",
     "Une provision pour loyers futurs"
    ],
    "a": 1,

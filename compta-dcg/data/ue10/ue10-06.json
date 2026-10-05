@@ -1,0 +1,826 @@
+{
+ "id": "ue10-06",
+ "ue": "UE10",
+ "ordre": 6,
+ "title": "Capitaux propres : constitution, augmentation, réduction, affectation",
+ "resume": "Comptabiliser la vie du capital social (apports, appels, augmentations, réductions) et l'affectation du résultat, avec les règles du Code de commerce et les calculs de DPS, de réserve légale et de dividendes.",
+ "duree": "70 min",
+ "niveau": 2,
+ "lecon": [
+  {
+   "h": "Constitution : apports en numéraire et libération du capital",
+   "html": "<p>À la constitution, les associés <b>souscrivent</b> le capital et le <b>libèrent</b> (versent) en tout ou partie. Le Code de commerce fixe une libération minimale des apports en numéraire : <b>un cinquième</b> dans la SARL (art. L. 223-7), <b>la moitié</b> dans la SA et la SAS (art. L. 225-3, L. 227-1), le solde devant être appelé dans les <b>cinq ans</b> de l'immatriculation. Les apports en nature sont toujours libérés intégralement.</p><p>Le compte 101 Capital est subdivisé pour suivre l'état de libération : <b>1011</b> capital souscrit non appelé, <b>1012</b> capital souscrit appelé non versé, <b>1013</b> capital souscrit appelé versé. La promesse d'apport passe par <b>4561</b> Associés – comptes d'apport en société ; la part non appelée est isolée à l'actif en <b>109</b> Actionnaires : capital souscrit non appelé, compte soustractif qui vient en déduction des capitaux propres dans l'analyse financière.</p><p>Exemple : la SA Nova est constituée avec <span class=\"mono\">20 000 actions</span> de nominal <span class=\"mono\">10 €</span>, libérées du minimum légal (moitié). Promesse d'apport :</p><div class=\"note\"><b>Règle à retenir.</b> SARL : 1/5 à la constitution ; SA/SAS : 1/2 ; augmentation de capital en numéraire (SA et SARL) : 1/4 du nominal et la totalité de la prime d'émission.</div>",
+   "entry": [
+    {
+     "a": "4561",
+     "d": 100000,
+     "c": 0
+    },
+    {
+     "a": "109",
+     "d": 100000,
+     "c": 0
+    },
+    {
+     "a": "1011",
+     "d": 0,
+     "c": 100000
+    },
+    {
+     "a": "1012",
+     "d": 0,
+     "c": 100000
+    }
+   ],
+   "lib": "Souscription du capital de la SA Nova, libération de la moitié"
+  },
+  {
+   "h": "Libération, appels ultérieurs, apports en nature et frais de constitution",
+   "html": "<p>Le versement des fonds appelés solde le compte d'apport : débit 512 (ou 467 notaire), crédit 4561 ; puis <b>1012</b> est viré à <b>1013</b>. Lors d'un <b>appel ultérieur</b> du capital non appelé, on constate la créance sur les associés (débit <b>4562</b> Apporteurs – capital appelé non versé, crédit 109) et le reclassement du capital (débit 1011, crédit 1012). Un versement par avance passe par <b>4564</b> ; un <b>actionnaire défaillant</b> (4566) voit ses titres vendus après mise en demeure et supporte frais et intérêts de retard.</p><p>Les <b>apports en nature</b> (immeuble, fonds de commerce, matériel) sont évalués par un <b>commissaire aux apports</b>, obligatoire dans la SA (art. L. 225-8) ; dans la SARL et la SAS, les associés peuvent s'en dispenser à l'unanimité si aucun apport ne dépasse <span class=\"mono\">30 000 €</span> et si la valeur totale des apports en nature n'excède pas la moitié du capital (art. L. 223-9). </p><p>Les <b>frais de constitution</b> sont des charges (méthode préférentielle) ou inscrits en 201 et amortis sur cinq ans au plus (PCG art. 212-9).</p><p>Exemple : appel du solde du capital de Nova (<span class=\"mono\">100 000 €</span>).</p>",
+   "entry": [
+    {
+     "a": "4562",
+     "d": 100000,
+     "c": 0
+    },
+    {
+     "a": "109",
+     "d": 0,
+     "c": 100000
+    },
+    {
+     "a": "1011",
+     "d": 100000,
+     "c": 0
+    },
+    {
+     "a": "1012",
+     "d": 0,
+     "c": 100000
+    }
+   ],
+   "lib": "Appel du solde du capital souscrit non appelé"
+  },
+  {
+   "h": "Augmentation de capital en numéraire et droit préférentiel de souscription",
+   "html": "<p>L'<b>AGE</b> décide l'augmentation (art. L. 225-129), le capital ancien devant être <b>intégralement libéré</b> (art. L. 225-131). L'excédent du <b>prix d'émission</b> sur le nominal est la <b>prime d'émission</b> (<b>1041</b>), qui compense l'écart entre valeur réelle des titres anciens et nominal. Les apporteurs libèrent au moins <b>un quart</b> du nominal et la <b>totalité de la prime</b> (art. L. 225-144 ; L. 223-32 pour la SARL) ; les versements transitent par <b>4563</b>.</p><p>Chaque actionnaire ancien dispose d'un <b>droit préférentiel de souscription</b> (DPS, art. L. 225-132), négociable, qui le protège de la dilution. Sa <b>valeur théorique</b> est la perte de valeur d'une action ancienne : DPS = V − V', où V' est la valeur après l'opération. Avec N actions anciennes de valeur V et n actions nouvelles émises à E : <span class=\"mono\">V' = (N × V + n × E) / (N + n)</span> et <span class=\"mono\">DPS = (V − E) × n / (N + n)</span>.</p><p>Exemple : Nova (<span class=\"mono\">10 000 actions</span> valant <span class=\"mono\">150 €</span>) émet <span class=\"mono\">2 500 actions</span> de nominal 10 € à <span class=\"mono\">110 €</span>, libérées intégralement. V' = (1 500 000 + 275 000) / 12 500 = 142 ; DPS = 8 €. Prime : 2 500 × (110 − 10) = 250 000.</p>",
+   "entry": [
+    {
+     "a": "512",
+     "d": 275000,
+     "c": 0
+    },
+    {
+     "a": "1013",
+     "d": 0,
+     "c": 25000
+    },
+    {
+     "a": "1041",
+     "d": 0,
+     "c": 250000
+    }
+   ],
+   "lib": "Augmentation de capital en numéraire libérée intégralement, avec prime d'émission"
+  },
+  {
+   "h": "Incorporation de réserves, conversion de dettes, apports en nature",
+   "html": "<p><b>Incorporation de réserves</b> : la société transforme des réserves (ou primes, report à nouveau) en capital, soit par <b>attribution gratuite</b> d'actions nouvelles, soit par élévation du nominal. Aucun apport : les capitaux propres totaux sont inchangés, seule leur composition change. Écriture : débit 106x (ou 104, 110), crédit 1013. Chaque action ancienne porte un <b>droit d'attribution</b> (DA) dont la valeur théorique est <span class=\"mono\">DA = V − V' = V × n / (N + n)</span> ; l'actionnaire qui ne veut pas d'actions gratuites vend ses DA.</p><p><b>Conversion de dettes</b> (compensation avec des créances liquides et exigibles) : un créancier, souvent un associé en compte courant (455) ou un fournisseur, reçoit des actions en paiement : débit 455 ou 401, crédit 1013 et 1041 pour la prime. La société se désendette sans trésorerie.</p><p><b>Apports en nature</b> en cours de vie sociale : évaluation par un commissaire aux apports (art. L. 225-147), prime d'apport en <b>1043</b> ; libération intégrale immédiate.</p><p>Exemple : Nova incorpore <span class=\"mono\">50 000 €</span> d'autres réserves en créant 5 000 actions gratuites de 10 €. Avec 10 000 actions valant 150 € avant l'opération : V' = 1 500 000 / 15 000 = 100 ; DA = 50 €.</p>",
+   "entry": [
+    {
+     "a": "1068",
+     "d": 50000,
+     "c": 0
+    },
+    {
+     "a": "1013",
+     "d": 0,
+     "c": 50000
+    }
+   ],
+   "lib": "Incorporation de réserves au capital par attribution d'actions gratuites"
+  },
+  {
+   "h": "Réduction de capital, coup d'accordéon et capitaux propres insuffisants",
+   "html": "<p>La <b>réduction de capital</b> est décidée par l'AGE (art. L. 225-204) et ne peut porter atteinte à l'égalité des actionnaires. Deux cas :</p><ul><li><b>Motivée par des pertes</b> : le capital absorbe le report à nouveau débiteur (débit 1013, crédit <b>119</b>), ce qui assainit le bilan sans sortie de trésorerie ; les créanciers ne peuvent s'y opposer.</li><li><b>Non motivée par des pertes</b> : remboursement d'une fraction du nominal (débit 1013, crédit <b>4567</b> Associés – capital à rembourser, puis 512) ou rachat d'actions suivi de leur annulation (art. L. 225-207) ; les créanciers disposent d'un <b>droit d'opposition</b> (art. L. 225-205).</li></ul><p>Le <b>coup d'accordéon</b> enchaîne une réduction (souvent à zéro) apurant les pertes et une augmentation immédiate reconstituant le capital.</p><p>Lorsque les <b>capitaux propres deviennent inférieurs à la moitié du capital</b> (art. L. 223-42 SARL, L. 225-248 SA et SAS), les associés doivent être consultés dans les <b>quatre mois</b> suivant l'approbation des comptes faisant apparaître la perte, pour décider la dissolution anticipée ou la poursuite. En cas de poursuite, la régularisation intervient au plus tard à la clôture du <b>deuxième exercice</b> suivant ; à défaut, la loi n° 2023-171 impose de réduire le capital à un seuil fixé par décret dans un nouveau délai de deux exercices, sous peine de dissolution judiciaire. La décision est publiée et mentionnée au RCS.</p>",
+   "entry": [
+    {
+     "a": "1013",
+     "d": 80000,
+     "c": 0
+    },
+    {
+     "a": "119",
+     "d": 0,
+     "c": 80000
+    }
+   ],
+   "lib": "Réduction de capital motivée par des pertes"
+  },
+  {
+   "h": "Affectation du résultat : réserve légale, dividendes, report à nouveau",
+   "html": "<p>Le résultat de N (compte 120 bénéfice, 129 perte) est affecté par l'<b>AGO</b> qui approuve les comptes dans les six mois de la clôture. Ordre d'affectation d'un bénéfice :</p><ol><li>Apurement du <b>report à nouveau débiteur</b> (119) ;</li><li>Dotation de la <b>réserve légale</b> (1061) : <b>5 %</b> du bénéfice diminué des pertes antérieures, obligatoire jusqu'à ce qu'elle atteigne <b>10 % du capital</b> (art. L. 232-10) ;</li><li><b>Réserves statutaires</b> (1063) imposées par les statuts ;</li><li>Le solde, augmenté du report à nouveau créditeur (110), forme le <b>bénéfice distribuable</b> (art. L. 232-11) : <b>premier dividende</b> (intérêt statutaire, calculé sur le capital libéré et non amorti), <b>superdividende</b> (égal pour toutes les actions), réserves facultatives (1068) et <b>report à nouveau</b> créditeur.</li></ol><p>Les dividendes (457 Associés – dividendes à payer) sont mis en paiement dans les <b>neuf mois</b> de la clôture (art. L. 232-13). Un <b>acompte sur dividendes</b> est possible avant l'approbation des comptes si un bilan intermédiaire certifié par le CAC fait apparaître un bénéfice suffisant (art. L. 232-12).</p><p>Exemple : Nova, capital <span class=\"mono\">500 000</span>, réserve légale <span class=\"mono\">40 000</span>, report à nouveau débiteur <span class=\"mono\">10 000</span>, bénéfice <span class=\"mono\">120 000</span>. Réserve légale : 5 % × (120 000 − 10 000) = 5 500 (plafond restant 10 000, non atteint). Réserve statutaire 10 000, dividendes 60 000, report à nouveau 34 500.</p>",
+   "entry": [
+    {
+     "a": "120",
+     "d": 120000,
+     "c": 0
+    },
+    {
+     "a": "119",
+     "d": 0,
+     "c": 10000
+    },
+    {
+     "a": "1061",
+     "d": 0,
+     "c": 5500
+    },
+    {
+     "a": "1063",
+     "d": 0,
+     "c": 10000
+    },
+    {
+     "a": "457",
+     "d": 0,
+     "c": 60000
+    },
+    {
+     "a": "110",
+     "d": 0,
+     "c": 34500
+    }
+   ],
+   "lib": "Affectation du résultat de l'exercice N"
+  },
+  {
+   "h": "Paiement des dividendes, prélèvements à la source et comptes courants d'associés",
+   "html": "<p>Lors du paiement aux associés <b>personnes physiques</b> résidentes, la société retient à la source le <b>prélèvement forfaitaire non libératoire</b> de <span class=\"mono\">12,8 %</span> (CGI art. 117 quater) et les <b>prélèvements sociaux</b> de <span class=\"mono\">17,2 %</span>, soit <span class=\"mono\">30 %</span> au total en 2025 (prélèvement forfaitaire unique, « flat tax »), reversés au Trésor le 15 du mois suivant. Comptabilisation : débit 457 pour le brut, crédit <b>442</b> État – impôts et taxes recouvrables sur des tiers pour 30 %, crédit 512 pour le net. Les associés dont le revenu fiscal de référence est modeste peuvent demander la dispense du prélèvement de 12,8 % ; les associés <b>personnes morales</b> ne supportent aucun prélèvement (régime de l'IS, mère-fille).</p><p>Les <b>comptes courants d'associés</b> (455) enregistrent les avances consenties par les associés à la société et les sommes qu'elle leur doit (dividendes non prélevés, rémunérations). Les intérêts versés sont déductibles si le capital est <b>entièrement libéré</b> et dans la limite du taux plafond publié chaque trimestre (CGI art. 39, 1-3° et 212). Ils sont rattachés à l'exercice par 4558 Associés – intérêts courus.</p><p>Exemple : Nova verse les <span class=\"mono\">60 000 €</span> de dividendes à ses actionnaires, tous personnes physiques résidentes sans dispense.</p>",
+   "entry": [
+    {
+     "a": "457",
+     "d": 60000,
+     "c": 0
+    },
+    {
+     "a": "442",
+     "d": 0,
+     "c": 18000
+    },
+    {
+     "a": "512",
+     "d": 0,
+     "c": 42000
+    }
+   ],
+   "lib": "Paiement des dividendes sous déduction du PFU de 30 %"
+  }
+ ],
+ "sources": [
+  {
+   "ref": "C. com., art. L. 223-7 et L. 225-3",
+   "note": "Libération minimale du capital à la constitution : 1/5 (SARL), 1/2 (SA)"
+  },
+  {
+   "ref": "C. com., art. L. 223-9 et L. 225-8",
+   "note": "Commissaire aux apports et cas de dispense"
+  },
+  {
+   "ref": "C. com., art. L. 225-128 à L. 225-132 et L. 225-144 ; L. 223-32",
+   "note": "Augmentation de capital, DPS, libération du quart et de la prime"
+  },
+  {
+   "ref": "C. com., art. L. 225-204 à L. 225-207",
+   "note": "Réduction de capital, opposition des créanciers, rachat d'actions"
+  },
+  {
+   "ref": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171)",
+   "note": "Capitaux propres inférieurs à la moitié du capital"
+  },
+  {
+   "ref": "C. com., art. L. 232-9 à L. 232-13",
+   "note": "Réserve légale, bénéfice distribuable, acomptes, délai de paiement des dividendes"
+  },
+  {
+   "ref": "CGI art. 117 quater et 200 A ; CSS art. L. 136-7",
+   "note": "Prélèvement forfaitaire non libératoire de 12,8 % et prélèvements sociaux de 17,2 %"
+  },
+  {
+   "ref": "CGI art. 39, 1-3° et 212",
+   "note": "Déductibilité des intérêts de comptes courants d'associés"
+  },
+  {
+   "ref": "PCG art. 941-10 et 944-45",
+   "note": "Fonctionnement des comptes 101, 104, 106, 109 et 45"
+  }
+ ],
+ "exercices": [
+  {
+   "type": "qcm",
+   "q": "Lors de la constitution d'une SARL, les apports en numéraire doivent être libérés d'au moins :",
+   "opts": [
+    "Un quart",
+    "Un cinquième",
+    "La moitié",
+    "La totalité"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 223-7 : les parts représentant des apports en numéraire doivent être libérées d'au moins un cinquième de leur montant à la constitution, le solde dans les cinq ans. La moitié est le minimum de la SA (L. 225-3) et le quart celui des augmentations de capital en numéraire. Seuls les apports en nature sont libérés intégralement.",
+   "src": "C. com., art. L. 223-7",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Une SARL est constituée avec un capital de 80 000 €, dont 30 000 € d'apports en nature et 50 000 € d'apports en numéraire. Quel est le montant minimal total qui doit être libéré à la constitution (en euros) ?",
+   "a": 40000,
+   "unit": "€",
+   "tol": 1,
+   "why": "Apports en nature : libération intégrale obligatoire, 30 000. Apports en numéraire : un cinquième au minimum (L. 223-7), 50 000 × 1/5 = 10 000. Total minimal libéré : 40 000 €. Appliquer le cinquième à l'ensemble du capital (16 000) oublie que les apports en nature ne peuvent pas être libérés partiellement.",
+   "src": "C. com., art. L. 223-7",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "La SA Nova est constituée le 1er mars N avec 20 000 actions de nominal 10 €, toutes souscrites en numéraire et libérées du minimum légal, soit la moitié. Enregistrez la promesse d'apport (souscription), avant tout versement.",
+   "lib": "Souscription du capital",
+   "palette": [
+    "4561",
+    "109",
+    "1011",
+    "1012",
+    "1013",
+    "512",
+    "4562"
+   ],
+   "sol": [
+    [
+     {
+      "a": "4561",
+      "d": 100000,
+      "c": 0
+     },
+     {
+      "a": "109",
+      "d": 100000,
+      "c": 0
+     },
+     {
+      "a": "1011",
+      "d": 0,
+      "c": 100000
+     },
+     {
+      "a": "1012",
+      "d": 0,
+      "c": 100000
+     }
+    ]
+   ],
+   "why": "Capital 200 000. Partie appelée (moitié, L. 225-3) : créance sur les apporteurs en 4561 (100 000) et capital souscrit appelé non versé 1012. Partie non appelée : 109 Actionnaires – capital souscrit non appelé (100 000) et 1011 capital souscrit non appelé. Le compte 1013 n'est crédité qu'après versement, 512 à l'encaissement, 4562 lors d'un appel ultérieur.",
+   "src": "C. com., art. L. 225-3 ; PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Au bilan d'une SA, le compte 109 « Actionnaires : capital souscrit non appelé » figure :",
+   "opts": [
+    "Au passif, dans les dettes financières à long terme",
+    "À l'actif, en déduction des capitaux propres dans l'analyse financière",
+    "Dans les charges constatées d'avance, à l'actif circulant",
+    "Au passif, dans les capitaux propres, en augmentation"
+   ],
+   "a": 1,
+   "why": "Le compte 109 enregistre la fraction du capital souscrit que la société n'a pas encore appelée : c'est un compte d'actif soustractif présenté en tête du bilan. En analyse financière, on le retranche des capitaux propres pour obtenir les capitaux propres effectivement apportés. Il ne s'agit ni d'une dette ni d'une charge constatée d'avance.",
+   "src": "PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Lors de l'appel du solde du capital non appelé d'une SA, quelles écritures sont passées ? (plusieurs réponses possibles)",
+   "opts": [
+    "Débit 4562 Apporteurs – capital appelé non versé, crédit 109",
+    "Débit 1011, crédit 1012",
+    "Débit 512, crédit 1013",
+    "Débit 109, crédit 4561",
+    "Débit 1012, crédit 1013 dès l'appel"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "why": "L'appel transforme le capital non appelé en capital appelé non versé : créance sur les actionnaires (4562 / 109) et reclassement du capital (1011 / 1012). Le virement 1012 → 1013 n'intervient qu'au versement effectif, qui passe par 512 / 4562 (et non 512 / 1013 directement). Débiter 109 irait dans le mauvais sens.",
+   "src": "PCG art. 941-10 et 944-45",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Un actionnaire ne répond pas à l'appel du solde du capital malgré une mise en demeure. Que prévoit le Code de commerce ?",
+   "opts": [
+    "La société annule purement et simplement ses actions, sans indemnité",
+    "La société peut vendre ses actions ; il supporte frais et intérêts de retard (compte 4566)",
+    "La société réduit son capital du montant non versé",
+    "Les autres actionnaires sont tenus de payer à sa place"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 228-27 : après mise en demeure restée sans effet pendant un mois, la société poursuit la vente des actions non libérées (en bourse ou aux enchères) ; le défaillant est redevable des intérêts de retard et des frais, et le produit de la vente lui revient déduction faite des sommes dues. Le suivi se fait en 4566. Il n'y a ni annulation gratuite ni réduction de capital, et aucune solidarité des autres actionnaires.",
+   "src": "C. com., art. L. 228-27 ; PCG art. 944-45",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Dans une SARL, les associés peuvent décider à l'unanimité de ne pas recourir à un commissaire aux apports si :",
+   "opts": [
+    "Le capital social est inférieur à 100 000 € à la constitution",
+    "Aucun apport en nature n'excède 30 000 € et leur total ne dépasse pas la moitié du capital",
+    "Un expert-comptable a validé l'évaluation par écrit",
+    "Les apports en nature sont des biens d'occasion"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 223-9 : double condition cumulative, valeur unitaire de chaque apport en nature au plus 30 000 € et total des apports en nature au plus égal à la moitié du capital. Dans la SA, le commissaire aux apports est toujours obligatoire (L. 225-8). Les associés qui se dispensent sont solidairement responsables pendant cinq ans de la valeur retenue.",
+   "src": "C. com., art. L. 223-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "tri",
+   "q": "Classez chaque élément selon le compte où il est comptabilisé.",
+   "cats": [
+    "1011",
+    "1012",
+    "1013",
+    "109",
+    "4564"
+   ],
+   "items": [
+    [
+     "Capital souscrit dont l'appel n'a pas encore été décidé (côté capitaux propres)",
+     0
+    ],
+    [
+     "Capital appelé que les actionnaires n'ont pas encore versé",
+     1
+    ],
+    [
+     "Capital appelé et effectivement versé",
+     2
+    ],
+    [
+     "Créance de la société sur les actionnaires au titre du capital non appelé (côté actif)",
+     3
+    ],
+    [
+     "Versement par un actionnaire d'une fraction du capital avant son appel",
+     4
+    ]
+   ],
+   "why": "Les subdivisions du compte 101 suivent l'état de libération : 1011 non appelé, 1012 appelé non versé, 1013 appelé versé. Le compte 109 est la contrepartie à l'actif du capital non appelé. Les versements anticipés sont des dettes envers les associés (4564) jusqu'à l'appel correspondant.",
+   "src": "PCG art. 941-10 et 944-45",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Lors d'une augmentation de capital en numéraire d'une SA, les souscripteurs doivent libérer au minimum :",
+   "opts": [
+    "La moitié du nominal et la moitié de la prime",
+    "Un quart du nominal et la totalité de la prime d'émission",
+    "La totalité du nominal et de la prime",
+    "Un cinquième du nominal"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 225-144 : libération d'au moins un quart de la valeur nominale et, le cas échéant, de la totalité de la prime d'émission, le solde dans les cinq ans. La même règle vaut pour la SARL depuis 2012 (L. 223-32). La moitié concerne la constitution de la SA, le cinquième celle de la SARL.",
+   "src": "C. com., art. L. 225-144 et L. 223-32",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "La SA Nova a 10 000 actions dont la valeur réelle est de 150 €. Elle émet 2 500 actions nouvelles au prix de 110 €. Calculez la valeur théorique du droit préférentiel de souscription attaché à une action ancienne (en euros).",
+   "a": 8,
+   "unit": "€",
+   "tol": 0.01,
+   "why": "Valeur après l'opération : V' = (10 000 × 150 + 2 500 × 110) / 12 500 = 1 775 000 / 12 500 = 142 €. DPS = V − V' = 150 − 142 = 8 €. Vérification par la formule directe : (150 − 110) × 2 500 / 12 500 = 40 × 0,2 = 8. Il faut 4 DPS (10 000 / 2 500) pour souscrire une action nouvelle : 4 × 8 + 110 = 142, le souscripteur nouveau paie bien la valeur de l'action après l'opération.",
+   "src": "C. com., art. L. 225-132",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Nova (capital ancien entièrement libéré) émet 2 500 actions de nominal 10 € au prix de 110 €, intégralement libérées à la souscription. Les fonds sont reçus en banque. Enregistrez l'augmentation de capital (écriture unique, sans compte d'attente).",
+   "lib": "Augmentation de capital en numéraire avec prime d'émission",
+   "palette": [
+    "512",
+    "1013",
+    "1041",
+    "1061",
+    "1068",
+    "4561",
+    "1011"
+   ],
+   "sol": [
+    [
+     {
+      "a": "512",
+      "d": 275000,
+      "c": 0
+     },
+     {
+      "a": "1013",
+      "d": 0,
+      "c": 25000
+     },
+     {
+      "a": "1041",
+      "d": 0,
+      "c": 250000
+     }
+    ]
+   ],
+   "why": "Fonds reçus : 2 500 × 110 = 275 000. Capital : 2 500 × 10 = 25 000 en 1013 (appelé et versé). Prime d'émission : 2 500 × (110 − 10) = 250 000 en 1041, qui fait partie des capitaux propres mais pas du capital social. La prime n'est ni une réserve légale (1061) ni une réserve facultative (1068) ; 1011 et 4561 n'ont pas d'objet pour une libération intégrale immédiate.",
+   "src": "C. com., art. L. 225-128 ; PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La prime d'émission (1041) a pour rôle principal :",
+   "opts": [
+    "D'augmenter le capital social inscrit au RCS",
+    "De compenser l'écart entre valeur réelle et nominal des actions anciennes",
+    "De rémunérer la banque chargée du placement",
+    "De constituer la réserve légale plus rapidement"
+   ],
+   "a": 1,
+   "why": "Les actions anciennes valent plus que leur nominal (réserves accumulées) ; émettre au nominal diluerait les anciens actionnaires. La prime, versée par les nouveaux souscripteurs, égalise les droits. Elle entre dans les capitaux propres sans faire partie du capital social ; elle est librement utilisable (incorporation, imputation des frais d'augmentation) et ne constitue pas la réserve légale.",
+   "src": "C. com., art. L. 225-128 ; PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "multi",
+   "q": "Selon le PCG, les frais d'augmentation de capital (honoraires, publicité, droits) peuvent être : (plusieurs réponses possibles)",
+   "opts": [
+    "Imputés sur la prime d'émission (méthode préférentielle)",
+    "Comptabilisés en charges de l'exercice",
+    "Inscrits en frais d'établissement (201) et amortis sur cinq ans au maximum",
+    "Ajoutés au capital social",
+    "Inscrits en immobilisation corporelle"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "PCG art. 212-9 : trois traitements sont admis, l'imputation sur la prime d'émission étant préférentielle, à défaut la charge ou l'inscription en 201 avec amortissement sur cinq ans maximum. Le capital social ne peut jamais être majoré de frais, et ces dépenses n'ont rien d'une immobilisation corporelle.",
+   "src": "PCG art. 212-9",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "Nova compte 10 000 actions d'une valeur réelle de 150 €. Elle incorpore 50 000 € de réserves au capital en créant 5 000 actions gratuites de nominal 10 €. Calculez la valeur théorique du droit d'attribution attaché à une action ancienne (en euros).",
+   "a": 50,
+   "unit": "€",
+   "tol": 0.01,
+   "why": "Aucun apport : la valeur globale reste 10 000 × 150 = 1 500 000, répartie sur 15 000 actions : V' = 100 €. DA = V − V' = 150 − 100 = 50 €. Formule directe : V × n / (N + n) = 150 × 5 000 / 15 000 = 50. Il faut 2 DA (10 000 / 5 000) pour obtenir une action gratuite valant 100 : 2 × 50 = 100, cohérent.",
+   "src": "C. com., art. L. 225-130",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "L'AGE de Nova décide d'incorporer 50 000 € prélevés sur les autres réserves (1068) au capital, par création de 5 000 actions gratuites de 10 €. Enregistrez l'opération.",
+   "lib": "Incorporation de réserves au capital",
+   "palette": [
+    "1068",
+    "1013",
+    "1061",
+    "512",
+    "457",
+    "1041"
+   ],
+   "sol": [
+    [
+     {
+      "a": "1068",
+      "d": 50000,
+      "c": 0
+     },
+     {
+      "a": "1013",
+      "d": 0,
+      "c": 50000
+     }
+    ]
+   ],
+   "why": "L'incorporation est un simple virement interne aux capitaux propres : débit 1068 Autres réserves, crédit 1013 Capital souscrit appelé versé. Aucune trésorerie (512) ni dette envers les associés (457) n'intervient. La réserve légale (1061) ne peut pas être distribuée mais peut être incorporée ; ici l'énoncé vise les autres réserves. Aucune prime (1041) n'est créée puisqu'il n'y a pas de souscription.",
+   "src": "C. com., art. L. 225-130 ; PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Un associé détient une créance en compte courant de 40 000 € sur la SARL. L'AGE décide d'augmenter le capital par compensation avec cette créance (4 000 parts de 10 €). L'écriture est :",
+   "opts": [
+    "Débit 512 pour 40 000, crédit 1013 pour 40 000",
+    "Débit 455 pour 40 000, crédit 1013 pour 40 000",
+    "Débit 1013 pour 40 000, crédit 455 pour 40 000",
+    "Débit 401 pour 40 000, crédit 1041 pour 40 000"
+   ],
+   "a": 1,
+   "why": "La conversion d'une dette en capital éteint la dette (débit 455 Associés – comptes courants) et crée du capital (crédit 1013), sans mouvement de trésorerie : 512 n'intervient pas. La créance doit être liquide et exigible et un arrêté de compte certifié est établi. Inverser les sens (option 3) réduirait le capital ; 401/1041 ne correspondent ni au créancier ni à la nature de l'opération (pas de prime ici).",
+   "src": "C. com., art. L. 225-128 ; PCG art. 944-45",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "La SA Nova présente un report à nouveau débiteur de 80 000 €. L'AGE décide une réduction de capital de 80 000 € par diminution du nominal des actions, motivée par ces pertes. Enregistrez l'opération.",
+   "lib": "Réduction de capital motivée par des pertes",
+   "palette": [
+    "1013",
+    "119",
+    "512",
+    "4567",
+    "110",
+    "129"
+   ],
+   "sol": [
+    [
+     {
+      "a": "1013",
+      "d": 80000,
+      "c": 0
+     },
+     {
+      "a": "119",
+      "d": 0,
+      "c": 80000
+     }
+    ]
+   ],
+   "why": "Le capital absorbe les pertes : débit 1013, crédit 119 Report à nouveau (solde débiteur), qui est ainsi soldé. Aucun remboursement (512, 4567) : il s'agit d'un assainissement du bilan, les créanciers ne peuvent s'y opposer. Le compte 129 (perte de l'exercice) n'est utilisé que si l'on impute directement la perte de l'exercice en cours d'affectation ; ici les pertes sont déjà en report à nouveau.",
+   "src": "C. com., art. L. 225-204 ; PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Dans quel cas les créanciers d'une SA disposent-ils d'un droit d'opposition à une réduction de capital ?",
+   "opts": [
+    "Dans tous les cas",
+    "Uniquement lorsque la réduction est motivée par des pertes",
+    "Lorsque la réduction n'est pas motivée par des pertes (remboursement aux actionnaires, rachat d'actions)",
+    "Jamais : la réduction relève de la seule AGE"
+   ],
+   "a": 2,
+   "why": "C. com., art. L. 225-205 : les créanciers dont la créance est antérieure peuvent former opposition dans un délai de vingt jours (après dépôt au greffe) à une réduction non motivée par des pertes, car elle diminue leur garantie en faisant sortir des fonds. La réduction motivée par des pertes ne fait que constater une situation déjà existante : pas d'opposition.",
+   "src": "C. com., art. L. 225-205",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le « coup d'accordéon » désigne :",
+   "opts": [
+    "Une augmentation de capital par incorporation de réserves suivie d'une distribution",
+    "Une réduction de capital pour apurer les pertes, immédiatement suivie d'une augmentation de capital",
+    "Un rachat d'actions suivi de leur revente",
+    "La conversion d'obligations en actions"
+   ],
+   "a": 1,
+   "why": "Le coup d'accordéon enchaîne une réduction (souvent à zéro) qui absorbe les pertes et une augmentation qui reconstitue le capital, généralement souscrite par un investisseur ou les associés qui veulent poursuivre. Il est licite s'il respecte l'intérêt social et le DPS des anciens actionnaires. Les autres propositions décrivent des opérations distinctes.",
+   "src": "C. com., art. L. 225-204 et L. 225-248",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La SARL Ludo, au capital de 300 000 €, clôture N avec des capitaux propres de 120 000 €. Quelle obligation en découle pour les associés ?",
+   "opts": [
+    "Dissoudre immédiatement la société et nommer un liquidateur",
+    "Consulter les associés dans les quatre mois de l'approbation des comptes sur la dissolution anticipée",
+    "Augmenter le capital dans les deux mois de la clôture",
+    "Aucune obligation tant que la société est in bonis"
+   ],
+   "a": 1,
+   "why": "120 000 < 150 000 (moitié du capital) : procédure de l'article L. 223-42. Les associés décident, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée. À défaut de dissolution, les capitaux propres doivent être reconstitués au moins à la moitié du capital, ou le capital réduit, au plus tard à la clôture du deuxième exercice suivant ; depuis la loi 2023-171, un délai supplémentaire est accordé si le capital est ramené à un seuil fixé par décret. La dissolution immédiate n'est jamais imposée.",
+   "src": "C. com., art. L. 223-42 (loi n° 2023-171)",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "La réserve légale est dotée chaque année à hauteur de :",
+   "opts": [
+    "10 % du bénéfice, jusqu'à atteindre 5 % du capital social",
+    "5 % du bénéfice diminué des pertes antérieures, jusqu'à 10 % du capital",
+    "5 % du chiffre d'affaires hors taxes de l'exercice",
+    "5 % du bénéfice distribuable, sans limite"
+   ],
+   "a": 1,
+   "why": "C. com., art. L. 232-10 : prélèvement d'au moins un vingtième (5 %) du bénéfice diminué, le cas échéant, des pertes antérieures ; la dotation cesse d'être obligatoire lorsque la réserve atteint le dixième (10 %) du capital. Cette règle s'applique aux SARL et aux sociétés par actions. Les autres formulations inversent les pourcentages ou utilisent une base erronée.",
+   "src": "C. com., art. L. 232-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "calc",
+   "q": "Nova : capital 500 000 €, réserve légale déjà constituée 40 000 €, report à nouveau débiteur 10 000 €, bénéfice de N 120 000 €. Calculez la dotation à la réserve légale au titre de N (en euros).",
+   "a": 5500,
+   "unit": "€",
+   "tol": 1,
+   "why": "Base = bénéfice − pertes antérieures = 120 000 − 10 000 = 110 000. Dotation = 5 % × 110 000 = 5 500. Plafond : 10 % × 500 000 = 50 000 ; il reste 50 000 − 40 000 = 10 000 à doter, la dotation de 5 500 n'est donc pas plafonnée. Calculer 5 % de 120 000 (6 000) oublie l'apurement préalable du report à nouveau débiteur.",
+   "src": "C. com., art. L. 232-10",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "Affectation du résultat de Nova (bénéfice 120 000 €) : apurement du report à nouveau débiteur de 10 000 €, réserve légale 5 500 €, réserve statutaire 10 000 €, dividendes 60 000 €, le solde en report à nouveau. Enregistrez l'écriture d'affectation.",
+   "lib": "Affectation du résultat",
+   "palette": [
+    "120",
+    "119",
+    "1061",
+    "1063",
+    "457",
+    "110",
+    "512",
+    "129"
+   ],
+   "sol": [
+    [
+     {
+      "a": "120",
+      "d": 120000,
+      "c": 0
+     },
+     {
+      "a": "119",
+      "d": 0,
+      "c": 10000
+     },
+     {
+      "a": "1061",
+      "d": 0,
+      "c": 5500
+     },
+     {
+      "a": "1063",
+      "d": 0,
+      "c": 10000
+     },
+     {
+      "a": "457",
+      "d": 0,
+      "c": 60000
+     },
+     {
+      "a": "110",
+      "d": 0,
+      "c": 34500
+     }
+    ]
+   ],
+   "why": "Le compte 120 est soldé par le débit. Au crédit : 119 pour apurer les pertes antérieures (10 000), 1061 réserve légale (5 500), 1063 réserves statutaires (10 000), 457 dividendes à payer (60 000) et 110 report à nouveau créditeur pour le solde : 120 000 − 10 000 − 5 500 − 10 000 − 60 000 = 34 500. Le paiement effectif (512) est une écriture distincte ; 129 n'existe que pour une perte.",
+   "src": "C. com., art. L. 232-10 et L. 232-11 ; PCG art. 941-12",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Le bénéfice distribuable au sens de l'article L. 232-11 du Code de commerce est :",
+   "opts": [
+    "Le bénéfice net de l'exercice tel qu'il ressort du compte de résultat",
+    "Le bénéfice diminué des pertes antérieures et des dotations aux réserves obligatoires, plus le report à nouveau bénéficiaire",
+    "Le bénéfice de l'exercice augmenté de toutes les réserves",
+    "Le résultat courant avant impôt de l'exercice"
+   ],
+   "a": 1,
+   "why": "L. 232-11 : bénéfice distribuable = bénéfice de l'exercice − pertes antérieures − sommes à porter en réserve en application de la loi ou des statuts + report à nouveau bénéficiaire. L'assemblée peut en outre distribuer des réserves libres, mais celles-ci ne font pas partie du bénéfice distribuable stricto sensu. Le résultat avant impôt n'est jamais une base de distribution.",
+   "src": "C. com., art. L. 232-11",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "multi",
+   "q": "Concernant les dividendes, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
+   "opts": [
+    "Ils doivent être mis en paiement dans les neuf mois de la clôture, sauf prolongation judiciaire",
+    "Un acompte sur dividendes peut être versé avant l'approbation des comptes si un bilan certifié par le CAC fait apparaître un bénéfice suffisant",
+    "Le premier dividende (intérêt statutaire) est calculé sur le capital libéré et non amorti",
+    "Ils peuvent être prélevés sur la réserve légale",
+    "Ils sont comptabilisés en charges financières 661"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ],
+   "why": "L. 232-13 fixe le délai de neuf mois ; L. 232-12 encadre les acomptes (bilan intermédiaire certifié) ; l'intérêt statutaire rémunère le capital effectivement libéré et non amorti. La réserve légale est indisponible et ne peut être distribuée ; les dividendes sont une affectation du résultat (457), jamais une charge.",
+   "src": "C. com., art. L. 232-10 à L. 232-13",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "calc",
+   "q": "En 2025, Mme Roux, personne physique résidente sans dispense de prélèvement, détient 1 000 actions de Nova. Le dividende est de 3 € par action. Quel montant net encaisse-t-elle, après prélèvement forfaitaire non libératoire de 12,8 % et prélèvements sociaux de 17,2 % (en euros) ?",
+   "a": 2100,
+   "unit": "€",
+   "tol": 1,
+   "why": "Dividende brut : 1 000 × 3 = 3 000 €. Prélèvement à la source total : 12,8 % + 17,2 % = 30 % (PFU), soit 900 €, retenu par Nova et reversé au Trésor (compte 442). Net encaissé : 3 000 − 900 = 2 100 €. L'actionnaire pourra ensuite opter pour le barème progressif lors de sa déclaration, l'acompte de 12,8 % s'imputant sur l'impôt dû.",
+   "src": "CGI art. 117 quater et 200 A",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "ecriture",
+   "q": "En 2025, Nova met en paiement 60 000 € de dividendes à des actionnaires personnes physiques résidentes, sans dispense. Elle retient à la source le prélèvement forfaitaire non libératoire (12,8 %) et les prélèvements sociaux (17,2 %) et verse le net par banque. Enregistrez le paiement.",
+   "lib": "Paiement des dividendes avec retenue à la source",
+   "palette": [
+    "457",
+    "442",
+    "512",
+    "695",
+    "6611",
+    "444"
+   ],
+   "sol": [
+    [
+     {
+      "a": "457",
+      "d": 60000,
+      "c": 0
+     },
+     {
+      "a": "442",
+      "d": 0,
+      "c": 18000
+     },
+     {
+      "a": "512",
+      "d": 0,
+      "c": 42000
+     }
+    ]
+   ],
+   "why": "La dette envers les associés (457) est soldée pour le brut. Les prélèvements (30 % × 60 000 = 18 000) sont dus au Trésor pour le compte des associés : 442 État – impôts et taxes recouvrables sur des tiers. Le net, 42 000, sort de la banque. Ce n'est pas l'impôt de la société (695/444) ni une charge d'intérêts (6611).",
+   "src": "CGI art. 117 quater ; PCG art. 944-44",
+   "fiab": "millésimé 2025",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Les intérêts versés aux associés au titre de leur compte courant (455) sont déductibles du résultat fiscal de la société à condition que :",
+   "opts": [
+    "Les associés soient des personnes physiques résidentes en France",
+    "Le capital soit entièrement libéré et le taux n'excède pas le taux plafond",
+    "Le compte courant soit bloqué pendant cinq ans",
+    "Les intérêts soient inférieurs aux dividendes"
+   ],
+   "a": 1,
+   "why": "CGI art. 39, 1-3° : déduction subordonnée à la libération intégrale du capital et limitée au taux effectif moyen des prêts à taux variable aux entreprises (taux plafond trimestriel). L'excédent est réintégré. La qualité de l'associé, le blocage du compte ou le niveau des dividendes ne conditionnent pas la déduction (le blocage joue seulement pour certains avantages fiscaux de l'associé).",
+   "src": "CGI art. 39, 1-3° et 212",
+   "fiab": "stable",
+   "niveau": 2
+  },
+  {
+   "type": "qcm",
+   "q": "Lors d'une incorporation de réserves au capital par attribution d'actions gratuites, le montant total des capitaux propres :",
+   "opts": [
+    "Augmente du montant incorporé",
+    "Diminue du montant incorporé",
+    "Reste inchangé : seule la répartition entre capital et réserves est modifiée",
+    "Augmente de la valeur des droits d'attribution"
+   ],
+   "a": 2,
+   "why": "L'incorporation est un virement interne (1068 / 1013) : aucune ressource nouvelle n'entre, aucune ne sort ; les capitaux propres totaux sont identiques. La valeur de l'entreprise est inchangée, d'où la baisse mécanique de la valeur unitaire des actions (V' = V × N / (N + n)) compensée par les droits d'attribution.",
+   "src": "C. com., art. L. 225-130 ; PCG art. 941-10",
+   "fiab": "stable",
+   "niveau": 1
+  },
+  {
+   "type": "qcm",
+   "q": "Au DSCG, l'analyse des capitaux propres selon le PCG (art. 934-1) retient comme capitaux propres :",
+   "opts": [
+    "Le capital social et les réserves uniquement, hors résultat de l'exercice et report à nouveau",
+    "Apports, écarts de réévaluation, résultats non distribués, subventions d'investissement, provisions réglementées",
+    "Le capital, les réserves, le résultat et les provisions pour risques et charges",
+    "Le capital social diminué des dettes financières"
+   ],
+   "a": 1,
+   "why": "PCG art. 934-1 : les capitaux propres regroupent les apports (capital, primes), les écarts de réévaluation, les résultats accumulés non distribués (réserves, report à nouveau, résultat), les pertes, ainsi que les subventions d'investissement (13) et les provisions réglementées (14). Les provisions pour risques (15) sont des passifs, et les dettes financières n'entrent pas dans la définition.",
+   "src": "PCG art. 934-1",
+   "fiab": "stable",
+   "niveau": 3
+  }
+ ]
+}
