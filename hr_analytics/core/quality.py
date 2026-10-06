@@ -13,7 +13,6 @@ from typing import Dict, List, Optional
 from .config import Configuration, analysis_field
 from .mapping import MappingResult
 from .normalize import Population
-from .statistics_engine import clean
 
 CRITICAL = "critique"
 WARNING = "avertissement"

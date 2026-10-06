@@ -15,9 +15,8 @@ from typing import Any, Dict, List, Optional, Sequence
 from .config import Configuration, analysis_field, percentiles as configured_percentiles
 from .normalize import Employee, Population, full_time_amount
 from .errors import ConfigError
-from .segmentation import (UNKNOWN_LABEL, dimension_fields,
-                           dimension_label, field_label, personal_fields,
-                           split_by)
+from .segmentation import (UNKNOWN_LABEL, dimension_label, field_label,
+                           personal_fields, split_by)
 from . import statistics_engine as stats
 
 MASK_REASON = "Effectif insuffisant : résultat masqué pour préserver la confidentialité."

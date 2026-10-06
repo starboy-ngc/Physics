@@ -77,9 +77,6 @@ TRAIT_FIN = 0.022
 #: spirale plutot qu'une rosace.
 BRAS = 2
 
-#: Marge laissee autour de la marque, en parts de la largeur du cadre.
-INSET = 0.035
-
 #: Proportion du cadre : une galaxie s'inscrit dans un carre.
 RATIO = 1.0
 

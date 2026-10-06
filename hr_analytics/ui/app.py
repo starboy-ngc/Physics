@@ -124,18 +124,6 @@ def _packed(widget, **packing):
     return widget
 
 
-def _thousands(value: Optional[float]) -> str:
-    """Montant en milliers, sans unite.
-
-    La colonne d'une liste de classement n'a pas la largeur d'un montant
-    complet — mesure faite, « 302 353 EUR » demande 91 px pour 74 — et la
-    precision au franc n'y sert a rien : elle est dans la fiche. L'unite
-    est rappelee au-dessus de la liste.
-    """
-    if value is None:
-        return "—"
-    return f"{value / 1000:,.0f} k".replace(",", " ")
-
 
 def _signed_percent(value: Optional[float]) -> str:
     """Ecart relatif, signe explicite : « +12,4 % » se lit sans hesitation."""
