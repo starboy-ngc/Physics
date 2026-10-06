@@ -758,3 +758,130 @@ class SearchableCombo(ttk.Combobox):
         self.set(retenues[0] if len(retenues) == 1
                  else (self._retenu or self._neutre))
         self._choisi()
+
+
+class ValuePicker(tk.Toplevel):
+    """Choisir une ou plusieurs valeurs d'une dimension.
+
+    Une liste deroulante ne retient qu'une valeur. Or la question posee a
+    un graphique de dispersion est rarement « ce poste-ci » : c'est « ces
+    quatre postes-la, cote a cote », parce que c'est en les mettant cote a
+    cote qu'on voit lequel a la grille la plus ouverte.
+
+    Les valeurs se cherchent, comme dans les filtres : trente
+    etablissements ou cent intitules de poste ne se parcourent pas.
+    """
+
+    def __init__(self, master: tk.Misc, fonts: Fonts, titre: str,
+                 valeurs: Sequence[str], retenues, on_valide):
+        super().__init__(master, background=GROUND)
+        self.title(titre)
+        self.transient(master)
+        self._fonts = fonts
+        self._valeurs = list(valeurs)
+        self._on_valide = on_valide
+        #: Une case par valeur, creees une fois : la recherche ne fait que
+        #: cacher et montrer, de sorte qu'une case cochee puis masquee par
+        #: une recherche reste cochee.
+        self._cases = {valeur: tk.BooleanVar(
+            value=retenues is None or valeur in retenues)
+            for valeur in self._valeurs}
+
+        tete = tk.Frame(self, background=GROUND)
+        tete.pack(fill="x", padx=16, pady=(14, 6))
+        tk.Label(tete, text="Chercher", background=GROUND, foreground=MUTED,
+                 font=fonts.small).pack(side="left")
+        self._cherche = tk.StringVar()
+        entree = tk.Entry(tete, textvariable=self._cherche, font=fonts.body,
+                          background=CANVAS, foreground=INK, relief="flat",
+                          highlightthickness=1, highlightbackground=LINE,
+                          highlightcolor=ACCENT)
+        entree.pack(side="left", fill="x", expand=True, padx=(8, 0), ipady=3)
+        self._cherche.trace_add("write", lambda *_: self._filtrer())
+
+        barre = tk.Frame(self, background=GROUND)
+        barre.pack(fill="x", padx=16)
+        for texte, valeur in (("Tout", True), ("Aucun", False)):
+            lien = tk.Label(barre, text=texte, background=GROUND,
+                            foreground=ACCENT, font=fonts.small,
+                            cursor="hand2")
+            lien.pack(side="left", padx=(0, 12))
+            lien.bind("<Button-1>",
+                      lambda _e, v=valeur: self._tout(v))
+        self._compte = tk.Label(barre, text="", background=GROUND,
+                                foreground=MUTED, font=fonts.small)
+        self._compte.pack(side="right")
+
+        corps = tk.Frame(self, background=GROUND)
+        corps.pack(fill="both", expand=True, padx=16, pady=(8, 0))
+        self._canvas = tk.Canvas(corps, background=GROUND,
+                                 highlightthickness=0, width=330, height=320)
+        bar = ttk.Scrollbar(corps, orient="vertical",
+                            command=self._canvas.yview,
+                            style="Flat.Vertical.TScrollbar")
+        self._canvas.configure(yscrollcommand=bar.set)
+        bar.pack(side="right", fill="y")
+        self._canvas.pack(side="left", fill="both", expand=True)
+        self._liste = tk.Frame(self._canvas, background=GROUND)
+        self._fenetre = self._canvas.create_window((0, 0), window=self._liste,
+                                                   anchor="nw")
+        self._liste.bind(
+            "<Configure>",
+            lambda _e: self._canvas.configure(
+                scrollregion=self._canvas.bbox("all")))
+        self._canvas.bind(
+            "<Configure>",
+            lambda e: self._canvas.itemconfigure(self._fenetre, width=e.width))
+        bind_wheel(self._canvas, self)
+
+        self._lignes = {}
+        for valeur in self._valeurs:
+            ligne = CheckRow(self._liste, valeur, self._cases[valeur], fonts,
+                             ground=GROUND)
+            ligne.pack(anchor="w", fill="x")
+            self._cases[valeur].trace_add("write",
+                                          lambda *_: self._compter())
+            self._lignes[valeur] = ligne
+
+        pied = tk.Frame(self, background=GROUND)
+        pied.pack(fill="x", padx=16, pady=12)
+        ttk.Button(pied, text="Appliquer",
+                   command=self._valider).pack(side="right")
+        ttk.Button(pied, text="Annuler", style="Ghost.TButton",
+                   command=self.destroy).pack(side="right", padx=(0, 8))
+        self._compter()
+        entree.focus_set()
+
+    def _filtrer(self) -> None:
+        tape = _sans_accent(self._cherche.get())
+        for valeur, ligne in self._lignes.items():
+            if not tape or tape in _sans_accent(valeur):
+                ligne.pack(anchor="w", fill="x")
+            else:
+                ligne.pack_forget()
+
+    def _tout(self, etat: bool) -> None:
+        """Coche ou decoche ce que la recherche laisse voir.
+
+        Ce que la recherche cache n'est pas touche : « Aucun » apres avoir
+        tape « cadre » retire les cadres, et ne defait pas le reste.
+        """
+        tape = _sans_accent(self._cherche.get())
+        for valeur, case in self._cases.items():
+            if not tape or tape in _sans_accent(valeur):
+                case.set(etat)
+
+    def _retenues(self) -> list:
+        return [v for v in self._valeurs if self._cases[v].get()]
+
+    def _compter(self) -> None:
+        self._compte.configure(
+            text=f"{len(self._retenues())} / {len(self._valeurs)}")
+
+    def _valider(self) -> None:
+        retenues = self._retenues()
+        # Tout retenir, c'est ne rien filtrer : on rend None plutot qu'une
+        # liste complete, pour que l'appelant n'ait pas a comparer.
+        self._on_valide(None if len(retenues) == len(self._valeurs)
+                        else retenues)
+        self.destroy()

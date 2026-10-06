@@ -55,7 +55,8 @@ from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
-from .theme import Card, CheckRow, Fonts, SearchableCombo, TabBar
+from .theme import (Card, CheckRow, Fonts, SearchableCombo, TabBar,
+                    ValuePicker)
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de filtre d'une valeur qui,
@@ -944,7 +945,17 @@ class Application(tk.Tk):
         self.box_choice = ttk.Combobox(box_head, state="readonly", width=24,
                                        font=self.fonts.small)
         self.box_choice.pack(side="left", padx=10)
-        self.box_choice.bind("<<ComboboxSelected>>", lambda _e: self._show_boxes())
+        self.box_choice.bind("<<ComboboxSelected>>",
+                             lambda _e: self._change_box_dimension())
+        # Choisir la dimension ne suffit pas : trente-six etablissements
+        # tiennent dans le graphique, mais la question est rarement
+        # « tous » — c'est « ces quatre-la, cote a cote ».
+        #: Valeurs retenues dans la dimension, ou None pour toutes.
+        self.box_values = None
+        self.box_values_button = ttk.Button(
+            box_head, text="Valeurs : toutes", style="Ghost.TButton",
+            command=self._choose_box_values)
+        self.box_values_button.pack(side="left")
         # Trier, c'est repondre a une autre question avec les memes chiffres :
         # « quels metiers paient le mieux » plutot que « comment se situe
         # celui-ci ». Le tri ne recalcule rien, il reordonne.
@@ -3634,6 +3645,58 @@ class Application(tk.Tk):
         self.box_order.current(cles.index(voulu) if voulu in cles else 0)
         self.boxplot.set_order(cles[self.box_order.current()])
 
+    def _change_box_dimension(self) -> None:
+        """Changer de dimension remet les valeurs a toutes.
+
+        Garder la selection n'aurait aucun sens : les postes retenus ne
+        sont pas des etablissements, et le graphique se serait vide sans
+        que rien ne le dise.
+        """
+        self.box_values = None
+        self._show_boxes()
+
+    def _box_values_available(self) -> List[str]:
+        """Les valeurs que la dimension choisie porte, dans l'ordre du
+        moteur."""
+        index = self.box_choice.current()
+        if index < 0 or index >= len(self._segments):
+            return []
+        return [str(row.get("segment", ""))
+                for row in self._segments[index].get("rows", [])
+                if row.get("segment") is not None]
+
+    def _choose_box_values(self) -> None:
+        """Ouvre le choix des valeurs de la dimension."""
+        valeurs = self._box_values_available()
+        if not valeurs:
+            return
+        intitule = self.box_choice.get() or "la dimension"
+        ValuePicker(self, self.fonts, f"Valeurs — {intitule}", valeurs,
+                    self.box_values, self._apply_box_values)
+
+    def _apply_box_values(self, retenues) -> None:
+        self.box_values = retenues
+        self._show_boxes()
+
+    def _retain_box_values(self, rows):
+        """Ne garde que les segments retenus, et met a jour le bouton.
+
+        Ne rien retenir n'est pas « tout retenir » : c'est un graphique
+        vide, et c'est ce que l'utilisateur a demande. Le bouton le dit,
+        de sorte qu'un graphique vide ne passe pas pour une panne.
+        """
+        total = len(self._box_values_available())
+        if self.box_values is None:
+            self.box_values_button.configure(
+                text=f"Valeurs : toutes ({total})" if total
+                else "Valeurs : toutes")
+            return rows
+        retenues = set(self.box_values)
+        self.box_values_button.configure(
+            text=f"Valeurs : {len(retenues)} sur {total}")
+        return [row for row in rows
+                if str(row.get("segment", "")) in retenues]
+
     def _show_boxes(self) -> None:
         """Boites a moustaches de la dimension choisie.
 
@@ -3660,6 +3723,7 @@ class Application(tk.Tk):
                                        self.result.config,
                                        block["field"])
                 if split else block["rows"])
+        rows = self._retain_box_values(rows)
         # La mediane d'ensemble n'est pas repetee en tete : le graphique la
         # trace, et un repere dessine se lit mieux qu'un montant a comparer
         # de tete avec seize boites.

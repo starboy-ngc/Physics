@@ -2614,3 +2614,125 @@ class TestTheWholeWindowAnswersWithoutRaising(unittest.TestCase):
             time.sleep(0.12)
             self.app.update()
             self._sans_trace(f"fenêtre {largeur}×{hauteur}")
+
+
+@needs_display
+class TestChoosingValuesInsideTheDispersionDimension(unittest.TestCase):
+    """Choisir la dimension ne suffit pas. Trente-six établissements
+    tiennent dans le graphique, mais la question posée à une dispersion
+    est rarement « tous » : c'est « ces quatre-là, côte à côte », parce
+    que c'est en les mettant côte à côte qu'on voit lequel a la grille la
+    plus ouverte."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = tempfile.mkdtemp()
+        cls.source = os.path.join(cls.directory, "population.xlsx")
+        rows = [make_row(index, salary=30000 + (index % 40) * 800,
+                         business_unit=["France", "DACH", "Iberia"][index % 3],
+                         groupe=["G3", "G5", "G7"][index % 3],
+                         age=28 + index % 30, tenure=index % 18)
+                for index in range(120)]
+        write_workbook(cls.source, [("Population", [HEADERS] + rows)])
+
+    def setUp(self):
+        from hr_analytics.ui.app import Application
+
+        self.app = Application()
+        self.app.update()
+
+    def tearDown(self):
+        self.app.destroy()
+
+    def _prepare(self):
+        """Une analyse, et l'onglet des boîtes au premier plan."""
+        from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
+
+        self.app.result = run_analysis(AnalysisRequest(
+            source_path=self.source, reference_date=REFERENCE_DATE,
+            segments=[]))
+        self.app._render_results()
+        self.app.tabbar.select("graphique")
+        self.app.update()
+        for rang, _bloc in enumerate(self.app._segments):
+            self.app.box_choice.current(rang)
+            self.app._change_box_dimension()
+            self.app.update()
+            if len(self.app._box_values_available()) >= 2:
+                return self.app._box_values_available()
+        self.skipTest("aucune dimension à plusieurs valeurs")
+
+    def test_by_default_every_value_is_drawn(self):
+        valeurs = self._prepare()
+        self.assertIsNone(self.app.box_values)
+        self.assertIn("toutes", self.app.box_values_button.cget("text"))
+        self.assertEqual(len(self.app.boxplot.rows), len(valeurs))
+
+    def test_retaining_two_values_draws_two(self):
+        valeurs = self._prepare()
+        self.app._apply_box_values(valeurs[:2])
+        self.app.update()
+        tracés = {str(row.get("segment")) for row in self.app.boxplot.rows}
+        self.assertEqual(tracés, set(valeurs[:2]))
+        self.assertIn("2 sur", self.app.box_values_button.cget("text"))
+
+    def test_retaining_none_draws_nothing_and_says_so(self):
+        """Ne rien retenir n'est pas « tout retenir » : c'est un graphique
+        vide, et c'est ce qui a été demandé. Le bouton le dit, de sorte
+        qu'un graphique vide ne passe pas pour une panne."""
+        self._prepare()
+        self.app._apply_box_values([])
+        self.app.update()
+        self.assertEqual(self.app.boxplot.rows, [])
+        self.assertIn("0 sur", self.app.box_values_button.cget("text"))
+
+    def test_changing_the_dimension_clears_the_selection(self):
+        """Les postes retenus ne sont pas des établissements : garder la
+        sélection viderait le graphique sans que rien ne le dise."""
+        valeurs = self._prepare()
+        self.app._apply_box_values(valeurs[:1])
+        self.app.update()
+        self.assertIsNotNone(self.app.box_values)
+        self.app._change_box_dimension()
+        self.app.update()
+        self.assertIsNone(self.app.box_values)
+
+    def test_the_picker_hands_back_none_when_everything_is_kept(self):
+        """Tout retenir, c'est ne rien filtrer : le sélecteur rend None
+        plutôt qu'une liste complète, pour que l'appelant n'ait pas à
+        comparer."""
+        from hr_analytics.ui.theme import ValuePicker
+
+        valeurs = self._prepare()
+        rendu = []
+        choix = ValuePicker(self.app, self.app.fonts, "Essai", valeurs,
+                            None, rendu.append)
+        self.app.update()
+        try:
+            choix._valider()
+        finally:
+            if choix.winfo_exists():
+                choix.destroy()
+        self.assertEqual(rendu, [None])
+
+    def test_the_picker_searches_without_accents(self):
+        from hr_analytics.ui.theme import ValuePicker
+
+        valeurs = self._prepare()
+        choix = ValuePicker(self.app, self.app.fonts, "Essai", valeurs,
+                            None, lambda _r: None)
+        self.app.update()
+        try:
+            cible = valeurs[0]
+            choix._cherche.set(cible.lower()[:3])
+            self.app.update()
+            visibles = [v for v, ligne in choix._lignes.items()
+                        if ligne.winfo_manager()]
+            self.assertIn(cible, visibles)
+            choix._cherche.set("zzzz-introuvable")
+            self.app.update()
+            self.assertEqual([v for v, ligne in choix._lignes.items()
+                              if ligne.winfo_manager()], [])
+        finally:
+            if choix.winfo_exists():
+                choix.destroy()
