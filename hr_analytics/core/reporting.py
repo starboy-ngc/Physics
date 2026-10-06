@@ -458,20 +458,22 @@ def pyramid_svg(rows: Sequence[Dict[str, Any]], width: int = 360,
     aile = (width - gouttiere - 2 * bout - 10) / 2
     if aile <= 10:
         return ""
-    haut = 16.0 if label else 4.0
-    ligne = max((height - haut - 6) / len(rows), 9.0)
-    barre = min(ligne - 3.0, 16.0)
+    # La legende ferme le dessin au lieu de l'ouvrir : en tete, elle
+    # separait le titre de la premiere tranche ; en pied, elle se lit au
+    # moment ou l'on demande laquelle des deux ailes est laquelle.
+    haut = 4.0
+    bas = 14.0 if label else 6.0
+    ligne = max((height - haut - bas) / len(rows), 9.0)
+    # La barre remplit sa tranche : quatre pixels separent sans eloigner,
+    # et deux tranches voisines se comparent alors en masse plutot qu'en
+    # longueur.
+    barre = min(ligne - 4.0, 20.0)
     sommet = max(max(row.get("female", 0), row.get("male", 0))
                  for row in rows) or 1
     centre = gouttiere + bout + aile + 5
     parts = [f'<svg viewBox="0 0 {width} {height}" role="img" '
              f'aria-label="Pyramide {_e(label) or "des effectifs"}">']
-    if label:
-        parts.append(
-            f'<text x="{gouttiere}" y="10" font-size="9" '
-            f'fill="var(--female)">Femmes</text>'
-            f'<text x="{centre + 5}" y="10" font-size="9" '
-            f'fill="var(--male)">Hommes</text>')
+
     for index, row in enumerate(rows):
         y = haut + index * ligne
         milieu = y + ligne / 2
@@ -499,6 +501,13 @@ def pyramid_svg(rows: Sequence[Dict[str, Any]], width: int = 360,
                     f'fill="var(--ink)">{valeur}</text>')
     parts.append(f'<line x1="{centre:.1f}" y1="{haut}" x2="{centre:.1f}" '
                  f'y2="{haut + len(rows) * ligne:.1f}" stroke="var(--line)"/>')
+    if label:
+        pied = haut + len(rows) * ligne + 10
+        parts.append(
+            f'<text x="{centre - 8:.1f}" y="{pied:.1f}" text-anchor="end" '
+            f'font-size="9" fill="var(--female)">Femmes</text>'
+            f'<text x="{centre + 8:.1f}" y="{pied:.1f}" text-anchor="start" '
+            f'font-size="9" fill="var(--male)">Hommes</text>')
     parts.append("</svg>")
     return "".join(parts)
 

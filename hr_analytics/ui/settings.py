@@ -299,6 +299,7 @@ class SettingsWindow(tk.Toplevel):
                                     background=theme.GROUND)
         self._build_columns(colonnes)
         self._build_dimensions(colonnes)
+        self._build_order(colonnes)
         self._build_privacy(self._scrollable(self.pages["confidentialite"],
                                              background=theme.GROUND))
         self._build_export(self._scrollable(self.pages["export"],
@@ -867,6 +868,85 @@ class SettingsWindow(tk.Toplevel):
                                                    ipady=2)
         tk.Label(foot, text="valeurs distinctes", background=theme.CANVAS,
                  foreground=theme.MUTED, font=self.fonts.small).pack(side="left")
+
+    def _build_order(self, parent: tk.Widget) -> None:
+        """L'ordre dans lequel les filtres se presentent.
+
+        Il etait celui du fichier de configuration, c'est-a-dire celui
+        d'origine : personne ne range ses filtres en editant un JSON. Or
+        l'ordre compte — celui qu'on emploie tous les jours doit etre en
+        haut, et ce qui est en haut depend du metier de chacun.
+
+        La liste porte tous les champs proposables, coches ou non : un
+        champ qu'on vient de decocher garde sa place, et la retrouve si on
+        le recoche. Les fleches deplacent, elles ne cochent rien.
+        """
+        card = Card(parent, padding=0)
+        card.pack(fill="x", padx=22, pady=(14, 0))
+        entete = tk.Frame(card.inner, background=theme.CANVAS)
+        entete.pack(fill="x", padx=16, pady=(14, 8))
+        tk.Label(entete, text="ORDRE DES FILTRES", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w")
+        tk.Label(entete,
+                 text="L'ordre de cette liste est celui des filtres dans la "
+                      "colonne de gauche, et celui des axes de comparaison. "
+                      "Mettez en haut ce que vous employez tous les jours.",
+                 background=theme.CANVAS, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=900,
+                 justify="left").pack(anchor="w", pady=(2, 0))
+        self._order_area = tk.Frame(card.inner, background=theme.CANVAS)
+        self._order_area.pack(fill="x", padx=16, pady=(6, 12))
+        self._draw_order()
+
+    def _draw_order(self) -> None:
+        """Repose la liste apres un deplacement."""
+        for enfant in self._order_area.winfo_children():
+            enfant.destroy()
+        noms = list(self.rows)
+        for rang, field_name in enumerate(noms):
+            état = self.rows[field_name]
+            ligne = tk.Frame(self._order_area, background=theme.CANVAS)
+            ligne.pack(fill="x", pady=1)
+            tk.Label(ligne, text=f"{rang + 1}.", background=theme.CANVAS,
+                     foreground=theme.FAINT, font=self.fonts.small,
+                     width=3, anchor="e").pack(side="left")
+            for texte, pas in (("▲", -1), ("▼", 1)):
+                bouton = tk.Label(ligne, text=texte, background=theme.CANVAS,
+                                  foreground=theme.ACCENT,
+                                  font=self.fonts.small, width=2,
+                                  cursor="hand2")
+                bouton.pack(side="left")
+                limite = (rang == 0 and pas < 0) or (rang == len(noms) - 1
+                                                     and pas > 0)
+                if limite:
+                    bouton.configure(foreground=theme.DISABLED, cursor="")
+                else:
+                    bouton.bind("<Button-1>",
+                                lambda _e, nom=field_name, d=pas:
+                                self._move_dimension(nom, d))
+            propose = état["declared"].get()
+            tk.Label(ligne, text=état["label"].get() or field_name,
+                     background=theme.CANVAS,
+                     foreground=theme.INK_SOFT if propose else theme.FAINT,
+                     font=self.fonts.body, width=26,
+                     anchor="w").pack(side="left", padx=(8, 0))
+            tk.Label(ligne, text="" if propose else "non proposé",
+                     background=theme.CANVAS, foreground=theme.FAINT,
+                     font=self.fonts.small).pack(side="left")
+
+    def _move_dimension(self, field_name: str, pas: int) -> None:
+        """Deplace un champ d'un rang, et repose la liste."""
+        noms = list(self.rows)
+        rang = noms.index(field_name)
+        cible = rang + pas
+        if not 0 <= cible < len(noms):
+            return
+        noms[rang], noms[cible] = noms[cible], noms[rang]
+        # Un dictionnaire garde l'ordre d'insertion : le reconstruire dans
+        # le nouvel ordre suffit, et c'est lui que `collect` relit.
+        self.rows = {nom: self.rows[nom] for nom in noms}
+        self._draw_order()
 
     def _dimension_widget(self, field_name: str) -> None:
         """La ligne visible d'un champ : son libelle, et sa case."""

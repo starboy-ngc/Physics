@@ -1508,3 +1508,94 @@ class TestAFileWhoseSalaryColumnIsNamedOtherwise(WindowCase):
         self.assertTrue(dialogs.errors)
         self.assertEqual([e for e in self.app.winfo_children()
                           if isinstance(e, SettingsWindow)], [])
+
+
+class TestAFilterWithTooManyValues(WindowCase):
+    """Une dimension trop riche pour une liste déroulante était écartée en
+    silence : on cochait la case dans les paramètres, on enregistrait, et
+    aucun filtre n'apparaissait. Rien ne reliait la cause à l'effet, et le
+    seuil qui l'explique est à l'autre bout d'un autre écran."""
+
+    def setUp(self):
+        """Sa propre configuration : l'essai la modifie, et celle du dépôt
+        sert à tous les autres."""
+        import shutil
+
+        from hr_analytics.ui.app import Application
+
+        self.directory = tempfile.mkdtemp()
+        self.config_dir = os.path.join(self.directory, "config")
+        racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        shutil.copytree(os.path.join(racine, "config"), self.config_dir)
+        self.app = Application(config_dir=self.config_dir)
+        self.app.geometry("1280x800+0+0")
+        self.app.update()
+
+    def _fichier(self, valeurs):
+        chemin = os.path.join(self.directory, "riche.csv")
+        with open(chemin, "w", encoding="utf-8", newline="") as flux:
+            graveur = csv.writer(flux, delimiter=";")
+            graveur.writerow(HEADERS + ["Qualification"])
+            for index in range(120):
+                graveur.writerow(make_row(index)
+                                 + [f"POSTE {index % valeurs:03}"])
+        return chemin
+
+    def _declarer(self, limite):
+        """Déclare « Qualification » comme dimension, avec ce seuil."""
+        import json
+        chemin = os.path.join(self.config_dir, "population_mapping.json")
+        with open(chemin, encoding="utf-8") as flux:
+            section = json.load(flux)
+        section.setdefault("fields", {})["qualification"] = ["Qualification"]
+        section.setdefault("dimensions", []).append(
+            {"field": "qualification", "label": "Qualification"})
+        section["max_filter_values"] = limite
+        with open(chemin, "w", encoding="utf-8") as flux:
+            json.dump(section, flux, ensure_ascii=False)
+
+    def test_a_dimension_within_the_cap_becomes_a_filter(self):
+        """Le témoin : sans lui, l'essai suivant prouverait seulement que
+        rien n'apparaît jamais."""
+        self._declarer(limite=60)
+        with Dialogs(open_path=self._fichier(valeurs=12)):
+            self.app.choose_file()
+        self.app.update()
+        self.assertIn("qualification", self.app.filter_vars)
+
+    def test_a_dimension_above_the_cap_says_so(self):
+        self._declarer(limite=10)
+        with Dialogs(open_path=self._fichier(valeurs=40)):
+            self.app.choose_file()
+        self.app.update()
+        self.assertNotIn("qualification", self.app.filter_vars)
+        textes = []
+
+        def relever(widget):
+            if "text" in widget.keys():
+                textes.append(str(widget.cget("text")))
+            for enfant in widget.winfo_children():
+                relever(enfant)
+
+        relever(self.app.filters_frame)
+        dit = " ".join(textes)
+        self.assertIn("Qualification", dit)
+        self.assertIn("40", dit, "le nombre de valeurs n'est pas dit")
+        self.assertIn("10", dit, "le seuil n'est pas dit")
+
+    def test_nothing_is_said_when_there_is_nothing_to_say(self):
+        """La ligne ne doit pas s'installer à demeure."""
+        self._declarer(limite=60)
+        with Dialogs(open_path=self._fichier(valeurs=12)):
+            self.app.choose_file()
+        self.app.update()
+        textes = []
+
+        def relever(widget):
+            if "text" in widget.keys():
+                textes.append(str(widget.cget("text")))
+            for enfant in widget.winfo_children():
+                relever(enfant)
+
+        relever(self.app.filters_frame)
+        self.assertNotIn("au-delà de", " ".join(textes))

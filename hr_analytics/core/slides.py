@@ -1054,16 +1054,17 @@ def _draw_pyramid(page, rows, x, y, width, height, label="") -> float:
     aile = (width - gouttiere - 2 * bout - 8) / 2
     if aile <= 8:
         return 0.0
-    entete = 12.0 if label else 0.0
-    ligne = max((height - entete) / len(rows), 7.0)
-    barre = min(ligne - 2.0, 11.0)
+    # La legende ferme le dessin au lieu de l'ouvrir : elle se lit au
+    # moment ou l'on demande laquelle des deux ailes est laquelle.
+    pied = 12.0 if label else 0.0
+    ligne = max((height - pied) / len(rows), 7.0)
+    # La barre remplit sa tranche : deux tranches voisines se comparent
+    # alors en masse plutot qu'en longueur.
+    barre = min(ligne - 2.5, 15.0)
     sommet = max(max(row.get("female", 0), row.get("male", 0))
                  for row in rows) or 1
     centre = x + gouttiere + bout + aile + 4
-    if label:
-        page.text(x + gouttiere, y - 8, "Femmes", size=6.5, color=_FEMALE)
-        page.text(centre + 4, y - 8, "Hommes", size=6.5, color=_MALE)
-    haut = y - entete
+    haut = y
     for index, row in enumerate(rows):
         milieu = haut - index * ligne - ligne / 2
         page.text(x, milieu - 2.2, str(row.get("label", "")), size=6.5,
@@ -1086,6 +1087,11 @@ def _draw_pyramid(page, rows, x, y, width, height, label="") -> float:
                           size=6.5, color=_INK)
     page.line(centre, haut, centre, haut - len(rows) * ligne, color=_LINE,
               width=0.4)
+    if label:
+        bas = haut - len(rows) * ligne - 8
+        page.text(centre - 7, bas, "Femmes", size=6.5, color=_FEMALE,
+                  align="right")
+        page.text(centre + 7, bas, "Hommes", size=6.5, color=_MALE)
     return height
 
 

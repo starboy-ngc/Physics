@@ -1418,12 +1418,22 @@ class Application(tk.Tk):
         # Les listes sont alimentees par le fichier : l'utilisateur choisit
         # parmi ce qui existe, il n'a aucune syntaxe a taper.
         limit = max_filter_values(self.configuration)
+        #: Les dimensions ecartees faute de place dans une liste deroulante,
+        #: et leur nombre de valeurs. Elles l'etaient en silence : on cochait
+        #: « Qualification » dans les parametres, on enregistrait, et aucun
+        #: filtre n'apparaissait. Rien ne reliait la cause a l'effet, et le
+        #: reglage qui l'explique est a l'autre bout de l'ecran.
+        ecartees: List[tuple] = []
         for field in dimension_fields(self.configuration):
             values = sorted({str(e.value(field) or "").strip()
                              for e in self.population} - {""})
             # Le seuil est un parametre, plus un nombre cache ici : au-dela,
             # une liste deroulante cesse d'etre utilisable.
-            if not values or len(values) > limit:
+            if not values:
+                continue
+            if len(values) > limit:
+                ecartees.append(
+                    (dimension_label(self.configuration, field), len(values)))
                 continue
             block = tk.Frame(self.filters_frame, background=theme.GROUND)
             block.pack(fill="x", pady=(0, 8))
@@ -1436,7 +1446,32 @@ class Application(tk.Tk):
                          state="readonly", font=self.fonts.small).pack(fill="x",
                                                                        pady=(2, 0))
             self.filter_vars[field] = var
+        self._dire_les_filtres_ecartes(ecartees, limit)
         self._update_filter_summary()
+
+    def _dire_les_filtres_ecartes(self, ecartees, limit: int) -> None:
+        """Nomme les dimensions trop riches pour une liste deroulante.
+
+        Le seuil existe pour une bonne raison : au-dela de quelques
+        dizaines de valeurs, une liste deroulante cesse d'etre utilisable.
+        Mais l'ecarter en silence laissait l'utilisateur devant un reglage
+        qui semblait ne rien faire — il avait coche la bonne case, et c'est
+        ailleurs que son filtre se perdait.
+
+        La ligne dit laquelle, combien de valeurs elle porte, et ou se
+        releve le seuil. Elle ne parait que s'il y a quelque chose a dire.
+        """
+        if not ecartees:
+            return
+        noms = ", ".join(f"{nom} ({nombre})" for nom, nombre in ecartees)
+        tk.Label(
+            self.filters_frame,
+            text=f"Pas proposé en filtre, au-delà de {limit} valeurs "
+                 f"distinctes : {noms}. Le seuil se relève dans "
+                 "« Associer les colonnes… », en bas.",
+            background=theme.GROUND, foreground=theme.WARN,
+            font=self.fonts.small, wraplength=250,
+            justify="left").pack(anchor="w", pady=(2, 6))
 
     def _current_filters(self) -> List[Dict[str, Any]]:
         return [{"field": field, "operator": "eq", "value": var.get()}

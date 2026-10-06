@@ -1542,6 +1542,10 @@ class PyramidChart(tk.Frame):
     #: de chaque barre plutot qu'a une colonne fixe : lu loin d'une barre
     #: courte, le nombre ne s'y rapportait plus.
     COUNTS = 34
+    #: Blanc entre deux barres. Quatre pixels separent sans eloigner : la
+    #: barre occupe alors la plus grande part de sa tranche, et deux
+    #: tranches voisines se comparent en masse plutot qu'en longueur.
+    GOUTTIERE = 4
 
     def __init__(self, master: tk.Widget):
         super().__init__(master, background=theme.CANVAS)
@@ -1577,7 +1581,8 @@ class PyramidChart(tk.Frame):
         self.redraw()
 
     def _fit(self) -> None:
-        self.configure(height=max(len(self.rows), 1) * self.ROW + 24)
+        # Le cadre porte les tranches, plus la bande de legende du bas.
+        self.configure(height=max(len(self.rows), 1) * self.ROW + 22)
 
     def has_split(self) -> bool:
         """Vrai si le sexe est renseigne : sans lui, pas de pyramide."""
@@ -1598,12 +1603,13 @@ class PyramidChart(tk.Frame):
         wing = max((width - self.LABELS - 2 * self.COUNTS) / 2, 20)
         centre = self.LABELS + self.COUNTS + wing
 
-        self.canvas.create_text(centre - 6, 8, anchor="e", fill=theme.FEMALE,
-                                font=axis_font(), text="FEMMES")
-        self.canvas.create_text(centre + 6, 8, anchor="w", fill=theme.MALE,
-                                font=axis_font(), text="HOMMES")
+        # La barre remplit sa tranche au lieu de flotter au milieu : a sept
+        # pixels de demi-hauteur pour une tranche de vingt et un, un tiers
+        # de la pyramide etait du blanc entre les barres, et l'oeil
+        # comparait des traits au lieu de masses.
+        barre = max((self.ROW - self.GOUTTIERE) / 2, 4)
         for index, row in enumerate(self.rows):
-            y = index * self.ROW + self.ROW / 2 + 20
+            y = index * self.ROW + self.ROW / 2
             female = row.get("female") or 0
             male = row.get("male") or 0
             self.canvas.create_text(4, y, anchor="w", fill=theme.INK,
@@ -1612,8 +1618,9 @@ class PyramidChart(tk.Frame):
                                                   self.LABELS - 10))
             if female:
                 bout = centre - wing * female / peak
-                item = self.canvas.create_rectangle(bout, y - 7, centre,
-                                                    y + 7, fill=theme.FEMALE,
+                item = self.canvas.create_rectangle(bout, y - barre, centre,
+                                                    y + barre,
+                                                    fill=theme.FEMALE,
                                                     outline="")
                 self._items[item] = f'{row["label"]} · {female} femmes'
                 # L'effectif au bout de sa barre : a une colonne fixe, il
@@ -1624,13 +1631,24 @@ class PyramidChart(tk.Frame):
                                         text=str(female))
             if male:
                 bout = centre + wing * male / peak
-                item = self.canvas.create_rectangle(centre, y - 7, bout,
-                                                    y + 7, fill=theme.MALE,
+                item = self.canvas.create_rectangle(centre, y - barre, bout,
+                                                    y + barre,
+                                                    fill=theme.MALE,
                                                     outline="")
                 self._items[item] = f'{row["label"]} · {male} hommes'
                 self.canvas.create_text(bout + 5, y, anchor="w",
                                         fill=theme.MUTED, font=axis_font(),
                                         text=str(male))
+        # La legende ferme le dessin au lieu de l'ouvrir. En tete, elle
+        # separait le titre de la premiere tranche ; en pied, elle se lit
+        # au moment ou l'on a vu les deux ailes et ou l'on demande
+        # laquelle est laquelle.
+        bas = len(self.rows) * self.ROW + 12
+        self.canvas.create_text(centre - 8, bas, anchor="e",
+                                fill=theme.FEMALE, font=axis_font(),
+                                text="FEMMES")
+        self.canvas.create_text(centre + 8, bas, anchor="w", fill=theme.MALE,
+                                font=axis_font(), text="HOMMES")
 
     def _on_motion(self, event) -> None:
         for item in self.canvas.find_overlapping(event.x, event.y,

@@ -240,3 +240,75 @@ class TestADocumentNeverDropsASectionInSilence(unittest.TestCase):
         html = render_report(self._analyse(renseignes=9))
         self.assertIn("Masse salariale", html)
         self.assertNotIn("colonne analysée", html)
+
+
+class TestThePyramidReadsAsMass(unittest.TestCase):
+    """Une pyramide dont les barres flottent au milieu de leur tranche se
+    lit en longueurs ; remplies, elles se lisent en masses, et deux
+    tranches voisines se comparent d'un coup d'œil.
+
+    La légende ferme le dessin au lieu de l'ouvrir : en tête, elle
+    séparait le titre de la première tranche ; en pied, elle se lit au
+    moment où l'on demande laquelle des deux ailes est laquelle.
+    """
+
+    RANGS = [{"label": f"{10 * rang}-{10 * rang + 9}", "count": 40,
+              "female": 20 + rang, "male": 20 - rang} for rang in range(5)]
+
+    def _svg(self):
+        from hr_analytics.core.reporting import pyramid_svg
+        return pyramid_svg(self.RANGS, width=360, height=200,
+                           label="Pyramide des âges")
+
+    def _barre(self, rangs, hauteur):
+        import re
+
+        from hr_analytics.core.reporting import pyramid_svg
+
+        svg = pyramid_svg(rangs, width=360, height=hauteur, label="Pyramide")
+        hauteurs = {float(h) for h in re.findall(r'height="([\d.]+)"', svg)}
+        self.assertTrue(hauteurs, "aucune barre dessinée")
+        return max(hauteurs), (hauteur - 4.0 - 14.0) / len(rangs)
+
+    def test_the_bar_never_leaves_more_than_a_hairline_of_white(self):
+        """Quatre pixels séparent sans éloigner. Au-delà d'une barre de
+        vingt pixels on plafonne : une barre plus épaisse que haute se lit
+        comme un pavé, pas comme un effectif."""
+        barre, ligne = self._barre(self.RANGS, 200)
+        self.assertTrue(ligne - barre <= 4.01 or barre >= 20.0,
+                        f"barre {barre} dans une tranche de {ligne}")
+
+    def test_a_dense_pyramid_is_mostly_ink(self):
+        """Le cas courant : assez de tranches pour que le plafond ne joue
+        pas. La barre doit alors occuper la plus grande part de sa
+        tranche."""
+        rangs = [{"label": f"T{r}", "count": 30, "female": 15, "male": 15}
+                 for r in range(9)]
+        barre, ligne = self._barre(rangs, 200)
+        self.assertGreater(barre / ligne, 0.75,
+                           "la barre laisse plus de place au vide qu'à elle")
+
+    def test_the_legend_sits_below_the_last_row(self):
+        import re
+
+        svg = self._svg()
+        femmes = re.search(r'y="([\d.]+)"[^>]*fill="var\(--female\)">Femmes',
+                           svg)
+        self.assertIsNotNone(femmes, "la légende « Femmes » a disparu")
+        premiere = min(float(y) for y in re.findall(r'<rect[^>]*y="([\d.]+)"',
+                                                    svg))
+        self.assertGreater(float(femmes.group(1)), premiere,
+                           "la légende est restée en tête")
+
+    def test_both_wings_are_named(self):
+        svg = self._svg()
+        self.assertIn("Femmes", svg)
+        self.assertIn("Hommes", svg)
+
+    def test_a_pyramid_without_a_label_carries_no_legend(self):
+        """Sans intitulé, le dessin est posé ailleurs : il n'a pas à
+        réserver la bande du bas."""
+        from hr_analytics.core.reporting import pyramid_svg
+
+        svg = pyramid_svg(self.RANGS, width=360, height=200, label="")
+        self.assertNotIn("Femmes", svg)

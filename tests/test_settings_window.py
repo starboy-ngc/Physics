@@ -821,3 +821,84 @@ class TestTheThreeHeadcountThresholds(SettingsCase):
         self.window.chart_var.set("beaucoup")
         self.window.save()
         self.assertEqual(self.written()["min_headcount_chart"], avant)
+
+
+@needs_display
+class TestOrderingTheFilters(unittest.TestCase):
+    """L'ordre des filtres était celui du fichier de configuration, c'est-à-
+    dire celui d'origine : personne ne range ses filtres en éditant un
+    JSON. Or celui qu'on emploie tous les jours doit être en haut, et ce
+    qui est en haut dépend du métier de chacun."""
+
+    def setUp(self):
+        import shutil
+
+        from hr_analytics.ui.app import Application
+
+        self.directory = tempfile.mkdtemp()
+        racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.config_dir = os.path.join(self.directory, "config")
+        shutil.copytree(os.path.join(racine, "config"), self.config_dir)
+        self.app = Application(config_dir=self.config_dir)
+        self.app.update()
+
+    def tearDown(self):
+        # Les fenetres avant l'application : detruire l'application
+        # d'abord laisse les Toplevel sans interpreteur.
+        for fenetre in getattr(self, "_ouvertes", []):
+            if fenetre.winfo_exists():
+                fenetre.destroy()
+        self.app.destroy()
+
+    def _fenetre(self):
+        from hr_analytics.ui.settings import SettingsWindow
+
+        fenetre = SettingsWindow(self.app, self.app.configuration,
+                                 self.config_dir, self.app.fonts)
+        self.app.update()
+        self._ouvertes = getattr(self, "_ouvertes", []) + [fenetre]
+        return fenetre
+
+    def test_a_dimension_can_be_moved_down(self):
+        fenetre = self._fenetre()
+        avant = list(fenetre.rows)
+        fenetre._move_dimension(avant[0], 1)
+        self.app.update()
+        apres = list(fenetre.rows)
+        self.assertEqual(apres[0], avant[1])
+        self.assertEqual(apres[1], avant[0])
+        self.assertEqual(sorted(apres), sorted(avant), "un champ a disparu")
+
+    def test_a_dimension_can_be_moved_up(self):
+        fenetre = self._fenetre()
+        avant = list(fenetre.rows)
+        fenetre._move_dimension(avant[2], -1)
+        self.app.update()
+        self.assertEqual(list(fenetre.rows)[1], avant[2])
+
+    def test_the_ends_of_the_list_hold(self):
+        """Monter le premier ou descendre le dernier ne doit rien casser."""
+        fenetre = self._fenetre()
+        avant = list(fenetre.rows)
+        fenetre._move_dimension(avant[0], -1)
+        fenetre._move_dimension(avant[-1], 1)
+        self.app.update()
+        self.assertEqual(list(fenetre.rows), avant)
+
+    def test_the_new_order_reaches_the_saved_settings(self):
+        """Déplacer sans que l'ordre arrive au fichier ne servirait à
+        rien : c'est lui que la fenêtre relit pour ranger ses filtres."""
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.segmentation import dimension_fields
+
+        fenetre = self._fenetre()
+        avant = list(fenetre.rows)
+        # Un champ coché, qu'on remonte en tête.
+        coche = next(nom for nom in avant if fenetre.rows[nom]["declared"].get())
+        while list(fenetre.rows).index(coche) > 0:
+            fenetre._move_dimension(coche, -1)
+        self.app.update()
+        fenetre.save()
+        self.app.update()
+        relu = load_configuration(self.config_dir)
+        self.assertEqual(dimension_fields(relu)[0], coche)
