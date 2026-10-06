@@ -11,11 +11,11 @@ Un dossier, et rien d'autre.
 ```
 HR Analytics\
   HR Analytics.exe     le programme à lancer
-  LISEZ-MOI.txt
   config\            les réglages, en texte, modifiables au bloc-notes
   hr_analytics\        le code de l'outil, lisible
   runtime\           l'interpréteur Python privé de l'outil
-  docs\              guides, audits, et le source du lanceur
+  docs\              guide, architecture, dossier de sécurité, empreintes
+                     de l'interpréteur, et le source du lanceur
   population-*.xlsx  jeux d'essai, sans aucune donnée réelle
 ```
 

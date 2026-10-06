@@ -172,6 +172,18 @@ CAPACITES_LIB = ("subprocess.py", "multiprocessing", "concurrent", "ctypes",
 ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
           ("docs", "docs"))
 
+#: Documents qui restent au depot et ne sont pas livres : les audits
+#: dates. Ce sont des releves d'etat a une revision donnee, et ils ont
+#: leur valeur — ils montrent que l'outil a ete mis en defaut plusieurs
+#: fois plutot qu'une. Mais un audit de septembre livre a cote du dossier
+#: du jour le contredit sur ce qui a change depuis : le manifeste qui
+#: n'existe plus, le LISEZ-MOI retire, la capacite de lancer un processus
+#: qui s'est averee subsister. Un lecteur de securite qui trouve deux
+#: affirmations contraires dans le meme paquet ne sait pas laquelle croire,
+#: et il a raison. Le paquet ne porte donc qu'un etat : celui du jour.
+DOCS_NON_LIVRES = ("AUDIT.md", "AUDIT-2026-09-26.md", "AUDIT-2026-10-04.md",
+                   "AUDIT-SECURITE-IT.md")
+
 #: Outils de fabrication de jeux d'essai : ils produisent des populations
 #: fictives, et c'est par eux qu'une équipe prend l'outil en main.
 OUTILS = ("__init__.py", "generate_sample_population.py",
@@ -455,6 +467,11 @@ def composer(destination: str, extrait: str) -> str:
     os.makedirs(destination)
     for source, cible in ARBRES:
         origine = os.path.join(ROOT, source)
+        if source == "docs":
+            shutil.copytree(origine, os.path.join(destination, cible),
+                            ignore=shutil.ignore_patterns(*DOCS_NON_LIVRES),
+                            dirs_exist_ok=True)
+            continue
         if os.path.isdir(origine):
             shutil.copytree(origine, os.path.join(destination, cible),
                             ignore=shutil.ignore_patterns("__pycache__",

@@ -385,10 +385,16 @@ formules sous LibreOffice, valeurs en cache retirées.
 
 ## 9. Traçabilité
 
-Chaque analyse produit un manifeste JSON : moteur, version, date, nom et
-empreinte SHA-256 du fichier source, effectif, filtres, intégralité des
-paramètres. Il contient l'empreinte du fichier, jamais son contenu — donc
-aucune donnée personnelle.
+La ligne de commande produit un manifeste JSON : moteur, version, date,
+nom et empreinte SHA-256 du fichier source, effectif, filtres, intégralité
+des paramètres. Il contient l'empreinte du fichier, jamais son contenu —
+donc aucune donnée personnelle. C'est sa seule sortie qu'un programme peut
+relire, et elle sert à enchaîner des analyses.
+
+La fenêtre, elle, ne l'écrit pas : ce qu'il porte de lisible — fichier
+source, périmètre, date, effectif — est déjà en tête de la restitution et
+sur la garde de la synthèse, et le reste était du JSON qu'aucun
+destinataire de ces documents n'ouvre.
 
 ## 10. Performance
 

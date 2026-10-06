@@ -3,6 +3,14 @@
 *Conduit le 25 septembre 2026 sur la branche
 `claude/compensation-analytics-local-8mbxy0`.*
 
+
+> **Document historique.** Il décrit l'état de l'outil à la date
+> et à la révision indiquées ci-dessus. Il n'est pas tenu à jour,
+> et certaines de ses affirmations ont été dépassées depuis.
+> **L'état courant est dans `DOSSIER-RSSI.md`**, qui fait foi.
+> Ce document n'est pas livré dans le paquet : il reste au dépôt,
+> comme trace des contrôles successifs.
+
 Trois questions, et rien d'autre : **l'outil dépend-il de quelque chose
 d'extérieur ? peut-il faire sortir des données ? peut-on lui faire faire
 autre chose que son travail ?**

@@ -3,6 +3,14 @@
 *Audit conduit le 20 septembre 2026 sur la branche
 `claude/hr-insight-local-8mbxy0`, révision `9cc4343`.*
 
+
+> **Document historique.** Il décrit l'état de l'outil à la date
+> et à la révision indiquées ci-dessus. Il n'est pas tenu à jour,
+> et certaines de ses affirmations ont été dépassées depuis.
+> **L'état courant est dans `DOSSIER-RSSI.md`**, qui fait foi.
+> Ce document n'est pas livré dans le paquet : il reste au dépôt,
+> comme trace des contrôles successifs.
+
 Méthode : **mesurer, regarder, corriger**. Aucun constat de ce rapport ne
 repose sur une lecture du code seule. Chaque défaut a d'abord été prouvé
 par un test qui échoue, puis refermé par un test qui passe et reste dans la

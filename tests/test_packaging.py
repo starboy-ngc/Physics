@@ -603,3 +603,22 @@ class TestTheFolderLauncherCarriesTheMark(unittest.TestCase):
                           f"{fabrique.__name__} ne pose pas l'icône")
             self.assertIn("objet", source.split("subprocess.run")[1],
                           f"{fabrique.__name__} ne lie pas la ressource")
+
+    def test_the_package_carries_one_state_and_not_two(self):
+        """Un audit de septembre livré à côté du dossier du jour le
+        contredit sur ce qui a changé depuis. Un lecteur de sécurité qui
+        trouve deux affirmations contraires dans le même paquet ne sait
+        pas laquelle croire, et il a raison."""
+        from tools.build_windows import DOCS_NON_LIVRES
+
+        for nom in DOCS_NON_LIVRES:
+            chemin = os.path.join(ROOT, "docs", nom)
+            self.assertTrue(os.path.isfile(chemin),
+                            f"{nom} devrait rester au dépôt")
+            with open(chemin, encoding="utf-8") as flux:
+                tete = "".join(flux.readlines()[:12])
+            self.assertIn("Document historique", tete,
+                          f"{nom} ne se signale pas comme dépassé")
+        # Le dossier courant, lui, est livré.
+        self.assertNotIn("DOSSIER-RSSI.md", DOCS_NON_LIVRES)
+        self.assertNotIn("GUIDE_UTILISATEUR.md", DOCS_NON_LIVRES)

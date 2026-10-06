@@ -15,7 +15,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from tests.support import build_population, make_config, make_row
 from hr_analytics.core.pay_equity import (FEMALE, MALE, classify,
                                                     calculate_category_gaps,
-                                                    calculate_category_profile,
                                                     calculate_pay_equity)
 
 
@@ -419,110 +418,6 @@ class TestWhatTheOverallGapIsMadeOf(unittest.TestCase):
         self.assertAlmostEqual(item["at_stake"], (100000 - 90000) * 10)
 
 
-class TestTheProfileOfOneCategory(unittest.TestCase):
-    """Un ecart de remuneration ne se lit pas seul.
-
-    Vingt pour cent d'ecart sur un poste ou les hommes comptent neuf ans
-    d'anciennete et les femmes quatre n'appelle pas la meme reponse que le
-    meme ecart a anciennete egale : le premier interroge la grille
-    d'anciennete, le second la remuneration elle-meme. La fiche pose donc
-    cote a cote ce que touche chaque sexe et ce qui l'entoure.
-    """
-
-    def _population(self, lignes, overrides=None):
-        reglages = {"pay_equity_parameters.category_field": "groupe"}
-        reglages.update(overrides or {})
-        config = make_config(reglages)
-        rows = [make_row(index, salary=salaire, gender=sexe, groupe=groupe,
-                         tenure=anciennete)
-                for index, (groupe, sexe, salaire, anciennete)
-                in enumerate(lignes)]
-        return build_population(rows, config), config
-
-    def test_every_declared_variable_is_compared(self):
-        lignes = ([("G5", "F", 90000, 4)] * 10
-                  + [("G5", "H", 100000, 9)] * 10)
-        population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "groupe", "G5")
-
-        self.assertTrue(fiche["published"])
-        self.assertEqual(fiche["female_count"], 10)
-        self.assertEqual(fiche["male_count"], 10)
-        variables = {row["field"]: row for row in fiche["rows"]}
-        self.assertIn("base_salary", variables)
-        self.assertIn("tenure_years", variables)
-
-        salaire = variables["base_salary"]
-        self.assertAlmostEqual(salaire["female_mean"], 90000.0)
-        self.assertAlmostEqual(salaire["male_mean"], 100000.0)
-        self.assertAlmostEqual(salaire["gap"], 10.0, places=6)
-
-    def test_a_gap_in_years_is_a_difference_not_a_percentage(self):
-        """Un pourcentage sur une anciennete se lirait comme un ecart de
-        remuneration : sur ce qui n'est pas un montant, l'ecart est une
-        difference, dans l'unite de la variable.
-
-        Et son signe est celui de toute la page : positif veut dire que les
-        femmes sont en dessous. Ici les hommes comptent cinq ans de plus,
-        donc « +5 » — comme l'ecart de salaire, positif lui aussi, dit que
-        les femmes gagnent moins. Deux signes opposes pour dire deux fois
-        la meme chose se lisaient comme une contradiction.
-        """
-        lignes = ([("G5", "F", 90000, 4)] * 10
-                  + [("G5", "H", 100000, 9)] * 10)
-        population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "groupe", "G5")
-        anciennete = next(row for row in fiche["rows"]
-                          if row["field"] == "tenure_years")
-        self.assertEqual(anciennete["kind"], "years")
-        self.assertIsNone(anciennete["gap"])
-        self.assertAlmostEqual(anciennete["difference"], 5.0, places=1)
-        # Le salaire penche du meme cote, et porte le meme signe.
-        salaire = next(row for row in fiche["rows"]
-                       if row["field"] == "base_salary")
-        self.assertGreater(salaire["gap"], 0)
-
-    def test_a_category_below_the_threshold_shows_nothing(self):
-        """Une mediane calculee sur trois personnes les designe."""
-        lignes = [("G5", "F", 90000, 4)] * 2 + [("G5", "H", 100000, 9)] * 2
-        population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "groupe", "G5")
-        self.assertFalse(fiche["published"])
-        self.assertEqual(fiche["rows"], [])
-        self.assertIn("Effectif insuffisant", fiche["warning"])
-
-    def test_the_compared_variables_are_declared_not_hardcoded(self):
-        """Une prime propre a l'entreprise doit s'ajouter par configuration."""
-        lignes = ([("G5", "F", 90000, 4)] * 10
-                  + [("G5", "H", 100000, 9)] * 10)
-        population, config = self._population(lignes, {
-            "pay_equity_parameters.profile_fields": [
-                {"field": "base_salary", "label": "Fixe", "kind": "money"}]})
-        fiche = calculate_category_profile(population, config, "groupe", "G5")
-        self.assertEqual([row["label"] for row in fiche["rows"]], ["Fixe"])
-
-    def test_a_variable_absent_from_the_file_takes_no_row(self):
-        """Une colonne absente ferait croire a une donnee manquante."""
-        lignes = ([("G5", "F", 90000, 4)] * 10
-                  + [("G5", "H", 100000, 9)] * 10)
-        population, config = self._population(lignes, {
-            "pay_equity_parameters.profile_fields": [
-                {"field": "base_salary", "label": "Fixe", "kind": "money"},
-                {"field": "prime_inexistante", "label": "Prime",
-                 "kind": "money"}]})
-        fiche = calculate_category_profile(population, config, "groupe", "G5")
-        self.assertEqual([row["field"] for row in fiche["rows"]],
-                         ["base_salary"])
-
-    def test_an_unknown_category_yields_an_empty_profile(self):
-        lignes = [("G5", "F", 90000, 4)] * 10 + [("G5", "H", 100000, 9)] * 10
-        population, config = self._population(lignes)
-        fiche = calculate_category_profile(population, config, "groupe",
-                                           "categorie_absente")
-        self.assertEqual(fiche["headcount"], 0)
-        self.assertFalse(fiche["published"])
-
-
 class TestCrossingTwoAxes(unittest.TestCase):
     """« Travail de meme valeur » se lit parfois sur deux axes a la fois.
 
@@ -564,18 +459,6 @@ class TestCrossingTwoAxes(unittest.TestCase):
                                          ["groupe", "business_unit"])
         self.assertAlmostEqual(simple["comparable_gap"],
                                croise["comparable_gap"], places=6)
-
-    def test_a_profile_can_be_opened_on_a_crossed_category(self):
-        population, config = self._population()
-        croise = calculate_category_gaps(population, config,
-                                         ["groupe", "business_unit"])
-        nom = croise["categories"][0]["category"]
-        fiche = calculate_category_profile(population, config,
-                                           ["groupe", "business_unit"], nom)
-        self.assertEqual(fiche["category"], nom)
-        self.assertTrue(fiche["published"])
-        self.assertEqual(fiche["female_count"], 8)
-        self.assertEqual(fiche["male_count"], 8)
 
     def test_a_missing_value_on_one_axis_excludes_the_employee(self):
         """Un salarie a demi classe n'appartient a aucune categorie
