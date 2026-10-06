@@ -371,13 +371,13 @@ class TestWindow(unittest.TestCase):
     def test_the_filters_survive_folding(self):
         """Replier masque, ne remet a zero ni ne relance quoi que ce soit."""
         self._load()
-        champ = next(iter(self.app.filter_vars))
-        self.app.filter_vars[champ].set("France")
+        champ = next(iter(self.app.filter_values))
+        self.app.set_filter(champ, ["France"])
         self.app.toggle_sidebar()
         self._settle()
         self.app.toggle_sidebar()
         self._settle()
-        self.assertEqual(self.app.filter_vars[champ].get(), "France")
+        self.assertEqual(self.app.filter_values[champ], ["France"])
 
     def test_actions_are_disabled_until_a_file_is_loaded(self):
         self.assertIn("disabled", self.app.analyse_button.state())
@@ -387,31 +387,87 @@ class TestWindow(unittest.TestCase):
         """L'utilisateur choisit parmi ce que contient son fichier : aucune
         syntaxe a taper, aucune valeur inventee."""
         self._load()
-        self.assertIn("business_unit", self.app.filter_vars)
-        combobox = None
-        for child in self.app.filters_frame.winfo_children():
-            for widget in child.winfo_children():
-                if widget.winfo_class() == "TCombobox":
-                    combobox = widget
-                    break
-            if combobox:
-                break
-        self.assertIsNotNone(combobox)
-        values = combobox.cget("values")
-        self.assertIn("France", values)
-        self.assertIn("(toutes)", values)
+        self.assertIn("business_unit", self.app.filter_values)
+        self.assertIn("France", self.app._filter_choices["business_unit"])
+        # Sans filtre, le bouton dit « toutes », et combien.
+        bouton = self.app._filter_buttons["business_unit"]
+        self.assertEqual(
+            bouton.cget("text"),
+            f"Toutes ({len(self.app._filter_choices['business_unit'])})")
 
     def test_a_filter_narrows_the_analysis(self):
         self._load()
-        self.app.filter_vars["business_unit"].set("France")
+        self.app.set_filter("business_unit", ["France"])
         definitions = self.app._current_filters()
         self.assertEqual(definitions,
                          [{"field": "business_unit", "operator": "eq",
                            "value": "France"}])
+        self.assertEqual(
+            self.app._filter_buttons["business_unit"].cget("text"), "France")
 
     def test_unselected_filters_are_ignored(self):
         self._load()
         self.assertEqual(self.app._current_filters(), [])
+
+    def test_a_filter_retains_several_values(self):
+        """La question posée à un fichier de paie est rarement « ce
+        poste-ci » : c'est « ces trois postes-là »."""
+        self._load()
+        champ, toutes = next(
+            (champ, valeurs)
+            for champ, valeurs in self.app._filter_choices.items()
+            if len(valeurs) > 2)
+        valeurs = toutes[:2]
+        self.app.set_filter(champ, valeurs)
+        self.assertEqual(self.app._current_filters(),
+                         [{"field": champ, "operator": "in",
+                           "value": valeurs}])
+        self.assertIn(f"2 valeurs sur {len(toutes)}",
+                      self.app._filter_buttons[champ].cget("text"))
+
+    def test_retaining_everything_is_no_filter_at_all(self):
+        """Et retenir zéro valeur non plus : un filtre vide porterait sur
+        zéro salarié, ce qui n'est la réponse à aucune question."""
+        self._load()
+        toutes = self.app._filter_choices["business_unit"]
+        self.app.set_filter("business_unit", list(toutes))
+        self.assertEqual(self.app._current_filters(), [])
+        self.app.set_filter("business_unit", [])
+        self.assertEqual(self.app._current_filters(), [])
+        self.assertIn("Toutes",
+                      self.app._filter_buttons["business_unit"].cget("text"))
+
+    def test_the_values_keep_the_order_of_the_file(self):
+        """Pour que « 2 valeurs » soient les mêmes deux à chaque lecture,
+        quel que soit l'ordre des clics dans le sélecteur."""
+        self._load()
+        champ, toutes = next(
+            (champ, valeurs)
+            for champ, valeurs in self.app._filter_choices.items()
+            if len(valeurs) > 2)
+        self.app.set_filter(champ, list(reversed(toutes[:2])))
+        self.assertEqual(self.app.filter_values[champ], list(toutes[:2]))
+
+    def test_a_long_value_is_cut_on_the_button(self):
+        """La colonne est étroite : un intitulé de poste entier s'y ferait
+        rogner sans prévenir, ce qui se lirait comme une valeur tronquée
+        par l'outil."""
+        self._load()
+        champ = next(iter(self.app._filter_choices))
+        long = "Responsable du développement commercial international"
+        self.app._filter_choices[champ].append(long)
+        self.app.set_filter(champ, [long])
+        texte = self.app._filter_buttons[champ].cget("text")
+        self.assertTrue(texte.endswith("…"), texte)
+        self.assertLessEqual(len(texte), self.app.FILTER_LABEL_MAX)
+        self.assertTrue(long.startswith(texte[:-1]))
+
+    def test_an_unknown_value_is_not_retained(self):
+        """Filtrer sur une valeur que le fichier ne porte pas donnerait une
+        analyse sur zéro salarié sans que rien ne le dise."""
+        self._load()
+        self.app.set_filter("business_unit", ["France", "Pays imaginaire"])
+        self.assertEqual(self.app.filter_values["business_unit"], ["France"])
 
 
 @unittest.skipUnless(HAS_TK, "tkinter absent")
@@ -1715,8 +1771,8 @@ class TestResettingTheChoices(unittest.TestCase):
         self.app.destroy()
 
     def test_resetting_clears_every_criterion(self):
-        self.app.filter_vars["business_unit"].set("France")
-        self.app.filter_vars["groupe"].set("G5")
+        self.app.set_filter("business_unit", ["France"])
+        self.app.set_filter("groupe", ["G5"])
         self.assertEqual(len(self.app._current_filters()), 2)
         self.app.reset_filters()
         self.assertEqual(self.app._current_filters(), [])
@@ -1725,7 +1781,7 @@ class TestResettingTheChoices(unittest.TestCase):
         """Les filtres defilent hors du champ visible : sans rappel, un
         critere pose puis oublie fausse la lecture de toute l'analyse."""
         self.assertEqual(self.app.filter_summary.cget("text"), "")
-        self.app.filter_vars["business_unit"].set("France")
+        self.app.set_filter("business_unit", ["France"])
         self.app.update()
         self.assertIn("1", self.app.filter_summary.cget("text"))
 
@@ -1739,7 +1795,7 @@ class TestResettingTheChoices(unittest.TestCase):
         self.assertEqual(link.cget("foreground"), FAINT)
         self.assertFalse(link.enabled)
 
-        self.app.filter_vars["business_unit"].set("France")
+        self.app.set_filter("business_unit", ["France"])
         self.app.update()
         self.assertEqual(link.cget("text"), "Réinitialiser")
         self.assertEqual(link.cget("foreground"), ACCENT)
@@ -1752,7 +1808,7 @@ class TestResettingTheChoices(unittest.TestCase):
 
     def test_an_extinguished_action_does_nothing_when_clicked(self):
         link = self.app.reset_filters_link
-        self.app.filter_vars["business_unit"].set("France")
+        self.app.set_filter("business_unit", ["France"])
         self.app.update()
         link.event_generate("<Button-1>")
         self.app.update()
@@ -2714,6 +2770,57 @@ class TestChoosingValuesInsideTheDispersionDimension(unittest.TestCase):
             if choix.winfo_exists():
                 choix.destroy()
         self.assertEqual(rendu, [None])
+
+    def test_the_picker_unchecks_everything_at_once(self):
+        """Décocher trente valeurs une par une est le geste que cette
+        fenêtre doit épargner : deux boutons, et non deux mots soulignés
+        dont il faut deviner qu'ils agissent."""
+        from hr_analytics.ui.theme import ValuePicker
+
+        valeurs = self._prepare()
+        choix = ValuePicker(self.app, self.app.fonts, "Essai", valeurs,
+                            None, lambda _r: None)
+        self.app.update()
+        try:
+            self.assertEqual(choix._boutons[False].winfo_class(), "TButton")
+            self.assertEqual(choix._boutons[False].cget("text"),
+                             "Tout décocher")
+            choix._boutons[False].invoke()
+            self.app.update()
+            self.assertEqual(choix._retenues(), [])
+            choix._boutons[True].invoke()
+            self.app.update()
+            self.assertEqual(choix._retenues(), list(valeurs))
+        finally:
+            if choix.winfo_exists():
+                choix.destroy()
+
+    def test_the_buttons_say_they_only_touch_what_shows(self):
+        """« Tout cocher » ne coche que ce que la recherche laisse voir :
+        le bouton le dit, sinon l'action paraît porter sur la liste
+        entière."""
+        from hr_analytics.ui.theme import ValuePicker
+
+        valeurs = self._prepare()
+        choix = ValuePicker(self.app, self.app.fonts, "Essai", valeurs,
+                            None, lambda _r: None)
+        self.app.update()
+        try:
+            choix._cherche.set(valeurs[0][:3])
+            self.app.update()
+            self.assertEqual(choix._boutons[False].cget("text"),
+                             "Décocher ce qui s'affiche")
+            choix._boutons[False].invoke()
+            self.app.update()
+            # Ce que la recherche cache n'a pas bougé.
+            self.assertNotIn(valeurs[0], choix._retenues())
+            choix._cherche.set("")
+            self.app.update()
+            self.assertEqual(choix._boutons[False].cget("text"),
+                             "Tout décocher")
+        finally:
+            if choix.winfo_exists():
+                choix.destroy()
 
     def test_the_picker_searches_without_accents(self):
         from hr_analytics.ui.theme import ValuePicker

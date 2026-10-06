@@ -274,8 +274,8 @@ class TestDescription(unittest.TestCase):
     """Ce que la barre d'etat et le manifeste affichent."""
 
     def test_each_operator_has_a_readable_sign(self):
-        for operator, sign in (("eq", "="), ("ne", "≠"), ("in", "∈"),
-                               ("not_in", "∉"), ("gt", ">"), ("gte", "≥"),
+        for operator, sign in (("eq", "="), ("ne", "≠"), ("in", "parmi"),
+                               ("not_in", "hors"), ("gt", ">"), ("gte", "≥"),
                                ("lt", "<"), ("lte", "≤"),
                                ("contains", "contient")):
             described = Filter("groupe", operator, ["G5"]).describe()
@@ -284,6 +284,21 @@ class TestDescription(unittest.TestCase):
     def test_a_list_is_written_out(self):
         self.assertIn("G5, G6",
                       Filter("groupe", "in", ["G5", "G6"]).describe())
+
+    def test_a_long_list_says_how_many_are_left(self):
+        """Retenir cinquante établissements sur cinquante-sept est un geste
+        de deux clics : les énumérer tous donnerait une barre d'état, une
+        synthèse et des slides illisibles."""
+        valeurs = [f"S{rang}" for rang in range(9)]
+        décrit = Filter("site", "in", valeurs).describe()
+        self.assertIn("S0, S1, S2, S3", décrit)
+        self.assertIn("et 5 autres", décrit)
+        self.assertNotIn("S8", décrit)
+
+    def test_one_value_left_is_singular(self):
+        valeurs = [f"S{rang}" for rang in range(5)]
+        self.assertIn("et 1 autre",
+                      Filter("site", "in", valeurs).describe())
 
     def test_the_field_takes_its_declared_label(self):
         described = Filter("groupe", "eq", "G5").describe({"groupe": "Niveau"})

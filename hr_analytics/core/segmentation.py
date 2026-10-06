@@ -93,6 +93,23 @@ class Filter:
     #: Ce qui remplace la valeur d'un filtre nominatif dans tout libelle ecrit.
     HIDDEN_VALUE = "(valeur masquée)"
 
+    #: Nombre de valeurs enumerees dans le libelle d'un critere. Retenir
+    #: cinquante etablissements sur cinquante-sept est devenu un geste de
+    #: deux clics ; les enumerer tous donnerait une barre d'etat, une
+    #: synthese et des slides illisibles, pour une information que
+    #: l'ecran rend deja a qui rouvre la liste.
+    LISTED_VALUES = 4
+
+    @classmethod
+    def _liste(cls, valeurs: Sequence[Any]) -> str:
+        """Enumere quelques valeurs, puis dit combien restent."""
+        textes = [str(item) for item in valeurs]
+        if len(textes) <= cls.LISTED_VALUES:
+            return ", ".join(textes)
+        reste = len(textes) - cls.LISTED_VALUES
+        return (", ".join(textes[:cls.LISTED_VALUES])
+                + f" et {reste} autre{'s' if reste > 1 else ''}")
+
     def describe(self, labels: Optional[Dict[str, str]] = None,
                  personal: Sequence[str] = ()) -> str:
         """Libelle du critere. La valeur d'un champ nominatif n'y figure pas.
@@ -107,11 +124,14 @@ class Filter:
         if self.field in set(personal):
             rendered = self.HIDDEN_VALUE
         elif self.operator in ("in", "not_in", "between"):
-            rendered = ", ".join(str(item) for item in _as_list(self.value))
+            rendered = self._liste(_as_list(self.value))
         else:
             rendered = str(self.value)
         symbol = {
-            "eq": "=", "ne": "≠", "in": "∈", "not_in": "∉", "gt": ">",
+            # « parmi » et non « ∈ » : ce libelle part dans la synthese et
+            # dans les slides, que lit une direction, pas un mathematicien
+            # — et la police du PDF n'a meme pas le signe.
+            "eq": "=", "ne": "≠", "in": "parmi", "not_in": "hors", "gt": ">",
             "gte": "≥", "lt": "<", "lte": "≤", "contains": "contient",
             "between": "entre",
         }[self.operator]

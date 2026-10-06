@@ -885,6 +885,60 @@ class TestOrderingTheFilters(unittest.TestCase):
         self.app.update()
         self.assertEqual(list(fenetre.rows), avant)
 
+    def test_a_dimension_follows_the_mouse(self):
+        """Remonter d'une flèche à la fois un champ qui est en vingtième
+        position demande dix-neuf clics : on l'attrape et on le pose."""
+        fenetre = self._fenetre()
+        montrés = fenetre._ordonnables()
+        self.assertGreater(len(montrés), 3)
+        voyageur = montrés[3]
+        cible = fenetre._order_rows[montrés[0]]
+        # Le pointeur est relevé à l'écran : on lui dit où il est.
+        fenetre._order_area.winfo_pointery = lambda: cible.winfo_rooty() + 2
+        fenetre._grab_dimension(voyageur)
+        fenetre._drag_dimension()
+        self.app.update()
+        self.assertEqual(fenetre._ordonnables()[0], voyageur)
+        # Et le reste a seulement glissé d'un cran.
+        self.assertEqual(fenetre._ordonnables()[1:4], montrés[:3])
+        fenetre._drop_dimension()
+        self.assertIsNone(fenetre._dragged)
+
+    def test_the_line_one_holds_is_marked(self):
+        """Sans marque, un déplacement à la souris se lit comme un défaut
+        d'affichage."""
+        from hr_analytics.ui import theme
+
+        fenetre = self._fenetre()
+        nom = fenetre._ordonnables()[0]
+        ligne = fenetre._order_rows[nom]
+        self.assertEqual(ligne.cget("background"), theme.CANVAS)
+        fenetre._grab_dimension(nom)
+        self.assertEqual(ligne.cget("background"), theme.ACCENT_SOFT)
+        fenetre._drop_dimension()
+        self.assertEqual(ligne.cget("background"), theme.CANVAS)
+
+    def test_the_lines_survive_a_move(self):
+        """Elles étaient détruites et refaites : le geste en cours perdait
+        le widget sous le curseur, et la page remontait en haut."""
+        fenetre = self._fenetre()
+        montrés = fenetre._ordonnables()
+        témoins = {nom: str(fenetre._order_rows[nom]) for nom in montrés}
+        fenetre._move_dimension(montrés[0], 1)
+        self.app.update()
+        self.assertEqual({nom: str(fenetre._order_rows[nom])
+                          for nom in montrés}, témoins)
+
+    def test_an_arrow_at_the_end_of_the_list_does_nothing(self):
+        """Éteinte, elle ne doit pas agir : la ligne reste cliquable."""
+        fenetre = self._fenetre()
+        montrés = fenetre._ordonnables()
+        premier = fenetre._order_rows[montrés[0]]
+        self.assertFalse(premier.arrows[-1].enabled)
+        premier.arrows[-1].event_generate("<Button-1>")
+        self.app.update()
+        self.assertEqual(fenetre._ordonnables(), montrés)
+
     def test_the_new_order_reaches_the_saved_settings(self):
         """Déplacer sans que l'ordre arrive au fichier ne servirait à
         rien : c'est lui que la fenêtre relit pour ranger ses filtres."""

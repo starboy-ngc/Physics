@@ -206,6 +206,12 @@ def apply(root: tk.Misc, fonts: Fonts) -> ttk.Style:
                   foreground=[("disabled", FAINT)],
                   bordercolor=[("active", ACCENT), ("disabled", LINE)])
 
+    # Le bouton d'un filtre porte une valeur, pas un verbe : le texte se
+    # cale a gauche, comme une liste, et la ligne reste compacte. Le nom
+    # pointe herite du reste du style.
+    style.configure("Filter.GhostGround.TButton", anchor="w",
+                    padding=(10, 6), font=fonts.small)
+
     # Cases a cocher : un carre clair a filet fin, coche a l'accent.
     style.configure("TCheckbutton", background=GROUND, foreground=INK_SOFT,
                     font=fonts.body, focuscolor=GROUND, indicatorsize=13,
@@ -687,89 +693,22 @@ def _sans_accent(texte: str) -> str:
                    if unicodedata.category(c) != "Mn").lower()
 
 
-class SearchableCombo(ttk.Combobox):
-    """Liste deroulante ou l'on peut taper pour chercher.
-
-    Une liste en lecture seule oblige a faire defiler. Passe quelques
-    dizaines d'entrees — et un fichier de paie en porte volontiers cent
-    pour un intitule de poste — chercher « chauffeur » parmi elles revient
-    a lire la liste entiere.
-
-    On tape, la liste se reduit a ce qui contient ce qu'on a tape, et elle
-    s'ouvre d'elle-meme. Rien d'autre ne change : ce sont les memes
-    valeurs, celles que le fichier porte.
-
-    Ce que la zone affiche en partant n'est jamais libre. Une saisie qui ne
-    correspond a rien reviendrait a filtrer sur du vide, et l'analyse
-    porterait sur zero salarie sans que rien ne le dise. A la sortie du
-    champ, le texte revient donc a la derniere valeur retenue — ou bascule
-    sur l'unique correspondance s'il n'y en a qu'une, parce que taper trois
-    lettres qui ne designent qu'une seule valeur est une facon de la
-    choisir.
-    """
-
-    #: Touches qui ne changent pas le texte : les traiter rouvrirait la
-    #: liste a chaque deplacement du curseur.
-    INERTES = {"Up", "Down", "Left", "Right", "Home", "End", "Tab",
-               "Shift_L", "Shift_R", "Control_L", "Control_R", "Alt_L",
-               "Alt_R", "Escape", "Return", "Prior", "Next"}
-
-    def __init__(self, master: tk.Widget, textvariable: tk.StringVar,
-                 values: Sequence[str], font, neutre: str = ""):
-        self._toutes = list(values)
-        self._neutre = neutre
-        self._retenu = textvariable.get()
-        super().__init__(master, textvariable=textvariable,
-                         values=self._toutes, font=font)
-        self.bind("<KeyRelease>", self._frappe)
-        self.bind("<<ComboboxSelected>>", self._choisi)
-        self.bind("<FocusOut>", lambda _e: self._recadrer())
-        self.bind("<Return>", lambda _e: self._recadrer())
-
-    def _frappe(self, event) -> None:
-        if event.keysym in self.INERTES:
-            return
-        tape = _sans_accent(self.get())
-        if not tape:
-            self.configure(values=self._toutes)
-            return
-        retenues = [v for v in self._toutes if tape in _sans_accent(v)]
-        self.configure(values=retenues or self._toutes)
-        # Ouvrir la liste met le texte tape en surbrillance et le remplace
-        # a la premiere fleche : on ne l'ouvre que s'il reste un choix a
-        # faire, pas quand la frappe a deja tranche.
-        if len(retenues) > 1:
-            self.event_generate("<Down>")
-
-    def _choisi(self, _event=None) -> None:
-        self._retenu = self.get()
-        self.configure(values=self._toutes)
-        self.selection_clear()
-
-    def _recadrer(self) -> None:
-        """Ramene la zone sur une valeur qui existe."""
-        texte = self.get()
-        if texte in self._toutes:
-            self._choisi()
-            return
-        tape = _sans_accent(texte)
-        retenues = ([v for v in self._toutes if tape in _sans_accent(v)]
-                    if tape else [])
-        self.set(retenues[0] if len(retenues) == 1
-                 else (self._retenu or self._neutre))
-        self._choisi()
-
-
 class ValuePicker(tk.Toplevel):
     """Choisir une ou plusieurs valeurs d'une dimension.
 
     Une liste deroulante ne retient qu'une valeur. Or la question posee a
-    un graphique de dispersion est rarement « ce poste-ci » : c'est « ces
-    quatre postes-la, cote a cote », parce que c'est en les mettant cote a
-    cote qu'on voit lequel a la grille la plus ouverte.
+    un fichier de paie est rarement « ce poste-ci » : c'est « ces quatre
+    postes-la, cote a cote », parce que c'est en les mettant cote a cote
+    qu'on voit lequel a la grille la plus ouverte.
 
-    Les valeurs se cherchent, comme dans les filtres : trente
-    etablissements ou cent intitules de poste ne se parcourent pas.
+    Chercher et choisir sont deux gestes separes : on tape d'un cote, on
+    coche de l'autre. Dans une liste deroulante ou l'on tape, les deux se
+    marchent dessus — la frappe ouvrait la liste, la premiere fleche
+    remplacait ce qu'on venait de taper, et une saisie qui ne
+    correspondait a rien se rattrapait toute seule.
+
+    Trente etablissements ou cent intitules de poste ne se parcourent
+    pas : d'ou la recherche, accents et casse indifferents.
     """
 
     def __init__(self, master: tk.Misc, fonts: Fonts, titre: str,
@@ -801,13 +740,17 @@ class ValuePicker(tk.Toplevel):
 
         barre = tk.Frame(self, background=GROUND)
         barre.pack(fill="x", padx=16)
-        for texte, valeur in (("Tout", True), ("Aucun", False)):
-            lien = tk.Label(barre, text=texte, background=GROUND,
-                            foreground=ACCENT, font=fonts.small,
-                            cursor="hand2")
-            lien.pack(side="left", padx=(0, 12))
-            lien.bind("<Button-1>",
-                      lambda _e, v=valeur: self._tout(v))
+        # Deux boutons, et non deux mots soulignes : decocher trente
+        # valeurs une par une est le geste que cette fenetre doit
+        # epargner, et une action qu'on doit deviner ne l'epargne pas.
+        self._boutons = {}
+        for texte, valeur in (("Tout cocher", True),
+                              ("Tout décocher", False)):
+            bouton = ttk.Button(barre, text=texte,
+                                style="GhostGround.TButton",
+                                command=lambda v=valeur: self._tout(v))
+            bouton.pack(side="left", padx=(0, 8))
+            self._boutons[valeur] = bouton
         self._compte = tk.Label(barre, text="", background=GROUND,
                                 foreground=MUTED, font=fonts.small)
         self._compte.pack(side="right")
@@ -845,9 +788,9 @@ class ValuePicker(tk.Toplevel):
 
         pied = tk.Frame(self, background=GROUND)
         pied.pack(fill="x", padx=16, pady=12)
-        ttk.Button(pied, text="Appliquer",
+        ttk.Button(pied, text="Appliquer", style="Primary.TButton",
                    command=self._valider).pack(side="right")
-        ttk.Button(pied, text="Annuler", style="Ghost.TButton",
+        ttk.Button(pied, text="Annuler", style="GhostGround.TButton",
                    command=self.destroy).pack(side="right", padx=(0, 8))
         self._compter()
         entree.focus_set()
@@ -859,6 +802,12 @@ class ValuePicker(tk.Toplevel):
                 ligne.pack(anchor="w", fill="x")
             else:
                 ligne.pack_forget()
+        # « Tout cocher » ne coche que ce qui se voit : le bouton le dit,
+        # sinon l'action parait porter sur la liste entiere.
+        self._boutons[True].configure(
+            text="Cocher ce qui s'affiche" if tape else "Tout cocher")
+        self._boutons[False].configure(
+            text="Décocher ce qui s'affiche" if tape else "Tout décocher")
 
     def _tout(self, etat: bool) -> None:
         """Coche ou decoche ce que la recherche laisse voir.

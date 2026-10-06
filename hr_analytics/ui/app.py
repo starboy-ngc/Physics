@@ -55,13 +55,11 @@ from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
-from .theme import (Card, CheckRow, Fonts, SearchableCombo, TabBar,
-                    ValuePicker)
+from .theme import Card, CheckRow, Fonts, TabBar, ValuePicker
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
-#: Les parentheses distinguent l'absence de filtre d'une valeur qui,
-#: elle, existerait vraiment dans le fichier.
-_ALL = "(toutes)"
+#: Les parentheses distinguent l'absence de choix d'une valeur qui, elle,
+#: existerait vraiment dans le fichier.
 _WHOLE_FILE = "(tout le périmètre)"
 
 #: Les resultats d'abord, le controle qualite en dernier : on y revient
@@ -211,7 +209,17 @@ class Application(tk.Tk):
         self.mapping = None
         self.headers: List[str] = []
         self.result = None
-        self.filter_vars: Dict[str, tk.StringVar] = {}
+        #: Par dimension, les valeurs retenues — None pour « toutes ».
+        #: Un filtre retient plusieurs valeurs : la question posee a un
+        #: fichier de paie est rarement « ce poste-ci », c'est « ces
+        #: trois postes-la ».
+        self.filter_values: Dict[str, Optional[List[str]]] = {}
+        #: Les valeurs que chaque dimension porte, et le bouton qui les
+        #: ouvre. Separes de la selection pour que le libelle puisse dire
+        #: « 3 sur 24 » sans recompter le fichier.
+        self._filter_choices: Dict[str, List[str]] = {}
+        self._filter_buttons: Dict[str, ttk.Button] = {}
+        self.filter_labels: Dict[str, str] = {}
         self.output_vars: Dict[str, tk.BooleanVar] = {}
         self._segments: List[Dict[str, Any]] = []
         # Numero de ligne -> identite. Vide tant qu'aucune analyse n'a
@@ -820,8 +828,9 @@ class Application(tk.Tk):
 
     def reset_filters(self) -> None:
         """Ramene tous les criteres a « aucun filtre »."""
-        for variable in self.filter_vars.values():
-            variable.set(_ALL)
+        for field in self.filter_values:
+            self.filter_values[field] = None
+            self._refresh_filter_button(field)
         self._update_filter_summary()
 
     def toggle_outputs(self) -> None:
@@ -1425,12 +1434,15 @@ class Application(tk.Tk):
         self._populate_teams()
         for child in self.filters_frame.winfo_children():
             child.destroy()
-        self.filter_vars.clear()
+        self.filter_values.clear()
+        self._filter_choices.clear()
+        self._filter_buttons.clear()
+        self.filter_labels.clear()
         # Les listes sont alimentees par le fichier : l'utilisateur choisit
         # parmi ce qui existe, il n'a aucune syntaxe a taper.
         limit = max_filter_values(self.configuration)
-        #: Les dimensions ecartees faute de place dans une liste deroulante,
-        #: et leur nombre de valeurs. Elles l'etaient en silence : on cochait
+        #: Les dimensions ecartees pour avoir trop de valeurs distinctes,
+        #: et ce nombre. Elles l'etaient en silence : on cochait
         #: « Qualification » dans les parametres, on enregistrait, et aucun
         #: filtre n'apparaissait. Rien ne reliait la cause a l'effet, et le
         #: reglage qui l'explique est a l'autre bout de l'ecran.
@@ -1438,8 +1450,8 @@ class Application(tk.Tk):
         for field in dimension_fields(self.configuration):
             values = sorted({str(e.value(field) or "").strip()
                              for e in self.population} - {""})
-            # Le seuil est un parametre, plus un nombre cache ici : au-dela,
-            # une liste deroulante cesse d'etre utilisable.
+            # Le seuil est un parametre, plus un nombre cache ici : une
+            # colonne qui porte une valeur par salarie n'est pas un axe.
             if not values:
                 continue
             if len(values) > limit:
@@ -1451,25 +1463,34 @@ class Application(tk.Tk):
             tk.Label(block, text=dimension_label(self.configuration, field),
                      background=theme.GROUND, foreground=theme.MUTED,
                      font=self.fonts.small).pack(anchor="w")
-            var = tk.StringVar(value=_ALL)
-            var.trace_add("write", lambda *_: self._update_filter_summary())
-            # Saisissable plutot qu'en lecture seule : passe quelques
-            # dizaines d'entrees, chercher dans une liste deroulante revient
-            # a la lire en entier.
-            SearchableCombo(block, var, [_ALL] + values, self.fonts.small,
-                            neutre=_ALL).pack(fill="x", pady=(2, 0))
-            self.filter_vars[field] = var
+            # Un bouton plutot qu'une liste deroulante : la liste ne
+            # retenait qu'une valeur, et il fallait taper dans la zone
+            # elle-meme — une frappe qui ne correspondait a rien se
+            # rattrapait toute seule, ce qui se lit comme une panne. Le
+            # bouton ouvre une liste ou l'on cherche d'un cote et coche de
+            # l'autre : les deux gestes ne se marchent plus dessus.
+            self.filter_values[field] = None
+            self._filter_choices[field] = values
+            self.filter_labels[field] = dimension_label(
+                self.configuration, field)
+            bouton = ttk.Button(
+                block, style="Filter.GhostGround.TButton",
+                command=lambda f=field: self._choose_filter_values(f))
+            bouton.pack(fill="x", pady=(2, 0))
+            self._filter_buttons[field] = bouton
+            self._refresh_filter_button(field)
         self._dire_les_filtres_ecartes(ecartees, limit)
         self._update_filter_summary()
 
     def _dire_les_filtres_ecartes(self, ecartees, limit: int) -> None:
-        """Nomme les dimensions trop riches pour une liste deroulante.
+        """Nomme les dimensions trop riches pour etre un critere.
 
-        Le seuil existe pour une bonne raison : au-dela de quelques
-        dizaines de valeurs, une liste deroulante cesse d'etre utilisable.
-        Mais l'ecarter en silence laissait l'utilisateur devant un reglage
-        qui semblait ne rien faire — il avait coche la bonne case, et c'est
-        ailleurs que son filtre se perdait.
+        Le seuil existe pour une bonne raison : une colonne qui porte une
+        valeur par salarie n'est pas un axe d'analyse, et deux mille
+        matricules ne deviennent pas un critere parce qu'on peut y
+        chercher. Mais l'ecarter en silence laissait l'utilisateur devant
+        un reglage qui semblait ne rien faire — il avait coche la bonne
+        case, et c'est ailleurs que son filtre se perdait.
 
         La ligne dit laquelle, combien de valeurs elle porte, et ou se
         releve le seuil. Elle ne parait que s'il y a quelque chose a dire.
@@ -1486,9 +1507,82 @@ class Application(tk.Tk):
             font=self.fonts.small, wraplength=250,
             justify="left").pack(anchor="w", pady=(2, 6))
 
+    def _choose_filter_values(self, field: str) -> None:
+        """Ouvre la liste des valeurs d'une dimension."""
+        valeurs = self._filter_choices.get(field) or []
+        if not valeurs:
+            return
+        intitule = self.filter_labels.get(field, field)
+        ValuePicker(self, self.fonts, f"Filtre — {intitule}", valeurs,
+                    self.filter_values.get(field),
+                    lambda retenues, f=field: self.set_filter(f, retenues))
+
+    def set_filter(self, field: str, retenues) -> None:
+        """Retient des valeurs pour une dimension.
+
+        Ne rien retenir et tout retenir sont la meme chose — aucun filtre —
+        et c'est volontaire : un filtre vide donnerait une analyse sur zero
+        salarie, ce qui n'est la reponse a aucune question.
+        """
+        if field not in self.filter_values:
+            return
+        if retenues is not None:
+            retenues = [v for v in self._filter_choices.get(field, [])
+                        if v in set(retenues)]
+            if len(retenues) == len(self._filter_choices.get(field, [])):
+                retenues = None
+        self.filter_values[field] = retenues or None
+        self._refresh_filter_button(field)
+        self._update_filter_summary()
+
+    def _refresh_filter_button(self, field: str) -> None:
+        """Dit sur le bouton ce que le filtre retient.
+
+        Les filtres defilent hors du champ visible : le libelle est le seul
+        endroit ou se lit la selection sans rouvrir la liste.
+        """
+        bouton = self._filter_buttons.get(field)
+        if bouton is None:
+            return
+        retenues = self.filter_values.get(field)
+        total = len(self._filter_choices.get(field, []))
+        if not retenues:
+            bouton.configure(
+                text=f"Toutes ({total})" if total else "Toutes")
+        elif len(retenues) == 1:
+            bouton.configure(text=self._ecourte(retenues[0]))
+        else:
+            bouton.configure(text=f"{len(retenues)} valeurs sur {total}")
+
+    #: Longueur au-dela de laquelle un intitule est coupe sur le bouton
+    #: d'un filtre. La colonne est etroite : un intitule de poste entier
+    #: s'y ferait rogner sans prevenir, ce qui se lit comme une valeur
+    #: tronquee par l'outil.
+    FILTER_LABEL_MAX = 26
+
+    @classmethod
+    def _ecourte(cls, texte: str) -> str:
+        return (texte if len(texte) <= cls.FILTER_LABEL_MAX
+                else texte[:cls.FILTER_LABEL_MAX - 1].rstrip() + "…")
+
     def _current_filters(self) -> List[Dict[str, Any]]:
-        return [{"field": field, "operator": "eq", "value": var.get()}
-                for field, var in self.filter_vars.items() if var.get() != _ALL]
+        """Traduit la selection en criteres pour le moteur.
+
+        Une seule valeur devient une egalite, plusieurs une appartenance :
+        le moteur sait faire les deux, et une egalite reste ce qui se relit
+        le plus simplement dans un rapport.
+        """
+        criteres: List[Dict[str, Any]] = []
+        for field, retenues in self.filter_values.items():
+            if not retenues:
+                continue
+            if len(retenues) == 1:
+                criteres.append({"field": field, "operator": "eq",
+                                 "value": retenues[0]})
+            else:
+                criteres.append({"field": field, "operator": "in",
+                                 "value": list(retenues)})
+        return criteres
 
     # ------------------------------------------------------------- analyse
 

@@ -197,11 +197,24 @@ class TestRunningTheAnalysis(WindowCase):
 
     def test_a_filter_narrows_the_analysis(self):
         self.load()
-        self.app.filter_vars["business_unit"].set("France")
+        self.app.set_filter("business_unit", ["France"])
         self.app.update()
         self.analyse()
         self.assertEqual(self.app.result.payload["population"]["headcount"], 20)
         self.assertIn("France", self.app.status.cget("text"))
+
+    def test_a_filter_on_several_values_narrows_the_analysis(self):
+        """Plusieurs valeurs retenues deviennent une appartenance, et le
+        moteur en tient compte : sans cela le filtre serait une décoration."""
+        self.load()
+        self.app.set_filter("groupe", ["G3", "G4"])
+        self.app.update()
+        self.analyse()
+        # Quatre groupes de dix salariés sur les quarante du fichier.
+        self.assertEqual(self.app.result.payload["population"]["headcount"], 20)
+        groupes = {salarié.value("groupe")
+                   for salarié in self.app.result.filtered}
+        self.assertEqual(groupes, {"G3", "G4"})
 
     def test_the_export_button_wakes_up_only_after_an_analysis(self):
         self.load()
@@ -661,11 +674,7 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         self.load(self._fichier())
         # Au depart, ces colonnes ne sont pas reconnues.
         self.assertIn("non reconnue", self.app.mapping_label.cget("text"))
-        self.assertNotIn("Direction",
-                         [self.app.filter_labels[field]
-                          for field in self.app.filter_vars]
-                         if hasattr(self.app, "filter_labels")
-                         else list(self.app.filter_vars))
+        self.assertNotIn("Direction", self.app.filter_labels.values())
 
         fenêtre = self._ecran()
         try:
@@ -698,8 +707,8 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         self.assertTrue({"direction", "revue_du_personnel"} <= déclarées)
 
         # 2. La fenetre principale les propose aussitot en filtre.
-        self.assertIn("direction", self.app.filter_vars)
-        self.assertIn("revue_du_personnel", self.app.filter_vars)
+        self.assertIn("direction", self.app.filter_values)
+        self.assertIn("revue_du_personnel", self.app.filter_values)
         self.assertNotIn("non reconnue", self.app.mapping_label.cget("text"))
 
         # 3. Et l'analyse sait grouper par elles.
@@ -1561,14 +1570,14 @@ class TestAFilterWithTooManyValues(WindowCase):
         with Dialogs(open_path=self._fichier(valeurs=12)):
             self.app.choose_file()
         self.app.update()
-        self.assertIn("qualification", self.app.filter_vars)
+        self.assertIn("qualification", self.app.filter_values)
 
     def test_a_dimension_above_the_cap_says_so(self):
         self._declarer(limite=10)
         with Dialogs(open_path=self._fichier(valeurs=40)):
             self.app.choose_file()
         self.app.update()
-        self.assertNotIn("qualification", self.app.filter_vars)
+        self.assertNotIn("qualification", self.app.filter_values)
         textes = []
 
         def relever(widget):

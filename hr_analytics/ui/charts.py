@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import math
 import tkinter as tk
+import tkinter.font as tkfont
 from tkinter import ttk
 from typing import Any, Callable, Dict, List, Optional, Sequence
 
@@ -48,11 +49,30 @@ def note_font():
     return (_family, SIZE_SMALL)
 
 
+#: Famille a chasse fixe du systeme, relevee une fois. On retient la
+#: famille et non la police : une police appartient a l'interpreteur Tk
+#: qui l'a creee, une famille est un nom.
+_fixed_family = None
+
+
 def table_font():
     """Police a chasse fixe : trois colonnes de montants ne s'alignent pas
     avec une police proportionnelle, et des colonnes qui ne s'alignent pas
-    ne se comparent pas."""
-    return ("TkFixedFont", SIZE_SMALL)
+    ne se comparent pas.
+
+    « TkFixedFont » est le nom d'une police, pas celui d'une famille :
+    passe dans un tuple, Tk n'y reconnait aucune famille et retombe sur
+    celle par defaut — proportionnelle. La bulle s'affichait donc en
+    colonnes decalees, et un essai qui lisait le nom au lieu du rendu n'y
+    voyait rien.
+
+    On demande donc a la police nommee, dont Tk garantit la chasse fixe
+    sur chaque systeme, de quelle famille elle est.
+    """
+    global _fixed_family
+    if _fixed_family is None:
+        _fixed_family = tkfont.nametofont("TkFixedFont").actual("family")
+    return (_fixed_family, SIZE_SMALL)
 
 
 def _font(size: int, weight: str = "normal"):

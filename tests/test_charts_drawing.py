@@ -1831,13 +1831,39 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
 
     def test_the_columns_line_up(self):
         """Trois colonnes de montants qui ne s'alignent pas ne se comparent
-        pas : la bulle les pose à chasse fixe."""
+        pas : la bulle les pose à chasse fixe.
+
+        L'essai mesure le rendu, et non le nom de la police. Une première
+        version lisait « TkFixedFont » dans un tuple et passait au vert —
+        alors que Tk n'y reconnaissait aucune famille, retombait sur la
+        police par défaut, et affichait des colonnes décalées.
+        """
         from hr_analytics.ui.charts import table_font
+
         lignes = self._bulle_lignes()
         largeurs = {len(ligne) for ligne in lignes[1:]}
         self.assertEqual(len(largeurs), 1,
                          f"lignes de largeurs différentes : {largeurs}")
-        self.assertEqual(table_font()[0], "TkFixedFont")
+        # La police est mesurée telle que le canevas la recevra — un
+        # tuple (famille, taille) —, et non d'après son nom : c'est le nom
+        # qui mentait.
+        import tkinter.font as tkfont
+
+        police = tkfont.Font(root=self.chart, font=table_font())
+        self.assertTrue(police.metrics("fixed"),
+                        f"« {police.actual('family')} » n'est pas à chasse "
+                        "fixe")
+        # Deux chaînes de même longueur doivent occuper la même largeur :
+        # c'est la seule propriété dont les colonnes dépendent.
+        self.assertEqual(police.measure("1 234 EUR"),
+                         police.measure("WWWWWWWWW"))
+
+    def test_every_line_of_the_table_has_the_same_width(self):
+        """Et les lignes elles-mêmes : un montant plus court décalerait sa
+        colonne si le remplissage était mal calculé."""
+        lignes = self._bulle_lignes()[1:]
+        self.assertGreater(len(lignes), 3)
+        self.assertEqual(len({len(ligne) for ligne in lignes}), 1)
 
     def _bulle_lignes(self):
         return self.chart._bulle(self._ligne(), "female").split("\n")

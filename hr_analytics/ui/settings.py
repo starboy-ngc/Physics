@@ -944,7 +944,12 @@ class SettingsWindow(tk.Toplevel):
 
         La liste porte tous les champs proposables, coches ou non : un
         champ qu'on vient de decocher garde sa place, et la retrouve si on
-        le recoche. Les fleches deplacent, elles ne cochent rien.
+        le recoche. Deplacer ne coche rien.
+
+        On deplace a la souris, en attrapant une ligne : remonter d'une
+        fleche a la fois un champ qui est en vingtieme position demande
+        dix-neuf clics, et la liste se reposait a chaque fois. Les fleches
+        restent, pour le cran precis et pour qui n'attrape pas bien.
         """
         card = Card(parent, padding=0)
         card.pack(fill="x", padx=22, pady=(14, 0))
@@ -960,8 +965,21 @@ class SettingsWindow(tk.Toplevel):
                  background=theme.CANVAS, foreground=theme.MUTED,
                  font=self.fonts.small, wraplength=900,
                  justify="left").pack(anchor="w", pady=(2, 0))
+        tk.Label(entete,
+                 text="Attrapez une ligne pour la déplacer, "
+                      "ou servez-vous des flèches.",
+                 background=theme.CANVAS, foreground=theme.FAINT,
+                 font=self.fonts.small).pack(anchor="w", pady=(4, 0))
         self._order_area = tk.Frame(card.inner, background=theme.CANVAS)
         self._order_area.pack(fill="x", padx=16, pady=(6, 12))
+        #: Une ligne par champ ordonnable, gardee d'un affichage a l'autre.
+        #: Reposer la liste en detruisant ses lignes coupait le geste en
+        #: cours — le widget sous le curseur disparaissait — et faisait
+        #: remonter la page en haut a chaque deplacement.
+        self._order_rows: Dict[str, tk.Frame] = {}
+        self._order_empty: Optional[tk.Label] = None
+        #: Le champ actuellement attrape, ou None.
+        self._dragged: Optional[str] = None
         self._draw_order()
 
     def _ordonnables(self) -> List[str]:
@@ -977,41 +995,151 @@ class SettingsWindow(tk.Toplevel):
                 if état["declared"].get() and nom in utilisables]
 
     def _draw_order(self) -> None:
-        """Repose la liste apres un deplacement."""
-        for enfant in self._order_area.winfo_children():
-            enfant.destroy()
+        """Repose la liste : meme lignes, nouvel ordre.
+
+        Les lignes ne sont detruites que si l'ensemble des champs change.
+        Un deplacement se contente de les reempiler, de sorte que la ligne
+        attrapee existe encore quand la souris la relache, et que la page
+        ne saute pas en haut.
+        """
         noms = self._ordonnables()
+        if set(self._order_rows) != set(noms):
+            for enfant in self._order_area.winfo_children():
+                enfant.destroy()
+            self._order_rows = {}
+            self._order_empty = None
+            for field_name in noms:
+                self._order_rows[field_name] = self._order_row(field_name)
         if not noms:
-            tk.Label(self._order_area,
-                     text="Aucun champ proposé pour l'instant.",
-                     background=theme.CANVAS, foreground=theme.FAINT,
-                     font=self.fonts.small).pack(anchor="w")
+            if self._order_empty is None:
+                self._order_empty = tk.Label(
+                    self._order_area,
+                    text="Aucun champ proposé pour l'instant.",
+                    background=theme.CANVAS, foreground=theme.FAINT,
+                    font=self.fonts.small)
+                self._order_empty.pack(anchor="w")
             return
         for rang, field_name in enumerate(noms):
-            état = self.rows[field_name]
-            ligne = tk.Frame(self._order_area, background=theme.CANVAS)
+            ligne = self._order_rows[field_name]
+            ligne.pack_forget()
             ligne.pack(fill="x", pady=1)
-            tk.Label(ligne, text=f"{rang + 1}.", background=theme.CANVAS,
-                     foreground=theme.FAINT, font=self.fonts.small,
-                     width=3, anchor="e").pack(side="left")
-            for texte, pas in (("▲", -1), ("▼", 1)):
-                bouton = tk.Label(ligne, text=texte, background=theme.CANVAS,
-                                  foreground=theme.ACCENT,
-                                  font=self.fonts.small, width=2,
-                                  cursor="hand2")
-                bouton.pack(side="left")
-                limite = (rang == 0 and pas < 0) or (rang == len(noms) - 1
-                                                     and pas > 0)
-                if limite:
-                    bouton.configure(foreground=theme.DISABLED, cursor="")
-                else:
-                    bouton.bind("<Button-1>",
-                                lambda _e, nom=field_name, d=pas:
-                                self._move_dimension(nom, d))
-            tk.Label(ligne, text=état["label"].get() or field_name,
-                     background=theme.CANVAS, foreground=theme.INK_SOFT,
-                     font=self.fonts.body, width=26,
-                     anchor="w").pack(side="left", padx=(8, 0))
+            ligne.rank.configure(text=f"{rang + 1}.")
+            # Le libelle se modifie dans le panneau d'a cote : la ligne
+            # n'est plus reconstruite, elle se relit donc ici.
+            ligne.name.configure(
+                text=self.rows[field_name]["label"].get() or field_name)
+            for pas, bouton in ligne.arrows.items():
+                limite = ((rang == 0 and pas < 0)
+                          or (rang == len(noms) - 1 and pas > 0))
+                bouton.configure(
+                    foreground=theme.DISABLED if limite else theme.ACCENT,
+                    cursor="" if limite else "hand2")
+                bouton.enabled = not limite
+            self._tint_order_row(field_name,
+                                 field_name == self._dragged)
+
+    def _order_row(self, field_name: str) -> tk.Frame:
+        """Construit la ligne d'un champ dans la liste d'ordre."""
+        état = self.rows[field_name]
+        ligne = tk.Frame(self._order_area, background=theme.CANVAS)
+        ligne.rank = tk.Label(ligne, text="", background=theme.CANVAS,
+                              foreground=theme.FAINT, font=self.fonts.small,
+                              width=3, anchor="e")
+        ligne.rank.pack(side="left")
+        ligne.arrows = {}
+        for texte, pas in (("▲", -1), ("▼", 1)):
+            bouton = tk.Label(ligne, text=texte, background=theme.CANVAS,
+                              foreground=theme.ACCENT,
+                              font=self.fonts.small, width=2)
+            bouton.pack(side="left")
+            bouton.enabled = True
+            bouton.bind("<Button-1>",
+                        lambda _e, nom=field_name, d=pas, b=bouton:
+                        b.enabled and self._move_dimension(nom, d))
+            ligne.arrows[pas] = bouton
+        poignée = tk.Label(ligne, text="⠿", background=theme.CANVAS,
+                           foreground=theme.FAINT, font=self.fonts.body,
+                           width=2, cursor="hand2")
+        poignée.pack(side="left", padx=(6, 0))
+        nom = tk.Label(ligne, text=état["label"].get() or field_name,
+                       background=theme.CANVAS, foreground=theme.INK_SOFT,
+                       font=self.fonts.body, width=26, anchor="w",
+                       cursor="hand2")
+        nom.pack(side="left", padx=(2, 0))
+        ligne.name = nom
+        ligne.tinted = (ligne, ligne.rank, poignée, nom)
+        for prise in (poignée, nom):
+            prise.bind("<Button-1>",
+                       lambda _e, f=field_name: self._grab_dimension(f))
+            prise.bind("<B1-Motion>", self._drag_dimension)
+            prise.bind("<ButtonRelease-1>",
+                       lambda _e: self._drop_dimension())
+        return ligne
+
+    def _tint_order_row(self, field_name: str, attrapée: bool) -> None:
+        """Marque la ligne qu'on tient : sans quoi rien ne dit qu'on la
+        tient, et un deplacement a la souris se lit comme un defaut
+        d'affichage."""
+        fond = theme.ACCENT_SOFT if attrapée else theme.CANVAS
+        for widget in self._order_rows[field_name].tinted:
+            widget.configure(background=fond)
+
+    def _grab_dimension(self, field_name: str) -> None:
+        self._dragged = field_name
+        self._tint_order_row(field_name, True)
+
+    def _drop_dimension(self) -> None:
+        attrapée, self._dragged = self._dragged, None
+        if attrapée in self._order_rows:
+            self._tint_order_row(attrapée, False)
+
+    def _drag_dimension(self, _event=None) -> None:
+        """Place le champ attrape sous le curseur.
+
+        On releve la position du pointeur a l'ecran plutot que dans le
+        widget : pendant un glisser, les evenements continuent d'arriver a
+        la ligne ou le bouton a ete enfonce, meme quand le curseur est
+        trois lignes plus bas.
+        """
+        if self._dragged is None or self._dragged not in self._order_rows:
+            return
+        montrés = self._ordonnables()
+        cible = self._order_row_at(self._order_area.winfo_pointery())
+        if cible is None or montrés.index(self._dragged) == cible:
+            return
+        self._place_dimension(self._dragged, cible)
+
+    def _order_row_at(self, y: int) -> Optional[int]:
+        """Le rang de la ligne qui occupe cette ordonnee a l'ecran."""
+        montrés = self._ordonnables()
+        if not montrés:
+            return None
+        for rang, field_name in enumerate(montrés):
+            ligne = self._order_rows[field_name]
+            if y < ligne.winfo_rooty() + ligne.winfo_height():
+                return rang
+        return len(montrés) - 1
+
+    def _place_dimension(self, field_name: str, cible: int) -> None:
+        """Insere un champ au rang voulu de la liste *affichee*.
+
+        La liste montree saute les champs decoches : c'est donc par le
+        voisin affiche qu'on repere la place, et l'ordre complet — celui
+        que `collect` relit — se reconstruit autour de lui.
+        """
+        montrés = [nom for nom in self._ordonnables() if nom != field_name]
+        cible = max(0, min(cible, len(montrés)))
+        noms = [nom for nom in self.rows if nom != field_name]
+        if cible < len(montrés):
+            noms.insert(noms.index(montrés[cible]), field_name)
+        elif montrés:
+            noms.insert(noms.index(montrés[-1]) + 1, field_name)
+        else:
+            noms.append(field_name)
+        # Un dictionnaire garde l'ordre d'insertion : le reconstruire dans
+        # le nouvel ordre suffit, et c'est lui que `collect` relit.
+        self.rows = {nom: self.rows[nom] for nom in noms}
+        self._draw_order()
 
     def _move_dimension(self, field_name: str, pas: int) -> None:
         """Echange un champ avec son voisin *affiche*.
@@ -1020,20 +1148,13 @@ class SettingsWindow(tk.Toplevel):
         voisin brut ferait parfois un deplacement sans effet visible, et
         parfois deux d'un coup.
         """
-        montres = self._ordonnables()
-        if field_name not in montres:
+        montrés = self._ordonnables()
+        if field_name not in montrés:
             return
-        rang = montres.index(field_name)
-        if not 0 <= rang + pas < len(montres):
+        rang = montrés.index(field_name)
+        if not 0 <= rang + pas < len(montrés):
             return
-        voisin = montres[rang + pas]
-        noms = list(self.rows)
-        ici, la = noms.index(field_name), noms.index(voisin)
-        noms[ici], noms[la] = noms[la], noms[ici]
-        # Un dictionnaire garde l'ordre d'insertion : le reconstruire dans
-        # le nouvel ordre suffit, et c'est lui que `collect` relit.
-        self.rows = {nom: self.rows[nom] for nom in noms}
-        self._draw_order()
+        self._place_dimension(field_name, rang + pas)
 
     def _dimension_widget(self, field_name: str) -> None:
         """La ligne visible d'un champ : son libelle, et sa case."""
