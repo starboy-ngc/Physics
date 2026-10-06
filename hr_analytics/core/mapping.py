@@ -122,8 +122,9 @@ def ensure_required(result: MappingResult, config: Configuration) -> None:
     listed = " ; ".join(labels)
     raise MappingError(
         "L'analyse a besoin d'une colonne qui n'a pas été reconnue dans "
-        f"votre fichier : {listed}. Renommez la colonne correspondante, ou "
-        "ajoutez son intitulé au mapping des colonnes (onglet Paramètres, "
-        "« Colonnes du fichier »).",
+        f"votre fichier : {listed}.\n\n"
+        "L'écran « Colonnes du fichier » s'ouvre : désignez-y la colonne "
+        "correspondante, enregistrez, puis rouvrez le fichier. Vous pouvez "
+        "aussi simplement renommer la colonne dans votre fichier.",
         technical=f"missing required fields: {result.missing_required}",
     )

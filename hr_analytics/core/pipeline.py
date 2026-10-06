@@ -19,7 +19,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence
 from ..io.tabular import Table, read_table
 from . import metrics
 from .config import Configuration, load_configuration
-from .errors import ConfigError, DataQualityError
+from .errors import ConfigError, DataQualityError, MappingError
 from . import palette
 from .logging_setup import log_event
 from .mapping import MappingResult, ensure_required, resolve_mapping
@@ -103,7 +103,17 @@ def load_population(
               detail=f"rows={table.row_count}")
 
     mapping = resolve_mapping(table.headers, config)
-    ensure_required(mapping, config)
+    try:
+        ensure_required(mapping, config)
+    except MappingError as manque:
+        # Le fichier a bien ete lu : ce sont ses colonnes qu'on n'a pas su
+        # nommer, pas le fichier qu'on n'a pas su ouvrir. Les emporter avec
+        # le refus permet a la fenetre d'ouvrir l'ecran d'association sur
+        # ce fichier-la, au lieu de renvoyer l'utilisateur a un ecran qui
+        # ignore tout de ses colonnes.
+        manque.headers = list(table.headers)
+        manque.samples = [list(ligne) for ligne in table.rows[:40]]
+        raise
     log_event(
         "mapping", "resolve",
         detail=f"mapped={len(mapping.field_to_index)};unknown={len(mapping.unknown_columns)}",

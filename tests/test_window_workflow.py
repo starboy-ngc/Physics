@@ -1423,3 +1423,88 @@ class TestTheWindowCarriesTheMark(WindowCase):
         finally:
             self.app.iconphoto = pose
         self.assertEqual(self.app._icones, [])
+
+
+class TestAFileWhoseSalaryColumnIsNamedOtherwise(WindowCase):
+    """Le cas le plus courant d'un premier import : la colonne de
+    rémunération existe, mais elle porte un autre intitulé.
+
+    L'outil refusait le fichier — à juste titre, il ne peut pas deviner —
+    et laissait l'utilisateur sans issue : le bouton « Associer les
+    colonnes… » ne s'active qu'une fois un fichier chargé, et justement ce
+    fichier-là ne l'était pas. Le message renvoyait aux paramètres, où
+    l'écran d'association ne connaissait aucune des colonnes du fichier :
+    il fallait les relever dans Excel et les retaper à la main.
+    """
+
+    def _fichier(self):
+        """Un fichier complet, dont seule la colonne de salaire est
+        nommée autrement."""
+        chemin = os.path.join(self.directory, "autre-intitule.csv")
+        entetes = [("Rétribution annuelle brute" if nom == "Salaire de base"
+                    else nom) for nom in HEADERS]
+        self.assertNotIn("Salaire de base", entetes)
+        with open(chemin, "w", encoding="utf-8", newline="") as flux:
+            graveur = csv.writer(flux, delimiter=";")
+            graveur.writerow(entetes)
+            for index in range(40):
+                graveur.writerow(make_row(index))
+        return chemin
+
+    def test_the_file_is_refused_and_the_window_survives(self):
+        """Refuser est correct. Planter ne le serait pas."""
+        with Dialogs(open_path=self._fichier()) as dialogs:
+            self.app.choose_file()
+        self.app.update()
+        self.assertTrue(dialogs.errors, "le fichier aurait dû être refusé")
+        titre, message = dialogs.errors[0]
+        self.assertIn("Salaire de base", message)
+        self.assertTrue(self.app.winfo_exists())
+
+    def test_the_refusal_keeps_the_columns_it_managed_to_read(self):
+        """Le fichier a bien été lu : ce sont ses colonnes qu'on n'a pas su
+        nommer, pas le fichier qu'on n'a pas su ouvrir."""
+        with Dialogs(open_path=self._fichier()):
+            self.app.choose_file()
+        self.app.update()
+        self.assertIn("Rétribution annuelle brute", self.app.headers)
+        self.assertTrue(self.app._samples, "aucune ligne d'exemple retenue")
+
+    def test_the_mapping_screen_is_reachable_afterwards(self):
+        """Le bouton qui débloque la situation ne doit pas être celui qui
+        reste grisé."""
+        with Dialogs(open_path=self._fichier()):
+            self.app.choose_file()
+        self.app.update()
+        self.assertNotIn("disabled", self.app.columns_button.state())
+
+    def test_the_mapping_screen_opens_on_that_file(self):
+        """Et il s'ouvre en connaissant les colonnes du fichier refusé :
+        sans elles, il faudrait les retaper à la main."""
+        from hr_analytics.ui.settings import SettingsWindow
+
+        with Dialogs(open_path=self._fichier()):
+            self.app.choose_file()
+        self.app.update()
+        ecrans = [enfant for enfant in self.app.winfo_children()
+                  if isinstance(enfant, SettingsWindow)]
+        self.assertEqual(len(ecrans), 1, "l'écran d'association ne s'ouvre pas")
+        try:
+            self.assertIn("Rétribution annuelle brute", ecrans[0].headers)
+        finally:
+            ecrans[0].destroy()
+
+    def test_an_unreadable_file_opens_nothing(self):
+        """Un fichier qu'on n'a pas su ouvrir n'a aucune colonne à
+        associer : lui ouvrir l'écran n'aiderait personne."""
+        from hr_analytics.ui.settings import SettingsWindow
+
+        chemin = os.path.join(self.directory, "pas-un-tableur.xlsx")
+        with open(chemin, "wb") as flux:
+            flux.write(b"MZ\x90\x00" + b"\x00" * 400)
+        with Dialogs(open_path=chemin) as dialogs:
+            self.app.choose_file()
+        self.app.update()
+        self.assertTrue(dialogs.errors)
+        self.assertEqual([e for e in self.app.winfo_children()
+                          if isinstance(e, SettingsWindow)], [])

@@ -1193,6 +1193,7 @@ class Application(tk.Tk):
             population, mapping, table = load_population(path, self.configuration)
         except CompensationError as error:
             messagebox.showerror("Import impossible", error.message)
+            self._offrir_association(error)
             return
         self.source_path = path
         self.population = population
@@ -1216,6 +1217,35 @@ class Application(tk.Tk):
         self._show_quality()
         self.tabbar.select("qualite")
         self._set_state("Fichier chargé. Vérifiez la qualité, puis lancez l'analyse.")
+
+    def _offrir_association(self, error: CompensationError) -> None:
+        """Ouvre l'ecran d'association quand c'est lui qui debloque.
+
+        Un fichier dont la colonne de salaire porte un autre intitule etait
+        refuse, et le bouton « Associer les colonnes… » restait grise : il
+        ne s'active qu'une fois un fichier charge, et justement ce
+        fichier-la ne l'etait pas. Le message renvoyait aux parametres, ou
+        l'ecran d'association ne connaissait aucune des colonnes du fichier
+        — il fallait les retaper a la main, apres les avoir relevees dans
+        Excel.
+
+        Le fichier a pourtant bien ete lu : ce sont ses colonnes qu'on n'a
+        pas su nommer. Le refus les emporte donc avec lui, et l'ecran
+        s'ouvre sur celles-la, avec quelques lignes pour voir ce que chacune
+        contient.
+
+        Seulement dans ce cas : un fichier illisible ou vide n'a aucune
+        colonne a associer, et ouvrir l'ecran n'y servirait a rien.
+        """
+        entetes = getattr(error, "headers", None)
+        if not entetes:
+            return
+        self.headers = list(entetes)
+        self._samples = [list(ligne) for ligne in getattr(error, "samples", [])]
+        self.columns_button.state(["!disabled"])
+        self._set_state("Associez la colonne manquante, puis rouvrez le "
+                        "fichier.")
+        self.open_settings()
 
     def open_settings(self) -> None:
         """Parametrage des champs : colonnes, filtres, axes d'analyse."""
