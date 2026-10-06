@@ -368,16 +368,39 @@ class TestTheNetworkStackIsRemoved(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(racine, "Lib", "urllib",
                                                     "parse.py")))
 
-    def test_ctypes_and_subprocess_are_what_decide(self):
+    def test_ctypes_is_what_decides(self):
         """Sans « _ctypes.pyd », aucun code Python ne peut appeler une
-        fonction de Windows qui ne lui soit pas déjà exposée. Sans
-        « subprocess » ni « _multiprocessing.pyd », rien ne peut démarrer
-        un programme — pas même « cmd.exe »."""
+        fonction de Windows qui ne lui soit pas déjà exposée.
+
+        Le retrait de « subprocess » et de « _multiprocessing.pyd » retire
+        les bibliothèques, pas la capacité : « os.system », « os.popen »
+        et « _winapi.CreateProcess » sont compilés dans « python312.dll »
+        et y restent. Le commentaire du module le dit, et ce test vérifie
+        qu'il continue de le dire — une liste de retrait qui promet plus
+        qu'elle ne tient est pire que pas de liste du tout.
+        """
+        import inspect
+
+        from tools import build_windows
         from tools.build_windows import CAPACITES_DLLS, CAPACITES_LIB
 
         self.assertIn("_ctypes.pyd", CAPACITES_DLLS)
         self.assertIn("_multiprocessing.pyd", CAPACITES_DLLS)
         self.assertIn("subprocess.py", CAPACITES_LIB)
+        source = inspect.getsource(build_windows)
+        self.assertIn("CE QUE CE RETRAIT NE FAIT PAS", source)
+        self.assertIn("_winapi.CreateProcess", source)
+
+    def test_the_tcl_build_system_and_its_registry_bridge_are_dropped(self):
+        """Trouvailles d'audit : « reg1.3 » donne à du code Tcl le droit
+        d'écrire dans la base de registre, dans un outil qui affirme n'y
+        jamais toucher ; « dde1.4 » ouvre un canal entre applications que
+        les protections de poste surveillent ; « nmake » porte un
+        « nmakehlp.exe » compilé et non signé, à l'intérieur du produit."""
+        from tools.build_windows import TCL_INUTILE
+
+        for parti in ("reg1.3", "dde1.4", "nmake", "tix8.4.3", "*.lib"):
+            self.assertIn(parti, TCL_INUTILE, parti)
 
     def test_it_takes_the_unused_powers_and_leaves_what_the_tool_needs(self):
         """« Non utilisé » est une propriété du code d'aujourd'hui, que la

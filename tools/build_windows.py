@@ -48,7 +48,7 @@ import zlib
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from hr_analytics.version import __version__                      # noqa: E402
+from hr_analytics.version import ENGINE_NAME, PUBLISHER, __version__                      # noqa: E402
 
 #: Version de CPython embarquée. Changer ces deux lignes suffit à suivre une
 #: version plus récente — avec la ligne correspondante de `lanceur.c`.
@@ -97,6 +97,29 @@ RESEAU_LIB = ("socket.py", "ssl.py", "selectors.py", "socketserver.py",
               os.path.join("urllib", "response.py"),
               os.path.join("urllib", "robotparser.py"))
 
+#: Ce qui part de l'arborescence Tcl/Tk. Trois de ces pièces sont des
+#: trouvailles d'audit, et elles valent d'être nommées :
+#:
+#:   « reg1.3 » est l'extension registre de Tcl. Elle donne à du code Tcl
+#:   le droit de lire et d'écrire la base de registre — dans un outil qui
+#:   affirme n'y jamais toucher. L'affirmation et le contenu du paquet se
+#:   contredisaient.
+#:
+#:   « dde1.4 » est l'extension DDE, un canal de communication entre
+#:   applications Windows que les protections de poste surveillent de
+#:   près : c'est une voie connue de mouvement latéral.
+#:
+#:   « nmake » est le système de compilation de Tcl, avec un
+#:   « nmakehlp.exe » compilé — un exécutable non signé, inconnu, à
+#:   l'intérieur du produit. C'est exactement ce qu'un antivirus relève.
+#:
+#: Le reste est du poids mort : « tix » est une bibliothèque de widgets
+#: que l'outil n'emploie pas (et que Python a retirée en 3.13), les
+#: « .lib » sont des bibliothèques d'import qui ne servent qu'à compiler,
+#: les « .sh » configurent une compilation sous Unix.
+TCL_INUTILE = ("nmake", "reg1.3", "dde1.4", "tix8.4.3",
+               "*.lib", "*.sh", "*.c", "*.vc")
+
 #: Ce qui part ensuite : les capacités que l'outil n'utilise jamais, et
 #: qu'un poste n'a aucune raison de lui prêter.
 #:
@@ -108,9 +131,27 @@ RESEAU_LIB = ("socket.py", "ssl.py", "selectors.py", "socketserver.py",
 #:
 #: « _ctypes.pyd » est la pièce qui décide pour l'appel système : sans
 #: elle, aucun code Python ne peut appeler une fonction de Windows qui ne
-#: lui soit pas déjà exposée. « _multiprocessing.pyd » et
-#: « subprocess.py » sont celles du lancement de processus : sans elles,
-#: rien ne peut démarrer un programme, pas même « cmd.exe ».
+#: lui soit pas déjà exposée. C'est elle qui compte vraiment.
+#:
+#: CE QUE CE RETRAIT NE FAIT PAS, et qu'il ne faut pas prétendre.
+#: Retirer « subprocess.py » et « _multiprocessing.pyd » retire les
+#: bibliothèques, pas la capacité : « os.system », « os.popen »,
+#: « os.spawnv », « os.startfile » et « _winapi.CreateProcess » sont
+#: compilés dans « python312.dll » et y restent. Vérifié en lançant
+#: vraiment un processus depuis l'interpréteur livré. Il en va de même de
+#: « winreg », « mmap » et « pickle ».
+#:
+#: Les retirer demanderait de recompiler CPython — et donc de renoncer à
+#: livrer les binaires de python.org tels quels, que le service
+#: informatique peut vérifier empreinte par empreinte. Entre une capacité
+#: de moins et une provenance vérifiable, la provenance vaut mieux : elle
+#: se contrôle, l'autre se croirait sur parole.
+#:
+#: Le réseau, lui, est bel et bien fermé, et pour une raison de structure :
+#: la pile réseau vit dans « _socket.pyd », un fichier séparé, et aucune
+#: primitive de socket n'est compilée dans « python312.dll ». Sans
+#: « _socket » et sans « ctypes » pour appeler « ws2_32 » directement, il
+#: n'existe aucun chemin vers le réseau depuis Python. Vérifié aussi.
 #:
 #: Volontairement gardés : « pyexpat.pyd » (lecture du XML d'un .xlsx),
 #: « _elementtree.pyd » (idem), « _hashlib.pyd » (SHA-256),
@@ -183,11 +224,72 @@ def compiler_icone(destination: str) -> str:
         _dire("  icône : dessin de la marque")
         from tools.render_icon import main as dessiner
         dessiner(["--sortie", icone])
+    # Le bloc de version est écrit ici, à partir de « version.py », et non
+    # recopié à la main dans le .rc : deux numéros de version dans un même
+    # produit finissent toujours par diverger.
+    script = os.path.join(destination, "ressources.rc")
+    with open(script, "w", encoding="utf-8") as flux:
+        flux.write(_ressources())
     objet = os.path.join(destination, "icone.o")
-    subprocess.run([ressources, "-I", fenetre,
-                    os.path.join(fenetre, "icone.rc"), "-o", objet],
+    subprocess.run([ressources, "-I", fenetre, script, "-o", objet],
                    check=True)
+    os.remove(script)
     return objet
+
+
+#: Le script de ressources, écrit à chaque fabrication. Un exécutable sans
+#: bloc de version n'a ni éditeur, ni nom de produit, ni numéro affiché
+#: dans ses propriétés. C'est une anomalie en soi : un logiciel légitime en
+#: porte un, et les moteurs de détection comportementale s'en servent comme
+#: d'un signal parmi d'autres. En poser un ne prouve rien — mais ne pas en
+#: poser se remarque.
+#:
+#: 0x40C / 1200 : français, Unicode. 0x40004 : Windows NT, version de
+#: diffusion. 0x1 : application.
+RESSOURCES = """/* Ressources du lanceur : l'icone, et ce que Windows
+ * affiche dans les proprietes du fichier.
+ *
+ * ECRIT PAR « build_windows.py » a partir de « hr_analytics/version.py ».
+ * Ne pas modifier a la main : il est refait a chaque fabrication.
+ *
+ * Le premier identifiant numerique est celui que l'explorateur retient
+ * pour l'icone du fichier. */
+1 ICON "marque.ico"
+
+1 VERSIONINFO
+FILEVERSION {quadruple}
+PRODUCTVERSION {quadruple}
+FILEOS 0x40004L
+FILETYPE 0x1L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040C04B0"
+        BEGIN
+            VALUE "CompanyName", "{editeur}"
+            VALUE "FileDescription", "{produit} - analyse de remuneration"
+            VALUE "FileVersion", "{version}"
+            VALUE "InternalName", "{produit}"
+            VALUE "OriginalFilename", "{produit}.exe"
+            VALUE "ProductName", "{produit}"
+            VALUE "ProductVersion", "{version}"
+            VALUE "Comments", "Traitement local, hors ligne."
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40C, 1200
+    END
+END
+"""
+
+
+def _ressources() -> str:
+    """Le script de ressources, rempli depuis la version de l'outil."""
+    nombres = [int(n) for n in __version__.split(".")] + [0, 0, 0]
+    return RESSOURCES.format(
+        quadruple=",".join(str(n) for n in nombres[:3] + [0]),
+        version=__version__, produit=ENGINE_NAME, editeur=PUBLISHER)
 
 
 def compiler_lanceur(destination: str) -> str:
@@ -228,8 +330,9 @@ def poser_runtime(extrait: str, destination: str) -> None:
     for nom in ("DLLs", "tcl"):
         origine = os.path.join(extrait, nom)
         if os.path.isdir(origine):
+            exclus = shutil.ignore_patterns(*TCL_INUTILE) if nom == "tcl" else None
             shutil.copytree(origine, os.path.join(runtime, nom),
-                            dirs_exist_ok=True)
+                            ignore=exclus, dirs_exist_ok=True)
     source_lib = os.path.join(extrait, "Lib")
     cible_lib = os.path.join(runtime, "Lib")
     shutil.copytree(source_lib, cible_lib,
@@ -320,6 +423,7 @@ def empreintes(destination: str) -> str:
         "",
         "Composants repris : " + ", ".join(f"{n}.msi" for n in COMPOSANTS),
         "Retires de la bibliotheque standard : " + ", ".join(LIB_INUTILE),
+        "Retires de Tcl/Tk : " + ", ".join(TCL_INUTILE),
         "",
         "Pile reseau retiree, de sorte que la capacite ne soit pas",
         "seulement inutilisee mais absente : "

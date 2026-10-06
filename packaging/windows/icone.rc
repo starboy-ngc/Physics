@@ -1,4 +1,0 @@
-/* Ressources du lanceur : l'icone, et ce que Windows affiche dans les
- * proprietes du fichier. Le premier identifiant numerique est celui que
- * l'explorateur retient pour l'icone du fichier. */
-1 ICON "marque.ico"
