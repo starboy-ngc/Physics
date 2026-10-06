@@ -188,6 +188,6 @@
     "utf-8-sig",
     "cp1252"
   ],
-  "max_filter_values": 60,
+  "max_filter_values": 200,
   "max_uncompressed_mb": 512
 }

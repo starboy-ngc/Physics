@@ -117,7 +117,7 @@ DEFAULTS: Dict[str, Any] = {
         # Au-dela de ce nombre de valeurs distinctes, une liste deroulante
         # n'est plus utilisable : la dimension reste analysable, mais n'est
         # pas proposee comme filtre dans l'interface.
-        "max_filter_values": 60,
+        "max_filter_values": 200,
         # Plafond de ce qu'un classeur a le droit de peser une fois
         # decompresse, en megaoctets. Un .xlsx est une archive : trois
         # megaoctets sur le disque peuvent en faire trois mille en memoire,

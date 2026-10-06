@@ -903,7 +903,7 @@ class TestBoxPlot(ChartCase):
         rows = self.rows(sex=True)
         rows[0]["sex_chartable"] = False
         chart = self.chart(rows, split=True)
-        segments = {row["segment"] for row in chart._items.values()}
+        segments = {row["segment"] for row, _moitié in chart._items.values()}
         self.assertEqual(len(segments), 3)
 
     def test_the_order_can_be_changed_without_losing_a_segment(self):
@@ -1760,3 +1760,84 @@ class TestTheScatterNeverShowsImpossibleValues(ChartCase):
             "groups": ["A"], "trend": None}, "EUR")
         self.root.update()
         self.assertEqual(chart._floors, (None, None))
+
+
+@needs_display
+class TestTheBoxTooltipNamesItsHalf(ChartCase):
+    """Survoler la boîte des femmes donnait les chiffres de l'ensemble : la
+    boîte ne retenait pas de quelle moitié elle était. On lisait donc, sous
+    un curseur posé sur une moitié, les bornes de l'autre mêlées aux
+    siennes — et il fallait deviner."""
+
+    def setUp(self):
+        from hr_analytics.ui.charts import BoxPlotChart
+
+        super().setUp()
+        self.chart = self.build(BoxPlotChart)
+
+    def _ligne(self):
+        def bloc(base):
+            return {"p10": base, "p25": base + 500, "median": base + 1000,
+                    "p75": base + 1800, "p90": base + 2600,
+                    "masked": False}
+        return {"segment": "Toute la population", "headcount": 300,
+                "salary": bloc(30000), "female": bloc(28000),
+                "male": bloc(32000), "female_count": 120, "male_count": 180,
+                "female_chartable": True, "male_chartable": True,
+                "chartable": True, "sex_chartable": True, "masked": False,
+                "median_gap": 12.5}
+
+    def test_each_box_remembers_which_half_it_is(self):
+        self.chart.set_split(True)
+        self.chart.set_rows([self._ligne()], "EUR")
+        self.root.update()
+        moitiés = {moitié for _row, moitié in self.chart._items.values()}
+        self.assertEqual(moitiés, {"female", "male"})
+
+    def test_the_tooltip_carries_all_three_columns(self):
+        ligne = self._ligne()
+        texte = self.chart._bulle(ligne, "female")
+        for titre in ("Ensemble", "Femmes", "Hommes"):
+            self.assertIn(titre, texte)
+        # Les trois médianes, et pas une seule répétée trois fois.
+        from hr_analytics.core.reporting import format_money
+
+        for base in (31000, 29000, 33000):
+            self.assertIn(format_money(base, "EUR"), texte)
+
+    def test_the_hovered_column_is_marked(self):
+        ligne = self._ligne()
+        femmes = self.chart._bulle(ligne, "female")
+        hommes = self.chart._bulle(ligne, "male")
+        self.assertIn("▸ Femmes", femmes)
+        self.assertNotIn("▸ Hommes", femmes)
+        self.assertIn("▸ Hommes", hommes)
+        self.assertNotIn("▸ Femmes", hommes)
+
+    def test_the_headcounts_close_the_table(self):
+        texte = self.chart._bulle(self._ligne(), "female")
+        self.assertIn("Effectif", texte)
+        for nombre in ("300", "120", "180"):
+            self.assertIn(nombre, texte)
+
+    def test_a_masked_half_leaves_its_column_out(self):
+        """Un côté sous le seuil de publication n'a pas de colonne : une
+        colonne de tirets laisserait croire qu'on a mesuré."""
+        ligne = self._ligne()
+        ligne["female"] = {"masked": True}
+        texte = self.chart._bulle(ligne, None)
+        self.assertNotIn("Femmes", texte)
+        self.assertIn("Hommes", texte)
+
+    def test_the_columns_line_up(self):
+        """Trois colonnes de montants qui ne s'alignent pas ne se comparent
+        pas : la bulle les pose à chasse fixe."""
+        from hr_analytics.ui.charts import table_font
+        lignes = self._bulle_lignes()
+        largeurs = {len(ligne) for ligne in lignes[1:]}
+        self.assertEqual(len(largeurs), 1,
+                         f"lignes de largeurs différentes : {largeurs}")
+        self.assertEqual(table_font()[0], "TkFixedFont")
+
+    def _bulle_lignes(self):
+        return self.chart._bulle(self._ligne(), "female").split("\n")

@@ -55,7 +55,7 @@ from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
-from .theme import Card, CheckRow, Fonts, TabBar
+from .theme import Card, CheckRow, Fonts, SearchableCombo, TabBar
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de filtre d'une valeur qui,
@@ -1442,9 +1442,11 @@ class Application(tk.Tk):
                      font=self.fonts.small).pack(anchor="w")
             var = tk.StringVar(value=_ALL)
             var.trace_add("write", lambda *_: self._update_filter_summary())
-            ttk.Combobox(block, textvariable=var, values=[_ALL] + values,
-                         state="readonly", font=self.fonts.small).pack(fill="x",
-                                                                       pady=(2, 0))
+            # Saisissable plutot qu'en lecture seule : passe quelques
+            # dizaines d'entrees, chercher dans une liste deroulante revient
+            # a la lire en entier.
+            SearchableCombo(block, var, [_ALL] + values, self.fonts.small,
+                            neutre=_ALL).pack(fill="x", pady=(2, 0))
             self.filter_vars[field] = var
         self._dire_les_filtres_ecartes(ecartees, limit)
         self._update_filter_summary()
@@ -3252,8 +3254,10 @@ class Application(tk.Tk):
         note = [f'{bloc["headcount"]} salariés dans le périmètre analysé.']
         if bloc["headcount"] > self.EQUITY_LIST_MAX:
             note.append(f"Les {self.EQUITY_LIST_MAX} premiers sont affichés.")
-        note.append("Les colonnes se déclarent dans Paramètres → "
-                    "« pay_equity_parameters.people_columns ».")
+        # Le chemin du reglage ne figure plus ici : « Paramètres →
+        # pay_equity_parameters.people_columns » s'adressait a qui edite un
+        # JSON, pas a qui lit une liste de salaries. Ce qui reste est ce
+        # qu'il faut savoir en la lisant.
         note.append("Ces noms restent à l'écran : aucun document produit, "
                     "aucun export, aucun journal n'en porte.")
         self.equity_lagging_note.configure(text=" ".join(note))

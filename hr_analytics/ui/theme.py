@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import tkinter as tk
 import tkinter.font as tkfont
+import unicodedata
 from tkinter import ttk
 from typing import Callable, Dict, List, Optional, Sequence
 
@@ -672,3 +673,88 @@ class CheckRow(tk.Frame):
         # La reference doit survivre a l'appel : Tk ne retient pas l'image.
         self._image = tk.PhotoImage(master=self.box, data=data)
         self.box.create_image(0, 0, anchor="nw", image=self._image)
+
+
+def _sans_accent(texte: str) -> str:
+    """Minuscules sans accent, pour chercher sans se soucier de la frappe.
+
+    « Etablissement » doit trouver « Établissement », et « clermont »
+    doit trouver « HEPPNER - CLERMONT FERRAND » : on cherche ce que
+    l'utilisateur tape, pas ce que le fichier a ecrit.
+    """
+    decompose = unicodedata.normalize("NFD", str(texte))
+    return "".join(c for c in decompose
+                   if unicodedata.category(c) != "Mn").lower()
+
+
+class SearchableCombo(ttk.Combobox):
+    """Liste deroulante ou l'on peut taper pour chercher.
+
+    Une liste en lecture seule oblige a faire defiler. Passe quelques
+    dizaines d'entrees — et un fichier de paie en porte volontiers cent
+    pour un intitule de poste — chercher « chauffeur » parmi elles revient
+    a lire la liste entiere.
+
+    On tape, la liste se reduit a ce qui contient ce qu'on a tape, et elle
+    s'ouvre d'elle-meme. Rien d'autre ne change : ce sont les memes
+    valeurs, celles que le fichier porte.
+
+    Ce que la zone affiche en partant n'est jamais libre. Une saisie qui ne
+    correspond a rien reviendrait a filtrer sur du vide, et l'analyse
+    porterait sur zero salarie sans que rien ne le dise. A la sortie du
+    champ, le texte revient donc a la derniere valeur retenue — ou bascule
+    sur l'unique correspondance s'il n'y en a qu'une, parce que taper trois
+    lettres qui ne designent qu'une seule valeur est une facon de la
+    choisir.
+    """
+
+    #: Touches qui ne changent pas le texte : les traiter rouvrirait la
+    #: liste a chaque deplacement du curseur.
+    INERTES = {"Up", "Down", "Left", "Right", "Home", "End", "Tab",
+               "Shift_L", "Shift_R", "Control_L", "Control_R", "Alt_L",
+               "Alt_R", "Escape", "Return", "Prior", "Next"}
+
+    def __init__(self, master: tk.Widget, textvariable: tk.StringVar,
+                 values: Sequence[str], font, neutre: str = ""):
+        self._toutes = list(values)
+        self._neutre = neutre
+        self._retenu = textvariable.get()
+        super().__init__(master, textvariable=textvariable,
+                         values=self._toutes, font=font)
+        self.bind("<KeyRelease>", self._frappe)
+        self.bind("<<ComboboxSelected>>", self._choisi)
+        self.bind("<FocusOut>", lambda _e: self._recadrer())
+        self.bind("<Return>", lambda _e: self._recadrer())
+
+    def _frappe(self, event) -> None:
+        if event.keysym in self.INERTES:
+            return
+        tape = _sans_accent(self.get())
+        if not tape:
+            self.configure(values=self._toutes)
+            return
+        retenues = [v for v in self._toutes if tape in _sans_accent(v)]
+        self.configure(values=retenues or self._toutes)
+        # Ouvrir la liste met le texte tape en surbrillance et le remplace
+        # a la premiere fleche : on ne l'ouvre que s'il reste un choix a
+        # faire, pas quand la frappe a deja tranche.
+        if len(retenues) > 1:
+            self.event_generate("<Down>")
+
+    def _choisi(self, _event=None) -> None:
+        self._retenu = self.get()
+        self.configure(values=self._toutes)
+        self.selection_clear()
+
+    def _recadrer(self) -> None:
+        """Ramene la zone sur une valeur qui existe."""
+        texte = self.get()
+        if texte in self._toutes:
+            self._choisi()
+            return
+        tape = _sans_accent(texte)
+        retenues = ([v for v in self._toutes if tape in _sans_accent(v)]
+                    if tape else [])
+        self.set(retenues[0] if len(retenues) == 1
+                 else (self._retenu or self._neutre))
+        self._choisi()

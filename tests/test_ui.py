@@ -796,7 +796,9 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
         self.chart.set_rows(self._rows(female_chartable=False), "EUR")
         self.root.update()
         self.assertEqual(len(self.chart._items), 1)
-        dessinees = {row.get("sex") for row in self.chart._items.values()}
+        # La ligne entiere est desormais retenue, et la moitie a part :
+        # la bulle montre les trois colonnes et a besoin des deux.
+        dessinees = {moitié for _row, moitié in self.chart._items.values()}
         self.assertEqual(dessinees, {"male"})
 
     def test_a_segment_with_neither_sex_drawable_leaves_the_list(self):

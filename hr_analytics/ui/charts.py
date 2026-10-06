@@ -48,6 +48,13 @@ def note_font():
     return (_family, SIZE_SMALL)
 
 
+def table_font():
+    """Police a chasse fixe : trois colonnes de montants ne s'alignent pas
+    avec une police proportionnelle, et des colonnes qui ne s'alignent pas
+    ne se comparent pas."""
+    return ("TkFixedFont", SIZE_SMALL)
+
+
 def _font(size: int, weight: str = "normal"):
     """Police du module a une taille donnee, pour les canevas qui en
     melangent plusieurs sur une meme ligne."""
@@ -150,7 +157,7 @@ class Tooltip:
         self.window: Optional[tk.Toplevel] = None
         self.label: Optional[tk.Label] = None
 
-    def show(self, text: str, x: int, y: int) -> None:
+    def show(self, text: str, x: int, y: int, tableau: bool = False) -> None:
         if self.window is None:
             self.window = tk.Toplevel(self.widget)
             self.window.wm_overrideredirect(True)
@@ -160,7 +167,8 @@ class Tooltip:
                 padx=8, pady=5, font=note_font(),
             )
             self.label.pack()
-        self.label.configure(text=text)
+        self.label.configure(text=text,
+                             font=table_font() if tableau else note_font())
         self.window.wm_geometry(f"+{x + 16}+{y + 16}")
         self.window.deiconify()
 
@@ -1408,9 +1416,12 @@ class BoxPlotChart(tk.Frame):
             salary = row.get(sex) or {}
             if salary.get("masked") or salary.get("median") is None:
                 continue
-            self._draw_one(dict(row, salary=salary, sex=sex),
-                           salary, centre + decalage, row_height * 0.24,
-                           aplat, teinte, to_x)
+            # La ligne entiere est passee, et non la seule moitie : la
+            # bulle montre les trois colonnes, et il lui faut l'ensemble
+            # comme les deux sexes. `moitie` dit laquelle est survolee.
+            self._draw_one(row, salary, centre + decalage,
+                           row_height * 0.24, aplat, teinte, to_x,
+                           moitie=sex)
 
         self._draw_gap(row, centre, width)
 
@@ -1468,8 +1479,13 @@ class BoxPlotChart(tk.Frame):
             text=f"{ecart:+.1f} %".replace(".", ","))
 
     def _draw_one(self, row, salary, centre: float, span: float,
-                  fill: str, outline: str, to_x) -> None:
-        """Une boite : moustaches, quartiles, mediane."""
+                  fill: str, outline: str, to_x, moitie=None) -> None:
+        """Une boite : moustaches, quartiles, mediane.
+
+        `moitie` dit de quelle demi-population elle est — « female »,
+        « male », ou rien pour le groupe entier. La bulle en a besoin :
+        sans elle, survoler un cote donnait les chiffres de l'ensemble.
+        """
         thickness = min(max(span, 5.0), 15.0)
         p10 = self._whisker(salary, "p10", "p25")
         p90 = self._whisker(salary, "p90", "p75")
@@ -1492,24 +1508,80 @@ class BoxPlotChart(tk.Frame):
         self.canvas.create_line(to_x(median), centre - thickness / 2 - 2,
                                 to_x(median), centre + thickness / 2 + 2,
                                 fill=theme.INK, width=2)
-        self._items[handle] = row
+        self._items[handle] = (row, moitie)
+
+    #: Les colonnes de la bulle, et la clef ou chacune se lit dans la ligne.
+    #: `None` designe le groupe entier.
+    COLONNES = (("Ensemble", None), ("Femmes", "female"), ("Hommes", "male"))
+
+    #: Les bornes montrees, du haut de la distribution vers le bas : c'est
+    #: le sens de lecture d'une boite couchee regardee de droite a gauche.
+    BORNES = (("P90", "p90"), ("Q3", "p75"), ("Médiane", "median"),
+              ("Q1", "p25"), ("P10", "p10"))
+
+    def _bulle(self, row, moitie) -> str:
+        """Le contenu de la bulle : les trois colonnes, cote a cote.
+
+        Survoler la boite des femmes donnait les chiffres de l'ensemble :
+        la boite ne retenait pas de quelle moitie elle etait. On lisait
+        donc, sous le curseur pose sur une moitie, les bornes de l'autre
+        plus les siennes melangees — et il fallait deviner.
+
+        Les trois colonnes repondent a la question qu'on se pose vraiment
+        en survolant : non pas « combien vaut ce quartile », mais « de
+        combien les deux cotes different ici ». La colonne survolee porte
+        une marque : sans elle, trois colonnes identiques ne diraient plus
+        laquelle on montre.
+        """
+        def publiable(bloc) -> bool:
+            """Un cote retenu par le seuil n'a pas de colonne : une colonne
+            de tirets laisserait croire qu'on a mesure et qu'on ne dit
+            rien, alors qu'on n'a pas le droit de mesurer."""
+            return bool(bloc) and not bloc.get("masked") \
+                and bloc.get("median") is not None
+
+        presentes = [(titre, cle) for titre, cle in self.COLONNES
+                     if publiable(row.get("salary") if cle is None
+                                  else row.get(cle))]
+        if not presentes:
+            return ""
+        largeur = 11
+        entete = "".join(
+            (("▸ " if cle == moitie else "  ") + titre).rjust(largeur)
+            for titre, cle in presentes)
+        lignes = [f'{row.get("segment", "")} · '
+                  f'{row.get("headcount", 0)} salariés',
+                  "".ljust(9) + entete]
+        for intitule, clef in self.BORNES:
+            cellules = []
+            for _titre, cle in presentes:
+                bloc = row.get("salary") if cle is None else row.get(cle)
+                valeur = (bloc or {}).get(clef)
+                cellules.append(
+                    ("—" if valeur is None
+                     else format_money(valeur, self.currency)).rjust(largeur))
+            lignes.append(intitule.ljust(9) + "".join(cellules))
+        effectifs = []
+        for _titre, cle in presentes:
+            nombre = (row.get("headcount", 0) if cle is None
+                      else row.get(f"{cle}_count"))
+            effectifs.append(("—" if nombre is None
+                              else str(nombre)).rjust(largeur))
+        lignes.append("Effectif".ljust(9) + "".join(effectifs))
+        return "\n".join(lignes)
 
     def _on_motion(self, event) -> None:
         for item in self.canvas.find_overlapping(event.x, event.y,
                                                  event.x, event.y):
             if item in self._items:
-                row = self._items[item]
-                salary = row["salary"]
-                lines = [f'{row.get("segment", "")} · {row.get("headcount", 0)} salariés']
-                for label, key in (("P90", "p90"), ("Q3", "p75"),
-                                   ("Médiane", "median"), ("Q1", "p25"),
-                                   ("P10", "p10")):
-                    if salary.get(key) is not None:
-                        lines.append(
-                            f'{label} : {format_money(salary[key], self.currency)}')
-                self.tooltip.show("\n".join(lines),
+                row, moitie = self._items[item]
+                texte = self._bulle(row, moitie)
+                if not texte:
+                    break
+                self.tooltip.show(texte,
                                   self.canvas.winfo_rootx() + event.x,
-                                  self.canvas.winfo_rooty() + event.y)
+                                  self.canvas.winfo_rooty() + event.y,
+                                  tableau=True)
                 return
         self.tooltip.hide()
 

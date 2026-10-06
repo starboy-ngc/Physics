@@ -230,9 +230,18 @@ def dimension_fields(config: Configuration) -> List[str]:
 
 
 def max_filter_values(config: Configuration) -> int:
-    """Nombre de valeurs distinctes au-dela duquel une liste deroulante
-    cesse d'etre utilisable. Parametre, et non seuil cache dans l'interface."""
-    configured = config.get("population_mapping.max_filter_values", 60)
+    """Nombre de valeurs distinctes au-dela duquel un filtre n'est plus
+    propose. Parametre, et non seuil cache dans l'interface.
+
+    Le seuil valait soixante, du temps ou la liste etait en lecture seule :
+    au-dela, il fallait la faire defiler en entier. Elle est maintenant
+    saisissable — on tape trois lettres et elle se reduit —, et cent postes
+    distincts ne sont plus un probleme. Ce qui en reste un, c'est une
+    colonne qui porte une valeur par salarie : un matricule n'est pas un
+    critere, et deux mille entrees dans une liste ne le deviennent pas
+    parce qu'on peut y chercher.
+    """
+    configured = config.get("population_mapping.max_filter_values", 200)
     try:
         limit = int(configured)
     except (TypeError, ValueError):

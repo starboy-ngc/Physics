@@ -902,3 +902,94 @@ class TestOrderingTheFilters(unittest.TestCase):
         self.app.update()
         relu = load_configuration(self.config_dir)
         self.assertEqual(dimension_fields(relu)[0], coche)
+
+
+@needs_display
+class TestTheScreenOnlyOffersWhatTheFileCarries(unittest.TestCase):
+    """L'outil déclare une trentaine de champs avec leurs orthographes
+    usuelles — c'est ce qui reconnaît « Salaire de base » ou « BU » sans
+    rien demander. Mais les énumérer à l'écran posait quinze lignes
+    « Pays », « Domaine », « Période », « Rémunération totale » devant
+    quelqu'un qui n'a aucune de ces colonnes et n'a rien demandé.
+
+    Associer ses colonnes une fois doit suffire.
+    """
+
+    def setUp(self):
+        import shutil
+
+        from hr_analytics.ui.app import Application
+
+        self.directory = tempfile.mkdtemp()
+        racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.config_dir = os.path.join(self.directory, "config")
+        shutil.copytree(os.path.join(racine, "config"), self.config_dir)
+        self.app = Application(config_dir=self.config_dir)
+        self.app.update()
+        self._ouvertes = []
+
+    def tearDown(self):
+        for fenetre in self._ouvertes:
+            if fenetre.winfo_exists():
+                fenetre.destroy()
+        self.app.destroy()
+
+    def _fenetre(self, headers=None):
+        from hr_analytics.ui.settings import SettingsWindow
+
+        fenetre = SettingsWindow(self.app, self.app.configuration,
+                                 self.config_dir, self.app.fonts,
+                                 headers=headers)
+        self.app.update()
+        self._ouvertes.append(fenetre)
+        return fenetre
+
+    #: Un fichier maigre : un matricule, un sexe, un salaire, un
+    #: établissement. Pas de pays, pas de famille métier, pas de période.
+    COLONNES = ["Matricule", "Sexe", "Salaire de base", "Etablissement"]
+
+    def test_only_the_calculated_fields_have_a_column_less_row(self):
+        """L'âge et l'ancienneté se calculent à partir des dates : aucune
+        colonne ne les porte, et aucune ne le fera jamais. C'est pour eux
+        que ce panneau existe — le texte du panneau le dit déjà."""
+        from hr_analytics.ui.settings import DERIVED_FIELDS
+
+        fenetre = self._fenetre(self.COLONNES)
+        self.assertEqual(set(fenetre._sans_colonne()), set(DERIVED_FIELDS))
+
+    def test_a_field_no_column_carries_is_not_offered_for_ordering(self):
+        fenetre = self._fenetre(self.COLONNES)
+        proposés = set(fenetre._ordonnables())
+        for absent in ("country", "job_family", "period",
+                       "total_compensation"):
+            self.assertNotIn(absent, proposés, absent)
+
+    def test_what_the_file_carries_is_still_offered(self):
+        """Le témoin : sans lui, l'essai précédent passerait au vert avec
+        une liste vide."""
+        fenetre = self._fenetre(self.COLONNES)
+        proposés = set(fenetre._ordonnables())
+        self.assertIn("site", proposés)
+        self.assertIn("gender", proposés)
+        self.assertIn("age_band", proposés)
+
+    def test_without_a_file_nothing_is_hidden(self):
+        """Sans fichier chargé, on ne sait pas quelles colonnes existent :
+        trier serait deviner."""
+        fenetre = self._fenetre(headers=None)
+        self.assertEqual(set(fenetre._utilisables()), set(fenetre.rows))
+
+    def test_a_hidden_field_keeps_its_place_in_the_settings(self):
+        """La configuration sert à plusieurs fichiers : la fenêtre ne doit
+        pas supprimer en silence ce qu'elle n'affiche pas."""
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.segmentation import dimension_fields
+
+        avant = set(dimension_fields(self.app.configuration))
+        self.assertIn("country", avant, "le témoin a changé")
+        fenetre = self._fenetre(self.COLONNES)
+        fenetre.save()
+        self.app.update()
+        apres = set(dimension_fields(load_configuration(self.config_dir)))
+        self.assertIn("country", apres,
+                      "un champ masqué a été supprimé des paramètres")

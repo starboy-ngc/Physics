@@ -61,7 +61,11 @@ class TestDeclaredDimensions(unittest.TestCase):
 
 class TestFilterValueLimit(unittest.TestCase):
     def test_the_limit_has_a_default(self):
-        self.assertEqual(max_filter_values(configuration()), 60)
+        """Il valait soixante, du temps où la liste était en lecture seule.
+        Elle est saisissable : cent postes distincts ne sont plus un
+        problème, et ce qui en reste un — une valeur par salarié — est
+        bien au-delà de deux cents."""
+        self.assertEqual(max_filter_values(configuration()), 200)
 
     def test_the_limit_is_configurable(self):
         self.assertEqual(max_filter_values(configuration(max_filter_values=8)), 8)

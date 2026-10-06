@@ -800,9 +800,11 @@ class SettingsWindow(tk.Toplevel):
             entry = current.get(field_name)
             libellé = ((entry or {}).get("label")
                        or default_label(self.configuration, field_name))
+            coché = tk.BooleanVar(value=entry is not None)
+            coché.trace_add("write", lambda *_: self._refresh_panels())
             self.rows[field_name] = {
                 "label": tk.StringVar(value=libellé),
-                "declared": tk.BooleanVar(value=entry is not None),
+                "declared": coché,
             }
 
     def _build_dimensions(self, parent: tk.Widget) -> None:
@@ -844,14 +846,7 @@ class SettingsWindow(tk.Toplevel):
         self._dimension_area = tk.Frame(card.inner, background=theme.CANVAS)
         self._dimension_area.pack(fill="x", padx=16, pady=(6, 10))
 
-        # Les champs portes par une colonne se reglent sur leur ligne, plus
-        # haut : les reproposer ici ferait deux cases pour une decision.
-        portés = {self._field_of(var.get())
-                  for var in self.assignments.values()}
-        for field_name in list(self.rows):
-            if field_name in portés:
-                continue
-            self._dimension_widget(field_name)
+        self._redraw_dimensions()
 
         foot = tk.Frame(card.inner, background=theme.CANVAS)
         foot.pack(fill="x", padx=16, pady=(0, 14))
@@ -868,6 +863,76 @@ class SettingsWindow(tk.Toplevel):
                                                    ipady=2)
         tk.Label(foot, text="valeurs distinctes", background=theme.CANVAS,
                  foreground=theme.MUTED, font=self.fonts.small).pack(side="left")
+
+    def _redraw_dimensions(self) -> None:
+        """Repose les lignes des champs sans colonne."""
+        if getattr(self, "_dimension_area", None) is None:
+            return
+        for enfant in self._dimension_area.winfo_children():
+            enfant.destroy()
+        for field_name in self._sans_colonne():
+            self._dimension_widget(field_name)
+
+    def _refresh_panels(self) -> None:
+        """Repose les deux panneaux que l'etat des cases gouverne.
+
+        Cocher un champ le fait entrer dans l'ordre des filtres, et le
+        decocher l'en sort : les deux listes se deduisent des memes cases,
+        et les laisser diverger ferait regler un ordre qui ne s'applique
+        pas.
+        """
+        self._redraw_dimensions()
+        if getattr(self, "_order_area", None) is not None:
+            self._draw_order()
+
+    def _sans_colonne(self) -> List[str]:
+        """Les champs qui meritent une ligne dans « champs sans colonne ».
+
+        Deux sortes, et deux seulement.
+
+        Les champs derives — age et anciennete — se calculent a partir des
+        dates : aucune colonne ne les porte, et aucune ne le fera jamais.
+        C'est pour eux que ce panneau existe.
+
+        Et ceux qui sont coches sans etre portes par une colonne de ce
+        fichier : les laisser hors de l'ecran rendrait leur case
+        inatteignable, et on ne pourrait plus les decocher.
+
+        Le reste du catalogue n'y figure plus. L'outil declare une
+        trentaine de champs avec leurs orthographes usuelles — c'est ce qui
+        reconnait « Salaire de base » ou « BU » sans rien demander — mais
+        les enumerer ici posait quinze lignes « Pays », « Domaine »,
+        « Periode », « Remuneration totale » qu'aucune colonne du fichier
+        ne portait et que personne n'avait demandees. Associer ses colonnes
+        une fois doit suffire.
+        """
+        portés = self._portes_par_une_colonne()
+        return [nom for nom, état in self.rows.items()
+                if nom not in portés and nom in DERIVED_FIELDS]
+
+    def _portes_par_une_colonne(self) -> set:
+        """Les champs qu'une colonne de ce fichier porte."""
+        return {self._field_of(var.get())
+                for var in self.assignments.values()} - {IGNORED}
+
+    def _utilisables(self) -> List[str]:
+        """Les champs sur lesquels ce fichier permet vraiment de filtrer.
+
+        Une colonne les porte, ou ils se calculent. Les autres sont
+        declares dans la configuration — elle sert a plusieurs fichiers, et
+        on ne les en retire pas en silence — mais ils n'ont rien a filtrer
+        ici : les enumerer posait « Pays », « Domaine », « Periode »,
+        « Remuneration totale » devant quelqu'un qui n'a aucune de ces
+        colonnes et n'a rien demande.
+
+        Sans fichier charge, on ne sait pas quelles colonnes existent : on
+        montre alors tout, faute de pouvoir trier.
+        """
+        if not self.headers:
+            return list(self.rows)
+        portés = self._portes_par_une_colonne()
+        return [nom for nom in self.rows
+                if nom in portés or nom in DERIVED_FIELDS]
 
     def _build_order(self, parent: tk.Widget) -> None:
         """L'ordre dans lequel les filtres se presentent.
@@ -899,11 +964,29 @@ class SettingsWindow(tk.Toplevel):
         self._order_area.pack(fill="x", padx=16, pady=(6, 12))
         self._draw_order()
 
+    def _ordonnables(self) -> List[str]:
+        """Les champs qui ont un ordre : ceux qui sont proposes.
+
+        Un champ decoche n'apparait nulle part ; lui donner un rang
+        n'aurait pas de sens, et l'enumerer ici allongerait la liste de
+        tout ce que l'on vient justement de retirer de l'ecran precedent.
+        Il garde sa place et la retrouve si on le recoche.
+        """
+        utilisables = set(self._utilisables())
+        return [nom for nom, état in self.rows.items()
+                if état["declared"].get() and nom in utilisables]
+
     def _draw_order(self) -> None:
         """Repose la liste apres un deplacement."""
         for enfant in self._order_area.winfo_children():
             enfant.destroy()
-        noms = list(self.rows)
+        noms = self._ordonnables()
+        if not noms:
+            tk.Label(self._order_area,
+                     text="Aucun champ proposé pour l'instant.",
+                     background=theme.CANVAS, foreground=theme.FAINT,
+                     font=self.fonts.small).pack(anchor="w")
+            return
         for rang, field_name in enumerate(noms):
             état = self.rows[field_name]
             ligne = tk.Frame(self._order_area, background=theme.CANVAS)
@@ -925,24 +1008,28 @@ class SettingsWindow(tk.Toplevel):
                     bouton.bind("<Button-1>",
                                 lambda _e, nom=field_name, d=pas:
                                 self._move_dimension(nom, d))
-            propose = état["declared"].get()
             tk.Label(ligne, text=état["label"].get() or field_name,
-                     background=theme.CANVAS,
-                     foreground=theme.INK_SOFT if propose else theme.FAINT,
+                     background=theme.CANVAS, foreground=theme.INK_SOFT,
                      font=self.fonts.body, width=26,
                      anchor="w").pack(side="left", padx=(8, 0))
-            tk.Label(ligne, text="" if propose else "non proposé",
-                     background=theme.CANVAS, foreground=theme.FAINT,
-                     font=self.fonts.small).pack(side="left")
 
     def _move_dimension(self, field_name: str, pas: int) -> None:
-        """Deplace un champ d'un rang, et repose la liste."""
-        noms = list(self.rows)
-        rang = noms.index(field_name)
-        cible = rang + pas
-        if not 0 <= cible < len(noms):
+        """Echange un champ avec son voisin *affiche*.
+
+        La liste montree saute les champs decoches ; echanger avec le
+        voisin brut ferait parfois un deplacement sans effet visible, et
+        parfois deux d'un coup.
+        """
+        montres = self._ordonnables()
+        if field_name not in montres:
             return
-        noms[rang], noms[cible] = noms[cible], noms[rang]
+        rang = montres.index(field_name)
+        if not 0 <= rang + pas < len(montres):
+            return
+        voisin = montres[rang + pas]
+        noms = list(self.rows)
+        ici, la = noms.index(field_name), noms.index(voisin)
+        noms[ici], noms[la] = noms[la], noms[ici]
         # Un dictionnaire garde l'ordre d'insertion : le reconstruire dans
         # le nouvel ordre suffit, et c'est lui que `collect` relit.
         self.rows = {nom: self.rows[nom] for nom in noms}
@@ -1060,17 +1147,14 @@ class SettingsWindow(tk.Toplevel):
         """
         état = self.rows.get(field_name)
         if état is None:
-            état = {"label": tk.StringVar(value=label),
-                    "declared": tk.BooleanVar(value=declared)}
+            coché = tk.BooleanVar(value=declared)
+            coché.trace_add("write", lambda *_: self._refresh_panels())
+            état = {"label": tk.StringVar(value=label), "declared": coché}
             self.rows[field_name] = état
         else:
             état["label"].set(label)
             état["declared"].set(declared)
-        if field_name in {self._field_of(var.get())
-                          for var in self.assignments.values()}:
-            return
-        if getattr(self, "_dimension_area", None) is not None:
-            self._dimension_widget(field_name)
+        self._refresh_panels()
 
     # ---------------------------------------------------------- validation
 
