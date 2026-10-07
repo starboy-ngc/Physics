@@ -31,7 +31,7 @@ from .progress import LoadingBar
 #: seule fois : la fenetre, les documents et le manifeste doivent nommer
 #: l'outil de la meme facon.
 PRODUCT = ENGINE_NAME
-TAGLINE = "Analyse de rémunération · local et hors ligne"
+TAGLINE = "Outil d'analyse statistique"
 
 
 class Splash(tk.Toplevel):

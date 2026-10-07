@@ -281,6 +281,14 @@ class TestTheSplash(unittest.TestCase):
         self.assertIn(PUBLISHER.upper(), textes)
         self.assertIn(f"Version {__version__}", textes)
 
+    def test_the_tagline_says_what_the_tool_is_and_nothing_more(self):
+        """L'ecran d'ouverture dit le metier de l'outil, pas ses conditions
+        d'exploitation : « hors ligne » appartient au dossier technique, pas
+        a la premiere seconde d'un utilisateur."""
+        textes = self._textes()
+        self.assertIn("Outil d'analyse statistique", textes)
+        self.assertFalse([ligne for ligne in textes if "hors ligne" in ligne])
+
     def test_the_name_is_not_written_twice_in_the_code(self):
         """La fenêtre, les documents et le manifeste doivent nommer l'outil
         de la même façon : le nom est écrit dans « version.py », et nulle
