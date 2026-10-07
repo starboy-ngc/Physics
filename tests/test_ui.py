@@ -217,7 +217,7 @@ class TestWindow(unittest.TestCase):
         self.assertEqual(len(self.app.tabs), len(TABS))
         self.assertEqual([key for key, _label in TABS],
                          ["population", "organigramme", "graphique",
-                          "equite", "variable", "fiche", "qualite"])
+                          "equite", "variable", "qualite"])
         # « Graphique » en porte plusieurs : la barre principale ne dit plus
         # a elle seule tout ce que l'outil sait montrer.
         self.assertEqual(self.app.chartbar.visible_keys(),

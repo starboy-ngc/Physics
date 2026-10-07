@@ -28,8 +28,7 @@ from tkinter import filedialog, messagebox, ttk
 from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
-from ..core import (career, metrics, org as org_view, package,
-                    palette)
+from ..core import metrics, org as org_view, package, palette
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError, ConfigError
@@ -54,7 +53,6 @@ from . import theme
 from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
                      PieChart, PyramidChart, ScaleChart, ScatterChart)
 from .progress import LoadingBar
-from .fiche import FichePage, HistoryWindow
 from .variable import ElementsWindow, VariablePage
 from .working import WorkPanel
 from . import splash as accueil_module
@@ -71,7 +69,6 @@ TABS = (("population", "Vue d'ensemble"), ("organigramme", "Organigramme"),
         ("graphique", "Graphiques"),
         ("equite", "Écarts F/H"),
         ("variable", "Variable"),
-        ("fiche", "Fiche salarié"),
         ("qualite", "Qualité"))
 
 #: Onglets qui ne paraissent que si l'on a demande ce qu'ils montrent, et
@@ -79,11 +76,8 @@ TABS = (("population", "Vue d'ensemble"), ("organigramme", "Organigramme"),
 #: a rien a expliquer tant que personne n'a choisi d'equipe, et un message
 #: « effectif insuffisant » serait faux.
 #: « Variable » attend un second fichier : tant qu'il n'est pas charge,
-#: l'onglet n'a rien a montrer et son absence n'a rien a expliquer. La
-#: fiche salarie suit la meme regle pour une autre raison : elle parait
-#: des qu'une population est chargee, donc avant toute analyse, et aucun
-#: seuil de publication ne gouverne sa presence.
-ON_DEMAND = ("organigramme", "variable", "fiche")
+#: l'onglet n'a rien a montrer et son absence n'a rien a expliquer.
+ON_DEMAND = ("organigramme", "variable")
 
 #: Graphiques proposes dans l'onglet « Graphique », dans l'ordre d'affichage.
 #: Les onglets de premier rang repondent a une question — qui, combien, quel
@@ -231,14 +225,6 @@ class Application(tk.Tk):
         self.package_natures: Dict[str, str] = {}
         self.package_reconciliation = None
         self.package_source = ""
-        #: L'historique : une ligne par salarie et par periode. Vide tant
-        #: qu'on n'en a pas charge — la fiche vaut sans lui, elle est
-        #: seulement plus courte.
-        self.history_entries: List[Any] = []
-        self.history_columns: List[str] = []
-        self.history_roles: Dict[str, str] = {}
-        self.history_report = None
-        self.history_source = ""
         self.filter_values: Dict[str, Optional[List[str]]] = {}
         #: Les valeurs que chaque dimension porte, et le bouton qui les
         #: ouvre. Separes de la selection pour que le libelle puisse dire
@@ -790,11 +776,6 @@ class Application(tk.Tk):
         self.elements_label = tk.Label(
             steps, text="", background=theme.GROUND, foreground=theme.MUTED,
             font=self.fonts.small, wraplength=250, justify="left")
-        self.history_button = ttk.Button(
-            steps, text="Historique…", style="GhostGround.TButton",
-            command=self.choose_history)
-        self.history_button.pack(fill="x", pady=(8, 0))
-        self.history_button.state(["disabled"])
 
         # La periode precede les filtres : sur un fichier pluriannuel, elle
         # decide de quel instantane on parle, et tout le reste s'y applique.
@@ -909,9 +890,6 @@ class Application(tk.Tk):
 
         self.variable_page = VariablePage(self.tabs["variable"], self.fonts)
         self.variable_page.pack(fill="both", expand=True)
-
-        self.fiche_page = FichePage(self.tabs["fiche"], self.fonts)
-        self.fiche_page.pack(fill="both", expand=True)
 
         self.quality_summary = tk.Frame(self.tabs["qualite"], background=theme.CANVAS)
         self.quality_summary.pack(fill="x", padx=18, pady=(18, 12))
@@ -1277,14 +1255,10 @@ class Application(tk.Tk):
             foreground=theme.WARN if unknown else theme.MUTED)
         self.columns_button.state(["!disabled"])
         self.elements_button.state(["!disabled"])
-        self.history_button.state(["!disabled"])
         # Quelques lignes du fichier, pour l'ecran d'association : voir ce
         # que porte une colonne vaut mieux que lire son intitule.
         self._samples = [list(ligne) for ligne in table.rows[:40]]
         self._populate_filters()
-        # La fiche vit des que la population existe : elle n'attend ni
-        # l'analyse ni l'historique, seulement quelqu'un a montrer.
-        self._refresh_fiche()
         self.analyse_button.state(["!disabled"])
         self.export_button.state(["disabled"])
         self._show_quality()
@@ -1432,84 +1406,6 @@ class Application(tk.Tk):
                 "et la part de bénéficiaires est donc sous-estimée. "
                 "Associez-la dans « Associer les colonnes… ».")
         return "\n".join(lignes)
-
-    # ------------------------------------------------- historique
-
-    def choose_history(self) -> None:
-        """Charge l'historique, puis ouvre le classement de ses colonnes.
-
-        Meme ordre que pour les elements : on ne demande pas de classer
-        des colonnes qu'on n'a pas encore lues.
-        """
-        if not self.population:
-            return
-        path = filedialog.askopenfilename(
-            title="Choisir un historique de rémunération",
-            filetypes=[("Fichiers d'historique", "*.xlsx *.xlsm *.csv"),
-                       ("Tous les fichiers", "*.*")])
-        if not path:
-            return
-        try:
-            entries, _mapping, libres, _table = career.load_history(
-                path, self.configuration)
-        except CompensationError as error:
-            messagebox.showerror("Import impossible", error.message)
-            return
-        self.history_columns = list(libres)
-        fenetre = HistoryWindow(
-            self, self.fonts, libres,
-            self.configuration.get("career_parameters.columns", {}) or {},
-            lambda roles: self._apply_history(path, roles))
-        self.history_window = fenetre
-
-    def _apply_history(self, path: str, roles: Dict[str, str]) -> None:
-        """Ecrit les roles, relit le fichier avec eux, et pose la fiche.
-
-        Le fichier est relu parce que le classement decide de ce qu'on en
-        tire : une colonne qui vient de passer de « ignoree » a
-        « montant » n'etait pas lue a la premiere passe.
-        """
-        from ..core.config import write_configuration
-
-        section = dict(self.configuration.section("career_parameters"))
-        section["columns"] = dict(roles)
-        try:
-            write_configuration(self.config_dir, "career_parameters", section)
-            self.configuration = load_configuration(self.config_dir)
-        except CompensationError as error:
-            messagebox.showwarning("Paramètres non enregistrés", error.message)
-        self.history_roles = self._read_history_roles(roles)
-        try:
-            entries, _mapping, libres, _table = career.load_history(
-                path, self.configuration)
-        except CompensationError as error:
-            messagebox.showerror("Import impossible", error.message)
-            return
-        self.history_entries = list(entries)
-        self.history_columns = list(libres)
-        self.history_source = os.path.basename(path)
-        self._refresh_fiche()
-
-    def _read_history_roles(self, repli: Dict[str, str]) -> Dict[str, str]:
-        """Les roles relus depuis la configuration, et verifies."""
-        try:
-            return career.column_roles(self.configuration)
-        except CompensationError as error:
-            messagebox.showwarning("Rôles illisibles", error.message)
-            return {career._sans_accent(k): v for k, v in repli.items()}
-
-    def _refresh_fiche(self) -> None:
-        """Repose la fiche, avec l'historique s'il y en a un."""
-        if not self.population:
-            return
-        par_salarie, compte = ({}, None)
-        if self.history_entries:
-            par_salarie, compte = career.organise(self.history_entries,
-                                                  self.population)
-            self.history_report = compte
-        self.fiche_page.show(self.population, self.configuration,
-                             par_salarie, compte, self.history_source)
-        self.tabbar.set_visible("fiche", True)
 
     def _offrir_association(self, error: CompensationError) -> None:
         """Ouvre l'ecran d'association quand c'est lui qui debloque.
@@ -2080,9 +1976,6 @@ class Application(tk.Tk):
             # Sur demande, comme l'organigramme : tant qu'aucun fichier
             # d'elements n'est charge, il n'y a rien a expliquer.
             "variable": bool(self.package_lines),
-            # La fiche vit des que la population existe : l'historique
-            # l'enrichit, il ne la conditionne pas.
-            "fiche": bool(self.population),
             "qualite": True,
         }
         for key, allowed in charts.items():

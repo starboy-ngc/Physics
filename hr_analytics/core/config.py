@@ -30,7 +30,6 @@ CONFIG_FILES = (
     "theme_parameters",
     "export_parameters",
     "package_parameters",
-    "career_parameters",
 )
 
 DEFAULTS: Dict[str, Any] = {
@@ -235,23 +234,6 @@ DEFAULTS: Dict[str, Any] = {
         # depart : les intitules d'un fichier de paie ne se devinent pas,
         # et l'outil n'en invente aucun.
         "natures": {},
-    },
-    # Le troisieme fichier : l'historique d'un salarie, une ligne par
-    # periode. Deux colonnes seulement sont reconnues d'avance — qui et
-    # quand ; toutes les autres se classent a l'ecran, parce qu'une
-    # colonne de people review ne porte le meme nom nulle part.
-    "career_parameters": {
-        "fields": {
-            "employee_id": ["Matricule", "Employee ID", "ID"],
-            "period": ["Période", "Periode", "Année", "Exercice", "Date",
-                       "Campagne"],
-        },
-        # Libelle de colonne -> role : montant, ou ignoree. Vide au
-        # depart : l'outil n'invente aucun intitule.
-        "columns": {},
-        # Maille de comparaison de la fiche. Le poste par defaut : c'est
-        # a lui qu'on compare une remuneration, pas a l'entreprise.
-        "comparison_field": "job_title",
     },
     "pay_equity_parameters": {
         # Les valeurs designant le sexe ne sont pas codees dans le moteur :
