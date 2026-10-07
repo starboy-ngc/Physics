@@ -165,11 +165,34 @@ class TestCategories(unittest.TestCase):
         self.assertTrue(result["categories"][0]["above_threshold"])
         self.assertLess(result["categories"][0]["mean_gap"], 0)
 
-    def test_an_absent_category_field_says_so(self):
-        """Une table vide laisserait croire a une absence d'ecart, alors que
-        le champ n'existe pas dans le fichier."""
+    def test_an_absent_category_field_falls_back_on_a_real_one(self):
+        """Beaucoup de fichiers de paie n'ont pas de colonne de poste.
+
+        La planche la plus importante du document — celle qui sépare « des
+        femmes moins payées au même poste » de « des femmes sur les postes
+        les moins payés » — restait alors entièrement vide, sans que le
+        lecteur sache pourquoi. L'outil prend la dimension renseignée la
+        plus proche, et la nomme.
+        """
         config = make_config(
             {"pay_equity_parameters.category_field": "job_title"})
+        entries = ([("F", 40000, "A")] * 10) + ([("H", 50000, "A")] * 10)
+        result = calculate_pay_equity(population(entries, config), config)
+        self.assertNotEqual(result["category_field"], "job_title")
+        self.assertTrue(result["categories"])
+        # Le libellé suit le champ retenu : le document écrit « à <cette
+        # dimension> comparable », et non « à poste comparable » sur un
+        # calcul qui porte sur autre chose.
+        self.assertNotEqual(result["category_label"], "Poste")
+
+    def test_with_no_dimension_at_all_it_says_so(self):
+        """Une table vide laisserait croire à une absence d'écart, alors que
+        le champ n'existe pas dans le fichier."""
+        config = make_config({
+            "pay_equity_parameters.category_field": "job_title",
+            "population_mapping.dimensions": [
+                {"field": "job_title", "label": "Poste"}],
+        })
         entries = ([("F", 40000, "A")] * 10) + ([("H", 50000, "A")] * 10)
         result = calculate_pay_equity(population(entries, config), config)
         self.assertEqual(result["categories"], [])

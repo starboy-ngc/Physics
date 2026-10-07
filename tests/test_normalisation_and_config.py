@@ -313,6 +313,40 @@ if __name__ == "__main__":
     unittest.main()
 
 
+class TestTheYoungestAgeBand(unittest.TestCase):
+    """Les mineurs et les apprentis ont leur tranche.
+
+    Aucune donnée RH réelle.
+    """
+
+    def test_someone_under_twenty_lands_in_their_own_band(self):
+        from hr_analytics.core import metrics
+
+        config = make_config()
+        rows = [make_row(index, age=18 if index < 3 else 45)
+                for index in range(20)]
+        payload = metrics.calculate_population_metrics(
+            build_population(rows, config), config)
+        tranches = {row["label"]: row["count"]
+                    for row in payload["age_bands"]}
+        self.assertEqual(tranches.get("<20"), 3)
+        # Et ils ne tombent plus dans le fourre-tout, à côté de ceux dont
+        # la date de naissance manque.
+        self.assertFalse([row for row in payload["age_bands"]
+                          if row.get("catch_all")])
+
+    def test_the_bands_read_from_the_oldest_down(self):
+        from hr_analytics.core import metrics
+
+        config = make_config()
+        rows = [make_row(index, age=18 + index * 3) for index in range(18)]
+        payload = metrics.calculate_population_metrics(
+            build_population(rows, config), config)
+        libelles = [row["label"] for row in payload["age_bands"]]
+        self.assertEqual(libelles[0], "60+")
+        self.assertEqual(libelles[-1], "<20")
+
+
 class TestMergingCaseVariants(unittest.TestCase):
     """Deux écritures d'un même libellé n'en font qu'une.
 

@@ -36,7 +36,9 @@ class TestPopulationMetrics(unittest.TestCase):
         result = metrics.calculate_population_metrics(
             build_population(rows, make_config()), make_config())
         labels = [item["label"] for item in result["tenure_bands"]]
-        self.assertEqual(labels, ["<2 ans", "2-5 ans", "5-10 ans", ">10 ans"])
+        # De la plus longue anciennete a la plus courte : c'est l'ordre que
+        # le moteur publie, et que la pyramide comme les tableaux suivent.
+        self.assertEqual(labels, [">10 ans", "5-10 ans", "2-5 ans", "<2 ans"])
 
     def test_the_extension_can_be_switched_off(self):
         config = make_config({"tenure_parameters.auto_extend": False})
@@ -482,10 +484,13 @@ class TestTheCatchAllBandKeepsItsSexes(unittest.TestCase):
         return payload["age_bands" if field == "age_band" else "tenure_bands"]
 
     def test_someone_outside_every_band_still_counts_as_a_woman(self):
-        # Douze ans : aucune tranche d'âge ne l'accueille.
+        # Sans date de naissance, aucune tranche d'âge ne l'accueille. Douze
+        # ans ne suffit plus : la tranche « <20 » couvre les mineurs et les
+        # apprentis, qui tombaient jusqu'ici dans le fourre-tout, à côté de
+        # ceux dont l'âge est inconnu.
         rows = [make_row(index, gender="F" if index % 2 else "H")
                 for index in range(20)]
-        rows.append(make_row(99, age=12, gender="F"))
+        rows.append(make_row(99, birth_date="", gender="F"))
         fourre_tout = [band for band in self.bands(rows)
                        if band.get("catch_all")]
         self.assertEqual(len(fourre_tout), 1)

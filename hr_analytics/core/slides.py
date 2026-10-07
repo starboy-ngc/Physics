@@ -18,10 +18,10 @@ import os
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Sequence
 
-from ..version import ENGINE_NAME, __version__
 from .axes import nice_ticks
 from . import palette
 from . import reporting
+from .segmentation import UNKNOWN_LABEL
 from ..io import restrict_to_owner
 from .reporting import (boxplot_svg, donut_svg, format_money, format_number,
                         format_percent, format_years, histogram_svg,
@@ -89,7 +89,8 @@ def _population_kpis(population: Dict[str, Any]) -> List[List[str]]:
 
 def _salary_kpis(salary: Dict[str, Any], currency: str) -> List[List[str]]:
     return [
-        ["Masse salariale", format_money(salary.get("payroll"), currency)],
+        [reporting.payroll_label(salary),
+         format_money(salary.get("payroll"), currency)],
         ["Salaire moyen", format_money(salary.get("mean"), currency)],
         ["Salaire médian", format_money(salary.get("median"), currency)],
         ["Minimum", format_money(salary.get("min"), currency)],
@@ -145,7 +146,7 @@ def _median_gap_header(bounds: Dict[str, Any]) -> List[str]:
     """Les intitules de colonnes du tableau de dispersion."""
     if not bounds:
         return ["Niveau", "Valeur", "Écart à la médiane"]
-    return ["Niveau", "Femmes", "Hommes", "Ensemble", "Écart méd."]
+    return ["Niveau", "Femmes", "Hommes", "Ensemble", "Écart à la médiane"]
 
 
 def _sex_bounds(pay_equity: Dict[str, Any]) -> Dict[str, Any]:
@@ -201,7 +202,11 @@ def _median_gap_rows(salary: Dict[str, Any], currency: str,
                 ligne.append("—" if montant is None
                              else format_money(montant, currency))
         ligne.append(format_money(valeur, currency))
-        ligne.append("—" if part is None else _signed_percent(part))
+        # La mediane ne s'ecarte pas d'elle-meme : elle est la reference.
+        # Un tiret au milieu de la colonne se lisait comme une donnee
+        # manquante.
+        ligne.append("référence" if cle == "median"
+                     else ("—" if part is None else _signed_percent(part)))
         rows.append(ligne)
     return rows
 
@@ -226,6 +231,11 @@ def _csp_parts(population: Dict[str, Any]) -> List[Dict[str, Any]]:
     parts = sorted(population.get("csp_split") or [],
                    key=lambda item: -item["count"])
     if not parts:
+        return []
+    # Une colonne absente du fichier donnait un anneau d'un seul arc,
+    # « (non renseigné) 100 % » : un tiers de page pour dire qu'on ne sait
+    # rien. Un camembert a une part n'est pas une repartition.
+    if len(parts) == 1 and parts[0]["label"] == UNKNOWN_LABEL:
         return []
     retenues, reste = parts[:limite], parts[limite:]
     morceaux = [{"label": item["label"], "count": item["count"],
@@ -254,11 +264,15 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     manifest = analysis.get("manifest", {})
 
     blocks: List[Block] = [
+        # Les medianes seules. Une moyenne d'age posee a cote de sa mediane
+        # fait deux chiffres a deux ans l'un de l'autre, et le lecteur
+        # arbitre entre les deux au lieu de lire la page. La mediane est
+        # celle qui tient devant une population deformee par quelques
+        # anciennetes tres longues ; les moyennes restent dans la vue
+        # detaillee, ou il y a la place de les comparer.
         _kpi_block([
             ["Effectif", f'{population.get("headcount", 0):,}'.replace(",", " ")],
-            ["Âge moyen", format_years(population.get("age_mean"))],
             ["Âge médian", format_years(population.get("age_median"))],
-            ["Ancienneté moyenne", format_years(population.get("tenure_mean"))],
             ["Ancienneté médiane",
              format_years(population.get("tenure_median"))],
             ["Salaire médian", format_money(salary.get("median"), currency)],
@@ -268,6 +282,11 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     # Les deux pyramides et la CSP, sur une rangee de trois. Une pyramide
     # dont aucune tranche n'est ventilee par sexe ne se dessine pas : le
     # trace se retire de lui-meme et la rangee se recompose.
+    csp = _csp_parts(population)
+    # Deux pyramides et un anneau font trois colonnes ; sans anneau, les
+    # deux pyramides prennent chacune une moitie plutot que de laisser un
+    # tiers de page blanc a leur droite.
+    largeur = "third" if csp else "half"
     for cle, titre in (("age_bands", "Pyramide des âges"),
                        ("tenure_bands", "Pyramide des anciennetés")):
         rangs = population.get(cle) or []
@@ -275,13 +294,12 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
             continue
         blocks.append(Block(
             "chart", {"type": "pyramid", "rows": rangs, "label": titre},
-            title=titre, width="third"))
+            title=titre, width=largeur))
     # La repartition en anneau plutot qu'en tableau. Trois modalites sur
     # sept se lisent d'un coup d'oeil quand elles sont des arcs ; en
     # colonne, il faut comparer des pourcentages deux a deux. Le nombre et
     # la part restent ecrits dans la legende : le dessin range la meme
     # information, il n'en retire aucune.
-    csp = _csp_parts(population)
     if csp:
         intitule = population.get("csp_label") or "CSP"
         blocks.append(Block(
@@ -293,15 +311,25 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     # montants, le dessin donne la forme.
     bornes = _sex_bounds(analysis.get("pay_equity") or {})
     dispersion_rows = _median_gap_rows(salary, currency, bornes)
+    # Le tableau prend toute la largeur des qu'il porte les deux sexes :
+    # cinq colonnes sur une demi-page se lisaient a l'etroit, et c'est le
+    # tableau qui porte l'histoire de l'ecart.
     if dispersion_rows:
         blocks.append(_table_block(
             _median_gap_header(bornes), dispersion_rows,
-            title="Dispersion", width="half", compact=True))
+            title="Dispersion des rémunérations",
+            width="full" if bornes else "half", compact=True))
     # La boite se pose a sa propre condition et non a celle du tableau :
     # celui-ci se contente de la mediane, la boite a besoin de ses cinq
     # reperes. Posee sans eux, elle laissait une colonne titree et vide.
-    if all(salary.get(cle) is not None
-           for cle in ("p10", "p25", "median", "p75", "p90")):
+    #
+    # Et elle ne se pose pas du tout sous le tableau a trois colonnes :
+    # elle y redessinerait la seule colonne « Ensemble », que le lecteur
+    # vient de lire chiffre par chiffre, au prix d'un tiers de la page.
+    # Sans ventilation par sexe, le tableau est maigre et la forme, elle,
+    # apprend quelque chose : la boite se pose a cote.
+    if not bornes and all(salary.get(cle) is not None
+                          for cle in ("p10", "p25", "median", "p75", "p90")):
         blocks.append(Block(
             "chart", {"type": "boxplot", "salary": salary},
             title="Boîte à moustaches", width="half"))
@@ -339,31 +367,15 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     """Vision complete : un jeu de slides, une idee par page."""
     salary = analysis.get("salary", {})
     population = analysis.get("population", {})
-    quality = analysis.get("quality", {})
     currency = salary.get("currency", "EUR")
     slides: List[Slide] = [_cover(analysis)]
 
-    # Qualite des donnees
-    constats = [
-        [item["severite"].capitalize(), item["message"],
-         str(item["lignes_concernees"])]
-        for item in quality.get("constats", [])[:8]
-    ]
-    quality_slide = Slide("Qualité des données", f'Statut : {quality.get("statut", "")}')
-    quality_slide.blocks = [
-        _kpi_block([
-            ["Lignes importées", f'{quality.get("lignes_importees", 0):,}'.replace(",", " ")],
-            ["Salariés uniques", f'{quality.get("salaries_uniques", 0):,}'.replace(",", " ")],
-            ["Doublons", str(quality.get("doublons", 0))],
-            ["Salaires manquants", str(quality.get("salaires_manquants", 0))],
-            ["Dates invalides", str(quality.get("dates_invalides", 0))],
-            ["Anomalies critiques", str(quality.get("anomalies_critiques", 0))],
-        ]),
-    ]
-    if constats:
-        quality_slide.blocks.append(
-            _table_block(["Sévérité", "Constat", "Lignes"], constats))
-    slides.append(quality_slide)
+    # Pas de planche « Qualite des donnees ». Le controle se lit a l'ecran,
+    # avant de produire quoi que ce soit : c'est le travail de celui qui
+    # analyse, et il est fait quand le document part. Le lecteur du
+    # document, lui, n'a pas a arbitrer sur un encodage ou un doublon ; une
+    # page d'autocritique en tete ne lui apprend rien et jette un doute sur
+    # tout ce qui suit.
 
     # Population
     if population.get("masked"):
@@ -373,7 +385,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
         slides.append(Slide("Population", "", blocks=[
             Block("text", [population.get("warning") or _MASQUE])]))
     else:
-        slides.append(Slide("Population", "Structure d'âge et d'ancienneté", blocks=[
+        blocs = [
             _kpi_block(_population_kpis(population)),
             _table_block(["Tranche d'âge", "Effectif", "Part"],
                          [[row["label"], str(row["count"]), format_percent(row["share"])]
@@ -383,7 +395,29 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                          [[row["label"], str(row["count"]), format_percent(row["share"])]
                           for row in population.get("tenure_bands", [])],
                          title="Ancienneté", width="half"),
-        ]))
+        ]
+        slides.append(Slide("Population", "Structure d'âge et d'ancienneté",
+                            blocks=blocs))
+        # Les pyramides sur leurs propres planches, une par grandeur. Le
+        # tableau donne les effectifs, le dessin donne la forme — un creux
+        # au milieu, une base large, un sommet qui part a la retraite se
+        # voient d'un coup d'oeil et ne se lisent pas dans une colonne de
+        # nombres. Deux pyramides ajoutees sous les deux tableaux ne
+        # tenaient pas dans la page : la seconde en sortait entierement.
+        #
+        # Une pyramide dont aucune tranche n'est ventilee par sexe ne se
+        # dessine pas : elle n'aurait qu'une moitie, et sa planche ne
+        # s'ouvre pas.
+        for cle, titre in (("age_bands", "Pyramide des âges"),
+                           ("tenure_bands", "Pyramide des anciennetés")):
+            rangs = population.get(cle) or []
+            if not any(row.get("female") or row.get("male") for row in rangs):
+                continue
+            slides.append(Slide(titre, "Femmes et hommes, tranche par tranche",
+                                blocks=[Block(
+                                    "chart",
+                                    {"type": "pyramid", "rows": rangs,
+                                     "label": titre}, width="full")]))
 
     # Remuneration
     if salary.get("masked"):
@@ -571,12 +605,17 @@ font:15px/1.45 "Segoe UI",Calibri,Arial,sans-serif}
    tenir sur un ecran plus etroit, elle est mise à l'echelle plutot que
    reagencee. `--slide-scale` est calculé au chargement et au redimensionnement ;
    sans JavaScript il vaut 1 et le comportement est celui d'avant. */
-.frame{width:100%;max-width:1280px;height:calc(720px * var(--slide-scale,1));
-overflow:hidden}
-.slide{position:relative;width:1280px;height:720px;background:#fff;
+/* La planche grandit si son contenu depasse, elle ne le coupe pas. Une
+   hauteur fixe et « overflow:hidden » faisaient disparaitre le bas des
+   tableaux longs : le lecteur voyait une page propre, sans savoir qu'il
+   lui manquait quatre lignes. La hauteur du cadre est ajustee par le
+   script, qui connait l'echelle ; 720px reste le minimum, et le repli
+   sans script. */
+.frame{width:100%;max-width:1280px;min-height:calc(720px * var(--slide-scale,1))}
+.slide{position:relative;width:1280px;min-height:720px;background:#fff;
 transform:scale(var(--slide-scale,1));transform-origin:top left;
 border:1px solid var(--line);border-radius:4px;padding:44px 56px 56px;
-display:flex;flex-direction:column;overflow:hidden}
+display:flex;flex-direction:column}
 .slide h1{font-size:34px;margin:0 0 6px;font-weight:600;
 letter-spacing:-.012em}
 .kpi .value{font-variant-numeric:tabular-nums}
@@ -642,7 +681,7 @@ opacity:.85}
   /* A l'impression, la page reprend sa taille reelle : la mise à l'echelle
      d'ecran ne doit jamais alterer le rendu papier ni le PDF. */
   :root{--slide-scale:1 !important}
-  .frame{width:1280px;height:720px;max-width:none}
+  .frame{width:1280px;min-height:720px;height:auto;max-width:none}
   .slide{border:none;border-radius:0;page-break-after:always;break-after:page}
   .frame:last-child .slide{page-break-after:auto;break-after:auto}
 }
@@ -658,6 +697,13 @@ _SLIDE_JS = """
     if(!frame)return;
     var scale=Math.min(1,frame.clientWidth/1280);
     document.documentElement.style.setProperty('--slide-scale',scale);
+    // Le cadre reserve la hauteur reelle de sa planche, mise a l'echelle :
+    // une planche plus haute que 720px pousse la suivante au lieu d'etre
+    // recouverte par elle.
+    [].forEach.call(document.querySelectorAll('.frame'),function(f){
+      var s=f.querySelector('.slide');
+      if(s)f.style.height=(s.offsetHeight*scale)+'px';
+    });
   }
   fit();
   window.addEventListener('resize',fit);
@@ -710,7 +756,9 @@ def _html_escape(value: Any) -> str:
 _CHART_HEIGHTS = {
     "histogram": {"full": 330, "half": 260, "third": 200},
     "scatter": {"full": 430, "half": 300, "third": 220},
-    "pyramid": {"full": 200, "half": 180, "third": 165},
+    # « full » ne sert qu'a une pyramide seule sur sa planche : elle y a
+    # toute la hauteur, et des barres qui se comparent de loin.
+    "pyramid": {"full": 440, "half": 180, "third": 165},
     "boxplot": {"full": 150, "half": 150, "third": 145},
     # L'anneau est aussi haut que large : sa hauteur est ce qui fixe sa
     # taille, pas la place restante.
@@ -1039,7 +1087,7 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
 _PDF_CHART_HEIGHTS = {
     "histogram": {"full": 420, "half": 250, "third": 200},
     "scatter": {"full": 420, "half": 250, "third": 200},
-    "pyramid": {"full": 240, "half": 220, "third": 200},
+    "pyramid": {"full": 420, "half": 220, "third": 200},
     "boxplot": {"full": 210, "half": 200, "third": 190},
     "donut": {"full": 190, "half": 180, "third": 165},
 }
@@ -1057,7 +1105,11 @@ def _draw_pyramid(page, rows, x, y, width, height, label="") -> float:
     # La legende ferme le dessin au lieu de l'ouvrir : elle se lit au
     # moment ou l'on demande laquelle des deux ailes est laquelle.
     pied = 12.0 if label else 0.0
-    ligne = max((height - pied) / len(rows), 7.0)
+    # La tranche ne s'etire pas sans fin : au-dela, six tranches sur une
+    # pleine page donnaient six barres fines separees par du vide, et la
+    # forme de la pyramide — ce qu'on vient y chercher — disparaissait.
+    ligne = min(max((height - pied) / len(rows), 7.0), 46.0)
+    height = ligne * len(rows) + pied
     # La barre remplit sa tranche : deux tranches voisines se comparent
     # alors en masse plutot qu'en longueur.
     barre = min(ligne - 2.5, 15.0)
@@ -1320,9 +1372,11 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             # place a cote d'un tableau, il reste dans une bande raisonnable.
             cap = spec.get("height") or _PDF_CHART_HEIGHTS.get(
                 spec["type"], _PDF_CHART_HEIGHTS["scatter"])[block.width]
-            # Un plancher unique rabotait la boite a moustaches, qui est
-            # horizontale et tient dans moins de place qu'un nuage.
-            height = max(min(room - 8, cap), min(cap, 120))
+            # La hauteur ne depasse jamais la place restante : un plancher
+            # de cent vingt points faisait deborder la boite a moustaches
+            # sous le filet de pied de page, ou le lecteur recevait un
+            # trace coupe et une legende posee dans la marge.
+            height = min(room - 8, cap)
             if spec["type"] == "histogram":
                 return _draw_histogram(page, spec["bins"], currency, left, top,
                                        block_width, height)
@@ -1370,10 +1424,12 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
         cursor = top - used - 16
     flush_row()
 
+    # Le pied ne porte que la pagination. Le nom de l'outil et sa version
+    # appartiennent au manifeste, ecrit a cote des documents : un document
+    # remis a un CSE ou a une direction parle de la population, pas du
+    # logiciel qui l'a mise en page.
     page.line(_MARGIN, _MARGIN + 6, PDF_WIDTH - _MARGIN, _MARGIN + 6,
               color=_LINE, width=0.4)
-    page.text(_MARGIN, _MARGIN - 6, f"{ENGINE_NAME} v{__version__}", size=7,
-              color=_MUTED)
     page.text(PDF_WIDTH - _MARGIN, _MARGIN - 6, f"{number} / {total}", size=7,
               color=_MUTED, align="right")
 

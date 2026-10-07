@@ -35,7 +35,8 @@ from . import statistics_engine as stats
 from .config import Configuration, analysis_field
 from .normalize import FTE_FIELD, Population, full_time_amount
 from .metrics import PrivacyRules, calculate_amount_metrics
-from .segmentation import personal_fields, cross_key, dimension_label, split_by
+from .segmentation import (personal_fields, cross_key, dimension_label,
+                           dimensions, split_by)
 
 FEMALE = "F"
 MALE = "H"
@@ -292,7 +293,7 @@ def calculate_pay_equity(population: Population,
     rules = PrivacyRules.from_config(config)
     salary_field = analysis_field(config)
     variable_field = section.get("variable_field", "variable_pay")
-    category_field = section.get("category_field", "job_title")
+    category_field = _category_field(population, config)
     threshold = config.number("pay_equity_parameters.gap_alert_threshold",
                               5.0, minimum=0.0, maximum=100.0)
 
@@ -379,6 +380,54 @@ def calculate_pay_equity(population: Population,
 
     result.update(calculate_category_gaps(population, config, category_field))
     return result
+
+
+#: Dimensions qui ne font pas une categorie de comparaison. Comparer « a
+#: tranche d'age comparable » ne repond pas a la question posee : la
+#: directive demande l'ecart entre femmes et hommes qui font le meme
+#: travail, et le sexe lui-meme ne peut pas servir a le decouper.
+_HORS_CATEGORIE = ("gender", "age_band", "tenure_band")
+
+
+def _category_field(population: Population, config: Configuration):
+    """La categorie de comparaison : celle qui est reglee, ou la plus proche.
+
+    Le reglage designe « poste » par defaut. Beaucoup de fichiers de paie
+    n'ont pas de colonne de poste mais une colonne de metier ou de famille,
+    et le resultat etait alors le pire possible : l'ecart a poste
+    comparable, l'effet de structure et le rattrapage restaient vides, et
+    la planche la plus importante du document — celle qui separe « des
+    femmes moins payees au meme poste » de « des femmes sur les postes les
+    moins payes » — ne disait plus rien, sans que le lecteur sache
+    pourquoi.
+
+    Le repli prend donc la premiere dimension declaree qui tienne du
+    metier, puis a defaut n'importe quelle autre dimension renseignee. Le
+    champ retenu est publie avec son libelle : les documents ecrivent « a
+    metier comparable », et non « a poste comparable » sur un calcul qui
+    porte sur autre chose.
+    """
+    voulu = config.section("pay_equity_parameters").get("category_field",
+                                                        "job_title")
+
+    def renseigne(nom) -> bool:
+        if not isinstance(nom, str):
+            return bool(split_by(population, nom))
+        return any(str(employee.value(nom) or "").strip()
+                   for employee in population)
+
+    if renseigne(voulu):
+        return voulu
+    declarees = [entry["field"] for entry in dimensions(config)
+                 if entry["field"] not in _HORS_CATEGORIE
+                 and entry["field"] != voulu]
+    # Le metier d'abord : c'est lui qui approche le poste. Les autres
+    # dimensions ensuite, dans l'ordre ou elles sont declarees.
+    proches = [nom for nom in declarees if str(nom).startswith("job")]
+    for nom in proches + [nom for nom in declarees if nom not in proches]:
+        if renseigne(nom):
+            return nom
+    return voulu
 
 
 def _axis_label(config: Configuration, field_name) -> str:

@@ -14,7 +14,6 @@ import math
 import os
 from typing import Any, Dict, List, Optional, Sequence
 
-from ..version import ENGINE_NAME, __version__
 from . import palette
 from .axes import nice_ticks
 from ..io import restrict_to_owner
@@ -168,9 +167,6 @@ border:1px solid var(--line);border-radius:9px}
 color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
-
-footer{margin:0;padding:18px 36px 22px;border-top:1px solid var(--line);
-background:var(--panel);color:var(--faint);font-size:11px}
 
 @media print{
   body{background:#fff}
@@ -463,7 +459,10 @@ def pyramid_svg(rows: Sequence[Dict[str, Any]], width: int = 360,
     # moment ou l'on demande laquelle des deux ailes est laquelle.
     haut = 4.0
     bas = 14.0 if label else 6.0
-    ligne = max((height - haut - bas) / len(rows), 9.0)
+    # Meme plafond que dans le PDF : une tranche ne s'etire pas sans fin,
+    # faute de quoi la forme de la pyramide se dissout dans le vide.
+    ligne = min(max((height - haut - bas) / len(rows), 9.0), 52.0)
+    height = ligne * len(rows) + haut + bas
     # La barre remplit sa tranche : quatre pixels separent sans eloigner,
     # et deux tranches voisines se comparent alors en masse plutot qu'en
     # longueur.
@@ -762,30 +761,6 @@ def _legend(dataset: Dict[str, Any]) -> str:
 # ------------------------------------------------------------------- sections
 
 
-def _quality_section(quality: Dict[str, Any]) -> str:
-    status = quality.get("statut", "")
-    kind = "crit" if status == "CORRECTIONS REQUISES" else ("warn" if status == "POINTS DE VIGILANCE" else "")
-    kpis = "".join([
-        _kpi("Lignes importées", f'{quality.get("lignes_importees", 0):,}'.replace(",", " ")),
-        _kpi("Salariés uniques", f'{quality.get("salaries_uniques", 0):,}'.replace(",", " ")),
-        _kpi("Doublons", str(quality.get("doublons", 0))),
-        _kpi("Salaires manquants", str(quality.get("salaires_manquants", 0))),
-        _kpi("Dates invalides", str(quality.get("dates_invalides", 0))),
-        _kpi("Anomalies critiques", str(quality.get("anomalies_critiques", 0))),
-    ])
-    # Le detail des constats a quitte le document. Il y tenait une pleine
-    # page — onze lignes de « avertissement / valeurs non numeriques dans
-    # le champ tenure / 2 » — la ou un lecteur de restitution veut savoir
-    # une chose : le fichier est-il assez propre pour qu'on lise la suite.
-    # Le statut et les six chiffres le disent. Le detail, lui, sert a
-    # corriger le fichier, et il reste la ou l'on corrige : l'onglet
-    # Qualite de la fenetre, et « controle --json » en ligne de commande.
-    return (
-        '<h2>Contrôle qualité des données</h2>'
-        f'<div class="kpis">{_kpi("Statut", status, fort=True)}{kpis}</div>'
-    )
-
-
 #: Dit a defaut de mieux, quand le moteur n'a pas publie sa raison.
 _MASQUE = "Résultat masqué pour préserver la confidentialité."
 
@@ -833,14 +808,29 @@ def _population_section(population: Dict[str, Any]) -> str:
     )
 
 
+def payroll_label(salary: Dict[str, Any]) -> str:
+    """« Masse salariale » dit la somme de quoi.
+
+    Le total porte sur le champ analyse, qui est le salaire de base neuf
+    fois sur dix : l'annoncer « masse salariale » tout court laissait
+    croire a un cout complet, primes et charges comprises. Le libelle du
+    champ vient du mapping et non du code : il suit ce qu'on analyse.
+
+    Partage avec le jeu de slides, comme `axis_label` : les deux documents
+    nomment la meme somme de la meme facon.
+    """
+    champ = (salary.get("field_label") or "").strip()
+    return f"Masse salariale ({champ.lower()})" if champ else "Masse salariale"
+
+
 def _salary_section(salary: Dict[str, Any]) -> str:
     currency = salary.get("currency", "EUR")
     if salary.get("masked"):
         return _masquee(salary.get("field_label") or "Rémunération",
                         salary.get("warning") or _MASQUE)
     kpis = "".join([
-        _kpi("Masse salariale", format_money(salary.get("payroll"), currency),
-             fort=True),
+        _kpi(payroll_label(salary),
+             format_money(salary.get("payroll"), currency), fort=True),
         _kpi("Salaire médian", format_money(salary.get("median"), currency),
              fort=True),
         _kpi("Salaire moyen", format_money(salary.get("mean"), currency)),
@@ -914,7 +904,10 @@ def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
 
 
 def _scatter_section(dataset: Dict[str, Any], currency: str) -> str:
-    titre = (f'5. {axis_label(dataset, "y")} et '
+    # Pas de numero ecrit ici : « _numeroter » le pose sur ce qui parait.
+    # Un « 5. » en dur s'ajoutait au numero calcule — « 45. Salaire de base
+    # et anciennete » — des que l'ordre des sections changeait.
+    titre = (f'{axis_label(dataset, "y")} et '
              f'{axis_label(dataset, "x").lower()}')
     if not dataset.get("available"):
         return ""
@@ -926,17 +919,28 @@ def _scatter_section(dataset: Dict[str, Any], currency: str) -> str:
 
 
 def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
+    """Un tableau par dimension, sans les segments sous le seuil.
+
+    Une ligne masquee n'avait que son effectif et cinq tirets : elle
+    occupait une ligne pour dire qu'elle n'avait rien a dire. Sur un
+    fichier a cinquante-sept etablissements, la moitie du tableau etait
+    faite de ces lignes-la, et le lecteur devait les enjamber pour
+    comparer celles qui portent un chiffre.
+
+    Les effectifs restent comptes dans les totaux de la population : c'est
+    la publication segment par segment qui s'arrete au seuil, pas
+    l'analyse. Qui veut la liste complete la trouve a l'ecran et dans le
+    classeur, ou la ligne masquee porte sa mention.
+    """
     if not segments:
         return ""
     blocks = ["<h2>Analyses par segment</h2>"]
     for segment in segments:
         rows = []
         for row in segment["rows"]:
-            salary = row["salary"]
             if row["masked"]:
-                rows.append((row["segment"], str(row["headcount"]),
-                             "—", "—", "—", "—", "Masqué (effectif insuffisant)"))
                 continue
+            salary = row["salary"]
             dispersion = salary.get("dispersion", {}) or {}
             rows.append((
                 row["segment"], str(row["headcount"]),
@@ -946,10 +950,16 @@ def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
                 format_money(salary.get("p75"), currency),
                 format_number(dispersion.get("p90_over_p10"), 2),
             ))
+        # Une dimension dont aucun segment n'atteint le seuil ne laisse pas
+        # un intertitre au-dessus d'un tableau vide.
+        if not rows:
+            continue
         blocks.append(f'<h3>{_e(segment["label"])}</h3>')
         blocks.append(_table(
             ["Segment", "Effectif", "Moyenne", "Médiane", "Q1", "Q3", "P90/P10"], rows
         ))
+    if len(blocks) == 1:
+        return ""
     return "".join(blocks)
 
 
@@ -1003,15 +1013,13 @@ def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
                  format_percent(plein.get("explained_gap"))),
         ])
 
+    # Meme regle que pour les segments : une categorie ou l'un des deux
+    # sexes n'atteint pas le seuil n'entre pas dans le tableau. Elle y
+    # tenait une ligne de « masque » repete quatre fois.
     rows = []
-    for item in sorted(equity.get("categories", []),
-                       key=lambda entry: (not entry.get("published"),
-                                          -(entry.get("at_stake") or 0.0))):
-        if not item.get("published"):
-            rows.append((item["category"], str(item["female_count"]),
-                         str(item["male_count"]), "masqué", "masqué",
-                         "masqué", "—"))
-            continue
+    for item in sorted((entry for entry in equity.get("categories", [])
+                        if entry.get("published")),
+                       key=lambda entry: -(entry.get("at_stake") or 0.0)):
         rows.append((item["category"], str(item["female_count"]),
                      str(item["male_count"]),
                      format_money(item.get("female_median"), currency),
@@ -1096,8 +1104,11 @@ def render_report(analysis: Dict[str, Any]) -> str:
     currency = analysis.get("salary", {}).get("currency", "EUR")
     generated = manifest.get("date_analyse", _dt.datetime.now().isoformat(timespec="seconds"))
     title = analysis.get("title", "Analyse de rémunération")
+    # Pas de section « Controle qualite des donnees ». Le controle se lit a
+    # l'ecran, avant de produire quoi que ce soit : c'est le travail de
+    # celui qui analyse, et il est fait quand le document part. Le lecteur
+    # du document n'a pas a arbitrer sur un encodage ou un doublon.
     sections = [
-        _quality_section(analysis.get("quality", {})),
         _population_section(analysis.get("population", {})),
         _salary_section(analysis.get("salary", {})),
         _distribution_section(analysis.get("distribution", {}), currency),
@@ -1129,9 +1140,6 @@ def render_report(analysis: Dict[str, Any]) -> str:
 <div class="corps">
 {''.join(sections)}
 </div>
-<footer>
-{_e(ENGINE_NAME)} v{_e(__version__)}
-</footer>
 </div>
 <script>{_JS}</script>
 </body>

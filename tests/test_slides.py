@@ -67,9 +67,27 @@ class TestDeckStructure(unittest.TestCase):
         # Le titre du nuage suit les deux axes, qui se parametrent : ecrit
         # en dur, il annoncait « Anciennete et remuneration » quel que soit
         # ce que le dessin montrait.
-        for expected in ("Qualité des données", "Population", "Rémunération",
+        for expected in ("Population", "Pyramide des âges",
+                         "Pyramide des anciennetés", "Rémunération",
                          "Distribution", "Salaire de base et ancienneté"):
             self.assertIn(expected, titles)
+        # Pas de planche « Qualité des données » : le contrôle se lit à
+        # l'écran avant de produire quoi que ce soit, et il est fait quand
+        # le document part.
+        self.assertNotIn("Qualité des données", titles)
+
+    def test_the_payroll_says_what_it_is_the_sum_of(self):
+        """« Masse salariale » tout court laissait croire à un coût complet,
+        primes et charges comprises. Le libellé suit le champ analysé, et
+        vient du mapping — pas du code."""
+        from hr_analytics.core.reporting import payroll_label
+
+        self.assertEqual(payroll_label({"field_label": "Salaire de base"}),
+                         "Masse salariale (salaire de base)")
+        self.assertEqual(payroll_label({"field_label": "Rémunération totale"}),
+                         "Masse salariale (rémunération totale)")
+        # Sans libellé déclaré, rien n'est inventé.
+        self.assertEqual(payroll_label({}), "Masse salariale")
 
     def test_one_slide_per_segment_dimension(self):
         payload = analysis_payload(self.directory, segments=["business_unit", "groupe"])
@@ -296,11 +314,21 @@ class TestResponsiveSlides(unittest.TestCase):
 
     def test_page_geometry_stays_fixed(self):
         # C'est ce qui garantit que l'ecran, l'impression et le PDF montrent
-        # la meme chose : on met a l'echelle, on ne reagence pas.
-        self.assertIn("width:1280px;height:720px", self.html)
+        # la meme chose : on met a l'echelle, on ne reagence pas. La hauteur
+        # est un minimum et non un plafond : une planche trop pleine
+        # s'allonge, elle ne se coupe pas.
+        self.assertIn("width:1280px;min-height:720px", self.html)
+
+    def test_nothing_is_ever_clipped(self):
+        """Une hauteur fixe et « overflow:hidden » faisaient disparaitre le
+        bas des tableaux longs : le lecteur voyait une page propre, sans
+        savoir qu'il lui manquait quatre lignes."""
+        geometrie = self.html[self.html.index(".slide{"):]
+        self.assertNotIn("overflow:hidden", geometrie[:geometrie.index("}")])
 
     def test_scale_drives_both_the_frame_and_the_page(self):
-        self.assertIn("height:calc(720px * var(--slide-scale,1))", self.html)
+        self.assertIn("min-height:calc(720px * var(--slide-scale,1))",
+                      self.html)
         self.assertIn("transform:scale(var(--slide-scale,1))", self.html)
 
     def test_scale_is_computed_and_capped_at_one(self):
@@ -310,7 +338,7 @@ class TestResponsiveSlides(unittest.TestCase):
     def test_printing_resets_the_scale(self):
         printing = self.html[self.html.index("@media print"):]
         self.assertIn("--slide-scale:1 !important", printing)
-        self.assertIn(".frame{width:1280px;height:720px", printing)
+        self.assertIn(".frame{width:1280px;min-height:720px", printing)
 
     def test_behaviour_without_javascript_is_the_previous_one(self):
         # La valeur de repli est 1 : sans JavaScript, la page s'affiche a sa
@@ -340,9 +368,11 @@ class TestSummaryComposition(unittest.TestCase):
     def test_the_summary_is_a_single_page(self):
         self.assertEqual(len(build_summary(self.payload)), 1)
 
-    def test_the_two_pyramids_the_donut_and_the_boxplot_are_the_charts(self):
-        self.assertEqual(self._charts(),
-                         ["pyramid", "pyramid", "donut", "boxplot"])
+    def test_the_two_pyramids_and_the_donut_are_the_charts(self):
+        """Pas de boîte à moustaches sous le tableau à trois colonnes : elle
+        y redessinerait la seule colonne « Ensemble », que le lecteur vient
+        de lire chiffre par chiffre, au prix d'un tiers de la page."""
+        self.assertEqual(self._charts(), ["pyramid", "pyramid", "donut"])
 
     def test_no_scatter_on_the_summary(self):
         self.assertNotIn("scatter", self._charts())
@@ -351,9 +381,15 @@ class TestSummaryComposition(unittest.TestCase):
         bands = [b for b in self.summary.blocks if b.kind == "kpis"]
         self.assertEqual(len(bands), 1)
         labels = [item["label"] for item in bands[0].payload["items"]]
-        for attendu in ("Effectif", "Âge moyen", "Âge médian",
-                        "Ancienneté moyenne", "Ancienneté médiane"):
+        for attendu in ("Effectif", "Âge médian", "Ancienneté médiane",
+                        "Salaire médian"):
             self.assertIn(attendu, labels)
+        # Les médianes seules. Une moyenne d'âge posée à côté de sa médiane
+        # fait deux chiffres à deux ans l'un de l'autre, et le lecteur
+        # arbitre entre les deux au lieu de lire la page. Les moyennes
+        # restent dans la vue détaillée, où il y a la place de les comparer.
+        self.assertNotIn("Âge moyen", labels)
+        self.assertNotIn("Ancienneté moyenne", labels)
 
     def test_the_csp_split_is_published_as_a_ring(self):
         """En anneau plutôt qu'en tableau : des parts se comparent à l'œil
@@ -415,12 +451,14 @@ class TestSummaryComposition(unittest.TestCase):
         """Le montant seul ne dit pas de combien la borne s'ecarte ; l'ecart
         seul ne dit pas de quel montant on parle. Les deux vont ensemble.
 
-        L'intitulé se raccourcit quand les deux sexes prennent leur
-        colonne : cinq colonnes sur une demi-page ne laissent pas la place
-        d'écrire « Écart à la médiane » en entier. La colonne, elle, reste."""
+        Le tableau prend toute la largeur dès qu'il porte les deux sexes :
+        l'intitulé s'écrit alors en entier."""
         rendered = render_slides_html([self.summary], self.payload)
-        self.assertIn("Écart méd.", rendered)
+        self.assertIn("Écart à la médiane", rendered)
         self.assertRegex(rendered, r"[+−]\d+\s*%")
+        # La médiane ne s'écarte pas d'elle-même : un tiret au milieu de la
+        # colonne se lisait comme une donnée manquante.
+        self.assertIn("référence", rendered)
 
     def test_the_expert_ratios_stay_out_of_the_summary(self):
         rendered = render_slides_html([self.summary], self.payload)
@@ -438,7 +476,23 @@ class TestSummaryComposition(unittest.TestCase):
         charts = [block.payload["type"]
                   for block in build_summary(payload)[0].blocks
                   if block.kind == "chart"]
-        self.assertEqual(charts, ["pyramid", "donut", "boxplot"])
+        self.assertEqual(charts, ["pyramid", "donut"])
+
+    def test_without_the_two_sexes_the_boxplot_comes_back(self):
+        """Sans ventilation par sexe, le tableau est maigre et la forme,
+        elle, apprend quelque chose : la boîte se pose à côté."""
+        payload = dict(self.payload)
+        equity = dict(payload["pay_equity"])
+        equity["bounds_by_sex"] = {}
+        payload["pay_equity"] = equity
+        resume = build_summary(payload)[0]
+        charts = [block.payload["type"] for block in resume.blocks
+                  if block.kind == "chart"]
+        self.assertIn("boxplot", charts)
+        largeurs = {block.title: block.width for block in resume.blocks
+                    if block.kind in ("table", "chart")}
+        self.assertEqual(largeurs["Dispersion des rémunérations"], "half")
+        self.assertEqual(largeurs["Boîte à moustaches"], "half")
 
     def test_the_boxplot_goes_when_the_percentiles_do(self):
         payload = dict(self.payload)
@@ -629,8 +683,10 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
             "above_threshold": False,
         })
         html = render_report(analysis)
-        self.assertIn("CategorieMinuscule", html)
-        self.assertIn("masqué", html)
+        # La catégorie ne tient plus une ligne de « masqué » répété : elle
+        # ne paraît pas du tout. Ce qui compte n'a pas change — aucun de ses
+        # montants ne sort.
+        self.assertNotIn("CategorieMinuscule", html)
         self.assertNotIn("91 000", html)
         self.assertNotIn("99 000", html)
 

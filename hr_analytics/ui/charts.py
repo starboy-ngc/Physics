@@ -1670,8 +1670,11 @@ class PyramidChart(tk.Frame):
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
 
     def set_rows(self, rows: Sequence[Dict[str, Any]]) -> None:
-        # La plus jeune tranche en bas : une pyramide se lit de bas en haut.
-        self.rows = list(reversed([dict(row) for row in rows]))
+        # L'ordre vient du moteur, qui publie les tranches de la plus agee
+        # a la plus jeune. Le renversement se faisait ici, et seule cette
+        # pyramide-ci en profitait : les tableaux de l'ecran, le PDF, le
+        # HTML et le classeur lisaient l'ordre inverse.
+        self.rows = [dict(row) for row in rows]
         self._fit()
         self.pack_propagate(False)
         self.redraw()

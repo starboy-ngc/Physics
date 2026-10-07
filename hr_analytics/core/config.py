@@ -139,6 +139,10 @@ DEFAULTS: Dict[str, Any] = {
     },
     "age_parameters": {
         "bands": [
+            # Les mineurs et les apprentis existent dans un fichier de paie :
+            # sans tranche pour les accueillir, ils tombaient dans « non
+            # renseigne », a cote de ceux dont la date de naissance manque.
+            {"label": "<20", "min": 0, "max": 20},
             {"label": "20-29", "min": 20, "max": 29, "max_inclusive": True},
             {"label": "30-39", "min": 30, "max": 39, "max_inclusive": True},
             {"label": "40-49", "min": 40, "max": 49, "max_inclusive": True},

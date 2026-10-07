@@ -2260,9 +2260,12 @@ class TestTheMergedOverview(unittest.TestCase):
             self.assertTrue(pyramid.has_split())
 
     def test_a_pyramid_reads_from_the_bottom_up(self):
-        """La plus jeune tranche en bas : c'est la lecture attendue."""
+        """La plus jeune tranche en bas, la plus agee au sommet : c'est la
+        lecture attendue, et c'est le moteur qui publie cet ordre — tous
+        les tableaux et tous les documents le partagent."""
         pyramid = self._pyramids()[0]
-        self.assertTrue(pyramid.rows[-1]["label"].startswith("2"))
+        self.assertTrue(pyramid.rows[-1]["label"].startswith("<"))
+        self.assertTrue(pyramid.rows[0]["label"].startswith("6"))
 
     def _panel_texts(self, bandes, measure=""):
         import tkinter as tk
@@ -2323,8 +2326,9 @@ class TestTheMergedOverview(unittest.TestCase):
         """Le decoupage s'etend selon les carrieres presentes."""
         labels = [row["label"] for row in self._pyramids()[-1].rows]
         self.assertGreater(len(labels), 5)
-        # Les tranches sont renversees pour la lecture de bas en haut.
+        # La plus longue anciennete au sommet, comme l'age.
         self.assertTrue(labels[0].startswith(">"))
+        self.assertTrue(labels[-1].startswith("<"))
 
     def test_a_file_without_sex_falls_back_to_plain_bars(self):
         """Sans la colonne « Sexe », une pyramide n'aurait qu'une aile."""

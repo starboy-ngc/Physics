@@ -246,11 +246,15 @@ def _band_share(
         if label in counts:
             counts[label] += 1
         part[_sex_of(employee, config)] += 1
+    # Du plus age au plus jeune, du plus ancien au plus recent. C'est le
+    # sens d'une pyramide : la base en bas, les anciens au sommet. Le
+    # tableau suit le dessin, et les deux se lisent ensemble ; l'ordre de
+    # declaration des tranches ne regit plus que leur decoupage.
     rows = [
         {"label": label, "count": value, "share": _share(value, headcount),
          "female": split[label]["female"], "male": split[label]["male"],
          "unknown_sex": split[label]["unknown"], "catch_all": False}
-        for label, value in counts.items()
+        for label, value in reversed(list(counts.items()))
     ]
     total_outside = sum(outside.values())
     if total_outside:

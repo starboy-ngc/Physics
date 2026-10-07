@@ -267,14 +267,54 @@ if __name__ == "__main__":
     unittest.main()
 
 
-class TestTheQualitySectionStaysShort(unittest.TestCase):
-    """La restitution dit si le fichier est lisible, pas comment le corriger.
+class TestWhatTheDocumentsLeaveOut(unittest.TestCase):
+    """Ce qui est sous le seuil ne tient plus une ligne pour le dire.
 
-    Le detail des constats y tenait une pleine page — onze lignes du type
-    « avertissement / valeurs non numeriques dans le champ tenure / 2 ».
-    Ce n'est pas ce qu'un lecteur de restitution cherche, et cela repousse
-    d'autant les chiffres qu'il cherche. Il reste la ou l'on corrige : la
-    fenetre, et « controle --json ».
+    Aucune donnée RH réelle.
+    """
+
+    def _rapport(self, lignes):
+        from hr_analytics.core.reporting import render_report
+
+        return render_report({
+            "population": {"headcount": 40},
+            "salary": {"median": 40000.0, "currency": "EUR"},
+            "segments": [{"label": "Établissement", "field": "site",
+                          "rows": lignes}],
+            "manifest": {},
+        })
+
+    def _ligne(self, nom, effectif, masquee):
+        return {"segment": nom, "headcount": effectif, "masked": masquee,
+                "salary": {} if masquee else {
+                    "mean": 40000.0, "median": 39000.0, "p25": 35000.0,
+                    "p75": 44000.0, "dispersion": {"p90_over_p10": 1.8}}}
+
+    def test_a_segment_below_the_threshold_is_not_a_row_of_dashes(self):
+        html = self._rapport([self._ligne("Grand", 120, False),
+                              self._ligne("Minuscule", 3, True)])
+        self.assertIn("Grand", html)
+        self.assertNotIn("Minuscule", html)
+
+    def test_a_dimension_with_nothing_publishable_takes_its_heading_away(self):
+        """Un intertitre au-dessus d'un tableau vide n'apprend rien."""
+        html = self._rapport([self._ligne("Minuscule", 3, True)])
+        self.assertNotIn("Établissement", html)
+        self.assertNotIn("Analyses par segment", html)
+
+
+class TestTheQualitySectionStaysShort(unittest.TestCase):
+    """La restitution ne parle pas de la qualité du fichier.
+
+    Le détail des constats y tenait une pleine page — onze lignes du type
+    « avertissement / valeurs non numériques dans le champ tenure / 2 ».
+    Puis il n'en restait qu'un statut et six compteurs. Puis plus rien : le
+    contrôle se fait à l'écran, avant de produire quoi que ce soit, et il
+    est fait quand le document part. Le lecteur du document n'a pas à
+    arbitrer sur un encodage ou un doublon ; une page d'autocritique en
+    tête jette un doute sur tout ce qui suit.
+
+    Le détail reste là où l'on corrige : la fenêtre, et « controle --json ».
     """
 
     def _rapport(self):
@@ -299,12 +339,12 @@ class TestTheQualitySectionStaysShort(unittest.TestCase):
         }
         return render_report(analyse)
 
-    def test_the_status_is_still_there(self):
-        """On doit savoir si le fichier est assez propre pour lire la suite."""
+    def test_nothing_about_the_file_quality_reaches_the_document(self):
         html = self._rapport()
-        self.assertIn("POINTS DE VIGILANCE", html)
-        self.assertIn("Lignes importées", html)
-        self.assertIn("Anomalies critiques", html)
+        self.assertNotIn("POINTS DE VIGILANCE", html)
+        self.assertNotIn("Lignes importées", html)
+        self.assertNotIn("Anomalies critiques", html)
+        self.assertNotIn("Contrôle qualité", html)
 
     def test_the_findings_are_no_longer_listed(self):
         html = self._rapport()
@@ -327,13 +367,31 @@ class TestTheDocumentsNeverRepeatThemselves(DocumentCase):
     """Un document dit d'où vient l'analyse. Il ne se décrit pas lui-même,
     et ne répète pas en pied de page ce qu'il porte déjà."""
 
-    def test_the_report_footer_carries_no_fingerprint(self):
-        """L'empreinte du fichier source est une donnée de traçabilité :
-        elle vit dans le manifeste, écrit à côté des documents."""
+    def test_the_report_has_no_footer_at_all(self):
+        """Ni empreinte, ni nom d'outil, ni numéro de version.
+
+        L'empreinte du fichier source est une donnée de traçabilité : elle
+        vit dans le manifeste, écrit à côté des documents. Le nom de l'outil
+        et sa version aussi : un document remis à un CSE ou à une direction
+        parle de la population, pas du logiciel qui l'a mis en page.
+        """
         empreinte = self.payload["manifest"].get("empreinte_source") or ""
         self.assertTrue(empreinte, "le manifeste devrait porter l'empreinte")
-        pied = self.report.split("<footer>")[1].split("</footer>")[0]
-        self.assertNotIn("empreinte", pied.lower())
-        self.assertNotIn(empreinte[:16], pied)
-        # Ce qui reste : de quoi savoir quel outil a produit la page.
-        self.assertIn("v", pied)
+        self.assertNotIn("<footer>", self.report)
+        self.assertNotIn(empreinte[:16], self.report)
+
+    def test_no_document_names_the_tool_or_its_version(self):
+        from hr_analytics.core.slides import (build_deck, build_summary,
+                                              render_slides_html)
+        from hr_analytics.version import ENGINE_NAME, __version__
+
+        for document in (self.report,
+                         render_slides_html(build_deck(self.payload),
+                                            self.payload),
+                         render_slides_html(build_summary(self.payload),
+                                            self.payload)):
+            self.assertNotIn(f"v{__version__}", document)
+            # Le nom peut rester dans le titre que l'utilisateur a choisi ;
+            # c'est la signature « outil + version » qui ne doit plus
+            # apparaître.
+            self.assertNotIn(f"{ENGINE_NAME} v", document)
