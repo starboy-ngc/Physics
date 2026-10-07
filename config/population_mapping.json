@@ -24,11 +24,20 @@
     ],
     "hire_date": [
       "Date d'entrée",
+      "Date début",
+      "Date de début",
+      "Date d'embauche",
       "Hire date"
     ],
     "leave_date": [
       "Date de sortie",
+      "Date de fin",
       "Leave date"
+    ],
+    "extraction_date": [
+      "Date d'extraction",
+      "Date_d_extraction",
+      "Extraction date"
     ],
     "business_unit": [
       "BU",
@@ -92,6 +101,9 @@
     ],
     "fte": [
       "Temps de travail",
+      "Tx Activité",
+      "Taux d'activité",
+      "Taux activité",
       "FTE"
     ],
     "base_salary": [
@@ -176,7 +188,8 @@
   "date": [
     "birth_date",
     "hire_date",
-    "leave_date"
+    "leave_date",
+    "extraction_date"
   ],
   "personal": [
     "last_name",

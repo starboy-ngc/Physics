@@ -54,7 +54,7 @@ NATURE_LABELS: Dict[str, str] = {
     "variable": "Variable",
     "exceptionnel": "Exceptionnel",
     "avantage": "Avantage en nature",
-    "exclu": "Exclu du calcul",
+    "exclu": "Exclu",
 }
 
 #: Natures qui entrent dans la remuneration totale. « exclu » n'y est
@@ -188,12 +188,19 @@ class Reconciliation:
     late_entrants: int = 0
     #: Salaries dont la date d'entree est illisible ou absente.
     unknown_entry: int = 0
+    #: Matricules portes par plusieurs salaries : la jointure y serait
+    #: ambigue, ils sont ecartes des deux cotes.
+    duplicate_ids: List[str] = _field(default_factory=list)
     #: Effectif sur lequel portent les chiffres.
     population: int = 0
 
     @property
     def orphans(self) -> int:
         return len(self.orphan_ids)
+
+    @property
+    def duplicates(self) -> int:
+        return len(self.duplicate_ids)
 
 
 def nature_rules(config) -> Dict[str, str]:
@@ -247,6 +254,53 @@ def _identity(employee: Any, field_name: str) -> str:
     return str(employee.value(field_name) or "").strip()
 
 
+def present_throughout(population: Population,
+                       period: Period,
+                       id_field: str = "employee_id",
+                       hire_field: str = "hire_date",
+                       ) -> Tuple[Dict[str, Any], set, int, List[str]]:
+    """Les salaries presents sur toute la periode, et ceux qui ne le sont pas.
+
+    Rend quatre choses : les retenus par matricule, les matricules entres
+    en cours de periode, le nombre de salaries dont la date d'entree est
+    absente ou illisible, et les matricules portes par plusieurs
+    salaries.
+
+    Ces derniers rendent la jointure ambigue : a quel salarie rattacher
+    une prime portant ce matricule ? Les garder en silence reviendrait a
+    choisir le dernier lu, c'est-a-dire a laisser l'ordre des lignes
+    decider d'une remuneration. Ils sont ecartes et nommes.
+
+    Ce dernier compte n'est pas un detail. Tant que la colonne de date
+    d'entree n'est pas associee, personne ne peut etre ecarte — le
+    garde-fou est inerte, et le taux de service se lit comme une
+    politique alors qu'il n'est qu'un effet du calendrier. L'ecran doit
+    le dire plutot que de rendre un chiffre faux sans prevenir.
+    """
+    connus: Dict[str, Any] = {}
+    tardifs: set = set()
+    doublons: Dict[str, None] = {}
+    sans_date = 0
+    for employee in population:
+        matricule = _identity(employee, id_field)
+        if not matricule:
+            continue
+        if matricule in connus or matricule in tardifs:
+            doublons.setdefault(matricule, None)
+            continue
+        entree = parse_date(employee.value(hire_field))
+        if entree is None:
+            sans_date += 1
+        elif entree > period.start:
+            tardifs.add(matricule)
+            continue
+        connus[matricule] = employee
+    for matricule in doublons:
+        connus.pop(matricule, None)
+        tardifs.discard(matricule)
+    return connus, tardifs, sans_date, list(doublons)
+
+
 def aggregate(lines: Sequence[Line],
               population: Population,
               rules: Dict[str, str],
@@ -265,25 +319,14 @@ def aggregate(lines: Sequence[Line],
     retires parce que les compter donnerait un taux de service faux, et
     le rapprochement dit combien ils sont.
     """
-    connus: Dict[str, Any] = {}
-    tardifs: set = set()
-    sans_date = 0
-    for employee in population:
-        matricule = _identity(employee, id_field)
-        if not matricule:
-            continue
-        entree = parse_date(employee.value(hire_field))
-        if entree is None:
-            sans_date += 1
-        elif entree > period.start:
-            tardifs.add(matricule)
-            continue
-        connus[matricule] = employee
+    connus, tardifs, sans_date, doublons = present_throughout(
+        population, period, id_field, hire_field)
 
     totaux: Dict[str, Dict[str, float]] = {}
     compte = Reconciliation(lines=len(lines),
                             late_entrants=len(tardifs),
                             unknown_entry=sans_date,
+                            duplicate_ids=doublons,
                             population=len(connus))
     orphelins: Dict[str, None] = {}
     for ligne in lines:
@@ -347,3 +390,426 @@ def employee_package(employee: Any,
         "variable_share": (None if not total else 100.0 * variable / total),
         "served": variable > 0,
     }
+
+
+# --------------------------------------------------------------- lecture
+
+#: Champs sans lesquels un fichier d'elements n'est pas exploitable. La
+#: date n'en est pas : la plupart des extractions de paie n'en portent
+#: pas, et c'est la periode declaree qui fait foi.
+REQUIRED_FIELDS: Tuple[str, ...] = ("employee_id", "label", "amount")
+
+
+def resolve_package_mapping(headers: Sequence[str], config):
+    """Associe les en-tetes du fichier d'elements a ses quatre champs.
+
+    Le meme travail que pour la population, sur un vocabulaire bien plus
+    court : qui, quoi, combien, et quand si le fichier le dit.
+    """
+    from .mapping import MappingResult, normalise_label
+
+    champs: Dict[str, Sequence[str]] = config.get(
+        "package_parameters.fields", {}) or {}
+    alias: Dict[str, str] = {}
+    for nom, libelles in champs.items():
+        alias[normalise_label(nom)] = nom
+        for libelle in libelles:
+            alias[normalise_label(libelle)] = nom
+
+    resultat = MappingResult()
+    for index, entete in enumerate(headers):
+        cle = normalise_label(entete)
+        if not cle:
+            continue
+        nom = alias.get(cle)
+        if nom is None:
+            resultat.unknown_columns.append(entete)
+            continue
+        if nom in resultat.field_to_index:
+            resultat.duplicate_columns.append(entete)
+            continue
+        resultat.field_to_column[nom] = entete
+        resultat.field_to_index[nom] = index
+    resultat.missing_required = [
+        nom for nom in REQUIRED_FIELDS if nom not in resultat.field_to_index]
+    return resultat
+
+
+def ensure_package_mapping(mapping, source: str = "") -> None:
+    """Refuse un fichier d'elements auquel il manque l'essentiel.
+
+    Le message nomme ce qui manque et ce que l'outil a vu a la place :
+    « colonne obligatoire absente » laisse chercher.
+    """
+    if not mapping.missing_required:
+        return
+    noms = {"employee_id": "le matricule",
+            "label": "l'intitulé de l'élément",
+            "amount": "le montant"}
+    manque = ", ".join(noms[nom] for nom in mapping.missing_required)
+    vues = ", ".join(f"« {c} »" for c in mapping.unknown_columns[:8]) or "aucune"
+    raise ConfigError(
+        f"Ce fichier d'éléments variables n'est pas exploitable : "
+        f"{manque} ne s'y trouve pas. Colonnes lues : {vues}. "
+        "Associez-les dans « Éléments variables… ».",
+        technical=("package mapping missing: "
+                   f"{','.join(mapping.missing_required)}"),
+    )
+
+
+def read_lines(table, config) -> Tuple[List[Line], Any]:
+    """Transforme un tableau brut en lignes d'elements.
+
+    Les lignes illisibles ne sont pas rejetees ici : elles traversent avec
+    un montant absent, et c'est le rapprochement qui les compte. Un
+    fichier de paie en porte toujours quelques-unes — un total, une ligne
+    de separation — et s'arreter a la premiere ferait d'un detail un
+    echec.
+    """
+    from .normalize import parse_number
+
+    mapping = resolve_package_mapping(table.headers, config)
+    ensure_package_mapping(mapping, table.source_name)
+    i_id = mapping.field_to_index["employee_id"]
+    i_label = mapping.field_to_index["label"]
+    i_amount = mapping.field_to_index["amount"]
+    i_day = mapping.field_to_index.get("day")
+
+    lignes: List[Line] = []
+    for row in table.rows:
+        def cellule(index):
+            return row[index] if index is not None and index < len(row) else None
+
+        matricule = str(cellule(i_id) or "").strip()
+        intitule = str(cellule(i_label) or "").strip()
+        montant = parse_number(cellule(i_amount))
+        if not matricule and not intitule and montant is None:
+            # Ligne vide : un classeur en porte souvent en pied.
+            continue
+        lignes.append(Line(employee_id=matricule, label=intitule,
+                           amount=montant,
+                           day=parse_date(cellule(i_day))))
+    return lignes, mapping
+
+
+def observed_period(lines: Sequence[Line]) -> Optional[Period]:
+    """Les bornes que portent les dates du fichier, s'il en porte.
+
+    Ce n'est qu'une *proposition* : un fichier ne sait pas ce qu'il ne
+    contient pas. Si aucune prime n'a ete versee en janvier, ses bornes
+    commencent en fevrier, et la periode reelle commence pourtant en
+    janvier. C'est a un humain de trancher.
+    """
+    jours = [ligne.day for ligne in lines if ligne.day is not None]
+    if not jours:
+        return None
+    return Period(min(jours), max(jours))
+
+
+# ---------------------------------------------------------------- analyse
+
+def _median(valeurs: Sequence[float]) -> Optional[float]:
+    from . import statistics_engine as stats
+    return stats.median(list(valeurs)) if valeurs else None
+
+
+def _gap(hommes: Optional[float], femmes: Optional[float]) -> Optional[float]:
+    """Ecart femmes/hommes, rapporte au montant masculin.
+
+    Meme convention que partout ailleurs dans l'outil : un nombre negatif
+    dit que les femmes touchent moins.
+    """
+    if hommes is None or femmes is None or not hommes:
+        return None
+    return 100.0 * (femmes - hommes) / hommes
+
+
+def packages_of(population: Population,
+                totals: Dict[str, Dict[str, float]],
+                config,
+                period: Period,
+                ) -> List[Tuple[Any, Dict[str, Any]]]:
+    """Le package de chaque salarie retenu, salarie par salarie.
+
+    Seuls les presents sur toute la periode en ont un : c'est la meme
+    regle qu'au rapprochement, et il serait incomprehensible que les deux
+    ne portent pas sur les memes gens.
+    """
+    from .config import analysis_field
+
+    salary_field = analysis_field(config)
+    connus, _tardifs, _sans, _doubles = present_throughout(
+        population, period)
+    return [(employee,
+             employee_package(employee, totals.get(matricule, {}),
+                              salary_field, period))
+            for matricule, employee in connus.items()]
+
+
+def _sex_of(employee: Any, config) -> str:
+    from .pay_equity import classify as classify_sex
+
+    section = config.section("pay_equity_parameters")
+    return classify_sex(employee.value(section.get("gender_field", "gender")),
+                        tuple(section.get("female_values") or ()),
+                        tuple(section.get("male_values") or ()))
+
+
+def coverage(packages: Sequence[Tuple[Any, Dict[str, Any]]]
+             ) -> Dict[str, int]:
+    """Sur combien de salaries une *part* peut se calculer.
+
+    Une part suppose un denominateur : le salaire ramene au temps plein.
+    Un temps de travail inconnu ne se suppose pas egal a un — ce serait
+    compter un temps partiel pour un temps plein —, donc ces salaries
+    n'ont pas de part du tout.
+
+    Sans ce compte, un fichier dont la colonne de temps de travail n'est
+    pas reconnue donnerait un ecran entierement vide, et rien n'en
+    dirait la raison. C'est arrive, et c'est pour ca que la fonction
+    existe.
+    """
+    avec = sum(1 for _e, p in packages if p["base"] is not None)
+    return {"with_base": avec, "without_base": len(packages) - avec,
+            "total": len(packages)}
+
+
+def segment_rows(packages: Sequence[Tuple[Any, Dict[str, Any]]],
+                 config,
+                 dimension: str,
+                 ) -> List[Dict[str, Any]]:
+    """Une ligne par valeur de la dimension : la table de l'ecran.
+
+    Les montants sont des medianes et non des moyennes : une prime
+    exceptionnelle versee a trois personnes deplacerait une moyenne sans
+    rien dire de ce que touche le metier.
+
+    Le taux de service se compte sur l'effectif retenu, pas sur
+    l'effectif du fichier — c'est la seule facon qu'il mesure une
+    politique et non un calendrier.
+    """
+    from .metrics import PrivacyRules
+
+    rules = PrivacyRules.from_config(config)
+    groupes: Dict[str, List[Tuple[Any, Dict[str, Any]]]] = {}
+    for employee, package in packages:
+        valeur = str(employee.value(dimension) or "").strip()
+        if not valeur:
+            continue
+        groupes.setdefault(valeur, []).append((employee, package))
+
+    lignes = [_segment_row(valeur, membres, rules, config)
+              for valeur, membres in groupes.items()]
+    # La part du variable d'abord, la plus forte en tete : c'est la
+    # question posee a cet ecran. Ce qui ne se publie pas va en bas.
+    lignes.sort(key=lambda row: (row["variable_share"] is None,
+                                 -(row["variable_share"] or 0.0)))
+    return lignes
+
+
+def _segment_row(valeur, membres, rules, config) -> Dict[str, Any]:
+    from .pay_equity import FEMALE, MALE
+
+    bases = [p["base"] for _e, p in membres if p["base"] is not None]
+    variables = [p["variable"] for _e, p in membres if p["served"]]
+    parts = [p["variable_share"] for _e, p in membres
+             if p["variable_share"] is not None]
+
+    servis: Dict[str, List[float]] = {FEMALE: [], MALE: []}
+    effectif: Dict[str, int] = {FEMALE: 0, MALE: 0}
+    for employee, package in membres:
+        sexe = _sex_of(employee, config)
+        if sexe not in effectif:
+            continue
+        effectif[sexe] += 1
+        if package["served"]:
+            servis[sexe].append(package["variable"])
+
+    publiable = len(variables) >= rules.min_publish
+    # L'ecart se masque sur les *servis* de chaque sexe, non sur
+    # l'effectif : un metier de quarante femmes dont dix sont servies
+    # publierait sinon la prime de dix personnes.
+    comparable = (len(servis[FEMALE]) >= rules.min_publish
+                  and len(servis[MALE]) >= rules.min_publish)
+    return {
+        "segment": valeur,
+        "headcount": len(membres),
+        "base_median": (_median(bases)
+                        if len(bases) >= rules.min_publish else None),
+        "served": len(variables),
+        "served_share": 100.0 * len(variables) / len(membres),
+        "variable_median": _median(variables) if publiable else None,
+        "variable_share": (_median(parts)
+                           if len(parts) >= rules.min_publish else None),
+        "variable_gap": (_gap(_median(servis[MALE]), _median(servis[FEMALE]))
+                         if comparable else None),
+        "published": publiable,
+        #: Salaries du segment pour lesquels une part se calcule. Une
+        #: part absente partout n'est pas un segment sans variable :
+        #: c'est un denominateur manquant, et les deux se distinguent.
+        "base_known": len(bases),
+        "by_sex": {
+            "female": {"headcount": effectif[FEMALE],
+                       "served": len(servis[FEMALE])},
+            "male": {"headcount": effectif[MALE],
+                     "served": len(servis[MALE])},
+        },
+    }
+
+
+def composition(membres: Sequence[Tuple[Any, Dict[str, Any]]],
+                config) -> List[Dict[str, Any]]:
+    """La composition de la remuneration, pour l'ensemble puis par sexe.
+
+    Trois lignes empilables : ce qui vient de la base, des primes fixes,
+    du variable, des avantages. Les medianes sont prises nature par
+    nature, de sorte qu'une ligne ne depend pas de l'autre — leur somme
+    n'est donc pas la mediane du total, et ce n'est pas ce qu'elle
+    pretend etre.
+    """
+    from .metrics import PrivacyRules
+    from .pay_equity import FEMALE, MALE
+
+    rules = PrivacyRules.from_config(config)
+    groupes = [("Ensemble", None), ("Femmes", FEMALE), ("Hommes", MALE)]
+    lignes: List[Dict[str, Any]] = []
+    for intitule, sexe in groupes:
+        retenus = [(e, p) for e, p in membres
+                   if sexe is None or _sex_of(e, config) == sexe]
+        if len(retenus) < rules.min_publish:
+            lignes.append({"label": intitule, "headcount": len(retenus),
+                           "published": False, "parts": {}, "base": None,
+                           "total": None})
+            continue
+        bases = [p["base"] for _e, p in retenus if p["base"] is not None]
+        parts = {nature: _median([p["by_nature"].get(nature, 0.0)
+                                  for _e, p in retenus])
+                 for nature in COMPTEES}
+        base = _median(bases)
+        lignes.append({
+            "label": intitule,
+            "headcount": len(retenus),
+            "published": True,
+            "base": base,
+            "parts": parts,
+            "total": (None if base is None
+                      else base + sum(v or 0.0 for v in parts.values())),
+        })
+    return lignes
+
+
+def spread(membres: Sequence[Tuple[Any, Dict[str, Any]]],
+           config) -> Optional[Dict[str, Optional[float]]]:
+    """La dispersion du variable a l'interieur d'un metier.
+
+    Sur les seuls servis : y compter ceux qui n'ont rien touche ecraserait
+    le premier quartile a zero et ferait passer une question de
+    distribution — « combien touchent ceux qui touchent » — pour une
+    question de couverture, qui se lit ailleurs.
+    """
+    from . import statistics_engine as stats
+    from .metrics import PrivacyRules
+
+    rules = PrivacyRules.from_config(config)
+    montants = [p["variable"] for _e, p in membres if p["served"]]
+    if len(montants) < rules.min_publish:
+        return None
+    return {
+        "min": stats.minimum(montants),
+        "q1": stats.percentile(montants, 25),
+        "median": stats.median(montants),
+        "q3": stats.percentile(montants, 75),
+        "max": stats.maximum(montants),
+        "count": len(montants),
+    }
+
+
+def element_rows(lines: Sequence[Line],
+                 membres: Sequence[Tuple[Any, Dict[str, Any]]],
+                 config,
+                 period: Period,
+                 rules_by_label: Dict[str, str],
+                 ) -> List[Dict[str, Any]]:
+    """Les elements verses sur un metier, intitule par intitule.
+
+    C'est la vue qui rend le parametrage visible : on y lit la nature de
+    chaque intitule, et la ligne « exclu » montre noir sur blanc ce que
+    l'outil ne compte pas. Sans elle, le classement des intitules serait
+    un reglage dont personne ne verrait jamais l'effet.
+    """
+    from .metrics import PrivacyRules
+    from .pay_equity import FEMALE, MALE
+
+    seuils = PrivacyRules.from_config(config)
+    sexes = {_identity(e, "employee_id"): _sex_of(e, config)
+             for e, _p in membres}
+    par_intitule: Dict[str, Dict[str, Any]] = {}
+    for ligne in lines:
+        matricule = str(ligne.employee_id or "").strip()
+        if matricule not in sexes or ligne.amount is None:
+            continue
+        if ligne.day is not None and not period.contains(ligne.day):
+            continue
+        cle = _sans_accent(ligne.label)
+        entree = par_intitule.setdefault(cle, {
+            "label": ligne.label.strip(),
+            "nature": classify(ligne.label, rules_by_label),
+            "amounts": {},
+        })
+        # Plusieurs versements d'un meme element pour une meme personne
+        # s'additionnent avant d'entrer dans la mediane : sinon une prime
+        # trimestrielle paraitrait quatre fois plus petite qu'une prime
+        # annuelle de meme total.
+        entree["amounts"][matricule] = (
+            entree["amounts"].get(matricule, 0.0) + float(ligne.amount))
+
+    sorties: List[Dict[str, Any]] = []
+    for entree in par_intitule.values():
+        montants = entree["amounts"]
+        femmes = [m for mat, m in montants.items()
+                  if sexes.get(mat) == FEMALE]
+        hommes = [m for mat, m in montants.items()
+                  if sexes.get(mat) == MALE]
+        comparable = (len(femmes) >= seuils.min_publish
+                      and len(hommes) >= seuils.min_publish)
+        exclu = entree["nature"] == "exclu"
+        sorties.append({
+            "label": entree["label"],
+            "nature": entree["nature"],
+            "nature_label": NATURE_LABELS[entree["nature"]],
+            "beneficiaries": len(montants),
+            # Un element exclu n'a ni mediane ni ecart : le montrer
+            # chiffre laisserait croire qu'il compte quelque part.
+            "median": (None if exclu or len(montants) < seuils.min_publish
+                       else _median(list(montants.values()))),
+            "gap": (None if exclu or not comparable
+                    else _gap(_median(hommes), _median(femmes))),
+            "counted": not exclu,
+        })
+    # Les elements comptes d'abord, du plus repandu au moins repandu ; les
+    # exclus en bas, puisqu'ils ne participent a rien.
+    sorties.sort(key=lambda row: (not row["counted"], -row["beneficiaries"]))
+    return sorties
+
+
+def load_elements(source_path: str, config, sheet: Optional[str] = None,
+                  progress=None) -> Tuple[List[Line], Any, Any]:
+    """Lit un fichier d'elements variables : import, mapping, lignes.
+
+    Meme chemin que la population — memes gardes sur le classeur, meme
+    plafond de decompression — parce qu'un second fichier n'est pas un
+    second niveau de confiance.
+    """
+    from ..io.tabular import read_table
+    from .logging_setup import log_event
+    from .pipeline import _uncompressed_limit
+
+    table = read_table(source_path, sheet,
+                       progress.within if progress else None,
+                       max_uncompressed=_uncompressed_limit(config),
+                       encodings=config.get("population_mapping.encodings")
+                       or None)
+    lignes, mapping = read_lines(table, config)
+    log_event("package", "read_elements",
+              detail=f"rows={table.row_count};lines={len(lignes)}")
+    return lignes, mapping, table

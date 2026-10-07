@@ -1,0 +1,28 @@
+{
+  "fields": {
+    "employee_id": [
+      "Matricule",
+      "Employee ID",
+      "ID"
+    ],
+    "label": [
+      "Intitulé",
+      "Libellé",
+      "Élément",
+      "Rubrique",
+      "Nature",
+      "Label"
+    ],
+    "amount": [
+      "Montant",
+      "Valeur",
+      "Amount"
+    ],
+    "day": [
+      "Date",
+      "Date de versement",
+      "Date de paie"
+    ]
+  },
+  "natures": {}
+}
