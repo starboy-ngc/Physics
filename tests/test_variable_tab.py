@@ -295,7 +295,7 @@ class TestTheCompositionSaysWhatItShows(unittest.TestCase):
                        Period(dt.date(2025, 1, 1), dt.date(2025, 12, 31)), {})
         texte = self.page.composition_note.cget("text")
         self.assertIn("sur la période", texte)
-        self.assertIn("12,0 mois", texte)
+        self.assertIn("12 mois", texte)
         self.assertNotIn("mensuelle", texte)
 
 
@@ -345,3 +345,49 @@ class TestTheNatureListFollowsTheValue(unittest.TestCase):
         self.root.update()
         self.assertEqual(self._affiche("Indemnités"), "Exclu")
         self.assertEqual(self.fenetre.collect()["Indemnités"], "exclu")
+
+
+@unittest.skipIf(_sans_ecran(), "pas d'écran")
+class TestTheMeshCanBeChanged(TestTheVariableTab):
+    """Le métier est la maille à laquelle une prime se décide le plus
+    souvent, mais une prime d'établissement se lit par établissement :
+    imposer une seule maille, c'est imposer une seule question."""
+
+    def test_the_offered_meshes_are_those_the_file_carries(self):
+        self._charger()
+        page = self.app.variable_page
+        from hr_analytics.core.segmentation import dimension_label
+
+        intitules = list(page.dimension_choice.cget("values"))
+        self.assertIn(dimension_label(self.app.configuration, "job"),
+                      intitules)
+        self.assertEqual(len(intitules), len(page._dimensions))
+
+    def test_changing_the_mesh_changes_the_values_offered(self):
+        self._charger()
+        page = self.app.variable_page
+        avant = list(page.choice.cget("values"))
+        autre = next(rang for rang, champ in enumerate(page._dimensions)
+                     if champ != "job")
+        page.dimension_choice.current(autre)
+        page._change_dimension()
+        self.app.update()
+        self.assertNotEqual(page.dimension, "job")
+        self.assertNotEqual(list(page.choice.cget("values")), avant)
+        # Et l'écran se repose sur une valeur qui existe.
+        self.assertIn(page.choice.get(), page.choice.cget("values"))
+
+    def test_the_headcount_is_recalled_with_the_beneficiaries(self):
+        """« 34 bénéficiaires » ne dit rien sans l'effectif qui le porte."""
+        self._charger()
+        page = self.app.variable_page
+        texte = page.headcount.cget("text")
+        self.assertIn("salariés", texte)
+        self.assertIn("bénéficiaires", texte)
+        self.assertIn("%", texte)
+
+    def test_the_months_carry_no_decimal(self):
+        self._charger()
+        texte = self.app.variable_page.composition_note.cget("text")
+        self.assertIn("12 mois", texte)
+        self.assertNotIn(",0 mois", texte)

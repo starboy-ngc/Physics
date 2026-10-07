@@ -1395,15 +1395,15 @@ class Application(tk.Tk):
 
         Court : l'essentiel est dans l'onglet. Mais tant que la date
         d'entree n'est pas reconnue, personne ne peut etre ecarte — le
-        garde-fou est inerte et le taux de salariés servis se lirait comme
-        une politique alors qu'il n'est qu'un effet du calendrier.
+        garde-fou est inerte et la part de beneficiaires se lirait comme
+        une politique alors qu'elle n'est qu'un effet du calendrier.
         """
         lignes = [f"{compte.matched} salariés rapprochés."]
         if compte.unknown_entry:
             lignes.append(
                 f"Date d'entrée inconnue pour {compte.unknown_entry} "
                 "salarié(s) : personne ne peut être écarté de la période, "
-                "et le taux de salariés servis est donc sous-estimé. "
+                "et la part de bénéficiaires est donc sous-estimée. "
                 "Associez-la dans « Associer les colonnes… ».")
         return "\n".join(lignes)
 

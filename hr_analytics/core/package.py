@@ -21,7 +21,7 @@ Ce module tient donc trois regles, et elles sont le coeur du sujet.
 
 3. **Qui n'etait pas la toute la periode n'est pas compte.** Un salarie
    entre en cours de periode n'a pas « rien touche » : il n'etait pas
-   la. L'inclure ferait baisser le taux de service sans qu'aucune
+   la. L'inclure ferait baisser la part de beneficiaires sans qu'aucune
    decision de l'entreprise soit en cause. Il est mis de cote, et
    compte.
 
@@ -126,8 +126,8 @@ class Period:
         """Vrai si la periode couvre au moins douze mois.
 
         En deca, une prime annuelle versee hors de la fenetre n'apparait
-        pas, et le taux de service se lit comme une decision alors qu'il
-        n'est qu'un effet du decoupage.
+        pas, et la part de beneficiaires se lit comme une decision alors
+        qu'elle n'est qu'un effet du decoupage.
         """
         return self.months >= 11.5
 
@@ -276,8 +276,8 @@ def present_throughout(population: Population,
 
     Ce dernier compte n'est pas un detail. Tant que la colonne de date
     d'entree n'est pas associee, personne ne peut etre ecarte — le
-    garde-fou est inerte, et le taux de service se lit comme une
-    politique alors qu'il n'est qu'un effet du calendrier. L'ecran doit
+    garde-fou est inerte, et la part de beneficiaires se lit comme une
+    politique alors qu'elle n'est qu'un effet du calendrier. L'ecran doit
     le dire plutot que de rendre un chiffre faux sans prevenir.
     """
     connus: Dict[str, Any] = {}
@@ -319,8 +319,8 @@ def aggregate(lines: Sequence[Line],
 
     Ne sont retenus que les salaries presents sur toute la periode. Les
     autres ne sont pas absents du resultat par negligence : ils en sont
-    retires parce que les compter donnerait un taux de service faux, et
-    le rapprochement dit combien ils sont.
+    retires parce que les compter donnerait une part de beneficiaires
+    fausse, et le rapprochement dit combien ils sont.
     """
     connus, tardifs, sans_date, doublons = present_throughout(
         population, period, id_field, hire_field)
@@ -391,7 +391,7 @@ def employee_package(employee: Any,
         "added": ajouts,
         "total": total,
         "variable_share": (None if not total else 100.0 * variable / total),
-        "served": variable > 0,
+        "beneficiary": variable > 0,
     }
 
 
@@ -587,8 +587,8 @@ def segment_rows(packages: Sequence[Tuple[Any, Dict[str, Any]]],
     exceptionnelle versee a trois personnes deplacerait une moyenne sans
     rien dire de ce que touche le metier.
 
-    Le taux de service se compte sur l'effectif retenu, pas sur
-    l'effectif du fichier — c'est la seule facon qu'il mesure une
+    La part de beneficiaires se compte sur l'effectif retenu, pas sur
+    l'effectif du fichier — c'est la seule facon qu'elle mesure une
     politique et non un calendrier.
     """
     from .metrics import PrivacyRules
@@ -614,37 +614,38 @@ def _segment_row(valeur, membres, rules, config) -> Dict[str, Any]:
     from .pay_equity import FEMALE, MALE
 
     bases = [p["base"] for _e, p in membres if p["base"] is not None]
-    variables = [p["variable"] for _e, p in membres if p["served"]]
+    variables = [p["variable"] for _e, p in membres if p["beneficiary"]]
     parts = [p["variable_share"] for _e, p in membres
              if p["variable_share"] is not None]
 
-    servis: Dict[str, List[float]] = {FEMALE: [], MALE: []}
+    beneficiaires: Dict[str, List[float]] = {FEMALE: [], MALE: []}
     effectif: Dict[str, int] = {FEMALE: 0, MALE: 0}
     for employee, package in membres:
         sexe = _sex_of(employee, config)
         if sexe not in effectif:
             continue
         effectif[sexe] += 1
-        if package["served"]:
-            servis[sexe].append(package["variable"])
+        if package["beneficiary"]:
+            beneficiaires[sexe].append(package["variable"])
 
     publiable = len(variables) >= rules.min_publish
-    # L'ecart se masque sur les *servis* de chaque sexe, non sur
-    # l'effectif : un metier de quarante femmes dont dix sont servies
+    # L'ecart se masque sur les *beneficiaires* de chaque sexe, non sur
+    # l'effectif : un metier de quarante femmes dont dix en beneficient
     # publierait sinon la prime de dix personnes.
-    comparable = (len(servis[FEMALE]) >= rules.min_publish
-                  and len(servis[MALE]) >= rules.min_publish)
+    comparable = (len(beneficiaires[FEMALE]) >= rules.min_publish
+                  and len(beneficiaires[MALE]) >= rules.min_publish)
     return {
         "segment": valeur,
         "headcount": len(membres),
         "base_median": (_median(bases)
                         if len(bases) >= rules.min_publish else None),
-        "served": len(variables),
-        "served_share": 100.0 * len(variables) / len(membres),
+        "beneficiaries": len(variables),
+        "beneficiary_share": 100.0 * len(variables) / len(membres),
         "variable_median": _median(variables) if publiable else None,
         "variable_share": (_median(parts)
                            if len(parts) >= rules.min_publish else None),
-        "variable_gap": (_gap(_median(servis[MALE]), _median(servis[FEMALE]))
+        "variable_gap": (_gap(_median(beneficiaires[MALE]),
+                              _median(beneficiaires[FEMALE]))
                          if comparable else None),
         "published": publiable,
         #: Salaries du segment pour lesquels une part se calcule. Une
@@ -653,9 +654,9 @@ def _segment_row(valeur, membres, rules, config) -> Dict[str, Any]:
         "base_known": len(bases),
         "by_sex": {
             "female": {"headcount": effectif[FEMALE],
-                       "served": len(servis[FEMALE])},
+                       "beneficiaries": len(beneficiaires[FEMALE])},
             "male": {"headcount": effectif[MALE],
-                     "served": len(servis[MALE])},
+                     "beneficiaries": len(beneficiaires[MALE])},
         },
     }
 
@@ -705,16 +706,16 @@ def spread(membres: Sequence[Tuple[Any, Dict[str, Any]]],
            config) -> Optional[Dict[str, Optional[float]]]:
     """La dispersion du variable a l'interieur d'un metier.
 
-    Sur les seuls servis : y compter ceux qui n'ont rien touche ecraserait
-    le premier quartile a zero et ferait passer une question de
-    distribution — « combien touchent ceux qui touchent » — pour une
+    Sur les seuls beneficiaires : y compter ceux qui n'ont rien touche
+    ecraserait le premier quartile a zero et ferait passer une question
+    de distribution — « combien touchent ceux qui touchent » — pour une
     question de couverture, qui se lit ailleurs.
     """
     from . import statistics_engine as stats
     from .metrics import PrivacyRules
 
     rules = PrivacyRules.from_config(config)
-    montants = [p["variable"] for _e, p in membres if p["served"]]
+    montants = [p["variable"] for _e, p in membres if p["beneficiary"]]
     if len(montants) < rules.min_publish:
         return None
     return {

@@ -64,8 +64,8 @@ class TestThePeriod(unittest.TestCase):
 
     def test_a_short_period_says_it_is_short(self):
         """En deçà de douze mois, une prime annuelle versée hors de la
-        fenêtre n'apparaît pas : le taux de service se lirait comme une
-        décision alors qu'il n'est qu'un effet du découpage."""
+        fenêtre n'apparaît pas : la part de bénéficiaires se lirait comme
+        une décision alors qu'elle n'est qu'un effet du découpage."""
         neuf_mois = Period(dt.date(2026, 1, 1), dt.date(2026, 9, 30))
         self.assertFalse(neuf_mois.complete)
         self.assertAlmostEqual(neuf_mois.months, 9.0, places=0)
@@ -132,8 +132,8 @@ class TestAggregating(unittest.TestCase):
 
     def test_someone_who_arrived_mid_period_is_set_aside_and_counted(self):
         """Il n'a pas « rien touché » : il n'était pas là. L'inclure
-        ferait baisser le taux de service sans qu'aucune décision de
-        l'entreprise soit en cause."""
+        ferait baisser la part de bénéficiaires sans qu'aucune décision
+        de l'entreprise soit en cause."""
         lignes = [Line("A", "Prime de résultat", 500.0),
                   Line("C", "Prime de résultat", 300.0)]
         totaux, compte = aggregate(lignes, self.population, self.regles,
@@ -240,13 +240,13 @@ class TestThePackageOfOnePerson(unittest.TestCase):
         self.assertIsNone(package["variable_share"])
         self.assertEqual(package["variable"], 800.0)
 
-    def test_someone_served_nothing_is_not_someone_served_zero(self):
+    def test_receiving_nothing_is_not_receiving_zero(self):
         personne = salarie("A", 2000.0, dt.date(2020, 1, 1))
         self.assertFalse(
-            employee_package(personne, {}, "base_salary", self.an)["served"])
+            employee_package(personne, {}, "base_salary", self.an)["beneficiary"])
         self.assertTrue(
             employee_package(personne, {"variable": 1.0}, "base_salary",
-                             self.an)["served"])
+                             self.an)["beneficiary"])
 
 
 if __name__ == "__main__":
@@ -343,7 +343,7 @@ class TestTheTableOfSegments(unittest.TestCase):
         from hr_analytics.core.package import packages_of
         return packages_of(population, totaux, self.config, self.an)
 
-    def test_a_segment_reports_who_is_served_not_only_how_much(self):
+    def test_a_segment_reports_who_benefits_not_only_how_much(self):
         from hr_analytics.core.package import segment_rows
 
         population = peuple(20, lambda r: "H")
@@ -353,8 +353,8 @@ class TestTheTableOfSegments(unittest.TestCase):
         self.assertEqual(len(lignes), 1)
         ligne = lignes[0]
         self.assertEqual(ligne["headcount"], 20)
-        self.assertEqual(ligne["served"], 12)
-        self.assertEqual(ligne["served_share"], 60.0)
+        self.assertEqual(ligne["beneficiaries"], 12)
+        self.assertEqual(ligne["beneficiary_share"], 60.0)
         self.assertEqual(ligne["variable_median"], 1200.0)
 
     def test_a_small_segment_publishes_nothing(self):
@@ -369,8 +369,8 @@ class TestTheTableOfSegments(unittest.TestCase):
         # L'effectif, lui, se dit : c'est le masquage qui s'explique.
         self.assertEqual(ligne["headcount"], 3)
 
-    def test_the_gap_is_masked_on_the_served_not_on_the_headcount(self):
-        """Un métier de quarante femmes dont trois sont servies
+    def test_the_gap_is_masked_on_the_beneficiaries_not_the_headcount(self):
+        """Un métier de quarante femmes dont trois en bénéficient
         publierait sinon la prime de trois personnes."""
         from hr_analytics.core.package import segment_rows
 
@@ -379,8 +379,8 @@ class TestTheTableOfSegments(unittest.TestCase):
         totaux.update({f"M{r}": {"variable": 1000.0} for r in range(20, 30)})
         ligne = segment_rows(self._packages(population, totaux),
                              self.config, "job")[0]
-        self.assertEqual(ligne["by_sex"]["female"]["served"], 3)
-        self.assertEqual(ligne["by_sex"]["male"]["served"], 10)
+        self.assertEqual(ligne["by_sex"]["female"]["beneficiaries"], 3)
+        self.assertEqual(ligne["by_sex"]["male"]["beneficiaries"], 10)
         self.assertIsNone(ligne["variable_gap"])
 
     def test_the_gap_is_negative_when_women_receive_less(self):
@@ -455,7 +455,7 @@ class TestTheDetailOfOneSegment(unittest.TestCase):
         self.assertFalse(femmes["published"])
         self.assertIsNone(femmes["base"])
 
-    def test_the_spread_covers_the_served_only(self):
+    def test_the_spread_covers_the_beneficiaries_only(self):
         """Y compter ceux qui n'ont rien touché écraserait le premier
         quartile à zéro, et ferait passer une question de distribution
         pour une question de couverture."""

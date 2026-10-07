@@ -162,14 +162,15 @@ class ElementsWindow(tk.Toplevel):
         if periode is None:
             self.note.configure(text=self._erreur or "", foreground=theme.CRIT)
             return
-        texte = f"{periode.months:.1f}".replace(".", ",") + " mois."
+        texte = _mois(periode) + "."
         couleur = theme.MUTED
         if not periode.complete:
-            # Le dire ici plutot que de laisser lire un taux de service
-            # comme une politique alors qu'il n'est qu'un decoupage.
+            # Le dire ici plutot que de laisser lire une part de
+            # beneficiaires comme une politique alors qu'elle n'est qu'un
+            # decoupage.
             texte += (" En deçà de douze mois, une prime annuelle versée "
-                      "hors de cette fenêtre n'apparaît pas : le taux de "
-                      "salariés servis est à lire avec cette réserve.")
+                      "hors de cette fenêtre n'apparaît pas : la part de "
+                      "bénéficiaires est à lire avec cette réserve.")
             couleur = theme.WARN
         if self._proposed is not None:
             texte += (f"\nLe fichier porte des versements "
@@ -298,19 +299,24 @@ def _parse_jour(texte: str) -> Optional[_dt.date]:
 
 
 class VariablePage(tk.Frame):
-    """L'onglet « Variable » : un metier a la fois, en profondeur.
+    """L'onglet « Variable » : une valeur a la fois, en profondeur.
 
-    L'ecran repond a une question de preparation — « que verse-t-on sur
-    ce metier, a qui, et dans quelle dispersion ». Il ne classe pas les
-    metiers entre eux : c'est le role du tableau, et deux reponses a deux
+    L'ecran repond a une question de preparation — « que verse-t-on ici,
+    a qui, et dans quelle dispersion ». Il ne classe pas les groupes
+    entre eux : c'est le role du tableau, et deux reponses a deux
     questions ne tiennent pas sur la meme page sans que l'une desserve
     l'autre.
+
+    La maille se choisit. Le metier est celle a laquelle une prime se
+    decide le plus souvent, mais une prime d'etablissement se lit par
+    etablissement et une prime de coefficient par coefficient : imposer
+    une seule maille, c'est imposer une seule question.
     """
 
     #: Hauteur des barres empilees. Trois barres : assez epaisses pour
     #: qu'un segment de 3 % reste visible, assez fines pour tenir avec le
     #: reste.
-    BARRE = 28
+    BARRE = 34
     #: Natures tracees, dans l'ordre d'empilement, avec leur couleur de
     #: serie. La base vient en premier : c'est elle qu'on lit en partant
     #: du bord gauche.
@@ -327,6 +333,11 @@ class VariablePage(tk.Frame):
         self._config = None
         self._period = None
         self._natures: Dict[str, str] = {}
+        #: Dimension de decoupage, et les champs proposes. « job » tant
+        #: qu'aucun fichier n'est charge : il sera remplace par la
+        #: premiere dimension declaree si celle-la n'existe pas.
+        self.dimension = "job"
+        self._dimensions: List[str] = []
 
         self._build_head()
         self._build_body()
@@ -342,9 +353,17 @@ class VariablePage(tk.Frame):
 
         tete = tk.Frame(self, background=theme.CANVAS)
         tete.pack(fill="x", padx=18, pady=(14, 0))
-        tk.Label(tete, text="MÉTIER", background=theme.CANVAS,
+        tk.Label(tete, text="ANALYSER PAR", background=theme.CANVAS,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
+        self.dimension_choice = ttk.Combobox(tete, state="readonly", width=22,
+                                             font=self.fonts.small)
+        self.dimension_choice.pack(side="left", padx=10)
+        self.dimension_choice.bind("<<ComboboxSelected>>",
+                                   lambda _e: self._change_dimension())
+        tk.Label(tete, text="VALEUR", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(18, 0))
         self.choice = ttk.Combobox(tete, state="readonly", width=30,
                                    font=self.fonts.small)
         self.choice.pack(side="left", padx=10)
@@ -367,7 +386,7 @@ class VariablePage(tk.Frame):
 
         gauche = tk.Frame(corps, background=theme.CANVAS)
         gauche.grid(row=0, column=0, sticky="nsew", padx=(0, 14))
-        self._title(gauche, "Ce que gagne un salarié de ce métier")
+        self._title(gauche, "Ce que gagne un salarié")
         # Le libelle se recrit a chaque periode : il disait « mensuelle »
         # et montrait douze mois de salaire, ce qui faisait lire un
         # salaire annuel comme un salaire de mois.
@@ -392,7 +411,7 @@ class VariablePage(tk.Frame):
 
         droite = tk.Frame(corps, background=theme.CANVAS)
         droite.grid(row=0, column=1, sticky="nsew")
-        self._title(droite, "Les éléments versés sur ce métier")
+        self._title(droite, "Les éléments versés")
         self.elements = ttk.Treeview(
             droite, columns=("Intitulé", "Nature", "Bénéf.", "Médiane", "F/H"),
             show="headings", height=8)
@@ -416,7 +435,8 @@ class VariablePage(tk.Frame):
             font=self.fonts.small, wraplength=430, justify="left", anchor="w")
         self.elements_note.pack(fill="x")
 
-        self._title(droite, "Qui est servi, qui ne l'est pas", pady=(22, 0))
+        self._title(droite, "Qui en bénéficie, qui n'en bénéficie pas",
+                    pady=(22, 0))
         self.served = tk.Canvas(droite, background=theme.CANVAS,
                                 highlightthickness=0, height=74)
         self.served.pack(fill="x")
@@ -446,30 +466,64 @@ class VariablePage(tk.Frame):
         self._config = config
         self._period = period
         self._natures = dict(natures or {})
-
-        metiers = sorted({self._segment_of(employee)
-                          for employee, _p in self._packages} - {""})
-        self.choice.configure(values=metiers)
-        if metiers and self.choice.get() not in metiers:
-            self.choice.set(self._biggest(metiers))
+        self._populate_dimensions()
+        self._populate_values()
         self._say_coverage()
         self.refresh()
 
-    def _biggest(self, metiers: Sequence[str]) -> str:
-        """Le metier le plus peuple ouvre l'ecran : c'est celui dont la
-        reponse interesse le plus de monde, et il publie toujours."""
+    def _populate_dimensions(self) -> None:
+        """Les dimensions declarees, et celle qui ouvre l'ecran.
+
+        Le metier ouvre par defaut parce que c'est la maille a laquelle
+        une prime se decide le plus souvent. S'il n'est pas declare, la
+        premiere dimension qui porte quelque chose prend sa place : un
+        ecran vide par defaut ne se comprend pas.
+        """
+        from ..core.segmentation import dimension_fields, dimension_label
+
+        champs = [champ for champ in dimension_fields(self._config)
+                  if any(str(e.value(champ) or "").strip()
+                         for e, _p in self._packages)]
+        self._dimensions = champs
+        self.dimension_choice.configure(
+            values=[dimension_label(self._config, champ) for champ in champs])
+        if self.dimension not in champs:
+            self.dimension = champs[0] if champs else self.dimension
+        if self.dimension in champs:
+            self.dimension_choice.current(champs.index(self.dimension))
+
+    def _change_dimension(self) -> None:
+        """Changer de maille remet le choix de valeur a la plus peuplee.
+
+        Garder la valeur n'aurait aucun sens : un metier n'est pas un
+        etablissement, et l'ecran se viderait sans que rien ne le dise.
+        """
+        rang = self.dimension_choice.current()
+        if 0 <= rang < len(self._dimensions):
+            self.dimension = self._dimensions[rang]
+        self._populate_values()
+        self.refresh()
+
+    def _populate_values(self) -> None:
+        valeurs = sorted({self._segment_of(employee)
+                          for employee, _p in self._packages} - {""})
+        self.choice.configure(values=valeurs)
+        if valeurs and self.choice.get() not in valeurs:
+            self.choice.set(self._biggest(valeurs))
+        elif not valeurs:
+            self.choice.set("")
+
+    def _biggest(self, valeurs: Sequence[str]) -> str:
+        """La valeur la plus peuplee ouvre l'ecran : c'est celle dont la
+        reponse interesse le plus de monde, et elle publie toujours."""
         compte: Dict[str, int] = {}
         for employee, _p in self._packages:
-            compte[self._segment_of(employee)] = compte.get(
-                self._segment_of(employee), 0) + 1
-        return max(metiers, key=lambda nom: compte.get(nom, 0))
+            cle = self._segment_of(employee)
+            compte[cle] = compte.get(cle, 0) + 1
+        return max(valeurs, key=lambda nom: compte.get(nom, 0))
 
     def _segment_of(self, employee) -> str:
         return str(employee.value(self.dimension) or "").strip()
-
-    #: Dimension decoupant l'ecran. « job » par defaut : le metier est la
-    #: maille a laquelle une prime se decide.
-    dimension = "job"
 
     def _say_coverage(self) -> None:
         """Dit, s'il y a lieu, pourquoi les parts manquent.
@@ -492,22 +546,23 @@ class VariablePage(tk.Frame):
     def refresh(self) -> None:
         if self._config is None:
             return
-        metier = self.choice.get()
+        valeur = self.choice.get()
         membres = [(e, p) for e, p in self._packages
-                   if self._segment_of(e) == metier]
-        servis = sum(1 for _e, p in membres if p["served"])
+                   if self._segment_of(e) == valeur]
+        beneficiaires = sum(1 for _e, p in membres if p["beneficiary"])
+        part = (f" ({100.0 * beneficiaires / len(membres):.0f} %)"
+                if membres else "")
         self.headcount.configure(
-            text=f"{len(membres)} salariés · {servis} servis"
-                 if membres else "")
-        mois = f"{self._period.months:.1f}".replace(".", ",")
+            text=f"{len(membres)} salariés · {beneficiaires} bénéficiaires"
+                 f"{part}" if membres else "")
         self.composition_note.configure(
-            text=f"Rémunération médiane sur la période — {mois} mois —, "
-                 "ramenée au temps plein.")
+            text=f"Rémunération médiane sur la période — {_mois(self._period)}"
+                 " —, ramenée au temps plein.")
         self._draw_composition(membres)
         self._draw_spread(membres)
         self._fill_elements(membres)
-        self._draw_served(membres)
-        self._say_summary(membres, servis)
+        self._draw_beneficiaries(membres)
+        self._say_summary(membres, beneficiaires)
         if self._on_change:
             self._on_change(metier)
 
@@ -530,7 +585,7 @@ class VariablePage(tk.Frame):
         # La place du montant se mesure sur le plus long qu'on va ecrire :
         # une marge fixe le rognait des que les salaires passaient cinq
         # chiffres, et « 25 446 EUR » s'affichait « 25 446 EU ».
-        gauche = 76
+        gauche = 92
         droite = 16 + max(
             self.fonts.small_bold.measure(_money(l["total"], self._config))
             for l in lignes if l["total"] is not None) if any(
@@ -541,9 +596,16 @@ class VariablePage(tk.Frame):
 
         y = 10
         for ligne in lignes:
-            canvas.create_text(0, y + self.BARRE / 2, text=ligne["label"],
+            # L'effectif est colle au libelle : une barre « Femmes » batie
+            # sur cinq personnes ne se lit pas comme une batie sur cinq
+            # cents, et le rappeler ici evite de remonter le chercher.
+            canvas.create_text(0, y + self.BARRE / 2 - 6,
+                               text=ligne["label"], anchor="w",
+                               font=self.fonts.small, fill=theme.INK_SOFT)
+            canvas.create_text(0, y + self.BARRE / 2 + 8,
+                               text=f"{ligne['headcount']} salariés",
                                anchor="w", font=self.fonts.small,
-                               fill=theme.INK_SOFT)
+                               fill=theme.MUTED)
             if not ligne["published"] or ligne["base"] is None:
                 # Un cote retenu par le seuil n'a pas de barre du tout :
                 # une barre vide laisserait croire a une remuneration nulle.
@@ -598,11 +660,11 @@ class VariablePage(tk.Frame):
         bornes = pk.spread(membres, self._config) if membres else None
         if bornes is None:
             self.spread_note.configure(
-                text="Trop peu de salariés servis pour publier une "
+                text="Trop peu de bénéficiaires pour publier une "
                      "dispersion.")
             return
         self.spread_note.configure(
-            text=f"Parmi les {bornes['count']} salariés servis de ce métier.")
+            text=f"Parmi les {bornes['count']} bénéficiaires.")
         largeur = max(canvas.winfo_width(), 420)
         gauche, droite = 14, 14
         utile = max(largeur - gauche - droite, 60)
@@ -653,7 +715,7 @@ class VariablePage(tk.Frame):
                         if row["median"] is not None else "—",
                         _signed(row["gap"])))
 
-    def _draw_served(self, membres) -> None:
+    def _draw_beneficiaries(self, membres) -> None:
         from ..core.pay_equity import FEMALE, MALE
 
         canvas = self.served
@@ -666,27 +728,28 @@ class VariablePage(tk.Frame):
             if sexe not in compte:
                 continue
             compte[sexe][1] += 1
-            if package["served"]:
+            if package["beneficiary"]:
                 compte[sexe][0] += 1
 
         largeur = max(canvas.winfo_width(), 420)
-        gauche, droite = 68, 92
+        gauche, droite = 68, 96
         utile = max(largeur - gauche - droite, 60)
         y = 8
         for sexe, intitule, couleur in ((FEMALE, "Femmes", theme.FEMALE),
                                         (MALE, "Hommes", theme.MALE)):
-            servis, total = compte[sexe]
+            beneficiaires, total = compte[sexe]
             canvas.create_text(0, y + 11, text=intitule, anchor="w",
                                font=self.fonts.small, fill=couleur)
             canvas.create_rectangle(gauche, y, gauche + utile, y + 22,
                                     width=0, fill=theme.GRID)
             if total:
-                part = servis / total
+                part = beneficiaires / total
                 canvas.create_rectangle(gauche, y, gauche + utile * part,
                                         y + 22, width=0, fill=couleur)
-                canvas.create_text(gauche + utile + 8, y + 11,
-                                   text=f"{servis} sur {total}", anchor="w",
-                                   font=self.fonts.small, fill=theme.INK_SOFT)
+                canvas.create_text(
+                    gauche + utile + 8, y + 11,
+                    text=f"{beneficiaires} sur {total}", anchor="w",
+                    font=self.fonts.small, fill=theme.INK_SOFT)
             else:
                 canvas.create_text(gauche + 8, y + 11, text="aucun",
                                    anchor="w", font=self.fonts.small,
@@ -694,7 +757,7 @@ class VariablePage(tk.Frame):
             y += 32
         canvas.configure(height=y)
 
-    def _say_summary(self, membres, servis) -> None:
+    def _say_summary(self, membres, beneficiaires) -> None:
         """Les deux ecarts cote a cote, et sur quoi porte le second.
 
         Separes, ils se lisent comme deux mesures sans rapport ; ensemble,
@@ -712,11 +775,11 @@ class VariablePage(tk.Frame):
         ecart = row["variable_gap"]
         if ecart is None:
             texte = ("L'écart F/H sur le variable n'est pas publié : l'un "
-                     "des deux sexes compte trop peu de salariés servis.")
+                     "des deux sexes compte trop peu de bénéficiaires.")
         else:
             texte = (f"Écart F/H sur le variable versé : {_signed(ecart)}. "
-                     f"Il porte sur les {servis} salariés servis de ce "
-                     "métier.")
+                     f"Il porte sur les {beneficiaires} bénéficiaires, sur "
+                     f"{len(membres)} salariés.")
         if row["variable_share"] is not None:
             part = f"{row['variable_share']:.1f}".replace(".", ",")
             texte += (f"\nLe variable pèse {part} % de la rémunération, "
@@ -729,6 +792,16 @@ def _money(valeur, config) -> str:
 
     devise = config.get("salary_parameters.currency", "EUR") if config else "EUR"
     return format_money(valeur, devise)
+
+
+def _mois(period) -> str:
+    """La duree d'une periode, en mois entiers.
+
+    Sans decimale : « 12,0 mois » se lit comme une precision que la
+    mesure n'a pas, et « 11,99 » n'a jamais interesse personne. Le calcul,
+    lui, garde ses decimales — c'est l'affichage qui arrondit.
+    """
+    return f"{round(period.months)} mois"
 
 
 def _signed(valeur) -> str:
