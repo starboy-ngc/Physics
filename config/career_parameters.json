@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "employee_id": [
+      "Matricule",
+      "Employee ID",
+      "ID"
+    ],
+    "period": [
+      "Période",
+      "Periode",
+      "Année",
+      "Exercice",
+      "Date",
+      "Campagne"
+    ]
+  },
+  "columns": {},
+  "comparison_field": "job_title"
+}
