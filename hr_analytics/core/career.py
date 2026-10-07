@@ -11,19 +11,15 @@ de comparer deux personnes de deux metiers differents : 0,92 veut dire
 « D'ou vient-il » demande un troisieme fichier, parce que le fichier de
 population est un instantane : il ne porte qu'un salaire, celui
 d'aujourd'hui. L'historique est en lignes — une par salarie et par
-periode — et ses colonnes se declarent : montants d'un cote, appreciations
-de l'autre.
+periode — et l'on declare celles de ses colonnes qui portent un montant.
 
-Cette distinction-la n'est pas decorative. Un montant se trace, se
-soustrait, se compare. Une appreciation de people review est un *avis* :
-elle se date et se montre, elle ne se moyenne pas, elle ne se correle a
-rien, et l'outil n'en tire aucune conclusion. Mettre « payee huit pour
-cent sous ses pairs » a cote de « notee B » invite a lire une causalite
-que personne n'a demontree, dans un sens comme dans l'autre. La fiche
-juxtapose ; elle ne commente pas.
+La fiche ne traite que de remuneration. Une appreciation de people
+review y a eu sa place le temps d'un essai, et elle en est retiree : les
+deux se lisaient cote a cote, et deux choses posees cote a cote finissent
+par s'expliquer l'une l'autre dans la tete du lecteur, alors que rien
+ici ne le permet.
 
-Enfin, une fiche est nominative. Elle vit a l'ecran, et ce qui en sort
-sort par un geste distinct.
+Enfin, une fiche est nominative. Elle vit a l'ecran, et rien n'en sort.
 """
 
 from __future__ import annotations
@@ -39,13 +35,18 @@ from .normalize import Population, full_time_amount, parse_date, parse_number
 #: pour qu'un fichier riche n'oblige pas a tout classer : une colonne
 #: dont on n'a rien a faire se range quelque part plutot que de forcer
 #: un choix faux.
-ROLES: Tuple[str, ...] = ("montant", "appreciation", "ignoree")
+ROLES: Tuple[str, ...] = ("montant", "ignoree")
 
 ROLE_LABELS: Dict[str, str] = {
     "montant": "Montant",
-    "appreciation": "Appréciation",
     "ignoree": "Ignorée",
 }
+
+#: Roles d'une version precedente, et ce qu'ils deviennent. Un fichier
+#: de parametres ecrit avant le retrait des appreciations ne doit pas
+#: empecher l'outil de demarrer : la colonne cesse de compter, ce qui
+#: est exactement ce que le retrait veut dire.
+ROLES_RETIRES: Dict[str, str] = {"appreciation": "ignoree"}
 
 #: Role retenu quand rien n'est declare. « ignoree » et non « montant » :
 #: additionner une colonne qu'on n'a pas regardee fausserait une
@@ -104,7 +105,6 @@ class Entry:
     period: Optional[_dt.date]
     label: str
     amounts: Dict[str, float] = _field(default_factory=dict)
-    appraisals: Dict[str, str] = _field(default_factory=dict)
 
     @property
     def total(self) -> Optional[float]:
@@ -151,6 +151,7 @@ def column_roles(config) -> Dict[str, str]:
     roles: Dict[str, str] = {}
     for libelle, role in brut.items():
         texte = str(role).strip().lower()
+        texte = ROLES_RETIRES.get(texte, texte)
         if texte not in ROLES:
             raise ConfigError(
                 f"Le rôle \"{role}\" de la colonne « {libelle} » n'est pas "
@@ -240,21 +241,14 @@ def read_history(table, config) -> Tuple[List[Entry], Any, List[str]]:
         if not matricule and not libelle:
             continue
         montants: Dict[str, float] = {}
-        avis: Dict[str, str] = {}
         for index, entete in libres:
-            brut = cellule(index)
-            role = role_of(entete, roles)
-            if role == "montant":
-                nombre = parse_number(brut)
-                if nombre is not None:
-                    montants[entete] = nombre
-            elif role == "appreciation":
-                texte = str(brut or "").strip()
-                if texte:
-                    avis[entete] = texte
+            if role_of(entete, roles) != "montant":
+                continue
+            nombre = parse_number(cellule(index))
+            if nombre is not None:
+                montants[entete] = nombre
         entries.append(Entry(employee_id=matricule, period=jour,
-                             label=libelle, amounts=montants,
-                             appraisals=avis))
+                             label=libelle, amounts=montants))
     return entries, mapping, [entete for _i, entete in libres]
 
 
@@ -338,7 +332,6 @@ def evolution(entries: Sequence[Entry]) -> List[Dict[str, Any]]:
             "total": total,
             "change": ecart,
             "change_share": part,
-            "appraisals": dict(entry.appraisals),
         })
         if total is not None:
             precedent = total

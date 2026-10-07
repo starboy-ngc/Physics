@@ -1,21 +1,15 @@
 """La fiche d'un salarie : ou il se situe, et d'ou il vient.
 
-Deux moities, et elles ne se lisent pas de la meme facon.
+Deux moities. A gauche l'etat du jour et la place parmi les pairs — le
+rapport a la mediane du poste est le seul chiffre qui compare deux
+personnes de deux metiers differents. A droite l'historique, qui demande
+un troisieme fichier parce que le fichier de population est un
+instantane.
 
-A gauche, l'etat du jour et la place parmi les pairs. Le rapport a la
-mediane du poste est le seul chiffre qui compare deux personnes de deux
-metiers differents.
-
-A droite, l'historique — et il demande un troisieme fichier, parce que le
-fichier de population est un instantane. Ses colonnes se declarent :
-montants d'un cote, appreciations de people review de l'autre.
-
-La distinction tient tout l'ecran. Un montant se trace et se soustrait.
-Une appreciation est un avis : elle se date et se montre, l'outil n'en
-calcule rien et n'en conclut rien. Les deux sont cote a cote parce que
-c'est ainsi qu'on prepare un entretien ; elles ne sont pas melangees
-parce que les melanger ferait lire une causalite que personne n'a
-demontree.
+La fiche ne traite que de remuneration. Les appreciations de people
+review y ont figure le temps d'un essai, et elles en sont retirees :
+deux choses posees cote a cote finissent par s'expliquer l'une l'autre
+dans la tete du lecteur, et rien ici ne le permet.
 
 Une fiche est nominative : elle vit a l'ecran, et rien n'en sort.
 """
@@ -32,16 +26,14 @@ from .theme import Card, Fonts
 
 
 class HistoryWindow(tk.Toplevel):
-    """Classer les colonnes d'un historique : montant, appreciation, ou rien.
+    """Classer les colonnes d'un historique : montant, ou rien.
 
     Le meme geste que pour les natures d'elements, sur une autre
     question. Les colonnes sont celles du fichier : on les montre, on ne
     demande a personne de les ecrire.
 
-    Montant et appreciation ne sont pas deux etiquettes interchangeables.
-    Un montant se trace et se soustrait ; une appreciation de people
-    review est un avis, qui se date et se montre sans qu'on en tire
-    quoi que ce soit.
+    Deux roles seulement, parce que la fiche ne traite que de
+    remuneration : ce qui est un montant, et ce dont on n'a rien a faire.
     """
 
     LABEL_WIDTH = 34
@@ -77,8 +69,8 @@ class HistoryWindow(tk.Toplevel):
                  text="Les montants s'additionnent pour faire la "
                       "rémunération de la période : une colonne qui porte "
                       "déjà un total se classe « ignorée », sinon elle "
-                      "compterait deux fois. Une appréciation se date et "
-                      "se montre ; l'outil n'en calcule rien.",
+                      "compterait deux fois. Tout ce qui n'est pas un "
+                      "montant se classe « ignorée ».",
                  background=theme.CANVAS, foreground=theme.MUTED,
                  font=self.fonts.small, wraplength=600,
                  justify="left").pack(anchor="w", pady=(3, 0))
@@ -248,8 +240,8 @@ class FichePage(tk.Frame):
     """L'onglet « Fiche salarié ».
 
     A gauche l'etat du jour et la place parmi les pairs ; a droite
-    l'historique et les appreciations. Rien n'en sort : la page ne
-    propose aucun export, et c'est voulu.
+    l'historique de sa remuneration. Rien n'en sort : la page ne propose
+    aucun export, et c'est voulu.
     """
 
     #: Hauteur de la reglette de position. Assez haute pour qu'un repere
@@ -291,7 +283,6 @@ class FichePage(tk.Frame):
         droite = tk.Frame(corps, background=theme.CANVAS)
         droite.grid(row=0, column=1, sticky="nsew")
         self._build_history(droite)
-        self._build_appraisals(droite)
 
     def _title(self, parent, texte, pady=(0, 6)) -> None:
         tk.Label(parent, text=texte, background=theme.CANVAS,
@@ -337,36 +328,17 @@ class FichePage(tk.Frame):
                                      justify="left", wraplength=430)
         self.history_note.pack(fill="x", pady=(0, 8))
         self.curve = tk.Canvas(parent, background=theme.CANVAS,
-                               highlightthickness=0, height=130)
+                               highlightthickness=0, height=190)
         self.curve.pack(fill="x")
         self.history = ttk.Treeview(
             parent, columns=("Période", "Total", "Écart", "Part"),
-            show="headings", height=5)
+            show="headings", height=8)
         for nom, largeur, cote in (("Période", 110, "w"), ("Total", 110, "e"),
                                    ("Écart", 100, "e"), ("Part", 80, "e")):
             self.history.heading(nom, text=nom.upper(), anchor=cote)
             self.history.column(nom, width=largeur, anchor=cote,
                                 stretch=(nom == "Période"))
         self.history.pack(fill="x", pady=(10, 0))
-
-    def _build_appraisals(self, parent) -> None:
-        self._title(parent, "People review", pady=(22, 2))
-        tk.Label(parent,
-                 text="Des appréciations, datées. L'outil ne les calcule "
-                      "pas et n'en tire aucune conclusion : les rapprocher "
-                      "d'un montant est une lecture, pas un résultat.",
-                 background=theme.CANVAS, foreground=theme.MUTED,
-                 font=self.fonts.small, anchor="w", justify="left",
-                 wraplength=430).pack(fill="x", pady=(0, 8))
-        self.appraisals = ttk.Treeview(parent, columns=("Période", "Quoi",
-                                                        "Valeur"),
-                                       show="headings", height=5)
-        for nom, largeur, cote in (("Période", 100, "w"), ("Quoi", 150, "w"),
-                                   ("Valeur", 150, "w")):
-            self.appraisals.heading(nom, text=nom.upper(), anchor=cote)
-            self.appraisals.column(nom, width=largeur, anchor=cote,
-                                   stretch=(nom == "Quoi"))
-        self.appraisals.pack(fill="x")
 
     # ------------------------------------------------------------ donnees
 
@@ -575,7 +547,6 @@ class FichePage(tk.Frame):
         from ..core.reporting import format_money
 
         self.history.delete(*self.history.get_children())
-        self.appraisals.delete(*self.appraisals.get_children())
         self.curve.delete("all")
         matricule = str(personne.value("employee_id") or "").strip()
         lignes = cr.evolution(self._history.get(matricule, []))
@@ -586,7 +557,6 @@ class FichePage(tk.Frame):
                      "Aucun historique chargé — « Historique… » dans la "
                      "colonne de gauche.")
             self.history.configure(height=3)
-            self.appraisals.configure(height=3)
             return
         devise = self._config.get("salary_parameters.currency", "EUR")
         montants = sorted({cle for ligne in lignes for cle in ligne["amounts"]})
@@ -604,12 +574,6 @@ class FichePage(tk.Frame):
                  if ligne["change"] is not None else "—"),
                 _signed(ligne["change_share"])))
         self._draw_curve(lignes)
-
-        avis = [(ligne["label"], quoi, valeur) for ligne in lignes
-                for quoi, valeur in sorted(ligne["appraisals"].items())]
-        self.appraisals.configure(height=max(len(avis), 3))
-        for rang in avis:
-            self.appraisals.insert("", "end", values=rang)
 
     def _draw_curve(self, lignes) -> None:
         """La remuneration periode par periode.
@@ -629,9 +593,9 @@ class FichePage(tk.Frame):
         if len(points) < 2:
             return
         largeur = max(canvas.winfo_width(), 420)
-        gauche, droite, haut, bas = 16, 16, 14, 30
+        gauche, droite, haut, bas = 16, 16, 16, 30
         utile = max(largeur - gauche - droite, 60)
-        hauteur = 130 - haut - bas
+        hauteur = 190 - haut - bas
         montants = [ligne["total"] for _r, ligne in points]
         bas_echelle, haut_echelle = min(montants), max(montants)
         marge = (haut_echelle - bas_echelle) * 0.25 or max(haut_echelle * 0.02,

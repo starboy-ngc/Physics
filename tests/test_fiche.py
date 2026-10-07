@@ -93,7 +93,7 @@ class TestTheEmployeeSheet(unittest.TestCase):
         self._ouvertes.append(fenetre)
         defaut = {"Salaire annuel": "montant", "Primes": "montant",
                   "Rémunération totale": "ignoree",
-                  "Performance": "appreciation"}
+                  "Performance": "ignoree"}
         for colonne, role in (roles or defaut).items():
             if colonne in fenetre._roles:
                 fenetre._roles[colonne].set(role)
@@ -169,7 +169,7 @@ class TestTheEmployeeSheet(unittest.TestCase):
         self.assertIn("publier", page.standing_note.cget("text"))
         self.assertEqual(page.standing_figures.cget("text"), "")
 
-    def test_the_history_separates_amounts_from_appraisals(self):
+    def test_the_history_gives_one_line_per_period(self):
         self._charger()
         page = self.app.fiche_page
         page._choisir(self._personne("M3"))
@@ -177,9 +177,12 @@ class TestTheEmployeeSheet(unittest.TestCase):
         periodes = [page.history.item(i)["values"]
                     for i in page.history.get_children()]
         self.assertEqual([str(l[0]) for l in periodes], ["2023", "2024"])
-        avis = [page.appraisals.item(i)["values"]
-                for i in page.appraisals.get_children()]
-        self.assertTrue(all(str(l[1]) == "Performance" for l in avis))
+
+    def test_the_sheet_holds_nothing_about_people_review(self):
+        """Elle ne traite que de rémunération : deux choses posées côte à
+        côte finissent par s'expliquer l'une l'autre dans la tête du
+        lecteur, et rien ici ne le permet."""
+        self.assertFalse(hasattr(self.app.fiche_page, "appraisals"))
 
     def test_a_column_classed_ignored_is_not_summed(self):
         """Une colonne qui porte déjà un total compterait deux fois."""
@@ -197,7 +200,7 @@ class TestTheEmployeeSheet(unittest.TestCase):
         self._charger(roles={"Salaire annuel": "montant",
                              "Primes": "montant",
                              "Rémunération totale": "montant",
-                             "Performance": "appreciation"})
+                             "Performance": "ignoree"})
         page = self.app.fiche_page
         page._choisir(self._personne("M0"))
         self.app.update()
@@ -223,7 +226,7 @@ class TestTheEmployeeSheet(unittest.TestCase):
         with open(chemin, encoding="utf-8") as fichier:
             section = json.load(fichier)
         self.assertEqual(section["columns"]["Rémunération totale"], "ignoree")
-        self.assertEqual(section["columns"]["Performance"], "appreciation")
+        self.assertEqual(section["columns"]["Performance"], "ignoree")
 
     def test_a_matricule_without_history_says_so(self):
         self._charger()

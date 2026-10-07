@@ -246,8 +246,8 @@ DEFAULTS: Dict[str, Any] = {
             "period": ["Période", "Periode", "Année", "Exercice", "Date",
                        "Campagne"],
         },
-        # Libelle de colonne -> role : montant, appreciation, ignoree.
-        # Vide au depart : l'outil n'invente aucun intitule.
+        # Libelle de colonne -> role : montant, ou ignoree. Vide au
+        # depart : l'outil n'invente aucun intitule.
         "columns": {},
         # Maille de comparaison de la fiche. Le poste par defaut : c'est
         # a lui qu'on compare une remuneration, pas a l'entreprise.

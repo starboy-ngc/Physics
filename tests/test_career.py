@@ -85,8 +85,20 @@ class TestTheRoles(unittest.TestCase):
         self.assertIn("bonus", refus.exception.message)
         self.assertIn("Prime", refus.exception.message)
 
-    def test_the_three_roles_are_those_the_screen_offers(self):
-        self.assertEqual(ROLES, ("montant", "appreciation", "ignoree"))
+    def test_the_two_roles_are_those_the_screen_offers(self):
+        """La fiche ne traite que de rémunération : ce qui est un
+        montant, et ce dont on n'a rien à faire."""
+        self.assertEqual(ROLES, ("montant", "ignoree"))
+
+    def test_a_role_from_a_previous_version_does_not_block_the_start(self):
+        """Un fichier de paramètres écrit avant le retrait des
+        appréciations ne doit pas empêcher l'outil de démarrer : la
+        colonne cesse de compter, ce qui est ce que le retrait veut
+        dire."""
+        self.config._data["career_parameters"]["columns"] = {
+            "Performance": "appreciation"}
+        self.assertEqual(column_roles(self.config),
+                         {"performance": "ignoree"})
 
 
 class TestReadingTheHistory(unittest.TestCase):
@@ -96,7 +108,7 @@ class TestReadingTheHistory(unittest.TestCase):
             "Salaire de base": "montant",
             "Avantage en nature": "montant",
             "Primes": "montant",
-            "Performance": "appreciation",
+            "Performance": "ignoree",
         }
 
     def test_the_free_columns_are_offered_in_the_order_of_the_file(self):
@@ -108,19 +120,17 @@ class TestReadingTheHistory(unittest.TestCase):
                   [["A1", "2024", "2000", "300", "B"]]), self.config)
         self.assertEqual(libres, ["Salaire de base", "Primes", "Performance"])
 
-    def test_amounts_and_appraisals_land_apart(self):
+    def test_only_the_declared_amounts_are_kept(self):
         entries, _m, _l = read_history(
             table(["Matricule", "Période", "Salaire de base", "Performance"],
                   [["A1", "2024", "2 000,50", "B"]]), self.config)
         self.assertEqual(entries[0].amounts, {"Salaire de base": 2000.50})
-        self.assertEqual(entries[0].appraisals, {"Performance": "B"})
 
     def test_an_unclassified_column_enters_neither(self):
         entries, _m, _l = read_history(
             table(["Matricule", "Période", "Salaire de base", "Commentaire"],
                   [["A1", "2024", "2000", "RAS"]]), self.config)
         self.assertEqual(entries[0].amounts, {"Salaire de base": 2000.0})
-        self.assertEqual(entries[0].appraisals, {})
 
     def test_a_file_without_a_period_is_refused_by_name(self):
         with self.assertRaises(ConfigError) as refus:
@@ -192,12 +202,13 @@ class TestTheEvolution(unittest.TestCase):
         self.assertIsNone(lignes[1]["change"])
         self.assertEqual(lignes[2]["change"], 200.0)
 
-    def test_the_appraisals_travel_with_their_period(self):
+    def test_the_amounts_of_a_period_travel_with_it(self):
         lignes = evolution([
-            Entry("A", dt.date(2024, 12, 31), "2024", {"Base": 2000.0},
-                  {"Performance": "B", "Potentiel": "Confirmé"})])
-        self.assertEqual(lignes[0]["appraisals"],
-                         {"Performance": "B", "Potentiel": "Confirmé"})
+            Entry("A", dt.date(2024, 12, 31), "2024",
+                  {"Base": 2000.0, "Primes": 300.0})])
+        self.assertEqual(lignes[0]["amounts"],
+                         {"Base": 2000.0, "Primes": 300.0})
+        self.assertEqual(lignes[0]["total"], 2300.0)
 
 
 class TestWhereSomeoneStands(unittest.TestCase):
