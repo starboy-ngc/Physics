@@ -120,6 +120,12 @@ DEFAULTS: Dict[str, Any] = {
         # `tabular.DEFAULT_ENCODINGS` : l'ordre compte, l'UTF-8 doit venir
         # en premier parce qu'il est le seul a echouer franchement.
         "encodings": ["utf-8-sig", "cp1252"],
+        # Deux ecritures d'un meme libelle — « AFFRETEMENT » et
+        # « Affretement » — sont regroupees sous la plus frequente, et le
+        # controle qualite dit lesquelles. A mettre a false quand la casse
+        # porte un sens dans le fichier : un code « M2 » qui n'est pas un
+        # code « m2 ».
+        "merge_case_variants": True,
         # Au-dela de ce nombre de valeurs distinctes, une liste deroulante
         # n'est plus utilisable : la dimension reste analysable, mais n'est
         # pas proposee comme filtre dans l'interface.

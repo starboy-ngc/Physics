@@ -13,6 +13,7 @@ from typing import Dict, List, Optional
 from .config import Configuration, analysis_field
 from .mapping import MappingResult
 from .normalize import Population
+from .segmentation import field_label
 
 CRITICAL = "critique"
 WARNING = "avertissement"
@@ -130,6 +131,7 @@ def run_quality_check(
         retained_rows=len(population),
     )
     _check_encoding(encoding, config, report)
+    _check_labels(population, config, report)
     _check_structure(population, mapping, report)
     _check_population(population, report)
     _check_dates(population, report)
@@ -169,6 +171,30 @@ def _check_encoding(encoding: str, config: Configuration,
             count=0,
         )
     )
+
+
+def _check_labels(population: Population, config: Configuration,
+                  report: QualityReport) -> None:
+    """Ce que la lecture a regroupe, dit ligne par ligne.
+
+    Regrouper « AFFRETEMENT » et « Affretement » change un effectif et une
+    mediane. L'outil le fait parce que c'est presque toujours le bon
+    geste, mais il ne le fait pas en silence : le constat nomme la colonne,
+    l'ecriture retenue, celles qui ont cede et le nombre de lignes
+    touchees. Qui n'en veut pas met « merge_case_variants » a false.
+    """
+    for fusion in population.merged_labels:
+        remplacees = " et ".join(f"« {nom} »" for nom in fusion["replaced"])
+        accord = "regroupée" if len(fusion["replaced"]) == 1 else "regroupées"
+        report.findings.append(Finding(
+            code="merged_label",
+            severity=INFO,
+            message=(f"{field_label(config, fusion['field'])} : "
+                     f"{remplacees} {accord} sous « {fusion['kept']} » "
+                     "(casse ou accents)."),
+            count=len(fusion["rows"]),
+            rows=sorted(fusion["rows"]),
+        ))
 
 
 def _check_structure(

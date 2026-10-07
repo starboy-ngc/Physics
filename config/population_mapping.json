@@ -195,6 +195,7 @@
     "utf-8-sig",
     "cp1252"
   ],
+  "merge_case_variants": true,
   "max_filter_values": 200,
   "max_uncompressed_mb": 512
 }

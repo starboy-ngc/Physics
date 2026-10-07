@@ -114,6 +114,41 @@ class TestDateChecks(unittest.TestCase):
         self.assertEqual(population.employees[0].hire_date, _dt.date(2010, 5, 4))
 
 
+class TestMergedLabels(unittest.TestCase):
+    """Un regroupement de libellés se dit, et ne bloque rien."""
+
+    def rapport(self):
+        rows = ([make_row(i, business_unit="Exploitation") for i in range(8)]
+                + [make_row(8, business_unit="EXPLOITATION")])
+        return check(rows)[0]
+
+    def test_the_merge_is_reported(self):
+        report = self.rapport()
+        self.assertIn("merged_label", codes(report))
+
+    def test_it_names_both_spellings_and_the_column(self):
+        constat = [item for item in self.rapport().findings
+                   if item.code == "merged_label"][0]
+        self.assertIn("EXPLOITATION", constat.message)
+        self.assertIn("Exploitation", constat.message)
+        self.assertIn("BU", constat.message)
+        self.assertIn("casse ou accents", constat.message)
+        self.assertEqual(constat.count, 1)
+
+    def test_it_is_an_observation_and_not_a_defect(self):
+        """Regrouper deux écritures n'est pas une erreur du fichier : le
+        constat informe, il ne dégrade pas le statut."""
+        report = self.rapport()
+        self.assertEqual(report.critical_count, 0)
+        self.assertEqual(report.warning_count, 0)
+        self.assertEqual(report.status, "CONFORME")
+        self.assertFalse(report.blocking)
+
+    def test_nothing_is_said_when_nothing_was_merged(self):
+        report, _ = check([make_row(i) for i in range(10)])
+        self.assertNotIn("merged_label", codes(report))
+
+
 class TestReportRendering(unittest.TestCase):
     def test_text_report_contains_no_personal_data(self):
         rows = [make_row(i, salary=40000 + i) for i in range(10)]

@@ -13,6 +13,7 @@ import hashlib
 import math
 import re
 import secrets
+import unicodedata
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional
 
@@ -138,6 +139,10 @@ class Population:
     #: donc les lire ici, et non relire le fichier de parametres.
     age_bands: List[Dict[str, Any]] = field(default_factory=list)
     tenure_bands: List[Dict[str, Any]] = field(default_factory=list)
+    #: Libelles regroupes a la lecture parce qu'ils ne differaient que par
+    #: la casse ou les accents. La liste est publiee : une fusion change
+    #: des effectifs et des medianes, elle ne se fait pas en silence.
+    merged_labels: List[Dict[str, Any]] = field(default_factory=list)
 
     def __len__(self) -> int:
         return len(self.employees)
@@ -154,6 +159,7 @@ class Population:
             age_bands=list(self.age_bands),
             tenure_bands=list(self.tenure_bands),
             raw_row_count=self.raw_row_count,
+            merged_labels=list(self.merged_labels),
         )
 
 
@@ -532,6 +538,80 @@ def anonymisation_salt(config: Configuration) -> str:
 # ---------------------------------------------------------------- pipeline
 
 
+def fold_label(texte: Any) -> str:
+    """Minuscules sans accent : la cle sous laquelle deux ecritures se
+    rejoignent.
+
+    C'est la meme reduction que la recherche des listes deroulantes, et
+    c'est voulu : ce que l'utilisateur tient pour un seul libelle quand il
+    cherche doit etre un seul libelle quand il compte.
+    """
+    decompose = unicodedata.normalize("NFD", str(texte).strip())
+    return "".join(c for c in decompose
+                   if unicodedata.category(c) != "Mn").lower()
+
+
+def unify_case_variants(employees: List["Employee"],
+                        fields: Iterable[str]) -> List[Dict[str, Any]]:
+    """Deux ecritures d'un meme libelle n'en font qu'une.
+
+    « AFFRETEMENT » saisi une fois et « Affretement » saisi deux cent
+    soixante-cinq fois sont le meme metier. Les laisser cote a cote donne
+    deux modalites : deux lignes dans la segmentation, deux effectifs, deux
+    medianes, deux entrees dans la liste deroulante — et le metier de deux
+    cent soixante-six personnes se lit en deux morceaux dont l'un est sous
+    le seuil de publication.
+
+    L'ecriture retenue est la plus frequente, et non la premiere vue : une
+    faute de frappe est rare par definition, et c'est l'orthographe que la
+    paie emploie tous les jours qui doit rester a l'ecran. A egalite
+    stricte, la premiere rencontree l'emporte — il faut bien trancher, et
+    l'ordre du fichier est le seul depart que l'outil connaisse.
+
+    Rien n'est devine au-dela de ca : « Cadre » et « Cadres » restent deux
+    libelles, parce que ce ne sont pas les memes caracteres.
+    """
+    fusions: List[Dict[str, Any]] = []
+    for field_name in fields:
+        # cle repliee -> ecriture -> [rang de premiere vue, effectif]
+        vus: Dict[str, Dict[str, List[int]]] = {}
+        # cle repliee -> salaries concernes, pour ne pas relire la colonne
+        # entiere une fois par collision : sur un gros fichier, cela faisait
+        # autant de parcours que de libelles a regrouper.
+        porteurs: Dict[str, List["Employee"]] = {}
+        for rang, employee in enumerate(employees):
+            valeur = employee.value(field_name)
+            if not isinstance(valeur, str):
+                continue
+            valeur = valeur.strip()
+            if not valeur:
+                continue
+            cle = fold_label(valeur)
+            trace = vus.setdefault(cle, {}).setdefault(valeur, [rang, 0])
+            trace[1] += 1
+            porteurs.setdefault(cle, []).append(employee)
+        for cle, ecritures in vus.items():
+            if len(ecritures) < 2:
+                continue
+            retenue = max(ecritures,
+                          key=lambda nom: (ecritures[nom][1],
+                                           -ecritures[nom][0]))
+            lignes = []
+            for employee in porteurs[cle]:
+                if str(employee.value(field_name)).strip() != retenue:
+                    employee.assign(field_name, retenue)
+                    lignes.append(employee.row_number)
+            fusions.append({
+                "field": field_name,
+                "kept": retenue,
+                "replaced": sorted(
+                    (nom for nom in ecritures if nom != retenue),
+                    key=lambda nom: -ecritures[nom][1]),
+                "rows": lignes,
+            })
+    return fusions
+
+
 def normalise_table(
     headers: List[str],
     rows: List[List[Any]],
@@ -615,6 +695,26 @@ def normalise_table(
     # raison que les tranches : son echelle se lit sur la colonne entiere.
     apply_fte_scale(employees, fte_en_pourcent)
 
+    # Les variantes d'ecriture se reduisent de meme en second temps : savoir
+    # laquelle est la plus frequente demande la colonne entiere.
+    #
+    # Les identifiants en sont exclus. Un matricule sert de cle — jointure
+    # hierarchique, detection des doublons — et deux cles qui ne different
+    # que par la casse peuvent parfaitement designer deux personnes ; les
+    # rapprocher serait une decision sur l'identite, pas sur un libelle.
+    # Les noms le sont pour la meme raison.
+    fusionnables = [
+        name for name in mapping.field_to_index
+        if name not in numeric_fields and name not in date_fields
+        and name not in set(section.get("personal", []))
+        and name not in ("employee_id", "manager")
+    ]
+    merged_labels = (
+        unify_case_variants(employees, fusionnables)
+        if config.get("population_mapping.merge_case_variants", True)
+        else []
+    )
+
     # Les tranches sont posees en second temps : prolonger la derniere
     # tranche ouverte suppose de connaitre le maximum de la population, qui
     # n'est etabli qu'une fois toutes les lignes lues.
@@ -634,6 +734,7 @@ def normalise_table(
         raw_row_count=len(rows),
         age_bands=age_bands,
         tenure_bands=tenure_bands,
+        merged_labels=merged_labels,
     )
 
 

@@ -311,3 +311,74 @@ class TestConfiguration(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestMergingCaseVariants(unittest.TestCase):
+    """Deux écritures d'un même libellé n'en font qu'une.
+
+    Aucune donnée RH réelle : les libellés sont inventés pour le test.
+    """
+
+    def population(self, business_units, **overrides):
+        rows = [make_row(index, business_unit=nom)
+                for index, nom in enumerate(business_units)]
+        return build_population(rows, overrides=overrides or None)
+
+    def test_the_rare_spelling_joins_the_frequent_one(self):
+        population = self.population(["Affrètement"] * 5 + ["AFFRETEMENT"])
+        valeurs = {employee.value("business_unit") for employee in population}
+        self.assertEqual(valeurs, {"Affrètement"})
+
+    def test_the_frequent_spelling_wins_whichever_comes_first(self):
+        """La faute de frappe est rare par définition : ce n'est pas l'ordre
+        du fichier qui décide, mais l'effectif."""
+        population = self.population(["ACHATS"] + ["Achats"] * 4)
+        valeurs = {employee.value("business_unit") for employee in population}
+        self.assertEqual(valeurs, {"Achats"})
+
+    def test_a_tie_falls_back_on_the_first_one_seen(self):
+        population = self.population(["Achats", "ACHATS"])
+        valeurs = {employee.value("business_unit") for employee in population}
+        self.assertEqual(valeurs, {"Achats"})
+
+    def test_two_different_words_stay_two_words(self):
+        """« Cadre » et « Cadres » ne sont pas les mêmes caractères :
+        l'outil ne devine pas au-delà de la casse et des accents."""
+        population = self.population(["Cadre"] * 3 + ["Cadres"] * 2)
+        valeurs = {employee.value("business_unit") for employee in population}
+        self.assertEqual(valeurs, {"Cadre", "Cadres"})
+
+    def test_the_merge_is_published_and_not_silent(self):
+        """Un regroupement change un effectif et une médiane : il se dit."""
+        population = self.population(["Exploitation"] * 4 + ["EXPLOITATION"] * 2)
+        self.assertEqual(len(population.merged_labels), 1)
+        fusion = population.merged_labels[0]
+        self.assertEqual(fusion["field"], "business_unit")
+        self.assertEqual(fusion["kept"], "Exploitation")
+        self.assertEqual(fusion["replaced"], ["EXPLOITATION"])
+        self.assertEqual(len(fusion["rows"]), 2)
+
+    def test_the_parameter_turns_it_off(self):
+        """La casse porte parfois un sens : un code « M2 » qui n'est pas un
+        code « m2 »."""
+        population = self.population(
+            ["Affrètement"] * 5 + ["AFFRETEMENT"],
+            **{"population_mapping.merge_case_variants": False})
+        valeurs = {employee.value("business_unit") for employee in population}
+        self.assertEqual(valeurs, {"Affrètement", "AFFRETEMENT"})
+        self.assertEqual(population.merged_labels, [])
+
+    def test_identifiers_are_never_merged(self):
+        """Un matricule est une clé : deux clés qui ne diffèrent que par la
+        casse peuvent désigner deux personnes, et les rapprocher serait une
+        décision sur l'identité."""
+        rows = [make_row(0, employee_id="a12"), make_row(1, employee_id="A12")]
+        population = build_population(rows)
+        self.assertEqual({employee.employee_id for employee in population},
+                         {"a12", "A12"})
+        self.assertEqual(population.merged_labels, [])
+
+    def test_a_filtered_population_keeps_the_record(self):
+        population = self.population(["Conduite"] * 3 + ["CONDUITE"])
+        restreinte = population.filtered(list(population)[:2])
+        self.assertEqual(len(restreinte.merged_labels), 1)
