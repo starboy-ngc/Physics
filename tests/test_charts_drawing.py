@@ -348,7 +348,7 @@ class TestTheWithheldSegmentsPointSomewhereReal(ChartCase):
 
 @needs_display
 class TestTheDispersionColumns(ChartCase):
-    """Les deux colonnes chiffrées de droite, et ce qui les coiffe."""
+    """La colonne chiffrée de droite, et ce qui la coiffe."""
 
     def rows(self, spreads=(1.10, 1.45, 1.95)):
         """Des segments dont l'ouverture de grille est posée, pas devinée."""
@@ -378,64 +378,70 @@ class TestTheDispersionColumns(ChartCase):
                         for item in chart.header.find_all()
                         if chart.header.type(item) == "text")
 
-    def test_the_ratio_is_written_as_a_multiplier(self):
-        """« 1,20 » tout seul se lit comme un montant ou un rang. Le signe
-        dit ce que c'est."""
-        chart = self.chart()
-        self.assertIn("× 1,45", self.texts(chart.canvas))
-
-    def test_the_columns_are_named_in_the_fixed_header(self):
+    def test_the_median_is_the_only_figure_on_the_right(self):
+        """L'ouverture de grille (Q3/Q1) y tenait une seconde colonne. Elle
+        redisait ce que la boîte montre — la largeur de la boîte *est*
+        l'intervalle Q1-Q3 — et elle poussait les médianes loin des
+        libellés."""
         chart = self.chart()
         entete = self.head(chart)
-        self.assertIn("OUVERTURE Q3/Q1", entete)
         self.assertIn("MÉDIANE", entete)
         self.assertIn("EFF.", entete)
+        self.assertNotIn("OUVERTURE", entete)
+        self.assertFalse([texte for texte in self.texts(chart.canvas)
+                          if texte.startswith("×")])
 
-    def test_the_colour_follows_the_configured_thresholds(self):
-        chart = self.chart(spread_alert=1.40, spread_critical=1.80)
-        couleurs = {}
-        for item in self.items(chart.canvas, "text"):
-            texte = chart.canvas.itemcget(item, "text")
-            if texte.startswith("×"):
-                couleurs[texte] = chart.canvas.itemcget(item, "fill")
-        from hr_analytics.ui import theme
-        self.assertEqual(couleurs["× 1,10"], theme.MUTED)
-        self.assertEqual(couleurs["× 1,45"], theme.WARN)
-        self.assertEqual(couleurs["× 1,95"], theme.CRIT)
-
-    def test_a_higher_threshold_calms_the_column_down(self):
-        """Le seuil se paramètre : il n'est pas écrit dans le graphique."""
-        from hr_analytics.ui import theme
-
-        chart = self.chart(spread_alert=2.0, spread_critical=3.0)
-        for item in self.items(chart.canvas, "text"):
-            if chart.canvas.itemcget(item, "text").startswith("×"):
-                self.assertEqual(chart.canvas.itemcget(item, "fill"), theme.MUTED)
-
-    def test_sorting_by_spread_puts_the_widest_grid_first(self):
+    def test_the_spread_sort_goes_with_its_column(self):
+        """Un tri qu'aucune colonne ne montre se lit comme un désordre."""
         chart = self.chart()
-        chart.set_order("spread")
-        self.root.update()
-        self.assertEqual(self.chart_order(chart),
-                         ["× 1,95", "× 1,45", "× 1,10"])
-
-    def chart_order(self, chart):
-        """Les ouvertures dans l'ordre où elles sont tracées, de haut en bas."""
-        lignes = [(chart.canvas.coords(item)[1],
-                   chart.canvas.itemcget(item, "text"))
-                  for item in self.items(chart.canvas, "text")
-                  if chart.canvas.itemcget(item, "text").startswith("×")]
-        return [texte for _y, texte in sorted(lignes)]
-
-    def test_the_split_mode_offers_its_own_sorts(self):
-        """« Ouverture » n'a pas de colonne en mode dédoublé, et « écart
-        F/H » n'existe pas en mode simple."""
-        chart = self.chart()
-        self.assertIn("spread", [key for key, _l in chart.orders()])
-        chart.set_split(True)
         cles = [key for key, _l in chart.orders()]
-        self.assertIn("gap", cles)
         self.assertNotIn("spread", cles)
+        self.assertEqual(cles, ["headcount", "median"])
+
+    def test_the_split_mode_offers_its_own_sort(self):
+        """« Écart F/H » n'existe pas en mode simple."""
+        chart = self.chart()
+        self.assertNotIn("gap", [key for key, _l in chart.orders()])
+        chart.set_split(True)
+        self.assertIn("gap", [key for key, _l in chart.orders()])
+
+
+@needs_display
+class TestTheNarrowPyramid(ChartCase):
+    """Une colonne etroite dessine une pyramide reduite, pas rien du tout."""
+
+    def chart(self, largeur):
+        """La pyramide dans une colonne de largeur imposée : c'est la
+        largeur reçue, et non celle demandée, qui décide du tracé."""
+        import tkinter as tk
+
+        from hr_analytics.ui.charts import PyramidChart
+
+        colonne = tk.Frame(self.root, width=largeur, height=240)
+        colonne.pack_propagate(False)
+        colonne.pack()
+        chart = PyramidChart(colonne)
+        chart.pack(fill="both", expand=True)
+        self.root.update()
+        chart.set_rows([
+            {"label": "60+", "count": 20, "female": 8, "male": 12},
+            {"label": "50-59", "count": 40, "female": 18, "male": 22},
+            {"label": "<20", "count": 6, "female": 2, "male": 4},
+        ])
+        self.root.update()
+        return chart
+
+    def test_a_column_of_one_hundred_and_eighty_five_pixels_still_draws(self):
+        """Une pyramide entierement vide, sans un mot : on ne savait pas si
+        la donnee manquait ou le dessin."""
+        chart = self.chart(185)
+        self.assertTrue(chart.canvas.find_all())
+
+    def test_a_column_too_narrow_for_its_labels_draws_nothing(self):
+        """En dessous de ses propres besoins, elle se tait plutot que de
+        superposer les libelles et les barres."""
+        chart = self.chart(90)
+        self.assertEqual(chart.canvas.find_all(), ())
 
 
 @needs_display
@@ -1863,11 +1869,20 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         self.assertIn("▸ Hommes", hommes)
         self.assertNotIn("▸ Femmes", hommes)
 
-    def test_the_headcounts_close_the_table(self):
-        texte = self.chart._bulle(self._ligne(), "female")
-        self.assertIn("Effectif", texte)
+    def test_the_headcounts_open_the_table(self):
+        """L'effectif se lit avant les bornes, et non apres : un P10 calculé
+        sur douze personnes ne se lit pas comme un P10."""
+        lignes = self._bulle_lignes()
+        self.assertTrue(lignes[2].startswith("Effectif"))
         for nombre in ("300", "120", "180"):
-            self.assertIn(nombre, texte)
+            self.assertIn(nombre, lignes[2])
+
+    def test_the_bounds_climb_the_scale(self):
+        """Du bas de la distribution vers le haut : c'est le sens d'une
+        échelle de rémunération, celui de la boîte lue de gauche à droite,
+        et celui de tous les tableaux de l'outil."""
+        libelles = [ligne.split()[0] for ligne in self._bulle_lignes()[4:]]
+        self.assertEqual(libelles, ["P10", "Q1", "Médiane", "Q3", "P90"])
 
     def test_a_masked_half_leaves_its_column_out(self):
         """Un côté sous le seuil de publication n'a pas de colonne : une
@@ -1890,7 +1905,7 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         from hr_analytics.ui.charts import table_font
 
         lignes = self._bulle_lignes()
-        largeurs = {len(ligne) for ligne in lignes[1:]}
+        largeurs = {len(ligne) for ligne in lignes[1:3] + lignes[4:]}
         self.assertEqual(len(largeurs), 1,
                          f"lignes de largeurs différentes : {largeurs}")
         # La police est mesurée telle que le canevas la recevra — un
@@ -1910,7 +1925,8 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
     def test_every_line_of_the_table_has_the_same_width(self):
         """Et les lignes elles-mêmes : un montant plus court décalerait sa
         colonne si le remplissage était mal calculé."""
-        lignes = self._bulle_lignes()[1:]
+        lignes = self._bulle_lignes()
+        lignes = lignes[1:3] + lignes[4:]
         self.assertGreater(len(lignes), 3)
         self.assertEqual(len({len(ligne) for ligne in lignes}), 1)
 

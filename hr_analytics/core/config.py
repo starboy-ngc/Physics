@@ -298,8 +298,11 @@ DEFAULTS: Dict[str, Any] = {
         # Ouverture de grille (Q3/Q1) a partir de laquelle la dispersion
         # merite un regard, puis une alerte. Une regle de lecture se
         # parametre : elle n'a pas sa place dans un graphique.
-        "spread_alert_threshold": 1.4,
-        "spread_critical_threshold": 1.8,
+        # Ordre des lignes dans les analyses par dimension, quand la
+        # dimension n'a pas d'echelle propre (une tranche d'age se lit dans
+        # son ordre, un etablissement non). « alphabetique »,
+        # « effectif_decroissant » ou « effectif_croissant ».
+        "segment_order": "alphabetique",
     },
     "theme_parameters": {
         # Nom du theme applique a l'ecran et aux documents. Un nom inconnu

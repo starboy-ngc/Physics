@@ -132,7 +132,7 @@ def _derived(expression: str, ligne: Dict[str, int],
 
 def _rows_segment(segment: Dict[str, Any]) -> List[List[Any]]:
     rows: List[List[Any]] = [[
-        segment["label"], "Effectif", "Moyenne", "Médiane", "P10", "Q1", "Q3",
+        segment["label"], "Effectif", "Moyenne", "P10", "Q1", "Médiane", "Q3",
         "P90", "P90/P10", "Âge médian", "Ancienneté médiane",
     ]]
     for row in segment["rows"]:
@@ -143,11 +143,12 @@ def _rows_segment(segment: Dict[str, Any]) -> List[List[Any]]:
         dispersion = salary.get("dispersion") or {}
         ligne = len(rows) + 1
         rows.append([
-            row["segment"], row["headcount"], salary.get("mean"), salary.get("median"),
-            salary.get("p10"), salary.get("p25"), salary.get("p75"), salary.get("p90"),
+            row["segment"], row["headcount"], salary.get("mean"),
+            salary.get("p10"), salary.get("p25"), salary.get("median"),
+            salary.get("p75"), salary.get("p90"),
             # P90/P10 se lit sur la ligne meme : la formule cite les deux
             # colonnes voisines plutot que de reciter un resultat.
-            Formula(f"H{ligne}/E{ligne}", dispersion.get("p90_over_p10")),
+            Formula(f"H{ligne}/D{ligne}", dispersion.get("p90_over_p10")),
             row.get("age_median"), row.get("tenure_median"),
         ])
     return rows

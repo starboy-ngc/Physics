@@ -267,6 +267,45 @@ if __name__ == "__main__":
     unittest.main()
 
 
+class TestTheDistributionChartSpeaksForItself(unittest.TestCase):
+    """L'effectif écrit sur chaque barre, et deux axes nommés.
+
+    Aucune donnée RH réelle.
+    """
+
+    def svg(self, counts=(12, 40, 7), label="Salaire de base"):
+        from hr_analytics.core.reporting import histogram_svg
+
+        bins = [{"lower": 30000 + index * 5000, "upper": 35000 + index * 5000,
+                 "count": valeur} for index, valeur in enumerate(counts)]
+        return histogram_svg(bins, "EUR", label=label)
+
+    def etiquettes(self, rendu):
+        """Les nombres posés sur les barres, et non les graduations."""
+        import re
+
+        return re.findall(r'font-size="9\.5"[^>]*>([^<]+)<', rendu)
+
+    def test_each_bar_carries_its_headcount(self):
+        """Il fallait survoler pour le connaître ; sur un document imprimé,
+        personne ne survole."""
+        self.assertEqual(self.etiquettes(self.svg()), ["12", "40", "7"])
+
+    def test_an_empty_class_writes_nothing(self):
+        self.assertEqual(self.etiquettes(self.svg(counts=(12, 0, 7))),
+                         ["12", "7"])
+
+    def test_both_axes_are_named(self):
+        rendu = self.svg()
+        self.assertIn(">Salaire de base<", rendu)
+        self.assertIn(">Effectif<", rendu)
+        self.assertNotIn("par classe de", rendu)
+
+    def test_the_axis_takes_the_name_the_mapping_gives_the_column(self):
+        self.assertIn(">Rémunération annuelle<",
+                      self.svg(label="Rémunération annuelle"))
+
+
 class TestWhatTheDocumentsLeaveOut(unittest.TestCase):
     """Ce qui est sous le seuil ne tient plus une ligne pour le dire.
 
@@ -301,6 +340,13 @@ class TestWhatTheDocumentsLeaveOut(unittest.TestCase):
         html = self._rapport([self._ligne("Minuscule", 3, True)])
         self.assertNotIn("Établissement", html)
         self.assertNotIn("Analyses par segment", html)
+
+    def test_the_coverage_tile_is_gone(self):
+        """« Couverture 100,0 % » occupait un encadré pour dire qu'il n'y
+        avait rien à signaler. Une couverture incomplète, elle, se lit sur
+        la page des écarts, où elle change la lecture."""
+        html = self._rapport([self._ligne("Grand", 120, False)])
+        self.assertNotIn("Couverture", html)
 
 
 class TestTheQualitySectionStaysShort(unittest.TestCase):

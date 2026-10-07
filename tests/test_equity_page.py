@@ -306,6 +306,10 @@ class TestWhatTheStatsSay(EquityCase):
                             for ligne in lignes for valeur in ligne))
 
     def test_the_gap_is_stated_rather_than_left_to_arithmetic(self):
+        """Et sur une seule ligne : les trois phrases se repliaient sur deux
+        ou trois lignes dans une demi-colonne, et le tableau se mettait à
+        flotter au-dessus d'un paragraphe."""
         note = self.app.equity_stats_note.cget("text")
-        self.assertIn("Écart de moyenne", note)
-        self.assertIn("écart de médiane", note)
+        self.assertIn("Écart moyenne", note)
+        self.assertIn("médiane", note)
+        self.assertNotIn(".", note.replace("...", ""))

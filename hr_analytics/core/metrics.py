@@ -13,7 +13,7 @@ from dataclasses import dataclass, fields as _dataclass_fields
 from typing import Any, Dict, List, Optional, Sequence
 
 from .config import Configuration, analysis_field, percentiles as configured_percentiles
-from .normalize import Employee, Population, full_time_amount
+from .normalize import Employee, Population, fold_label as _fold, full_time_amount
 from .errors import ConfigError
 from .segmentation import (UNKNOWN_LABEL, dimension_label, field_label,
                            personal_fields, split_by)
@@ -646,7 +646,14 @@ def _segment_sort_key(field_name: str, config: Configuration,
 
     * tranches d'age et d'anciennete -> l'ordre declare en configuration ;
     * libelles ordinaux (G1..G8, N1..N5) -> l'ordre numerique ;
-    * tout le reste (BU, metier, statut) -> effectif decroissant.
+    * tout le reste (BU, metier, statut) -> l'ordre choisi au parametrage.
+
+    Ce dernier ordre etait l'effectif decroissant, et lui seul. Devant
+    cinquante-sept etablissements, un classement par effectif se lit comme
+    un desordre : on cherche un nom, et on parcourt la colonne entiere.
+    L'ordre alphabetique le rend cherchable ; l'effectif reste disponible
+    pour qui veut savoir ce qui pese. Les deux repondent a des questions
+    differentes, et c'est au lecteur de dire laquelle il se pose.
     """
     # Les tranches posees sur la population priment sur celles declarees :
     # la derniere tranche ouverte a pu etre prolongee, et l'ordre doit
@@ -667,7 +674,29 @@ def _segment_sort_key(field_name: str, config: Configuration,
             return (0, int(match.group(2))) if match else (1, 0)
         return ordinal
 
-    return lambda item: (-item["headcount"], item["segment"])
+    return _declared_order(config)
+
+
+#: Ordres proposes pour une dimension sans echelle propre. La cle est
+#: technique et vit dans la configuration ; l'intitule s'affiche.
+SEGMENT_ORDERS = (
+    ("alphabetique", "Alphabétique"),
+    ("effectif_decroissant", "Effectif décroissant"),
+    ("effectif_croissant", "Effectif croissant"),
+)
+
+
+def _declared_order(config: Configuration):
+    """La cle de tri que le parametrage demande."""
+    choix = str(config.get("chart_parameters.segment_order", "alphabetique"))
+    if choix == "effectif_decroissant":
+        return lambda item: (-item["headcount"], _fold(item["segment"]))
+    if choix == "effectif_croissant":
+        return lambda item: (item["headcount"], _fold(item["segment"]))
+    # Sans accent ni casse : « Édition » doit se ranger entre « Douane » et
+    # « Exploitation », et non apres « Zone » comme le fait un tri brut sur
+    # les points de code.
+    return lambda item: (_fold(item["segment"]), item["segment"])
 
 
 def compare_populations(

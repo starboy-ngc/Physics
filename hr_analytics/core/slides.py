@@ -35,6 +35,12 @@ class Block:
     payload: Any = None
     title: str = ""
     width: str = "full"            # full | half | third
+    #: Blanc supplementaire au-dessus de la rangee, en points PDF (le HTML
+    #: le convertit). Il sert a detacher un bloc de ce qui le precede quand
+    #: les deux parlent de choses differentes : sur la synthese, la
+    #: dispersion colle aux pyramides et les deux se lisent comme un seul
+    #: pave.
+    space: float = 0.0
 
 
 @dataclass
@@ -70,11 +76,12 @@ def _kpi_block(pairs: Sequence[Sequence[str]], width: str = "full",
 _MASQUE = "Résultat masqué pour préserver la confidentialité."
 
 
-def _table_block(headers, rows, title="", width="full", compact=False) -> Block:
+def _table_block(headers, rows, title="", width="full", compact=False,
+                 space: float = 0.0) -> Block:
     return Block("table",
                  {"headers": list(headers), "rows": [list(r) for r in rows],
                   "compact": compact},
-                 title=title, width=width)
+                 title=title, width=width, space=space)
 
 
 def _population_kpis(population: Dict[str, Any]) -> List[List[str]]:
@@ -190,6 +197,20 @@ def _median_gap_rows(salary: Dict[str, Any], currency: str,
     """
     dispersion = salary.get("dispersion") or {}
     rows: List[List[str]] = []
+    # L'effectif de chaque colonne, en tete. Sans lui, « 2 041 EUR » chez
+    # les femmes et « 1 943 EUR » chez les hommes se comparaient sans
+    # qu'on sache si l'un porte sur sept cent quatre-vingt-huit personnes
+    # ou sur douze — et un P10 calcule sur douze personnes ne se lit pas
+    # comme un P10.
+    if bounds:
+        effectifs = ["Effectif"]
+        for sexe in ("female", "male"):
+            nombre = bounds[sexe].get("headcount")
+            effectifs.append("—" if nombre is None
+                             else format_number(nombre, 0))
+        effectifs.append(format_number(salary.get("headcount"), 0))
+        effectifs.append("")
+        rows.append(effectifs)
     for libelle, cle, ecart in _BORNES:
         valeur = salary.get(cle)
         if valeur is None:
@@ -318,7 +339,7 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
         blocks.append(_table_block(
             _median_gap_header(bornes), dispersion_rows,
             title="Dispersion des rémunérations",
-            width="full" if bornes else "half", compact=True))
+            width="full" if bornes else "half", compact=True, space=18))
     # La boite se pose a sa propre condition et non a celle du tableau :
     # celui-ci se contente de la mediane, la boite a besoin de ses cinq
     # reperes. Posee sans eux, elle laissait une colonne titree et vide.
@@ -447,7 +468,9 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
     distribution = analysis.get("distribution", {})
     if distribution.get("available"):
         slides.append(Slide("Distribution des rémunérations", blocks=[
-            Block("chart", {"type": "histogram", "bins": distribution.get("bins", [])}),
+            Block("chart", {"type": "histogram",
+                            "bins": distribution.get("bins", []),
+                            "label": distribution.get("label") or ""}),
         ]))
     # Anciennete x remuneration
     scatter = analysis.get("scatter", {})
@@ -473,65 +496,25 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             rows.append([
                 row["segment"], str(row["headcount"]),
                 format_money(item.get("mean"), currency),
-                format_money(item.get("median"), currency),
                 format_money(item.get("p25"), currency),
+                format_money(item.get("median"), currency),
                 format_money(item.get("p75"), currency),
             ])
+        # Q1, mediane, Q3 : les trois quartiles dans l'ordre de l'echelle.
+        # La mediane posee avant Q1 faisait lire la distribution a
+        # l'envers, alors que c'est son etalement qu'on vient y chercher.
         slide = Slide(f'Analyse par {segment["label"].lower()}')
         slide.blocks = [_table_block(
-            [segment["label"], "Effectif", "Moyenne", "Médiane", "Q1", "Q3"], rows)]
+            [segment["label"], "Effectif", "Moyenne", "Q1", "Médiane", "Q3"],
+            rows)]
         slides.append(slide)
 
-    # Pay Transparency : deux slides, l'ecart et son detail par poste
-    equity = analysis.get("pay_equity") or {}
-    if equity.get("available"):
-        label = (equity.get("category_label") or "poste").lower()
-        slides.append(Slide(
-            "Écarts femmes / hommes",
-            "Un écart positif signifie que les femmes sont moins rémunérées",
-            blocks=[
-                _kpi_block([
-                    ["Écart global", format_percent(
-                        equity.get("pay", {}).get("mean_gap"))],
-                    [f"À {label} comparable",
-                     format_percent(equity.get("comparable_gap"))],
-                    ["Effet de structure",
-                     format_percent(equity.get("structure_gap"))],
-                    ["Rattrapage", format_money(equity.get("at_stake_total"),
-                                                currency)],
-                    # La couverture etait dite en toutes lettres sous le
-                    # bandeau. Un document ne commente pas ses chiffres :
-                    # elle en devient un.
-                    ["Couverture",
-                     format_percent(equity.get("comparable_coverage"))],
-                ], forts=2),
-                _table_block(["Quartile", "Part femmes", "Part hommes"],
-                             [[f'Q{item["quartile"]}',
-                               format_percent(item.get("female_share")),
-                               format_percent(item.get("male_share"))]
-                              for item in equity.get("quartiles", [])],
-                             title="Répartition par quartile"),
-            ]))
-        # Les categories ou l'enjeu est le plus fort : c'est la que se
-        # decide un plan de rattrapage.
-        # Meme regle que pour les segments : une categorie ou l'un des deux
-        # sexes n'atteint pas le seuil n'entre pas dans le tableau.
-        retenues = sorted((item for item in equity.get("categories", [])
-                           if item.get("published")),
-                          key=lambda item: -(item.get("at_stake") or 0.0))[:12]
-        if retenues:
-            rows = []
-            for item in retenues:
-                rows.append([item["category"], str(item["female_count"]),
-                             str(item["male_count"]),
-                             format_percent(item.get("mean_gap")),
-                             format_money(item.get("at_stake"), currency)])
-            slide = Slide(f"Écart par {label}",
-                          "Classé par enjeu de rattrapage")
-            slide.blocks = [_table_block(
-                [equity.get("category_label") or "Catégorie", "Femmes",
-                 "Hommes", "Écart moyen", "Rattrapage"], rows)]
-            slides.append(slide)
+    # Pas de planche d'ecart femmes / hommes, ni de detail par categorie.
+    # Le comparatif se lit a l'ecran, sur la page « Ecarts F/H », qui le
+    # porte en entier : effectifs, pyramides, nuage, quartiles des deux
+    # sexes, recapitulatif par poste et population analysee. Il demande
+    # d'etre interroge — on change d'axe, on filtre un poste, on survole —
+    # et deux planches figees n'en gardaient que l'ecorce.
 
     # Comparaison
     comparison = analysis.get("comparison")
@@ -756,7 +739,9 @@ def _html_escape(value: Any) -> str:
 #: bloc. Un nuage a besoin de hauteur pour montrer sa dispersion verticale ;
 #: une boite a moustaches est horizontale et n'en tire rien.
 _CHART_HEIGHTS = {
-    "histogram": {"full": 330, "half": 260, "third": 200},
+    # « full » ne sert qu'a un histogramme seul sur sa planche : il y
+    # prend la hauteur, au lieu de laisser un tiers de page blanc dessous.
+    "histogram": {"full": 470, "half": 260, "third": 200},
     "scatter": {"full": 430, "half": 300, "third": 220},
     # « full » ne sert qu'a une pyramide seule sur sa planche : elle y a
     # toute la hauteur, et des barres qui se comparent de loin.
@@ -771,6 +756,11 @@ _CHART_HEIGHTS = {
 def _render_block(block: Block, currency: str) -> str:
     title = (f'<div class="block-title">{_html_escape(block.title)}</div>'
              if block.title else "")
+    # Le blanc demande au-dessus du bloc, converti du point PDF au pixel de
+    # la planche HTML : les deux formats du meme document doivent respirer
+    # pareil.
+    marge = (f' style="margin-top:{block.space * 1.6:.0f}px"'
+             if block.space else "")
     if block.kind == "kpis":
         cells = "".join(
             f'<div class="kpi{" fort" if item.get("fort") else ""}">'
@@ -779,7 +769,7 @@ def _render_block(block: Block, currency: str) -> str:
             for item in block.payload["items"]
         )
         variant = " compact" if block.payload.get("compact") else ""
-        return (f'<div class="{block.width}">'
+        return (f'<div class="{block.width}"{marge}>'
                 f'<div class="kpis{variant}">{cells}</div></div>')
     if block.kind == "table":
         head = "".join(f"<th>{_html_escape(h)}</th>" for h in block.payload["headers"])
@@ -788,7 +778,7 @@ def _render_block(block: Block, currency: str) -> str:
             for row in block.payload["rows"]
         )
         compact = " compact" if block.payload.get("compact") else ""
-        return (f'<div class="{block.width}{compact}">{title}'
+        return (f'<div class="{block.width}{compact}"{marge}>{title}'
                 f'<table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
     if block.kind == "chart":
         spec = block.payload
@@ -799,7 +789,8 @@ def _render_block(block: Block, currency: str) -> str:
         height = spec.get("height") or _CHART_HEIGHTS.get(
             spec["type"], _CHART_HEIGHTS["scatter"])[block.width]
         if spec["type"] == "histogram":
-            svg = histogram_svg(spec["bins"], currency, width=canvas, height=height)
+            svg = histogram_svg(spec["bins"], currency, width=canvas,
+                                height=height, label=spec.get("label", ""))
         elif spec["type"] == "pyramid":
             svg = pyramid_svg(spec["rows"], width=canvas, height=height,
                               label=spec.get("label", ""))
@@ -816,7 +807,7 @@ def _render_block(block: Block, currency: str) -> str:
             return ""
         # `chart-fit` borne le graphique a la place restante : une hauteur mal
         # estimee ne peut plus deborder du bas de la page.
-        return f'<div class="{block.width} chart-fit">{title}{svg}</div>'
+        return f'<div class="{block.width} chart-fit"{marge}>{title}{svg}</div>'
     if block.kind == "legend":
         dataset = block.payload
         groups = dataset.get("groups") or []
@@ -1003,7 +994,8 @@ def _draw_table(page, payload, x, y, width, max_height) -> float:
 _AXIS_GUTTER = 62.0
 
 
-def _draw_histogram(page, bins, currency, x, y, width, height) -> float:
+def _draw_histogram(page, bins, currency, x, y, width, height,
+                    label: str = "") -> float:
     if not bins:
         return 0.0
     axis = 30.0
@@ -1022,6 +1014,13 @@ def _draw_histogram(page, bins, currency, x, y, width, height) -> float:
         bar = plot_height * item["count"] / peak
         page.rect(x + index * bar_width + 0.8, base, max(bar_width - 1.6, 0.5), bar,
                   fill=_ACCENT)
+        # L'effectif au-dessus de sa barre : sur un document imprime,
+        # personne ne survole. Une barre trop etroite pour son nombre le
+        # laisse de cote plutot que de l'ecrire sur sa voisine.
+        if item["count"] and bar_width >= 17:
+            page.text(x + index * bar_width + bar_width / 2, base + bar + 3,
+                      format_number(item["count"], 0), size=6.5,
+                      color=_MUTED, align="center")
     page.line(x, base, x + width, base, color=_MUTED, width=0.5)
     low, high = bins[0]["lower"], bins[-1]["upper"]
     span = (high - low) or 1.0
@@ -1029,7 +1028,7 @@ def _draw_histogram(page, bins, currency, x, y, width, height) -> float:
         page.text(x + (value - low) / span * width, base - 12,
                   format_money(value, currency), size=7, color=_MUTED,
                   align="center")
-    page.text(x + width / 2, base - 23, "Effectif par classe de rémunération",
+    page.text(x + width / 2, base - 23, label or "Rémunération",
               size=7, color=_MUTED, align="center")
     return height
 
@@ -1087,7 +1086,7 @@ def _draw_scatter(page, dataset, currency, x, y, width, height) -> float:
 #: points du PDF ne sont pas les pixels du HTML : les memes valeurs y
 #: donneraient un nuage qui depasse de la page.
 _PDF_CHART_HEIGHTS = {
-    "histogram": {"full": 420, "half": 250, "third": 200},
+    "histogram": {"full": 470, "half": 250, "third": 200},
     "scatter": {"full": 420, "half": 250, "third": 200},
     "pyramid": {"full": 420, "half": 220, "third": 200},
     "boxplot": {"full": 210, "half": 200, "third": 190},
@@ -1350,6 +1349,7 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             return
         count = columns.get(pending[0].width, 1)
         column_width = (width - gap * (count - 1)) / count
+        cursor -= max(bloc.space for bloc in pending[:count])
         used = 0.0
         for index, block in enumerate(pending[:count]):
             left = _MARGIN + index * (column_width + gap)
@@ -1381,7 +1381,8 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
             height = min(room - 8, cap)
             if spec["type"] == "histogram":
                 return _draw_histogram(page, spec["bins"], currency, left, top,
-                                       block_width, height)
+                                       block_width, height,
+                                       label=spec.get("label", ""))
             if spec["type"] == "pyramid":
                 return _draw_pyramid(page, spec["rows"], left, top,
                                      block_width, height,
@@ -1418,7 +1419,7 @@ def _draw_slide(page, slide: Slide, number: int, total: int, currency: str) -> N
                 flush_row()
             continue
         flush_row()
-        top = cursor
+        top = cursor - block.space
         if block.title:
             page.text(_MARGIN, top - 8, block.title.upper(), size=6.5, color=_MUTED)
             top -= 15

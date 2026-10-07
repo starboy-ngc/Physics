@@ -289,10 +289,11 @@ class TestReadability(unittest.TestCase):
         self.directory = tempfile.mkdtemp()
         self.config = make_config()
 
-    def _segment(self, field_name, rows):
+    def _segment(self, field_name, rows, overrides=None):
         from hr_analytics.core import metrics
-        population = build_population(rows, self.config)
-        return metrics.calculate_segment_metrics(population, self.config, field_name)
+        config = make_config(overrides) if overrides else self.config
+        population = build_population(rows, config)
+        return metrics.calculate_segment_metrics(population, config, field_name)
 
     def test_ordinal_segments_follow_their_scale_not_headcount(self):
         # G1 a un effectif plus faible que G2 : un tri par population placerait
@@ -311,11 +312,38 @@ class TestReadability(unittest.TestCase):
         labels = [row["segment"] for row in self._segment("age_band", rows)["rows"]]
         self.assertEqual(labels, ["20-29", "30-39", "50-59"])
 
-    def test_non_ordinal_segments_keep_headcount_order(self):
+    def test_non_ordinal_segments_read_alphabetically(self):
+        """Devant cinquante-sept établissements, un classement par effectif
+        se lit comme un désordre : on cherche un nom, et on parcourt la
+        colonne entière."""
         rows = ([make_row(i, business_unit="DACH") for i in range(5)]
                 + [make_row(100 + i, business_unit="France") for i in range(20)])
         labels = [row["segment"] for row in self._segment("business_unit", rows)["rows"]]
-        self.assertEqual(labels, ["France", "DACH"])
+        self.assertEqual(labels, ["DACH", "France"])
+
+    def test_the_headcount_order_stays_available(self):
+        """Les deux ordres répondent à des questions différentes — « lequel
+        est-ce ? » et « lequel pèse ? » — et c'est au lecteur de dire
+        laquelle il se pose."""
+        rows = ([make_row(i, business_unit="DACH") for i in range(5)]
+                + [make_row(100 + i, business_unit="France") for i in range(20)])
+        segment = self._segment(
+            "business_unit", rows,
+            overrides={"chart_parameters.segment_order": "effectif_decroissant"})
+        self.assertEqual([row["segment"] for row in segment["rows"]],
+                         ["France", "DACH"])
+
+    def test_accents_do_not_send_a_segment_to_the_end(self):
+        """« Édition » se range entre « Douane » et « Exploitation », et non
+        après « Zone » comme le fait un tri brut sur les points de code."""
+        rows = []
+        for index, nom in enumerate(("Zone", "Édition", "Douane",
+                                     "Exploitation")):
+            rows += [make_row(index * 100 + step, business_unit=nom)
+                     for step in range(5)]
+        labels = [row["segment"]
+                  for row in self._segment("business_unit", rows)["rows"]]
+        self.assertEqual(labels, ["Douane", "Édition", "Exploitation", "Zone"])
 
 class TestResponsiveSlides(unittest.TestCase):
     """La page garde une geometrie fixe mais doit tenir dans un ecran etroit.
@@ -394,6 +422,28 @@ class TestSummaryComposition(unittest.TestCase):
         y redessinerait la seule colonne « Ensemble », que le lecteur vient
         de lire chiffre par chiffre, au prix d'un tiers de la page."""
         self.assertEqual(self._charts(), ["pyramid", "pyramid", "donut"])
+
+    def test_each_column_says_how_many_people_it_counts(self):
+        """« 2 041 EUR » chez les femmes et « 1 943 EUR » chez les hommes se
+        comparaient sans qu'on sache si l'un porte sur sept cent
+        quatre-vingt-huit personnes ou sur douze — et un P10 calculé sur
+        douze personnes ne se lit pas comme un P10."""
+        tableau = [block for block in self.summary.blocks
+                   if block.kind == "table"][0]
+        premiere = tableau.payload["rows"][0]
+        self.assertEqual(premiere[0], "Effectif")
+        bornes = self.payload["pay_equity"]["bounds_by_sex"]
+        self.assertIn(str(bornes["female"]["headcount"]),
+                      premiere[1].replace("\u202f", "").replace(" ", ""))
+
+    def test_the_dispersion_is_detached_from_what_precedes_it(self):
+        """Collée aux pyramides, elle se lisait avec elles comme un seul
+        pavé."""
+        tableau = [block for block in self.summary.blocks
+                   if block.kind == "table"][0]
+        self.assertGreater(tableau.space, 0)
+        rendu = render_slides_html([self.summary], self.payload)
+        self.assertIn("margin-top:", rendu)
 
     def test_no_scatter_on_the_summary(self):
         self.assertNotIn("scatter", self._charts())
@@ -672,23 +722,25 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
             "manifest": {},
         }
 
-    def test_the_report_carries_the_gaps_and_their_decomposition(self):
+    def test_the_report_leaves_the_gaps_to_the_screen(self):
+        """Le comparatif se lit sur la page « Écarts F/H », qui le porte en
+        entier et demande d'être interrogé — on change d'axe, on filtre un
+        poste, on survole. Une section figée n'en gardait que l'écorce."""
         from hr_analytics.core.reporting import render_report
 
         html = render_report(self._analysis())
-        # Le chapitre dit ce qu'il analyse, non le nom d'un texte de loi :
-        # c'est une page d'analyse d'ecarts, pas une page de conformite.
-        self.assertIn("Écarts de rémunération femmes / hommes", html)
-        for attendu in ("Écart global", "comparable", "Effet de structure",
-                        "Rattrapage", "Répartition par quartile"):
-            self.assertIn(attendu, html, attendu)
+        self.assertNotIn("Écarts de rémunération femmes / hommes", html)
+        for absent in ("Écart global", "Effet de structure",
+                       "Répartition par quartile"):
+            self.assertNotIn(absent, html, absent)
 
-    def test_the_deck_carries_them_too(self):
+    def test_the_deck_leaves_them_too(self):
         from hr_analytics.core.slides import build_deck
 
         titres = [slide.title for slide in build_deck(self._analysis())]
-        self.assertIn("Écarts femmes / hommes", titres)
-        self.assertTrue(any(t.startswith("Écart par") for t in titres), titres)
+        self.assertNotIn("Écarts femmes / hommes", titres)
+        self.assertFalse([t for t in titres if t.startswith("Écart par")],
+                         titres)
 
     def test_a_masked_category_is_never_detailed_in_a_document(self):
         """Un document circule : une categorie sous le seuil n'y entre pas

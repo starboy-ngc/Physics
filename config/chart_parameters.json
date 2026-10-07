@@ -8,6 +8,5 @@
   "csp_field": "status",
   "csp_max_slices": 6,
   "show_trend_line": false,
-  "spread_alert_threshold": 1.4,
-  "spread_critical_threshold": 1.8
+  "segment_order": "alphabetique"
 }

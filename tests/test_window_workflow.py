@@ -549,11 +549,15 @@ class TestTheDispersionControls(WindowCase):
                                   "Chef de projet"][index % 3]]))
         self.analyse()
 
-    def test_the_spread_sort_is_offered_in_the_plain_mode(self):
+    def test_the_plain_mode_offers_its_two_sorts(self):
+        """Le tri par ouverture est parti avec sa colonne : un tri
+        qu'aucune colonne ne montre se lit comme un désordre."""
         self._load()
-        self.assertIn("Ouverture décroissante", self.app.box_order.cget("values"))
-        self.assertNotIn("Écart F/H décroissant",
-                         self.app.box_order.cget("values"))
+        proposes = self.app.box_order.cget("values")
+        self.assertIn("Effectif décroissant", proposes)
+        self.assertIn("Médiane décroissante", proposes)
+        self.assertNotIn("Ouverture décroissante", proposes)
+        self.assertNotIn("Écart F/H décroissant", proposes)
 
     def test_the_split_mode_swaps_the_sort_for_its_own(self):
         """Un tri qu'aucune colonne ne montre se lit comme un désordre."""
@@ -561,31 +565,19 @@ class TestTheDispersionControls(WindowCase):
         self.app.box_split.set(True)
         self.app.update()
         self.assertIn("Écart F/H décroissant", self.app.box_order.cget("values"))
-        self.assertNotIn("Ouverture décroissante",
-                         self.app.box_order.cget("values"))
 
     def test_an_order_without_a_column_falls_back_instead_of_persisting(self):
-        """Trier par ouverture puis dédoubler : l'ordre doit retomber sur un
-        tri que le mode sait montrer, pas rester sur un tri invisible."""
+        """Trier par médiane puis dédoubler : l'ordre doit retomber sur un
+        tri que le mode sait montrer."""
         self._load()
-        self.app.box_order.current(2)
+        self.app.box_order.current(1)
         self.app.box_order.event_generate("<<ComboboxSelected>>")
         self.app.update()
-        self.assertEqual(self.app.boxplot.order, "spread")
+        self.assertEqual(self.app.boxplot.order, "median")
         self.app.box_split.set(True)
         self.app.update()
         self.assertIn(self.app.boxplot.order,
                       [key for key, _l in self.app.boxplot.SPLIT_ORDERS])
-
-    def test_the_thresholds_reach_the_chart_from_the_configuration(self):
-        self._load()
-        self.assertEqual(
-            self.app.boxplot.spread_alert,
-            self.app.configuration.get("chart_parameters.spread_alert_threshold"))
-        self.assertEqual(
-            self.app.boxplot.spread_critical,
-            self.app.configuration.get(
-                "chart_parameters.spread_critical_threshold"))
 
 
 class TestThemeAndIdentities(WindowCase):

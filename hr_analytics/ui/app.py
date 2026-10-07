@@ -2877,12 +2877,22 @@ class Application(tk.Tk):
         self._equity_rule()
         haut = tk.Frame(page, background=theme.CANVAS)
         haut.pack(fill="x", padx=24)
+        # Trois colonnes egales, et non trois colonnes qui se partagent le
+        # surplus : « pack » donne a chacune la largeur de son contenu puis
+        # repartit le reste, et la pyramide des ages — six tranches contre
+        # dix — heritait d'une colonne trop etroite pour etre tracee.
+        # Le tableau des effectifs porte quatre colonnes chiffrees et
+        # demande deux fois la place d'une pyramide : des tiers stricts le
+        # rabotaient — « Ancienneté médian… », « ENSEM… ». Les poids
+        # disent ce que chacun reclame.
+        for colonne, poids in enumerate((2, 1, 1)):
+            haut.columnconfigure(colonne, weight=poids, uniform="equite")
         gauche = tk.Frame(haut, background=theme.CANVAS)
-        gauche.pack(side="left", fill="both", expand=True)
+        gauche.grid(row=0, column=0, sticky="nsew")
         milieu = tk.Frame(haut, background=theme.CANVAS)
-        milieu.pack(side="left", fill="both", expand=True, padx=(24, 0))
+        milieu.grid(row=0, column=1, sticky="nsew", padx=(24, 0))
         droite = tk.Frame(haut, background=theme.CANVAS)
-        droite.pack(side="left", fill="both", expand=True, padx=(24, 0))
+        droite.grid(row=0, column=2, sticky="nsew", padx=(24, 0))
         self._equity_title(gauche, "Effectifs")
         self.equity_people = self._tree(
             gauche, ("Indicateur", "Femmes", "Hommes", "Ensemble"),
@@ -2934,10 +2944,12 @@ class Application(tk.Tk):
         self._equity_rule()
         bas = tk.Frame(page, background=theme.CANVAS)
         bas.pack(fill="x", padx=24)
+        for colonne in range(2):
+            bas.columnconfigure(colonne, weight=1, uniform="equite-bas")
         colonne_g = tk.Frame(bas, background=theme.CANVAS)
-        colonne_g.pack(side="left", fill="both", expand=True)
+        colonne_g.grid(row=0, column=0, sticky="nsew")
         colonne_d = tk.Frame(bas, background=theme.CANVAS)
-        colonne_d.pack(side="left", fill="both", expand=True, padx=(24, 0))
+        colonne_d.grid(row=0, column=1, sticky="nsew", padx=(24, 0))
         self._equity_title(colonne_g, "Rémunération comparée")
         self.equity_stats = self._tree(
             colonne_g, ("Indicateur", "Femmes", "Hommes", "Ensemble"),
@@ -3245,17 +3257,21 @@ class Application(tk.Tk):
             (libelle, valeur("female", mesure, nature),
              valeur("male", mesure, nature), valeur("all", mesure, nature))
             for libelle, mesure, nature in self.EQUITY_ROWS])
+        # Une seule ligne sous le tableau. Les trois phrases s'y
+        # repliaient sur deux ou trois lignes dans une demi-colonne, et le
+        # tableau se mettait a flotter au-dessus d'un paragraphe. Les
+        # separateurs remplacent les points : c'est la meme information,
+        # dans la place d'un intitule.
         notes = []
         if bloc.get("mean_gap") is not None:
-            notes.append(f'Écart de moyenne : {_signed_percent(bloc["mean_gap"])}'
-                         f' · écart de médiane : '
-                         f'{_signed_percent(bloc["median_gap"])}.')
-        if bloc.get("warning"):
-            notes.append(bloc["warning"])
+            notes.append(f'Écart moyenne {_signed_percent(bloc["mean_gap"])}'
+                         f' · médiane {_signed_percent(bloc["median_gap"])}')
         base = (bloc.get("basis") or {}).get("label") or ""
         if base:
-            notes.append(f"Comparaison sur le {base}.")
-        self.equity_stats_note.configure(text=" ".join(notes))
+            notes.append(base)
+        if bloc.get("warning"):
+            notes.append(bloc["warning"])
+        self.equity_stats_note.configure(text=" · ".join(notes))
 
         # Une seule ligne, toujours : la paire du poste retenu, ou celle de
         # toute la population. Tracer les trente-neuf postes a cote d'un
@@ -3361,10 +3377,13 @@ class Application(tk.Tk):
             note.append(f"Les {self.EQUITY_LIST_MAX} premiers sont affichés.")
         # Le chemin du reglage ne figure plus ici : « Paramètres →
         # pay_equity_parameters.people_columns » s'adressait a qui edite un
-        # JSON, pas a qui lit une liste de salaries. Ce qui reste est ce
-        # qu'il faut savoir en la lisant.
-        note.append("Ces noms restent à l'écran : aucun document produit, "
-                    "aucun export, aucun journal n'en porte.")
+        # JSON, pas a qui lit une liste de salaries.
+        #
+        # La mention « ces noms restent a l'ecran » non plus. La regle n'a
+        # pas bouge — aucun document, aucun export, aucun journal n'en
+        # porte, et les tests le tiennent —, mais elle se rappelait sous
+        # chaque analyse a quelqu'un qui la connait, et une garantie
+        # repetee finit par ressembler a un avertissement.
         self.equity_lagging_note.configure(text=" ".join(note))
 
     #: Hauteur maximale de la liste, en lignes, et nombre de lignes au-dela
@@ -3827,15 +3846,7 @@ class Application(tk.Tk):
             # configuration, pas un nombre ecrit dans le graphique.
             alert=self.configuration.number(
                 "pay_equity_parameters.gap_alert_threshold",
-                5.0, minimum=0.0, maximum=100.0),
-            # Les seuils d'ouverture de grille viennent de la configuration
-            # comme tout le reste : une regle de lecture se parametre.
-            spread_alert=self.configuration.number(
-                "chart_parameters.spread_alert_threshold",
-                1.40, minimum=1.0, maximum=20.0),
-            spread_critical=self.configuration.number(
-                "chart_parameters.spread_critical_threshold",
-                1.80, minimum=1.0, maximum=20.0))
+                5.0, minimum=0.0, maximum=100.0))
 
     # -------------------------------------------------------------- export
 

@@ -24,6 +24,7 @@ from ..core.config import Configuration, write_configuration
 from ..core.errors import CompensationError
 from ..core import palette
 from ..core.mapping import normalise_label
+from ..core.metrics import SEGMENT_ORDERS
 from ..core.segmentation import CORE_FIELDS, max_filter_values
 from . import theme
 from .theme import (Card, CheckRow, Fonts, TabBar, attach_scrollbar,
@@ -391,6 +392,55 @@ class SettingsWindow(tk.Toplevel):
                                     justify="left")
         self.accent_note.pack(anchor="w", pady=(4, 10))
         self._show_accent()
+        self._build_segment_order(band)
+
+    def _build_segment_order(self, parent: tk.Widget) -> None:
+        """L'ordre des lignes dans les analyses par dimension.
+
+        Il etait l'effectif decroissant, et lui seul. Devant cinquante-sept
+        etablissements, un classement par effectif se lit comme un
+        desordre : on cherche un nom, et on parcourt la colonne entiere.
+        Les deux ordres repondent a des questions differentes — « lequel
+        est-ce ? » et « lequel pese ? » — et c'est au lecteur de dire
+        laquelle il se pose.
+
+        Les echelles gardent le leur : une tranche d'age se lit de la plus
+        agee a la plus jeune, un coefficient dans l'ordre des nombres. Ce
+        reglage ne porte que sur les dimensions qui n'ont pas d'ordre
+        propre — etablissement, metier, statut.
+        """
+        tk.Frame(parent, height=1, background=theme.LINE).pack(fill="x",
+                                                               pady=(6, 12))
+        tk.Label(parent, text="ORDRE DES LIGNES", background=theme.GROUND,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(anchor="w")
+        tk.Label(parent,
+                 text="Dans les analyses par établissement, par métier ou "
+                      "par statut, à l'écran comme dans les documents. Les "
+                      "tranches d'âge, d'ancienneté et les coefficients "
+                      "gardent leur propre ordre.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(2, 8))
+        courant = str(self.configuration.get(
+            "chart_parameters.segment_order", "alphabetique"))
+        intitules = dict(SEGMENT_ORDERS)
+        self.segment_order_var = tk.StringVar(
+            value=intitules.get(courant, intitules["alphabetique"]))
+        liste = ttk.Combobox(parent, textvariable=self.segment_order_var,
+                             state="readonly", width=24,
+                             font=self.fonts.body,
+                             values=[libelle for _cle, libelle
+                                     in SEGMENT_ORDERS])
+        liste.pack(anchor="w", pady=(0, 12))
+
+    def _segment_order_to_save(self) -> str:
+        """La cle technique du tri choisi."""
+        voulu = self.segment_order_var.get()
+        for cle, libelle in SEGMENT_ORDERS:
+            if libelle == voulu:
+                return cle
+        return "alphabetique"
 
     def _accent_chip(self, parent: tk.Widget, nom: str, teinte: str) -> None:
         """Une pastille de la palette integree."""
@@ -1400,6 +1450,9 @@ class SettingsWindow(tk.Toplevel):
             if saisi >= 1:
                 privacy[clef] = saisi
         write_configuration(directory, "privacy_parameters", privacy)
+        graphiques = dict(self.configuration.section("chart_parameters"))
+        graphiques["segment_order"] = self._segment_order_to_save()
+        write_configuration(directory, "chart_parameters", graphiques)
         export = dict(self.configuration.section("export_parameters"))
         export["include_individual_data"] = bool(self.individual_var.get())
         export["include_source_file"] = bool(self.audit_var.get())

@@ -335,10 +335,18 @@ def _table(headers: Sequence[str], rows: Sequence[Sequence[str]],
 
 
 def histogram_svg(bins: List[Dict[str, float]], currency: str,
-                  width: int = 900, height: int = 300) -> str:
+                  width: int = 900, height: int = 300,
+                  label: str = "") -> str:
+    """Distribution des remunerations, l'effectif ecrit sur chaque barre.
+
+    `label` nomme l'abscisse — le champ analyse, tel que le mapping le
+    declare. Une phrase decrivant le graphique tenait cette place et
+    laissait les deux axes anonymes ; c'est la meme correction qu'a
+    l'ecran.
+    """
     if not bins:
         return ""
-    pad_left, pad_bottom, pad_top, pad_right = 60, 46, 16, 16
+    pad_left, pad_bottom, pad_top, pad_right = 60, 46, 28, 16
     plot_w = width - pad_left - pad_right
     plot_h = height - pad_top - pad_bottom
     peak = max(item["count"] for item in bins) or 1
@@ -358,6 +366,16 @@ def histogram_svg(bins: List[Dict[str, float]], currency: str,
             f'<rect x="{x + 1:.1f}" y="{y:.1f}" width="{max(bar_w - 2, 1):.1f}" '
             f'height="{bar_h:.1f}" fill="var(--accent)" opacity="0.85" data-tip="{_e(tip)}"/>'
         )
+        # L'effectif au-dessus de sa barre. Il fallait survoler pour le
+        # connaitre ; sur un document imprime, personne ne survole. Les
+        # classes vides n'ecrivent pas « 0 », et une barre trop etroite
+        # pour son nombre le laisse a la bulle plutot que de le poser sur
+        # sa voisine.
+        if item["count"] and bar_w >= 26:
+            parts.append(
+                f'<text x="{x + bar_w / 2:.1f}" y="{y - 5:.1f}" '
+                f'text-anchor="middle" font-size="9.5" fill="var(--muted)">'
+                f'{_e(format_number(item["count"], 0))}</text>')
     low = bins[0]["lower"]
     high = bins[-1]["upper"]
     span = (high - low) or 1.0
@@ -366,7 +384,14 @@ def histogram_svg(bins: List[Dict[str, float]], currency: str,
     for value in nice_ticks(low, high, 5):
         x = pad_left + (value - low) / span * plot_w
         parts.append(f'<text x="{x:.1f}" y="{base_y + 18}" text-anchor="middle" font-size="11" fill="var(--muted)">{_e(format_money(value, currency))}</text>')
-    parts.append(f'<text x="{pad_left}" y="{base_y + 34}" font-size="11" fill="var(--muted)">Effectif par classe de rémunération</text>')
+    parts.append(
+        f'<text x="{pad_left + plot_w / 2:.1f}" y="{base_y + 34}" '
+        f'text-anchor="middle" font-size="11" fill="var(--muted)">'
+        f'{_e(label or "Rémunération")}</text>')
+    parts.append(
+        f'<text x="14" y="{pad_top + plot_h / 2:.1f}" font-size="11" '
+        f'fill="var(--muted)" text-anchor="middle" '
+        f'transform="rotate(-90 14 {pad_top + plot_h / 2:.1f})">Effectif</text>')
     parts.append("</svg>")
     return "".join(parts)
 
@@ -836,7 +861,6 @@ def _salary_section(salary: Dict[str, Any]) -> str:
         _kpi("Salaire moyen", format_money(salary.get("mean"), currency)),
         _kpi("Minimum", format_money(salary.get("min"), currency)),
         _kpi("Maximum", format_money(salary.get("max"), currency)),
-        _kpi("Couverture", format_percent(salary.get("coverage"))),
     ])
     percentile_rows = [
         (entry["label"], format_money(salary.get(entry["key"]), currency))
@@ -896,7 +920,8 @@ def _full_time_section(salary: Dict[str, Any], currency: str) -> str:
 def _distribution_section(distribution: Dict[str, Any], currency: str) -> str:
     if not distribution.get("available"):
         return ""
-    chart = histogram_svg(distribution.get("bins", []), currency)
+    chart = histogram_svg(distribution.get("bins", []), currency,
+                          label=distribution.get("label") or "")
     return (
         "<h2>Distribution</h2>"
         f"<figure>{chart}</figure>"
@@ -945,8 +970,8 @@ def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
             rows.append((
                 row["segment"], str(row["headcount"]),
                 format_money(salary.get("mean"), currency),
-                format_money(salary.get("median"), currency),
                 format_money(salary.get("p25"), currency),
+                format_money(salary.get("median"), currency),
                 format_money(salary.get("p75"), currency),
                 format_number(dispersion.get("p90_over_p10"), 2),
             ))
@@ -956,7 +981,8 @@ def _segments_section(segments: List[Dict[str, Any]], currency: str) -> str:
             continue
         blocks.append(f'<h3>{_e(segment["label"])}</h3>')
         blocks.append(_table(
-            ["Segment", "Effectif", "Moyenne", "Médiane", "Q1", "Q3", "P90/P10"], rows
+            ["Segment", "Effectif", "Moyenne", "Q1", "Médiane", "Q3", "P90/P10"],
+            rows
         ))
     if len(blocks) == 1:
         return ""
@@ -972,107 +998,6 @@ def _comparison_section(comparison: Optional[Dict[str, Any]], currency: str) -> 
         + _table([
             "Indicateur", comparison["left_label"], comparison["right_label"], "Écart"
         ], rows)
-    )
-
-
-def _pay_equity_section(equity: Dict[str, Any], currency: str) -> str:
-    """Ecarts femmes / hommes, poste par poste.
-
-    La section manquait : l'analyse d'equite n'existait qu'a l'ecran, alors
-    que la directive 2023/970 porte precisement sur la *publication* de ces
-    indicateurs. Ce qui se voit doit pouvoir se transmettre.
-    """
-    if not equity or not equity.get("available"):
-        return ""
-    pay = equity.get("pay", {})
-    variable = equity.get("variable", {})
-    coverage = equity.get("variable_coverage", {})
-    label = (equity.get("category_label") or "poste").lower()
-
-    kpis = "".join([
-        _kpi("Écart global", format_percent(pay.get("mean_gap")), fort=True),
-        _kpi(f"À {label} comparable",
-             format_percent(equity.get("comparable_gap")), fort=True),
-        _kpi("Effet de structure",
-             format_percent(equity.get("structure_gap"))),
-        _kpi("Rattrapage", format_money(equity.get("at_stake_total"),
-                                        currency), fort=True),
-        _kpi("Effectif femmes", str(equity.get("female_count", 0))),
-        _kpi("Effectif hommes", str(equity.get("male_count", 0))),
-    ])
-
-    # L'ecart a temps de travail egal, a cote de l'ecart global. Une
-    # population feminine plus souvent a temps partiel fait un ecart global
-    # qui mesure d'abord le temps de travail : le dire evite de publier
-    # comme ecart de remuneration ce qui n'en est pas un.
-    plein = equity.get("full_time") or {}
-    if plein.get("published"):
-        kpis += "".join([
-            _kpi("Écart à temps plein", format_percent(plein.get("mean_gap"))),
-            _kpi("Expliqué par le temps de travail",
-                 format_percent(plein.get("explained_gap"))),
-        ])
-
-    # Meme regle que pour les segments : une categorie ou l'un des deux
-    # sexes n'atteint pas le seuil n'entre pas dans le tableau. Elle y
-    # tenait une ligne de « masque » repete quatre fois.
-    rows = []
-    for item in sorted((entry for entry in equity.get("categories", [])
-                        if entry.get("published")),
-                       key=lambda entry: -(entry.get("at_stake") or 0.0)):
-        rows.append((item["category"], str(item["female_count"]),
-                     str(item["male_count"]),
-                     format_money(item.get("female_median"), currency),
-                     format_money(item.get("male_median"), currency),
-                     format_percent(item.get("mean_gap")),
-                     format_money(item.get("at_stake"), currency)))
-    table = _table([equity.get("category_label") or "Catégorie", "Femmes",
-                    "Hommes", "Médiane femmes", "Médiane hommes",
-                    "Écart moyen", "Rattrapage"], rows) if rows else ""
-
-    quartiles = [(f'Q{item["quartile"]}', str(item["headcount"]),
-                  format_percent(item.get("female_share")),
-                  format_percent(item.get("male_share")))
-                 for item in equity.get("quartiles", [])]
-    quartile_table = _table(["Quartile", "Effectif", "Part femmes",
-                             "Part hommes"], quartiles) if quartiles else ""
-
-    # Un paragraphe de quinze lignes fermait cette section : ce que chaque
-    # ecart signifie, ce qu'il commande, d'ou viennent les formules. Les
-    # chiffres qu'il portait — ecart median, ecart sur le variable, parts
-    # qui le percoivent, couverture, sexe non renseigne — n'etaient
-    # lisibles qu'en lisant la phrase. Ils se rangent ici en tableau, ou
-    # on les trouve sans lire. Ce qu'ils signifient appartient a qui les
-    # lit, non a l'outil qui les calcule.
-    détail = [("Écart médian", format_percent(pay.get("median_gap")))]
-    if variable.get("mean_gap") is not None:
-        détail += [
-            ("Écart sur la rémunération variable",
-             format_percent(variable.get("mean_gap"))),
-            ("Femmes percevant une part variable",
-             format_percent(coverage.get("female_share"))),
-            ("Hommes percevant une part variable",
-             format_percent(coverage.get("male_share"))),
-        ]
-    if plein.get("published"):
-        détail += [
-            ("Écart à temps plein", format_percent(plein.get("mean_gap"))),
-            ("Couverture du temps plein",
-             format_percent(plein.get("coverage"))),
-        ]
-    détail.append(("Couverture de la décomposition",
-                   format_percent(equity.get("comparable_coverage"))))
-    unknown = equity.get("unknown_count", 0)
-    if unknown:
-        détail.append(("Sexe non renseigné, exclus des écarts",
-                       format_number(unknown, 0)))
-
-    return (
-        "<h2>Écarts de rémunération femmes / hommes</h2>"
-        f'<div class="kpis">{kpis}</div>'
-        f'<h3>Détail</h3>{_table(["Indicateur", "Valeur"], détail)}'
-        f"<h3>Écart par {label}</h3>{table}"
-        f"<h3>Répartition par quartile de rémunération</h3>{quartile_table}"
     )
 
 
@@ -1114,7 +1039,6 @@ def render_report(analysis: Dict[str, Any]) -> str:
         _distribution_section(analysis.get("distribution", {}), currency),
         _scatter_section(analysis.get("scatter", {}), currency),
         _segments_section(analysis.get("segments", []), currency),
-        _pay_equity_section(analysis.get("pay_equity", {}), currency),
         _comparison_section(analysis.get("comparison"), currency),
     ]
     sections = _numeroter(sections)
