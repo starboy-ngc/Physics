@@ -29,7 +29,6 @@ CONFIG_FILES = (
     "chart_parameters",
     "theme_parameters",
     "export_parameters",
-    "package_parameters",
 )
 
 DEFAULTS: Dict[str, Any] = {
@@ -44,12 +43,6 @@ DEFAULTS: Dict[str, Any] = {
             "hire_date": ["Date d'entrée", "Date début", "Date de début",
                           "Date d'embauche", "Hire date"],
             "leave_date": ["Date de sortie", "Date de fin", "Leave date"],
-            # Le jour ou la paie a ete extraite. Il n'entre dans aucun
-            # calcul de remuneration : il ancre la periode proposee pour
-            # les elements variables, qui doit s'achever au plus pres de
-            # l'extraction du salaire.
-            "extraction_date": ["Date d'extraction", "Date_d_extraction",
-                                "Extraction date"],
             "business_unit": ["BU", "Business Unit"],
             "country": ["Pays", "Country"],
             "site": ["Établissement", "Site"],
@@ -121,8 +114,7 @@ DEFAULTS: Dict[str, Any] = {
         # « fte » sont numeriques sans etre des montants : ecrits en euros
         # ils ne voudraient rien dire.
         "money": ["base_salary", "variable_pay", "total_compensation"],
-        "date": ["birth_date", "hire_date", "leave_date",
-                 "extraction_date"],
+        "date": ["birth_date", "hire_date", "leave_date"],
         "personal": ["last_name", "first_name", "birth_date", "employee_id"],
         # Encodages essayes a la lecture d'un CSV, dans l'ordre. Voir
         # `tabular.DEFAULT_ENCODINGS` : l'ordre compte, l'UTF-8 doit venir
@@ -213,27 +205,6 @@ DEFAULTS: Dict[str, Any] = {
         # reglage existe, et il ne porte que sur l'ecran. Aucun document
         # produit, aucun export, aucun journal n'en depend.
         "show_identities_on_screen": True,
-    },
-    # Le second fichier : les elements de paie qui s'ajoutent au salaire
-    # de base. Il est en lignes et non en colonnes, parce que le nombre
-    # d'elements change d'une entreprise a l'autre et d'une annee a
-    # l'autre : en colonnes, chaque nouvelle prime casserait le mapping.
-    "package_parameters": {
-        "fields": {
-            # Le matricule fait la jointure : sans lui, rien a rapprocher.
-            "employee_id": ["Matricule", "Employee ID", "ID"],
-            "label": ["Intitulé", "Libellé", "Élément", "Rubrique",
-                      "Nature", "Label"],
-            "amount": ["Montant", "Valeur", "Amount"],
-            # Facultative. Quand elle est la, l'ecran propose les bornes
-            # qu'elle porte ; c'est un humain qui les confirme, parce
-            # qu'un fichier ne sait pas ce qu'il ne contient pas.
-            "day": ["Date", "Date de versement", "Date de paie"],
-        },
-        # Intitule -> nature, rempli par l'ecran de parametrage. Vide au
-        # depart : les intitules d'un fichier de paie ne se devinent pas,
-        # et l'outil n'en invente aucun.
-        "natures": {},
     },
     "pay_equity_parameters": {
         # Les valeurs designant le sexe ne sont pas codees dans le moteur :

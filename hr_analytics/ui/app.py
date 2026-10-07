@@ -28,7 +28,7 @@ from tkinter import filedialog, messagebox, ttk
 from typing import Any, Dict, List, Optional
 
 from ..version import ENGINE_NAME, __version__
-from ..core import metrics, org as org_view, package, palette
+from ..core import metrics, org as org_view, palette
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration)
 from ..core.errors import CompensationError, ConfigError
@@ -53,7 +53,6 @@ from . import theme
 from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
                      PieChart, PyramidChart, ScaleChart, ScatterChart)
 from .progress import LoadingBar
-from .variable import ElementsWindow, VariablePage
 from .working import WorkPanel
 from . import splash as accueil_module
 from .theme import Card, CheckRow, Fonts, TabBar, ValuePicker
@@ -68,16 +67,13 @@ _WHOLE_FILE = "(tout le périmètre)"
 TABS = (("population", "Vue d'ensemble"), ("organigramme", "Organigramme"),
         ("graphique", "Graphiques"),
         ("equite", "Écarts F/H"),
-        ("variable", "Variable"),
         ("qualite", "Qualité"))
 
 #: Onglets qui ne paraissent que si l'on a demande ce qu'ils montrent, et
 #: non parce que l'effectif le permet. Les retirer ne s'explique pas : il n'y
 #: a rien a expliquer tant que personne n'a choisi d'equipe, et un message
 #: « effectif insuffisant » serait faux.
-#: « Variable » attend un second fichier : tant qu'il n'est pas charge,
-#: l'onglet n'a rien a montrer et son absence n'a rien a expliquer.
-ON_DEMAND = ("organigramme", "variable")
+ON_DEMAND = ("organigramme",)
 
 #: Graphiques proposes dans l'onglet « Graphique », dans l'ordre d'affichage.
 #: Les onglets de premier rang repondent a une question — qui, combien, quel
@@ -217,14 +213,6 @@ class Application(tk.Tk):
         #: Un filtre retient plusieurs valeurs : la question posee a un
         #: fichier de paie est rarement « ce poste-ci », c'est « ces
         #: trois postes-la ».
-        #: Le second fichier : les elements de paie qui s'ajoutent au
-        #: salaire. Vides tant qu'on n'en a pas charge — et l'onglet
-        #: « Variable » reste alors absent plutot que vide.
-        self.package_lines: List[Any] = []
-        self.package_period = None
-        self.package_natures: Dict[str, str] = {}
-        self.package_reconciliation = None
-        self.package_source = ""
         self.filter_values: Dict[str, Optional[List[str]]] = {}
         #: Les valeurs que chaque dimension porte, et le bouton qui les
         #: ouvre. Separes de la selection pour que le libelle puisse dire
@@ -765,17 +753,6 @@ class Application(tk.Tk):
             command=self.open_settings)
         self.columns_button.pack(fill="x", pady=(8, 0))
         self.columns_button.state(["disabled"])
-        # Le second fichier se charge au meme endroit que le premier : ce
-        # sont deux moities d'une meme population, et aller les chercher
-        # dans deux coins de l'ecran ferait croire a deux analyses.
-        self.elements_button = ttk.Button(
-            steps, text="Éléments variables…", style="GhostGround.TButton",
-            command=self.choose_elements)
-        self.elements_button.pack(fill="x", pady=(8, 0))
-        self.elements_button.state(["disabled"])
-        self.elements_label = tk.Label(
-            steps, text="", background=theme.GROUND, foreground=theme.MUTED,
-            font=self.fonts.small, wraplength=250, justify="left")
 
         # La periode precede les filtres : sur un fichier pluriannuel, elle
         # decide de quel instantane on parle, et tout le reste s'y applique.
@@ -887,9 +864,6 @@ class Application(tk.Tk):
             frame = tk.Frame(self.pages, background=theme.CANVAS)
             self.tabs[key] = frame
             self.tabbar.add(key, label)
-
-        self.variable_page = VariablePage(self.tabs["variable"], self.fonts)
-        self.variable_page.pack(fill="both", expand=True)
 
         self.quality_summary = tk.Frame(self.tabs["qualite"], background=theme.CANVAS)
         self.quality_summary.pack(fill="x", padx=18, pady=(18, 12))
@@ -1254,7 +1228,6 @@ class Application(tk.Tk):
                     if unknown else ""),
             foreground=theme.WARN if unknown else theme.MUTED)
         self.columns_button.state(["!disabled"])
-        self.elements_button.state(["!disabled"])
         # Quelques lignes du fichier, pour l'ecran d'association : voir ce
         # que porte une colonne vaut mieux que lire son intitule.
         self._samples = [list(ligne) for ligne in table.rows[:40]]
@@ -1264,148 +1237,6 @@ class Application(tk.Tk):
         self._show_quality()
         self.tabbar.select("qualite")
         self._set_state("Fichier chargé. Vérifiez la qualité, puis lancez l'analyse.")
-
-    # --------------------------------------------- elements variables
-
-    def choose_elements(self) -> None:
-        """Charge le second fichier, puis ouvre son parametrage.
-
-        L'ordre compte : on ne demande pas de declarer une periode avant
-        d'avoir vu si le fichier est lisible, et on ne demande pas de
-        classer des intitules qu'on n'a pas encore lus.
-        """
-        if not self.population:
-            return
-        path = filedialog.askopenfilename(
-            title="Choisir un fichier d'éléments variables",
-            filetypes=[("Fichiers d'éléments", "*.xlsx *.xlsm *.csv"),
-                       ("Tous les fichiers", "*.*")])
-        if not path:
-            return
-        try:
-            lignes, _mapping, _table = package.load_elements(
-                path, self.configuration)
-        except CompensationError as error:
-            messagebox.showerror("Import impossible", error.message)
-            return
-        self._pending_elements = (path, lignes)
-        self._open_elements_window(lignes, path)
-
-    def _open_elements_window(self, lignes, path: str) -> None:
-        propose = package.observed_period(lignes)
-        fenetre = ElementsWindow(
-            self, self.fonts, package.labels_of(lignes),
-            self.configuration.get("package_parameters.natures", {}) or {},
-            self.package_period, propose, self._extraction_date(),
-            lambda periode, natures: self._apply_elements(
-                path, lignes, periode, natures))
-        self.elements_window = fenetre
-
-    def _extraction_date(self):
-        """La date a laquelle la population a ete extraite.
-
-        C'est elle qui ancre les douze mois glissants. A defaut, le jour
-        meme : un fichier sans date d'extraction est rare, et proposer
-        une periode reste plus utile que n'en proposer aucune.
-        """
-        import datetime as _d
-
-        dates = [e.value("extraction_date") for e in self.population]
-        connues = [d for d in dates if isinstance(d, _d.date)]
-        return max(connues) if connues else None
-
-    def _apply_elements(self, path, lignes, periode, natures) -> None:
-        """Retient le fichier, ecrit les natures, et repose l'onglet."""
-        from ..core.config import write_configuration
-
-        self.package_lines = list(lignes)
-        self.package_period = periode
-        self.package_source = os.path.basename(path)
-        section = dict(self.configuration.section("package_parameters"))
-        section["natures"] = dict(natures)
-        try:
-            write_configuration(self.config_dir, "package_parameters", section)
-            self.configuration = load_configuration(self.config_dir)
-        except CompensationError as error:
-            # Le classement n'a pas pu etre garde pour la prochaine fois,
-            # mais il vaut pour cette analyse-ci : le dire sans rien perdre.
-            messagebox.showwarning("Paramètres non enregistrés", error.message)
-        self.package_natures = self._read_natures(natures)
-        self._refresh_elements()
-
-    def _read_natures(self, repli: Dict[str, str]) -> Dict[str, str]:
-        """Les natures relues depuis la configuration, et verifiees.
-
-        Le fichier se modifie au bloc-notes : une nature inventee doit se
-        voir, et non faire retomber tous les elements sur « variable »
-        sans que rien ne le dise. Si le fichier n'est pas lisible, le
-        classement de cet ecran-ci vaut quand meme — on vient de le
-        saisir.
-        """
-        try:
-            return package.nature_rules(self.configuration)
-        except CompensationError as error:
-            messagebox.showwarning("Natures illisibles", error.message)
-            return {package._sans_accent(k): v for k, v in repli.items()}
-
-    def _refresh_elements(self) -> None:
-        """Rapproche les deux fichiers et repose l'onglet « Variable »."""
-        if not self.package_lines or not self.package_period:
-            return
-        totaux, compte = package.aggregate(
-            self.package_lines, self.population, self.package_natures,
-            self.package_period)
-        self.package_reconciliation = compte
-        paquets = package.packages_of(self.population, totaux,
-                                      self.configuration,
-                                      self.package_period)
-        self.variable_page.show(paquets, self.package_lines,
-                                self.configuration, self.package_period,
-                                self.package_natures)
-        self.variable_page.source.configure(text=self._elements_summary(compte))
-        self.elements_label.configure(text=self._elements_hint(compte))
-        self.elements_label.pack(anchor="w", pady=(6, 0))
-        self.tabbar.set_visible("variable", True)
-
-    def _elements_summary(self, compte) -> str:
-        """Le bandeau de rapprochement, en haut de l'onglet.
-
-        Un total de primes dont on ignore sur qui il porte n'est pas un
-        chiffre. Cette ligne est ce qui rend tout le reste croyable, et
-        c'est pour ca qu'elle parait a l'ecran plutot que dans un journal.
-        """
-        morceaux = [f"{self.package_source}",
-                    f"{compte.lines} lignes",
-                    f"{compte.matched} salariés rapprochés sur "
-                    f"{compte.population}",
-                    self.package_period.label]
-        if compte.late_entrants:
-            morceaux.append(f"{compte.late_entrants} entrés en cours de "
-                            "période, mis de côté")
-        for nombre, mot in ((compte.orphans, "matricules inconnus"),
-                            (compte.duplicates, "matricules en double"),
-                            (compte.out_of_period, "lignes hors période"),
-                            (compte.unreadable, "lignes illisibles")):
-            if nombre:
-                morceaux.append(f"{nombre} {mot}")
-        return " · ".join(morceaux)
-
-    def _elements_hint(self, compte) -> str:
-        """Ce que la colonne de gauche doit dire du second fichier.
-
-        Court : l'essentiel est dans l'onglet. Mais tant que la date
-        d'entree n'est pas reconnue, personne ne peut etre ecarte — le
-        garde-fou est inerte et la part de beneficiaires se lirait comme
-        une politique alors qu'elle n'est qu'un effet du calendrier.
-        """
-        lignes = [f"{compte.matched} salariés rapprochés."]
-        if compte.unknown_entry:
-            lignes.append(
-                f"Date d'entrée inconnue pour {compte.unknown_entry} "
-                "salarié(s) : personne ne peut être écarté de la période, "
-                "et la part de bénéficiaires est donc sous-estimée. "
-                "Associez-la dans « Associer les colonnes… ».")
-        return "\n".join(lignes)
 
     def _offrir_association(self, error: CompensationError) -> None:
         """Ouvre l'ecran d'association quand c'est lui qui debloque.
@@ -1973,9 +1804,6 @@ class Application(tk.Tk):
             "organigramme": bool(getattr(self, "_org_available", False)),
             "graphique": any(charts.values()),
             "equite": bool(payload.get("pay_equity", {}).get("available")),
-            # Sur demande, comme l'organigramme : tant qu'aucun fichier
-            # d'elements n'est charge, il n'y a rien a expliquer.
-            "variable": bool(self.package_lines),
             "qualite": True,
         }
         for key, allowed in charts.items():

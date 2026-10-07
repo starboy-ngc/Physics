@@ -34,11 +34,6 @@
       "Date de fin",
       "Leave date"
     ],
-    "extraction_date": [
-      "Date d'extraction",
-      "Date_d_extraction",
-      "Extraction date"
-    ],
     "business_unit": [
       "BU",
       "Business Unit"
@@ -188,8 +183,7 @@
   "date": [
     "birth_date",
     "hire_date",
-    "leave_date",
-    "extraction_date"
+    "leave_date"
   ],
   "personal": [
     "last_name",
