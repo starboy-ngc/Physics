@@ -76,6 +76,27 @@ class TestDeckStructure(unittest.TestCase):
         # le document part.
         self.assertNotIn("Qualité des données", titles)
 
+    def test_a_segment_below_the_threshold_is_not_a_row_of_dashes(self):
+        """Une ligne masquée n'avait que son effectif et quatre tirets, et
+        elle prenait la place d'un segment publiable : la planche s'arrête
+        à douze lignes."""
+        payload = analysis_payload(self.directory, segments=["business_unit"])
+        segment = payload["segments"][0]
+        segment["rows"].append({
+            "segment": "SegmentMinuscule", "headcount": 2, "masked": True,
+            "salary": {}})
+        titres = {slide.title: slide for slide in build_deck(payload)}
+        planche = titres["Analyse par bu"]
+        libelles = [ligne[0] for ligne in planche.blocks[0].payload["rows"]]
+        self.assertNotIn("SegmentMinuscule", libelles)
+
+    def test_a_dimension_with_nothing_publishable_opens_no_board(self):
+        payload = analysis_payload(self.directory, segments=["business_unit"])
+        for row in payload["segments"][0]["rows"]:
+            row["masked"] = True
+        titres = [slide.title for slide in build_deck(payload)]
+        self.assertNotIn("Analyse par bu", titres)
+
     def test_the_payroll_says_what_it_is_the_sum_of(self):
         """« Masse salariale » tout court laissait croire à un coût complet,
         primes et charges comprises. Le libellé suit le champ analysé, et

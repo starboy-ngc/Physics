@@ -457,14 +457,18 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                                                             "dataset": scatter})]
         slides.append(Slide(_scatter_title(analysis), subtitle, blocks=blocks))
 
-    # Segments : une slide par dimension
+    # Segments : une slide par dimension, sans les segments sous le seuil.
+    # Une ligne masquee n'avait que son effectif et quatre tirets, et elle
+    # prenait la place d'un segment publiable : la planche s'arrete a douze
+    # lignes, et les douze premieres etaient a moitie vides.
     for segment in analysis.get("segments", []) or []:
         rows = []
-        for row in segment["rows"][:12]:
-            if row["masked"]:
-                rows.append([row["segment"], str(row["headcount"]),
-                             "—", "—", "—", "—"])
-                continue
+        publiables = [row for row in segment["rows"] if not row["masked"]]
+        # Une dimension dont aucun segment n'atteint le seuil n'ouvre pas
+        # une planche pour un tableau vide.
+        if not publiables:
+            continue
+        for row in publiables[:12]:
             item = row["salary"]
             rows.append([
                 row["segment"], str(row["headcount"]),
@@ -510,16 +514,14 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
             ]))
         # Les categories ou l'enjeu est le plus fort : c'est la que se
         # decide un plan de rattrapage.
-        retenues = sorted(equity.get("categories", []),
-                          key=lambda item: (not item.get("published"),
-                                            -(item.get("at_stake") or 0.0)))[:12]
+        # Meme regle que pour les segments : une categorie ou l'un des deux
+        # sexes n'atteint pas le seuil n'entre pas dans le tableau.
+        retenues = sorted((item for item in equity.get("categories", [])
+                           if item.get("published")),
+                          key=lambda item: -(item.get("at_stake") or 0.0))[:12]
         if retenues:
             rows = []
             for item in retenues:
-                if not item.get("published"):
-                    rows.append([item["category"], str(item["female_count"]),
-                                 str(item["male_count"]), "masqué", "—"])
-                    continue
                 rows.append([item["category"], str(item["female_count"]),
                              str(item["male_count"]),
                              format_percent(item.get("mean_gap")),
