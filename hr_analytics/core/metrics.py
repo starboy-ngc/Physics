@@ -410,6 +410,7 @@ def calculate_distribution_metrics(
     if not rules.may_chart(len(values)):
         return {
             "field": field_name,
+            "label": field_label(config, field_name),
             "available": False,
             "warning": (
                 "Effectif insuffisant pour produire une distribution "
@@ -422,6 +423,7 @@ def calculate_distribution_metrics(
     histogram = stats.histogram(values, bins)
     return {
         "field": field_name,
+        "label": field_label(config, field_name),
         "available": True,
         "warning": None,
         "bins": histogram,

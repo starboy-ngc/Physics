@@ -156,6 +156,34 @@ class TestHistogram(ChartCase):
         chart = self.chart(counts=(7,))
         self.assertEqual(len(self.items(chart.canvas, "rectangle")), 1)
 
+    def test_both_axes_are_named_and_nothing_else_is(self):
+        """Sous le cadre, le nom de la grandeur ; contre le bord gauche,
+        « Effectif ». Une phrase decrivant le graphique tenait cette place
+        et laissait les deux axes anonymes."""
+        from hr_analytics.ui.charts import HistogramChart
+
+        chart = self.build(HistogramChart)
+        distribution = dict(self.bins((3, 12, 25, 9, 2)),
+                            label="Salaire de base")
+        chart.set_distribution(distribution)
+        self.root.update()
+        textes = self.texts(chart.canvas)
+        self.assertIn("Salaire de base", textes)
+        self.assertIn("Effectif", textes)
+        self.assertFalse([ligne for ligne in textes
+                          if "par classe de" in ligne])
+
+    def test_the_axis_takes_the_name_the_mapping_gives_the_column(self):
+        """Le titre ne doit pas etre ecrit en dur : il suit le champ
+        analyse, qui n'est pas toujours le salaire de base."""
+        from hr_analytics.ui.charts import HistogramChart
+
+        chart = self.build(HistogramChart)
+        chart.set_distribution(dict(self.bins((2, 5)),
+                                    label="Rémunération annuelle"))
+        self.root.update()
+        self.assertIn("Rémunération annuelle", self.texts(chart.canvas))
+
     def test_a_class_with_nobody_in_it_is_still_a_class(self):
         chart = self.chart(counts=(0, 0, 4, 0))
         self.assertEqual(len(self.items(chart.canvas, "rectangle")), 4)
@@ -190,6 +218,16 @@ class TestHistogramBackToBack(ChartCase):
         chart.set_split(True)
         self.root.update()
         return chart
+
+    def test_the_back_to_back_view_names_its_axes_too(self):
+        """La legende du haut dit deja quelle moitie est laquelle : le bas
+        du cadre nomme la grandeur, et ne redit pas la legende."""
+        chart = self.chart()
+        textes = self.texts(chart.canvas)
+        self.assertIn("Effectif", textes)
+        self.assertIn("FEMMES ▲", textes)
+        self.assertFalse([ligne for ligne in textes
+                          if "au-dessous" in ligne])
 
     def bars(self, chart):
         """Les barres seules : le fond d'une etiquette est un rectangle lui
@@ -600,6 +638,17 @@ class TestScatter(ChartCase):
     def test_every_point_is_drawn(self):
         chart = self.chart()
         self.assertEqual(len(chart._items), 40)
+
+    def test_both_axes_are_named(self):
+        """L'abscisse etait nommee, l'ordonnee non — et c'est elle qui porte
+        la remuneration dans la lecture par defaut."""
+        chart = self.chart(dict(
+            self.dataset(),
+            x_axis={"label": "Ancienneté", "kind": "years"},
+            y_axis={"label": "Salaire de base", "kind": "money"}))
+        textes = self.texts(chart.canvas)
+        self.assertIn("Ancienneté (années)", textes)
+        self.assertIn("Salaire de base", textes)
 
     def test_hiding_a_group_removes_its_points(self):
         chart = self.chart()

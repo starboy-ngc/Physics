@@ -402,6 +402,12 @@ class ScatterChart(tk.Frame):
         self.canvas.create_text(pad_l + plot_w / 2, pad_t + plot_h + 32,
                                 text=self._axis_title("x"), fill=theme.MUTED,
                                 font=axis_font())
+        # Et le meme titre pour l'ordonnee, a la verticale contre le bord :
+        # l'abscisse etait nommee, l'ordonnee ne l'etait pas, et c'est elle
+        # qui porte la remuneration dans la lecture par defaut.
+        self.canvas.create_text(14, pad_t + plot_h / 2, angle=90,
+                                text=self._axis_title("y"), fill=theme.MUTED,
+                                font=axis_font())
 
         # La serie vient du theme actif et non d'une copie prise a
         # l'import : figee, elle gardait les couleurs du theme par defaut.
@@ -582,6 +588,7 @@ class HistogramChart(tk.Frame):
         self.tooltip = Tooltip(self.canvas)
         self.bins: List[Dict[str, float]] = []
         self.sexes: Dict[str, Any] = {}
+        self.label = "Rémunération"
         self.split = False
         self.currency = "EUR"
         self.warning = ""
@@ -594,6 +601,9 @@ class HistogramChart(tk.Frame):
                          currency: str = "EUR") -> None:
         self.bins = list((distribution or {}).get("bins") or [])
         self.sexes = dict((distribution or {}).get("sex_split") or {})
+        # Le titre de l'axe vient du mapping : « Salaire de base », ou le nom
+        # que le fichier donne a la colonne analysee.
+        self.label = (distribution or {}).get("label") or "Rémunération"
         self.warning = (distribution or {}).get("warning") or ""
         self.currency = currency
         self.redraw()
@@ -634,17 +644,25 @@ class HistogramChart(tk.Frame):
     # -- geometrie commune ------------------------------------------------
 
     def _frame(self, width: int, height: int, pad_t: int):
-        pad_l, pad_r, pad_b = 60, 20, 46
+        # La marge de gauche loge les graduations d'effectif et, plus a
+        # gauche encore, le titre de l'axe pose a la verticale.
+        pad_l, pad_r, pad_b = 74, 20, 46
         return (pad_l, pad_t,
                 max(width - pad_l - pad_r, 10),
                 max(height - pad_t - pad_b, 10))
 
-    def _footer(self, pad_l: int, pad_t: int, plot_w: float, plot_h: float,
-                title: str) -> None:
-        """Graduation des remunerations et titre, sous le cadre.
+    def _footer(self, pad_l: int, pad_t: int, plot_w: float,
+                plot_h: float) -> None:
+        """Graduations et titres des deux axes.
 
         Les deux bornes exactes cedent la place a des graduations rondes :
         « 9 391 EUR » et « 137 074 EUR » ne se lisaient pas d'un coup d'oeil.
+
+        Sous le cadre, le titre de l'axe nomme la grandeur — et rien de
+        plus. Une phrase decrivant le graphique (« effectif par classe de
+        remuneration, femmes au-dessus, hommes au-dessous ») occupait cette
+        place : elle redisait la legende posee en haut et laissait les deux
+        axes anonymes.
         """
         low = self.bins[0]["lower"]
         high = self.bins[-1]["upper"]
@@ -656,7 +674,10 @@ class HistogramChart(tk.Frame):
                 fill=theme.MUTED, font=axis_font(),
                 text=format_money(value, self.currency))
         self.canvas.create_text(pad_l + plot_w / 2, base + 32, fill=theme.MUTED,
-                                font=axis_font(), text=title)
+                                font=axis_font(), text=self.label)
+        self.canvas.create_text(14, pad_t + plot_h / 2, angle=90,
+                                fill=theme.MUTED, font=axis_font(),
+                                text="Effectif")
 
     def _x_of(self, pad_l: int, plot_w: float, value: float) -> float:
         low = self.bins[0]["lower"]
@@ -687,8 +708,7 @@ class HistogramChart(tk.Frame):
             self._items[handle] = dict(item)
         self.canvas.create_line(pad_l, pad_t + plot_h, pad_l + plot_w,
                                 pad_t + plot_h, fill=theme.LINE_STRONG)
-        self._footer(pad_l, pad_t, plot_w, plot_h,
-                     "Effectif par classe de rémunération")
+        self._footer(pad_l, pad_t, plot_w, plot_h)
 
     # -- femmes et hommes dos a dos ----------------------------------------
 
@@ -749,9 +769,7 @@ class HistogramChart(tk.Frame):
                         pad_l, plot_w)
         self.canvas.create_line(pad_l, mid, pad_l + plot_w, mid,
                                 fill=theme.LINE_STRONG)
-        self._footer(pad_l, pad_t, plot_w, plot_h,
-                     "Effectif par classe de rémunération, "
-                     "femmes au-dessus, hommes au-dessous")
+        self._footer(pad_l, pad_t, plot_w, plot_h)
 
     def _plate(self, x: float, y: float, colour: str, text: str,
                pad_l: int, plot_w: float) -> None:
