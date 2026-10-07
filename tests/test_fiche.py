@@ -264,3 +264,36 @@ class TestTheSheetNeverExports(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipIf(_sans_ecran(), "pas d'écran")
+class TestTheScreenBeforeAnyoneIsChosen(TestTheEmployeeSheet):
+    """Deux intertitres surmontant du vide se lisent comme une panne."""
+
+    def test_the_two_columns_wait_for_a_person(self):
+        with Dialogs(open_path=self._population()):
+            self.app.choose_file()
+        self.app.update()
+        page = self.app.fiche_page
+        self.assertFalse(page.body.winfo_manager())
+        page._choisir(page.picker._entrees[0][1])
+        self.app.update()
+        self.assertTrue(page.body.winfo_manager())
+
+    def test_the_matches_do_not_push_the_page_down(self):
+        """Packée, la liste poussait l'écran entier vers le bas à chaque
+        frappe : elle se pose par-dessus."""
+        with Dialogs(open_path=self._population()):
+            self.app.choose_file()
+        self.app.update()
+        page = self.app.fiche_page
+        page._choisir(page.picker._entrees[0][1])
+        self.app.update()
+        avant = page.body.winfo_y()
+        page.picker._cherche.set("M1")
+        self.app.update()
+        self.assertEqual(page.picker.liste.winfo_manager(), "place")
+        self.assertEqual(page.body.winfo_y(), avant)
+        page.picker._cherche.set("")
+        self.app.update()
+        self.assertEqual(page.picker.liste.winfo_manager(), "")

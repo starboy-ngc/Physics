@@ -174,7 +174,7 @@ class PersonPicker(tk.Frame):
                               foreground=theme.INK, relief="flat",
                               highlightthickness=1,
                               highlightbackground=theme.LINE_STRONG,
-                              highlightcolor=theme.ACCENT, width=26)
+                              highlightcolor=theme.ACCENT, width=34)
         self.entry.pack(side="left", padx=10, ipady=3)
         self._cherche.trace_add("write", lambda *_: self._filtrer())
         self.chosen = tk.Label(tete, text="", background=theme.CANVAS,
@@ -185,7 +185,11 @@ class PersonPicker(tk.Frame):
                               foreground=theme.MUTED, font=fonts.small)
         self.count.pack(side="left", padx=(10, 0))
 
-        self.liste = tk.Listbox(self, height=0, font=fonts.small,
+        # La liste appartient a la page et non a cette barre : posee
+        # dans la barre, elle en aurait ete rognee ; packee, elle
+        # poussait l'ecran entier vers le bas a chaque frappe. Elle se
+        # pose donc par-dessus, comme toute liste de saisie.
+        self.liste = tk.Listbox(master, height=0, font=fonts.small,
                                 background=theme.STRIPE, foreground=theme.INK,
                                 relief="flat", highlightthickness=1,
                                 highlightbackground=theme.LINE,
@@ -193,6 +197,7 @@ class PersonPicker(tk.Frame):
                                 selectforeground=theme.INK,
                                 activestyle="none", exportselection=False)
         self.liste.bind("<<ListboxSelect>>", lambda _e: self._prendre())
+        self.liste.lift()
 
     def fill(self, entrees: Sequence[tuple]) -> None:
         """`entrees` : des couples (libelle, salarie), deja ordonnes."""
@@ -204,7 +209,7 @@ class PersonPicker(tk.Frame):
         tape = theme._sans_accent(self._cherche.get())
         if not tape:
             self._vus = []
-            self.liste.pack_forget()
+            self.liste.place_forget()
             self.count.configure(
                 text=f"{len(self._entrees)} salariés — tapez pour chercher"
                      if self._entrees else "")
@@ -217,9 +222,11 @@ class PersonPicker(tk.Frame):
             self.liste.insert("end", libelle)
         self.liste.configure(height=max(len(self._vus), 1))
         if self._vus:
-            self.liste.pack(fill="x", pady=(6, 0))
+            self.liste.place(in_=self.entry, relx=0, rely=1.0, y=4,
+                             relwidth=1.0, anchor="nw")
+            self.liste.lift()
         else:
-            self.liste.pack_forget()
+            self.liste.place_forget()
         reste = len(trouves) - len(self._vus)
         self.count.configure(
             text=f"{len(trouves)} trouvé(s)" + (f", {reste} non montrés"
@@ -233,6 +240,7 @@ class PersonPicker(tk.Frame):
         libelle, personne = self._vus[rangs[0]]
         self.chosen.configure(text=libelle)
         self._cherche.set("")
+        self.liste.place_forget()
         self._on_choix(personne)
 
 
@@ -270,7 +278,9 @@ class FichePage(tk.Frame):
         self.identity.pack(fill="x", padx=18, pady=(10, 0))
 
         corps = tk.Frame(self, background=theme.CANVAS)
-        corps.pack(fill="both", expand=True, padx=18, pady=(12, 18))
+        # Pas encore pose : sans personne choisie, l'ecran montrait deux
+        # intertitres surmontant du vide, ce qui se lit comme une panne.
+        self.body = corps
         corps.columnconfigure(0, weight=1, uniform="moities")
         corps.columnconfigure(1, weight=1, uniform="moities")
         corps.rowconfigure(0, weight=1)
@@ -358,6 +368,7 @@ class FichePage(tk.Frame):
         if self._person is not None:
             self._choisir(self._person)
         else:
+            self.body.pack_forget()
             self.identity.configure(
                 text="Cherchez un salarié par son nom ou son matricule : "
                      "la fiche se remplit quand vous en choisissez un.")
@@ -430,6 +441,8 @@ class FichePage(tk.Frame):
     def _choisir(self, personne) -> None:
         self._person = personne
         self.identity.configure(text=self._identity(personne))
+        if not self.body.winfo_manager():
+            self.body.pack(fill="both", expand=True, padx=18, pady=(12, 18))
         self._fill_state(personne)
         self._fill_standing(personne)
         self._fill_history(personne)
