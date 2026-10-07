@@ -231,10 +231,27 @@ class ElementsWindow(tk.Toplevel):
                                  state="readonly", width=20,
                                  font=self.fonts.small)
             boite.pack(side="left")
+            # Les deux variables se suivent dans les deux sens : la liste
+            # affiche un intitule, la nature retenue est une cle, et une
+            # liaison a sens unique laissait la liste montrer « Variable »
+            # sur un element qu'on venait de classer autrement.
+            # La comparaison avant ecriture coupe la boucle.
             affiche.trace_add(
                 "write",
-                lambda *_a, i=intitule, v=affiche:
-                self._natures[i].set(self._par_intitule[v.get()]))
+                lambda *_a, i=intitule, v=affiche: self._set_nature(i, v))
+            self._natures[intitule].trace_add(
+                "write",
+                lambda *_a, i=intitule, v=affiche: self._show_nature(i, v))
+
+    def _set_nature(self, intitule: str, affiche: tk.StringVar) -> None:
+        voulue = self._par_intitule.get(affiche.get())
+        if voulue and self._natures[intitule].get() != voulue:
+            self._natures[intitule].set(voulue)
+
+    def _show_nature(self, intitule: str, affiche: tk.StringVar) -> None:
+        texte = pk.NATURE_LABELS.get(self._natures[intitule].get())
+        if texte and affiche.get() != texte:
+            affiche.set(texte)
 
     # ----------------------------------------------------------- actions
 
@@ -351,10 +368,11 @@ class VariablePage(tk.Frame):
         gauche = tk.Frame(corps, background=theme.CANVAS)
         gauche.grid(row=0, column=0, sticky="nsew", padx=(0, 14))
         self._title(gauche, "Ce que gagne un salarié de ce métier")
+        # Le libelle se recrit a chaque periode : il disait « mensuelle »
+        # et montrait douze mois de salaire, ce qui faisait lire un
+        # salaire annuel comme un salaire de mois.
         self.composition_note = tk.Label(
-            gauche, text="Rémunération mensuelle médiane, ramenée au temps "
-                         "plein, sur la période.",
-            background=theme.CANVAS, foreground=theme.MUTED,
+            gauche, text="", background=theme.CANVAS, foreground=theme.MUTED,
             font=self.fonts.small, anchor="w", justify="left")
         self.composition_note.pack(fill="x", pady=(0, 10))
         self.composition = tk.Canvas(gauche, background=theme.CANVAS,
@@ -379,7 +397,7 @@ class VariablePage(tk.Frame):
             droite, columns=("Intitulé", "Nature", "Bénéf.", "Médiane", "F/H"),
             show="headings", height=8)
         for nom, largeur, cote, elastique in (
-                ("Intitulé", 196, "w", True), ("Nature", 88, "w", False),
+                ("Intitulé", 184, "w", True), ("Nature", 100, "w", False),
                 ("Bénéf.", 58, "e", False), ("Médiane", 84, "e", False),
                 ("F/H", 72, "e", False)):
             self.elements.heading(nom, text=nom.upper(), anchor=cote)
@@ -481,6 +499,10 @@ class VariablePage(tk.Frame):
         self.headcount.configure(
             text=f"{len(membres)} salariés · {servis} servis"
                  if membres else "")
+        mois = f"{self._period.months:.1f}".replace(".", ",")
+        self.composition_note.configure(
+            text=f"Rémunération médiane sur la période — {mois} mois —, "
+                 "ramenée au temps plein.")
         self._draw_composition(membres)
         self._draw_spread(membres)
         self._fill_elements(membres)

@@ -264,3 +264,84 @@ class TestANatureTypedByHandIsChecked(unittest.TestCase):
             "Indemnités de Déplacement": "exclu"}
         self.assertEqual(nature_rules(config),
                          {"indemnites de deplacement": "exclu"})
+
+
+@unittest.skipIf(_sans_ecran(), "pas d'écran")
+class TestTheCompositionSaysWhatItShows(unittest.TestCase):
+    """Le libellé disait « mensuelle » et montrait douze mois de salaire :
+    on lisait un salaire annuel comme un salaire de mois."""
+
+    def setUp(self):
+        from hr_analytics.ui.theme import Fonts
+        from hr_analytics.ui.variable import VariablePage
+
+        self.root = tk.Tk()
+        self.root.withdraw()
+        from hr_analytics.ui import theme
+        self.fonts = Fonts(self.root)
+        theme.apply(self.root, self.fonts)
+        self.page = VariablePage(self.root, self.fonts)
+
+    def tearDown(self):
+        self.root.destroy()
+
+    def test_the_note_names_the_period_not_a_month(self):
+        import datetime as dt
+
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.package import Period
+
+        self.page.show([], [], load_configuration(),
+                       Period(dt.date(2025, 1, 1), dt.date(2025, 12, 31)), {})
+        texte = self.page.composition_note.cget("text")
+        self.assertIn("sur la période", texte)
+        self.assertIn("12,0 mois", texte)
+        self.assertNotIn("mensuelle", texte)
+
+
+@unittest.skipIf(_sans_ecran(), "pas d'écran")
+class TestTheNatureListFollowsTheValue(unittest.TestCase):
+    """Une liaison à sens unique laissait la liste montrer « Variable »
+    sur un élément qu'on venait de classer autrement."""
+
+    def setUp(self):
+        import datetime as dt
+
+        from hr_analytics.core.package import Period
+        from hr_analytics.ui import theme
+        from hr_analytics.ui.theme import Fonts
+        from hr_analytics.ui.variable import ElementsWindow
+
+        self.root = tk.Tk()
+        self.root.withdraw()
+        fonts = Fonts(self.root)
+        theme.apply(self.root, fonts)
+        self.fenetre = ElementsWindow(
+            self.root, fonts, ["Prime de résultat", "Indemnités"], {}, None,
+            None, dt.date(2026, 6, 30), lambda _p, _n: None)
+
+    def tearDown(self):
+        self.root.destroy()
+
+    def _affiche(self, intitule):
+        for ligne in self.fenetre.winfo_children():
+            for widget in self._tous(ligne):
+                if widget.winfo_class() == "TCombobox":
+                    voisins = widget.master.winfo_children()
+                    titres = [w.cget("text") for w in voisins
+                              if "text" in w.keys()]
+                    if intitule in titres:
+                        return widget.get()
+        return None
+
+    def _tous(self, widget):
+        yield widget
+        for enfant in widget.winfo_children():
+            yield from self._tous(enfant)
+
+    def test_setting_the_value_updates_the_list(self):
+        self.assertEqual(self._affiche("Indemnités"), "Variable")
+        self.fenetre._natures["Indemnités"].set("exclu")
+        self.root.update()
+        self.assertEqual(self._affiche("Indemnités"), "Exclu")
+        self.assertEqual(self.fenetre.collect()["Indemnités"], "exclu")

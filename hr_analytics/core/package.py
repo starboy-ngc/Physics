@@ -47,13 +47,16 @@ from .normalize import Population, full_time_amount, parse_date
 NATURES: Tuple[str, ...] = ("fixe", "variable", "exceptionnel",
                             "avantage", "exclu")
 
-#: Intitules affiches. Separes des cles : les cles sont ecrites dans la
-#: configuration et ne doivent pas bouger avec la langue de l'ecran.
+#: Separes des cles : les cles sont ecrites dans la configuration et ne
+#: doivent pas bouger avec la langue de l'ecran.
+#: Intitules affiches. Courts : ils vivent dans une colonne de tableau
+#: sous un en-tete qui dit deja « nature », et « Avantage en nature »
+#: s'y affichait « Avantage e ».
 NATURE_LABELS: Dict[str, str] = {
-    "fixe": "Fixe récurrent",
+    "fixe": "Fixe",
     "variable": "Variable",
     "exceptionnel": "Exceptionnel",
-    "avantage": "Avantage en nature",
+    "avantage": "Avantage",
     "exclu": "Exclu",
 }
 
