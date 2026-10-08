@@ -180,37 +180,58 @@ class TestTheWindowsLauncher(unittest.TestCase):
     par qui homologue le paquet.
     """
 
+    #: Les deux lanceurs, et non le seul premier. Celui qu'on livre
+    #: aujourd'hui est « lanceur-unique.c » : les controles ne portaient
+    #: pas sur lui, et retirer son « -I » ne faisait echouer aucun essai.
+    LANCEURS = ("lanceur.c", "lanceur-unique.c")
+
     @classmethod
     def setUpClass(cls):
-        chemin = os.path.join(ROOT, "packaging", "windows", "lanceur.c")
-        with open(chemin, encoding="utf-8") as handle:
-            cls.source = handle.read()
+        cls.sources = {}
+        for nom in cls.LANCEURS:
+            chemin = os.path.join(ROOT, "packaging", "windows", nom)
+            with open(chemin, encoding="utf-8") as handle:
+                cls.sources[nom] = handle.read()
 
-    def test_it_starts_the_interpreter_of_its_own_folder(self):
+    def test_each_starts_the_interpreter_of_its_own_folder(self):
         """Ni le PATH, ni le registre, ni une variable d'environnement :
         l'interpréteur employé est celui du dossier, et lui seul."""
-        self.assertIn("GetModuleFileNameW", self.source)
-        self.assertIn("runtime\\\\pythonw.exe", self.source)
+        for nom, source in self.sources.items():
+            self.assertIn("GetModuleFileNameW", source, nom)
+            self.assertIn("runtime\\\\pythonw.exe", source, nom)
 
-    def test_it_runs_the_tool_in_isolated_mode(self):
+    def test_each_runs_the_tool_in_isolated_mode(self):
         """Aucun paquet installé ailleurs sur le poste ne peut entrer dans
         l'analyse : deux postes font le même calcul."""
-        self.assertIn("-I -m hr_analytics", self.source)
+        for nom, source in self.sources.items():
+            self.assertIn("-I -m hr_analytics", source, nom)
 
-    def test_it_opens_no_console_window(self):
-        self.assertIn("CREATE_NO_WINDOW", self.source)
+    def test_neither_opens_a_console_window(self):
+        for nom, source in self.sources.items():
+            self.assertIn("CREATE_NO_WINDOW", source, nom)
 
-    def test_it_explains_every_failure_in_french(self):
+    def test_each_explains_every_failure_in_french(self):
         """Un lanceur qui disparaît sans un mot ne laisse personne
-        comprendre."""
-        self.assertGreaterEqual(self.source.count("erreur(L\""), 3)
-        self.assertNotIn("printf", self.source)
+        comprendre : il parle par boîte de message, jamais par la console.
 
-    def test_it_reaches_for_nothing_outside_its_folder(self):
-        for interdit in ("URLDownload", "WinHttp", "InternetOpen",
-                         "RegCreateKey", "RegSetValue", "ShellExecute",
-                         "system(", "WinExec"):
-            self.assertNotIn(interdit, self.source, interdit)
+        Le contrôle cherchait la chaîne « printf », qui se trouve aussi au
+        milieu de « wsprintfW » — une fonction de mise en forme de chaîne,
+        sans rapport avec la console. Il cherche donc les appels eux-mêmes.
+        """
+        import re
+
+        console = re.compile(r"\b(?:printf|fprintf|sprintf|puts|fputs)\s*\(")
+        for nom, source in self.sources.items():
+            self.assertGreaterEqual(source.count("erreur(L\""), 3, nom)
+            self.assertIsNone(console.search(source), nom)
+            self.assertNotIn("stdio.h", source, nom)
+
+    def test_neither_reaches_for_anything_outside_its_folder(self):
+        for nom, source in self.sources.items():
+            for interdit in ("URLDownload", "WinHttp", "InternetOpen",
+                             "RegCreateKey", "RegSetValue", "ShellExecute",
+                             "system(", "WinExec"):
+                self.assertNotIn(interdit, source, f"{nom} : {interdit}")
 
     def test_the_path_file_keeps_the_interpreter_isolated(self):
         chemin = os.path.join(ROOT, "packaging", "windows", "python312._pth")
