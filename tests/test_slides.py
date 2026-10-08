@@ -334,16 +334,16 @@ class TestReadability(unittest.TestCase):
                          ["France", "DACH"])
 
     def test_accents_do_not_send_a_segment_to_the_end(self):
-        """« Édition » se range entre « Douane » et « Exploitation », et non
+        """« Édition » se range entre « Diffusion » et « Expédition », et non
         après « Zone » comme le fait un tri brut sur les points de code."""
         rows = []
-        for index, nom in enumerate(("Zone", "Édition", "Douane",
-                                     "Exploitation")):
+        for index, nom in enumerate(("Zone", "Édition", "Diffusion",
+                                     "Expédition")):
             rows += [make_row(index * 100 + step, business_unit=nom)
                      for step in range(5)]
         labels = [row["segment"]
                   for row in self._segment("business_unit", rows)["rows"]]
-        self.assertEqual(labels, ["Douane", "Édition", "Exploitation", "Zone"])
+        self.assertEqual(labels, ["Diffusion", "Édition", "Expédition", "Zone"])
 
 class TestResponsiveSlides(unittest.TestCase):
     """La page garde une geometrie fixe mais doit tenir dans un ecran etroit.

@@ -684,9 +684,9 @@ class CheckRow(tk.Frame):
 def _sans_accent(texte: str) -> str:
     """Minuscules sans accent, pour chercher sans se soucier de la frappe.
 
-    « Etablissement » doit trouver « Établissement », et « clermont »
-    doit trouver « HEPPNER - CLERMONT FERRAND » : on cherche ce que
-    l'utilisateur tape, pas ce que le fichier a ecrit.
+    « Etablissement » doit trouver « Établissement », et « lyon » doit
+    trouver « AGENCE - LYON SUD » : on cherche ce que l'utilisateur tape,
+    pas ce que le fichier a ecrit.
     """
     decompose = unicodedata.normalize("NFD", str(texte))
     return "".join(c for c in decompose

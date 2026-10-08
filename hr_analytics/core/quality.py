@@ -177,7 +177,7 @@ def _check_labels(population: Population, config: Configuration,
                   report: QualityReport) -> None:
     """Ce que la lecture a regroupe, dit ligne par ligne.
 
-    Regrouper « AFFRETEMENT » et « Affretement » change un effectif et une
+    Regrouper « RELIURE » et « Reliure » change un effectif et une
     mediane. L'outil le fait parce que c'est presque toujours le bon
     geste, mais il ne le fait pas en silence : le constat nomme la colonne,
     l'ecriture retenue, celles qui ont cede et le nombre de lignes

@@ -396,21 +396,21 @@ class TestMergingCaseVariants(unittest.TestCase):
         return build_population(rows, overrides=overrides or None)
 
     def test_the_rare_spelling_joins_the_frequent_one(self):
-        population = self.population(["Affrètement"] * 5 + ["AFFRETEMENT"])
+        population = self.population(["Sérigraphie"] * 5 + ["SERIGRAPHIE"])
         valeurs = {employee.value("business_unit") for employee in population}
-        self.assertEqual(valeurs, {"Affrètement"})
+        self.assertEqual(valeurs, {"Sérigraphie"})
 
     def test_the_frequent_spelling_wins_whichever_comes_first(self):
         """La faute de frappe est rare par définition : ce n'est pas l'ordre
         du fichier qui décide, mais l'effectif."""
-        population = self.population(["ACHATS"] + ["Achats"] * 4)
+        population = self.population(["RELIURE"] + ["Reliure"] * 4)
         valeurs = {employee.value("business_unit") for employee in population}
-        self.assertEqual(valeurs, {"Achats"})
+        self.assertEqual(valeurs, {"Reliure"})
 
     def test_a_tie_falls_back_on_the_first_one_seen(self):
-        population = self.population(["Achats", "ACHATS"])
+        population = self.population(["Reliure", "RELIURE"])
         valeurs = {employee.value("business_unit") for employee in population}
-        self.assertEqual(valeurs, {"Achats"})
+        self.assertEqual(valeurs, {"Reliure"})
 
     def test_two_different_words_stay_two_words(self):
         """« Cadre » et « Cadres » ne sont pas les mêmes caractères :
@@ -433,10 +433,10 @@ class TestMergingCaseVariants(unittest.TestCase):
         """La casse porte parfois un sens : un code « M2 » qui n'est pas un
         code « m2 »."""
         population = self.population(
-            ["Affrètement"] * 5 + ["AFFRETEMENT"],
+            ["Sérigraphie"] * 5 + ["SERIGRAPHIE"],
             **{"population_mapping.merge_case_variants": False})
         valeurs = {employee.value("business_unit") for employee in population}
-        self.assertEqual(valeurs, {"Affrètement", "AFFRETEMENT"})
+        self.assertEqual(valeurs, {"Sérigraphie", "SERIGRAPHIE"})
         self.assertEqual(population.merged_labels, [])
 
     def test_identifiers_are_never_merged(self):

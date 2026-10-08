@@ -620,5 +620,56 @@ class TestTeamScope(unittest.TestCase):
 
 
 
+class TestNoRealCompanyLeaksIntoTheSource(unittest.TestCase):
+    """Aucun nom réel d'entreprise, d'établissement ou de métier dans le
+    dépôt — pas même en commentaire.
+
+    Un outil se met au point sur un vrai fichier, et c'est bien ainsi : les
+    défauts qui comptent ne se trouvent que là. Mais la valeur qui a servi
+    d'exemple reste ensuite dans le commentaire qui l'explique, et elle
+    part avec le paquet. Un audit a trouvé « HEPPNER - CLERMONT FERRAND »
+    et trois métiers dans les sources livrées, et quatre métiers dans les
+    tests.
+
+    L'essai ne peut pas deviner le fichier de demain : il tient la liste de
+    ce qui a déjà fuité une fois. C'est peu, et c'est mieux que rien — une
+    valeur retirée ne doit pas revenir à la faveur d'un copier-coller.
+    """
+
+    #: Valeurs retirées du dépôt le 8 octobre 2026. Elles viennent toutes
+    #: d'un fichier de paie réel ayant servi à la mise au point.
+    RETIREES = ("HEPPNER", "CLERMONT FERRAND", "LAMBERT ET VALETTE",
+                "AFFRETEMENT", "Affrètement", "Affretement")
+
+    def _fichiers(self):
+        import glob as _glob
+
+        racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for motif in ("hr_analytics/**/*.py", "config/*.json",
+                      "tests/*.py", "tools/*.py"):
+            for chemin in _glob.glob(os.path.join(racine, motif),
+                                     recursive=True):
+                yield chemin
+
+    def test_none_of_them_is_anywhere_in_the_repository(self):
+        coupables = []
+        for chemin in self._fichiers():
+            with open(chemin, encoding="utf-8") as flux:
+                texte = flux.read()
+            for valeur in self.RETIREES:
+                if valeur in texte and chemin != os.path.abspath(__file__):
+                    coupables.append(f"{os.path.basename(chemin)} : {valeur}")
+        self.assertEqual(coupables, [], "; ".join(coupables))
+
+    def test_no_test_file_travels_with_the_package(self):
+        """Les essais restent au dépôt : le paquet livré ne porte ni
+        « tests », ni « unittest » de notre fait."""
+        from tools.build_windows import ARBRES
+
+        livres = {source for source, _cible in ARBRES}
+        self.assertNotIn("tests", livres)
+        self.assertEqual(livres, {"hr_analytics", "config", "docs"})
+
+
 if __name__ == "__main__":
     unittest.main()

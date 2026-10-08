@@ -118,8 +118,8 @@ class TestMergedLabels(unittest.TestCase):
     """Un regroupement de libellés se dit, et ne bloque rien."""
 
     def rapport(self):
-        rows = ([make_row(i, business_unit="Exploitation") for i in range(8)]
-                + [make_row(8, business_unit="EXPLOITATION")])
+        rows = ([make_row(i, business_unit="Diffusion") for i in range(8)]
+                + [make_row(8, business_unit="DIFFUSION")])
         return check(rows)[0]
 
     def test_the_merge_is_reported(self):
@@ -129,8 +129,8 @@ class TestMergedLabels(unittest.TestCase):
     def test_it_names_both_spellings_and_the_column(self):
         constat = [item for item in self.rapport().findings
                    if item.code == "merged_label"][0]
-        self.assertIn("EXPLOITATION", constat.message)
-        self.assertIn("Exploitation", constat.message)
+        self.assertIn("DIFFUSION", constat.message)
+        self.assertIn("Diffusion", constat.message)
         self.assertIn("BU", constat.message)
         self.assertIn("casse ou accents", constat.message)
         self.assertEqual(constat.count, 1)

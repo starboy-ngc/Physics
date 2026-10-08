@@ -579,12 +579,12 @@ def unify_case_variants(employees: List["Employee"],
                         fields: Iterable[str]) -> List[Dict[str, Any]]:
     """Deux ecritures d'un meme libelle n'en font qu'une.
 
-    « AFFRETEMENT » saisi une fois et « Affretement » saisi deux cent
-    soixante-cinq fois sont le meme metier. Les laisser cote a cote donne
-    deux modalites : deux lignes dans la segmentation, deux effectifs, deux
-    medianes, deux entrees dans la liste deroulante — et le metier de deux
-    cent soixante-six personnes se lit en deux morceaux dont l'un est sous
-    le seuil de publication.
+    « RELIURE » saisi une fois et « Reliure » saisi deux cent soixante-cinq
+    fois sont le meme metier. Les laisser cote a cote donne deux modalites :
+    deux lignes dans la segmentation, deux effectifs, deux medianes, deux
+    entrees dans la liste deroulante — et le metier de deux cent
+    soixante-six personnes se lit en deux morceaux dont l'un est sous le
+    seuil de publication.
 
     L'ecriture retenue est la plus frequente, et non la premiere vue : une
     faute de frappe est rare par definition, et c'est l'orthographe que la

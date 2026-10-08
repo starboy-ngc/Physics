@@ -693,8 +693,8 @@ def _declared_order(config: Configuration):
         return lambda item: (-item["headcount"], _fold(item["segment"]))
     if choix == "effectif_croissant":
         return lambda item: (item["headcount"], _fold(item["segment"]))
-    # Sans accent ni casse : « Édition » doit se ranger entre « Douane » et
-    # « Exploitation », et non apres « Zone » comme le fait un tri brut sur
+    # Sans accent ni casse : « Édition » doit se ranger entre « Diffusion »
+    # et « Expedition », et non apres « Zone » comme le fait un tri brut sur
     # les points de code.
     return lambda item: (_fold(item["segment"]), item["segment"])
 
