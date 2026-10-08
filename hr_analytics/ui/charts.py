@@ -368,6 +368,30 @@ class ScatterChart(tk.Frame):
             return format_number(value, 2)
         return format_number(value, 0)
 
+    #: Pas des graduations d'un axe en annees, et nombre de graduations
+    #: au-dela duquel on rend la main aux valeurs rondes usuelles.
+    YEAR_STEP, YEAR_TICKS_MAX = 5, 14
+
+    def _axis_ticks(self, which: str, low: float, high: float) -> List[float]:
+        """Les graduations d'un axe, de cinq en cinq quand il compte des annees.
+
+        Une anciennete graduee 0, 10, 20, 30 fait lire a l'oeil « vers 15 »
+        la ou l'on voudrait « 14 ou 16 » : une carriere se situe a cinq ans
+        pres, et c'est le pas de toutes les tranches de l'outil. Au-dela
+        d'une quinzaine de graduations — un axe de quatre-vingts ans —, le
+        pas de cinq encombrerait, et les valeurs rondes reprennent.
+        """
+        if self._axis(which).get("kind") == "years":
+            premier = math.ceil(low / self.YEAR_STEP) * self.YEAR_STEP
+            valeurs = []
+            valeur = float(premier)
+            while valeur <= high + 1e-9:
+                valeurs.append(valeur)
+                valeur += self.YEAR_STEP
+            if 1 < len(valeurs) <= self.YEAR_TICKS_MAX:
+                return valeurs
+        return list(nice_ticks(low, high))
+
     def _axis_title(self, which: str) -> str:
         axis = self._axis(which)
         unite = {"years": " (années)", "ratio": " (ETP)"}.get(
@@ -468,13 +492,13 @@ class ScatterChart(tk.Frame):
 
         # Graduations posees sur des valeurs rondes, jamais sur les bornes de
         # l'etendue : celles-ci donnaient « 4 284 EUR » ou « -0,6 an ».
-        for value in nice_ticks(y_min, y_max):
+        for value in self._axis_ticks("y", y_min, y_max):
             y = pad_t + plot_h - (value - y_min) / y_span * plot_h
             self.canvas.create_line(pad_l, y, pad_l + plot_w, y, fill=theme.GRID)
             self.canvas.create_text(
                 pad_l - 8, y, anchor="e", fill=theme.MUTED, font=axis_font(),
                 text=self._tick("y", value))
-        for value in nice_ticks(x_min, x_max):
+        for value in self._axis_ticks("x", x_min, x_max):
             x = pad_l + (value - x_min) / x_span * plot_w
             self.canvas.create_text(
                 x, pad_t + plot_h + 14, fill=theme.MUTED, font=axis_font(),
@@ -1436,9 +1460,9 @@ class BoxPlotChart(_Boxes):
         room = available - wide - offset - 10
         if room < 190:
             return
-        phrase = ("La boîte contient la moitié des salariés du segment ; "
-                  "le trait, la médiane. Les moustaches vont du 10e au 90e "
-                  "centile.")
+        phrase = ("L'encadrement contient 50 % des salariés de la "
+                  "catégorie. Le trait correspond à la médiane. Le marqueur "
+                  "gris indique l'étendue entre le 10e et le 90e centile.")
         withheld = self._withheld()
         if withheld:
             # L'onglet Segments a disparu : la phrase renvoyait a un
@@ -2012,9 +2036,9 @@ class VerticalBoxPlotChart(_Boxes):
         place = width - wide - 40
         if place < 190:
             return
-        phrase = ("La boîte contient la moitié des salariés de la catégorie ; "
-                  "le trait, la médiane. Les moustaches vont du 10e au 90e "
-                  "centile.")
+        phrase = ("L'encadrement contient 50 % des salariés de la "
+                  "catégorie. Le trait correspond à la médiane. Le marqueur "
+                  "gris indique l'étendue entre le 10e et le 90e centile.")
         retenus = self._withheld()
         if retenus:
             phrase += (f" {retenus} catégorie(s) trop peu nombreuse(s) pour "

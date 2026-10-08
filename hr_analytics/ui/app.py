@@ -36,7 +36,7 @@ from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
-from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
+from ..core.pay_equity import (category_breakdown,
                                category_members, people_rows,
                                population_breakdown)
 from ..core.normalize import fold_label as _fold_label
@@ -106,7 +106,7 @@ ON_DEMAND = ("organigramme",)
 CHARTS = (("nuage", "Nuage de points"),
           ("distribution", "Distribution"),
           ("boites", "Dispersion"),
-          ("colonnes", "Boîtes à moustaches"))
+          ("colonnes", "Comparaison"))
 
 
 def _hint(key: Optional[str], title: str):
@@ -3084,19 +3084,12 @@ class Application(tk.Tk):
         self.equity_box.ROW_SPLIT_MIN = self.EQUITY_BOX_ROW
         self.equity_box.pack(fill="both", expand=True, padx=18, pady=(0, 10))
 
-        # --- 4. Le recapitulatif par poste -------------------------------
-        self._equity_rule()
-        self._equity_title(page, "Récapitulatif par poste")
-        self.equity_recap = self._tree(
-            page, ("Poste", "Femmes", "Hommes", "Médiane femmes",
-                   "Médiane hommes", "Écart"),
-            (260, 90, 90, 150, 150, 110), expand=False, height=12)
-        self.equity_recap_note = tk.Label(
-            page, text="", background=theme.CANVAS, foreground=theme.MUTED,
-            font=self.fonts.small, justify="left", anchor="w", wraplength=980)
-        self.equity_recap_note.pack(anchor="w", padx=24, pady=(0, 8))
-
-        # --- 5. Les salaries sous la mediane de leur poste ---------------
+        # --- 4. Les salaries sous la mediane de leur poste ---------------
+        # Le recapitulatif par poste — une ligne par poste, les deux
+        # medianes, l'ecart — tenait ici la quatrieme place. Il est parti :
+        # il redisait le selecteur de poste et le bloc de remuneration
+        # comparee, sans rien apprendre de plus, et il allongeait la page
+        # de douze lignes avant la liste qu'on vient lire.
         self._equity_rule()
         self._equity_title(page, "Population analysée")
         # Le tableau se construit a l'analyse : ses colonnes sont declarees
@@ -3149,7 +3142,6 @@ class Application(tk.Tk):
             "chart_parameters.scatter_x", "tenure_years"))
         self._fill_axis_box(self.equity_y, self.configuration.get(
             "chart_parameters.scatter_y", "base_salary"))
-        self._show_equity_recap()
         self._show_equity_scope()
 
     def _equity_choice(self) -> Optional[str]:
@@ -3176,8 +3168,8 @@ class Application(tk.Tk):
                           tenure_bands=entiere.tenure_bands)
 
     def _clear_equity(self) -> None:
-        """Vide les cinq blocs d'un coup."""
-        arbres = [self.equity_people, self.equity_stats, self.equity_recap]
+        """Vide les quatre blocs d'un coup."""
+        arbres = [self.equity_people, self.equity_stats]
         # La liste nominative n'existe qu'une fois les colonnes connues :
         # elle se construit a l'analyse, et il n'y a rien a vider avant.
         if self.equity_list is not None:
@@ -3192,16 +3184,11 @@ class Application(tk.Tk):
             child.destroy()
         for note in (self.equity_scope_note, self.equity_pyramid_note,
                      self.equity_tenure_note, self.equity_scatter_note,
-                     self.equity_stats_note, self.equity_recap_note,
-                     self.equity_lagging_note):
+                     self.equity_stats_note, self.equity_lagging_note):
             note.configure(text="")
 
     def _show_equity_scope(self) -> None:
-        """Rejoue les quatre blocs qui dependent du poste retenu.
-
-        Le recapitulatif, lui, ne bouge pas : il porte sur tous les postes,
-        et c'est ce qui permet de situer celui qu'on regarde.
-        """
+        """Rejoue les quatre blocs qui dependent du poste retenu."""
         if self.result is None:
             return
         population = self._equity_population()
@@ -3410,36 +3397,6 @@ class Application(tk.Tk):
             alert=self.configuration.number(
                 "pay_equity_parameters.gap_alert_threshold", 5.0,
                 minimum=0.0, maximum=100.0))
-
-    def _show_equity_recap(self) -> None:
-        """Un poste par ligne : effectifs, les deux medianes, l'ecart."""
-        devise = self.result.payload["salary"].get("currency", "EUR")
-        bloc = calculate_category_gaps(self.result.filtered,
-                                       self.result.config,
-                                       self._equity_field)
-        lignes = []
-        retenus = 0
-        for item in sorted(bloc.get("categories", []),
-                           key=lambda c: -(c.get("median_gap") or -1e9)):
-            if not item.get("published"):
-                retenus += 1
-                lignes.append((item["category"], str(item.get("female_count", 0)),
-                               str(item.get("male_count", 0)), "masqué",
-                               "masqué", "—"))
-                continue
-            lignes.append((
-                item["category"], str(item.get("female_count", 0)),
-                str(item.get("male_count", 0)),
-                format_money(item.get("female_median"), devise),
-                format_money(item.get("male_median"), devise),
-                _signed_percent(item.get("median_gap"))))
-        self._fill(self.equity_recap, lignes)
-        note = ["Écart de médiane, positif quand les hommes sont mieux "
-                "rémunérés. Classement par écart décroissant."]
-        if retenus:
-            note.append(f"{retenus} poste(s) sans écart publiable : effectif "
-                        "insuffisant d'un côté au moins.")
-        self.equity_recap_note.configure(text=" ".join(note))
 
     def _show_equity_lagging(self, poste: Optional[str]) -> None:
         """La population analysée, une ligne par salarié.

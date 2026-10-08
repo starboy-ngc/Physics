@@ -1476,9 +1476,9 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             textes = self._canvas_texts(chart)
             for part in ("P10", "Q1", "Médiane", "Q3", "P90"):
                 self.assertIn(part, textes)
-            phrase = [x for x in textes if "moitié des salariés" in x]
+            phrase = [x for x in textes if "L'encadrement contient" in x]
             self.assertEqual(len(phrase), 1, textes)
-            self.assertIn("10e au 90e centile", phrase[0])
+            self.assertIn("10e et le 90e centile", phrase[0])
         finally:
             app.destroy()
 

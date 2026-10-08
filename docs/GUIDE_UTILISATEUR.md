@@ -353,10 +353,6 @@ femmes, la seule qui désignerait quelqu'un. À droite, la même comparaison
 tracée : une paire de boîtes, celle du poste retenu ou celle de toute la
 population.
 
-**Récapitulatif par poste.** Une ligne par poste : effectifs, les deux
-médianes, l'écart — positif quand les hommes sont mieux rémunérés,
-classement par écart décroissant.
-
 **Population analysée.** La liste de ceux dont les chiffres de la page
 sont faits — ce n'est pas un classement, et elle ne retient rien. Ses
 **colonnes se déclarent au paramétrage**, dans
@@ -520,7 +516,7 @@ comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
 
 La **Dispersion** s'ouvre sur l'effectif décroissant : devant quarante
 postes empilés, la première question est « lesquels pèsent ». Les
-**Boîtes à moustaches** s'ouvrent sur l'ordre de la dimension, parce
+**Comparaison** s'ouvre sur l'ordre de la dimension, parce
 qu'une abscisse peut être une échelle — et ranger un coefficient par
 effectif défait la progression même qu'on vient lire.
 
@@ -556,9 +552,9 @@ pas et ne s'invite pas au milieu. Et une valeur rangée qui n'est plus dans
 le fichier ne décale rien — elle reste dans le paramétrage, prête à
 servir au prochain import qui la portera.
 
-## 5 quater bis. Boîtes à moustaches : comparer quelques catégories
+## 5 quater bis. Comparaison : les boîtes dressées, côte à côte
 
-**Graphiques → Boîtes à moustaches** montre les mêmes chiffres dressés :
+**Graphiques → Comparaison** montre les mêmes chiffres dressés :
 la rémunération en ordonnée, les catégories côte à côte, une boîte par
 catégorie. C'est la lecture classique d'une distribution comparée, et elle
 dit d'un regard ce qui se superpose et ce qui ne se superpose pas — deux
@@ -593,7 +589,7 @@ partie de la réponse.
 **Pourquoi deux pages pour des boîtes à moustaches ?** Elles répondent à
 deux questions. *Dispersion*, couchée, classe quarante postes sur une page
 et porte leurs intitulés sans les incliner : on y cherche où se situe
-celui-ci dans l'ensemble. *Boîtes à moustaches*, dressée, compare quelques
+celui-ci dans l'ensemble. *Comparaison*, dressée, compare quelques
 catégories entre elles. Les deux lisent les mêmes lignes, avec les mêmes
 seuils de confidentialité.
 

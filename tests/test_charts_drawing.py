@@ -657,6 +657,36 @@ class TestScatter(ChartCase):
         self.assertIn("Ancienneté (années)", textes)
         self.assertIn("Salaire de base", textes)
 
+    def test_an_axis_of_years_is_graduated_every_five(self):
+        """Graduée 0, 10, 20, 30, une ancienneté se lit « vers 15 » là où
+        l'on voudrait « 14 ou 16 » : une carrière se situe à cinq ans près,
+        et c'est le pas de toutes les tranches de l'outil."""
+        chart = self.chart(dict(self.dataset(),
+                                x_axis={"label": "Ancienneté", "kind": "years"}))
+        textes = self.texts(chart.canvas)
+        for graduation in ("0", "5", "10", "15"):
+            self.assertIn(graduation, textes)
+
+    def test_a_very_long_axis_of_years_falls_back_on_round_values(self):
+        """Au-delà d'une quinzaine de graduations, le pas de cinq
+        encombrerait : les valeurs rondes reprennent."""
+        points = [{"x": index * 2, "y": 30000 + index * 100, "group": "A",
+                   "row": index, "reference": str(index)} for index in range(50)]
+        chart = self.chart({"available": True, "points": points,
+                            "x_axis": {"label": "Ancienneté", "kind": "years"}})
+        graduations = [t for t in self.texts(chart.canvas)
+                       if t.isdigit() and int(t) <= 98]
+        self.assertLess(len(graduations), 14)
+        self.assertNotIn("5", graduations)
+
+    def test_a_money_axis_keeps_its_round_values(self):
+        """Le pas de cinq n'a de sens que pour des années."""
+        chart = self.chart(dict(self.dataset(),
+                                x_axis={"label": "Ancienneté", "kind": "years"},
+                                y_axis={"label": "Salaire", "kind": "money"}))
+        montants = [t for t in self.texts(chart.canvas) if "EUR" in t]
+        self.assertGreaterEqual(len(montants), 3)
+
     def test_hiding_a_group_removes_its_points(self):
         chart = self.chart()
         chart.toggle_group("France")

@@ -105,7 +105,6 @@ class TestTheWholePageAnswers(EquityCase):
         self.assertTrue(self.app.equity_scatter.points)
         self.assertTrue(self.lignes(self.app.equity_stats))
         self.assertTrue(self.app.equity_box.rows)
-        self.assertTrue(self.lignes(self.app.equity_recap))
         self.assertTrue(self.lignes(self.app.equity_list))
 
     def test_the_job_list_comes_from_the_file(self):
@@ -151,13 +150,15 @@ class TestChoosingAJob(EquityCase):
         self.assertEqual(str(self.app.equity_box.rows[0]["segment"]),
                          POSTES[1])
 
-    def test_the_recap_covers_every_job_whatever_the_choice(self):
-        """C'est lui qui permet de situer le poste qu'on regarde : le
-        restreindre au poste retenu le viderait de son emploi."""
-        avant = len(self.lignes(self.app.equity_recap))
-        self.choisir(POSTES[0])
-        self.assertEqual(len(self.lignes(self.app.equity_recap)), avant)
-        self.assertGreaterEqual(avant, len(POSTES))
+    def test_the_recap_by_job_is_gone(self):
+        """Il redisait le sélecteur de poste et la rémunération comparée
+        sans rien apprendre de plus, et il allongeait la page de douze
+        lignes avant la liste qu'on vient lire."""
+        self.assertFalse(hasattr(self.app, "equity_recap"))
+        titres = [item.cget("text")
+                  for item in self.app.equity_page.winfo_children()
+                  if "text" in item.keys()]
+        self.assertNotIn("Récapitulatif par poste", titres)
 
     def test_the_people_list_narrows_to_the_chosen_job(self):
         self.choisir(POSTES[2])
