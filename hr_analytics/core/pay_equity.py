@@ -753,10 +753,17 @@ def people_rows(population: Population, config: Configuration,
     identite — le moteur n'en transporte jamais — mais le numero de ligne
     par lequel la fenetre retrouve le salarie qu'elle detient deja.
     """
-    colonnes = people_columns(config)
     membres = (category_members(population, field_name, value)
                if field_name and value is not None else list(population))
     personnels = set(personal_fields(config))
+    # Une notion declaree que ce fichier ne porte pas donnerait une colonne
+    # vide sur toute la hauteur : elle n'apprend rien et prend la place
+    # d'une autre. Les champs nominatifs restent : c'est la fenetre qui
+    # les remplit, le moteur n'en transporte jamais.
+    colonnes = [colonne for colonne in people_columns(config)
+                if colonne["field"] in personnels
+                or any(str(employee.value(colonne["field"]) or "").strip()
+                       for employee in membres)]
     lignes = []
     for employee in membres:
         lignes.append({

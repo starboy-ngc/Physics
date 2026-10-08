@@ -117,6 +117,19 @@ class TestTheEngineFallsBackOnWhatIsDeclared(unittest.TestCase):
         self.assertEqual(usine, ["last_name", "first_name", "gender",
                                  "base_salary"])
 
+    def test_a_declared_notion_the_file_does_not_carry_has_no_column(self):
+        """Une colonne vide sur toute la hauteur n'apprend rien."""
+        from hr_analytics.core.pay_equity import people_rows
+
+        config = make_config()
+        rows = [make_row(i, groupe="", business_unit=["Nord", "Sud"][i % 2])
+                for i in range(20)]
+        colonnes = [c["field"] for c in
+                    people_rows(build_population(rows, config), config)["columns"]]
+        self.assertIn("business_unit", colonnes)
+        self.assertNotIn("groupe", colonnes)
+        self.assertIn("last_name", colonnes)
+
     def test_no_pie_without_a_declared_field(self):
         from hr_analytics.core.metrics import calculate_population_metrics
 

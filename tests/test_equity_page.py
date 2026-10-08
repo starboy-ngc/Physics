@@ -191,15 +191,21 @@ class TestChoosingAJob(EquityCase):
     def test_the_columns_come_from_the_configuration(self):
         """Ajouter « Direction » ou retirer l'établissement ne demande
         aucune modification du code."""
-        from hr_analytics.core.pay_equity import people_columns
+        from hr_analytics.core.pay_equity import people_columns, people_rows
 
         declarees = [colonne["field"] for colonne
                      in people_columns(self.app.configuration)]
-        self.assertEqual(self.app._equity_columns, declarees)
+        portees = people_rows(self.app.result.filtered,
+                              self.app.result.config)["columns"]
+        self.assertEqual(self.app._equity_columns,
+                         [colonne["field"] for colonne in portees])
+        # Celles que le fichier porte, dans l'ordre declare, et rien d'autre.
+        self.assertTrue(set(self.app._equity_columns) <= set(declarees))
+        self.assertIn("job_title", self.app._equity_columns)
+        self.assertNotIn("site", self.app._equity_columns)
         intitules = [self.app.equity_list.heading(nom)["text"]
                      for nom in self.app.equity_list.cget("columns")]
-        attendus = [colonne["label"].upper() for colonne
-                    in people_columns(self.app.configuration)]
+        attendus = [colonne["label"].upper() for colonne in portees]
         self.assertEqual(intitules, attendus)
 
     def test_the_engine_carries_no_name(self):
