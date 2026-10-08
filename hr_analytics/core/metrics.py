@@ -672,7 +672,26 @@ def _segment_sort_key(field_name: str, config: Configuration,
         order = {str(band.get("label", "")): index for index, band in enumerate(bands)}
         return lambda item: (order.get(item["segment"], len(order)), item["segment"])
 
-    matches = [_ORDINAL_LABEL.match(label) for label in labels if label]
+    # Une valeur non renseignee ne decide pas de l'ordre, et se range en
+    # fin : une seule suffisait a faire retomber une echelle entiere sur
+    # l'ordre alphabetique.
+    connus = [label for label in labels if label and label != UNKNOWN_LABEL]
+
+    # Une echelle chiffree d'abord : un coefficient, un indice, une annee.
+    # Le motif ordinal ci-dessous ne reconnait pas « 106,5 », et l'ordre
+    # alphabetique range alors 100, 1000, 110 — ce qui ne se lit pas.
+    if connus and all(_nombre(label) is not None for label in connus):
+        def numerique(item):
+            valeur = _nombre(item["segment"])
+            if valeur is None:
+                return (1, 0.0, item["segment"])
+            return (0, valeur, "")
+        return numerique
+
+    # Puis les echelles nommees : G1..G8, N1..N5. Le prefixe doit etre le
+    # meme pour tous, sans quoi « A3 » et « B1 » se compareraient par leur
+    # seul numero.
+    matches = [_ORDINAL_LABEL.match(label) for label in connus]
     if matches and all(matches) and len({m.group(1) for m in matches}) == 1:
         def ordinal(item):
             match = _ORDINAL_LABEL.match(item["segment"])
@@ -680,6 +699,18 @@ def _segment_sort_key(field_name: str, config: Configuration,
         return ordinal
 
     return _declared_order(config)
+
+
+def _nombre(label: str) -> Optional[float]:
+    """Le nombre que porte un libelle, ou rien.
+
+    La virgule decimale est acceptee : une colonne de coefficients saisie
+    a la main porte volontiers « 132,5 ».
+    """
+    try:
+        return float(str(label).replace(",", ".").replace(" ", ""))
+    except (TypeError, ValueError):
+        return None
 
 
 #: Ordres proposes pour une dimension sans echelle propre. La cle est

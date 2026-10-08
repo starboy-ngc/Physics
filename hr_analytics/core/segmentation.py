@@ -439,6 +439,24 @@ def cross_key(employee: Employee, fields: Sequence[str]) -> str:
     return CROSS_SEPARATOR.join(parts)
 
 
+def segment_label(value: Any) -> str:
+    """Le libelle d'une valeur de dimension.
+
+    Un coefficient est declare numerique — il se compare, il se trie —, et
+    il revenait donc « 230.0 » partout : sur l'abscisse des boites, dans
+    les listes de filtres, dans les tableaux et dans les documents. Le
+    bulletin de paie porte 230, le classeur porte 230, et l'outil
+    inventait une decimale que personne n'a saisie.
+
+    Les valeurs vraiment decimales gardent la leur : un taux d'activite a
+    0,8 reste « 0.8 ». C'est la meme regle que pour les bornes de tranche,
+    et il n'y a pas de raison qu'elle vaille d'un cote et pas de l'autre.
+    """
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
+    return str(value).strip()
+
+
 def split_by(
     population: Population, field_name, include_empty: bool = False
 ) -> Dict[str, Population]:
@@ -453,7 +471,7 @@ def split_by(
     for employee in population:
         key = (employee.value(fields[0]) if len(fields) == 1
                else cross_key(employee, fields))
-        key = "" if key is None else str(key).strip()
+        key = "" if key is None else segment_label(key)
         if not key:
             if not include_empty:
                 continue

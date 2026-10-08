@@ -863,21 +863,33 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
         self.root.update()
         self.assertEqual(self.chart._drawable(), [])
 
-    def test_the_sort_by_dimension_order_is_gone(self):
-        """Un classement alphabetique ne repond a aucune question qu'on se
-        pose devant une dispersion."""
+    def test_the_dimension_order_is_offered_again(self):
+        """Il avait ete retire comme ordre par defaut, et c'etait la bonne
+        decision — mais il avait ete retire tout court, ce qui laissait
+        sans recours une dimension qui *a* un ordre propre.
+
+        Un coefficient se lit dans l'ordre des nombres, une tranche d'age
+        dans celui des tranches : les ranger par effectif defait la
+        progression meme qu'on vient lire, et aucune entree de la liste ne
+        permettait de la retrouver.
+        """
         from hr_analytics.ui.charts import BoxPlotChart
 
-        self.assertNotIn("dimension", dict(BoxPlotChart.ORDERS))
+        self.assertIn("moteur", dict(BoxPlotChart.ORDERS))
 
     def test_the_headcount_comes_first(self):
         """Devant une dimension a quarante postes, la premiere question est
         « lesquels pesent », pas « lesquels paient le mieux » : un poste de
         six personnes en tete de liste met en avant ce qui compte le
-        moins."""
+        moins.
+
+        C'est l'ordre d'ouverture de cette presentation-ci, et il ne tient
+        plus au rang dans la liste : une entree ajoutee en tete changeait
+        le defaut sans que personne le decide.
+        """
         from hr_analytics.ui.charts import BoxPlotChart
 
-        self.assertEqual(BoxPlotChart.ORDERS[0][0], "headcount")
+        self.assertEqual(BoxPlotChart.DEFAUT, "headcount")
         self.assertEqual(BoxPlotChart(self.root).order, "headcount")
 
     def test_the_axis_follows_the_boxes_instead_of_the_frame(self):

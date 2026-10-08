@@ -974,11 +974,13 @@ class Application(tk.Tk):
         tk.Label(box_head, text="TRIER PAR", background=theme.CANVAS,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left", padx=(22, 0))
-        self.box_order = ttk.Combobox(box_head, state="readonly", width=22,
+        self.box_order = ttk.Combobox(box_head, state="readonly", width=24,
                                       font=self.fonts.small,
                                       values=[label for _key, label
                                               in BoxPlotChart.ORDERS])
-        self.box_order.current(0)
+        self.box_order.current([cle for cle, _label
+                                in BoxPlotChart.ORDERS].index(
+                                    BoxPlotChart.DEFAUT))
         self.box_order.pack(side="left", padx=10)
         self.box_order.bind("<<ComboboxSelected>>", lambda _e: self._reorder())
         # Deux medianes proches peuvent recouvrir deux distributions tres
@@ -1022,9 +1024,13 @@ class Application(tk.Tk):
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left", padx=(22, 0))
         self.col_order = ttk.Combobox(
-            col_head, state="readonly", width=22, font=self.fonts.small,
+            col_head, state="readonly", width=24, font=self.fonts.small,
             values=[label for _key, label in VerticalBoxPlotChart.ORDERS])
-        self.col_order.current(0)
+        # La liste s'ouvre sur le tri que le graphique applique vraiment.
+        # Posee sur sa premiere entree sans rien regarder, elle annoncait
+        # un ordre et le graphique en appliquait un autre.
+        cles = [cle for cle, _label in VerticalBoxPlotChart.ORDERS]
+        self.col_order.current(cles.index(VerticalBoxPlotChart.DEFAUT))
         self.col_order.pack(side="left", padx=10)
         self.col_order.bind("<<ComboboxSelected>>",
                             lambda _e: self._reorder_columns())
@@ -3858,7 +3864,12 @@ class Application(tk.Tk):
         voulu = self.boxplot.order
         self.box_order.configure(values=[label for _key, label in choix])
         cles = [key for key, _label in choix]
-        self.box_order.current(cles.index(voulu) if voulu in cles else 0)
+        # Un tri que le mode courant ne sait plus montrer retombe sur le
+        # defaut declare, et non sur la premiere entree de la liste : une
+        # entree ajoutee en tete changerait ce repli sans que personne le
+        # decide.
+        repli = self.boxplot.DEFAUT if self.boxplot.DEFAUT in cles else cles[0]
+        self.box_order.current(cles.index(voulu if voulu in cles else repli))
         self.boxplot.set_order(cles[self.box_order.current()])
 
     def _change_box_dimension(self) -> None:

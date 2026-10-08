@@ -679,3 +679,94 @@ class TestAHalfPublishedOverview(unittest.TestCase):
             self._population(effectif=3, renseignes=3), config)
         self.assertTrue(bloc["masked"])
         self.assertIn("Effectif insuffisant", bloc["warning"])
+
+
+class TestAScaleIsReadInItsOwnOrder(unittest.TestCase):
+    """Un coefficient se lit dans l'ordre des nombres.
+
+    L'outil savait ranger « G1..G8 » et les tranches d'âge, mais pas une
+    échelle décimale : le motif ordinal ne reconnaît pas « 106,5 », et
+    l'ordre alphabétique range 100, 1000, 110. Sur une abscisse de boîtes
+    à moustaches, cela défait la progression même qu'on vient lire.
+    """
+
+    def ordre(self, valeurs, **reglages):
+        from hr_analytics.core.metrics import calculate_segment_metrics
+
+        config = make_config(reglages or None)
+        lignes = [make_row(index, groupe=valeurs[index % len(valeurs)])
+                  for index in range(len(valeurs) * 8)]
+        bloc = calculate_segment_metrics(build_population(lignes, config),
+                                         config, "groupe")
+        return [ligne["segment"] for ligne in bloc["rows"]]
+
+    def test_numbers_are_ordered_as_numbers(self):
+        """Le témoin de l'ancien défaut : 1000 se rangeait entre 100 et
+        110."""
+        self.assertEqual(self.ordre(["110", "1000", "100"]),
+                         ["100", "110", "1000"])
+
+    def test_a_decimal_scale_is_ordered_too(self):
+        """Le motif ordinal ne reconnaît pas « 99.5 » : l'échelle retombait
+        alors sur l'alphabétique, qui range 100 avant 99."""
+        self.assertEqual(self.ordre(["100", "99.5", "106.5"]),
+                         ["99.5", "100", "106.5"])
+
+    def test_a_comma_is_a_decimal_point(self):
+        """Une colonne saisie à la main porte volontiers « 132,5 »."""
+        self.assertEqual(self.ordre(["100", "99,5", "106,5"]),
+                         ["99,5", "100", "106,5"])
+
+    def test_an_unfilled_value_does_not_undo_the_scale(self):
+        """Une seule valeur vide suffisait à faire retomber l'échelle
+        entière sur l'ordre alphabétique."""
+        from hr_analytics.core.segmentation import UNKNOWN_LABEL
+
+        rangs = self.ordre(["110", "1000", "100", ""])
+        self.assertEqual(rangs[:3], ["100", "110", "1000"])
+        self.assertEqual(rangs[-1], UNKNOWN_LABEL)
+
+    def test_named_scales_still_work(self):
+        self.assertEqual(self.ordre(["G10", "G2", "G1"]), ["G1", "G2", "G10"])
+
+    def test_plain_labels_keep_the_configured_order(self):
+        """Une dimension sans échelle propre suit le réglage d'Apparence,
+        et non un ordre décidé ici."""
+        self.assertEqual(self.ordre(["Nord", "Est", "Ouest"]),
+                         ["Est", "Nord", "Ouest"])
+
+
+class TestAWholeNumberIsWrittenWhole(unittest.TestCase):
+    """« 230.0 » n'est pas un coefficient.
+
+    Un coefficient est déclaré numérique — il se compare, il se trie — et
+    il revenait donc avec une décimale que personne n'a saisie : sur
+    l'abscisse des boîtes, dans les listes de filtres, dans les tableaux
+    et dans les documents.
+    """
+
+    def test_a_whole_number_loses_its_decimal(self):
+        from hr_analytics.core.segmentation import segment_label
+
+        self.assertEqual(segment_label(230.0), "230")
+
+    def test_a_real_decimal_keeps_it(self):
+        from hr_analytics.core.segmentation import segment_label
+
+        self.assertEqual(segment_label(106.5), "106.5")
+
+    def test_a_text_value_is_untouched(self):
+        from hr_analytics.core.segmentation import segment_label
+
+        self.assertEqual(segment_label("  Nord  "), "Nord")
+
+    def test_the_segments_of_a_numeric_field_read_whole(self):
+        """Le vrai juge : ce que le découpage publie."""
+        from hr_analytics.core.segmentation import split_by
+
+        config = make_config({"population_mapping.numeric":
+                              ["base_salary", "coefficient"]})
+        lignes = [make_row(index, groupe=str(100 + index % 3 * 10))
+                  for index in range(30)]
+        cles = list(split_by(build_population(lignes, config), "groupe"))
+        self.assertEqual(sorted(cles), ["100", "110", "120"])

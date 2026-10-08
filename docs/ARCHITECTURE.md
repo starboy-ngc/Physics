@@ -207,6 +207,28 @@ avant de choisir leur inclinaison : droits tant qu'ils tiennent sous leur
 colonne, inclinés à 45° sinon — dressés à la verticale, on lit un nom à la
 fois en tournant la tête.
 
+L'**ordre de l'abscisse** se choisit, et son défaut diffère d'une
+présentation à l'autre : la couchée s'ouvre sur l'effectif — quarante
+postes empilés, on cherche d'abord ce qui pèse —, la dressée sur l'ordre
+que le moteur a posé. Lui seul sait de quoi la dimension est faite :
+tranches d'âge et d'ancienneté dans l'ordre déclaré, échelles chiffrées
+dans l'ordre des nombres, le reste selon `chart_parameters.segment_order`.
+« Ordre de la dimension » ne trie donc pas : il rend les lignes telles
+qu'elles sont arrivées. Le défaut vit dans `DEFAUT`, et non au premier
+rang d'`ORDERS` : une entrée ajoutée en tête changeait sinon le défaut, et
+le repli d'un tri devenu inapplicable, sans que personne le décide.
+
+Une **échelle chiffrée** est reconnue avant le motif ordinal `G1..G8` :
+celui-ci ne reconnaît pas « 106,5 », et l'échelle retombait alors sur
+l'ordre alphabétique, qui range 100 avant 99. Une valeur non renseignée
+ne participe plus au choix de l'ordre — une seule suffisait à faire
+retomber l'échelle entière — et se range en fin.
+
+Enfin, une valeur de dimension **s'écrit sans décimale inutile**
+(`segment_label`) : un coefficient est déclaré numérique, et revenait
+« 230.0 » sur l'abscisse, dans les filtres, dans les tableaux et dans les
+documents. C'est la règle déjà appliquée aux bornes de tranche.
+
 L'ordonnée porte le **champ d'analyse**, nommé par le moteur
 (`value_label` dans le bloc de segments) et non par le graphique : écrit
 dans la fenêtre, le libellé aurait annoncé « Salaire de base » sur un axe

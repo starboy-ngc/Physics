@@ -500,11 +500,26 @@ comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
 
 ### Trier, c'est poser une autre question
 
-**Trier par** propose l'effectif décroissant — devant quarante postes, la
-première question est « lesquels pèsent » — et la médiane décroissante.
-En mode dédoublé s'y ajoute « Écart F/H décroissant ». Un tri qu'aucune
-colonne ne montre se lirait comme un désordre, et chaque mode ne propose
-donc que les siens.
+**Trier par** propose cinq ordres, et en mode dédoublé un sixième :
+
+| Ordre | Ce qu'il répond |
+|---|---|
+| **Ordre de la dimension** | Celui que le fichier et le paramétrage dictent : les tranches d'âge et d'ancienneté dans l'ordre des tranches, les échelles chiffrées — un coefficient, un indice — dans l'ordre des nombres, le reste selon le réglage d'Apparence. |
+| **Médiane croissante** | Un escalier qui monte : où se situe chaque catégorie. |
+| **Médiane décroissante** | Qui paie le plus. |
+| **Effectif décroissant** | Qui pèse. |
+| **Alphabétique** | Pour chercher un nom. |
+| **Écart F/H décroissant** | En mode dédoublé seulement. |
+
+La **Dispersion** s'ouvre sur l'effectif décroissant : devant quarante
+postes empilés, la première question est « lesquels pèsent ». Les
+**Boîtes à moustaches** s'ouvrent sur l'ordre de la dimension, parce
+qu'une abscisse peut être une échelle — et ranger un coefficient par
+effectif défait la progression même qu'on vient lire.
+
+Un tri qu'aucune colonne ne montre se lirait comme un désordre : « Écart
+F/H » disparaît quand on repasse en mode simple, et l'ordre retombe alors
+sur celui d'ouverture.
 
 ## 5 quater bis. Boîtes à moustaches : comparer quelques catégories
 
@@ -519,8 +534,14 @@ tableau de médianes ne le dit aussi vite.
 toute dimension déclarée au paramétrage. **Valeurs** restreint la
 sélection : quarante-huit métiers côte à côte obligent à faire défiler
 tout le graphique pour en comparer deux, et la question est rarement
-« tous » — c'est « ces quatre-là, côte à côte ». **Trier par** range les
-colonnes sans rien recalculer.
+« tous » — c'est « ces quatre-là, côte à côte ».
+
+**Trier par** range les colonnes sans rien recalculer, avec les mêmes
+six ordres que la Dispersion (voir ci-dessus). Celui d'ouverture est
+**l'ordre de la dimension** : sur une abscisse de coefficients, les
+colonnes se suivent dans l'ordre des nombres, ce qui est le seul ordre
+qui veuille dire quelque chose. Pour comparer des métiers, **médiane
+croissante** dessine un escalier et répond d'un trait.
 
 L'ordonnée porte le nom du **champ d'analyse**, celui que
 `salary_parameters.analysis_field` désigne : réglé sur la rémunération

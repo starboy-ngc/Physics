@@ -396,7 +396,8 @@ class TestTheDispersionColumns(ChartCase):
         chart = self.chart()
         cles = [key for key, _l in chart.orders()]
         self.assertNotIn("spread", cles)
-        self.assertEqual(cles, ["headcount", "median"])
+        self.assertEqual(cles, ["moteur", "median_asc", "median",
+                                "headcount", "alphabetique"])
 
     def test_the_split_mode_offers_its_own_sort(self):
         """« Écart F/H » n'existe pas en mode simple."""
@@ -2106,6 +2107,132 @@ class TestVerticalBoxPlot(ChartCase):
         couchees.set_rows(rows)
         dressees = self.build(VerticalBoxPlotChart)
         dressees.set_rows(rows)
+        # Les deux s'ouvrent sur un ordre different — c'est voulu, et c'est
+        # une autre regle. Sous le meme tri, elles doivent retenir les
+        # memes lignes, dans le meme ordre.
+        for graphique in (couchees, dressees):
+            graphique.set_order("median")
         self.root.update()
         self.assertEqual([row["segment"] for row in couchees._drawable()],
                          [row["segment"] for row in dressees._drawable()])
+
+
+@needs_display
+class TestTheOrderOfTheColumns(ChartCase):
+    """L'ordre des catégories en abscisse.
+
+    Une abscisse peut etre une echelle — un coefficient, une tranche
+    d'age, un niveau G1..G8 — et le moteur sait la ranger : tranches dans
+    l'ordre declare, echelles numerotees dans l'ordre des nombres, le
+    reste dans l'ordre choisi a l'onglet Apparence. Le graphique rangeait
+    tout par effectif decroissant, ce qui defait la progression meme qu'on
+    vient lire.
+    """
+
+    def rows(self, segments, effectifs=None, medianes=None):
+        faites = []
+        for index, nom in enumerate(segments):
+            mediane = (medianes[index] if medianes
+                       else 40000 + index * 1000)
+            faites.append({
+                "segment": nom,
+                "headcount": (effectifs[index] if effectifs else 30 + index),
+                "masked": False, "chartable": True,
+                "salary": {"median": mediane, "p25": mediane - 4000,
+                           "p75": mediane + 4000, "p10": mediane - 8000,
+                           "p90": mediane + 8000, "count": 30}})
+        return faites
+
+    def chart(self, rows, ordre=None):
+        from hr_analytics.ui.charts import VerticalBoxPlotChart
+
+        graphique = self.build(VerticalBoxPlotChart)
+        if ordre:
+            graphique.set_order(ordre)
+        graphique.set_rows(rows)
+        self.root.update()
+        return graphique
+
+    def ordre_trace(self, graphique):
+        """Les segments dans l'ordre ou les colonnes sont posees."""
+        colonnes = sorted(
+            ((graphique.canvas.coords(item)[0], ligne["segment"])
+             for item, (ligne, _moitié) in graphique._items.items()))
+        return [nom for _x, nom in colonnes]
+
+    #: Une echelle : l'ordre des nombres n'est ni l'alphabetique — « 100,
+    #: 1000, 110 » — ni l'effectif.
+    ECHELLE = ["100", "110", "120", "200"]
+
+    def test_the_engine_order_is_the_default(self):
+        graphique = self.chart(self.rows(self.ECHELLE, effectifs=[5, 90, 9, 50]))
+        self.assertEqual(graphique.order, "moteur")
+        self.assertEqual(self.ordre_trace(graphique), self.ECHELLE)
+
+    def test_the_engine_order_does_not_resort(self):
+        """Le moteur a range les lignes avant de les passer : le graphique
+        les rend telles quelles, et c'est le seul moyen de retrouver une
+        tranche d'âge dans l'ordre des tranches."""
+        lignes = self.rows(["50-59", "40-49", "30-39", "20-29"],
+                           effectifs=[12, 80, 40, 95])
+        graphique = self.chart(lignes)
+        self.assertEqual(self.ordre_trace(graphique),
+                         ["50-59", "40-49", "30-39", "20-29"])
+
+    def test_the_headcount_order_is_still_available(self):
+        graphique = self.chart(self.rows(self.ECHELLE,
+                                         effectifs=[5, 90, 9, 50]),
+                               ordre="headcount")
+        self.assertEqual(self.ordre_trace(graphique), ["110", "200", "120", "100"])
+
+    def test_the_rising_median_draws_a_staircase(self):
+        """La présentation classique d'une distribution comparée : on voit
+        d'un trait où se situe chaque catégorie."""
+        lignes = self.rows(["A", "B", "C"], medianes=[50000, 30000, 40000])
+        graphique = self.chart(lignes, ordre="median_asc")
+        self.assertEqual(self.ordre_trace(graphique), ["B", "C", "A"])
+
+    def test_the_falling_median_answers_the_other_question(self):
+        lignes = self.rows(["A", "B", "C"], medianes=[50000, 30000, 40000])
+        graphique = self.chart(lignes, ordre="median")
+        self.assertEqual(self.ordre_trace(graphique), ["A", "C", "B"])
+
+    def test_the_alphabetical_order_ignores_accents_and_case(self):
+        """« Édition » se range entre « Diffusion » et « Expédition », et
+        non après « Zone » comme le fait un tri brut sur les points de
+        code."""
+        lignes = self.rows(["Zone", "expédition", "Édition", "Diffusion"])
+        graphique = self.chart(lignes, ordre="alphabetique")
+        self.assertEqual(self.ordre_trace(graphique),
+                         ["Diffusion", "Édition", "expédition", "Zone"])
+
+    def test_an_unknown_order_falls_back_on_the_default(self):
+        graphique = self.chart(self.rows(self.ECHELLE), ordre="n_importe_quoi")
+        self.assertEqual(graphique.order, "moteur")
+
+    def test_the_two_presentations_open_on_their_own_order(self):
+        """Dressée, l'abscisse peut être une échelle ; couchée, on cherche
+        d'abord ce qui pèse dans une liste de quarante postes."""
+        from hr_analytics.ui.charts import BoxPlotChart, VerticalBoxPlotChart
+
+        self.assertEqual(VerticalBoxPlotChart.DEFAUT, "moteur")
+        self.assertEqual(BoxPlotChart.DEFAUT, "headcount")
+
+    def test_every_offered_order_is_applied(self):
+        """Le témoin : une entrée de la liste qu'aucune branche ne traite
+        rendrait les lignes inchangées, et la liste mentirait."""
+        from hr_analytics.ui.charts import VerticalBoxPlotChart
+
+        # Effectifs et medianes choisis pour que les cinq ordres donnent
+        # cinq rangements differents : sans cela, deux entrees se
+        # confondraient par hasard et le temoin ne temoignerait de rien.
+        lignes = self.rows(["Zone", "Alpha", "Mu"], effectifs=[90, 10, 50],
+                           medianes=[40000, 30000, 50000])
+        graphique = self.chart(lignes)
+        rendus = {}
+        for cle, _libelle in VerticalBoxPlotChart.ORDERS:
+            graphique.set_order(cle)
+            self.root.update()
+            rendus[cle] = tuple(self.ordre_trace(graphique))
+            self.assertEqual(len(rendus[cle]), 3, cle)
+        self.assertEqual(len(set(rendus.values())), len(rendus), rendus)

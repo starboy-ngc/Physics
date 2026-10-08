@@ -19,6 +19,7 @@ from typing import Any, Callable, Dict, List, Optional, Sequence
 
 from ..core import palette
 from ..core.axes import nice_ticks
+from ..core.normalize import fold_label
 from ..core.reporting import (format_money, format_number,
                               format_percent, format_years)
 from . import raster
@@ -819,11 +820,30 @@ class _Boxes(tk.Frame):
     """
 
     #: Tris proposes. La cle est technique, l'intitule s'affiche.
-    ORDERS = (("headcount", "Effectif décroissant"),
-              ("median", "Médiane décroissante"))
-    SPLIT_ORDERS = (("headcount", "Effectif décroissant"),
-                    ("median", "Médiane décroissante"),
-                    ("gap", "Écart F/H décroissant"))
+    #:
+    #: « Ordre de la dimension » rend la main au moteur, et c'est le seul
+    #: qui sache de quoi la dimension est faite : les tranches d'age et
+    #: d'anciennete dans l'ordre declare, les echelles numerotees — un
+    #: coefficient, un niveau G1..G8 — dans l'ordre des nombres, et le
+    #: reste dans l'ordre choisi a l'onglet Apparence. Trier un coefficient
+    #: par effectif ne range rien : cela defait une progression que la
+    #: grille a construite, et c'est precisement ce qu'on vient lire.
+    #:
+    #: Les deux sens de la mediane ne sont pas une symetrie gratuite. La
+    #: croissante dessine un escalier qui monte, et c'est la presentation
+    #: classique d'une distribution comparee : on voit d'un trait ou se
+    #: situe chaque categorie. La decroissante met en tete ce qui paie le
+    #: plus, qui est l'autre question.
+    ORDERS = (("moteur", "Ordre de la dimension"),
+              ("median_asc", "Médiane croissante"),
+              ("median", "Médiane décroissante"),
+              ("headcount", "Effectif décroissant"),
+              ("alphabetique", "Alphabétique"))
+    SPLIT_ORDERS = ORDERS + (("gap", "Écart F/H décroissant"),)
+
+    #: Le tri retenu a l'ouverture. Il differe d'une presentation a
+    #: l'autre : voir chaque sous-classe.
+    DEFAUT = "headcount"
 
     #: Les colonnes de la bulle, et la clef ou chacune se lit dans la ligne.
     #: `None` designe le groupe entier.
@@ -847,7 +867,7 @@ class _Boxes(tk.Frame):
 
     def set_order(self, key: str) -> None:
         """Change l'ordre des boites sans recalculer quoi que ce soit."""
-        self.order = key if key in dict(self.ORDERS) else self.ORDERS[0][0]
+        self.order = key if key in dict(self.orders()) else self.DEFAUT
         self.redraw()
 
     def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
@@ -876,16 +896,32 @@ class _Boxes(tk.Frame):
 
     def _sorted(self, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Ordre demande. Trier, c'est repondre a une autre question avec
-        les memes chiffres."""
+        les memes chiffres.
+
+        « Ordre de la dimension » ne trie pas : il rend les lignes telles
+        que le moteur les a rangees, et lui seul sait qu'un coefficient se
+        lit dans l'ordre des nombres et une tranche d'age dans celui des
+        tranches.
+        """
+        if self.order == "moteur":
+            return list(rows)
         if self.order == "median":
             return sorted(rows, key=lambda row: -(row["salary"]["median"] or 0))
+        if self.order == "median_asc":
+            return sorted(rows, key=lambda row: (row["salary"]["median"] or 0))
         if self.order == "headcount":
             return sorted(rows, key=lambda row: -(row.get("headcount") or 0))
+        if self.order == "alphabetique":
+            # Sans accent ni casse, comme le moteur : « Édition » se range
+            # entre « Diffusion » et « Expedition », et non apres « Zone »
+            # comme le fait un tri brut sur les points de code.
+            return sorted(rows, key=lambda row: (fold_label(row.get("segment", "")),
+                                                 str(row.get("segment", ""))))
         if self.order == "gap":
             return sorted(rows, key=lambda row: -(row.get("median_gap")
                                                   if row.get("median_gap")
                                                   is not None else -1e9))
-        return rows
+        return list(rows)
 
     def _withheld(self) -> int:
         """Segments publiables mais trop peu nombreux pour etre traces."""
@@ -1086,7 +1122,7 @@ class BoxPlotChart(_Boxes):
         self.currency = "EUR"
         self.warning = ""
         self.reference: Optional[float] = None
-        self.order = self.ORDERS[0][0]
+        self.order = self.DEFAUT
         self._items: Dict[int, Dict[str, Any]] = {}
         #: Dernier ajustement du canevas a son contenu : (expansion, hauteur).
         self._fitted: Optional[tuple] = None
@@ -1114,6 +1150,10 @@ class BoxPlotChart(_Boxes):
 
     #: Hauteur du bandeau d'en-tete : une ligne d'intitules.
     HEADER_HEIGHT = 26
+
+    #: Devant quarante postes empiles, la premiere question est « lesquels
+    #: pesent » : l'effectif reste le defaut de cette presentation-ci.
+    DEFAUT = "headcount"
     def set_split(self, split: bool) -> None:
         """Une boite par segment, ou deux : femmes et hommes."""
         self.split = bool(split)
@@ -1627,6 +1667,14 @@ class VerticalBoxPlotChart(_Boxes):
     #: nom a la fois en tournant la tete ; inclines, la serie se parcourt.
     LABEL_ANGLE = 45
 
+    #: L'ordre de la dimension, et non l'effectif. Une abscisse peut etre
+    #: une echelle — un coefficient, une tranche d'age, un niveau G1..G8 —
+    #: et la ranger par effectif defait la progression meme qu'on vient
+    #: lire. Sur une dimension sans echelle propre, le moteur rend l'ordre
+    #: choisi a l'onglet Apparence, alphabetique par defaut : une abscisse
+    #: ou l'on cherche un nom doit pouvoir se parcourir.
+    DEFAUT = "moteur"
+
     def __init__(self, master: tk.Widget):
         super().__init__(master, background=theme.CANVAS)
         _fonts(self)
@@ -1661,7 +1709,7 @@ class VerticalBoxPlotChart(_Boxes):
         self.reference: Optional[float] = None
         #: Ce que l'axe des ordonnees mesure, tel que le moteur le nomme.
         self.value_label = ""
-        self.order = self.ORDERS[0][0]
+        self.order = self.DEFAUT
         self._items: Dict[int, Dict[str, Any]] = {}
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)

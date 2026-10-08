@@ -566,18 +566,33 @@ class TestTheDispersionControls(WindowCase):
         self.app.update()
         self.assertIn("Écart F/H décroissant", self.app.box_order.cget("values"))
 
-    def test_an_order_without_a_column_falls_back_instead_of_persisting(self):
-        """Trier par médiane puis dédoubler : l'ordre doit retomber sur un
-        tri que le mode sait montrer."""
-        self._load()
-        self.app.box_order.current(1)
+    def choisir(self, cle):
+        """Pose un tri par sa clé, sans supposer son rang dans la liste."""
+        cles = [key for key, _l in self.app.boxplot.orders()]
+        self.app.box_order.current(cles.index(cle))
         self.app.box_order.event_generate("<<ComboboxSelected>>")
         self.app.update()
+
+    def test_a_chosen_order_reaches_the_chart(self):
+        self._load()
+        self.choisir("median")
         self.assertEqual(self.app.boxplot.order, "median")
+
+    def test_an_order_without_a_column_falls_back_instead_of_persisting(self):
+        """Trier par écart F/H puis revenir au mode simple : l'écart n'y a
+        plus de colonne pour se vérifier, et un tri qu'aucune colonne ne
+        montre se lit comme un désordre."""
+        self._load()
         self.app.box_split.set(True)
         self.app.update()
-        self.assertIn(self.app.boxplot.order,
-                      [key for key, _l in self.app.boxplot.SPLIT_ORDERS])
+        self.choisir("gap")
+        self.assertEqual(self.app.boxplot.order, "gap")
+        self.app.box_split.set(False)
+        self.app.update()
+        self.assertEqual(self.app.boxplot.order, self.app.boxplot.DEFAUT)
+        # La liste affichée dit le même tri que celui qui s'applique.
+        self.assertEqual(self.app.box_order.get(),
+                         dict(self.app.boxplot.orders())[self.app.boxplot.order])
 
 
 class TestThemeAndIdentities(WindowCase):
@@ -1793,11 +1808,28 @@ class TestTheVerticalBoxesTab(WindowCase):
         self.assertIsNone(self.app.col_values)
         self.assertIn("toutes", self.app.col_values_button.cget("text"))
 
-    def test_the_order_can_be_changed(self):
+    def test_the_list_opens_on_the_order_really_applied(self):
+        """Posée sur sa première entrée sans rien regarder, elle annonçait
+        un ordre et le graphique en appliquait un autre."""
+        from hr_analytics.ui.charts import VerticalBoxPlotChart
+
+        self.analysed()
+        intitules = dict(VerticalBoxPlotChart.ORDERS)
+        self.assertEqual(self.app.col_order.get(),
+                         intitules[self.app.column_boxes.order])
+        self.assertEqual(self.app.column_boxes.order,
+                         VerticalBoxPlotChart.DEFAUT)
+
+    def test_every_entry_of_the_list_reaches_the_chart(self):
+        """Chaque intitulé proposé doit poser sa clé : une liste dont une
+        entrée ne commande rien range au hasard."""
+        from hr_analytics.ui.charts import VerticalBoxPlotChart
+
         self.analysed()
         combien = len(self.app.column_boxes._drawable())
-        self.app.col_order.current(1)
-        self.app._reorder_columns()
-        self.app.update()
-        self.assertEqual(self.app.column_boxes.order, "median")
-        self.assertEqual(len(self.app.column_boxes._drawable()), combien)
+        for index, (cle, _libelle) in enumerate(VerticalBoxPlotChart.ORDERS):
+            self.app.col_order.current(index)
+            self.app._reorder_columns()
+            self.app.update()
+            self.assertEqual(self.app.column_boxes.order, cle)
+            self.assertEqual(len(self.app.column_boxes._drawable()), combien)
