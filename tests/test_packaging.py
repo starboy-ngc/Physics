@@ -619,6 +619,19 @@ class TestTheFolderLauncherCarriesTheMark(unittest.TestCase):
                 tete = "".join(flux.readlines()[:12])
             self.assertIn("Document historique", tete,
                           f"{nom} ne se signale pas comme dépassé")
-        # Le dossier courant, lui, est livré.
+        # Le dossier courant, lui, est livré. Le relevé de dépendances
+        # aussi : c'est la première pièce qu'une revue réclame.
         self.assertNotIn("DOSSIER-RSSI.md", DOCS_NON_LIVRES)
         self.assertNotIn("GUIDE_UTILISATEUR.md", DOCS_NON_LIVRES)
+        self.assertNotIn("DEPENDANCES.md", DOCS_NON_LIVRES)
+
+    def test_every_dated_audit_stays_at_the_repository(self):
+        """Un audit daté décrit un état révolu : il ne part pas avec le
+        paquet, mais il ne disparaît pas non plus."""
+        import glob
+
+        from tools.build_windows import DOCS_NON_LIVRES
+
+        for chemin in glob.glob(os.path.join(ROOT, "docs", "AUDIT-*.md")):
+            self.assertIn(os.path.basename(chemin), DOCS_NON_LIVRES,
+                          f"{os.path.basename(chemin)} partirait dans le paquet")

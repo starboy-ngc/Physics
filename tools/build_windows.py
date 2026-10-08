@@ -182,7 +182,7 @@ ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
 #: affirmations contraires dans le meme paquet ne sait pas laquelle croire,
 #: et il a raison. Le paquet ne porte donc qu'un etat : celui du jour.
 DOCS_NON_LIVRES = ("AUDIT.md", "AUDIT-2026-09-26.md", "AUDIT-2026-10-04.md",
-                   "AUDIT-SECURITE-IT.md")
+                   "AUDIT-2026-10-08.md", "AUDIT-SECURITE-IT.md")
 
 #: Outils de fabrication de jeux d'essai : ils produisent des populations
 #: fictives, et c'est par eux qu'une équipe prend l'outil en main.
