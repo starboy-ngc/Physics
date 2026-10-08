@@ -680,12 +680,17 @@ class TestScatter(ChartCase):
         self.assertNotIn("5", graduations)
 
     def test_a_money_axis_keeps_its_round_values(self):
-        """Le pas de cinq n'a de sens que pour des années."""
-        chart = self.chart(dict(self.dataset(),
-                                x_axis={"label": "Ancienneté", "kind": "years"},
-                                y_axis={"label": "Salaire", "kind": "money"}))
+        """Le pas de cinq n'a de sens que pour des années : un montant de
+        0 à 60 se gradue 0, 20, 40, 60, et non de cinq en cinq, même quand
+        treize graduations tiendraient."""
+        points = [{"x": index % 20, "y": index * 3, "group": "A",
+                   "row": index, "reference": str(index)} for index in range(21)]
+        chart = self.chart({"available": True, "points": points,
+                            "x_axis": {"label": "Ancienneté", "kind": "years"},
+                            "y_axis": {"label": "Salaire", "kind": "money"}})
         montants = [t for t in self.texts(chart.canvas) if "EUR" in t]
-        self.assertGreaterEqual(len(montants), 3)
+        self.assertIn("20 EUR", montants)
+        self.assertNotIn("5 EUR", montants)
 
     def test_hiding_a_group_removes_its_points(self):
         chart = self.chart()
