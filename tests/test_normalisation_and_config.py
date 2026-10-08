@@ -18,6 +18,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
 from hr_analytics.core.config import (Configuration, DEFAULTS,
                                                 default_config_dir,
@@ -231,7 +232,7 @@ class TestConfiguration(unittest.TestCase):
     def test_a_written_configuration_is_read_back_identically(self):
         write_default_configuration(self.directory)
         self.assertEqual(load_configuration(self.directory).as_dict(),
-                         load_configuration().as_dict())
+                         load_configuration(None).as_dict())
 
     def test_a_file_overrides_only_what_it_declares(self):
         write_default_configuration(self.directory)
@@ -266,11 +267,11 @@ class TestConfiguration(unittest.TestCase):
 
     def test_an_unknown_section_is_refused_with_its_name(self):
         with self.assertRaises(ConfigError) as caught:
-            load_configuration().section("parametres_inconnus")
+            load_configuration(CONFIG_DIR).section("parametres_inconnus")
         self.assertIn("parametres_inconnus", caught.exception.message)
 
     def test_an_unknown_setting_falls_back_on_the_default_given(self):
-        config = load_configuration()
+        config = load_configuration(CONFIG_DIR)
         self.assertEqual(config.get("privacy_parameters.inexistant", 7), 7)
         self.assertEqual(config.get("section.inexistante.profonde", "x"), "x")
         self.assertIsNone(config.get("privacy_parameters.inexistant"))

@@ -34,6 +34,28 @@
       "Date de fin",
       "Leave date"
     ],
+    "business_unit": [
+      "BU",
+      "Business Unit"
+    ],
+    "country": [
+      "Pays",
+      "Country"
+    ],
+    "site": [
+      "Établissement",
+      "Site"
+    ],
+    "job": [
+      "Métier",
+      "Job"
+    ],
+    "job_title": [
+      "Poste",
+      "Intitulé de poste",
+      "Job title",
+      "Position"
+    ],
     "period": [
       "Période",
       "Periode",
@@ -49,6 +71,28 @@
       "Manager ID",
       "Matricule manager",
       "N+1"
+    ],
+    "job_family": [
+      "Famille métier",
+      "Job family"
+    ],
+    "annexe": [
+      "Annexe",
+      "Filière",
+      "Filiere"
+    ],
+    "groupe": [
+      "Groupe",
+      "Niveau",
+      "Classe"
+    ],
+    "coefficient": [
+      "Coefficient",
+      "Indice"
+    ],
+    "status": [
+      "Statut",
+      "Status"
     ],
     "fte": [
       "Temps de travail",
@@ -71,6 +115,46 @@
   },
   "dimensions": [
     {
+      "field": "business_unit",
+      "label": "BU"
+    },
+    {
+      "field": "country",
+      "label": "Pays"
+    },
+    {
+      "field": "site",
+      "label": "Établissement"
+    },
+    {
+      "field": "job",
+      "label": "Métier"
+    },
+    {
+      "field": "job_title",
+      "label": "Poste"
+    },
+    {
+      "field": "job_family",
+      "label": "Famille métier"
+    },
+    {
+      "field": "annexe",
+      "label": "Annexe"
+    },
+    {
+      "field": "groupe",
+      "label": "Groupe"
+    },
+    {
+      "field": "coefficient",
+      "label": "Coefficient"
+    },
+    {
+      "field": "status",
+      "label": "Statut"
+    },
+    {
       "field": "gender",
       "label": "Sexe"
     },
@@ -85,6 +169,7 @@
   ],
   "required": [],
   "numeric": [
+    "coefficient",
     "fte",
     "base_salary",
     "variable_pay",

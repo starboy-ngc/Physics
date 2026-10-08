@@ -1261,20 +1261,20 @@ class BoxPlotChart(_Boxes):
     #: Hauteur du bandeau d'en-tete : une ligne d'intitules.
     HEADER_HEIGHT = 26
 
+    #: Ce que l'ecart F/H mesure, en trois lignes : le calcul, puis le
+    #: sens du signe. « +12,4 % » se lit comme un fait, mais un fait sur
+    #: quoi ? Et dans quel sens ? Le calcul est celui du moteur et du
+    #: glossaire : (hommes − femmes) / hommes, positif quand les hommes
+    #: sont mieux remuneres.
+    GAP_EXPLANATION = ("Écart F/H = (médiane hommes − médiane femmes) "
+                       "/ médiane hommes, en %.\n"
+                       "Positif : les hommes sont mieux rémunérés que les "
+                       "femmes.\n"
+                       "Négatif : les femmes sont mieux rémunérées que les "
+                       "hommes.")
+
     def _gap_explanation(self) -> str:
-        """Ce que l'ecart F/H mesure, et comment il est obtenu.
-
-        Le chiffre tient dans une gouttiere, sans un mot pour le dire :
-        « +12,4 % » se lit comme un fait, mais un fait sur quoi ? Le texte
-        vient du glossaire, celui des documents, pour que l'ecran et le
-        rapport parlent du meme calcul.
-        """
-        from ..core.glossary import describe
-
-        entry = describe("median_gap")
-        if entry is None:
-            return "Écart F/H"
-        return f"Écart F/H\n{entry.definition}\nCalcul : {entry.formula}"
+        return self.GAP_EXPLANATION
 
     def _over_gap(self, x: float) -> bool:
         """Le curseur est-il dans la gouttiere de l'ecart ?"""

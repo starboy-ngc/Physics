@@ -1905,9 +1905,8 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         return ev
 
     def test_the_gap_gutter_explains_itself(self):
-        """« +12,4 % » se lit comme un fait, mais un fait sur quoi ? Le
-        texte est celui du glossaire : l'écran et le rapport parlent du
-        même calcul."""
+        """« +12,4 % » se lit comme un fait, mais un fait sur quoi, et
+        dans quel sens ? Le calcul, puis le sens du signe, rien d'autre."""
         self.chart.set_split(True)
         self.chart.set_rows([self._ligne()], "EUR")
         self.root.update()
@@ -1915,9 +1914,11 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         self.chart._on_motion(self._survoler(self.chart.canvas, largeur - 10, 40))
         self.root.update()
         texte = self.chart.tooltip.texte()
-        self.assertIn("Écart F/H", texte)
-        self.assertIn("Médiane des hommes", texte)
-        self.assertIn("Calcul :", texte)
+        self.assertIn("(médiane hommes − médiane femmes) / médiane hommes",
+                      texte)
+        self.assertIn("Positif : les hommes sont mieux rémunérés", texte)
+        self.assertIn("Négatif : les femmes sont mieux rémunérées", texte)
+        self.assertEqual(len(texte.splitlines()), 3)
         # Replie, et non sur une seule ligne qui sortait de l'ecran.
         self.assertLessEqual(self.chart.tooltip.window.winfo_reqwidth(), 520)
 
@@ -1941,7 +1942,7 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         largeur = self.chart.canvas.winfo_width()
         self.chart._on_motion(self._survoler(self.chart.canvas, largeur - 10, 40))
         self.root.update()
-        self.assertNotIn("Médiane des hommes", self.chart.tooltip.texte())
+        self.assertNotIn("médiane hommes", self.chart.tooltip.texte())
 
     def test_the_tooltip_carries_all_three_columns(self):
         bulle = self.chart._bulle(self._ligne(), "female")

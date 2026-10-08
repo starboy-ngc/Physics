@@ -23,6 +23,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
 from tests.support import HEADERS, make_row
 from tests.support_spreadsheet import Workbook
 from hr_analytics.core.config import (Configuration,
@@ -57,7 +58,7 @@ class ControlCase(unittest.TestCase):
                     tenure=(index % 18) / 1.4))
                     + [["Comptable", "Technicien", "Ingénieur"][index % 3]])
         cls.config_dir = os.path.join(cls.directory, "config")
-        write_default_configuration(cls.config_dir)
+        write_test_configuration(cls.config_dir)
         cls.result = run_analysis(AnalysisRequest(
             source_path=cls.source, config_dir=cls.config_dir))
 
@@ -259,7 +260,7 @@ class TestTheControlNeverBreaksTheThreshold(ControlCase):
     def setUpClass(cls):
         super().setUpClass()
         haut = os.path.join(cls.directory, "config-seuil")
-        write_default_configuration(haut)
+        write_test_configuration(haut)
         chemin = os.path.join(haut, "privacy_parameters.json")
         with open(chemin, encoding="utf-8") as handle:
             privacy = json.load(handle)
@@ -525,7 +526,7 @@ class TestTheFullTimeGapOfEachJobIsCheckable(unittest.TestCase):
                     groupe=f"G{3 + index % 3}")) +
                     [poste, "0,8" if femme else "1"])
         cls.config_dir = os.path.join(cls.directory, "config")
-        write_default_configuration(cls.config_dir)
+        write_test_configuration(cls.config_dir)
         cls.result = run_analysis(AnalysisRequest(
             source_path=cls.source, config_dir=cls.config_dir))
         data = cls.result.config.as_dict()

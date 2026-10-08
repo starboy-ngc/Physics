@@ -31,6 +31,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import build_population, make_config, make_row
 from hr_analytics.core import statistics_engine as stats
 from hr_analytics.core.pay_equity import (basis_description,
@@ -409,7 +410,7 @@ class TestAPeopleReviewColumn(unittest.TestCase):
         from hr_analytics.core.mapping import resolve_mapping
         from hr_analytics.core.normalize import normalise_table
 
-        données = load_configuration().as_dict()
+        données = load_configuration(CONFIG_DIR).as_dict()
         données["population_mapping"]["fields"]["people_review"] = [
             "Revue du personnel", "People review"]
         données["population_mapping"]["dimensions"].append(

@@ -36,7 +36,8 @@ from .config import Configuration, analysis_field
 from .normalize import FTE_FIELD, Population, full_time_amount
 from .metrics import PrivacyRules, calculate_amount_metrics
 from .segmentation import (personal_fields, cross_key, dimension_label,
-                           dimensions, split_by)
+                           dimensions, split_by,
+                           organisational_dimensions)
 
 FEMALE = "F"
 MALE = "H"
@@ -293,7 +294,7 @@ def calculate_pay_equity(population: Population,
     rules = PrivacyRules.from_config(config)
     salary_field = analysis_field(config)
     variable_field = section.get("variable_field", "variable_pay")
-    category_field = _category_field(population, config)
+    categorie = category_field(population, config)
     threshold = config.number("pay_equity_parameters.gap_alert_threshold",
                               5.0, minimum=0.0, maximum=100.0)
 
@@ -309,8 +310,8 @@ def calculate_pay_equity(population: Population,
         "headcount": len(population),
         "threshold": threshold,
         "currency": config.get("salary_parameters.currency", "EUR"),
-        "category_field": category_field,
-        "category_label": dimension_label(config, category_field),
+        "category_field": categorie,
+        "category_label": dimension_label(config, categorie),
         "categories": [],
         "category_warning": None,
         "quartiles": [],
@@ -378,39 +379,42 @@ def calculate_pay_equity(population: Population,
         config.number("pay_equity_parameters.quartile_count", 4,
                       minimum=2, maximum=10, integer=True), rules)
 
-    result.update(calculate_category_gaps(population, config, category_field))
+    result.update(calculate_category_gaps(population, config, categorie))
     return result
 
 
-#: Dimensions qui ne font pas une categorie de comparaison. Comparer « a
-#: tranche d'age comparable » ne repond pas a la question posee : la
-#: directive demande l'ecart entre femmes et hommes qui font le meme
-#: travail, et le sexe lui-meme ne peut pas servir a le decouper.
-_HORS_CATEGORIE = ("gender", "age_band", "tenure_band")
+#: Ce que la page et les documents disent quand aucune dimension
+#: d'organisation n'est declaree.
+NO_CATEGORY_WARNING = ("Aucun champ de poste, de métier ou de statut n'est "
+                       "déclaré : les écarts se comparent sur toute la "
+                       "population. Déclarez-en un dans Paramètres, "
+                       "« Associer les colonnes », rôle « Organisation ».")
 
 
-def _category_field(population: Population, config: Configuration):
+def category_field(population: Population, config: Configuration) -> str:
     """La categorie de comparaison : celle qui est reglee, ou la plus proche.
 
-    Le reglage designe « poste » par defaut. Beaucoup de fichiers de paie
-    n'ont pas de colonne de poste mais une colonne de metier ou de famille,
-    et le resultat etait alors le pire possible : l'ecart a poste
-    comparable, l'effet de structure et le rattrapage restaient vides, et
-    la planche la plus importante du document — celle qui separe « des
-    femmes moins payees au meme poste » de « des femmes sur les postes les
-    moins payes » — ne disait plus rien, sans que le lecteur sache
-    pourquoi.
+    Le reglage est vide a la livraison : l'outil ne livre aucun champ de
+    poste, de metier ou de grade, c'est l'utilisateur qui declare les
+    siens. Le repli prend donc la premiere dimension d'organisation
+    declaree que le fichier renseigne, le metier d'abord quand un champ
+    en porte le nom. Un reglage qui designe un champ que le fichier ne
+    renseigne pour personne retombe de la meme facon : l'ecart a poste
+    comparable, l'effet de structure et le rattrapage restaient sinon
+    vides, et la planche la plus importante du document ne disait plus
+    rien sans que le lecteur sache pourquoi.
 
-    Le repli prend donc la premiere dimension declaree qui tienne du
-    metier, puis a defaut n'importe quelle autre dimension renseignee. Le
-    champ retenu est publie avec son libelle : les documents ecrivent « a
-    metier comparable », et non « a poste comparable » sur un calcul qui
-    porte sur autre chose.
+    Le champ retenu est publie avec son libelle : les documents ecrivent
+    « a metier comparable », et non « a poste comparable » sur un calcul
+    qui porte sur autre chose. Sans aucune dimension d'organisation, la
+    categorie est vide, et la page des ecarts le dit.
     """
-    voulu = config.section("pay_equity_parameters").get("category_field",
-                                                        "job_title")
+    voulu = str(config.section("pay_equity_parameters").get(
+        "category_field", "") or "")
 
     def renseigne(nom) -> bool:
+        if not nom:
+            return False
         if not isinstance(nom, str):
             return bool(split_by(population, nom))
         return any(str(employee.value(nom) or "").strip()
@@ -418,16 +422,20 @@ def _category_field(population: Population, config: Configuration):
 
     if renseigne(voulu):
         return voulu
-    declarees = [entry["field"] for entry in dimensions(config)
-                 if entry["field"] not in _HORS_CATEGORIE
-                 and entry["field"] != voulu]
+    declarees = [nom for nom in organisational_dimensions(config)
+                 if nom != voulu]
     # Le metier d'abord : c'est lui qui approche le poste. Les autres
     # dimensions ensuite, dans l'ordre ou elles sont declarees.
     proches = [nom for nom in declarees if str(nom).startswith("job")]
     for nom in proches + [nom for nom in declarees if nom not in proches]:
         if renseigne(nom):
             return nom
-    return voulu
+    # Rien n'est renseigne. Une notion est pourtant declaree : on la rend,
+    # et la table dira qu'elle n'est renseignee pour personne, ce qui est
+    # la verite. Sans aucune notion declaree, il n'y a rien a nommer.
+    if voulu:
+        return voulu
+    return declarees[0] if declarees else ""
 
 
 def _axis_label(config: Configuration, field_name) -> str:
@@ -487,9 +495,20 @@ def calculate_category_gaps(population: Population, config: Configuration,
     salary_field = analysis_field(config)
     threshold = config.number("pay_equity_parameters.gap_alert_threshold",
                               5.0, minimum=0.0, maximum=100.0)
-    label = _axis_label(config, field_name)
+    label = _axis_label(config, field_name) if field_name else ""
     base = basis_description(population, config)
 
+    if not field_name:
+        # Aucune dimension d'organisation declaree : il n'y a rien sur
+        # quoi comparer, et il faut le dire la ou l'on attend l'ecart.
+        return {
+            "category_field": "",
+            "category_label": "",
+            "categories": [],
+            "categories_above_threshold": 0,
+            "basis": base,
+            "category_warning": NO_CATEGORY_WARNING,
+        }
     groups_by_category = split_by(population, field_name)
     if not groups_by_category:
         # Sans ce message, la table resterait vide et laisserait croire a une
@@ -686,11 +705,13 @@ def _breakdown(members: List[Any], population: Population,
 
 
 def people_columns(config: Configuration) -> List[Dict[str, Any]]:
-    """Colonnes declarees pour la liste nominative.
+    """Colonnes de la liste nominative.
 
-    Rien n'est ecrit en dur : la liste vient du parametrage, et un champ
-    qu'aucune colonne du fichier n'alimente est ecarte — une colonne vide
-    sur toute la hauteur n'apprend rien et prend la place d'une autre.
+    Rien n'est ecrit en dur : la liste vient du parametrage, et les
+    dimensions d'organisation declarees s'y ajoutent d'elles-memes, avant
+    les montants. L'outil n'en livre aucune ; une notion declaree par
+    l'utilisateur doit servir partout sans qu'il ait a editer une seconde
+    liste.
     """
     colonnes = []
     for entry in config.get("pay_equity_parameters.people_columns", []) or []:
@@ -702,7 +723,17 @@ def people_columns(config: Configuration) -> List[Dict[str, Any]]:
             "label": entry.get("label") or _field_title(config, champ),
             "width": int(entry.get("width") or 140),
         })
-    return colonnes
+    deja = {colonne["field"] for colonne in colonnes}
+    ajouts = [{"field": champ, "label": _field_title(config, champ),
+               "width": 140}
+              for champ in organisational_dimensions(config)
+              if champ not in deja]
+    if not ajouts:
+        return colonnes
+    montants = set(config.get("population_mapping.money", []) or [])
+    rang = next((index for index, colonne in enumerate(colonnes)
+                 if colonne["field"] in montants), len(colonnes))
+    return colonnes[:rang] + ajouts + colonnes[rang:]
 
 
 def _field_title(config: Configuration, field_name: str) -> str:

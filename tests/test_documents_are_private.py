@@ -20,6 +20,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
 from tests.support import HEADERS, make_row
 from hr_analytics.io import restrict_to_owner
 from hr_analytics.io.xlsx_writer import write_workbook
@@ -75,7 +76,7 @@ class TestEveryProducedDocumentIsPrivate(unittest.TestCase):
                                  + [make_row(rang) for rang in range(40)])])
         config_dir = os.path.join(cls.directory, "config")
         from hr_analytics.core.config import write_default_configuration
-        write_default_configuration(config_dir)
+        write_test_configuration(config_dir)
         config = load_configuration(config_dir)
         resultat = run_analysis(AnalysisRequest(source_path=source,
                                                 config_dir=config_dir))

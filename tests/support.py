@@ -28,6 +28,16 @@ from hr_analytics.core.normalize import Population, normalise_table
 
 REFERENCE_DATE = _dt.date(2025, 1, 1)
 
+#: La configuration des essais : celle de l'outil, plus les champs
+#: d'organisation qu'un fichier de paie porte d'ordinaire (BU, pays,
+#: etablissement, metier, poste, famille, annexe, groupe, coefficient,
+#: statut). L'outil n'en livre aucun d'office : c'est a l'utilisateur de
+#: declarer les siens. Les essais, eux, en ont besoin de quelques-uns
+#: pour filtrer, segmenter et comparer ; ils les declarent ici, comme un
+#: utilisateur l'aurait fait.
+CONFIG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "config_essai")
+
 HEADERS = [
     "Matricule", "Nom", "Prénom", "Sexe", "Date de naissance", "Date d'entrée",
     "Date de sortie", "BU", "Pays", "Groupe", "Statut", "Salaire de base",
@@ -75,8 +85,40 @@ def build_population(
     )
 
 
+def fresh_config() -> str:
+    """Une copie neuve de la configuration des essais, pour une fenetre.
+
+    La fenetre enregistre dans son dossier de configuration (un rangement,
+    une categorie de comparaison) : lui donner le dossier partage des
+    essais, c'est laisser un essai en modifier un autre.
+    """
+    import shutil
+    import tempfile
+
+    copie = os.path.join(tempfile.mkdtemp(prefix="config-"), "config")
+    shutil.copytree(CONFIG_DIR, copie)
+    return copie
+
+
+def write_test_configuration(directory: str) -> None:
+    """Pose la configuration des essais dans un dossier, fichier par fichier.
+
+    Les essais qui veulent un dossier a eux pour y changer un seuil
+    partaient de la configuration livree. Elle ne declare plus aucune
+    notion d'organisation : ils partent donc de celle des essais, qui les
+    declare comme un utilisateur l'aurait fait.
+    """
+    import shutil
+
+    os.makedirs(directory, exist_ok=True)
+    for name in os.listdir(CONFIG_DIR):
+        if name.endswith(".json"):
+            shutil.copy(os.path.join(CONFIG_DIR, name),
+                        os.path.join(directory, name))
+
+
 def make_config(overrides: Optional[Dict[str, Any]] = None) -> Configuration:
-    config = load_configuration()
+    config = load_configuration(CONFIG_DIR)
     data = config.as_dict()
     for path, value in (overrides or {}).items():
         node = data

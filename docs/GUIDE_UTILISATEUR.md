@@ -51,10 +51,19 @@ la forme : un logo qui se déforme n'est plus un logo.
 ## 1. Préparer le fichier
 
 Un onglet, une ligne par salarié, une ligne d'en-têtes. Colonnes reconnues
-d'office : Matricule, Nom, Prénom, Sexe, Date de naissance, Date d'entrée,
-Date de sortie, BU, Pays, Établissement, Métier, Famille métier, Annexe, Groupe,
-Coefficient, Statut, Temps de travail, Salaire de base, Variable,
-Rémunération totale.
+d'office : celles avec lesquelles l'outil calcule, et elles seules :
+Matricule, Nom, Prénom, Sexe, Date de naissance, Date d'entrée, Date de
+sortie, Temps de travail, Salaire de base, Variable, Rémunération totale,
+Manager, Période.
+
+**Aucune notion d'organisation n'est livrée d'office** : ni BU, ni
+établissement, ni métier, ni poste, ni statut. Ce que votre fichier porte en
+propre, c'est vous qui le déclarez, depuis l'écran « Associer les colonnes… »
+(§ 4 bis), rôle « Organisation ». Une notion déclarée sert ensuite partout :
+filtres, axes de comparaison, couleur du nuage, liste nominative. Et c'est
+vous qui dites, dans Paramètres → Analyse, laquelle sert de poste pour les
+écarts F/H, laquelle fait le camembert de la vue d'ensemble, laquelle colore
+le nuage à l'ouverture.
 
 **Une seule colonne est obligatoire : celle que vous analysez.** Par défaut
 c'est le salaire de base ; si vous réglez l'analyse sur la rémunération
@@ -320,9 +329,15 @@ retrouver les trois colonnes.
 
 ## 5 ter. L'onglet Écarts F/H
 
-Un comparatif femmes / hommes, de haut en bas. **Les postes se choisissent
-en tête**, par le bouton « Postes : tous », qui ouvre la même liste à cocher
-que les filtres : un poste, ou plusieurs côte à côte, et tous les blocs en
+Un comparatif femmes / hommes, de haut en bas. **La notion comparée se
+choisit en tête**, dans « Comparer par » : le poste, le métier, le grade,
+parmi les notions que vous avez déclarées et que le fichier renseigne. Le
+choix s'enregistre dans le paramétrage, et les documents produits comparent
+sur la même notion. Sans aucune notion déclarée, la page compare toute la
+population et dit où en déclarer une.
+
+À droite, le bouton « Poste : tous » ouvre la même liste à cocher que les
+filtres : une valeur, ou plusieurs côte à côte, et tous les blocs en
 dépendent. Sans choix, la page compare les deux sexes sur toute la
 population analysée ; tout cocher revient à ne rien retenir.
 
@@ -425,7 +440,15 @@ Activité » a été lue comme le temps de travail alors que c'est
 « Horaire_contractuel » et l'autre se détache.
 
 Sous la liste, **Champs sans colonne** : l'âge et l'ancienneté se calculent
-à partir des dates, aucune colonne ne les porte, ils se règlent là.
+à partir des dates, aucune colonne ne les porte, ils se règlent là. Décocher
+« Tranche d'âge » retire le filtre et l'axe correspondants.
+
+L'onglet **Analyse** de la même fenêtre dit sur quelles notions l'outil
+compare, répartit et colore : la catégorie des écarts F/H, le champ du
+camembert de la vue d'ensemble, la couleur du nuage à l'ouverture. Les trois
+listes ne proposent que ce qui est déclaré dans « Colonnes du fichier », y
+compris ce qui vient de l'être. « (automatique) » laisse l'outil prendre la
+première notion déclarée que le fichier renseigne.
 
 À l'enregistrement, le fichier est relu : la colonne que vous venez de
 déclarer est immédiatement disponible dans les filtres et dans les axes,
@@ -511,9 +534,10 @@ En mode simple, chaque ligne porte sa **médiane** à droite, pour n'avoir
 pas à la relever sur l'axe. En mode dédoublé, elle cède la place à
 l'**écart F/H** : c'est ce qu'on vient chercher en cochant la case, et
 comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
-Survoler cette colonne, ou le mot « ÉCART F/H » en tête, dit ce que le
-chiffre mesure et comment il est obtenu : (médiane des hommes − médiane des
-femmes) / médiane des hommes, positif quand les hommes sont mieux rémunérés.
+Survoler cette colonne, ou le mot « ÉCART F/H » en tête, rappelle le calcul
+et le sens du signe : (médiane hommes − médiane femmes) / médiane hommes, en
+pourcentage. Positif, les hommes sont mieux rémunérés que les femmes ;
+négatif, l'inverse.
 
 ### Trier, c'est poser une autre question
 

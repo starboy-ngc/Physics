@@ -145,10 +145,14 @@ def calculate_population_metrics(
     # est calculee ici et non dans la fenetre pour la meme raison que le
     # reste — un ecran qui parcourt lui-meme la population finit par compter
     # autrement que le moteur, et deux chiffres du meme nom se contredisent.
-    champ = config.get("chart_parameters.csp_field", "status")
+    # Vide a la livraison : aucun champ de statut n'est livre d'office,
+    # et un camembert sur un champ absent n'aurait qu'une part. Le champ
+    # se choisit dans Parametres, Analyse, parmi les notions declarees.
+    champ = str(config.get("chart_parameters.csp_field", "") or "")
     result["csp_field"] = champ
-    result["csp_label"] = dimension_label(config, champ)
-    result["csp_split"] = _distribution_share(population, champ, headcount)
+    result["csp_label"] = dimension_label(config, champ) if champ else ""
+    result["csp_split"] = (_distribution_share(population, champ, headcount)
+                           if champ else [])
     # Le nombre de modalites montrees avant regroupement est declare une
     # fois, et publie ici : la fenetre et les documents le lisent au meme
     # endroit. Chacun chez soi, ils groupaient a six d'un cote et a huit
@@ -942,6 +946,20 @@ def _axis_of(config: Configuration, field_name: str) -> Dict[str, str]:
             else DEFAULT_AXIS_KIND}
 
 
+def default_colour_field(config: Configuration) -> str:
+    """La couleur du nuage quand rien n'est regle : la premiere dimension
+    d'organisation declaree, sinon le sexe, sinon rien. L'outil ne livre
+    aucune notion d'organisation ; la liste « Colorer par » offre les
+    autres."""
+    from .segmentation import dimension_fields, organisational_dimensions
+
+    declarees = organisational_dimensions(config)
+    if declarees:
+        return declarees[0]
+    champs = dimension_fields(config)
+    return "gender" if "gender" in champs else (champs[0] if champs else "")
+
+
 def scatter_dataset(
     population: Population, config: Configuration
 ) -> Dict[str, Any]:
@@ -953,7 +971,8 @@ def scatter_dataset(
     """
     x_field = config.get("chart_parameters.scatter_x", "tenure_years")
     y_field = config.get("chart_parameters.scatter_y", "base_salary")
-    color_field = config.get("chart_parameters.scatter_color_by", "business_unit")
+    color_field = (config.get("chart_parameters.scatter_color_by", "")
+                   or default_colour_field(config))
     # Troisieme porte de la meme famille : la couleur du nuage devient une
     # legende, et la legende s'imprime. Un nuage colorie par le nom affiche
     # une identite par point, dans la restitution comme dans les slides.

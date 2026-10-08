@@ -699,7 +699,7 @@ de l'export individuel) sont declarees dans `population_mapping.json` :
 
 ```json
 "dimensions": [
-  {"field": "business_unit", "label": "BU"},
+  {"field": "direction", "label": "Direction"},
   {"field": "groupe",        "label": "Groupe"}
 ]
 ```
@@ -858,6 +858,24 @@ Deux listes empilées appliquaient chacune son choix par-dessus l'autre.
 panneau qui se repose (les champs sans colonne, l'ordre des filtres) détruit
 ses cases et garde ses variables : le clic suivant faisait dessiner une case
 disparue, et Tk l'annonçait dans une fenêtre d'erreur.
+
+**Aucun champ d'organisation n'est livré d'office.** `DEFAULTS` et
+`config/` ne portent que les champs avec lesquels le moteur calcule
+(identité, sexe, dates, temps de travail, montants, manager, période) et
+les trois dimensions qu'il sait calculer (sexe, tranches d'âge et
+d'ancienneté). BU, établissement, métier, poste, statut naissent de l'écran
+« Associer les colonnes », rôle « Organisation », et
+`segmentation.organisational_dimensions` les liste dans leur ordre. Les
+réglages qui nomment un champ sont vides à la livraison et se replient
+dessus : `pay_equity.category_field` prend la première notion déclarée que
+le fichier renseigne (le métier d'abord), `metrics.default_colour_field`
+la première déclarée sinon le sexe, le camembert ne se trace que sur un
+champ choisi, et `people_columns` ajoute les notions déclarées avant les
+montants. La section Analyse de la fenêtre des paramètres règle ces trois
+champs parmi les notions déclarées ; la page des écarts enregistre aussi
+son « Comparer par ». Les essais déclarent leurs notions dans
+`tests/config_essai`, comme un utilisateur l'aurait fait ;
+`tests/test_no_standard_field.py` garde la configuration livrée.
 
 `SettingsWindow.restore_defaults` réécrit `config/*.json` depuis `DEFAULTS`
 (`write_default_configuration`) après une question qui dit ce qui sera

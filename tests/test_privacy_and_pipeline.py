@@ -12,6 +12,7 @@ import re
 import tempfile
 import unittest
 
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from hr_analytics.cli import main as cli_main, parse_filter
 from hr_analytics.core.errors import (
@@ -45,7 +46,7 @@ class TestPipeline(unittest.TestCase):
         self.source = build_source(self.directory)
 
     def _run(self, **kwargs):
-        request = AnalysisRequest(source_path=self.source,
+        request = AnalysisRequest(config_dir=CONFIG_DIR, source_path=self.source,
                                   reference_date=REFERENCE_DATE, **kwargs)
         return run_analysis(request)
 
@@ -71,7 +72,7 @@ class TestPipeline(unittest.TestCase):
         rows.append(make_row(0, salary=40000))  # doublon de matricule
         source = os.path.join(self.directory, "defect.xlsx")
         write_workbook(source, [("Population", [HEADERS] + rows)])
-        request = AnalysisRequest(source_path=source, reference_date=REFERENCE_DATE)
+        request = AnalysisRequest(config_dir=CONFIG_DIR, source_path=source, reference_date=REFERENCE_DATE)
         with self.assertRaises(DataQualityError):
             run_analysis(request)
         request.ignore_quality_errors = True
@@ -119,14 +120,14 @@ class TestSeveralPeriods(unittest.TestCase):
 
     def test_the_same_employee_twice_is_not_a_duplicate_across_periods(self):
         """C'est l'intention du fichier, pas une erreur."""
-        result = run_analysis(AnalysisRequest(source_path=self._source()))
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self._source()))
         self.assertEqual(result.quality.duplicates, 0)
         self.assertEqual(result.quality.unique_employees, 40)
         self.assertEqual(result.quality.periods, 3)
 
     def test_without_a_period_column_a_repeated_identifier_stays_a_duplicate(self):
         """Le garde-fou d'origine ne doit pas tomber avec la nouveaute."""
-        result = run_analysis(AnalysisRequest(
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self._source(("x", "y"), with_period=False),
             ignore_quality_errors=True))
         self.assertEqual(result.quality.duplicates, 40)
@@ -134,7 +135,7 @@ class TestSeveralPeriods(unittest.TestCase):
         self.assertIn("duplicate_employee_id", codes)
 
     def test_the_latest_period_is_analysed_by_default(self):
-        result = run_analysis(AnalysisRequest(source_path=self._source()))
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self._source()))
         self.assertEqual(result.payload["scope"]["period"], "2026")
         self.assertEqual(result.payload["scope"]["periods"],
                          ["2024", "2025", "2026"])
@@ -144,7 +145,7 @@ class TestSeveralPeriods(unittest.TestCase):
     def test_each_period_has_its_own_figures(self):
         medianes = {}
         for period in ("2024", "2025", "2026"):
-            result = run_analysis(AnalysisRequest(source_path=self._source(),
+            result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self._source(),
                                                   period=period))
             self.assertEqual(result.payload["scope"]["period"], period)
             self.assertEqual(result.payload["population"]["headcount"], 40)
@@ -158,14 +159,14 @@ class TestSeveralPeriods(unittest.TestCase):
         from hr_analytics.core.errors import ConfigError
 
         with self.assertRaises(ConfigError) as levee:
-            run_analysis(AnalysisRequest(source_path=self._source(),
+            run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self._source(),
                                           period="2023"))
         self.assertIn("2023", str(levee.exception))
         self.assertIn("2024", str(levee.exception))
 
     def test_the_manifest_records_which_period_served(self):
         """Refaire l'analyse a l'identique exige de savoir laquelle."""
-        result = run_analysis(AnalysisRequest(source_path=self._source(),
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self._source(),
                                               period="2025"))
         manifest = result.payload["manifest"]
         self.assertEqual(manifest["periode_analysee"], "2025")
@@ -173,7 +174,7 @@ class TestSeveralPeriods(unittest.TestCase):
                          ["2024", "2025", "2026"])
 
     def test_a_file_without_periods_behaves_exactly_as_before(self):
-        result = run_analysis(AnalysisRequest(
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self._source(("unique",), with_period=False)))
         self.assertEqual(result.payload["scope"]["period"], "")
         self.assertEqual(result.payload["scope"]["periods"], [])
@@ -192,7 +193,7 @@ class TestPrivacy(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.mkdtemp()
         self.source = build_source(self.directory)
-        self.result = run_analysis(AnalysisRequest(
+        self.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             segments=["business_unit"],
         ))
@@ -233,7 +234,7 @@ class TestPrivacy(unittest.TestCase):
     def test_technical_log_excludes_personal_data(self):
         log_dir = tempfile.mkdtemp()
         configure_logging(log_dir)
-        run_analysis(AnalysisRequest(source_path=self.source,
+        run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self.source,
                                      reference_date=REFERENCE_DATE))
         for handler in logging.getLogger("hr_analytics").handlers:
             handler.flush()
@@ -311,8 +312,7 @@ class TestPrivacy(unittest.TestCase):
 
         directory = tempfile.mkdtemp()
         config_dir = os.path.join(directory, "config")
-        shutil.copytree(os.path.join(os.path.dirname(os.path.dirname(
-            os.path.abspath(__file__))), "config"), config_dir)
+        shutil.copytree(CONFIG_DIR, config_dir)
         privacy = os.path.join(config_dir, "privacy_parameters.json")
         import json
         with open(privacy, encoding="utf-8") as handle:
@@ -442,7 +442,7 @@ class TestExportArtifacts(unittest.TestCase):
         self.source = build_source(self.directory)
 
     def test_excel_export_is_readable_by_the_importer(self):
-        result = run_analysis(AnalysisRequest(
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             segments=["business_unit"],
         ))
@@ -551,7 +551,7 @@ class TestTeamScope(unittest.TestCase):
         return path
 
     def _run(self, **kwargs):
-        return run_analysis(AnalysisRequest(source_path=self._source(),
+        return run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self._source(),
                                             **kwargs))
 
     def test_without_a_team_the_whole_file_is_analysed(self):
@@ -612,7 +612,7 @@ class TestTeamScope(unittest.TestCase):
         """L'arbre se construit sur tout le fichier : un filtre restreint
         les membres retenus, jamais la recherche des descendants."""
         whole = self._run(team="D0").payload["population"]["headcount"]
-        narrowed = run_analysis(AnalysisRequest(
+        narrowed = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self._source(), team="D0",
             filters=[Filter(field="groupe", operator="eq", value="G4")]))
         self.assertLess(narrowed.payload["population"]["headcount"], whole)

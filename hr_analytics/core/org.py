@@ -86,8 +86,12 @@ class _Scope:
         # contrediraient sous le meme mot. Le metier sert de repli quand la
         # colonne du poste n'est renseignee pour personne — un fichier qui
         # ne porte que « Metier » ne doit pas afficher une page vide.
-        self.job_field = config.get("pay_equity_parameters.category_field",
-                                    "job_title")
+        from .segmentation import organisational_dimensions
+
+        regle = str(config.get("pay_equity_parameters.category_field", "")
+                    or "")
+        declarees = organisational_dimensions(config)
+        self.job_field = regle or (declarees[0] if declarees else "")
         gardes: Optional[Set[str]] = None if keep is None else set(keep)
 
         # Perimetre de l'equipe, avant filtres : exactement celui que le

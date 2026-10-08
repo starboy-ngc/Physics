@@ -21,6 +21,8 @@ from xml.etree import ElementTree
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 from hr_analytics.core import slides as _slides
 from hr_analytics.core.config import write_default_configuration
@@ -52,7 +54,7 @@ class DocumentCase(unittest.TestCase):
                 writer.writerow(list(make_row(index, salary=400000))
                                 + ["Comptable"])
         cls.config_dir = os.path.join(cls.directory, "config")
-        write_default_configuration(cls.config_dir)
+        write_test_configuration(cls.config_dir)
         import json
 
         target = os.path.join(cls.config_dir, "chart_parameters.json")
@@ -243,7 +245,7 @@ class TestMaskedDocuments(unittest.TestCase):
             for index in range(3):
                 writer.writerow(list(make_row(index, salary=40000 + index)))
         cls.directory = directory
-        cls.result = run_analysis(AnalysisRequest(source_path=source))
+        cls.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=source))
 
     def test_the_report_is_produced_and_says_why_it_is_empty(self):
         report = render_report(self.result.payload)

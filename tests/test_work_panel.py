@@ -16,6 +16,9 @@ import os
 import sys
 import unittest
 
+from tests.support import fresh_config
+from tests.support import CONFIG_DIR
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from hr_analytics.core.pipeline import stage_labels
@@ -82,7 +85,7 @@ class TestThePanel(unittest.TestCase):
         """
         from hr_analytics.ui.app import Application
 
-        self.root = Application()
+        self.root = Application(config_dir=fresh_config())
         self.traces = []
         self.root.report_callback_exception = (
             lambda *infos: self.traces.append(infos))
@@ -166,7 +169,7 @@ class TestThePanelInTheWindow(unittest.TestCase):
         from hr_analytics.core.pipeline import load_population
         from hr_analytics.ui.app import Application
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.traces = []
         self.app.report_callback_exception = (
             lambda *infos: self.traces.append(infos))

@@ -4,6 +4,8 @@ import os
 import re
 import tempfile
 import unittest
+
+from tests.support import CONFIG_DIR
 import zlib
 
 from tests.support import (REFERENCE_DATE, build_population, make_config,
@@ -20,7 +22,7 @@ from hr_analytics.io.pdf_writer import (Document, encode_text,
 
 def analysis_payload(directory, **kwargs):
     source = build_source(directory)
-    return run_analysis(AnalysisRequest(
+    return run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
         source_path=source, reference_date=REFERENCE_DATE, **kwargs
     )).payload
 

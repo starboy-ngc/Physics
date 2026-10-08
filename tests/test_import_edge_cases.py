@@ -14,6 +14,8 @@ import os
 import sys
 import tempfile
 import unittest
+
+from tests.support import write_test_configuration
 import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -696,7 +698,7 @@ class TestTheCeilingIsASetting(unittest.TestCase):
         import json
 
         config_dir = os.path.join(self.directory, f"config{mégaoctets}")
-        write_default_configuration(config_dir)
+        write_test_configuration(config_dir)
         if mégaoctets is not None:
             chemin = os.path.join(config_dir, "population_mapping.json")
             with open(chemin, encoding="utf-8") as fichier:

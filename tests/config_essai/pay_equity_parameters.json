@@ -15,7 +15,7 @@
     "Mr"
   ],
   "variable_field": "variable_pay",
-  "category_field": "",
+  "category_field": "job_title",
   "gap_alert_threshold": 5.0,
   "significance_level": 0.05,
   "quartile_count": 4,
@@ -34,6 +34,36 @@
       "field": "gender",
       "label": "Sexe",
       "width": 70
+    },
+    {
+      "field": "job_title",
+      "label": "Poste",
+      "width": 210
+    },
+    {
+      "field": "business_unit",
+      "label": "BU",
+      "width": 130
+    },
+    {
+      "field": "site",
+      "label": "Établissement",
+      "width": 150
+    },
+    {
+      "field": "annexe",
+      "label": "Annexe",
+      "width": 110
+    },
+    {
+      "field": "groupe",
+      "label": "Groupe",
+      "width": 90
+    },
+    {
+      "field": "coefficient",
+      "label": "Coefficient",
+      "width": 100
     },
     {
       "field": "base_salary",

@@ -16,6 +16,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import fresh_config
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from hr_analytics.io.xlsx_writer import write_workbook
 
@@ -169,7 +171,7 @@ class TestWindow(unittest.TestCase):
 
     def setUp(self):
         from hr_analytics.ui.app import Application
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
 
     def tearDown(self):
@@ -187,7 +189,7 @@ class TestWindow(unittest.TestCase):
         from hr_analytics.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         self._load()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             segments=[]))
         self.app._render_results()
@@ -538,7 +540,7 @@ class TestTheScreenPrivacySetting(unittest.TestCase):
         from hr_analytics.ui.app import Application
         self.directory = tempfile.mkdtemp()
         self.config_dir = os.path.join(self.directory, "config")
-        shutil.copytree(os.path.join(ROOT, "config"), self.config_dir)
+        shutil.copytree(CONFIG_DIR, self.config_dir)
         self.app = Application(config_dir=self.config_dir)
         self.app.update()
 
@@ -589,7 +591,7 @@ class TestThePeriodSelector(unittest.TestCase):
         from hr_analytics.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
 
     def tearDown(self):
@@ -653,7 +655,7 @@ class TestTheTeamSelector(unittest.TestCase):
         from hr_analytics.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
 
     def tearDown(self):
@@ -814,7 +816,7 @@ class TestTheDispersionSplitBySex(unittest.TestCase):
 
         self.root = tkinter.Tk()
         self.root.geometry("900x500")
-        theme.load(load_configuration())
+        theme.load(load_configuration(CONFIG_DIR))
         theme.Fonts(self.root)
         self.chart = BoxPlotChart(self.root)
         self.chart.pack(fill="both", expand=True)
@@ -932,7 +934,7 @@ class TestACriticalQualityFindingIsSaidWhereOneLooks(unittest.TestCase):
                                                           load_population,
                                                           run_analysis)
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
         population, mapping, table = load_population(
             self.source, self.app.configuration, reference_date=REFERENCE_DATE)
@@ -941,7 +943,7 @@ class TestACriticalQualityFindingIsSaidWhereOneLooks(unittest.TestCase):
         self.app.mapping = mapping
         self.app.headers = list(table.headers)
         self.app._populate_filters()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             ignore_quality_errors=True))
         self.app._render_results()
@@ -968,7 +970,7 @@ class TestACriticalQualityFindingIsSaidWhereOneLooks(unittest.TestCase):
         write_workbook(propre, [("Population",
                                  [HEADERS] + [make_row(i, salary=30000 + i * 400)
                                               for i in range(40)])])
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=propre, reference_date=REFERENCE_DATE))
         self.app._render_results()
         self.app.update()
@@ -996,7 +998,7 @@ class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
     def setUp(self):
         from hr_analytics.ui.app import Application
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.geometry("1400x900")
         self.app.update()
         self._analyse()
@@ -1018,7 +1020,7 @@ class TestTheScatterLegendWhenTheDimensionIsLong(unittest.TestCase):
         self.app.population = population
         self.app.mapping = mapping
         self.app._populate_filters()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             segments=[]))
         self.app._render_results()
@@ -1309,9 +1311,9 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
                      # ecarts n'a rien a publier — et disparait a bon droit.
                      gender=["F", "H"][index % 2], **row_options)
             for index in range(count)])])
-        app = Application()
+        app = Application(config_dir=fresh_config())
         app.update()
-        app.result = run_analysis(AnalysisRequest(
+        app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=source, reference_date=REFERENCE_DATE,
             segments=[]))
         app._render_results()
@@ -1678,7 +1680,7 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
             self.assertIn("40 salariés", app.status.cget("text"))
             self.assertNotIn("BU = ", app.status.cget("text"))
 
-            app.result = run_analysis(AnalysisRequest(
+            app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
                 source_path=self.source, reference_date=REFERENCE_DATE,
                 segments=[],
                 filters=build_filters([{"field": "business_unit",
@@ -1768,7 +1770,7 @@ class TestResettingTheChoices(unittest.TestCase):
             make_row(index, business_unit=["France", "DACH"][index % 2],
                      groupe=["G3", "G5", "G7"][index % 3])
             for index in range(60)])])
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
         population, mapping, table = load_population(
             source, self.app.configuration, reference_date=REFERENCE_DATE)
@@ -1861,14 +1863,14 @@ class TestTheMergedOverview(unittest.TestCase):
                      age=25 + index % 38, tenure=index % 32,
                      gender=["F", "H"][index % 2])
             for index in range(200)])])
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         # Une page qui se dispose en colonnes et des graphiques qui se
         # tracent a la largeur de leur colonne ont besoin d'une fenetre qui
         # en ait une : sans geometrie, les canevas restent vides et le test
         # ne verifie plus rien.
         self.app.geometry("1500x1000+0+0")
         self.app.update()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=source, reference_date=REFERENCE_DATE))
         self.app._render_results()
         for _ in range(10):
@@ -2174,9 +2176,9 @@ class TestTheMergedOverview(unittest.TestCase):
         from hr_analytics.ui.app import Application
         from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
 
-        app = Application()
+        app = Application(config_dir=fresh_config())
         app.update()
-        app.result = run_analysis(AnalysisRequest(
+        app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE))
         try:
             # Compose alors que rien n'a de taille : c'est le cas reel d'un
@@ -2378,9 +2380,9 @@ class TestEverySegmentIsComputed(unittest.TestCase):
                      gender=["F", "H"][index % 2],
                      age=28 + index % 30, tenure=index % 15)
             for index in range(120)])])
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=source, reference_date=REFERENCE_DATE, segments=[]))
         self.app._render_results()
         self.app.update()
@@ -2440,9 +2442,9 @@ class TestTheOverviewLeavesNoGapInTheMiddle(unittest.TestCase):
                      age=25 + index % 38, tenure=index % 32,
                      gender=["F", "H"][index % 2])
             for index in range(200)])])
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=source, reference_date=REFERENCE_DATE))
         self.app._render_results()
         self.app.update_idletasks()
@@ -2508,7 +2510,7 @@ class TestNoTkCallbackEverRaises(unittest.TestCase):
     def setUp(self):
         from hr_analytics.ui.app import Application
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.traces = []
         self.app.report_callback_exception = (
             lambda *infos: self.traces.append(infos))
@@ -2597,7 +2599,7 @@ class TestTheWholeWindowAnswersWithoutRaising(unittest.TestCase):
         from hr_analytics.core.pipeline import load_population
         from hr_analytics.ui.app import Application
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.traces = []
         self.app.report_callback_exception = (
             lambda *infos: self.traces.append(infos))
@@ -2710,7 +2712,7 @@ class TestChoosingValuesInsideTheDispersionDimension(unittest.TestCase):
     def setUp(self):
         from hr_analytics.ui.app import Application
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
 
     def tearDown(self):
@@ -2720,7 +2722,7 @@ class TestChoosingValuesInsideTheDispersionDimension(unittest.TestCase):
         """Une analyse, et l'onglet des boîtes au premier plan."""
         from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
 
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             segments=[]))
         self.app._render_results()

@@ -1,0 +1,6 @@
+{
+  "analysis_field": "base_salary",
+  "currency": "EUR",
+  "min_plausible": 1000.0,
+  "max_plausible": 1000000.0
+}

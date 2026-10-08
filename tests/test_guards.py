@@ -17,6 +17,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import build_population, make_config, make_row
 from hr_analytics.core import axes, metrics
 from hr_analytics.core import statistics_engine as stats
@@ -175,7 +176,7 @@ class TestResultShape(unittest.TestCase):
             writer.writerow(HEADERS)
             for index in range(10):
                 writer.writerow(list(make_row(index)))
-        result = run_analysis(AnalysisRequest(source_path=path))
+        result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=path))
         self.assertIs(result.as_dict(), result.payload)
 
 

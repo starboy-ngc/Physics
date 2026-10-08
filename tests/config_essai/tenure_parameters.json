@@ -1,0 +1,30 @@
+{
+  "bands": [
+    {
+      "label": "<2 ans",
+      "min": 0,
+      "max": 2
+    },
+    {
+      "label": "2-5 ans",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "label": "5-10 ans",
+      "min": 5,
+      "max": 10
+    },
+    {
+      "label": ">10 ans",
+      "min": 10,
+      "max": null
+    }
+  ],
+  "auto_extend": true,
+  "extend_step": 5,
+  "extend_max_bands": 10,
+  "band_label": "{low}-{high} ans",
+  "open_band_label": ">{low} ans",
+  "reference_date": null
+}

@@ -9,6 +9,8 @@ import os
 import tempfile
 import unittest
 
+from tests.support import CONFIG_DIR
+
 from hr_analytics.core.config import Configuration, load_configuration
 from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
 from hr_analytics.core.reporting import render_report
@@ -34,7 +36,7 @@ def make_source(directory):
 
 def config_with_team():
     """Configuration declarant une dimension absente du modele normalise."""
-    data = load_configuration().as_dict()
+    data = load_configuration(CONFIG_DIR).as_dict()
     data["population_mapping"]["fields"]["team"] = ["Equipe", "Team"]
     data["population_mapping"]["dimensions"].append(
         {"field": "team", "label": "Equipe"}
@@ -107,7 +109,7 @@ class TestJobTitleIsAvailable(unittest.TestCase):
 
     def setUp(self):
         from hr_analytics.core.config import load_configuration
-        self.config = load_configuration()
+        self.config = load_configuration(CONFIG_DIR)
 
     def test_the_column_is_recognised_under_its_usual_names(self):
         from hr_analytics.core.mapping import resolve_mapping
@@ -144,7 +146,7 @@ class TestTheSamplePopulationCarriesPositions(unittest.TestCase):
                           defects=False)
         positions = {row[column("Poste")] for row in rows}
         self.assertLessEqual(len(positions), max_filter_values(
-            load_configuration()))
+            load_configuration(CONFIG_DIR)))
         self.assertGreater(len(positions), 20, "trop peu de postes pour "
                                                "que la comparaison ait du sens")
 

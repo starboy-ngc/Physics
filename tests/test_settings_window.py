@@ -18,6 +18,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import fresh_config
+from tests.support import CONFIG_DIR
 from tests.support import make_config
 
 try:
@@ -82,6 +84,65 @@ class SettingsCase(unittest.TestCase):
         self.assign(header, role)
         boîte = self.window._boxes[HEADERS.index(header)]
         self.window._chose(header, boîte)
+
+
+class TestTheAnalysisSection(SettingsCase):
+    """Sur quelles notions l'outil compare, repartit et colore : rien n'est
+    livre d'office, l'utilisateur le dit parmi ce qu'il a declare."""
+
+    def test_the_section_exists_and_says_its_files(self):
+        from hr_analytics.ui.settings import SettingsWindow
+
+        clefs = [clef for clef, _l in SettingsWindow.SECTIONS]
+        self.assertIn("analyse", clefs)
+        self.assertIn("pay_equity_parameters.json",
+                      SettingsWindow.FICHIERS["analyse"])
+
+    def test_the_lists_offer_only_declared_notions(self):
+        boites = self.window.analysis_boxes
+        categorie = list(boites["category_field"].cget("values"))
+        self.assertEqual(categorie[0], "(automatique)")
+        for attendu in ("BU", "Groupe", "Statut"):
+            self.assertIn(attendu, categorie)
+        self.assertNotIn("Tranche d'âge", categorie)
+        self.assertNotIn("Sexe", categorie)
+        camembert = list(boites["csp_field"].cget("values"))
+        self.assertEqual(camembert[0], "(aucun)")
+        couleur = list(boites["scatter_color_by"].cget("values"))
+        self.assertIn("Sexe", couleur)
+
+    def test_the_lists_show_the_current_settings(self):
+        boites = self.window.analysis_boxes
+        self.assertEqual(boites["category_field"].get(), "Poste")
+        self.assertEqual(boites["csp_field"].get(), "Statut")
+        self.assertEqual(boites["scatter_color_by"].get(), "BU")
+
+    def test_what_is_chosen_is_saved_in_its_file(self):
+        from hr_analytics.core.config import load_configuration
+
+        boites = self.window.analysis_boxes
+        champs = self.window._analysis_fields
+        boites["category_field"].current(champs["category_field"].index("groupe"))
+        boites["csp_field"].current(0)
+        boites["scatter_color_by"].current(
+            champs["scatter_color_by"].index("gender"))
+        self.window.save()
+        relu = load_configuration(self.directory)
+        self.assertEqual(relu.get("pay_equity_parameters.category_field"),
+                         "groupe")
+        self.assertEqual(relu.get("chart_parameters.csp_field"), "")
+        self.assertEqual(relu.get("chart_parameters.scatter_color_by"),
+                         "gender")
+
+    def test_a_notion_declared_in_the_session_is_offered_at_once(self):
+        self.window.add_dimension_row("direction", "Direction", True)
+        self.window.update()
+        self.assertIn("Direction",
+                      self.window.analysis_boxes["category_field"].cget("values"))
+        self.window.rows["direction"]["declared"].set(False)
+        self.window.update()
+        self.assertNotIn("Direction",
+                         self.window.analysis_boxes["category_field"].cget("values"))
 
 
 class TestAnAmountColumn(SettingsCase):
@@ -785,9 +846,9 @@ class TestTheFirstValuesAreShown(unittest.TestCase):
         from hr_analytics.ui.app import Application
         from hr_analytics.ui.settings import SettingsWindow
 
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.window = SettingsWindow(
-            self.app, load_configuration(), tempfile.mkdtemp(),
+            self.app, load_configuration(CONFIG_DIR), tempfile.mkdtemp(),
             self.app.fonts, headers=["Matricule", "Direction"],
             samples=[["E001", "Nord"], ["E002", "Sud"], ["E003", "Nord"]])
         self.window.update()
@@ -936,7 +997,7 @@ class TestOrderingTheFilters(unittest.TestCase):
         self.directory = tempfile.mkdtemp()
         racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.config_dir = os.path.join(self.directory, "config")
-        shutil.copytree(os.path.join(racine, "config"), self.config_dir)
+        shutil.copytree(CONFIG_DIR, self.config_dir)
         self.app = Application(config_dir=self.config_dir)
         self.app.update()
 
@@ -1075,7 +1136,7 @@ class TestTheScreenOnlyOffersWhatTheFileCarries(unittest.TestCase):
         self.directory = tempfile.mkdtemp()
         racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.config_dir = os.path.join(self.directory, "config")
-        shutil.copytree(os.path.join(racine, "config"), self.config_dir)
+        shutil.copytree(CONFIG_DIR, self.config_dir)
         self.app = Application(config_dir=self.config_dir)
         self.app.update()
         self._ouvertes = []

@@ -13,6 +13,8 @@ import sys
 import tempfile
 import unittest
 
+from tests.support import CONFIG_DIR
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
@@ -42,7 +44,7 @@ def build_snapshot():
     rows = build_rows(ROWS, SEED, REFERENCE_DATE, defects=False)
     write_workbook(source, [("Population", [HEADERS] + rows)])
 
-    result = run_analysis(AnalysisRequest(
+    result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
         source_path=source, reference_date=REFERENCE_DATE,
         segments=["business_unit", "groupe", "gender"],
     ))

@@ -48,7 +48,9 @@ python3 tools/generate_sample_population.py --rows 2000 --output data/demo.xlsx
 # Contrôle qualité
 python3 -m hr_analytics.cli controle data/demo.xlsx
 
-# Analyse complète
+# Analyse complète. « business_unit » et « groupe » sont des notions que
+# l'on a déclarées soi-même depuis « Associer les colonnes » : l'outil ne
+# livre aucun champ d'organisation d'office.
 python3 -m hr_analytics.cli analyse data/demo.xlsx \
     --filtre "business_unit=France" \
     --segment groupe --segment gender \

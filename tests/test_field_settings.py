@@ -13,6 +13,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
+from tests.support import CONFIG_DIR
 from tests.support import build_population, make_config, make_row
 from hr_analytics.core.config import (Configuration, DEFAULTS,
                                     write_default_configuration,
@@ -301,7 +303,7 @@ class TestPrivacyOfTheDimensionList(unittest.TestCase):
         """Segmenter par nom produirait des groupes d'une personne et
         ferait entrer une identite dans une restitution."""
         from hr_analytics.ui.settings import candidate_dimensions
-        offered = candidate_dimensions(load_configuration())
+        offered = candidate_dimensions(load_configuration(CONFIG_DIR))
         for field_name in ("last_name", "first_name", "employee_id",
                            "birth_date"):
             self.assertNotIn(field_name, offered)
@@ -309,13 +311,13 @@ class TestPrivacyOfTheDimensionList(unittest.TestCase):
     def test_computed_fields_are_never_offered_as_a_column(self):
         """Aucune colonne du fichier ne porte l'age : il est calcule."""
         from hr_analytics.ui.settings import candidate_fields
-        offered = candidate_fields(load_configuration())
+        offered = candidate_fields(load_configuration(CONFIG_DIR))
         for field_name in ("age_years", "age_band", "tenure_band"):
             self.assertNotIn(field_name, offered)
 
     def test_computed_fields_remain_available_as_an_axis(self):
         from hr_analytics.ui.settings import candidate_dimensions
-        offered = candidate_dimensions(load_configuration())
+        offered = candidate_dimensions(load_configuration(CONFIG_DIR))
         self.assertIn("age_band", offered)
         self.assertIn("tenure_band", offered)
 
@@ -345,7 +347,7 @@ class TestTheWholeRoundTrip(unittest.TestCase):
                                                               build_filters)
         from hr_analytics.ui.settings import build_mapping_section
 
-        base = load_configuration()
+        base = load_configuration(CONFIG_DIR)
         self.assertNotIn("direction", dimension_fields(base))
 
         section = build_mapping_section(
@@ -370,7 +372,7 @@ class TestTheWholeRoundTrip(unittest.TestCase):
         from hr_analytics.core.pipeline import load_population
         from hr_analytics.ui.settings import build_mapping_section
 
-        base = load_configuration()
+        base = load_configuration(CONFIG_DIR)
         section = build_mapping_section(
             base.section("population_mapping"),
             assignments={"Direction": "direction", "BU": "business_unit"},
@@ -576,7 +578,7 @@ class TestACosmeticSettingNeverBlocksTheWindow(unittest.TestCase):
         from hr_analytics.core.config import load_configuration
 
         dossier = tempfile.mkdtemp()
-        write_default_configuration(dossier)
+        write_test_configuration(dossier)
         config = load_configuration(dossier)
         privacy = dict(config.section("privacy_parameters"))
         privacy["min_headcount_publish"] = 12

@@ -43,11 +43,12 @@ DEFAULTS: Dict[str, Any] = {
             "hire_date": ["Date d'entrée", "Date début", "Date de début",
                           "Date d'embauche", "Hire date"],
             "leave_date": ["Date de sortie", "Date de fin", "Leave date"],
-            "business_unit": ["BU", "Business Unit"],
-            "country": ["Pays", "Country"],
-            "site": ["Établissement", "Site"],
-            "job": ["Métier", "Job"],
-            "job_title": ["Poste", "Intitulé de poste", "Job title", "Position"],
+            # Aucun champ d'organisation n'est livre d'office : ni BU, ni
+            # etablissement, ni metier, ni poste, ni statut. Ce qu'un
+            # fichier porte en propre se declare depuis l'ecran « Associer
+            # les colonnes » (role « Organisation »), et c'est le seul
+            # endroit ou ces notions naissent. Ne restent ici que les
+            # champs avec lesquels le moteur calcule.
             # Periode d'observation. Facultative : sans elle, le fichier est
             # un instantane et l'outil se comporte comme avant. Avec elle,
             # un meme salarie peut figurer plusieurs fois — une ligne par
@@ -59,17 +60,6 @@ DEFAULTS: Dict[str, Any] = {
             # d'un manager devient une population analysable.
             "manager": ["Manager", "Responsable", "Manager ID",
                         "Matricule manager", "N+1"],
-            "job_family": ["Famille métier", "Job family"],
-            # La classification conventionnelle francaise. Une convention
-            # collective classe un poste par une annexe (le metier ou la
-            # filiere), un groupe (le niveau) et un coefficient (le point
-            # d'indice). « Grade » n'est le mot d'aucune d'entre elles :
-            # c'est un terme d'entreprise, qui ne se retrouve pas d'un
-            # fichier de paie a l'autre.
-            "annexe": ["Annexe", "Filière", "Filiere"],
-            "groupe": ["Groupe", "Niveau", "Classe"],
-            "coefficient": ["Coefficient", "Indice"],
-            "status": ["Statut", "Status"],
             # « Tx Activité » est l'ecriture des paies francaises, en
             # pourcentage sans le signe : 100, 80. L'echelle se devine a
             # la valeur, personne ne travaillant a cinquante fois le
@@ -80,21 +70,13 @@ DEFAULTS: Dict[str, Any] = {
             "variable_pay": ["Variable", "Variable pay"],
             "total_compensation": ["Rémunération totale"],
         },
-        # Dimensions d'analyse : elles servent partout de la meme facon —
+        # Dimensions d'analyse : elles servent partout de la meme facon,
         # critere de selection, axe de segmentation, couleur du nuage.
-        # Ajouter une notion metier (equipe, manager, direction) se fait ici
-        # et dans "fields", sans modification du code.
+        # Seules les trois que le moteur sait calculer sont livrees. Une
+        # notion d'organisation (direction, etablissement, metier, poste,
+        # statut) se declare depuis l'ecran « Associer les colonnes » et
+        # s'ajoute ici et dans "fields", sans modification du code.
         "dimensions": [
-            {"field": "business_unit", "label": "BU"},
-            {"field": "country", "label": "Pays"},
-            {"field": "site", "label": "Établissement"},
-            {"field": "job", "label": "Métier"},
-            {"field": "job_title", "label": "Poste"},
-            {"field": "job_family", "label": "Famille métier"},
-            {"field": "annexe", "label": "Annexe"},
-            {"field": "groupe", "label": "Groupe"},
-            {"field": "coefficient", "label": "Coefficient"},
-            {"field": "status", "label": "Statut"},
             {"field": "gender", "label": "Sexe"},
             {"field": "age_band", "label": "Tranche d'âge"},
             {"field": "tenure_band", "label": "Tranche d'ancienneté"},
@@ -107,12 +89,11 @@ DEFAULTS: Dict[str, Any] = {
         # ici. Sans matricule, le controle qualite dit que le suivi des
         # doublons n'est pas possible, et l'analyse se poursuit.
         "required": [],
-        "numeric": ["coefficient", "fte", "base_salary", "variable_pay", "total_compensation"],
+        "numeric": ["fte", "base_salary", "variable_pay", "total_compensation"],
         # Parmi les champs numeriques, ceux qui portent un montant. Ils
         # s'ecrivent en monnaie dans les exports et recoivent une colonne
-        # dans l'onglet des donnees individuelles. « coefficient » et
-        # « fte » sont numeriques sans etre des montants : ecrits en euros
-        # ils ne voudraient rien dire.
+        # dans l'onglet des donnees individuelles. « fte » est numerique
+        # sans etre un montant : ecrit en euros il ne voudrait rien dire.
         "money": ["base_salary", "variable_pay", "total_compensation"],
         "date": ["birth_date", "hire_date", "leave_date"],
         "personal": ["last_name", "first_name", "birth_date", "employee_id"],
@@ -224,8 +205,11 @@ DEFAULTS: Dict[str, Any] = {
         "female_values": ["F", "Femme", "Female", "W", "Mme"],
         "male_values": ["H", "M", "Homme", "Male", "Mr"],
         "variable_field": "variable_pay",
-        # Categorie de « travail de meme valeur » au sens de la directive.
-        "category_field": "job_title",
+        # Categorie de « travail de meme valeur » au sens de la directive :
+        # le poste, le metier, le grade. Vide, le moteur prend la premiere
+        # dimension d'organisation declaree que le fichier renseigne, et la
+        # page des ecarts permet d'en choisir une autre.
+        "category_field": "",
         # Seuil au-dela duquel la directive 2023/970 impose une evaluation
         # conjointe, faute de justification par des criteres objectifs.
         "gap_alert_threshold": 5.0,
@@ -247,16 +231,12 @@ DEFAULTS: Dict[str, Any] = {
         # declarent ici : ajouter « Direction » ou retirer le site ne
         # demande aucune modification du code. « width » commande la
         # largeur a l'ecran, et l'alignement qui en decoule.
+        # Les dimensions d'organisation declarees s'y ajoutent d'elles-
+        # memes, avant les montants : une notion declaree sert partout.
         "people_columns": [
             {"field": "last_name", "label": "Nom", "width": 160},
             {"field": "first_name", "label": "Prénom", "width": 140},
             {"field": "gender", "label": "Sexe", "width": 70},
-            {"field": "job_title", "label": "Poste", "width": 210},
-            {"field": "business_unit", "label": "BU", "width": 130},
-            {"field": "site", "label": "Établissement", "width": 150},
-            {"field": "annexe", "label": "Annexe", "width": 110},
-            {"field": "groupe", "label": "Groupe", "width": 90},
-            {"field": "coefficient", "label": "Coefficient", "width": 100},
             {"field": "base_salary", "label": "Salaire de base",
              "width": 140},
         ],
@@ -276,17 +256,19 @@ DEFAULTS: Dict[str, Any] = {
         "histogram_bins": 20,
         "scatter_x": "tenure_years",
         "scatter_y": "base_salary",
-        "scatter_color_by": "business_unit",
+        # Vide : la premiere dimension d'organisation declaree, sinon le
+        # sexe. La liste « Colorer par » du nuage offre les autres.
+        "scatter_color_by": "",
         "scatter_max_points": 5000,
         # Nombre de modalites coloriees avant regroupement dans « Autres ».
         # Au-dela de la serie categorielle, les couleurs se recyclent et
         # deux modalites deviennent indiscernables.
         "scatter_max_groups": 9,
-        # Champ de la repartition en camembert, sur la vue d'ensemble. Le
-        # statut porte la CSP dans la plupart des exports francais — cadre,
-        # agent de maitrise, ouvrier / employe — mais c'est un parametre :
-        # un fichier qui range la CSP ailleurs pointe sa colonne ici.
-        "csp_field": "status",
+        # Champ de la repartition en camembert, sur la vue d'ensemble : le
+        # statut (cadre, agent de maitrise, employe) dans la plupart des
+        # exports francais. Vide, pas de camembert : le champ se choisit
+        # dans Parametres, Analyse, parmi les notions declarees.
+        "csp_field": "",
         # Au-dela, la queue des modalites est regroupee sous « Autres ». Un
         # camembert a quinze parts ne se lit plus, et les plus petites n'ont
         # meme plus la place d'un libelle.

@@ -18,6 +18,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import fresh_config
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 from hr_analytics.core.pipeline import (AnalysisRequest, _STAGES,
                                                   run_analysis)
@@ -72,7 +74,7 @@ class TestTheBarMovesOnTheClock(unittest.TestCase):
 
         self.root = tk.Tk()
         self.root.geometry("400x120")
-        theme.load(load_configuration())
+        theme.load(load_configuration(CONFIG_DIR))
         theme.Fonts(self.root)
         self.horloge = Horloge()
         self.bar = LoadingBar(self.root, clock=self.horloge)
@@ -220,7 +222,7 @@ class TestTheAnalysisReportsItsStages(unittest.TestCase):
                                          gender="F" if index % 2 else "H"))
 
     def _run(self, report=None):
-        return run_analysis(AnalysisRequest(source_path=self.source,
+        return run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self.source,
                                             progress=report))
 
     def test_the_weights_of_the_stages_make_a_whole(self):
@@ -275,7 +277,7 @@ class TestTheCycleCollectorIsSuspended(unittest.TestCase):
 
     def test_it_is_suspended_during_the_analysis(self):
         etats = []
-        run_analysis(AnalysisRequest(
+        run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source,
             progress=lambda _l, _p: etats.append(gc.isenabled())))
         self.assertTrue(etats)
@@ -283,20 +285,20 @@ class TestTheCycleCollectorIsSuspended(unittest.TestCase):
 
     def test_it_is_given_back_afterwards(self):
         actif = gc.isenabled()
-        run_analysis(AnalysisRequest(source_path=self.source))
+        run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self.source))
         self.assertEqual(gc.isenabled(), actif)
 
     def test_it_is_given_back_even_when_the_analysis_fails(self):
         actif = gc.isenabled()
         with self.assertRaises(Exception):
-            run_analysis(AnalysisRequest(source_path=self.source + ".absent"))
+            run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self.source + ".absent"))
         self.assertEqual(gc.isenabled(), actif)
 
     def test_a_disabled_collector_stays_disabled(self):
         """L'etat d'origine est restaure, pas un etat suppose."""
         gc.disable()
         try:
-            run_analysis(AnalysisRequest(source_path=self.source))
+            run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, source_path=self.source))
             self.assertFalse(gc.isenabled())
         finally:
             gc.enable()
@@ -334,7 +336,7 @@ class TestTheWindowDrivesTheBar(unittest.TestCase):
 
         LoadingBar.announce = espion
         self.addCleanup(setattr, LoadingBar, "announce", self.originale)
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
         population, mapping, table = load_population(
             self.source, self.app.configuration)

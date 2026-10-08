@@ -15,6 +15,9 @@ import base64
 import os
 import sys
 import unittest
+
+from tests.support import write_test_configuration
+from tests.support import CONFIG_DIR
 import zlib
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -255,7 +258,7 @@ class TestTheSplash(unittest.TestCase):
 
         self.root = tk.Tk()
         self.root.withdraw()
-        theme.load(load_configuration())
+        theme.load(load_configuration(CONFIG_DIR))
         self.fonts = theme.Fonts(self.root)
         self.module = splash
         self.ecran = splash.show(self.root, self.fonts)
@@ -386,7 +389,7 @@ class TestTheStartup(unittest.TestCase):
         from hr_analytics.core.config import write_default_configuration
 
         dossier = tempfile.mkdtemp()
-        write_default_configuration(dossier)
+        write_test_configuration(dossier)
         chemin = os.path.join(dossier, "theme_parameters.json")
         with open(chemin, encoding="utf-8") as fichier:
             reglages = json.load(fichier)

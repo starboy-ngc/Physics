@@ -17,6 +17,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from tests.test_ui import needs_display
 from hr_analytics.core import palette, reporting, slides
@@ -211,7 +212,7 @@ class TestTheDocumentsFollowTheTheme(unittest.TestCase):
             for index in range(80)])])
         from hr_analytics.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
-        cls.payload = run_analysis(AnalysisRequest(
+        cls.payload = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=source, reference_date=REFERENCE_DATE,
             segments=[])).payload
 
@@ -284,7 +285,7 @@ class TestChoosingAThemeFromTheWindow(unittest.TestCase):
         from hr_analytics.ui.app import Application
         self.directory = tempfile.mkdtemp()
         self.config_dir = os.path.join(self.directory, "config")
-        shutil.copytree(os.path.join(ROOT, "config"), self.config_dir)
+        shutil.copytree(CONFIG_DIR, self.config_dir)
         self.app = Application(config_dir=self.config_dir)
         self.app.update()
 

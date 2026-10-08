@@ -37,7 +37,7 @@ from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
-from ..core.pay_equity import (category_breakdown,
+from ..core.pay_equity import (NO_CATEGORY_WARNING, category_breakdown,
                                category_members, people_rows,
                                population_breakdown)
 from ..core.normalize import fold_label as _fold_label
@@ -2979,9 +2979,20 @@ class Application(tk.Tk):
         # --- Le poste ----------------------------------------------------
         tete = tk.Frame(page, background=theme.CANVAS)
         tete.pack(fill="x", padx=24, pady=(18, 4))
-        tk.Label(tete, text="POSTES", background=theme.CANVAS,
+        tk.Label(tete, text="COMPARER PAR", background=theme.CANVAS,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
+        # La categorie de « travail de meme valeur » : l'outil n'en livre
+        # aucune, c'est l'utilisateur qui a declare les siennes. Le choix
+        # s'enregistre dans le parametrage, pour que les documents
+        # comparent sur la meme notion que l'ecran.
+        #: Les dimensions d'organisation que le fichier renseigne.
+        self._equity_dimensions: List[str] = []
+        self.equity_dimension = ttk.Combobox(tete, state="readonly",
+                                             width=22, font=self.fonts.small)
+        self.equity_dimension.pack(side="left", padx=(10, 18))
+        self.equity_dimension.bind(
+            "<<ComboboxSelected>>", lambda _e: self._change_equity_dimension())
         # Un bouton vers la liste a cocher, et non une liste deroulante :
         # la question posee est rarement « ce poste-ci », c'est « ces
         # trois-la, cote a cote ». C'est la meme fenetre que celle des
@@ -3135,19 +3146,27 @@ class Application(tk.Tk):
             fill="x", padx=24, pady=(14, 12))
 
     def _show_pay_equity(self, equity: Dict[str, Any]) -> None:
-        """Remplit la page : la liste des postes, puis les cinq blocs."""
-        self._equity_field = equity.get("category_field") or "job_title"
+        """Remplit la page : la categorie, ses valeurs, puis les blocs."""
+        self._equity_field = equity.get("category_field") or ""
         if not equity.get("available"):
             self.equity_warning.configure(text=equity.get("warning") or "")
             self.equity_warning.pack(anchor="w", padx=24, pady=(8, 0))
             self._equity_jobs_available = []
             self.equity_jobs = None
+            self._fill_equity_dimensions()
             self._label_equity_jobs()
             self._clear_equity()
             return
-        self.equity_warning.pack_forget()
-        postes = sorted({str(employee.value(self._equity_field) or "")
-                         for employee in self.result.filtered} - {""})
+        self._fill_equity_dimensions()
+        if self._equity_field:
+            self.equity_warning.pack_forget()
+        else:
+            # Aucune notion d'organisation declaree : la page compare toute
+            # la population, et dit ou declarer un poste ou un metier.
+            self.equity_warning.configure(
+                text=equity.get("category_warning") or NO_CATEGORY_WARNING)
+            self.equity_warning.pack(anchor="w", padx=24, pady=(8, 0))
+        postes = self._equity_values(self._equity_field)
         self._equity_jobs_available = postes
         # Un poste retenu que le nouveau fichier ne porte plus est oublie ;
         # s'il n'en reste aucun, la page revient a tout le monde.
@@ -3166,13 +3185,77 @@ class Application(tk.Tk):
         """Les postes retenus, ou rien si la page porte sur l'ensemble."""
         return list(self.equity_jobs) if self.equity_jobs else None
 
+    def _equity_values(self, field: str) -> List[str]:
+        """Les valeurs que le fichier porte pour une dimension, triees."""
+        if not field or self.result is None:
+            return []
+        return sorted({str(employee.value(field) or "")
+                       for employee in self.result.filtered} - {""})
+
+    def _fill_equity_dimensions(self) -> None:
+        """La liste des categories possibles : les dimensions d'organisation
+        declarees que le fichier renseigne, dans leur ordre."""
+        from ..core.segmentation import organisational_dimensions
+
+        self._equity_dimensions = [
+            champ for champ in organisational_dimensions(self.configuration)
+            if self._equity_values(champ)]
+        self.equity_dimension.configure(
+            values=[dimension_label(self.configuration, champ)
+                    for champ in self._equity_dimensions],
+            state="readonly" if self._equity_dimensions else "disabled")
+        if self._equity_field in self._equity_dimensions:
+            self.equity_dimension.current(
+                self._equity_dimensions.index(self._equity_field))
+        else:
+            self.equity_dimension.set("")
+
+    def _change_equity_dimension(self) -> None:
+        """Compare sur une autre notion, et l'enregistre.
+
+        Les documents produits comparent sur la categorie du parametrage :
+        un ecran qui comparerait par metier pendant que le classeur compare
+        par poste ferait lire deux chiffres sous le meme titre. Le choix
+        est donc ecrit, et la barre du bas le dit.
+        """
+        index = self.equity_dimension.current()
+        if index < 0 or index >= len(self._equity_dimensions):
+            return
+        champ = self._equity_dimensions[index]
+        if champ == self._equity_field:
+            return
+        self._equity_field = champ
+        self.equity_jobs = None
+        self._equity_jobs_available = self._equity_values(champ)
+        self._label_equity_jobs()
+        self._show_equity_scope()
+        intitule = dimension_label(self.configuration, champ)
+        section = dict(self.configuration.section("pay_equity_parameters"))
+        section["category_field"] = champ
+        try:
+            write_configuration(self.config_dir, "pay_equity_parameters",
+                                section)
+        except CompensationError as error:
+            self._set_state(str(error))
+            return
+        self.configuration = load_configuration(self.config_dir)
+        self._set_state(f"Écarts F/H comparés par « {intitule} » : "
+                        "enregistré. Les documents produits compareront "
+                        "sur la même notion.")
+
     def _label_equity_jobs(self) -> None:
         """Le bouton dit ce qu'il retient, comme ceux des filtres."""
         total = len(self._equity_jobs_available)
+        if not self._equity_field:
+            self.equity_jobs_button.configure(text="Aucune notion déclarée",
+                                              state="disabled")
+            return
+        self.equity_jobs_button.configure(state="normal")
+        nom = dimension_label(self.configuration, self._equity_field)
         if self.equity_jobs is None:
-            texte = f"Postes : tous ({total})" if total else "Postes : tous"
+            texte = f"{nom} : tous ({total})" if total else f"{nom} : tous"
         else:
-            texte = f"Postes : {len(self.equity_jobs)} sur {total}"
+            texte = f"{nom} : {len(self.equity_jobs)} sur {total}"
         self.equity_jobs_button.configure(text=texte)
 
     def _choose_equity_jobs(self) -> None:
@@ -3180,8 +3263,10 @@ class Application(tk.Tk):
         if not self._equity_jobs_available:
             return
         open_alone(self, "postes:equite", lambda: ValuePicker(
-            self, self.fonts, "Postes", self._equity_jobs_available,
-            self.equity_jobs, self.set_equity_jobs))
+            self, self.fonts,
+            dimension_label(self.configuration, self._equity_field),
+            self._equity_jobs_available, self.equity_jobs,
+            self.set_equity_jobs))
 
     def set_equity_jobs(self, retenus) -> None:
         """Retient des postes, puis rejoue la page.
@@ -3250,7 +3335,7 @@ class Application(tk.Tk):
         elif len(poste) == 1:
             portee = f" · {poste[0]}"
         else:
-            portee = f" · {len(poste)} postes"
+            portee = f" · {len(poste)} valeurs"
         self.equity_scope_note.configure(
             text=f"{len(population)} salariés{portee}")
         self._show_equity_people(population)
@@ -3845,7 +3930,7 @@ class Application(tk.Tk):
         de poste retombe sur la premiere dimension disponible.
         """
         voulu = self.configuration.get(
-            "pay_equity_parameters.category_field", "job_title")
+            "pay_equity_parameters.category_field", "") or ""
         for index, segment in enumerate(self._segments):
             if segment.get("field") == voulu:
                 return index

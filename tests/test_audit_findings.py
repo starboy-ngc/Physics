@@ -12,6 +12,10 @@ import os
 import sys
 import tempfile
 import unittest
+
+from tests.support import fresh_config
+from tests.support import write_test_configuration
+from tests.support import CONFIG_DIR
 import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -141,7 +145,7 @@ class TestSavingKeepsWhatItDoesNotKnow(unittest.TestCase):
 
         directory = tempfile.mkdtemp()
         from hr_analytics.core.config import write_default_configuration
-        write_default_configuration(directory)
+        write_test_configuration(directory)
         chemin = os.path.join(directory, "theme_parameters.json")
         with open(chemin, encoding="utf-8") as handle:
             avant = json.load(handle)
@@ -183,7 +187,7 @@ class TestTheEmptyOrgTabSpeaks(unittest.TestCase):
 
         sauvé = module.filedialog.askopenfilename
         module.filedialog.askopenfilename = lambda **k: source
-        fenêtre = Application()
+        fenêtre = Application(config_dir=fresh_config())
         fenêtre.geometry("1200x800+0+0")
         fenêtre.update()
         try:

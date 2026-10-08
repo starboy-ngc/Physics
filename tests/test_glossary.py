@@ -17,6 +17,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import fresh_config
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from tests.test_ui import needs_display
 from hr_analytics.core import glossary
@@ -127,9 +129,9 @@ class TestEveryFieldOnScreenIsExplained(unittest.TestCase):
         from hr_analytics.core.pipeline import (AnalysisRequest,
                                                           run_analysis)
         from hr_analytics.ui.app import Application
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.update()
-        self.app.result = run_analysis(AnalysisRequest(
+        self.app.result = run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=self.source, reference_date=REFERENCE_DATE,
             segments=[]))
         self.app._render_results()

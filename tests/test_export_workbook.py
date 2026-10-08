@@ -23,6 +23,7 @@ from xml.etree import ElementTree
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
 from tests.support import HEADERS, REFERENCE_DATE, build_population, make_config, make_row
 from hr_analytics.core.export import build_sheets, export_excel
 from hr_analytics.core.pipeline import AnalysisRequest, run_analysis
@@ -97,7 +98,7 @@ class WorkbookCase(unittest.TestCase):
                     + [["Comptable", "Technicien"][(index // 2) % 2]])
         self.config_dir = os.path.join(self.directory, "config")
         from hr_analytics.core.config import write_default_configuration
-        write_default_configuration(self.config_dir)
+        write_test_configuration(self.config_dir)
         if overrides:
             import json
 

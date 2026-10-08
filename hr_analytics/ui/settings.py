@@ -287,6 +287,7 @@ class SettingsWindow(tk.Toplevel):
     #: on associe d'abord ses colonnes, puis on regle ce qui se publie, ce
     #: qui s'exporte, et enfin l'apparence.
     SECTIONS = (("colonnes", "Colonnes du fichier"),
+                ("analyse", "Analyse"),
                 ("confidentialite", "Confidentialité"),
                 ("export", "Export"),
                 ("apparence", "Apparence"))
@@ -295,6 +296,7 @@ class SettingsWindow(tk.Toplevel):
     #: savoir ou part un reglage fait partie du reglage.
     FICHIERS = {
         "colonnes": "population_mapping.json",
+        "analyse": "pay_equity_parameters.json et chart_parameters.json",
         "confidentialite": "privacy_parameters.json",
         "export": "export_parameters.json",
         "apparence": "theme_parameters.json",
@@ -353,6 +355,8 @@ class SettingsWindow(tk.Toplevel):
         self._build_columns(colonnes)
         self._build_dimensions(colonnes)
         self._build_order(colonnes)
+        self._build_analysis(self._scrollable(self.pages["analyse"],
+                                              background=theme.GROUND))
         self._build_privacy(self._scrollable(self.pages["confidentialite"],
                                              background=theme.GROUND))
         self._build_export(self._scrollable(self.pages["export"],
@@ -550,6 +554,109 @@ class SettingsWindow(tk.Toplevel):
         if teinte == palette.by_name(self.theme_var.get()).accent:
             return ""
         return teinte
+
+    #: Le mot de la liste quand le reglage est vide : le moteur choisit.
+    AUTOMATIQUE = "(automatique)"
+    #: Le mot de la liste quand le reglage est vide et que rien ne se fait.
+    AUCUN = "(aucun)"
+
+    #: Les trois reglages de cette section : la cle, le fichier, le mot
+    #: qui dit « vide », et ce que la page en fait.
+    ANALYSE = (
+        ("category_field", "pay_equity_parameters", "(automatique)",
+         "Comparer les écarts F/H par",
+         "La catégorie de « travail de même valeur » : le poste, le métier, "
+         "le grade. Automatique : la première notion déclarée que le fichier "
+         "renseigne. La page Écarts F/H permet aussi de changer ce choix."),
+        ("csp_field", "chart_parameters", "(aucun)",
+         "Répartition de la vue d'ensemble par",
+         "Le camembert de la vue d'ensemble : le statut dans la plupart des "
+         "exports (cadre, agent de maîtrise, employé). Aucun : pas de "
+         "camembert."),
+        ("scatter_color_by", "chart_parameters", "(automatique)",
+         "Colorer le nuage de points par",
+         "La couleur des points, à l'ouverture. Automatique : la première "
+         "notion déclarée, sinon le sexe. La liste « Colorer par » du nuage "
+         "offre les autres à tout moment."),
+    )
+
+    def _build_analysis(self, parent: tk.Widget) -> None:
+        """Sur quelles notions l'analyse compare, repartit et colore.
+
+        L'outil ne livre aucun champ d'organisation : c'est l'utilisateur
+        qui declare les siens, et c'est donc a lui de dire lequel sert de
+        poste pour les ecarts, lequel fait le camembert, lequel colore le
+        nuage. Les trois listes ne proposent que ce qui est declare dans
+        « Colonnes du fichier », y compris ce qui vient de l'etre.
+        """
+        band = tk.Frame(parent, background=theme.GROUND)
+        band.pack(fill="x", padx=22, pady=(4, 0))
+        tk.Frame(band, height=1, background=theme.LINE).pack(fill="x",
+                                                             pady=(0, 12))
+        tk.Label(band, text="Aucune notion d'organisation n'est livrée "
+                            "d'office : direction, établissement, métier, "
+                            "poste, statut se déclarent dans « Colonnes du "
+                            "fichier », rôle « Organisation ». Ces trois "
+                            "listes ne proposent que ce qui est déclaré.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(2, 12))
+        self.analysis_boxes: Dict[str, ttk.Combobox] = {}
+        self._analysis_fields: Dict[str, List[str]] = {}
+        for clef, section, vide, intitule, explication in self.ANALYSE:
+            ligne = tk.Frame(band, background=theme.GROUND)
+            ligne.pack(fill="x", pady=(0, 4))
+            tk.Label(ligne, text=intitule, background=theme.GROUND,
+                     foreground=theme.INK, font=self.fonts.body, width=34,
+                     anchor="w").pack(side="left")
+            boite = ttk.Combobox(ligne, state="readonly", width=28,
+                                 font=self.fonts.small)
+            boite.pack(side="left", padx=(8, 0))
+            self.analysis_boxes[clef] = boite
+            tk.Label(band, text=explication, background=theme.GROUND,
+                     foreground=theme.MUTED, font=self.fonts.small,
+                     wraplength=880, justify="left").pack(anchor="w",
+                                                          padx=(0, 0),
+                                                          pady=(0, 10))
+        self._refresh_analysis_choices()
+
+    def _organisational_rows(self) -> List[str]:
+        """Les notions declarees, dans l'ordre de l'ecran, cases comprises
+        de ce qui vient d'etre declare et pas encore enregistre."""
+        from ..core.segmentation import NON_ORGANISATIONAL
+
+        return [nom for nom, etat in self.rows.items()
+                if nom not in NON_ORGANISATIONAL
+                and bool(etat["declared"].get())]
+
+    def _refresh_analysis_choices(self) -> None:
+        """Repose les trois listes sur ce qui est declare maintenant."""
+        if not getattr(self, "analysis_boxes", None):
+            return
+        notions = self._organisational_rows()
+        libelles = {nom: self.rows[nom]["label"].get() or nom
+                    for nom in notions}
+        for clef, section, vide, _intitule, _explication in self.ANALYSE:
+            boite = self.analysis_boxes[clef]
+            champs = [""] + notions
+            if clef == "scatter_color_by" and "gender" in self.rows:
+                champs.append("gender")
+                libelles["gender"] = self.rows["gender"]["label"].get() or "Sexe"
+            self._analysis_fields[clef] = champs
+            boite.configure(values=[vide] + [libelles[c] for c in champs[1:]])
+            actuel = str(self.configuration.get(f"{section}.{clef}", "") or "")
+            boite.current(champs.index(actuel) if actuel in champs else 0)
+
+    def _analysis_to_save(self) -> Dict[str, Dict[str, str]]:
+        """Ce que les trois listes disent, par section."""
+        sortie: Dict[str, Dict[str, str]] = {}
+        for clef, section, _vide, _intitule, _explication in self.ANALYSE:
+            boite = self.analysis_boxes.get(clef)
+            champs = self._analysis_fields.get(clef, [""])
+            index = boite.current() if boite is not None else 0
+            valeur = champs[index] if 0 <= index < len(champs) else ""
+            sortie.setdefault(section, {})[clef] = valeur
+        return sortie
 
     def _build_privacy(self, parent: tk.Widget) -> None:
         """Ce que l'ecran a le droit de montrer — et lui seul.
@@ -1010,6 +1117,7 @@ class SettingsWindow(tk.Toplevel):
         self._redraw_dimensions()
         if getattr(self, "_order_area", None) is not None:
             self._draw_order()
+        self._refresh_analysis_choices()
 
     def _sans_colonne(self) -> List[str]:
         """Les champs qui meritent une ligne dans « champs sans colonne ».
@@ -1616,7 +1724,12 @@ class SettingsWindow(tk.Toplevel):
         autres.append(("privacy_parameters", privacy))
         graphiques = dict(self.configuration.section("chart_parameters"))
         graphiques["segment_order"] = self._segment_order_to_save()
+        analyse = self._analysis_to_save()
+        graphiques.update(analyse.get("chart_parameters", {}))
         autres.append(("chart_parameters", graphiques))
+        ecarts = dict(self.configuration.section("pay_equity_parameters"))
+        ecarts.update(analyse.get("pay_equity_parameters", {}))
+        autres.append(("pay_equity_parameters", ecarts))
         export = dict(self.configuration.section("export_parameters"))
         export["include_individual_data"] = bool(self.individual_var.get())
         export["include_source_file"] = bool(self.audit_var.get())

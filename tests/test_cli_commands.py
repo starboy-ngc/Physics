@@ -19,12 +19,23 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 from hr_analytics.cli import main as cli_main
 
 
+#: Les commandes qui lisent une configuration. Sans « --config », elles
+#: prendraient celle de l'outil, qui ne declare aucune notion
+#: d'organisation : les essais lui substituent la leur, qui declare BU,
+#: groupe et statut comme un utilisateur l'aurait fait.
+_AVEC_CONFIG = ("analyse", "controle", "mapping")
+
+
 def run(argv):
     """Execute la commande et rend (code, sortie standard, sortie erreur)."""
+    argv = list(argv)
+    if any(mot in argv for mot in _AVEC_CONFIG) and "--config" not in argv:
+        argv += ["--config", CONFIG_DIR]
     out, err = io.StringIO(), io.StringIO()
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
         code = cli_main(argv)
@@ -275,7 +286,7 @@ class TestConfig(CommandCase):
         folder = os.path.join(self.directory, "aller-retour")
         run(["--logs", self.logs, "config", "--dossier", folder])
         self.assertEqual(load_configuration(folder).as_dict(),
-                         load_configuration().as_dict())
+                         load_configuration(None).as_dict())
 
     def test_the_written_files_are_valid_json(self):
         folder = os.path.join(self.directory, "json")

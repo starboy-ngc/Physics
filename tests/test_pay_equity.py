@@ -12,6 +12,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import build_population, make_config, make_row
 from hr_analytics.core.pay_equity import (FEMALE, MALE, classify,
                                                     calculate_category_gaps,
@@ -245,7 +246,7 @@ class TestFiltersReachTheGap(unittest.TestCase):
         config = make_config()
         filters = (build_filters([parse_filter(expression)], config)
                    if expression else [])
-        return run_analysis(AnalysisRequest(
+        return run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=source, reference_date=REFERENCE_DATE,
             filters=filters)).payload["pay_equity"]
 

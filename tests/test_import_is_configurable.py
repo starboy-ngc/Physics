@@ -18,6 +18,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
 from tests.support import make_config
 from hr_analytics.core.config import Configuration, write_default_configuration
 from hr_analytics.core.errors import MappingError
@@ -116,7 +117,7 @@ class ConfiguredFileCase(unittest.TestCase):
                     ["Syntec", "Métallurgie"][index % 2],
                     38000 + index * 300, 500 + index * 10])
         cls.config_dir = os.path.join(cls.directory, "config")
-        write_default_configuration(cls.config_dir)
+        write_test_configuration(cls.config_dir)
         chemin = os.path.join(cls.config_dir, "population_mapping.json")
         with open(chemin, encoding="utf-8") as handle:
             mapping = json.load(handle)

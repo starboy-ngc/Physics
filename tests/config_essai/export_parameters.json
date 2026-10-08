@@ -1,0 +1,13 @@
+{
+  "output_directory": "output",
+  "excel_enabled": true,
+  "html_report_enabled": true,
+  "slides_html_enabled": true,
+  "slides_pdf_enabled": true,
+  "summary_enabled": true,
+  "include_method_sheet": false,
+  "include_individual_data": true,
+  "include_source_file": true,
+  "source_max_rows": 50000,
+  "control_max_rows": 20000
+}

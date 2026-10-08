@@ -249,6 +249,27 @@ def dimension_fields(config: Configuration) -> List[str]:
     return [entry["field"] for entry in dimensions(config)]
 
 
+#: Les dimensions que le moteur calcule lui-meme, ou qui sont le sujet de
+#: la comparaison : elles ne font pas une categorie de « travail de meme
+#: valeur », ni une notion d'organisation. Comparer « a tranche d'age
+#: comparable » ne repond pas a la question posee, et le sexe ne peut pas
+#: servir a decouper une comparaison entre les sexes.
+NON_ORGANISATIONAL = ("gender", "age_band", "tenure_band")
+
+
+def organisational_dimensions(config: Configuration) -> List[str]:
+    """Les dimensions declarees par l'utilisateur, dans leur ordre.
+
+    L'outil n'en livre aucune : direction, etablissement, metier, poste,
+    statut naissent de l'ecran « Associer les colonnes ». C'est parmi
+    elles que se choisissent la categorie des ecarts, le camembert de la
+    vue d'ensemble, la couleur du nuage, et les colonnes de la liste
+    nominative.
+    """
+    return [entry["field"] for entry in dimensions(config)
+            if entry["field"] not in NON_ORGANISATIONAL]
+
+
 def max_filter_values(config: Configuration) -> int:
     """Nombre de valeurs distinctes au-dela duquel un filtre n'est plus
     propose. Parametre, et non seuil cache dans l'interface.

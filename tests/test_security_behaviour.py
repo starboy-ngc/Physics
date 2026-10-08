@@ -22,6 +22,8 @@ import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 from hr_analytics.core import slides as _slides
 from hr_analytics.core.config import (load_configuration,
@@ -66,7 +68,7 @@ class HostileFileCase(unittest.TestCase):
                     status=TRAPS[(index + 5) % len(TRAPS)]))
                     + [TRAPS[(index + 3) % len(TRAPS)]])
         cls.config_dir = os.path.join(cls.directory, "config")
-        write_default_configuration(cls.config_dir)
+        write_test_configuration(cls.config_dir)
         target = os.path.join(cls.config_dir, "export_parameters.json")
         with open(target, encoding="utf-8") as handle:
             settings = json.load(handle)
@@ -298,7 +300,7 @@ class TestAnonymousReference(unittest.TestCase):
         """Le reglage par defaut tire un sel au hasard a chaque analyse :
         un matricule vit dans un espace minuscule, et un sel connu le
         rendait retrouvable en un centieme de seconde."""
-        config = load_configuration()
+        config = load_configuration(CONFIG_DIR)
         self.assertNotEqual(anonymisation_salt(config),
                             anonymisation_salt(config))
 
@@ -314,7 +316,7 @@ class TestAnonymousReference(unittest.TestCase):
 
     def test_brute_force_over_the_identifier_space_fails(self):
         """La reference est publiee ; le sel ne l'est pas."""
-        salt = anonymisation_salt(load_configuration())
+        salt = anonymisation_salt(load_configuration(CONFIG_DIR))
         target = anonymise("E04217", salt)
         for index in range(5000):
             self.assertNotEqual(anonymise(f"E{index:05d}", "un-autre-sel"),
@@ -329,7 +331,7 @@ class TestAnonymousReference(unittest.TestCase):
             for index in range(20):
                 writer.writerow(list(make_row(index)))
         config_dir = os.path.join(directory, "config")
-        write_default_configuration(config_dir)
+        write_test_configuration(config_dir)
         target = os.path.join(config_dir, "privacy_parameters.json")
         with open(target, encoding="utf-8") as handle:
             settings = json.load(handle)

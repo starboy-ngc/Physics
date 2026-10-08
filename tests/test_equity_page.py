@@ -17,6 +17,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 
 try:
@@ -63,11 +64,15 @@ class EquityCase(unittest.TestCase):
             writer = csv.writer(handle, delimiter=";")
             writer.writerow(list(HEADERS) + ["Poste"])
             for index in range(120):
+                # Deux BU : une notion autre que le poste doit aussi
+                # pouvoir se comparer, et une notion a une seule valeur
+                # ne compare rien.
                 writer.writerow(make_row(
                     index, salary=30000 + (index % 20) * 500,
-                    gender="F" if index % 2 else "H")
+                    gender="F" if index % 2 else "H",
+                    business_unit=["Nord", "Sud"][index % 2])
                     + [POSTES[index % 3]])
-        self.app = Application()
+        self.app = Application(config_dir=self.config_dir())
         self.app.geometry("1400x900+0+0")
         self.app.update()
         with Dialogs(open_path=chemin):
@@ -87,6 +92,11 @@ class EquityCase(unittest.TestCase):
 
     def tearDown(self):
         self.app.destroy()
+
+    def config_dir(self):
+        """Le dossier de configuration de l'essai : celui des essais, que
+        rien n'ecrit. Un essai qui enregistre en prend une copie."""
+        return CONFIG_DIR
 
     def lignes(self, arbre):
         return [arbre.item(item)["values"] for item in arbre.get_children()]
@@ -112,7 +122,7 @@ class TestTheWholePageAnswers(EquityCase):
         for poste in POSTES:
             self.assertIn(poste, propositions)
         self.assertEqual(self.app.equity_jobs_button.cget("text"),
-                         f"Postes : tous ({len(propositions)})")
+                         f"Poste : tous ({len(propositions)})")
 
     def test_the_headcounts_match_the_engine(self):
         """Les effectifs affichés sont ceux du moteur, pas un comptage
@@ -225,13 +235,13 @@ class TestChoosingSeveralJobs(EquityCase):
         self.choisir(POSTES[0], POSTES[1])
         attendu = self._effectif(POSTES[0], POSTES[1])
         self.assertGreater(attendu, self._effectif(POSTES[0]))
-        self.assertIn(f"{attendu} salariés · 2 postes",
+        self.assertIn(f"{attendu} salariés · 2 valeurs",
                       self.app.equity_scope_note.cget("text"))
         lignes = {str(ligne[0]): ligne for ligne in
                   self.lignes(self.app.equity_people)}
         self.assertEqual(int(lignes["Effectif"][3]), attendu)
         self.assertEqual(self.app.equity_jobs_button.cget("text"),
-                         "Postes : 2 sur 3")
+                         "Poste : 2 sur 3")
 
     def test_one_pair_of_boxes_per_chosen_job(self):
         self.choisir(POSTES[0], POSTES[2])
@@ -272,6 +282,98 @@ class TestChoosingSeveralJobs(EquityCase):
         self.assertEqual(fenetres[0]._valeurs,
                          list(self.app._equity_jobs_available))
         fenetres[0].destroy()
+
+
+class TestChoosingTheComparedNotion(EquityCase):
+    """L'outil ne livre aucun champ de poste : c'est l'utilisateur qui dit
+    sur laquelle de ses notions la page compare, et le choix s'enregistre
+    pour que les documents comparent sur la meme."""
+
+    def config_dir(self):
+        import shutil
+        import tempfile
+
+        copie = os.path.join(tempfile.mkdtemp(), "config")
+        shutil.copytree(CONFIG_DIR, copie)
+        return copie
+
+    def test_the_list_offers_the_declared_notions_the_file_carries(self):
+        libelles = list(self.app.equity_dimension.cget("values"))
+        for attendu in ("Poste", "BU", "Groupe", "Statut"):
+            self.assertIn(attendu, libelles)
+        self.assertNotIn("Sexe", libelles)
+        self.assertNotIn("Tranche d'âge", libelles)
+        self.assertEqual(self.app.equity_dimension.get(), "Poste")
+        self.assertTrue(self.app.equity_jobs_button.cget("text")
+                        .startswith("Poste : tous (3)"))
+
+    def test_choosing_another_notion_recomputes_and_is_saved(self):
+        from hr_analytics.core.config import load_configuration
+
+        champs = self.app._equity_dimensions
+        self.app.equity_dimension.current(champs.index("business_unit"))
+        self.app._change_equity_dimension()
+        self.app.update()
+        self.assertEqual(self.app._equity_field, "business_unit")
+        self.assertEqual(self.app.equity_jobs_button.cget("text"),
+                         "BU : tous (2)")
+        self.assertEqual(
+            load_configuration(self.app.config_dir).get(
+                "pay_equity_parameters.category_field"), "business_unit")
+        self.assertIn("BU", self.app.status.cget("text"))
+        self.choisir("Nord")
+        self.assertEqual(self.app.equity_jobs, ["Nord"])
+        segments = [str(ligne["segment"]) for ligne in self.app.equity_box.rows]
+        self.assertEqual(segments, ["Nord"])
+
+    def test_the_chosen_notion_survives_a_new_analysis(self):
+        champs = self.app._equity_dimensions
+        self.app.equity_dimension.current(champs.index("groupe"))
+        self.app._change_equity_dimension()
+        self.app.update()
+        self.app.run_analysis()
+        limite = time.time() + 90
+        self.app.result = None
+        while self.app.result is None and time.time() < limite:
+            self.app.update()
+            time.sleep(0.02)
+        for _ in range(20):
+            self.app.update()
+        self.assertEqual(self.app._equity_field, "groupe")
+        self.assertEqual(self.app.equity_dimension.get(), "Groupe")
+
+
+class TestAFileWithoutAnyDeclaredNotion(EquityCase):
+    """La configuration livree ne declare rien : la page compare toute la
+    population, et dit ou declarer un poste ou un metier."""
+
+    def config_dir(self):
+        import tempfile
+
+        from hr_analytics.core.config import write_default_configuration
+
+        dossier = os.path.join(tempfile.mkdtemp(), "config")
+        write_default_configuration(dossier)
+        return dossier
+
+    def test_the_page_says_where_to_declare_a_notion(self):
+        from hr_analytics.core.pay_equity import NO_CATEGORY_WARNING
+
+        self.assertEqual(self.app._equity_field, "")
+        self.assertEqual(self.app.equity_warning.cget("text"),
+                         NO_CATEGORY_WARNING)
+        self.assertTrue(self.app.equity_warning.winfo_manager())
+        self.assertEqual(str(self.app.equity_jobs_button.cget("state")),
+                         "disabled")
+        self.assertEqual(str(self.app.equity_dimension.cget("state")),
+                         "disabled")
+
+    def test_the_whole_population_is_still_compared(self):
+        self.assertTrue(self.lignes(self.app.equity_people))
+        self.assertTrue(self.lignes(self.app.equity_stats))
+        self.assertEqual(len(self.app.equity_box.rows), 1)
+        self.assertIn("toute la population",
+                      self.app.equity_scope_note.cget("text"))
 
 
 class TestTheScatterOfThisPage(EquityCase):

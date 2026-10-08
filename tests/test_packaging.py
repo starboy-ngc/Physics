@@ -71,7 +71,10 @@ class TestTheBuiltArchive(unittest.TestCase):
         sinon l'utilisateur croit avoir perdu ses reglages."""
         completed = self._run("mapping", self.clean)
         self.assertEqual(completed.returncode, 0, completed.stderr)
-        self.assertIn("business_unit", completed.stdout)
+        # Les dimensions declarees ne se lisent que si la configuration
+        # embarquee est trouvee : sans elle, la liste serait vide.
+        self.assertIn("tenure_band", completed.stdout)
+        self.assertIn("base_salary", completed.stdout)
 
     def test_the_archive_is_a_readable_zip(self):
         """L'IT doit pouvoir en lire l'integralite du code sans l'executer."""

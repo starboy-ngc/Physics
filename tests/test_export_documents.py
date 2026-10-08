@@ -17,6 +17,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import write_test_configuration
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 from hr_analytics.core.config import write_default_configuration
 from hr_analytics.core.export import build_sheets
@@ -82,7 +84,7 @@ class TestWorkbookOrder(unittest.TestCase):
                     gender="F" if index % 2 else "H"))
                     + [["Comptable", "Technicien"][index % 2]])
         config_dir = os.path.join(cls.directory, "config")
-        write_default_configuration(config_dir)
+        write_test_configuration(config_dir)
         cls.result = run_analysis(AnalysisRequest(source_path=source,
                                                   config_dir=config_dir))
         data = cls.result.config.as_dict()
@@ -214,7 +216,7 @@ class TestADocumentNeverDropsASectionInSilence(unittest.TestCase):
                 writer.writerow(make_row(
                     index,
                     salary=40000 + index * 250 if index < renseignes else None))
-        return run_analysis(AnalysisRequest(
+        return run_analysis(AnalysisRequest(config_dir=CONFIG_DIR, 
             source_path=chemin, ignore_quality_errors=True)).payload
 
     def test_the_report_keeps_the_section_and_says_why(self):

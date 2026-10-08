@@ -26,6 +26,8 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from tests.support import fresh_config
+from tests.support import CONFIG_DIR
 from tests.support import HEADERS, make_row
 
 try:
@@ -92,7 +94,7 @@ class WindowCase(unittest.TestCase):
         from hr_analytics.ui.app import Application
 
         self.directory = tempfile.mkdtemp()
-        self.app = Application()
+        self.app = Application(config_dir=fresh_config())
         self.app.geometry("1280x800+0+0")
         self.app.update()
 
@@ -1542,7 +1544,7 @@ class TestAFilterWithTooManyValues(WindowCase):
         self.directory = tempfile.mkdtemp()
         self.config_dir = os.path.join(self.directory, "config")
         racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        shutil.copytree(os.path.join(racine, "config"), self.config_dir)
+        shutil.copytree(CONFIG_DIR, self.config_dir)
         self.app = Application(config_dir=self.config_dir)
         self.app.geometry("1280x800+0+0")
         self.app.update()
