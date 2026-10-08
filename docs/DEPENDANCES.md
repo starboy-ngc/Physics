@@ -146,8 +146,9 @@ de `coverage` — donc pas d'environnement à reconstituer pour rejouer les
 contrôles.
 
 **Pour l'outillage du dépôt** (`tools/`) : rien non plus. L'analyseur de code
-mort, l'inspecteur de PE, le générateur de population de démonstration sont
-écrits sur la bibliothèque standard.
+mort, l'inspecteur de PE et les générateurs de population d'essai sont écrits
+sur la bibliothèque standard. Aucun de ces outils ne part avec le paquet, et
+aucun classeur de démonstration non plus.
 
 ---
 

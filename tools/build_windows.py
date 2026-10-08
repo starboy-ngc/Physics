@@ -202,10 +202,21 @@ ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
 DOCS_NON_LIVRES = ("AUDIT.md", "AUDIT-2026-09-26.md", "AUDIT-2026-10-04.md",
                    "AUDIT-2026-10-08.md", "AUDIT-SECURITE-IT.md")
 
-#: Outils de fabrication de jeux d'essai : ils produisent des populations
-#: fictives, et c'est par eux qu'une équipe prend l'outil en main.
-OUTILS = ("__init__.py", "generate_sample_population.py",
-          "generate_realistic_population.py")
+#: Le paquet ne livre aucun outil et aucun jeu d'essai.
+#:
+#: Il portait trois classeurs de démonstration et les deux générateurs qui
+#: les fabriquent. L'intention était bonne — une équipe prend l'outil en
+#: main sur une population qu'elle peut ouvrir sans risque — mais le prix
+#: est double. Un classeur aux noms vraisemblables (« FAURE Cédric »,
+#: « DENIS Chloé ») posé dans un livrable RH se lit comme une fuite par qui
+#: l'ouvre sans contexte ; et un outil mis à disposition d'un service RH
+#: n'a pas besoin de population inventée : il en reçoit une le jour même.
+#:
+#: Les générateurs restent au dépôt. La suite de tests s'appuie sur eux —
+#: `test_regression`, `test_declarative_dimensions`, `test_packaging` — et
+#: les retirer de là gâcherait les essais pour alléger un paquet qui ne les
+#: porte déjà plus.
+OUTILS = ()
 
 
 def _dire(message: str) -> None:
@@ -494,12 +505,13 @@ def composer(destination: str, extrait: str) -> str:
             shutil.copytree(origine, os.path.join(destination, cible),
                             ignore=shutil.ignore_patterns("__pycache__",
                                                           "*.pyc"))
-    outils = os.path.join(destination, "tools")
-    os.makedirs(outils)
-    for nom in OUTILS:
-        origine = os.path.join(ROOT, "tools", nom)
-        if os.path.isfile(origine):
-            shutil.copy2(origine, os.path.join(outils, nom))
+    if OUTILS:
+        outils = os.path.join(destination, "tools")
+        os.makedirs(outils)
+        for nom in OUTILS:
+            origine = os.path.join(ROOT, "tools", nom)
+            if os.path.isfile(origine):
+                shutil.copy2(origine, os.path.join(outils, nom))
     # Pas de « LISEZ-MOI.txt » a la racine du dossier. Il disait quoi
     # double-cliquer et ou poser le dossier — ce que l'utilisateur a deja
     # fait quand il le lit. Le guide utilisateur, lui, reste dans « docs ».
@@ -507,9 +519,6 @@ def composer(destination: str, extrait: str) -> str:
                  os.path.join(destination, "docs", "lanceur.c"))
     compiler_lanceur(destination)
     poser_runtime(extrait, destination)
-    _dire("  populations de démonstration")
-    from tools.build_archive import build_populations
-    build_populations(destination, rows=400, seed=20260910)
     empreintes(destination)
     return destination
 

@@ -125,12 +125,23 @@ class TestTheDeliveredPackageIsReviewable(unittest.TestCase):
         livrés = [chemin for chemin, _ in self._sources()]
         self.assertNotIn(os.path.join("tools", "build_archive.py"), livrés)
 
-    def test_the_sample_generators_do_ship(self):
-        """Ils produisent des jeux d'essai sans donnée réelle : c'est par
-        eux qu'une équipe RH prend l'outil en main."""
+    def test_the_sample_generators_do_not_ship(self):
+        """Un outil mis à disposition d'un service RH n'a pas besoin de
+        population inventée : il en reçoit une le jour même. Les
+        générateurs restent au dépôt, où la suite de tests s'appuie sur
+        eux."""
         livrés = [chemin for chemin, _ in self._sources()]
-        self.assertIn(os.path.join("tools", "generate_sample_population.py"),
-                      livrés)
+        for generateur in ("generate_sample_population.py",
+                           "generate_realistic_population.py"):
+            self.assertNotIn(os.path.join("tools", generateur), livrés)
+
+    def test_no_demonstration_workbook_ships(self):
+        """Un classeur aux noms vraisemblables posé dans un livrable RH se
+        lit comme une fuite par qui l'ouvre sans contexte."""
+        classeurs = []
+        for dossier, _d, fichiers in os.walk(self.tree):
+            classeurs += [nom for nom in fichiers if nom.endswith(".xlsx")]
+        self.assertEqual(classeurs, [])
 
     def test_the_tool_itself_is_complete(self):
         livrés = [chemin for chemin, _ in self._sources()]

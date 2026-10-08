@@ -37,7 +37,8 @@ python3 tools/render_logo.py --largeur 1024 --sortie logo.png
 python3 tools/render_logo.py --largeur 256 --fond "#141f2a"
 ```
 
-Sans `--fond`, le fond reste transparent.
+Sans `--fond`, le fond reste transparent. Cette commande se lance depuis le
+dépôt : le paquet livré ne porte aucun outil, seulement l'application.
 
 Une lueur parcourt le symbole pendant le chargement. Elle n'en change jamais
 la forme : un logo qui se déforme n'est plus un logo.
@@ -879,8 +880,15 @@ Le détail technique va dans le journal (`--logs <dossier>`), séparé des donn�
 
 ## 9. Jeu de démonstration
 
-```
-python3 tools/generate_sample_population.py --rows 2000 --output data/demo.xlsx
-```
+Il n'y en a pas dans le paquet, et c'est voulu.
 
-Population entièrement fictive (générateur à graine fixe). Aucune donnée réelle.
+L'outil livrait trois classeurs fictifs pour qu'on puisse l'essayer avant
+d'y mettre son propre fichier. Deux raisons les ont fait retirer. Un
+classeur aux noms vraisemblables posé dans un livrable RH se lit comme une
+fuite par qui l'ouvre sans contexte. Et un outil mis à disposition d'un
+service de paie n'a pas besoin d'une population inventée : il en reçoit une
+le jour même.
+
+Pour l'essayer sans toucher à un fichier réel, prenez un export de paie et
+retirez-en les colonnes de nom et de prénom : l'outil n'en a pas besoin — il
+n'exige qu'une colonne de rémunération.

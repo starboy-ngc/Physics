@@ -66,12 +66,17 @@ BUNDLED = ("hr_analytics", "config")
 #: doit homologuer, sans aucune raison de s'y trouver. `benchmark` et
 #: `render_logo` mesurent et dessinent pour le developpement.
 #:
-#: Les deux generateurs de population restent : ils produisent des jeux
-#: d'essai sans donnee reelle, ce qu'une equipe RH qui prend l'outil en
-#: main utilise avant d'y mettre son propre fichier.
+#: Les deux generateurs de population en font partie depuis le 8 octobre
+#: 2026. Ils produisaient des jeux d'essai sans donnee reelle, ce qu'une
+#: equipe RH devait employer avant d'y mettre son propre fichier. Mais un
+#: outil mis a disposition d'un service RH n'a pas besoin de population
+#: inventee : il en recoit une le jour meme. Ils restent au depot, ou la
+#: suite de tests s'appuie sur eux.
 OUTILS_EXCLUS = ("build_archive.py", "build_windows.py", "benchmark.py",
                  "render_logo.py", "check_layout.py",
-                 "find_dead_code.py", "inspect_pe.py")
+                 "find_dead_code.py", "inspect_pe.py",
+                 "generate_sample_population.py",
+                 "generate_realistic_population.py")
 
 
 def _clean(path: str) -> None:
@@ -174,7 +179,8 @@ def main(argv=None) -> int:
     os.makedirs(args.sortie, exist_ok=True)
     tree = os.path.join(args.sortie, "hr-analytics")
     build_tree(tree)
-    build_populations(tree, args.lignes, args.graine)
+    # Pas de population de demonstration dans l'archive : voir
+    # `OUTILS_EXCLUS`. La fonction reste, elle sert aux essais.
     archive = os.path.join(args.sortie,
                            f"hr-analytics-{__version__}.zip")
     zip_tree(tree, archive)
