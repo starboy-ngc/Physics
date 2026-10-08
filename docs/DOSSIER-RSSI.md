@@ -571,13 +571,18 @@ le cas de tout binaire produit par cette chaîne.
 
 ### 9 bis.3 Provenance des binaires livrés
 
-**62 des 63 binaires du paquet portent leur signature Authenticode d'origine**
+**59 des 60 binaires du paquet portent leur signature Authenticode d'origine**
 (Python Software Foundation, Tcl). Le seul non signé est notre lanceur.
 
 C'est une conséquence directe d'un choix : les binaires de python.org sont
 repris **tels quels**, jamais recompilés ni modifiés. Un EDR qui voit
-`python312.dll`, `_tkinter.pyd` et les 60 autres signés par la PSF a devant
+`python312.dll`, `_tkinter.pyd` et les 57 autres signés par la PSF a devant
 lui des fichiers qu'il connaît déjà, souvent déjà en liste d'autorisation.
+
+> Le compte est passé de 63 à 60 le 8 octobre 2026 : trois modules natifs que
+> l'interpréteur livré ne chargeait jamais — `_decimal.pyd` et sa
+> bibliothèque libmpdec, `_uuid.pyd`, `_zoneinfo.pyd` — ont été retirés. Voir
+> `DEPENDANCES.md` §4.
 
 **Trois trouvailles de cet audit, corrigées :** le paquet contenait
 `reg1.3` (extension registre de Tcl — dans un outil qui affirme ne pas
@@ -670,11 +675,12 @@ modification du binaire, et les empreintes sont déjà fournies.
 | Identité du fichier réel retrouvée dans le journal (400 cherchées) | **0** |
 | Nom de colonne atteignant autre chose qu'un champ déclaré | **aucun** (§8.6) |
 | Interpréteur livré, sous Windows : `socket`, `ssl`, `ctypes`, `subprocess`, `multiprocessing`, `sqlite3` | **6 absents** |
+| Modules natifs chargés sur une analyse complète | **8**, et le paquet n'en porte plus que 8 |
 | Chemin vers le réseau depuis Python (tous recensés) | **aucun** |
 | Primitives d'injection, de persistance ou de réseau dans les lanceurs | **aucune** (§9 bis.2) |
 | ASLR, DEP, bloc de version sur les deux lanceurs | **présents** |
 | Chemins de compilation laissés dans les binaires | **aucun** |
-| Binaires du paquet portant leur signature d'origine | **62 sur 63** |
+| Binaires du paquet portant leur signature d'origine | **59 sur 60** |
 | Analyse complète sous Windows avec l'interpréteur allégé | **7 documents produits, fenêtre ouverte** |
 
 **Six défauts ont été trouvés et corrigés pendant ces audits**, et ils sont

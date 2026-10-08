@@ -57,8 +57,8 @@ Retiré de la bibliothèque standard : `test`, `idlelib`, `lib2to3`,
 `pydoc_data`, plus la pile réseau et les capacités listées en
 `DOSSIER-RSSI.md` §4 et §5.
 
-Le paquet livré contient **63 binaires** : 40 façades `api-ms-win-*` de
-l'Universal CRT de Microsoft, et 23 fichiers réels.
+Le paquet livré contient **60 binaires** : 40 façades `api-ms-win-*` de
+l'Universal CRT de Microsoft, et 20 fichiers réels.
 
 ---
 
@@ -74,10 +74,14 @@ livrés.
 | **OpenSSL (libcrypto seul)** | 3.0.15, 3 sept. 2024 | `libcrypto-3.dll`, `_hashlib.pyd` | SHA-256 : empreinte du fichier source, anonymisation des références | Apache 2.0 |
 | **zlib** | 1.2.13 | `zlib1.dll` | lecture et écriture des archives `.xlsx`, compression des PNG | zlib |
 | **libexpat** | 2.6.3 | `pyexpat.pyd` | lecture du XML d'un classeur | MIT |
-| **libmpdec** | fournie avec CPython | `_decimal.pyd` | arithmétique décimale — **non employée** (§4) | BSD |
 | **bzip2** | 1.0.8, 13 juil. 2019 | `_bz2.pyd` | membres d'archive compressés en bzip2 | BSD-like |
 | **liblzma** | fournie avec CPython | `_lzma.pyd` | membres d'archive compressés en LZMA | domaine public |
 | **Universal CRT** | Windows | 40 × `api-ms-win-*.dll` | bibliothèque C de Microsoft | Microsoft |
+
+**libmpdec n'est plus là.** Elle arrivait par `_decimal.pyd`, au motif qu'elle
+portait les montants. La mesure du §4 a démenti : l'outil calcule en
+flottants, et ce module n'était jamais chargé. Il a été retiré, avec
+`_uuid.pyd` et `_zoneinfo.pyd`, jamais chargés non plus.
 
 > **`libcrypto-3.dll` sera relevée par une revue, et c'est normal.** C'est la
 > moitié **cryptographie** d'OpenSSL, dont `_hashlib` a besoin pour le
@@ -92,27 +96,40 @@ Pas de `libffi` : `_ctypes` a été retiré, et sa bibliothèque avec lui. Pas d
 ## 4. Ce qui est chargé pour de vrai
 
 Mesuré en lançant **l'interpréteur livré** sur une analyse complète — lecture
-du fichier, calculs, restitution HTML, synthèse PDF, vue détaillée, classeur.
-Sept modules natifs sont chargés :
+du fichier, calculs, les sept documents, et l'import de la fenêtre. Huit
+modules natifs sont chargés, et ce sont exactement les huit qui restent :
 
 ```
 _bz2.pyd   _elementtree.pyd   _hashlib.pyd   _lzma.pyd
-_tkinter.pyd   pyexpat.pyd   unicodedata.pyd
+_queue.pyd   _tkinter.pyd   pyexpat.pyd   unicodedata.pyd
 ```
 
 `_bz2` et `_lzma` surprennent : l'outil ne compresse rien en bzip2 ni en
 LZMA. C'est `zipfile` qui les importe à son propre chargement, pour savoir
 lire un membre d'archive qui emploierait ces méthodes. Ils sont donc des
-dépendances réelles du paquet, pas du code métier.
+dépendances réelles du paquet, pas du code métier. `_queue` sert à la
+fenêtre, qui fait passer l'avancement du calcul d'un fil à l'autre par une
+file.
 
-**Trois modules natifs ne sont jamais chargés** : `_decimal.pyd`,
-`_uuid.pyd`, `_zoneinfo.pyd`. Aucun module de l'outil n'importe `decimal`,
-`uuid` ni `zoneinfo`. Ils pourraient être retirés comme le reste. Ce n'est
-pas fait à ce jour, et l'inventaire le dit : un relevé qui ne mentionne que
-ce qui sert n'est pas un relevé.
+**Trois modules natifs ont été retirés parce que la mesure les a trouvés
+inertes** : `_decimal.pyd` (et avec lui libmpdec), `_uuid.pyd`,
+`_zoneinfo.pyd`. Aucun module de l'outil n'importe `decimal`, `uuid` ni
+`zoneinfo`.
 
-`_queue.pyd` est employé par la fenêtre, qui fait passer l'avancement du
-calcul d'un fil à l'autre par une file.
+Les modules Python qui les accompagnent restent : `decimal.py` et
+`_pydecimal.py` parce que `statistics`, `fractions` et `_pylong` les
+importent — ils continuent de fonctionner, en version Python pure et plus
+lente ; `uuid.py` parce que `wave.py` l'importe. Le paquet reste cohérent :
+vérifié en lançant l'interpréteur livré, qui importe encore `decimal`,
+`statistics`, `fractions` et `uuid` sans erreur et produit les sept
+documents.
+
+> **Un effet de bord qui va dans le bon sens.** Sans `_uuid.pyd`, sans
+> `ctypes` et sans `subprocess`, `uuid.getnode()` n'a plus aucun moyen de
+> lire l'adresse matérielle de la carte réseau : il rend un nombre tiré au
+> hasard. Constaté sur l'interpréteur livré — deux appels successifs rendent
+> deux valeurs différentes, et le bit « multicast » qui marque un tirage au
+> hasard est levé.
 
 ---
 
@@ -141,7 +158,7 @@ mort, l'inspecteur de PE, le générateur de population de démonstration sont
 | Bibliothèques tierces dans le code | **0** |
 | Fichier de dépendances | **aucun** |
 | Dépendances transitives | **aucune** |
-| Bibliothèques natives embarquées | **7**, toutes apportées par CPython |
+| Bibliothèques natives embarquées | **6**, toutes apportées par CPython |
 | Dont pile TLS | **aucune** (`libssl` absente) |
 | Dont accès base de données | **aucun** (`sqlite3` retirée) |
 | Dont appel système générique | **aucun** (`libffi` / `_ctypes` retirés) |

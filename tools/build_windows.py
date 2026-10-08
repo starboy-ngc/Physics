@@ -155,18 +155,36 @@ TCL_INUTILE = ("nmake", "reg1.3", "dde1.4", "tix8.4.3",
 #:
 #: Volontairement gardés : « pyexpat.pyd » (lecture du XML d'un .xlsx),
 #: « _elementtree.pyd » (idem), « _hashlib.pyd » (SHA-256),
-#: « _decimal.pyd » (montants), « _tkinter.pyd » (la fenêtre),
-#: « _bz2.pyd » et « _lzma.pyd » (zipfile les demande à l'import).
+#: « _tkinter.pyd » (la fenêtre), « _bz2.pyd » et « _lzma.pyd » (zipfile
+#: les demande à son propre import). Cette liste a été établie en
+#: *mesurant* : l'interpréteur livré a été lancé sur une analyse complète,
+#: et ce sont les sept modules natifs qu'il charge.
+#:
+#: « _decimal.pyd » y figurait, au motif qu'il portait les montants. La
+#: mesure a démenti : l'outil calcule en flottants, et ce module n'est
+#: jamais chargé. Il part avec « _uuid.pyd » et « _zoneinfo.pyd », jamais
+#: chargés non plus — trois bibliothèques natives de moins dans un paquet
+#: dont chaque binaire doit se justifier.
+#:
+#: Les modules Python qui les accompagnent restent, eux : « decimal.py »
+#: et « _pydecimal.py » parce que « statistics », « fractions » et
+#: « _pylong » les importent et doivent continuer de fonctionner, en
+#: version Python pure et plus lente ; « uuid.py » parce que « wave.py »
+#: l'importe. Sans « _uuid.pyd », sans « ctypes » et sans « subprocess »,
+#: « uuid.getnode() » ne peut plus lire l'adresse matérielle de la carte
+#: réseau : il rend un nombre tiré au hasard.
 CAPACITES_DLLS = ("_ctypes.pyd", "_ctypes_test.pyd", "_multiprocessing.pyd",
                   "_msi.pyd", "_wmi.pyd", "_sqlite3.pyd", "winsound.pyd",
                   "_testcapi.pyd", "_testbuffer.pyd",
                   "_testinternalcapi.pyd", "_testimportmultiple.pyd",
-                  "sqlite3.dll", "libffi-8.dll")
+                  "sqlite3.dll", "libffi-8.dll",
+                  "_decimal.pyd", "_uuid.pyd", "_zoneinfo.pyd")
 CAPACITES_LIB = ("subprocess.py", "multiprocessing", "concurrent", "ctypes",
                  "sqlite3", "shelve.py", "dbm", "pty.py", "tty.py",
                  "pdb.py", "bdb.py", "pydoc.py", "pydoc_data",
                  "antigravity.py", "turtle.py", "turtledemo",
-                 "idlelib", "lib2to3", "ensurepip", "venv", "distutils")
+                 "idlelib", "lib2to3", "ensurepip", "venv", "distutils",
+                 "zoneinfo")
 
 #: Arborescences reprises du dépôt.
 ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),

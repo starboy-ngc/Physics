@@ -310,7 +310,8 @@ class TestTheNetworkStackIsRemoved(unittest.TestCase):
                         os.path.join("Lib", "email"),
                         os.path.join("Lib", "ctypes"),
                         os.path.join("Lib", "multiprocessing"),
-                        os.path.join("Lib", "sqlite3")):
+                        os.path.join("Lib", "sqlite3"),
+                        os.path.join("Lib", "zoneinfo")):
             os.makedirs(os.path.join(racine, dossier), exist_ok=True)
         for chemin in ("DLLs/_socket.pyd", "DLLs/_ssl.pyd", "DLLs/select.pyd",
                        "DLLs/_hashlib.pyd", "libssl-3.dll",
@@ -323,6 +324,9 @@ class TestTheNetworkStackIsRemoved(unittest.TestCase):
                        "DLLs/winsound.pyd", "DLLs/pyexpat.pyd",
                        "DLLs/_elementtree.pyd", "DLLs/_tkinter.pyd",
                        "DLLs/_decimal.pyd", "DLLs/_bz2.pyd", "DLLs/_lzma.pyd",
+                       "DLLs/_uuid.pyd", "DLLs/_zoneinfo.pyd",
+                       "Lib/decimal.py", "Lib/_pydecimal.py", "Lib/uuid.py",
+                       "Lib/zoneinfo/__init__.py",
                        "Lib/subprocess.py", "Lib/ctypes/__init__.py",
                        "Lib/multiprocessing/__init__.py",
                        "Lib/sqlite3/__init__.py", "Lib/zipfile.py"):
@@ -417,12 +421,21 @@ class TestTheNetworkStackIsRemoved(unittest.TestCase):
                       "DLLs/winsound.pyd", "Lib/subprocess.py",
                       "Lib/ctypes", "Lib/multiprocessing", "Lib/sqlite3"):
             self.assertIn(parti, retires, parti)
-        # Gardés : la lecture d'un .xlsx, les montants, la fenêtre, et les
-        # deux modules de décompression que « zipfile » importe.
+        # Partent aussi : les trois modules natifs que l'interpréteur livré
+        # ne charge jamais — mesuré sur une analyse complète.
+        for parti in ("DLLs/_decimal.pyd", "DLLs/_uuid.pyd",
+                      "DLLs/_zoneinfo.pyd", "Lib/zoneinfo"):
+            self.assertIn(parti, retires, parti)
+        # Gardés : la lecture d'un .xlsx, la fenêtre, et les deux modules de
+        # décompression que « zipfile » importe. Gardés aussi, les modules
+        # Python que d'autres importent : « statistics » et « fractions »
+        # demandent « decimal », « wave » demande « uuid ». Ils marchent
+        # sans leur accélérateur natif, en plus lent.
         for reste in ("DLLs/pyexpat.pyd", "DLLs/_elementtree.pyd",
-                      "DLLs/_tkinter.pyd", "DLLs/_decimal.pyd",
+                      "DLLs/_tkinter.pyd",
                       "DLLs/_hashlib.pyd", "DLLs/_bz2.pyd", "DLLs/_lzma.pyd",
-                      "Lib/zipfile.py"):
+                      "Lib/zipfile.py", "Lib/decimal.py",
+                      "Lib/_pydecimal.py", "Lib/uuid.py"):
             self.assertNotIn(reste, retires, reste)
 
     def test_removing_the_powers_really_removes_them(self):
