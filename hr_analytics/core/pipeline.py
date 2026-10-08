@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import gc
+import threading
 import time as _time
 from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, List, Optional, Sequence
@@ -260,6 +261,14 @@ class _without_cycle_collection:
     L'etat d'origine est restaure quoi qu'il arrive, et un passage de
     ramassage est declenche en sortant : ce qui n'a pas ete collecte pendant
     l'analyse l'est aussitot apres.
+
+    Sauf depuis un fil secondaire. Un objet Tk libere par le ramasseur
+    (une image, une variable) appelle Tcl dans son `__del__`, et un appel
+    Tcl venu d'un autre fil que celui de la fenetre attend que celle-ci le
+    serve ; si elle est elle-meme en train de ramasser, les deux fils
+    s'attendent et l'analyse ne rend jamais la main. La fenetre, qui lance
+    l'analyse dans un fil, fait donc le passage elle-meme a la reception du
+    resultat, sur son propre fil.
     """
 
     def __enter__(self):
@@ -270,7 +279,8 @@ class _without_cycle_collection:
     def __exit__(self, *_exception):
         if self.actif:
             gc.enable()
-            gc.collect()
+            if threading.current_thread() is threading.main_thread():
+                gc.collect()
         return False
 
 

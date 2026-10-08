@@ -21,18 +21,18 @@ IMPORT ─▶ CONTRÔLE QUALITÉ ─▶ NORMALISATION ─▶ PARAMÉTRAGE ─▶
 python3 -m hr_analytics.cli interface     # ou sans argument
 ```
 
-Fenêtre unique, `tkinter` livré avec Python — aucune dépendance. Parcours
+Fenêtre unique, `tkinter` livré avec Python : aucune dépendance. Parcours
 Importer → Filtrer → Analyser → Restituer, filtres alimentés par le fichier
 chargé, et un nuage ancienneté × rémunération **explorable** : survol pour
 identifier, molette pour zoomer, clic sur la légende pour isoler une
 population.
 
-L'ouverture affiche un **écran d'accueil** — le symbole de l'outil, une
+L'ouverture affiche un **écran d'accueil** : le symbole de l'outil, une
 marque calculée à la formule plutôt que livrée en fichier image, et
 l'étape de démarrage en cours.
 
 L'analyse tourne sur un fil séparé et **annonce son avancement étape par
-étape** — lecture du fichier, normalisation, indicateurs, segments — que la
+étape**, lecture du fichier, normalisation, indicateurs, segments, que la
 fenêtre montre sur une barre animée sur l'horloge plutôt que sur le nombre
 d'images : une image tardive y fait un pas plus grand, jamais un arrêt.
 
@@ -72,7 +72,7 @@ dépendance, aucun binaire tiers.
 - **Import** XLSX / XLSM / CSV, mapping de colonnes configurable, tolérant à la
   casse et aux accents.
 - **Contrôle qualité** : structure, doublons, dates incohérentes, salaires
-  manquants/négatifs/extrêmes, seuils de plausibilité — rapport hiérarchisé.
+  manquants/négatifs/extrêmes, seuils de plausibilité, rapport hiérarchisé.
 - **Indicateurs population** : effectif, âge et ancienneté (moyenne, médiane),
   répartition par tranches paramétrables.
 - **Indicateurs rémunération** : masse salariale, moyenne, médiane, P10, Q1,
@@ -82,8 +82,8 @@ dépendance, aucun binaire tiers.
   À l'écran, chaque segment porte son **ouverture de grille chiffrée**
   (`× 1,20`) et sa médiane, en deux colonnes triables.
 - **Distribution** : histogramme, séparation femmes / hommes **dos à dos**
-  sur les mêmes classes — l'écart global dit *de combien*, la forme des
-  deux distributions dit *où* —, situations atypiques (méthode
+  sur les mêmes classes, l'écart global dit *de combien*, la forme des
+  deux distributions dit *où*, situations atypiques (méthode
   interquartile).
 - **Nuage de points** sur **deux axes au choix** parmi les champs numériques
   déclarés : coloration par dimension, info-bulles, droite de tendance,
@@ -92,7 +92,7 @@ dépendance, aucun binaire tiers.
   notion metier ne demande aucune modification du code), filtres combinables,
   comparaison de deux populations.
 - **Organigramme** : pour une équipe choisie, sa structure d'encadrement en
-  cases reliées et la liste de ses salariés, sur la population analysée —
+  cases reliées et la liste de ses salariés, sur la population analysée,
   filtres compris.
 - **Petits effectifs** : masquage, avertissement et désactivation des
   graphiques, sur seuils paramétrables.
@@ -129,15 +129,15 @@ générateur pseudo-aléatoire à graine fixe.
 
 ## Documentation
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — modules, décisions,
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) : modules, décisions,
   sécurité, performance, feuille de route.
-- [`docs/MODE-OPERATOIRE.html`](docs/MODE-OPERATOIRE.html) — mode
+- [`docs/MODE-OPERATOIRE.html`](docs/MODE-OPERATOIRE.html), mode
   opératoire illustré : ce que montre chaque page, capture à l'appui.
   Document autonome, à ouvrir dans un navigateur ; il part avec le paquet.
-- [`docs/GUIDE_UTILISATEUR.md`](docs/GUIDE_UTILISATEUR.md) — guide RH.
-- [`docs/AUDIT.md`](docs/AUDIT.md) — audit complet : ce qui a été
+- [`docs/GUIDE_UTILISATEUR.md`](docs/GUIDE_UTILISATEUR.md) : guide RH.
+- [`docs/AUDIT.md`](docs/AUDIT.md), audit complet : ce qui a été
   mesuré, les défauts trouvés et corrigés, ce qui reste fragile.
-- [`docs/AUDIT-SECURITE-IT.md`](docs/AUDIT-SECURITE-IT.md) — audit de
+- [`docs/AUDIT-SECURITE-IT.md`](docs/AUDIT-SECURITE-IT.md), audit de
   sécurité IT : dépendances, accès réseau, sortie de données,
   injection depuis le fichier RH.
 
@@ -145,4 +145,4 @@ générateur pseudo-aléatoire à graine fixe.
 
 Python 3.10 ou supérieur. Rien d'autre.
 
-Essayé sur 3.10, 3.11, 3.12 et 3.13. La 3.9 devrait convenir — aucune construction plus récente n'est employée — mais elle n'a pas été essayée.
+Essayé sur 3.10, 3.11, 3.12 et 3.13. La 3.9 devrait convenir, aucune construction plus récente n'est employée, mais elle n'a pas été essayée.

@@ -223,7 +223,7 @@ def command_config(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="hr-analytics",
-        description=f"{ENGINE_NAME} v{__version__} — analyse locale, hors ligne.",
+        description=f"{ENGINE_NAME} v{__version__}, analyse locale, hors ligne.",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     parser.add_argument("--logs", default="", help="dossier du log technique")

@@ -72,7 +72,7 @@ class TestYears(unittest.TestCase):
         self.assertEqual(format_years(41.7), "42 ans")
 
     def test_a_missing_duration_stays_readable(self):
-        self.assertEqual(format_years(None), "—")
+        self.assertEqual(format_years(None), "-")
 
     def test_a_table_column_drops_the_unit_but_keeps_the_rule(self):
         """L'en-tete porte deja « Ancienneté » : la repeter ligne a ligne

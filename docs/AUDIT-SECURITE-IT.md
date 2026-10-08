@@ -1,4 +1,4 @@
-# Audit de sécurité IT — HR Analytics 1.0.0
+# Audit de sécurité IT : HR Analytics 1.0.0
 
 *Conduit le 25 septembre 2026 sur la branche
 `claude/compensation-analytics-local-8mbxy0`.*
@@ -19,7 +19,7 @@ Méthode : rien n'est accordé au code sur la foi de ce qu'il déclare. Les
 dépendances sont lues dans les imports, pas dans un fichier de
 dépendances ; les interdits sont vérifiés par une sonde d'exécution
 (PEP 578) qui voit chaque socket, chaque processus, chaque compilation de
-chaîne, chaque écriture — l'interpréteur ne ment pas sur ce qu'on lui
+chaîne, chaque écriture : l'interpréteur ne ment pas sur ce qu'on lui
 demande.
 
 ---
@@ -45,7 +45,7 @@ désormais le fichier RH entier (§4.1).
 
 ---
 
-## 2. Dépendances — ce que le code appelle
+## 2. Dépendances : ce que le code appelle
 
 Les 37 fichiers du paquet n'importent que la bibliothèque standard :
 
@@ -70,8 +70,8 @@ privilège, ne touchent pas au registre.
 
 ## 3. Ce que le processus fait réellement
 
-Sonde PEP 578 sur le parcours complet — import, lecture du fichier,
-analyse, classeur, restitution, slides, manifeste — puis le même parcours
+Sonde PEP 578 sur le parcours complet, import, lecture du fichier,
+analyse, classeur, restitution, slides, manifeste, puis le même parcours
 **fenêtre ouverte**, tous les onglets parcourus et quatre postes dépliés.
 
 | | moteur | interface |
@@ -80,7 +80,7 @@ analyse, classeur, restitution, slides, manifeste — puis le même parcours
 | Processus, shell | **0** | **0** |
 | `ctypes`, registre, `pickle` | **0** | **0** |
 | Import hors bibliothèque standard | **0** | **0** |
-| Fichier temporaire | — | **0** |
+| Fichier temporaire | - | **0** |
 | Écritures hors dossier de sortie | **0** | **0** |
 
 ### Le code dynamique, regardé de près
@@ -91,7 +91,7 @@ d'où ils viennent :
 
 | Origine | Nombre | Ce que c'est |
 |---|---|---|
-| **Code de l'outil** | **0** | — |
+| **Code de l'outil** | **0** | - |
 | Machinerie d'import | 147 | lecture du bytecode des modules |
 | Bibliothèque standard | 125 | `typing` et `dataclasses` qui évaluent des annotations |
 
@@ -103,7 +103,7 @@ pour tout programme Python ; l'outil, lui, ne compile rien.
 
 ## 4. Sortie de données
 
-### 4.1 Ce que chaque document emporte — le point d'attention
+### 4.1 Ce que chaque document emporte : le point d'attention
 
 Mesuré sur une population de 600 salariés, en cherchant dans chaque
 document les 600 noms, 600 prénoms, 600 matricules et 599 salaires
@@ -117,9 +117,9 @@ individuels du fichier :
 | `synthese.html` | aucune donnée individuelle | aucune |
 | `manifeste.json` | aucune donnée individuelle | aucune |
 
-**Le classeur est une copie du fichier de paie.** C'est voulu — il existe
+**Le classeur est une copie du fichier de paie.** C'est voulu, il existe
 pour qu'une équipe C&B refasse chaque calcul, et une vérification sans les
-valeurs n'en est pas une — mais c'est de loin la plus grande surface de
+valeurs n'en est pas une, mais c'est de loin la plus grande surface de
 sortie de l'outil, et elle est active **par défaut**.
 
 Ce que cela implique :
@@ -152,19 +152,19 @@ de chaque pièce des archives :
 
 Les 17 adresses trouvées dans le code sont **toutes** des espaces de noms
 XML OOXML (`schemas.openxmlformats.org`) : des identifiants de format,
-jamais déréférencés — la sonde le confirme, zéro accès réseau.
+jamais déréférencés, la sonde le confirme, zéro accès réseau.
 
 Un seul script figure dans les documents HTML : 18 lignes d'info-bulle,
 inline. Il n'emploie ni `innerHTML`, ni `eval`, ni `fetch`, ni
-`XMLHttpRequest`, ni stockage local — uniquement `textContent`, le puits
+`XMLHttpRequest`, ni stockage local : uniquement `textContent`, le puits
 sûr.
 
-### 4.3 Les documents étaient lisibles par tous — corrigé
+### 4.3 Les documents étaient lisibles par tous : corrigé
 
 **Défaut trouvé.** Créés au masque par défaut, les documents naissaient en
 `-rw-r--r--`. Sans conséquence sur un poste personnel ; sur un serveur de
-rebond, un bureau partagé ou un dossier synchronisé, le classeur — qui
-porte 600 noms — était lisible par tout compte de la machine.
+rebond, un bureau partagé ou un dossier synchronisé, le classeur, qui
+porte 600 noms, était lisible par tout compte de la machine.
 
 Les cinq écritures passent désormais par `restrict_to_owner()` :
 `-rw-------`. Sous Windows, seul le bit de lecture seule répond à `chmod`
@@ -213,16 +213,16 @@ recherche de chacune dans tous les documents produits :
 | `@SUM(1+1)*cmd\|…` | échappée | échappée | **cellule texte** |
 | Entité XML externe | échappée | échappée | texte |
 
-**Aucun code actif ne ressort.** Les charges sont présentes — c'est
-normal, ce sont des données — mais échappées : `&lt;script&gt;`.
+**Aucun code actif ne ressort.** Les charges sont présentes, c'est
+normal, ce sont des données, mais échappées : `&lt;script&gt;`.
 
 Les charges de type formule (`=cmd|…`) sont écrites en `t="inlineStr"`,
 c'est-à-dire en **cellule de texte**. Excel ne les exécute pas : une
 formule vit dans un élément `<f>`, jamais dans une chaîne. Et l'outil
-**n'exporte jamais de CSV** — format où un `=` en tête serait, lui,
+**n'exporte jamais de CSV** : format où un `=` en tête serait, lui,
 interprété à l'ouverture. CSV n'est qu'un format d'entrée.
 
-### 5.2 La porte d'entrée de Tk — refermée, revérifiée
+### 5.2 La porte d'entrée de Tk : refermée, revérifiée
 
 Tk lit et *exécute* un `~/.Tk.py` à la création d'une fenêtre (CPython
 issue 16248). Rejoué ici avec un faux répertoire personnel piégé : le
@@ -243,11 +243,11 @@ Sur 37 fichiers du paquet et les outils annexes :
 
 ---
 
-## 5bis. Le paquet Windows livré — la capacité réseau est *absente*
+## 5bis. Le paquet Windows livré : la capacité réseau est *absente*
 
 Les sections précédentes portent sur le code. Celle-ci porte sur ce qui
 est réellement remis : `HR Analytics.exe` et le dossier qu'il déplie.
-L'argument change de nature — il ne s'agit plus de montrer que l'outil
+L'argument change de nature : il ne s'agit plus de montrer que l'outil
 n'appelle pas le réseau, mais que **rien dans le paquet ne peut
 l'appeler**.
 
@@ -269,8 +269,8 @@ obligerait l'équipe qui l'homologue à nous croire sur parole. Vingt-huit
 | `ftplib`, `smtplib`, `poplib`, `imaplib`, `telnetlib`, `nntplib` | transferts et messagerie |
 | `webbrowser.py`, `cgi.py`, `cgitb.py` | ouverture de navigateur, CGI |
 
-Gardés, et pour cause : `libcrypto-3.dll` et `_hashlib.pyd` — les
-empreintes SHA-256 et l'anonymisation en dépendent — et
+Gardés, et pour cause : `libcrypto-3.dll` et `_hashlib.pyd`, les
+empreintes SHA-256 et l'anonymisation en dépendent, et
 `urllib/parse.py`, que `pathlib` importe pour écrire un chemin en URL.
 Ni l'un ni l'autre n'ouvre quoi que ce soit.
 
@@ -301,7 +301,7 @@ Aucune d'elles ne porte de fonction réseau.
 ### 5bis.3 Ce que le parcours complet charge
 
 Une analyse complète suivie des quatre restitutions charge **218
-modules**. Aucun n'est un module réseau — `urllib.parse` y figure, tiré
+modules**. Aucun n'est un module réseau : `urllib.parse` y figure, tiré
 par `pathlib`, et il ne fait que découper des chaînes.
 
 ### 5bis.4 Vérifié en exécution, pas seulement en lecture
@@ -311,14 +311,14 @@ analyse en ligne de commande sur 400 salariés produit le rapport HTML, la
 synthèse, la vue détaillée, le classeur et le manifeste. Retirer la pile
 réseau ne retire donc rien à l'outil.
 
-### 5bis.5 La signature — ce qu'elle vaut et ce qu'elle ne vaut pas
+### 5bis.5 La signature : ce qu'elle vaut et ce qu'elle ne vaut pas
 
 L'exécutable est signé « Clément Chevallier » avec un certificat
 auto-signé. Il faut être clair : **cela ne lève pas l'avertissement
 SmartScreen**. Un certificat auto-signé n'est pas rattaché à une autorité
 reconnue ; Windows affichera « éditeur inconnu » au premier lancement.
 La signature ne devient utile qu'une fois le certificat déployé par l'IT
-dans les éditeurs approuvés du parc — c'est à cette condition, et à elle
+dans les éditeurs approuvés du parc : c'est à cette condition, et à elle
 seule, qu'elle sert.
 
 ---
@@ -332,10 +332,10 @@ seule, qu'elle sert.
 - **Le compte privilégié.** Le banc tourne en `root` : un refus lié aux
   droits de fichier ne s'y manifeste pas.
 - **L'interpréteur lui-même.** L'outil n'a aucune dépendance, mais il
-  s'exécute sur le Python du poste — dont la version et l'intégrité sont
+  s'exécute sur le Python du poste : dont la version et l'intégrité sont
   du ressort de l'IT.
-- **Le transport.** Ce que devient un document une fois produit — messagerie,
-  partage réseau, clé USB — sort du périmètre de l'outil.
+- **Le transport.** Ce que devient un document une fois produit, messagerie,
+  partage réseau, clé USB, sort du périmètre de l'outil.
 
 ---
 

@@ -908,7 +908,7 @@ class HistogramChart(tk.Frame):
             if item in self._items:
                 data = self._items[item]
                 self.tooltip.show(
-                    f'{format_money(data["lower"], self.currency)} — '
+                    f'De {format_money(data["lower"], self.currency)} à '
                     f'{format_money(data["upper"], self.currency)}\n'
                     f'{int(data["count"])} {data.get("sex") or "salariés"}',
                     self.canvas.winfo_rootx() + event.x,
@@ -1123,7 +1123,7 @@ class _Boxes(tk.Frame):
         for _titre, cle in presentes:
             nombre = (row.get("headcount", 0) if cle is None
                       else row.get(f"{cle}_count"))
-            effectifs.append("—" if nombre is None
+            effectifs.append("-" if nombre is None
                              else format_number(nombre, 0))
         lignes = [("Effectif", effectifs)]
         for intitule, clef in self.BORNES:
@@ -1131,7 +1131,7 @@ class _Boxes(tk.Frame):
             for _titre, cle in presentes:
                 bloc = row.get("salary") if cle is None else row.get(cle)
                 valeur = (bloc or {}).get(clef)
-                cellules.append("—" if valeur is None
+                cellules.append("-" if valeur is None
                                 else format_money(valeur, self.currency))
             lignes.append((intitule, cellules))
         return {"titre": str(row.get("segment", "")),
@@ -1238,6 +1238,9 @@ class BoxPlotChart(_Boxes):
         redraw_on_resize(self, self.canvas)
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+        # L'en-tete porte « ÉCART F/H » : survole, il dit ce que c'est.
+        self.header.bind("<Motion>", self._on_header_motion)
+        self.header.bind("<Leave>", lambda _e: self.tooltip.hide())
         # La molette sur le graphique : atteindre le vingtieme metier a
         # l'ascenseur seulement serait une corvee. Le rappel est annule a la
         # destruction : sans cela, un graphique ferme avant le premier temps
@@ -1250,6 +1253,41 @@ class BoxPlotChart(_Boxes):
 
     #: Hauteur du bandeau d'en-tete : une ligne d'intitules.
     HEADER_HEIGHT = 26
+
+    def _gap_explanation(self) -> str:
+        """Ce que l'ecart F/H mesure, et comment il est obtenu.
+
+        Le chiffre tient dans une gouttiere, sans un mot pour le dire :
+        « +12,4 % » se lit comme un fait, mais un fait sur quoi ? Le texte
+        vient du glossaire, celui des documents, pour que l'ecran et le
+        rapport parlent du meme calcul.
+        """
+        from ..core.glossary import describe
+
+        entry = describe("median_gap")
+        if entry is None:
+            return "Écart F/H"
+        return f"Écart F/H\n{entry.definition}\nCalcul : {entry.formula}"
+
+    def _over_gap(self, x: float) -> bool:
+        """Le curseur est-il dans la gouttiere de l'ecart ?"""
+        return self.split and x >= self.canvas.winfo_width() - self.GAP_COLUMN
+
+    def _on_header_motion(self, event) -> None:
+        if self._over_gap(event.x):
+            self.tooltip.show(self._gap_explanation(),
+                              self.header.winfo_rootx() + event.x,
+                              self.header.winfo_rooty() + event.y)
+        else:
+            self.tooltip.hide()
+
+    def _on_motion(self, event) -> None:
+        if self._over_gap(event.x) and self._drawable():
+            self.tooltip.show(self._gap_explanation(),
+                              self.canvas.winfo_rootx() + event.x,
+                              self.canvas.winfo_rooty() + event.y)
+            return
+        super()._on_motion(event)
 
     #: Devant quarante postes empiles, la premiere question est « lesquels
     #: pesent » : l'effectif reste le defaut de cette presentation-ci.
@@ -1469,7 +1507,7 @@ class BoxPlotChart(_Boxes):
             # endroit qui n'existe plus. Le rapport et le classeur, eux,
             # listent ces segments avec leur effectif.
             phrase += (f" {withheld} segment(s) trop peu nombreux pour être "
-                       "tracés — le rapport et le classeur les listent.")
+                       "tracés : le rapport et le classeur les listent.")
         canvas.create_text(left + wide + offset, mid - 5, anchor="nw",
                                 fill=theme.MUTED, font=axis_font(),
                                 width=room, text=phrase)
@@ -1684,7 +1722,7 @@ class BoxPlotChart(_Boxes):
             # « on n'a pas le droit de le dire ».
             self.canvas.create_text(width - 8, centre, anchor="e",
                                     fill=theme.FAINT, font=axis_font(),
-                                    text="—")
+                                    text="-")
             return
         # Un ecart negatif — les femmes payees davantage — reste en teinte
         # neutre : c'est une situation a regarder, ce n'est pas celle que la
@@ -2042,7 +2080,7 @@ class VerticalBoxPlotChart(_Boxes):
         retenus = self._withheld()
         if retenus:
             phrase += (f" {retenus} catégorie(s) trop peu nombreuse(s) pour "
-                       "être tracée(s) — le rapport et le classeur les "
+                       "être tracée(s) : le rapport et le classeur les "
                        "listent.")
         if self.reference is not None:
             phrase += " Le trait pointillé est la médiane d'ensemble."
@@ -2535,7 +2573,7 @@ class OrgChart(tk.Frame):
         self._items[titre] = node
         poste = self.canvas.create_text(
             x + 8, y + 24, anchor="w",
-            text=_shorten(self, node.get("job") or "—", self.BOX_W - 16),
+            text=_shorten(self, node.get("job") or "-", self.BOX_W - 16),
             font=note_font(), fill=theme.MUTED)
         self._items[poste] = node
         # Le salaire du responsable, et non la mediane de son equipe : c'est

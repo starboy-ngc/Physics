@@ -164,7 +164,7 @@ def _check_encoding(encoding: str, config: Configuration,
             severity=INFO,
             message=(
                 f"Le fichier n'est pas en {declares[0]} : il a été lu en "
-                f"{encoding}. Vérifiez les accents des libellés — en cas "
+                f"{encoding}. Vérifiez les accents des libellés ; en cas "
                 "de doute, réenregistrez le fichier au format "
                 "\"CSV UTF-8\" depuis Excel."
             ),
@@ -256,7 +256,7 @@ def _check_structure(
                 report, "fte_ambiguous_scale", WARNING,
                 "Temps de travail ambigu : la colonne est écrite en "
                 "pourcentage (80 pour 80 %), mais ces lignes portent une "
-                "valeur inférieure à 1,5 — un temps plein écrit « 1 » dans "
+                "valeur inférieure à 1,5 ; un temps plein écrit « 1 » dans "
                 "une colonne en pourcentage vaudrait 1 %. Ces lignes sont "
                 "écartées du calcul à temps plein. Harmonisez l'écriture de "
                 "la colonne.",

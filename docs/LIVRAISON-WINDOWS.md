@@ -19,7 +19,7 @@ HR Analytics\
   population-*.xlsx  jeux d'essai, sans aucune donnée réelle
 ```
 
-Il se pose où l'on veut — disque local, clé USB, partage réseau — et se
+Il se pose où l'on veut, disque local, clé USB, partage réseau, et se
 désinstalle en le supprimant. Rien dans le registre, rien dans `%TEMP%`,
 rien dans `Program Files`, aucun droit administrateur.
 
@@ -42,7 +42,7 @@ faire ici :
    C fournies dans `docs\lanceur.c`.
 3. **La configuration se retrouverait dans l'archive**, donc dans un dossier
    temporaire recréé à chaque lancement. Les réglages de l'utilisateur
-   seraient perdus d'une session à l'autre — exactement ce que la page
+   seraient perdus d'une session à l'autre : exactement ce que la page
    Paramètres existe pour éviter.
 
 Le dossier livré n'a aucun de ces trois défauts.
@@ -73,7 +73,7 @@ Le lanceur est compilé avec mingw, `python312.dll` avec le compilateur de
 Microsoft : chacun embarque sa propre bibliothèque C. Chargée en DLL, celle
 de Python n'a pas de descripteurs d'entrée et de sortie standard, et
 l'initialisation s'arrête sur `can't initialize sys standard streams`. Poser
-les poignées Windows avec `SetStdHandle` n'y change rien — ce n'est pas ce
+les poignées Windows avec `SetStdHandle` n'y change rien : ce n'est pas ce
 que la bibliothèque C regarde ; `freopen` non plus, puisqu'il agit sur
 *l'autre* bibliothèque C.
 
@@ -102,8 +102,8 @@ Depuis Linux comme depuis Windows. Deux outils sont nécessaires :
 `core`, `exe`, `lib`, `tcltk`, `ucrt`. Si l'on dispose déjà d'un Python
 Windows extrait, `--runtime <dossier>` l'emploie et rien n'est téléchargé.
 
-**Le piège à connaître :** la distribution « embeddable » de python.org — le
-`.zip` de 11 Mo qu'on trouve en premier — **ne contient pas tkinter**. Ni le
+**Le piège à connaître :** la distribution « embeddable » de python.org, le
+`.zip` de 11 Mo qu'on trouve en premier, **ne contient pas tkinter**. Ni le
 paquet NuGet. L'outil ne démarrerait pas. Les composants individuels, eux,
 portent `tcltk.msi`, et c'est pour cela que le script passe par eux.
 
@@ -160,8 +160,8 @@ python3 tools/build_windows.py --sortie dist --runtime <python> --exe
 ### Comment il marche
 
 L'exécutable porte, repliée derrière son propre code, une archive CAB
-contenant tout le dossier. Un pied de douze octets — une marque, la taille
-de la charge, son empreinte — permet au lanceur de la retrouver en se
+contenant tout le dossier. Un pied de douze octets, une marque, la taille
+de la charge, son empreinte, permet au lanceur de la retrouver en se
 relisant lui-même.
 
 Au premier lancement, il la dépose dans
@@ -177,7 +177,7 @@ Trois détails qui comptent :
   ne peuvent pas se mélanger, et la même version ne se réextrait jamais.
 - **La configuration vit au-dessus des versions**, dans
   `%LOCALAPPDATA%\HR Analytics\config\`. Une mise à jour ne la remet pas à
-  zéro — c'était le troisième défaut reproché aux exécutables repliés.
+  zéro : c'était le troisième défaut reproché aux exécutables repliés.
 
 C'est **Windows lui-même** qui déplie l'archive (`SetupIterateCabinetW`).
 Aucune bibliothèque de décompression n'est embarquée : rien à auditer de ce
@@ -235,7 +235,7 @@ l'usage normal d'un certificat interne, et c'est là que tout change.
 
 **Elle ne fait pas :** elle ne supprime pas l'avertissement SmartScreen. Ce
 dernier ne regarde pas la validité de la signature mais la **réputation** du
-fichier et de l'éditeur — réputation qu'un certificat auto-signé n'a pas, et
+fichier et de l'éditeur : réputation qu'un certificat auto-signé n'a pas, et
 qu'un certificat commercial ne gagne qu'après un certain volume de
 téléchargements. Un exécutable signé par un éditeur inconnu reste un
 exécutable signé par un éditeur inconnu.
@@ -255,9 +255,9 @@ l'utilisateur. Trois voies, par ordre d'efficacité.
    est signé par cette clé passe.
 2. **Inscrire l'empreinte SHA-256 du fichier** dans les exceptions de
    l'antivirus et du contrôle applicatif (AppLocker, WDAC).
-3. **Distribuer par un canal interne déjà approuvé** — partage, outil de
-   déploiement —, ce qui dispense de SmartScreen.
+3. **Distribuer par un canal interne déjà approuvé**, partage, outil de
+   déploiement, ce qui dispense de SmartScreen.
 
 Sans l'une de ces trois, l'utilisateur verra un avertissement, et dans un
-parc verrouillé le fichier sera simplement bloqué — **quelle que soit la
+parc verrouillé le fichier sera simplement bloqué : **quelle que soit la
 signature.**

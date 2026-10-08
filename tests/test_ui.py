@@ -1346,8 +1346,8 @@ class TestTabsFollowWhatCanBePublished(unittest.TestCase):
         app = self._analysed(8)
         try:
             texte = app.notice.cget("text")
-            self.assertIn("Graphiques —", texte)
-            self.assertIn("Écarts F/H —", texte)
+            self.assertIn("Graphiques :", texte)
+            self.assertIn("Écarts F/H :", texte)
             self.assertIn("5 salariés de chaque sexe", texte)
             self.assertIn("Confidentialité", texte)
         finally:

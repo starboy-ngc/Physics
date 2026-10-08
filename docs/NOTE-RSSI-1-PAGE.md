@@ -1,4 +1,4 @@
-# HR Analytics — note de validation pour le RSSI
+# HR Analytics : note de validation pour le RSSI
 
 **Version 1.0.0 · octobre 2026 · outil interne d'analyse de rémunération**
 
@@ -33,7 +33,7 @@ valider : tout est dans l'archive fournie.
 
 ---
 
-## Où l'outil écrit — la liste complète
+## Où l'outil écrit : la liste complète
 
 Mesuré en instrumentant chaque ouverture de fichier pendant une analyse
 complète : **34 écritures, dont 0 hors des dossiers désignés par
@@ -56,12 +56,12 @@ système.
 de faire son travail.**
 
 Si l'utilisateur enregistre les documents dans un dossier synchronisé
-(Bureau, Documents, ou le dossier OneDrive lui-même — fréquent avec la
+(Bureau, Documents, ou le dossier OneDrive lui-même : fréquent avec la
 redirection de dossiers connus), **le classeur Excel partira dans le cloud**.
 Ce n'est pas l'outil qui l'envoie : c'est la synchronisation du poste.
 
 Cela compte, parce que **le classeur Excel contient les données
-individuelles** — noms, matricules, montants. C'est sa fonction : il sert à
+individuelles** : noms, matricules, montants. C'est sa fonction : il sert à
 retravailler les chiffres. Les autres documents (rapport, synthèse, vue
 détaillée) n'en contiennent aucune, c'est mesuré.
 
@@ -95,7 +95,7 @@ partage, ce sont les ACL du partage qui décident.
 
 2. **Deux formes de livraison existent.** Nous recommandons **la forme
    dossier**. La forme fichier unique se déballe sur le disque avant de
-   s'exécuter — comportement légitime, mais surveillé par les protections de
+   s'exécuter : comportement légitime, mais surveillé par les protections de
    poste. La forme dossier ne le fait pas : tout y est déjà en clair.
 
 ---

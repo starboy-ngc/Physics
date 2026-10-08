@@ -330,7 +330,7 @@ def _ensure_known_field(field_name: str, allowed: Sequence[str], usage: str) -> 
         raise ConfigError(
             f"Le champ \"{field_name}\" est nominatif : il ne peut pas être "
             f"{usage}, car l'identité des personnes entrerait alors dans la "
-            f"restitution — elle s'y lirait même là où les montants sont "
+            f"restitution, et elle s'y lirait même là où les montants sont "
             f"masqués. Travaillez sur une notion collective : poste, grade, "
             f"établissement, tranche.",
             technical=f"personal field refused as {usage}: {field_name}",

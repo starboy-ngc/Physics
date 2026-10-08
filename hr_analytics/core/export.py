@@ -556,9 +556,9 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
         rows.append([])
         rows.append([titre.upper()])
         for bande in bandes:
-            poser(f'{bande["label"]} — effectif', bande.get("count"),
+            poser(f'{bande["label"]} : effectif', bande.get("count"),
                   ledger.rows_matching([(libelle, bande["label"])]))
-            poser(f'{bande["label"]} — part (%)', bande.get("share"),
+            poser(f'{bande["label"]} : part (%)', bande.get("share"),
                   f'{ledger.rows_matching([(libelle, bande["label"])])}'
                   f"/{ledger.rows_matching([])}*100")
 
@@ -582,7 +582,7 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
     salary = analysis.get("salary") or {}
     if salaire and not salary.get("masked"):
         rows.append([])
-        rows.append([f'RÉMUNÉRATION — {salary.get("field_label", "")}'])
+        rows.append([f'RÉMUNÉRATION : {salary.get("field_label", "")}'])
         for label, key, expression in (
             ("Effectif valorisé", "valued_headcount", ledger.count(salaire)),
             ("Masse salariale", "payroll", ledger.total(salaire)),
@@ -659,7 +659,7 @@ def _rows_control(ledger: fx.Ledger, analysis: Dict[str, Any],
         rows.append(["DISTRIBUTION"])
         bins = distribution.get("bins") or []
         for index, item in enumerate(bins):
-            poser(f'Classe {index + 1} — de {item["lower"]:.0f} '
+            poser(f'Classe {index + 1} : de {item["lower"]:.0f} '
                   f'à {item["upper"]:.0f}', item.get("count"),
                   ledger.bin_count(salaire, item["lower"], item["upper"],
                                    index == len(bins) - 1))
@@ -1016,7 +1016,7 @@ def _rows_control_equity(ledger: fx.Ledger, analysis: Dict[str, Any],
             plein_categorie = item.get("comparison") or {}
             if plein_categorie.get("published") and ledger.has(FTE_COLUMN) \
                     and (equity.get("basis") or {}).get("full_time"):
-                intitulé = f"{nom} — à temps plein"
+                intitulé = f"{nom}, à temps plein"
                 _poser_couple_temps_plein(
                     poser, ledger, salaire, plein_categorie, femme, homme,
                     categorie=intitulé, contexte=[(colonne, nom)])
@@ -1221,7 +1221,7 @@ def _rows_method(analysis: Dict[str, Any],
         ("Sexe retenu",
          "classification sur les écritures déclarées en configuration ; une "
          "écriture inconnue n'entre dans aucun des deux groupes",
-         "—",
+         "-",
          "Données individuelles, colonne Sexe retenu"),
         ("Médiane, percentiles",
          "méthode inclusive dite de type 7, identique à PERCENTILE.INCLUSIVE",
@@ -1244,8 +1244,8 @@ def _rows_method(analysis: Dict[str, Any],
          "COUNTIFS(plage;\">=borne basse\";plage;\"<borne haute\")",
          "Contrôle"),
         ("Écart de rémunération femmes / hommes",
-         "(moyenne hommes − moyenne femmes) / moyenne hommes, en pourcentage "
-         "— définition de la directive (UE) 2023/970",
+         "(moyenne hommes − moyenne femmes) / moyenne hommes, en pourcentage, "
+         "selon la définition de la directive (UE) 2023/970",
          "(moyenne H − moyenne F)/moyenne H*100",
          "Pay Transparency, Contrôle Pay Transparency"),
         ("Rattrapage",
@@ -1268,12 +1268,12 @@ def _rows_method(analysis: Dict[str, Any],
          "population ordonnée par rémunération puis découpée en tranches "
          "d'effectif égal ; les ex æquo sont départagés par l'ordre de "
          "lecture, ce qu'une formule ne reproduit pas",
-         "—", "Pay Transparency"),
+         "-", "Pay Transparency"),
         ("Seuil de publication",
          f'un indicateur n\'est publié qu\'à partir de '
          f'{rules.get("min_headcount_publish", 5)} salariés ; un graphique '
          f'à partir de {rules.get("min_headcount_chart", 10)}',
-         "—", "partout, mention « masqué »"),
+         "-", "partout, mention « masqué »"),
     ):
         rows.append([indicateur, regle, ecriture, ou])
     return rows

@@ -1,4 +1,4 @@
-# Guide utilisateur — HR Analytics
+# Guide utilisateur : HR Analytics
 
 Logiciel **local et hors ligne** : aucune donnée ne quitte votre poste.
 Vous pouvez couper Internet avant de l'utiliser.
@@ -12,7 +12,7 @@ Vous pouvez couper Internet avant de l'utiliser.
 
 À l'ouverture, **HR Analytics** affiche sa marque, son nom et l'étape en
 cours : lecture des paramètres, thème, colonne de gauche, pages et
-graphiques. Ces étapes sont réelles — construire la fenêtre demande deux
+graphiques. Ces étapes sont réelles : construire la fenêtre demande deux
 dixièmes de seconde ici, davantage sur un poste chargé.
 
 L'écran reste ensuite affiché **trois secondes**, pour qu'on ait le temps de
@@ -26,8 +26,8 @@ le lire : cette attente-là est délibérée. Elle se règle dans
 À **0**, pas d'écran d'accueil du tout : la fenêtre s'ouvre directement. Et
 un clic sur l'écran le passe sans attendre.
 
-Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture
-— une galaxie, la même que celle de l'icône du raccourci Windows — puis
+Le logo n'est pas un fichier image : il est **calculé** à chaque ouverture,
+une galaxie, la même que celle de l'icône du raccourci Windows, puis
 encodé en PNG par le même module qui dessine les points du nuage. Ses deux
 bras sont des *spirales logarithmiques*, `r = a·e^(b·θ)` : la forme que
 prennent réellement les galaxies, et l'échelle sur laquelle une
@@ -35,7 +35,7 @@ distribution de rémunérations se lit. Rien d'opaque dans l'archive, et
 rien de tiré au hasard : le même symbole à chaque fois, et le même dessin
 exactement à toutes les tailles, de 16 points à l'affiche.
 
-Pour en tirer une image — une présentation, un intranet, une icône :
+Pour en tirer une image, une présentation, un intranet, une icône :
 
 ```
 python3 tools/render_logo.py --largeur 1024 --sortie logo.png
@@ -64,15 +64,15 @@ pas pour une analyse que vous ne faites pas.
 
 Tout le reste enrichit sans contraindre. Sans matricule, l'analyse tourne :
 le contrôle qualité signale simplement que le suivi des doublons n'est pas
-possible — un fichier anonymisé en amont reste exploitable. Sans date de
+possible, un fichier anonymisé en amont reste exploitable. Sans date de
 naissance, pas de pyramide des âges, et c'est tout.
 
-Si votre organisation veut imposer sa propre discipline — un matricule, un
-établissement — inscrivez ces champs dans `required`, au mapping.
+Si votre organisation veut imposer sa propre discipline, un matricule, un
+établissement, inscrivez ces champs dans `required`, au mapping.
 
 La casse et les accents n'ont pas d'importance. Si vos en-têtes diffèrent,
 associez-les depuis l'écran « Associer les colonnes… » (voir § 4 bis) ou
-dans `config/population_mapping.json` — sans toucher au logiciel.
+dans `config/population_mapping.json` : sans toucher au logiciel.
 
 **Encodage.** Un CSV est lu en UTF-8, et à défaut en Windows-1252, celui
 qu'Excel et la plupart des SIRH français produisent. Vous n'avez donc rien à
@@ -93,7 +93,7 @@ python3 -m hr_analytics.cli controle population.xlsx
 ```
 
 Trois niveaux : **critique** (bloque l'analyse), **avertissement**,
-**information**. Le rapport indique les numéros de ligne à corriger — ce sont
+**information**. Le rapport indique les numéros de ligne à corriger : ce sont
 les numéros de ligne de votre fichier, lignes vides comprises.
 
 ### Écriture des montants
@@ -108,7 +108,7 @@ plutôt que lus comme 105, 50, 12 et 5 000.
 
 Reste ambiguë une écriture comme `45.000` : elle vaut 45 000 en France et 45,0
 ailleurs. La lecture décimale est retenue **et l'ambiguïté est signalée** au
-contrôle qualité — l'outil ne devine pas en silence.
+contrôle qualité : l'outil ne devine pas en silence.
 
 ## 4. Lancer l'analyse
 
@@ -120,15 +120,15 @@ Les fichiers produits dans `resultats/` :
 
 | Fichier | Usage |
 |---|---|
-| `restitution-*.html` | **Rapport détaillé**, à lire à l'écran — s'enregistre en PDF par la fonction d'impression du navigateur |
+| `restitution-*.html` | **Rapport détaillé**, à lire à l'écran : s'enregistre en PDF par la fonction d'impression du navigateur |
 | `synthese-*.pdf` / `.html` | **Synthèse simplifiée, une seule page paysage** : effectif, âge et ancienneté (moyenne et médiane), pyramide des âges et des anciennetés, répartition par CSP, dispersion de base (P10, Q1, médiane, Q3, P90 et leur écart à la médiane) et boîte à moustaches |
 | `vue-detaillee-*.pdf` / `.html` | **Vue détaillée paysage**, une idée par page : qualité des données, population, rémunération, distribution, nuage de points, analyses par segment, écarts femmes / hommes, méthodologie |
-| `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres. Tout ce qui calcule vient d'abord — résultats, formules, contrôles ; la matière première (fichier importé, colonnes lues, données individuelles) ferme la marche |
+| `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres. Tout ce qui calcule vient d'abord : résultats, formules, contrôles ; la matière première (fichier importé, colonnes lues, données individuelles) ferme la marche |
 
-La synthèse et la vue détaillée sont produites directement en PDF par l'outil —
+La synthèse et la vue détaillée sont produites directement en PDF par l'outil :
 pas besoin d'imprimer depuis le navigateur. Le rapport détaillé, lui, n'existe
 qu'en HTML : pour en faire un PDF, ouvrez-le et utilisez « Imprimer » puis
-« Enregistrer au format PDF ». La feuille de style prévoit l'impression — les
+« Enregistrer au format PDF ». La feuille de style prévoit l'impression : les
 titres ne se détachent pas de leur section, et aucun tableau ni graphique n'est
 coupé en deux pages.
 
@@ -153,9 +153,9 @@ Pour ne produire qu'une sortie :
 
 La barre sous « Analyser » nomme l'étape en cours et la part faite. Sur un
 gros fichier, **la lecture pèse la moitié du temps** : c'est normal que la
-barre y passe la moitié de son parcours. Les étapes suivantes —
+barre y passe la moitié de son parcours. Les étapes suivantes,
 normalisation, contrôle qualité, indicateurs, écarts femmes / hommes,
-segments — sont bien plus rapides.
+segments, sont bien plus rapides.
 
 La barre ne recule jamais et ne s'arrête pas : entre deux annonces du moteur
 elle continue d'avancer, de plus en plus lentement, jusqu'à la suivante.
@@ -183,7 +183,7 @@ Les filtres se cumulent (ET logique).
 Dimensions livrees : `business_unit`, `country`, `site`, `job`, `job_family`,
 `groupe`, `status`, `gender`, `age_band`, `tenure_band`.
 
-Un champ mal orthographie est refuse avec la liste des champs valides — l'outil
+Un champ mal orthographie est refuse avec la liste des champs valides : l'outil
 ne renvoie jamais une population vide en silence.
 
 Pour ajouter une dimension propre a votre organisation, declarez-la dans
@@ -211,12 +211,12 @@ Les tranches d'âge **se ferment toutes seules en bas** : un découpage qui
 commence à 20 ans reçoit une tranche « <20 » sans qu'on l'écrive, sinon un
 apprenti de 19 ans tombait dans « (non renseigné) ». Un fichier
 `age_parameters.json` antérieur à cette tranche la retrouve donc sans être
-retouché — vos réglages survivent aux mises à jour, et c'est l'outil qui
+retouché : vos réglages survivent aux mises à jour, et c'est l'outil qui
 complète. Le libellé se règle par `below_label` (`"<{high}"` par défaut).
 
 ### Couleurs
 
-Un seul thème, **Auroral** — bleu-vert lumineux sur nuit polaire —, et une
+Un seul thème, **Auroral**, bleu-vert lumineux sur nuit polaire, et une
 couleur d'accent que vous choisissez, dans **Paramètres → Apparence**. Douze
 teintes sont proposées ; si votre charte graphique en impose une autre, tapez
 son code (`#8c2f4a`, ou la forme courte `#8a4`).
@@ -236,7 +236,7 @@ lecture, les filets et les aplats sont *déduits* de l'encre par mélange avec
 le blanc, ce qui garantit une hiérarchie de lecture cohérente sans avoir à
 accorder vingt valeurs à la main. Et trois familles ne suivent jamais
 l'accent : le rouge de « critique », l'orange d'« avertissement » et le
-couple femmes/hommes du nuage et des pyramides — les changer serait un
+couple femmes/hommes du nuage et des pyramides, les changer serait un
 contresens, pas une préférence. Le couple femmes/hommes reste en outre dans
 la famille bleu-orange, la seule qui demeure distinguable pour un daltonisme
 deutan, le plus répandu.
@@ -244,10 +244,10 @@ deutan, le plus répandu.
 ## 5 bis ter. Lire la « Vue d'ensemble »
 
 La page tient sur un écran, en **trois colonnes**, et se lit de gauche à
-droite : qui compose la population, comment elle se structure, ce qu'elle est
+droite, qui compose la population, comment elle se structure, ce qu'elle est
 payée.
 
-**Colonne 1 — Population.** Effectif, âges et anciennetés, médiane et moyenne
+**Colonne 1 : Population.** Effectif, âges et anciennetés, médiane et moyenne
 l'une sous l'autre. Quand l'ancienneté n'est pas renseignée pour tout le
 monde, une ligne grise dit sur combien de salariés la médiane est établie :
 sur un fichier où un quart des dates d'entrée manque, le chiffre affiché ne
@@ -257,26 +257,26 @@ complète, la ligne n'apparaît pas.
 Dessous, la **répartition par CSP** en camembert. « CSP » est le mot du
 métier ; la colonne qui la porte est déclarée en configuration
 (`chart_parameters.csp_field`, le statut par défaut) et s'affiche à droite du
-titre — sans les deux, on ne sait pas ce qu'on regarde. Au-delà de six parts
+titre : sans les deux, on ne sait pas ce qu'on regarde. Au-delà de six parts
 (`csp_max_slices`), la queue des modalités est regroupée sous « Autres », dans
 un gris qui ne ressemble à aucune vraie catégorie : un camembert à quinze
 parts ne se lit plus.
 
-**Colonne 2 — Rémunération.** Masse salariale, salaire moyen, l'échelle et
+**Colonne 2 : Rémunération.** Masse salariale, salaire moyen, l'échelle et
 la dispersion.
 
-**Colonne 3 — les structures**, en pyramides, femmes à gauche et hommes à
+**Colonne 3 : les structures**, en pyramides, femmes à gauche et hommes à
 droite, la tranche la plus jeune en bas. Deux populations n'y figurent pas, pour deux raisons qu'il ne faut pas
 confondre, et chacune se compte sous le graphique. Les salariés qu'**aucune
-tranche n'accueille** — âge ou ancienneté absent, ou hors des bornes
-déclarées — n'ont pas de place sur l'axe : une pyramide se lit du plus jeune
+tranche n'accueille**, âge ou ancienneté absent, ou hors des bornes
+déclarées, n'ont pas de place sur l'axe : une pyramide se lit du plus jeune
 au plus âgé, et ils ne sont ni l'un ni l'autre. Ceux dont le **sexe est
 inconnu**, eux, ont bien une tranche mais aucune aile : ils sont dans le
 graphique sans y être dessinés. Sans la colonne « Sexe », l'outil retombe sur des barres simples
 plutôt que d'afficher une demi-pyramide.
 
 L'**échelle**, dans la colonne 2, est dessinée : la moustache va du percentile le plus bas au plus
-haut, la boîte de Q1 à Q3 — la moitié centrale de l'effectif —, le trait plein
+haut, la boîte de Q1 à Q3, la moitié centrale de l'effectif, le trait plein
 est la médiane. On y lit d'un regard ce qu'un tableau de sept lignes ne disait
 pas : la grille est-elle resserrée ou ouverte, la médiane est-elle au milieu
 ou tirée vers le bas.
@@ -284,7 +284,7 @@ ou tirée vers le bas.
 Deux points comptent dans cette échelle. Elle ne trace **que les percentiles
 publiés** : l'outil calcule toujours P10 à P90 parce que les ratios de
 dispersion en ont besoin, mais si vous en retirez de
-`percentile_parameters`, ils ne se dessinent pas — les tracer reviendrait à
+`percentile_parameters`, ils ne se dessinent pas, les tracer reviendrait à
 publier ce que vous avez retiré. Et le **minimum et le maximum ne commandent
 pas le cadrage** : ils se lisent en retrait aux deux bouts. Une rémunération à
 zéro ou un contrat d'expatrié écraserait sinon les neuf dixièmes de l'effectif
@@ -299,14 +299,14 @@ vide, et ce qui reste s'écarte entre les blocs. Sur une fenêtre basse, ils
 reviennent à leur taille compacte.
 
 Les parts d'effectif s'écrivent **sans décimale** : « 66 % », et non
-« 65,6 % » — la décimale suggérerait une exactitude que l'arrondi d'un
+« 65,6 % », la décimale suggérerait une exactitude que l'arrondi d'un
 comptage n'a pas. Les écarts de rémunération, eux, gardent la leur : 5,2 %
 ne se dit pas « 5 % ».
 
 ### Si la page ne tient pas
 
 Elle est dimensionnée pour tenir largement sur un écran de 1080 pixels de
-haut, y compris avec l'affichage Windows à 125 ou 150 % — qui grossit les
+haut, y compris avec l'affichage Windows à 125 ou 150 %, qui grossit les
 polices, donc la page. Si elle défile quand même, c'est que la fenêtre n'est
 pas assez haute : agrandissez-la.
 
@@ -320,15 +320,19 @@ retrouver les trois colonnes.
 
 ## 5 ter. L'onglet Écarts F/H
 
-Un comparatif femmes / hommes, de haut en bas. **Un poste se choisit en
-tête** : les blocs en dépendent, sauf le récapitulatif, qui porte toujours
-sur tous les postes — c'est lui qui permet de situer celui qu'on regarde.
-Sans choix, la page compare les deux sexes sur toute la population
-analysée.
+Un comparatif femmes / hommes, de haut en bas. **Les postes se choisissent
+en tête**, par le bouton « Postes : tous », qui ouvre la même liste à cocher
+que les filtres : un poste, ou plusieurs côte à côte, et tous les blocs en
+dépendent. Sans choix, la page compare les deux sexes sur toute la
+population analysée ; tout cocher revient à ne rien retenir.
+
+Une seule de ces fenêtres à cocher est ouverte à la fois, ici comme pour les
+filtres et les boîtes : cliquer de nouveau sur le même bouton la ramène au
+premier plan, cliquer sur un autre bouton la remplace.
 
 **Effectifs et deux pyramides.** Effectif, part, âge médian et ancienneté
 médiane, en trois colonnes : femmes, hommes, ensemble. Puis deux
-pyramides — les âges, et la structure d'ancienneté. L'âge dit qui est là,
+pyramides : les âges, et la structure d'ancienneté. L'âge dit qui est là,
 l'ancienneté dit depuis quand : un écart de rémunération ne se lit pas
 pareil selon que les deux sexes ont la même ancienneté ou non, le premier
 cas appelant une revalorisation et le second une revue de la grille.
@@ -347,14 +351,14 @@ comparatif femmes / hommes colorié par business unit ne comparerait rien.
 en passant par les quartiles, pour chaque sexe et pour l'ensemble. La
 troisième colonne n'est pas décorative : sans elle, on ne sait pas si un
 écart tient à un groupe tiré vers le bas ou à l'autre tiré vers le haut.
-Chaque colonne est masquée pour elle-même — un poste où trois femmes
+Chaque colonne est masquée pour elle-même : un poste où trois femmes
 côtoient vingt hommes publie la colonne des hommes et tait celle des
 femmes, la seule qui désignerait quelqu'un. À droite, la même comparaison
 tracée : une paire de boîtes, celle du poste retenu ou celle de toute la
 population.
 
 **Population analysée.** La liste de ceux dont les chiffres de la page
-sont faits — ce n'est pas un classement, et elle ne retient rien. Ses
+sont faits : ce n'est pas un classement, et elle ne retient rien. Ses
 **colonnes se déclarent au paramétrage**, dans
 `pay_equity_parameters.people_columns` : ajouter « Direction » ou retirer
 l'établissement ne demande aucune modification du code.
@@ -369,13 +373,13 @@ document produit, aucun export, aucun journal n'en porte.
 garde pas douze lignes de blanc sous elle ; la hauteur déclarée n'est
 qu'un plafond, au-delà duquel le tableau défile.
 
-Les indicateurs de la directive 2023/970 — décomposition de l'écart
-global, répartition par quartile — restent dans le rapport HTML, les
+Les indicateurs de la directive 2023/970, décomposition de l'écart
+global, répartition par quartile, restent dans le rapport HTML, les
 slides et l'onglet « Pay Transparency » du classeur.
 
 ## 4 bis. Associer les colonnes de votre fichier
 
-L'outil reconnaît les intitulés courants — « Matricule », « Salaire de
+L'outil reconnaît les intitulés courants : « Matricule », « Salaire de
 base », « Date d'entrée ». Votre fichier porte aussi ses propres notions :
 une direction, une revue du personnel, une convention collective, une prime
 maison. Elles ne se devinent pas, et elles n'ont pas à être déclarées dans
@@ -393,26 +397,26 @@ Une ligne par colonne du fichier, et sur chaque ligne :
 
 Quatre rôles possibles :
 
-- **Un champ du modèle** — Salaire de base, Sexe, Date d'entrée, Temps de
+- **Un champ du modèle** : Salaire de base, Sexe, Date d'entrée, Temps de
   travail… C'est ce que l'outil calcule. Une colonne rattachée au salaire
   devient le salaire.
-- **Organisation (axe et filtre)** — pour tout ce que votre entreprise a en
+- **Organisation (axe et filtre)**, pour tout ce que votre entreprise a en
   propre : direction, établissement, revue du personnel, filière. La notion
   est créée à partir de l'intitulé, et aussitôt proposée comme filtre et
   comme axe d'analyse. **C'est le cas courant.**
-- **Montant (rémunération, prime…)** — pour une prime maison, un treizième
+- **Montant (rémunération, prime…)** : pour une prime maison, un treizième
   mois, une indemnité. La colonne est lue comme un nombre, écrite en monnaie
   dans le classeur, et devient un champ d'analyse possible. Elle n'est pas
   proposée comme axe : segmenter par « prime » ferait une modalité par
   valeur distincte, c'est-à-dire une ligne par salarié.
-- **(ignorée)** — la colonne n'est pas lue. Une colonne ignorée ne pèse rien
+- **(ignorée)** : la colonne n'est pas lue. Une colonne ignorée ne pèse rien
   et n'apparaît nulle part.
 
 Un champ ne reçoit qu'une colonne : deux colonnes dessus, l'une écraserait
 l'autre en silence et l'analyse porterait sur la mauvaise. Si vous
 choisissez un champ qu'une autre colonne porte déjà, c'est donc **votre
 choix qui l'emporte** : l'autre colonne passe à « (ignorée) » et la barre
-du bas vous dit laquelle. Rien n'est perdu — sa liste est là, il suffit de
+du bas vous dit laquelle. Rien n'est perdu : sa liste est là, il suffit de
 la rattacher.
 
 C'est aussi ce qu'il faut faire quand l'outil s'est trompé : si « Tx
@@ -421,7 +425,7 @@ Activité » a été lue comme le temps de travail alors que c'est
 « Horaire_contractuel » et l'autre se détache.
 
 Sous la liste, **Champs sans colonne** : l'âge et l'ancienneté se calculent
-à partir des dates, aucune colonne ne les porte — ils se règlent là.
+à partir des dates, aucune colonne ne les porte, ils se règlent là.
 
 À l'enregistrement, le fichier est relu : la colonne que vous venez de
 déclarer est immédiatement disponible dans les filtres et dans les axes,
@@ -429,12 +433,19 @@ sans redémarrer. L'association est écrite dans
 `config/population_mapping.json` et **vaut pour les fichiers suivants** :
 elle ne se refait pas à chaque import.
 
+En bas à gauche de la même fenêtre, **« Réglages d'usine… »** remet tous les
+réglages à leur valeur de livraison : colonnes associées, champs créés,
+filtres proposés, seuils de confidentialité, rangements à la main, export,
+apparence. La question posée dit ce qui sera perdu avant de le faire. Le
+fichier de données n'est pas touché : il est relu ensuite avec les réglages
+de livraison.
+
 ## 5 bis. Un fichier que l'outil refuse de lire
 
 Un fichier Excel est une archive : quelques mégaoctets sur le disque peuvent
 en contenir plusieurs milliers une fois décompressés. L'outil vérifie donc,
 **avant de lire**, ce que l'archive annonce. Au-delà du plafond, il refuse
-et le dit — plutôt que de remplir la mémoire de la machine jusqu'à ce que le
+et le dit : plutôt que de remplir la mémoire de la machine jusqu'à ce que le
 système mette fin à l'application sans un mot.
 
 Le plafond est de 512 Mo de données décompressées, soit environ trois fois
@@ -442,8 +453,8 @@ la plus grosse population plausible (un onglet de 200 000 salariés en pèse
 149). Si votre poste a la mémoire de lire plus, relevez
 `max_uncompressed_mb` dans `config/population_mapping.json`.
 
-De même, un CSV dont une cellule est démesurée — ou dont un guillemet n'a
-jamais été refermé — est refusé avec ces mots-là, et non par un message
+De même, un CSV dont une cellule est démesurée, ou dont un guillemet n'a
+jamais été refermé, est refusé avec ces mots-là, et non par un message
 technique.
 
 ## 5 bis bis. Pendant que l'analyse tourne
@@ -451,8 +462,8 @@ technique.
 Sur un fichier de cent mille lignes, l'analyse demande une dizaine de
 secondes. La page laisse alors la place à un panneau qui dit ce qui se
 passe : l'étape en cours, celles qui sont faites, celles qui restent, et le
-temps écoulé. Les étapes sont celles du moteur — lecture, normalisation,
-contrôle qualité, sélection, indicateurs, écarts, segments, traçabilité — et
+temps écoulé. Les étapes sont celles du moteur, lecture, normalisation,
+contrôle qualité, sélection, indicateurs, écarts, segments, traçabilité, et
 non une liste recopiée pour l'occasion.
 
 Sur un petit fichier, vous ne le verrez pas : il n'apparaît qu'au-delà de
@@ -478,7 +489,7 @@ comparent pas.
 
 Chaque côté a son propre droit au tracé : trente hommes ne donnent pas le
 droit de dessiner la distribution de trois femmes. Quand un côté passe sous
-le seuil de tracé, la case n'est pas proposée — et sa place dit pourquoi.
+le seuil de tracé, la case n'est pas proposée, et sa place dit pourquoi.
 
 ## 5 quater. Dispersion : distinguer femmes et hommes
 
@@ -492,14 +503,17 @@ haut de la fourchette.
 
 Chaque demi-boîte a son propre droit au tracé : un segment de cinquante
 personnes dont quatre femmes ne donne pas le droit de dessiner les
-percentiles de ces quatre-là — cette moitié-là n'est simplement pas tracée.
+percentiles de ces quatre-là, cette moitié-là n'est simplement pas tracée.
 
 ### La colonne de droite
 
 En mode simple, chaque ligne porte sa **médiane** à droite, pour n'avoir
 pas à la relever sur l'axe. En mode dédoublé, elle cède la place à
-l'**écart F/H** — c'est ce qu'on vient chercher en cochant la case, et
+l'**écart F/H** : c'est ce qu'on vient chercher en cochant la case, et
 comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
+Survoler cette colonne, ou le mot « ÉCART F/H » en tête, dit ce que le
+chiffre mesure et comment il est obtenu : (médiane des hommes − médiane des
+femmes) / médiane des hommes, positif quand les hommes sont mieux rémunérés.
 
 ### Trier, c'est poser une autre question
 
@@ -507,7 +521,7 @@ comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
 
 | Ordre | Ce qu'il répond |
 |---|---|
-| **Ordre de la dimension** | Celui que le fichier et le paramétrage dictent : les tranches d'âge et d'ancienneté dans l'ordre des tranches, les échelles chiffrées — un coefficient, un indice — dans l'ordre des nombres, le reste selon le réglage d'Apparence. |
+| **Ordre de la dimension** | Celui que le fichier et le paramétrage dictent : les tranches d'âge et d'ancienneté dans l'ordre des tranches, les échelles chiffrées, un coefficient, un indice, dans l'ordre des nombres, le reste selon le réglage d'Apparence. |
 | **Médiane croissante** | Un escalier qui monte : où se situe chaque catégorie. |
 | **Médiane décroissante** | Qui paie le plus. |
 | **Effectif décroissant** | Qui pèse. |
@@ -517,7 +531,7 @@ comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
 La **Dispersion** s'ouvre sur l'effectif décroissant : devant quarante
 postes empilés, la première question est « lesquels pèsent ». Les
 **Comparaison** s'ouvre sur l'ordre de la dimension, parce
-qu'une abscisse peut être une échelle — et ranger un coefficient par
+qu'une abscisse peut être une échelle, et ranger un coefficient par
 effectif défait la progression même qu'on vient lire.
 
 Un tri qu'aucune colonne ne montre se lirait comme un désordre : « Écart
@@ -531,25 +545,25 @@ se lit parfois dans l'ordre d'une grille, une filiale dans celui d'un
 organigramme. **« Ranger… »**, à droite de « Trier par », ouvre la liste
 des valeurs de la dimension et vous laisse les mettre dans l'ordre voulu.
 
-- **Partir de** — Alphabétique, Effectif ou Médiane : un point de départ.
+- **Partir de**, Alphabétique, Effectif ou Médiane : un point de départ.
   Ranger cinquante métiers depuis l'alphabétique demande trois gestes ;
   depuis un désordre, cinquante.
-- **Monter / Descendre**, **Tout en haut / Tout en bas** — au bouton ou
+- **Monter / Descendre**, **Tout en haut / Tout en bas** : au bouton ou
   au clavier (`Ctrl+↑`, `Ctrl+↓`).
 - **Appliquer** enregistre. **Retirer le rangement** rend la dimension
-  aux ordres calculés — ce n'est pas « Annuler ».
+  aux ordres calculés : ce n'est pas « Annuler ».
 
 Ce rangement **prime sur tous les autres ordres**, y compris sur une
 échelle de coefficients : il a été décidé, les autres sont déduits. Il
 vaut **à l'écran et dans les documents**, sur les deux pages de boîtes, et
 il **survit au redémarrage** : il est écrit dans
 `config/chart_parameters.json`, sous `segment_manual_order`, une liste par
-dimension — modifiable au bloc-notes comme le reste.
+dimension, modifiable au bloc-notes comme le reste.
 
 Ce que le rangement ne nomme pas se place **en fin**, dans l'ordre que
 l'outil aurait choisi sans lui : un métier apparu ce mois-ci ne disparaît
 pas et ne s'invite pas au milieu. Et une valeur rangée qui n'est plus dans
-le fichier ne décale rien — elle reste dans le paramétrage, prête à
+le fichier ne décale rien : elle reste dans le paramétrage, prête à
 servir au prochain import qui la portera.
 
 ## 5 quater bis. Comparaison : les boîtes dressées, côte à côte
@@ -557,7 +571,7 @@ servir au prochain import qui la portera.
 **Graphiques → Comparaison** montre les mêmes chiffres dressés :
 la rémunération en ordonnée, les catégories côte à côte, une boîte par
 catégorie. C'est la lecture classique d'une distribution comparée, et elle
-dit d'un regard ce qui se superpose et ce qui ne se superpose pas — deux
+dit d'un regard ce qui se superpose et ce qui ne se superpose pas : deux
 métiers dont les boîtes ne se touchent pas ne paient pas pareil, et aucun
 tableau de médianes ne le dit aussi vite.
 
@@ -565,7 +579,7 @@ tableau de médianes ne le dit aussi vite.
 toute dimension déclarée au paramétrage. **Valeurs** restreint la
 sélection : quarante-huit métiers côte à côte obligent à faire défiler
 tout le graphique pour en comparer deux, et la question est rarement
-« tous » — c'est « ces quatre-là, côte à côte ».
+« tous », c'est « ces quatre-là, côte à côte ».
 
 **Trier par** range les colonnes sans rien recalculer, avec les mêmes
 six ordres que la Dispersion (voir ci-dessus). Celui d'ouverture est
@@ -577,7 +591,7 @@ croissante** dessine un escalier et répond d'un trait.
 L'ordonnée porte le nom du **champ d'analyse**, celui que
 `salary_parameters.analysis_field` désigne : réglé sur la rémunération
 totale, l'axe le dit. Sous chaque boîte, l'effectif sur lequel elle est
-tracée — une boîte dessinée sur douze salariés a la même allure qu'une
+tracée : une boîte dessinée sur douze salariés a la même allure qu'une
 boîte dessinée sur quatre cents. Le trait pointillé horizontal est la
 médiane d'ensemble.
 
@@ -597,7 +611,7 @@ seuils de confidentialité.
 
 Le classeur ne se contente pas d'afficher des résultats : **les indicateurs
 dérivés portent leur formule**. Cliquez sur la cellule « Q3 − Q1 », vous lisez
-`=B11-B9` — les deux cellules d'où le chiffre sort.
+`=B11-B9` : les deux cellules d'où le chiffre sort.
 
 Sont écrits en formules :
 
@@ -628,7 +642,7 @@ Le classeur gagne alors cinq onglets, dans l'ordre de la chaîne :
 
 | Onglet | Ce qu'il contient |
 |---|---|
-| **Fichier importé** | le fichier tel qu'il a été lu, ligne pour ligne et colonne pour colonne — la ligne 7 de l'onglet est la ligne 7 du fichier |
+| **Fichier importé** | le fichier tel qu'il a été lu, ligne pour ligne et colonne pour colonne : la ligne 7 de l'onglet est la ligne 7 du fichier |
 | **Colonnes lues** | ce que le mapping a fait de chaque colonne, et lesquelles il a ignorées |
 | **Données individuelles** | les salariés retenus, avec leur **ligne source**, le **sexe retenu** par la classification, les dates comprises à la lecture, et l'âge comme l'ancienneté **écrits en formules** |
 | **Contrôle** | chaque indicateur d'ensemble refait par le tableur : effectif, âge, ancienneté, tranches, parts remarquables, tous les percentiles, écart-type, dispersion, chaque classe de l'histogramme |
@@ -646,11 +660,11 @@ Q1 (P25)     31 386,25             31 386,25                  0       PERCENTILE
 ```
 
 **La colonne « Écart » doit valoir zéro partout.** C'est la vérification, et
-elle se fait d'un coup d'œil — sans lire une ligne de code.
+elle se fait d'un coup d'œil : sans lire une ligne de code.
 
 Un onglet **Formules**, lui, est toujours présent, données individuelles ou
 non : il dit en français ce que chaque indicateur calcule, avec son écriture
-dans un tableur et l'endroit où le vérifier. Les deux se complètent — une
+dans un tableur et l'endroit où le vérifier. Les deux se complètent : une
 formule juste appliquée à la mauvaise définition reste une erreur.
 
 ### Ce que le contrôle ne fait pas
@@ -677,14 +691,14 @@ les coche pas.
 ## 5 sexies. Plusieurs périodes dans un même fichier
 
 Déclarez une colonne **Période** (« Periode », « Date d'effet », « Mois »,
-« Année »… — les intitulés acceptés sont dans `population_mapping.json`) et
+« Année »…, les intitulés acceptés sont dans `population_mapping.json`) et
 le fichier peut porter plusieurs années : une ligne par salarié et par
 période.
 
 Ce qui change :
 
 - **L'identité devient (matricule + période).** Un matricule répété sur deux
-  années n'est plus un doublon — c'est l'intention du fichier. Répété **deux
+  années n'est plus un doublon : c'est l'intention du fichier. Répété **deux
   fois sur la même période**, c'en est toujours un, et le contrôle qualité le
   signale comme avant.
 - **Une seule période est analysée à la fois**, la plus récente par défaut.
@@ -698,19 +712,19 @@ Ce qui change :
   servi.
 
 En ligne de commande : `--periode 2025`. Une période absente du fichier est
-refusée avec la liste de celles qui existent — une faute de frappe rendrait
+refusée avec la liste de celles qui existent : une faute de frappe rendrait
 sinon l'analyse de la dernière période en la faisant passer pour celle qu'on
 visait.
 
 ## 5 septies. Analyser une équipe
 
 Un fichier de paie porte rarement l'organigramme. Il porte en revanche, dans
-la plupart des exports, le **matricule du responsable** de chaque salarié —
+la plupart des exports, le **matricule du responsable** de chaque salarié,
 et c'est tout ce qu'il faut : l'arbre se déduit du rapprochement entre ce
 matricule et celui des autres lignes.
 
 Déclarez une colonne **Manager** (« Responsable », « N+1 », « Matricule
-manager »… — les intitulés acceptés sont dans `population_mapping.json`).
+manager »… : les intitulés acceptés sont dans `population_mapping.json`).
 Elle n'est pas obligatoire : sans elle, l'outil se comporte exactement comme
 avant, et le réglage reste caché.
 
@@ -728,7 +742,7 @@ l'équipe de X ».
 Ce qui apparaît :
 
 - Un bloc **Équipe** dans la colonne de gauche, entre la période et les
-  filtres — l'équipe désigne la population, les filtres ne font que la
+  filtres : l'équipe désigne la population, les filtres ne font que la
   restreindre. La liste se lit du sommet vers le bas, chaque niveau décalé.
 - Sous la liste, **les deux effectifs** de l'équipe choisie : une équipe
   directe de 4 personnes et une équipe totale de 40 ne donnent pas la même
@@ -756,7 +770,7 @@ année par année.
 Un export mal tenu ne fait jamais lever, mais il le dit, sous la liste :
 
 - **responsable introuvable** : le matricule ne correspond à personne. Le
-  subordonné devient une racine — mieux vaut un arbre à plusieurs racines
+  subordonné devient une racine : mieux vaut un arbre à plusieurs racines
   qu'un salarié perdu.
 - **salarié dans une boucle** : « A encadre B qui encadre A ». Les membres du
   cycle deviennent des racines. Sans cette rupture, toute descente dans
@@ -782,7 +796,7 @@ ancienneté moyenne, niveaux d'organisation, salaire médian et salaire moyen.
 L'écart entre les deux derniers est le premier signal : une moyenne très
 au-dessus de la médiane dit qu'une poignée de rémunérations tire l'ensemble.
 
-**L'équipe par poste.** Une ligne par poste, dans l'ordre de la hiérarchie —
+**L'équipe par poste.** Une ligne par poste, dans l'ordre de la hiérarchie,
 celui du responsable choisi d'abord, puis ceux du niveau en dessous : avec
 l'effectif, le minimum, la médiane, la moyenne et le maximum. C'est la
 lecture qui précède la liste nominative : devant cinquante personnes, la
@@ -790,7 +804,7 @@ question n'est pas « qui gagne combien » mais « quels postes la composent, et
 dans quelle fourchette ». Un poste dont le minimum et le maximum vont du
 simple au double n'appelle pas la même conversation qu'un poste resserré, et
 aucune moyenne ne le dirait. Un poste tenu à deux niveaux différents est
-classé au plus haut des deux — c'est là qu'il entre dans l'organisation.
+classé au plus haut des deux : c'est là qu'il entre dans l'organisation.
 
 « Poste » désigne ici la même colonne que la page des écarts : celle que
 `pay_equity_parameters.category_field` déclare. Si elle n'est renseignée pour
@@ -798,13 +812,13 @@ personne, le métier prend le relais.
 
 **Les salariés.** Un par ligne, dans l'ordre de l'arbre : poste, niveau,
 rattachement, âge, ancienneté, rémunération, et le **rang** de cette
-rémunération dans l'équipe — 1 pour la plus élevée. C'est ce qui manque à un
+rémunération dans l'équipe, 1 pour la plus élevée. C'est ce qui manque à un
 montant seul : « 31 400 EUR » ne dit rien, « 31 400 EUR, 4e sur 57 » situe la
 personne. Deux rémunérations égales partagent leur rang.
 
 **L'organigramme**, en bas, compact et volontairement sobre : nom, poste,
 salaire de base. Seuls les responsables ont une case ; ceux qui n'encadrent
-personne sont comptés sous celle de leur responsable — « 7 collaborateurs ».
+personne sont comptés sous celle de leur responsable : « 7 collaborateurs ».
 Un organigramme où chaque salarié aurait sa case devient illisible passé
 trente personnes, et la structure, qu'on vient précisément y lire, y
 disparaît. Les effectifs encadrés et la médiane de l'équipe se lisent au
@@ -821,7 +835,7 @@ oubli. Elle ne sort jamais de l'écran : aucun document produit, aucun export,
 aucun journal ne la porte. Elle décrit une équipe que vous venez de désigner
 et que, dans l'usage, vous encadrez. Un responsable qui prépare ses
 augmentations connaît les rémunérations de ses six collaborateurs ; une page
-qui les masquerait ne protégerait personne et serait inutilisable — passé le
+qui les masquerait ne protégerait personne et serait inutilisable : passé le
 seuil, un poste tenu par trois personnes n'aurait ni minimum, ni médiane, ni
 maximum.
 
@@ -834,7 +848,7 @@ discussion** : ce qui circule reste protégé.
 
 Un salarié écarté par un filtre n'est plus compté, et celui dont le
 responsable l'a été se rattache au premier responsable restant au-dessus de
-lui — sans quoi un filtre qui retire un chef de service détacherait son
+lui : sans quoi un filtre qui retire un chef de service détacherait son
 service entier, et l'effectif affiché ne serait plus celui des autres
 onglets.
 
@@ -846,7 +860,7 @@ dit, plutôt que de laisser croire à une base qu'elle n'applique pas.
 
 Les seuils de confidentialité ne cèdent pas devant une équipe : sous 5
 salariés, les résultats sont masqués, équipe ou pas. Et le résultat d'analyse
-ne porte que le matricule — le nom du responsable est reconstruit à l'écran
+ne porte que le matricule : le nom du responsable est reconstruit à l'écran
 depuis le fichier chargé, et ne peut donc entrer dans aucun document produit
 ni dans aucun journal.
 
@@ -873,8 +887,8 @@ groupe de huit : c'est le troisième qui la gouverne, et il vaut 10. C'était
 la source de confusion la plus fréquente, d'où leur présence à l'écran.
 
 **Une comparaison femmes / hommes demande le seuil de publication de chaque
-côté.** Avec 5, il faut 5 femmes **et** 5 hommes, donc au moins 10 personnes
-— et un groupe de 8 reste sans écart publié quel que soit son équilibre. Ce
+côté.** Avec 5, il faut 5 femmes **et** 5 hommes, donc au moins 10 personnes,
+et un groupe de 8 reste sans écart publié quel que soit son équilibre. Ce
 n'est pas un seuil de plus : c'est le même, appliqué à chacun des deux
 groupes comparés, parce qu'un écart calculé sur trois femmes les désigne.
 
@@ -884,14 +898,14 @@ haut.
 ### Ce que vaut la référence anonyme
 
 Une référence est le condensé du matricule et d'un **sel**. Le sel décide de
-tout : un matricule vit dans un espace minuscule — « E00001 » à « E99999 » —,
+tout : un matricule vit dans un espace minuscule, « E00001 » à « E99999 »,
 et si le sel est connu, retrouver le matricule derrière une référence publiée
 demande quelques milliers d'essais, soit un centième de seconde. Le rapport
 circule, lui.
 
 Par défaut, `anonymisation_salt` est vide : **un sel est tiré au hasard à
 chaque analyse.** Les références ne valent alors que dans les documents d'une
-même exécution, et rien ne les relie à un matricule — pas même pour vous.
+même exécution, et rien ne les relie à un matricule, pas même pour vous.
 
 Renseignez `privacy_parameters.anonymisation_salt` avec une phrase de votre
 choix si vous voulez **suivre une situation d'une période à la suivante** : les
@@ -899,8 +913,8 @@ références deviennent stables d'une analyse à l'autre sur ce poste. Seul celu
 qui détient ce fichier de paramètres peut alors les rapprocher d'un matricule.
 
 **Ne communiquez pas ce fichier avec les documents produits.** Le manifeste
-que la ligne de commande écrit recopie toute la configuration — c'est ce qui
-permet de refaire une analyse à l'identique — mais le sel en est retiré et
+que la ligne de commande écrit recopie toute la configuration, c'est ce qui
+permet de refaire une analyse à l'identique, mais le sel en est retiré et
 remplacé par « (non publié) ».
 
 ### Voir qui se cache derrière un point
@@ -916,7 +930,7 @@ anonyme.
 
 **Dans les deux cas, les documents produits (HTML, PDF, synthèse) et le
 journal technique restent sans nom ni prénom.** Ce n'est pas une question de
-réglage : l'identité n'entre jamais dans le résultat d'analyse — la fenêtre la
+réglage : l'identité n'entre jamais dans le résultat d'analyse, la fenêtre la
 reconstruit depuis le fichier qu'elle a chargé, au moment de l'afficher. Rien
 de ce qui circule ne peut donc en porter.
 
@@ -924,7 +938,7 @@ de ce qui circule ne peut donc en porter.
 importé » du classeur recopie votre fichier tel quel, noms compris. Il
 n'apparaît que si vous cochez « Joindre le fichier importé et les onglets de
 contrôle » (Paramètres → Export), et les onglets de contrôle ne peuvent pas
-exister sans lui — on ne vérifie pas un calcul sans ses valeurs.
+exister sans lui : on ne vérifie pas un calcul sans ses valeurs.
 - Les données individuelles et les onglets de contrôle sont **posés par
   défaut** : le classeur existe pour que vous puissiez refaire chaque
   chiffre, et un classeur d'agrégats vous demanderait de croire l'outil
@@ -938,7 +952,7 @@ exister sans lui — on ne vérifie pas un calcul sans ses valeurs.
 **Il ne désigne personne.** Une version précédente sortait une liste de
 « situations atypiques » : les rémunérations au-delà d'une fois et demie
 l'écart interquartile, nommées une à une dans les documents. C'était
-l'outil qui décrétait l'anomalie — sur un critère statistique, sans rien
+l'outil qui décrétait l'anomalie : sur un critère statistique, sans rien
 savoir du marché, du métier, de l'historique ni de la performance. Le
 lecteur recevait une liste de noms sous un titre qui l'accusait à moitié.
 
@@ -946,7 +960,7 @@ L'histogramme et la boîte à moustaches montrent la distribution entière ;
 qui s'en écarte s'y voit. Juger est votre travail, et il ne se délègue pas
 à un facteur multiplicatif.
 
-Restent les **seuils de plausibilité** — `min_plausible`, `max_plausible`
+Restent les **seuils de plausibilité** : `min_plausible`, `max_plausible`
 dans `salary_parameters.json`. Ceux-là, c'est vous qui les posez, et ils
 disent « au-delà, c'est une erreur de saisie », ce qui est une tout autre
 affirmation.
@@ -982,5 +996,5 @@ service de paie n'a pas besoin d'une population inventée : il en reçoit une
 le jour même.
 
 Pour l'essayer sans toucher à un fichier réel, prenez un export de paie et
-retirez-en les colonnes de nom et de prénom : l'outil n'en a pas besoin — il
+retirez-en les colonnes de nom et de prénom : l'outil n'en a pas besoin, il
 n'exige qu'une colonne de rémunération.

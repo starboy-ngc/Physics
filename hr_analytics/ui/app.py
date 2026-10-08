@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import collections
 import datetime as _dt
+import gc
 import logging
 import os
 import queue
@@ -59,7 +60,7 @@ from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
 from .theme import (Card, CheckRow, Fonts, OrderPicker, TabBar,
-                    ValuePicker)
+                    ValuePicker, open_alone)
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de choix d'une valeur qui, elle,
@@ -132,7 +133,7 @@ def _packed(widget, **packing):
 def _signed_percent(value: Optional[float]) -> str:
     """Ecart relatif, signe explicite : « +12,4 % » se lit sans hesitation."""
     if value is None:
-        return "—"
+        return "-"
     return f"{value:+.1f} %".replace(".", ",")
 
 
@@ -1322,7 +1323,7 @@ class Application(tk.Tk):
         unknown = len(mapping.unknown_columns)
         self.mapping_label.configure(
             text=f"{len(mapping.field_to_index)} colonnes reconnues"
-                 + (f", {unknown} non reconnue(s) — associez-les ci-dessous"
+                 + (f", {unknown} non reconnue(s) : associez-les ci-dessous"
                     if unknown else ""),
             foreground=theme.WARN if unknown else theme.MUTED)
         self.columns_button.state(["!disabled"])
@@ -1369,10 +1370,11 @@ class Application(tk.Tk):
         """Parametrage des champs : colonnes, filtres, axes d'analyse."""
         from .settings import SettingsWindow
 
-        SettingsWindow(self, self.configuration, self.config_dir, self.fonts,
-                       headers=getattr(self, "headers", None),
-                       on_saved=self._settings_saved,
-                       samples=getattr(self, "_samples", None))
+        open_alone(self, "parametres", lambda: SettingsWindow(
+            self, self.configuration, self.config_dir, self.fonts,
+            headers=getattr(self, "headers", None),
+            on_saved=self._settings_saved,
+            samples=getattr(self, "_samples", None)))
 
     def _settings_saved(self, directory: str, path: str) -> None:
         """Applique les nouveaux parametres sans redemarrer.
@@ -1396,7 +1398,7 @@ class Application(tk.Tk):
                 inconnues = len(mapping.unknown_columns)
                 self.mapping_label.configure(
                     text=f"{len(mapping.field_to_index)} colonnes reconnues"
-                         + (f", {inconnues} non reconnue(s) — associez-les "
+                         + (f", {inconnues} non reconnue(s) : associez-les "
                             "ci-dessous" if inconnues else ""),
                     foreground=theme.WARN if inconnues else theme.MUTED)
         except CompensationError as error:
@@ -1624,9 +1626,10 @@ class Application(tk.Tk):
         if not valeurs:
             return
         intitule = self.filter_labels.get(field, field)
-        ValuePicker(self, self.fonts, f"Filtre — {intitule}", valeurs,
-                    self.filter_values.get(field),
-                    lambda retenues, f=field: self.set_filter(f, retenues))
+        open_alone(self, f"filtre:{field}", lambda: ValuePicker(
+            self, self.fonts, f"Filtre : {intitule}", valeurs,
+            self.filter_values.get(field),
+            lambda retenues, f=field: self.set_filter(f, retenues)))
 
     def set_filter(self, field: str, retenues) -> None:
         """Retient des valeurs pour une dimension.
@@ -1829,6 +1832,10 @@ class Application(tk.Tk):
         self.work_panel.finish()
         self._hide_work_panel()
         if kind == "ok":
+            # Le passage de ramassage que le moteur ne fait pas depuis
+            # son fil : ici, sur le fil de la fenetre, ou un objet Tk
+            # libere peut appeler Tcl sans attendre personne.
+            gc.collect()
             # Le trait se termine, puis reste le temps que les resultats
             # s'affichent : c'est la seule seconde ou il est plein.
             self.progress.finish()
@@ -1953,8 +1960,8 @@ class Application(tk.Tk):
         # a ce titre-la qu'il faut annoncer la moitie absente — sans quoi
         # la page montre un vide que rien n'explique.
         if eligible["population"]:
-            for cle, titre in (("population", "Vue d'ensemble — population"),
-                               ("salary", "Vue d'ensemble — rémunération")):
+            for cle, titre in (("population", "Vue d'ensemble : population"),
+                               ("salary", "Vue d'ensemble : rémunération")):
                 bloc = payload.get(cle) or {}
                 if bloc.get("masked"):
                     hidden.append(titre)
@@ -2004,7 +2011,7 @@ class Application(tk.Tk):
             lignes = [f"La sélection analysée compte {headcount} salarié(s). "
                       f"{len(manquantes)} vue(s) en demandent davantage :"]
             for label, raison in manquantes:
-                lignes.append(f"    • {label} — "
+                lignes.append(f"    • {label} : "
                               + (raison or "effectif insuffisant pour "
                                            "publier ces résultats."))
             lignes.append("Élargissez le filtre, ou ajustez les seuils dans "
@@ -2735,7 +2742,7 @@ class Application(tk.Tk):
                 self._note(parent,
                            f"{outside} salarié{'s' if outside > 1 else ''} "
                            f"sans tranche{' ' + measure if measure else ''} "
-                           f"— valeur absente ou hors bornes —, "
+                           f"(valeur absente ou hors bornes), "
                            f"hors pyramide.")
             if sexless:
                 self._note(parent,
@@ -2829,13 +2836,13 @@ class Application(tk.Tk):
              format_number(row["level"] + 1, 0),
              format_number(row["headcount"], 0),
              format_money(row["minimum"], currency)
-             if row["minimum"] is not None else "—",
+             if row["minimum"] is not None else "-",
              format_money(row["median"], currency)
-             if row["median"] is not None else "—",
+             if row["median"] is not None else "-",
              format_money(row["mean"], currency)
-             if row["mean"] is not None else "—",
+             if row["mean"] is not None else "-",
              format_money(row["maximum"], currency)
-             if row["maximum"] is not None else "—")
+             if row["maximum"] is not None else "-")
             for row in jobs])
 
         self.org_chart.set_tree(nodes, currency)
@@ -2849,10 +2856,10 @@ class Application(tk.Tk):
                 # population analysee, et la ligne doit le dire.
                 identité += "  (hors filtre)"
             rattachement = (self._identity(row["manager"])
-                            if row.get("manager") else "—")
+                            if row.get("manager") else "-")
             lignes.append((
                 "· " * row["level"] + identité,
-                row.get("job") or "—",
+                row.get("job") or "-",
                 format_number(row["level"] + 1, 0),
                 rattachement,
                 format_years(row.get("age_years")),
@@ -2862,7 +2869,7 @@ class Application(tk.Tk):
                 # Le rang seul ne se lit pas : « 4 » ne dit rien, « 4 / 57 »
                 # situe la personne dans son equipe.
                 f'{row["rank"]} / {row["ranked"]}'
-                if row.get("rank") else "—",
+                if row.get("rank") else "-",
             ))
             # Deux matricules par ligne : celui du salarie, et celui de la
             # case qui le porte — un salarie sans equipe n'a pas de case a
@@ -2944,7 +2951,6 @@ class Application(tk.Tk):
     #: Premiere entree du selecteur de poste : la page porte alors sur toute
     #: la population analysee. Sans elle, on ne pourrait plus revenir a la
     #: comparaison d'ensemble une fois un poste ouvert.
-    EQUITY_ALL = "(tous les postes)"
 
     #: Lignes du tableau de gauche : intitule, cle du moteur, nature.
     EQUITY_ROWS = (
@@ -2973,14 +2979,21 @@ class Application(tk.Tk):
         # --- Le poste ----------------------------------------------------
         tete = tk.Frame(page, background=theme.CANVAS)
         tete.pack(fill="x", padx=24, pady=(18, 4))
-        tk.Label(tete, text="POSTE", background=theme.CANVAS,
+        tk.Label(tete, text="POSTES", background=theme.CANVAS,
                  foreground=theme.FAINT,
                  font=self.fonts.label).pack(side="left")
-        self.equity_job = ttk.Combobox(tete, state="readonly", width=34,
-                                       font=self.fonts.small)
-        self.equity_job.pack(side="left", padx=10)
-        self.equity_job.bind("<<ComboboxSelected>>",
-                             lambda _e: self._show_equity_scope())
+        # Un bouton vers la liste a cocher, et non une liste deroulante :
+        # la question posee est rarement « ce poste-ci », c'est « ces
+        # trois-la, cote a cote ». C'est la meme fenetre que celle des
+        # filtres et des boites : un seul geste a apprendre.
+        #: Les postes retenus, ou rien pour toute la population.
+        self.equity_jobs: Optional[List[str]] = None
+        #: Les postes que le fichier porte, dans l'ordre de la liste.
+        self._equity_jobs_available: List[str] = []
+        self.equity_jobs_button = ttk.Button(
+            tete, text="Postes : tous", style="Ghost.TButton",
+            command=self._choose_equity_jobs)
+        self.equity_jobs_button.pack(side="left", padx=10)
         self.equity_scope_note = tk.Label(
             tete, text="", background=theme.CANVAS, foreground=theme.MUTED,
             font=self.fonts.small)
@@ -3127,16 +3140,21 @@ class Application(tk.Tk):
         if not equity.get("available"):
             self.equity_warning.configure(text=equity.get("warning") or "")
             self.equity_warning.pack(anchor="w", padx=24, pady=(8, 0))
-            self.equity_job.configure(values=[self.EQUITY_ALL])
-            self.equity_job.current(0)
+            self._equity_jobs_available = []
+            self.equity_jobs = None
+            self._label_equity_jobs()
             self._clear_equity()
             return
         self.equity_warning.pack_forget()
         postes = sorted({str(employee.value(self._equity_field) or "")
                          for employee in self.result.filtered} - {""})
-        self.equity_job.configure(values=[self.EQUITY_ALL] + postes)
-        if self.equity_job.get() not in [self.EQUITY_ALL] + postes:
-            self.equity_job.current(0)
+        self._equity_jobs_available = postes
+        # Un poste retenu que le nouveau fichier ne porte plus est oublie ;
+        # s'il n'en reste aucun, la page revient a tout le monde.
+        if self.equity_jobs is not None:
+            self.equity_jobs = [poste for poste in self.equity_jobs
+                                if poste in postes] or None
+        self._label_equity_jobs()
         self._scatter_axes = metrics.scatter_axes(self.configuration)
         self._fill_axis_box(self.equity_x, self.configuration.get(
             "chart_parameters.scatter_x", "tenure_years"))
@@ -3144,10 +3162,44 @@ class Application(tk.Tk):
             "chart_parameters.scatter_y", "base_salary"))
         self._show_equity_scope()
 
-    def _equity_choice(self) -> Optional[str]:
-        """Le poste retenu, ou rien si la page porte sur l'ensemble."""
-        choix = self.equity_job.get()
-        return None if not choix or choix == self.EQUITY_ALL else choix
+    def _equity_choice(self) -> Optional[List[str]]:
+        """Les postes retenus, ou rien si la page porte sur l'ensemble."""
+        return list(self.equity_jobs) if self.equity_jobs else None
+
+    def _label_equity_jobs(self) -> None:
+        """Le bouton dit ce qu'il retient, comme ceux des filtres."""
+        total = len(self._equity_jobs_available)
+        if self.equity_jobs is None:
+            texte = f"Postes : tous ({total})" if total else "Postes : tous"
+        else:
+            texte = f"Postes : {len(self.equity_jobs)} sur {total}"
+        self.equity_jobs_button.configure(text=texte)
+
+    def _choose_equity_jobs(self) -> None:
+        """Ouvre la liste des postes a cocher."""
+        if not self._equity_jobs_available:
+            return
+        open_alone(self, "postes:equite", lambda: ValuePicker(
+            self, self.fonts, "Postes", self._equity_jobs_available,
+            self.equity_jobs, self.set_equity_jobs))
+
+    def set_equity_jobs(self, retenus) -> None:
+        """Retient des postes, puis rejoue la page.
+
+        Ne rien retenir et tout retenir sont la meme chose, comme pour les
+        filtres : une page sur zero poste ne repond a aucune question.
+        """
+        if retenus is None:
+            self.equity_jobs = None
+        else:
+            voulus = {str(poste) for poste in retenus}
+            gardes = [poste for poste in self._equity_jobs_available
+                      if poste in voulus]
+            self.equity_jobs = (None if not gardes
+                                or len(gardes) == len(self._equity_jobs_available)
+                                else gardes)
+        self._label_equity_jobs()
+        self._show_equity_scope()
 
     def _equity_population(self):
         """La population sur laquelle portent les blocs du haut.
@@ -3193,9 +3245,14 @@ class Application(tk.Tk):
             return
         population = self._equity_population()
         poste = self._equity_choice()
+        if poste is None:
+            portee = " · toute la population analysée"
+        elif len(poste) == 1:
+            portee = f" · {poste[0]}"
+        else:
+            portee = f" · {len(poste)} postes"
         self.equity_scope_note.configure(
-            text=f"{len(population)} salariés"
-                 + ("" if poste else " · toute la population analysée"))
+            text=f"{len(population)} salariés{portee}")
         self._show_equity_people(population)
         self._reaxis_equity()
         self._show_equity_stats(poste)
@@ -3333,7 +3390,7 @@ class Application(tk.Tk):
         self._reaxis_equity()
         self.equity_scatter.reset_view()
 
-    def _show_equity_stats(self, poste: Optional[str]) -> None:
+    def _show_equity_stats(self, poste: Optional[List[str]]) -> None:
         """Les quartiles des deux sexes, et le gros trace en regard.
 
         Les deux lisent le meme decoupage : un tableau et un graphique qui
@@ -3353,7 +3410,7 @@ class Application(tk.Tk):
                 return "masqué"
             montant = (colonne.get("salary") or {}).get(mesure)
             if montant is None:
-                return "—"
+                return "-"
             return (str(int(montant)) if nature == "count"
                     else format_money(montant, devise))
 
@@ -3377,19 +3434,20 @@ class Application(tk.Tk):
             notes.append(bloc["warning"])
         self.equity_stats_note.configure(text=" · ".join(notes))
 
-        # Une seule ligne, toujours : la paire du poste retenu, ou celle de
-        # toute la population. Tracer les trente-neuf postes a cote d'un
-        # tableau qui n'en decrit qu'un ferait lire deux choses differentes
-        # dans deux colonnes voisines.
+        # Une paire par poste retenu, ou celle de toute la population.
+        # Tracer les trente-neuf postes a cote d'un tableau qui n'en decrit
+        # que trois ferait lire deux choses differentes dans deux colonnes
+        # voisines.
         if poste is None:
             lignes = metrics.sex_pair(self.result.filtered, self.result.config,
                                       label="Toute la population")
         else:
+            voulus = {str(item) for item in poste}
             lignes = [ligne for ligne
                       in metrics.segment_by_sex(self.result.filtered,
                                                 self.result.config,
                                                 self._equity_field)
-                      if str(ligne.get("segment")) == str(poste)]
+                      if str(ligne.get("segment")) in voulus]
         self.equity_box.set_split(True)
         self.equity_box.set_rows(
             lignes, devise,
@@ -3398,7 +3456,7 @@ class Application(tk.Tk):
                 "pay_equity_parameters.gap_alert_threshold", 5.0,
                 minimum=0.0, maximum=100.0))
 
-    def _show_equity_lagging(self, poste: Optional[str]) -> None:
+    def _show_equity_lagging(self, poste: Optional[List[str]]) -> None:
         """La population analysée, une ligne par salarié.
 
         Les colonnes viennent du paramétrage : ajouter « Direction » ou
@@ -3438,7 +3496,7 @@ class Application(tk.Tk):
                 return self._identity_part(ligne["row"], champ)
             valeur = ligne["values"].get(champ)
             if valeur is None or valeur == "":
-                return "—"
+                return "-"
             if champ in montants:
                 return format_money(valeur, devise)
             return str(valeur)
@@ -3474,7 +3532,7 @@ class Application(tk.Tk):
         vient en premier, pour ne pas la repeter sur chaque champ.
         """
         if row is None or self.population is None:
-            return "—"
+            return "-"
         montrer = self.configuration.get(
             "privacy_parameters.show_identities_on_screen", True)
         for employee in self.population:
@@ -3482,9 +3540,9 @@ class Application(tk.Tk):
                 continue
             if not montrer:
                 return (employee.anonymous_id or str(row)
-                        if field == self._equity_columns[0] else "—")
-            return str(employee.value(field) or "—")
-        return "—"
+                        if field == self._equity_columns[0] else "-")
+            return str(employee.value(field) or "-")
+        return "-"
 
 
 
@@ -3867,8 +3925,9 @@ class Application(tk.Tk):
         if not valeurs:
             return
         intitule = self.box_choice.get() or "la dimension"
-        ValuePicker(self, self.fonts, f"Valeurs — {intitule}", valeurs,
-                    self.box_values, self._apply_box_values)
+        open_alone(self, "valeurs:boites", lambda: ValuePicker(
+            self, self.fonts, f"Valeurs : {intitule}", valeurs,
+            self.box_values, self._apply_box_values))
 
     def _apply_box_values(self, retenues) -> None:
         self.box_values = retenues
@@ -3915,8 +3974,9 @@ class Application(tk.Tk):
         if not valeurs:
             return
         intitule = self.col_choice.get() or "la dimension"
-        ValuePicker(self, self.fonts, f"Valeurs — {intitule}", valeurs,
-                    self.col_values, self._apply_col_values)
+        open_alone(self, "valeurs:colonnes", lambda: ValuePicker(
+            self, self.fonts, f"Valeurs : {intitule}", valeurs,
+            self.col_values, self._apply_col_values))
 
     def _apply_col_values(self, retenues) -> None:
         self.col_values = retenues
@@ -3985,13 +4045,12 @@ class Application(tk.Tk):
             ("Médiane", [str(ligne["segment"]) for ligne in par_mediane]),
         )
         intitule = liste.get() or bloc.get("label", "")
-        OrderPicker(self, self.fonts, f"Ranger — {intitule}", valeurs,
-                    metrics.manual_order(self.configuration,
-                                         bloc.get("field", "")),
-                    lambda rangement, champ=bloc.get("field", ""),
-                           nom=intitule:
-                        self._save_manual_order(champ, rangement, nom),
-                    ordres=depart)
+        open_alone(self, f"ranger:{bloc.get('field', '')}", lambda: OrderPicker(
+            self, self.fonts, f"Ranger : {intitule}", valeurs,
+            metrics.manual_order(self.configuration, bloc.get("field", "")),
+            lambda rangement, champ=bloc.get("field", ""), nom=intitule:
+                self._save_manual_order(champ, rangement, nom),
+            ordres=depart))
 
     def _save_manual_order(self, field_name: str, rangement,
                            intitule: str = "") -> None:

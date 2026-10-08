@@ -132,7 +132,7 @@ class TestEveryFormulaHoldsUp(ControlCase):
         """
         rows = self.named(self.book)["Contrôle"]
         lignes = [ligne for ligne in rows
-                  if ligne and str(ligne[0]).startswith("<2 ans — effectif")]
+                  if ligne and str(ligne[0]).startswith("<2 ans : effectif")]
         self.assertTrue(lignes, "la tranche « <2 ans » doit être peuplée")
         formule = lignes[0][2]
         # Le libelle ne doit apparaitre que comme texte compare, jamais
@@ -538,7 +538,7 @@ class TestTheFullTimeGapOfEachJobIsCheckable(unittest.TestCase):
     def test_each_job_carries_its_full_time_lines(self):
         postes = {str(ligne[0]) for ligne in self.rows if ligne}
         for poste in ("Comptable", "Technicien", "Ingénieur"):
-            self.assertIn(f"{poste} — à temps plein", postes)
+            self.assertIn(f"{poste}, à temps plein", postes)
 
     def test_the_spreadsheet_gives_back_the_full_time_gaps(self):
         tableur = Workbook(self.book)
@@ -570,7 +570,7 @@ class TestTheFullTimeGapOfEachJobIsCheckable(unittest.TestCase):
         """
         tableur = Workbook(self.book)
         lignes = [ligne for ligne in self.rows
-                  if ligne and str(ligne[0]).endswith("— à temps plein")
+                  if ligne and str(ligne[0]).endswith(", à temps plein")
                   and ligne[1] == "Rattrapage"]
         self.assertEqual(len(lignes), 3)
         for ligne in lignes:
@@ -594,11 +594,11 @@ class TestTheFullTimeGapOfEachJobIsCheckable(unittest.TestCase):
         categories = {item["category"]: item for item
                       in self.result.payload["pay_equity"]["categories"]}
         for ligne in self.rows:
-            if not ligne or not str(ligne[0]).endswith("— à temps plein"):
+            if not ligne or not str(ligne[0]).endswith(", à temps plein"):
                 continue
             if ligne[1] != "Écart moyen (%)":
                 continue
-            nom = str(ligne[0]).replace(" — à temps plein", "")
+            nom = str(ligne[0]).replace(", à temps plein", "")
             attendu = categories[nom]["comparison"]["mean_gap"]
             self.assertAlmostEqual(float(ligne[2]), float(attendu), places=9)
 

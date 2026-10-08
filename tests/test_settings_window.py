@@ -291,6 +291,70 @@ class TestDimensionFlags(SettingsCase):
 
 
 class TestSaving(SettingsCase):
+    def test_factory_settings_rewrite_every_file_after_a_yes(self):
+        """Revenir au depart demandait de supprimer un dossier a la main,
+        dont il fallait connaitre le chemin."""
+        import json
+
+        from hr_analytics.core.config import CONFIG_FILES, DEFAULTS
+        from hr_analytics.core.config import write_configuration
+        from hr_analytics.ui import settings as module
+
+        write_configuration(self.directory, "privacy_parameters",
+                            {"min_headcount_publish": 42})
+        questions = []
+        saved = module.messagebox.askyesno
+        module.messagebox.askyesno = (
+            lambda *args, **kwargs: questions.append(args) or True)
+        self.addCleanup(setattr, module.messagebox, "askyesno", saved)
+        self.window.restore_defaults()
+        self.assertEqual(len(questions), 1)
+        for name in CONFIG_FILES:
+            path = os.path.join(self.directory, f"{name}.json")
+            with open(path, encoding="utf-8") as handle:
+                self.assertEqual(json.load(handle), DEFAULTS[name], name)
+        self.assertFalse(self.window.winfo_exists())
+
+    def test_factory_settings_change_nothing_after_a_no(self):
+        from hr_analytics.core.config import (load_configuration,
+                                              write_configuration)
+        from hr_analytics.ui import settings as module
+
+        write_configuration(self.directory, "privacy_parameters",
+                            {"min_headcount_publish": 42})
+        saved = module.messagebox.askyesno
+        module.messagebox.askyesno = lambda *args, **kwargs: False
+        self.addCleanup(setattr, module.messagebox, "askyesno", saved)
+        self.window.restore_defaults()
+        self.assertEqual(load_configuration(self.directory).get(
+            "privacy_parameters.min_headcount_publish"), 42)
+        self.assertTrue(self.window.winfo_exists())
+
+    def test_the_question_says_what_is_lost(self):
+        from hr_analytics.ui.settings import SettingsWindow
+
+        for mot in ("colonnes", "champs créés", "seuils", "rangements"):
+            self.assertIn(mot, SettingsWindow.USINE)
+
+    def test_factory_settings_are_reapplied_at_once(self):
+        """La fenetre principale relit le fichier avec les reglages de
+        livraison, sans redemarrer."""
+        from hr_analytics.ui import settings as module
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        appels = []
+        window = SettingsWindow(self.root, self.configuration, self.directory,
+                                Fonts(self.root), headers=HEADERS,
+                                on_saved=lambda d, p: appels.append((d, p)))
+        saved = module.messagebox.askyesno
+        module.messagebox.askyesno = lambda *args, **kwargs: True
+        self.addCleanup(setattr, module.messagebox, "askyesno", saved)
+        window.restore_defaults()
+        self.assertEqual(len(appels), 1)
+        self.assertEqual(appels[0][0], self.directory)
+        self.assertTrue(appels[0][1].endswith("population_mapping.json"))
+
     def test_saving_writes_a_readable_file(self):
         self.window.save()
         path = os.path.join(self.directory, "population_mapping.json")

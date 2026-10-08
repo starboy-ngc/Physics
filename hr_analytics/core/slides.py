@@ -130,12 +130,12 @@ def _cover(analysis: Dict[str, Any]) -> Slide:
     manifest = analysis.get("manifest", {})
     return Slide(
         title=analysis.get("title", "Analyse de rémunération"),
-        subtitle=f'{manifest.get("effectif_analyse", "—")} salariés analysés',
+        subtitle=f'{manifest.get("effectif_analyse", "-")} salariés analysés',
         kind="cover",
         blocks=[Block("text", [
             f'Périmètre : {manifest.get("filtres", "Aucun filtre")}',
-            f'Fichier source : {manifest.get("fichier_source", "—")}',
-            f'Date d\'analyse : {manifest.get("date_analyse", "—")}',
+            f'Fichier source : {manifest.get("fichier_source", "-")}',
+            f'Date d\'analyse : {manifest.get("date_analyse", "-")}',
         ])],
     )
 
@@ -206,7 +206,7 @@ def _median_gap_rows(salary: Dict[str, Any], currency: str,
         effectifs = ["Effectif"]
         for sexe in ("female", "male"):
             nombre = bounds[sexe].get("headcount")
-            effectifs.append("—" if nombre is None
+            effectifs.append("-" if nombre is None
                              else format_number(nombre, 0))
         effectifs.append(format_number(salary.get("headcount"), 0))
         effectifs.append("")
@@ -220,14 +220,14 @@ def _median_gap_rows(salary: Dict[str, Any], currency: str,
         if bounds:
             for sexe in ("female", "male"):
                 montant = bounds[sexe].get(cle)
-                ligne.append("—" if montant is None
+                ligne.append("-" if montant is None
                              else format_money(montant, currency))
         ligne.append(format_money(valeur, currency))
         # La mediane ne s'ecarte pas d'elle-meme : elle est la reference.
         # Un tiret au milieu de la colonne se lisait comme une donnee
         # manquante.
         ligne.append("référence" if cle == "median"
-                     else ("—" if part is None else _signed_percent(part)))
+                     else ("-" if part is None else _signed_percent(part)))
         rows.append(ligne)
     return rows
 
@@ -355,7 +355,7 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
             "chart", {"type": "boxplot", "salary": salary},
             title="Boîte à moustaches", width="half"))
 
-    subtitle = (f'{manifest.get("effectif_analyse", "—")} salariés · '
+    subtitle = (f'{manifest.get("effectif_analyse", "-")} salariés · '
                 f'{manifest.get("filtres", "Aucun filtre")}')
     coverage = salary.get("coverage")
     if coverage is not None and coverage < 99.95:
@@ -584,7 +584,7 @@ body{margin:0;background:var(--deck);color:var(--ink);
 font:15px/1.45 "Segoe UI",Calibri,Arial,sans-serif}
 .deck{display:flex;flex-direction:column;align-items:center;gap:20px;padding:24px}
 /* La page garde une geometrie fixe (1280x720), decidee ici et nulle part
-   ailleurs — le PDF a la sienne, PDF_WIDTH et PDF_HEIGHT. C'est ce qui
+   ailleurs ; le PDF a la sienne, PDF_WIDTH et PDF_HEIGHT. C'est ce qui
    garantit que
    l'ecran, l'impression et le PDF montrent exactement la meme chose. Pour
    tenir sur un ecran plus etroit, elle est mise à l'echelle plutot que

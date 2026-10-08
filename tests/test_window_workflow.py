@@ -1835,6 +1835,85 @@ class TestTheVerticalBoxesTab(WindowCase):
             self.assertEqual(len(self.app.column_boxes._drawable()), combien)
 
 
+class TestOnlyOneSecondaryWindow(WindowCase):
+    """Une seule fenetre secondaire a la fois.
+
+    Cliquer deux fois sur un filtre ouvrait deux fois sa liste, l'une sur
+    l'autre, et chacune appliquait son choix par-dessus celui de l'autre.
+    """
+
+    def _secondaires(self):
+        return [child for child in self.app.winfo_children()
+                if isinstance(child, tkinter.Toplevel)
+                and child.winfo_exists()
+                and not child.wm_overrideredirect()]
+
+    def _champ(self):
+        self.load()
+        self.app.update()
+        return next(iter(self.app._filter_choices))
+
+    def test_the_same_filter_opens_its_window_once(self):
+        """La meme demande ramene la fenetre deja ouverte : la fermer pour
+        en ouvrir une autre perdrait les cases qu'on venait de cocher."""
+        champ = self._champ()
+        self.app._choose_filter_values(champ)
+        self.app.update()
+        premiere = self._secondaires()[0]
+        self.app._choose_filter_values(champ)
+        self.app.update()
+        fenetres = self._secondaires()
+        self.assertEqual(len(fenetres), 1)
+        self.assertIs(fenetres[0], premiere)
+        self.assertIn(self.app.filter_labels[champ], fenetres[0].title())
+
+    def test_another_filter_takes_the_place_of_the_first(self):
+        champ = self._champ()
+        autres = [nom for nom in self.app._filter_choices if nom != champ]
+        if not autres:
+            self.skipTest("un seul filtre sur ce jeu d'essai")
+        self.app._choose_filter_values(champ)
+        self.app._choose_filter_values(autres[0])
+        self.app.update()
+        fenetres = self._secondaires()
+        self.assertEqual(len(fenetres), 1)
+        self.assertIn(self.app.filter_labels[autres[0]], fenetres[0].title())
+
+    def test_a_closed_window_can_be_opened_again(self):
+        champ = self._champ()
+        self.app._choose_filter_values(champ)
+        self.app.update()
+        self._secondaires()[0].destroy()
+        self.app.update()
+        self.app._choose_filter_values(champ)
+        self.app.update()
+        self.assertEqual(len(self._secondaires()), 1)
+
+    def test_arranging_closes_the_value_list(self):
+        from hr_analytics.ui.theme import OrderPicker
+
+        self.load()
+        self.analyse()
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("boites")
+        self.app.update()
+        self.app._choose_box_values()
+        self.app._arrange_boxes()
+        self.app.update()
+        fenetres = self._secondaires()
+        self.assertEqual(len(fenetres), 1)
+        self.assertIsInstance(fenetres[0], OrderPicker)
+
+    def test_the_settings_open_once(self):
+        self.load()
+        self.app.open_settings()
+        self.app.open_settings()
+        self.app.update()
+        fenetres = self._secondaires()
+        self.assertEqual(len(fenetres), 1)
+        fenetres[0].destroy()
+
+
 class TestArrangingTheValuesByHand(WindowCase):
     """Le rangement posé depuis l'écran : enregistré, appliqué, durable.
 

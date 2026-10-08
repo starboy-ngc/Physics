@@ -300,6 +300,20 @@ class TestConfiguration(unittest.TestCase):
             self.assertIn(name, DEFAULTS, name)
             self.assertIsInstance(DEFAULTS[name], dict, name)
 
+    def test_the_delivered_files_are_the_defaults(self):
+        """« Réglages d'usine » réécrit les défauts embarqués : ils doivent
+        être ce que le dossier `config/` livré contient, sinon « usine »
+        aurait deux sens."""
+        import json
+
+        from hr_analytics.core.config import CONFIG_FILES
+
+        racine = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for name in CONFIG_FILES:
+            path = os.path.join(racine, "config", f"{name}.json")
+            with open(path, encoding="utf-8") as handle:
+                self.assertEqual(json.load(handle), DEFAULTS[name], name)
+
     def test_the_default_folder_is_an_absolute_path(self):
         self.assertTrue(os.path.isabs(default_config_dir()))
 

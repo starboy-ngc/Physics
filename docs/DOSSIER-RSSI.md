@@ -1,4 +1,4 @@
-# HR Analytics — dossier pour le RSSI
+# HR Analytics : dossier pour le RSSI
 
 **Version 1.0.0 · commit `76c66e3` · 5 octobre 2026**
 
@@ -114,7 +114,7 @@ réseau :
 | `webbrowser.py`, `cgi.py`, `cgitb.py` | |
 
 **Volontairement gardés**, et pourquoi : `libcrypto-3.dll` et `_hashlib.pyd`
-servent aux empreintes SHA-256 et à l'anonymisation — ni l'un ni l'autre
+servent aux empreintes SHA-256 et à l'anonymisation, ni l'un ni l'autre
 n'ouvre quoi que ce soit ; `urllib/parse.py`, que `pathlib` importe pour
 écrire un chemin sous forme d'URL, est un analyseur de chaînes sans aucune
 fonction d'accès.
@@ -145,7 +145,7 @@ jamais. Elles sont retirées de l'interpréteur livré :
 | Retiré | Ce que cela interdit |
 |---|---|
 | `_ctypes.pyd`, `ctypes/`, `libffi-8.dll` | **La pièce qui décide pour l'appel système.** Sans elle, aucun code Python ne peut appeler une fonction de Windows qui ne lui soit pas déjà exposée |
-| `subprocess.py`, `_multiprocessing.pyd`, `multiprocessing/`, `concurrent/` | Les bibliothèques de lancement de processus. **Attention : cela ne retire pas la capacité — voir §5.1** |
+| `subprocess.py`, `_multiprocessing.pyd`, `multiprocessing/`, `concurrent/` | Les bibliothèques de lancement de processus. **Attention : cela ne retire pas la capacité, voir §5.1** |
 | `_sqlite3.pyd`, `sqlite3/`, `sqlite3.dll` | Aucune base locale |
 | `_wmi.pyd` | Aucune interrogation WMI du poste |
 | `_msi.pyd` | Aucun accès à l'API d'installation |
@@ -164,7 +164,7 @@ confronte aux deux listes de retrait. Aucune pièce retirée ne peut être une
 pièce dont l'outil a besoin, et un import ajouté demain qui toucherait à l'une
 d'elles ferait échouer la suite.
 
-### 5.1 Ce que ce retrait ne fait PAS — correction d'une affirmation
+### 5.1 Ce que ce retrait ne fait PAS : correction d'une affirmation
 
 **Cet audit a invalidé une affirmation que nous avions écrite.** Nous avions
 dit que le retrait de `subprocess` et de `_multiprocessing.pyd` rendait le
@@ -186,7 +186,7 @@ des fichiers `.py` et `.pyd` ne les atteint pas. Nous l'avons vérifié en
 lançant réellement un processus depuis l'interpréteur livré.
 
 **Pourquoi nous ne les retirons pas.** Il faudrait recompiler CPython, donc
-renoncer à livrer les binaires de python.org tels quels — et donc renoncer à
+renoncer à livrer les binaires de python.org tels quels, et donc renoncer à
 la vérification par empreinte (§9.3). Entre une capacité de moins et une
 provenance contrôlable, nous choisissons la provenance : elle se vérifie,
 l'autre se croirait sur parole.
@@ -213,7 +213,7 @@ socket n'est compilée dans `python312.dll`**. Vérifié sur le livrable :
 socket, _socket, ssl, _ssl, asyncio, http, urllib.request : tous absents
 os.*     contenant « sock » : aucun
 _winapi.* réseau            : aucun (ConnectNamedPipe est du tube local)
-ctypes                      : absent — aucun appel direct à ws2_32
+ctypes                      : absent, aucun appel direct à ws2_32
 ```
 
 Sans `_socket` et sans `ctypes` pour appeler `ws2_32` directement, **il
@@ -249,7 +249,7 @@ cherche `eval`, `exec`, `compile`, `__import__`, `os.system`, `os.popen`,
 > régulières), vérifiées une par une. Aucune autre.
 
 Aucun `eval`, aucun `exec`, aucun `__import__` dynamique, aucun `pickle`,
-aucun `marshal` — donc aucune désérialisation de code.
+aucun `marshal` : donc aucune désérialisation de code.
 
 **Contrôle dynamique.** Une analyse complète (lecture du fichier, calculs,
 six documents produits) a été exécutée avec `os.system`, `os.popen`,
@@ -293,11 +293,11 @@ tableur n'en écrit. Dans un fichier reçu, c'en est un signe suffisant.
 
 **Cet audit a trouvé un trou ici, et il a été corrigé** (commit `1fa81dc`). La
 garde s'appliquait au classeur et à la table des chaînes partagées, mais pas à
-**l'onglet** — le seul morceau lu en flux, et justement celui qu'un fichier
+**l'onglet** : le seul morceau lu en flux, et justement celui qu'un fichier
 reçu contrôle vraiment. Une bombe posée dans l'onglet passait la garde et
 n'était arrêtée que par libexpat. L'onglet est désormais vérifié lui aussi,
-sans cesser d'être lu en flux : seize kilo-octets de prologue sont relus — une
-déclaration de type précède obligatoirement l'élément racine — puis un flux
+sans cesser d'être lu en flux : seize kilo-octets de prologue sont relus, une
+déclaration de type précède obligatoirement l'élément racine, puis un flux
 qui reprend où il en était est rendu à l'analyseur. Un onglet de 60 000 lignes
 se lit toujours sans que la mémoire du processus bouge.
 
@@ -310,8 +310,8 @@ même garde, et une vérification qui l'exerce vraiment.
 ### 7.3 Bombe ZIP
 
 Un demi-giga-octet dans un onglet pour quelques kilo-octets sur le disque. La
-taille annoncée dans l'en-tête est vérifiée d'abord — c'est elle qui évite de
-lire quoi que ce soit —, puis la lecture elle-même est bornée, parce qu'un
+taille annoncée dans l'en-tête est vérifiée d'abord, c'est elle qui évite de
+lire quoi que ce soit, puis la lecture elle-même est bornée, parce qu'un
 en-tête peut mentir. Plafond par défaut : 512 Mo décompressés.
 
 ### 7.4 Traversée de chemin
@@ -351,11 +351,11 @@ et les soumettent vraiment à l'outil.
 
 | Sortie | Contient des identités ? |
 |---|---|
-| Rapport HTML | **Non** — mesuré |
-| Synthèse HTML / PDF | **Non** — mesuré |
-| Vue détaillée HTML / PDF | **Non** — mesuré |
-| Journal technique | **Non** — mesuré |
-| Messages d'erreur techniques | **Non** — par construction (§8.2) |
+| Rapport HTML | **Non** : mesuré |
+| Synthèse HTML / PDF | **Non** : mesuré |
+| Vue détaillée HTML / PDF | **Non** : mesuré |
+| Journal technique | **Non** : mesuré |
+| Messages d'erreur techniques | **Non** : par construction (§8.2) |
 | Classeur Excel | **Oui, par conception** : c'est l'onglet de matière première, ce pour quoi il existe |
 
 **Mesure.** Les 597 identités présentes dans un fichier d'essai (noms,
@@ -403,13 +403,13 @@ de savoir s'il manque un chiffre ou s'il n'y en avait pas.
 Les identifiants peuvent être remplacés par une référence stable. Le sel
 d'anonymisation est un paramètre de configuration ; il est **retiré** de tout
 ce qui est publié et remplacé par « (non publié) ». Le fichier de
-configuration qui le porte ne doit pas être transmis avec les documents — le
+configuration qui le porte ne doit pas être transmis avec les documents : le
 guide utilisateur le dit à l'endroit où le réglage se fait.
 
 ### 8.5 Droits des fichiers produits
 
 Un classeur d'analyse porte la population. Créé au masque par défaut, il
-naîtrait lisible par tout compte de la machine — sans conséquence sur un poste
+naîtrait lisible par tout compte de la machine : sans conséquence sur un poste
 personnel, mais un serveur de rebond, un bureau partagé ou un dossier
 synchronisé en feraient une copie du fichier de paie accessible à qui passe.
 Chaque document produit est donc restreint à son propriétaire après écriture.
@@ -425,8 +425,8 @@ Chaque document produit est donc restreint à son propriétaire après écriture
 ### 8.6 Ce qu'un nom de colonne peut atteindre
 
 Le fichier reçu décide de deux choses dans le modèle de données : la valeur
-d'un champ, et — si l'utilisateur déclare une colonne comme nouveau champ
-depuis la page Paramètres — le **nom** de ce champ.
+d'un champ, et, si l'utilisateur déclare une colonne comme nouveau champ
+depuis la page Paramètres, le **nom** de ce champ.
 
 Ce nom n'atteint que les champs déclarés par le modèle. Tout le reste part
 dans un dictionnaire de débordement, où l'outil sait le lire. Une colonne
@@ -434,7 +434,7 @@ nommée « Value », « Assign » ou « Identity » ne peut donc rien remplacer 
 elle est rangée à côté du modèle, jamais dessus.
 
 > **Ce n'était pas le cas, et l'audit du 8 octobre 2026 l'a trouvé.** Le
-> contrôle portait sur `hasattr`, vrai pour tout ce que l'objet porte — y
+> contrôle portait sur `hasattr`, vrai pour tout ce que l'objet porte : y
 > compris ses propres méthodes. Une colonne « Value » remplaçait la méthode
 > `value()`, et l'analyse tombait quelques lignes plus loin sur
 > « 'str' object is not callable », sans que rien ne désigne la colonne.
@@ -532,7 +532,7 @@ diverger.
 ### 9 bis.2 Table d'import : ce que les lanceurs savent appeler
 
 C'est la mesure la plus parlante pour un analyste. Table complète du lanceur
-du dossier — **19 fonctions de KERNEL32, 1 de USER32**, et rien d'autre :
+du dossier, **19 fonctions de KERNEL32, 1 de USER32**, et rien d'autre :
 
 ```
 CloseHandle          CreateProcessW       DeleteCriticalSection
@@ -557,7 +557,7 @@ Ce que cette table **ne contient pas**, et qui est l'essentiel :
 |---|---|
 | `VirtualAllocEx`, `WriteProcessMemory`, `CreateRemoteThread` | Injection de code dans un autre processus |
 | `SetWindowsHookEx` | Interception clavier, injection par hook |
-| `LoadLibraryA/W`, `GetProcAddress` | **Résolution dynamique d'API** — le signal le plus net d'un chargeur malveillant |
+| `LoadLibraryA/W`, `GetProcAddress` | **Résolution dynamique d'API** : le signal le plus net d'un chargeur malveillant |
 | `RegCreateKey*`, `RegSetValue*` | Persistance par registre |
 | `WSAStartup`, `InternetOpen*`, `URLDownloadToFile` | Toute sortie réseau |
 | `AdjustTokenPrivileges`, `OpenProcessToken` | Élévation de privilège |
@@ -565,7 +565,7 @@ Ce que cette table **ne contient pas**, et qui est l'essentiel :
 | `WinExec`, `ShellExecute*` | Lancement opaque |
 
 `VirtualProtect` et `VirtualQuery` sont présents : ils ne sont **pas** appelés
-par notre code — vérifié, aucune occurrence dans les deux sources C — mais par
+par notre code, vérifié, aucune occurrence dans les deux sources C, mais par
 le démarrage de la bibliothèque C de mingw (relocalisation pseudo-PE). C'est
 le cas de tout binaire produit par cette chaîne.
 
@@ -580,12 +580,12 @@ repris **tels quels**, jamais recompilés ni modifiés. Un EDR qui voit
 lui des fichiers qu'il connaît déjà, souvent déjà en liste d'autorisation.
 
 > Le compte est passé de 63 à 60 le 8 octobre 2026 : trois modules natifs que
-> l'interpréteur livré ne chargeait jamais — `_decimal.pyd` et sa
-> bibliothèque libmpdec, `_uuid.pyd`, `_zoneinfo.pyd` — ont été retirés. Voir
+> l'interpréteur livré ne chargeait jamais, `_decimal.pyd` et sa
+> bibliothèque libmpdec, `_uuid.pyd`, `_zoneinfo.pyd`, ont été retirés. Voir
 > `DEPENDANCES.md` §4.
 
 **Trois trouvailles de cet audit, corrigées :** le paquet contenait
-`reg1.3` (extension registre de Tcl — dans un outil qui affirme ne pas
+`reg1.3` (extension registre de Tcl, dans un outil qui affirme ne pas
 toucher au registre), `dde1.4` (canal DDE, voie connue de mouvement latéral)
 et `nmake/x86_64-w64-mingw32-nmakehlp.exe` (**un exécutable compilé, non
 signé, inconnu, à l'intérieur du produit** : exactement ce qu'un antivirus
@@ -624,7 +624,7 @@ les supprime.
 
 **1. Un exécutable qui écrit des exécutables puis les lance.** C'est le motif
 que surveille toute protection de poste, et c'est ce que fait la forme fichier
-unique. **La forme dossier ne le fait pas du tout** — tout y est déjà sur le
+unique. **La forme dossier ne le fait pas du tout** : tout y est déjà sur le
 disque. *Si votre politique est stricte sur ce point, livrez la forme
 dossier : c'est la réponse, et elle ne coûte rien.*
 
@@ -634,7 +634,7 @@ dans `%LOCALAPPDATA%`). La forme dossier posée dans `C:\Program Files` ou sur
 un partage en lecture seule l'évite entièrement.
 
 **3. Une surcharge de 12,8 Mo d'entropie 7,97/8 derrière 9 Ko de code.**
-C'est le CAB, qui est compressé — une entropie élevée est la signature d'un
+C'est le CAB, qui est compressé : une entropie élevée est la signature d'un
 contenu compressé, et les analyseurs la rapprochent d'un empaqueteur. La forme
 dossier n'a pas de surcharge du tout.
 
@@ -688,7 +688,7 @@ listés ici parce qu'un dossier de sécurité qui ne dit que les bonnes nouvelle
 n'a aucune valeur :
 
 1. **La garde contre les déclarations de type XML ne s'appliquait pas à
-   l'onglet** (§7.1) — le seul morceau qu'un fichier reçu contrôle vraiment.
+   l'onglet** (§7.1) : le seul morceau qu'un fichier reçu contrôle vraiment.
 2. **Le correctif du point 1 a introduit une régression** : le flux rendu à
    l'analyseur ne savait plus dire sa position, ce qui aveuglait la barre
    d'avancement. La suite l'a attrapée avant livraison.
@@ -696,13 +696,13 @@ n'a aucune valeur :
    affirme ne pas toucher au registre, ainsi qu'un canal DDE et un exécutable
    de compilation non signé (§9 bis.3).
 4. **Les lanceurs n'avaient pas de bloc de version** : ni éditeur, ni produit,
-   ni numéro — une anomalie en soi pour un moteur comportemental (§9 bis.1).
+   ni numéro, une anomalie en soi pour un moteur comportemental (§9 bis.1).
 5. **Nous avions écrit une affirmation fausse** : que le retrait de
    `subprocess` rendait impossible le lancement d'un programme. Un contrôle
    l'a démentie en lançant réellement un processus. Corrigée en §5.1.
 6. **Une colonne du fichier pouvait écraser une méthode du modèle de
-   données** (§8.6). Pas une exécution de code — rien n'appelle ce qui est
-   reçu — mais un arrêt sur un message incompréhensible, sur un nom de
+   données** (§8.6). Pas une exécution de code, rien n'appelle ce qui est
+   reçu, mais un arrêt sur un message incompréhensible, sur un nom de
    colonne qui n'a rien d'exotique. Audit du 8 octobre 2026.
 
 ---

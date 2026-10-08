@@ -36,8 +36,8 @@ GLOSSARY: Dict[str, Entry] = {
     "csp_split": Entry(
         "Répartition de l'effectif par catégorie socio-professionnelle.",
         "Comptage des salariés par valeur de la colonne déclarée dans "
-        "chart_parameters.csp_field — le statut dans la plupart des "
-        "exports. Au-delà du nombre de parts autorisé, la queue des "
+        "chart_parameters.csp_field (le statut dans la plupart des "
+        "exports). Au-delà du nombre de parts autorisé, la queue des "
         "modalités est regroupée sous « Autres »."),
     "age_median": Entry(
         "Âge qui partage la population en deux moitiés égales.",
@@ -98,8 +98,8 @@ GLOSSARY: Dict[str, Entry] = {
         "filtrée."),
     "analysis_field": Entry(
         "La colonne du fichier sur laquelle portent tous les montants de "
-        "cette page. Changer de champ — salaire de base, rémunération "
-        "totale — change tous les chiffres qui suivent.",
+        "cette page. Changer de champ (salaire de base, rémunération "
+        "totale) change tous les chiffres qui suivent.",
         "Champ déclaré au paramétrage (salary_parameters.analysis_field), "
         "vérifié contre les colonnes numériques reconnues."),
     "salary_summary": Entry(
@@ -171,9 +171,9 @@ GLOSSARY: Dict[str, Entry] = {
     "mean_gap": Entry(
         "Écart de rémunération moyenne entre femmes et hommes, sur toute la "
         "population retenue. Un écart positif signifie que les femmes sont "
-        "moins rémunérées. Il mélange deux faits opposés — une différence "
-        "de rémunération à travail comparable, et une répartition inégale "
-        "sur les postes — que les deux indicateurs suivants séparent. La "
+        "moins rémunérées. Il mélange deux faits opposés, une différence "
+        "de rémunération à travail comparable et une répartition inégale "
+        "sur les postes, que les deux indicateurs suivants séparent. La "
         "directive 2023/970 demande de le publier.",
         "(Moyenne des hommes − Moyenne des femmes) / Moyenne des hommes, en "
         "pourcentage."),
@@ -201,7 +201,7 @@ GLOSSARY: Dict[str, Entry] = {
         "de travail) salarié par salarié."),
     "explained_gap": Entry(
         "Part de l'écart global que la différence de temps de travail "
-        "explique. Ce qui reste — l'écart à temps plein — est l'écart à "
+        "explique. Ce qui reste, l'écart à temps plein, est l'écart à "
         "temps de travail égal.",
         "Écart global − Écart à temps plein, en points de pourcentage."),
     "median_gap": Entry(
@@ -213,7 +213,7 @@ GLOSSARY: Dict[str, Entry] = {
         "(Médiane des hommes − Médiane des femmes) / Médiane des hommes, en "
         "pourcentage."),
     "variable_mean_gap": Entry(
-        "Écart sur les composantes variables — primes, bonus, "
+        "Écart sur les composantes variables : primes, bonus, "
         "intéressement. C'est souvent là que l'écart se loge sans qu'on le "
         "voie, la rémunération fixe étant tenue par une grille. À lire avec "
         "la part de chaque sexe qui en perçoit : l'écart peut venir du "

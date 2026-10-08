@@ -1,4 +1,4 @@
-# Dépendances — HR Analytics 1.0.0
+# Dépendances : HR Analytics 1.0.0
 
 *Relevé du 8 octobre 2026, révision `d4ec4c1`. Lu dans le paquet livré et
 dans le code, jamais dans un fichier de déclaration.*
@@ -16,7 +16,7 @@ n'appellent pas la même vérification :
 ## 1. Dépendances du code : aucune
 
 **Aucune bibliothèque tierce.** Les 40 fichiers Python du paquet n'importent
-que la bibliothèque standard — 32 modules, relevés dans l'arbre syntaxique :
+que la bibliothèque standard, 32 modules, relevés dans l'arbre syntaxique :
 
 ```
 __future__  argparse  base64  collections  copy  csv  dataclasses
@@ -95,7 +95,7 @@ Pas de `libffi` : `_ctypes` a été retiré, et sa bibliothèque avec lui. Pas d
 
 ## 4. Ce qui est chargé pour de vrai
 
-Mesuré en lançant **l'interpréteur livré** sur une analyse complète — lecture
+Mesuré en lançant **l'interpréteur livré** sur une analyse complète : lecture
 du fichier, calculs, les sept documents, et l'import de la fenêtre. Huit
 modules natifs sont chargés, et ce sont exactement les huit qui restent :
 
@@ -118,7 +118,7 @@ inertes** : `_decimal.pyd` (et avec lui libmpdec), `_uuid.pyd`,
 
 Les modules Python qui les accompagnent restent : `decimal.py` et
 `_pydecimal.py` parce que `statistics`, `fractions` et `_pylong` les
-importent — ils continuent de fonctionner, en version Python pure et plus
+importent, ils continuent de fonctionner, en version Python pure et plus
 lente ; `uuid.py` parce que `wave.py` l'importe. Le paquet reste cohérent :
 vérifié en lançant l'interpréteur livré, qui importe encore `decimal`,
 `statistics`, `fractions` et `uuid` sans erreur et produit les sept
@@ -127,7 +127,7 @@ documents.
 > **Un effet de bord qui va dans le bon sens.** Sans `_uuid.pyd`, sans
 > `ctypes` et sans `subprocess`, `uuid.getnode()` n'a plus aucun moyen de
 > lire l'adresse matérielle de la carte réseau : il rend un nombre tiré au
-> hasard. Constaté sur l'interpréteur livré — deux appels successifs rendent
+> hasard. Constaté sur l'interpréteur livré : deux appels successifs rendent
 > deux valeurs différentes, et le bit « multicast » qui marque un tirage au
 > hasard est levé.
 
@@ -142,7 +142,7 @@ python.org. Rien d'autre.
 
 **Pour exécuter la suite de tests** : rien. Les 1 583 essais emploient
 `unittest`, de la bibliothèque standard. Pas de `pytest`, pas de `tox`, pas
-de `coverage` — donc pas d'environnement à reconstituer pour rejouer les
+de `coverage` : donc pas d'environnement à reconstituer pour rejouer les
 contrôles.
 
 **Pour l'outillage du dépôt** (`tools/`) : rien non plus. L'analyseur de code

@@ -230,13 +230,13 @@ def comparison_rows(comparison: Dict[str, Any], currency: str) -> List[List[str]
 
 def format_money(value: Optional[float], currency: str = "EUR") -> str:
     if value is None:
-        return "—"
+        return "-"
     return f"{value:,.0f}".replace(",", " ") + f" {currency}"
 
 
 def format_number(value: Optional[float], digits: int = 1) -> str:
     if value is None:
-        return "—"
+        return "-"
     return f"{value:,.{digits}f}".replace(",", " ").replace(".", ",")
 
 
@@ -252,7 +252,7 @@ def format_years(value: Optional[float], suffix: bool = True) -> str:
     portee par l'en-tete : la regle d'arrondi, elle, reste la meme.
     """
     if value is None:
-        return "—"
+        return "-"
     return f"{format_number(value, 0)} ans" if suffix else format_number(value, 0)
 
 
@@ -264,7 +264,7 @@ def format_percent(value: Optional[float], digits: int = 1) -> str:
     precision affichee y suggere une exactitude que l'arrondi d'un
     comptage n'a pas.
     """
-    return ("—" if value is None
+    return ("-" if value is None
             else f"{value:.{digits}f} %".replace(".", ","))
 
 
@@ -885,7 +885,7 @@ def _salary_section(salary: Dict[str, Any]) -> str:
         dispersion_rows.append(
             ("Écart-type", format_money(salary.get("std_dev"), currency)))
     return (
-        f"<h2>Rémunération — {_e(field_label)}</h2>"
+        f"<h2>Rémunération : {_e(field_label)}</h2>"
         f'<div class="kpis">{kpis}</div>'
         f'<h3>Percentiles</h3>{_table(["Indicateur", "Valeur"], percentile_rows)}'
         f'<h3>Dispersion</h3>{_table(["Indicateur", "Valeur"], dispersion_rows)}'
@@ -1055,8 +1055,8 @@ def render_report(analysis: Dict[str, Any]) -> str:
 <header>
 <h1>{_e(title)}</h1>
 <div class="meta">
-<div>Fichier source<b>{_e(manifest.get("fichier_source", "—"))}</b></div>
-<div>Effectif analysé<b>{_e(manifest.get("effectif_analyse", "—"))}</b></div>
+<div>Fichier source<b>{_e(manifest.get("fichier_source", "-"))}</b></div>
+<div>Effectif analysé<b>{_e(manifest.get("effectif_analyse", "-"))}</b></div>
 <div>Périmètre<b>{_e(manifest.get("filtres", "Aucun filtre"))}</b></div>
 <div>Date d'analyse<b>{_e(generated)}</b></div>
 </div>

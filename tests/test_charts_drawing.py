@@ -1142,7 +1142,10 @@ class TestSplitPresentation(ChartCase):
         rows = self.rows(count=2)
         rows[0]["median_gap"] = None
         chart = self.chart(rows)
-        self.assertIn("—", self._texts(chart))
+        textes = self._texts(chart)
+        self.assertIn("-", textes)
+        self.assertFalse([t for t in textes if t.endswith("%")
+                          and t.strip("+-") in ("0 %", "0,0 %")])
 
     def test_both_headcounts_are_shown(self):
         """Cinq femmes en face de cent vingt hommes ne se lisent pas comme
@@ -1893,6 +1896,50 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         self.root.update()
         moitiés = {moitié for _row, moitié in self.chart._items.values()}
         self.assertEqual(moitiés, {"female", "male"})
+
+    def _survoler(self, canvas, x, y):
+        class Ev:
+            pass
+        ev = Ev()
+        ev.x, ev.y = int(x), int(y)
+        return ev
+
+    def test_the_gap_gutter_explains_itself(self):
+        """« +12,4 % » se lit comme un fait, mais un fait sur quoi ? Le
+        texte est celui du glossaire : l'écran et le rapport parlent du
+        même calcul."""
+        self.chart.set_split(True)
+        self.chart.set_rows([self._ligne()], "EUR")
+        self.root.update()
+        largeur = self.chart.canvas.winfo_width()
+        self.chart._on_motion(self._survoler(self.chart.canvas, largeur - 10, 40))
+        self.root.update()
+        texte = self.chart.tooltip.texte()
+        self.assertIn("Écart F/H", texte)
+        self.assertIn("Médiane des hommes", texte)
+        self.assertIn("Calcul :", texte)
+
+    def test_the_header_word_explains_itself_too(self):
+        self.chart.set_split(True)
+        self.chart.set_rows([self._ligne()], "EUR")
+        self.root.update()
+        largeur = self.chart.canvas.winfo_width()
+        self.chart._on_header_motion(
+            self._survoler(self.chart.header, largeur - 10, 12))
+        self.root.update()
+        self.assertIn("Écart F/H", self.chart.tooltip.texte())
+        self.chart._on_header_motion(self._survoler(self.chart.header, 20, 12))
+        self.root.update()
+        self.assertEqual(self.chart.tooltip.window.state(), "withdrawn")
+
+    def test_without_the_split_the_gutter_is_an_ordinary_place(self):
+        self.chart.set_split(False)
+        self.chart.set_rows([self._ligne()], "EUR")
+        self.root.update()
+        largeur = self.chart.canvas.winfo_width()
+        self.chart._on_motion(self._survoler(self.chart.canvas, largeur - 10, 40))
+        self.root.update()
+        self.assertNotIn("Médiane des hommes", self.chart.tooltip.texte())
 
     def test_the_tooltip_carries_all_three_columns(self):
         bulle = self.chart._bulle(self._ligne(), "female")

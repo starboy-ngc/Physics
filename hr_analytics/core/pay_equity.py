@@ -467,7 +467,7 @@ def basis_description(population: Population,
         "field_label": label,
         "full_time": connu,
         "label": (f"{label.lower()}, ramené au temps plein" if connu else
-                  f"{label.lower()} versé — le temps de travail n'est "
+                  f"{label.lower()} versé : le temps de travail n'est "
                   "renseigné pour personne, les montants ne peuvent pas être "
                   "ramenés au temps plein"),
     }
@@ -555,13 +555,22 @@ def calculate_category_gaps(population: Population, config: Configuration,
 
 
 def category_members(population: Population, field_name,
-                     value: str) -> List[Any]:
-    """Les salaries d'une categorie, axe simple ou croise."""
+                     value) -> List[Any]:
+    """Les salaries d'une categorie, axe simple ou croise.
+
+    `value` est une valeur, ou plusieurs : la page des ecarts compare
+    volontiers trois postes voisins d'un coup, et c'est la meme liste qui
+    les reunit. Une valeur seule garde son sens exact.
+    """
+    if isinstance(value, (list, tuple, set, frozenset)):
+        wanted = {str(item) for item in value}
+    else:
+        wanted = {str(value)}
     if isinstance(field_name, str):
         return [employee for employee in population
-                if str(employee.value(field_name) or "") == str(value)]
+                if str(employee.value(field_name) or "") in wanted]
     return [employee for employee in population
-            if cross_key(employee, field_name) == str(value)]
+            if cross_key(employee, field_name) in wanted]
 
 
 #: Les trois colonnes de la fiche. L'ordre est celui de la lecture : les

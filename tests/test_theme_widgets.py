@@ -99,6 +99,35 @@ class TestCheckRow(WidgetCase):
         self.root.update()
         self.assertTrue(variable.get())
 
+    def test_a_destroyed_row_stops_listening_to_its_variable(self):
+        """Un panneau qui se repose detruit ses cases et garde ses
+        variables. Le clic suivant sur la nouvelle case faisait dessiner
+        l'ancienne, et Tk ouvrait une fenetre d'erreur « TclError »."""
+        row, variable = self.build()
+        erreurs = []
+        self.root.report_callback_exception = (
+            lambda genre, valeur, trace: erreurs.append(genre.__name__))
+        row.destroy()
+        self.root.update()
+        variable.set(True)
+        self.root.update()
+        self.assertEqual(erreurs, [])
+        self.assertEqual(len(variable.trace_info()), 0)
+
+    def test_two_rows_on_one_variable_both_follow_it(self):
+        """La seconde case ne doit pas couper l'ecoute de la premiere."""
+        from hr_analytics.ui.theme import CheckRow, Fonts
+
+        row, variable = self.build()
+        other = CheckRow(self.root, "Autre", variable, Fonts(self.root))
+        other.pack()
+        other.destroy()
+        self.root.update()
+        self.assertEqual(len(variable.trace_info()), 1)
+        variable.set(True)
+        self.root.update()
+        self.assertTrue(row.box.find_all())
+
 
 class TestHints(WidgetCase):
     """Les bulles d'aide, qui survivent a la fenetre qui les porte."""

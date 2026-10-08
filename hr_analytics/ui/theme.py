@@ -644,6 +644,30 @@ def bind_wheel(canvas: tk.Canvas, root: tk.Misc, axis: str = "y") -> None:
         canvas.bind_all(sequence, scroll, add="+")
 
 
+def open_alone(owner: tk.Misc, key: str, factory) -> tk.Toplevel:
+    """Une seule fenetre secondaire a la fois, et jamais deux fois la meme.
+
+    Cliquer deux fois sur un filtre ouvrait deux fois sa liste, l'une sur
+    l'autre, et chacune appliquait son choix par-dessus celui de l'autre.
+    La meme demande ramene donc la fenetre deja ouverte au premier plan ;
+    une autre demande ferme la precedente, dont on s'est detourne, avant
+    d'ouvrir la sienne. `key` nomme ce que la fenetre sert, et `factory`
+    la construit si elle n'existe pas.
+    """
+    current = getattr(owner, "_lone_window", None)
+    if current is not None and current.winfo_exists():
+        if getattr(current, "_lone_key", None) == key:
+            current.deiconify()
+            current.lift()
+            current.focus_force()
+            return current
+        current.destroy()
+    window = factory()
+    window._lone_key = key
+    owner._lone_window = window
+    return window
+
+
 class CheckRow(tk.Frame):
     """Case a cocher dessinee, plutot que l'indicateur du theme.
 
@@ -669,15 +693,32 @@ class CheckRow(tk.Frame):
         for widget in (self, self.box, self.text):
             widget.bind("<Button-1>", self._toggle)
         self.box.configure(cursor="hand2")
-        variable.trace_add("write", lambda *_: self._draw())
+        # La variable survit souvent a la case : un panneau qui se repose
+        # detruit ses lignes et garde ses variables. L'ecoute est donc
+        # retiree avec la case ; sinon le prochain clic sur la nouvelle
+        # case faisait dessiner l'ancienne, et Tk s'en plaignait dans une
+        # fenetre d'erreur.
+        self._trace = variable.trace_add("write", lambda *_: self._draw())
+        self.bind("<Destroy>", self._release, add="+")
         self._draw()
 
     def _toggle(self, _event=None) -> None:
         self.variable.set(not self.variable.get())
 
+    def _release(self, event) -> None:
+        if event.widget is not self or self._trace is None:
+            return
+        try:
+            self.variable.trace_remove("write", self._trace)
+        except tk.TclError:
+            pass
+        self._trace = None
+
     def _draw(self) -> None:
         """Le canevas Tk ne lisse pas ses traces : la coche tracee a la ligne
         montrait ses marches. L'indicateur est donc une image antialiasee."""
+        if not self.box.winfo_exists():
+            return
         self.box.delete("all")
         checked = bool(self.variable.get())
         data = raster.checkbox(

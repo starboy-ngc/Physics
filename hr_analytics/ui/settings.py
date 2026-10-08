@@ -16,11 +16,13 @@ aucune valeur de cellule n'est enregistree.
 
 from __future__ import annotations
 
+import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, simpledialog, ttk
 from typing import Any, Dict, List, Optional, Sequence
 
-from ..core.config import Configuration, write_configuration
+from ..core.config import (Configuration, write_configuration,
+                           write_default_configuration)
 from ..core.errors import CompensationError
 from ..core import palette
 from ..core.mapping import normalise_label
@@ -325,6 +327,12 @@ class SettingsWindow(tk.Toplevel):
                    command=self.save).pack(side="right")
         ttk.Button(actions, text="Annuler", style="GhostGround.TButton",
                    command=self.destroy).pack(side="right", padx=(0, 10))
+        # A gauche, loin d'« Enregistrer » : on ne le presse pas par
+        # erreur en voulant valider.
+        ttk.Button(actions, text="Réglages d'usine…",
+                   style="GhostGround.TButton",
+                   command=self.restore_defaults).pack(side="left",
+                                                       padx=(0, 14))
         self.feedback = tk.Label(actions, text="", background=theme.GROUND,
                                  foreground=theme.MUTED, font=self.fonts.small,
                                  justify="left", wraplength=520)
@@ -358,7 +366,7 @@ class SettingsWindow(tk.Toplevel):
             cadre.pack_forget()
         self.pages[key].pack(fill="both", expand=True)
         self.origin.configure(
-            text=f"Enregistré dans {self.FICHIERS.get(key, '')} — "
+            text=f"Enregistré dans {self.FICHIERS.get(key, '')}, "
                  "modifiable au bloc-notes.")
 
     #: Nombre de pastilles par rangee dans la palette integree.
@@ -741,7 +749,7 @@ class SettingsWindow(tk.Toplevel):
             return
         tk.Label(header,
                  text="Chaque colonne reçoit un rôle. « Organisation » en "
-                      "fait un axe d'analyse et un filtre — direction, "
+                      "fait un axe d'analyse et un filtre : direction, "
                       "établissement, revue du personnel, ce que votre "
                       "fichier porte. Une colonne ignorée n'est pas lue.",
                  background=theme.CANVAS, foreground=theme.MUTED,
@@ -945,7 +953,7 @@ class SettingsWindow(tk.Toplevel):
         tk.Label(header,
                  text="L'âge et l'ancienneté se calculent à partir des "
                       "dates : aucune colonne ne les porte. Un champ coché "
-                      "est proposé partout — dans « Filtrer », dans "
+                      "est proposé partout : dans « Filtrer », dans "
                       "« Comparer par », dans « Colorer par ». Cet écran ne "
                       "filtre rien et ne retire aucun salarié.",
                  background=theme.CANVAS, foreground=theme.MUTED,
@@ -1340,7 +1348,7 @@ class SettingsWindow(tk.Toplevel):
             messagebox.showwarning(
                 "Nouveau champ",
                 f"« {name} » est un nom que l'outil emploie déjà pour autre "
-                "chose. Choisissez-en un autre — « " + name + "_2 » convient.",
+                "chose. Choisissez-en un autre : « " + name + "_2 » convient.",
                 parent=self)
             return
         self._declare(header, box, name)
@@ -1512,6 +1520,44 @@ class SettingsWindow(tk.Toplevel):
                 technical=f"required fields unmapped: {missing}",
             )
         return section
+
+    #: Ce que le retour aux reglages d'usine efface, dit avant de le faire.
+    USINE = ("Tous les réglages reviennent à leur valeur de livraison : "
+             "colonnes associées, champs créés, filtres proposés, seuils "
+             "de confidentialité, rangements à la main, export, apparence."
+             "\n\nLe fichier de données n'est pas touché ; il sera relu "
+             "avec les réglages de livraison.\n\nContinuer ?")
+
+    def restore_defaults(self) -> None:
+        """Tout remettre comme a la livraison, sur confirmation.
+
+        Un parametrage qu'on a trop retouche finit par ne plus se
+        comprendre. Jusqu'ici, revenir au depart demandait de supprimer
+        un dossier a la main, dont il fallait connaitre le chemin. Le
+        bouton le fait depuis l'ecran, et dit d'abord ce qu'il efface :
+        les colonnes associees et les champs crees sont le travail le
+        plus long de cette fenetre.
+        """
+        if not messagebox.askyesno("Réglages d'usine", self.USINE,
+                                   parent=self, icon="warning",
+                                   default="no"):
+            return
+        try:
+            write_default_configuration(self.config_dir)
+        except OSError:
+            # Pas de detail technique : le chemin suffit a l'informaticien,
+            # et le message ne doit rien porter d'autre (§6).
+            messagebox.showwarning(
+                "Réglages d'usine",
+                "Les réglages n'ont pas pu être réécrits dans "
+                f"« {self.config_dir} ». Vérifiez que le dossier est "
+                "accessible en écriture.", parent=self)
+            return
+        if self.on_saved:
+            self.on_saved(self.config_dir,
+                          os.path.join(self.config_dir,
+                                       "population_mapping.json"))
+        self.destroy()
 
     def save(self) -> None:
         try:

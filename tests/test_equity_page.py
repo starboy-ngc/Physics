@@ -91,9 +91,9 @@ class EquityCase(unittest.TestCase):
     def lignes(self, arbre):
         return [arbre.item(item)["values"] for item in arbre.get_children()]
 
-    def choisir(self, poste):
-        self.app.equity_job.set(poste)
-        self.app._show_equity_scope()
+    def choisir(self, *postes):
+        """Retient des postes ; sans argument, toute la population."""
+        self.app.set_equity_jobs(list(postes) or None)
         self.app.update()
 
 
@@ -108,10 +108,11 @@ class TestTheWholePageAnswers(EquityCase):
         self.assertTrue(self.lignes(self.app.equity_list))
 
     def test_the_job_list_comes_from_the_file(self):
-        propositions = list(self.app.equity_job.cget("values"))
-        self.assertEqual(propositions[0], self.app.EQUITY_ALL)
+        propositions = list(self.app._equity_jobs_available)
         for poste in POSTES:
             self.assertIn(poste, propositions)
+        self.assertEqual(self.app.equity_jobs_button.cget("text"),
+                         f"Postes : tous ({len(propositions)})")
 
     def test_the_headcounts_match_the_engine(self):
         """Les effectifs affichés sont ceux du moteur, pas un comptage
@@ -204,11 +205,73 @@ class TestChoosingAJob(EquityCase):
 
     def test_going_back_to_all_restores_the_whole_population(self):
         self.choisir(POSTES[0])
-        self.choisir(self.app.EQUITY_ALL)
+        self.choisir()
         lignes = {str(ligne[0]): ligne for ligne in
                   self.lignes(self.app.equity_people)}
         self.assertEqual(int(lignes["Effectif"][3]),
                          len(self.app.result.filtered))
+
+
+class TestChoosingSeveralJobs(EquityCase):
+    """La question posée est rarement « ce poste-ci » : c'est « ces
+    trois-là, côte à côte ». La liste à cocher est celle des filtres."""
+
+    def _effectif(self, *postes):
+        return sum(1 for employee in self.app.result.filtered
+                   if str(employee.value(self.app._equity_field) or "")
+                   in postes)
+
+    def test_two_jobs_add_up(self):
+        self.choisir(POSTES[0], POSTES[1])
+        attendu = self._effectif(POSTES[0], POSTES[1])
+        self.assertGreater(attendu, self._effectif(POSTES[0]))
+        self.assertIn(f"{attendu} salariés · 2 postes",
+                      self.app.equity_scope_note.cget("text"))
+        lignes = {str(ligne[0]): ligne for ligne in
+                  self.lignes(self.app.equity_people)}
+        self.assertEqual(int(lignes["Effectif"][3]), attendu)
+        self.assertEqual(self.app.equity_jobs_button.cget("text"),
+                         "Postes : 2 sur 3")
+
+    def test_one_pair_of_boxes_per_chosen_job(self):
+        self.choisir(POSTES[0], POSTES[2])
+        segments = [str(ligne["segment"]) for ligne in self.app.equity_box.rows]
+        self.assertEqual(segments, sorted([POSTES[0], POSTES[2]]))
+
+    def test_the_people_list_holds_both_jobs(self):
+        self.choisir(POSTES[1], POSTES[2])
+        rang = self.app._equity_columns.index("job_title")
+        postes = {str(ligne[rang]) for ligne in
+                  self.lignes(self.app.equity_list)}
+        self.assertEqual(postes, {POSTES[1], POSTES[2]})
+
+    def test_choosing_every_job_is_choosing_none(self):
+        """Comme pour les filtres : une page sur zéro poste ne répond à
+        aucune question, et tout cocher revient à ne rien retenir."""
+        self.choisir(*POSTES)
+        self.assertIsNone(self.app.equity_jobs)
+        self.app.set_equity_jobs([])
+        self.assertIsNone(self.app.equity_jobs)
+        self.assertIn("toute la population",
+                      self.app.equity_scope_note.cget("text"))
+
+    def test_a_job_the_file_does_not_carry_is_ignored(self):
+        self.choisir(POSTES[0], "Poste inconnu")
+        self.assertEqual(self.app.equity_jobs, [POSTES[0]])
+        self.assertIn(f" · {POSTES[0]}",
+                      self.app.equity_scope_note.cget("text"))
+
+    def test_the_button_opens_the_same_picker_as_the_filters(self):
+        from hr_analytics.ui.theme import ValuePicker
+
+        self.app._choose_equity_jobs()
+        self.app.update()
+        fenetres = [child for child in self.app.winfo_children()
+                    if isinstance(child, ValuePicker)]
+        self.assertEqual(len(fenetres), 1)
+        self.assertEqual(fenetres[0]._valeurs,
+                         list(self.app._equity_jobs_available))
+        fenetres[0].destroy()
 
 
 class TestTheScatterOfThisPage(EquityCase):
