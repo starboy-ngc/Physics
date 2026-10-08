@@ -1600,3 +1600,106 @@ class TestAFilterWithTooManyValues(WindowCase):
 
         relever(self.app.filters_frame)
         self.assertNotIn("au-delà de", " ".join(textes))
+
+
+class TestAnUnexpectedErrorIsNeverSilent(WindowCase):
+    """L'outil tourne sous « pythonw.exe », qui n'a pas de sortie d'erreur.
+
+    Tk confie les erreurs de rappel a `report_callback_exception`, dont la
+    version d'origine les ecrit sur cette sortie : une exception dans un
+    bouton n'allait donc nulle part. On cliquait, rien ne se passait, et
+    aucune trace ne disait pourquoi — l'ecran avait l'air de ne pas
+    enregistrer.
+    """
+
+    def _tombe(self, leve=None):
+        """Declenche une panne dans un rappel, et rend ce qui s'est dit."""
+        if leve is None:
+            def leve():
+                raise ValueError("panne")
+        with Dialogs() as dialogues:
+            self.app.after(0, leve)
+            self.app.update()
+        return dialogues
+
+    def test_the_error_reaches_the_screen(self):
+        self.assertTrue(self._tombe().errors)
+
+    def test_the_message_says_nothing_was_lost(self):
+        self.assertIn("Rien n'a été perdu", self._tombe().errors[0][1])
+
+    def test_the_message_locates_the_failure(self):
+        """Le repere sert a la corriger : le type et la ligne, et c'est
+        tout ce qu'il faut. Il nomme le code de l'outil, et non le rappel
+        de Tk qui l'a appele."""
+        from hr_analytics.ui import app as module
+
+        self.load()
+        originale = module.load_population
+        module.load_population = lambda *a, **k: 1 / 0
+        self.addCleanup(setattr, module, "load_population", originale)
+        dialogues = self._tombe(
+            lambda: self.app._settings_saved(self.directory, "r.json"))
+        texte = dialogues.errors[-1][1]
+        self.assertIn("ZeroDivisionError", texte)
+        self.assertIn("app.py:", texte)
+
+    def test_the_marker_is_never_empty(self):
+        """Une erreur levee avant d'entrer dans le code de l'outil garde
+        un repere : « at - » n'aide personne."""
+        texte = self._tombe(self.app._set_state).errors[0][1]  # sans argument
+        self.assertIn("TypeError", texte)
+        self.assertNotIn(" at -", texte)
+
+    def test_the_message_carries_no_data(self):
+        """Le paragraphe 6 interdit la moindre donnee RH dans un message
+        technique, et le texte d'une exception levee au milieu du
+        traitement en contient volontiers une : il n'y entre pas."""
+        self.load()
+        nom = str(next(iter(self.app.population.employees)).last_name)
+        self.assertTrue(nom)
+
+        def leve():
+            raise ValueError(f"valeur refusée : {nom}")
+
+        dialogues = self._tombe(leve)
+        self.assertNotIn(nom, dialogues.errors[0][1])
+        self.assertIn("ValueError", dialogues.errors[0][1])
+
+
+class TestSettingsThatCouldNotBeReapplied(WindowCase):
+    """Les fichiers sont ecrits : l'echec de la relecture ne doit pas
+    passer pour un echec de l'enregistrement.
+
+    Sans cela on recommencait une saisie qui etait deja sur le disque.
+    """
+
+    def _relecture_impossible(self, erreur):
+        from hr_analytics.ui import app as module
+
+        originale = module.load_population
+
+        def refuse(*_a, **_k):
+            raise erreur
+
+        module.load_population = refuse
+        self.addCleanup(setattr, module, "load_population", originale)
+
+    def test_the_save_is_announced_all_the_same(self):
+        from hr_analytics.core.errors import CompensationError
+
+        self.load()
+        self._relecture_impossible(
+            CompensationError("colonne introuvable", technical="missing"))
+        with Dialogs() as dialogues:
+            self.app._settings_saved(self.directory, "reglages.json")
+        self.assertIn("enregistrés", self.app.status.cget("text"))
+        self.assertIn("sont enregistrés", dialogues.errors[0][1])
+
+    def test_an_unforeseen_failure_also_announces_the_save(self):
+        self.load()
+        self._relecture_impossible(RuntimeError("panne"))
+        with Dialogs():
+            with self.assertRaises(RuntimeError):
+                self.app._settings_saved(self.directory, "reglages.json")
+        self.assertIn("enregistrés", self.app.status.cget("text"))

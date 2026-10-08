@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import collections
 import datetime as _dt
+import logging
 import os
 import queue
 import sys
@@ -1198,6 +1199,44 @@ class Application(tk.Tk):
 
     # ------------------------------------------------------- etapes
 
+    def report_callback_exception(self, genre, valeur, trace) -> None:
+        """Montre ce qu'une erreur imprevue faisait disparaitre.
+
+        Tk confie les erreurs de rappel a cette methode, dont la version
+        d'origine les ecrit sur la sortie d'erreur. L'outil tourne sous
+        « pythonw.exe », qui n'en a pas : une exception dans un bouton
+        n'allait donc nulle part. On cliquait « Enregistrer », rien ne se
+        passait, et aucune trace ne disait pourquoi — l'ecran avait l'air
+        de ne pas enregistrer.
+
+        Le message ne porte ni valeur ni libelle venu du fichier : le
+        paragraphe 6 interdit la moindre donnee RH dans un message
+        technique, et le texte d'une exception levee au milieu du
+        traitement en contient volontiers une. Le type et la ligne
+        suffisent a situer la panne, et ne disent rien de personne.
+        """
+        import traceback
+
+        cadres = traceback.extract_tb(trace)
+        paquet = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # Le code de l'outil d'abord : c'est lui qu'on corrigera. A defaut
+        # — une erreur levee avant d'y entrer — le cadre le plus profond,
+        # quel qu'il soit : un repere vide ne sert personne.
+        choisi = next((cadre for cadre in reversed(cadres)
+                       if os.path.abspath(cadre.filename).startswith(paquet)),
+                      cadres[-1] if cadres else None)
+        ou = (f"{os.path.basename(choisi.filename)}:{choisi.lineno}"
+              if choisi is not None else "-")
+        technique = f"{genre.__name__} at {ou}"
+        log_event("interface", "rappel", status="ERREUR", detail=technique,
+                  level=logging.ERROR)
+        messagebox.showerror(
+            "HR Analytics",
+            "Une erreur imprévue a interrompu l'action en cours. Rien n'a "
+            "été perdu : reprenez-la, et si elle se répète, signalez le "
+            "repère ci-dessous.\n\n"
+            f"{technique}")
+
     def _set_state(self, message: str) -> None:
         self.status.configure(text=message)
 
@@ -1302,8 +1341,21 @@ class Application(tk.Tk):
                             "ci-dessous" if inconnues else ""),
                     foreground=theme.WARN if inconnues else theme.MUTED)
         except CompensationError as error:
-            messagebox.showerror("Paramètres", error.message)
+            # Les fichiers sont ecrits : le dire, sinon l'echec de la
+            # relecture passe pour un echec de l'enregistrement, et on
+            # recommence une saisie qui est deja sur le disque.
+            self._set_state(f"Paramètres enregistrés dans {path}.")
+            messagebox.showerror(
+                "Paramètres",
+                "Les paramètres sont enregistrés, mais le fichier n'a pas "
+                f"pu être relu avec eux.\n\n{error.message}")
             return
+        except Exception:
+            # Toute autre panne de relecture laisse elle aussi les
+            # parametres enregistres : la barre doit le dire avant que
+            # l'erreur ne remonte a l'ecran des erreurs imprevues.
+            self._set_state(f"Paramètres enregistrés dans {path}.")
+            raise
         if self.population is not None:
             self._populate_filters()
             self._show_quality()

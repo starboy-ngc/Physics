@@ -1081,3 +1081,356 @@ class TestTheScreenOnlyOffersWhatTheFileCarries(unittest.TestCase):
         apres = set(dimension_fields(load_configuration(self.config_dir)))
         self.assertIn("country", apres,
                       "un champ masqué a été supprimé des paramètres")
+
+
+class TestAFieldMovesToTheColumnThatCarriesIt(SettingsCase):
+    """Choisir un champ déjà pris dit lequel des deux l'emporte.
+
+    Un champ ne recoit qu'une colonne, et c'est la bonne regle : deux
+    colonnes sur un champ, l'une ecrase l'autre et l'analyse porte sur la
+    mauvaise. Mais l'ecran refusait l'enregistrement entier et renvoyait a
+    une manoeuvre que rien n'indiquait — passer d'abord l'autre colonne a
+    « ignoree ». Sur un fichier ou la moitie des champs ont deja trouve
+    une colonne, designer celle qu'on voulait vraiment menait donc a un
+    refus, et l'on en concluait que la fenetre n'enregistre pas.
+    """
+
+    def test_the_other_column_lets_the_field_go(self):
+        from hr_analytics.ui.settings import IGNORED
+
+        self.choose("Prime de panier", "base_salary")
+        self.assertEqual(self.window.assignments["Salaire de base"].get(),
+                         IGNORED)
+
+    def test_the_screen_then_saves_instead_of_refusing(self):
+        self.choose("Prime de panier", "base_salary")
+        section = self.window.collect()
+        self.assertIn("Prime de panier", section["fields"]["base_salary"])
+        self.assertNotIn("Salaire de base", section["fields"]["base_salary"])
+
+    def test_the_column_that_lost_the_field_is_named(self):
+        """Rien ne se detache sans que l'ecran le dise : c'est une
+        modification que l'utilisateur n'a pas demandee explicitement."""
+        self.choose("Prime de panier", "base_salary")
+        dit = self.window.feedback.cget("text")
+        self.assertIn("Salaire de base", dit)
+        self.assertIn("Prime de panier", dit)
+
+    def test_the_column_that_lost_the_field_stops_being_an_axis(self):
+        self.choose("BU", "groupe")
+        self.assertFalse(self.window.dimension_vars["Groupe"].get())
+
+    def test_a_column_keeps_its_own_field(self):
+        """Reposer le meme champ sur la meme colonne ne la detache pas
+        d'elle-meme."""
+        from hr_analytics.ui.settings import IGNORED
+
+        self.choose("Salaire de base", "base_salary")
+        self.assertNotEqual(self.window.assignments["Salaire de base"].get(),
+                            IGNORED)
+        section = self.window.collect()
+        self.assertIn("Salaire de base", section["fields"]["base_salary"])
+
+    def test_an_ignored_column_detaches_nothing(self):
+        """« Ignoree » n'est pas un champ : deux colonnes ignorees ne se
+        chassent pas l'une l'autre."""
+        from hr_analytics.ui.settings import IGNORED
+
+        self.choose("Prime de panier", IGNORED)
+        self.assertEqual(
+            self.window._field_of(self.window.assignments["Nom"].get()),
+            "last_name")
+
+
+class TestASectionThatCannotBeWritten(SettingsCase):
+    """Les colonnes sont ecrites : le reste ne doit pas emporter la fenetre.
+
+    Les quatre sections qui suivent les colonnes s'ecrivaient sans filet.
+    Un dossier passe en lecture seule entre deux enregistrements levait
+    donc une erreur apres l'ecriture des colonnes : la fenetre restait
+    ouverte sans un mot, et l'on en concluait qu'elle n'enregistre rien.
+    """
+
+    def _refuse(self, refusee):
+        from hr_analytics.core.errors import ConfigError
+        from hr_analytics.ui import settings as module
+
+        originale = module.write_configuration
+
+        def filtree(directory, section, data):
+            if section == refusee:
+                raise ConfigError("dossier en lecture seule",
+                                  technical=f"denied: {section}")
+            return originale(directory, section, data)
+
+        module.write_configuration = filtree
+        self.addCleanup(setattr, module, "write_configuration", originale)
+
+    def test_the_columns_are_still_written(self):
+        import tkinter.messagebox as messagebox
+
+        self._refuse("theme_parameters")
+        messagebox.showwarning = lambda *a, **k: None
+        self.window.save()
+        self.assertTrue(os.path.isfile(
+            os.path.join(self.directory, "population_mapping.json")))
+
+    def test_the_sections_after_the_refused_one_are_written(self):
+        """La boucle ne s'arrete pas au premier refus : un reglage qui
+        pouvait partir ne doit pas se perdre sur le voisin."""
+        import tkinter.messagebox as messagebox
+
+        self._refuse("theme_parameters")
+        messagebox.showwarning = lambda *a, **k: None
+        self.window.save()
+        for nom in ("privacy_parameters", "chart_parameters",
+                    "export_parameters"):
+            self.assertTrue(os.path.isfile(
+                os.path.join(self.directory, f"{nom}.json")), nom)
+
+    def test_what_could_not_be_written_is_named(self):
+        import tkinter.messagebox as messagebox
+
+        self._refuse("chart_parameters")
+        dits = []
+        originale = messagebox.showwarning
+        messagebox.showwarning = lambda titre, texte, **k: dits.append(texte)
+        try:
+            self.window.save()
+        finally:
+            messagebox.showwarning = originale
+        self.assertTrue(dits)
+        self.assertIn("chart_parameters.json", dits[0])
+
+
+class TestTwoFieldsNeverShareOneRoleName(SettingsCase):
+    """La liste des rôles ne doit jamais proposer deux fois la même ligne.
+
+    Le libelle d'un champ est le premier alias du mapping — le nom que le
+    fichier emploie, et c'est ce qui fait parler la liste dans le
+    vocabulaire de l'utilisateur. Deux champs arrivaient donc sous le meme
+    intitule des qu'une colonne figurait en tete des alias de l'un et de
+    l'autre, ce qu'un enregistrement produit sans rien demander. On posait
+    le role voulu, la colonne partait sur l'autre champ, et rien ne le
+    disait : la fenetre avait l'air de ne pas enregistrer.
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.window.destroy()
+        import tkinter as tk
+
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        données = self.configuration.as_dict()
+        champs = {nom: list(alias) for nom, alias
+                  in données["population_mapping"]["fields"].items()}
+        # « Prime de panier » en tete des alias de deux champs : c'est
+        # l'etat qu'un enregistrement laisse derriere lui.
+        champs["variable_pay"] = ["Prime de panier"] + champs["variable_pay"]
+        champs["total_compensation"] = ["Prime de panier"] + champs[
+            "total_compensation"]
+        données["population_mapping"]["fields"] = champs
+        self.configuration = Configuration(données)
+        self.window = SettingsWindow(self.root, self.configuration,
+                                     self.directory, Fonts(self.root),
+                                     headers=HEADERS)
+        self.root.update()
+
+    def test_the_list_offers_each_role_once(self):
+        offerts = list(self.window._boxes[0].cget("values"))
+        self.assertEqual(len(offerts), len(set(offerts)))
+
+    def test_each_role_name_designates_one_field(self):
+        libelles = list(self.window._labels.values())
+        self.assertEqual(len(libelles), len(set(libelles)))
+
+    def test_the_technical_name_lifts_the_ambiguity(self):
+        """En clair, et seulement la ou l'ambiguite existe."""
+        libelles = self.window._labels
+        ambigus = [nom for nom in ("total_compensation", "variable_pay")
+                   if nom in libelles[nom]]
+        self.assertEqual(len(ambigus), 1, libelles)
+        self.assertEqual(libelles["gender"], "Sexe")
+
+    def test_the_column_reaches_the_field_that_was_chosen(self):
+        """Le temoin : sans libelle distinct, les deux roles menaient au
+        meme champ et l'autre ne recevait jamais sa colonne."""
+        self.window.assignments["Prime de panier"].set(
+            self.window._labels["total_compensation"])
+        section = self.window.collect()
+        self.assertIn("Prime de panier",
+                      section["fields"]["total_compensation"])
+        self.assertNotIn("Prime de panier", section["fields"]["variable_pay"])
+
+    def test_a_technical_name_is_still_accepted(self):
+        """Un fichier de parametres ecrit au bloc-notes porte le nom
+        technique : il reste lu comme tel."""
+        self.assertEqual(self.window._field_of("variable_pay"), "variable_pay")
+
+
+class TestANewFieldNeverBorrowsAnotherRoleName(SettingsCase):
+    """Un champ créé depuis une colonne suit la même règle.
+
+    Une colonne « Poste » ignoree, declaree comme organisation, creait le
+    champ « poste » et l'affichait sous « Poste » — l'intitule que
+    « job_title » portait deja. Les deux lignes de la liste devenaient
+    indistinguables, et la colonne repartait sur « job_title ».
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.window.destroy()
+        import tkinter as tk
+
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        self.entetes = list(HEADERS) + ["Poste"]
+        self.window = SettingsWindow(self.root, self.configuration,
+                                     self.directory, Fonts(self.root),
+                                     headers=self.entetes)
+        self.root.update()
+
+    def declare(self):
+        from hr_analytics.ui.settings import ORGANISATION
+
+        self.window.assignments["Poste"].set(ORGANISATION)
+        self.window._chose("Poste",
+                           self.window._boxes[self.entetes.index("Poste")])
+
+    def test_the_new_field_gets_its_own_role_name(self):
+        self.declare()
+        libelles = self.window._labels
+        self.assertNotEqual(libelles["poste"], libelles["job_title"])
+
+    def test_the_column_lands_on_the_new_field(self):
+        self.declare()
+        section = self.window.collect()
+        self.assertIn("Poste", section["fields"]["poste"])
+        self.assertNotIn("Poste", section["fields"].get("job_title", []))
+
+
+class TestMovingARecognisedColumn(SettingsCase):
+    """Une colonne déjà lue, posée sur un autre champ.
+
+    C'est le geste le plus courant de cet ecran : l'outil a reconnu une
+    colonne, et il s'est trompe. La colonne entrait bien dans la liste du
+    nouveau champ, mais restait dans celle de l'ancien : deux champs la
+    revendiquaient, et c'est la lecture suivante qui tranchait, sans un
+    mot. Le reglage semblait ne pas avoir ete enregistre.
+    """
+
+    def test_the_old_field_lets_the_column_go(self):
+        self.choose("Prime de panier", "variable_pay")
+        self.choose("Prime de panier", "total_compensation")
+        section = self.window.collect()
+        self.assertIn("Prime de panier",
+                      section["fields"]["total_compensation"])
+        self.assertNotIn("Prime de panier",
+                         section["fields"].get("variable_pay", []))
+
+    def test_the_old_field_keeps_its_other_spellings(self):
+        """Les alias prevus pour d'autres fichiers ne se perdent pas : la
+        configuration sert a plusieurs fichiers."""
+        self.choose("Prime de panier", "variable_pay")
+        self.choose("Prime de panier", "total_compensation")
+        section = self.window.collect()
+        self.assertIn("Variable", section["fields"]["variable_pay"])
+
+    def test_the_reading_that_follows_agrees_with_the_screen(self):
+        """Le vrai juge : ce que le moteur lit apres enregistrement."""
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.mapping import resolve_mapping
+
+        self.choose("Prime de panier", "variable_pay")
+        self.choose("Prime de panier", "total_compensation")
+        self.window.save()
+        relu = resolve_mapping(HEADERS, load_configuration(self.directory))
+        self.assertEqual(relu.field_to_column.get("total_compensation"),
+                         "Prime de panier")
+        self.assertIsNone(relu.field_to_column.get("variable_pay"))
+
+    def test_a_mandatory_field_left_without_a_column_is_refused(self):
+        """Deplacer la colonne de remuneration ne doit pas passer : sans
+        elle l'analyse n'a plus d'objet, et le controle doit s'en
+        apercevoir maintenant et non a l'analyse suivante."""
+        from hr_analytics.core.errors import CompensationError
+
+        self.choose("Salaire de base", "variable_pay")
+        with self.assertRaises(CompensationError):
+            self.window.collect()
+
+
+class TestForgettingAColumnSticks(SettingsCase):
+    """Une colonne passée à « ignorée » ne doit pas revenir au démarrage.
+
+    Le champ qui n'avait plus aucun alias etait retire du fichier. Mais le
+    chargement superpose le fichier aux defauts embarques clef par clef :
+    un champ absent du fichier repartait au defaut, avec ses alias
+    d'origine. La colonne etait donc relue comme si de rien n'etait, et
+    l'oubli n'avait tenu que le temps de la session.
+    """
+
+    #: « Rémunération totale » est la seule orthographe que les defauts
+    #: donnent a son champ : l'ignorer vide la liste, et c'est le cas que
+    #: la superposition rattrapait.
+    ENTETES = ["Matricule", "Salaire de base", "Rémunération totale"]
+
+    def setUp(self):
+        super().setUp()
+        self.window.destroy()
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        self.window = SettingsWindow(self.root, self.configuration,
+                                     self.directory, Fonts(self.root),
+                                     headers=self.ENTETES)
+        self.root.update()
+
+    def oublie(self):
+        from hr_analytics.ui.settings import IGNORED
+
+        entete = "Rémunération totale"
+        self.window.assignments[entete].set(IGNORED)
+        self.window._chose(entete,
+                           self.window._boxes[self.ENTETES.index(entete)])
+
+    def test_the_field_keeps_an_empty_line_in_the_file(self):
+        self.oublie()
+        section = self.window.collect()
+        self.assertEqual(section["fields"].get("total_compensation"), [])
+
+    def test_the_next_reading_no_longer_claims_the_column(self):
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.mapping import resolve_mapping
+
+        self.oublie()
+        self.window.save()
+        relu = load_configuration(self.directory)
+        self.assertEqual(
+            relu.section("population_mapping")["fields"]["total_compensation"],
+            [])
+        lu = resolve_mapping(self.ENTETES, relu)
+        self.assertIsNone(lu.field_to_column.get("total_compensation"))
+        self.assertIn("Rémunération totale", lu.unknown_columns)
+
+    def test_a_field_without_a_column_leaves_the_workbook_columns(self):
+        """Une colonne titree et vide dans le classeur ne sert a rien."""
+        self.oublie()
+        section = self.window.collect()
+        self.assertNotIn("total_compensation", section["numeric"])
+        self.assertNotIn("total_compensation", section["money"])
+
+    def test_the_field_stays_offered_for_a_later_column(self):
+        """Vider sa liste n'est pas le supprimer : on doit pouvoir le
+        reattacher sans rouvrir le fichier de parametres."""
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.ui.settings import candidate_fields
+
+        self.oublie()
+        self.window.save()
+        self.assertIn("total_compensation",
+                      candidate_fields(load_configuration(self.directory)))

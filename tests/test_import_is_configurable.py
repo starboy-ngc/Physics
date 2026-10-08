@@ -198,3 +198,104 @@ class TestAForeignFileIsFullyAnalysed(ConfiguredFileCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestWhatTheSettingsSayWins(unittest.TestCase):
+    """Une colonne attachée à un champ y reste à la lecture suivante.
+
+    C'est la promesse de l'ecran « Colonnes du fichier », et elle n'etait
+    pas tenue. La lecture construisait un seul dictionnaire d'alias ou le
+    nom technique de chaque champ valait alias, et ou le dernier champ
+    inscrit l'emportait : une colonne « Coefficient » retournait au champ
+    « coefficient » quelle que soit la colonne que l'ecran venait de lui
+    attacher, selon le seul ordre des champs dans le fichier de
+    parametres. On associait une colonne, le fichier l'enregistrait
+    fidelement, et l'analyse suivante lisait autre chose — sans un mot.
+    """
+
+    def resolve(self, champs, entetes):
+        config = make_config({"population_mapping.fields": champs})
+        return resolve_mapping(entetes, config)
+
+    def test_a_declared_alias_beats_a_field_name(self):
+        champs = {"groupe": ["Coefficient", "Groupe"],
+                  "coefficient": ["Indice"],
+                  "base_salary": ["Salaire de base"]}
+        lu = self.resolve(champs, ["Coefficient", "Salaire de base"])
+        self.assertEqual(lu.field_to_column.get("groupe"), "Coefficient")
+        self.assertIsNone(lu.field_to_column.get("coefficient"))
+
+    def test_the_order_of_the_fields_no_longer_decides(self):
+        """Le temoin : les deux ordres doivent donner la meme lecture."""
+        avant = {"groupe": ["Coefficient", "Groupe"],
+                 "coefficient": ["Indice"],
+                 "base_salary": ["Salaire de base"]}
+        apres = {"coefficient": ["Indice"],
+                 "base_salary": ["Salaire de base"],
+                 "groupe": ["Coefficient", "Groupe"]}
+        self.assertEqual(
+            self.resolve(avant, ["Coefficient"]).field_to_column,
+            self.resolve(apres, ["Coefficient"]).field_to_column)
+
+    def test_the_principal_alias_beats_a_later_spelling(self):
+        """Le premier alias est la colonne que l'ecran a attachee : il
+        passe devant une orthographe prevue pour un autre fichier."""
+        champs = {"variable_pay": ["Prime", "Variable"],
+                  "total_compensation": ["Rémunération totale", "Prime"],
+                  "base_salary": ["Salaire de base"]}
+        lu = self.resolve(champs, ["Prime", "Salaire de base"])
+        self.assertEqual(lu.field_to_column.get("variable_pay"), "Prime")
+
+    def test_a_field_name_is_still_accepted_on_its_own(self):
+        """Un fichier de parametres ecrit au bloc-notes peut n'avoir aucun
+        alias : le nom technique reste lu."""
+        champs = {"base_salary": ["Salaire de base"], "coefficient": []}
+        lu = self.resolve(champs, ["Coefficient", "Salaire de base"])
+        self.assertEqual(lu.field_to_column.get("coefficient"), "Coefficient")
+
+    def test_an_unclaimed_column_is_still_reported(self):
+        champs = {"base_salary": ["Salaire de base"]}
+        lu = self.resolve(champs, ["Salaire de base", "Section"])
+        self.assertEqual(lu.unknown_columns, ["Section"])
+
+    def test_a_field_name_is_not_an_extra_spelling(self):
+        """Le nom technique ne s'ajoute pas a une liste d'alias.
+
+        Avec les defauts livres, le nom technique de chaque champ figure
+        deja parmi ses propres orthographes : l'inscrire en plus ne
+        servait qu'a reprendre une colonne que l'ecran venait de detacher.
+        """
+        champs = {"annexe": ["Filière"], "base_salary": ["Salaire de base"]}
+        lu = self.resolve(champs, ["Annexe", "Salaire de base"])
+        self.assertIsNone(lu.field_to_column.get("annexe"))
+        self.assertIn("Annexe", lu.unknown_columns)
+
+    def test_a_detached_column_does_not_come_back_through_the_field_name(self):
+        """Le cas du rapport, de bout en bout.
+
+        L'ecran attache « Horaire_contractuel » au champ « annexe » et
+        detache « Annexe ». Le nom technique du champ reprenait alors la
+        colonne « Annexe », qui arrive la premiere dans le fichier : le
+        champ etait deja pourvu quand sa vraie colonne se presentait, et
+        celle-ci passait en doublon. Le reglage etait enregistre, et
+        l'analyse lisait l'ancienne colonne.
+        """
+        champs = {"annexe": ["Horaire_contractuel", "Filière"],
+                  "base_salary": ["Salaire de base"]}
+        lu = self.resolve(champs, ["Annexe", "Horaire_contractuel",
+                                   "Salaire de base"])
+        self.assertEqual(lu.field_to_column.get("annexe"),
+                         "Horaire_contractuel")
+        self.assertIn("Annexe", lu.unknown_columns)
+        self.assertEqual(lu.duplicate_columns, [])
+
+    def test_the_shipped_defaults_recognise_the_same_columns(self):
+        """Le temoin de non-regression : rien de ce que l'outil
+        reconnaissait ne doit cesser de l'etre."""
+        from hr_analytics.core.config import DEFAULTS
+
+        champs = DEFAULTS["population_mapping"]["fields"]
+        entetes = [alias[0] for alias in champs.values() if alias]
+        lu = self.resolve(champs, entetes)
+        self.assertEqual(lu.unknown_columns, [])
+        self.assertEqual(len(lu.field_to_column), len(entetes))

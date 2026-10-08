@@ -400,9 +400,17 @@ Quatre rôles possibles :
 - **(ignorée)** — la colonne n'est pas lue. Une colonne ignorée ne pèse rien
   et n'apparaît nulle part.
 
-Deux colonnes ne peuvent pas recevoir le même champ : l'une écraserait
-l'autre en silence, et l'analyse porterait sur la mauvaise. L'écran le
-refuse en le disant.
+Un champ ne reçoit qu'une colonne : deux colonnes dessus, l'une écraserait
+l'autre en silence et l'analyse porterait sur la mauvaise. Si vous
+choisissez un champ qu'une autre colonne porte déjà, c'est donc **votre
+choix qui l'emporte** : l'autre colonne passe à « (ignorée) » et la barre
+du bas vous dit laquelle. Rien n'est perdu — sa liste est là, il suffit de
+la rattacher.
+
+C'est aussi ce qu'il faut faire quand l'outil s'est trompé : si « Tx
+Activité » a été lue comme le temps de travail alors que c'est
+« Horaire_contractuel » qui le porte, désignez le temps de travail sur
+« Horaire_contractuel » et l'autre se détache.
 
 Sous la liste, **Champs sans colonne** : l'âge et l'ancienneté se calculent
 à partir des dates, aucune colonne ne les porte — ils se règlent là.

@@ -170,23 +170,42 @@ def build_mapping_section(current: Dict[str, Any],
     ignored = {normalise_label(header)
                for header, field_name in assignments.items()
                if field_name == IGNORED}
+    #
+    # Un champ dont il ne reste aucun alias garde sa ligne, vide. Le
+    # retirer du fichier ne l'effacait pas : il le laissait au defaut
+    # embarque, que le chargement superpose clef par clef, et la colonne
+    # passee a « ignoree » etait relue au demarrage suivant comme si de
+    # rien n'etait. Une liste vide, elle, s'ecrit et se relit : c'est
+    # ainsi que l'oubli tient.
     if ignored:
         fields = {name: [alias for alias in aliases
                          if normalise_label(alias) not in ignored]
                   for name, aliases in fields.items()}
-        # Un champ dont il ne reste aucun alias n'est plus associe a rien :
-        # le retirer est ce qui permet au controle des champs obligatoires
-        # de s'apercevoir qu'il manque.
-        fields = {name: aliases for name, aliases in fields.items() if aliases}
 
     # Une colonne associee a un champ en devient l'alias principal : c'est ce
-    # qui rend l'association durable d'un fichier a l'autre.
+    # qui rend l'association durable d'un fichier a l'autre. Et elle cesse
+    # d'etre l'alias des autres : une colonne deja reconnue — « Tx
+    # Activite » lue comme temps de travail — restait dans la liste de son
+    # ancien champ en meme temps qu'elle entrait dans celle du nouveau.
+    # C'est la lecture suivante qui tranchait, en silence, et l'ecran
+    # semblait ne pas avoir enregistre le deplacement.
     for header, field_name in assignments.items():
         if field_name == IGNORED:
             continue
+        porte = normalise_label(header)
+        for nom, alias in list(fields.items()):
+            if nom == field_name:
+                continue
+            restants = [autre for autre in alias
+                        if normalise_label(autre) != porte]
+            if len(restants) == len(alias):
+                continue
+            # La ligne reste, vide : voir plus haut — un champ retire du
+            # fichier repart au defaut embarque, et la colonne revient.
+            fields[nom] = restants
         aliases = fields.setdefault(field_name, [])
         others = [alias for alias in aliases
-                  if normalise_label(alias) != normalise_label(header)]
+                  if normalise_label(alias) != porte]
         fields[field_name] = [header] + others
     section["fields"] = fields
 
@@ -211,8 +230,8 @@ def build_mapping_section(current: Dict[str, Any],
     # vide. Les champs que l'ecran ne connait pas — declares a la main
     # pour un autre fichier — sont reconduits tels quels.
     perdus = {name for name in (current.get("fields") or {})
-              if name not in fields}
-    nouveaux = [name for name in (money or []) if name in fields]
+              if not fields.get(name)}
+    nouveaux = [name for name in (money or []) if fields.get(name)]
     for clé in ("numeric", "money"):
         retenus = [name for name in (current.get(clé) or [])
                    if name not in perdus]
@@ -753,8 +772,9 @@ class SettingsWindow(tk.Toplevel):
         # La liste montre des libelles — « Salaire de base », et non
         # « base_salary ». Le nom technique reste ce qui est enregistre, et
         # il reste accepte tel quel : un reglage se lit aussi au bloc-notes.
-        self._labels = {name: self._label_of(name)
-                        for name in candidate_fields(self.configuration)}
+        self._labels = {}
+        for name in candidate_fields(self.configuration):
+            self._labels[name] = self._libelle_libre(name)
         choices = ([IGNORED, ORGANISATION, MONTANT, NEW_FIELD]
                    + sorted(self._labels.values(), key=str.lower))
 
@@ -794,6 +814,26 @@ class SettingsWindow(tk.Toplevel):
             coché.trace_add(
                 "write", lambda *_a, h=header_name: self._follow_dimension(h))
 
+    def _libelle_libre(self, field_name: str,
+                       voulu: Optional[str] = None) -> str:
+        """Le libelle d'un champ, distinct de celui de tous les autres.
+
+        Le libelle par defaut d'un champ est le premier alias du mapping,
+        c'est-a-dire le nom que le fichier emploie — et c'est ce qui fait
+        parler la liste des roles dans le vocabulaire de l'utilisateur.
+        Mais deux champs peuvent arriver sous le meme intitule : il suffit
+        qu'une colonne figure en tete des alias de l'un et de l'autre, ce
+        qu'un enregistrement produit sans rien demander. La liste montrait
+        alors deux fois la meme ligne, et les deux designaient le meme
+        champ : on posait le role voulu, la colonne partait sur l'autre
+        champ, et rien ne le disait. Le nom technique leve l'ambiguite, en
+        clair et seulement la ou elle existe.
+        """
+        libelle = voulu or self._label_of(field_name)
+        pris = {valeur for nom, valeur in self._labels.items()
+                if nom != field_name}
+        return f"{libelle} ({field_name})" if libelle in pris else libelle
+
     def _label_of(self, field_name: Optional[str]) -> str:
         """Libelle lisible d'un champ. « base_salary » -> « Salaire de base »."""
         if not field_name:
@@ -812,7 +852,10 @@ class SettingsWindow(tk.Toplevel):
         """
         if value in _COMMANDES:
             return value
-        for name, libellé in getattr(self, "_labels", {}).items():
+        libelles = getattr(self, "_labels", {})
+        if value in libelles:
+            return value
+        for name, libellé in libelles.items():
             if value == libellé:
                 return name
         return value
@@ -1266,10 +1309,13 @@ class SettingsWindow(tk.Toplevel):
                           montant=True)
             return
         if variable.get() != NEW_FIELD:
-            # Un champ connu : la case suit l'etat de ce champ.
+            # Un champ connu : il passe a cette colonne, et la case suit
+            # son etat.
+            champ = self._field_of(variable.get())
+            self._reprendre(header, champ)
             case = self.dimension_vars.get(header)
             if case is not None:
-                case.set(self._is_dimension(self._field_of(variable.get())))
+                case.set(self._is_dimension(champ))
             return
         variable.set(IGNORED)
         taken = self._taken()
@@ -1299,6 +1345,42 @@ class SettingsWindow(tk.Toplevel):
             return
         self._declare(header, box, name)
 
+    def _reprendre(self, header: str, champ: str) -> None:
+        """Donne un champ a cette colonne, en le retirant a l'autre.
+
+        Un champ ne recoit qu'une colonne — deux l'ecraseraient en silence,
+        et l'analyse porterait sur la mauvaise. L'ecran refusait donc
+        l'enregistrement entier : « les colonnes X et Y sont toutes deux
+        associees au champ Z ». Sur un fichier ou la moitie des champs ont
+        deja trouve une colonne, designer celle qu'on veut vraiment menait
+        a ce refus, et il fallait deviner qu'il fallait d'abord passer
+        l'autre colonne a « ignoree ». Personne ne devine cela : on
+        concluait que la fenetre n'enregistre pas.
+
+        Choisir un champ deja pris dit lequel des deux colonnes le porte.
+        L'autre passe donc a « ignoree », a l'ecran et tout de suite, et la
+        barre du bas le nomme : le geste reste defaisable, puisque sa liste
+        est la, et rien ne se decide sans que ce soit visible.
+        """
+        if champ in _COMMANDES:
+            return
+        for autre, variable in self.assignments.items():
+            if autre == header or self._field_of(variable.get()) != champ:
+                continue
+            variable.set(IGNORED)
+            self._repaint(autre)
+            case = self.dimension_vars.get(autre)
+            if case is not None:
+                case.set(False)
+            self._dire(f"« {autre} » n'est plus lue : « {header} » porte "
+                       f"désormais {self._label_of(champ)}.")
+
+    def _dire(self, texte: str) -> None:
+        """Ecrit sous la barre des boutons, la ou l'oeil revient."""
+        cible = getattr(self, "feedback", None)
+        if cible is not None:
+            cible.configure(text=texte)
+
     def _repaint(self, header: str) -> None:
         """Rallume ou eteint l'alerte d'une colonne, selon son role."""
         étiquette = self._labels_widgets.get(header)
@@ -1326,11 +1408,12 @@ class SettingsWindow(tk.Toplevel):
         devient une colonne chiffree du classeur, et un champ d'analyse
         possible.
         """
-        self._labels[name] = header
-        values = [valeur for valeur in box.cget("values")] + [header]
+        libelle = self._libelle_libre(name, header)
+        self._labels[name] = libelle
+        values = [valeur for valeur in box.cget("values")] + [libelle]
         for other in self._boxes:
             other.configure(values=values)
-        self.assignments[header].set(header)
+        self.assignments[header].set(libelle)
         self._repaint(header)
         if montant:
             self._money.add(name)
@@ -1467,7 +1550,7 @@ class SettingsWindow(tk.Toplevel):
         theme = dict(self.configuration.section("theme_parameters"))
         theme["theme"] = self.theme_var.get()
         theme["accent"] = self._accent_to_save()
-        write_configuration(directory, "theme_parameters", theme)
+        autres = [("theme_parameters", theme)]
         # La section est reecrite entiere : les seuils d'effectif qui la
         # partagent doivent survivre a l'enregistrement du reglage d'ecran.
         privacy = dict(self.configuration.section("privacy_parameters"))
@@ -1484,14 +1567,30 @@ class SettingsWindow(tk.Toplevel):
                 continue
             if saisi >= 1:
                 privacy[clef] = saisi
-        write_configuration(directory, "privacy_parameters", privacy)
+        autres.append(("privacy_parameters", privacy))
         graphiques = dict(self.configuration.section("chart_parameters"))
         graphiques["segment_order"] = self._segment_order_to_save()
-        write_configuration(directory, "chart_parameters", graphiques)
+        autres.append(("chart_parameters", graphiques))
         export = dict(self.configuration.section("export_parameters"))
         export["include_individual_data"] = bool(self.individual_var.get())
         export["include_source_file"] = bool(self.audit_var.get())
-        write_configuration(directory, "export_parameters", export)
+        autres.append(("export_parameters", export))
+        # Les colonnes sont ecrites : l'echec d'une autre section ne doit
+        # pas emporter la fenetre en silence. Chacune est tentee, et ce qui
+        # n'a pas pu l'etre se nomme — un dossier passe en lecture seule
+        # entre deux enregistrements laissait sinon l'ecran ouvert sans un
+        # mot, et on en concluait qu'il n'enregistre rien.
+        refusees = []
+        for nom, contenu in autres:
+            try:
+                write_configuration(directory, nom, contenu)
+            except CompensationError:
+                refusees.append(f"{nom}.json")
+        if refusees:
+            messagebox.showwarning(
+                "Paramètres",
+                "Les colonnes sont enregistrées. Ces réglages-là n'ont pas "
+                f"pu l'être : {', '.join(refusees)}.", parent=self)
         if self.on_saved:
             self.on_saved(directory, path)
         self.destroy()
