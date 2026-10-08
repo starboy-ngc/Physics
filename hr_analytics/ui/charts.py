@@ -169,6 +169,10 @@ class Tooltip:
         self._cle = None
         self._bulle: Optional[Dict[str, Any]] = None
 
+    #: Largeur de renvoi a la ligne d'un texte libre. Au-dela, une bulle
+    #: se lit mal, et elle sort de l'ecran.
+    WRAP = 440
+
     def _prepare(self) -> None:
         if self.window is not None:
             return
@@ -178,9 +182,12 @@ class Tooltip:
         # Le fond de la fenetre fait le lisere : un pixel de filet autour
         # d'un fond clair, sans quoi la bulle se fond dans le canevas.
         self.window.configure(background=theme.LINE_STRONG)
+        # Un texte long se replie : l'explication de l'ecart F/H, sur une
+        # seule ligne, sortait de l'ecran et se lisait a moitie.
         self.label = tk.Label(self.window, justify="left",
                               background=theme.CANVAS, foreground=theme.INK,
-                              padx=10, pady=7, font=_font(SIZE_BODY))
+                              padx=10, pady=7, font=_font(SIZE_BODY),
+                              wraplength=self.WRAP)
         self.table = tk.Frame(self.window, background=theme.CANVAS,
                               padx=10, pady=7)
 

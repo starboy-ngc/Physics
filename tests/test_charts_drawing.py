@@ -1918,6 +1918,8 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         self.assertIn("Écart F/H", texte)
         self.assertIn("Médiane des hommes", texte)
         self.assertIn("Calcul :", texte)
+        # Replie, et non sur une seule ligne qui sortait de l'ecran.
+        self.assertLessEqual(self.chart.tooltip.window.winfo_reqwidth(), 520)
 
     def test_the_header_word_explains_itself_too(self):
         self.chart.set_split(True)
