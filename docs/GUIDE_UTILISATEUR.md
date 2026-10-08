@@ -3,6 +3,11 @@
 Logiciel **local et hors ligne** : aucune donnée ne quitte votre poste.
 Vous pouvez couper Internet avant de l'utiliser.
 
+> **Pour une prise en main illustrée**, ouvrez
+> [`MODE-OPERATOIRE.html`](MODE-OPERATOIRE.html) dans le dossier `docs` :
+> une capture par page, et le détail de ce qu'elle montre. Ce guide-ci va
+> plus loin sur le paramétrage et sur les règles de calcul.
+
 ## 0. L'écran d'accueil
 
 À l'ouverture, **HR Analytics** affiche sa marque, son nom et l'étape en

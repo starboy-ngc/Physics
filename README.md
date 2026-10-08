@@ -131,6 +131,9 @@ générateur pseudo-aléatoire à graine fixe.
 
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — modules, décisions,
   sécurité, performance, feuille de route.
+- [`docs/MODE-OPERATOIRE.html`](docs/MODE-OPERATOIRE.html) — mode
+  opératoire illustré : ce que montre chaque page, capture à l'appui.
+  Document autonome, à ouvrir dans un navigateur ; il part avec le paquet.
 - [`docs/GUIDE_UTILISATEUR.md`](docs/GUIDE_UTILISATEUR.md) — guide RH.
 - [`docs/AUDIT.md`](docs/AUDIT.md) — audit complet : ce qui a été
   mesuré, les défauts trouvés et corrigés, ce qui reste fragile.

@@ -6,6 +6,7 @@ livraison, quand il est le plus couteux.
 """
 
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -680,3 +681,48 @@ class TestTheFolderLauncherCarriesTheMark(unittest.TestCase):
         for chemin in glob.glob(os.path.join(ROOT, "docs", "AUDIT-*.md")):
             self.assertIn(os.path.basename(chemin), DOCS_NON_LIVRES,
                           f"{os.path.basename(chemin)} partirait dans le paquet")
+
+
+class TestTheOperatingManual(unittest.TestCase):
+    """Le mode opératoire voyage avec l'outil, et se lit hors ligne.
+
+    Un mode operatoire qui ne suit pas l'outil est un mode operatoire que
+    personne ne retrouve. Et il part chez un service RH : il ne doit porter
+    aucune donnee reelle, ni rien aller chercher sur un reseau.
+    """
+
+    CHEMIN = os.path.join(ROOT, "docs", "MODE-OPERATOIRE.html")
+
+    def setUp(self):
+        if not os.path.isfile(self.CHEMIN):
+            self.skipTest("mode opératoire absent")
+        with open(self.CHEMIN, encoding="utf-8") as source:
+            self.page = source.read()
+
+    def test_it_ships_with_the_package(self):
+        """Il est dans « docs », et rien ne l'exclut de la livraison."""
+        from tools.build_windows import DOCS_NON_LIVRES
+
+        self.assertNotIn("MODE-OPERATOIRE.html", DOCS_NON_LIVRES)
+
+    def test_it_fetches_nothing_from_a_network(self):
+        """Une police ou une feuille de style distante ferait d'un document
+        hors ligne un document qui ne s'affiche qu'en ligne."""
+        externes = re.findall(r'(?:src|href)="(?!#|data:)([^"]+)"', self.page)
+        self.assertEqual(externes, [])
+        for protocole in ("http://", "https://", "//cdn"):
+            self.assertNotIn(protocole, self.page)
+
+    def test_the_screenshots_travel_inside_the_page(self):
+        """Un dossier d'images a cote se perd a la premiere transmission."""
+        self.assertGreaterEqual(self.page.count("data:image/png;base64,"), 10)
+
+    def test_it_carries_no_real_population(self):
+        """Les captures sont faites sur une population inventee, et le
+        document le dit."""
+        from tests.test_privacy_and_pipeline import (
+            TestNoRealCompanyLeaksIntoTheSource as temoin)
+
+        for nom in temoin.RETIREES:
+            self.assertNotIn(nom, self.page)
+        self.assertIn("population inventée", self.page)
