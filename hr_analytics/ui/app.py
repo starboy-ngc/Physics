@@ -2282,7 +2282,7 @@ class Application(tk.Tk):
             self._pyramid_panel(structures, "Pyramide des âges",
                                 population.get("age_bands", []), None,
                                 key="age_bands", measure="d'âge")
-            self._pyramid_panel(structures, "Structure d'ancienneté",
+            self._pyramid_panel(structures, "Pyramide d'ancienneté",
                                 population.get("tenure_bands", []), None,
                                 key="tenure_bands", measure="d'ancienneté")
 
@@ -3025,7 +3025,7 @@ class Application(tk.Tk):
             milieu, text="", background=theme.CANVAS, foreground=theme.MUTED,
             font=self.fonts.small, justify="left", anchor="w", wraplength=380)
         self.equity_pyramid_note.pack(anchor="w", padx=18, pady=(0, 8))
-        self._equity_title(droite, "Structure d'ancienneté")
+        self._equity_title(droite, "Pyramide d'ancienneté")
         self.equity_tenure = PyramidChart(droite)
         self.equity_tenure.pack(fill="x", padx=18, pady=(0, 10))
         self.equity_tenure_note = tk.Label(
@@ -4063,6 +4063,11 @@ class Application(tk.Tk):
         if population is not None:
             for bloc in self._segments:
                 metrics.reorder_segments(bloc, self.configuration, population)
+        # Les deux pages repassent sur « Ordre de la dimension » : c'est
+        # lui qui montre le rangement. Laisse sur « Effectif decroissant »,
+        # la page couchee rangeait a sa facon par-dessus, et le geste
+        # paraissait n'avoir rien fait.
+        self._follow_engine_order()
         self._show_boxes()
         self._show_columns()
         # Le libelle, jamais le nom technique : « job » ne dit rien a qui
@@ -4073,6 +4078,17 @@ class Application(tk.Tk):
         pose = "enregistré" if rangement else "retiré"
         self._set_state(f"Rangement {pose} pour « {nom} ». Les documents "
                         "produits suivront le même ordre.")
+
+    def _follow_engine_order(self) -> None:
+        """Met les deux pages de boites sur « Ordre de la dimension »,
+        liste deroulante comprise : une liste qui annonce un tri et un
+        graphique qui en applique un autre font douter du reglage."""
+        for graphique, liste in ((self.boxplot, self.box_order),
+                                 (self.column_boxes, self.col_order)):
+            graphique.set_order("moteur")
+            cles = [cle for cle, _l in graphique.orders()]
+            liste.configure(values=[l for _c, l in graphique.orders()])
+            liste.current(cles.index("moteur"))
 
     def _show_columns(self) -> None:
         """Boites dressees de l'abscisse choisie.

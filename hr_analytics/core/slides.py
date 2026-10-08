@@ -309,7 +309,7 @@ def build_summary(analysis: Dict[str, Any]) -> List[Slide]:
     # tiers de page blanc a leur droite.
     largeur = "third" if csp else "half"
     for cle, titre in (("age_bands", "Pyramide des âges"),
-                       ("tenure_bands", "Pyramide des anciennetés")):
+                       ("tenure_bands", "Pyramide d'ancienneté")):
         rangs = population.get(cle) or []
         if not any(row.get("female") or row.get("male") for row in rangs):
             continue
@@ -417,7 +417,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
                           for row in population.get("tenure_bands", [])],
                          title="Ancienneté", width="half"),
         ]
-        slides.append(Slide("Population", "Structure d'âge et d'ancienneté",
+        slides.append(Slide("Population", "Pyramides des âges et d'ancienneté",
                             blocks=blocs))
         # Les pyramides sur leurs propres planches, une par grandeur. Le
         # tableau donne les effectifs, le dessin donne la forme — un creux
@@ -430,7 +430,7 @@ def build_deck(analysis: Dict[str, Any]) -> List[Slide]:
         # dessine pas : elle n'aurait qu'une moitie, et sa planche ne
         # s'ouvre pas.
         for cle, titre in (("age_bands", "Pyramide des âges"),
-                           ("tenure_bands", "Pyramide des anciennetés")):
+                           ("tenure_bands", "Pyramide d'ancienneté")):
             rangs = population.get(cle) or []
             if not any(row.get("female") or row.get("male") for row in rangs):
                 continue

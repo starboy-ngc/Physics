@@ -207,6 +207,13 @@ Puis éditez les fichiers JSON : tranches d'âge et d'ancienneté, percentiles,
 seuils de confidentialité, devise, seuils de plausibilité, graphiques, export.
 Aucune modification du logiciel n'est nécessaire.
 
+Les tranches d'âge **se ferment toutes seules en bas** : un découpage qui
+commence à 20 ans reçoit une tranche « <20 » sans qu'on l'écrive, sinon un
+apprenti de 19 ans tombait dans « (non renseigné) ». Un fichier
+`age_parameters.json` antérieur à cette tranche la retrouve donc sans être
+retouché — vos réglages survivent aux mises à jour, et c'est l'outil qui
+complète. Le libellé se règle par `below_label` (`"<{high}"` par défaut).
+
 ### Couleurs
 
 Un seul thème, **Auroral** — bleu-vert lumineux sur nuit polaire —, et une

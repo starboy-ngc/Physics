@@ -1956,3 +1956,63 @@ class TestArrangingTheValuesByHand(WindowCase):
         self.app.update()
         couchees = [ligne["segment"] for ligne in self.app.boxplot.rows]
         self.assertEqual(couchees, voulu)
+
+
+class TestArrangingShowsAtOnce(WindowCase):
+    """« Ranger… » doit se voir, quel que soit le tri en cours.
+
+    Le rangement vit dans l'ordre de la dimension. Laissée sur « Effectif
+    décroissant », la page couchée rangeait à sa façon par-dessus, et le
+    geste paraissait n'avoir rien fait.
+    """
+
+    CHAMP = "groupe"
+
+    def analysed(self):
+        self.load()
+        self.analyse()
+        self.app.config_dir = self.directory
+        self.app.tabbar.select("graphique")
+        self.app.update()
+
+    def test_both_pages_switch_to_the_dimension_order(self):
+        self.analysed()
+        self.app.boxplot.set_order("headcount")
+        self.app.column_boxes.set_order("median")
+        self.app._save_manual_order(self.CHAMP, ["G6", "G3"])
+        self.app.update()
+        self.assertEqual(self.app.boxplot.order, "moteur")
+        self.assertEqual(self.app.column_boxes.order, "moteur")
+
+    def test_the_lists_say_the_same_as_the_charts(self):
+        """Les deux listes, et non la seule page couchée — celle-ci est
+        déjà resynchronisée par `_refill_orders`, la dressée ne l'était
+        par rien : partie sur « Médiane », elle l'annonçait encore quand
+        le graphique était passé sur l'ordre de la dimension."""
+        self.analysed()
+        for liste, reagir in ((self.app.box_order, self.app._reorder),
+                              (self.app.col_order, self.app._reorder_columns)):
+            liste.current([cle for cle, _l in self.app.boxplot.ORDERS]
+                          .index("median"))
+            reagir()
+        self.app.update()
+        self.assertEqual(self.app.column_boxes.order, "median")
+        self.app._save_manual_order(self.CHAMP, ["G6", "G3"])
+        self.app.update()
+        for liste, graphique in ((self.app.box_order, self.app.boxplot),
+                                 (self.app.col_order, self.app.column_boxes)):
+            self.assertEqual(liste.get(), dict(graphique.orders())["moteur"])
+
+    def test_the_lying_boxes_show_the_arrangement(self):
+        """Le témoin : avant, la page couchée gardait l'effectif et le
+        rangement n'y paraissait pas."""
+        self.analysed()
+        self.app.box_choice.current(
+            list(self.app.box_choice.cget("values")).index("Groupe"))
+        self.app._show_boxes()
+        self.app.update()
+        self.app.boxplot.set_order("headcount")
+        self.app._save_manual_order(self.CHAMP, ["G6", "G3"])
+        self.app.update()
+        dessinees = [ligne["segment"] for ligne in self.app.boxplot._drawable()]
+        self.assertEqual(dessinees[:2], ["G6", "G3"])

@@ -420,10 +420,36 @@ def _band_number(value: float) -> str:
     return str(int(value)) if float(value).is_integer() else str(value)
 
 
+def close_the_bottom(bands: List[Dict[str, Any]],
+                     label: str = "<{high}") -> List[Dict[str, Any]]:
+    """Ajoute la tranche du bas quand le decoupage ne part pas de zero.
+
+    Un decoupage qui commence a 20 ans range un apprenti de 19 ans dans
+    « (non renseigne) » : il a un age, et le tableau disait qu'il n'en
+    avait pas. Le haut du decoupage se prolonge deja jusqu'a la valeur
+    observee ; le bas se ferme de la meme facon, par une tranche « <20 »
+    qui tient tout ce qui est en dessous.
+
+    Un fichier de parametres anterieur a cette tranche la retrouve donc
+    sans qu'on le retouche : les reglages survivent aux mises a jour, et
+    c'est ici, et non dans le fichier, qu'une tranche manquante se
+    complete.
+    """
+    planchers = [float(band["min"]) for band in bands
+                 if isinstance(band, dict) and band.get("min") is not None]
+    if not planchers or min(planchers) <= 0:
+        return list(bands)
+    bas = min(planchers)
+    return [{"label": label.format(high=_band_number(bas)),
+             "min": 0, "max": bas}] + list(bands)
+
+
 def resolve_bands(config: Configuration, section: str,
                   observed_max: Optional[float]) -> List[Dict[str, Any]]:
-    """Tranches d'une section, prolongees si la configuration le demande."""
-    bands = config.get(f"{section}.bands", []) or []
+    """Tranches d'une section, fermees en bas et prolongees en haut."""
+    bands = close_the_bottom(
+        config.get(f"{section}.bands", []) or [],
+        str(config.get(f"{section}.below_label", "<{high}")))
     if not config.get(f"{section}.auto_extend", False):
         return bands
     return extend_open_band(

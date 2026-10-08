@@ -994,7 +994,7 @@ class TestBoxPlot(ChartCase):
         chart._on_motion(Motion(int(x) + 1, int(y) + 1))
         self.root.update()
         if chart.tooltip.window is not None:
-            self.assertIn("Segment", chart.tooltip.label.cget("text"))
+            self.assertIn("Segment", chart.tooltip.texte())
 
 
 @needs_display
@@ -1823,7 +1823,12 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
     """Survoler la boîte des femmes donnait les chiffres de l'ensemble : la
     boîte ne retenait pas de quelle moitié elle était. On lisait donc, sous
     un curseur posé sur une moitié, les bornes de l'autre mêlées aux
-    siennes — et il fallait deviner."""
+    siennes — et il fallait deviner.
+
+    La bulle rend une structure — titre, colonnes, lignes, colonne
+    marquée — et c'est la grille qui l'aligne. Elle était composée en
+    texte à chasse fixe, et toute sa lisibilité dépendait d'une police
+    que personne ne lit volontiers."""
 
     def setUp(self):
         from hr_analytics.ui.charts import BoxPlotChart
@@ -1843,6 +1848,10 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
                 "chartable": True, "sex_chartable": True, "masked": False,
                 "median_gap": 12.5}
 
+    def _cellules(self, bulle):
+        return [cellule for _intitule, cellules in bulle["lignes"]
+                for cellule in cellules]
+
     def test_each_box_remembers_which_half_it_is(self):
         self.chart.set_split(True)
         self.chart.set_rows([self._ligne()], "EUR")
@@ -1851,88 +1860,126 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         self.assertEqual(moitiés, {"female", "male"})
 
     def test_the_tooltip_carries_all_three_columns(self):
-        ligne = self._ligne()
-        texte = self.chart._bulle(ligne, "female")
-        for titre in ("Ensemble", "Femmes", "Hommes"):
-            self.assertIn(titre, texte)
+        bulle = self.chart._bulle(self._ligne(), "female")
+        self.assertEqual(bulle["colonnes"], ["Ensemble", "Femmes", "Hommes"])
         # Les trois médianes, et pas une seule répétée trois fois.
         from hr_analytics.core.reporting import format_money
 
-        for base in (31000, 29000, 33000):
-            self.assertIn(format_money(base, "EUR"), texte)
+        mediane = dict(bulle["lignes"])["Médiane"]
+        self.assertEqual(mediane, [format_money(base, "EUR")
+                                   for base in (31000, 29000, 33000)])
 
     def test_the_hovered_column_is_marked(self):
         ligne = self._ligne()
-        femmes = self.chart._bulle(ligne, "female")
-        hommes = self.chart._bulle(ligne, "male")
-        self.assertIn("▸ Femmes", femmes)
-        self.assertNotIn("▸ Hommes", femmes)
-        self.assertIn("▸ Hommes", hommes)
-        self.assertNotIn("▸ Femmes", hommes)
+        self.assertEqual(self.chart._bulle(ligne, "female")["marque"], 1)
+        self.assertEqual(self.chart._bulle(ligne, "male")["marque"], 2)
+        # Le groupe entier survolé marque sa propre colonne.
+        self.assertEqual(self.chart._bulle(ligne, None)["marque"], 0)
 
     def test_the_headcounts_open_the_table(self):
-        """L'effectif se lit avant les bornes, et non apres : un P10 calculé
+        """L'effectif se lit avant les bornes, et non après : un P10 calculé
         sur douze personnes ne se lit pas comme un P10."""
-        lignes = self._bulle_lignes()
-        self.assertTrue(lignes[2].startswith("Effectif"))
-        for nombre in ("300", "120", "180"):
-            self.assertIn(nombre, lignes[2])
+        bulle = self.chart._bulle(self._ligne(), "female")
+        intitule, cellules = bulle["lignes"][0]
+        self.assertEqual(intitule, "Effectif")
+        self.assertEqual(cellules, ["300", "120", "180"])
 
     def test_the_bounds_climb_the_scale(self):
         """Du bas de la distribution vers le haut : c'est le sens d'une
         échelle de rémunération, celui de la boîte lue de gauche à droite,
         et celui de tous les tableaux de l'outil."""
-        libelles = [ligne.split()[0] for ligne in self._bulle_lignes()[4:]]
-        self.assertEqual(libelles, ["P10", "Q1", "Médiane", "Q3", "P90"])
+        bulle = self.chart._bulle(self._ligne(), "female")
+        self.assertEqual([intitule for intitule, _c in bulle["lignes"][1:]],
+                         ["P10", "Q1", "Médiane", "Q3", "P90"])
 
     def test_a_masked_half_leaves_its_column_out(self):
         """Un côté sous le seuil de publication n'a pas de colonne : une
         colonne de tirets laisserait croire qu'on a mesuré."""
         ligne = self._ligne()
         ligne["female"] = {"masked": True}
-        texte = self.chart._bulle(ligne, None)
-        self.assertNotIn("Femmes", texte)
-        self.assertIn("Hommes", texte)
+        bulle = self.chart._bulle(ligne, None)
+        self.assertEqual(bulle["colonnes"], ["Ensemble", "Hommes"])
+        self.assertTrue(all(len(cellules) == 2
+                            for _i, cellules in bulle["lignes"]))
 
-    def test_the_columns_line_up(self):
+    def test_nothing_publishable_gives_no_tooltip(self):
+        ligne = self._ligne()
+        for cle in ("salary", "female", "male"):
+            ligne[cle] = {"masked": True}
+        self.assertIsNone(self.chart._bulle(ligne, None))
+
+    def _montrer(self, moitie="female"):
+        self.chart.tooltip.show_table(self.chart._bulle(self._ligne(), moitie),
+                                      100, 100)
+        self.root.update()
+        return self.chart.tooltip
+
+    def test_the_columns_line_up_by_the_grid(self):
         """Trois colonnes de montants qui ne s'alignent pas ne se comparent
-        pas : la bulle les pose à chasse fixe.
+        pas. L'alignement tient à la grille, et plus à une police à chasse
+        fixe : chaque cellule d'une même colonne finit au même pixel."""
+        bulle = self._montrer()
+        bords = {}
+        for enfant in bulle.table.winfo_children():
+            infos = enfant.grid_info()
+            colonne = int(infos.get("column", 0))
+            if colonne == 0 or int(infos.get("row", 0)) < 2:
+                continue
+            bords.setdefault(colonne, set()).add(
+                enfant.winfo_x() + enfant.winfo_width())
+        self.assertEqual(len(bords), 3)
+        for colonne, droites in bords.items():
+            self.assertEqual(len(droites), 1,
+                             f"colonne {colonne} : bords {droites}")
 
-        L'essai mesure le rendu, et non le nom de la police. Une première
-        version lisait « TkFixedFont » dans un tuple et passait au vert —
-        alors que Tk n'y reconnaissait aucune famille, retombait sur la
-        police par défaut, et affichait des colonnes décalées.
-        """
-        from hr_analytics.ui.charts import table_font
+    def test_the_tooltip_is_dark_on_light(self):
+        """Blanche sur fond sombre et en petit corps, elle ne se lisait
+        pas sans se pencher."""
+        from hr_analytics.ui import theme
 
-        lignes = self._bulle_lignes()
-        largeurs = {len(ligne) for ligne in lignes[1:3] + lignes[4:]}
-        self.assertEqual(len(largeurs), 1,
-                         f"lignes de largeurs différentes : {largeurs}")
-        # La police est mesurée telle que le canevas la recevra — un
-        # tuple (famille, taille) —, et non d'après son nom : c'est le nom
-        # qui mentait.
-        import tkinter.font as tkfont
+        bulle = self._montrer()
+        self.assertEqual(bulle.table.cget("background"), theme.CANVAS)
+        encres = {enfant.cget("foreground")
+                  for enfant in bulle.table.winfo_children()}
+        self.assertIn(theme.INK, encres)
 
-        police = tkfont.Font(root=self.chart, font=table_font())
-        self.assertTrue(police.metrics("fixed"),
-                        f"« {police.actual('family')} » n'est pas à chasse "
-                        "fixe")
-        # Deux chaînes de même longueur doivent occuper la même largeur :
-        # c'est la seule propriété dont les colonnes dépendent.
-        self.assertEqual(police.measure("1 234 EUR"),
-                         police.measure("WWWWWWWWW"))
+    def test_the_hovered_column_shows_in_the_accent_colour(self):
+        from hr_analytics.ui import theme
 
-    def test_every_line_of_the_table_has_the_same_width(self):
-        """Et les lignes elles-mêmes : un montant plus court décalerait sa
-        colonne si le remplissage était mal calculé."""
-        lignes = self._bulle_lignes()
-        lignes = lignes[1:3] + lignes[4:]
-        self.assertGreater(len(lignes), 3)
-        self.assertEqual(len({len(ligne) for ligne in lignes}), 1)
+        bulle = self._montrer("male")
+        entetes = {enfant.cget("text"): enfant.cget("foreground")
+                   for enfant in bulle.table.winfo_children()
+                   if int(enfant.grid_info().get("row", 0)) == 1}
+        self.assertEqual(entetes["Hommes"], theme.ACCENT)
+        self.assertNotEqual(entetes["Femmes"], theme.ACCENT)
 
-    def _bulle_lignes(self):
-        return self.chart._bulle(self._ligne(), "female").split("\n")
+    def test_the_tooltip_is_not_rebuilt_on_every_pixel(self):
+        """Le survol envoie un événement par pixel ; vingt étiquettes
+        refaites à chaque fois se voient."""
+        bulle = self._montrer()
+        avant = tuple(bulle.table.winfo_children())
+        bulle.show_table(self.chart._bulle(self._ligne(), "female"), 101, 101)
+        self.root.update()
+        self.assertEqual(tuple(bulle.table.winfo_children()), avant)
+
+    def test_the_tooltip_stays_on_the_screen(self):
+        """Posée à droite d'une boîte proche du bord, elle sortait de
+        l'écran, et c'est la colonne survolée — la dernière — qu'on
+        perdait."""
+        bulle = self.chart.tooltip
+        bulle.show_table(self.chart._bulle(self._ligne(), "male"),
+                         self.root.winfo_screenwidth() - 20, 100)
+        self.root.update()
+        droite = bulle.window.winfo_x() + bulle.window.winfo_reqwidth()
+        self.assertLessEqual(droite, self.root.winfo_screenwidth())
+        self.assertLess(bulle.window.winfo_x(),
+                        self.root.winfo_screenwidth() - 20)
+
+    def test_the_text_rendering_says_what_the_eye_reads(self):
+        texte = self._montrer().texte()
+        for attendu in ("Toute la population", "Ensemble", "Effectif",
+                        "Médiane", "300"):
+            self.assertIn(attendu, texte)
 
 
 @needs_display
@@ -2093,7 +2140,7 @@ class TestVerticalBoxPlot(ChartCase):
         chart._on_motion(Motion(int((x1 + x2) / 2), int((y1 + y2) / 2)))
         self.root.update()
         self.assertIsNotNone(chart.tooltip.window)
-        self.assertIn("Médiane", chart.tooltip.label.cget("text"))
+        self.assertIn("Médiane", chart.tooltip.texte())
 
     def test_it_reads_the_same_rows_as_the_lying_boxes(self):
         """Un chiffre affiche a deux endroits doit venir du meme calcul :

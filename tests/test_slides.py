@@ -68,7 +68,7 @@ class TestDeckStructure(unittest.TestCase):
         # en dur, il annoncait « Anciennete et remuneration » quel que soit
         # ce que le dessin montrait.
         for expected in ("Population", "Pyramide des âges",
-                         "Pyramide des anciennetés", "Rémunération",
+                         "Pyramide d'ancienneté", "Rémunération",
                          "Distribution", "Salaire de base et ancienneté"):
             self.assertIn(expected, titles)
         # Pas de planche « Qualité des données » : le contrôle se lit à

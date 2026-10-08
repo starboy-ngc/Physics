@@ -24,7 +24,7 @@ from ..core.reporting import (format_money, format_number,
                               format_percent, format_years)
 from . import raster
 from . import theme
-from .theme import (SIZE_LABEL, SIZE_SECTION, SIZE_SMALL, _rgb,
+from .theme import (SIZE_BODY, SIZE_LABEL, SIZE_SECTION, SIZE_SMALL, _rgb,
                     pick_family)
 
 # Les filets du fond, la droite de tendance et les deux ailes de la pyramide
@@ -48,32 +48,6 @@ def axis_font():
 
 def note_font():
     return (_family, SIZE_SMALL)
-
-
-#: Famille a chasse fixe du systeme, relevee une fois. On retient la
-#: famille et non la police : une police appartient a l'interpreteur Tk
-#: qui l'a creee, une famille est un nom.
-_fixed_family = None
-
-
-def table_font():
-    """Police a chasse fixe : trois colonnes de montants ne s'alignent pas
-    avec une police proportionnelle, et des colonnes qui ne s'alignent pas
-    ne se comparent pas.
-
-    « TkFixedFont » est le nom d'une police, pas celui d'une famille :
-    passe dans un tuple, Tk n'y reconnait aucune famille et retombe sur
-    celle par defaut — proportionnelle. La bulle s'affichait donc en
-    colonnes decalees, et un essai qui lisait le nom au lieu du rendu n'y
-    voyait rien.
-
-    On demande donc a la police nommee, dont Tk garantit la chasse fixe
-    sur chaque systeme, de quelle famille elle est.
-    """
-    global _fixed_family
-    if _fixed_family is None:
-        _fixed_family = tkfont.nametofont("TkFixedFont").actual("family")
-    return (_fixed_family, SIZE_SMALL)
 
 
 def _font(size: int, weight: str = "normal"):
@@ -171,27 +145,137 @@ def _shorten(widget: tk.Misc, text: str, limit: float, police=None) -> str:
 
 
 class Tooltip:
-    """Info-bulle suivant le curseur, dessinee dans une fenetre sans bordure."""
+    """Info-bulle suivant le curseur, dessinee dans une fenetre sans bordure.
+
+    Claire sur fond clair, dans la police de la fenetre et a sa taille de
+    corps. Elle etait blanche sur fond sombre, en petit corps, et a chasse
+    fixe pour les tableaux : trois colonnes de montants alignees, que
+    personne ne lisait sans se pencher. Les colonnes tiennent desormais
+    par une grille et non par une police — c'est la grille qui aligne, et
+    la police peut etre celle qu'on lit partout ailleurs dans la fenetre.
+    """
+
+    #: Espace entre deux colonnes d'un tableau, en pixels.
+    GOUTTIERE = 16
 
     def __init__(self, widget: tk.Widget):
         self.widget = widget
         self.window: Optional[tk.Toplevel] = None
         self.label: Optional[tk.Label] = None
+        self.table: Optional[tk.Frame] = None
+        #: Ce que la bulle montre, pour ne pas le reconstruire a chaque
+        #: pixel parcouru : le survol d'une boite envoie un evenement par
+        #: pixel, et vingt etiquettes refaites a chaque fois se voient.
+        self._cle = None
+        self._bulle: Optional[Dict[str, Any]] = None
 
-    def show(self, text: str, x: int, y: int, tableau: bool = False) -> None:
-        if self.window is None:
-            self.window = tk.Toplevel(self.widget)
-            self.window.wm_overrideredirect(True)
-            self.window.attributes("-topmost", True)
-            self.label = tk.Label(
-                self.window, justify="left", background=theme.INK, foreground="white",
-                padx=8, pady=5, font=note_font(),
-            )
-            self.label.pack()
-        self.label.configure(text=text,
-                             font=table_font() if tableau else note_font())
-        self.window.wm_geometry(f"+{x + 16}+{y + 16}")
+    def _prepare(self) -> None:
+        if self.window is not None:
+            return
+        self.window = tk.Toplevel(self.widget)
+        self.window.wm_overrideredirect(True)
+        self.window.attributes("-topmost", True)
+        # Le fond de la fenetre fait le lisere : un pixel de filet autour
+        # d'un fond clair, sans quoi la bulle se fond dans le canevas.
+        self.window.configure(background=theme.LINE_STRONG)
+        self.label = tk.Label(self.window, justify="left",
+                              background=theme.CANVAS, foreground=theme.INK,
+                              padx=10, pady=7, font=_font(SIZE_BODY))
+        self.table = tk.Frame(self.window, background=theme.CANVAS,
+                              padx=10, pady=7)
+
+    def _place(self, x: int, y: int) -> None:
+        """A droite du curseur, ou a gauche si la droite ne suffit pas.
+
+        Une bulle de trois colonnes mesure trois cents pixels : posee a
+        droite d'une boite proche du bord, elle sortait de l'ecran et
+        c'est la colonne survolee — la derniere — qu'on perdait.
+        """
+        self.window.update_idletasks()
+        largeur = self.window.winfo_reqwidth()
+        hauteur = self.window.winfo_reqheight()
+        ecran_l = self.window.winfo_screenwidth()
+        ecran_h = self.window.winfo_screenheight()
+        gauche = x + 16 if x + 16 + largeur <= ecran_l else max(0, x - 16 - largeur)
+        haut = y + 16 if y + 16 + hauteur <= ecran_h else max(0, y - 16 - hauteur)
+        self.window.wm_geometry(f"+{gauche}+{haut}")
         self.window.deiconify()
+
+    def show(self, text: str, x: int, y: int) -> None:
+        """Un texte libre, sur une ou plusieurs lignes."""
+        self._prepare()
+        cle = ("texte", text)
+        if cle != self._cle:
+            self.table.pack_forget()
+            self.label.configure(text=text)
+            self.label.pack(padx=1, pady=1)
+            self._cle, self._bulle = cle, None
+        self._place(x, y)
+
+    def show_table(self, bulle: Dict[str, Any], x: int, y: int) -> None:
+        """Un tableau : un titre, des colonnes nommees, des lignes.
+
+        `bulle` porte « titre », « colonnes », « lignes » — une suite de
+        (intitule, cellules) — et « marque », le rang de la colonne
+        survolee, ou rien.
+        """
+        self._prepare()
+        cle = ("table", bulle.get("titre"), tuple(bulle["colonnes"]),
+               tuple((intitule, tuple(cellules))
+                     for intitule, cellules in bulle["lignes"]),
+               bulle.get("marque"))
+        if cle != self._cle:
+            self.label.pack_forget()
+            for enfant in self.table.winfo_children():
+                enfant.destroy()
+            self._remplir(bulle)
+            self.table.pack(padx=1, pady=1)
+            self._cle, self._bulle = cle, bulle
+        self._place(x, y)
+
+    def _remplir(self, bulle: Dict[str, Any]) -> None:
+        colonnes = list(bulle["colonnes"])
+        marque = bulle.get("marque")
+        fond, encre = theme.CANVAS, theme.INK
+        corps, gras = _font(SIZE_BODY), _font(SIZE_BODY, "bold")
+        entete = _font(SIZE_SMALL, "bold")
+        tk.Label(self.table, text=str(bulle.get("titre", "")), font=gras,
+                 background=fond, foreground=encre, anchor="w").grid(
+                     row=0, column=0, columnspan=len(colonnes) + 1,
+                     sticky="w", pady=(0, 5))
+        # La colonne survolee se signale par la couleur d'accent, et non
+        # par un glyphe : une fleche en tete de colonne decalait tout ce
+        # qui etait dessous des qu'elle n'avait pas la chasse d'une lettre.
+        for rang, titre in enumerate(colonnes):
+            tk.Label(self.table, text=titre, font=entete, background=fond,
+                     foreground=(theme.ACCENT if rang == marque
+                                 else theme.MUTED),
+                     anchor="e").grid(row=1, column=rang + 1, sticky="e",
+                                      padx=(self.GOUTTIERE, 0))
+        for ligne, (intitule, cellules) in enumerate(bulle["lignes"], 2):
+            tk.Label(self.table, text=intitule, font=corps, background=fond,
+                     foreground=theme.MUTED, anchor="w").grid(
+                         row=ligne, column=0, sticky="w", pady=(1, 0))
+            for rang, cellule in enumerate(cellules):
+                tk.Label(self.table, text=str(cellule), background=fond,
+                         foreground=encre, anchor="e",
+                         font=gras if rang == marque else corps).grid(
+                             row=ligne, column=rang + 1, sticky="e",
+                             padx=(self.GOUTTIERE, 0), pady=(1, 0))
+
+    def texte(self) -> str:
+        """Ce que la bulle montre, en texte : pour les essais, qui lisent
+        ce que l'oeil lit sans dependre de la grille."""
+        if self._cle is None:
+            return ""
+        if self._cle[0] == "texte":
+            return self.label.cget("text")
+        bulle = self._bulle or {}
+        lignes = [str(bulle.get("titre", "")),
+                  "  ".join(bulle.get("colonnes", []))]
+        for intitule, cellules in bulle.get("lignes", []):
+            lignes.append("  ".join([intitule] + [str(c) for c in cellules]))
+        return "\n".join(lignes)
 
     def hide(self) -> None:
         if self.window is not None:
@@ -978,7 +1062,7 @@ class _Boxes(tk.Frame):
         value = salary.get(preferred)
         return float(value if value is not None else salary[fallback])
 
-    def _bulle(self, row, moitie) -> str:
+    def _bulle(self, row, moitie) -> Optional[Dict[str, Any]]:
         """Le contenu de la bulle : les trois colonnes, cote a cote.
 
         Survoler la boite des femmes donnait les chiffres de l'ensemble :
@@ -988,9 +1072,14 @@ class _Boxes(tk.Frame):
 
         Les trois colonnes repondent a la question qu'on se pose vraiment
         en survolant : non pas « combien vaut ce quartile », mais « de
-        combien les deux cotes different ici ». La colonne survolee porte
-        une marque : sans elle, trois colonnes identiques ne diraient plus
+        combien les deux cotes different ici ». La colonne survolee est
+        marquee : sans cela, trois colonnes identiques ne diraient plus
         laquelle on montre.
+
+        La structure est rendue telle quelle — titre, colonnes, lignes —
+        et c'est la bulle qui la pose en grille. Elle etait composee ici
+        en texte a chasse fixe, et toute la lisibilite dependait d'une
+        police que personne ne lit volontiers.
         """
         def publiable(bloc) -> bool:
             """Un cote retenu par le seuil n'a pas de colonne : une colonne
@@ -1003,30 +1092,16 @@ class _Boxes(tk.Frame):
                      if publiable(row.get("salary") if cle is None
                                   else row.get(cle))]
         if not presentes:
-            return ""
-        # Une colonne large respire : les montants se comparaient colles
-        # les uns aux autres, et l'oeil ne retrouvait plus sa colonne d'une
-        # ligne a l'autre.
-        intitule_l, largeur = 10, 13
-
-        def rangee(libelle: str, cellules) -> str:
-            return libelle.ljust(intitule_l) + "".join(
-                str(cellule).rjust(largeur) for cellule in cellules)
-
-        # La marque tient dans la cellule de son titre : posee sur une
-        # ligne a elle, elle demandait un caractere de largeur garantie,
-        # et le moindre glyphe a chasse double decalait la colonne.
-        entete = rangee("", [("▸ " if cle == moitie else "  ") + titre
-                             for titre, cle in presentes])
+            return None
+        marque = next((rang for rang, (_titre, cle) in enumerate(presentes)
+                       if cle == moitie), None)
         effectifs = []
         for _titre, cle in presentes:
             nombre = (row.get("headcount", 0) if cle is None
                       else row.get(f"{cle}_count"))
             effectifs.append("—" if nombre is None
                              else format_number(nombre, 0))
-        lignes = [f'{row.get("segment", "")}', entete,
-                  rangee("Effectif", effectifs),
-                  "─" * (intitule_l + largeur * len(presentes))]
+        lignes = [("Effectif", effectifs)]
         for intitule, clef in self.BORNES:
             cellules = []
             for _titre, cle in presentes:
@@ -1034,21 +1109,22 @@ class _Boxes(tk.Frame):
                 valeur = (bloc or {}).get(clef)
                 cellules.append("—" if valeur is None
                                 else format_money(valeur, self.currency))
-            lignes.append(rangee(intitule, cellules))
-        return "\n".join(lignes)
+            lignes.append((intitule, cellules))
+        return {"titre": str(row.get("segment", "")),
+                "colonnes": [titre for titre, _cle in presentes],
+                "lignes": lignes, "marque": marque}
 
     def _on_motion(self, event) -> None:
         for item in self.canvas.find_overlapping(event.x, event.y,
                                                  event.x, event.y):
             if item in self._items:
                 row, moitie = self._items[item]
-                texte = self._bulle(row, moitie)
-                if not texte:
+                bulle = self._bulle(row, moitie)
+                if not bulle:
                     break
-                self.tooltip.show(texte,
-                                  self.canvas.winfo_rootx() + event.x,
-                                  self.canvas.winfo_rooty() + event.y,
-                                  tableau=True)
+                self.tooltip.show_table(bulle,
+                                        self.canvas.winfo_rootx() + event.x,
+                                        self.canvas.winfo_rooty() + event.y)
                 return
         self.tooltip.hide()
 

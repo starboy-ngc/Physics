@@ -868,3 +868,55 @@ class TestAnArrangementPutByHand(unittest.TestCase):
                          ["Ouest", "Nord", "Est"])
         self.assertEqual({ligne["segment"]: ligne["salary"]["median"]
                           for ligne in bloc["rows"]}, avant)
+
+
+class TestTheBottomBandIsNeverMissing(unittest.TestCase):
+    """Un découpage qui commence à 20 ans range un apprenti de 19 ans dans
+    « (non renseigné) » : il a un âge, et le tableau disait qu'il n'en
+    avait pas.
+
+    Le haut du découpage se prolonge déjà jusqu'à la valeur observée ; le
+    bas se ferme de la même façon. Un fichier de paramètres antérieur à la
+    tranche « <20 » la retrouve donc sans qu'on le retouche : les réglages
+    survivent aux mises à jour, et c'est ici qu'une tranche manquante se
+    complète.
+    """
+
+    SANS_BAS = [{"label": "20-29", "min": 20, "max": 29, "max_inclusive": True},
+                {"label": "30+", "min": 30, "max": None}]
+
+    def test_a_band_set_starting_above_zero_gets_its_floor(self):
+        from hr_analytics.core.normalize import close_the_bottom
+
+        bandes = close_the_bottom(self.SANS_BAS)
+        self.assertEqual(bandes[0], {"label": "<20", "min": 0, "max": 20.0})
+        self.assertEqual(bandes[1:], self.SANS_BAS)
+
+    def test_a_band_set_already_closed_is_left_alone(self):
+        from hr_analytics.core.normalize import close_the_bottom
+
+        bandes = [{"label": "<20", "min": 0, "max": 20}] + self.SANS_BAS
+        self.assertEqual(close_the_bottom(bandes), bandes)
+
+    def test_the_label_follows_the_setting(self):
+        from hr_analytics.core.normalize import close_the_bottom
+
+        self.assertEqual(close_the_bottom(self.SANS_BAS, "moins de {high}")[0]["label"],
+                         "moins de 20")
+
+    def test_a_nineteen_year_old_lands_in_it(self):
+        """Le vrai juge : la pyramide d'un fichier dont les réglages
+        n'ont jamais connu la tranche."""
+        from hr_analytics.core.metrics import calculate_population_metrics
+        import datetime as dt
+
+        config = make_config({"age_parameters.bands": self.SANS_BAS})
+        jeune = make_row(0, birth_date=dt.date(2007, 6, 1))
+        lignes = [jeune] + [make_row(index) for index in range(1, 30)]
+        bloc = calculate_population_metrics(build_population(lignes, config),
+                                            config)
+        tranches = {ligne["label"]: ligne for ligne in bloc["age_bands"]}
+        self.assertIn("<20", tranches)
+        self.assertEqual(tranches["<20"]["count"], 1)
+        self.assertFalse(any(ligne.get("catch_all") and ligne["count"]
+                             for ligne in bloc["age_bands"]))

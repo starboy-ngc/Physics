@@ -1892,7 +1892,7 @@ class TestTheMergedOverview(unittest.TestCase):
         # Les intertitres sont en casse normale : les petites majuscules
         # sont descendues d'un rang, aux en-tetes de colonne.
         for expected in ("Échelle de rémunération", "Dispersion",
-                         "Pyramide des âges", "Structure d'ancienneté"):
+                         "Pyramide des âges", "Pyramide d'ancienneté"):
             self.assertIn(expected, titles)
         # Les indicateurs ne coiffent plus la page : ils sont en tete de leur
         # colonne, sous la meme forme que les tableaux qui suivent.

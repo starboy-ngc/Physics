@@ -198,6 +198,21 @@ catégories côte à côte. Deux copies des règles de confidentialité auraient
 fini par diverger, et c'est la confidentialité qui en aurait fait les
 frais : un segment sous le seuil graphique ne se trace sur aucune des deux.
 
+La **bulle** de survol rend une structure — titre, colonnes, lignes,
+colonne marquée — et `Tooltip.show_table` la pose en grille de `Label`.
+Elle était composée en texte à chasse fixe, blanche sur fond sombre et en
+petit corps : trois colonnes alignées que personne ne lisait sans se
+pencher. C'est la grille qui aligne, la police peut donc être celle de la
+fenêtre, et la bulle est sombre sur fond clair. Elle n'est reconstruite
+que si son contenu change : le survol envoie un événement par pixel. Et
+elle se place à gauche du curseur quand elle ne tient pas à sa droite.
+
+Les **tranches d'âge se ferment en bas** (`close_the_bottom`) : un
+découpage qui commence à 20 reçoit « <20 », sinon un apprenti de 19 ans
+tombait dans le fourre-tout. C'est le symétrique de la prolongation du
+haut, et c'est ce qui rend la tranche à un fichier de paramètres
+antérieur à elle sans le retoucher.
+
 La version dressée **ne plafonne pas la largeur de ses colonnes** : elles
 se partagent la place offerte, et ne se posent sur leur plancher que
 lorsqu'elles ne tiennent plus — la zone défile alors, plutôt que d'écarter
