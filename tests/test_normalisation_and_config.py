@@ -313,6 +313,43 @@ if __name__ == "__main__":
     unittest.main()
 
 
+class TestAColumnCannotOverwriteTheModel(unittest.TestCase):
+    """Un nom de champ venant du paramétrage n'écrit que dans les champs
+    déclarés.
+
+    Le test portait sur `hasattr` : une colonne « Value » ou « Assign »,
+    déclarée comme nouveau champ à l'écran, recevait le nom technique
+    « value » ou « assign » et écrasait la méthode du même nom. L'analyse
+    tombait ensuite sur « 'str' object is not callable », sans que rien ne
+    désigne la colonne en cause.
+
+    Aucune donnée RH réelle.
+    """
+
+    def test_a_method_name_lands_beside_the_model_not_on_it(self):
+        from hr_analytics.core.normalize import Employee
+
+        salarié = Employee(row_number=2)
+        for nom in ("value", "assign", "identity", "__class__", "__dict__"):
+            salarié.assign(nom, "venu du fichier")
+            self.assertEqual(salarié.value(nom), "venu du fichier", nom)
+        # Le modèle reste un modèle : ses méthodes répondent encore.
+        self.assertTrue(callable(salarié.assign))
+        self.assertTrue(callable(salarié.value))
+        self.assertEqual(salarié.identity, "")
+        self.assertEqual(salarié.issues, [])
+
+    def test_a_declared_field_is_still_written_natively(self):
+        """Le repli ne doit pas renvoyer tout le monde dans « extra » : un
+        champ du modèle s'écrit où le reste de l'outil le lit."""
+        from hr_analytics.core.normalize import Employee
+
+        salarié = Employee(row_number=2)
+        salarié.assign("site", "Lyon")
+        self.assertEqual(salarié.site, "Lyon")
+        self.assertNotIn("site", salarié.extra)
+
+
 class TestTheYoungestAgeBand(unittest.TestCase):
     """Les mineurs et les apprentis ont leur tranche.
 

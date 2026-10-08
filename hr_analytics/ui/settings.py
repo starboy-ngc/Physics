@@ -24,6 +24,7 @@ from ..core.config import Configuration, write_configuration
 from ..core.errors import CompensationError
 from ..core import palette
 from ..core.mapping import normalise_label
+from ..core.normalize import Employee
 from ..core.metrics import SEGMENT_ORDERS
 from ..core.segmentation import CORE_FIELDS, max_filter_values
 from . import theme
@@ -100,18 +101,42 @@ def candidate_dimensions(config: Configuration) -> List[str]:
     return sorted(available - personal)
 
 
-def suggest_field_name(header: str, taken: Sequence[str]) -> str:
-    """Nom de champ technique deduit d'un en-tete, sans collision.
+#: Noms que le modele porte deja : ses champs declares, et ses methodes.
+#: Un nouveau champ qui prendrait l'un d'eux cohabiterait avec lui.
+_RESERVES = (frozenset(nom for nom in dir(Employee) if not nom.startswith("_"))
+             | Employee._NATIFS)
+
+
+def normalise_field_name(label: str) -> str:
+    """Un intitule ramene a un nom de champ technique, sans rien d'autre.
 
     Les noms de champ restent ASCII : ils s'ecrivent en ligne de commande
     (--filtre "direction=Nord"), ou un accent serait une source d'erreur de
     saisie plutot qu'un confort.
+
+    Separee de `suggest_field_name` : celle-ci evite les collisions, ce
+    qu'il ne faut surtout pas faire sur un nom que l'utilisateur vient de
+    taper. « base_salary » renomme en « base_salary_2 » passait a travers
+    le controle de doublon, qui comparait le nom corrige et non le nom
+    saisi.
     """
-    base = normalise_label(header).replace(" ", "_").strip("_") or "champ"
-    if base[0].isdigit():
-        base = f"c_{base}"
+    base = normalise_label(label).replace(" ", "_").strip("_") or "champ"
+    return f"c_{base}" if base[0].isdigit() else base
+
+
+def suggest_field_name(header: str, taken: Sequence[str]) -> str:
+    """Nom libre propose pour un en-tete, sans collision.
+
+    Un nom deja porte par le modele — « value », « assign », « identity »,
+    « issues » — n'est pas disponible : le champ cohabiterait avec une
+    methode du meme nom. Le modele s'en defend (voir `Employee.assign`),
+    mais mieux vaut un « value_2 » lisible qu'un champ range ailleurs que
+    la ou on le cherche.
+    """
+    base = normalise_field_name(header)
+    reserves = set(taken) | _RESERVES
     name, suffix = base, 2
-    while name in taken:
+    while name in reserves:
         name, suffix = f"{base}_{suffix}", suffix + 1
     return name
 
@@ -1255,12 +1280,22 @@ class SettingsWindow(tk.Toplevel):
             initialvalue=suggest_field_name(header, taken), parent=self)
         if not proposed:
             return
-        name = suggest_field_name(proposed, [])
+        # Le nom saisi est ramene a sa forme technique, et rien de plus :
+        # le corriger pour eviter une collision ferait passer un doublon
+        # pour un nom neuf.
+        name = normalise_field_name(proposed)
         if name in taken:
             messagebox.showwarning(
                 "Nouveau champ",
                 f"Le champ « {name} » existe déjà : choisissez-le dans la "
                 "liste plutôt que d'en créer un second.", parent=self)
+            return
+        if name in _RESERVES:
+            messagebox.showwarning(
+                "Nouveau champ",
+                f"« {name} » est un nom que l'outil emploie déjà pour autre "
+                "chose. Choisissez-en un autre — « " + name + "_2 » convient.",
+                parent=self)
             return
         self._declare(header, box, name)
 

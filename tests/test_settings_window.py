@@ -404,6 +404,40 @@ class TestCreatingAField(SettingsCase):
         self.assertEqual(self.window.assignments["Prime de panier"].get(),
                          IGNORED)
 
+    def test_a_name_the_model_holds_is_refused(self):
+        """« value » et « assign » sont des methodes du modele. Le modele
+        s'en defend — le champ atterrit a cote, pas dessus — mais le nom
+        reste trompeur : mieux vaut le dire au moment ou on le tape."""
+        warned = self._warnings()
+        self._answer("value")
+        self._create()
+        self.assertTrue(warned)
+        from hr_analytics.ui.settings import IGNORED
+
+        self.assertEqual(self.window.assignments["Prime de panier"].get(),
+                         IGNORED)
+
+    def test_a_new_field_never_takes_a_name_the_model_holds(self):
+        """Le nom propose, lui, evite les collisions : un champ nomme
+        « value » cohabiterait avec la methode du meme nom."""
+        from hr_analytics.ui.settings import suggest_field_name
+
+        for entête in ("Value", "Assign", "Identity", "Issues", "Site"):
+            propose = suggest_field_name(entête, [])
+            self.assertTrue(propose.endswith("_2"), f"{entête} -> {propose}")
+        self.assertEqual(suggest_field_name("Direction", []), "direction")
+
+    def test_a_typed_name_is_never_silently_renamed(self):
+        """Le corriger pour eviter une collision ferait passer un doublon
+        pour un nom neuf."""
+        from hr_analytics.ui.settings import normalise_field_name
+
+        for saisi, attendu in (("base_salary", "base_salary"),
+                               ("value", "value"),
+                               ("Prime de Panier été", "prime_de_panier_ete"),
+                               ("2026", "c_2026")):
+            self.assertEqual(normalise_field_name(saisi), attendu)
+
     def test_cancelling_leaves_the_column_ignored(self):
         from hr_analytics.ui.settings import IGNORED
 

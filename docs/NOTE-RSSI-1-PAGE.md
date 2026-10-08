@@ -125,8 +125,9 @@ connues sur ce format de fichier (bombe à entités XML, entité externe, bombe
 ZIP) sont testées et bloquées, par des essais qui construisent réellement les
 fichiers hostiles et les soumettent à l'outil.
 
-Un audit mené avant cette livraison a trouvé et corrigé cinq défauts, dont
-une garde XML qui ne s'appliquait pas au bon endroit et une affirmation de
-notre documentation qui s'est révélée fausse au contrôle. Ils sont listés au
-§10 du dossier détaillé. Un dossier qui ne dit que les bonnes nouvelles n'a
+Cinq audits menés avant cette livraison ont trouvé et corrigé six défauts,
+dont une garde XML qui ne s'appliquait pas au bon endroit, une affirmation de
+notre documentation qui s'est révélée fausse au contrôle, et un nom de colonne
+qui pouvait écraser une méthode du modèle de données. Ils sont listés au §10
+du dossier détaillé. Un dossier qui ne dit que les bonnes nouvelles n'a
 aucune valeur.

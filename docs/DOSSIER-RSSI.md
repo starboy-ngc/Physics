@@ -422,6 +422,29 @@ Chaque document produit est donc restreint à son propriétaire après écriture
 > pas sur le logiciel. Si les documents sont écrits dans un partage, ce sont
 > les ACL du partage qui décident.
 
+### 8.6 Ce qu'un nom de colonne peut atteindre
+
+Le fichier reçu décide de deux choses dans le modèle de données : la valeur
+d'un champ, et — si l'utilisateur déclare une colonne comme nouveau champ
+depuis la page Paramètres — le **nom** de ce champ.
+
+Ce nom n'atteint que les champs déclarés par le modèle. Tout le reste part
+dans un dictionnaire de débordement, où l'outil sait le lire. Une colonne
+nommée « Value », « Assign » ou « Identity » ne peut donc rien remplacer :
+elle est rangée à côté du modèle, jamais dessus.
+
+> **Ce n'était pas le cas, et l'audit du 8 octobre 2026 l'a trouvé.** Le
+> contrôle portait sur `hasattr`, vrai pour tout ce que l'objet porte — y
+> compris ses propres méthodes. Une colonne « Value » remplaçait la méthode
+> `value()`, et l'analyse tombait quelques lignes plus loin sur
+> « 'str' object is not callable », sans que rien ne désigne la colonne.
+>
+> Rien n'était exécuté : le modèle n'appelle jamais ce qu'il reçoit, et une
+> chaîne posée à la place d'une méthode ne fait qu'échouer à l'appel suivant.
+> C'était un défaut de robustesse, pas une faille. Il est corrigé des deux
+> côtés : le modèle n'écrit que dans ses champs déclarés, et la page
+> Paramètres refuse un nom que l'outil emploie déjà.
+
 ---
 
 ## 9. Le livrable Windows
@@ -635,8 +658,8 @@ modification du binaire, et les empreintes sont déjà fournies.
 
 | Contrôle | Résultat |
 |---|---|
-| Suite de tests, Python 3.12, interface comprise | **1 508 tests, 0 échec** |
-| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (505 ignorés : interface) |
+| Suite de tests, Python 3.12, interface comprise | **1 583 tests, 0 échec** |
+| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (554 ignorés : interface) |
 | Revue fonctionnelle de bout en bout | **21 fonctionnalités, 0 en échec** |
 | Stabilité d'affichage (onglets × tailles × parcours) | **129 épreuves, 0 incident** |
 | Scan syntaxique : imports et appels sensibles | **0 hors `re.compile`** |
@@ -644,6 +667,8 @@ modification du binaire, et les empreintes sont déjà fournies.
 | Analyse complète avec réseau et processus instrumentés | **0 tentative** |
 | Fichiers hostiles (5 attaques) | **5 refusées ou inertes** |
 | Fuite d'identité hors classeur (597 identités cherchées) | **0** |
+| Identité du fichier réel retrouvée dans le journal (400 cherchées) | **0** |
+| Nom de colonne atteignant autre chose qu'un champ déclaré | **aucun** (§8.6) |
 | Interpréteur livré, sous Windows : `socket`, `ssl`, `ctypes`, `subprocess`, `multiprocessing`, `sqlite3` | **6 absents** |
 | Chemin vers le réseau depuis Python (tous recensés) | **aucun** |
 | Primitives d'injection, de persistance ou de réseau dans les lanceurs | **aucune** (§9 bis.2) |
@@ -652,7 +677,7 @@ modification du binaire, et les empreintes sont déjà fournies.
 | Binaires du paquet portant leur signature d'origine | **62 sur 63** |
 | Analyse complète sous Windows avec l'interpréteur allégé | **7 documents produits, fenêtre ouverte** |
 
-**Cinq défauts ont été trouvés et corrigés pendant ces audits**, et ils sont
+**Six défauts ont été trouvés et corrigés pendant ces audits**, et ils sont
 listés ici parce qu'un dossier de sécurité qui ne dit que les bonnes nouvelles
 n'a aucune valeur :
 
@@ -669,6 +694,10 @@ n'a aucune valeur :
 5. **Nous avions écrit une affirmation fausse** : que le retrait de
    `subprocess` rendait impossible le lancement d'un programme. Un contrôle
    l'a démentie en lançant réellement un processus. Corrigée en §5.1.
+6. **Une colonne du fichier pouvait écraser une méthode du modèle de
+   données** (§8.6). Pas une exécution de code — rien n'appelle ce qui est
+   reçu — mais un arrêt sur un message incompréhensible, sur un nom de
+   colonne qui n'a rien d'exotique. Audit du 8 octobre 2026.
 
 ---
 

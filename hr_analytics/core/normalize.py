@@ -14,8 +14,8 @@ import math
 import re
 import secrets
 import unicodedata
-from dataclasses import dataclass, field
-from typing import Any, Dict, Iterable, List, Optional
+from dataclasses import dataclass, field, fields
+from typing import Any, ClassVar, Dict, Iterable, List, Optional
 
 from .config import Configuration
 from .mapping import MappingResult
@@ -116,12 +116,36 @@ class Employee:
             return self.extra[name]
         return getattr(self, name, None)
 
+    #: Les champs reellement declares par le modele. C'est a eux, et a eux
+    #: seuls, qu'un nom venant du parametrage a le droit d'ecrire.
+    #: `ClassVar` et non un champ : annote autrement, il deviendrait une
+    #: donnee de salarie, chaque instance en recevrait une copie vide, et
+    #: le controle ne porterait plus sur rien.
+    _NATIFS: ClassVar[frozenset] = frozenset()
+
     def assign(self, name: str, value: Any) -> None:
-        """Ecrit un champ natif, ou le range dans `extra` s'il n'existe pas."""
-        if hasattr(self, name):
+        """Ecrit un champ natif, ou le range dans `extra` sinon.
+
+        Le test portait sur `hasattr`, et non sur la liste des champs : un
+        fichier dont une colonne s'appelle « Value » ou « Assign », declaree
+        comme nouveau champ a l'ecran, recevait le nom technique « value »
+        ou « assign » et ecrasait la methode du meme nom. L'analyse tombait
+        ensuite sur « 'str' object is not callable », sans que rien ne
+        designe la colonne en cause. Les noms reserves — `identity`,
+        `__class__` — levaient une autre erreur, tout aussi obscure.
+
+        Rien de tout cela n'executait du code : le modele n'appelle jamais
+        ce qu'il recoit. Mais une colonne nommee « Value » n'est pas exotique
+        dans un export anglophone, et un outil ne doit pas tomber dessus.
+        """
+        if name in self._NATIFS:
             setattr(self, name, value)
         else:
             self.extra[name] = value
+
+
+#: Pose apres la definition : `fields()` demande une classe achevee.
+Employee._NATIFS = frozenset(champ.name for champ in fields(Employee))
 
 
 @dataclass
