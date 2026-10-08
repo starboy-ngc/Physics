@@ -701,6 +701,178 @@ def _sans_accent(texte: str) -> str:
                    if unicodedata.category(c) != "Mn").lower()
 
 
+class OrderPicker(tk.Toplevel):
+    """Ranger soi-meme les valeurs d'une dimension.
+
+    Les ordres calcules — alphabetique, effectif, mediane, echelle —
+    repondent chacun a une question, mais aucun ne connait la convention
+    d'une maison. Un metier se lit parfois dans l'ordre d'une grille, une
+    filiale dans l'ordre d'un organigramme : ce sont des decisions, pas
+    des deductions, et l'outil ne les retrouvera jamais tout seul.
+
+    Deux boutons plutot qu'un glisser-deposer : une liste de cinquante
+    metiers se range a la flechette sans viser, et le geste se defait. Le
+    glisser-deposer demande une main sure et ne dit pas ou l'on en est.
+    """
+
+    def __init__(self, master: tk.Misc, fonts: Fonts, titre: str,
+                 valeurs: Sequence[str], rangement, on_valide,
+                 ordres=()):
+        super().__init__(master, background=GROUND)
+        self.title(titre)
+        self.transient(master)
+        self._fonts = fonts
+        self._on_valide = on_valide
+        #: Les ordres calcules que la fenetre sait reposer, sous la forme
+        #: (intitule, suite de valeurs). Ils servent de point de depart :
+        #: ranger cinquante metiers a partir de l'alphabetique demande
+        #: trois gestes, a partir d'un desordre il en demande cinquante.
+        self._ordres = list(ordres)
+        self._valeurs = self._depart(list(valeurs), rangement)
+
+        tk.Label(self, text="Rangez les valeurs dans l'ordre où vous "
+                            "voulez les lire. Ce rangement vaut à l'écran "
+                            "et dans les documents.",
+                 background=GROUND, foreground=MUTED, font=fonts.small,
+                 wraplength=420, justify="left").pack(anchor="w", padx=16,
+                                                      pady=(14, 8))
+
+        if self._ordres:
+            barre = tk.Frame(self, background=GROUND)
+            barre.pack(fill="x", padx=16, pady=(0, 6))
+            tk.Label(barre, text="PARTIR DE", background=GROUND,
+                     foreground=FAINT, font=fonts.label).pack(side="left",
+                                                              padx=(0, 8))
+            for intitule, suite in self._ordres:
+                ttk.Button(barre, text=intitule, style="GhostGround.TButton",
+                           command=lambda s=suite: self._reposer(s)).pack(
+                               side="left", padx=(0, 6))
+
+        corps = tk.Frame(self, background=GROUND)
+        corps.pack(fill="both", expand=True, padx=16)
+        self._liste = tk.Listbox(
+            corps, activestyle="none", background=CANVAS, foreground=INK,
+            font=fonts.body, selectbackground=ACCENT, selectforeground="white",
+            relief="flat", highlightthickness=1, highlightbackground=LINE,
+            highlightcolor=ACCENT, width=38, height=16, exportselection=False)
+        bar = ttk.Scrollbar(corps, orient="vertical",
+                            command=self._liste.yview,
+                            style="Flat.Vertical.TScrollbar")
+        self._liste.configure(yscrollcommand=bar.set)
+        bar.pack(side="right", fill="y")
+        self._liste.pack(side="left", fill="both", expand=True)
+
+        cote = tk.Frame(self, background=GROUND)
+        cote.pack(fill="x", padx=16, pady=(8, 0))
+        for texte, pas in (("▲ Monter", -1), ("▼ Descendre", 1)):
+            ttk.Button(cote, text=texte, style="GhostGround.TButton",
+                       command=lambda p=pas: self._deplacer(p)).pack(
+                           side="left", padx=(0, 8))
+        for texte, bout in (("Tout en haut", 0), ("Tout en bas", None)):
+            ttk.Button(cote, text=texte, style="GhostGround.TButton",
+                       command=lambda b=bout: self._au_bout(b)).pack(
+                           side="left", padx=(0, 8))
+
+        pied = tk.Frame(self, background=GROUND)
+        pied.pack(fill="x", padx=16, pady=12)
+        ttk.Button(pied, text="Appliquer", style="Primary.TButton",
+                   command=self._valider).pack(side="right")
+        ttk.Button(pied, text="Annuler", style="GhostGround.TButton",
+                   command=self.destroy).pack(side="right", padx=(0, 8))
+        # Retirer le rangement est un geste a part : il rend la dimension
+        # aux ordres calcules, et ce n'est pas « annuler ».
+        ttk.Button(pied, text="Retirer le rangement",
+                   style="GhostGround.TButton",
+                   command=self._retirer).pack(side="left")
+
+        self._peupler()
+        # La fenetre ne descend pas sous ce que ses boutons demandent :
+        # resserree, « Tout en bas » et « Retirer le rangement » se
+        # coupaient au milieu d'un mot, et un bouton qu'on ne lit pas ne
+        # s'emploie pas. La mesure est faite sur le contenu pose, et non
+        # devinee : une police plus large sur un autre poste la deplacerait.
+        self.update_idletasks()
+        self.minsize(max(self.winfo_reqwidth(), 420),
+                     max(self.winfo_reqheight(), 420))
+        # Les fleches du clavier deplacent aussi : la main reste ou elle
+        # est quand on range vingt lignes de suite.
+        self._liste.bind("<Control-Up>", lambda _e: self._deplacer(-1))
+        self._liste.bind("<Control-Down>", lambda _e: self._deplacer(1))
+        self._liste.focus_set()
+
+    def _depart(self, valeurs: Sequence[str], rangement) -> list:
+        """L'ordre d'ouverture : le rangement pose, complete du reste.
+
+        Une valeur rangee qui n'existe plus dans le fichier du mois
+        disparait de la liste mais reste dans le fichier de parametres :
+        la retirer ferait perdre un rangement a la premiere population ou
+        un metier manque.
+        """
+        if not rangement:
+            return list(valeurs)
+        presentes = {_sans_accent(valeur): valeur for valeur in valeurs}
+        rangees, vues = [], set()
+        for valeur in rangement:
+            cle = _sans_accent(str(valeur))
+            if cle in presentes and cle not in vues:
+                rangees.append(presentes[cle])
+                vues.add(cle)
+        return rangees + [valeur for valeur in valeurs
+                          if _sans_accent(valeur) not in vues]
+
+    def _peupler(self, selection=None) -> None:
+        self._liste.delete(0, "end")
+        for index, valeur in enumerate(self._valeurs):
+            self._liste.insert("end", f"{index + 1:>3}.  {valeur}")
+        if selection is not None and self._valeurs:
+            rang = max(0, min(selection, len(self._valeurs) - 1))
+            self._liste.selection_set(rang)
+            self._liste.activate(rang)
+            self._liste.see(rang)
+
+    def _choisie(self):
+        selection = self._liste.curselection()
+        return selection[0] if selection else None
+
+    def _deplacer(self, pas: int) -> str:
+        depart = self._choisie()
+        if depart is None:
+            return "break"
+        arrivee = depart + pas
+        if not 0 <= arrivee < len(self._valeurs):
+            return "break"
+        self._valeurs[depart], self._valeurs[arrivee] = (
+            self._valeurs[arrivee], self._valeurs[depart])
+        self._peupler(arrivee)
+        return "break"
+
+    def _au_bout(self, bout) -> None:
+        depart = self._choisie()
+        if depart is None:
+            return
+        valeur = self._valeurs.pop(depart)
+        arrivee = len(self._valeurs) if bout is None else 0
+        self._valeurs.insert(arrivee, valeur)
+        self._peupler(arrivee)
+
+    def _reposer(self, suite: Sequence[str]) -> None:
+        """Repart d'un ordre calcule, sans perdre ce qu'il ne nomme pas."""
+        connues = {_sans_accent(valeur) for valeur in suite}
+        self._valeurs = [valeur for valeur in suite
+                         if valeur in self._valeurs] + [
+            valeur for valeur in self._valeurs
+            if _sans_accent(valeur) not in connues]
+        self._peupler(0)
+
+    def _retirer(self) -> None:
+        self._on_valide([])
+        self.destroy()
+
+    def _valider(self) -> None:
+        self._on_valide(list(self._valeurs))
+        self.destroy()
+
+
 class ValuePicker(tk.Toplevel):
     """Choisir une ou plusieurs valeurs d'une dimension.
 

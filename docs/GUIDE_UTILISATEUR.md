@@ -521,6 +521,34 @@ Un tri qu'aucune colonne ne montre se lirait comme un désordre : « Écart
 F/H » disparaît quand on repasse en mode simple, et l'ordre retombe alors
 sur celui d'ouverture.
 
+### Ranger soi-même
+
+Aucun ordre calculé ne connaît la convention de votre maison : un métier
+se lit parfois dans l'ordre d'une grille, une filiale dans celui d'un
+organigramme. **« Ranger… »**, à droite de « Trier par », ouvre la liste
+des valeurs de la dimension et vous laisse les mettre dans l'ordre voulu.
+
+- **Partir de** — Alphabétique, Effectif ou Médiane : un point de départ.
+  Ranger cinquante métiers depuis l'alphabétique demande trois gestes ;
+  depuis un désordre, cinquante.
+- **Monter / Descendre**, **Tout en haut / Tout en bas** — au bouton ou
+  au clavier (`Ctrl+↑`, `Ctrl+↓`).
+- **Appliquer** enregistre. **Retirer le rangement** rend la dimension
+  aux ordres calculés — ce n'est pas « Annuler ».
+
+Ce rangement **prime sur tous les autres ordres**, y compris sur une
+échelle de coefficients : il a été décidé, les autres sont déduits. Il
+vaut **à l'écran et dans les documents**, sur les deux pages de boîtes, et
+il **survit au redémarrage** : il est écrit dans
+`config/chart_parameters.json`, sous `segment_manual_order`, une liste par
+dimension — modifiable au bloc-notes comme le reste.
+
+Ce que le rangement ne nomme pas se place **en fin**, dans l'ordre que
+l'outil aurait choisi sans lui : un métier apparu ce mois-ci ne disparaît
+pas et ne s'invite pas au milieu. Et une valeur rangée qui n'est plus dans
+le fichier ne décale rien — elle reste dans le paramétrage, prête à
+servir au prochain import qui la portera.
+
 ## 5 quater bis. Boîtes à moustaches : comparer quelques catégories
 
 **Graphiques → Boîtes à moustaches** montre les mêmes chiffres dressés :

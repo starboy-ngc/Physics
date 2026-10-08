@@ -770,3 +770,101 @@ class TestAWholeNumberIsWrittenWhole(unittest.TestCase):
                   for index in range(30)]
         cles = list(split_by(build_population(lignes, config), "groupe"))
         self.assertEqual(sorted(cles), ["100", "110", "120"])
+
+
+class TestAnArrangementPutByHand(unittest.TestCase):
+    """Un rangement posé à la main prime sur tous les ordres calculés.
+
+    Alphabetique, effectif, mediane, echelle : chacun repond a une
+    question, mais aucun ne connait la convention d'une maison. Un metier
+    se lit parfois dans l'ordre d'une grille, une filiale dans celui d'un
+    organigramme — ce sont des decisions, pas des deductions, et l'outil
+    ne les retrouvera jamais tout seul.
+    """
+
+    def bloc(self, valeurs, rangement=None, champ="groupe"):
+        from hr_analytics.core.metrics import calculate_segment_metrics
+
+        reglages = {}
+        if rangement is not None:
+            reglages["chart_parameters.segment_manual_order"] = {champ: rangement}
+        config = make_config(reglages)
+        lignes = [make_row(index, groupe=valeurs[index % len(valeurs)])
+                  for index in range(len(valeurs) * 8)]
+        return calculate_segment_metrics(build_population(lignes, config),
+                                         config, champ)
+
+    def ordre(self, valeurs, rangement=None):
+        return [ligne["segment"] for ligne in self.bloc(valeurs, rangement)["rows"]]
+
+    def test_without_an_arrangement_nothing_changes(self):
+        self.assertEqual(self.ordre(["Nord", "Est", "Ouest"]),
+                         ["Est", "Nord", "Ouest"])
+
+    def test_the_arrangement_decides_the_order(self):
+        self.assertEqual(
+            self.ordre(["Nord", "Est", "Ouest"], ["Ouest", "Nord", "Est"]),
+            ["Ouest", "Nord", "Est"])
+
+    def test_it_beats_a_numbered_scale(self):
+        """Le cas le plus fort : même une échelle, que l'outil sait pourtant
+        ranger, cède à une décision explicite."""
+        self.assertEqual(self.ordre(["100", "110", "120"], ["120", "100"]),
+                         ["120", "100", "110"])
+
+    def test_what_it_does_not_name_goes_last_in_its_usual_order(self):
+        """Un métier apparu ce mois-ci ne disparaît pas, et ne s'invite pas
+        au milieu."""
+        self.assertEqual(
+            self.ordre(["Nord", "Est", "Ouest", "Sud"], ["Ouest"]),
+            ["Ouest", "Est", "Nord", "Sud"])
+
+    def test_an_arranged_value_absent_from_the_file_is_ignored(self):
+        """Le rangement garde la trace d'un métier que la population du
+        mois ne porte pas : il ne doit rien décaler."""
+        self.assertEqual(
+            self.ordre(["Nord", "Est"], ["Disparu", "Est", "Nord"]),
+            ["Est", "Nord"])
+
+    def test_it_matches_without_case_or_accents(self):
+        """La casse et les accents sont déjà indifférents partout ailleurs
+        dans l'outil : un rangement saisi au bloc-notes ne doit pas être le
+        seul endroit où « RELIURE » ne retrouve pas « Reliure »."""
+        # « Reliure » vient après « Édition » dans l'ordre alphabétique :
+        # s'il passe en tête, c'est que la casse et les accents ont bien
+        # été ignorés, et non que le hasard a bien fait.
+        self.assertEqual(
+            self.ordre(["Édition", "Reliure"], ["RELIURE"]),
+            ["Reliure", "Édition"])
+
+    def test_a_malformed_setting_is_ignored_rather_than_fatal(self):
+        """Le fichier s'édite au bloc-notes : une faute de frappe ne doit
+        pas empêcher l'analyse."""
+        from hr_analytics.core.metrics import manual_order
+
+        for valeur in ("Nord", 42, None, ["Nord", "", "  "]):
+            config = make_config(
+                {"chart_parameters.segment_manual_order": valeur})
+            self.assertIsInstance(manual_order(config, "groupe"), list)
+
+    def test_an_existing_block_can_be_rearranged_without_recomputing(self):
+        """Changer un ordre ne change aucun chiffre : relancer l'analyse
+        entière ferait recalculer ce qui est juste."""
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.core.metrics import reorder_segments
+
+        valeurs = ["Nord", "Est", "Ouest"]
+        bloc = self.bloc(valeurs)
+        avant = {ligne["segment"]: ligne["salary"]["median"]
+                 for ligne in bloc["rows"]}
+        données = make_config().as_dict()
+        données["chart_parameters"]["segment_manual_order"] = {
+            "groupe": ["Ouest", "Nord"]}
+        lignes = [make_row(index, groupe=valeurs[index % 3])
+                  for index in range(24)]
+        reorder_segments(bloc, Configuration(données),
+                         build_population(lignes))
+        self.assertEqual([ligne["segment"] for ligne in bloc["rows"]],
+                         ["Ouest", "Nord", "Est"])
+        self.assertEqual({ligne["segment"]: ligne["salary"]["median"]
+                          for ligne in bloc["rows"]}, avant)

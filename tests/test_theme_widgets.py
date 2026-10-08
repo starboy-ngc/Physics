@@ -278,3 +278,129 @@ class TestFontChoice(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@needs_display
+class TestOrderPicker(WidgetCase):
+    """Ranger soi-même les valeurs d'une dimension.
+
+    Aucun ordre calcule ne connait la convention d'une maison : un metier
+    se lit parfois dans l'ordre d'une grille, une filiale dans celui d'un
+    organigramme. Ce sont des decisions, pas des deductions.
+    """
+
+    VALEURS = ["Conduite", "Exploitation", "Administratif", "Commerce"]
+
+    def picker(self, valeurs=None, rangement=None, ordres=()):
+        from hr_analytics.ui.theme import Fonts, OrderPicker
+
+        self.recu = []
+        fenetre = OrderPicker(self.root, Fonts(self.root), "Ranger",
+                              valeurs if valeurs is not None else self.VALEURS,
+                              rangement, self.recu.append, ordres=ordres)
+        self.root.update()
+        # La fenetre meurt avec la racine, que « tearDown » detruit.
+        return fenetre
+
+    def test_it_opens_on_the_values_as_given(self):
+        self.assertEqual(self.picker()._valeurs, self.VALEURS)
+
+    def test_a_saved_arrangement_comes_back_first(self):
+        fenetre = self.picker(rangement=["Commerce", "Conduite"])
+        self.assertEqual(fenetre._valeurs[:2], ["Commerce", "Conduite"])
+
+    def test_what_the_arrangement_does_not_name_follows(self):
+        """Un métier apparu ce mois-ci ne disparaît pas de la liste."""
+        fenetre = self.picker(rangement=["Commerce", "Conduite"])
+        self.assertEqual(sorted(fenetre._valeurs[2:]),
+                         ["Administratif", "Exploitation"])
+
+    def test_an_arranged_value_absent_from_the_file_is_skipped(self):
+        """Le fichier du mois ne porte pas tous les métiers : le rangement
+        en garde la trace, la liste ne montre que ce qui existe."""
+        fenetre = self.picker(rangement=["Disparu", "Commerce"])
+        self.assertNotIn("Disparu", fenetre._valeurs)
+        self.assertEqual(fenetre._valeurs[0], "Commerce")
+
+    def test_the_arrangement_matches_without_case_or_accents(self):
+        """« Reliure » vient après « Édition » : s'il passe en tête, c'est
+        bien le pliage qui a opéré."""
+        fenetre = self.picker(valeurs=["Édition", "Reliure"],
+                              rangement=["RELIURE"])
+        self.assertEqual(fenetre._valeurs, ["Reliure", "Édition"])
+
+    def test_moving_a_line_up_swaps_it(self):
+        fenetre = self.picker()
+        fenetre._liste.selection_set(2)
+        fenetre._deplacer(-1)
+        self.assertEqual(fenetre._valeurs[:3],
+                         ["Conduite", "Administratif", "Exploitation"])
+
+    def test_the_moved_line_stays_selected(self):
+        """Ranger vingt lignes de suite demande que la main reste où elle
+        est."""
+        fenetre = self.picker()
+        fenetre._liste.selection_set(2)
+        fenetre._deplacer(-1)
+        self.assertEqual(fenetre._liste.curselection(), (1,))
+
+    def test_a_line_cannot_leave_the_list(self):
+        fenetre = self.picker()
+        fenetre._liste.selection_set(0)
+        fenetre._deplacer(-1)
+        self.assertEqual(fenetre._valeurs, self.VALEURS)
+
+    def test_moving_with_nothing_selected_does_nothing(self):
+        fenetre = self.picker()
+        fenetre._deplacer(1)
+        fenetre._au_bout(0)
+        self.assertEqual(fenetre._valeurs, self.VALEURS)
+
+    def test_a_line_goes_to_the_top(self):
+        fenetre = self.picker()
+        fenetre._liste.selection_set(3)
+        fenetre._au_bout(0)
+        self.assertEqual(fenetre._valeurs[0], "Commerce")
+
+    def test_a_line_goes_to_the_bottom(self):
+        fenetre = self.picker()
+        fenetre._liste.selection_set(0)
+        fenetre._au_bout(None)
+        self.assertEqual(fenetre._valeurs[-1], "Conduite")
+
+    def test_starting_from_a_computed_order_saves_the_gestures(self):
+        """Ranger cinquante métiers depuis l'alphabétique demande trois
+        gestes ; depuis un désordre, il en demande cinquante."""
+        fenetre = self.picker(ordres=(("Alphabétique", sorted(self.VALEURS)),))
+        fenetre._reposer(sorted(self.VALEURS))
+        self.assertEqual(fenetre._valeurs, sorted(self.VALEURS))
+
+    def test_starting_over_keeps_what_the_order_does_not_name(self):
+        fenetre = self.picker()
+        fenetre._reposer(["Commerce", "Conduite"])
+        self.assertEqual(fenetre._valeurs[:2], ["Commerce", "Conduite"])
+        self.assertEqual(sorted(fenetre._valeurs[2:]),
+                         ["Administratif", "Exploitation"])
+
+    def test_applying_hands_back_the_arrangement(self):
+        fenetre = self.picker()
+        fenetre._liste.selection_set(3)
+        fenetre._au_bout(0)
+        fenetre._valider()
+        self.assertEqual(self.recu, [["Commerce", "Conduite", "Exploitation",
+                                      "Administratif"]])
+
+    def test_removing_hands_back_an_empty_arrangement(self):
+        """Retirer le rangement rend la dimension aux ordres calculés : ce
+        n'est pas « annuler »."""
+        fenetre = self.picker(rangement=["Commerce"])
+        fenetre._retirer()
+        self.assertEqual(self.recu, [[]])
+
+    def test_cancelling_hands_back_nothing(self):
+        fenetre = self.picker()
+        fenetre._liste.selection_set(0)
+        fenetre._au_bout(None)
+        fenetre.destroy()
+        self.root.update()
+        self.assertEqual(self.recu, [])

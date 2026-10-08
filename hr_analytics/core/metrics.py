@@ -642,9 +642,64 @@ def calculate_segment_metrics(
 _ORDINAL_LABEL = re.compile(r"^([^\d]*)(\d+)([^\d]*)$")
 
 
+def manual_order(config: Configuration, field_name: str) -> List[str]:
+    """Le rangement pose a la main pour cette dimension, ou rien.
+
+    Il vit dans `chart_parameters.segment_manual_order`, une liste de
+    valeurs par dimension. Une direction qui range ses metiers dans
+    l'ordre de sa convention collective a une raison que l'outil n'a pas
+    a deviner, et aucun des ordres calcules ne la retrouvera.
+    """
+    rangements = config.get("chart_parameters.segment_manual_order", {}) or {}
+    if not isinstance(rangements, dict):
+        return []
+    valeurs = rangements.get(field_name) or []
+    return [str(valeur) for valeur in valeurs if str(valeur).strip()]
+
+
+def reorder_segments(block: Dict[str, Any], config: Configuration,
+                     population: Population) -> None:
+    """Range les lignes d'un bloc deja calcule, sur place.
+
+    Changer l'ordre ne change aucun chiffre : relancer l'analyse entiere
+    pour cela ferait attendre deux secondes sur deux mille lignes, et
+    ferait surtout recalculer ce qui est juste. Les blocs appartiennent au
+    resultat d'analyse : les ranger ici range aussi ce que les documents
+    publieront.
+    """
+    rows = block.get("rows") or []
+    rows.sort(key=_segment_sort_key(block.get("field", ""), config,
+                                    [row["segment"] for row in rows],
+                                    population))
+
+
 def _segment_sort_key(field_name: str, config: Configuration,
                       labels: List[str], population: Population):
     """Ordre de presentation d'un segment.
+
+    Un rangement pose a la main prime sur tout le reste : il a ete decide,
+    les autres sont deduits. Ce qu'il ne nomme pas se place en fin, dans
+    l'ordre que l'outil aurait choisi sans lui — un metier apparu ce
+    mois-ci ne disparait pas, et ne s'invite pas au milieu.
+    """
+    secours = _ordre_calcule(field_name, config, labels, population)
+    rangement = manual_order(config, field_name)
+    if not rangement:
+        return secours
+    rangs = {_fold(valeur): index for index, valeur in enumerate(rangement)}
+
+    def a_la_main(item):
+        rang = rangs.get(_fold(item["segment"]))
+        if rang is None:
+            return (1, 0, secours(item))
+        return (0, rang, ())
+
+    return a_la_main
+
+
+def _ordre_calcule(field_name: str, config: Configuration,
+                   labels: List[str], population: Population):
+    """Ordre deduit de ce que la dimension est, faute de rangement pose.
 
     Une echelle se lit dans son ordre, pas par effectif : trier les grades
     G1..G8 par population rend illisible la progression salariale. Trois cas :

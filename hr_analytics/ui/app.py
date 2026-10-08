@@ -31,7 +31,7 @@ from typing import Any, Dict, List, Optional
 from ..version import ENGINE_NAME, __version__
 from ..core import metrics, org as org_view, palette
 from ..core.config import (Configuration, default_config_dir,
-                           load_configuration)
+                           load_configuration, write_configuration)
 from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
@@ -39,6 +39,7 @@ from ..core.logging_setup import log_event
 from ..core.pay_equity import (calculate_category_gaps, category_breakdown,
                                category_members, people_rows,
                                population_breakdown)
+from ..core.normalize import fold_label as _fold_label
 from ..core.pipeline import (AnalysisRequest, load_population, run_analysis,
                              stage_labels)
 from ..core.quality import run_quality_check
@@ -57,7 +58,8 @@ from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
-from .theme import Card, CheckRow, Fonts, TabBar, ValuePicker
+from .theme import (Card, CheckRow, Fonts, OrderPicker, TabBar,
+                    ValuePicker)
 
 WINDOW_TITLE = f"{ENGINE_NAME} {__version__}"
 #: Les parentheses distinguent l'absence de choix d'une valeur qui, elle,
@@ -983,6 +985,9 @@ class Application(tk.Tk):
                                     BoxPlotChart.DEFAUT))
         self.box_order.pack(side="left", padx=10)
         self.box_order.bind("<<ComboboxSelected>>", lambda _e: self._reorder())
+        ttk.Button(box_head, text="Ranger…", style="Ghost.TButton",
+                   command=self._arrange_boxes).pack(side="left",
+                                                     padx=(10, 0))
         # Deux medianes proches peuvent recouvrir deux distributions tres
         # differentes : une seule boite par segment ne dit pas si les deux
         # sexes s'y etalent pareil.
@@ -1034,6 +1039,13 @@ class Application(tk.Tk):
         self.col_order.pack(side="left", padx=10)
         self.col_order.bind("<<ComboboxSelected>>",
                             lambda _e: self._reorder_columns())
+        # Aucun ordre calcule ne connait la convention d'une maison : un
+        # metier se lit parfois dans l'ordre d'une grille, une filiale
+        # dans celui d'un organigramme. Ce sont des decisions, et elles se
+        # posent ici.
+        ttk.Button(col_head, text="Ranger…", style="Ghost.TButton",
+                   command=self._arrange_columns).pack(side="left",
+                                                       padx=(10, 0))
         self.column_boxes = VerticalBoxPlotChart(colonnes)
         self.column_boxes.pack(fill="both", expand=True, padx=18, pady=(6, 10))
 
@@ -3977,6 +3989,90 @@ class Application(tk.Tk):
         choix = self.column_boxes.orders()
         index = max(self.col_order.current(), 0)
         self.column_boxes.set_order(choix[min(index, len(choix) - 1)][0])
+
+    def _arrange_boxes(self) -> None:
+        """Ouvre le rangement pour la dimension de la page couchee."""
+        self._arrange(self.box_choice)
+
+    def _arrange_columns(self) -> None:
+        """Ouvre le rangement pour l'abscisse de la page dressee."""
+        self._arrange(self.col_choice)
+
+    def _arrange(self, liste: "ttk.Combobox") -> None:
+        """Le rangement a la main d'une dimension.
+
+        Les deux pages de boites y conduisent : le rangement est celui de
+        la dimension, et non celui d'une page. Le modifier d'un cote le
+        modifie de l'autre, et dans les documents.
+        """
+        index = liste.current()
+        if index < 0 or index >= len(self._segments):
+            return
+        bloc = self._segments[index]
+        valeurs = [str(ligne.get("segment", ""))
+                   for ligne in bloc.get("rows", [])
+                   if ligne.get("segment") is not None]
+        if len(valeurs) < 2:
+            return
+        # Trois points de depart : ranger cinquante metiers depuis
+        # l'alphabetique demande trois gestes, depuis un desordre il en
+        # demande cinquante.
+        par_effectif = sorted(bloc["rows"],
+                              key=lambda ligne: -(ligne.get("headcount") or 0))
+        par_mediane = sorted(
+            bloc["rows"],
+            key=lambda ligne: -((ligne.get("salary") or {}).get("median") or 0))
+        depart = (
+            ("Alphabétique", sorted(valeurs, key=_fold_label)),
+            ("Effectif", [str(ligne["segment"]) for ligne in par_effectif]),
+            ("Médiane", [str(ligne["segment"]) for ligne in par_mediane]),
+        )
+        intitule = liste.get() or bloc.get("label", "")
+        OrderPicker(self, self.fonts, f"Ranger — {intitule}", valeurs,
+                    metrics.manual_order(self.configuration,
+                                         bloc.get("field", "")),
+                    lambda rangement, champ=bloc.get("field", ""),
+                           nom=intitule:
+                        self._save_manual_order(champ, rangement, nom),
+                    ordres=depart)
+
+    def _save_manual_order(self, field_name: str, rangement,
+                           intitule: str = "") -> None:
+        """Enregistre le rangement, puis range ce qui est deja calcule.
+
+        Changer un ordre ne change aucun chiffre : relancer l'analyse
+        entiere ferait attendre sur deux mille lignes et recalculerait ce
+        qui est juste. Les blocs appartiennent au resultat : les ranger
+        range aussi ce que les documents publieront.
+        """
+        graphiques = dict(self.configuration.section("chart_parameters"))
+        rangements = dict(graphiques.get("segment_manual_order") or {})
+        if rangement:
+            rangements[field_name] = list(rangement)
+        else:
+            rangements.pop(field_name, None)
+        graphiques["segment_manual_order"] = rangements
+        try:
+            write_configuration(self.config_dir, "chart_parameters",
+                                graphiques)
+        except CompensationError as erreur:
+            messagebox.showwarning("Ranger", erreur.message)
+            return
+        self.configuration = load_configuration(self.config_dir)
+        population = self.result.filtered if self.result else None
+        if population is not None:
+            for bloc in self._segments:
+                metrics.reorder_segments(bloc, self.configuration, population)
+        self._show_boxes()
+        self._show_columns()
+        # Le libelle, jamais le nom technique : « job » ne dit rien a qui
+        # vient de ranger des metiers. Et la phrase vaut pour les deux
+        # cas : rangement pose comme rangement retire, les documents
+        # suivront ce que l'ecran montre.
+        nom = intitule or field_name
+        pose = "enregistré" if rangement else "retiré"
+        self._set_state(f"Rangement {pose} pour « {nom} ». Les documents "
+                        "produits suivront le même ordre.")
 
     def _show_columns(self) -> None:
         """Boites dressees de l'abscisse choisie.

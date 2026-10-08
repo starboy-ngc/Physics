@@ -8,5 +8,6 @@
   "csp_field": "status",
   "csp_max_slices": 6,
   "show_trend_line": false,
-  "segment_order": "alphabetique"
+  "segment_order": "alphabetique",
+  "segment_manual_order": {}
 }

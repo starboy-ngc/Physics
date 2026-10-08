@@ -218,6 +218,18 @@ qu'elles sont arrivées. Le défaut vit dans `DEFAUT`, et non au premier
 rang d'`ORDERS` : une entrée ajoutée en tête changeait sinon le défaut, et
 le repli d'un tri devenu inapplicable, sans que personne le décide.
 
+Au-dessus de tous ces ordres, un **rangement posé à la main**
+(`chart_parameters.segment_manual_order`, une liste de valeurs par
+dimension) : il a été décidé, les autres sont déduits. Il vit dans le
+moteur et non dans la fenêtre, de sorte qu'il vaut aussi pour les tableaux
+et les documents. Ce qu'il ne nomme pas prend la clé que l'ordre calculé
+aurait donnée, précédée d'un rang qui la place en fin — une valeur
+nouvelle ne disparaît pas et ne s'invite pas au milieu. La correspondance
+se fait sur le libellé plié (casse et accents indifférents), comme partout
+ailleurs. `reorder_segments` range un bloc déjà calculé sur place :
+changer un ordre ne change aucun chiffre, et relancer l'analyse
+recalculerait ce qui est juste.
+
 Une **échelle chiffrée** est reconnue avant le motif ordinal `G1..G8` :
 celui-ci ne reconnaît pas « 106,5 », et l'échelle retombait alors sur
 l'ordre alphabétique, qui range 100 avant 99. Une valeur non renseignée

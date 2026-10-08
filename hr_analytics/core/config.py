@@ -291,6 +291,13 @@ DEFAULTS: Dict[str, Any] = {
         # camembert a quinze parts ne se lit plus, et les plus petites n'ont
         # meme plus la place d'un libelle.
         "csp_max_slices": 6,
+        # Rangement pose a la main, une liste de valeurs par dimension —
+        # « job », « site », « coefficient ». Il prime sur tous les autres
+        # ordres : une direction qui range ses metiers dans l'ordre de sa
+        # convention a une raison que l'outil n'a pas a deviner. Les
+        # valeurs absentes de la liste — un metier apparu ce mois-ci — se
+        # placent en fin, dans l'ordre qu'elles auraient eu sans elle.
+        "segment_manual_order": {},
         # La droite de tendance est issue de la meme regression que le R2,
         # retire parce qu'il n'apprenait rien. La tracer sans lui reviendrait
         # a affirmer une tendance sans permettre d'en juger la solidite.

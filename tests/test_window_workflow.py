@@ -1833,3 +1833,126 @@ class TestTheVerticalBoxesTab(WindowCase):
             self.app.update()
             self.assertEqual(self.app.column_boxes.order, cle)
             self.assertEqual(len(self.app.column_boxes._drawable()), combien)
+
+
+class TestArrangingTheValuesByHand(WindowCase):
+    """Le rangement posé depuis l'écran : enregistré, appliqué, durable.
+
+    Il ne vaut pas pour une page : il vaut pour la dimension. Le poser
+    depuis les boîtes dressées range aussi les couchées, et les documents.
+    """
+
+    CHAMP = "groupe"
+
+    def analysed(self):
+        self.load()
+        self.analyse()
+        self.app.config_dir = self.directory
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("colonnes")
+        limite = time.time() + 5
+        while time.time() < limite and not self.app.column_boxes._items:
+            self.app.update()
+            time.sleep(0.02)
+
+    def bloc(self):
+        return next(bloc for bloc in self.app._segments
+                    if bloc["field"] == self.CHAMP)
+
+    def valeurs(self):
+        return [ligne["segment"] for ligne in self.bloc()["rows"]]
+
+    def test_the_arrangement_is_written_to_the_settings(self):
+        self.analysed()
+        voulu = list(reversed(self.valeurs()))
+        self.app._save_manual_order(self.CHAMP, voulu)
+        self.app.update()
+        with open(os.path.join(self.directory, "chart_parameters.json"),
+                  encoding="utf-8") as source:
+            écrit = json.load(source)
+        self.assertEqual(écrit["segment_manual_order"][self.CHAMP], voulu)
+
+    def test_the_blocks_follow_at_once(self):
+        """Changer un ordre ne change aucun chiffre : on ne relance pas
+        l'analyse pour cela."""
+        self.analysed()
+        voulu = list(reversed(self.valeurs()))
+        self.app._save_manual_order(self.CHAMP, voulu)
+        self.app.update()
+        self.assertEqual(self.valeurs(), voulu)
+
+    def test_the_documents_follow_too(self):
+        """Les blocs appartiennent au résultat d'analyse : les ranger range
+        ce que les documents publieront."""
+        self.analysed()
+        voulu = list(reversed(self.valeurs()))
+        self.app._save_manual_order(self.CHAMP, voulu)
+        self.app.update()
+        bloc = next(b for b in self.app.result.payload["segments"]
+                    if b["field"] == self.CHAMP)
+        self.assertEqual([ligne["segment"] for ligne in bloc["rows"]], voulu)
+
+    def test_it_survives_a_restart(self):
+        """Un rangement qui ne tient que le temps de la session ne sert à
+        rien."""
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.metrics import calculate_segment_metrics
+
+        self.analysed()
+        voulu = list(reversed(self.valeurs()))
+        self.app._save_manual_order(self.CHAMP, voulu)
+        self.app.update()
+        relu = load_configuration(self.directory)
+        neuf = calculate_segment_metrics(self.app.result.filtered, relu,
+                                         self.CHAMP)
+        self.assertEqual([ligne["segment"] for ligne in neuf["rows"]], voulu)
+
+    def test_removing_it_gives_the_dimension_back_to_the_computed_orders(self):
+        self.analysed()
+        avant = self.valeurs()
+        self.app._save_manual_order(self.CHAMP, list(reversed(avant)))
+        self.app.update()
+        self.app._save_manual_order(self.CHAMP, [])
+        self.app.update()
+        self.assertEqual(self.valeurs(), avant)
+        with open(os.path.join(self.directory, "chart_parameters.json"),
+                  encoding="utf-8") as source:
+            self.assertNotIn(self.CHAMP,
+                             json.load(source)["segment_manual_order"])
+
+    def test_the_bar_says_what_happened(self):
+        """Un enregistrement qui ne se voit pas se refait."""
+        self.analysed()
+        self.app._save_manual_order(self.CHAMP, list(reversed(self.valeurs())),
+                                    "Groupe")
+        self.app.update()
+        dit = self.app.status.cget("text")
+        self.assertIn("Groupe", dit)
+        self.assertIn("documents", dit)
+
+    def test_a_read_only_folder_says_so_instead_of_losing_the_work(self):
+        from hr_analytics.core.errors import ConfigError
+        from hr_analytics.ui import app as module
+
+        self.analysed()
+        originale = module.write_configuration
+        module.write_configuration = lambda *a, **k: (_ for _ in ()).throw(
+            ConfigError("dossier en lecture seule", technical="denied"))
+        self.addCleanup(setattr, module, "write_configuration", originale)
+        with Dialogs() as dialogues:
+            self.app._save_manual_order(self.CHAMP, ["X"])
+        self.assertTrue(dialogues.warnings)
+
+    def test_both_pages_reach_the_same_arrangement(self):
+        """Le rangement est celui de la dimension, pas celui d'une page."""
+        self.analysed()
+        self.app.box_choice.current(
+            list(self.app.box_choice.cget("values")).index(
+                self.bloc()["label"]))
+        self.app._show_boxes()
+        self.app.update()
+        voulu = list(reversed(self.valeurs()))
+        self.app._save_manual_order(self.CHAMP, voulu)
+        self.app.update()
+        couchees = [ligne["segment"] for ligne in self.app.boxplot.rows]
+        self.assertEqual(couchees, voulu)
