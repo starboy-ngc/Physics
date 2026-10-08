@@ -299,3 +299,35 @@ class TestWhatTheSettingsSayWins(unittest.TestCase):
         lu = self.resolve(champs, entetes)
         self.assertEqual(lu.unknown_columns, [])
         self.assertEqual(len(lu.field_to_column), len(entetes))
+
+
+class TestTheChartsNameWhatTheyMeasure(unittest.TestCase):
+    """L'axe des boîtes dressées porte le champ d'analyse, quel qu'il soit.
+
+    Le paragraphe 7 interdit d'ecrire un nom de colonne dans le code. Un
+    graphique qui annoncerait « Salaire de base » sur un axe regle sur la
+    remuneration totale mentirait, et personne ne s'en apercevrait : les
+    montants, eux, resteraient plausibles.
+    """
+
+    def bloc(self, champ):
+        from tests.support import build_population, make_row
+        from hr_analytics.core.metrics import calculate_segment_metrics
+
+        config = make_config({"salary_parameters.analysis_field": champ,
+                              "population_mapping.numeric":
+                                  ["base_salary", "total_compensation"]})
+        lignes = [make_row(index, business_unit=["France", "Iberia"][index % 2])
+                  for index in range(40)]
+        population = build_population(lignes, config)
+        return calculate_segment_metrics(population, config, "business_unit")
+
+    def test_the_default_field_is_named(self):
+        self.assertEqual(self.bloc("base_salary")["value_label"],
+                         "Salaire de base")
+
+    def test_another_field_is_named_too(self):
+        """Le temoin : sans lui, un libelle ecrit en dur passerait le test
+        precedent sans qu'on le voie."""
+        self.assertEqual(self.bloc("total_compensation")["value_label"],
+                         "Rémunération totale")

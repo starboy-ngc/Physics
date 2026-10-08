@@ -52,7 +52,8 @@ from ..core.slides import (build_deck, build_summary, write_slides_html,
 from . import logo as marque
 from . import theme
 from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
-                     PieChart, PyramidChart, ScaleChart, ScatterChart)
+                     PieChart, PyramidChart, ScaleChart, ScatterChart,
+                     VerticalBoxPlotChart)
 from .progress import LoadingBar
 from .working import WorkPanel
 from . import splash as accueil_module
@@ -102,7 +103,8 @@ ON_DEMAND = ("organigramme",)
 
 CHARTS = (("nuage", "Nuage de points"),
           ("distribution", "Distribution"),
-          ("boites", "Dispersion"))
+          ("boites", "Dispersion"),
+          ("colonnes", "Boîtes à moustaches"))
 
 
 def _hint(key: Optional[str], title: str):
@@ -990,6 +992,45 @@ class Application(tk.Tk):
         self.boxplot = BoxPlotChart(boites)
         self.boxplot.pack(fill="both", expand=True, padx=18, pady=(6, 10))
 
+        # Les memes chiffres, dresses : la remuneration en ordonnee, les
+        # categories cote a cote. La page couchee classe quarante postes et
+        # porte leurs intitules sans les incliner ; celle-ci repond a
+        # l'autre question — comment ces quelques categories se
+        # comparent-elles —, et c'est pour cela qu'elle a sa propre page
+        # plutot qu'une case a cocher sur la precedente.
+        colonnes = self.chart_pages["colonnes"]
+        col_head = tk.Frame(colonnes, background=theme.CANVAS)
+        col_head.pack(fill="x", padx=18, pady=(10, 0))
+        tk.Label(col_head, text="EN ABSCISSE", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left")
+        self.col_choice = ttk.Combobox(col_head, state="readonly", width=24,
+                                       font=self.fonts.small)
+        self.col_choice.pack(side="left", padx=10)
+        self.col_choice.bind("<<ComboboxSelected>>",
+                             lambda _e: self._change_col_dimension())
+        # Quarante-huit metiers dresses cote a cote demandent de faire
+        # defiler tout le graphique pour en comparer deux. La question est
+        # rarement « tous » : c'est « ces quatre-la, cote a cote ».
+        #: Valeurs retenues dans la dimension, ou None pour toutes.
+        self.col_values = None
+        self.col_values_button = ttk.Button(
+            col_head, text="Valeurs : toutes", style="Ghost.TButton",
+            command=self._choose_col_values)
+        self.col_values_button.pack(side="left")
+        tk.Label(col_head, text="TRIER PAR", background=theme.CANVAS,
+                 foreground=theme.FAINT,
+                 font=self.fonts.label).pack(side="left", padx=(22, 0))
+        self.col_order = ttk.Combobox(
+            col_head, state="readonly", width=22, font=self.fonts.small,
+            values=[label for _key, label in VerticalBoxPlotChart.ORDERS])
+        self.col_order.current(0)
+        self.col_order.pack(side="left", padx=10)
+        self.col_order.bind("<<ComboboxSelected>>",
+                            lambda _e: self._reorder_columns())
+        self.column_boxes = VerticalBoxPlotChart(colonnes)
+        self.column_boxes.pack(fill="both", expand=True, padx=18, pady=(6, 10))
+
         nuage = self.chart_pages["nuage"]
         controls = tk.Frame(nuage, background=theme.CANVAS)
         controls.pack(fill="x", padx=18, pady=(8, 4))
@@ -1845,6 +1886,11 @@ class Application(tk.Tk):
             "boites": any(row.get("chartable")
                           for block in segments
                           for row in block.get("rows", [])),
+            # Les deux pages tracent les memes boites : ce qui ouvre l'une
+            # ouvre l'autre.
+            "colonnes": any(row.get("chartable")
+                            for block in segments
+                            for row in block.get("rows", [])),
             "nuage": bool(payload["scatter"].get("available")),
         }
         eligible = {
@@ -1984,6 +2030,7 @@ class Application(tk.Tk):
             "distribution": distribution,
             "nuage": nuage,
             "boites": boites,
+            "colonnes": boites,
         }
 
     def _kpi_font(self, values, width: int, per_row: int,
@@ -3742,11 +3789,15 @@ class Application(tk.Tk):
         self._segments = segments or []
         labels = [segment["label"] for segment in self._segments]
         self.box_choice.configure(values=labels)
+        self.col_choice.configure(values=labels)
         if labels:
             self.box_choice.current(self._default_dimension())
+            self.col_choice.current(self._default_dimension())
             self._show_boxes()
+            self._show_columns()
         else:
             self.boxplot.set_rows([])
+            self.column_boxes.set_rows([])
 
     def _default_dimension(self) -> int:
         """Dimension proposee d'emblee sur la dispersion : le poste.
@@ -3861,6 +3912,84 @@ class Application(tk.Tk):
             text=f"Valeurs : {len(retenues)} sur {total}")
         return [row for row in rows
                 if str(row.get("segment", "")) in retenues]
+
+    def _change_col_dimension(self) -> None:
+        """Changer d'abscisse remet les valeurs a toutes : les postes
+        retenus ne sont pas des etablissements, et le graphique se serait
+        vide sans que rien ne le dise."""
+        self.col_values = None
+        self._show_columns()
+
+    def _col_values_available(self) -> List[str]:
+        """Les valeurs que l'abscisse choisie porte, dans l'ordre du moteur."""
+        index = self.col_choice.current()
+        if index < 0 or index >= len(self._segments):
+            return []
+        return [str(row.get("segment", ""))
+                for row in self._segments[index].get("rows", [])
+                if row.get("segment") is not None]
+
+    def _choose_col_values(self) -> None:
+        """Ouvre le choix des valeurs portees en abscisse."""
+        valeurs = self._col_values_available()
+        if not valeurs:
+            return
+        intitule = self.col_choice.get() or "la dimension"
+        ValuePicker(self, self.fonts, f"Valeurs — {intitule}", valeurs,
+                    self.col_values, self._apply_col_values)
+
+    def _apply_col_values(self, retenues) -> None:
+        self.col_values = retenues
+        self._show_columns()
+
+    def _retain_col_values(self, rows):
+        """Ne garde que les categories retenues, et met a jour le bouton.
+
+        Ne rien retenir n'est pas « tout retenir » : c'est un graphique
+        vide, et c'est ce que l'utilisateur a demande. Le bouton le dit, de
+        sorte qu'un graphique vide ne passe pas pour une panne.
+        """
+        total = len(self._col_values_available())
+        if self.col_values is None:
+            self.col_values_button.configure(
+                text=f"Valeurs : toutes ({total})" if total
+                else "Valeurs : toutes")
+            return rows
+        retenues = set(self.col_values)
+        self.col_values_button.configure(
+            text=f"Valeurs : {len(retenues)} sur {total}")
+        return [row for row in rows
+                if str(row.get("segment", "")) in retenues]
+
+    def _reorder_columns(self) -> None:
+        """Applique le tri choisi aux boites dressees."""
+        choix = self.column_boxes.orders()
+        index = max(self.col_order.current(), 0)
+        self.column_boxes.set_order(choix[min(index, len(choix) - 1)][0])
+
+    def _show_columns(self) -> None:
+        """Boites dressees de l'abscisse choisie.
+
+        Elles lisent le meme bloc que la dispersion couchee : les
+        percentiles par segment sont deja calcules, et un chiffre affiche a
+        deux endroits doit venir du meme calcul.
+        """
+        index = self.col_choice.current()
+        if index < 0 or index >= len(self._segments):
+            self.column_boxes.set_rows([])
+            return
+        block = self._segments[index]
+        rows = self._retain_col_values(block["rows"])
+        self.column_boxes.set_rows(
+            rows, block.get("currency", "EUR"),
+            reference=block.get("reference_median"),
+            alert=self.configuration.number(
+                "pay_equity_parameters.gap_alert_threshold",
+                5.0, minimum=0.0, maximum=100.0),
+            # Le nom de l'ordonnee vient du moteur, donc de la
+            # configuration : ecrit ici, il annoncerait « salaire de base »
+            # sur un axe qui porte ce que le parametrage y a mis.
+            value_label=block.get("value_label", ""))
 
     def _show_boxes(self) -> None:
         """Boites a moustaches de la dimension choisie.

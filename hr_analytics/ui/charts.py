@@ -808,7 +808,225 @@ class HistogramChart(tk.Frame):
         self.tooltip.hide()
 
 
-class BoxPlotChart(tk.Frame):
+class _Boxes(tk.Frame):
+    """Ce que les deux boites a moustaches partagent : les donnees.
+
+    Couchees ou dressees, elles lisent les memes lignes de segment, avec
+    les memes regles — un segment sous le seuil graphique ne se trace pas,
+    masque il n'existe pas — et elles disent la meme chose au survol. Seul
+    le trace differe. Deux copies de ces regles finiraient par diverger, et
+    c'est la confidentialite qui en ferait les frais.
+    """
+
+    #: Tris proposes. La cle est technique, l'intitule s'affiche.
+    ORDERS = (("headcount", "Effectif décroissant"),
+              ("median", "Médiane décroissante"))
+    SPLIT_ORDERS = (("headcount", "Effectif décroissant"),
+                    ("median", "Médiane décroissante"),
+                    ("gap", "Écart F/H décroissant"))
+
+    #: Les colonnes de la bulle, et la clef ou chacune se lit dans la ligne.
+    #: `None` designe le groupe entier.
+    COLONNES = (("Ensemble", None), ("Femmes", "female"), ("Hommes", "male"))
+
+    #: Les bornes montrees, du bas de la distribution vers le haut. C'est
+    #: le sens d'une echelle de remuneration et celui de tous les tableaux
+    #: de l'outil : une bulle qui descend quand le reste monte fait relire
+    #: deux fois.
+    BORNES = (("P10", "p10"), ("Q1", "p25"), ("Médiane", "median"),
+              ("Q3", "p75"), ("P90", "p90"))
+
+    #: Deux boites par segment, femmes et hommes, plutot qu'une seule. Seule
+    #: la version couchee sait les dessiner ; l'attribut vit ici parce que
+    #: le choix des lignes en depend.
+    split = False
+
+    def orders(self):
+        """Tris applicables au mode courant."""
+        return self.SPLIT_ORDERS if self.split else self.ORDERS
+
+    def set_order(self, key: str) -> None:
+        """Change l'ordre des boites sans recalculer quoi que ce soit."""
+        self.order = key if key in dict(self.ORDERS) else self.ORDERS[0][0]
+        self.redraw()
+
+    def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
+                 warning: str = "", reference: Optional[float] = None,
+                 alert: float = 5.0, value_label: str = "") -> None:
+        """Lignes de segment, dans l'ordre etabli par le moteur.
+
+        `reference` est la mediane de l'ensemble analyse : tracee en repere,
+        elle rend lisible d'un regard ce qui est au-dessus et au-dessous,
+        sans avoir a comparer des montants de tete.
+
+        `value_label` nomme ce qui est mesure. Il vient du moteur, donc de
+        la configuration : l'ecrire ici reviendrait a nommer « salaire de
+        base » un axe qui porte ce que le parametrage y a mis.
+        """
+        self.rows = [dict(row) for row in rows or []]
+        self.currency = currency
+        self.warning = warning
+        # Seuil d'alerte de l'ecart, tel que la configuration le fixe. Il
+        # etait ecrit en dur ici alors qu'il existe deja en parametre : deux
+        # endroits pour une meme regle, c'est un des deux qui finit faux.
+        self.alert = alert
+        self.reference = reference
+        self.value_label = value_label
+        self.redraw()
+
+    def _sorted(self, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Ordre demande. Trier, c'est repondre a une autre question avec
+        les memes chiffres."""
+        if self.order == "median":
+            return sorted(rows, key=lambda row: -(row["salary"]["median"] or 0))
+        if self.order == "headcount":
+            return sorted(rows, key=lambda row: -(row.get("headcount") or 0))
+        if self.order == "gap":
+            return sorted(rows, key=lambda row: -(row.get("median_gap")
+                                                  if row.get("median_gap")
+                                                  is not None else -1e9))
+        return rows
+
+    def _withheld(self) -> int:
+        """Segments publiables mais trop peu nombreux pour etre traces."""
+        return sum(1 for row in self.rows
+                   if not row.get("masked") and row.get("chartable") is not True)
+
+    def _drawable(self) -> List[Dict[str, Any]]:
+        """Segments que l'on a le droit de tracer.
+
+        Le drapeau vient du moteur, et son absence vaut refus : une regle de
+        confidentialite ne se decide pas ici, et une donnee arrivee sans son
+        drapeau ne doit pas etre dessinee par defaut.
+        """
+        ready = []
+        for row in self.rows:
+            salary = row.get("salary") or {}
+            if row.get("masked") or row.get("chartable") is not True:
+                continue
+            if any(salary.get(key) is None for key in ("p25", "p75", "median")):
+                continue
+            # Dedouble, un segment n'a sa place que si l'un des deux sexes
+            # au moins atteint le seuil graphique : une ligne sans boite
+            # occuperait la place d'un resultat qu'elle n'a pas.
+            if self.split and row.get("sex_chartable") is not True:
+                continue
+            ready.append(row)
+        return self._sorted(ready)
+
+    def _refusal(self) -> str:
+        """Ce que l'on dit quand rien n'est tracable."""
+        if any(not row.get("masked") for row in self.rows):
+            return ("Effectif par segment insuffisant pour tracer une "
+                    "dispersion. Les valeurs restent lisibles dans le "
+                    "rapport et dans le classeur.")
+        return "Aucun segment publiable sur cette dimension."
+
+    def _span(self, rows: Sequence[Dict[str, Any]]):
+        """Etendue commune a toutes les boites : sans elle, rien ne se compare."""
+        lows, highs = [], []
+        for row in rows:
+            salary = row["salary"]
+            lows.append(self._whisker(salary, "p10", "p25"))
+            highs.append(self._whisker(salary, "p90", "p75"))
+        low, high = min(lows), max(highs)
+        # Le repere fait partie de l'echelle : hors d'elle, il se tracerait
+        # au bord du cadre et mentirait sur sa position.
+        if self.reference is not None:
+            low, high = min(low, self.reference), max(high, self.reference)
+        margin = (high - low) * 0.04 or 1.0
+        return low - margin, high + margin
+
+    @staticmethod
+    def _whisker(salary: Dict[str, Any], preferred: str, fallback: str) -> float:
+        value = salary.get(preferred)
+        return float(value if value is not None else salary[fallback])
+
+    def _bulle(self, row, moitie) -> str:
+        """Le contenu de la bulle : les trois colonnes, cote a cote.
+
+        Survoler la boite des femmes donnait les chiffres de l'ensemble :
+        la boite ne retenait pas de quelle moitie elle etait. On lisait
+        donc, sous le curseur pose sur une moitie, les bornes de l'autre
+        plus les siennes melangees — et il fallait deviner.
+
+        Les trois colonnes repondent a la question qu'on se pose vraiment
+        en survolant : non pas « combien vaut ce quartile », mais « de
+        combien les deux cotes different ici ». La colonne survolee porte
+        une marque : sans elle, trois colonnes identiques ne diraient plus
+        laquelle on montre.
+        """
+        def publiable(bloc) -> bool:
+            """Un cote retenu par le seuil n'a pas de colonne : une colonne
+            de tirets laisserait croire qu'on a mesure et qu'on ne dit
+            rien, alors qu'on n'a pas le droit de mesurer."""
+            return bool(bloc) and not bloc.get("masked") \
+                and bloc.get("median") is not None
+
+        presentes = [(titre, cle) for titre, cle in self.COLONNES
+                     if publiable(row.get("salary") if cle is None
+                                  else row.get(cle))]
+        if not presentes:
+            return ""
+        # Une colonne large respire : les montants se comparaient colles
+        # les uns aux autres, et l'oeil ne retrouvait plus sa colonne d'une
+        # ligne a l'autre.
+        intitule_l, largeur = 10, 13
+
+        def rangee(libelle: str, cellules) -> str:
+            return libelle.ljust(intitule_l) + "".join(
+                str(cellule).rjust(largeur) for cellule in cellules)
+
+        # La marque tient dans la cellule de son titre : posee sur une
+        # ligne a elle, elle demandait un caractere de largeur garantie,
+        # et le moindre glyphe a chasse double decalait la colonne.
+        entete = rangee("", [("▸ " if cle == moitie else "  ") + titre
+                             for titre, cle in presentes])
+        effectifs = []
+        for _titre, cle in presentes:
+            nombre = (row.get("headcount", 0) if cle is None
+                      else row.get(f"{cle}_count"))
+            effectifs.append("—" if nombre is None
+                             else format_number(nombre, 0))
+        lignes = [f'{row.get("segment", "")}', entete,
+                  rangee("Effectif", effectifs),
+                  "─" * (intitule_l + largeur * len(presentes))]
+        for intitule, clef in self.BORNES:
+            cellules = []
+            for _titre, cle in presentes:
+                bloc = row.get("salary") if cle is None else row.get(cle)
+                valeur = (bloc or {}).get(clef)
+                cellules.append("—" if valeur is None
+                                else format_money(valeur, self.currency))
+            lignes.append(rangee(intitule, cellules))
+        return "\n".join(lignes)
+
+    def _on_motion(self, event) -> None:
+        for item in self.canvas.find_overlapping(event.x, event.y,
+                                                 event.x, event.y):
+            if item in self._items:
+                row, moitie = self._items[item]
+                texte = self._bulle(row, moitie)
+                if not texte:
+                    break
+                self.tooltip.show(texte,
+                                  self.canvas.winfo_rootx() + event.x,
+                                  self.canvas.winfo_rooty() + event.y,
+                                  tableau=True)
+                return
+        self.tooltip.hide()
+
+    def _forget(self, event, job: str) -> None:
+        """Annule le rappel en attente quand le graphique disparait."""
+        if event.widget is not self:
+            return
+        try:
+            self.after_cancel(job)
+        except tk.TclError:
+            pass
+
+
+class BoxPlotChart(_Boxes):
     """Boites a moustaches : une par segment, couchees.
 
     Un tableau de medianes cache l'essentiel : deux postes de meme mediane
@@ -894,116 +1112,12 @@ class BoxPlotChart(tk.Frame):
                                                                     job),
                   add="+")
 
-    def _forget(self, event, job: str) -> None:
-        """Annule le rappel en attente quand le graphique disparait."""
-        if event.widget is not self:
-            return
-        try:
-            self.after_cancel(job)
-        except tk.TclError:
-            pass
-
-    #: Tris proposes. La cle est technique, l'intitule s'affiche.
-    #: « Ordre de la dimension » a ete retire : un classement alphabetique
-    #: ne repond a aucune question qu'on se pose devant une dispersion, et
-    #: il occupait la premiere place, donc l'ordre par defaut.
-    #: L'effectif vient en premier, et c'est l'ordre par defaut : devant une
-    #: dimension a quarante postes, la premiere question est « lesquels
-    #: pesent », pas « lesquels paient le mieux ». Un poste de six personnes
-    #: en tete de liste met en avant ce qui compte le moins.
-    #: Trier, c'est repondre a une autre question avec les memes chiffres.
-    #: « Ecart F/H » ne vaut qu'en mode dedouble : le proposer en mode
-    #: simple offrirait un tri sans colonne pour le verifier. Le tri par
-    #: ouverture est parti avec sa colonne, pour la meme raison.
-    ORDERS = (("headcount", "Effectif décroissant"),
-              ("median", "Médiane décroissante"))
-    SPLIT_ORDERS = (("headcount", "Effectif décroissant"),
-                    ("median", "Médiane décroissante"),
-                    ("gap", "Écart F/H décroissant"))
-
     #: Hauteur du bandeau d'en-tete : une ligne d'intitules.
     HEADER_HEIGHT = 26
-    def orders(self):
-        """Tris applicables au mode courant."""
-        return self.SPLIT_ORDERS if self.split else self.ORDERS
-
     def set_split(self, split: bool) -> None:
         """Une boite par segment, ou deux : femmes et hommes."""
         self.split = bool(split)
         self.redraw()
-
-    def set_order(self, key: str) -> None:
-        """Change l'ordre des boites sans recalculer quoi que ce soit."""
-        self.order = key if key in dict(self.ORDERS) else self.ORDERS[0][0]
-        self.redraw()
-
-    def _sorted(self, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Ordre demande, mediane decroissante par defaut : c'est la
-        question qu'on se pose devant une dispersion — qui gagne le plus, et
-        de combien l'ecart se creuse."""
-        if self.order == "median":
-            return sorted(rows, key=lambda row: -(row["salary"]["median"] or 0))
-        if self.order == "headcount":
-            return sorted(rows, key=lambda row: -(row.get("headcount") or 0))
-        if self.order == "gap":
-            return sorted(rows, key=lambda row: -(row.get("median_gap")
-                                                  if row.get("median_gap")
-                                                  is not None else -1e9))
-        return rows
-
-    def set_rows(self, rows: Sequence[Dict[str, Any]], currency: str = "EUR",
-                 warning: str = "", reference: Optional[float] = None,
-                 alert: float = 5.0) -> None:
-        """Lignes de segment, dans l'ordre etabli par le moteur.
-
-        `reference` est la mediane de l'ensemble analyse : tracee en repere,
-        elle rend lisible d'un regard ce qui est au-dessus et au-dessous,
-        sans avoir a comparer des montants de tete.
-        """
-        self.rows = [dict(row) for row in rows or []]
-        self.currency = currency
-        self.warning = warning
-        # Seuil d'alerte de l'ecart, tel que la configuration le fixe. Il
-        # etait ecrit en dur ici alors qu'il existe deja en parametre : deux
-        # endroits pour une meme regle, c'est un des deux qui finit faux.
-        self.alert = alert
-        self.reference = reference
-        self.redraw()
-
-    def _withheld(self) -> int:
-        """Segments publiables mais trop peu nombreux pour etre traces."""
-        return sum(1 for row in self.rows
-                   if not row.get("masked") and row.get("chartable") is not True)
-
-    def _drawable(self) -> List[Dict[str, Any]]:
-        """Segments que l'on a le droit de tracer.
-
-        Le drapeau vient du moteur, et son absence vaut refus : une regle de
-        confidentialite ne se decide pas ici, et une donnee arrivee sans son
-        drapeau ne doit pas etre dessinee par defaut.
-        """
-        ready = []
-        for row in self.rows:
-            salary = row.get("salary") or {}
-            if row.get("masked") or row.get("chartable") is not True:
-                continue
-            if any(salary.get(key) is None for key in ("p25", "p75", "median")):
-                continue
-            # Dedouble, un segment n'a sa place que si l'un des deux sexes
-            # au moins atteint le seuil graphique : une ligne sans boite
-            # occuperait la place d'un resultat qu'elle n'a pas.
-            if self.split and row.get("sex_chartable") is not True:
-                continue
-            ready.append(row)
-        return self._sorted(ready)
-
-    def _refusal(self) -> str:
-        """Ce que l'on dit quand rien n'est tracable."""
-        if any(not row.get("masked") for row in self.rows):
-            return ("Effectif par segment insuffisant pour tracer une "
-                    "dispersion. Les valeurs restent lisibles dans le "
-                    "rapport et dans le classeur.")
-        return "Aucun segment publiable sur cette dimension."
 
     def redraw(self) -> None:
         self.canvas.delete("all")
@@ -1329,26 +1443,6 @@ class BoxPlotChart(tk.Frame):
         return max((font.measure(str(row.get("headcount", 0))) for row in rows),
                    default=24)
 
-    def _span(self, rows: Sequence[Dict[str, Any]]):
-        """Etendue commune a toutes les boites : sans elle, rien ne se compare."""
-        lows, highs = [], []
-        for row in rows:
-            salary = row["salary"]
-            lows.append(self._whisker(salary, "p10", "p25"))
-            highs.append(self._whisker(salary, "p90", "p75"))
-        low, high = min(lows), max(highs)
-        # Le repere fait partie de l'echelle : hors d'elle, il se tracerait
-        # au bord du cadre et mentirait sur sa position.
-        if self.reference is not None:
-            low, high = min(low, self.reference), max(high, self.reference)
-        margin = (high - low) * 0.04 or 1.0
-        return low - margin, high + margin
-
-    @staticmethod
-    def _whisker(salary: Dict[str, Any], preferred: str, fallback: str) -> float:
-        value = salary.get(preferred)
-        return float(value if value is not None else salary[fallback])
-
     #: Gouttiere de droite reservee a l'ecart, en mode dedouble. Assez pour
     #: « -12,3 % » a la chasse des axes, et un peu d'air avant le bord.
     GAP_COLUMN = 64
@@ -1495,91 +1589,317 @@ class BoxPlotChart(tk.Frame):
                                 fill=theme.INK, width=2)
         self._items[handle] = (row, moitie)
 
-    #: Les colonnes de la bulle, et la clef ou chacune se lit dans la ligne.
-    #: `None` designe le groupe entier.
-    COLONNES = (("Ensemble", None), ("Femmes", "female"), ("Hommes", "male"))
 
-    #: Les bornes montrees, du bas de la distribution vers le haut. C'est
-    #: le sens d'une echelle de remuneration, celui de la boite lue de
-    #: gauche a droite, et celui de tous les tableaux de l'outil : une
-    #: bulle qui descend quand le reste monte fait relire deux fois.
-    BORNES = (("P10", "p10"), ("Q1", "p25"), ("Médiane", "median"),
-              ("Q3", "p75"), ("P90", "p90"))
+class VerticalBoxPlotChart(_Boxes):
+    """Boites a moustaches dressees : une colonne par categorie.
 
-    def _bulle(self, row, moitie) -> str:
-        """Le contenu de la bulle : les trois colonnes, cote a cote.
+    C'est la presentation classique d'une distribution comparee : la
+    remuneration en ordonnee, les categories cote a cote en abscisse, une
+    boite par categorie. L'oeil y lit d'un coup ce qui se superpose et ce
+    qui ne se superpose pas — deux metiers dont les boites ne se touchent
+    pas ne paient pas pareil, et aucun tableau de medianes ne le dit aussi
+    vite.
 
-        Survoler la boite des femmes donnait les chiffres de l'ensemble :
-        la boite ne retenait pas de quelle moitie elle etait. On lisait
-        donc, sous le curseur pose sur une moitie, les bornes de l'autre
-        plus les siennes melangees — et il fallait deviner.
+    La version couchee reste : elle classe quarante postes sur une page et
+    porte leurs intitules sans les incliner. Celle-ci repond a l'autre
+    question — « comment ces quelques categories se comparent-elles » — et
+    c'est pour cela qu'elle vit dans son propre onglet plutot qu'en option
+    de l'autre.
+    """
 
-        Les trois colonnes repondent a la question qu'on se pose vraiment
-        en survolant : non pas « combien vaut ce quartile », mais « de
-        combien les deux cotes different ici ». La colonne survolee porte
-        une marque : sans elle, trois colonnes identiques ne diraient plus
-        laquelle on montre.
+    #: Largeur minimale d'une colonne. Les categories se partagent toute la
+    #: largeur disponible ; en dessous de ce plancher, la zone defile plutot
+    #: que d'ecarter des categories — ce qui reviendrait a cacher une partie
+    #: de la reponse.
+    COL_MIN = 38
+    #: Largeur maximale d'une boite. La colonne, elle, s'etire : quatre
+    #: categories occupent la page entiere, mais une boite large comme un
+    #: quart d'ecran n'est plus une boite a moustaches, c'est un pave.
+    BOX_MAX = 90
+    #: Gouttiere de gauche : les montants de l'axe, et son titre dresse.
+    AXIS_WIDTH = 92
+    #: Hauteur du pied fixe : la cle de lecture.
+    FOOTER_HEIGHT = 62
+    #: Place maximale rendue aux intitules de categorie sous le trace.
+    LABEL_BAND_MAX = 150
+    #: Inclinaison des intitules qui ne tiennent pas droit sous leur
+    #: colonne. Quarante-cinq degres : dresses a la verticale, on lit un
+    #: nom a la fois en tournant la tete ; inclines, la serie se parcourt.
+    LABEL_ANGLE = 45
+
+    def __init__(self, master: tk.Widget):
+        super().__init__(master, background=theme.CANVAS)
+        _fonts(self)
+        # Trois canevas. L'axe reste a gauche pendant que les colonnes
+        # defilent : une boite lointaine sans graduation en face ne dit
+        # plus rien. Le pied porte la cle de lecture, qui n'a pas a defiler
+        # non plus.
+        self.footer = tk.Canvas(self, background=theme.CANVAS,
+                                highlightthickness=0,
+                                height=self.FOOTER_HEIGHT)
+        self.footer.pack(side="bottom", fill="x")
+        corps = tk.Frame(self, background=theme.CANVAS)
+        corps.pack(side="top", fill="both", expand=True)
+        self.axis = tk.Canvas(corps, background=theme.CANVAS,
+                              highlightthickness=0, width=self.AXIS_WIDTH)
+        self.axis.pack(side="left", fill="y")
+        zone = tk.Frame(corps, background=theme.CANVAS)
+        zone.pack(side="left", fill="both", expand=True)
+        self.bar = ttk.Scrollbar(zone, orient="horizontal",
+                                 style="Flat.Horizontal.TScrollbar")
+        self.canvas = tk.Canvas(zone, background=theme.CANVAS,
+                                highlightthickness=0)
+        self.canvas.pack(side="top", fill="both", expand=True)
+        self.bar.pack(side="bottom", fill="x")
+        self.bar.configure(command=self.canvas.xview)
+        theme.attach_scrollbar(self.canvas, self.bar, axis="x",
+                               side="bottom", fill="x", before=self.canvas)
+        self.tooltip = Tooltip(self.canvas)
+        self.rows: List[Dict[str, Any]] = []
+        self.currency = "EUR"
+        self.warning = ""
+        self.reference: Optional[float] = None
+        #: Ce que l'axe des ordonnees mesure, tel que le moteur le nomme.
+        self.value_label = ""
+        self.order = self.ORDERS[0][0]
+        self._items: Dict[int, Dict[str, Any]] = {}
+        redraw_on_resize(self, self.canvas)
+        self.canvas.bind("<Motion>", self._on_motion)
+        self.canvas.bind("<Leave>", lambda _e: self.tooltip.hide())
+        # La molette, horizontale ici : vingt categories ne s'atteignent pas
+        # a l'ascenseur seulement. Le rappel est annule a la destruction,
+        # sans quoi un graphique ferme avant le premier temps mort laisse Tk
+        # executer un rappel sur un widget disparu.
+        roue = self.after_idle(lambda: theme.bind_wheel(
+            self.canvas, self.winfo_toplevel(), axis="x"))
+        self.bind("<Destroy>", lambda event, job=roue: self._forget(event, job),
+                  add="+")
+
+    # ------------------------------------------------------------- mesures
+
+    def _label_band(self, rows: Sequence[Dict[str, Any]],
+                    col_w: float) -> tuple:
+        """Place a reserver sous le trace, et l'inclinaison des intitules.
+
+        Droits tant qu'ils tiennent sous leur colonne — c'est le plus
+        lisible —, inclines des qu'ils n'y tiennent plus. Les mesurer vaut
+        mieux que les deviner : « Conduite » et « Administration des
+        ventes » ne demandent pas la meme place, et une bande calculee sur
+        le plus long nom coute la moitie du graphique quand tous les autres
+        sont courts.
         """
-        def publiable(bloc) -> bool:
-            """Un cote retenu par le seuil n'a pas de colonne : une colonne
-            de tirets laisserait croire qu'on a mesure et qu'on ne dit
-            rien, alors qu'on n'a pas le droit de mesurer."""
-            return bool(bloc) and not bloc.get("masked") \
-                and bloc.get("median") is not None
+        police = tkfont.Font(root=self, font=axis_font())
+        largeurs = [police.measure(str(row.get("segment", ""))) for row in rows]
+        plus_long = max(largeurs, default=0)
+        hauteur_ligne = police.metrics("linespace")
+        # L'effectif se pose toujours sous le trace, droit : c'est un
+        # nombre court, et l'incliner ne gagnerait rien.
+        effectifs = hauteur_ligne + 6
+        if plus_long <= col_w - 8:
+            return effectifs + hauteur_ligne + 6, 0
+        # Incline, un intitule occupe en hauteur sa longueur projetee.
+        projete = min(plus_long, self.LABEL_BAND_MAX) * math.sin(
+            math.radians(self.LABEL_ANGLE))
+        return effectifs + projete + 10, self.LABEL_ANGLE
 
-        presentes = [(titre, cle) for titre, cle in self.COLONNES
-                     if publiable(row.get("salary") if cle is None
-                                  else row.get(cle))]
-        if not presentes:
-            return ""
-        # Une colonne large respire : les montants se comparaient colles
-        # les uns aux autres, et l'oeil ne retrouvait plus sa colonne d'une
-        # ligne a l'autre.
-        intitule_l, largeur = 10, 13
+    def _ticks(self, low: float, high: float, plot_h: float) -> List[float]:
+        """Graduations qui tiennent les unes au-dessus des autres.
 
-        def rangee(libelle: str, cellules) -> str:
-            return libelle.ljust(intitule_l) + "".join(
-                str(cellule).rjust(largeur) for cellule in cellules)
+        Le nombre demande a `nice_ticks` n'est qu'un souhait : la fonction
+        rend le pas rond le plus proche. Dans un cadre court, les montants
+        se chevauchaient ; on en retire une sur deux tant qu'ils ne tiennent
+        pas.
+        """
+        police = tkfont.Font(root=self, font=axis_font())
+        hauteur = police.metrics("linespace")
+        valeurs = list(nice_ticks(low, high, 6))
+        while len(valeurs) > 2 and (hauteur + 8) * len(valeurs) > plot_h:
+            valeurs = valeurs[::2]
+        return valeurs
 
-        # La marque tient dans la cellule de son titre : posee sur une
-        # ligne a elle, elle demandait un caractere de largeur garantie,
-        # et le moindre glyphe a chasse double decalait la colonne.
-        entete = rangee("", [("▸ " if cle == moitie else "  ") + titre
-                             for titre, cle in presentes])
-        effectifs = []
-        for _titre, cle in presentes:
-            nombre = (row.get("headcount", 0) if cle is None
-                      else row.get(f"{cle}_count"))
-            effectifs.append("—" if nombre is None
-                             else format_number(nombre, 0))
-        lignes = [f'{row.get("segment", "")}', entete,
-                  rangee("Effectif", effectifs),
-                  "─" * (intitule_l + largeur * len(presentes))]
-        for intitule, clef in self.BORNES:
-            cellules = []
-            for _titre, cle in presentes:
-                bloc = row.get("salary") if cle is None else row.get(cle)
-                valeur = (bloc or {}).get(clef)
-                cellules.append("—" if valeur is None
-                                else format_money(valeur, self.currency))
-            lignes.append(rangee(intitule, cellules))
-        return "\n".join(lignes)
+    # -------------------------------------------------------------- trace
 
-    def _on_motion(self, event) -> None:
-        for item in self.canvas.find_overlapping(event.x, event.y,
-                                                 event.x, event.y):
-            if item in self._items:
-                row, moitie = self._items[item]
-                texte = self._bulle(row, moitie)
-                if not texte:
-                    break
-                self.tooltip.show(texte,
-                                  self.canvas.winfo_rootx() + event.x,
-                                  self.canvas.winfo_rooty() + event.y,
-                                  tableau=True)
-                return
-        self.tooltip.hide()
+    def redraw(self) -> None:
+        self.canvas.delete("all")
+        self.axis.delete("all")
+        self.footer.delete("all")
+        self._items.clear()
+        width = self.canvas.winfo_width()
+        height = self.canvas.winfo_height()
+        if width < 120 or height < 100:
+            return
+        drawable = self._drawable()
+        if not drawable:
+            self.canvas.configure(scrollregion=(0, 0, width, height))
+            self.canvas.create_text(
+                width / 2, height / 2, fill=theme.MUTED, font=note_font(),
+                text=self.warning or self._refusal(),
+                width=max(width - 60, 80), justify="center")
+            return
 
+        # Les categories se partagent toute la largeur, et se posent sur
+        # leur plancher quand elles ne tiennent plus : la zone defile alors.
+        # Plafonner la colonne laissait quatre boites serrees a gauche
+        # devant la moitie d'un ecran vide, et deux boites qu'on compare se
+        # comparent d'autant mieux qu'elles occupent la place offerte.
+        col_w = max(width / len(drawable), self.COL_MIN)
+        bande, angle = self._label_band(drawable, col_w)
+        pad_t = 14
+        plot_h = max(height - pad_t - bande, 40)
+        low, high = self._span(drawable)
+        span = (high - low) or 1.0
+        contenu = max(col_w * len(drawable), width)
+
+        def to_y(value: float) -> float:
+            return pad_t + (high - value) / span * plot_h
+
+        # Un fond une colonne sur deux, pose en premier : devant douze
+        # boites, l'oeil perd la verticale entre une boite et l'intitule qui
+        # lui repond. Il passe sous la grille, sinon la bande effacerait les
+        # graduations qu'elle recouvre.
+        for index in range(0, len(drawable), 2):
+            gauche = index * col_w
+            self.canvas.create_rectangle(gauche, 0, gauche + col_w,
+                                         pad_t + plot_h + bande,
+                                         fill=theme.STRIPE, outline="")
+
+        graduations = self._ticks(low, high, plot_h)
+        for valeur in graduations:
+            y = to_y(valeur)
+            self.canvas.create_line(0, y, contenu, y, fill=theme.GRID)
+
+        # Le repere d'ensemble, trace avant les boites pour passer dessous.
+        if self.reference is not None and low <= self.reference <= high:
+            self.canvas.create_line(0, to_y(self.reference), contenu,
+                                    to_y(self.reference), fill=theme.ACCENT,
+                                    dash=(4, 3))
+
+        for index, row in enumerate(drawable):
+            self._draw_column(row, index, col_w, to_y, pad_t + plot_h,
+                              bande, angle)
+
+        self.canvas.configure(scrollregion=(0, 0, contenu, height))
+        self._draw_axis(graduations, to_y, pad_t, plot_h, height)
+        self._draw_footer(width)
+
+    def _draw_axis(self, graduations, to_y, pad_t: float, plot_h: float,
+                   height: float) -> None:
+        """La graduation et le titre de l'ordonnee, hors de la zone qui
+        defile.
+
+        Le titre y figure dresse : l'abscisse porte les categories, dont le
+        selecteur dit deja le nom, mais rien ne disait ce que mesure la
+        hauteur. « 45 000 » sans unite ni intitule n'est pas une donnee.
+        """
+        for valeur in graduations:
+            self.axis.create_text(self.AXIS_WIDTH - 8, to_y(valeur),
+                                  anchor="e", fill=theme.MUTED,
+                                  font=axis_font(),
+                                  text=format_money(valeur, self.currency))
+        if self.value_label:
+            self.axis.create_text(11, pad_t + plot_h / 2, angle=90,
+                                  text=self.value_label, fill=theme.MUTED,
+                                  font=axis_font())
+        if self.reference is not None:
+            self.axis.create_line(self.AXIS_WIDTH - 4, to_y(self.reference),
+                                  self.AXIS_WIDTH, to_y(self.reference),
+                                  fill=theme.ACCENT)
+
+    def _draw_column(self, row, index: int, col_w: float, to_y,
+                     base: float, bande: float, angle: float) -> None:
+        """Une colonne : la boite, son effectif, son intitule."""
+        centre = index * col_w + col_w / 2
+        salary = row["salary"]
+        largeur = min(col_w * 0.52, self.BOX_MAX)
+        p10 = self._whisker(salary, "p10", "p25")
+        p90 = self._whisker(salary, "p90", "p75")
+        q1, q3 = float(salary["p25"]), float(salary["p75"])
+        median = float(salary["median"])
+
+        # Moustaches d'abord : la boite les recouvre, ce qui evite un trait
+        # qui depasserait a l'interieur.
+        self.canvas.create_line(centre, to_y(p10), centre, to_y(p90),
+                                fill=theme.LINE_STRONG)
+        for valeur in (p10, p90):
+            self.canvas.create_line(centre - largeur / 2, to_y(valeur),
+                                    centre + largeur / 2, to_y(valeur),
+                                    fill=theme.LINE_STRONG)
+        poignee = self.canvas.create_rectangle(
+            centre - largeur / 2, to_y(q3), centre + largeur / 2, to_y(q1),
+            fill=theme.ACCENT_SOFT, outline=theme.ACCENT)
+        # La mediane est le chiffre que l'on cite : elle est le seul trait
+        # dense de la boite.
+        self.canvas.create_line(centre - largeur / 2 - 2, to_y(median),
+                                centre + largeur / 2 + 2, to_y(median),
+                                fill=theme.INK, width=2)
+        self._items[poignee] = (row, None)
+
+        police = tkfont.Font(root=self, font=axis_font())
+        hauteur = police.metrics("linespace")
+        # L'effectif : une boite tracee sur douze salaries a la meme allure
+        # qu'une boite tracee sur quatre cents.
+        self.canvas.create_text(centre, base + 4, anchor="n", fill=theme.FAINT,
+                                font=axis_font(),
+                                text=str(row.get("headcount", 0)))
+        intitule = str(row.get("segment", ""))
+        haut = base + 4 + hauteur + 4
+        if not angle:
+            self.canvas.create_text(
+                centre, haut, anchor="n", fill=theme.INK_SOFT,
+                font=axis_font(),
+                text=_shorten(self, intitule, col_w - 8))
+            return
+        # Incline, le texte part du haut de la bande et descend vers la
+        # gauche : l'ancre « ne » le fait finir sous sa colonne, qui est le
+        # seul point ou l'oeil fait le lien entre un nom et une boite.
+        self.canvas.create_text(
+            centre, haut, anchor="ne", angle=angle, fill=theme.INK_SOFT,
+            font=axis_font(),
+            text=_shorten(self, intitule, self.LABEL_BAND_MAX))
+
+    def _draw_footer(self, width: float) -> None:
+        """La cle de lecture, hors de la zone qui defile.
+
+        Une boite a moustaches ne se devine pas, et « P10, Q1, mediane, Q3,
+        P90 » en pied de graphique n'est qu'une liste de sigles. Le schema
+        montre a quoi chaque trait correspond.
+        """
+        wide, bas, milieu = 150, 30, 22
+        epaisseur = 11
+        q1, q3 = 12 + wide * 0.25, 12 + wide * 0.75
+        mediane = 12 + wide * 0.5
+        self.footer.create_line(12, milieu, 12 + wide, milieu,
+                                fill=theme.LINE_STRONG)
+        for bord in (12, 12 + wide):
+            self.footer.create_line(bord, milieu - epaisseur / 2, bord,
+                                    milieu + epaisseur / 2,
+                                    fill=theme.LINE_STRONG)
+        self.footer.create_rectangle(q1, milieu - epaisseur / 2, q3,
+                                     milieu + epaisseur / 2,
+                                     fill=theme.ACCENT_SOFT,
+                                     outline=theme.ACCENT)
+        self.footer.create_line(mediane, milieu - epaisseur / 2 - 2, mediane,
+                                milieu + epaisseur / 2 + 2, fill=theme.INK,
+                                width=2)
+        for position, texte in ((12, "P10"), (q1, "Q1"), (mediane, "Médiane"),
+                                (q3, "Q3"), (12 + wide, "P90")):
+            self.footer.create_text(position, bas + 8, fill=theme.MUTED,
+                                    font=axis_font(), text=texte)
+        place = width - wide - 40
+        if place < 190:
+            return
+        phrase = ("La boîte contient la moitié des salariés de la catégorie ; "
+                  "le trait, la médiane. Les moustaches vont du 10e au 90e "
+                  "centile.")
+        retenus = self._withheld()
+        if retenus:
+            phrase += (f" {retenus} catégorie(s) trop peu nombreuse(s) pour "
+                       "être tracée(s) — le rapport et le classeur les "
+                       "listent.")
+        if self.reference is not None:
+            phrase += " Le trait pointillé est la médiane d'ensemble."
+        self.footer.create_text(wide + 32, 8, anchor="nw", fill=theme.MUTED,
+                                font=axis_font(), width=place, text=phrase)
 
 
 class PyramidChart(tk.Frame):

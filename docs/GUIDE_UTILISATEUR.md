@@ -486,28 +486,55 @@ Chaque demi-boîte a son propre droit au tracé : un segment de cinquante
 personnes dont quatre femmes ne donne pas le droit de dessiner les
 percentiles de ces quatre-là — cette moitié-là n'est simplement pas tracée.
 
-### Les deux colonnes de droite
+### La colonne de droite
 
-En mode simple, chaque ligne porte deux chiffres à droite :
-
-- **Ouverture Q3/Q1**, écrite `× 1,20` : le quart le mieux payé du poste
-  commence à 1,2 fois là où le quart le moins bien payé s'arrête. C'est
-  l'ouverture de la grille sur ce poste, et elle ne se lit pas sur la
-  largeur de la boîte — une boîte haute dans l'échelle paraît large sans
-  l'être, parce que l'axe est en euros et non en proportions.
-- **Médiane** du poste, pour n'avoir pas à la relever sur l'axe.
-
-La couleur de l'ouverture suit deux seuils paramétrés dans
-`config/chart_parameters.json` : `spread_alert_threshold` (1,40 par défaut)
-et `spread_critical_threshold` (1,80). Sur une grille resserrée, aucune
-valeur ne s'allume — c'est le résultat, pas une panne.
+En mode simple, chaque ligne porte sa **médiane** à droite, pour n'avoir
+pas à la relever sur l'axe. En mode dédoublé, elle cède la place à
+l'**écart F/H** — c'est ce qu'on vient chercher en cochant la case, et
+comparer deux traits verticaux à l'œil ne le donne pas à un pour cent près.
 
 ### Trier, c'est poser une autre question
 
-**Trier par** propose, en mode simple, « Ouverture décroissante » : les
-grilles les plus ouvertes en tête. En mode dédoublé, cette entrée cède la
-place à « Écart F/H décroissant ». Un tri qu'aucune colonne ne montre se
-lirait comme un désordre, et chaque mode ne propose donc que les siens.
+**Trier par** propose l'effectif décroissant — devant quarante postes, la
+première question est « lesquels pèsent » — et la médiane décroissante.
+En mode dédoublé s'y ajoute « Écart F/H décroissant ». Un tri qu'aucune
+colonne ne montre se lirait comme un désordre, et chaque mode ne propose
+donc que les siens.
+
+## 5 quater bis. Boîtes à moustaches : comparer quelques catégories
+
+**Graphiques → Boîtes à moustaches** montre les mêmes chiffres dressés :
+la rémunération en ordonnée, les catégories côte à côte, une boîte par
+catégorie. C'est la lecture classique d'une distribution comparée, et elle
+dit d'un regard ce qui se superpose et ce qui ne se superpose pas — deux
+métiers dont les boîtes ne se touchent pas ne paient pas pareil, et aucun
+tableau de médianes ne le dit aussi vite.
+
+**En abscisse** choisit la catégorie : établissement, métier, statut,
+toute dimension déclarée au paramétrage. **Valeurs** restreint la
+sélection : quarante-huit métiers côte à côte obligent à faire défiler
+tout le graphique pour en comparer deux, et la question est rarement
+« tous » — c'est « ces quatre-là, côte à côte ». **Trier par** range les
+colonnes sans rien recalculer.
+
+L'ordonnée porte le nom du **champ d'analyse**, celui que
+`salary_parameters.analysis_field` désigne : réglé sur la rémunération
+totale, l'axe le dit. Sous chaque boîte, l'effectif sur lequel elle est
+tracée — une boîte dessinée sur douze salariés a la même allure qu'une
+boîte dessinée sur quatre cents. Le trait pointillé horizontal est la
+médiane d'ensemble.
+
+Les intitulés se redressent quand ils tiennent sous leur colonne, et
+s'inclinent sinon. Quand les catégories ne tiennent plus à l'écran, la
+zone défile plutôt que d'en écarter : en retirer reviendrait à cacher une
+partie de la réponse.
+
+**Pourquoi deux pages pour des boîtes à moustaches ?** Elles répondent à
+deux questions. *Dispersion*, couchée, classe quarante postes sur une page
+et porte leurs intitulés sans les incliner : on y cherche où se situe
+celui-ci dans l'ensemble. *Boîtes à moustaches*, dressée, compare quelques
+catégories entre elles. Les deux lisent les mêmes lignes, avec les mêmes
+seuils de confidentialité.
 
 ## 5 quinquies. Vérifier les calculs dans le classeur Excel
 

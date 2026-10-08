@@ -1932,3 +1932,180 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
 
     def _bulle_lignes(self):
         return self.chart._bulle(self._ligne(), "female").split("\n")
+
+
+@needs_display
+class TestVerticalBoxPlot(ChartCase):
+    """Les boîtes dressées : une colonne par catégorie.
+
+    L'autre presentation des memes chiffres. La remuneration en ordonnee,
+    les categories cote a cote : c'est la lecture classique d'une
+    distribution comparee, et elle dit d'un regard ce qui se superpose et
+    ce qui ne se superpose pas.
+    """
+
+    def rows(self, count=4, chartable=True, labels=None):
+        made = []
+        for index in range(count):
+            salary = {"median": 40000 + index * 2000,
+                      "p25": 36000 + index * 2000,
+                      "p75": 46000 + index * 2000,
+                      "p10": 32000 + index * 2000,
+                      "p90": 52000 + index * 2000, "count": 30}
+            made.append({
+                "segment": (labels[index] if labels
+                            else f"Catégorie {index}"),
+                "headcount": 30 + index, "masked": False,
+                "chartable": chartable, "salary": salary})
+        return made
+
+    def chart(self, rows=None, **kwargs):
+        from hr_analytics.ui.charts import VerticalBoxPlotChart
+
+        chart = self.build(VerticalBoxPlotChart)
+        chart.set_rows(rows if rows is not None else self.rows(), **kwargs)
+        self.root.update()
+        return chart
+
+    def rectangles(self, chart):
+        return self.items(chart.canvas, "rectangle")
+
+    def test_one_box_per_category(self):
+        chart = self.chart()
+        self.assertEqual(len(chart._items), 4)
+
+    def test_a_category_below_the_chart_threshold_is_not_drawn(self):
+        """Le drapeau vient du moteur, et son absence vaut refus : une
+        regle de confidentialite ne se decide pas dans un graphique."""
+        rows = self.rows()
+        del rows[1]["chartable"]
+        self.assertEqual(len(self.chart(rows)._items), 3)
+
+    def test_a_masked_category_is_never_drawn(self):
+        rows = self.rows()
+        rows[0]["masked"] = True
+        self.assertEqual(len(self.chart(rows)._items), 3)
+
+    def test_nothing_drawable_gives_a_sentence_and_no_box(self):
+        chart = self.chart(self.rows(chartable=False))
+        self.assertEqual(len(chart._items), 0)
+        self.assertIn("insuffisant", " ".join(self.texts(chart.canvas)))
+
+    def test_no_category_at_all_says_so(self):
+        chart = self.chart([])
+        self.assertIn("Aucun segment", " ".join(self.texts(chart.canvas)))
+
+    def test_the_value_axis_is_named_by_the_engine(self):
+        """Le paragraphe 7 interdit d'ecrire le nom d'un champ dans le
+        code : l'axe porte ce que la configuration a designe comme champ
+        d'analyse, et le moteur le transmet."""
+        chart = self.chart(value_label="Salaire de base")
+        self.assertIn("Salaire de base", self.texts(chart.axis))
+
+    def test_the_axis_shows_the_scale(self):
+        chart = self.chart()
+        montants = [texte for texte in self.texts(chart.axis) if "EUR" in texte]
+        self.assertGreaterEqual(len(montants), 2)
+
+    def test_the_headcount_is_written_under_each_box(self):
+        """Une boite tracee sur douze salaries a la meme allure qu'une
+        boite tracee sur quatre cents."""
+        chart = self.chart()
+        textes = self.texts(chart.canvas)
+        for effectif in ("30", "31", "32", "33"):
+            self.assertIn(effectif, textes)
+
+    def test_each_category_is_named(self):
+        chart = self.chart()
+        textes = self.texts(chart.canvas)
+        for index in range(4):
+            self.assertIn(f"Catégorie {index}", textes)
+
+    def test_the_columns_fill_the_width(self):
+        """Plafonner la colonne laissait quatre boites serrees a gauche
+        devant la moitie d'un ecran vide."""
+        chart = self.chart()
+        centres = sorted((chart.canvas.coords(item)[0]
+                          + chart.canvas.coords(item)[2]) / 2
+                         for item in chart._items)
+        largeur = chart.canvas.winfo_width()
+        self.assertGreater(centres[-1], largeur * 0.6)
+
+    def test_many_categories_make_the_zone_scroll(self):
+        """Ecarter des categories faute de place reviendrait a cacher une
+        partie de la reponse : la zone defile."""
+        chart = self.chart(self.rows(count=40))
+        region = [float(value)
+                  for value in chart.canvas.cget("scrollregion").split()]
+        self.assertGreater(region[2], chart.canvas.winfo_width())
+        self.assertEqual(len(chart._items), 40)
+
+    def test_short_labels_stay_upright(self):
+        chart = self.chart(self.rows(labels=["Nord", "Sud", "Est", "Ouest"]))
+        angles = {chart.canvas.itemcget(item, "angle")
+                  for item in self.items(chart.canvas, "text")
+                  if chart.canvas.itemcget(item, "text") == "Nord"}
+        self.assertEqual(angles, {"0.0"})
+
+    def test_labels_that_do_not_fit_are_tilted(self):
+        """Dresses a la verticale, on lit un nom a la fois en tournant la
+        tete ; inclines, la serie se parcourt."""
+        chart = self.chart(self.rows(count=30))
+        angles = {chart.canvas.itemcget(item, "angle")
+                  for item in self.items(chart.canvas, "text")
+                  if chart.canvas.itemcget(item, "text").startswith("Catégorie")}
+        self.assertEqual(angles, {"45.0"})
+
+    def test_the_reference_line_is_drawn_when_given(self):
+        """La mediane d'ensemble, en pointilles : un repere dessine se lit
+        mieux qu'un montant a comparer de tete avec douze boites."""
+        chart = self.chart()
+        self.assertEqual(self.dashed(chart), 0)
+        chart.set_rows(self.rows(), reference=45000)
+        self.root.update()
+        self.assertEqual(self.dashed(chart), 1)
+
+    def dashed(self, chart):
+        return sum(1 for item in self.items(chart.canvas, "line")
+                   if chart.canvas.itemcget(item, "dash"))
+
+    def test_the_order_can_be_changed_without_losing_a_category(self):
+        chart = self.chart()
+        for key in ("median", "headcount"):
+            chart.set_order(key)
+            self.root.update()
+            self.assertEqual(len(chart._items), 4)
+
+    def test_the_withheld_categories_are_announced(self):
+        rows = self.rows(count=5)
+        del rows[4]["chartable"]
+        chart = self.chart(rows)
+        self.assertIn("1 catégorie(s) trop peu nombreuse(s)",
+                      " ".join(self.texts(chart.footer)))
+
+    def test_hovering_a_box_gives_its_figures(self):
+        from hr_analytics.ui.charts import VerticalBoxPlotChart
+
+        chart = self.chart()
+        item = next(iter(chart._items))
+        x1, y1, x2, y2 = chart.canvas.coords(item)
+        chart._on_motion(Motion(int((x1 + x2) / 2), int((y1 + y2) / 2)))
+        self.root.update()
+        self.assertIsNotNone(chart.tooltip.window)
+        self.assertIn("Médiane", chart.tooltip.label.cget("text"))
+
+    def test_it_reads_the_same_rows_as_the_lying_boxes(self):
+        """Un chiffre affiche a deux endroits doit venir du meme calcul :
+        les deux presentations partagent leurs regles, et non une copie."""
+        from hr_analytics.ui.charts import BoxPlotChart, VerticalBoxPlotChart
+
+        rows = self.rows(count=6)
+        del rows[2]["chartable"]
+        rows[4]["masked"] = True
+        couchees = self.build(BoxPlotChart)
+        couchees.set_rows(rows)
+        dressees = self.build(VerticalBoxPlotChart)
+        dressees.set_rows(rows)
+        self.root.update()
+        self.assertEqual([row["segment"] for row in couchees._drawable()],
+                         [row["segment"] for row in dressees._drawable()])

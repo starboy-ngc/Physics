@@ -187,6 +187,31 @@ est calculée par `metrics`, dans le résultat d'analyse : un écran qui
 parcourrait lui-même la population finirait par compter autrement que le
 moteur, et deux chiffres du même nom se contrediraient.
 
+### Les deux boîtes à moustaches
+
+Elles partagent `_Boxes`, qui porte ce dont elles répondent toutes deux :
+le choix des lignes traçables, le tri, l'étendue commune et le contenu de
+la bulle. `BoxPlotChart` les couche — une ligne par segment, l'intitulé à
+gauche sans inclinaison, quarante postes sur une page —, et
+`VerticalBoxPlotChart` les dresse — la rémunération en ordonnée, les
+catégories côte à côte. Deux copies des règles de confidentialité auraient
+fini par diverger, et c'est la confidentialité qui en aurait fait les
+frais : un segment sous le seuil graphique ne se trace sur aucune des deux.
+
+La version dressée **ne plafonne pas la largeur de ses colonnes** : elles
+se partagent la place offerte, et ne se posent sur leur plancher que
+lorsqu'elles ne tiennent plus — la zone défile alors, plutôt que d'écarter
+des catégories. La boîte, elle, est plafonnée : une boîte large comme un
+quart d'écran n'est plus une boîte à moustaches. Les intitulés se mesurent
+avant de choisir leur inclinaison : droits tant qu'ils tiennent sous leur
+colonne, inclinés à 45° sinon — dressés à la verticale, on lit un nom à la
+fois en tournant la tête.
+
+L'ordonnée porte le **champ d'analyse**, nommé par le moteur
+(`value_label` dans le bloc de segments) et non par le graphique : écrit
+dans la fenêtre, le libellé aurait annoncé « Salaire de base » sur un axe
+réglé sur autre chose (§7).
+
 ### Les axes du nuage
 
 Le cadrage garde une marge autour des points extrêmes, **mais ne franchit

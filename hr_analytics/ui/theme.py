@@ -588,13 +588,19 @@ def attach_scrollbar(widget: tk.Misc, bar: ttk.Scrollbar, axis: str = "y",
     widget.configure(**{f"{axis}scrollcommand": scrolled})
 
 
-def bind_wheel(canvas: tk.Canvas, root: tk.Misc) -> None:
+def bind_wheel(canvas: tk.Canvas, root: tk.Misc, axis: str = "y") -> None:
     """Fait defiler `canvas` a la molette quand le curseur le survole.
 
     La liaison est globale — sans quoi elle ne repondrait que si le canevas
     lui-meme a le focus, jamais quand le curseur est sur un champ qu'il
     contient — et le survol est verifie a chaque evenement.
+
+    `axis` vaut « y » par defaut. Les boites dressees s'etendent en largeur :
+    la molette y sert l'autre sens, et vingt categories ne s'atteignent pas
+    a l'ascenseur seulement.
     """
+    if axis not in ("x", "y"):
+        raise ValueError("bind_wheel n'accepte que \"x\" ou \"y\"")
 
     def sous_le_curseur(event):
         """Widget survole, ou None si Tk n'en designe pas un a nous.
@@ -626,11 +632,13 @@ def bind_wheel(canvas: tk.Canvas, root: tk.Misc) -> None:
             widget = getattr(widget, "master", None)
         else:
             return
-        first, last = canvas.yview()
+        voir = canvas.xview if axis == "x" else canvas.yview
+        first, last = voir()
         if first <= 0.0 and last >= 1.0:
             return
         step = -1 if getattr(event, "delta", 0) > 0 or event.num == 4 else 1
-        canvas.yview_scroll(step, "units")
+        (canvas.xview_scroll if axis == "x"
+         else canvas.yview_scroll)(step, "units")
 
     for sequence in ("<MouseWheel>", "<Button-4>", "<Button-5>"):
         canvas.bind_all(sequence, scroll, add="+")

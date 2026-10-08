@@ -627,6 +627,11 @@ def calculate_segment_metrics(
     return {
         "field": field_name,
         "label": dimension_label(config, field_name),
+        # Le nom de ce qui est mesure, et non celui de la colonne du
+        # fichier : c'est le champ que la configuration designe comme champ
+        # d'analyse. Un graphique qui nommerait son axe « Salaire de base »
+        # en dur mentirait des que ce champ est regle sur un autre (§7).
+        "value_label": field_label(config, salary_field or analysis_field(config)),
         "rows": rows,
         "reference_median": reference_median,
         "currency": reference.get("currency", "EUR"),

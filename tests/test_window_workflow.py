@@ -1703,3 +1703,101 @@ class TestSettingsThatCouldNotBeReapplied(WindowCase):
             with self.assertRaises(RuntimeError):
                 self.app._settings_saved(self.directory, "reglages.json")
         self.assertIn("enregistrés", self.app.status.cget("text"))
+
+
+class TestTheVerticalBoxesTab(WindowCase):
+    """L'onglet des boîtes dressées : mêmes chiffres, autre lecture.
+
+    La page couchee classe quarante postes et porte leurs intitules sans
+    les incliner. Celle-ci repond a l'autre question — comment ces
+    quelques categories se comparent-elles — et c'est pour cela qu'elle a
+    sa propre page.
+    """
+
+    def analysed(self):
+        self.load()
+        self.analyse()
+        self.app.tabbar.select("graphique")
+        self.app.chartbar.select("colonnes")
+        self._settle()
+
+    def _settle(self):
+        """Laisse le canevas prendre sa taille, puis se tracer.
+
+        Le trace n'a lieu qu'une fois le redimensionnement retombe : lu
+        dans la foulee du changement d'onglet, le graphique est encore
+        vide, et c'est le test qui mesure trop tot, non l'outil qui ne
+        dessine pas.
+        """
+        limite = time.time() + 5
+        while time.time() < limite:
+            self.app.update()
+            if self.app.column_boxes._items:
+                break
+            time.sleep(0.02)
+
+    def test_the_tab_is_offered(self):
+        self.analysed()
+        self.assertIn("colonnes", self.app.chartbar.visible_keys())
+
+    def test_it_draws_one_box_per_category(self):
+        self.analysed()
+        self.assertTrue(self.app.column_boxes._items)
+
+    def test_the_abscissa_offers_the_same_dimensions_as_the_dispersion(self):
+        self.analysed()
+        self.assertEqual(list(self.app.col_choice.cget("values")),
+                         list(self.app.box_choice.cget("values")))
+
+    def test_both_pages_read_the_same_rows(self):
+        """Un chiffre affiche a deux endroits doit venir du meme calcul."""
+        self.analysed()
+        self.app.col_choice.current(self.app.box_choice.current())
+        self.app._change_col_dimension()
+        self.app.update()
+        self.assertEqual([row["segment"] for row in self.app.boxplot._drawable()],
+                         [row["segment"]
+                          for row in self.app.column_boxes._drawable()])
+
+    def test_the_value_axis_carries_the_configured_field(self):
+        """Le nom vient du parametrage, et non d'un libelle ecrit en dur
+        dans le graphique (§7)."""
+        from hr_analytics.core.segmentation import field_label
+        from hr_analytics.core.config import analysis_field
+
+        self.analysed()
+        attendu = field_label(self.app.configuration,
+                              analysis_field(self.app.configuration))
+        self.assertEqual(self.app.column_boxes.value_label, attendu)
+
+    def test_choosing_values_narrows_the_chart(self):
+        self.analysed()
+        toutes = len(self.app.column_boxes._drawable())
+        self.assertGreater(toutes, 1)
+        gardee = self.app.column_boxes._drawable()[0]["segment"]
+        self.app._apply_col_values([gardee])
+        self.app.update()
+        self.assertEqual([row["segment"]
+                          for row in self.app.column_boxes._drawable()],
+                         [gardee])
+        self.assertIn("1 sur", self.app.col_values_button.cget("text"))
+
+    def test_changing_the_abscissa_takes_every_value_back(self):
+        """Les postes retenus ne sont pas des etablissements : garder la
+        selection viderait le graphique sans que rien ne le dise."""
+        self.analysed()
+        self.app._apply_col_values([self.app.column_boxes._drawable()[0]["segment"]])
+        self.app.update()
+        self.app._change_col_dimension()
+        self.app.update()
+        self.assertIsNone(self.app.col_values)
+        self.assertIn("toutes", self.app.col_values_button.cget("text"))
+
+    def test_the_order_can_be_changed(self):
+        self.analysed()
+        combien = len(self.app.column_boxes._drawable())
+        self.app.col_order.current(1)
+        self.app._reorder_columns()
+        self.app.update()
+        self.assertEqual(self.app.column_boxes.order, "median")
+        self.assertEqual(len(self.app.column_boxes._drawable()), combien)
