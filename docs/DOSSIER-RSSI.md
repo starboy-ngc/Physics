@@ -1,6 +1,6 @@
 # HR Analytics : dossier pour le RSSI
 
-**Version 1.0.0 · commit `b62090b` · 9 octobre 2026**
+**Version 1.0.0 · commit `1b2a47b` · 9 octobre 2026**
 
 Ce document est destiné à une revue de sécurité. Il décrit ce que le logiciel
 est, ce qu'il fait, ce qu'il ne peut pas faire, et **comment le vérifier
@@ -20,7 +20,7 @@ contrôler sur le livrable lui-même.
 | **Réseau** | Aucun. La pile réseau est **absente** de l'interpréteur livré |
 | **Dépendances tierces** | Aucune. Bibliothèque standard Python uniquement |
 | **Données** | Restent sur le poste. Rien n'est transmis, mis en cache ailleurs, ni envoyé |
-| **Taille** | 24 023 lignes de Python, 40 fichiers, 51 suites de tests (26 113 lignes) |
+| **Taille** | 24 040 lignes de Python, 40 fichiers, 51 suites de tests (26 211 lignes) |
 | **Interpréteur** | CPython 3.12.7 (amd64), repris tel quel de python.org, puis allégé |
 | **Signature** | Le livrable fourni n'est **pas** signé (voir §9) |
 
@@ -676,8 +676,8 @@ modification du binaire, et les empreintes sont déjà fournies.
 
 | Contrôle | Résultat |
 |---|---|
-| Suite de tests, Python 3.12, interface comprise | **1 821 tests, 0 échec** (9 octobre 2026) |
-| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (710 ignorés : interface) |
+| Suite de tests, Python 3.12, interface comprise | **1 826 tests, 0 échec** (9 octobre 2026) |
+| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (711 ignorés : interface) |
 | Revue de code de la semaine du 2 au 9 octobre | **15 constats, 15 corrigés, chacun pinglé par un essai** (`AUDIT-2026-10-09.md`) |
 | Revue fonctionnelle de bout en bout | **21 fonctionnalités, 0 en échec** |
 | Stabilité d'affichage (onglets × tailles × parcours) | **129 épreuves, 0 incident** |
