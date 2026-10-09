@@ -465,10 +465,10 @@ sans redémarrer. L'association est écrite dans
 `config/population_mapping.json` et **vaut pour les fichiers suivants** :
 elle ne se refait pas à chaque import.
 
-En bas à gauche de la même fenêtre, **« Réglages d'usine… »** remet tous les
-réglages à leur valeur de livraison : colonnes associées, champs créés,
-filtres proposés, seuils de confidentialité, rangements à la main, export,
-apparence. La question posée dit ce qui sera perdu avant de le faire. Le
+En bas à gauche de la même fenêtre, **« Réinitialiser les paramètres… »**
+remet tous les réglages à leur valeur de livraison : colonnes associées,
+champs créés, filtres proposés, seuils de confidentialité, rangements à la
+main, export, apparence. La question posée dit ce qui sera perdu avant de le faire. Le
 fichier de données n'est pas touché : il est relu ensuite avec les réglages
 de livraison.
 
@@ -755,7 +755,8 @@ configuration (elle vit au-dessus des versions et survit aux mises à jour),
 les deux champs y restent déclarés et la liste des rôles continue de les
 proposer. Pour les retirer : supprimez les lignes `"period"` et
 `"variable_pay"` de `population_mapping.json`, ou passez par
-Paramètres → Réglages d'usine…, qui repart de la configuration livrée.
+Paramètres → Réinitialiser les paramètres…, qui repart de la configuration
+livrée.
 
 Ce qui change :
 

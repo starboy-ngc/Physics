@@ -919,7 +919,7 @@ son « Comparer par ». Les essais déclarent leurs notions dans
 (`write_default_configuration`) après une question qui dit ce qui sera
 perdu, puis la fenêtre principale relit le fichier avec ces réglages. Les
 fichiers livrés dans `config/` sont identiques à `DEFAULTS`, et un test le
-vérifie : « usine » n'a qu'un sens.
+vérifie : « réinitialiser » n'a qu'un sens.
 
 L'écart F/H de la boîte dédoublée s'explique au survol de sa colonne et de
 son en-tête, avec le texte du glossaire (`median_gap`) : l'écran et le

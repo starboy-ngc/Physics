@@ -338,7 +338,7 @@ class SettingsWindow(tk.Toplevel):
                    command=self.destroy).pack(side="right", padx=(0, 10))
         # A gauche, loin d'« Enregistrer » : on ne le presse pas par
         # erreur en voulant valider.
-        ttk.Button(actions, text="Réglages d'usine…",
+        ttk.Button(actions, text="Réinitialiser les paramètres…",
                    style="GhostGround.TButton",
                    command=self.restore_defaults).pack(side="left",
                                                        padx=(0, 14))
@@ -1729,7 +1729,8 @@ class SettingsWindow(tk.Toplevel):
             )
         return section
 
-    #: Ce que le retour aux reglages d'usine efface, dit avant de le faire.
+    #: Ce que « Réinitialiser les paramètres » efface, dit avant de le
+    #: faire.
     USINE = ("Tous les réglages reviennent à leur valeur de livraison : "
              "colonnes associées, champs créés, filtres proposés, seuils "
              "de confidentialité, rangements à la main, export, apparence."
@@ -1746,7 +1747,7 @@ class SettingsWindow(tk.Toplevel):
         les colonnes associees et les champs crees sont le travail le
         plus long de cette fenetre.
         """
-        if not messagebox.askyesno("Réglages d'usine", self.USINE,
+        if not messagebox.askyesno("Réinitialiser les paramètres", self.USINE,
                                    parent=self, icon="warning",
                                    default="no"):
             return
@@ -1756,7 +1757,7 @@ class SettingsWindow(tk.Toplevel):
             # Pas de detail technique : le chemin suffit a l'informaticien,
             # et le message ne doit rien porter d'autre (§6).
             messagebox.showwarning(
-                "Réglages d'usine",
+                "Réinitialiser les paramètres",
                 "Les réglages n'ont pas pu être réécrits dans "
                 f"« {self.config_dir} ». Vérifiez que le dossier est "
                 "accessible en écriture.", parent=self)

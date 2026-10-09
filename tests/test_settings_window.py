@@ -429,6 +429,23 @@ class TestSaving(SettingsCase):
             "privacy_parameters.min_headcount_publish"), 42)
         self.assertTrue(self.window.winfo_exists())
 
+    def test_the_button_says_what_it_does(self):
+        """« Réglages d'usine » parlait d'une usine ; le bouton dit
+        maintenant le geste : réinitialiser les paramètres."""
+        from tkinter import ttk
+
+        textes = []
+
+        def parcourir(widget):
+            for enfant in widget.winfo_children():
+                if isinstance(enfant, ttk.Button):
+                    textes.append(str(enfant.cget("text")))
+                parcourir(enfant)
+
+        parcourir(self.window)
+        self.assertIn("Réinitialiser les paramètres…", textes)
+        self.assertFalse(any("usine" in t.lower() for t in textes), textes)
+
     def test_the_question_says_what_is_lost(self):
         from hr_analytics.ui.settings import SettingsWindow
 
