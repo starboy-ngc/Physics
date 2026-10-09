@@ -23,11 +23,14 @@ from hr_analytics.core.normalize import Employee, Population
 
 def make(links, salary=40000):
     """Population minimale : (matricule, matricule du manager)."""
-    return Population([
-        Employee(row_number=index + 1, employee_id=key, manager=parent,
-                 job="Poste", base_salary=salary)
-        for index, (key, parent) in enumerate(links)
-    ])
+    gens = []
+    for index, (key, parent) in enumerate(links):
+        salarie = Employee(row_number=index + 1, employee_id=key,
+                           manager=parent, base_salary=salary)
+        # Le metier est une notion declaree, pas un champ du modele.
+        salarie.assign("job", "Poste")
+        gens.append(salarie)
+    return Population(gens)
 
 
 #: A encadre B et C ; B encadre D et E ; D encadre F.

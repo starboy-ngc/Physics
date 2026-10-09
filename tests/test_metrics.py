@@ -275,7 +275,7 @@ class TestSegmentationAndComparison(unittest.TestCase):
         filters = build_filters([
             {"field": "business_unit", "operator": "eq", "value": "France"},
             {"field": "groupe", "operator": "in", "value": ["G5", "G6"]},
-        ])
+        ], config=make_config())
         self.assertEqual(len(apply_filters(population, filters)), 1)
 
     def test_numeric_filter(self):
@@ -284,7 +284,7 @@ class TestSegmentationAndComparison(unittest.TestCase):
         population = build_population(rows, config)
         filters = build_filters([
             {"field": "base_salary", "operator": "gte", "value": 50000}
-        ])
+        ], config=make_config())
         self.assertEqual(len(apply_filters(population, filters)), 2)
 
     def test_filter_matching_is_case_insensitive(self):
@@ -292,7 +292,7 @@ class TestSegmentationAndComparison(unittest.TestCase):
         population = build_population([make_row(0, business_unit="France")], config)
         filters = build_filters([
             {"field": "business_unit", "operator": "eq", "value": "france"}
-        ])
+        ], config=make_config())
         self.assertEqual(len(apply_filters(population, filters)), 1)
 
     def test_split_by_dimension(self):
@@ -354,7 +354,7 @@ class TestUnknownFilterField(unittest.TestCase):
     def test_unknown_field_raises_readable_error(self):
         from hr_analytics.core.errors import ConfigError
         with self.assertRaises(ConfigError) as caught:
-            build_filters([{"field": "team", "operator": "eq", "value": "Alpha"}])
+            build_filters([{"field": "team", "operator": "eq", "value": "Alpha"}], config=make_config())
         message = caught.exception.message
         self.assertIn("team", message)
         self.assertIn("n'existe pas", message)
@@ -363,14 +363,14 @@ class TestUnknownFilterField(unittest.TestCase):
     def test_misspelled_field_is_caught(self):
         from hr_analytics.core.errors import ConfigError
         with self.assertRaises(ConfigError):
-            build_filters([{"field": "gade", "operator": "eq", "value": "G5"}])
+            build_filters([{"field": "gade", "operator": "eq", "value": "G5"}], config=make_config())
 
     def test_valid_fields_still_pass(self):
         filters = build_filters([
             {"field": "business_unit", "operator": "eq", "value": "France"},
             {"field": "base_salary", "operator": "gte", "value": 50000},
             {"field": "tenure_band", "operator": "eq", "value": "<2 ans"},
-        ])
+        ], config=make_config())
         self.assertEqual(len(filters), 3)
 
 

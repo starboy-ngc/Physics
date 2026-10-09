@@ -12,6 +12,7 @@ import re
 import tempfile
 import unittest
 
+from tests.support import make_config
 from tests.support import CONFIG_DIR
 from tests.support import HEADERS, REFERENCE_DATE, make_row
 from hr_analytics.cli import main as cli_main, parse_filter
@@ -63,7 +64,7 @@ class TestPipeline(unittest.TestCase):
         from hr_analytics.core.segmentation import build_filters
         result = self._run(filters=build_filters([
             {"field": "business_unit", "operator": "eq", "value": "France"}
-        ]))
+        ], config=make_config()))
         self.assertLess(len(result.filtered), len(result.population))
         self.assertGreater(len(result.filtered), 0)
 
@@ -500,7 +501,7 @@ class TestCommandLine(unittest.TestCase):
         code = cli_main([
             "analyse", self.source, "--sortie", output,
             "--date-reference", REFERENCE_DATE.isoformat(),
-            "--segment", "groupe",
+            "--segment", "groupe", "--config", CONFIG_DIR,
         ])
         self.assertEqual(code, 0)
         self.assertTrue(glob.glob(os.path.join(output, "restitution-*.html")))

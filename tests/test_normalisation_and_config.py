@@ -360,9 +360,12 @@ class TestAColumnCannotOverwriteTheModel(unittest.TestCase):
         from hr_analytics.core.normalize import Employee
 
         salarié = Employee(row_number=2)
+        salarié.assign("manager", "M1")
+        self.assertEqual(salarié.manager, "M1")
+        self.assertNotIn("manager", salarié.extra)
+        # Une notion declaree, elle, vit dans extra et se lit pareil.
         salarié.assign("site", "Lyon")
-        self.assertEqual(salarié.site, "Lyon")
-        self.assertNotIn("site", salarié.extra)
+        self.assertEqual(salarié.value("site"), "Lyon")
 
 
 class TestTheYoungestAgeBand(unittest.TestCase):

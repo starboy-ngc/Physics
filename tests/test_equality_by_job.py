@@ -45,7 +45,7 @@ def _population(taille=60, **kwargs):
     postes = kwargs.get("postes", ("Comptable", "Technicien"))
     for rang, salarie in enumerate(population.employees):
         salarie.gender = "F" if rang % 2 else "H"
-        salarie.job_title = postes[rang % len(postes)]
+        salarie.assign("job_title", postes[rang % len(postes)])
         salarie.fte = 1.0
         salarie.base_salary = 40000.0
     return population
@@ -287,7 +287,7 @@ class TestTheMostSignificantJobsComeFirst(unittest.TestCase):
         for rang, salarie in enumerate(population.employees):
             salarie.fte = 1.0
             if rang < 100:
-                salarie.job_title = "Technicien"
+                salarie.assign("job_title", "Technicien")
                 salarie.gender = "F" if rang % 2 else "H"
                 # Une dispersion reelle dans chaque sexe : sans elle, le
                 # test n'aurait pas a travailler.
@@ -295,7 +295,7 @@ class TestTheMostSignificantJobsComeFirst(unittest.TestCase):
                                        + (rang % 7) * 400)
             else:
                 # Un poste de vingt personnes, ecart enorme mais disperse.
-                salarie.job_title = "Chef de projet"
+                salarie.assign("job_title", "Chef de projet")
                 salarie.gender = "F" if rang % 2 else "H"
                 salarie.base_salary = (30000.0 + rang * 900 if rang % 2
                                        else 70000.0 - rang * 300)
@@ -339,10 +339,10 @@ class TestTheGroupIsBuiltByTheUser(unittest.TestCase):
         self.config = make_config()
         self.population = _population(120, postes=("Comptable",))
         for rang, salarie in enumerate(self.population.employees):
-            salarie.site = ("Île-de-France", "Nord")[rang % 4 < 2]
+            salarie.assign("site", ("Île-de-France", "Nord")[rang % 4 < 2])
             # Le Nord paie moins, les deux sexes pareil : aucun ecart F/H
             # nulle part, mais un ecart de site de vingt pour cent.
-            salarie.base_salary = (50000.0 if salarie.site == "Île-de-France"
+            salarie.base_salary = (50000.0 if salarie.value("site") == "Île-de-France"
                                    else 40000.0)
 
     def _groupes(self, axe):
@@ -371,7 +371,7 @@ class TestTheGroupIsBuiltByTheUser(unittest.TestCase):
 
     def test_three_dimensions_hold(self):
         for rang, salarie in enumerate(self.population.employees):
-            salarie.status = ("Cadre", "Non cadre")[rang % 2]
+            salarie.assign("status", ("Cadre", "Non cadre")[rang % 2])
         groupes = self._groupes(["job_title", "site", "status"])
         self.assertEqual(len(groupes), 4)
         for nom in groupes:
@@ -380,7 +380,7 @@ class TestTheGroupIsBuiltByTheUser(unittest.TestCase):
     def test_a_missing_value_leaves_the_crossed_group(self):
         """Un salarie a demi classe n'appartient a aucun groupe croise."""
         for salarie in self.population.employees[:10]:
-            salarie.site = ""
+            salarie.assign("site", "")
         groupes = self._groupes(["job_title", "site"])
         effectifs = sum(item["headcount"] for item in groupes.values())
         self.assertEqual(effectifs, 110)

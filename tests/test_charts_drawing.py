@@ -1922,6 +1922,26 @@ class TestTheBoxTooltipNamesItsHalf(ChartCase):
         # Replie, et non sur une seule ligne qui sortait de l'ecran.
         self.assertLessEqual(self.chart.tooltip.window.winfo_reqwidth(), 520)
 
+    def test_the_tooltip_is_measured_once_per_content(self):
+        """Trois cents evenements de souris par boite : forcer Tk a
+        redessiner pour relire une taille inchangee coutait autant."""
+        self.chart.set_split(True)
+        self.chart.set_rows([self._ligne()], "EUR")
+        self.root.update()
+        largeur = self.chart.canvas.winfo_width()
+        self.chart._on_motion(self._survoler(self.chart.canvas, largeur - 10, 40))
+        appels = []
+        fenetre = self.chart.tooltip.window
+        original = fenetre.update_idletasks
+        fenetre.update_idletasks = lambda: appels.append(1)
+        try:
+            for dx in range(5):
+                self.chart._on_motion(
+                    self._survoler(self.chart.canvas, largeur - 10 - dx, 40 + dx))
+        finally:
+            fenetre.update_idletasks = original
+        self.assertEqual(appels, [])
+
     def test_the_header_word_explains_itself_too(self):
         self.chart.set_split(True)
         self.chart.set_rows([self._ligne()], "EUR")

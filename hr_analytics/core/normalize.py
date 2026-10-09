@@ -19,6 +19,7 @@ from typing import Any, ClassVar, Dict, Iterable, List, Optional
 
 from .config import Configuration
 from .mapping import MappingResult
+from .errors import ConfigError
 
 #: Symboles monetaires, apostrophes de groupement et espaces, retires sans
 #: discussion. Tout le reste — une lettre en particulier — fait refuser la
@@ -65,20 +66,10 @@ class Employee:
     birth_date: Optional[_dt.date] = None
     hire_date: Optional[_dt.date] = None
     leave_date: Optional[_dt.date] = None
-    business_unit: str = ""
-    country: str = ""
-    site: str = ""
-    job: str = ""
-    job_family: str = ""
-    #: Classification conventionnelle : annexe, groupe, coefficient. Ce
-    #: sont les trois mots d'une convention collective francaise, et non
-    #: un « grade » d'entreprise qui ne se retrouve pas d'un fichier a
-    #: l'autre. Le coefficient est un nombre ; les deux autres non — un
-    #: groupe s'ecrit « B » ou « 3 bis » aussi souvent qu'un entier.
-    annexe: str = ""
-    groupe: str = ""
-    coefficient: Optional[float] = None
-    status: str = ""
+    #: Aucune notion d'organisation ici : BU, etablissement, metier, poste,
+    #: statut sont declares par l'utilisateur et vivent dans `extra`, comme
+    #: toute notion declaree. Le modele ne connait que ce avec quoi il
+    #: calcule.
     fte: Optional[float] = None
     base_salary: Optional[float] = None
     variable_pay: Optional[float] = None
@@ -122,6 +113,11 @@ class Employee:
     #: donnee de salarie, chaque instance en recevrait une copie vide, et
     #: le controle ne porterait plus sur rien.
     _NATIFS: ClassVar[frozenset] = frozenset()
+    #: Les champs internes du modele : un nom de colonne ne les atteint
+    #: jamais, meme ecrit a la main dans le fichier de parametres. Le
+    #: mapping le refuse d'ailleurs avant (voir `RESERVED_FIELD_NAMES`).
+    _INTERNES: ClassVar[frozenset] = frozenset(
+        {"row_number", "issues", "anonymous_id", "extra"})
 
     def assign(self, name: str, value: Any) -> None:
         """Ecrit un champ natif, ou le range dans `extra` sinon.
@@ -138,7 +134,7 @@ class Employee:
         ce qu'il recoit. Mais une colonne nommee « Value » n'est pas exotique
         dans un export anglophone, et un outil ne doit pas tomber dessus.
         """
-        if name in self._NATIFS:
+        if name in self._NATIFS and name not in self._INTERNES:
             setattr(self, name, value)
         else:
             self.extra[name] = value
@@ -435,8 +431,22 @@ def close_the_bottom(bands: List[Dict[str, Any]],
     c'est ici, et non dans le fichier, qu'une tranche manquante se
     complete.
     """
-    planchers = [float(band["min"]) for band in bands
-                 if isinstance(band, dict) and band.get("min") is not None]
+    planchers = []
+    for band in bands:
+        if not isinstance(band, dict):
+            continue
+        if band.get("min") is None:
+            # Une tranche sans minimum est deja ouverte en bas : rien a
+            # fermer, et en ajouter une doublerait « <20 ».
+            return list(bands)
+        try:
+            planchers.append(float(band["min"]))
+        except (TypeError, ValueError):
+            raise ConfigError(
+                f"La tranche « {band.get('label', '?')} » a un minimum "
+                f"illisible : {band.get('min')!r}. Écrivez un nombre.",
+                technical=f"band minimum not numeric: {band.get('min')!r}",
+            ) from None
     if not planchers or min(planchers) <= 0:
         return list(bands)
     bas = min(planchers)

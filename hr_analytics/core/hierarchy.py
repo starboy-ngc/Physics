@@ -167,10 +167,13 @@ class Tree:
 
 
 def team_rows(population: Population, tree: Tree,
-              keys: Optional[Sequence[str]] = None) -> List[Dict[str, Any]]:
+              keys: Optional[Sequence[str]] = None,
+              job_field: str = "") -> List[Dict[str, Any]]:
     """Une ligne par manager : effectifs direct et total, niveau.
 
-    Le tableau qui sert a choisir une equipe avant de l'analyser.
+    Le tableau qui sert a choisir une equipe avant de l'analyser. Le
+    poste est celui que la page des ecarts entend par « poste » : le champ
+    declare par l'utilisateur, l'outil n'en livre aucun.
     """
     rows: List[Dict[str, Any]] = []
     for key in (keys if keys is not None else tree.managers()):
@@ -180,7 +183,8 @@ def team_rows(population: Population, tree: Tree,
         rows.append({
             "manager": key,
             "identity": manager.identity,
-            "job": manager.job,
+            "job": (str(manager.value(job_field) or "") if job_field
+                    else ""),
             "depth": tree.depth(key),
             "direct": len(tree.children.get(key, [])),
             "total": len(tree.total(key)),

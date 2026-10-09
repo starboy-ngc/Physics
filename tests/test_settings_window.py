@@ -134,6 +134,44 @@ class TestTheAnalysisSection(SettingsCase):
         self.assertEqual(relu.get("chart_parameters.scatter_color_by"),
                          "gender")
 
+    def test_an_unsaved_choice_survives_a_dimension_toggle(self):
+        """Cocher une case dans « Colonnes du fichier » reposait les trois
+        listes sur le parametrage, et le choix pas encore enregistre
+        disparaissait."""
+        boites = self.window.analysis_boxes
+        champs = self.window._analysis_fields
+        boites["category_field"].current(champs["category_field"].index("groupe"))
+        self.window.rows["status"]["declared"].set(False)
+        self.window.update()
+        self.window.rows["status"]["declared"].set(True)
+        self.window.update()
+        self.assertEqual(boites["category_field"].get(), "Groupe")
+
+    def test_a_setting_outside_the_list_is_kept_and_round_trips(self):
+        """Un camembert regle au bloc-notes sur un champ que la liste
+        n'offre pas : enregistrer les seuils ne doit pas l'effacer."""
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        config = make_config({"chart_parameters.csp_field": "age_band"})
+        window = SettingsWindow(self.root, config, self.directory,
+                                Fonts(self.root), headers=HEADERS)
+        window.update()
+        self.assertEqual(window.analysis_boxes["csp_field"].get(),
+                         "Tranche d'âge")
+        window.save()
+        self.assertEqual(load_configuration(self.directory).get(
+            "chart_parameters.csp_field"), "age_band")
+
+    def test_a_label_equal_to_another_technical_name_resolves_to_its_field(self):
+        """Une colonne « gender » declaree en organisation recoit le nom
+        gender_2 et le libelle « gender » : la liste montre le libelle, et
+        c'est lui qui doit designer le champ."""
+        self.window._labels = {"gender_2": "gender", "gender": "Sexe"}
+        self.assertEqual(self.window._field_of("gender"), "gender_2")
+        self.assertEqual(self.window._field_of("Sexe"), "gender")
+
     def test_a_notion_declared_in_the_session_is_offered_at_once(self):
         self.window.add_dimension_row("direction", "Direction", True)
         self.window.update()
@@ -547,10 +585,15 @@ class TestCreatingAField(SettingsCase):
         « value » cohabiterait avec la methode du meme nom."""
         from hr_analytics.ui.settings import suggest_field_name
 
-        for entête in ("Value", "Assign", "Identity", "Issues", "Site"):
+        for entête in ("Value", "Assign", "Identity", "Issues", "Extra"):
             propose = suggest_field_name(entête, [])
             self.assertTrue(propose.endswith("_2"), f"{entête} -> {propose}")
         self.assertEqual(suggest_field_name("Direction", []), "direction")
+        # Les notions d'organisation ne sont plus des champs du modele :
+        # « Site » devient « site », et non « site_2 ».
+        for entête in ("Site", "Coefficient", "Statut", "Poste"):
+            self.assertFalse(suggest_field_name(entête, []).endswith("_2"),
+                             entête)
 
     def test_a_typed_name_is_never_silently_renamed(self):
         """Le corriger pour eviter une collision ferait passer un doublon

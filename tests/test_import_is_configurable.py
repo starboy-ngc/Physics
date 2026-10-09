@@ -247,12 +247,41 @@ class TestWhatTheSettingsSayWins(unittest.TestCase):
         lu = self.resolve(champs, ["Prime", "Salaire de base"])
         self.assertEqual(lu.field_to_column.get("variable_pay"), "Prime")
 
-    def test_a_field_name_is_still_accepted_on_its_own(self):
-        """Un fichier de parametres ecrit au bloc-notes peut n'avoir aucun
-        alias : le nom technique reste lu."""
-        champs = {"base_salary": ["Salaire de base"], "coefficient": []}
-        lu = self.resolve(champs, ["Coefficient", "Salaire de base"])
-        self.assertEqual(lu.field_to_column.get("coefficient"), "Coefficient")
+    def test_a_field_without_any_spelling_claims_nothing(self):
+        """Une liste vide veut dire « aucune colonne », et c'est ce que
+        l'ecran a demande en ignorant la colonne. Le nom technique ne vaut
+        pas orthographe : il reprenait la colonne « Manager » que l'on
+        venait d'ignorer."""
+        champs = {"base_salary": ["Salaire de base"], "coefficient": [],
+                  "manager": []}
+        lu = self.resolve(champs, ["Coefficient", "Manager",
+                                   "Salaire de base"])
+        self.assertIsNone(lu.field_to_column.get("coefficient"))
+        self.assertIsNone(lu.field_to_column.get("manager"))
+        self.assertEqual(lu.unknown_columns, ["Coefficient", "Manager"])
+
+    def test_a_technical_header_is_read_when_the_defaults_spell_it(self):
+        """Un fichier aux en-tetes techniques se lit avec les defauts
+        livres : chaque champ y porte son nom technique parmi ses
+        orthographes, ou une orthographe qui s'y ramene."""
+        from hr_analytics.core.config import DEFAULTS
+
+        champs = DEFAULTS["population_mapping"]["fields"]
+        lu = self.resolve(champs, list(champs))
+        self.assertEqual(sorted(lu.field_to_index), sorted(champs))
+        self.assertEqual(lu.unknown_columns, [])
+
+    def test_a_reserved_field_name_is_refused_with_its_name(self):
+        """« extra », « issues » : un champ de ce nom ecrirait dans la
+        mecanique du modele, et l'analyse tomberait plus loin sans rien
+        nommer."""
+        from hr_analytics.core.errors import ConfigError
+
+        for nom in ("extra", "issues", "anonymous_id", "row_number"):
+            with self.assertRaises(ConfigError) as caught:
+                self.resolve({nom: ["Colonne"], "base_salary": ["Salaire"]},
+                             ["Colonne", "Salaire"])
+            self.assertIn(nom, str(caught.exception))
 
     def test_an_unclaimed_column_is_still_reported(self):
         champs = {"base_salary": ["Salaire de base"]}

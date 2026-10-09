@@ -88,10 +88,15 @@ class _Scope:
         # ne porte que « Metier » ne doit pas afficher une page vide.
         from .segmentation import organisational_dimensions
 
+        # Le reglage d'abord, puis les notions declarees dans leur ordre :
+        # la premiere que l'equipe renseigne. C'est la regle de la page des
+        # ecarts (`pay_equity.category_field`), posee ici sur l'equipe et
+        # non sur la population entiere.
         regle = str(config.get("pay_equity_parameters.category_field", "")
                     or "")
-        declarees = organisational_dimensions(config)
-        self.job_field = regle or (declarees[0] if declarees else "")
+        self._job_candidates = [regle] + [
+            nom for nom in organisational_dimensions(config) if nom != regle]
+        self.job_field = ""
         gardes: Optional[Set[str]] = None if keep is None else set(keep)
 
         # Perimetre de l'equipe, avant filtres : exactement celui que le
@@ -124,9 +129,12 @@ class _Scope:
         for enfants in self.children.values():
             enfants.sort()
         connus = ([key] if key in tree.employees else []) + self.members
-        if not any(str(tree.employees[membre].value(self.job_field) or "").strip()
-                   for membre in connus):
-            self.job_field = "job"
+        for candidat in self._job_candidates:
+            if candidat and any(
+                    str(tree.employees[membre].value(candidat) or "").strip()
+                    for membre in connus):
+                self.job_field = candidat
+                break
         # Base de comparaison de la page, decidee une fois sur l'equipe
         # entiere : un calcul par case ferait cohabiter deux bases dans un
         # meme dessin, et deux medianes qui ne se comparent pas.

@@ -34,7 +34,7 @@ class TestNumericEqualityFilter(unittest.TestCase):
         )
 
     def _count(self, definition):
-        return len(apply_filters(self.population, build_filters([definition])))
+        return len(apply_filters(self.population, build_filters([definition], config=make_config())))
 
     def test_equality_on_numeric_field_as_text(self):
         self.assertEqual(

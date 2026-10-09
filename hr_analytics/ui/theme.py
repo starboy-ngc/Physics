@@ -851,15 +851,27 @@ class OrderPicker(tk.Toplevel):
         """
         if not rangement:
             return list(valeurs)
-        presentes = {_sans_accent(valeur): valeur for valeur in valeurs}
+        cle = self._cle(valeurs)
+        presentes = {cle(valeur): valeur for valeur in valeurs}
         rangees, vues = [], set()
         for valeur in rangement:
-            cle = _sans_accent(str(valeur))
-            if cle in presentes and cle not in vues:
-                rangees.append(presentes[cle])
-                vues.add(cle)
+            clef = cle(str(valeur))
+            if clef in presentes and clef not in vues:
+                rangees.append(presentes[clef])
+                vues.add(clef)
         return rangees + [valeur for valeur in valeurs
-                          if _sans_accent(valeur) not in vues]
+                          if cle(valeur) not in vues]
+
+    @staticmethod
+    def _cle(valeurs: Sequence[str]):
+        """La cle de rapprochement : sans accent ni casse, sauf si deux
+        valeurs presentes se confondraient alors. « M2 » et « m2 » sont
+        deux valeurs quand le fichier les distingue, et replier la casse
+        en ferait disparaitre une de la liste a ranger."""
+        pliees = {_sans_accent(valeur) for valeur in valeurs}
+        if len(pliees) < len(set(valeurs)):
+            return lambda valeur: str(valeur)
+        return _sans_accent
 
     def _peupler(self, selection=None) -> None:
         self._liste.delete(0, "end")
@@ -898,11 +910,12 @@ class OrderPicker(tk.Toplevel):
 
     def _reposer(self, suite: Sequence[str]) -> None:
         """Repart d'un ordre calcule, sans perdre ce qu'il ne nomme pas."""
-        connues = {_sans_accent(valeur) for valeur in suite}
+        cle = self._cle(self._valeurs)
+        connues = {cle(valeur) for valeur in suite}
         self._valeurs = [valeur for valeur in suite
                          if valeur in self._valeurs] + [
             valeur for valeur in self._valeurs
-            if _sans_accent(valeur) not in connues]
+            if cle(valeur) not in connues]
         self._peupler(0)
 
     def _retirer(self) -> None:

@@ -28,7 +28,8 @@ from ..core import palette
 from ..core.mapping import normalise_label
 from ..core.normalize import Employee
 from ..core.metrics import SEGMENT_ORDERS
-from ..core.segmentation import CORE_FIELDS, max_filter_values
+from ..core.segmentation import (CORE_FIELDS, dimension_label,
+                                 max_filter_values)
 from . import theme
 from .theme import (Card, CheckRow, Fonts, TabBar, attach_scrollbar,
                     bind_wheel)
@@ -638,13 +639,27 @@ class SettingsWindow(tk.Toplevel):
                     for nom in notions}
         for clef, section, vide, _intitule, _explication in self.ANALYSE:
             boite = self.analysis_boxes[clef]
+            # Le choix a l'ecran, enregistre ou non, a la premiere pose
+            # celui du parametrage. Reposer la liste sur le parametrage a
+            # chaque case cochee perdait un choix pas encore enregistre.
+            anciens = self._analysis_fields.get(clef)
+            if anciens and 0 <= boite.current() < len(anciens):
+                actuel = anciens[boite.current()]
+            else:
+                actuel = str(self.configuration.get(f"{section}.{clef}", "")
+                             or "")
             champs = [""] + notions
             if clef == "scatter_color_by" and "gender" in self.rows:
                 champs.append("gender")
                 libelles["gender"] = self.rows["gender"]["label"].get() or "Sexe"
+            if actuel and actuel not in champs:
+                # Un reglage ecrit au bloc-notes sur un champ que la liste
+                # n'offre pas : il se montre et se conserve, plutot que
+                # d'etre efface par un enregistrement qui ne le visait pas.
+                champs.append(actuel)
+                libelles[actuel] = dimension_label(self.configuration, actuel)
             self._analysis_fields[clef] = champs
             boite.configure(values=[vide] + [libelles[c] for c in champs[1:]])
-            actuel = str(self.configuration.get(f"{section}.{clef}", "") or "")
             boite.current(champs.index(actuel) if actuel in champs else 0)
 
     def _analysis_to_save(self) -> Dict[str, Dict[str, str]]:
@@ -968,8 +983,9 @@ class SettingsWindow(tk.Toplevel):
         if value in _COMMANDES:
             return value
         libelles = getattr(self, "_labels", {})
-        if value in libelles:
-            return value
+        # Le libelle d'abord : c'est ce que la liste montre. Un libelle qui
+        # se trouve etre le nom technique d'un autre champ (« gender »
+        # declare en organisation) designait l'autre champ.
         for name, libellé in libelles.items():
             if value == libellé:
                 return name

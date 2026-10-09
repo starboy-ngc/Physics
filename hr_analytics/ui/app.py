@@ -37,7 +37,8 @@ from ..core.errors import CompensationError, ConfigError
 from ..core.export import export_excel
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
-from ..core.pay_equity import (NO_CATEGORY_WARNING, category_breakdown,
+from ..core.pay_equity import (NO_CATEGORY_WARNING, calculate_pay_equity,
+                               category_breakdown, category_field,
                                category_members, people_rows,
                                population_breakdown)
 from ..core.normalize import fold_label as _fold_label
@@ -48,7 +49,8 @@ from ..core.reporting import (format_money, format_number, format_percent,
                               format_years,
                               write_report)
 from ..core.segmentation import (build_filters, dimension_fields,
-                                 dimension_label, max_filter_values)
+                                 dimension_label, max_filter_values,
+                                 segment_label)
 from ..core.slides import (build_deck, build_summary, write_slides_html,
                            write_slides_pdf)
 from . import logo as marque
@@ -1467,7 +1469,9 @@ class Application(tk.Tk):
                     [employee for employee in observed
                      if employee.period == period])
             tree = Tree(observed)
-            rows = team_rows(observed, tree)
+            rows = team_rows(observed, tree,
+                             job_field=category_field(observed,
+                                                      self.configuration))
             summary = tree.summary()
         if not rows:
             self.team_block.pack_forget()
@@ -1561,7 +1565,7 @@ class Application(tk.Tk):
         #: reglage qui l'explique est a l'autre bout de l'ecran.
         ecartees: List[tuple] = []
         for field in dimension_fields(self.configuration):
-            values = sorted({str(e.value(field) or "").strip()
+            values = sorted({segment_label(e.value(field))
                              for e in self.population} - {""})
             # Le seuil est un parametre, plus un nombre cache ici : une
             # colonne qui porte une valeur par salarie n'est pas un axe.
@@ -3189,7 +3193,7 @@ class Application(tk.Tk):
         """Les valeurs que le fichier porte pour une dimension, triees."""
         if not field or self.result is None:
             return []
-        return sorted({str(employee.value(field) or "")
+        return sorted({segment_label(employee.value(field))
                        for employee in self.result.filtered} - {""})
 
     def _fill_equity_dimensions(self) -> None:
@@ -3239,6 +3243,13 @@ class Application(tk.Tk):
             self._set_state(str(error))
             return
         self.configuration = load_configuration(self.config_dir)
+        # Les documents lisent le resultat d'analyse, pas l'ecran : le bloc
+        # des ecarts y est refait sur la nouvelle notion, sinon le classeur
+        # comparait encore sur l'ancienne pendant que la page disait le
+        # contraire.
+        self.result.config = self.configuration
+        self.result.payload["pay_equity"] = calculate_pay_equity(
+            self.result.filtered, self.configuration)
         self._set_state(f"Écarts F/H comparés par « {intitule} » : "
                         "enregistré. Les documents produits compareront "
                         "sur la même notion.")

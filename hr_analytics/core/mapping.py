@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List
 
 from .config import Configuration
-from .errors import MappingError
+from .errors import ConfigError, MappingError
 
 _PUNCT_RE = re.compile(r"[^a-z0-9]+")
 
@@ -66,13 +66,20 @@ def required_fields(config: Configuration) -> List[str]:
     return declarees
 
 
+#: Les noms que le modele garde pour lui : ses champs internes. Un champ
+#: de configuration qui les porterait ecrirait dans la mecanique du modele,
+#: et l'analyse tomberait plus loin sur une erreur qui ne nomme rien.
+RESERVED_FIELD_NAMES = frozenset({"row_number", "issues", "anonymous_id",
+                                  "extra"})
+
+
 def resolve_mapping(headers: List[str], config: Configuration) -> MappingResult:
     """Associe chaque en-tete du fichier a un champ normalise."""
     section = config.section("population_mapping")
     fields: Dict[str, List[str]] = section.get("fields", {})
     required: List[str] = required_fields(config)
 
-    # Trois rangs, et le premier arrive garde la colonne. Un seul
+    # Deux rangs, et le premier arrive garde la colonne. Un seul
     # dictionnaire les melangeait, et c'est l'ordre des champs dans le
     # fichier de parametres qui tranchait : le nom technique d'un champ
     # valait alias, si bien qu'une colonne « Coefficient » retournait au
@@ -81,16 +88,18 @@ def resolve_mapping(headers: List[str], config: Configuration) -> MappingResult:
     # l'enregistrait fidelement, et la lecture suivante l'ignorait : le
     # parametrage semblait ne pas s'enregistrer.
     #
-    # 1. L'alias principal — la colonne que l'ecran a attachee au champ.
+    # 1. L'alias principal, la colonne que l'ecran a attachee au champ.
     # 2. Les autres orthographes declarees, prevues pour d'autres fichiers.
-    # 3. Le nom technique d'un champ sans aucun alias, pour un fichier de
-    #    parametres ecrit au bloc-notes. Il ne s'ajoute pas a une liste
-    #    d'alias : avec les defauts livres, le nom technique de chaque
-    #    champ figure deja parmi ses propres orthographes, et l'y ajouter
-    #    ne servait qu'a reprendre une colonne que l'ecran venait de
-    #    donner a un autre champ — « Annexe » et « Coefficient »
-    #    retournaient ainsi a « annexe » et « coefficient » quoi qu'on
-    #    ait regle.
+    #
+    # Une colonne ne rejoint un champ que par une orthographe ecrite dans
+    # sa liste : jamais par son nom technique. Il y a eu un troisieme rang
+    # pour le champ sans aucune orthographe, et il defaisait ce que l'ecran
+    # venait de faire : ignorer la colonne « Manager » vidait la liste du
+    # champ « manager », et le nom technique la reprenait a la lecture
+    # suivante. Les defauts livres ecrivent donc le nom technique parmi
+    # les orthographes de chaque champ, la ou un fichier aux en-tetes
+    # techniques doit etre lu ; et une liste vide veut dire « aucune
+    # colonne », ce qui est ce que l'ecran a demande.
     alias_to_field: Dict[str, str] = {}
 
     def revendique(label: str, field_name: str) -> None:
@@ -98,15 +107,19 @@ def resolve_mapping(headers: List[str], config: Configuration) -> MappingResult:
         if key and key not in alias_to_field:
             alias_to_field[key] = field_name
 
+    for field_name in fields:
+        if field_name in RESERVED_FIELD_NAMES:
+            raise ConfigError(
+                f"Le nom de champ \"{field_name}\" est réservé par l'outil : "
+                "choisissez-en un autre dans population_mapping.json.",
+                technical=f"reserved field name in mapping: {field_name}",
+            )
     for field_name, aliases in fields.items():
         if aliases:
             revendique(aliases[0], field_name)
     for field_name, aliases in fields.items():
         for alias in aliases[1:]:
             revendique(alias, field_name)
-    for field_name, aliases in fields.items():
-        if not aliases:
-            revendique(field_name, field_name)
 
     result = MappingResult()
     seen_labels: Dict[str, int] = {}

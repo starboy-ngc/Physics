@@ -172,8 +172,6 @@ def zip_tree(tree: str, archive: str) -> str:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--sortie", default="dist")
-    parser.add_argument("--lignes", type=int, default=2000)
-    parser.add_argument("--graine", type=int, default=20260905)
     args = parser.parse_args(argv)
 
     os.makedirs(args.sortie, exist_ok=True)

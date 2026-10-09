@@ -541,8 +541,22 @@ Trois règles tiennent cet écran :
   disait non.
 - **Le libellé se montre, le nom technique s'enregistre.** La liste propose
   « Salaire de base » ; le fichier garde `base_salary`, qui s'écrit aussi en
-  ligne de commande. `_field_of` accepte les deux, car un fichier de
-  paramètres se corrige aussi à la main.
+  ligne de commande. `_field_of` accepte les deux, le libellé d'abord, car un
+  fichier de paramètres se corrige aussi à la main.
+- **Une colonne ne rejoint un champ que par une orthographe écrite dans sa
+  liste.** `resolve_mapping` a deux rangs : l'alias principal de chaque champ
+  (la colonne que l'écran lui a attachée), puis les autres orthographes. Le
+  nom technique ne vaut pas orthographe : un troisième rang le faisait valoir
+  pour un champ sans alias, et il reprenait la colonne « Manager » que l'on
+  venait d'ignorer. Une liste vide veut dire « aucune colonne ». Les défauts
+  livrés écrivent donc le nom technique parmi les orthographes là où un
+  fichier aux en-têtes techniques doit être lu.
+- **Le modèle ne connaît que ce avec quoi il calcule.** `Employee` n'a plus
+  de champ d'organisation : BU, établissement, métier, poste, statut vivent
+  dans `extra`, comme toute notion déclarée, et `value()` les lit pareil.
+  Les quatre noms internes du modèle (`row_number`, `issues`,
+  `anonymous_id`, `extra`) sont refusés au mapping avec un message qui les
+  nomme, et `assign` ne les écrit jamais.
 - **La fenêtre entière défile.** Empilé entre des sections de hauteur fixe,
   le bloc des colonnes tombait à deux pixels de haut sur un écran
   ordinaire : la fonction existait et restait introuvable. Un test mesure

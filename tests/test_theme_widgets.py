@@ -331,6 +331,19 @@ class TestOrderPicker(WidgetCase):
         # La fenetre meurt avec la racine, que « tearDown » detruit.
         return fenetre
 
+    def test_two_values_that_differ_only_by_case_both_stay(self):
+        """Quand le fichier distingue « M2 » et « m2 », replier la casse en
+        faisait disparaitre une de la liste a ranger."""
+        fenetre = self.picker(valeurs=["M2", "m2", "A"], rangement=["m2", "M2"])
+        self.assertEqual(fenetre._valeurs, ["m2", "M2", "A"])
+        fenetre.destroy()
+
+    def test_an_accented_arrangement_still_finds_its_value(self):
+        fenetre = self.picker(valeurs=["EDITION", "Reliure"],
+                              rangement=["Reliure", "Édition"])
+        self.assertEqual(fenetre._valeurs, ["Reliure", "EDITION"])
+        fenetre.destroy()
+
     def test_it_opens_on_the_values_as_given(self):
         self.assertEqual(self.picker()._valeurs, self.VALEURS)
 

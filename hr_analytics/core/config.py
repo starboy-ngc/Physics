@@ -68,7 +68,8 @@ DEFAULTS: Dict[str, Any] = {
                     "Taux activité", "FTE"],
             "base_salary": ["Salaire de base", "Base salary"],
             "variable_pay": ["Variable", "Variable pay"],
-            "total_compensation": ["Rémunération totale"],
+            "total_compensation": ["Rémunération totale",
+                                   "Total compensation"],
         },
         # Dimensions d'analyse : elles servent partout de la meme facon,
         # critere de selection, axe de segmentation, couleur du nuage.

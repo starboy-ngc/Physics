@@ -167,6 +167,8 @@ class Tooltip:
         #: pixel parcouru : le survol d'une boite envoie un evenement par
         #: pixel, et vingt etiquettes refaites a chaque fois se voient.
         self._cle = None
+        #: (cle, largeur, hauteur) de la derniere mesure de la fenetre.
+        self._mesure = None
         self._bulle: Optional[Dict[str, Any]] = None
 
     #: Largeur de renvoi a la ligne d'un texte libre. Au-dela, une bulle
@@ -198,9 +200,14 @@ class Tooltip:
         droite d'une boite proche du bord, elle sortait de l'ecran et
         c'est la colonne survolee — la derniere — qu'on perdait.
         """
-        self.window.update_idletasks()
-        largeur = self.window.winfo_reqwidth()
-        hauteur = self.window.winfo_reqheight()
+        # Mesuree une fois par contenu, et non a chaque pixel parcouru :
+        # forcer Tk a redessiner pour relire une taille qui n'a pas change
+        # coutait trois cents fois par boite traversee.
+        if self._mesure is None or self._mesure[0] != self._cle:
+            self.window.update_idletasks()
+            self._mesure = (self._cle, self.window.winfo_reqwidth(),
+                            self.window.winfo_reqheight())
+        _cle, largeur, hauteur = self._mesure
         ecran_l = self.window.winfo_screenwidth()
         ecran_h = self.window.winfo_screenheight()
         gauche = x + 16 if x + 16 + largeur <= ecran_l else max(0, x - 16 - largeur)

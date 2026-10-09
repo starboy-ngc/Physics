@@ -35,12 +35,15 @@ from tests.support import make_config
 
 def make(links, salaire=40000):
     """Population minimale : (matricule, matricule du manager)."""
-    return Population([
-        Employee(row_number=index + 1, employee_id=key, manager=parent,
-                 job="Poste", gender="F" if index % 2 else "H",
-                 tenure_years=5.0, base_salary=salaire + index * 1000)
-        for index, (key, parent) in enumerate(links)
-    ])
+    gens = []
+    for index, (key, parent) in enumerate(links):
+        salarie = Employee(row_number=index + 1, employee_id=key,
+                           manager=parent, gender="F" if index % 2 else "H",
+                           tenure_years=5.0, base_salary=salaire + index * 1000)
+        # Le metier est une notion declaree, pas un champ du modele.
+        salarie.assign("job", "Poste")
+        gens.append(salarie)
+    return Population(gens)
 
 
 #: D encadre deux chefs, C1 et C2, qui portent chacun quatre collaborateurs.
@@ -348,7 +351,6 @@ class TestTheViewByJob(OrgCase):
                   "A2": "Comptable", "A3": "Contrôleur", "A4": "Contrôleur"}
         for employee in self.population:
             employee.base_salary = montants[employee.employee_id]
-            employee.job_title = postes[employee.employee_id]
             employee.assign("job_title", postes[employee.employee_id])
         self.arbre = Tree(self.population)
 

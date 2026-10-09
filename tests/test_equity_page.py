@@ -327,6 +327,13 @@ class TestChoosingTheComparedNotion(EquityCase):
             load_configuration(self.app.config_dir).get(
                 "pay_equity_parameters.category_field"), "business_unit")
         self.assertIn("BU", self.app.status.cget("text"))
+        # Les documents lisent le resultat d'analyse : il suit.
+        self.assertEqual(
+            self.app.result.payload["pay_equity"]["category_field"],
+            "business_unit")
+        self.assertEqual(
+            self.app.result.config.get("pay_equity_parameters.category_field"),
+            "business_unit")
         self.choisir("Nord")
         self.assertEqual(self.app.equity_jobs, ["Nord"])
         segments = [str(ligne["segment"]) for ligne in self.app.equity_box.rows]

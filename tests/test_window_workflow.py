@@ -1837,6 +1837,27 @@ class TestTheVerticalBoxesTab(WindowCase):
             self.assertEqual(len(self.app.column_boxes._drawable()), combien)
 
 
+class TestNumericValuesReadWhole(WindowCase):
+    """Les listes a cocher ecrivaient « 230.0 » quand les tableaux, les
+    boites et les documents ecrivent « 230 »."""
+
+    def _charger(self):
+        self.load(self.source(
+            "coef.csv", rows=30, extra_headers=["Coefficient"],
+            extra=lambda index: [230 + 10 * (index % 3)]))
+
+    def test_the_filter_list_has_no_decimal_point(self):
+        self._charger()
+        self.assertEqual(self.app._filter_choices["coefficient"],
+                         ["230", "240", "250"])
+
+    def test_the_equity_values_have_none_either(self):
+        self._charger()
+        self.analyse()
+        self.assertEqual(self.app._equity_values("coefficient"),
+                         ["230", "240", "250"])
+
+
 class TestOnlyOneSecondaryWindow(WindowCase):
     """Une seule fenetre secondaire a la fois.
 
