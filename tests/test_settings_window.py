@@ -796,7 +796,7 @@ class TestTheFourSections(SettingsCase):
         affichée : les répartir ne doit en perdre aucun."""
         for nom in ("threshold_var", "warning_var", "chart_var",
                     "identities_var", "individual_var", "audit_var",
-                    "theme_var"):
+                    "export_axis_vars", "theme_var"):
             with self.subTest(reglage=nom):
                 self.assertTrue(hasattr(self.window, nom))
 
@@ -1667,3 +1667,115 @@ class TestTheRoleListFollowsTheDeliveredParameters(SettingsCase):
         self.assertEqual(self.window.assignments["Période"].get(), "Période")
         section = self.window.collect()
         self.assertEqual(section["fields"]["period"], ["Période"])
+
+
+class TestTheAxesTheDocumentsCarry(SettingsCase):
+    """Paramètres → Export : une case par notion déclarée. Décochée, la
+    notion reste un filtre et un axe à l'écran, mais ne part pas dans les
+    documents (`export_parameters.excluded_dimensions`).
+    """
+
+    def _relire(self):
+        with open(os.path.join(self.directory, "export_parameters.json"),
+                  encoding="utf-8") as handle:
+            return json.load(handle)
+
+    def test_one_box_per_declared_notion(self):
+        cases = list(self.window.export_axis_vars)
+        for nom in ("gender", "age_band", "tenure_band", "business_unit",
+                    "groupe"):
+            self.assertIn(nom, cases)
+        self.assertEqual(cases, self.window._declared_rows())
+
+    def test_every_box_is_ticked_at_the_factory(self):
+        self.assertTrue(all(var.get()
+                            for var in self.window.export_axis_vars.values()))
+
+    def test_unticking_keeps_the_axis_out_of_the_documents(self):
+        from hr_analytics.core.config import load_configuration
+        from hr_analytics.core.segmentation import exported_dimensions
+
+        self.window.export_axis_vars["groupe"].set(False)
+        self.window.save()
+        self.assertEqual(self._relire()["excluded_dimensions"], ["groupe"])
+        relu = load_configuration(self.directory)
+        self.assertNotIn("groupe",
+                         [d["field"] for d in exported_dimensions(relu)])
+        self.assertIn("groupe", [d["field"] for d in
+                                 __import__("hr_analytics.core.segmentation",
+                                            fromlist=["dimensions"])
+                                 .dimensions(relu)])
+
+    def test_the_other_export_settings_survive_the_save(self):
+        """La section est réécrite entière : les deux cases du dessus et
+        les seuils du fichier ne doivent pas en souffrir."""
+        self.window.export_axis_vars["groupe"].set(False)
+        self.window.save()
+        section = self._relire()
+        for clef in ("include_individual_data", "include_source_file",
+                     "source_max_rows", "control_max_rows"):
+            self.assertIn(clef, section)
+
+    def test_a_stored_exclusion_shows_unticked(self):
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        self.window.destroy()
+        données = self.configuration.as_dict()
+        données["export_parameters"]["excluded_dimensions"] = ["status"]
+        self.window = SettingsWindow(self.root, Configuration(données),
+                                     self.directory, Fonts(self.root),
+                                     headers=HEADERS)
+        self.root.update()
+        self.assertFalse(self.window.export_axis_vars["status"].get())
+        self.assertTrue(self.window.export_axis_vars["groupe"].get())
+
+    def test_a_notion_declared_in_the_session_is_offered_ticked(self):
+        from hr_analytics.ui.settings import ORGANISATION
+
+        self.assertNotIn("prime_de_panier", self.window.export_axis_vars)
+        self.choose("Prime de panier", ORGANISATION)
+        self.root.update()
+        nouveau = [nom for nom in self.window.export_axis_vars
+                   if nom not in ("gender", "age_band", "tenure_band")
+                   and nom.startswith("prime")]
+        self.assertEqual(len(nouveau), 1, list(self.window.export_axis_vars))
+        self.assertTrue(self.window.export_axis_vars[nouveau[0]].get())
+
+    def test_the_screen_choice_survives_a_refresh(self):
+        """Déclarer une notion repose les cases : celle qu'on vient de
+        décocher doit le rester."""
+        self.window.export_axis_vars["groupe"].set(False)
+        self.window.rows["status"]["declared"].set(False)
+        self.window.rows["status"]["declared"].set(True)
+        self.root.update()
+        self.assertFalse(self.window.export_axis_vars["groupe"].get())
+
+    def test_an_undeclared_notion_has_no_box_and_is_not_written(self):
+        self.window.rows["status"]["declared"].set(False)
+        self.root.update()
+        self.assertNotIn("status", self.window._declared_rows())
+        self.window.export_axis_vars["groupe"].set(False)
+        self.window.save()
+        self.assertEqual(self._relire()["excluded_dimensions"], ["groupe"])
+
+    def test_a_handwritten_exclusion_on_an_unlisted_field_survives(self):
+        """Un réglage écrit au bloc-notes sur un champ que l'écran ne
+        propose pas se conserve, plutôt que d'être effacé par un
+        enregistrement qui ne le visait pas."""
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        self.window.destroy()
+        données = self.configuration.as_dict()
+        données["export_parameters"]["excluded_dimensions"] = ["zone_x"]
+        self.window = SettingsWindow(self.root, Configuration(données),
+                                     self.directory, Fonts(self.root),
+                                     headers=HEADERS)
+        self.root.update()
+        self.window.export_axis_vars["groupe"].set(False)
+        self.window.save()
+        self.assertEqual(self._relire()["excluded_dimensions"],
+                         ["groupe", "zone_x"])

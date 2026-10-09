@@ -423,3 +423,64 @@ class TestWriterItself(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAnAxisCanBeKeptOutOfTheDocuments(WorkbookCase):
+    """Une notion déclarée sert de filtre et d'axe à l'écran ; elle n'a pas
+    pour autant sa place dans ce qui circule : une section à deux cents
+    valeurs, une notion qu'on analyse sans la publier.
+    `export_parameters.excluded_dimensions` la tient hors des documents,
+    et hors d'eux seulement.
+    """
+
+    HORS = {"export_parameters": {"excluded_dimensions": ["groupe"]}}
+
+    @staticmethod
+    def _en_tetes(cells):
+        return [value for reference, (_f, value) in cells.items()
+                if re.fullmatch(r"[A-Z]+1", reference)]
+
+    def test_its_sheet_is_not_written(self):
+        sheets = self.workbook(self.analyse(overrides=self.HORS))
+        self.assertNotIn("Seg Groupe", sheets)
+        self.assertIn("Seg BU", sheets)
+
+    def test_its_column_leaves_the_individual_data(self):
+        """Ses segments ne sont pas exportés, rien ne les contrôle, et la
+        notion ne doit pas sortir par là."""
+        sheets = self.workbook(self.analyse(overrides=self.HORS))
+        en_têtes = self._en_tetes(sheets["Données individuelles"])
+        self.assertNotIn("Groupe", en_têtes)
+        self.assertIn("BU", en_têtes)
+
+    def test_the_segment_control_does_not_name_it(self):
+        sheets = self.workbook(self.analyse(overrides=self.HORS))
+        dimensions = set(column_values(sheets["Contrôle segments"], "A"))
+        self.assertNotIn("Groupe", dimensions)
+        self.assertIn("BU", dimensions)
+
+    def test_the_analysis_itself_keeps_every_axis(self):
+        """Le témoin : le réglage ne touche que ce qui s'écrit. L'écran
+        continue de tout montrer."""
+        result = self.analyse(overrides=self.HORS)
+        self.assertIn("groupe", [s["field"] for s in result.payload["segments"]])
+
+    def test_without_the_setting_nothing_changes(self):
+        from hr_analytics.core.export import exported_payload
+
+        result = self.analyse()
+        self.assertIs(exported_payload(result.payload, result.config),
+                      result.payload)
+        self.assertIn("Seg Groupe", self.workbook(result))
+
+    def test_a_single_name_written_without_brackets_is_read(self):
+        """Un réglage écrit au bloc-notes comme « "groupe" » et non
+        « ["groupe"] » vaut quand même."""
+        from hr_analytics.core.segmentation import (excluded_dimensions,
+                                                    exported_dimensions)
+
+        config = make_config({"export_parameters.excluded_dimensions": "groupe"})
+        self.assertEqual(excluded_dimensions(config), ["groupe"])
+        self.assertNotIn("groupe", [d["field"] for d in exported_dimensions(config)])
+        self.assertIn("business_unit",
+                      [d["field"] for d in exported_dimensions(config)])

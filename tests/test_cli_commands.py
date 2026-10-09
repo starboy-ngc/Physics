@@ -342,3 +342,63 @@ class TestParserItself(CommandCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAnAxisKeptOutOfTheDocuments(CommandCase):
+    """`export_parameters.excluded_dimensions` vaut aussi en ligne de
+    commande : les quatre sorties reçoivent le même résultat filtré."""
+
+    def _config(self):
+        import json
+        import shutil
+
+        cfg = os.path.join(self.directory, "config")
+        shutil.copytree(CONFIG_DIR, cfg)
+        chemin = os.path.join(cfg, "export_parameters.json")
+        with open(chemin, encoding="utf-8") as handle:
+            données = json.load(handle)
+        données["excluded_dimensions"] = ["groupe"]
+        with open(chemin, "w", encoding="utf-8") as handle:
+            json.dump(données, handle, ensure_ascii=False)
+        return cfg
+
+    @staticmethod
+    def _onglets(path):
+        import re
+        import zipfile
+
+        with zipfile.ZipFile(path) as archive:
+            return re.findall(r'<sheet [^>]*name="([^"]+)"',
+                              archive.read("xl/workbook.xml").decode("utf-8"))
+
+    def test_the_workbook_and_the_report_leave_it_out(self):
+        out = os.path.join(self.directory, "sortie")
+        code, _, err = run(["--logs", self.logs, "analyse", self.source(),
+                            "--sortie", out, "--restitution", "excel",
+                            "--restitution", "rapport",
+                            "--config", self._config()])
+        self.assertEqual(code, 0, err)
+        classeur = glob.glob(os.path.join(out, "analyse-*.xlsx"))[0]
+        onglets = self._onglets(classeur)
+        self.assertNotIn("Seg Groupe", onglets)
+        self.assertIn("Seg BU", onglets)
+        rapport = glob.glob(os.path.join(out, "restitution-*.html"))[0]
+        with open(rapport, encoding="utf-8") as handle:
+            html = handle.read()
+        self.assertNotIn("G4", html)
+        self.assertIn("Iberia", html)
+
+    def test_the_manifest_still_describes_the_whole_analysis(self):
+        """Le manifeste dit ce qui a été calculé, pas ce qui a été
+        publié : c'est lui qui permet de refaire l'analyse."""
+        import json
+
+        out = os.path.join(self.directory, "sortie")
+        code, _, err = run(["--logs", self.logs, "analyse", self.source(),
+                            "--sortie", out, "--restitution", "excel",
+                            "--config", self._config()])
+        self.assertEqual(code, 0, err)
+        manifeste = glob.glob(os.path.join(out, "manifeste-*.json"))[0]
+        with open(manifeste, encoding="utf-8") as handle:
+            texte = handle.read()
+        self.assertIn("groupe", texte)

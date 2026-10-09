@@ -300,6 +300,25 @@ def _sex_label(employee, config: Configuration) -> str:
     return {FEMALE: "Femme", MALE: "Homme"}.get(found, "")
 
 
+def exported_payload(analysis: Dict[str, Any],
+                     config: Configuration) -> Dict[str, Any]:
+    """Le resultat d'analyse tel que les documents le recoivent.
+
+    Les segments des axes tenus hors des documents en sont retires, et
+    eux seuls : le perimetre, les effectifs, la remuneration, les ecarts
+    restent ce qu'ils sont. Le resultat d'origine n'est pas modifie,
+    l'ecran continue de tout montrer. Sans axe exclu, c'est le meme objet
+    qui revient : rien n'est copie pour rien.
+    """
+    excluded = set(segmentation.excluded_dimensions(config))
+    if not excluded:
+        return analysis
+    copie = dict(analysis)
+    copie["segments"] = [segment for segment in analysis.get("segments") or []
+                         if segment.get("field") not in excluded]
+    return copie
+
+
 def _rows_individual(
     population: Population, config: Configuration,
     derived_as_formulas: bool = True
@@ -316,9 +335,11 @@ def _rows_individual(
 
     Les colonnes derivees des dimensions declarees, et non d'une liste
     figee : une dimension ajoutee par configuration se retrouve donc dans
-    l'export au lieu d'en disparaitre en silence.
+    l'export au lieu d'en disparaitre en silence. Un axe tenu hors des
+    documents n'y a pas de colonne : ses segments ne sont pas exportes,
+    rien ne les controle, et la notion ne doit pas sortir par la.
     """
-    dimensions = segmentation.dimensions(config)
+    dimensions = segmentation.exported_dimensions(config)
     reference = population.reference_date
     headers = ([SOURCE_ROW, "Référence"]
                + [entry["label"] for entry in dimensions]
@@ -699,7 +720,7 @@ def _salary_column(analysis: Dict[str, Any], config: Configuration,
 def _dimension_column(config: Configuration, field_name: str,
                       ledger: fx.Ledger) -> Optional[str]:
     """Libelle de colonne d'une dimension, s'il figure dans le classeur."""
-    for entry in segmentation.dimensions(config):
+    for entry in segmentation.exported_dimensions(config):
         if entry["field"] == field_name and ledger.has(entry["label"]):
             return entry["label"]
     return None
@@ -1121,7 +1142,12 @@ def build_sheets(
     Ce dossier ne parait que si les donnees individuelles sont exportees :
     un controle se fait sur des valeurs, et les valeurs sont nominatives.
     C'est un choix explicite de parametrage, jamais un defaut.
+
+    Les axes tenus hors des documents sont retires ici meme : un classeur
+    produit sans passer par la fenetre ou la ligne de commande les
+    respecte aussi.
     """
+    analysis = exported_payload(analysis, config)
     sheets: List[Tuple[str, Sequence[Sequence[Any]]]] = [
         ("Synthèse", _rows_manifest(
             analysis.get("manifest", {}),

@@ -604,6 +604,20 @@ construit en 3 secondes.
 Deux réglages rendent le classeur purement agrégé :
 `export_parameters.include_individual_data` et `include_source_file`.
 
+Un troisième tient un axe hors des documents :
+`export_parameters.excluded_dimensions`, une liste de champs. L'analyse
+calcule tout et l'écran montre tout ; c'est au moment d'écrire que
+`export.exported_payload` rend le résultat sans les segments de ces axes,
+une fois pour les quatre sorties (fenêtre et ligne de commande), et
+`build_sheets` l'applique lui-même, de sorte qu'un classeur produit sans
+passer par là le respecte aussi. Les colonnes des données individuelles et
+le contrôle par segment lisent `segmentation.exported_dimensions` : un axe
+qui ne fait pas d'onglet n'a pas de colonne non plus, rien ne le contrôle et
+la notion ne doit pas sortir par là. Le manifeste, lui, décrit l'analyse
+telle qu'elle a été faite. La fenêtre des paramètres pose une case par
+notion déclarée, ce qui vient de l'être compris, et conserve un réglage
+écrit au bloc-notes sur un champ qu'elle ne propose pas.
+
 ## 9 bis. Restitutions paysage
 
 Trois sorties construites sur les memes donnees :

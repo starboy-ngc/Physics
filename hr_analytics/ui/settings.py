@@ -813,6 +813,83 @@ class SettingsWindow(tk.Toplevel):
         self.audit_var.trace_add("write", self._follow_audit)
         self.individual_var.trace_add("write", self._follow_individual)
 
+        # Les axes que les documents reprennent. Une notion declaree sert
+        # de filtre et d'axe a l'ecran ; elle n'a pas pour autant sa place
+        # dans ce qui circule : une section a deux cents valeurs, une
+        # notion qu'on analyse sans la publier. Une case par notion
+        # declaree, ce qui vient de l'etre compris.
+        tk.Label(band, text="Axes repris dans les documents",
+                 background=theme.GROUND, foreground=theme.INK,
+                 font=self.fonts.body).pack(anchor="w", pady=(14, 2))
+        tk.Label(band,
+                 text="Une notion décochée reste un filtre et un axe à "
+                      "l'écran, mais ne fait ni onglet de segments dans le "
+                      "classeur, ni section dans la restitution, ni planche "
+                      "dans les slides, ni colonne des données "
+                      "individuelles. Le périmètre des documents la cite si "
+                      "elle a servi à filtrer. La catégorie des écarts F/H, "
+                      "le camembert et la couleur du nuage suivent l'onglet "
+                      "Analyse.",
+                 background=theme.GROUND, foreground=theme.MUTED,
+                 font=self.fonts.small, wraplength=880,
+                 justify="left").pack(anchor="w", pady=(0, 6))
+        self._export_axes_area = tk.Frame(band, background=theme.GROUND)
+        self._export_axes_area.pack(fill="x", pady=(0, 8))
+        self.export_axis_vars: Dict[str, tk.BooleanVar] = {}
+        self._draw_export_axes()
+
+    def _declared_rows(self) -> List[str]:
+        """Les notions declarees, dans l'ordre de l'ecran, ce qui vient
+        d'etre declare et pas encore enregistre compris."""
+        return [nom for nom, etat in self.rows.items()
+                if bool(etat["declared"].get())]
+
+    def _draw_export_axes(self) -> None:
+        """Repose les cases des axes sur ce qui est declare maintenant.
+
+        Une case deja posee garde son etat : repartir du parametrage a
+        chaque notion declaree perdait un choix pas encore enregistre.
+        """
+        zone = getattr(self, "_export_axes_area", None)
+        if zone is None:
+            return
+        from ..core.segmentation import excluded_dimensions
+
+        exclus = set(excluded_dimensions(self.configuration))
+        for enfant in zone.winfo_children():
+            enfant.destroy()
+        noms = self._declared_rows()
+        if not noms:
+            tk.Label(zone, text="Aucune notion déclarée pour l'instant.",
+                     background=theme.GROUND, foreground=theme.FAINT,
+                     font=self.fonts.small).pack(anchor="w")
+            return
+        for nom in noms:
+            variable = self.export_axis_vars.get(nom)
+            if variable is None:
+                variable = tk.BooleanVar(value=nom not in exclus)
+                self.export_axis_vars[nom] = variable
+            CheckRow(zone, self.rows[nom]["label"].get() or nom, variable,
+                     self.fonts).pack(anchor="w", pady=1)
+
+    def _excluded_dimensions_to_save(self) -> List[str]:
+        """Les axes decoches, dans l'ordre de l'ecran.
+
+        Un reglage ecrit au bloc-notes sur un champ que l'ecran ne propose
+        pas se conserve, plutot que d'etre efface par un enregistrement qui
+        ne le visait pas.
+        """
+        from ..core.segmentation import excluded_dimensions
+
+        noms = self._declared_rows()
+        exclus = [nom for nom in noms
+                  if nom in self.export_axis_vars
+                  and not self.export_axis_vars[nom].get()]
+        for nom in excluded_dimensions(self.configuration):
+            if nom not in noms and nom not in exclus:
+                exclus.append(nom)
+        return exclus
+
     def _follow_audit(self, *_args) -> None:
         if self.audit_var.get():
             self.individual_var.set(True)
@@ -1129,7 +1206,7 @@ class SettingsWindow(tk.Toplevel):
             self._dimension_widget(field_name)
 
     def _refresh_panels(self) -> None:
-        """Repose les deux panneaux que l'etat des cases gouverne.
+        """Repose les panneaux que l'etat des cases gouverne.
 
         Cocher un champ le fait entrer dans l'ordre des filtres, et le
         decocher l'en sort : les deux listes se deduisent des memes cases,
@@ -1140,6 +1217,7 @@ class SettingsWindow(tk.Toplevel):
         if getattr(self, "_order_area", None) is not None:
             self._draw_order()
         self._refresh_analysis_choices()
+        self._draw_export_axes()
 
     def _sans_colonne(self) -> List[str]:
         """Les champs qui meritent une ligne dans « champs sans colonne ».
@@ -1755,6 +1833,7 @@ class SettingsWindow(tk.Toplevel):
         export = dict(self.configuration.section("export_parameters"))
         export["include_individual_data"] = bool(self.individual_var.get())
         export["include_source_file"] = bool(self.audit_var.get())
+        export["excluded_dimensions"] = self._excluded_dimensions_to_save()
         autres.append(("export_parameters", export))
         # Les colonnes sont ecrites : l'echec d'une autre section ne doit
         # pas emporter la fenetre en silence. Chacune est tentee, et ce qui

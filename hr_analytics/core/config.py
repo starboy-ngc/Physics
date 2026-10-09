@@ -348,6 +348,17 @@ DEFAULTS: Dict[str, Any] = {
         # Au-dela, le controle par segment n'est plus pose : le classeur
         # mettrait plusieurs minutes a s'ouvrir.
         "control_max_rows": 20000,
+        # Axes tenus hors des documents. Une notion declaree sert de filtre
+        # et d'axe a l'ecran ; elle n'a pas pour autant sa place dans ce qui
+        # circule : une section a deux cents valeurs, une notion qu'on
+        # analyse sans la publier. Nommee ici, elle ne fait ni onglet de
+        # segments, ni section de restitution, ni planche, ni colonne des
+        # donnees individuelles. Elle reste un filtre a l'ecran, et le
+        # perimetre des documents la cite si elle a servi a filtrer. La
+        # categorie des ecarts F/H, le camembert et la couleur du nuage
+        # suivent leur propre reglage. Vide : tout ce qui est declare part
+        # dans les documents. Se regle dans Parametres, Export.
+        "excluded_dimensions": [],
     },
 }
 

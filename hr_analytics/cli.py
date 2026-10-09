@@ -20,7 +20,7 @@ from typing import Any, Dict, List, Optional
 from .core.config import (default_config_dir, load_configuration,
                           write_default_configuration)
 from .core.errors import CompensationError, ConfigError
-from .core.export import export_excel
+from .core.export import export_excel, exported_payload
 from .core.logging_setup import configure_logging, log_event
 from .core.mapping import resolve_mapping
 from .core.pipeline import AnalysisRequest, load_population, run_analysis
@@ -129,6 +129,10 @@ def command_analyse(args: argparse.Namespace) -> int:
 
     produced: List[str] = []
     wanted = set(args.restitution or []) or None
+    # Les axes tenus hors des documents en sortent une fois pour toutes
+    # les sorties ; le manifeste, lui, decrit l'analyse telle qu'elle a
+    # ete faite.
+    payload = exported_payload(result.payload, result.config)
 
     def requested(name: str, setting: str) -> bool:
         """Une sortie est produite si elle est demandee, ou activee par defaut."""
@@ -138,28 +142,28 @@ def command_analyse(args: argparse.Namespace) -> int:
 
     if requested("rapport", "html_report_enabled"):
         produced.append(write_report(
-            result.payload, os.path.join(output_dir, f"restitution-{stamp}.html")
+            payload, os.path.join(output_dir, f"restitution-{stamp}.html")
         ))
     if requested("synthese", "summary_enabled"):
-        summary = build_summary(result.payload)
+        summary = build_summary(payload)
         produced.append(write_slides_html(
-            summary, result.payload, os.path.join(output_dir, f"synthese-{stamp}.html")
+            summary, payload, os.path.join(output_dir, f"synthese-{stamp}.html")
         ))
         produced.append(write_slides_pdf(
-            summary, result.payload, os.path.join(output_dir, f"synthese-{stamp}.pdf")
+            summary, payload, os.path.join(output_dir, f"synthese-{stamp}.pdf")
         ))
     if requested("slides", "slides_html_enabled"):
-        deck = build_deck(result.payload)
+        deck = build_deck(payload)
         produced.append(write_slides_html(
-            deck, result.payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.html")
+            deck, payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.html")
         ))
         if result.config.get("export_parameters.slides_pdf_enabled", True):
             produced.append(write_slides_pdf(
-                deck, result.payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.pdf")
+                deck, payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.pdf")
             ))
     if requested("excel", "excel_enabled"):
         produced.append(export_excel(
-            result.payload, result.filtered, result.config,
+            payload, result.filtered, result.config,
             os.path.join(output_dir, f"analyse-{stamp}.xlsx"),
             table=result.table, mapping=result.mapping,
         ))

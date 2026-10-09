@@ -206,6 +206,8 @@ class TestTheDormantModelFieldsAreNotDelivered(unittest.TestCase):
         graphes = DEFAULTS["chart_parameters"]
         self.assertIn(graphes["scatter_x"], declares)
         self.assertIn(graphes["scatter_y"], declares)
+        self.assertEqual(DEFAULTS["export_parameters"]["excluded_dimensions"],
+                         [])
 
     def test_a_dormant_field_declared_again_is_read_as_such(self):
         """Le moteur les connait toujours : une periode declaree dans le

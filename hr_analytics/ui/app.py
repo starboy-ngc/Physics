@@ -34,7 +34,7 @@ from ..core import metrics, org as org_view, palette
 from ..core.config import (Configuration, default_config_dir,
                            load_configuration, write_configuration)
 from ..core.errors import CompensationError, ConfigError
-from ..core.export import export_excel
+from ..core.export import export_excel, exported_payload
 from ..core.glossary import describe as define
 from ..core.logging_setup import log_event
 from ..core.pay_equity import (NO_CATEGORY_WARNING, calculate_pay_equity,
@@ -4273,7 +4273,9 @@ class Application(tk.Tk):
         if not directory:
             return
         stamp = _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
-        payload = self.result.payload
+        # Les axes tenus hors des documents en sortent ici, une fois pour
+        # les quatre sorties : l'ecran, lui, garde le resultat entier.
+        payload = exported_payload(self.result.payload, self.result.config)
         produced: List[str] = []
         try:
             if self.output_vars["rapport"].get():

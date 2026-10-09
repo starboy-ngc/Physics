@@ -249,6 +249,27 @@ def dimension_fields(config: Configuration) -> List[str]:
     return [entry["field"] for entry in dimensions(config)]
 
 
+def excluded_dimensions(config: Configuration) -> List[str]:
+    """Les axes que les documents produits ne portent pas.
+
+    `export_parameters.excluded_dimensions` : une notion qu'on filtre a
+    l'ecran sans vouloir la publier. Le reglage ne touche ni l'analyse ni
+    l'ecran, seulement ce qui s'ecrit.
+    """
+    declared = config.get("export_parameters.excluded_dimensions", []) or []
+    if isinstance(declared, str):
+        declared = [declared]
+    return [str(name).strip() for name in declared if str(name).strip()]
+
+
+def exported_dimensions(config: Configuration) -> List[Dict[str, Any]]:
+    """Les dimensions qui partent dans les documents : les declarees,
+    moins celles qu'on tient a l'ecart."""
+    excluded = set(excluded_dimensions(config))
+    return [entry for entry in dimensions(config)
+            if entry["field"] not in excluded]
+
+
 #: Les dimensions que le moteur calcule lui-meme, ou qui sont le sujet de
 #: la comparaison : elles ne font pas une categorie de « travail de meme
 #: valeur », ni une notion d'organisation. Comparer « a tranche d'age

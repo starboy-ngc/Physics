@@ -768,3 +768,52 @@ class TestPayTransparencyReachesTheDocuments(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAnAxisKeptOutOfTheDocuments(unittest.TestCase):
+    """La restitution et les slides reçoivent le résultat tel que
+    `exported_payload` le rend : sans les segments des axes tenus hors des
+    documents, et avec tout le reste."""
+
+    def setUp(self):
+        import json
+        import shutil
+
+        from tests.support import write_test_configuration
+
+        self.directory = tempfile.mkdtemp()
+        self.config_dir = os.path.join(self.directory, "config")
+        write_test_configuration(self.config_dir)
+        chemin = os.path.join(self.config_dir, "export_parameters.json")
+        with open(chemin, encoding="utf-8") as handle:
+            données = json.load(handle)
+        données["excluded_dimensions"] = ["groupe"]
+        with open(chemin, "w", encoding="utf-8") as handle:
+            json.dump(données, handle, ensure_ascii=False)
+        result = run_analysis(AnalysisRequest(
+            config_dir=self.config_dir, source_path=build_source(self.directory),
+            reference_date=REFERENCE_DATE))
+        from hr_analytics.core.export import exported_payload
+
+        self.entier = result.payload
+        self.payload = exported_payload(result.payload, result.config)
+
+    def test_the_deck_has_no_slide_for_it(self):
+        titres = [slide.title for slide in build_deck(self.payload)]
+        self.assertFalse(any("groupe" in t.lower() for t in titres), titres)
+        self.assertTrue(any("bu" in t.lower() for t in titres), titres)
+
+    def test_the_report_has_no_section_for_it(self):
+        from hr_analytics.core.reporting import write_report
+
+        chemin = write_report(self.payload,
+                              os.path.join(self.directory, "r.html"))
+        with open(chemin, encoding="utf-8") as handle:
+            html = handle.read()
+        self.assertNotIn("G5", html)
+        self.assertIn("DACH", html)
+
+    def test_the_whole_result_still_carries_it(self):
+        """Le témoin : sans le filtre, la planche existe."""
+        titres = [slide.title for slide in build_deck(self.entier)]
+        self.assertTrue(any("groupe" in t.lower() for t in titres), titres)

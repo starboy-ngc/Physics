@@ -665,6 +665,19 @@ Dans **Paramètres → Export**, deux cases :
 2. **Joindre le fichier importé et les onglets de contrôle** (elle suppose la
    première, et la coche automatiquement).
 
+Et, dessous, **Axes repris dans les documents** : une case par notion
+déclarée. Une notion sert de filtre et d'axe à l'écran ; elle n'a pas pour
+autant sa place dans ce qui circule : une section à deux cents valeurs, une
+notion qu'on analyse sans la publier. Décochée, elle reste un filtre et un
+axe à l'écran, mais ne fait ni onglet « Seg » dans le classeur, ni section
+dans la restitution, ni planche dans les slides, ni colonne des données
+individuelles. Le périmètre des documents la cite si elle a servi à filtrer,
+et le manifeste de la ligne de commande dit toujours ce qui a été calculé.
+La catégorie des écarts F/H, le camembert et la couleur du nuage suivent
+l'onglet Analyse, pas cette liste. Le réglage s'écrit dans
+`export_parameters.json`, sous `excluded_dimensions`, et vaut aussi en ligne
+de commande.
+
 Le classeur gagne alors cinq onglets, dans l'ordre de la chaîne :
 
 | Onglet | Ce qu'il contient |
