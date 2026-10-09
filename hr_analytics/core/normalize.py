@@ -124,7 +124,7 @@ class Employee:
 
         Le test portait sur `hasattr`, et non sur la liste des champs : un
         fichier dont une colonne s'appelle « Value » ou « Assign », declaree
-        comme nouveau champ a l'ecran, recevait le nom technique « value »
+        depuis l'ecran des colonnes, recevait le nom technique « value »
         ou « assign » et ecrasait la methode du meme nom. L'analyse tombait
         ensuite sur « 'str' object is not callable », sans que rien ne
         designe la colonne en cause. Les noms reserves — `identity`,

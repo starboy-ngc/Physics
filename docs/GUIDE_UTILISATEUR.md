@@ -55,7 +55,7 @@ d'office : celles avec lesquelles l'outil calcule, et elles seules :
 Matricule, Nom, Prénom, Sexe, Date de naissance, Date d'entrée, Date de
 sortie, Temps de travail, Salaire de base, Rémunération totale, Manager.
 Ce sont aussi les seuls rôles que propose l'écran « Associer les
-colonnes… », avec « Organisation », « Montant » et « Nouveau champ » : la
+colonnes… », avec « Organisation » et « Montant » : la
 liste suit le paramétrage, et un champ retiré de `population_mapping.json`
 n'y revient pas.
 

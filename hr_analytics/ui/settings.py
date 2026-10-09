@@ -18,7 +18,7 @@ from __future__ import annotations
 
 import os
 import tkinter as tk
-from tkinter import filedialog, messagebox, simpledialog, ttk
+from tkinter import filedialog, messagebox, ttk
 from typing import Any, Dict, List, Optional, Sequence
 
 from ..core.config import (Configuration, write_configuration,
@@ -36,9 +36,6 @@ from .theme import (Card, CheckRow, Fonts, TabBar, attach_scrollbar,
 #: Champ conserve mais jamais associe a une colonne.
 IGNORED = "(ignorée)"
 
-#: Entree de liste ouvrant la creation d'un champ absent du modele.
-NEW_FIELD = "+ nouveau champ…"
-
 #: Entree de liste qui fait d'une colonne un axe d'analyse et un filtre,
 #: sans rien demander : c'est le cas courant — direction, etablissement,
 #: revue du personnel, convention. Le nom technique se deduit de
@@ -53,8 +50,13 @@ ORGANISATION = "Organisation (axe et filtre)"
 MONTANT = "Montant (rémunération, prime…)"
 
 #: Les entrees qui ne designent pas un champ existant : elles commandent
-#: quelque chose au lieu de nommer.
-_COMMANDES = (IGNORED, NEW_FIELD, ORGANISATION, MONTANT)
+#: quelque chose au lieu de nommer. Il y en eut une quatrieme, « nouveau
+#: champ », qui demandait le nom technique dans une boite de dialogue :
+#: elle ne faisait rien de plus qu'« Organisation », a un nom pres que
+#: l'outil deduit aussi bien, et parlait de nom technique a qui n'en a
+#: pas besoin. Le nom interne se choisit au bloc-notes, dans
+#: population_mapping.json, par qui scripte l'outil.
+_COMMANDES = (IGNORED, ORGANISATION, MONTANT)
 
 #: Champs calcules a partir des dates : aucune colonne du fichier ne les
 #: porte, les proposer a l'association n'aurait pas de sens.
@@ -111,7 +113,7 @@ def candidate_dimensions(config: Configuration) -> List[str]:
 
 
 #: Noms que le modele porte deja : ses champs declares, et ses methodes.
-#: Un nouveau champ qui prendrait l'un d'eux cohabiterait avec lui.
+#: Un champ declare qui prendrait l'un d'eux cohabiterait avec lui.
 _RESERVES = (frozenset(nom for nom in dir(Employee) if not nom.startswith("_"))
              | Employee._NATIFS)
 
@@ -123,11 +125,10 @@ def normalise_field_name(label: str) -> str:
     (--filtre "direction=Nord"), ou un accent serait une source d'erreur de
     saisie plutot qu'un confort.
 
-    Separee de `suggest_field_name` : celle-ci evite les collisions, ce
-    qu'il ne faut surtout pas faire sur un nom que l'utilisateur vient de
-    taper. « base_salary » renomme en « base_salary_2 » passait a travers
-    le controle de doublon, qui comparait le nom corrige et non le nom
-    saisi.
+    Separee de `suggest_field_name`, qui evite les collisions : la forme
+    technique d'un intitule et le nom libre qu'on en tire sont deux
+    questions, et un fichier de parametres ecrit a la main pose la
+    premiere sans la seconde.
     """
     base = normalise_label(label).replace(" ", "_").strip("_") or "champ"
     return f"c_{base}" if base[0].isdigit() else base
@@ -988,7 +989,7 @@ class SettingsWindow(tk.Toplevel):
         self._labels = {}
         for name in candidate_fields(self.configuration):
             self._labels[name] = self._libelle_libre(name)
-        choices = ([IGNORED, ORGANISATION, MONTANT, NEW_FIELD]
+        choices = ([IGNORED, ORGANISATION, MONTANT]
                    + sorted(self._labels.values(), key=str.lower))
 
         for index, header_name in enumerate(self.headers):
@@ -1506,12 +1507,13 @@ class SettingsWindow(tk.Toplevel):
     def _chose(self, header: str, box: "ttk.Combobox") -> None:
         """Reagit au choix d'un role pour une colonne.
 
-        Trois cas. Un champ connu : la case de la ligne se met a l'etat de
-        ce champ, et il n'y a rien d'autre a faire. « Organisation » :
-        le champ est cree a partir de l'intitule, sans rien demander, et
-        propose aussitot comme filtre et comme axe — c'est le cas courant.
-        « Nouveau champ » : il faut un nom technique, et lui seul se
-        demande, parce qu'il s'ecrit aussi en ligne de commande.
+        Trois cas. « Organisation » : le champ est cree a partir de
+        l'intitule, sans rien demander, et propose aussitot comme filtre
+        et comme axe, c'est le cas courant. « Montant » : meme creation,
+        mais la colonne devient un nombre en monnaie et non un axe. Un
+        champ connu : la case de la ligne se met a l'etat de ce champ, et
+        il n'y a rien d'autre a faire. Le nom technique n'est jamais
+        demande : l'outil le deduit de l'intitule, sans collision.
         """
         variable = self.assignments[header]
         self._repaint(header)
@@ -1524,42 +1526,13 @@ class SettingsWindow(tk.Toplevel):
                           suggest_field_name(header, self._taken()),
                           montant=True)
             return
-        if variable.get() != NEW_FIELD:
-            # Un champ connu : il passe a cette colonne, et la case suit
-            # son etat.
-            champ = self._field_of(variable.get())
-            self._reprendre(header, champ)
-            case = self.dimension_vars.get(header)
-            if case is not None:
-                case.set(self._is_dimension(champ))
-            return
-        variable.set(IGNORED)
-        taken = self._taken()
-        proposed = simpledialog.askstring(
-            "Nouveau champ",
-            f"Nom technique du champ porté par la colonne « {header} ».\n"
-            "Sans accent ni espace : il s'écrit aussi en ligne de commande.",
-            initialvalue=suggest_field_name(header, taken), parent=self)
-        if not proposed:
-            return
-        # Le nom saisi est ramene a sa forme technique, et rien de plus :
-        # le corriger pour eviter une collision ferait passer un doublon
-        # pour un nom neuf.
-        name = normalise_field_name(proposed)
-        if name in taken:
-            messagebox.showwarning(
-                "Nouveau champ",
-                f"Le champ « {name} » existe déjà : choisissez-le dans la "
-                "liste plutôt que d'en créer un second.", parent=self)
-            return
-        if name in _RESERVES:
-            messagebox.showwarning(
-                "Nouveau champ",
-                f"« {name} » est un nom que l'outil emploie déjà pour autre "
-                "chose. Choisissez-en un autre : « " + name + "_2 » convient.",
-                parent=self)
-            return
-        self._declare(header, box, name)
+        # Un champ connu : il passe a cette colonne, et la case suit son
+        # etat.
+        champ = self._field_of(variable.get())
+        self._reprendre(header, champ)
+        case = self.dimension_vars.get(header)
+        if case is not None:
+            case.set(self._is_dimension(champ))
 
     def _reprendre(self, header: str, champ: str) -> None:
         """Donne un champ a cette colonne, en le retirant a l'autre.
@@ -1602,8 +1575,7 @@ class SettingsWindow(tk.Toplevel):
         étiquette = self._labels_widgets.get(header)
         if étiquette is None:
             return
-        rattachée = self.assignments[header].get() not in (IGNORED, NEW_FIELD,
-                                                            MONTANT)
+        rattachée = self.assignments[header].get() not in (IGNORED, MONTANT)
         étiquette.configure(foreground=theme.INK_SOFT if rattachée
                             else theme.WARN)
 

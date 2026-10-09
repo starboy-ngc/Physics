@@ -518,88 +518,75 @@ class TestSaving(SettingsCase):
 class TestCreatingAField(SettingsCase):
     """Rattacher une colonne a un champ qui n'existe pas encore.
 
-    C'est ce qui permet d'analyser une notion propre a l'entreprise — une
-    prime maison, un dispositif local — sans toucher au code.
+    C'est ce qui permet d'analyser une notion propre a l'entreprise, une
+    prime maison, un dispositif local, sans toucher au code. Le role
+    « Organisation » cree le champ a partir de l'intitule, sans rien
+    demander : l'entree « nouveau champ », qui demandait un nom technique
+    dans une boite de dialogue, ne faisait rien de plus et a ete retiree.
     """
 
-    def _answer(self, text):
-        """Remplace la boite de saisie du systeme."""
-        from hr_analytics.ui import settings as module
-
-        saved = module.simpledialog.askstring
-        module.simpledialog.askstring = lambda *_a, **_k: text
-        self.addCleanup(setattr, module.simpledialog, "askstring", saved)
-
-    def _warnings(self):
-        from hr_analytics.ui import settings as module
-
-        caught = []
-        saved = module.messagebox.showwarning
-        module.messagebox.showwarning = lambda *args, **kwargs: caught.append(args)
-        self.addCleanup(setattr, module.messagebox, "showwarning", saved)
-        return caught
-
     def _create(self, header="Prime de panier"):
-        from hr_analytics.ui.settings import NEW_FIELD
+        from hr_analytics.ui.settings import ORGANISATION
 
         box = self.window._boxes[list(self.window.assignments).index(header)]
-        self.window.assignments[header].set(NEW_FIELD)
+        self.window.assignments[header].set(ORGANISATION)
         self.window._chose(header, box)
         self.window.update()
         return box
 
+    def test_the_list_offers_three_commands_and_no_dialog(self):
+        """Le temoin du retrait : ignoree, organisation, montant, puis les
+        champs du parametrage. Rien qui ouvre une boite de dialogue."""
+        from hr_analytics.ui.settings import IGNORED, MONTANT, ORGANISATION
+
+        offerts = list(self.window._boxes[0].cget("values"))
+        self.assertEqual(offerts[:3], [IGNORED, ORGANISATION, MONTANT])
+        self.assertFalse(any(o.startswith("+") or "nouveau" in o.lower()
+                             for o in offerts), offerts)
+        import hr_analytics.ui.settings as module
+
+        self.assertFalse(hasattr(module, "NEW_FIELD"))
+        self.assertFalse(hasattr(module, "simpledialog"))
+
     def test_a_new_field_is_created_and_assigned(self):
-        self._answer("prime_panier")
         self._create()
         self.assertEqual(
             self.window._field_of(
                 self.window.assignments["Prime de panier"].get()),
-            "prime_panier")
+            "prime_de_panier")
         section = self.window.collect()
-        self.assertIn("Prime de panier", section["fields"]["prime_panier"])
+        self.assertIn("Prime de panier", section["fields"]["prime_de_panier"])
 
     def test_the_new_field_becomes_a_dimension(self):
-        self._answer("prime_panier")
         self._create()
         section = self.window.collect()
-        self.assertIn("prime_panier",
+        self.assertIn("prime_de_panier",
                       [entry["field"] for entry in section["dimensions"]])
 
     def test_the_name_is_made_writable_on_the_command_line(self):
         """Sans accent ni espace : il s'ecrit aussi en ligne de commande."""
-        self._answer("Prime de Panier été")
-        self._create()
-        name = self.window._field_of(
-            self.window.assignments["Prime de panier"].get())
+        from hr_analytics.ui.settings import suggest_field_name
+
+        name = suggest_field_name("Prime de Panier été", [])
+        self.assertEqual(name, "prime_de_panier_ete")
         self.assertTrue(name.isascii(), name)
-        self.assertNotIn(" ", name)
-
-    def test_an_existing_name_is_refused_rather_than_duplicated(self):
-        warned = self._warnings()
-        self._answer("base_salary")
         self._create()
-        self.assertTrue(warned)
-        from hr_analytics.ui.settings import IGNORED
+        porte = self.window._field_of(
+            self.window.assignments["Prime de panier"].get())
+        self.assertTrue(porte.isascii() and " " not in porte, porte)
 
-        self.assertEqual(self.window.assignments["Prime de panier"].get(),
-                         IGNORED)
+    def test_an_existing_name_is_never_duplicated(self):
+        """Une colonne dont l'intitule est deja un nom de champ recoit un
+        nom libre, et non le champ existant : deux colonnes ne parlent
+        pas de la meme chose sans qu'on le dise."""
+        from hr_analytics.ui.settings import suggest_field_name
 
-    def test_a_name_the_model_holds_is_refused(self):
-        """« value » et « assign » sont des methodes du modele. Le modele
-        s'en defend — le champ atterrit a cote, pas dessus — mais le nom
-        reste trompeur : mieux vaut le dire au moment ou on le tape."""
-        warned = self._warnings()
-        self._answer("value")
-        self._create()
-        self.assertTrue(warned)
-        from hr_analytics.ui.settings import IGNORED
-
-        self.assertEqual(self.window.assignments["Prime de panier"].get(),
-                         IGNORED)
+        self.assertEqual(suggest_field_name("Base salary", ["base_salary"]),
+                         "base_salary_2")
 
     def test_a_new_field_never_takes_a_name_the_model_holds(self):
-        """Le nom propose, lui, evite les collisions : un champ nomme
-        « value » cohabiterait avec la methode du meme nom."""
+        """Le nom propose evite les collisions : un champ nomme « value »
+        cohabiterait avec la methode du meme nom."""
         from hr_analytics.ui.settings import suggest_field_name
 
         for entête in ("Value", "Assign", "Identity", "Issues", "Extra"):
@@ -612,9 +599,7 @@ class TestCreatingAField(SettingsCase):
             self.assertFalse(suggest_field_name(entête, []).endswith("_2"),
                              entête)
 
-    def test_a_typed_name_is_never_silently_renamed(self):
-        """Le corriger pour eviter une collision ferait passer un doublon
-        pour un nom neuf."""
+    def test_an_intitule_is_brought_to_its_technical_form(self):
         from hr_analytics.ui.settings import normalise_field_name
 
         for saisi, attendu in (("base_salary", "base_salary"),
@@ -623,23 +608,14 @@ class TestCreatingAField(SettingsCase):
                                ("2026", "c_2026")):
             self.assertEqual(normalise_field_name(saisi), attendu)
 
-    def test_cancelling_leaves_the_column_ignored(self):
-        from hr_analytics.ui.settings import IGNORED
-
-        self._answer(None)
-        self._create()
-        self.assertEqual(self.window.assignments["Prime de panier"].get(),
-                         IGNORED)
-
     def test_the_new_field_is_offered_to_every_other_column(self):
         """Deux colonnes d'un meme fichier doivent pouvoir parler de la
         meme chose : le champ cree est propose partout, sous son libelle."""
-        self._answer("prime_panier")
         self._create()
         for other in self.window._boxes:
             self.assertIn("Prime de panier", other.cget("values"))
         self.assertEqual(self.window._field_of("Prime de panier"),
-                         "prime_panier")
+                         "prime_de_panier")
 
 
 class TestSavingWhenTheFolderRefuses(SettingsCase):

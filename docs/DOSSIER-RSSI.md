@@ -426,8 +426,9 @@ Chaque document produit est donc restreint à son propriétaire après écriture
 ### 8.6 Ce qu'un nom de colonne peut atteindre
 
 Le fichier reçu décide de deux choses dans le modèle de données : la valeur
-d'un champ, et, si l'utilisateur déclare une colonne comme nouveau champ
-depuis la page Paramètres, le **nom** de ce champ.
+d'un champ, et, si l'utilisateur déclare une colonne depuis la page
+Paramètres (rôle « Organisation » ou « Montant »), le **nom** de ce champ,
+déduit de l'intitulé de la colonne.
 
 Ce nom n'atteint que les champs déclarés par le modèle. Tout le reste part
 dans un dictionnaire de débordement, où l'outil sait le lire. Une colonne
