@@ -677,8 +677,8 @@ modification du binaire, et les empreintes sont déjà fournies.
 
 | Contrôle | Résultat |
 |---|---|
-| Suite de tests, Python 3.12, interface comprise | **1 827 tests, 0 échec** (9 octobre 2026) |
-| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (712 ignorés : interface) |
+| Suite de tests, Python 3.12, interface comprise | **1 826 tests, 0 échec** (9 octobre 2026) |
+| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (711 ignorés : interface) |
 | Revue de code de la semaine du 2 au 9 octobre | **15 constats, 15 corrigés, chacun pinglé par un essai** (`AUDIT-2026-10-09.md`) |
 | Revue fonctionnelle de bout en bout | **21 fonctionnalités, 0 en échec** |
 | Stabilité d'affichage (onglets × tailles × parcours) | **129 épreuves, 0 incident** |
