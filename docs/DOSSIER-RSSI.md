@@ -1,6 +1,6 @@
 # HR Analytics : dossier pour le RSSI
 
-**Version 1.0.0 · commit `d2ffe92` · 9 octobre 2026**
+**Version 1.0.0 · commit `e25a31f` · 9 octobre 2026**
 
 Ce document est destiné à une revue de sécurité. Il décrit ce que le logiciel
 est, ce qu'il fait, ce qu'il ne peut pas faire, et **comment le vérifier
@@ -20,7 +20,7 @@ contrôler sur le livrable lui-même.
 | **Réseau** | Aucun. La pile réseau est **absente** de l'interpréteur livré |
 | **Dépendances tierces** | Aucune. Bibliothèque standard Python uniquement |
 | **Données** | Restent sur le poste. Rien n'est transmis, mis en cache ailleurs, ni envoyé |
-| **Taille** | 24 041 lignes de Python, 40 fichiers, 51 suites de tests (26 228 lignes) |
+| **Taille** | 24 013 lignes de Python, 40 fichiers, 51 suites de tests (26 204 lignes) |
 | **Interpréteur** | CPython 3.12.7 (amd64), repris tel quel de python.org, puis allégé |
 | **Signature** | Le livrable fourni n'est **pas** signé (voir §9) |
 
