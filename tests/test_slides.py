@@ -817,3 +817,209 @@ class TestAnAxisKeptOutOfTheDocuments(unittest.TestCase):
         """Le témoin : sans le filtre, la planche existe."""
         titres = [slide.title for slide in build_deck(self.entier)]
         self.assertTrue(any("groupe" in t.lower() for t in titres), titres)
+
+
+class TestPowerPointDeck(unittest.TestCase):
+    """Le .pptx est écrit octet par octet, comme le PDF et le classeur :
+    sa structure doit être vérifiée, et il doit montrer ce que le PDF
+    montre."""
+
+    REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+
+    @classmethod
+    def setUpClass(cls):
+        from hr_analytics.core.slides import write_slides_pptx
+
+        cls.directory = tempfile.mkdtemp()
+        cls.payload = analysis_payload(cls.directory,
+                                       segments=["business_unit", "groupe"])
+        cls.deck = build_deck(cls.payload)
+        cls.path = write_slides_pptx(
+            cls.deck, cls.payload, os.path.join(cls.directory, "deck.pptx"))
+        import zipfile
+
+        with zipfile.ZipFile(cls.path) as archive:
+            cls.parts = {name: archive.read(name) for name in archive.namelist()}
+
+    def _xml(self, name):
+        from xml.etree import ElementTree
+
+        return ElementTree.fromstring(self.parts[name])
+
+    def test_every_part_is_well_formed_xml(self):
+        for name in self.parts:
+            with self.subTest(part=name):
+                self._xml(name)
+
+    def test_every_relationship_points_at_a_part(self):
+        import posixpath
+
+        for name, data in self.parts.items():
+            if not name.endswith(".rels"):
+                continue
+            base = posixpath.dirname(posixpath.dirname(name))
+            for rel in self._xml(name):
+                cible = posixpath.normpath(posixpath.join(base, rel.get("Target")))
+                self.assertIn(cible, self.parts, f"{name} -> {rel.get('Target')}")
+
+    def test_every_part_has_a_content_type(self):
+        types = self._xml("[Content_Types].xml")
+        defauts = {t.get("Extension") for t in types
+                   if t.tag.endswith("Default")}
+        overrides = {t.get("PartName") for t in types
+                     if t.tag.endswith("Override")}
+        for name in self.parts:
+            if name == "[Content_Types].xml":
+                continue
+            self.assertTrue(f"/{name}" in overrides
+                            or name.rsplit(".", 1)[-1] in defauts, name)
+
+    def test_one_slide_per_deck_page_in_order(self):
+        presentation = self._xml("ppt/presentation.xml")
+        ns = {"p": "http://schemas.openxmlformats.org/presentationml/2006/main",
+              "r": self.REL}
+        ids = presentation.findall("p:sldIdLst/p:sldId", ns)
+        self.assertEqual(len(ids), len(self.deck))
+        rels = {rel.get("Id"): rel.get("Target")
+                for rel in self._xml("ppt/_rels/presentation.xml.rels")}
+        cibles = [rels[sld.get(f"{{{self.REL}}}id")] for sld in ids]
+        self.assertEqual(cibles, [f"slides/slide{n}.xml"
+                                  for n in range(1, len(self.deck) + 1)])
+        self.assertTrue(all(int(sld.get("id")) >= 256 for sld in ids))
+
+    def test_the_slide_is_landscape_and_the_size_of_the_pdf(self):
+        from hr_analytics.core.slides import PDF_HEIGHT, PDF_WIDTH
+        from hr_analytics.io.pptx_writer import EMU_PER_POINT
+
+        taille = self._xml("ppt/presentation.xml").find(
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}sldSz")
+        self.assertEqual(int(taille.get("cx")), round(PDF_WIDTH * EMU_PER_POINT))
+        self.assertEqual(int(taille.get("cy")), round(PDF_HEIGHT * EMU_PER_POINT))
+        self.assertGreater(int(taille.get("cx")), int(taille.get("cy")))
+
+    def test_shape_ids_are_unique_on_each_slide(self):
+        for name in self.parts:
+            if not (name.startswith("ppt/slides/slide") and name.endswith(".xml")):
+                continue
+            ids = [el.get("id") for el in self._xml(name).iter()
+                   if el.tag.endswith("}cNvPr")]
+            self.assertEqual(len(ids), len(set(ids)), name)
+
+    def test_the_text_of_the_pdf_is_in_the_slides(self):
+        texte = "".join(self.parts[n].decode("utf-8") for n in self.parts
+                        if n.startswith("ppt/slides/slide") and n.endswith(".xml"))
+        self.assertIn("Rémunération", texte)
+        self.assertIn(self.deck[0].title, texte)
+        for slide in self.deck[1:]:
+            self.assertIn(slide.title.replace("&", "&amp;"), texte)
+
+    def test_charts_are_shapes_not_pictures(self):
+        texte = "".join(self.parts[n].decode("utf-8") for n in self.parts
+                        if n.startswith("ppt/slides/slide"))
+        self.assertIn('prst="ellipse"', texte)      # le nuage
+        self.assertIn("<p:cxnSp>", texte)            # un axe
+        self.assertNotIn("<p:pic>", texte)
+        self.assertFalse(any(n.startswith("ppt/media") for n in self.parts))
+
+    def test_no_personal_data_and_no_author(self):
+        tout = b"".join(self.parts.values())
+        self.assertNotIn(b"NOM0", tout)
+        self.assertNotIn(b"PRENOM0", tout)
+        core = self.parts["docProps/core.xml"].decode("utf-8")
+        self.assertNotIn("lastModifiedBy", core)
+        self.assertIn("<dc:creator>HR Analytics</dc:creator>", core)
+
+    def test_the_file_is_private(self):
+        import stat
+
+        mode = stat.S_IMODE(os.stat(self.path).st_mode)
+        self.assertEqual(mode & (stat.S_IRGRP | stat.S_IROTH), 0)
+
+    def test_the_summary_is_written_the_same_way(self):
+        from hr_analytics.core.slides import write_slides_pptx
+        import zipfile
+
+        chemin = write_slides_pptx(build_summary(self.payload), self.payload,
+                                   os.path.join(self.directory, "s.pptx"))
+        with zipfile.ZipFile(chemin) as archive:
+            planches = [n for n in archive.namelist()
+                        if n.startswith("ppt/slides/slide") and n.endswith(".xml")]
+        self.assertEqual(len(planches), 1)
+
+
+class TestPowerPointPrimitives(unittest.TestCase):
+    """Les gestes de dessin, un par un : ce que le PDF trace, le
+    PowerPoint le trace au même endroit, l'ordonnée retournée."""
+
+    def _page(self):
+        from hr_analytics.io.pptx_writer import Page
+
+        return Page(200.0, 100.0)
+
+    def test_a_rectangle_is_placed_from_the_top_left(self):
+        from hr_analytics.io.pptx_writer import EMU_PER_POINT
+
+        page = self._page()
+        page.rect(10, 20, 30, 40, fill=(1, 0, 0))
+        xml = page.xml()
+        self.assertIn(f'<a:off x="{10 * EMU_PER_POINT}" y="{(100 - 20 - 40) * EMU_PER_POINT}"/>', xml)
+        self.assertIn('<a:srgbClr val="FF0000">', xml)
+
+    def test_a_rectangle_without_fill_nor_stroke_draws_nothing(self):
+        page = self._page()
+        page.rect(0, 0, 10, 10)
+        self.assertNotIn("<p:sp>", page.xml())
+
+    def test_a_rising_line_is_flipped(self):
+        page = self._page()
+        page.line(0, 0, 10, 10)
+        self.assertIn('flipV="1"', page.xml())
+        page = self._page()
+        page.line(0, 10, 10, 0)
+        self.assertNotIn("flipV", page.xml())
+
+    def test_a_dashed_line_says_so(self):
+        page = self._page()
+        page.line(0, 0, 10, 0, dash=(2, 2))
+        self.assertIn('<a:prstDash val="dash"/>', page.xml())
+
+    def test_a_translucent_point_carries_its_alpha(self):
+        page = self._page()
+        page.circle(5, 5, 2, (0, 0, 1), alpha_state="GA")
+        self.assertIn('<a:alpha val="65000"/>', page.xml())
+
+    def test_a_wedge_sweeps_the_opposite_way_round(self):
+        import math
+
+        page = self._page()
+        page.wedge(50, 50, 20, 10, 0, math.pi / 2, (0, 1, 0))
+        xml = page.xml()
+        # Le quart de tour du PDF (0 a 90°, sens direct) commence a 270°
+        # chez Office et balaie 90° dans le sens horaire.
+        self.assertIn('stAng="16200000" swAng="5400000"', xml)
+        self.assertIn('stAng="0" swAng="-5400000"', xml)
+
+    def test_text_is_aligned_like_the_pdf(self):
+        from hr_analytics.io.pdf_writer import text_width
+        from hr_analytics.io.pptx_writer import EMU_PER_POINT
+
+        page = self._page()
+        page.text(100, 50, "Abc", size=10, align="right")
+        gauche = int(round((100 - text_width("Abc", 10)) * EMU_PER_POINT))
+        self.assertIn(f'<a:off x="{gauche}"', page.xml())
+        self.assertIn("<a:t>Abc</a:t>", page.xml())
+
+    def test_text_is_escaped_and_truncated(self):
+        page = self._page()
+        page.text(0, 0, "A & B <c>", size=10)
+        self.assertIn("<a:t>A &amp; B &lt;c&gt;</a:t>", page.xml())
+        page = self._page()
+        page.text(0, 0, "Un libellé vraiment trop long pour la place", size=10,
+                  max_width=40)
+        self.assertNotIn("trop long pour la place", page.xml())
+
+    def test_an_empty_document_is_refused(self):
+        from hr_analytics.io.pptx_writer import Document
+
+        with self.assertRaises(ValueError):
+            Document().save(os.path.join(tempfile.mkdtemp(), "vide.pptx"))

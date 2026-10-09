@@ -90,6 +90,10 @@ class TestEveryProducedDocumentIsPrivate(unittest.TestCase):
                           os.path.join(sortie, "s.html"))
         write_slides_html(build_summary(resultat.payload), resultat.payload,
                           os.path.join(sortie, "y.html"))
+        from hr_analytics.core.slides import write_slides_pptx
+
+        write_slides_pptx(build_deck(resultat.payload), resultat.payload,
+                          os.path.join(sortie, "d.pptx"))
         write_manifest(resultat.payload.get("manifest", {}),
                        os.path.join(sortie, "m.json"))
         cls.sortie = sortie

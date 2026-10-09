@@ -79,6 +79,9 @@ class TestAnalyse(CommandCase):
                          "manifeste"):
             self.assertTrue(any(name.startswith(expected) for name in names),
                             f"{expected} absent de {names}")
+        # Les deux jeux de planches sortent aussi en PowerPoint.
+        self.assertEqual(len([n for n in names if n.endswith(".pptx")]), 2,
+                         names)
         self.assertIn("Effectif analysé", text)
 
     def test_one_output_can_be_asked_for_alone(self):

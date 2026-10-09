@@ -1448,3 +1448,23 @@ def write_slides_pdf(slides: Sequence[Slide], analysis: Dict[str, Any],
     for number, slide in enumerate(slides, start=1):
         _draw_slide(document.add_page(), slide, number, len(slides), currency)
     return document.save(path)
+
+
+def write_slides_pptx(slides: Sequence[Slide], analysis: Dict[str, Any],
+                      path: str) -> str:
+    """Le meme jeu de planches, en PowerPoint modifiable.
+
+    Chaque planche est dessinee par le meme code que le PDF, avec les
+    memes gestes : le PowerPoint montre ce que le PDF montre. Mais tout
+    y reste modifiable, textes comme graphiques, pour corriger un
+    libelle ou retirer une planche avant un comite.
+    """
+    use(analysis)
+    from ..io.pptx_writer import Document
+
+    currency = analysis.get("salary", {}).get("currency", "EUR")
+    document = Document(PDF_WIDTH, PDF_HEIGHT,
+                        title=str(analysis.get("title") or "HR Analytics"))
+    for number, slide in enumerate(slides, start=1):
+        _draw_slide(document.add_page(), slide, number, len(slides), currency)
+    return document.save(path)

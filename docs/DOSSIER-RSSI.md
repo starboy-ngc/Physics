@@ -31,8 +31,9 @@ contrôler sur le livrable lui-même.
 L'utilisateur choisit un fichier de population RH. L'outil le lit, en contrôle
 la qualité, calcule des indicateurs (effectifs, âges, anciennetés, médianes et
 percentiles de rémunération, dispersion, écarts femmes/hommes), les affiche, et
-produit des documents : un rapport HTML, une synthèse d'une page (HTML + PDF),
-une vue détaillée (HTML + PDF) et un classeur Excel.
+produit des documents : un rapport HTML, une synthèse d'une page (HTML, PDF
+et PowerPoint), une vue détaillée (HTML, PDF et PowerPoint) et un classeur
+Excel.
 
 Tout se passe dans la mémoire du processus et dans deux dossiers : celui de la
 configuration et celui que l'utilisateur désigne pour les documents.
@@ -56,7 +57,8 @@ traceback   typing    unicodedata  xml.etree  zipfile  zlib
 ```
 
 **La subtilité qui mérite d'être comprise.** Les formats produits ne viennent
-d'aucune bibliothèque : le PDF est écrit directement en opérateurs graphiques
+d'aucune bibliothèque : le PowerPoint est une archive zip de XML écrite
+comme le classeur, le PDF est écrit directement en opérateurs graphiques
 PostScript (`io/pdf_writer.py`), le .xlsx en archive ZIP et XML
 (`io/xlsx_writer.py`), le PNG en zlib (`ui/raster.py`). C'est plus de code à
 écrire, mais c'est **la raison pour laquelle il n'y a rien à auditer en
@@ -353,8 +355,8 @@ et les soumettent vraiment à l'outil.
 | Sortie | Contient des identités ? |
 |---|---|
 | Rapport HTML | **Non** : mesuré |
-| Synthèse HTML / PDF | **Non** : mesuré |
-| Vue détaillée HTML / PDF | **Non** : mesuré |
+| Synthèse HTML / PDF / PowerPoint | **Non** : mesuré |
+| Vue détaillée HTML / PDF / PowerPoint | **Non** : mesuré |
 | Journal technique | **Non** : mesuré |
 | Messages d'erreur techniques | **Non** : par construction (§8.2) |
 | Classeur Excel | **Oui, par conception** : c'est l'onglet de matière première, ce pour quoi il existe |

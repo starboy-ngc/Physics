@@ -3,8 +3,9 @@
 **Version 1.0.0 · octobre 2026 · outil interne d'analyse de rémunération**
 
 Cette note tient en une page pour que la vérification de conformité se fasse
-sans lire le dossier complet. Le dossier détaillé (`DOSSIER-RSSI.md`) et le
-code source complet accompagnent le livrable.
+sans lire le dossier complet. Le code source complet accompagne le
+livrable ; le dossier détaillé (`DOSSIER-RSSI.md`) se remet à part, à la
+revue de sécurité, il ne part pas dans le paquet.
 
 ---
 

@@ -293,6 +293,9 @@ class TestProducingDocuments(WindowCase):
                          "analyse"):
             self.assertTrue(any(n.startswith(expected) for n in names),
                             f"{expected} absent de {names}")
+        # Les deux jeux de planches sortent aussi en PowerPoint.
+        pptx = [n for n in names if n.endswith(".pptx")]
+        self.assertEqual(len(pptx), 2, names)
         self.assertTrue(dialogs.infos)
 
     def test_the_chosen_outputs_alone_are_written(self):

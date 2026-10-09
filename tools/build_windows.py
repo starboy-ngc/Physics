@@ -201,7 +201,7 @@ ARBRES = (("hr_analytics", "hr_analytics"), ("config", "config"),
 #: et il a raison. Le paquet ne porte donc qu'un etat : celui du jour.
 DOCS_NON_LIVRES = ("AUDIT.md", "AUDIT-2026-09-26.md", "AUDIT-2026-10-04.md",
                    "AUDIT-2026-10-08.md", "AUDIT-2026-10-09.md",
-                   "AUDIT-SECURITE-IT.md")
+                   "AUDIT-SECURITE-IT.md", "DOSSIER-RSSI.md")
 
 #: Le paquet ne livre aucun outil et aucun jeu d'essai.
 #:

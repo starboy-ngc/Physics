@@ -629,8 +629,18 @@ Trois sorties construites sur les memes donnees :
 | Sortie | Contenu | Formats |
 |---|---|---|
 | `rapport` | Document detaille, defilant | HTML |
-| `synthese` | Une page paysage : indicateurs, niveaux de remuneration, structure de la population, nuage | HTML + PDF |
-| `slides` | Un jeu de pages paysage, une idee par page | HTML + PDF |
+| `synthese` | Une page paysage : indicateurs, niveaux de remuneration, structure de la population, nuage | HTML + PDF + PowerPoint |
+| `slides` | Un jeu de pages paysage, une idee par page | HTML + PDF + PowerPoint |
+
+Le PowerPoint (`io/pptx_writer.py`) est écrit comme le classeur et le PDF :
+une archive zip de XML, bibliothèque standard seule. Il expose les mêmes
+gestes que le PDF, rectangle, trait, cercle, secteur d'anneau, texte, et
+c'est le même code (`slides._draw_slide`) qui dessine les deux : le
+PowerPoint montre ce que le PDF montre. Tout y reste modifiable, les textes
+sont des zones de texte et les graphiques des formes, en Arial, dont les
+largeurs sont celles d'Helvetica avec lesquelles le PDF aligne et tronque.
+Les propriétés du document ne portent ni auteur ni date.
+`export_parameters.slides_pptx_enabled` le coupe.
 
 La fiche standard est organisee en un bandeau de six indicateurs puis trois
 colonnes : niveaux de remuneration (percentiles), structure de la population

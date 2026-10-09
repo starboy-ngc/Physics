@@ -4,6 +4,7 @@
   "html_report_enabled": true,
   "slides_html_enabled": true,
   "slides_pdf_enabled": true,
+  "slides_pptx_enabled": true,
   "summary_enabled": true,
   "include_method_sheet": false,
   "include_individual_data": true,

@@ -27,7 +27,7 @@ from .core.pipeline import AnalysisRequest, load_population, run_analysis
 from .core.quality import run_quality_check
 from .core.reporting import write_report
 from .core.slides import (build_deck, build_summary, write_slides_html,
-                          write_slides_pdf)
+                          write_slides_pdf, write_slides_pptx)
 from .core.segmentation import build_filters, dimensions
 from .core.traceability import write_manifest
 from .io.tabular import read_table
@@ -144,6 +144,7 @@ def command_analyse(args: argparse.Namespace) -> int:
         produced.append(write_report(
             payload, os.path.join(output_dir, f"restitution-{stamp}.html")
         ))
+    pptx = bool(result.config.get("export_parameters.slides_pptx_enabled", True))
     if requested("synthese", "summary_enabled"):
         summary = build_summary(payload)
         produced.append(write_slides_html(
@@ -152,6 +153,10 @@ def command_analyse(args: argparse.Namespace) -> int:
         produced.append(write_slides_pdf(
             summary, payload, os.path.join(output_dir, f"synthese-{stamp}.pdf")
         ))
+        if pptx:
+            produced.append(write_slides_pptx(
+                summary, payload, os.path.join(output_dir, f"synthese-{stamp}.pptx")
+            ))
     if requested("slides", "slides_html_enabled"):
         deck = build_deck(payload)
         produced.append(write_slides_html(
@@ -160,6 +165,10 @@ def command_analyse(args: argparse.Namespace) -> int:
         if result.config.get("export_parameters.slides_pdf_enabled", True):
             produced.append(write_slides_pdf(
                 deck, payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.pdf")
+            ))
+        if pptx:
+            produced.append(write_slides_pptx(
+                deck, payload, os.path.join(output_dir, f"vue-detaillee-{stamp}.pptx")
             ))
     if requested("excel", "excel_enabled"):
         produced.append(export_excel(

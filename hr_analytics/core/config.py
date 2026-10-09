@@ -320,6 +320,11 @@ DEFAULTS: Dict[str, Any] = {
         # Restitutions paysage : synthese d'une page et jeu de slides.
         "slides_html_enabled": True,
         "slides_pdf_enabled": True,
+        # Les memes planches en PowerPoint modifiable, synthese et vue
+        # detaillee : textes et graphiques y restent des formes qu'on
+        # retouche avant un comite. Ecrit par l'outil lui-meme, sans
+        # bibliotheque, comme le classeur et le PDF.
+        "slides_pptx_enabled": True,
         "summary_enabled": True,
         # Donnees individuelles et recopie du fichier importe. Elles
         # etaient desactivees par defaut, au nom du traitement des donnees

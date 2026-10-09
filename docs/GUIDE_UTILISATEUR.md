@@ -133,12 +133,18 @@ Les fichiers produits dans `resultats/` :
 | Fichier | Usage |
 |---|---|
 | `restitution-*.html` | **Rapport détaillé**, à lire à l'écran : s'enregistre en PDF par la fonction d'impression du navigateur |
-| `synthese-*.pdf` / `.html` | **Synthèse simplifiée, une seule page paysage** : effectif, âge et ancienneté (moyenne et médiane), pyramide des âges et des anciennetés, répartition par CSP, dispersion de base (P10, Q1, médiane, Q3, P90 et leur écart à la médiane) et boîte à moustaches |
-| `vue-detaillee-*.pdf` / `.html` | **Vue détaillée paysage**, une idée par page : qualité des données, population, rémunération, distribution, nuage de points, analyses par segment, écarts femmes / hommes, méthodologie |
+| `synthese-*.pdf` / `.html` / `.pptx` | **Synthèse simplifiée, une seule page paysage** : effectif, âge et ancienneté (moyenne et médiane), pyramide des âges et des anciennetés, répartition par CSP, dispersion de base (P10, Q1, médiane, Q3, P90 et leur écart à la médiane) et boîte à moustaches |
+| `vue-detaillee-*.pdf` / `.html` / `.pptx` | **Vue détaillée paysage**, une idée par page : qualité des données, population, rémunération, distribution, nuage de points, analyses par segment, écarts femmes / hommes, méthodologie |
 | `analyse-*.xlsx` | Indicateurs par onglet, pour retravailler les chiffres. Tout ce qui calcule vient d'abord : résultats, formules, contrôles ; la matière première (fichier importé, colonnes lues, données individuelles) ferme la marche |
 
 La synthèse et la vue détaillée sont produites directement en PDF par l'outil :
-pas besoin d'imprimer depuis le navigateur. Le rapport détaillé, lui, n'existe
+pas besoin d'imprimer depuis le navigateur. Elles sortent aussi en
+**PowerPoint** (`.pptx`), les mêmes planches, dessinées par le même code :
+tout y reste modifiable, les textes sont des zones de texte et les
+graphiques des formes, pour corriger un libellé ou retirer une planche avant
+un comité. Les graphiques ne sont pas reliés à des données, ce sont des
+dessins fidèles à ce que l'outil a calculé. Le réglage
+`export_parameters.slides_pptx_enabled` les coupe. Le rapport détaillé, lui, n'existe
 qu'en HTML : pour en faire un PDF, ouvrez-le et utilisez « Imprimer » puis
 « Enregistrer au format PDF ». La feuille de style prévoit l'impression : les
 titres ne se détachent pas de leur section, et aucun tableau ni graphique n'est

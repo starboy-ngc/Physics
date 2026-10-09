@@ -664,13 +664,17 @@ class TestTheFolderLauncherCarriesTheMark(unittest.TestCase):
             chemin = os.path.join(ROOT, "docs", nom)
             self.assertTrue(os.path.isfile(chemin),
                             f"{nom} devrait rester au dépôt")
+            if nom == "DOSSIER-RSSI.md":
+                continue
             with open(chemin, encoding="utf-8") as flux:
                 tete = "".join(flux.readlines()[:12])
             self.assertIn("Document historique", tete,
                           f"{nom} ne se signale pas comme dépassé")
-        # Le dossier courant, lui, est livré. Le relevé de dépendances
-        # aussi : c'est la première pièce qu'une revue réclame.
-        self.assertNotIn("DOSSIER-RSSI.md", DOCS_NON_LIVRES)
+        # Le dossier RSSI reste au dépôt lui aussi : il s'adresse à la
+        # revue de sécurité, pas à qui installe l'outil, et il se remet
+        # de la main à la main. Le guide et le relevé de dépendances,
+        # eux, sont livrés : la première pièce qu'une revue réclame.
+        self.assertIn("DOSSIER-RSSI.md", DOCS_NON_LIVRES)
         self.assertNotIn("GUIDE_UTILISATEUR.md", DOCS_NON_LIVRES)
         self.assertNotIn("DEPENDANCES.md", DOCS_NON_LIVRES)
 

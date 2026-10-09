@@ -52,7 +52,7 @@ from ..core.segmentation import (build_filters, dimension_fields,
                                  dimension_label, max_filter_values,
                                  segment_label)
 from ..core.slides import (build_deck, build_summary, write_slides_html,
-                           write_slides_pdf)
+                           write_slides_pdf, write_slides_pptx)
 from . import logo as marque
 from . import theme
 from .charts import (BandChart, BoxPlotChart, HistogramChart, OrgChart,
@@ -4281,6 +4281,10 @@ class Application(tk.Tk):
             if self.output_vars["rapport"].get():
                 produced.append(write_report(
                     payload, os.path.join(directory, f"restitution-{stamp}.html")))
+            # Le PowerPoint accompagne le PDF de chaque jeu de planches,
+            # sauf reglage contraire : c'est le format qu'on retouche.
+            pptx = bool(self.result.config.get(
+                "export_parameters.slides_pptx_enabled", True))
             if self.output_vars["synthese"].get():
                 summary = build_summary(payload)
                 produced.append(write_slides_html(
@@ -4289,12 +4293,20 @@ class Application(tk.Tk):
                 produced.append(write_slides_pdf(
                     summary, payload,
                     os.path.join(directory, f"synthese-{stamp}.pdf")))
+                if pptx:
+                    produced.append(write_slides_pptx(
+                        summary, payload,
+                        os.path.join(directory, f"synthese-{stamp}.pptx")))
             if self.output_vars["slides"].get():
                 deck = build_deck(payload)
                 produced.append(write_slides_html(
                     deck, payload, os.path.join(directory, f"vue-detaillee-{stamp}.html")))
                 produced.append(write_slides_pdf(
                     deck, payload, os.path.join(directory, f"vue-detaillee-{stamp}.pdf")))
+                if pptx:
+                    produced.append(write_slides_pptx(
+                        deck, payload,
+                        os.path.join(directory, f"vue-detaillee-{stamp}.pptx")))
             if self.output_vars["excel"].get():
                 produced.append(export_excel(
                     payload, self.result.filtered, self.result.config,
