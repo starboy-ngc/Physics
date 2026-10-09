@@ -3178,8 +3178,7 @@ class Application(tk.Tk):
             self.equity_jobs = [poste for poste in self.equity_jobs
                                 if poste in postes] or None
         self._label_equity_jobs()
-        self._scatter_axes = metrics.available_axes(self.result.filtered,
-                                                    self.configuration)
+        self._scatter_axes = self._axes_for(self.result.filtered)
         self._fill_axis_box(self.equity_x, self.configuration.get(
             "chart_parameters.scatter_x", "tenure_years"))
         self._fill_axis_box(self.equity_y, self.configuration.get(
@@ -3415,8 +3414,10 @@ class Application(tk.Tk):
         data["chart_parameters"]["scatter_color_by"] = \
             self.configuration.get("pay_equity_parameters.gender_field",
                                    "gender")
-        dataset = metrics.scatter_dataset(self._equity_population(),
-                                          Configuration(data))
+        dataset = metrics.scatter_dataset(
+            self._equity_population(), Configuration(data),
+            extra=self._scatter_extra([data["chart_parameters"]["scatter_x"],
+                                       data["chart_parameters"]["scatter_y"]]))
         self.equity_scatter.set_dataset(
             dataset, self.result.payload["salary"].get("currency", "EUR"))
         self.equity_scatter.set_series(self._equity_colours(dataset))
@@ -3725,6 +3726,39 @@ class Application(tk.Tk):
         self._reaxis()
         self.scatter.reset_view()
 
+    def _file_axes(self) -> List[Dict[str, Any]]:
+        """Les colonnes chiffrees du fichier qu'aucun champ ne porte,
+        relevees une fois par resultat d'analyse."""
+        result = self.result
+        if result is None or getattr(result, "table", None) is None:
+            return []
+        cache = getattr(self, "_file_axes_cache", None)
+        if cache is not None and cache[0] is result:
+            return cache[1]
+        axes = metrics.file_axes(result.table, result.mapping,
+                                 self.configuration)
+        self._file_axes_cache = (result, axes)
+        return axes
+
+    def _axes_for(self, population) -> List[Dict[str, Any]]:
+        """Ce que les listes X et Y proposent : les grandeurs que ce
+        fichier renseigne, puis ses colonnes chiffrees."""
+        return (metrics.available_axes(population, self.configuration)
+                + self._file_axes())
+
+    def _scatter_extra(self, fields) -> Dict[str, Any]:
+        """Ce que le moteur doit savoir d'un axe lu dans le fichier : son
+        libelle, et les nombres de sa colonne par ligne source. Seules les
+        colonnes choisies sont relues."""
+        axes = {axis["field"]: axis for axis in self._file_axes()}
+        values = {}
+        for champ in fields:
+            axis = axes.get(champ)
+            if axis is not None:
+                values[champ] = metrics.column_values(self.result.table,
+                                                      axis["column"])
+        return {"axes": list(axes.values()), "values": values}
+
     def _reaxis(self) -> None:
         """Recalcule le nuage sur les deux axes choisis.
 
@@ -3746,17 +3780,19 @@ class Application(tk.Tk):
         if 0 <= index < len(getattr(self, "_colour_fields", [])):
             data["chart_parameters"]["scatter_color_by"] = \
                 self._colour_fields[index]
-        dataset = metrics.scatter_dataset(self.result.filtered,
-                                          Configuration(data))
+        dataset = metrics.scatter_dataset(
+            self.result.filtered, Configuration(data),
+            extra=self._scatter_extra([data["chart_parameters"]["scatter_x"],
+                                       data["chart_parameters"]["scatter_y"]]))
         self.scatter.set_dataset(
             dataset, self.result.payload["salary"].get("currency", "EUR"))
         self._build_legend()
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
         # Les axes que ce fichier renseigne, et eux seuls : une grandeur
-        # du modele sans colonne ne fait pas un axe.
-        self._scatter_axes = metrics.available_axes(self.result.filtered,
-                                                    self.configuration)
+        # du modele sans colonne ne fait pas un axe. Puis toute colonne
+        # chiffree du fichier, sous son intitule, sans rien declarer.
+        self._scatter_axes = self._axes_for(self.result.filtered)
         self._fill_axis_box(self.x_choice, dataset.get("x_field", ""))
         self._fill_axis_box(self.y_choice, dataset.get("y_field", ""))
         fields = dimension_fields(self.configuration)

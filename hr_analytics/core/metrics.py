@@ -974,6 +974,72 @@ def available_axes(population: Population,
     return axes
 
 
+#: Prefixe des axes lus dans le fichier brut, sans champ declare : le
+#: nom technique porte l'index de la colonne, et rien d'autre.
+FILE_AXIS = "colonne:"
+
+
+def file_axes(table, mapping, config: Configuration) -> List[Dict[str, Any]]:
+    """Les colonnes chiffrees du fichier qu'aucun champ ne porte.
+
+    Les listes X et Y du nuage ne proposaient que des champs declares.
+    Un coefficient, un horaire, une prime maison demandaient donc de
+    passer par les parametres avant de pouvoir etre portes en axe, alors
+    que les autres graphiques suivent le fichier charge. Toute colonne
+    chiffree du fichier est ici proposee sous son intitule, sans rien
+    declarer. C'est une exploration a l'ecran : les documents produits
+    gardent les axes du parametrage.
+
+    Une colonne est chiffree si au moins une cellule porte un nombre et
+    qu'aucune cellule renseignee ne porte autre chose. Les colonnes
+    rattachees a un champ ne sont pas reprises, `scatter_axes` les
+    connait deja.
+    """
+    from .normalize import parse_number
+
+    if table is None or mapping is None:
+        return []
+    portees = set(mapping.field_to_index.values())
+    axes: List[Dict[str, Any]] = []
+    for index, header in enumerate(table.headers):
+        intitule = str(header or "").strip()
+        if index in portees or not intitule:
+            continue
+        nombres, autre = 0, False
+        for row in table.rows:
+            if index >= len(row):
+                continue
+            cell = row[index]
+            if cell is None or str(cell).strip() == "":
+                continue
+            if parse_number(cell) is None:
+                autre = True
+                break
+            nombres += 1
+        if nombres and not autre:
+            axes.append({"field": f"{FILE_AXIS}{index}", "label": intitule,
+                         "kind": DEFAULT_AXIS_KIND, "column": index})
+    return axes
+
+
+def column_values(table, index: int) -> Dict[int, float]:
+    """Les nombres d'une colonne du fichier, par numero de ligne source.
+
+    Le numero est celui d'`Employee.row_number` : en-tete comprise, base
+    1. C'est la cle qui relie un salarie de la population analysee a sa
+    ligne du fichier, sans qu'aucune identite ne transite.
+    """
+    from .normalize import parse_number
+
+    valeurs: Dict[int, float] = {}
+    for offset, row in enumerate(table.rows):
+        if index < len(row):
+            nombre = parse_number(row[index])
+            if nombre is not None:
+                valeurs[offset + 2] = nombre
+    return valeurs
+
+
 def _axis_of(config: Configuration, field_name: str) -> Dict[str, str]:
     """Libelle et unite d'un axe, declares ou deduits."""
     for axis in scatter_axes(config):
@@ -999,16 +1065,34 @@ def default_colour_field(config: Configuration) -> str:
 
 
 def scatter_dataset(
-    population: Population, config: Configuration
+    population: Population, config: Configuration,
+    extra: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """Jeu de points, avec droite de tendance et R2.
 
     Les deux axes viennent du parametrage et peuvent etre changes en cours
     de route : le nuage n'est plus « remuneration x anciennete » mais un
     nuage, et c'est a l'utilisateur de dire ce qu'il compare.
+
+    `extra` porte les axes lus dans le fichier brut (voir `file_axes`) :
+    leurs libelles sous "axes", et sous "values" les nombres de chaque
+    colonne choisie, par numero de ligne source. Un tel axe se lit la,
+    et non dans le salarie, qui ne porte que ses champs declares.
     """
     x_field = config.get("chart_parameters.scatter_x", "tenure_years")
     y_field = config.get("chart_parameters.scatter_y", "base_salary")
+    valeurs_fichier = (extra or {}).get("values") or {}
+    axes_fichier = {axis["field"]: axis
+                    for axis in (extra or {}).get("axes") or []}
+
+    def lire(employee, champ: str) -> Any:
+        if champ in valeurs_fichier:
+            return valeurs_fichier[champ].get(employee.row_number)
+        return employee.value(champ)
+
+    def axe(champ: str) -> Dict[str, str]:
+        return axes_fichier.get(champ) or _axis_of(config, champ)
+
     color_field = (config.get("chart_parameters.scatter_color_by", "")
                    or default_colour_field(config))
     # Troisieme porte de la meme famille : la couleur du nuage devient une
@@ -1027,8 +1111,8 @@ def scatter_dataset(
 
     points: List[Dict[str, Any]] = []
     for employee in population:
-        x_value = employee.value(x_field)
-        y_value = employee.value(y_field)
+        x_value = lire(employee, x_field)
+        y_value = lire(employee, y_field)
         if x_value is None or y_value is None:
             continue
         points.append({
@@ -1066,9 +1150,8 @@ def scatter_dataset(
         # s'appelle maintenant « Nuage de points », et c'est au message de
         # la dire.
         manquants = [axis["label"] for axis, champ in
-                     ((_axis_of(config, x_field), x_field),
-                      (_axis_of(config, y_field), y_field))
-                     if not any(employee.value(champ) is not None
+                     ((axe(x_field), x_field), (axe(y_field), y_field))
+                     if not any(lire(employee, champ) is not None
                                 for employee in population)]
         if manquants and rules.may_chart(len(population)):
             raison = (f"« {manquants[0]} » n'est renseigné pour aucun salarié."
@@ -1082,8 +1165,8 @@ def scatter_dataset(
                 "x_field": x_field, "y_field": y_field,
                 "color_field": color_field,
                 "color_label": dimension_label(config, color_field),
-                "x_axis": _axis_of(config, x_field),
-                "y_axis": _axis_of(config, y_field),
+                "x_axis": axe(x_field),
+                "y_axis": axe(y_field),
             }
         return {
             "available": False,
@@ -1094,8 +1177,8 @@ def scatter_dataset(
             "points": [], "trend": None,
             "x_field": x_field, "y_field": y_field, "color_field": color_field,
             "color_label": dimension_label(config, color_field),
-            "x_axis": _axis_of(config, x_field),
-            "y_axis": _axis_of(config, y_field),
+            "x_axis": axe(x_field),
+            "y_axis": axe(y_field),
         }
     trend = None
     if config.get("chart_parameters.show_trend_line", True):
@@ -1118,8 +1201,8 @@ def scatter_dataset(
         # Libelle et unite de chaque axe : l'ecran et les documents les
         # lisent ici plutot que de les deduire du nom du champ, qui ne dit
         # ni « EUR » ni « ans ».
-        "x_axis": _axis_of(config, x_field),
-        "y_axis": _axis_of(config, y_field),
+        "x_axis": axe(x_field),
+        "y_axis": axe(y_field),
         "color_field": color_field,
         "color_label": dimension_label(config, color_field),
         "groups": groups,

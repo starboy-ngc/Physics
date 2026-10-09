@@ -694,6 +694,32 @@ class TestMappingAColumnFromTheWindow(WindowCase):
             self.assertNotIn("Rémunération totale", offerts)
             self.assertNotIn("Temps de travail", offerts)
 
+    def test_any_numeric_column_of_the_file_can_be_an_axis(self):
+        """Sans rien déclarer : la colonne est proposée sous son intitulé
+        et le nuage se trace dessus, sur les deux pages."""
+        self.load(self._fichier())
+        self.analyse()
+        champs = [axis["field"] for axis in self.app._scatter_axes]
+        libelles = [axis["label"] for axis in self.app._scatter_axes]
+        self.assertIn("Prime exceptionnelle", libelles)
+        self.assertNotIn("Direction", libelles)         # du texte
+        rang = libelles.index("Prime exceptionnelle")
+        self.assertTrue(champs[rang].startswith("colonne:"))
+        self.app.y_choice.current(rang)
+        self.app._reaxis()
+        self.app.update()
+        nuage = self.app.scatter.dataset
+        self.assertTrue(nuage["available"], nuage.get("warning"))
+        self.assertEqual(nuage["y_axis"]["label"], "Prime exceptionnelle")
+        # 900 + index : la valeur de la ligne source, pas une autre.
+        premier = min(nuage["points"], key=lambda p: p["row"])
+        self.assertEqual(premier["y"], 900.0)
+        self.app.equity_y.current(rang)
+        self.app._reaxis_equity()
+        self.app.update()
+        self.assertEqual(self.app.equity_scatter.dataset["y_axis"]["label"],
+                         "Prime exceptionnelle")
+
     def test_a_declared_amount_reaches_the_scatter_axes(self):
         """Les listes X et Y du nuage ne suivaient pas ce qui est déclaré :
         une prime posée en « Montant » n'y apparaissait pas, alors que les
@@ -702,8 +728,10 @@ class TestMappingAColumnFromTheWindow(WindowCase):
 
         self.load(self._fichier())
         self.analyse()
-        self.assertNotIn("Prime exceptionnelle",
-                         list(self.app.x_choice.cget("values")))
+        # Avant toute declaration, la colonne est deja proposee, lue dans
+        # le fichier ; une fois declaree, c'est le champ qui la porte.
+        avant = {axis["label"]: axis["field"] for axis in self.app._scatter_axes}
+        self.assertTrue(avant["Prime exceptionnelle"].startswith("colonne:"))
         fenêtre = self._ecran()
         try:
             rang = [nom for nom in self.app.headers
@@ -720,7 +748,8 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         self.analyse()
         for boite in (self.app.x_choice, self.app.y_choice,
                       self.app.equity_x, self.app.equity_y):
-            self.assertIn("Prime exceptionnelle", list(boite.cget("values")))
+            offerts = list(boite.cget("values"))
+            self.assertEqual(offerts.count("Prime exceptionnelle"), 1, offerts)
         # Et le nuage se trace dessus.
         champs = [axis["field"] for axis in self.app._scatter_axes]
         self.app.y_choice.current(champs.index("prime_exceptionnelle"))

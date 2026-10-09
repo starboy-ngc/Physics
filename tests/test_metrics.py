@@ -1046,3 +1046,94 @@ class TestTheAxesOfferedAreThoseTheFileCarries(unittest.TestCase):
         tous = [a["field"] for a in scatter_axes(config)]
         offerts = [a["field"] for a in available_axes(population, config)]
         self.assertEqual(offerts, [c for c in tous if c in offerts])
+
+
+class TestAnyNumericColumnOfTheFileIsAnAxis(unittest.TestCase):
+    """Les listes X et Y ne proposaient que des champs déclarés : un
+    coefficient, un horaire, une prime demandaient de passer par les
+    paramètres. Toute colonne chiffrée du fichier est proposée sous son
+    intitulé, sans rien déclarer, et le nuage sait la lire."""
+
+    def setUp(self):
+        from hr_analytics.core.mapping import resolve_mapping
+        from hr_analytics.core.normalize import normalise_table
+        from hr_analytics.io.tabular import Table
+
+        self.config = make_config()
+        self.headers = list(HEADERS) + ["Points", "Commentaire", "Vide"]
+        self.rows = [list(make_row(i, salary=30000 + i * 500))
+                     + [10 + i, "texte", ""] for i in range(40)]
+        self.table = Table(headers=self.headers, rows=self.rows)
+        self.mapping = resolve_mapping(self.headers, self.config)
+        self.population = normalise_table(self.headers, self.rows,
+                                          self.mapping, self.config)
+        self.index = self.headers.index("Points")
+
+    def test_a_numeric_unmapped_column_is_offered_under_its_header(self):
+        from hr_analytics.core.metrics import FILE_AXIS, file_axes
+
+        axes = file_axes(self.table, self.mapping, self.config)
+        self.assertEqual([a["label"] for a in axes], ["Points"])
+        self.assertEqual(axes[0]["field"], f"{FILE_AXIS}{self.index}")
+        self.assertEqual(axes[0]["kind"], "number")
+
+    def test_text_and_empty_columns_are_not(self):
+        from hr_analytics.core.metrics import file_axes
+
+        libelles = [a["label"] for a in file_axes(self.table, self.mapping,
+                                                  self.config)]
+        self.assertNotIn("Commentaire", libelles)
+        self.assertNotIn("Vide", libelles)
+
+    def test_a_mapped_column_is_not_offered_twice(self):
+        from hr_analytics.core.metrics import file_axes
+
+        colonnes = {a["column"] for a in file_axes(self.table, self.mapping,
+                                                   self.config)}
+        self.assertNotIn(self.headers.index("Salaire de base"), colonnes)
+
+    def test_a_column_with_one_stray_text_is_not_a_number(self):
+        from hr_analytics.core.metrics import file_axes
+
+        self.rows[3][self.index] = "n/a"
+        self.assertEqual(file_axes(self.table, self.mapping, self.config), [])
+
+    def test_column_values_follow_the_source_row_numbers(self):
+        from hr_analytics.core.metrics import column_values
+
+        valeurs = column_values(self.table, self.index)
+        self.assertEqual(valeurs[2], 10.0)        # premiere ligne de donnees
+        self.assertEqual(valeurs[41], 49.0)
+        self.assertEqual(len(valeurs), 40)
+
+    def test_the_cloud_can_be_drawn_on_it(self):
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.core.metrics import (column_values, file_axes,
+                                               scatter_dataset)
+
+        axes = file_axes(self.table, self.mapping, self.config)
+        champ = axes[0]["field"]
+        données = self.config.as_dict()
+        données["chart_parameters"]["scatter_y"] = champ
+        extra = {"axes": axes,
+                 "values": {champ: column_values(self.table, self.index)}}
+        nuage = scatter_dataset(self.population, Configuration(données),
+                                extra=extra)
+        self.assertTrue(nuage["available"], nuage.get("warning"))
+        self.assertEqual(len(nuage["points"]), 40)
+        self.assertEqual(nuage["y_axis"]["label"], "Points")
+        par_ligne = {p["row"]: p["y"] for p in nuage["points"]}
+        self.assertEqual(par_ligne[2], 10.0)
+        self.assertEqual(par_ligne[41], 49.0)
+
+    def test_without_extra_a_file_axis_is_just_empty(self):
+        """Le salarié ne porte que ses champs déclarés : sans les valeurs
+        de la colonne, le moteur le dit, il n'invente rien."""
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.core.metrics import scatter_dataset
+
+        données = self.config.as_dict()
+        données["chart_parameters"]["scatter_y"] = f"colonne:{self.index}"
+        nuage = scatter_dataset(self.population, Configuration(données))
+        self.assertFalse(nuage["available"])
+        self.assertEqual(nuage["points"], [])
