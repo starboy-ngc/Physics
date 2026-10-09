@@ -28,8 +28,7 @@ from ..core import palette
 from ..core.mapping import normalise_label
 from ..core.normalize import Employee
 from ..core.metrics import SEGMENT_ORDERS
-from ..core.segmentation import (CORE_FIELDS, dimension_label,
-                                 max_filter_values)
+from ..core.segmentation import dimension_label, max_filter_values
 from . import theme
 from .theme import (Card, CheckRow, Fonts, TabBar, attach_scrollbar,
                     bind_wheel)
@@ -72,9 +71,16 @@ _DERIVED_LABELS = {
 
 
 def candidate_fields(config: Configuration) -> List[str]:
-    """Champs auxquels une colonne du fichier peut etre associee."""
+    """Champs auxquels une colonne du fichier peut etre associee.
+
+    Ce sont ceux que la configuration declare, et eux seuls. La liste
+    unissait les champs du modele : « Variable » et « Période » y
+    figuraient alors meme que la configuration livree ne les porte plus,
+    et un champ retire du parametrage y revenait. La configuration fait
+    foi ; les champs calcules n'y sont pas, aucune colonne ne les porte.
+    """
     declared = list(config.get("population_mapping.fields", {}) or {})
-    return sorted((set(declared) | set(CORE_FIELDS)) - set(DERIVED_FIELDS))
+    return sorted(set(declared) - set(DERIVED_FIELDS))
 
 
 def default_label(config: Configuration, field_name: str) -> str:

@@ -875,9 +875,15 @@ disparue, et Tk l'annonçait dans une fenêtre d'erreur.
 
 **Aucun champ d'organisation n'est livré d'office.** `DEFAULTS` et
 `config/` ne portent que les champs avec lesquels le moteur calcule
-(identité, sexe, dates, temps de travail, montants, manager, période) et
-les trois dimensions qu'il sait calculer (sexe, tranches d'âge et
-d'ancienneté). BU, établissement, métier, poste, statut naissent de l'écran
+(identité, sexe, dates, temps de travail, salaire de base, rémunération
+totale, manager) et les trois dimensions qu'il sait calculer (sexe,
+tranches d'âge et d'ancienneté). Deux champs du modèle restent connus du
+moteur sans être livrés, `period` et `variable_pay` : ils encombraient la
+liste des rôles, et les ajouter à `population_mapping.json` suffit à les
+faire revenir. Cette liste (`settings.candidate_fields`) ne propose que
+les champs que la configuration déclare, moins les champs calculés : elle
+unissait les champs du modèle, et un champ retiré du paramétrage y
+revenait. BU, établissement, métier, poste, statut naissent de l'écran
 « Associer les colonnes », rôle « Organisation », et
 `segmentation.organisational_dimensions` les liste dans leur ordre. Les
 réglages qui nomment un champ sont vides à la livraison et se replient

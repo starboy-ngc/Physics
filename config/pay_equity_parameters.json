@@ -48,11 +48,6 @@
       "kind": "money"
     },
     {
-      "field": "variable_pay",
-      "label": "Part variable",
-      "kind": "money"
-    },
-    {
       "field": "total_compensation",
       "label": "Rémunération totale",
       "kind": "money"

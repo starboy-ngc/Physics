@@ -34,15 +34,6 @@
       "Date de fin",
       "Leave date"
     ],
-    "period": [
-      "Période",
-      "Periode",
-      "Period",
-      "Date d'effet",
-      "Mois",
-      "Année",
-      "Annee"
-    ],
     "manager": [
       "Manager",
       "Responsable",
@@ -60,10 +51,6 @@
     "base_salary": [
       "Salaire de base",
       "Base salary"
-    ],
-    "variable_pay": [
-      "Variable",
-      "Variable pay"
     ],
     "total_compensation": [
       "Rémunération totale",
@@ -88,12 +75,10 @@
   "numeric": [
     "fte",
     "base_salary",
-    "variable_pay",
     "total_compensation"
   ],
   "money": [
     "base_salary",
-    "variable_pay",
     "total_compensation"
   ],
   "date": [

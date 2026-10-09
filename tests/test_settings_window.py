@@ -1602,3 +1602,68 @@ class TestForgettingAColumnSticks(SettingsCase):
         self.window.save()
         self.assertIn("total_compensation",
                       candidate_fields(load_configuration(self.directory)))
+
+
+class TestTheRoleListFollowsTheDeliveredParameters(SettingsCase):
+    """« Variable » et « Période » figuraient dans la liste des rôles de
+    chaque colonne, alors que la configuration livrée ne les porte plus :
+    la liste unissait les champs du modèle à ceux du paramétrage. Elle ne
+    doit proposer que ce que le paramétrage déclare, et un champ qu'on y
+    redéclare doit revenir.
+    """
+
+    COLONNES = ["Matricule", "Sexe", "Salaire de base", "Variable",
+                "Période"]
+
+    def setUp(self):
+        super().setUp()
+        self.window.destroy()
+        from hr_analytics.core.config import (load_configuration,
+                                              write_default_configuration)
+
+        write_default_configuration(self.directory)
+        self.configuration = load_configuration(self.directory)
+        self._ouvrir()
+
+    def _ouvrir(self):
+        from hr_analytics.ui.settings import SettingsWindow
+        from hr_analytics.ui.theme import Fonts
+
+        self.window = SettingsWindow(self.root, self.configuration,
+                                     self.directory, Fonts(self.root),
+                                     headers=self.COLONNES)
+        self.root.update()
+
+    def test_neither_variable_nor_period_is_a_role(self):
+        offerts = list(self.window._boxes[0].cget("values"))
+        self.assertNotIn("Variable", offerts)
+        self.assertNotIn("Période", offerts)
+        self.assertIn("Salaire de base", offerts)
+        self.assertNotIn("variable_pay", self.window._labels)
+        self.assertNotIn("period", self.window._labels)
+
+    def test_such_columns_are_left_alone(self):
+        """Le témoin : la colonne n'est rattachée à rien, et l'écran le dit
+        en ambre, comme pour toute colonne inconnue."""
+        from hr_analytics.ui import theme
+        from hr_analytics.ui.settings import IGNORED
+
+        for colonne in ("Variable", "Période"):
+            self.assertEqual(self.window.assignments[colonne].get(), IGNORED)
+            étiquette = self.window._labels_widgets[colonne]
+            self.assertEqual(str(étiquette.cget("foreground")), theme.WARN)
+        self.assertEqual(self.window.assignments["Salaire de base"].get(),
+                         "Salaire de base")
+
+    def test_a_field_declared_again_in_the_parameters_comes_back(self):
+        from hr_analytics.core.config import Configuration
+
+        self.window.destroy()
+        données = self.configuration.as_dict()
+        données["population_mapping"]["fields"]["period"] = ["Période"]
+        self.configuration = Configuration(données)
+        self._ouvrir()
+        self.assertIn("Période", list(self.window._boxes[0].cget("values")))
+        self.assertEqual(self.window.assignments["Période"].get(), "Période")
+        section = self.window.collect()
+        self.assertEqual(section["fields"]["period"], ["Période"])

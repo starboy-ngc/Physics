@@ -14,6 +14,12 @@ import json
 import os
 import unittest
 
+try:
+    import tkinter  # noqa: F401
+    HAS_TK = True
+except ImportError:
+    HAS_TK = False
+
 from tests.support import (CONFIG_DIR, HEADERS, build_population,
                            make_config, make_row)
 
@@ -169,3 +175,105 @@ class TestTheEngineFallsBackOnWhatIsDeclared(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+#: Deux champs du modele que le moteur connait sans qu'ils soient livres :
+#: la periode d'observation et la part variable. Ils encombraient la liste
+#: des roles de l'ecran « Associer les colonnes » sans que personne ne les
+#: demande. Les ajouter au fichier de parametres suffit a les faire revenir.
+DORMANTS = {"period", "variable_pay"}
+
+DERIVES = {"age_years", "age_band", "tenure_years", "tenure_band"}
+
+
+class TestTheDormantModelFieldsAreNotDelivered(unittest.TestCase):
+    def test_neither_period_nor_variable_pay_is_delivered(self):
+        champs = set(DEFAULTS["population_mapping"]["fields"])
+        self.assertEqual(champs & DORMANTS, set())
+
+    def test_no_delivered_setting_names_a_field_the_delivery_lacks(self):
+        """Une liste de montants ou d'axes qui nomme un champ sans colonne
+        pose une ligne vide a l'ecran et une colonne vide au classeur."""
+        declares = set(DEFAULTS["population_mapping"]["fields"]) | DERIVES
+        mapping = DEFAULTS["population_mapping"]
+        for liste in ("numeric", "money", "date", "personal", "required"):
+            self.assertLessEqual(set(mapping[liste]), declares, liste)
+        equite = DEFAULTS["pay_equity_parameters"]
+        self.assertLessEqual({c["field"] for c in equite["people_columns"]},
+                             declares)
+        self.assertLessEqual({c["field"] for c in equite["profile_fields"]},
+                             declares)
+        graphes = DEFAULTS["chart_parameters"]
+        self.assertIn(graphes["scatter_x"], declares)
+        self.assertIn(graphes["scatter_y"], declares)
+
+    def test_a_dormant_field_declared_again_is_read_as_such(self):
+        """Le moteur les connait toujours : une periode declaree dans le
+        fichier de parametres redevient une periode, et non une notion
+        d'organisation de plus."""
+        from hr_analytics.core.mapping import resolve_mapping
+        from hr_analytics.core.normalize import normalise_table, periods_of
+
+        config = _avec_periode()
+        en_têtes = list(HEADERS) + ["Période"]
+        mapping = resolve_mapping(en_têtes, config)
+        self.assertEqual(mapping.field_to_column.get("period"), "Période")
+        lignes = [list(make_row(i)) + [("2025", "2026")[i % 2]]
+                  for i in range(40)]
+        population = normalise_table(en_têtes, lignes, mapping, config)
+        self.assertEqual(periods_of(population), ["2025", "2026"])
+
+    def test_the_pay_equity_table_lives_without_a_variable_field(self):
+        """Sans colonne de part variable, l'indicateur reste vide et le
+        reste du tableau se calcule."""
+        from hr_analytics.core.mapping import resolve_mapping
+        from hr_analytics.core.normalize import normalise_table
+        from hr_analytics.core.pay_equity import calculate_pay_equity
+
+        config = _usine()
+        mapping = resolve_mapping(HEADERS, config)
+        lignes = [make_row(i, gender="F" if i % 2 else "H")
+                  for i in range(40)]
+        population = normalise_table(HEADERS, lignes, mapping, config)
+        tableau = calculate_pay_equity(population, config)
+        self.assertFalse(tableau["variable"]["published"])
+        self.assertTrue(tableau["pay"]["published"])
+
+
+def _avec_periode() -> Configuration:
+    """La configuration livree, plus le champ « period » redeclare."""
+    import copy
+
+    données = copy.deepcopy(DEFAULTS)
+    données["population_mapping"]["fields"]["period"] = ["Période"]
+    return Configuration(données)
+
+
+@unittest.skipUnless(HAS_TK, "tkinter absent")
+class TestTheRoleListFollowsTheConfiguration(unittest.TestCase):
+    """La liste des roles de l'ecran « Associer les colonnes » ne propose
+    que ce que la configuration declare : le modele ne rajoute rien."""
+
+    def test_the_role_list_only_offers_what_the_configuration_declares(self):
+        from hr_analytics.ui.settings import candidate_fields
+
+        offerts = candidate_fields(_usine())
+        self.assertEqual(set(offerts) & DORMANTS, set())
+        self.assertEqual(set(offerts) & DERIVES, set())
+        self.assertIn("base_salary", offerts)
+        self.assertIn("manager", offerts)
+
+    def test_a_field_removed_from_the_parameters_is_not_offered(self):
+        import copy
+
+        from hr_analytics.ui.settings import candidate_fields
+
+        données = copy.deepcopy(DEFAULTS)
+        del données["population_mapping"]["fields"]["manager"]
+        self.assertNotIn("manager",
+                         candidate_fields(Configuration(données)))
+
+    def test_a_dormant_field_declared_again_is_offered(self):
+        from hr_analytics.ui.settings import candidate_fields
+
+        self.assertIn("period", candidate_fields(_avec_periode()))

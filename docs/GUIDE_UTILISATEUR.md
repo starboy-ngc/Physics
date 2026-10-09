@@ -53,8 +53,11 @@ la forme : un logo qui se déforme n'est plus un logo.
 Un onglet, une ligne par salarié, une ligne d'en-têtes. Colonnes reconnues
 d'office : celles avec lesquelles l'outil calcule, et elles seules :
 Matricule, Nom, Prénom, Sexe, Date de naissance, Date d'entrée, Date de
-sortie, Temps de travail, Salaire de base, Variable, Rémunération totale,
-Manager, Période.
+sortie, Temps de travail, Salaire de base, Rémunération totale, Manager.
+Ce sont aussi les seuls rôles que propose l'écran « Associer les
+colonnes… », avec « Organisation », « Montant » et « Nouveau champ » : la
+liste suit le paramétrage, et un champ retiré de `population_mapping.json`
+n'y revient pas.
 
 **Aucune notion d'organisation n'est livrée d'office** : ni BU, ni
 établissement, ni métier, ni poste, ni statut. Ce que votre fichier porte en
@@ -714,10 +717,26 @@ les coche pas.
 
 ## 5 sexies. Plusieurs périodes dans un même fichier
 
-Déclarez une colonne **Période** (« Periode », « Date d'effet », « Mois »,
-« Année »…, les intitulés acceptés sont dans `population_mapping.json`) et
-le fichier peut porter plusieurs années : une ligne par salarié et par
-période.
+Le champ **Période** n'est pas livré d'office : il encombrait la liste des
+rôles sans que personne ne le demande. Pour l'activer, ajoutez-le à la main
+dans `population_mapping.json`, bloc `fields` :
+
+```json
+"period": ["Période", "Date d'effet"]
+```
+
+Le rôle « Période » apparaît alors dans l'écran « Associer les colonnes… »,
+la colonne portant l'un de ces intitulés est reconnue, et le fichier peut
+porter plusieurs années : une ligne par salarié et par période. La part
+variable (indicateur c) de la directive) se réactive de la même façon,
+avec `"variable_pay": ["Variable"]` dans `fields`, `numeric` et `money`.
+
+À l'inverse, sur un poste où une version antérieure a déjà écrit sa
+configuration (elle vit au-dessus des versions et survit aux mises à jour),
+les deux champs y restent déclarés et la liste des rôles continue de les
+proposer. Pour les retirer : supprimez les lignes `"period"` et
+`"variable_pay"` de `population_mapping.json`, ou passez par
+Paramètres → Réglages d'usine…, qui repart de la configuration livrée.
 
 Ce qui change :
 

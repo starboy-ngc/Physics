@@ -49,12 +49,16 @@ DEFAULTS: Dict[str, Any] = {
             # les colonnes » (role « Organisation »), et c'est le seul
             # endroit ou ces notions naissent. Ne restent ici que les
             # champs avec lesquels le moteur calcule.
-            # Periode d'observation. Facultative : sans elle, le fichier est
-            # un instantane et l'outil se comporte comme avant. Avec elle,
-            # un meme salarie peut figurer plusieurs fois — une ligne par
-            # periode — et l'identite devient le couple matricule + periode.
-            "period": ["Période", "Periode", "Period", "Date d'effet",
-                       "Mois", "Année", "Annee"],
+            #
+            # Deux champs du modele ne sont pas livres : « period » (une
+            # ligne par salarie et par periode, l'identite devient le
+            # couple matricule + periode) et « variable_pay » (la part
+            # variable, indicateur c) de la directive). Ils encombraient la
+            # liste des roles de l'ecran « Associer les colonnes » sans que
+            # personne ne les demande. Le moteur les connait toujours : il
+            # suffit de les ajouter ici pour qu'ils reviennent,
+            #   "period": ["Période", "Date d'effet"],
+            #   "variable_pay": ["Variable"]   (et dans numeric + money).
             # Matricule du responsable hierarchique. Facultatif : avec lui,
             # l'arbre se reconstruit du plus haut au plus bas, et l'equipe
             # d'un manager devient une population analysable.
@@ -67,7 +71,6 @@ DEFAULTS: Dict[str, Any] = {
             "fte": ["Temps de travail", "Tx Activité", "Taux d'activité",
                     "Taux activité", "FTE"],
             "base_salary": ["Salaire de base", "Base salary"],
-            "variable_pay": ["Variable", "Variable pay"],
             "total_compensation": ["Rémunération totale",
                                    "Total compensation"],
         },
@@ -90,12 +93,12 @@ DEFAULTS: Dict[str, Any] = {
         # ici. Sans matricule, le controle qualite dit que le suivi des
         # doublons n'est pas possible, et l'analyse se poursuit.
         "required": [],
-        "numeric": ["fte", "base_salary", "variable_pay", "total_compensation"],
+        "numeric": ["fte", "base_salary", "total_compensation"],
         # Parmi les champs numeriques, ceux qui portent un montant. Ils
         # s'ecrivent en monnaie dans les exports et recoivent une colonne
         # dans l'onglet des donnees individuelles. « fte » est numerique
         # sans etre un montant : ecrit en euros il ne voudrait rien dire.
-        "money": ["base_salary", "variable_pay", "total_compensation"],
+        "money": ["base_salary", "total_compensation"],
         "date": ["birth_date", "hire_date", "leave_date"],
         "personal": ["last_name", "first_name", "birth_date", "employee_id"],
         # Encodages essayes a la lecture d'un CSV, dans l'ordre. Voir
@@ -205,6 +208,10 @@ DEFAULTS: Dict[str, Any] = {
         "gender_field": "gender",
         "female_values": ["F", "Femme", "Female", "W", "Mme"],
         "male_values": ["H", "M", "Homme", "Male", "Mr"],
+        # Champ du modele qui porte la part variable. Il ne vit que si une
+        # colonne le porte, c'est-a-dire s'il est declare dans
+        # population_mapping.fields (voir le commentaire de ce bloc) ; sans
+        # colonne, l'indicateur reste vide et rien ne le mentionne.
         "variable_field": "variable_pay",
         # Categorie de « travail de meme valeur » au sens de la directive :
         # le poste, le metier, le grade. Vide, le moteur prend la premiere
@@ -243,8 +250,6 @@ DEFAULTS: Dict[str, Any] = {
         ],
         "profile_fields": [
             {"field": "base_salary", "label": "Salaire de base",
-             "kind": "money"},
-            {"field": "variable_pay", "label": "Part variable",
              "kind": "money"},
             {"field": "total_compensation", "label": "Rémunération totale",
              "kind": "money"},
