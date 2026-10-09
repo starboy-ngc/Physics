@@ -953,6 +953,27 @@ def scatter_axes(config: Configuration) -> List[Dict[str, str]]:
     return axes
 
 
+def available_axes(population: Population,
+                   config: Configuration) -> List[Dict[str, str]]:
+    """Les axes du nuage que ce fichier renseigne vraiment.
+
+    `scatter_axes` dit ce que la configuration permet ; ici, ce que la
+    population porte. Les listes X et Y proposaient « Rémunération
+    totale » ou « Temps de travail » a qui n'a aucune de ces colonnes, et
+    les choisir donnait un nuage vide : du standard, la ou tout le reste
+    de l'ecran suit le fichier charge. Un axe est propose si au moins un
+    salarie y porte un nombre.
+    """
+    axes = []
+    for axis in scatter_axes(config):
+        champ = axis["field"]
+        if any(isinstance(employee.value(champ), (int, float))
+               and not isinstance(employee.value(champ), bool)
+               for employee in population):
+            axes.append(axis)
+    return axes
+
+
 def _axis_of(config: Configuration, field_name: str) -> Dict[str, str]:
     """Libelle et unite d'un axe, declares ou deduits."""
     for axis in scatter_axes(config):

@@ -391,13 +391,16 @@ class TestAFileWithoutAnyDeclaredNotion(EquityCase):
 
 class TestTheScatterOfThisPage(EquityCase):
     def test_the_axes_are_the_ones_of_the_other_page(self):
-        """Une seconde liste de champs aurait fini par différer."""
+        """Une seconde liste de champs aurait fini par différer : les deux
+        pages proposent les axes que ce fichier renseigne, et eux seuls."""
         from hr_analytics.core import metrics
 
-        attendus = [axis["label"] for axis
-                    in metrics.scatter_axes(self.app.configuration)]
+        attendus = [axis["label"] for axis in metrics.available_axes(
+            self.app.result.filtered, self.app.configuration)]
+        self.assertTrue(attendus)
         self.assertEqual(list(self.app.equity_x.cget("values")), attendus)
         self.assertEqual(list(self.app.equity_y.cget("values")), attendus)
+        self.assertEqual(list(self.app.x_choice.cget("values")), attendus)
 
     def test_changing_an_axis_recomputes_the_cloud(self):
         from hr_analytics.core import metrics

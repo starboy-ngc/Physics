@@ -3178,7 +3178,8 @@ class Application(tk.Tk):
             self.equity_jobs = [poste for poste in self.equity_jobs
                                 if poste in postes] or None
         self._label_equity_jobs()
-        self._scatter_axes = metrics.scatter_axes(self.configuration)
+        self._scatter_axes = metrics.available_axes(self.result.filtered,
+                                                    self.configuration)
         self._fill_axis_box(self.equity_x, self.configuration.get(
             "chart_parameters.scatter_x", "tenure_years"))
         self._fill_axis_box(self.equity_y, self.configuration.get(
@@ -3752,7 +3753,10 @@ class Application(tk.Tk):
         self._build_legend()
 
     def _show_scatter(self, dataset: Dict[str, Any], currency: str) -> None:
-        self._scatter_axes = metrics.scatter_axes(self.configuration)
+        # Les axes que ce fichier renseigne, et eux seuls : une grandeur
+        # du modele sans colonne ne fait pas un axe.
+        self._scatter_axes = metrics.available_axes(self.result.filtered,
+                                                    self.configuration)
         self._fill_axis_box(self.x_choice, dataset.get("x_field", ""))
         self._fill_axis_box(self.y_choice, dataset.get("y_field", ""))
         fields = dimension_fields(self.configuration)

@@ -285,7 +285,9 @@ de `population_mapping.numeric` qui n'y figure pas, un montant posé depuis
 l'écran « Associer les colonnes » (rôle « Montant », unité monnaie s'il est
 dans `money`) ou une notion chiffrée comme un coefficient. Les listes X et
 Y ne lisaient que la première source, et un montant déclaré n'apparaissait
-nulle part. Les champs nominatifs en sont exclus :
+nulle part. À l'écran, `metrics.available_axes` ne garde que les axes
+qu'au moins un salarié renseigne : « Rémunération totale » n'est pas
+proposée à qui n'a pas la colonne. Les champs nominatifs en sont exclus :
 un nuage dont l'axe porte un matricule n'est pas un nuage, et sa légende
 entrerait dans les documents.
 

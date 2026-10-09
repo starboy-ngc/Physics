@@ -982,3 +982,67 @@ class TestADeclaredNumberBecomesAnAxis(unittest.TestCase):
         nuage = scatter_dataset(population, Configuration(données))
         self.assertEqual(nuage["y_field"], "prime_de_panier")
         self.assertEqual(len(nuage["points"]), 40)
+
+
+class TestTheAxesOfferedAreThoseTheFileCarries(unittest.TestCase):
+    """Les listes X et Y proposaient « Rémunération totale » ou « Temps de
+    travail » à qui n'a aucune de ces colonnes, et les choisir donnait un
+    nuage vide. Un axe est proposé si au moins un salarié y porte un
+    nombre."""
+
+    def _population(self, **extra):
+        from hr_analytics.core.config import Configuration
+        from hr_analytics.core.mapping import resolve_mapping
+        from hr_analytics.core.normalize import normalise_table
+
+        données = make_config().as_dict()
+        mapping = données["population_mapping"]
+        en_têtes = list(HEADERS)
+        lignes = [list(make_row(i, salary=30000 + i * 500)) for i in range(20)]
+        for champ, (intitulé, valeurs) in extra.items():
+            mapping["fields"][champ] = [intitulé]
+            mapping["numeric"] = list(mapping["numeric"]) + [champ]
+            mapping["money"] = list(mapping["money"]) + [champ]
+            en_têtes.append(intitulé)
+            for rang, ligne in enumerate(lignes):
+                ligne.append(valeurs(rang))
+        config = Configuration(données)
+        population = normalise_table(en_têtes, lignes,
+                                     resolve_mapping(en_têtes, config), config)
+        return population, config
+
+    def test_a_quantity_without_a_column_is_not_offered(self):
+        from hr_analytics.core.metrics import available_axes, scatter_axes
+
+        population, config = self._population()
+        offerts = [a["field"] for a in available_axes(population, config)]
+        self.assertIn("base_salary", offerts)
+        self.assertIn("tenure_years", offerts)
+        self.assertIn("age_years", offerts)
+        self.assertNotIn("total_compensation", offerts)
+        self.assertNotIn("fte", offerts)
+        # Le témoin : la configuration, elle, les permet toujours.
+        self.assertIn("total_compensation",
+                      [a["field"] for a in scatter_axes(config)])
+
+    def test_a_declared_amount_the_file_fills_is_offered(self):
+        from hr_analytics.core.metrics import available_axes
+
+        population, config = self._population(
+            prime=("Prime", lambda rang: 100 + rang))
+        self.assertIn("prime", [a["field"] for a in available_axes(population, config)])
+
+    def test_a_declared_amount_nobody_fills_is_not(self):
+        from hr_analytics.core.metrics import available_axes
+
+        population, config = self._population(
+            prime=("Prime", lambda rang: ""))
+        self.assertNotIn("prime", [a["field"] for a in available_axes(population, config)])
+
+    def test_the_order_of_the_configuration_is_kept(self):
+        from hr_analytics.core.metrics import available_axes, scatter_axes
+
+        population, config = self._population()
+        tous = [a["field"] for a in scatter_axes(config)]
+        offerts = [a["field"] for a in available_axes(population, config)]
+        self.assertEqual(offerts, [c for c in tous if c in offerts])

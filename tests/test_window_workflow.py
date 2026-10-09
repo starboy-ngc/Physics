@@ -680,6 +680,20 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         fenêtre.update()
         return fenêtre
 
+    def test_the_axes_offered_are_those_the_file_carries(self):
+        """« Rémunération totale » et « Temps de travail » étaient proposés
+        à qui n'a aucune de ces colonnes : du standard, là où tout le reste
+        de l'écran suit le fichier chargé."""
+        self.load(self._fichier())
+        self.analyse()
+        for boite in (self.app.x_choice, self.app.y_choice,
+                      self.app.equity_x, self.app.equity_y):
+            offerts = list(boite.cget("values"))
+            self.assertIn("Salaire de base", offerts)
+            self.assertIn("Ancienneté", offerts)
+            self.assertNotIn("Rémunération totale", offerts)
+            self.assertNotIn("Temps de travail", offerts)
+
     def test_a_declared_amount_reaches_the_scatter_axes(self):
         """Les listes X et Y du nuage ne suivaient pas ce qui est déclaré :
         une prime posée en « Montant » n'y apparaissait pas, alors que les
@@ -1127,14 +1141,31 @@ class TestTheScatterAxes(WindowCase):
         self._ouvrir()
         données = self.app.configuration.as_dict()
         données["chart_parameters"]["scatter_x"] = "age_years"
-        données["chart_parameters"]["scatter_y"] = "variable_pay"
+        données["chart_parameters"]["scatter_y"] = "base_salary"
         from hr_analytics.core.config import Configuration
 
         self.app.configuration = Configuration(données)
         self.app._reset_scatter()
         self.app.update()
         self.assertEqual(self.app.scatter.dataset["x_field"], "age_years")
-        self.assertEqual(self.app.scatter.dataset["y_field"], "variable_pay")
+        self.assertEqual(self.app.scatter.dataset["y_field"], "base_salary")
+
+    def test_a_default_axis_the_file_does_not_fill_falls_back(self):
+        """Un axe réglé par défaut qu'aucune colonne ne porte ne fait pas
+        un nuage vide : le premier axe que le fichier renseigne le
+        remplace."""
+        self._ouvrir()
+        données = self.app.configuration.as_dict()
+        données["chart_parameters"]["scatter_y"] = "variable_pay"
+        from hr_analytics.core.config import Configuration
+
+        self.app.configuration = Configuration(données)
+        self.app._reset_scatter()
+        self.app.update()
+        offerts = [axis["field"] for axis in self.app._scatter_axes]
+        self.assertNotIn("variable_pay", offerts)
+        self.assertIn(self.app.scatter.dataset["y_field"], offerts)
+        self.assertTrue(self.app.scatter.dataset["points"])
 
 
 class TestAnOverviewWithOnlyOneHalfPublished(WindowCase):

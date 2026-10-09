@@ -367,9 +367,11 @@ tranches différentes ne se compareraient pas, et les barres sauteraient
 d'une ligne à l'autre en changeant de poste.
 
 **Nuage de points.** Deux axes au choix, dans la même liste de champs que
-l'onglet Graphiques : les grandeurs du moteur (salaire de base, rémunération
-totale, ancienneté, âge, temps de travail), puis tout ce que vous avez
-déclaré en « Montant » ou comme notion chiffrée. Les notions de texte
+l'onglet Graphiques : les grandeurs du moteur que votre fichier renseigne
+(salaire de base, rémunération totale, ancienneté, âge, temps de travail),
+puis tout ce que vous avez déclaré en « Montant » ou comme notion chiffrée.
+Une grandeur qu'aucune colonne ne porte n'est pas proposée : sans date
+d'entrée, pas d'axe « Ancienneté ». Les notions de texte
 (région, métier, statut) ne s'y portent pas : un nuage se trace entre deux
 quantités, et c'est la page Comparaison qui met une notion en abscisse.
 La couleur, elle, n'est pas au choix : c'est le sexe,
