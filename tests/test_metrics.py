@@ -2,7 +2,7 @@
 
 import unittest
 
-from tests.support import build_population, make_config, make_row
+from tests.support import HEADERS, build_population, make_config, make_row
 from hr_analytics.core import metrics
 from hr_analytics.core.segmentation import build_filters, apply_filters, split_by
 
@@ -920,3 +920,65 @@ class TestTheBottomBandIsNeverMissing(unittest.TestCase):
         self.assertEqual(tranches["<20"]["count"], 1)
         self.assertFalse(any(ligne.get("catch_all") and ligne["count"]
                              for ligne in bloc["age_bands"]))
+
+
+class TestADeclaredNumberBecomesAnAxis(unittest.TestCase):
+    """Les listes X et Y du nuage ne proposaient que les grandeurs du
+    moteur : un montant déclaré depuis « Associer les colonnes » (rôle
+    « Montant ») n'apparaissait nulle part, alors que le rôle promettait un
+    champ d'analyse. Les autres listes suivent ce qui est déclaré ; celles-ci
+    aussi."""
+
+    def _config(self):
+        données = make_config().as_dict()
+        mapping = données["population_mapping"]
+        mapping["fields"]["prime_de_panier"] = ["Prime de panier"]
+        mapping["numeric"] = list(mapping["numeric"]) + ["prime_de_panier"]
+        mapping["money"] = list(mapping["money"]) + ["prime_de_panier"]
+        from hr_analytics.core.config import Configuration
+
+        return Configuration(données)
+
+    def test_a_declared_amount_is_offered_as_money(self):
+        from hr_analytics.core.metrics import scatter_axes
+
+        axes = {axis["field"]: axis for axis in scatter_axes(self._config())}
+        self.assertIn("prime_de_panier", axes)
+        self.assertEqual(axes["prime_de_panier"]["label"], "Prime de panier")
+        self.assertEqual(axes["prime_de_panier"]["kind"], "money")
+
+    def test_a_declared_number_is_offered_as_a_number(self):
+        """Le coefficient de la configuration d'essai est numérique sans
+        être un montant : il se porte en axe, sans symbole monétaire."""
+        from hr_analytics.core.metrics import scatter_axes
+
+        axes = {axis["field"]: axis for axis in scatter_axes(make_config())}
+        self.assertIn("coefficient", axes)
+        self.assertEqual(axes["coefficient"]["kind"], "number")
+
+    def test_the_engine_quantities_come_first_and_once(self):
+        from hr_analytics.core.metrics import scatter_axes
+
+        champs = [axis["field"] for axis in scatter_axes(self._config())]
+        self.assertEqual(len(champs), len(set(champs)))
+        self.assertEqual(champs[0], "base_salary")
+        self.assertLess(champs.index("fte"), champs.index("prime_de_panier"))
+
+    def test_the_cloud_can_be_drawn_on_it(self):
+        from hr_analytics.core.metrics import scatter_dataset
+        from hr_analytics.core.mapping import resolve_mapping
+        from hr_analytics.core.normalize import normalise_table
+
+        config = self._config()
+        en_têtes = list(HEADERS) + ["Prime de panier"]
+        lignes = [list(make_row(i, salary=30000 + i * 500)) + [100 + i]
+                  for i in range(40)]
+        population = normalise_table(en_têtes, lignes,
+                                     resolve_mapping(en_têtes, config), config)
+        données = config.as_dict()
+        données["chart_parameters"]["scatter_y"] = "prime_de_panier"
+        from hr_analytics.core.config import Configuration
+
+        nuage = scatter_dataset(population, Configuration(données))
+        self.assertEqual(nuage["y_field"], "prime_de_panier")
+        self.assertEqual(len(nuage["points"]), 40)

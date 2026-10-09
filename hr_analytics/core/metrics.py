@@ -915,24 +915,41 @@ DEFAULT_AXIS_KIND = "number"
 def scatter_axes(config: Configuration) -> List[Dict[str, str]]:
     """Champs qu'on peut porter en abscisse ou en ordonnee du nuage.
 
-    Ils sont lus dans `pay_equity_parameters.profile_fields`, qui les
-    declare deja — champ, libelle et unite — pour la page des ecarts. Une
-    seconde liste ici aurait fini par en differer : une prime maison
-    ajoutee au parametrage serait apparue d'un cote et pas de l'autre.
+    Deux sources, dans cet ordre. Les grandeurs avec lesquelles le moteur
+    calcule viennent de `pay_equity_parameters.profile_fields`, qui les
+    declare deja, champ, libelle et unite, pour la page des ecarts. Puis
+    tout champ numerique declare au mapping qui n'y figure pas : une prime
+    maison posee depuis l'ecran « Associer les colonnes », role
+    « Montant », ou une notion chiffree comme un coefficient. Les listes
+    X et Y ne proposaient que la premiere source, et un montant declare
+    n'apparaissait nulle part alors que le role promettait un champ
+    d'analyse : les autres listes suivent ce qui est declare, celles-ci
+    doivent le faire aussi.
 
     Les champs nominatifs n'y figurent pas : un nuage dont l'axe porte un
     matricule n'est pas un nuage, et sa legende entrerait dans les
     documents.
     """
     personnels = set(personal_fields(config))
-    axes = []
+    axes: List[Dict[str, str]] = []
+    vus = set()
     for entry in config.get("pay_equity_parameters.profile_fields", []) or []:
         champ = str(entry.get("field") or "")
-        if not champ or champ in personnels:
+        if not champ or champ in personnels or champ in vus:
             continue
         axes.append({"field": champ,
                      "label": entry.get("label") or field_label(config, champ),
                      "kind": entry.get("kind") or DEFAULT_AXIS_KIND})
+        vus.add(champ)
+    montants = set(config.get("population_mapping.money", []) or [])
+    for champ in config.get("population_mapping.numeric", []) or []:
+        champ = str(champ or "")
+        if not champ or champ in personnels or champ in vus:
+            continue
+        axes.append({"field": champ, "label": field_label(config, champ),
+                     "kind": "money" if champ in montants
+                     else DEFAULT_AXIS_KIND})
+        vus.add(champ)
     return axes
 
 

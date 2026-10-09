@@ -361,7 +361,12 @@ tranches différentes ne se compareraient pas, et les barres sauteraient
 d'une ligne à l'autre en changeant de poste.
 
 **Nuage de points.** Deux axes au choix, dans la même liste de champs que
-l'onglet Graphiques. La couleur, elle, n'est pas au choix : c'est le sexe,
+l'onglet Graphiques : les grandeurs du moteur (salaire de base, rémunération
+totale, ancienneté, âge, temps de travail), puis tout ce que vous avez
+déclaré en « Montant » ou comme notion chiffrée. Les notions de texte
+(région, métier, statut) ne s'y portent pas : un nuage se trace entre deux
+quantités, et c'est la page Comparaison qui met une notion en abscisse.
+La couleur, elle, n'est pas au choix : c'est le sexe,
 dans les deux teintes employées partout ailleurs sur la page. Un
 comparatif femmes / hommes colorié par business unit ne comparerait rien.
 
@@ -424,8 +429,9 @@ Quatre rôles possibles :
   comme axe d'analyse. **C'est le cas courant.**
 - **Montant (rémunération, prime…)** : pour une prime maison, un treizième
   mois, une indemnité. La colonne est lue comme un nombre, écrite en monnaie
-  dans le classeur, et devient un champ d'analyse possible. Elle n'est pas
-  proposée comme axe : segmenter par « prime » ferait une modalité par
+  dans le classeur, et proposée en X et en Y du nuage de points, sur la page
+  Graphiques comme sur la page des écarts. Elle n'est pas proposée comme
+  axe de comparaison : segmenter par « prime » ferait une modalité par
   valeur distincte, c'est-à-dire une ligne par salarié.
 - **(ignorée)** : la colonne n'est pas lue. Une colonne ignorée ne pèse rien
   et n'apparaît nulle part.

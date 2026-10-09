@@ -278,10 +278,14 @@ doigts de l'utilisateur, ce qui se lit comme un défaut. Sans ce plancher, le
 cadrage d'origine respectait zéro mais un glissement promenait la fenêtre où
 il voulait.
 
-Ils sont lus dans `pay_equity_parameters.profile_fields`, qui les déclare
-déjà, champ, libellé et unité, pour la page des écarts. Une seconde liste
-aurait fini par en différer : une prime maison ajoutée au paramétrage serait
-apparue d'un côté et pas de l'autre. Les champs nominatifs en sont exclus :
+Ils viennent de deux sources, dans cet ordre (`metrics.scatter_axes`) :
+`pay_equity_parameters.profile_fields`, qui déclare déjà les grandeurs du
+moteur, champ, libellé et unité, pour la page des écarts ; puis tout champ
+de `population_mapping.numeric` qui n'y figure pas, un montant posé depuis
+l'écran « Associer les colonnes » (rôle « Montant », unité monnaie s'il est
+dans `money`) ou une notion chiffrée comme un coefficient. Les listes X et
+Y ne lisaient que la première source, et un montant déclaré n'apparaissait
+nulle part. Les champs nominatifs en sont exclus :
 un nuage dont l'axe porte un matricule n'est pas un nuage, et sa légende
 entrerait dans les documents.
 

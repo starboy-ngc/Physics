@@ -677,6 +677,42 @@ class TestMappingAColumnFromTheWindow(WindowCase):
         fenêtre.update()
         return fenêtre
 
+    def test_a_declared_amount_reaches_the_scatter_axes(self):
+        """Les listes X et Y du nuage ne suivaient pas ce qui est déclaré :
+        une prime posée en « Montant » n'y apparaissait pas, alors que les
+        autres listes suivent les notions déclarées."""
+        from hr_analytics.ui.settings import MONTANT
+
+        self.load(self._fichier())
+        self.analyse()
+        self.assertNotIn("Prime exceptionnelle",
+                         list(self.app.x_choice.cget("values")))
+        fenêtre = self._ecran()
+        try:
+            rang = [nom for nom in self.app.headers
+                    if str(nom).strip()].index("Prime exceptionnelle")
+            fenêtre.assignments["Prime exceptionnelle"].set(MONTANT)
+            fenêtre._chose("Prime exceptionnelle", fenêtre._boxes[rang])
+            fenêtre.update()
+            with Dialogs(directory=self.directory):
+                fenêtre.save()
+        finally:
+            if fenêtre.winfo_exists():
+                fenêtre.destroy()
+        self.app.update()
+        self.analyse()
+        for boite in (self.app.x_choice, self.app.y_choice,
+                      self.app.equity_x, self.app.equity_y):
+            self.assertIn("Prime exceptionnelle", list(boite.cget("values")))
+        # Et le nuage se trace dessus.
+        champs = [axis["field"] for axis in self.app._scatter_axes]
+        self.app.y_choice.current(champs.index("prime_exceptionnelle"))
+        self.app._reaxis()
+        self.app.update()
+        self.assertEqual(self.app.scatter.dataset["y_field"],
+                         "prime_exceptionnelle")
+        self.assertEqual(self.app.scatter.dataset["y_axis"]["kind"], "money")
+
     def test_the_window_is_enough_to_declare_a_column(self):
         from hr_analytics.ui.settings import ORGANISATION
 
