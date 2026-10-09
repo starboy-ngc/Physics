@@ -1,6 +1,6 @@
 # HR Analytics : dossier pour le RSSI
 
-**Version 1.0.0 · commit `76c66e3` · 5 octobre 2026**
+**Version 1.0.0 · commit `e81046c` · 9 octobre 2026**
 
 Ce document est destiné à une revue de sécurité. Il décrit ce que le logiciel
 est, ce qu'il fait, ce qu'il ne peut pas faire, et **comment le vérifier
@@ -20,7 +20,7 @@ contrôler sur le livrable lui-même.
 | **Réseau** | Aucun. La pile réseau est **absente** de l'interpréteur livré |
 | **Dépendances tierces** | Aucune. Bibliothèque standard Python uniquement |
 | **Données** | Restent sur le poste. Rien n'est transmis, mis en cache ailleurs, ni envoyé |
-| **Taille** | 21 272 lignes de Python, 40 fichiers, 48 suites de tests (21 592 lignes) |
+| **Taille** | 23 869 lignes de Python, 40 fichiers, 51 suites de tests (25 656 lignes) |
 | **Interpréteur** | CPython 3.12.7 (amd64), repris tel quel de python.org, puis allégé |
 | **Signature** | Le livrable fourni n'est **pas** signé (voir §9) |
 
@@ -45,13 +45,14 @@ configuration et celui que l'utilisateur désigne pour les documents.
 bibliothèque standard de Python. Pas de `pip`, pas de `requirements.txt`, rien
 à télécharger, aucune chaîne d'approvisionnement logicielle à surveiller.
 
-**Les 33 modules standard employés**, et rien d'autre :
+**Les 34 modules standard employés**, et rien d'autre (relevé du
+9 octobre 2026 par analyse syntaxique des 40 fichiers) :
 
 ```
 __future__  argparse  base64  collections  copy  csv  dataclasses  datetime
 functools   gc        hashlib html  io  json  logging  math  operator  os
 queue  re  secrets  stat  struct  sys  threading  time  tkinter  tkinter.font
-typing  unicodedata  xml.etree  zipfile  zlib
+traceback   typing    unicodedata  xml.etree  zipfile  zlib
 ```
 
 **La subtilité qui mérite d'être comprise.** Les formats produits ne viennent
@@ -445,6 +446,16 @@ elle est rangée à côté du modèle, jamais dessus.
 > côtés : le modèle n'écrit que dans ses champs déclarés, et la page
 > Paramètres refuse un nom que l'outil emploie déjà.
 
+Depuis l'audit du 9 octobre 2026, deux règles de plus. Le modèle ne porte
+plus aucun champ d'organisation (BU, établissement, métier, poste, statut) :
+tout ce que l'utilisateur déclare vit dans le dictionnaire de débordement,
+et un nom de colonne ne peut donc atteindre que les champs avec lesquels
+l'outil calcule. Et les quatre noms internes du modèle (`row_number`,
+`issues`, `anonymous_id`, `extra`) sont refusés au chargement du
+paramétrage, avec un message qui les nomme : un fichier écrit à la main ne
+peut plus y écrire. Un nom de colonne ne rejoint par ailleurs un champ que
+par une orthographe écrite dans sa liste, jamais par son nom technique.
+
 ---
 
 ## 9. Le livrable Windows
@@ -576,13 +587,15 @@ le cas de tout binaire produit par cette chaîne.
 
 C'est une conséquence directe d'un choix : les binaires de python.org sont
 repris **tels quels**, jamais recompilés ni modifiés. Un EDR qui voit
-`python312.dll`, `_tkinter.pyd` et les 57 autres signés par la PSF a devant
+`python312.dll`, `_tkinter.pyd` et les 55 autres signés par la PSF a devant
 lui des fichiers qu'il connaît déjà, souvent déjà en liste d'autorisation.
 
 > Le compte est passé de 63 à 60 le 8 octobre 2026 : trois modules natifs que
 > l'interpréteur livré ne chargeait jamais, `_decimal.pyd` et sa
 > bibliothèque libmpdec, `_uuid.pyd`, `_zoneinfo.pyd`, ont été retirés. Voir
-> `DEPENDANCES.md` §4.
+> `DEPENDANCES.md` §4. Recompté le 9 octobre 2026 en parcourant le dossier
+> `runtime` livré : 57 fichiers `.pyd` et `.dll`, dont les 40 façades
+> `api-ms-win-*`.
 
 **Trois trouvailles de cet audit, corrigées :** le paquet contenait
 `reg1.3` (extension registre de Tcl, dans un outil qui affirme ne pas
@@ -663,8 +676,9 @@ modification du binaire, et les empreintes sont déjà fournies.
 
 | Contrôle | Résultat |
 |---|---|
-| Suite de tests, Python 3.12, interface comprise | **1 583 tests, 0 échec** |
-| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (554 ignorés : interface) |
+| Suite de tests, Python 3.12, interface comprise | **1 791 tests, 0 échec** (9 octobre 2026) |
+| Même suite sur Python 3.10, 3.11, 3.13 | **0 échec** (695 ignorés : interface) |
+| Revue de code de la semaine du 2 au 9 octobre | **15 constats, 15 corrigés, chacun pinglé par un essai** (`AUDIT-2026-10-09.md`) |
 | Revue fonctionnelle de bout en bout | **21 fonctionnalités, 0 en échec** |
 | Stabilité d'affichage (onglets × tailles × parcours) | **129 épreuves, 0 incident** |
 | Scan syntaxique : imports et appels sensibles | **0 hors `re.compile`** |
