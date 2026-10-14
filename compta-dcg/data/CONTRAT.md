@@ -74,3 +74,37 @@ Types :
 - Provisions pour charges : les comptes 153 à 158 sont remplacés par la racine `152` : `1521` pensions et obligations similaires, `1522` restructurations, `1523` impôts, `1524` renouvellement des immobilisations (concessionnaires), `1525` gros entretien ou grandes révisions (ex-1572), `1526` provisions pour remise en état, `1527` autres provisions pour charges (ex-158). Le compte `151` (provisions pour risques : 1511 litiges, 1514 amendes et pénalités, 1515 pertes de change, 1516 pertes sur contrats, 1518 autres) demeure.
 - Intérêts courus sur emprunts : le compte `1688` est presque entièrement supprimé ; les intérêts courus sont enregistrés par nature : `1618` (emprunts obligataires convertibles), `1638` (autres emprunts obligataires), `1648` (emprunts auprès des établissements de crédit). `1688` ne subsiste que pour les intérêts courus sur autres emprunts et dettes assimilées.
 - Un chapitre qui parle d'intérêts courus sur un emprunt bancaire utilise donc `1648` (en signalant « avant 2025 : 1688 »).
+
+## 7. Fiche documentaire par chapitre (`data/<ue>/<id>.fiche.json`)
+
+Objectif : une fiche de cours de référence, **entièrement sourcée sur des textes officiels**, à jour, que l'étudiant lit avant la leçon et les exercices. On n'invente pas de cours : tout énoncé de la fiche est rattaché à un texte officiel précis ; si aucun texte officiel ne peut être trouvé, l'énoncé n'est pas écrit.
+
+Sources officielles admises (le champ `url` doit pointer vers l'un de ces domaines, ou être `null`) : legifrance.gouv.fr (codes, lois, décrets, jurisprudence), bofip.impots.gouv.fr, impots.gouv.fr, anc.gouv.fr (PCG, règlements ANC), economie.gouv.fr, service-public.fr et entreprendre.service-public.fr, urssaf.fr, ameli.fr, francetravail.fr, travail-emploi.gouv.fr, securite-sociale.fr, enseignementsup-recherche.gouv.fr et bulletin-officiel.education.gouv.fr (programmes), education.gouv.fr, agirc-arrco.fr, amf-france.org, banque-france.fr, insee.fr, inpi.fr, infogreffe.fr, formalites.entreprises.gouv.fr, douane.gouv.fr, journal-officiel.gouv.fr, conseil-constitutionnel.fr, courdecassation.fr, conseil-etat.fr, cncc.fr, experts-comptables.fr, h2a.fr (Haute autorité de l'audit).
+
+Méthode obligatoire : les pages officielles ne peuvent pas être ouvertes depuis cet environnement (WebFetch et curl bloqués). On utilise **WebSearch avec `allowed_domains`** restreint aux domaines ci-dessus (ex. `["legifrance.gouv.fr"]`, `["bofip.impots.gouv.fr"]`, `["urssaf.fr","service-public.fr"]`) : les résultats donnent l'URL officielle exacte et des extraits du texte. Règles :
+- Une `url` n'est écrite que si elle est apparue telle quelle dans un résultat de recherche. **Jamais d'URL reconstituée ou devinée** (en particulier aucun identifiant LEGIARTI/LEGITEXT/PGP inventé). Sinon `url: null` et `src` reste précis (l'application construit alors un lien de recherche Légifrance).
+- `cite` (facultatif) : extrait **verbatim** du texte officiel tel que restitué par le résultat de recherche, entre guillemets français, 1 à 3 phrases. Jamais une reformulation.
+- Chiffres annuels (SMIC, PASS, barèmes, seuils, taux) : `fiab` « millésimé 20xx », l'année dans le texte, source officielle de l'année (urssaf.fr, bofip, service-public, legifrance).
+- Au moins 12 recherches par chapitre ; chaque chiffre ou seuil est recoupé par au moins une source officielle.
+
+Format (JSON strict, indentation 1 espace) :
+```json
+{
+ "id": "ue2-02",
+ "maj": "2026-10-14",
+ "programme": { "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025 ; arrêté du 13 février 2019 pour la session 2026", "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A", "points": ["Les points du programme officiel couverts par ce chapitre, dans les termes du programme"] },
+ "textes": [ { "ref": "C. com., art. L. 223-14", "objet": "Cession de parts à des tiers : agrément", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223059", "version": "en vigueur (dernière modification : loi n° 2019-744 du 19 juillet 2019)" } ],
+ "sections": [
+  { "h": "Définitions", "items": [ { "t": "<b>Société</b> : contrat par lequel deux ou plusieurs personnes affectent des biens ou leur industrie à une entreprise commune…", "cite": "« La société est instituée par deux ou plusieurs personnes qui conviennent par un contrat d'affecter à une entreprise commune des biens ou leur industrie en vue de partager le bénéfice ou de profiter de l'économie qui pourra en résulter. »", "src": "C. civ., art. 1832", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444002", "fiab": "stable" } ] },
+  { "h": "Règles essentielles", "items": [] },
+  { "h": "Chiffres et seuils", "items": [] },
+  { "h": "Ce qui a changé récemment", "items": [] },
+  { "h": "Points de vigilance", "items": [] }
+ ]
+}
+```
+- `programme.points` : 3 à 8 points, repris du programme officiel (annexe de l'arrêté), pas inventés.
+- `textes` : 5 à 15 textes de référence du chapitre, avec objet et version.
+- `sections` : les cinq sections ci-dessus, dans cet ordre. 20 à 40 items au total ; « Règles essentielles » est la plus fournie (10 à 20 items). « Ce qui a changé récemment » liste les réformes 2023-2026 utiles (lois de finances, LFSS, ordonnances, règlement ANC 2022-06, décret 2024-152…) avec date et source. « Points de vigilance » : pièges d'examen et liens avec le DSCG, chacun rattaché à un texte.
+- Chaque item : `t` (HTML limité aux balises du contrat, 1 à 4 phrases, formulation fidèle au texte), `src` (référence précise), `url` (officielle ou null), `fiab`, `cite` facultatif.
+- Valider : `node validate.js data/<ue>/<id>.fiche.json`.

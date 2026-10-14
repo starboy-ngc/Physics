@@ -91,6 +91,18 @@ p { margin: 0 0 10px; max-width: 70ch; }
 .note { border-left: 3px solid var(--margin); padding: 6px 12px; background: var(--paper); margin: 10px 0; max-width: 70ch; border-radius: 0 6px 6px 0; }
 .note b { color: var(--margin); }
 code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--rule-soft); padding: 0 4px; border-radius: 3px; }
+.fiche { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.fiche .fhead { border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 4px; }
+.fiche ol.fl { padding-left: 22px; margin: 0 0 8px; max-width: 76ch; }
+.fiche li.fi { margin-bottom: 12px; }
+.fiche blockquote { border-left: 3px solid var(--accent); margin: 6px 0; padding: 4px 12px; color: var(--muted); font-style: italic; }
+.fiche .fsrc { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+.fiche .fsrc a { color: var(--accent); }
+.fiche table.plan td.n { width: auto; white-space: normal; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.seg button { background: var(--card); border: none; color: var(--muted); font: 500 0.88rem var(--body); padding: 6px 12px; cursor: pointer; border-right: 1px solid var(--rule); }
+.seg button:last-child { border-right: none; }
+.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
 .sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
 .sources li { margin-bottom: 3px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
@@ -484,21 +496,45 @@ function renderUe(code) {
   main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
 }
 
+function srcLink(src, url) {
+  if (url) return url;
+  const q = encodeURIComponent(src);
+  if (/BOI-/i.test(src)) return "https://bofip.impots.gouv.fr/";
+  if (/\bANC\b|PCG|plan comptable/i.test(src)) return "https://www.anc.gouv.fr/";
+  return `https://www.legifrance.gouv.fr/search/all?tab_selection=all&searchField=ALL&query=${q}&page=1&init=true`;
+}
+function fmtDate(iso) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ""); return m ? new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : esc(iso); }
+function ficheHTML(f) {
+  const tag = it => /millésimé/.test(it.fiab || "") ? ` <span class="pill year">chiffres ${esc(it.fiab.replace("millésimé ", ""))}</span>` : "";
+  const item = it => `<li class="fi"><div>${sanitize(it.t)}</div>${it.cite ? `<blockquote>${esc(it.cite)}</blockquote>` : ""}<div class="fsrc">Source : ${esc(it.src)} · <a href="${esc(srcLink(it.src, it.url))}" target="_blank" rel="noopener">${it.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a>${tag(it)}</div></li>`;
+  const pr = f.programme || {};
+  return `<div class="fiche"><div class="fhead"><span class="eyebrow">Fiche documentaire · à jour au ${fmtDate(f.maj)}</span><p class="small muted" style="margin:4px 0 0">Chaque énoncé renvoie à un texte officiel (Légifrance, BOFiP, ANC, URSSAF, service-public, programme du diplôme). Les liens ouvrent la source dans un nouvel onglet.</p></div>
+<h3>Programme officiel</h3><p class="small muted">${esc(pr.ref || "")}${pr.url ? ` · <a href="${esc(pr.url)}" target="_blank" rel="noopener">consulter</a>` : ""}</p><ul>${(pr.points || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+<h3>Textes de référence</h3><div class="twrap"><table class="plan"><tbody>${(f.textes || []).map(t => `<tr><td class="n">${esc(t.ref)}</td><td>${esc(t.objet)}${t.version ? `<br><span class="muted small">${esc(t.version)}</span>` : ""}</td><td class="s"><a href="${esc(srcLink(t.ref, t.url))}" target="_blank" rel="noopener">${t.url ? "texte" : "rechercher"}</a></td></tr>`).join("")}</tbody></table></div>
+${(f.sections || []).map(s => `<h3>${esc(s.h)}</h3><ol class="fl">${(s.items || []).map(item).join("")}</ol>`).join("")}</div>`;
+}
 function renderChap(id, startAt) {
   const c = CHAP_BY[id]; const u = UE_BY[c.ue]; const cs = ueChaps(c.ue); const idx = cs.indexOf(c);
   main.innerHTML = `<div class="crumb"><button id="back">← ${esc(u.code)} ${esc(u.nom)}</button><span class="muted">Chapitre ${idx + 1} / ${cs.length}</span></div><h2>${esc(c.title)}</h2><p class="muted">${esc(c.resume)}</p><div id="stage"></div>`;
   main.querySelector("#back").onclick = () => go({ tab: "ue", code: c.ue });
   const stage = main.querySelector("#stage");
+  const seg = mode => c.fiche ? `<div class="crumb"><span class="seg"><button data-m="fiche" aria-pressed="${mode === "fiche"}">Fiche documentaire</button><button data-m="lesson" aria-pressed="${mode === "lesson"}">Cours</button><button data-m="ex" aria-pressed="${mode === "ex"}">Exercices</button></span></div>` : "";
+  const bindSeg = () => stage.querySelectorAll(".seg button").forEach(b => b.onclick = () => ({ fiche: showFiche, lesson: showLesson, ex: showExercises })[b.dataset.m]());
+  const showFiche = () => {
+    state.read[c.id] = true; save();
+    stage.innerHTML = seg("fiche") + ficheHTML(c.fiche) + `<div class="actions"><button class="btn ghost" id="toLesson">Lire le cours</button><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
+    bindSeg(); stage.querySelector("#toLesson").onclick = showLesson; stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
+  };
   const showLesson = () => {
     state.read[c.id] = true; save();
-    stage.innerHTML = `<div class="lesson">${c.lecon.map(s => `${s.h ? `<h3>${esc(s.h)}</h3>` : ""}<div class="twrap-l">${sanitize(s.html)}</div>${s.entry ? journalHTML(s.entry, s.lib) : ""}`).join("")}
+    stage.innerHTML = seg("lesson") + `<div class="lesson">${c.lecon.map(s => `${s.h ? `<h3>${esc(s.h)}</h3>` : ""}<div class="twrap-l">${sanitize(s.html)}</div>${s.entry ? journalHTML(s.entry, s.lib) : ""}`).join("")}
 ${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.sources.map(s => `<li>${esc(s.ref)}${s.note ? ` — ${esc(s.note)}` : ""}</li>`).join("")}</ul></div>` : ""}</div>
 <div class="actions"><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
-    stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
+    bindSeg(); stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
   };
   const showExercises = () => {
-    stage.innerHTML = `<div class="crumb"><span class="progress" id="prog"></span><button id="toLesson">Revoir la leçon</button></div><div id="host"></div>`;
-    stage.querySelector("#toLesson").onclick = showLesson;
+    stage.innerHTML = seg("ex") + `<div class="crumb"><span class="progress" id="prog"></span><button id="toLesson">Revoir le cours</button></div><div id="host"></div>`;
+    bindSeg(); stage.querySelector("#toLesson").onclick = showLesson;
     const host = stage.querySelector("#host"); const prog = stage.querySelector("#prog");
     const series = runSeries(host, c.exercices, () => `${u.code} · ${c.title}`, (ex, ok) => record(ex.id, ok), score => {
       state.done[c.id] = (state.done[c.id] || 0) + 1; addXp(30); save();
@@ -510,7 +546,7 @@ ${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.so
       host.querySelector("#toUe").onclick = () => go({ tab: "ue", code: c.ue });
     }, prog);
   };
-  if (startAt === "exercises") showExercises(); else showLesson();
+  if (startAt === "exercises") showExercises(); else if (c.fiche) showFiche(); else showLesson();
 }
 
 function renderTest() {

@@ -79,6 +79,36 @@ function checkChapter(ch, errs) {
   if (/\b(675|775)\b/.test(JSON.stringify(ch.lecon)) && !/avant 2025|ancien|supprim|rempla/i.test(JSON.stringify(ch.lecon))) errs.push("lecon : mention de 675/775 sans signaler qu'ils sont supprimés par le PCG 2025");
   return counts;
 }
+const OFFICIAL = ["legifrance.gouv.fr","bofip.impots.gouv.fr","impots.gouv.fr","anc.gouv.fr","economie.gouv.fr","service-public.fr","urssaf.fr","ameli.fr","francetravail.fr","travail-emploi.gouv.fr","securite-sociale.fr","enseignementsup-recherche.gouv.fr","bulletin-officiel.education.gouv.fr","education.gouv.fr","agirc-arrco.fr","amf-france.org","banque-france.fr","insee.fr","inpi.fr","infogreffe.fr","formalites.entreprises.gouv.fr","douane.gouv.fr","journal-officiel.gouv.fr","conseil-constitutionnel.fr","courdecassation.fr","conseil-etat.fr","cncc.fr","experts-comptables.fr","h2a.fr"];
+function isOfficial(url) { try { const h = new URL(url).hostname.toLowerCase(); return OFFICIAL.some(d => h === d || h.endsWith("." + d)); } catch (e) { return false; } }
+const SECTIONS = ["Définitions", "Règles essentielles", "Chiffres et seuils", "Ce qui a changé récemment", "Points de vigilance"];
+function checkFiche(f, errs) {
+  if (!/^ue(2|3|4|6|9|10)-\d\d$/.test(f.id || "")) errs.push(`fiche : id invalide ${f.id}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(f.maj || "")) errs.push("fiche : maj doit être une date AAAA-MM-JJ");
+  const p = f.programme || {};
+  if (typeof p.ref !== "string" || p.ref.length < 10) errs.push("fiche : programme.ref manquant");
+  if (p.url !== null && !isOfficial(p.url || "")) errs.push("fiche : programme.url doit être officielle ou null");
+  if (!Array.isArray(p.points) || p.points.length < 3) errs.push("fiche : programme.points (3 minimum)");
+  if (!Array.isArray(f.textes) || f.textes.length < 5) errs.push(`fiche : textes (5 minimum, ${(f.textes || []).length})`);
+  (f.textes || []).forEach((t, i) => { if (!t.ref || !t.objet) errs.push(`fiche textes[${i}] : ref et objet obligatoires`); if (t.url !== null && t.url !== undefined && !isOfficial(t.url)) errs.push(`fiche textes[${i}] : url non officielle`); });
+  if (!Array.isArray(f.sections)) { errs.push("fiche : sections manquantes"); return; }
+  const names = f.sections.map(s => s.h);
+  SECTIONS.forEach(n => { if (!names.includes(n)) errs.push(`fiche : section « ${n} » manquante`); });
+  let total = 0;
+  f.sections.forEach((s, si) => (s.items || []).forEach((it, i) => {
+    total++; const w = `fiche ${s.h}[${i}]`;
+    if (typeof it.t !== "string" || it.t.length < 20) errs.push(`${w}: texte trop court`); else checkHtml(it.t, w, errs);
+    if (typeof it.src !== "string" || it.src.length < 3) errs.push(`${w}: src manquante`);
+    if (it.url !== null && it.url !== undefined && !isOfficial(it.url)) errs.push(`${w}: url non officielle « ${it.url} »`);
+    if (it.url === undefined) errs.push(`${w}: url doit être une URL officielle ou null`);
+    if (!FIAB.test(it.fiab || "")) errs.push(`${w}: fiab invalide`);
+    if (it.cite !== undefined && (typeof it.cite !== "string" || !/^«/.test(it.cite.trim()))) errs.push(`${w}: cite doit être un extrait entre guillemets « »`);
+  }));
+  if (total < 18) errs.push(`fiche : ${total} items (18 minimum)`);
+  const regles = f.sections.find(s => s.h === "Règles essentielles"); if (regles && (regles.items || []).length < 8) errs.push("fiche : « Règles essentielles » doit avoir au moins 8 items");
+  const noUrl = f.sections.flatMap(s => s.items || []).filter(it => !it.url).length;
+  if (total && noUrl / total > 0.5) errs.push(`fiche : ${noUrl} items sur ${total} sans url officielle (maximum 50 %)`);
+}
 function checkPcg(list, errs) {
   if (!Array.isArray(list) || list.length < 20) { errs.push("plan comptable : liste trop courte"); return; }
   const seen = new Set();
@@ -104,6 +134,7 @@ for (const f of process.argv.slice(2)) {
   try { data = JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.log(`✗ ${f} : JSON invalide — ${e.message}`); failed++; continue; }
   let info = "";
   if (data.comptes) { checkPcg(data.comptes, errs); info = `${data.comptes.length} comptes`; }
+  else if (data.maj && data.sections) { checkFiche(data, errs); info = `fiche, ${(data.sections || []).reduce((a, s) => a + (s.items || []).length, 0)} items, ${(data.textes || []).length} textes`; }
   else { const c = checkChapter(data, errs); info = `${(data.exercices || []).length} exercices ${JSON.stringify(c)}`; total += (data.exercices || []).length; }
   if (errs.length) { failed++; console.log(`✗ ${f} (${info})`); errs.forEach(e => console.log("   - " + e)); }
   else console.log(`✓ ${f} (${info})`);
