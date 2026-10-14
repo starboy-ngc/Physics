@@ -124,8 +124,8 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "Pour les <b>livraisons de biens</b>, la TVA est exigible lors de la livraison ; pour les <b>prestations de services</b>, lors de l'encaissement des acomptes, du prix ou de la rémunération, sauf option pour le paiement d'après les débits.",
-     "src": "CGI, art. 269, 2-a et 2-c",
+     "t": "Pour les <b>livraisons de biens</b>, la TVA est exigible lors de la livraison et, depuis le 1er janvier 2023, dès l'encaissement d'un acompte, à concurrence du montant encaissé ; pour les <b>prestations de services</b>, lors de l'encaissement des acomptes, du prix ou de la rémunération, sauf option pour le paiement d'après les débits.",
+     "src": "CGI, art. 269, 2-a et 2-c (acomptes : loi n° 2021-1900 du 30 décembre 2021, art. 30)",
      "url": null,
      "fiab": "stable"
     },
@@ -252,6 +252,12 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
+     "t": "Depuis le <b>1er janvier 2023</b>, l'encaissement d'un acompte sur une livraison de biens rend la TVA exigible à concurrence du montant encaissé (et déductible chez le client à la même date) ; auparavant, seule la livraison déclenchait l'exigibilité.",
+     "src": "CGI, art. 269, 2-a (loi n° 2021-1900 du 30 décembre 2021 de finances pour 2022, art. 30)",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
      "t": "<b>Facturation électronique</b> : obligation de recevoir des factures électroniques pour tous les assujettis établis en France à compter du <b>1er septembre 2026</b> ; obligation d'émission au 1er septembre 2026 pour les grandes entreprises et ETI, au <b>1er septembre 2027</b> pour les PME et microentreprises.",
      "src": "Loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91 ; CGI, art. 289 bis",
      "url": null,
@@ -283,7 +289,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Sur une <b>prestation de services</b> sans option pour les débits, la TVA n'est exigible qu'à l'encaissement : l'acompte encaissé rend la TVA exigible immédiatement sur son montant.",
+     "t": "Sans option pour les débits, la TVA sur une <b>prestation de services</b> n'est exigible qu'à l'encaissement ; un acompte encaissé (sur une prestation comme, depuis 2023, sur une livraison de biens) rend la TVA exigible immédiatement sur son montant.",
      "src": "CGI, art. 269, 2-c",
      "url": null,
      "fiab": "stable"

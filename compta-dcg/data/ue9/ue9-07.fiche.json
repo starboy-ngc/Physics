@@ -21,14 +21,14 @@
   {
    "ref": "C. com., art. L. 123-13, al. 2",
    "objet": "Produits et charges de l'exercice rattachés sans tenir compte de leur date d'encaissement ou de paiement",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
-   "version": "en vigueur"
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "version": "en vigueur depuis le 1er janvier 2016 (ordonnance n° 2015-900 du 23 juillet 2015)"
   },
   {
    "ref": "C. com., art. L. 123-20 et L. 123-21",
    "objet": "Prudence ; passifs nés avant la clôture ; bénéfices réalisés",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
-   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015)"
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "version": "en vigueur (L. 123-19 et L. 123-20 réécrits par l'ordonnance n° 2015-900 du 23 juillet 2015, en vigueur depuis le 1er janvier 2016)"
   },
   {
    "ref": "PCG, art. 321-1 à 321-5",
@@ -74,7 +74,7 @@
     {
      "t": "<b>Rattachement à l'exercice</b> (indépendance des exercices) : le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement.",
      "src": "C. com., art. L. 123-13, al. 2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
      "fiab": "stable",
      "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },
@@ -124,7 +124,7 @@
     {
      "t": "Un passif né au cours de l'exercice doit être pris en compte même s'il n'est connu qu'entre la clôture et l'établissement des comptes (prudence).",
      "src": "C. com., art. L. 123-20",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
      "fiab": "stable",
      "cite": "« Les comptes annuels doivent respecter le principe de prudence. »"
     },
@@ -185,8 +185,8 @@
      "fiab": "stable"
     },
     {
-     "t": "L'IS est payé par <b>quatre acomptes</b> (15 mars, 15 juin, 15 septembre, 15 décembre) calculés sur le résultat du dernier exercice clos, puis par le <b>solde</b> après la clôture.",
-     "src": "CGI, art. 1668",
+     "t": "L'IS est payé par <b>quatre acomptes</b> trimestriels (15 mars, 15 juin, 15 septembre, 15 décembre ; dates fixées par décret) calculés sur le résultat du dernier exercice clos, puis par le <b>solde</b>, au plus tard le 15 du quatrième mois suivant la clôture.",
+     "src": "CGI, art. 1668, 1 et 2",
      "url": null,
      "fiab": "stable"
     },
@@ -250,7 +250,7 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "Pour les exercices ouverts à compter du 1er janvier 2025, les <b>modèles</b> de bilan et de compte de résultat sont ceux du règlement ANC n° 2022-06 ; le résultat exceptionnel est limité aux événements majeurs et inhabituels, aux écritures d'origine purement fiscale et aux corrections d'erreurs.",
+     "t": "Pour les exercices ouverts à compter du 1er janvier 2025, les <b>modèles</b> de bilan et de compte de résultat sont ceux du règlement ANC n° 2022-06 ; les produits et charges exceptionnels sont ceux directement liés à un événement majeur et inhabituel, les dotations et reprises d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) restant en 687 / 787.",
      "src": "Règlement ANC n° 2022-06 (homologué par arrêté du 26 décembre 2023)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
@@ -282,7 +282,7 @@
     {
      "t": "Un produit n'est pas un encaissement : une facture à établir est un produit de l'exercice clos même si elle n'est encaissée que l'année suivante.",
      "src": "C. com., art. L. 123-13, al. 2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
      "fiab": "stable",
      "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },

@@ -17,7 +17,7 @@
    "ref": "C. com., art. L. 123-12 à L. 123-23",
    "objet": "Obligations comptables des commerçants et principes (image fidèle, permanence, non-compensation, prudence, continuité, bénéfices réalisés, conservation)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
-   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015 ; loi n° 2019-486 du 22 mai 2019)"
+   "version": "en vigueur (L. 123-13, L. 123-17, L. 123-19 et L. 123-20 réécrits par l'ordonnance n° 2015-900 du 23 juillet 2015 ; L. 123-16 modifié par la loi n° 2019-486 du 22 mai 2019)"
   },
   {
    "ref": "C. com., art. R. 123-172 à R. 123-177",
@@ -121,7 +121,7 @@
     {
      "t": "<b>Inventaire</b> : contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture.",
      "src": "C. com., art. R. 123-177",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
      "fiab": "stable",
      "cite": "« L'inventaire est le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture. »"
     }
@@ -165,8 +165,9 @@
     {
      "t": "La comptabilité régulièrement tenue peut être admise en justice pour faire <b>preuve</b> entre commerçants ; irrégulièrement tenue, elle ne peut être invoquée par son auteur à son profit.",
      "src": "C. com., art. L. 123-23",
-     "url": null,
-     "fiab": "stable"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341/2022-01-17",
+     "fiab": "stable",
+     "cite": "« La comptabilité régulièrement tenue peut être admise en justice pour faire preuve entre commerçants pour faits de commerce. Si elle a été irrégulièrement tenue, elle ne peut être invoquée par son auteur à son profit. »"
     },
     {
      "t": "<b>Régularité, sincérité, image fidèle</b> : les comptes annuels doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat ; toute dérogation est mentionnée et motivée dans l'annexe.",
@@ -176,43 +177,42 @@
      "cite": "« Les comptes annuels doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise. »"
     },
     {
-     "t": "<b>Permanence des méthodes</b> : sauf changement exceptionnel de situation, présentation et méthodes d'évaluation ne changent pas d'un exercice à l'autre ; les modifications sont décrites et justifiées dans l'annexe.",
+     "t": "<b>Permanence des méthodes</b> : sauf dans des cas exceptionnels, afin de donner une image fidèle et dans les conditions prévues par un règlement de l'ANC, les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre ; toute modification est décrite et justifiée dans l'annexe.",
      "src": "C. com., art. L. 123-17 ; PCG, art. 121-5",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024039862/2014-08-02",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
      "fiab": "stable",
-     "cite": "« Si des modifications interviennent, elles sont décrites et justifiées dans l'annexe et signalées, le cas échéant, dans le rapport des commissaires aux comptes. »"
+     "cite": "« Sauf dans des cas exceptionnels, afin de donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise et dans les conditions prévues par un règlement de l'Autorité des normes comptables, les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre. »"
     },
     {
      "t": "<b>Non-compensation</b> : évaluation séparée des éléments d'actif et de passif, aucune compensation entre postes d'actif et de passif ni entre charges et produits (hors cas exceptionnels prévus par règlement ANC).",
      "src": "C. com., art. L. 123-19",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219311/2014-08-02",
-     "fiab": "stable",
-     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat. »"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
+     "fiab": "stable"
     },
     {
      "t": "<b>Prudence</b> et <b>continuité d'exploitation</b> : les comptes respectent le principe de prudence et sont établis en présumant la poursuite de l'activité.",
      "src": "C. com., art. L. 123-20",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
      "fiab": "stable",
      "cite": "« Pour leur établissement, le commerçant, personne physique ou morale, est présumé poursuivre ses activités. »"
     },
     {
      "t": "<b>Indépendance des exercices</b> : produits et charges sont rattachés à l'exercice sans qu'il soit tenu compte de leur date d'encaissement ou de paiement ; seuls les bénéfices réalisés à la clôture sont inscrits.",
      "src": "C. com., art. L. 123-13, al. 2 et L. 123-21",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
      "fiab": "stable",
      "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },
     {
-     "t": "Les règlements de l'ANC sont <b>homologués</b> par arrêté conjoint des ministres chargés de l'économie, de la justice et du budget, puis publiés au Journal officiel : un règlement non homologué n'est pas applicable.",
-     "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 4",
+     "t": "Les règlements de l'ANC ne sont applicables qu'après <b>homologation</b> par arrêté ministériel et publication au Journal officiel : le règlement n° 2022-06 du 4 novembre 2022 a ainsi été homologué par arrêté du 26 décembre 2023 (JO du 30 décembre 2023).",
+     "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 4 ; arrêté du 26 décembre 2023",
      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
      "fiab": "stable"
     },
     {
      "t": "<b>Rapprochement bancaire</b> : les données d'inventaire doivent justifier le contenu de chaque poste du bilan, dont le poste Banque ; le rapprochement confronte le compte 512 et le relevé, puis seules les opérations figurant sur le relevé et absentes de la comptabilité sont enregistrées.",
      "src": "C. com., art. R. 123-177 et R. 123-174",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
      "fiab": "stable",
      "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
     },
@@ -346,7 +346,7 @@
     },
     {
      "t": "Les personnes physiques au régime réel simplifié bénéficient de simplifications (créances et dettes à la clôture, enregistrement à la date du relevé bancaire) qui ne s'appliquent pas aux sociétés.",
-     "src": "C. com., art. L. 123-25 et R. 123-203",
+     "src": "C. com., art. L. 123-25 ; R. 123-203 à R. 123-208 (sous-section 2 : obligations comptables applicables à certains commerçants, personnes physiques)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556295",
      "fiab": "stable",
      "cite": "« Par dérogation à l'article R. 123-174, les personnes mentionnées aux articles L. 123-25 et L. 123-28 peuvent procéder à l'enregistrement comptable des encaissements et des paiements en retenant la date de l'opération figurant sur le relevé qui leur est adressé par un établissement de crédit. »"

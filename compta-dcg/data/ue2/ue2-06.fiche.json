@@ -13,84 +13,360 @@
   ]
  },
  "textes": [
-  { "ref": "C. com., art. L. 234-1 et L. 234-2", "objet": "Procédure d'alerte du commissaire aux comptes (SA, autres sociétés)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "version": "en vigueur (page du livre II)" },
-  { "ref": "C. com., art. L. 611-1 à L. 611-16", "objet": "Prévention des difficultés : groupements de prévention, mandat ad hoc, conciliation", "url": null, "version": "en vigueur (ordonnance n° 2021-1193 du 15 septembre 2021 ; version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 620-1 et s. ; L. 628-1 et s.", "objet": "Sauvegarde et sauvegarde accélérée", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 622-21 et L. 622-24 ; R. 622-24", "objet": "Arrêt des poursuites individuelles ; déclaration des créances", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 631-1 à L. 631-8 ; L. 632-1", "objet": "Redressement judiciaire : cessation des paiements, déclaration, période suspecte, nullités", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 640-1 et s. ; L. 641-2 ; L. 643-9", "objet": "Liquidation judiciaire, liquidation simplifiée, clôture pour insuffisance d'actif", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 651-2 ; L. 653-1 à L. 653-11", "objet": "Responsabilité pour insuffisance d'actif, faillite personnelle, interdiction de gérer", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 654-1 à L. 654-7", "objet": "Banqueroute", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. com., art. L. 241-3, L. 242-6 et L. 244-1", "objet": "Infractions des dirigeants de SARL, SA et SAS : dividendes fictifs, comptes infidèles, abus de biens sociaux", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "version": "en vigueur (page du livre II)" },
-  { "ref": "C. com., art. L. 681-1 à L. 681-4", "objet": "Entrepreneur individuel : procédures collectives limitées au patrimoine professionnel", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045170884/", "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022)" },
-  { "ref": "C. com., art. L. 223-22 et L. 223-23", "objet": "Responsabilité civile des gérants pour faute de gestion ; prescription", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141", "version": "en vigueur" },
-  { "ref": "C. pén., art. 121-1 à 121-3 ; 313-1 ; 314-1", "objet": "Principes de la responsabilité pénale, responsabilité des personnes morales, escroquerie, abus de confiance", "url": null, "version": "en vigueur (version à confirmer sur Légifrance)" },
-  { "ref": "C. pr. pén., art. 8 et 9-1", "objet": "Prescription de l'action publique des délits ; infractions occultes ou dissimulées", "url": null, "version": "en vigueur (loi n° 2017-242 du 27 février 2017 ; version à confirmer sur Légifrance)" },
-  { "ref": "C. civ., art. 1844-7, 7°", "objet": "Dissolution par le jugement de clôture de la liquidation judiciaire pour insuffisance d'actif", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345", "version": "en vigueur" }
+  {
+   "ref": "C. com., art. L. 234-1 et L. 234-2",
+   "objet": "Procédure d'alerte du commissaire aux comptes (SA, autres sociétés)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+   "version": "en vigueur (page du livre II)"
+  },
+  {
+   "ref": "C. com., art. L. 611-1 à L. 611-16",
+   "objet": "Prévention des difficultés : groupements de prévention, mandat ad hoc, conciliation",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146095/",
+   "version": "en vigueur (ordonnance n° 2021-1193 du 15 septembre 2021 ; version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 620-1 et s. ; L. 628-1 et s.",
+   "objet": "Sauvegarde et sauvegarde accélérée",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044052563",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 622-21 et L. 622-24 ; R. 622-24",
+   "objet": "Arrêt des poursuites individuelles ; déclaration des créances",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053281573",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 631-1 à L. 631-8 ; L. 632-1",
+   "objet": "Redressement judiciaire : cessation des paiements, déclaration, période suspecte, nullités",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178110",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 640-1 et s. ; L. 641-2 ; L. 643-9",
+   "objet": "Liquidation judiciaire, liquidation simplifiée, clôture pour insuffisance d'actif",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178146",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 651-2 ; L. 653-1 à L. 653-11",
+   "objet": "Responsabilité pour insuffisance d'actif, faillite personnelle, interdiction de gérer",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178209",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 654-1 à L. 654-7",
+   "objet": "Banqueroute",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019984474",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. com., art. L. 241-3, L. 242-6 et L. 244-1",
+   "objet": "Infractions des dirigeants de SARL, SA et SAS : dividendes fictifs, comptes infidèles, abus de biens sociaux",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+   "version": "en vigueur (page du livre II)"
+  },
+  {
+   "ref": "C. com., art. L. 681-1 à L. 681-4",
+   "objet": "Entrepreneur individuel : procédures collectives limitées au patrimoine professionnel",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045170884/",
+   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022)"
+  },
+  {
+   "ref": "C. com., art. L. 223-22 et L. 223-23",
+   "objet": "Responsabilité civile des gérants pour faute de gestion ; prescription",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. pén., art. 121-1 à 121-3 ; 313-1 ; 314-1",
+   "objet": "Principes de la responsabilité pénale, responsabilité des personnes morales, escroquerie, abus de confiance",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006418192",
+   "version": "en vigueur (version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. pr. pén., art. 8 et 9-1",
+   "objet": "Prescription de l'action publique des délits ; infractions occultes ou dissimulées",
+   "url": null,
+   "version": "en vigueur (loi n° 2017-242 du 27 février 2017 ; version à confirmer sur Légifrance)"
+  },
+  {
+   "ref": "C. civ., art. 1844-7, 7°",
+   "objet": "Dissolution par le jugement de clôture de la liquidation judiciaire pour insuffisance d'actif",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
+   "version": "en vigueur"
+  }
  ],
  "sections": [
   {
    "h": "Définitions",
    "items": [
-    { "t": "<b>Cessation des paiements</b> : impossibilité pour le débiteur de faire face à son passif exigible avec son actif disponible. Le débiteur qui établit que les réserves de crédit ou les moratoires dont il bénéficie lui permettent de faire face au passif exigible n'est pas en cessation des paiements.", "src": "C. com., art. L. 631-1", "url": null, "fiab": "stable" },
-    { "t": "<b>Les trois procédures collectives</b> : la sauvegarde, ouverte au débiteur qui, sans être en cessation des paiements, justifie de difficultés qu'il n'est pas en mesure de surmonter ; le redressement judiciaire, ouvert au débiteur en cessation des paiements dont le redressement est possible ; la liquidation judiciaire, ouverte au débiteur en cessation des paiements dont le redressement est manifestement impossible.", "src": "C. com., art. L. 620-1, L. 631-1 et L. 640-1", "url": null, "fiab": "stable" },
-    { "t": "<b>Procédures amiables</b> : le mandat ad hoc, désigné par le président du tribunal à la demande du débiteur sans condition de fond, et la conciliation, ouverte au débiteur qui éprouve une difficulté juridique, économique ou financière, avérée ou prévisible, et ne se trouve pas en cessation des paiements depuis plus de 45 jours. Toutes deux sont confidentielles.", "src": "C. com., art. L. 611-3 et L. 611-4", "url": null, "fiab": "stable" },
-    { "t": "<b>Abus de biens sociaux</b> : fait, pour le gérant de SARL ou le dirigeant de SA ou de SAS, de faire de mauvaise foi des biens ou du crédit de la société un usage qu'il sait contraire à l'intérêt de celle-ci, à des fins personnelles ou pour favoriser une autre société ou entreprise dans laquelle il est intéressé directement ou indirectement.", "src": "C. com., art. L. 241-3, 4° (SARL) ; L. 242-6, 3° (SA) ; L. 244-1 (SAS)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Responsabilité pénale des personnes morales</b> : les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises pour leur compte par leurs organes ou représentants ; cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits. L'amende encourue par la personne morale est égale au quintuple de celle prévue pour les personnes physiques.", "src": "C. pén., art. 121-2 et 131-38", "url": null, "fiab": "stable" }
+    {
+     "t": "<b>Cessation des paiements</b> : impossibilité pour le débiteur de faire face à son passif exigible avec son actif disponible. Le débiteur qui établit que les réserves de crédit ou les moratoires dont il bénéficie lui permettent de faire face au passif exigible n'est pas en cessation des paiements.",
+     "src": "C. com., art. L. 631-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178110",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Les trois procédures collectives</b> : la sauvegarde, ouverte au débiteur qui, sans être en cessation des paiements, justifie de difficultés qu'il n'est pas en mesure de surmonter ; le redressement judiciaire, ouvert au débiteur en cessation des paiements dont le redressement est possible ; la liquidation judiciaire, ouverte au débiteur en cessation des paiements dont le redressement est manifestement impossible.",
+     "src": "C. com., art. L. 620-1, L. 631-1 et L. 640-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044052563",
+     "fiab": "stable",
+     "cite": "« Il est institué une procédure de sauvegarde ouverte sur demande d'un débiteur mentionné à l'article L. 620-2 qui, sans être en cessation des paiements, justifie de difficultés qu'il n'est pas en mesure de surmonter. »"
+    },
+    {
+     "t": "<b>Procédures amiables</b> : le mandat ad hoc, désigné par le président du tribunal à la demande du débiteur sans condition de fond, et la conciliation, ouverte au débiteur qui éprouve une difficulté juridique, économique ou financière, avérée ou prévisible, et ne se trouve pas en cessation des paiements depuis plus de 45 jours. Toutes deux sont confidentielles.",
+     "src": "C. com., art. L. 611-3 et L. 611-4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023217170/2014-07-01",
+     "fiab": "stable",
+     "cite": "« Il est institué, devant le tribunal de commerce, une procédure de conciliation dont peuvent bénéficier les débiteurs exerçant une activité commerciale ou artisanale qui éprouvent une difficulté juridique, économique ou financière, avérée ou prévisible, et ne se trouvent pas en cessation des paiements depuis plus de quarante-cinq jours. »"
+    },
+    {
+     "t": "<b>Abus de biens sociaux</b> : fait, pour le gérant de SARL ou le dirigeant de SA ou de SAS, de faire de mauvaise foi des biens ou du crédit de la société un usage qu'il sait contraire à l'intérêt de celle-ci, à des fins personnelles ou pour favoriser une autre société ou entreprise dans laquelle il est intéressé directement ou indirectement.",
+     "src": "C. com., art. L. 241-3, 4° (SARL) ; L. 242-6, 3° (SA) ; L. 244-1 (SAS)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Responsabilité pénale des personnes morales</b> : les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises pour leur compte par leurs organes ou représentants ; cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits. L'amende encourue par la personne morale est égale au quintuple de celle prévue pour les personnes physiques.",
+     "src": "C. pén., art. 121-2 et 131-38",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006417204",
+     "fiab": "stable",
+     "cite": "« La responsabilité pénale des personnes morales n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits […] »"
+    }
    ]
   },
   {
    "h": "Règles essentielles",
    "items": [
-    { "t": "<b>Alerte du commissaire aux comptes</b> : lorsqu'il relève des faits de nature à compromettre la continuité de l'exploitation, le commissaire aux comptes en informe le dirigeant et lui demande des explications ; à défaut de réponse satisfaisante, il invite le conseil d'administration (ou le dirigeant) à délibérer, puis établit un rapport spécial présenté à l'assemblée générale et, en dernier lieu, informe le président du tribunal de commerce. Il peut informer le président du tribunal dès la première phase.", "src": "C. com., art. L. 234-1 (SA) et L. 234-2 (autres sociétés)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Alerte par les associés</b> : dans la SARL, tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant sur tout fait de nature à compromettre la continuité de l'exploitation ; la réponse est communiquée au commissaire aux comptes. Même droit pour les actionnaires de SA détenant au moins 5 % du capital.", "src": "C. com., art. L. 223-36 ; L. 225-232", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable" },
-    { "t": "<b>Alerte du comité social et économique et du président du tribunal</b> : le CSE qui a connaissance de faits de nature à affecter de manière préoccupante la situation économique de l'entreprise peut demander des explications à l'employeur (droit d'alerte économique). Le président du tribunal de commerce peut convoquer le dirigeant lorsque tout acte, document ou procédure fait apparaître des difficultés de nature à compromettre la continuité de l'exploitation.", "src": "C. trav., art. L. 2312-63 ; C. com., art. L. 611-2", "url": null, "fiab": "stable" },
-    { "t": "<b>Conciliation</b> : le conciliateur, désigné pour quatre mois au plus (prorogeables sans que la durée totale excède cinq mois), favorise un accord amiable avec les principaux créanciers ; l'accord est constaté par le président du tribunal (force exécutoire, confidentialité) ou homologué par le tribunal si le débiteur n'est pas en cessation des paiements ou si l'accord y met fin, si l'accord assure la pérennité de l'entreprise et s'il ne lèse pas les créanciers non signataires. Les apports de trésorerie consentis dans l'accord homologué bénéficient d'un privilège de paiement (« new money »).", "src": "C. com., art. L. 611-6, L. 611-8 et L. 611-11", "url": null, "fiab": "stable" },
-    { "t": "<b>Sauvegarde</b> : le jugement d'ouverture ouvre une période d'observation de six mois au plus, renouvelable une fois, pendant laquelle le débiteur reste à la tête de son entreprise, assisté le cas échéant d'un administrateur ; le tribunal arrête ensuite un plan de sauvegarde d'une durée maximale de dix ans (quinze pour les agriculteurs). La sauvegarde accélérée est ouverte au débiteur engagé dans une conciliation dont les comptes sont certifiés ou établis par un expert-comptable, le plan devant être arrêté dans un délai bref (deux mois, prorogeable jusqu'à quatre).", "src": "C. com., art. L. 620-1, L. 621-3, L. 626-12, L. 628-1 et L. 628-8", "url": null, "fiab": "stable" },
-    { "t": "<b>Redressement judiciaire</b> : le débiteur en cessation des paiements doit en faire la déclaration au greffe dans les 45 jours, à défaut de demande d'ouverture d'une conciliation. Le tribunal fixe la date de cessation des paiements, qui ne peut être antérieure de plus de dix-huit mois au jugement d'ouverture ; les actes accomplis pendant cette « période suspecte » peuvent être annulés (nullités de droit : actes à titre gratuit, paiement de dettes non échues, sûretés pour dettes antérieures ; nullités facultatives si le cocontractant connaissait la cessation des paiements).", "src": "C. com., art. L. 631-4, L. 631-8, L. 632-1 et L. 632-2", "url": null, "fiab": "stable" },
-    { "t": "<b>Liquidation judiciaire</b> : le liquidateur réalise l'actif et apure le passif ; le débiteur est dessaisi de l'administration de ses biens. La liquidation judiciaire simplifiée est obligatoire lorsque l'actif ne comprend pas de bien immobilier et que l'effectif et le chiffre d'affaires n'excèdent pas des seuils fixés par décret. La procédure est clôturée pour insuffisance d'actif lorsque la poursuite des opérations est rendue impossible ; les créanciers ne recouvrent pas, sauf exceptions, l'exercice individuel de leurs actions.", "src": "C. com., art. L. 641-2, L. 641-9, L. 643-9 et L. 643-11", "url": null, "fiab": "stable" },
-    { "t": "<b>Situation des créanciers antérieurs</b> : le jugement d'ouverture interrompt ou interdit toute action en justice tendant au paiement d'une somme d'argent et arrête les voies d'exécution ; les créances antérieures ne peuvent plus être payées ; chaque créancier déclare sa créance au mandataire judiciaire dans le délai fixé par décret (deux mois à compter de la publication du jugement au BODACC), sous peine d'inopposabilité. Dans les grandes entreprises (seuils fixés par décret) ou sur option, les créanciers sont réunis en classes de parties affectées qui votent le plan.", "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 626-29 et s. ; R. 622-24", "url": null, "fiab": "stable" },
-    { "t": "<b>Organes de la procédure</b> : le juge-commissaire veille au déroulement rapide de la procédure et à la protection des intérêts en présence ; le mandataire judiciaire représente les créanciers ; l'administrateur judiciaire, obligatoire au-delà de seuils fixés par décret, assiste ou surveille le débiteur (sauvegarde) ou l'assiste, voire administre seul (redressement) ; le liquidateur conduit la liquidation. Le ministère public est partie à la procédure.", "src": "C. com., art. L. 621-4, L. 621-9, L. 622-1, L. 631-12 et L. 641-1", "url": null, "fiab": "stable" },
-    { "t": "<b>Sanctions contre les dirigeants</b> : en cas de liquidation judiciaire faisant apparaître une insuffisance d'actif, le tribunal peut mettre tout ou partie de celle-ci à la charge des dirigeants de droit ou de fait ayant commis une faute de gestion y ayant contribué (la simple négligence étant exclue). Il peut aussi prononcer la faillite personnelle (interdiction de diriger, gérer, administrer ou contrôler toute entreprise) ou la seule interdiction de gérer, pour quinze ans au plus.", "src": "C. com., art. L. 651-2, L. 653-2, L. 653-8 et L. 653-11", "url": null, "fiab": "stable" },
-    { "t": "<b>Éléments de l'abus de biens sociaux</b> : un usage des biens ou du crédit de la société (prélèvements, dépenses personnelles, rémunérations excessives, cautionnement de dettes personnelles), contraire à l'intérêt social, commis de mauvaise foi et dans un intérêt personnel direct ou indirect. Il n'existe que dans les SARL, SA, SAS et sociétés en commandite par actions ; dans les autres groupements, les faits relèvent de l'abus de confiance.", "src": "C. com., art. L. 241-3, 4° ; L. 242-6, 3° ; L. 244-1 ; C. pén., art. 314-1", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Dividendes fictifs et comptes infidèles</b> : est puni le fait, pour les dirigeants, d'opérer entre les associés la répartition de dividendes fictifs en l'absence d'inventaire ou au moyen d'inventaires frauduleux, ou de publier ou présenter aux associés, même en l'absence de distribution, des comptes annuels ne donnant pas, pour chaque exercice, une image fidèle du résultat, de la situation financière et du patrimoine, en vue de dissimuler la véritable situation de la société.", "src": "C. com., art. L. 241-3, 2° et 3° ; L. 242-6, 1° et 2°", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Dirigeant de fait et SAS</b> : les peines prévues pour les gérants de SARL et les dirigeants de SA s'appliquent à toute personne qui, directement ou par personne interposée, a en fait exercé la gestion sous le couvert ou au lieu et place des dirigeants légaux ; les infractions de la SA sont applicables au président et aux dirigeants de la SAS.", "src": "C. com., art. L. 241-9, L. 246-2 et L. 244-1", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Entrave aux droits des associés</b> : le fait d'empêcher un actionnaire ou un associé de participer à une assemblée, ou de se faire accorder, garantir ou promettre des avantages pour voter dans un certain sens ou ne pas participer au vote, est un délit.", "src": "C. com., art. L. 242-9 (SA) ; L. 241-? (SARL : voir L. 223-27 pour la convocation)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Banqueroute</b> : délit commis, en cas d'ouverture d'un redressement ou d'une liquidation judiciaire, par le dirigeant qui a employé des moyens ruineux pour se procurer des fonds, détourné ou dissimulé tout ou partie de l'actif, augmenté frauduleusement le passif, tenu une comptabilité fictive ou fait disparaître des documents comptables, ou tenu une comptabilité manifestement incomplète ou irrégulière.", "src": "C. com., art. L. 654-1 et L. 654-2", "url": null, "fiab": "stable" },
-    { "t": "<b>Infractions de droit commun</b> : l'escroquerie (tromperie par usage d'un faux nom, d'une fausse qualité, abus d'une qualité vraie ou manœuvres frauduleuses pour obtenir la remise d'un bien ou d'un service) et l'abus de confiance (détournement d'un bien remis à charge de le rendre, de le représenter ou d'en faire un usage déterminé) sanctionnent les comportements que l'abus de biens sociaux ne couvre pas.", "src": "C. pén., art. 313-1 et 314-1", "url": null, "fiab": "stable" },
-    { "t": "<b>Infractions liées au contrôle légal</b> : le commissaire aux comptes qui ne révèle pas au procureur de la République les faits délictueux dont il a eu connaissance commet un délit, de même que le dirigeant qui fait obstacle à ses vérifications ou refuse de lui communiquer les pièces utiles (entrave). L'utilisation ou la communication d'une information privilégiée sur un instrument financier constitue le délit d'initié.", "src": "C. com., anciens art. L. 820-4 et L. 820-7 (livre VIII recodifié par l'ordonnance n° 2023-1142 du 6 décembre 2023) ; C. mon. fin., art. L. 465-1", "url": null, "fiab": "stable" },
-    { "t": "<b>Responsabilité civile du dirigeant</b> : indépendamment des sanctions pénales et des sanctions de la procédure collective, le gérant répond envers la société et les tiers de ses fautes de gestion ; l'action se prescrit par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation, et par dix ans lorsque le fait est qualifié crime.", "cite": "« Toutefois, lorsque le fait est qualifié crime, l'action se prescrit par dix ans. »", "src": "C. com., art. L. 223-22 et L. 223-23", "url": "https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000006223149&cidTexte=LEGITEXT000005634379&dateTexte=20000921", "fiab": "stable" },
-    { "t": "<b>Issue de la liquidation judiciaire</b> : le jugement ordonnant la liquidation judiciaire ne dissout pas la société ; c'est le jugement de clôture de la liquidation judiciaire pour insuffisance d'actif qui met fin à la société.", "src": "C. civ., art. 1844-7, 7°", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345", "fiab": "stable" },
-    { "t": "<b>Entrepreneur individuel en difficulté</b> : les procédures du livre VI ouvertes à l'égard d'un entrepreneur individuel ne portent que sur son patrimoine professionnel ; la liquidation judiciaire ne peut atteindre son patrimoine personnel que dans les cas de réunion des patrimoines prévus par la loi (fraude, manquements graves).", "src": "C. com., art. L. 681-1 et L. 681-2", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045170884/", "fiab": "stable" }
+    {
+     "t": "<b>Alerte du commissaire aux comptes</b> : lorsqu'il relève des faits de nature à compromettre la continuité de l'exploitation, le commissaire aux comptes en informe le dirigeant et lui demande des explications ; à défaut de réponse satisfaisante, il invite le conseil d'administration (ou le dirigeant) à délibérer, puis établit un rapport spécial présenté à l'assemblée générale et, en dernier lieu, informe le président du tribunal de commerce. Il peut informer le président du tribunal dès la première phase.",
+     "src": "C. com., art. L. 234-1 (SA) et L. 234-2 (autres sociétés)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Alerte par les associés</b> : dans la SARL, tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant sur tout fait de nature à compromettre la continuité de l'exploitation ; la réponse est communiquée au commissaire aux comptes. Même droit pour les actionnaires de SA détenant au moins 5 % du capital.",
+     "src": "C. com., art. L. 223-36 ; L. 225-232",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Alerte du comité social et économique et du président du tribunal</b> : le CSE qui a connaissance de faits de nature à affecter de manière préoccupante la situation économique de l'entreprise peut demander des explications à l'employeur (droit d'alerte économique). Le président du tribunal de commerce peut convoquer le dirigeant lorsque tout acte, document ou procédure fait apparaître des difficultés de nature à compromettre la continuité de l'exploitation.",
+     "src": "C. trav., art. L. 2312-63 ; C. com., art. L. 611-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035610999",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conciliation</b> : le conciliateur, désigné pour quatre mois au plus (prorogeables sans que la durée totale excède cinq mois), favorise un accord amiable avec les principaux créanciers ; l'accord est constaté par le président du tribunal (force exécutoire, confidentialité) ou homologué par le tribunal si le débiteur n'est pas en cessation des paiements ou si l'accord y met fin, si l'accord assure la pérennité de l'entreprise et s'il ne lèse pas les créanciers non signataires. Les apports de trésorerie consentis dans l'accord homologué bénéficient d'un privilège de paiement (« new money »).",
+     "src": "C. com., art. L. 611-6, L. 611-8 et L. 611-11",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038587807/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sauvegarde</b> : le jugement d'ouverture ouvre une période d'observation de six mois au plus, renouvelable une fois, pendant laquelle le débiteur reste à la tête de son entreprise, assisté le cas échéant d'un administrateur ; le tribunal arrête ensuite un plan de sauvegarde d'une durée maximale de dix ans (quinze pour les agriculteurs). La sauvegarde accélérée est ouverte au débiteur engagé dans une conciliation dont les comptes sont certifiés ou établis par un expert-comptable, le plan devant être arrêté dans un délai bref (deux mois, prorogeable jusqu'à quatre).",
+     "src": "C. com., art. L. 620-1, L. 621-3, L. 626-12, L. 628-1 et L. 628-8",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044052563",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Redressement judiciaire</b> : le débiteur en cessation des paiements doit en faire la déclaration au greffe dans les 45 jours, à défaut de demande d'ouverture d'une conciliation. Le tribunal fixe la date de cessation des paiements, qui ne peut être antérieure de plus de dix-huit mois au jugement d'ouverture ; les actes accomplis pendant cette « période suspecte » peuvent être annulés (nullités de droit : actes à titre gratuit, paiement de dettes non échues, sûretés pour dettes antérieures ; nullités facultatives si le cocontractant connaissait la cessation des paiements).",
+     "src": "C. com., art. L. 631-4, L. 631-8, L. 632-1 et L. 632-2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146111/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Liquidation judiciaire</b> : le liquidateur réalise l'actif et apure le passif ; le débiteur est dessaisi de l'administration de ses biens. La liquidation judiciaire simplifiée est obligatoire lorsque l'actif ne comprend pas de bien immobilier et que l'effectif et le chiffre d'affaires n'excèdent pas des seuils fixés par décret. La procédure est clôturée pour insuffisance d'actif lorsque la poursuite des opérations est rendue impossible ; les créanciers ne recouvrent pas, sauf exceptions, l'exercice individuel de leurs actions.",
+     "src": "C. com., art. L. 641-2, L. 641-9, L. 643-9 et L. 643-11",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178146",
+     "fiab": "stable",
+     "cite": "« Les droits et actions du débiteur concernant son patrimoine sont exercés pendant toute la durée de la liquidation judiciaire par le liquidateur. »"
+    },
+    {
+     "t": "<b>Situation des créanciers antérieurs</b> : le jugement d'ouverture interrompt ou interdit toute action en justice tendant au paiement d'une somme d'argent et arrête les voies d'exécution ; les créances antérieures ne peuvent plus être payées ; chaque créancier déclare sa créance au mandataire judiciaire dans le délai fixé par décret (deux mois à compter de la publication du jugement au BODACC), sous peine d'inopposabilité. Dans les grandes entreprises (seuils fixés par décret) ou sur option, les créanciers sont réunis en classes de parties affectées qui votent le plan.",
+     "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 626-29 et s. ; R. 622-24",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053281573",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Organes de la procédure</b> : le juge-commissaire veille au déroulement rapide de la procédure et à la protection des intérêts en présence ; le mandataire judiciaire représente les créanciers ; l'administrateur judiciaire, obligatoire au-delà de seuils fixés par décret, assiste ou surveille le débiteur (sauvegarde) ou l'assiste, voire administre seul (redressement) ; le liquidateur conduit la liquidation. Le ministère public est partie à la procédure.",
+     "src": "C. com., art. L. 621-4, L. 621-9, L. 622-1, L. 631-12 et L. 641-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019983939",
+     "fiab": "stable",
+     "cite": "« Le juge-commissaire est chargé de veiller au déroulement rapide de la procédure et à la protection des intérêts en présence. »"
+    },
+    {
+     "t": "<b>Sanctions contre les dirigeants</b> : en cas de liquidation judiciaire faisant apparaître une insuffisance d'actif, le tribunal peut mettre tout ou partie de celle-ci à la charge des dirigeants de droit ou de fait ayant commis une faute de gestion y ayant contribué (la simple négligence étant exclue). Il peut aussi prononcer la faillite personnelle (interdiction de diriger, gérer, administrer ou contrôler toute entreprise) ou la seule interdiction de gérer, pour quinze ans au plus.",
+     "src": "C. com., art. L. 651-2, L. 653-2, L. 653-8 et L. 653-11",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178209",
+     "fiab": "stable",
+     "cite": "« L'action se prescrit par trois ans à compter du jugement qui prononce la liquidation judiciaire. »"
+    },
+    {
+     "t": "<b>Éléments de l'abus de biens sociaux</b> : un usage des biens ou du crédit de la société (prélèvements, dépenses personnelles, rémunérations excessives, cautionnement de dettes personnelles), contraire à l'intérêt social, commis de mauvaise foi et dans un intérêt personnel direct ou indirect. Il n'existe que dans les SARL, SA, SAS et sociétés en commandite par actions ; dans les autres groupements, les faits relèvent de l'abus de confiance.",
+     "src": "C. com., art. L. 241-3, 4° ; L. 242-6, 3° ; L. 244-1 ; C. pén., art. 314-1",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dividendes fictifs et comptes infidèles</b> : est puni le fait, pour les dirigeants, d'opérer entre les associés la répartition de dividendes fictifs en l'absence d'inventaire ou au moyen d'inventaires frauduleux, ou de publier ou présenter aux associés, même en l'absence de distribution, des comptes annuels ne donnant pas, pour chaque exercice, une image fidèle du résultat, de la situation financière et du patrimoine, en vue de dissimuler la véritable situation de la société.",
+     "src": "C. com., art. L. 241-3, 2° et 3° ; L. 242-6, 1° et 2°",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dirigeant de fait et SAS</b> : les peines prévues pour les gérants de SARL et les dirigeants de SA s'appliquent à toute personne qui, directement ou par personne interposée, a en fait exercé la gestion sous le couvert ou au lieu et place des dirigeants légaux ; les infractions de la SA sont applicables au président et aux dirigeants de la SAS.",
+     "src": "C. com., art. L. 241-9, L. 246-2 et L. 244-1",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Entrave aux droits des associés</b> : le fait d'empêcher un actionnaire ou un associé de participer à une assemblée, ou de se faire accorder, garantir ou promettre des avantages pour voter dans un certain sens ou ne pas participer au vote, est un délit.",
+     "src": "C. com., art. L. 242-9 (SA) ; L. 241-? (SARL : voir L. 223-27 pour la convocation)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Banqueroute</b> : délit commis, en cas d'ouverture d'un redressement ou d'une liquidation judiciaire, par le dirigeant qui a employé des moyens ruineux pour se procurer des fonds, détourné ou dissimulé tout ou partie de l'actif, augmenté frauduleusement le passif, tenu une comptabilité fictive ou fait disparaître des documents comptables, ou tenu une comptabilité manifestement incomplète ou irrégulière.",
+     "src": "C. com., art. L. 654-1 et L. 654-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019984474",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Infractions de droit commun</b> : l'escroquerie (tromperie par usage d'un faux nom, d'une fausse qualité, abus d'une qualité vraie ou manœuvres frauduleuses pour obtenir la remise d'un bien ou d'un service) et l'abus de confiance (détournement d'un bien remis à charge de le rendre, de le représenter ou d'en faire un usage déterminé) sanctionnent les comportements que l'abus de biens sociaux ne couvre pas.",
+     "src": "C. pén., art. 313-1 et 314-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006418192",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Infractions liées au contrôle légal</b> : le commissaire aux comptes qui ne révèle pas au procureur de la République les faits délictueux dont il a eu connaissance commet un délit, de même que le dirigeant qui fait obstacle à ses vérifications ou refuse de lui communiquer les pièces utiles (entrave). L'utilisation ou la communication d'une information privilégiée sur un instrument financier constitue le délit d'initié.",
+     "src": "C. com., art. L. 821-9 et L. 821-10 (non-révélation des faits délictueux ; ex-art. L. 820-7 et L. 823-12) et ancien art. L. 820-4 (entrave), livre VIII recodifié par l'ordonnance n° 2023-1142 du 6 décembre 2023 ; C. mon. fin., art. L. 465-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535373",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Responsabilité civile du dirigeant</b> : indépendamment des sanctions pénales et des sanctions de la procédure collective, le gérant répond envers la société et les tiers de ses fautes de gestion ; l'action se prescrit par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation, et par dix ans lorsque le fait est qualifié crime.",
+     "cite": "« Toutefois, lorsque le fait est qualifié crime, l'action se prescrit par dix ans. »",
+     "src": "C. com., art. L. 223-22 et L. 223-23",
+     "url": "https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000006223149&cidTexte=LEGITEXT000005634379&dateTexte=20000921",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Issue de la liquidation judiciaire</b> : le jugement ordonnant la liquidation judiciaire ne dissout pas la société ; c'est le jugement de clôture de la liquidation judiciaire pour insuffisance d'actif qui met fin à la société.",
+     "src": "C. civ., art. 1844-7, 7°",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Entrepreneur individuel en difficulté</b> : les procédures du livre VI ouvertes à l'égard d'un entrepreneur individuel ne portent que sur son patrimoine professionnel ; la liquidation judiciaire ne peut atteindre son patrimoine personnel que dans les cas de réunion des patrimoines prévus par la loi (fraude, manquements graves).",
+     "src": "C. com., art. L. 681-1 et L. 681-2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045170884/",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Chiffres et seuils",
    "items": [
-    { "t": "<b>45 jours</b> : délai de déclaration de la cessation des paiements, et durée maximale de cessation des paiements compatible avec l'ouverture d'une conciliation ; <b>4 mois + 1</b> : durée de la conciliation.", "src": "C. com., art. L. 611-4, L. 611-6 et L. 631-4", "url": null, "fiab": "stable" },
-    { "t": "<b>2 mois</b> à compter de la publication du jugement au BODACC pour déclarer sa créance ; <b>6 mois</b> renouvelables pour la période d'observation ; <b>18 mois</b> de remontée maximale de la date de cessation des paiements (période suspecte) ; <b>10 ans</b> de durée maximale du plan.", "src": "C. com., art. R. 622-24, L. 621-3, L. 626-12 et L. 631-8", "url": null, "fiab": "stable" },
-    { "t": "<b>5 ans d'emprisonnement et 375 000 € d'amende</b> : peines de l'abus de biens sociaux, de la distribution de dividendes fictifs et de la présentation de comptes infidèles, dans la SARL comme dans la SA et la SAS.", "src": "C. com., art. L. 241-3 et L. 242-6", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>5 ans et 75 000 €</b> : peines de la banqueroute ; <b>15 ans</b> : durée maximale de la faillite personnelle et de l'interdiction de gérer ; <b>3 ans</b> à compter du jugement de liquidation pour agir en responsabilité pour insuffisance d'actif.", "src": "C. com., art. L. 654-3, L. 653-11 et L. 651-2", "url": null, "fiab": "stable" },
-    { "t": "<b>Prescriptions</b> : six ans pour l'action publique des délits, le point de départ étant reporté, pour les infractions occultes ou dissimulées comme l'abus de biens sociaux, au jour où l'infraction est apparue et a pu être constatée (butoir de douze ans) ; trois ans pour l'action civile en responsabilité contre les dirigeants, dix ans en cas de crime.", "src": "C. pr. pén., art. 8 et 9-1 ; C. com., art. L. 223-23 et L. 225-254", "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006226359/2006-06-09", "fiab": "stable" }
+    {
+     "t": "<b>45 jours</b> : délai de déclaration de la cessation des paiements, et durée maximale de cessation des paiements compatible avec l'ouverture d'une conciliation ; <b>4 mois + 1</b> : durée de la conciliation.",
+     "src": "C. com., art. L. 611-4, L. 611-6 et L. 631-4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023217170/2014-07-01",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>2 mois</b> à compter de la publication du jugement au BODACC pour déclarer sa créance ; <b>6 mois</b> renouvelables pour la période d'observation ; <b>18 mois</b> de remontée maximale de la date de cessation des paiements (période suspecte) ; <b>10 ans</b> de durée maximale du plan.",
+     "src": "C. com., art. R. 622-24, L. 621-3, L. 626-12 et L. 631-8",
+     "url": "https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000029175247",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>5 ans d'emprisonnement et 375 000 € d'amende</b> : peines de l'abus de biens sociaux, de la distribution de dividendes fictifs et de la présentation de comptes infidèles, dans la SARL comme dans la SA et la SAS.",
+     "src": "C. com., art. L. 241-3 et L. 242-6",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>5 ans et 75 000 €</b> : peines de la banqueroute ; <b>15 ans</b> : durée maximale de la faillite personnelle et de l'interdiction de gérer ; <b>3 ans</b> à compter du jugement de liquidation pour agir en responsabilité pour insuffisance d'actif.",
+     "src": "C. com., art. L. 654-3, L. 653-11 et L. 651-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019984477",
+     "fiab": "stable",
+     "cite": "« La banqueroute est punie de cinq ans d'emprisonnement et de 75 000 euros d'amende. »"
+    },
+    {
+     "t": "<b>Prescriptions</b> : six ans pour l'action publique des délits, le point de départ étant reporté, pour les infractions occultes ou dissimulées comme l'abus de biens sociaux, au jour où l'infraction est apparue et a pu être constatée (butoir de douze ans) ; trois ans pour l'action civile en responsabilité contre les dirigeants, dix ans en cas de crime.",
+     "src": "C. pr. pén., art. 8 et 9-1 ; C. com., art. L. 223-23 et L. 225-254",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006226359/2006-06-09",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Ce qui a changé récemment",
    "items": [
-    { "t": "<b>Ordonnance n° 2021-1193 du 15 septembre 2021</b> (transposition de la directive (UE) 2019/1023) : création des classes de parties affectées qui remplacent les comités de créanciers, consécration du privilège de sauvegarde et de redressement, limitation de la période d'observation de la sauvegarde à douze mois ; applicable aux procédures ouvertes à compter du 1er octobre 2021.", "src": "Ordonnance n° 2021-1193 du 15 septembre 2021 ; C. com., art. L. 626-29 et s.", "url": null, "fiab": "stable" },
-    { "t": "<b>Loi n° 2022-172 du 14 février 2022</b> : l'entrepreneur individuel relève des procédures du livre VI pour son seul patrimoine professionnel (titre VIII bis), avec renvoi au surendettement des particuliers pour le patrimoine personnel.", "src": "C. com., art. L. 681-1 à L. 681-4", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045170884/", "fiab": "stable" },
-    { "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> : les décisions prises par les organes sociaux en période de difficultés obéissent, depuis le 1er octobre 2025, au régime unifié des nullités (triple test, prescription de deux ans).", "cite": "« Conformément à l'article 70 de l'ordonnance n° 2025-229 du 12 mars 2025, l'ordonnance précitée s'applique à compter du 1er octobre 2025. »", "src": "Ordonnance n° 2025-229 du 12 mars 2025 ; C. civ., art. 1844-12-1", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108", "fiab": "stable" },
-    { "t": "<b>Loi n° 2023-1059 du 20 novembre 2023</b> (art. 26) : expérimentation, à compter du 1er janvier 2025 et pour quatre ans, du tribunal des activités économiques dans douze tribunaux de commerce, compétent pour les procédures amiables et collectives de tous les débiteurs, quelle que soit leur activité. <b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> : recodification du livre VIII du Code de commerce relatif aux commissaires aux comptes (nouveaux articles L. 821-1 et suivants).", "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; ordonnance n° 2023-1142 du 6 décembre 2023", "url": null, "fiab": "stable" }
+    {
+     "t": "<b>Ordonnance n° 2021-1193 du 15 septembre 2021</b> (transposition de la directive (UE) 2019/1023) : création des classes de parties affectées qui remplacent les comités de créanciers, consécration du privilège de sauvegarde et de redressement, limitation de la période d'observation de la sauvegarde à douze mois ; applicable aux procédures ouvertes à compter du 1er octobre 2021.",
+     "src": "Ordonnance n° 2021-1193 du 15 septembre 2021 ; C. com., art. L. 626-29 et s.",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000044044563",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> : l'entrepreneur individuel relève des procédures du livre VI pour son seul patrimoine professionnel (titre VIII bis), avec renvoi au surendettement des particuliers pour le patrimoine personnel.",
+     "src": "C. com., art. L. 681-1 à L. 681-4",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045170884/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> : les décisions prises par les organes sociaux en période de difficultés obéissent, depuis le 1er octobre 2025, au régime unifié des nullités (triple test, prescription de deux ans).",
+     "cite": "« Conformément à l'article 70 de l'ordonnance n° 2025-229 du 12 mars 2025, l'ordonnance précitée s'applique à compter du 1er octobre 2025. »",
+     "src": "Ordonnance n° 2025-229 du 12 mars 2025 ; C. civ., art. 1844-12-1",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2023-1059 du 20 novembre 2023</b> (art. 26) : expérimentation, à compter du 1er janvier 2025 et pour quatre ans, du tribunal des activités économiques dans douze tribunaux de commerce, compétent pour les procédures amiables et collectives de tous les débiteurs, quelle que soit leur activité. <b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> : recodification du livre VIII du Code de commerce relatif aux commissaires aux comptes (nouveaux articles L. 821-1 et suivants).",
+     "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; ordonnance n° 2023-1142 du 6 décembre 2023",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
+     "fiab": "stable",
+     "cite": "« […] au moins neuf et au plus douze tribunaux de commerce désignés par arrêté du ministre de la justice, pendant une durée de quatre ans […] »"
+    }
    ]
   },
   {
    "h": "Points de vigilance",
    "items": [
-    { "t": "<b>Pas d'abus de biens sociaux en SNC ni en société civile</b> : l'infraction n'est prévue que pour la SARL, la SA, la SAS et la SCA ; dans les autres groupements, le détournement relève de l'abus de confiance, moins sévèrement puni.", "src": "C. com., art. L. 241-3 et L. 242-6 ; C. pén., art. 314-1", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739", "fiab": "stable" },
-    { "t": "<b>Faute de gestion : deux actions distinctes</b> : hors procédure collective, l'action en responsabilité de droit commun (L. 223-22, L. 225-251) exige une faute, un préjudice et un lien de causalité ; en liquidation judiciaire, l'action en responsabilité pour insuffisance d'actif (L. 651-2) est réservée au liquidateur, au ministère public ou aux contrôleurs, et exclut la simple négligence.", "src": "C. com., art. L. 223-22 ; L. 651-2", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141", "fiab": "stable" },
-    { "t": "<b>Dettes sociales de l'entrepreneur individuel</b> : les dettes envers les organismes de recouvrement des cotisations sont réputées nées de l'activité professionnelle, et le droit de gage de l'administration fiscale et des organismes sociaux s'étend aux deux patrimoines en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales ou sociales.", "cite": "« Les dettes dont l'entrepreneur individuel est redevable envers les organismes de recouvrement des cotisations et contributions sociales sont nées à l'occasion de son exercice professionnel. »", "src": "C. com., art. L. 526-22", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964", "fiab": "stable" },
-    { "t": "<b>Lien avec le DSCG</b> : le programme de l'UE 1 du DSCG (Gestion juridique, fiscale et sociale) approfondit l'entreprise en difficulté et le droit pénal des affaires, dont l'abus de biens sociaux ; au DCG, on attend la qualification des situations (cessation des paiements, choix de la procédure, éléments constitutifs des délits) et les délais.", "src": "Arrêté du 4 août 2025, annexe 2, DSCG UE1", "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-2-programme-des-unit-s-d-enseignement-du-dipl-me-sup-rieur-de-comptabilit-et-de-gestion-dscg--37754.pdf", "fiab": "stable" },
-    { "t": "<b>Deux programmes, deux accents</b> : le programme 2019 (session 2026) consacre dix heures à la prévention et au traitement des difficultés et quinze heures au droit pénal des groupements d'affaires ; le programme 2025 (session 2027) retient quinze heures pour « Apprécier la mise en œuvre de la responsabilité pénale appliquée aux affaires ».", "src": "Arrêté du 13 février 2019, annexe 1, UE2 ; arrêté du 4 août 2025, annexe 1, UE2", "url": "https://www.bulletin-officiel.education.gouv.fr/sites/default/files/2025-08/ensup324_annexe-1.pdf", "fiab": "stable" }
+    {
+     "t": "<b>Pas d'abus de biens sociaux en SNC ni en société civile</b> : l'infraction n'est prévue que pour la SARL, la SA, la SAS et la SCA ; dans les autres groupements, le détournement relève de l'abus de confiance, moins sévèrement puni.",
+     "src": "C. com., art. L. 241-3 et L. 242-6 ; C. pén., art. 314-1",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Faute de gestion : deux actions distinctes</b> : hors procédure collective, l'action en responsabilité de droit commun (L. 223-22, L. 225-251) exige une faute, un préjudice et un lien de causalité ; en liquidation judiciaire, l'action en responsabilité pour insuffisance d'actif (L. 651-2) est réservée au liquidateur, au ministère public ou aux contrôleurs, et exclut la simple négligence.",
+     "src": "C. com., art. L. 223-22 ; L. 651-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dettes sociales de l'entrepreneur individuel</b> : les dettes envers les organismes de recouvrement des cotisations sont réputées nées de l'activité professionnelle, et le droit de gage de l'administration fiscale et des organismes sociaux s'étend aux deux patrimoines en cas de manœuvres frauduleuses ou d'inobservation grave et répétée des obligations fiscales ou sociales.",
+     "cite": "« Les dettes dont l'entrepreneur individuel est redevable envers les organismes de recouvrement des cotisations et contributions sociales sont nées à l'occasion de son exercice professionnel. »",
+     "src": "C. com., art. L. 526-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Lien avec le DSCG</b> : le programme de l'UE 1 du DSCG (Gestion juridique, fiscale et sociale) approfondit l'entreprise en difficulté et le droit pénal des affaires, dont l'abus de biens sociaux ; au DCG, on attend la qualification des situations (cessation des paiements, choix de la procédure, éléments constitutifs des délits) et les délais.",
+     "src": "Arrêté du 4 août 2025, annexe 2, DSCG UE1",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-2-programme-des-unit-s-d-enseignement-du-dipl-me-sup-rieur-de-comptabilit-et-de-gestion-dscg--37754.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Deux programmes, deux accents</b> : le programme 2019 (session 2026) consacre dix heures à la prévention et au traitement des difficultés et quinze heures au droit pénal des groupements d'affaires ; le programme 2025 (session 2027) retient quinze heures pour « Apprécier la mise en œuvre de la responsabilité pénale appliquée aux affaires ».",
+     "src": "Arrêté du 13 février 2019, annexe 1, UE2 ; arrêté du 4 août 2025, annexe 1, UE2",
+     "url": "https://www.bulletin-officiel.education.gouv.fr/sites/default/files/2025-08/ensup324_annexe-1.pdf",
+     "fiab": "stable"
+    }
    ]
   }
  ]

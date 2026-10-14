@@ -91,7 +91,7 @@
      "cite": "« Les aides, les remboursements et les indemnités... reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »"
     },
     {
-     "t": "<b>Subvention d'investissement</b> : subvention accordée pour acquérir ou créer des immobilisations, inscrite en capitaux propres (<code>131</code>) et rapportée au résultat au rythme des amortissements (<code>139</code> / <code>747</code>).",
+     "t": "<b>Subvention d'investissement</b> : subvention accordée pour acquérir ou créer des immobilisations ; elle peut être rapportée au résultat de l'exercice d'octroi ou, méthode retenue à l'examen, inscrite en capitaux propres (<code>131</code>) et rapportée au résultat au rythme des amortissements (<code>139</code> / <code>747</code>).",
      "src": "PCG, art. 312-1 ; plan de comptes PCG 2025, comptes 131, 139 et 747",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
      "fiab": "stable"
@@ -138,8 +138,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Cession de VMP</b> : le prix de cession est porté au crédit de <code>7673</code> et la valeur comptable des titres cédés au débit de <code>6673</code>, en produits et charges financiers ; les titres sortent du compte 50 pour leur coût d'entrée.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 667 et 767 ; règlement ANC n° 2022-06",
+     "t": "<b>Cession de VMP</b> : les titres sortent du compte 50 pour leur coût d'entrée et seul le <b>résultat net</b> de cession est constaté, au crédit de <code>7673</code> « Produits nets sur cessions de valeurs mobilières de placement » (plus-value) ou au débit de <code>6673</code> « Charges nettes sur cessions de valeurs mobilières de placement » (moins-value), en résultat financier ; la dépréciation éventuelle est reprise.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 6673 et 7673 ; règlement ANC n° 2022-06",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
      "fiab": "stable"
     },
@@ -157,7 +157,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Subvention d'investissement</b> : à l'octroi, débit <code>441</code> / crédit <code>131</code> ; à chaque clôture, une quote-part égale à l'amortissement du bien financé (au prorata de la subvention) est virée au résultat : débit <code>139</code>, crédit <code>747</code> « Quote-part des subventions d'investissement virée au résultat de l'exercice ».",
+     "t": "<b>Subvention d'investissement</b> étalée : à l'octroi, débit <code>441</code> / crédit <code>131</code> ; à chaque clôture, une quote-part égale à l'amortissement du bien financé (au prorata de la subvention) est virée au résultat : débit <code>139</code>, crédit <code>747</code> « Quote-part des subventions d'investissement virée au résultat de l'exercice » ; pour un bien non amortissable, par fractions égales sur la durée d'inaliénabilité ou, à défaut, sur dix ans.",
      "src": "PCG, art. 312-1 ; plan de comptes PCG 2025, comptes 131, 139 et 747",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
      "fiab": "stable"
@@ -231,9 +231,8 @@
     {
      "t": "Non-compensation : les plus-values latentes ne compensent pas les moins-values latentes, titre par titre ou catégorie par catégorie.",
      "src": "C. com., art. L. 123-19",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219311/2014-08-02",
-     "fiab": "stable",
-     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat. »"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
+     "fiab": "stable"
     }
    ]
   },
@@ -247,7 +246,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Les cessions de titres relèvent des comptes <code>667</code> / <code>767</code> (6671 valeurs comptables des immobilisations financières cédées, 6673/7673 pour les VMP) ; les comptes 675 et 775 sont supprimés.",
+     "t": "Les cessions de titres relèvent du résultat financier, comptes <code>667</code> / <code>767</code> : <code>6671</code> valeurs comptables des immobilisations financières cédées et <code>7671</code> produits des cessions d'immobilisations financières (présentation brute, ex-675/775) ; <code>6673</code> / <code>7673</code> charges et produits nets sur cessions de VMP (présentation nette).",
      "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, comptes 667 et 767",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
      "fiab": "stable"
@@ -277,7 +276,7 @@
      "fiab": "stable"
     },
     {
-     "t": "La subvention d'investissement n'est pas un produit à l'octroi : elle est en capitaux propres (131) et ne vient au résultat que par la quote-part annuelle (139/747).",
+     "t": "Lorsque l'entité retient l'étalement, la subvention d'investissement n'est pas un produit à l'octroi : elle est en capitaux propres (131) et ne vient au résultat que par la quote-part annuelle (139/747) ; en cas de cession du bien, le solde non encore repris est rapporté au résultat de l'exercice de cession.",
      "src": "PCG, art. 312-1",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
      "fiab": "stable"

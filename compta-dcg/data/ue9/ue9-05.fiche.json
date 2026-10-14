@@ -16,7 +16,7 @@
    "ref": "C. com., art. L. 123-18",
    "objet": "Valeur d'entrée des biens : coût d'acquisition, valeur vénale, coût de production ; plus-value latente non comptabilisée",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
-   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015)"
+   "version": "en vigueur"
   },
   {
    "ref": "C. com., art. R. 123-181 et R. 123-184",
@@ -279,6 +279,13 @@
      "t": "La dotation de l'année de cession est calculée <b>jusqu'à la date de cession</b>, pas sur l'année entière : oublier la dotation complémentaire fausse la VNC et le résultat de cession.",
      "src": "PCG, art. 214-1 à 214-4 ; plan de comptes PCG 2025, compte 657",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les amortissements sont obligatoires : même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. Reporter une dotation pour améliorer le résultat est interdit.",
+     "cite": "« Même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. »",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
      "fiab": "stable"
     },
     {

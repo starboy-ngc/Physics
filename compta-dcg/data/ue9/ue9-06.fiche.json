@@ -21,8 +21,8 @@
   {
    "ref": "C. com., art. L. 123-19 à L. 123-21",
    "objet": "Non-compensation, prudence, passifs nés avant la clôture, bénéfices réalisés",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
-   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015)"
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "version": "en vigueur (L. 123-19 et L. 123-20 réécrits par l'ordonnance n° 2015-900 du 23 juillet 2015, en vigueur depuis le 1er janvier 2016)"
   },
   {
    "ref": "PCG, art. 211-7",
@@ -86,7 +86,7 @@
     {
      "t": "<b>Inventaire</b> : contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture ; il est obligatoire au moins une fois tous les douze mois.",
      "src": "C. com., art. L. 123-12 et R. 123-177",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
      "fiab": "stable",
      "cite": "« L'inventaire est le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture. »"
     },
@@ -118,9 +118,16 @@
     {
      "t": "<b>Prudence</b> : les comptes annuels respectent le principe de prudence ; il doit être tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'ils sont connus entre la clôture et l'établissement des comptes.",
      "src": "C. com., art. L. 123-20",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
      "fiab": "stable",
      "cite": "« Les comptes annuels doivent respecter le principe de prudence. »"
+    },
+    {
+     "t": "Même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux <b>amortissements, dépréciations et provisions</b> nécessaires : une entreprise en perte ne peut pas « oublier » une dépréciation de stock ou de créance.",
+     "cite": "« Même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. »",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+     "fiab": "stable"
     },
     {
      "t": "Seuls les bénéfices réalisés à la clôture sont inscrits : une moins-value latente est provisionnée (dépréciation), une plus-value latente ne l'est pas.",
@@ -186,9 +193,8 @@
     {
      "t": "<b>Non-compensation</b> : les plus-values latentes sur certains titres ne compensent pas les moins-values latentes sur d'autres ; chaque élément d'actif et de passif est évalué séparément.",
      "src": "C. com., art. L. 123-19",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219311/2014-08-02",
-     "fiab": "stable",
-     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat. »"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
+     "fiab": "stable"
     },
     {
      "t": "Une <b>provision</b> est comptabilisée lorsque l'entité a une obligation à l'égard d'un tiers à la clôture, qu'il est probable ou certain qu'elle provoquera une sortie de ressources sans contrepartie équivalente et que son montant peut être estimé de façon fiable.",
@@ -230,7 +236,7 @@
     {
      "t": "Les données d'inventaire (états de stocks, calculs de dépréciation) sont conservées <span class=\"mono\">dix ans</span> et organisées pour justifier chaque poste du bilan.",
      "src": "C. com., art. R. 123-177 et L. 123-22",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
      "fiab": "stable",
      "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
     }
@@ -278,7 +284,7 @@
     {
      "t": "Un passif né avant la clôture mais révélé entre la clôture et l'arrêté des comptes doit être pris en compte dans l'exercice clos.",
      "src": "C. com., art. L. 123-20",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
      "fiab": "stable"
     },
     {
