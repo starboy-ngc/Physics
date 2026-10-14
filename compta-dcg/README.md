@@ -1,6 +1,7 @@
 # Débit Crédit — réviser le DCG pour aborder le DSCG
 
-Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières, leçons complètes,
+Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières, une fiche documentaire
+sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
 test quotidien, révisions espacées, plan comptable général 2025 commenté compte par compte (606 comptes),
 jeu de progression (« l'expédition vers les aurores »).
@@ -23,6 +24,20 @@ aucun serveur. La progression est gardée dans le navigateur ; un code de sauveg
 
 Référentiel : PCG 2025 (règlement ANC n° 2022-06), droit et fiscalité 2025-2026. Les chiffres qui changent
 chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé et signalés « chiffres 2025 ».
+
+## Fiches documentaires
+
+Chaque chapitre ouvre sur une fiche documentaire (`data/<ue>/<id>.fiche.json`) : programme officiel couvert
+(arrêté du 4 août 2025 pour la session 2027, arrêté du 13 février 2019 pour la session 2026), textes de
+référence, puis définitions, règles essentielles, chiffres et seuils, réformes récentes et points de vigilance.
+Chaque énoncé porte sa source (article de code, BOFiP, règlement ANC, page URSSAF ou service-public) et, quand
+il a pu être confirmé, le lien direct vers le texte officiel et un extrait verbatim. Un énoncé qui ne peut être
+rattaché à un texte officiel n'est pas écrit. L'onglet « Fiches » permet une recherche plein texte.
+
+Limite : les sites officiels ne sont pas joignables depuis l'environnement de production ; les liens et extraits
+proviennent de recherches restreintes aux domaines officiels, jamais d'URL reconstituées. `check-fiches.js`
+contrôle la présence des fiches, l'absence de formulations hésitantes et la couverture en liens.
+Les rapports de relecture sont dans `data/<ue>/RAPPORT-fiches.md`.
 
 ## Méthode de production et de vérification
 
