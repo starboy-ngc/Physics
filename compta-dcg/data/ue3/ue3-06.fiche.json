@@ -12,66 +12,241 @@
   ]
  },
  "textes": [
-  { "ref": "Préambule de la Constitution du 27 octobre 1946, al. 10 et 11", "objet": "Fondement constitutionnel de la protection sociale et de la politique familiale", "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006527445", "version": "bloc de constitutionnalité" },
-  { "ref": "CSS, art. L. 200-1 et L. 200-2", "objet": "Régime général : champ et branches", "url": null, "version": "en vigueur (branche autonomie : loi n° 2020-992 du 7 août 2020)" },
-  { "ref": "CSS, art. L. 136-1-1, L. 136-8 et L. 242-1", "objet": "Assiette des cotisations et contributions ; taux de la CSG", "url": null, "version": "en vigueur" },
-  { "ref": "CSS, art. L. 133-5-3, L. 213-1, L. 243-7, L. 243-13, L. 244-3 et R. 243-59", "objet": "DSN, recouvrement par les URSSAF, contrôle, prescription", "url": null, "version": "en vigueur" },
-  { "ref": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4", "objet": "Indemnités journalières maladie : conditions, carence, montant", "url": null, "version": "en vigueur (décret n° 2025-160 du 20 février 2025 pour le plafond)" },
-  { "ref": "CSS, art. L. 411-1, L. 433-1, L. 452-1 et R. 441-3", "objet": "Accidents du travail : définition, indemnités journalières, faute inexcusable, déclaration", "url": null, "version": "en vigueur" },
-  { "ref": "CSS, art. L. 161-17-2, L. 161-17-3 et L. 351-8", "objet": "Retraite : âge légal, durée d'assurance, taux plein", "url": null, "version": "en vigueur (loi n° 2023-270 du 14 avril 2023)" },
-  { "ref": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024", "objet": "Allocation d'aide au retour à l'emploi : conditions", "url": null, "version": "convention agréée par arrêté du 19 décembre 2024, en vigueur depuis le 1er janvier 2025" },
-  { "ref": "CSS, art. L. 911-7 ; ANI du 17 novembre 2017 relatif à la prévoyance des cadres", "objet": "Complémentaire santé obligatoire ; cotisation de prévoyance des cadres", "url": null, "version": "en vigueur (loi n° 2013-504 du 14 juin 2013)" },
-  { "ref": "CSS, art. R. 142-1 et R. 142-10 à R. 142-15", "objet": "Contentieux : recours amiable préalable, tribunal judiciaire compétent", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173232/", "version": "en vigueur (décret n° 2018-928 du 29 octobre 2018)" },
-  { "ref": "C. org. jud., art. L. 211-16", "objet": "Tribunaux judiciaires spécialement désignés : contentieux de la sécurité sociale", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782", "version": "en vigueur depuis le 28 décembre 2023 (loi n° 2023-1250 du 26 décembre 2023)" },
-  { "ref": "Décret n° 2018-772 du 4 septembre 2018", "objet": "Désignation des tribunaux et cours d'appel compétents en matière de contentieux de la sécurité sociale", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037367894", "version": "en vigueur depuis le 1er janvier 2019" },
-  { "ref": "C. trav., art. L. 2253-1", "objet": "Garanties collectives complémentaires : matière réservée à la branche", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771", "version": "rédaction issue de l'ordonnance n° 2017-1385" },
-  { "ref": "Loi n° 2025-199 du 28 février 2025 de financement de la sécurité sociale pour 2025", "objet": "Seuils des taux réduits maladie et famille (2025) ; réduction unique dégressive jusqu'à 3 SMIC à compter de 2026", "url": null, "version": "en vigueur" },
-  { "ref": "Loi de financement de la sécurité sociale pour 2026", "objet": "Suspension jusqu'au 1er janvier 2028 de la montée en charge de la réforme des retraites de 2023", "url": null, "version": "en vigueur (numéro et date de promulgation à vérifier sur Légifrance)" }
+  {
+   "ref": "Préambule de la Constitution du 27 octobre 1946, al. 10 et 11",
+   "objet": "Fondement constitutionnel de la protection sociale et de la politique familiale",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006527445",
+   "version": "bloc de constitutionnalité"
+  },
+  {
+   "ref": "CSS, art. L. 200-1 et L. 200-2",
+   "objet": "Régime général : champ et branches",
+   "url": null,
+   "version": "en vigueur (branche autonomie : loi n° 2020-992 du 7 août 2020)"
+  },
+  {
+   "ref": "CSS, art. L. 136-1-1, L. 136-8 et L. 242-1",
+   "objet": "Assiette des cotisations et contributions ; taux de la CSG",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CSS, art. L. 133-5-3, L. 213-1, L. 243-7, L. 243-13, L. 244-3 et R. 243-59",
+   "objet": "DSN, recouvrement par les URSSAF, contrôle, prescription",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4",
+   "objet": "Indemnités journalières maladie : conditions, carence, montant",
+   "url": null,
+   "version": "en vigueur (décret n° 2025-160 du 20 février 2025 pour le plafond)"
+  },
+  {
+   "ref": "CSS, art. L. 411-1, L. 433-1, L. 452-1 et R. 441-3",
+   "objet": "Accidents du travail : définition, indemnités journalières, faute inexcusable, déclaration",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CSS, art. L. 161-17-2, L. 161-17-3 et L. 351-8",
+   "objet": "Retraite : âge légal, durée d'assurance, taux plein",
+   "url": null,
+   "version": "en vigueur (loi n° 2023-270 du 14 avril 2023)"
+  },
+  {
+   "ref": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024",
+   "objet": "Allocation d'aide au retour à l'emploi : conditions",
+   "url": null,
+   "version": "convention agréée par arrêté du 19 décembre 2024, en vigueur depuis le 1er janvier 2025"
+  },
+  {
+   "ref": "CSS, art. L. 911-7 ; ANI du 17 novembre 2017 relatif à la prévoyance des cadres",
+   "objet": "Complémentaire santé obligatoire ; cotisation de prévoyance des cadres",
+   "url": null,
+   "version": "en vigueur (loi n° 2013-504 du 14 juin 2013)"
+  },
+  {
+   "ref": "CSS, art. R. 142-1 et R. 142-10 à R. 142-15",
+   "objet": "Contentieux : recours amiable préalable, tribunal judiciaire compétent",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173232/",
+   "version": "en vigueur (décret n° 2018-928 du 29 octobre 2018)"
+  },
+  {
+   "ref": "C. org. jud., art. L. 211-16",
+   "objet": "Tribunaux judiciaires spécialement désignés : contentieux de la sécurité sociale",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
+   "version": "en vigueur depuis le 28 décembre 2023 (loi n° 2023-1250 du 26 décembre 2023)"
+  },
+  {
+   "ref": "Décret n° 2018-772 du 4 septembre 2018",
+   "objet": "Désignation des tribunaux et cours d'appel compétents en matière de contentieux de la sécurité sociale",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037367894",
+   "version": "en vigueur depuis le 1er janvier 2019"
+  },
+  {
+   "ref": "C. trav., art. L. 2253-1",
+   "objet": "Garanties collectives complémentaires : matière réservée à la branche",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771",
+   "version": "rédaction issue de l'ordonnance n° 2017-1385"
+  },
+  {
+   "ref": "Loi n° 2025-199 du 28 février 2025 de financement de la sécurité sociale pour 2025",
+   "objet": "Seuils des taux réduits maladie et famille (2025) ; réduction unique dégressive jusqu'à 3 SMIC à compter de 2026",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Loi n° 2025-1403 du 30 décembre 2025 de financement de la sécurité sociale pour 2026",
+   "objet": "Suspension de la montée en charge de la réforme des retraites de 2023 : pour la génération 1964, âge légal de 62 ans et 9 mois et 170 trimestres, pour les pensions prenant effet à compter du 1er septembre 2026",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053226384",
+   "version": "JO du 31 décembre 2025 ; décision du Conseil constitutionnel n° 2025-899 DC du 30 décembre 2025"
+  }
  ],
  "sections": [
   {
    "h": "Définitions",
    "items": [
-    { "t": "<b>Fondement constitutionnel de la protection sociale</b> : la Nation garantit à tous, notamment à l'enfant, à la mère et aux vieux travailleurs, la protection de la santé, la sécurité matérielle, le repos et les loisirs ; tout être humain qui, en raison de son âge, de son état physique ou mental, de la situation économique, se trouve dans l'incapacité de travailler a le droit d'obtenir de la collectivité des moyens convenables d'existence.", "src": "Préambule de la Constitution du 27 octobre 1946, al. 11", "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006527445", "fiab": "stable" },
-    { "t": "<b>Politique familiale</b> : la Nation assure à l'individu et à la famille les conditions nécessaires à leur développement (al. 10) ; ce principe fonde la branche famille et les prestations familiales.", "src": "Préambule de la Constitution du 27 octobre 1946, al. 10", "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946", "fiab": "stable" },
-    { "t": "<b>Compétence du législateur</b> : la Constitution range dans le domaine de la loi la détermination des principes fondamentaux du droit du travail, du droit syndical et de la sécurité sociale ; les lois de financement de la sécurité sociale déterminent chaque année les conditions générales de son équilibre financier et fixent ses objectifs de dépenses.", "src": "Constitution du 4 octobre 1958, art. 34 et 47-1", "url": "https://www.conseil-constitutionnel.fr/nouveaux-cahiers-du-conseil-constitutionnel/les-principes-de-la-jurisprudence-du-conseil-constitutionnel-en-matiere-sociale", "fiab": "stable" },
-    { "t": "<b>Régime général</b> : il couvre les salariés et assimilés et comprend cinq branches : maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille ; autonomie (créée en 2020). Le recouvrement des cotisations est assuré par les URSSAF. Les travailleurs indépendants relèvent du régime général pour leur protection sociale depuis la suppression du régime social des indépendants (transfert achevé au 1er janvier 2020).", "src": "CSS, art. L. 200-1, L. 200-2 et L. 213-1 ; loi n° 2017-1836 du 30 décembre 2017, art. 15", "url": null, "fiab": "stable" }
+    {
+     "t": "<b>Fondement constitutionnel de la protection sociale</b> : la Nation garantit à tous, notamment à l'enfant, à la mère et aux vieux travailleurs, la protection de la santé, la sécurité matérielle, le repos et les loisirs ; tout être humain qui, en raison de son âge, de son état physique ou mental, de la situation économique, se trouve dans l'incapacité de travailler a le droit d'obtenir de la collectivité des moyens convenables d'existence.",
+     "src": "Préambule de la Constitution du 27 octobre 1946, al. 11",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006527445",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Politique familiale</b> : la Nation assure à l'individu et à la famille les conditions nécessaires à leur développement (al. 10) ; ce principe fonde la branche famille et les prestations familiales.",
+     "src": "Préambule de la Constitution du 27 octobre 1946, al. 10",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Compétence du législateur</b> : la Constitution range dans le domaine de la loi la détermination des principes fondamentaux du droit du travail, du droit syndical et de la sécurité sociale ; les lois de financement de la sécurité sociale déterminent chaque année les conditions générales de son équilibre financier et fixent ses objectifs de dépenses.",
+     "src": "Constitution du 4 octobre 1958, art. 34 et 47-1",
+     "url": "https://www.conseil-constitutionnel.fr/nouveaux-cahiers-du-conseil-constitutionnel/les-principes-de-la-jurisprudence-du-conseil-constitutionnel-en-matiere-sociale",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Régime général</b> : il couvre les salariés et assimilés et comprend cinq branches : maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille ; autonomie (créée en 2020). Le recouvrement des cotisations est assuré par les URSSAF. Les travailleurs indépendants relèvent du régime général pour leur protection sociale depuis la suppression du régime social des indépendants (transfert achevé au 1er janvier 2020).",
+     "src": "CSS, art. L. 200-1, L. 200-2 et L. 213-1 ; loi n° 2017-1836 du 30 décembre 2017, art. 15",
+     "url": null,
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Règles essentielles",
    "items": [
-    { "t": "<b>Juridiction compétente</b> : le contentieux de la sécurité sociale (art. L. 142-1 du Code de la sécurité sociale), l'admission à l'aide sociale et certains litiges du Code du travail relèvent de tribunaux judiciaires spécialement désignés (pôle social), dont le siège et le ressort sont fixés par décret ; l'appel est porté devant des cours d'appel également désignées.", "src": "C. org. jud., art. L. 211-16 ; décret n° 2018-772 du 4 septembre 2018", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782", "fiab": "stable" },
-    { "t": "<b>Recours préalable et procédure</b> : les réclamations contre les décisions des organismes sont soumises, avant tout recours contentieux, à la commission de recours amiable, saisie dans les deux mois de la notification ; le tribunal compétent est en principe celui dans le ressort duquel demeure le demandeur.", "src": "CSS, art. R. 142-1 et R. 142-10", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173232/", "fiab": "stable" },
-    { "t": "<b>Protection sociale complémentaire et branche</b> : les garanties collectives complémentaires (art. L. 912-1 du Code de la sécurité sociale) figurent parmi les matières dans lesquelles l'accord de branche prévaut sur l'accord d'entreprise, sauf garanties au moins équivalentes.", "src": "C. trav., art. L. 2253-1, 5°", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771", "fiab": "stable" },
-    { "t": "<b>Assiette, taux et allègements de cotisations</b> : les cotisations du régime général sont assises sur toutes les sommes, ainsi que les avantages et accessoires en nature ou en argent, dus en contrepartie ou à l'occasion d'un travail ; la CSG sur les revenus d'activité est due au taux de 9,2 % (6,8 points déductibles du revenu imposable) et la CRDS au taux de 0,5 %, sur une assiette réduite de l'abattement pour frais professionnels de 1,75 % dans la limite de quatre plafonds annuels. Principaux taux en 2025 : maladie 13 % employeur (7 % pour les rémunérations n'excédant pas 2,25 SMIC), vieillesse plafonnée 8,55 % employeur et 6,90 % salarié, vieillesse déplafonnée 2,02 % et 0,40 %, allocations familiales 5,25 % (3,45 % jusqu'à 3,3 SMIC), AT/MP au taux notifié par la caisse, assurance chômage à la charge exclusive de l'employeur (4,05 %, ramenée à 4,00 % au 1er mai 2025). La réduction générale des cotisations patronales est dégressive et réservée aux rémunérations inférieures à 1,6 SMIC ; la LFSS pour 2025 prévoit, à compter du 1er janvier 2026, sa fusion avec les taux réduits maladie et famille en une réduction unique dégressive jusqu'à 3 SMIC.", "src": "CSS, art. L. 242-1, L. 136-1-1, L. 136-8, L. 241-2-1, L. 241-3, L. 241-6, L. 241-6-1, L. 241-13 et D. 242-4 ; CGI, art. 154 quinquies ; loi n° 2025-199 du 28 février 2025 de financement de la sécurité sociale pour 2025 ; C. trav., art. L. 5422-9 ; convention du 15 novembre 2024 relative à l'assurance chômage", "url": null, "fiab": "millésimé 2025" },
-    { "t": "<b>Déclaration, recouvrement et contrôle</b> : l'employeur transmet chaque mois la déclaration sociale nominative et verse les cotisations à l'URSSAF ; la mise en demeure ne peut concerner que les cotisations exigibles au cours des trois années civiles précédant l'année de son envoi (cinq ans en cas de travail dissimulé). Contrôle : avis préalable (sauf recherche de travail dissimulé) renvoyant à la charte du cotisant contrôlé, lettre d'observations à l'issue du contrôle, délai de réponse de trente jours (prolongeable de trente jours à la demande du cotisant) avant toute mise en recouvrement, puis mise en demeure et saisine éventuelle de la commission de recours amiable ; la durée du contrôle est limitée à trois mois pour les petites entreprises (seuil d'effectif fixé à l'article L. 243-13). Travail dissimulé (dissimulation d'activité ou d'emploi salarié : absence de déclaration préalable à l'embauche ou de bulletin de paie, minoration des heures) : redressement avec annulation des exonérations et majoration de 25 % (40 % en cas de circonstances aggravantes), prescription de cinq ans, indemnité forfaitaire de six mois de salaire due au salarié, peines de trois ans d'emprisonnement et 45 000 € d'amende pour les personnes physiques.", "src": "CSS, art. L. 133-5-3, L. 213-1, L. 244-3, R. 243-59, L. 243-13, L. 133-4-2 et L. 243-7-7 ; C. trav., art. L. 8221-3, L. 8221-5, L. 8223-1 et L. 8224-1", "url": null, "fiab": "stable" },
-    { "t": "<b>Indemnités journalières maladie</b> : versées à partir du quatrième jour d'arrêt (délai de carence de trois jours), à condition d'avoir travaillé au moins 150 heures au cours des trois mois précédents ou cotisé sur 1 015 fois le SMIC horaire au cours des six mois précédents (conditions renforcées au-delà de six mois d'arrêt) ; elles sont égales à 50 % du salaire journalier de base, calculé sur les trois derniers mois dans la limite d'un plafond exprimé en multiple du SMIC, ramené de 1,8 à 1,4 SMIC pour les arrêts débutant à compter du 1er avril 2025.", "src": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4 ; décret n° 2025-160 du 20 février 2025", "url": null, "fiab": "millésimé 2025" },
-    { "t": "<b>Accident du travail</b> : est considéré comme accident du travail, quelle qu'en soit la cause, l'accident survenu par le fait ou à l'occasion du travail à toute personne salariée (présomption d'imputabilité) ; l'employeur le déclare à la caisse dans les 48 heures ; l'indemnité journalière est égale à 60 % du salaire journalier pendant les 28 premiers jours puis à 80 %, sans délai de carence ; la faute inexcusable de l'employeur ouvre droit à une majoration de la rente et à la réparation des préjudices.", "src": "CSS, art. L. 411-1, L. 433-1, L. 452-1, R. 433-1 et R. 441-3", "url": null, "fiab": "stable" },
-    { "t": "<b>Allocation d'aide au retour à l'emploi</b> : réservée aux travailleurs involontairement privés d'emploi (licenciement, rupture conventionnelle, fin de CDD, démission légitime), aptes au travail et en recherche d'emploi ; condition d'affiliation de six mois (130 jours ou 910 heures travaillés) au cours des 24 derniers mois (36 mois pour les salariés les plus âgés).", "src": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024, agréée par arrêté du 19 décembre 2024", "url": null, "fiab": "stable" },
-    { "t": "<b>Retraite de base</b> : l'âge légal d'ouverture des droits est relevé progressivement de 62 à 64 ans, par trimestre par génération à compter du 1er septembre 2023, pour atteindre 64 ans pour les assurés nés à partir de 1968 ; la durée d'assurance pour le taux plein atteint 172 trimestres (43 ans) pour les générations nées à partir de 1965 ; le taux plein est acquis sans condition de durée à 67 ans. La loi de financement de la sécurité sociale pour 2026 suspend la montée en charge de ce calendrier jusqu'au 1er janvier 2028 (voir « Ce qui a changé récemment »). Un trimestre est validé par une rémunération soumise à cotisations égale à 150 fois le SMIC horaire (quatre au plus par an) ; la pension au taux plein (50 % du salaire annuel moyen des 25 meilleures années) est proratisée par le rapport entre les trimestres validés et la durée requise ; décote de 1,25 % par trimestre manquant (20 au plus) et surcote de 1,25 % par trimestre cotisé au-delà de l'âge légal et de la durée requise.", "src": "CSS, art. L. 161-17-2, L. 161-17-3, L. 351-8, L. 351-1, L. 351-1-2, R. 351-9, R. 351-27 et R. 351-29 (loi n° 2023-270 du 14 avril 2023) ; loi de financement de la sécurité sociale pour 2026", "url": null, "fiab": "millésimé 2026" },
-    { "t": "<b>Protection sociale complémentaire</b> : tout employeur doit faire bénéficier ses salariés d'une couverture collective obligatoire de frais de santé comportant des garanties minimales, dont il finance au moins la moitié ; pour les cadres, l'employeur verse une cotisation de prévoyance d'au moins 1,50 % de la rémunération limitée au plafond de la sécurité sociale, affectée par priorité à la couverture décès. La retraite complémentaire des salariés du privé est gérée par le régime unifié Agirc-Arrco depuis le 1er janvier 2019.", "src": "CSS, art. L. 911-7 ; ANI du 17 novembre 2017 relatif à la prévoyance des cadres, art. 1er ; ANI du 17 novembre 2017 instituant le régime Agirc-Arrco", "url": null, "fiab": "stable" }
+    {
+     "t": "<b>Juridiction compétente</b> : le contentieux de la sécurité sociale (art. L. 142-1 du Code de la sécurité sociale), l'admission à l'aide sociale et certains litiges du Code du travail relèvent de tribunaux judiciaires spécialement désignés (pôle social), dont le siège et le ressort sont fixés par décret ; l'appel est porté devant des cours d'appel également désignées.",
+     "src": "C. org. jud., art. L. 211-16 ; décret n° 2018-772 du 4 septembre 2018",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Recours préalable et procédure</b> : les réclamations contre les décisions des organismes sont soumises, avant tout recours contentieux, à la commission de recours amiable, saisie dans les deux mois de la notification ; le tribunal compétent est en principe celui dans le ressort duquel demeure le demandeur.",
+     "src": "CSS, art. R. 142-1 et R. 142-10",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173232/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Protection sociale complémentaire et branche</b> : les garanties collectives complémentaires (art. L. 912-1 du Code de la sécurité sociale) figurent parmi les matières dans lesquelles l'accord de branche prévaut sur l'accord d'entreprise, sauf garanties au moins équivalentes.",
+     "src": "C. trav., art. L. 2253-1, 5°",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Assiette, taux et allègements de cotisations</b> : les cotisations du régime général sont assises sur toutes les sommes, ainsi que les avantages et accessoires en nature ou en argent, dus en contrepartie ou à l'occasion d'un travail ; la CSG sur les revenus d'activité est due au taux de 9,2 % (6,8 points déductibles du revenu imposable) et la CRDS au taux de 0,5 %, sur une assiette réduite de l'abattement pour frais professionnels de 1,75 % dans la limite de quatre plafonds annuels. Principaux taux en 2025 : maladie 13 % employeur (7 % pour les rémunérations n'excédant pas 2,25 SMIC), vieillesse plafonnée 8,55 % employeur et 6,90 % salarié, vieillesse déplafonnée 2,02 % et 0,40 %, allocations familiales 5,25 % (3,45 % jusqu'à 3,3 SMIC), AT/MP au taux notifié par la caisse, assurance chômage à la charge exclusive de l'employeur (4,05 %, ramenée à 4,00 % au 1er mai 2025). La réduction générale des cotisations patronales est dégressive et réservée aux rémunérations inférieures à 1,6 SMIC ; la LFSS pour 2025 prévoit, à compter du 1er janvier 2026, sa fusion avec les taux réduits maladie et famille en une réduction unique dégressive jusqu'à 3 SMIC.",
+     "src": "CSS, art. L. 242-1, L. 136-1-1, L. 136-8, L. 241-2-1, L. 241-3, L. 241-6, L. 241-6-1, L. 241-13 et D. 242-4 ; CGI, art. 154 quinquies ; loi n° 2025-199 du 28 février 2025 de financement de la sécurité sociale pour 2025 ; C. trav., art. L. 5422-9 ; convention du 15 novembre 2024 relative à l'assurance chômage",
+     "url": null,
+     "fiab": "millésimé 2025"
+    },
+    {
+     "t": "<b>Déclaration, recouvrement et contrôle</b> : l'employeur transmet chaque mois la déclaration sociale nominative et verse les cotisations à l'URSSAF ; la mise en demeure ne peut concerner que les cotisations exigibles au cours des trois années civiles précédant l'année de son envoi (cinq ans en cas de travail dissimulé). Contrôle : avis préalable (sauf recherche de travail dissimulé) renvoyant à la charte du cotisant contrôlé, lettre d'observations à l'issue du contrôle, délai de réponse de trente jours (prolongeable de trente jours à la demande du cotisant) avant toute mise en recouvrement, puis mise en demeure et saisine éventuelle de la commission de recours amiable ; la durée du contrôle est limitée à trois mois pour les petites entreprises (seuil d'effectif fixé à l'article L. 243-13). Travail dissimulé (dissimulation d'activité ou d'emploi salarié : absence de déclaration préalable à l'embauche ou de bulletin de paie, minoration des heures) : redressement avec annulation des exonérations et majoration de 25 % (40 % en cas de circonstances aggravantes), prescription de cinq ans, indemnité forfaitaire de six mois de salaire due au salarié, peines de trois ans d'emprisonnement et 45 000 € d'amende pour les personnes physiques.",
+     "src": "CSS, art. L. 133-5-3, L. 213-1, L. 244-3, R. 243-59, L. 243-13, L. 133-4-2 et L. 243-7-7 ; C. trav., art. L. 8221-3, L. 8221-5, L. 8223-1 et L. 8224-1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Indemnités journalières maladie</b> : versées à partir du quatrième jour d'arrêt (délai de carence de trois jours), à condition d'avoir travaillé au moins 150 heures au cours des trois mois précédents ou cotisé sur 1 015 fois le SMIC horaire au cours des six mois précédents (conditions renforcées au-delà de six mois d'arrêt) ; elles sont égales à 50 % du salaire journalier de base, calculé sur les trois derniers mois dans la limite d'un plafond exprimé en multiple du SMIC, ramené de 1,8 à 1,4 SMIC pour les arrêts débutant à compter du 1er avril 2025.",
+     "src": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4 ; décret n° 2025-160 du 20 février 2025",
+     "url": null,
+     "fiab": "millésimé 2025"
+    },
+    {
+     "t": "<b>Accident du travail</b> : est considéré comme accident du travail, quelle qu'en soit la cause, l'accident survenu par le fait ou à l'occasion du travail à toute personne salariée (présomption d'imputabilité) ; l'employeur le déclare à la caisse dans les 48 heures ; l'indemnité journalière est égale à 60 % du salaire journalier pendant les 28 premiers jours puis à 80 %, sans délai de carence ; la faute inexcusable de l'employeur ouvre droit à une majoration de la rente et à la réparation des préjudices.",
+     "src": "CSS, art. L. 411-1, L. 433-1, L. 452-1, R. 433-1 et R. 441-3",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Allocation d'aide au retour à l'emploi</b> : réservée aux travailleurs involontairement privés d'emploi (licenciement, rupture conventionnelle, fin de CDD, démission légitime), aptes au travail et en recherche d'emploi ; condition d'affiliation de six mois (130 jours ou 910 heures travaillés) au cours des 24 derniers mois (36 mois pour les salariés les plus âgés).",
+     "src": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024, agréée par arrêté du 19 décembre 2024",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Retraite de base</b> : l'âge légal d'ouverture des droits est relevé progressivement de 62 à 64 ans, par trimestre par génération à compter du 1er septembre 2023, pour atteindre 64 ans pour les assurés nés à partir de 1968 ; la durée d'assurance pour le taux plein atteint 172 trimestres (43 ans) pour les générations nées à partir de 1965 ; le taux plein est acquis sans condition de durée à 67 ans. La loi de financement de la sécurité sociale pour 2026 suspend la montée en charge de ce calendrier jusqu'au 1er janvier 2028 (voir « Ce qui a changé récemment »). Un trimestre est validé par une rémunération soumise à cotisations égale à 150 fois le SMIC horaire (quatre au plus par an) ; la pension au taux plein (50 % du salaire annuel moyen des 25 meilleures années) est proratisée par le rapport entre les trimestres validés et la durée requise ; décote de 1,25 % par trimestre manquant (20 au plus) et surcote de 1,25 % par trimestre cotisé au-delà de l'âge légal et de la durée requise.",
+     "src": "CSS, art. L. 161-17-2, L. 161-17-3, L. 351-8, L. 351-1, L. 351-1-2, R. 351-9, R. 351-27 et R. 351-29 (loi n° 2023-270 du 14 avril 2023) ; loi de financement de la sécurité sociale pour 2026",
+     "url": null,
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Protection sociale complémentaire</b> : tout employeur doit faire bénéficier ses salariés d'une couverture collective obligatoire de frais de santé comportant des garanties minimales, dont il finance au moins la moitié ; pour les cadres, l'employeur verse une cotisation de prévoyance d'au moins 1,50 % de la rémunération limitée au plafond de la sécurité sociale, affectée par priorité à la couverture décès. La retraite complémentaire des salariés du privé est gérée par le régime unifié Agirc-Arrco depuis le 1er janvier 2019.",
+     "src": "CSS, art. L. 911-7 ; ANI du 17 novembre 2017 relatif à la prévoyance des cadres, art. 1er ; ANI du 17 novembre 2017 instituant le régime Agirc-Arrco",
+     "url": null,
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Chiffres et seuils",
    "items": [
-    { "t": "<b>Plafond annuel de la sécurité sociale 2025 : 47 100 €</b> (3 925 € par mois). Il sert de base au calcul des cotisations plafonnées (vieillesse plafonnée, tranche 1 Agirc-Arrco), de l'assiette de la CSG (abattement limité à 4 plafonds) et de nombreux seuils ; le montant est fixé chaque année par arrêté.", "src": "Arrêté du 19 décembre 2024 portant fixation du plafond de la sécurité sociale pour 2025 ; CSS, art. D. 242-16 et D. 242-17", "url": null, "fiab": "millésimé 2025" }
+    {
+     "t": "<b>Plafond annuel de la sécurité sociale 2025 : 47 100 €</b> (3 925 € par mois). Il sert de base au calcul des cotisations plafonnées (vieillesse plafonnée, tranche 1 Agirc-Arrco), de l'assiette de la CSG (abattement limité à 4 plafonds) et de nombreux seuils ; le montant est fixé chaque année par arrêté.",
+     "src": "Arrêté du 19 décembre 2024 portant fixation du plafond de la sécurité sociale pour 2025 ; CSS, art. D. 242-16 et D. 242-17",
+     "url": null,
+     "fiab": "millésimé 2025"
+    }
    ]
   },
   {
    "h": "Ce qui a changé récemment",
    "items": [
-    { "t": "<b>Réforme du contentieux social (1er janvier 2019)</b> : suppression des tribunaux des affaires de sécurité sociale et des tribunaux du contentieux de l'incapacité ; le contentieux général et technique de la sécurité sociale et l'admission à l'aide sociale sont transférés à des tribunaux de grande instance et cours d'appel désignés par décret.", "src": "Décret n° 2018-772 du 4 septembre 2018 ; loi n° 2016-1547 du 18 novembre 2016, art. 12", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037367894", "fiab": "stable" },
-    { "t": "<b>Tribunal judiciaire (1er janvier 2020)</b> : la fusion des tribunaux de grande instance et d'instance a transféré ce contentieux aux tribunaux judiciaires spécialement désignés, au sein de la sous-section du Code de l'organisation judiciaire consacrée à la compétence particulière de certains tribunaux judiciaires.", "src": "C. org. jud., art. L. 211-9-3 à L. 211-16 (loi n° 2019-222 du 23 mars 2019)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGIARTI000038314166/2020-01-01/", "fiab": "stable" },
-    { "t": "<b>Loi n° 2023-1250 du 26 décembre 2023 (financement de la sécurité sociale pour 2024)</b> : l'article L. 211-16 du Code de l'organisation judiciaire, dans sa version en vigueur depuis le 28 décembre 2023, ajoute aux compétences des tribunaux judiciaires désignés les litiges relatifs aux décisions individuelles de l'organisme mentionné à l'article L. 133-5-10 du Code de la sécurité sociale (décisions prises en application de l'article L. 133-5-12 et des articles L. 133-8-5 à L. 133-8-8).", "src": "C. org. jud., art. L. 211-16, 4° (loi n° 2023-1250 du 26 décembre 2023)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782", "fiab": "stable" },
-    { "t": "<b>Réformes 2025-2026 de la protection sociale</b> : le décret n° 2025-160 du 20 février 2025 plafonne à 1,4 SMIC mensuel (au lieu de 1,8) le salaire retenu pour l'indemnité journalière maladie des arrêts débutant à compter du 1er avril 2025 ; la LFSS pour 2025 (loi n° 2025-199 du 28 février 2025) abaisse pour 2025 les seuils des taux réduits maladie (2,25 SMIC) et famille (3,3 SMIC) et prévoit, au 1er janvier 2026, une réduction unique dégressive jusqu'à 3 SMIC ; la convention d'assurance chômage du 15 novembre 2024 (agréée par arrêté du 19 décembre 2024) ramène la contribution patronale de 4,05 % à 4,00 % au 1er mai 2025 et porte à 55 ans l'âge de la période d'affiliation de 36 mois au 1er avril 2025. La LFSS pour 2026 suspend jusqu'au 1er janvier 2028 la montée en charge de la réforme des retraites de 2023 : âge légal maintenu à 62 ans et 9 mois et durée d'assurance à 170 trimestres pour les assurés nés en 1964 et 1965, le calendrier reprenant ensuite, décalé d'autant ; vérifier les paramètres applicables à la date de l'examen.", "src": "Décret n° 2025-160 du 20 février 2025 (CSS, art. R. 323-4) ; loi n° 2025-199 du 28 février 2025 (CSS, art. L. 241-2-1, L. 241-6-1, L. 241-13) ; convention du 15 novembre 2024 relative à l'assurance chômage, agréée par arrêté du 19 décembre 2024 ; loi de financement de la sécurité sociale pour 2026 (CSS, art. L. 161-17-2 et L. 161-17-3)", "url": null, "fiab": "millésimé 2026" }
+    {
+     "t": "<b>Réforme du contentieux social (1er janvier 2019)</b> : suppression des tribunaux des affaires de sécurité sociale et des tribunaux du contentieux de l'incapacité ; le contentieux général et technique de la sécurité sociale et l'admission à l'aide sociale sont transférés à des tribunaux de grande instance et cours d'appel désignés par décret.",
+     "src": "Décret n° 2018-772 du 4 septembre 2018 ; loi n° 2016-1547 du 18 novembre 2016, art. 12",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037367894",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Tribunal judiciaire (1er janvier 2020)</b> : la fusion des tribunaux de grande instance et d'instance a transféré ce contentieux aux tribunaux judiciaires spécialement désignés, au sein de la sous-section du Code de l'organisation judiciaire consacrée à la compétence particulière de certains tribunaux judiciaires.",
+     "src": "C. org. jud., art. L. 211-9-3 à L. 211-16 (loi n° 2019-222 du 23 mars 2019)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGIARTI000038314166/2020-01-01/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2023-1250 du 26 décembre 2023 (financement de la sécurité sociale pour 2024)</b> : l'article L. 211-16 du Code de l'organisation judiciaire, dans sa version en vigueur depuis le 28 décembre 2023, ajoute aux compétences des tribunaux judiciaires désignés les litiges relatifs aux décisions individuelles de l'organisme mentionné à l'article L. 133-5-10 du Code de la sécurité sociale (décisions prises en application de l'article L. 133-5-12 et des articles L. 133-8-5 à L. 133-8-8).",
+     "src": "C. org. jud., art. L. 211-16, 4° (loi n° 2023-1250 du 26 décembre 2023)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Réformes 2025-2026 de la protection sociale</b> : le décret n° 2025-160 du 20 février 2025 plafonne à 1,4 SMIC mensuel (au lieu de 1,8) le salaire retenu pour l'indemnité journalière maladie des arrêts débutant à compter du 1er avril 2025 ; la LFSS pour 2025 (loi n° 2025-199 du 28 février 2025) abaisse pour 2025 les seuils des taux réduits maladie (2,25 SMIC) et famille (3,3 SMIC) et prévoit, au 1er janvier 2026, une réduction unique dégressive jusqu'à 3 SMIC ; la convention d'assurance chômage du 15 novembre 2024 (agréée par arrêté du 19 décembre 2024) ramène la contribution patronale de 4,05 % à 4,00 % au 1er mai 2025 et porte à 55 ans l'âge de la période d'affiliation de 36 mois au 1er avril 2025. La LFSS pour 2026 suspend jusqu'au 1er janvier 2028 la montée en charge de la réforme des retraites de 2023 : âge légal maintenu à 62 ans et 9 mois et durée d'assurance à 170 trimestres pour les assurés nés en 1964 et 1965, le calendrier reprenant ensuite, décalé d'autant ; vérifier les paramètres applicables à la date de l'examen.",
+     "src": "Décret n° 2025-160 du 20 février 2025 (CSS, art. R. 323-4) ; loi n° 2025-199 du 28 février 2025 (CSS, art. L. 241-2-1, L. 241-6-1, L. 241-13) ; convention du 15 novembre 2024 relative à l'assurance chômage, agréée par arrêté du 19 décembre 2024 ; loi de financement de la sécurité sociale pour 2026 (CSS, art. L. 161-17-2 et L. 161-17-3)",
+     "url": null,
+     "fiab": "millésimé 2026"
+    }
    ]
   },
   {
    "h": "Points de vigilance",
    "items": [
-    { "t": "<b>Conseil de prud'hommes ou pôle social ?</b> Le conseil de prud'hommes n'est pas compétent pour les litiges attribués par la loi à une autre juridiction : la reconnaissance d'un accident du travail, le taux d'incapacité ou la faute inexcusable relèvent du tribunal judiciaire (pôle social) ; en revanche, le licenciement consécutif à l'inaptitude et l'indemnité spéciale relèvent du conseil de prud'hommes.", "src": "C. trav., art. L. 1411-1 ; C. org. jud., art. L. 211-16", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457", "fiab": "stable" }
+    {
+     "t": "<b>Conseil de prud'hommes ou pôle social ?</b> Le conseil de prud'hommes n'est pas compétent pour les litiges attribués par la loi à une autre juridiction : la reconnaissance d'un accident du travail, le taux d'incapacité ou la faute inexcusable relèvent du tribunal judiciaire (pôle social) ; en revanche, le licenciement consécutif à l'inaptitude et l'indemnité spéciale relèvent du conseil de prud'hommes.",
+     "src": "C. trav., art. L. 1411-1 ; C. org. jud., art. L. 211-16",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457",
+     "fiab": "stable"
+    }
    ]
   }
  ]
