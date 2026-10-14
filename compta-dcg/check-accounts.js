@@ -6,7 +6,7 @@ const problems = [];
 for (const dir of fs.readdirSync("data")) {
   if (!fs.statSync(path.join("data", dir)).isDirectory() || dir === "pcg") continue;
   for (const f of fs.readdirSync(path.join("data", dir))) {
-    if (!f.endsWith(".json")) continue;
+    if (!f.endsWith(".json") || f.endsWith(".fiche.json")) continue;
     const ch = JSON.parse(fs.readFileSync(path.join("data", dir, f), "utf8"));
     const used = new Map();
     const add = (a, w) => { if (!used.has(a)) used.set(a, w); };
