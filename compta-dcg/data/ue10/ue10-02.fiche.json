@@ -13,28 +13,22 @@
  },
  "textes": [
   {
-   "ref": "C. com., art. L. 123-18",
-   "objet": "Coût historique : coût d'acquisition, valeur vénale, coût de production",
+   "ref": "C. com., art. L. 123-18 et R. 123-178",
+   "objet": "Coût historique : coût d'acquisition, valeur vénale, coût de production (L. 123-18) ; définitions du coût d'acquisition et du coût de production, intérêts d'emprunt de la période de fabrication (R. 123-178)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
-   "version": "en vigueur depuis le 21 septembre 2000"
-  },
-  {
-   "ref": "C. com., art. R. 123-178",
-   "objet": "Définitions du coût d'acquisition et du coût de production ; intérêts d'emprunt de la période de fabrication",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
-   "version": "en vigueur"
+   "version": "en vigueur (L. 123-18 depuis le 21 septembre 2000 ; R. 123-178 en vigueur)"
   },
   {
    "ref": "C. com., art. R. 123-186",
-   "objet": "Inscription à l'actif des frais de recherche appliquée et de développement",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006258161/2007-03-27",
-   "version": "en vigueur (version consolidée affichée au 27 mars 2007)"
+   "objet": "Inscription à l'actif des frais de développement se rapportant à des projets nettement individualisés ayant de sérieuses chances de rentabilité commerciale",
+   "url": null,
+   "version": "en vigueur depuis le 1er janvier 2016 (modifié par le décret n° 2015-903 du 23 juillet 2015 ; la rédaction antérieure visait les frais de recherche appliquée et de développement)"
   },
   {
    "ref": "C. com., art. R. 123-187",
    "objet": "Amortissement des frais d'établissement ; interdiction de distribuer tant que les postes « frais d'établissement » et « frais de développement » ne sont pas apurés, sauf réserves libres au moins égales aux frais non amortis",
-   "url": null,
-   "version": "en vigueur"
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927450",
+   "version": "en vigueur depuis le 1er janvier 2016 (modifié par le décret n° 2015-903 du 23 juillet 2015)"
   },
   {
    "ref": "C. com., art. L. 232-9",
@@ -43,7 +37,7 @@
    "version": "en vigueur depuis le 21 septembre 2000"
   },
   {
-   "ref": "PCG (règlement ANC n° 2014-03), art. 211-1 à 211-7, 212-1 à 212-3, 212-9, 213-1, 213-8, 213-9, 213-14 et 213-15, 214-3, 214-9 et 214-10, 312-1, 611-1 à 612-1",
+   "ref": "PCG (règlement ANC n° 2014-03), art. 211-1 à 211-7, 212-1 à 212-3, 212-9, 213-1, 213-8, 213-9, 213-14 et 213-15, 214-3, 214-9 et 214-10, 312-1 (règlement ANC n° 2020-09), 611-1 à 612-1",
    "objet": "Définition et comptabilisation des actifs, frais d'établissement, coût d'entrée, composants, frais de développement, solutions informatiques, subventions d'investissement",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "version": "consolidée au 1er janvier 2026"
@@ -55,10 +49,10 @@
    "version": "plan de comptes au 1er janvier 2026"
   },
   {
-   "ref": "Règlement ANC n° 2018-01",
+   "ref": "Règlement ANC n° 2018-01 du 20 avril 2018",
    "objet": "Changements de méthodes ; comptabilisation à l'actif des frais de développement comme méthode de référence",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2018/REGLT_2018_01_PCG.pdf",
-   "version": "homologué, intégré au PCG"
+   "version": "homologué par arrêté du 8 octobre 2018 (JO du 9 octobre 2018), intégré au PCG"
   },
   {
    "ref": "Règlement ANC n° 2019-09",
@@ -67,16 +61,16 @@
    "version": "homologué, intégré au PCG (art. 213-8)"
   },
   {
-   "ref": "Règlement ANC n° 2023-05",
-   "objet": "Solutions informatiques (logiciels et sites internet) : définition, immobilisation, coûts activables",
+   "ref": "Règlement ANC n° 2023-05 du 10 novembre 2023",
+   "objet": "Solutions informatiques (logiciels et sites internet) : définition, critères d'activation, coût de production",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05.pdf",
-   "version": "homologué, intégré au PCG (art. 611-1 à 612-1)"
+   "version": "homologué par arrêté du 26 décembre 2023 (JO du 30 décembre 2023) ; exercices ouverts à compter du 1er janvier 2024, application anticipée possible ; intégré au PCG (art. 611-1 à 612-1)"
   },
   {
    "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
-   "objet": "Modernisation des états financiers : résultat exceptionnel, comptes 747, 657 et 757",
+   "objet": "Modernisation des états financiers : résultat exceptionnel, comptes 747, 657 et 757, provisions pour charges (racine 152)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
-   "version": "exercices ouverts à compter du 1er janvier 2025"
+   "version": "homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2025"
   },
   {
    "ref": "BOI-BIC-CHG-20-20-10",
@@ -97,8 +91,14 @@
    "version": "3 février 2016"
   },
   {
+   "ref": "BOI-BIC-CHG-20-20-20",
+   "objet": "Dépenses relatives à des immobilisations existantes : gros entretien et grandes révisions, choix entre composant et provision, réintégration des dotations excédentaires du composant",
+   "url": "https://bofip.impots.gouv.fr/bofip/1831-PGP.html/identifiant=BOI-BIC-CHG-20-20-20-20120912",
+   "version": "12 septembre 2012"
+  },
+  {
    "ref": "BOI-BIC-PROV-30-20-40",
-   "objet": "Provisions pour charges : provisions pour gros entretien ou grandes révisions ; traitement fiscal du composant de gros entretien (réintégration extra-comptable)",
+   "objet": "Provisions pour charges : provisions pour gros entretien ou grandes révisions (conditions de déduction, art. 39, 1-5° du CGI)",
    "url": "https://bofip.impots.gouv.fr/bofip/6399-PGP.html/identifiant=BOI-BIC-PROV-30-20-40-20120912",
    "version": "12 septembre 2012"
   }
@@ -109,16 +109,17 @@
    "items": [
     {
      "t": "<b>Actif</b> : élément identifiable du patrimoine ayant une valeur économique positive pour l'entité, c'est-à-dire un élément générant une ressource que l'entité contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
-     "cite": "« Un actif est un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité, c'est-à-dire un élément générant une ressource que l'entité contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs. »",
+     "cite": "« Un actif est un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité »",
      "src": "PCG, art. 211-1",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Immobilisation incorporelle</b> : actif non monétaire sans substance physique ; <b>immobilisation corporelle</b> : actif physique détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours.",
+     "t": "<b>Immobilisation incorporelle</b> : actif non monétaire sans substance physique ; <b>immobilisation corporelle</b> : actif physique détenu soit pour être utilisé dans la production ou la fourniture de biens ou de services, soit pour être loué à des tiers, soit à des fins de gestion interne, et dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours.",
      "src": "PCG, art. 211-5 et 211-6",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Une immobilisation corporelle est un actif physique détenu, soit pour être utilisé dans la production ou la fourniture de biens ou de services, soit pour être loué à des tiers, soit à des fins de gestion interne »"
     },
     {
      "t": "<b>Coût d'acquisition</b> (définition réglementaire) : prix d'achat augmenté des frais accessoires nécessaires à la mise en état d'utilisation du bien ; <b>coût de production</b> : coût d'acquisition des matières consommées, charges directes et fraction des charges indirectes de production, les intérêts des capitaux empruntés pour financer la fabrication d'une immobilisation pouvant être inclus lorsqu'ils concernent la période de fabrication.",
@@ -180,7 +181,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Coûts d'emprunt</b> : les coûts d'emprunt directement attribuables à l'acquisition ou à la période de construction ou de production d'un actif éligible peuvent être incorporés au coût de cet actif ; deux méthodes sont autorisées (charges ou incorporation), appliquées de façon cohérente et permanente à tous les actifs éligibles et mentionnées en annexe.",
+     "t": "<b>Coûts d'emprunt</b> : les coûts d'emprunt directement attribuables à l'acquisition ou à la période de construction ou de production d'un actif éligible (actif exigeant une longue période de préparation ou de construction avant de pouvoir être utilisé ou vendu) peuvent être incorporés au coût de cet actif ; deux méthodes sont autorisées (charges ou incorporation), et la méthode retenue s'applique de façon cohérente et permanente à tous les actifs éligibles.",
      "cite": "« Deux méthodes comptables sont donc autorisées : comptabilisation des coûts d'emprunt en charges ou incorporation au coût de l'actif. »",
      "src": "PCG, art. 213-9",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
@@ -222,23 +223,25 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Code de commerce</b> : les frais de recherche appliquée et de développement peuvent être inscrits à l'actif du bilan, au poste correspondant, à la condition de se rapporter à des projets nettement individualisés ayant de sérieuses chances de rentabilité commerciale.",
-     "cite": "« Les frais de recherche appliquée et de développement peuvent être inscrits à l'actif du bilan, au poste correspondant, à la condition de se rapporter à des projets nettement individualisés, ayant des sérieuses chances de rentabilité commerciale. »",
-     "src": "C. com., art. R. 123-186",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006258161/2007-03-27",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Amortissement des frais de développement</b> : sur la durée d'utilisation estimée des projets, justifiée dans l'annexe ; si cette durée ne peut être déterminée de manière fiable, les frais de développement sont amortis sur une durée maximale de cinq ans.",
-     "src": "PCG, art. 214-3",
+     "t": "<b>Éléments créés en interne</b> : les dépenses engagées pour créer en interne des fonds commerciaux, des marques, des titres de journaux et de magazines, des listes de clients et autres éléments similaires ne peuvent pas être distinguées du coût de développement de l'activité dans son ensemble ; ces éléments ne sont donc pas comptabilisés en immobilisations incorporelles, pas plus que les coûts engagés ultérieurement à leur titre. Le fonds commercial inscrit à l'actif est constitué des éléments incorporels du fonds de commerce acquis qui ne font pas l'objet d'une évaluation et d'une comptabilisation séparées au bilan.",
+     "src": "PCG, art. 212-3",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable",
+     "cite": "« Les dépenses engagées pour créer en interne des fonds commerciaux, des marques, des titres de journaux et de magazines, des listes de clients et autres éléments similaires en substance, ne peuvent pas être distinguées du coût de développement de l'activité dans son ensemble. Par conséquent, ces éléments ne sont pas comptabilisés en tant qu'immobilisations incorporelles. »"
+    },
+    {
+     "t": "<b>Code de commerce</b> : les frais de développement peuvent être inscrits à l'actif du bilan, au poste correspondant, à la condition de se rapporter à des projets nettement individualisés ayant de sérieuses chances de rentabilité commerciale.",
+     "cite": "« les frais de développement peuvent être inscrits à l'actif du bilan, au poste correspondant, à la condition de se rapporter à des projets nettement individualisés »",
+     "src": "C. com., art. R. 123-186 (rédaction issue du décret n° 2015-903 du 23 juillet 2015, en vigueur depuis le 1er janvier 2016)",
+     "url": null,
      "fiab": "stable"
     },
     {
-     "t": "<b>Solutions informatiques créées</b> : les coûts engagés au titre des études préliminaires ne peuvent pas être inscrits à l'actif et sont comptabilisés en charges ; l'activation des coûts cesse lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction.",
-     "src": "PCG, art. 611-1 et suivants (règlement ANC n° 2023-05)",
+     "t": "<b>Solutions informatiques créées</b> : la solution produite en interne est inscrite à l'actif lorsque les critères cumulatifs de l'article 611-3 sont remplis (notamment faisabilité technique, intention et capacité de l'achever, évaluation fiable des dépenses) ; les coûts engagés au titre des études préliminaires ne peuvent pas être inscrits à l'actif. Le coût de production comprend les seuls coûts directement attribués à la solution et nécessaires à sa production, et l'activation cesse lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction.",
+     "src": "PCG, art. 611-3 à 611-6 (règlement ANC n° 2023-05)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Le coût de production comprend les seuls coûts directement attribués à la solution informatique et nécessaires à sa production. »"
     },
     {
      "t": "<b>Sites internet</b> : les solutions informatiques utilisées dans les sites internet sont comptabilisées selon les modalités définies aux articles 611-1 à 611-8 du PCG.",
@@ -247,16 +250,16 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Subventions d'investissement</b> : la subvention qui finance une immobilisation amortissable est reprise sur la même durée et au même rythme que l'amortissement de la valeur de l'immobilisation acquise ou créée au moyen de la subvention ; celle qui finance une immobilisation non amortissable est étalée sur le nombre d'années pendant lequel l'immobilisation est inaliénable aux termes du contrat et, à défaut de clause d'inaliénabilité, par dixième chaque exercice.",
+     "t": "<b>Subventions d'investissement</b> : la subvention qui finance une immobilisation amortissable est reprise sur la même durée et au même rythme que l'amortissement de la valeur de l'immobilisation acquise ou créée au moyen de la subvention ; celle qui finance une immobilisation non amortissable est étalée sur le nombre d'années pendant lequel l'immobilisation est inaliénable aux termes du contrat et, à défaut de clause d'inaliénabilité, par dixième chaque exercice. Des dérogations à la durée et au rythme de reprise peuvent être admises lorsque des circonstances particulières le justifient (règlement ANC n° 2020-09).",
      "cite": "« À défaut de clause d'inaliénabilité, le montant de la reprise de chaque exercice est égal au dixième du montant de la subvention. »",
-     "src": "PCG, art. 312-1",
+     "src": "PCG, art. 312-1 (dernier alinéa issu du règlement ANC n° 2020-09)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
      "t": "<b>Frais d'établissement</b> : les frais de constitution, de transformation et de premier établissement peuvent être inscrits à l'actif en frais d'établissement, leur comptabilisation en charges étant la méthode de référence ; inscrits à l'actif, ils sont amortis selon un plan et dans un délai maximal de cinq ans. Les frais d'augmentation de capital, de fusion et de scission peuvent être inscrits en frais d'établissement ou imputés sur les primes d'émission et de fusion, et sont comptabilisés en charges en cas d'insuffisance de la prime.",
      "cite": "« Les frais d'augmentation de capital, de fusion et de scission peuvent être inscrits à l'actif en frais d'établissement ou imputés sur les primes d'émission et de fusion. »",
-     "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-187",
+     "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-187 (amortissement en cinq ans au plus)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
@@ -269,9 +272,10 @@
     },
     {
      "t": "<b>Blocage des distributions</b> : tant que les postes « frais d'établissement » et « frais de développement » ne sont pas apurés, il ne peut être procédé à aucune distribution de dividendes, sauf si le montant des réserves libres est au moins égal à celui des frais non amortis.",
-     "src": "C. com., art. R. 123-187",
-     "url": null,
-     "fiab": "stable"
+     "src": "C. com., art. R. 123-187 (rédaction issue du décret n° 2015-903 du 23 juillet 2015)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927450",
+     "fiab": "stable",
+     "cite": "« Tant que les postes \"frais d'établissement\" et \"frais de développement\" ne sont pas apurés, il ne peut être procédé à aucune distribution de dividendes sauf si le montant des réserves libres est au moins égal à celui des frais non amortis. »"
     }
    ]
   },
@@ -285,13 +289,13 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Frais de constitution</b> : amortissement avant toute distribution et au plus tard dans un délai de <span class=\"mono\">5</span> ans ; <b>frais d'augmentation de capital</b> : au plus tard à l'expiration du cinquième exercice suivant l'engagement.",
-     "src": "C. com., art. L. 232-9",
+     "t": "<b>Frais de constitution</b> : amortissement avant toute distribution et au plus tard dans un délai de <span class=\"mono\">5</span> ans ; <b>frais d'augmentation de capital</b> : au plus tard à l'expiration du cinquième exercice suivant l'engagement ; <b>frais d'établissement</b> inscrits à l'actif : amortissement selon un plan dans un délai maximal de <span class=\"mono\">5</span> ans.",
+     "src": "C. com., art. L. 232-9 et R. 123-187",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006228989",
      "fiab": "stable"
     },
     {
-     "t": "<b>Frais de développement</b> : amortissement sur la durée d'utilisation des projets ou, si elle n'est pas déterminable de manière fiable, sur une durée maximale de <span class=\"mono\">5</span> ans.",
+     "t": "<b>Frais de développement</b> : amortissement sur la durée d'utilisation estimée des projets, justifiée dans l'annexe, ou, si cette durée ne peut être déterminée de manière fiable, sur une durée maximale de <span class=\"mono\">5</span> ans.",
      "src": "PCG, art. 214-3",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
@@ -308,15 +312,15 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Règlement ANC n° 2023-05</b> : les règles relatives aux logiciels et aux sites internet (anciens art. 611-1 à 612-4) sont remplacées par un dispositif unique applicable aux « solutions informatiques » (art. 611-1 à 611-8, 612-1) ; les études préliminaires restent en charges et l'activation s'arrête à la mise en état de fonctionnement.",
-     "src": "Règlement ANC n° 2023-05 (version commentée disponible sur anc.gouv.fr)",
+     "t": "<b>Règlement ANC n° 2023-05 du 10 novembre 2023</b> (homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2024, application anticipée possible) : les règles relatives aux logiciels et aux sites internet sont remplacées par un dispositif unique applicable aux « solutions informatiques » (art. 611-1 à 611-8, 612-1) ; les études préliminaires restent en charges et l'activation s'arrête à la mise en état de fonctionnement.",
+     "src": "Règlement ANC n° 2023-05 (version commentée sur anc.gouv.fr)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05_version-commentee.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2022-06</b> (exercices ouverts à compter du 1er janvier 2025) : la quote-part de subvention d'investissement virée au résultat est enregistrée au compte 747, produit d'exploitation, le compte 777 étant supprimé ; les cessions d'immobilisations incorporelles et corporelles passent par les comptes 657 et 757 au lieu de 675 et 775 ; les provisions pour charges sont regroupées sous la racine 152, dont 1525 (gros entretien ou grandes révisions) et 1526 (remise en état).",
+     "t": "<b>Règlement ANC n° 2022-06</b> (homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2025) : la quote-part de subvention d'investissement virée au résultat est enregistrée au compte 747, produit d'exploitation, le compte 777 étant supprimé ; les cessions d'immobilisations incorporelles et corporelles passent par les comptes 657 et 757 au lieu de 675 et 775 ; les provisions pour charges sont regroupées sous la racine 152, dont 1525 (gros entretien ou grandes révisions) et 1526 (remise en état).",
      "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; règlement ANC n° 2023-03 (plan de comptes) ; plan de comptes 2026, comptes 152, 657, 747 et 757",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable"
     }
    ]
@@ -343,16 +347,18 @@
      "fiab": "stable"
     },
     {
-     "t": "Pour un composant de gros entretien, l'entité choisit entre composant et provision : l'approche par composants exclut la provision pour gros entretien ; quelques opérations isolées de gros entretien, même importantes, sans programmation, ne relèvent pas de l'article 214-9.",
-     "src": "PCG, art. 214-9 et 214-10",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "t": "<b>Manuels antérieurs à 2016</b> : jusqu'au décret n° 2015-903 du 23 juillet 2015, l'article R. 123-186 du code de commerce visait les « frais de recherche appliquée et de développement » ; depuis le 1er janvier 2016, il ne vise plus que les frais de développement, en cohérence avec le PCG, qui maintient les frais de recherche en charges.",
+     "src": "C. com., art. R. 123-186 (version consolidée au 27 mars 2007, antérieure au décret n° 2015-903) ; PCG, art. 212-3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006258161/2007-03-27",
+     "fiab": "stable",
+     "cite": "« Les frais de recherche appliquée et de développement peuvent être inscrits à l'actif du bilan, au poste correspondant, à la condition de se rapporter à des projets nettement individualisés, ayant des sérieuses chances de rentabilité commerciale. »"
     },
     {
-     "t": "<b>Gros entretien : traitement fiscal</b> : sur le plan fiscal, les dépenses de gros entretien demeurent des charges et n'entrent pas dans le champ de l'article 15 bis de l'annexe II au CGI ; si l'entreprise retient l'approche par composant, les dotations excédentaires constatées en comptabilité sont réintégrées extra-comptablement, alors que la provision pour gros entretien ou grandes révisions est déductible si elle respecte les conditions de l'article 39, 1-5° du CGI.",
-     "src": "BOI-BIC-PROV-30-20-40 ; CGI, art. 39, 1-5°",
-     "url": "https://bofip.impots.gouv.fr/bofip/6399-PGP.html/identifiant=BOI-BIC-PROV-30-20-40-20120912",
-     "fiab": "stable"
+     "t": "<b>Gros entretien : traitement fiscal</b> : sur le plan fiscal, les dépenses de gros entretien demeurent des charges (le choix entre composant et provision est comptable) et n'entrent pas dans le champ de l'article 15 bis de l'annexe II au CGI ; si l'entreprise retient l'approche par composant, les dotations excédentaires constatées en comptabilité sont réintégrées extra-comptablement, alors que la provision pour gros entretien ou grandes révisions est déductible si elle respecte les conditions de l'article 39, 1-5° du CGI.",
+     "src": "BOI-BIC-CHG-20-20-20 ; BOI-BIC-PROV-30-20-40 ; CGI, art. 39, 1-5°",
+     "url": "https://bofip.impots.gouv.fr/bofip/1831-PGP.html/identifiant=BOI-BIC-CHG-20-20-20-20120912",
+     "fiab": "stable",
+     "cite": "« Sur le plan fiscal, ces dépenses d'entretien doivent demeurer des charges et n'entrent pas dans le champ d'application de l'article 15 bis de l'annexe II au CGI. »"
     },
     {
      "t": "La sous-activité est exclue du coût de production des immobilisations comme des stocks : les frais généraux fixes de production sont affectés sur la base de la capacité normale des installations (lien avec le chapitre sur les stocks).",
@@ -368,7 +374,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Vocabulaire</b> : depuis le règlement ANC n° 2018-01, le PCG qualifie de « méthode de référence » l'inscription à l'actif des frais de développement, le rattachement des frais d'acquisition au coût de l'immobilisation et la comptabilisation en charges des frais de constitution ; les manuels antérieurs parlent de « méthode préférentielle ».",
+     "t": "<b>Vocabulaire</b> : depuis le règlement ANC n° 2018-01 du 20 avril 2018, le PCG qualifie de « méthode de référence » l'inscription à l'actif des frais de développement, le rattachement des frais d'acquisition au coût de l'immobilisation et la comptabilisation en charges des frais de constitution ; les manuels antérieurs parlent de « méthode préférentielle ».",
      "src": "Règlement ANC n° 2018-01 ; PCG, art. 212-3, 212-9 et 213-8",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2018/REGLT_2018_01_PCG.pdf",
      "fiab": "stable"
@@ -381,8 +387,8 @@
     },
     {
      "t": "<b>Lien DSCG</b> : en IFRS (IAS 16, IAS 38, IAS 23), l'incorporation des coûts d'emprunt est obligatoire pour les actifs qualifiés et l'activation des frais de développement remplissant les critères est obligatoire, alors que le PCG laisse une option ; en comptes individuels français, seul le PCG s'applique.",
-     "src": "PCG, art. 212-3 et 213-9 (options) ; C. com., art. L. 233-24 (IFRS réservées aux comptes consolidés)",
-     "url": null,
+     "src": "PCG, art. 212-3 et 213-9 (options) ; IAS 23 et IAS 38 (règlement (UE) 2023/1803) ; C. com., art. L. 233-24 (dispense des règles françaises pour les comptes consolidés établis selon les normes internationales adoptées par l'Union européenne, règlement (CE) n° 1606/2002)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927225",
      "fiab": "stable"
     }
    ]

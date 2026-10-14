@@ -35,7 +35,7 @@
   },
   {
    "h": "Le coût de production et les immobilisations en cours",
-   "html": "<p>Une immobilisation produite par l'entreprise pour elle-même est évaluée à son <b>coût de production</b> (PCG art. 213-14) : coût d'acquisition des matières consommées, <b>charges directes</b> de production (main-d'œuvre, sous-traitance) et <b>charges indirectes</b> de production rationnellement rattachables (amortissement des ateliers, énergie). On exclut la quote-part de charges fixes correspondant à la <b>sous-activité</b> (imputation rationnelle), les frais de recherche, les frais d'administration générale et les frais de distribution. Les coûts d'emprunt suivent la même option que pour l'acquisition.</p><p>La contrepartie des charges déjà enregistrées par nature (classe 6) est le compte <b>72 Production immobilisée</b> : <b>721</b> pour les immobilisations incorporelles, <b>722</b> pour les corporelles. Tant que l'immobilisation n'est pas achevée, les coûts engagés sont portés en <b>23 Immobilisations en cours</b> (231 corporelles, 232 incorporelles) ; à l'achèvement, le compte 23 est viré au compte d'immobilisation définitif.</p><div class=\"note\"><b>Règle à retenir.</b> Le compte 72 neutralise des charges déjà comptabilisées : le résultat n'est pas affecté par la production immobilisée, l'actif est simplement créé.</div><p>Exemple : au 31 décembre N, Bâtex a engagé <span class=\"mono\">40 000 €</span> de coûts pour un hangar qu'elle construit elle-même et qui sera achevé en N+1.</p>",
+   "html": "<p>Une immobilisation produite par l'entreprise pour elle-même est évaluée à son <b>coût de production</b> (PCG art. 213-14 et 213-15) : coût d'acquisition des matières consommées, <b>charges directes</b> de production (main-d'œuvre, sous-traitance) et <b>charges indirectes</b> de production rationnellement rattachables (amortissement des ateliers, énergie). On exclut la quote-part de charges fixes correspondant à la <b>sous-activité</b> (imputation rationnelle), les frais de recherche, les frais d'administration générale et les frais de distribution. Les coûts d'emprunt suivent la même option que pour l'acquisition.</p><p>La contrepartie des charges déjà enregistrées par nature (classe 6) est le compte <b>72 Production immobilisée</b> : <b>721</b> pour les immobilisations incorporelles, <b>722</b> pour les corporelles. Tant que l'immobilisation n'est pas achevée, les coûts engagés sont portés en <b>23 Immobilisations en cours</b> (231 corporelles, 232 incorporelles) ; à l'achèvement, le compte 23 est viré au compte d'immobilisation définitif.</p><div class=\"note\"><b>Règle à retenir.</b> Le compte 72 neutralise des charges déjà comptabilisées : le résultat n'est pas affecté par la production immobilisée, l'actif est simplement créé.</div><p>Exemple : au 31 décembre N, Bâtex a engagé <span class=\"mono\">40 000 €</span> de coûts pour un hangar qu'elle construit elle-même et qui sera achevé en N+1.</p>",
    "entry": [
     {
      "a": "231",
@@ -52,7 +52,7 @@
   },
   {
    "h": "Composants, dépenses ultérieures et gros entretien",
-   "html": "<p><b>Approche par composants</b> (PCG art. 214-9) : lorsque des éléments d'une immobilisation ont des durées d'utilisation différentes ou procurent des avantages selon un rythme différent, chacun est comptabilisé séparément et amorti selon son propre plan (structure d'un immeuble, toiture, ascenseur, chaudière). Le remplacement d'un composant est traité comme la sortie de l'ancien et l'acquisition d'un nouveau.</p><p><b>Dépenses ultérieures</b> : elles sont immobilisées si elles augmentent la valeur de l'actif, prolongent sa durée d'utilisation ou améliorent sa performance (<b>amélioration</b>) ; elles sont passées en charges (615 Entretien et réparations) si elles maintiennent seulement l'actif en état de fonctionnement (<b>entretien courant</b>).</p><p><b>Gros entretien et grandes révisions</b> (dépenses programmées sur plusieurs années : carénage d'un navire, révision quinquennale d'un four) : deux méthodes au choix, appliquées de façon permanente :</p><ul><li><b>Composant de deuxième catégorie</b> : une fraction du coût d'entrée est isolée et amortie sur la durée séparant deux révisions ;</li><li><b>Provision pour gros entretien</b> (compte <b>1525</b> Provisions pour gros entretien ou grandes révisions, dotation 6815 ; avant 2025 : 1572), constituée progressivement jusqu'à la date de la révision.</li></ul><p>La méthode de la provision est seule admise fiscalement : l'option composant conduit à des retraitements extra-comptables. Le remplacement d'une pièce lors d'une panne reste une charge d'entretien.</p>"
+   "html": "<p><b>Approche par composants</b> (PCG art. 214-9) : lorsque des éléments d'une immobilisation ont des durées d'utilisation différentes ou procurent des avantages selon un rythme différent, chacun est comptabilisé séparément et amorti selon son propre plan (structure d'un immeuble, toiture, ascenseur, chaudière). Le remplacement d'un composant est traité comme la sortie de l'ancien et l'acquisition d'un nouveau.</p><p><b>Dépenses ultérieures</b> : elles sont immobilisées si elles augmentent la valeur de l'actif, prolongent sa durée d'utilisation ou améliorent sa performance (<b>amélioration</b>) ; elles sont passées en charges (615 Entretien et réparations) si elles maintiennent seulement l'actif en état de fonctionnement (<b>entretien courant</b>).</p><p><b>Gros entretien et grandes révisions</b> (dépenses programmées sur plusieurs années : carénage d'un navire, révision quinquennale d'un four) : deux méthodes au choix, appliquées de façon permanente :</p><ul><li><b>Composant de deuxième catégorie</b> : une fraction du coût d'entrée est isolée et amortie sur la durée séparant deux révisions ;</li><li><b>Provision pour gros entretien</b> (compte <b>1525</b> Provisions pour gros entretien ou grandes révisions, dotation 6815 ; avant 2025 : 1572), constituée progressivement jusqu'à la date de la révision.</li></ul><p>Sur le plan fiscal, ces dépenses demeurent des charges : la provision est déductible dans les conditions de l'article 39, 1-5° du CGI, alors que l'option composant conduit à réintégrer extra-comptablement les dotations excédentaires. Le remplacement d'une pièce lors d'une panne reste une charge d'entretien.</p>"
   },
   {
    "h": "Immobilisations incorporelles : frais d'établissement, recherche et développement, fonds commercial",
@@ -103,11 +103,11 @@
    "note": "Coût d'acquisition, frais d'acquisition sur option, frais externes de formation sur option (règlement ANC n° 2019-09), coûts d'emprunt sur option"
   },
   {
-   "ref": "PCG art. 213-14",
+   "ref": "PCG art. 213-14 et 213-15",
    "note": "Coût de production, exclusion de la sous-activité"
   },
   {
-   "ref": "PCG art. 214-9 ; BOI-BIC-PROV-30-20-40",
+   "ref": "PCG art. 214-9 ; BOI-BIC-CHG-20-20-20 ; BOI-BIC-PROV-30-20-40",
    "note": "Approche par composants et gros entretien ; traitement fiscal de la provision et du composant"
   },
   {
@@ -123,8 +123,8 @@
    "note": "Subventions d'investissement : inscription en capitaux propres et reprise"
   },
   {
-   "ref": "C. com., art. L. 232-9 et R. 123-187",
-   "note": "Amortissement des frais de constitution ; interdiction de distribuer tant que les frais d'établissement et de développement ne sont pas apurés, sauf réserves libres suffisantes"
+   "ref": "C. com., art. L. 232-9, R. 123-186 et R. 123-187",
+   "note": "Amortissement des frais de constitution ; frais de développement (projets nettement individualisés) ; interdiction de distribuer tant que les frais d'établissement et de développement ne sont pas apurés, sauf réserves libres suffisantes (rédaction issue du décret n° 2015-903)"
   },
   {
    "ref": "BOI-BIC-CHG-20-30-10",
@@ -310,8 +310,8 @@
    "a": 66000,
    "unit": "€",
    "tol": 1,
-   "why": "Le coût de production comprend les matières (30 000), les charges directes (20 000) et les charges indirectes de production rationnellement rattachables : 20 000 × 80 % = 16 000, la part de sous-activité (4 000) étant exclue (PCG art. 213-14). Les frais d'administration générale ne sont pas incorporables. Total : 30 000 + 20 000 + 16 000 = 66 000 €. Retenir 20 000 de charges fixes (75 000) ou inclure l'administration (71 000) sont les erreurs classiques.",
-   "src": "PCG art. 213-14",
+   "why": "Le coût de production comprend les matières (30 000), les charges directes (20 000) et les charges indirectes de production rationnellement rattachables : 20 000 × 80 % = 16 000, la part de sous-activité (4 000) étant exclue (PCG art. 213-15). Les frais d'administration générale ne sont pas incorporables. Total : 30 000 + 20 000 + 16 000 = 66 000 €. Retenir 20 000 de charges fixes (75 000) ou inclure l'administration (71 000) sont les erreurs classiques.",
+   "src": "PCG art. 213-14 et 213-15",
    "fiab": "stable",
    "niveau": 2
   },
@@ -424,7 +424,7 @@
    "opts": [
     "Elles peuvent être traitées comme un composant distinct amorti sur la durée séparant deux révisions",
     "Elles peuvent faire l'objet d'une provision pour gros entretien (compte 1525 du plan 2025)",
-    "Seule la méthode de la provision est admise fiscalement",
+    "Avec l'approche par composant, les dotations excédentaires sont réintégrées extra-comptablement",
     "Elles sont obligatoirement passées en charges l'année de la révision",
     "La méthode choisie peut varier chaque année selon le résultat"
    ],
@@ -433,8 +433,8 @@
     1,
     2
    ],
-   "why": "Le PCG (art. 214-9) offre le choix entre un composant de deuxième catégorie et une provision pour gros entretien, dotée progressivement jusqu'à la révision. Fiscalement, ces dépenses demeurent des charges : seule la provision est déductible (CGI, art. 39, 1-5°) et, avec l'approche par composant, les dotations excédentaires sont réintégrées extra-comptablement (BOI-BIC-PROV-30-20-40). La méthode retenue est appliquée de façon permanente (permanence des méthodes) et les dépenses ne sont pas laissées en charges l'année de la révision si l'une des deux méthodes est retenue.",
-   "src": "PCG art. 214-9 ; CGI art. 39, 1-5° ; BOI-BIC-PROV-30-20-40",
+   "why": "Le PCG (art. 214-9) offre le choix entre un composant de deuxième catégorie et une provision pour gros entretien, dotée progressivement jusqu'à la révision. Fiscalement, ces dépenses demeurent des charges : la provision est déductible dans les conditions de l'article 39, 1-5° du CGI et, avec l'approche par composant, les dotations excédentaires sont réintégrées extra-comptablement (BOI-BIC-CHG-20-20-20). La méthode retenue est appliquée de façon permanente (permanence des méthodes) et les dépenses ne sont pas laissées en charges l'année de la révision si l'une des deux méthodes est retenue.",
+   "src": "PCG art. 214-9 ; CGI art. 39, 1-5° ; BOI-BIC-CHG-20-20-20 ; BOI-BIC-PROV-30-20-40",
    "fiab": "stable",
    "niveau": 2
   },
@@ -510,7 +510,7 @@
      }
     ]
    ],
-   "why": "Les frais de développement activés sont portés au débit de 203 Frais de recherche et de développement par le crédit de 721 Production immobilisée – immobilisations incorporelles, qui neutralise les charges par nature déjà enregistrées. Le compte 201 est réservé aux frais d'établissement, 722 aux immobilisations corporelles ; 617 est le compte de charges d'études et recherches, qui n'est pas crédité directement.",
+   "why": "Les frais de développement activés sont portés au débit de 203 Frais de développement par le crédit de 721 Production immobilisée – immobilisations incorporelles, qui neutralise les charges par nature déjà enregistrées. Le compte 201 est réservé aux frais d'établissement, 722 aux immobilisations corporelles ; 617 est le compte de charges d'études et recherches, qui n'est pas crédité directement.",
    "src": "PCG art. 212-3",
    "fiab": "stable",
    "niveau": 2
