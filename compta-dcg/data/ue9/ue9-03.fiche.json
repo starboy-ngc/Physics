@@ -1,0 +1,313 @@
+{
+ "id": "ue9-03",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Analyse comptable des opérations courantes : les opérations courantes d'achat et de vente (factures, réductions, avoirs, frais accessoires, acomptes)",
+   "Analyse comptable des opérations courantes : la taxe sur la valeur ajoutée (TVA collectée, TVA déductible, déclaration)",
+   "Méthode comptable : le mécanisme de la partie double appliqué aux opérations commerciales"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "CGI, art. 256 et 256 A",
+   "objet": "Champ d'application de la TVA ; notion d'assujetti",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 269",
+   "objet": "Fait générateur et exigibilité de la TVA (livraisons, prestations, acomptes, option pour les débits)",
+   "url": null,
+   "version": "en vigueur (loi n° 2021-1900 du 30 décembre 2021 pour les acomptes sur livraisons de biens)"
+  },
+  {
+   "ref": "CGI, art. 271",
+   "objet": "Droit à déduction de la TVA ; crédit de TVA",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 278, 278-0 bis, 278 bis, 279 et 281 quater",
+   "objet": "Taux de TVA : 20 %, 5,5 %, 10 %, 2,1 %",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 287",
+   "objet": "Déclaration de TVA (CA3 mensuelle, option trimestrielle)",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 289 et annexe II, art. 242 nonies A",
+   "objet": "Obligation de facturation et mentions obligatoires",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 441-9 et L. 441-10",
+   "objet": "Facture : délivrance et mentions commerciales (réductions, escompte, pénalités de retard, indemnité forfaitaire)",
+   "url": null,
+   "version": "en vigueur (ordonnance n° 2019-359 du 24 avril 2019)"
+  },
+  {
+   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+   "objet": "Comptes 401, 411, 4091, 4191, 445, 60, 609, 6241, 6242, 665, 70, 7085, 709, 765",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "version": "version au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 213-8",
+   "objet": "Coût d'acquisition d'une immobilisation : prix d'achat net des remises, rabais et escomptes de règlement",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Suppression des transferts de charges ; refacturations enregistrées en produits",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "exercices ouverts à compter du 1er janvier 2025"
+  },
+  {
+   "ref": "CGI, art. 289 bis et loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91",
+   "objet": "Facturation électronique obligatoire entre assujettis : calendrier 2026-2027",
+   "url": null,
+   "version": "en vigueur ; calendrier applicable à compter du 1er septembre 2026"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Opérations imposables à la TVA</b> : les livraisons de biens et les prestations de services effectuées à titre onéreux par un assujetti agissant en tant que tel.",
+     "src": "CGI, art. 256, I",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Assujetti</b> : personne qui effectue de manière indépendante une activité économique (producteur, commerçant, prestataire de services), quels que soient son statut juridique et sa situation au regard des autres impôts.",
+     "src": "CGI, art. 256 A",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Fait générateur</b> : événement qui fait naître la créance fiscale du Trésor ; <b>exigibilité</b> : date à laquelle le Trésor peut réclamer la taxe et à laquelle le client peut la déduire.",
+     "src": "CGI, art. 269, 1 et 2",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Réductions commerciales</b> : rabais, remises et ristournes (comptes <code>609</code> « Rabais, remises et ristournes obtenus sur achats » et <code>709</code> « Rabais, remises et ristournes accordés par l'entreprise ») ; <b>réduction financière</b> : l'escompte de règlement (<code>665</code> « Escomptes accordés », <code>765</code> « Escomptes obtenus »).",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 609, 709, 665 et 765",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Avoir</b> : tout document ou message qui modifie la facture initiale et y fait référence de façon spécifique et non équivoque est assimilé à une facture (facture rectificative).",
+     "src": "CGI, art. 289, I-5",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Acompte reçu d'un client</b> : dette envers le client jusqu'à la facturation, au compte <code>4191</code> « Clients – Avances et acomptes reçus sur commandes » ; acompte versé à un fournisseur : créance au compte <code>4091</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 4091 et 4191",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "Pour les <b>livraisons de biens</b>, la TVA est exigible lors de la livraison ; pour les <b>prestations de services</b>, lors de l'encaissement des acomptes, du prix ou de la rémunération, sauf option pour le paiement d'après les débits.",
+     "src": "CGI, art. 269, 2-a et 2-c",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "La TVA qui a grevé les éléments du prix d'une opération imposable est <b>déductible</b> de la TVA applicable à cette opération ; le droit à déduction prend naissance lorsque la taxe devient exigible chez le fournisseur.",
+     "src": "CGI, art. 271, I",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Tout assujetti délivre une <b>facture</b> pour les biens livrés ou les services rendus à un autre assujetti ou à une personne morale non assujettie, ainsi que pour les acomptes perçus avant la réalisation de l'opération.",
+     "src": "CGI, art. 289, I-1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "La facture mentionne la date de la vente ou de la prestation, la quantité, la dénomination précise, le prix unitaire hors TVA, toute réduction de prix acquise à la date de la vente et directement liée à l'opération, la date du règlement, les conditions d'escompte et le taux des pénalités de retard.",
+     "src": "C. com., art. L. 441-9, I",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Achat</b> : le compte d'achat (classe 60) est débité du montant <b>hors taxes</b>, la TVA déductible au débit de <code>44566</code> (biens et services) ou <code>44562</code> (immobilisations), le fournisseur <code>401</code> crédité du montant TTC.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 401, 4456 et 60",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Vente</b> : le compte de produit (classe 70) est crédité du montant hors taxes collectées, la TVA collectée au crédit de <code>44571</code>, le client <code>411</code> débité du montant TTC.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 411, 44571 et 70",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
+    },
+    {
+     "t": "Les réductions commerciales portées <b>sur la facture</b> sont déduites du prix : seul le net commercial est enregistré en achat ou en vente ; les réductions accordées <b>hors facture</b> (avoirs de ristourne) passent par <code>609</code> ou <code>709</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), fonctionnement des comptes 609 et 709",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'<b>escompte de règlement</b> est une charge financière (<code>665</code>) chez le vendeur qui l'accorde et un produit financier (<code>765</code>) chez l'acheteur qui l'obtient, même s'il figure sur la facture.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 665 et 765",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Pour une <b>immobilisation</b>, le coût d'acquisition est le prix d'achat, y compris droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, majoré des coûts directement attribuables.",
+     "src": "PCG, art. 213-8",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Frais de port</b> : à l'achat, charge <code>6241</code> « Transports sur achats » ; à la vente, charge <code>6242</code> « Transports sur ventes » ; les ports refacturés au client sont des produits au compte <code>7085</code> « Ports et frais accessoires facturés ».",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 6241, 6242 et 7085",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Un <b>avoir</b> pour retour de marchandises s'enregistre à l'inverse de la facture initiale (chez le vendeur : débit 70 et 44571, crédit 411) ; un avoir pour ristourne hors facture utilise 709 ou 609.",
+     "src": "CGI, art. 289, I-5 ; plan de comptes PCG 2025, comptes 609 et 709",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "La <b>TVA n'est ni une charge ni un produit</b> pour l'assujetti : elle transite par les comptes de tiers <code>445</code> « État – Taxes sur le chiffre d'affaires » ; les produits sont enregistrés hors taxes collectées.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 445 et classe 7",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
+    },
+    {
+     "t": "<b>Déclaration de TVA</b> : TVA à décaisser = TVA collectée exigible − TVA déductible ; elle est portée au crédit de <code>44551</code> « TVA à décaisser » ; si la déductible excède la collectée, le <b>crédit de TVA</b> est inscrit au débit de <code>44567</code> et reporté ou remboursé.",
+     "src": "CGI, art. 271, IV et 287 ; plan de comptes PCG 2025, comptes 44551 et 44567",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les redevables au régime réel normal déposent une déclaration <b>mensuelle</b> (CA3) ; ils peuvent déposer une déclaration trimestrielle lorsque la taxe exigible annuellement est inférieure à 4 000 €.",
+     "src": "CGI, art. 287, 2",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "La <b>refacturation de frais</b> à un tiers n'est plus un transfert de charges : elle est enregistrée en produit (compte <code>708</code> « Produits des activités annexes »).",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, compte 708",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Taux de TVA : taux normal <span class=\"mono\">20 %</span> (art. 278), taux réduits <span class=\"mono\">10 %</span> (art. 278 bis et 279) et <span class=\"mono\">5,5 %</span> (art. 278-0 bis), taux particulier <span class=\"mono\">2,1 %</span> (art. 281 quater).",
+     "src": "CGI, art. 278, 278-0 bis, 278 bis, 279 et 281 quater",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Pénalités de retard : taux au moins égal à <span class=\"mono\">trois fois</span> le taux d'intérêt légal ; indemnité forfaitaire pour frais de recouvrement de <span class=\"mono\">40 €</span> due de plein droit par tout professionnel en retard de paiement.",
+     "src": "C. com., art. L. 441-10, II et D. 441-5",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Déclaration trimestrielle possible si la TVA exigible annuelle est inférieure à <span class=\"mono\">4 000 €</span>.",
+     "src": "CGI, art. 287, 2",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Conservation des factures et pièces justificatives : <span class=\"mono\">dix ans</span> au titre du Code de commerce.",
+     "src": "C. com., art. L. 123-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+     "fiab": "stable",
+     "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Facturation électronique</b> : obligation de recevoir des factures électroniques pour tous les assujettis établis en France à compter du <b>1er septembre 2026</b> ; obligation d'émission au 1er septembre 2026 pour les grandes entreprises et ETI, au <b>1er septembre 2027</b> pour les PME et microentreprises.",
+     "src": "Loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91 ; CGI, art. 289 bis",
+     "url": null,
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "Depuis les exercices ouverts le 1er janvier 2025, les comptes de <b>transferts de charges</b> (791, 796, 797) sont supprimés ; les refacturations sont des produits.",
+     "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1 modifié)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
+    },
+    {
+     "t": "Le plan de comptes applicable est celui de l'article 1121-1 du PCG 2025, commun au système de base et au système abrégé.",
+     "src": "Plan de comptes PCG 2025 et 2026 (PCG, art. 1121-1)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+     "fiab": "stable",
+     "cite": "« Le plan de comptes présenté ci-après, est commun au système de base et au système abrégé. »"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "La TVA sur une <b>immobilisation</b> se déduit au compte <code>44562</code>, pas en 44566 : l'examen distingue les deux.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 4456",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Sur une <b>prestation de services</b> sans option pour les débits, la TVA n'est exigible qu'à l'encaissement : l'acompte encaissé rend la TVA exigible immédiatement sur son montant.",
+     "src": "CGI, art. 269, 2-c",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "L'escompte sur facture d'<b>immobilisation</b> est déduit du coût d'acquisition (pas de 765), contrairement à l'escompte sur achat de biens et services.",
+     "src": "PCG, art. 213-8",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les produits de la classe 7 sont <b>hors taxes</b> : enregistrer une vente TTC en 707 est l'erreur classique.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), classe 7",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
+    },
+    {
+     "t": "Lien DSCG/UE4 : le droit à déduction suppose une facture régulière mentionnant la TVA ; il naît chez le client à la date d'exigibilité chez le fournisseur.",
+     "src": "CGI, art. 271, I et II",
+     "url": null,
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

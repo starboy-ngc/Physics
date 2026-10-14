@@ -1,0 +1,88 @@
+{
+ "id": "ue4-05",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Partie 2 – Conduire les obligations fiscales du cycle d'exploitation d'une entreprise : la taxe sur la valeur ajoutée",
+   "1.2 Aider le contribuable à organiser son environnement fiscal : l'agenda se limite aux échéances de TVA (déclaration de chiffre d'affaires trimestrielle et/ou mensuelle), d'impôt sur les sociétés (IS) ainsi qu'une taxe supplémentaire au maximum",
+   "L'UE 4, droit fiscal, permet au titulaire du DCG d'identifier les règles applicables à une situation donnée et d'analyser les opérations d'entreprises et de particuliers",
+   "Programme 2019 (session 2026), sens et portée de l'étude : « Le législateur utilise fréquemment le droit fiscal comme outil incitatif »"
+  ]
+ },
+ "textes": [
+  { "ref": "CGI, art. 256, 256 A et 257", "objet": "Opérations imposables par nature et par disposition de la loi ; définition de l'assujetti", "url": null, "version": "en vigueur (directive 2006/112/CE)" },
+  { "ref": "CGI, art. 261 et 260", "objet": "Exonérations et options", "url": null, "version": "en vigueur" },
+  { "ref": "CGI, art. 258 à 259 D, 262 et 262 ter", "objet": "Territorialité des livraisons de biens et des prestations de services ; exportations et livraisons intracommunautaires", "url": null, "version": "en vigueur" },
+  { "ref": "CGI, art. 266, 267 et 269", "objet": "Base d'imposition, fait générateur et exigibilité", "url": null, "version": "en vigueur (acomptes sur livraisons de biens depuis le 1er janvier 2023)" },
+  { "ref": "CGI, art. 278 à 281 octies", "objet": "Taux de la TVA", "url": null, "version": "en vigueur" },
+  { "ref": "CGI, art. 271 ; CGI, ann. II, art. 205 à 207", "objet": "Droit à déduction, coefficient de déduction, exclusions, régularisations", "url": null, "version": "en vigueur" },
+  { "ref": "CGI, art. 293 B", "objet": "Franchise en base de TVA", "url": null, "version": "en vigueur ; seuil unique de 25 000 € prévu par la LF 2025 (art. 32) suspendu" },
+  { "ref": "CGI, art. 302 septies A et 287 ; BOI-BAREME-000036", "objet": "Régime simplifié de déclaration : seuils de chiffre d'affaires, acomptes, déclaration annuelle", "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701", "version": "BOFiP du 1er juillet 2026" },
+  { "ref": "CGI, art. 289 et 289 bis ; CGI, ann. II, art. 242 nonies A", "objet": "Facturation, mentions obligatoires, facturation électronique", "url": null, "version": "en vigueur (calendrier de la LF 2024, art. 91)" },
+  { "ref": "CGI, art. 283, 2 nonies", "objet": "Autoliquidation de la TVA dans la sous-traitance du bâtiment", "url": null, "version": "en vigueur" }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    { "t": "<b>Opérations imposables par nature</b> : livraisons de biens et prestations de services effectuées à titre onéreux par un assujetti agissant en tant que tel.", "src": "CGI, art. 256, I", "url": null, "fiab": "stable" },
+    { "t": "<b>Assujetti</b> : personne qui effectue de manière indépendante une activité économique, quels que soient son statut juridique, sa situation au regard des autres impôts et la forme ou la nature de son intervention ; les salariés ne sont pas assujettis.", "src": "CGI, art. 256 A", "url": null, "fiab": "stable" },
+    { "t": "<b>Opérations imposables par disposition expresse de la loi</b> : livraisons à soi-même de biens ou d'immeubles, importations, acquisitions intracommunautaires, livraisons de terrains à bâtir et d'immeubles neufs.", "src": "CGI, art. 257", "url": null, "fiab": "stable" },
+    { "t": "<b>Fait générateur et exigibilité</b> : le fait générateur est l'événement qui fait naître la créance du Trésor ; l'exigibilité est le droit que le Trésor peut faire valoir pour obtenir le paiement ; elle fixe la période de déclaration chez le fournisseur et la date du droit à déduction chez le client.", "src": "CGI, art. 269 et 271, I-2", "url": null, "fiab": "stable" },
+    { "t": "<b>Régimes de déclaration</b> : franchise en base (aucune TVA facturée ni déduite), régime simplifié (déclaration annuelle CA12 n° 3517-S et acomptes semestriels) et régime réel normal (déclarations CA3 mensuelles ou trimestrielles).", "src": "CGI, art. 287, 293 B et 302 septies A ; impots.gouv.fr, les régimes d'imposition à la TVA", "url": "https://www.impots.gouv.fr/professionnel/les-regimes-dimposition-la-tva", "fiab": "stable" }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    { "t": "<b>Exonérations</b> : soins médicaux et paramédicaux, enseignement, locations nues d'immeubles à usage d'habitation ou de terres agricoles, opérations bancaires et financières, assurances ; une exonération prive en principe du droit à déduction.", "src": "CGI, art. 261 et 271", "url": null, "fiab": "stable" },
+    { "t": "<b>Options</b> : les bailleurs de locaux nus à usage professionnel et les assujettis bénéficiant de la franchise peuvent opter pour l'imposition à la TVA.", "src": "CGI, art. 260, 2° et 293 F", "url": null, "fiab": "stable" },
+    { "t": "<b>Livraisons de biens</b> : imposables en France lorsque le bien s'y trouve au moment du départ de l'expédition ou, à défaut de transport, lors de sa mise à disposition.", "src": "CGI, art. 258, I", "url": null, "fiab": "stable" },
+    { "t": "<b>Exportations et livraisons intracommunautaires</b> : les exportations vers les pays tiers et les livraisons intracommunautaires à un assujetti identifié dans un autre État membre sont exonérées avec maintien du droit à déduction ; l'exonération intracommunautaire exige le numéro de TVA valide de l'acquéreur, la sortie physique du bien et sa mention dans l'état récapitulatif.", "src": "CGI, art. 262, I et 262 ter, I", "url": null, "fiab": "stable" },
+    { "t": "<b>Acquisitions intracommunautaires</b> : imposables en France chez l'acquéreur assujetti, qui autoliquide la taxe (collectée et déductible sur la même déclaration) ; la TVA à l'importation est également autoliquidée sur la déclaration de TVA depuis le 1er janvier 2022.", "src": "CGI, art. 256 bis, 269, 2-d et 1695, II", "url": null, "fiab": "stable" },
+    { "t": "<b>Prestations de services</b> : entre assujettis (B2B), le lieu d'imposition est celui du preneur ; pour un preneur non assujetti (B2C), celui du prestataire. Dérogations : services rattachés à un immeuble (lieu de l'immeuble), restauration (lieu d'exécution), locations de courte durée de moyens de transport (lieu de mise à disposition), accès aux manifestations (lieu de l'événement).", "src": "CGI, art. 259, 1° et 2°, 259 A", "url": null, "fiab": "stable" },
+    { "t": "<b>Ventes à distance intracommunautaires</b> : taxées dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 € ; au-delà (ou sur option), TVA de l'État de consommation déclarée via le guichet unique (OSS).", "src": "CGI, art. 259 D et 298 sexdecies G", "url": null, "fiab": "stable" },
+    { "t": "<b>Base d'imposition</b> : toutes les sommes, valeurs, biens ou services reçus en contrepartie, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA ; sont exclus les rabais, remises, ristournes et escomptes accordés directement au client et les débours remboursés à l'euro.", "src": "CGI, art. 266, 1-a et 267", "url": null, "fiab": "stable" },
+    { "t": "<b>Exigibilité</b> : livraisons de biens à la livraison (et dès l'encaissement d'un acompte, à concurrence de son montant, depuis le 1er janvier 2023) ; prestations de services à l'encaissement du prix ou des acomptes, sauf option pour les débits.", "src": "CGI, art. 269, 2-a et 2-c", "url": null, "fiab": "stable" },
+    { "t": "<b>Conditions du droit à déduction</b> : la taxe doit être mentionnée sur une facture régulière (ou un document d'importation, ou autoliquidée), le bien ou service doit être utilisé pour des opérations ouvrant droit à déduction, et la taxe doit être exigible chez le fournisseur.", "src": "CGI, art. 271, I et II", "url": null, "fiab": "stable" },
+    { "t": "<b>Coefficient de déduction</b> : produit du coefficient d'assujettissement (utilisation pour des opérations dans le champ), du coefficient de taxation (utilisation pour des opérations ouvrant droit à déduction) et du coefficient d'admission (exclusions réglementaires) ; chaque coefficient est arrondi au centième supérieur.", "src": "CGI, ann. II, art. 206, I à IV", "url": null, "fiab": "stable" },
+    { "t": "<b>Exclusions du droit à déduction</b> : véhicules conçus pour le transport de personnes (sauf activités de transport, auto-écoles, loueurs), logement fourni gratuitement aux dirigeants et salariés, biens cédés sans rémunération ou pour un prix très inférieur (cadeaux au-delà de la limite réglementaire), transport de personnes ; carburants des véhicules exclus déductibles à 80 % (essence et gazole).", "src": "CGI, ann. II, art. 206, IV", "url": null, "fiab": "stable" },
+    { "t": "<b>Régularisations</b> : la TVA déduite sur les immobilisations est régularisée pendant vingt ans pour les immeubles et cinq ans pour les autres biens (année d'acquisition comprise) ; régularisation annuelle si le coefficient de déduction varie de plus d'un dixième, régularisation globale en cas de cession non soumise à TVA ou de cessation.", "src": "CGI, ann. II, art. 207", "url": null, "fiab": "stable" },
+    { "t": "<b>Régime simplifié</b> : réservé aux entreprises dont le chiffre d'affaires n'excède pas les seuils et dont la TVA due au titre de l'année précédente est inférieure à 15 000 € ; deux acomptes semestriels (juillet et décembre) de 55 % et 40 % de la taxe due au titre de l'année précédente, puis déclaration annuelle CA12 avec le solde.", "src": "CGI, art. 287, 3 et 302 septies A ; notice 3517-S-NOT-SD", "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/3517-s-sd/2024/3517-s-sd_4724.pdf", "fiab": "stable" },
+    { "t": "<b>Facturation</b> : toute TVA facturée est due du seul fait de sa facturation ; la facture mentionne notamment l'identité des parties, le numéro de TVA du vendeur, la date, le numéro séquentiel, la dénomination des biens ou services, le prix hors taxe, le taux et le montant de TVA par taux, et les mentions spéciales (« autoliquidation », « TVA non applicable, art. 293 B du CGI »).", "src": "CGI, art. 283, 3 et 289 ; CGI, ann. II, art. 242 nonies A", "url": null, "fiab": "stable" },
+    { "t": "<b>Sous-traitance dans le bâtiment</b> : pour les travaux de construction, réparation, nettoyage ou entretien d'immeubles réalisés par un sous-traitant pour un preneur assujetti, la taxe est acquittée par le preneur (autoliquidation) ; le sous-traitant facture hors taxe avec la mention « autoliquidation ».", "src": "CGI, art. 283, 2 nonies", "url": null, "fiab": "stable" }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    { "t": "<b>Taux</b> en France continentale : taux normal <span class=\"mono\">20 %</span> ; taux intermédiaire <span class=\"mono\">10 %</span> (restauration, hébergement, transport de voyageurs, travaux dans les logements de plus de deux ans) ; taux réduit <span class=\"mono\">5,5 %</span> (produits alimentaires, livres, énergie et équipements pour personnes handicapées, travaux de rénovation énergétique) ; taux particulier <span class=\"mono\">2,1 %</span> (médicaments remboursables, presse).", "src": "CGI, art. 278, 278-0 bis, 278 bis, 279 et 281 quater", "url": null, "fiab": "stable" },
+    { "t": "<b>Seuils du régime simplifié de TVA (2023-2025)</b> : chiffre d'affaires n'excédant pas <span class=\"mono\">840 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">254 000 €</span> (autres prestations de services) ; maintien du régime l'année de dépassement tant que le chiffre d'affaires n'excède pas <span class=\"mono\">925 000 €</span> et <span class=\"mono\">287 000 €</span>.", "src": "CGI, art. 302 septies A ; BOI-BAREME-000036", "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701", "fiab": "millésimé 2025" },
+    { "t": "<b>Franchise en base (2025)</b> : chiffre d'affaires de l'année précédente n'excédant pas <span class=\"mono\">85 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">37 500 €</span> (autres prestations de services), avec des seuils majorés de <span class=\"mono\">93 500 €</span> et <span class=\"mono\">41 250 €</span> dont le dépassement en cours d'année fait perdre la franchise immédiatement.", "src": "CGI, art. 293 B, I", "url": null, "fiab": "millésimé 2025" },
+    { "t": "<b>Régularisations</b> : <span class=\"mono\">20 ans</span> pour les immeubles, <span class=\"mono\">5 ans</span> pour les autres immobilisations ; variation du coefficient supérieure à <span class=\"mono\">1/10</span>.", "src": "CGI, ann. II, art. 207, II et III", "url": null, "fiab": "stable" },
+    { "t": "<b>Crédit de TVA</b> : remboursement mensuel ou trimestriel à partir de <span class=\"mono\">760 €</span> (réel normal) ; remboursement annuel à partir de <span class=\"mono\">150 €</span> (régime simplifié).", "src": "CGI, ann. II, art. 242-0 C et 242-0 D", "url": null, "fiab": "stable" },
+    { "t": "<b>Acomptes du régime simplifié</b> : <span class=\"mono\">55 %</span> en juillet et <span class=\"mono\">40 %</span> en décembre de la TVA due au titre de l'exercice précédent (hors TVA sur immobilisations) ; dispense si cette TVA est inférieure à <span class=\"mono\">1 000 €</span>.", "src": "CGI, art. 287, 3", "url": null, "fiab": "stable" }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    { "t": "<b>Acomptes sur livraisons de biens</b> : depuis le 1er janvier 2023, l'encaissement d'un acompte sur une livraison de biens rend la TVA exigible à concurrence du montant encaissé (loi de finances pour 2022).", "src": "CGI, art. 269, 2-a (loi n° 2021-1900 du 30 décembre 2021, art. 30)", "url": null, "fiab": "stable" },
+    { "t": "<b>Franchise en base</b> : la loi de finances pour 2025 (art. 32) avait prévu un seuil unique de 25 000 € à compter du 1er mars 2025 ; son application a été suspendue et les seuils de 85 000 € et 37 500 € sont restés applicables en 2025.", "src": "CGI, art. 293 B ; loi n° 2025-127 du 14 février 2025, art. 32", "url": null, "fiab": "millésimé 2025" },
+    { "t": "<b>Facturation électronique</b> : obligation de recevoir des factures électroniques pour toutes les entreprises assujetties établies en France à compter du 1er septembre 2026 ; obligation d'émettre au 1er septembre 2026 pour les grandes entreprises et les entreprises de taille intermédiaire, au 1er septembre 2027 pour les PME et micro-entreprises, via des plateformes agréées.", "src": "CGI, art. 289 bis (loi n° 2023-1322 du 29 décembre 2023, art. 91)", "url": null, "fiab": "stable" },
+    { "t": "<b>Régime simplifié de TVA</b> : la loi de finances pour 2025 (art. 38) organise sa suppression à compter du 1er janvier 2027, les entreprises concernées passant à des déclarations trimestrielles de régime réel.", "src": "CGI, art. 287 et 302 septies A ; loi n° 2025-127 du 14 février 2025, art. 38", "url": null, "fiab": "millésimé 2025" }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    { "t": "<b>Hors champ, exonéré, imposable</b> : seule l'opération imposable (ou exonérée avec maintien du droit à déduction, comme l'exportation) ouvre droit à déduction ; un médecin ou un bailleur de logement nu est dans le champ mais exonéré, sans droit à déduction.", "src": "CGI, art. 256, 261 et 271", "url": null, "fiab": "stable" },
+    { "t": "<b>Exigibilité et déduction sont liées</b> : le client ne peut déduire la TVA qu'au moment où elle devient exigible chez le fournisseur ; pour un prestataire sans option pour les débits, c'est le paiement, non la facture, qui ouvre le droit à déduction.", "src": "CGI, art. 271, I-2 et 269, 2-c", "url": null, "fiab": "stable" },
+    { "t": "<b>Seuils de TVA et seuils BIC ne se confondent pas</b> : les seuils du régime simplifié de TVA (840 000 € / 254 000 €, majorés 925 000 € / 287 000 €) sont distincts des seuils du régime simplifié d'imposition des bénéfices et de la franchise en base ; vérifier chaque barème officiel.", "src": "CGI, art. 302 septies A et 302 septies A bis ; BOI-BAREME-000036", "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701", "fiab": "millésimé 2025" },
+    { "t": "<b>Toute TVA facturée est due</b> : une taxe facturée à tort (opération exonérée, franchise) est exigible chez l'émetteur, sans ouvrir de droit à déduction régulier chez le client.", "src": "CGI, art. 283, 3 et 271, II-1-a", "url": null, "fiab": "stable" }
+   ]
+  }
+ ]
+}

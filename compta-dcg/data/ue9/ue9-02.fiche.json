@@ -1,0 +1,311 @@
+{
+ "id": "ue9-02",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Introduction : la normalisation et la réglementation comptable (plan comptable général)",
+   "Méthode comptable : analyse des opérations en flux et en stocks",
+   "Méthode comptable : le mécanisme de la partie double",
+   "Méthode comptable : les contrôles comptables (journal, grand livre, balance)"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. com., art. L. 123-12",
+   "objet": "Enregistrement chronologique des mouvements affectant le patrimoine",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+   "version": "en vigueur depuis le 21 septembre 2000"
+  },
+  {
+   "ref": "C. com., art. L. 123-22",
+   "objet": "Comptabilité en euros et en français ; conservation dix ans",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+   "version": "en vigueur depuis le 4 janvier 2003 (loi n° 2003-7 du 3 janvier 2003)"
+  },
+  {
+   "ref": "C. com., art. R. 123-173",
+   "objet": "Livre-journal et grand livre obligatoires ; documents électroniques",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+   "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015)"
+  },
+  {
+   "ref": "C. com., art. R. 123-174",
+   "objet": "Enregistrement opération par opération et jour par jour ; pièce justificative",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "version": "en vigueur depuis le 27 mars 2007"
+  },
+  {
+   "ref": "C. com., art. R. 123-175 et R. 123-176",
+   "objet": "Report au grand livre selon le plan de comptes ; journaux auxiliaires et centralisation mensuelle",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257948",
+   "version": "en vigueur depuis le 27 mars 2007"
+  },
+  {
+   "ref": "C. com., art. R. 123-177",
+   "objet": "Inventaire annuel et conservation des données d'inventaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+   "version": "en vigueur depuis le 1er janvier 2016"
+  },
+  {
+   "ref": "PCG (règlement ANC n° 2014-03), art. 921-1",
+   "objet": "Principe de la partie double",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2024/PCG--1er-janvier-2024.pdf",
+   "version": "version consolidée au 1er janvier 2024 (numérotation antérieure à la recodification du plan de comptes)"
+  },
+  {
+   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+   "objet": "Nomenclature des comptes, classes 1 à 7",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "version": "version au 1er janvier 2025 (règlement ANC n° 2022-06)"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Comptes supprimés et créés à compter des exercices ouverts le 1er janvier 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "homologué par arrêté du 26 décembre 2023"
+  },
+  {
+   "ref": "PCG, art. 513-1",
+   "objet": "Résultat = produits − charges = variation des capitaux propres",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Plan de comptes</b> : liste des comptes prévue par le PCG (art. 1121-1), commune au système de base et au système abrégé, organisée en sept classes.",
+     "src": "Plan de comptes PCG 2025 et 2026 (PCG, art. 1121-1)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+     "fiab": "stable",
+     "cite": "« Le plan de comptes présenté ci-après, est commun au système de base et au système abrégé. »"
+    },
+    {
+     "t": "<b>Classes de comptes</b> : classe 1 comptes de capitaux (capitaux propres, autres fonds propres, emprunts et dettes assimilées), classe 2 comptes d'immobilisations, classe 3 comptes de stocks et en-cours, classe 4 comptes de tiers, classe 5 comptes financiers, classe 6 comptes de charges, classe 7 comptes de produits.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Livre-journal</b> : livre obligatoire où les mouvements affectant le patrimoine sont enregistrés opération par opération et jour par jour.",
+     "src": "C. com., art. R. 123-173 et R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+     "fiab": "stable",
+     "cite": "« Les mouvements affectant le patrimoine de l'entreprise sont enregistrés opération par opération et jour par jour pour le livre-journal. »"
+    },
+    {
+     "t": "<b>Grand livre</b> : livre obligatoire qui reçoit les écritures du livre-journal, ventilées selon le plan de comptes.",
+     "src": "C. com., art. R. 123-173 et R. 123-175",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257948",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Partie double</b> : système d'enregistrement dans lequel toute écriture établit une équivalence entre ce qui est porté au débit et ce qui est porté au crédit des comptes qu'elle affecte.",
+     "src": "PCG (règlement ANC n° 2014-03), art. 921-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2024/PCG--1er-janvier-2024.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Inventaire</b> : contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture.",
+     "src": "C. com., art. R. 123-177",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "fiab": "stable",
+     "cite": "« L'inventaire est le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture. »"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "Les mouvements affectant le patrimoine de l'entreprise sont enregistrés <b>chronologiquement</b> par tout commerçant, personne physique ou morale.",
+     "src": "C. com., art. L. 123-12, al. 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Toute personne physique ou morale ayant la qualité de commerçant doit procéder à l'enregistrement comptable des mouvements affectant le patrimoine de son entreprise. Ces mouvements sont enregistrés chronologiquement. »"
+    },
+    {
+     "t": "Tout commerçant tient obligatoirement un <b>livre-journal</b> et un <b>grand livre</b> ; des documents électroniques peuvent en tenir lieu s'ils sont identifiés et datés dès leur établissement par des moyens offrant toute garantie en matière de preuve.",
+     "src": "C. com., art. R. 123-173",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+     "fiab": "stable",
+     "cite": "« tout commerçant tient obligatoirement un livre-journal et un grand-livre »"
+    },
+    {
+     "t": "Tout enregistrement comptable précise l'<b>origine</b>, le <b>contenu</b> et l'<b>imputation</b> de chaque donnée ainsi que les références de la <b>pièce justificative</b> qui l'appuie.",
+     "src": "C. com., art. R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+     "fiab": "stable",
+     "cite": "« Tout enregistrement comptable précise l'origine, le contenu et l'imputation de chaque donnée ainsi que les références de la pièce justificative qui l'appuie. »"
+    },
+    {
+     "t": "Les opérations de même nature, réalisées en un même lieu et au cours d'une même journée, peuvent être récapitulées sur une pièce justificative unique.",
+     "src": "C. com., art. R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+     "fiab": "stable",
+     "cite": "« Les opérations de même nature, réalisées en un même lieu et au cours d'une même journée, peuvent être récapitulées sur une pièce justificative unique. »"
+    },
+    {
+     "t": "Les écritures du livre-journal sont <b>portées sur le grand livre</b> et ventilées selon le plan de comptes : le grand livre regroupe les mouvements compte par compte.",
+     "src": "C. com., art. R. 123-175",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257948",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le livre-journal et le grand livre peuvent être détaillés en <b>journaux et livres auxiliaires</b> ; leurs écritures sont centralisées au moins une fois par mois sur le livre-journal et le grand livre.",
+     "src": "C. com., art. R. 123-176",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+     "fiab": "stable"
+    },
+    {
+     "t": "Toute écriture respecte la <b>partie double</b> : total des débits = total des crédits. C'est ce qui garantit l'égalité des colonnes de la balance et du bilan.",
+     "src": "PCG (règlement ANC n° 2014-03), art. 921-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2024/PCG--1er-janvier-2024.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "La comptabilité est tenue en <b>euros</b> et en <b>langue française</b> ; les enregistrements sont tenus sans blanc ni altération d'aucune sorte, dans des conditions fixées par décret.",
+     "src": "C. com., art. L. 123-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+     "fiab": "stable"
+    },
+    {
+     "t": "La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les <b>charges par nature</b> ; les charges d'exploitation courantes sont réparties entre les comptes 60 à 65 et les charges financières au compte 66.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), classe 6",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les charges par nature »"
+    },
+    {
+     "t": "Les <b>produits</b> d'exploitation courante sont enregistrés dans les comptes 70 à 75 (ventes, production stockée, production immobilisée, subventions, autres produits) ; les produits de la classe 7 sont enregistrés hors taxes collectées.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), classe 7",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
+    },
+    {
+     "t": "Les comptes imprimés en caractères normaux dans le plan de comptes constituent le <b>plan de comptes minimal</b> ; l'entité peut ouvrir les subdivisions nécessaires à ses besoins.",
+     "src": "Règlement ANC n° 2022-06 (version commentée), PCG, art. 1121-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le <b>résultat</b> rapproche les classes 6 et 7 des capitaux propres : il est égal à la différence entre les produits et les charges et à la variation des capitaux propres entre le début et la fin de l'exercice.",
+     "src": "PCG, art. 513-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Le résultat de l'exercice est égal tant à la différence entre les produits et les charges qu'à la variation des capitaux propres entre le début et la fin de l'exercice »"
+    },
+    {
+     "t": "À la clôture, l'inventaire contrôle l'existence et la valeur de chaque élément ; les données d'inventaire sont conservées et organisées de manière à justifier le contenu et le mode d'évaluation de chaque poste du bilan.",
+     "src": "C. com., art. R. 123-177",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "fiab": "stable",
+     "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
+    },
+    {
+     "t": "Les personnes physiques au régime réel simplifié peuvent, par dérogation, n'enregistrer les <b>créances et les dettes qu'à la clôture</b> de l'exercice (comptabilité de trésorerie en cours d'année).",
+     "src": "C. com., art. L. 123-25",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556295",
+     "fiab": "stable"
+    },
+    {
+     "t": "Ces mêmes personnes peuvent enregistrer les encaissements et paiements à la <b>date figurant sur le relevé bancaire</b>, par dérogation à la règle « opération par opération et jour par jour ».",
+     "src": "C. com., art. R. 123-203",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178888/2015-04-01/?anchor=LEGIARTI000006258408",
+     "fiab": "stable",
+     "cite": "« Par dérogation à l'article R. 123-174, les personnes mentionnées aux articles L. 123-25 et L. 123-28 peuvent procéder à l'enregistrement comptable des encaissements et des paiements en retenant la date de l'opération figurant sur le relevé qui leur est adressé par un établissement de crédit. »"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Centralisation des journaux auxiliaires : au moins <span class=\"mono\">une fois par mois</span>.",
+     "src": "C. com., art. R. 123-176",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+     "fiab": "stable"
+    },
+    {
+     "t": "Inventaire : au moins une fois tous les <span class=\"mono\">douze mois</span>.",
+     "src": "C. com., art. L. 123-12, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Elle doit contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs du patrimoine de l'entreprise. »"
+    },
+    {
+     "t": "Conservation des documents comptables et des pièces justificatives : <span class=\"mono\">dix ans</span>.",
+     "src": "C. com., art. L. 123-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+     "fiab": "stable",
+     "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "Le plan de comptes a été recodifié : il figure à l'article <b>1121-1</b> du PCG 2025 (il était à l'article 932-1 du PCG 2024).",
+     "src": "Plan de comptes PCG 2025 (art. 1121-1) ; plan de comptes PCG 2024 (art. 932-1)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Depuis les exercices ouverts le 1er janvier 2025, les <b>transferts de charges</b> sont supprimés du PCG (comptes 791, 796, 797) ; le compte 791 ne subsiste que pour les opérations de concession d'aménagement.",
+     "src": "Règlement ANC n° 2022-06 ; règlement ANC n° 2025-05 du 5 décembre 2025",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2025/REGLT_2025_05-web.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le règlement ANC n° 2024-07 a complété l'article 1121-1 (plan de comptes) d'une précision relative aux bons de souscription.",
+     "src": "Règlement ANC n° 2024-07 (version commentée)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le règlement ANC n° 2026-03 du 6 mars 2026 remplace « Pôle emploi » par « France Travail » dans l'intitulé du compte 6454.",
+     "src": "Règlement ANC n° 2026-03 du 6 mars 2026 (homologué par arrêté du 12 août 2026)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+     "fiab": "millésimé 2026"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "Le <b>livre d'inventaire</b> n'est plus un livre obligatoire depuis le 1er janvier 2016 : seuls le livre-journal et le grand livre le sont, mais les données d'inventaire restent à conserver.",
+     "src": "C. com., art. R. 123-173 et R. 123-177 (décret n° 2015-903)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+     "fiab": "stable"
+    },
+    {
+     "t": "Une pièce justificative pour chaque écriture : sans référence à la pièce, l'enregistrement n'est pas régulier.",
+     "src": "C. com., art. R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+     "fiab": "stable",
+     "cite": "« Tout enregistrement comptable précise l'origine, le contenu et l'imputation de chaque donnée ainsi que les références de la pièce justificative qui l'appuie. »"
+    },
+    {
+     "t": "Les comptes de produits (classe 7) sont <b>hors taxes</b> : la TVA collectée va au compte de tiers 4457, jamais en produit.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), classe 7 et compte 445",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
+    },
+    {
+     "t": "Lien DSCG : la comptabilité peut être produite en justice, et le support électronique du livre-journal et du grand livre doit être identifié et daté dès l'établissement.",
+     "src": "C. com., art. R. 123-173",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

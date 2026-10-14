@@ -1,0 +1,305 @@
+{
+ "id": "ue9-05",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Analyse comptable des opérations courantes : les opérations d'investissement (acquisition et production d'immobilisations corporelles, incorporelles et financières)",
+   "Travaux d'inventaire : les opérations d'inventaire relatives aux immobilisations (amortissements)",
+   "Travaux d'inventaire : cessions et sorties d'immobilisations",
+   "Introduction : la normalisation et la réglementation comptable (PCG, règlement ANC n° 2022-06)"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. com., art. L. 123-18",
+   "objet": "Valeur d'entrée des biens : coût d'acquisition, valeur vénale, coût de production ; plus-value latente non comptabilisée",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015)"
+  },
+  {
+   "ref": "C. com., art. R. 123-181 et R. 123-184",
+   "objet": "Actif immobilisé ; définition des titres de participation",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197050",
+   "version": "en vigueur depuis le 1er janvier 2016"
+  },
+  {
+   "ref": "PCG, art. 211-1, 211-5 et 211-6",
+   "objet": "Définitions de l'actif, de l'immobilisation incorporelle et de l'immobilisation corporelle",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 212-1 et 212-6",
+   "objet": "Conditions de comptabilisation d'un actif ; éléments non significatifs",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 213-1, 213-8 et 213-9",
+   "objet": "Valeur d'entrée ; coût d'acquisition et coût de production d'une immobilisation corporelle",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 214-1 à 214-4",
+   "objet": "Actif amortissable, amortissement, montant amortissable, plan d'amortissement, début de l'amortissement",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 214-3",
+   "objet": "Fonds commercial : présomption de durée d'utilisation non limitée, test de dépréciation",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "règlement ANC n° 2015-06"
+  },
+  {
+   "ref": "CGI, art. 39 A et annexe II, art. 22 et 23",
+   "objet": "Amortissement dégressif : biens éligibles, coefficients, point de départ",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 39, 1-2° et BOI-BIC-CHG-20-30-10",
+   "objet": "Déductibilité des amortissements ; tolérance pour le petit matériel de faible valeur",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+   "objet": "Comptes 2, 28, 145, 261, 271, 275, 657, 681, 68725, 722, 757, 78725",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "version": "version au 1er janvier 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Cessions d'immobilisations classées en résultat d'exploitation (657/757) ; résultat exceptionnel redéfini",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "exercices ouverts à compter du 1er janvier 2025"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Actif</b> : élément identifiable du patrimoine ayant une valeur économique positive, ressource contrôlée du fait d'événements passés dont l'entité attend des avantages économiques futurs.",
+     "src": "PCG, art. 211-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Un actif est un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité, c'est-à-dire un élément générant une ressource que l'entité contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs. »"
+    },
+    {
+     "t": "<b>Actif immobilisé</b> : ensemble des éléments destinés à servir de façon durable à l'activité de l'entreprise.",
+     "src": "C. com., art. R. 123-181",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927431",
+     "fiab": "stable",
+     "cite": "« Les éléments destinés à servir de façon durable à l'activité de l'entreprise constituent l'actif immobilisé. »"
+    },
+    {
+     "t": "<b>Immobilisation incorporelle</b> : actif non monétaire sans substance physique (logiciels <code>205</code>, brevets et licences, fonds commercial <code>207</code>).",
+     "src": "PCG, art. 211-5 ; plan de comptes PCG 2025, compte 20",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Immobilisation corporelle</b> : actif physique détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours.",
+     "src": "PCG, art. 211-6",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Titres de participation</b> : droits dans le capital d'autres personnes morales dont la possession durable est estimée utile à l'activité de l'entreprise, notamment parce qu'elle permet d'exercer une influence sur la société émettrice ou d'en assurer le contrôle ; sont présumés participations les titres représentant plus de 10 % du capital (compte <code>261</code>).",
+     "src": "C. com., art. R. 123-184 ; plan de comptes PCG 2025, compte 261",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197050",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Amortissement</b> : répartition systématique du montant amortissable d'un actif en fonction de son utilisation ; un actif est amortissable lorsque son utilisation par l'entité est déterminable (limitée dans le temps).",
+     "src": "PCG, art. 214-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Valeur nette comptable</b> : valeur brute diminuée des amortissements cumulés et des dépréciations ; <b>valeur actuelle</b> : la plus élevée de la valeur vénale et de la valeur d'usage.",
+     "src": "PCG, art. 214-1 à 214-4 et 214-6",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "Un actif est comptabilisé lorsqu'il est <b>probable</b> que l'entité bénéficiera des avantages économiques futurs correspondants et que son coût ou sa valeur peut être évalué avec une <b>fiabilité suffisante</b>.",
+     "src": "PCG, art. 212-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "À leur date d'entrée, les biens acquis à titre onéreux sont enregistrés à leur <b>coût d'acquisition</b>, les biens acquis à titre gratuit à leur <b>valeur vénale</b> et les biens produits à leur <b>coût de production</b>.",
+     "src": "C. com., art. L. 123-18 ; PCG, art. 213-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Coût d'acquisition</b> d'une immobilisation corporelle = prix d'achat (droits de douane et taxes non récupérables inclus, après déduction des remises, rabais commerciaux et escomptes de règlement) + coûts directement attribuables à la mise en place et en état de fonctionnement (transport, installation, honoraires d'architecte, frais de montage).",
+     "src": "PCG, art. 213-8",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Coût de production</b> d'une immobilisation = coût d'acquisition des matières consommées + autres coûts engagés au cours de la production (charges directes et indirectes raisonnablement rattachables) ; la <b>production immobilisée</b> est constatée au crédit du compte <code>722</code>.",
+     "src": "PCG, art. 213-9 ; plan de comptes PCG 2025, compte 72",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les <b>éléments non significatifs</b> peuvent ne pas être inscrits au bilan et sont alors comptabilisés en charges ; fiscalement, le petit matériel et outillage de faible valeur est admis en charges.",
+     "src": "PCG, art. 212-6 ; BOI-BIC-CHG-20-30-10",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Le <b>plan d'amortissement</b> est défini à la date d'entrée du bien : montant amortissable (valeur brute − valeur résiduelle), durée d'utilisation et mode ; le mode <b>linéaire</b> est appliqué à défaut de mode mieux adapté au rythme de consommation des avantages économiques.",
+     "src": "PCG, art. 214-1 à 214-4",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'amortissement <b>commence</b> à la date de début de consommation des avantages économiques, qui correspond généralement à la <b>mise en service</b> : d'où le prorata temporis la première année.",
+     "src": "PCG, art. 214-1 à 214-4",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Dotation</b> : débit <code>6811</code> « Dotations aux amortissements sur immobilisations incorporelles et corporelles », crédit <code>28</code> (amortissements) ; le compte 2 conserve la valeur brute.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 28 et 681",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Amortissement dégressif</b> (fiscal) : réservé aux biens d'équipement neufs dont la durée normale d'utilisation est d'au moins trois ans ; taux dégressif = taux linéaire × coefficient ; il part du premier jour du mois d'acquisition.",
+     "src": "CGI, art. 39 A ; CGI, annexe II, art. 22 et 23",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "L'écart entre l'amortissement fiscal et l'amortissement comptable est un <b>amortissement dérogatoire</b> : débit <code>68725</code>, crédit <code>145</code> (provision réglementée), puis reprise <code>145</code> / <code>78725</code> en fin de vie.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 145, 68725 et 78725 ; CGI, art. 39, 1-2°",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cession</b> : (1) dotation complémentaire du 1er janvier à la date de cession ; (2) prix de vente au crédit de <code>757</code> « Produits des cessions d'immobilisations incorporelles et corporelles » (TVA collectée le cas échéant) ; (3) sortie du bien : débit <code>657</code> de la VNC, débit <code>28</code> des amortissements cumulés, crédit <code>2</code> de la valeur brute.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 657 et 757 ; règlement ANC n° 2022-06",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "La <b>plus-value latente</b> entre la valeur d'inventaire d'un bien et sa valeur d'entrée n'est pas comptabilisée (prudence).",
+     "src": "C. com., art. L. 123-18 ; C. com., art. L. 123-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le <b>fonds commercial</b> est présumé avoir une durée d'utilisation non limitée : il n'est pas amorti mais fait l'objet d'un test de dépréciation annuel ; les petites entreprises peuvent l'amortir sur dix ans.",
+     "src": "PCG, art. 214-3",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les immobilisations financières (titres de participation <code>261</code>, titres immobilisés <code>271</code>/<code>272</code>, dépôts et cautionnements <code>275</code>) sont enregistrées à leur coût d'acquisition et ne s'amortissent pas ; elles se déprécient (<code>296</code>, <code>297</code>).",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 26, 27 et 29 ; PCG, art. 221-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Coefficients de l'amortissement dégressif : <span class=\"mono\">1,25</span> (durée de 3 ou 4 ans), <span class=\"mono\">1,75</span> (5 ou 6 ans), <span class=\"mono\">2,25</span> (plus de 6 ans).",
+     "src": "CGI, annexe II, art. 22",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Petit matériel, outillage, mobilier et logiciels de faible valeur : admis en charges déductibles lorsque la valeur unitaire hors taxes n'excède pas <span class=\"mono\">500 €</span>.",
+     "src": "BOI-BIC-CHG-20-30-10",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Présomption de participation : titres représentant une fraction du capital supérieure à <span class=\"mono\">10 %</span>.",
+     "src": "C. com., art. R. 123-184",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197050",
+     "fiab": "stable"
+    },
+    {
+     "t": "Durée minimale d'utilisation pour le dégressif : <span class=\"mono\">3 ans</span>.",
+     "src": "CGI, art. 39 A, 1",
+     "url": null,
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "Pour les exercices ouverts à compter du 1er janvier 2025, la cession d'une immobilisation relève du <b>résultat d'exploitation</b> : comptes <code>657</code> et <code>757</code> ; les comptes 675 et 775 sont supprimés.",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, comptes 657 et 757",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le <b>résultat exceptionnel</b> ne retient plus que les événements majeurs et inhabituels ; une cession courante d'immobilisation n'en fait pas partie.",
+     "src": "Règlement ANC n° 2022-06 (PCG, résultat exceptionnel)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« Un événement est présumé inhabituel lorsqu'un même évènement ne s'est pas produit au cours des derniers exercices comptables et qu'il est peu probable qu'il se reproduise »"
+    },
+    {
+     "t": "Les indemnités reçues en compensation de charges d'exploitation (par exemple d'assurance) sont classées en résultat d'exploitation.",
+     "src": "Règlement ANC n° 2022-06",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« Les aides, les remboursements et les indemnités... reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "La dotation de l'année de cession est calculée <b>jusqu'à la date de cession</b>, pas sur l'année entière : oublier la dotation complémentaire fausse la VNC et le résultat de cession.",
+     "src": "PCG, art. 214-1 à 214-4 ; plan de comptes PCG 2025, compte 657",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'escompte de règlement obtenu sur une immobilisation est <b>déduit du coût d'acquisition</b>, pas enregistré en 765.",
+     "src": "PCG, art. 213-8",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le dégressif est un choix <b>fiscal</b> : si l'amortissement comptable linéaire est inférieur, la différence passe par l'amortissement dérogatoire (145), jamais par une modification du plan comptable.",
+     "src": "CGI, art. 39 A ; plan de comptes PCG 2025, compte 145",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Lien DSCG/UE4 : la plus-value de cession est fiscalement qualifiée à court ou long terme (régime des articles 39 duodecies et suivants du CGI), indépendamment de son classement comptable en exploitation.",
+     "src": "CGI, art. 39 duodecies",
+     "url": null,
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,385 @@
+{
+ "id": "ue4-01",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "L'UE 4, droit fiscal, permet au titulaire du DCG d'identifier les règles applicables à une situation donnée",
+   "Partie 1 – Accompagner le contribuable dans son environnement fiscal (25 heures) : comprendre le contexte fiscal français (20 heures)",
+   "1.2 Aider le contribuable à organiser son environnement fiscal (5 heures) ; l'agenda se limite aux échéances de TVA, d'impôt sur les sociétés (IS) ainsi qu'une taxe supplémentaire au maximum",
+   "Partie 3 – Conduire les obligations fiscales de la personne physique et de sa famille : impôt sur le revenu, personnes rattachées de droit et sur option, quotient familial",
+   "Limites du programme : l'étude du rescrit est exclue ; les services visés sont les services des impôts des entreprises et des particuliers",
+   "Programme 2019 (session 2026), sens et portée de l'étude : « Le pouvoir de prélever l'impôt est inscrit dans la Constitution »"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "Constitution du 4 octobre 1958, art. 34",
+   "objet": "Compétence du législateur : assiette, taux et modalités de recouvrement des impositions de toutes natures",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Déclaration des droits de l'homme et du citoyen de 1789, art. 13 et 14",
+   "objet": "Égalité devant les charges publiques, consentement à l'impôt et nécessité de la contribution publique",
+   "url": "https://www.legifrance.gouv.fr/contenu/menu/droit-national-en-vigueur/constitution/declaration-des-droits-de-l-homme-et-du-citoyen-de-1789",
+   "version": "texte du 26 août 1789, bloc de constitutionnalité"
+  },
+  {
+   "ref": "LPF, art. L. 80 A",
+   "objet": "Opposabilité de la doctrine administrative (garantie contre les changements d'interprétation)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+   "version": "en vigueur (contrôles dont l'avis est adressé à compter du 1er janvier 2019)"
+  },
+  {
+   "ref": "CGI, art. 4 A",
+   "objet": "Obligation fiscale illimitée des personnes domiciliées en France ; revenus de source française des non-domiciliés",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302200",
+   "version": "en vigueur depuis le 1er juillet 1979"
+  },
+  {
+   "ref": "CGI, art. 4 B ; BOI-IR-CHAMP-10",
+   "objet": "Critères du domicile fiscal : foyer ou séjour principal, activité professionnelle, centre des intérêts économiques",
+   "url": "https://bofip.impots.gouv.fr/bofip/1911-PGP.html/identifiant=BOI-IR-CHAMP-10-20160728",
+   "version": "BOFiP du 28 juillet 2016"
+  },
+  {
+   "ref": "CGI, art. 6",
+   "objet": "Imposition par foyer fiscal, imposition commune des époux et partenaires, rattachement des enfants majeurs",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 156",
+   "objet": "Revenu global : imputation et report des déficits, charges déductibles (pensions alimentaires)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051765216",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 154 quinquies",
+   "objet": "Fraction déductible de la CSG (6,8 points) sur les revenus du patrimoine imposés au barème",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 194 ; BOI-IR-LIQ-10-20",
+   "objet": "Quotient familial : nombre de parts selon la situation et les charges de famille",
+   "url": "https://bofip.impots.gouv.fr/bofip/2028-PGP",
+   "version": "BOFiP en vigueur"
+  },
+  {
+   "ref": "CGI, art. 197 ; BOI-IR-LIQ-20-10",
+   "objet": "Barème progressif, plafonnement du quotient familial, décote (impôt 2026 sur les revenus 2025)",
+   "url": "https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant=BOI-IR-LIQ-20-10-20260407",
+   "version": "BOFiP du 7 avril 2026 (loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 4)"
+  },
+  {
+   "ref": "CGI, art. 200",
+   "objet": "Réduction d'impôt pour dons des particuliers (66 % et 75 %)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043662579/",
+   "version": "en vigueur (plafond 75 % relevé par la LF 2026, art. 28)"
+  },
+  {
+   "ref": "CGI, art. 199 sexdecies",
+   "objet": "Crédit d'impôt pour l'emploi d'un salarié à domicile",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000037150807",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 204 A à 204 N (art. 204 E)",
+   "objet": "Prélèvement à la source : retenue, acomptes, taux individualisé par défaut depuis le 1er septembre 2025",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033780180",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 223 sexies et 224",
+   "objet": "Contribution exceptionnelle sur les hauts revenus (CEHR) et contribution différentielle (CDHR)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000025049019/",
+   "version": "CEHR en vigueur ; CDHR créée par la LF 2025 (art. 10) et reconduite par la LF 2026 (art. 2)"
+  },
+  {
+   "ref": "CGI, art. 1758 A",
+   "objet": "Majoration de 10 % pour retard ou insuffisance de déclaration d'impôt sur le revenu",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815281",
+   "version": "en vigueur (LFR 2016, art. 20)"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Légalité de l'impôt</b> : la loi fixe les règles concernant l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures. Chaque année, la loi de finances autorise la perception des impôts.",
+     "src": "Constitution, art. 34",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Consentement à l'impôt et nécessité de la contribution publique</b> : les citoyens ont le droit, par eux-mêmes ou par leurs représentants, de constater la nécessité de la contribution publique, de la consentir librement, d'en suivre l'emploi et d'en déterminer la quotité, l'assiette, le recouvrement et la durée.",
+     "cite": "« la nécessité de la contribution publique, de la consentir librement, d'en suivre l'emploi et d'en déterminer la quotité, l'assiette, le recouvrement et la durée »",
+     "src": "DDHC 1789, art. 14",
+     "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/declaration-des-droits-de-l-homme-et-du-citoyen-de-1789",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Égalité devant les charges publiques</b> : la contribution commune doit être également répartie entre tous les citoyens en raison de leurs facultés ; le Conseil constitutionnel exige qu'un impôt appréhende une capacité contributive réelle.",
+     "cite": "« un impôt n'est conforme à la Constitution que si son dispositif appréhende une capacité contributive réelle »",
+     "src": "DDHC 1789, art. 13 ; Conseil constitutionnel, décision n° 2001-448 DC du 25 juillet 2001",
+     "url": "https://www.conseil-constitutionnel.fr/decision/2001/2001448DC.htm",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Doctrine administrative opposable</b> : lorsque le redevable de bonne foi a appliqué un texte fiscal selon l'interprétation que l'administration avait fait connaître par ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations, elle ne peut poursuivre aucun rehaussement en soutenant une interprétation différente. Une prise de position formelle lors d'un contrôle produit le même effet.",
+     "src": "LPF, art. L. 80 A",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Domicile fiscal</b> : sont domiciliées en France les personnes qui y ont leur foyer ou le lieu de leur séjour principal, celles qui y exercent une activité professionnelle (sauf activité accessoire), et celles qui y ont le centre de leurs intérêts économiques. Ces critères sont alternatifs : un seul suffit.",
+     "cite": "« il suffit que l'un des critères soit rempli »",
+     "src": "CGI, art. 4 B ; BOI-IR-CHAMP-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/1911-PGP.html/identifiant=BOI-IR-CHAMP-10-20160728",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Foyer fiscal</b> : les personnes mariées et les partenaires liés par un PACS font l'objet d'une imposition commune, établie à leurs deux noms, sur leurs revenus, ceux de leurs enfants et des personnes à charge.",
+     "src": "CGI, art. 6, 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Obligation fiscale illimitée</b> : les personnes dont le domicile fiscal est en France sont passibles de l'IR en raison de l'ensemble de leurs revenus (de source française ou étrangère), sous réserve des conventions internationales. Celles domiciliées hors de France ne sont imposables que sur leurs revenus de source française.",
+     "cite": "« Celles dont le domicile fiscal est situé hors de France sont passibles de cet impôt en raison de leurs seuls revenus de source française. »",
+     "src": "CGI, art. 4 A",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302200",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Foyer contre séjour principal</b> : le foyer s'entend du lieu où le contribuable habite normalement et a le centre de ses intérêts familiaux ; le lieu du séjour principal ne détermine le domicile fiscal que si le contribuable ne dispose pas de foyer.",
+     "src": "CE, 21 juin 2022, n° 449408",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000045952356",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Non-résidents</b> : l'impôt sur les revenus de source française ne peut être inférieur à un taux minimum, sauf si le contribuable justifie que le taux moyen résultant du barème sur l'ensemble de ses revenus mondiaux serait inférieur ; ce taux inférieur s'applique alors à ses seuls revenus de source française.",
+     "src": "CGI, art. 197 A",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037985917",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Rattachement des enfants majeurs</b> : l'option pour le rattachement est réservée aux enfants célibataires âgés de moins de 21 ans, ou de moins de 25 ans s'ils justifient de la poursuite de leurs études. Elle ne peut pas être exercée au titre de l'année où l'enfant atteint sa majorité.",
+     "src": "CGI, art. 6, 3 ; BOI-IR-CHAMP-20-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/1908-PGP.html/identifiant%3DBOI-IR-CHAMP-20-20-20200206",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Déficits catégoriels</b> : le déficit constaté dans une catégorie de revenus s'impute sur le revenu global de la même année ; l'excédent se reporte sur le revenu global des années suivantes jusqu'à la sixième année inclusivement. Les déficits des revenus de capitaux mobiliers ne s'imputent que sur les revenus de même nature des six années suivantes.",
+     "cite": "« l'excédent du déficit est reporté successivement sur le revenu global des années suivantes jusqu'à la sixième année inclusivement »",
+     "src": "CGI, art. 156, I",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051765216",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Déficits fonciers</b> : la fraction du déficit foncier qui ne provient pas des intérêts d'emprunt s'impute sur le revenu global dans la limite de <span class=\"mono\">10 700 €</span> par an ; la limite est portée à <span class=\"mono\">21 400 €</span>, sur option, à hauteur des dépenses de travaux de rénovation énergétique faisant passer un logement de la classe E, F ou G à la classe A, B, C ou D.",
+     "src": "CGI, art. 156, I-3° ; BOI-RFPI-BASE-30-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/4142-PGP.html/identifiant=BOI-RFPI-BASE-30-20-20250916",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pension alimentaire versée à un enfant majeur</b> : déductible du revenu global pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire. Aucune déduction n'est possible si l'enfant est rattaché au foyer fiscal ; la pension déduite est imposable chez l'enfant.",
+     "src": "CGI, art. 156, II-2°",
+     "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-deduire-laide-que-japporte-mes-enfants-majeurs",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>CSG déductible</b> : la CSG afférente aux revenus du patrimoine soumis au barème progressif est déductible du revenu global à hauteur de <span class=\"mono\">6,8 points</span>. La CSG sur les revenus imposés à un taux proportionnel (PFU) n'est pas déductible.",
+     "src": "CGI, art. 154 quinquies, I",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Quotient familial</b> : un contribuable célibataire, divorcé ou veuf sans enfant à charge dispose d'une part ; un couple marié ou pacsé de deux parts. Les célibataires ou divorcés qui vivent seuls et supportent effectivement la charge d'au moins un enfant voient leur nombre de parts augmenté de 0,5.",
+     "src": "CGI, art. 194, I et II ; BOI-IR-LIQ-10-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/2028-PGP",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Mécanique de calcul</b> : le barème s'applique au revenu net imposable divisé par le nombre de parts ; l'impôt obtenu est multiplié par le nombre de parts. L'avantage en impôt procuré par les majorations de quotient familial est plafonné (<span class=\"mono\">1 807 €</span> par demi-part pour l'impôt 2026 sur les revenus 2025).",
+     "src": "CGI, art. 197, I-1 et I-2 ; BOI-IR-LIQ-20-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant=BOI-IR-LIQ-20-10-20260407",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Décote</b> : accordée aux contribuables dont l'impôt brut est inférieur à un seuil ; elle est égale à une somme forfaitaire diminuée de <span class=\"mono\">45,25 %</span> de l'impôt brut. Exemple officiel (couple, impôt brut 2 250 €) : décote = 1 483 − 2 250 × 45,25 % = 465 €, impôt après décote 1 785 €.",
+     "cite": "« La décote est égale à 1 483 – (2 250 × 45,25 %) = 1 483 – 1 018 = 465 €. Votre impôt après décote s'élève à 2 250 € – 465 € = 1 785 €. »",
+     "src": "CGI, art. 197, I-4-a ; economie.gouv.fr",
+     "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/pouvez-vous-beneficier-de-la-decote-de-limpot-sur-le-revenu",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Réduction d'impôt pour dons</b> : 66 % des versements aux organismes d'intérêt général, dans la limite de 20 % du revenu imposable ; l'excédent est reporté sur les cinq années suivantes. Les dons aux organismes d'aide aux personnes en difficulté ouvrent droit à 75 % dans un plafond spécifique, la fraction au-delà relevant du taux de 66 %.",
+     "src": "CGI, art. 200, 1 et 1 ter",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043662579/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Crédit d'impôt emploi à domicile</b> : 50 % des dépenses effectivement supportées, retenues dans une limite annuelle de <span class=\"mono\">12 000 €</span>, majorée de 1 500 € par enfant à charge et par membre du foyer de plus de 65 ans sans pouvoir excéder 15 000 € ; plafond de 15 000 € (18 000 € après majorations) la première année d'emploi direct d'un salarié.",
+     "src": "CGI, art. 199 sexdecies",
+     "url": "https://www.impots.gouv.fr/particulier/questions/comment-beneficier-du-credit-dimpot-pour-lemploi-dun-salarie-domicile",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Réduction ou crédit ?</b> Une réduction d'impôt ne peut pas rendre l'impôt négatif (l'excédent est perdu) ; un crédit d'impôt est restitué s'il excède l'impôt dû. Le plafonnement global limite l'avantage en impôt procuré par certains avantages fiscaux à <span class=\"mono\">10 000 €</span> par an (18 000 € pour les investissements outre-mer et les SOFICA).",
+     "cite": "« L'avantage en impôt procuré à un foyer fiscal, quelle que soit sa composition, au titre d'une même année par certains avantages fiscaux est limité, à compter de l'imposition des revenus de 2013, à 10 000 €, majoré pour certains d'entre eux, à 18 000 €. »",
+     "src": "CGI, art. 200-0 A ; BOI-IR-LIQ-20-20-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/7249-PGP.html/identifiant=BOI-IR-LIQ-20-20-10-20170406",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prélèvement à la source</b> : pour les conjoints ou partenaires soumis à imposition commune, le taux est, sauf option contraire, individualisé. Le taux individualisé ne s'applique qu'aux revenus dont chacun dispose personnellement ; les revenus communs restent soumis au taux du foyer. L'impôt total du foyer est inchangé.",
+     "cite": "« Le taux du prélèvement pour les conjoints ou partenaires liés par un pacte civil de solidarité soumis à imposition commune est, sauf option contraire du contribuable, individualisé dans les conditions prévues à l'article 204 M. »",
+     "src": "CGI, art. 204 E et 204 M",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033780180",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Taux neutre (grille par défaut)</b> : le salarié peut ne pas communiquer son taux personnalisé à l'employeur ; celui-ci applique alors un taux déterminé uniquement en fonction du montant de la rémunération versée. Cette option ne concerne que la personne qui l'a prise ; l'individualisation du taux ne fait obstacle ni à cette option ni à la modulation.",
+     "src": "CGI, art. 204 H ; BOI-IR-PAS-20-20-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sanction des omissions</b> : les inexactitudes ou omissions dans la déclaration de revenus qui minorent l'impôt dû donnent lieu à une majoration de 10 % des droits mis à la charge du contribuable ; elle est portée à 20 % en cas de dépôt tardif dans les trente jours d'une mise en demeure. Elle n'est pas appliquée si le contribuable a régularisé spontanément ou dans les trente jours d'une demande de l'administration.",
+     "src": "CGI, art. 1758 A, I et II",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815281",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "<b>Barème de l'impôt 2026 (revenus 2025)</b>, par part : 0 % jusqu'à <span class=\"mono\">11 600 €</span> ; 11 % de 11 601 à <span class=\"mono\">29 579 €</span> ; 30 % de 29 580 à <span class=\"mono\">84 577 €</span> ; 41 % de 84 578 à <span class=\"mono\">181 917 €</span> ; 45 % au-delà. Les limites des tranches sont indexées de 0,9 % par la loi de finances pour 2026.",
+     "src": "CGI, art. 197, I-1 (loi n° 2026-103 du 19 février 2026, art. 4) ; BOI-IR-LIQ-20-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/2491-PGP.html/identifiant=BOI-IR-LIQ-20-10-20260407",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Plafonnement du quotient familial (impôt 2026)</b> : la réduction d'impôt résultant des majorations de parts ne peut excéder <span class=\"mono\">1 807 €</span> par demi-part (la moitié par quart de part).",
+     "src": "CGI, art. 197, I-2 ; economie.gouv.fr, loi de finances 2026",
+     "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/loi-de-finances-2026-ce-qui-change-pour-les-particuliers",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Décote 2026 (revenus 2025)</b> : somme forfaitaire de <span class=\"mono\">897 €</span> (imposition individuelle) ou <span class=\"mono\">1 483 €</span> (imposition commune), diminuée de 45,25 % de l'impôt brut ; elle s'applique si l'impôt brut est inférieur à <span class=\"mono\">1 982 €</span> (personne seule) ou <span class=\"mono\">3 277 €</span> (couple).",
+     "cite": "« cette décote est accordée aux contribuables dont la cotisation d'impôt brut est inférieure à 1 982 € pour les contribuables célibataires, divorcés ou veufs et à 3 277 € »",
+     "src": "CGI, art. 197, I-4-a ; BOI-IR-LIQ-20-20-30",
+     "url": "https://bofip.impots.gouv.fr/bofip/2495-PGP.html/identifiant=BOI-IR-LIQ-20-20-30-20260407",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Taux minimum des non-résidents (revenus 2025)</b> : 20 % jusqu'à <span class=\"mono\">29 579 €</span> de revenu net imposable et 30 % au-delà (14,4 % et 20 % pour les revenus de source ultramarine).",
+     "cite": "« pour les revenus de source française, hors Département d'Outre-mer (DOM), le taux minimum d'imposition est fixé à 20 % pour un revenu net imposable jusqu'à 29 579 € et à 30 % au-delà »",
+     "src": "CGI, art. 197 A ; impots.gouv.fr (international)",
+     "url": "https://www.impots.gouv.fr/international-particulier/questions/comment-comprendre-mon-avis-dimposition",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Pension alimentaire à un enfant majeur (revenus 2025)</b> : déduction limitée à <span class=\"mono\">6 855 €</span> par enfant ; si l'enfant vit sous le toit du contribuable toute l'année, déduction forfaitaire de <span class=\"mono\">4 075 €</span> au titre du logement et de la nourriture, sans justificatif (réduite au prorata des mois en cas d'hébergement partiel).",
+     "src": "CGI, art. 156, II-2° ; impots.gouv.fr (revenus 2025)",
+     "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-deduire-laide-que-japporte-mes-enfants-majeurs",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Dons à 75 % (revenus 2025)</b> : plafond de versements de <span class=\"mono\">1 000 €</span> pour les dons effectués jusqu'au 13 octobre 2025 inclus, porté à <span class=\"mono\">2 000 €</span> pour les dons effectués à compter du 14 octobre 2025 (LF 2026, art. 28).",
+     "src": "CGI, art. 200, 1 ter ; BOFiP, ACTU-2026-00019",
+     "url": "https://bofip.impots.gouv.fr/bofip/14951-PGP.html/ACTU-2026-00019",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>CEHR</b> : 3 % de la fraction du revenu fiscal de référence comprise entre <span class=\"mono\">250 000</span> et <span class=\"mono\">500 000 €</span> (personne seule) ou entre 500 000 et 1 000 000 € (imposition commune) ; 4 % au-delà. Un mécanisme de quotient atténue l'imposition des revenus exceptionnels.",
+     "src": "CGI, art. 223 sexies ; BOI-IR-CHR",
+     "url": "https://bofip.impots.gouv.fr/bofip/7804-PGP.html/identifiant=BOI-IR-CHR-20170711",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>CDHR</b> : contribuables dont le revenu de référence excède 250 000 € (personne seule) ou 500 000 € (imposition commune) et dont le taux moyen d'imposition (IR, CEHR et prélèvements libératoires) est inférieur à <span class=\"mono\">20 %</span> : la contribution comble l'écart jusqu'à ce plancher. Applicable à compter des revenus 2025.",
+     "src": "CGI, art. 224 ; BOI-IR-CDHR-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/15095-PGP.html/identifiant=BOI-IR-CDHR-10-20260630",
+     "fiab": "millésimé 2026"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>1er septembre 2025 – taux individualisé par défaut</b> : au sein des couples mariés ou pacsés, chacun est prélevé à son taux individualisé sauf option pour le maintien du taux du foyer (« chacun son taux »).",
+     "src": "CGI, art. 204 E (LF 2024) ; BOI-IR-PAS-20-20-20 du 7 mai 2025",
+     "url": "https://presse.economie.gouv.fr/prelevement-a-la-source-depuis-le-1er-septembre-2025-au-sein-des-couples-cest-chacun-son-taux/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025, art. 10)</b> : création de la contribution différentielle sur les hauts revenus (CDHR), reconduite par la loi de finances pour 2026 (loi n° 2026-103 du 19 février 2026, art. 2) jusqu'à l'imposition des revenus de l'année où le déficit public repasse sous 3 % du PIB.",
+     "src": "CGI, art. 224 ; BOFiP, ACTU-2026-00104",
+     "url": "https://bofip.impots.gouv.fr/bofip/15109-PGP.html/ACTU-2026-00104",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Loi de finances pour 2026 (art. 4)</b> : indexation de 0,9 % des limites des tranches du barème et des seuils associés (plafond du quotient familial 1 807 €, décote 897 € / 1 483 €) pour l'impôt dû au titre de 2025.",
+     "src": "CGI, art. 197 (loi n° 2026-103 du 19 février 2026, art. 4)",
+     "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/loi-de-finances-2026-ce-qui-change-pour-les-particuliers",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Loi de finances pour 2026 (art. 28)</b> : relèvement de 1 000 € à 2 000 € du plafond des dons ouvrant droit à la réduction d'impôt de 75 %, pour les versements effectués à compter du 14 octobre 2025.",
+     "src": "CGI, art. 200, 1 ter ; BOFiP, ACTU-2026-00019",
+     "url": "https://bofip.impots.gouv.fr/bofip/14951-PGP.html/ACTU-2026-00019",
+     "fiab": "millésimé 2026"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "<b>La doctrine ne crée pas de droit</b> : l'article L. 80 A ne confère à l'administration aucun pouvoir réglementaire et ne lui permet pas de déroger à la loi ; seule la dernière interprétation formellement admise peut être invoquée. La garantie peut être écartée par la procédure de l'abus de droit (LPF, art. L. 64) si l'administration démontre la finalité abusive du montage.",
+     "src": "CE, Section, 8 mars 2013, n° 353782 ; CE, Assemblée, 28 octobre 2020, n° 428048",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conventions fiscales</b> : les critères de l'article 4 B s'appliquent sous réserve des conventions internationales ; un résident d'un autre État au sens d'une convention ne peut pas être regardé comme domicilié en France pour le droit interne, même si l'article 4 B le désigne comme tel.",
+     "src": "BOI-INT-DG-20-10-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/2427-PGP.html/identifiant=BOI-INT-DG-20-10-10-20120912",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Piège du rattachement</b> : l'enfant majeur rattaché n'ouvre pas droit à une majoration du quotient familial lorsqu'il est marié ou chargé de famille (abattement sur le revenu) et ses revenus de l'année entière sont inclus dans ceux du foyer ; aucune pension alimentaire ne peut alors être déduite pour lui.",
+     "src": "CGI, art. 6, 3 et 196 B ; BOI-IR-CHAMP-20-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/1908-PGP.html/identifiant%3DBOI-IR-CHAMP-20-20-20200206",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>PFU et abattement de 40 %</b> : l'option pour le barème est globale ; sous PFU, les dividendes sont imposés sans abattement de 40 % et la CSG n'est pas déductible. Comparer le taux marginal au 12,8 % avant d'opter.",
+     "src": "CGI, art. 200 A et 158, 3-2° ; BOI-RPPM-RCM-20-10-30-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Chiffres millésimés</b> : barème, plafonnement du quotient, décote, minimum et maximum de la déduction de 10 %, plafonds de pensions alimentaires sont revalorisés chaque année par la loi de finances : toujours dater le chiffre utilisé (impôt 2026 = revenus 2025).",
+     "src": "CGI, art. 197 (loi n° 2026-103 du 19 février 2026, art. 4) ; brochure pratique IR 2026",
+     "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_integral/Brochure-IR-2026.pdf",
+     "fiab": "millésimé 2026"
+    }
+   ]
+  }
+ ]
+}

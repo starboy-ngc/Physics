@@ -1,0 +1,304 @@
+{
+ "id": "ue9-07",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Travaux d'inventaire : les opérations d'inventaire (régularisation des charges et des produits, rattachement à l'exercice)",
+   "Travaux d'inventaire : détermination du résultat et documents de synthèse",
+   "Analyse comptable des opérations courantes : l'impôt sur les bénéfices et l'affectation du résultat",
+   "Méthode comptable : les contrôles comptables (balance après inventaire)"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. com., art. L. 123-12",
+   "objet": "Inventaire au moins tous les douze mois ; comptes annuels à la clôture",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+   "version": "en vigueur depuis le 21 septembre 2000"
+  },
+  {
+   "ref": "C. com., art. L. 123-13, al. 2",
+   "objet": "Produits et charges de l'exercice rattachés sans tenir compte de leur date d'encaissement ou de paiement",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 123-20 et L. 123-21",
+   "objet": "Prudence ; passifs nés avant la clôture ; bénéfices réalisés",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015)"
+  },
+  {
+   "ref": "PCG, art. 321-1 à 321-5",
+   "objet": "Passif, dette, charge à payer, provision",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 513-1 et 513-2",
+   "objet": "Résultat de l'exercice ; niveaux de résultat",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+   "objet": "Comptes 1061, 110, 119, 120, 129, 1648, 408, 4181, 4386, 4486, 444, 457, 486, 487, 5181, 5188, 695",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "version": "version au 1er janvier 2025"
+  },
+  {
+   "ref": "C. com., art. L. 232-10 à L. 232-13",
+   "objet": "Réserve légale, bénéfice distribuable, dividendes et acomptes, délai de mise en paiement",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 205, 219 et 1668",
+   "objet": "Impôt sur les sociétés : champ, taux (normal et réduit), acomptes et solde",
+   "url": null,
+   "version": "en vigueur ; taux applicables aux exercices ouverts en 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Modèles de bilan et de compte de résultat ; résultat exceptionnel",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "exercices ouverts à compter du 1er janvier 2025"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Rattachement à l'exercice</b> (indépendance des exercices) : le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement.",
+     "src": "C. com., art. L. 123-13, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+     "fiab": "stable",
+     "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
+    },
+    {
+     "t": "<b>Charge à payer</b> : passif certain dont le montant ou l'échéance est estimé avec une incertitude moindre que pour une provision (factures non parvenues <code>408</code>, charges sociales et fiscales à payer <code>4386</code> / <code>4486</code>).",
+     "src": "PCG, art. 321-1 à 321-5 ; plan de comptes PCG 2025, comptes 408, 4386 et 4486",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Produit à recevoir</b> : créance acquise à la clôture non encore facturée (factures à établir <code>4181</code>, produits à recevoir <code>4387</code>, <code>4487</code>, <code>4687</code>).",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes PCG 2025, comptes 4181, 4387, 4487 et 4687",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Charge constatée d'avance</b> (<code>486</code>) : charge enregistrée dans l'exercice mais concernant l'exercice suivant ; <b>produit constaté d'avance</b> (<code>487</code>) : produit enregistré mais qui concerne l'exercice suivant.",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes PCG 2025, comptes 486 et 487",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Résultat de l'exercice</b> : différence entre les produits et les charges, égale à la variation des capitaux propres entre le début et la fin de l'exercice.",
+     "src": "PCG, art. 513-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Le résultat de l'exercice est égal tant à la différence entre les produits et les charges qu'à la variation des capitaux propres entre le début et la fin de l'exercice »"
+    },
+    {
+     "t": "<b>Réserve légale</b> : fonds de réserve constitué par prélèvement obligatoire sur le bénéfice dans les SARL et sociétés par actions (compte <code>1061</code>).",
+     "src": "C. com., art. L. 232-10 ; plan de comptes PCG 2025, compte 1061",
+     "url": null,
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "L'inventaire, au moins une fois tous les douze mois, contrôle l'existence et la valeur des éléments actifs et passifs ; les comptes annuels sont établis à la clôture au vu des enregistrements et de l'inventaire.",
+     "src": "C. com., art. L. 123-12",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Elle doit contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs du patrimoine de l'entreprise. »"
+    },
+    {
+     "t": "Un passif né au cours de l'exercice doit être pris en compte même s'il n'est connu qu'entre la clôture et l'établissement des comptes (prudence).",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Les comptes annuels doivent respecter le principe de prudence. »"
+    },
+    {
+     "t": "<b>Charges à payer</b> : débit du compte de charge (classe 6) et de <code>44586</code> « TVA sur factures non parvenues » le cas échéant, crédit de <code>408</code>, <code>4386</code>, <code>4486</code> ou <code>4686</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 408, 4386, 4486, 4686 et 44586",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Produits à recevoir</b> : débit de <code>4181</code> (TTC) ou <code>4387</code>, <code>4487</code>, <code>4687</code>, crédit du compte de produit (classe 7, HT) et de <code>44587</code> « TVA sur factures à établir ».",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 4181, 4387, 4487, 4687 et 44587",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Intérêts courus</b> non échus : sur emprunt bancaire, débit <code>661</code> / crédit <code>1648</code> ; intérêts courus à payer sur découvert <code>5181</code> ; intérêts courus à recevoir <code>5188</code> ou <code>2768</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 1648, 2768, 5181 et 5188",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Charges constatées d'avance</b> : la fraction d'une charge (loyer, assurance, abonnement) qui concerne l'exercice suivant est retirée des charges : débit <code>486</code>, crédit du compte de charge, hors taxes.",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes PCG 2025, compte 486",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Produits constatés d'avance</b> : la fraction d'un produit facturé qui concerne l'exercice suivant est retirée des produits : débit du compte de produit, crédit <code>487</code>, hors taxes.",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes PCG 2025, compte 487",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Seuls les bénéfices réalisés à la clôture sont inscrits ; un produit à recevoir suppose une créance <b>acquise</b> (livraison faite, prestation exécutée).",
+     "src": "C. com., art. L. 123-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+     "fiab": "stable",
+     "cite": "« Seuls les bénéfices réalisés à la date de clôture d'un exercice peuvent être inscrits dans les comptes annuels. »"
+    },
+    {
+     "t": "Les produits et charges sont classés au compte de résultat de manière à faire apparaître les différents niveaux de résultat : exploitation, financier, courant avant impôt, exceptionnel, puis participation et impôt sur les bénéfices, et résultat net.",
+     "src": "PCG, art. 513-2 ; C. com., art. R. 123-192 et R. 123-193",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197051/",
+     "fiab": "stable",
+     "cite": "« Les produits et les charges de l'exercice sont classés au compte de résultat de manière à faire apparaître les différents niveaux de résultat. »"
+    },
+    {
+     "t": "<b>Détermination du résultat</b> : après inventaire, les comptes de charges (classe 6) et de produits (classe 7) sont soldés et leur différence inscrite au compte <code>120</code> (bénéfice) ou <code>129</code> (perte), qui figure dans les capitaux propres du bilan.",
+     "src": "PCG, art. 513-1 ; plan de comptes PCG 2025, comptes 120 et 129 ; C. com., art. R. 123-190",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Impôt sur les sociétés</b> : les sociétés de capitaux (SA, SAS, SARL) y sont soumises de plein droit ; la charge d'impôt est enregistrée au débit de <code>695</code> par le crédit de <code>444</code> « État – Impôts sur les bénéfices », après déduction des acomptes déjà versés.",
+     "src": "CGI, art. 205 et 206 ; plan de comptes PCG 2025, comptes 444 et 695",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'IS est payé par <b>quatre acomptes</b> (15 mars, 15 juin, 15 septembre, 15 décembre) calculés sur le résultat du dernier exercice clos, puis par le <b>solde</b> après la clôture.",
+     "src": "CGI, art. 1668",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Réserve légale</b> : dans les SARL et sociétés par actions, prélèvement d'au moins un vingtième du bénéfice de l'exercice, diminué des pertes antérieures, jusqu'à ce que la réserve atteigne le dixième du capital social, à peine de nullité de toute délibération contraire.",
+     "src": "C. com., art. L. 232-10",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Bénéfice distribuable</b> = bénéfice de l'exercice − pertes antérieures − dotations aux réserves légale et statutaires + report à nouveau bénéficiaire ; l'assemblée décide ensuite de la répartition (dividendes, réserves, report à nouveau).",
+     "src": "C. com., art. L. 232-11",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Écriture d'affectation</b> : débit <code>120</code> ; crédit <code>1061</code> (réserve légale), <code>1063</code> / <code>1068</code> (autres réserves), <code>457</code> « Associés – Dividendes à payer », <code>110</code> « Report à nouveau (solde créditeur) » ; une perte est portée en <code>119</code> ou imputée sur les réserves.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 106, 110, 119, 120 et 457",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Aucune distribution ne peut être faite aux associés lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au montant du capital augmenté des réserves non distribuables.",
+     "src": "C. com., art. L. 232-11, al. 3",
+     "url": null,
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Réserve légale : prélèvement d'au moins <span class=\"mono\">5 %</span> (un vingtième) du bénéfice, plafonné à <span class=\"mono\">10 %</span> du capital social.",
+     "src": "C. com., art. L. 232-10",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Mise en paiement des dividendes dans un délai maximal de <span class=\"mono\">neuf mois</span> après la clôture de l'exercice, sauf prolongation par décision de justice.",
+     "src": "C. com., art. L. 232-13",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Taux de l'IS en 2025 : <span class=\"mono\">25 %</span> ; taux réduit de <span class=\"mono\">15 %</span> jusqu'à <span class=\"mono\">42 500 €</span> de bénéfice pour les sociétés dont le chiffre d'affaires est inférieur à 10 millions d'euros et dont le capital, entièrement libéré, est détenu à 75 % au moins par des personnes physiques.",
+     "src": "CGI, art. 219, I et I-b",
+     "url": null,
+     "fiab": "millésimé 2025"
+    },
+    {
+     "t": "Inventaire au moins tous les <span class=\"mono\">douze mois</span> ; exercice en principe de douze mois.",
+     "src": "C. com., art. L. 123-12, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Elle doit contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs du patrimoine de l'entreprise. »"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "Pour les exercices ouverts à compter du 1er janvier 2025, les <b>modèles</b> de bilan et de compte de résultat sont ceux du règlement ANC n° 2022-06 ; le résultat exceptionnel est limité aux événements majeurs et inhabituels, aux écritures d'origine purement fiscale et aux corrections d'erreurs.",
+     "src": "Règlement ANC n° 2022-06 (homologué par arrêté du 26 décembre 2023)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« Un événement est présumé inhabituel lorsqu'un même évènement ne s'est pas produit au cours des derniers exercices comptables et qu'il est peu probable qu'il se reproduise »"
+    },
+    {
+     "t": "Les intérêts courus sur emprunts bancaires se rattachent au compte <code>1648</code> (avant 2025 : 1688).",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 1648",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les seuils de taille qui ouvrent la présentation simplifiée des comptes annuels ont été relevés par le décret n° 2024-152 du 28 février 2024 (petites entreprises : bilan 7 500 000 €, chiffre d'affaires 15 000 000 €, 50 salariés).",
+     "src": "C. com., art. D. 123-200 (décret n° 2024-152)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681",
+     "fiab": "millésimé 2024"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "Les régularisations se font <b>hors taxes</b> pour les CCA/PCA ; les charges à payer et produits à recevoir vis-à-vis des fournisseurs et clients portent la TVA sur les comptes <code>44586</code> / <code>44587</code>, jamais sur 44566 / 44571.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 44586 et 44587",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Un produit n'est pas un encaissement : une facture à établir est un produit de l'exercice clos même si elle n'est encaissée que l'année suivante.",
+     "src": "C. com., art. L. 123-13, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+     "fiab": "stable",
+     "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
+    },
+    {
+     "t": "La réserve légale se calcule sur le bénéfice <b>diminué des pertes antérieures</b> ; la dotation cesse dès que la réserve atteint 10 % du capital.",
+     "src": "C. com., art. L. 232-10",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Lien DSCG : le résultat comptable est le point de départ du résultat fiscal (réintégrations et déductions extra-comptables) ; l'IS n'est pas déductible et figure en 695, après le résultat courant et exceptionnel.",
+     "src": "CGI, art. 38 et 213 ; PCG, art. 513-2",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}

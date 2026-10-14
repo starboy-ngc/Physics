@@ -1,0 +1,364 @@
+{
+ "id": "ue9-09",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Introduction : histoire, définition et rôle de la comptabilité",
+   "Introduction : la normalisation et la réglementation comptable (Code de commerce, ANC, PCG)",
+   "Méthode comptable : le mécanisme de la partie double et les contrôles comptables (journaux auxiliaires, centralisation, rapprochement bancaire)",
+   "Travaux d'inventaire : les documents de synthèse (bilan, compte de résultat, annexe)",
+   "Comptabilité et environnement numérique (dématérialisation, facture électronique, fichier des écritures comptables)"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. com., art. L. 123-12 à L. 123-23",
+   "objet": "Obligations comptables des commerçants et principes (image fidèle, permanence, non-compensation, prudence, continuité, bénéfices réalisés, conservation)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015 ; loi n° 2019-486 du 22 mai 2019)"
+  },
+  {
+   "ref": "C. com., art. R. 123-172 à R. 123-177",
+   "objet": "Document décrivant les procédures, livres obligatoires, pièces justificatives, journaux auxiliaires, inventaire",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006191083/",
+   "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903)"
+  },
+  {
+   "ref": "C. com., art. L. 123-16, L. 123-16-1 et D. 123-200",
+   "objet": "Présentation simplifiée, dispense d'annexe, seuils micro / petites / moyennes entreprises",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681",
+   "version": "décret n° 2024-152 du 28 février 2024"
+  },
+  {
+   "ref": "C. com., art. R. 123-181 à R. 123-199",
+   "objet": "Contenu du bilan, du compte de résultat et de l'annexe",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006191086/2020-02-12",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Ordonnance n° 2009-79 du 22 janvier 2009",
+   "objet": "Création et missions de l'Autorité des normes comptables ; homologation des règlements",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
+   "version": "ratifiée par la loi n° 2009-526 du 12 mai 2009"
+  },
+  {
+   "ref": "Règlement ANC n° 2014-03 relatif au plan comptable général",
+   "objet": "PCG, version consolidée au 1er janvier 2025 (règlement 2022-06 intégré)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025 ; version au 1er janvier 2026 disponible"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Modernisation des états financiers : modèles de comptes annuels, résultat exceptionnel, comptes supprimés",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2025"
+  },
+  {
+   "ref": "C. com., art. L. 232-22 et L. 232-23",
+   "objet": "Dépôt des comptes annuels au greffe (SARL, sociétés par actions)",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 53 A et 223 ; LPF, art. L. 47 A et L. 102 B",
+   "objet": "Déclaration de résultats (liasse fiscale), fichier des écritures comptables, conservation fiscale",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069583/LEGISCTA000006147333/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 289 bis et loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91",
+   "objet": "Facturation électronique : calendrier 2026-2027",
+   "url": null,
+   "version": "en vigueur ; application à compter du 1er septembre 2026"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Comptabilité</b> : système d'organisation de l'information financière permettant de saisir, classer, enregistrer des données de base chiffrées et de présenter des états reflétant une image fidèle du patrimoine, de la situation financière et du résultat à la date de clôture.",
+     "src": "PCG, art. 121-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« La comptabilité est un système d'organisation de l'information financière permettant de saisir, classer, enregistrer des données de base chiffrées et présenter des états reflétant une image fidèle du patrimoine, de la situation financière et du résultat de l'entité à la date de clôture. »"
+    },
+    {
+     "t": "<b>Comptes annuels</b> : bilan, compte de résultat et annexe, qui forment un tout indissociable, établis à la clôture de l'exercice.",
+     "src": "C. com., art. L. 123-12, al. 3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Ces comptes annuels comprennent le bilan, le compte de résultat et une annexe, qui forment un tout indissociable. »"
+    },
+    {
+     "t": "<b>Autorité des normes comptables</b> (ANC) : autorité créée par l'ordonnance n° 2009-79 du 22 janvier 2009, qui édicte sous forme de règlements les prescriptions comptables générales et sectorielles, donne un avis sur les projets de textes comportant des dispositions comptables et participe aux travaux internationaux.",
+     "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Plan comptable général</b> : règlement ANC n° 2014-03, régulièrement modifié (notamment par le règlement n° 2022-06), publié en version consolidée par l'ANC chaque 1er janvier.",
+     "src": "Règlement ANC n° 2014-03 (PCG), version consolidée au 1er janvier 2025",
+     "url": "https://www.anc.gouv.fr/plan-comptable-general",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Livre-journal</b> et <b>grand livre</b> : livres obligatoires de tout commerçant ; des documents électroniques identifiés et datés dès leur établissement peuvent en tenir lieu.",
+     "src": "C. com., art. R. 123-173",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+     "fiab": "stable",
+     "cite": "« tout commerçant tient obligatoirement un livre-journal et un grand-livre »"
+    },
+    {
+     "t": "<b>Pièce justificative</b> : document (facture, relevé, bulletin) dont la référence est portée sur tout enregistrement comptable, avec l'origine, le contenu et l'imputation de la donnée.",
+     "src": "C. com., art. R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+     "fiab": "stable",
+     "cite": "« Tout enregistrement comptable précise l'origine, le contenu et l'imputation de chaque donnée ainsi que les références de la pièce justificative qui l'appuie. »"
+    },
+    {
+     "t": "<b>Inventaire</b> : contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture.",
+     "src": "C. com., art. R. 123-177",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "fiab": "stable",
+     "cite": "« L'inventaire est le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture. »"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "Tout commerçant enregistre <b>chronologiquement</b> les mouvements affectant le patrimoine de son entreprise et contrôle par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs.",
+     "src": "C. com., art. L. 123-12",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Toute personne physique ou morale ayant la qualité de commerçant doit procéder à l'enregistrement comptable des mouvements affectant le patrimoine de son entreprise. Ces mouvements sont enregistrés chronologiquement. »"
+    },
+    {
+     "t": "Le livre-journal enregistre les mouvements <b>opération par opération et jour par jour</b> ; il peut être détaillé en journaux auxiliaires (achats, ventes, banque, caisse, opérations diverses) dont les écritures sont <b>centralisées</b> au moins une fois par mois.",
+     "src": "C. com., art. R. 123-174 et R. 123-176",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les écritures du livre-journal sont portées sur le <b>grand livre</b> et ventilées selon le plan de comptes.",
+     "src": "C. com., art. R. 123-175",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257948",
+     "fiab": "stable"
+    },
+    {
+     "t": "Un <b>document décrivant les procédures et l'organisation comptables</b> est établi dès lors qu'il est nécessaire à la compréhension du système de traitement et à la réalisation des contrôles.",
+     "src": "C. com., art. R. 123-172",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006191083/",
+     "fiab": "stable"
+    },
+    {
+     "t": "La comptabilité est tenue en <b>euros</b> et en <b>langue française</b> ; documents comptables et pièces justificatives sont conservés dix ans.",
+     "src": "C. com., art. L. 123-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+     "fiab": "stable",
+     "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »"
+    },
+    {
+     "t": "La comptabilité régulièrement tenue peut être admise en justice pour faire <b>preuve</b> entre commerçants ; irrégulièrement tenue, elle ne peut être invoquée par son auteur à son profit.",
+     "src": "C. com., art. L. 123-23",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Régularité, sincérité, image fidèle</b> : les comptes annuels doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat ; toute dérogation est mentionnée et motivée dans l'annexe.",
+     "src": "C. com., art. L. 123-14 ; PCG, art. 121-3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+     "fiab": "stable",
+     "cite": "« Les comptes annuels doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise. »"
+    },
+    {
+     "t": "<b>Permanence des méthodes</b> : sauf changement exceptionnel de situation, présentation et méthodes d'évaluation ne changent pas d'un exercice à l'autre ; les modifications sont décrites et justifiées dans l'annexe.",
+     "src": "C. com., art. L. 123-17 ; PCG, art. 121-5",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024039862/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Si des modifications interviennent, elles sont décrites et justifiées dans l'annexe et signalées, le cas échéant, dans le rapport des commissaires aux comptes. »"
+    },
+    {
+     "t": "<b>Non-compensation</b> : évaluation séparée des éléments d'actif et de passif, aucune compensation entre postes d'actif et de passif ni entre charges et produits (hors cas exceptionnels prévus par règlement ANC).",
+     "src": "C. com., art. L. 123-19",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219311/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat. »"
+    },
+    {
+     "t": "<b>Prudence</b> et <b>continuité d'exploitation</b> : les comptes respectent le principe de prudence et sont établis en présumant la poursuite de l'activité.",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Pour leur établissement, le commerçant, personne physique ou morale, est présumé poursuivre ses activités. »"
+    },
+    {
+     "t": "<b>Indépendance des exercices</b> : produits et charges sont rattachés à l'exercice sans qu'il soit tenu compte de leur date d'encaissement ou de paiement ; seuls les bénéfices réalisés à la clôture sont inscrits.",
+     "src": "C. com., art. L. 123-13, al. 2 et L. 123-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219305/2000-09-21",
+     "fiab": "stable",
+     "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
+    },
+    {
+     "t": "Les règlements de l'ANC sont <b>homologués</b> par arrêté conjoint des ministres chargés de l'économie, de la justice et du budget, puis publiés au Journal officiel : un règlement non homologué n'est pas applicable.",
+     "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 4",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Rapprochement bancaire</b> : les données d'inventaire doivent justifier le contenu de chaque poste du bilan, dont le poste Banque ; le rapprochement confronte le compte 512 et le relevé, puis seules les opérations figurant sur le relevé et absentes de la comptabilité sont enregistrées.",
+     "src": "C. com., art. R. 123-177 et R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "fiab": "stable",
+     "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
+    },
+    {
+     "t": "Le <b>bilan</b> décrit séparément actif et passif et fait apparaître distinctement les capitaux propres ; le passif présente capitaux propres, autres fonds propres, provisions, dettes, comptes de régularisation et écarts de conversion.",
+     "src": "C. com., art. L. 123-13 et R. 123-190",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927465",
+     "fiab": "stable",
+     "cite": "« Le bilan décrit séparément les éléments actifs et passifs de l'entreprise, et fait apparaître, de façon distincte, les capitaux propres. »"
+    },
+    {
+     "t": "Le <b>compte de résultat</b> fait apparaître par différence le résultat courant et le résultat exceptionnel, selon un modèle fixé par règlement de l'ANC (en tableau ou en liste).",
+     "src": "C. com., art. R. 123-192 à R. 123-194",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197051/",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'<b>annexe</b> complète et commente le bilan et le compte de résultat ; les petites entreprises peuvent adopter une présentation simplifiée et les micro-entreprises sont dispensées d'annexe (sauf gestion de titres).",
+     "src": "C. com., art. L. 123-13, L. 123-16 et L. 123-16-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
+     "fiab": "stable",
+     "cite": "« Par dérogation aux dispositions du troisième alinéa de l'article L. 123-12, les micro-entreprises, à l'exception de celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières, ne sont pas tenues d'établir d'annexe. »"
+    },
+    {
+     "t": "<b>Dépôt au greffe</b> : les SARL et sociétés par actions déposent au greffe du tribunal de commerce, dans le mois suivant l'approbation (deux mois par voie électronique), les comptes annuels, le rapport des commissaires aux comptes le cas échéant et la proposition d'affectation du résultat.",
+     "src": "C. com., art. L. 232-22 et L. 232-23",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Liasse fiscale</b> : la déclaration annuelle de résultats est accompagnée des tableaux comptables normalisés (bilan, compte de résultat, immobilisations, amortissements, provisions) et souscrite par voie électronique.",
+     "src": "CGI, art. 53 A et 223 ; CGI, art. 1649 quater B quater",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Fichier des écritures comptables</b> (FEC) : en cas de vérification de comptabilité, le contribuable qui tient sa comptabilité au moyen de systèmes informatisés la présente sous forme de fichiers dématérialisés répondant à des normes fixées par arrêté.",
+     "src": "LPF, art. L. 47 A, I ; BOI-CF-IOR-60-40",
+     "url": null,
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Conservation des documents comptables et pièces justificatives : <span class=\"mono\">dix ans</span> (Code de commerce) ; délai de conservation fiscal : <span class=\"mono\">six ans</span> à compter de la dernière opération ou de l'établissement du document.",
+     "src": "C. com., art. L. 123-22 ; LPF, art. L. 102 B",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069583/LEGISCTA000006147333/",
+     "fiab": "stable",
+     "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »"
+    },
+    {
+     "t": "Micro-entreprises : total du bilan <span class=\"mono\">450 000 €</span>, chiffre d'affaires net <span class=\"mono\">900 000 €</span>, <span class=\"mono\">10</span> salariés ; petites entreprises : <span class=\"mono\">7 500 000 €</span>, <span class=\"mono\">15 000 000 €</span>, <span class=\"mono\">50</span> salariés ; moyennes : <span class=\"mono\">25 000 000 €</span>, <span class=\"mono\">50 000 000 €</span>, <span class=\"mono\">250</span> salariés (deux seuils sur trois, exercices ouverts à compter du 1er janvier 2024).",
+     "src": "C. com., art. D. 123-200 (décret n° 2024-152 du 28 février 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681",
+     "fiab": "millésimé 2024"
+    },
+    {
+     "t": "Centralisation des journaux auxiliaires : au moins <span class=\"mono\">une fois par mois</span> ; inventaire : au moins tous les <span class=\"mono\">douze mois</span>.",
+     "src": "C. com., art. R. 123-176 et L. 123-12",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+     "fiab": "stable"
+    },
+    {
+     "t": "Le dépassement de deux des trois seuils de taille ne produit d'effet que s'il se répète pendant <span class=\"mono\">deux exercices consécutifs</span>.",
+     "src": "C. com., art. L. 123-16 et L. 123-16-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038611029",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "<b>Règlement ANC n° 2022-06</b> (homologué par arrêté du 26 décembre 2023) : pour les exercices ouverts à compter du 1er janvier 2025, nouveaux modèles de comptes annuels, résultat exceptionnel limité aux événements majeurs et inhabituels, suppression des transferts de charges, plan de comptes à l'article 1121-1.",
+     "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; arrêté du 26 décembre 2023",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048727999",
+     "fiab": "stable",
+     "cite": "« Un événement est présumé inhabituel lorsqu'un même évènement ne s'est pas produit au cours des derniers exercices comptables et qu'il est peu probable qu'il se reproduise »"
+    },
+    {
+     "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement des seuils micro / petites / moyennes entreprises pour tenir compte de l'inflation.",
+     "src": "Décret n° 2024-152 du 28 février 2024",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674",
+     "fiab": "millésimé 2024"
+    },
+    {
+     "t": "<b>Facturation électronique</b> entre assujettis : obligation de réception pour toutes les entreprises au <b>1er septembre 2026</b> ; obligation d'émission au 1er septembre 2026 (grandes entreprises et ETI) et au <b>1er septembre 2027</b> (PME et microentreprises), via des plateformes agréées.",
+     "src": "Loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91 ; CGI, art. 289 bis",
+     "url": null,
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>PCG au 1er janvier 2026</b> : nouvelle version consolidée publiée par l'ANC ; les règlements ANC n° 2026-01 à 2026-04 (dont le n° 2026-03 du 6 mars 2026 renommant le compte 6454 « France Travail ») ont été homologués par arrêté du 12 août 2026.",
+     "src": "Arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "Le règlement ANC n° 2023-03 du 7 juillet 2023 a coordonné les règlements sectoriels de l'ANC avec le règlement n° 2022-06 (suppression des transferts de charges, résultat exceptionnel).",
+     "src": "Règlement ANC n° 2023-03 du 7 juillet 2023",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "Le <b>livre d'inventaire</b> n'est plus obligatoire depuis le 1er janvier 2016 ; seuls le livre-journal et le grand livre le sont, mais les données d'inventaire doivent être conservées et organisées pour justifier chaque poste du bilan.",
+     "src": "C. com., art. R. 123-173 et R. 123-177",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+     "fiab": "stable",
+     "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
+    },
+    {
+     "t": "Dans un rapprochement bancaire, les chèques émis non débités et les remises non créditées n'entraînent <b>aucune écriture</b> : ils expliquent seulement l'écart entre les deux soldes.",
+     "src": "C. com., art. R. 123-174 et R. 123-177",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+     "fiab": "stable"
+    },
+    {
+     "t": "Une dérogation à une prescription comptable n'est possible que si son application est impropre à donner une image fidèle, et elle doit être <b>motivée dans l'annexe</b>.",
+     "src": "C. com., art. L. 123-14, al. 3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les personnes physiques au régime réel simplifié bénéficient de simplifications (créances et dettes à la clôture, enregistrement à la date du relevé bancaire) qui ne s'appliquent pas aux sociétés.",
+     "src": "C. com., art. L. 123-25 et R. 123-203",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556295",
+     "fiab": "stable",
+     "cite": "« Par dérogation à l'article R. 123-174, les personnes mentionnées aux articles L. 123-25 et L. 123-28 peuvent procéder à l'enregistrement comptable des encaissements et des paiements en retenant la date de l'opération figurant sur le relevé qui leur est adressé par un établissement de crédit. »"
+    },
+    {
+     "t": "Lien DSCG : les comptes consolidés obéissent aux mêmes exigences de régularité, de sincérité et d'image fidèle, par renvoi à l'article L. 123-14.",
+     "src": "C. com., art. L. 233-21",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229310",
+     "fiab": "stable",
+     "cite": "« Il est fait application, le cas échéant, des dispositions prévues aux premier et deuxième alinéas de l'article L. 123-14. »"
+    }
+   ]
+  }
+ ]
+}

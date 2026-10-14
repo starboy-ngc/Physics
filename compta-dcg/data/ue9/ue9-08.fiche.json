@@ -1,0 +1,301 @@
+{
+ "id": "ue9-08",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Analyse comptable des opérations courantes : les opérations de financement (emprunts, subventions)",
+   "Analyse comptable des opérations courantes : les opérations de trésorerie et de placement (valeurs mobilières de placement, effets de commerce, escompte)",
+   "Analyse comptable des opérations courantes : les opérations en devises",
+   "Travaux d'inventaire : intérêts courus, dépréciation des titres, écarts de conversion"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+   "objet": "Comptes 131, 139, 164, 1648, 165, 275, 403, 413, 476, 477, 50, 5113, 5114, 590, 661, 666, 667, 74, 747, 764, 766, 767",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "version": "version au 1er janvier 2025"
+  },
+  {
+   "ref": "C. com., art. L. 123-13, L. 123-18, L. 123-19 et L. 123-21",
+   "objet": "Rattachement des intérêts à l'exercice ; évaluation des titres ; non-compensation ; bénéfices réalisés",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "PCG, art. 221-1 et suivants",
+   "objet": "Coût d'entrée et évaluation des titres (titres immobilisés, valeurs mobilières de placement)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 312-1",
+   "objet": "Subventions d'investissement : inscription en capitaux propres et reprise au compte de résultat",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 420-1 à 420-7",
+   "objet": "Opérations en monnaies étrangères : conversion, écarts de conversion, provision pour perte de change",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "CGI, art. 42 septies",
+   "objet": "Étalement fiscal des subventions d'équipement",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 511-1 et suivants, L. 512-1 et suivants",
+   "objet": "Lettre de change et billet à ordre : mentions obligatoires, endossement, paiement",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 261 C, 1°",
+   "objet": "Exonération de TVA des intérêts, agios et opérations sur titres",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Quote-part de subvention virée au résultat (747), cessions de titres (667/767), intérêts courus par nature de dette",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "exercices ouverts à compter du 1er janvier 2025"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Emprunt indivis</b> : emprunt contracté auprès d'un seul prêteur, enregistré au compte <code>164</code> « Emprunts auprès des établissements de crédit » ; chaque échéance comprend un amortissement du capital et des intérêts (<code>661</code>).",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 164 et 661",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Valeurs mobilières de placement</b> : titres acquis en vue de réaliser un gain à brève échéance, enregistrés en classe 5 (<code>503</code> actions, <code>506</code> obligations) et non en immobilisations financières.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 50 ; C. com., art. R. 123-182",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Subvention d'exploitation</b> : aide reçue pour compenser l'insuffisance de certains produits ou faire face à des charges d'exploitation, produit du compte <code>74</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 74 ; règlement ANC n° 2022-06",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les aides, les remboursements et les indemnités... reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »"
+    },
+    {
+     "t": "<b>Subvention d'investissement</b> : subvention accordée pour acquérir ou créer des immobilisations, inscrite en capitaux propres (<code>131</code>) et rapportée au résultat au rythme des amortissements (<code>139</code> / <code>747</code>).",
+     "src": "PCG, art. 312-1 ; plan de comptes PCG 2025, comptes 131, 139 et 747",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Lettre de change</b> : titre par lequel le tireur donne au tiré mandat pur et simple de payer une somme déterminée au bénéficiaire à l'échéance ; <b>billet à ordre</b> : promesse pure et simple du souscripteur de payer une somme déterminée.",
+     "src": "C. com., art. L. 511-1 et L. 512-1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Écart de conversion</b> : différence entre la valeur d'une créance ou d'une dette en devises convertie au cours de clôture et sa valeur d'entrée ; perte latente à l'actif (<code>476</code>), gain latent au passif (<code>477</code>).",
+     "src": "PCG, art. 420-1 à 420-7 ; plan de comptes PCG 2025, comptes 476 et 477",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Déblocage</b> d'un emprunt : débit <code>512</code>, crédit <code>164</code> ; à chaque <b>échéance</b> : débit <code>164</code> (capital remboursé) et <code>661</code> (intérêts), crédit <code>512</code> de l'annuité.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 164, 512 et 661",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "À la clôture, les <b>intérêts courus</b> depuis la dernière échéance sont rattachés à l'exercice : débit <code>661</code>, crédit <code>1648</code> « Intérêts courus sur emprunts auprès des établissements de crédit ».",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes PCG 2025, compte 1648",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les intérêts et agios bancaires sont <b>exonérés de TVA</b> ; les commissions bancaires (627) y sont soumises.",
+     "src": "CGI, art. 261 C, 1°",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>VMP</b> : enregistrées à leur coût d'acquisition ; les frais d'acquisition sont, sur option, comptabilisés en charges ou incorporés au coût ; les revenus (dividendes, coupons) sont des produits financiers (<code>764</code>).",
+     "src": "PCG, art. 221-1 et suivants ; plan de comptes PCG 2025, comptes 50 et 764",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cession de VMP</b> : le prix de cession est porté au crédit de <code>7673</code> et la valeur comptable des titres cédés au débit de <code>6673</code>, en produits et charges financiers ; les titres sortent du compte 50 pour leur coût d'entrée.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 667 et 767 ; règlement ANC n° 2022-06",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "À la clôture, les VMP sont évaluées à leur valeur actuelle ; la <b>moins-value latente</b> est dépréciée (débit <code>686</code>, crédit <code>590</code>), la plus-value latente n'est pas comptabilisée et ne compense pas une moins-value sur d'autres titres.",
+     "src": "C. com., art. L. 123-18, L. 123-19 et L. 123-21 ; plan de comptes PCG 2025, compte 590",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "fiab": "stable",
+     "cite": "« Seuls les bénéfices réalisés à la date de clôture d'un exercice peuvent être inscrits dans les comptes annuels. »"
+    },
+    {
+     "t": "<b>Subvention d'exploitation</b> : créance à l'octroi (débit <code>441</code> « État – Subventions à recevoir », crédit <code>74</code>), puis encaissement ; elle est un produit d'exploitation de l'exercice.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 441 et 74",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Subvention d'investissement</b> : à l'octroi, débit <code>441</code> / crédit <code>131</code> ; à chaque clôture, une quote-part égale à l'amortissement du bien financé (au prorata de la subvention) est virée au résultat : débit <code>139</code>, crédit <code>747</code> « Quote-part des subventions d'investissement virée au résultat de l'exercice ».",
+     "src": "PCG, art. 312-1 ; plan de comptes PCG 2025, comptes 131, 139 et 747",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Fiscalement, la subvention d'équipement est rapportée au résultat au rythme des amortissements du bien financé ; pour un bien non amortissable, par fractions égales sur la durée d'inaliénabilité ou, à défaut, sur dix ans.",
+     "src": "CGI, art. 42 septies",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Effets de commerce</b> : chez le client (tiré), l'acceptation vire la dette de <code>401</code> à <code>403</code> « Fournisseurs – Effets à payer » ; chez le fournisseur (tireur), la créance passe de <code>411</code> à <code>413</code> « Clients – Effets à recevoir ».",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 403 et 413",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Remise à l'encaissement</b> : débit <code>5113</code> « Effets à l'encaissement », crédit <code>413</code> ; à l'avis de crédit, débit <code>512</code> et <code>627</code> (commission) et <code>44566</code>, crédit <code>5113</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 5113 et 627",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Remise à l'escompte</b> : débit <code>5114</code> « Effets à l'escompte », crédit <code>413</code> ; la banque crédite le net : débit <code>512</code>, <code>661</code> (intérêts d'escompte, sans TVA) et <code>627</code> (commissions, avec TVA), crédit <code>5114</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 5114, 627 et 661 ; CGI, art. 261 C",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Effet impayé</b> à l'échéance : la créance est reconstituée sur le client (<code>411</code> ou <code>416</code> s'il devient douteux) pour le nominal majoré des frais d'impayé supportés.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 411, 413 et 416",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cautions et dépôts</b> versés (loyer, énergie) : immobilisation financière au compte <code>275</code> « Dépôts et cautionnements versés » ; reçus : dette au compte <code>165</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 165 et 275",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Devises</b> : les créances et dettes en monnaies étrangères sont converties au cours du jour de l'opération ; à la clôture, elles sont converties au cours de clôture et les différences inscrites en <code>476</code> (perte latente) ou <code>477</code> (gain latent) ; la perte latente donne lieu à une provision pour perte de change (<code>1515</code>).",
+     "src": "PCG, art. 420-1 à 420-7 ; plan de comptes PCG 2025, comptes 1515, 476 et 477",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Au règlement, la différence entre le montant comptabilisé et le montant payé ou encaissé est une <b>perte de change</b> (<code>666</code>) ou un <b>gain de change</b> (<code>766</code>), charges et produits financiers.",
+     "src": "PCG, art. 420-1 à 420-7 ; plan de comptes PCG 2025, comptes 666 et 766",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Subvention d'équipement finançant un bien non amortissable : réintégration fiscale par fractions égales sur la durée d'inaliénabilité ou, à défaut, sur <span class=\"mono\">10 ans</span>.",
+     "src": "CGI, art. 42 septies, 1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "Les intérêts courus sont calculés prorata temporis depuis la dernière échéance jusqu'à la date de clôture, l'inventaire intervenant au moins une fois tous les <span class=\"mono\">douze mois</span>.",
+     "src": "C. com., art. L. 123-12, al. 2 et L. 123-13, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Elle doit contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs du patrimoine de l'entreprise. »"
+    },
+    {
+     "t": "Non-compensation : les plus-values latentes ne compensent pas les moins-values latentes, titre par titre ou catégorie par catégorie.",
+     "src": "C. com., art. L. 123-19",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219311/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat. »"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "Depuis les exercices ouverts le 1er janvier 2025, la quote-part de subvention d'investissement virée au résultat est enregistrée au compte <code>747</code> (produit d'exploitation) et non plus au compte 777 (produit exceptionnel).",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, compte 747",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les cessions de titres relèvent des comptes <code>667</code> / <code>767</code> (6671 valeurs comptables des immobilisations financières cédées, 6673/7673 pour les VMP) ; les comptes 675 et 775 sont supprimés.",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, comptes 667 et 767",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les intérêts courus sont enregistrés par nature de dette : <code>1618</code>, <code>1638</code>, <code>1648</code> ; le compte 1688 ne subsiste que pour les autres emprunts et dettes assimilées.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 1618, 1638, 1648 et 1688",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les aides et indemnités reçues en compensation de charges d'exploitation sont classées en résultat d'exploitation : une subvention compensant des charges courantes ne passe jamais en exceptionnel.",
+     "src": "Règlement ANC n° 2022-06",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« Les aides, les remboursements et les indemnités... reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "Dans un tableau d'amortissement, les <b>intérêts</b> sont calculés sur le capital restant dû en début de période ; seule la part d'intérêts est une charge (661), le remboursement du capital diminue la dette (164).",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 164 et 661 ; PCG, art. 511-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "La subvention d'investissement n'est pas un produit à l'octroi : elle est en capitaux propres (131) et ne vient au résultat que par la quote-part annuelle (139/747).",
+     "src": "PCG, art. 312-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'escompte d'un effet est un <b>crédit bancaire</b> : la créance sur le client subsiste jusqu'à l'échéance (risque d'impayé), d'où le compte 5114 distinct de l'encaissement.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 5113 et 5114",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Un <b>gain latent de change</b> (477) n'est pas un produit comptable (bénéfice non réalisé), alors qu'il est imposable fiscalement : retraitement extra-comptable au DSCG/UE4.",
+     "src": "C. com., art. L. 123-21 ; PCG, art. 420-1 à 420-7 ; CGI, art. 38, 4",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+     "fiab": "stable",
+     "cite": "« Seuls les bénéfices réalisés à la date de clôture d'un exercice peuvent être inscrits dans les comptes annuels. »"
+    }
+   ]
+  }
+ ]
+}

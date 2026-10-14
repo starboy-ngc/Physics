@@ -1,0 +1,293 @@
+{
+ "id": "ue9-06",
+ "maj": "2026-10-14",
+ "programme": {
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+  "points": [
+   "Travaux d'inventaire : les opérations d'inventaire relatives aux stocks (inventaire intermittent, variation des stocks)",
+   "Travaux d'inventaire : les dépréciations des stocks, des créances et des titres",
+   "Travaux d'inventaire : les provisions pour risques et charges",
+   "Méthode comptable : analyse des opérations en flux et en stocks"
+  ]
+ },
+ "textes": [
+  {
+   "ref": "C. com., art. L. 123-12 et L. 123-18",
+   "objet": "Inventaire annuel ; évaluation des biens fongibles (CMP ou PEPS) ; plus-value latente non comptabilisée",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 123-19 à L. 123-21",
+   "objet": "Non-compensation, prudence, passifs nés avant la clôture, bénéfices réalisés",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+   "version": "en vigueur (ordonnance n° 2015-900 du 23 juillet 2015)"
+  },
+  {
+   "ref": "PCG, art. 211-7",
+   "objet": "Définition du stock",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 213-30 et suivants",
+   "objet": "Coût d'entrée des stocks (coût d'acquisition, coût de production)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 214-15 et suivants",
+   "objet": "Dépréciation des actifs : valeur actuelle inférieure à la valeur nette comptable",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 321-1 à 321-5 et 322-1",
+   "objet": "Passif, dette, provision ; conditions de comptabilisation",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "PCG, art. 512-1",
+   "objet": "Reprises sur amortissements, dépréciations et provisions = produits",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "version": "version consolidée au 1er janvier 2025"
+  },
+  {
+   "ref": "CGI, art. 272, 1",
+   "objet": "Récupération de la TVA sur créances irrécouvrables",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
+   "objet": "Comptes 151, 152, 29, 39, 416, 49, 59, 603, 654, 681, 686, 6875, 7135, 781, 786, 7875",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "version": "version au 1er janvier 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Comptes de provisions pour charges (152x) et dotations/reprises exceptionnelles (6875/7875)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "exercices ouverts à compter du 1er janvier 2025"
+  }
+ ],
+ "sections": [
+  {
+   "h": "Définitions",
+   "items": [
+    {
+     "t": "<b>Stock</b> : actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures.",
+     "src": "PCG, art. 211-7",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Inventaire</b> : contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture ; il est obligatoire au moins une fois tous les douze mois.",
+     "src": "C. com., art. L. 123-12 et R. 123-177",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "fiab": "stable",
+     "cite": "« L'inventaire est le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture. »"
+    },
+    {
+     "t": "<b>Passif</b> : obligation de l'entité à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources sans contrepartie au moins équivalente ; <b>provision</b> : passif dont l'échéance ou le montant n'est pas fixé de façon précise ; <b>dette</b> : passif certain dont l'échéance et le montant sont fixés de façon précise.",
+     "src": "PCG, art. 321-1 à 321-5",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Un passif est un élément du patrimoine ayant une valeur économique négative pour l'entité, c'est-à-dire une obligation de l'entité à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci. »"
+    },
+    {
+     "t": "<b>Dépréciation</b> : constatation que la valeur actuelle d'un actif est devenue inférieure à sa valeur nette comptable ; contrairement à l'amortissement, elle n'est pas nécessairement irréversible.",
+     "src": "PCG, art. 214-15 et suivants",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Produits</b> : ils comprennent les reprises sur amortissements, dépréciations et provisions (comptes <code>781</code>, <code>786</code>, <code>7875</code>).",
+     "src": "PCG, art. 512-1 ; plan de comptes PCG 2025, comptes 78",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits comprennent également les reprises sur amortissements, dépréciations et provisions. »"
+    }
+   ]
+  },
+  {
+   "h": "Règles essentielles",
+   "items": [
+    {
+     "t": "<b>Prudence</b> : les comptes annuels respectent le principe de prudence ; il doit être tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'ils sont connus entre la clôture et l'établissement des comptes.",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Les comptes annuels doivent respecter le principe de prudence. »"
+    },
+    {
+     "t": "Seuls les bénéfices réalisés à la clôture sont inscrits : une moins-value latente est provisionnée (dépréciation), une plus-value latente ne l'est pas.",
+     "src": "C. com., art. L. 123-21 et L. 123-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+     "fiab": "stable",
+     "cite": "« Seuls les bénéfices réalisés à la date de clôture d'un exercice peuvent être inscrits dans les comptes annuels. »"
+    },
+    {
+     "t": "<b>Inventaire intermittent</b> : les achats de l'exercice sont enregistrés en charges (60) ; à la clôture, le stock initial est annulé et le stock final constaté par le compte <code>603</code> « Variation des stocks » (<code>6031</code> matières premières, <code>6037</code> marchandises) ou <code>7135</code> « Variation des stocks de produits » pour les produits finis.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 3, 603 et 7135",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Lecture de la variation : solde débiteur de 603 = déstockage (stock final &lt; stock initial), qui augmente les charges ; solde créditeur = stockage, qui les diminue. Pour 7135, un solde créditeur traduit une production stockée.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 603 et 7135",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Coût d'entrée des stocks</b> : coût d'acquisition (prix d'achat + frais accessoires) pour les biens achetés ; coût de production pour les biens produits.",
+     "src": "PCG, art. 213-30 et suivants ; C. com., art. L. 123-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les <b>biens fongibles</b> sont évalués soit au coût moyen pondéré d'acquisition ou de production, soit en considérant que le premier bien sorti est le premier bien entré (PEPS).",
+     "src": "C. com., art. L. 123-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "fiab": "stable"
+    },
+    {
+     "t": "À la clôture, si la valeur actuelle d'un stock est inférieure à son coût, une <b>dépréciation</b> est constatée : débit <code>6817</code>, crédit <code>39</code> ; elle est reprise l'exercice suivant (<code>39</code> / <code>7817</code>) et recalculée sur le stock final.",
+     "src": "PCG, art. 214-15 et suivants ; plan de comptes PCG 2025, comptes 39, 6817 et 7817",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Clients douteux</b> : la créance est virée de <code>411</code> à <code>416</code> « Clients douteux ou litigieux » pour son montant TTC ; la dépréciation (<code>6817</code> / <code>491</code>) est calculée sur le montant <b>hors taxes</b> de la perte probable.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 416 et 491 ; PCG, art. 214-15",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Créance irrécouvrable</b> : perte définitive en <code>654</code> « Pertes sur créances irrécouvrables » pour le montant hors taxes, TVA récupérée au débit de <code>44571</code>, crédit de <code>416</code> ou <code>411</code> pour le TTC ; la dépréciation éventuelle est reprise.",
+     "src": "Plan de comptes PCG 2025, compte 654 ; CGI, art. 272, 1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "La TVA acquittée sur une créance devenue définitivement irrécouvrable est imputée ou remboursée, sous réserve de la rectification de la facture.",
+     "src": "CGI, art. 272, 1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Titres</b> : à la clôture, la moins-value latente par catégorie de titres est dépréciée (<code>686</code> / <code>296</code> ou <code>297</code> pour les titres immobilisés, <code>686</code> / <code>590</code> pour les VMP) ; la plus-value latente n'est pas comptabilisée.",
+     "src": "C. com., art. L. 123-18 et L. 123-19 ; plan de comptes PCG 2025, comptes 29, 59 et 686",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Non-compensation</b> : les plus-values latentes sur certains titres ne compensent pas les moins-values latentes sur d'autres ; chaque élément d'actif et de passif est évalué séparément.",
+     "src": "C. com., art. L. 123-19",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219311/2014-08-02",
+     "fiab": "stable",
+     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat. »"
+    },
+    {
+     "t": "Une <b>provision</b> est comptabilisée lorsque l'entité a une obligation à l'égard d'un tiers à la clôture, qu'il est probable ou certain qu'elle provoquera une sortie de ressources sans contrepartie équivalente et que son montant peut être estimé de façon fiable.",
+     "src": "PCG, art. 322-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Provisions pour risques</b> : compte <code>151</code> (<code>1511</code> litiges, <code>1514</code> amendes et pénalités, <code>1515</code> pertes de change, <code>1516</code> pertes sur contrats) ; <b>provisions pour charges</b> : compte <code>152</code> (<code>1521</code> pensions, <code>1522</code> restructurations, <code>1523</code> impôts, <code>1525</code> gros entretien, <code>1527</code> autres).",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 151 et 152",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Dotation : débit <code>6815</code> (exploitation), <code>6865</code> (financier) ou <code>6875</code> (exceptionnel), crédit <code>15</code> ; <b>reprise</b> lorsque le risque disparaît ou que la charge se réalise : débit 15, crédit <code>7815</code> / <code>7865</code> / <code>7875</code>.",
+     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 15, 681, 686, 6875, 781, 786 et 7875",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'<b>ajustement</b> d'une dépréciation ou d'une provision à la clôture se fait par dotation complémentaire si le besoin augmente, par reprise s'il diminue : la reprise est un produit de l'exercice.",
+     "src": "PCG, art. 512-1 ; plan de comptes PCG 2025, comptes 78",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable",
+     "cite": "« Les produits comprennent également les reprises sur amortissements, dépréciations et provisions. »"
+    }
+   ]
+  },
+  {
+   "h": "Chiffres et seuils",
+   "items": [
+    {
+     "t": "Inventaire physique des stocks : au moins une fois tous les <span class=\"mono\">douze mois</span>.",
+     "src": "C. com., art. L. 123-12, al. 2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "fiab": "stable",
+     "cite": "« Elle doit contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs du patrimoine de l'entreprise. »"
+    },
+    {
+     "t": "Les données d'inventaire (états de stocks, calculs de dépréciation) sont conservées <span class=\"mono\">dix ans</span> et organisées pour justifier chaque poste du bilan.",
+     "src": "C. com., art. R. 123-177 et L. 123-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257958/2007-03-27",
+     "fiab": "stable",
+     "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
+    }
+   ]
+  },
+  {
+   "h": "Ce qui a changé récemment",
+   "items": [
+    {
+     "t": "Depuis les exercices ouverts le 1er janvier 2025, les <b>provisions pour charges</b> sont regroupées sous la racine <code>152</code> (ex-153 à 158) ; le compte <code>151</code> des provisions pour risques est maintenu.",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, comptes 151 et 152",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les dotations et reprises <b>exceptionnelles</b> ne concernent plus que les événements majeurs et inhabituels (comptes <code>6875</code> / <code>7875</code>) ; une provision pour litige courant est d'exploitation (6815).",
+     "src": "Règlement ANC n° 2022-06 (résultat exceptionnel) ; plan de comptes PCG 2025",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable",
+     "cite": "« Un événement est présumé inhabituel lorsqu'un même évènement ne s'est pas produit au cours des derniers exercices comptables et qu'il est peu probable qu'il se reproduise »"
+    },
+    {
+     "t": "Le résultat exceptionnel redéfini par le règlement ANC n° 2022-06 a été coordonné dans les autres règlements de l'ANC par le règlement n° 2023-03 du 7 juillet 2023.",
+     "src": "Règlement ANC n° 2023-03 du 7 juillet 2023",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
+     "fiab": "stable"
+    }
+   ]
+  },
+  {
+   "h": "Points de vigilance",
+   "items": [
+    {
+     "t": "La dépréciation d'une créance douteuse se calcule sur le <b>hors taxes</b> (la TVA sera récupérée), alors que le compte 416 est mouvementé pour le TTC.",
+     "src": "Plan de comptes PCG 2025, comptes 416 et 491 ; CGI, art. 272, 1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Ne pas confondre <b>dépréciation</b> (actif dont la valeur baisse, comptes 29/39/49/59) et <b>provision</b> (passif probable, compte 15).",
+     "src": "PCG, art. 214-15 et 321-5",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Un passif né avant la clôture mais révélé entre la clôture et l'arrêté des comptes doit être pris en compte dans l'exercice clos.",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219312/2014-08-02",
+     "fiab": "stable"
+    },
+    {
+     "t": "Lien DSCG : la variation de stock (603/7135) et les dotations nettes de reprises sont des charges calculées, sans flux de trésorerie, retraitées dans la capacité d'autofinancement (UE6).",
+     "src": "Plan de comptes PCG 2025, comptes 603, 68 et 78",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "fiab": "stable"
+    }
+   ]
+  }
+ ]
+}
