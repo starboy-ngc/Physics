@@ -99,10 +99,11 @@ code, .acctn { font-family: var(--mono); font-size: 0.92em; background: var(--ru
 .fiche .fsrc { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
 .fiche .fsrc a { color: var(--accent); }
 .fiche table.plan td.n { width: auto; white-space: normal; }
+.linkbtn { background: none; border: none; padding: 0; color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline; }
 .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
-.seg button { background: var(--card); border: none; color: var(--muted); font: 500 0.88rem var(--body); padding: 7px 16px; cursor: pointer; border-right: 1px solid var(--rule); }
-.seg button:last-child { border-right: none; }
-.seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+.crumb .seg button, .seg button { background: var(--card); border: none; color: var(--muted); font: 500 0.88rem var(--body); padding: 7px 16px; cursor: pointer; border-right: 1px solid var(--rule); }
+.crumb .seg button:last-child, .seg button:last-child { border-right: none; }
+.crumb .seg button[aria-pressed="true"], .seg button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
 .sources { font-size: 0.86rem; color: var(--muted); margin-top: 14px; border-top: 1px dashed var(--rule); padding-top: 10px; }
 .sources li { margin-bottom: 3px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; align-items: center; }
@@ -204,13 +205,14 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
   <header class="top">
     <div>
       <h1 class="brand" id="brand">Débit <span>·</span> Crédit</h1>
-      <p class="tagline">Réviser le DCG pour aborder le DSCG : six matières, un test chaque jour, le plan comptable expliqué.</p>
+      <p class="tagline">Réviser le DCG pour aborder le DSCG : six matières, des fiches sourcées sur les textes officiels, un test chaque jour, le plan comptable expliqué.</p>
     </div>
     <div class="rank" id="rankBox"></div>
   </header>
   <nav class="tabs" role="tablist">
     <button role="tab" data-tab="accueil" aria-selected="true">Aujourd'hui</button>
     <button role="tab" data-tab="matieres" aria-selected="false">Matières</button>
+    <button role="tab" data-tab="fiches" aria-selected="false">Fiches</button>
     <button role="tab" data-tab="test" aria-selected="false">Test du jour</button>
     <button role="tab" data-tab="revisions" aria-selected="false">Révisions <span class="badge zero" id="dueBadge">0</span></button>
     <button role="tab" data-tab="pcg" aria-selected="false">Plan comptable</button>
@@ -484,10 +486,32 @@ ${nc ? `<div class="actions"><button class="btn ghost" id="goNext">Chapitre cons
 }
 
 function renderMatieres() {
-  main.innerHTML = `<h2>Matières</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre comporte une leçon complète et ses exercices.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
+  main.innerHTML = `<h2>Matières</h2><p class="muted">Dans l'ordre conseillé : la comptabilité d'abord, puis le droit et la fiscalité, la finance en dernier. Chaque chapitre comporte une fiche documentaire sourcée sur les textes officiels, un cours et des exercices.</p><div class="ues">${UES.map(u => { const m = ueMastery(u.code); const cs = ueChaps(u.code); return `<button class="ue" data-ue="${u.code}"><span class="code">${esc(u.code)}</span><span class="nom">${esc(u.nom)}</span><span class="intro">${esc(u.intro)}</span><span class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></span><span class="mono muted small">${cs.length} chapitres · ${cs.reduce((a, c) => a + c.exercices.length, 0)} exercices · ${Math.round(m * 100)} %</span></button>`; }).join("")}</div>`;
   main.querySelectorAll(".ue").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
 }
 
+function renderFiches() {
+  const withF = CHAPS.filter(c => c.fiche);
+  const nItems = withF.reduce((a, c) => a + c.fiche.sections.reduce((b, x) => b + x.items.length, 0), 0);
+  main.innerHTML = `<h2>Fiches documentaires</h2><p class="muted">Une fiche par chapitre, construite à partir des textes officiels (codes sur Légifrance, BOFiP, normes de l'ANC, URSSAF, service-public, programme du diplôme). ${withF.length} fiches, ${nItems} énoncés sourcés. Chaque énoncé renvoie à son texte.</p>
+<input class="search" id="fq" type="search" placeholder="Rechercher dans toutes les fiches (ex. agrément, réserve légale, rupture conventionnelle, 757)" autocomplete="off">
+<div id="fres"></div>`;
+  const res = main.querySelector("#fres");
+  const strip = h => String(h).replace(/<[^>]+>/g, "");
+  const list = () => UES.map(u => { const cs = ueChaps(u.code).filter(c => c.fiche); if (!cs.length) return ""; return `<h3>${esc(u.code)} · ${esc(u.nom)}</h3><div class="ledger">${cs.map(c => `<button class="row" data-c="${c.id}"><span class="num">${c.ordre}</span><span><span class="ttl">${esc(c.title)}</span><br><span class="sub">${c.fiche.sections.reduce((b, x) => b + x.items.length, 0)} énoncés · ${c.fiche.textes.length} textes de référence · à jour au ${fmtDate(c.fiche.maj)}</span></span><span class="right"><span class="pill">fiche</span></span></button>`).join("")}</div>`; }).join("");
+  const draw = q => {
+    const t = q.trim().toLowerCase();
+    if (t.length < 3) { res.innerHTML = list(); }
+    else {
+      const hits = [];
+      for (const c of withF) for (const sct of c.fiche.sections) for (const it of sct.items) if ((strip(it.t) + " " + it.src).toLowerCase().includes(t)) hits.push({ c, sct, it });
+      res.innerHTML = hits.length ? `<p class="muted small">${hits.length} énoncé${hits.length > 1 ? "s" : ""}${hits.length > 80 ? " (80 premiers affichés)" : ""}</p><div class="fiche"><ol class="fl">${hits.slice(0, 80).map(h => `<li class="fi"><div class="eyebrow">${esc(h.c.ue)} · ${esc(h.c.title)} · ${esc(h.sct.h)}</div><div>${sanitize(h.it.t)}</div><div class="fsrc">Source : ${esc(h.it.src)} · <a href="${esc(srcLink(h.it.src, h.it.url))}" target="_blank" rel="noopener">${h.it.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a> · <button class="linkbtn" data-c="${h.c.id}">ouvrir la fiche</button></div></li>`).join("")}</ol></div>` : `<p class="muted">Aucun énoncé ne contient « ${esc(q)} ».</p>`;
+    }
+    res.querySelectorAll("[data-c]").forEach(b => b.onclick = () => go({ tab: "chap", id: b.dataset.c }));
+  };
+  main.querySelector("#fq").addEventListener("input", e => draw(e.target.value));
+  draw("");
+}
 function renderUe(code) {
   const u = UE_BY[code]; const cs = ueChaps(code); const nc = cs.find(c => chapMastery(c) < 0.999);
   main.innerHTML = `<div class="crumb"><button id="back">← Matières</button></div><h2>${esc(u.code)} · ${esc(u.nom)}</h2><p class="muted">${esc(u.intro)} <span class="small">(${esc(u.programme)})</span></p>
@@ -647,7 +671,7 @@ function go(v) {
   view = v;
   const tab = { ue: "matieres", chap: "matieres" }[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-  ({ accueil: renderAccueil, matieres: renderMatieres, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition })[v.tab]();
+  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition })[v.tab]();
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
   updateBadge(); renderRank(); window.scrollTo({ top: 0 });
 }
@@ -667,7 +691,7 @@ document.getElementById("buildInfo").textContent = `Version du ${DATA.build.date
 refreshSaveBox();
 (function boot() {
   const h = (location.hash || "").slice(1);
-  if (["matieres", "test", "revisions", "pcg", "expedition"].includes(h)) go({ tab: h });
+  if (["matieres", "fiches", "test", "revisions", "pcg", "expedition"].includes(h)) go({ tab: h });
   else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
   else if (CHAP_BY[h]) go({ tab: "chap", id: h });
   else go({ tab: "accueil" });
