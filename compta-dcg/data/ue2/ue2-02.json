@@ -25,11 +25,11 @@
   },
   {
    "h": "Conventions, contrôle et comptes annuels",
-   "html": "<p><b>Conventions entre la société et un gérant ou un associé</b> (L. 223-19 à L. 223-21) :</p><ul><li><b>interdites</b> : emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés <b>personnes physiques</b> (et à leurs conjoints, ascendants, descendants) ; sanction : nullité absolue ;</li><li><b>libres</b> : opérations courantes conclues à des conditions normales ;</li><li><b>réglementées</b> : toutes les autres. Contrôle <b>a posteriori</b> : rapport du gérant (ou du commissaire aux comptes) à l'assemblée, qui statue ; l'intéressé ne vote pas. La convention non approuvée reste valable, mais ses conséquences préjudiciables sont à la charge du gérant ou de l'associé.</li></ul><p><b>Commissaire aux comptes</b> : facultatif, sauf dépassement, à la clôture de l'exercice, de <b>deux des trois seuils</b> fixés par décret (pour les exercices ouverts depuis le 1er janvier 2024 : <span class=\"mono\">5 M€</span> de bilan, <span class=\"mono\">10 M€</span> de chiffre d'affaires HT, <span class=\"mono\">50</span> salariés, décret n° 2024-152) ; nomination aussi possible à la demande d'associés représentant au moins le dixième du capital (L. 223-35).</p><p><b>Information et contrôle par les associés</b> : droit de communication avant l'assemblée annuelle, <b>questions écrites</b> au gérant deux fois par exercice sur tout fait de nature à compromettre la continuité de l'exploitation (L. 223-36), <b>expertise de gestion</b> demandée par des associés détenant au moins le dixième du capital (L. 223-37).</p><p><b>Comptes annuels</b> : arrêtés par le gérant, approuvés dans les <b>six mois</b> de la clôture, déposés au greffe dans le <b>mois</b> suivant l'approbation (<b>deux mois</b> par voie électronique, L. 232-23).</p>"
+   "html": "<p><b>Conventions entre la société et un gérant ou un associé</b> (L. 223-19 à L. 223-21) :</p><ul><li><b>interdites</b> : emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés <b>personnes physiques</b> (et à leurs conjoints, ascendants, descendants) ; sanction : nullité absolue ;</li><li><b>libres</b> : opérations courantes conclues à des conditions normales ;</li><li><b>réglementées</b> : toutes les autres. Contrôle <b>a posteriori</b> : rapport du gérant (ou du commissaire aux comptes) à l'assemblée, qui statue ; l'intéressé ne vote pas. Exception : en l'absence de commissaire aux comptes, la convention conclue par un <b>gérant non associé</b> est soumise à l'approbation <b>préalable</b> de l'assemblée. La convention non approuvée reste valable, mais ses conséquences préjudiciables sont à la charge du gérant ou de l'associé.</li></ul><p><b>Commissaire aux comptes</b> : facultatif, sauf dépassement, à la clôture de l'exercice, de <b>deux des trois seuils</b> fixés par décret (pour les exercices ouverts depuis le 1er janvier 2024 : <span class=\"mono\">5 M€</span> de bilan, <span class=\"mono\">10 M€</span> de chiffre d'affaires HT, <span class=\"mono\">50</span> salariés, décret n° 2024-152) ; nomination aussi possible à la demande d'associés représentant au moins le dixième du capital (L. 223-35).</p><p><b>Information et contrôle par les associés</b> : droit de communication avant l'assemblée annuelle, <b>questions écrites</b> au gérant deux fois par exercice sur tout fait de nature à compromettre la continuité de l'exploitation (L. 223-36), <b>expertise de gestion</b> demandée par des associés détenant au moins le dixième du capital (L. 223-37).</p><p><b>Comptes annuels</b> : arrêtés par le gérant, approuvés dans les <b>six mois</b> de la clôture, déposés au greffe dans le <b>mois</b> suivant l'approbation (<b>deux mois</b> par voie électronique, L. 232-22).</p>"
   },
   {
    "h": "L'EURL : la SARL à associé unique",
-   "html": "<p>L'<b>entreprise unipersonnelle à responsabilité limitée</b> est une SARL dont toutes les parts sont réunies en une seule main (L. 223-1). L'associé unique peut être une personne physique ou une personne morale. Il exerce seul les pouvoirs de l'assemblée : ses décisions sont <b>répertoriées dans un registre</b> ; il ne peut déléguer ses pouvoirs.</p><ul><li><b>Gérance</b> : l'associé unique ou un tiers, personne physique. Lorsque l'associé unique personne physique est gérant, le <b>dépôt des comptes au RCS vaut approbation</b> et il est dispensé de rapport de gestion sous conditions de taille (L. 223-31).</li><li><b>Conventions</b> : celles conclues avec l'associé unique sont seulement mentionnées au registre des décisions.</li><li><b>Régime fiscal</b> : associé unique personne physique : <b>impôt sur le revenu</b> par défaut (régime des sociétés de personnes, CGI, art. 8), avec <b>option pour l'IS</b> révocable jusqu'au cinquième exercice (CGI, art. 239) ; associé unique <b>personne morale</b> : IS de plein droit.</li><li><b>Statut social</b> : le gérant associé unique est <b>travailleur non salarié</b> (il est nécessairement majoritaire).</li></ul><p>L'EURL devient SARL par simple cession de parts à un second associé ; la SARL devient EURL par réunion des parts, sans dissolution. La transformation en SASU exige une décision de l'associé unique et le respect des conditions de la SAS.</p>"
+   "html": "<p>L'<b>entreprise unipersonnelle à responsabilité limitée</b> est une SARL dont toutes les parts sont réunies en une seule main (L. 223-1). L'associé unique peut être une personne physique ou une personne morale. Il exerce seul les pouvoirs de l'assemblée : ses décisions sont <b>répertoriées dans un registre</b> ; il ne peut déléguer ses pouvoirs.</p><ul><li><b>Gérance</b> : l'associé unique ou un tiers, personne physique. Lorsque l'associé unique personne physique est gérant, le <b>dépôt des comptes au RCS vaut approbation</b> et il est dispensé de rapport de gestion sous conditions de taille (L. 223-31).</li><li><b>Conventions</b> : celles conclues avec l'associé unique sont seulement mentionnées au registre des décisions.</li><li><b>Régime fiscal</b> : associé unique personne physique : <b>impôt sur le revenu</b> par défaut (régime des sociétés de personnes, CGI, art. 8), avec <b>option pour l'IS</b> révocable jusqu'au cinquième exercice suivant celui de l'option (CGI, art. 239) ; associé unique <b>personne morale</b> : IS de plein droit.</li><li><b>Statut social</b> : le gérant associé unique est <b>travailleur non salarié</b> (il est nécessairement majoritaire).</li></ul><p>L'EURL devient SARL par simple cession de parts à un second associé ; la SARL devient EURL par réunion des parts, sans dissolution. La transformation en SASU exige une décision de l'associé unique et le respect des conditions de la SAS.</p>"
   },
   {
    "h": "Pièges classiques SARL / SA / SAS",
@@ -58,8 +58,8 @@
    "note": "Seuils de nomination obligatoire du commissaire aux comptes : 5 M€, 10 M€, 50 salariés"
   },
   {
-   "ref": "C. com., art. L. 232-22 et L. 232-23",
-   "note": "Approbation et dépôt des comptes annuels au greffe"
+   "ref": "C. com., art. L. 223-26 et L. 232-22",
+   "note": "Approbation des comptes dans les six mois et dépôt au greffe (un mois, deux mois par voie électronique)"
   },
   {
    "ref": "CGI, art. 726",
@@ -85,7 +85,7 @@
     "Aucune limite"
    ],
    "a": 1,
-   "why": "L'article L. 223-3 du Code de commerce limite la SARL à 100 associés. Si ce nombre est dépassé, la société dispose d'un an pour régulariser (transformation en SA ou SAS, cession de parts) sous peine de dissolution. Le seuil de 50 était l'ancienne limite, supprimée en 2004. La SA et la SAS n'ont pas de maximum.",
+   "why": "L'article L. 223-3 du Code de commerce limite la SARL à 100 associés. Si ce nombre est dépassé, la société dispose d'un an pour régulariser (transformation en SA ou SAS, cession de parts) sous peine de dissolution. Le seuil de 50 était l'ancienne limite, portée à 100 en 2004. La SA et la SAS n'ont pas de maximum.",
    "src": "C. com., art. L. 223-3",
    "fiab": "stable",
    "niveau": 1
@@ -176,7 +176,7 @@
     "Il n'a aucun statut social obligatoire"
    ],
    "a": 1,
-   "why": "Pour apprécier le caractère majoritaire de la gérance, on ajoute aux parts du gérant celles de son conjoint (ou partenaire de PACS), de ses enfants mineurs non émancipés et des éventuels cogérants : 45 % + 10 % = 55 % > 50 %. Paul est gérant majoritaire, donc travailleur non salarié affilié à la sécurité sociale des indépendants. Seul le gérant minoritaire ou égalitaire rémunéré est assimilé salarié (CSS, L. 311-3, 11°), et dans aucun cas il n'a l'assurance chômage.",
+   "why": "Pour apprécier le caractère majoritaire de la gérance, on ajoute aux parts du gérant celles de son conjoint (ou partenaire de PACS), de ses enfants mineurs non émancipés et des éventuels cogérants : 45 % + 10 % = 55 % > 50 %. Paul est gérant majoritaire, donc travailleur non salarié relevant du régime des travailleurs indépendants. Seul le gérant minoritaire ou égalitaire rémunéré est assimilé salarié (CSS, L. 311-3, 11°), et son mandat social ne lui ouvre pas droit à l'assurance chômage.",
    "src": "CSS, art. L. 311-3, 11°",
    "fiab": "stable",
    "niveau": 2
@@ -355,7 +355,7 @@
    "opts": [
     "Un emprunt consenti par la société à son gérant personne physique est interdit, à peine de nullité",
     "Une vente de marchandises à un associé aux conditions habituelles de la société est une convention libre",
-    "Une convention réglementée est soumise à l'approbation a posteriori de l'assemblée des associés",
+    "Une convention réglementée est en principe soumise à l'approbation a posteriori de l'assemblée des associés",
     "Le gérant intéressé participe au vote d'approbation de la convention qui le concerne",
     "Une convention conclue avec un associé personne morale est interdite"
    ],
@@ -364,7 +364,7 @@
     1,
     2
    ],
-   "why": "L'article L. 223-21 interdit, à peine de nullité, les emprunts, découverts, cautions et avals consentis aux gérants et associés personnes physiques ; les personnes morales associées ne sont pas visées : leurs conventions relèvent du régime réglementé, pas de l'interdiction. Les opérations courantes à conditions normales sont libres (L. 223-20). Les conventions réglementées sont approuvées a posteriori par l'assemblée sur rapport du gérant ou du commissaire aux comptes, et l'intéressé ne prend pas part au vote (L. 223-19).",
+   "why": "L'article L. 223-21 interdit, à peine de nullité, les emprunts, découverts, cautions et avals consentis aux gérants et associés personnes physiques ; les personnes morales associées ne sont pas visées (seuls leurs représentants légaux le sont) : leurs conventions relèvent du régime réglementé, pas de l'interdiction. Les opérations courantes à conditions normales sont libres (L. 223-20). Les conventions réglementées sont approuvées a posteriori par l'assemblée sur rapport du gérant ou du commissaire aux comptes, et l'intéressé ne prend pas part au vote (L. 223-19) ; par exception, sans commissaire aux comptes, la convention conclue par un gérant non associé est soumise à l'approbation préalable.",
    "src": "C. com., art. L. 223-19 à L. 223-21",
    "fiab": "stable",
    "niveau": 2

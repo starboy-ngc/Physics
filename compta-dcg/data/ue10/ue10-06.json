@@ -36,7 +36,7 @@
   },
   {
    "h": "Libération, appels ultérieurs, apports en nature et frais de constitution",
-   "html": "<p>Le versement des fonds appelés solde le compte d'apport : débit 512 (ou 467 notaire), crédit 4561 ; puis <b>1012</b> est viré à <b>1013</b>. Lors d'un <b>appel ultérieur</b> du capital non appelé, on constate la créance sur les associés (débit <b>4562</b> Apporteurs – capital appelé non versé, crédit 109) et le reclassement du capital (débit 1011, crédit 1012). Un versement par avance passe par <b>4564</b> ; un <b>actionnaire défaillant</b> (4566) voit ses titres vendus après mise en demeure et supporte frais et intérêts de retard.</p><p>Les <b>apports en nature</b> (immeuble, fonds de commerce, matériel) sont évalués par un <b>commissaire aux apports</b>, obligatoire dans la SA (art. L. 225-8) ; dans la SARL et la SAS, les associés peuvent s'en dispenser à l'unanimité si aucun apport ne dépasse <span class=\"mono\">30 000 €</span> et si la valeur totale des apports en nature n'excède pas la moitié du capital (art. L. 223-9). </p><p>Les <b>frais de constitution</b> sont des charges (méthode préférentielle) ou inscrits en 201 et amortis sur cinq ans au plus (PCG art. 212-9).</p><p>Exemple : appel du solde du capital de Nova (<span class=\"mono\">100 000 €</span>).</p>",
+   "html": "<p>Le versement des fonds appelés solde le compte d'apport : débit 512 (ou 467 notaire), crédit 4561 ; puis <b>1012</b> est viré à <b>1013</b>. Lors d'un <b>appel ultérieur</b> du capital non appelé, on constate la créance sur les associés (débit <b>4562</b> Apporteurs – capital appelé non versé, crédit 109) et le reclassement du capital (débit 1011, crédit 1012). Un versement par avance passe par <b>4564</b> ; un <b>actionnaire défaillant</b> (4566) voit ses titres vendus après mise en demeure et supporte frais et intérêts de retard.</p><p>Les <b>apports en nature</b> (immeuble, fonds de commerce, matériel) sont évalués par un <b>commissaire aux apports</b>, en principe obligatoire dans la SA (art. L. 225-8, sauf dérogations limitées de l'art. L. 225-8-1) ; dans la SARL, les associés peuvent s'en dispenser à l'unanimité si aucun apport ne dépasse <span class=\"mono\">30 000 €</span> et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital (art. L. 223-9 et D. 223-6-1) ; la SAS dispose d'une faculté comparable (art. L. 227-1).</p><p>Les <b>frais de constitution</b> sont des charges (méthode de référence) ou inscrits en 201 et amortis sur cinq ans au plus (PCG art. 212-9).</p><p>Exemple : appel du solde du capital de Nova (<span class=\"mono\">100 000 €</span>).</p>",
    "entry": [
     {
      "a": "4562",
@@ -156,7 +156,7 @@
   },
   {
    "h": "Paiement des dividendes, prélèvements à la source et comptes courants d'associés",
-   "html": "<p>Lors du paiement aux associés <b>personnes physiques</b> résidentes, la société retient à la source le <b>prélèvement forfaitaire non libératoire</b> de <span class=\"mono\">12,8 %</span> (CGI art. 117 quater) et les <b>prélèvements sociaux</b> de <span class=\"mono\">17,2 %</span>, soit <span class=\"mono\">30 %</span> au total en 2025 (prélèvement forfaitaire unique, « flat tax »), reversés au Trésor le 15 du mois suivant. Comptabilisation : débit 457 pour le brut, crédit <b>442</b> État – impôts et taxes recouvrables sur des tiers pour 30 %, crédit 512 pour le net. Les associés dont le revenu fiscal de référence est modeste peuvent demander la dispense du prélèvement de 12,8 % ; les associés <b>personnes morales</b> ne supportent aucun prélèvement (régime de l'IS, mère-fille).</p><p>Les <b>comptes courants d'associés</b> (455) enregistrent les avances consenties par les associés à la société et les sommes qu'elle leur doit (dividendes non prélevés, rémunérations). Les intérêts versés sont déductibles si le capital est <b>entièrement libéré</b> et dans la limite du taux plafond publié chaque trimestre (CGI art. 39, 1-3° et 212). Ils sont rattachés à l'exercice par 4558 Associés – intérêts courus.</p><p>Exemple : Nova verse les <span class=\"mono\">60 000 €</span> de dividendes à ses actionnaires, tous personnes physiques résidentes sans dispense.</p>",
+   "html": "<p>Lors du paiement aux associés <b>personnes physiques</b> résidentes, la société retient à la source le <b>prélèvement forfaitaire non libératoire</b> de <span class=\"mono\">12,8 %</span> (CGI art. 117 quater) et les <b>prélèvements sociaux</b> de <span class=\"mono\">17,2 %</span>, soit <span class=\"mono\">30 %</span> au total en 2025 (prélèvement forfaitaire unique, « flat tax ») et <span class=\"mono\">31,4 %</span> depuis le 1er janvier 2026 (prélèvements sociaux portés à 18,6 % par la LFSS 2026), reversés au Trésor le 15 du mois suivant. Comptabilisation : débit 457 pour le brut, crédit <b>442</b> État – impôts et taxes recouvrables sur des tiers pour le total retenu, crédit 512 pour le net. Les associés dont le revenu fiscal de référence est modeste peuvent demander la dispense du prélèvement de 12,8 % ; les associés <b>personnes morales</b> ne supportent aucun de ces prélèvements, réservés aux personnes physiques.</p><p>Les <b>comptes courants d'associés</b> (455) enregistrent les avances consenties par les associés à la société et les sommes qu'elle leur doit (dividendes non prélevés, rémunérations). Les intérêts versés sont déductibles si le capital est <b>entièrement libéré</b> et dans la limite du taux plafond publié chaque trimestre (CGI art. 39, 1-3° et 212). Ils sont rattachés à l'exercice par 4558 Associés – intérêts courus.</p><p>Exemple : Nova verse les <span class=\"mono\">60 000 €</span> de dividendes à ses actionnaires, tous personnes physiques résidentes sans dispense.</p>",
    "entry": [
     {
      "a": "457",
@@ -183,8 +183,8 @@
    "note": "Libération minimale du capital à la constitution : 1/5 (SARL), 1/2 (SA)"
   },
   {
-   "ref": "C. com., art. L. 223-9 et L. 225-8",
-   "note": "Commissaire aux apports et cas de dispense"
+   "ref": "C. com., art. L. 223-9, D. 223-6-1, L. 225-8, L. 225-8-1 et L. 227-1",
+   "note": "Commissaire aux apports, dispenses (SARL, SAS) et dérogations (SA)"
   },
   {
    "ref": "C. com., art. L. 225-128 à L. 225-132 et L. 225-144 ; L. 223-32",
@@ -204,7 +204,7 @@
   },
   {
    "ref": "CGI art. 117 quater et 200 A ; CSS art. L. 136-7",
-   "note": "Prélèvement forfaitaire non libératoire de 12,8 % et prélèvements sociaux de 17,2 %"
+   "note": "Prélèvement forfaitaire non libératoire de 12,8 % et prélèvements sociaux (17,2 % en 2025, 18,6 % depuis le 1er janvier 2026)"
   },
   {
    "ref": "CGI art. 39, 1-3° et 212",
@@ -343,7 +343,7 @@
     "Les apports en nature sont des biens d'occasion"
    ],
    "a": 1,
-   "why": "C. com., art. L. 223-9 : double condition cumulative, valeur unitaire de chaque apport en nature au plus 30 000 € et total des apports en nature au plus égal à la moitié du capital. Dans la SA, le commissaire aux apports est toujours obligatoire (L. 225-8). Les associés qui se dispensent sont solidairement responsables pendant cinq ans de la valeur retenue.",
+   "why": "C. com., art. L. 223-9 : double condition cumulative, valeur unitaire de chaque apport en nature au plus 30 000 € et total des apports en nature au plus égal à la moitié du capital. Dans la SA, le commissaire aux apports est en principe obligatoire (L. 225-8), sauf dérogations limitées de l'article L. 225-8-1. Les associés qui se dispensent sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur retenue.",
    "src": "C. com., art. L. 223-9",
    "fiab": "stable",
    "niveau": 2
@@ -467,7 +467,7 @@
    "type": "multi",
    "q": "Selon le PCG, les frais d'augmentation de capital (honoraires, publicité, droits) peuvent être : (plusieurs réponses possibles)",
    "opts": [
-    "Imputés sur la prime d'émission (méthode préférentielle)",
+    "Imputés sur la prime d'émission",
     "Comptabilisés en charges de l'exercice",
     "Inscrits en frais d'établissement (201) et amortis sur cinq ans au maximum",
     "Ajoutés au capital social",
@@ -478,7 +478,7 @@
     1,
     2
    ],
-   "why": "PCG art. 212-9 : trois traitements sont admis, l'imputation sur la prime d'émission étant préférentielle, à défaut la charge ou l'inscription en 201 avec amortissement sur cinq ans maximum. Le capital social ne peut jamais être majoré de frais, et ces dépenses n'ont rien d'une immobilisation corporelle.",
+   "why": "PCG art. 212-9 (rédaction issue du règlement ANC n° 2018-01) : les frais d'augmentation de capital peuvent être inscrits à l'actif en frais d'établissement (201, amortis sur cinq ans au maximum) ou imputés sur la prime d'émission ; à défaut, ou en cas d'insuffisance de la prime, ils sont comptabilisés en charges. Le texte ne qualifie plus l'imputation de « méthode préférentielle ». Le capital social ne peut jamais être majoré de frais, et ces dépenses n'ont rien d'une immobilisation corporelle.",
    "src": "PCG art. 212-9",
    "fiab": "stable",
    "niveau": 2
@@ -611,7 +611,7 @@
     "Aucune obligation tant que la société est in bonis"
    ],
    "a": 1,
-   "why": "120 000 < 150 000 (moitié du capital) : procédure de l'article L. 223-42. Les associés décident, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée. À défaut de dissolution, les capitaux propres doivent être reconstitués au moins à la moitié du capital, ou le capital réduit, au plus tard à la clôture du deuxième exercice suivant ; depuis la loi 2023-171, un délai supplémentaire est accordé si le capital est ramené à un seuil fixé par décret. La dissolution immédiate n'est jamais imposée.",
+   "why": "120 000 < 150 000 (moitié du capital) : procédure de l'article L. 223-42. Les associés décident, dans les quatre mois de l'approbation des comptes, s'il y a lieu à dissolution anticipée. À défaut de dissolution, les capitaux propres doivent être reconstitués au moins à la moitié du capital, ou le capital réduit, au plus tard à la clôture du deuxième exercice suivant ; depuis la loi n° 2023-171, si les capitaux propres ne sont toujours pas reconstitués et que le capital dépasse un seuil fixé par décret (1 % du total du bilan, décret n° 2023-657), la société doit le ramener à ce seuil au plus tard à la clôture du deuxième exercice suivant. La dissolution immédiate n'est jamais imposée.",
    "src": "C. com., art. L. 223-42 (loi n° 2023-171)",
    "fiab": "stable",
    "niveau": 2

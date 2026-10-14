@@ -67,10 +67,16 @@
    "version": "BOFiP du 6 août 2013"
   },
   {
+   "ref": "CGI, art. 150 VB ; loi n° 2025-127 du 14 février 2025 de finances pour 2025",
+   "objet": "Plus-values immobilières des particuliers : prix d'acquisition minoré des amortissements déduits par les loueurs en meublé non professionnels",
+   "url": null,
+   "version": "en vigueur (rédaction issue de la loi de finances pour 2025)"
+  },
+  {
    "ref": "CGI, art. 150-0 A et 150-0 D ter",
    "objet": "Plus-values de cession de valeurs mobilières ; abattement fixe de 500 000 € du dirigeant partant à la retraite",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036427840",
-   "version": "en vigueur (cessions du 1er janvier 2018 au 31 décembre 2031)"
+   "url": null,
+   "version": "en vigueur (abattement fixe du dirigeant prorogé jusqu'au 31 décembre 2031 par la loi de finances pour 2025)"
   },
   {
    "ref": "CGI, art. 157, 5° bis ; BOI-RPPM-RCM-40-50-40",
@@ -157,7 +163,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Indemnité de licenciement</b> : exonérée à hauteur du plus élevé des montants suivants : l'indemnité légale ou conventionnelle ; le double de la rémunération annuelle brute de l'année civile précédant la rupture ; 50 % de l'indemnité perçue, ces deux derniers montants étant retenus dans une limite en valeur absolue. Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi et celles sanctionnant un licenciement abusif ou irrégulier sont exonérées en totalité.",
+     "t": "<b>Indemnité de licenciement</b> : exonérée à hauteur du plus élevé des montants suivants : l'indemnité légale ou conventionnelle ; le double de la rémunération annuelle brute de l'année civile précédant la rupture ; 50 % de l'indemnité perçue, ces deux derniers montants étant retenus dans la limite de six fois le plafond annuel de la sécurité sociale. Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi et celles allouées par le juge pour un licenciement irrégulier ou sans cause réelle et sérieuse sont exonérées en totalité.",
      "src": "CGI, art. 80 duodecies, 1 ; BOI-RSA-CHAMP-20-40-10-30",
      "url": "https://bofip.impots.gouv.fr/bofip/4935-PGP.html/identifiant=BOI-RSA-CHAMP-20-40-10-30-20250429",
      "fiab": "stable"
@@ -169,7 +175,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Prélèvement forfaitaire non libératoire</b> : à l'encaissement, l'établissement payeur prélève un acompte d'IR de 12,8 % (et les prélèvements sociaux). Dispense possible sur attestation sur l'honneur remise avant le 30 novembre de l'année précédant le paiement, si le revenu fiscal de référence de l'avant-dernière année n'excède pas le seuil ; la dispense ne concerne pas les prélèvements sociaux.",
+     "t": "<b>Prélèvement forfaitaire non libératoire</b> : à l'encaissement, l'établissement payeur prélève un acompte d'IR de 12,8 % (et les prélèvements sociaux). Dispense possible sur attestation sur l'honneur remise avant le 30 novembre de l'année précédant le paiement, si le revenu fiscal de référence de l'avant-dernière année est inférieur aux seuils légaux ; la dispense ne concerne pas les prélèvements sociaux.",
      "src": "CGI, art. 117 quater, 125 A et 242 quater",
      "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-beneficier-dune-dispense-du-prelevement-forfaitaire-non-liberatoire",
      "fiab": "stable"
@@ -188,7 +194,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Déficit foncier</b> : au régime réel, la fraction du déficit qui ne provient pas des intérêts d'emprunt s'impute sur le revenu global dans la limite de <span class=\"mono\">10 700 €</span> par an ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes. La limite est portée, sur option, jusqu'à <span class=\"mono\">21 400 €</span> à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D.",
+     "t": "<b>Déficit foncier</b> : au régime réel, la fraction du déficit qui ne provient pas des intérêts d'emprunt s'impute sur le revenu global dans la limite de <span class=\"mono\">10 700 €</span> par an ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes. La limite est portée jusqu'à <span class=\"mono\">21 400 €</span> à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D.",
      "src": "CGI, art. 156, I-3° ; BOI-RFPI-BASE-30-20",
      "url": "https://bofip.impots.gouv.fr/bofip/4142-PGP.html/identifiant=BOI-RFPI-BASE-30-20-20250916",
      "fiab": "stable"
@@ -200,13 +206,13 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Exonération de la résidence principale</b> : la plus-value de cession de l'immeuble qui constitue la résidence principale du cédant au jour de la cession est exonérée ; <b>première cession d'un autre logement</b> : exonération si le cédant n'a pas été propriétaire de sa résidence principale et remploie le prix, dans un délai de 24 mois calculé de date à date, à l'acquisition ou la construction de sa résidence principale.",
+     "t": "<b>Exonération de la résidence principale</b> : la plus-value de cession de l'immeuble qui constitue la résidence principale du cédant au jour de la cession est exonérée ; <b>première cession d'un autre logement</b> : si le cédant n'a pas été propriétaire de sa résidence principale au cours des quatre années précédant la cession, exonération de la fraction du prix qu'il remploie, dans un délai de 24 mois calculé de date à date, à l'acquisition ou la construction de sa résidence principale.",
      "src": "CGI, art. 150 U, II-1° et 1° bis ; BOI-RFPI-PVI-10-40-30 ; CE, 15 juillet 2021, n° 453490",
      "url": "https://bofip.impots.gouv.fr/bofip/7284-PGP.html/identifiant=BOI-RFPI-PVI-10-40-30-20210707",
      "fiab": "stable"
     },
     {
-     "t": "<b>Taxe sur les plus-values immobilières élevées</b> : due en plus de l'impôt lorsque la plus-value nette imposable excède 50 000 €, ce seuil s'appréciant après application de l'abattement pour durée de détention.",
+     "t": "<b>Taxe sur les plus-values immobilières élevées</b> : due en plus de l'impôt sur les plus-values de cession d'immeubles autres que des terrains à bâtir lorsque la plus-value nette imposable excède 50 000 €, ce seuil s'appréciant après application de l'abattement pour durée de détention ; son taux progresse de 2 % à 6 % selon le montant de la plus-value.",
      "src": "CGI, art. 1609 nonies G ; BOI-RFPI-TPVIE-20",
      "url": "https://bofip.impots.gouv.fr/bofip/8597-PGP.html/identifiant=BOI-RFPI-TPVIE-20-20130806",
      "fiab": "stable"
@@ -214,7 +220,7 @@
     {
      "t": "<b>Dirigeant de PME partant à la retraite</b> : les plus-values de cession des titres sont réduites d'un abattement fixe de <span class=\"mono\">500 000 €</span>, applicable au PFU comme au barème si les titres sont détenus depuis au moins un an, à condition notamment d'avoir exercé une fonction de direction de manière continue pendant les cinq années précédant la cession. Il n'est pas cumulable avec les abattements proportionnels pour durée de détention.",
      "src": "CGI, art. 150-0 D ter",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036427840",
+     "url": null,
      "fiab": "stable"
     },
     {
@@ -225,22 +231,15 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Location meublée au micro-BIC</b> : l'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire ; lors de la cession de l'immeuble, la plus-value relève du court terme à hauteur des amortissements linéaires réputés inclus dans l'abattement.",
-     "src": "CGI, art. 50-0 et 39 duodecies ; BOI-BIC-CHAMP-40-20",
+     "t": "<b>Location meublée au micro-BIC</b> : le bénéfice est égal aux recettes diminuées d'un abattement forfaitaire (50 % en principe, 30 % pour les meublés de tourisme non classés) ; pour la détermination des plus-values professionnelles, cet abattement est réputé tenir compte des amortissements pratiqués selon le mode linéaire. Les plus-values professionnelles ne concernent que le loueur professionnel : la cession du logement par un loueur non professionnel relève des plus-values immobilières des particuliers.",
+     "src": "CGI, art. 50-0, 39 duodecies et 150 U ; BOI-BIC-CHAMP-40-20",
      "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
      "fiab": "stable"
     },
     {
-     "t": "<b>Micro-BNC et déclaration contrôlée</b> : le régime déclaratif spécial s'applique lorsque les recettes de l'année précédente n'excèdent pas le seuil de l'article 102 ter ; au-delà, ou sur option, le bénéfice est déterminé selon la déclaration contrôlée (recettes encaissées moins dépenses payées).",
+     "t": "<b>Micro-BNC et déclaration contrôlée</b> : le régime déclaratif spécial s'applique lorsque les recettes de l'année civile précédente ou de l'avant-dernière année n'excèdent pas le seuil de l'article 102 ter ; au-delà, ou sur option, le bénéfice est déterminé selon la déclaration contrôlée (recettes encaissées moins dépenses payées).",
      "src": "CGI, art. 96 et 102 ter ; BOI-BNC-DECLA-20-10",
      "url": "https://bofip.impots.gouv.fr/bofip/4807-PGP.html",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Micro-BA</b> : le bénéfice imposable est égal à la moyenne des recettes hors taxes de l'année d'imposition et des deux années précédentes, diminuée d'un abattement de 87 %.",
-     "cite": "« la moyenne des recettes hors taxes de l'année d'imposition et des deux années précédentes, diminuée d'un abattement de 87 % »",
-     "src": "CGI, art. 64 bis ; BOI-BA-BASE-15-10",
-     "url": "https://bofip.impots.gouv.fr/bofip/10605-PGP.html/identifiant=BOI-BA-BASE-15-10-20260819",
      "fiab": "stable"
     }
    ]
@@ -249,7 +248,7 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Déduction forfaitaire de 10 % (revenus 2025)</b> : minimum <span class=\"mono\">509 €</span> par salarié (sauf rémunération inférieure), maximum <span class=\"mono\">14 555 €</span> par salarié.",
+     "t": "<b>Déduction forfaitaire de 10 % (revenus 2025, déclarés en 2026)</b> : minimum <span class=\"mono\">509 €</span> par salarié (sauf rémunération inférieure), maximum <span class=\"mono\">14 555 €</span> par salarié.",
      "cite": "« 509 € minimum par salarié sauf si la rémunération déclarée est inférieure à ce montant. 14 555 € maximum par salarié. »",
      "src": "CGI, art. 83, 3° ; impots.gouv.fr, frais professionnels (revenus 2025)",
      "url": "https://www.impots.gouv.fr/particulier/questions/comment-puis-je-beneficier-de-la-deduction-forfaitaire-de-10",
@@ -263,7 +262,7 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Abattement de 10 % sur les pensions (revenus 2025)</b> : plafond de <span class=\"mono\">4 439 €</span> pour l'ensemble du foyer, minimum de <span class=\"mono\">454 €</span> par bénéficiaire (limité au montant de la pension si elle est inférieure).",
+     "t": "<b>Abattement de 10 % sur les pensions (revenus 2025, déclarés en 2026)</b> : plafond de <span class=\"mono\">4 439 €</span> pour l'ensemble du foyer, minimum de <span class=\"mono\">454 €</span> par bénéficiaire (limité au montant de la pension si elle est inférieure).",
      "cite": "« Abattement de 10 % limité à 4 439 € pour l'ensemble du foyer avec un minimum de 454 € par bénéficiaire »",
      "src": "CGI, art. 158, 5-a ; impots.gouv.fr, pensions de retraite",
      "url": "https://www.impots.gouv.fr/particulier/pensions-de-retraite",
@@ -276,9 +275,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>PFU</b> : 12,8 % d'impôt sur le revenu auxquels s'ajoutent les prélèvements sociaux sur les produits de placement : 17,2 % sur les revenus 2025, <span class=\"mono\">18,6 %</span> à compter du 1er janvier 2026 selon impots.gouv.fr (CSG portée à 10,6 % par la LFSS 2026), soit un total de 31,4 %.",
+     "t": "<b>PFU</b> : 12,8 % d'impôt sur le revenu, auxquels s'ajoutent les prélèvements sociaux sur les produits de placement : 17,2 % jusqu'au 31 décembre 2025, <span class=\"mono\">18,6 %</span> depuis le 1er janvier 2026 (CSG portée à 10,6 % par la LFSS 2026), soit un total de <span class=\"mono\">31,4 %</span>.",
      "cite": "« Ce PFU est de 31,4 % et comprend à la fois l'impôt sur le revenu (12,8 %) et les prélèvements sociaux (18,6 %) »",
-     "src": "CGI, art. 200 A ; CSS, art. L. 136-8 ; impots.gouv.fr, PEA",
+     "src": "CGI, art. 200 A ; CSS, art. L. 136-8 (loi n° 2025-1403 du 30 décembre 2025, LFSS 2026) ; impots.gouv.fr, PEA",
      "url": "https://www.impots.gouv.fr/particulier/questions/jai-un-plan-depargne-en-actions-pea-les-retraits-sont-ils-imposables",
      "fiab": "millésimé 2026"
     },
@@ -313,21 +312,27 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Seuils micro 2026-2028</b> : alors que l'actualisation triennale aurait conduit à 203 100 € et 83 600 €, le BOFiP du 19 août 2026 retient pour 2026 à 2028 les seuils de 188 700 € et 77 700 € (et 15 000 € pour les meublés de tourisme non classés) ; vérifier le millésime avant tout calcul.",
+     "t": "<b>Seuils micro 2026-2028</b> : le BOFiP du 19 août 2026 retient pour 2026 à 2028 les seuils de 188 700 € (ventes et fourniture de logement) et 77 700 € (autres activités, micro-BNC), et 15 000 € pour les meublés de tourisme non classés ; les montants de 203 100 € et 83 600 €, qui auraient résulté de l'actualisation triennale, ne figurent pas au barème officiel.",
      "src": "CGI, art. 50-0 ; BOI-BAREME-000044 (19 août 2026)",
      "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Prélèvements sociaux sur les produits de placement</b> : la loi de financement de la sécurité sociale pour 2026 porte la CSG de droit commun sur les revenus du capital à 10,6 % (prélèvements sociaux 18,6 %) et maintient un taux dérogatoire de 9,2 % pour certains revenus, dont les revenus fonciers.",
-     "src": "CSS, art. L. 136-8 (LFSS 2026) ; economie.gouv.fr, loi de finances 2026",
+     "t": "<b>Prélèvements sociaux sur les produits de placement</b> : la loi de financement de la sécurité sociale pour 2026 (loi n° 2025-1403 du 30 décembre 2025) porte la CSG de droit commun sur les revenus du capital à 10,6 % (prélèvements sociaux 18,6 %) et maintient un taux dérogatoire de 9,2 % pour certains revenus, dont les revenus fonciers.",
+     "src": "CSS, art. L. 136-8 (loi n° 2025-1403 du 30 décembre 2025) ; economie.gouv.fr, loi de finances 2026",
      "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/loi-de-finances-2026-ce-qui-change-pour-les-particuliers",
      "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Abattement fixe du dirigeant partant à la retraite</b> : prorogé pour les cessions réalisées jusqu'au <span class=\"mono\">31 décembre 2031</span> ; porté à 600 000 € pour les cessions au profit de jeunes agriculteurs bénéficiant d'aides à l'installation.",
      "src": "CGI, art. 150-0 D ter (LF 2025)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036427840",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loueurs en meublé non professionnels (LF 2025)</b> : pour les cessions réalisées depuis l'entrée en vigueur de la loi de finances pour 2025, le prix d'acquisition retenu pour calculer la plus-value immobilière est minoré des amortissements déduits pendant la location au régime réel ; certains logements de résidences de services (étudiants, personnes âgées ou handicapées) sont exclus de cette minoration.",
+     "src": "CGI, art. 150 VB (loi n° 2025-127 du 14 février 2025 de finances pour 2025)",
+     "url": null,
      "fiab": "stable"
     }
    ]
@@ -367,8 +372,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Lien DSCG</b> : les règles des BIC (amortissements, plus-values professionnelles) s'appliquent aux loueurs en meublé au réel et aux titulaires de BNC en déclaration contrôlée ; la plus-value de cession d'un bien loué en meublé au micro-BIC est à court terme à hauteur des amortissements linéaires réputés déduits.",
-     "src": "CGI, art. 39 duodecies et 93 quater ; BOI-BIC-CHAMP-40-20",
+     "t": "<b>Lien DSCG</b> : les règles des BIC sur les amortissements s'appliquent aux loueurs en meublé au réel, et celles des plus-values professionnelles aux titulaires de BNC et aux loueurs en meublé professionnels ; la cession du logement par un loueur non professionnel relève des plus-values immobilières des particuliers, avec réintégration des amortissements déduits depuis la loi de finances pour 2025.",
+     "src": "CGI, art. 39 duodecies, 93 quater, 150 U et 150 VB ; BOI-BIC-CHAMP-40-20",
      "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
      "fiab": "stable"
     }

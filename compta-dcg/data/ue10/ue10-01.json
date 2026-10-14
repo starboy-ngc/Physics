@@ -17,7 +17,7 @@
   },
   {
    "h": "La profession : expert-comptable et commissaire aux comptes",
-   "html": "<p>L'<b>expert-comptable</b> exerce une profession réglementée par l'ordonnance n° 45-2138 du 19 septembre 1945 ; il est inscrit au tableau de l'<b>Ordre des experts-comptables</b> (conseil national et conseils régionaux). Ses missions normalisées sur les comptes sont graduées : <b>présentation</b> des comptes (attestation qu'il n'a rien relevé qui remette en cause la cohérence et la vraisemblance), <b>examen limité</b> (assurance modérée), <b>audit contractuel</b> (assurance raisonnable, opinion). Il est choisi par le client et lié par une lettre de mission.</p><p>Le <b>commissaire aux comptes (CAC)</b> est inscrit auprès de la H2A et membre de la <b>CNCC</b>. Il est nommé par l'assemblée générale pour <b>six exercices</b> (mission classique) ou <b>trois exercices</b> dans la mission « audit légal des petites entreprises » (ALPE) ouverte aux sociétés qui le désignent volontairement. Sa mission est légale : certifier que les comptes annuels sont réguliers, sincères et donnent une image fidèle, selon les NEP.</p><p>Depuis la loi PACTE, la nomination est obligatoire pour toute société commerciale qui dépasse <b>deux des trois seuils</b> suivants, relevés par le décret n° 2024-152 pour les exercices ouverts à compter du 1er janvier 2024 : <span class=\"mono\">5 000 000 €</span> de total de bilan, <span class=\"mono\">10 000 000 €</span> de chiffre d'affaires HT, <span class=\"mono\">50</span> salariés. Une société mère de petit groupe dépassant ces seuils en cumulé y est tenue.</p>"
+   "html": "<p>L'<b>expert-comptable</b> exerce une profession réglementée par l'ordonnance n° 45-2138 du 19 septembre 1945 ; il est inscrit au tableau de l'<b>Ordre des experts-comptables</b> (conseil national et conseils régionaux). Ses missions normalisées sur les comptes sont graduées : <b>présentation</b> des comptes (attestation qu'il n'a rien relevé qui remette en cause la cohérence et la vraisemblance), <b>examen limité</b> (assurance modérée), <b>audit contractuel</b> (assurance raisonnable, opinion). Il est choisi par le client et lié par une lettre de mission.</p><p>Le <b>commissaire aux comptes (CAC)</b> est inscrit auprès de la H2A et membre de la <b>CNCC</b>. Il est nommé par l'assemblée générale pour <b>six exercices</b> (mission classique) ou <b>trois exercices</b> dans la mission « audit légal des petites entreprises » (ALPE), ouverte aux sociétés qui le désignent volontairement ou au titre des groupes (C. com., art. L. 821-46). Sa mission est légale : certifier que les comptes annuels sont réguliers, sincères et donnent une image fidèle, selon les NEP.</p><p>Depuis la loi PACTE, la nomination est obligatoire pour toute société commerciale qui dépasse <b>deux des trois seuils</b> suivants, relevés par le décret n° 2024-152 pour les exercices ouverts à compter du 1er janvier 2024 : <span class=\"mono\">5 000 000 €</span> de total de bilan, <span class=\"mono\">10 000 000 €</span> de chiffre d'affaires HT, <span class=\"mono\">50</span> salariés. Une société mère de petit groupe dépassant ces seuils en cumulé y est tenue.</p>"
   },
   {
    "h": "Principes comptables et conventions d'évaluation",
@@ -25,7 +25,7 @@
   },
   {
    "h": "Changements de méthodes, d'estimation et corrections d'erreurs",
-   "html": "<p>Le PCG (art. 122-1 à 122-5) distingue trois situations.</p><ul><li><b>Changement de méthode comptable</b> (art. 122-2) : adoption d'une méthode plus pertinente ou imposée par une nouvelle réglementation. Il s'applique de façon <b>rétrospective</b> : l'effet, calculé net d'impôt, est imputé sur les <b>capitaux propres d'ouverture</b> (compte 110 Report à nouveau), sauf si des règles fiscales imposent de passer par le résultat. Information comparative pro forma en annexe.</li><li><b>Changement d'estimation</b> (art. 122-3) : révision d'une durée d'utilité, d'une valeur résiduelle, d'un taux de provision. Il n'affecte que l'exercice en cours et les suivants (application <b>prospective</b>), par le résultat.</li><li><b>Correction d'erreur</b> (art. 122-5) : omission ou inexactitude d'un exercice antérieur. Elle est comptabilisée dans le <b>résultat de l'exercice au cours duquel elle est découverte</b>, avec mention en annexe ; les comptes antérieurs ne sont pas modifiés.</li></ul><p>Exemple : Sitral décide de provisionner ses engagements de retraite (méthode préférentielle) à compter du 1er janvier N. L'engagement à l'ouverture est de <span class=\"mono\">100 000 €</span> ; la provision est inscrite au compte <b>1521</b> Provisions pour pensions et obligations similaires (avant 2025 : 153).</p><div class=\"note\"><b>Piège.</b> Un changement de durée d'amortissement n'est pas un changement de méthode : c'est une estimation, donc prospectif et sans retraitement du report à nouveau.</div>",
+   "html": "<p>Le PCG (art. 122-1 à 122-6) distingue trois situations.</p><ul><li><b>Changement de méthode comptable</b> (art. 122-1 à 122-3) : adoption d'une méthode plus pertinente ou imposée par une nouvelle réglementation. Il s'applique de façon <b>rétrospective</b> : l'effet, calculé net d'impôt, est imputé sur les <b>capitaux propres d'ouverture</b> (compte 110 Report à nouveau), sauf si des règles fiscales imposent de passer par le résultat. Information comparative pro forma en annexe.</li><li><b>Changement d'estimation</b> (art. 122-5) : révision d'une durée d'utilité, d'une valeur résiduelle, d'un taux de provision. Il n'affecte que l'exercice en cours et les suivants (application <b>prospective</b>), par le résultat.</li><li><b>Correction d'erreur</b> (art. 122-6) : omission ou inexactitude d'un exercice antérieur. Elle est comptabilisée dans le <b>résultat de l'exercice au cours duquel elle est découverte</b> (sauf si elle corrige une écriture imputée directement sur les capitaux propres), avec mention en annexe ; les comptes antérieurs ne sont pas modifiés.</li></ul><p>Exemple : Sitral décide de provisionner ses engagements de retraite (méthode de référence, appelée « méthode préférentielle » avant le règlement ANC n° 2018-01) à compter du 1er janvier N. L'engagement à l'ouverture est de <span class=\"mono\">100 000 €</span> ; la provision est inscrite au compte <b>1521</b> Provisions pour pensions et obligations similaires (avant 2025 : 153).</p><div class=\"note\"><b>Piège.</b> Un changement de durée d'amortissement n'est pas un changement de méthode : c'est une estimation, donc prospectif et sans retraitement du report à nouveau.</div>",
    "entry": [
     {
      "a": "110",
@@ -42,7 +42,7 @@
   },
   {
    "h": "Événements postérieurs à la clôture",
-   "html": "<p>Entre la date de clôture et la date d'arrêté des comptes par l'organe compétent (conseil d'administration, gérant), des événements peuvent survenir. Le Code de commerce (art. L. 123-20) impose de tenir compte des <b>risques et pertes</b> nés au cours de l'exercice, même s'ils ne sont connus qu'après la clôture. Le critère est le <b>lien direct et prépondérant</b> avec une situation existant à la clôture :</p><ul><li>Lien existant (procès en cours jugé en janvier, client en difficulté à la clôture et mis en liquidation en février) : <b>ajustement des comptes</b> (provision, dépréciation).</li><li>Pas de lien (incendie en janvier, baisse des cours de bourse après la clôture) : <b>pas d'ajustement</b>, mais mention en annexe si l'événement est significatif ; s'il remet en cause la continuité d'exploitation, les comptes sont établis en valeurs liquidatives.</li></ul><p>Les événements connus après l'arrêté mais avant l'assemblée générale ne modifient pas les comptes : ils font l'objet d'une information à l'assemblée (rapport de gestion, communication du CAC).</p>"
+   "html": "<p>Entre la date de clôture et la date d'arrêté des comptes par l'organe compétent (conseil d'administration, gérant), des événements peuvent survenir. Le Code de commerce (art. L. 123-20) impose de tenir compte des <b>passifs</b> qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'ils ne sont connus qu'entre la clôture et l'établissement des comptes (PCG art. 513-4). Le critère est le <b>lien direct et prépondérant</b> avec une situation existant à la clôture :</p><ul><li>Lien existant (procès en cours jugé en janvier, client en difficulté à la clôture et mis en liquidation en février) : <b>ajustement des comptes</b> (provision, dépréciation).</li><li>Pas de lien (incendie en janvier, baisse des cours de bourse après la clôture) : <b>pas d'ajustement</b>, mais mention en annexe si l'événement est significatif ; s'il remet en cause la continuité d'exploitation, les comptes sont établis en valeurs liquidatives.</li></ul><p>Les événements connus après l'arrêté mais avant l'assemblée générale ne modifient pas les comptes : ils font l'objet d'une information à l'assemblée (rapport de gestion, communication du CAC).</p>"
   },
   {
    "h": "L'annexe : contenu et seuils de dispense",
@@ -75,12 +75,12 @@
    "note": "Profession d'expert-comptable et Ordre"
   },
   {
-   "ref": "C. com., ex-art. L. 823-3 et L. 823-12-1 (livre VIII recodifié en 2024) ; décret n° 2024-152 (D. 221-5)",
+   "ref": "C. com., art. L. 821-44 et L. 821-46 (anciens art. L. 823-3 s., recodifiés en 2024) ; art. L. 227-9-1 et D. 221-5 (décret n° 2024-152)",
    "note": "Durée du mandat du CAC (6 ou 3 exercices) et seuils de nomination 5 M€ / 10 M€ / 50 salariés"
   },
   {
-   "ref": "PCG art. 121-1 à 122-5",
-   "note": "Principes comptables, changements de méthodes, d'estimation et corrections d'erreurs"
+   "ref": "PCG art. 121-1 à 122-6",
+   "note": "Principes comptables, méthodes de référence, changements de méthodes, d'estimation et corrections d'erreurs"
   },
   {
    "ref": "PCG art. 831-1 s.",
@@ -219,8 +219,8 @@
     "Dix exercices"
    ],
    "a": 1,
-   "why": "Le CAC est nommé pour six exercices (ex-art. L. 823-3 C. com., recodifié en 2024). La durée de trois exercices concerne uniquement la mission « audit légal des petites entreprises » (ALPE) des sociétés qui désignent volontairement un CAC sous les seuils. Un mandat annuel ou de dix ans n'existe pas pour les CAC.",
-   "src": "C. com., ex-art. L. 823-3 et L. 823-12-1 (livre VIII recodifié par l'ord. n° 2023-1142)",
+   "why": "Le CAC est nommé pour six exercices (C. com., art. L. 821-44, ex-art. L. 823-3). La durée de trois exercices est une dérogation (art. L. 821-46) : mission « audit légal des petites entreprises » (ALPE), possible lorsque le CAC est désigné volontairement ou au titre des groupes (art. L. 821-43). Un mandat annuel ou de dix ans n'existe pas pour les CAC.",
+   "src": "C. com., art. L. 821-44 et L. 821-46 (anciens art. L. 823-3 s., recodifiés par l'ord. n° 2023-1142)",
    "fiab": "stable",
    "niveau": 1
   },
@@ -369,8 +369,8 @@
     1,
     3
    ],
-   "why": "Un changement de méthode est l'adoption d'une autre méthode admise (souvent la méthode préférentielle : provision des retraites, avancement, activation des frais de développement) ; son effet est imputé sur les capitaux propres d'ouverture (PCG art. 122-2). La révision d'une durée d'amortissement ou d'un taux de dépréciation est un changement d'estimation (art. 122-3), traité de façon prospective par le résultat.",
-   "src": "PCG art. 122-2 et 122-3",
+   "why": "Un changement de méthode est l'adoption d'une autre méthode admise (souvent une méthode de référence, ex-« méthode préférentielle » : provision des retraites, avancement, activation des frais de développement) ; son effet est imputé sur les capitaux propres d'ouverture (PCG art. 122-1 à 122-3). La révision d'une durée d'amortissement ou d'un taux de dépréciation est un changement d'estimation (art. 122-5), traité de façon prospective par le résultat.",
+   "src": "PCG art. 122-1, 122-2 et 122-5",
    "fiab": "stable",
    "niveau": 2
   },
@@ -384,8 +384,8 @@
     "Dans le résultat de l'exercice précédent, qui est corrigé"
    ],
    "a": 1,
-   "why": "PCG art. 122-2 : l'impact du changement de méthode, calculé de façon rétrospective et après effet d'impôt, est imputé en report à nouveau (compte 110 ou 119) à l'ouverture, sauf si des règles fiscales imposent de le constater en résultat. Les comptes de l'exercice précédent ne sont jamais modifiés (intangibilité du bilan d'ouverture) : seule une information pro forma figure en annexe. L'étalement sur cinq ans n'existe pas.",
-   "src": "PCG art. 122-2",
+   "why": "PCG art. 122-3 : l'impact du changement de méthode, calculé de façon rétrospective et après effet d'impôt, est imputé en report à nouveau (compte 110 ou 119) à l'ouverture, sauf si des règles fiscales imposent de le constater en résultat. Les comptes de l'exercice précédent ne sont jamais modifiés (intangibilité du bilan d'ouverture) : seule une information pro forma figure en annexe. L'étalement sur cinq ans n'existe pas.",
+   "src": "PCG art. 122-3",
    "fiab": "stable",
    "niveau": 2
   },
@@ -395,8 +395,8 @@
    "a": 21000,
    "unit": "€",
    "tol": 1,
-   "why": "Amortissements cumulés fin N+2 : 120 000 / 10 × 3 = 36 000. VNC au 1er janvier N+3 : 120 000 − 36 000 = 84 000. Changement d'estimation (PCG art. 122-3) : application prospective, la VNC est répartie sur la nouvelle durée résiduelle : 84 000 / 4 = 21 000 € par an. On ne recalcule pas les exercices passés (ce serait un traitement rétrospectif réservé aux changements de méthode).",
-   "src": "PCG art. 122-3 (changement d'estimation) ; PCG art. 214-1 s. (plan d'amortissement)",
+   "why": "Amortissements cumulés fin N+2 : 120 000 / 10 × 3 = 36 000. VNC au 1er janvier N+3 : 120 000 − 36 000 = 84 000. Changement d'estimation (PCG art. 122-5) : application prospective, la VNC est répartie sur la nouvelle durée résiduelle : 84 000 / 4 = 21 000 € par an. On ne recalcule pas les exercices passés (ce serait un traitement rétrospectif réservé aux changements de méthode).",
+   "src": "PCG art. 122-5 (changement d'estimation) ; PCG art. 214-1 s. (plan d'amortissement)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -410,8 +410,8 @@
     "Ne rien comptabiliser puisque l'exercice N−2 est clos"
    ],
    "a": 2,
-   "why": "PCG art. 122-5 : les corrections d'erreurs sont comptabilisées dans le résultat de l'exercice au cours duquel elles sont constatées, avec mention en annexe de leur nature et de leur incidence. Les comptes antérieurs, approuvés, ne sont pas rouverts (intangibilité). L'imputation sur le report à nouveau est réservée aux changements de méthode, pas aux erreurs. Ignorer la charge violerait l'image fidèle.",
-   "src": "PCG art. 122-5",
+   "why": "PCG art. 122-6 : les corrections d'erreurs sont comptabilisées dans le résultat de l'exercice au cours duquel elles sont constatées, avec mention en annexe de leur nature et de leur incidence. Les comptes antérieurs, approuvés, ne sont pas rouverts (intangibilité). L'imputation sur le report à nouveau est réservée aux changements de méthode ; une erreur ne passe par les capitaux propres que si elle corrige une écriture imputée directement sur ceux-ci, ce qui n'est pas le cas d'une charge oubliée. Ignorer la charge violerait l'image fidèle.",
+   "src": "PCG art. 122-6",
    "fiab": "stable",
    "niveau": 2
   },
@@ -425,8 +425,8 @@
     "Passage de la perte en charge dans les comptes de N+1 uniquement"
    ],
    "a": 2,
-   "why": "Le client était déjà en difficulté à la clôture : la liquidation prononcée avant l'arrêté des comptes confirme une situation existante (lien direct et prépondérant). L'article L. 123-20 du Code de commerce impose de tenir compte des risques et pertes nés au cours de l'exercice même s'ils ne sont connus qu'entre la clôture et l'établissement des comptes : on déprécie la créance en N. La simple mention en annexe vaut pour les événements sans lien avec la clôture.",
-   "src": "C. com., art. L. 123-20",
+   "why": "Le client était déjà en difficulté à la clôture : la liquidation prononcée avant l'arrêté des comptes confirme une situation existante (lien direct et prépondérant). Le principe de prudence (C. com., art. L. 123-20) impose de constater les dépréciations nécessaires, et un événement postérieur qui a un lien direct et prépondérant avec une situation existant à la clôture est pris en compte dans les comptes de l'exercice clos : on déprécie la créance en N. La simple mention en annexe vaut pour les événements sans lien avec la clôture.",
+   "src": "C. com., art. L. 123-20 ; PCG art. 513-4",
    "fiab": "stable",
    "niveau": 2
   },
@@ -441,7 +441,7 @@
    ],
    "a": 2,
    "why": "L'incendie est né après la clôture et n'a aucun lien avec une situation existant au 31 décembre N : les comptes de N ne sont pas ajustés (l'entrepôt existait et valait sa VNC à la clôture). L'événement, significatif, est mentionné en annexe ; la perte sera comptabilisée en N+1. Seul un événement remettant en cause la continuité d'exploitation conduirait à établir les comptes de N en valeurs liquidatives.",
-   "src": "C. com., art. L. 123-20 ; PCG art. 513-4",
+   "src": "C. com., art. L. 123-20 ; PCG art. 513-4 ; annexe (règlement ANC n° 2022-06)",
    "fiab": "stable",
    "niveau": 2
   },

@@ -60,7 +60,7 @@
   },
   {
    "h": "Le cas du fonds commercial",
-   "html": "<p>Le <b>fonds commercial</b> (207) est présumé avoir une durée d'utilisation <b>non limitée</b> : il n'est <b>pas amorti</b>, mais fait l'objet d'un <b>test de dépréciation obligatoire à chaque clôture</b>, qu'il existe ou non un indice de perte de valeur (PCG art. 214-3 et 214-15). Lorsque sa durée d'utilisation est limitée (clause contractuelle, activité promise à disparaître), il est amorti sur cette durée ou, si elle ne peut être déterminée de façon fiable, sur <b>10 ans</b>.</p><p>Les <b>petites entreprises</b> (au sens de l'art. L. 123-16 C. com.) peuvent, sur option, amortir tous leurs fonds commerciaux sur <b>10 ans</b> ; elles sont alors dispensées du test systématique, qui ne s'applique qu'en présence d'indice.</p><div class=\"note\"><b>Règle à retenir.</b> La dépréciation du fonds commercial est <b>définitive</b> : elle n'est jamais reprise, même si la valeur remonte (PCG art. 214-19).</div><p>Côté fiscal, l'amortissement du fonds commercial n'est en principe pas déductible ; à titre temporaire, la loi de finances pour 2022 a admis la déduction de l'amortissement comptable des fonds <b>acquis entre le 1er janvier 2022 et le 31 décembre 2025</b> (CGI art. 39, 1-2°). Pour les autres, l'amortissement comptable est réintégré extra-comptablement.</p>"
+   "html": "<p>Le <b>fonds commercial</b> (207) est présumé avoir une durée d'utilisation <b>non limitée</b> : il n'est <b>pas amorti</b>, mais fait l'objet d'un <b>test de dépréciation obligatoire à chaque clôture</b>, qu'il existe ou non un indice de perte de valeur (PCG art. 214-3 et 214-15). Lorsque sa durée d'utilisation est limitée (clause contractuelle, activité promise à disparaître), il est amorti sur cette durée ou, si elle ne peut être déterminée de façon fiable, sur <b>10 ans</b>.</p><p>Les <b>petites entreprises</b> (au sens de l'art. L. 123-16 C. com.) peuvent, sur option, amortir tous leurs fonds commerciaux sur <b>10 ans</b> ; elles sont alors dispensées du test systématique, qui ne s'applique qu'en présence d'indice.</p><div class=\"note\"><b>Règle à retenir.</b> La dépréciation du fonds commercial est <b>définitive</b> : elle n'est jamais reprise, même si la valeur remonte (PCG art. 214-19).</div><p>Côté fiscal, l'amortissement du fonds commercial n'est en principe pas déductible ; à titre temporaire, la loi de finances pour 2022 a admis la déduction de l'amortissement comptable des fonds <b>acquis entre le 1er janvier 2022 et le 31 décembre 2029</b> (CGI art. 39, 1-2° ; date limite portée du 31 décembre 2025 au 31 décembre 2029 par la loi de finances pour 2026, art. 13). Pour les autres, l'amortissement comptable est réintégré extra-comptablement.</p>"
   },
   {
    "h": "Sortie des immobilisations : cession, rebut, sinistre, échange",
@@ -101,7 +101,7 @@
   },
   {
    "h": "Crédit-bail et location-financement",
-   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (C. com., art. R. 123-195 s. ; PCG, contenu de l'annexe, art. 831-1 s.).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01), le retraitement de la <b>location-financement</b> (inscription du bien à l'actif et de la dette au passif) est la méthode préférentielle ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
+   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (CMF, art. R. 313-14, auquel renvoie l'art. R. 123-195 C. com. ; PCG, contenu de l'annexe, art. 831-1 s.).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01), le retraitement de la <b>location-financement</b> (inscription du bien à l'actif et de la dette au passif) est la méthode préférentielle ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
   }
  ],
  "sources": [
@@ -123,14 +123,14 @@
   },
   {
    "ref": "CGI art. 39, 1-2°",
-   "note": "Déductibilité temporaire de l'amortissement des fonds commerciaux acquis entre 2022 et 2025"
+   "note": "Déductibilité temporaire de l'amortissement des fonds commerciaux acquis entre 2022 et 2029 (loi de finances pour 2026, art. 13)"
   },
   {
    "ref": "Règlement ANC n° 2022-06",
    "note": "Comptes 657 / 757 pour les cessions, 7587 indemnités d'assurance, maintien de 6872 / 7872 et 145"
   },
   {
-   "ref": "C. com., art. R. 123-195 s. ; PCG art. 831-1 s.",
+   "ref": "C. com., art. R. 123-195 ; CMF, art. R. 313-14 ; PCG art. 831-1 s.",
    "note": "Information en annexe sur le crédit-bail"
   },
   {
@@ -171,7 +171,7 @@
    "a": 13500,
    "unit": "€",
    "tol": 1,
-   "why": "Dotation = base × unités de l'exercice / unités totales prévues = 90 000 × 45 000 / 300 000 = 13 500 €. Le mode des unités d'œuvre est admis quand il reflète mieux le rythme de consommation des avantages économiques que le temps (PCG art. 214-13). Fiscalement, le minimum linéaire (CGI art. 39 B) doit être vérifié sur la durée totale.",
+   "why": "Dotation = base × unités de l'exercice / unités totales prévues = 90 000 × 45 000 / 300 000 = 13 500 €. Le mode des unités d'œuvre est admis quand il reflète mieux le rythme de consommation des avantages économiques que le temps (PCG art. 214-13). Fiscalement, l'amortissement minimal linéaire (CGI art. 39 B) doit être respecté à la clôture de chaque exercice, sur le cumul des amortissements pratiqués.",
    "src": "PCG art. 214-13",
    "fiab": "stable",
    "niveau": 2
@@ -300,8 +300,8 @@
     "16 667 €"
    ],
    "a": 1,
-   "why": "Amortissements cumulés fin N+3 : 10 000 × 4 = 40 000 ; VNC 60 000. Révision prospective (changement d'estimation, PCG art. 122-3 et 214-13) : 60 000 / 3 = 20 000 € par an. Garder 10 000 ignorerait la révision ; 33 333 répartirait à tort le coût d'origine sur 3 ans ; 16 667 correspond à une VNC erronée de 50 000.",
-   "src": "PCG art. 122-3 et 214-13",
+   "why": "Amortissements cumulés fin N+3 : 10 000 × 4 = 40 000 ; VNC 60 000. Révision prospective (changement d'estimation, PCG art. 122-5 et 214-14) : 60 000 / 3 = 20 000 € par an. Garder 10 000 ignorerait la révision ; 33 333 répartirait à tort le coût d'origine sur 3 ans ; 16 667 correspond à une VNC erronée de 50 000.",
+   "src": "PCG art. 122-5 et 214-14",
    "fiab": "stable",
    "niveau": 2
   },
@@ -422,14 +422,14 @@
    "q": "Le fonds commercial acquis par une petite entreprise en 2024 et amorti comptablement sur dix ans :",
    "opts": [
     "Donne lieu à un amortissement jamais déductible, quelle que soit la date d'acquisition",
-    "Donne lieu à un amortissement déductible grâce au dispositif temporaire 2022-2025",
+    "Donne lieu à un amortissement déductible grâce au dispositif temporaire 2022-2029",
     "Doit être réintégré intégralement l'année de l'acquisition",
     "N'est amortissable que si le commissaire aux comptes l'autorise expressément"
    ],
    "a": 1,
-   "why": "Par principe, l'amortissement du fonds commercial n'est pas déductible (CGI art. 39, 1-2°). La loi de finances pour 2022 a ouvert une exception temporaire : l'amortissement comptabilisé des fonds acquis entre le 1er janvier 2022 et le 31 décembre 2025 est déductible, ce qui vise précisément les petites entreprises utilisant l'option de dix ans. Hors de cette fenêtre, l'amortissement est réintégré chaque année sur le tableau 2058-A.",
-   "src": "CGI art. 39, 1-2° (LF 2022, art. 23)",
-   "fiab": "millésimé 2025",
+   "why": "Par principe, l'amortissement du fonds commercial n'est pas déductible (CGI art. 39, 1-2°). La loi de finances pour 2022 a ouvert une exception temporaire, prorogée par la loi de finances pour 2026 (art. 13) : l'amortissement comptabilisé des fonds acquis entre le 1er janvier 2022 et le 31 décembre 2029 est déductible (sauf fonds acquis auprès d'une entreprise liée), ce qui vise notamment les petites entreprises utilisant l'option de dix ans. Hors de cette fenêtre, l'amortissement est réintégré chaque année sur le tableau 2058-A.",
+   "src": "CGI art. 39, 1-2° (LF 2022, art. 23 ; LF 2026, art. 13)",
+   "fiab": "millésimé 2026",
    "niveau": 3
   },
   {

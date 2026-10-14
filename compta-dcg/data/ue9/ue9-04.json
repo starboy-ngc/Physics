@@ -9,7 +9,7 @@
  "lecon": [
   {
    "h": "Les flux de trésorerie et les virements internes",
-   "html": "<p>Chèque, virement, carte, prélèvement : <code>512</code> Banque. Espèces : <code>530</code> Caisse. Un encaissement client débite 512 et crédite 411. Un paiement fournisseur débite 401 et crédite 512. Un chèque reçu mais pas encore déposé peut transiter par <code>5112</code> Chèques à encaisser.</p><p>Pour un mouvement <b>entre deux comptes de trésorerie</b> (retrait d'espèces, virement de la banque A vers la banque B), le PCG prévoit le compte de passage <code>580</code> Virements internes. Il évite qu'une même opération soit enregistrée deux fois quand elle apparaît dans deux journaux de trésorerie (journal de banque et journal de caisse) : chaque journal passe sa moitié via 580, qui se solde.</p><p>Exemple : retrait de <span class=\"mono\">500 €</span> au distributeur pour alimenter la caisse. Journal de banque : débit 580, crédit 512. Journal de caisse : débit 530, crédit 580. En exercice simple, on passe souvent directement débit 530, crédit 512.</p><div class=\"note\"><b>Rappel.</b> Le compte 580 doit toujours être soldé à la clôture. Un solde en 580 signale qu'une des deux moitiés de l'opération n'a pas été enregistrée.</div>",
+   "html": "<p>Chèque, virement, carte, prélèvement : <code>512</code> Banque. Espèces : <code>530</code> Caisse. Un encaissement client débite 512 et crédite 411. Un paiement fournisseur débite 401 et crédite 512. Un chèque reçu mais pas encore déposé peut transiter par <code>5112</code> Chèques à encaisser.</p><p>Pour un mouvement <b>entre deux comptes de trésorerie</b> (retrait d'espèces, virement de la banque A vers la banque B), le plan de comptes prévoit le compte <code>58</code> Virements internes, ici dans sa subdivision <code>580</code>, qui sert de compte de passage. Il évite qu'une même opération soit enregistrée deux fois quand elle apparaît dans deux journaux de trésorerie (journal de banque et journal de caisse) : chaque journal passe sa moitié via 580, qui se solde.</p><p>Exemple : retrait de <span class=\"mono\">500 €</span> au distributeur pour alimenter la caisse. Journal de banque : débit 580, crédit 512. Journal de caisse : débit 530, crédit 580. En exercice simple, on passe souvent directement débit 530, crédit 512.</p><div class=\"note\"><b>Rappel.</b> Le compte 580 doit toujours être soldé à la clôture. Un solde en 580 signale qu'une des deux moitiés de l'opération n'a pas été enregistrée.</div>",
    "entry": [
     {
      "a": "580",
@@ -137,8 +137,8 @@
    "note": "Bulletin de paie obligatoire et ses mentions"
   },
   {
-   "ref": "CSS, art. L. 242-1",
-   "note": "Assiette des cotisations de sécurité sociale : rémunération brute"
+   "ref": "CSS, art. L. 242-1 et L. 136-1-1",
+   "note": "Assiette des cotisations de sécurité sociale : revenus d'activité (salaire brut, primes, avantages en nature)"
   },
   {
    "ref": "CGI, art. 204 A et suivants",
@@ -437,7 +437,7 @@
     "À enregistrer les transferts de charges"
    ],
    "a": 1,
-   "why": "Quand une opération (retrait d'espèces, virement entre deux banques) apparaît à la fois dans le journal de banque et dans le journal de caisse ou de l'autre banque, chaque journal l'enregistre pour sa part en contrepartie de 580, qui se solde. Les virements clients passent par 411/512, les salaires par 421/512, et les transferts de charges ont disparu du PCG 2025.",
+   "why": "Quand une opération (retrait d'espèces, virement entre deux banques) apparaît à la fois dans le journal de banque et dans le journal de caisse ou de l'autre banque, chaque journal l'enregistre pour sa part en contrepartie de 580, qui se solde. Les virements clients passent par 411/512, les salaires par 421/512, et la technique des transferts de charges a disparu du PCG 2025 (le règlement ANC n° 2025-05 ne maintient le compte 791 que pour les concessions d'aménagement).",
    "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },

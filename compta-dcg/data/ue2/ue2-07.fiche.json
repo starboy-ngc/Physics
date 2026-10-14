@@ -2,99 +2,105 @@
  "id": "ue2-07",
  "maj": "2026-10-14",
  "programme": {
-  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE1 Fondamentaux du droit et UE2), BO ESR n° 25 du 20 juin 2019, applicable à la session 2026",
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1, BO ESR n° 26 du 27 juin 2019, applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "Programme 2025 : « 3.1 » notion et composition du fonds de commerce, bail commercial ; les actes de commerce sont exclus (traités en UE 1 du DCG)",
-   "Programme 2025 : « Appliquer le cadre juridique à une situation professionnelle » (85 heures)",
-   "Programme 2025 : « 2.3 » étendue du droit d'une personne juridique sur ses biens",
-   "Programme 2019 : le fonds de commerce (notion et composition) et le commerçant relèvent de l'UE 1 « Fondamentaux du droit » ; l'UE 2 traite « 1- L'entreprise en société » (entreprise individuelle et société)"
+   "Programme 2025 : compétence « Appliquer le cadre juridique à une situation professionnelle » (85 heures)",
+   "Programme 2025, 3.1 : notion et composition du fonds de commerce, traitées avec le bail commercial ; les actes de commerce en sont exclus (traités en UE 1 du DCG)",
+   "Programme 2025, 2.3 : étendue du droit d'une personne juridique sur ses biens",
+   "Programme 2019 (session 2026) : la notion et la composition du fonds de commerce relèvent de l'UE 1 ; le programme 2025 transfère le fonds de commerce et le bail commercial en UE 2"
   ]
  },
  "textes": [
   {
-   "ref": "C. com., art. L. 110-1 et L. 121-1",
-   "objet": "Actes de commerce ; définition du commerçant",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072567",
-   "version": "en vigueur (version à confirmer sur Légifrance)"
+   "ref": "C. com., art. L. 110-1 à L. 110-4",
+   "objet": "Actes de commerce ; preuve par tous moyens à l'égard des commerçants ; prescription de cinq ans",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133171/",
+   "version": "en vigueur (L. 110-1 modifié par l'ordonnance n° 2021-1192 du 15 septembre 2021, applicable depuis le 1er janvier 2022 ; délai de cinq ans de L. 110-4 issu de la loi n° 2008-561 du 17 juin 2008)"
   },
   {
-   "ref": "C. com., art. L. 110-3 et L. 110-4",
-   "objet": "Preuve par tous moyens entre commerçants ; prescription quinquennale",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027725867",
-   "version": "en vigueur (loi n° 2008-561 du 17 juin 2008 pour la prescription ; version à confirmer sur Légifrance)"
+   "ref": "C. com., art. L. 121-1 à L. 121-3 ; C. civ., art. 413-8",
+   "objet": "Qualité de commerçant ; mineur émancipé commerçant",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161246/",
+   "version": "en vigueur (L. 121-2 dans sa rédaction applicable depuis le 1er janvier 2020, ordonnance n° 2019-964 du 18 septembre 2019)"
   },
   {
-   "ref": "C. com., art. L. 123-1 à L. 123-5-2",
-   "objet": "Personnes tenues à l'immatriculation au registre du commerce et des sociétés",
+   "ref": "C. com., art. L. 123-1 à L. 123-5-2 ; L. 123-7 et L. 123-8",
+   "objet": "Personnes tenues à l'immatriculation au registre du commerce et des sociétés ; effets de l'immatriculation",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178751",
    "version": "en vigueur"
   },
   {
-   "ref": "C. com., art. R. 123-53 à R. 123-62",
-   "objet": "Déclarations aux fins d'immatriculation",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006199017/",
+   "ref": "C. com., art. L. 123-33",
+   "objet": "Formalités de création, de modification et de cessation par le guichet unique électronique",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
+   "version": "en vigueur depuis le 1er janvier 2023"
+  },
+  {
+   "ref": "C. com., art. L. 123-12 à L. 123-24",
+   "objet": "Obligations comptables applicables à tous les commerçants ; conservation pendant dix ans ; compte bancaire",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
    "version": "en vigueur"
   },
   {
-   "ref": "C. com., art. L. 123-12 à L. 123-22",
-   "objet": "Obligations comptables des commerçants",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/",
-   "version": "en vigueur (version à confirmer sur Légifrance)"
-  },
-  {
-   "ref": "C. com., art. L. 526-22 à L. 526-31 ; R. 526-26",
-   "objet": "Entrepreneur individuel : patrimoine professionnel (dont le fonds de commerce) et transfert universel",
+   "ref": "C. com., art. L. 526-22 à L. 526-31 ; R. 526-26 et R. 526-27",
+   "objet": "Entrepreneur individuel : patrimoine professionnel (dont le fonds de commerce), dénomination « EI », transfert du patrimoine professionnel",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045168637/",
-   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022)"
+   "version": "en vigueur depuis le 15 mai 2022 (loi n° 2022-172 du 14 février 2022 ; décret n° 2022-725 du 28 avril 2022) ; L. 526-22 modifié par la loi n° 2024-42 du 26 janvier 2024"
   },
   {
-   "ref": "C. com., art. L. 141-5, L. 141-12 à L. 141-22",
-   "objet": "Vente du fonds de commerce : privilège du vendeur, publicité, opposition des créanciers",
+   "ref": "C. com., art. L. 141-2 à L. 141-28",
+   "objet": "Vente du fonds de commerce : privilège du vendeur, publicité, opposition des créanciers, apport en société",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146036/",
-   "version": "en vigueur (loi n° 2019-744 du 19 juillet 2019 ; version à confirmer sur Légifrance)"
+   "version": "en vigueur (L. 141-1 abrogé par la loi n° 2019-744 du 19 juillet 2019 ; L. 141-12 dans sa rédaction en vigueur depuis le 24 mai 2019)"
   },
   {
    "ref": "C. com., art. L. 142-1 à L. 142-5",
    "objet": "Nantissement du fonds de commerce et éléments qu'il peut comprendre",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006220989/",
-   "version": "en vigueur (version à confirmer sur Légifrance)"
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072497",
+   "version": "en vigueur (L. 142-1 modifié par l'ordonnance n° 2021-1192 du 15 septembre 2021 portant réforme du droit des sûretés)"
   },
   {
    "ref": "C. com., art. L. 144-1 à L. 144-13",
-   "objet": "Location-gérance",
+   "objet": "Location-gérance : définition, solidarité du loueur jusqu'à la publication, exigibilité des dettes en fin de contrat",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146039",
-   "version": "en vigueur (loi n° 2019-744 du 19 juillet 2019 ; version à confirmer sur Légifrance)"
+   "version": "en vigueur (L. 144-7 modifié par la loi n° 2016-1691 du 9 décembre 2016)"
   },
   {
    "ref": "C. com., art. L. 145-1 à L. 145-60",
-   "objet": "Statut des baux commerciaux",
+   "objet": "Statut des baux commerciaux : champ, durée, renouvellement, indemnité d'éviction, loyer, déspécialisation",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146040/",
-   "version": "en vigueur (loi n° 2014-626 du 18 juin 2014 ; version à confirmer sur Légifrance)"
+   "version": "en vigueur (loi n° 2014-626 du 18 juin 2014 ; L. 145-4 modifié par la loi n° 2018-1021 du 23 novembre 2018 ; L. 145-38-1 créé par la loi n° 2026-403 du 26 mai 2026)"
   },
   {
-   "ref": "CGI, art. 719",
-   "objet": "Droits d'enregistrement sur les cessions de fonds de commerce",
+   "ref": "CGI, art. 719, 1584 et 1595 ; BOI-ENR-DMTOM-10-20-20",
+   "objet": "Droits d'enregistrement sur les cessions de fonds de commerce et de clientèles et taxes additionnelles",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019291809",
-   "version": "en vigueur (version à confirmer sur Légifrance)"
+   "version": "en vigueur (seuils de 23 000 € et 200 000 €) ; BOFiP du 19 juin 2024"
   },
   {
    "ref": "CPI, art. L. 611-2 et L. 712-1",
-   "objet": "Durée du brevet et de la marque",
-   "url": null,
-   "version": "en vigueur (version à confirmer sur Légifrance)"
+   "objet": "Durée du brevet d'invention et de l'enregistrement de la marque",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041573176",
+   "version": "en vigueur"
   },
   {
-   "ref": "C. com., art. L. 210-1",
-   "objet": "Sociétés commerciales par la forme",
+   "ref": "C. com., art. L. 210-1 et L. 210-6 ; C. civ., art. 1842",
+   "objet": "Sociétés commerciales par la forme ; personnalité morale à compter de l'immatriculation",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
-   "version": "en vigueur (page du livre II)"
+   "version": "en vigueur"
   },
   {
-   "ref": "C. civ., art. 1843-3",
-   "objet": "Apport en nature d'un fonds de commerce à une société",
+   "ref": "C. civ., art. 1843-3 ; C. com., art. L. 141-21, L. 141-22, L. 223-9 et L. 225-8",
+   "objet": "Apport en société d'un fonds de commerce : apport en nature, publicité, évaluation par un commissaire aux apports",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444153/",
    "version": "en vigueur"
+  },
+  {
+   "ref": "Loi n° 2023-1059 du 20 novembre 2023, art. 26",
+   "objet": "Expérimentation des tribunaux des activités économiques",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
+   "version": "en vigueur ; expérimentation de quatre ans ouverte le 1er janvier 2025"
   }
  ],
  "sections": [
@@ -102,45 +108,46 @@
    "h": "Définitions",
    "items": [
     {
-     "t": "<b>Commerçant et actes de commerce</b> : sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle. La loi répute actes de commerce, notamment, tout achat de biens meubles pour les revendre, toute entreprise de manufactures, de commission, de transport, de location de meubles, de fournitures, d'agence, de spectacles publics, toute opération de banque ou de change, et les lettres de change entre toutes personnes.",
-     "src": "C. com., art. L. 110-1 et L. 121-1",
+     "t": "<b>Commerçant et actes de commerce</b> : sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle. L'article L. 110-1 répute actes de commerce, notamment, tout achat de biens meubles pour les revendre, toute entreprise de location de meubles, de manufactures, de commission, de transport, de fournitures, d'agence ou de spectacles publics, toute opération de change, banque ou courtage et, entre toutes personnes, les lettres de change.",
+     "cite": "« Sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle. »",
+     "src": "C. com., art. L. 121-1 et L. 110-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219167",
-     "fiab": "stable",
-     "cite": "« Sont commerçants ceux qui exercent des actes de commerce et en font leur profession habituelle. »"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Entrepreneur individuel</b> : toute personne physique qui exerce en son nom propre une ou plusieurs activités professionnelles indépendantes ; le commerçant personne physique en est l'exemple type. Son patrimoine professionnel réunit les biens, droits, obligations et sûretés utiles à son activité.",
+     "t": "<b>Entrepreneur individuel</b> : personne physique qui exerce en son nom propre une ou plusieurs activités professionnelles indépendantes ; le commerçant personne physique qui exerce sans constituer de société relève de ce statut. Les biens, droits, obligations et sûretés utiles à son activité forment son patrimoine professionnel ; le reste forme son patrimoine personnel.",
      "cite": "« Les biens, droits, obligations et sûretés dont il est titulaire et qui sont utiles à son activité ou à ses activités professionnelles indépendantes constituent le patrimoine professionnel de l'entrepreneur individuel. »",
      "src": "C. com., art. L. 526-22",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
      "fiab": "stable"
     },
     {
-     "t": "<b>Registre du commerce et des sociétés</b> : registre auquel sont immatriculées, sur leur déclaration, les personnes physiques ayant la qualité de commerçant, ainsi que les sociétés et groupements d'intérêt économique ayant leur siège dans un département français et jouissant de la personnalité morale.",
+     "t": "<b>Registre du commerce et des sociétés</b> : registre auquel sont immatriculés, sur leur déclaration, notamment les personnes physiques ayant la qualité de commerçant et les sociétés et groupements d'intérêt économique ayant leur siège dans un département et jouissant de la personnalité morale.",
      "src": "C. com., art. L. 123-1",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219283/2017-02-04",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178751",
      "fiab": "stable"
     },
     {
-     "t": "<b>Fonds de commerce</b> : ensemble d'éléments mobiliers, corporels et incorporels, affectés à l'exploitation d'une activité commerciale ; les éléments incorporels comprennent l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage, les brevets, licences, marques, dessins et modèles ; les éléments corporels, le mobilier commercial, le matériel et l'outillage. La clientèle en est l'élément essentiel.",
+     "t": "<b>Éléments du fonds de commerce</b> : l'article L. 142-2 énumère limitativement les éléments susceptibles d'être compris dans le nantissement d'un fonds : l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage, le mobilier commercial, le matériel ou l'outillage servant à l'exploitation, les brevets d'invention, les licences, les marques, les dessins et modèles industriels et, généralement, les droits de propriété intellectuelle qui y sont attachés.",
      "src": "C. com., art. L. 142-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006220989/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Fonds de commerce et patrimoine professionnel</b> : pour l'entrepreneur individuel, le fonds de commerce, avec les biens corporels ou incorporels qui le constituent, ainsi que les marchandises, le matériel, l'outillage, les données clients, brevets, licences et marques, font partie des biens « utiles à l'activité » qui composent le patrimoine professionnel.",
-     "src": "C. com., art. R. 526-26 (décret n° 2022-725 du 28 avril 2022)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045697812/2023-01-01",
+     "t": "<b>Fonds de commerce et patrimoine professionnel</b> : les biens utiles à l'activité de l'entrepreneur individuel s'entendent de ceux qui, par nature, par destination ou en fonction de leur objet, servent à cette activité ; le décret cite notamment le fonds de commerce et des biens incorporels tels que les données relatives aux clients, les brevets et les marques.",
+     "cite": "« I.-Pour l'application du deuxième alinéa de l'article L. 526-22, les biens, droits, obligations et sûretés dont l'entrepreneur individuel est titulaire, utiles à l'activité professionnelle, s'entendent de ceux qui, par nature, par destination ou en fonction de leur objet, servent à cette activité […] »",
+     "src": "C. com., art. R. 526-26, I (décret n° 2022-725 du 28 avril 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045697794/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Bail commercial</b> : bail des immeubles ou locaux dans lesquels un fonds est exploité, que ce fonds appartienne à un commerçant ou à un artisan immatriculé ; il confère au locataire un droit au renouvellement et relève d'un statut d'ordre public.",
+     "t": "<b>Bail commercial</b> : le statut s'applique aux baux des immeubles ou locaux dans lesquels un fonds est exploité, que ce fonds appartienne à un commerçant ou un industriel immatriculé au registre du commerce et des sociétés ou à un chef d'entreprise artisanale immatriculé, ainsi qu'à certains locaux accessoires et terrains nus. Sont réputées non écrites les clauses qui ont pour effet de faire échec au droit de renouvellement ou à certaines dispositions du statut.",
      "src": "C. com., art. L. 145-1 et L. 145-15",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044056347",
      "fiab": "stable"
     },
     {
-     "t": "<b>Location-gérance</b> : contrat par lequel le propriétaire ou l'exploitant d'un fonds de commerce en concède totalement ou partiellement la location à un gérant qui l'exploite à ses risques et périls.",
+     "t": "<b>Location-gérance</b> : nonobstant toute clause contraire, contrat ou convention par lequel le propriétaire ou l'exploitant d'un fonds de commerce ou d'un établissement artisanal en concède totalement ou partiellement la location à un gérant qui l'exploite à ses risques et périls.",
      "src": "C. com., art. L. 144-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006221261",
      "fiab": "stable"
@@ -151,100 +158,121 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "<b>Capacité commerciale</b> : le mineur émancipé peut être commerçant sur autorisation du juge des tutelles au moment de l'émancipation ou du président du tribunal judiciaire ensuite ; le mineur non émancipé ne peut pas l'être. Le majeur protégé est soumis aux règles de son régime de protection.",
+     "t": "<b>Capacité commerciale</b> : le mineur émancipé peut être commerçant sur autorisation du juge des tutelles au moment de la décision d'émancipation, ou du président du tribunal judiciaire s'il formule cette demande après avoir été émancipé. L'émancipation seule ne suffit donc pas.",
      "src": "C. com., art. L. 121-2 ; C. civ., art. 413-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039280381/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Déclaration aux fins d'immatriculation</b> : la personne physique commerçante et la société déclarent, par l'intermédiaire du guichet unique, les mentions prévues par le Code de commerce (identité, activité, siège ou établissement, dirigeants, forme et capital pour les sociétés) ; toute modification donne lieu à une inscription modificative.",
-     "src": "C. com., art. R. 123-53 et s. ; L. 123-33",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006199017/",
+     "t": "<b>Guichet unique</b> : les entreprises déclarent leur création, les modifications de leur situation et la cessation de leur activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné par décret ; ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard. Les formalités liées à l'accès aux activités réglementées sont réservées.",
+     "src": "C. com., art. L. 123-33",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
      "fiab": "stable"
     },
     {
-     "t": "<b>Obligations comptables et bancaires</b> : toute personne physique ou morale ayant la qualité de commerçant procède à l'enregistrement chronologique des mouvements affectant son patrimoine, contrôle par inventaire au moins une fois par an l'existence et la valeur des éléments actifs et passifs, et établit des comptes annuels ; les documents comptables sont conservés dix ans. Le commerçant doit détenir un compte dans un établissement de crédit.",
-     "src": "C. com., art. L. 123-12 et L. 123-22 ; C. mon. fin., art. L. 123-24",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+     "t": "<b>Obligations comptables et bancaires</b> : toute personne physique ou morale ayant la qualité de commerçant enregistre chronologiquement les mouvements affectant le patrimoine de son entreprise, contrôle par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs, et établit des comptes annuels à la clôture de l'exercice. Les documents comptables et les pièces justificatives sont conservés pendant dix ans. Tout commerçant est en outre tenu de se faire ouvrir un compte dans un établissement de crédit ou dans un bureau de chèques postaux.",
+     "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »",
+     "src": "C. com., art. L. 123-12, L. 123-22 et L. 123-24",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Preuve et prescription</b> : à l'égard des commerçants, les actes de commerce se prouvent par tous moyens, à moins que la loi n'en dispose autrement ; les obligations nées à l'occasion de leur commerce entre commerçants, ou entre commerçants et non-commerçants, se prescrivent par cinq ans si elles ne sont pas soumises à des prescriptions plus courtes.",
+     "t": "<b>Preuve et prescription</b> : à l'égard des commerçants, les actes de commerce se prouvent par tous moyens, à moins que la loi n'en dispose autrement ; les obligations nées à l'occasion de leur commerce entre commerçants, ou entre commerçants et non-commerçants, se prescrivent par cinq ans si elles ne sont pas soumises à des prescriptions spéciales plus courtes.",
+     "cite": "« I.-Les obligations nées à l'occasion de leur commerce entre commerçants ou entre commerçants et non-commerçants se prescrivent par cinq ans si elles ne sont pas soumises à des prescriptions spéciales plus courtes. »",
      "src": "C. com., art. L. 110-3 et L. 110-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027725867",
-     "fiab": "stable",
-     "cite": "« I.-Les obligations nées à l'occasion de leur commerce entre commerçants ou entre commerçants et non-commerçants se prescrivent par cinq ans si elles ne sont pas soumises à des prescriptions spéciales plus courtes. »"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Sociétés commerciales par la forme</b> : le caractère commercial d'une société est déterminé par sa forme ou par son objet ; sont commerciales à raison de leur forme et quel que soit leur objet les SNC, les sociétés en commandite simple, les SARL et les sociétés par actions. Elles sont immatriculées au RCS et soumises aux obligations des commerçants.",
-     "src": "C. com., art. L. 210-1 ; L. 123-1",
+     "t": "<b>Sociétés commerciales</b> : le caractère commercial d'une société est déterminé par sa forme ou par son objet ; sont commerciales à raison de leur forme et quel que soit leur objet les sociétés en nom collectif, les sociétés en commandite simple, les sociétés à responsabilité limitée et les sociétés par actions. Les sociétés commerciales jouissent de la personnalité morale à dater de leur immatriculation au registre du commerce et des sociétés.",
+     "src": "C. com., art. L. 210-1 et L. 210-6",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
      "fiab": "stable"
     },
     {
-     "t": "<b>Vente du fonds de commerce</b> : la vente est publiée dans un support d'annonces légales et au BODACC dans les quinze jours de l'acte ; tout créancier du vendeur peut former opposition au paiement du prix dans les dix jours de la dernière publication, ce qui rend le prix indisponible entre les mains de l'acquéreur ou d'un séquestre. Le vendeur impayé dispose d'un privilège inscrit dans les trente jours de l'acte. Le fonds peut aussi être nanti, le nantissement portant, à défaut de désignation expresse, sur l'enseigne, le nom commercial, le droit au bail, la clientèle et l'achalandage.",
-     "src": "C. com., art. L. 141-5, L. 141-12, L. 141-14 et L. 142-2",
+     "t": "<b>Publicité de la vente et opposition</b> : sauf cession réalisée en liquidation judiciaire (art. L. 642-5), toute vente ou cession de fonds de commerce est publiée dans la quinzaine de sa date, à la diligence de l'acquéreur, sous forme d'extrait ou d'avis dans un support habilité à recevoir les annonces légales, et fait l'objet d'une publication au BODACC. Dans les dix jours suivant la dernière de ces publications, tout créancier du vendeur, que sa créance soit ou non exigible, peut former opposition au paiement du prix ; l'opposition énonce, à peine de nullité, le montant et les causes de la créance.",
+     "cite": "« Dans les dix jours suivant la dernière en date des publications prévues à l'article L. 141-12, tout créancier du précédent propriétaire […] peut former au domicile élu […] opposition au paiement du prix. »",
+     "src": "C. com., art. L. 141-12 et L. 141-14",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584414",
      "fiab": "stable"
     },
     {
-     "t": "<b>Location-gérance</b> : le contrat est publié dans les quinze jours ; jusqu'à la publication du contrat, le loueur est solidairement responsable avec le locataire-gérant des dettes contractées par celui-ci à l'occasion de l'exploitation du fonds (la solidarité qui se prolongeait six mois après la publication a été supprimée par la loi n° 2016-1691 du 9 décembre 2016). La fin de la location-gérance rend immédiatement exigibles les dettes du locataire-gérant afférentes à l'exploitation.",
-     "src": "C. com., art. L. 144-6, L. 144-7 (rédaction issue de la loi n° 2016-1691 du 9 décembre 2016) et L. 144-9",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146039",
-     "fiab": "stable",
-     "cite": "« Jusqu'à la publication du contrat de location-gérance, le loueur du fonds est solidairement responsable avec le locataire-gérant des dettes contractées par celui-ci […] »"
+     "t": "<b>Privilège du vendeur</b> : il n'existe que si la vente est constatée par un acte authentique ou sous seing privé dûment enregistré et s'il est inscrit sur un registre public tenu au greffe du tribunal de commerce du lieu d'exploitation du fonds. Il ne porte que sur les éléments énumérés dans la vente et dans l'inscription et, à défaut de désignation précise, sur l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. Des prix distincts sont établis pour les éléments incorporels, le matériel et les marchandises.",
+     "cite": "« Des prix distincts sont établis pour les éléments incorporels du fonds, le matériel et les marchandises. »",
+     "src": "C. com., art. L. 141-5",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161258",
+     "fiab": "stable"
     },
     {
-     "t": "<b>Apport du fonds à une société</b> : l'apport d'un fonds de commerce est un apport en nature ; l'apporteur est débiteur envers la société de tout ce qu'il a promis d'apporter, est tenu à garantie comme un vendeur et l'apport est évalué, dans les sociétés à risque limité, sous le contrôle d'un commissaire aux apports.",
-     "src": "C. civ., art. 1843-3 ; C. com., art. L. 223-9 et L. 225-8",
+     "t": "<b>Nantissement du fonds</b> : le fonds de commerce peut être nanti sans autres conditions et formalités que celles prévues par le Code de commerce ; le nantissement ne donne pas au créancier le droit de se faire attribuer le fonds en paiement. À défaut de désignation expresse et précise dans l'acte qui le constitue, il ne comprend que l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. Les marchandises ne figurent pas dans la liste limitative de l'article L. 142-2.",
+     "src": "C. com., art. L. 142-1 et L. 142-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072497",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Location-gérance</b> : jusqu'à la publication du contrat, le loueur du fonds est solidairement responsable avec le locataire-gérant des dettes contractées par celui-ci à l'occasion de l'exploitation du fonds ; la prolongation de cette solidarité pendant six mois après la publication a été supprimée par la loi n° 2016-1691 du 9 décembre 2016. Le contrat est publié dans la quinzaine de sa date, sous forme d'extrait ou d'avis, dans un support habilité à recevoir les annonces légales. La fin de la location-gérance rend immédiatement exigibles les dettes afférentes à l'exploitation du fonds contractées par le locataire-gérant pendant la gérance.",
+     "cite": "« Jusqu'à la publication du contrat de location-gérance, le loueur du fonds est solidairement responsable avec le locataire-gérant des dettes contractées par celui-ci […] »",
+     "src": "C. com., art. L. 144-7 (rédaction issue de la loi n° 2016-1691 du 9 décembre 2016) et L. 144-9 ; art. R. 144-1 à D. 144-5",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146039",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Apport du fonds à une société</b> : c'est un apport en nature, réalisé par le transfert des droits correspondants et la mise à la disposition effective des biens ; l'apporteur en propriété est garant envers la société comme un vendeur envers son acheteur. L'apport obéit à des règles propres de publicité et de protection des créanciers de l'apporteur. Dans la SARL et la SA, les apports en nature sont évalués par un commissaire aux apports, sauf dans les cas de dispense prévus par la loi.",
+     "src": "C. civ., art. 1843-3 ; C. com., art. L. 141-21, L. 141-22, L. 223-9 et L. 225-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444153/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Transfert universel du patrimoine professionnel</b> : l'entrepreneur individuel peut céder à titre onéreux, transmettre à titre gratuit ou apporter en société l'intégralité de son patrimoine professionnel, sans liquidation ; le transfert est publié et les créanciers peuvent former opposition dans un délai fixé par décret.",
+     "t": "<b>Transfert du patrimoine professionnel</b> : l'entrepreneur individuel peut céder à titre onéreux, transmettre à titre gratuit entre vifs ou apporter en société l'intégralité de son patrimoine professionnel, sans qu'il soit procédé à sa liquidation ; le transfert fait l'objet d'une publicité et les créanciers dont la créance est antérieure peuvent y former opposition.",
      "src": "C. com., art. L. 526-27 à L. 526-31",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045168649/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Mention « EI »</b> : l'entrepreneur individuel fait précéder ou suivre son nom, sur ses documents et correspondances à usage professionnel, de la mention « entrepreneur individuel » ou des initiales « EI », et il utilise un compte bancaire dédié à son activité professionnelle lorsqu'il y est tenu.",
-     "src": "C. com., art. R. 526-27 (décret n° 2022-725 du 28 avril 2022)",
-     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045695864",
+     "t": "<b>Dénomination « EI » et présomption comptable</b> : la dénomination utilisée pour l'activité professionnelle de l'entrepreneur individuel incorpore son nom ou nom d'usage, précédé ou suivi immédiatement des mots « entrepreneur individuel » ou des initiales « EI ». Lorsque sa comptabilité est régulière et sincère, son patrimoine professionnel est présumé comprendre au moins l'ensemble des éléments enregistrés au titre des documents comptables.",
+     "src": "C. com., art. R. 526-26, II, et R. 526-27 (décret n° 2022-725 du 28 avril 2022)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045697794/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Présomption comptable</b> : lorsque l'entrepreneur individuel est tenu à une comptabilité et la tient de manière régulière et sincère, son patrimoine professionnel est présumé comprendre au moins l'ensemble des éléments enregistrés au titre des documents comptables ; une comptabilité régulière sécurise donc la frontière entre les deux patrimoines.",
-     "src": "C. com., art. R. 526-26, II",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045697812/2023-01-01",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Durée du bail commercial</b> : elle ne peut être inférieure à neuf ans ; le preneur peut donner congé à l'expiration de chaque période triennale, au moins six mois à l'avance, par acte extrajudiciaire ou lettre recommandée. Les parties peuvent, lors de l'entrée dans les lieux, conclure un bail dérogatoire d'une durée totale n'excédant pas trois ans ; si le preneur reste et est laissé en possession à l'expiration, il s'opère un nouveau bail soumis au statut.",
-     "src": "C. com., art. L. 145-4, L. 145-5 et L. 145-9",
+     "t": "<b>Durée du bail commercial</b> : elle ne peut être inférieure à neuf ans. Le preneur peut donner congé à l'expiration de chaque période triennale, au moins six mois à l'avance, par lettre recommandée avec demande d'avis de réception ou par acte extrajudiciaire, sauf stipulation contraire admise pour certains baux (baux de plus de neuf ans, locaux monovalents, locaux à usage exclusif de bureaux, locaux de stockage). Le bailleur n'a la même faculté que dans des cas limités (notamment pour construire, reconstruire ou surélever l'immeuble).",
+     "cite": "« La durée du contrat de location ne peut être inférieure à neuf ans. »",
+     "src": "C. com., art. L. 145-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037667139",
-     "fiab": "stable",
-     "cite": "« La durée du contrat de location ne peut être inférieure à neuf ans. »"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Loyer</b> : fixé librement à l'origine, le loyer peut être révisé tous les trois ans à la demande de l'une des parties ; lors de la révision comme du renouvellement, sa variation est plafonnée à celle de l'indice des loyers commerciaux (ILC) ou de l'indice des loyers des activités tertiaires (ILAT), sauf modification notable des éléments de la valeur locative (déplafonnement) ; depuis la loi du 18 juin 2014, l'augmentation résultant d'un déplafonnement est lissée à 10 % par an du loyer de l'année précédente.",
-     "src": "C. com., art. L. 145-33, L. 145-34 et L. 145-38",
+     "t": "<b>Bail dérogatoire</b> : lors de l'entrée dans les lieux du preneur, les parties peuvent déroger au statut à condition que la durée totale du bail ou des baux successifs ne soit pas supérieure à trois ans ; à l'expiration de cette durée, elles ne peuvent plus conclure un nouveau bail dérogatoire pour exploiter le même fonds dans les mêmes locaux. Si, au plus tard un mois après l'échéance, le preneur reste et est laissé en possession, il s'opère un nouveau bail soumis au statut.",
+     "src": "C. com., art. L. 145-5 (loi n° 2014-626 du 18 juin 2014)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029108698",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Révision triennale du loyer</b> : la demande ne peut être formée que trois ans au moins après l'entrée en jouissance du locataire ou le point de départ du bail renouvelé, puis tous les trois ans. Sauf preuve d'une modification matérielle des facteurs locaux de commercialité ayant entraîné par elle-même une variation de plus de 10 % de la valeur locative, la hausse ou la baisse ne peut excéder la variation de l'indice des loyers commerciaux (ILC) ou de l'indice des loyers des activités tertiaires (ILAT) intervenue depuis la dernière fixation amiable ou judiciaire du loyer ; en cas de déplafonnement, l'augmentation est limitée, pour une année, à 10 % du loyer acquitté l'année précédente.",
+     "cite": "« La demande en révision ne peut être formée que trois ans au moins après la date d'entrée en jouissance du locataire ou après le point de départ du bail renouvelé. »",
+     "src": "C. com., art. L. 145-38",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029108753",
-     "fiab": "stable",
-     "cite": "« La demande en révision ne peut être formée que trois ans au moins après la date d'entrée en jouissance du locataire ou après le point de départ du bail renouvelé. »"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Renouvellement et indemnité d'éviction</b> : à l'expiration du bail, le locataire immatriculé a droit au renouvellement ; le bailleur qui refuse le renouvellement doit, sauf motif grave et légitime ou autres exceptions légales, payer une indemnité d'éviction égale au préjudice causé par le défaut de renouvellement, comprenant notamment la valeur du fonds et les frais de réinstallation. Le congé est donné six mois avant le terme.",
-     "src": "C. com., art. L. 145-8, L. 145-9, L. 145-14 et L. 145-17",
+     "t": "<b>Loyer du bail renouvelé</b> : il doit correspondre à la valeur locative ; mais, à moins d'une modification notable des caractéristiques du local, de la destination des lieux, des obligations des parties ou des facteurs locaux de commercialité, sa variation ne peut excéder celle de l'ILC ou de l'ILAT depuis la fixation initiale du loyer du bail expiré, si la durée de ce bail n'est pas supérieure à neuf ans. Ce plafonnement cesse lorsque, par l'effet d'une tacite prolongation, la durée du bail excède douze ans. En cas de modification notable ou d'exception au plafonnement par une clause relative à la durée du bail, la hausse est limitée, pour une année, à 10 % du loyer acquitté l'année précédente.",
+     "src": "C. com., art. L. 145-33 et L. 145-34",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161267/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Renouvellement et indemnité d'éviction</b> : le droit au renouvellement ne peut être invoqué que par le propriétaire du fonds exploité dans les lieux. Le bailleur peut refuser le renouvellement, mais doit alors, sauf exceptions (notamment un motif grave et légitime à l'encontre du locataire sortant), payer une indemnité d'éviction égale au préjudice causé, qui comprend notamment la valeur marchande du fonds, augmentée éventuellement des frais normaux de déménagement et de réinstallation et des frais et droits de mutation d'un fonds de même valeur, sauf preuve d'un préjudice moindre. Le locataire qui peut prétendre à cette indemnité ne peut être obligé de quitter les lieux avant de l'avoir reçue.",
+     "cite": "« Le bailleur peut refuser le renouvellement du bail. Toutefois, le bailleur doit, sauf exceptions prévues aux articles L. 145-17 et suivants, payer au locataire évincé une indemnité dite d'éviction égale au préjudice causé par le défaut de renouvellement. »",
+     "src": "C. com., art. L. 145-8, L. 145-14, L. 145-17 et L. 145-28",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006221741",
-     "fiab": "stable",
-     "cite": "« Le bailleur peut refuser le renouvellement du bail. Toutefois, le bailleur doit, sauf exceptions prévues aux articles L. 145-17 et suivants, payer au locataire évincé une indemnité dite d'éviction égale au préjudice causé par le défaut de renouvellement. »"
+     "fiab": "stable"
     },
     {
-     "t": "<b>Déspécialisation et cession du bail</b> : le locataire peut adjoindre des activités connexes ou complémentaires en le notifiant au bailleur (déspécialisation partielle) ou, sur autorisation, exercer une activité différente (déspécialisation plénière). Les clauses interdisant au locataire de céder son bail à l'acquéreur de son fonds sont réputées non écrites.",
-     "src": "C. com., art. L. 145-16, L. 145-47 et L. 145-48",
-     "url": "https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000006222139&cidTexte=LEGITEXT000005634379",
-     "fiab": "stable",
-     "cite": "« Le locataire peut adjoindre à l'activité prévue au bail des activités connexes ou complémentaires. »"
+     "t": "<b>Déspécialisation et cession du bail</b> : le locataire peut adjoindre des activités connexes ou complémentaires en faisant connaître son intention au bailleur par acte extrajudiciaire ou lettre recommandée avec avis de réception ; le bailleur dispose de deux mois pour en contester le caractère connexe ou complémentaire, à peine de déchéance. Il peut aussi être autorisé à exercer des activités différentes de celles prévues au bail (déspécialisation plénière). Sont réputées non écrites les conventions tendant à interdire au locataire de céder son bail à l'acquéreur de son fonds de commerce ou de son entreprise.",
+     "cite": "« Le locataire peut adjoindre à l'activité prévue au bail des activités connexes ou complémentaires. »",
+     "src": "C. com., art. L. 145-47, L. 145-48 et L. 145-16",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161269/",
+     "fiab": "stable"
     }
    ]
   },
@@ -252,35 +280,34 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Droits d'enregistrement sur les cessions de fonds de commerce</b> (droit budgétaire et taxes additionnelles comprises) : 0 % sur la fraction du prix n'excédant pas 23 000 €, 3 % sur la fraction comprise entre 23 000 € et 200 000 €, 5 % au-delà de 200 000 €.",
+     "t": "<b>Droits d'enregistrement sur les cessions de fonds de commerce et de clientèles en 2026</b> (droit de l'État et taxes additionnelles comprises) : 0 % sur la fraction du prix n'excédant pas 23 000 €, 3 % sur la fraction comprise entre 23 000 € et 200 000 €, 5 % au-delà de 200 000 €. Ce tarif normal vaut sous réserve des régimes particuliers prévus par le CGI (abattements pour certaines reprises par des salariés ou des proches du cédant, notamment).",
+     "cite": "« Ces barèmes constituent le tarif normal applicable aux cessions de fonds de commerce, de clientèle et aux conventions assimilées. »",
      "src": "CGI, art. 719, 1584 et 1595 ; BOI-ENR-DMTOM-10-20-20 (19 juin 2024)",
      "url": "https://bofip.impots.gouv.fr/bofip/3313-PGP.html/identifiant=BOI-ENR-DMTOM-10-20-20-20240619",
-     "fiab": "stable",
-     "cite": "« Ces barèmes constituent le tarif normal applicable aux cessions de fonds de commerce, de clientèle et aux conventions assimilées. »"
+     "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Délais du bail commercial</b> : 9 ans au minimum ; congé possible tous les 3 ans pour le preneur ; 3 ans au maximum pour un bail dérogatoire ; 6 mois de préavis pour le congé.",
-     "src": "C. com., art. L. 145-4, L. 145-5 et L. 145-9",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037667139",
+     "t": "<b>Délais et seuils du bail commercial</b> : 9 ans au minimum ; congé du preneur possible à chaque échéance triennale, avec 6 mois de préavis ; 3 ans au maximum pour l'ensemble des baux dérogatoires ; congé donné 6 mois à l'avance ; révision du loyer tous les 3 ans ; 10 % de variation de la valeur locative pour déplafonner en révision et 10 % du loyer de l'année précédente comme hausse annuelle maximale en cas de déplafonnement ; 12 ans de durée effective, par tacite prolongation, au-delà desquels le loyer de renouvellement n'est plus plafonné.",
+     "src": "C. com., art. L. 145-4, L. 145-5, L. 145-9, L. 145-34 et L. 145-38",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146040/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Délais du fonds de commerce</b> : 15 jours pour publier la vente ou la location-gérance ; 10 jours d'opposition des créanciers après la dernière publication de la vente ; 30 jours pour inscrire le privilège du vendeur ; solidarité du loueur avec le locataire-gérant jusqu'à la publication du contrat de location-gérance (le délai de six mois après publication a été supprimé en 2016).",
-     "src": "C. com., art. L. 141-5, L. 141-12, L. 141-14, L. 144-6 et L. 144-7 (rédaction issue de la loi n° 2016-1691 du 9 décembre 2016)",
+     "t": "<b>Délais du fonds de commerce</b> : 15 jours pour publier la vente du fonds ou le contrat de location-gérance ; 10 jours, après la dernière publication de la vente, pour l'opposition des créanciers du vendeur ; solidarité du loueur avec le locataire-gérant jusqu'à la publication du contrat de location-gérance (sans prolongation de six mois depuis la loi n° 2016-1691 du 9 décembre 2016).",
+     "src": "C. com., art. L. 141-12, L. 141-14 et L. 144-7",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584414",
      "fiab": "stable"
     },
     {
-     "t": "<b>5 ans</b> : prescription des obligations nées à l'occasion de leur commerce entre commerçants ou entre commerçants et non-commerçants ; <b>10 ans</b> : durée de conservation des documents comptables ; <b>10 ans</b> renouvelables indéfiniment pour la marque et <b>20 ans</b> pour le brevet.",
-     "src": "C. com., art. L. 110-4 et L. 123-22 ; CPI, art. L. 611-2 et L. 712-1",
+     "t": "<b>5 ans</b> : prescription des obligations nées à l'occasion de leur commerce entre commerçants ou entre commerçants et non-commerçants, sauf prescription spéciale plus courte ; <b>10 ans</b> : durée de conservation des documents comptables et des pièces justificatives.",
+     "src": "C. com., art. L. 110-4 et L. 123-22",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027725867",
      "fiab": "stable"
     },
     {
-     "t": "<b>Bénéfice du dernier exercice clos</b> : limite dans laquelle les créanciers personnels de l'entrepreneur individuel, lorsque le patrimoine personnel est insuffisant, peuvent exercer leur droit de gage sur le patrimoine professionnel.",
-     "cite": "« si le patrimoine personnel est insuffisant, le droit de gage général des créanciers peut s'exercer sur le patrimoine professionnel, dans la limite du montant du bénéfice réalisé lors du dernier exercice clos. »",
-     "src": "C. com., art. L. 526-22",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "t": "<b>20 ans</b> à compter du dépôt de la demande : durée du brevet d'invention ; <b>10 ans</b> indéfiniment renouvelables : durée des effets de l'enregistrement d'une marque.",
+     "src": "CPI, art. L. 611-2 et L. 712-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041573176",
      "fiab": "stable"
     }
    ]
@@ -289,27 +316,33 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> : statut unique de l'entrepreneur individuel (séparation de plein droit des patrimoines, transfert universel du patrimoine professionnel, procédures collectives limitées au patrimoine professionnel), en vigueur depuis le 15 mai 2022 ; l'EIRL ne peut plus être créée depuis le 15 février 2022.",
-     "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 526-22 et s.",
+     "t": "<b>Loi n° 2026-403 du 26 mai 2026 de simplification de la vie économique</b> : elle crée l'article L. 145-38-1 du Code de commerce, qui autorise une clause encadrant, dans les mêmes proportions à la hausse et à la baisse, la variation annuelle de l'indice pris en compte pour la révision du loyer commercial.",
+     "src": "Loi n° 2026-403 du 26 mai 2026 ; C. com., art. L. 145-38-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054137977",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Tribunaux des activités économiques</b> : la loi n° 2023-1059 du 20 novembre 2023 expérimente, pour quatre ans, dans au moins neuf et au plus douze tribunaux de commerce désignés par arrêté, un tribunal des activités économiques compétent pour les procédures amiables et collectives quel que soit le statut du débiteur, sauf exceptions légales. L'arrêté du 5 juillet 2024 a fixé le début de l'expérimentation au 1er janvier 2025 et désigné douze tribunaux.",
+     "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Guichet unique électronique</b> : depuis le 1er janvier 2023, les formalités de création, de modification et de cessation d'activité des entreprises sont accomplies par le dépôt d'un dossier unique, par voie électronique, auprès de l'organisme unique.",
+     "src": "C. com., art. L. 123-33 (version en vigueur depuis le 1er janvier 2023)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Statut unique de l'entrepreneur individuel</b> : la loi n° 2022-172 du 14 février 2022 sépare de plein droit les patrimoines professionnel et personnel de l'entrepreneur individuel et organise le transfert universel du patrimoine professionnel (C. com., art. L. 526-22 et s., applicables depuis le 15 mai 2022) ; le décret n° 2022-725 du 28 avril 2022 définit les biens utiles à l'activité, dont le fonds de commerce, et la présomption comptable.",
+     "src": "Loi n° 2022-172 du 14 février 2022 ; décret n° 2022-725 du 28 avril 2022 ; C. com., art. L. 526-22 et s., R. 526-26 et R. 526-27",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
      "fiab": "stable"
     },
     {
-     "t": "<b>Décret n° 2022-725 du 28 avril 2022</b> : définition des biens utiles à l'activité (dont le fonds de commerce et ses éléments), présomption comptable et mention « EI » sur les documents professionnels.",
-     "src": "Décret n° 2022-725 du 28 avril 2022 ; C. com., art. R. 526-26 et R. 526-27",
-     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045695864",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Loi n° 2019-744 du 19 juillet 2019</b> : suppression des mentions obligatoires de l'acte de vente du fonds de commerce (ancien art. L. 141-1) et de la condition d'exploitation préalable de deux ans pour mettre un fonds en location-gérance (ancien art. L. 144-3).",
-     "src": "Loi n° 2019-744 du 19 juillet 2019, art. 1er et 2",
-     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038792157",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Guichet unique et tribunal des activités économiques</b> : depuis le 1er janvier 2023, toutes les formalités de création, de modification et de cessation d'entreprise passent par le guichet unique électronique (loi PACTE, C. com., art. L. 123-33) ; depuis le 1er janvier 2025, douze tribunaux de commerce expérimentent pour quatre ans le tribunal des activités économiques (loi n° 2023-1059 du 20 novembre 2023, art. 26).",
-     "src": "C. com., art. L. 123-33 ; loi n° 2023-1059 du 20 novembre 2023, art. 26",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
+     "t": "<b>Réforme des sûretés</b> : depuis le 1er janvier 2022, l'ordonnance n° 2021-1192 du 15 septembre 2021 range parmi les actes de commerce, entre toutes personnes, les cautionnements de dettes commerciales (C. com., art. L. 110-1, 11°) et a modifié l'article L. 142-1 relatif au nantissement du fonds de commerce.",
+     "src": "Ordonnance n° 2021-1192 du 15 septembre 2021 ; C. com., art. L. 110-1 et L. 142-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072567",
      "fiab": "stable"
     }
    ]
@@ -318,34 +351,36 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Périmètre du programme</b> : le programme 2025 traite en UE 2 la notion et la composition du fonds de commerce et le bail commercial, mais renvoie les actes de commerce à l'UE 1 ; le programme 2019 plaçait l'ensemble (commerçant, fonds) en UE 1 « Fondamentaux du droit ».",
+     "t": "<b>Périmètre du programme</b> : le programme 2025, applicable à compter de la session 2027, traite en UE 2 la notion et la composition du fonds de commerce avec le bail commercial, mais renvoie les actes de commerce à l'UE 1 ; pour la session 2026, le programme 2019 place la notion et la composition du fonds de commerce en UE 1.",
      "src": "Arrêté du 4 août 2025, annexe 1, UE2 ; arrêté du 13 février 2019, annexe 1",
      "url": "https://www.bulletin-officiel.education.gouv.fr/sites/default/files/2025-08/ensup324_annexe-1.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Immatriculation et personnalité morale</b> : pour une société, la personnalité morale n'est acquise qu'à l'attribution du numéro SIREN, qui vaut immatriculation au RCS ; le commerçant personne physique, lui, existe juridiquement avant son immatriculation mais ne peut se prévaloir de la qualité de commerçant à l'égard des tiers tant qu'il n'est pas immatriculé.",
-     "src": "Cass. com., 29 novembre 2023, n° 22-16.463 ; C. com., art. L. 123-8",
-     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000048550315?init=true&amp=&page=1&amp=&query=22-16.463&amp=&searchField=ALL&amp=&tab_selection=all",
+     "t": "<b>Immatriculation, SIREN et qualité de commerçant</b> : une société acquiert la personnalité morale à son immatriculation au registre du commerce et des sociétés ; le numéro SIREN attribué par l'INSEE ne sert qu'à l'identifier auprès des administrations. L'immatriculation d'une personne physique fait présumer sa qualité de commerçant, sauf preuve contraire apportée par les tiers ou les administrations. Celle qui ne s'est pas immatriculée dans les quinze jours du début de son activité ne peut se prévaloir de cette qualité jusqu'à son immatriculation, mais ne peut invoquer ce défaut pour se soustraire aux obligations qui y sont attachées.",
+     "cite": "« Selon l'article 1842 du code civil, les sociétés autres que celles en participation jouissent de la personnalité morale à compter de leur immatriculation au registre du commerce et des sociétés. L'attribution du numéro SIREN par l'INSEE n'est destiné qu'à l'identification de la société auprès des administrations. »",
+     "src": "Cass. com., 29 novembre 2023, n° 22-16.463 ; C. civ., art. 1842 ; C. com., art. L. 123-7 et L. 123-8",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000048550315",
      "fiab": "stable"
     },
     {
-     "t": "<b>Ce qui n'est pas dans le fonds</b> : le fonds de commerce est un meuble incorporel ; les immeubles, les créances et les dettes de l'exploitant n'en font pas partie et ne sont pas transmis avec lui, sauf stipulation expresse (le droit au bail, lui, en fait partie).",
-     "src": "C. com., art. L. 141-5 et L. 142-2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006220989/",
+     "t": "<b>Payer le prix trop tôt</b> : l'acquéreur qui paie son vendeur sans avoir procédé aux publications prescrites, ou avant l'expiration du délai d'opposition de dix jours, n'est pas libéré à l'égard des créanciers du vendeur.",
+     "cite": "« L'acquéreur qui paie son vendeur sans avoir procédé aux publications prescrites, ou avant l'expiration du délai de dix jours, n'est pas libéré à l'égard des tiers. »",
+     "src": "C. com., art. L. 141-17",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161258",
      "fiab": "stable"
     },
     {
-     "t": "<b>Caution de soi-même</b> : la séparation des patrimoines ne permet pas à l'entrepreneur individuel de se porter caution d'une dette dont il est débiteur principal ; il peut en revanche renoncer, par écrit et pour un engagement déterminé, au bénéfice de la séparation.",
+     "t": "<b>Règles abrogées encore citées par des manuels</b> : les mentions obligatoires de l'acte de cession du fonds de commerce (ancien art. L. 141-1) ont été supprimées par la loi n° 2019-744 du 19 juillet 2019. La solidarité du loueur pendant six mois après la publication du contrat de location-gérance a été supprimée par la loi n° 2016-1691 du 9 décembre 2016 : elle ne figurait que dans la version de l'article L. 144-7 en vigueur du 21 septembre 2000 au 11 décembre 2016.",
+     "src": "Loi n° 2019-744 du 19 juillet 2019, art. 1er ; loi n° 2016-1691 du 9 décembre 2016 ; C. com., art. L. 144-7",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038792157",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Limites de la séparation des patrimoines</b> : l'entrepreneur individuel ne peut pas se porter caution d'une dette dont il est débiteur principal ; il peut, sur demande écrite d'un créancier, renoncer à la séparation pour un engagement spécifique dont il doit rappeler le terme et le montant. Ses créanciers personnels peuvent, si le patrimoine personnel est insuffisant, saisir le patrimoine professionnel dans la limite du bénéfice réalisé lors du dernier exercice clos.",
      "cite": "« La distinction des patrimoines personnel et professionnel de l'entrepreneur individuel ne l'autorise pas à se porter caution en garantie d'une dette dont il est débiteur principal. »",
      "src": "C. com., art. L. 526-22 et L. 526-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Associés commerçants</b> : la qualité de commerçant s'attache aussi, par l'effet de la loi, aux associés de SNC et aux commandités, ce qui ferme ces formes au mineur non émancipé ; les associés de SARL, SA et SAS ne sont pas commerçants.",
-     "src": "C. com., art. L. 221-1 et L. 222-1",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGIARTI000048535085/2025-01-01",
      "fiab": "stable"
     }
    ]

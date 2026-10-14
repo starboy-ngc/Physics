@@ -5,95 +5,101 @@
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "Partie 1 – Accompagner le contribuable dans son environnement fiscal (25 heures) : comprendre le contexte fiscal français, organisation et contrôle",
+   "L'UE 4 se structure autour de 3 parties : accompagner le contribuable dans son environnement fiscal ; conduire les obligations fiscales du cycle d'exploitation d'une entreprise ; conduire les obligations fiscales de la personne physique et de sa famille",
+   "Partie 1 – Accompagner le contribuable dans son environnement fiscal (25 heures) : comprendre le contexte fiscal français (20 heures)",
    "1.2 Aider le contribuable à organiser son environnement fiscal (5 heures) : l'agenda se limite aux échéances de TVA, d'impôt sur les sociétés (IS) ainsi qu'une taxe supplémentaire au maximum",
-   "Partie 2 – Conduire les obligations fiscales du cycle d'exploitation d'une entreprise : impôts locaux et autres taxes de l'entreprise",
-   "Partie 3 – Conduire les obligations fiscales de la personne physique et de sa famille : imposition du patrimoine",
-   "Limites du programme : l'étude du rescrit est exclue ; les services visés sont les services des impôts des entreprises et des particuliers"
+   "Limites du programme : l'étude du rescrit est exclue ; les services visés sont les services des impôts des entreprises et des particuliers",
+   "Programme 2019 (session 2026), sens et portée de l'étude : « Le pouvoir de prélever l'impôt est inscrit dans la Constitution »"
   ]
  },
  "textes": [
   {
    "ref": "LPF, art. L. 80 A",
-   "objet": "Garantie contre les changements de doctrine ; prise de position formelle lors d'un contrôle",
+   "objet": "Garantie contre les changements de doctrine ; prise de position de l'administration lors d'un contrôle",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
-   "version": "en vigueur (contrôles dont l'avis est adressé à compter du 1er janvier 2019)"
+   "version": "en vigueur (rédaction issue de la loi n° 2018-727 du 10 août 2018 ; contrôles dont l'avis est adressé à compter du 1er janvier 2019)"
   },
   {
-   "ref": "LPF, art. L. 64",
-   "objet": "Abus de droit fiscal",
+   "ref": "LPF, art. L. 64 ; CE, Assemblée, 28 octobre 2020, n° 428048",
+   "objet": "Abus de droit fiscal ; articulation avec la garantie de l'article L. 80 A",
    "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
-   "version": "en vigueur ; CE, Assemblée, 28 octobre 2020, n° 428048"
+   "version": "en vigueur ; décision publiée au recueil Lebon"
   },
   {
    "ref": "LPF, art. L. 169 et L. 176",
-   "objet": "Délais de reprise de l'administration (impôts directs, TVA)",
+   "objet": "Délais de reprise de l'administration (impôt sur le revenu, impôt sur les sociétés, TVA)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051759330",
    "version": "en vigueur"
   },
   {
-   "ref": "LPF, art. L. 55 à L. 61 A",
-   "objet": "Procédure de rectification contradictoire",
+   "ref": "LPF, art. L. 12 et L. 52 ; BOI-CF-PGR-20-30",
+   "objet": "Durée limitée des vérifications sur place et de l'examen de la situation fiscale personnelle",
+   "url": "https://bofip.impots.gouv.fr/bofip/243-PGP.html/identifiant=BOI-CF-PGR-20-30-20171220",
+   "version": "BOFiP du 20 décembre 2017"
+  },
+  {
+   "ref": "LPF, art. L. 11, L. 55 à L. 61 A et R*57-1",
+   "objet": "Procédure de rectification contradictoire : proposition motivée, délai de réponse et prorogation",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006180034/",
    "version": "en vigueur"
   },
   {
-   "ref": "LPF, art. L. 190, R*196-1 et L. 277",
-   "objet": "Réclamation préalable et sursis de paiement",
+   "ref": "LPF, art. L. 190, R*196-1, R*196-2 et L. 277",
+   "objet": "Réclamation préalable (délais de droit commun et des impôts directs locaux) et sursis de paiement",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006180177/",
-   "version": "en vigueur"
+   "version": "en vigueur (art. L. 277 : rédaction issue de l'ordonnance n° 2019-964 du 18 septembre 2019, en vigueur depuis le 1er janvier 2020)"
   },
   {
-   "ref": "CGI, art. 1727 à 1729 et 1758 A",
-   "objet": "Intérêt de retard, majorations de droits",
+   "ref": "CGI, art. 1727 à 1729 et 1758 A ; BOI-CF-INF-20-10-10",
+   "objet": "Intérêt de retard et majorations de droits",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815281",
-   "version": "en vigueur"
+   "version": "en vigueur (art. 1727 : version en vigueur depuis le 16 février 2025, modifiée par la loi n° 2025-127 du 14 février 2025)"
   },
   {
-   "ref": "BOI-CF-INF-20-10-10",
-   "objet": "Majorations de droits en matière d'impôts directs",
-   "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
-   "version": "BOFiP du 8 mars 2017"
-  },
-  {
-   "ref": "CGI, art. 1447 à 1478",
-   "objet": "Cotisation foncière des entreprises",
+   "ref": "CGI, art. 1447-0 à 1478",
+   "objet": "Contribution économique territoriale et cotisation foncière des entreprises",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
-   "version": "en vigueur"
+   "version": "en vigueur (art. 1447 modifié par la loi n° 2026-103 du 19 février 2026, art. 55, version en vigueur depuis le 21 février 2026)"
   },
   {
    "ref": "CGI, art. 1586 ter à 1586 nonies ; loi n° 2025-127 du 14 février 2025, art. 62",
-   "objet": "Cotisation sur la valeur ajoutée des entreprises et calendrier de suppression",
+   "objet": "Cotisation sur la valeur ajoutée des entreprises, contribution complémentaire 2025 et calendrier de suppression",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000021576521/",
    "version": "en vigueur"
   },
   {
-   "ref": "CGI, art. 1380 à 1396",
-   "objet": "Taxes foncières sur les propriétés bâties et non bâties",
+   "ref": "CGI, art. 1380 à 1400 et 1415",
+   "objet": "Taxes foncières sur les propriétés bâties et non bâties : base, redevable, date d'appréciation",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179803/",
    "version": "en vigueur"
   },
   {
    "ref": "CGI, art. 231",
-   "objet": "Taxe sur les salaires",
+   "objet": "Taxe sur les salaires : redevables, rapport d'assujettissement, barème",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
    "version": "en vigueur"
   },
   {
-   "ref": "CGI, art. 719 et 726",
-   "objet": "Droits d'enregistrement : fonds de commerce, cessions de droits sociaux",
+   "ref": "CGI, art. 726",
+   "objet": "Droits d'enregistrement sur les cessions de droits sociaux",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
-   "version": "en vigueur"
+   "version": "en vigueur (version en vigueur depuis le 1er janvier 2024, modifiée par la loi n° 2023-1322 du 29 décembre 2023)"
   },
   {
-   "ref": "CGI, art. 750 ter et 777 s. ; BOI-ENR-DMTG-10-10-30",
-   "objet": "Droits de mutation à titre gratuit : territorialité, abattements",
+   "ref": "CGI, art. 719 ; BOI-ENR-DMTOM-10-20-20",
+   "objet": "Cessions de fonds de commerce et de clientèles : tarif et taxes additionnelles",
+   "url": "https://bofip.impots.gouv.fr/bofip/3313-PGP.html/identifiant=BOI-ENR-DMTOM-10-20-20-20240619",
+   "version": "BOFiP du 19 juin 2024"
+  },
+  {
+   "ref": "CGI, art. 750 ter, 777 à 796-0 bis ; BOI-ENR-DMTG-10-10-30",
+   "objet": "Droits de mutation à titre gratuit : territorialité, abattements, exonération du conjoint et du partenaire de PACS",
    "url": "https://bofip.impots.gouv.fr/index.php/bofip/3543-PGP.html/identifiant=BOI-ENR-DMTG-10-10-30-20120912",
    "version": "BOFiP du 12 septembre 2012"
   },
   {
    "ref": "CGI, art. 964 à 983 ; BOI-PAT-IFI-10-20-20",
-   "objet": "Impôt sur la fortune immobilière : personnes imposables",
+   "objet": "Impôt sur la fortune immobilière : personnes imposables, assiette, barème",
    "url": "https://bofip.impots.gouv.fr/bofip/11293-PGP.html/identifiant=BOI-PAT-IFI-10-20-20-20180608",
    "version": "BOFiP du 8 juin 2018"
   }
@@ -103,32 +109,32 @@
    "h": "Définitions",
    "items": [
     {
-     "t": "<b>Contribution économique territoriale</b> : composée de la cotisation foncière des entreprises (CFE), assise sur la valeur locative des biens passibles de taxe foncière, et de la cotisation sur la valeur ajoutée des entreprises (CVAE), assise sur la valeur ajoutée produite.",
-     "src": "CGI, art. 1447-0",
+     "t": "<b>Contribution économique territoriale</b> : composée de la cotisation foncière des entreprises (CFE), assise sur la valeur locative des biens passibles de taxe foncière, et de la cotisation sur la valeur ajoutée des entreprises (CVAE), assise sur la valeur ajoutée produite. L'article 1447-0 qui l'institue est en vigueur jusqu'au 1er janvier 2030, date à laquelle prend effet son abrogation.",
+     "src": "CGI, art. 1447-0 (loi n° 2009-1673 du 30 décembre 2009 ; abrogation à compter du 1er janvier 2030 par la loi n° 2022-1726 du 30 décembre 2022, art. 55)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021640942",
      "fiab": "stable"
     },
     {
-     "t": "<b>Modalités de recouvrement</b> : lorsqu'il définit une imposition, le législateur doit en déterminer les modalités de recouvrement, qui couvrent le contrôle, le recouvrement, le contentieux, les garanties et les sanctions ; les procédures fiscales relèvent donc de la loi (Livre des procédures fiscales).",
+     "t": "<b>Compétence du législateur</b> : l'article 34 de la Constitution réserve à la loi l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures ; selon le Conseil constitutionnel, lorsqu'il définit une imposition, le législateur doit en déterminer les modalités de recouvrement, qui couvrent le contrôle, le recouvrement, le contentieux, les garanties et les sanctions.",
      "cite": "« lorsqu'il définit une imposition, le législateur doit déterminer ses modalités de recouvrement »",
-     "src": "Constitution, art. 34 ; Conseil constitutionnel, résumés analytiques",
+     "src": "Constitution, art. 34 ; Conseil constitutionnel, résumés analytiques des décisions",
      "url": "https://www.conseil-constitutionnel.fr/nouveaux-cahiers-du-conseil-constitutionnel/resumes-analytiques-des-decisions-rendues-au-cours-du-trimestre-3",
      "fiab": "stable"
     },
     {
-     "t": "<b>Garantie contre les changements de doctrine</b> : aucun rehaussement d'impositions antérieures ne peut être opéré lorsque le différend porte sur l'interprétation par un redevable de bonne foi du texte fiscal, dès lors que cette interprétation avait été formellement admise par l'administration ; les instructions publiées et non rapportées sont opposables, y compris en matière de recouvrement et de pénalités.",
+     "t": "<b>Garantie contre les changements de doctrine</b> : aucun rehaussement d'impositions antérieures ne peut être opéré lorsque le différend porte sur l'interprétation par un redevable de bonne foi du texte fiscal, dès lors que cette interprétation avait été formellement admise par l'administration ; les instructions ou circulaires publiées et non rapportées à la date des opérations sont opposables, y compris celles relatives au recouvrement et aux pénalités.",
      "src": "LPF, art. L. 80 A",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
      "fiab": "stable"
     },
     {
-     "t": "<b>Droits de mutation à titre gratuit</b> : droits dus sur les successions et donations ; leur territorialité dépend du domicile fiscal du défunt ou donateur et du bénéficiaire, apprécié selon les critères de l'article 4 B.",
+     "t": "<b>Droits de mutation à titre gratuit</b> : droits dus sur les successions et les donations ; leur champ territorial dépend du domicile fiscal, au sens de l'article 4 B, du défunt ou du donateur et de l'héritier ou du donataire.",
      "src": "CGI, art. 750 ter et 4 B ; BOI-ENR-DMTG-10-10-30",
      "url": "https://bofip.impots.gouv.fr/index.php/bofip/3543-PGP.html/identifiant=BOI-ENR-DMTG-10-10-30-20120912",
      "fiab": "stable"
     },
     {
-     "t": "<b>Impôt sur la fortune immobilière</b> : impôt annuel dû par les personnes physiques dont le patrimoine immobilier net excède le seuil d'imposition au 1er janvier ; les personnes domiciliées en France (critères de l'article 4 B) sont imposables sur leurs actifs immobiliers situés en France et hors de France, les autres sur leurs seuls actifs français.",
+     "t": "<b>Impôt sur la fortune immobilière</b> : impôt annuel dû par les personnes physiques dont les actifs immobiliers nets excèdent 1 300 000 € au 1er janvier ; les personnes domiciliées en France (article 4 B) sont imposables sur leurs actifs situés en France et hors de France, les autres sur leurs seuls actifs immobiliers français. Les personnes qui n'ont pas été domiciliées en France au cours des cinq années civiles précédant leur installation ne sont imposées que sur leurs actifs français jusqu'au 31 décembre de la cinquième année qui suit celle de leur installation.",
      "src": "CGI, art. 964, 1° et 2° ; BOI-PAT-IFI-10-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/11293-PGP.html/identifiant=BOI-PAT-IFI-10-20-20-20180608",
      "fiab": "stable"
@@ -139,107 +145,121 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "<b>CFE</b> : due par toute personne qui exerce au 1er janvier une activité professionnelle non salariée à titre habituel ; base égale à la valeur locative des biens passibles de taxe foncière dont le redevable a disposé pour son activité pendant la période de référence (N-2). Aucune CFE n'est due l'année de création ; la base de la première année d'imposition est réduite de moitié.",
+     "t": "<b>CFE</b> : due chaque année par les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires qui exercent à titre habituel une activité professionnelle non salariée ; les locations d'immeubles, autres que les locations nues à usage d'habitation, sont réputées professionnelles. Base : valeur locative des biens passibles de taxe foncière dont le redevable a disposé pour son activité pendant la période de référence (avant-dernière année). Aucune CFE n'est due l'année de la création ; la base de la première année d'imposition est réduite de moitié.",
      "cite": "« La cotisation foncière des entreprises est due chaque année par les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires »",
-     "src": "CGI, art. 1447, 1467, 1467 A et 1478, II",
+     "src": "CGI, art. 1447, I, 1467, 1467 A et 1478, II",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
      "fiab": "stable"
     },
     {
-     "t": "<b>CVAE</b> : due par les entreprises dont le chiffre d'affaires hors taxes excède 500 000 €, assise sur la valeur ajoutée produite ; son taux est abaissé par étapes jusqu'à sa suppression, reportée à 2030 par la loi de finances pour 2025.",
-     "src": "CGI, art. 1586 ter et 1586 quater ; loi n° 2025-127 du 14 février 2025, art. 62",
+     "t": "<b>CVAE</b> : assise sur la valeur ajoutée produite. Les entreprises dont le chiffre d'affaires excède 152 500 € entrent dans son champ et déclarent leur valeur ajoutée, mais le taux est nul tant que le chiffre d'affaires est inférieur à 500 000 € ; au-delà, il progresse avec le chiffre d'affaires jusqu'à <span class=\"mono\">0,28 %</span> au-dessus de 50 M€ (version en vigueur de l'article 1586 quater).",
+     "src": "CGI, art. 1586 ter et 1586 quater",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048860944",
-     "fiab": "millésimé 2025"
+     "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Taxes foncières</b> : dues par le propriétaire (ou l'usufruitier) au 1er janvier ; base égale à la valeur locative cadastrale diminuée d'un abattement forfaitaire de 50 % pour les propriétés bâties et de 20 % pour les propriétés non bâties.",
+     "t": "<b>Taxes foncières</b> : établies au nom du propriétaire actuel, ou de l'usufruitier lorsque l'immeuble est grevé d'usufruit, d'après les faits existant au 1er janvier de l'année d'imposition ; base égale à la valeur locative cadastrale sous déduction de 50 % pour les propriétés bâties et de 20 % pour les propriétés non bâties.",
      "cite": "« sous déduction de 50 % de son montant en considération des frais de gestion, d'assurances, d'amortissement, d'entretien et de réparation »",
-     "src": "CGI, art. 1380, 1388, 1393 et 1396",
+     "src": "CGI, art. 1388, 1396, 1400 et 1415",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006311555",
      "fiab": "stable"
     },
     {
-     "t": "<b>Taxe sur les salaires</b> : due par les employeurs qui ne sont pas assujettis à la TVA ou ne l'ont pas été sur 90 % au moins de leur chiffre d'affaires de l'année précédente, sur les rémunérations versées, selon un barème progressif par salarié.",
+     "t": "<b>Taxe sur les salaires</b> : due sur les rémunérations versées par les employeurs qui ne sont pas assujettis à la TVA ou ne l'ont pas été sur 90 % au moins de leur chiffre d'affaires l'année précédente. L'assiette est la fraction des rémunérations correspondant au rapport entre le chiffre d'affaires non soumis à la TVA et le chiffre d'affaires total ; barème progressif par salarié (taux de 4,25 %, taux majorés de 8,50 % et 13,60 %).",
      "src": "CGI, art. 231, 1 et 2 bis",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
      "fiab": "stable"
     },
     {
-     "t": "<b>Cessions de droits sociaux</b> : droit de 0,1 % pour les actions (sociétés par actions non à prépondérance immobilière) ; 3 % pour les parts sociales après un abattement de 23 000 € proratisé au pourcentage de parts cédées ; 5 % pour les titres de sociétés à prépondérance immobilière.",
+     "t": "<b>Cessions de droits sociaux</b> : droit de 0,1 % pour les cessions d'actions (hors personnes morales à prépondérance immobilière) ; 3 % pour les parts sociales des sociétés dont le capital n'est pas divisé en actions, après un abattement de 23 000 € proratisé au nombre de parts cédées ; 5 % pour les participations dans des personnes morales à prépondérance immobilière.",
      "cite": "« il est appliqué sur la valeur de chaque part sociale un abattement égal au rapport entre la somme de 23 000 € et le nombre total de parts sociales de la société »",
      "src": "CGI, art. 726, I",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
      "fiab": "stable"
     },
     {
-     "t": "<b>Cessions de fonds de commerce et de clientèle</b> : droits de mutation de 0 % jusqu'à 23 000 €, 3 % sur la fraction comprise entre 23 000 et 200 000 € et 5 % au-delà (taux globaux État, département et commune) ; les marchandises neuves sont exclues de l'assiette.",
-     "src": "CGI, art. 719 et 1584",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019291809",
+     "t": "<b>Cessions de fonds de commerce et de clientèles</b> : le tarif de l'article 719 est de 0 % jusqu'à 23 000 €, 2 % de 23 000 à 107 000 €, 0,60 % de 107 000 à 200 000 € et 2,60 % au-delà ; il se combine avec des taxes additionnelles, dont la taxe départementale de l'article 1595, soit un taux global de 0 %, puis 3 % jusqu'à 200 000 € et 5 % au-delà. Assiette : prix de la clientèle, du droit au bail et des objets mobiliers servant à l'exploitation.",
+     "cite": "« Ces barèmes constituent le tarif normal applicable aux cessions de fonds de commerce, de clientèle et aux conventions assimilées. »",
+     "src": "CGI, art. 719 et 1595 ; BOI-ENR-DMTOM-10-20-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/3313-PGP.html/identifiant=BOI-ENR-DMTOM-10-20-20-20240619",
      "fiab": "stable"
     },
     {
-     "t": "<b>Successions et donations</b> : abattement de 100 000 € sur la part de chaque enfant et de chaque parent (ligne directe) ; le conjoint survivant et le partenaire de PACS sont exonérés de droits de succession ; les donations antérieures de moins de quinze ans sont rappelées.",
+     "t": "<b>Successions et donations</b> : abattement de 100 000 € sur la part de chaque ascendant et de chaque enfant vivant ou représenté ; le conjoint survivant et le partenaire de PACS sont exonérés de droits de mutation par décès ; les donations consenties depuis moins de quinze ans sont rappelées.",
      "cite": "« Pour la perception des droits de mutation à titre gratuit, il est effectué un abattement de 100 000 € sur la part de chacun des ascendants et sur la part de chacun des enfants vivants ou représentés par suite de prédécès ou de renonciation. »",
      "src": "CGI, art. 779, I, 784 et 796-0 bis",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026292566",
      "fiab": "stable"
     },
     {
-     "t": "<b>IFI</b> : seuil d'imposition de 1 300 000 € de patrimoine immobilier net au 1er janvier ; la résidence principale bénéficie d'un abattement de 30 % ; les immeubles affectés à l'activité professionnelle principale du redevable sont exonérés.",
+     "t": "<b>IFI</b> : seuil d'imposition de 1 300 000 € d'actifs immobiliers nets au 1er janvier ; abattement de 30 % sur la valeur vénale de l'immeuble occupé à titre de résidence principale (un seul immeuble par foyer) ; les biens immobiliers affectés à l'activité professionnelle principale du redevable sont exonérés.",
      "src": "CGI, art. 964, 973 et 975",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036384999",
      "fiab": "stable"
     },
     {
-     "t": "<b>Délai de reprise</b> : pour l'IR et l'IS, le droit de reprise s'exerce jusqu'à la fin de la troisième année suivant celle au titre de laquelle l'imposition est due (dix ans en cas d'activité occulte) ; pour la TVA, jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible.",
+     "t": "<b>Délai de reprise</b> : pour l'impôt sur le revenu et l'impôt sur les sociétés, le droit de reprise s'exerce jusqu'à la fin de la troisième année qui suit celle au titre de laquelle l'imposition est due (dixième année en cas d'activité occulte) ; pour la TVA, jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible.",
      "src": "LPF, art. L. 169 et L. 176",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051759330",
      "fiab": "stable"
     },
     {
-     "t": "<b>Rectification contradictoire</b> : l'administration adresse une proposition de rectification motivée ; le contribuable dispose de trente jours pour répondre, prorogés de trente jours sur sa demande ; l'administration doit répondre aux observations avant la mise en recouvrement.",
-     "src": "LPF, art. L. 55, L. 57 et L. 57 A",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006180034/",
+     "t": "<b>Durée des contrôles</b> : la vérification sur place de la comptabilité ne peut s'étendre sur plus de trois mois pour les entreprises dont le chiffre d'affaires ou les recettes n'excèdent pas les limites du régime simplifié d'imposition ; l'examen contradictoire de la situation fiscale personnelle ne peut en principe excéder un an, délai porté à deux ans notamment en cas de découverte d'une activité occulte.",
+     "src": "LPF, art. L. 12 et L. 52 ; BOI-CF-PGR-20-30",
+     "url": "https://bofip.impots.gouv.fr/bofip/243-PGP.html/identifiant=BOI-CF-PGR-20-30-20171220",
      "fiab": "stable"
     },
     {
-     "t": "<b>Prise de position lors d'un contrôle</b> : une prise de position formelle de l'administration au cours d'un contrôle produit les mêmes effets que la doctrine publiée ; la garantie s'applique aux contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
+     "t": "<b>Rectification contradictoire</b> : la proposition de rectification est motivée de manière à permettre au contribuable de formuler ses observations ou de faire connaître son acceptation ; il dispose de trente jours, prorogés de trente jours sur demande reçue avant l'expiration du délai ; si l'administration rejette ses observations, sa réponse est motivée. Pour les entreprises vérifiées dont le chiffre d'affaires est inférieur aux seuils de l'article L. 57 A, elle répond dans les soixante jours, faute de quoi les observations sont considérées comme acceptées.",
+     "src": "LPF, art. L. 11, L. 57, L. 57 A et R*57-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815142",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prise de position lors d'un contrôle</b> : la garantie de l'article L. 80 A couvre aussi la position prise par l'administration au cours d'un contrôle ; cette règle s'applique aux contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
      "cite": "« Ces dispositions s'appliquent aux contrôles dont les avis sont adressés à compter du 1er janvier 2019. »",
-     "src": "LPF, art. L. 80 A, 2e et 3e alinéas",
+     "src": "LPF, art. L. 80 A",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
      "fiab": "stable"
     },
     {
-     "t": "<b>Majoration d'impôt sur le revenu</b> : les inexactitudes ou omissions qui minorent l'impôt dû entraînent une majoration de 10 % des droits, portée à 20 % en cas de dépôt tardif dans les trente jours d'une mise en demeure ; elle est écartée en cas de régularisation spontanée ou dans les trente jours d'une demande de l'administration.",
+     "t": "<b>Majoration d'impôt sur le revenu</b> : le retard ou le défaut de déclaration et les inexactitudes ou omissions qui minorent l'impôt dû entraînent une majoration de 10 % des droits, portée à 20 % en cas de dépôt tardif dans les trente jours d'une mise en demeure ; elle n'est pas appliquée en cas de régularisation spontanée ou dans les trente jours d'une demande de l'administration.",
      "cite": "« Les inexactitudes ou les omissions relevées dans ces déclarations, qui ont pour effet de minorer l'impôt dû, donnent lieu au versement d'une majoration égale à 10 % des droits mis à la charge du contribuable. »",
      "src": "CGI, art. 1758 A",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815281",
      "fiab": "stable"
     },
     {
-     "t": "<b>Majorations de droits</b> : 10 % en cas de défaut ou de retard de déclaration ; 40 % lorsque la déclaration n'est pas déposée dans les trente jours d'une mise en demeure ou en cas de manquement délibéré ; 80 % en cas de manœuvres frauduleuses ou d'activité occulte.",
-     "src": "CGI, art. 1728 et 1729 ; BOI-CF-INF-20-10-10",
+     "t": "<b>Majorations de droits</b> : défaut ou retard de déclaration, 10 % sans mise en demeure ou si la déclaration est déposée dans les trente jours d'une mise en demeure, 40 % au-delà, 80 % en cas de découverte d'une activité occulte ; insuffisance de déclaration, 40 % en cas de manquement délibéré, 80 % en cas d'abus de droit (40 % s'il n'est pas établi que le contribuable en a eu l'initiative principale ou en a été le principal bénéficiaire) ou de manœuvres frauduleuses.",
+     "src": "CGI, art. 1728, 1 et 1729 ; BOI-CF-INF-20-10-10",
      "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
      "fiab": "stable"
     },
     {
-     "t": "<b>Intérêt de retard</b> : 0,20 % par mois de retard, dû sur toute créance fiscale payée hors délai, indépendamment des majorations ; il est réduit en cas de régularisation spontanée.",
+     "t": "<b>Intérêt de retard</b> : dû sur toute créance de nature fiscale non acquittée dans le délai légal, au taux de 0,20 % par mois, en sus des sanctions éventuelles ; il court du premier jour du mois suivant celui où l'impôt devait être acquitté jusqu'au dernier jour du mois du paiement, et il est réduit de 50 % en cas de dépôt spontané d'une déclaration rectificative, sous conditions.",
      "cite": "« Le taux de l'intérêt de retard est de 0,20 % par mois. Il s'applique sur le montant des créances de nature fiscale mises à la charge du contribuable ou dont le versement a été différé. »",
-     "src": "CGI, art. 1727, III et V",
+     "src": "CGI, art. 1727",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051213330",
      "fiab": "stable"
     },
     {
-     "t": "<b>Abus de droit</b> : l'administration peut écarter les actes fictifs ou ceux qui, recherchant le bénéfice d'une application littérale des textes contraire à leur objectif, n'ont pu être inspirés par aucun autre motif que d'éluder l'impôt ; elle peut écarter la garantie de l'article L. 80 A si elle démontre, par des éléments objectifs, la finalité abusive de la situation.",
+     "t": "<b>Abus de droit</b> : l'administration peut écarter les actes fictifs ou ceux qui, recherchant le bénéfice d'une application littérale des textes ou de décisions à l'encontre des objectifs poursuivis par leurs auteurs, n'ont pu être inspirés par aucun autre motif que celui d'éluder ou d'atténuer les charges fiscales normalement supportées.",
      "src": "LPF, art. L. 64 ; CE, Assemblée, 28 octobre 2020, n° 428048",
      "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
      "fiab": "stable"
     },
     {
-     "t": "<b>Réclamation préalable</b> : tout contentieux débute par une réclamation au service des impôts, présentée au plus tard le 31 décembre de la deuxième année suivant la mise en recouvrement ou le versement de l'impôt ; le contribuable peut demander le sursis de paiement.",
+     "t": "<b>Réclamation préalable</b> : tout contentieux débute par une réclamation au service des impôts, présentée au plus tard le 31 décembre de la deuxième année suivant la mise en recouvrement du rôle ou la notification de l'avis de mise en recouvrement, le versement de l'impôt contesté ou la réalisation de l'événement qui la motive ; pour les impôts directs locaux et leurs taxes annexes, le délai expire le 31 décembre de l'année suivante.",
      "cite": "« présentées à l'administration au plus tard le 31 décembre de la deuxième année suivant celle, selon le cas »",
-     "src": "LPF, art. L. 190, R*196-1 et L. 277",
+     "src": "LPF, art. L. 190, R*196-1 et R*196-2",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006180177/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sursis de paiement</b> : le contribuable qui conteste le bien-fondé ou le montant d'une imposition peut différer le paiement de la partie contestée et des pénalités afférentes s'il le demande expressément dans sa réclamation ; au-delà d'un montant fixé par décret, il doit constituer des garanties. L'exigibilité de la créance et la prescription de l'action en recouvrement sont suspendues jusqu'à la décision définitive sur la réclamation.",
+     "cite": "« s'il en a expressément formulé la demande dans sa réclamation et précisé le montant ou les bases du dégrèvement auquel il estime avoir droit, à différer le paiement de la partie contestée »",
+     "src": "LPF, art. L. 277",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039278590",
      "fiab": "stable"
     }
    ]
@@ -248,30 +268,42 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Tableau des majorations</b> : 10 % (défaut, retard, insuffisance sans manquement délibéré), 20 % (dépôt tardif d'IR dans les trente jours d'une mise en demeure), 40 % (mise en demeure non suivie d'effet, manquement délibéré), 80 % (manœuvres frauduleuses, activité occulte).",
+     "t": "<b>Tableau des majorations</b> : <span class=\"mono\">10 %</span> (défaut ou retard sans mise en demeure ou dans les trente jours de celle-ci, insuffisance d'impôt sur le revenu sans manquement délibéré) ; <span class=\"mono\">20 %</span> (déclaration de revenus déposée dans les trente jours d'une mise en demeure) ; <span class=\"mono\">40 %</span> (déclaration déposée plus de trente jours après une mise en demeure, manquement délibéré) ; <span class=\"mono\">80 %</span> (manœuvres frauduleuses, abus de droit, activité occulte).",
      "src": "CGI, art. 1728, 1729 et 1758 A ; BOI-ANNX-000277",
      "url": "https://bofip.impots.gouv.fr/bofip/4344-PGP.html/identifiant=BOI-ANNX-000277-20150608",
      "fiab": "stable"
     },
     {
-     "t": "<b>Délais</b> : reprise de <span class=\"mono\">3 ans</span> (IR, IS, TVA), portée à <span class=\"mono\">10 ans</span> en cas d'activité occulte ; réponse à une proposition de rectification <span class=\"mono\">30 jours</span> + 30 ; réclamation jusqu'au 31 décembre de la <span class=\"mono\">2e année</span> suivant la mise en recouvrement.",
+     "t": "<b>Délais</b> : reprise de <span class=\"mono\">3 ans</span> (impôt sur le revenu, impôt sur les sociétés, TVA), portée à <span class=\"mono\">10 ans</span> en cas d'activité occulte ; réponse à une proposition de rectification : <span class=\"mono\">30 jours</span>, prorogeables de 30 jours ; réclamation jusqu'au 31 décembre de la <span class=\"mono\">2e année</span> suivant la mise en recouvrement (année suivante pour les impôts directs locaux).",
      "cite": "« Pour les taxes sur le chiffre d'affaires, le droit de reprise de l'administration s'exerce jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible »",
-     "src": "LPF, art. L. 169, L. 176, L. 57 et R*196-1",
+     "src": "LPF, art. L. 11, L. 169, L. 176, R*57-1, R*196-1 et R*196-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595822",
      "fiab": "stable"
     },
     {
-     "t": "<b>Droits d'enregistrement</b> : actions <span class=\"mono\">0,1 %</span> ; parts sociales <span class=\"mono\">3 %</span> après abattement de <span class=\"mono\">23 000 €</span> ; sociétés à prépondérance immobilière <span class=\"mono\">5 %</span> ; fonds de commerce <span class=\"mono\">0 / 3 / 5 %</span> (seuils 23 000 € et 200 000 €).",
-     "src": "CGI, art. 719 et 726",
+     "t": "<b>Droits d'enregistrement</b> : actions <span class=\"mono\">0,1 %</span> ; parts sociales <span class=\"mono\">3 %</span> après abattement de <span class=\"mono\">23 000 €</span> ; personnes morales à prépondérance immobilière <span class=\"mono\">5 %</span> ; fonds de commerce, taux globaux <span class=\"mono\">0 / 3 / 5 %</span> (seuils de 23 000 € et 200 000 €).",
+     "src": "CGI, art. 719 et 726 ; BOI-ENR-DMTOM-10-20-20",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019291809",
      "fiab": "stable"
     },
     {
-     "t": "<b>Patrimoine</b> : abattement de <span class=\"mono\">100 000 €</span> par enfant et par parent en ligne directe (successions et donations) ; seuil de l'IFI <span class=\"mono\">1 300 000 €</span> ; abattement de <span class=\"mono\">30 %</span> sur la résidence principale.",
+     "t": "<b>Patrimoine</b> : abattement de <span class=\"mono\">100 000 €</span> par enfant et par ascendant (successions et donations) ; seuil de l'IFI <span class=\"mono\">1 300 000 €</span> ; abattement de <span class=\"mono\">30 %</span> sur la résidence principale.",
      "cite": "« un abattement de 30 % est effectué sur la valeur vénale réelle de l'immeuble lorsque celui-ci est occupé à titre de résidence principale par son propriétaire »",
      "src": "CGI, art. 779, 964 et 973",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048806768",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Barème de l'IFI</b> : <span class=\"mono\">0,50 %</span> pour la fraction de 800 001 € à 1 300 000 € et <span class=\"mono\">0,70 %</span> pour la fraction de 1 300 001 € à 2 570 000 €, les taux suivants s'appliquant au-delà ; une décote joue pour les patrimoines nets taxables compris entre 1 300 000 € et 1 400 000 €.",
+     "src": "CGI, art. 977",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036385041?idSecParent=LEGISCTA000036384995",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Taxe sur les salaires (rémunérations versées en 2025)</b> : taux de <span class=\"mono\">4,25 %</span> ; taux majoré de <span class=\"mono\">8,50 %</span> pour la fraction des rémunérations individuelles annuelles comprise entre 9 147 € et 18 259 € et de <span class=\"mono\">13,60 %</span> au-delà de 18 259 €. Les limites des tranches sont relevées chaque année comme la limite supérieure de la première tranche du barème de l'impôt sur le revenu de l'année précédente.",
+     "src": "CGI, art. 231, 2 bis ; BOI-TPS-TS-30",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
+     "fiab": "millésimé 2025"
     }
    ]
   },
@@ -279,22 +311,22 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Loi de finances pour 2025 (art. 62)</b> : nouveau calendrier de suppression progressive de la CVAE, désormais fixée à 2030, avec une contribution complémentaire exceptionnelle due au titre de 2025.",
+     "t": "<b>Loi de finances pour 2025 (art. 62)</b> : la suppression progressive de la CVAE est reportée à 2030 ; une contribution complémentaire égale à <span class=\"mono\">47,4 %</span> de la CVAE due au titre de 2025 est instituée, versée par un acompte unique au plus tard le 15 septembre 2025 et liquidée au plus tard le 5 mai 2026 ; le plafonnement en fonction de la valeur ajoutée ne s'y applique pas.",
      "cite": "« L'assiette de la contribution complémentaire est constituée de la cotisation sur la valeur ajoutée des entreprises mentionnée au II de l'article 1586 ter du code général des impôts due au titre de l'année 2025. »",
-     "src": "CGI, art. 1586 ter ; loi n° 2025-127 du 14 février 2025, art. 62",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 62 ; CGI, art. 1586 ter",
      "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000051173263/2025-02-16",
      "fiab": "millésimé 2025"
     },
     {
-     "t": "<b>Majoration des déclarations tardives d'IR</b> : depuis le 1er janvier 2017, le dépôt tardif de la déclaration de revenus relève de l'article 1758 A et une majoration unique de 20 % remplace le cumul de deux majorations de 10 % en cas de dépôt dans les trente jours d'une mise en demeure.",
-     "src": "CGI, art. 1758 A (LFR 2016, art. 20) ; BOFiP, ACTU-2017-00070",
-     "url": "https://bofip.impots.gouv.fr/bofip/10869-PGP.html/identifiant=ACTU-2017-00070",
-     "fiab": "stable"
+     "t": "<b>Loi de finances pour 2026 et CVAE</b> : le projet de loi de finances pour 2026 prévoyait d'avancer de deux ans, à 2028, la suppression de la CVAE ; la loi n° 2026-103 du 19 février 2026 n'a pas retenu cette accélération : le taux maximal de l'article 1586 quater reste de 0,28 % en 2026 et l'article 1447-0 demeure en vigueur jusqu'au 1er janvier 2030.",
+     "src": "Loi n° 2026-103 du 19 février 2026 ; CGI, art. 1447-0 et 1586 quater",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000053508155",
+     "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Garantie fiscale</b> : la rédaction de l'article L. 80 A issue de la loi du 10 août 2018 (droit à l'erreur) rend opposables les prises de position formelles exprimées lors d'un contrôle, pour les contrôles dont l'avis est adressé à compter du 1er janvier 2019.",
-     "src": "LPF, art. L. 80 A",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+     "t": "<b>Champ de la CFE (loi de finances pour 2026, art. 55)</b> : depuis le 21 février 2026, l'article 1447, I vise « les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires » ; la rédaction antérieure visait les « sociétés » non dotées de la personnalité morale.",
+     "src": "CGI, art. 1447, I (loi n° 2026-103 du 19 février 2026, art. 55)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
      "fiab": "stable"
     }
    ]
@@ -303,10 +335,35 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Qui paie quoi</b> : la taxe foncière incombe au propriétaire au 1er janvier, la CFE à la personne qui exerce l'activité dans les locaux ; un commerçant locataire paie la CFE, son bailleur la taxe foncière (sauf clause de refacturation du bail).",
+     "t": "<b>Qui paie quoi</b> : la taxe foncière est établie au nom du propriétaire, la CFE est due par la personne qui exerce l'activité professionnelle ; un commerçant locataire de son local paie la CFE, son bailleur la taxe foncière (sauf clause du bail la lui refacturant).",
      "cite": "« Sous réserve des dispositions des articles 1403 et 1404, toute propriété, bâtie ou non bâtie, doit être imposée au nom du propriétaire actuel. »",
      "src": "CGI, art. 1400 et 1447",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034110958",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Activité occulte</b> : le délai de reprise de dix ans ne s'applique qu'aux catégories de revenus que le contribuable n'a fait figurer dans aucune déclaration ; l'activité est réputée occulte lorsque les déclarations n'ont pas été déposées dans le délai légal et que l'activité n'a pas été portée à la connaissance d'un organisme compétent, ou lorsqu'il s'agit d'une activité illicite.",
+     "cite": "« ne s'applique qu'aux seules catégories de revenus que le contribuable n'a pas fait figurer dans une quelconque des déclarations »",
+     "src": "LPF, art. L. 169, 2e alinéa",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051759330",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Réclamation contre un impôt local</b> : pour la taxe foncière, la CFE et les autres impôts directs locaux, la réclamation doit être présentée au plus tard le 31 décembre de l'année suivant la mise en recouvrement, et non de la deuxième année ; le Conseil d'État l'a appliqué à une taxe foncière en 2025.",
+     "src": "LPF, art. R*196-2 ; CE, 15 janvier 2025, n° 467615",
+     "url": "https://www.legifrance.gouv.fr/juri/id/CETATEXT000050988327",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Délai de soixante jours de l'article L. 57 A</b> : il ne s'applique pas lorsque l'entreprise vérifiée dépasse les seuils de chiffre d'affaires au titre de l'un quelconque des exercices vérifiés et rectifiés ; le délai de réponse de l'administration aux observations n'est alors limité pour aucun exercice.",
+     "src": "LPF, art. L. 57 A ; CE, 20 juin 2023, n° 467042",
+     "url": "https://www.legifrance.gouv.fr/juri/id/CETATEXT000047708711",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Taxe sur les salaires</b> : pour en être dispensé, l'employeur doit à la fois être assujetti à la TVA l'année du versement des rémunérations et l'avoir été sur 90 % au moins de son chiffre d'affaires l'année précédente ; une seule de ces deux conditions ne suffit pas.",
+     "src": "CGI, art. 231, 1 ; CE, 31 mars 2023, n° 460838",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000047411303",
      "fiab": "stable"
     },
     {
@@ -322,9 +379,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Doctrine et abus de droit</b> : lorsque le contribuable s'est conformé aux termes d'une instruction, l'administration ne peut pas lui opposer qu'il en aurait outrepassé la portée pour recourir à la procédure de l'abus de droit.",
-     "src": "CE, avis d'Assemblée, 8 avril 1998, n° 192539",
-     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007987293/",
+     "t": "<b>Doctrine et abus de droit</b> : le redevable peut se prévaloir d'une interprétation formellement admise par l'administration même si elle ajoute à la loi, mais l'administration peut écarter cette garantie en mettant en œuvre la procédure de l'abus de droit si elle démontre, par des éléments objectifs, la finalité abusive de la situation.",
+     "src": "LPF, art. L. 64 et L. 80 A ; CE, Assemblée, 28 octobre 2020, n° 428048",
+     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
      "fiab": "stable"
     }
    ]

@@ -13,7 +13,7 @@
   },
   {
    "h": "Le coût d'acquisition et la production immobilisée",
-   "html": "<p>Le <b>coût d'acquisition</b> (PCG, art. 213-1 et 213-8) = prix d'achat HT (après remises et escomptes) + droits de douane et taxes non récupérables + <b>coûts directement attribuables</b> à la mise en état de fonctionnement : transport, installation, montage, honoraires d'architecte, frais d'essais. Les frais d'acquisition (droits de mutation, honoraires du notaire, commissions) peuvent, au choix de l'entité, être rattachés au coût ou passés en charges ; les frais de formation du personnel et les coûts administratifs restent des charges.</p><p>La TVA, récupérable, va en <code>44562</code> et la dette envers le fournisseur en <code>404</code> Fournisseurs d'immobilisations, jamais en 401. Exemple : machine <span class=\"mono\">22 000 €</span> + transport et installation 2 000 = 24 000 HT, TVA 4 800.</p><p>Un bien <b>fabriqué par l'entreprise pour elle-même</b> est enregistré à son <b>coût de production</b> (matières, main-d'œuvre, charges indirectes de production) : les charges restent dans les comptes 6 où elles ont été saisies, et le compte <code>722</code> Production immobilisée, immobilisations corporelles est crédité pour neutraliser leur effet sur le résultat. Si la fabrication s'étale sur plusieurs exercices, le bien passe par <code>231</code> Immobilisations corporelles en cours jusqu'à son achèvement.</p>",
+   "html": "<p>Le <b>coût d'acquisition</b> (PCG, art. 213-1 et 213-8) = prix d'achat HT (après remises et escomptes) + droits de douane et taxes non récupérables + <b>coûts directement attribuables</b> à la mise en état de fonctionnement : transport, installation, montage, honoraires d'architecte, frais d'essais. Les frais d'acquisition (droits de mutation, honoraires du notaire, commissions) peuvent, au choix de l'entité, être rattachés au coût ou passés en charges ; les coûts administratifs restent des charges, de même que les frais de formation, sauf option pour rattacher au coût les frais externes de formation nécessaires à la mise en service.</p><p>La TVA, récupérable, va en <code>44562</code> et la dette envers le fournisseur en <code>404</code> Fournisseurs d'immobilisations, jamais en 401. Exemple : machine <span class=\"mono\">22 000 €</span> + transport et installation 2 000 = 24 000 HT, TVA 4 800.</p><p>Un bien <b>fabriqué par l'entreprise pour elle-même</b> est enregistré à son <b>coût de production</b> (matières, main-d'œuvre, charges indirectes de production) : les charges restent dans les comptes 6 où elles ont été saisies, et le compte <code>722</code> Production immobilisée, immobilisations corporelles est crédité pour neutraliser leur effet sur le résultat. Si la fabrication s'étale sur plusieurs exercices, le bien passe par <code>231</code> Immobilisations corporelles en cours jusqu'à son achèvement.</p>",
    "entry": [
     {
      "a": "2154",
@@ -35,7 +35,7 @@
   },
   {
    "h": "L'amortissement linéaire",
-   "html": "<p>L'amortissement est la <b>répartition systématique du montant amortissable</b> d'un actif sur sa <b>durée d'utilité</b> (PCG, art. 214-1 à 214-4). Il traduit la consommation des avantages économiques attendus. C'est une <b>charge calculée</b>, sans sortie d'argent : débit <code>6811</code>, crédit <code>28xx</code> (même racine que l'immobilisation : 2154 → 28154).</p><ul><li>Base amortissable = coût d'entrée − <b>valeur résiduelle</b>, lorsque celle-ci est significative et mesurable.</li><li>Taux linéaire = 1 ÷ durée d'utilité (5 ans → 20 % ; 4 ans → 25 % ; 8 ans → 12,5 %).</li><li>Annuité = base × taux. La première année, <b>prorata temporis</b> à compter de la <b>mise en service</b>, en mois (9/12) ou en jours sur 360 selon la convention retenue.</li><li>Le dernier exercice récupère le complément, pour que le total des dotations égale la base.</li></ul><p>Le <b>plan d'amortissement</b> dresse, année par année, la dotation, le cumul et la valeur nette comptable. Les terrains ne s'amortissent pas (durée d'utilité illimitée) ; les constructions, oui.</p><p>Exemple : machine 24 000 €, 5 ans, mise en service le 1er janvier → 4 800 € par an.</p>",
+   "html": "<p>L'amortissement est la <b>répartition systématique du montant amortissable</b> d'un actif sur sa <b>durée d'utilité</b> (PCG, art. 214-1 à 214-4 et 214-13). Il traduit la consommation des avantages économiques attendus. C'est une <b>charge calculée</b>, sans sortie d'argent : débit <code>6811</code>, crédit <code>28xx</code> (même racine que l'immobilisation : 2154 → 28154).</p><ul><li>Base amortissable = coût d'entrée − <b>valeur résiduelle</b>, lorsque celle-ci est significative et mesurable.</li><li>Taux linéaire = 1 ÷ durée d'utilité (5 ans → 20 % ; 4 ans → 25 % ; 8 ans → 12,5 %).</li><li>Annuité = base × taux. La première année, <b>prorata temporis</b> à compter de la <b>mise en service</b>, en mois (9/12) ou en jours sur 360 selon la convention retenue.</li><li>Le dernier exercice récupère le complément, pour que le total des dotations égale la base.</li></ul><p>Le <b>plan d'amortissement</b> dresse, année par année, la dotation, le cumul et la valeur nette comptable. Les terrains ne s'amortissent pas (durée d'utilité illimitée) ; les constructions, oui.</p><p>Exemple : machine 24 000 €, 5 ans, mise en service le 1er janvier → 4 800 € par an.</p>",
    "entry": [
     {
      "a": "6811",
@@ -82,7 +82,7 @@
   },
   {
    "h": "Immobilisations financières de base",
-   "html": "<p>Le compte <code>26</code>/<code>27</code> accueille les titres et créances que l'entreprise entend <b>conserver durablement</b> :</p><ul><li><code>261</code> <b>Titres de participation</b> : actions détenues pour exercer une influence ou un contrôle sur la société émettrice (présumés au-delà de 10 % du capital).</li><li><code>271</code> et <code>272</code> Autres titres immobilisés : titres conservés durablement sans intention d'influence.</li><li><code>274</code> Prêts accordés, <code>275</code> <b>Dépôts et cautionnements</b> versés (garantie de loyer par exemple), récupérables donc à l'actif et non en charges.</li></ul><p>Les titres sont enregistrés au <b>prix d'achat</b> ; les frais d'acquisition (courtages) sont, au choix, incorporés au coût ou passés en charges (<code>627</code>). Ils ne s'<b>amortissent pas</b> : ils sont dépréciés (compte 296) si leur valeur d'inventaire tombe sous leur coût. Leur cession passe par <code>6671</code> Valeurs comptables des immobilisations financières cédées et <code>7671</code> Produits des cessions d'immobilisations financières, dans le résultat <b>financier</b>, et non par 657/757.</p><p>Les titres achetés pour placer un excédent de trésorerie quelques mois sont des <b>valeurs mobilières de placement</b> (classe 50), vues au chapitre 8.</p>",
+   "html": "<p>Le compte <code>26</code>/<code>27</code> accueille les titres et créances que l'entreprise entend <b>conserver durablement</b> :</p><ul><li><code>261</code> <b>Titres de participation</b> : actions détenues pour exercer une influence ou un contrôle sur la société émettrice (présumés au-delà de 10 % du capital).</li><li><code>271</code> et <code>272</code> Autres titres immobilisés : titres conservés durablement sans intention d'influence.</li><li><code>274</code> Prêts accordés, <code>275</code> <b>Dépôts et cautionnements</b> versés (garantie de loyer par exemple), récupérables donc à l'actif et non en charges.</li></ul><p>Les titres sont enregistrés au <b>prix d'achat</b> ; les frais d'acquisition (courtages) sont, au choix, incorporés au coût ou passés en charges (<code>627</code>). Ils ne s'<b>amortissent pas</b> : ils sont dépréciés (comptes 296 et 297) si leur valeur d'inventaire tombe sous leur coût. Leur cession passe par <code>6671</code> Valeurs comptables des immobilisations financières cédées et <code>7671</code> Produits des cessions d'immobilisations financières, dans le résultat <b>financier</b>, et non par 657/757.</p><p>Les titres achetés pour placer un excédent de trésorerie quelques mois sont des <b>valeurs mobilières de placement</b> (classe 50), vues au chapitre 8.</p>",
    "entry": [
     {
      "a": "275",
@@ -108,7 +108,7 @@
    "note": "Coût d'entrée et coût d'acquisition des immobilisations, option sur les frais d'acquisition"
   },
   {
-   "ref": "PCG, art. 214-1 à 214-4",
+   "ref": "PCG, art. 214-1 à 214-4, 214-13 et 214-14",
    "note": "Amortissement : montant amortissable, durée d'utilité, mode, plan d'amortissement"
   },
   {
@@ -263,8 +263,8 @@
     "Une dette fiscale"
    ],
    "a": 1,
-   "why": "Aucun paiement n'a lieu : la trésorerie est sortie à l'achat. La dotation ne fait qu'étaler ce coût sur les exercices d'utilisation (PCG, art. 214-1). C'est pourquoi on la réintègre dans la capacité d'autofinancement en finance.",
-   "src": "PCG, art. 214-1",
+   "why": "Aucun paiement n'a lieu : la trésorerie est sortie à l'achat. La dotation ne fait qu'étaler ce coût sur les exercices d'utilisation (PCG, art. 214-13). C'est pourquoi on la réintègre dans la capacité d'autofinancement en finance.",
+   "src": "PCG, art. 214-13",
    "fiab": "stable"
   },
   {
@@ -274,8 +274,8 @@
    "a": 18000,
    "unit": "€",
    "tol": 0.5,
-   "why": "Base = coût − valeur résiduelle = 20 000 − 2 000 = 18 000 € (PCG, art. 214-3). Cette base n'est retenue que si la valeur résiduelle est significative et mesurable, par exemple un prix de revente contractuel.",
-   "src": "PCG, art. 214-3",
+   "why": "Base = coût − valeur résiduelle = 20 000 − 2 000 = 18 000 € (PCG, art. 214-1 à 214-4). Cette base n'est retenue que si la valeur résiduelle est significative et mesurable, par exemple un prix de revente contractuel.",
+   "src": "PCG, art. 214-1 à 214-4",
    "fiab": "stable"
   },
   {
@@ -367,7 +367,7 @@
   {
    "type": "qcm",
    "niveau": 2,
-   "q": "La société Lioré achète une machine 40 000 € HT. Elle paie en plus 1 500 € HT de transport, 2 500 € HT d'installation et 800 € HT de formation des opérateurs. Quel est le coût d'entrée de la machine ?",
+   "q": "La société Lioré achète une machine 40 000 € HT. Elle paie en plus 1 500 € HT de transport, 2 500 € HT d'installation et 800 € HT de formation des opérateurs. Elle ne retient pas l'option de rattachement des frais de formation au coût. Quel est le coût d'entrée de la machine ?",
    "opts": [
     "40 000 €",
     "44 000 €",
@@ -375,14 +375,14 @@
     "41 500 €"
    ],
    "a": 1,
-   "why": "Le coût d'acquisition comprend le prix d'achat et tous les coûts directement attribuables pour mettre l'actif en état de fonctionner : transport et installation (PCG, art. 213-8). 40 000 + 1 500 + 2 500 = 44 000 €. La formation du personnel est expressément exclue et reste une charge de l'exercice (compte 62).",
+   "why": "Le coût d'acquisition comprend le prix d'achat et tous les coûts directement attribuables pour mettre l'actif en état de fonctionner : transport et installation (PCG, art. 213-8). 40 000 + 1 500 + 2 500 = 44 000 €. La formation reste ici une charge de l'exercice (compte 62) : seuls les frais externes de formation nécessaires à la mise en service peuvent, sur option, être rattachés au coût, et l'énoncé exclut cette option.",
    "src": "PCG, art. 213-8",
    "fiab": "stable"
   },
   {
    "type": "multi",
    "niveau": 2,
-   "q": "Quels éléments entrent dans le coût d'acquisition d'une immobilisation corporelle ? (plusieurs réponses possibles)",
+   "q": "Quels éléments entrent dans le coût d'acquisition d'une immobilisation corporelle, l'entreprise n'ayant pas opté pour le rattachement des frais de formation ? (plusieurs réponses possibles)",
    "opts": [
     "Le prix d'achat net des remises",
     "Les droits de douane",
@@ -395,7 +395,7 @@
     1,
     3
    ],
-   "why": "L'article 213-8 du PCG retient le prix d'achat après réductions, les droits de douane et taxes non récupérables, et les coûts directement attribuables (installation, montage, transport, honoraires d'architecte). La TVA récupérable n'est pas un coût (elle est déduite via 44562) et la formation du personnel est exclue.",
+   "why": "L'article 213-8 du PCG retient le prix d'achat après réductions, les droits de douane et taxes non récupérables, et les coûts directement attribuables (installation, montage, transport, honoraires d'architecte). La TVA récupérable n'est pas un coût (elle est déduite via 44562) et la formation du personnel reste une charge en l'absence d'option (seuls les frais externes de formation nécessaires à la mise en service peuvent, sur option, être rattachés au coût).",
    "src": "PCG, art. 213-8",
    "fiab": "stable"
   },
@@ -411,7 +411,7 @@
    ],
    "a": 1,
    "why": "L'amortissement court jusqu'à la date de cession : 30 000 × 20 % × 6/12 = 3 000 €. Les amortissements cumulés atteignent alors 6 000 + 6 000 + 3 000 = 15 000 et la VNC 15 000. Sans cette dotation, la charge de l'exercice N+2 serait sous-évaluée et la plus-value surévaluée.",
-   "src": "PCG, art. 214-1 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "src": "PCG, art. 214-1 et 214-13 ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
   {
@@ -491,7 +491,7 @@
    ],
    "a": 1,
    "why": "Le coût de production est porté à l'actif et neutralisé par le produit 722 Production immobilisée : les charges restent dans leurs comptes d'origine (pas de compensation) et le résultat n'est pas affecté. Créditer 601 et 641 effacerait des charges réelles, et 404 suppose un fournisseur externe inexistant.",
-   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 213-9 (coût de production)",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 213-14 et 213-15 (coût de production)",
    "fiab": "stable"
   },
   {
@@ -561,7 +561,7 @@
     3
    ],
    "why": "Un logiciel acquis est une immobilisation incorporelle en 205. Dotation N = 6 000 × 1/3 × 6/12 = 1 000 € (prorata depuis la mise en service), au crédit de 2805. L'amortissement dégressif n'est jamais obligatoire ; c'est une option fiscale, et le plan comptable suit la durée d'utilité en linéaire.",
-   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 214-1",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 214-1 et 214-13",
    "fiab": "stable"
   },
   {
@@ -591,7 +591,7 @@
    ],
    "a": 0,
    "why": "Dotation annuelle = 60 000 / 8 = 7 500. Cumul au 31/12/N−1 : 3 × 7 500 = 22 500. Dotation complémentaire N : 7 500 × 9/12 = 5 625. Cumul 28 125, VNC = 60 000 − 28 125 = 31 875. Résultat = 35 000 − 31 875 = + 3 125 € (757 − 657). Oublier la dotation complémentaire donnerait une VNC de 37 500 et une fausse moins-value de 2 500.",
-   "src": "PCG, art. 214-1 ; PCG 2025, art. 1121-1 (plan de comptes)",
+   "src": "PCG, art. 214-1 et 214-13 ; PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   }
  ]

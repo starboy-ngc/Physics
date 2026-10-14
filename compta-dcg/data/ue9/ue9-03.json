@@ -13,7 +13,7 @@
   },
   {
    "h": "La facture d'achat",
-   "html": "<p>Une facture est obligatoire entre professionnels (C. com., art. L. 441-9 ; CGI, art. 289). Elle doit mentionner : identité et numéro de TVA des parties, date, numéro, désignation et quantité, prix unitaire HT, réductions, taux et montant de TVA, date d'échéance et pénalités de retard. Elle est la <b>pièce justificative</b> de l'écriture.</p><p>Chez l'acheteur, la charge va dans le compte adapté à sa nature : <code>601</code> matières premières, <code>606</code> fournitures non stockées (énergie <code>6061</code>, petit équipement <code>6063</code>, fournitures de bureau <code>6064</code>), <code>607</code> marchandises destinées à la revente, <code>604</code> achats de prestations. La dette est en <code>401</code> ; si la facture concerne une immobilisation, c'est <code>404</code> et <code>44562</code>.</p><p>Exemple : réception d'une facture de marchandises, <span class=\"mono\">4 000 € HT</span>, TVA 20 % = 800, TTC 4 800, payable à 30 jours.</p>",
+   "html": "<p>Une facture est obligatoire entre professionnels (C. com., art. L. 441-9 ; CGI, art. 289). Elle doit mentionner : identité des parties, numéro de TVA du vendeur, date, numéro, désignation et quantité, prix unitaire HT, réductions, taux et montant de TVA, date d'échéance et pénalités de retard. Elle est la <b>pièce justificative</b> de l'écriture.</p><p>Chez l'acheteur, la charge va dans le compte adapté à sa nature : <code>601</code> matières premières, <code>606</code> fournitures non stockées (énergie <code>6061</code>, petit équipement <code>6063</code>, fournitures de bureau <code>6064</code>), <code>607</code> marchandises destinées à la revente, <code>604</code> achats de prestations. La dette est en <code>401</code> ; si la facture concerne une immobilisation, c'est <code>404</code> et <code>44562</code>.</p><p>Exemple : réception d'une facture de marchandises, <span class=\"mono\">4 000 € HT</span>, TVA 20 % = 800, TTC 4 800, payable à 30 jours.</p>",
    "entry": [
     {
      "a": "607",
@@ -78,7 +78,7 @@
   },
   {
    "h": "La déclaration de TVA",
-   "html": "<p>Au régime <b>réel normal</b>, l'entreprise dépose chaque mois une déclaration CA3 (CGI, art. 287) : TVA à décaisser = TVA collectée du mois − TVA déductible (biens et services + immobilisations) − crédit de TVA antérieur. Au régime <b>réel simplifié</b>, elle verse deux acomptes (juillet et décembre) et dépose une déclaration annuelle CA12. En dessous des seuils de la <b>franchise en base</b> (en 2025 : 85 000 € pour les ventes, 37 500 € pour les services, CGI art. 293 B), elle ne facture pas de TVA et ne la déduit pas.</p><p>Comptablement, on solde les comptes de TVA du mois et l'on constate la dette en <code>44551</code> TVA à décaisser. Si la déductible dépasse la collectée, l'excédent est un <b>crédit de TVA</b> (<code>44567</code>), à reporter sur la déclaration suivante ou à demander en remboursement.</p><p>Exemple : collectée 9 600, déductible sur biens et services 5 200, déductible sur immobilisations 1 400 → 3 000 à décaisser. Le paiement, le mois suivant, s'enregistre par débit 44551, crédit 512.</p>",
+   "html": "<p>Au régime <b>réel normal</b>, l'entreprise dépose chaque mois une déclaration CA3 (CGI, art. 287) : TVA à décaisser = TVA collectée du mois − TVA déductible (biens et services + immobilisations) − crédit de TVA antérieur. Au régime <b>réel simplifié</b>, elle verse deux acomptes (juillet et décembre) et dépose une déclaration annuelle CA12 ; ce régime est supprimé à compter du 1er janvier 2027 (loi de finances pour 2025, art. 38) et les entreprises concernées passeront au régime réel normal (CA3). En dessous des seuils de la <b>franchise en base</b> (en 2025 et en 2026 : 85 000 € pour les ventes, 37 500 € pour les services, CGI art. 293 B), elle ne facture pas de TVA et ne la déduit pas.</p><p>Comptablement, on solde les comptes de TVA du mois et l'on constate la dette en <code>44551</code> TVA à décaisser. Si la déductible dépasse la collectée, l'excédent est un <b>crédit de TVA</b> (<code>44567</code>), à reporter sur la déclaration suivante ou à demander en remboursement.</p><p>Exemple : collectée 9 600, déductible sur biens et services 5 200, déductible sur immobilisations 1 400 → 3 000 à décaisser. Le paiement, le mois suivant, s'enregistre par débit 44551, crédit 512.</p>",
    "entry": [
     {
      "a": "44571",
@@ -114,20 +114,20 @@
    "note": "Champ d'application, fait générateur et exigibilité de la TVA (livraison / encaissement, acomptes)"
   },
   {
-   "ref": "CGI, art. 278, 278-0 bis, 278 bis et 281 quater",
-   "note": "Taux de TVA 20 %, 5,5 %, 10 % et 2,1 %"
+   "ref": "CGI, art. 278, 278-0 bis, 278 bis, 279, 281 octies et 298 septies",
+   "note": "Taux de TVA 20 %, 10 %, 5,5 % et 2,1 % (médicaments remboursables, presse)"
   },
   {
    "ref": "CGI, art. 271 et 287",
-   "note": "Droit à déduction, déclaration et paiement, crédit de TVA"
+   "note": "Droit à déduction, déclaration et paiement, crédit de TVA ; régime simplifié supprimé au 1er janvier 2027 (loi n° 2025-127, art. 38)"
   },
   {
    "ref": "CGI, art. 289 et C. com., art. L. 441-9",
    "note": "Obligation et mentions de la facture"
   },
   {
-   "ref": "CGI, art. 293 B",
-   "note": "Franchise en base de TVA, seuils 2025"
+   "ref": "CGI, art. 293 B ; loi n° 2025-1044 du 3 novembre 2025",
+   "note": "Franchise en base de TVA, seuils 2025 et 2026"
   },
   {
    "ref": "Règlement ANC n° 2022-06",
@@ -438,7 +438,7 @@
     1,
     2
    ],
-   "why": "L'article 289 du CGI et l'article L. 441-9 du Code de commerce imposent notamment : date, numéro unique, identité et numéro de TVA des parties, désignation, prix HT, réductions, taux et montant de TVA, date d'échéance et pénalités de retard. Le résultat du vendeur et la rémunération de ses salariés sont des informations internes sans rapport avec la facture.",
+   "why": "L'article 289 du CGI et l'article L. 441-9 du Code de commerce imposent notamment : date, numéro unique, identité des parties, numéro de TVA du vendeur, désignation, prix HT, réductions, taux et montant de TVA, date d'échéance et pénalités de retard. Le résultat du vendeur et la rémunération de ses salariés sont des informations internes sans rapport avec la facture.",
    "src": "CGI, art. 289 ; C. com., art. L. 441-9",
    "fiab": "stable"
   },
@@ -686,7 +686,7 @@
   {
    "type": "qcm",
    "niveau": 2,
-   "q": "Une PME relève du régime réel simplifié d'imposition en matière de TVA. Quelles sont ses obligations déclaratives ?",
+   "q": "En 2026, une PME relève du régime réel simplifié d'imposition en matière de TVA. Quelles sont ses obligations déclaratives ?",
    "opts": [
     "Une déclaration CA3 chaque mois",
     "Deux acomptes semestriels (juillet et décembre) et une déclaration annuelle CA12",
@@ -694,9 +694,9 @@
     "Une déclaration CA3 chaque trimestre sans acompte"
    ],
    "a": 1,
-   "why": "Au réel simplifié (CGI, art. 302 septies A), l'entreprise verse un acompte en juillet (55 % de la TVA due l'année précédente) et un en décembre (40 %), puis régularise sur la déclaration annuelle CA12. La CA3 mensuelle est le régime réel normal (ou trimestrielle si la TVA annuelle est inférieure à 4 000 €), et la franchise suppose un chiffre d'affaires inférieur aux seuils de l'article 293 B.",
-   "src": "CGI, art. 302 septies A et 287",
-   "fiab": "stable"
+   "why": "Au réel simplifié (CGI, art. 302 septies A et 287, 3), l'entreprise verse un acompte en juillet (55 % de la TVA due l'année précédente) et un en décembre (40 %), puis régularise sur la déclaration annuelle CA12. La CA3 mensuelle est le régime réel normal (ou trimestrielle si la TVA annuelle est inférieure à 4 000 €), et la franchise suppose un chiffre d'affaires inférieur aux seuils de l'article 293 B. Ce régime est supprimé à compter du 1er janvier 2027 (loi de finances pour 2025, art. 38) : les entreprises concernées relèveront du régime réel normal.",
+   "src": "CGI, art. 302 septies A et 287, 3 ; loi n° 2025-127 du 14 février 2025, art. 38",
+   "fiab": "millésimé 2026"
   },
   {
    "type": "multi",

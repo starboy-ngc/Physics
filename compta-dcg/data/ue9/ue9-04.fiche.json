@@ -13,64 +13,94 @@
  },
  "textes": [
   {
-   "ref": "Plan de comptes PCG 2025 (PCG, art. 1121-1)",
-   "objet": "Comptes 164, 1648, 421, 431, 437, 4421, 512, 53, 58, 61/62, 63, 64, 661, 695",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
-   "version": "version au 1er janvier 2025"
+   "ref": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026",
+   "objet": "Comptes 164, 1648, 421, 425, 431, 437, 4421, 444, 447, 512, 53, 58, 61/62, 63, 64, 649, 661, 695",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "version": "version au 1er janvier 2026 (règlement ANC n° 2014-03 modifié, notamment par le règlement n° 2022-06)"
   },
   {
-   "ref": "C. trav., art. L. 3243-2 et R. 3243-1",
-   "objet": "Remise obligatoire du bulletin de paie et mentions",
-   "url": null,
-   "version": "en vigueur"
+   "ref": "PCG (règlement ANC n° 2014-03), version consolidée au 1er janvier 2026",
+   "objet": "Classe 6 : charges par nature ; charges d'exploitation normale et courante (comptes 60 à 65)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "version": "version consolidée au 1er janvier 2026"
   },
   {
-   "ref": "C. trav., art. L. 3242-1",
-   "objet": "Paiement mensuel du salaire",
-   "url": null,
-   "version": "en vigueur"
-  },
-  {
-   "ref": "CSS, art. L. 242-1",
-   "objet": "Assiette des cotisations de sécurité sociale",
-   "url": null,
-   "version": "en vigueur"
-  },
-  {
-   "ref": "CGI, art. 204 A et suivants",
-   "objet": "Prélèvement à la source de l'impôt sur le revenu retenu par l'employeur",
-   "url": null,
-   "version": "en vigueur depuis le 1er janvier 2019"
-  },
-  {
-   "ref": "CGI, art. 1447 et 1380",
-   "objet": "Contribution économique territoriale (CFE) et taxe foncière",
-   "url": null,
-   "version": "en vigueur"
-  },
-  {
-   "ref": "CGI, art. 261 C",
-   "objet": "Exonération de TVA des opérations bancaires et financières (intérêts)",
-   "url": null,
-   "version": "en vigueur"
-  },
-  {
-   "ref": "C. com., art. R. 123-174 et R. 123-203 à R. 123-208",
-   "objet": "Enregistrement jour par jour ; dérogation : date du relevé bancaire pour les petites entreprises individuelles",
+   "ref": "C. com., art. R. 123-174",
+   "objet": "Enregistrement opération par opération et jour par jour ; pièce justificative",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "version": "en vigueur depuis le 27 mars 2007"
+  },
+  {
+   "ref": "C. com., art. R. 123-176",
+   "objet": "Journaux et livres auxiliaires (banque, caisse) ; centralisation au moins mensuelle",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
    "version": "en vigueur"
   },
   {
    "ref": "C. com., art. R. 123-177",
-   "objet": "Justification de chaque poste du bilan par les données d'inventaire (dont le poste Banque)",
+   "objet": "Inventaire ; données d'inventaire justifiant chaque poste du bilan (dont le poste Banque)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
    "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015)"
   },
   {
-   "ref": "Règlement ANC n° 2022-06 et règlement ANC n° 2026-03",
-   "objet": "Comptes de personnel modifiés : 649 remboursements de charges de personnel ; intitulé du compte 6454 (France Travail)",
+   "ref": "C. com., art. R. 123-203 (sous-section R. 123-203 à R. 123-208)",
+   "objet": "Dérogation à R. 123-174 : enregistrement des encaissements et paiements à la date du relevé bancaire (personnes des art. L. 123-25 et L. 123-28)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
+   "version": "en vigueur (section 2 : de la comptabilité des commerçants, art. R. 123-172 à R. 123-208-8)"
+  },
+  {
+   "ref": "C. com., art. L. 123-22",
+   "objet": "Conservation des documents comptables et pièces justificatives pendant dix ans",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+   "version": "en vigueur depuis le 4 janvier 2003 (loi n° 2003-7 du 3 janvier 2003)"
+  },
+  {
+   "ref": "C. trav., art. L. 3242-1, L. 3243-2 et R. 3243-1",
+   "objet": "Mensualisation et paiement mensuel du salaire, acompte ; bulletin de paie et ses mentions",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CSS, art. L. 242-1 et L. 136-1-1",
+   "objet": "Assiette des cotisations de sécurité sociale : revenus d'activité",
+   "url": null,
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CSS, art. L. 241-13 ; décret n° 2026-509 du 12 juin 2026",
+   "objet": "Réduction générale dégressive unique (RGDU) des cotisations patronales",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054248488",
+   "version": "en vigueur depuis le 1er janvier 2026"
+  },
+  {
+   "ref": "CGI, art. 204 A, 204 E et 1671",
+   "objet": "Prélèvement à la source de l'impôt sur le revenu : retenue opérée par l'employeur ; taux individualisé des couples",
+   "url": "https://bofip.impots.gouv.fr/bofip/11178-PGP.html/identifiant=BOI-IR-PAS-20250507",
+   "version": "en vigueur (taux individualisé par défaut pour les couples depuis le 1er septembre 2025)"
+  },
+  {
+   "ref": "CGI, art. 1447",
+   "objet": "Cotisation foncière des entreprises (CFE)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
+   "version": "en vigueur depuis le 21 février 2026 (loi n° 2026-103 du 19 février 2026, art. 55)"
+  },
+  {
+   "ref": "CGI, art. 261 C",
+   "objet": "Exonération de TVA des opérations bancaires et financières (octroi de crédits) et des opérations d'assurance",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
+   "version": "en vigueur au 14 octobre 2026 (TVA recodifiée par l'ordonnance n° 2025-1247 du 17 décembre 2025)"
+  },
+  {
+   "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "objet": "Modernisation des états financiers : suppression des transferts de charges (art. 512-1) ; plan de comptes réécrit (comptes 649 et 1648)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "version": "homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2025"
+  },
+  {
+   "ref": "Règlement ANC n° 2026-03 du 6 mars 2026",
+   "objet": "Intitulé du compte 6454 : « France Travail » au lieu de « Pôle emploi » (art. 6)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
-   "version": "exercices ouverts à compter du 1er janvier 2025 ; règlement 2026-03 homologué par arrêté du 12 août 2026"
+   "version": "homologué par arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027, application anticipée possible"
   }
  ],
  "sections": [
@@ -78,40 +108,40 @@
    "h": "Définitions",
    "items": [
     {
-     "t": "<b>Comptes financiers</b> (classe 5) : banques <code>512</code>, caisse <code>53</code>, et <code>58</code> « Virements internes », compte de passage utilisé pour les mouvements entre comptes de trésorerie (remise d'espèces en banque, virement de compte à compte).",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), classe 5",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "<b>Comptes financiers</b> (classe 5) utilisés pour la trésorerie : <code>512</code> « Banques », <code>53</code> « Caisse » et <code>58</code> « Virements internes ».",
+     "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), classe 5",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Autres charges externes</b> : comptes <code>61</code> et <code>62</code> (sous-traitance, locations, entretien, assurances, honoraires, publicité, transports, déplacements, frais postaux, services bancaires).",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 61 et 62",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "<b>Autres charges externes</b> : comptes <code>61</code> « Services extérieurs » et <code>62</code> « Autres services extérieurs » (sous-traitance <code>611</code>, locations <code>613</code>, entretien et réparations <code>615</code>, primes d'assurances <code>616</code>, honoraires <code>6226</code>, publicité <code>623</code>, transports <code>624</code>, déplacements <code>625</code>, frais postaux et de télécommunications <code>626</code>, services bancaires et assimilés <code>627</code>).",
+     "src": "PCG (version consolidée au 1er janvier 2026), classe 6 ; plan de comptes, comptes 61 et 62",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable",
-     "cite": "« La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les charges par nature »"
+     "cite": "« Les charges d'exploitation normale et courante sont enregistrées sous les comptes 60 « Achats », 61/62 « Autres charges externes », 63 « Impôts, taxes et versements assimilés », 64 « Charges de personnel » et 65 « Autres charges de gestion courante ». »"
     },
     {
-     "t": "<b>Impôts, taxes et versements assimilés</b> : compte <code>63</code>, qui regroupe les impôts et taxes à la charge de l'entreprise autres que l'impôt sur les bénéfices (taxes sur rémunérations <code>631</code>/<code>633</code>, impôts directs <code>635</code>, impôts indirects <code>637</code>).",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 63",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "<b>Impôts, taxes et versements assimilés</b> (compte <code>63</code>) : impôts et taxes à la charge de l'entité autres que l'impôt sur les bénéfices. Le plan distingue les impôts sur rémunérations (<code>631</code> versés à l'administration des impôts, <code>633</code> à d'autres organismes) et les autres impôts (<code>635</code> administration des impôts, dont <code>6351</code> « Impôts directs (sauf impôts sur les bénéfices) » ; <code>637</code> autres organismes).",
+     "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), compte 63",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Charges de personnel</b> : compte <code>64</code>, rémunérations du personnel <code>641</code> et charges de sécurité sociale et de prévoyance <code>645</code>.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 64",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "<b>Charges de personnel</b> (compte <code>64</code>) : rémunérations du personnel <code>641</code> ; charges de sécurité sociale et de prévoyance <code>645</code> (<code>6451</code> URSSAF, <code>6452</code> mutuelles, <code>6453</code> caisses de retraites, <code>6454</code> Pôle emploi, <code>6458</code> autres organismes sociaux) ; remboursements de charges de personnel <code>649</code>.",
+     "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), compte 64",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Bulletin de paie</b> : document remis obligatoirement par l'employeur lors du paiement du salaire, dont les mentions sont fixées par décret.",
+     "t": "<b>Bulletin de paie</b> : pièce justificative que l'employeur remet au salarié lors du paiement du salaire ; ses mentions sont fixées par l'article R. 3243-1. Sauf opposition du salarié, il peut être remis sous forme électronique.",
      "src": "C. trav., art. L. 3243-2 et R. 3243-1",
      "url": null,
      "fiab": "stable"
     },
     {
-     "t": "<b>Prélèvement à la source</b> : retenue de l'impôt sur le revenu opérée par l'employeur sur le salaire net imposable et reversée à l'État (compte <code>4421</code> « Prélèvements à la source (impôt sur le revenu) »).",
-     "src": "CGI, art. 204 A et 204 B ; plan de comptes PCG 2025, compte 4421",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "<b>Prélèvement à la source</b> : pour les traitements et salaires, l'impôt sur le revenu est prélevé par une retenue à la source que l'employeur, débiteur des revenus, opère puis reverse au comptable public ; la dette correspondante est inscrite au compte <code>4421</code> « Prélèvements à la source (Impôt sur le revenu) ».",
+     "src": "CGI, art. 204 A et 1671 ; BOI-IR-PAS ; plan de comptes, compte 4421",
+     "url": "https://bofip.impots.gouv.fr/bofip/11178-PGP.html/identifiant=BOI-IR-PAS-20250507",
      "fiab": "stable"
     }
    ]
@@ -120,95 +150,105 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "Les mouvements de trésorerie sont enregistrés <b>opération par opération et jour par jour</b> au livre-journal, chaque enregistrement renvoyant à sa pièce justificative.",
+     "t": "Les mouvements de trésorerie sont enregistrés <b>opération par opération et jour par jour</b> au livre-journal ; chaque enregistrement précise l'origine, le contenu et l'imputation de la donnée ainsi que les références de la pièce justificative (relevé bancaire, facture, bulletin de paie).",
      "src": "C. com., art. R. 123-174",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
      "fiab": "stable",
      "cite": "« Les mouvements affectant le patrimoine de l'entreprise sont enregistrés opération par opération et jour par jour pour le livre-journal. »"
     },
     {
-     "t": "Un virement de la caisse vers la banque passe par <code>58</code> : débit 58 / crédit 53 à la sortie de caisse, puis débit 512 / crédit 58 à la réception du relevé ; le compte 58 est soldé une fois les deux écritures passées.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 58",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "Le livre-journal et le grand livre sont détaillés en <b>journaux auxiliaires</b> selon les besoins (journal de banque, journal de caisse). Un virement entre deux comptes de trésorerie tenus dans des journaux différents passe par le compte <code>58</code> « Virements internes » : débit 58 / crédit 53 au journal de caisse, puis débit 512 / crédit 58 au journal de banque ; le compte 58 est soldé une fois les deux écritures passées.",
+     "src": "C. com., art. R. 123-176 ; plan de comptes (version au 1er janvier 2026), compte 58",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+     "fiab": "stable",
+     "cite": "« Le livre-journal et le grand livre sont détaillés en autant de journaux auxiliaires et de livres auxiliaires que les besoins du commerce l'exigent. »"
+    },
+    {
+     "t": "Les charges externes sont enregistrées <b>hors taxes</b> aux comptes 61/62, la TVA déductible au compte <code>44566</code> « TVA sur autres biens et services » ; une charge exonérée de TVA (intérêts, primes d'assurance) est enregistrée pour son montant total, sans TVA déductible.",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62 et 44566 ; CGI, art. 261 C",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "Les charges externes sont enregistrées <b>hors taxes</b> en 61/62 avec la TVA déductible en <code>44566</code> ; les services bancaires (<code>627</code>) sont soumis à la TVA, contrairement aux intérêts.",
-     "src": "Plan de comptes PCG 2025, comptes 627 et 44566 ; CGI, art. 261 C",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "Les <b>intérêts</b> d'emprunt et les agios sont des charges financières : compte <code>661</code> « Charges d'intérêts » (<code>6611</code> intérêts des emprunts et dettes, <code>6616</code> intérêts bancaires et sur opérations de financement). L'octroi de crédits est exonéré de TVA.",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 661, 6611 et 6616 ; CGI, art. 261 C, 1°",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "Les <b>intérêts</b> d'emprunt et agios sont des charges financières (<code>661</code> « Charges d'intérêts ») exonérées de TVA.",
-     "src": "Plan de comptes PCG 2025, compte 661 ; CGI, art. 261 C, 1°",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "L'<b>impôt sur les bénéfices</b> n'est pas une charge du compte 63 : il est enregistré au compte <code>695</code> « Impôts sur les bénéfices », avec pour contrepartie <code>444</code> « État – Impôts sur les bénéfices ».",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 444 et 695",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "L'<b>impôt sur les bénéfices</b> n'est pas en classe 63 : il est enregistré au compte <code>695</code> « Impôts sur les bénéfices » avec pour contrepartie <code>444</code> « État – Impôts sur les bénéfices ».",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 444 et 695",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
-     "fiab": "stable"
+     "t": "La <b>CFE</b> est due chaque année par les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires qui exercent à titre habituel une activité professionnelle non salariée. Pour l'entreprise, c'est un impôt direct autre que l'impôt sur les bénéfices (compte <code>6351</code>).",
+     "src": "CGI, art. 1447, I (rédaction issue de la loi n° 2026-103 du 19 février 2026) ; plan de comptes, compte 6351",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
+     "fiab": "stable",
+     "cite": "« La cotisation foncière des entreprises est due chaque année par les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires »"
     },
     {
-     "t": "La <b>CFE</b> est due chaque année par les personnes qui exercent à titre habituel une activité professionnelle non salariée ; la taxe foncière est due par le propriétaire au 1er janvier. Les deux sont des charges du compte <code>635</code>.",
-     "src": "CGI, art. 1447 et 1380 ; plan de comptes PCG 2025, compte 635",
+     "t": "La <b>taxe foncière</b> est établie annuellement sur les propriétés bâties ; elle est due par le propriétaire actuel (par l'usufruitier en cas d'usufruit), pour l'année entière, d'après les faits existants au 1er janvier de l'année d'imposition. Pour l'entité propriétaire, c'est une charge du compte <code>6351</code>.",
+     "src": "CGI, art. 1380, 1400 et 1415 ; plan de comptes, compte 6351",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034110958",
+     "fiab": "stable",
+     "cite": "« Sous réserve des dispositions des articles 1403 et 1404, toute propriété, bâtie ou non bâtie, doit être imposée au nom du propriétaire actuel. »"
+    },
+    {
+     "t": "La rémunération des salariés est <b>mensuelle</b> et son paiement est effectué une fois par mois ; un acompte correspondant, pour une quinzaine, à la moitié de la rémunération mensuelle est versé au salarié qui en fait la demande (compte <code>425</code> « Personnel – Avances et acomptes »). Ces règles ne s'appliquent pas aux salariés travaillant à domicile, saisonniers, intermittents et temporaires.",
+     "src": "C. trav., art. L. 3242-1 ; plan de comptes, compte 425",
      "url": null,
      "fiab": "stable"
     },
     {
-     "t": "Le salaire est payé <b>au moins une fois par mois</b> ; l'employeur remet un bulletin de paie à chaque paiement.",
-     "src": "C. trav., art. L. 3242-1 et L. 3243-2",
+     "t": "Les <b>cotisations de sécurité sociale</b> sont calculées sur les revenus d'activité définis à l'article L. 136-1-1 : les sommes ainsi que les avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail (salaires, primes, indemnités, avantages en nature), sous réserve des exclusions prévues par la loi.",
+     "src": "CSS, art. L. 242-1 et L. 136-1-1",
      "url": null,
      "fiab": "stable"
     },
     {
-     "t": "Les <b>cotisations de sécurité sociale</b> sont assises sur toutes les sommes versées aux travailleurs en contrepartie ou à l'occasion du travail (salaires, indemnités, primes, avantages en nature).",
-     "src": "CSS, art. L. 242-1",
-     "url": null,
+     "t": "<b>Écriture de paie</b> : débit <code>641</code> du salaire brut ; crédit <code>431</code> « Sécurité sociale » (cotisations salariales dues à l'URSSAF), <code>437</code> « Autres organismes sociaux » (retraite complémentaire, prévoyance), <code>4421</code> (prélèvement à la source), <code>425</code> (acomptes déjà versés) et <code>421</code> « Personnel – Rémunérations dues » (net à payer).",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 421, 425, 431, 437, 4421 et 641",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Écriture de paie</b> : débit <code>641</code> du salaire brut ; crédit <code>431</code> (cotisations salariales URSSAF), <code>437</code> (autres organismes : retraite complémentaire, prévoyance), <code>4421</code> (prélèvement à la source) et <code>421</code> (net à payer).",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 421, 431, 437, 4421 et 641",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "<b>Charges patronales</b> : débit <code>645</code> « Charges de sécurité sociale et de prévoyance » et crédit <code>431</code> / <code>437</code>. La charge de personnel de la période est la somme des comptes 641 et 645 ; les cotisations salariales, comprises dans le brut, ne sont pas une charge supplémentaire.",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 431, 437, 641 et 645",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Charges patronales</b> : débit <code>645</code> (cotisations de sécurité sociale, retraite, prévoyance, chômage) et crédit <code>431</code> / <code>437</code> ; le coût total du travail = brut + charges patronales.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 431, 437 et 645",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "Le prélèvement à la source n'est pas une charge de l'employeur : retenu sur la rémunération du salarié, il est crédité au compte <code>4421</code> lors de la paie, puis le compte 4421 est débité par le crédit du compte 512 lors du reversement à l'administration.",
+     "src": "CGI, art. 204 A et 1671 ; plan de comptes, compte 4421",
+     "url": "https://bofip.impots.gouv.fr/bofip/11178-PGP.html/identifiant=BOI-IR-PAS-20250507",
      "fiab": "stable"
     },
     {
-     "t": "Le prélèvement à la source est retenu par l'employeur (débiteur de la retenue) sur le salaire net imposable et reversé à l'administration : crédit <code>4421</code> à la paie, débit 4421 / crédit 512 au reversement.",
-     "src": "CGI, art. 204 A et 1671 ; plan de comptes PCG 2025, compte 4421",
-     "url": null,
+     "t": "<b>Échéance d'emprunt</b> : l'annuité se décompose en remboursement du capital (débit <code>164</code> « Emprunts auprès des établissements de crédit ») et intérêts (débit <code>661</code>), pour un crédit unique du compte 512.",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 164 et 661",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Échéance d'emprunt</b> : l'annuité se décompose en remboursement du capital (débit <code>164</code>) et intérêts (débit <code>661</code>), pour un crédit unique de <code>512</code>.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 164 et 661",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
-     "fiab": "stable"
+     "t": "Les <b>intérêts courus</b> non échus d'un emprunt bancaire sont rattachés à l'exercice au compte <code>1648</code> « Intérêts courus sur emprunts auprès des établissements de crédit », car le compte de résultat retient les charges de l'exercice indépendamment de leur date de paiement.",
+     "src": "C. com., art. L. 123-13 ; plan de comptes (version au 1er janvier 2026), compte 1648",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+     "fiab": "stable",
+     "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },
     {
-     "t": "Les <b>intérêts courus</b> non échus d'un emprunt bancaire sont rattachés à l'exercice au compte <code>1648</code> « Intérêts courus sur emprunts auprès des établissements de crédit » (avant 2025 : 1688).",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), compte 1648 ; C. com., art. L. 123-13",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
-     "fiab": "stable"
-    },
-    {
-     "t": "Le <b>rapprochement bancaire</b> justifie le poste Banque : les données d'inventaire doivent permettre de justifier le contenu et le mode d'évaluation de chaque poste du bilan ; les écarts (frais, agios, virements non enregistrés) sont comptabilisés, les chèques non encore débités restent en suspens.",
-     "src": "C. com., art. R. 123-177",
+     "t": "Les données d'inventaire sont organisées de manière à justifier le contenu et le mode d'évaluation de chaque poste du bilan. Pour le poste Banque, le <b>rapprochement</b> du compte 512 avec le relevé de l'établissement de crédit sert cette justification : les opérations figurant sur le relevé mais absentes de la comptabilité (frais, agios, virements reçus) sont enregistrées sur la base du relevé, pièce justificative.",
+     "src": "C. com., art. R. 123-177 et R. 123-174",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
      "fiab": "stable",
      "cite": "« Les données d'inventaire sont conservées dans les conditions prévues à l'article L. 123-22 et organisées de manière à justifier le contenu et le mode d'évaluation de chacun des postes du bilan. »"
     },
     {
-     "t": "Les personnes physiques au régime réel simplifié peuvent enregistrer encaissements et paiements à la <b>date du relevé bancaire</b> : la comptabilité suit alors la banque, ce qui réduit les écarts de rapprochement.",
-     "src": "C. com., art. R. 123-203 à R. 123-208 (sous-section 2 : obligations comptables applicables à certains commerçants, personnes physiques)",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178888/2015-04-01/?anchor=LEGIARTI000006258408",
+     "t": "Par dérogation à l'enregistrement jour par jour, les commerçants personnes physiques mentionnés aux articles L. 123-25 (régime réel simplifié) et L. 123-28 (régime micro) peuvent enregistrer les encaissements et les paiements à la <b>date de l'opération figurant sur le relevé</b> adressé par leur établissement de crédit.",
+     "src": "C. com., art. R. 123-203",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
      "fiab": "stable",
      "cite": "« Par dérogation à l'article R. 123-174, les personnes mentionnées aux articles L. 123-25 et L. 123-28 peuvent procéder à l'enregistrement comptable des encaissements et des paiements en retenant la date de l'opération figurant sur le relevé qui leur est adressé par un établissement de crédit. »"
     }
@@ -218,23 +258,35 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "Périodicité de paie : au moins <span class=\"mono\">une fois par mois</span> (mensualisation).",
+     "t": "Paiement du salaire : <span class=\"mono\">une fois par mois</span> ; acompte à la demande du salarié : pour une quinzaine, <span class=\"mono\">la moitié</span> de la rémunération mensuelle.",
      "src": "C. trav., art. L. 3242-1",
      "url": null,
      "fiab": "stable"
     },
     {
-     "t": "Journaux auxiliaires (banque, caisse) : centralisation au livre-journal au moins <span class=\"mono\">une fois par mois</span>.",
-     "src": "C. com., art. R. 123-176",
+     "t": "Journaux auxiliaires (banque, caisse) : centralisation au livre-journal et au grand livre au moins <span class=\"mono\">une fois par mois</span>. Par dérogation, les personnes mentionnées aux articles L. 123-25 à L. 123-27 peuvent centraliser <span class=\"mono\">tous les trois mois</span>.",
+     "src": "C. com., art. R. 123-176 ; sous-section R. 123-203 à R. 123-208 (dérogation trimestrielle)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
      "fiab": "stable"
     },
     {
-     "t": "Conservation des documents comptables et des pièces justificatives (relevés, factures) : <span class=\"mono\">dix ans</span>.",
+     "t": "Conservation des documents comptables et des pièces justificatives (relevés bancaires, factures, bulletins de paie) : <span class=\"mono\">dix ans</span>.",
      "src": "C. com., art. L. 123-22",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
      "fiab": "stable",
      "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »"
+    },
+    {
+     "t": "Smic brut horaire en 2026 : <span class=\"mono\">12,02 €</span> au 1er janvier 2026 (décret n° 2025-1228 du 17 décembre 2025), porté à <span class=\"mono\">12,31 €</span> au 1er juin 2026, soit <span class=\"mono\">1 867,02 €</span> brut par mois sur la base de 35 heures hebdomadaires (arrêté du 22 mai 2026).",
+     "src": "Décret n° 2025-1228 du 17 décembre 2025 ; arrêté du 22 mai 2026 relatif au relèvement du salaire minimum de croissance",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054126589",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "Plafond de la sécurité sociale pour 2026 : <span class=\"mono\">48 060 €</span> par an, <span class=\"mono\">4 005 €</span> par mois et <span class=\"mono\">220 €</span> par jour, pour les cotisations dues au titre des périodes d'activité courant à compter du 1er janvier 2026.",
+     "src": "Arrêté du 22 décembre 2025 portant fixation du plafond de la sécurité sociale pour 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053143451",
+     "fiab": "millésimé 2026"
     }
    ]
   },
@@ -242,23 +294,49 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "Depuis les exercices ouverts le 1er janvier 2025, les <b>transferts de charges</b> (791) sont supprimés ; les remboursements de charges de personnel (indemnités journalières, aides à l'embauche) sont enregistrés au compte <code>649</code> « Remboursements de charges de personnel ».",
-     "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025, compte 649",
+     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus la technique du <b>transfert de charges</b> (mention supprimée de l'article 512-1 par le règlement n° 2022-06) ; les remboursements de charges de personnel sont enregistrés au compte <code>649</code> « Remboursements de charges de personnel ». Le règlement n° 2025-05 du 5 décembre 2025, homologué par arrêté du 26 décembre 2025, maintient le compte 791 pour les seules opérations de concession d'aménagement.",
+     "src": "Règlement ANC n° 2022-06 ; règlement ANC n° 2025-05 ; plan de comptes (version au 1er janvier 2026), compte 649",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
      "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
     },
     {
-     "t": "Les intérêts courus sur emprunts sont enregistrés par nature de dette (<code>1648</code> pour les emprunts bancaires) ; le compte 1688 ne subsiste que pour les autres emprunts et dettes assimilées.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 1648 et 1688",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "Depuis 2025, les intérêts courus sur emprunts sont ventilés selon la nature de la dette : <code>1648</code> « Intérêts courus sur emprunts auprès des établissements de crédit » (avant 2025 : <code>16884</code>, subdivision du compte 1688) ; le compte <code>1688</code> ne vise plus que les intérêts courus sur autres emprunts et dettes assimilées.",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes (version au 1er janvier 2026), comptes 1648 et 1688",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "Le règlement ANC n° 2026-03 du 6 mars 2026 remplace « Pôle emploi » par « France Travail » dans l'intitulé du compte <code>6454</code> (cotisations aux ASSEDIC devenues cotisations à France Travail).",
-     "src": "Règlement ANC n° 2026-03 du 6 mars 2026, homologué par arrêté du 12 août 2026",
+     "t": "Le règlement ANC n° 2026-03 du 6 mars 2026, homologué par arrêté du 12 août 2026, remplace « Pôle emploi » par « France Travail » dans l'intitulé du compte <code>6454</code>. Il s'applique aux exercices ouverts à compter du 1er janvier 2027 (application anticipée possible) : le plan de comptes au 1er janvier 2026 porte encore l'intitulé « Cotisations à Pôle emploi ».",
+     "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 6 ; arrêté du 12 août 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
-     "fiab": "millésimé 2026"
+     "fiab": "stable",
+     "cite": "« Le présent règlement s'applique aux comptes afférents aux exercices ouverts à compter du 1er janvier 2027. »"
+    },
+    {
+     "t": "En 2026, la réduction générale dégressive et les réductions des taux des cotisations d'assurance maladie et d'allocations familiales fusionnent en une <b>réduction générale dégressive unique</b> (RGDU), qui concerne les rémunérations inférieures à 3 Smic (au lieu de 1,6 Smic pour l'ancienne réduction générale) ; le décret n° 2026-509 du 12 juin 2026 en fixe les modalités d'application.",
+     "src": "CSS, art. L. 241-13 ; décret n° 2026-509 du 12 juin 2026 ; Urssaf, « La réduction générale dégressive unique »",
+     "url": "https://www.urssaf.fr/accueil/employeur/beneficier-exonerations/reduction-generale-cotisation.html",
+     "fiab": "millésimé 2026",
+     "cite": "« En 2026, la réduction générale dégressive (RGD) et les réductions des taux des cotisations d'assurance maladie et d'allocations familiales fusionnent au bénéfice d'une réduction générale dégressive unique (RGDU). »"
+    },
+    {
+     "t": "Depuis le 1er septembre 2025, le taux de <b>prélèvement à la source</b> des conjoints ou partenaires de PACS soumis à imposition commune est, sauf option contraire du contribuable, individualisé ; chaque taux individualisé s'applique aux seuls revenus personnels du conjoint concerné.",
+     "src": "CGI, art. 204 E et 204 M ; BOI-IR-PAS-20-20-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
+     "fiab": "stable"
+    },
+    {
+     "t": "L'article 1447 du CGI (CFE) a été modifié par l'article 55 de la loi n° 2026-103 du 19 février 2026 (loi de finances pour 2026) ; dans sa rédaction en vigueur depuis le 21 février 2026, il vise les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires qui exercent à titre habituel une activité professionnelle non salariée.",
+     "src": "CGI, art. 1447 ; loi n° 2026-103 du 19 février 2026, art. 55",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 recodifie la taxe sur la valeur ajoutée et modifie le code des impositions sur les biens et services ; Légifrance signale des articles du CGI relatifs à la TVA (par exemple art. 278 et 293 B) comme abrogés à compter du 1er janvier 2027. Les références au CGI de cette fiche (art. 261 C) sont celles en vigueur au 14 octobre 2026.",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+     "fiab": "stable"
     }
    ]
   },
@@ -266,27 +344,33 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "Le <b>salaire brut</b> est la charge du compte 641 ; le net à payer (421) n'est qu'une dette : ne jamais enregistrer le net en charge.",
-     "src": "Plan de comptes PCG 2025 (PCG, art. 1121-1), comptes 421 et 641",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "Le <b>salaire brut</b> est la charge du compte 641 ; le net à payer (compte 421) n'est qu'une dette envers les salariés : ne jamais enregistrer le net en charge.",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 421 et 641",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "Les intérêts et agios bancaires sont <b>exonérés de TVA</b> ; seules les commissions et frais de tenue de compte (627) supportent la TVA.",
-     "src": "CGI, art. 261 C, 1°",
-     "url": null,
+     "t": "Piège TVA : les intérêts et agios (octroi de crédits) et les primes d'assurance sont <b>exonérés de TVA</b> (CGI, art. 261 C, 1° et 2°) ; aucune TVA déductible n'est enregistrée. Les frais et commissions bancaires vont au compte <code>627</code> « Services bancaires et assimilés », distinct des intérêts (compte 661).",
+     "src": "CGI, art. 261 C ; plan de comptes (version au 1er janvier 2026), comptes 616, 627 et 661",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
      "fiab": "stable"
     },
     {
-     "t": "Dans un rapprochement, un chèque émis non encore débité ne donne lieu à <b>aucune écriture</b> : seules les opérations connues par le relevé et absentes de la comptabilité (agios, frais, virements reçus) sont enregistrées.",
+     "t": "Dans un rapprochement, un chèque émis non encore débité par la banque a déjà été enregistré à son émission, sur sa pièce justificative : il figure sur l'état de rapprochement mais ne donne lieu à <b>aucune nouvelle écriture</b>. Seules les opérations connues par le relevé et absentes de la comptabilité sont enregistrées.",
      "src": "C. com., art. R. 123-174 et R. 123-177",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
      "fiab": "stable"
     },
     {
-     "t": "Lien DSCG : la CET (CFE et CVAE) est une charge d'exploitation du compte 635, pas un impôt sur les bénéfices ; seul l'IS passe par 695.",
-     "src": "CGI, art. 1447 et 1586 ter ; plan de comptes PCG 2025, comptes 635 et 695",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+     "t": "Lien DSCG : la CFE et la CVAE sont des impôts directs autres que l'impôt sur les bénéfices, enregistrés en charges d'exploitation au compte <code>6351</code> ; seul l'impôt sur les bénéfices passe par le compte <code>695</code>.",
+     "src": "CGI, art. 1447 et 1586 ter ; plan de comptes (version au 1er janvier 2026), comptes 6351 et 695",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "La faculté d'enregistrer encaissements et paiements à la date du relevé bancaire est réservée aux commerçants <b>personnes physiques</b> mentionnés aux articles L. 123-25 et L. 123-28 : une société enregistre ses mouvements de trésorerie opération par opération et jour par jour.",
+     "src": "C. com., art. R. 123-203 et R. 123-174",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
      "fiab": "stable"
     }
    ]

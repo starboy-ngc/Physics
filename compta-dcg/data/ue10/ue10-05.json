@@ -53,7 +53,7 @@
   },
   {
    "h": "Cession des titres sous le PCG 2025",
-   "html": "<p>La cession d'<b>immobilisations financières</b> (261, 271, 272, 273) s'enregistre en deux comptes bruts, dans le résultat <b>financier</b> : la valeur comptable sortie au débit de <b>6671</b> Valeurs comptables des immobilisations financières cédées et le prix de cession au crédit de <b>7671</b> Produits des cessions d'immobilisations financières. La dépréciation existante est reprise (7866) et les frais de cession sont des charges (627).</p><p>La cession de <b>VMP</b> est enregistrée pour son <b>résultat net</b> : <b>7673</b> Produits nets sur cessions de VMP en cas de gain, <b>6673</b> Charges nettes sur cessions de VMP en cas de perte, le compte de titres (50x) étant crédité du coût d'entrée.</p><p>Lorsque des titres de même nature ont été acquis à des prix différents, le coût des titres cédés est déterminé par le <b>coût moyen pondéré</b> ou la méthode <b>PEPS</b>, la méthode retenue devant être permanente. Fiscalement, le PEPS est la règle pour les titres (CGI art. 39 duodecies).</p><div class=\"note\"><b>Règle à retenir.</b> Immobilisations incorporelles et corporelles : 657/757 (exploitation). Immobilisations financières : 6671/7671 (financier, montants bruts). VMP : 6673 ou 7673 (financier, montant net).</div><p>Exemple : <span class=\"mono\">100 actions</span> en VMP acquises <span class=\"mono\">5 000 €</span> sont cédées <span class=\"mono\">5 400 €</span>.</p>",
+   "html": "<p>La cession d'<b>immobilisations financières</b> autres que les TIAP (261, 271, 272) s'enregistre en deux comptes bruts, dans le résultat <b>financier</b> : la valeur comptable sortie au débit de <b>6671</b> Valeurs comptables des immobilisations financières cédées et le prix de cession au crédit de <b>7671</b> Produits des cessions d'immobilisations financières. La dépréciation existante est reprise (7866) et les frais de cession sont des charges (627).</p><p>La cession de <b>TIAP</b> (273) est enregistrée pour son <b>résultat net</b> : <b>7672</b> Produits nets sur cessions de titres immobilisés de l'activité de portefeuille ou <b>6672</b> Charges nettes sur cessions de titres immobilisés de l'activité de portefeuille.</p><p>La cession de <b>VMP</b> est également enregistrée pour son <b>résultat net</b> : <b>7673</b> Produits nets sur cessions de VMP en cas de gain, <b>6673</b> Charges nettes sur cessions de VMP en cas de perte, le compte de titres (50x) étant crédité du coût d'entrée.</p><p>Lorsque des titres de même nature ont été acquis à des prix différents, le coût des titres cédés est déterminé par le <b>coût moyen pondéré</b> ou la méthode <b>PEPS</b>, la méthode retenue devant être permanente. Fiscalement, le PEPS est la règle pour les titres (CGI art. 39 duodecies).</p><div class=\"note\"><b>Règle à retenir.</b> Immobilisations incorporelles et corporelles : 657/757 (exploitation). Immobilisations financières autres que les TIAP : 6671/7671 (financier, montants bruts). TIAP : 6672 ou 7672 (financier, montant net). VMP : 6673 ou 7673 (financier, montant net).</div><p>Exemple : <span class=\"mono\">100 actions</span> en VMP acquises <span class=\"mono\">5 000 €</span> sont cédées <span class=\"mono\">5 400 €</span>.</p>",
    "entry": [
     {
      "a": "512",
@@ -75,7 +75,7 @@
   },
   {
    "h": "Revenus des titres et intérêts courus",
-   "html": "<p>Les <b>dividendes</b> sont comptabilisés à la date de la décision de distribution par l'assemblée de la société émettrice : <b>761</b> Produits de participations, <b>762</b> Produits des autres immobilisations financières, <b>764</b> Revenus des VMP. Aucun produit n'est anticipé avant cette décision.</p><p>Les <b>intérêts d'obligations</b> courent jour après jour : à la clôture, l'entreprise rattache à l'exercice le coupon couru non échu (indépendance des exercices) : débit <b>2768</b> Intérêts courus (titres immobilisés) ou <b>5088</b> Intérêts courus sur obligations, bons et valeurs assimilés (VMP), crédit 762 ou 764. L'écriture est contrepassée à l'ouverture et le coupon encaissé est enregistré en produit pour son montant total.</p><p>Exemple : Placia détient en VMP <span class=\"mono\">100 obligations</span> de nominal <span class=\"mono\">1 000 €</span> au taux de <span class=\"mono\">4 %</span>, coupon payable le 1er avril. Au 31 décembre, intérêts courus depuis le 1er avril : <span class=\"mono\">100 000 × 4 % × 9/12 = 3 000 €</span>.</p><p>Fiscalement, les dividendes de titres de participation bénéficient du régime mère-fille (exonération sous déduction d'une quote-part de frais et charges de 5 %) : la liaison avec l'UE 4 se fait sur le tableau 2058-A.</p>",
+   "html": "<p>Les <b>dividendes</b> sont comptabilisés à la date de la décision de distribution par l'assemblée de la société émettrice : <b>761</b> Produits de participations, <b>762</b> Produits des autres immobilisations financières, <b>764</b> Revenus des VMP. Aucun produit n'est anticipé avant cette décision.</p><p>Les <b>intérêts d'obligations</b> courent jour après jour : à la clôture, l'entreprise rattache à l'exercice le coupon couru non échu (indépendance des exercices) : débit <b>2768</b> Intérêts courus (titres immobilisés) ou <b>5088</b> Intérêts courus sur obligations, bons et valeurs assimilés (VMP), crédit 762 ou 764. L'écriture est contrepassée à l'ouverture et le coupon encaissé est enregistré en produit pour son montant total.</p><p>Exemple : Placia détient en VMP <span class=\"mono\">100 obligations</span> de nominal <span class=\"mono\">1 000 €</span> au taux de <span class=\"mono\">4 %</span>, coupon payable le 1er avril. Au 31 décembre, intérêts courus depuis le 1er avril : <span class=\"mono\">100 000 × 4 % × 9/12 = 3 000 €</span>.</p><p>Fiscalement, les dividendes de titres de participation peuvent bénéficier du régime mère-fille lorsque les conditions de l'article 145 du CGI sont remplies, notamment une détention d'au moins 5 % du capital conservée deux ans (exonération sous réserve de la réintégration d'une quote-part de frais et charges de 5 %, ramenée à 1 % au sein d'un groupe intégré, CGI art. 216) : la liaison avec l'UE 4 se fait sur le tableau 2058-A.</p>",
    "entry": [
     {
      "a": "5088",
@@ -131,7 +131,7 @@
   },
   {
    "h": "Provisions réglementées et fiscalité des provisions",
-   "html": "<p>Les <b>provisions réglementées</b> (compte 14) ne correspondent pas à une obligation envers un tiers : elles sont constituées uniquement en application de dispositions <b>fiscales</b> et figurent dans les <b>capitaux propres</b>. Principales : <b>143</b> provisions pour hausse des prix, <b>145</b> amortissements dérogatoires, <b>148</b> autres provisions réglementées. Dotations et reprises passent par le résultat exceptionnel : <b>687</b> Dotations aux provisions réglementées (dont <b>68725</b> amortissements dérogatoires) et symétriquement <b>787</b> (dont <b>78725</b>), comptes maintenus par le PCG 2025.</p><p>Côté <b>déductibilité</b> (CGI art. 39, 1-5°), une provision pour risques et charges est déductible si elle couvre une charge elle-même déductible, nettement précisée, probable (non simplement éventuelle), résultant d'un événement en cours à la clôture, et si elle est effectivement comptabilisée. Ne sont pas déductibles, par exemple, les provisions pour engagements de retraite (CGI art. 39, 1-5°, al. 1), pour pertes de change (double emploi avec l'article 38, 4), pour propre assureur ou pour impôt sur les sociétés.</p><div class=\"note\"><b>Piège.</b> Une provision pour perte à terminaison, pour garantie ou pour litige est déductible si elle est chiffrée avec précision à partir d'éléments objectifs (statistiques de garantie, estimation de l'avocat) ; une provision forfaitaire « par prudence » ne l'est pas.</div>"
+   "html": "<p>Les <b>provisions réglementées</b> (compte 14) ne correspondent pas à une obligation envers un tiers : elles sont constituées uniquement en application de dispositions <b>fiscales</b> et figurent dans les <b>capitaux propres</b>. Principales : <b>143</b> provisions pour hausse des prix, <b>145</b> amortissements dérogatoires, <b>148</b> autres provisions réglementées. Dotations et reprises passent par le résultat exceptionnel : compte <b>687</b>, dont <b>6872</b> Dotations aux provisions réglementées (immobilisations) et sa subdivision <b>68725</b> Amortissements dérogatoires, et symétriquement <b>787</b>, dont <b>7872</b> et <b>78725</b>, comptes maintenus par le PCG 2025.</p><p>Côté <b>déductibilité</b> (CGI art. 39, 1-5°), une provision pour risques et charges est déductible si elle couvre une charge elle-même déductible, nettement précisée, probable (non simplement éventuelle), résultant d'un événement en cours à la clôture, et si elle est effectivement comptabilisée. Ne sont pas déductibles, par exemple, les provisions pour engagements de retraite (CGI art. 39, 1-5°, al. 1), pour pertes de change (double emploi avec l'article 38, 4), pour propre assureur ou pour impôt sur les sociétés.</p><div class=\"note\"><b>Piège.</b> Une provision pour perte à terminaison, pour garantie ou pour litige est déductible si elle est chiffrée avec précision à partir d'éléments objectifs (statistiques de garantie, estimation de l'avocat) ; une provision forfaitaire « par prudence » ne l'est pas.</div>"
   }
  ],
  "sources": [
@@ -145,7 +145,7 @@
   },
   {
    "ref": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 667 et 767)",
-   "note": "Comptes 6671/7671 (immobilisations financières) et 6673/7673 (VMP)"
+   "note": "Comptes 6671/7671 (immobilisations financières autres que les TIAP), 6672/7672 (TIAP) et 6673/7673 (VMP)"
   },
   {
    "ref": "PCG, titre IX (comptes 163, 169, 481, 6861 et 6862)",
@@ -157,7 +157,7 @@
   },
   {
    "ref": "PCG art. 324-1",
-   "note": "Engagements de retraite : option provision (méthode préférentielle) ou annexe"
+   "note": "Engagements de retraite : option provision (méthode de référence) ou annexe"
   },
   {
    "ref": "PCG, titre IX (compte 14)",
@@ -454,7 +454,7 @@
    "unit": "€",
    "tol": 1,
    "why": "Les intérêts courent du 1er avril (dernier coupon) au 31 décembre : 9 mois. Intérêts courus = 100 × 1 000 × 4 % × 9/12 = 3 000 €, débit 5088 Intérêts courus sur obligations, crédit 764 Revenus des VMP. Compter 12 mois (4 000) ou 3 mois (1 000) sont les erreurs fréquentes : on rattache la fraction écoulée depuis le dernier coupon.",
-   "src": "PCG, titre IX (compte 5088) ; C. com., art. L. 123-12",
+   "src": "PCG, titre IX (compte 5088) ; C. com., art. L. 123-13",
    "fiab": "stable",
    "niveau": 2
   },
@@ -742,12 +742,12 @@
    "opts": [
     "L'obligation de les provisionner intégralement",
     "L'interdiction de les provisionner",
-    "Une option : provision (méthode préférentielle) ou simple information en annexe",
+    "Une option : provision (méthode de référence) ou simple information en annexe",
     "Leur inscription en provision réglementée 14"
    ],
    "a": 2,
-   "why": "PCG art. 324-1 : les engagements de retraite et avantages similaires peuvent être provisionnés (compte 1521, ex-153), ce qui constitue la méthode préférentielle, ou seulement mentionnés en annexe. Le passage de l'annexe à la provision est un changement de méthode (effet en report à nouveau). La provision n'est pas déductible fiscalement (CGI art. 39, 1-5°) ; ce n'est pas une provision réglementée.",
-   "src": "PCG art. 324-1 ; CGI art. 39, 1-5°",
+   "why": "PCG art. 324-1 : les engagements de retraite et avantages similaires peuvent être provisionnés (compte 1521, ex-153), ce qui constitue la méthode de référence depuis le règlement ANC n° 2018-01, ou seulement mentionnés en annexe. Le passage de l'annexe à la provision est un changement de méthode (effet en report à nouveau). La provision n'est pas déductible fiscalement (CGI art. 39, 1-5°) ; ce n'est pas une provision réglementée.",
+   "src": "PCG art. 324-1 ; CGI art. 39, 1-5° ; C. com., art. L. 123-13",
    "fiab": "stable",
    "niveau": 2
   },

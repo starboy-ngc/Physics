@@ -5,96 +5,390 @@
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "La profession comptable et la normalisation comptable (première partie du programme de l'UE10, arrêté du 13 février 2019)",
-   "Techniques comptables approfondies : cadre conceptuel (principes comptables, image fidèle, conventions d'évaluation)",
-   "Rattachement des charges et des produits au résultat de l'exercice (changements de méthodes, d'estimation, corrections d'erreurs, événements postérieurs à la clôture)",
-   "Comptes annuels et annexe : contenu, catégories d'entreprises et allègements",
-   "Introduction à l'audit légal des comptes annuels : commissaire aux comptes, nomination, durée du mandat, certification"
+   "Profession et normalisation comptable : connaître les enjeux actuels de la comptabilité à travers la présentation de la profession comptable et de la normalisation comptable",
+   "Identifier les normalisateurs internationaux (IASB, IPSASB) et nationaux (ANC, AMF, CNOCP) et analyser leurs rôles ; positionner le Plan comptable général (PCG) dans le contexte évolutif de la normalisation internationale",
+   "Sources du droit comptable : directives européennes, lois et règlements, recueil des normes comptables ; les identifier et les hiérarchiser",
+   "Identifier les principes fondamentaux de la comptabilité et justifier le rôle d'un cadre conceptuel"
   ]
  },
  "textes": [
-  { "ref": "C. com., art. L. 123-12 à L. 123-28-2", "objet": "Obligations comptables des commerçants : comptes annuels (bilan, compte de résultat, annexe), principes", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/", "version": "en vigueur (section consolidée)" },
-  { "ref": "C. com., art. L. 123-14", "objet": "Régularité, sincérité, image fidèle ; dérogation motivée en annexe", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306", "version": "en vigueur depuis le 21 septembre 2000" },
-  { "ref": "C. com., art. L. 123-16 et L. 123-16-1", "objet": "Catégories d'entreprises (micro, petites, moyennes) et dispense d'annexe des micro-entreprises", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038611029", "version": "en vigueur (loi PACTE n° 2019-486 ; ordonnance n° 2014-86)" },
-  { "ref": "C. com., art. L. 123-18", "objet": "Coût historique : coût d'acquisition, valeur vénale, coût de production ; CMP ou PEPS", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310", "version": "en vigueur depuis le 21 septembre 2000" },
-  { "ref": "C. com., art. L. 123-20", "objet": "Prudence, continuité d'exploitation, passifs connus après la clôture", "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&dateTexte=22220222&idArticle=LEGIARTI000006219312", "version": "en vigueur depuis le 1er janvier 2016" },
-  { "ref": "C. com., art. R. 123-178", "objet": "Définitions réglementaires : coût d'acquisition, coût de production, valeur vénale, valeur actuelle, dépréciation", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973", "version": "en vigueur" },
-  { "ref": "C. com., art. R. 123-195", "objet": "Contenu de l'annexe : informations d'importance significative", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927471", "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903)" },
-  { "ref": "C. com., art. D. 123-200", "objet": "Seuils des catégories d'entreprises", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681", "version": "décret n° 2024-152 du 28 février 2024, exercices ouverts à compter du 1er janvier 2024" },
-  { "ref": "C. com., art. D. 221-5", "objet": "Seuils de nomination obligatoire du commissaire aux comptes", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404", "version": "décret n° 2024-152 du 28 février 2024" },
-  { "ref": "C. com., art. L. 821-44", "objet": "Durée du mandat du commissaire aux comptes (six exercices)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298", "version": "en vigueur depuis le 1er janvier 2024 (ordonnance n° 2023-1142, art. 17)" },
-  { "ref": "C. com., art. L. 821-53 à L. 821-56", "objet": "Mission de certification des comptes et des informations en matière de durabilité", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000048535645", "version": "en vigueur depuis le 1er janvier 2024" },
-  { "ref": "Ordonnance n° 2009-79 du 22 janvier 2009", "objet": "Création et missions de l'Autorité des normes comptables", "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892", "version": "en vigueur, modifiée par l'ordonnance n° 2023-1142" },
-  { "ref": "Ordonnance n° 2023-1142 du 6 décembre 2023", "objet": "Haute autorité de l'audit (H2A), certification des informations de durabilité, recodification du livre VIII", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519395", "version": "JO du 7 décembre 2023, en vigueur au 1er janvier 2024" },
-  { "ref": "Ordonnance n° 45-2138 du 19 septembre 1945, art. 2", "objet": "Définition de la profession d'expert-comptable", "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000032364676", "version": "en vigueur depuis le 8 mai 2017" },
-  { "ref": "Règlement ANC n° 2014-03 (PCG), art. 122-1 à 122-6 et 513-5, version au 1er janvier 2026", "objet": "Changements de méthodes, d'estimation, corrections d'erreurs ; résultat exceptionnel", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "version": "consolidée au 1er janvier 2026 (intègre les règlements 2022-06 et 2023-03)" }
+  {
+   "ref": "C. com., art. L. 123-12 à L. 123-28-2",
+   "objet": "Obligations comptables des commerçants : comptes annuels (bilan, compte de résultat, annexe), principes comptables",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/",
+   "version": "en vigueur (section consolidée)"
+  },
+  {
+   "ref": "C. com., art. L. 123-14",
+   "objet": "Régularité, sincérité, image fidèle ; informations complémentaires ; dérogation motivée en annexe",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+   "version": "en vigueur depuis le 21 septembre 2000"
+  },
+  {
+   "ref": "C. com., art. L. 123-16 et L. 123-16-1",
+   "objet": "Catégories d'entreprises (micro, petites, moyennes) ; dispense d'annexe des micro-entreprises",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038611029",
+   "version": "en vigueur (L. 123-16 modifié par la loi n° 2019-486 ; L. 123-16-1 modifié par l'ordonnance n° 2014-86)"
+  },
+  {
+   "ref": "C. com., art. L. 123-18 et R. 123-178",
+   "objet": "Coût historique (coût d'acquisition, valeur vénale, coût de production), valeur actuelle, valeur d'inventaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "version": "en vigueur (L. 123-18 depuis le 21 septembre 2000 ; R. 123-178 en vigueur)"
+  },
+  {
+   "ref": "C. com., art. L. 123-20",
+   "objet": "Prudence, continuité d'exploitation, passifs nés avant la clôture et connus avant l'établissement des comptes",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "version": "en vigueur depuis le 1er janvier 2016 (ordonnance n° 2015-900 du 23 juillet 2015)"
+  },
+  {
+   "ref": "C. com., art. R. 123-195",
+   "objet": "Contenu de l'annexe : informations d'importance significative",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197052/",
+   "version": "en vigueur (R. 123-195 modifié par le décret n° 2015-903 du 23 juillet 2015)"
+  },
+  {
+   "ref": "C. com., art. D. 123-200",
+   "objet": "Seuils des catégories d'entreprises",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681",
+   "version": "décret n° 2024-152 du 28 février 2024, en vigueur le 1er mars 2024, exercices ouverts à compter du 1er janvier 2024"
+  },
+  {
+   "ref": "C. com., art. L. 227-9-1 et D. 221-5",
+   "objet": "Désignation obligatoire du commissaire aux comptes : deux des trois seuils dépassés à la clôture d'un exercice",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
+   "version": "D. 221-5 issu du décret n° 2024-152 du 28 février 2024 (exercices ouverts à compter du 1er janvier 2024)"
+  },
+  {
+   "ref": "C. com., art. L. 821-43, L. 821-44 et L. 821-46",
+   "objet": "Groupes ; durée du mandat du commissaire aux comptes (six exercices) ; mandat limité à trois exercices",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298",
+   "version": "en vigueur depuis le 1er janvier 2024 (ordonnance n° 2023-1142)"
+  },
+  {
+   "ref": "C. com., art. L. 821-53 à L. 821-56",
+   "objet": "Missions de certification des comptes et des informations en matière de durabilité",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161410/",
+   "version": "en vigueur depuis le 1er janvier 2024 (ordonnance n° 2023-1142, art. 32)"
+  },
+  {
+   "ref": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1er et 4",
+   "objet": "Création et missions de l'Autorité des normes comptables ; homologation de ses règlements",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
+   "version": "en vigueur (art. 1er modifié par l'ordonnance n° 2023-1142, à compter du 1er janvier 2024)"
+  },
+  {
+   "ref": "Ordonnance n° 2023-1142 du 6 décembre 2023",
+   "objet": "Haute autorité de l'audit (H2A), certification des informations en matière de durabilité, recodification du titre II du livre VIII du Code de commerce",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519395",
+   "version": "JO du 7 décembre 2023, en vigueur au 1er janvier 2024"
+  },
+  {
+   "ref": "Ordonnance n° 45-2138 du 19 septembre 1945, art. 2",
+   "objet": "Définition de la profession d'expert-comptable",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000032364676",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Règlement ANC n° 2014-03 (PCG), art. 121-5, 122-1 à 122-6, 513-4 et 513-5, version au 1er janvier 2026",
+   "objet": "Méthodes de référence ; changements de méthodes, d'estimation, corrections d'erreurs ; passifs connus après la clôture ; résultat exceptionnel",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "version": "consolidée au 1er janvier 2026 (intègre les règlements n° 2018-01, 2022-06 et 2023-03)"
+  },
+  {
+   "ref": "Règlement ANC n° 2026-03 du 6 mars 2026",
+   "objet": "Modification du PCG (comptabilisation des produits des ventes ; résultat exceptionnel repris à l'article 531-5)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+   "version": "homologué par arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027, application anticipée possible"
+  }
  ],
  "sections": [
   {
    "h": "Définitions",
    "items": [
-    { "t": "<b>Comptes annuels</b> : les comptes annuels d'un commerçant comprennent le bilan, le compte de résultat et une annexe ; ils doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise.", "cite": "« Les comptes annuels doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise. »", "src": "C. com., art. L. 123-12 et L. 123-14", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306", "fiab": "stable" },
-    { "t": "<b>Autorité des normes comptables (ANC)</b> : autorité créée par l'ordonnance n° 2009-79, qui établit sous forme de règlements les prescriptions comptables générales et sectorielles, donne un avis sur toute disposition législative ou réglementaire contenant des mesures comptables et participe aux instances européennes et internationales de normalisation.", "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1er", "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892", "fiab": "stable" },
-    { "t": "<b>Expert-comptable</b> : professionnel qui fait profession habituelle de réviser et d'apprécier les comptabilités des entreprises auxquelles il n'est pas lié par un contrat de travail, qui est habilité à attester la régularité et la sincérité des bilans et des comptes de résultat et qui tient, centralise, ouvre, arrête, surveille, redresse et consolide les comptabilités.", "src": "Ordonnance n° 45-2138 du 19 septembre 1945, art. 2", "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000032364676", "fiab": "stable" },
-    { "t": "<b>Haute autorité de l'audit (H2A)</b> : autorité qui succède au Haut Conseil du commissariat aux comptes depuis l'ordonnance n° 2023-1142 ; elle supervise les commissaires aux comptes et tient la liste des professionnels habilités à certifier les informations en matière de durabilité.", "src": "Ordonnance n° 2023-1142 du 6 décembre 2023 ; rapport au Président de la République", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519333", "fiab": "stable" },
-    { "t": "<b>Changement de méthode comptable</b> : il résulte soit d'un changement de réglementation comptable, soit d'un changement de méthode à l'initiative de l'entité ; un changement imposé par la réglementation n'a pas à être justifié.", "cite": "« Un changement de méthode résulte soit d'un changement de réglementation comptable, soit d'un changement de méthode comptable à l'initiative de l'entité. »", "src": "PCG, art. 122-1", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "<b>Valeur vénale et valeur actuelle</b> : la valeur vénale d'un bien acquis à titre gratuit correspond au prix qui aurait été acquitté dans des conditions normales de marché ; la valeur actuelle est une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise.", "cite": "« La valeur actuelle est une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise »", "src": "C. com., art. R. 123-178", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973", "fiab": "stable" },
-    { "t": "<b>Résultat exceptionnel</b> (PCG 2025) : seuls les produits et charges directement liés à un événement majeur et inhabituel y sont comptabilisés ; un événement est majeur lorsque ses conséquences peuvent influencer le jugement des utilisateurs des documents de synthèse, et présumé inhabituel lorsqu'il ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise.", "cite": "« Sont comptabilisés en résultat exceptionnel les produits et les charges directement liés à un événement majeur et inhabituel. »", "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf", "fiab": "stable" }
+    {
+     "t": "<b>Comptes annuels</b> : les comptes annuels d'un commerçant comprennent le bilan, le compte de résultat et une annexe ; ils doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise.",
+     "cite": "« Les comptes annuels doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise. »",
+     "src": "C. com., art. L. 123-12 et L. 123-14",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Autorité des normes comptables (ANC)</b> : autorité créée par l'ordonnance n° 2009-79 ; elle établit sous forme de règlements les prescriptions comptables générales et sectorielles, donne un avis sur tout projet de disposition législative ou réglementaire applicable aux personnes tenues d'établir des documents comptables et participe à l'élaboration des normes comptables européennes et internationales.",
+     "cite": "« Elle établit sous forme de règlements les prescriptions comptables générales et sectorielles que doivent respecter les personnes physiques ou morales soumises à l'obligation légale d'établir des documents comptables conformes aux normes de la comptabilité privée »",
+     "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1er (version en vigueur depuis le 1er janvier 2024)",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Expert-comptable</b> : professionnel qui fait profession habituelle de réviser et d'apprécier les comptabilités des entreprises et organismes auxquels il n'est pas lié par un contrat de travail ; il est habilité à attester la régularité et la sincérité des bilans et des comptes de résultat, et fait aussi profession de tenir, centraliser, ouvrir, arrêter, surveiller, redresser et consolider leurs comptabilités.",
+     "src": "Ordonnance n° 45-2138 du 19 septembre 1945, art. 2",
+     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000032364676",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Haute autorité de l'audit (H2A)</b> : nouveau nom donné au Haut Conseil du commissariat aux comptes (H3C) par l'ordonnance n° 2023-1142, compte tenu de l'extension de ses missions à la supervision des auditeurs des informations en matière de durabilité ; elle succède au H3C dans ses droits et obligations depuis le 1er janvier 2024.",
+     "src": "Ordonnance n° 2023-1142 du 6 décembre 2023, art. 32 et 40 ; rapport au Président de la République ; C. com., art. L. 820-1 s.",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519333",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Méthodes de référence</b> : méthodes que l'ANC considère comme conduisant à une meilleure information financière (par exemple la provision pour la totalité des engagements de retraite) ; depuis le règlement ANC n° 2018-01, elles remplacent les anciennes « méthodes préférentielles », expression encore employée par les manuels antérieurs à 2018.",
+     "cite": "« Les méthodes comptables considérées par l'Autorité des normes comptables comme conduisant à une meilleure information car répondant aux principes généraux des normes de comptabilité privée sont qualifiées de méthodes de référence. »",
+     "src": "PCG, art. 121-5 ; règlement ANC n° 2018-01 du 20 avril 2018 (note de présentation)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Valeur vénale, valeur actuelle, valeur d'inventaire</b> : la valeur vénale d'un bien acquis à titre gratuit correspond au prix qui aurait été acquitté dans des conditions normales de marché ; la valeur actuelle est une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise ; la valeur d'inventaire est égale à la valeur actuelle.",
+     "cite": "« La valeur actuelle est une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise »",
+     "src": "C. com., art. R. 123-178, 3° à 5°",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Résultat exceptionnel</b> (PCG 2025) : seuls les produits et charges directement liés à un événement majeur et inhabituel y sont comptabilisés ; un événement est majeur lorsque ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse, et présumé inhabituel lorsqu'un même événement ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains.",
+     "cite": "« Sont comptabilisés en résultat exceptionnel les produits et les charges directement liés à un événement majeur et inhabituel. »",
+     "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Règles essentielles",
    "items": [
-    { "t": "Les règlements de l'ANC ne sont obligatoires qu'après homologation par arrêté ministériel et publication au Journal officiel ; ils s'imposent alors aux personnes tenues d'établir des comptes.", "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 4", "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892", "fiab": "stable" },
-    { "t": "<b>Permanence des méthodes</b> : sauf changement exceptionnel dans la situation du commerçant, la présentation des comptes annuels et les méthodes d'évaluation ne peuvent être modifiées d'un exercice à l'autre ; toute modification est décrite et justifiée dans l'annexe et signalée, le cas échéant, dans le rapport du commissaire aux comptes.", "cite": "« A moins qu'un changement exceptionnel n'intervienne dans la situation du commerçant, personne physique ou morale, la présentation des comptes annuels comme des méthodes d'évaluation retenues ne peuvent être modifiées d'un exercice à l'autre. »", "src": "C. com., art. L. 123-17", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/", "fiab": "stable" },
-    { "t": "<b>Prudence et continuité d'exploitation</b> : les comptes annuels doivent respecter le principe de prudence ; pour leur établissement, le commerçant est présumé poursuivre ses activités. Même en l'absence ou en cas d'insuffisance de bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires.", "cite": "« Les comptes annuels doivent respecter le principe de prudence. Pour leur établissement, le commerçant, personne physique ou morale, est présumé poursuivre ses activités. »", "src": "C. com., art. L. 123-20", "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&dateTexte=22220222&idArticle=LEGIARTI000006219312", "fiab": "stable" },
-    { "t": "<b>Coût historique</b> : à leur date d'entrée dans le patrimoine, les biens acquis à titre onéreux sont enregistrés à leur coût d'acquisition, les biens acquis à titre gratuit à leur valeur vénale et les biens produits à leur coût de production ; les biens fongibles sont évalués au coût moyen pondéré ou selon la méthode « premier entré, premier sorti ».", "cite": "« les biens acquis à titre onéreux sont enregistrés à leur coût d'acquisition, les biens acquis à titre gratuit à leur valeur vénale et les biens produits à leur coût de production. »", "src": "C. com., art. L. 123-18", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310", "fiab": "stable" },
-    { "t": "<b>Valeur d'inventaire</b> : si la valeur d'un élément d'actif devient inférieure à sa valeur nette comptable, celle-ci est ramenée à la valeur d'inventaire à la clôture, que la dépréciation soit définitive ou non ; la plus-value entre la valeur d'inventaire et la valeur d'entrée n'est pas comptabilisée.", "cite": "« La plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée n'est pas comptabilisée. »", "src": "C. com., art. R. 123-178", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973", "fiab": "stable" },
-    { "t": "<b>Dérogation à une prescription comptable</b> : si, dans un cas exceptionnel, l'application d'une prescription comptable se révèle impropre à donner une image fidèle, il doit y être dérogé ; la dérogation est mentionnée à l'annexe, dûment motivée, avec l'indication de son influence sur le patrimoine, la situation financière et le résultat.", "src": "C. com., art. L. 123-14, al. 3", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306", "fiab": "stable" },
-    { "t": "<b>Changement de méthode à l'initiative de l'entité</b> : il n'est possible que s'il existe un choix entre plusieurs méthodes conformes aux principes et s'il conduit à une meilleure information financière, c'est-à-dire reflète de façon plus adaptée et plus pertinente la performance ou le patrimoine de l'entité ; une méthode jugée plus informative pour une même opération ne peut ensuite être remise en cause.", "cite": "« Dans un même contexte et pour une même opération ou information, une méthode qui a été considérée par l'entité comme fournissant une meilleure information financière ne peut être ultérieurement remise en cause. »", "src": "PCG, art. 122-2", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "<b>Effet d'un changement de méthode</b> : l'effet, après impôt, de la nouvelle méthode est calculé de façon rétrospective, comme si elle avait toujours été appliquée ; il est comptabilisé en capitaux propres à l'ouverture (report à nouveau) ou, le cas échéant, en résultat lorsque des règles fiscales l'imposent. Si l'effet à l'ouverture ne peut être calculé de façon objective, le changement est traité comme un changement d'estimation (application prospective).", "src": "PCG, art. 122-3 (règlement ANC n° 2018-01)", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "<b>Changement d'estimation</b> : il résulte d'un changement des circonstances sur lesquelles l'estimation était fondée, d'informations nouvelles ou d'une meilleure expérience ; il n'a d'effet que sur l'exercice en cours et les exercices futurs, l'incidence de l'exercice étant enregistrée dans le résultat de cet exercice.", "src": "PCG, art. 122-5", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "<b>Correction d'erreur</b> : les erreurs, omissions matérielles et interprétations erronées (y compris l'adoption d'une méthode non admise) sont corrigées dans le résultat de l'exercice au cours duquel elles sont constatées, sauf si la correction porte sur une écriture passée directement en capitaux propres ; les corrections significatives sont présentées sur une ligne séparée du compte de résultat.", "src": "PCG, art. 122-6", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "<b>Événements postérieurs à la clôture</b> : il doit être tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'ils ne sont connus qu'entre la date de clôture et celle de l'établissement des comptes.", "cite": "« il doit être tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur »", "src": "C. com., art. L. 123-20, al. 3", "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&dateTexte=22220222&idArticle=LEGIARTI000006219312", "fiab": "stable" },
-    { "t": "<b>Annexe</b> : outre les informations obligatoires prévues par le Code de commerce, le Code monétaire et financier et les règlements de l'ANC, l'annexe comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise.", "cite": "« l'annexe comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise. »", "src": "C. com., art. R. 123-195", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927471", "fiab": "stable" },
-    { "t": "<b>Micro-entreprises</b> : elles sont dispensées d'établir une annexe, sauf celles dont l'activité consiste à gérer des titres de participation et de valeurs mobilières ; une entreprise ne change de catégorie que si elle dépasse ou cesse de dépasser deux des trois seuils pendant deux exercices consécutifs.", "src": "C. com., art. L. 123-16-1 et L. 123-16", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/", "fiab": "stable" },
-    { "t": "<b>Nomination du commissaire aux comptes</b> : les sociétés commerciales sont tenues de désigner au moins un commissaire aux comptes lorsqu'elles dépassent, à la clôture de l'exercice, les seuils fixés par décret pour deux des trois critères (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; l'obligation cesse lorsque la société n'a pas dépassé deux de ces seuils pendant les deux exercices précédant l'expiration du mandat.", "src": "C. com., art. L. 821-43 et D. 221-5", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404", "fiab": "stable" },
-    { "t": "<b>Durée du mandat</b> : le commissaire aux comptes est nommé pour six exercices ; ses fonctions expirent après la réunion de l'assemblée ou de l'organe compétent qui statue sur les comptes du sixième exercice. Le commissaire nommé en remplacement d'un autre ne demeure en fonction que jusqu'à l'expiration du mandat de son prédécesseur.", "src": "C. com., art. L. 821-44", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298", "fiab": "stable" },
-    { "t": "<b>Mission de trois exercices</b> : lorsque la désignation est volontaire ou intervient dans les cas prévus par la loi pour les petites entreprises, la société peut limiter le mandat à trois exercices ; cette mission fait l'objet d'une norme d'exercice professionnel spécifique, révisée et homologuée par arrêté du 24 juillet 2026.", "src": "C. com., art. L. 821-44 ; arrêté du 24 juillet 2026 portant homologation de deux NEP révisées", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054486542", "fiab": "stable" },
-    { "t": "<b>Certification</b> : les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de l'exercice.", "cite": "« Les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé »", "src": "C. com., art. L. 821-53", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000048535645", "fiab": "stable" },
-    { "t": "<b>Comptes consolidés et IFRS</b> : les sociétés commerciales qui établissent et publient des comptes consolidés en utilisant les normes comptables internationales adoptées par règlement de la Commission européenne (règlement (CE) n° 1606/2002) sont dispensées des règles nationales de consolidation des articles L. 233-17-2 à L. 233-23 et L. 233-25.", "src": "C. com., art. L. 233-24 ; règlement (CE) n° 1606/2002", "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330", "fiab": "stable" }
+    {
+     "t": "<b>Homologation des règlements de l'ANC</b> : les règlements adoptés par l'Autorité des normes comptables sont publiés au Journal officiel après homologation par arrêtés conjoints du ministre chargé de l'économie, du garde des sceaux, ministre de la justice, et du ministre chargé du budget (par exemple l'arrêté du 12 août 2026 homologuant les règlements n° 2026-01 à 2026-04).",
+     "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 4 ; arrêté du 12 août 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Permanence des méthodes</b> : à moins qu'un changement exceptionnel n'intervienne dans la situation du commerçant, la présentation des comptes annuels et les méthodes d'évaluation retenues ne peuvent être modifiées d'un exercice à l'autre ; les modifications sont décrites et justifiées dans l'annexe.",
+     "src": "C. com., art. L. 123-17 (version en vigueur depuis le 1er janvier 2016)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prudence et continuité d'exploitation</b> : les comptes annuels doivent respecter le principe de prudence ; pour leur établissement, le commerçant est présumé poursuivre ses activités. Même en l'absence ou en cas d'insuffisance de bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires.",
+     "src": "C. com., art. L. 123-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Coût historique</b> : à leur date d'entrée dans le patrimoine, les biens acquis à titre onéreux sont enregistrés à leur coût d'acquisition, les biens acquis à titre gratuit à leur valeur vénale et les biens produits à leur coût de production ; les biens fongibles sont évalués soit au coût moyen pondéré d'acquisition ou de production, soit selon la méthode « premier entré, premier sorti ».",
+     "cite": "« les biens acquis à titre onéreux sont enregistrés à leur coût d'acquisition, les biens acquis à titre gratuit à leur valeur vénale et les biens produits à leur coût de production »",
+     "src": "C. com., art. L. 123-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Valeur d'inventaire</b> : si la valeur d'un élément d'actif devient inférieure à sa valeur nette comptable, celle-ci est ramenée à la valeur d'inventaire à la clôture de l'exercice ; la plus-value constatée entre la valeur d'inventaire et la valeur d'entrée n'est pas comptabilisée. Pour une immobilisation non financière, la valeur nette comptable est conservée si la valeur actuelle n'est pas jugée notablement inférieure.",
+     "cite": "« La valeur d'inventaire est égale à la valeur actuelle ; toutefois, lorsque la valeur d'inventaire d'une immobilisation non financière n'est pas jugée notablement inférieure à sa valeur comptable nette, celle-ci est retenue comme valeur d'inventaire. »",
+     "src": "C. com., art. L. 123-18 et R. 123-178, 5°",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Informations complémentaires et dérogation</b> : lorsque l'application d'une prescription comptable ne suffit pas pour donner l'image fidèle, des informations complémentaires doivent être fournies dans l'annexe ; si, dans un cas exceptionnel, son application se révèle impropre à donner une image fidèle, il doit y être dérogé, la dérogation étant mentionnée à l'annexe et dûment motivée, avec l'indication de son influence sur le patrimoine, la situation financière et le résultat.",
+     "src": "C. com., art. L. 123-14, al. 2 et 3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Changement de méthode</b> : il résulte soit d'un changement de réglementation comptable, qui s'impose à l'entité, soit d'une initiative de l'entité ; dans ce second cas, il n'est admis que s'il existe un choix entre plusieurs méthodes conformes aux principes d'établissement des comptes annuels et que le changement conduit à une meilleure information financière. Le passage à une méthode de référence n'a pas à être justifié et il est irréversible.",
+     "cite": "« Un changement de méthode résulte soit d'un changement de réglementation comptable, soit d'un changement de méthode comptable à l'initiative de l'entité. »",
+     "src": "PCG, art. 122-1 et 122-2",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Effet d'un changement de méthode</b> : l'effet, après impôt, de la nouvelle méthode est calculé de façon rétrospective, comme si elle avait toujours été appliquée ; l'impact à l'ouverture est imputé en report à nouveau, sauf si des règles fiscales imposent de le comptabiliser en résultat. Si l'effet à l'ouverture ne peut être calculé de façon objective, le changement est appliqué de manière prospective.",
+     "cite": "« Lors de changements de méthodes comptables, l'effet, après impôt sur le résultat, de la nouvelle méthode est calculé de façon rétrospective, comme si celle-ci avait toujours été appliquée. »",
+     "src": "PCG, art. 122-3",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Changement d'estimation</b> : il résulte d'un changement des circonstances sur lesquelles l'estimation était fondée, de nouvelles informations ou d'une meilleure expérience ; il n'a d'effet que sur l'exercice en cours et les exercices futurs. Ce n'est pas une correction d'erreur, sauf si l'estimation antérieure reposait sur des données manifestement erronées au regard des informations disponibles à l'époque.",
+     "cite": "« Les changements d'estimation n'ont un effet que sur l'exercice en cours et les exercices futurs. L'incidence du changement sur l'exercice en cours est enregistrée dans les comptes de l'exercice. »",
+     "src": "PCG, art. 122-5",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Correction d'erreur</b> : les erreurs, omissions matérielles et interprétations erronées, y compris l'adoption d'une méthode comptable non admise, sont corrigées dans le résultat de l'exercice au cours duquel elles sont constatées, sauf si la correction porte sur une écriture imputée directement sur les capitaux propres ; l'incidence des corrections significatives est présentée sur une ligne séparée du compte de résultat, en dehors du résultat courant, ou, le cas échéant, sur une ligne séparée du report à nouveau.",
+     "cite": "« Les corrections d'erreurs sont comptabilisées dans le résultat de l'exercice au cours duquel elles sont constatées sauf lorsqu'il s'agit de corriger une écriture ayant été directement imputée sur les capitaux propres. »",
+     "src": "PCG, art. 122-6",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Événements postérieurs à la clôture</b> : il doit être tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'ils ne sont connus qu'entre la date de clôture et celle de l'établissement des comptes ; les événements de cette période qui n'ont aucun lien direct prépondérant avec une situation existant à la clôture font l'objet d'une information dans l'annexe.",
+     "cite": "« Le résultat tient compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur même s'ils sont connus entre la date de clôture de l'exercice et celle de l'établissement des comptes annuels. »",
+     "src": "C. com., art. L. 123-20, al. 3 ; PCG, art. 513-4 ; annexe (règlement ANC n° 2022-06)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Annexe</b> : outre les informations obligatoires prévues notamment aux articles L. 123-13 à L. 123-21 du Code de commerce, l'annexe comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise.",
+     "cite": "« l'annexe comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise. »",
+     "src": "C. com., art. R. 123-195",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197052/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Micro-entreprises</b> : elles ne sont pas tenues d'établir d'annexe, sauf celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières ; le classement s'apprécie au titre du dernier exercice clos, et le fait de dépasser ou de cesser de dépasser deux des trois seuils n'a d'incidence que s'il se produit pendant deux exercices consécutifs.",
+     "cite": "« Par dérogation aux dispositions du troisième alinéa de l'article L. 123-12, les micro-entreprises, à l'exception de celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières, ne sont pas tenues d'établir d'annexe. »",
+     "src": "C. com., art. L. 123-16-1 et L. 123-16",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Désignation obligatoire du commissaire aux comptes</b> : une SAS doit désigner au moins un commissaire aux comptes lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5 (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société. Sous les seuils, la désignation est aussi obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée, et elle peut être demandée en justice par des associés représentant au moins le dixième du capital.",
+     "cite": "« Sont tenues de désigner au moins un commissaire aux comptes les sociétés par actions simplifiées qui dépassent, à la clôture d'un exercice social, deux des seuils suivants, fixés par décret »",
+     "src": "C. com., art. L. 227-9-1 et D. 221-5",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799598",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Groupes</b> : les personnes ou entités qui contrôlent une ou plusieurs sociétés désignent au moins un commissaire aux comptes lorsque l'ensemble qu'elles forment avec les sociétés contrôlées dépasse les seuils pour deux des trois critères, sauf si elles sont elles-mêmes contrôlées par une entité qui a désigné un commissaire aux comptes ; les sociétés contrôlées qui dépassent des seuils propres fixés par décret sont aussi tenues d'en désigner un.",
+     "src": "C. com., art. L. 821-43",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048532413",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Durée du mandat</b> : pour les missions de certification des comptes et de certification des informations en matière de durabilité, le commissaire aux comptes est nommé pour six exercices ; ses fonctions expirent après la délibération de l'assemblée générale ou de l'organe compétent qui statue sur les comptes du sixième exercice. Le commissaire nommé en remplacement ne demeure en fonction que jusqu'à l'expiration du mandat de son prédécesseur.",
+     "src": "C. com., art. L. 821-44",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Mandat de trois exercices</b> : par dérogation, lorsque le commissaire aux comptes est désigné de manière volontaire ou en application des premier ou dernier alinéas de l'article L. 821-43 (groupes), la société peut limiter la durée de son mandat à trois exercices ; le commissaire établit alors, en plus de son rapport, un rapport à destination des dirigeants sur les risques financiers, comptables et de gestion. Les normes d'exercice professionnel de cette mission et de la mission de six exercices dans les petites entreprises ont été révisées et homologuées par arrêté du 24 juillet 2026.",
+     "src": "C. com., art. L. 821-46 et L. 821-57 ; arrêté du 24 juillet 2026",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525342",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Certification</b> : les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de cet exercice ; il en va de même des comptes consolidés.",
+     "cite": "« Les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine de la personne ou de l'entité à la fin de cet exercice. »",
+     "src": "C. com., art. L. 821-53",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Chiffres et seuils",
    "items": [
-    { "t": "<b>Catégories d'entreprises</b> (exercices ouverts à compter du 1er janvier 2024, deux critères sur trois) : micro-entreprise <span class=\"mono\">450 000 €</span> de total de bilan, <span class=\"mono\">900 000 €</span> de chiffre d'affaires net, <span class=\"mono\">10</span> salariés ; petite entreprise <span class=\"mono\">7 500 000 €</span>, <span class=\"mono\">15 000 000 €</span>, <span class=\"mono\">50</span> salariés ; moyenne entreprise <span class=\"mono\">25 000 000 €</span>, <span class=\"mono\">50 000 000 €</span>, <span class=\"mono\">250</span> salariés.", "src": "C. com., art. D. 123-200 (décret n° 2024-152 du 28 février 2024)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681", "fiab": "millésimé 2024" },
-    { "t": "<b>Anciens seuils</b> (exercices ouverts avant le 1er janvier 2024) : micro-entreprise 350 000 € / 700 000 € / 10 ; petite entreprise 6 000 000 € / 12 000 000 € / 50 ; moyenne entreprise 20 000 000 € / 40 000 000 € / 250.", "src": "C. com., art. D. 123-200, version antérieure au décret n° 2024-152", "url": "https://legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553396/2023-11-03", "fiab": "millésimé 2023" },
-    { "t": "<b>Seuils de nomination obligatoire du commissaire aux comptes</b> (exercices ouverts à compter du 1er janvier 2024, deux critères sur trois) : total du bilan <span class=\"mono\">5 000 000 €</span>, chiffre d'affaires hors taxes <span class=\"mono\">10 000 000 €</span>, nombre moyen de salariés <span class=\"mono\">50</span>.", "src": "C. com., art. D. 221-5 (décret n° 2024-152 du 28 février 2024)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404", "fiab": "millésimé 2024" },
-    { "t": "<b>Durée du mandat du commissaire aux comptes</b> : <span class=\"mono\">6</span> exercices ; mission limitée à <span class=\"mono\">3</span> exercices possible en cas de désignation volontaire ou dans les cas légaux visant les petites entreprises.", "src": "C. com., art. L. 821-44", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298", "fiab": "stable" },
-    { "t": "<b>Entités d'intérêt public</b> : la durée maximale de certification consécutive par un même commissaire aux comptes est de six exercices, dans la limite de sept années (rotation).", "src": "C. com., art. L. 821-45", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048532444", "fiab": "stable" }
+    {
+     "t": "<b>Catégories d'entreprises</b> (seuils en vigueur en 2026, applicables aux exercices ouverts à compter du 1er janvier 2024 ; deux critères sur trois) : micro-entreprise <span class=\"mono\">450 000 €</span> de total de bilan, <span class=\"mono\">900 000 €</span> de chiffre d'affaires net, <span class=\"mono\">10</span> salariés ; petite entreprise <span class=\"mono\">7 500 000 €</span>, <span class=\"mono\">15 000 000 €</span>, <span class=\"mono\">50</span> salariés ; moyenne entreprise <span class=\"mono\">25 000 000 €</span>, <span class=\"mono\">50 000 000 €</span>, <span class=\"mono\">250</span> salariés. Seuils antérieurs (exercices ouverts avant le 1er janvier 2024) : 350 000 € / 700 000 € / 10 ; 6 000 000 € / 12 000 000 € / 50 ; 20 000 000 € / 40 000 000 € / 250.",
+     "src": "C. com., art. D. 123-200 (décret n° 2024-152 du 28 février 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Seuils de désignation obligatoire du commissaire aux comptes</b> (en vigueur en 2026, exercices ouverts à compter du 1er janvier 2024 ; deux critères sur trois) : total du bilan <span class=\"mono\">5 000 000 €</span>, chiffre d'affaires hors taxes <span class=\"mono\">10 000 000 €</span>, nombre moyen de salariés <span class=\"mono\">50</span>. Ils s'appliquent aux SAS (art. L. 227-9-1), aux SA (art. D. 225-164-1) et aux groupes (art. D. 821-171). Seuils antérieurs issus de la loi PACTE (décret n° 2019-514) : 4 000 000 € / 8 000 000 € / 50.",
+     "cite": "« La société n'est plus tenue de désigner un commissaire aux comptes dès lors qu'elle n'a pas dépassé les chiffres fixés pour deux de ces trois critères pendant les deux exercices précédant l'expiration du mandat du commissaire aux comptes. »",
+     "src": "C. com., art. D. 221-5 (décret n° 2024-152 du 28 février 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Entités d'intérêt public</b> : un commissaire aux comptes unique ne peut certifier les comptes pendant une période supérieure à <span class=\"mono\">10</span> ans ; la durée peut être portée au maximum à <span class=\"mono\">24</span> ans lorsque l'entité recourt ensuite à plusieurs commissaires aux comptes ; le commissaire ne peut ensuite accepter de mandat auprès de la même entité avant un délai de <span class=\"mono\">4</span> ans.",
+     "src": "C. com., art. L. 821-45 ; règlement (UE) n° 537/2014",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048532444",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Ce qui a changé récemment",
    "items": [
-    { "t": "<b>Règlement ANC n° 2022-06 du 4 novembre 2022</b> (modernisation des états financiers) : applicable aux exercices ouverts à compter du 1er janvier 2025, avec application anticipée possible ; il recentre le résultat exceptionnel sur les événements majeurs et inhabituels (art. 513-5) et classe en résultat exceptionnel les écritures d'origine purement fiscale.", "cite": "« Les écritures comptables d'origine purement fiscale, telles que définies et prévues par les règlements de l'Autorité des normes comptables, sont comptabilisées en résultat exceptionnel. »", "src": "Règlement ANC n° 2022-06, art. 27 (première application) et PCG art. 513-5", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf", "fiab": "stable" },
-    { "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : coordonne le plan de comptes avec le règlement 2022-06 ; il supprime notamment les comptes 77 « Produits exceptionnels » et 775 « Produits des cessions d'éléments d'actifs », pour les exercices ouverts à compter du 1er janvier 2025.", "src": "Règlement ANC n° 2023-03 du 7 juillet 2023", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf", "fiab": "stable" },
-    { "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relève les seuils de taille des sociétés et des groupes pour tenir compte de l'inflation (transposition de la directive déléguée (UE) 2023/2775) ; entrée en vigueur le 1er mars 2024, applicable aux comptes des exercices ouverts à compter du 1er janvier 2024 ; les mandats de commissaires aux comptes en cours se poursuivent jusqu'à leur expiration.", "src": "Décret n° 2024-152 du 28 février 2024", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674", "fiab": "millésimé 2024" },
-    { "t": "<b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> (transposition de la directive CSRD) : la Haute autorité de l'audit remplace le H3C, les commissaires aux comptes et les organismes tiers indépendants peuvent certifier les informations en matière de durabilité, et le livre VIII du Code de commerce est recodifié (les anciens articles L. 823-x deviennent L. 821-x) à compter du 1er janvier 2024.", "src": "Ordonnance n° 2023-1142 du 6 décembre 2023 ; décret n° 2023-1394 du 30 décembre 2023", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519395", "fiab": "stable" },
-    { "t": "<b>Programme du DCG</b> : l'arrêté du 4 août 2025 fixe le nouveau programme et les modalités des épreuves du DCG et du DSCG (annexes 1 et 2) et abroge l'arrêté du 13 février 2019 ; il est applicable à compter de la session 2027, l'arrêté de 2019 régissant encore la session 2026.", "src": "Arrêté du 4 août 2025, BO ESR n° 32 du 28 août 2025", "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A", "fiab": "stable" }
+    {
+     "t": "<b>Règlement ANC n° 2022-06 du 4 novembre 2022</b> (modernisation des états financiers), homologué par arrêté du 26 décembre 2023 et applicable aux exercices ouverts à compter du 1er janvier 2025 : il recentre le résultat exceptionnel sur les événements majeurs et inhabituels (art. 513-5) et y classe les écritures d'origine purement fiscale.",
+     "cite": "« Les écritures comptables d'origine purement fiscale, telles que définies et prévues par les règlements de l'Autorité des normes comptables, sont comptabilisées en résultat exceptionnel. »",
+     "src": "Règlement ANC n° 2022-06 ; arrêté du 26 décembre 2023 ; PCG, art. 513-5",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Règlement ANC n° 2023-03 du 7 juillet 2023</b> : il met le plan de comptes en cohérence avec le règlement 2022-06 pour les exercices ouverts à compter du 1er janvier 2025 ; il supprime notamment les comptes 675 et 775, les cessions d'immobilisations incorporelles et corporelles relevant désormais des comptes 657 et 757 « Produits des cessions d'immobilisations incorporelles et corporelles » (les gains de change sur créances et dettes commerciales passent au compte 756).",
+     "src": "Règlement ANC n° 2023-03 du 7 juillet 2023 ; plan de comptes 2026",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : il relève les critères de taille des sociétés et des groupes pour tenir compte de l'inflation (transposition de la directive déléguée (UE) 2023/2775) ; entrée en vigueur le 1er mars 2024, applicable aux comptes et rapports des exercices ouverts à compter du 1er janvier 2024 ; les mandats de commissaires aux comptes en cours se poursuivent jusqu'à leur terme.",
+     "cite": "« Conformément à l'article 4 du décret n° 2024-152 du 28 février 2024, ces dispositions entrent en vigueur le 1er mars 2024. Ces mêmes dispositions s'appliquent aux comptes et rapports afférents aux exercices ouverts à compter du 1er janvier 2024. »",
+     "src": "Décret n° 2024-152 du 28 février 2024, art. 4 ; C. com., art. D. 221-5",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674",
+     "fiab": "millésimé 2024"
+    },
+    {
+     "t": "<b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> (transposition de la directive CSRD) : le H3C devient la Haute autorité de l'audit ; les commissaires aux comptes et les organismes tiers indépendants peuvent certifier les informations en matière de durabilité ; le titre II du livre VIII du Code de commerce est réorganisé, les règles de désignation, de mandat et de certification figurant désormais aux articles L. 821-40 et suivants, à compter du 1er janvier 2024 (décret d'application n° 2023-1394 du 30 décembre 2023).",
+     "src": "Ordonnance n° 2023-1142 du 6 décembre 2023, art. 32 ; décret n° 2023-1394 du 30 décembre 2023",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519395",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b>, homologué par l'arrêté du 12 août 2026 : il modifie le PCG sur la comptabilisation des produits des ventes et reprend la définition du résultat exceptionnel (événement majeur et inhabituel) à l'article 531-5 ; il s'applique aux exercices ouverts à compter du 1er janvier 2027 et peut être appliqué par anticipation sur l'exercice en cours à sa date de publication au Journal officiel.",
+     "cite": "« Le présent règlement s'applique aux comptes afférents aux exercices ouverts à compter du 1er janvier 2027. »",
+     "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 4 ; arrêté du 12 août 2026",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Programme du DCG</b> : l'arrêté du 4 août 2025 fixe le nouveau programme et les modalités des épreuves du DCG et du DSCG ; il s'applique à compter de la session 2027 et abroge l'arrêté du 13 février 2019, qui régit encore la session 2026. L'épreuve n° 10 (comptabilité approfondie) dure trois heures, coefficient 1, 14 crédits européens.",
+     "src": "Arrêté du 4 août 2025, BO ESR n° 32 du 28 août 2025",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Points de vigilance",
    "items": [
-    { "t": "Ne pas confondre <b>changement d'estimation</b> (effet prospectif, par le résultat de l'exercice et des exercices suivants) et <b>changement de méthode</b> (effet rétrospectif, imputé en capitaux propres à l'ouverture) ; un changement de méthode dont l'effet d'ouverture n'est pas calculable objectivement est traité comme un changement d'estimation.", "src": "PCG, art. 122-3 et 122-5", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "Une <b>correction d'erreur</b> ne modifie jamais les comptes des exercices antérieurs déjà approuvés : elle passe par le résultat de l'exercice de découverte, sur une ligne séparée si elle est significative, avec information en annexe.", "src": "PCG, art. 122-6", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf", "fiab": "stable" },
-    { "t": "Trois jeux de seuils à distinguer : les <b>catégories comptables</b> (D. 123-200 : allègements de présentation et dispense d'annexe), les <b>seuils de nomination du commissaire aux comptes</b> (D. 221-5 : 5 M€ / 10 M€ / 50) et les seuils de l'article R. 221-5 (1 550 000 € / 3 100 000 € / 50) relatifs à la désignation d'un commissaire aux comptes par ordonnance du président du tribunal dans les SNC.", "src": "C. com., art. D. 123-200, D. 221-5 et R. 221-5", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006260244/2026-10-01", "fiab": "millésimé 2024" },
-    { "t": "Le franchissement de deux des trois seuils en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes : elle n'est effective que pour l'exercice suivant.", "cite": "« Franchir 2 des seuils en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes. Cette obligation n'est effective que lors de l'exercice suivant. »", "src": "economie.gouv.fr, « Nommer un commissaire aux comptes : est-ce obligatoire ? »", "url": "https://www.economie.gouv.fr/entreprises/gerer-sa-comptabilite-et-ses-demarches/nommer-un-commissaire-aux-comptes-est-ce", "fiab": "stable" },
-    { "t": "Les sujets et manuels antérieurs à 2024 citent les articles L. 823-3 (mandat), L. 823-9 (certification) ou L. 823-12 (révélation des faits délictueux) : depuis le 1er janvier 2024, ces règles figurent aux articles L. 821-40 et suivants du Code de commerce.", "src": "C. com., art. L. 821-40 à L. 821-52 (ordonnance n° 2023-1142)", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161409/", "fiab": "stable" },
-    { "t": "Dans le résultat exceptionnel du PCG 2025, les aides, remboursements et indemnités reçus en compensation de charges d'exploitation liées à l'événement majeur et inhabituel restent classés en résultat d'exploitation ; les produits et charges ultérieurs liés à l'événement restent exceptionnels jusqu'à l'extinction de ses conséquences.", "cite": "« Les aides, les remboursements et les indemnités directement liés à l'évènement majeur et inhabituel et reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »", "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)", "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf", "fiab": "stable" },
-    { "t": "<b>Lien avec le DSCG (UE4)</b> : les comptes consolidés des sociétés cotées sont établis en IFRS en application du règlement (CE) n° 1606/2002 ; dans les comptes individuels, seul le PCG s'applique, et l'article L. 233-24 n'écarte les règles nationales que pour les comptes consolidés.", "src": "C. com., art. L. 233-24", "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330", "fiab": "stable" }
+    {
+     "t": "Trois traitements à ne pas confondre : le <b>changement de méthode</b> (effet calculé de façon rétrospective et imputé en report à nouveau à l'ouverture), le <b>changement d'estimation</b> (effet sur l'exercice en cours et les exercices futurs, par le résultat) et la <b>correction d'erreur</b> (résultat de l'exercice où l'erreur est constatée, sauf si elle corrige une écriture imputée directement sur les capitaux propres).",
+     "src": "PCG, art. 122-3, 122-5 et 122-6",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Deux jeux de seuils à distinguer : les <b>catégories comptables</b> (D. 123-200 : allègements de présentation, dispense d'annexe des micro-entreprises) et les <b>seuils de désignation du commissaire aux comptes</b> (D. 221-5 : 5 M€ / 10 M€ / 50). Une société dont le bilan est de 6 M€ et le chiffre d'affaires de 12 M€ reste une petite entreprise mais doit désigner un commissaire aux comptes.",
+     "src": "C. com., art. D. 123-200 et D. 221-5",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "Les seuils s'apprécient à la clôture de l'exercice : franchir deux des seuils en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes, qui n'est effective que pour l'exercice suivant.",
+     "cite": "« Franchir 2 des seuils en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes. Cette obligation n'est effective que lors de l'exercice suivant. »",
+     "src": "C. com., art. L. 227-9-1 (« à la clôture d'un exercice social ») ; economie.gouv.fr, « Nommer un commissaire aux comptes : est-ce obligatoire ? »",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-sa-comptabilite-et-ses-demarches/nommer-un-commissaire-aux-comptes-est-ce",
+     "fiab": "stable"
+    },
+    {
+     "t": "Les sujets et manuels antérieurs à 2024 citent les articles L. 823-1 et suivants (par exemple L. 823-3 pour la durée du mandat ou L. 823-9 pour la certification) : depuis le 1er janvier 2024, ces règles figurent aux articles L. 821-40 et suivants du Code de commerce (mandat : L. 821-44 ; certification : L. 821-53).",
+     "src": "C. com., art. L. 821-40 à L. 821-69 (ordonnance n° 2023-1142)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146154/",
+     "fiab": "stable"
+    },
+    {
+     "t": "Dans le résultat exceptionnel du PCG 2025, les aides, remboursements et indemnités reçus en compensation de charges d'exploitation liées à l'événement majeur et inhabituel restent classés en résultat d'exploitation ; les produits et charges ultérieurs liés à l'événement restent exceptionnels jusqu'à l'extinction de ses conséquences.",
+     "cite": "« Les aides, les remboursements et les indemnités directement liés à l'évènement majeur et inhabituel et reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »",
+     "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Lien avec le DSCG (UE4)</b> : les comptes consolidés des sociétés cotées sont établis en IFRS en application du règlement (CE) n° 1606/2002 ; l'article L. 233-24 n'écarte les règles nationales que pour les comptes consolidés, les comptes individuels restant établis selon le PCG.",
+     "src": "C. com., art. L. 233-24",
+     "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330",
+     "fiab": "stable"
+    }
    ]
   }
  ]

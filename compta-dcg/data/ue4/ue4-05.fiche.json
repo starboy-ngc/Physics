@@ -5,16 +5,17 @@
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "Partie 2 – Conduire les obligations fiscales du cycle d'exploitation d'une entreprise : la taxe sur la valeur ajoutée",
-   "1.2 Aider le contribuable à organiser son environnement fiscal : l'agenda se limite aux échéances de TVA (déclaration de chiffre d'affaires trimestrielle et/ou mensuelle), d'impôt sur les sociétés (IS) ainsi qu'une taxe supplémentaire au maximum",
    "L'UE 4, droit fiscal, permet au titulaire du DCG d'identifier les règles applicables à une situation donnée et d'analyser les opérations d'entreprises et de particuliers",
+   "L'UE 4 se structure autour de 3 parties : accompagner le contribuable dans son environnement fiscal ; conduire les obligations fiscales du cycle d'exploitation d'une entreprise ; conduire les obligations fiscales de la personne physique et de sa famille",
+   "Partie 2 – Conduire les obligations fiscales du cycle d'exploitation d'une entreprise",
+   "1.2 Aider le contribuable à organiser son environnement fiscal : l'agenda se limite aux échéances de TVA (déclaration de chiffre d'affaires trimestrielle et/ou mensuelle), d'impôt sur les sociétés (IS) ainsi qu'une taxe supplémentaire au maximum",
    "Programme 2019 (session 2026), sens et portée de l'étude : « Le législateur utilise fréquemment le droit fiscal comme outil incitatif »"
   ]
  },
  "textes": [
   {
-   "ref": "CGI, art. 256, 256 A et 257",
-   "objet": "Opérations imposables par nature et par disposition de la loi ; définition de l'assujetti",
+   "ref": "CGI, art. 256, 256 A, 256 bis, 257 et 291",
+   "objet": "Opérations imposables par nature et par disposition de la loi (livraisons à soi-même, opérations immobilières, acquisitions intracommunautaires, importations) ; définition de l'assujetti",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179644/",
    "version": "en vigueur (directive 2006/112/CE)"
   },
@@ -43,34 +44,46 @@
    "version": "en vigueur"
   },
   {
-   "ref": "CGI, art. 271 ; CGI, ann. II, art. 205 à 207",
-   "objet": "Droit à déduction, coefficient de déduction, exclusions, régularisations",
+   "ref": "CGI, art. 271 et 298, 4-1° ; CGI, ann. II, art. 205 à 207",
+   "objet": "Droit à déduction, coefficient de déduction, exclusions (dont produits pétroliers), régularisations",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835114",
    "version": "en vigueur"
   },
   {
-   "ref": "CGI, art. 293 B",
-   "objet": "Franchise en base de TVA",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045035275",
-   "version": "en vigueur ; seuil unique de 25 000 € prévu par la LF 2025 (art. 32) suspendu"
+   "ref": "CGI, art. 293 B et 293 F",
+   "objet": "Franchise en base de TVA : seuils, sortie du régime, option",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006162567/",
+   "version": "version applicable du 1er mars 2025 au 1er janvier 2027 (seuils de 85 000 € et 37 500 €) ; seuil unique de 25 000 € de la LF 2025 (art. 32) supprimé par la loi n° 2025-1044 du 3 novembre 2025"
   },
   {
    "ref": "CGI, art. 302 septies A et 287 ; BOI-BAREME-000036",
-   "objet": "Régime simplifié de déclaration : seuils de chiffre d'affaires, acomptes, déclaration annuelle",
+   "objet": "Régime simplifié de déclaration (jusqu'au 31 décembre 2026) : seuils de chiffre d'affaires, acomptes, déclaration annuelle",
    "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701",
-   "version": "BOFiP du 1er juillet 2026"
+   "version": "BOFiP du 1er juillet 2026 ; régime supprimé à compter du 1er janvier 2027 (LF 2025, art. 38)"
   },
   {
    "ref": "CGI, art. 289 et 289 bis ; CGI, ann. II, art. 242 nonies A",
    "objet": "Facturation, mentions obligatoires, facturation électronique",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048827413",
-   "version": "en vigueur (calendrier de la LF 2024, art. 91)"
+   "version": "en vigueur (calendrier de la facturation électronique : LF 2024, art. 91 ; décret n° 2022-1299 du 7 octobre 2022)"
   },
   {
    "ref": "CGI, art. 283, 2 nonies",
    "objet": "Autoliquidation de la TVA dans la sous-traitance du bâtiment",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048838530",
    "version": "en vigueur"
+  },
+  {
+   "ref": "Loi n° 2025-1044 du 3 novembre 2025",
+   "objet": "Loi visant à garantir un cadre fiscal stable, juste et lisible pour nos micro-entrepreneurs et nos petites entreprises : abandon du seuil unique de franchise en base de 25 000 €",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052485808",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Ordonnance n° 2025-1247 du 17 décembre 2025",
+   "objet": "Recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+   "version": "abrogation des articles du CGI relatifs à la TVA à compter du 1er janvier 2027"
   }
  ],
  "sections": [
@@ -90,8 +103,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Opérations imposables par disposition expresse de la loi</b> : livraisons à soi-même de biens ou d'immeubles, importations, acquisitions intracommunautaires, livraisons de terrains à bâtir et d'immeubles neufs.",
-     "src": "CGI, art. 257",
+     "t": "<b>Opérations imposables par disposition expresse de la loi</b> : livraisons à soi-même de biens ou d'immeubles, livraisons de terrains à bâtir et d'immeubles neufs (art. 257) ; s'y ajoutent les acquisitions intracommunautaires (art. 256 bis) et les importations (art. 291).",
+     "src": "CGI, art. 257, 256 bis et 291",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046196126",
      "fiab": "stable"
     },
@@ -102,7 +115,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Régimes de déclaration</b> : franchise en base (aucune TVA facturée ni déduite), régime simplifié (déclaration annuelle CA12 n° 3517-S et acomptes semestriels) et régime réel normal (déclarations CA3 mensuelles ou trimestrielles).",
+     "t": "<b>Régimes de déclaration</b> : franchise en base (aucune TVA facturée ni déduite), régime simplifié (déclaration annuelle CA12 n° 3517-S et acomptes semestriels, applicable jusqu'au 31 décembre 2026) et régime réel normal (déclarations CA3 mensuelles ou trimestrielles).",
      "src": "CGI, art. 287, 293 B et 302 septies A ; impots.gouv.fr, les régimes d'imposition à la TVA",
      "url": "https://www.impots.gouv.fr/professionnel/les-regimes-dimposition-la-tva",
      "fiab": "stable"
@@ -114,7 +127,7 @@
    "items": [
     {
      "t": "<b>Exonérations</b> : soins médicaux et paramédicaux, enseignement, locations nues d'immeubles à usage d'habitation ou de terres agricoles, opérations bancaires et financières, assurances ; une exonération prive en principe du droit à déduction.",
-     "src": "CGI, art. 261 et 271",
+     "src": "CGI, art. 261, 261 C, 261 D et 271",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
      "fiab": "stable"
     },
@@ -146,13 +159,13 @@
     {
      "t": "<b>Prestations de services</b> : entre assujettis (B2B), le lieu d'imposition est celui du preneur ; pour un preneur non assujetti (B2C), celui du prestataire. Dérogations : services rattachés à un immeuble (lieu de l'immeuble), restauration (lieu d'exécution), locations de courte durée de moyens de transport (lieu de mise à disposition), accès aux manifestations (lieu de l'événement).",
      "cite": "« Le lieu des prestations de services est situé en France : 1° Lorsque le preneur est un assujetti agissant en tant que tel et qu'il a en France : a) Le siège de son activité économique, sauf lorsqu'il dispose d'un établissement stable non situé en France auquel les services sont fournis ; b) Ou un établissement stable auquel les services sont fournis ; c) Ou, à défaut du a ou du b, son domicile ou sa résidence habituelle. »",
-     "src": "CGI, art. 259, 1° et 2°, 259 A",
+     "src": "CGI, art. 259, 1° et 2°, et 259 A",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021642728",
      "fiab": "stable"
     },
     {
      "t": "<b>Ventes à distance intracommunautaires</b> : taxées dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 € ; au-delà (ou sur option), TVA de l'État de consommation déclarée via le guichet unique (OSS).",
-     "src": "CGI, art. 259 D et 298 sexdecies G",
+     "src": "CGI, art. 258 A, 259 D et 298 sexdecies G",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835152",
      "fiab": "stable"
     },
@@ -184,8 +197,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Exclusions du droit à déduction</b> : véhicules conçus pour le transport de personnes (sauf activités de transport, auto-écoles, loueurs), logement fourni gratuitement aux dirigeants et salariés, biens cédés sans rémunération ou pour un prix très inférieur (cadeaux au-delà de la limite réglementaire), transport de personnes ; carburants des véhicules exclus déductibles à 80 % (essence et gazole).",
-     "src": "CGI, ann. II, art. 206, IV",
+     "t": "<b>Exclusions du droit à déduction</b> : véhicules conçus pour le transport de personnes (sauf activités de transport, auto-écoles, loueurs), logement fourni gratuitement aux dirigeants et salariés, biens cédés sans rémunération ou pour un prix très inférieur (cadeaux au-delà de la limite réglementaire), transport de personnes ; la TVA sur l'essence et le gazole des véhicules exclus est déductible à 80 %, celle des véhicules utilitaires à 100 %.",
+     "src": "CGI, ann. II, art. 206, IV ; CGI, art. 298, 4-1° ; BOI-TVA-DED-30-30-40",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
      "fiab": "stable"
     },
@@ -197,10 +210,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime simplifié</b> : réservé aux entreprises dont le chiffre d'affaires n'excède pas les seuils et dont la TVA due au titre de l'année précédente est inférieure à 15 000 € ; deux acomptes semestriels (juillet et décembre) de 55 % et 40 % de la taxe due au titre de l'année précédente, puis déclaration annuelle CA12 avec le solde.",
+     "t": "<b>Régime simplifié</b> (jusqu'au 31 décembre 2026) : réservé aux entreprises dont le chiffre d'affaires n'excède pas les seuils et dont la TVA due au titre de l'année précédente n'excède pas 15 000 € ; deux acomptes semestriels (juillet et décembre) de 55 % et 40 % de la taxe due au titre de l'exercice précédent, puis déclaration annuelle CA12 avec le solde.",
      "src": "CGI, art. 287, 3 et 302 septies A ; notice 3517-S-NOT-SD",
      "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/3517-s-sd/2024/3517-s-sd_4724.pdf",
-     "fiab": "stable"
+     "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Facturation</b> : toute TVA facturée est due du seul fait de sa facturation ; la facture mentionne notamment l'identité des parties, le numéro de TVA du vendeur, la date, le numéro séquentiel, la dénomination des biens ou services, le prix hors taxe, le taux et le montant de TVA par taux, et les mentions spéciales (« autoliquidation », « TVA non applicable, art. 293 B du CGI »).",
@@ -220,22 +233,22 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Taux</b> en France continentale : taux normal <span class=\"mono\">20 %</span> ; taux intermédiaire <span class=\"mono\">10 %</span> (restauration, hébergement, transport de voyageurs, travaux dans les logements de plus de deux ans) ; taux réduit <span class=\"mono\">5,5 %</span> (produits alimentaires, livres, énergie et équipements pour personnes handicapées, travaux de rénovation énergétique) ; taux particulier <span class=\"mono\">2,1 %</span> (médicaments remboursables, presse).",
-     "src": "CGI, art. 278, 278-0 bis, 278 bis, 279 et 281 quater",
+     "t": "<b>Taux</b> en France continentale : taux normal <span class=\"mono\">20 %</span> ; taux intermédiaire <span class=\"mono\">10 %</span> (restauration, hébergement, transport de voyageurs, travaux dans les logements de plus de deux ans) ; taux réduit <span class=\"mono\">5,5 %</span> (produits alimentaires, livres, équipements pour personnes handicapées, travaux de rénovation énergétique) ; taux particulier <span class=\"mono\">2,1 %</span> (médicaments remboursables, presse).",
+     "src": "CGI, art. 278, 278-0 bis, 278-0 bis A, 279, 279-0 bis, 281 octies et 298 septies",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179654/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Seuils du régime simplifié de TVA (2023-2025)</b> : chiffre d'affaires n'excédant pas <span class=\"mono\">840 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">254 000 €</span> (autres prestations de services) ; maintien du régime l'année de dépassement tant que le chiffre d'affaires n'excède pas <span class=\"mono\">925 000 €</span> et <span class=\"mono\">287 000 €</span>.",
+     "t": "<b>Seuils du régime simplifié de TVA (2023 à 2025)</b> : chiffre d'affaires n'excédant pas <span class=\"mono\">840 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">254 000 €</span> (autres prestations de services) ; maintien du régime l'année de dépassement tant que le chiffre d'affaires n'excède pas <span class=\"mono\">925 000 €</span> et <span class=\"mono\">287 000 €</span>. Le régime est supprimé à compter du 1er janvier 2027.",
      "src": "CGI, art. 302 septies A ; BOI-BAREME-000036",
      "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701",
      "fiab": "millésimé 2025"
     },
     {
-     "t": "<b>Franchise en base (2025)</b> : chiffre d'affaires de l'année précédente n'excédant pas <span class=\"mono\">85 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">37 500 €</span> (autres prestations de services), avec des seuils majorés de <span class=\"mono\">93 500 €</span> et <span class=\"mono\">41 250 €</span> dont le dépassement en cours d'année fait perdre la franchise immédiatement.",
-     "src": "CGI, art. 293 B, I",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045035275",
-     "fiab": "millésimé 2025"
+     "t": "<b>Franchise en base (2025 et 2026)</b> : chiffre d'affaires de l'année civile précédente n'excédant pas <span class=\"mono\">85 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">37 500 €</span> (autres prestations de services), et chiffre d'affaires de l'année en cours n'excédant pas <span class=\"mono\">93 500 €</span> ou <span class=\"mono\">41 250 €</span> ; depuis le 1er janvier 2025, le dépassement de ces derniers seuils en cours d'année fait perdre la franchise pour les opérations réalisées à compter de la date du dépassement.",
+     "src": "CGI, art. 293 B, I (version applicable du 1er mars 2025 au 1er janvier 2027) ; loi n° 2025-1044 du 3 novembre 2025",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006162567/",
+     "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Régularisations</b> : <span class=\"mono\">20 ans</span> pour les immeubles, <span class=\"mono\">5 ans</span> pour les autres immobilisations ; variation du coefficient supérieure à <span class=\"mono\">1/10</span>.",
@@ -244,18 +257,18 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Crédit de TVA</b> : remboursement mensuel ou trimestriel à partir de <span class=\"mono\">760 €</span> (réel normal) ; remboursement annuel à partir de <span class=\"mono\">150 €</span> (régime simplifié).",
+     "t": "<b>Crédit de TVA</b> : remboursement mensuel ou trimestriel à partir de <span class=\"mono\">760 €</span> (réel normal) ; demande annuelle de remboursement à partir de <span class=\"mono\">150 €</span>.",
      "cite": "« La demande de remboursement doit porter sur un montant au moins égal à 760 €. »",
-     "src": "CGI, ann. II, art. 242-0 C et 242-0 D",
+     "src": "CGI, ann. II, art. 242-0 A à 242-0 D",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030066036",
      "fiab": "stable"
     },
     {
-     "t": "<b>Acomptes du régime simplifié</b> : <span class=\"mono\">55 %</span> en juillet et <span class=\"mono\">40 %</span> en décembre de la TVA due au titre de l'exercice précédent (hors TVA sur immobilisations) ; dispense si cette TVA est inférieure à <span class=\"mono\">1 000 €</span>.",
+     "t": "<b>Acomptes du régime simplifié</b> (jusqu'au 31 décembre 2026) : <span class=\"mono\">55 %</span> en juillet et <span class=\"mono\">40 %</span> en décembre de la TVA due au titre de l'exercice précédent (hors TVA sur immobilisations) ; dispense si cette TVA est inférieure à <span class=\"mono\">1 000 €</span>.",
      "cite": "« Ils sont égaux, respectivement, à 55 % et 40 % de la taxe due au titre de l'exercice précédent avant déduction de la taxe sur la valeur ajoutée relative aux biens constituant des immobilisations. » « Les redevables sont dispensés du versement d'acomptes lorsque la taxe due au titre de l'exercice précédent, avant déduction de la taxe sur la valeur ajoutée relative aux biens constituant des immobilisations, est inférieure à 1 000 €. »",
      "src": "CGI, art. 287, 3",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048826856/2027-01-01/",
-     "fiab": "stable"
+     "url": null,
+     "fiab": "millésimé 2026"
     }
    ]
   },
@@ -269,26 +282,31 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Franchise en base</b> : la loi de finances pour 2025 (art. 32) avait prévu un seuil unique de 25 000 € à compter du 1er mars 2025 ; son application a été suspendue et les seuils de 85 000 € et 37 500 € sont restés applicables en 2025.",
-     "cite": "« la mise en œuvre de cet abaissement des seuils de la franchise en base est suspendue jusqu'au 31 décembre 2025 »",
-     "src": "CGI, art. 293 B ; loi n° 2025-127 du 14 février 2025, art. 32",
+     "t": "<b>Franchise en base, seuil unique de 25 000 €</b> : la loi de finances pour 2025 (art. 32) prévoyait un seuil unique de 25 000 € (27 500 € pour l'année en cours) à compter du 1er mars 2025 ; l'administration a suspendu cet abaissement des seuils jusqu'au 31 décembre 2025.",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 32 ; BOFiP, ACTU-2025-00087 (rescrit sur la sortie de la franchise en 2025)",
      "url": "https://bofip.impots.gouv.fr/bofip/14687-PGP.html/ACTU-2025-00087",
      "fiab": "millésimé 2025"
     },
     {
+     "t": "<b>Abandon du seuil unique</b> : la loi n° 2025-1044 du 3 novembre 2025 modifie l'article 32 de la loi de finances pour 2025 et écarte le seuil unique de 25 000 € ; les seuils de 85 000 € et 37 500 € (93 500 € et 41 250 € pour l'année en cours) restent applicables en 2025 et en 2026.",
+     "src": "Loi n° 2025-1044 du 3 novembre 2025 visant à garantir un cadre fiscal stable, juste et lisible pour nos micro-entrepreneurs et nos petites entreprises ; CGI, art. 293 B",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052485808",
+     "fiab": "millésimé 2026"
+    },
+    {
      "t": "<b>Facturation électronique</b> : obligation de recevoir des factures électroniques pour toutes les entreprises assujetties établies en France à compter du 1er septembre 2026 ; obligation d'émettre au 1er septembre 2026 pour les grandes entreprises et les entreprises de taille intermédiaire, au 1er septembre 2027 pour les PME et micro-entreprises, via des plateformes agréées.",
-     "src": "CGI, art. 289 bis (loi n° 2023-1322 du 29 décembre 2023, art. 91)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635",
+     "src": "CGI, art. 289 bis ; loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 91 ; décret n° 2022-1299 du 7 octobre 2022",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048727345",
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime simplifié de TVA</b> : la loi de finances pour 2025 (art. 38) organise sa suppression à compter du 1er janvier 2027, les entreprises concernées passant à des déclarations trimestrielles de régime réel.",
-     "src": "CGI, art. 287 et 302 septies A ; loi n° 2025-127 du 14 février 2025, art. 38",
-     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000051168586",
-     "fiab": "millésimé 2025"
+     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du 1er janvier 2027 (loi de finances pour 2025, art. 38, dont le VI fixe cette date, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; la déclaration annuelle CA12 et les acomptes semestriels disparaissent, les redevables concernés relevant du régime réel normal (déclarations CA3).",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
+     "url": "https://www.impots.gouv.fr/actualite/le-regime-simplifie-dimposition-la-tva-est-supprime-compter-du-1er-janvier-2027",
+     "fiab": "stable"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 porte recodification de la taxe sur la valeur ajoutée dans le code des impositions sur les biens et services ; Légifrance signale les articles du CGI relatifs à la TVA cités dans cette fiche (par exemple art. 278 et 293 B) comme abrogés à compter du 1er janvier 2027, et le rapport au Président de la République annonce des mesures échelonnées du 1er janvier 2027 au 1er juillet 2030, dont la suppression du régime simplifié de déclaration et de paiement de la TVA.",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 recodifie la taxe sur la valeur ajoutée et modifie le code des impositions sur les biens et services ; Légifrance signale les articles du CGI relatifs à la TVA cités dans cette fiche (par exemple art. 278 et 293 B) comme abrogés à compter du 1er janvier 2027. Le rapport au Président de la République annonce des mesures échelonnées du 1er janvier 2027 au 1er juillet 2030, dont la suppression du régime simplifié de déclaration et de paiement de la TVA.",
      "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services ; rapport au Président de la République (JO)",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
@@ -312,16 +330,28 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Seuils de TVA et seuils BIC ne se confondent pas</b> : les seuils du régime simplifié de TVA (840 000 € / 254 000 €, majorés 925 000 € / 287 000 €) sont distincts des seuils du régime simplifié d'imposition des bénéfices et de la franchise en base ; vérifier chaque barème officiel.",
-     "src": "CGI, art. 302 septies A et 302 septies A bis ; BOI-BAREME-000036",
-     "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701",
-     "fiab": "millésimé 2025"
+     "t": "<b>Franchise de TVA et micro-BIC ne se confondent pas</b> : les seuils de la franchise en base (85 000 € / 37 500 €) sont inférieurs à ceux du micro-BIC (188 700 € / 77 700 € pour 2023 à 2025 ; 203 100 € / 83 600 € pour 2026 à 2028) : un micro-entrepreneur peut relever du micro-BIC tout en étant redevable de la TVA.",
+     "src": "CGI, art. 293 B et 50-0, 1 ; BOI-BAREME-000044 (19 août 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
+     "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Toute TVA facturée est due</b> : une taxe facturée à tort (opération exonérée, franchise) est exigible chez l'émetteur, sans ouvrir de droit à déduction régulier chez le client.",
      "cite": "« Toute personne qui mentionne la taxe sur la valeur ajoutée sur une facture est redevable de la taxe du seul fait de sa facturation. »",
      "src": "CGI, art. 283, 3 et 271, II-1-a",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048838530",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sortie de la franchise en base</b> : dépasser 85 000 € (ou 37 500 €) sans dépasser 93 500 € (ou 41 250 €) maintient la franchise pour l'année en cours et la fait perdre au 1er janvier suivant ; dépasser 93 500 € (ou 41 250 €) la fait perdre en cours d'année, pour les opérations réalisées à compter de la date du dépassement.",
+     "src": "CGI, art. 293 B, I (version applicable du 1er mars 2025 au 1er janvier 2027)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006162567/",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Session 2027 et références</b> : à compter du 1er janvier 2027, le régime simplifié de TVA disparaît et les articles du CGI relatifs à la TVA sont abrogés au profit du code des impositions sur les biens et services ; les opérations de 2027 relèvent, hors franchise, du régime réel normal (CA3), sous réserve de la mesure transitoire prévue pour les exercices qui ne coïncident pas avec l'année civile.",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; ordonnance n° 2025-1247 du 17 décembre 2025",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
     }
    ]
