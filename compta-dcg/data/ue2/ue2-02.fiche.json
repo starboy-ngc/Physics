@@ -9,89 +9,375 @@
    "Programme 2025 : « 2.4 Adapter la forme sociétaire aux demandes du client » (6 heures)",
    "Programme 2025 : « Appliquer le cadre juridique à une situation professionnelle » (85 heures)",
    "Programme 2019 : « 2- Les principaux types de sociétés » (60 heures) : sociétés à responsabilité limitée (pluripersonnelle et unipersonnelle)",
+   "Programme 2025 : le cas de rachat par l'entité de ses propres actions est exclu de l'UE 2 (traité en UE 10 du DCG)",
    "Exclusion commune : « Les pactes d'associés seront exclus (traités en UE 1 de DSCG) »"
   ]
  },
  "textes": [
-  {"ref": "C. com., art. L. 223-1 à L. 223-43", "objet": "Régime de la société à responsabilité limitée (chapitre III du titre II du livre II), dont le maximum de 100 associés (L. 223-3)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-7", "objet": "Libération d'un cinquième au moins des apports en numéraire, solde dans les cinq ans ; parts en industrie ; libération intégrale avant toute souscription de nouvelles parts en numéraire", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-9 ; art. D. 223-6-1", "objet": "Commissaire aux apports ; dispense à l'unanimité (aucun apport en nature supérieur à 30 000 €, apports non évalués au plus égaux à la moitié du capital) ; responsabilité de cinq ans", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555", "version": "en vigueur ; seuil de 30 000 € fixé par l'art. D. 223-6-1 (décret n° 2010-1669 du 29 décembre 2010)"},
-  {"ref": "C. com., art. L. 223-13, L. 223-14 et L. 223-16", "objet": "Transmission et cession des parts : cessions libres, agrément des tiers, délai de trois mois, rachat", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-18", "objet": "Gérant personne physique ; nomination ; pouvoirs à l'égard des tiers ; pluralité de gérants", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-19 à L. 223-21", "objet": "Conventions réglementées, libres et interdites", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-22 et L. 223-23", "objet": "Responsabilité civile des gérants ; prescription de trois ans", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-25, L. 223-29, L. 223-30 et L. 223-43", "objet": "Révocation du gérant ; majorités des décisions ordinaires et extraordinaires ; unanimité ; transformation", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "version": "en vigueur (régime des quorums issu de la loi n° 2005-882 du 2 août 2005)"},
-  {"ref": "C. com., art. L. 223-26 ; art. L. 232-22", "objet": "Approbation des comptes annuels dans les six mois ; dépôt au greffe dans le mois (deux mois par voie électronique)", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "version": "en vigueur"},
-  {"ref": "C. com., art. L. 223-35 ; art. D. 221-5", "objet": "Désignation obligatoire du commissaire aux comptes : deux des trois seuils dépassés à la clôture d'un exercice", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404", "version": "D. 221-5 issu du décret n° 2024-152 du 28 février 2024 (exercices ouverts à compter du 1er janvier 2024)"},
-  {"ref": "C. com., art. L. 223-42 ; art. R. 223-37", "objet": "Capitaux propres inférieurs à la moitié du capital social : consultation, reconstitution, réduction du capital au seuil réglementaire", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166", "version": "en vigueur depuis le 11 mars 2023 (loi n° 2023-171 du 9 mars 2023) ; seuil réglementaire issu du décret n° 2023-657 du 25 juillet 2023"},
-  {"ref": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1832, al. 2 et 1844-5", "objet": "EURL : associé unique, réunion des parts en une seule main, décisions et approbation des comptes", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "version": "en vigueur"},
-  {"ref": "CGI, art. 726", "objet": "Droits d'enregistrement sur les cessions de parts sociales (3 % après abattement) et d'actions (0,1 %)", "url": null, "version": "en vigueur"},
-  {"ref": "CGI, art. 8, 206 et 239 ; art. 239 bis AA", "objet": "Régime fiscal de l'EURL (IR si l'associé unique est une personne physique, option pour l'IS) et de la SARL de famille", "url": null, "version": "en vigueur"},
-  {"ref": "CSS, art. L. 311-3, 11°", "objet": "Affiliation au régime général des gérants de SARL ne possédant pas ensemble plus de la moitié du capital", "url": null, "version": "en vigueur"}
+  {
+   "ref": "C. com., art. L. 223-1 à L. 223-43",
+   "objet": "Régime de la société à responsabilité limitée (chapitre III du titre II du livre II), dont le maximum de 100 associés (L. 223-3)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 223-7",
+   "objet": "Libération d'un cinquième au moins des apports en numéraire, solde dans les cinq ans ; parts en industrie ; libération intégrale avant toute souscription de nouvelles parts en numéraire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 223-9 ; art. D. 223-6-1",
+   "objet": "Commissaire aux apports ; dispense à l'unanimité (aucun apport en nature supérieur à 30 000 €, apports non évalués au plus égaux à la moitié du capital) ; responsabilité de cinq ans",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555",
+   "version": "en vigueur ; seuil de 30 000 € fixé par l'art. D. 223-6-1 (décret n° 2010-1669 du 29 décembre 2010)"
+  },
+  {
+   "ref": "C. com., art. L. 223-13, L. 223-14 et L. 223-16",
+   "objet": "Transmission et cession des parts : cessions libres, agrément des tiers, délai de trois mois, rachat",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 223-18",
+   "objet": "Gérant personne physique ; nomination ; pouvoirs à l'égard des tiers ; pluralité de gérants",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 223-19 à L. 223-21",
+   "objet": "Conventions réglementées, libres et interdites",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 223-22 et L. 223-23",
+   "objet": "Responsabilité civile des gérants ; prescription de trois ans",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
+   "version": "en vigueur depuis le 21 septembre 2000 (L. 223-22)"
+  },
+  {
+   "ref": "C. com., art. L. 223-25, L. 223-29, L. 223-30 et L. 223-43",
+   "objet": "Révocation du gérant ; majorités des décisions ordinaires et extraordinaires ; unanimité ; transformation",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "version": "en vigueur (régime des quorums issu de la loi n° 2005-882 du 2 août 2005)"
+  },
+  {
+   "ref": "C. com., art. L. 223-26 et L. 223-27 ; art. L. 232-1 et L. 232-22",
+   "objet": "Approbation des comptes dans les six mois ; consultation écrite des associés, y compris pour l'approbation des comptes, si les statuts le prévoient ; dispense de rapport de gestion des micro-entreprises et petites entreprises ; dépôt au greffe dans le mois (deux mois par voie électronique)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049720548",
+   "version": "L. 223-27 modifié par la loi n° 2024-537 du 13 juin 2024 (art. 18), en vigueur depuis le 14 septembre 2024 ; L. 223-26 en vigueur depuis le 1er janvier 2025 ; L. 232-1 modifié par la loi n° 2025-391 du 30 avril 2025"
+  },
+  {
+   "ref": "C. com., art. L. 223-35 ; art. D. 221-5",
+   "objet": "Désignation obligatoire du commissaire aux comptes : deux des trois seuils dépassés à la clôture d'un exercice",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
+   "version": "D. 221-5 issu du décret n° 2024-152 du 28 février 2024 (exercices ouverts à compter du 1er janvier 2024)"
+  },
+  {
+   "ref": "C. com., art. L. 223-42 ; art. R. 223-37",
+   "objet": "Capitaux propres inférieurs à la moitié du capital social : consultation, reconstitution, réduction du capital au seuil réglementaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
+   "version": "en vigueur depuis le 11 mars 2023 (loi n° 2023-171 du 9 mars 2023) ; seuil réglementaire issu du décret n° 2023-657 du 25 juillet 2023"
+  },
+  {
+   "ref": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1832, al. 2 et 1844-5",
+   "objet": "EURL : associé unique, réunion des parts en une seule main, décisions et approbation des comptes",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "CGI, art. 726",
+   "objet": "Droits d'enregistrement sur les cessions de droits sociaux : parts sociales (3 % après abattement), actions (0,1 %), personnes morales à prépondérance immobilière (5 %)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
+   "version": "en vigueur depuis le 1er janvier 2024 (loi n° 2023-1322 du 29 décembre 2023)"
+  },
+  {
+   "ref": "CGI, art. 8, 206 et 239 ; art. 239 bis AA",
+   "objet": "Régime fiscal de l'EURL (IR si l'associé unique est une personne physique, option pour l'IS avec faculté de renonciation jusqu'au cinquième exercice suivant) et de la SARL de famille",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037988649",
+   "version": "art. 239 : droit de renonciation à l'option issu de la loi n° 2018-1317 du 28 décembre 2018 de finances pour 2019 (art. 50)"
+  },
+  {
+   "ref": "CSS, art. L. 311-3, 11°",
+   "objet": "Affiliation au régime général des gérants de SARL ne possédant pas ensemble plus de la moitié du capital (parts du conjoint, du partenaire de PACS et des enfants mineurs non émancipés comprises)",
+   "url": null,
+   "version": "en vigueur"
+  }
  ],
  "sections": [
   {
    "h": "Définitions",
    "items": [
-    {"t": "<b>SARL</b> : société instituée par une ou plusieurs personnes qui ne supportent les pertes qu'à concurrence de leurs apports. Lorsqu'elle ne comprend qu'une seule personne, celle-ci est dénommée « associé unique » et exerce les pouvoirs dévolus à l'assemblée des associés.", "src": "C. com., art. L. 223-1", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>EURL</b> : SARL ne comportant qu'un seul associé, personne physique ou morale. Le Code civil admet qu'une société soit instituée, dans les cas prévus par la loi, par l'acte de volonté d'une seule personne.", "src": "C. civ., art. 1832, al. 2 ; C. com., art. L. 223-1", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Capital et parts sociales</b> : le montant du capital est fixé par les statuts, sans minimum légal ; il est divisé en parts sociales égales. Les titres de la SARL sont des parts sociales et non des actions ; elle ne peut émettre des obligations, nominatives, que si elle a désigné un commissaire aux comptes et si les comptes de ses trois derniers exercices ont été régulièrement approuvés.", "src": "C. com., art. L. 223-2 et L. 223-11", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Gérant</b> : la SARL est gérée par une ou plusieurs personnes physiques, associées ou non, nommées par les associés dans les statuts ou par un acte postérieur ; dans les rapports avec les tiers, le gérant est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, sous réserve des pouvoirs que la loi attribue expressément aux associés.", "src": "C. com., art. L. 223-18", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015", "fiab": "stable"},
-    {"t": "<b>Conventions avec la société</b> : trois catégories. Réglementées (rapport à l'assemblée, qui statue en principe après leur conclusion, L. 223-19), libres (opérations courantes conclues à des conditions normales, L. 223-20), interdites à peine de nullité du contrat (emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée, L. 223-21).", "src": "C. com., art. L. 223-19 à L. 223-21", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"}
+    {
+     "t": "<b>SARL</b> : société instituée par une ou plusieurs personnes qui ne supportent les pertes qu'à concurrence de leurs apports. Lorsqu'elle ne comprend qu'une seule personne, celle-ci est dénommée « associé unique » et exerce les pouvoirs dévolus à l'assemblée des associés.",
+     "src": "C. com., art. L. 223-1",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>EURL</b> : SARL ne comportant qu'un seul associé, personne physique ou morale. Le Code civil admet qu'une société soit instituée, dans les cas prévus par la loi, par l'acte de volonté d'une seule personne.",
+     "src": "C. civ., art. 1832, al. 2 ; C. com., art. L. 223-1",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Capital et parts sociales</b> : le montant du capital est fixé par les statuts, sans minimum légal ; il est divisé en parts sociales égales. Les titres de la SARL sont des parts sociales et non des actions. Elle ne peut émettre des obligations, nominatives, que si elle a désigné un commissaire aux comptes et si les comptes de ses trois derniers exercices de douze mois ont été régulièrement approuvés par les associés ; l'émission est décidée par l'assemblée des associés.",
+     "src": "C. com., art. L. 223-2 et L. 223-11 (version en vigueur depuis le 23 octobre 2019, ordonnance n° 2019-1067 du 21 octobre 2019)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039260280/2026-04-22",
+     "fiab": "stable",
+     "cite": "« L'émission d'obligations est décidée par l'assemblée des associés conformément aux dispositions applicables aux assemblées générales d'actionnaires. »"
+    },
+    {
+     "t": "<b>Gérant</b> : la SARL est gérée par une ou plusieurs personnes physiques, associées ou non, nommées par les associés dans les statuts ou par un acte postérieur ; dans les rapports avec les tiers, le gérant est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, sous réserve des pouvoirs que la loi attribue expressément aux associés.",
+     "src": "C. com., art. L. 223-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conventions avec la société</b> : trois catégories. Réglementées (rapport à l'assemblée, qui statue en principe après leur conclusion, L. 223-19), libres (opérations courantes conclues à des conditions normales, L. 223-20), interdites à peine de nullité du contrat (emprunts, découverts, cautions ou avals consentis par la société aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée, L. 223-21).",
+     "src": "C. com., art. L. 223-19 à L. 223-21",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Règles essentielles",
    "items": [
-    {"t": "<b>Nombre d'associés</b> : la SARL ne peut comprendre plus de 100 associés. Si ce nombre est dépassé, elle est dissoute au terme d'un délai d'un an, à moins que, pendant ce délai, le nombre des associés soit redevenu égal ou inférieur à 100 ou que la société ait été transformée.", "src": "C. com., art. L. 223-3", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Libération des apports en numéraire</b> : au moins un cinquième de leur montant à la constitution ; le surplus est libéré en une ou plusieurs fois sur décision du gérant, dans un délai de cinq ans au plus à compter de l'immatriculation. Les apports en nature sont intégralement libérés. Le capital doit être intégralement libéré avant toute souscription de nouvelles parts à libérer en numéraire.", "cite": "« Les parts représentant des apports en numéraire doivent être libérées d'au moins un cinquième de leur montant. »", "src": "C. com., art. L. 223-7", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923", "fiab": "stable"},
-    {"t": "<b>Apports en industrie</b> : les statuts peuvent prévoir l'attribution de parts sociales en industrie et en déterminent les modalités de souscription ; ces apports ne concourent pas à la formation du capital social mais donnent lieu à l'attribution de parts ouvrant droit au partage des bénéfices et de l'actif net, à charge de contribuer aux pertes.", "src": "C. com., art. L. 223-7 ; C. civ., art. 1843-2", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923", "fiab": "stable"},
-    {"t": "<b>Apports en nature</b> : les statuts contiennent l'évaluation de chaque apport en nature, au vu du rapport d'un commissaire aux apports désigné à l'unanimité des futurs associés ou, à défaut, par décision de justice. Les futurs associés peuvent, à l'unanimité, s'en dispenser si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital. Dans l'EURL, le commissaire est désigné par l'associé unique, qui en est aussi dispensé lorsque, personne physique exerçant auparavant en nom propre, il apporte des éléments inscrits dans le dernier bilan de cette activité. Sans commissaire, ou si la valeur retenue diffère de celle qu'il a proposée, les associés sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur attribuée aux apports en nature.", "cite": "« Lorsqu'il n'y a pas eu de commissaire aux apports ou lorsque la valeur retenue est différente de celle proposée par le commissaire aux apports, les associés sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur attribuée aux apports en nature lors de la constitution de la société. »", "src": "C. com., art. L. 223-9 et D. 223-6-1", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555", "fiab": "stable"},
-    {"t": "<b>Pouvoirs du gérant envers les tiers</b> : la société est engagée même par les actes du gérant qui ne relèvent pas de l'objet social, à moins qu'elle ne prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer compte tenu des circonstances, la seule publication des statuts ne suffisant pas à constituer cette preuve. Les clauses statutaires limitant les pouvoirs des gérants sont inopposables aux tiers. En cas de pluralité de gérants, chacun détient séparément ces pouvoirs ; l'opposition d'un gérant aux actes d'un autre est sans effet à l'égard des tiers, à moins qu'il ne soit établi qu'ils en ont eu connaissance.", "src": "C. com., art. L. 223-18", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015", "fiab": "stable"},
-    {"t": "<b>Révocation du gérant</b> : par décision des associés dans les conditions de majorité de l'article L. 223-29 (plus de la moitié des parts sociales), à moins que les statuts ne prévoient une majorité plus forte ; décidée sans juste motif, elle peut donner lieu à dommages-intérêts. Le gérant est en outre révocable par les tribunaux pour cause légitime, à la demande de tout associé.", "src": "C. com., art. L. 223-25", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Décisions ordinaires</b> : adoptées par un ou plusieurs associés représentant plus de la moitié des parts sociales ; si cette majorité n'est pas obtenue et sauf stipulation contraire des statuts, les associés sont convoqués ou consultés une seconde fois et les décisions sont prises à la majorité des votes émis, quel que soit le nombre des votants.", "src": "C. com., art. L. 223-29", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Décisions extraordinaires</b> (modification des statuts) : dans les SARL constituées après la publication de la loi n° 2005-882 du 2 août 2005, quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis majorité des deux tiers des parts détenues par les associés présents ou représentés ; les statuts peuvent prévoir des quorums ou une majorité plus élevés, sans pouvoir exiger l'unanimité. Dans les SARL constituées antérieurement, majorité des trois quarts des parts sociales, sans quorum, sauf si les associés ont décidé à l'unanimité d'appliquer le nouveau régime.", "src": "C. com., art. L. 223-30", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Unanimité</b> : exigée pour changer la nationalité de la société, pour toute augmentation des engagements des associés et pour la transformation en société en nom collectif, en commandite simple ou par actions, ou en société par actions simplifiée. Par dérogation, l'incorporation de bénéfices ou de réserves au capital est décidée par les associés représentant au moins la moitié des parts sociales.", "src": "C. com., art. L. 223-30, L. 223-43 et L. 227-3", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Cession à un tiers</b> : les parts ne peuvent être cédées à des tiers qu'avec le consentement de la majorité des associés représentant au moins la moitié des parts sociales, sauf majorité statutaire plus forte ; sans décision dans les trois mois de la dernière notification du projet, le consentement est réputé acquis. En cas de refus, les associés doivent, dans les trois mois (délai prorogeable en justice de six mois au plus), acquérir ou faire acquérir les parts à un prix fixé selon l'article 1843-4 du Code civil, sauf renonciation du cédant ; la société peut aussi, avec le consentement du cédant, les racheter en réduisant son capital. À défaut, le cédant peut réaliser la cession initialement prévue ; toute clause contraire à ces règles est réputée non écrite.", "src": "C. com., art. L. 223-14", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Cessions libres</b> : les parts sont librement cessibles entre associés, entre conjoints et entre ascendants et descendants, et librement transmissibles par succession ou en cas de liquidation de communauté de biens entre époux. Les statuts peuvent toutefois soumettre ces opérations à agrément, sans pouvoir prévoir une majorité plus forte ni des délais plus longs que ceux de l'article L. 223-14.", "src": "C. com., art. L. 223-13 et L. 223-16", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Conventions réglementées</b> : le gérant ou, s'il en existe un, le commissaire aux comptes présente à l'assemblée un rapport sur les conventions intervenues, directement ou par personne interposée, entre la société et l'un de ses gérants ou associés ; l'assemblée statue, l'intéressé ne prenant pas part au vote. Toutefois, en l'absence de commissaire aux comptes, les conventions conclues par un gérant non associé sont soumises à l'approbation préalable de l'assemblée ; dans l'EURL, la convention conclue avec l'associé unique est seulement mentionnée au registre des décisions. Les conventions non approuvées produisent néanmoins leurs effets, à charge pour le gérant et, s'il y a lieu, pour l'associé contractant d'en supporter les conséquences préjudiciables à la société.", "src": "C. com., art. L. 223-19", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Responsabilité des gérants</b> : envers la société ou les tiers, pour infraction aux lois et règlements applicables aux SARL, violation des statuts ou faute de gestion ; outre l'action en réparation de leur préjudice personnel, les associés peuvent exercer l'action sociale. Les actions se prescrivent par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation ; par dix ans lorsque le fait est qualifié crime.", "cite": "« Les gérants sont responsables, individuellement ou solidairement, selon le cas, envers la société ou envers les tiers, soit des infractions aux dispositions législatives ou réglementaires applicables aux sociétés à responsabilité limitée, soit des violations des statuts, soit des fautes commises dans leur gestion. »", "src": "C. com., art. L. 223-22 et L. 223-23", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141", "fiab": "stable"},
-    {"t": "<b>Comptes annuels</b> : le rapport de gestion, l'inventaire et les comptes annuels établis par les gérants sont soumis à l'approbation des associés réunis en assemblée dans les six mois de la clôture de l'exercice, sauf prolongation de ce délai par décision de justice ; les comptes sont déposés au greffe dans le mois suivant leur approbation, délai porté à deux mois en cas de dépôt par voie électronique.", "src": "C. com., art. L. 223-26 et L. 232-22", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Information des associés</b> : tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant sur tout fait de nature à compromettre la continuité de l'exploitation ; un ou plusieurs associés représentant au moins le dixième du capital peuvent, individuellement ou en se groupant, demander en justice la désignation d'experts chargés de présenter un rapport sur une ou plusieurs opérations de gestion.", "src": "C. com., art. L. 223-36 et L. 223-37", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Commissaire aux comptes</b> : la SARL doit en désigner au moins un lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; sa nomination peut aussi être demandée en justice par un ou plusieurs associés représentant au moins le dixième du capital. Il est nommé pour six exercices ; lorsqu'il est désigné de manière volontaire, la société peut limiter son mandat à trois exercices.", "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>EURL</b> : l'associé unique exerce les pouvoirs dévolus à l'assemblée ; il ne peut les déléguer et ses décisions sont répertoriées dans un registre. Il approuve les comptes dans les six mois de la clôture ; lorsque, personne physique, il assume personnellement la gérance, le dépôt au registre du commerce et des sociétés, dans ce délai, de l'inventaire et des comptes annuels dûment signés vaut approbation. La réunion de toutes les parts en une seule main n'expose pas la SARL à la dissolution judiciaire prévue par l'article 1844-5 du Code civil : elle se poursuit sous forme d'EURL.", "src": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1844-5", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"}
+    {
+     "t": "<b>Nombre d'associés</b> : la SARL ne peut comprendre plus de 100 associés. Si ce nombre est dépassé, elle est dissoute au terme d'un délai d'un an, à moins que, pendant ce délai, le nombre des associés soit redevenu égal ou inférieur à 100 ou que la société ait été transformée.",
+     "src": "C. com., art. L. 223-3",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Libération des apports en numéraire</b> : au moins un cinquième de leur montant à la constitution ; le surplus est libéré en une ou plusieurs fois sur décision du gérant, dans un délai de cinq ans au plus à compter de l'immatriculation. Les apports en nature sont intégralement libérés. Le capital doit être intégralement libéré avant toute souscription de nouvelles parts à libérer en numéraire.",
+     "cite": "« Les parts représentant des apports en numéraire doivent être libérées d'au moins un cinquième de leur montant. »",
+     "src": "C. com., art. L. 223-7",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Apports en industrie</b> : les statuts peuvent prévoir l'attribution de parts sociales en industrie et en déterminent les modalités de souscription ; ces apports ne concourent pas à la formation du capital social mais donnent lieu à l'attribution de parts ouvrant droit au partage des bénéfices et de l'actif net, à charge de contribuer aux pertes.",
+     "src": "C. com., art. L. 223-7 ; C. civ., art. 1843-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Apports en nature</b> : les statuts contiennent l'évaluation de chaque apport en nature, au vu du rapport d'un commissaire aux apports désigné à l'unanimité des futurs associés ou, à défaut, par décision de justice. Les futurs associés peuvent, à l'unanimité, s'en dispenser si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital. Dans l'EURL, le commissaire est désigné par l'associé unique, qui en est aussi dispensé lorsque, personne physique exerçant auparavant en nom propre, il apporte des éléments inscrits dans le dernier bilan de cette activité. Sans commissaire, ou si la valeur retenue diffère de celle qu'il a proposée, les associés sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur attribuée aux apports en nature.",
+     "cite": "« Lorsqu'il n'y a pas eu de commissaire aux apports ou lorsque la valeur retenue est différente de celle proposée par le commissaire aux apports, les associés sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur attribuée aux apports en nature lors de la constitution de la société. »",
+     "src": "C. com., art. L. 223-9 et D. 223-6-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Pouvoirs du gérant envers les tiers</b> : la société est engagée même par les actes du gérant qui ne relèvent pas de l'objet social, à moins qu'elle ne prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer compte tenu des circonstances, la seule publication des statuts ne suffisant pas à constituer cette preuve. Les clauses statutaires limitant les pouvoirs des gérants sont inopposables aux tiers. En cas de pluralité de gérants, chacun détient séparément ces pouvoirs ; l'opposition d'un gérant aux actes d'un autre est sans effet à l'égard des tiers, à moins qu'il ne soit établi qu'ils en ont eu connaissance.",
+     "src": "C. com., art. L. 223-18",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Révocation du gérant</b> : par décision des associés dans les conditions de majorité de l'article L. 223-29 (plus de la moitié des parts sociales), à moins que les statuts ne prévoient une majorité plus forte ; décidée sans juste motif, elle peut donner lieu à dommages-intérêts. Le gérant est en outre révocable par les tribunaux pour cause légitime, à la demande de tout associé.",
+     "src": "C. com., art. L. 223-25",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décisions ordinaires</b> : adoptées, en assemblée ou par consultation écrite, par un ou plusieurs associés représentant plus de la moitié des parts sociales ; si cette majorité n'est pas obtenue et sauf stipulation contraire des statuts, les associés sont convoqués ou consultés une seconde fois et les décisions sont prises à la majorité des votes émis, quel que soit le nombre des votants.",
+     "src": "C. com., art. L. 223-29",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799356",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décisions extraordinaires</b> (modification des statuts) : dans les SARL constituées après la publication de la loi n° 2005-882 du 2 août 2005, quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis majorité des deux tiers des parts détenues par les associés présents ou représentés ; les statuts peuvent prévoir des quorums ou une majorité plus élevés, sans pouvoir exiger l'unanimité. Dans les SARL constituées antérieurement, majorité des trois quarts des parts sociales, sans quorum, sauf si les associés ont décidé à l'unanimité d'appliquer le nouveau régime.",
+     "src": "C. com., art. L. 223-30",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Unanimité</b> : exigée pour changer la nationalité de la société, pour toute augmentation des engagements des associés et pour la transformation en société en nom collectif, en commandite simple ou par actions, ou en société par actions simplifiée. Par dérogation, l'incorporation de bénéfices ou de réserves au capital est décidée par les associés représentant au moins la moitié des parts sociales.",
+     "src": "C. com., art. L. 223-30, L. 223-43 et L. 227-3",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cession à un tiers</b> : les parts ne peuvent être cédées à des tiers qu'avec le consentement de la majorité des associés représentant au moins la moitié des parts sociales, sauf majorité statutaire plus forte ; sans décision dans les trois mois de la dernière notification du projet, le consentement est réputé acquis. En cas de refus, les associés doivent, dans les trois mois (délai prorogeable en justice de six mois au plus), acquérir ou faire acquérir les parts à un prix fixé selon l'article 1843-4 du Code civil, sauf renonciation du cédant ; la société peut aussi, avec le consentement du cédant, les racheter en réduisant son capital. À défaut, le cédant peut réaliser la cession initialement prévue ; toute clause contraire à ces règles est réputée non écrite.",
+     "src": "C. com., art. L. 223-14",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Cessions libres</b> : les parts sont librement cessibles entre associés, entre conjoints et entre ascendants et descendants, et librement transmissibles par succession ou en cas de liquidation de communauté de biens entre époux. Les statuts peuvent toutefois soumettre ces opérations à agrément, sans pouvoir prévoir une majorité plus forte ni des délais plus longs que ceux de l'article L. 223-14.",
+     "src": "C. com., art. L. 223-13 et L. 223-16",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conventions réglementées</b> : le gérant ou, s'il en existe un, le commissaire aux comptes présente à l'assemblée un rapport sur les conventions intervenues, directement ou par personne interposée, entre la société et l'un de ses gérants ou associés ; l'assemblée statue, l'intéressé ne prenant pas part au vote et ses parts n'étant pas prises en compte pour le calcul du quorum et de la majorité. Toutefois, en l'absence de commissaire aux comptes, les conventions conclues par un gérant non associé sont soumises à l'approbation préalable de l'assemblée ; dans l'EURL, la convention conclue avec l'associé unique est seulement mentionnée au registre des décisions. Les conventions non approuvées produisent néanmoins leurs effets, à charge pour le gérant et, s'il y a lieu, pour l'associé contractant d'en supporter les conséquences préjudiciables à la société.",
+     "src": "C. com., art. L. 223-19",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Responsabilité des gérants</b> : envers la société ou les tiers, pour infraction aux lois et règlements applicables aux SARL, violation des statuts ou faute de gestion ; outre l'action en réparation de leur préjudice personnel, les associés peuvent exercer l'action sociale. Les actions se prescrivent par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation ; par dix ans lorsque le fait est qualifié crime.",
+     "cite": "« Les gérants sont responsables, individuellement ou solidairement, selon le cas, envers la société ou envers les tiers […] »",
+     "src": "C. com., art. L. 223-22 et L. 223-23",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Comptes annuels et mode de décision</b> : le rapport de gestion, l'inventaire et les comptes annuels établis par les gérants sont soumis à l'approbation des associés dans les six mois de la clôture de l'exercice, sauf prolongation de ce délai par décision de justice ; les comptes sont déposés au greffe dans le mois suivant leur approbation, délai porté à deux mois en cas de dépôt par voie électronique. Les décisions sont prises en assemblée, mais les statuts peuvent stipuler que toutes les décisions ou certaines d'entre elles, y compris l'approbation des comptes, sont prises par consultation écrite des associés, y compris par voie électronique.",
+     "src": "C. com., art. L. 223-26, L. 223-27 (loi n° 2024-537 du 13 juin 2024, art. 18) et L. 232-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049720548",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Information des associés</b> : tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant sur tout fait de nature à compromettre la continuité de l'exploitation ; un ou plusieurs associés représentant au moins le dixième du capital peuvent, individuellement ou en se groupant, demander en justice la désignation d'experts chargés de présenter un rapport sur une ou plusieurs opérations de gestion.",
+     "src": "C. com., art. L. 223-36 et L. 223-37",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Commissaire aux comptes</b> : la SARL doit en désigner au moins un lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés) ; sa nomination peut aussi être demandée en justice par un ou plusieurs associés représentant au moins le dixième du capital. Il est nommé pour six exercices ; lorsqu'il est désigné de manière volontaire, la société peut limiter son mandat à trois exercices.",
+     "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>EURL</b> : l'associé unique exerce les pouvoirs dévolus à l'assemblée ; il ne peut les déléguer et ses décisions sont répertoriées dans un registre. Il approuve les comptes dans les six mois de la clôture ; lorsque, personne physique, il assume personnellement la gérance, le dépôt au registre du commerce et des sociétés, dans ce délai, de l'inventaire et des comptes annuels dûment signés vaut approbation. La réunion de toutes les parts en une seule main n'expose pas la SARL à la dissolution judiciaire prévue par l'article 1844-5 du Code civil : elle se poursuit sous forme d'EURL.",
+     "src": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1844-5",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Chiffres et seuils",
    "items": [
-    {"t": "<b>100 associés</b> au maximum ; un an pour régulariser en cas de dépassement (retour à 100 associés au plus ou transformation), sous peine de dissolution.", "src": "C. com., art. L. 223-3", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>1/5 puis 5 ans</b> : libération minimale d'un cinquième des apports en numéraire à la constitution, solde dans les cinq ans de l'immatriculation.", "src": "C. com., art. L. 223-7", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923", "fiab": "stable"},
-    {"t": "<b>30 000 € et moitié du capital</b> : dispense de commissaire aux apports décidée à l'unanimité si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital ; responsabilité solidaire des associés, à l'égard des tiers, sur la valeur attribuée pendant cinq ans.", "cite": "« Pour l'application du deuxième alinéa de l'article L. 223-9, le montant de la valeur qu'aucun apport en nature ne doit excéder est fixé à 30 000 euros. »", "src": "C. com., art. D. 223-6-1 (décret n° 2010-1669 du 29 décembre 2010) et L. 223-9", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023329906", "fiab": "stable"},
-    {"t": "<b>Majorités</b> : plus de la moitié des parts sociales (décision ordinaire, première consultation) ; deux tiers des parts des associés présents ou représentés, avec quorum d'un quart puis d'un cinquième (décision extraordinaire, SARL constituées après la publication de la loi du 2 août 2005) ; trois quarts des parts sociales (SARL constituées antérieurement) ; majorité des associés représentant au moins la moitié des parts (agrément d'un tiers), trois mois de silence valant agrément.", "src": "C. com., art. L. 223-14, L. 223-29 et L. 223-30", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Seuils du commissaire aux comptes</b> (en vigueur en 2026, exercices ouverts à compter du 1er janvier 2024) : 5 000 000 € de total de bilan, 10 000 000 € de chiffre d'affaires hors taxes, 50 salariés en moyenne ; la désignation est obligatoire dès que deux des trois seuils sont dépassés à la clôture d'un exercice. Elle cesse de l'être lorsque deux des trois seuils n'ont pas été dépassés pendant les deux exercices précédant l'expiration du mandat.", "cite": "« La société n'est plus tenue de désigner un commissaire aux comptes dès lors qu'elle n'a pas dépassé les chiffres fixés pour deux de ces trois critères pendant les deux exercices précédant l'expiration du mandat du commissaire aux comptes. »", "src": "C. com., art. D. 221-5 (décret n° 2024-152 du 28 février 2024) ; L. 223-35", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404", "fiab": "millésimé 2026"},
-    {"t": "<b>Droits d'enregistrement</b> : les cessions de parts sociales sont soumises à un droit de 3 % liquidé après un abattement, sur la valeur de chaque part, égal au rapport entre 23 000 € et le nombre total de parts sociales de la société ; les cessions d'actions supportent un droit de 0,1 %.", "src": "CGI, art. 726", "url": null, "fiab": "stable"},
-    {"t": "<b>Six mois</b> après la clôture pour l'approbation des comptes (sauf prolongation par décision de justice) ; un mois après l'approbation pour le dépôt au greffe, deux mois en cas de dépôt par voie électronique.", "src": "C. com., art. L. 223-26 et L. 232-22", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"}
+    {
+     "t": "<b>100 associés</b> au maximum ; un an pour régulariser en cas de dépassement (retour à 100 associés au plus ou transformation), sous peine de dissolution.",
+     "src": "C. com., art. L. 223-3",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>1/5 puis 5 ans</b> : libération minimale d'un cinquième des apports en numéraire à la constitution, solde dans les cinq ans de l'immatriculation.",
+     "src": "C. com., art. L. 223-7",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>30 000 € et moitié du capital</b> : dispense de commissaire aux apports décidée à l'unanimité si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital ; responsabilité solidaire des associés, à l'égard des tiers, sur la valeur attribuée pendant cinq ans.",
+     "cite": "« Pour l'application du deuxième alinéa de l'article L. 223-9, le montant de la valeur qu'aucun apport en nature ne doit excéder est fixé à 30 000 euros. »",
+     "src": "C. com., art. D. 223-6-1 (décret n° 2010-1669 du 29 décembre 2010) et L. 223-9",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023329906",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Majorités</b> : plus de la moitié des parts sociales (décision ordinaire, première consultation) ; deux tiers des parts des associés présents ou représentés, avec quorum d'un quart puis d'un cinquième (décision extraordinaire, SARL constituées après la publication de la loi du 2 août 2005) ; trois quarts des parts sociales (SARL constituées antérieurement) ; majorité des associés représentant au moins la moitié des parts (agrément d'un tiers), trois mois de silence valant agrément.",
+     "src": "C. com., art. L. 223-14, L. 223-29 et L. 223-30",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Seuils du commissaire aux comptes</b> (en vigueur en 2026, exercices ouverts à compter du 1er janvier 2024) : 5 000 000 € de total de bilan, 10 000 000 € de chiffre d'affaires hors taxes, 50 salariés en moyenne ; la désignation est obligatoire dès que deux des trois seuils sont dépassés à la clôture d'un exercice. Elle cesse de l'être lorsque deux des trois seuils n'ont pas été dépassés pendant les deux exercices précédant l'expiration du mandat.",
+     "cite": "« La société n'est plus tenue de désigner un commissaire aux comptes dès lors qu'elle n'a pas dépassé les chiffres fixés pour deux de ces trois critères pendant les deux exercices précédant l'expiration du mandat du commissaire aux comptes. »",
+     "src": "C. com., art. D. 221-5 (décret n° 2024-152 du 28 février 2024) ; L. 223-35",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Droits d'enregistrement</b> : les cessions de parts sociales des sociétés dont le capital n'est pas divisé en actions sont soumises à un droit de 3 %, liquidé après un abattement, sur la valeur de chaque part, égal au rapport entre 23 000 € et le nombre total de parts sociales de la société ; les cessions d'actions supportent un droit de 0,1 % ; les cessions de participations dans des personnes morales à prépondérance immobilière, un droit de 5 %. Exemple de l'administration : 200 parts cédées sur 500 pour 36 000 €, abattement de 9 200 €, assiette de 26 800 €.",
+     "src": "CGI, art. 726, I (version en vigueur depuis le 1er janvier 2024) ; BOI-ENR-DMTOM-40-10-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/3262-PGP.html/identifiant=BOI-ENR-DMTOM-40-10-20-20240424",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Six mois</b> après la clôture pour l'approbation des comptes (sauf prolongation par décision de justice) ; un mois après l'approbation pour le dépôt au greffe, deux mois en cas de dépôt par voie électronique.",
+     "src": "C. com., art. L. 223-26 et L. 232-22",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535091",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Ce qui a changé récemment",
    "items": [
-    {"t": "<b>Loi n° 2023-171 du 9 mars 2023</b> (en vigueur depuis le 11 mars 2023) : lorsque les capitaux propres de la SARL n'ont pas été reconstitués à hauteur de la moitié du capital dans le délai de deux exercices et que le capital dépasse un seuil fixé par décret (1 % du total du bilan, art. R. 223-37 issu du décret n° 2023-657 du 25 juillet 2023), la société doit réduire son capital pour le ramener au plus à ce seuil, au plus tard à la clôture du deuxième exercice suivant. À défaut, tout intéressé peut demander en justice la dissolution, le tribunal pouvant accorder un délai de régularisation.", "cite": "« Dans tous les cas, le tribunal peut accorder à la société un délai maximal de six mois pour régulariser sa situation. »", "src": "C. com., art. L. 223-42 (loi n° 2023-171 du 9 mars 2023) ; art. R. 223-37 (décret n° 2023-657 du 25 juillet 2023)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166", "fiab": "stable"},
-    {"t": "<b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> : depuis le 1er janvier 2024, les règles relatives au commissaire aux comptes figurent aux articles L. 821-40 et suivants du Code de commerce (mandat de six exercices : L. 821-44 ; mandat limité à trois exercices : L. 821-46 ; certification : L. 821-53) ; les manuels antérieurs citent les articles L. 823-1 et suivants.", "src": "C. com., art. L. 821-44, L. 821-46 et L. 821-53 (ordonnance n° 2023-1142)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298", "fiab": "stable"},
-    {"t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement des seuils de désignation obligatoire du commissaire aux comptes de 4 M€ à 5 M€ de total de bilan et de 8 M€ à 10 M€ de chiffre d'affaires hors taxes (50 salariés, inchangé) ; en vigueur le 1er mars 2024, pour les comptes et rapports des exercices ouverts à compter du 1er janvier 2024, les mandats en cours se poursuivant jusqu'à leur terme.", "cite": "« Conformément à l'article 4 du décret n° 2024-152 du 28 février 2024, ces dispositions entrent en vigueur le 1er mars 2024. Ces mêmes dispositions s'appliquent aux comptes et rapports afférents aux exercices ouverts à compter du 1er janvier 2024. »", "src": "Décret n° 2024-152 du 28 février 2024, art. 4 ; C. com., art. D. 221-5", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674", "fiab": "millésimé 2024"},
-    {"t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b>, applicable à compter du 1er octobre 2025 : sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité ; les actions en nullité de la société ou de ses actes et délibérations se prescrivent par deux ans au lieu de trois ; le nouvel article 1844-12-1 du Code civil subordonne l'annulation d'une décision à un « triple test » (grief, influence de l'irrégularité sur le sens de la décision, conséquences non excessives pour l'intérêt social).", "cite": "« Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. »", "src": "Ordonnance n° 2025-229 du 12 mars 2025 (art. 70) ; C. civ., art. 1844-10, 1844-12-1 et 1844-14", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108", "fiab": "stable"},
-    {"t": "<b>Loi n° 2022-172 du 14 février 2022</b> : l'entrepreneur individuel est titulaire de deux patrimoines distincts, professionnel et personnel ; il peut en outre opter pour l'assimilation à une EURL et ainsi pour l'impôt sur les sociétés, sans créer de société.", "src": "C. com., art. L. 526-22 ; CGI, art. 1655 sexies", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964", "fiab": "stable"}
+    {
+     "t": "<b>Loi n° 2023-171 du 9 mars 2023</b> (en vigueur depuis le 11 mars 2023) : lorsque les capitaux propres de la SARL n'ont pas été reconstitués à hauteur de la moitié du capital dans le délai de deux exercices et que le capital dépasse un seuil fixé par décret (1 % du total du bilan, art. R. 223-37 issu du décret n° 2023-657 du 25 juillet 2023), la société doit réduire son capital pour le ramener au plus à ce seuil, au plus tard à la clôture du deuxième exercice suivant. À défaut, tout intéressé peut demander en justice la dissolution, le tribunal pouvant accorder un délai de régularisation.",
+     "cite": "« Dans tous les cas, le tribunal peut accorder à la société un délai maximal de six mois pour régulariser sa situation. »",
+     "src": "C. com., art. L. 223-42 (loi n° 2023-171 du 9 mars 2023) ; art. R. 223-37 (décret n° 2023-657 du 25 juillet 2023)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> : depuis le 1er janvier 2024, les règles relatives au commissaire aux comptes figurent aux articles L. 821-40 et suivants du Code de commerce (mandat de six exercices : L. 821-44 ; mandat limité à trois exercices : L. 821-46 ; certification : L. 821-53) ; les manuels antérieurs citent les articles L. 823-1 et suivants.",
+     "src": "C. com., art. L. 821-44, L. 821-46 et L. 821-53 (ordonnance n° 2023-1142)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement des seuils de désignation obligatoire du commissaire aux comptes de 4 M€ à 5 M€ de total de bilan et de 8 M€ à 10 M€ de chiffre d'affaires hors taxes (50 salariés, inchangé) ; en vigueur le 1er mars 2024, pour les comptes et rapports des exercices ouverts à compter du 1er janvier 2024, les mandats en cours se poursuivant jusqu'à leur terme.",
+     "cite": "« Conformément à l'article 4 du décret n° 2024-152 du 28 février 2024, ces dispositions entrent en vigueur le 1er mars 2024. Ces mêmes dispositions s'appliquent aux comptes et rapports afférents aux exercices ouverts à compter du 1er janvier 2024. »",
+     "src": "Décret n° 2024-152 du 28 février 2024, art. 4 ; C. com., art. D. 221-5",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674",
+     "fiab": "millésimé 2024"
+    },
+    {
+     "t": "<b>Loi n° 2024-537 du 13 juin 2024</b> visant à accroître le financement des entreprises et l'attractivité de la France (art. 18) : à l'article L. 223-27, les mots « qu'à l'exception de celles prévues au premier alinéa de l'article L. 223-26 » sont remplacés par « que ». Depuis le 14 septembre 2024, les statuts peuvent donc prévoir que l'approbation annuelle des comptes, comme les autres décisions, est prise par consultation écrite des associés, y compris par voie électronique. Les manuels antérieurs enseignent encore que l'approbation des comptes exige une assemblée.",
+     "src": "Loi n° 2024-537 du 13 juin 2024, art. 18, II, 2° ; C. com., art. L. 223-27 (version en vigueur depuis le 14 septembre 2024)",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000049707655",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b>, applicable à compter du 1er octobre 2025 : sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité ; les actions en nullité de la société ou de ses actes et délibérations se prescrivent par deux ans au lieu de trois ; le nouvel article 1844-12-1 du Code civil subordonne l'annulation d'une décision à un « triple test » (grief, influence de l'irrégularité sur le sens de la décision, conséquences non excessives pour l'intérêt social).",
+     "cite": "« Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. »",
+     "src": "Ordonnance n° 2025-229 du 12 mars 2025 (art. 70) ; C. civ., art. 1844-10, al. 4, 1844-12-1 et 1844-14",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2022-172 du 14 février 2022</b> : l'entrepreneur individuel est titulaire de deux patrimoines distincts, professionnel et personnel ; il peut en outre opter pour l'assimilation à une EURL et ainsi pour l'impôt sur les sociétés, sans créer de société.",
+     "src": "C. com., art. L. 526-22 ; CGI, art. 1655 sexies",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Points de vigilance",
    "items": [
-    {"t": "<b>Base de calcul des majorités</b> : la majorité ordinaire de première consultation se calcule sur la totalité des parts sociales (plus de la moitié des parts), alors que la majorité extraordinaire des SARL constituées après la publication de la loi du 2 août 2005 se calcule sur les parts des associés présents ou représentés (deux tiers), après vérification du quorum.", "src": "C. com., art. L. 223-29 et L. 223-30", "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044", "fiab": "stable"},
-    {"t": "<b>Statut social du gérant</b> : sont affiliés au régime général les gérants de SARL qui ne possèdent pas ensemble plus de la moitié du capital social (gérance minoritaire ou égalitaire, gérant non associé), les parts appartenant, en toute propriété ou en usufruit, au conjoint, au partenaire de PACS et aux enfants mineurs non émancipés d'un gérant étant considérées comme possédées par celui-ci. Le gérant majoritaire, que ce texte ne vise pas, relève du régime des travailleurs indépendants ; pour une cogérance, la majorité s'apprécie sur les parts de l'ensemble des gérants.", "src": "CSS, art. L. 311-3, 11°", "url": null, "fiab": "stable"},
-    {"t": "<b>Fiscalité de l'EURL</b> : lorsque l'associé unique est une personne physique, il est personnellement soumis à l'impôt sur le revenu sur les bénéfices sociaux (régime des sociétés de personnes) ; la société peut opter pour l'impôt sur les sociétés, option révocable jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée. Lorsque l'associé unique est une personne morale, l'EURL est passible de plein droit de l'impôt sur les sociétés, comme toute SARL n'ayant pas opté pour le régime des sociétés de personnes.", "src": "CGI, art. 8, 206, 1 et 239", "url": null, "fiab": "stable"},
-    {"t": "<b>Vote de l'intéressé</b> : tout associé a le droit de participer aux décisions collectives, mais le gérant ou l'associé intéressé à une convention réglementée ne prend pas part au vote sur celle-ci et ses parts ne sont pas prises en compte pour le calcul du quorum et de la majorité.", "src": "C. civ., art. 1844 ; C. com., art. L. 223-19", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799283", "fiab": "stable"},
-    {"t": "<b>Lien avec l'UE 10 et le DSCG</b> : le programme 2025 renvoie à l'UE 10 du DCG la question du rachat par la société de ses propres titres ; les pactes d'associés relèvent de l'UE 1 du DSCG.", "src": "Arrêté du 4 août 2025, annexe 1, UE2 ; arrêté du 13 février 2019, annexe 1, UE2", "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A", "fiab": "stable"}
+    {
+     "t": "<b>Base de calcul des majorités</b> : la majorité ordinaire de première consultation se calcule sur la totalité des parts sociales (plus de la moitié des parts), alors que la majorité extraordinaire des SARL constituées après la publication de la loi du 2 août 2005 se calcule sur les parts des associés présents ou représentés (deux tiers), après vérification du quorum.",
+     "src": "C. com., art. L. 223-29 et L. 223-30",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Statut social du gérant</b> : sont affiliés au régime général les gérants de SARL qui ne possèdent pas ensemble plus de la moitié du capital social (gérance minoritaire ou égalitaire, gérant non associé), les parts appartenant, en toute propriété ou en usufruit, au conjoint, au partenaire de PACS et aux enfants mineurs non émancipés d'un gérant étant considérées comme possédées par celui-ci. Le gérant majoritaire, que ce texte ne vise pas, relève du régime des travailleurs indépendants ; pour une cogérance, la majorité s'apprécie sur les parts de l'ensemble des gérants.",
+     "src": "CSS, art. L. 311-3, 11° ; Urssaf, « Choisir votre statut juridique »",
+     "url": "https://www.urssaf.fr/accueil/choisir-forme-juridique/creer-societe.html",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Fiscalité de l'EURL</b> : lorsque l'associé unique est une personne physique, il est personnellement soumis à l'impôt sur le revenu sur les bénéfices sociaux (régime des sociétés de personnes) ; la société peut opter pour l'impôt sur les sociétés et renoncer à cette option jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée. Sans renonciation dans ce délai, l'option devient irrévocable ; après une renonciation, la société ne peut plus opter à nouveau. Lorsque l'associé unique est une personne morale, l'EURL est passible de plein droit de l'impôt sur les sociétés.",
+     "src": "CGI, art. 8, 206, 1 et 239 (loi n° 2018-1317 du 28 décembre 2018, art. 50) ; BOI-IS-CHAMP-40",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037988649",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Rapport de gestion de l'EURL</b> : l'article L. 223-31 prévoit seulement que, lorsque l'associé unique, personne physique, assume personnellement la gérance, le dépôt au RCS de l'inventaire et des comptes annuels vaut approbation des comptes. La dispense de rapport de gestion résulte de l'article L. 232-1 : elle bénéficie aux sociétés commerciales qui sont des micro-entreprises ou des petites entreprises au sens de l'article L. 230-1 (rédaction issue de la loi n° 2025-391 du 30 avril 2025), sauf exceptions, notamment les sociétés dont l'activité consiste à gérer des titres de participations ou des valeurs mobilières.",
+     "src": "C. com., art. L. 223-31 et L. 232-1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146052/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Lien avec l'UE 10 et le DSCG</b> : le programme 2025 de l'UE 2 exclut le rachat par l'entité de ses propres actions, traité en UE 10 du DCG, ainsi que le rachat de ses propres obligations ; les pactes d'associés relèvent de l'UE 1 du DSCG.",
+     "src": "Arrêté du 4 août 2025, annexe 1, UE 2 « Droit des affaires » ; arrêté du 13 février 2019, annexe 1, UE 2",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-1-programme-des-unit-s-d-enseignement-du-dipl-me-de-comptabilit-et-de-gestion-dcg--37751.pdf",
+     "fiab": "stable"
+    }
    ]
   }
  ]

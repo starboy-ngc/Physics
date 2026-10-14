@@ -2,10 +2,10 @@
  "id": "ue3-01",
  "maj": "2026-10-14",
  "programme": {
-  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 3 Droit social, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 3 Droit social), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "Introduction au droit du travail (partie 1 du programme de 2019) ; UE 3 Droit social : 150 heures, 14 ECTS",
+   "Introduction au droit du travail (partie 1 du programme de 2019)",
    "Partie 1 : le contexte juridique – les sources du droit du travail et de la protection sociale",
    "Sources internationales et européennes",
    "Sources nationales étatiques et professionnelles",
@@ -42,7 +42,7 @@
    "ref": "C. trav., art. L. 2261-15 à L. 2261-31",
    "objet": "Extension et élargissement des conventions et accords",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189536/",
-   "version": "en vigueur (L. 2261-15 modifié par la loi du 7 décembre 2020 ; L. 2261-17 en vigueur depuis le 1er juin 2021)"
+   "version": "en vigueur (L. 2261-17 dans sa rédaction en vigueur depuis le 1er juin 2021)"
   },
   {
    "ref": "C. trav., art. L. 1311-2",
@@ -57,16 +57,16 @@
    "version": "en vigueur (L. 1321-3 modifié par la loi n° 2017-86 du 27 janvier 2017 ; L. 1321-4 modifié par la loi n° 2026-403 du 26 mai 2026)"
   },
   {
-   "ref": "C. trav., art. L. 1411-1 à L. 1411-6",
-   "objet": "Compétence matérielle du conseil de prud'hommes",
+   "ref": "C. trav., art. L. 1411-1 à L. 1411-6 et L. 1421-1",
+   "objet": "Compétence matérielle du conseil de prud'hommes (compétence exclusive, L. 1411-4) ; juridiction paritaire (L. 1421-1)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160718/",
    "version": "en vigueur"
   },
   {
-   "ref": "C. trav., art. L. 1421-1",
-   "objet": "Juridiction paritaire",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032344941",
-   "version": "en vigueur"
+   "ref": "C. trav., art. D. 1462-3",
+   "objet": "Taux de compétence en dernier ressort du conseil de prud'hommes : 5 000 €",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042244522",
+   "version": "en vigueur depuis le 20 août 2020 (décret n° 2020-1066 du 17 août 2020), pour les instances introduites à compter du 1er septembre 2020"
   },
   {
    "ref": "C. trav., art. L. 1454-1 à L. 1454-4",
@@ -89,8 +89,8 @@
   {
    "ref": "C. trav., art. L. 8112-1 à L. 8115-8",
    "objet": "Inspection du travail : compétence, droit d'entrée, obstacle, amendes administratives",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145430/",
-   "version": "en vigueur (L. 8114-1 modifié par l'ordonnance n° 2016-413 du 7 avril 2016)"
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160845/",
+   "version": "en vigueur (L. 8115-1 dans sa version en vigueur depuis le 27 juin 2026, loi n° 2026-534 du 25 juin 2026)"
   },
   {
    "ref": "Ordonnance n° 2017-1385 du 22 septembre 2017",
@@ -117,9 +117,8 @@
     },
     {
      "t": "<b>Parties à la convention ou à l'accord</b> : d'un côté une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de l'accord ; de l'autre une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement.",
-     "cite": "« Les associations d'employeurs constituées conformément aux dispositions de la loi du 1er juillet 1901 relative au contrat d'association, qui ont compétence pour négocier des conventions et accords, sont assimilées aux organisations syndicales. »",
      "src": "C. trav., art. L. 2231-1",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019353732/2008-08-22",
+     "url": null,
      "fiab": "stable"
     },
     {
@@ -129,28 +128,15 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Usage d'entreprise et engagement unilatéral</b> : avantage accordé par l'employeur hors de tout accord collectif conforme au code. La Cour de cassation admet que l'employeur, responsable de l'organisation et de la marche générale de l'entreprise, le dénonce ; la dénonciation régulière est opposable à tous les salariés concernés.",
-     "cite": "« la dénonciation par l'employeur, responsable de l'organisation, de la gestion et de la marche générale de l'entreprise, d'un usage ou d'un autre accord collectif ne répondant pas aux conditions de l'article L. 132-19 du Code du travail, est opposable à l'ensemble des salariés concernés. »",
-     "src": "Cass. soc., 25 février 1988, n° 85-40.821, publié au bulletin",
-     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020520",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Conseil de prud'hommes</b> : juridiction paritaire, composée, ainsi que chacune de ses formations, d'un nombre égal de salariés et d'employeurs. Il concilie puis juge les différends nés à l'occasion de tout contrat de travail soumis au Code du travail.",
-     "src": "C. trav., art. L. 1421-1 et L. 1411-1",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000032344941",
-     "fiab": "stable"
-    },
-    {
      "t": "<b>Agents de contrôle de l'inspection du travail</b> : membres du corps des inspecteurs du travail (ou du corps des contrôleurs du travail jusqu'à son extinction). Ils veillent au respect du Code du travail, des autres dispositions relatives au régime du travail et des conventions et accords collectifs, et constatent les infractions concurremment avec les officiers de police judiciaire. Leur indépendance est garantie par les conventions de l'OIT.",
      "src": "C. trav., art. L. 8112-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033025397",
      "fiab": "stable"
     },
     {
-     "t": "<b>Sources constitutionnelles</b> : le Préambule de 1946 garantit la liberté syndicale (al. 6), le droit de grève (al. 7) et la participation des travailleurs, par l'intermédiaire de leurs délégués, à la détermination collective des conditions de travail et à la gestion des entreprises (al. 8). Le Conseil constitutionnel en déduit le droit à la négociation collective et le droit de participer à la gestion des entreprises.",
+     "t": "<b>Sources constitutionnelles</b> : le Préambule de 1946 garantit la liberté syndicale (al. 6), le droit de grève, qui s'exerce dans le cadre des lois qui le réglementent (al. 7), et la participation de tout travailleur, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail et à la gestion des entreprises (al. 8). Le Conseil constitutionnel impose au législateur de concilier le droit de grève avec les autres principes de valeur constitutionnelle et lui confie la fixation des garanties de mise en œuvre du principe de participation.",
      "cite": "« Le droit de grève s'exerce dans le cadre des lois qui le réglementent. »",
-     "src": "Préambule de la Constitution du 27 octobre 1946, al. 6, 7 et 8 ; Cons. const., décision n° 2010-42 QPC du 7 octobre 2010",
+     "src": "Préambule de la Constitution du 27 octobre 1946, al. 6, 7 et 8 ; Cons. const., décisions n° 2007-556 DC du 16 août 2007 et n° 2019-790 DC du 1er août 2019",
      "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946",
      "fiab": "stable"
     }
@@ -167,7 +153,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Bloc 1 (13 matières réservées à la branche)</b> : dans les matières énumérées à l'article L. 2253-1 (salaires minima hiérarchiques, classifications, période d'essai, durée et renouvellement des CDD, etc.), l'accord de branche prévaut sur l'accord d'entreprise antérieur ou postérieur, sauf si celui-ci assure des garanties au moins équivalentes.",
+     "t": "<b>Bloc 1 (13 matières où la branche prévaut)</b> : dans les matières énumérées à l'article L. 2253-1 (notamment salaires minima hiérarchiques, classifications, garanties collectives complémentaires, égalité professionnelle, conditions et durées de renouvellement de la période d'essai, certaines mesures relatives aux CDD et au travail temporaire, contrats de chantier ou d'opération), la convention de branche prévaut sur la convention d'entreprise conclue antérieurement ou postérieurement, sauf lorsque celle-ci assure des garanties au moins équivalentes.",
      "cite": "« Cette équivalence des garanties s'apprécie par ensemble de garanties se rapportant à la même matière. »",
      "src": "C. trav., art. L. 2253-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771",
@@ -182,31 +168,19 @@
     {
      "t": "<b>Bloc 3 (toutes les autres matières)</b> : l'accord d'entreprise, conclu avant ou après l'accord de branche, prévaut sur les stipulations de la branche ayant le même objet ; en l'absence d'accord d'entreprise, l'accord de branche s'applique.",
      "src": "C. trav., art. L. 2253-3",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036262236/2021-12-20",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177936/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Extension</b> : le ministre chargé du travail peut, par arrêté pris après avis motivé de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle, rendre obligatoires les stipulations d'une convention de branche ou d'un accord professionnel ou interprofessionnel pour tous les employeurs du champ d'application. Il peut exclure les clauses contraires à la loi ou refuser l'extension pour des motifs d'intérêt général ; une opposition écrite et motivée peut être formée dans le mois suivant l'avis d'extension.",
-     "src": "C. trav., art. L. 2261-15 et L. 2261-25",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189536/",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Élargissement</b> : en cas d'absence ou de carence des organisations de salariés ou d'employeurs rendant impossible la conclusion d'une convention dans une branche ou un secteur territorial, le ministre peut rendre obligatoire une convention déjà étendue dans un secteur présentant des conditions comparables. L'absence d'avenant pendant cinq ans au moins peut être assimilée à une carence.",
-     "src": "C. trav., art. L. 2261-17 et L. 2261-18",
+     "t": "<b>Extension et élargissement</b> : le ministre chargé du travail peut, par arrêté pris après avis motivé de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle, rendre obligatoires les stipulations d'une convention de branche ou d'un accord professionnel ou interprofessionnel pour tous les salariés et employeurs du champ d'application ; il peut exclure de l'extension les clauses contraires à la loi ou refuser l'extension pour des motifs d'intérêt général. En cas de carence des organisations se traduisant par une impossibilité persistante de conclure, il peut rendre obligatoire un texte déjà étendu dans un autre secteur présentant des conditions analogues quant aux emplois exercés (élargissement), sauf opposition écrite et motivée de la majorité des membres de cette commission ; l'absence d'avenant ou d'annexe pendant cinq ans au moins peut être assimilée à une carence.",
+     "src": "C. trav., art. L. 2261-15, L. 2261-17, L. 2261-18 et L. 2261-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042654536",
      "fiab": "stable"
     },
     {
-     "t": "<b>Validité d'un accord de branche</b> : signature par une ou plusieurs organisations syndicales représentatives ayant recueilli au moins 30 % des suffrages exprimés en faveur d'organisations représentatives, et absence d'opposition d'organisations représentatives ayant recueilli la majorité des suffrages, exprimée dans les quinze jours de la notification.",
-     "src": "C. trav., art. L. 2232-6",
+     "t": "<b>Validité d'un accord de branche</b> : signature par une ou plusieurs organisations syndicales représentatives ayant recueilli au moins 30 % des suffrages exprimés en faveur d'organisations reconnues représentatives à ce niveau, quel que soit le nombre de votants, et absence d'opposition d'organisations représentatives ayant recueilli la majorité de ces suffrages, exprimée dans un délai de quinze jours à compter de la notification (dans les conditions de L. 2231-8).",
+     "src": "C. trav., art. L. 2232-6 et L. 2231-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000022926962",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Règlement intérieur obligatoire</b> dans les entreprises ou établissements employant au moins cinquante salariés ; l'obligation s'applique au terme d'un délai de douze mois à compter de la date à laquelle le seuil a été atteint (décompte selon l'article L. 2312-2).",
-     "src": "C. trav., art. L. 1311-2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610176",
      "fiab": "stable"
     },
     {
@@ -223,9 +197,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Dénonciation d'un usage ou d'un engagement unilatéral</b> : elle est régulière si l'employeur informe les représentants du personnel, informe individuellement chaque salarié concerné et respecte un délai de prévenance suffisant. Les salariés ne peuvent alors pas exiger le maintien de l'avantage comme élément du contrat.",
-     "cite": "« ils ont constaté que l'employeur avait, en respectant un délai de préavis qu'ils ont estimé suffisant, dénoncé cet accord, d'abord par des informations données à plusieurs reprises au comité d'entreprise, puis en prévenant les salariés. »",
-     "src": "Cass. soc., 25 février 1988, n° 85-40.821 ; Cass. soc., 2 octobre 1990, n° 89-40.851",
+     "t": "<b>Usage d'entreprise et engagement unilatéral</b> : avantage accordé par l'employeur hors de tout accord collectif conforme au code. L'employeur, responsable de l'organisation et de la marche de l'entreprise, peut le dénoncer à condition d'informer préalablement les représentants du personnel, d'informer individuellement chaque salarié concerné et de respecter un délai de prévenance suffisant pour permettre d'éventuelles négociations ; la dénonciation régulière est alors opposable à l'ensemble des salariés concernés.",
+     "cite": "« la dénonciation par l'employeur, responsable de l'organisation, de la gestion et de la marche générale de l'entreprise, d'un usage ou d'un autre accord collectif ne répondant pas aux conditions de l'article L. 132-19 du Code du travail, est opposable à l'ensemble des salariés concernés. »",
+     "src": "Cass. soc., 25 février 1988, n° 85-40.821, publié au bulletin ; Cass. soc., 7 juillet 2016, n° 15-22.874 et s.",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020520",
      "fiab": "stable"
     },
@@ -237,30 +211,24 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Compétence du conseil de prud'hommes</b> : il règle par voie de conciliation les différends nés à l'occasion de tout contrat de travail entre employeurs et salariés, et juge ceux qui n'ont pas été conciliés ; il connaît aussi des différends entre salariés nés à l'occasion du travail. Il n'est pas compétent pour les litiges attribués par la loi à une autre juridiction (accidents du travail et maladies professionnelles, régis par le Code de la sécurité sociale).",
+     "t": "<b>Compétence du conseil de prud'hommes</b> : il règle par voie de conciliation les différends nés à l'occasion de tout contrat de travail entre employeurs et salariés et juge ceux qui n'ont pas été conciliés ; il connaît aussi des différends nés entre salariés à l'occasion du travail. Il est seul compétent, quel que soit le montant de la demande, et toute convention contraire est réputée non écrite ; il n'est pas compétent pour les litiges attribués par la loi à une autre juridiction, notamment par le Code de la sécurité sociale en matière d'accidents du travail et de maladies professionnelles.",
      "cite": "« Le conseil de prud'hommes règle les différends et litiges nés entre salariés à l'occasion du travail. »",
-     "src": "C. trav., art. L. 1411-1 et L. 1411-3",
+     "src": "C. trav., art. L. 1411-1, L. 1411-3 et L. 1411-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457",
      "fiab": "stable"
     },
     {
-     "t": "<b>Organisation du conseil de prud'hommes</b> : sections autonomes (encadrement, industrie, commerce et services commerciaux, agriculture, activités diverses) et formation commune de référé. La section de l'encadrement est définie à l'article L. 1423-1-2 ; les autres affaires sont réparties selon le tableau de l'article R. 1423-4 d'après la convention collective applicable, et à défaut relèvent des activités diverses.",
+     "t": "<b>Organisation du conseil de prud'hommes</b> : juridiction paritaire, composée, ainsi que chacune de ses formations, d'un nombre égal de salariés et d'employeurs. Il est divisé en sections autonomes (encadrement, industrie, commerce et services commerciaux, agriculture, activités diverses) et comporte une formation commune de référé. La section de l'encadrement est définie à l'article L. 1423-1-2 ; les autres affaires sont réparties selon le tableau de l'article R. 1423-4 d'après la convention collective applicable, et à défaut relèvent des activités diverses.",
      "cite": "« Le conseil de prud'hommes est divisé en sections autonomes. Il comporte une formation commune de référé. »",
-     "src": "C. trav., art. L. 1423-1, L. 1423-1-2 et R. 1423-4",
+     "src": "C. trav., art. L. 1421-1, L. 1423-1, L. 1423-1-2 et R. 1423-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901467",
      "fiab": "stable"
     },
     {
-     "t": "<b>Bureau de conciliation et d'orientation (BCO)</b> : chargé de concilier les parties, il peut les entendre séparément et dans la confidentialité ; il assure la mise en état et, en cas d'échec, renvoie l'affaire devant le bureau de jugement (le cas échéant en formation restreinte). Si une partie ne comparaît pas sans motif légitime, le BCO peut juger l'affaire.",
+     "t": "<b>Bureau de conciliation et d'orientation (BCO) et départage</b> : le BCO est chargé de concilier les parties, qu'il peut entendre séparément et dans la confidentialité ; il assure la mise en état et, en cas d'échec, renvoie l'affaire devant le bureau de jugement (le cas échéant en formation restreinte) ; si une partie ne comparaît pas sans motif légitime, il peut juger l'affaire. En cas de partage des voix, l'affaire est renvoyée devant la même formation présidée par un juge du tribunal judiciaire dans le ressort duquel est situé le siège du conseil, et reprise dans le délai d'un mois.",
      "cite": "« Le bureau de conciliation et d'orientation est chargé de concilier les parties. »",
-     "src": "C. trav., art. L. 1454-1, L. 1454-1-1 à L. 1454-1-3",
+     "src": "C. trav., art. L. 1454-1 à L. 1454-1-3 et L. 1454-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031091227",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Départage</b> : en cas de partage des voix, l'affaire est renvoyée devant la même formation (bureau de jugement ou référé) présidée par un juge du tribunal judiciaire dans le ressort duquel est situé le siège du conseil ; l'affaire est reprise dans le délai d'un mois.",
-     "src": "C. trav., art. L. 1454-2",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006189499",
      "fiab": "stable"
     },
     {
@@ -271,14 +239,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amendes administratives</b> : sur rapport d'un agent de contrôle et en l'absence de poursuites pénales, l'autorité administrative (DREETS) peut adresser un avertissement ou prononcer une amende pour certains manquements (durées maximales de travail, repos, SMIC et minima conventionnels étendus, document unique d'évaluation des risques). L'employeur est invité à présenter ses observations avant toute décision et peut contester devant le tribunal administratif.",
-     "src": "C. trav., art. L. 8115-1 à L. 8115-8 ; R. 8115-1",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/2019-11-04",
+     "t": "<b>Amendes administratives</b> : sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales, l'autorité administrative (directeur régional de l'économie, de l'emploi, du travail et des solidarités) peut adresser un avertissement ou prononcer une amende pour certains manquements : durées maximales de travail, repos, salaire minimum de croissance et salaires minima conventionnels, installations sanitaires et hébergement et, depuis le 27 juin 2026, absence de document unique d'évaluation des risques professionnels. La décision se conteste devant le tribunal administratif.",
+     "src": "C. trav., art. L. 8115-1 à L. 8115-8 (L. 8115-1 dans sa version en vigueur depuis le 27 juin 2026) ; R. 8115-1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Tribunal judiciaire – pôle social</b> : des tribunaux judiciaires spécialement désignés connaissent du contentieux de la sécurité sociale (art. L. 142-1 du Code de la sécurité sociale), de l'admission à l'aide sociale et de certains litiges du Code du travail. Le tribunal compétent est en principe celui du lieu où demeure le demandeur.",
-     "src": "C. org. jud., art. L. 211-16 ; CSS, art. R. 142-10",
+     "t": "<b>Tribunal judiciaire – pôle social</b> : des tribunaux judiciaires spécialement désignés connaissent des litiges relevant du contentieux de la sécurité sociale définis à l'article L. 142-1 du Code de la sécurité sociale (à l'exception de ceux du 7°), des litiges relatifs à l'admission à l'aide sociale et de certains litiges du Code du travail (art. L. 4163-17).",
+     "src": "C. org. jud., art. L. 211-16 (rédaction en vigueur depuis le 28 décembre 2023, loi n° 2023-1250 du 26 décembre 2023)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
      "fiab": "stable"
     }
@@ -295,7 +263,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Salaires : 3 ans.</b> La demande porte sur les sommes dues au titre des trois dernières années à compter de la demande ou, si le contrat est rompu, des trois années précédant la rupture.",
+     "t": "<b>Salaires : 3 ans</b> à compter du jour où celui qui exerce l'action a connu ou aurait dû connaître les faits lui permettant de l'exercer. La demande porte sur les sommes dues au titre des trois dernières années à compter de ce jour ou, si le contrat est rompu, des trois années précédant la rupture.",
      "cite": "« La demande peut porter sur les sommes dues au titre des trois dernières années à compter de ce jour ou, lorsque le contrat de travail est rompu, sur les sommes dues au titre des trois années précédant la rupture du contrat. »",
      "src": "C. trav., art. L. 3245-1",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027566295",
@@ -316,16 +284,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Taux de ressort du conseil de prud'hommes : 5 000 €</b>. Le conseil statue en dernier ressort lorsque la valeur totale des prétentions d'aucune des parties ne dépasse ce montant (procédures introduites depuis le 1er septembre 2020 ; auparavant 4 000 €).",
+     "t": "<b>Taux de ressort du conseil de prud'hommes : 5 000 €</b>. Le conseil statue en dernier ressort lorsque la valeur totale des prétentions d'aucune des parties ne dépasse ce montant ; au-delà, l'appel est ouvert. Le taux s'applique aux instances introduites à compter du 1er septembre 2020 (auparavant 4 000 €).",
      "cite": "« Le taux de compétence en dernier ressort du conseil de prud'hommes est de 5 000 euros. »",
-     "src": "C. trav., art. R. 1462-1 et D. 1462-3",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018484997/",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Accord de branche : 30 % des suffrages</b> exprimés en faveur d'organisations représentatives pour signer, et absence d'opposition majoritaire dans les <b>15 jours</b> de la notification.",
-     "src": "C. trav., art. L. 2232-6 et L. 2231-8",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000022926962",
+     "src": "C. trav., art. R. 1462-1 et D. 1462-3 (décret n° 2020-1066 du 17 août 2020)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042244522",
      "fiab": "stable"
     },
     {
@@ -336,14 +298,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement intérieur : seuil de 50 salariés</b>, obligation applicable au terme de <b>12 mois</b> après le franchissement du seuil ; entrée en vigueur <b>1 mois</b> après l'accomplissement des formalités de publicité (L. 1321-4 dans sa rédaction issue de la loi n° 2026-403 du 26 mai 2026).",
-     "src": "C. trav., art. L. 1311-2, L. 1321-4 et R. 1321-3",
+     "t": "<b>Règlement intérieur : seuil de 50 salariés</b> (entreprises ou établissements). L'obligation s'applique au terme d'un délai de <b>12 mois</b> à compter de la date à laquelle le seuil a été atteint, conformément à l'article L. 2312-2. La date d'entrée en vigueur doit être postérieure d'<b>un mois</b> à l'accomplissement des formalités de publicité (L. 1321-4, dans sa rédaction issue de la loi n° 2026-403 du 26 mai 2026).",
+     "src": "C. trav., art. L. 1311-2 et L. 1321-4",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610176",
      "fiab": "stable"
     },
     {
-     "t": "<b>Action en nullité d'une convention ou d'un accord collectif : 2 mois</b> à compter de la notification (accord d'entreprise, pour les syndicats disposant d'une section syndicale) ou de la publication dans la base de données nationale (art. L. 2231-5-1), à peine d'irrecevabilité ; le juge statue dans les six mois.",
-     "src": "C. trav., art. L. 2262-14 et L. 2262-14-1",
+     "t": "<b>Action en nullité d'une convention ou d'un accord collectif : 2 mois</b>, à peine d'irrecevabilité, à compter de la notification de l'accord d'entreprise (pour les organisations disposant d'une section syndicale dans l'entreprise) ou, dans les autres cas, de sa publication dans la base de données nationale (L. 2231-5-1). Le juge apprécie la conformité de l'accord au regard des dispositions légales et réglementaires en vigueur lors de sa conclusion.",
+     "src": "C. trav., art. L. 2262-14 ; Cass. soc., 31 janvier 2024, n° 22-11.770, publié au bulletin",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035624175",
      "fiab": "stable"
     },
@@ -360,32 +322,20 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Ordonnances du 22 septembre 2017</b> (n° 2017-1385 à 2017-1388, complétées par l'ordonnance n° 2017-1718 du 20 décembre 2017), ratifiées par la loi n° 2018-217 du 29 mars 2018 (JO du 31 mars 2018, en vigueur le 1er avril 2018) : réécriture de l'articulation branche/entreprise en trois blocs (L. 2253-1 à L. 2253-3), accord de performance collective, création de L. 2262-13 et L. 2262-14. Le Conseil constitutionnel a validé l'essentiel de la loi de ratification (décision n° 2018-761 DC du 21 mars 2018).",
-     "src": "Loi n° 2018-217 du 29 mars 2018 ; ordonnance n° 2017-1385 du 22 septembre 2017",
+     "t": "<b>Rappel : ordonnances du 22 septembre 2017</b> (n° 2017-1385 à 2017-1388, complétées par l'ordonnance n° 2017-1718 du 20 décembre 2017), ratifiées par la loi n° 2018-217 du 29 mars 2018 : articulation branche/entreprise en trois blocs (L. 2253-1 à L. 2253-3), accord de performance collective, action en nullité enfermée dans un délai de deux mois (L. 2262-14) et charge de la preuve de l'illégalité d'un accord pesant sur celui qui la conteste (L. 2262-13). Le Conseil constitutionnel a validé l'essentiel de la loi de ratification (décision n° 2018-761 DC du 21 mars 2018).",
+     "cite": "« Il appartient à celui qui conteste la légalité d'une convention ou d'un accord collectif de démontrer qu'il n'est pas conforme aux conditions légales qui le régissent. »",
+     "src": "Loi n° 2018-217 du 29 mars 2018 ; ordonnance n° 2017-1385 du 22 septembre 2017 ; C. trav., art. L. 2262-13",
      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036755446",
      "fiab": "stable"
     },
     {
-     "t": "<b>Charge de la preuve de l'illégalité d'un accord</b> (depuis 2017) : c'est à celui qui conteste la légalité d'une convention ou d'un accord collectif de démontrer qu'il n'est pas conforme aux conditions légales.",
-     "cite": "« Il appartient à celui qui conteste la légalité d'une convention ou d'un accord collectif de démontrer qu'il n'est pas conforme aux conditions légales qui le régissent. »",
-     "src": "C. trav., art. L. 2262-13 (ordonnance n° 2017-1385)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035609637",
+     "t": "<b>Loi n° 2024-364 du 22 avril 2024 (art. 37), en vigueur le 24 avril 2024</b> : adaptation au droit de l'Union européenne après les arrêts de la Cour de cassation du 13 septembre 2023. Les arrêts pour maladie ou accident non professionnel ouvrent droit à congés payés à raison de 2 jours ouvrables par mois, dans la limite de 24 jours ouvrables par période de référence (L. 3141-5-1), et le salarié qui n'a pu prendre ses congés pour cause de maladie ou d'accident bénéficie d'une période de report de 15 mois (L. 3141-19-1). Illustration de l'influence du droit de l'Union (directive 2003/88) sur les sources nationales.",
+     "src": "Loi n° 2024-364 du 22 avril 2024, art. 37 ; C. trav., art. L. 3141-5-1 et L. 3141-19-1",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000049453299",
      "fiab": "stable"
     },
     {
-     "t": "<b>Taux de ressort prud'homal porté à 5 000 €</b> (au lieu de 4 000 €) pour les procédures introduites à compter du 1er septembre 2020 ; départage présidé par un juge du tribunal judiciaire depuis le 1er janvier 2020 (ordonnance n° 2019-964 du 18 septembre 2019).",
-     "src": "C. trav., art. D. 1462-3 et L. 1454-2",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018484997/",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Extension et élargissement</b> : l'article L. 2261-15 a été réécrit par la loi du 7 décembre 2020 (avis de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle) et l'article L. 2261-17 est en vigueur dans sa rédaction actuelle depuis le 1er juin 2021.",
-     "src": "C. trav., art. L. 2261-15 et L. 2261-17",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042654536",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Accord de performance collective – jurisprudence 2026</b> : le licenciement du salarié qui refuse l'application d'un APC comportant des dispositions étrangères à son objet légal (durée du travail, rémunération, mobilité interne) et modifiant son contrat est sans cause réelle et sérieuse.",
+     "t": "<b>Accord de performance collective – jurisprudence 2026</b> : l'effet substitutif de l'APC est limité à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne ; le licenciement du salarié qui refuse l'application d'un APC comportant des dispositions étrangères à ces objets et modifiant son contrat est sans cause réelle et sérieuse.",
      "cite": "« le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord de performance collective comportant des dispositions étrangères à ces objets et modifiant son contrat de travail, est sans cause réelle et sérieuse »",
      "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
@@ -396,6 +346,12 @@
      "src": "Loi n° 2026-403 du 26 mai 2026, art. 5 ; C. trav., art. L. 1321-4 (version en vigueur depuis le 28 mai 2026)",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054131304",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Amendes administratives étendues au document unique (2026)</b> : l'article L. 8115-1, dans sa version en vigueur depuis le 27 juin 2026 issue de la loi n° 2026-534 du 25 juin 2026, permet à l'autorité administrative de sanctionner par un avertissement ou une amende l'absence de document unique d'évaluation des risques professionnels (I et II de l'article L. 4121-3-1), en plus des manquements déjà visés (durées maximales de travail, repos, salaire minimum, installations sanitaires et hébergement).",
+     "src": "C. trav., art. L. 8115-1 (version en vigueur depuis le 27 juin 2026 ; loi n° 2026-534 du 25 juin 2026)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+     "fiab": "stable"
     }
    ]
   },
@@ -403,34 +359,35 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Point de départ des prescriptions</b> : la rupture se prescrit à compter de sa <i>notification</i> (L. 1471-1) ; le délai triennal des salaires court à compter de la date à laquelle la créance salariale est devenue exigible (Cass. soc., 7 mai 2024, n° 22-24.394). L'indemnité compensatrice de préavis a la nature d'une créance salariale et relève de la prescription de trois ans (Cass. soc., 12 février 2025, n° 23-18.876).",
-     "src": "C. trav., art. L. 3245-1 ; Cass. soc., 12 février 2025, n° 23-18.876",
+     "t": "<b>Quelle prescription ?</b> L'action en paiement d'une indemnité compensatrice de préavis, créance salariale, relève de la prescription triennale de L. 3245-1 ; l'indemnité de requalification d'un CDD relève de la prescription biennale (L. 1471-1, al. 1) ; les demandes portant sur la rupture (indemnité de licenciement, licenciement sans cause réelle et sérieuse, irrégularité de procédure) relèvent du délai de 12 mois (L. 1471-1, al. 2), même lorsqu'elles sont consécutives à une requalification.",
+     "cite": "« l'action en paiement d'une indemnité compensatrice de préavis outre congés payés afférents, qui a la nature d'une créance salariale, est soumise à la prescription triennale prévue par l'article L. 3245-1 du code du travail »",
+     "src": "Cass. soc., 12 février 2025, n° 23-18.876, publié au bulletin ; C. trav., art. L. 1471-1 et L. 3245-1",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000051243749",
      "fiab": "stable"
     },
     {
-     "t": "<b>Exceptions au délai de deux ans de L. 1471-1</b> : les actions en paiement ou en répétition du salaire et celles fondées sur la discrimination (L. 1132-1) ou le harcèlement (L. 1152-1, L. 1153-1) ne relèvent pas de la prescription biennale.",
+     "t": "<b>Exceptions aux délais de L. 1471-1</b> : les délais de deux ans et de douze mois ne s'appliquent ni aux actions en réparation d'un dommage corporel causé à l'occasion de l'exécution du contrat, ni aux actions en paiement ou en répétition du salaire (3 ans, L. 3245-1), ni aux actions fondées sur la discrimination (L. 1132-1) ou le harcèlement (L. 1152-1, L. 1153-1). Ils ne font pas obstacle aux délais plus courts prévus par le code, par exemple pour la rupture conventionnelle (L. 1237-14).",
      "src": "C. trav., art. L. 1471-1, al. 3",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",
      "fiab": "stable"
     },
     {
-     "t": "<b>Forclusion de deux mois et exception d'illégalité</b> : le délai de L. 2262-14 ne prive pas un salarié de la possibilité d'invoquer, sans délai, l'illégalité d'une clause d'accord par voie d'exception dans un litige individuel (Cons. const., n° 2018-761 DC ; Cass. soc., 31 janvier 2024, n° 22-11.770).",
-     "src": "Cass. soc., 31 janvier 2024, n° 22-11.770, publié au bulletin",
+     "t": "<b>Forclusion de deux mois et exception d'illégalité</b> : le délai de L. 2262-14 ne s'applique pas lorsque l'illégalité d'une clause d'accord est invoquée par voie d'exception dans un litige individuel. Le salarié peut alors invoquer le non-respect des conditions légales de validité de l'accord, mais pas un grief tiré des conditions de sa négociation.",
+     "cite": "« si un salarié, au soutien d'une exception d'illégalité d'un accord collectif, ne peut invoquer un grief tiré des conditions dans lesquelles la négociation de l'accord a eu lieu, il peut, en revanche, invoquer à l'appui de cette exception le non-respect des conditions légales de validité de l'accord collectif »",
+     "src": "Cass. soc., 31 janvier 2024, n° 22-11.770, publié au bulletin ; Cass. soc., 2 mars 2022, n° 20-16.002, publié au bulletin",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000049092250",
      "fiab": "stable"
     },
     {
-     "t": "<b>Comparaison des normes</b> : la Cour de cassation rappelle qu'une convention ou un accord ne peut que comporter des dispositions plus favorables que la loi, sans déroger à l'ordre public ; la comparaison entre deux accords se fait par ensemble d'avantages ayant le même objet, non avantage isolé par avantage isolé.",
-     "cite": "« une convention ou un accord ne peut que comporter des dispositions plus favorables aux salariés que celles des lois ou règlements sans pouvoir déroger aux dispositions d'ordre public »",
-     "src": "Cass. soc., 23 janvier 2013, n° 11-16.172 et s., publié au bulletin ; C. trav., art. L. 2253-1",
-     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000026984580/",
+     "t": "<b>Comparaison des normes</b> : en cas de concours de conventions collectives, les avantages ayant le même objet ou la même cause ne se cumulent pas, sauf stipulations contraires ; seul le plus favorable est accordé. La comparaison se fait avantage par avantage, en regroupant ceux qui ont la même cause ou le même objet, et non par addition d'avantages de nature différente. Entre branche et entreprise (blocs 1 et 2), l'équivalence des garanties s'apprécie par ensemble de garanties se rapportant à la même matière (L. 2253-1).",
+     "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020048",
      "fiab": "stable"
     },
     {
-     "t": "<b>Juridiction compétente</b> : le conseil de prud'hommes est incompétent pour le contentieux des accidents du travail et maladies professionnelles, qui relève du tribunal judiciaire spécialement désigné (pôle social) ; le salarié protégé licencié avec autorisation de l'inspecteur du travail conteste l'autorisation devant le juge administratif. Lien DSCG : l'UE 1 « Gestion juridique, fiscale et sociale » réutilise ces règles de sources et de compétence.",
-     "src": "C. trav., art. L. 1411-1 ; C. org. jud., art. L. 211-16",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457",
+     "t": "<b>Juridiction compétente</b> : le conseil de prud'hommes est incompétent pour le contentieux des accidents du travail et maladies professionnelles, attribué par le Code de la sécurité sociale au tribunal judiciaire spécialement désigné (pôle social). Lien DSCG : l'UE 1 « Gestion juridique, fiscale et sociale » réutilise ces règles de sources et de compétence.",
+     "src": "C. trav., art. L. 1411-4 ; C. org. jud., art. L. 211-16",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
      "fiab": "stable"
     }
    ]

@@ -17,7 +17,7 @@
   },
   {
    "h": "Les décisions collectives",
-   "html": "<p>Les décisions sont prises en assemblée ou, si les statuts le prévoient, par <b>consultation écrite</b> ou acte unanime, sauf l'assemblée annuelle d'approbation des comptes qui doit se tenir en assemblée dans les <b>six mois</b> de la clôture (L. 223-26 et L. 223-27). Chaque part donne droit à une voix.</p><p><b>Décisions ordinaires</b> (L. 223-29) : approbation des comptes, nomination et révocation du gérant, conventions réglementées. Sur <b>première consultation</b>, majorité <b>absolue</b> : un ou plusieurs associés représentant <b>plus de la moitié des parts sociales</b> (toutes les parts, présentes ou non). À défaut, sur <b>seconde consultation</b>, majorité <b>relative</b> des votes émis, sauf clause contraire. Aucun quorum.</p><p><b>Décisions extraordinaires</b> (modification des statuts, L. 223-30). Pour les SARL constituées <b>depuis le 4 août 2005</b> : <b>quorum</b> d'<b>un quart</b> des parts sur première convocation, <b>un cinquième</b> sur seconde ; majorité des <b>deux tiers des parts détenues par les associés présents ou représentés</b>. Pour les SARL antérieures : majorité des <b>trois quarts des parts sociales</b> sans quorum, sauf option pour le nouveau régime. Cas particuliers : l'<b>incorporation de réserves</b> au capital exige seulement les associés représentant au moins la moitié des parts ; l'<b>unanimité</b> s'impose pour changer la nationalité, transformer en SNC ou en SAS et augmenter les engagements des associés.</p><div class=\"note\"><b>Piège.</b> Majorité ordinaire : « plus de la moitié des parts <i>existantes</i> » (première consultation). Majorité extraordinaire : « deux tiers des parts <i>présentes ou représentées</i> ». Ne pas confondre la base de calcul.</div>"
+   "html": "<p>Les décisions sont prises en assemblée ou, si les statuts le prévoient, par <b>consultation écrite</b> (y compris par voie électronique) ou acte unanime (L. 223-27). Depuis la loi n° 2024-537 du 13 juin 2024 (en vigueur le 14 septembre 2024), cette faculté peut couvrir l'<b>approbation annuelle des comptes</b>, qui intervient dans les <b>six mois</b> de la clôture (L. 223-26) ; auparavant, celle-ci exigeait une assemblée. Chaque part donne droit à une voix.</p><p><b>Décisions ordinaires</b> (L. 223-29) : approbation des comptes, nomination et révocation du gérant, conventions réglementées. Sur <b>première consultation</b>, majorité <b>absolue</b> : un ou plusieurs associés représentant <b>plus de la moitié des parts sociales</b> (toutes les parts, présentes ou non). À défaut, sur <b>seconde consultation</b>, majorité <b>relative</b> des votes émis, sauf clause contraire. Aucun quorum.</p><p><b>Décisions extraordinaires</b> (modification des statuts, L. 223-30). Pour les SARL constituées <b>depuis le 4 août 2005</b> : <b>quorum</b> d'<b>un quart</b> des parts sur première convocation, <b>un cinquième</b> sur seconde ; majorité des <b>deux tiers des parts détenues par les associés présents ou représentés</b>. Pour les SARL antérieures : majorité des <b>trois quarts des parts sociales</b> sans quorum, sauf option pour le nouveau régime. Cas particuliers : l'<b>incorporation de réserves</b> au capital exige seulement les associés représentant au moins la moitié des parts ; l'<b>unanimité</b> s'impose pour changer la nationalité, transformer en SNC ou en SAS et augmenter les engagements des associés.</p><div class=\"note\"><b>Piège.</b> Majorité ordinaire : « plus de la moitié des parts <i>existantes</i> » (première consultation). Majorité extraordinaire : « deux tiers des parts <i>présentes ou représentées</i> ». Ne pas confondre la base de calcul.</div>"
   },
   {
    "h": "La cession des parts sociales",
@@ -29,7 +29,7 @@
   },
   {
    "h": "L'EURL : la SARL à associé unique",
-   "html": "<p>L'<b>entreprise unipersonnelle à responsabilité limitée</b> est une SARL dont toutes les parts sont réunies en une seule main (L. 223-1). L'associé unique peut être une personne physique ou une personne morale. Il exerce seul les pouvoirs de l'assemblée : ses décisions sont <b>répertoriées dans un registre</b> ; il ne peut déléguer ses pouvoirs.</p><ul><li><b>Gérance</b> : l'associé unique ou un tiers, personne physique. Lorsque l'associé unique personne physique est gérant, le <b>dépôt des comptes au RCS vaut approbation</b> et il est dispensé de rapport de gestion sous conditions de taille (L. 223-31).</li><li><b>Conventions</b> : celles conclues avec l'associé unique sont seulement mentionnées au registre des décisions.</li><li><b>Régime fiscal</b> : associé unique personne physique : <b>impôt sur le revenu</b> par défaut (régime des sociétés de personnes, CGI, art. 8), avec <b>option pour l'IS</b> révocable jusqu'au cinquième exercice suivant celui de l'option (CGI, art. 239) ; associé unique <b>personne morale</b> : IS de plein droit.</li><li><b>Statut social</b> : le gérant associé unique est <b>travailleur non salarié</b> (il est nécessairement majoritaire).</li></ul><p>L'EURL devient SARL par simple cession de parts à un second associé ; la SARL devient EURL par réunion des parts, sans dissolution. La transformation en SASU exige une décision de l'associé unique et le respect des conditions de la SAS.</p>"
+   "html": "<p>L'<b>entreprise unipersonnelle à responsabilité limitée</b> est une SARL dont toutes les parts sont réunies en une seule main (L. 223-1). L'associé unique peut être une personne physique ou une personne morale. Il exerce seul les pouvoirs de l'assemblée : ses décisions sont <b>répertoriées dans un registre</b> ; il ne peut déléguer ses pouvoirs.</p><ul><li><b>Gérance</b> : l'associé unique ou un tiers, personne physique. Lorsque l'associé unique personne physique est gérant, le <b>dépôt des comptes au RCS vaut approbation</b> (L. 223-31) ; comme toute société commerciale qui est une micro-entreprise ou une petite entreprise, l'EURL est en outre dispensée d'établir un rapport de gestion (L. 232-1).</li><li><b>Conventions</b> : celles conclues avec l'associé unique sont seulement mentionnées au registre des décisions.</li><li><b>Régime fiscal</b> : associé unique personne physique : <b>impôt sur le revenu</b> par défaut (régime des sociétés de personnes, CGI, art. 8), avec <b>option pour l'IS</b> révocable jusqu'au cinquième exercice suivant celui de l'option (CGI, art. 239) ; associé unique <b>personne morale</b> : IS de plein droit.</li><li><b>Statut social</b> : le gérant associé unique est <b>travailleur non salarié</b> (il est nécessairement majoritaire).</li></ul><p>L'EURL devient SARL par simple cession de parts à un second associé ; la SARL devient EURL par réunion des parts, sans dissolution. La transformation en SASU exige une décision de l'associé unique et le respect des conditions de la SAS.</p>"
   },
   {
    "h": "Pièges classiques SARL / SA / SAS",
@@ -58,8 +58,8 @@
    "note": "Seuils de nomination obligatoire du commissaire aux comptes : 5 M€, 10 M€, 50 salariés"
   },
   {
-   "ref": "C. com., art. L. 223-26 et L. 232-22",
-   "note": "Approbation des comptes dans les six mois et dépôt au greffe (un mois, deux mois par voie électronique)"
+   "ref": "C. com., art. L. 223-26, L. 223-27 et L. 232-22",
+   "note": "Approbation des comptes dans les six mois et dépôt au greffe (un mois, deux mois par voie électronique) ; consultation écrite possible pour toutes les décisions, y compris l'approbation des comptes, si les statuts le prévoient (loi n° 2024-537 du 13 juin 2024)"
   },
   {
    "ref": "CGI, art. 726",
@@ -439,8 +439,8 @@
     "Par le greffier du tribunal de commerce"
    ],
    "a": 1,
-   "why": "L'article L. 223-31 prévoit que, lorsque l'associé unique est seul gérant, le dépôt au RCS de l'inventaire et des comptes annuels, dûment signés, vaut approbation des comptes, et il est dispensé d'établir un rapport de gestion sous conditions de taille. Il n'y a pas d'assemblée dans une EURL : l'associé unique prend ses décisions seul et les consigne dans un registre. Le commissaire aux comptes, s'il existe, certifie mais n'approuve pas.",
-   "src": "C. com., art. L. 223-31",
+   "why": "L'article L. 223-31 prévoit que, lorsque l'associé unique, personne physique, assume personnellement la gérance, le dépôt au RCS de l'inventaire et des comptes annuels, dûment signés, vaut approbation des comptes. La dispense de rapport de gestion relève d'un autre texte (L. 232-1, micro-entreprises et petites entreprises). Il n'y a pas d'assemblée dans une EURL : l'associé unique prend ses décisions seul et les consigne dans un registre. Le commissaire aux comptes, s'il existe, certifie mais n'approuve pas.",
+   "src": "C. com., art. L. 223-31 et L. 232-1",
    "fiab": "stable",
    "niveau": 2
   },
@@ -508,16 +508,16 @@
   },
   {
    "type": "qcm",
-   "q": "Les statuts d'une SARL autorisent la consultation écrite des associés. Quelle décision ne peut pas être prise par cette voie ?",
+   "q": "Les statuts d'une SARL, modifiés en 2026, prévoient que toutes les décisions collectives peuvent être prises par consultation écrite des associés. L'approbation annuelle des comptes peut-elle être adoptée par cette voie ?",
    "opts": [
-    "La nomination d'un nouveau gérant",
-    "L'approbation annuelle des comptes",
-    "L'autorisation d'une convention réglementée",
-    "Le transfert du siège social"
+    "Non : l'approbation annuelle des comptes exige toujours la réunion d'une assemblée",
+    "Oui : depuis la loi n° 2024-537 du 13 juin 2024, la consultation écrite prévue par les statuts peut couvrir l'approbation des comptes",
+    "Oui, mais seulement si la SARL a désigné un commissaire aux comptes",
+    "Non, sauf autorisation du président du tribunal de commerce"
    ],
    "a": 1,
-   "why": "L'article L. 223-27 permet la consultation écrite si les statuts le prévoient, à l'exception de l'assemblée annuelle d'approbation des comptes, qui doit obligatoirement se tenir en assemblée (sauf dispense propre à l'EURL). Les autres décisions, ordinaires ou extraordinaires, peuvent être adoptées par écrit dès lors que les statuts l'autorisent.",
-   "src": "C. com., art. L. 223-27",
+   "why": "L'article 18 de la loi n° 2024-537 du 13 juin 2024 a supprimé, à l'article L. 223-27, l'exception qui réservait à l'assemblée l'approbation des comptes prévue au premier alinéa de l'article L. 223-26. Depuis le 14 septembre 2024, les statuts peuvent prévoir que toutes les décisions, y compris l'approbation annuelle des comptes, sont prises par consultation écrite des associés, y compris par voie électronique. Le délai de six mois après la clôture demeure (L. 223-26).",
+   "src": "C. com., art. L. 223-27 (loi n° 2024-537 du 13 juin 2024, art. 18) et L. 223-26",
    "fiab": "stable",
    "niveau": 2
   }

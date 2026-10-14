@@ -12,77 +12,360 @@
   ]
  },
  "textes": [
-  { "ref": "C. trav., art. L. 3121-1 à L. 3121-67 ; D. 3121-24", "objet": "Durée du travail : temps effectif, durée légale, heures supplémentaires, contingent, durées maximales, forfaits", "url": null, "version": "en vigueur (loi n° 2016-1088 du 8 août 2016)" },
-  { "ref": "C. trav., art. L. 3131-1 et L. 3132-1 à L. 3132-3", "objet": "Repos quotidien et hebdomadaire", "url": null, "version": "en vigueur" },
-  { "ref": "C. trav., art. L. 3141-1 à L. 3141-33", "objet": "Congés payés : acquisition, prise, indemnité, maladie", "url": null, "version": "en vigueur (loi n° 2024-364 du 22 avril 2024)" },
-  { "ref": "C. trav., art. L. 3211-1 à L. 3263-1", "objet": "Salaire : SMIC, égalité de rémunération, paiement, bulletin de paie, saisies", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/", "version": "en vigueur" },
-  { "ref": "C. trav., art. L. 3245-1", "objet": "Prescription triennale des salaires", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027566295", "version": "en vigueur depuis le 17 juin 2013" },
-  { "ref": "C. trav., art. L. 1121-1 et L. 1321-1 à L. 1321-3", "objet": "Pouvoir de direction : restrictions aux libertés ; règlement intérieur et échelle des sanctions", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033975667", "version": "en vigueur" },
-  { "ref": "C. trav., art. L. 1331-1 à L. 1333-3", "objet": "Droit disciplinaire : définition, interdiction des amendes, procédure, prescriptions, contrôle du juge", "url": null, "version": "en vigueur" },
-  { "ref": "C. trav., art. L. 1222-6 et L. 2254-2", "objet": "Modification du contrat pour motif économique ; accord de performance collective", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300", "version": "en vigueur" },
-  { "ref": "C. trav., art. L. 1226-1 à L. 1226-14 ; D. 1226-1 à D. 1226-8", "objet": "Maladie, maintien de salaire, inaptitude et reclassement, accident du travail", "url": null, "version": "en vigueur" },
-  { "ref": "C. trav., art. R. 4624-10 à R. 4624-45-9", "objet": "Suivi individuel de l'état de santé : visites, visite de reprise, inaptitude", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018493140/", "version": "en vigueur (décret n° 2022-372 du 16 mars 2022)" },
-  { "ref": "C. trav., art. L. 1225-1 à L. 1225-72", "objet": "Maternité, paternité, congé parental", "url": null, "version": "en vigueur (congé de paternité : loi n° 2020-1576 du 14 décembre 2020)" },
-  { "ref": "C. trav., art. L. 1152-1 à L. 1155-2", "objet": "Harcèlement moral et sexuel", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160706/", "version": "en vigueur" },
-  { "ref": "C. trav., art. L. 6315-1, L. 6321-1 et L. 6323-1 et s.", "objet": "Formation : entretien professionnel, obligation d'adaptation, compte personnel de formation", "url": null, "version": "en vigueur (loi n° 2018-771 du 5 septembre 2018)" }
+  {
+   "ref": "C. trav., art. L. 3121-1 à L. 3121-69 ; D. 3121-24 ; L. 3131-1 et L. 3132-1 à L. 3132-3",
+   "objet": "Durée du travail : temps effectif, durée légale, heures supplémentaires, contingent, durées maximales, forfaits ; repos quotidien et hebdomadaire",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+   "version": "en vigueur (loi n° 2016-1088 du 8 août 2016)"
+  },
+  {
+   "ref": "C. trav., art. L. 3141-1 à L. 3141-33",
+   "objet": "Congés payés : acquisition, maladie, report, prise, indemnité",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178009/",
+   "version": "en vigueur (loi n° 2024-364 du 22 avril 2024, art. 37)"
+  },
+  {
+   "ref": "C. trav., art. L. 3211-1 à L. 3263-1",
+   "objet": "Salaire : SMIC, égalité de rémunération, paiement, bulletin de paie, saisies",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "Décret n° 2025-1228 du 17 décembre 2025 ; arrêté du 22 mai 2026",
+   "objet": "Montant du SMIC en 2026 (12,02 € au 1er janvier, 12,31 € au 1er juin)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053042520",
+   "version": "millésime 2026"
+  },
+  {
+   "ref": "C. trav., art. L. 3245-1",
+   "objet": "Prescription triennale des salaires",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027566295",
+   "version": "en vigueur depuis le 17 juin 2013 (loi n° 2013-504 du 14 juin 2013)"
+  },
+  {
+   "ref": "C. trav., art. L. 1321-1 à L. 1321-6 ; L. 1121-1",
+   "objet": "Règlement intérieur et échelle des sanctions ; restrictions aux libertés",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160716/",
+   "version": "en vigueur (L. 1321-4 modifié par la loi n° 2026-403 du 26 mai 2026)"
+  },
+  {
+   "ref": "C. trav., art. L. 1331-1 à L. 1333-3",
+   "objet": "Droit disciplinaire : définition, interdiction des amendes, procédure, prescriptions, contrôle du juge",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145394/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. trav., art. L. 1222-6 et L. 2254-2",
+   "objet": "Modification du contrat pour motif économique ; accord de performance collective",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. trav., art. L. 1226-1 à L. 1226-14 ; D. 1226-1 à D. 1226-8-1",
+   "objet": "Maladie, maintien de salaire, inaptitude et reclassement, accident du travail",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000018537772/",
+   "version": "en vigueur (D. 1226-1 : décret n° 2008-244 du 7 mars 2008)"
+  },
+  {
+   "ref": "C. trav., art. R. 4624-29 à R. 4624-33 ; L. 4624-4 et R. 4624-42",
+   "objet": "Visites de préreprise et de reprise ; constat de l'inaptitude",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000045369250/",
+   "version": "en vigueur (décret n° 2022-372 du 16 mars 2022 ; R. 4624-31 modifié par le décret n° 2026-503 du 12 juin 2026)"
+  },
+  {
+   "ref": "C. trav., art. L. 1225-1 à L. 1225-72",
+   "objet": "Maternité, paternité, congé parental",
+   "url": null,
+   "version": "en vigueur (congé de paternité : loi n° 2020-1576 du 14 décembre 2020)"
+  },
+  {
+   "ref": "C. trav., art. L. 1225-46-2 à L. 1225-46-7",
+   "objet": "Congé supplémentaire de naissance",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000053271681/",
+   "version": "en vigueur depuis le 1er juillet 2026 (loi n° 2025-1403 du 30 décembre 2025 ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026)"
+  },
+  {
+   "ref": "C. trav., art. L. 1152-1 à L. 1155-2",
+   "objet": "Harcèlement moral et sexuel",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160706/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. trav., art. L. 8115-1 à L. 8115-8",
+   "objet": "Amendes administratives : durées maximales, repos, SMIC, document unique",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. trav., art. L. 6315-1, L. 6321-1 et L. 6323-1 et s.",
+   "objet": "Formation : entretien professionnel, obligation d'adaptation, compte personnel de formation",
+   "url": null,
+   "version": "en vigueur (loi n° 2018-771 du 5 septembre 2018)"
+  }
  ],
  "sections": [
   {
    "h": "Définitions",
    "items": [
-    { "t": "<b>Temps de travail effectif</b> : temps pendant lequel le salarié est à la disposition de l'employeur et se conforme à ses directives sans pouvoir vaquer librement à des occupations personnelles. Il sert de base au décompte de la durée légale et des heures supplémentaires.", "src": "C. trav., art. L. 3121-1", "url": null, "fiab": "stable" },
-    { "t": "<b>SMIC</b> : salaire minimum de croissance qui assure aux salariés dont les rémunérations sont les plus faibles la garantie de leur pouvoir d'achat et une participation au développement économique de la nation. Il est fixé par décret et revalorisé chaque 1er janvier, ainsi qu'en cours d'année lorsque l'indice des prix de référence augmente d'au moins 2 % par rapport à l'indice constaté lors de la dernière fixation.", "src": "C. trav., art. L. 3231-2, L. 3231-4 et L. 3231-5", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/", "fiab": "stable" },
-    { "t": "<b>Sanction disciplinaire</b> : toute mesure, autre que les observations verbales, prise par l'employeur à la suite d'un agissement du salarié considéré comme fautif, que cette mesure soit de nature à affecter immédiatement ou non la présence du salarié dans l'entreprise, sa fonction, sa carrière ou sa rémunération. Les amendes et autres sanctions pécuniaires sont interdites.", "src": "C. trav., art. L. 1331-1 et L. 1331-2", "url": null, "fiab": "stable" },
-    { "t": "<b>Inaptitude</b> : constatée par le médecin du travail, qui ne peut la prononcer qu'après avoir réalisé au moins un examen médical, une étude de poste et des conditions de travail et un échange avec l'employeur ; l'avis précise les capacités du salarié à exercer une des tâches existantes et peut dispenser l'employeur de rechercher un reclassement.", "src": "C. trav., art. L. 4624-4 et R. 4624-42", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018493140/", "fiab": "stable" },
-    { "t": "<b>Harcèlement moral</b> : agissements répétés ayant pour objet ou pour effet une dégradation des conditions de travail susceptible de porter atteinte aux droits et à la dignité du salarié, d'altérer sa santé physique ou mentale ou de compromettre son avenir professionnel. La répétition est une condition ; un acte isolé ne suffit pas. Toute rupture intervenue en méconnaissance de cette interdiction est nulle.", "src": "C. trav., art. L. 1152-1 à L. 1152-3", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006900818", "fiab": "stable" }
+    {
+     "t": "<b>Temps de travail effectif</b> : temps pendant lequel le salarié est à la disposition de l'employeur et se conforme à ses directives sans pouvoir vaquer librement à des occupations personnelles. La durée légale de travail effectif des salariés à temps complet est fixée à 35 heures par semaine.",
+     "src": "C. trav., art. L. 3121-1 et L. 3121-27",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>SMIC</b> : salaire minimum de croissance qui assure aux salariés dont les rémunérations sont les plus faibles la garantie de leur pouvoir d'achat et une participation au développement économique de la nation. Il est fixé chaque année avec effet au 1er janvier et relevé en cours d'année, dans la même proportion, lorsque l'indice national des prix à la consommation augmente d'au moins 2 % par rapport à l'indice constaté lors de l'établissement du SMIC immédiatement antérieur.",
+     "src": "C. trav., art. L. 3231-2 et L. 3231-4 à L. 3231-6",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sanction disciplinaire</b> : toute mesure, autre que les observations verbales, prise par l'employeur à la suite d'un agissement du salarié considéré par l'employeur comme fautif, que cette mesure soit de nature à affecter immédiatement ou non la présence du salarié dans l'entreprise, sa fonction, sa carrière ou sa rémunération. Les amendes et autres sanctions pécuniaires sont interdites.",
+     "cite": "« Constitue une sanction toute mesure, autre que les observations verbales, prise par l'employeur à la suite d'un agissement du salarié considéré par l'employeur comme fautif… »",
+     "src": "C. trav., art. L. 1331-1 et L. 1331-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901445",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Inaptitude</b> : déclarée par le médecin du travail lorsque, après une étude de poste et un échange avec le salarié et l'employeur, il constate qu'aucune mesure d'aménagement, d'adaptation ou de transformation du poste n'est possible et que l'état de santé du travailleur justifie un changement de poste ; l'avis est éclairé par des conclusions écrites assorties d'indications relatives au reclassement. Le médecin ne peut constater l'inaptitude qu'après avoir réalisé au moins un examen médical, une étude du poste et des conditions de travail et un échange avec l'employeur.",
+     "src": "C. trav., art. L. 4624-4 et R. 4624-42",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Harcèlement moral</b> : agissements répétés ayant pour objet ou pour effet une dégradation des conditions de travail susceptible de porter atteinte aux droits et à la dignité du salarié, d'altérer sa santé physique ou mentale ou de compromettre son avenir professionnel. Le texte exige des agissements répétés. Toute rupture du contrat intervenue en méconnaissance de cette interdiction est nulle.",
+     "src": "C. trav., art. L. 1152-1 à L. 1152-3",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006177845/",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Règles essentielles",
    "items": [
-    { "t": "<b>Durée légale et heures supplémentaires</b> : la durée légale est de 35 heures par semaine civile ; toute heure accomplie au-delà, à la demande de l'employeur, est une heure supplémentaire majorée. Un accord d'entreprise ou, à défaut, de branche fixe le taux de majoration, qui ne peut être inférieur à 10 % ; à défaut d'accord, 25 % pour les huit premières heures et 50 % au-delà. Le contingent annuel est fixé par accord et, à défaut, à 220 heures par salarié ; chaque heure au-delà du contingent ouvre droit à une contrepartie obligatoire en repos de 50 % (entreprises de 20 salariés au plus) ou 100 %.", "src": "C. trav., art. L. 3121-27, L. 3121-28, L. 3121-33, L. 3121-36, L. 3121-38 ; D. 3121-24", "url": null, "fiab": "stable" },
-    { "t": "<b>Durées maximales et repos</b> : 10 heures par jour (12 heures par accord), 48 heures par semaine, 44 heures en moyenne sur 12 semaines consécutives (46 heures par accord) ; repos quotidien de 11 heures consécutives ; repos hebdomadaire de 24 heures auxquelles s'ajoutent les 11 heures de repos quotidien, donné en principe le dimanche ; pause de 20 minutes consécutives dès que le travail quotidien atteint 6 heures.", "src": "C. trav., art. L. 3121-16, L. 3121-18 à L. 3121-23, L. 3131-1, L. 3132-2 et L. 3132-3", "url": null, "fiab": "stable" },
-    { "t": "<b>Forfait annuel en jours</b> : réservé aux cadres disposant d'une autonomie dans l'organisation de leur emploi du temps et aux salariés dont la durée ne peut être prédéterminée ; il exige un accord collectif et l'accord écrit du salarié (convention individuelle). Le nombre de jours ne peut dépasser 218 par an ; le salarié peut renoncer à des jours de repos moyennant une majoration d'au moins 10 % ; l'employeur s'assure régulièrement que la charge de travail est raisonnable.", "src": "C. trav., art. L. 3121-55, L. 3121-58, L. 3121-59, L. 3121-60 et L. 3121-64", "url": null, "fiab": "stable" },
-    { "t": "<b>Congés payés : acquisition et prise</b> : 2,5 jours ouvrables par mois de travail effectif, dans la limite de 30 jours ouvrables par période de référence. Depuis la loi n° 2024-364 du 22 avril 2024, les périodes d'arrêt pour maladie ou accident non professionnel ouvrent droit à 2 jours ouvrables par mois dans la limite de 24 jours par période, et les arrêts pour accident du travail ou maladie professionnelle à 2,5 jours sans limite ; les congés non pris du fait d'un arrêt sont reportés 15 mois. La période de prise comprend toujours le 1er mai – 31 octobre ; le congé principal est d'au moins 12 jours ouvrables continus et d'au plus 24 jours ; la prise hors période ouvre droit à des jours de fractionnement (2 jours pour 6 jours ou plus, 1 jour pour 3 à 5 jours).", "src": "C. trav., art. L. 3141-3, L. 3141-5, L. 3141-5-1, L. 3141-13, L. 3141-17, L. 3141-18, L. 3141-19-1, L. 3141-23", "url": null, "fiab": "stable" },
-    { "t": "<b>Indemnité de congés payés</b> : égale au dixième de la rémunération brute totale perçue pendant la période de référence, sans pouvoir être inférieure au salaire que le salarié aurait perçu s'il avait travaillé (règle du maintien de salaire) ; à la rupture, les congés non pris donnent lieu à une indemnité compensatrice.", "src": "C. trav., art. L. 3141-24 et L. 3141-28", "url": null, "fiab": "stable" },
-    { "t": "<b>Paiement du salaire et bulletin de paie</b> : le salaire est payé au moins une fois par mois (mensualisation), un acompte correspondant à une quinzaine pouvant être demandé ; l'employeur remet un bulletin de paie, par défaut sous forme électronique sauf opposition du salarié ; l'acceptation sans protestation ni réserve du bulletin ne vaut pas renonciation au paiement des sommes dues.", "src": "C. trav., art. L. 3242-1, L. 3243-2 et L. 3243-3", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160763/", "fiab": "stable" },
-    { "t": "<b>Saisie des rémunérations</b> : les sommes dues à titre de rémunération ne sont saisissables ou cessibles que dans des proportions et selon des seuils de rémunération fixés par décret (barème progressif par tranches), une fraction égale au montant forfaitaire du revenu de solidarité active pour une personne seule restant toujours insaisissable.", "src": "C. trav., art. L. 3252-2 et L. 3252-3 ; R. 3252-2", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/", "fiab": "stable" },
-    { "t": "<b>Limites du pouvoir de direction</b> : nul ne peut apporter aux droits des personnes et aux libertés individuelles et collectives de restrictions qui ne seraient pas justifiées par la nature de la tâche à accomplir ni proportionnées au but recherché ; le règlement intérieur ne peut contenir de telles restrictions ni de dispositions discriminatoires.", "src": "C. trav., art. L. 1121-1 et L. 1321-3", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033975667", "fiab": "stable" },
-    { "t": "<b>Échelle des sanctions</b> : le règlement intérieur fixe les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions que peut prendre l'employeur ; une sanction non prévue au règlement intérieur ne peut être prononcée dans les entreprises qui y sont assujetties.", "src": "C. trav., art. L. 1321-1", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901432", "fiab": "stable" },
-    { "t": "<b>Procédure disciplinaire</b> : aucune sanction ne peut être prise sans que le salarié soit informé par écrit des griefs ; pour toute sanction ayant une incidence sur la présence, la fonction, la carrière ou la rémunération (hors avertissement), convocation à un entretien préalable avec indication de l'objet, puis notification écrite et motivée au plus tôt deux jours ouvrables et au plus tard un mois après l'entretien. Aucun fait fautif ne peut donner lieu à poursuites disciplinaires au-delà de deux mois à compter du jour où l'employeur en a eu connaissance ; aucune sanction antérieure de plus de trois ans ne peut être invoquée. Le juge contrôle la régularité, la matérialité des faits et la proportionnalité et peut annuler la sanction, sauf s'il s'agit d'un licenciement.", "src": "C. trav., art. L. 1332-1 à L. 1332-5, L. 1333-1 à L. 1333-3", "url": null, "fiab": "stable" },
-    { "t": "<b>Modification du contrat et changement des conditions de travail</b> : la modification d'un élément essentiel (rémunération, qualification, durée du travail, lieu hors secteur géographique sans clause de mobilité) exige l'accord du salarié ; le simple changement des conditions de travail relève du pouvoir de direction. Pour une modification pour motif économique, l'employeur informe le salarié par lettre recommandée avec avis de réception ; le salarié dispose d'un mois (quinze jours en redressement ou liquidation judiciaire) pour refuser, son silence valant acceptation.", "src": "C. trav., art. L. 1222-6 ; Cass. soc., 10 juillet 1996, n° 93-41.137 (Le Berre)", "url": null, "fiab": "stable" },
-    { "t": "<b>Accord de performance collective</b> : un accord d'entreprise peut, pour répondre aux nécessités de fonctionnement ou préserver l'emploi, aménager la durée du travail, la rémunération et les conditions de mobilité interne ; ses stipulations se substituent de plein droit aux clauses contraires du contrat. Le salarié peut refuser par écrit dans le mois ; l'employeur dispose de deux mois pour engager un licenciement reposant sur un motif spécifique constituant une cause réelle et sérieuse.", "cite": "« Ce licenciement repose sur un motif spécifique qui constitue une cause réelle et sérieuse. »", "src": "C. trav., art. L. 2254-2", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300", "fiab": "stable" },
-    { "t": "<b>Maintien de salaire en cas de maladie</b> : le salarié ayant un an d'ancienneté, qui justifie de son absence dans les 48 heures et est pris en charge par la sécurité sociale, perçoit un complément : 90 % de la rémunération brute pendant 30 jours puis deux tiers pendant les 30 jours suivants, chaque période augmentée de 10 jours par tranche de 5 ans d'ancienneté supplémentaire (maximum 90 jours chacune), après un délai de carence de 7 jours (aucun pour un accident du travail ou une maladie professionnelle), déduction faite des indemnités journalières.", "src": "C. trav., art. L. 1226-1, D. 1226-1 à D. 1226-3", "url": null, "fiab": "stable" },
-    { "t": "<b>Inaptitude et reclassement</b> : l'employeur propose un autre emploi approprié aux capacités du salarié, après avis du CSE, sauf dispense expresse de l'avis médical ; faute de reclassement ou de licenciement dans le mois suivant l'avis, il reprend le versement du salaire. En cas d'inaptitude d'origine professionnelle, le salarié licencié reçoit une indemnité compensatrice de préavis et une indemnité spéciale de licenciement égale au double de l'indemnité légale.", "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-12 et L. 1226-14", "url": null, "fiab": "stable" },
-    { "t": "<b>Visite de reprise</b> : organisée par l'employeur après un congé de maternité, une absence pour maladie professionnelle, une absence d'au moins 30 jours pour accident du travail, ou d'au moins 60 jours pour maladie ou accident non professionnel ; elle a lieu au plus tard dans les huit jours de la reprise et met fin à la suspension du contrat.", "src": "C. trav., art. R. 4624-31 (décret n° 2022-372 du 16 mars 2022)", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018493140/", "fiab": "stable" },
-    { "t": "<b>Maternité, paternité, accident du travail</b> : congé de maternité de 16 semaines (6 avant et 10 après l'accouchement ; 26 semaines à partir du troisième enfant ; 34 semaines pour des jumeaux). Licenciement interdit pendant la grossesse médicalement constatée, le congé et les dix semaines suivant sa fin, sauf faute grave non liée à l'état de grossesse ou impossibilité de maintenir le contrat pour un motif étranger ; la méconnaissance de cette protection entraîne la nullité. Congé de paternité et d'accueil de l'enfant de 25 jours calendaires (32 en cas de naissances multiples), dont 4 jours obligatoires à la suite du congé de naissance de 3 jours. Pendant la suspension consécutive à un accident du travail, le licenciement n'est possible qu'en cas de faute grave ou d'impossibilité de maintenir le contrat pour un motif étranger à l'accident.", "src": "C. trav., art. L. 1225-4, L. 1225-17 à L. 1225-19, L. 1225-35, L. 3142-4 et L. 1226-9", "url": null, "fiab": "stable" },
-    { "t": "<b>Sanctions administratives en matière de durée du travail</b> : sur rapport d'un agent de contrôle de l'inspection du travail et en l'absence de poursuites pénales, l'autorité administrative peut adresser un avertissement ou prononcer une amende pour manquement aux durées maximales de travail, aux repos, au SMIC et aux minima conventionnels étendus, ou à l'établissement du document unique d'évaluation des risques.", "src": "C. trav., art. L. 8115-1 à L. 8115-8", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/2019-11-04", "fiab": "stable" }
+    {
+     "t": "<b>Durée légale et heures supplémentaires</b> : toute heure accomplie au-delà de la durée légale hebdomadaire de 35 heures est une heure supplémentaire qui ouvre droit à une majoration salariale ou, le cas échéant, à un repos compensateur équivalent. Un accord d'entreprise ou, à défaut, de branche fixe le taux de majoration, qui ne peut être inférieur à 10 % ; à défaut d'accord, 25 % pour chacune des huit premières heures et 50 % pour les suivantes. À défaut d'accord, le contingent annuel est de 220 heures par salarié et la contrepartie obligatoire en repos due pour les heures accomplies au-delà est de 50 % dans les entreprises de vingt salariés au plus et de 100 % dans les autres.",
+     "src": "C. trav., art. L. 3121-27, L. 3121-28, L. 3121-30, L. 3121-33, L. 3121-36, L. 3121-38 et L. 3121-39 ; D. 3121-24",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033020349",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Durées maximales et repos</b> : 10 heures par jour (12 heures au plus par accord), 48 heures au cours d'une même semaine, 44 heures en moyenne sur 12 semaines consécutives (46 heures par accord) ; repos quotidien de 11 heures consécutives ; repos hebdomadaire de 24 heures consécutives auxquelles s'ajoutent les heures de repos quotidien, donné le dimanche dans l'intérêt des salariés ; pause de 20 minutes consécutives dès que le temps de travail quotidien atteint 6 heures.",
+     "src": "C. trav., art. L. 3121-16, L. 3121-18 à L. 3121-23, L. 3131-1, L. 3132-2 et L. 3132-3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Forfait annuel en jours</b> : mis en place par un accord collectif d'entreprise ou, à défaut, de branche ; il requiert l'accord du salarié et une convention individuelle de forfait établie par écrit. Il est ouvert aux cadres autonomes que la nature de leurs fonctions ne conduit pas à suivre l'horaire collectif et aux salariés dont la durée du travail ne peut être prédéterminée et qui disposent d'une réelle autonomie. Le nombre de jours fixé par l'accord ne peut dépasser 218 par an ; le salarié peut, en accord avec l'employeur, renoncer à une partie de ses jours de repos moyennant une majoration d'au moins 10 % ; l'employeur s'assure régulièrement que la charge de travail est raisonnable.",
+     "src": "C. trav., art. L. 3121-55, L. 3121-58 à L. 3121-60, L. 3121-63 et L. 3121-64",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Congés payés : acquisition et prise</b> : 2,5 jours ouvrables par mois de travail effectif, dans la limite de 30 jours ouvrables. Depuis la loi n° 2024-364 du 22 avril 2024, les arrêts pour maladie ou accident non professionnel ouvrent droit à 2 jours ouvrables par mois dans la limite de 24 jours par période de référence, et les arrêts pour accident du travail ou maladie professionnelle sont assimilés à du travail effectif sans limite de durée ; les congés non pris du fait d'une maladie ou d'un accident bénéficient d'une période de report de 15 mois. La période de prise comprend dans tous les cas le 1er mai – 31 octobre ; le congé pris en une fois ne peut excéder 24 jours ouvrables et une fraction d'au moins 12 jours ouvrables continus est due ; à défaut d'accord, la prise hors période ouvre droit à des jours de fractionnement (2 jours pour 6 jours ou plus, 1 jour pour 3 à 5 jours).",
+     "src": "C. trav., art. L. 3141-3, L. 3141-5, L. 3141-5-1, L. 3141-13, L. 3141-17, L. 3141-18, L. 3141-19-1 et L. 3141-23",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178009/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Indemnité de congés payés</b> : égale au dixième de la rémunération brute totale perçue pendant la période de référence, sans pouvoir être inférieure à la rémunération que le salarié aurait perçue s'il avait continué à travailler (règle du maintien de salaire) ; à la rupture, la fraction de congé non prise donne lieu à une indemnité compensatrice.",
+     "src": "C. trav., art. L. 3141-24 et L. 3141-28",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178009/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Paiement du salaire et bulletin de paie</b> : la rémunération est mensuelle et payée une fois par mois, un acompte correspondant à une quinzaine étant versé au salarié qui le demande ; l'employeur remet un bulletin de paie, qu'il peut remettre sous forme électronique sauf opposition du salarié ; l'acceptation sans protestation ni réserve du bulletin ne vaut pas renonciation au paiement des sommes dues.",
+     "src": "C. trav., art. L. 3242-1, L. 3243-2 et L. 3243-3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Saisie des rémunérations</b> : les sommes dues à titre de rémunération ne sont saisissables ou cessibles que dans des proportions et selon des seuils de rémunération fixés par décret en Conseil d'État (barème progressif par tranches) ; une somme égale au montant forfaitaire du revenu de solidarité active pour une personne seule est, dans tous les cas, laissée à la disposition du salarié.",
+     "src": "C. trav., art. L. 3252-2 et L. 3252-5 ; R. 3252-2 et R. 3252-5",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Limites du pouvoir de direction</b> : nul ne peut apporter aux droits des personnes et aux libertés individuelles et collectives de restrictions qui ne seraient pas justifiées par la nature de la tâche à accomplir ni proportionnées au but recherché ; le règlement intérieur ne peut contenir de telles restrictions ni de dispositions discriminatoires.",
+     "src": "C. trav., art. L. 1121-1 et L. 1321-3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160716/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Échelle des sanctions</b> : le règlement intérieur, obligatoire dans les entreprises d'au moins cinquante salariés, est un document écrit par lequel l'employeur fixe exclusivement les mesures de santé et de sécurité, les conditions de participation au rétablissement de conditions de travail protectrices et les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions qu'il peut prendre.",
+     "src": "C. trav., art. L. 1311-2 et L. 1321-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901432",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Procédure disciplinaire</b> : aucune sanction ne peut être prise sans que le salarié soit informé, dans le même temps et par écrit, des griefs retenus contre lui ; sauf pour un avertissement ou une sanction de même nature sans incidence sur la présence, la fonction, la carrière ou la rémunération, l'employeur convoque le salarié à un entretien préalable en précisant l'objet de la convocation, et la sanction, motivée et notifiée, intervient au moins deux jours ouvrables et au plus un mois après le jour fixé pour l'entretien. Aucun fait fautif ne peut à lui seul donner lieu à poursuites disciplinaires au-delà de deux mois à compter du jour où l'employeur en a eu connaissance, sauf poursuites pénales engagées dans ce délai ; aucune sanction antérieure de plus de trois ans ne peut être invoquée. Le conseil de prud'hommes peut annuler une sanction irrégulière en la forme, injustifiée ou disproportionnée, sauf s'il s'agit d'un licenciement.",
+     "src": "C. trav., art. L. 1332-1, L. 1332-2, L. 1332-4, L. 1332-5, L. 1333-1 à L. 1333-3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145394/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Modification du contrat et changement des conditions de travail</b> : le contrat de travail est soumis aux règles du droit commun et ne peut être modifié que du consentement mutuel des parties ; la modification d'un élément essentiel du contrat requiert donc l'accord du salarié. En revanche, le refus du salarié de continuer ou de reprendre le travail après un changement de ses conditions de travail décidé par l'employeur dans l'exercice de son pouvoir de direction est fautif et peut être sanctionné par un licenciement ; à défaut de licenciement, le contrat n'est pas rompu.",
+     "src": "C. trav., art. L. 1221-1 ; C. civ., art. 1193 ; Cass. soc., 10 juillet 1996, n° 93-41.137, publié au bulletin",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007037817/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Modification pour motif économique</b> : lorsque l'employeur envisage de modifier un élément essentiel du contrat pour l'un des motifs économiques de l'article L. 1233-3, il en fait la proposition au salarié par lettre recommandée avec avis de réception ; le salarié dispose d'un mois à compter de la réception (quinze jours en redressement ou liquidation judiciaire) pour faire connaître son refus ; à défaut de réponse dans ce délai, il est réputé avoir accepté la modification.",
+     "src": "C. trav., art. L. 1222-6",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Accord de performance collective</b> : pour répondre aux nécessités liées au fonctionnement de l'entreprise ou pour préserver ou développer l'emploi, un accord d'entreprise peut aménager la durée du travail, la rémunération et les conditions de la mobilité professionnelle ou géographique interne ; ses stipulations se substituent de plein droit aux clauses contraires et incompatibles du contrat. Le salarié dispose d'un mois pour refuser par écrit ; l'employeur dispose de deux mois à compter de la notification du refus pour engager un licenciement.",
+     "cite": "« Ce licenciement repose sur un motif spécifique qui constitue une cause réelle et sérieuse. »",
+     "src": "C. trav., art. L. 2254-2",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Maintien de salaire en cas de maladie</b> : le salarié ayant une année d'ancienneté, qui justifie de son incapacité dans les 48 heures, est pris en charge par la sécurité sociale et soigné en France ou dans l'Union européenne ou l'Espace économique européen, perçoit une indemnité complémentaire : 90 % de la rémunération brute pendant les trente premiers jours, puis deux tiers pendant les trente jours suivants, ces durées étant augmentées de dix jours par période entière de cinq ans d'ancienneté au-delà de la première année, sans pouvoir dépasser quatre-vingt-dix jours chacune. L'indemnisation court à compter du premier jour d'absence en cas d'accident du travail ou de maladie professionnelle (à l'exclusion des accidents de trajet) et du huitième jour dans les autres cas ; les indemnités journalières de sécurité sociale et la part employeur des prestations de prévoyance sont déduites.",
+     "cite": "« Les durées d'indemnisation sont augmentées de dix jours par période entière de cinq ans d'ancienneté en plus de la durée d'une année requise à l'article L. 1226-1… »",
+     "src": "C. trav., art. L. 1226-1, D. 1226-1 à D. 1226-3 et D. 1226-5",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000018537772/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Inaptitude et reclassement</b> : l'employeur propose au salarié déclaré inapte un autre emploi approprié à ses capacités, au sein de l'entreprise ou des entreprises du groupe, en prenant en compte, après avis du CSE, les conclusions écrites du médecin du travail ; il en est dispensé si l'avis mentionne expressément que tout maintien du salarié dans un emploi serait gravement préjudiciable à sa santé ou que son état de santé fait obstacle à tout reclassement. Faute de reclassement ou de licenciement dans le délai d'un mois suivant l'examen médical de reprise, l'employeur verse le salaire correspondant à l'emploi occupé avant la suspension. En cas d'inaptitude d'origine professionnelle, le licenciement ouvre droit à une indemnité compensatrice d'un montant égal à l'indemnité de préavis et à une indemnité spéciale de licenciement égale, sauf disposition conventionnelle plus favorable, au double de l'indemnité légale.",
+     "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-11, L. 1226-12 et L. 1226-14",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Visite de reprise</b> : examen par le médecin du travail après un congé de maternité, une absence pour maladie professionnelle, une absence d'au moins 30 jours pour accident du travail ou d'au moins 60 jours pour maladie ou accident non professionnel ; dès qu'il connaît la date de fin de l'arrêt, l'employeur saisit le service de prévention et de santé au travail, qui organise l'examen le jour de la reprise effective et au plus tard dans les huit jours qui suivent. Depuis le 15 juin 2026, la visite de reprise n'est pas requise lorsque le travailleur a bénéficié d'une visite de préreprise dans les 30 jours précédant la reprise et que le médecin du travail a conclu qu'aucun aménagement n'était nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
+     "src": "C. trav., art. R. 4624-31 à R. 4624-33 (décret n° 2022-372 du 16 mars 2022 ; décret n° 2026-503 du 12 juin 2026)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000045369250/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Maternité</b> : congé de 16 semaines (6 avant et 10 après l'accouchement), porté à 26 semaines à partir du troisième enfant et à 34 semaines pour des jumeaux. L'employeur ne peut rompre le contrat pendant la grossesse médicalement constatée, le congé de maternité, les congés payés pris immédiatement après et les dix semaines suivantes, sauf faute grave non liée à l'état de grossesse ou impossibilité de maintenir le contrat pour un motif étranger à la grossesse ou à l'accouchement ; même dans ces cas, la rupture ne peut ni prendre effet ni être signifiée pendant le congé de maternité. Le licenciement prononcé en méconnaissance de cette protection est nul.",
+     "src": "C. trav., art. L. 1225-4, L. 1225-17 à L. 1225-19 et L. 1235-3-1",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Paternité et accident du travail</b> : le congé de paternité et d'accueil de l'enfant est de 25 jours calendaires (32 en cas de naissances multiples), dont une période de 4 jours calendaires consécutifs faisant immédiatement suite au congé de naissance de 3 jours. Pendant la suspension consécutive à un accident du travail ou à une maladie professionnelle, l'employeur ne peut rompre le contrat que s'il justifie d'une faute grave ou de son impossibilité de maintenir le contrat pour un motif étranger à l'accident ou à la maladie.",
+     "src": "C. trav., art. L. 1225-35, L. 3142-4 et L. 1226-9",
+     "url": null,
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Sanctions administratives en matière de durée du travail et de salaire</b> : sur rapport d'un agent de contrôle de l'inspection du travail et en l'absence de poursuites pénales, l'autorité administrative peut adresser un avertissement ou prononcer une amende pour manquement aux durées maximales du travail, aux repos, au décompte de la durée du travail, au SMIC et aux salaires minima conventionnels étendus, aux obligations relatives aux installations sanitaires, à la restauration et à l'hébergement, ou au document unique d'évaluation des risques. L'amende est de 4 000 € au plus, appliquée autant de fois qu'il y a de travailleurs concernés ; ce plafond est doublé en cas de nouveau manquement dans les deux ans suivant la notification d'une amende et majoré de 50 % en cas de nouveau manquement dans l'année suivant un avertissement.",
+     "src": "C. trav., art. L. 8115-1 et L. 8115-3",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Chiffres et seuils",
    "items": [
-    { "t": "<b>SMIC en 2025</b> : 11,88 € bruts de l'heure, soit 1 801,80 € bruts par mois pour 35 heures hebdomadaires (151,67 heures), montant issu de la revalorisation anticipée du 1er novembre 2024 et maintenu au 1er janvier 2025. Le montant applicable à une année donnée doit être vérifié dans le décret de revalorisation de l'année.", "src": "Décret n° 2024-951 du 23 octobre 2024 portant relèvement du salaire minimum de croissance ; C. trav., art. L. 3231-2", "url": null, "fiab": "millésimé 2025" },
-    { "t": "<b>Prescription des salaires : 3 ans</b> à compter du jour où celui qui l'exerce a connu ou aurait dû connaître les faits ; la demande porte sur les trois dernières années ou, si le contrat est rompu, sur les trois années précédant la rupture.", "cite": "« La demande peut porter sur les sommes dues au titre des trois dernières années à compter de ce jour ou, lorsque le contrat de travail est rompu, sur les sommes dues au titre des trois années précédant la rupture du contrat. »", "src": "C. trav., art. L. 3245-1", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027566295", "fiab": "stable" },
-    { "t": "<b>Prescription des actions sur l'exécution du contrat : 2 ans</b> (sanction disciplinaire contestée, modification du contrat, manquement à l'obligation de sécurité), sauf les actions en paiement de salaire (3 ans) et celles fondées sur la discrimination ou le harcèlement (5 ans).", "cite": "« Toute action portant sur l'exécution du contrat de travail se prescrit par deux ans à compter du jour où celui qui l'exerce a connu ou aurait dû connaître les faits lui permettant d'exercer son droit. »", "src": "C. trav., art. L. 1471-1 ; L. 1134-5", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126", "fiab": "stable" }
+    {
+     "t": "<b>SMIC en 2026</b> : 12,02 € bruts de l'heure au 1er janvier 2026, soit 1 823,03 € bruts par mois pour 35 heures hebdomadaires (décret n° 2025-1228 du 17 décembre 2025) ; porté à 12,31 € bruts de l'heure à compter du 1er juin 2026, soit 1 867,02 € bruts par mois (arrêté du 22 mai 2026).",
+     "src": "Décret n° 2025-1228 du 17 décembre 2025 ; arrêté du 22 mai 2026 ; C. trav., art. L. 3231-2 et s.",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054126589",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>SMIC en 2025</b> : 11,88 € bruts de l'heure, soit 1 801,80 € bruts par mois pour 35 heures hebdomadaires, montant issu de la revalorisation anticipée du 1er novembre 2024 et maintenu au 1er janvier 2025.",
+     "src": "Décret n° 2024-951 du 23 octobre 2024 portant relèvement du salaire minimum de croissance ; C. trav., art. L. 3231-5",
+     "url": null,
+     "fiab": "millésimé 2025"
+    },
+    {
+     "t": "<b>Prescription des salaires : 3 ans</b> à compter du jour où celui qui exerce l'action a connu ou aurait dû connaître les faits lui permettant de l'exercer ; la demande peut porter sur les sommes dues au titre des trois dernières années à compter de ce jour ou, si le contrat est rompu, des trois années précédant la rupture.",
+     "src": "C. trav., art. L. 3245-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027566295",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Prescription des actions portant sur l'exécution du contrat : 2 ans</b> à compter du jour où celui qui l'exerce a connu ou aurait dû connaître les faits lui permettant d'exercer son droit. Ce délai ne s'applique pas aux actions en réparation d'un dommage corporel causé à l'occasion de l'exécution du contrat, aux actions en paiement ou en répétition du salaire (3 ans) ni aux actions fondées sur la discrimination ou sur le harcèlement moral ou sexuel.",
+     "src": "C. trav., art. L. 1471-1 ; L. 3245-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Congé supplémentaire de naissance : indemnisation en 2026</b> : l'assurance maladie verse une indemnité journalière égale à 70 % du salaire net le premier mois et à 60 % le second, dans la limite du plafond mensuel de la sécurité sociale (4 005 € en 2026), soit au plus 72,81 € par jour le premier mois et 62,41 € le second. Le salarié doit justifier de 6 mois d'affiliation à la sécurité sociale et d'une condition d'activité (par exemple 150 heures de travail au cours des 3 mois civils précédant le congé).",
+     "src": "Décrets n° 2026-425 et n° 2026-426 du 30 mai 2026 ; ameli.fr, « Congé supplémentaire de naissance »",
+     "url": "https://www.ameli.fr/entreprise/vos-salaries/evenements-familiaux/conge-supplementaire-naissance",
+     "fiab": "millésimé 2026"
+    }
    ]
   },
   {
    "h": "Ce qui a changé récemment",
    "items": [
-    { "t": "<b>Loi n° 2024-364 du 22 avril 2024 (art. 37)</b> : mise en conformité du droit français avec le droit de l'Union européenne sur les congés payés et la maladie : acquisition de 2 jours ouvrables par mois pendant un arrêt pour maladie ou accident non professionnel (24 jours par période au plus), 2,5 jours pendant un arrêt d'origine professionnelle sans limitation, report de 15 mois des congés non pris et obligation d'information du salarié dans le mois suivant la reprise ; application rétroactive encadrée au 1er décembre 2009.", "src": "C. trav., art. L. 3141-5, L. 3141-5-1, L. 3141-19-1 à L. 3141-19-3 (loi n° 2024-364 du 22 avril 2024)", "url": null, "fiab": "stable" },
-    { "t": "<b>Partage de la valeur</b> : la prime de partage de la valeur (loi n° 2022-1158 du 16 août 2022) est exonérée de cotisations sociales dans la limite de 3 000 € par an et par bénéficiaire (6 000 € en présence d'un accord d'intéressement ou de participation). La loi n° 2023-1107 du 29 novembre 2023 impose, à titre expérimental pendant cinq ans à compter du 1er janvier 2025, aux entreprises de 11 à moins de 50 salariés dont le bénéfice net fiscal atteint au moins 1 % du chiffre d'affaires pendant trois exercices consécutifs de mettre en place un dispositif de partage de la valeur (participation, intéressement, abondement d'un plan d'épargne ou PPV).", "src": "Loi n° 2022-1158 du 16 août 2022, art. 1 ; loi n° 2023-1107 du 29 novembre 2023, art. 5", "url": null, "fiab": "stable" },
-    { "t": "<b>Décret n° 2022-372 du 16 mars 2022</b> : la visite de reprise après un arrêt pour maladie ou accident non professionnel n'est obligatoire qu'à partir de 60 jours d'absence (30 jours pour un accident du travail), et une visite de pré-reprise peut être organisée dès 30 jours d'arrêt.", "src": "C. trav., art. R. 4624-29 et R. 4624-31", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018493140/", "fiab": "stable" },
-    { "t": "<b>Accord de performance collective (2026)</b> : la Cour de cassation limite l'APC à ses objets légaux (durée du travail, rémunération, mobilité interne) ; le licenciement consécutif au refus d'un APC comportant d'autres clauses est sans cause réelle et sérieuse.", "cite": "« le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord de performance collective comportant des dispositions étrangères à ces objets et modifiant son contrat de travail, est sans cause réelle et sérieuse »", "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin", "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543", "fiab": "stable" }
+    {
+     "t": "<b>Congé supplémentaire de naissance (en vigueur depuis le 1er juillet 2026)</b> : institué par la loi de financement de la sécurité sociale pour 2026, il permet au salarié de prendre, au choix, un ou deux mois de congé, fractionnables en deux périodes d'un mois, les parents pouvant le prendre en même temps ou en alternance ; il débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant (pour les enfants nés entre le 1er janvier et le 30 juin 2026, ce délai court à compter du 1er juillet 2026). Le salarié prévient l'employeur un mois à l'avance, quinze jours lorsque le congé suit immédiatement le congé de paternité, d'accueil ou d'adoption.",
+     "src": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 (loi n° 2025-1403 du 30 décembre 2025) ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000053271681/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Accord de performance collective (Cass. soc., 28 mai 2026)</b> : l'effet substitutif de l'APC ne vaut que pour ses stipulations relatives à la durée du travail, à la rémunération ou à la mobilité interne ; des clauses étrangères à ces objets (obligation de résidence, non-concurrence, licenciement en cas de perte d'habilitation) ne peuvent fonder le licenciement du salarié qui les refuse.",
+     "cite": "« le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord de performance collective comportant des dispositions étrangères à ces objets et modifiant son contrat de travail, est sans cause réelle et sérieuse »",
+     "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin ; C. trav., art. L. 2254-2",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Visites de préreprise et de reprise</b> : le décret n° 2022-372 du 16 mars 2022 a réservé la visite de reprise après maladie ou accident non professionnel aux absences d'au moins 60 jours (30 jours pour un accident du travail) et ouvert la visite de préreprise aux arrêts de plus de 30 jours. Le décret n° 2026-503 du 12 juin 2026 (en vigueur le 15 juin 2026) dispense de visite de reprise le travailleur ayant bénéficié d'une visite de préreprise dans les 30 jours précédant la reprise lorsque le médecin du travail a conclu qu'aucun aménagement n'était nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
+     "src": "C. trav., art. R. 4624-29 à R. 4624-31",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000045369248/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Règlement intérieur (loi n° 2026-403 du 26 mai 2026, art. 5)</b> : depuis le 28 mai 2026, l'article L. 1321-4 ne vise plus les formalités de dépôt ; le règlement intérieur, qui fixe l'échelle des sanctions, entre en vigueur un mois après les formalités de publicité, le dépôt au greffe du conseil de prud'hommes restant prévu par l'article R. 1321-2.",
+     "cite": "« Cette date doit être postérieure d'un mois à l'accomplissement des formalités de publicité. »",
+     "src": "Loi n° 2026-403 du 26 mai 2026, art. 5 ; C. trav., art. L. 1321-4 et R. 1321-2",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054131386",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2024-364 du 22 avril 2024 (art. 37)</b> : mise en conformité avec le droit de l'Union européenne des congés payés en cas de maladie : 2 jours ouvrables par mois d'arrêt pour maladie ou accident non professionnel (24 jours par période au plus), assimilation des arrêts pour accident du travail ou maladie professionnelle à du travail effectif sans limite de durée, report de 15 mois des congés non pris et information du salarié par l'employeur dans le mois suivant la reprise. La loi s'applique aux périodes courant depuis le 1er décembre 2009, l'action des salariés en poste devant être engagée dans les deux ans suivant son entrée en vigueur.",
+     "src": "C. trav., art. L. 3141-5, L. 3141-5-1, L. 3141-19-1 à L. 3141-19-3 (loi n° 2024-364 du 22 avril 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049459068",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Partage de la valeur</b> : la prime de partage de la valeur (loi n° 2022-1158 du 16 août 2022) est exonérée de cotisations sociales dans la limite de 3 000 € par an et par bénéficiaire (6 000 € en présence d'un accord d'intéressement ou de participation). Pour les exercices ouverts à compter du 1er janvier 2025, la loi n° 2023-1107 du 29 novembre 2023 expérimente pendant cinq ans un dispositif obligatoire dans les entreprises d'au moins onze salariés non tenues à la participation qui ont réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires : participation, intéressement, abondement d'un plan d'épargne salariale ou prime de partage de la valeur.",
+     "src": "Loi n° 2022-1158 du 16 août 2022, art. 1 ; loi n° 2023-1107 du 29 novembre 2023, art. 5",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048480574",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Points de vigilance",
    "items": [
-    { "t": "<b>Point de départ de la prescription des salaires</b> : le délai de trois ans court à compter de la date à laquelle la créance salariale est devenue exigible, c'est-à-dire, pour un salaire, à la date habituelle de paiement.", "src": "Cass. soc., 7 mai 2024, n° 22-24.394, publié au bulletin ; C. trav., art. L. 3245-1", "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000049533652/", "fiab": "stable" },
-    { "t": "<b>Frais professionnels ≠ salaire</b> : la demande de remboursement de frais professionnels n'a pas la nature d'une créance salariale ; elle relève de la prescription biennale de l'article L. 1471-1 et non de la prescription triennale des salaires.", "src": "Cass. soc., 20 novembre 2019, n° 18-20.208, publié au bulletin", "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000039437847?init=true&page=1&query=18-20208&searchField=ALL&tab_selection=all", "fiab": "stable" },
-    { "t": "<b>Majoration des heures supplémentaires et branche</b> : le taux de majoration ne figure pas parmi les matières réservées à la branche ; un accord d'entreprise, même moins favorable, prévaut sur l'accord de branche, dans la limite du plancher légal de 10 %.", "src": "C. trav., art. L. 2253-3 et L. 3121-33", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036262236/2021-12-20", "fiab": "stable" },
-    { "t": "<b>Harcèlement et discrimination : 5 ans</b> pour agir en réparation d'une discrimination à compter de sa révélation ; les actions fondées sur le harcèlement ne relèvent pas de la prescription de deux ans de l'article L. 1471-1.", "cite": "« Les dommages et intérêts réparent l'entier préjudice résultant de la discrimination, pendant toute sa durée. »", "src": "C. trav., art. L. 1134-5, L. 1152-4 et L. 1471-1", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033461494", "fiab": "stable" }
+    {
+     "t": "<b>Point de départ de la prescription des salaires</b> : le délai de trois ans court à compter de la date à laquelle la créance salariale est devenue exigible ; pour un salaire payé mensuellement, c'est la date habituelle du paiement.",
+     "src": "Cass. soc., 7 mai 2024, n° 22-24.394, publié au bulletin ; C. trav., art. L. 3242-1 et L. 3245-1",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000049533652/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Frais professionnels ≠ salaire</b> : la demande de remboursement de frais professionnels n'est pas une action en paiement du salaire ; elle échappe à la prescription triennale de l'article L. 3245-1 et relève de la prescription de deux ans de l'article L. 1471-1.",
+     "src": "Cass. soc., 20 novembre 2019, n° 18-20.208, publié au bulletin",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000039437847?init=true&page=1&query=18-20208&searchField=ALL&tab_selection=all",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Majoration des heures supplémentaires et branche</b> : le taux de majoration est fixé par accord d'entreprise ou, à défaut, de branche ; cette matière ne relève pas des domaines réservés à la branche, de sorte que l'accord d'entreprise prévaut, même moins favorable, dans la limite du plancher légal de 10 %.",
+     "src": "C. trav., art. L. 2253-3 et L. 3121-33",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Discrimination : 5 ans</b> à compter de la révélation de la discrimination pour agir en réparation ; ce délai n'est susceptible d'aucun aménagement conventionnel et les dommages et intérêts réparent l'entier préjudice résultant de la discrimination, pendant toute sa durée. Les actions fondées sur la discrimination ou le harcèlement échappent à la prescription de deux ans de l'article L. 1471-1.",
+     "src": "C. trav., art. L. 1134-5 et L. 1471-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033461494",
+     "fiab": "stable"
+    }
    ]
   }
  ]

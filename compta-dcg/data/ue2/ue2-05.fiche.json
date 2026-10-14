@@ -6,7 +6,7 @@
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
    "Programme 2025 : « 2.4 Adapter la forme sociétaire aux demandes du client » (6 heures)",
-   "Programme 2025 : « 2.5 » dissolution et liquidation (8 heures)",
+   "Programme 2025, point 2.5 (8 heures) : dissolution et liquidation",
    "Programme 2025 : « 3.2 Identifier la forme sociétaire adaptée à la situation du client » (60 heures) ; le rachat par la société de ses propres actions est renvoyé à l'UE 10 du DCG",
    "Programme 2019 : « 1- L'entreprise en société » (40 heures) et « 2- Les principaux types de sociétés » (60 heures)",
    "Exclusion commune : « Les pactes d'associés seront exclus (traités en UE 1 de DSCG) »"
@@ -15,9 +15,9 @@
  "textes": [
   {
    "ref": "C. com., art. L. 225-127 à L. 225-149-4",
-   "objet": "Augmentation de capital de la SA : compétence de l'AGE, délégations, libération préalable, DPS, incorporation de réserves, apports en nature, prescription de l'action en nullité (page du titre II)",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
-   "version": "en vigueur (L. 225-149-4 dans sa rédaction issue de l'ordonnance n° 2025-229, applicable depuis le 1er octobre 2025)"
+   "objet": "Augmentation de capital de la SA : compétence de l'AGE, délégations, libération préalable, DPS, incorporation de réserves, apports en nature, prescription de l'action en nullité (sous-section « De l'augmentation du capital »)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178762/",
+   "version": "en vigueur (L. 225-131 dans sa rédaction issue de l'ordonnance n° 2019-1067, en vigueur depuis le 23 octobre 2019 ; L. 225-149-4 dans sa rédaction issue de l'ordonnance n° 2025-229, applicable depuis le 1er octobre 2025)"
   },
   {
    "ref": "C. com., art. L. 225-132 et L. 225-135",
@@ -50,27 +50,27 @@
    "version": "en vigueur depuis le 11 mars 2023 (loi n° 2023-171 du 9 mars 2023) ; seuils fixés par le décret n° 2023-657 du 25 juillet 2023"
   },
   {
-   "ref": "C. com., art. L. 223-7, L. 223-30 et L. 223-32 à L. 223-34",
-   "objet": "SARL : libération, majorités, augmentation et réduction du capital (page du chapitre III)",
+   "ref": "C. com., art. L. 223-7, L. 223-9, L. 223-30, L. 223-32 à L. 223-34 et L. 223-43",
+   "objet": "SARL : libération (capital intégralement libéré avant toute souscription de parts nouvelles en numéraire, à peine de nullité), majorités, augmentation du capital (apports en nature : renvoi de L. 223-33 à L. 223-9), réduction du capital, transformation (page du chapitre III)",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
-   "version": "en vigueur"
+   "version": "en vigueur (L. 223-33 dans sa rédaction en vigueur depuis le 11 décembre 2016)"
   },
   {
    "ref": "C. civ., art. 1844-3 ; C. com., art. L. 224-3, L. 225-243 à L. 225-245 et L. 227-3",
-   "objet": "Transformation : absence de personne morale nouvelle, conditions propres à la SA, commissaire à la transformation, unanimité pour la SAS",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+   "objet": "Transformation : absence de personne morale nouvelle, conditions propres à la SA, commissaire à la transformation (L. 224-3), unanimité pour la SAS",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539487/",
    "version": "en vigueur"
   },
   {
-   "ref": "C. com., art. L. 236-1 et s.",
-   "objet": "Fusions, scissions et apports partiels d'actifs (page du livre II)",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
-   "version": "rédaction issue de l'ordonnance n° 2023-393 du 24 mai 2023"
+   "ref": "C. com., art. L. 236-1 à L. 236-17 ; R. 236-8",
+   "objet": "Fusions : définition, soulte limitée à 10 %, projet, commissaire à la fusion, fusions simplifiées, opposition des créanciers (trente jours) (page du chapitre VI)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146056/",
+   "version": "rédaction issue de l'ordonnance n° 2023-393 du 24 mai 2023 (L. 236-10 modifié par l'ordonnance n° 2023-1142, en vigueur depuis le 1er janvier 2024) ; R. 236-8 issu du décret n° 2023-430 du 2 juin 2023, en vigueur depuis le 4 juin 2023"
   },
   {
    "ref": "C. com., art. L. 237-1 à L. 237-31",
-   "objet": "Liquidation des sociétés commerciales (page du chapitre VII)",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146057/",
+   "objet": "Liquidation des sociétés commerciales : liquidateur, durée du mandat (trois ans), pouvoirs, clôture",
+   "url": null,
    "version": "en vigueur"
   },
   {
@@ -81,7 +81,7 @@
   },
   {
    "ref": "C. civ., art. 1844-7 à 1844-9",
-   "objet": "Causes de dissolution ; liquidation et personnalité morale ; partage de l'actif",
+   "objet": "Causes de dissolution (huit cas) ; liquidation et personnalité morale ; partage de l'actif",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
    "version": "art. 1844-7 en vigueur depuis le 1er juillet 2014"
   },
@@ -98,10 +98,10 @@
    "version": "livre VIII recodifié par l'ordonnance n° 2023-1142 du 6 décembre 2023, en vigueur depuis le 1er janvier 2024 ; D. 221-5 issu du décret n° 2024-152 du 28 février 2024"
   },
   {
-   "ref": "CGI, art. 746",
-   "objet": "Droit de partage de 2,50 % sur les partages entre coassociés",
-   "url": null,
-   "version": "en vigueur"
+   "ref": "CGI, art. 746 et 747 ; BOI-ENR-AVS-30-20-10",
+   "objet": "Droit de partage de 2,50 % sur les partages entre coassociés, liquidé sur l'actif net partagé (actif brut diminué du passif)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041470472",
+   "version": "art. 746 en vigueur depuis le 1er janvier 2021 (loi n° 2019-1479 du 28 décembre 2019 de finances pour 2020) ; BOI-ENR-AVS-30-20-10 du 7 juin 2018"
   }
  ],
  "sections": [
@@ -111,7 +111,7 @@
     {
      "t": "<b>Augmentation de capital</b> : le capital social est augmenté soit par émission d'actions ordinaires ou de préférence, soit par majoration du montant nominal des titres de capital existants. Les titres nouveaux sont libérés notamment en numéraire, y compris par compensation avec des créances liquides et exigibles sur la société, par apport en nature ou par incorporation de réserves, bénéfices ou primes d'émission. L'assemblée générale extraordinaire est seule compétente pour décider l'augmentation, sur le rapport du conseil d'administration ou du directoire.",
      "src": "C. com., art. L. 225-127, L. 225-128 et L. 225-129",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178762/",
      "fiab": "stable"
     },
     {
@@ -128,9 +128,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Fusion et scission</b> : une ou plusieurs sociétés peuvent, par voie de fusion, transmettre leur patrimoine à une société existante ou nouvelle ; une société peut, par voie de scission, transmettre son patrimoine à plusieurs sociétés. La fusion ou la scission entraîne la dissolution sans liquidation des sociétés qui disparaissent et la transmission universelle de leur patrimoine aux sociétés bénéficiaires.",
-     "src": "C. com., art. L. 236-1 et L. 236-3",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "t": "<b>Fusion et scission</b> : une ou plusieurs sociétés peuvent, par voie de fusion, transmettre leur patrimoine à une société existante ou nouvelle ; une société peut, par voie de scission, transmettre son patrimoine à plusieurs sociétés. Les associés des sociétés qui transmettent leur patrimoine reçoivent des parts ou des actions des sociétés bénéficiaires et, éventuellement, une soulte en espèces limitée à 10 % de la valeur nominale des titres attribués. La fusion ou la scission entraîne la dissolution sans liquidation des sociétés qui disparaissent et la transmission universelle de leur patrimoine aux sociétés bénéficiaires.",
+     "cite": "« Les associés des sociétés qui transmettent leur patrimoine reçoivent des parts ou des actions des sociétés bénéficiaires et, éventuellement, une soulte en espèces dont le montant ne peut dépasser 10 % de la valeur nominale des parts ou des actions attribuées. »",
+     "src": "C. com., art. L. 236-1 et L. 236-3 (ordonnance n° 2023-393 du 24 mai 2023)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161298/",
      "fiab": "stable"
     },
     {
@@ -141,9 +142,8 @@
     },
     {
      "t": "<b>Boni de liquidation</b> : excédent d'actif qui subsiste après paiement des dettes et remboursement du capital social ; il est partagé entre les associés dans les mêmes proportions que leur participation aux bénéfices, sauf clause ou convention contraire.",
-     "cite": "« Après paiement des dettes et remboursement du capital social, le partage de l'actif est effectué entre les associés dans les mêmes proportions que leur participation aux bénéfices, sauf clause ou convention contraire. »",
      "src": "C. civ., art. 1844-9",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444190",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006118123/",
      "fiab": "stable"
     }
    ]
@@ -159,22 +159,22 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Augmentation en numéraire (SARL)</b> : le dernier alinéa de l'article L. 223-7 s'applique : le capital doit être intégralement libéré avant toute souscription de nouvelles parts sociales à libérer en numéraire. Les parts nouvelles sont libérées d'un quart au moins de leur valeur nominale lors de la souscription, le solde dans les cinq ans suivant la date à laquelle l'augmentation est devenue définitive.",
-     "cite": "« En cas d'augmentation de capital par souscription de parts sociales en numéraire, les dispositions du dernier alinéa de l'article L. 223-7 sont applicables. »",
-     "src": "C. com., art. L. 223-32 et L. 223-7",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000025559543",
+     "t": "<b>Augmentation en numéraire (SARL)</b> : le dernier alinéa de l'article L. 223-7 s'applique : le capital doit être intégralement libéré avant toute souscription de nouvelles parts sociales à libérer en numéraire, à peine de nullité de l'opération. Les parts nouvelles sont libérées d'un quart au moins de leur valeur nominale lors de la souscription, le solde dans les cinq ans suivant la date à laquelle l'augmentation est devenue définitive.",
+     "cite": "« Le capital social doit être intégralement libéré avant toute souscription de nouvelles parts sociales à libérer en numéraire, à peine de nullité de l'opération. »",
+     "src": "C. com., art. L. 223-7 (dernier alinéa) et L. 223-32",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
      "fiab": "stable"
     },
     {
      "t": "<b>Compétence et délégation (SA)</b> : l'assemblée générale extraordinaire est seule compétente pour décider, sur le rapport du conseil d'administration ou du directoire, une augmentation de capital immédiate ou à terme. Elle peut déléguer au conseil ou au directoire sa compétence pour décider l'opération, en fixant la durée de la délégation, qui ne peut excéder 26 mois, et le plafond global de l'augmentation ; elle peut aussi ne leur déléguer que le pouvoir d'en fixer les modalités.",
      "src": "C. com., art. L. 225-129, L. 225-129-1 et L. 225-129-2",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178762/",
      "fiab": "stable"
     },
     {
      "t": "<b>Suppression du DPS</b> : l'assemblée qui décide ou autorise une augmentation de capital peut supprimer le droit préférentiel de souscription pour la totalité de l'augmentation ou pour une ou plusieurs tranches ; elle statue sur le rapport du conseil d'administration ou du directoire et sur celui du commissaire aux comptes. La suppression peut bénéficier à une ou plusieurs personnes nommément désignées ou à des catégories de personnes répondant à des caractéristiques déterminées.",
      "src": "C. com., art. L. 225-135 et L. 225-138",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178762/",
      "fiab": "stable"
     },
     {
@@ -185,9 +185,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Apports en nature en cours de vie sociale (SA)</b> : un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice ; ils apprécient sous leur responsabilité la valeur des apports en nature et les avantages particuliers. Si l'assemblée réduit l'évaluation des apports, l'approbation expresse des apporteurs est requise ; à défaut, l'augmentation de capital n'est pas réalisée. Les titres émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission.",
+     "t": "<b>Apports en nature en cours de vie sociale</b> : dans la SA, un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice ; ils apprécient sous leur responsabilité la valeur des apports en nature et les avantages particuliers. Si l'assemblée réduit l'évaluation des apports, l'approbation expresse des apporteurs est requise, à défaut de quoi l'augmentation de capital n'est pas réalisée ; les titres émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission. Dans la SARL, l'article L. 223-9 s'applique à l'augmentation de capital par apports en nature : le commissaire aux apports est désigné à l'unanimité des associés ou, à défaut, par décision de justice, et, sans commissaire ou si la valeur retenue diffère de celle qu'il a proposée, les gérants et les souscripteurs de l'augmentation sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur attribuée aux apports.",
      "cite": "« Les titres de capital émis en rémunération d'un apport en nature sont intégralement libérés dès leur émission. »",
-     "src": "C. com., art. L. 225-147",
+     "src": "C. com., art. L. 225-147 ; L. 223-33 et L. 223-9",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539465",
      "fiab": "stable"
     },
@@ -212,7 +212,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Capitaux propres inférieurs à la moitié du capital social</b> (SARL : L. 223-42 ; SA : L. 225-248) : dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte, les associés décident s'il y a lieu à dissolution anticipée, et la décision est publiée. À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ; si elle ne l'a pas fait et que son capital dépasse un seuil fixé par décret, elle doit, au plus tard à la clôture du deuxième exercice suivant, réduire son capital pour le ramener au plus à ce seuil. À défaut, tout intéressé peut demander en justice la dissolution. Ces règles ne s'appliquent pas aux sociétés en sauvegarde ou en redressement judiciaire.",
+     "t": "<b>Capitaux propres inférieurs à la moitié du capital social</b> (SARL : L. 223-42 ; SA : L. 225-248) : dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte, les associés décident s'il y a lieu à dissolution anticipée, et la décision est publiée. À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital ; si les capitaux propres ne sont pas reconstitués et que son capital dépasse un seuil fixé par décret, elle doit, au plus tard à la clôture du deuxième exercice suivant, réduire son capital pour le ramener au plus à ce seuil. À défaut, tout intéressé peut demander en justice la dissolution. Ces règles ne s'appliquent pas aux sociétés en sauvegarde ou en redressement judiciaire.",
      "cite": "« Dans tous les cas, le tribunal peut accorder à la société un délai maximal de six mois pour régulariser sa situation. »",
      "src": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171 du 9 mars 2023) ; R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
@@ -225,25 +225,28 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Transformation en société par actions</b> : lorsqu'une société qui n'a pas de commissaire aux comptes se transforme en société par actions, un ou plusieurs commissaires à la transformation apprécient sous leur responsabilité la valeur des biens composant l'actif social et les avantages particuliers. Dans la SA qui se transforme, la décision est prise sur le rapport des commissaires aux comptes, qui atteste que les capitaux propres sont au moins égaux au capital social.",
+     "t": "<b>Transformation en société par actions</b> : lorsqu'une société qui n'a pas de commissaire aux comptes se transforme en société par actions, un ou plusieurs commissaires à la transformation, désignés, sauf accord unanime des associés, par décision de justice à la demande des dirigeants sociaux, apprécient sous leur responsabilité la valeur des biens composant l'actif social et les avantages particuliers ; les associés statuent sur l'évaluation des biens et l'octroi des avantages particuliers et ne peuvent les réduire qu'à l'unanimité. Dans la SA qui se transforme, la décision est prise sur le rapport des commissaires aux comptes, qui atteste que les capitaux propres sont au moins égaux au capital social.",
+     "cite": "« A défaut d'approbation expresse des associés, mentionnée au procès-verbal, la transformation effectuée en violation du présent article peut être annulée. »",
      "src": "C. com., art. L. 224-3 et L. 225-244",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539487/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Procédure de fusion</b> : les organes de direction des sociétés participantes arrêtent un projet de fusion, déposé au greffe et publié ; un ou plusieurs commissaires à la fusion, désignés par décision de justice, établissent un rapport sur les modalités de la fusion, sauf décision unanime des associés de toutes les sociétés participantes de ne pas en désigner ; la fusion est approuvée par l'assemblée générale extraordinaire de chaque société participante. Elle prend effet, en cas de création d'une société nouvelle, à l'immatriculation de celle-ci et, dans les autres cas, à la date de la dernière assemblée ayant approuvé l'opération, sauf date d'effet différente prévue par le contrat dans les limites légales.",
-     "src": "C. com., art. L. 236-4, L. 236-6, L. 236-9 et L. 236-10",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "t": "<b>Procédure de fusion</b> : les organes de direction des sociétés participantes arrêtent un projet de fusion, déposé au greffe et publié ; un ou plusieurs commissaires à la fusion, désignés par décision de justice, établissent un rapport sur les modalités de la fusion, sauf décision unanime des associés de toutes les sociétés participantes de ne pas en désigner ; la fusion est approuvée par l'assemblée générale extraordinaire de chaque société participante. Les créanciers non obligataires dont la créance est antérieure à la publicité du projet peuvent former opposition dans le délai fixé par décret ; le juge rejette l'opposition ou ordonne le remboursement des créances ou la constitution de garanties, et l'opposition n'interdit pas la poursuite de l'opération. La fusion prend effet, en cas de création d'une société nouvelle, à l'immatriculation de celle-ci et, dans les autres cas, à la date de la dernière assemblée ayant approuvé l'opération, sauf date d'effet différente prévue par le contrat dans les limites légales.",
+     "cite": "« Les créanciers non obligataires des sociétés participant à la fusion et dont la créance est antérieure à la publicité donnée au projet de fusion peuvent former opposition à celui-ci dans le délai fixé par décret en Conseil d'Etat. »",
+     "src": "C. com., art. L. 236-4, L. 236-6, L. 236-9, L. 236-10 et L. 236-15",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047590897",
      "fiab": "stable"
     },
     {
      "t": "<b>Fusion simplifiée</b> : lorsque, du dépôt du projet au greffe jusqu'à la réalisation de l'opération, l'absorbante détient en permanence la totalité des actions de l'absorbée, il n'y a lieu ni à approbation de la fusion par les assemblées générales extraordinaires des sociétés participantes, ni aux rapports des dirigeants et du commissaire à la fusion ; des actionnaires de l'absorbante réunissant au moins 5 % du capital peuvent toutefois demander en justice la désignation d'un mandataire chargé de convoquer son assemblée. Lorsque l'absorbante détient au moins 90 % des droits de vote sans détenir la totalité, l'approbation par l'assemblée de l'absorbante n'est pas requise, sous la même réserve, et les rapports peuvent être écartés si les minoritaires de l'absorbée se voient proposer le rachat de leurs actions.",
      "src": "C. com., art. L. 236-11 et L. 236-11-1",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146056/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Causes de dissolution</b> : la société prend fin notamment par l'expiration du temps pour lequel elle a été constituée, sauf prorogation, par la réalisation ou l'extinction de son objet, par la dissolution anticipée décidée par les associés ou prononcée par le tribunal pour justes motifs à la demande d'un associé, et par l'effet d'un jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif ; les statuts peuvent prévoir d'autres causes.",
+     "t": "<b>Causes de dissolution</b> : la société prend fin par l'expiration du temps pour lequel elle a été constituée, sauf prorogation ; par la réalisation ou l'extinction de son objet ; par l'annulation du contrat de société ; par la dissolution anticipée décidée par les associés ; par la dissolution anticipée prononcée par le tribunal à la demande d'un associé pour justes motifs, ou dans le cas de réunion de toutes les parts en une seule main (art. 1844-5) ; par l'effet d'un jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif ; pour toute autre cause prévue par les statuts.",
+     "cite": "« La société prend fin : 1° Par l'expiration du temps pour lequel elle a été constituée, sauf prorogation effectuée conformément à l'article 1844-6 »",
      "src": "C. civ., art. 1844-7",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
      "fiab": "stable"
@@ -251,7 +254,7 @@
     {
      "t": "<b>Dissolution et liquidation</b> : la société est en liquidation dès l'instant de sa dissolution, sauf fusion, scission ou TUP ; sa dénomination est suivie de la mention « société en liquidation » et sa personnalité morale subsiste pour les besoins de la liquidation jusqu'à la publication de la clôture. Le liquidateur est nommé conformément aux statuts ou, dans leur silence, par les associés ou, à défaut, par décision de justice ; il représente la société, est investi des pouvoirs les plus étendus pour réaliser l'actif, même à l'amiable (les restrictions statutaires étant inopposables aux tiers), et est habilité à payer les créanciers et à répartir le solde disponible. Les associés sont convoqués en fin de liquidation pour statuer sur le compte définitif, le quitus du liquidateur et la décharge de son mandat, et pour constater la clôture.",
      "src": "C. civ., art. 1844-8 ; C. com., art. L. 237-2, L. 237-9 et L. 237-24",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146057/",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444186",
      "fiab": "stable"
     },
     {
@@ -286,8 +289,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Opposition des créanciers</b> à une réduction de capital non motivée par des pertes : <b>vingt jours</b> à compter du dépôt au greffe du procès-verbal de délibération dans la SA, <b>un mois</b> dans la SARL ; opposition à la dissolution entraînant une TUP : <b>trente jours</b> à compter de sa publication.",
-     "src": "C. com., art. L. 225-205, R. 225-152 et R. 223-35 ; C. civ., art. 1844-5",
+     "t": "<b>Opposition des créanciers</b> à une réduction de capital non motivée par des pertes : <b>vingt jours</b> à compter du dépôt au greffe du procès-verbal de délibération dans la SA, <b>un mois</b> dans la SARL ; opposition à une fusion : <b>trente jours</b> à compter de la dernière insertion ou de la mise à disposition du projet de fusion sur le site internet des sociétés ; opposition à la dissolution entraînant une TUP : <b>trente jours</b> à compter de sa publication.",
+     "src": "C. com., art. L. 225-205, R. 225-152, R. 223-35, L. 236-15 et R. 236-8 (décret n° 2023-430 du 2 juin 2023) ; C. civ., art. 1844-5",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178841/",
      "fiab": "stable"
     },
@@ -295,24 +298,26 @@
      "t": "<b>Capitaux propres inférieurs à la moitié du capital</b> : consultation des associés dans les <b>quatre mois</b> de l'approbation des comptes ; reconstitution au plus tard à la clôture du <b>deuxième exercice</b> suivant celui de la constatation des pertes ; seuil de capital au-delà duquel la réduction devient ensuite obligatoire : <b>1 %</b> du total du bilan à la dernière clôture dans la SARL ; dans la SA, le plus élevé de 1 % du total du bilan et du capital minimal de <b>37 000 €</b> ; délai de régularisation que peut accorder le tribunal : <b>six mois</b> au plus.",
      "src": "C. com., art. L. 223-42, L. 225-248, R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023) ; L. 224-2",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047881958",
+     "fiab": "stable",
+     "cite": "« Le seuil de capital social mentionné au quatrième alinéa de l'article L. 223-42 est égal à 1 % du total du bilan de la société »"
+    },
+    {
+     "t": "<b>90 %</b> des droits de vote : seuil du régime simplifié de fusion sans détention de la totalité ; <b>5 %</b> du capital de l'absorbante pour demander en justice la désignation d'un mandataire chargé de convoquer son assemblée ; <b>deux ans</b> d'existence et deux bilans approuvés pour qu'une SA puisse se transformer ; <b>trois ans</b> : durée maximale du mandat du liquidateur, renouvelable par les associés ou par décision de justice selon le mode de nomination.",
+     "src": "C. com., art. L. 236-11-1, L. 236-11, L. 225-243 et L. 237-21",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146056/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Trois ans</b> : durée maximale du mandat du liquidateur, renouvelable par les associés ou par décision de justice selon le mode de nomination ; <b>deux ans</b> d'existence et deux bilans approuvés pour qu'une SA puisse se transformer ; <b>90 %</b> des droits de vote : seuil du régime simplifié de fusion sans détention de la totalité ; <b>5 %</b> du capital de l'absorbante pour demander en justice la convocation de son assemblée.",
-     "src": "C. com., art. L. 237-21, L. 225-243, L. 236-11 et L. 236-11-1",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146057/",
-     "fiab": "stable"
+     "t": "<b>2,50 %</b> : taux du droit d'enregistrement auquel sont assujettis les partages de biens meubles et immeubles entre copropriétaires, cohéritiers et coassociés, à quelque titre que ce soit ; il s'applique au partage de l'actif social entre les associés lors de la liquidation. Le droit est liquidé sur le montant de l'<b>actif net partagé</b>, c'est-à-dire, pour une société soumise à l'impôt sur les sociétés, l'actif brut diminué du passif : il porte donc sur le remboursement des apports comme sur le boni, et non sur le seul boni.",
+     "src": "CGI, art. 746 et 747 ; BOI-ENR-AVS-30-20-10",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041470472",
+     "fiab": "stable",
+     "cite": "« Les partages de biens meubles et immeubles entre copropriétaires, cohéritiers et coassociés, à quelque titre que ce soit, pourvu qu'il en soit justifié, sont assujettis à un droit d'enregistrement ou à une taxe de publicité foncière de 2,50 %. »"
     },
     {
-     "t": "<b>2,50 %</b> : taux du droit d'enregistrement auquel sont assujettis les partages de biens meubles et immeubles entre copropriétaires, cohéritiers et coassociés, à quelque titre que ce soit ; il s'applique au partage de l'actif social entre les associés lors de la liquidation.",
-     "src": "CGI, art. 746",
-     "url": null,
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Seuils du commissaire aux comptes</b> (en vigueur en 2026, exercices ouverts à compter du 1er janvier 2024) : désignation obligatoire lorsque la société dépasse, à la clôture d'un exercice, deux des trois seuils suivants : <span class=\"mono\">5 000 000 €</span> de total du bilan, <span class=\"mono\">10 000 000 €</span> de chiffre d'affaires hors taxes, <span class=\"mono\">50</span> salariés en moyenne. Mandat de <b>six exercices</b> ; il peut être limité à <b>trois exercices</b> lorsque le commissaire est désigné de manière volontaire ou au titre des groupes.",
+     "t": "<b>Seuils du commissaire aux comptes</b> (en vigueur en 2026, exercices ouverts à compter du 1er janvier 2024) : désignation obligatoire lorsque la société dépasse, à la clôture d'un exercice, deux des trois seuils suivants : <span class=\"mono\">5 000 000 €</span> de total du bilan, <span class=\"mono\">10 000 000 €</span> de chiffre d'affaires hors taxes, <span class=\"mono\">50</span> salariés en moyenne. Pour les sociétés contrôlées visées au troisième alinéa de l'article L. 821-43, les seuils sont de <span class=\"mono\">2 500 000 €</span> de total du bilan, <span class=\"mono\">5 000 000 €</span> de chiffre d'affaires hors taxes et <span class=\"mono\">25</span> salariés (D. 821-172). Mandat de <b>six exercices</b> ; il peut être limité à <b>trois exercices</b> lorsque le commissaire est désigné de manière volontaire ou au titre des groupes.",
      "cite": "« La société n'est plus tenue de désigner un commissaire aux comptes dès lors qu'elle n'a pas dépassé les chiffres fixés pour deux de ces trois critères pendant les deux exercices précédant l'expiration du mandat du commissaire aux comptes. »",
-     "src": "C. com., art. D. 221-5 (décret n° 2024-152 du 28 février 2024) ; L. 821-44 et L. 821-46",
+     "src": "C. com., art. D. 221-5 et D. 821-172 (décret n° 2024-152 du 28 février 2024) ; L. 821-43, L. 821-44 et L. 821-46",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
      "fiab": "millésimé 2026"
     }
@@ -328,9 +333,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Ordonnance n° 2023-393 du 24 mai 2023</b> : réforme du régime des fusions, scissions et apports partiels d'actifs du Code de commerce (articles L. 236-1 et suivants) et transposition de la directive (UE) 2019/2121 relative aux transformations, fusions et scissions transfrontalières ; applicable depuis le 1er juillet 2023.",
-     "src": "Ordonnance n° 2023-393 du 24 mai 2023 ; C. com., art. L. 236-1 et s.",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+     "t": "<b>Ordonnance n° 2023-393 du 24 mai 2023</b> : réforme du régime des fusions, scissions, apports partiels d'actifs et opérations transfrontalières des sociétés commerciales (articles L. 236-1 et suivants du Code de commerce, chapitre VI désormais intitulé « De la fusion, de la scission et de l'apport partiel d'actifs ») ; le décret n° 2023-430 du 2 juin 2023 en a tiré les conséquences dans la partie réglementaire (R. 236-8 : opposition des créanciers dans les trente jours). Les nouvelles règles s'appliquent aux opérations dont le projet est déposé au greffe à compter du 1er juillet 2023.",
+     "src": "Ordonnance n° 2023-393 du 24 mai 2023 ; décret n° 2023-430 du 2 juin 2023 ; C. com., art. L. 236-1 et s., R. 236-8",
+     "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000047584074",
      "fiab": "stable"
     },
     {
@@ -341,9 +346,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement, pour tenir compte de l'inflation, des seuils de désignation obligatoire du commissaire aux comptes (art. D. 221-5 : 5 M€ de total du bilan et 10 M€ de chiffre d'affaires, au lieu de 4 M€ et 8 M€ ; effectif inchangé de 50 salariés) ; les mandats en cours se poursuivent jusqu'à leur terme. Depuis le 1er janvier 2024, la désignation et la mission du commissaire aux comptes relèvent des articles L. 821-40 et suivants (ordonnance n° 2023-1142 du 6 décembre 2023).",
+     "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement, pour tenir compte de l'inflation, des seuils de désignation obligatoire du commissaire aux comptes (art. D. 221-5 : 5 M€ de total du bilan et 10 M€ de chiffre d'affaires, au lieu de 4 M€ et 8 M€ ; effectif inchangé de 50 salariés ; sociétés contrôlées, art. D. 821-172 : 2,5 M€ et 5 M€ au lieu de 2 M€ et 4 M€, 25 salariés) ; les mandats en cours se poursuivent jusqu'à leur terme. Depuis le 1er janvier 2024, la désignation et la mission du commissaire aux comptes relèvent des articles L. 821-40 et suivants (ordonnance n° 2023-1142 du 6 décembre 2023).",
      "cite": "« Conformément à l'article 4 du décret n° 2024-152 du 28 février 2024, ces dispositions entrent en vigueur le 1er mars 2024. Ces mêmes dispositions s'appliquent aux comptes et rapports afférents aux exercices ouverts à compter du 1er janvier 2024. »",
-     "src": "Décret n° 2024-152 du 28 février 2024, art. 4 ; C. com., art. D. 221-5 ; ordonnance n° 2023-1142 du 6 décembre 2023",
+     "src": "Décret n° 2024-152 du 28 février 2024, art. 2 et 4 ; C. com., art. D. 221-5 et D. 821-172 ; ordonnance n° 2023-1142 du 6 décembre 2023",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674",
      "fiab": "millésimé 2024"
     }
@@ -365,13 +370,13 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Coup d'accordéon</b> : réduction du capital à zéro pour apurer les pertes, immédiatement suivie d'une augmentation de capital. La jurisprudence l'admet lorsqu'il est conforme à l'intérêt social et que le droit préférentiel de souscription des associés est respecté, même s'il évince ceux qui ne souscrivent pas ; la réduction ne doit pas porter atteinte à l'égalité des actionnaires.",
-     "src": "Cass. com., 17 mai 1994 (Usinor) ; C. com., art. L. 225-204 et L. 225-132",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610466",
+     "t": "<b>Coup d'accordéon</b> : réduction du capital à zéro pour apurer les pertes, immédiatement suivie d'une augmentation de capital. Dans l'affaire Usinor, la Cour de cassation a admis la réduction à zéro, sous la condition suspensive d'une augmentation portant le capital au moins au minimum légal, dès lors que l'actif net était très inférieur à la moitié du capital, que l'assemblée refusait la dissolution anticipée et que la survie de la société la justifiait ; les actionnaires, qui conservaient la faculté de souscrire à l'augmentation, ne se voyaient imposer aucune obligation nouvelle. Une réduction à zéro suivie d'une augmentation réservée à un tiers ne porte pas atteinte au droit de propriété des actionnaires (Cass. com., 18 juin 2002, n° 99-11.999) ; la réduction ne doit pas porter atteinte à l'égalité des actionnaires.",
+     "src": "Cass. com., 17 mai 1994, n° 91-21.364 (Usinor), publié au bulletin ; Cass. com., 18 juin 2002, n° 99-11.999 ; C. com., art. L. 225-204",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007032960/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Libération : constitution ou augmentation ?</b> À la constitution, les apports en numéraire sont libérés d'un cinquième au moins dans la SARL et de la moitié au moins dans la SA ; lors d'une augmentation de capital en numéraire, la libération minimale est d'un quart du nominal dans les deux formes, plus, dans la SA, la totalité de la prime d'émission.",
+     "t": "<b>Libération : constitution ou augmentation ?</b> À la constitution, les apports en numéraire sont libérés d'un cinquième au moins dans la SARL et de la moitié au moins dans la SA ; lors d'une augmentation de capital en numéraire, la libération minimale est d'un quart du nominal dans les deux formes, plus, dans la SA, la totalité de la prime d'émission. Dans la SARL, l'augmentation en numéraire décidée alors que le capital ancien n'est pas intégralement libéré encourt la nullité (L. 223-7, dernier alinéa).",
      "src": "C. com., art. L. 223-7, L. 225-3, L. 225-144 et L. 223-32",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
      "fiab": "stable"

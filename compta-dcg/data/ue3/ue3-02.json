@@ -21,7 +21,7 @@
   },
   {
    "h": "Le CDD : recours, forme, durée, renouvellement, carence",
-   "html": "<p>Le CDD ne peut pourvoir durablement un emploi lié à l'<b>activité normale et permanente</b> (<span class=\"mono\">L. 1242-1</span>). <b>Cas de recours limitatifs</b> (<span class=\"mono\">L. 1242-2</span>) : remplacement d'un salarié absent, attente de l'entrée en service d'un recruté en CDI, accroissement temporaire d'activité, emploi saisonnier ou d'usage, CDD à objet défini (cadres, 18 à 36 mois), CDD senior. <b>Interdictions</b> : remplacement d'un gréviste, travaux particulièrement dangereux, accroissement d'activité dans les 6 mois d'un licenciement économique sur le poste (sauf CDD ≤ 3 mois non renouvelable).</p>\n<p><b>Forme</b> : écrit avec motif précis, transmis dans les <b>2 jours ouvrables</b> (<span class=\"mono\">L. 1242-13</span>). Sans écrit ou sans motif : requalification en CDI ; transmission tardive : indemnité plafonnée à un mois de salaire.</p>\n<p><b>Durée</b> : <b>18 mois</b> maximum renouvellements compris (<span class=\"mono\">L. 1242-8-1</span>) ; 9 mois (attente d'un CDI, travaux urgents de sécurité) ; 24 mois (étranger, commande exceptionnelle à l'exportation, départ définitif avant suppression du poste). Un accord de branche peut fixer d'autres durées (bloc 1). <b>Deux renouvellements</b> au plus, par avenant avant le terme.</p>\n<p><b>Délai de carence</b> avant un nouveau CDD sur le même poste (<span class=\"mono\">L. 1244-3</span>) : <b>1/3</b> de la durée du contrat précédent (renouvellements inclus) s'il a duré <b>14 jours ou plus</b>, <b>1/2</b> s'il a duré moins de 14 jours, en <b>jours d'ouverture</b> de l'entreprise. Pas de carence pour une nouvelle absence du salarié remplacé, un emploi saisonnier ou d'usage, des travaux urgents.</p>"
+   "html": "<p>Le CDD ne peut pourvoir durablement un emploi lié à l'<b>activité normale et permanente</b> (<span class=\"mono\">L. 1242-1</span>). <b>Cas de recours limitatifs</b> (<span class=\"mono\">L. 1242-2</span>) : remplacement d'un salarié absent, attente de l'entrée en service d'un recruté en CDI, accroissement temporaire d'activité, emploi saisonnier ou d'usage, CDD à objet défini (cadres, 18 à 36 mois), CDD senior. <b>Interdictions</b> : remplacement d'un gréviste, travaux particulièrement dangereux, accroissement d'activité dans les 6 mois d'un licenciement économique sur le poste (sauf CDD ≤ 3 mois non renouvelable).</p>\n<p><b>Forme</b> : écrit avec motif précis, transmis dans les <b>2 jours ouvrables</b> (<span class=\"mono\">L. 1242-13</span>). Sans écrit ou sans motif : requalification en CDI ; transmission tardive : indemnité plafonnée à un mois de salaire.</p>\n<p><b>Durée</b> : <b>18 mois</b> maximum renouvellements compris (<span class=\"mono\">L. 1242-8-1</span>) ; 9 mois (attente d'un CDI, travaux urgents de sécurité) ; 24 mois (étranger, commande exceptionnelle à l'exportation, départ définitif avant suppression du poste). Un accord de branche peut fixer d'autres durées (bloc 1). <b>Deux renouvellements</b> au plus, par avenant avant le terme.</p>\n<p><b>Délai de carence</b> avant un nouveau CDD sur le même poste (<span class=\"mono\">L. 1244-3</span> ; à défaut d'accord de branche, <span class=\"mono\">L. 1244-3-1</span>) : <b>1/3</b> de la durée du contrat précédent (renouvellements inclus) s'il a duré <b>14 jours ou plus</b>, <b>1/2</b> s'il a duré moins de 14 jours, en <b>jours d'ouverture</b> de l'entreprise. Pas de carence pour une nouvelle absence du salarié remplacé, un emploi saisonnier ou d'usage, des travaux urgents.</p>"
   },
   {
    "h": "Fin du CDD, indemnité de précarité, requalification et intérim",
@@ -62,7 +62,7 @@
    "note": "Conditions de validité de la clause de non-concurrence, dont la contrepartie financière"
   },
   {
-   "ref": "C. trav., art. L. 1242-1, L. 1242-2, L. 1242-8-1, L. 1243-13-1, L. 1244-3",
+   "ref": "C. trav., art. L. 1242-1, L. 1242-2, L. 1242-8-1, L. 1243-13-1, L. 1244-3 et L. 1244-3-1",
    "note": "CDD : recours, durée de 18 mois, deux renouvellements, délai de carence"
   },
   {
@@ -314,23 +314,23 @@
    "type": "calc",
    "niveau": 2,
    "fiab": "stable",
-   "src": "C. trav., art. L. 1244-3",
+   "src": "C. trav., art. L. 1244-3 et L. 1244-3-1",
    "q": "Un CDD pour accroissement temporaire d'activité a duré 60 jours d'ouverture de l'entreprise, renouvellement compris. L'employeur souhaite conclure un nouveau CDD sur le même poste pour le même motif. Combien de jours d'ouverture doit-il attendre au minimum (délai de carence légal) ?",
    "a": 20,
    "unit": "jours",
    "tol": 0.5,
-   "why": "Pour un contrat d'une durée de 14 jours ou plus, le délai de carence est égal au tiers de sa durée, renouvellements compris : 60 / 3 = 20 jours, décomptés en jours d'ouverture de l'entreprise (L. 1244-3). Pour un contrat de moins de 14 jours, ce serait la moitié. Il n'y a pas de carence pour un remplacement lié à une nouvelle absence, un emploi saisonnier ou d'usage."
+   "why": "Pour un contrat d'une durée de 14 jours ou plus, le délai de carence est égal au tiers de sa durée, renouvellements compris : 60 / 3 = 20 jours, décomptés en jours d'ouverture de l'entreprise (L. 1244-3-1, à défaut de stipulation de branche). Pour un contrat de moins de 14 jours, ce serait la moitié. Il n'y a pas de carence pour un remplacement lié à une nouvelle absence, un emploi saisonnier ou d'usage."
   },
   {
    "type": "calc",
    "niveau": 2,
    "fiab": "stable",
-   "src": "C. trav., art. L. 1244-3",
+   "src": "C. trav., art. L. 1244-3 et L. 1244-3-1",
    "q": "Un CDD de 10 jours d'ouverture est conclu pour accroissement temporaire d'activité. Quel délai de carence, en jours d'ouverture, s'impose avant un nouveau CDD sur le même poste pour le même motif ?",
    "a": 5,
    "unit": "jours",
    "tol": 0.5,
-   "why": "Le contrat ayant duré moins de 14 jours, la carence est égale à la moitié de sa durée : 10 / 2 = 5 jours d'ouverture (L. 1244-3, 2°). Appliquer le tiers (3,33 jours) serait l'erreur classique : le tiers ne vaut que pour les contrats de 14 jours et plus. Un accord de branche peut fixer d'autres modalités de calcul."
+   "why": "Le contrat ayant duré moins de 14 jours, la carence est égale à la moitié de sa durée : 10 / 2 = 5 jours d'ouverture (L. 1244-3-1, 2°). Appliquer le tiers (3,33 jours) serait l'erreur classique : le tiers ne vaut que pour les contrats de 14 jours et plus. Un accord de branche peut fixer d'autres modalités de calcul."
   },
   {
    "type": "calc",

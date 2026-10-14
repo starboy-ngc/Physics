@@ -27,20 +27,32 @@
   {
    "ref": "CSS, art. L. 136-1-1, L. 136-8 et L. 242-1",
    "objet": "Assiette des cotisations et contributions ; taux de la CSG",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006156362/",
    "version": "en vigueur"
+  },
+  {
+   "ref": "CSS, art. L. 241-13 et D. 241-7 ; décret n° 2025-887 du 4 septembre 2025 ; décret n° 2026-509 du 12 juin 2026",
+   "objet": "Réduction générale dégressive unique (rémunérations inférieures à 3 SMIC) : formule et paramètres",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052194026",
+   "version": "en vigueur depuis le 1er janvier 2026 (loi n° 2025-199 du 28 février 2025)"
   },
   {
    "ref": "CSS, art. L. 133-5-3, L. 213-1, L. 243-7, L. 243-13, L. 244-3 et R. 243-59",
    "objet": "DSN, recouvrement par les URSSAF, contrôle, prescription",
-   "url": null,
-   "version": "en vigueur"
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173356/",
+   "version": "en vigueur ; modèle de charte du cotisant contrôlé fixé par arrêté du 30 janvier 2024"
   },
   {
    "ref": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4",
    "objet": "Indemnités journalières maladie : conditions, carence, montant",
    "url": null,
    "version": "en vigueur (décret n° 2025-160 du 20 février 2025 pour le plafond)"
+  },
+  {
+   "ref": "CSS, art. L. 162-4-1 et R. 162-1-7-1",
+   "objet": "Durée maximale de prescription des arrêts de travail",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053283630/2026-09-01",
+   "version": "en vigueur depuis le 1er septembre 2026 (loi n° 2025-1403 du 30 décembre 2025)"
   },
   {
    "ref": "CSS, art. L. 411-1, L. 433-1, L. 452-1 et R. 441-3",
@@ -52,13 +64,13 @@
    "ref": "CSS, art. L. 161-17-2, L. 161-17-3 et L. 351-8",
    "objet": "Retraite : âge légal, durée d'assurance, taux plein",
    "url": null,
-   "version": "en vigueur (loi n° 2023-270 du 14 avril 2023)"
+   "version": "en vigueur (loi n° 2023-270 du 14 avril 2023 ; loi n° 2025-1403 du 30 décembre 2025, art. 105, pour les pensions prenant effet à compter du 1er septembre 2026)"
   },
   {
    "ref": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024",
    "objet": "Allocation d'aide au retour à l'emploi : conditions",
-   "url": null,
-   "version": "convention agréée par arrêté du 19 décembre 2024, en vigueur depuis le 1er janvier 2025"
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050797861",
+   "version": "convention agréée par arrêté du 19 décembre 2024, en vigueur depuis le 1er janvier 2025 ; arrêté complémentaire du 28 mars 2026 (primo-entrants)"
   },
   {
    "ref": "CSS, art. L. 911-7 ; ANI du 17 novembre 2017 relatif à la prévoyance des cadres",
@@ -79,26 +91,14 @@
    "version": "en vigueur depuis le 28 décembre 2023 (loi n° 2023-1250 du 26 décembre 2023)"
   },
   {
-   "ref": "Décret n° 2018-772 du 4 septembre 2018",
-   "objet": "Désignation des tribunaux et cours d'appel compétents en matière de contentieux de la sécurité sociale",
-   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037367894",
-   "version": "en vigueur depuis le 1er janvier 2019"
-  },
-  {
    "ref": "C. trav., art. L. 2253-1",
    "objet": "Garanties collectives complémentaires : matière réservée à la branche",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771",
    "version": "rédaction issue de l'ordonnance n° 2017-1385"
   },
   {
-   "ref": "Loi n° 2025-199 du 28 février 2025 de financement de la sécurité sociale pour 2025",
-   "objet": "Seuils des taux réduits maladie et famille (2025) ; réduction unique dégressive jusqu'à 3 SMIC à compter de 2026",
-   "url": null,
-   "version": "en vigueur"
-  },
-  {
    "ref": "Loi n° 2025-1403 du 30 décembre 2025 de financement de la sécurité sociale pour 2026",
-   "objet": "Suspension de la montée en charge de la réforme des retraites de 2023 : pour la génération 1964, âge légal de 62 ans et 9 mois et 170 trimestres, pour les pensions prenant effet à compter du 1er septembre 2026",
+   "objet": "Art. 105 : suspension de la montée en charge de la réforme des retraites de 2023 (génération 1964 : 62 ans et 9 mois, 170 trimestres) pour les pensions prenant effet à compter du 1er septembre 2026 ; plafonnement de la durée des arrêts de travail",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053226384",
    "version": "JO du 31 décembre 2025 ; décision du Conseil constitutionnel n° 2025-899 DC du 30 décembre 2025"
   }
@@ -122,13 +122,13 @@
     {
      "t": "<b>Compétence du législateur</b> : la Constitution range dans le domaine de la loi la détermination des principes fondamentaux du droit du travail, du droit syndical et de la sécurité sociale ; les lois de financement de la sécurité sociale déterminent chaque année les conditions générales de son équilibre financier et fixent ses objectifs de dépenses.",
      "src": "Constitution du 4 octobre 1958, art. 34 et 47-1",
-     "url": "https://www.conseil-constitutionnel.fr/nouveaux-cahiers-du-conseil-constitutionnel/les-principes-de-la-jurisprudence-du-conseil-constitutionnel-en-matiere-sociale",
+     "url": null,
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime général</b> : il couvre les salariés et assimilés et comprend cinq branches : maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille ; autonomie (créée en 2020). Le recouvrement des cotisations est assuré par les URSSAF. Les travailleurs indépendants relèvent du régime général pour leur protection sociale depuis la suppression du régime social des indépendants (transfert achevé au 1er janvier 2020).",
-     "src": "CSS, art. L. 200-1, L. 200-2 et L. 213-1 ; loi n° 2017-1836 du 30 décembre 2017, art. 15",
-     "url": null,
+     "t": "<b>Régime général</b> : il comprend cinq branches (art. L. 200-2) : maladie, maternité, invalidité et décès ; accidents du travail et maladies professionnelles ; vieillesse et veuvage ; famille ; autonomie (créée par la loi n° 2020-992 du 7 août 2020). Le recouvrement des cotisations est assuré par les URSSAF ; le site officiel de la Sécurité sociale présente le recouvrement, piloté par l'Acoss, comme une sixième branche. Les travailleurs indépendants relèvent du régime général pour leur protection sociale depuis la suppression du régime social des indépendants (transfert achevé au 1er janvier 2020).",
+     "src": "CSS, art. L. 200-1, L. 200-2 et L. 213-1 ; loi n° 2020-992 du 7 août 2020 ; loi n° 2017-1836 du 30 décembre 2017, art. 15",
+     "url": "https://www.securite-sociale.fr/la-secu-cest-quoi/organisation/les-branches",
      "fiab": "stable"
     }
    ]
@@ -137,15 +137,9 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "<b>Juridiction compétente</b> : le contentieux de la sécurité sociale (art. L. 142-1 du Code de la sécurité sociale), l'admission à l'aide sociale et certains litiges du Code du travail relèvent de tribunaux judiciaires spécialement désignés (pôle social), dont le siège et le ressort sont fixés par décret ; l'appel est porté devant des cours d'appel également désignées.",
-     "src": "C. org. jud., art. L. 211-16 ; décret n° 2018-772 du 4 septembre 2018",
+     "t": "<b>Juridiction compétente et recours préalable</b> : le contentieux de la sécurité sociale (art. L. 142-1 du Code de la sécurité sociale), l'admission à l'aide sociale et certains litiges du Code du travail relèvent de tribunaux judiciaires spécialement désignés (pôle social), dont le siège et le ressort sont fixés par décret ; l'appel est porté devant des cours d'appel également désignées. Avant tout recours contentieux, les réclamations contre les décisions des organismes sont soumises à la commission de recours amiable, saisie dans les deux mois de la notification ; le tribunal compétent est en principe celui dans le ressort duquel demeure le demandeur.",
+     "src": "C. org. jud., art. L. 211-16 ; décret n° 2018-772 du 4 septembre 2018 ; CSS, art. R. 142-1 et R. 142-10",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Recours préalable et procédure</b> : les réclamations contre les décisions des organismes sont soumises, avant tout recours contentieux, à la commission de recours amiable, saisie dans les deux mois de la notification ; le tribunal compétent est en principe celui dans le ressort duquel demeure le demandeur.",
-     "src": "CSS, art. R. 142-1 et R. 142-10",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173232/",
      "fiab": "stable"
     },
     {
@@ -155,39 +149,63 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Assiette, taux et allègements de cotisations</b> : les cotisations du régime général sont assises sur toutes les sommes, ainsi que les avantages et accessoires en nature ou en argent, dus en contrepartie ou à l'occasion d'un travail ; la CSG sur les revenus d'activité est due au taux de 9,2 % (6,8 points déductibles du revenu imposable) et la CRDS au taux de 0,5 %, sur une assiette réduite de l'abattement pour frais professionnels de 1,75 % dans la limite de quatre plafonds annuels. Principaux taux en 2025 : maladie 13 % employeur (7 % pour les rémunérations n'excédant pas 2,25 SMIC), vieillesse plafonnée 8,55 % employeur et 6,90 % salarié, vieillesse déplafonnée 2,02 % et 0,40 %, allocations familiales 5,25 % (3,45 % jusqu'à 3,3 SMIC), AT/MP au taux notifié par la caisse, assurance chômage à la charge exclusive de l'employeur (4,05 %, ramenée à 4,00 % au 1er mai 2025). La réduction générale des cotisations patronales est dégressive et réservée aux rémunérations inférieures à 1,6 SMIC ; la LFSS pour 2025 prévoit, à compter du 1er janvier 2026, sa fusion avec les taux réduits maladie et famille en une réduction unique dégressive jusqu'à 3 SMIC.",
-     "src": "CSS, art. L. 242-1, L. 136-1-1, L. 136-8, L. 241-2-1, L. 241-3, L. 241-6, L. 241-6-1, L. 241-13 et D. 242-4 ; CGI, art. 154 quinquies ; loi n° 2025-199 du 28 février 2025 de financement de la sécurité sociale pour 2025 ; C. trav., art. L. 5422-9 ; convention du 15 novembre 2024 relative à l'assurance chômage",
-     "url": null,
-     "fiab": "millésimé 2025"
-    },
-    {
-     "t": "<b>Déclaration, recouvrement et contrôle</b> : l'employeur transmet chaque mois la déclaration sociale nominative et verse les cotisations à l'URSSAF ; la mise en demeure ne peut concerner que les cotisations exigibles au cours des trois années civiles précédant l'année de son envoi (cinq ans en cas de travail dissimulé). Contrôle : avis préalable (sauf recherche de travail dissimulé) renvoyant à la charte du cotisant contrôlé, lettre d'observations à l'issue du contrôle, délai de réponse de trente jours (prolongeable de trente jours à la demande du cotisant) avant toute mise en recouvrement, puis mise en demeure et saisine éventuelle de la commission de recours amiable ; la durée du contrôle est limitée à trois mois pour les petites entreprises (seuil d'effectif fixé à l'article L. 243-13). Travail dissimulé (dissimulation d'activité ou d'emploi salarié : absence de déclaration préalable à l'embauche ou de bulletin de paie, minoration des heures) : redressement avec annulation des exonérations et majoration de 25 % (40 % en cas de circonstances aggravantes), prescription de cinq ans, indemnité forfaitaire de six mois de salaire due au salarié, peines de trois ans d'emprisonnement et 45 000 € d'amende pour les personnes physiques.",
-     "src": "CSS, art. L. 133-5-3, L. 213-1, L. 244-3, R. 243-59, L. 243-13, L. 133-4-2 et L. 243-7-7 ; C. trav., art. L. 8221-3, L. 8221-5, L. 8223-1 et L. 8224-1",
-     "url": null,
+     "t": "<b>Assiette des cotisations et CSG-CRDS</b> : les cotisations du régime général sont assises sur toutes les sommes, ainsi que les avantages et accessoires en nature ou en argent, versés en contrepartie ou à l'occasion du travail. Sur les revenus d'activité des salariés, la CSG est due au taux de 9,2 %, dont 6,8 points déductibles du revenu imposable, et la CRDS au taux de 0,5 % ; elles sont calculées sur 98,25 % de la rémunération (abattement de 1,75 % pour frais professionnels), l'abattement ne jouant que dans la limite de quatre plafonds de la sécurité sociale, au-delà desquels l'assiette est de 100 %. La contribution patronale au financement de la complémentaire santé d'entreprise est soumise à la CSG-CRDS sans abattement.",
+     "src": "CSS, art. L. 242-1, L. 136-1-1 et L. 136-8 ; CGI, art. 154 quinquies",
+     "url": "https://www.urssaf.fr/accueil/employeur/cotisations/liste-cotisations/csg-crds.html",
      "fiab": "stable"
     },
     {
-     "t": "<b>Indemnités journalières maladie</b> : versées à partir du quatrième jour d'arrêt (délai de carence de trois jours), à condition d'avoir travaillé au moins 150 heures au cours des trois mois précédents ou cotisé sur 1 015 fois le SMIC horaire au cours des six mois précédents (conditions renforcées au-delà de six mois d'arrêt) ; elles sont égales à 50 % du salaire journalier de base, calculé sur les trois derniers mois dans la limite d'un plafond exprimé en multiple du SMIC, ramené de 1,8 à 1,4 SMIC pour les arrêts débutant à compter du 1er avril 2025.",
+     "t": "<b>Principaux taux patronaux en 2026</b> (secteur privé, cas général) : maladie 13 % ; allocations familiales 5,25 % ; vieillesse plafonnée 8,55 % ; vieillesse déplafonnée 2,11 % (2,02 % jusqu'au 31 décembre 2025) ; AT/MP au taux notifié par la caisse ; assurance chômage 4,00 % et AGS 0,25 %, à la charge exclusive de l'employeur, sur la rémunération limitée à quatre plafonds de la sécurité sociale (16 020 € par mois en 2026). Les taux réduits maladie (7 %, rémunérations n'excédant pas 2,5 SMIC) et famille (3,45 %, 3,5 SMIC) ne subsistent que pour certains employeurs, la réduction générale dégressive unique s'appliquant dans le cas général.",
+     "src": "CSS, art. L. 241-2, L. 241-3, L. 241-6, L. 241-2-1, L. 241-6-1 et D. 242-4 ; C. trav., art. L. 5422-9 ; convention du 15 novembre 2024 relative à l'assurance chômage",
+     "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Réduction générale dégressive unique (RGDU)</b> : depuis le 1er janvier 2026, elle remplace la réduction générale des cotisations patronales (réservée jusqu'en 2025 aux rémunérations inférieures à 1,6 SMIC) et les réductions des taux maladie et allocations familiales ; elle concerne les rémunérations inférieures à 3 SMIC. Coefficient = Tmin + Tdelta × [½ × (3 × SMIC annuel / rémunération annuelle brute − 1)] puissance 1,75, avec Tmin = 0,0200 et Tdelta = 0,3781 (moins de 50 salariés) ou 0,3821 (50 salariés et plus), soit un coefficient maximal de 0,3981 ou 0,4021 ; la réduction est égale au coefficient multiplié par la rémunération annuelle brute.",
+     "src": "CSS, art. L. 241-13 (loi n° 2025-199 du 28 février 2025) et D. 241-7 ; décret n° 2025-887 du 4 septembre 2025 ; décret n° 2026-509 du 12 juin 2026",
+     "url": "https://www.urssaf.fr/accueil/employeur/beneficier-exonerations/reduction-generale-cotisation.html",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Déclaration, paiement et prescription</b> : l'employeur transmet chaque mois la déclaration sociale nominative (DSN) et verse les cotisations à l'URSSAF, au plus tard le 5 du mois suivant pour les employeurs d'au moins 50 salariés qui paient les salaires au cours du mois, le 15 du mois suivant dans les autres cas ; les cotisations non versées à la date limite d'exigibilité supportent une majoration de retard de 5 %. Les cotisations se prescrivent par trois ans à compter de la fin de l'année civile au titre de laquelle elles sont dues, cinq ans en cas de travail dissimulé.",
+     "src": "CSS, art. L. 133-5-3, L. 213-1, L. 244-3, R. 243-6 et R. 243-18",
+     "url": "https://www.urssaf.fr/accueil/employeur/gerer-entreprise/paiement-des-cotisations.html",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrôle URSSAF</b> : l'avis de contrôle, qui renvoie à la charte du cotisant contrôlé, est adressé au moins trente jours avant le début effectif des opérations (sauf recherche de travail dissimulé) ; pour les entreprises de moins de vingt salariés et les travailleurs indépendants, le contrôle ne peut excéder trois mois entre son début effectif et l'envoi de la lettre d'observations, durée prorogeable une fois. La lettre d'observations ouvre une période contradictoire de trente jours, portée à soixante jours à la demande du cotisant (sauf abus de droit ou travail illégal) ; lorsque le cotisant répond dans ce délai, l'agent chargé du contrôle est tenu de lui répondre, avant toute mise en recouvrement par mise en demeure. La prescription est suspendue pendant la période contradictoire.",
+     "src": "CSS, art. L. 243-7, L. 243-13 et R. 243-59 ; arrêté du 30 janvier 2024 fixant le modèle de la charte du cotisant contrôlé",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006173356/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Travail dissimulé</b> : dissimulation d'activité ou d'emploi salarié (absence de déclaration préalable à l'embauche ou de bulletin de paie, mention d'un nombre d'heures inférieur à celui réellement accompli). Le redressement est majoré de 25 %, taux porté à 40 % en cas de circonstances aggravantes (dissimulation de plusieurs personnes, d'un mineur soumis à l'obligation scolaire, d'une personne vulnérable ou dépendante, bande organisée) ; les réductions et exonérations de cotisations sont annulées et la prescription est portée à cinq ans. Le salarié dont la relation de travail est rompue a droit à une indemnité forfaitaire de six mois de salaire ; la personne physique encourt trois ans d'emprisonnement et 45 000 € d'amende.",
+     "src": "C. trav., art. L. 8221-3, L. 8221-5, L. 8223-1, L. 8224-1 et L. 8224-2 ; CSS, art. L. 133-4-2, L. 243-7-7 et L. 244-3",
+     "url": "https://www.urssaf.fr/portail/home/les-risques-du-travail-dissimule/les-risques-du-travail-dissimule/les-risques-lies-au-travail-diss/les-sanctions-civiles.html",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Indemnités journalières maladie</b> : versées à partir du quatrième jour d'arrêt (délai de carence de trois jours, qui ne s'applique pas aux AT/MP et, en cas d'arrêts liés à une affection de longue durée, ne joue que pour le premier arrêt sur une période de trois ans), à condition d'avoir travaillé au moins 150 heures au cours des trois mois précédents ou cotisé sur 1 015 fois le SMIC horaire au cours des six mois précédents (conditions renforcées au-delà de six mois d'arrêt). L'IJ est égale à 50 % du salaire journalier de base (somme des trois derniers salaires bruts divisée par 91,25), ces salaires étant retenus dans la limite de 1,4 SMIC mensuel pour les arrêts débutant depuis le 1er avril 2025 ; au plus 360 IJ sur trois années consécutives, hors affection de longue durée.",
      "src": "CSS, art. L. 321-1, R. 313-3, R. 323-1 et R. 323-4 ; décret n° 2025-160 du 20 février 2025",
-     "url": null,
-     "fiab": "millésimé 2025"
-    },
-    {
-     "t": "<b>Accident du travail</b> : est considéré comme accident du travail, quelle qu'en soit la cause, l'accident survenu par le fait ou à l'occasion du travail à toute personne salariée (présomption d'imputabilité) ; l'employeur le déclare à la caisse dans les 48 heures ; l'indemnité journalière est égale à 60 % du salaire journalier pendant les 28 premiers jours puis à 80 %, sans délai de carence ; la faute inexcusable de l'employeur ouvre droit à une majoration de la rente et à la réparation des préjudices.",
-     "src": "CSS, art. L. 411-1, L. 433-1, L. 452-1, R. 433-1 et R. 441-3",
-     "url": null,
+     "url": "https://www.ameli.fr/assure/remboursements/indemnites-journalieres-maladie-maternite-paternite/indemnites-journalieres-pour-maladie/arret-maladie-salarie",
      "fiab": "stable"
     },
     {
-     "t": "<b>Allocation d'aide au retour à l'emploi</b> : réservée aux travailleurs involontairement privés d'emploi (licenciement, rupture conventionnelle, fin de CDD, démission légitime), aptes au travail et en recherche d'emploi ; condition d'affiliation de six mois (130 jours ou 910 heures travaillés) au cours des 24 derniers mois (36 mois pour les salariés les plus âgés).",
-     "src": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024, agréée par arrêté du 19 décembre 2024",
-     "url": null,
+     "t": "<b>Accident du travail</b> : est considéré comme accident du travail, quelle qu'en soit la cause, l'accident survenu par le fait ou à l'occasion du travail à toute personne salariée (présomption d'imputabilité). L'employeur le déclare à la caisse dans les 48 heures, non compris les dimanches et jours fériés. Les IJ, versées sans délai de carence, sont égales à 60 % du salaire journalier de base pendant les 28 premiers jours puis à 80 % à partir du 29e jour, le salaire journalier d'un salarié mensualisé étant le salaire brut du mois précédant l'arrêt divisé par 30,42. La faute inexcusable de l'employeur ouvre droit à une majoration de la rente et à la réparation des préjudices.",
+     "src": "CSS, art. L. 411-1, L. 433-1, L. 452-1, R. 433-1 et s. et R. 441-3",
+     "url": "https://www.ameli.fr/assure/remboursements/accident-travail",
      "fiab": "stable"
     },
     {
-     "t": "<b>Retraite de base</b> : l'âge légal d'ouverture des droits est relevé progressivement de 62 à 64 ans, par trimestre par génération à compter du 1er septembre 2023, pour atteindre 64 ans pour les assurés nés à partir de 1968 ; la durée d'assurance pour le taux plein atteint 172 trimestres (43 ans) pour les générations nées à partir de 1965 ; le taux plein est acquis sans condition de durée à 67 ans. La loi de financement de la sécurité sociale pour 2026 suspend la montée en charge de ce calendrier jusqu'au 1er janvier 2028 (voir « Ce qui a changé récemment »). Un trimestre est validé par une rémunération soumise à cotisations égale à 150 fois le SMIC horaire (quatre au plus par an) ; la pension au taux plein (50 % du salaire annuel moyen des 25 meilleures années) est proratisée par le rapport entre les trimestres validés et la durée requise ; décote de 1,25 % par trimestre manquant (20 au plus) et surcote de 1,25 % par trimestre cotisé au-delà de l'âge légal et de la durée requise.",
-     "src": "CSS, art. L. 161-17-2, L. 161-17-3, L. 351-8, L. 351-1, L. 351-1-2, R. 351-9, R. 351-27 et R. 351-29 (loi n° 2023-270 du 14 avril 2023) ; loi de financement de la sécurité sociale pour 2026",
-     "url": null,
+     "t": "<b>Allocation d'aide au retour à l'emploi</b> : réservée aux travailleurs involontairement privés d'emploi (licenciement, rupture conventionnelle, fin de CDD, démission considérée comme légitime), aptes au travail et à la recherche d'un emploi ; condition d'affiliation de six mois (130 jours ou 910 heures travaillés) au cours des 24 derniers mois (36 mois pour les salariés les plus âgés). Les règles résultent du règlement annexé à la convention du 15 novembre 2024, agréée par arrêté du 19 décembre 2024 et applicable depuis le 1er janvier 2025 pour quatre ans, certaines règles nouvelles étant entrées en vigueur le 1er avril 2025.",
+     "src": "C. trav., art. L. 5422-1 ; convention du 15 novembre 2024 relative à l'assurance chômage et règlement annexé, agréés par arrêté du 19 décembre 2024",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050797861",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Retraite de base</b> : la loi du 14 avril 2023 relève progressivement l'âge légal de 62 à 64 ans et la durée d'assurance requise pour le taux plein jusqu'à 172 trimestres ; le taux plein est acquis sans condition de durée à 67 ans. Depuis la LFSS pour 2026, pour les pensions prenant effet à compter du 1er septembre 2026, l'âge légal est de 62 ans et 9 mois pour les assurés nés en 1964 et ceux nés de janvier à mars 1965, de 63 ans pour ceux nés d'avril à décembre 1965, puis augmente d'un trimestre par génération jusqu'à 64 ans à partir de la génération 1969 ; la durée requise est de 170 trimestres pour la génération 1964 et de 172 trimestres à partir de la génération 1966. La pension au taux plein (50 % du salaire annuel moyen des 25 meilleures années) est proratisée par le rapport entre les trimestres validés et la durée requise ; décote de 1,25 % par trimestre manquant (20 au plus) et surcote de 1,25 % par trimestre cotisé au-delà de l'âge légal et de la durée requise.",
+     "src": "CSS, art. L. 161-17-2, L. 161-17-3, L. 351-1, L. 351-1-2, L. 351-8, R. 351-27 et R. 351-29 ; loi n° 2023-270 du 14 avril 2023 ; loi n° 2025-1403 du 30 décembre 2025, art. 105",
+     "url": "https://www.lassuranceretraite.fr/portail-info/home/actif/age-depart/age-depart-retraite.html",
      "fiab": "millésimé 2026"
     },
     {
@@ -202,10 +220,28 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Plafond annuel de la sécurité sociale 2025 : 47 100 €</b> (3 925 € par mois). Il sert de base au calcul des cotisations plafonnées (vieillesse plafonnée, tranche 1 Agirc-Arrco), de l'assiette de la CSG (abattement limité à 4 plafonds) et de nombreux seuils ; le montant est fixé chaque année par arrêté.",
-     "src": "Arrêté du 19 décembre 2024 portant fixation du plafond de la sécurité sociale pour 2025 ; CSS, art. D. 242-16 et D. 242-17",
-     "url": null,
-     "fiab": "millésimé 2025"
+     "t": "<b>Plafond de la sécurité sociale 2026 : 48 060 € par an</b>, 4 005 € par mois, 220 € par jour, pour les périodes d'activité courant à compter du 1er janvier 2026 (47 100 € en 2025). Il limite l'assiette des cotisations plafonnées (vieillesse plafonnée, tranche 1 Agirc-Arrco) et sert de référence à de nombreux seuils : abattement CSG-CRDS limité à quatre plafonds, assiette de l'assurance chômage limitée à quatre plafonds (192 240 € par an en 2026).",
+     "src": "Arrêté du 22 décembre 2025 (plafond de la sécurité sociale pour 2026) ; CSS, art. L. 241-3, D. 242-16 et D. 242-17",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053143451",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>SMIC 2026</b> : 12,02 € brut de l'heure au 1er janvier 2026, soit 1 823,03 € par mois pour 35 heures hebdomadaires, puis 12,31 € à compter du 1er juin 2026, soit 1 867,02 € par mois (11,88 € de l'heure en 2025). Il sert de référence à la RGDU (3 SMIC), au plafond des IJ maladie (1,4 SMIC mensuel), à la validation des trimestres de retraite (150 SMIC horaires) et aux conditions d'ouverture des IJ (1 015 SMIC horaires).",
+     "src": "Décret n° 2025-1228 du 17 décembre 2025 ; arrêté du 22 mai 2026 ; C. trav., art. L. 3231-2",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053042520",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Validation d'un trimestre de retraite en 2026 : 1 803 €</b> de salaire soumis à cotisations (150 fois le SMIC horaire en vigueur au 1er janvier, soit 12,02 €) ; 3 606 € pour deux trimestres, 5 409 € pour trois et 7 212 € pour quatre (1 782 € par trimestre en 2025). Quatre trimestres au plus sont validés par année civile, quel que soit le nombre de trimestres civils effectivement travaillés.",
+     "src": "CSS, art. R. 351-9 ; circulaire Cnav n° 2025-33 du 23 décembre 2025",
+     "url": "https://legislation.lassuranceretraite.fr/Pdf/circulaire_cnav_2025_33_23122025.pdf",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Indemnités journalières maximales en 2026</b> : en maladie, l'IJ est plafonnée à 42,97 € par jour pour les arrêts débutant à compter du 1er juillet 2026, le salaire mensuel retenu étant limité à 2 613,83 € (1,4 SMIC après la revalorisation du 1er juin 2026 ; 41,95 € sur la base du SMIC de 1 823,03 €) ; en accident du travail, l'IJ est plafonnée à 240,49 € par jour pendant les 28 premiers jours et à 320,66 € à partir du 29e jour (montants au 1er janvier 2026).",
+     "src": "CSS, art. R. 323-4 et R. 433-1 et s. ; décret n° 2025-160 du 20 février 2025",
+     "url": "https://www.ameli.fr/entreprise/vos-salaries/montants-reference/indemnites-journalieres-montants-maximum",
+     "fiab": "millésimé 2026"
     }
    ]
   },
@@ -213,15 +249,9 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Réforme du contentieux social (1er janvier 2019)</b> : suppression des tribunaux des affaires de sécurité sociale et des tribunaux du contentieux de l'incapacité ; le contentieux général et technique de la sécurité sociale et l'admission à l'aide sociale sont transférés à des tribunaux de grande instance et cours d'appel désignés par décret.",
-     "src": "Décret n° 2018-772 du 4 septembre 2018 ; loi n° 2016-1547 du 18 novembre 2016, art. 12",
+     "t": "<b>Réforme du contentieux social (2019-2020)</b> : depuis le 1er janvier 2019, les tribunaux des affaires de sécurité sociale et du contentieux de l'incapacité sont supprimés et leur contentieux est transféré à des tribunaux de grande instance et cours d'appel spécialement désignés ; depuis le 1er janvier 2020, la fusion des tribunaux de grande instance et d'instance a confié ce contentieux aux tribunaux judiciaires spécialement désignés (pôle social).",
+     "src": "Loi n° 2016-1547 du 18 novembre 2016, art. 12 ; décret n° 2018-772 du 4 septembre 2018 ; loi n° 2019-222 du 23 mars 2019 (C. org. jud., art. L. 211-16)",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000037367894",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Tribunal judiciaire (1er janvier 2020)</b> : la fusion des tribunaux de grande instance et d'instance a transféré ce contentieux aux tribunaux judiciaires spécialement désignés, au sein de la sous-section du Code de l'organisation judiciaire consacrée à la compétence particulière de certains tribunaux judiciaires.",
-     "src": "C. org. jud., art. L. 211-9-3 à L. 211-16 (loi n° 2019-222 du 23 mars 2019)",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGIARTI000038314166/2020-01-01/",
      "fiab": "stable"
     },
     {
@@ -231,9 +261,27 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Réformes 2025-2026 de la protection sociale</b> : le décret n° 2025-160 du 20 février 2025 plafonne à 1,4 SMIC mensuel (au lieu de 1,8) le salaire retenu pour l'indemnité journalière maladie des arrêts débutant à compter du 1er avril 2025 ; la LFSS pour 2025 (loi n° 2025-199 du 28 février 2025) abaisse pour 2025 les seuils des taux réduits maladie (2,25 SMIC) et famille (3,3 SMIC) et prévoit, au 1er janvier 2026, une réduction unique dégressive jusqu'à 3 SMIC ; la convention d'assurance chômage du 15 novembre 2024 (agréée par arrêté du 19 décembre 2024) ramène la contribution patronale de 4,05 % à 4,00 % au 1er mai 2025 et porte à 55 ans l'âge de la période d'affiliation de 36 mois au 1er avril 2025. La LFSS pour 2026 suspend jusqu'au 1er janvier 2028 la montée en charge de la réforme des retraites de 2023 : âge légal maintenu à 62 ans et 9 mois et durée d'assurance à 170 trimestres pour les assurés nés en 1964 et 1965, le calendrier reprenant ensuite, décalé d'autant ; vérifier les paramètres applicables à la date de l'examen.",
-     "src": "Décret n° 2025-160 du 20 février 2025 (CSS, art. R. 323-4) ; loi n° 2025-199 du 28 février 2025 (CSS, art. L. 241-2-1, L. 241-6-1, L. 241-13) ; convention du 15 novembre 2024 relative à l'assurance chômage, agréée par arrêté du 19 décembre 2024 ; loi de financement de la sécurité sociale pour 2026 (CSS, art. L. 161-17-2 et L. 161-17-3)",
-     "url": null,
+     "t": "<b>Allègements de cotisations et IJ (2025-2026)</b> : la LFSS pour 2025 (loi n° 2025-199 du 28 février 2025) a abaissé pour 2025 les seuils des taux réduits maladie (2,25 SMIC) et famille (3,3 SMIC), puis institué au 1er janvier 2026 la réduction générale dégressive unique jusqu'à 3 SMIC, dont les paramètres sont fixés par le décret n° 2025-887 du 4 septembre 2025 ; le décret n° 2026-509 du 12 juin 2026 en précise les modalités d'application. La cotisation vieillesse déplafonnée patronale passe de 2,02 % à 2,11 % au 1er janvier 2026. Le décret n° 2025-160 du 20 février 2025 a ramené de 1,8 à 1,4 SMIC mensuel le plafond du salaire retenu pour les IJ maladie des arrêts débutant à compter du 1er avril 2025.",
+     "src": "Loi n° 2025-199 du 28 février 2025 (CSS, art. L. 241-2-1, L. 241-6-1 et L. 241-13) ; décret n° 2025-887 du 4 septembre 2025 ; décret n° 2026-509 du 12 juin 2026 ; décret n° 2025-160 du 20 février 2025 (CSS, art. R. 323-4)",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052194026",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Suspension de la réforme des retraites (LFSS 2026)</b> : l'article 105 de la loi n° 2025-1403 du 30 décembre 2025 suspend jusqu'au 1er janvier 2028 la montée en charge de la réforme de 2023, pour les pensions prenant effet à compter du 1er septembre 2026 : génération 1964 à 62 ans et 9 mois (au lieu de 63 ans) avec 170 trimestres (au lieu de 171) ; âge légal décalé d'un trimestre pour les générations 1965 à 1968, l'âge de 64 ans s'appliquant à partir de la génération 1969. Le décret n° 2026-344 du 7 mai 2026 en tire les conséquences pour les départs anticipés pour carrière longue.",
+     "src": "Loi n° 2025-1403 du 30 décembre 2025, art. 105 (CSS, art. L. 161-17-2 et L. 161-17-3) ; Cons. const., décision n° 2025-899 DC du 30 décembre 2025 ; décret n° 2026-344 du 7 mai 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053226384",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Durée des arrêts de travail (LFSS 2026)</b> : depuis le 1er septembre 2026, la durée de prescription d'un arrêt de travail est plafonnée à 31 jours pour une première prescription et à 62 jours pour une prolongation, le prescripteur pouvant dépasser ces durées s'il justifie sur la prescription la nécessité d'un arrêt plus long. Le décret n° 2026-866 du 16 septembre 2026 relatif à la durée maximale dérogatoire d'indemnisation pour arrêt de travail et à la sanction des abus s'applique aux arrêts prescrits à compter du 15 octobre 2026.",
+     "src": "CSS, art. L. 162-4-1 (loi n° 2025-1403 du 30 décembre 2025) et R. 162-1-7-1 ; décret n° 2026-866 du 16 septembre 2026",
+     "url": "https://www.ameli.fr/assure/actualites/arrets-de-travail-pour-maladie-ce-qui-change-au-1er-septembre-2026",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Assurance chômage</b> : la convention du 15 novembre 2024, agréée par arrêté du 19 décembre 2024, s'applique depuis le 1er janvier 2025 pour quatre ans et met fin au régime de carence en vigueur depuis juillet 2019. La contribution patronale est passée de 4,05 % à 4,00 % le 1er mai 2025, par la suppression de la contribution exceptionnelle temporaire de 0,05 point. L'arrêté du 28 mars 2026 agrée les stipulations relatives à l'indemnisation des demandeurs d'emploi « primo-entrants », initialement exclues de l'agrément faute de base légale.",
+     "src": "Arrêté du 19 décembre 2024 ; arrêté du 28 mars 2026 ; convention du 15 novembre 2024 relative à l'assurance chômage",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053728131",
      "fiab": "millésimé 2026"
     }
    ]
@@ -245,6 +293,18 @@
      "t": "<b>Conseil de prud'hommes ou pôle social ?</b> Le conseil de prud'hommes n'est pas compétent pour les litiges attribués par la loi à une autre juridiction : la reconnaissance d'un accident du travail, le taux d'incapacité ou la faute inexcusable relèvent du tribunal judiciaire (pôle social) ; en revanche, le licenciement consécutif à l'inaptitude et l'indemnité spéciale relèvent du conseil de prud'hommes.",
      "src": "C. trav., art. L. 1411-1 ; C. org. jud., art. L. 211-16",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Barème 2025 ou 2026 ?</b> Appliquer le barème de l'année de la rémunération : en 2025, PASS de 47 100 €, SMIC de 11,88 €, réduction générale nulle à 1,6 SMIC, taux réduits maladie jusqu'à 2,25 SMIC et famille jusqu'à 3,3 SMIC, vieillesse déplafonnée patronale de 2,02 % ; en 2026, PASS de 48 060 €, SMIC de 12,02 € puis 12,31 €, réduction générale dégressive unique jusqu'à 3 SMIC, vieillesse déplafonnée patronale de 2,11 %.",
+     "src": "CSS, art. L. 241-13 ; arrêté du 22 décembre 2025 (PASS 2026) ; décret n° 2025-1228 du 17 décembre 2025 ; loi n° 2025-199 du 28 février 2025",
+     "url": "https://www.urssaf.fr/accueil/actualites/informations-nouvelle-annee.html",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Lien avec la comptabilité (UE 9, DSCG)</b> : le règlement ANC n° 2026-03 du 6 mars 2026, homologué par l'arrêté du 12 août 2026, intitule le compte 6454 « Cotisations à France Travail » (au lieu de Pôle emploi), pour les exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible.",
+     "src": "Règlement ANC n° 2026-03 du 6 mars 2026 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
      "fiab": "stable"
     }
    ]
