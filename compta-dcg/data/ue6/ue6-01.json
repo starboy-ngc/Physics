@@ -61,6 +61,7 @@
  "exercices": [
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Société Valtex, exercice N. Ventes de marchandises : 500 000 €. Achats de marchandises : 300 000 €. Stock initial de marchandises 40 000 €, stock final 55 000 €. Calculez la marge commerciale (en euros).",
    "a": 215000,
    "unit": "€",
@@ -72,6 +73,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Marge commerciale 215 000 €, aucune production, consommations en provenance des tiers 60 000 €. Calculez la valeur ajoutée (en euros).",
    "a": 155000,
    "unit": "€",
@@ -83,6 +85,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Valeur ajoutée 155 000 €, impôts et taxes 8 000 €, charges de personnel 95 000 €, aucune subvention d'exploitation. Calculez l'excédent brut d'exploitation (en euros).",
    "a": 52000,
    "unit": "€",
@@ -94,6 +97,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "L'excédent brut d'exploitation se calcule :",
    "opts": [
     "Avant dotations aux amortissements et avant charges financières",
@@ -109,6 +113,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments composent la production de l'exercice dans le tableau des SIG ?",
    "opts": [
     "Production vendue (biens et services)",
@@ -117,7 +122,11 @@
     "Ventes de marchandises",
     "Subventions d'exploitation"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "Production de l'exercice = production vendue + production stockée (713) + production immobilisée (72). Les ventes de marchandises entrent dans la marge commerciale, pas dans la production. Les subventions d'exploitation (74) interviennent au niveau de l'EBE.",
    "src": "PCG, tableau des SIG (production de l'exercice)",
    "fiab": "stable",
@@ -125,6 +134,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels postes font partie des consommations en provenance des tiers déduites pour calculer la valeur ajoutée ?",
    "opts": [
     "Achats de matières premières",
@@ -133,7 +143,11 @@
     "Charges de personnel",
     "Impôts et taxes"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "Les consommations en provenance des tiers regroupent les achats de matières et autres approvisionnements corrigés de la variation de leurs stocks, ainsi que les autres achats et charges externes (61, 62). Charges de personnel et impôts et taxes sont déduits plus bas, pour passer de la VA à l'EBE.",
    "src": "PCG, tableau des SIG (valeur ajoutée)",
    "fiab": "stable",
@@ -141,6 +155,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Le stock final de marchandises (70 000 €) est supérieur au stock initial (50 000 €). Quel est l'effet de cette variation sur la marge commerciale ?",
    "opts": [
     "Elle augmente la marge de 20 000 € car le coût d'achat des marchandises vendues diminue",
@@ -156,6 +171,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "En N, une entreprise cède une machine pour 8 000 € ; sa valeur nette comptable était de 5 000 €. Sous PCG 2025, dans quel solde apparaît la plus-value de 3 000 € ?",
    "opts": [
     "Dans le résultat d'exploitation (757 − 657)",
@@ -171,6 +187,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Sous PCG 2025, quels éléments relèvent du résultat exceptionnel ?",
    "opts": [
     "Coût de destruction d'un entrepôt lors d'une inondation exceptionnelle",
@@ -178,7 +195,10 @@
     "Produit de la cession d'un véhicule utilitaire remplacé",
     "Quote-part de subvention d'investissement virée au résultat"
    ],
-   "a": [0, 1],
+   "a": [
+    0,
+    1
+   ],
    "why": "Le règlement ANC 2022-06 limite le résultat exceptionnel aux produits et charges directement liés à un événement majeur et inhabituel : catastrophe naturelle, expropriation, abandon d'activité. La cession d'un véhicule remplacé est une opération de gestion courante (657/757, résultat d'exploitation). La quote-part de subvention d'investissement est en 747, dans l'exploitation.",
    "src": "Règl. ANC 2022-06 ; PCG 2025, comptes 67, 77, 747",
    "fiab": "stable",
@@ -186,6 +206,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le résultat courant avant impôt (RCAI) est égal à :",
    "opts": [
     "Résultat d'exploitation ± quotes-parts de résultat sur opérations faites en commun + produits financiers − charges financières",
@@ -201,6 +222,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "RCAI 100 000 €, résultat exceptionnel −10 000 €, participation des salariés 5 000 €, impôt sur les bénéfices 21 250 €. Quel est le résultat net ?",
    "opts": [
     "63 750 €",
@@ -216,6 +238,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La capacité d'autofinancement mesure :",
    "opts": [
     "La trésorerie disponible en banque à la clôture",
@@ -231,6 +254,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Société Valtex, exercice N : EBE 180 000 € ; autres produits d'exploitation encaissables 4 000 € ; autres charges d'exploitation décaissables 6 000 € ; produits financiers encaissables 2 000 € ; charges d'intérêts 15 000 € ; charges exceptionnelles décaissables 3 000 € ; participation des salariés 5 000 € ; impôt sur les bénéfices 30 000 €. Calculez la CAF par la méthode soustractive (en euros).",
    "a": 127000,
    "unit": "€",
@@ -242,6 +266,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Résultat net 20 000 €, dotations aux amortissements et dépréciations 18 000 €, reprises 2 000 €, produits des cessions d'immobilisations (compte 757) 5 000 €, valeur comptable des immobilisations cédées (compte 657) 3 000 €. Calculez la CAF par la méthode additive (en euros).",
    "a": 34000,
    "unit": "€",
@@ -253,6 +278,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments n'entrent pas dans le calcul de la CAF ?",
    "opts": [
     "Dotations aux amortissements",
@@ -262,7 +288,11 @@
     "Impôt sur les bénéfices",
     "Charges d'intérêts"
    ],
-   "a": [0, 1, 2],
+   "a": [
+    0,
+    1,
+    2
+   ],
    "why": "La CAF ne retient que les produits encaissables et les charges décaissables liés à l'activité. Les dotations et reprises sont des charges et produits calculés, sans flux monétaire. Le produit de cession (757) est un flux d'investissement, pas d'activité, exclu avec la valeur comptable (657). Charges de personnel, IS et intérêts sont décaissables et bien pris en compte.",
    "src": "PCG, détermination de la CAF",
    "fiab": "stable",
@@ -270,6 +300,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "CAF de l'exercice N : 127 000 €. Dividendes versés en N au titre de N−1 : 40 000 €. Dividendes qui seront proposés sur le résultat N : 45 000 €. Calculez l'autofinancement de l'exercice N (en euros).",
    "a": 87000,
    "unit": "€",
@@ -281,6 +312,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "L'autofinancement se définit comme :",
    "opts": [
     "CAF − dividendes distribués au cours de l'exercice",
@@ -296,6 +328,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Retraitement du personnel intérimaire selon la méthode de la Centrale de bilans : quel est l'effet sur les SIG ?",
    "opts": [
     "La valeur ajoutée augmente, l'EBE est inchangé",
@@ -311,6 +344,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Avant retraitement : VA 500 000 €, EBE 200 000 €. Redevance de crédit-bail de l'exercice : 30 000 €, dont 24 000 € assimilables à un amortissement et 6 000 € à des intérêts. Calculez l'EBE retraité selon la méthode de la Centrale de bilans (en euros).",
    "a": 230000,
    "unit": "€",
@@ -322,6 +356,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans la méthode de la Centrale de bilans, les subventions d'exploitation sont :",
    "opts": [
     "Intégrées à la valeur ajoutée comme complément de prix de vente",
@@ -337,6 +372,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque élément selon le traitement que lui applique la méthode de la Centrale de bilans.",
    "cats": [
     "Reclassé en charges de personnel",
@@ -345,11 +381,26 @@
     "Ajouté à la valeur ajoutée"
    ],
    "items": [
-    ["Personnel intérimaire (compte 621)", 0],
-    ["Participation des salariés (691)", 0],
-    ["Part « amortissement » de la redevance de crédit-bail", 1],
-    ["Part « intérêts » de la redevance de crédit-bail", 2],
-    ["Subventions d'exploitation", 3]
+    [
+     "Personnel intérimaire (compte 621)",
+     0
+    ],
+    [
+     "Participation des salariés (691)",
+     0
+    ],
+    [
+     "Part « amortissement » de la redevance de crédit-bail",
+     1
+    ],
+    [
+     "Part « intérêts » de la redevance de crédit-bail",
+     2
+    ],
+    [
+     "Subventions d'exploitation",
+     3
+    ]
    ],
    "why": "La Centrale de bilans cherche le coût économique des facteurs : tout ce qui rémunère le travail (intérim, participation) va en charges de personnel ; la redevance de crédit-bail est éclatée entre amortissement et intérêts, comme pour un bien acheté à crédit ; les subventions d'exploitation complètent le prix de vente et rejoignent la VA.",
    "src": "Centrale de bilans (Banque de France), retraitements des SIG",
@@ -358,6 +409,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Ventes de marchandises HT 500 000 €, marge commerciale 215 000 €. Quel est le taux de marge commerciale ?",
    "opts": [
     "43 %",
@@ -373,6 +425,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Valeur ajoutée 155 000 €, charges de personnel 95 000 €, aucune participation. Quelle est la part du personnel dans le partage de la valeur ajoutée (arrondie à 0,1 %) ?",
    "opts": [
     "61,3 %",
@@ -388,6 +441,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En N−1, l'entreprise a vendu 1 000 unités à 50 € ; en N, 1 100 unités à 52 €. Calculez l'effet volume sur la variation du chiffre d'affaires, en valorisant la variation de quantité au prix de N−1 (en euros).",
    "a": 5000,
    "unit": "€",

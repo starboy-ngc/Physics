@@ -202,6 +202,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Dans une échéance d'emprunt, quelle partie constitue une charge pour l'entreprise ?",
    "opts": [
@@ -217,6 +218,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Emprunt de 100 000 € à 4 % remboursable en 5 amortissements constants annuels. Quel est le montant de la 3e annuité (amortissement + intérêts) ?",
    "a": 22400,
@@ -228,6 +230,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Emprunt de 100 000 € à 4 % remboursable par 5 annuités constantes de fin d'année. Formule : a = C × i ÷ (1 − (1 + i)^−n), avec 1,04^−5 = 0,8219271. Calculez l'annuité (arrondie au centime).",
    "a": 22462.71,
@@ -239,6 +242,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Même emprunt (100 000 € à 4 %, annuité constante de 22 462,71 €). Quel est le montant des intérêts de la 2e année (arrondi au centime) ?",
    "a": 3261.49,
@@ -250,6 +254,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Enregistrez la 1re annuité constante de l'emprunt précédent, prélevée le 31 décembre : annuité 22 462,71 € dont intérêts 4 000 € et amortissement 18 462,71 €.",
    "lib": "Première annuité",
@@ -285,6 +290,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Emprunt de 60 000 € à 5 % débloqué le 1er mai N, intérêts payables chaque 30 avril. Quelle écriture au 31 décembre N ?",
    "opts": [
@@ -300,6 +306,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "À propos d'un emprunt remboursable par annuités constantes, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -320,6 +327,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Achat de 200 actions cotées pour placer un excédent de trésorerie : 50 € l'action, courtage 50 € HT, TVA 10 €, réglé par la banque. L'entreprise passe les frais en charges.",
    "lib": "Acquisition de VMP",
@@ -361,6 +369,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Les 200 actions (coût 10 000 €, aucune dépréciation) sont revendues 57,50 € l'unité, soit 11 500 € encaissés en banque (on néglige les frais).",
    "lib": "Cession de VMP",
@@ -397,6 +406,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Une entreprise détient 100 obligations (VMP, compte 506) achetées 1 000 € l'unité, qu'elle revend 950 € l'unité. Quelle écriture ?",
    "opts": [
@@ -412,6 +422,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles affirmations sur les valeurs mobilières de placement sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -432,6 +443,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La société Orvalis reçoit la notification d'une aide à l'embauche de 4 000 € de l'État, qui sera versée dans deux mois. Écriture à la notification :",
    "opts": [
@@ -447,6 +459,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Deux mois après la notification de l'aide à l'embauche de 4 000 € (comptabilisée en 441/741), la société Orvalis reçoit le virement de l'État. Écriture à l'encaissement :",
    "opts": [
@@ -462,6 +475,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Une collectivité verse à la société Mirval une subvention destinée à compenser la perte globale de son exercice, sans lien avec une charge ou un investissement précis. Sous le PCG 2025, cette subvention est enregistrée :",
    "opts": [
@@ -477,6 +491,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Berlan obtient une subvention d'investissement de 15 000 € pour financer une machine de 50 000 € amortie en linéaire sur 5 ans, mise en service le 1er janvier N. Enregistrez, au 31 décembre N, la quote-part de subvention virée au résultat.",
    "lib": "Quote-part de subvention d'investissement",
@@ -508,6 +523,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Subvention d'investissement de 24 000 € finançant un matériel de 60 000 € amorti en linéaire sur 5 ans, mis en service le 1er octobre N. Quelle quote-part de subvention est virée au résultat en N ?",
    "a": 1200,
@@ -519,6 +535,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Sous le PCG 2025, la quote-part de subvention d'investissement virée au résultat est :",
    "opts": [
@@ -534,6 +551,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Dans une lettre de change, qui est le tiré ?",
    "opts": [
@@ -549,6 +567,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "La société Hekla (client) accepte une lettre de change de 6 000 € tirée par son fournisseur Nordal en règlement d'une facture. Enregistrez l'acceptation chez Hekla.",
    "lib": "Acceptation d'une traite (chez le tiré)",
@@ -579,6 +598,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Chez le fournisseur Nordal, la même traite acceptée par Hekla s'enregistre :",
    "opts": [
@@ -594,6 +614,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Nordal remet à l'escompte une traite de 12 000 € 60 jours avant l'échéance. Taux d'escompte 9 % (année de 360 jours), commission 20 € HT (TVA 20 %). Quel montant net la banque porte-t-elle au crédit du compte de Nordal ?",
    "a": 11796,
@@ -605,6 +626,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Enregistrez chez Nordal l'avis de crédit de la banque pour l'escompte précédent : nominal 12 000 € (déjà porté en 5114), escompte 180 €, commission 20 € HT, TVA 4 €, net 11 796 €.",
    "lib": "Avis de crédit d'escompte",
@@ -652,6 +674,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles affirmations sur l'escompte d'un effet de commerce sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -672,6 +695,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La traite de 12 000 € escomptée par Nordal revient impayée à l'échéance. La banque débite le compte de Nordal de 12 000 € plus 30 € de frais d'impayé, que Nordal refacture au client Hekla. Écriture chez Nordal :",
    "opts": [
@@ -687,6 +711,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un billet à ordre se distingue de la lettre de change parce que :",
    "opts": [
@@ -702,6 +727,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La société Télia verse 3 000 € de dépôt de garantie à son nouveau bailleur, remboursable à la sortie des locaux. Écriture :",
    "opts": [
@@ -717,6 +743,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Au 31 décembre N, la société Alcor détient une créance de 10 000 $ sur un client américain, comptabilisée 9 200 € au cours du jour de la vente (1 $ = 0,92 €). Le cours de clôture est de 1 $ = 0,90 €. Enregistrez l'écart de conversion (sans la provision).",
    "lib": "Écart de conversion à la clôture",
@@ -748,6 +775,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Alcor a aussi une dette de 20 000 $ envers un fournisseur, comptabilisée 18 400 € (cours 0,92). Au cours de clôture de 0,90 €, que constate-t-elle ?",
    "opts": [
@@ -763,6 +791,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 3,
    "q": "Quelles affirmations sur les opérations en devises sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -784,6 +813,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "La société Lioré a reçu en N−2 une subvention d'investissement de 20 000 € pour un bien amorti en linéaire sur 10 ans, mis en service le 1er janvier N−2, reprise au rythme de l'amortissement. Elle cède ce bien le 31 décembre N. Quel montant de subvention doit être viré au résultat au titre de N, y compris le solde dû à la cession ?",
    "opts": [

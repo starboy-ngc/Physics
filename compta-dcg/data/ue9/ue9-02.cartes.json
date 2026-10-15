@@ -1,0 +1,374 @@
+{
+ "id": "ue9-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue9-02-k01",
+   "type": "def",
+   "q": "Qu'est-ce que le plan de comptes du Plan comptable général (PCG) ?",
+   "r": "<b>La liste des comptes figurant à l'article 1121-1 du PCG.</b> Ce plan est commun au système de base et au système abrégé.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k02",
+   "type": "def",
+   "q": "Qu'appelle-t-on le plan de comptes minimal dans le Plan comptable général (PCG) ?",
+   "r": "<b>L'ensemble des comptes imprimés en caractères normaux</b> dans le plan de comptes ; les comptes imprimés en italique sont d'utilisation facultative.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 1121-1 (rédaction issue du règlement ANC n° 2022-06, version commentée)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k03",
+   "type": "comp",
+   "q": "Que peut faire une entité lorsque les comptes prévus par le plan de comptes du PCG ne suffisent pas à enregistrer distinctement ses opérations ?",
+   "r": "Elle peut <b>ouvrir toute subdivision nécessaire</b> pour enregistrer distinctement toutes ses opérations.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 1121-1 (rédaction issue du règlement ANC n° 2022-06, version commentée)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k04",
+   "type": "def",
+   "q": "Quels comptes regroupent les classes 1, 2 et 3 du plan de comptes du PCG ?",
+   "r": "<b>Classe 1 : comptes de capitaux</b> (capitaux propres, autres fonds propres, emprunts et dettes assimilées) ; <b>classe 2 : comptes d'immobilisations</b> ; <b>classe 3 : comptes de stocks et en-cours</b>.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k05",
+   "type": "def",
+   "q": "Quels comptes regroupent les classes 4, 5, 6 et 7 du plan de comptes du PCG ?",
+   "r": "<b>Classe 4 : comptes de tiers</b> ; <b>classe 5 : comptes financiers</b> ; <b>classe 6 : comptes de charges</b> ; <b>classe 7 : comptes de produits</b>.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k06",
+   "type": "comp",
+   "q": "Comment la classe 6 du PCG répartit-elle les charges d'exploitation normale et courante et les charges financières ?",
+   "r": "La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les <b>charges par nature</b> : celles d'exploitation normale et courante aux <b>comptes 60 à 65</b>, les charges financières au <b>compte 66</b>.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "PCG (version consolidée au 1er janvier 2026), classe 6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k07",
+   "type": "comp",
+   "q": "Dans la classe 7 du PCG, quels comptes enregistrent les produits d'exploitation normale et courante ?",
+   "r": "<b>70 : ventes ; 71 : production stockée ; 72 : production immobilisée ; 74 : subventions ; 75 : autres produits de gestion courante.</b>",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG (version consolidée au 1er janvier 2026), classe 7",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k09",
+   "type": "comp",
+   "q": "Selon le PCG, dans quel compte la TVA collectée sur une vente est-elle enregistrée ?",
+   "r": "Au <b>compte de tiers 4457</b>, jamais en produit : les produits de la classe 7 sont enregistrés hors taxes collectées.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#8"
+   ],
+   "src": "PCG (version consolidée au 1er janvier 2026), classe 7 ; plan de comptes, compte 4457",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k10",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il le résultat de l'exercice ?",
+   "r": "Il est égal à la fois à la <b>différence entre les produits et les charges</b> et à la <b>variation des capitaux propres</b> entre le début et la fin de l'exercice, sauf pour les opérations qui affectent directement le montant des capitaux propres.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "PCG, art. 513-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k11",
+   "type": "comp",
+   "q": "Selon le Code de commerce, dans quel ordre un commerçant enregistre-t-il en principe les mouvements affectant le patrimoine de son entreprise ?",
+   "r": "<b>Chronologiquement</b>, qu'il soit personne physique ou morale. Par dérogation, les personnes physiques placées sous le régime réel simplifié d'imposition peuvent n'enregistrer les créances et les dettes qu'à la clôture de l'exercice.",
+   "base": [
+    "Règles essentielles#0",
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 123-12, al. 1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k12",
+   "type": "comp",
+   "q": "Selon l'article R. 123-173 du Code de commerce, quels livres comptables un commerçant doit-il obligatoirement tenir ?",
+   "r": "<b>Le livre-journal et le grand livre.</b> Le livre d'inventaire n'est plus un livre obligatoire depuis le 1er janvier 2016, mais les données d'inventaire restent à conserver et à organiser.",
+   "base": [
+    "Règles essentielles#1",
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. R. 123-173",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k13",
+   "type": "def",
+   "q": "Qu'est-ce que le livre-journal au sens du Code de commerce ?",
+   "r": "<b>Un livre obligatoire</b> où les mouvements affectant le patrimoine de l'entreprise sont enregistrés <b>opération par opération et jour par jour</b>.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. R. 123-173 et R. 123-174",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k14",
+   "type": "def",
+   "q": "Qu'est-ce que le grand livre au sens du Code de commerce ?",
+   "r": "<b>Un livre obligatoire</b> sur lequel les écritures du livre-journal sont portées et <b>ventilées selon le plan comptable</b> ; il présente ainsi les mouvements compte par compte.",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. R. 123-173 et R. 123-175",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257948",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k15",
+   "type": "def",
+   "q": "Que sont les journaux et livres auxiliaires prévus par le Code de commerce ?",
+   "r": "Les journaux et livres <b>dans lesquels le livre-journal et le grand livre sont détaillés</b>, autant que les besoins du commerce l'exigent ; leurs écritures sont centralisées sur le livre-journal et le grand livre.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. R. 123-176",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k16",
+   "type": "comp",
+   "q": "Selon le Code de commerce, à quelle fréquence minimale les écritures des journaux et livres auxiliaires sont-elles centralisées ?",
+   "r": "<b>Au moins une fois par mois</b>, sur le livre-journal et le grand livre. Par dérogation, les personnes mentionnées aux articles L. 123-25 à L. 123-27 et au deuxième alinéa de l'article L. 123-16-1 peuvent ne centraliser que tous les trois mois.",
+   "base": [
+    "Chiffres et seuils#0",
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. R. 123-176 ; art. R. 123-204 (dérogation trimestrielle)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k17",
+   "type": "comp",
+   "q": "Selon le Code de commerce, à quelle condition des documents électroniques peuvent-ils tenir lieu de livre-journal et de grand livre ?",
+   "r": "Ils doivent être <b>identifiés et datés dès leur établissement</b> par des moyens offrant toute garantie en matière de preuve.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. R. 123-173",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k18",
+   "type": "comp",
+   "q": "Selon le Code de commerce, que doit préciser tout enregistrement comptable ?",
+   "r": "L'<b>origine</b>, le <b>contenu</b> et l'<b>imputation</b> de chaque donnée, ainsi que les <b>références de la pièce justificative</b> qui l'appuie ; une écriture sans pièce ne respecte pas l'article R. 123-174.",
+   "base": [
+    "Règles essentielles#2",
+    "Points de vigilance#1"
+   ],
+   "src": "C. com., art. R. 123-174",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k19",
+   "type": "comp",
+   "q": "Selon le Code de commerce, à quelles conditions plusieurs opérations peuvent-elles être récapitulées sur une pièce justificative unique ?",
+   "r": "Lorsqu'il s'agit d'<b>opérations de même nature</b>, réalisées <b>en un même lieu</b> et <b>au cours d'une même journée</b>.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. R. 123-174",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k20",
+   "type": "comp",
+   "q": "Selon l'article L. 123-22 du Code de commerce, quelles règles de forme s'imposent aux documents comptables d'un commerçant ?",
+   "r": "Ils sont établis <b>en euros et en langue française</b> ; ceux relatifs à l'enregistrement des opérations et à l'inventaire sont établis et tenus <b>sans blanc ni altération d'aucune sorte</b>, dans des conditions fixées par décret en Conseil d'État.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 123-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k21",
+   "type": "comp",
+   "q": "Selon le Code de commerce, pendant combien de temps un commerçant conserve-t-il ses documents comptables et ses pièces justificatives ?",
+   "r": "<b>Dix ans</b>, pour les documents comptables comme pour les pièces justificatives (C. com., art. L. 123-22).",
+   "base": [
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. com., art. L. 123-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k22",
+   "type": "def",
+   "q": "Qu'est-ce que l'inventaire au sens du Code de commerce ?",
+   "r": "<b>Le contrôle annuel de l'existence et de la valeur</b> de tous les éléments d'actif et de passif à la date de clôture ; il a lieu au moins une fois tous les douze mois.",
+   "base": [
+    "Définitions#4",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. R. 123-177",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k23",
+   "type": "comp",
+   "q": "Selon le Code de commerce, comment les données d'inventaire doivent-elles être organisées ?",
+   "r": "<b>De manière à justifier le contenu et le mode d'évaluation de chaque poste du bilan.</b> Elles sont conservées dans les conditions de l'article L. 123-22 du Code de commerce.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. R. 123-177",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k24",
+   "type": "comp",
+   "q": "Quels allègements l'article L. 123-25 du Code de commerce accorde-t-il aux personnes physiques placées sous le régime réel simplifié d'imposition ?",
+   "r": "Elles peuvent <b>n'enregistrer les créances et les dettes qu'à la clôture de l'exercice</b> et <b>ne pas établir d'annexe</b>, qu'elles relèvent du régime réel simplifié sur option ou de plein droit.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 123-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556295",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k25",
+   "type": "comp",
+   "q": "Quelles obligations comptables allégées l'article L. 123-28 du Code de commerce prévoit-il pour les personnes physiques relevant du régime micro (art. 50-0 du CGI) ?",
+   "r": "Elles peuvent <b>ne pas établir de comptes annuels</b>. Elles tiennent un <b>livre</b> mentionnant chronologiquement le montant et l'origine des recettes et, si leur commerce principal est la vente de marchandises, objets, fournitures et denrées à emporter ou à consommer sur place, ou la fourniture de logement, un <b>registre</b> récapitulé par année présentant le détail de leurs achats.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 123-28",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k26",
+   "type": "comp",
+   "q": "Selon le Code de commerce, à quelle date les commerçants personnes physiques au réel simplifié ou au régime micro peuvent-ils enregistrer leurs encaissements et paiements ?",
+   "r": "À la <b>date de l'opération figurant sur le relevé</b> de leur établissement de crédit, par dérogation à l'enregistrement « opération par opération et jour par jour ».",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. R. 123-203 (sous-section 2 : obligations comptables applicables à certains commerçants, personnes physiques ou morales)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000030927480",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k27",
+   "type": "comp",
+   "q": "Qu'est devenu le système abrégé du PCG après la réécriture du plan de comptes par le règlement ANC n° 2022-06 ?",
+   "r": "<b>Il n'a pas été supprimé</b> : le plan de comptes, réécrit à l'article 1121-1, reste <b>commun au système de base et au système abrégé</b>, et les modèles du système abrégé (art. 822-1) ont encore été modifiés par le règlement ANC n° 2024-07.",
+   "base": [
+    "Points de vigilance#3",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "PCG, art. 1121-1 et 822-1 ; règlement ANC n° 2024-07 (modèles de bilan des art. 821-1 et 822-1)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k28",
+   "type": "comp",
+   "q": "Qu'est devenue la technique du transfert de charges dans le PCG pour les exercices ouverts à compter du 1er janvier 2025 ?",
+   "r": "<b>Le PCG ne la prévoit plus</b> : le règlement ANC n° 2022-06 a supprimé les comptes 791, 796 et 797. Le compte 791 ne subsiste, à titre d'exception, que dans le plan de comptes des organismes de logement social, exclusivement pour les opérations de concession d'aménagement.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 du 5 décembre 2025 (modifiant les règlements n° 2015-04 et n° 2023-03), art. 3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Avis/2025/Avis-2025_01.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k29",
+   "type": "comp",
+   "q": "Selon le règlement ANC n° 2024-07, de quoi est constituée la rubrique « Autres fonds propres » des modèles de bilan du PCG ?",
+   "r": "Des <b>fonds non remboursables</b> (art. 315-1), des <b>avances conditionnées</b> (art. 316-1) et des <b>droits du concédant</b> (art. 1212-22). Le règlement s'applique aux exercices ouverts à compter du 1er janvier 2026, avec application anticipée possible.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Règlement ANC n° 2024-07 du 6 décembre 2024 ; arrêté du 26 décembre 2025 portant homologation des règlements n° 2024-07 et n° 2025-05",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_JO.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k31",
+   "type": "comp",
+   "q": "Quelle valeur probante le Code de commerce reconnaît-il en justice à la comptabilité d'un commerçant ?",
+   "r": "Régulièrement tenue, elle peut être admise en justice pour <b>faire preuve entre commerçants pour faits de commerce</b> ; irrégulièrement tenue, elle <b>ne peut être invoquée par son auteur à son profit</b>.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. L. 123-23",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-02-k32",
+   "type": "comp",
+   "q": "Selon le Code de commerce, dans quelles affaires la communication des documents comptables d'un commerçant peut-elle être ordonnée en justice ?",
+   "r": "Seulement dans les affaires de <b>succession, communauté, partage de société</b> et en cas de <b>redressement ou de liquidation judiciaires</b>.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. L. 123-23",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341",
+   "fiab": "stable"
+  }
+ ]
+}

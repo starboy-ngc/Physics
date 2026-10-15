@@ -81,6 +81,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel organe est compétent pour décider une augmentation de capital dans une société anonyme ?",
    "opts": [
     "Le conseil d'administration seul",
@@ -96,6 +97,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SARL dont le capital n'est libéré qu'à hauteur de 60 % décide une augmentation de capital par souscription en numéraire. Quelle est la sanction ?",
    "opts": [
     "Aucune, la libération partielle étant admise",
@@ -111,6 +113,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une SA au capital de 10 000 actions émet 2 500 actions nouvelles en numéraire avec maintien du droit préférentiel de souscription. Combien d'actions anciennes faut-il détenir pour pouvoir souscrire une action nouvelle à titre irréductible ?",
    "a": 4,
    "unit": "actions anciennes",
@@ -122,6 +125,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une SA émet 5 000 actions nouvelles de valeur nominale 10 € au prix d'émission de 16 €. Quel est le montant total de la prime d'émission (en €) ?",
    "a": 30000,
    "unit": "€",
@@ -133,6 +137,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Avant augmentation, une SA compte 10 000 actions valant chacune 30 €. Elle émet 2 500 actions nouvelles au prix de 18 €. Calculez la valeur théorique d'un droit préférentiel de souscription (en €, arrondi au centime).",
    "a": 2.4,
    "unit": "€",
@@ -144,6 +149,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA veut réserver une augmentation de capital à un investisseur extérieur. Quelle procédure doit-elle suivre pour écarter le droit préférentiel de souscription des actionnaires ?",
    "opts": [
     "Une décision du conseil d'administration suffit",
@@ -159,6 +165,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "L'AGE d'une SA délègue au conseil d'administration sa compétence pour décider une ou plusieurs augmentations de capital. Quelle est la durée maximale de cette délégation ?",
    "opts": [
     "12 mois",
@@ -174,6 +181,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA décide d'augmenter son capital par incorporation de réserves, avec attribution d'actions gratuites. Dans quelles conditions de quorum et de majorité l'assemblée statue-t-elle ?",
    "opts": [
     "Celles de l'AGE : quorum 1/4 puis 1/5, majorité des 2/3",
@@ -189,6 +197,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans une SARL constituée en 2012, quelle majorité est requise pour augmenter le capital par incorporation de réserves ?",
    "opts": [
     "Les deux tiers des parts présentes ou représentées, avec quorum du quart",
@@ -204,6 +213,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA prospère décide de réduire son capital pour rembourser une partie de leurs apports aux actionnaires. Quelle protection la loi accorde-t-elle aux créanciers ?",
    "opts": [
     "Aucune, la réduction relevant de la liberté des actionnaires",
@@ -219,6 +229,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA dont les pertes ont absorbé la quasi-totalité des capitaux propres réduit son capital à zéro puis l'augmente immédiatement, en maintenant le droit préférentiel de souscription des anciens actionnaires. Comment s'appelle cette opération et est-elle licite ?",
    "opts": [
     "Une fusion-absorption, licite",
@@ -234,6 +245,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les comptes d'une SARL, approuvés en assemblée, font apparaître des capitaux propres inférieurs à la moitié du capital. Dans quel délai le gérant doit-il consulter les associés sur l'éventuelle dissolution anticipée ?",
    "opts": [
     "Dans le mois suivant l'approbation des comptes",
@@ -249,6 +261,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "L'assemblée d'une SA réunie le 30 juin 2025 approuve les comptes de l'exercice 2024 et constate des capitaux propres inférieurs à la moitié du capital ; les actionnaires décident de poursuivre l'activité. Jusqu'à quelle date au plus tard la société doit-elle avoir reconstitué ses capitaux propres ou réduit son capital ?",
    "opts": [
     "31 décembre 2025",
@@ -264,6 +277,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SAS n'a pas reconstitué ses capitaux propres à la moitié du capital dans le délai de deux exercices. Depuis la loi du 9 mars 2023, quelle est la conséquence ?",
    "opts": [
     "Elle est dissoute de plein droit",
@@ -279,6 +293,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Pour une SA dont le total du bilan est de 2 M€, quel est le seuil de capital en dessous duquel elle doit se placer, à défaut de reconstitution des capitaux propres, pour échapper à la dissolution ?",
    "opts": [
     "20 000 €, soit 1 % du bilan",
@@ -294,6 +309,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SARL se transforme en SAS. Quel est l'effet de la transformation sur la personnalité morale ?",
    "opts": [
     "Une nouvelle personne morale est créée et reprend les contrats",
@@ -309,6 +325,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle majorité est requise pour transformer une SARL en SAS ?",
    "opts": [
     "Les deux tiers des parts présentes ou représentées",
@@ -324,6 +341,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La SA Alpha absorbe la SA Bêta. Quel est l'effet de la fusion sur le patrimoine et la personnalité de Bêta ?",
    "opts": [
     "Bêta est liquidée et ses actifs vendus à Alpha",
@@ -339,6 +357,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "La SA Alpha (valeur de l'action : 150 €) absorbe la SA Bêta, dont les 10 000 actions valent chacune 60 €. Combien d'actions nouvelles Alpha doit-elle émettre pour rémunérer les actionnaires de Bêta ?",
    "a": 4000,
    "unit": "actions",
@@ -350,6 +369,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Pour rémunérer l'absorption de Bêta, Alpha émet 4 000 actions de valeur nominale 20 €. L'actif net apporté par Bêta s'élève à 600 000 €. Quel est le montant de la prime de fusion (en €) ?",
    "a": 520000,
    "unit": "€",
@@ -361,6 +381,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La SAS Holding détient 100 % du capital de la SAS Filiale et l'absorbe. Quelle simplification la loi prévoit-elle ?",
    "opts": [
     "Aucune, la procédure de fusion est identique",
@@ -376,6 +397,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Deux SA de taille comparable fusionnent. Leurs actionnaires souhaitent éviter la désignation d'un commissaire à la fusion. Est-ce possible ?",
    "opts": [
     "Non, le commissaire à la fusion est toujours obligatoire entre SA",
@@ -391,6 +413,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un fournisseur de la société absorbée craint que la fusion ne compromette le paiement de sa créance. De quel délai dispose-t-il pour former opposition ?",
    "opts": [
     "10 jours à compter de la publication du projet de fusion",
@@ -406,6 +429,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les associés d'une SARL décident sa dissolution anticipée et nomment un liquidateur. Quelle est la durée maximale de son mandat ?",
    "opts": [
     "Un an, non renouvelable",
@@ -421,6 +445,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "La SARL Oméga (trois associés, capital de 50 000 €) est liquidée à l'amiable. Après réalisation de l'actif et paiement de toutes les dettes, l'actif net à partager s'élève à 80 000 €. Calculez le droit de partage dû (en €).",
    "a": 2000,
    "unit": "€",
@@ -432,6 +457,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La SA Mère détient 100 % des parts de l'EURL Fille et décide de la dissoudre. Quel régime s'applique ?",
    "opts": [
     "Une liquidation amiable classique avec nomination d'un liquidateur",
@@ -447,6 +473,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Pour quelle durée le commissaire aux comptes d'une société est-il nommé par l'assemblée ?",
    "opts": [
     "Trois exercices renouvelables une fois",
@@ -462,6 +489,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Parmi les affirmations suivantes relatives à la mission du commissaire aux comptes, lesquelles sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Il certifie que les comptes annuels sont réguliers, sincères et donnent une image fidèle",
@@ -482,6 +510,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "À la clôture de l'exercice 2025, une SARL présente un total de bilan de 6 M€, un chiffre d'affaires de 11 M€ et 40 salariés. Au regard des seuils applicables depuis 2024, doit-elle nommer un commissaire aux comptes ?",
    "opts": [
     "Non, car elle a moins de 50 salariés",
@@ -497,6 +526,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Dans une SA à conseil d'administration, attribuez chaque décision à l'organe compétent.",
    "cats": [
     "Assemblée générale extraordinaire",

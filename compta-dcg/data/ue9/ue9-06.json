@@ -152,6 +152,7 @@
  "exercices": [
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Achats de marchandises de l'exercice : 300 000 €. Stock initial : 40 000 €. Stock final : 55 000 €. Coût d'achat des marchandises vendues ?",
    "a": 285000,
@@ -163,6 +164,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "À la clôture, annulez le stock initial de marchandises de 40 000 €.",
    "lib": "Annulation stock initial",
@@ -192,6 +194,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Constatez le stock final de marchandises compté à l'inventaire : 55 000 €.",
    "lib": "Stock final",
@@ -221,6 +224,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le stock final de marchandises est supérieur au stock initial. Effet sur le résultat :",
    "opts": [
@@ -236,6 +240,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Un client doit 3 600 € TTC (TVA 20 %) et risque de ne payer que la moitié. Montant de la dépréciation à constater ?",
    "a": 1500,
@@ -247,6 +252,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Reclassez d'abord la créance de 3 600 € TTC de ce client en client douteux.",
    "lib": "Client douteux",
@@ -276,6 +282,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Enregistrez la dépréciation de 1 500 € sur ce client douteux.",
    "lib": "Dépréciation client",
@@ -305,6 +312,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quelle est la différence entre une dépréciation et une provision ?",
    "opts": [
@@ -320,6 +328,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Un litige avec un ancien salarié risque de coûter 5 000 €. Enregistrez la provision à la clôture.",
    "lib": "Provision pour litige",
@@ -349,6 +358,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Un client douteux de 2 400 € TTC (HT 2 000, TVA 400) est en liquidation judiciaire clôturée : la créance est définitivement perdue. Enregistrez la perte.",
    "lib": "Créance irrécouvrable",
@@ -384,6 +394,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Une dépréciation de stock de marchandises se comptabilise :",
    "opts": [
@@ -399,6 +410,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 1,
    "q": "La société Télia fabrique des meubles. Son stock de produits finis passe de 80 000 € à 95 000 € sur l'exercice. Comment cette variation apparaît-elle au compte de résultat ?",
    "opts": [
@@ -414,6 +426,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Stock initial de matières : 200 kg à 5,00 €. Entrées de l'exercice : 600 kg à 6,00 €. Sorties : 500 kg. Valorisez le stock final au coût moyen pondéré de fin de période (arrondi à l'euro).",
    "a": 1725,
@@ -425,6 +438,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quels éléments entrent dans le coût d'acquisition d'un stock de marchandises ? (plusieurs réponses possibles)",
    "opts": [
@@ -445,6 +459,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Au 31 décembre N, la dépréciation du client Hekla était de 1 500 €. Au 31 décembre N+1, la perte probable est réévaluée à 2 100 €. Quelle écriture passe-t-on en N+1 ?",
    "opts": [
@@ -460,6 +475,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Au 31 décembre N, la dépréciation du client Marsac était de 2 000 €. En N+1, Marsac a finalement payé l'intégralité de sa dette. Quelle écriture passe-t-on au 31 décembre N+1 ?",
    "opts": [
@@ -475,6 +491,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles conditions doivent être réunies à la clôture pour comptabiliser une provision ? (plusieurs réponses possibles)",
    "opts": [
@@ -495,6 +512,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Alcor détient 500 actions cotées (VMP) achetées 40 € l'unité. Au 31 décembre, le cours moyen de décembre est de 34 €. Quelle écriture ?",
    "opts": [
@@ -510,6 +528,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Alcor détient aussi des actions Gamma (VMP) achetées 8 000 € dont le cours moyen de décembre vaut 9 500 €, et les actions Bêta ci-dessus en moins-value latente de 3 000 €. Quelle dépréciation globale sur VMP constate-t-elle ?",
    "opts": [
@@ -525,6 +544,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "En N+1, le litige provisionné pour 5 000 € en N se termine : l'entreprise verse 4 800 € au salarié par virement. Quelle écriture de clôture N+1 concerne la provision ?",
    "opts": [
@@ -540,6 +560,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quels comptes sont des comptes de dépréciation d'actif ? (plusieurs réponses possibles)",
    "opts": [
@@ -560,6 +581,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Nerval vend des appareils garantis deux ans. Elle estime à 12 000 € le coût probable des réparations futures sur les ventes de l'exercice. Comment traduire cette obligation ?",
    "opts": [
@@ -575,6 +597,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Un stock de 1 000 articles achetés 20 € l'unité a un prix de vente probable de 18 € l'unité au 31 décembre, avec 1 € de frais de vente unitaires. Une dépréciation de 1 200 € existait déjà. Quelle écriture passe-t-on ?",
    "opts": [
@@ -590,6 +613,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Au 31 décembre N, une créance douteuse de 6 000 € TTC (TVA 20 %) était dépréciée à 60 %. En N+1, le client verse 2 400 € pour solde de tout compte ; le reste est irrécouvrable. Quel est l'effet net sur le résultat de N+1 (perte 654 nette de la reprise 78174) ?",
    "opts": [
@@ -605,6 +629,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 3,
    "q": "Sous le PCG 2025, quelles affirmations sur les créances irrécouvrables sont exactes ? (plusieurs réponses possibles)",
    "opts": [

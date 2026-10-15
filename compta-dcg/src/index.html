@@ -209,6 +209,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .flash .verso .src, .deck .src { font-size: 0.82rem; color: var(--muted); margin-top: 8px; }
 .flash .verso .src a, .deck .src a { color: var(--accent); }
 .flash .keys { margin: 10px 0 0; }
+@media (pointer: coarse) { .flash .keys .kb { display: none; } }
 .deck { display: grid; gap: 6px; margin-top: 10px; }
 .deck details { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 14px; }
 .deck summary { cursor: pointer; display: flex; gap: 6px 10px; align-items: baseline; flex-wrap: wrap; }
@@ -557,7 +558,7 @@ function renderFlash(o, host, onDone, meta) {
     ? `<div>${sanitize(k.r)}</div><div class="src">Source : ${esc(k.src)} · <a href="${esc(srcLink(k.src, k.url))}" target="_blank" rel="noopener">${k.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a></div>`
     : `<div><b>${esc(a.num)} ${esc(a.label)}</b></div><p>${esc(a.explication)}</p>${a.piege ? `<p><b>Piège.</b> ${esc(a.piege)}</p>` : ""}${a.pcg2025 ? `<p class="small"><b>PCG 2025.</b> ${esc(a.pcg2025)}</p>` : ""}<div class="src">Solde habituel : ${esc(a.sens)} · Source : plan comptable général (règlement ANC n° 2014-03 modifié par le règlement n° 2022-06)</div>`;
   const box = document.createElement("div"); box.className = "exo flash";
-  box.innerHTML = `<div class="meta"><span class="eyebrow">${esc(meta || "")}</span><span class="progress">${tag}</span></div><div class="q">${esc(q)}</div><div class="verso" hidden>${verso}</div><div class="fb"></div><div class="actions"></div><p class="small muted keys">Répondez de tête, puis retournez la carte et dites franchement si vous saviez. Clavier : Espace pour retourner, 1 « Je ne savais pas », 2 « Je savais ».</p>`;
+  box.innerHTML = `<div class="meta"><span class="eyebrow">${esc(meta || "")}</span><span class="progress">${tag}</span></div><div class="q">${esc(q)}</div><div class="verso" hidden>${verso}</div><div class="fb"></div><div class="actions"></div><p class="small muted keys">Répondez de tête, puis retournez la carte et dites franchement si vous saviez.<span class="kb"> Clavier : Espace pour retourner, 1 « Je ne savais pas », 2 « Je savais ».</span></p>`;
   host.appendChild(box);
   const act = box.querySelector(".actions"), fb = box.querySelector(".fb"), versoEl = box.querySelector(".verso");
   const mk = (txt, cls) => { const b = document.createElement("button"); b.type = "button"; b.className = "btn " + (cls || ""); b.textContent = txt; return b; };

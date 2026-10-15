@@ -1,0 +1,432 @@
+{
+ "id": "ue4-03",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue4-03-k01",
+   "type": "def",
+   "q": "Comment l'article 38 du CGI définit-il le bénéfice imposable d'une entreprise relevant des bénéfices industriels et commerciaux ?",
+   "r": "<b>Le bénéfice net déterminé d'après les résultats d'ensemble des opérations de toute nature effectuées par l'entreprise</b>, y compris les cessions d'éléments de l'actif, en cours ou en fin d'exploitation. C'est aussi la différence entre l'actif net à la clôture et à l'ouverture de l'exercice, corrigée des apports et prélèvements de l'exploitant.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "CGI, art. 38, 1 et 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203585",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k02",
+   "type": "def",
+   "q": "Qu'est-ce qu'une créance acquise au sens de l'article 38, 2 bis du CGI ?",
+   "r": "<b>Une créance certaine dans son principe et déterminée dans son montant.</b> Pour les prestations de services, le produit n'est imposable que si la créance est acquise et la prestation achevée.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "CGI, art. 38, 2 bis ; BOI-BIC-BASE-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/6391-PGP.html/identifiant=BOI-BIC-BASE-20-10-20121204",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k03",
+   "type": "comp",
+   "q": "En application de la règle des créances acquises, à quel exercice une entreprise relevant des BIC rattache-t-elle chaque catégorie de produits ?",
+   "r": "<b>Ventes : exercice de livraison des biens ; services : exercice d'achèvement des prestations.</b> Prestations continues (loyers, intérêts) et discontinues à échéances successives : au fur et à mesure de leur exécution ; travaux donnant lieu à réception : date de la réception, ou de la mise à disposition si elle est antérieure. Facturation et encaissement sont indifférents, à la différence des BNC, imposés sur les recettes encaissées.",
+   "base": [
+    "Règles essentielles#0",
+    "Points de vigilance#1"
+   ],
+   "src": "CGI, art. 38, 2 bis ; BOI-BIC-BASE-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/6391-PGP.html/identifiant=BOI-BIC-BASE-20-10-20121204",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k04",
+   "type": "def",
+   "q": "Qu'est-ce que le régime micro-BIC prévu par l'article 50-0 du CGI ?",
+   "r": "<b>Le régime applicable lorsque le chiffre d'affaires hors taxes de l'année civile précédente ou de l'avant-dernière année n'excède pas les seuils de l'article 50-0.</b> Il n'est donc perdu qu'après deux années consécutives de dépassement ; le bénéfice y est égal au chiffre d'affaires diminué d'un abattement.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "CGI, art. 50-0, 1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006199553/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k05",
+   "type": "comp",
+   "q": "Quels abattements s'appliquent au chiffre d'affaires d'un exploitant relevant du régime micro-BIC pour déterminer son bénéfice ?",
+   "r": "<b>71 % pour les ventes et 50 % pour les prestations de services</b> (30 % pour les meublés de tourisme non classés), chaque abattement ne pouvant être inférieur à 305 €.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "CGI, art. 50-0, 1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006199553/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k06",
+   "type": "comp",
+   "q": "Comment le tableau 2058-A corrige-t-il une charge comptabilisée non déductible et un produit comptabilisé non imposable ou imposé séparément ?",
+   "r": "<b>La charge non déductible se réintègre ; le produit non imposable ou imposé séparément se déduit</b>, par exemple la plus-value nette à long terme ou la quote-part de plus-value à court terme dont l'imposition est étalée.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 39, 1-2° et 5° ; liasse 2058-A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k07",
+   "type": "comp",
+   "q": "À quelle condition comptable les amortissements et les provisions d'une entreprise BIC sont-ils fiscalement déductibles ?",
+   "r": "<b>Ils ne sont déductibles que s'ils ont été comptabilisés.</b> Un amortissement ou une provision omis ne peut pas être déduit extra-comptablement sur le tableau 2058-A.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 39, 1-2° et 5° ; liasse 2058-A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k08",
+   "type": "comp",
+   "q": "À quelles conditions une charge est-elle déductible du bénéfice imposable d'une entreprise relevant des BIC ?",
+   "r": "<b>Elle doit être engagée dans l'intérêt de l'exploitation, correspondre à une diminution de l'actif net, être justifiée et être rattachée à l'exercice.</b> Le bénéfice net est établi sous déduction de toutes charges, notamment les frais généraux, les amortissements et les provisions.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 39, 1 ; BOI-BIC-CHG-10-10",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k09",
+   "type": "comp",
+   "q": "Pourquoi la rémunération de l'exploitant individuel n'est-elle pas déductible du bénéfice BIC, à la différence de celle d'un dirigeant de société soumise à l'IS ?",
+   "r": "<b>C'est une affectation du résultat, non une charge</b> : elle doit être réintégrée si elle a été comptabilisée en charge. La rémunération des dirigeants de sociétés est, elle, déductible si elle correspond à un travail effectif et n'est pas excessive.",
+   "base": [
+    "Règles essentielles#2",
+    "Points de vigilance#5"
+   ],
+   "src": "CGI, art. 154, I (version en vigueur depuis le 1er janvier 2019) ; BOFiP « Rémunérations de l'exploitant individuel, des associés de sociétés et des membres de leurs familles »",
+   "url": "https://bofip.impots.gouv.fr/bofip/1022-PGP.html",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k10",
+   "type": "comp",
+   "q": "À quelles conditions le salaire du conjoint de l'exploitant individuel est-il déductible du bénéfice BIC ?",
+   "r": "<b>Le conjoint doit participer effectivement à l'exercice de la profession et le salaire doit avoir donné lieu au versement des cotisations sociales.</b> L'ancienne limite de 17 500 €, qui visait les exploitants non adhérents d'un organisme de gestion agréé, ne figure plus dans le texte en vigueur.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 154, I (version en vigueur depuis le 1er janvier 2019) ; BOFiP « Rémunérations de l'exploitant individuel, des associés de sociétés et des membres de leurs familles »",
+   "url": "https://bofip.impots.gouv.fr/bofip/1022-PGP.html",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k11",
+   "type": "comp",
+   "q": "Quel est le traitement fiscal, pour une entreprise BIC, des amendes et pénalités sanctionnant un manquement à une obligation légale ?",
+   "r": "<b>Elles ne sont pas admises en déduction des bénéfices</b> : l'article 39, 2 du CGI exclut les sanctions pécuniaires et pénalités de toute nature mises à la charge des contrevenants à des obligations légales.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "CGI, art. 39, 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k12",
+   "type": "comp",
+   "q": "Outre la fraction excédentaire d'amortissement des véhicules de tourisme, quelles dépenses somptuaires l'article 39, 4 du CGI exclut-il des charges déductibles ?",
+   "r": "<b>Les dépenses de chasse, de pêche non professionnelle, de résidences de plaisance ou d'agrément, de yachts et bateaux de plaisance.</b> Elles restent déductibles si l'entreprise justifie qu'elles sont nécessaires à son activité ou présentent un caractère social.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 39, 4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k13",
+   "type": "comp",
+   "q": "Quelle fraction de l'amortissement d'un véhicule de tourisme une entreprise BIC doit-elle réintégrer dans son résultat fiscal ?",
+   "r": "<b>La fraction afférente à la partie du prix d'acquisition, taxes comprises, qui excède le plafond applicable selon les émissions de CO2.</b> Les bornes de CO2 diffèrent selon la norme de mesure (NEDC ou WLTP) ; cette fraction se réintègre chaque année pendant toute la durée d'amortissement.",
+   "base": [
+    "Règles essentielles#5",
+    "Points de vigilance#4"
+   ],
+   "src": "CGI, art. 39, 4 ; BOI-BIC-AMT-20-40-50",
+   "url": "https://bofip.impots.gouv.fr/bofip/4582-PGP.html",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k14",
+   "type": "comp",
+   "q": "En BIC, quelle part du loyer d'un véhicule de tourisme pris en location ou en crédit-bail n'est pas déductible chez le locataire ?",
+   "r": "<b>La part du loyer correspondant à l'amortissement de la fraction du prix excédant le plafond</b>, sauf pour une location de courte durée n'excédant pas trois mois non renouvelable.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 39, 4 ; BOI-BIC-AMT-20-40-50",
+   "url": "https://bofip.impots.gouv.fr/bofip/4582-PGP.html",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k15",
+   "type": "comp",
+   "q": "Quels petits équipements une entreprise BIC peut-elle comptabiliser en charges immédiatement déductibles selon la doctrine administrative ?",
+   "r": "<b>Les matériels et outillages, le mobilier et le matériel de bureau (renouvellement courant) et les logiciels d'une valeur unitaire hors taxes n'excédant pas 500 €.</b> La tolérance ne vise ni l'équipement initial en mobilier d'un local, ni les biens dont l'utilisation constitue l'objet même de l'activité.",
+   "base": [
+    "Chiffres et seuils#4"
+   ],
+   "src": "BOI-BIC-CHG-20-30-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/2109-PGP.html/identifiant=BOI-BIC-CHG-20-30-10-20170301",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k16",
+   "type": "comp",
+   "q": "Quels biens ouvrent droit à l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
+   "r": "<b>Les biens d'équipement normalement utilisés dans les entreprises industrielles, acquis neufs et dont la durée normale d'utilisation est d'au moins trois ans.</b> Sont exclus les biens d'occasion, ceux dont la durée normale d'utilisation est inférieure à trois ans et ceux absents des catégories de l'annexe II (véhicules de tourisme, mobilier de bureau notamment).",
+   "base": [
+    "Règles essentielles#6",
+    "Points de vigilance#2"
+   ],
+   "src": "CGI, art. 39 A, 1 ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-30",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k17",
+   "type": "comp",
+   "q": "Comment est comptabilisé l'excédent de l'amortissement dégressif fiscal sur l'amortissement économique d'un bien ?",
+   "r": "<b>En amortissement dérogatoire</b> (compte 145 du PCG 2025) : c'est l'excédent du dégressif fiscal sur l'amortissement économique qui est ainsi comptabilisé.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 ; PCG 2025, compte 145",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k18",
+   "type": "def",
+   "q": "Qu'impose la règle de l'amortissement minimal prévue par l'article 39 B du CGI ?",
+   "r": "<b>À la clôture de chaque exercice, la somme des amortissements effectivement pratiqués depuis l'acquisition d'un élément ne peut être inférieure au cumul des amortissements linéaires</b> répartis sur la durée normale d'utilisation.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 39 B ; BOI-BIC-AMT-10-50-30",
+   "url": "https://bofip.impots.gouv.fr/bofip/4711-PGP.html/identifiant=BOI-BIC-AMT-10-50-30-20170802",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k19",
+   "type": "comp",
+   "q": "Quelle est la conséquence du non-respect de l'amortissement minimal de l'article 39 B du CGI ?",
+   "r": "<b>L'entreprise perd définitivement le droit de déduire la fraction des amortissements ainsi différée.</b> Les amortissements régulièrement comptabilisés mais réputés différés en période déficitaire restent toutefois déductibles.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 39 B ; BOI-BIC-AMT-10-50-30",
+   "url": "https://bofip.impots.gouv.fr/bofip/4711-PGP.html/identifiant=BOI-BIC-AMT-10-50-30-20170802",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k20",
+   "type": "def",
+   "q": "Comment l'article 39, 1-5° du CGI définit-il la provision déductible du bénéfice imposable ?",
+   "r": "<b>Une provision constituée en vue de faire face à une perte ou une charge nettement précisée, que des événements en cours rendent probable</b>, à condition d'avoir été effectivement constatée dans les écritures de l'exercice.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 39, 1-5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k21",
+   "type": "comp",
+   "q": "Quel est le traitement fiscal, en BIC, des provisions pour allocations de départ à la retraite ou en préretraite du personnel ?",
+   "r": "<b>Elles ne sont pas déductibles, quelle que soit la nature de l'engagement</b>, y compris pour les mandataires sociaux. Les dépenses effectivement exposées pour servir ces allocations restent déductibles lors de leur versement.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 39, 1-5° ; BOI-BIC-PROV-30-20-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/2118-PGP.html/identifiant=BOI-BIC-PROV-30-20-10-20-20121203",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k22",
+   "type": "comp",
+   "q": "Quelles provisions pour indemnités de licenciement une entreprise BIC peut-elle constituer en franchise d'impôt ?",
+   "r": "<b>Celles qui couvrent un licenciement hors motif économique</b>, lorsque des événements en cours à la clôture rendent le licenciement probable. Les provisions pour indemnités de licenciement pour motif économique sont exclues.",
+   "base": [
+    "Règles essentielles#9",
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 39, 1-5° ; BOI-BIC-PROV-30-20-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/2118-PGP.html/identifiant=BOI-BIC-PROV-30-20-10-20-20121203",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k23",
+   "type": "comp",
+   "q": "Que devient, en BIC, une provision déduite devenue sans objet ou employée de façon non conforme à sa destination ?",
+   "r": "<b>Elle est rapportée au résultat de l'exercice et sa reprise est imposable.</b> Si l'entreprise ne l'a pas fait, l'administration la rapporte aux résultats du plus ancien des exercices soumis à vérification.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 39, 1-5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k24",
+   "type": "comp",
+   "q": "Comment est traitée, en BIC, la reprise d'une provision qui avait été réintégrée au résultat fiscal lors de sa dotation ?",
+   "r": "<b>Elle est déduite extra-comptablement</b>, pour éviter une double imposition : la dotation avait déjà été réintégrée (provision pour retraite, amendes, impôt non déductible).",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 39, 1-5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k25",
+   "type": "def",
+   "q": "Quelles plus-values professionnelles relèvent du régime du court terme selon l'article 39 duodecies du CGI ?",
+   "r": "<b>Les plus-values sur éléments acquis ou créés depuis moins de deux ans</b> et, pour les éléments amortissables détenus depuis deux ans ou plus, la fraction correspondant aux amortissements déduits. Le surplus relève du long terme.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 39 duodecies, 2 à 5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k26",
+   "type": "comp",
+   "q": "Quel régime s'applique aux moins-values de cession de biens amortissables d'une entreprise BIC, quelle que soit leur durée de détention ?",
+   "r": "<b>Le régime du court terme</b> : les moins-values sur biens amortissables sont toujours à court terme, alors que les plus-values sur ces biens détenus depuis deux ans ou plus relèvent du long terme au-delà des amortissements déduits.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 39 duodecies, 2 à 5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k27",
+   "type": "comp",
+   "q": "Comment est imposée la plus-value nette à court terme réalisée par un exploitant relevant des BIC ?",
+   "r": "<b>Elle est ajoutée au bénéfice imposable</b> ; l'exploitant peut en répartir l'imposition par parts égales sur l'année de réalisation et les deux années suivantes. En cas de cessation d'activité, cette faculté disparaît et l'imposition est immédiate.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 39 quaterdecies, 1 ; BOI-BIC-PVMV-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/4958-PGP.html/identifiant=BOI-BIC-PVMV-20-20150805",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k28",
+   "type": "comp",
+   "q": "Comment est imposé le montant net des plus-values à long terme d'un exploitant relevant des BIC ?",
+   "r": "<b>Il fait l'objet d'une imposition séparée au taux de 12,8 %, auquel s'ajoutent les prélèvements sociaux.</b> Ce montant net est l'excédent des plus-values sur les moins-values à long terme de l'exercice ; un excédent de moins-values à long terme ne s'impute que sur les plus-values à long terme des dix exercices suivants.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "CGI, art. 39 quindecies, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036428314",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k29",
+   "type": "comp",
+   "q": "À quelles conditions l'article 151 septies du CGI exonère-t-il les plus-values professionnelles des petites entreprises BIC ?",
+   "r": "<b>Une activité exercée pendant au moins cinq ans et des recettes sous les limites légales</b> : exonération totale jusqu'à 250 000 € (vente de marchandises, fourniture de logement) ou 90 000 € (autres activités non agricoles), partielle et dégressive jusqu'à 350 000 € et 126 000 €. Les recettes sont la moyenne hors taxes des exercices clos au cours des deux années civiles précédant la clôture de l'exercice de réalisation.",
+   "base": [
+    "Règles essentielles#12",
+    "Chiffres et seuils#3"
+   ],
+   "src": "CGI, art. 151 septies ; impots.gouv.fr",
+   "url": "https://www.impots.gouv.fr/professionnel/questions/comment-beneficier-de-lexoneration-des-plus-values-reservees-aux-petites",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k30",
+   "type": "comp",
+   "q": "À quelles conditions l'article 238 quindecies du CGI exonère-t-il les plus-values de transmission d'une entreprise individuelle ?",
+   "r": "<b>Sur option, lors de la transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins cinq ans</b> : exonération totale si la valeur des éléments transmis n'excède pas 500 000 €, partielle entre 500 000 € et 1 000 000 €. Les plus-values sur biens immobiliers restent imposables et le régime ne se cumule pas avec l'article 151 septies.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 238 quindecies, I (version en vigueur depuis le 16 février 2025) ; BOI-BIC-PVMV-40-20-50 ; BOI-BIC-PVMV-40-10-10-30 (non-cumul)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051216496",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k31",
+   "type": "comp",
+   "q": "Comment les amortissements d'un loueur en meublé relevant du micro-BIC sont-ils pris en compte, y compris lors de la cession de l'immeuble ?",
+   "r": "<b>L'abattement forfaitaire est réputé tenir compte des amortissements pratiqués selon le mode linéaire.</b> Lors de la cession de l'immeuble, la plus-value relève du court terme à hauteur de ces amortissements réputés déduits.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "CGI, art. 39 duodecies ; BOI-BIC-CHAMP-40-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k32",
+   "type": "comp",
+   "q": "Comment l'option de l'article 42 septies du CGI modifie-t-elle l'imposition d'une subvention d'équipement publique en BIC ?",
+   "r": "<b>La subvention est rapportée au résultat au rythme de l'amortissement du bien financé</b> ; pour un bien non amortissable, par parts égales sur la durée d'inaliénabilité prévue au contrat ou, à défaut, sur les dix années suivant l'attribution. Sans option, elle est imposable l'année de son attribution ; en cas de cession du bien, le solde non encore rapporté est imposé.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "CGI, art. 42 septies ; BOI-BIC-PDSTK-10-30-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1950-PGP.html/identifiant=BOI-BIC-PDSTK-10-30-10-20-20230628",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k33",
+   "type": "comp",
+   "q": "Comment s'impute le déficit BIC d'un exploitant selon que son activité est professionnelle ou non professionnelle ?",
+   "r": "<b>Le déficit professionnel s'impute sur le revenu global de l'année</b>, l'excédent étant reporté sur le revenu global jusqu'à la sixième année inclusivement. Le déficit non professionnel (exploitant ne participant pas personnellement, continûment et directement) ne s'impute que sur des bénéfices de même nature, sur dix années pour la location meublée non professionnelle.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 156, I, I-1° bis et I-1° ter",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054373682",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k34",
+   "type": "comp",
+   "q": "Dans quelle mesure la CSG et la CRDS assises sur le revenu d'activité de l'exploitant BIC sont-elles déductibles ?",
+   "r": "<b>La CSG est déductible à hauteur de 6,8 points</b> ; le surplus de CSG et la CRDS ne sont pas déductibles.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "CGI, art. 154 quinquies (version en vigueur depuis le 27 juin 2026, loi n° 2026-534 du 25 juin 2026)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-03-k35",
+   "type": "comp",
+   "q": "Comment s'obtient le taux de l'amortissement dégressif fiscal prévu par l'article 39 A du CGI ?",
+   "r": "<b>En multipliant le taux linéaire par un coefficient fixé selon la durée normale d'utilisation du bien</b> : 1,25 pour trois ou quatre ans, 1,75 pour cinq ou six ans, 2,25 au-delà de six ans.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 39 A, 1 ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-30",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
+   "fiab": "stable"
+  }
+ ]
+}

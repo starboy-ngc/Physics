@@ -77,6 +77,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Selon l'article L. 121-1 du Code de commerce, qui est commerçant ?",
    "opts": [
     "Toute personne immatriculée au RCS",
@@ -92,6 +93,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un professeur de lycée signe une lettre de change pour un achat personnel. Quelle est la nature de cet acte ?",
    "opts": [
     "Un acte civil, l'auteur n'étant pas commerçant",
@@ -107,6 +109,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Lequel de ces professionnels a la qualité de commerçant ?",
    "opts": [
     "Un exploitant agricole qui vend sa production",
@@ -122,6 +125,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Deux commerçants sont en litige sur un contrat de 30 000 € conclu oralement. Comment ce contrat peut-il être prouvé ?",
    "opts": [
     "Uniquement par écrit, le montant dépassant 1 500 €",
@@ -137,6 +141,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel est le délai de prescription des obligations nées à l'occasion de leur commerce entre commerçants ?",
    "opts": [
     "2 ans",
@@ -152,6 +157,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une créance entre deux commerçants est devenue exigible le 15 janvier 2021 ; aucun acte n'a interrompu ni suspendu la prescription. En quelle année l'action en paiement sera-t-elle prescrite ?",
    "a": 2026,
    "unit": "",
@@ -163,6 +169,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un particulier achète une cuisine à un commerçant et souhaite l'assigner pour défaut de livraison. Quelle juridiction peut-il saisir ?",
    "opts": [
     "Uniquement le tribunal judiciaire",
@@ -178,6 +185,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Depuis le 1er janvier 2025, une SCI en cessation des paiements dont le siège est à Lyon relève, pour sa procédure collective, de quelle juridiction ?",
    "opts": [
     "Du tribunal judiciaire, les SCI étant civiles",
@@ -193,6 +201,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "À propos de l'expérimentation des tribunaux des activités économiques, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Elle a débuté le 1er janvier 2025 pour une durée de quatre ans",
@@ -213,6 +222,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Depuis le 1er janvier 2023, où un commerçant personne physique dépose-t-il sa demande d'immatriculation ?",
    "opts": [
     "Au centre de formalités des entreprises de la chambre de commerce",
@@ -228,6 +238,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Deux commerçants achètent ensemble un stock à un grossiste, sans préciser la répartition de la dette. Le grossiste peut-il réclamer la totalité du prix à l'un d'eux ?",
    "opts": [
     "Non, chacun ne doit que la moitié",
@@ -243,6 +254,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel élément est indispensable à l'existence d'un fonds de commerce ?",
    "opts": [
     "Le matériel",
@@ -258,6 +270,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Parmi les éléments suivants, lesquels font partie du fonds de commerce d'une boulangerie exploitée dans des locaux loués ? (plusieurs réponses possibles)",
    "opts": [
     "Le droit au bail",
@@ -279,6 +292,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle est la nature juridique du fonds de commerce ?",
    "opts": [
     "Un immeuble par destination",
@@ -294,6 +308,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un fonds de commerce est vendu 150 000 € (hors marchandises). Calculez les droits d'enregistrement dus par l'acquéreur (en €).",
    "a": 3810,
    "unit": "€",
@@ -305,6 +320,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un fonds de commerce est vendu 350 000 € (hors marchandises). Calculez les droits d'enregistrement dus par l'acquéreur (en €).",
    "a": 12810,
    "unit": "€",
@@ -316,6 +332,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "La vente d'un fonds de commerce est publiée au BODACC le 3 mars. Jusqu'à quelle date les créanciers du vendeur peuvent-ils faire opposition au paiement du prix ?",
    "opts": [
     "Le 13 mars, soit dix jours après la publication",
@@ -331,6 +348,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Qu'est-ce qui caractérise le nantissement conventionnel d'un fonds de commerce ?",
    "opts": [
     "Une sûreté avec dépossession du commerçant",
@@ -346,6 +364,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un commerçant donne son fonds en location-gérance ; le contrat est publié le 10 février 2025. Un fournisseur du locataire-gérant détient une facture d'exploitation impayée née le 15 mai 2025. Peut-il poursuivre le propriétaire du fonds ?",
    "opts": [
     "Non, le loueur n'est jamais tenu des dettes du locataire-gérant",
@@ -361,6 +380,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un bail commercial prévoit un loyer annuel de 24 000 €. À l'occasion de la révision triennale, l'indice des loyers commerciaux est passé de 118,0 (dernière fixation) à 124,5. En l'absence de motif de déplafonnement, quel est le nouveau loyer annuel maximal (en €, arrondi à l'euro) ?",
    "a": 25322,
    "unit": "€",
@@ -372,6 +392,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Un bailleur et un commerçant signent un bail de deux ans « hors statut », puis un second de deux ans pour les mêmes locaux. Quelle est la situation à la fin du second bail si le commerçant reste dans les lieux ?",
    "opts": [
     "Un nouveau bail dérogatoire de deux ans se forme tacitement",
@@ -387,6 +408,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un locataire commerçant souhaite quitter ses locaux à la fin de la première période triennale de son bail de neuf ans. Quelle formalité doit-il respecter ?",
    "opts": [
     "Aucune, le départ est libre à chaque échéance triennale",
@@ -402,6 +424,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "À l'expiration d'un bail commercial, le bailleur refuse le renouvellement sans invoquer aucun motif. Que doit-il au locataire ?",
    "opts": [
     "Rien, le bail étant arrivé à son terme",
@@ -417,6 +440,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un locataire exploitant une librairie souhaite vendre aussi de la papeterie. Quelle procédure doit-il suivre ?",
    "opts": [
     "Obtenir l'autorisation expresse du bailleur, qui peut refuser librement",
@@ -432,6 +456,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un bail commercial interdit toute cession du bail sans l'accord du bailleur. Le locataire vend son fonds de commerce et entend céder le bail à l'acquéreur. Quelle est la portée de la clause ?",
    "opts": [
     "Elle est valable et le bailleur peut refuser la cession",
@@ -447,6 +472,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans quel cas le loyer peut-il être déplafonné lors d'une révision triennale ?",
    "opts": [
     "Dès que la valeur locative dépasse le loyer en cours",
@@ -462,6 +488,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle est la durée de protection d'une marque déposée à l'INPI et d'un brevet d'invention ?",
    "opts": [
     "Marque : 10 ans renouvelables indéfiniment ; brevet : 20 ans non renouvelables",
@@ -477,6 +504,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Associez chaque règle à la durée ou au délai correspondant.",
    "cats": [
     "10 jours",
@@ -527,6 +555,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un micro-entrepreneur a réalisé 12 000 € de chiffre d'affaires en 2023 et 14 000 € en 2024. Est-il tenu d'ouvrir un compte bancaire dédié à son activité ?",
    "opts": [
     "Non, les micro-entrepreneurs en sont toujours dispensés",
@@ -542,6 +571,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un mineur de 17 ans émancipé souhaite exploiter un commerce de vente en ligne. Est-ce possible ?",
    "opts": [
     "Non, il faut avoir 18 ans pour être commerçant",

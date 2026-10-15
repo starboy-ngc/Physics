@@ -1,0 +1,420 @@
+{
+ "id": "ue9-06",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue9-06-k01",
+   "type": "def",
+   "q": "Selon le PCG, qu'est-ce qu'un stock ?",
+   "r": "<b>Un actif détenu pour être vendu dans le cours normal de l'activité</b>, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 211-7",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k02",
+   "type": "def",
+   "q": "Selon le Code de commerce, qu'est-ce que l'inventaire en comptabilité ?",
+   "r": "<b>Le contrôle annuel de l'existence et de la valeur de tous les éléments d'actif et de passif à la date de clôture.</b> Il est obligatoire au moins une fois tous les douze mois, stocks compris.",
+   "base": [
+    "Définitions#1",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. com., art. L. 123-12 et R. 123-177",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k03",
+   "type": "def",
+   "q": "Selon le PCG, qu'est-ce qu'un passif ?",
+   "r": "<b>Un élément du patrimoine ayant une valeur économique négative pour l'entité</b> : une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci. L'obligation peut être légale, réglementaire, contractuelle, ou découler des pratiques passées de l'entité.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, art. 321-1 (passif), 321-4 (dette) et 321-5 (provision)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k04",
+   "type": "def",
+   "q": "Selon le PCG, qu'est-ce qu'une provision, par différence avec une dette ?",
+   "r": "<b>Une provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b> La dette, elle, est un passif certain dont l'échéance et le montant sont fixés de façon précise.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, art. 321-1 (passif), 321-4 (dette) et 321-5 (provision)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k05",
+   "type": "def",
+   "q": "Selon le PCG et le Code de commerce, qu'est-ce que la dépréciation d'un actif ?",
+   "r": "<b>La constatation que la valeur actuelle d'un actif est devenue inférieure à sa valeur nette comptable.</b> La valeur nette comptable est alors ramenée à la valeur d'inventaire à la clôture, que la dépréciation soit définitive ou non.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 214-5 ; C. com., art. L. 123-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k06",
+   "type": "def",
+   "q": "Selon le Code de commerce et le PCG, qu'est-ce que la valeur actuelle d'un actif ?",
+   "r": "<b>Une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise</b> ; pour le PCG, la plus élevée de la valeur vénale (montant qui pourrait être obtenu de sa vente à la clôture, net des coûts de sortie) et de la valeur d'usage. La valeur d'inventaire, comparée à la clôture au coût d'entrée d'un stock ou d'un titre, lui est égale.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. R. 123-178, 4° et 5° ; PCG, art. 214-6",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k07",
+   "type": "comp",
+   "q": "Selon le PCG, comment sont classées les reprises sur amortissements, dépréciations et provisions au compte de résultat ?",
+   "r": "<b>Ce sont des produits</b>, enregistrés aux comptes 781, 786 et 787 (comptes 78). Une reprise n'est pas une diminution des dotations : elle ne passe jamais au crédit d'un compte 68.",
+   "base": [
+    "Définitions#5",
+    "Points de vigilance#4"
+   ],
+   "src": "PCG, art. 512-1 ; plan de comptes 2026, comptes 78",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k08",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quelle incidence l'absence ou l'insuffisance de bénéfice a-t-elle sur les amortissements, dépréciations et provisions ?",
+   "r": "<b>Aucune : il doit quand même être procédé aux amortissements, dépréciations et provisions nécessaires.</b> Une entreprise en perte constate donc la dépréciation d'un stock ou d'une créance.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 123-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k09",
+   "type": "comp",
+   "q": "Selon le Code de commerce, comment traite-t-on à la clôture la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée ?",
+   "r": "<b>Elle n'est pas comptabilisée</b>, car seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels. À l'inverse, une baisse de valeur sous la valeur nette comptable est constatée par une dépréciation.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 123-21 et L. 123-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k10",
+   "type": "comp",
+   "q": "Selon le Code de commerce, comment traite-t-on un passif né avant la clôture de l'exercice mais révélé entre la clôture et l'arrêté des comptes ?",
+   "r": "<b>Il est pris en compte dans l'exercice clos.</b> Le principe de prudence impose de tenir compte des passifs nés au cours de l'exercice ou d'un exercice antérieur, même s'ils sont connus entre la clôture et l'établissement des comptes.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 123-20 ; PCG, art. 513-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k11",
+   "type": "def",
+   "q": "En quoi consiste la méthode de l'inventaire intermittent pour comptabiliser les stocks selon le plan de comptes ?",
+   "r": "<b>Les achats de l'exercice sont enregistrés en charges (comptes 60)</b> ; à la clôture, le stock initial est annulé et le stock final constaté par le compte 603 « Variations des stocks (approvisionnements et marchandises) » (6031 matières premières, 6037 marchandises), ou par le compte 7135 « Variation des stocks de produits » pour les produits.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 3, 603 et 7135",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k12",
+   "type": "comp",
+   "q": "En inventaire intermittent, que traduit un solde débiteur du compte 603 « Variations des stocks (approvisionnements et marchandises) » ?",
+   "r": "<b>Un déstockage</b> : le stock final est inférieur au stock initial, ce qui augmente les charges. Un solde créditeur traduit au contraire un stockage, qui les diminue ; pour 7135, compte de produits, un solde créditeur traduit une production stockée.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 603 et 7135",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k13",
+   "type": "def",
+   "q": "Selon le Code de commerce et le PCG, à quelle valeur un stock est-il enregistré à son entrée dans le patrimoine ?",
+   "r": "<b>Au coût d'acquisition pour les biens achetés, au coût de production pour les biens produits</b> (à la valeur vénale pour les biens acquis à titre gratuit). Le coût des stocks comprend les coûts d'acquisition, de transformation et les autres coûts engagés pour amener les stocks à l'endroit et dans l'état où ils se trouvent, pertes et gaspillages exclus.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 123-18 et R. 123-178, 1° ; PCG, art. 213-30 et 213-31",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k14",
+   "type": "def",
+   "q": "Selon le PCG, de quoi se compose le coût d'acquisition d'un stock acheté ?",
+   "r": "<b>Du prix d'achat</b>, y compris les droits de douane et autres taxes non récupérables, après déduction des rabais commerciaux, remises et escomptes de règlement, ainsi que des frais de transport, de manutention et autres coûts directement attribuables à l'acquisition.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 123-18 et R. 123-178, 1° ; PCG, art. 213-30 et 213-31",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k15",
+   "type": "comp",
+   "q": "Selon le Code de commerce et le PCG, quelles méthodes peut-on retenir pour évaluer les biens fongibles en stock ?",
+   "r": "<b>Le coût moyen pondéré (CMP) d'acquisition ou de production, ou la méthode « premier entré, premier sorti » (PEPS).</b> Le CMP des articles interchangeables est calculé à chaque entrée ou sur une période n'excédant pas la durée moyenne de stockage ; la même méthode s'applique aux stocks de nature et d'usage similaires.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 123-18 ; PCG, art. 213-34 et 213-35",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k16",
+   "type": "comp",
+   "q": "Selon le plan de comptes du PCG, comment la dépréciation d'un stock est-elle constatée à la clôture, puis ajustée aux clôtures suivantes ?",
+   "r": "<b>Débit 68173, crédit 39</b> (391 matières, 395 produits, 397 marchandises) lorsque la valeur d'inventaire du stock est inférieure à son coût d'entrée. À chaque clôture, elle est ajustée au montant nécessaire : dotation complémentaire, ou reprise au crédit de 78173.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-18 ; PCG, art. 214-5 ; plan de comptes 2026, comptes 39, 68173 et 78173",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k17",
+   "type": "comp",
+   "q": "Selon le PCG, à quoi compare-t-on le coût d'entrée d'un stock destiné à la vente pour juger de sa dépréciation ?",
+   "r": "<b>À sa valeur actuelle, c'est-à-dire au prix de vente probable net des coûts de sortie</b>, en tenant compte du prix et des perspectives de vente. Sur le plan fiscal, la dépréciation est admise lorsque le prix de revient des stocks dépasse leur valeur de marché.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 214-6 et règles d'évaluation des stocks à la clôture ; BOI-BIC-PDSTK-20-20-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1491-PGP.html/identifiant=BOI-BIC-PDSTK-20-20-10-20-20130923",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k18",
+   "type": "comp",
+   "q": "Comment traite-t-on en comptabilité une créance client devenue douteuse ?",
+   "r": "<b>Elle est virée du compte 411 au compte 416 « Clients douteux ou litigieux » pour son montant TTC.</b> La dépréciation (68174 / 491) porte sur la perte probable, mesurée hors taxes, puisque la TVA collectée sur une créance devenue irrécouvrable est récupérable.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "Plan de comptes 2026, comptes 416, 491 et 68174 ; PCG, art. 214-5 ; CGI, art. 272",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k19",
+   "type": "comp",
+   "q": "En matière de TVA, à quel moment un fournisseur peut-il récupérer la TVA collectée sur une créance client douteuse ?",
+   "r": "<b>Seulement une fois la créance devenue définitivement irrécouvrable</b>, ce qu'il doit pouvoir démontrer (en cas de liquidation judiciaire, dès la date du jugement qui la prononce). Elle n'est pas récupérée au stade de la dépréciation, qui se calcule pourtant sur le hors taxes : déprécier le TTC est une erreur classique.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#11"
+   ],
+   "src": "Plan de comptes 2026, comptes 416 et 491 ; CGI, art. 272 ; BOI-TVA-DED-40-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1100-PGP.html/identifiant=BOI-TVA-DED-40-10-20-20170405",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k20",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, comment enregistre-t-on la perte définitive sur une créance client devenue irrécouvrable ?",
+   "r": "<b>En 654 « Pertes sur créances irrécouvrables » pour le hors taxes</b> (6541 créances de l'exercice, 6544 des exercices antérieurs ; l'ancien 6714 ne figure plus au plan), la TVA récupérée au débit de 44571 et 416 (ou 411) crédité du TTC. La dépréciation devenue sans objet est reprise (491 / 78174).",
+   "base": [
+    "Règles essentielles#10",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Plan de comptes 2026, comptes 416, 44571, 491, 654 et 78174 ; CGI, art. 272",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k21",
+   "type": "comp",
+   "q": "Selon l'article 272 du CGI, dans quels cas la TVA perçue sur des ventes ou services est-elle imputée ou remboursée ?",
+   "r": "<b>Lorsque les opérations sont résiliées ou annulées, ou que les créances sont devenues définitivement irrécouvrables</b> (en cas de liquidation judiciaire, dès la date du jugement qui la prononce). La récupération est subordonnée à la rectification préalable de la facture initiale.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 272 (applicable jusqu'au 31 décembre 2026) ; BOI-TVA-DED-40-10-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031817248",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k22",
+   "type": "comp",
+   "q": "Selon le plan de comptes du PCG, par quels comptes déprécie-t-on à la clôture la moins-value latente d'une ligne de titres ?",
+   "r": "<b>Débit 6866, crédit 296 ou 297 pour les titres immobilisés, crédit 590 pour les valeurs mobilières de placement</b> ; la reprise passe par 7866. La plus-value latente, elle, n'est pas comptabilisée.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 123-18 et L. 123-19 ; plan de comptes 2026, comptes 296, 297, 590, 6866 et 7866",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k23",
+   "type": "comp",
+   "q": "Selon le PCG, qu'est-ce qui distingue la valeur d'inventaire des titres de participation de celle des valeurs mobilières de placement cotées ?",
+   "r": "<b>Les titres de participation sont évalués à leur valeur d'utilité</b> (rentabilité, capitaux propres, perspectives, conjoncture, cours moyens de bourse du dernier mois…) ; les valeurs mobilières de placement cotées le sont au cours moyen du dernier mois, comme les titres immobilisés cotés hors TIAP.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 221-3, 221-6 et 222-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k24",
+   "type": "comp",
+   "q": "Quel principe du Code de commerce empêche la plus-value latente d'une ligne de titres de compenser la moins-value latente d'une autre ?",
+   "r": "<b>L'évaluation séparée</b> : les éléments d'actif et de passif sont évalués séparément, sans compensation entre postes d'actif et de passif ni entre charges et produits, sauf cas exceptionnels prévus par un règlement de l'ANC.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 123-19",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k25",
+   "type": "comp",
+   "q": "Selon le PCG, que fait-on lorsque le montant d'une obligation envers un tiers ne peut être évalué avec une fiabilité suffisante ?",
+   "r": "<b>Aucun passif n'est comptabilisé</b>, ce qui reste un cas exceptionnel : l'annexe décrit la nature du passif et les incertitudes sur son montant ou son échéance.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "PCG, art. 322-1, 322-2 et 322-4 ; règlement ANC n° 2022-06 (informations en annexe)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k26",
+   "type": "comp",
+   "q": "Dans le plan de comptes du PCG en vigueur, qu'est-ce qui distingue le compte 151 du compte 152 ?",
+   "r": "<b>Le 151 enregistre les provisions pour risques</b> (litiges, garanties données aux clients, amendes et pénalités…), <b>le 152 les provisions pour charges</b> (pensions, restructurations, gros entretien ou grandes révisions…). Depuis les exercices ouverts le 1er janvier 2025, la racine 152 regroupe les anciens comptes 153 à 158.",
+   "base": [
+    "Règles essentielles#16",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 151 et 152",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k27",
+   "type": "comp",
+   "q": "Dans le plan de comptes du PCG, quels comptes de dotation utilise-t-on pour une provision selon qu'elle relève de l'exploitation, du financier ou de l'exceptionnel ?",
+   "r": "<b>6815 en exploitation, 6865 en financier, 6875 en exceptionnel</b>, avec crédit d'un compte 15. La reprise, lorsque le risque disparaît ou que la charge se réalise, débite le compte 15 et crédite 7815, 7865 ou 7875.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 15, 6815, 6865, 6875, 7815, 7865 et 7875",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k28",
+   "type": "comp",
+   "q": "Selon le PCG, comment les provisions sont-elles suivies d'une clôture à l'autre ?",
+   "r": "<b>Elles sont revues à chaque clôture et ajustées à la meilleure estimation</b> : dotation complémentaire si le besoin augmente, reprise s'il diminue ou disparaît. La reprise est un produit de l'exercice (comptes 78).",
+   "base": [
+    "Règles essentielles#19"
+   ],
+   "src": "PCG, art. 323-10 et 512-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k29",
+   "type": "comp",
+   "q": "Selon le PCG, à quel montant une provision est-elle évaluée ?",
+   "r": "<b>À la meilleure estimation de la sortie de ressources nécessaire pour éteindre l'obligation.</b> Pour une obligation unique, on retient en général l'hypothèse la plus probable ; pour un grand nombre d'obligations similaires (garanties données sur des produits, par exemple), la probabilité s'apprécie sur l'ensemble.",
+   "base": [
+    "Règles essentielles#18"
+   ],
+   "src": "PCG, art. 323-2 et 323-3 et règles de comptabilisation des passifs (titre III) ; ANC, note sur les liens entre états financiers et durabilité (février 2025)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/4_Durabilit%C3%A9/Ressources%20P%C3%A9dagogiques/Liens-entre-les-etats-financiers-et-de-durabilite-sur-le-climat---Contribution-de-l-ANC-a-la-reflexion---202502.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k30",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quel résultat se classe la dotation à une provision pour un litige courant ?",
+   "r": "<b>Dans le résultat d'exploitation (6815 / 7815).</b> Le résultat exceptionnel ne comprend plus que les produits et charges directement liés à un événement majeur et inhabituel, ainsi que les écritures d'origine purement fiscale.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k31",
+   "type": "comp",
+   "q": "Quel est l'effet de l'ordonnance n° 2025-1247 du 17 décembre 2025 sur l'article 272 du CGI relatif aux créances irrécouvrables ?",
+   "r": "<b>L'article 272 du CGI est abrogé à compter du 1er janvier 2027</b>, la TVA étant transférée dans le code des impositions sur les biens et services ; les références aux anciennes dispositions s'entendent de celles de ce code qui les reprennent.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; CGI, art. 272 ; BOI-RES-TVA-000253",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k32",
+   "type": "comp",
+   "q": "Dans les comptes annuels, qu'est-ce qui distingue une dépréciation d'une provision ?",
+   "r": "<b>La dépréciation corrige la valeur d'un actif</b> (comptes 29, 39, 49, 59), alors que <b>la provision est un passif</b> (compte 15).",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "PCG, art. 214-5, 321-1 et 321-5 ; plan de comptes 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k33",
+   "type": "comp",
+   "q": "Selon le Code de commerce, à quels actifs est réservée la tolérance permettant de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas notablement inférieure ?",
+   "r": "<b>Aux seules immobilisations non financières.</b> Pour un stock ou un titre, toute baisse de la valeur d'inventaire sous le coût d'entrée est dépréciée.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. R. 123-178, 5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-06-k34",
+   "type": "comp",
+   "q": "Selon le PCG, à quelle condition une provision est-elle comptabilisée à la clôture de l'exercice ?",
+   "r": "<b>Lorsque l'entité a, à la clôture, une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers</b>, sans contrepartie au moins équivalente attendue de celui-ci. Seule exception : si son montant ne peut être évalué avec une fiabilité suffisante, aucun passif n'est comptabilisé et l'annexe le décrit.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "PCG, art. 322-1, 322-2 et 322-4 ; règlement ANC n° 2022-06 (informations en annexe)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

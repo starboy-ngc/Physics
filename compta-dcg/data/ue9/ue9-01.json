@@ -61,6 +61,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quelle égalité est vraie dans tout bilan ?",
    "opts": [
@@ -76,6 +77,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un emprunt contracté auprès de la banque figure :",
    "opts": [
@@ -91,6 +93,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "niveau": 1,
    "q": "Classez chaque élément dans la bonne partie du bilan.",
    "cats": [
@@ -139,6 +142,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Total de l'actif : 180 000 €. Total des dettes : 110 000 €. Quel est le montant des capitaux propres ?",
    "a": 70000,
@@ -150,6 +154,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le compte de résultat est :",
    "opts": [
@@ -165,6 +170,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Produits de l'exercice : 250 000 €. Charges : 230 000 €. Quel est le résultat ? (Indiquez un nombre négatif pour une perte.)",
    "a": 20000,
@@ -176,6 +182,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un bénéfice de 20 000 € a quel effet sur le bilan de clôture ?",
    "opts": [
@@ -191,6 +198,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Une créance client est :",
    "opts": [
@@ -206,6 +214,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 1,
    "q": "Parmi les éléments suivants, lesquels sont des charges du compte de résultat ? (plusieurs réponses possibles)",
    "opts": [
@@ -226,6 +235,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quelles opérations augmentent le total du bilan ? (plusieurs réponses possibles)",
    "opts": [
@@ -245,6 +255,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La société Berlan achète 8 000 € de marchandises au comptant pour les revendre. Immédiatement après cet achat, que constate-t-on ?",
    "opts": [
@@ -260,6 +271,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Au 1er janvier N, les capitaux propres de la SARL Orvalis sont de 120 000 €. L'exercice N dégage un bénéfice de 35 000 €. En juin N, 15 000 € de dividendes (au titre de N−1) ont été versés aux associés. Aucun apport. Quel est le montant des capitaux propres au 31 décembre N ?",
    "a": 140000,
@@ -271,6 +283,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Au bilan de clôture, le résultat de l'exercice est une perte de 9 000 €. Comment figure-t-il ?",
    "opts": [
@@ -286,6 +299,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Une entreprise encaisse 6 000 € d'un client qui règle une facture émise le mois précédent. Effet sur le compte de résultat du mois de l'encaissement :",
    "opts": [
@@ -301,6 +315,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un exercice comptable :",
    "opts": [
@@ -316,6 +331,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Télia a réalisé un bénéfice de 40 000 € mais son solde bancaire a baissé de 25 000 € sur l'exercice. Quelles explications sont cohérentes ? (plusieurs réponses possibles)",
    "opts": [
@@ -336,6 +352,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Au 31 décembre N, la société Mirval vend un camion qu'elle utilisait depuis quatre ans. Sous le PCG 2025, le produit de cette cession est :",
    "opts": [
@@ -351,6 +368,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "niveau": 1,
    "q": "Dans quel document de synthèse figure chaque élément ?",
    "cats": [
@@ -397,6 +415,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Les capitaux propres représentent :",
    "opts": [
@@ -412,6 +431,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Bilan de la société Nerval au 31 décembre N : immobilisations 95 000 €, stocks 22 000 €, créances clients 31 000 €, banque 12 000 €. Au passif : capital 60 000 €, réserves 25 000 €, emprunt 40 000 €, dettes fournisseurs 28 000 €. Quel est le résultat de l'exercice N ? (nombre négatif si perte)",
    "a": 7000,
@@ -423,6 +443,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Les comptes annuels comprennent :",
    "opts": [
@@ -438,6 +459,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles affirmations sur le compte de résultat sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -458,6 +480,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "La société Alcor a un total de bilan de 300 000 €, des dettes de 210 000 € et un capital de 50 000 €. Elle n'a ni report à nouveau ni résultat en instance d'affectation. Que peut-on en déduire ?",
    "opts": [
@@ -473,6 +496,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 3,
    "q": "En 2025, une micro-entreprise au sens comptable (par exemple : total de bilan 300 000 €, chiffre d'affaires 600 000 €, 5 salariés) établit ses comptes annuels. De quelle dispense peut-elle bénéficier ?",
    "opts": [

@@ -77,6 +77,7 @@
  "exercices": [
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque opération au regard de la TVA.",
    "cats": [
     "Imposable de plein droit",
@@ -120,6 +121,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Qu'est-ce qu'un assujetti à la TVA ?",
    "opts": [
     "Toute personne exerçant de manière indépendante une activité économique, quel que soit son statut ou le résultat de l'activité",
@@ -135,6 +137,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un propriétaire loue des bureaux nus à une société. En matière de TVA, cette location est :",
    "opts": [
     "Exonérée, avec possibilité d'opter pour la TVA",
@@ -150,6 +153,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise française vend des machines à une société italienne assujettie, qui communique son numéro de TVA intracommunautaire ; les biens sont transportés en Italie. Quel est le traitement de la vente en France ?",
    "opts": [
     "Livraison intracommunautaire exonérée, avec maintien du droit à déduction",
@@ -165,6 +169,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une société française importe des composants de Chine en 2025. Comment la TVA à l'importation est-elle acquittée ?",
    "opts": [
     "Par autoliquidation sur la déclaration CA3 : la TVA est collectée et déduite sur la même déclaration",
@@ -180,6 +185,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un site français de vente en ligne réalise 60 000 € de ventes de biens à des particuliers allemands et belges en 2025 (ses ventes à distance intracommunautaires totales dépassent 10 000 €). Quelle TVA applique-t-il à ces ventes ?",
    "opts": [
     "La TVA allemande et belge selon le pays de destination, déclarée via le guichet unique OSS",
@@ -195,6 +201,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un cabinet de conseil français facture une prestation d'étude à une société assujettie établie en Espagne. Quel est le lieu d'imposition et qui paie la TVA ?",
    "opts": [
     "En Espagne, lieu d'établissement du preneur assujetti : le client espagnol autoliquide, la facture française est hors TVA",
@@ -210,6 +217,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Pour quelles prestations le lieu d'imposition déroge aux règles générales B2B/B2C ? (plusieurs réponses possibles)",
    "opts": [
     "Travaux de rénovation d'un immeuble situé à Lyon réalisés pour un client allemand",
@@ -230,6 +238,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise vend des marchandises : prix catalogue 1 000 € HT, frais de port facturés 50 € HT, escompte de 2 % pour paiement comptant accordé sur le prix catalogue, et 100 € de débours (droits avancés au nom du client sur mandat). Quelle est la base d'imposition à la TVA (en €) ?",
    "a": 1030,
    "unit": "€",
@@ -241,6 +250,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Indiquez le taux de TVA applicable en France continentale à chaque opération.",
    "cats": [
     "20 %",
@@ -289,6 +299,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un plombier n'ayant pas opté pour les débits termine un chantier le 20 mars, facture le 2 avril et est payé le 15 mai. Quand la TVA est-elle exigible ?",
    "opts": [
     "Le 15 mai, à l'encaissement",
@@ -304,6 +315,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise vend une machine (livraison de biens) : commande le 10 janvier avec acompte de 30 % encaissé le même jour, livraison le 20 février, solde payé le 30 mars. Quand la TVA devient-elle exigible ?",
    "opts": [
     "30 % le 10 janvier (acompte) et 70 % le 20 février (livraison)",
@@ -319,6 +331,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel est l'intérêt de l'option pour le paiement de la TVA d'après les débits pour un prestataire de services ?",
    "opts": [
     "Simplifier la gestion en rendant la TVA exigible dès la facturation, ce qui permet au client de déduire plus tôt",
@@ -334,6 +347,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise réalise en janvier 2025 des ventes de 50 000 € HT au taux de 20 %. Elle a acheté des marchandises pour 30 000 € HT et une machine pour 10 000 € HT, le tout au taux de 20 % et intégralement déductible. Quel est le montant de TVA à payer au titre de janvier ?",
    "a": 2000,
    "unit": "€",
@@ -345,6 +359,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Sur quelles dépenses la TVA n'est-elle pas déductible, même pour une entreprise entièrement assujettie ? (plusieurs réponses possibles)",
    "opts": [
     "Achat d'une voiture particulière pour le directeur commercial",
@@ -365,6 +380,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise achète pour 1 000 € HT d'essence pour la voiture particulière de son commercial (taux 20 %). La TVA sur l'essence utilisée par un véhicule de tourisme est déductible à 80 %. Quel montant de TVA peut-elle déduire ?",
    "a": 160,
    "unit": "€",
@@ -376,6 +392,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un assujetti partiel utilise un ordinateur (TVA facturée 4 000 €) pour l'ensemble de ses activités. Coefficient d'assujettissement : 1 ; coefficient de taxation forfaitaire : 0,80 (80 % de son chiffre d'affaires ouvre droit à déduction) ; coefficient d'admission : 1. Quel montant de TVA peut-il déduire ?",
    "a": 3200,
    "unit": "€",
@@ -387,6 +404,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une entreprise réalise 800 000 € de chiffre d'affaires soumis à TVA et 200 000 € d'opérations exonérées n'ouvrant pas droit à déduction (locations nues). Quel est son coefficient de taxation forfaitaire ?",
    "opts": [
     "0,80",
@@ -402,6 +420,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise a acquis un immeuble en N et déduit 100 000 € de TVA. Elle le cède en N+6 (7e année de détention), sans soumettre la cession à la TVA. Quel montant de TVA doit-elle reverser (régularisation globale sur 20 ans) ?",
    "a": 65000,
    "unit": "€",
@@ -413,6 +432,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Pendant quelle durée une immobilisation corporelle (autre qu'un immeuble) est-elle soumise aux régularisations de TVA ?",
    "opts": [
     "5 ans, année d'acquisition comprise",
@@ -428,6 +448,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise au réel normal (CA3 mensuelle) dégage un crédit de TVA de 900 € en mars. Peut-elle en demander le remboursement ?",
    "opts": [
     "Oui, le crédit mensuel dépassant 760 €",
@@ -443,6 +464,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "En 2025, un consultant indépendant réalise 30 000 € HT de recettes annuelles. Les seuils de la franchise en base pour les prestations de services sont de 37 500 € (seuil de base) et 41 250 € (seuil majoré). Quelle est sa situation ?",
    "opts": [
     "Il bénéficie de la franchise en base : il ne facture pas de TVA et ne la déduit pas, sauf option",
@@ -458,6 +480,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un commerçant bénéficiant de la franchise en base (seuils 2025 : 85 000 € et seuil majoré 93 500 €) réalise 90 000 € de ventes en 2025, puis 70 000 € en 2026. Que se passe-t-il ?",
    "opts": [
     "Il reste en franchise en 2025 (seuil majoré non dépassé) mais devient redevable à compter du 1er janvier 2026, puis peut revenir en franchise en 2027 si 2026 est inférieure au seuil",
@@ -473,6 +496,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise au régime simplifié d'imposition a acquitté 20 000 € de TVA (hors TVA sur immobilisations) au titre de l'exercice 2025. Quel est le montant de l'acompte de juillet 2026 ?",
    "a": 11000,
    "unit": "€",
@@ -484,6 +508,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "Une entreprise relevant du régime simplifié pour ses BIC a une TVA annuelle de 25 000 € en 2025. En matière de TVA pour 2026, elle :",
    "opts": [
     "Relève du réel normal (CA3 mensuelles) car la TVA due N-1 dépasse 15 000 €, tout en restant au simplifié pour ses bénéfices",
@@ -499,6 +524,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles mentions sont obligatoires sur une facture entre assujettis ? (plusieurs réponses possibles)",
    "opts": [
     "Numéro de TVA intracommunautaire du vendeur",
@@ -519,6 +545,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "À partir de quelle date une PME établie en France doit-elle être en mesure de recevoir des factures électroniques, et à partir de quand doit-elle en émettre ?",
    "opts": [
     "Réception : 1er septembre 2026 ; émission : 1er septembre 2027",
@@ -534,6 +561,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un sous-traitant réalise des travaux de maçonnerie pour une entreprise générale du bâtiment assujettie à la TVA. Comment facture-t-il ?",
    "opts": [
     "Hors TVA avec la mention « autoliquidation » : l'entreprise principale collecte et déduit elle-même la TVA",
@@ -549,6 +577,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une société vend un immeuble de bureaux achevé il y a 3 ans. Au regard de la TVA, la cession est :",
    "opts": [
     "Soumise à la TVA de plein droit, l'immeuble étant neuf (achevé depuis moins de 5 ans)",

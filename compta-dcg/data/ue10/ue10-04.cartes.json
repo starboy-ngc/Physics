@@ -1,0 +1,435 @@
+{
+ "id": "ue10-04",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-04-k01",
+   "type": "def",
+   "q": "Qu'est-ce qu'un stock au sens du Plan comptable général (PCG) ?",
+   "r": "<b>Un actif détenu pour être vendu dans le cours normal de l'activité</b>, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 211-7",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k02",
+   "type": "def",
+   "q": "De quoi se compose le coût de production d'un bien en stock selon le Code de commerce et le PCG ?",
+   "r": "<b>Du coût d'acquisition des matières consommées augmenté des charges directes et indirectes de production</b> qui peuvent être raisonnablement rattachées à la production du bien. Pour les stocks, il comprend les coûts directement liés aux unités produites et l'affectation systématique des frais généraux de production, fixes et variables.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. R. 123-178, 2° ; PCG, art. 213-32",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k03",
+   "type": "def",
+   "q": "De quoi se compose le coût d'acquisition d'un stock acquis à titre onéreux selon le PCG ?",
+   "r": "<b>Du prix d'achat et des droits de douane et taxes non récupérables, déduction faite des remises, rabais et escomptes de règlement</b>, plus les frais de transport, de manutention et autres coûts directement attribuables.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 123-18 ; PCG, art. 213-31",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k04",
+   "type": "def",
+   "q": "Qu'est-ce que la capacité normale des installations de production au sens du PCG ?",
+   "r": "<b>La production moyenne attendue sur plusieurs exercices ou saisons dans des circonstances normales.</b> Elle fonde l'affectation des frais généraux fixes de production aux coûts de transformation ; le niveau réel de production peut être retenu s'il est proche de la capacité normale.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, art. 213-32",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k05",
+   "type": "comp",
+   "q": "Comment le PCG traite-t-il les frais généraux fixes de production non affectés au coût des stocks du fait d'une sous-activité ?",
+   "r": "<b>Ils sont comptabilisés en charges de l'exercice au cours duquel ils sont encourus.</b> C'est l'imputation rationnelle : seule la fraction des charges fixes de production correspondant à la capacité normale entre dans le coût ; la même règle vaut pour les immobilisations produites.",
+   "base": [
+    "Règles essentielles#1",
+    "Points de vigilance#1"
+   ],
+   "src": "PCG, art. 213-32",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k06",
+   "type": "comp",
+   "q": "Quel traitement le PCG réserve-t-il aux coûts administratifs dans l'évaluation des stocks ?",
+   "r": "<b>Ils sont exclus du coût d'acquisition et du coût de production des stocks</b>, à l'exception des coûts de structures dédiées ; comme la quote-part de sous-activité, ils restent des charges de l'exercice.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "PCG, art. 213-30 à 213-32",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k07",
+   "type": "comp",
+   "q": "Quelles méthodes le PCG autorise-t-il pour comptabiliser les coûts d'emprunt liés à des stocks constituant des actifs éligibles ?",
+   "r": "<b>La comptabilisation en charges ou l'incorporation au coût de l'actif.</b> Sont éligibles les actifs exigeant une longue période de préparation avant de pouvoir être utilisés ou vendus ; la méthode retenue est appliquée de façon cohérente et permanente à tous les actifs éligibles et mentionnée en annexe.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, art. 213-9",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k08",
+   "type": "comp",
+   "q": "Quelles méthodes le Code de commerce admet-il pour évaluer les sorties de biens fongibles en stock ?",
+   "r": "<b>Le coût moyen pondéré (CMP) d'acquisition ou de production, ou la méthode « premier entré, premier sorti » (PEPS).</b> Aucune autre méthode n'est prévue : le « dernier entré, premier sorti » (LIFO) est exclu des comptes individuels. Les stocks non interchangeables ou affectés à des projets spécifiques sont évalués par identification spécifique de leurs coûts.",
+   "base": [
+    "Règles essentielles#4",
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. L. 123-18 ; PCG, art. 213-33 à 213-35",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k09",
+   "type": "comp",
+   "q": "En période de hausse des prix, quel effet la méthode PEPS a-t-elle sur le stock final et le résultat, comparée au CMP ?",
+   "r": "<b>Le PEPS valorise le stock final aux coûts les plus récents, donc plus haut que le CMP</b>, ce qui augmente le résultat.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. L. 123-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k10",
+   "type": "comp",
+   "q": "Comment les stocks sont-ils évalués pour la détermination du résultat imposable selon l'article 38 du CGI ?",
+   "r": "<b>Au prix de revient, ou au cours du jour de la clôture si ce cours est inférieur au prix de revient.</b> L'écart peut être constaté par une provision pour dépréciation, que l'entreprise doit justifier. Selon la doctrine administrative, les articles interchangeables non identifiables sont évalués au coût moyen pondéré ou, éventuellement, selon le PEPS, sans pouvoir considérer systématiquement comme sortis les articles entrés en dernier.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 38, 3 ; CGI, ann. III, art. 38 nonies ; BOI-BIC-PDSTK-20-20-10-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/1497-PGP.html/identifiant=BOI-BIC-PDSTK-20-20-10-10-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k11",
+   "type": "def",
+   "q": "En quoi consiste l'inventaire intermittent des stocks dans le plan de comptes du PCG ?",
+   "r": "<b>Les comptes de stocks ne sont mouvementés qu'à la clôture</b> : l'annulation du stock initial et la constatation du stock final passent par le compte 603 « Variation des stocks (approvisionnements et marchandises) » pour les achats et par le compte 713 « Variation des stocks (en-cours de production, produits) » pour la production.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "Plan de comptes 2026, comptes 603 et 713",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k12",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur actuelle d'un bien en stock selon le Code de commerce ?",
+   "r": "<b>Une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise.</b> La valeur d'inventaire lui est égale ; elle est comparée au coût d'entrée à la clôture pour déterminer une éventuelle dépréciation.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. R. 123-178, 4° et 5° ; PCG, art. 214-6",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k13",
+   "type": "comp",
+   "q": "À la clôture, comment traite-t-on un stock dont la valeur d'inventaire devient inférieure à sa valeur nette comptable ?",
+   "r": "<b>La valeur nette comptable est ramenée à la valeur d'inventaire, par une dépréciation au compte 39</b>, que la dépréciation soit définitive ou non. En revanche, la plus-value constatée entre la valeur d'inventaire et la valeur d'entrée n'est pas comptabilisée.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-18 et R. 123-178, 5° ; plan de comptes 2026, compte 39",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k14",
+   "type": "comp",
+   "q": "À quels actifs le Code de commerce réserve-t-il la tolérance d'une valeur d'inventaire « pas notablement inférieure » à la valeur comptable nette ?",
+   "r": "<b>Aux seules immobilisations non financières</b> : la tolérance ne joue pas pour les stocks, dont la valeur nette comptable est ramenée à la valeur d'inventaire, que la dépréciation soit définitive ou non.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-18 et R. 123-178, 5° ; plan de comptes 2026, compte 39",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k15",
+   "type": "def",
+   "q": "Qu'est-ce qu'un contrat à long terme au sens du Plan comptable général (PCG) ?",
+   "r": "<b>Un contrat d'une durée généralement longue, spécifiquement négocié dans le cadre d'un projet unique</b> portant sur la construction, la réalisation ou, le cas échéant, la participation en qualité de sous-traitant à la réalisation d'un bien, d'un service ou d'un ensemble de biens ou services fréquemment complexes, <b>dont l'exécution s'étend sur au moins deux périodes comptables ou exercices</b>.",
+   "base": [
+    "Définitions#3",
+    "Chiffres et seuils#0"
+   ],
+   "src": "PCG, art. 622-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k16",
+   "type": "comp",
+   "q": "Quelles sont les deux méthodes de comptabilisation d'un contrat à long terme prévues par le PCG ?",
+   "r": "<b>La méthode à l'achèvement et la méthode à l'avancement.</b> Depuis le règlement ANC n° 2018-01, la méthode à l'avancement, autrefois qualifiée de « préférentielle », relève des méthodes de référence, c'est-à-dire des méthodes que l'ANC considère comme conduisant à une meilleure information.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 121-5, 622-2 et 622-7 ; règlement ANC n° 2018-01 (note de présentation)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k17",
+   "type": "def",
+   "q": "En quoi consiste la méthode à l'achèvement pour comptabiliser un contrat à long terme ?",
+   "r": "<b>Le chiffre d'affaires et le résultat sont comptabilisés au terme de l'opération.</b> En cours d'exécution, les travaux sont constatés en en-cours de production à leur coût (comptes 33 et 34 par les comptes 7133 et 7134), sans dégagement de marge.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 622-2 et suivants ; plan de comptes 2026, comptes 33, 34 et 713",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k18",
+   "type": "def",
+   "q": "En quoi consiste la méthode à l'avancement pour comptabiliser un contrat à long terme ?",
+   "r": "<b>Le chiffre d'affaires et le résultat sont comptabilisés au fur et à mesure de l'avancement du contrat</b>, mesuré de façon fiable (rapport entre les coûts des travaux exécutés à la clôture et le total prévisionnel des coûts, ou mesures physiques). Le produit non encore facturé est enregistré en produit à recevoir au compte 4181 « Clients – factures à établir ».",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "PCG, art. 622-2 et suivants ; plan de comptes 2026, compte 4181",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k19",
+   "type": "comp",
+   "q": "Que se passe-t-il, selon la méthode à l'avancement, lorsque le résultat à terminaison d'un contrat à long terme ne peut être estimé de façon fiable ?",
+   "r": "<b>Aucun bénéfice n'est dégagé</b> : le produit comptabilisé est limité au montant des charges engagées.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "PCG, art. 622-2 et suivants ; plan de comptes 2026, compte 4181",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k20",
+   "type": "comp",
+   "q": "À quel moment une perte à terminaison sur un contrat à long terme doit-elle être provisionnée selon le PCG ?",
+   "r": "<b>Dès qu'elle devient probable</b>, en application du principe de prudence, que l'entité applique la méthode à l'achèvement ou la méthode à l'avancement. La perte globale probable est provisionnée au compte 1516 « Provisions pour pertes sur contrats », sous déduction des pertes éventuellement déjà constatées.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "PCG au 1er janvier 2026 (contrats à long terme, art. 622-1 et suivants) ; C. com., art. L. 123-20 ; plan de comptes 2026, compte 1516",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k21",
+   "type": "comp",
+   "q": "Selon la méthode à l'achèvement, comment une perte à terminaison sur un contrat à long terme est-elle couverte ?",
+   "r": "<b>D'abord par la dépréciation des en-cours à hauteur des coûts engagés</b>, le complément étant provisionné au compte 1516 « Provisions pour pertes sur contrats ».",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#11"
+   ],
+   "src": "PCG, art. 622-1 et suivants ; C. com., art. L. 123-18 (dépréciation)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k22",
+   "type": "comp",
+   "q": "Comment le PCG qualifie-t-il le passage de la méthode à l'achèvement à la méthode à l'avancement pour les contrats à long terme ?",
+   "r": "<b>C'est un changement de méthode à l'initiative de l'entité, qui n'a pas à être justifié et qui est irréversible.</b> Il porte sur tous les contrats en cours à cette date ; son effet, calculé de façon rétrospective, est imputé en report à nouveau à l'ouverture, sauf si des règles fiscales imposent de le comptabiliser en résultat.",
+   "base": [
+    "Points de vigilance#7"
+   ],
+   "src": "PCG, art. 121-5, 122-2, 122-3, 122-5 et 622-7 ; règlement ANC n° 2018-01",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k23",
+   "type": "comp",
+   "q": "Selon le PCG, sur quels exercices la révision du coût total estimé d'un contrat à long terme produit-elle ses effets ?",
+   "r": "<b>Sur l'exercice en cours et les exercices futurs seulement</b> : elle relève des estimations, et non d'un changement de méthode. Il en va de même des modalités retenues pour mesurer l'avancement du contrat.",
+   "base": [
+    "Points de vigilance#7"
+   ],
+   "src": "PCG, art. 121-5, 122-2, 122-3, 122-5 et 622-7 ; règlement ANC n° 2018-01",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k24",
+   "type": "comp",
+   "q": "Que prévoit le règlement ANC n° 2026-03 du 6 mars 2026 pour les contrats à long terme ?",
+   "r": "<b>Il abroge la section du PCG consacrée aux contrats à long terme (art. 622-1 et suivants) et reprend leur régime aux articles 523-1 à 523-8</b>, pour les exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible. La définition, le choix entre achèvement et avancement et la provision de la perte globale probable sont maintenus.",
+   "base": [
+    "Ce qui a changé récemment#3",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Règlement ANC n° 2026-03 du 6 mars 2026 (PCG, art. 523-1 à 523-8) ; arrêté du 12 août 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k25",
+   "type": "def",
+   "q": "Qu'est-ce qu'un écart de conversion sur une créance ou une dette en monnaie étrangère selon le PCG ?",
+   "r": "<b>La différence qui apparaît lorsque la conversion au cours de la date d'arrêté des comptes modifie les montants précédemment comptabilisés.</b> Elle est inscrite dans des comptes transitoires, en attente de régularisations ultérieures : 476 « Différences de conversion – Actif » (pertes latentes) et 477 « Différences de conversion – Passif » (gains latents).",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 420-5 et 420-8 ; plan de comptes 2026, comptes 476 et 477",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k26",
+   "type": "comp",
+   "q": "À quel cours le PCG convertit-il en euros le coût d'entrée des stocks et immobilisations acquis en devises ?",
+   "r": "<b>Au cours du jour de l'opération.</b> Les créances et dettes en monnaies étrangères sont, elles, converties sur la base du dernier cours du change, et les liquidités en devises existant à la clôture sur la base du dernier cours de change au comptant.",
+   "base": [
+    "Règles essentielles#12",
+    "Chiffres et seuils#3"
+   ],
+   "src": "PCG, art. 420-1 et 420-5 ; règlement ANC n° 2015-05",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k27",
+   "type": "comp",
+   "q": "Quel traitement le PCG réserve-t-il à la clôture aux pertes et gains latents de change sur les créances et dettes en monnaie étrangère ?",
+   "r": "<b>Les pertes latentes (476) entraînent, à due concurrence, une provision pour risques</b> au compte 1515 « Provisions pour pertes de change », sous réserve de l'article 420-6. <b>Les gains latents (477) ne sont pas pris en résultat.</b>",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 420-5 et 420-6 ; plan de comptes 2026, comptes 476, 477 et 1515",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k28",
+   "type": "comp",
+   "q": "Comment le PCG traite-t-il une créance ou une dette en devises couverte, par exemple par un achat ou une vente à terme de devises ?",
+   "r": "<b>Les effets de la couverture sont reconnus de manière symétrique à ceux de l'élément couvert.</b> Les différences de conversion compensées sont isolées en 4768 et 4778 « Différences compensées par couverture de change », et une perte latente qualifiée d'instrument de couverture ne donne lieu à aucune provision.",
+   "base": [
+    "Points de vigilance#4",
+    "Règles essentielles#14"
+   ],
+   "src": "PCG, art. 420-6 et 628-11 ; plan de comptes 2026, comptes 4768 et 4778 ; règlement ANC n° 2015-05",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k29",
+   "type": "comp",
+   "q": "À quelle condition la dotation à la provision pour pertes de change peut-elle être limitée à l'excédent des pertes latentes sur les gains latents ?",
+   "r": "<b>Lorsque pertes et gains latents portent sur des opérations dont les termes sont suffisamment voisins pour constituer une position globale de change.</b> Celle-ci est déterminée devise par devise, hors opérations de couverture et éléments couverts à hauteur de la partie couverte, pour des éléments dont les échéances se situent dans le même exercice.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "PCG, art. 420-6 et 628-7",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k30",
+   "type": "comp",
+   "q": "Dans quels comptes enregistre-t-on un écart de change réalisé sur une créance client ou une dette fournisseur en devises ?",
+   "r": "<b>En exploitation : 656 « Pertes de change sur créances et dettes commerciales » ou 756 « Gains de change sur créances et dettes commerciales ».</b> Seuls les écarts sur opérations financières (prêts, emprunts, disponibilités) vont en 666 « Pertes de change financières » et 766 « Gains de change financiers ».",
+   "base": [
+    "Règles essentielles#15",
+    "Points de vigilance#6"
+   ],
+   "src": "Plan de comptes 2026, comptes 656, 666, 756 et 766 ; règlement ANC n° 2023-03",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k31",
+   "type": "comp",
+   "q": "Comment le PCG traite-t-il à la clôture les écarts de conversion sur les liquidités en devises ?",
+   "r": "<b>Ils sont comptabilisés directement dans le résultat de l'exercice</b> (666 « Pertes de change financières » ou 766 « Gains de change financiers »), sauf application des dispositions relatives aux opérations de couverture. Il n'y a ni écart de conversion 476/477 ni provision.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "PCG, art. 420-7 ; plan de comptes 2026, comptes 666 et 766",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k32",
+   "type": "comp",
+   "q": "Comment les écarts de conversion sur créances et dettes en devises sont-ils traités pour le résultat imposable selon l'article 38, 4 du CGI ?",
+   "r": "<b>Ils sont pris en compte dans le résultat imposable de l'exercice</b> : pertes latentes (476) déduites, gains latents (477) réintégrés de façon extra-comptable, puisqu'ils ne sont jamais portés en résultat comptable. La provision pour pertes de change, qui couvre une perte déjà déduite, est réintégrée.",
+   "base": [
+    "Règles essentielles#17",
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 38, 4 ; BOI-BIC-CHG-50-70",
+   "url": "https://bofip.impots.gouv.fr/bofip/1413-PGP.html/identifiant=BOI-BIC-CHG-50-70-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k33",
+   "type": "comp",
+   "q": "Quel référentiel régit les stocks, les contrats à long terme et les opérations en devises dans les comptes individuels ?",
+   "r": "<b>Le PCG seul</b> : l'article L. 233-24 du Code de commerce ne vise que les comptes consolidés. En comptes consolidés IFRS, ces opérations relèvent d'IAS 2 (stocks), d'IFRS 15 (contrats de construction) et d'IAS 21 (devises).",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "C. com., art. L. 233-24",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k34",
+   "type": "comp",
+   "q": "Sous quel compte le règlement ANC n° 2022-06 range-t-il les provisions pour pertes de change et pour pertes sur contrats ?",
+   "r": "<b>Sous le compte 151 « Provisions pour risques », maintenu</b> : 1515 pour les pertes de change, 1516 pour les pertes sur contrats. Les provisions pour charges sont, elles, regroupées sous la racine 152.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; plan de comptes 2026, comptes 151 et 152",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-04-k35",
+   "type": "def",
+   "q": "Qu'est-ce qu'un écart de change réalisé sur une créance ou une dette libellée en devises ?",
+   "r": "<b>La différence, constatée au règlement, entre le montant réglé en euros et la valeur comptable de la créance ou de la dette</b> : c'est un résultat de change. La provision pour pertes de change constituée à la clôture est reprise lors du règlement.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Plan de comptes 2026, comptes 656, 666, 756 et 766 ; règlement ANC n° 2023-03",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

@@ -1,0 +1,435 @@
+{
+ "id": "ue9-01",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue9-01-k01",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il la comptabilité ?",
+   "r": "<b>Un système d'organisation de l'information financière</b> permettant de saisir, classer, enregistrer des données de base chiffrées et de présenter des états reflétant une image fidèle du patrimoine, de la situation financière et du résultat de l'entité à la date de clôture.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 121-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k02",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il un actif ?",
+   "r": "<b>Un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité</b>, c'est-à-dire une ressource qu'elle contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 211-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k03",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il un passif ?",
+   "r": "<b>Un élément du patrimoine ayant une valeur économique négative pour l'entité</b>, c'est-à-dire une obligation envers un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, art. 321-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k04",
+   "type": "def",
+   "q": "Comment le Code de commerce définit-il l'actif immobilisé du bilan ?",
+   "r": "<b>Les éléments destinés à servir de façon durable à l'activité de l'entreprise.</b> L'actif du bilan présente ensuite l'actif circulant : stocks et en-cours, avances et acomptes versés sur commandes, créances, valeurs mobilières de placement et disponibilités.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. R. 123-181 et R. 123-182",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927431",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k05",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il un stock ?",
+   "r": "<b>Un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production.</b> Il relève de l'actif circulant, alors que l'immobilisation est destinée à servir de façon durable à l'activité.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 211-7 ; C. com., art. R. 123-181 et R. 123-182",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k06",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il les charges ?",
+   "r": "<b>Les sommes ou valeurs versées ou à verser</b> en contrepartie de marchandises, approvisionnements, travaux et services consommés, ou en exécution d'une obligation légale. Elles sont enregistrées par nature dans la classe 6.",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#14"
+   ],
+   "src": "PCG, art. 511-1 et 511-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k07",
+   "type": "comp",
+   "q": "Selon le PCG, où comptabiliser une dépense qui ne remplit pas les conditions de définition et de comptabilisation d'un actif ?",
+   "r": "<b>En charges</b>, si elle n'est pas non plus incorporable au coût d'un actif, sous réserve des articles 212-9 à 212-11 du PCG.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "PCG, art. 511-1 et 511-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k08",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il les produits ?",
+   "r": "<b>Les sommes ou actifs reçus ou à recevoir</b>, soit en contrepartie de l'activité de l'entité, soit sans contrepartie. Ils comprennent aussi les reprises sur amortissements, dépréciations et provisions. Ils sont enregistrés dans la classe 7, hors taxes collectées.",
+   "base": [
+    "Définitions#6",
+    "Règles essentielles#14"
+   ],
+   "src": "PCG, art. 512-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k09",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il le résultat de l'exercice ?",
+   "r": "<b>Comme la différence entre les produits et les charges.</b> Il est aussi égal à la variation des capitaux propres entre le début et la fin de l'exercice, sauf pour les opérations qui affectent directement le montant des capitaux propres.",
+   "base": [
+    "Définitions#7"
+   ],
+   "src": "PCG, art. 513-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k10",
+   "type": "def",
+   "q": "Quels documents composent les comptes annuels d'un commerçant selon le Code de commerce ?",
+   "r": "<b>Le bilan, le compte de résultat et l'annexe</b>, qui forment un tout indissociable. Ils sont établis à la clôture de l'exercice au vu des enregistrements comptables et de l'inventaire. Par dérogation, les micro-entreprises sont dispensées d'annexe, sauf exceptions.",
+   "base": [
+    "Définitions#8",
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. L. 123-12, al. 3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k11",
+   "type": "comp",
+   "q": "Que doit contrôler un commerçant par inventaire, au moins une fois tous les douze mois, selon le Code de commerce ?",
+   "r": "<b>L'existence et la valeur des éléments actifs et passifs</b> du patrimoine de son entreprise. Il doit par ailleurs enregistrer chronologiquement les mouvements affectant ce patrimoine.",
+   "base": [
+    "Règles essentielles#1",
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 123-12, al. 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k12",
+   "type": "def",
+   "q": "Selon le Code de commerce, que décrit le bilan d'une entreprise ?",
+   "r": "<b>Séparément, les éléments actifs et passifs de l'entreprise</b> ; il fait aussi apparaître, de façon distincte, les capitaux propres.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 123-13, al. 1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k13",
+   "type": "def",
+   "q": "Selon le Code de commerce, que récapitule le compte de résultat ?",
+   "r": "<b>Les produits et les charges de l'exercice, sans tenir compte de leur date d'encaissement ou de paiement.</b> Il fait apparaître, par différence après déduction des amortissements, des dépréciations et des provisions, le bénéfice ou la perte de l'exercice.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k14",
+   "type": "comp",
+   "q": "Pourquoi le bénéfice de l'exercice ne se confond-il pas avec la trésorerie de l'entreprise ?",
+   "r": "<b>Parce que le compte de résultat ignore les dates d'encaissement et de paiement</b>, alors que la banque est un poste du bilan. Un produit n'est pas un encaissement, ni une charge un décaissement.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k15",
+   "type": "comp",
+   "q": "Quel est le rôle de l'annexe dans les comptes annuels selon le Code de commerce ?",
+   "r": "<b>Elle complète et commente l'information donnée par le bilan et le compte de résultat.</b> Outre les informations obligatoires, elle comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 123-13 et R. 123-195",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927471",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k16",
+   "type": "comp",
+   "q": "Quelles qualités le Code de commerce exige-t-il des comptes annuels d'un commerçant ?",
+   "r": "<b>Être réguliers, sincères et donner une image fidèle</b> du patrimoine, de la situation financière et du résultat de l'entreprise.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 123-14, al. 1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k17",
+   "type": "comp",
+   "q": "Selon le Code de commerce, que faire lorsqu'une prescription comptable se révèle, dans un cas exceptionnel, impropre à donner une image fidèle ?",
+   "r": "<b>Il doit y être dérogé</b> : la dérogation est mentionnée et motivée dans l'annexe, avec l'indication de son influence sur le patrimoine, la situation financière et le résultat. Si la prescription ne suffit simplement pas, des informations complémentaires sont fournies dans l'annexe.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 123-14, al. 2 et 3 ; PCG, art. 121-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k18",
+   "type": "def",
+   "q": "Que signifie le principe de non-compensation applicable aux comptes annuels selon le Code de commerce ?",
+   "r": "<b>Aucune compensation n'est opérée entre postes d'actif et de passif du bilan, ni entre postes de charges et de produits du compte de résultat</b>, sauf cas exceptionnels prévus par un règlement de l'ANC. Les éléments d'actif et de passif sont évalués séparément.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-19",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k19",
+   "type": "def",
+   "q": "Selon le Code de commerce, qu'impose le principe d'intangibilité du bilan d'ouverture ?",
+   "r": "<b>Le bilan d'ouverture d'un exercice doit correspondre au bilan de clôture de l'exercice précédent.</b>",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-19",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k20",
+   "type": "comp",
+   "q": "Selon le Code de commerce, sur quelle présomption les comptes annuels d'un commerçant sont-ils établis ?",
+   "r": "<b>Le commerçant est présumé poursuivre ses activités</b> (continuité d'exploitation). Les comptes respectent aussi le principe de prudence. Même en cas d'absence ou d'insuffisance du bénéfice, il est procédé aux amortissements, dépréciations et provisions nécessaires.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 123-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k21",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quels bénéfices peuvent être inscrits dans les comptes annuels ?",
+   "r": "<b>Seuls les bénéfices réalisés à la date de clôture de l'exercice.</b> Un gain latent n'est donc pas un produit.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 123-21",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k22",
+   "type": "def",
+   "q": "Que pose le principe de permanence des méthodes comptables selon le Code de commerce ?",
+   "r": "<b>Les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre</b>, sauf cas exceptionnels, afin de donner une image fidèle et dans les conditions prévues par un règlement de l'ANC.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 123-17 ; PCG, art. 121-5, 122-1 et 122-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k23",
+   "type": "comp",
+   "q": "Selon le Code de commerce, dans quelle rubrique du passif du bilan figurent les subventions d'investissement et les provisions réglementées ?",
+   "r": "<b>Dans les capitaux propres</b>, aux côtés notamment du capital, des primes d'émission, des écarts de réévaluation, des réserves et du résultat de l'exercice. Le passif présente ensuite les autres fonds propres, les provisions, les dettes, puis les comptes de régularisation et écarts de conversion.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. R. 123-190",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927465",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k24",
+   "type": "def",
+   "q": "Selon le PCG modifié par le règlement ANC n° 2022-06, quels produits et charges sont comptabilisés en résultat exceptionnel ?",
+   "r": "<b>Les produits et charges directement liés à un événement majeur et inhabituel</b> ; les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) y restent aussi. Le Code de commerce définit ce résultat comme celui dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise.",
+   "base": [
+    "Règles essentielles#13",
+    "Règles essentielles#12"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes PCG 2026, comptes 687 et 787",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k25",
+   "type": "comp",
+   "q": "Selon le PCG, quels critères rendent un événement majeur et présumé inhabituel, pour le classement en résultat exceptionnel ?",
+   "r": "<b>Majeur</b> : ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse. <b>Présumé inhabituel</b> : il ne s'est pas produit au cours des derniers exercices et il est peu probable qu'il se reproduise au cours des prochains.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes PCG 2026, comptes 687 et 787",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k26",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quelle partie du compte de résultat se classent les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) ?",
+   "r": "<b>En résultat exceptionnel</b> (comptes 687 et 787) : elles y restent, bien que ce résultat soit désormais recentré sur les produits et charges directement liés à un événement majeur et inhabituel.",
+   "base": [
+    "Règles essentielles#13",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes PCG 2026, comptes 687 et 787",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k27",
+   "type": "comp",
+   "q": "Où le résultat de l'exercice figure-t-il dans les comptes annuels d'une entreprise ?",
+   "r": "<b>Dans deux documents</b> : comme solde du compte de résultat et, au bilan, dans les capitaux propres (compte 120 pour un bénéfice, 129 pour une perte). Cette double inscription maintient l'égalité actif = passif.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. R. 123-190 ; PCG, art. 513-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927465",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k28",
+   "type": "comp",
+   "q": "Selon le Code de commerce, à quelle condition dépasser ou cesser de dépasser deux des trois seuils des micro, petites et moyennes entreprises a-t-il une incidence ?",
+   "r": "<b>Si cela se produit pendant deux exercices consécutifs.</b> La catégorie s'apprécie au titre du dernier exercice comptable clos et sur une base annuelle.",
+   "base": [
+    "Chiffres et seuils#3"
+   ],
+   "src": "C. com., art. L. 123-16 et L. 123-16-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k29",
+   "type": "comp",
+   "q": "Que deviennent les transferts de charges dans le PCG depuis le règlement ANC n° 2022-06 ?",
+   "r": "<b>Ils disparaissent</b> : la mention « les transferts de charges » est supprimée de l'article 512-1 du PCG, pour les exercices ouverts à compter du 1er janvier 2025. Le règlement ANC n° 2025-05 ne maintient le compte 791 que pour les opérations de concession d'aménagement.",
+   "base": [
+    "Ce qui a changé récemment#1",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; règlement ANC n° 2025-05 du 5 décembre 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k30",
+   "type": "comp",
+   "q": "Selon le PCG modifié par le règlement ANC n° 2022-06, où classer les aides, remboursements et indemnités directement liés à un événement majeur et inhabituel compensant des charges d'exploitation ?",
+   "r": "<b>En résultat d'exploitation</b>, et non en résultat exceptionnel, bien qu'ils soient directement liés à l'événement majeur et inhabituel.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k31",
+   "type": "comp",
+   "q": "Sur quoi porte le règlement ANC n° 2026-03 du 6 mars 2026 modifiant le Plan comptable général ?",
+   "r": "<b>Sur la comptabilisation des produits des ventes</b> ; il reprend aussi la définition du résultat exceptionnel (événement majeur et inhabituel) à l'article 531-5 du PCG. Il s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible sur l'exercice en cours à sa date de publication au Journal officiel.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 4 ; arrêté du 12 août 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k32",
+   "type": "comp",
+   "q": "Quelles micro-entreprises restent tenues d'établir une annexe, malgré la dispense prévue par le Code de commerce ?",
+   "r": "<b>Celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières.</b> La dispense ne s'applique pas non plus aux entités visées par l'article L. 123-16-2, notamment les établissements de crédit et les entreprises d'assurance et de réassurance.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. L. 123-16, L. 123-16-1 et L. 123-16-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k33",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quelle partie du compte de résultat se classe la cession d'une immobilisation, selon sa nature ?",
+   "r": "<b>Immobilisation incorporelle ou corporelle : exploitation</b> (comptes 657 / 757) ; <b>immobilisation financière : résultat financier</b> (comptes 6671 / 7671). Les anciens comptes 675 et 775 sont supprimés.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2026 (comptes 657, 6671, 747, 757 et 7671)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k34",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quel compte inscrire la quote-part de subvention d'investissement virée au résultat ?",
+   "r": "<b>Au compte 747.</b> Un manuel antérieur à la réforme peut encore classer cette opération en 67/77.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2026 (comptes 657, 6671, 747, 757 et 7671)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-01-k35",
+   "type": "comp",
+   "q": "Selon le Plan comptable général (PCG), à quelles conditions une entité peut-elle changer de méthode comptable de sa propre initiative ?",
+   "r": "<b>Le changement suppose un choix entre plusieurs méthodes conformes et une meilleure information financière.</b> L'autre origine de changement admise par le PCG, un changement de réglementation comptable, s'impose à l'entité.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 123-17 ; PCG, art. 121-5, 122-1 et 122-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
+   "fiab": "stable"
+  }
+ ]
+}

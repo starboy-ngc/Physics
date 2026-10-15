@@ -1,0 +1,431 @@
+{
+ "id": "ue3-03",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue3-03-k01",
+   "type": "def",
+   "q": "Comment le Code du travail définit-il le temps de travail effectif ?",
+   "r": "<b>Le temps pendant lequel le salarié est à la disposition de l'employeur et se conforme à ses directives sans pouvoir vaquer librement à des occupations personnelles.</b> La durée légale de travail effectif des salariés à temps complet est fixée à 35 heures par semaine.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. trav., art. L. 3121-1 et L. 3121-27",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k02",
+   "type": "comp",
+   "q": "À défaut d'accord collectif, quelle majoration de salaire ouvrent les heures supplémentaires accomplies au-delà de la durée légale hebdomadaire ?",
+   "r": "<b>25 % pour chacune des huit premières heures et 50 % pour les suivantes.</b> Un accord d'entreprise ou, à défaut, de branche peut fixer un autre taux, qui ne peut être inférieur à 10 %.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. trav., art. L. 3121-27, L. 3121-28, L. 3121-30, L. 3121-33, L. 3121-36, L. 3121-38 et L. 3121-39 ; D. 3121-24",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033020349",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k03",
+   "type": "comp",
+   "q": "Pour fixer le taux de majoration des heures supplémentaires, quel accord prévaut entre l'accord d'entreprise et l'accord de branche ?",
+   "r": "<b>L'accord d'entreprise prévaut, même moins favorable</b>, car cette matière ne relève pas des domaines réservés à la branche ; il s'applique dans la limite du plancher légal de 10 %.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. trav., art. L. 2253-3 et L. 3121-33",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k04",
+   "type": "comp",
+   "q": "Quelles sont les durées maximales de travail quotidienne et hebdomadaire fixées par le Code du travail ?",
+   "r": "<b>10 heures par jour</b> (12 heures au plus par accord) <b>et 48 heures au cours d'une même semaine</b>, avec une limite de 44 heures en moyenne sur 12 semaines consécutives (46 heures par accord).",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. trav., art. L. 3121-16, L. 3121-18 à L. 3121-23, L. 3131-1, L. 3132-2 et L. 3132-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k05",
+   "type": "comp",
+   "q": "Quels temps de repos minimaux le Code du travail garantit-il au salarié, chaque jour et chaque semaine ?",
+   "r": "<b>Un repos quotidien de 11 heures consécutives et un repos hebdomadaire de 24 heures consécutives</b>, auxquelles s'ajoutent les heures de repos quotidien ; le repos hebdomadaire est donné le dimanche dans l'intérêt des salariés.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. trav., art. L. 3121-16, L. 3121-18 à L. 3121-23, L. 3131-1, L. 3132-2 et L. 3132-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k06",
+   "type": "comp",
+   "q": "Quelles conditions doivent être réunies pour soumettre un salarié à une convention de forfait annuel en jours ?",
+   "r": "<b>Un accord collectif d'entreprise ou, à défaut, de branche, l'accord du salarié et une convention individuelle de forfait établie par écrit.</b> Le forfait est ouvert aux cadres autonomes et aux salariés dont la durée du travail ne peut être prédéterminée et qui disposent d'une réelle autonomie.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 3121-55, L. 3121-58 à L. 3121-60, L. 3121-63 et L. 3121-64",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178002/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k07",
+   "type": "def",
+   "q": "Qu'est-ce que le salaire minimum de croissance (SMIC) ?",
+   "r": "<b>Le salaire qui assure aux salariés dont les rémunérations sont les plus faibles la garantie de leur pouvoir d'achat</b> et une participation au développement économique de la nation. Fixé chaque année avec effet au 1er janvier, il est relevé en cours d'année, dans la même proportion, lorsque l'indice national des prix à la consommation augmente d'au moins 2 % par rapport à celui constaté lors de l'établissement du SMIC précédent.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 3231-2 et L. 3231-4 à L. 3231-6",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k08",
+   "type": "comp",
+   "q": "Depuis la loi du 22 avril 2024, quels droits à congés payés ouvrent les arrêts de travail pour maladie ou accident ?",
+   "r": "<b>Un arrêt pour maladie ou accident non professionnel ouvre droit à 2 jours ouvrables par mois, dans la limite de 24 jours par période de référence.</b> Un arrêt pour accident du travail ou maladie professionnelle est assimilé à du travail effectif sans limite de durée. Le travail effectif ouvre, lui, 2,5 jours ouvrables par mois, dans la limite de 30.",
+   "base": [
+    "Règles essentielles#3",
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. trav., art. L. 3141-3, L. 3141-5, L. 3141-5-1, L. 3141-13, L. 3141-17, L. 3141-18, L. 3141-19-1 et L. 3141-23",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178009/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k09",
+   "type": "comp",
+   "q": "Selon la loi du 22 avril 2024, que deviennent les congés payés non pris du fait d'une maladie ou d'un accident ?",
+   "r": "<b>Ils bénéficient d'une période de report de 15 mois</b>, l'employeur informant le salarié dans le mois suivant la reprise. Cette règle met le droit français des congés payés en cas de maladie en conformité avec le droit de l'Union européenne.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. trav., art. L. 3141-5, L. 3141-5-1, L. 3141-19-1 à L. 3141-19-3 (loi n° 2024-364 du 22 avril 2024)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049459068",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k10",
+   "type": "comp",
+   "q": "Quelles règles encadrent la période et la durée de prise des congés payés du salarié ?",
+   "r": "<b>La période de prise comprend dans tous les cas le 1er mai – 31 octobre</b> ; le congé pris en une fois ne peut excéder 24 jours ouvrables et une fraction d'au moins 12 jours ouvrables continus est due. À défaut d'accord, la prise hors période ouvre droit à des jours de fractionnement.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. trav., art. L. 3141-3, L. 3141-5, L. 3141-5-1, L. 3141-13, L. 3141-17, L. 3141-18, L. 3141-19-1 et L. 3141-23",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178009/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k11",
+   "type": "comp",
+   "q": "Comment est déterminée l'indemnité de congés payés versée au salarié ?",
+   "r": "<b>Elle est égale au dixième de la rémunération brute totale perçue pendant la période de référence</b>, sans pouvoir être inférieure à la rémunération que le salarié aurait perçue s'il avait continué à travailler (règle du maintien de salaire). À la rupture, la fraction de congé non prise donne lieu à une indemnité compensatrice.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. trav., art. L. 3141-24 et L. 3141-28",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006178009/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k12",
+   "type": "comp",
+   "q": "Quelle est la portée de l'acceptation sans protestation ni réserve du bulletin de paie par le salarié ?",
+   "r": "<b>Elle ne vaut pas renonciation au paiement des sommes dues.</b> L'employeur remet le bulletin de paie, éventuellement sous forme électronique sauf opposition du salarié.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. trav., art. L. 3242-1, L. 3243-2 et L. 3243-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145404/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k13",
+   "type": "comp",
+   "q": "À quelles conditions l'employeur peut-il apporter des restrictions aux droits des personnes et aux libertés individuelles et collectives des salariés ?",
+   "r": "<b>Les restrictions doivent être justifiées par la nature de la tâche à accomplir et proportionnées au but recherché.</b> Le règlement intérieur ne peut contenir de restrictions qui ne respecteraient pas ces conditions, ni de dispositions discriminatoires.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 1121-1 et L. 1321-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160716/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k14",
+   "type": "def",
+   "q": "Qu'est-ce que le règlement intérieur d'une entreprise ?",
+   "r": "<b>Un document écrit par lequel l'employeur fixe exclusivement</b> les mesures de santé et de sécurité, les conditions de participation au rétablissement de conditions de travail protectrices et les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions. Obligatoire dans les entreprises d'au moins cinquante salariés, il entre en vigueur un mois après l'accomplissement des formalités de publicité.",
+   "base": [
+    "Règles essentielles#8",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. trav., art. L. 1311-2 et L. 1321-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901432",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k15",
+   "type": "def",
+   "q": "Qu'est-ce qu'une sanction disciplinaire au sens du Code du travail ?",
+   "r": "<b>Toute mesure, autre que les observations verbales, prise par l'employeur à la suite d'un agissement du salarié qu'il considère comme fautif</b>, qu'elle affecte immédiatement ou non sa présence dans l'entreprise, sa fonction, sa carrière ou sa rémunération. Les amendes et autres sanctions pécuniaires sont interdites.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 1331-1 et L. 1331-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901445",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k16",
+   "type": "comp",
+   "q": "Pour quelles sanctions disciplinaires l'employeur n'est-il pas tenu de convoquer le salarié à un entretien préalable ?",
+   "r": "<b>Pour un avertissement ou une sanction de même nature</b> sans incidence sur la présence, la fonction, la carrière ou la rémunération du salarié. Celui-ci doit toutefois être informé, dans le même temps et par écrit, des griefs retenus contre lui.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 1332-1, L. 1332-2, L. 1332-4, L. 1332-5, L. 1333-1 à L. 1333-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145394/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k17",
+   "type": "comp",
+   "q": "Au-delà de quel délai un fait fautif ne peut-il plus, à lui seul, donner lieu à des poursuites disciplinaires ?",
+   "r": "<b>Deux mois à compter du jour où l'employeur en a eu connaissance</b>, sauf si des poursuites pénales ont été engagées dans ce délai. Par ailleurs, aucune sanction antérieure de plus de trois ans ne peut être invoquée.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 1332-1, L. 1332-2, L. 1332-4, L. 1332-5, L. 1333-1 à L. 1333-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145394/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k18",
+   "type": "comp",
+   "q": "Dans quels cas le conseil de prud'hommes peut-il annuler une sanction disciplinaire prise par l'employeur ?",
+   "r": "<b>Lorsqu'elle est irrégulière en la forme, injustifiée ou disproportionnée.</b> Ce pouvoir d'annulation ne s'étend pas au licenciement.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 1332-1, L. 1332-2, L. 1332-4, L. 1332-5, L. 1333-1 à L. 1333-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006145394/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k19",
+   "type": "comp",
+   "q": "Quelle différence le droit du travail fait-il entre la modification du contrat de travail et le changement des conditions de travail ?",
+   "r": "<b>La modification d'un élément essentiel du contrat requiert l'accord du salarié</b>, alors que le changement des conditions de travail est décidé par l'employeur dans l'exercice de son pouvoir de direction. Le refus de ce changement est fautif et peut être sanctionné par un licenciement ; à défaut de licenciement, le contrat n'est pas rompu.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. trav., art. L. 1221-1 ; C. civ., art. 1193 ; Cass. soc., 10 juillet 1996, n° 93-41.137, publié au bulletin",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007037817/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k20",
+   "type": "comp",
+   "q": "Quel est l'effet du silence du salarié auquel l'employeur propose une modification de son contrat pour motif économique ?",
+   "r": "<b>Il est réputé avoir accepté la modification.</b> La proposition, faite par lettre recommandée avec avis de réception, lui laisse un mois à compter de sa réception (quinze jours en redressement ou liquidation judiciaire) pour faire connaître son refus.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. trav., art. L. 1222-6",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k21",
+   "type": "def",
+   "q": "Qu'est-ce qu'un accord de performance collective en droit du travail ?",
+   "r": "<b>Un accord d'entreprise qui peut aménager la durée du travail, la rémunération et les conditions de la mobilité professionnelle ou géographique interne</b>, pour répondre aux nécessités liées au fonctionnement de l'entreprise ou pour préserver ou développer l'emploi. Ses stipulations se substituent de plein droit aux clauses contraires et incompatibles du contrat.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k22",
+   "type": "comp",
+   "q": "Que vaut le licenciement d'un salarié qui refuse des clauses d'un accord de performance collective étrangères à la durée du travail, à la rémunération ou à la mobilité interne ?",
+   "r": "<b>Il est sans cause réelle et sérieuse</b> (Cass. soc., 28 mai 2026) : l'effet substitutif de l'accord ne vaut que pour ses stipulations relatives à la durée du travail, à la rémunération ou à la mobilité interne. En revanche, le licenciement du salarié qui refuse ces stipulations repose sur un motif spécifique qui constitue une cause réelle et sérieuse.",
+   "base": [
+    "Ce qui a changé récemment#1",
+    "Règles essentielles#12"
+   ],
+   "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin ; C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k23",
+   "type": "comp",
+   "q": "À partir de quel jour d'absence l'employeur doit-il l'indemnité complémentaire légale au salarié malade ou accidenté ?",
+   "r": "<b>Dès le premier jour en cas d'accident du travail ou de maladie professionnelle</b> (accidents de trajet exclus) <b>et à partir du huitième jour dans les autres cas.</b> Le salarié doit notamment avoir une année d'ancienneté et justifier de son incapacité dans les 48 heures.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. trav., art. L. 1226-1, D. 1226-1 à D. 1226-3 et D. 1226-5",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000018537772/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k24",
+   "type": "def",
+   "q": "Dans quel cas le médecin du travail déclare-t-il un salarié inapte à son poste ?",
+   "r": "<b>Lorsqu'aucune mesure d'aménagement, d'adaptation ou de transformation du poste n'est possible et que l'état de santé du travailleur justifie un changement de poste.</b> Il ne peut le constater qu'après au moins un examen médical, une étude du poste et des conditions de travail et un échange avec l'employeur.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. trav., art. L. 4624-4 et R. 4624-42",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k25",
+   "type": "comp",
+   "q": "Que doit proposer l'employeur au salarié déclaré inapte à son poste par le médecin du travail ?",
+   "r": "<b>Un autre emploi approprié à ses capacités</b>, au sein de l'entreprise ou des entreprises du groupe, en prenant en compte, après avis du CSE, les conclusions écrites du médecin du travail. Il en est dispensé si l'avis mentionne expressément que tout maintien dans un emploi serait gravement préjudiciable à la santé du salarié ou que son état fait obstacle à tout reclassement.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-11, L. 1226-12 et L. 1226-14",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k26",
+   "type": "comp",
+   "q": "Quelles indemnités ouvre le licenciement d'un salarié pour inaptitude d'origine professionnelle ?",
+   "r": "<b>Une indemnité compensatrice d'un montant égal à l'indemnité de préavis et une indemnité spéciale de licenciement</b> égale, sauf disposition conventionnelle plus favorable, au double de l'indemnité légale.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. trav., art. L. 1226-2, L. 1226-2-1, L. 1226-4, L. 1226-10, L. 1226-11, L. 1226-12 et L. 1226-14",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k27",
+   "type": "comp",
+   "q": "Après quelles absences le salarié doit-il bénéficier d'une visite de reprise auprès du médecin du travail ?",
+   "r": "<b>Après un congé de maternité, une absence pour maladie professionnelle, une absence d'au moins 30 jours pour accident du travail ou d'au moins 60 jours pour maladie ou accident non professionnel.</b> Depuis le 15 juin 2026, elle n'est pas requise après une visite de préreprise dans les 30 jours précédant la reprise concluant qu'aucun aménagement n'est nécessaire, sauf demande du médecin, de l'employeur ou du travailleur.",
+   "base": [
+    "Règles essentielles#15",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "C. trav., art. R. 4624-31 à R. 4624-33 (décret n° 2022-372 du 16 mars 2022 ; décret n° 2026-503 du 12 juin 2026)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000045369250/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k28",
+   "type": "comp",
+   "q": "Pendant quelles périodes la salariée est-elle protégée contre la rupture de son contrat de travail au titre de la maternité ?",
+   "r": "<b>Pendant la grossesse médicalement constatée, le congé de maternité, les congés payés pris immédiatement après et les dix semaines suivantes.</b> Exceptions : faute grave non liée à l'état de grossesse ou impossibilité de maintenir le contrat pour un motif étranger à la grossesse ou à l'accouchement, la rupture ne pouvant alors ni prendre effet ni être signifiée pendant le congé de maternité. Le licenciement contraire est nul.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. trav., art. L. 1225-4, L. 1225-17 à L. 1225-19 et L. 1235-3-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k29",
+   "type": "comp",
+   "q": "Dans quels cas l'employeur peut-il rompre le contrat d'un salarié suspendu à la suite d'un accident du travail ou d'une maladie professionnelle ?",
+   "r": "<b>S'il justifie d'une faute grave ou de son impossibilité de maintenir le contrat pour un motif étranger à l'accident ou à la maladie.</b> Hors de ces deux cas, il ne peut pas rompre le contrat pendant la suspension.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "C. trav., art. L. 1225-35, L. 3142-4 et L. 1226-9",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k30",
+   "type": "def",
+   "q": "Comment le Code du travail définit-il le harcèlement moral au travail ?",
+   "r": "<b>Des agissements répétés ayant pour objet ou pour effet une dégradation des conditions de travail</b> susceptible de porter atteinte aux droits et à la dignité du salarié, d'altérer sa santé physique ou mentale ou de compromettre son avenir professionnel. Toute rupture du contrat intervenue en méconnaissance de cette interdiction est nulle.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. trav., art. L. 1152-1 à L. 1152-3",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006177845/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k31",
+   "type": "comp",
+   "q": "Quel est le délai de prescription des actions portant sur l'exécution du contrat de travail ?",
+   "r": "<b>2 ans</b> à compter du jour où celui qui l'exerce a connu ou aurait dû connaître les faits lui permettant d'exercer son droit. Ce délai ne vise pas les actions en réparation d'un dommage corporel, en paiement ou en répétition du salaire (3 ans), ni celles fondées sur la discrimination ou le harcèlement.",
+   "base": [
+    "Chiffres et seuils#3"
+   ],
+   "src": "C. trav., art. L. 1471-1 ; L. 3245-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k32",
+   "type": "comp",
+   "q": "À partir de quelle date court la prescription triennale d'un salaire payé mensuellement ?",
+   "r": "<b>À la date habituelle du paiement</b>, car le délai de trois ans court à compter de la date à laquelle la créance salariale est devenue exigible. La demande peut porter sur les sommes dues au titre des trois dernières années ou, si le contrat est rompu, des trois années précédant la rupture.",
+   "base": [
+    "Points de vigilance#0",
+    "Chiffres et seuils#2"
+   ],
+   "src": "Cass. soc., 7 mai 2024, n° 22-24.394, publié au bulletin ; C. trav., art. L. 3242-1 et L. 3245-1",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000049533652/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k33",
+   "type": "comp",
+   "q": "Quelle prescription s'applique à la demande de remboursement de frais professionnels présentée par un salarié ?",
+   "r": "<b>La prescription de deux ans de l'article L. 1471-1</b>, car cette demande n'est pas une action en paiement du salaire ; elle échappe donc à la prescription triennale de l'article L. 3245-1.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "Cass. soc., 20 novembre 2019, n° 18-20.208, publié au bulletin",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000039437847?init=true&page=1&query=18-20208&searchField=ALL&tab_selection=all",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k34",
+   "type": "comp",
+   "q": "Dans quel délai le salarié victime d'une discrimination doit-il agir en réparation de son préjudice ?",
+   "r": "<b>5 ans à compter de la révélation de la discrimination</b>, délai qui n'est susceptible d'aucun aménagement conventionnel. Les dommages et intérêts réparent l'entier préjudice résultant de la discrimination, pendant toute sa durée.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. trav., art. L. 1134-5 et L. 1471-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033461494",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-03-k35",
+   "type": "comp",
+   "q": "Comment le salarié peut-il prendre le congé supplémentaire de naissance en vigueur depuis le 1er juillet 2026 ?",
+   "r": "<b>Un ou deux mois au choix, fractionnables en deux périodes d'un mois</b>, les parents pouvant le prendre en même temps ou en alternance ; le congé débute au plus tard 9 mois après la naissance ou l'arrivée de l'enfant. Le salarié prévient l'employeur un mois à l'avance, quinze jours lorsque le congé suit immédiatement le congé de paternité, d'accueil ou d'adoption.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. trav., art. L. 1225-46-2 à L. 1225-46-7 (loi n° 2025-1403 du 30 décembre 2025) ; décrets n° 2026-425 et n° 2026-426 du 30 mai 2026",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000053271681/",
+   "fiab": "stable"
+  }
+ ]
+}

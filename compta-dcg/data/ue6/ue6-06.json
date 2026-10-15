@@ -65,6 +65,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans un budget de trésorerie, les ventes et les achats soumis à TVA sont inscrits :",
    "opts": [
     "Pour leur montant TTC, aux dates d'encaissement et de décaissement prévues",
@@ -80,6 +81,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Société Lumen. Ventes HT : janvier 100 000 €, février 120 000 €, mars 150 000 €, toutes soumises à la TVA à 20 %. Les clients paient 40 % au comptant et 60 % à 30 jours. Calculez les encaissements du mois de mars (en euros).",
    "a": 158400,
    "unit": "€",
@@ -91,6 +93,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Société Lumen, mois de mars (régime réel normal, pas de crédit de TVA antérieur). Ventes HT 150 000 € ; achats de biens et services HT 80 000 € ; acquisition d'une immobilisation : TVA déductible 10 000 €. Taux de TVA 20 %. Calculez la TVA à décaisser au titre de mars (en euros).",
    "a": 4000,
    "unit": "€",
@@ -102,6 +105,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La TVA à décaisser calculée au titre du mois de mars (régime réel normal) apparaît dans le budget de trésorerie :",
    "opts": [
     "En décaissement d'avril",
@@ -117,6 +121,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments ne figurent pas dans un budget de trésorerie ?",
    "opts": [
     "Dotations aux amortissements",
@@ -136,6 +141,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Trésorerie au 1er janvier : 15 000 €. Soldes mensuels prévus (encaissements − décaissements) : janvier −8 000 €, février +3 000 €, mars −12 000 €. Calculez la trésorerie prévue au 31 mars (en euros, signe compris).",
    "a": -2000,
    "unit": "€",
@@ -147,6 +153,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise a été à découvert de 50 000 € pendant 20 jours. Taux du découvert 9 % (année de 360 jours). Commission du plus fort découvert : 0,05 % du plus fort solde débiteur du mois (50 000 €). Calculez le total des agios du mois (en euros).",
    "a": 275,
    "unit": "€",
@@ -158,6 +165,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La commission du plus fort découvert (CPFD) se calcule :",
    "opts": [
     "En appliquant un pourcentage au solde débiteur le plus élevé de chaque mois",
@@ -173,6 +181,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un effet de commerce de 36 000 € est remis à l'escompte 58 jours avant son échéance. Conditions : taux d'escompte 7,5 %, commission d'endos 0,6 % (proportionnelle, même base que l'escompte), 2 jours de banque, commission fixe de 12 € HT. Année de 360 jours. Calculez le total des agios HT (en euros).",
    "a": 498,
    "unit": "€",
@@ -184,6 +193,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Suite : agios de 498 € sur un effet de 36 000 € ; montant net reçu 35 502 € ; durée réelle du crédit 58 jours. Calculez le taux réel de l'escompte, en %, arrondi à 0,01 % (année de 360 jours).",
    "a": 8.71,
    "unit": "%",
@@ -195,6 +205,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les « jours de banque » ajoutés par la banque lors d'un escompte ont pour effet :",
    "opts": [
     "D'allonger la durée de calcul des intérêts et donc d'augmenter le coût réel du crédit",
@@ -210,6 +221,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise cède 100 000 € de créances à un factor. Conditions : commission d'affacturage 1,5 % du montant cédé ; commission de financement 6 % l'an pour 60 jours (année de 360 jours) ; retenue de garantie 10 %, restituée à l'encaissement. Calculez le montant immédiatement mis à disposition (en euros).",
    "a": 87500,
    "unit": "€",
@@ -221,6 +233,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La cession de créances professionnelles « Dailly » se caractérise par :",
    "opts": [
     "Le transfert de créances à la banque au moyen d'un bordereau, sans qu'un effet de commerce soit nécessaire",
@@ -236,6 +249,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les NEU CP (anciens billets de trésorerie) sont :",
    "opts": [
     "Des titres de créances négociables à court terme émis par les grandes entreprises sur le marché monétaire",
@@ -251,6 +265,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque instrument selon sa fonction principale pour le trésorier.",
    "cats": [
     "Financement à court terme",
@@ -306,6 +321,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel est le rôle de l'Autorité des marchés financiers (AMF) ?",
    "opts": [
     "Protéger l'épargne investie en produits financiers, veiller à l'information des investisseurs et au bon fonctionnement des marchés",
@@ -321,6 +337,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels droits sont attachés à une action ordinaire ?",
    "opts": [
     "Droit de vote aux assemblées",
@@ -343,6 +360,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une action cote 60 € et verse un dividende de 3 €. Quel est son rendement ?",
    "opts": [
     "5 %",
@@ -358,6 +376,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une société a réalisé un résultat net de 4 000 000 € pour 1 000 000 d'actions ; son cours est de 60 €. Calculez le PER (price earning ratio), arrondi à 0,1.",
    "a": 15,
    "unit": "",
@@ -369,6 +388,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une obligation de nominal 1 000 € cote 98,5 % au pied du coupon ; le coupon couru est de 2 %. Quel prix l'acheteur paie-t-il ?",
    "opts": [
     "1 005 €",
@@ -384,6 +404,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Obligation de nominal 1 000 €, coupon annuel 5 %, remboursée au pair dans 3 ans (le prochain coupon est dans un an). Taux du marché pour cette échéance : 6 %. Coefficients d'actualisation à 6 % : 0,9434 (1 an), 0,8900 (2 ans), 0,8396 (3 ans). Calculez la valeur de l'obligation, arrondie à l'euro.",
    "a": 973,
    "unit": "€",
@@ -395,6 +416,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les taux d'intérêt du marché augmentent. Quel est l'effet sur le prix des obligations à taux fixe déjà émises ?",
    "opts": [
     "Il baisse, car leurs coupons fixes deviennent moins attractifs que ceux des nouvelles émissions",
@@ -410,6 +432,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La sensibilité d'une obligation :",
    "opts": [
     "Mesure la variation en pourcentage de son prix pour une variation de 1 point du taux d'intérêt ; elle est d'autant plus forte que la duration est longue",
@@ -425,6 +448,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un exportateur français facture 500 000 dollars payables dans 90 jours et craint une baisse du dollar. Quelle couverture ferme est adaptée ?",
    "opts": [
     "Vendre à terme 500 000 dollars à 90 jours",
@@ -440,6 +464,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un swap de taux d'intérêt consiste à :",
    "opts": [
     "Échanger avec une contrepartie un flux d'intérêts à taux fixe contre un flux à taux variable sur un même capital notionnel",
@@ -455,6 +480,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La diversification d'un portefeuille de titres permet de :",
    "opts": [
     "Réduire le risque spécifique de chaque titre, mais pas le risque systématique mesuré par le bêta",

@@ -1,0 +1,430 @@
+{
+ "id": "ue2-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue2-02-k01",
+   "type": "def",
+   "q": "Qu'est-ce qu'une société à responsabilité limitée (SARL) ?",
+   "r": "<b>Une société instituée par une ou plusieurs personnes</b> qui ne supportent les pertes qu'à concurrence de leurs apports.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 223-1",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k02",
+   "type": "def",
+   "q": "Qu'est-ce qu'une EURL en droit des sociétés ?",
+   "r": "<b>Une SARL ne comportant qu'un seul associé, personne physique ou morale.</b> Cet associé unique exerce les pouvoirs dévolus à l'assemblée des associés ; il ne peut les déléguer et ses décisions sont répertoriées dans un registre.",
+   "base": [
+    "Définitions#1",
+    "Règles essentielles#16"
+   ],
+   "src": "C. civ., art. 1832, al. 2 ; C. com., art. L. 223-1",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k03",
+   "type": "def",
+   "q": "Comment est fixé le capital d'une SARL et en quels titres est-il divisé ?",
+   "r": "<b>Son montant est fixé par les statuts, sans minimum légal</b> ; il est divisé en parts sociales égales. Les titres de la SARL sont des parts sociales et non des actions.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 223-2 et L. 223-11 (version en vigueur depuis le 23 octobre 2019, ordonnance n° 2019-1067 du 21 octobre 2019)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039260280/2026-04-22",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k04",
+   "type": "comp",
+   "q": "Que se passe-t-il lorsqu'une SARL dépasse le nombre maximal de 100 associés ?",
+   "r": "<b>Elle est dissoute au terme d'un délai d'un an</b>, à moins que, pendant ce délai, le nombre des associés soit redevenu égal ou inférieur à 100 ou que la société ait été transformée.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 223-3",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k05",
+   "type": "comp",
+   "q": "Quelles règles encadrent la libération des apports en numéraire dans une SARL ?",
+   "r": "<b>Au moins un cinquième de leur montant à la constitution</b> ; le surplus est libéré en une ou plusieurs fois sur décision du gérant, dans un délai de cinq ans au plus à compter de l'immatriculation. Le capital doit être intégralement libéré avant toute souscription de nouvelles parts à libérer en numéraire.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 223-7",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k06",
+   "type": "def",
+   "q": "Que sont les parts sociales en industrie dans une SARL ?",
+   "r": "<b>Des parts attribuées en contrepartie d'apports en industrie</b> : ces apports ne concourent pas à la formation du capital social, mais les parts ouvrent droit au partage des bénéfices et de l'actif net, à charge de contribuer aux pertes. Les statuts peuvent les prévoir et en déterminent les modalités de souscription.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 223-7 ; C. civ., art. 1843-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k07",
+   "type": "comp",
+   "q": "À quelles conditions les futurs associés d'une SARL peuvent-ils se dispenser d'un commissaire aux apports pour évaluer les apports en nature ?",
+   "r": "<b>À l'unanimité</b>, si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports en nature non évalués n'excède pas la moitié du capital. Sinon, les statuts contiennent l'évaluation de chaque apport en nature au vu du rapport d'un commissaire aux apports désigné à l'unanimité des futurs associés ou, à défaut, par décision de justice.",
+   "base": [
+    "Règles essentielles#3",
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. com., art. L. 223-9 et D. 223-6-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k08",
+   "type": "comp",
+   "q": "Quelle responsabilité pèse sur les associés d'une SARL lorsque les apports en nature n'ont pas été évalués par un commissaire aux apports ?",
+   "r": "<b>Ils sont solidairement responsables pendant cinq ans, à l'égard des tiers</b>, de la valeur attribuée aux apports en nature lors de la constitution de la société. Il en va de même lorsque la valeur retenue est différente de celle proposée par le commissaire aux apports.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 223-9 et D. 223-6-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k09",
+   "type": "def",
+   "q": "Qui peut être gérant d'une SARL et par qui est-il nommé ?",
+   "r": "<b>Une ou plusieurs personnes physiques, associées ou non.</b> Le gérant est nommé par les associés dans les statuts ou par un acte postérieur.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 223-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k10",
+   "type": "comp",
+   "q": "De quels pouvoirs le gérant d'une SARL est-il investi dans ses rapports avec les tiers ?",
+   "r": "<b>Des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société</b>, sous réserve des pouvoirs que la loi attribue expressément aux associés. Les clauses statutaires limitant ces pouvoirs sont inopposables aux tiers ; en cas de pluralité de gérants, chacun les détient séparément.",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 223-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k11",
+   "type": "comp",
+   "q": "Dans quelle mesure une SARL est-elle engagée par les actes de son gérant qui ne relèvent pas de l'objet social ?",
+   "r": "<b>Elle est engagée</b>, à moins qu'elle ne prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer compte tenu des circonstances ; la seule publication des statuts ne suffit pas à constituer cette preuve.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 223-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031013015",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k12",
+   "type": "comp",
+   "q": "Par qui et à quelle majorité le gérant d'une SARL peut-il être révoqué ?",
+   "r": "<b>Par décision des associés représentant plus de la moitié des parts sociales</b>, à moins que les statuts ne prévoient une majorité plus forte ; sans juste motif, la révocation peut donner lieu à dommages-intérêts. Le gérant est aussi révocable par les tribunaux pour cause légitime, à la demande de tout associé.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 223-25",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k13",
+   "type": "comp",
+   "q": "Quels gérants de SARL sont affiliés au régime général de la sécurité sociale ?",
+   "r": "<b>Ceux qui ne possèdent pas ensemble plus de la moitié du capital social</b> (gérance minoritaire ou égalitaire, gérant non associé), les parts du conjoint, du partenaire de PACS et des enfants mineurs non émancipés, en toute propriété ou en usufruit, comptant comme celles du gérant. Le gérant majoritaire relève du régime des travailleurs indépendants.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "CSS, art. L. 311-3, 11° ; Urssaf, « Choisir votre statut juridique »",
+   "url": "https://www.urssaf.fr/accueil/choisir-forme-juridique/creer-societe.html",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k14",
+   "type": "comp",
+   "q": "Pour quelles fautes les gérants d'une SARL engagent-ils leur responsabilité envers la société ou envers les tiers ?",
+   "r": "<b>Infraction aux lois et règlements applicables aux SARL, violation des statuts ou faute de gestion</b> ; ils en répondent individuellement ou solidairement, selon le cas. Outre l'action en réparation de leur préjudice personnel, les associés peuvent exercer l'action sociale.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 223-22 et L. 223-23",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006223141",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k15",
+   "type": "comp",
+   "q": "Quelles majorités s'appliquent aux décisions ordinaires des associés d'une SARL, en première puis en seconde consultation ?",
+   "r": "<b>En première consultation, un ou plusieurs associés représentant plus de la moitié des parts sociales.</b> À défaut, et sauf stipulation contraire des statuts, les associés sont convoqués ou consultés une seconde fois et décident à la majorité des votes émis, quel que soit le nombre des votants.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 223-29",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799356",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k16",
+   "type": "comp",
+   "q": "Quels quorum et majorité s'appliquent aux modifications des statuts d'une SARL, selon qu'elle a été constituée avant ou après la publication de la loi du 2 août 2005 ?",
+   "r": "<b>Après : quorum d'un quart des parts sur première convocation et d'un cinquième sur seconde, puis deux tiers des parts des associés présents ou représentés</b>, les statuts pouvant prévoir des quorums ou une majorité plus élevés, sans exiger l'unanimité. <b>Avant : trois quarts des parts sociales, sans quorum</b>, sauf décision unanime des associés d'appliquer le nouveau régime.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 223-30",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k17",
+   "type": "comp",
+   "q": "Dans une SARL, sur quelles parts s'apprécie la majorité ordinaire de première consultation, par opposition à la majorité extraordinaire ?",
+   "r": "<b>Sur la totalité des parts sociales</b> (plus de la moitié des parts), alors que la majorité extraordinaire des SARL constituées après la publication de la loi du 2 août 2005 se calcule sur les parts des associés présents ou représentés (deux tiers), après vérification du quorum.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. L. 223-29 et L. 223-30",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k18",
+   "type": "comp",
+   "q": "Quelles décisions des associés d'une SARL exigent l'unanimité ?",
+   "r": "<b>Le changement de nationalité de la société, toute augmentation des engagements des associés</b> et la transformation en société en nom collectif, en commandite simple ou par actions, ou en société par actions simplifiée.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 223-30, L. 223-43 et L. 227-3",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k19",
+   "type": "comp",
+   "q": "Dans quel délai et sous quelle forme les associés d'une SARL approuvent-ils les comptes annuels ?",
+   "r": "<b>Dans les six mois de la clôture de l'exercice</b>, sauf prolongation par décision de justice, en assemblée ou, si les statuts le stipulent, par consultation écrite, y compris par voie électronique. Cette faculté couvre l'approbation des comptes depuis le 14 septembre 2024 (loi du 13 juin 2024) ; les manuels antérieurs enseignent encore qu'elle exige une assemblée.",
+   "base": [
+    "Règles essentielles#13",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. com., art. L. 223-26, L. 223-27 (loi n° 2024-537 du 13 juin 2024, art. 18) et L. 232-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049720548",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k20",
+   "type": "comp",
+   "q": "De quels moyens d'information sur la gestion disposent les associés d'une SARL ?",
+   "r": "<b>Tout associé non gérant peut, deux fois par exercice, poser par écrit des questions au gérant</b> sur tout fait de nature à compromettre la continuité de l'exploitation. Un ou plusieurs associés représentant au moins le dixième du capital peuvent demander en justice la désignation d'experts chargés d'un rapport sur une ou plusieurs opérations de gestion.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 223-36 et L. 223-37",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k21",
+   "type": "comp",
+   "q": "Dans quels cas une SARL doit-elle désigner un commissaire aux comptes ?",
+   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret</b> (total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés). Sa nomination peut aussi être demandée en justice par un ou plusieurs associés représentant au moins le dixième du capital.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 223-35 ; L. 821-44 et L. 821-46",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k22",
+   "type": "comp",
+   "q": "À quelle condition les parts sociales d'une SARL peuvent-elles être cédées à des tiers ?",
+   "r": "<b>Avec le consentement de la majorité des associés représentant au moins la moitié des parts sociales</b>, sauf majorité statutaire plus forte. Sans décision dans les trois mois de la dernière notification du projet, le consentement est réputé acquis.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 223-14",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k23",
+   "type": "comp",
+   "q": "Que se passe-t-il lorsque les associés d'une SARL refusent de consentir à la cession de parts sociales à un tiers ?",
+   "r": "<b>Les associés doivent, dans les trois mois, acquérir ou faire acquérir les parts</b> (délai prorogeable en justice de six mois au plus) à un prix fixé selon l'article 1843-4 du Code civil, sauf renonciation du cédant ; la société peut aussi, avec le consentement du cédant, les racheter en réduisant son capital. À défaut, le cédant peut réaliser la cession initialement prévue.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 223-14",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k24",
+   "type": "comp",
+   "q": "Entre quelles personnes les parts sociales d'une SARL sont-elles librement cessibles ?",
+   "r": "<b>Entre associés, entre conjoints et entre ascendants et descendants</b> ; elles sont aussi librement transmissibles par succession ou en cas de liquidation de communauté de biens entre époux. Les statuts peuvent soumettre ces opérations à agrément, sans prévoir une majorité plus forte ni des délais plus longs que ceux de l'article L. 223-14 (cession à des tiers).",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 223-13 et L. 223-16",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k25",
+   "type": "def",
+   "q": "Quelles sont les trois catégories de conventions passées avec une SARL que distingue le Code de commerce ?",
+   "r": "<b>Les conventions réglementées</b> (rapport à l'assemblée, qui statue en principe après leur conclusion), <b>les conventions libres</b> (opérations courantes conclues à des conditions normales) et <b>les conventions interdites</b>, à peine de nullité du contrat.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. L. 223-19 à L. 223-21",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k26",
+   "type": "comp",
+   "q": "Quelles conventions sont interdites à peine de nullité du contrat dans une SARL ?",
+   "r": "<b>Les emprunts, découverts, cautions ou avals consentis par la société</b> aux gérants ou associés autres que les personnes morales, aux représentants légaux des personnes morales associées, à leurs conjoints, ascendants et descendants et à toute personne interposée.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. L. 223-19 à L. 223-21",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k27",
+   "type": "comp",
+   "q": "Selon quelle procédure l'assemblée d'une SARL statue-t-elle sur les conventions conclues entre la société et l'un de ses gérants ou associés ?",
+   "r": "<b>Le gérant ou, s'il en existe un, le commissaire aux comptes lui présente un rapport sur ces conventions</b> ; l'assemblée statue, l'intéressé ne prenant pas part au vote et ses parts n'étant pas prises en compte pour le quorum et la majorité. Toutefois, sans commissaire aux comptes, la convention conclue par un gérant non associé est soumise à son approbation préalable.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. L. 223-19",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k28",
+   "type": "comp",
+   "q": "Quel est le sort d'une convention réglementée de SARL que l'assemblée n'a pas approuvée ?",
+   "r": "<b>Elle produit néanmoins ses effets</b>, à charge pour le gérant et, s'il y a lieu, pour l'associé contractant d'en supporter les conséquences préjudiciables à la société.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. L. 223-19",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k29",
+   "type": "comp",
+   "q": "Comment les comptes d'une EURL sont-ils approuvés lorsque l'associé unique, personne physique, assume personnellement la gérance ?",
+   "r": "<b>Le dépôt au registre du commerce et des sociétés de l'inventaire et des comptes annuels dûment signés vaut approbation</b>, s'il intervient dans les six mois de la clôture.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1844-5",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k30",
+   "type": "comp",
+   "q": "Quelle est la conséquence de la réunion de toutes les parts d'une SARL entre les mains d'un seul associé ?",
+   "r": "<b>La SARL se poursuit sous forme d'EURL</b> : la réunion de toutes les parts en une seule main ne l'expose pas à la dissolution judiciaire prévue par l'article 1844-5 du Code civil.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 223-1, L. 223-4 et L. 223-31 ; C. civ., art. 1844-5",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k31",
+   "type": "comp",
+   "q": "Comment est imposé le bénéfice d'une EURL selon que son associé unique est une personne physique ou une personne morale ?",
+   "r": "<b>Personne physique : l'associé unique est personnellement soumis à l'impôt sur le revenu</b> sur les bénéfices sociaux, sauf option de la société pour l'impôt sur les sociétés. <b>Personne morale : l'EURL est passible de plein droit de l'impôt sur les sociétés.</b>",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "CGI, art. 8, 206, 1 et 239 (loi n° 2018-1317 du 28 décembre 2018, art. 50) ; BOI-IS-CHAMP-40",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037988649",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k32",
+   "type": "comp",
+   "q": "Quelle option la loi du 14 février 2022 ouvre-t-elle à l'entrepreneur individuel au regard de l'EURL ?",
+   "r": "<b>Il peut opter pour l'assimilation à une EURL, et ainsi pour l'impôt sur les sociétés, sans créer de société.</b> Il est par ailleurs titulaire de deux patrimoines distincts, professionnel et personnel.",
+   "base": [
+    "Ce qui a changé récemment#5"
+   ],
+   "src": "C. com., art. L. 526-22 ; CGI, art. 1655 sexies",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k33",
+   "type": "comp",
+   "q": "Que doit faire une SARL dont les capitaux propres n'ont pas été reconstitués à hauteur de la moitié du capital dans le délai de deux exercices ?",
+   "r": "<b>Si son capital dépasse le seuil fixé par décret (1 % du total du bilan), elle doit le réduire pour le ramener au plus à ce seuil</b>, au plus tard à la clôture du deuxième exercice suivant. À défaut, tout intéressé peut demander en justice la dissolution, le tribunal pouvant accorder un délai de régularisation.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. com., art. L. 223-42 (loi n° 2023-171 du 9 mars 2023) ; art. R. 223-37 (décret n° 2023-657 du 25 juillet 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k34",
+   "type": "comp",
+   "q": "Qu'a changé l'ordonnance du 12 mars 2025, applicable depuis le 1er octobre 2025, au régime des nullités dans les sociétés ?",
+   "r": "<b>Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité</b> ; les actions en nullité de la société ou de ses actes et délibérations se prescrivent par deux ans au lieu de trois ; l'annulation d'une décision est subordonnée à un « triple test » : grief, influence de l'irrégularité sur le sens de la décision, conséquences non excessives pour l'intérêt social.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Ordonnance n° 2025-229 du 12 mars 2025 (art. 70) ; C. civ., art. 1844-10, al. 4, 1844-12-1 et 1844-14",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-02-k35",
+   "type": "comp",
+   "q": "À quelles conditions une SARL peut-elle émettre des obligations ?",
+   "r": "<b>Si elle a désigné un commissaire aux comptes et si les comptes de ses trois derniers exercices de douze mois ont été régulièrement approuvés par les associés.</b> Les obligations sont alors nominatives et l'émission est décidée par l'assemblée des associés.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 223-2 et L. 223-11 (version en vigueur depuis le 23 octobre 2019, ordonnance n° 2019-1067 du 21 octobre 2019)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039260280/2026-04-22",
+   "fiab": "stable"
+  }
+ ]
+}

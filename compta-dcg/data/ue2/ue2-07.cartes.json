@@ -1,0 +1,423 @@
+{
+ "id": "ue2-07",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue2-07-k01",
+   "type": "def",
+   "q": "Selon le Code de commerce, qui a la qualité de commerçant ?",
+   "r": "<b>Ceux qui exercent des actes de commerce et en font leur profession habituelle.</b> Les actes de commerce sont notamment ceux que l'article L. 110-1 répute tels, comme tout achat de biens meubles pour les revendre.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 121-1 et L. 110-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219167",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k02",
+   "type": "comp",
+   "q": "À quelle condition un mineur émancipé peut-il être commerçant ?",
+   "r": "<b>Il doit y être autorisé</b> par le juge des tutelles au moment de la décision d'émancipation, ou par le président du tribunal judiciaire s'il formule cette demande après avoir été émancipé. L'émancipation seule ne suffit donc pas.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 121-2 ; C. civ., art. 413-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039280381/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k03",
+   "type": "def",
+   "q": "Qu'est-ce que le registre du commerce et des sociétés (RCS) ?",
+   "r": "<b>Le registre auquel sont immatriculés, sur leur déclaration</b>, notamment les personnes physiques ayant la qualité de commerçant et les sociétés et groupements d'intérêt économique ayant leur siège dans un département et jouissant de la personnalité morale.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 123-1",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178751",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k04",
+   "type": "comp",
+   "q": "Quelle est la situation de la personne physique exerçant le commerce sans s'être immatriculée au RCS dans les quinze jours du début de son activité ?",
+   "r": "<b>Elle ne peut se prévaloir de la qualité de commerçant jusqu'à son immatriculation</b>, mais ne peut invoquer ce défaut pour se soustraire aux obligations qui y sont attachées. À l'inverse, l'immatriculation fait présumer cette qualité, sauf preuve contraire apportée par les tiers ou les administrations.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "Cass. com., 29 novembre 2023, n° 22-16.463 ; C. civ., art. 1842 ; C. com., art. L. 123-7 et L. 123-8",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000048550315",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k05",
+   "type": "comp",
+   "q": "À partir de quand une société commerciale jouit-elle de la personnalité morale ?",
+   "r": "<b>À dater de son immatriculation au registre du commerce et des sociétés.</b> Le numéro SIREN attribué par l'INSEE ne sert qu'à l'identifier auprès des administrations.",
+   "base": [
+    "Règles essentielles#4",
+    "Points de vigilance#1"
+   ],
+   "src": "C. com., art. L. 210-1 et L. 210-6",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006113739",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k06",
+   "type": "comp",
+   "q": "Depuis le 1er janvier 2023, quel est l'effet du dépôt du dossier unique de formalités d'une entreprise auprès du guichet unique ?",
+   "r": "<b>Ce dépôt vaut déclaration auprès de chaque organisme destinataire</b>, dès lors que le dossier est régulier et complet à son égard. Il se fait par voie électronique pour la création, les modifications de situation et la cessation d'activité, sous réserve des formalités liées à l'accès aux activités réglementées.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 123-33 (version en vigueur depuis le 1er janvier 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k07",
+   "type": "comp",
+   "q": "Quelles obligations comptables le Code de commerce impose-t-il à toute personne physique ou morale ayant la qualité de commerçant ?",
+   "r": "<b>Enregistrer chronologiquement les mouvements affectant le patrimoine de son entreprise, contrôler par inventaire, au moins une fois tous les douze mois, l'existence et la valeur des éléments actifs et passifs, et établir des comptes annuels à la clôture de l'exercice.</b> Documents comptables et pièces justificatives sont conservés dix ans.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 123-12, L. 123-22 et L. 123-24",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k08",
+   "type": "comp",
+   "q": "Quel délai de prescription s'applique aux obligations nées à l'occasion de leur commerce entre commerçants, ou entre commerçants et non-commerçants ?",
+   "r": "<b>Cinq ans</b>, si elles ne sont pas soumises à des prescriptions spéciales plus courtes (C. com., art. L. 110-4).",
+   "base": [
+    "Règles essentielles#3",
+    "Chiffres et seuils#3"
+   ],
+   "src": "C. com., art. L. 110-3 et L. 110-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027725867",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k09",
+   "type": "comp",
+   "q": "Quelle compétence la loi du 20 novembre 2023 confie-t-elle aux tribunaux des activités économiques expérimentés depuis le 1er janvier 2025 ?",
+   "r": "<b>Les procédures amiables et collectives, quel que soit le statut du débiteur</b>, sauf exceptions légales. L'expérimentation dure quatre ans dans douze tribunaux de commerce désignés par l'arrêté du 5 juillet 2024.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k10",
+   "type": "def",
+   "q": "Quels éléments corporels l'article L. 142-2 du Code de commerce range-t-il parmi les éléments du fonds de commerce susceptibles d'être nantis ?",
+   "r": "<b>Le mobilier commercial et le matériel ou l'outillage servant à l'exploitation du fonds.</b> Les marchandises ne figurent pas dans cette liste limitative, qui comprend par ailleurs l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage, les brevets d'invention, les licences, les marques, les dessins et modèles industriels et les droits de propriété intellectuelle qui y sont attachés.",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 142-2 (version en vigueur depuis le 1er janvier 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072493",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k11",
+   "type": "comp",
+   "q": "Quelles mesures de publicité doivent suivre la vente d'un fonds de commerce, hors cession réalisée en liquidation judiciaire ?",
+   "r": "<b>Une publication dans la quinzaine de sa date, à la diligence de l'acquéreur, sous forme d'extrait ou d'avis dans un support habilité à recevoir les annonces légales, et une publication au BODACC.</b> Dans les dix jours suivant la dernière de ces publications, les créanciers du vendeur peuvent former opposition au paiement du prix.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 141-12 et L. 141-14",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584414",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k12",
+   "type": "comp",
+   "q": "Quel risque court l'acquéreur d'un fonds de commerce qui paie le prix au vendeur avant l'expiration du délai d'opposition ?",
+   "r": "<b>Il n'est pas libéré à l'égard des créanciers du vendeur</b>, pas plus que s'il paie sans avoir procédé aux publications prescrites. Ces créanciers, que leur créance soit ou non exigible, peuvent former opposition dans les dix jours suivant la dernière publication, en énonçant à peine de nullité le montant et les causes de la créance.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 141-17",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161258",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k13",
+   "type": "comp",
+   "q": "À quelles conditions le privilège du vendeur d'un fonds de commerce existe-t-il, puis devient-il opposable aux tiers ?",
+   "r": "<b>Il n'a lieu que si la vente a été constatée par un acte authentique ou sous seing privé, dûment enregistré ; il est rendu opposable aux tiers par son inscription sur un registre tenu au greffe du tribunal de commerce.</b> Depuis le 1er janvier 2023, l'inscription ne conditionne plus son existence, mais son opposabilité.",
+   "base": [
+    "Règles essentielles#6",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. com., art. L. 141-5 et L. 141-6 (versions en vigueur depuis le 1er janvier 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161258",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k14",
+   "type": "comp",
+   "q": "À compter de quel acte court le délai pendant lequel l'acquéreur d'un fonds de commerce peut être mis en cause pour l'impôt sur le revenu du cédant ?",
+   "r": "<b>De la déclaration de cession prévue au 1 de l'article 201 du CGI</b>, si elle a été déposée dans le délai, et non de la publication de la vente. Le cessionnaire, solidaire du cédant pour l'impôt sur le revenu dû au titre des bénéfices de l'exploitation dans la limite du prix du fonds, ne peut être mis en cause que pendant ce délai.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "CGI, art. 1684, 1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033812284",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k15",
+   "type": "comp",
+   "q": "À défaut de désignation expresse et précise dans l'acte, quels éléments le nantissement d'un fonds de commerce comprend-il ?",
+   "r": "<b>Seulement l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage.</b> Les autres éléments de la liste limitative de l'article L. 142-2 n'y sont compris que s'ils sont désignés de façon expresse et précise dans l'acte constitutif.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k16",
+   "type": "comp",
+   "q": "Quelle sanction frappe le nantissement d'un fonds de commerce dont l'inscription n'est pas prise dans les trente jours de l'acte constitutif ?",
+   "r": "<b>La nullité du nantissement.</b> Le fonds peut être nanti sans autres conditions et formalités que celles prévues par le Code de commerce, et le nantissement ne donne pas au créancier le droit de se faire attribuer le fonds en paiement.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k17",
+   "type": "def",
+   "q": "Qu'est-ce que la location-gérance d'un fonds de commerce ?",
+   "r": "<b>Le contrat ou la convention par lequel le propriétaire ou l'exploitant d'un fonds de commerce ou d'un établissement artisanal en concède totalement ou partiellement la location à un gérant</b>, qui l'exploite à ses risques et périls.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "C. com., art. L. 144-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006221261",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k18",
+   "type": "comp",
+   "q": "Jusqu'à quand le loueur d'un fonds de commerce en location-gérance est-il solidairement responsable des dettes du locataire-gérant ?",
+   "r": "<b>Jusqu'à la publication du contrat</b>, pour les dettes contractées par le locataire-gérant à l'occasion de l'exploitation du fonds ; la prolongation de six mois après la publication a été supprimée par la loi du 9 décembre 2016. Le contrat est publié dans la quinzaine de sa date, dans un support habilité à recevoir les annonces légales.",
+   "base": [
+    "Règles essentielles#8",
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. com., art. L. 144-7 (rédaction issue de la loi n° 2016-1691 du 9 décembre 2016) et L. 144-9 ; art. R. 144-1 à D. 144-5",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146039",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k19",
+   "type": "comp",
+   "q": "Quelles règles de la vente et de la location-gérance du fonds de commerce la loi du 19 juillet 2019 a-t-elle abrogées ?",
+   "r": "<b>Les mentions obligatoires de l'acte de cession du fonds (ancien art. L. 141-1) et la condition d'exploitation préalable du fonds pendant deux ans imposée au loueur en location-gérance (ancien art. L. 144-3).</b> Des manuels les citent encore.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "Loi n° 2019-744 du 19 juillet 2019, art. 1er et 2 ; loi n° 2016-1691 du 9 décembre 2016 ; C. com., art. L. 144-7 et L. 141-6 (versions antérieures)",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038792157",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k20",
+   "type": "comp",
+   "q": "Comment l'apport d'un fonds de commerce à une société est-il qualifié et réalisé ?",
+   "r": "<b>C'est un apport en nature, réalisé par le transfert des droits correspondants et la mise à la disposition effective des biens.</b> L'apporteur en propriété est garant envers la société comme un vendeur envers son acheteur ; dans la SARL et la SA, l'apport est évalué par un commissaire aux apports, sauf dans les cas de dispense prévus par la loi.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. civ., art. 1843-3 ; C. com., art. L. 141-21 (modifié par l'ordonnance n° 2023-393 du 24 mai 2023), L. 141-22, L. 223-9 et L. 225-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444153/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k21",
+   "type": "def",
+   "q": "Qu'est-ce qu'un entrepreneur individuel au sens du Code de commerce ?",
+   "r": "<b>Une personne physique qui exerce en son nom propre une ou plusieurs activités professionnelles indépendantes.</b> Le commerçant personne physique qui exerce sans constituer de société relève de ce statut ; les biens, droits, obligations et sûretés utiles à son activité forment son patrimoine professionnel, le reste son patrimoine personnel.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 526-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k22",
+   "type": "def",
+   "q": "Quels biens sont dits utiles à l'activité, et donc compris dans le patrimoine professionnel de l'entrepreneur individuel ?",
+   "r": "<b>Ceux qui, par nature, par destination ou en fonction de leur objet, servent à cette activité.</b> Le décret du 28 avril 2022 cite notamment le fonds de commerce et des biens incorporels tels que les données relatives aux clients, les brevets et les marques.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. R. 526-26, I (décret n° 2022-725 du 28 avril 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045697794/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k23",
+   "type": "comp",
+   "q": "Comment un entrepreneur individuel peut-il transférer son patrimoine professionnel sans qu'il soit procédé à sa liquidation ?",
+   "r": "<b>En cédant à titre onéreux, en transmettant à titre gratuit entre vifs ou en apportant en société l'intégralité de ce patrimoine.</b> Le transfert fait l'objet d'une publicité et les créanciers dont la créance est antérieure peuvent y former opposition ; ce transfert universel a été organisé par la loi du 14 février 2022.",
+   "base": [
+    "Règles essentielles#10",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "C. com., art. L. 526-27 à L. 526-31",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045168649/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k24",
+   "type": "comp",
+   "q": "Quelle présomption s'attache à la comptabilité régulière et sincère d'un entrepreneur individuel ?",
+   "r": "<b>Son patrimoine professionnel est présumé comprendre au moins l'ensemble des éléments enregistrés au titre des documents comptables</b> (décret du 28 avril 2022).",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. R. 526-26, II, et R. 526-27 (décret n° 2022-725 du 28 avril 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000045697794/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k25",
+   "type": "comp",
+   "q": "Par quel moyen un entrepreneur individuel peut-il écarter la séparation de ses patrimoines personnel et professionnel au profit d'un créancier ?",
+   "r": "<b>Par une renonciation, sur demande écrite du créancier, pour un engagement spécifique dont il doit rappeler le terme et le montant.</b> Il ne peut pas, en revanche, se porter caution en garantie d'une dette dont il est débiteur principal.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. L. 526-22 et L. 526-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k26",
+   "type": "def",
+   "q": "À quels baux s'applique le statut des baux commerciaux ?",
+   "r": "<b>Aux baux des immeubles ou locaux dans lesquels un fonds est exploité</b>, que ce fonds appartienne à un commerçant ou un industriel immatriculé au registre du commerce et des sociétés ou à un chef d'entreprise artisanale immatriculé, ainsi qu'à certains locaux accessoires et terrains nus.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. com., art. L. 145-1 et L. 145-15",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044056347",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k27",
+   "type": "comp",
+   "q": "Quel est le sort des clauses d'un bail commercial qui font échec au droit au renouvellement ou interdisent de céder le bail à l'acquéreur du fonds ?",
+   "r": "<b>Elles sont réputées non écrites</b>, comme celles qui font échec à certaines autres dispositions du statut. Sont ainsi réputées non écrites les conventions tendant à interdire au locataire de céder son bail à l'acquéreur de son fonds de commerce ou de son entreprise.",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#17"
+   ],
+   "src": "C. com., art. L. 145-1 et L. 145-15",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044056347",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k28",
+   "type": "comp",
+   "q": "Quand et dans quelles formes le preneur d'un bail commercial peut-il donner congé avant le terme des neuf ans ?",
+   "r": "<b>À l'expiration de chaque période triennale, au moins six mois à l'avance</b>, par lettre recommandée avec demande d'avis de réception ou par acte extrajudiciaire, sauf stipulation contraire admise pour certains baux (baux de plus de neuf ans, locaux monovalents, locaux à usage exclusif de bureaux, locaux de stockage). Le bailleur n'a la même faculté que dans des cas limités, notamment pour construire, reconstruire ou surélever l'immeuble.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 145-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037667139",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k29",
+   "type": "def",
+   "q": "Qu'est-ce qu'un bail dérogatoire au statut des baux commerciaux ?",
+   "r": "<b>Un bail par lequel les parties dérogent au statut lors de l'entrée dans les lieux du preneur, à condition que la durée totale du bail ou des baux successifs ne soit pas supérieure à trois ans.</b> Si, au plus tard un mois après l'échéance, le preneur reste et est laissé en possession, il s'opère un nouveau bail soumis au statut.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 145-5 (loi n° 2014-626 du 18 juin 2014)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029108698",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k30",
+   "type": "comp",
+   "q": "Dans quelle limite le loyer d'un bail commercial peut-il être modifié lors de la révision triennale ?",
+   "r": "<b>La hausse ou la baisse ne peut excéder la variation de l'indice des loyers commerciaux (ILC) ou de l'indice des loyers des activités tertiaires (ILAT) intervenue depuis la dernière fixation amiable ou judiciaire du loyer</b>, sauf preuve d'une modification matérielle des facteurs locaux de commercialité ayant entraîné par elle-même une variation de plus de 10 % de la valeur locative.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 145-38",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029108753",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k31",
+   "type": "comp",
+   "q": "Comment le loyer d'un bail commercial renouvelé est-il plafonné ?",
+   "r": "<b>Sa variation ne peut excéder celle de l'ILC ou de l'ILAT depuis la fixation initiale du loyer du bail expiré</b>, si ce bail n'a pas duré plus de neuf ans, sauf modification notable des caractéristiques du local, de la destination des lieux, des obligations des parties ou des facteurs locaux de commercialité. Le plafonnement cesse lorsque, par tacite prolongation, la durée du bail excède douze ans.",
+   "base": [
+    "Règles essentielles#15",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 145-33 et L. 145-34",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161267/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k32",
+   "type": "def",
+   "q": "Qu'est-ce que l'indemnité d'éviction en matière de bail commercial ?",
+   "r": "<b>L'indemnité que le bailleur qui refuse le renouvellement doit payer au locataire évincé, égale au préjudice causé par le défaut de renouvellement</b>, sauf exceptions, notamment un motif grave et légitime à l'encontre du locataire sortant. Elle comprend notamment la valeur marchande du fonds, et le locataire ne peut être obligé de quitter les lieux avant de l'avoir reçue.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 145-8, L. 145-14, L. 145-17 et L. 145-28",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006221741",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k33",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue, dans un bail commercial, l'adjonction d'activités connexes ou complémentaires de la déspécialisation plénière ?",
+   "r": "<b>Pour adjoindre des activités connexes ou complémentaires, le locataire fait connaître son intention au bailleur</b>, qui dispose de deux mois pour en contester le caractère connexe ou complémentaire, à peine de déchéance. La déspécialisation plénière, exercice d'activités différentes de celles prévues au bail, doit être autorisée.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "C. com., art. L. 145-47, L. 145-48 et L. 145-16",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161269/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-07-k34",
+   "type": "comp",
+   "q": "Depuis la loi du 26 mai 2026, quelles règles encadrent le dépôt de garantie d'un bail commercial ?",
+   "r": "<b>Pour les baux conclus ou renouvelés depuis la promulgation de la loi, il ne peut excéder le loyer d'un trimestre et ne porte pas intérêt</b> ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés. La même loi permet au preneur d'obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Loi n° 2026-403 du 26 mai 2026 ; C. com., art. L. 145-38-1 et L. 145-40 (section « Du loyer », art. L. 145-32-1 à L. 145-40)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161267/",
+   "fiab": "stable"
+  }
+ ]
+}

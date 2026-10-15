@@ -134,6 +134,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Selon le PCG, le critère déterminant pour inscrire un bien à l'actif est :",
    "opts": [
     "La propriété juridique du bien",
@@ -149,6 +150,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Parmi les éléments suivants, lesquels entrent dans le coût d'acquisition d'une machine industrielle, l'entreprise n'ayant pas opté pour le rattachement des frais de formation au coût ? (plusieurs réponses possibles)",
    "opts": [
     "Les frais de transport et d'installation",
@@ -169,6 +171,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Fabrix achète une presse : prix catalogue 80 000 € HT, remise commerciale 5 %, escompte de règlement 1 % sur le prix net de remise, transport 1 500 € HT, installation 2 500 € HT, formation des opérateurs 3 000 € HT (Fabrix n'a pas opté pour le rattachement des frais de formation au coût d'acquisition). Calculez le coût d'acquisition de la presse (en euros, arrondi à l'euro).",
    "a": 79240,
    "unit": "€",
@@ -180,6 +183,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Le 5 mars N, Lamar reçoit la facture d'un matériel industriel : prix 40 000 € HT, installation 2 000 € HT, TVA 20 % sur le total, paiement à 60 jours. Enregistrez la facture.",
    "lib": "Acquisition d'un matériel industriel",
    "palette": [
@@ -217,6 +221,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les droits de mutation et honoraires de notaire payés lors de l'achat d'un immeuble sont, dans les comptes individuels :",
    "opts": [
     "Obligatoirement inclus dans le coût d'acquisition de l'immeuble",
@@ -232,6 +237,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Terrex acquiert un terrain 150 000 €. Les droits d'enregistrement s'élèvent à 9 000 € et les honoraires du notaire à 3 000 € HT (TVA 600 €). L'entreprise a opté pour la comptabilisation des frais d'acquisition en charges. Le tout est réglé par banque. Enregistrez l'opération.",
    "lib": "Acquisition d'un terrain, frais d'acquisition en charges",
    "palette": [
@@ -280,6 +286,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise opte pour l'incorporation des coûts d'emprunt dans le coût des actifs. Quelle condition doit remplir l'actif ?",
    "opts": [
     "Être financé par un emprunt affecté d'au moins 100 000 €",
@@ -295,6 +302,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Chimex installe une cuve pour 500 000 € HT. Le contrat l'oblige à démanteler l'installation et à remettre le site en état en fin d'exploitation ; le coût estimé de ces travaux est de 60 000 €. Les frais de formation de l'équipe s'élèvent à 8 000 € (Chimex n'a pas opté pour leur rattachement au coût d'acquisition). Quel est le coût d'entrée de la cuve à l'actif (en euros) ?",
    "a": 560000,
    "unit": "€",
@@ -306,6 +314,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Meca construit elle-même une machine. Coûts engagés : matières 30 000 €, main-d'œuvre directe 20 000 €, charges indirectes fixes de l'atelier 20 000 € pour une activité réelle représentant 80 % de l'activité normale, frais d'administration générale 5 000 €. Calculez le coût de production de la machine (en euros).",
    "a": 66000,
    "unit": "€",
@@ -317,6 +326,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Au 31 décembre N, Bâtex a engagé 25 000 € de coûts (déjà enregistrés en charges par nature) pour la construction d'un entrepôt qui sera achevé en N+1. Enregistrez l'écriture de clôture.",
    "lib": "Immobilisation corporelle en cours",
    "palette": [
@@ -348,6 +358,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "À l'achèvement en N+1 d'une construction dont 25 000 € figuraient en 231 à la clôture de N et dont les coûts supplémentaires de N+1 s'élèvent à 55 000 €, l'écriture est :",
    "opts": [
     "Débit 213 pour 80 000, crédit 231 pour 25 000 et crédit 722 pour 55 000",
@@ -363,6 +374,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque dépense selon son traitement comptable (l'entreprise n'a pas opté pour le rattachement des frais de formation au coût d'acquisition).",
    "cats": [
     "Immobilisation (actif)",
@@ -405,6 +417,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un immeuble est acquis 1 200 000 €. La toiture (durée 20 ans) représente 150 000 €, les ascenseurs (15 ans) 100 000 €, la structure (50 ans) le reste. Que prévoit le PCG ?",
    "opts": [
     "Amortir l'ensemble sur la durée de la structure",
@@ -420,6 +433,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Concernant les dépenses de gros entretien ou de grandes révisions, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Elles peuvent être traitées comme un composant distinct amorti sur la durée séparant deux révisions",
@@ -440,6 +454,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les frais de constitution d'une société peuvent être :",
    "opts": [
     "Uniquement comptabilisés en charges de l'exercice",
@@ -455,6 +470,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quels critères l'article 212-3 du PCG exige-t-il pour activer des frais de développement ? (plusieurs réponses possibles)",
    "opts": [
     "La faisabilité technique de l'achèvement du projet",
@@ -475,6 +491,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En N, Innovex engage pour un projet : recherche fondamentale 12 000 €, frais de développement 45 000 € (dont 30 000 € engagés après le 1er avril N, date à laquelle les six critères d'activation sont remplis, et 15 000 € avant), frais d'administration générale 6 000 €. L'entreprise a opté pour l'activation des frais de développement. Quel montant est inscrit au compte 203 (en euros) ?",
    "a": 30000,
    "unit": "€",
@@ -486,6 +503,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Au 31 décembre N, Innovex active 60 000 € de frais de développement engagés au cours de l'exercice (déjà comptabilisés en charges par nature) pour un projet achevé et prêt à être exploité. Enregistrez l'écriture.",
    "lib": "Activation des frais de développement",
    "palette": [
@@ -517,6 +535,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise a développé en interne une marque dont la notoriété est évaluée à 2 millions d'euros par un expert. Dans ses comptes individuels :",
    "opts": [
     "La marque est inscrite à l'actif pour 2 millions",
@@ -532,6 +551,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Pour un logiciel (solution informatique) créé en interne destiné à un usage durable, classez chaque dépense selon son traitement.",
    "cats": [
     "Coût de production immobilisé",
@@ -574,6 +594,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les coûts de développement d'un site internet marchand permettant la prise de commandes en ligne sont :",
    "opts": [
     "Toujours comptabilisés en charges de publicité",
@@ -589,6 +610,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une SARL a inscrit à l'actif 40 000 € de frais de développement amortis à hauteur de 10 000 €. Ses réserves libres s'élèvent à 20 000 €. Peut-elle distribuer des dividendes ?",
    "opts": [
     "Oui, sans condition",
@@ -604,6 +626,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Le 10 juin N, la région notifie à Lamar l'octroi d'une subvention d'équipement de 30 000 € pour financer une machine. Enregistrez l'écriture à la date de notification.",
    "lib": "Octroi d'une subvention d'équipement",
    "palette": [
@@ -635,6 +658,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une machine de 100 000 € est financée à 30 % par une subvention d'investissement. À quelle valeur la machine est-elle inscrite à l'actif ?",
    "opts": [
     "70 000 €",
@@ -650,6 +674,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un matériel de bureau de 420 € HT est acquis en N. Quel traitement est admis ?",
    "opts": [
     "Il doit obligatoirement être immobilisé en 2183 et amorti",
@@ -665,6 +690,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quels éléments sont exclus du coût d'entrée d'une immobilisation selon le PCG ? (plusieurs réponses possibles)",
    "opts": [
     "Les pertes d'exploitation initiales",
@@ -685,6 +711,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un fonds commercial acquis 80 000 € lors du rachat d'un commerce est inscrit :",
    "opts": [
     "En charges de l'exercice d'acquisition",
@@ -700,6 +727,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Au DSCG (IFRS, IAS 16), quelle différence avec le PCG constate-t-on sur la comptabilisation des immobilisations corporelles ?",
    "opts": [
     "Les IFRS interdisent l'approche par composants, obligatoire en PCG",

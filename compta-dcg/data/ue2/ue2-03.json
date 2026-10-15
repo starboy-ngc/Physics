@@ -81,6 +81,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel est le capital social minimum d'une société anonyme non cotée ?",
    "opts": [
     "18 500 €",
@@ -96,6 +97,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Combien d'actionnaires au minimum faut-il pour constituer une SA dont les actions ne sont pas admises aux négociations sur un marché ?",
    "opts": [
     "1",
@@ -111,6 +113,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une SA est constituée avec un capital de 100 000 € entièrement souscrit en numéraire. Quel montant minimal (en €) doit être libéré lors de la souscription ?",
    "a": 50000,
    "unit": "€",
@@ -122,6 +125,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un ingénieur souhaite entrer dans une SA en apportant exclusivement son savoir-faire technique. Est-ce possible ?",
    "opts": [
     "Oui, s'il est évalué par un commissaire aux apports",
@@ -137,6 +141,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle est la composition légale du conseil d'administration d'une SA (hors cas de fusion) ?",
    "opts": [
     "2 à 12 membres",
@@ -152,6 +157,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La SAS Capital Invest est nommée administratrice d'une SA. Quelle obligation en découle ?",
    "opts": [
     "Elle doit se transformer en SA",
@@ -167,6 +173,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Les statuts d'une SA ne contiennent aucune disposition sur l'âge des administrateurs. Le conseil compte 9 membres. Combien peuvent, au maximum, avoir plus de 70 ans ?",
    "opts": [
     "Aucun",
@@ -182,6 +189,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "L'assemblée générale ordinaire d'une SA révoque un administrateur en cours de mandat, sans motif et sans que la question figure à l'ordre du jour. Cette révocation est-elle valable ?",
    "opts": [
     "Non, la révocation doit figurer à l'ordre du jour",
@@ -197,6 +205,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "À propos de la direction générale d'une SA à conseil d'administration, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Le directeur général peut ne pas être administrateur",
@@ -217,6 +226,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA à directoire a un capital de 120 000 €. Peut-elle n'avoir qu'un seul dirigeant exécutif ?",
    "opts": [
     "Non, le directoire comprend toujours au moins deux membres",
@@ -232,6 +242,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans une SA dualiste, qui exerce le contrôle permanent de la gestion de la société ?",
    "opts": [
     "Le directoire",
@@ -247,6 +258,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le directeur général d'une SA souhaite louer à la société un entrepôt dont il est propriétaire. Quelle est la première étape obligatoire de la procédure ?",
    "opts": [
     "L'approbation de la convention par l'assemblée générale ordinaire",
@@ -262,6 +274,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Parmi ces opérations, laquelle est interdite dans une SA, à peine de nullité ?",
    "opts": [
     "Un prêt consenti par la société à un administrateur personne physique",
@@ -277,6 +290,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Le capital d'une SA est composé de 50 000 actions ayant toutes le droit de vote. Combien d'actions au minimum doivent être présentes ou représentées pour que l'assemblée générale ordinaire délibère valablement sur première convocation ?",
    "a": 10000,
    "unit": "actions",
@@ -288,6 +302,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Lors d'une assemblée générale extraordinaire de SA, 30 000 voix sont exprimées (votes pour et contre, hors abstentions). Combien de voix favorables au minimum sont nécessaires pour adopter la modification des statuts ?",
    "a": 20000,
    "unit": "voix",
@@ -299,6 +314,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Faute de quorum, une AGO de SA n'a pu se tenir sur première convocation. Quel quorum est exigé sur seconde convocation ?",
    "opts": [
     "Un cinquième des actions ayant droit de vote",
@@ -314,6 +330,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Lors d'une AGO de SA, 1 000 voix sont présentes : 450 pour, 400 contre, 150 abstentions. La résolution est-elle adoptée ?",
    "opts": [
     "Non, car 450 voix sur 1 000 ne représentent pas la majorité",
@@ -329,6 +346,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les statuts d'une SA non cotée instituent un droit de vote double. Quelle condition légale minimale les actions doivent-elles remplir ?",
    "opts": [
     "Être au porteur depuis un an",
@@ -344,6 +362,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA non cotée emploie 20 salariés, réalise 4 M€ de chiffre d'affaires et présente un bilan de 2 M€. Doit-elle obligatoirement avoir un commissaire aux comptes ?",
    "opts": [
     "Oui, le commissaire aux comptes est toujours obligatoire dans une SA",
@@ -359,6 +378,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "À la clôture de l'exercice 2025, une SAS présente un total de bilan de 6 M€, un chiffre d'affaires HT de 9 M€ et 60 salariés. Au regard des seuils applicables aux exercices ouverts depuis 2024, doit-elle nommer un commissaire aux comptes ?",
    "opts": [
     "Non, car son chiffre d'affaires est inférieur à 10 M€",
@@ -374,6 +394,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Qui peut être président d'une SAS ?",
    "opts": [
     "Uniquement une personne physique associée",
@@ -389,6 +410,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles décisions doivent obligatoirement être prises collectivement par les associés d'une SAS, quelle que soit la rédaction des statuts ? (plusieurs réponses possibles)",
    "opts": [
     "L'approbation des comptes annuels et l'affectation du résultat",
@@ -411,6 +433,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les statuts d'une SAS stipulent que les actions sont inaliénables pendant quinze ans à compter de l'immatriculation. Quelle est la portée de cette clause ?",
    "opts": [
     "Elle est valable, la SAS étant régie par la liberté statutaire",
@@ -426,6 +449,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SAS en croissance souhaite lever des fonds en proposant ses actions au grand public via une introduction en bourse. Est-ce possible ?",
    "opts": [
     "Oui, comme toute société par actions",
@@ -441,6 +465,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Julie est présidente et associée à 80 % d'une SAS ; elle perçoit une rémunération pour son mandat. Quel est son statut social ?",
    "opts": [
     "Travailleuse non salariée, car elle est majoritaire",
@@ -456,6 +481,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Attribuez chaque caractéristique à la forme sociale qu'elle désigne exclusivement.",
    "cats": [
     "SA",
@@ -503,6 +529,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Des actionnaires détenant ensemble 6 % du capital d'une SA s'inquiètent d'une opération de gestion. Que doivent-ils faire avant de pouvoir demander en justice une expertise de gestion ?",
    "opts": [
     "Rien, ils peuvent saisir directement le juge",
@@ -518,6 +545,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SA a émis des actions de préférence à dividende prioritaire. Une modification des droits attachés à ces actions est envisagée. Quel organe doit, outre l'AGE, l'approuver ?",
    "opts": [
     "Le conseil d'administration",
@@ -533,6 +561,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Marc crée seul une société par actions simplifiée. Comment cette société est-elle désignée et qui exerce les pouvoirs de la collectivité des associés ?",
    "opts": [
     "Une EURL ; les pouvoirs sont exercés par le gérant",

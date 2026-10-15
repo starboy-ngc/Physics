@@ -1,0 +1,428 @@
+{
+ "id": "ue4-01",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue4-01-k01",
+   "type": "def",
+   "q": "Que recouvre le principe de légalité de l'impôt posé par l'article 34 de la Constitution ?",
+   "r": "<b>La loi fixe les règles concernant l'assiette, le taux et les modalités de recouvrement des impositions de toutes natures.</b>",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Constitution, art. 34 ; LOLF (loi organique n° 2001-692 du 1er août 2001), art. 34",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000044611799",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k02",
+   "type": "comp",
+   "q": "Quel rôle joue la première partie de la loi de finances de l'année à l'égard des ressources de l'État ?",
+   "r": "<b>Elle autorise, pour l'année, la perception des ressources de l'État</b> et des impositions de toute nature affectées à des personnes morales autres que l'État (LOLF, art. 34).",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Constitution, art. 34 ; LOLF (loi organique n° 2001-692 du 1er août 2001), art. 34",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000044611799",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k03",
+   "type": "def",
+   "q": "Que recouvre le principe de consentement à l'impôt énoncé par l'article 14 de la Déclaration des droits de l'homme et du citoyen ?",
+   "r": "<b>Le droit des citoyens, par eux-mêmes ou par leurs représentants, de constater la nécessité de la contribution publique et de la consentir librement</b>, d'en suivre l'emploi et d'en déterminer la quotité, l'assiette, le recouvrement et la durée.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "DDHC 1789, art. 14",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/declaration-des-droits-de-l-homme-et-du-citoyen-de-1789",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k04",
+   "type": "def",
+   "q": "Qu'énonce le principe d'égalité devant les charges publiques posé par l'article 13 de la Déclaration des droits de l'homme et du citoyen de 1789 ?",
+   "r": "<b>La contribution commune doit être également répartie entre tous les citoyens, en raison de leurs facultés.</b> Elle est indispensable pour l'entretien de la force publique et pour les dépenses d'administration.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "DDHC 1789, art. 13",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/declaration-des-droits-de-l-homme-et-du-citoyen-de-1789",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k05",
+   "type": "def",
+   "q": "Qu'est-ce que la garantie d'opposabilité de la doctrine administrative prévue par l'article L. 80 A du Livre des procédures fiscales ?",
+   "r": "<b>Aucun rehaussement ne peut être opéré</b> si le différend porte sur l'interprétation d'un texte fiscal par le redevable de bonne foi et que cette interprétation était alors formellement admise par l'administration. Il en va de même lorsque le redevable a appliqué ses instructions ou circulaires publiées (BOFiP) et non rapportées à la date des opérations.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "LPF, art. L. 80 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k06",
+   "type": "comp",
+   "q": "Quelle portée a la doctrine administrative fiscale au regard de la loi, selon le Conseil d'État ?",
+   "r": "<b>Elle ne crée pas de droit</b> : l'article L. 80 A du LPF ne confère à l'administration aucun pouvoir réglementaire et ne lui permet pas de déroger à la loi. Seule la dernière interprétation formellement admise peut être invoquée.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CE, Section, 8 mars 2013, n° 353782 ; CE, Assemblée, 28 octobre 2020, n° 428048",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k07",
+   "type": "comp",
+   "q": "Comment l'administration peut-elle écarter la garantie de l'article L. 80 A du LPF lorsque la doctrine invoquée ajoute à la loi ?",
+   "r": "<b>Par la procédure de l'abus de droit (LPF, art. L. 64)</b>, si elle démontre la finalité abusive de l'opération. À défaut, le contribuable peut se prévaloir de l'interprétation même lorsqu'elle ajoute à la loi.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CE, Section, 8 mars 2013, n° 353782 ; CE, Assemblée, 28 octobre 2020, n° 428048",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k08",
+   "type": "def",
+   "q": "Quels sont les critères du domicile fiscal en France au sens de l'article 4 B du CGI ?",
+   "r": "<b>Le foyer ou le lieu du séjour principal en France, l'exercice en France d'une activité professionnelle (sauf activité accessoire), ou le centre des intérêts économiques en France.</b> Ces critères sont alternatifs : un seul suffit.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 4 B ; BOI-IR-CHAMP-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/1911-PGP.html/identifiant=BOI-IR-CHAMP-10-20160728",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k09",
+   "type": "def",
+   "q": "Au sens du domicile fiscal de l'article 4 B du CGI, qu'est-ce que le foyer du contribuable ?",
+   "r": "<b>Le lieu où il habite normalement et a le centre de ses intérêts familiaux</b>, abstraction faite des séjours effectués temporairement ailleurs en raison des nécessités de la vie professionnelle ou de circonstances exceptionnelles. Le lieu du séjour principal ne détermine le domicile fiscal que s'il ne dispose pas de foyer.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CE, 21 juin 2022, n° 449408",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000045952356",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k10",
+   "type": "comp",
+   "q": "Comment une convention fiscale internationale peut-elle écarter le domicile fiscal en France résultant de l'article 4 B du CGI ?",
+   "r": "<b>Les critères de l'article 4 B s'appliquent sous réserve des conventions internationales</b> : un résident d'un autre État au sens d'une convention ne peut pas être regardé comme domicilié en France pour le droit interne, même si l'article 4 B le désigne comme tel.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "BOI-INT-DG-20-10-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/2427-PGP.html/identifiant=BOI-INT-DG-20-10-10-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k11",
+   "type": "comp",
+   "q": "Quels revenus sont passibles de l'impôt sur le revenu selon que le domicile fiscal est situé en France ou hors de France ?",
+   "r": "<b>Domicile en France : l'ensemble des revenus</b>, de source française ou étrangère, sous réserve des conventions internationales (obligation fiscale illimitée). <b>Domicile hors de France : les seuls revenus de source française.</b>",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 4 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302200",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k12",
+   "type": "def",
+   "q": "Qu'est-ce que le foyer fiscal soumis à imposition commune à l'impôt sur le revenu ?",
+   "r": "<b>Les personnes mariées et les partenaires liés par un PACS</b>, qui font l'objet d'une imposition commune sur leurs revenus, ceux de leurs enfants et des personnes à charge.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 6, 1, 4 et 5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k13",
+   "type": "comp",
+   "q": "Hors option, dans quels cas des époux sont-ils imposés distinctement à l'impôt sur le revenu ?",
+   "r": "<b>S'ils sont séparés de biens et ne vivent pas sous le même toit</b> ; si, en instance de séparation de corps ou de divorce, ils ont été autorisés à avoir des résidences séparées ; ou si, en cas d'abandon du domicile conjugal, chacun dispose de revenus distincts.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 6, 1, 4 et 5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k14",
+   "type": "comp",
+   "q": "Quelle option est ouverte aux époux ou partenaires de PACS pour l'impôt sur le revenu de l'année du mariage ou du PACS ?",
+   "r": "<b>Opter pour l'imposition distincte des revenus dont chacun a personnellement disposé</b>, au lieu de l'imposition commune.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 6, 1, 4 et 5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046197457",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k15",
+   "type": "comp",
+   "q": "Quels enfants majeurs peuvent opter pour leur rattachement au foyer fiscal de leurs parents à l'impôt sur le revenu ?",
+   "r": "<b>Les enfants âgés de moins de 21 ans, ou de moins de 25 ans s'ils justifient de la poursuite de leurs études</b>, au foyer dont ils faisaient partie avant leur majorité. Un enfant marié ou pacsé peut demander le rattachement de son ménage si l'un des époux ou partenaires remplit ces conditions.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "CGI, art. 6, 3 ; BOI-IR-CHAMP-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1908-PGP.html/identifiant%3DBOI-IR-CHAMP-20-20-20200206",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k16",
+   "type": "comp",
+   "q": "Quel avantage procure au foyer fiscal le rattachement d'un enfant majeur marié ou chargé de famille ?",
+   "r": "<b>Un abattement sur le revenu, et non une majoration du quotient familial.</b> Les revenus de l'enfant pour l'année entière sont inclus dans ceux du foyer et aucune pension alimentaire ne peut être déduite pour lui.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "CGI, art. 6, 3 et 196 B ; BOI-IR-CHAMP-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1908-PGP.html/identifiant%3DBOI-IR-CHAMP-20-20-20200206",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k17",
+   "type": "comp",
+   "q": "Comment s'impute en principe le déficit constaté dans une catégorie de revenus à l'impôt sur le revenu ?",
+   "r": "<b>Sur le revenu global de la même année</b> ; l'excédent se reporte sur le revenu global des années suivantes jusqu'à la sixième année inclusivement.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 156, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054373682",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k18",
+   "type": "comp",
+   "q": "Quels déficits catégoriels font exception à l'imputation sur le revenu global prévue par l'article 156, I du CGI ?",
+   "r": "<b>Notamment les déficits d'activités non professionnelles, les déficits fonciers au-delà de la limite légale et les déficits agricoles au-delà d'un seuil de revenus.</b> Les déficits de revenus de capitaux mobiliers ne s'imputent que sur les revenus de même nature des six années suivantes.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 156, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054373682",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k19",
+   "type": "comp",
+   "q": "Dans quelles conditions une pension alimentaire versée à un enfant majeur est-elle déductible du revenu global ?",
+   "r": "<b>Pour un montant tenant compte de l'état de fortune du débiteur et des besoins du bénéficiaire</b>, et seulement si l'enfant n'est pas rattaché au foyer fiscal. La pension déduite est imposable chez l'enfant.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 156, II-2°",
+   "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-deduire-laide-que-japporte-mes-enfants-majeurs",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k20",
+   "type": "comp",
+   "q": "Quelle CSG sur les revenus du patrimoine est déductible du revenu global soumis à l'impôt sur le revenu ?",
+   "r": "<b>La CSG afférente aux revenus du patrimoine soumis au barème progressif</b>, à hauteur de 6,8 points. La CSG sur les revenus imposés à un taux proportionnel (PFU) n'est pas déductible.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 154 quinquies",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k21",
+   "type": "comp",
+   "q": "Quelles sont les caractéristiques de l'option pour le barème progressif à la place du prélèvement forfaitaire unique (PFU) ?",
+   "r": "<b>Elle est expresse, irrévocable et globale</b> : elle vise l'ensemble des revenus et gains entrant dans le champ du PFU.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 200 A et 158, 3-2° ; BOI-RPPM-RCM-20-10-30-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k22",
+   "type": "comp",
+   "q": "Quels avantages du barème progressif sont perdus lorsque les dividendes sont imposés au prélèvement forfaitaire unique (PFU) ?",
+   "r": "<b>L'abattement de 40 % et la déduction de CSG</b> : sous PFU, les dividendes sont imposés sans abattement de 40 % et aucune CSG n'est déductible. D'où l'intérêt de comparer le taux marginal au taux de 12,8 % avant d'opter.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 200 A et 158, 3-2° ; BOI-RPPM-RCM-20-10-30-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k23",
+   "type": "comp",
+   "q": "Comment les enfants à charge augmentent-ils le nombre de parts de quotient familial à l'impôt sur le revenu ?",
+   "r": "<b>Une demi-part pour chacun des deux premiers enfants, puis une part entière par enfant à partir du troisième.</b> Les célibataires ou divorcés qui vivent seuls et supportent à titre exclusif ou principal la charge d'au moins un enfant voient leur nombre de parts augmenté de 0,5.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 194, I et II ; BOI-IR-LIQ-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/2028-PGP",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k24",
+   "type": "comp",
+   "q": "Quelle différence sépare une réduction d'impôt d'un crédit d'impôt en matière d'impôt sur le revenu ?",
+   "r": "<b>Une réduction d'impôt ne peut pas donner lieu à remboursement, alors qu'un crédit d'impôt est restitué s'il excède l'impôt dû.</b> Les réductions s'imputent avant les crédits d'impôt.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 197, I-5 et 200-0 A ; BOI-IR-LIQ-20-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/7249-PGP.html/identifiant=BOI-IR-LIQ-20-20-10-20170406",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k25",
+   "type": "def",
+   "q": "Qu'est-ce que le plafonnement global des avantages fiscaux à l'impôt sur le revenu ?",
+   "r": "<b>La limitation de l'avantage en impôt procuré à un foyer fiscal par certains avantages fiscaux</b>, à 10 000 € par an (18 000 € pour les investissements outre-mer et les SOFICA).",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 197, I-5 et 200-0 A ; BOI-IR-LIQ-20-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/7249-PGP.html/identifiant=BOI-IR-LIQ-20-20-10-20170406",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k26",
+   "type": "comp",
+   "q": "Quel avantage à l'impôt sur le revenu ouvrent les dons aux organismes d'intérêt général ?",
+   "r": "<b>Une réduction d'impôt de 66 % des versements, dans la limite de 20 % du revenu imposable</b> ; l'excédent est reporté sur les cinq années suivantes.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 200, 1 et 1 ter",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191957/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k27",
+   "type": "comp",
+   "q": "Quels dons ouvrent droit à la réduction d'impôt sur le revenu au taux de 75 % ?",
+   "r": "<b>Les dons aux organismes qui fournissent gratuitement des repas ou des soins aux personnes en difficulté ou favorisent leur logement</b>, dans un plafond spécifique ; au-delà, la fraction relève du taux de 66 %. La fraction retenue à 75 % n'est pas prise en compte pour apprécier la limite de 20 %.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 200, 1 et 1 ter",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191957/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k28",
+   "type": "comp",
+   "q": "Quel avantage fiscal à l'impôt sur le revenu procure l'emploi d'un salarié à domicile ?",
+   "r": "<b>Un crédit d'impôt égal à 50 % des dépenses effectivement supportées</b>, retenues dans une limite annuelle. Comme tout crédit d'impôt, il est restitué s'il excède l'impôt dû.",
+   "base": [
+    "Règles essentielles#12",
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 199 sexdecies",
+   "url": "https://www.impots.gouv.fr/particulier/questions/comment-beneficier-du-credit-dimpot-pour-lemploi-dun-salarie-domicile",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k29",
+   "type": "def",
+   "q": "Qu'est-ce que la contribution exceptionnelle sur les hauts revenus (CEHR) ?",
+   "r": "<b>Une contribution assise sur le revenu fiscal de référence</b> : 3 % de la fraction comprise entre 250 000 et 500 000 € (personne seule) ou entre 500 000 et 1 000 000 € (imposition commune), 4 % au-delà. Un mécanisme de quotient atténue l'imposition des revenus exceptionnels.",
+   "base": [
+    "Chiffres et seuils#5"
+   ],
+   "src": "CGI, art. 223 sexies ; BOI-IR-CHR",
+   "url": "https://bofip.impots.gouv.fr/bofip/7804-PGP.html/identifiant=BOI-IR-CHR-20170711",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k30",
+   "type": "comp",
+   "q": "Quel taux de prélèvement à la source s'applique par défaut, depuis le 1er septembre 2025, aux couples mariés ou pacsés soumis à imposition commune ?",
+   "r": "<b>Le taux individualisé</b>, sauf option pour le maintien du taux du foyer (loi de finances pour 2024). Il ne vise que les revenus dont chacun dispose personnellement : les revenus communs restent soumis au taux du foyer et l'impôt total du couple est inchangé.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Règles essentielles#14"
+   ],
+   "src": "Loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 19 ; CGI, art. 204 E et 204 M ; BOFiP, ACTU-2024-00202",
+   "url": "https://bofip.impots.gouv.fr/bofip/14435-PGP.html/ACTU-2024-00202",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k31",
+   "type": "comp",
+   "q": "Que se passe-t-il lorsqu'un salarié ne communique pas son taux personnalisé de prélèvement à la source à son employeur ?",
+   "r": "<b>L'employeur applique un taux neutre (grille par défaut)</b>, déterminé uniquement en fonction du montant de la rémunération versée. Cette option ne concerne que la personne qui l'a prise.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "CGI, art. 204 H et 204 J ; BOI-IR-PAS-20-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k32",
+   "type": "comp",
+   "q": "Quelle majoration sanctionne le retard de déclaration d'impôt sur le revenu ou les omissions qui minorent l'impôt dû ?",
+   "r": "<b>Une majoration de 10 % des droits</b>, portée à 20 % en cas de dépôt tardif dans les trente jours d'une mise en demeure. Elle n'est pas appliquée si le contribuable corrige sa déclaration spontanément ou dans les trente jours d'une demande de l'administration.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "CGI, art. 1758 A, I et II",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815281",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k33",
+   "type": "comp",
+   "q": "Quand la garantie de l'article L. 80 A du Livre des procédures fiscales protège-t-elle le contribuable à l'issue d'un contrôle fiscal ?",
+   "r": "<b>Lorsque l'administration a pris position sur les points du contrôle</b> (vérification de comptabilité, examen contradictoire de la situation fiscale personnelle), <b>y compris tacitement</b>, à condition qu'elle ait pu se prononcer en connaissance de cause. Cela vaut pour les contrôles dont l'avis est adressé à compter du 1er janvier 2019.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "LPF, art. L. 80 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k34",
+   "type": "comp",
+   "q": "À quelle condition un non-résident échappe-t-il au taux minimum d'impôt sur le revenu applicable à ses revenus de source française ?",
+   "r": "<b>S'il justifie que le taux moyen résultant du barème appliqué à l'ensemble de ses revenus de sources française et étrangère serait inférieur</b> ; ce taux inférieur s'applique alors à ses seuls revenus de source française.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 197 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037985917",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-01-k35",
+   "type": "comp",
+   "q": "À quelle condition un contribuable peut-il moduler à la baisse son prélèvement à la source de l'impôt sur le revenu ?",
+   "r": "<b>Seulement si le prélèvement estimé est inférieur de plus de 5 % à celui qui serait supporté sans modulation.</b> La modulation à la hausse est libre ; l'individualisation du taux ne fait pas obstacle à la modulation.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "CGI, art. 204 H et 204 J ; BOI-IR-PAS-20-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
+   "fiab": "stable"
+  }
+ ]
+}

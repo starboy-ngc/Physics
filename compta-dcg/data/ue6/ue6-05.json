@@ -69,6 +69,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "L'autofinancement est souvent qualifié de ressource « gratuite ». Pourquoi cette affirmation est-elle inexacte ?",
    "opts": [
     "Parce qu'il a un coût d'opportunité : les associés renoncent à des dividendes et exigent une rentabilité égale au coût des capitaux propres",
@@ -84,6 +85,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels financements sont classés parmi les quasi-fonds propres ?",
    "opts": [
     "Comptes courants d'associés bloqués",
@@ -104,6 +106,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque mode de financement dans sa catégorie.",
    "cats": [
     "Fonds propres",
@@ -156,6 +159,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "À quoi sert le droit préférentiel de souscription (DPS) lors d'une augmentation de capital en numéraire ?",
    "opts": [
     "À compenser pour les anciens actionnaires la baisse du cours due à l'émission à un prix inférieur au cours",
@@ -171,6 +175,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Société Albéric : 100 000 actions cotées 60 €. Émission de 25 000 actions nouvelles au prix de 48 €. Calculez la valeur théorique du droit préférentiel de souscription (en euros, arrondie au centime).",
    "a": 2.4,
    "unit": "€",
@@ -182,6 +187,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Un actionnaire détient 10 000 des 100 000 actions d'une société (10 %). La société émet 25 000 actions nouvelles et il ne souscrit pas. Quelle est sa part du capital après l'opération ?",
    "opts": [
     "8 %",
@@ -197,6 +203,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Emprunt de 200 000 € au taux de 5 % remboursable par 5 annuités constantes de fin d'année. On donne 1,05^-5 = 0,783526. Calculez l'annuité constante, arrondie à l'euro.",
    "a": 46195,
    "unit": "€",
@@ -208,6 +215,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Même emprunt : 200 000 € à 5 %, annuité constante de 46 195 €. Calculez l'amortissement du capital compris dans la première annuité (en euros).",
    "a": 36195,
    "unit": "€",
@@ -219,6 +227,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans un emprunt remboursé par annuités constantes :",
    "opts": [
     "Les amortissements du capital croissent en progression géométrique de raison (1 + i)",
@@ -234,6 +243,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une banque prête 100 000 € à 4 % mais prélève 2 000 € de frais de dossier à la mise en place. Le taux effectif de cet emprunt est :",
    "opts": [
     "Supérieur à 4 %, car l'entreprise ne reçoit que 98 000 € mais rembourse sur 100 000 €",
@@ -249,6 +259,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une obligation de valeur nominale 100 € est émise à 98 €. La prime d'émission est de :",
    "opts": [
     "2 € par obligation",
@@ -264,6 +275,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Emprunt obligataire : 10 000 obligations de nominal 100 €, émises à 98 €, remboursées in fine à 102 €, coupon 4 %. Calculez la prime de remboursement totale, au sens de l'écart entre les sommes remboursées et les sommes reçues à l'émission (en euros).",
    "a": 40000,
    "unit": "€",
@@ -275,6 +287,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une obligation est émise sous le pair (98 € pour un nominal de 100 €) et remboursée au-dessus du pair (102 €), avec un coupon de 4 %. Son taux actuariel brut est :",
    "opts": [
     "Supérieur à 4 %",
@@ -290,6 +303,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quelles affirmations sur le crédit-bail sont exactes ?",
    "opts": [
     "Les loyers sont des charges déductibles",
@@ -310,6 +324,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une subvention d'investissement de 60 000 € finance un matériel amorti sur 5 ans. Sous PCG 2025, comment est-elle traitée ?",
    "opts": [
     "Inscrite en capitaux propres (131) et rapportée au résultat au rythme de l'amortissement par le compte 747",
@@ -325,6 +340,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Taux sans risque 3 %, rentabilité attendue du marché 8 %, bêta de l'action 1,2. Calculez le coût des capitaux propres selon le MEDAF, en %.",
    "a": 9,
    "unit": "%",
@@ -336,6 +352,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une action a un bêta de 1,5. Cela signifie que :",
    "opts": [
     "Son cours varie en moyenne 1,5 fois plus que le marché : elle est plus risquée que le marché",
@@ -351,6 +368,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Le cours actuel d'une action est de 60 €. Le dividende attendu dans un an est de 3 € et devrait croître ensuite de 2 % par an indéfiniment. Calculez le coût des capitaux propres selon le modèle de Gordon-Shapiro, en %.",
    "a": 7,
    "unit": "%",
@@ -362,6 +380,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le modèle de Gordon-Shapiro repose sur l'hypothèse :",
    "opts": [
     "D'un dividende croissant à un taux constant g, inférieur au coût des capitaux propres, sur un horizon infini",
@@ -377,6 +396,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "IS à 25 %. Une entreprise emprunte au taux de 5 %. Calculez le coût de la dette après impôt, en %.",
    "a": 3.75,
    "unit": "%",
@@ -388,6 +408,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "IS à 25 %. Capitaux propres 600 000 € (coût 9 %), dettes financières 400 000 € (taux 5 % avant impôt). Calculez le coût moyen pondéré du capital, en %, arrondi à 0,01 %.",
    "a": 6.9,
    "unit": "%",
@@ -399,6 +420,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans le calcul du CMPC, les pondérations des capitaux propres et de la dette doivent en principe être :",
    "opts": [
     "Des valeurs de marché (capitalisation boursière, valeur de la dette)",
@@ -414,6 +436,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "CAF prévisionnelle 120 000 € par an ; dettes financières actuelles 200 000 €. La banque exige un ratio dettes financières / CAF au plus égal à 3. Quel emprunt supplémentaire maximal l'entreprise peut-elle contracter ?",
    "opts": [
     "160 000 €",
@@ -429,6 +452,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Plusieurs réponses possibles. Quels éléments figurent parmi les emplois d'un plan de financement ?",
    "opts": [
     "Acquisitions d'immobilisations",
@@ -451,6 +475,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Plan de financement, année 1. Trésorerie initiale 20 000 €. Ressources : CAF 100 000 €, emprunt nouveau 50 000 €. Emplois : investissement 150 000 €, dividendes 10 000 €, remboursement d'emprunt 20 000 €. Calculez la trésorerie cumulée en fin d'année 1 (en euros, signe compris).",
    "a": -10000,
    "unit": "€",
@@ -462,6 +487,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Pour équilibrer un plan de financement dont la trésorerie cumulée est négative en année 1, on ajoute un emprunt. Quel effet induit faut-il intégrer ?",
    "opts": [
     "La CAF des années suivantes baisse du montant des intérêts nets d'IS et les remboursements s'ajoutent aux emplois",
@@ -477,6 +503,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "IS à 25 %. Un matériel peut être financé par crédit-bail : 3 loyers annuels de 30 000 € payés en fin d'année, sans option d'achat. Taux d'actualisation 6 % ; coefficient (1 − 1,06^-3) / 0,06 = 2,6730. Calculez la valeur actuelle des décaissements nets d'impôt liés au crédit-bail, arrondie à l'euro.",
    "a": 60143,
    "unit": "€",
@@ -488,6 +515,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La VAN ajustée d'un projet se définit comme :",
    "opts": [
     "La VAN du projet financé entièrement par fonds propres, plus la valeur actuelle des économies d'impôt liées à la dette, moins les coûts du financement",

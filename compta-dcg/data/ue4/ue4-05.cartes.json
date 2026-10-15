@@ -1,0 +1,434 @@
+{
+ "id": "ue4-05",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue4-05-k01",
+   "type": "def",
+   "q": "Quelles opérations sont imposables à la TVA par nature selon l'article 256 du CGI ?",
+   "r": "<b>Les livraisons de biens et les prestations de services effectuées à titre onéreux par un assujetti agissant en tant que tel.</b>",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "CGI, art. 256, I",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179644/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k02",
+   "type": "def",
+   "q": "Qui a la qualité d'assujetti à la TVA au sens de l'article 256 A du CGI ?",
+   "r": "<b>Toute personne qui effectue de manière indépendante une activité économique</b>, quels que soient son statut juridique, sa situation au regard des autres impôts et la forme ou la nature de son intervention. Les salariés ne sont pas assujettis.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "CGI, art. 256 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018619382",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k03",
+   "type": "def",
+   "q": "Quelles opérations sont imposables à la TVA par disposition expresse de la loi, et non par nature ?",
+   "r": "<b>Les livraisons à soi-même de biens ou d'immeubles et les livraisons de terrains à bâtir et d'immeubles neufs</b> (CGI, art. 257). S'y ajoutent les acquisitions intracommunautaires (art. 256 bis) et les importations (art. 291).",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "CGI, art. 257, 256 bis et 291",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046196126",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k04",
+   "type": "def",
+   "q": "En matière de TVA, qu'est-ce que le fait générateur de la taxe ?",
+   "r": "<b>L'événement qui fait naître la créance du Trésor.</b> Il se distingue de l'exigibilité, qui est le droit que le Trésor peut faire valoir pour obtenir le paiement.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "CGI, art. 269 et 271, I-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k05",
+   "type": "def",
+   "q": "En matière de TVA, qu'est-ce que l'exigibilité de la taxe ?",
+   "r": "<b>Le droit que le Trésor peut faire valoir pour obtenir le paiement de la taxe.</b> Elle fixe la période de déclaration chez le fournisseur et la date du droit à déduction chez le client.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "CGI, art. 269 et 271, I-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k06",
+   "type": "def",
+   "q": "Quels sont les trois régimes de déclaration de la TVA prévus par le CGI ?",
+   "r": "<b>La franchise en base</b> (aucune TVA facturée ni déduite), <b>le régime simplifié</b> (déclaration annuelle CA12 n° 3517-S et acomptes semestriels, applicable jusqu'au 31 décembre 2026) et <b>le régime réel normal</b> (déclarations CA3 mensuelles ou trimestrielles).",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 287, 293 B et 302 septies A ; impots.gouv.fr, les régimes d'imposition à la TVA",
+   "url": "https://www.impots.gouv.fr/professionnel/les-regimes-dimposition-la-tva",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k07",
+   "type": "comp",
+   "q": "Quelles sont les conséquences de la franchise en base de TVA pour l'assujetti qui en bénéficie ?",
+   "r": "<b>Il ne facture aucune TVA et n'en déduit aucune.</b> L'assujetti bénéficiant de la franchise peut toutefois opter pour l'imposition à la TVA.",
+   "base": [
+    "Définitions#4",
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 287, 293 B et 302 septies A ; impots.gouv.fr, les régimes d'imposition à la TVA",
+   "url": "https://www.impots.gouv.fr/professionnel/les-regimes-dimposition-la-tva",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k08",
+   "type": "comp",
+   "q": "Hors locations d'immeubles et opérations internationales, quelles grandes catégories d'opérations sont exonérées de TVA ?",
+   "r": "<b>Les soins médicaux et paramédicaux, l'enseignement, les opérations bancaires et financières et les assurances.</b> Une exonération prive en principe du droit à déduction.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 261, 261 C, 261 D et 271",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k09",
+   "type": "comp",
+   "q": "Comment sont traitées en TVA les locations nues d'immeubles, selon qu'ils sont à usage d'habitation ou à usage professionnel ?",
+   "r": "<b>Les locations nues d'immeubles à usage d'habitation (comme celles de terres agricoles) sont exonérées.</b> Les bailleurs de locaux nus à usage professionnel peuvent opter pour l'imposition à la TVA, pour les locaux loués pour les besoins de l'activité d'un preneur assujetti.",
+   "base": [
+    "Règles essentielles#0",
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 261, 261 C, 261 D et 271",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k10",
+   "type": "comp",
+   "q": "Au regard de la TVA, comment qualifier l'activité d'un médecin ou d'un bailleur de logement nu ?",
+   "r": "<b>Elle est dans le champ de la TVA mais exonérée, donc sans droit à déduction.</b> Seule l'opération imposable, ou exonérée avec maintien du droit à déduction comme l'exportation, ouvre droit à déduction.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 256, 261 et 271",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835114",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k11",
+   "type": "comp",
+   "q": "Selon la règle générale de territorialité, quand une livraison de biens est-elle imposable à la TVA en France ?",
+   "r": "<b>Lorsque le bien se trouve en France au moment du départ de l'expédition</b> ou, à défaut de transport, lors de sa mise à disposition.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 258, I",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006179645",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k12",
+   "type": "comp",
+   "q": "Quel est le traitement en TVA des exportations vers les pays tiers et des livraisons intracommunautaires de biens ?",
+   "r": "<b>Elles sont exonérées avec maintien du droit à déduction.</b> La livraison intracommunautaire doit être faite à un assujetti identifié dans un autre État membre.",
+   "base": [
+    "Règles essentielles#3",
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 262, I et 262 ter, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764907",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k13",
+   "type": "comp",
+   "q": "À quelles conditions une livraison intracommunautaire de biens est-elle exonérée de TVA ?",
+   "r": "<b>Le numéro de TVA valide de l'acquéreur, la sortie physique du bien et sa mention dans l'état récapitulatif.</b> L'acquéreur doit être un assujetti identifié dans un autre État membre.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "CGI, art. 262, I et 262 ter, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764907",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k14",
+   "type": "comp",
+   "q": "Comment l'acquéreur assujetti en France acquitte-t-il la TVA due sur une acquisition intracommunautaire de biens ?",
+   "r": "<b>Par autoliquidation</b> : il déclare la taxe à la fois collectée et déductible sur la même déclaration. Depuis le 1er janvier 2022, la TVA à l'importation est également autoliquidée sur la déclaration de TVA.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 256 bis, 269, 2-d et 1695, II",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467617",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k15",
+   "type": "comp",
+   "q": "Selon les règles générales de l'article 259 du CGI, où une prestation de services est-elle imposable à la TVA ?",
+   "r": "<b>Entre assujettis (B2B), au lieu du preneur ; pour un preneur non assujetti (B2C), au lieu du prestataire.</b> Le lieu d'imposition dépend donc de la qualité du preneur.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 259, 1° et 2°, et 259 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021642728",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k16",
+   "type": "comp",
+   "q": "Quelles sont les principales dérogations à la règle générale de lieu d'imposition des prestations de services en TVA ?",
+   "r": "<b>Services rattachés à un immeuble</b> : lieu de l'immeuble ; <b>restauration</b> : lieu d'exécution ; <b>locations de courte durée de moyens de transport</b> : lieu de mise à disposition ; <b>accès aux manifestations</b> : lieu de l'événement.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 259, 1° et 2°, et 259 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021642728",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k17",
+   "type": "comp",
+   "q": "Dans quel État les ventes à distance intracommunautaires de biens sont-elles soumises à la TVA ?",
+   "r": "<b>Dans l'État de départ tant que le total annuel des ventes à distance et services électroniques B2C dans l'Union n'excède pas 10 000 €.</b> Au-delà, ou sur option, la TVA de l'État de consommation s'applique et est déclarée via le guichet unique (OSS).",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 258 A, 259 D et 298 sexdecies G",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835152",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k18",
+   "type": "def",
+   "q": "Qu'est-ce que la base d'imposition à la TVA selon l'article 266 du CGI ?",
+   "r": "<b>Toutes les sommes, valeurs, biens ou services reçus en contrepartie de l'opération</b>, y compris les frais accessoires (transport, emballages, assurance) et les impôts autres que la TVA.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 266, 1-a et 267",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042910064",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k19",
+   "type": "comp",
+   "q": "Quels éléments sont exclus de la base d'imposition à la TVA par l'article 267 du CGI ?",
+   "r": "<b>Les rabais, remises, ristournes et escomptes accordés directement au client</b>, ainsi que <b>les débours remboursés à l'euro</b>.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 266, 1-a et 267",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042910064",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k20",
+   "type": "comp",
+   "q": "Quand la TVA devient-elle exigible, d'une part pour une livraison de biens, d'autre part pour une prestation de services ?",
+   "r": "<b>Livraison de biens : à la livraison</b>, et dès l'encaissement d'un acompte à concurrence de son montant ; <b>prestation de services : à l'encaissement du prix ou des acomptes</b>, sauf option pour les débits.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 269, 2-a et 2-c",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k21",
+   "type": "comp",
+   "q": "Depuis le 1er janvier 2023, quel est l'effet de l'encaissement d'un acompte sur une livraison de biens au regard de la TVA ?",
+   "r": "<b>La TVA devient exigible à concurrence du montant encaissé</b>, sans attendre la livraison. Cette règle résulte de la loi de finances pour 2022.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 269, 2-a (loi n° 2021-1900 du 30 décembre 2021, art. 30)",
+   "url": "https://bofip.impots.gouv.fr/bofip/13758-PGP.html/ACTU-2022-00148",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k22",
+   "type": "comp",
+   "q": "Quelles conditions la TVA supportée par un assujetti doit-elle remplir pour être déductible ?",
+   "r": "<b>Être mentionnée sur une facture régulière</b> (ou un document d'importation, ou être autoliquidée), <b>grever un bien ou service utilisé pour des opérations ouvrant droit à déduction</b> et <b>être exigible chez le fournisseur</b>.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "CGI, art. 271, I et II",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835114",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k23",
+   "type": "comp",
+   "q": "Pour une prestation de services sans option pour les débits, quel événement ouvre au client le droit de déduire la TVA ?",
+   "r": "<b>Le paiement, et non la facture.</b> Le droit à déduction prend naissance lorsque la taxe devient exigible chez le fournisseur, ce qui intervient pour les services à l'encaissement du prix.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 271, I-2 et 269, 2-c",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048835114",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k24",
+   "type": "def",
+   "q": "Qu'est-ce que le coefficient de déduction de TVA prévu par l'article 206 de l'annexe II au CGI ?",
+   "r": "<b>Le produit des coefficients d'assujettissement, de taxation et d'admission</b>, qui traduisent l'utilisation pour des opérations dans le champ, l'utilisation pour des opérations ouvrant droit à déduction et les exclusions réglementaires. Chaque coefficient est arrondi au centième supérieur.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "CGI, ann. II, art. 206, I à IV",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k25",
+   "type": "comp",
+   "q": "Quelles sont les principales dépenses dont la TVA est exclue du droit à déduction ?",
+   "r": "<b>Les véhicules conçus pour le transport de personnes</b> (sauf activités de transport, auto-écoles, loueurs), <b>le logement fourni gratuitement</b> aux dirigeants et salariés, <b>les biens cédés sans rémunération ou pour un prix très inférieur</b> (cadeaux au-delà de la limite réglementaire) et <b>le transport de personnes</b>.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, ann. II, art. 206, IV ; CGI, art. 298, 4-1° ; BOI-TVA-DED-30-30-40",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k26",
+   "type": "comp",
+   "q": "Comment la TVA déduite sur une immobilisation est-elle régularisée par la suite ?",
+   "r": "<b>Pendant vingt ans pour les immeubles et cinq ans pour les autres biens</b>, année d'acquisition comprise : régularisation annuelle si le coefficient de déduction varie de plus d'un dixième, régularisation globale en cas de cession non soumise à TVA ou de cessation.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "CGI, ann. II, art. 207",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046086720",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k27",
+   "type": "comp",
+   "q": "Quelle est la conséquence d'une TVA mentionnée sur une facture alors que l'opération est exonérée ou relève de la franchise ?",
+   "r": "<b>La taxe est due par l'émetteur du seul fait de sa facturation</b>, sans ouvrir de droit à déduction régulier chez le client.",
+   "base": [
+    "Points de vigilance#3",
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 283, 3 et 271, II-1-a",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048838530",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k28",
+   "type": "comp",
+   "q": "Dans le bâtiment, qui acquitte la TVA sur les travaux réalisés par un sous-traitant pour un preneur assujetti ?",
+   "r": "<b>Le preneur, par autoliquidation</b> ; le sous-traitant facture hors taxe avec la mention « autoliquidation ». Sont visés les travaux de construction, réparation, nettoyage ou entretien d'immeubles.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "CGI, art. 283, 2 nonies",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048838530",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k29",
+   "type": "comp",
+   "q": "Quels sont les quatre taux de TVA applicables en France continentale et leurs principaux domaines d'application ?",
+   "r": "<b>20 %</b> : taux normal ; <b>10 %</b> : restauration, hébergement, transport de voyageurs, travaux dans les logements de plus de deux ans ; <b>5,5 %</b> : produits alimentaires, livres, équipements pour personnes handicapées, rénovation énergétique ; <b>2,1 %</b> : médicaments remboursables, presse.",
+   "base": [
+    "Chiffres et seuils#0"
+   ],
+   "src": "CGI, art. 278, 278-0 bis, 278-0 bis A, 279, 279-0 bis, 281 octies et 298 septies",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179654/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k30",
+   "type": "comp",
+   "q": "Depuis le 1er mars 2026, quel taux de TVA s'applique aux prestations du service public de gestion des déchets des ménages ?",
+   "r": "<b>Le taux réduit de 5,5 %</b>, pour la collecte et le traitement des déchets des ménages et assimilés et les prestations qui concourent à leur bon déroulement. Les livraisons de biens réalisées pour les besoins de ce service restent au taux normal de 20 %.",
+   "base": [
+    "Ce qui a changé récemment#6"
+   ],
+   "src": "Loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 81, II ; BOFiP, ACTU-2026-00063 et BOI-TVA-LIQ-30-20-70 (15 avril 2026)",
+   "url": "https://bofip.impots.gouv.fr/bofip/15015-PGP.html/ACTU-2026-00063",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k31",
+   "type": "comp",
+   "q": "Dans la réforme de la facturation électronique, quel calendrier s'applique aux entreprises assujetties établies en France pour recevoir et émettre ces factures ?",
+   "r": "<b>Réception</b> : toutes les entreprises assujetties établies en France à compter du 1er septembre 2026. <b>Émission</b> : grandes entreprises et entreprises de taille intermédiaire au 1er septembre 2026, PME et micro-entreprises au 1er septembre 2027, via des plateformes agréées.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "CGI, art. 289 bis ; loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 91 ; décret n° 2022-1299 du 7 octobre 2022",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048727345",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k32",
+   "type": "comp",
+   "q": "Que deviennent, à compter du 1er janvier 2027, les redevables qui relevaient du régime simplifié de TVA ?",
+   "r": "<b>Le régime simplifié étant supprimé, ils basculent automatiquement au régime réel normal</b> et déposent des CA3, trimestrielles ou mensuelles selon leur chiffre d'affaires. Une mesure transitoire est prévue pour les exercices qui ne coïncident pas avec l'année civile.",
+   "base": [
+    "Ce qui a changé récemment#4",
+    "Points de vigilance#5"
+   ],
+   "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
+   "url": "https://www.impots.gouv.fr/actualite/le-regime-simplifie-dimposition-la-tva-est-supprime-compter-du-1er-janvier-2027",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k33",
+   "type": "comp",
+   "q": "En quoi consiste la recodification de la TVA opérée par l'ordonnance du 17 décembre 2025 ?",
+   "r": "<b>Le transfert des dispositions législatives relatives à la TVA du CGI vers le livre II du code des impositions sur les biens et services (CIBS).</b> Son entrée en vigueur a été reportée au 1er janvier 2027 : jusqu'au 31 décembre 2026, les articles du CGI restent applicables.",
+   "base": [
+    "Ce qui a changé récemment#5",
+    "Points de vigilance#5"
+   ],
+   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, et rapport au Président de la République ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17 ; BOFiP, ACTU-2026-00126",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054497326",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k34",
+   "type": "comp",
+   "q": "Quelles mentions une facture doit-elle notamment comporter au regard de la TVA ?",
+   "r": "<b>L'identité des parties, le numéro de TVA du vendeur, la date, le numéro séquentiel, la dénomination des biens ou services, le prix hors taxe, le taux et le montant de TVA par taux</b>, ainsi que les mentions spéciales (« autoliquidation », « TVA non applicable, art. 293 B du CGI »).",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 283, 3 et 289 ; CGI, ann. II, art. 242 nonies A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048827413",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-05-k35",
+   "type": "comp",
+   "q": "Dans quelle proportion la TVA sur l'essence et le gazole est-elle déductible, selon qu'il s'agit d'un véhicule exclu du droit à déduction ou d'un véhicule utilitaire ?",
+   "r": "<b>À 80 % pour les véhicules exclus du droit à déduction</b>, comme les véhicules conçus pour le transport de personnes, et <b>à 100 % pour les véhicules utilitaires</b>.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, ann. II, art. 206, IV ; CGI, art. 298, 4-1° ; BOI-TVA-DED-30-30-40",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049904359",
+   "fiab": "stable"
+  }
+ ]
+}

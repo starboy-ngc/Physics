@@ -160,6 +160,7 @@
  "exercices": [
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Encaissement d'un chèque de 3 600 € d'un client, en règlement de sa facture, déposé le jour même en banque.",
    "lib": "Encaissement client",
@@ -189,6 +190,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Facture de loyer : 1 200 € HT, TVA 20 %, prélevée directement sur le compte bancaire.",
    "lib": "Loyer",
@@ -223,6 +225,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Prime d'assurance annuelle de 900 € payée par virement. L'assurance n'est pas soumise à TVA.",
    "lib": "Assurance",
@@ -252,6 +255,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Paie du mois : salaires bruts 20 000 €, cotisations salariales 4 400 €, cotisations patronales 8 400 €. Il n'y a pas de prélèvement à la source ce mois-ci. Enregistrez l'ensemble en une seule écriture, toutes les cotisations étant dues à l'URSSAF.",
    "lib": "Paie",
@@ -319,6 +323,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le net à payer aux salariés est enregistré :",
    "opts": [
@@ -334,6 +339,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Échéance d'emprunt prélevée en banque : 2 000 € de capital et 300 € d'intérêts.",
    "lib": "Échéance d'emprunt",
@@ -368,6 +374,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Emprunt de 100 000 € au taux annuel de 3 %, débloqué le 1er janvier, remboursable par annuités en fin d'année. Quel est le montant des intérêts de la première année ?",
    "a": 3000,
@@ -379,6 +386,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Retrait de 500 € d'espèces à la banque pour alimenter la caisse. Écriture directe (sans compte de passage) :",
    "opts": [
@@ -394,6 +402,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Facture de l'expert-comptable : honoraires 1 500 € HT, TVA 20 %, à payer le mois prochain.",
    "lib": "Honoraires",
@@ -428,6 +437,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "À quoi sert le compte 580 Virements internes ?",
    "opts": [
@@ -443,6 +453,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La banque prélève 25 € HT de frais de tenue de compte, plus 5 € de TVA. Écriture :",
    "opts": [
@@ -458,6 +469,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quelles dépenses relèvent du poste 63 Impôts, taxes et versements assimilés ? (plusieurs réponses possibles)",
    "opts": [
@@ -478,6 +490,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Sur le bulletin de paie, le prélèvement à la source de l'impôt sur le revenu retenu par l'employeur est comptabilisé :",
    "opts": [
@@ -493,6 +506,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Salaires bruts du mois : 32 000 €. Cotisations salariales : 7 040 €. Prélèvement à la source : 1 450 €. Un salarié a reçu un acompte de 600 € le 15 du mois. Quel est le net à payer en fin de mois (compte 421 à virer) ?",
    "a": 22910,
@@ -504,6 +518,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Dans l'écriture de paie, quels comptes sont crédités ? (plusieurs réponses possibles)",
    "opts": [
@@ -524,6 +539,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Le 5 du mois suivant, l'entreprise vire les salaires nets (14 700 €) aux salariés. Écriture :",
    "opts": [
@@ -539,6 +555,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Ambre paie une amende de stationnement de 135 € pour un véhicule de livraison. Imputation sous le PCG 2025 :",
    "opts": [
@@ -554,6 +571,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles opérations ne comportent aucune TVA déductible à enregistrer ? (plusieurs réponses possibles)",
    "opts": [
@@ -574,6 +592,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Emprunt de 60 000 € à 4 % remboursable par 4 amortissements constants annuels de 15 000 €. Quel est le montant de la 2e annuité (capital + intérêts) ?",
    "opts": [
@@ -589,6 +608,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Lors du rapprochement bancaire, un chèque de 1 200 € émis par l'entreprise le 28 décembre n'apparaît pas sur le relevé au 31 décembre. Que doit faire l'entreprise ?",
    "opts": [
@@ -604,6 +624,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Le relevé bancaire mentionne un virement de 2 500 € reçu du client Hekla, non encore enregistré par l'entreprise. À l'issue du rapprochement, l'entreprise passe :",
    "opts": [
@@ -619,6 +640,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Un salarié reçoit un acompte de 600 € par virement le 15 du mois, avant l'établissement de la paie. Écriture au 15 :",
    "opts": [
@@ -634,6 +656,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Au 31 décembre, le compte 512 de la société Lioré présente un solde débiteur de 8 400 €. Le relevé bancaire affiche un solde créditeur de 9 150 €. Les seules différences sont : un chèque de 1 000 € émis par Lioré et non encore débité par la banque, et des frais bancaires de 250 € prélevés par la banque et inconnus de Lioré. Quel est le solde du 512 après les écritures de régularisation ?",
    "opts": [
@@ -649,6 +672,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Paie de la société Vézac : bruts 20 000 €, cotisations salariales 4 400 € (dont 3 000 € URSSAF et 1 400 € caisse de retraite), prélèvement à la source 900 €, cotisations patronales 8 400 € (dont 6 000 € URSSAF et 2 400 € retraite). Enregistrez la paie complète en une écriture, en ventilant les dettes par organisme (une seule ligne par compte).",
    "lib": "Paie complète",

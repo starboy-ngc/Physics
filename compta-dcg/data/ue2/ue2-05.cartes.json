@@ -1,0 +1,430 @@
+{
+ "id": "ue2-05",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue2-05-k01",
+   "type": "def",
+   "q": "Par quels deux procédés le capital social d'une société anonyme (SA) peut-il être augmenté ?",
+   "r": "<b>Soit par émission d'actions nouvelles, ordinaires ou de préférence, soit par majoration du montant nominal des titres de capital existants.</b> Les titres nouveaux sont libérés notamment en numéraire, y compris par compensation avec des créances liquides et exigibles sur la société, par apport en nature ou par incorporation de réserves, bénéfices ou primes d'émission.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 225-127, L. 225-128 et L. 225-129",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178762/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k02",
+   "type": "comp",
+   "q": "Quelle différence y a-t-il entre délégation de compétence et délégation de pouvoir consenties par l'assemblée générale extraordinaire d'une SA pour augmenter le capital ?",
+   "r": "<b>La délégation de compétence permet au conseil d'administration ou au directoire de décider lui-même l'augmentation ; la délégation de pouvoir ne lui confie que la fixation de ses modalités.</b> L'assemblée générale extraordinaire, seule compétente pour décider l'augmentation, fixe alors la durée de la délégation, 26 mois au plus, et le plafond global de l'augmentation.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 225-129, L. 225-129-1 et L. 225-129-2",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178762/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k03",
+   "type": "def",
+   "q": "Qu'est-ce que le droit préférentiel de souscription (DPS) des actionnaires d'une société anonyme (SA) ?",
+   "r": "<b>Le droit de préférence des actionnaires à la souscription des actions de numéraire émises pour réaliser une augmentation de capital</b>, proportionnel au montant de leurs actions. Pendant la souscription, il est négociable s'il est détaché d'actions elles-mêmes négociables ; sinon, il est cessible dans les mêmes conditions que l'action.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 225-132 et L. 225-135",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029329359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k04",
+   "type": "comp",
+   "q": "De quelles deux façons le droit préférentiel de souscription peut-il être écarté lors d'une augmentation de capital d'une société anonyme (SA) ?",
+   "r": "<b>Par la renonciation individuelle d'un actionnaire, ou par sa suppression décidée par l'assemblée qui décide ou autorise l'augmentation.</b> L'assemblée statue alors sur le rapport du conseil d'administration ou du directoire et sur celui du commissaire aux comptes ; la suppression peut bénéficier à des personnes nommément désignées ou à des catégories de personnes répondant à des caractéristiques déterminées.",
+   "base": [
+    "Définitions#1",
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 225-132 et L. 225-135",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029329359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k05",
+   "type": "def",
+   "q": "Qu'est-ce que la prime d'émission dans une augmentation de capital d'une société anonyme (SA) ?",
+   "r": "<b>La somme qui majore le montant nominal des titres nouveaux lorsqu'ils ne sont pas émis à ce seul montant.</b> Lors d'une augmentation en numéraire, elle est libérée en totalité dès la souscription et portée au compte 1041 Primes d'émission.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 225-128 et L. 225-144 ; PCG, compte 1041",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k06",
+   "type": "comp",
+   "q": "Quelle condition préalable doit être remplie avant une augmentation de capital en numéraire dans une société anonyme (SA) ou une SARL ?",
+   "r": "<b>Le capital existant doit être intégralement libéré</b> avant toute émission d'actions nouvelles ou toute souscription de parts sociales nouvelles à libérer en numéraire. Dans la SARL, cette règle est prévue à peine de nullité de l'opération.",
+   "base": [
+    "Règles essentielles#0",
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 225-131 et L. 225-144",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039260253",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k07",
+   "type": "comp",
+   "q": "Quelle libération minimale des apports en numéraire est exigée à la constitution, puis lors d'une augmentation de capital, dans la SARL et dans la SA ?",
+   "r": "<b>À la constitution, un cinquième au moins dans la SARL et la moitié au moins dans la SA ; lors d'une augmentation en numéraire, un quart du nominal dans les deux formes</b>, plus, dans la SA, la totalité de la prime d'émission.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. L. 223-7, L. 225-3, L. 225-144 et L. 223-32",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k08",
+   "type": "comp",
+   "q": "Comment est décidée une augmentation de capital par incorporation de réserves, bénéfices ou primes dans une SA, puis dans une SARL ?",
+   "r": "<b>Dans la SA, l'assemblée générale statue, par dérogation à l'article L. 225-96, aux conditions de quorum et de majorité des assemblées ordinaires.</b> Dans la SARL, la décision d'incorporer des bénéfices ou des réserves est prise par les associés représentant au moins la moitié des parts sociales.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 225-130 ; L. 223-30",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042339726",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k09",
+   "type": "comp",
+   "q": "Qui apprécie la valeur des apports en nature faits lors d'une augmentation de capital d'une société anonyme (SA) ?",
+   "r": "<b>Un ou plusieurs commissaires aux apports</b>, désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice, qui apprécient sous leur responsabilité la valeur des apports et les avantages particuliers. Si l'assemblée réduit leur évaluation, l'approbation expresse des apporteurs est requise, faute de quoi l'augmentation de capital n'est pas réalisée.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 225-147 ; L. 223-33 et L. 223-9",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539465",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k10",
+   "type": "comp",
+   "q": "Quelle limite absolue s'impose à toute réduction de capital d'une société anonyme (SA) ou d'une SARL ?",
+   "r": "<b>Elle ne peut en aucun cas porter atteinte à l'égalité des actionnaires ou des associés.</b> Dans la SA, elle est autorisée ou décidée par l'assemblée générale extraordinaire ; dans la SARL, par l'assemblée des associés statuant dans les conditions exigées pour la modification des statuts.",
+   "base": [
+    "Règles essentielles#6",
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 225-204",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610466",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k11",
+   "type": "comp",
+   "q": "Quels créanciers peuvent former opposition à une réduction de capital d'une société anonyme (SA) non motivée par des pertes ?",
+   "r": "<b>Le représentant de la masse des obligataires et les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal de délibération.</b> Les opérations de réduction ne peuvent commencer pendant le délai d'opposition ni, le cas échéant, avant qu'il ait été statué en première instance ; une réduction motivée par des pertes n'ouvre pas ce droit d'opposition.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 225-205",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178841/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k12",
+   "type": "comp",
+   "q": "Dans quel cas le gérant d'une SARL peut-il être autorisé à acheter des parts sociales de sa propre société ?",
+   "r": "<b>Lorsque l'assemblée qui a décidé une réduction de capital non motivée par des pertes l'autorise à acheter un nombre déterminé de parts pour les annuler.</b> En dehors de ce cas, l'achat de ses propres parts par la SARL est interdit.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 223-34",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k13",
+   "type": "def",
+   "q": "Qu'appelle-t-on « coup d'accordéon » en matière de capital social ?",
+   "r": "<b>Une réduction du capital à zéro pour apurer les pertes, immédiatement suivie d'une augmentation de capital.</b> La réduction ne doit pas porter atteinte à l'égalité des actionnaires.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "Cass. com., 17 mai 1994, n° 91-21.364 (Usinor), publié au bulletin ; Cass. com., 18 juin 2002, n° 99-11.999 ; C. com., art. L. 225-204",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007032960/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k14",
+   "type": "comp",
+   "q": "À quelles conditions la Cour de cassation a-t-elle admis, dans l'affaire Usinor, la réduction à zéro du capital d'une société ?",
+   "r": "<b>Sous la condition suspensive d'une augmentation portant le capital au moins au minimum légal</b>, dès lors que l'actif net était très inférieur à la moitié du capital, que l'assemblée refusait la dissolution anticipée et que la survie de la société la justifiait. Les actionnaires conservaient la faculté de souscrire à l'augmentation et ne se voyaient imposer aucune obligation nouvelle.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "Cass. com., 17 mai 1994, n° 91-21.364 (Usinor), publié au bulletin ; Cass. com., 18 juin 2002, n° 99-11.999 ; C. com., art. L. 225-204",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007032960/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k15",
+   "type": "comp",
+   "q": "Que doivent faire les associés d'une SARL ou d'une SA dont les comptes approuvés font apparaître des capitaux propres inférieurs à la moitié du capital social ?",
+   "r": "<b>Décider, dans les quatre mois suivant l'approbation des comptes, s'il y a lieu à dissolution anticipée</b>, la décision étant publiée. À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171 du 9 mars 2023) ; R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k16",
+   "type": "comp",
+   "q": "Qu'impose la loi du 9 mars 2023 à une SA ou une SARL dont les capitaux propres n'ont pas été reconstitués dans le délai de deux exercices ?",
+   "r": "<b>Si son capital dépasse un seuil fixé par décret, elle doit le réduire pour le ramener au plus à ce seuil</b>, au plus tard à la clôture du deuxième exercice suivant. Le décret fixe ce seuil à 1 % du total du bilan, avec, dans la SA, le capital minimal comme plancher ; à défaut, la dissolution judiciaire reste encourue.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171) ; R. 223-37 et R. 225-166-1 (décret n° 2023-657)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047881958",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k17",
+   "type": "comp",
+   "q": "Quelle sanction encourt une SARL ou une SA qui ne respecte pas la procédure prévue lorsque ses capitaux propres sont inférieurs à la moitié du capital ?",
+   "r": "<b>Une dissolution, jamais automatique : tout intéressé peut seulement la demander en justice.</b> Il en va de même si les associés n'ont pu délibérer valablement ; le tribunal peut accorder à la société un délai maximal de six mois pour régulariser sa situation.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. L. 223-42 et L. 225-248",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k18",
+   "type": "def",
+   "q": "Qu'est-ce que la transformation régulière d'une société au sens de l'article 1844-3 du Code civil ?",
+   "r": "<b>Le changement de forme d'une société, qui devient une société d'une autre forme sans que soit créée une personne morale nouvelle.</b>",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. civ., art. 1844-3 ; C. com., art. L. 223-43, L. 225-243, L. 225-245 et L. 227-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k19",
+   "type": "comp",
+   "q": "À quelles conditions une société anonyme (SA) peut-elle se transformer en une société d'une autre forme ?",
+   "r": "<b>Elle doit exister depuis deux ans au moins et avoir établi et fait approuver par les actionnaires le bilan de ses deux premiers exercices.</b> La décision est prise sur le rapport des commissaires aux comptes, qui atteste que les capitaux propres sont au moins égaux au capital social.",
+   "base": [
+    "Règles essentielles#10",
+    "Règles essentielles#11"
+   ],
+   "src": "C. civ., art. 1844-3 ; C. com., art. L. 223-43, L. 225-243, L. 225-245 et L. 227-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k20",
+   "type": "comp",
+   "q": "Quelle majorité est requise pour transformer une société en société en nom collectif (SNC) ou en société par actions simplifiée (SAS) ?",
+   "r": "<b>L'unanimité des associés.</b> En revanche, la transformation d'une SA en société en commandite est décidée aux conditions de modification des statuts, avec l'accord de tous les associés qui acceptent d'être commandités.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. civ., art. 1844-3 ; C. com., art. L. 223-43, L. 225-243, L. 225-245 et L. 227-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k21",
+   "type": "def",
+   "q": "Qu'est-ce qui distingue une fusion d'une scission de sociétés au sens du Code de commerce ?",
+   "r": "<b>Par la fusion, une ou plusieurs sociétés transmettent leur patrimoine à une société existante ou nouvelle ; par la scission, une société transmet son patrimoine à plusieurs sociétés.</b> Dans les deux cas, les sociétés qui disparaissent sont dissoutes sans liquidation et leur patrimoine fait l'objet d'une transmission universelle aux sociétés bénéficiaires.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 236-1 et L. 236-3 (ordonnance n° 2023-393 du 24 mai 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161298/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k22",
+   "type": "comp",
+   "q": "Comment sont rémunérés les associés des sociétés qui transmettent leur patrimoine lors d'une fusion ou d'une scission ?",
+   "r": "<b>Par des parts ou des actions des sociétés bénéficiaires</b> et, éventuellement, par une soulte en espèces dont le montant ne peut dépasser 10 % de la valeur nominale des parts ou des actions attribuées.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 236-1 et L. 236-3 (ordonnance n° 2023-393 du 24 mai 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161298/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k23",
+   "type": "comp",
+   "q": "Quelles sont les étapes principales de la procédure de fusion de sociétés commerciales prévue par le Code de commerce ?",
+   "r": "<ul><li><b>Projet de fusion arrêté par les organes de direction</b>, déposé au greffe et publié ;</li><li>rapport d'un ou plusieurs commissaires à la fusion désignés en justice, sauf décision unanime des associés de toutes les sociétés participantes de ne pas en désigner ;</li><li>approbation par l'assemblée générale extraordinaire de chaque société participante.</li></ul>",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 236-4, L. 236-6, L. 236-9, L. 236-10 et L. 236-15",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047590897",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k24",
+   "type": "comp",
+   "q": "Quel est l'effet d'une opposition formée par les créanciers non obligataires d'une société participant à une fusion ?",
+   "r": "<b>L'opposition n'interdit pas la poursuite de l'opération.</b> Le juge la rejette ou ordonne le remboursement des créances ou la constitution de garanties ; elle est ouverte aux créanciers non obligataires dont la créance est antérieure à la publicité du projet de fusion.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 236-4, L. 236-6, L. 236-9, L. 236-10 et L. 236-15",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047590897",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k25",
+   "type": "comp",
+   "q": "Quelles formalités sont écartées dans une fusion où l'absorbante détient en permanence la totalité des actions de l'absorbée ?",
+   "r": "<b>L'approbation de la fusion par les assemblées générales extraordinaires des sociétés participantes, ainsi que les rapports des dirigeants et du commissaire à la fusion.</b> Des actionnaires de l'absorbante réunissant au moins 5 % du capital peuvent toutefois demander en justice la désignation d'un mandataire chargé de convoquer son assemblée.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 236-11 et L. 236-11-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146056/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k26",
+   "type": "def",
+   "q": "Qu'est-ce que la transmission universelle du patrimoine (TUP) prévue par l'article 1844-5 du Code civil ?",
+   "r": "<b>Lorsque toutes les parts sont réunies entre les mains d'un associé unique personne morale, la dissolution de la société entraîne la transmission universelle de son patrimoine à cet associé, sans liquidation.</b> Les créanciers peuvent faire opposition à la dissolution dans les trente jours de sa publication.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. civ., art. 1844-5, al. 3 et 4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444165",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k27",
+   "type": "comp",
+   "q": "Quel est l'effet de la dissolution d'une société dont toutes les parts sont réunies entre les mains d'un associé unique personne physique ?",
+   "r": "<b>La liquidation</b> : le régime de la transmission universelle du patrimoine ne s'applique pas. Il est réservé à l'associé unique personne morale, à qui le patrimoine est transmis sans liquidation.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "C. civ., art. 1844-5, al. 3 et 4 ; art. 1844-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444165",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k28",
+   "type": "comp",
+   "q": "Quelles causes de fin d'une société, selon l'article 1844-7 du Code civil, tiennent à sa durée, à son objet, à son contrat ou à ses statuts ?",
+   "r": "<ul><li>L'expiration du temps pour lequel elle a été constituée, sauf prorogation ;</li><li>la réalisation ou l'extinction de son objet ;</li><li>l'annulation du contrat de société ;</li><li>toute autre cause prévue par les statuts.</li></ul>",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. civ., art. 1844-7",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k29",
+   "type": "comp",
+   "q": "Quelles causes de fin d'une société prévues par l'article 1844-7 du Code civil résultent d'une dissolution anticipée ou d'un jugement ?",
+   "r": "<ul><li>La dissolution anticipée décidée par les associés ;</li><li>la dissolution anticipée prononcée par le tribunal à la demande d'un associé pour justes motifs, ou dans le cas de réunion de toutes les parts en une seule main ;</li><li>le jugement ordonnant la clôture de la liquidation judiciaire pour insuffisance d'actif.</li></ul>",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. civ., art. 1844-7",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028724345",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k30",
+   "type": "comp",
+   "q": "Que devient la personnalité morale d'une société dissoute pendant sa liquidation ?",
+   "r": "<b>Elle subsiste pour les besoins de la liquidation jusqu'à la publication de la clôture de celle-ci.</b> La société est en liquidation dès l'instant de sa dissolution, sauf fusion, scission ou TUP, et sa dénomination est suivie de la mention « société en liquidation ».",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. civ., art. 1844-8 ; C. com., art. L. 237-2, L. 237-9 et L. 237-24",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444186",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k31",
+   "type": "comp",
+   "q": "Quels sont les pouvoirs du liquidateur d'une société en liquidation ?",
+   "r": "<b>Il représente la société et est investi des pouvoirs les plus étendus pour réaliser l'actif, même à l'amiable</b>, les restrictions statutaires étant inopposables aux tiers ; il paie les créanciers et répartit le solde disponible. Il est nommé conformément aux statuts ou, dans leur silence, par les associés ou, à défaut, par décision de justice.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. civ., art. 1844-8 ; C. com., art. L. 237-2, L. 237-9 et L. 237-24",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444186",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k32",
+   "type": "def",
+   "q": "Qu'est-ce que le boni de liquidation d'une société ?",
+   "r": "<b>L'excédent d'actif qui subsiste après paiement des dettes et remboursement du capital social.</b> Il est partagé entre les associés dans les mêmes proportions que leur participation aux bénéfices, sauf clause ou convention contraire.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. civ., art. 1844-9",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006118123/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k33",
+   "type": "comp",
+   "q": "Que certifient les commissaires aux comptes à propos des comptes annuels d'une société ?",
+   "r": "<b>Que les comptes annuels sont réguliers et sincères et donnent une image fidèle</b> du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de cet exercice ; ils justifient de leurs appréciations.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "C. com., art. L. 821-53 (ex-art. L. 823-9)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k34",
+   "type": "comp",
+   "q": "Que doit faire le commissaire aux comptes d'une SA qui relève des faits de nature à compromettre la continuité de l'exploitation ?",
+   "r": "<ul><li><b>Informer le président du conseil d'administration ou du directoire</b> ;</li><li>à défaut de réponse sous quinze jours, ou si elle ne permet pas d'être assuré de la continuité, inviter le conseil ou le directoire à délibérer ;</li><li>si la continuité demeure compromise, établir un rapport spécial présenté à l'assemblée générale, puis informer le président du tribunal si les décisions prises sont insuffisantes.</li></ul>",
+   "base": [
+    "Règles essentielles#18"
+   ],
+   "src": "C. com., art. L. 234-1 ; R. 234-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033462246",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-05-k35",
+   "type": "comp",
+   "q": "Par quel délai se prescrit l'action en nullité d'une décision d'augmentation de capital d'une société par actions depuis l'ordonnance du 12 mars 2025 ?",
+   "r": "<b>Par trois mois</b> à compter de la date à laquelle la décision contestée a été prise, hors les cas que le texte réserve. Les actions en nullité de la société, d'apport ou de décisions sociales se prescrivent, elles, par deux ans au lieu de trois depuis le 1er octobre 2025.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Ordonnance n° 2025-229 du 12 mars 2025 (art. 70) ; C. civ., art. 1844-12-1 et 1844-14 ; C. com., art. L. 225-149-4",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+   "fiab": "stable"
+  }
+ ]
+}

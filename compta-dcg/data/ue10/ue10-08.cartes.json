@@ -1,0 +1,434 @@
+{
+ "id": "ue10-08",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-08-k01",
+   "type": "def",
+   "q": "Comment le règlement ANC n° 2018-06 définit-il les fonds propres sans droit de reprise et avec droit de reprise d'une association ou d'une fondation ?",
+   "r": "<b>Les premiers correspondent à la mise à disposition définitive d'un bien ou de numéraire au profit de l'entité ; les seconds à sa mise à disposition conditionnelle</b>, le bien étant repris par l'apporteur lorsque survient l'événement prévu (par exemple la cessation de l'activité concernée ou la dissolution de l'entité).",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Règlement ANC n° 2018-06, art. 131-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Recueil-non-lucratif-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k02",
+   "type": "def",
+   "q": "Dans les comptes d'une association (règlement ANC n° 2018-06), que sont les fonds dédiés ?",
+   "r": "<b>La partie des ressources dédiées par des tiers financeurs à des projets définis qui, à la clôture de l'exercice, n'a pu être utilisée conformément à l'engagement pris à leur égard.</b> Inscrite au passif en contrepartie de la charge 689 « Reports en fonds dédiés », elle est rapportée en produit au crédit du 789 « Utilisations de fonds dédiés » au fur et à mesure de la réalisation du projet.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "Règlement ANC n° 2018-06, art. 132-1 et 132-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Recueil-non-lucratif-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k03",
+   "type": "comp",
+   "q": "Dans les comptes d'une association, quelle ressource est inscrite en fonds propres avec ou sans droit de reprise plutôt qu'en fonds dédiés ?",
+   "r": "<b>La ressource destinée à renforcer les fonds propres à raison d'une stipulation du tiers financeur.</b> En revanche, la partie des ressources dédiées par des tiers financeurs non utilisée à la clôture conformément à l'engagement pris est inscrite en fonds dédiés.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "Règlement ANC n° 2018-06, livre I, titre III (art. 131-1 et s., 132-1)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Recueil-non-lucratif-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k04",
+   "type": "def",
+   "q": "Dans les comptes d'une association (règlement ANC n° 2018-06), que sont les contributions volontaires en nature ?",
+   "r": "<b>L'apport à titre gratuit, par une personne physique ou morale, de travail, de biens ou de services</b> : bénévolat et mises à disposition de personnes (travail), dons en nature (biens), mises à disposition de locaux ou de matériel et prêt à usage (services).",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "Règlement ANC n° 2018-06, art. 211-1 à 211-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Recueil-non-lucratif-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k05",
+   "type": "comp",
+   "q": "Comment une association comptabilise-t-elle les contributions volontaires en nature dont la nature et l'importance sont essentielles à la compréhension de son activité ?",
+   "r": "<b>En classe 8, si elle est en mesure de les recenser et de les valoriser</b> : les comptes 86 (emplois) et 87 (contributions), mouvementés l'un par l'autre, sont présentés au pied du compte de résultat en deux colonnes de totaux égaux. L'annexe explicite les modalités de recensement, de quantification et de valorisation.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "Règlement ANC n° 2018-06, art. 211-1 à 211-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Recueil-non-lucratif-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k06",
+   "type": "comp",
+   "q": "Quelles obligations pèsent sur une association recevant annuellement des autorités administratives ou des établissements publics des subventions en numéraire d'un montant global supérieur à 153 000 € ?",
+   "r": "<b>Établir des comptes annuels (bilan, compte de résultat, annexe), en assurer la publicité avec le rapport du commissaire aux comptes et nommer au moins un commissaire aux comptes</b>, et un suppléant lorsque les conditions sont réunies. Le représentant légal ou le commissaire aux comptes présente un rapport sur les conventions passées avec les administrateurs ou mandataires sociaux.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 612-4, L. 612-5 et D. 612-5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006268871",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k07",
+   "type": "comp",
+   "q": "Quand une personne morale de droit privé non commerçante ayant une activité économique doit-elle établir des comptes annuels et nommer un commissaire aux comptes ?",
+   "r": "<b>Lorsqu'elle dépasse, pour deux des trois critères, les seuils de l'article R. 612-1 du Code de commerce</b> (salariés, chiffre d'affaires hors taxes ou ressources, total du bilan). Elle cesse d'y être tenue lorsqu'elle ne dépasse pas ces seuils pendant deux exercices successifs.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 612-1 et R. 612-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610679",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k08",
+   "type": "comp",
+   "q": "Quelle obligation de reddition de comptes le Code civil impose-t-il aux gérants d'une société civile ?",
+   "r": "<b>Rendre compte de leur gestion aux associés au moins une fois dans l'année</b>, par un rapport écrit d'ensemble sur l'activité de la société au cours de l'année ou de l'exercice écoulé, indiquant les bénéfices réalisés ou prévisibles et les pertes encourues ou prévues.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. civ., art. 1855 et 1856 ; C. com., art. L. 612-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444320/2026-04-25",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k09",
+   "type": "comp",
+   "q": "Quel est l'effet de l'option d'un entrepreneur individuel relevant d'un régime réel pour l'assimilation de son entreprise à une EURL ?",
+   "r": "<b>Cette option, irrévocable, vaut option pour l'impôt sur les sociétés</b> (CGI, art. 1655 sexies). L'entreprise peut toutefois renoncer à l'option pour l'IS jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "Loi n° 2022-172 du 14 février 2022 ; loi n° 2021-1900 du 30 décembre 2021, art. 13 ; CGI, art. 1655 sexies ; BOI-BIC-CHAMP-70-10 ; BOI-IS-CHAMP-40",
+   "url": "https://bofip.impots.gouv.fr/bofip/3119-PGP.html/identifiant=BOI-BIC-CHAMP-70-10-20221123",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k10",
+   "type": "comp",
+   "q": "Depuis la loi n° 2022-172 du 14 février 2022, quel est le sort de l'entreprise individuelle à responsabilité limitée (EIRL) ?",
+   "r": "<b>Elle est mise en extinction : aucune EIRL ne peut être créée depuis le 16 février 2022</b>, les EIRL existantes conservant leur régime. La même loi refond le statut de l'entrepreneur individuel.",
+   "base": [
+    "Ce qui a changé récemment#2",
+    "Règles essentielles#3"
+   ],
+   "src": "Loi n° 2021-1900 du 30 décembre 2021, art. 13 ; loi n° 2022-172 du 14 février 2022 ; BOFiP ACTU-2022-00086",
+   "url": "https://bofip.impots.gouv.fr/bofip/13602-PGP.html/ACTU-2022-00086",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k11",
+   "type": "comp",
+   "q": "Quels allègements comptables le Code de commerce accorde-t-il aux commerçants personnes physiques placés au régime réel simplifié ?",
+   "r": "<b>La faculté de n'enregistrer les créances et les dettes qu'à la clôture de l'exercice et de ne pas établir d'annexe</b>, d'inscrire au compte de résultat, selon leur date de paiement, les charges de périodicité inférieure ou égale à un an, à l'exclusion des achats, et d'évaluer stocks et productions en cours selon une méthode simplifiée fixée par règlement de l'ANC.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 123-25 à L. 123-28",
+   "url": "https://legifrance.gouv.fr/affichCode.do?cidTexte=LEGITEXT000005634379&idSectionTA=LEGISCTA000024039860",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k12",
+   "type": "comp",
+   "q": "Quelle est la portée de l'option de l'article 93 A du CGI ouverte aux titulaires de bénéfices non commerciaux ?",
+   "r": "<b>Elle permet uniquement de substituer une comptabilité d'engagement (créances acquises, dépenses engagées) à la comptabilité de caisse</b>, fondée en principe sur les recettes encaissées et les dépenses payées. Ouverte aux contribuables soumis à la déclaration contrôlée, elle est exercée avant le 1er février de la première année concernée.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 93 et 93 A ; BOI-BNC-BASE-20-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/6441-PGP.html/identifiant=BOI-BNC-BASE-20-10-20-20200701",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k13",
+   "type": "def",
+   "q": "Quel est le but d'un groupement d'intérêt économique (GIE) selon le Code de commerce ?",
+   "r": "<b>Faciliter ou développer l'activité économique de ses membres, améliorer ou accroître les résultats de cette activité</b>, et non réaliser des bénéfices pour lui-même. Son activité doit se rattacher à l'activité économique de ses membres et ne peut avoir qu'un caractère auxiliaire.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 251-1 et L. 251-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006230960",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k14",
+   "type": "comp",
+   "q": "Dans quels cas le contrôle des comptes d'un groupement d'intérêt économique (GIE) est-il confié à un commissaire aux comptes ?",
+   "r": "<b>Lorsque le groupement émet des obligations ou compte cent salariés ou plus à la clôture d'un exercice.</b> Le ou les commissaires aux comptes sont alors nommés par l'assemblée pour six exercices.",
+   "base": [
+    "Règles essentielles#7",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 251-1 et L. 251-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006230960",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k15",
+   "type": "def",
+   "q": "Selon le Code de commerce, de quelles situations résulte le contrôle exclusif d'une société sur une autre entreprise ?",
+   "r": "<b>De la détention directe ou indirecte de la majorité des droits de vote</b>, de la désignation pendant deux exercices successifs de la majorité des membres des organes d'administration, de direction ou de surveillance, ou du droit d'exercer une influence dominante en vertu d'un contrat ou de clauses statutaires.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 233-16 et L. 233-17-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927205",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k16",
+   "type": "def",
+   "q": "Comment le Code de commerce définit-il le contrôle conjoint d'une entreprise en matière de comptes consolidés ?",
+   "r": "<b>Le partage du contrôle d'une entreprise exploitée en commun par un nombre limité d'associés ou d'actionnaires</b>, de sorte que les décisions résultent de leur accord.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 233-16 et L. 233-17-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927205",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k17",
+   "type": "comp",
+   "q": "En matière de comptes consolidés, à quelle condition le Code de commerce présume-t-il qu'une société exerce une influence notable sur une entreprise ?",
+   "r": "<b>Lorsqu'elle dispose d'au moins le cinquième (20 %) des droits de vote de cette entreprise</b> (C. com., art. L. 233-17-2). Les entreprises sur lesquelles la société consolidante exerce une influence notable sont consolidées par mise en équivalence.",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 233-16 et L. 233-17-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927205",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k18",
+   "type": "comp",
+   "q": "Pour qualifier le contrôle exclusif en consolidation, quelle est la portée de la détention de la majorité des droits de vote ?",
+   "r": "<b>Elle fait seulement présumer le contrôle exclusif</b> : la présomption peut être réfutée en cas de conditions particulières prévues dans un pacte d'actionnaires. Inversement, le contrôle exclusif peut exister sans majorité, par la désignation pendant deux exercices de la majorité des organes (présumée au-delà de 40 % des droits de vote sans associé plus important) ou en vertu d'un contrat ou de clauses statutaires.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "Règlement ANC n° 2020-01 ; C. com., art. L. 233-16",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/REGLT-2020_01-VERSION-RECUEIL2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k19",
+   "type": "comp",
+   "q": "Selon l'article L. 233-16 du Code de commerce, quelles sociétés commerciales sont en principe tenues d'établir et de publier chaque année des comptes consolidés ?",
+   "r": "<b>Celles qui contrôlent de manière exclusive ou conjointe une ou plusieurs entreprises ou exercent sur elles une influence notable</b>, sauf exemption (notamment société elle-même incluse dans les comptes consolidés publiés d'une entreprise qui la contrôle, ou ensemble ne constituant pas un grand groupe). Elles établissent aussi un rapport sur la gestion du groupe.",
+   "base": [
+    "Règles essentielles#8",
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 233-16 et L. 233-17-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030921817",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k20",
+   "type": "comp",
+   "q": "Dans quels cas une société contrôlée par une entreprise qui l'inclut dans ses comptes consolidés publiés ne bénéficie-t-elle pas de l'exemption de consolidation ?",
+   "r": "<b>En cas d'opposition d'actionnaires ou d'associés représentant au moins le dixième de son capital</b>, ou si elle a émis des titres admis aux négociations sur un marché réglementé.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 233-17, L. 233-17-1, L. 230-2 et D. 230-2 (décret n° 2024-152 du 28 février 2024)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535260",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k21",
+   "type": "comp",
+   "q": "Quel ensemble de sociétés le Code de commerce exempte-t-il d'établir des comptes consolidés en raison de sa taille ?",
+   "r": "<b>L'ensemble qui ne constitue pas un grand groupe au sens de l'article L. 230-2</b> (dépassement d'au moins deux des trois critères : total du bilan, chiffre d'affaires net, nombre moyen de salariés), lorsqu'aucune de ses sociétés n'est une entité d'intérêt public de l'article L. 123-16-2. Cette référence aux grands groupes s'applique depuis le 1er janvier 2025.",
+   "base": [
+    "Règles essentielles#9",
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "C. com., art. L. 233-17, L. 233-17-1, L. 230-2 et D. 230-2 (décret n° 2024-152 du 28 février 2024)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535260",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k22",
+   "type": "comp",
+   "q": "Quelle méthode de consolidation le Code de commerce associe-t-il au contrôle exclusif, au contrôle conjoint et à l'influence notable ?",
+   "r": "<b>Contrôle exclusif : intégration globale ; contrôle conjoint : intégration proportionnelle ; influence notable : mise en équivalence</b> (C. com., art. L. 233-18 ; règlement ANC n° 2020-01).",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 233-18 ; règlement ANC n° 2020-01",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229276",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k23",
+   "type": "def",
+   "q": "Qu'est-ce que le pourcentage de contrôle d'une entité consolidée selon le règlement ANC n° 2020-01 ?",
+   "r": "<b>La masse des droits de vote détenus par l'entité consolidante et par toutes les entités qu'elle contrôle de manière exclusive</b> ; une participation détenue par une société non contrôlée n'est pas retenue (la chaîne est rompue). Il sert à qualifier le contrôle et donc la méthode de consolidation.",
+   "base": [
+    "Définitions#4",
+    "Points de vigilance#0"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 211-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/REGLT-2020_01-VERSION-RECUEIL2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k24",
+   "type": "def",
+   "q": "Qu'est-ce que le pourcentage d'intérêt utilisé dans les comptes consolidés selon le règlement ANC n° 2020-01 ?",
+   "r": "<b>La part du capital revenant au groupe, produit des pourcentages de capital le long de chaque chaîne.</b> En intégration globale, il répartit capitaux propres et résultat entre les intérêts de l'entité consolidante et ceux des autres actionnaires ou associés, dits « intérêts minoritaires » ; la méthode, elle, dépend du pourcentage de contrôle.",
+   "base": [
+    "Définitions#4",
+    "Points de vigilance#0"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 211-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/REGLT-2020_01-VERSION-RECUEIL2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k25",
+   "type": "def",
+   "q": "Selon l'article L. 821-53 du Code de commerce, que certifient les commissaires aux comptes sur les comptes annuels ?",
+   "r": "<b>Que les comptes annuels sont réguliers et sincères et donnent une image fidèle</b> du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de cet exercice ; ils justifient de leurs appréciations.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 821-53 (ex-art. L. 823-9)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k26",
+   "type": "comp",
+   "q": "Selon la NEP 700, qu'est-ce qui distingue la certification avec réserve, le refus de certifier et l'impossibilité de certifier ?",
+   "r": "<b>Réserve : désaccord ou limitation dont les effets sont clairement circonscrits ; refus : désaccord dont les effets ne peuvent être circonscrits ; impossibilité : limitations trop étendues ou multiples incertitudes.</b> Le commissaire aux comptes en précise les motifs dans la partie de son rapport relative au fondement de l'opinion.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "NEP 700 (rapports du commissaire aux comptes sur les comptes annuels et consolidés)",
+   "url": "https://doc.cncc.fr/docs/nep-700-rapports-du-commissaire-x/attachments/nep-700",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k27",
+   "type": "def",
+   "q": "En audit légal (NEP 320), qu'est-ce que le seuil de signification fixé par le commissaire aux comptes ?",
+   "r": "<b>Le montant au-delà duquel les décisions économiques ou le jugement fondé sur les comptes sont susceptibles d'être influencés.</b> Fixé lors de la planification, il peut être revu si des faits nouveaux remettent en cause l'évaluation initiale. Le seuil de planification, inférieur, réduit à un niveau acceptable le risque que le montant des anomalies relevées non corrigées et des anomalies non détectées excède ce seuil.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "NEP 320 (application de la notion de caractère significatif lors de la planification et de la réalisation d'un audit), C. com., art. A. 821-70 ; homologuée par arrêté du 19 juillet 2012",
+   "url": "https://doc.cncc.fr/docs/nep-320-application-de-la-notion/attachments/nep-320",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k28",
+   "type": "def",
+   "q": "Comment le cadre de référence de l'AMF définit-il le contrôle interne d'une société ?",
+   "r": "<b>Un dispositif de la société, défini et mis en œuvre sous sa responsabilité</b>, comprenant un ensemble de moyens, de comportements, de procédures et d'actions qui contribue à la maîtrise de ses activités et lui permet de prendre en compte les risques significatifs. Il vise notamment la conformité aux lois et règlements, le bon fonctionnement des processus internes et la fiabilité des informations financières.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "AMF, Cadre de référence sur les dispositifs de gestion des risques et de contrôle interne (recommandation DOC-2010-16) ; NEP 315 révisée (arrêté du 13 novembre 2024)",
+   "url": "https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapports_groupes_travail/Cadre%20de%20reference%20sur%20les%20dispositifs%20de%20gestion%20des%20risques%20et%20de%20controle%20interne.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k29",
+   "type": "comp",
+   "q": "Quelle est la position du commissaire aux comptes sur l'efficacité du contrôle interne de l'entité qu'il audite ?",
+   "r": "<b>Il ne se prononce pas sur l'efficacité du contrôle interne</b> : il en prend connaissance pour orienter ses travaux et communique par écrit aux organes compétents les faiblesses significatives du contrôle interne lié à l'information comptable et financière qu'il a relevées (NEP 265).",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "NEP 265 révisée (arrêté du 13 novembre 2024)",
+   "url": "https://doc.cncc.fr/docs/nep-265-communication-des-faible/attachments/nep-265",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k30",
+   "type": "comp",
+   "q": "Dans une société anonyme, comment s'engage la procédure d'alerte du commissaire aux comptes ?",
+   "r": "<b>Lorsqu'il relève des faits de nature à compromettre la continuité de l'exploitation, il en informe le président du conseil d'administration ou du directoire.</b> À défaut de réponse sous quinze jours ou si la réponse ne permet pas d'être assuré de la continuité, il invite par écrit, avec copie au président du tribunal de commerce, à faire délibérer le conseil.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 234-1 ; R. 234-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033462246",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k31",
+   "type": "comp",
+   "q": "Dans la procédure d'alerte d'une SA, que fait le commissaire aux comptes si la continuité de l'exploitation demeure compromise après la délibération du conseil ?",
+   "r": "<b>Une assemblée générale est convoquée et il y présente un rapport spécial</b> ; il informe ensuite le président du tribunal de commerce si les décisions prises sont insuffisantes. Il peut reprendre la procédure dans les six mois de son déclenchement.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 234-1 ; R. 234-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033462246",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k32",
+   "type": "comp",
+   "q": "Quelle obligation pèse sur le commissaire aux comptes à l'égard des faits délictueux dont il a eu connaissance au cours de sa mission ?",
+   "r": "<b>Il les porte à la connaissance du procureur de la République</b>, sans que sa responsabilité puisse être engagée par cette révélation. Le défaut de révélation est puni de cinq ans d'emprisonnement et de 75 000 € d'amende.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., livre VIII, titre II, chapitre Ier (art. L. 821-1 à L. 821-87) ; ex-art. L. 823-12",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146152/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k33",
+   "type": "comp",
+   "q": "Qu'a changé l'ordonnance n° 2023-1142 du 6 décembre 2023 pour le commissariat aux comptes à compter du 1er janvier 2024 ?",
+   "r": "<b>Elle recodifie le titre II du livre VIII du Code de commerce</b> : la certification relève désormais des articles L. 821-53 à L. 821-56 (ex-L. 823-9) et l'ancien article L. 823-12 est abrogé. Le Haut conseil du commissariat aux comptes devient la Haute autorité de l'audit (H2A), dont les missions s'étendent à la supervision de la certification des informations en matière de durabilité.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Points de vigilance#5"
+   ],
+   "src": "Ordonnance n° 2023-1142 du 6 décembre 2023, art. 32 et 40 ; rapport au Président de la République",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519333",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k34",
+   "type": "comp",
+   "q": "Selon l'article 38 quater de l'annexe III du CGI, dans quelle mesure les entreprises doivent-elles respecter les définitions du plan comptable général ?",
+   "r": "<b>Elles les respectent sous réserve qu'elles ne soient pas incompatibles avec les règles applicables pour l'assiette de l'impôt.</b> Les définitions fiscales de l'article 38 ter de l'annexe III (stocks, productions en cours, produits, emballages) s'imposent même si les plans comptables en retiennent d'autres.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "CGI, ann. III, art. 38 quater ; BOI-BIC-DECLA-30-10-20-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006296545",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-08-k35",
+   "type": "comp",
+   "q": "Que prévoit la règle fiscale d'intangibilité du bilan d'ouverture posée par l'article 38, 4 bis du CGI ?",
+   "r": "<b>L'actif net du bilan d'ouverture du premier exercice non prescrit ne peut être corrigé des omissions ou erreurs entraînant sa sous-estimation ou sa surestimation.</b> Sont exclues les erreurs intervenues plus de sept ans avant l'ouverture de cet exercice, les amortissements excessifs au regard des usages déduits au cours d'exercices prescrits et la déduction en charges de dépenses qui auraient dû être immobilisées.",
+   "base": [
+    "Règles essentielles#19"
+   ],
+   "src": "CGI, art. 38, 4 bis ; BOI-BIC-BASE-40-20-10 ; BOI-BIC-BASE-40-20-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/5794-PGP.html/identifiant=BOI-BIC-BASE-40-20-10-20210519",
+   "fiab": "stable"
+  }
+ ]
+}

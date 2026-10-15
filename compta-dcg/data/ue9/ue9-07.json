@@ -168,6 +168,7 @@
  "exercices": [
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Le 1er décembre N, un loyer trimestriel de 3 000 € (décembre à février) a été enregistré en 613. Passez l'écriture de régularisation au 31 décembre.",
    "lib": "Charge constatée d'avance",
@@ -197,6 +198,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "L'électricité de décembre (800 € HT, TVA 160 €) a été consommée mais la facture n'est pas arrivée. Régularisez au 31 décembre.",
    "lib": "Facture non parvenue",
@@ -232,6 +234,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Une prestation de 1 500 € HT (TVA 20 %) a été réalisée en décembre et sera facturée en janvier. Régularisez au 31 décembre.",
    "lib": "Facture à établir",
@@ -267,6 +270,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Emprunt bancaire de 60 000 € à 4 %, intérêts payés chaque 30 avril pour les 12 mois écoulés. Intérêts courus au 31 décembre ?",
    "a": 1600,
@@ -278,6 +282,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Enregistrez ces intérêts courus de 1 600 € au 31 décembre sur l'emprunt bancaire.",
    "lib": "Intérêts courus non échus",
@@ -308,6 +313,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un produit constaté d'avance figure :",
    "opts": [
@@ -323,6 +329,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le 1er janvier N+1, que deviennent les écritures de régularisation (408, 418, 486, 487) ?",
    "opts": [
@@ -338,6 +345,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Total des comptes de classe 7 : 540 000 €. Total des comptes de classe 6 (IS compris) : 498 000 €. Résultat de l'exercice ?",
    "a": 42000,
@@ -349,6 +357,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un solde créditeur du compte 120 signifie :",
    "opts": [
@@ -364,6 +373,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Bénéfice 42 000 €, capital 100 000 €, réserve légale déjà constituée 6 000 €, aucune perte antérieure. Dotation à la réserve légale ?",
    "a": 2100,
@@ -375,6 +385,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La balance après inventaire est :",
    "opts": [
@@ -390,6 +401,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Le 1er octobre N, la société Orvalis encaisse 12 000 € HT pour un contrat de maintenance couvrant douze mois, enregistré en 706. Régularisation au 31 décembre N :",
    "opts": [
@@ -405,6 +417,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Au 31 décembre, les salariés ont acquis des congés payés non encore pris, évalués à 18 000 € bruts plus 7 200 € de charges patronales. Écriture de clôture :",
    "opts": [
@@ -420,6 +433,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles affirmations sur les charges constatées d'avance sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -441,6 +455,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles écritures d'inventaire ne sont pas contre-passées au 1er janvier N+1 ? (plusieurs réponses possibles)",
    "opts": [
@@ -461,6 +476,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Berlan détient des obligations (VMP) de 20 000 € au taux de 3 %, coupon annuel versé le 1er avril. Au 31 décembre, quelle écriture d'intérêts courus passe-t-elle ?",
    "opts": [
@@ -476,6 +492,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Au 1er janvier N+1, la facture non parvenue d'électricité (800 € HT, TVA 160 €, soit 960 € en 408) est contre-passée. Le 12 janvier, la facture réelle arrive : 850 € HT, TVA 170 €. Quelle charge d'électricité porte finalement l'exercice N+1 au titre de décembre N ?",
    "opts": [
@@ -491,6 +508,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Lioré (PME, exercice clos le 31 décembre N) calcule un IS de 10 500 € pour N. Elle a versé 8 000 € d'acomptes en N. Comment comptabilise-t-elle l'IS au 31 décembre N ?",
    "opts": [
@@ -506,6 +524,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "En 2025, la SARL Nerval, PME éligible au taux réduit, dégage un bénéfice fiscal de 60 000 €. Taux réduit 15 % jusqu'à 42 500 €, taux normal 25 % au-delà. Quel est le montant de l'IS ?",
    "a": 10750,
@@ -517,6 +536,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Vézac présente une perte de 15 000 € en N. L'assemblée décide de la reporter. Écriture d'affectation :",
    "opts": [
@@ -532,6 +552,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quels éléments entrent dans le calcul du bénéfice distribuable au sens de l'article L. 232-11 du Code de commerce ? (plusieurs réponses possibles)",
    "opts": [
@@ -553,6 +574,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La SA Mirval (capital 200 000 €, réserve légale 19 000 €) réalise un bénéfice de 50 000 € en N, sans perte antérieure. Quelle dotation à la réserve légale l'assemblée doit-elle décider ?",
    "opts": [
@@ -568,6 +590,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Affectation du bénéfice N de 42 000 € décidée par l'AGO : réserve légale 2 100 €, dividendes 20 000 €, le solde en report à nouveau. Enregistrez l'affectation.",
    "lib": "Affectation du résultat",
@@ -610,6 +633,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "La société Télia a souscrit le 1er novembre N une assurance annuelle de 2 400 € (hors TVA), enregistrée en 616 et payée en totalité. Elle a aussi facturé le 15 décembre N 6 000 € HT de marchandises livrées le 10 janvier N+1 (enregistré en 707). Quel est l'effet cumulé des régularisations sur le résultat de N ?",
    "opts": [
@@ -625,6 +649,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 3,
    "q": "La SARL Alcor doit payer son solde d'IS pour l'exercice clos le 31 décembre N. Les acomptes versés en N ont dépassé l'IS dû de 1 200 €. Quelle est la situation au 31 décembre N ?",
    "opts": [

@@ -1,0 +1,433 @@
+{
+ "id": "ue10-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-02-k01",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il un actif ?",
+   "r": "<b>Un élément identifiable du patrimoine ayant une valeur économique positive pour l'entité</b>, c'est-à-dire un élément générant une ressource que l'entité contrôle du fait d'événements passés et dont elle attend des avantages économiques futurs.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 211-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k02",
+   "type": "def",
+   "q": "Qu'est-ce qu'une immobilisation incorporelle selon le Plan comptable général (PCG) ?",
+   "r": "<b>Un actif non monétaire sans substance physique</b>, à la différence de l'immobilisation corporelle, qui est un actif physique.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 211-5 et 211-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k03",
+   "type": "def",
+   "q": "Qu'est-ce qu'une immobilisation corporelle selon le Plan comptable général (PCG) ?",
+   "r": "<b>Un actif physique</b> détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, et dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 211-5 et 211-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k04",
+   "type": "comp",
+   "q": "Selon le PCG, quelles conditions de comptabilisation doivent être réunies pour qu'une immobilisation corporelle ou incorporelle soit inscrite à l'actif ?",
+   "r": "<b>Il doit être probable que l'entité bénéficiera des avantages économiques futurs correspondants</b>, et le coût ou la valeur de l'immobilisation doit pouvoir être évalué avec une fiabilité suffisante.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, art. 212-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k05",
+   "type": "comp",
+   "q": "Selon le PCG, à quelle valeur une immobilisation est-elle évaluée initialement, suivant la façon dont elle entre dans le patrimoine ?",
+   "r": "<b>À son coût</b> : coût d'acquisition pour un actif acquis à titre onéreux, coût de production pour un actif produit, valeur vénale pour un actif acquis à titre gratuit ou par voie d'échange.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, art. 213-1 ; C. com., art. L. 123-18",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k06",
+   "type": "def",
+   "q": "Comment le Code de commerce (art. R. 123-178) définit-il le coût d'acquisition d'un bien ?",
+   "r": "<b>Le prix d'achat augmenté des frais accessoires nécessaires à la mise en état d'utilisation du bien.</b>",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. R. 123-178 (en vigueur depuis le 27 mars 2007)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k07",
+   "type": "def",
+   "q": "Selon l'article 213-8 du PCG, de quoi se compose le coût d'acquisition d'une immobilisation acquise à titre onéreux ?",
+   "r": "<b>Du prix d'achat</b>, y compris droits de douane et taxes non récupérables, après déduction des remises, rabais commerciaux et escomptes de règlement, <b>plus tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner selon l'utilisation prévue par la direction. Les frais externes de formation nécessaires à sa mise en service peuvent, sur option, y être rattachés.",
+   "base": [
+    "Règles essentielles#2",
+    "Règles essentielles#4"
+   ],
+   "src": "PCG, art. 213-8",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k08",
+   "type": "comp",
+   "q": "Dans les comptes individuels, comment le PCG permet-il de traiter les droits de mutation, honoraires, commissions et frais d'actes liés à l'acquisition d'une immobilisation ?",
+   "r": "<b>Ils peuvent, sur option, être rattachés au coût d'acquisition ou comptabilisés en charges</b> ; le rattachement au coût est la méthode de référence. Cette option est distincte de celle retenue pour les titres.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, art. 213-8",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k09",
+   "type": "comp",
+   "q": "Sur le plan fiscal, comment s'exerce l'option relative aux frais d'acquisition des immobilisations corporelles et incorporelles ?",
+   "r": "<b>Par la simple comptabilisation des frais en immobilisation ou en charges</b> : aucune option fiscale différente de l'option comptable n'est possible. L'option est irrévocable et s'applique à toutes les immobilisations corporelles et incorporelles acquises.",
+   "base": [
+    "Règles essentielles#6",
+    "Points de vigilance#0"
+   ],
+   "src": "BOI-BIC-CHG-20-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/1846-PGP.html/identifiant=BOI-BIC-CHG-20-20-10-20190109",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k10",
+   "type": "comp",
+   "q": "Quel traitement reçoivent les honoraires directement liés à la mise en état d'utilisation d'une immobilisation, au regard de l'option sur les frais d'acquisition ?",
+   "r": "<b>Ils restent dans le coût d'acquisition</b> et n'entrent pas dans l'option sur les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes), qui est globale et irrévocable pour toutes les immobilisations corporelles et incorporelles.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "BOI-BIC-CHG-20-20-10 ; PCG, art. 213-8",
+   "url": "https://bofip.impots.gouv.fr/bofip/1846-PGP.html/identifiant=BOI-BIC-CHG-20-20-10-20190109",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k11",
+   "type": "def",
+   "q": "Qu'appelle-t-on un « actif éligible » pour l'incorporation des coûts d'emprunt selon le PCG ?",
+   "r": "<b>Un actif exigeant une longue période de préparation ou de construction avant de pouvoir être utilisé ou vendu.</b> Les coûts d'emprunt directement attribuables à l'acquisition ou à la période de construction ou de production d'un tel actif peuvent être incorporés à son coût.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "PCG, art. 213-9",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k12",
+   "type": "comp",
+   "q": "Quelles méthodes le PCG autorise-t-il pour comptabiliser les coûts d'emprunt d'un actif éligible ?",
+   "r": "<b>Deux méthodes : la comptabilisation en charges ou l'incorporation au coût de l'actif.</b> La méthode retenue s'applique de façon cohérente et permanente à tous les actifs éligibles.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "PCG, art. 213-9",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k13",
+   "type": "def",
+   "q": "Comment le Code de commerce (art. R. 123-178) définit-il le coût de production d'une immobilisation ?",
+   "r": "<b>Le coût d'acquisition des matières consommées, plus les charges directes et une fraction des charges indirectes de production.</b> Les intérêts des capitaux empruntés pour financer la fabrication peuvent être inclus lorsqu'ils concernent la période de fabrication.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. R. 123-178 (en vigueur depuis le 27 mars 2007)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k14",
+   "type": "comp",
+   "q": "Selon le PCG, quel sort reçoit la quote-part de charges correspondant à la sous-activité dans le coût de production d'une immobilisation ?",
+   "r": "<b>Elle n'est pas incorporable au coût de production</b>, pour les immobilisations comme pour les stocks : les frais généraux fixes de production sont affectés sur la base de la capacité normale des installations.",
+   "base": [
+    "Règles essentielles#7",
+    "Points de vigilance#5"
+   ],
+   "src": "PCG, art. 213-14 et 213-15",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k15",
+   "type": "comp",
+   "q": "Selon l'approche par composants du PCG, quand un élément d'une immobilisation est-il comptabilisé séparément avec son propre plan d'amortissement ?",
+   "r": "<b>Lorsque, dès l'origine, il a une utilisation différente</b> des autres éléments constitutifs de l'actif. Si les éléments sont exploités de façon indissociable, un plan d'amortissement unique est retenu.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 214-9",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k16",
+   "type": "comp",
+   "q": "Selon le PCG, comment comptabiliser les dépenses de gros entretien ou de grandes révisions faisant l'objet de programmes pluriannuels, si aucune provision pour gros entretien n'a été constatée ?",
+   "r": "<b>Dès l'origine, comme un composant distinct</b> de l'immobilisation, lorsque ces programmes résultent de lois, règlements ou pratiques constantes de l'entité. La méthode des composants exclut la constatation de provisions pour les mêmes travaux.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 214-9 et 214-10",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k17",
+   "type": "comp",
+   "q": "Selon le PCG, comment sont comptabilisées les dépenses engagées durant la phase de recherche d'un projet ?",
+   "r": "<b>En charges, lorsqu'elles sont encourues</b> ; elles ne peuvent plus être incorporées a posteriori au coût d'une immobilisation incorporelle. Seuls les frais de développement peuvent être inscrits à l'actif, lorsque les conditions de l'article 212-3 sont réunies.",
+   "base": [
+    "Définitions#4",
+    "Points de vigilance#2"
+   ],
+   "src": "PCG, art. 212-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k18",
+   "type": "comp",
+   "q": "Selon le PCG, comment traiter les dépenses d'un projet lorsque l'entité ne peut distinguer la phase de recherche de la phase de développement ?",
+   "r": "<b>Comme si elles étaient encourues uniquement lors de la phase de recherche</b>, c'est-à-dire en charges lorsqu'elles sont encourues.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 212-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k19",
+   "type": "comp",
+   "q": "Selon le PCG, à quelles conditions les frais de développement peuvent-ils être inscrits à l'actif ?",
+   "r": "<b>S'ils se rapportent à des projets nettement individualisés, ayant de sérieuses chances de réussite technique et de rentabilité commerciale</b>, et si l'entité démontre l'ensemble des critères de l'article 212-3 (faisabilité technique, intention et capacité d'achever et d'utiliser ou de vendre, avantages économiques futurs probables, ressources disponibles, évaluation fiable). À défaut, ils sont comptabilisés en charges lorsqu'ils sont encourus.",
+   "base": [
+    "Règles essentielles#10",
+    "Points de vigilance#2"
+   ],
+   "src": "PCG, art. 212-3 (règlement ANC n° 2018-01)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k20",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2018-01, quels traitements le PCG qualifie-t-il de « méthode de référence » pour les frais de développement, d'acquisition et de constitution ?",
+   "r": "<b>L'inscription à l'actif des frais de développement, le rattachement des frais d'acquisition au coût de l'immobilisation et la comptabilisation en charges des frais de constitution.</b> Les manuels antérieurs parlent de « méthode préférentielle ».",
+   "base": [
+    "Points de vigilance#7"
+   ],
+   "src": "Règlement ANC n° 2018-01 ; PCG, art. 212-3, 212-9 et 213-8",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2018/REGLT_2018_01_PCG.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k21",
+   "type": "comp",
+   "q": "En quoi les normes IFRS (IAS 23, IAS 38) diffèrent-elles du PCG pour les coûts d'emprunt et les frais de développement ?",
+   "r": "<b>En IFRS, l'incorporation des coûts d'emprunt pour les actifs qualifiés et l'activation des frais de développement remplissant les critères sont obligatoires</b>, alors que le PCG laisse une option. En comptes individuels français, seul le PCG s'applique.",
+   "base": [
+    "Points de vigilance#9"
+   ],
+   "src": "PCG, art. 212-3 et 213-9 (options) ; IAS 23 et IAS 38 ; C. com., art. L. 233-24 (dispense des règles françaises pour les comptes consolidés établis selon les normes internationales adoptées par l'Union européenne, règlement (CE) n° 1606/2002)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161295/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k22",
+   "type": "comp",
+   "q": "Selon le PCG, pourquoi une marque ou une liste de clients créée en interne n'est-elle pas comptabilisée en immobilisation incorporelle ?",
+   "r": "<b>Parce que les dépenses engagées pour la créer ne peuvent pas être distinguées du coût de développement de l'activité dans son ensemble.</b> Il en va de même des fonds commerciaux et titres de journaux et de magazines créés en interne, et des coûts engagés ultérieurement à leur titre.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "PCG, art. 212-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k23",
+   "type": "def",
+   "q": "Selon le PCG, de quoi est constitué le fonds commercial inscrit à l'actif ?",
+   "r": "<b>Des éléments incorporels du fonds de commerce acquis</b> qui ne font pas l'objet d'une évaluation et d'une comptabilisation séparées au bilan.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "PCG, art. 212-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k24",
+   "type": "def",
+   "q": "Selon le Code de commerce, quelles dépenses peuvent figurer à l'actif au poste « frais d'établissement » ?",
+   "r": "<b>Les dépenses engagées à l'occasion d'opérations qui conditionnent l'existence ou le développement de l'entreprise</b>, mais dont le montant ne peut être rapporté à des productions de biens et de services déterminées.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. R. 123-186 (version en vigueur depuis le 1er janvier 2016, issue du décret n° 2015-903 du 23 juillet 2015)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927454",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k25",
+   "type": "comp",
+   "q": "Selon le PCG, quelle est la méthode de référence pour les frais de constitution, de transformation et de premier établissement ?",
+   "r": "<b>Leur comptabilisation en charges.</b> Ils peuvent toutefois être inscrits à l'actif en frais d'établissement et sont alors amortis selon un plan, dans un délai maximal de cinq ans.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-186 et R. 123-187 (amortissement selon un plan, en cinq ans au plus)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k26",
+   "type": "comp",
+   "q": "Selon le PCG, comment peuvent être traités les frais d'augmentation de capital, de fusion et de scission ?",
+   "r": "<b>Ils peuvent être inscrits à l'actif en frais d'établissement ou imputés sur les primes d'émission et de fusion</b> ; en cas d'insuffisance de la prime, ils sont comptabilisés en charges.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-186 et R. 123-187 (amortissement selon un plan, en cinq ans au plus)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k27",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quel effet ont des postes « frais d'établissement » ou « frais de développement » non apurés sur la distribution de dividendes ?",
+   "r": "<b>Aucune distribution de dividendes n'est possible</b> tant que ces postes ne sont pas apurés, sauf si le montant des réserves libres est au moins égal à celui des frais non amortis.",
+   "base": [
+    "Règles essentielles#18"
+   ],
+   "src": "C. com., art. R. 123-187 (rédaction issue du décret n° 2015-903 du 23 juillet 2015)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927450",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k28",
+   "type": "def",
+   "q": "Qu'est-ce qu'une « solution informatique » au sens du Plan comptable général (PCG) ?",
+   "r": "<b>Un ensemble organisé de fonctionnalités logicielles destiné à répondre aux besoins des utilisateurs</b> (notamment stocker, manipuler, sécuriser ou transmettre des données). Porteuse d'avantages économiques futurs et utilisée au-delà d'un exercice, elle constitue une immobilisation incorporelle.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 611-1 et suivants (règlement ANC n° 2023-05)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k29",
+   "type": "comp",
+   "q": "Selon le PCG, à quelles conditions et jusqu'à quand le coût de production d'une solution informatique créée en interne est-il inscrit à l'actif ?",
+   "r": "<b>Lorsque les critères cumulatifs de l'article 611-3 sont réunis</b> : faisabilité technique, intention d'achever et d'utiliser la solution, capacité à l'utiliser ou à la commercialiser, avantages économiques futurs probables, évaluation fiable des dépenses attribuables. <b>L'activation cesse lorsque la solution est en état de fonctionner</b> selon l'utilisation prévue par la direction ; les études préliminaires restent en charges.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 611-3 et 611-4 (règlement ANC n° 2023-05)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k30",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2023-05, quelles règles du PCG s'appliquent aux dépenses de création d'un site internet ?",
+   "r": "<b>Celles des « solutions informatiques » (art. 611-1 et suivants)</b>, pour les exercices ouverts à compter du 1er janvier 2024. Les anciens articles 600-1 à 612-4 sur les logiciels et les sites internet sont abrogés, ces notions étant jugées trop limitatives.",
+   "base": [
+    "Règles essentielles#14",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2023-05 ; PCG, art. 611-1 et suivants",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k31",
+   "type": "comp",
+   "q": "Selon le PCG, comment est reprise au résultat une subvention d'investissement qui finance une immobilisation amortissable ?",
+   "r": "<b>Sur la même durée et au même rythme que l'amortissement</b> de la valeur de l'immobilisation acquise ou créée au moyen de la subvention. Des dérogations à la durée et au rythme de reprise peuvent être admises lorsque des circonstances particulières le justifient.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "PCG, art. 312-1 (dernier alinéa issu du règlement ANC n° 2020-09)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k32",
+   "type": "comp",
+   "q": "Selon le PCG, sur quelle durée est reprise au résultat une subvention d'investissement qui finance une immobilisation non amortissable ?",
+   "r": "<b>Sur le nombre d'années pendant lequel l'immobilisation est inaliénable aux termes du contrat</b> ; à défaut de clause d'inaliénabilité, par dixième chaque exercice, soit sur dix ans.",
+   "base": [
+    "Règles essentielles#15",
+    "Chiffres et seuils#3"
+   ],
+   "src": "PCG, art. 312-1 (dernier alinéa issu du règlement ANC n° 2020-09)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k33",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quel compte est enregistrée la quote-part de subvention d'investissement virée au résultat ?",
+   "r": "<b>Au compte 747</b>, qui est un produit d'exploitation ; le compte 777 est supprimé.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; règlement ANC n° 2023-03 (plan de comptes) ; plan de comptes 2026, comptes 152, 657, 747 et 757",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k34",
+   "type": "comp",
+   "q": "Quelle tolérance l'administration fiscale admet-elle pour les petits matériels et outillages de faible valeur unitaire ?",
+   "r": "<b>La déduction immédiate en charges</b> de leur prix d'acquisition lorsque la valeur unitaire hors taxes n'excède pas 500 € ; pour un matériel composé de plusieurs éléments, le seuil s'apprécie sur le prix global de l'ensemble. La tolérance s'étend aux petits mobiliers et matériels de bureau et aux logiciels.",
+   "base": [
+    "Chiffres et seuils#0"
+   ],
+   "src": "BOI-BIC-CHG-20-30-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/2109-PGP.html/identifiant=BOI-BIC-CHG-20-30-10-20170301",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-02-k35",
+   "type": "comp",
+   "q": "Dans quels cas la tolérance fiscale de déduction immédiate des petits matériels et outillages de faible valeur est-elle exclue ?",
+   "r": "<b>Pour les biens dont l'utilisation constitue l'objet même de l'activité</b>, et pour l'équipement initial complet d'un immeuble de bureaux, d'un restaurant ou d'un magasin ou son renouvellement complet, même si chaque élément coûte moins de 500 € HT.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "BOI-BIC-CHG-20-30-10 ; BOI-BIC-CHG-20-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1830-PGP.html/identifiant=BOI-BIC-CHG-20-10-20-20160203",
+   "fiab": "stable"
+  }
+ ]
+}

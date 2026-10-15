@@ -1,0 +1,437 @@
+{
+ "id": "ue2-06",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue2-06-k01",
+   "type": "def",
+   "q": "Qu'est-ce que la cessation des paiements d'un débiteur en droit des entreprises en difficulté ?",
+   "r": "<b>L'impossibilité de faire face au passif exigible avec son actif disponible.</b> Le débiteur qui établit que les réserves de crédit ou les moratoires dont il bénéficie de la part de ses créanciers lui permettent d'y faire face n'est pas en cessation des paiements.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 631-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146111/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k02",
+   "type": "def",
+   "q": "Qu'est-ce que la procédure de sauvegarde ouverte à un débiteur en difficulté ?",
+   "r": "<b>Une procédure collective ouverte sur demande du débiteur qui, sans être en cessation des paiements, justifie de difficultés qu'il n'est pas en mesure de surmonter.</b>",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 620-1, L. 631-1 et L. 640-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133199/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k03",
+   "type": "def",
+   "q": "Qu'est-ce que la procédure de redressement judiciaire d'une entreprise ?",
+   "r": "<b>La procédure collective ouverte au débiteur en cessation des paiements</b>, destinée à permettre la poursuite de l'activité, le maintien de l'emploi et l'apurement du passif.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 620-1, L. 631-1 et L. 640-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133199/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k04",
+   "type": "def",
+   "q": "Qu'est-ce que la procédure de liquidation judiciaire d'une entreprise ?",
+   "r": "<b>La procédure collective ouverte au débiteur en cessation des paiements dont le redressement est manifestement impossible.</b> Elle est destinée à mettre fin à l'activité de l'entreprise ou à réaliser le patrimoine du débiteur par une cession globale ou séparée de ses droits et de ses biens.",
+   "base": [
+    "Définitions#1",
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 620-1, L. 631-1 et L. 640-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133199/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k05",
+   "type": "def",
+   "q": "Qu'est-ce que le mandat ad hoc dans la prévention des difficultés des entreprises ?",
+   "r": "<b>La procédure amiable par laquelle le président du tribunal, à la demande d'un débiteur, désigne un mandataire ad hoc dont il détermine la mission.</b> Toute personne appelée à cette procédure, ou qui en a connaissance par ses fonctions, est tenue à la confidentialité.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 611-3, L. 611-4 et L. 611-15",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146095",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k06",
+   "type": "def",
+   "q": "Qu'est-ce que la procédure de conciliation prévue par le Code de commerce pour les entreprises en difficulté ?",
+   "r": "<b>Une procédure amiable ouverte au débiteur qui éprouve une difficulté juridique, économique ou financière, avérée ou prévisible, et ne se trouve pas en cessation des paiements depuis plus de quarante-cinq jours.</b> Le conciliateur désigné par le président du tribunal favorise la conclusion, entre le débiteur et ses principaux créanciers, d'un accord amiable destiné à mettre fin aux difficultés.",
+   "base": [
+    "Définitions#2",
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 611-3, L. 611-4 et L. 611-15",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146095",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k07",
+   "type": "comp",
+   "q": "Comment se déroule la procédure d'alerte du commissaire aux comptes d'une société anonyme (SA) ?",
+   "r": "<b>Il informe le président du conseil d'administration ou du directoire des faits de nature à compromettre la continuité de l'exploitation.</b> À défaut de réponse sous quinze jours ou si elle ne permet pas d'être assuré de la continuité, il invite par écrit à faire délibérer le conseil, puis présente un rapport spécial à l'assemblée générale ; si les décisions prises n'assurent pas la continuité, il informe le président du tribunal.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 234-1 et L. 234-2 ; R. 234-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033462246",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k08",
+   "type": "comp",
+   "q": "Quel pouvoir le président du tribunal de commerce détient-il face à une société commerciale dont la continuité d'exploitation est compromise ?",
+   "r": "<b>Il peut convoquer ses dirigeants pour envisager les mesures propres à redresser la situation</b>, lorsqu'il résulte de tout acte, document ou procédure que la société connaît des difficultés de nature à compromettre la continuité de l'exploitation. Ce pouvoir vaut aussi pour un GIE ou une entreprise individuelle commerciale ou artisanale.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 223-36, L. 225-232 et L. 611-2 ; C. trav., art. L. 2312-63",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146044",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k09",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue l'accord de conciliation constaté de l'accord de conciliation homologué ?",
+   "r": "<b>Le président du tribunal constate l'accord sur requête conjointe des parties et lui donne force exécutoire, sans publication.</b> Le tribunal homologue l'accord, à la demande du débiteur, si celui-ci n'est pas en cessation des paiements ou si l'accord y met fin, si ses termes sont de nature à assurer la pérennité de l'activité et s'il ne porte pas atteinte aux intérêts des créanciers non signataires.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 611-6, L. 611-7, L. 611-8 et L. 611-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044052540",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k10",
+   "type": "comp",
+   "q": "À quels créanciers bénéficie le privilège de conciliation, dit « new money » ?",
+   "r": "<b>À ceux qui ont consenti un nouvel apport en trésorerie, ou fourni un nouveau bien ou service, dans le cadre de la conciliation ayant abouti à l'accord homologué.</b> Ils sont payés par privilège.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 611-6, L. 611-7, L. 611-8 et L. 611-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044052540",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k11",
+   "type": "comp",
+   "q": "À quelles conditions un débiteur peut-il obtenir l'ouverture d'une procédure de sauvegarde accélérée ?",
+   "r": "<b>Il doit être engagé dans une conciliation et justifier d'un projet de plan susceptible de recueillir un soutien suffisamment large des parties affectées</b> ; ses comptes doivent être certifiés par un commissaire aux comptes ou établis par un expert-comptable. À défaut de plan arrêté dans le délai légal, le tribunal met fin à la procédure.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 621-3, L. 622-1, L. 626-12, L. 628-1 et L. 628-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044052760",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k12",
+   "type": "comp",
+   "q": "Quel est le rôle de l'administrateur judiciaire en sauvegarde et en redressement judiciaire ?",
+   "r": "<b>En sauvegarde, il surveille ou assiste le débiteur, dont le dirigeant continue d'assurer l'administration de l'entreprise ; en redressement, il peut l'assister ou assurer seul, en tout ou partie, cette administration.</b> En deçà de seuils fixés par décret, le tribunal n'est pas tenu de le désigner.",
+   "base": [
+    "Règles essentielles#8",
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 621-4, L. 621-9, L. 622-1, L. 622-20, L. 631-5, L. 631-12, L. 640-5 et L. 641-4",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006133197",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k13",
+   "type": "comp",
+   "q": "Quelle procédure amiable reste ouverte à un débiteur en cessation des paiements depuis moins de quarante-cinq jours ?",
+   "r": "<b>La conciliation, mais pas la sauvegarde</b>, réservée au débiteur qui n'est pas en cessation des paiements. Sans conciliation, il doit demander l'ouverture d'un redressement ou d'une liquidation judiciaire dans les quarante-cinq jours ; le dirigeant qui l'omet sciemment encourt l'interdiction de gérer.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 611-4, L. 620-1, L. 631-4 et L. 653-8",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k14",
+   "type": "comp",
+   "q": "En période suspecte, quel est le sort des paiements de dettes intervenus depuis la date de cessation des paiements ?",
+   "r": "<b>Sont nuls de droit les paiements de dettes non échues et les paiements de dettes échues faits par un mode de paiement non communément admis.</b> Les autres paiements de dettes échues, comme les actes à titre onéreux, peuvent être annulés si ceux qui ont traité avec le débiteur ont eu connaissance de la cessation des paiements.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 632-1 et L. 632-2",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k15",
+   "type": "comp",
+   "q": "Hormis certains paiements, quels actes du débiteur sont nuls de droit lorsqu'ils interviennent depuis la date de cessation des paiements ?",
+   "r": "<b>Notamment les actes à titre gratuit translatifs de propriété, les contrats commutatifs où les obligations du débiteur excèdent notablement celles de l'autre partie et les sûretés (hypothèque, nantissement, gage) constituées pour des dettes antérieurement contractées.</b> Le tribunal peut en outre annuler les actes à titre gratuit faits dans les six mois précédant cette date.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 632-1 et L. 632-2",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k16",
+   "type": "comp",
+   "q": "Quels effets le jugement d'ouverture d'une procédure collective produit-il à l'égard des créanciers antérieurs ?",
+   "r": "<b>Il interdit de payer toute créance née antérieurement</b>, sauf paiement par compensation de créances connexes ; il interrompt ou interdit leurs actions en justice tendant au paiement d'une somme d'argent ou à la résolution d'un contrat pour défaut de paiement d'une somme d'argent, et arrête ou interdit les procédures d'exécution.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k17",
+   "type": "comp",
+   "q": "Que risque le créancier antérieur qui ne déclare pas sa créance au mandataire judiciaire dans le délai légal ?",
+   "r": "<b>Il n'est pas admis dans les répartitions et les dividendes, sauf relevé de forclusion par le juge-commissaire.</b> Le délai court à compter de la publication du jugement d'ouverture au BODACC : deux mois, augmentés de deux mois pour les créanciers ne demeurant pas en France métropolitaine.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k18",
+   "type": "comp",
+   "q": "Dans quels cas les parties affectées sont-elles réparties en classes appelées à voter sur le projet de plan ?",
+   "r": "<b>Au-delà de seuils fixés par décret, ou à la demande du débiteur.</b> Depuis l'ordonnance du 15 septembre 2021 (procédures ouvertes à compter du 1er octobre 2021), ces classes de parties affectées remplacent les comités de créanciers.",
+   "base": [
+    "Règles essentielles#7",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. com., art. L. 622-7, L. 622-21, L. 622-24, L. 622-26, L. 626-29 et s. ; R. 622-24",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146193/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k19",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue le rôle du juge-commissaire de celui du mandataire judiciaire dans une procédure collective ?",
+   "r": "<b>Le juge-commissaire veille au déroulement rapide de la procédure et à la protection des intérêts en présence</b> ; le mandataire judiciaire, lui, a seul qualité pour agir au nom et dans l'intérêt collectif des créanciers.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 621-4, L. 621-9, L. 622-1, L. 622-20, L. 631-5, L. 631-12, L. 640-5 et L. 641-4",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006133197",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k20",
+   "type": "comp",
+   "q": "Quel effet le jugement de liquidation judiciaire produit-il sur les pouvoirs du débiteur ?",
+   "r": "<b>Il emporte de plein droit dessaisissement du débiteur de l'administration et de la disposition de ses biens.</b> Ses droits et actions sont exercés par le liquidateur, qui procède aux opérations de liquidation et à la vérification des créances.",
+   "base": [
+    "Règles essentielles#6",
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 640-1, L. 641-2, L. 641-9, L. 643-9 et L. 643-11",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133199/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k21",
+   "type": "comp",
+   "q": "Quels effets produit la clôture d'une liquidation judiciaire pour insuffisance d'actif à l'égard des créanciers et de la société débitrice ?",
+   "r": "<b>Les créanciers ne recouvrent pas l'exercice individuel de leurs actions</b>, sauf exceptions légales (notamment créance née d'une infraction dont le débiteur a été reconnu coupable, droits attachés à la personne du créancier, fraude). La société prend fin par l'effet de ce jugement de clôture, et non par le jugement qui ouvre ou prononce la liquidation.",
+   "base": [
+    "Règles essentielles#6",
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 640-1, L. 641-2, L. 641-9, L. 643-9 et L. 643-11",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133199/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k22",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue l'action pour insuffisance d'actif de la responsabilité civile ordinaire des dirigeants de SARL ou de SA ?",
+   "r": "<b>Hors procédure collective, les dirigeants répondent, envers la société ou les tiers, des fautes commises dans leur gestion (prescription de trois ans).</b> En liquidation judiciaire d'une personne morale, l'action pour insuffisance d'actif est exercée par le liquidateur ou le ministère public (subsidiairement par la majorité des contrôleurs) et ne peut pas être fondée sur une simple négligence.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 223-22, L. 223-23, L. 225-251, L. 651-2 et L. 651-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178209",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k23",
+   "type": "def",
+   "q": "Qu'est-ce que la faillite personnelle prononcée dans une procédure collective ?",
+   "r": "<b>Une sanction que le tribunal peut prononcer en redressement comme en liquidation judiciaire, qui emporte interdiction de diriger, gérer, administrer ou contrôler toute entreprise ou personne morale.</b> Le tribunal peut prononcer à sa place une interdiction de gérer ; l'une et l'autre durent quinze ans au plus.",
+   "base": [
+    "Règles essentielles#9",
+    "Chiffres et seuils#4"
+   ],
+   "src": "C. com., art. L. 651-2, L. 651-3, L. 653-1, L. 653-2, L. 653-8 et L. 653-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000045178209",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k24",
+   "type": "comp",
+   "q": "Depuis la loi du 14 février 2022, sur quel patrimoine portent les procédures du livre VI du Code de commerce visant un entrepreneur individuel ?",
+   "r": "<b>Sur son seul patrimoine professionnel.</b> Depuis le 15 mai 2022, les procédures du livre VI ouvertes à l'égard d'un entrepreneur individuel ne portent que sur ce patrimoine (titre VIII bis du livre VI).",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Loi n° 2022-172 du 14 février 2022 ; C. com., art. L. 681-1 à L. 681-4",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000045167536",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k25",
+   "type": "def",
+   "q": "Qu'est-ce que la responsabilité pénale des personnes morales ?",
+   "r": "<b>Les personnes morales, à l'exclusion de l'État, sont responsables pénalement des infractions commises, pour leur compte, par leurs organes ou représentants.</b> Cette responsabilité n'exclut pas celle des personnes physiques auteurs ou complices des mêmes faits ; le taux maximum de leur amende est le quintuple de celui prévu pour les personnes physiques.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. pén., art. 121-2 et 131-38",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k26",
+   "type": "def",
+   "q": "Qu'est-ce que le délit d'abus de biens sociaux commis par un dirigeant de SARL, de SA ou de SAS ?",
+   "r": "<b>Le fait de faire, de mauvaise foi, des biens ou du crédit de la société un usage que le dirigeant sait contraire à l'intérêt de celle-ci</b>, à des fins personnelles ou pour favoriser une autre société ou entreprise dans laquelle il est intéressé directement ou indirectement. Le même texte réprime l'usage de mauvaise foi des pouvoirs ou des voix.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 241-3, 4° et 5° (SARL) ; L. 242-6, 3° et 4° (SA) ; L. 244-1 (SAS)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006133178",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k27",
+   "type": "comp",
+   "q": "Comment peut être poursuivi le détournement commis par le gérant d'une SNC ou d'une société civile de droit commun ?",
+   "r": "<b>Comme un abus de confiance</b>, puni des mêmes peines que l'abus de biens sociaux. Le Code de commerce ne réprime en effet l'abus de biens sociaux que dans la SARL, la SA, la SCA et la SAS, y compris à l'égard du dirigeant de fait.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 241-3, L. 242-6, L. 243-1 et L. 244-1 ; C. pén., art. 314-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042780077",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k28",
+   "type": "def",
+   "q": "Qu'est-ce qu'un dividende fictif au sens du droit pénal des sociétés ?",
+   "r": "<b>Tout dividende distribué en violation des règles de l'article L. 232-12 du Code de commerce.</b> Est puni le fait, pour les dirigeants, d'en opérer la répartition entre les associés en l'absence d'inventaire ou au moyen d'inventaires frauduleux.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. L. 232-12 ; L. 241-3, 2° et 3° ; L. 242-6, 1° et 2°",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006133178",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k29",
+   "type": "def",
+   "q": "En quoi consiste le délit de présentation de comptes infidèles dans une SARL ou une SA ?",
+   "r": "<b>Présenter aux associés (SARL) ou publier ou présenter aux actionnaires (SA) des comptes annuels ne donnant pas une image fidèle du résultat des opérations de l'exercice, de la situation financière et du patrimoine, en vue de dissimuler la véritable situation de la société.</b> Le délit existe même en l'absence de toute distribution.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. L. 232-12 ; L. 241-3, 2° et 3° ; L. 242-6, 1° et 2°",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006133178",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k30",
+   "type": "def",
+   "q": "Qu'est-ce que le délit de banqueroute en droit des entreprises en difficulté ?",
+   "r": "<b>Un délit commis, en cas d'ouverture d'un redressement ou d'une liquidation judiciaire, notamment par les dirigeants de droit ou de fait d'une personne morale de droit privé.</b> Il vise entre autres le détournement ou la dissimulation d'actif, l'augmentation frauduleuse du passif et la tenue d'une comptabilité fictive, manifestement incomplète ou irrégulière.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 654-1 et L. 654-2",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006133200",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k31",
+   "type": "def",
+   "q": "Qu'est-ce que le délit d'escroquerie réprimé par le Code pénal ?",
+   "r": "<b>Le fait de tromper une personne pour la déterminer à remettre des fonds, des valeurs ou un bien quelconque, à fournir un service ou à consentir un acte opérant obligation ou décharge</b>, par l'usage d'un faux nom ou d'une fausse qualité, par l'abus d'une qualité vraie ou par l'emploi de manœuvres frauduleuses.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. pén., art. 313-1 et 314-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042780077",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k32",
+   "type": "def",
+   "q": "Qu'est-ce que le délit d'abus de confiance réprimé par le Code pénal ?",
+   "r": "<b>Le fait de détourner, au préjudice d'autrui, des fonds, des valeurs ou un bien quelconque remis et acceptés à charge de les rendre, de les représenter ou d'en faire un usage déterminé.</b>",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. pén., art. 313-1 et 314-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042780077",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k33",
+   "type": "comp",
+   "q": "Que doit faire le commissaire aux comptes qui a connaissance de faits délictueux au cours de sa mission ?",
+   "r": "<b>Il les révèle au procureur de la République, sans que sa responsabilité puisse être engagée par cette révélation.</b> Le défaut de révélation est puni de cinq ans d'emprisonnement et de 75 000 € d'amende.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 821-6, 3° ; livre VIII, titre II, chapitre Ier (art. L. 821-1 à L. 821-87) ; ex-art. L. 820-4, L. 820-7 et L. 823-12 ; ordonnance n° 2023-1142 du 6 décembre 2023",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559603",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k34",
+   "type": "def",
+   "q": "Qu'est-ce que le délit d'entrave aux vérifications du commissaire aux comptes ?",
+   "r": "<b>Le fait, pour tout dirigeant d'une personne ou entité ayant désigné un commissaire aux comptes pour la certification des comptes, de faire obstacle à ses vérifications ou contrôles ou de lui refuser la communication sur place des pièces utiles.</b> Depuis le 1er janvier 2024, il est réprimé par l'article L. 821-6, 3°, du Code de commerce (auparavant L. 820-4).",
+   "base": [
+    "Règles essentielles#14",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. com., art. L. 821-6, 3° ; livre VIII, titre II, chapitre Ier (art. L. 821-1 à L. 821-87) ; ex-art. L. 820-4, L. 820-7 et L. 823-12 ; ordonnance n° 2023-1142 du 6 décembre 2023",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559603",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue2-06-k35",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue une infraction occulte d'une infraction dissimulée pour la prescription de l'action publique ?",
+   "r": "<b>L'infraction occulte ne peut, en raison de ses éléments constitutifs, être connue ni de la victime ni de l'autorité judiciaire ; l'auteur d'une infraction dissimulée accomplit délibérément une manœuvre caractérisée pour en empêcher la découverte.</b> Dans les deux cas, le délai court du jour où l'infraction est apparue et a pu être constatée.",
+   "base": [
+    "Chiffres et seuils#5"
+   ],
+   "src": "C. pr. pén., art. 8 et 9-1 ; C. com., art. L. 223-23 et L. 225-254",
+   "url": null,
+   "fiab": "stable"
+  }
+ ]
+}

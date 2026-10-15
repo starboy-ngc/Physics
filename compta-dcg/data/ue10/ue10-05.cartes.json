@@ -1,0 +1,439 @@
+{
+ "id": "ue10-05",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-05-k01",
+   "type": "def",
+   "q": "Qu'est-ce qu'une participation au sens du Code de commerce et du Plan comptable général ?",
+   "r": "<b>Des droits dans le capital d'autres personnes morales</b>, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. Ils sont inscrits au compte 261 « Titres de participation ».",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. R. 123-184 ; PCG, art. 221-3 ; plan de comptes 2026, compte 261",
+   "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006258148",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k02",
+   "type": "comp",
+   "q": "Qu'est-ce qui détermine le compte d'inscription d'un titre détenu : participation, titre immobilisé, TIAP ou valeur mobilière de placement ?",
+   "r": "<b>La finalité de sa détention</b>, telle que la définissent les comptes 26, 27 et 50. Le pourcentage de capital détenu ne crée qu'une présomption : les titres représentant plus de 10 % du capital sont présumés être des titres de participation.",
+   "base": [
+    "Règles essentielles#0",
+    "Définitions#0"
+   ],
+   "src": "C. com., art. R. 123-184 ; PCG, plan de comptes 2026, comptes 26, 27 et 50",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k03",
+   "type": "def",
+   "q": "Que sont les titres immobilisés inscrits aux comptes 271 et 272 du Plan comptable général ?",
+   "r": "<b>Des titres, autres que les titres de participation, que l'entreprise a l'intention de conserver durablement</b> ou qu'elle n'a pas la possibilité de revendre à bref délai. Compte 271 : droit de propriété ; compte 272 : droit de créance.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "BOI-BIC-PVMV-30-10 (définitions comptables des titres) ; PCG, plan de comptes 2026, comptes 271, 272 et 273",
+   "url": "https://bofip.impots.gouv.fr/bofip/6356-PGP.html/identifiant=BOI-BIC-PVMV-30-10-20170503",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k04",
+   "type": "def",
+   "q": "Que sont les titres immobilisés de l'activité de portefeuille (TIAP, compte 273) ?",
+   "r": "<b>Des titres immobilisés en vue d'en retirer, à plus ou moins longue échéance, une rentabilité satisfaisante</b>, sans intervention dans la gestion des entreprises dont les titres sont détenus.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "BOI-BIC-PVMV-30-10 (définitions comptables des titres) ; PCG, plan de comptes 2026, comptes 271, 272 et 273",
+   "url": "https://bofip.impots.gouv.fr/bofip/6356-PGP.html/identifiant=BOI-BIC-PVMV-30-10-20170503",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k05",
+   "type": "def",
+   "q": "Que sont les valeurs mobilières de placement (compte 50) dans le plan de comptes du PCG ?",
+   "r": "<b>Des titres acquis en vue de réaliser un gain à brève échéance.</b> Les actions sont inscrites au compte 503, les obligations au compte 506 ; le compte 501 « Parts dans des entreprises liées » est supprimé depuis 2025.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "BOI-BIC-PVMV-30-10 ; PCG, plan de comptes 2026, comptes 50, 503, 506 et 5088 ; règlement ANC n° 2022-06",
+   "url": "https://bofip.impots.gouv.fr/bofip/6356-PGP.html/identifiant=BOI-BIC-PVMV-30-10-20170503",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k06",
+   "type": "comp",
+   "q": "Comment le PCG permet-il de traiter les frais liés à l'acquisition de titres (droits de mutation, honoraires, commissions, frais d'actes) ?",
+   "r": "<b>Sur option, ils sont rattachés au coût d'acquisition ou comptabilisés en charges.</b> L'option retenue vaut pour l'ensemble des titres immobilisés et des titres de placement, indépendamment de celle retenue pour les immobilisations corporelles et incorporelles.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, art. 213-8, 221-1 et 222-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k07",
+   "type": "comp",
+   "q": "Quel lien existe entre l'option comptable retenue pour les frais d'acquisition des titres et le résultat fiscal ?",
+   "r": "<b>Le résultat fiscal suit le choix comptable</b> : il n'est pas possible d'exercer une option fiscale différente de l'option retenue en matière comptable. L'option s'exerce par la seule comptabilisation des frais en immobilisation ou en charges.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "PCG, art. 213-8 et 221-1 ; BOI-BIC-CHG-20-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/1846-PGP.html/identifiant=BOI-BIC-CHG-20-20-10-20190109",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k08",
+   "type": "comp",
+   "q": "Que fait-on à la clôture lorsque la valeur d'inventaire de titres détenus devient inférieure à leur valeur nette comptable ?",
+   "r": "<b>On ramène la valeur nette comptable à la valeur d'inventaire</b> par une dépréciation, dotée au compte 6866 et reprise au compte 7866 lorsqu'elle devient sans objet. Les éléments d'actif étant évalués séparément, le calcul se fait ligne de titres par ligne de titres.",
+   "base": [
+    "Règles essentielles#2",
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 123-18 et L. 123-19",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k09",
+   "type": "comp",
+   "q": "Comment traite-t-on, dans les comptes individuels, une plus-value latente constatée sur des titres à la clôture ?",
+   "r": "<b>Elle n'est pas comptabilisée</b> : la plus-value constatée entre la valeur d'inventaire d'un bien et sa valeur d'entrée n'est jamais enregistrée en comptes individuels.",
+   "base": [
+    "Règles essentielles#2",
+    "Points de vigilance#6"
+   ],
+   "src": "C. com., art. L. 123-18 et L. 123-19",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k10",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur d'utilité retenue pour évaluer les titres de participation à l'inventaire ?",
+   "r": "<b>Ce que l'entité accepterait de décaisser pour obtenir les titres si elle avait à les acquérir</b>, qu'ils soient cotés ou non. Elle s'apprécie d'après la rentabilité et ses perspectives, les capitaux propres, les perspectives de réalisation, la conjoncture économique, les cours moyens de bourse du dernier mois et les motifs de l'acquisition.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, art. 221-3, 221-6 et 222-1 ; plan de comptes 2026, comptes 6866 et 7866",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k11",
+   "type": "comp",
+   "q": "Quelle valeur d'inventaire retient-on pour les titres immobilisés autres que les titres de participation et les TIAP, ainsi que pour les valeurs mobilières de placement ?",
+   "r": "<b>S'ils sont cotés, le cours moyen du dernier mois de l'exercice</b>, et non le cours du jour de clôture ; s'ils ne sont pas cotés, leur valeur probable de négociation. Les titres de placement suivent les mêmes règles que les titres immobilisés.",
+   "base": [
+    "Règles essentielles#3",
+    "Chiffres et seuils#1"
+   ],
+   "src": "PCG, art. 221-3, 221-6 et 222-1 ; plan de comptes 2026, comptes 6866 et 7866",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k12",
+   "type": "comp",
+   "q": "Quelle exception le PCG admet-il au principe de non-compensation entre lignes de titres lors de l'évaluation à la clôture ?",
+   "r": "<b>La baisse anormale et momentanée des cours</b> : pour les titres cotés autres que les titres de participation et les TIAP, titres de placement compris, l'entité n'est pas obligée de constituer une dépréciation à concurrence des plus-values latentes normales constatées sur d'autres titres.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "PCG, art. 221-7 et 222-1 ; C. com., art. L. 123-19",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k13",
+   "type": "comp",
+   "q": "À quelles immobilisations est réservée la tolérance permettant de conserver la valeur nette comptable lorsque la valeur d'inventaire n'est pas jugée notablement inférieure ?",
+   "r": "<b>Aux seules immobilisations non financières.</b> Pour les titres, toute baisse de la valeur d'inventaire au-dessous du coût d'entrée est dépréciée.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "C. com., art. R. 123-178, 5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k14",
+   "type": "comp",
+   "q": "Comment le règlement ANC n° 2022-06 modifie-t-il l'enregistrement de la cession de titres de participation ?",
+   "r": "<b>La cession quitte le résultat exceptionnel pour le résultat financier</b> : la valeur comptable des titres cédés est débitée au compte 6671 et le prix de cession crédité au compte 7671, en montants bruts. Les anciens comptes 675 et 775 ne figurent plus au plan de comptes.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Règles essentielles#5"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; PCG, plan de comptes 2026, comptes 657, 667, 757 et 767",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k15",
+   "type": "comp",
+   "q": "Comment est enregistrée, selon le PCG 2025, la cession de TIAP ou de valeurs mobilières de placement ?",
+   "r": "<b>Pour son résultat net</b> : en 7672 (produits nets) ou 6672 (charges nettes) pour les TIAP, en 7673 (produits nets) ou 6673 (charges nettes) pour les VMP. Le compte de titres est crédité du coût d'entrée.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 6672, 6673, 7672 et 7673",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k16",
+   "type": "comp",
+   "q": "Comment détermine-t-on le coût d'entrée des titres cédés lorsque des titres de même nature ont été acquis à des prix différents ?",
+   "r": "<b>Comme pour les biens fongibles : au coût moyen pondéré d'acquisition ou selon la méthode « premier entré, premier sorti ».</b> Pour le calcul des plus-values imposables, les cessions sont réputées porter par priorité sur les titres de même nature acquis ou souscrits à la date la plus ancienne.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-18 ; CGI, art. 39 duodecies, 6",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k17",
+   "type": "comp",
+   "q": "Comment rattache-t-on à l'exercice les intérêts courus et non échus sur des obligations détenues par l'entreprise ?",
+   "r": "<b>Ils sont constatés à la clôture</b>, les produits étant rattachés à l'exercice sans considération de leur date d'encaissement : débit du compte 2768 pour les titres immobilisés ou 5088 pour les VMP, crédit du compte 762 ou 764.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 123-13 ; PCG, plan de comptes 2026, comptes 2768, 5088, 762 et 764",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k18",
+   "type": "comp",
+   "q": "Comment la société détentrice de titres comptabilise-t-elle le dividende décidé par l'assemblée générale de la société émettrice ?",
+   "r": "<b>Comme un produit financier</b> : 761 « Produits de participations », 762 « Produits des autres immobilisations financières » ou 764 « Revenus des valeurs mobilières de placement ». L'assemblée le détermine après approbation des comptes annuels et constatation de l'existence de sommes distribuables.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 232-12 ; PCG, plan de comptes 2026, comptes 761, 762 et 764",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k19",
+   "type": "def",
+   "q": "Qu'est-ce que la prime de remboursement d'un emprunt obligataire (compte 169) ?",
+   "r": "<b>La différence entre le prix de remboursement des obligations et leur prix d'émission.</b> Inscrite à l'actif, elle est amortie systématiquement sur la durée de l'emprunt, au prorata des intérêts courus ou par fractions égales, par le compte 6861.",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#10"
+   ],
+   "src": "PCG, art. 212-10 ; plan de comptes 2026, comptes 169 et 6861 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k20",
+   "type": "comp",
+   "q": "Pour quel montant le compte 163 « Autres emprunts obligataires » est-il crédité lors de l'émission d'un emprunt obligataire ?",
+   "r": "<b>Pour le prix de remboursement total</b>, ni le nominal ni le prix d'émission. La trésorerie est débitée du prix d'émission encaissé et la différence est portée au débit du compte 169 « Primes de remboursement des emprunts ».",
+   "base": [
+    "Règles essentielles#10",
+    "Points de vigilance#1"
+   ],
+   "src": "PCG, art. 212-10 ; plan de comptes 2026, comptes 163, 169 et 6861",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k21",
+   "type": "comp",
+   "q": "Quels traitements comptables le PCG admet-il pour les frais d'émission des emprunts ?",
+   "r": "<b>Soit en charges, soit répartis sur la durée de l'emprunt</b> d'une manière appropriée aux modalités de remboursement, une répartition linéaire étant admise si les résultats ne sont pas sensiblement différents. Étalés, ils sont inscrits au compte 481 et amortis par le compte 6862, sans transfert de charges depuis 2025.",
+   "base": [
+    "Règles essentielles#11",
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "PCG, art. 212-11 ; plan de comptes 2026, comptes 481 et 6862 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k22",
+   "type": "comp",
+   "q": "Selon le PCG 2025, comment les intérêts courus sur emprunts sont-ils rattachés à l'exercice à la clôture ?",
+   "r": "<b>Par nature d'emprunt</b> : 1618 pour les emprunts obligataires convertibles, 1638 pour les autres emprunts obligataires, 1648 pour les emprunts auprès des établissements de crédit (anciens 16881, 16883 et 16884). Le compte 1688 ne vise plus que les autres emprunts et dettes assimilées.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 1618, 1638, 1648 et 1688 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k23",
+   "type": "def",
+   "q": "Comment le Plan comptable général définit-il un passif ?",
+   "r": "<b>Un élément du patrimoine ayant une valeur économique négative pour l'entité</b> : une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 321-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k24",
+   "type": "def",
+   "q": "Qu'est-ce qu'une provision au sens du Plan comptable général ?",
+   "r": "<b>Un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b>",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 321-1 et s. (provision : art. 321-5 ; passif éventuel : art. 321-6)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k25",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue une dette d'une provision dans le Plan comptable général ?",
+   "r": "<b>La précision de l'échéance et du montant</b> : une dette (fournisseurs, emprunts) est un passif certain dont l'échéance et le montant sont fixés de façon précise ; une provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise.",
+   "base": [
+    "Points de vigilance#2",
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 321-1 et s. ; art. 322-1 et s.",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k26",
+   "type": "def",
+   "q": "Qu'est-ce qu'un passif éventuel au sens du Plan comptable général ?",
+   "r": "Il s'agit notamment d'<b>une obligation potentielle de l'entité à l'égard d'un tiers, née d'événements dont l'existence reste incertaine</b>. Il n'est pas comptabilisé au bilan mais mentionné en annexe.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 321-1 et s. (provision : art. 321-5 ; passif éventuel : art. 321-6)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k27",
+   "type": "comp",
+   "q": "À quelle condition une provision doit-elle être comptabilisée à la clôture selon le Plan comptable général ?",
+   "r": "<b>Lorsque l'entité a, à la clôture, une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources</b> sans contrepartie au moins équivalente. Encore faut-il que son montant puisse être évalué avec une fiabilité suffisante ; à défaut, le passif est seulement mentionné en annexe.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 321-1, 322-1 et s. ; art. 323-2 (meilleure estimation)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k28",
+   "type": "comp",
+   "q": "Comment le Plan comptable général traite-t-il un passif dont le montant ne peut être évalué avec une fiabilité suffisante ?",
+   "r": "<b>Il n'est pas comptabilisé : il est mentionné en annexe</b>, comme un passif éventuel. Une provision comptabilisée est, elle, évaluée à la meilleure estimation de la sortie de ressources.",
+   "base": [
+    "Règles essentielles#13",
+    "Points de vigilance#2"
+   ],
+   "src": "PCG, art. 321-1, 322-1 et s. ; art. 323-2 (meilleure estimation)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k29",
+   "type": "comp",
+   "q": "Quelle incidence l'absence ou l'insuffisance de bénéfice a-t-elle sur l'obligation de constituer les provisions nécessaires ?",
+   "r": "<b>Aucune</b> : même en cas d'absence ou d'insuffisance du bénéfice, il doit être procédé aux amortissements, dépréciations et provisions nécessaires. Il est aussi tenu compte des passifs nés au cours de l'exercice ou d'un exercice antérieur, même connus entre la clôture et l'établissement des comptes.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 123-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k30",
+   "type": "comp",
+   "q": "Comment une entreprise peut-elle traduire ses engagements de retraite dans ses comptes annuels ?",
+   "r": "<b>Leur montant est indiqué dans l'annexe</b> ; l'entreprise peut l'inscrire, en tout ou partie, en provision au compte 1521. Le provisionnement de la totalité des engagements est la méthode de référence depuis le règlement ANC n° 2018-01.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 123-13 ; PCG, art. 324-1 ; règlement ANC n° 2018-01 ; plan de comptes 2026, compte 1521",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k31",
+   "type": "comp",
+   "q": "À quelles conditions une provision est-elle déductible du résultat fiscal selon l'article 39, 1-5° du CGI ?",
+   "r": "<b>Elle doit faire face à des pertes ou charges nettement précisées que des événements en cours rendent probables</b>, et avoir été effectivement constatée dans les écritures de l'exercice. Ne sont pas déductibles les provisions constituées en vue du versement d'allocations en raison du départ à la retraite ou en préretraite.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "CGI, art. 39, 1-5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k32",
+   "type": "comp",
+   "q": "Pourquoi la dotation à la provision pour pertes de change (compte 1515) est-elle réintégrée extra-comptablement au résultat fiscal ?",
+   "r": "<b>Parce que les écarts de conversion des créances et dettes en devises sont pris en compte pour déterminer le résultat fiscal de l'exercice</b> : la perte latente est déduite extra-comptablement, de sorte que la provision n'est pas déductible.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 38, 4 ; CGI, art. 39, 1-5° ; BOI-BIC-CHG-50-70",
+   "url": "https://bofip.impots.gouv.fr/bofip/1413-PGP.html/identifiant=BOI-BIC-CHG-50-70-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k33",
+   "type": "def",
+   "q": "Quelles provisions le PCG 2025 enregistre-t-il respectivement aux comptes 151 et 152 ?",
+   "r": "<b>151 : provisions pour risques</b>, par exemple litiges, garanties données aux clients, pertes de change ; <b>152 : provisions pour charges</b>, par exemple pensions, restructurations, gros entretien ou grandes révisions. La racine 152 regroupe depuis 2025 les anciens comptes 153 à 158.",
+   "base": [
+    "Règles essentielles#17",
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 151, 152, 681, 686, 687, 781, 786 et 787 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k34",
+   "type": "def",
+   "q": "Que sont les provisions réglementées (compte 14) du Plan comptable général ?",
+   "r": "<b>Des provisions comptabilisées en application de dispositions légales, le plus souvent fiscales, et non pour couvrir une obligation envers un tiers.</b> Elles figurent dans les capitaux propres et permettent de bénéficier d'un avantage fiscal subordonné à leur comptabilisation (143 hausse des prix, 145 amortissements dérogatoires, 148 autres).",
+   "base": [
+    "Définitions#6",
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. R. 123-190 ; PCG, art. 513-5 (repris à l'art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027) ; plan de comptes 2026, compte 14",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-05-k35",
+   "type": "comp",
+   "q": "Dans quel résultat les dotations et reprises de provisions réglementées sont-elles comptabilisées ?",
+   "r": "<b>En résultat exceptionnel</b>, aux comptes 6872 et 7872 (dont 68725 et 78725 pour les amortissements dérogatoires) : écritures d'origine purement fiscale, elles relèvent du résultat exceptionnel.",
+   "base": [
+    "Points de vigilance#4",
+    "Définitions#6"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 14, 6872 et 7872 ; PCG, art. 513-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

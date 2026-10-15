@@ -1,0 +1,417 @@
+{
+ "id": "ue6-04",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue6-04-k01",
+   "type": "def",
+   "q": "Que signifie capitaliser une somme, en mathématiques financières ?",
+   "r": "<b>Calculer la valeur acquise d'un capital C placé n périodes au taux i</b>, soit C × (1 + i)^n. Le programme du DSCG range ce lien entre la valeur et le temps parmi les acquis attendus de l'UE6.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG, acquis de l'UE6 du DCG) ; programme de l'UE6, partie 2",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k02",
+   "type": "def",
+   "q": "Que signifie actualiser un flux futur, en mathématiques financières ?",
+   "r": "<b>Calculer la valeur aujourd'hui d'un flux futur F</b>, soit F × (1 + i)^−n. Le programme du DSCG range l'actualisation parmi les acquis attendus de l'UE6.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG, acquis de l'UE6 du DCG) ; programme de l'UE6, partie 2",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k03",
+   "type": "comp",
+   "q": "Quel taux d'actualisation retient-on pour évaluer un projet d'investissement en univers certain ?",
+   "r": "<b>Le coût du capital</b>, c'est-à-dire le coût moyen pondéré des ressources. Le programme du DSCG le cite parmi les acquis de l'UE6, avec les critères de décision d'un investissement en univers certain.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG, acquis de l'UE6)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k04",
+   "type": "def",
+   "q": "Selon le Code monétaire et financier, qu'est-ce que le taux effectif global d'un prêt ?",
+   "r": "<b>Un taux calculé actuariellement</b> qui assure, selon la méthode des intérêts composés, l'égalité entre les sommes prêtées et l'ensemble des versements dus par l'emprunteur. C'est la logique du TRI : le taux qui égalise la valeur actuelle des flux et le montant investi.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. mon. fin., art. R. 314-2 et R. 314-3",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k05",
+   "type": "def",
+   "q": "Comment le PCG définit-il le coût d'acquisition d'une immobilisation ?",
+   "r": "<b>Le prix d'achat</b>, après déduction des remises et des taxes récupérables, <b>augmenté de tous les coûts directement attribuables</b> engagés pour mettre l'actif en place et en état de fonctionner. C'est le montant de l'investissement initial, hors taxes.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 213-8",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k06",
+   "type": "comp",
+   "q": "De quoi se compose l'investissement initial d'un projet d'investissement ?",
+   "r": "<b>Du coût d'acquisition hors taxes</b> (prix d'achat et coûts directement attribuables) <b>et de l'augmentation du BFR d'exploitation</b> induite par le projet.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, art. 213-8 ; CGI, art. 271 ; programme de l'UE6 (gestion du BFR d'exploitation)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k07",
+   "type": "comp",
+   "q": "Pourquoi la TVA grevant une immobilisation ne figure-t-elle ni dans l'investissement initial ni dans les flux d'un projet d'investissement ?",
+   "r": "<b>Parce qu'elle est déductible</b> : ce n'est pas un coût, on raisonne hors taxes. Elle n'affecte que le BFR si le sujet le précise.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 271",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k08",
+   "type": "def",
+   "q": "Qu'est-ce que l'amortissement selon le PCG ?",
+   "r": "<b>La répartition systématique du montant amortissable d'un actif en fonction de son utilisation.</b> Ce n'est pas un décaissement : il n'entre dans les flux d'un projet que par l'économie d'impôt qu'il procure.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 214-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k09",
+   "type": "comp",
+   "q": "Quel effet une dotation aux amortissements déductible produit-elle sur les flux d'un projet d'investissement ?",
+   "r": "<b>Elle réduit l'impôt</b> de dotation × taux d'IS, ce qui augmente le flux du projet. Sont déductibles les amortissements réellement effectués dans la limite de ceux admis par les usages.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 39, 1-2°",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k10",
+   "type": "comp",
+   "q": "Quel effet l'amortissement dégressif fiscal a-t-il sur l'économie d'impôt d'un projet d'investissement ?",
+   "r": "<b>Il accélère l'économie d'impôt des premières années.</b> Le taux linéaire est multiplié par 1,25 (durée normale de trois ou quatre ans), 1,75 (cinq ou six ans) ou 2,25 (plus de six ans).",
+   "base": [
+    "Chiffres et seuils#2"
+   ],
+   "src": "CGI, art. 39 A, 1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k11",
+   "type": "def",
+   "q": "Comment définit-on le flux net de trésorerie d'exploitation d'un projet d'investissement ?",
+   "r": "<b>EBE − IS sur le résultat d'exploitation</b>, l'impôt étant calculé au taux normal (ou au taux réduit des PME sur la fraction éligible). Formule équivalente : résultat d'exploitation après impôt + dotations aux amortissements.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 219, I ; PCG, modèle de tableau des soldes intermédiaires de gestion",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046868562",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k12",
+   "type": "comp",
+   "q": "Quel double compte des dotations aux amortissements faut-il éviter en établissant les flux de trésorerie d'un projet d'investissement ?",
+   "r": "<b>Partir de l'EBE et y ajouter aussi les dotations.</b> Un flux de projet est un flux de trésorerie, pas un résultat : on ajoute les dotations au résultat après impôt, ou on part de l'EBE, mais jamais les deux.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "PCG, art. 214-13 (l'amortissement est une répartition, pas un décaissement) ; C. com., art. L. 123-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k13",
+   "type": "comp",
+   "q": "Pourquoi les intérêts et remboursements d'emprunt sont-ils exclus des flux d'un projet d'investissement ?",
+   "r": "<b>Parce que le coût des ressources est pris en compte une seule fois, par le taux d'actualisation</b> (coût du capital). Les flux du projet sont donc indépendants de son financement.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG : coût du capital et critères de décision) ; programme de l'UE6, partie 2",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k14",
+   "type": "comp",
+   "q": "Quel flux retient-on en fin de projet d'investissement au titre de la valeur résiduelle, et pourquoi ?",
+   "r": "<b>La valeur résiduelle nette d'impôt</b>, car la plus-value de cession est imposable. La cession est enregistrée pour son prix en 757 et la valeur comptable sortie en 657.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 657 et 757 ; CGI, art. 39 duodecies et 219, I-a quater",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k15",
+   "type": "comp",
+   "q": "Qu'a changé le règlement ANC n° 2022-06 pour la cession d'un bien en fin de projet d'investissement ?",
+   "r": "<b>La cession passe par les comptes 657 / 757, en exploitation</b>, pour les exercices ouverts à compter du 1er janvier 2025. Le traitement fiscal de la plus-value est inchangé.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k16",
+   "type": "comp",
+   "q": "Comment traite-t-on, en fin de projet d'investissement, le besoin en fonds de roulement immobilisé au démarrage ?",
+   "r": "<b>Il est récupéré en fin de projet</b> : il figure en flux positif la dernière année, sans imposition.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (caractéristiques d'un projet, gestion du BFR d'exploitation)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k17",
+   "type": "def",
+   "q": "Comment le PCG définit-il la valeur d'usage d'un actif ?",
+   "r": "<b>La valeur des avantages économiques futurs attendus de l'utilisation de l'actif et de sa sortie.</b> Dans la généralité des cas, elle est déterminée en fonction des flux nets de trésorerie attendus.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, art. 214-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k18",
+   "type": "comp",
+   "q": "En comptabilité, à quoi sert la valeur d'usage du PCG, calculée par les flux nets de trésorerie attendus ?",
+   "r": "<b>Au test de dépréciation des immobilisations.</b> Une VAN négative d'un actif en service signale ainsi une dépréciation possible.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "PCG, art. 214-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k19",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur actuelle nette (VAN) d'un projet d'investissement ?",
+   "r": "<b>La différence entre la valeur actuelle des flux nets de trésorerie du projet et l'investissement initial</b>, ces flux incluant la valeur résiduelle et la récupération du BFR. L'actualisation se fait au taux égal au coût du capital.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (critères de sélection des projets)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k20",
+   "type": "comp",
+   "q": "À quelle condition un projet d'investissement est-il acceptable selon le critère de la VAN ?",
+   "r": "<b>Si sa VAN est positive au coût du capital.</b> Cela équivaut à un TRI supérieur au coût du capital et à un indice de profitabilité supérieur à 1.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (critères de sélection)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k21",
+   "type": "comp",
+   "q": "Entre projets d'investissement exclusifs de même taille et de même durée, lequel retient-on ?",
+   "r": "<b>Celui dont la VAN est la plus élevée.</b> Chaque VAN est calculée au coût du capital.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (critères de sélection)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k22",
+   "type": "def",
+   "q": "Que mesure l'indice de profitabilité d'un projet d'investissement ?",
+   "r": "<b>Il rapporte la valeur actuelle des flux à l'investissement</b>, soit 1 + VAN / investissement. Un projet est acceptable si cet indice est supérieur à 1, ce qui équivaut à une VAN positive au coût du capital.",
+   "base": [
+    "Définitions#7",
+    "Règles essentielles#5"
+   ],
+   "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (politique d'investissement)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k23",
+   "type": "def",
+   "q": "Qu'est-ce que le taux de rentabilité interne (TRI) d'un projet d'investissement ?",
+   "r": "<b>Le taux d'actualisation pour lequel la VAN est nulle.</b> Sans calculatrice financière, il s'encadre entre deux taux puis s'estime par interpolation linéaire.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 ; C. mon. fin., art. R. 314-2 (méthode actuarielle)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k24",
+   "type": "def",
+   "q": "Qu'est-ce que le délai de récupération d'un projet d'investissement ?",
+   "r": "<b>Le temps au bout duquel les flux cumulés remboursent l'investissement.</b> Ces flux cumulés peuvent être actualisés ou non.",
+   "base": [
+    "Définitions#7"
+   ],
+   "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (politique d'investissement)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k25",
+   "type": "comp",
+   "q": "Quel critère privilégier quand la VAN et le TRI classent différemment deux projets d'investissement ?",
+   "r": "<b>La VAN</b>, qui mesure la valeur créée. Ces contradictions apparaissent entre projets de tailles ou de profils différents.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (VAN globale, TRI global)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k26",
+   "type": "comp",
+   "q": "Quelle hypothèse de réinvestissement des flux le TRI d'un projet d'investissement suppose-t-il ?",
+   "r": "<b>Un réinvestissement des flux au TRI lui-même.</b> La VAN globale corrige cette hypothèse en capitalisant les flux intermédiaires à un taux de réinvestissement explicite.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#7"
+   ],
+   "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (VAN globale, TRI global)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k27",
+   "type": "def",
+   "q": "Qu'est-ce que l'annuité équivalente d'un projet d'investissement ?",
+   "r": "<b>La VAN ramenée à une annuité constante sur la durée du projet.</b> Le programme la prévoit pour départager des projets de durées différentes.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (politique d'investissement)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k28",
+   "type": "def",
+   "q": "Qu'est-ce que la VAN globale (ou le TRI global) d'un projet d'investissement ?",
+   "r": "<b>Un critère dans lequel les flux intermédiaires sont capitalisés à un taux de réinvestissement explicite.</b> Le programme le prévoit pour départager les projets.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "Annexe 1 de l'arrêté du 4 août 2025, programme de l'UE6 (politique d'investissement)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k29",
+   "type": "def",
+   "q": "Comment l'Insee décompose-t-elle une évolution en valeur ?",
+   "r": "<b>En une évolution en volume et une évolution des prix</b> : indice de valeur = indice de volume × indice de prix. C'est la relation multiplicative qui lie taux nominal, taux réel et inflation.",
+   "base": [
+    "Définitions#8"
+   ],
+   "src": "Insee, « Le partage volume-prix » (base 2014) ; documentation de l'indice de volume des ventes (base 2021)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k30",
+   "type": "comp",
+   "q": "En présence d'inflation, à quel taux actualise-t-on les flux d'un projet d'investissement selon leur expression ?",
+   "r": "<b>Flux en euros courants au taux nominal, flux en euros constants au taux réel.</b> Les deux approches donnent la même VAN si l'on respecte la relation (1 + nominal) = (1 + réel) × (1 + inflation).",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "Insee, « Le partage volume-prix » (base 2014) ; programme de l'UE6, partie 2",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k31",
+   "type": "comp",
+   "q": "En avenir probabilisable, quels outils le programme de l'UE6 prévoit-il pour prendre en compte le risque d'un projet d'investissement ?",
+   "r": "<b>L'espérance et l'écart-type de la VAN des scénarios</b>, un <b>arbre de décision</b> pour les choix séquentiels et une <b>analyse de sensibilité</b> des hypothèses.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (prise en compte du risque)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k32",
+   "type": "comp",
+   "q": "Quels acquis de l'UE6 sur l'investissement le programme de finance du DSCG pose-t-il en prérequis ?",
+   "r": "<b>Actualisation, capitalisation, coût du capital et critères de décision en univers certain.</b> Le DSCG ajoute l'univers incertain et la valeur de l'entreprise.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k33",
+   "type": "comp",
+   "q": "Quel texte fixe le programme de l'UE6 du DCG à compter de la session 2027 ?",
+   "r": "<b>L'arrêté du 4 août 2025</b> (BO ESR n° 32 du 28 août 2025), qui remplace l'arrêté du 13 février 2019. La politique d'investissement reste une partie à part entière de l'UE6.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Arrêté du 4 août 2025 ; note de service ESRS2529286N (BO ESR n° 43 du 13 novembre 2025)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo43/ESRS2529286N",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-04-k34",
+   "type": "comp",
+   "q": "Selon le critère du taux de rentabilité interne (TRI), à quelle condition un projet d'investissement est-il acceptable ?",
+   "r": "<b>Si son TRI est supérieur au coût du capital.</b> Cela équivaut à une VAN positive au coût du capital et à un indice de profitabilité supérieur à 1.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 2 (critères de sélection)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  }
+ ]
+}

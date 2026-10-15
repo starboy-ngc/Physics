@@ -218,6 +218,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Lors de la constitution d'une SARL, les apports en numéraire doivent être libérés d'au moins :",
    "opts": [
     "Un quart",
@@ -233,6 +234,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une SARL est constituée avec un capital de 80 000 €, dont 30 000 € d'apports en nature et 50 000 € d'apports en numéraire. Quel est le montant minimal total qui doit être libéré à la constitution (en euros) ?",
    "a": 40000,
    "unit": "€",
@@ -244,6 +246,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "La SA Nova est constituée le 1er mars N avec 20 000 actions de nominal 10 €, toutes souscrites en numéraire et libérées du minimum légal, soit la moitié. Enregistrez la promesse d'apport (souscription), avant tout versement.",
    "lib": "Souscription du capital",
    "palette": [
@@ -286,6 +289,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Au bilan d'une SA, le compte 109 « Actionnaires : capital souscrit non appelé » figure :",
    "opts": [
     "Au passif, dans les dettes financières à long terme",
@@ -301,6 +305,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Lors de l'appel du solde du capital non appelé d'une SA, quelles écritures sont passées ? (plusieurs réponses possibles)",
    "opts": [
     "Débit 4562 Apporteurs – capital appelé non versé, crédit 109",
@@ -320,6 +325,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un actionnaire ne répond pas à l'appel du solde du capital malgré une mise en demeure. Que prévoit le Code de commerce ?",
    "opts": [
     "La société annule purement et simplement ses actions, sans indemnité",
@@ -335,6 +341,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans une SARL, les associés peuvent décider à l'unanimité de ne pas recourir à un commissaire aux apports si :",
    "opts": [
     "Le capital social est inférieur à 100 000 € à la constitution",
@@ -350,6 +357,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque élément selon le compte où il est comptabilisé.",
    "cats": [
     "1011",
@@ -387,6 +395,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Lors d'une augmentation de capital en numéraire d'une SA, les souscripteurs doivent libérer au minimum :",
    "opts": [
     "La moitié du nominal et la moitié de la prime",
@@ -402,6 +411,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "La SA Nova a 10 000 actions dont la valeur réelle est de 150 €. Elle émet 2 500 actions nouvelles au prix de 110 €. Calculez la valeur théorique du droit préférentiel de souscription attaché à une action ancienne (en euros).",
    "a": 8,
    "unit": "€",
@@ -413,6 +423,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Nova (capital ancien entièrement libéré) émet 2 500 actions de nominal 10 € au prix de 110 €, intégralement libérées à la souscription. Les fonds sont reçus en banque. Enregistrez l'augmentation de capital (écriture unique, sans compte d'attente).",
    "lib": "Augmentation de capital en numéraire avec prime d'émission",
    "palette": [
@@ -450,6 +461,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La prime d'émission (1041) a pour rôle principal :",
    "opts": [
     "D'augmenter le capital social inscrit au RCS",
@@ -465,6 +477,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Selon le PCG, les frais d'augmentation de capital (honoraires, publicité, droits) peuvent être : (plusieurs réponses possibles)",
    "opts": [
     "Imputés sur la prime d'émission",
@@ -485,6 +498,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Nova compte 10 000 actions d'une valeur réelle de 150 €. Elle incorpore 50 000 € de réserves au capital en créant 5 000 actions gratuites de nominal 10 €. Calculez la valeur théorique du droit d'attribution attaché à une action ancienne (en euros).",
    "a": 50,
    "unit": "€",
@@ -496,6 +510,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "L'AGE de Nova décide d'incorporer 50 000 € prélevés sur les autres réserves (1068) au capital, par création de 5 000 actions gratuites de 10 €. Enregistrez l'opération.",
    "lib": "Incorporation de réserves au capital",
    "palette": [
@@ -527,6 +542,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un actionnaire détient une créance en compte courant de 40 000 € sur la SA. L'AGE décide d'augmenter le capital par compensation avec cette créance liquide et exigible (4 000 actions de 10 €). L'écriture est :",
    "opts": [
     "Débit 512 pour 40 000, crédit 1013 pour 40 000",
@@ -542,6 +558,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "La SA Nova présente un report à nouveau débiteur de 80 000 €. L'AGE décide une réduction de capital de 80 000 € par diminution du nominal des actions, motivée par ces pertes. Enregistrez l'opération.",
    "lib": "Réduction de capital motivée par des pertes",
    "palette": [
@@ -573,6 +590,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans quel cas les créanciers d'une SA disposent-ils d'un droit d'opposition à une réduction de capital ?",
    "opts": [
     "Dans tous les cas",
@@ -588,6 +606,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le « coup d'accordéon » désigne :",
    "opts": [
     "Une augmentation de capital par incorporation de réserves suivie d'une distribution",
@@ -603,6 +622,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "La SARL Ludo, au capital de 300 000 €, clôture N avec des capitaux propres de 120 000 €. Quelle obligation en découle pour les associés ?",
    "opts": [
     "Dissoudre immédiatement la société et nommer un liquidateur",
@@ -618,6 +638,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La réserve légale est dotée chaque année à hauteur de :",
    "opts": [
     "10 % du bénéfice, jusqu'à atteindre 5 % du capital social",
@@ -633,6 +654,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Nova : capital 500 000 €, réserve légale déjà constituée 40 000 €, report à nouveau débiteur 10 000 €, bénéfice de N 120 000 €. Calculez la dotation à la réserve légale au titre de N (en euros).",
    "a": 5500,
    "unit": "€",
@@ -644,6 +666,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Affectation du résultat de Nova (bénéfice 120 000 €) : apurement du report à nouveau débiteur de 10 000 €, réserve légale 5 500 €, réserve statutaire 10 000 €, dividendes 60 000 €, le solde en report à nouveau. Enregistrez l'écriture d'affectation.",
    "lib": "Affectation du résultat",
    "palette": [
@@ -697,6 +720,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le bénéfice distribuable au sens de l'article L. 232-11 du Code de commerce est :",
    "opts": [
     "Le bénéfice net de l'exercice tel qu'il ressort du compte de résultat",
@@ -712,6 +736,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Concernant les dividendes, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Ils doivent être mis en paiement dans les neuf mois de la clôture, sauf prolongation judiciaire",
@@ -732,6 +757,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En 2025, Mme Roux, personne physique résidente sans dispense de prélèvement, détient 1 000 actions de Nova. Le dividende est de 3 € par action. Quel montant net encaisse-t-elle, après prélèvement forfaitaire non libératoire de 12,8 % et prélèvements sociaux de 17,2 % (en euros) ?",
    "a": 2100,
    "unit": "€",
@@ -743,6 +769,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "En 2025, Nova met en paiement 60 000 € de dividendes à des actionnaires personnes physiques résidentes, sans dispense. Elle retient à la source le prélèvement forfaitaire non libératoire (12,8 %) et les prélèvements sociaux (17,2 %) et verse le net par banque. Enregistrez le paiement.",
    "lib": "Paiement des dividendes avec retenue à la source",
    "palette": [
@@ -779,6 +806,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les intérêts versés aux associés au titre de leur compte courant (455) sont déductibles du résultat fiscal de la société à condition que :",
    "opts": [
     "Les associés soient des personnes physiques résidentes en France",
@@ -794,6 +822,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Lors d'une incorporation de réserves au capital par attribution d'actions gratuites, le montant total des capitaux propres :",
    "opts": [
     "Augmente du montant incorporé",
@@ -809,6 +838,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Au DSCG, l'analyse des capitaux propres selon le PCG retient comme capitaux propres :",
    "opts": [
     "Le capital social et les réserves uniquement, hors résultat de l'exercice et report à nouveau",

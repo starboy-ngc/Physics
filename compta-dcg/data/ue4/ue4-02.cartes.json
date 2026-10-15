@@ -1,0 +1,430 @@
+{
+ "id": "ue4-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue4-02-k01",
+   "type": "def",
+   "q": "Quelles rémunérations relèvent de la catégorie des traitements et salaires à l'impôt sur le revenu ?",
+   "r": "<b>Les rémunérations perçues en contrepartie d'un travail subordonné</b> : salaire, primes, heures supplémentaires, avantages en nature.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "CGI, art. 79, 82 et 83 ; impots.gouv.fr, salaires et assimilés",
+   "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k02",
+   "type": "def",
+   "q": "Comment obtient-on le revenu net imposable de la catégorie des traitements et salaires à l'impôt sur le revenu ?",
+   "r": "<b>En déduisant les cotisations sociales obligatoires et la CSG déductible</b>, puis les frais professionnels : déduction forfaitaire de 10 % ou frais réels.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "CGI, art. 79, 82 et 83 ; impots.gouv.fr, salaires et assimilés",
+   "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k03",
+   "type": "comp",
+   "q": "Selon quelles règles est imposée à l'IR la rémunération du gérant majoritaire d'une SARL n'ayant pas opté pour le régime des sociétés de personnes ?",
+   "r": "<b>Selon les règles des traitements et salaires</b> (rémunérations de l'article 62 du CGI) : déduction forfaitaire de 10 % du montant net après cotisations sociales, ou frais réels sur option.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "CGI, art. 62",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k04",
+   "type": "comp",
+   "q": "Quel est le régime d'impôt sur le revenu des rémunérations et majorations des heures supplémentaires et complémentaires ?",
+   "r": "<b>Elles sont exonérées dans une limite annuelle de 7 500 € (net imposable)</b> ; la fraction excédentaire est ajoutée au salaire imposable. En cas de pluralité d'employeurs, le plafond s'apprécie globalement.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 81 quater ; impots.gouv.fr, salaires et assimilés",
+   "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k05",
+   "type": "comp",
+   "q": "Quelle est la conséquence, pour un salarié, de la renonciation à la déduction forfaitaire de 10 % sur ses salaires ?",
+   "r": "<b>Il déduit ses frais réels justifiés</b> au lieu de la déduction appliquée d'office sur le salaire net ; les allocations pour frais versées par l'employeur deviennent alors imposables.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 83, 3° ; impots.gouv.fr, déduction forfaitaire de 10 %",
+   "url": "https://www.impots.gouv.fr/particulier/questions/comment-puis-je-beneficier-de-la-deduction-forfaitaire-de-10",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k06",
+   "type": "comp",
+   "q": "Dans quelle limite l'indemnité de licenciement est-elle exonérée d'impôt sur le revenu, en dehors des cas d'exonération totale ?",
+   "r": "<b>À hauteur du plus élevé de trois montants</b> : l'indemnité légale ou conventionnelle ; le double de la rémunération annuelle brute de l'année civile précédant la rupture ; 50 % de l'indemnité perçue. Ces deux derniers montants sont retenus dans la limite de six fois le plafond annuel de la sécurité sociale.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 80 duodecies, 1 ; BOI-RSA-CHAMP-20-40-10-30",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k07",
+   "type": "comp",
+   "q": "Quelles indemnités de licenciement sont exonérées en totalité d'impôt sur le revenu ?",
+   "r": "<b>Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi</b> et celles allouées par le juge pour un licenciement irrégulier ou sans cause réelle et sérieuse.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 80 duodecies, 1 ; BOI-RSA-CHAMP-20-40-10-30",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k08",
+   "type": "comp",
+   "q": "Quel abattement s'applique aux pensions de retraite pour leur imposition à l'impôt sur le revenu ?",
+   "r": "<b>Un abattement de 10 % distinct de celui des salaires</b>, avec un minimum par pensionné et un plafond apprécié pour l'ensemble du foyer fiscal. Les prestations versées en capital soumises, sur option, au prélèvement forfaitaire de 7,5 % bénéficient d'un abattement de 10 % non plafonné.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "CGI, art. 158, 5-a ; impots.gouv.fr, pensions de retraite",
+   "url": "https://www.impots.gouv.fr/particulier/pensions-de-retraite",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k09",
+   "type": "comp",
+   "q": "Comment une rente viagère à titre onéreux est-elle imposée à l'impôt sur le revenu ?",
+   "r": "<b>Seule une fraction de la rente est imposable</b>, fixée une fois pour toutes selon l'âge du crédirentier à l'entrée en jouissance : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 158, 6",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k10",
+   "type": "comp",
+   "q": "Quel âge du crédirentier retient-on pour fixer la fraction imposable d'une rente viagère à titre onéreux ?",
+   "r": "<b>Son âge à la date d'entrée en jouissance de la rente</b>, non l'âge atteint l'année d'imposition ; la fraction imposable reste ensuite invariable.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "CGI, art. 158, 6",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k11",
+   "type": "def",
+   "q": "Quels revenus regroupe la catégorie des revenus de capitaux mobiliers (RCM) à l'impôt sur le revenu ?",
+   "r": "<b>Les revenus distribués (dividendes)</b> et <b>les produits de placements à revenu fixe (intérêts)</b>.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "CGI, art. 200 A ; economie.gouv.fr, prélèvement forfaitaire unique",
+   "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mes-autres-impots-et-taxes/comment-fonctionne-le-prelevement",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k12",
+   "type": "comp",
+   "q": "Comment les revenus de capitaux mobiliers sont-ils imposés à l'impôt sur le revenu en l'absence d'option ?",
+   "r": "<b>Au prélèvement forfaitaire unique (PFU) de 12,8 %.</b> Sur option globale, ils sont retenus dans le revenu net global soumis au barème progressif.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "CGI, art. 200 A ; economie.gouv.fr, prélèvement forfaitaire unique",
+   "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mes-autres-impots-et-taxes/comment-fonctionne-le-prelevement",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k13",
+   "type": "def",
+   "q": "Qu'est-ce que le prélèvement forfaitaire non libératoire appliqué aux revenus de capitaux mobiliers ?",
+   "r": "<b>Un acompte d'impôt sur le revenu de 12,8 %</b> que l'établissement payeur prélève à l'encaissement des revenus, en même temps que les prélèvements sociaux.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 117 quater, 125 A et 242 quater ; impots.gouv.fr, revenus mobiliers",
+   "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k14",
+   "type": "comp",
+   "q": "À quelles conditions un contribuable peut-il être dispensé du prélèvement forfaitaire non libératoire sur ses revenus de capitaux mobiliers ?",
+   "r": "<b>Sur attestation sur l'honneur remise au plus tard le 30 novembre de l'année précédant celle de la perception des revenus</b>, si le revenu fiscal de référence de l'avant-dernière année est inférieur aux seuils légaux. La dispense ne concerne pas les prélèvements sociaux.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 117 quater, 125 A et 242 quater ; impots.gouv.fr, revenus mobiliers",
+   "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k15",
+   "type": "comp",
+   "q": "Quels avantages l'option globale pour le barème progressif procure-t-elle, par rapport au PFU, dans l'imposition des dividendes ?",
+   "r": "<b>L'abattement de 40 %</b> sur les dividendes de sociétés ayant leur siège dans l'UE ou dans un État conventionné, <b>la déduction des frais</b> et <b>la déductibilité d'une fraction de la CSG</b>. Sous PFU, le prélèvement porte sur le montant brut des dividendes, sans abattement ni déduction des frais ou de la CSG.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 158, 3-2° et 200 A ; impots.gouv.fr, valeurs mobilières",
+   "url": "https://www.impots.gouv.fr/particulier/questions/jai-des-valeurs-mobilieres-comment-sont-elles-imposees",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k16",
+   "type": "comp",
+   "q": "Sur quels revenus porte l'option pour le barème progressif exercée à la place du prélèvement forfaitaire unique ?",
+   "r": "<b>Sur l'ensemble des revenus de capitaux mobiliers et des plus-values mobilières de l'année.</b> On ne peut pas retenir le barème pour les dividendes et le PFU pour les plus-values.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 200 A, 2 ; economie.gouv.fr, prélèvement forfaitaire unique",
+   "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mes-autres-impots-et-taxes/comment-fonctionne-le-prelevement",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k17",
+   "type": "comp",
+   "q": "Dans quel cas la CSG sur les revenus du patrimoine est-elle déductible du revenu global à l'impôt sur le revenu ?",
+   "r": "<b>Lorsque ces revenus sont soumis au barème progressif</b> : elle est déductible du revenu global de l'année de son paiement, à hauteur de 6,8 points. Elle ne l'est pas pour les revenus imposés au PFU ou à un taux proportionnel.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 154 quinquies ; BOI-IR-BASE-20-20 ; brochure IR 2026, principales nouveautés",
+   "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/nouveautes.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k18",
+   "type": "comp",
+   "q": "À quelle condition les produits et plus-values d'un plan d'épargne en actions (PEA) sont-ils exonérés d'impôt sur le revenu ?",
+   "r": "<b>Aucun retrait ne doit intervenir pendant cinq ans à compter du premier versement.</b> Après cinq ans, le gain net reste soumis aux prélèvements sociaux et un retrait partiel n'entraîne pas la clôture du plan.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "CGI, art. 157, 5° bis ; BOI-RPPM-RCM-40-50-40",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k19",
+   "type": "def",
+   "q": "Qu'est-ce que le régime micro-foncier pour l'imposition des revenus fonciers à l'impôt sur le revenu ?",
+   "r": "<b>Le régime applicable lorsque les loyers bruts du foyer fiscal ne dépassent pas 15 000 €</b>, charges non comprises. Un abattement forfaitaire de 30 %, représentatif de l'ensemble des charges, est appliqué automatiquement ; aucun déficit ne peut être constaté.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "CGI, art. 32 ; BOI-RFPI-BASE-30-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/4142-PGP.html/identifiant=BOI-RFPI-BASE-30-20-20250916",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k20",
+   "type": "comp",
+   "q": "Comment s'impute un déficit foncier constaté au régime réel d'imposition des revenus fonciers ?",
+   "r": "<b>La fraction qui ne provient pas des intérêts d'emprunt s'impute sur le revenu global, dans la limite de 10 700 € par an</b>, relevée à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 156, I-3° ; BOI-RFPI-BASE-30-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/4142-PGP.html/identifiant=BOI-RFPI-BASE-30-20-20250916",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k21",
+   "type": "comp",
+   "q": "Dans quel ordre impute-t-on les intérêts d'emprunt et les autres charges pour déterminer le déficit foncier imputable sur le revenu global ?",
+   "r": "<b>D'abord les intérêts d'emprunt sur les loyers</b>, puis les autres charges, qui créent le déficit imputable dans la limite de 10 700 €. La fraction du déficit provenant des intérêts n'est jamais imputable sur le revenu global.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "CGI, art. 156, I-3° ; BOI-RFPI-BASE-30-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/4142-PGP.html/identifiant=BOI-RFPI-BASE-30-20-20250916",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k22",
+   "type": "comp",
+   "q": "Après quelle durée de détention une plus-value immobilière des particuliers est-elle exonérée d'impôt sur le revenu, puis de prélèvements sociaux ?",
+   "r": "<b>Après 22 ans pour l'impôt sur le revenu, après 30 ans seulement pour les prélèvements sociaux</b> : deux abattements pour durée de détention distincts, calculés par année pleine au-delà de la cinquième.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 150 VC ; BOI-RFPI-PVI-20-20",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197216",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k23",
+   "type": "comp",
+   "q": "Quel est le régime de la plus-value réalisée par un particulier lors de la cession de sa résidence principale ?",
+   "r": "<b>Elle est exonérée</b> lorsque l'immeuble cédé constitue la résidence principale du cédant au jour de la cession.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "CGI, art. 150 U, II-1° et 1° bis",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052866677/2025-11-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k24",
+   "type": "comp",
+   "q": "À quelles conditions la première cession d'un logement autre que la résidence principale est-elle exonérée de plus-value immobilière ?",
+   "r": "<b>Le cédant ne doit pas avoir été propriétaire de sa résidence principale, directement ou indirectement, au cours des quatre années précédant la cession.</b> Seule est exonérée la fraction du prix remployée, dans un délai de 24 mois, à l'acquisition ou la construction de sa résidence principale.",
+   "base": [
+    "Règles essentielles#9",
+    "Points de vigilance#3"
+   ],
+   "src": "CGI, art. 150 U, II-1° et 1° bis",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052866677/2025-11-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k25",
+   "type": "comp",
+   "q": "Dans quel cas la taxe sur les plus-values immobilières élevées est-elle due ?",
+   "r": "<b>Lorsque la plus-value nette imposable excède 50 000 €</b>, seuil apprécié après l'abattement pour durée de détention, sur la cession d'immeubles autres que des terrains à bâtir. Elle s'ajoute à l'impôt sur la plus-value ; son taux progresse de 2 % à 6 %.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "CGI, art. 1609 nonies G ; BOI-RFPI-TPVIE-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/8597-PGP.html/identifiant=BOI-RFPI-TPVIE-20-20180824",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k26",
+   "type": "comp",
+   "q": "Quel avantage fiscal l'article 150-0 D ter du CGI accorde-t-il au dirigeant de PME partant à la retraite qui cède ses titres ?",
+   "r": "<b>Un abattement fixe de 500 000 € sur la plus-value de cession des titres</b>, quel que soit le mode d'imposition (PFU ou barème). Non cumulable avec les abattements proportionnels pour durée de détention, il ne s'applique qu'à l'impôt sur le revenu : les prélèvements sociaux restent dus.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 150-0 D ter ; impots.gouv.fr, dirigeant de PME partant à la retraite",
+   "url": "https://www.impots.gouv.fr/particulier/questions/dirigeant-de-pme-partant-la-retraite-comment-sera-imposee-la-plus-value-que-je",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k27",
+   "type": "comp",
+   "q": "À quelles conditions principales le dirigeant de PME partant à la retraite bénéficie-t-il de l'abattement fixe sur la plus-value de cession de ses titres ?",
+   "r": "<b>Détenir les titres depuis au moins un an</b>, avoir exercé une fonction de direction de manière continue pendant les cinq années précédant la cession et faire valoir ses droits à la retraite dans les deux années qui précèdent ou suivent la cession.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 150-0 D ter ; impots.gouv.fr, dirigeant de PME partant à la retraite",
+   "url": "https://www.impots.gouv.fr/particulier/questions/dirigeant-de-pme-partant-la-retraite-comment-sera-imposee-la-plus-value-que-je",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k28",
+   "type": "def",
+   "q": "Comment est déterminé le bénéfice imposable d'un titulaire de bénéfices non commerciaux soumis au régime micro-BNC ?",
+   "r": "<b>Il est égal aux recettes brutes diminuées d'un abattement forfaitaire de 34 %.</b>",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 102 ter et 64 bis",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197191",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k29",
+   "type": "def",
+   "q": "Comment est déterminé le bénéfice imposable d'un exploitant soumis au régime micro-BA des bénéfices agricoles ?",
+   "r": "<b>La moyenne des recettes de l'année et des deux années précédentes, diminuée d'un abattement de 87 %</b>, qui ne peut être inférieur à 305 €.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 102 ter et 64 bis",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197191",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k30",
+   "type": "comp",
+   "q": "Quand un titulaire de bénéfices non commerciaux relève-t-il du régime micro-BNC plutôt que de la déclaration contrôlée ?",
+   "r": "<b>Lorsque les recettes de l'année civile précédente ou de l'avant-dernière année n'excèdent pas le seuil de l'article 102 ter du CGI.</b> Au-delà, ou sur option, le bénéfice est déterminé selon la déclaration contrôlée : recettes encaissées moins dépenses payées.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 96 et 102 ter ; BOI-BNC-DECLA-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/4807-PGP.html/identifiant=BOI-BNC-DECLA-20-10-20260819",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k31",
+   "type": "def",
+   "q": "Comment est déterminé le bénéfice d'une location meublée imposée au régime micro-BIC ?",
+   "r": "<b>Recettes diminuées d'un abattement forfaitaire</b> : 50 % en principe, 30 % pour les meublés de tourisme non classés.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 50-0, 39 duodecies et 150 U ; BOI-BIC-CHAMP-40-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k32",
+   "type": "comp",
+   "q": "Quel régime de plus-value s'applique à la cession de son logement par un loueur en meublé non professionnel ?",
+   "r": "<b>Celui des plus-values immobilières des particuliers</b>, avec réintégration des amortissements déduits depuis la loi de finances pour 2025. Les plus-values professionnelles ne concernent que le loueur en meublé professionnel.",
+   "base": [
+    "Points de vigilance#5",
+    "Règles essentielles#13"
+   ],
+   "src": "CGI, art. 39 duodecies, 93 quater, 150 U et 150 VB ; BOI-BIC-CHAMP-40-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/3610-PGP.html/identifiant=BOI-BIC-CHAMP-40-20-20240214",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k33",
+   "type": "comp",
+   "q": "Comment la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025) modifie-t-elle la plus-value immobilière d'un loueur en meublé non professionnel ?",
+   "r": "<b>Le prix d'acquisition retenu est minoré des amortissements admis en déduction pendant la location</b>, pour les cessions réalisées à compter du 15 février 2025, lendemain de la promulgation de la loi.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "CGI, art. 150 VB, III (loi n° 2025-127 du 14 février 2025, art. 84)",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000051168884",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k34",
+   "type": "comp",
+   "q": "Comment la déduction forfaitaire de 10 % pour frais professionnels s'applique-t-elle aux traitements et salaires à l'impôt sur le revenu ?",
+   "r": "<b>D'office, sur le salaire net</b>, avec un minimum et un plafond par salarié révisés chaque année dans la même proportion que la limite supérieure de la première tranche du barème.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 83, 3° ; impots.gouv.fr, déduction forfaitaire de 10 %",
+   "url": "https://www.impots.gouv.fr/particulier/questions/comment-puis-je-beneficier-de-la-deduction-forfaitaire-de-10",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-02-k35",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue le prélèvement forfaitaire non libératoire du prélèvement forfaitaire unique applicables aux revenus de capitaux mobiliers ?",
+   "r": "<b>Le prélèvement non libératoire est un acompte d'impôt sur le revenu</b> retenu par l'établissement payeur à l'encaissement des revenus ; <b>le PFU est le mode d'imposition par défaut</b> de ces revenus, écarté sur option globale pour le barème progressif.",
+   "base": [
+    "Règles essentielles#4",
+    "Définitions#2"
+   ],
+   "src": "CGI, art. 117 quater, 125 A et 242 quater ; impots.gouv.fr, revenus mobiliers",
+   "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
+   "fiab": "stable"
+  }
+ ]
+}

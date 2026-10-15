@@ -77,6 +77,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle qualité ont obligatoirement tous les associés d'une société en nom collectif ?",
    "opts": [
     "Celle de commerçant",
@@ -92,6 +93,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La SNC Lambert et Fils doit 50 000 € à un fournisseur et ne paie pas. Que doit faire le fournisseur avant de poursuivre personnellement un associé ?",
    "opts": [
     "Rien, il peut agir directement contre l'associé le plus solvable",
@@ -107,6 +109,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les statuts d'une SNC prévoient que les cessions de parts à des tiers sont autorisées à la majorité des deux tiers des associés. Quelle est la valeur de cette clause ?",
    "opts": [
     "Valable, les statuts de SNC étant libres",
@@ -122,6 +125,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un associé d'une SNC décède. Les statuts ne contiennent aucune clause relative au décès. Quelle est la conséquence ?",
    "opts": [
     "La société continue avec les héritiers, qui deviennent associés",
@@ -137,6 +141,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SNC composée de deux personnes physiques réalise un bénéfice de 80 000 € et n'a exercé aucune option fiscale. Comment ce bénéfice est-il imposé ?",
    "opts": [
     "À l'impôt sur les sociétés au niveau de la SNC",
@@ -152,6 +157,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans une société en commandite simple, un associé commanditaire signe au nom de la société un contrat avec un fournisseur, muni d'une procuration du gérant commandité. Quelle est la sanction ?",
    "opts": [
     "Aucune, la procuration couvre l'acte",
@@ -167,6 +173,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Comment les associés d'une société civile immobilière répondent-ils des dettes sociales ?",
    "opts": [
     "Indéfiniment et solidairement",
@@ -182,6 +189,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "La SCI Les Tilleuls doit 120 000 € à une banque et ne peut pas payer ; la banque a vainement poursuivi la société. Les associés détiennent respectivement 50 % (Alain), 30 % (Brigitte) et 20 % (Carole) du capital. Quel montant maximal (en €) la banque peut-elle réclamer à Brigitte ?",
    "a": 36000,
    "unit": "€",
@@ -193,6 +201,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "La SNC Delta doit 120 000 € à un fournisseur. Les trois associés détiennent 50 %, 30 % et 20 % du capital. Après mise en demeure de la société restée vaine depuis plus de huit jours, quel montant maximal (en €) le fournisseur peut-il réclamer à l'associé détenant 20 % ?",
    "a": 120000,
    "unit": "€",
@@ -204,6 +213,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un créancier d'une société civile professionnelle d'architectes veut poursuivre directement un associé pour une dette sociale. Quelle condition préalable l'article 1858 du Code civil lui impose-t-il ?",
    "opts": [
     "Avoir obtenu l'accord du gérant",
@@ -219,6 +229,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les statuts d'une société civile ne contiennent aucune clause sur la cession des parts. Un associé veut vendre ses parts à un tiers. Quelle règle s'applique ?",
    "opts": [
     "La cession est libre",
@@ -234,6 +245,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Trois médecins créent une structure pour partager un secrétariat, des locaux et du matériel, chacun continuant à exercer et à facturer ses patients en son nom. Quelle forme correspond à ce projet ?",
    "opts": [
     "Une société civile professionnelle (SCP)",
@@ -249,6 +261,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "À propos des sociétés d'exercice libéral après l'ordonnance n° 2023-77, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "L'ordonnance est entrée en vigueur le 1er septembre 2024",
@@ -269,6 +282,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Deux entreprises de BTP constituent une société en participation occulte pour répondre à un appel d'offres ; l'une d'elles, désignée gérante, signe seule les contrats avec les tiers en son nom. Qui est engagé envers ces tiers ?",
    "opts": [
     "La société en participation, dotée de la personnalité morale",
@@ -284,6 +298,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel est le but légal d'un groupement d'intérêt économique ?",
    "opts": [
     "Réaliser des bénéfices pour lui-même et les distribuer",
@@ -299,6 +314,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quatre PME constituent un GIE sans capital pour mutualiser leurs achats. Le GIE ne paie pas une facture de 90 000 €. Que peut faire le fournisseur ?",
    "opts": [
     "Rien, le GIE sans capital ne peut pas être poursuivi",
@@ -314,6 +330,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une association loi 1901 réalise un excédent de 12 000 € sur l'exercice. Peut-elle le distribuer à ses membres ?",
    "opts": [
     "Oui, à proportion des cotisations versées",
@@ -329,6 +346,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un club de randonnée fonctionne depuis cinq ans sans avoir déposé de déclaration en préfecture. Peut-il agir en justice contre un fournisseur ?",
    "opts": [
     "Oui, comme toute association",
@@ -344,6 +362,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une association de soutien scolaire est gérée par des bénévoles, propose ses services à un public défavorisé à des prix très inférieurs au marché et ne fait aucune publicité commerciale. Quel est son régime fiscal ?",
    "opts": [
     "Elle est soumise à l'IS et à la TVA comme une entreprise",
@@ -359,6 +378,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel principe de vote caractérise les sociétés coopératives ?",
    "opts": [
     "Une action, une voix",
@@ -374,6 +394,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Qu'est-ce qui distingue fondamentalement une SCIC d'une SCOP ?",
    "opts": [
     "La SCIC est une association, la SCOP une société",
@@ -389,6 +410,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise souhaite créer rapidement une structure philanthropique capable de recevoir des dons et de financer des projets d'intérêt général, sans attendre un décret en Conseil d'État. Quelle structure est adaptée ?",
    "opts": [
     "Une fondation reconnue d'utilité publique",
@@ -404,6 +426,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque groupement selon le régime de responsabilité de ses associés ou membres pour les dettes du groupement.",
    "cats": [
     "Indéfinie et solidaire",
@@ -451,6 +474,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles formes limitent la responsabilité de tous leurs associés au montant de leurs apports ? (plusieurs réponses possibles)",
    "opts": [
     "SARL",
@@ -472,6 +496,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une SNC a opté pour l'impôt sur les sociétés au titre de l'exercice 2023. Ses associés souhaitent revenir à l'impôt sur le revenu. Est-ce possible ?",
    "opts": [
     "Non, l'option pour l'IS est irrévocable dès son exercice",
@@ -487,6 +512,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle est la condition propre au groupement européen d'intérêt économique par rapport au GIE français ?",
    "opts": [
     "Il doit avoir un capital d'au moins 37 000 €",
@@ -502,6 +528,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Des salariés veulent transformer leur entreprise en SCOP sous forme de SARL au capital de 200 000 €. Quel montant minimal de capital (en €) les salariés associés doivent-ils détenir ensemble pour respecter la loi sur les SCOP ?",
    "a": 102000,
    "unit": "€",
@@ -513,6 +540,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Dans une société en commandite simple, un associé commanditaire décède. Les statuts sont muets. Quelle est la conséquence ?",
    "opts": [
     "La société est dissoute, comme en SNC",

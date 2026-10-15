@@ -1,0 +1,435 @@
+{
+ "id": "ue6-05",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue6-05-k01",
+   "type": "def",
+   "q": "Qu'est-ce que l'autofinancement au sens du tableau de financement du PCG ?",
+   "r": "<b>La capacité d'autofinancement diminuée des distributions mises en paiement au cours de l'exercice.</b> Les dividendes sont fixés par l'assemblée générale après approbation des comptes.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, chapitre « Tableau de financement » ; C. com., art. L. 232-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k02",
+   "type": "def",
+   "q": "Selon le Code de commerce, de quoi est constitué le bénéfice distribuable d'une société ?",
+   "r": "<b>Du bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire.</b> La réserve légale reçoit au moins 5 % du bénéfice, diminué des pertes antérieures, jusqu'à atteindre 10 % du capital social.",
+   "base": [
+    "Règles essentielles#12",
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. com., art. L. 232-10 et L. 232-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k03",
+   "type": "comp",
+   "q": "Comment qualifie-t-on un dividende distribué alors que la société n'a pas de bénéfice distribuable ?",
+   "r": "<b>De dividende fictif.</b> C'est aussi le cas d'une distribution qui ramène les capitaux propres sous le capital et les réserves indisponibles ; l'autofinancement ne peut donc pas devenir négatif par distribution excessive.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. L. 232-11 et L. 232-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k04",
+   "type": "def",
+   "q": "Selon le PCG, qu'est-ce qu'une subvention d'investissement ?",
+   "r": "<b>Une subvention reçue pour acquérir ou créer des immobilisations.</b> Inscrite en capitaux propres (compte 131), elle est rapportée au résultat (compte 747) au rythme des amortissements lorsque l'immobilisation financée est amortissable.",
+   "base": [
+    "Définitions#6",
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 312-1 ; plan de comptes PCG 2025, comptes 131 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k05",
+   "type": "comp",
+   "q": "Selon le PCG, comment une subvention d'investissement finançant une immobilisation non amortissable est-elle rapportée au résultat ?",
+   "r": "<b>Par fractions égales sur la durée d'inaliénabilité ou, à défaut, sur dix ans.</b> Si l'immobilisation financée est amortissable, la subvention est rapportée au résultat proportionnellement aux amortissements.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 312-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k06",
+   "type": "def",
+   "q": "Que sont les comptes courants d'associés dans le financement d'une société ?",
+   "r": "<b>Des sommes laissées ou mises à disposition par les associés</b>, enregistrées au compte 455 « Associés – comptes courants ». Cette ressource d'endettement est souvent assimilée à des quasi-fonds propres lorsqu'elle est bloquée.",
+   "base": [
+    "Définitions#7"
+   ],
+   "src": "Plan de comptes PCG 2025, compte 455",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k07",
+   "type": "comp",
+   "q": "Selon le CGI, à quelles conditions les intérêts servis aux associés sur leurs comptes courants sont-ils déductibles ?",
+   "r": "<b>Dans la limite d'un taux maximal</b>, égal à la moyenne annuelle des taux effectifs moyens pratiqués par les établissements de crédit pour des prêts à taux variable aux entreprises d'une durée initiale supérieure à deux ans, <b>et à condition que le capital soit entièrement libéré.</b>",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 39, 1-3°",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k08",
+   "type": "def",
+   "q": "Qu'est-ce qu'un prêt participatif dans le financement des entreprises ?",
+   "r": "<b>Il relève des quasi-fonds propres</b> : pour l'appréciation de la situation financière des entreprises qui en bénéficient, les prêts participatifs sont assimilés à des fonds propres.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. mon. fin., art. L. 313-13 et L. 313-14",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k09",
+   "type": "def",
+   "q": "Qu'est-ce que le financement participatif encadré par le Code monétaire et financier ?",
+   "r": "<b>La mise en relation, par une plateforme, de porteurs de projet et de personnes finançant ce projet</b> sous forme de prêts (avec ou sans intérêt), de dons ou de titres.",
+   "base": [
+    "Définitions#9"
+   ],
+   "src": "C. mon. fin., art. L. 547-1 et suivants et L. 548-1 et suivants ; règlement (UE) 2020/1503",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k10",
+   "type": "comp",
+   "q": "Depuis l'ordonnance du 22 décembre 2021, quel statut ont les plateformes de financement participatif ?",
+   "r": "<b>Ce sont des prestataires européens de services de financement participatif agréés</b> (règlement (UE) 2020/1503). Le financement participatif est ainsi devenu un mode de financement reconnu des PME.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. mon. fin., art. L. 547-1 et suivants ; règlement (UE) 2020/1503 ; ordonnance n° 2021-1735 du 22 décembre 2021",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k11",
+   "type": "def",
+   "q": "Selon le Code de commerce, comment s'opère l'augmentation de capital d'une société anonyme ?",
+   "r": "<b>Par émission d'actions nouvelles ou par majoration du montant nominal des actions existantes.</b> Les actions nouvelles sont émises à leur nominal ou à ce montant majoré d'une prime d'émission.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 225-127 et L. 225-128",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k12",
+   "type": "comp",
+   "q": "Dans une société anonyme, quel organe est seul compétent pour décider une augmentation de capital ?",
+   "r": "<b>L'assemblée générale extraordinaire.</b> Le capital doit en outre être intégralement libéré avant toute émission d'actions nouvelles à libérer en numéraire.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 225-129 et L. 225-131",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k13",
+   "type": "comp",
+   "q": "Lors d'une augmentation de capital en numéraire d'une société anonyme, comment les actions nouvelles sont-elles libérées ?",
+   "r": "<b>Du quart au moins de leur nominal à la souscription, le surplus dans les cinq ans.</b> La prime d'émission, elle, est intégralement versée à la souscription.",
+   "base": [
+    "Chiffres et seuils#4"
+   ],
+   "src": "C. com., art. L. 225-144",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k14",
+   "type": "def",
+   "q": "Dans une société anonyme, qu'est-ce que le droit préférentiel de souscription (DPS) attaché aux actions ?",
+   "r": "<b>Un droit de souscription aux augmentations de capital en numéraire, proportionnel au montant des actions détenues.</b> Ce droit est négociable pendant la durée de la souscription.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 225-132",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k15",
+   "type": "comp",
+   "q": "Dans une société anonyme, comment le droit préférentiel de souscription des actionnaires peut-il être supprimé ?",
+   "r": "<b>Par décision de l'assemblée générale extraordinaire, sur rapport du conseil d'administration ou du directoire et des commissaires aux comptes.</b> À défaut de suppression, chaque actionnaire exerce ou cède son droit.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 225-132 et L. 225-135",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k16",
+   "type": "comp",
+   "q": "Lors d'une augmentation de capital en numéraire d'une société anonyme, que compense la valeur théorique du droit préférentiel de souscription ?",
+   "r": "<b>La baisse du cours liée à l'émission des actions nouvelles en dessous du cours.</b> Chaque actionnaire peut exercer ou céder son droit, sauf suppression du DPS par l'assemblée générale extraordinaire.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 225-132 et L. 225-135",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k17",
+   "type": "comp",
+   "q": "Selon le plan de comptes PCG 2025, où enregistre-t-on les intérêts courus sur un emprunt auprès des établissements de crédit ?",
+   "r": "<b>Au compte 1648</b> (avant 2025 : 1688), rattaché aux emprunts auprès des établissements de crédit (164). Le PCG 2025 enregistre les intérêts courus par nature d'emprunt : 1638 pour les emprunts obligataires (163).",
+   "base": [
+    "Règles essentielles#4",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 163, 164, 1638, 1648 et 661",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k18",
+   "type": "def",
+   "q": "Selon le Code de commerce, que sont les obligations émises par une société ?",
+   "r": "<b>Des titres négociables qui, dans une même émission, confèrent les mêmes droits de créance pour une même valeur nominale.</b> Les obligations convertibles ou remboursables en actions sont des valeurs mobilières donnant accès au capital.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 228-38 et L. 228-91",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k19",
+   "type": "comp",
+   "q": "Quelle formalité précède l'émission d'obligations par une société par actions n'ayant pas établi deux bilans régulièrement approuvés ?",
+   "r": "<b>Une vérification de l'actif et du passif.</b> L'émission elle-même relève du conseil d'administration ou du directoire, sauf disposition contraire des statuts.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 228-39 et L. 228-40",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k20",
+   "type": "comp",
+   "q": "Selon le PCG, comment traite-t-on la prime de remboursement et les frais d'émission d'un emprunt obligataire ?",
+   "r": "<b>La prime de remboursement (compte 169) est amortie sur la durée de l'emprunt</b> ; les frais d'émission peuvent être étalés sur cette durée (compte 481). Le coût actuariel de l'emprunt tient compte, lui, des flux réels : prix d'émission, coupons, prix de remboursement, frais.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, art. 212-9 et 212-10 ; plan de comptes PCG 2025, comptes 169 et 481",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k21",
+   "type": "def",
+   "q": "Qu'est-ce que le coût actuariel d'un financement, tel qu'un emprunt ou un crédit-bail ?",
+   "r": "<b>Le taux qui assure, selon la méthode des intérêts composés, l'égalité entre les sommes effectivement reçues et l'ensemble des versements</b> (annuités, frais, assurance). Pour comparer emprunt et crédit-bail, on retient les flux nets d'impôt.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. mon. fin., art. R. 314-2 ; CGI, art. 39, 1-1°",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k22",
+   "type": "def",
+   "q": "Selon le Code monétaire et financier, qu'est-ce qu'une opération de crédit-bail ?",
+   "r": "<b>Une location d'un bien d'équipement ou immobilier assortie d'une promesse unilatérale de vente</b> permettant au locataire d'acquérir le bien pour un prix convenu tenant compte des loyers versés. Le bien reste la propriété du bailleur.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. mon. fin., art. L. 313-7",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k23",
+   "type": "comp",
+   "q": "Comment l'entreprise locataire d'un bien en crédit-bail traite-t-elle les redevances dans ses comptes ?",
+   "r": "<b>Comme des charges externes, au compte 612.</b> Le bien n'est pas inscrit à l'actif du locataire : il reste la propriété du bailleur.",
+   "base": [
+    "Règles essentielles#5",
+    "Définitions#4"
+   ],
+   "src": "Plan de comptes PCG 2025, compte 612 ; C. mon. fin., art. L. 313-7 ; Banque de France, Bulletin n° 220/1 (2018)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k24",
+   "type": "comp",
+   "q": "Pourquoi la capacité d'endettement d'une entreprise doit-elle être appréciée crédit-bail inclus ?",
+   "r": "<b>Parce que la Banque de France et les banques comptent le crédit-bail comme une dette</b>, même s'il n'alourdit pas le bilan comptable. La Banque de France l'inclut dans l'endettement retenu pour apprécier la capacité de remboursement et l'autonomie financière.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#15"
+   ],
+   "src": "Banque de France, Bulletin n° 220/1 (2018) ; C. mon. fin., art. L. 313-7",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k25",
+   "type": "comp",
+   "q": "Pourquoi, pour une entreprise bénéficiaire soumise à l'IS, le coût d'un emprunt après impôt est-il inférieur à son taux d'intérêt ?",
+   "r": "<b>Parce que les intérêts sont des charges déductibles</b> qui procurent une économie d'impôt : au taux normal de l'IS de 25 %, un emprunt à i % coûte i × (1 − 0,25). Cette économie suppose un résultat imposable suffisant et le respect de l'article 212 bis ; en déficit, coûts avant et après impôt se confondent.",
+   "base": [
+    "Règles essentielles#6",
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 39, 1-1° ; CGI, art. 219, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046868562",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k26",
+   "type": "comp",
+   "q": "Selon l'article 212 bis du CGI, dans quelle limite les charges financières nettes d'une entreprise sont-elles déductibles ?",
+   "r": "<b>Dans la limite du plus élevé de 3 millions d'euros ou de 30 % de l'EBITDA fiscal</b>, avec des règles particulières pour les entreprises sous-capitalisées. L'économie d'impôt sur les intérêts suppose le respect de cette limite.",
+   "base": [
+    "Règles essentielles#7",
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 212 bis",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k27",
+   "type": "def",
+   "q": "Qu'est-ce que le coût des capitaux propres d'une entreprise ?",
+   "r": "<b>La rentabilité exigée par les actionnaires.</b> On l'estime par le MEDAF (taux sans risque + β × prime de risque du marché) ou par le modèle de Gordon-Shapiro (dividende attendu / cours + taux de croissance).",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 3 (la structure du financement : coût du capital) ; annexe 2 de l'arrêté du 4 août 2025 (DSCG)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k28",
+   "type": "def",
+   "q": "Qu'est-ce que le coût moyen pondéré du capital (CMPC) d'une entreprise ?",
+   "r": "<b>La moyenne des coûts des capitaux propres et de la dette après impôt, pondérée par leur poids dans le financement.</b> Le programme du DSCG le cite parmi les acquis attendus de l'UE6.",
+   "base": [
+    "Définitions#8"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG, acquis de l'UE6) ; programme de l'UE6, partie 3",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k29",
+   "type": "comp",
+   "q": "À quoi sert le coût moyen pondéré du capital (CMPC) dans l'étude des projets d'investissement ?",
+   "r": "<b>C'est le taux d'actualisation des projets.</b> Il pondère le coût des capitaux propres et le coût de la dette après impôt, en principe en valeurs de marché. Avec l'actualisation, c'est un prérequis explicite de la finance du DSCG.",
+   "base": [
+    "Règles essentielles#14",
+    "Points de vigilance#4"
+   ],
+   "src": "Arrêté du 4 août 2025, annexe 2 (programme du DSCG, acquis de l'UE6 : coût du capital) ; CGI, art. 219, I",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k30",
+   "type": "def",
+   "q": "Qu'est-ce que le plan de financement étudié en finance d'entreprise (UE6 du DCG) ?",
+   "r": "<b>Un tableau pluriannuel prévisionnel qui confronte, année par année, les ressources et les emplois</b> et suit la trésorerie cumulée. Sa construction et son équilibrage sont au programme de l'UE6.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 3 (le plan de financement) ; PCG, chapitre « Tableau de financement »",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k31",
+   "type": "comp",
+   "q": "Outre la capacité d'autofinancement, quelles ressources le plan de financement d'une entreprise retient-il ?",
+   "r": "<b>Les augmentations de capital, les emprunts, les subventions et les cessions.</b> Avec la CAF, elles sont confrontées année par année aux emplois prévisionnels.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 3 (le plan de financement) ; PCG, chapitre « Tableau de financement »",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k32",
+   "type": "comp",
+   "q": "Quels emplois le plan de financement d'une entreprise confronte-t-il, année par année, aux ressources ?",
+   "r": "<b>Les investissements, l'augmentation du BFR, les remboursements et les dividendes.</b> Le plan suit ainsi, année par année, la trésorerie cumulée.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 3 (le plan de financement) ; PCG, chapitre « Tableau de financement »",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k33",
+   "type": "comp",
+   "q": "Dans le plan de financement, pourquoi le remboursement d'un emprunt n'est-il inscrit en emploi que pour le capital ?",
+   "r": "<b>Parce que les intérêts sont déjà déduits dans la CAF prévisionnelle</b>, inscrite en ressource. Le tableau d'amortissement distingue d'ailleurs, dans chaque annuité, l'intérêt (charge, compte 661) et l'amortissement du capital (remboursement de dette).",
+   "base": [
+    "Points de vigilance#3",
+    "Règles essentielles#4"
+   ],
+   "src": "PCG, chapitre « Tableau de financement » (remboursements de dettes financières en emploi, CAF en ressource)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k34",
+   "type": "comp",
+   "q": "Dans le plan de financement, à quel exercice rattache-t-on en emploi le dividende voté par l'assemblée ?",
+   "r": "<b>À l'exercice de sa mise en paiement.</b> Selon le Code de commerce, celle-ci intervient au plus tard neuf mois après la clôture de l'exercice, sauf prolongation par décision de justice.",
+   "base": [
+    "Chiffres et seuils#5"
+   ],
+   "src": "C. com., art. L. 232-13",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229032/2020-12-29",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-05-k35",
+   "type": "comp",
+   "q": "En finance d'entreprise (UE6 du DCG), quelles contraintes de financement faut-il apprécier dans l'étude de la structure financière ?",
+   "r": "<b>La capacité de remboursement et l'autonomie financière.</b> Le programme demande aussi d'apprécier l'effet de levier de l'endettement ; pour ces ratios, la Banque de France inclut le crédit-bail dans l'endettement retenu.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 3 (les contraintes de financement) ; Banque de France, Bulletin n° 220/1 (2018)",
+   "url": null,
+   "fiab": "stable"
+  }
+ ]
+}

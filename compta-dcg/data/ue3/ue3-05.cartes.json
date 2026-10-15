@@ -1,0 +1,408 @@
+{
+ "id": "ue3-05",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue3-05-k01",
+   "type": "def",
+   "q": "Que recouvrent la liberté syndicale et le principe de participation des travailleurs selon le préambule de la Constitution de 1946 ?",
+   "r": "<b>Liberté syndicale</b> : tout homme peut défendre ses droits et ses intérêts par l'action syndicale et adhérer au syndicat de son choix (al. 6). <b>Participation</b> : tout travailleur participe, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail ainsi qu'à la gestion des entreprises (al. 8).",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Préambule de la Constitution du 27 octobre 1946, al. 6 et 8",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006527445",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k02",
+   "type": "def",
+   "q": "Selon quels critères s'apprécie la représentativité d'une organisation syndicale de salariés, en dehors de l'audience, de l'influence et des effectifs ?",
+   "r": "<b>Sept critères cumulatifs</b>, dont le respect des valeurs républicaines, l'indépendance, la transparence financière et une ancienneté minimale de deux ans dans le champ professionnel et géographique couvrant le niveau de négociation (à compter du dépôt légal des statuts).",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 2121-1, L. 2122-1, L. 2122-5 et L. 2122-9",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019353505",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k03",
+   "type": "comp",
+   "q": "Outre les valeurs républicaines, l'indépendance, la transparence financière et l'ancienneté, quels critères fondent la représentativité d'une organisation syndicale de salariés ?",
+   "r": "<b>L'audience, l'influence et les effectifs d'adhérents et cotisations.</b> L'influence est prioritairement caractérisée par l'activité et l'expérience ; l'audience requise est de 10 % des suffrages exprimés au premier tour des dernières élections des titulaires au CSE dans l'entreprise, 8 % dans la branche et au niveau national et interprofessionnel.",
+   "base": [
+    "Définitions#1",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. trav., art. L. 2121-1, L. 2122-1, L. 2122-5 et L. 2122-9",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019353505",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k04",
+   "type": "comp",
+   "q": "Parmi qui une organisation syndicale représentative désigne-t-elle le délégué syndical d'une entreprise d'au moins cinquante salariés ?",
+   "r": "<b>Parmi les candidats aux élections du CSE ayant recueilli, à titre personnel et dans leur collège, au moins 10 % des suffrages exprimés au premier tour</b> ; à défaut, parmi ses adhérents ou ses anciens élus. Elle doit y avoir constitué une section syndicale.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. trav., art. L. 2142-1-1 et L. 2143-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006195667/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k05",
+   "type": "comp",
+   "q": "Comment un syndicat représentatif peut-il disposer d'un délégué syndical dans un établissement de moins de cinquante salariés ?",
+   "r": "<b>En désignant un membre de la délégation du personnel au CSE comme délégué syndical</b>, pour la durée de son mandat. Le seuil de cinquante salariés n'interdit donc pas toute présence syndicale.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. trav., art. L. 2143-6",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006195667/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k06",
+   "type": "def",
+   "q": "Qu'est-ce que le représentant de la section syndicale dans une entreprise ?",
+   "r": "<b>Le représentant que peut désigner une organisation syndicale non représentative</b> au titre de sa section syndicale ; il ne peut pas négocier d'accords collectifs.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. trav., art. L. 2142-1-1 et L. 2143-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006195667/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k07",
+   "type": "def",
+   "q": "Qu'est-ce que le comité social et économique (CSE) ?",
+   "r": "<b>L'institution représentative unique du personnel</b>, mise en place dans les entreprises d'au moins onze salariés et obligatoire lorsque cet effectif est atteint pendant douze mois consécutifs. Issu des ordonnances du 22 septembre 2017, il a remplacé les délégués du personnel, le comité d'entreprise et le CHSCT.",
+   "base": [
+    "Définitions#4",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. trav., art. L. 2311-2, L. 2314-33 et L. 2314-34 ; loi n° 2025-989 du 24 octobre 2025",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160739/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k08",
+   "type": "comp",
+   "q": "Quelles règles régissent la durée et le renouvellement des mandats des membres élus du comité social et économique (CSE) ?",
+   "r": "<b>Ils sont élus pour quatre ans</b> (deux à quatre ans par accord). Depuis le 26 octobre 2025 (loi n° 2025-989 du 24 octobre 2025), le nombre de mandats successifs n'est plus limité ; il l'était auparavant à trois, sauf exceptions.",
+   "base": [
+    "Définitions#4",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. trav., art. L. 2311-2, L. 2314-33 et L. 2314-34 ; loi n° 2025-989 du 24 octobre 2025",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160739/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k09",
+   "type": "comp",
+   "q": "Quelles sont les attributions du comité social et économique (CSE) dans les entreprises de onze à quarante-neuf salariés ?",
+   "r": "<b>Il présente les réclamations individuelles et collectives</b> et contribue à la santé et à la sécurité.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. trav., art. L. 2312-5, L. 2312-8, L. 2312-17 et L. 2312-18",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000035609482/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k10",
+   "type": "comp",
+   "q": "Sur quoi le comité social et économique (CSE) d'une entreprise d'au moins cinquante salariés est-il informé et consulté ?",
+   "r": "<b>Sur l'organisation, la gestion et la marche générale de l'entreprise</b>, avec trois consultations récurrentes : orientations stratégiques ; situation économique et financière ; politique sociale, conditions de travail et emploi. Il dispose d'une base de données économiques, sociales et environnementales.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. trav., art. L. 2312-5, L. 2312-8, L. 2312-17 et L. 2312-18",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000035609482/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k11",
+   "type": "def",
+   "q": "De quoi se compose la masse salariale brute servant d'assiette à la subvention de fonctionnement du comité social et économique ?",
+   "r": "<b>Des gains et rémunérations soumis à cotisations de sécurité sociale</b>, à l'exception des indemnités versées à l'occasion de la rupture du contrat à durée indéterminée. À partir de 50 salariés, la subvention en représente 0,20 % (0,22 % à partir de 2 000 salariés).",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. trav., art. R. 2314-1, L. 2315-61 et L. 2315-36",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761916",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k12",
+   "type": "comp",
+   "q": "Depuis la loi du 26 mai 2026, comment les salariés d'une entreprise d'au moins cinquante salariés sont-ils associés à un projet de cession de l'entreprise ?",
+   "r": "<b>Par l'information et la consultation du CSE</b>, qui remplacent depuis le 27 juillet 2026 l'information directe des salariés, en cas de projet de cession du fonds de commerce ou de parts ou actions donnant la majorité du capital.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Loi n° 2026-403 du 26 mai 2026, art. 22 ; travail-emploi.gouv.fr, « L'information et la consultation du CSE »",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054131729",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k13",
+   "type": "def",
+   "q": "En quoi consiste le statut protecteur d'un délégué syndical, d'un membre élu du CSE ou d'un candidat aux élections ?",
+   "r": "<b>Leur licenciement ne peut intervenir qu'après autorisation de l'inspecteur du travail.</b> La protection se prolonge douze mois pour l'ancien délégué syndical ayant exercé ses fonctions au moins un an, six mois pour l'ancien élu, et dure six mois pour le candidat à compter de la publication des candidatures.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. trav., art. L. 2411-1, L. 2411-3, L. 2411-5 et L. 2411-7",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160745/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k14",
+   "type": "comp",
+   "q": "Quelle différence de sanction le Code du travail fait-il entre l'entrave à la constitution du CSE et l'entrave à son fonctionnement régulier ?",
+   "r": "<b>L'entrave à la constitution d'un CSE ou à la libre désignation de ses membres</b> est punie d'un an d'emprisonnement et de 7 500 € d'amende ; l'entrave à son fonctionnement régulier n'est punie que d'une amende.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "C. trav., art. L. 2317-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035634273",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k15",
+   "type": "def",
+   "q": "Qu'est-ce qu'une convention collective de travail, par différence avec un accord collectif de travail ?",
+   "r": "<b>La convention a vocation à traiter de l'ensemble des matières</b> de l'article L. 2221-1 (conditions d'emploi, de formation professionnelle et de travail, garanties sociales) pour toutes les catégories professionnelles ; l'accord ne traite qu'un ou plusieurs sujets déterminés.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 2221-2 et L. 2231-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k16",
+   "type": "def",
+   "q": "Qu'est-ce qu'un accord d'entreprise majoritaire au sens du Code du travail ?",
+   "r": "<b>Un accord signé par l'employeur et par une ou plusieurs organisations syndicales représentatives ayant recueilli plus de 50 % des suffrages exprimés</b> en faveur d'organisations représentatives au premier tour des dernières élections des titulaires au CSE. Cette règle s'applique à l'ensemble des accords d'entreprise depuis le 1er mai 2018, sauf exceptions.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. trav., art. L. 2232-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035652760",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k17",
+   "type": "comp",
+   "q": "Comment valider un accord d'entreprise signé par l'employeur et des syndicats représentatifs ayant recueilli plus de 30 %, mais pas plus de 50 %, des suffrages ?",
+   "r": "<b>Par une consultation des salariés</b>, demandée par une ou plusieurs organisations signataires dans un délai d'un mois à compter de la signature, puis, au terme de ce délai, par l'employeur en l'absence d'opposition de l'ensemble de ces organisations. Organisée dans les deux mois, elle valide l'accord s'il est approuvé à la majorité des suffrages exprimés ; sinon, il est réputé non écrit.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. trav., art. L. 2232-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035652760",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k18",
+   "type": "comp",
+   "q": "À quelles conditions un accord collectif de branche est-il valide ?",
+   "r": "<b>Signature par une ou plusieurs organisations syndicales représentatives ayant recueilli au moins 30 % des suffrages exprimés</b> en faveur d'organisations représentatives à ce niveau, quel que soit le nombre de votants, <b>et absence d'opposition</b> d'organisations représentatives ayant recueilli la majorité de ces suffrages, dans un délai de quinze jours à compter de la notification.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. trav., art. L. 2232-6 et L. 2231-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000022926962",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k19",
+   "type": "comp",
+   "q": "Comment un employeur dépourvu de délégué syndical peut-il conclure un accord collectif, selon l'effectif de l'entreprise ?",
+   "r": "<b>Moins de onze salariés</b> (et onze à vingt sans élu) : projet d'accord ratifié à la majorité des deux tiers du personnel ; <b>de onze à moins de cinquante</b> : négociation avec un salarié mandaté ou des élus du CSE ; <b>à partir de cinquante</b> : avec des élus mandatés, à défaut des élus non mandatés (matières limitées), à défaut un salarié mandaté.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 2232-21 à L. 2232-26",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189521/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k20",
+   "type": "comp",
+   "q": "Dans quelles matières l'accord d'entreprise prévaut-il sur l'accord de branche ?",
+   "r": "<b>Dans toutes les matières autres que celles des blocs 1 et 2</b>, qu'il soit antérieur ou postérieur. Dans les treize matières du bloc 1, la branche prime sauf garanties au moins équivalentes ; dans les quatre matières du bloc 2, elle prime si elle le stipule expressément.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. trav., art. L. 2253-1 à L. 2253-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177936/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k21",
+   "type": "comp",
+   "q": "Sur quels thèmes portent les négociations obligatoires dans une entreprise où sont constituées des sections syndicales d'organisations représentatives ?",
+   "r": "<b>Deux négociations</b> : la rémunération (notamment les salaires effectifs), le temps de travail et le partage de la valeur ajoutée ; l'égalité professionnelle entre les femmes et les hommes et la qualité de vie et des conditions de travail. Elles ont lieu au moins tous les quatre ans, et chaque année à défaut d'accord fixant le calendrier.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. trav., art. L. 2242-1 et L. 2242-13",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177932/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k22",
+   "type": "comp",
+   "q": "Quelles négociations spécifiques s'imposent aux entreprises d'au moins trois cents salariés ?",
+   "r": "<b>Une négociation sur la gestion des emplois et des parcours professionnels (GEPP) et la mixité des métiers</b>, au moins une fois tous les quatre ans (engagée tous les trois ans à défaut d'accord). Depuis la loi n° 2025-989 du 24 octobre 2025, une négociation distincte porte sur l'emploi, le travail et l'amélioration des conditions de travail des salariés expérimentés.",
+   "base": [
+    "Règles essentielles#5",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. trav., art. L. 2242-2, L. 2242-2-1 et L. 2242-13",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036262221",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k23",
+   "type": "comp",
+   "q": "Comment qualifier le licenciement du salarié qui refuse un accord de performance collective (APC) comportant des dispositions étrangères à ses objets légaux ?",
+   "r": "<b>Il est sans cause réelle et sérieuse</b> (Cass. soc., 28 mai 2026). Les objets légaux de l'APC sont la durée du travail, la rémunération et la mobilité interne.",
+   "base": [
+    "Ce qui a changé récemment#5"
+   ],
+   "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin ; C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k24",
+   "type": "comp",
+   "q": "Que devient un accord collectif à durée indéterminée après sa dénonciation par ses signataires ?",
+   "r": "<b>Il continue de produire effet jusqu'à l'entrée en vigueur de l'accord de substitution</b> ou, à défaut, pendant un an à compter de l'expiration du préavis (trois mois à défaut de stipulation). Les salariés conservent ensuite une rémunération au moins égale à celle perçue au cours des douze derniers mois.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 2261-9, L. 2261-10 et L. 2261-13",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189534/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k25",
+   "type": "def",
+   "q": "Qu'est-ce que la mise en cause d'un accord collectif ?",
+   "r": "<b>L'effet sur l'accord d'une fusion, d'une cession, d'une scission ou d'un changement d'activité</b> : il continue de produire effet dans les mêmes conditions (survie d'un an après le préavis de trois mois, maintien de la rémunération), sauf accord de substitution ou de transition conclu avec le nouvel employeur.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. trav., art. L. 2261-14 à L. 2261-14-4",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189535/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k26",
+   "type": "comp",
+   "q": "Quelles organisations syndicales peuvent réviser un accord d'entreprise ?",
+   "r": "<b>Jusqu'à la fin du cycle électoral au cours duquel il a été conclu, les organisations représentatives signataires ou adhérentes</b> ; après, toutes les organisations représentatives dans l'entreprise.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 2261-7-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160736/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k27",
+   "type": "def",
+   "q": "Qu'est-ce que l'extension d'une convention de branche ou d'un accord professionnel ou interprofessionnel ?",
+   "r": "<b>Le fait de rendre ses stipulations obligatoires pour tous les employeurs du champ</b>, adhérents ou non d'une organisation signataire, par arrêté du ministre chargé du travail pris après avis motivé de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. trav., art. L. 2261-15",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160736/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k28",
+   "type": "comp",
+   "q": "Dans quel délai l'action en nullité d'une convention ou d'un accord collectif doit-elle être engagée ?",
+   "r": "<b>Deux mois, à peine d'irrecevabilité</b> ; le juge saisi rend sa décision dans un délai de six mois. Ce délai ne s'applique pas lorsque l'illégalité d'une clause est invoquée par voie d'exception dans un litige individuel.",
+   "base": [
+    "Règles essentielles#16",
+    "Points de vigilance#1"
+   ],
+   "src": "C. trav., art. L. 2262-13, L. 2262-14 et L. 2262-14-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189539/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k29",
+   "type": "def",
+   "q": "Qu'est-ce que le droit de grève dans l'ordre juridique français ?",
+   "r": "<b>Un droit constitutionnel</b> (préambule de la Constitution de 1946, al. 7), qui s'exerce dans le cadre des lois qui le réglementent.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "Préambule de la Constitution de 1946, al. 7 ; C. trav., art. L. 2511-1",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k30",
+   "type": "comp",
+   "q": "Quel est l'effet de l'exercice du droit de grève sur le contrat de travail du salarié gréviste ?",
+   "r": "<b>La grève suspend le contrat de travail.</b> Son exercice ne peut justifier la rupture du contrat, sauf faute lourde imputable au salarié, ni donner lieu à des mesures discriminatoires en matière de rémunérations et d'avantages sociaux ; tout licenciement prononcé en l'absence de faute lourde est nul de plein droit.",
+   "base": [
+    "Définitions#5",
+    "Règles essentielles#15"
+   ],
+   "src": "Préambule de la Constitution de 1946, al. 7 ; C. trav., art. L. 2511-1",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k31",
+   "type": "comp",
+   "q": "Quelle condition préalable s'impose à une grève dans les services publics ?",
+   "r": "<b>Un préavis de cinq jours francs</b>, déposé par une organisation représentative.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. trav., art. L. 2511-1, L. 2512-2, L. 2522-1, L. 2523-1 et L. 2524-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k32",
+   "type": "comp",
+   "q": "À quelles procédures de règlement un conflit collectif de travail peut-il être soumis selon le Code du travail ?",
+   "r": "<b>À une procédure de conciliation, de médiation ou d'arbitrage.</b>",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. trav., art. L. 2511-1, L. 2512-2, L. 2522-1, L. 2523-1 et L. 2524-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-05-k33",
+   "type": "comp",
+   "q": "Quelles entreprises doivent, à titre expérimental, mettre en place un dispositif de partage de la valeur selon la loi du 29 novembre 2023 ?",
+   "r": "<b>Les entreprises d'au moins onze salariés non tenues à la participation</b> ayant réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires (exercices ouverts à compter du 1er janvier 2025, pendant cinq ans). Dispositifs : participation, intéressement, abondement d'un plan d'épargne salariale ou prime de partage de la valeur.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Loi n° 2023-1107 du 29 novembre 2023, art. 5 ; C. trav., art. L. 3322-2",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048480574",
+   "fiab": "stable"
+  }
+ ]
+}

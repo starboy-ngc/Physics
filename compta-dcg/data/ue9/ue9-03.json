@@ -137,6 +137,7 @@
  "exercices": [
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Un achat de 2 500 € HT au taux de 20 %. Quel est le montant de la TVA ?",
    "a": 500,
@@ -148,6 +149,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Une facture TTC de 1 800 € au taux de 20 %. Quel est le montant HT ?",
    "a": 1500,
@@ -159,6 +161,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Réception d'une facture de marchandises : 4 000 € HT, TVA 20 %. Paiement à 30 jours.",
    "lib": "Facture fournisseur",
@@ -194,6 +197,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Vente de marchandises à un client : 10 000 € HT, TVA 20 %, règlement sous 30 jours.",
    "lib": "Facture client",
@@ -229,6 +233,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Vente de prestations de services : 2 000 € HT, TVA 20 %, à crédit.",
    "lib": "Facture de prestation",
@@ -263,6 +268,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Une remise de 10 % figure sur la facture d'achat. Comment l'enregistrer ?",
    "opts": [
@@ -278,6 +284,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Facture d'achat de marchandises : brut 5 000 € HT, remise 10 %, TVA 20 % sur le net. À crédit.",
    "lib": "Facture avec remise",
@@ -312,6 +319,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le vendeur accorde un escompte de 2 % à un client qui paie comptant. Chez le vendeur, l'escompte est :",
    "opts": [
@@ -327,6 +335,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "TVA collectée du mois : 9 600 €. TVA déductible sur biens et services : 5 200 €. TVA déductible sur immobilisations : 1 400 €. Quel est le montant de la TVA à décaisser ?",
    "a": 3000,
@@ -338,6 +347,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Enregistrez la déclaration de TVA : collectée 9 600 €, déductible sur biens et services 5 200 €, déductible sur immobilisations 1 400 €.",
    "lib": "Déclaration de TVA",
@@ -379,6 +389,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Pour l'entreprise assujettie, la TVA facturée à ses clients est :",
    "opts": [
@@ -394,6 +405,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Rivaud (commerce de détail) achète pour 3 000 € HT de livres destinés à la revente. Quel est le montant de TVA déductible, sachant que les livres relèvent du taux réduit de 5,5 % ?",
    "opts": [
@@ -409,6 +421,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Après livraison, le fournisseur Nordal accorde une ristourne de 300 € HT (TVA 20 %) par facture d'avoir. Écriture chez l'acheteur :",
    "opts": [
@@ -424,6 +437,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles mentions sont obligatoires sur une facture entre professionnels ? (plusieurs réponses possibles)",
    "opts": [
@@ -444,6 +458,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Facture de vente : brut 8 000 € HT, remise 5 %, escompte de 2 % pour règlement comptant, TVA 20 %. Quel est le net à payer TTC ?",
    "a": 8937.6,
@@ -455,6 +470,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Chez le vendeur, enregistrez la facture précédente : net commercial 7 600 € HT, escompte 152 €, TVA 1 489,60 €, net à payer 8 937,60 €, encaissé par virement le jour même.",
    "lib": "Vente avec escompte, règlement comptant",
@@ -519,6 +535,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Le fournisseur facture 60 € HT de frais de port en plus des marchandises. Chez l'acheteur, ce port est :",
    "opts": [
@@ -534,6 +551,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Le client Hekla avait versé un acompte de 1 200 € (comptabilisé en 4191). Facture définitive de marchandises : 3 000 € HT, TVA 20 %, le solde est payable à 30 jours. Enregistrez la facture (le compte 4191 est soldé).",
    "lib": "Facture définitive après acompte",
@@ -575,6 +593,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quels éléments entrent dans la base de calcul de la TVA d'une facture de vente ? (plusieurs réponses possibles)",
    "opts": [
@@ -595,6 +614,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Au mois de mars, la TVA déductible (7 800 €) dépasse la TVA collectée (6 500 €). Que constate l'entreprise ?",
    "opts": [
@@ -610,6 +630,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Ambre vend des prestations de conseil. Pour quelle date la TVA sur une prestation facturée le 20 juin et encaissée le 15 juillet est-elle exigible, sans option pour les débits ?",
    "opts": [
@@ -625,6 +646,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Berlan refacture à un client 400 € HT de frais de déplacement qu'elle a elle-même supportés. Sous le PCG 2025, cette refacturation est enregistrée :",
    "opts": [
@@ -640,6 +662,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "En 2025, un prestataire de services dont le chiffre d'affaires annuel est de 30 000 € relève, sauf option, de la franchise en base de TVA. Quelle en est la conséquence ?",
    "opts": [
@@ -655,6 +678,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La société Berlan verse par virement un acompte de 2 000 € à son fournisseur à la commande d'un lot de marchandises. Écriture chez Berlan :",
    "opts": [
@@ -670,6 +694,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Hekla vend des marchandises franco de port et paie elle-même 150 € HT à un transporteur pour livrer son client. Chez Hekla, ces 150 € sont :",
    "opts": [
@@ -685,6 +710,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "En 2026, une PME relève du régime réel simplifié d'imposition en matière de TVA. Quelles sont ses obligations déclaratives ?",
    "opts": [
@@ -700,6 +726,7 @@
   },
   {
    "type": "multi",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Un client retourne pour 500 € HT de marchandises (TVA 20 %) ; le vendeur émet un avoir. Chez le vendeur, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -720,6 +747,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "La société Télia achète un véhicule utilitaire pour 25 000 € HT (TVA 20 %) et des pneus de rechange pour 600 € HT. Quelle imputation de la TVA est correcte ?",
    "opts": [

@@ -1,0 +1,432 @@
+{
+ "id": "ue10-06",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-06-k01",
+   "type": "def",
+   "q": "Comment le PCG définit-il les capitaux propres d'une entreprise ?",
+   "r": "<b>La somme algébrique des apports (capital, primes liées au capital), des écarts de réévaluation, des écarts d'équivalence et des bénéfices non distribués, diminuée des pertes</b>, à laquelle s'ajoutent les subventions d'investissement et les provisions réglementées. La situation nette exclut les subventions d'investissement, les provisions réglementées et les autres fonds propres.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, classe 1 (comptes de capitaux) ; C. com., art. R. 123-191 ; règlement ANC n° 2024-07",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k02",
+   "type": "def",
+   "q": "Comment le PCG subdivise-t-il le compte 101 Capital pour suivre la libération du capital souscrit ?",
+   "r": "<b>En 1011 capital souscrit non appelé, 1012 capital souscrit appelé non versé et 1013 capital souscrit appelé versé.</b> La fraction non appelée a pour contrepartie le compte 109 Actionnaires : capital souscrit – non appelé, présenté distinctement en premier poste de l'actif.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, plan de comptes 2026 (comptes 101 et 109) ; recueil des normes comptables françaises au 1er janvier 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/2026/Recueil-PCG-Janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k03",
+   "type": "comp",
+   "q": "Selon le règlement ANC n° 2024-07, applicable aux exercices ouverts à compter du 1er janvier 2026, quels éléments deviennent une rubrique du bilan distincte des dettes ?",
+   "r": "<b>Les « autres fonds propres »</b>, que le règlement distingue des dettes et qui deviennent une rubrique à part entière du bilan. Le plan de comptes au 1er janvier 2026 conserve les subdivisions 1011, 1012 et 1013 du compte 101.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Règlement ANC n° 2024-07 (version commentée) ; arrêté du 26 décembre 2025 ; plan de comptes 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k04",
+   "type": "comp",
+   "q": "Quelle libération minimale des apports en numéraire le Code de commerce exige-t-il à la constitution d'une SARL et d'une SA ?",
+   "r": "<b>Au moins un cinquième de leur montant dans la SARL et la moitié de la valeur nominale des actions dans la SA</b>, le solde dans les cinq ans de l'immatriculation (appelé par le gérant en SARL, sur décision du conseil d'administration ou du directoire en SA). Dans la SARL, les apports en nature sont intégralement libérés dès la souscription.",
+   "base": [
+    "Règles essentielles#0",
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 223-7",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006222923",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k05",
+   "type": "comp",
+   "q": "À quelles conditions les futurs associés d'une SARL peuvent-ils se dispenser de commissaire aux apports pour évaluer les apports en nature ?",
+   "r": "<b>À l'unanimité, si aucun apport en nature n'excède 30 000 € et si la valeur totale des apports non évalués n'excède pas la moitié du capital.</b> Sans commissaire, ou si la valeur retenue diffère de celle qu'il a proposée, les associés sont solidairement responsables pendant cinq ans, à l'égard des tiers, de la valeur attribuée aux apports en nature.",
+   "base": [
+    "Règles essentielles#4",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 223-9 ; art. D. 223-6-1 (décret n° 2010-1669 du 29 décembre 2010) ; art. L. 227-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033613555",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k06",
+   "type": "comp",
+   "q": "Quel est le rôle du commissaire aux apports lors de la constitution d'une société anonyme ?",
+   "r": "<b>Il apprécie, sous sa responsabilité, la valeur des apports en nature et des avantages particuliers.</b> Il est désigné à l'unanimité des fondateurs ou, à défaut, par décision de justice.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 225-8 (rédaction applicable depuis le 1er octobre 2025) et L. 225-8-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322382",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k07",
+   "type": "comp",
+   "q": "Quelle est la méthode de référence du PCG pour comptabiliser les frais de constitution d'une société ?",
+   "r": "<b>La comptabilisation en charges.</b> Ces frais peuvent aussi être inscrits à l'actif en frais d'établissement, amortis selon un plan et dans un délai maximal de cinq ans.",
+   "base": [
+    "Règles essentielles#18"
+   ],
+   "src": "PCG, art. 212-9 (rédaction issue du règlement ANC n° 2018-01) ; C. com., art. R. 123-187",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k08",
+   "type": "def",
+   "q": "Qu'est-ce que la prime d'émission lors d'une augmentation de capital d'une société anonyme ?",
+   "r": "<b>L'excédent du prix d'émission sur la valeur nominale des actions nouvelles.</b> Lors d'une augmentation de capital en numéraire, elle est libérée en totalité dès la souscription et portée au compte 1041 Primes d'émission.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 225-144 ; PCG, compte 1041",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k09",
+   "type": "def",
+   "q": "Qu'est-ce que le droit préférentiel de souscription (DPS) des actionnaires d'une société anonyme ?",
+   "r": "<b>Le droit de préférence des actionnaires à la souscription des actions de numéraire émises pour réaliser une augmentation de capital</b>, proportionnel au montant de leurs actions. Il est négociable lorsqu'il est détaché d'actions négociables, cessible dans les mêmes conditions que l'action sinon.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 225-132 et L. 225-135",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029329359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k10",
+   "type": "comp",
+   "q": "Par quelles deux voies le droit préférentiel de souscription peut-il être écarté lors d'une augmentation de capital d'une SA ?",
+   "r": "<b>Par la renonciation de chaque actionnaire à titre individuel</b> (C. com., art. L. 225-132) <b>ou par sa suppression par l'assemblée qui décide l'augmentation</b> (art. L. 225-135).",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 225-132 et L. 225-135",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029329359",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k11",
+   "type": "comp",
+   "q": "Quelle libération minimale exige une augmentation de capital en numéraire dans une SA ou une SARL, à la différence de la constitution ?",
+   "r": "<b>Le quart au moins du nominal dans les deux formes, plus la totalité de la prime d'émission</b>, le solde dans les cinq ans à compter du jour où l'augmentation est devenue définitive. À la constitution, on exige un cinquième en SARL et la moitié en SA.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#3"
+   ],
+   "src": "C. com., art. L. 225-144 et L. 223-32",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006225207",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k12",
+   "type": "comp",
+   "q": "À quelle condition commune sont subordonnées l'émission par une SA d'actions nouvelles à libérer en numéraire et la déduction fiscale des intérêts de comptes courants d'associés ?",
+   "r": "<b>La libération intégrale du capital.</b> Un compte 109 encore ouvert bloque donc à la fois l'augmentation de capital en numéraire et la déduction des intérêts de comptes courants d'associés.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 225-131 ; CGI, art. 39, 1-3° ; BOI-IS-BASE-35-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039260253",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k13",
+   "type": "comp",
+   "q": "Quelle procédure une SA peut-elle engager contre un actionnaire défaillant qui ne paie pas les sommes appelées sur ses actions ?",
+   "r": "<b>Après une mise en demeure restée sans effet un mois au moins, elle poursuit sans autorisation de justice la vente des actions</b>, en bourse si elles sont cotées, aux enchères publiques sinon. L'actionnaire défaillant reste débiteur de la différence ou en profite, et il est tenu solidairement du montant non libéré avec les cessionnaires successifs et les souscripteurs.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 228-27 et L. 228-28",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006227774",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k14",
+   "type": "comp",
+   "q": "Comment sont libérés les titres de capital émis par une SA en rémunération d'un apport en nature en cours de vie sociale ?",
+   "r": "<b>Intégralement dès leur émission.</b> Un ou plusieurs commissaires aux apports sont désignés à l'unanimité des actionnaires ou, à défaut, par décision de justice, et la prime d'apport est portée au compte 1043.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 225-147 ; PCG, compte 1043",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048539465",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k15",
+   "type": "comp",
+   "q": "Quel est l'effet d'une augmentation de capital par incorporation de réserves, bénéfices ou primes sur le montant total des capitaux propres ?",
+   "r": "<b>Aucun : l'opération ne comporte aucun apport et les capitaux propres totaux sont inchangés.</b> Les réserves, le report à nouveau ou les primes (comptes 106, 110 ou 104) sont simplement virés au capital (compte 1013).",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 225-130 et L. 223-30 ; PCG, comptes 101 et 106",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042339726",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k16",
+   "type": "comp",
+   "q": "Quels traitements comptables le PCG admet-il pour les frais d'augmentation de capital depuis le règlement ANC n° 2018-01 ?",
+   "r": "<b>L'inscription à l'actif en frais d'établissement ou l'imputation sur les primes d'émission et de fusion</b>, avec comptabilisation en charges en cas d'insuffisance de la prime. Piège des manuels anciens : l'imputation sur la prime n'est plus qualifiée de « méthode préférentielle ».",
+   "base": [
+    "Points de vigilance#5",
+    "Règles essentielles#18"
+   ],
+   "src": "Règlement ANC n° 2018-01, art. 3 ; PCG, art. 212-9",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2018/REGLT_2018_01_PCG.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k17",
+   "type": "comp",
+   "q": "Depuis l'ordonnance n° 2025-229, dans quel délai se prescrit l'action en nullité d'une décision d'augmentation de capital d'une société par actions ?",
+   "r": "<b>Trois mois</b> (C. com., art. L. 225-149-4), à compter, dans le cas général, de la date à laquelle la décision contestée a été prise. L'ordonnance ramène aussi de trois à deux ans la prescription des actions en nullité de la société, d'apport ou de décisions sociales.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Ordonnance n° 2025-229 du 12 mars 2025 (art. 62 et 70) ; C. civ., art. 1844-12-1 et 1844-14 ; C. com., art. L. 225-149-4 ; rapport au Président de la République",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k18",
+   "type": "comp",
+   "q": "Quel principe une réduction du capital d'une société anonyme ne peut-elle en aucun cas méconnaître ?",
+   "r": "<b>L'égalité des actionnaires.</b> La réduction est autorisée ou décidée par l'assemblée générale extraordinaire, qui peut déléguer au conseil d'administration ou au directoire tous pouvoirs pour la réaliser.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 225-204 et L. 223-34",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610466",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k19",
+   "type": "comp",
+   "q": "Qui peut former opposition à une réduction du capital d'une SA ou d'une SARL non motivée par des pertes ?",
+   "r": "<b>Le représentant de la masse des obligataires et les créanciers dont la créance est antérieure au dépôt au greffe du procès-verbal</b>, dans le délai fixé par décret (vingt jours dans la SA, un mois dans la SARL). Les opérations de réduction ne peuvent commencer pendant ce délai ni, le cas échéant, avant qu'il ait été statué en première instance sur l'opposition.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 225-205 et L. 225-207 ; R. 225-152 ; L. 223-34 et R. 223-35",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178841/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k20",
+   "type": "comp",
+   "q": "Dans une SA ou une SARL, quel droit des créanciers distingue la réduction du capital non motivée par des pertes de celle motivée par des pertes ?",
+   "r": "<b>Le droit d'opposition</b>, ouvert au représentant de la masse des obligataires et aux créanciers antérieurs seulement en cas de réduction non motivée par des pertes ; la réduction motivée par des pertes n'ouvre pas ce droit. Saisi, le juge rejette l'opposition ou ordonne le remboursement des créances ou la constitution de garanties.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 225-205 et L. 225-207 ; R. 225-152 ; L. 223-34 et R. 223-35",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178841/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k21",
+   "type": "comp",
+   "q": "Hors sauvegarde ou redressement judiciaire, que doivent faire une SA ou une SARL dont les capitaux propres deviennent inférieurs à la moitié du capital social ?",
+   "r": "<b>Dans les quatre mois suivant l'approbation des comptes ayant fait apparaître la perte, les associés décident s'il y a lieu à dissolution anticipée.</b> À défaut de dissolution, la société doit, au plus tard à la clôture du deuxième exercice suivant celui de la constatation des pertes, reconstituer ses capitaux propres à hauteur de la moitié au moins du capital ou réduire son capital.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171 du 9 mars 2023) ; R. 223-37 et R. 225-166-1 (décret n° 2023-657 du 25 juillet 2023)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047292166",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k22",
+   "type": "comp",
+   "q": "Depuis la loi n° 2023-171, que doit faire une SA ou une SARL qui n'a pas reconstitué ses capitaux propres dans le délai de deux exercices ?",
+   "r": "<b>Réduire son capital pour le ramener au plus au seuil fixé par décret</b>, si son capital dépasse ce seuil, au plus tard à la clôture du deuxième exercice suivant. Le seuil est de 1 % du total du bilan (en SA, le capital minimal sert de plancher) ; à défaut, tout intéressé peut demander la dissolution en justice, le tribunal pouvant accorder six mois au plus pour régulariser.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. L. 223-42 et L. 225-248 (loi n° 2023-171) ; décret n° 2023-657 (R. 223-37 et R. 225-166-1)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047881958",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k23",
+   "type": "def",
+   "q": "Comment le Code de commerce définit-il le bénéfice distribuable d'une société ?",
+   "r": "<b>Le bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, et augmenté du report bénéficiaire.</b> Tout dividende distribué en violation de ces règles est un dividende fictif.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. L. 232-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k24",
+   "type": "def",
+   "q": "Qu'est-ce que la réserve légale dans une SARL ou une société par actions ?",
+   "r": "<b>La réserve (compte 1061) alimentée par un prélèvement d'un vingtième au moins du bénéfice de l'exercice, diminué le cas échéant des pertes antérieures.</b> Le prélèvement cesse d'être obligatoire lorsque la réserve atteint le dixième du capital social.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 232-10 (rédaction issue de l'ordonnance n° 2025-229, applicable depuis le 1er octobre 2025) ; PCG, compte 1061",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k25",
+   "type": "comp",
+   "q": "Quelle assiette retient-on pour la dotation à la réserve légale lorsque la société présente un report à nouveau débiteur ?",
+   "r": "<b>Le bénéfice après imputation des pertes antérieures</b> (report à nouveau débiteur), et seulement jusqu'au plafond de 10 % du capital : il faut contrôler le plafond restant avant de doter 5 % en totalité.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. L. 232-10",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k26",
+   "type": "comp",
+   "q": "Hors réduction du capital, quand toute distribution aux actionnaires est-elle interdite selon l'article L. 232-11 du Code de commerce ?",
+   "r": "<b>Lorsque les capitaux propres sont ou deviendraient, à la suite de la distribution, inférieurs au montant du capital augmenté des réserves que la loi ou les statuts ne permettent pas de distribuer.</b> L'écart de réévaluation n'est pas distribuable.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 232-11 ; PCG, comptes 106, 110, 120 et 457",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k27",
+   "type": "comp",
+   "q": "Quelle mention l'assemblée générale doit-elle faire lorsqu'elle distribue des sommes prélevées sur les réserves dont elle a la disposition ?",
+   "r": "<b>Elle doit indiquer expressément les postes de réserve concernés.</b> Les dividendes sont prélevés par priorité sur le bénéfice distribuable de l'exercice ; les dividendes votés sont portés au compte 457 Associés – dividendes à payer.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 232-11 ; PCG, comptes 106, 110, 120 et 457",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k28",
+   "type": "comp",
+   "q": "À quelles conditions une société peut-elle répartir des acomptes sur dividendes avant l'approbation des comptes de l'exercice ?",
+   "r": "<b>Un bilan établi au cours ou à la fin de l'exercice, certifié par un commissaire aux comptes, doit faire apparaître un bénéfice</b> depuis la clôture précédente, après dotations aux amortissements et provisions, déduction des pertes antérieures et sommes à porter en réserve, compte tenu du report bénéficiaire. Les acomptes ne peuvent excéder ce bénéfice ; leur répartition est décidée par le conseil d'administration, le directoire ou les gérants.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 232-12 ; R. 232-17",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k29",
+   "type": "comp",
+   "q": "Quelle est la qualification d'un acompte sur dividendes distribué sans respecter les conditions de l'article L. 232-12 du Code de commerce ?",
+   "r": "<b>C'est un dividende fictif.</b> Sa ratification a posteriori par l'assemblée générale ne le régularise pas (CA Bastia, 5 octobre 2016).",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. L. 232-12 ; CA Bastia, 5 octobre 2016, n° 14/00215",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000033215187/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k30",
+   "type": "comp",
+   "q": "Dans quel délai maximal la mise en paiement des dividendes votés doit-elle intervenir dans une SA ou une SARL ?",
+   "r": "<b>Dans les neuf mois après la clôture de l'exercice</b>, délai prolongeable par décision de justice. Les modalités de mise en paiement sont fixées par l'assemblée générale ou, à défaut, par le conseil d'administration, le directoire ou les gérants.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 232-13 ; R. 232-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229032",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k31",
+   "type": "comp",
+   "q": "Dans quel compte une société enregistre-t-elle le prélèvement forfaitaire non libératoire retenu sur les dividendes versés à des personnes physiques domiciliées en France ?",
+   "r": "<b>Au crédit du compte 442 État – impôts et taxes recouvrables sur des tiers.</b> Le prélèvement, opéré par l'établissement payeur, est imputable sur l'impôt sur le revenu de l'année, l'excédent étant restitué.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "CGI, art. 117 quater et 1671 C ; BOI-RPPM-RCM-30-20-10 et BOI-RPPM-RCM-30-20-50 ; PCG, compte 442",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036428175",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k32",
+   "type": "comp",
+   "q": "Que ne couvre pas la dispense du prélèvement forfaitaire non libératoire sur les dividendes perçus par une personne physique ?",
+   "r": "<b>Les prélèvements sociaux, toujours retenus à la source.</b> Le prélèvement de l'article 117 quater du CGI ne vise que les personnes physiques fiscalement domiciliées en France : l'associé personne morale ne le subit pas.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "CGI, art. 117 quater ; impots.gouv.fr, dispense du prélèvement forfaitaire non libératoire",
+   "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-beneficier-dune-dispense-du-prelevement-forfaitaire-non-liberatoire",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k33",
+   "type": "comp",
+   "q": "À quelles conditions les intérêts des comptes courants d'associés sont-ils fiscalement déductibles en principe ?",
+   "r": "<b>Seulement si le capital est entièrement libéré, et dans la limite d'un taux de référence</b> égal à la moyenne annuelle des taux effectifs moyens pratiqués par les établissements de crédit pour des prêts à taux variable aux entreprises d'une durée initiale supérieure à deux ans. La fraction excédentaire n'est pas déductible.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "CGI, art. 39, 1-3° et 212, I ; loi n° 2026-103 du 19 février 2026, art. 14 ; BOI-IS-BASE-35-20 (15 juillet 2026) ; BOI-BIC-CHG-50-50-30 ; PCG, compte 455",
+   "url": "https://bofip.impots.gouv.fr/bofip/4399-PGP.html/identifiant=BOI-IS-BASE-35-20-20260715",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k34",
+   "type": "comp",
+   "q": "Quelle extension la loi de finances pour 2026 apporte-t-elle à la déduction des intérêts au taux de marché prévue à l'article 212 du CGI ?",
+   "r": "<b>Elle l'étend aux intérêts servis aux entreprises associées mais non liées</b>, pour les exercices clos à compter du 31 décembre 2025 ; elle était jusque-là réservée aux intérêts servis à des entreprises liées. La condition de capital entièrement libéré demeure.",
+   "base": [
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "Loi n° 2026-103 du 19 février 2026, art. 14 ; CGI, art. 212, I-a ; BOFiP, ACTU-2026-00052 ; BOI-IS-BASE-35-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/14999-PGP.html/ACTU-2026-00052",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-06-k35",
+   "type": "comp",
+   "q": "Dans une SA, quelle condition exige une augmentation de capital par majoration du nominal des actions, hors incorporation de réserves, bénéfices ou primes ?",
+   "r": "<b>Le consentement unanime des actionnaires.</b> En cas d'incorporation de réserves, bénéfices ou primes, l'assemblée générale statue au contraire, par dérogation à l'article L. 225-96, aux conditions de quorum et de majorité de l'article L. 225-98 ; dans la SARL, l'incorporation est décidée par les associés représentant au moins la moitié des parts.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 225-130 et L. 223-30 ; PCG, comptes 101 et 106",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042339726",
+   "fiab": "stable"
+  }
+ ]
+}

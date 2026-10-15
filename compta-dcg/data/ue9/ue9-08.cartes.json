@@ -1,0 +1,434 @@
+{
+ "id": "ue9-08",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue9-08-k01",
+   "type": "def",
+   "q": "En comptabilité, qu'est-ce qu'un emprunt indivis auprès d'un établissement de crédit ?",
+   "r": "<b>Un emprunt contracté auprès d'un seul prêteur</b>, inscrit en dette au compte 164 « Emprunts auprès des établissements de crédit ». Chaque échéance comprend un remboursement de capital, qui diminue la dette, et des intérêts, charge financière du compte 661 (6611 « Intérêts des emprunts et dettes »).",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 164, 661 et 6611",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k02",
+   "type": "def",
+   "q": "Qu'appelle-t-on valeurs mobilières de placement (VMP) dans le plan de comptes du PCG ?",
+   "r": "<b>Des titres inscrits en classe 5 au compte 50</b> (503 actions, 506 obligations), distincts des titres immobilisés des comptes 26 et 27. Leur dépréciation est enregistrée au compte 590 « Dépréciations des valeurs mobilières de placement ».",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 26, 27, 50 et 590",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k03",
+   "type": "def",
+   "q": "Que comprend le compte 74 « Subventions » du plan de comptes du PCG ?",
+   "r": "<b>741 « Subventions d'exploitation », 742 « Subventions d'équilibre » et 747 « Quote-part des subventions d'investissement virée au résultat de l'exercice »</b> : ce sont les subventions reçues enregistrées en résultat.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 741, 742 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k04",
+   "type": "def",
+   "q": "Selon le PCG, qu'est-ce qu'une subvention d'investissement ?",
+   "r": "<b>Une subvention qui finance une immobilisation acquise ou créée au moyen de la subvention.</b> Inscrite en capitaux propres (compte 131), elle est reprise au compte de résultat par le débit du 139 « Subventions d'investissement inscrites au compte de résultat » et le crédit du 747.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 312-1 ; plan de comptes 2026, comptes 131, 139 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k05",
+   "type": "def",
+   "q": "Qu'est-ce qu'une lettre de change au sens du Code de commerce ?",
+   "r": "<b>Un titre qui contient notamment le mandat pur et simple de payer une somme déterminée</b> et le nom de celui qui doit payer, dénommé le tiré.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. L. 511-1, I et L. 512-1, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006233040",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k06",
+   "type": "def",
+   "q": "Qu'est-ce qu'un billet à ordre au sens du Code de commerce ?",
+   "r": "<b>Un titre qui contient notamment la promesse pure et simple de payer une somme déterminée</b>, la clause à ordre ou la dénomination du titre et l'indication de l'échéance. Il est signé par le souscripteur, débiteur qui s'engage à payer.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. com., art. L. 511-1, I et L. 512-1, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006233040",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k07",
+   "type": "def",
+   "q": "Selon le PCG, qu'est-ce qu'un écart de conversion sur des créances et dettes en monnaies étrangères ?",
+   "r": "<b>La différence qui apparaît lorsque la conversion à la date de clôture, sur la base du dernier cours du change, modifie les montants précédemment comptabilisés.</b> Elle est inscrite dans des comptes transitoires : 476 « Différences de conversion – Actif » (perte latente) ou 477 « Différences de conversion – Passif » (gain latent).",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "PCG, art. 420-5 ; plan de comptes 2026, comptes 476 et 477",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k08",
+   "type": "comp",
+   "q": "Dans l'annuité d'un emprunt auprès d'un établissement de crédit, quelle part constitue une charge ?",
+   "r": "<b>Seule la part d'intérêts</b>, charge financière du compte 661. La part de capital remboursée diminue la dette inscrite au compte 164 sans passer par le compte de résultat.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#0"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 164 et 661",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k09",
+   "type": "comp",
+   "q": "À la clôture, comment traite-t-on les intérêts d'un emprunt bancaire courus depuis la dernière échéance mais pas encore payés ?",
+   "r": "<b>Ce sont des charges de l'exercice</b>, même s'ils ne sont payés qu'à l'échéance suivante : débit 661, crédit 1648 « Intérêts courus sur emprunts auprès des établissements de crédit » (avant 2025 : 16884). Le compte de résultat récapitule les charges de l'exercice sans tenir compte de leur date de paiement.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 123-13 ; plan de comptes 2026, compte 1648",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k10",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, selon quel critère le PCG répartit-il les intérêts courus sur emprunts entre les comptes ?",
+   "r": "<b>Par nature de dette</b> : 1618, 1638, 1648, alors qu'ils figuraient avant 2025 dans des sous-comptes du 1688 (dont 16884 pour les emprunts bancaires). Le compte 1688 ne subsiste que pour les intérêts courus sur autres emprunts et dettes assimilées.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026, comptes 1618, 1638, 1648 et 1688",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k11",
+   "type": "comp",
+   "q": "Pourquoi les intérêts d'escompte facturés par une banque ne supportent-ils pas de TVA, alors qu'une commission bancaire peut en supporter ?",
+   "r": "<b>L'octroi et la négociation de crédits et les opérations concernant les effets de commerce (hors recouvrement de créances) sont exonérés de TVA.</b> Mais un établissement bancaire peut opter pour la taxation des opérations exonérées qu'il désigne : une commission facturée avec TVA relève de cette option.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 261 C, 1° et 260 B",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k12",
+   "type": "comp",
+   "q": "Selon le PCG, comment traite-t-on les frais d'acquisition (droits de mutation, honoraires, commissions, frais d'actes) des valeurs mobilières de placement ?",
+   "r": "<b>Sur option, ils sont rattachés au coût d'acquisition ou comptabilisés en charges.</b> L'option pour les titres s'exerce indépendamment de celle retenue pour les immobilisations corporelles et incorporelles.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, art. 213-8, 221-1 et 222-1 ; plan de comptes 2026, comptes 50 et 764",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k13",
+   "type": "comp",
+   "q": "Quelle différence de présentation le PCG fait-il entre la cession d'immobilisations financières et la cession de valeurs mobilières de placement ?",
+   "r": "<b>Présentation brute pour les immobilisations financières</b> (6671 valeurs comptables des immobilisations financières cédées, 7671 produits des cessions d'immobilisations financières) ; <b>présentation nette pour les VMP</b> : seul le résultat net est constaté, en 7673 (plus-value) ou 6673 (moins-value). Les deux relèvent du résultat financier.",
+   "base": [
+    "Ce qui a changé récemment#1",
+    "Règles essentielles#4"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026, comptes 667 et 767",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k14",
+   "type": "comp",
+   "q": "À la clôture, comment le PCG traite-t-il les moins-values et les plus-values latentes sur valeurs mobilières de placement ?",
+   "r": "<b>La moins-value latente est dépréciée</b> (débit 6866, crédit 590) ; <b>la plus-value latente n'est pas comptabilisée</b> et, chaque élément étant évalué séparément, elle ne compense pas la moins-value d'un autre titre. Pour les titres cotés, la valeur actuelle est le cours moyen du dernier mois.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "PCG, art. 222-1 et 221-6 ; C. com., art. L. 123-18 et L. 123-19 ; plan de comptes 2026, comptes 590 et 6866",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k15",
+   "type": "comp",
+   "q": "Selon le plan de comptes du PCG, quelle est la nature comptable d'une subvention d'exploitation accordée à l'entreprise ?",
+   "r": "<b>Un produit d'exploitation de l'exercice</b>, au compte 741 « Subventions d'exploitation ». De l'octroi à l'encaissement, la subvention à recevoir figure au compte 441 « État – Subventions à recevoir ».",
+   "base": [
+    "Règles essentielles#6",
+    "Définitions#2"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 441 et 741",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k16",
+   "type": "comp",
+   "q": "Selon l'article 312-1 du PCG, à quel rythme une subvention d'investissement inscrite en capitaux propres est-elle reprise au résultat ?",
+   "r": "<b>Bien amortissable : sur la même durée et au même rythme que l'amortissement du bien financé</b>, par une quote-part virée au résultat à chaque clôture (comptes 139 et 747). Bien non amortissable : sur le nombre d'années d'inaliénabilité prévu au contrat ou, à défaut de clause, par dixième du montant de la subvention chaque exercice.",
+   "base": [
+    "Règles essentielles#7",
+    "Chiffres et seuils#0"
+   ],
+   "src": "PCG, art. 312-1 ; plan de comptes 2026, comptes 131, 139, 441 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k17",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, où est enregistrée la quote-part de subvention d'investissement virée au résultat ?",
+   "r": "<b>Au compte 747, dans le compte 74 « Subventions »</b> (résultat d'exploitation), et non plus au compte 777 (produit exceptionnel), pour les exercices ouverts à compter du 1er janvier 2025. La subvention d'équilibre figure, elle, au compte 742 (avant 2025 : 7715).",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026, comptes 742 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k18",
+   "type": "comp",
+   "q": "Selon l'article 42 septies du CGI, comment une subvention d'équipement est-elle imposée ?",
+   "r": "<b>Sans option, elle est imposable au titre de l'exercice d'attribution.</b> Sur option, elle est rapportée au résultat imposable en même temps et au même rythme que l'amortissement du bien financé ; pour un bien non amortissable, par fractions égales sur la durée d'inaliénabilité ou, à défaut de clause, sur les dix années suivant celle de l'attribution.",
+   "base": [
+    "Règles essentielles#8",
+    "Chiffres et seuils#1"
+   ],
+   "src": "CGI, art. 42 septies ; BOI-BIC-PDSTK-10-30-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1950-PGP.html/identifiant=BOI-BIC-PDSTK-10-30-10-20-20230628",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k19",
+   "type": "comp",
+   "q": "Fiscalement, que devient la fraction d'une subvention d'investissement non encore rapportée au résultat lorsque le bien financé est cédé ?",
+   "r": "<b>Elle est imposable au titre de l'exercice de cession.</b> En comptabilité, inscrite en capitaux propres, la subvention ne vient au résultat que par la quote-part annuelle (139 / 747).",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "PCG, art. 312-1 ; CGI, art. 42 septies ; BOI-BIC-PDSTK-10-30-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1950-PGP.html/identifiant=BOI-BIC-PDSTK-10-30-10-20-20230628",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k20",
+   "type": "comp",
+   "q": "Quels virements de comptes l'acceptation d'une lettre de change entraîne-t-elle chez le client tiré et chez le fournisseur tireur ?",
+   "r": "<b>Chez le client tiré, la dette passe du 401 au 403 « Fournisseurs – Effets à payer »</b> ; chez le fournisseur tireur, la créance passe du 411 au 413 « Clients – Effets à recevoir ».",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 401, 403, 411 et 413",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k21",
+   "type": "comp",
+   "q": "Selon le Code de commerce, comment s'exprime l'acceptation d'une lettre de change par le tiré ?",
+   "r": "<b>Par le mot « accepté » ou tout autre mot équivalent, signé du tiré</b> ; la simple signature du tiré apposée au recto de la lettre vaut acceptation. C'est l'acceptation qui engage le tiré à payer à l'échéance.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 511-17",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146082/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k22",
+   "type": "comp",
+   "q": "Quelle différence y a-t-il entre le compte 5113 « Effets à l'encaissement » et le compte 5114 « Effets à l'escompte » ?",
+   "r": "<b>Le 5113 enregistre l'effet remis pour être payé à l'échéance ; le 5114, l'effet payé par avance moyennant agios.</b> Remis à l'encaissement, l'effet sort du compte 413 ; la commission prélevée par la banque est une charge du compte 627.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#11"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 5113, 5114, 6616 et 665",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k23",
+   "type": "comp",
+   "q": "Lors d'une remise d'effets de commerce à l'escompte, dans quels comptes l'entreprise enregistre-t-elle les intérêts d'escompte et les commissions retenus par la banque ?",
+   "r": "<b>Les intérêts d'escompte au compte 6616</b> « Intérêts bancaires et sur opérations de financement (escompte...) », sans TVA, <b>et les commissions au compte 627</b>. La banque ne crédite que le net ; l'effet sort alors du compte 5114 « Effets à l'escompte ».",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 5114, 6616 et 627 ; CGI, art. 261 C, 1°",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k24",
+   "type": "comp",
+   "q": "Quelle différence comptable y a-t-il entre l'intérêt d'escompte d'un effet de commerce et l'escompte de règlement accordé à un client ?",
+   "r": "<b>L'intérêt d'escompte d'un effet va au compte 6616</b> « Intérêts bancaires et sur opérations de financement (escompte...) » ; <b>l'escompte de règlement accordé à un client va au compte 665</b> « Escomptes accordés ».",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#12"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 5113, 5114, 6616 et 665",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k25",
+   "type": "comp",
+   "q": "Lorsqu'un effet de commerce revient impayé à l'échéance, que devient la créance du fournisseur sur son client ?",
+   "r": "<b>La créance sur le client est reconstituée</b> au compte 411, ou au compte 416 « Clients douteux ou litigieux » si son recouvrement devient incertain, pour le nominal majoré des frais d'impayé qui lui sont refacturés.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 411, 413 et 416",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k26",
+   "type": "comp",
+   "q": "Comment le PCG classe-t-il les dépôts et cautionnements versés, par exemple une garantie de loyer, et ceux reçus ?",
+   "r": "<b>Versés : immobilisation financière au compte 275</b> « Dépôts et cautionnements versés » ; <b>reçus : dette au compte 165</b> « Dépôts et cautionnements reçus ».",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 165 et 275",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k27",
+   "type": "comp",
+   "q": "Selon le PCG, à quel cours convertit-on le coût d'entrée d'une immobilisation ou d'un stock acquis en monnaie étrangère ?",
+   "r": "<b>Au cours du jour de l'opération.</b> Les créances et dettes en monnaies étrangères, elles, sont converties et comptabilisées en monnaie nationale sur la base du dernier cours du change.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "PCG, art. 420-1 et 420-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k28",
+   "type": "comp",
+   "q": "Selon le PCG, quel effet une perte latente de change non couverte, constatée à la clôture, a-t-elle sur le résultat ?",
+   "r": "<b>Elle donne lieu à une provision pour pertes de change</b> (compte 1515 « Provisions pour pertes de change »), l'écart étant inscrit par ailleurs au compte 476. Le gain latent, inscrit au 477, n'est pas pris en résultat.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "PCG, art. 420-5 et 420-6 ; plan de comptes 2026, comptes 1515, 476 et 477",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k29",
+   "type": "comp",
+   "q": "Comment un gain latent de change inscrit au compte 477 est-il traité en comptabilité, puis pour le résultat imposable ?",
+   "r": "<b>Ce n'est pas un produit comptable</b>, car seuls les bénéfices réalisés à la date de clôture peuvent être inscrits dans les comptes annuels. Fiscalement, les écarts de conversion des créances et dettes en monnaies étrangères sont pris en compte dans le résultat imposable : retraitement extra-comptable.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. L. 123-21 ; PCG, art. 420-5 ; CGI, art. 38, 4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k30",
+   "type": "comp",
+   "q": "Dans quels comptes le PCG enregistre-t-il un écart de change réalisé, selon qu'il porte sur une opération commerciale ou financière ?",
+   "r": "<b>Créance client ou dette fournisseur : 656 ou 756</b>, en résultat d'exploitation. <b>Opérations financières (emprunts, prêts, disponibilités en devises) : 666 ou 766.</b> Porter toutes les pertes de change en 666 relève d'une nomenclature dépassée.",
+   "base": [
+    "Règles essentielles#17",
+    "Points de vigilance#4"
+   ],
+   "src": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026, comptes 656, 666, 756 et 766",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k31",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, quels produits et charges relèvent du résultat exceptionnel ?",
+   "r": "<b>Ceux directement liés à un événement majeur et inhabituel.</b> Même dans ce cas, les aides, remboursements et indemnités reçus en compensation de charges d'exploitation restent en résultat d'exploitation.",
+   "base": [
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k32",
+   "type": "comp",
+   "q": "Que permet la loi n° 2024-537 du 13 juin 2024 pour la lettre de change et le billet à ordre ?",
+   "r": "<b>De les établir, signer, transférer, présenter, remettre, modifier et conserver sous forme électronique</b> (C. com., art. L. 511-1-1 et L. 512-1-1, en vigueur depuis le 14 mars 2025).",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. com., art. L. 511-1-1 et L. 512-1-1 (loi n° 2024-537 du 13 juin 2024, art. 17)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049712602",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k33",
+   "type": "comp",
+   "q": "Que change le règlement ANC n° 2024-07 pour la présentation des « autres fonds propres » au bilan ?",
+   "r": "<b>Il en fait une rubrique à part entière du bilan</b>, qui comprend les fonds non remboursables, les avances conditionnées et les droits du concédant. Il s'applique aux exercices ouverts à compter du 1er janvier 2026, avec application anticipée possible.",
+   "base": [
+    "Ce qui a changé récemment#5"
+   ],
+   "src": "Règlement ANC n° 2024-07 ; arrêté du 26 décembre 2025 portant homologation des règlements ANC n° 2024-07 et n° 2025-05",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053174797",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k34",
+   "type": "comp",
+   "q": "Quelle est la conséquence de l'absence d'une mention obligatoire dans une lettre de change ou un billet à ordre ?",
+   "r": "<b>Le titre ne vaut pas comme lettre de change</b>, sauf dans les cas prévus par le Code de commerce ; il en va de même pour le billet à ordre.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "C. com., art. L. 511-1 et L. 512-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006233478",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-08-k35",
+   "type": "comp",
+   "q": "Selon le PCG, comment sont classés les revenus des valeurs mobilières de placement, tels que les dividendes ou les coupons ?",
+   "r": "<b>Ce sont des produits financiers</b>, enregistrés au compte 764 « Revenus des valeurs mobilières de placement ». Les titres eux-mêmes sont inscrits à l'entrée pour leur coût d'acquisition.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, art. 213-8, 221-1 et 222-1 ; plan de comptes 2026, comptes 50 et 764",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

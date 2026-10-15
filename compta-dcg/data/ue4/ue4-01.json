@@ -77,6 +77,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel texte réserve au Parlement la fixation de l'assiette, du taux et des modalités de recouvrement des impositions de toutes natures ?",
    "opts": [
     "L'article 34 de la Constitution",
@@ -92,6 +93,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un contribuable a appliqué de bonne foi une instruction publiée au BOFiP, que l'administration estime ensuite contraire à la loi. Que peut faire l'administration ?",
    "opts": [
     "Rien : la doctrine publiée lui est opposable, le contribuable est protégé",
@@ -107,6 +109,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Parmi ces impôts, lesquels sont des impôts directs ? (plusieurs réponses possibles)",
    "opts": [
     "Impôt sur le revenu",
@@ -127,6 +130,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le principe d'annualité de l'impôt signifie que :",
    "opts": [
     "L'autorisation de percevoir les impôts est votée chaque année en loi de finances",
@@ -142,6 +146,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Lequel de ces impôts est à la fois progressif et personnel ?",
    "opts": [
     "L'impôt sur le revenu",
@@ -157,6 +162,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel service de la DGFiP est l'interlocuteur d'une SARL pour sa TVA et son impôt sur les sociétés ?",
    "opts": [
     "Le service des impôts des entreprises (SIE)",
@@ -172,6 +178,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Selon l'article 4 B du CGI, quels critères suffisent, chacun à lui seul, à fixer le domicile fiscal d'une personne en France ? (plusieurs réponses possibles)",
    "opts": [
     "Avoir son foyer ou son lieu de séjour principal en France",
@@ -192,6 +199,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un ingénieur allemand, domicilié fiscalement en Allemagne, perçoit des loyers d'un appartement situé à Lyon. En France, il est :",
    "opts": [
     "Imposable à l'IR sur ces seuls revenus de source française",
@@ -207,6 +215,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Deux concubins vivent ensemble avec leur enfant commun de 5 ans. Combien de déclarations de revenus déposent-ils ?",
    "opts": [
     "Deux déclarations, l'enfant étant rattaché à l'un des deux",
@@ -222,6 +231,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Jusqu'à quel âge un enfant majeur poursuivant ses études peut-il demander son rattachement au foyer fiscal de ses parents ?",
    "opts": [
     "Moins de 25 ans au 1er janvier de l'année d'imposition",
@@ -237,6 +247,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un couple marié a trois enfants à charge. Combien de parts de quotient familial compte le foyer ?",
    "a": 4,
    "unit": "",
@@ -248,6 +259,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une personne divorcée élève seule ses deux enfants (case T, parent isolé, aucune vie en concubinage). Combien de parts compte le foyer ?",
    "a": 2.5,
    "unit": "",
@@ -259,6 +271,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Barème 2025 (revenus 2024) : 0 % jusqu'à 11 497 € ; 11 % de 11 497 à 29 315 € ; 30 % de 29 315 à 83 823 € ; 41 % de 83 823 à 180 294 € ; 45 % au-delà. Un célibataire sans enfant (1 part) a un revenu net imposable de 40 000 €. Calculez son impôt brut, arrondi à l'euro.",
    "a": 5165,
    "unit": "€",
@@ -270,6 +283,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Barème 2025 (revenus 2024) : 0 % jusqu'à 11 497 € ; 11 % de 11 497 à 29 315 € ; 30 % de 29 315 à 83 823 €. Un couple marié avec deux enfants (3 parts) dispose d'un revenu net imposable de 60 000 €. Calculez l'impôt brut du foyer, arrondi à l'euro (vérifiez que le plafonnement du quotient familial, 1 791 € par demi-part, ne joue pas).",
    "a": 2806,
    "unit": "€",
@@ -281,6 +295,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Impôt 2025 (revenus 2024) : la décote s'applique si l'impôt brut d'une personne seule est inférieur à 1 964 € ; elle est égale à 889 € − 45,25 % de l'impôt brut. Un célibataire a un impôt brut de 1 200 €. Quel est son impôt après décote, arrondi à l'euro ?",
    "a": 854,
    "unit": "€",
@@ -292,6 +307,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle est la différence essentielle entre une réduction d'impôt et un crédit d'impôt ?",
    "opts": [
     "Le crédit est restitué s'il dépasse l'impôt dû, la réduction est perdue au-delà de l'impôt",
@@ -307,6 +323,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Impôt 2025 sur les revenus 2024 : un contribuable a versé en 2024 un don de 1 500 € aux Restos du cœur (organisme d'aide aux personnes en difficulté, taux 75 % dans la limite de 1 000 €, puis 66 % au-delà ; le plafond de 20 % du revenu imposable n'est pas atteint). Quel est le montant de sa réduction d'impôt ?",
    "a": 1080,
    "unit": "€",
@@ -318,6 +335,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Un couple marié a employé une aide ménagère à domicile en 2024 pour 8 000 € de dépenses (ce n'est pas la première année ; pas de majoration). Son impôt avant crédits est de 1 500 €. Que se passe-t-il ?",
    "opts": [
     "Le crédit d'impôt de 4 000 € efface l'impôt et 2 500 € sont remboursés",
@@ -333,6 +351,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque élément selon la façon dont il intervient dans le calcul de l'IR.",
    "cats": [
     "Charge déductible du revenu global",
@@ -376,6 +395,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un déficit industriel et commercial provenant d'une activité exercée à titre non professionnel (sans participation personnelle, continue et directe) :",
    "opts": [
     "S'impute uniquement sur les bénéfices de même nature des 6 années suivantes",
@@ -391,6 +411,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le plafonnement du quotient familial (1 791 € par demi-part pour l'impôt 2025) vise à :",
    "opts": [
     "Limiter l'économie d'impôt procurée par chaque demi-part liée aux charges de famille",
@@ -406,6 +427,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un salarié ne souhaite pas que son employeur connaisse son taux personnalisé de prélèvement à la source. Quelle est la conséquence ?",
    "opts": [
     "L'employeur applique le taux neutre et le salarié verse lui-même le complément éventuel",
@@ -421,6 +443,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quels revenus donnent lieu au paiement d'acomptes de prélèvement à la source prélevés par la DGFiP sur le compte bancaire du contribuable ? (plusieurs réponses possibles)",
    "opts": [
     "Revenus fonciers",
@@ -441,6 +464,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le prélèvement à la source a-t-il supprimé l'obligation de déposer une déclaration de revenus ?",
    "opts": [
     "Non : l'impôt est toujours liquidé l'année suivante sur la déclaration, le PAS n'est qu'une avance",
@@ -456,6 +480,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un célibataire a, pour l'imposition de ses revenus 2024, un revenu fiscal de référence de 320 000 €. La CEHR est de 3 % sur la fraction comprise entre 250 000 et 500 000 € pour une personne seule, 4 % au-delà. Quel est le montant de sa contribution exceptionnelle sur les hauts revenus ?",
    "a": 2100,
    "unit": "€",
@@ -467,6 +492,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "Un contribuable verse 9 000 € par an à son fils de 23 ans, étudiant, qui vit dans son propre logement et n'est pas rattaché. Pour l'imposition des revenus 2024, quelle somme peut-il déduire de son revenu global ?",
    "opts": [
     "6 794 €, montant du plafond de déduction",
@@ -482,6 +508,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles conventions ou normes priment sur la loi fiscale française en cas de conflit ? (plusieurs réponses possibles)",
    "opts": [
     "Une convention fiscale bilatérale régulièrement ratifiée",
@@ -501,6 +528,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le revenu fiscal de référence (RFR) sert notamment à :",
    "opts": [
     "Apprécier le droit à certains dispositifs (dispense de prélèvement forfaitaire, CEHR, exonérations locales)",

@@ -1,0 +1,439 @@
+{
+ "id": "ue6-01",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue6-01-k01",
+   "type": "def",
+   "q": "Qu'est-ce que le compte de résultat selon l'article L. 123-13 du Code de commerce ?",
+   "r": "<b>Le document qui récapitule les produits et les charges de l'exercice.</b> Le résultat de l'exercice y est calculé après déduction des amortissements, des dépréciations et des provisions.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 123-13",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k02",
+   "type": "comp",
+   "q": "Selon le Code de commerce, comment les charges et les produits sont-ils classés dans le compte de résultat ?",
+   "r": "<b>Charges</b> : d'exploitation, financières et exceptionnelles, puis participation des salariés et impôt sur le bénéfice. <b>Produits</b> : d'exploitation, financiers et exceptionnels. Le compte se termine par le résultat de l'exercice.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. R. 123-193",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927468",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k03",
+   "type": "comp",
+   "q": "Quelle règle le Code de commerce pose-t-il sur la compensation entre postes de charges et de produits du compte de résultat ?",
+   "r": "<b>Aucune compensation ne peut être opérée</b>, sauf dans des cas exceptionnels prévus par un règlement de l'ANC. Les soldes intermédiaires de gestion se calculent donc sur des montants bruts.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 123-19",
+   "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&dateTexte=20160208&idArticle=LEGIARTI000030927177",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k04",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il le chiffre d'affaires d'une entité ?",
+   "r": "<b>Le montant des affaires réalisées par l'entité avec les tiers</b> dans le cadre de son activité professionnelle normale et courante.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 512-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k05",
+   "type": "comp",
+   "q": "Quels sont, dans l'ordre, les quatre premiers soldes du tableau des soldes intermédiaires de gestion (SIG) du PCG ?",
+   "r": "<b>Marge commerciale, production de l'exercice, valeur ajoutée, puis excédent brut (ou insuffisance brute) d'exploitation.</b>",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, modèle de tableau des soldes intermédiaires de gestion",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k06",
+   "type": "comp",
+   "q": "Quels soldes suivent l'excédent brut d'exploitation dans la cascade du tableau des soldes intermédiaires de gestion (SIG) du PCG ?",
+   "r": "<b>Résultat d'exploitation, résultat courant avant impôts, résultat exceptionnel, puis résultat de l'exercice.</b> Le tableau présente ensuite les plus-values et moins-values sur cessions d'éléments d'actif.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, modèle de tableau des soldes intermédiaires de gestion",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k07",
+   "type": "def",
+   "q": "De quoi se compose la marge commerciale dans le tableau des soldes intermédiaires de gestion du PCG ?",
+   "r": "<b>Ventes de marchandises − coût d'achat des marchandises vendues</b>, ce coût étant égal aux achats de marchandises ± variation des stocks de marchandises.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "PCG, modèle de tableau des soldes intermédiaires de gestion",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k08",
+   "type": "def",
+   "q": "De quoi se compose la production de l'exercice dans le tableau des soldes intermédiaires de gestion du PCG ?",
+   "r": "<b>Production vendue + production stockée + production immobilisée.</b> C'est le deuxième solde de la cascade, après la marge commerciale.",
+   "base": [
+    "Règles essentielles#2",
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, modèle de tableau des soldes intermédiaires de gestion",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k09",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur ajoutée d'une entreprise ?",
+   "r": "<b>La valeur de la production diminuée des consommations intermédiaires.</b> Dans le tableau des SIG du PCG, elle s'obtient par : marge commerciale + production de l'exercice − consommation de l'exercice en provenance de tiers.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, modèle de tableau des soldes intermédiaires de gestion ; Insee, définition « Taux de marge (statistique d'entreprise) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k10",
+   "type": "def",
+   "q": "Qu'est-ce que l'excédent brut d'exploitation (EBE) d'une entreprise ?",
+   "r": "<b>La valeur ajoutée diminuée des charges de personnel et des impôts sur la production, augmentée des subventions d'exploitation.</b>",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "Insee, définition « Excédent brut d'exploitation »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1538",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k11",
+   "type": "comp",
+   "q": "De quels éléments l'excédent brut d'exploitation (EBE) est-il indépendant, du fait de sa place dans la cascade des soldes intermédiaires de gestion ?",
+   "r": "<b>De la politique d'amortissement, du financement (charges financières) et de l'impôt sur les bénéfices</b> : c'est le premier solde calculé avant les dotations, le résultat financier et l'impôt.",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#3"
+   ],
+   "src": "Insee, définition « Excédent brut d'exploitation »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1538",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k12",
+   "type": "def",
+   "q": "Qu'appelle-t-on « taux de marge » au sens de l'Insee ?",
+   "r": "<b>Le rapport de l'excédent brut d'exploitation (EBE) à la valeur ajoutée.</b> Il mesure la part de la valeur ajoutée qui revient à l'entreprise.",
+   "base": [
+    "Définitions#4",
+    "Règles essentielles#14"
+   ],
+   "src": "Insee, définitions « Taux de marge (statistique d'entreprise) » et « Taux de marge (comptabilité nationale) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k13",
+   "type": "comp",
+   "q": "Dans les sujets de DCG, quels deux « taux de marge » ne faut-il pas confondre avec le taux de marge de l'Insee ?",
+   "r": "<b>Le taux de marge commerciale</b> (marge commerciale / ventes de marchandises) <b>et le taux de marge brute d'exploitation</b> (EBE / chiffre d'affaires). D'où la règle : toujours préciser le dénominateur d'un « taux de marge ».",
+   "base": [
+    "Définitions#4",
+    "Points de vigilance#0"
+   ],
+   "src": "Insee, définitions « Taux de marge (statistique d'entreprise) » et « Taux de marge (comptabilité nationale) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k14",
+   "type": "comp",
+   "q": "Selon l'Insee, à quoi l'excédent brut d'exploitation (EBE) est-il rapporté pour mesurer d'une part le taux de marge, d'autre part la rentabilité économique ?",
+   "r": "<b>À la valeur ajoutée pour le taux de marge ; à la somme des immobilisations brutes corporelles et incorporelles et du besoin en fonds de roulement pour la rentabilité économique.</b> Un taux de marge élevé n'implique donc pas nécessairement une rentabilité économique forte.",
+   "base": [
+    "Points de vigilance#1",
+    "Définitions#4"
+   ],
+   "src": "Insee, définition « Taux de marge (statistique d'entreprise) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k15",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quels comptes enregistre-t-on la cession d'une immobilisation incorporelle ou corporelle ?",
+   "r": "<b>La valeur comptable de l'immobilisation cédée au compte 657, le produit de cession au compte 757.</b> Les comptes 675 et 775 sont supprimés.",
+   "base": [
+    "Règles essentielles#4",
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Règlement ANC n° 2022-06, art. relatifs au plan de comptes ; règlement ANC n° 2023-03 ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k16",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, à quel niveau de résultat (exploitation, financier ou exceptionnel) appartient la plus ou moins-value de cession d'une immobilisation corporelle ?",
+   "r": "<b>Au résultat d'exploitation</b> (comptes 657 et 757). Les sujets antérieurs à 2025, qui utilisent les comptes 675 et 775, la placent en résultat exceptionnel.",
+   "base": [
+    "Règles essentielles#4",
+    "Points de vigilance#2"
+   ],
+   "src": "Règlement ANC n° 2022-06, art. relatifs au plan de comptes ; règlement ANC n° 2023-03 ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k17",
+   "type": "comp",
+   "q": "Dans quel compte du PCG 2025 enregistre-t-on la quote-part des subventions d'investissement virée au résultat de l'exercice ?",
+   "r": "<b>Au compte 747</b>, parmi les produits d'exploitation ; le compte 777 n'existe plus.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "Plan de comptes PCG 2025, compte 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k18",
+   "type": "def",
+   "q": "Qu'est-ce que le résultat exceptionnel d'une entreprise depuis le PCG 2025 ?",
+   "r": "<b>Le résultat dont la réalisation n'est pas liée à l'exploitation courante.</b> Depuis le PCG 2025, il comprend notamment les charges et produits découlant d'un événement majeur et inhabituel, ainsi que les écritures d'origine purement fiscale.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. com., art. R. 123-192 ; PCG, art. 512-4 ; règlement ANC n° 2022-06",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197051/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k19",
+   "type": "comp",
+   "q": "Selon le PCG 2025, à quel critère reconnaît-on qu'une charge ou un produit découle directement d'un événement majeur et inhabituel ?",
+   "r": "<b>Il n'aurait pas été constaté en l'absence de cet événement.</b> Seuls les charges et produits qui découlent directement de l'événement sont retenus en résultat exceptionnel à ce titre.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 (version commentée) ; PCG, art. 512-4",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k20",
+   "type": "comp",
+   "q": "Selon le PCG 2025, à quelles conditions un événement est-il présumé inhabituel pour le classement en résultat exceptionnel ?",
+   "r": "<b>S'il ne s'est pas produit lors des derniers exercices et s'il est peu probable qu'il se reproduise.</b>",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 (version commentée) ; PCG, art. 512-4",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k21",
+   "type": "def",
+   "q": "Qu'est-ce que la capacité d'autofinancement (CAF) selon le modèle de tableau du PCG ?",
+   "r": "<b>Un surplus monétaire potentiel : produits encaissables moins charges décaissables</b>, hors cessions d'immobilisations. Le modèle du PCG la détermine à partir de l'excédent brut d'exploitation et la vérifie à partir du résultat de l'exercice.",
+   "base": [
+    "Définitions#6",
+    "Points de vigilance#4"
+   ],
+   "src": "PCG, modèle de tableau de détermination de la capacité d'autofinancement",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k22",
+   "type": "comp",
+   "q": "Quels éléments la méthode soustractive de la capacité d'autofinancement (CAF) du PCG exclut-elle ?",
+   "r": "<b>Les dotations, les reprises, les produits des cessions et les valeurs comptables des éléments cédés</b>, comme tout produit non encaissable ou charge non décaissable : partant de l'EBE, elle ne retient que des produits encaissables et des charges décaissables.",
+   "base": [
+    "Règles essentielles#7",
+    "Définitions#6"
+   ],
+   "src": "PCG, modèle de tableau de détermination de la capacité d'autofinancement",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k23",
+   "type": "comp",
+   "q": "Dans la méthode soustractive de la capacité d'autofinancement (CAF), quelles charges décaissables situées après le résultat exceptionnel ne faut-il pas oublier ?",
+   "r": "<b>La participation des salariés et l'impôt sur les bénéfices.</b> Au compte de résultat, la participation figure après le résultat exceptionnel et avant l'impôt sur les bénéfices.",
+   "base": [
+    "Points de vigilance#3",
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. R. 123-193 ; PCG, modèle de tableau de détermination de la CAF",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927468",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k24",
+   "type": "comp",
+   "q": "Dans la méthode additive de la capacité d'autofinancement (CAF), quels éléments ajoute-t-on au résultat de l'exercice ?",
+   "r": "<b>Les dotations aux amortissements, dépréciations et provisions</b>, et <b>la valeur comptable des éléments d'actif cédés</b> (comptes 657 et 6671).",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, modèle de tableau de détermination de la capacité d'autofinancement ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k25",
+   "type": "comp",
+   "q": "Dans la méthode additive de la capacité d'autofinancement (CAF), quels éléments retranche-t-on du résultat de l'exercice ?",
+   "r": "<b>Les reprises</b>, <b>les produits des cessions d'éléments d'actif</b> (comptes 757 et 7671) et <b>la quote-part des subventions d'investissement virée au résultat</b> (compte 747).",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, modèle de tableau de détermination de la capacité d'autofinancement ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k26",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, comment la plus-value de cession d'une immobilisation corporelle est-elle traitée dans la capacité d'autofinancement (CAF) ?",
+   "r": "<b>Elle reste neutralisée</b>, même si elle figure désormais dans le résultat d'exploitation : la méthode additive ajoute la valeur comptable des éléments cédés (657) et retranche les produits des cessions (757).",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#8"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; PCG, modèle de tableau de détermination de la CAF",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k27",
+   "type": "comp",
+   "q": "Pourquoi la capacité d'autofinancement (CAF) d'une entreprise n'est-elle pas une trésorerie ?",
+   "r": "<b>Parce que le compte de résultat enregistre les produits et les charges sans tenir compte de leur date d'encaissement ou de paiement.</b> La CAF est un surplus monétaire potentiel.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. L. 123-13",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k28",
+   "type": "def",
+   "q": "Qu'est-ce qu'un dividende dans une société commerciale selon le Code de commerce ?",
+   "r": "<b>La part des sommes distribuables, notamment du bénéfice distribuable, que l'assemblée générale attribue aux associés</b>, après approbation des comptes annuels.",
+   "base": [
+    "Définitions#7"
+   ],
+   "src": "C. com., art. L. 232-12 ; PCG, modèle de tableau de financement (emplois : distributions mises en paiement)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k29",
+   "type": "def",
+   "q": "Comment le Code de commerce définit-il le bénéfice distribuable d'une société ?",
+   "r": "<b>Le bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve</b> en application de la loi ou des statuts, <b>et augmenté du report bénéficiaire</b>.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 232-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k30",
+   "type": "def",
+   "q": "Qu'est-ce que l'autofinancement d'une entreprise, par rapport à sa capacité d'autofinancement (CAF) ?",
+   "r": "<b>La CAF diminuée des distributions mises en paiement au cours de l'exercice.</b> Les dividendes versés réduisent donc l'autofinancement ; ces distributions figurent parmi les emplois du tableau de financement du PCG.",
+   "base": [
+    "Définitions#7",
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 232-12 ; PCG, modèle de tableau de financement (emplois : distributions mises en paiement)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k31",
+   "type": "comp",
+   "q": "Dans la méthode de la Banque de France, quelles charges retraite-t-on des autres achats et charges externes ?",
+   "r": "<b>Les charges de personnel extérieur et les charges de crédit-bail.</b> Ce retraitement modifie la valeur ajoutée et l'EBE par rapport au tableau du PCG.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "Banque de France, Bulletin n° 190 (4e trimestre 2012), méthodologie des ratios d'entreprises",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k32",
+   "type": "comp",
+   "q": "Comment l'analyse de la Banque de France traite-t-elle un bien pris en crédit-bail pour mesurer l'endettement d'une entreprise ?",
+   "r": "<b>Comme s'il avait été financé par emprunt</b> : la composante crédit-bail de l'endettement est égale aux engagements de crédit-bail.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "Banque de France, Bulletin n° 220/1 (novembre-décembre 2018), La situation des entreprises",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k33",
+   "type": "comp",
+   "q": "Selon l'Insee, en quoi se décompose une évolution en valeur, comme celle du chiffre d'affaires ?",
+   "r": "<b>En une évolution en volume et une évolution des prix</b> : indice de valeur = indice de volume × indice de prix. Ainsi, l'indice de volume des ventes rapporte l'indice de chiffre d'affaires en valeur à l'indice de prix associé.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Insee, documentation méthodologique de l'indice de chiffre d'affaires et de l'indice de volume des ventes dans le commerce",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k34",
+   "type": "comp",
+   "q": "Quels trois changements du règlement ANC n° 2022-06 déplacent des charges ou des produits du résultat exceptionnel vers l'exploitation ?",
+   "r": "<b>La nouvelle définition du résultat exceptionnel</b> (événement majeur et inhabituel), <b>les cessions d'immobilisations</b> (657 / 757) <b>et la quote-part de subvention d'investissement virée au résultat</b> (747, produit d'exploitation). Applicables aux exercices ouverts à compter du 1er janvier 2025, ils changent le calcul des SIG et de la CAF.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Règles essentielles#6"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-01-k35",
+   "type": "def",
+   "q": "Dans le partage de la valeur ajoutée selon l'Insee, que comprend la rémunération des salariés ?",
+   "r": "<b>Les salaires et traitements bruts et les cotisations sociales à la charge des employeurs.</b> L'EBE est ce qui reste de la valeur ajoutée après cette rémunération et les autres impôts sur la production, subventions d'exploitation comprises.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "Insee, définitions « Excédent brut d'exploitation » et « Taux de marge (statistique d'entreprise) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1538",
+   "fiab": "stable"
+  }
+ ]
+}

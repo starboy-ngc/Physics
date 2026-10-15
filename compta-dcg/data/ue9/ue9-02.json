@@ -83,6 +83,7 @@
  "exercices": [
   {
    "type": "tri",
+   "nature": "notion",
    "niveau": 1,
    "q": "À quelle classe appartient chaque compte ?",
    "cats": [
@@ -142,6 +143,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un compte d'actif (banque, matériel, clients) augmente :",
    "opts": [
@@ -157,6 +159,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un compte de produit (ventes) augmente :",
    "opts": [
@@ -172,6 +175,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un client règle sa facture par chèque. Quelle est l'écriture ?",
    "opts": [
@@ -187,6 +191,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Achat de fournitures de bureau pour 350 €, payé par carte bancaire. On ignore la TVA.",
    "lib": "Fournitures de bureau",
@@ -216,6 +221,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Les associés apportent 40 000 € en capital, versés sur le compte bancaire de la société.",
    "lib": "Apport en capital",
@@ -245,6 +251,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "La banque verse un emprunt de 15 000 € sur le compte de l'entreprise.",
    "lib": "Déblocage de l'emprunt",
@@ -274,6 +281,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le solde du compte 401 Fournisseurs est normalement :",
    "opts": [
@@ -289,6 +297,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Les classes 6 et 7 alimentent :",
    "opts": [
@@ -304,6 +313,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "L'entreprise règle 2 300 € à un fournisseur par virement, pour une facture reçue le mois dernier.",
    "lib": "Règlement fournisseur",
@@ -333,6 +343,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le compte 44566 est une subdivision de :",
    "opts": [
@@ -348,6 +359,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quel document enregistre les opérations dans l'ordre chronologique, opération par opération ?",
    "opts": [
@@ -363,6 +375,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Le compte 512 Banque présente un total de débits de 48 300 € et un total de crédits de 41 150 €. Quel est son solde ? (Indiquez un nombre positif pour un solde débiteur, négatif pour un solde créditeur.)",
    "a": 7150,
@@ -374,6 +387,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Le compte 512 Banque présente un solde créditeur de 2 400 €. Cela signifie :",
    "opts": [
@@ -389,6 +403,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quels comptes ont normalement un solde créditeur ? (plusieurs réponses possibles)",
    "opts": [
@@ -410,6 +425,7 @@
   },
   {
    "type": "multi",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Dans quels cas une opération est-elle correctement enregistrée en partie double ? (plusieurs réponses possibles)",
    "opts": [
@@ -430,6 +446,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La balance de la société Vézac est équilibrée (total débits = total crédits). Que peut-on en conclure ?",
    "opts": [
@@ -445,6 +462,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Dans quel ordre s'enchaînent les documents comptables ?",
    "opts": [
@@ -460,6 +478,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Balance de la société Lioré après inventaire : total des soldes débiteurs des comptes de classes 1 à 5 = 412 000 € ; total des soldes créditeurs des comptes de classes 1 à 5 = 376 000 €. Les comptes de classe 6 et 7 ne sont pas encore soldés. Quel est le résultat de l'exercice ? (nombre négatif si perte)",
    "a": 36000,
@@ -471,6 +490,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Le compte 28154 Amortissements du matériel industriel est :",
    "opts": [
@@ -486,6 +506,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Le compte 609 Rabais, remises et ristournes obtenus sur achats est classé en 60 alors qu'il enregistre une diminution de charges. Quel est son sens de fonctionnement ?",
    "opts": [
@@ -501,6 +522,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles mentions doit obligatoirement comporter une écriture au livre-journal ? (plusieurs réponses possibles)",
    "opts": [
@@ -521,6 +543,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Marsac a 300 clients. Plutôt que de passer chaque facture dans le journal général, elle les enregistre dans un journal des ventes. Que doit-elle faire au minimum ?",
    "opts": [
@@ -536,6 +559,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 3,
    "q": "Au 31 décembre, le compte 401 Fournisseur Roques présente un solde débiteur de 1 500 €, car l'entreprise a versé un acompte sur une commande non encore livrée. Comment ce solde doit-il apparaître au bilan ?",
    "opts": [

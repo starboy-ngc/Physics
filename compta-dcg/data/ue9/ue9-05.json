@@ -131,6 +131,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Un ordinateur acheté 1 500 € HT, destiné à être utilisé 4 ans dans l'entreprise, est :",
    "opts": [
@@ -146,6 +147,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Acquisition d'une machine industrielle : 24 000 € HT, TVA 20 %, paiement à 60 jours.",
    "lib": "Acquisition machine",
@@ -181,6 +183,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Machine de 24 000 €, amortie en linéaire sur 5 ans, mise en service le 1er janvier N. Dotation de l'exercice N ?",
    "a": 4800,
@@ -192,6 +195,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Véhicule de 30 000 €, linéaire sur 5 ans, mis en service le 1er avril N. Dotation de l'exercice N (prorata en mois) ?",
    "a": 4500,
@@ -203,6 +207,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Enregistrez la dotation annuelle de 4 800 € sur la machine industrielle (compte 2154).",
    "lib": "Dotation aux amortissements",
@@ -232,6 +237,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Machine de 24 000 €, linéaire 5 ans depuis le 1er janvier N. Quelle est la valeur nette comptable au 31 décembre N+2 ?",
    "a": 9600,
@@ -243,6 +249,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Matériel industriel neuf de 50 000 € acquis le 1er janvier, durée d'utilisation 5 ans, amortissement dégressif. Première annuité ?",
    "a": 17500,
@@ -254,6 +261,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "La dotation aux amortissements est :",
    "opts": [
@@ -269,6 +277,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "Un bien coûte 20 000 € et a une valeur résiduelle estimée de 2 000 € à la fin de sa durée d'utilité. Quelle est la base amortissable ?",
    "a": 18000,
@@ -280,6 +289,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Cession d'un véhicule : coût 30 000 €, amortissements cumulés (y compris la dotation complémentaire) 24 000 €. Enregistrez la sortie du bien de l'actif.",
    "lib": "Sortie d'immobilisation",
@@ -315,6 +325,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le véhicule précédent est vendu 8 000 € HT. Où va le prix de cession ?",
    "opts": [
@@ -330,6 +341,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Enregistrez la facture de cession du véhicule : prix 8 000 € HT, TVA 20 %, l'acheteur paiera dans 30 jours.",
    "lib": "Facture de cession",
@@ -366,6 +378,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "La société Lioré achète une machine 40 000 € HT. Elle paie en plus 1 500 € HT de transport, 2 500 € HT d'installation et 800 € HT de formation des opérateurs. Elle ne retient pas l'option de rattachement des frais de formation au coût. Quel est le coût d'entrée de la machine ?",
    "opts": [
@@ -381,6 +394,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quels éléments entrent dans le coût d'acquisition d'une immobilisation corporelle, l'entreprise n'ayant pas opté pour le rattachement des frais de formation ? (plusieurs réponses possibles)",
    "opts": [
@@ -401,6 +415,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Un véhicule de 30 000 € amorti en linéaire sur 5 ans depuis le 1er janvier N est vendu le 30 juin N+2. Quelle dotation complémentaire enregistre-t-on en N+2 avant la sortie ?",
    "opts": [
@@ -416,6 +431,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Matériel industriel neuf acquis le 15 octobre N pour 36 000 €, durée 4 ans, amortissement dégressif. Dotation de N ?",
    "opts": [
@@ -431,6 +447,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles affirmations sur l'amortissement dégressif sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -451,6 +468,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Une machine de 15 000 € totalement amortie est mise au rebut. Quelle écriture de sortie passe-t-on ?",
    "opts": [
@@ -466,6 +484,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Un camion dont la VNC est de 9 000 € est détruit dans un accident. L'assureur verse une indemnité de 7 500 €. Sous le PCG 2025, l'indemnité est enregistrée :",
    "opts": [
@@ -481,6 +500,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Berlan fabrique elle-même un rayonnage métallique pour son entrepôt. Les charges engagées (matières 3 000 €, main-d'œuvre 2 000 €) ont été enregistrées en classe 6. Comment immobiliser le rayonnage ?",
    "opts": [
@@ -496,6 +516,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles immobilisations ne s'amortissent pas ? (plusieurs réponses possibles)",
    "opts": [
@@ -516,6 +537,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Nerval verse 4 000 € de dépôt de garantie à son bailleur, remboursable à la fin du bail. Imputation :",
    "opts": [
@@ -531,6 +553,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Alcor cède des titres de participation (compte 261) acquis 12 000 € pour 15 000 €. Quels comptes de résultat utilise-t-elle ?",
    "opts": [
@@ -546,6 +569,7 @@
   },
   {
    "type": "multi",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Un logiciel de gestion acquis 6 000 € HT le 1er juillet N est amorti en linéaire sur 3 ans. Quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -566,6 +590,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "Matériel de 50 000 € acquis le 1er janvier N, dégressif sur 5 ans (taux 35 %). En N+3, l'entreprise bascule en linéaire sur la durée restante, comme le prévoit la règle du dégressif. Quelle est la dotation de N+3, sachant que la VNC au 1er janvier N+3 est de 13 731,25 € ?",
    "opts": [
@@ -581,6 +606,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 3,
    "q": "La société Mirval vend le 1er octobre N une machine acquise 60 000 € le 1er janvier N−3, amortie en linéaire sur 8 ans, pour 35 000 € HT. Quel est le résultat de cession ?",
    "opts": [

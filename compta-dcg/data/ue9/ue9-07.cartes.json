@@ -1,0 +1,417 @@
+{
+ "id": "ue9-07",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue9-07-k01",
+   "type": "def",
+   "q": "Que prévoit le principe de rattachement à l'exercice (indépendance des exercices) pour le compte de résultat d'une entreprise ?",
+   "r": "<b>Le compte de résultat récapitule les produits et les charges de l'exercice</b>, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k02",
+   "type": "def",
+   "q": "Qu'est-ce qu'une charge à payer dans les comptes annuels d'une entreprise ?",
+   "r": "<b>Une charge de l'exercice dont la facture ou la liquidation n'interviendra qu'après la clôture.</b> Elle est portée au passif dans les comptes de tiers « factures non parvenues » ou « charges à payer » (408, 4282, 4286, 4382, 4386, 4481, 468).",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 ; PCG, art. 321-5 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 408, 4282, 4286, 4382, 4386, 4481 et 468",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k03",
+   "type": "comp",
+   "q": "Au passif du bilan, qu'est-ce qui distingue une provision (compte 15) d'une charge à payer ?",
+   "r": "<b>La provision est un passif dont l'échéance ou le montant n'est pas fixé de façon précise.</b> La charge à payer, elle, est une charge de l'exercice dont la facture ou la liquidation n'interviendra qu'après la clôture, inscrite dans un compte de tiers.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 ; PCG, art. 321-5 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 408, 4282, 4286, 4382, 4386, 4481 et 468",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k04",
+   "type": "def",
+   "q": "Qu'est-ce qu'un produit à recevoir à la clôture de l'exercice ?",
+   "r": "<b>Un produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture.</b> Comptes : 4181 factures à établir, 4482 État, 439 organismes sociaux, 467 produits à recevoir divers.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448, 4482, 439 et 467",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k05",
+   "type": "def",
+   "q": "En comptabilité générale, qu'est-ce qu'une charge constatée d'avance (compte 486) ?",
+   "r": "<b>Une charge enregistrée dans l'exercice mais qui concerne un exercice suivant.</b> C'est un compte de régularisation, inscrit à l'actif.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 et R. 123-190 ; plan de comptes 2026, comptes 486 et 487",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k06",
+   "type": "def",
+   "q": "En comptabilité générale, qu'est-ce qu'un produit constaté d'avance (compte 487) ?",
+   "r": "<b>Un produit enregistré dans l'exercice mais qui concerne un exercice suivant.</b> C'est un compte de régularisation, inscrit au passif.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 et R. 123-190 ; plan de comptes 2026, comptes 486 et 487",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k07",
+   "type": "def",
+   "q": "Comment le Plan comptable général (PCG) définit-il le résultat de l'exercice ?",
+   "r": "<b>La différence entre les produits et les charges</b>, égale aussi à la variation des capitaux propres entre le début et la fin de l'exercice, hors opérations affectant directement les capitaux propres.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 513-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k08",
+   "type": "def",
+   "q": "Qu'est-ce que la réserve légale (compte 1061) prévue par le Code de commerce ?",
+   "r": "<b>Un fonds de réserve alimenté par un prélèvement obligatoire sur le bénéfice</b>, imposé dans les SARL et les sociétés par actions.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. com., art. L. 232-10 ; plan de comptes 2026, compte 1061",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k09",
+   "type": "comp",
+   "q": "Selon l'article L. 123-12 du Code de commerce, quel est l'objet de l'inventaire d'une entreprise ?",
+   "r": "<b>Contrôler l'existence et la valeur des éléments actifs et passifs</b>, au moins une fois tous les douze mois. Les comptes annuels sont établis à la clôture au vu des enregistrements comptables et de l'inventaire.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. com., art. L. 123-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k10",
+   "type": "comp",
+   "q": "Selon le principe de prudence du Code de commerce, quels passifs doivent être pris en compte dans les comptes de l'exercice ?",
+   "r": "<b>Les passifs nés au cours de l'exercice ou d'un exercice antérieur</b>, même s'ils ne sont connus qu'entre la date de clôture et celle de l'établissement des comptes.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 123-20 ; PCG, art. 513-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k11",
+   "type": "comp",
+   "q": "En principe, selon le Code de commerce, quels bénéfices peuvent être inscrits dans les comptes annuels d'un exercice ?",
+   "r": "<b>Seuls les bénéfices réalisés à la date de clôture.</b> Un produit à recevoir suppose donc un produit acquis à la clôture : livraison faite, prestation exécutée.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 123-21",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219313",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k12",
+   "type": "comp",
+   "q": "À la clôture, sur quels comptes porte-t-on la TVA des factures fournisseurs non parvenues et des factures clients à établir ?",
+   "r": "<b>Sur les comptes d'attente 44586 (factures non parvenues) et 44587 (factures à établir)</b>, et non sur 44566 / 44571.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#2"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 44586 et 44587",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k14",
+   "type": "comp",
+   "q": "Depuis le plan de comptes issu du règlement ANC n° 2022-06, sur quel compte porte-t-on les intérêts courus non échus d'un emprunt bancaire ?",
+   "r": "<b>Sur le compte 1648</b> (avant 2025 : 16884), en contrepartie de la charge d'intérêts (661). Le compte 1688 ne sert plus qu'aux intérêts courus sur les autres emprunts et dettes assimilées.",
+   "base": [
+    "Règles essentielles#4",
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1648, 2768, 5088, 5181, 5188 et 5198",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k15",
+   "type": "comp",
+   "q": "À la clôture, comment régularise-t-on une charge déjà enregistrée (loyer, assurance, abonnement) dont une fraction concerne l'exercice suivant ?",
+   "r": "<b>On retire cette fraction des charges</b> : débit 486, crédit du compte de charge, pour son montant hors taxes.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026, compte 486",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k16",
+   "type": "comp",
+   "q": "À la clôture, comment régularise-t-on un produit déjà facturé dont une fraction correspond à une livraison ou une prestation à venir ?",
+   "r": "<b>On retire cette fraction des produits</b> : débit du compte de produit, crédit 487, pour son montant hors taxes.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026, compte 487",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k17",
+   "type": "comp",
+   "q": "En fiscalité (CGI, art. 38, 2 bis), à quel exercice rattacher une vente facturée avant la clôture mais livrée après ?",
+   "r": "<b>À l'exercice de la livraison</b> : ce n'est pas un produit de l'exercice clos, mais un produit constaté d'avance. Les prestations se rattachent à leur achèvement, ou au fur et à mesure de leur exécution si elles sont continues ou à échéances successives.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "CGI, art. 38, 2 bis ; C. com., art. L. 123-21",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203585",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k18",
+   "type": "comp",
+   "q": "Selon le Plan comptable général (PCG), comment les produits et les charges sont-ils classés au compte de résultat ?",
+   "r": "<b>De manière à faire apparaître les différents niveaux de résultat</b> : exploitation, financier et exceptionnel, puis participation des salariés et impôt sur les bénéfices.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 513-2 ; C. com., art. R. 123-193",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k19",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, quels produits et charges relèvent du résultat exceptionnel ?",
+   "r": "<b>Seulement ceux directement liés à un événement majeur et inhabituel.</b> Les écritures d'origine purement fiscale (amortissements dérogatoires, provisions réglementées) restent toutefois en 687 / 787.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes 2026, comptes 687 et 787",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k20",
+   "type": "def",
+   "q": "Selon le règlement ANC n° 2022-06, quand un événement est-il présumé inhabituel pour le classement en résultat exceptionnel ?",
+   "r": "<b>Lorsqu'un même événement ne s'est pas produit au cours des derniers exercices comptables</b> et qu'il est peu probable qu'il se reproduise au cours des prochains exercices comptables.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; plan de comptes 2026, comptes 687 et 787",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k21",
+   "type": "comp",
+   "q": "Après les écritures d'inventaire, comment le résultat de l'exercice est-il déterminé dans les comptes ?",
+   "r": "<b>Les comptes de charges (classe 6) et de produits (classe 7) sont soldés</b> ; leur différence est portée au compte 120 (bénéfice) ou 129 (perte), qui figure dans les capitaux propres au passif du bilan.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 513-1 ; plan de comptes 2026, comptes 120 et 129 ; C. com., art. R. 123-190",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k22",
+   "type": "comp",
+   "q": "Après comptabilisation de l'impôt de l'exercice, que représente le solde du compte 444 « État – Impôts sur les bénéfices » ?",
+   "r": "<b>Le reste à payer ou l'excédent versé.</b> Le compte 444 a été débité des acomptes versés en cours d'exercice, puis crédité de la charge totale d'impôt, enregistrée au débit de 695.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 444 et 695 ; PCG, art. 515-1",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k23",
+   "type": "comp",
+   "q": "Selon l'article 515-1 du PCG, quel taux applique-t-on pour comptabiliser l'impôt sur les bénéfices de l'exercice ?",
+   "r": "<b>Le taux en vigueur à la date de clôture.</b> L'impôt et les contributions qui s'y rattachent sont inscrits dans la rubrique « Impôts sur les bénéfices » de l'exercice au titre duquel l'entreprise en est redevable.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "PCG, art. 515-1 (rédaction du règlement ANC n° 2026-04)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/REGLT_2026_04_JO-SITE.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k24",
+   "type": "comp",
+   "q": "Selon le PCG, quel exercice supporte l'effet d'une modification du taux d'impôt sur les bénéfices votée après la clôture ?",
+   "r": "<b>L'exercice au cours duquel le vote intervient</b>, et non l'exercice clôturé.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "PCG, art. 515-1 (rédaction du règlement ANC n° 2026-04)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/REGLT_2026_04_JO-SITE.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k25",
+   "type": "comp",
+   "q": "Pour le taux réduit d'impôt sur les sociétés d'une société membre d'un groupe, quel chiffre d'affaires le Conseil d'État retient-il ?",
+   "r": "<b>Le chiffre d'affaires de l'ensemble du groupe</b> détenant la société, que ce groupe soit fiscalement intégré ou non (CE, 13 mars 2025, n° 481538).",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "CGI, art. 219, I-b ; CE, 13 mars 2025, n° 481538",
+   "url": "https://www.impots.gouv.fr/actualite/taux-reduit-dimpot-sur-les-societes-le-critere-du-chiffre-daffaires-revu-pour-les",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k26",
+   "type": "comp",
+   "q": "Hors cas de dispense d'acomptes, selon quel calendrier une société soumise à l'impôt sur les sociétés (IS) paie-t-elle cet impôt ?",
+   "r": "<b>Quatre acomptes</b>, au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre ; puis le <b>solde</b>, au plus tard le 15 du quatrième mois qui suit la clôture, sauf exercice clos le 31 décembre : le 15 mai de l'année suivante.",
+   "base": [
+    "Règles essentielles#12",
+    "Chiffres et seuils#4"
+   ],
+   "src": "CGI, art. 1668, 1 et 2 ; BOI-IS-DECLA-20-10 ; BOI-IS-DECLA-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k27",
+   "type": "comp",
+   "q": "Comment se détermine la dotation obligatoire à la réserve légale dans les SARL et les sociétés par actions ?",
+   "r": "<b>Au moins un vingtième du bénéfice de l'exercice, diminué le cas échéant des pertes antérieures.</b> Le prélèvement cesse d'être obligatoire lorsque la réserve atteint le dixième du capital social.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 232-10",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k28",
+   "type": "comp",
+   "q": "Dans une SARL ou une société par actions, à quoi la dotation obligatoire à la réserve légale est-elle limitée quand la réserve approche de son plafond ?",
+   "r": "<b>À ce qui manque pour atteindre le dixième du capital social.</b> Autre piège : la base du prélèvement est le bénéfice diminué des pertes antérieures.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "C. com., art. L. 232-10",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k29",
+   "type": "comp",
+   "q": "Qu'a changé l'ordonnance n° 2025-229 du 12 mars 2025 à l'article L. 232-10 du Code de commerce sur la réserve légale ?",
+   "r": "<b>Elle a supprimé la formule « à peine de nullité de toute délibération contraire »</b>, depuis le 1er octobre 2025. Le taux (un vingtième) et le plafond (dixième du capital) de la réserve légale sont inchangés.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Ordonnance n° 2025-229 du 12 mars 2025, art. 62 et 70 ; C. com., art. L. 232-10",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k30",
+   "type": "def",
+   "q": "Comment le Code de commerce définit-il le bénéfice distribuable d'une société ?",
+   "r": "<b>Le bénéfice de l'exercice, diminué des pertes antérieures et des sommes à porter en réserve en application de la loi ou des statuts, augmenté du report bénéficiaire.</b> Les dividendes sont prélevés par priorité sur le bénéfice distribuable de l'exercice.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. L. 232-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k31",
+   "type": "comp",
+   "q": "Hors réduction du capital, quand le Code de commerce interdit-il toute distribution aux actionnaires d'une société ?",
+   "r": "<b>Lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au capital augmenté des réserves non distribuables</b>, c'est-à-dire des réserves que la loi ou les statuts ne permettent pas de distribuer.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 232-11 et L. 232-12 ; L. 241-3, 2° (SARL) et L. 242-6, 1° (SA)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k32",
+   "type": "def",
+   "q": "Qu'est-ce qu'un dividende fictif au sens du Code de commerce ?",
+   "r": "<b>Un dividende distribué en violation des règles de distribution</b> : fixation par l'assemblée après approbation des comptes et constatation de sommes distribuables, capitaux propres maintenus au moins au niveau du capital et des réserves non distribuables. Sa répartition par les dirigeants est pénalement sanctionnée.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 232-11 et L. 232-12 ; L. 241-3, 2° (SARL) et L. 242-6, 1° (SA)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k33",
+   "type": "comp",
+   "q": "Lors de l'affectation du bénéfice d'une société, entre quels comptes le solde du compte 120 est-il réparti ?",
+   "r": "<b>Entre les réserves (1061 légale, 1063 statutaires ou contractuelles, 1068 autres), le compte 457 « Associés – Dividendes à payer » et le compte 110 « Report à nouveau (solde créditeur) »</b>, par le débit du compte 120.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k34",
+   "type": "comp",
+   "q": "Lors de l'affectation du résultat d'une société, comment une perte de l'exercice est-elle traitée ?",
+   "r": "<b>Elle est portée au compte 119 « Report à nouveau (solde débiteur) »</b> ou imputée sur les réserves.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 1061, 1063, 1068, 110, 119, 120 et 457",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-07-k35",
+   "type": "comp",
+   "q": "Selon l'article L. 232-13 du Code de commerce, dans quel délai la mise en paiement des dividendes doit-elle intervenir ?",
+   "r": "<b>Dans un délai maximal de neuf mois après la clôture de l'exercice</b> ; ce délai peut être prolongé par décision de justice.",
+   "base": [
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 232-13",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229032",
+   "fiab": "stable"
+  }
+ ]
+}

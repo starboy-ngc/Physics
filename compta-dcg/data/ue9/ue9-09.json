@@ -109,6 +109,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quels sont les livres comptables obligatoires pour un commerçant ?",
    "opts": [
@@ -124,6 +125,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Pendant combien de temps les documents comptables et les pièces justificatives doivent-ils être conservés ?",
    "opts": [
@@ -139,6 +141,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "q": "La société Orvalis clôture son exercice le 31 décembre 2025. Jusqu'à la fin de quelle année doit-elle au minimum conserver les pièces justificatives de cet exercice en application du Code de commerce ? (Indiquez l'année.)",
    "a": 2035,
@@ -150,6 +153,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Qui édicte le Plan comptable général en France ?",
    "opts": [
@@ -165,6 +169,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Le règlement ANC n° 2022-06 modernisant le PCG s'applique obligatoirement :",
    "opts": [
@@ -180,6 +185,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 1,
    "q": "Quelles sont les principales nouveautés du PCG 2025 issues du règlement ANC n° 2022-06 ? (plusieurs réponses possibles)",
    "opts": [
@@ -200,6 +206,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "niveau": 1,
    "q": "Associez chaque situation au principe comptable qu'elle illustre.",
    "cats": [
@@ -240,6 +247,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La société Berlan envisage de changer sa méthode de valorisation des stocks de CMP vers PEPS parce que cela augmenterait son résultat cette année. Que prévoient les textes ?",
    "opts": [
@@ -255,6 +263,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Les écritures d'un journal auxiliaire des ventes doivent être centralisées dans le livre-journal :",
    "opts": [
@@ -270,6 +279,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles mentions doit comporter tout enregistrement comptable selon le Code de commerce ? (plusieurs réponses possibles)",
    "opts": [
@@ -290,6 +300,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Une écriture validée dans un logiciel de comptabilité comporte une erreur d'imputation. Comment la corriger ?",
    "opts": [
@@ -305,6 +316,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Lors d'un contrôle fiscal, une entreprise qui tient sa comptabilité sur informatique doit remettre :",
    "opts": [
@@ -320,6 +332,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Au 31 décembre, le compte 512 de la société Orvalis présente un solde débiteur de 14 250 €. Le relevé bancaire affiche un solde créditeur de 15 570 €. Différences relevées : un chèque de 2 400 € émis le 29 décembre non encore débité par la banque ; une remise de chèques de 1 800 € déposée le 31 décembre non encore créditée ; des frais bancaires de 60 € prélevés par la banque et inconnus de l'entreprise ; un virement d'un client de 1 500 € reçu par la banque et non enregistré ; un prélèvement d'assurance de 720 € non enregistré. Quel est le solde rectifié du compte 512 ?",
    "a": 14970,
@@ -331,6 +344,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "À la suite du rapprochement précédent, enregistrez le virement du client de 1 500 € découvert sur le relevé bancaire.",
    "lib": "Virement client découvert au rapprochement",
@@ -361,6 +375,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "niveau": 2,
    "q": "Toujours à la suite du rapprochement, enregistrez en une seule écriture les frais bancaires de 60 € (exonérés de TVA dans ce cas) et le prélèvement de la prime d'assurance de 720 € apparus sur le relevé.",
    "lib": "Frais et prélèvement découverts au rapprochement",
@@ -397,6 +412,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Un chèque émis par l'entreprise le 30 décembre et non encore débité par la banque au 31 décembre doit, dans l'état de rapprochement :",
    "opts": [
@@ -412,6 +428,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Dans un état de rapprochement bancaire, quelles opérations donnent lieu à une écriture dans les livres de l'entreprise ? (plusieurs réponses possibles)",
    "opts": [
@@ -432,6 +449,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "q": "Les comptes annuels comprennent :",
    "opts": [
@@ -447,6 +465,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "niveau": 2,
    "q": "En 2025, la SARL Nerval présente un total de bilan de 300 000 €, un chiffre d'affaires de 700 000 € et emploie 6 salariés. Au regard des seuils du Code de commerce, elle est une :",
    "opts": [
@@ -462,6 +481,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles informations figurent dans l'annexe des comptes annuels ? (plusieurs réponses possibles)",
    "opts": [
@@ -482,6 +502,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "Dans quel délai les comptes annuels d'une SARL clôturés le 31 décembre doivent-ils être approuvés par les associés ?",
    "opts": [
@@ -497,6 +518,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "q": "La liasse fiscale est :",
    "opts": [
@@ -512,6 +534,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "niveau": 2,
    "q": "À compter de quelle date toutes les entreprises assujetties à la TVA établies en France doivent-elles être en mesure de recevoir des factures électroniques ?",
    "opts": [
@@ -527,6 +550,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "niveau": 2,
    "q": "Une PME de 30 salariés devra émettre ses factures sous forme électronique à ses clients professionnels français à compter du :",
    "opts": [
@@ -542,6 +566,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "q": "Quelles affirmations sur la réforme de la facturation électronique sont exactes ? (plusieurs réponses possibles)",
    "opts": [
@@ -562,6 +587,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 3,
    "q": "Le relevé bancaire d'Orvalis au 31 décembre affiche un solde créditeur de 15 570 €. Pourquoi la banque présente-t-elle un solde créditeur alors que l'entreprise a de l'argent en banque ?",
    "opts": [

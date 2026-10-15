@@ -85,6 +85,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un plombier exerçant en entreprise individuelle réalise des travaux chez des particuliers. Ses bénéfices relèvent de la catégorie :",
    "opts": [
     "Des BIC, l'activité artisanale étant assimilée aux activités commerciales",
@@ -100,6 +101,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "En 2025, une commerçante (vente de vêtements) a réalisé 150 000 € de chiffre d'affaires HT en 2024 et 160 000 € en 2023. Sans option, quel est son régime et comment est calculé son bénéfice ?",
    "opts": [
     "Micro-BIC : CA − abattement de 71 %",
@@ -115,6 +117,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En 2025, un consultant informatique en micro-BIC (prestations de services, abattement de 50 %) a encaissé 60 000 € HT de chiffre d'affaires. Quel est son bénéfice imposable ?",
    "a": 30000,
    "unit": "€",
@@ -126,6 +129,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "En 2025, un négociant réalise 900 000 € HT de chiffre d'affaires annuel. À quel régime d'imposition des BIC est-il soumis de plein droit ?",
    "opts": [
     "Réel normal",
@@ -141,6 +145,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Sur le tableau 2058-A, une « réintégration » correspond à :",
    "opts": [
     "Une charge comptabilisée mais non déductible fiscalement, ajoutée au résultat comptable",
@@ -156,6 +161,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Pour chaque élément figurant dans le résultat comptable d'une entreprise individuelle, indiquez le retraitement à opérer sur le 2058-A.",
    "cats": [
     "Réintégration",
@@ -203,6 +209,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Résultat comptable d'une entreprise individuelle : 80 000 €. Il comprend : une amende fiscale de 2 000 €, des frais de chasse (dépense somptuaire) de 5 000 €, la rémunération de l'exploitant de 30 000 € et une plus-value nette à long terme de 10 000 € (imposée séparément). Calculez le résultat fiscal BIC imposable au barème.",
    "a": 107000,
    "unit": "€",
@@ -214,6 +221,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise clôture le 31 décembre N. Une marchandise est livrée au client le 28 décembre N, la facture est émise le 5 janvier N+1 et payée le 20 février N+1. À quel exercice le produit est-il imposable ?",
    "opts": [
     "N, date de la livraison",
@@ -229,6 +237,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une entreprise loue un entrepôt à un tiers pour 24 000 € par an, loyer encaissé d'avance le 1er octobre N pour la période du 1er octobre N au 30 septembre N+1. Quel montant est imposable en N (clôture au 31 décembre) ?",
    "opts": [
     "6 000 €",
@@ -244,6 +253,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise reçoit de la région une subvention d'équipement de 20 000 € pour financer une machine amortie sur 5 ans en linéaire. Que permet l'article 42 septies ?",
    "opts": [
     "Imposer la subvention par cinquièmes, au rythme des amortissements de la machine",
@@ -259,6 +269,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles conditions une charge doit-elle remplir pour être déductible du résultat imposable ? (plusieurs réponses possibles)",
    "opts": [
     "Être engagée dans l'intérêt de l'exploitation",
@@ -279,6 +290,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez les dépenses suivantes supportées par une entreprise individuelle (BIC).",
    "cats": [
     "Charge déductible",
@@ -325,6 +337,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Parmi ces dépenses, laquelle est une dépense somptuaire non déductible au sens de l'article 39, 4 du CGI ?",
    "opts": [
     "Les frais d'entretien d'un pavillon de chasse utilisé pour les relations publiques",
@@ -340,6 +353,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise acquiert le 1er juillet N une machine-outil neuve pour 60 000 € HT, amortissable sur 5 ans, et opte pour l'amortissement dégressif (coefficient 1,75 pour une durée de 5 ans). Calculez la première annuité d'amortissement dégressif (exercice clos le 31 décembre N).",
    "a": 10500,
    "unit": "€",
@@ -351,6 +365,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Lequel de ces biens peut être amorti selon le mode dégressif ?",
    "opts": [
     "Un matériel informatique neuf d'une durée d'utilisation de 3 ans",
@@ -366,6 +381,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise acquiert le 1er janvier N un véhicule de tourisme neuf pour 32 000 € TTC, émettant 120 g de CO2/km (norme WLTP), amorti en linéaire sur 5 ans. Le plafond fiscal de déduction est de 18 300 € pour cette tranche d'émission. Quel montant d'amortissement doit être réintégré sur le 2058-A au titre de l'exercice N (12 mois) ?",
    "a": 2740,
    "unit": "€",
@@ -377,6 +393,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "Une entreprise achète en N un véhicule de tourisme neuf émettant 200 g de CO2/km (WLTP). Sur quelle fraction maximale du prix d'acquisition l'amortissement est-il déductible ?",
    "opts": [
     "9 900 €",
@@ -392,6 +409,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise déficitaire n'a pas comptabilisé d'amortissement sur une machine en N, alors que l'annuité linéaire aurait été de 8 000 €. Quelle est la conséquence fiscale (art. 39 B) ?",
    "opts": [
     "La fraction irrégulièrement différée est définitivement perdue : le cumul des amortissements déduits ne peut être inférieur au cumul linéaire",
@@ -407,6 +425,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles conditions une provision doit-elle remplir pour être fiscalement déductible ? (plusieurs réponses possibles)",
    "opts": [
     "Couvrir une perte ou une charge elle-même déductible",
@@ -427,6 +446,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise comptabilise une provision de 40 000 € pour indemnités de départ à la retraite de ses salariés, évaluée par un actuaire. Fiscalement :",
    "opts": [
     "Elle n'est pas déductible et doit être réintégrée",
@@ -442,6 +462,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Un client doit 12 000 € HT à l'entreprise ; il est placé en redressement judiciaire en décembre N et l'entreprise estime la perte à 50 %. Quelle provision est déductible en N ?",
    "opts": [
     "6 000 €, calculés sur le montant hors taxes",
@@ -457,6 +478,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une machine acquise 50 000 € a été amortie à hauteur de 30 000 € (VNC 20 000 €). Elle est cédée pour 60 000 € après 3 ans de détention. Quel est le montant de la plus-value à court terme ?",
    "a": 30000,
    "unit": "€",
@@ -468,6 +490,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Un terrain acquis 100 000 € il y a 6 ans est vendu 130 000 €. Un camion acquis il y a 3 ans (VNC 15 000 €) est vendu 12 000 €. Comment se qualifient ces résultats ?",
    "opts": [
     "Plus-value à long terme de 30 000 € et moins-value à court terme de 3 000 €",
@@ -483,6 +506,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise individuelle dégage en 2025 une plus-value nette à long terme de 30 000 € (aucun déficit ni moins-value à imputer). Quel est le montant de l'impôt sur le revenu dû sur cette plus-value, hors prélèvements sociaux ?",
    "a": 3840,
    "unit": "€",
@@ -494,6 +518,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une entreprise individuelle réalise en N une plus-value nette à court terme de 30 000 € et opte pour l'étalement de l'article 39 quaterdecies. Quel montant est imposable au titre de N ?",
    "a": 10000,
    "unit": "€",
@@ -505,6 +530,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Un commerçant (ventes) exerce depuis 8 ans. Sa moyenne de recettes HT des deux années précédant la cession est de 300 000 €. Il réalise une plus-value de 40 000 € sur la cession de son fonds. Exonération art. 151 septies : totale jusqu'à 250 000 € de recettes, dégressive jusqu'à 350 000 € selon la fraction (350 000 − recettes) / 100 000. Quel montant de plus-value reste imposable ?",
    "a": 20000,
    "unit": "€",
@@ -516,6 +542,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quelle condition de durée est exigée pour bénéficier de l'exonération des plus-values professionnelles de l'article 151 septies ?",
    "opts": [
     "L'activité doit avoir été exercée depuis au moins 5 ans",
@@ -531,6 +558,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un artisan cède l'intégralité de son entreprise (activité exercée depuis 12 ans) pour une valeur de 450 000 €, dégageant une plus-value de 120 000 €. Au titre de l'article 238 quindecies :",
    "opts": [
     "La plus-value est totalement exonérée, la valeur des éléments transmis n'excédant pas 500 000 €",
@@ -546,6 +574,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un commerçant exploitant personnellement son fonds dégage un déficit BIC de 25 000 € en 2025, alors que son conjoint perçoit 45 000 € de salaires. Comment ce déficit est-il traité ?",
    "opts": [
     "Il s'impute sur le revenu global du foyer en 2025, l'excédent éventuel étant reportable 6 ans",

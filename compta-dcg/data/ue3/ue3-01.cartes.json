@@ -1,0 +1,429 @@
+{
+ "id": "ue3-01",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue3-01-k01",
+   "type": "def",
+   "q": "Quels droits le Préambule de la Constitution du 27 octobre 1946 garantit-il aux travailleurs en ses alinéas 6, 7 et 8 ?",
+   "r": "<b>La liberté syndicale</b> (al. 6), <b>le droit de grève</b>, qui s'exerce dans le cadre des lois qui le réglementent (al. 7), et <b>la participation</b> de tout travailleur, par l'intermédiaire de ses délégués, à la détermination collective des conditions de travail et à la gestion des entreprises (al. 8). Le Conseil constitutionnel impose au législateur de concilier le droit de grève avec les autres principes de valeur constitutionnelle.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "Préambule de la Constitution du 27 octobre 1946, al. 6, 7 et 8 ; Cons. const., décisions n° 2007-556 DC du 16 août 2007 et n° 2019-790 DC du 1er août 2019",
+   "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/preambule-de-la-constitution-du-27-octobre-1946",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k02",
+   "type": "def",
+   "q": "Qu'est-ce qu'une convention collective de travail au sens du Code du travail ?",
+   "r": "<b>Un texte qui a vocation à traiter de l'ensemble des matières</b> de l'article L. 2221-1 (conditions d'emploi, de formation professionnelle et de travail, garanties sociales) pour toutes les catégories professionnelles intéressées. L'accord collectif, lui, ne traite qu'un ou plusieurs sujets déterminés dans cet ensemble.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. trav., art. L. 2221-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901660",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k03",
+   "type": "def",
+   "q": "Qui sont les parties à une convention ou à un accord collectif de travail ?",
+   "r": "<b>Côté salariés</b> : une ou plusieurs organisations syndicales de salariés représentatives dans le champ d'application de l'accord. <b>Côté employeurs</b> : une ou plusieurs organisations syndicales d'employeurs, toute autre association d'employeurs ou un ou plusieurs employeurs pris individuellement.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 2231-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k04",
+   "type": "comp",
+   "q": "À quelles conditions un accord collectif de branche est-il valablement conclu ?",
+   "r": "<b>La signature</b> d'une ou plusieurs organisations syndicales représentatives ayant recueilli au moins 30 % des suffrages exprimés en faveur d'organisations reconnues représentatives à ce niveau, quel que soit le nombre de votants, et <b>l'absence d'opposition</b> d'organisations représentatives ayant recueilli la majorité de ces suffrages, exprimée dans un délai de quinze jours à compter de la notification.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. trav., art. L. 2232-6 et L. 2231-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000022926962",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k05",
+   "type": "def",
+   "q": "Qu'est-ce que l'extension d'une convention de branche ou d'un accord professionnel ou interprofessionnel ?",
+   "r": "<b>Le fait, pour le ministre chargé du travail, de rendre par arrêté ses stipulations obligatoires pour tous les salariés et employeurs du champ d'application</b>, après avis motivé de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle. Le ministre peut exclure de l'extension les clauses contraires à la loi ou refuser l'extension pour des motifs d'intérêt général.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. trav., art. L. 2261-15, L. 2261-17, L. 2261-18 et L. 2261-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042654536",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k06",
+   "type": "def",
+   "q": "Qu'est-ce que l'élargissement d'une convention collective par le ministre chargé du travail ?",
+   "r": "<b>Rendre obligatoire, en cas de carence des organisations (impossibilité persistante de conclure), un texte déjà étendu dans un autre secteur</b> présentant des conditions analogues quant aux emplois exercés, sauf opposition écrite et motivée de la majorité des membres de la Commission nationale de la négociation collective, de l'emploi et de la formation professionnelle. L'absence d'avenant ou d'annexe pendant cinq ans au moins peut être assimilée à une carence.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. trav., art. L. 2261-15, L. 2261-17, L. 2261-18 et L. 2261-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042654536",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k07",
+   "type": "def",
+   "q": "Que signifie le principe de faveur dans les rapports entre la loi et une convention ou un accord collectif ?",
+   "r": "<b>La convention ou l'accord peut comporter des stipulations plus favorables aux salariés que les dispositions légales en vigueur.</b> En revanche, il ne peut déroger aux dispositions qui revêtent un caractère d'ordre public.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. trav., art. L. 2251-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901772",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k08",
+   "type": "comp",
+   "q": "En cas de concours de conventions collectives, comment détermine-t-on les avantages accordés au salarié ?",
+   "r": "<b>Les avantages ayant le même objet ou la même cause ne se cumulent pas</b>, sauf stipulations contraires : seul le plus favorable est accordé. La comparaison se fait avantage par avantage, en regroupant ceux qui ont la même cause ou le même objet, et non par addition d'avantages de nature différente.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "Cass. ass. plén., 18 mars 1988, n° 84-40.083, publié au bulletin ; Cass. soc., 28 mars 2012, n° 11-12.043, publié au bulletin ; C. trav., art. L. 2253-1",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020048",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k09",
+   "type": "comp",
+   "q": "Dans les 13 matières du bloc 1 (art. L. 2253-1 du Code du travail), quelle norme prévaut entre convention de branche et convention d'entreprise ?",
+   "r": "<b>La convention de branche prévaut</b> sur la convention d'entreprise conclue antérieurement ou postérieurement, sauf lorsque celle-ci assure des garanties au moins équivalentes, appréciées par ensemble de garanties se rapportant à la même matière. Ces matières sont notamment les salaires minima hiérarchiques, les classifications, les garanties collectives complémentaires et l'égalité professionnelle.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. trav., art. L. 2253-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036761771",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k10",
+   "type": "comp",
+   "q": "Dans les matières du bloc 2 (art. L. 2253-2 du Code du travail), à quelle condition la convention de branche prime-t-elle sur l'accord d'entreprise ?",
+   "r": "<b>Seulement si elle le stipule expressément</b>, et sauf garanties au moins équivalentes dans l'accord d'entreprise. Ce bloc vise la prévention des effets de l'exposition aux facteurs de risques professionnels, l'insertion professionnelle et le maintien dans l'emploi des travailleurs handicapés, l'effectif à partir duquel les délégués syndicaux peuvent être désignés et les primes pour travaux dangereux ou insalubres.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 2253-2",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177936/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k11",
+   "type": "comp",
+   "q": "Dans le bloc 3 (toutes les autres matières, art. L. 2253-3 du Code du travail), quelle norme prévaut entre accord de branche et accord d'entreprise ?",
+   "r": "<b>L'accord d'entreprise</b>, conclu avant ou après l'accord de branche, prévaut sur les stipulations de la branche ayant le même objet. En l'absence d'accord d'entreprise, l'accord de branche s'applique.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. trav., art. L. 2253-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177936/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k12",
+   "type": "comp",
+   "q": "Quelles règles les ordonnances du 22 septembre 2017 ont-elles posées pour contester la légalité d'une convention ou d'un accord collectif ?",
+   "r": "<b>L'action en nullité est enfermée dans un délai de deux mois</b>, à peine d'irrecevabilité, à compter, selon le cas, de la notification ou de la publication de l'accord (L. 2262-14), et <b>la charge de la preuve de l'illégalité pèse sur celui qui la conteste</b> (L. 2262-13) : il lui appartient de démontrer que l'accord n'est pas conforme aux conditions légales qui le régissent.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Chiffres et seuils#7"
+   ],
+   "src": "Loi n° 2018-217 du 29 mars 2018 ; ordonnance n° 2017-1385 du 22 septembre 2017 ; C. trav., art. L. 2262-13",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000036755446",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k13",
+   "type": "comp",
+   "q": "Que peut invoquer un salarié qui soulève, dans un litige individuel, l'illégalité d'une clause d'accord collectif par voie d'exception ?",
+   "r": "<b>Le non-respect des conditions légales de validité de l'accord</b>, mais pas un grief tiré des conditions de sa négociation. Le délai de forclusion de deux mois de l'article L. 2262-14 ne s'applique pas à cette exception d'illégalité.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "Cass. soc., 31 janvier 2024, n° 22-11.770, publié au bulletin ; Cass. soc., 2 mars 2022, n° 20-16.002, publié au bulletin",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000049092250",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k14",
+   "type": "comp",
+   "q": "Qu'a changé la loi du 22 avril 2024 pour les congés payés des salariés en arrêt pour maladie ou accident non professionnel ?",
+   "r": "<b>Ces arrêts ouvrent droit à congés payés</b> à raison de 2 jours ouvrables par mois, dans la limite de 24 jours ouvrables par période de référence ; le salarié qui n'a pu prendre ses congés pour cause de maladie ou d'accident bénéficie d'une période de report de 15 mois. La loi adapte ainsi le droit national au droit de l'Union (directive 2003/88).",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Loi n° 2024-364 du 22 avril 2024, art. 37 ; C. trav., art. L. 3141-5-1 et L. 3141-19-1",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000049453299",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k15",
+   "type": "comp",
+   "q": "Quel est l'effet d'un accord de performance collective sur le contrat de travail des salariés ?",
+   "r": "<b>Ses stipulations se substituent de plein droit aux clauses contraires du contrat de travail</b>, dans les domaines de la durée du travail, de la rémunération et de la mobilité professionnelle ou géographique interne. Le salarié peut toutefois refuser par écrit, dans un délai d'un mois.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k16",
+   "type": "comp",
+   "q": "Que se passe-t-il lorsqu'un salarié refuse l'application d'un accord de performance collective à son contrat de travail ?",
+   "r": "<b>Il dispose d'un mois pour refuser par écrit</b> ; l'employeur a alors deux mois à compter du refus pour engager un licenciement, qui repose sur un motif spécifique constituant une cause réelle et sérieuse, dès lors que l'accord s'en tient à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne.",
+   "base": [
+    "Règles essentielles#9",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k17",
+   "type": "comp",
+   "q": "Que vaut le licenciement d'un salarié qui refuse un accord de performance collective comportant des dispositions étrangères à ses objets légaux ?",
+   "r": "<b>Il est sans cause réelle et sérieuse</b> lorsque ces dispositions modifient son contrat de travail : l'effet substitutif de l'APC est limité à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne (Cass. soc., 28 mai 2026).",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k18",
+   "type": "comp",
+   "q": "À quelles conditions l'employeur peut-il dénoncer un usage d'entreprise ou un engagement unilatéral ?",
+   "r": "<b>Informer préalablement les représentants du personnel, informer individuellement chaque salarié concerné et respecter un délai de prévenance suffisant</b> pour permettre d'éventuelles négociations. La dénonciation régulière est alors opposable à l'ensemble des salariés concernés.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "Cass. soc., 25 février 1988, n° 85-40.821, publié au bulletin ; Cass. soc., 7 juillet 2016, n° 15-22.874 et s.",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007020520",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k19",
+   "type": "def",
+   "q": "Qu'est-ce que le règlement intérieur d'une entreprise au sens du Code du travail ?",
+   "r": "<b>Le document écrit par lequel l'employeur fixe exclusivement</b> :<ul><li>les mesures d'application de la réglementation en matière de santé et de sécurité ;</li><li>les conditions dans lesquelles les salariés peuvent être appelés à participer au rétablissement de conditions de travail protectrices lorsqu'elles sont compromises ;</li><li>les règles générales et permanentes relatives à la discipline, notamment la nature et l'échelle des sanctions.</li></ul>",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 1321-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901432",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k20",
+   "type": "comp",
+   "q": "Quand l'obligation d'établir un règlement intérieur s'impose-t-elle à une entreprise ou à un établissement ?",
+   "r": "<b>Au terme d'un délai de 12 mois à compter de la date à laquelle l'entreprise ou l'établissement a atteint le seuil de 50 salariés</b>, conformément à l'article L. 2312-2.",
+   "base": [
+    "Chiffres et seuils#6"
+   ],
+   "src": "C. trav., art. L. 1311-2 et L. 1321-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610176",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k21",
+   "type": "comp",
+   "q": "Quelles dispositions sont interdites dans le règlement intérieur d'une entreprise ?",
+   "r": "<b>Trois catégories</b> :<ul><li>les dispositions contraires aux lois, règlements et conventions collectives applicables ;</li><li>les restrictions aux droits des personnes et aux libertés individuelles et collectives non justifiées par la nature de la tâche à accomplir ni proportionnées au but recherché ;</li><li>les dispositions discriminatoires à l'égard des salariés de capacité professionnelle égale.</li></ul>",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. trav., art. L. 1321-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033975667",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k22",
+   "type": "comp",
+   "q": "Quelles formalités l'employeur doit-il accomplir pour introduire un règlement intérieur dans l'entreprise ?",
+   "r": "<b>Recueillir l'avis préalable du comité social et économique</b>, puis communiquer le règlement, avec cet avis, à l'inspecteur du travail en même temps que les formalités de publicité ; la partie réglementaire prévoit aussi son dépôt au greffe du conseil de prud'hommes. L'inspecteur peut à tout moment exiger le retrait ou la modification des clauses contraires aux articles L. 1321-1 à L. 1321-3 et L. 1321-6.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 1321-4 (loi n° 2026-403 du 26 mai 2026, art. 5), R. 1321-2 et L. 1322-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054140230",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k23",
+   "type": "comp",
+   "q": "Depuis la loi du 26 mai 2026 de simplification de la vie économique, quand un règlement intérieur peut-il entrer en vigueur ?",
+   "r": "<b>À une date postérieure d'un mois à l'accomplissement des seules formalités de publicité</b> : les mots « de dépôt et » ont été supprimés de l'article L. 1321-4. L'avis préalable du CSE et la communication du règlement, avec cet avis, à l'inspecteur du travail sont maintenus.",
+   "base": [
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "Loi n° 2026-403 du 26 mai 2026, art. 5 ; C. trav., art. L. 1321-4 (version en vigueur depuis le 28 mai 2026)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054131304",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k24",
+   "type": "def",
+   "q": "Qu'appelle-t-on agents de contrôle de l'inspection du travail dans le Code du travail ?",
+   "r": "<b>Les membres du corps des inspecteurs du travail</b> (ou du corps des contrôleurs du travail jusqu'à son extinction). Ils veillent au respect du Code du travail, des autres dispositions relatives au régime du travail et des conventions et accords collectifs, et constatent les infractions concurremment avec les officiers de police judiciaire ; leur indépendance est garantie par les conventions de l'OIT.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. trav., art. L. 8112-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033025397",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k25",
+   "type": "comp",
+   "q": "De quels pouvoirs les agents de contrôle de l'inspection du travail disposent-ils dans les établissements ?",
+   "r": "<b>Un droit d'entrée dans tout établissement où s'appliquent les règles de l'article L. 8112-1</b> pour y assurer surveillance et enquêtes (avec l'accord des occupants pour les locaux habités). Ils peuvent demander la justification d'identité et la présentation des registres obligatoires, et leurs procès-verbaux sont transmis au procureur de la République.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. trav., art. L. 8113-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033025218",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k26",
+   "type": "comp",
+   "q": "Comment fonctionne le régime des amendes administratives prévu par le Code du travail pour certains manquements de l'employeur ?",
+   "r": "<b>Sur rapport d'un agent de contrôle et sous réserve de l'absence de poursuites pénales</b>, le directeur régional de l'économie, de l'emploi, du travail et des solidarités peut adresser un avertissement ou prononcer une amende pour certains manquements. La décision se conteste devant le tribunal administratif.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. trav., art. L. 8115-1 à L. 8115-8 (L. 8115-1 dans sa version en vigueur depuis le 27 juin 2026) ; R. 8115-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k27",
+   "type": "comp",
+   "q": "Quel manquement la loi du 25 juin 2026 a-t-elle ajouté à ceux que sanctionne l'amende administrative de l'article L. 8115-1 du Code du travail ?",
+   "r": "<b>L'absence de document unique d'évaluation des risques professionnels</b>, en plus des manquements déjà visés : durées maximales de travail, repos, salaire minimum, installations sanitaires et hébergement.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. trav., art. L. 8115-1 (version en vigueur depuis le 27 juin 2026 ; loi n° 2026-534 du 25 juin 2026)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000032375395/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k28",
+   "type": "comp",
+   "q": "Quel est le rôle du conseil de prud'hommes dans les litiges du travail ?",
+   "r": "<b>Il règle par voie de conciliation les différends nés à l'occasion de tout contrat de travail entre employeurs et salariés, et juge ceux qui n'ont pas été conciliés</b> ; il connaît aussi des différends nés entre salariés à l'occasion du travail. Il est seul compétent quel que soit le montant de la demande, sauf pour les litiges que la loi attribue à une autre juridiction (accidents du travail, maladies professionnelles).",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. trav., art. L. 1411-1, L. 1411-3 et L. 1411-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901457",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k29",
+   "type": "def",
+   "q": "Comment le conseil de prud'hommes est-il composé et organisé ?",
+   "r": "<b>Une juridiction paritaire</b> : le conseil, comme chacune de ses formations, compte un nombre égal de salariés et d'employeurs. Il est divisé en sections autonomes (encadrement, industrie, commerce et services commerciaux, agriculture, activités diverses) et comporte une formation commune de référé ; hors section de l'encadrement, les affaires sont réparties d'après la convention collective applicable et, à défaut, relèvent des activités diverses.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. trav., art. L. 1421-1, L. 1423-1, L. 1423-1-2 et R. 1423-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006901467",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k30",
+   "type": "comp",
+   "q": "Quel est le rôle du bureau de conciliation et d'orientation (BCO) du conseil de prud'hommes ?",
+   "r": "<b>Concilier les parties</b>, qu'il peut entendre séparément et dans la confidentialité. Il assure la mise en état et, en cas d'échec, renvoie l'affaire devant le bureau de jugement (le cas échéant en formation restreinte) ; si une partie ne comparaît pas sans motif légitime, il peut juger l'affaire.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. trav., art. L. 1454-1 à L. 1454-1-3 et L. 1454-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031091227",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k31",
+   "type": "comp",
+   "q": "Que se passe-t-il en cas de partage des voix au sein d'une formation du conseil de prud'hommes ?",
+   "r": "<b>Le départage</b> : l'affaire est renvoyée devant la même formation présidée par un juge du tribunal judiciaire dans le ressort duquel est situé le siège du conseil, et reprise dans le délai d'un mois.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. trav., art. L. 1454-1 à L. 1454-1-3 et L. 1454-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031091227",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k32",
+   "type": "comp",
+   "q": "Quelle juridiction est compétente pour le contentieux des accidents du travail et des maladies professionnelles ?",
+   "r": "<b>Le tribunal judiciaire spécialement désigné (pôle social)</b>, auquel le Code de la sécurité sociale attribue ce contentieux ; le conseil de prud'hommes est incompétent. Ce pôle connaît des litiges du contentieux de la sécurité sociale définis à l'article L. 142-1 de ce code (sauf ceux du 7°) et de ceux relatifs à l'admission à l'aide sociale.",
+   "base": [
+    "Points de vigilance#4",
+    "Règles essentielles#15"
+   ],
+   "src": "C. trav., art. L. 1411-4 ; C. org. jud., art. L. 211-16",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048700782",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k33",
+   "type": "comp",
+   "q": "Quels délais de prescription l'article L. 1471-1 du Code du travail fixe-t-il pour les actions portant sur l'exécution et sur la rupture du contrat de travail ?",
+   "r": "<b>Exécution : 2 ans</b> à compter du jour où celui qui exerce l'action a connu ou aurait dû connaître les faits. <b>Rupture : 12 mois</b> à compter de la notification de la rupture.",
+   "base": [
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. trav., art. L. 1471-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k34",
+   "type": "comp",
+   "q": "Quelles prescriptions s'appliquent respectivement à l'indemnité de requalification d'un CDD, à l'indemnité compensatrice de préavis et aux demandes portant sur la rupture ?",
+   "r": "<b>Requalification : prescription biennale</b> (L. 1471-1, al. 1). <b>Préavis : prescription triennale</b> (L. 3245-1), car c'est une créance salariale. <b>Rupture</b> (indemnité de licenciement, licenciement sans cause réelle et sérieuse, irrégularité de procédure) : délai de 12 mois (L. 1471-1, al. 2), même lorsque ces demandes sont consécutives à une requalification.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "Cass. soc., 12 février 2025, n° 23-18.876, publié au bulletin ; C. trav., art. L. 1471-1 et L. 3245-1",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000051243749",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-01-k35",
+   "type": "comp",
+   "q": "Quelles actions échappent aux délais de deux ans et de douze mois de l'article L. 1471-1 du Code du travail ?",
+   "r": "<b>Les actions en réparation d'un dommage corporel causé à l'occasion de l'exécution du contrat</b>, les actions en paiement ou en répétition du salaire (3 ans, L. 3245-1) et les actions fondées sur la discrimination ou le harcèlement. Ces délais ne font pas obstacle aux délais plus courts prévus par le code, par exemple pour la rupture conventionnelle.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "C. trav., art. L. 1471-1, al. 3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",
+   "fiab": "stable"
+  }
+ ]
+}

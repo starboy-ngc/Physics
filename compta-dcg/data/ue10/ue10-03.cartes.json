@@ -1,0 +1,436 @@
+{
+ "id": "ue10-03",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-03-k01",
+   "type": "def",
+   "q": "Qu'est-ce que l'amortissement d'un actif selon le Plan comptable général (PCG) ?",
+   "r": "<b>La répartition systématique du montant amortissable d'un actif en fonction de son utilisation.</b> Le plan d'amortissement est défini par l'entité pour chaque actif amortissable, à partir de sa durée et de son mode d'utilisation.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 214-1 et 214-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k02",
+   "type": "def",
+   "q": "Qu'est-ce que le montant amortissable d'un actif selon le PCG ?",
+   "r": "<b>La valeur brute de l'actif sous déduction de sa valeur résiduelle</b>, lorsque celle-ci est à la fois significative et mesurable.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, art. 214-1 à 214-4 et 214-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k03",
+   "type": "comp",
+   "q": "Selon le PCG, que doit traduire le mode d'amortissement retenu pour un actif amortissable ?",
+   "r": "<b>Le rythme de consommation des avantages économiques attendus de l'actif, qu'il doit traduire au mieux.</b> Le mode linéaire est appliqué à défaut de mode mieux adapté.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, art. 214-1 à 214-4 et 214-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k04",
+   "type": "comp",
+   "q": "Selon le PCG, quel est l'effet d'une modification significative de l'utilisation prévue d'un bien amortissable ?",
+   "r": "<b>Elle entraîne la révision prospective du plan d'amortissement</b>, défini à la date d'entrée du bien à l'actif. La modification peut porter sur la durée ou sur le rythme de consommation des avantages.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, art. 214-14",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k05",
+   "type": "comp",
+   "q": "Quelle simplification le PCG accorde-t-il aux petites entreprises pour la durée d'amortissement de leurs immobilisations non décomposables ?",
+   "r": "<b>Retenir la durée d'usage fiscale pour déterminer le plan d'amortissement</b>, dans leurs comptes individuels. Seules les petites entreprises peuvent ainsi aligner les deux durées ; pour les autres, la durée d'utilisation comptable, propre à l'entité, diffère de la durée d'usage fiscale et l'écart entre amortissement fiscal et amortissement comptable passe par les amortissements dérogatoires.",
+   "base": [
+    "Règles essentielles#2",
+    "Points de vigilance#0"
+   ],
+   "src": "PCG, art. 214-13 (règlement ANC n° 2015-06) ; C. com., art. L. 123-16",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038611029",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k06",
+   "type": "comp",
+   "q": "Quels biens peuvent être amortis selon le mode dégressif prévu à l'article 39 A du CGI ?",
+   "r": "<b>Les biens d'équipement acquis ou fabriqués par les entreprises industrielles</b>, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "CGI, art. 39 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k07",
+   "type": "comp",
+   "q": "Outre les immeubles d'habitation, les chantiers et les locaux professionnels, quels biens n'ouvrent pas droit à l'amortissement dégressif fiscal ?",
+   "r": "<b>Les biens d'occasion et les biens dont la durée normale d'utilisation est inférieure à trois ans.</b>",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/4684-PGP.html/identifiant=BOI-BIC-AMT-20-20-20-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k08",
+   "type": "comp",
+   "q": "En quoi le point de départ de l'amortissement dégressif fiscal diffère-t-il de celui de l'amortissement linéaire ?",
+   "r": "<b>La première annuité dégressive court du premier jour du mois d'acquisition (prorata en mois), alors que le linéaire part en principe de la mise en service.</b> Une mise en service postérieure à l'acquisition crée donc un écart entre les deux plans.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#4"
+   ],
+   "src": "BOI-BIC-AMT-20-20-30",
+   "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k09",
+   "type": "comp",
+   "q": "Que prévoit la règle de l'amortissement minimal posée par l'article 39 B du CGI ?",
+   "r": "<b>À chaque clôture, la somme des amortissements effectivement pratiqués depuis l'acquisition ou la création d'un élément ne peut être inférieure au montant cumulé des amortissements linéaires</b> répartis sur la durée normale d'utilisation. À défaut, l'entreprise perd définitivement le droit de déduire la fraction des amortissements ainsi différée.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 39 B",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302321",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k10",
+   "type": "comp",
+   "q": "Selon le BOFiP, comment s'apprécie le respect de l'amortissement minimal de l'article 39 B du CGI ?",
+   "r": "<b>Avec souplesse, pour chaque bien, sur la masse globale des amortissements pratiqués à une date déterminée</b>, et non sur l'annuité de l'exercice. Pour un bien en dégressif, l'entreprise peut différer la fraction excédant l'annuité linéaire sans contrevenir à l'article 39 B.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "BOI-BIC-AMT-10-50-30",
+   "url": "https://bofip.impots.gouv.fr/bofip/4711-PGP.html/identifiant=BOI-BIC-AMT-10-50-30-20170802",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k11",
+   "type": "def",
+   "q": "Que sont les amortissements dérogatoires selon le PCG ?",
+   "r": "<b>Des provisions réglementées (compte 145) qui enregistrent la fraction de l'amortissement fiscal qui excède l'amortissement comptable.</b> Écritures d'origine purement fiscale, ils sont classés en résultat exceptionnel par le PCG 2025.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03) ; compte 145",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k12",
+   "type": "comp",
+   "q": "Quels comptes du PCG enregistrent la dotation puis la reprise des amortissements dérogatoires ?",
+   "r": "<b>La différence est dotée au compte 145 par le débit du compte 68725</b> lorsque l'amortissement fiscal excède l'amortissement comptable ; <b>le compte 145 est repris par le crédit du compte 78725</b> lorsque l'amortissement comptable devient supérieur. Le compte 145 est ainsi soldé à la fin du plan.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 145, 6872 (68725) et 7872 (78725) ; PCG, art. 513-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k13",
+   "type": "def",
+   "q": "Comment le PCG définit-il la valeur actuelle d'un actif ?",
+   "r": "<b>C'est la plus élevée de la valeur vénale et de la valeur d'usage de l'actif.</b>",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 214-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k14",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur vénale d'un actif au sens du PCG ?",
+   "r": "<b>Le montant qui pourrait être obtenu, à la date de clôture, de la vente de l'actif dans des conditions normales de marché</b>, net des coûts de sortie.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 214-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k15",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur d'usage d'un actif au sens du PCG ?",
+   "r": "<b>La valeur des avantages économiques futurs attendus de l'utilisation et de la sortie de l'actif.</b> Elle est généralement déterminée en fonction des flux nets de trésorerie attendus.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, art. 214-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k16",
+   "type": "def",
+   "q": "Qu'est-ce qu'une dépréciation d'un actif selon le PCG et le Code de commerce ?",
+   "r": "<b>La constatation que la valeur actuelle d'un actif est devenue inférieure à sa valeur nette comptable.</b> La valeur nette comptable est alors ramenée à la valeur d'inventaire à la clôture, que la dépréciation soit définitive ou non.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, art. 214-5 ; C. com., art. L. 123-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k17",
+   "type": "comp",
+   "q": "Selon le PCG, quand une entité doit-elle réaliser un test de dépréciation sur une immobilisation corporelle ?",
+   "r": "<b>Lorsqu'il existe un indice de perte de valeur</b>, ce qu'elle apprécie à chaque clôture. Le test compare la valeur nette comptable de l'actif à sa valeur actuelle ou, si celle de l'actif pris isolément ne peut être déterminée, à celle du groupe d'actifs auquel il appartient.",
+   "base": [
+    "Règles essentielles#8",
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 214-15 à 214-17",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k18",
+   "type": "comp",
+   "q": "Quels indices internes de perte de valeur le PCG impose-t-il au minimum de considérer pour une immobilisation ?",
+   "r": "<b>L'obsolescence ou la dégradation physique, les changements importants dans le mode d'utilisation et des performances inférieures aux prévisions.</b>",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 214-15 à 214-17",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k19",
+   "type": "comp",
+   "q": "Quels indices externes de perte de valeur le PCG impose-t-il au minimum de considérer pour une immobilisation ?",
+   "r": "<b>Les indices tenant à la valeur de marché, aux changements importants dans l'environnement et aux taux d'intérêt ou de rendement.</b>",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 214-15 à 214-17",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k20",
+   "type": "comp",
+   "q": "Selon le PCG, quel effet la comptabilisation d'une dépréciation a-t-elle sur l'amortissement futur d'un actif amortissable ?",
+   "r": "<b>La comptabilisation de la dépréciation modifie de manière prospective la base amortissable de l'actif.</b>",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "PCG, art. 214-17 et 214-19",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k21",
+   "type": "comp",
+   "q": "Selon le PCG, quand une dépréciation d'immobilisation est-elle rapportée au résultat ?",
+   "r": "<b>Quand les raisons qui l'ont motivée ont cessé d'exister.</b> Par exception, les dépréciations du fonds commercial ne sont jamais reprises, même si la valeur actuelle redevient supérieure à la valeur nette comptable : elles sont irréversibles.",
+   "base": [
+    "Règles essentielles#10",
+    "Points de vigilance#3"
+   ],
+   "src": "PCG, art. 214-17 et 214-19",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k22",
+   "type": "comp",
+   "q": "Selon le PCG, pourquoi le fonds commercial n'est-il en principe pas amorti ?",
+   "r": "<b>Parce qu'il est présumé avoir une durée d'utilisation non limitée.</b> Il fait alors l'objet d'un test de dépréciation au moins une fois par exercice, qu'il existe ou non un indice de perte de valeur.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "PCG, art. 214-3 et 214-15",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k23",
+   "type": "comp",
+   "q": "Selon le PCG, comment amortit-on un fonds commercial dont la présomption de durée d'utilisation non limitée est réfutée ?",
+   "r": "<b>Sur sa durée d'utilisation ou, si cette durée ne peut être déterminée de manière fiable, sur dix ans.</b> Amorti, il n'est soumis au test de dépréciation qu'en présence d'un indice de perte de valeur.",
+   "base": [
+    "Règles essentielles#12",
+    "Points de vigilance#3"
+   ],
+   "src": "PCG, art. 214-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k24",
+   "type": "comp",
+   "q": "Quelle option le PCG ouvre-t-il aux petites entreprises pour l'amortissement de leurs fonds commerciaux ?",
+   "r": "<b>Amortir sur dix ans tous leurs fonds commerciaux</b>, dans leurs comptes individuels. La mesure peut être adoptée à tout moment et s'applique de manière prospective à tous les fonds commerciaux inscrits au bilan au moment de son adoption.",
+   "base": [
+    "Règles essentielles#13",
+    "Chiffres et seuils#2"
+   ],
+   "src": "PCG, art. 214-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k25",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quel compte inscrit-on la valeur nette comptable d'une immobilisation corporelle cédée ?",
+   "r": "<b>Au débit du compte 657 « Valeurs comptables des immobilisations incorporelles et corporelles cédées ».</b> Cette valeur est la valeur d'entrée diminuée des amortissements, qui sont soldés. Les sujets antérieurs à 2025 utilisent encore les comptes 675/775.",
+   "base": [
+    "Règles essentielles#15",
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 462, 657 et 757 ; règlement ANC n° 2022-06 ; PCG, art. 214-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k26",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, comment enregistre-t-on le prix de cession d'une immobilisation corporelle ?",
+   "r": "<b>Au crédit du compte 757 « Produits des cessions d'immobilisations incorporelles et corporelles »</b>, en contrepartie du compte 462 « Créances sur cessions d'immobilisations » ou de la trésorerie.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 462, 657 et 757 ; règlement ANC n° 2022-06 ; PCG, art. 214-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k27",
+   "type": "comp",
+   "q": "Depuis le règlement ANC n° 2022-06, dans quel résultat classe-t-on les cessions d'immobilisations incorporelles et corporelles ?",
+   "r": "<b>En résultat d'exploitation, et non plus en résultat exceptionnel.</b> Celui-ci est réservé aux produits et charges directement liés à un événement majeur et inhabituel et aux écritures d'origine purement fiscale, comme les amortissements dérogatoires.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Points de vigilance#4"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; PCG, art. 513-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k28",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quel compte enregistre-t-on les indemnités d'assurance reçues à la suite d'un sinistre ?",
+   "r": "<b>Au compte 7587 « Indemnités d'assurance »</b>, subdivision du compte 758 « Indemnités et autres produits ». Le règlement ANC n° 2022-06 a supprimé les transferts de charges.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "PCG, plan de comptes 2026, compte 7587 ; PCG, art. 513-5 (règlement ANC n° 2022-06)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k29",
+   "type": "comp",
+   "q": "Pour une entreprise soumise à l'impôt sur le revenu, comment est qualifiée la plus-value de cession d'un élément amortissable détenu depuis au moins deux ans ?",
+   "r": "<b>À court terme à hauteur des amortissements déduits, et à long terme pour le surplus.</b> Si l'élément a été acquis ou créé depuis moins de deux ans, la plus-value est à court terme. Cette qualification ne modifie pas les écritures comptables.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "CGI, art. 39 duodecies ; BOI-BIC-PVMV-20-10",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203546",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k30",
+   "type": "def",
+   "q": "Qu'est-ce qu'une opération de crédit-bail au sens du Code monétaire et financier ?",
+   "r": "<b>Une location de biens d'équipement ou d'immeubles à usage professionnel assortie, pour le locataire, de la possibilité d'acquérir le bien</b> (option d'achat).",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CMF, art. L. 313-7 ; PCG, art. 212-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k31",
+   "type": "comp",
+   "q": "Comment le preneur d'un crédit-bail traite-t-il le contrat dans ses comptes individuels avant la levée de l'option d'achat ?",
+   "r": "<b>Il comptabilise en charges les sommes dues au titre de la période de location</b> ; le bien ne figure pas à son actif tant que l'option n'est pas levée et fait l'objet d'une information en annexe.",
+   "base": [
+    "Définitions#4",
+    "Points de vigilance#6"
+   ],
+   "src": "CMF, art. L. 313-7 ; PCG, art. 212-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k32",
+   "type": "comp",
+   "q": "Quelles informations une société commerciale doit-elle donner dans l'annexe sur les biens qu'elle a pris en crédit-bail ?",
+   "r": "<b>La valeur des biens à la signature du contrat, les redevances de l'exercice et leur cumul, les dotations aux amortissements qui auraient été enregistrées si les biens avaient été acquis</b>, ainsi que les redevances restant dues et le prix d'achat résiduel, évalués à la clôture et ventilés par échéance.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "C. com., art. R. 123-195 ; CMF, art. R. 313-14",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072026/LEGISCTA000006194113/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k33",
+   "type": "comp",
+   "q": "Comment les contrats de crédit-bail sont-ils traités chez le preneur dans les comptes consolidés établis selon le règlement ANC n° 2020-01 ?",
+   "r": "<b>Ils sont inscrits au bilan, sous forme d'une immobilisation et d'un emprunt correspondant</b>, et au compte de résultat, sous forme d'une dotation aux amortissements et d'une charge financière.",
+   "base": [
+    "Points de vigilance#6"
+   ],
+   "src": "PCG, art. 212-5 ; CMF, art. R. 313-14 ; règlement ANC n° 2020-01, art. 272-2 (version consolidée 2024) ; C. com., art. L. 233-24",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k34",
+   "type": "comp",
+   "q": "Sauf application anticipée, quel texte régit la comptabilisation des cessions d'immobilisations des exercices 2025 et 2026, malgré l'adoption du règlement ANC n° 2026-03 ?",
+   "r": "<b>Le PCG issu du règlement ANC n° 2022-06.</b> Le règlement n° 2026-03, qui consacre une section aux produits des ventes de biens et de services et aux cessions d'immobilisations, s'applique aux exercices ouverts à compter du 1er janvier 2027, une application anticipée étant possible.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Règlement ANC n° 2026-03 du 6 mars 2026 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04",
+   "url": "https://www.anc.gouv.fr/reglement-anc-ndeg2026-03-du-6-mars-2026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-03-k35",
+   "type": "comp",
+   "q": "Quelles sont les trois étapes de la comptabilisation de la cession d'une immobilisation corporelle amortissable ?",
+   "r": "<b>La dotation complémentaire aux amortissements jusqu'à la date de cession</b> (avec reprise du solde du compte 145 lié au bien), <b>l'enregistrement du prix</b> (comptes 462 et 757), puis <b>la sortie du bien</b> (comptes 28x, 657 et 2x).",
+   "base": [
+    "Points de vigilance#4",
+    "Règles essentielles#15"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; PCG, plan de comptes 2026, comptes 145, 657 et 757",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

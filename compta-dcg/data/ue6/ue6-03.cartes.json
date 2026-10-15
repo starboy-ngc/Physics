@@ -1,0 +1,396 @@
+{
+ "id": "ue6-03",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue6-03-k01",
+   "type": "def",
+   "q": "Qu'est-ce que le tableau de financement prévu par le plan comptable général (PCG) ?",
+   "r": "<b>Le tableau des emplois et des ressources de l'exercice.</b> Sa première partie explique la variation du fonds de roulement net global ; sa seconde partie montre l'utilisation de cette variation (exploitation, hors exploitation, trésorerie).",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k02",
+   "type": "def",
+   "q": "Qu'est-ce que le tableau des flux de trésorerie utilisé en analyse financière ?",
+   "r": "<b>Un tableau qui classe les flux de l'exercice en flux liés à l'activité, aux opérations d'investissement et aux opérations de financement</b>, dont la somme explique la variation de la trésorerie. Modèle prévu par le règlement ANC n° 2020-01 pour les comptes consolidés, il est préconisé par l'OEC pour les comptes sociaux.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "Règlement ANC n° 2020-01 (comptes consolidés), art. 282-43 et 282-44, modifiés par le règlement ANC n° 2024-05 ; OEC, avis n° 30 (1997)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k03",
+   "type": "def",
+   "q": "Qu'est-ce que la marge brute d'autofinancement des sociétés intégrées dans le modèle ANC de tableau des flux de trésorerie ?",
+   "r": "<b>Une ligne obtenue à partir du résultat net des sociétés intégrées</b>, corrigé des charges et produits sans incidence sur la trésorerie ou non liés à l'activité (amortissements et provisions, plus-values de cession). Elle précède les dividendes reçus des sociétés mises en équivalence et la variation du besoin en fonds de roulement lié à l'activité.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 282-43 (modèle de tableau des flux de trésorerie établi à partir du résultat net des entités intégrées)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k04",
+   "type": "def",
+   "q": "Qu'est-ce que la capacité d'autofinancement (CAF) dans le tableau de financement du PCG ?",
+   "r": "<b>La première ressource durable du tableau de financement.</b> Le PCG la détermine à partir de l'EBE et la vérifie à partir du résultat de l'exercice.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, modèle de tableau de détermination de la capacité d'autofinancement ; chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k05",
+   "type": "def",
+   "q": "Qu'est-ce que l'excédent de trésorerie d'exploitation (ETE) dans l'analyse par les tableaux de flux ?",
+   "r": "<b>L'EBE diminué de la variation du BFR d'exploitation.</b> Il mesure la trésorerie effectivement dégagée par l'exploitation de l'exercice.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 1 (analyse par les tableaux de flux)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k06",
+   "type": "comp",
+   "q": "Quelles distributions le tableau de financement du PCG retient-il parmi les emplois de l'exercice ?",
+   "r": "<b>Les distributions mises en paiement au cours de l'exercice.</b> Après approbation des comptes et constatation de sommes distribuables, l'assemblée générale fixe la part attribuée aux associés sous forme de dividendes.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. com., art. L. 232-12 ; PCG, chapitre « Tableau de financement » (emplois)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k07",
+   "type": "def",
+   "q": "Qu'est-ce que la trésorerie au sens du tableau de financement du PCG ?",
+   "r": "<b>Les disponibilités diminuées des concours bancaires courants et soldes créditeurs de banques</b> (compte 519). Sa variation constitue le dernier bloc de la seconde partie du tableau.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », variation « trésorerie » ; plan de comptes PCG 2025, compte 519",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k08",
+   "type": "def",
+   "q": "Quelles sont les ressources durables de la première partie du tableau de financement du PCG ?",
+   "r": "<b>La capacité d'autofinancement de l'exercice ; les cessions ou réductions d'éléments de l'actif immobilisé ; l'augmentation des capitaux propres ; l'augmentation des dettes financières</b>, à l'exclusion des concours bancaires courants.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », première partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k09",
+   "type": "def",
+   "q": "Hormis les distributions, la réduction des capitaux propres et les remboursements de dettes financières, quels emplois stables retient le tableau de financement du PCG ?",
+   "r": "<b>Les acquisitions d'éléments de l'actif immobilisé et les charges à répartir sur plusieurs exercices.</b> Ce sont, avec les trois autres, les emplois stables de la première partie.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », première partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k10",
+   "type": "def",
+   "q": "Hormis les acquisitions d'actif immobilisé et les charges à répartir, quels emplois stables retient la première partie du tableau de financement du PCG ?",
+   "r": "<b>Les distributions mises en paiement au cours de l'exercice, la réduction des capitaux propres et les remboursements de dettes financières.</b>",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », première partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k11",
+   "type": "comp",
+   "q": "Comment la variation du fonds de roulement net global se déduit-elle de la première partie du tableau de financement ?",
+   "r": "<b>C'est le total des ressources durables diminué du total des emplois stables.</b> Elle constitue une ressource nette si les ressources l'emportent, un emploi net dans le cas contraire.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », première partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k12",
+   "type": "def",
+   "q": "Quels sont les trois blocs de variations de la seconde partie du tableau de financement du PCG ?",
+   "r": "<b>Exploitation, hors exploitation et trésorerie.</b> L'exploitation regroupe stocks et en-cours, avances et acomptes versés, créances d'exploitation, avances reçues et dettes d'exploitation ; le hors exploitation, les autres débiteurs et créditeurs ; la trésorerie, les disponibilités et les concours bancaires courants.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », seconde partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k13",
+   "type": "comp",
+   "q": "Dans la seconde partie du tableau de financement du PCG, quelles variations de postes constituent un besoin ?",
+   "r": "<b>Une augmentation d'actif ou une diminution de passif.</b> L'inverse, une diminution d'actif ou une augmentation de passif, est un dégagement.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », seconde partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k14",
+   "type": "comp",
+   "q": "Quelle relation lie le total de la seconde partie du tableau de financement du PCG à la variation du fonds de roulement net global (FRNG) ?",
+   "r": "<b>Il lui est égal, au signe près.</b> La variation du FRNG est la somme de la variation du BFR d'exploitation, de la variation du BFR hors exploitation et de la variation de la trésorerie.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "PCG, chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k15",
+   "type": "comp",
+   "q": "Pour quelle valeur une cession d'immobilisation figure-t-elle dans les ressources du tableau de financement du PCG ?",
+   "r": "<b>Pour son prix de cession (compte 757).</b> La valeur comptable des éléments cédés (compte 657) est neutralisée dans la CAF et ne constitue ni un emploi ni une ressource.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 657 et 757 ; PCG, modèle de tableau de détermination de la CAF",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k16",
+   "type": "comp",
+   "q": "Avec le PCG 2025, dans quel résultat figure la plus-value de cession d'une immobilisation corporelle ou incorporelle ?",
+   "r": "<b>Dans le résultat d'exploitation.</b> Depuis le règlement ANC n° 2022-06, la CAF neutralise les comptes 657 et 757, là où les sujets antérieurs à 2025 neutralisaient 675 et 775.",
+   "base": [
+    "Points de vigilance#1",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k17",
+   "type": "comp",
+   "q": "Comment traite-t-on la quote-part de subvention d'investissement virée au résultat dans la CAF et les tableaux de flux ?",
+   "r": "<b>C'est un produit calculé (compte 747) : elle est retranchée dans la CAF additive</b> et n'apparaît pas dans les flux.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "PCG, art. 312-1 ; plan de comptes PCG 2025, comptes 131 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k18",
+   "type": "comp",
+   "q": "Comment la subvention d'investissement encaissée apparaît-elle dans le tableau de financement du PCG ?",
+   "r": "<b>Comme une ressource durable, l'année de son encaissement (compte 131).</b> Il ne faut pas la confondre avec sa quote-part virée au résultat (compte 747), produit calculé sans flux.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#6"
+   ],
+   "src": "PCG, art. 312-1 ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k19",
+   "type": "comp",
+   "q": "Comment reconstitue-t-on les acquisitions d'immobilisations de l'exercice à partir des bilans et de l'annexe ?",
+   "r": "<b>Immobilisations brutes de clôture − immobilisations brutes d'ouverture + valeur d'origine des immobilisations sorties.</b> Les tableaux de l'annexe (immobilisations, amortissements, dépréciations) donnent les augmentations et diminutions de l'exercice.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "PCG, annexe : tableaux des immobilisations, des amortissements et des dépréciations",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k20",
+   "type": "comp",
+   "q": "Quels postes faut-il exclure des dettes financières pour reconstituer les remboursements d'emprunts du tableau de financement ?",
+   "r": "<b>Les concours bancaires courants (compte 519), qui relèvent de la trésorerie, et les intérêts courus (comptes 1648, 1638), qui relèvent du hors exploitation.</b> Remboursements = dettes financières d'ouverture + emprunts nouveaux − dettes financières de clôture.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, chapitre « Tableau de financement » ; plan de comptes PCG 2025, comptes 519, 1638 et 1648",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k21",
+   "type": "comp",
+   "q": "Comment les frais d'émission d'emprunt portés en charges à répartir sont-ils traités dans le tableau de financement du PCG ?",
+   "r": "<b>Ils constituent un emploi stable de l'exercice de leur engagement</b> (compte 481). Leur étalement ultérieur est une dotation, neutralisée dans la CAF.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "Plan de comptes PCG 2025, compte 481 « Charges à répartir sur plusieurs exercices » ; PCG, chapitre « Tableau de financement » (emplois)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k22",
+   "type": "comp",
+   "q": "De quel résultat proviennent les dividendes mis en paiement au cours de l'exercice N dans le tableau de financement ?",
+   "r": "<b>Du résultat N−1 affecté par l'assemblée</b> : résultat N−1 diminué de la variation des réserves et de la variation du report à nouveau.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 232-12 et L. 232-13",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k23",
+   "type": "comp",
+   "q": "Selon le Code de commerce, dans quel délai maximal les dividendes doivent-ils être mis en paiement ?",
+   "r": "<b>Au plus tard neuf mois après la clôture de l'exercice</b>, sauf prolongation par décision de justice.",
+   "base": [
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. com., art. L. 232-13",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229032/2020-12-29",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k24",
+   "type": "comp",
+   "q": "Comment détermine-t-on les flux liés à l'activité par la méthode indirecte dans le tableau des flux de trésorerie ?",
+   "r": "<b>Résultat net + dotations nettes de reprises − plus-values de cession (+ moins-values) − quote-part de subvention virée au résultat = marge brute d'autofinancement</b>, dont on retranche la variation du besoin en fonds de roulement lié à l'activité. On peut aussi partir de la CAF.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 282-43 (modèle de tableau des flux de trésorerie) ; PCG, modèle de tableau de détermination de la CAF",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k25",
+   "type": "def",
+   "q": "Quels flux composent les flux d'investissement du tableau des flux de trésorerie ?",
+   "r": "<b>Les acquisitions d'immobilisations décaissées et les cessions encaissées.</b> Les acquisitions sont corrigées de la variation des dettes sur immobilisations, les cessions des créances sur cessions.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 282-43 et 282-44 (modèles de tableau des flux de trésorerie) ; OEC, avis n° 30 (1997)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k26",
+   "type": "def",
+   "q": "Quelles opérations augmentent les flux de financement du tableau des flux de trésorerie ?",
+   "r": "<b>L'augmentation de capital en numéraire, les subventions d'investissement reçues et les emprunts nouveaux.</b> La variation de trésorerie est la somme des flux d'activité, d'investissement et de financement.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 282-43 et 282-44 (modèles de tableau des flux de trésorerie) ; OEC, avis n° 30 (1997)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k27",
+   "type": "def",
+   "q": "Quelles opérations viennent en diminution des flux de financement du tableau des flux de trésorerie ?",
+   "r": "<b>Les dividendes versés et les remboursements d'emprunts</b>, retranchés de l'augmentation de capital en numéraire, des subventions d'investissement reçues et des emprunts nouveaux.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 282-43 et 282-44 (modèles de tableau des flux de trésorerie) ; OEC, avis n° 30 (1997)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k28",
+   "type": "comp",
+   "q": "Dans quelle catégorie du tableau des flux de trésorerie classe-t-on l'impôt sur les bénéfices et la participation des salariés ?",
+   "r": "<b>Dans les flux liés à l'activité</b> (et dans la CAF), jamais en investissement ni en financement : ce sont des charges du compte de résultat décaissables.",
+   "base": [
+    "Règles essentielles#13",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. com., art. R. 123-193 ; PCG, modèle de tableau de détermination de la CAF",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927468",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k29",
+   "type": "comp",
+   "q": "Pourquoi une augmentation des concours bancaires courants n'est-elle pas une ressource durable du tableau de financement du PCG ?",
+   "r": "<b>Parce que ces concours sont de la trésorerie, pas des dettes financières.</b> Leur variation figure dans le bloc « trésorerie » de la seconde partie, et la trésorerie du tableau de flux est nette de ces concours.",
+   "base": [
+    "Points de vigilance#3",
+    "Règles essentielles#14"
+   ],
+   "src": "PCG, chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k30",
+   "type": "comp",
+   "q": "Pourquoi la capacité d'autofinancement de l'exercice n'est-elle pas une trésorerie ?",
+   "r": "<b>Parce que le compte de résultat enregistre produits et charges sans tenir compte de leur date d'encaissement ou de paiement.</b> Seule la déduction de la variation du BFR donne un flux de trésorerie.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. L. 123-13",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k31",
+   "type": "comp",
+   "q": "Quel lien existe-t-il entre le tableau des flux de trésorerie étudié en DCG et les comptes consolidés du DSCG ?",
+   "r": "<b>La logique acquise en DCG sur les comptes sociaux se transpose aux comptes consolidés</b>, pour lesquels le règlement ANC n° 2020-01 prévoit un modèle en trois fonctions (art. 282-43 et 282-44, précisés par le règlement ANC n° 2024-05).",
+   "base": [
+    "Points de vigilance#4",
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Règlement ANC n° 2020-01, art. 282-43 et 282-44 ; règlement ANC n° 2024-05 du 3 octobre 2024",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-03-k32",
+   "type": "comp",
+   "q": "Quelle variation le tableau des flux de trésorerie explique-t-il, à la différence de la première partie du tableau de financement du PCG ?",
+   "r": "<b>La variation de la trésorerie</b>, somme des flux liés à l'activité, à l'investissement et au financement, alors que la première partie du tableau de financement explique la variation du fonds de roulement net global.",
+   "base": [
+    "Définitions#1",
+    "Définitions#0"
+   ],
+   "src": "Règlement ANC n° 2020-01 (comptes consolidés), art. 282-43 et 282-44, modifiés par le règlement ANC n° 2024-05 ; OEC, avis n° 30 (1997)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

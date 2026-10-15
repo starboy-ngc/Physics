@@ -89,6 +89,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "fiab": "stable",
    "src": "C. trav., art. L. 3121-27 et L. 3121-36",
@@ -104,6 +105,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 3121-36",
@@ -115,6 +117,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 3,
    "fiab": "stable",
    "src": "C. trav., art. L. 3121-38 et D. 3121-24",
@@ -126,6 +129,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 3121-18, L. 3121-20, L. 3121-22, L. 3131-1, L. 3132-2",
@@ -146,6 +150,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 3121-58 et L. 3121-64",
@@ -161,6 +166,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "fiab": "stable",
    "src": "C. trav., art. L. 3133-4 à L. 3133-6",
@@ -176,6 +182,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "fiab": "stable",
    "src": "C. trav., art. L. 3141-3",
@@ -191,6 +198,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 1,
    "fiab": "stable",
    "src": "C. trav., art. L. 3141-3",
@@ -202,6 +210,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 3,
    "fiab": "stable",
    "src": "C. trav., art. L. 3141-3 et L. 3141-5-1",
@@ -213,6 +222,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 3141-19-1 et L. 3141-19-2",
@@ -228,6 +238,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 3,
    "fiab": "stable",
    "src": "C. trav., art. L. 3141-24",
@@ -239,6 +250,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "niveau": 1,
    "fiab": "millésimé 2025",
    "src": "C. trav., art. L. 3231-2 ; décret n° 2024-951 du 23 octobre 2024",
@@ -254,6 +266,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 3231-4 à L. 3231-8",
@@ -269,6 +282,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1331-2",
@@ -284,6 +298,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1332-2",
@@ -299,6 +314,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1332-4",
@@ -314,6 +330,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1332-2 et L. 1331-1",
@@ -334,6 +351,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "Cass. soc., 10 mai 1999 ; Cass. soc., 3 juin 2003",
@@ -349,6 +367,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1222-6",
@@ -364,6 +383,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1226-1 et D. 1226-1",
@@ -379,6 +399,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "niveau": 3,
    "fiab": "stable",
    "src": "C. trav., art. D. 1226-1 et D. 1226-2",
@@ -390,6 +411,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1226-4",
@@ -405,6 +427,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "fiab": "stable",
    "src": "C. trav., art. L. 1225-17",
@@ -420,6 +443,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1225-4",
@@ -435,6 +459,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 1,
    "fiab": "stable",
    "src": "C. trav., art. L. 1225-35 ; CSS, art. L. 331-8",
@@ -450,6 +475,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 6323-11 et L. 6321-1",
@@ -465,6 +491,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "niveau": 2,
    "fiab": "stable",
    "src": "C. trav., art. L. 1121-1 ; jurisprudence sur la modification du contrat",
@@ -507,6 +534,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "niveau": 3,
    "fiab": "stable",
    "src": "C. trav., art. L. 1226-14",

@@ -146,6 +146,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "À la clôture, la charge d'impôt sur les sociétés de l'exercice est enregistrée par :",
    "opts": [
     "Débit 444, crédit 512",
@@ -161,6 +162,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En 2025, la SARL Ludix (chiffre d'affaires 3 M€, capital entièrement libéré détenu à 100 % par des personnes physiques) réalise un bénéfice fiscal de 100 000 €. Calculez l'IS brut dû, avec un taux réduit de 15 % sur les 42 500 premiers euros et un taux normal de 25 % au-delà (en euros).",
    "a": 20750,
    "unit": "€",
@@ -172,6 +174,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Fiscal SA a versé en N quatre acomptes d'IS de 12 000 € chacun. L'IS définitif de N s'élève à 60 000 €. Quel montant devra-t-elle verser lors de la liquidation du solde le 15 mai N+1 (en euros) ?",
    "a": 12000,
    "unit": "€",
@@ -183,6 +186,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les acomptes d'IS d'une société clôturant au 31 décembre sont exigibles :",
    "opts": [
     "Le 15 janvier, 15 avril, 15 juillet et 15 octobre",
@@ -198,6 +202,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Au 31 décembre N, Fiscal SA calcule un IS de 60 000 € pour l'exercice. Les acomptes versés en cours d'année (48 000 €) figurent déjà au débit du compte 444. Enregistrez la charge d'impôt de l'exercice.",
    "lib": "Impôt sur les sociétés de l'exercice",
    "palette": [
@@ -229,6 +234,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Pour le passage du résultat comptable au résultat fiscal d'une société soumise à l'IS, classez chaque élément.",
    "cats": [
     "Réintégration",
@@ -276,6 +282,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Résultat comptable avant impôt de Nexa : 200 000 €. Réintégrations : amendes 2 000 €, provision pour retraite 8 000 €. Déductions : reprise d'une provision non déduite antérieurement 3 000 €, dividendes de filiale sous régime mère-fille 20 000 € (déductibles à 95 %). Calculez le résultat fiscal (en euros).",
    "a": 188000,
    "unit": "€",
@@ -287,6 +294,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Selon la doctrine comptable dominante (CNCC), le crédit d'impôt recherche d'une société soumise à l'IS est comptabilisé :",
    "opts": [
     "En produit exceptionnel 778",
@@ -302,6 +310,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une société constate un déficit fiscal et opte pour le report en arrière (carry-back) sur le bénéfice de l'exercice précédent. L'écriture est :",
    "opts": [
     "Débit 444, crédit 699 Produits – report en arrière des déficits",
@@ -317,6 +326,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La participation des salariés aux résultats est obligatoire dans les entreprises :",
    "opts": [
     "Employant au moins 11 salariés",
@@ -332,6 +342,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Calculez la réserve spéciale de participation selon la formule légale (RSP = ½ × (B − 5 % × C) × S / VA) avec B = 300 000 €, C = 1 000 000 €, S = 800 000 € et VA = 1 600 000 € (en euros).",
    "a": 62500,
    "unit": "€",
@@ -343,6 +354,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Dans la formule légale de la participation, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "B est le bénéfice fiscal net de l'impôt sur les sociétés correspondant",
@@ -363,6 +375,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Au 31 décembre N, la réserve spéciale de participation de Nexa est calculée à 62 500 €. Enregistrez l'écriture de clôture.",
    "lib": "Participation des salariés aux résultats",
    "palette": [
@@ -394,6 +407,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La participation calculée au titre de l'exercice N (62 500 €) est, sur le plan fiscal :",
    "opts": [
     "Déductible du résultat de N, exercice de sa comptabilisation",
@@ -409,6 +423,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles caractéristiques distinguent l'intéressement de la participation ? (plusieurs réponses possibles)",
    "opts": [
     "L'intéressement est facultatif alors que la participation est obligatoire à partir de 50 salariés",
@@ -429,6 +444,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Au 31 décembre N, l'intéressement dû aux salariés au titre de N est estimé à 40 000 € ; il sera versé en mai N+1. L'écriture de clôture est :",
    "opts": [
     "Débit 691, crédit 4284 pour 40 000",
@@ -444,6 +460,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une aide à l'embauche d'un apprenti de 6 000 € est notifiée à l'entreprise en N. Elle est comptabilisée :",
    "opts": [
     "En 131 Subventions d'investissement octroyées",
@@ -459,6 +476,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Le 10 septembre N, Mécano reçoit la notification d'une subvention d'exploitation de 6 000 € de l'État au titre d'une aide à l'embauche ; elle sera versée en janvier N+1. Enregistrez la notification.",
    "lib": "Subvention d'exploitation acquise",
    "palette": [
@@ -490,6 +508,7 @@
   },
   {
    "type": "qcm",
+   "nature": "calcul",
    "q": "Une subvention d'investissement de 20 000 € finance une machine de 100 000 € amortie en linéaire sur 5 ans. La société choisit l'étalement. Quelle est la reprise annuelle au compte 747 ?",
    "opts": [
     "20 000 €",
@@ -505,6 +524,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "Au 31 décembre N, Mécano vire au résultat la quote-part annuelle (4 000 €) de la subvention d'équipement de 20 000 € ayant financé une machine amortie sur 5 ans. Enregistrez l'écriture.",
    "lib": "Reprise de la subvention d'investissement",
    "palette": [
@@ -536,6 +556,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une collectivité verse 50 000 € de subvention pour l'acquisition d'un terrain (non amortissable) sans clause d'inaliénabilité. L'entreprise opte pour l'étalement. Calculez la reprise annuelle au compte 747 (en euros).",
    "a": 5000,
    "unit": "€",
@@ -547,6 +568,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Concernant les subventions d'investissement, quelles affirmations sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Elles peuvent être comptabilisées immédiatement en produits ou maintenues au passif et reprises progressivement",
@@ -567,6 +589,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un fournisseur abandonne une créance de 30 000 € sur un client distributeur afin de préserver ce débouché commercial. Chez le fournisseur, sous le PCG 2025, l'écriture est :",
    "opts": [
     "Débit 6788, crédit 411",
@@ -582,6 +605,7 @@
   },
   {
    "type": "ecriture",
+   "nature": "calcul",
    "q": "La société Distrix, en difficulté, obtient de son fournisseur Fournitex l'abandon d'une dette de 30 000 € au titre de leurs relations commerciales. Enregistrez l'écriture chez Distrix (le débiteur).",
    "lib": "Abandon de créance commercial reçu",
    "palette": [
@@ -613,6 +637,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une société mère abandonne une créance de 200 000 € en compte courant sur sa filiale en difficulté, avec laquelle elle n'entretient aucune relation commerciale. La filiale n'est pas en procédure collective. Fiscalement, chez la mère :",
    "opts": [
     "L'abandon est déductible en totalité",
@@ -628,6 +653,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La filiale qui reçoit de sa mère un abandon de créance à caractère financier non déductible chez cette dernière peut éviter l'imposition du produit si :",
    "opts": [
     "Elle le comptabilise directement en capitaux propres sans passer par le résultat",
@@ -643,6 +669,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Qu'est-ce qu'une clause de « retour à meilleure fortune » dans un abandon de créance ?",
    "opts": [
     "Une clause faisant renaître la créance si la situation du débiteur se rétablit",
@@ -658,6 +685,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une subvention d'exploitation de 15 000 € notifiée en décembre N et encaissée en février N+1 est imposable :",
    "opts": [
     "Au titre de l'exercice N+1, à l'encaissement",
@@ -673,6 +701,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Au DSCG, en IFRS (IAS 20), une subvention liée à un actif peut être présentée :",
    "opts": [
     "Uniquement en capitaux propres, comme en PCG",

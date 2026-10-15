@@ -1,0 +1,432 @@
+{
+ "id": "ue3-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue3-02-k01",
+   "type": "def",
+   "q": "Quels sont les trois éléments constitutifs du contrat de travail retenus par la jurisprudence ?",
+   "r": "<b>Une prestation de travail, une rémunération et un lien de subordination.</b> Le Code du travail ne définit pas le contrat de travail : ces éléments sont exigés par la jurisprudence.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Cass. soc., 13 novembre 1996, n° 94-13.187 ; C. trav., art. L. 8221-6 ; Cass. soc., 4 mars 2020, n° 19-13.316 ; Cass. soc., 24 juin 2020, n° 18-26.088",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000042025162",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k02",
+   "type": "def",
+   "q": "Comment la jurisprudence définit-elle le lien de subordination qui caractérise le contrat de travail ?",
+   "r": "<b>L'exécution d'un travail sous l'autorité d'un employeur</b> qui a le pouvoir de donner des ordres et des directives, d'en contrôler l'exécution et de sanctionner les manquements.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Cass. soc., 13 novembre 1996, n° 94-13.187 ; C. trav., art. L. 8221-6 ; Cass. soc., 4 mars 2020, n° 19-13.316 ; Cass. soc., 24 juin 2020, n° 18-26.088",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000042025162",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k03",
+   "type": "comp",
+   "q": "Selon la jurisprudence, de quoi dépend la qualification d'une relation en contrat de travail ?",
+   "r": "<b>Des conditions de fait dans lesquelles le travail est exécuté.</b> Elle ne dépend ni de la volonté des parties ni de la dénomination qu'elles ont donnée à leur contrat.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Cass. soc., 13 novembre 1996, n° 94-13.187 ; C. trav., art. L. 8221-6 ; Cass. soc., 4 mars 2020, n° 19-13.316 ; Cass. soc., 24 juin 2020, n° 18-26.088",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000042025162",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k04",
+   "type": "comp",
+   "q": "Quand la présomption de non-salariat dont bénéficie le travailleur indépendant immatriculé est-elle renversée ?",
+   "r": "<b>Lorsqu'il est placé dans un lien de subordination juridique permanente.</b> C'est ce qu'a retenu la Cour de cassation dans l'arrêt Uber du 4 mars 2020.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Cass. soc., 13 novembre 1996, n° 94-13.187 ; C. trav., art. L. 8221-6 ; Cass. soc., 4 mars 2020, n° 19-13.316 ; Cass. soc., 24 juin 2020, n° 18-26.088",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000042025162",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k05",
+   "type": "def",
+   "q": "Que prohibe le principe de non-discrimination à l'embauche posé par le Code du travail ?",
+   "r": "<b>Écarter une personne d'une procédure de recrutement ou de nomination</b>, ou de l'accès à un stage ou à une période de formation en entreprise, en raison d'un motif prohibé (origine, sexe, âge, état de santé, handicap, opinions politiques…).",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 1132-1 (rédaction issue de la loi n° 2022-401 du 21 mars 2022)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006177836",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k06",
+   "type": "def",
+   "q": "Qu'est-ce qu'un accord de branche étendu en droit du travail ?",
+   "r": "<b>Un accord dont les stipulations ont été rendues obligatoires pour tous les employeurs du champ par arrêté du ministre chargé du travail.</b> Il est exigé, et non un simple accord d'entreprise, pour renouveler la période d'essai ou déroger à la durée minimale du temps partiel.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 2261-15 ; L. 1221-21 ; L. 3123-19 ; L. 1243-9",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160736/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k07",
+   "type": "def",
+   "q": "Qu'est-ce que la visite d'information et de prévention prévue après l'embauche d'un salarié ?",
+   "r": "<b>Une visite réalisée par un professionnel de santé du service de prévention et de santé au travail</b>, dans un délai qui n'excède pas trois mois à compter de la prise effective du poste. Elle donne lieu à une attestation de suivi et est renouvelée selon une périodicité qui ne peut excéder cinq ans.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. trav., art. L. 4624-1, R. 4624-10 et R. 4624-16",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018493140/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k08",
+   "type": "comp",
+   "q": "Comment une période d'essai doit-elle être prévue pour s'appliquer à un contrat de travail ?",
+   "r": "<b>Elle ne se présume pas : elle doit être expressément stipulée</b> dans la lettre d'engagement ou dans le contrat de travail.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. trav., art. L. 1221-19, L. 1221-21, L. 1221-23 et L. 1242-10",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000019067609/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k09",
+   "type": "comp",
+   "q": "Quelle est la durée maximale de la période d'essai d'un CDI selon la catégorie du salarié ?",
+   "r": "<b>2 mois pour les ouvriers et employés, 3 mois pour les agents de maîtrise et techniciens, 4 mois pour les cadres.</b> Elle peut être renouvelée une seule fois, si un accord de branche étendu le prévoit et si le contrat le stipule, dans la limite de 4, 6 et 8 mois renouvellement compris.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. trav., art. L. 1221-19, L. 1221-21, L. 1221-23 et L. 1242-10",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000019067609/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k10",
+   "type": "comp",
+   "q": "En matière de période d'essai, de CDD et de contrat de mission, quels sujets relèvent du bloc 1, où l'accord de branche prévaut sur l'accord d'entreprise ?",
+   "r": "<b>Les conditions et durées de renouvellement de la période d'essai, la durée totale du CDD et du contrat de mission, le nombre maximal de renouvellements et les conditions du délai de carence.</b> L'accord de branche y prévaut sur l'accord d'entreprise, sauf garanties au moins équivalentes.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. trav., art. L. 2253-1",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006177936",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k11",
+   "type": "comp",
+   "q": "Quelle limite générale le Code du travail impose-t-il à l'objet d'un contrat à durée déterminée (CDD) ?",
+   "r": "<b>Le CDD ne peut avoir ni pour objet ni pour effet de pourvoir durablement un emploi lié à l'activité normale et permanente de l'entreprise.</b>",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 1242-1, L. 1242-2, L. 1242-5 et L. 1242-6",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160711/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k12",
+   "type": "comp",
+   "q": "Quels sont les cas de recours au contrat à durée déterminée (CDD) prévus par le Code du travail ?",
+   "r": "<b>Le remplacement d'un salarié absent ou dont le contrat est suspendu, l'attente de l'entrée en service d'un salarié recruté en CDI, l'accroissement temporaire d'activité, les emplois à caractère saisonnier ou d'usage et le CDD à objet défini.</b> Ces cas de recours sont limitatifs.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 1242-1, L. 1242-2, L. 1242-5 et L. 1242-6",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160711/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k13",
+   "type": "comp",
+   "q": "Dans quelles situations le recours à un contrat à durée déterminée (CDD) est-il interdit ?",
+   "r": "<b>Pour remplacer un salarié gréviste ou pour des travaux particulièrement dangereux.</b> Il l'est aussi pour un accroissement temporaire d'activité dans les six mois suivant un licenciement économique sur le poste, sauf contrat de trois mois au plus non renouvelable ou commande exceptionnelle à l'exportation.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 1242-1, L. 1242-2, L. 1242-5 et L. 1242-6",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160711/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k14",
+   "type": "comp",
+   "q": "En dehors de l'accord des parties, dans quels cas un CDD peut-il être rompu avant l'échéance du terme ?",
+   "r": "<b>En cas de faute grave, de force majeure ou d'inaptitude constatée par le médecin du travail.</b> Le salarié peut aussi rompre lorsqu'il justifie d'une embauche en CDI, moyennant un préavis ; le CDD à objet défini peut en outre être rompu par l'une ou l'autre partie, pour un motif réel et sérieux, dix-huit mois après sa conclusion puis à la date anniversaire.",
+   "base": [
+    "Règles essentielles#4",
+    "Règles essentielles#5"
+   ],
+   "src": "C. trav., art. L. 1243-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029946319",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k15",
+   "type": "comp",
+   "q": "Quelles sont les conséquences d'une rupture anticipée irrégulière d'un CDD, selon qu'elle vient de l'employeur ou du salarié ?",
+   "r": "<b>L'employeur doit des dommages-intérêts au moins égaux aux rémunérations que le salarié aurait perçues jusqu'au terme.</b> Le salarié, lui, s'expose à des dommages-intérêts correspondant au préjudice subi.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. trav., art. L. 1243-2 à L. 1243-4",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189458/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k16",
+   "type": "comp",
+   "q": "Quelle est la durée minimale de travail d'un salarié à temps partiel à défaut d'accord de branche étendu ?",
+   "r": "<b>24 heures par semaine</b>, sauf demande écrite et motivée du salarié ou s'il s'agit d'un étudiant de moins de 26 ans.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. trav., art. L. 3123-6, L. 3123-7, L. 3123-9, L. 3123-20, L. 3123-21, L. 3123-27, L. 3123-28 et L. 3123-29",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006189638/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k17",
+   "type": "def",
+   "q": "Qu'est-ce que le contrat d'apprentissage au sens du Code du travail ?",
+   "r": "<b>Un contrat de travail de type particulier</b> ouvert aux jeunes de 16 à 29 ans révolus au début de l'apprentissage, avec des dérogations pour les travailleurs handicapés, les créateurs d'entreprise et les sportifs de haut niveau.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 6222-1, L. 6222-18 et L. 6222-21",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006195912/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k18",
+   "type": "comp",
+   "q": "Comment un contrat d'apprentissage peut-il être rompu pendant les 45 premiers jours de formation pratique en entreprise ?",
+   "r": "<b>Par l'une ou l'autre partie, sans indemnité sauf stipulation contraire du contrat</b> (45 jours consécutifs ou non). Au-delà : accord écrit signé des deux parties, à défaut licenciement pour l'un des motifs prévus par le texte, ou rupture par l'apprenti après sollicitation du médiateur, moyennant un préavis.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 6222-1, L. 6222-18 et L. 6222-21",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006195912/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k19",
+   "type": "comp",
+   "q": "Dans quel cadre le télétravail est-il mis en place dans une entreprise ?",
+   "r": "<b>Par un accord collectif ou, à défaut, une charte élaborée par l'employeur après avis du CSE</b>, s'il existe. En leur absence, par un accord entre l'employeur et le salarié formalisé par tout moyen.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. trav., art. L. 1222-9",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047864720",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k20",
+   "type": "comp",
+   "q": "Quelle règle s'applique lorsqu'une clause du contrat de travail diffère de la convention collective liant l'employeur ?",
+   "r": "<b>Les clauses de la convention ou de l'accord collectif s'appliquent au contrat de travail</b>, sauf stipulations plus favorables du contrat. Par exception, un accord de performance collective peut s'imposer au contrat, mais seulement pour la durée du travail, la rémunération et la mobilité professionnelle ou géographique interne.",
+   "base": [
+    "Règles essentielles#9",
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "C. trav., art. L. 2254-1 et L. 1121-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160735/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k21",
+   "type": "comp",
+   "q": "Selon quels critères le juge contrôle-t-il les clauses de mobilité, d'exclusivité, d'objectifs ou de dédit-formation d'un contrat de travail ?",
+   "r": "<b>Au regard des libertés du salarié</b> : les restrictions doivent être justifiées par la nature de la tâche et proportionnées au but recherché.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 2254-1 et L. 1121-1",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160735/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k22",
+   "type": "comp",
+   "q": "À quelles conditions cumulatives une clause de non-concurrence d'un contrat de travail est-elle licite ?",
+   "r": "<b>Elle doit être indispensable à la protection des intérêts légitimes de l'entreprise, limitée dans le temps et dans l'espace, tenir compte des spécificités de l'emploi du salarié et comporter une contrepartie financière versée par l'employeur.</b>",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "Cass. soc., 10 juillet 2002, n° 00-45.135, publié au bulletin (et n° 99-43.334 et 00-45.387 du même jour)",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007046365/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k23",
+   "type": "comp",
+   "q": "Quelle incidence le délai de prévenance a-t-il sur la durée de la période d'essai ?",
+   "r": "<b>La période d'essai, renouvellement inclus, ne peut pas être prolongée du fait du délai de prévenance.</b> Lorsque l'employeur rompt l'essai, l'inexécution du délai de prévenance ouvre droit, sauf faute grave, à une indemnité compensatrice.",
+   "base": [
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. trav., art. L. 1221-25 et L. 1221-26",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029144958",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k24",
+   "type": "comp",
+   "q": "Comment est fixée l'indemnité de fin de contrat due au salarié en CDD ?",
+   "r": "<b>À 10 % de la rémunération totale brute versée au salarié.</b> Un accord de branche étendu ou un accord d'entreprise ou d'établissement peut la limiter à 6 %, en contrepartie notamment d'un accès privilégié à la formation professionnelle.",
+   "base": [
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. trav., art. L. 1243-8 à L. 1243-10",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177867/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k25",
+   "type": "comp",
+   "q": "Quels événements liés à la fin ou à la rupture du CDD privent le salarié de l'indemnité de fin de contrat ?",
+   "r": "<b>Le refus d'un CDI pour le même emploi, la rupture anticipée à l'initiative du salarié, la faute grave ou la force majeure, et la poursuite de la relation en CDI.</b>",
+   "base": [
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. trav., art. L. 1243-8 à L. 1243-10",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177867/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k26",
+   "type": "comp",
+   "q": "Depuis le 1er novembre 2023, quelle obligation d'information l'employeur a-t-il envers le salarié qu'il embauche ?",
+   "r": "<b>Lui remettre un ou plusieurs documents écrits précisant les informations principales relatives à la relation de travail</b> : dans les sept jours calendaires suivant l'embauche pour les mentions principales, dans le mois pour les autres.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. trav., art. L. 1221-5-1, R. 1221-34 à R. 1221-41 ; L. 1221-22 ; loi n° 2023-171 du 9 mars 2023, art. 19 ; décret n° 2023-1004 du 30 octobre 2023",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048284124",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k27",
+   "type": "comp",
+   "q": "Depuis le 1er janvier 2024, quelles conséquences le refus d'un CDI proposé au salarié en fin de CDD a-t-il au regard de l'assurance chômage ?",
+   "r": "<b>L'employeur en informe France Travail, par voie dématérialisée, dans le délai d'un mois.</b> L'allocation d'assurance chômage ne peut pas être accordée au demandeur d'emploi qui a refusé deux propositions de CDI dans ces conditions au cours des douze mois précédents. Le silence du salarié vaut rejet de la proposition.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "C. trav., art. L. 1243-11-1, R. 1243-2 et L. 5422-1 (loi n° 2022-1598 du 21 décembre 2022) ; décret n° 2023-1307 du 28 décembre 2023 ; arrêté du 3 janvier 2024",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048707198",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k28",
+   "type": "comp",
+   "q": "Comment l'exonération de cotisations salariales des apprentis a-t-elle changé pour les contrats conclus à compter du 1er mars 2025 ?",
+   "r": "<b>Elle ne porte plus que sur la part de rémunération n'excédant pas 50 % du SMIC</b> (79 % auparavant) ; la part excédant ce seuil est soumise à la CSG et à la CRDS. Les contrats conclus avant le 1er mars 2025 restent régis par l'ancien régime.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "C. trav., art. L. 6243-2 ; loi n° 2025-199 du 28 février 2025 (LFSS 2025) ; décret n° 2025-290 du 28 mars 2025",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051393046",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k29",
+   "type": "comp",
+   "q": "Quelles dispositions d'un accord de performance collective (APC) peuvent s'imposer au contrat de travail du salarié ?",
+   "r": "<b>Seules celles relatives à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne.</b> Le licenciement du salarié qui refuse un APC comportant d'autres clauses (obligation de résidence, non-concurrence) est sans cause réelle et sérieuse.",
+   "base": [
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin ; C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k30",
+   "type": "comp",
+   "q": "Comment le conseil de prud'hommes traite-t-il une demande de requalification d'un CDD ?",
+   "r": "<b>L'affaire est portée directement devant le bureau de jugement, qui statue au fond dans le mois.</b> S'il fait droit à la demande, il accorde une indemnité d'au moins un mois de salaire.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#3"
+   ],
+   "src": "C. trav., art. L. 1411-1, L. 1245-1 et L. 1245-2",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006177869",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k31",
+   "type": "comp",
+   "q": "Quelle différence de sanction le Code du travail fait-il entre un CDD sans écrit et un CDD transmis tardivement ?",
+   "r": "<b>Le CDD sans écrit ou sans définition précise de son motif est réputé conclu pour une durée indéterminée.</b> La seule transmission au-delà de deux jours ouvrables n'entraîne pas la requalification, mais ouvre droit à une indemnité au plus égale à un mois de salaire.",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#3"
+   ],
+   "src": "C. trav., art. L. 1242-12, L. 1242-13 et L. 1245-1 (rédaction issue de l'ordonnance n° 2017-1387 du 22 septembre 2017)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160711/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k32",
+   "type": "comp",
+   "q": "Comment s'articulent la clause de mobilité du contrat et un accord de performance collective imposant une mobilité géographique interne ?",
+   "r": "<b>L'APC se substitue aux clauses contraires du contrat ; le salarié dispose d'un mois pour refuser par écrit.</b> L'employeur a alors deux mois pour engager un licenciement reposant sur un motif spécifique qui constitue une cause réelle et sérieuse.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. trav., art. L. 2254-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k33",
+   "type": "comp",
+   "q": "Quelle distinction faut-il faire entre heures complémentaires et heures supplémentaires pour un salarié à temps partiel ?",
+   "r": "<b>Le salarié à temps partiel n'accomplit pas d'heures supplémentaires, mais des heures complémentaires</b>, plafonnées au dixième de la durée contractuelle (au tiers par accord collectif). Elles ne peuvent porter sa durée au niveau de la durée légale ou conventionnelle.",
+   "base": [
+    "Points de vigilance#3",
+    "Règles essentielles#6"
+   ],
+   "src": "C. trav., art. L. 3123-9, L. 3123-20, L. 3123-28 et L. 3123-29",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000033004787/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k34",
+   "type": "comp",
+   "q": "Quelle est la portée de la règle légale fixant le délai de carence entre deux CDD sur le même poste ?",
+   "r": "<b>Elle est supplétive</b> : la règle du tiers ou de la moitié de la durée du contrat précédent ne s'applique qu'à défaut de stipulation de la convention ou de l'accord de branche, qui peut fixer d'autres modalités de calcul et prévoir d'autres cas où la carence ne s'applique pas.",
+   "base": [
+    "Points de vigilance#4",
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. trav., art. L. 1244-3, L. 1244-3-1, L. 1244-4 et L. 2253-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035639421",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-02-k35",
+   "type": "comp",
+   "q": "En matière de télétravail, quelles règles encadrent le refus, selon qu'il émane du salarié ou de l'employeur ?",
+   "r": "<b>Le refus du salarié d'accepter un poste de télétravailleur n'est pas un motif de rupture du contrat.</b> L'employeur qui refuse le télétravail à un salarié occupant un poste éligible selon l'accord ou la charte motive sa réponse, de même lorsqu'il le refuse à un travailleur handicapé ou à un proche aidant.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. trav., art. L. 1222-9",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047864720",
+   "fiab": "stable"
+  }
+ ]
+}

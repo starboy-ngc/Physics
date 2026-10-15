@@ -1,0 +1,435 @@
+{
+ "id": "ue9-04",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue9-04-k01",
+   "type": "def",
+   "q": "Quels numéros de comptes de la classe 5 du PCG correspondent aux comptes de trésorerie « Banques », « Caisse » et « Virements internes » ?",
+   "r": "<b>512 « Banques », 53 « Caisse » et 58 « Virements internes ».</b> Ce sont les comptes financiers (classe 5) utilisés pour enregistrer les opérations de trésorerie.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), classe 5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k02",
+   "type": "comp",
+   "q": "En principe, selon le Code de commerce, comment les mouvements de trésorerie sont-ils enregistrés au livre-journal ?",
+   "r": "<b>Opération par opération et jour par jour</b>, chaque enregistrement précisant l'origine, le contenu et l'imputation de la donnée ainsi que les références de la pièce justificative. Par dérogation, certains commerçants personnes physiques peuvent enregistrer encaissements et paiements à la date de l'opération figurant sur le relevé bancaire.",
+   "base": [
+    "Règles essentielles#0",
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. R. 123-174",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k03",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quels commerçants peuvent enregistrer leurs encaissements et leurs paiements à la date de l'opération figurant sur le relevé bancaire ?",
+   "r": "<b>Les commerçants personnes physiques</b> mentionnés aux articles L. 123-25 (régime réel simplifié) et L. 123-28 (régime micro), par dérogation à l'enregistrement jour par jour. Une société, elle, enregistre ses mouvements de trésorerie opération par opération et jour par jour.",
+   "base": [
+    "Règles essentielles#15",
+    "Points de vigilance#5"
+   ],
+   "src": "C. com., art. R. 123-203",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k04",
+   "type": "comp",
+   "q": "Comment enregistre-t-on un virement de la caisse vers la banque lorsque caisse et banque sont tenues dans des journaux auxiliaires différents ?",
+   "r": "<b>En passant par le compte 58 « Virements internes »</b> : débit 58 / crédit 53 au journal de caisse, puis débit 512 / crédit 58 au journal de banque. Le compte 58 est soldé une fois les deux écritures passées.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. R. 123-176 ; plan de comptes (version au 1er janvier 2026), compte 58",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k05",
+   "type": "def",
+   "q": "Quels comptes du PCG regroupent les « autres charges externes » ?",
+   "r": "<b>Les comptes 61 « Services extérieurs » et 62 « Autres services extérieurs »</b>, par exemple sous-traitance (611), locations (613), honoraires (6226) ou publicité (623). Ce sont des charges d'exploitation normale et courante.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG (version consolidée au 1er janvier 2026), classe 6 ; plan de comptes, comptes 61 et 62",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k06",
+   "type": "comp",
+   "q": "Pour quel montant enregistre-t-on une charge externe selon qu'elle supporte une TVA déductible ou qu'elle est exonérée de TVA ?",
+   "r": "<b>Avec TVA déductible : hors taxes</b> aux comptes 61/62, la TVA déductible allant au compte 44566 « TVA sur autres biens et services ». <b>Exonérée de TVA : pour son montant total</b>, sans TVA déductible.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62 et 44566 ; CGI, art. 261 C, 1° à 3°",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k07",
+   "type": "comp",
+   "q": "Quelles charges courantes sont exonérées de TVA par l'article 261 C du CGI, si bien qu'aucune TVA déductible n'est enregistrée ?",
+   "r": "<b>Les intérêts et agios (octroi de crédits), les primes d'assurance et les livraisons de timbres-poste à leur valeur officielle.</b> Les frais et commissions bancaires ne supportent la TVA que si l'établissement a opté pour la taxation des opérations qu'il désigne (CGI, art. 260 B).",
+   "base": [
+    "Points de vigilance#1",
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 261 C et 260 B ; plan de comptes (version au 1er janvier 2026), comptes 616, 627 et 661",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k08",
+   "type": "comp",
+   "q": "Que prévoit l'ordonnance n° 2025-1247 du 17 décembre 2025 pour les dispositions relatives à la TVA figurant dans le CGI ?",
+   "r": "<b>Elle transfère la TVA au livre II du code des impositions sur les biens et services (CIBS)</b> et, par son article 9, abroge l'article 261 C du CGI ; Légifrance fixe au 1er janvier 2027 l'abrogation des dispositions TVA du CGI concernées.",
+   "base": [
+    "Ce qui a changé récemment#6"
+   ],
+   "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, art. 9 ; CGI, art. 261 C (abrogé) ; CIBS, art. L. 213-129 à L. 213-131",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k09",
+   "type": "comp",
+   "q": "Dans quel compte du PCG enregistre-t-on les intérêts d'emprunt et les agios, à la différence des frais et commissions bancaires ?",
+   "r": "<b>Au compte 661 « Charges d'intérêts »</b>, car ce sont des charges financières (6611 intérêts des emprunts et dettes, 6616 intérêts bancaires et sur opérations de financement). Les frais et commissions bancaires vont au compte 627 « Services bancaires et assimilés ».",
+   "base": [
+    "Règles essentielles#3",
+    "Points de vigilance#1"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 661, 6611 et 6616 ; CGI, art. 261 C, 1°",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k10",
+   "type": "def",
+   "q": "Que regroupe le compte 63 « Impôts, taxes et versements assimilés » du PCG ?",
+   "r": "<b>Les impôts et taxes à la charge de l'entité autres que l'impôt sur les bénéfices.</b> Le plan distingue les impôts sur rémunérations (631, 633) et les autres impôts (635, dont 6351 « Impôts directs (sauf impôts sur les bénéfices) », et 637).",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), compte 63",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k11",
+   "type": "comp",
+   "q": "Dans quel compte du PCG enregistre-t-on l'impôt sur les bénéfices, par différence avec la CFE et la CVAE ?",
+   "r": "<b>Au compte 695 « Impôts sur les bénéfices »</b>, avec pour contrepartie le compte 444 « État – Impôts sur les bénéfices ». La CFE et la CVAE, impôts directs autres que l'impôt sur les bénéfices, sont des charges d'exploitation du compte 6351.",
+   "base": [
+    "Règles essentielles#4",
+    "Points de vigilance#3"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 444 et 695",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k12",
+   "type": "comp",
+   "q": "Qui est redevable de la cotisation foncière des entreprises (CFE) selon l'article 1447 du CGI ?",
+   "r": "<b>Les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires qui exercent à titre habituel une activité professionnelle non salariée.</b> Elle est due chaque année ; cette rédaction de l'article 1447 est issue de la loi de finances pour 2026.",
+   "base": [
+    "Règles essentielles#5",
+    "Ce qui a changé récemment#5"
+   ],
+   "src": "CGI, art. 1447, I (rédaction issue de la loi n° 2026-103 du 19 février 2026) ; plan de comptes, compte 6351",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006162662/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k13",
+   "type": "comp",
+   "q": "Selon le CGI, qui doit la taxe foncière sur une propriété bâtie ?",
+   "r": "<b>Le propriétaire actuel</b> (l'usufruitier en cas d'usufruit), pour l'année entière, d'après les faits existants au 1er janvier de l'année d'imposition. Pour l'entité propriétaire, c'est une charge du compte 63512 « Taxes foncières ».",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 1380, 1400 et 1415 ; plan de comptes, comptes 6351 et 63512",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034110958",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k14",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quel compte enregistre-t-on une amende ou une pénalité fiscale ou pénale ?",
+   "r": "<b>Au compte 6582 « Pénalités, amendes fiscales et pénales »</b>, subdivision du compte 658 (charges de gestion courante), et non au compte 63 : une amende n'est pas un impôt. Avant 2025, elle relevait du compte 6712.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2025), comptes 658 et 6582 ; plan de comptes 2024, compte 6712",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k15",
+   "type": "def",
+   "q": "Dans le compte 64 « Charges de personnel » du PCG, quels comptes enregistrent les rémunérations, les charges de sécurité sociale et de prévoyance, et les remboursements ?",
+   "r": "<b>641 pour les rémunérations du personnel, 645 pour les charges de sécurité sociale et de prévoyance et 649 pour les remboursements de charges de personnel.</b> Le 645 se subdivise par organisme : 6451 URSSAF, 6452 mutuelles, 6453 caisses de retraites, 6454 Pôle emploi, 6458 autres organismes sociaux.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 1121-1 (plan de comptes, version au 1er janvier 2026), compte 64",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k16",
+   "type": "comp",
+   "q": "Quel changement d'intitulé le règlement ANC n° 2026-03 apporte-t-il au compte 6454 du PCG ?",
+   "r": "<b>Il remplace « Pôle emploi » par « France Travail »</b> dans l'intitulé du compte 6454. Il s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application anticipée possible : le plan de comptes au 1er janvier 2026 porte encore « Cotisations à Pôle emploi ».",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 6 ; arrêté du 12 août 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k17",
+   "type": "comp",
+   "q": "Dans les exercices ouverts à compter du 1er janvier 2025, dans quel compte du PCG enregistre-t-on les remboursements de charges de personnel ?",
+   "r": "<b>Au compte 649 « Remboursements de charges de personnel ».</b> Le PCG ne prévoit plus la technique du transfert de charges : le règlement ANC n° 2022-06 l'a retirée de la liste des produits de l'article 512-1.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06, art. 1 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 (modifiant les règlements n° 2015-04 et n° 2023-03) ; plan de comptes (version au 1er janvier 2026), compte 649",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k18",
+   "type": "def",
+   "q": "Qu'est-ce que le bulletin de paie au sens du Code du travail ?",
+   "r": "<b>La pièce justificative que l'employeur remet au salarié lors du paiement du salaire</b> ; ses mentions sont fixées par l'article R. 3243-1. Sauf opposition du salarié, il peut être remis sous forme électronique.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. trav., art. L. 3243-2 (rédaction en vigueur depuis le 1er janvier 2017) et R. 3243-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033024092",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k19",
+   "type": "comp",
+   "q": "Selon le Code du travail, quel acompte un salarié dont la rémunération est payée une fois par mois peut-il demander ?",
+   "r": "<b>Un acompte correspondant, pour une quinzaine, à la moitié de la rémunération mensuelle</b>, versé au salarié qui en fait la demande (compte 425). Ces règles (paiement mensuel et acompte) ne s'appliquent pas aux salariés travaillant à domicile, saisonniers, intermittents et temporaires.",
+   "base": [
+    "Règles essentielles#7",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. trav., art. L. 3242-1 ; plan de comptes (version au 1er janvier 2026), compte 425",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006902858",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k20",
+   "type": "comp",
+   "q": "Sur quelle assiette les cotisations de sécurité sociale sont-elles calculées selon l'article L. 242-1 du Code de la sécurité sociale ?",
+   "r": "<b>Sur les revenus d'activité retenus pour l'assiette de la CSG</b> : toutes les sommes ainsi que les avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail, d'une activité ou de l'exercice d'un mandat ou d'une fonction élective, quelles qu'en soient la dénomination et la qualité de celui qui les attribue.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CSS, art. L. 242-1 et L. 136-1-1 (rédaction en vigueur depuis le 31 décembre 2025, loi n° 2025-1403 du 30 décembre 2025)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053282440",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k21",
+   "type": "comp",
+   "q": "Selon le Code de la sécurité sociale, quelles sommes ne constituent pas un revenu d'activité, dans les conditions fixées par arrêté ?",
+   "r": "<b>Les remboursements effectués au titre de frais professionnels.</b> N'étant pas un revenu d'activité, ils échappent à l'assiette des cotisations de sécurité sociale ; l'article L. 242-1 exclut en outre de cette assiette notamment l'intéressement et la participation.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CSS, art. L. 242-1 et L. 136-1-1 (rédaction en vigueur depuis le 31 décembre 2025, loi n° 2025-1403 du 30 décembre 2025)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053282440",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k22",
+   "type": "comp",
+   "q": "Dans l'écriture de paie, quel montant constitue la charge du compte 641 du PCG ?",
+   "r": "<b>Le salaire brut.</b> Le net à payer, crédité au compte 421 « Personnel – Rémunérations dues », n'est qu'une dette envers les salariés : ne jamais enregistrer le net en charge.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#9"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 421 et 641",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k23",
+   "type": "comp",
+   "q": "Dans l'écriture de paie, quels comptes du PCG sont crédités pour les retenues sur le salaire brut et les acomptes déjà versés ?",
+   "r": "<b>431 « Sécurité sociale »</b> (cotisations salariales dues à l'URSSAF), <b>437 « Autres organismes sociaux »</b> (retraite complémentaire, prévoyance), <b>4421</b> (prélèvement à la source) et <b>425</b> (acomptes déjà versés).",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 421, 425, 431, 437, 4421 et 641",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k24",
+   "type": "comp",
+   "q": "Comment comptabilise-t-on les cotisations patronales de sécurité sociale et de prévoyance dues sur les salaires ?",
+   "r": "<b>Au débit du compte 645 « Charges de sécurité sociale et de prévoyance »</b>, par le crédit des comptes 431 « Sécurité sociale » et 437 « Autres organismes sociaux ».",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 431, 437, 641 et 645",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k25",
+   "type": "comp",
+   "q": "Pourquoi les cotisations salariales ne s'ajoutent-elles pas à la charge de personnel supportée par l'employeur ?",
+   "r": "<b>Parce qu'elles sont comprises dans le salaire brut</b>, déjà en charge au compte 641. La charge de personnel de la période est la somme des comptes 641 et 645.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 431, 437, 641 et 645",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k26",
+   "type": "def",
+   "q": "Qu'est-ce que le prélèvement à la source de l'impôt sur le revenu sur les traitements et salaires ?",
+   "r": "<b>Une retenue à la source que l'employeur, débiteur des revenus, opère puis reverse au comptable public.</b> La dette correspondante est inscrite au compte 4421 « Prélèvements à la source (Impôt sur le revenu) ».",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "CGI, art. 204 A et 1671 ; BOI-IR-PAS ; plan de comptes, compte 4421",
+   "url": "https://bofip.impots.gouv.fr/bofip/11178-PGP.html/identifiant=BOI-IR-PAS-20250507",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k27",
+   "type": "comp",
+   "q": "Comment l'employeur comptabilise-t-il le prélèvement à la source retenu sur les salaires, de la paie jusqu'au reversement ?",
+   "r": "<b>Ce n'est pas une charge de l'employeur</b> : retenu sur la rémunération du salarié, il est crédité au compte 4421 lors de la paie, puis le compte 4421 est débité par le crédit du compte 512 lors du reversement à l'administration.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 204 A et 1671 ; plan de comptes, compte 4421",
+   "url": "https://bofip.impots.gouv.fr/bofip/11178-PGP.html/identifiant=BOI-IR-PAS-20250507",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k28",
+   "type": "comp",
+   "q": "Depuis le 1er septembre 2025, quel taux de prélèvement à la source s'applique aux conjoints ou partenaires de PACS soumis à imposition commune ?",
+   "r": "<b>Un taux individualisé, sauf option contraire du contribuable</b> : chaque taux individualisé s'applique aux seuls revenus personnels du conjoint concerné (réforme issue de l'article 19 de la loi de finances pour 2024).",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "Loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 19 ; CGI, art. 204 E et 204 M ; BOI-IR-PAS-20-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k29",
+   "type": "def",
+   "q": "De quels éléments se compose l'échéance d'un emprunt auprès d'un établissement de crédit ?",
+   "r": "<b>Du remboursement du capital et des intérêts.</b> Le capital est débité au compte 164 « Emprunts auprès des établissements de crédit » et les intérêts au compte 661, pour un crédit unique du compte 512.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "Plan de comptes (version au 1er janvier 2026), comptes 164 et 661",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k30",
+   "type": "comp",
+   "q": "Pour quelle raison rattache-t-on à l'exercice les intérêts courus non échus d'un emprunt bancaire ?",
+   "r": "<b>Parce que le compte de résultat retient les charges de l'exercice indépendamment de leur date de paiement.</b> Ces intérêts sont inscrits au compte 1648 « Intérêts courus sur emprunts auprès des établissements de crédit ».",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 123-13 ; plan de comptes (version au 1er janvier 2026), compte 1648",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927169",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k31",
+   "type": "comp",
+   "q": "Qu'a changé le PCG applicable depuis 2025 dans l'enregistrement des intérêts courus sur emprunts ?",
+   "r": "<b>Ils sont ventilés selon la nature de la dette</b> : 1648 pour les emprunts auprès des établissements de crédit (avant 2025 : 16884, subdivision du compte 1688). Le compte 1688 ne vise plus que les intérêts courus sur autres emprunts et dettes assimilées.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; plan de comptes (version au 1er janvier 2026), comptes 1648 et 1688",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k32",
+   "type": "comp",
+   "q": "Au regard des obligations d'inventaire du Code de commerce, à quoi sert le rapprochement du compte 512 avec le relevé bancaire ?",
+   "r": "<b>À justifier le poste Banque.</b> Les données d'inventaire doivent être organisées de manière à justifier le contenu et le mode d'évaluation de chaque poste du bilan.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. com., art. R. 123-177 et R. 123-174",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k33",
+   "type": "comp",
+   "q": "Lors d'un rapprochement bancaire, quelles opérations l'entreprise doit-elle enregistrer dans sa comptabilité ?",
+   "r": "<b>Les seules opérations figurant sur le relevé mais absentes de la comptabilité</b> (frais, agios, virements reçus). Elles sont enregistrées sur la base du relevé, qui est la pièce justificative.",
+   "base": [
+    "Règles essentielles#14",
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. R. 123-177 et R. 123-174",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927443",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k34",
+   "type": "comp",
+   "q": "Lors d'un rapprochement bancaire, quel traitement reçoit un chèque émis par l'entreprise mais pas encore débité par la banque ?",
+   "r": "<b>Aucune nouvelle écriture.</b> Déjà enregistré à son émission, sur sa pièce justificative, il figure seulement sur l'état de rapprochement.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. R. 123-174 et R. 123-177",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257937",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue9-04-k35",
+   "type": "comp",
+   "q": "Selon le Code de commerce, pendant combien de temps les documents comptables et les pièces justificatives doivent-ils être conservés ?",
+   "r": "<b>Dix ans.</b> Cette durée s'applique notamment aux relevés bancaires, aux factures et aux bulletins de paie, qui sont des pièces justificatives.",
+   "base": [
+    "Chiffres et seuils#2"
+   ],
+   "src": "C. com., art. L. 123-22",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
+   "fiab": "stable"
+  }
+ ]
+}

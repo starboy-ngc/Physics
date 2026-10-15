@@ -1,0 +1,433 @@
+{
+ "id": "ue10-07",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-07-k01",
+   "type": "comp",
+   "q": "Dans quels comptes du PCG enregistre-t-on la charge d'impôt sur les bénéfices et la dette correspondante envers l'État ?",
+   "r": "<b>Charge au compte 695 Impôts sur les bénéfices</b> (6951 impôts dus en France, 6952 contribution additionnelle à l'impôt sur les bénéfices, 6954 impôts dus à l'étranger) ; <b>dette au compte 444</b> État – Impôts sur les bénéfices.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 444 et 695 ; PCG, art. 515-1 (règlement ANC n° 2026-04)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k02",
+   "type": "comp",
+   "q": "Selon l'article 515-1 du PCG, dans quel exercice et à quel taux comptabilise-t-on l'impôt sur les bénéfices ?",
+   "r": "<b>Dans le compte de résultat de l'exercice au titre duquel l'entreprise en est redevable, au taux en vigueur à la date de clôture.</b> La règle vaut aussi pour les contributions qui s'y rattachent, présentées dans la rubrique « Impôts sur les bénéfices ».",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 444 et 695 ; PCG, art. 515-1 (règlement ANC n° 2026-04)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k03",
+   "type": "def",
+   "q": "Comment la formule légale du Code du travail définit-elle la réserve spéciale de participation (RSP) des salariés ?",
+   "r": "<b>La moitié du chiffre obtenu en appliquant au bénéfice net, diminué d'une rémunération de 5 % des capitaux propres, le rapport des salaires à la valeur ajoutée</b> : RSP = ½ × (B − 5 % C) × S / VA. Le bénéfice net est le bénéfice fiscal diminué de l'impôt correspondant.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 3324-1, 4° (version en vigueur depuis le 1er janvier 2026)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044990528",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k04",
+   "type": "def",
+   "q": "Qu'est-ce que l'intéressement des salariés au sens du Code du travail ?",
+   "r": "<b>Un dispositif facultatif d'association des salariés aux résultats ou aux performances de l'entreprise</b>, mis en place en principe par accord. La participation, elle, est obligatoire dans les entreprises et les unités économiques et sociales d'au moins cinquante salariés.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 3311-1 s. ; urssaf.fr, « Intéressement des salariés »",
+   "url": "https://www.urssaf.fr/accueil/employeur/beneficier-exonerations/epargne-salariale/interessement.html",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k05",
+   "type": "def",
+   "q": "Qu'est-ce qu'une subvention d'investissement au sens de l'article 312-1 du PCG ?",
+   "r": "<b>Une subvention finançant une immobilisation.</b> L'entité peut la comptabiliser immédiatement en produit, ou la maintenir au passif (compte 13, dont 131 Subventions d'investissement octroyées) et la reprendre au résultat de façon échelonnée, au débit du compte 139 et au crédit du produit 747.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "PCG, art. 312-1 ; plan de comptes 2026, comptes 131, 139 et 747",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k06",
+   "type": "def",
+   "q": "Selon le BOFiP, quand un abandon de créance a-t-il un caractère commercial ?",
+   "r": "<b>Lorsque la créance est née de relations commerciales et que l'abandon est consenti pour maintenir des débouchés ou préserver des sources d'approvisionnement.</b>",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "BOI-BIC-BASE-50-10 (24 février 2021)",
+   "url": "https://bofip.impots.gouv.fr/bofip/5795-PGP.html/identifiant%3DBOI-BIC-BASE-50-10-20210224",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k07",
+   "type": "def",
+   "q": "Selon le BOFiP, quand un abandon de créance doit-il être qualifié de financier ?",
+   "r": "<b>Lorsque, simultanément, la nature de la créance (prêt, avance…), les liens entre créancier et débiteur, exclusifs de toute relation commerciale, et les motivations de l'abandon présentent un caractère strictement financier.</b>",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "BOI-BIC-BASE-50-10 (24 février 2021)",
+   "url": "https://bofip.impots.gouv.fr/bofip/5795-PGP.html/identifiant%3DBOI-BIC-BASE-50-10-20210224",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k08",
+   "type": "def",
+   "q": "Que recouvre le résultat exceptionnel dans le PCG modifié par le règlement ANC n° 2022-06 ?",
+   "r": "<b>Les produits et charges directement liés à un événement majeur et inhabituel.</b> Un événement est présumé inhabituel lorsqu'il ne s'est pas produit au cours des derniers exercices et qu'il est peu probable qu'il se reproduise au cours des prochains. Les aides, remboursements et indemnités compensant des charges d'exploitation liées à cet événement restent en résultat d'exploitation.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k09",
+   "type": "def",
+   "q": "Qu'est-ce que la contribution sociale sur l'impôt sur les sociétés prévue par l'article 235 ter ZC du CGI ?",
+   "r": "<b>Une contribution assise sur l'impôt sur les sociétés</b> : 3,3 % de l'IS diminué d'un abattement qui ne peut excéder 763 000 € par période de douze mois. Elle est enregistrée au compte 6952.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 235 ter ZC ; PCG, plan de comptes 2026, compte 6952",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011715",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k10",
+   "type": "comp",
+   "q": "Qu'est-ce qui ne peut pas être imputé sur la contribution sociale sur l'impôt sur les sociétés (CGI, art. 235 ter ZC) ?",
+   "r": "<b>Les crédits d'impôt de toute nature et la créance de report en arrière des déficits</b> (carry-back, CGI, art. 220 quinquies) : la contribution sociale ne peut être réduite par aucun d'eux.",
+   "base": [
+    "Règles essentielles#1",
+    "Points de vigilance#5"
+   ],
+   "src": "CGI, art. 235 ter ZC ; PCG, plan de comptes 2026, compte 6952",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031011715",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k11",
+   "type": "comp",
+   "q": "Sur quel exercice de référence reposent les quatre acomptes trimestriels d'impôt sur les sociétés ?",
+   "r": "<b>Sur le dernier exercice clos</b> ; le premier acompte repose sur l'avant-dernier exercice clos, puis il est régularisé. Comptablement, chaque acompte est débité au compte 444.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 1668 et 1731 ; CGI, ann. III, art. 359 ; BOI-IS-DECLA-20-10 ; PCG, compte 444",
+   "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k12",
+   "type": "comp",
+   "q": "Selon la FAQ CNCC-CNOEC, comment comptabilise-t-on un crédit d'impôt imputable sur l'IS, comme le crédit d'impôt recherche ?",
+   "r": "<b>Au crédit du compte 695, en diminution de la charge d'impôt sur les bénéfices</b>, et non en subvention d'exploitation (compte 74) : une écriture 441 / 741 pour un CIR n'est pas conforme à cette position.",
+   "base": [
+    "Points de vigilance#0",
+    "Règles essentielles#3"
+   ],
+   "src": "FAQ CNCC-CNOEC, règlement ANC n° 2022-06, plan de comptes et écritures comptables (février 2026)",
+   "url": "https://doc.cncc.fr/docs/faq-questions-reponses-relatives/attachments/faq-cncc-cnoec-reglement-n2022-06-relatif-a-la-modernisation-des-etats-financiers-plan-de-comptes-et-ecritures-comptables",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k13",
+   "type": "def",
+   "q": "En quoi consiste l'option pour le report en arrière des déficits (carry-back) en matière d'impôt sur les sociétés ?",
+   "r": "<b>Le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent</b>, dans la limite du plus faible de ce bénéfice et de 1 000 000 €. Il en naît une créance sur le Trésor égale à l'IS antérieurement versé sur le bénéfice d'imputation.",
+   "base": [
+    "Règles essentielles#5",
+    "Chiffres et seuils#4"
+   ],
+   "src": "CGI, art. 220 quinquies ; BOI-IS-DEF-20 et BOI-IS-DEF-20-20 ; PCG, comptes 444 et 699",
+   "url": "https://bofip.impots.gouv.fr/bofip/5641-PGP.html/identifiant=BOI-IS-DEF-20-20210823",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k14",
+   "type": "comp",
+   "q": "Que devient la créance sur le Trésor née d'un report en arrière des déficits (carry-back) ?",
+   "r": "<b>Elle s'impute sur l'IS des cinq exercices suivants et est remboursable à l'issue de ce délai</b> ; elle est aussi cessible. Elle est inscrite au débit du compte 444 par le crédit du compte 699.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 220 quinquies ; BOI-IS-DEF-20 et BOI-IS-DEF-20-20 ; PCG, comptes 444 et 699",
+   "url": "https://bofip.impots.gouv.fr/bofip/5641-PGP.html/identifiant=BOI-IS-DEF-20-20210823",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k15",
+   "type": "comp",
+   "q": "Quelles entreprises sont soumises à l'obligation de participation des salariés aux résultats ?",
+   "r": "<b>Les entreprises employant au moins cinquante salariés</b>, ainsi que les unités économiques et sociales de cette taille, à compter du premier exercice ouvert après la période de cinq années civiles consécutives prévue par l'article L. 130-1 du CSS. Avec un accord d'intéressement appliqué sans discontinuité, l'obligation ne joue qu'au troisième exercice clos après le franchissement du seuil.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "C. trav., art. L. 3322-1 à L. 3322-4 ; CSS, art. L. 130-1 ; urssaf.fr, « Participation »",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038613208",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k16",
+   "type": "def",
+   "q": "Hors provisions, quels éléments composent les capitaux propres (C) retenus dans la formule légale de la réserve spéciale de participation ?",
+   "r": "<b>Le capital, les primes liées au capital, les réserves et le report à nouveau.</b> Ces capitaux propres servent de base à la rémunération de 5 % retranchée du bénéfice net.",
+   "base": [
+    "Règles essentielles#8",
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 3324-1, L. 3324-2 et D. 3324-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018533284",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k17",
+   "type": "def",
+   "q": "Quelles provisions entrent dans les capitaux propres (C) de la formule légale de la réserve spéciale de participation ?",
+   "r": "<b>Les provisions qui ont supporté l'impôt et les provisions réglementées constituées en franchise d'impôt.</b> La réserve spéciale de participation elle-même n'y figure pas.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. trav., art. L. 3324-1, L. 3324-2 et D. 3324-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018533284",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k18",
+   "type": "comp",
+   "q": "Par quelle écriture constate-t-on la participation des salariés à la clôture de l'exercice de référence ?",
+   "r": "<b>Débit 691 Participation des salariés aux résultats, crédit 4284 Dettes provisionnées pour participation des salariés aux résultats.</b> Le compte 69 regroupe la participation des salariés et les impôts sur les bénéfices.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 691 et 4284",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k19",
+   "type": "comp",
+   "q": "En principe, au titre de quel exercice la participation des salariés aux résultats est-elle déductible du résultat fiscal ?",
+   "r": "<b>Au titre de l'exercice au cours duquel elle est répartie entre les salariés</b>, en général l'exercice suivant celui dont les résultats servent de base au calcul : la charge comptable de N est réintégrée en N et déduite en N+1. Par exception, la réserve constituée avant la clôture de l'exercice de référence peut, sous conditions, être déduite des résultats de cet exercice.",
+   "base": [
+    "Règles essentielles#10",
+    "Points de vigilance#1"
+   ],
+   "src": "CGI, art. 237 bis A, I ; BOI-BIC-PTP-10-20-10-10 (5 août 2015)",
+   "url": "https://bofip.impots.gouv.fr/bofip/4733-PGP.html/identifiant=BOI-BIC-PTP-10-20-10-10-20150805",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k20",
+   "type": "comp",
+   "q": "Comment l'intéressement dû aux salariés en application d'un accord est-il comptabilisé par l'entreprise ?",
+   "r": "<b>En charge de personnel de l'exercice auquel il se rattache, au compte 6414 Indemnités et avantages divers</b>, avec une contrepartie en charges à payer, puis au compte 421 lors du versement. Non versé au cours de cet exercice, il reste déductible de ses résultats en tant que charge à payer.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "CGI, art. 237 ter A ; BOI-BIC-PTP-20-10 (3 février 2016) ; PCG, plan de comptes 2026, compte 6414",
+   "url": "https://bofip.impots.gouv.fr/bofip/2369-PGP.html/identifiant=BOI-BIC-PTP-20-10-20160203",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k21",
+   "type": "comp",
+   "q": "Quelles sont les différences essentielles entre l'intéressement et la participation des salariés aux résultats ?",
+   "r": "<b>L'intéressement est facultatif, plafonné (20 % des salaires bruts au total, 3/4 du plafond annuel moyen de la sécurité sociale par bénéficiaire) et déductible dès l'exercice de rattachement</b> ; <b>la participation est obligatoire à partir de 50 salariés et déductible l'exercice de répartition</b>.",
+   "base": [
+    "Points de vigilance#2",
+    "Règles essentielles#12"
+   ],
+   "src": "CGI, art. 237 ter A ; C. trav., art. L. 3314-8 ; BOI-BIC-PTP-20-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/2369-PGP.html/identifiant=BOI-BIC-PTP-20-10-20160203",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k22",
+   "type": "comp",
+   "q": "Selon le PCG, à quel rythme reprend-on au résultat une subvention d'investissement finançant une immobilisation amortissable ?",
+   "r": "<b>Sur la même durée et au même rythme que l'amortissement de l'immobilisation financée</b>, au débit du compte 139 et au crédit du compte 747. Des dérogations peuvent être admises lorsque des circonstances particulières le justifient.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 312-1 ; règlement ANC n° 2020-09",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k23",
+   "type": "comp",
+   "q": "Selon le PCG, comment reprend-on au résultat une subvention d'investissement finançant une immobilisation non amortissable ?",
+   "r": "<b>Sur le nombre d'années pendant lequel l'immobilisation est inaliénable aux termes du contrat</b> ou, à défaut de clause d'inaliénabilité, par dixième chaque année.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 312-1 ; règlement ANC n° 2020-09",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/PCG--1er-janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k24",
+   "type": "comp",
+   "q": "Sous le régime optionnel de l'article 42 septies du CGI, comment une subvention d'équipement est-elle rapportée au résultat imposable ?",
+   "r": "<b>Au rythme de l'amortissement fiscal de l'immobilisation financée, amortissement dérogatoire compris</b> ; pour une immobilisation non amortissable, par fractions égales sur la période d'inaliénabilité prévue au contrat ou, à défaut, sur les dix années suivant l'attribution. En cas de cession du bien, le solde non encore rapporté est imposable au titre de l'exercice de cession, sauf apport sous le régime de l'article 151 octies.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 42 septies ; BOI-BIC-PDSTK-10-30-10-20 (28 juin 2023)",
+   "url": "https://bofip.impots.gouv.fr/bofip/1950-PGP.html/identifiant=BOI-BIC-PDSTK-10-30-10-20-20230628",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k25",
+   "type": "comp",
+   "q": "Pourquoi la reprise comptable d'une subvention d'investissement peut-elle différer de son étalement fiscal selon l'article 42 septies du CGI ?",
+   "r": "<b>La reprise comptable suit l'amortissement de l'immobilisation, alors que l'étalement fiscal suit l'amortissement fiscal, amortissement dérogatoire compris.</b> Un amortissement dégressif fiscal peut donc créer un écart extra-comptable.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "PCG, art. 312-1 ; CGI, art. 42 septies ; BOI-BIC-PDSTK-10-30-10-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/1950-PGP.html/identifiant=BOI-BIC-PDSTK-10-30-10-20-20230628",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k26",
+   "type": "comp",
+   "q": "Dans quels comptes du PCG enregistre-t-on les subventions d'exploitation et les subventions d'équilibre ?",
+   "r": "<b>Aux comptes 741 Subventions d'exploitation et 742 Subventions d'équilibre</b>, produits d'exploitation de la classe 74, par le débit du compte 441 État – Subventions et aides à recevoir lorsque l'octroi est acquis.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "PCG, plan de comptes 2026, comptes 441, 741, 742 et 747 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k27",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quel résultat classe-t-on la quote-part de subvention d'investissement virée au résultat et les subventions d'équilibre ?",
+   "r": "<b>En résultat d'exploitation, et non plus en résultat exceptionnel</b>, désormais limité aux événements majeurs et inhabituels. La quote-part virée au résultat est un produit d'exploitation au compte 747 ; l'ancien compte 777 disparaît.",
+   "base": [
+    "Ce qui a changé récemment#0",
+    "Règles essentielles#15"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022 ; PCG, art. 513-5 ; plan de comptes 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k28",
+   "type": "comp",
+   "q": "Quelles aides consenties à une autre entreprise, comme les abandons de créances, restent déductibles chez l'entreprise qui les consent ?",
+   "r": "<b>Les aides à caractère commercial</b>, ainsi que les aides consenties en application d'un accord constaté ou homologué (C. com., art. L. 611-8) ou à une entreprise en sauvegarde, redressement ou liquidation judiciaire, ces dernières, si elles ne sont pas commerciales, dans certaines limites seulement. Les autres aides ne sont pas déductibles.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "CGI, art. 39, 1-8° et 39, 13 ; BOI-BIC-BASE-50-20-10 ; BOI actualité ACTU-2021-00092",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046872552",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k29",
+   "type": "comp",
+   "q": "Dans quelle limite une aide non commerciale consentie à une entreprise en sauvegarde, redressement ou liquidation judiciaire est-elle déductible chez le créancier ?",
+   "r": "<b>À hauteur de la situation nette négative du bénéficiaire</b> et, au-delà, à proportion des participations détenues par d'autres personnes. La même limite s'applique aux aides non commerciales consenties en application d'un accord constaté ou homologué.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "CGI, art. 39, 1-8° et 39, 13 ; BOI-BIC-BASE-50-20-10 ; BOI actualité ACTU-2021-00092",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046872552",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k30",
+   "type": "comp",
+   "q": "À quelles conditions l'abandon de créance consenti par une société mère, au sens de l'article 145 du CGI, échappe-t-il à l'imposition chez sa filiale ?",
+   "r": "<b>L'abandon doit être non déductible chez la mère, et la filiale doit s'engager, dans sa déclaration de résultats, à augmenter son capital au profit de la mère d'un montant au moins égal avant la clôture du second exercice suivant</b>, en numéraire ou par conversion de créance, non par incorporation de réserves. À défaut, l'abandon, en principe imposable, est rapporté au résultat de l'exercice de l'abandon.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "CGI, art. 216 A ; BOI-IS-BASE-10-10-30 (4 mai 2016)",
+   "url": "https://bofip.impots.gouv.fr/bofip/1927-PGP.html/identifiant=BOI-IS-BASE-10-10-30-20160504",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k31",
+   "type": "comp",
+   "q": "Sous le PCG 2025, dans quel résultat classe-t-on un abandon de créance relevant de l'activité normale et courante, selon qu'il est commercial ou financier ?",
+   "r": "<b>Abandon commercial : résultat d'exploitation (classes 65 / 75) ; abandon financier : résultat financier (classes 66 / 76).</b> Ces opérations courantes sont classées selon leur nature, le résultat exceptionnel étant réservé aux produits et charges directement liés à un événement majeur et inhabituel.",
+   "base": [
+    "Règles essentielles#18"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06, version commentée)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06_version-commentee.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k32",
+   "type": "comp",
+   "q": "Quelle obligation la loi du 29 novembre 2023 sur le partage de la valeur crée-t-elle pour les sociétés d'au moins 11 salariés non tenues à la participation ?",
+   "r": "<b>Mettre en place un accord de participation ou d'intéressement, un abondement sur un plan d'épargne salariale ou une prime de partage de la valeur</b>, si elles ont réalisé pendant trois exercices consécutifs un bénéfice net fiscal au moins égal à 1 % du chiffre d'affaires. Cette expérimentation de cinq ans vise les exercices ouverts à compter du 1er janvier 2025.",
+   "base": [
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "Loi n° 2023-1107 du 29 novembre 2023, art. 5 ; urssaf.fr, « Participation »",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048480574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k33",
+   "type": "comp",
+   "q": "Pour une société appartenant à un groupe, quel chiffre d'affaires retient-on pour apprécier le droit au taux réduit d'IS des PME ?",
+   "r": "<b>Le chiffre d'affaires de l'ensemble du groupe qui détient la société</b>, que ce groupe soit fiscalement intégré ou non (CE, 13 mars 2025, Sté TDA). Une PME filiale d'un grand groupe peut donc perdre le taux réduit.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "CGI, art. 219, I-b ; impots.gouv.fr, actualité « Taux réduit d'IS : le critère du chiffre d'affaires revu pour les entreprises appartenant à des groupes »",
+   "url": "https://www.impots.gouv.fr/actualite/taux-reduit-dimpot-sur-les-societes-le-critere-du-chiffre-daffaires-revu-pour-les",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k34",
+   "type": "comp",
+   "q": "Dans quels cas une société soumise à l'impôt sur les sociétés est-elle dispensée de verser des acomptes ?",
+   "r": "<b>Lorsque l'IS correspondant au bénéfice de référence n'excède pas 3 000 €, et pour le premier exercice d'activité.</b> Dans les autres cas, quatre acomptes trimestriels sont dus, le solde étant versé au plus tard le 15 du quatrième mois suivant la clôture.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 1668 et 1731 ; CGI, ann. III, art. 359 ; BOI-IS-DECLA-20-10 ; PCG, compte 444",
+   "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-07-k35",
+   "type": "comp",
+   "q": "À quelle condition un accord de participation peut-il retenir une base de calcul différente de la formule légale de la réserve spéciale de participation ?",
+   "r": "<b>S'il assure aux salariés des avantages au moins équivalents.</b> Pour bénéficier du régime social et fiscal, la réserve spéciale de participation ne peut alors excéder la moitié du bénéfice net comptable ou l'un des autres plafonds prévus par l'article L. 3324-2 du Code du travail.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. trav., art. L. 3324-1, L. 3324-2 et D. 3324-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018533284",
+   "fiab": "stable"
+  }
+ ]
+}

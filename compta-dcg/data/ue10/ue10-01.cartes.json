@@ -1,0 +1,429 @@
+{
+ "id": "ue10-01",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue10-01-k01",
+   "type": "def",
+   "q": "Qu'est-ce que l'Autorité des normes comptables (ANC) ?",
+   "r": "<b>L'autorité créée par l'ordonnance n° 2009-79 qui établit, sous forme de règlements, les prescriptions comptables générales et sectorielles.</b> Elle donne aussi un avis sur tout projet de disposition législative ou réglementaire applicable aux personnes tenues d'établir des documents comptables et participe à l'élaboration des normes comptables européennes et internationales.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 1er (version en vigueur depuis le 1er janvier 2024)",
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000020137892",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k02",
+   "type": "comp",
+   "q": "Quelle formalité conditionne la publication au Journal officiel des règlements adoptés par l'Autorité des normes comptables (ANC) ?",
+   "r": "<b>Leur homologation par arrêtés conjoints</b> du ministre chargé de l'économie, du garde des sceaux, ministre de la justice, et du ministre chargé du budget ; les règlements sont publiés au Journal officiel après cette homologation.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "Ordonnance n° 2009-79 du 22 janvier 2009, art. 4 ; arrêté du 12 août 2026",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k03",
+   "type": "comp",
+   "q": "Selon quel référentiel sont établis les comptes individuels d'une société cotée dont les comptes consolidés suivent les normes IFRS ?",
+   "r": "<b>Selon le PCG.</b> L'article L. 233-24 du Code de commerce n'écarte les règles nationales que pour les comptes consolidés, établis en IFRS en application du règlement (CE) n° 1606/2002.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "C. com., art. L. 233-24",
+   "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006229330",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k04",
+   "type": "def",
+   "q": "Qu'est-ce que la Haute autorité de l'audit (H2A) issue de l'ordonnance n° 2023-1142 du 6 décembre 2023 ?",
+   "r": "<b>Le nouveau nom du Haut Conseil du commissariat aux comptes (H3C)</b>, retenu compte tenu de l'extension de ses missions à la supervision des auditeurs des informations en matière de durabilité. Elle succède au H3C dans ses droits et obligations depuis le 1er janvier 2024.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "Ordonnance n° 2023-1142 du 6 décembre 2023, art. 32 et 40 ; rapport au Président de la République ; C. com., art. L. 820-1 s.",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519333",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k05",
+   "type": "comp",
+   "q": "Qui peut certifier les informations en matière de durabilité depuis l'ordonnance n° 2023-1142 transposant la directive CSRD ?",
+   "r": "<b>Les commissaires aux comptes et les organismes tiers indépendants.</b> La même ordonnance fait du H3C la Haute autorité de l'audit et réorganise les règles de désignation, de mandat et de certification des commissaires aux comptes, à compter du 1er janvier 2024.",
+   "base": [
+    "Ce qui a changé récemment#3"
+   ],
+   "src": "Ordonnance n° 2023-1142 du 6 décembre 2023, art. 32 ; décret n° 2023-1394 du 30 décembre 2023",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519395",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k06",
+   "type": "def",
+   "q": "Qu'est-ce qu'un expert-comptable au sens de l'ordonnance n° 45-2138 du 19 septembre 1945 ?",
+   "r": "<b>Un professionnel qui fait profession habituelle de réviser et d'apprécier les comptabilités</b> des entreprises et organismes auxquels il n'est pas lié par un contrat de travail. Il est habilité à attester la régularité et la sincérité des bilans et des comptes de résultat, et fait aussi profession de tenir, centraliser, ouvrir, arrêter, surveiller, redresser et consolider leurs comptabilités.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "Ordonnance n° 45-2138 du 19 septembre 1945, art. 2",
+   "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000032364676",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k07",
+   "type": "comp",
+   "q": "Quand une société par actions simplifiée (SAS) est-elle tenue de désigner au moins un commissaire aux comptes en raison de sa taille ?",
+   "r": "<b>Lorsqu'elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par l'article D. 221-5</b> : total du bilan, chiffre d'affaires hors taxes, nombre moyen de salariés. Depuis la loi PACTE, ces seuils sont les mêmes quelle que soit la forme de la société.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. com., art. L. 227-9-1 et D. 221-5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799598",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k08",
+   "type": "comp",
+   "q": "À partir de quand une SAS qui franchit deux des seuils de désignation du commissaire aux comptes en cours d'exercice doit-elle en désigner un ?",
+   "r": "<b>Pour l'exercice suivant seulement</b> : les seuils s'apprécient à la clôture de l'exercice, et leur franchissement en cours d'exercice ne rend pas immédiate l'obligation de désigner un commissaire aux comptes.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "C. com., art. L. 227-9-1 (« à la clôture d'un exercice social ») ; economie.gouv.fr, « Nommer un commissaire aux comptes : est-ce obligatoire ? »",
+   "url": "https://www.economie.gouv.fr/entreprises/gerer-sa-comptabilite-et-ses-demarches/nommer-un-commissaire-aux-comptes-est-ce",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k09",
+   "type": "comp",
+   "q": "En principe, pour quelle durée un commissaire aux comptes est-il nommé pour certifier les comptes ou les informations en matière de durabilité ?",
+   "r": "<b>Pour six exercices</b> : ses fonctions expirent après la délibération de l'assemblée générale ou de l'organe compétent qui statue sur les comptes du sixième exercice. Le commissaire nommé en remplacement ne demeure en fonction que jusqu'à l'expiration du mandat de son prédécesseur.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "C. com., art. L. 821-44",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525298",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k10",
+   "type": "comp",
+   "q": "Dans quels cas une société peut-elle limiter à trois exercices la durée du mandat de son commissaire aux comptes ?",
+   "r": "<b>Lorsque le commissaire aux comptes est désigné de manière volontaire ou en application des premier ou dernier alinéas de l'article L. 821-43 (groupes).</b> Il établit alors, en plus de son rapport, un rapport à destination des dirigeants sur les risques financiers, comptables et de gestion.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. com., art. L. 821-46 et L. 821-57 ; arrêté du 24 juillet 2026",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525342",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k11",
+   "type": "comp",
+   "q": "Que certifie le commissaire aux comptes à propos des comptes annuels selon l'article L. 821-53 du Code de commerce ?",
+   "r": "<b>Que les comptes annuels sont réguliers et sincères et donnent une image fidèle</b> du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de cet exercice. Il justifie ses appréciations ; il en va de même des comptes consolidés.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "C. com., art. L. 821-53",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k12",
+   "type": "def",
+   "q": "Quels documents composent les comptes annuels d'un commerçant selon le Code de commerce ?",
+   "r": "<b>Le bilan, le compte de résultat et une annexe.</b> Ils doivent être réguliers, sincères et donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 123-12 et L. 123-14",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k13",
+   "type": "comp",
+   "q": "Que doit faire le commerçant lorsque, dans un cas exceptionnel, l'application d'une prescription comptable se révèle impropre à donner une image fidèle ?",
+   "r": "<b>Y déroger</b> : la dérogation est mentionnée à l'annexe et dûment motivée, avec l'indication de son influence sur le patrimoine, la situation financière et le résultat. Si la prescription ne suffit pas à donner l'image fidèle, des informations complémentaires sont fournies dans l'annexe.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. com., art. L. 123-14, al. 2 et 3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219306",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k14",
+   "type": "comp",
+   "q": "Que prévoit le principe de permanence des méthodes posé par l'article L. 123-17 du Code de commerce ?",
+   "r": "<b>La présentation des comptes annuels et les méthodes d'évaluation ne peuvent être modifiées d'un exercice à l'autre</b>, à moins qu'un changement exceptionnel n'intervienne dans la situation du commerçant. Les modifications sont décrites et justifiées dans l'annexe.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. com., art. L. 123-17 (version en vigueur depuis le 1er janvier 2016)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k15",
+   "type": "comp",
+   "q": "Quelle présomption l'article L. 123-20 du Code de commerce pose-t-il pour l'établissement des comptes annuels du commerçant ?",
+   "r": "<b>La continuité d'exploitation : le commerçant est présumé poursuivre ses activités.</b> Les comptes doivent aussi respecter le principe de prudence ; même en l'absence ou en cas d'insuffisance de bénéfice, il est procédé aux amortissements, dépréciations et provisions nécessaires.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. com., art. L. 123-20",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k16",
+   "type": "comp",
+   "q": "À quelle valeur un bien est-il enregistré à son entrée dans le patrimoine, selon son mode d'acquisition, d'après le Code de commerce ?",
+   "r": "<b>Bien acquis à titre onéreux : coût d'acquisition ; bien acquis à titre gratuit : valeur vénale ; bien produit : coût de production.</b> La valeur vénale correspond au prix qui aurait été acquitté dans des conditions normales de marché.",
+   "base": [
+    "Règles essentielles#3",
+    "Définitions#5"
+   ],
+   "src": "C. com., art. L. 123-18",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k17",
+   "type": "def",
+   "q": "Qu'est-ce que la valeur actuelle d'un bien selon l'article R. 123-178 du Code de commerce ?",
+   "r": "<b>Une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise.</b> La valeur d'inventaire est égale à la valeur actuelle.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. com., art. R. 123-178, 3° à 5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k18",
+   "type": "comp",
+   "q": "Quelle règle le Code de commerce applique-t-il à la clôture lorsque la valeur d'un élément d'actif devient inférieure à sa valeur nette comptable ?",
+   "r": "<b>La valeur nette comptable est ramenée à la valeur d'inventaire.</b> À l'inverse, la plus-value constatée entre la valeur d'inventaire et la valeur d'entrée n'est pas comptabilisée. Pour une immobilisation non financière, la valeur nette comptable est conservée si la valeur actuelle n'est pas jugée notablement inférieure.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. com., art. L. 123-18 et R. 123-178, 5°",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k19",
+   "type": "def",
+   "q": "Que sont les méthodes de référence au sens du Plan comptable général (PCG) ?",
+   "r": "<b>Les méthodes que l'ANC considère comme conduisant à une meilleure information financière</b>, par exemple la provision pour la totalité des engagements de retraite. Depuis le règlement ANC n° 2018-01, elles remplacent les anciennes « méthodes préférentielles ».",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 121-5 ; règlement ANC n° 2018-01 du 20 avril 2018 (note de présentation)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k20",
+   "type": "comp",
+   "q": "À quelles conditions le PCG admet-il un changement de méthode comptable décidé à l'initiative de l'entité ?",
+   "r": "<b>Il faut qu'il existe un choix entre plusieurs méthodes conformes aux principes d'établissement des comptes annuels et que le changement conduise à une meilleure information financière.</b> Le changement de réglementation comptable, autre origine possible, s'impose à l'entité.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "PCG, art. 122-1 et 122-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k21",
+   "type": "comp",
+   "q": "Selon le PCG, quelles sont les deux particularités du passage d'une entité à une méthode de référence ?",
+   "r": "<b>Il n'a pas à être justifié et il est irréversible.</b> Les méthodes de référence sont celles que l'ANC considère comme conduisant à une meilleure information financière.",
+   "base": [
+    "Règles essentielles#6",
+    "Définitions#4"
+   ],
+   "src": "PCG, art. 122-1 et 122-2",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k22",
+   "type": "comp",
+   "q": "Comment le PCG traite-t-il l'effet d'un changement de méthode comptable dans les comptes ?",
+   "r": "<b>L'effet, après impôt, est calculé de façon rétrospective</b>, comme si la nouvelle méthode avait toujours été appliquée ; l'impact à l'ouverture est imputé en report à nouveau, sauf si des règles fiscales imposent de le comptabiliser en résultat. Si cet effet ne peut être calculé de façon objective, le changement est appliqué de manière prospective.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "PCG, art. 122-3",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k23",
+   "type": "def",
+   "q": "Qu'est-ce qu'un changement d'estimation comptable au sens du PCG ?",
+   "r": "<b>Un changement qui résulte d'un changement des circonstances sur lesquelles l'estimation était fondée, de nouvelles informations ou d'une meilleure expérience.</b> Il n'a d'effet que sur l'exercice en cours et les exercices futurs.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 122-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k24",
+   "type": "comp",
+   "q": "Dans quel cas un changement d'estimation comptable doit-il être traité comme une correction d'erreur selon le PCG ?",
+   "r": "<b>Lorsque l'estimation antérieure reposait sur des données manifestement erronées</b> au regard des informations disponibles à l'époque. Hors ce cas, un changement d'estimation n'est pas une correction d'erreur.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "PCG, art. 122-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k25",
+   "type": "comp",
+   "q": "Selon le PCG, dans les comptes de quel exercice corrige-t-on une erreur, une omission matérielle ou une interprétation erronée ?",
+   "r": "<b>Dans le résultat de l'exercice au cours duquel elle est constatée</b>, sauf si elle corrige une écriture imputée directement sur les capitaux propres ; l'adoption d'une méthode non admise est traitée de même. L'incidence des corrections significatives est présentée sur une ligne séparée du compte de résultat, hors résultat courant, ou, le cas échéant, du report à nouveau.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "PCG, art. 122-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k26",
+   "type": "comp",
+   "q": "Comment distinguer, selon le PCG, le traitement d'un changement de méthode, d'un changement d'estimation et d'une correction d'erreur ?",
+   "r": "<b>Changement de méthode</b> : effet calculé de façon rétrospective et imputé en report à nouveau à l'ouverture. <b>Changement d'estimation</b> : effet sur l'exercice en cours et les exercices futurs, par le résultat. <b>Correction d'erreur</b> : résultat de l'exercice où l'erreur est constatée, sauf écriture imputée directement sur les capitaux propres.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "PCG, art. 122-3, 122-5 et 122-6",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k27",
+   "type": "comp",
+   "q": "Comment le Code de commerce et le PCG traitent-ils les événements connus entre la date de clôture et l'établissement des comptes annuels ?",
+   "r": "<b>Les passifs nés au cours de l'exercice ou d'un exercice antérieur sont pris en compte</b>, même s'ils ne sont connus qu'après la clôture. Les événements de cette période sans lien direct prépondérant avec une situation existant à la clôture font l'objet d'une information dans l'annexe.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. com., art. L. 123-20, al. 3 ; PCG, art. 513-4 ; annexe (règlement ANC n° 2022-06)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k28",
+   "type": "comp",
+   "q": "Outre les informations obligatoires prévues notamment aux articles L. 123-13 à L. 123-21 du Code de commerce, que comporte l'annexe des comptes annuels ?",
+   "r": "<b>Toutes les informations d'importance significative</b> sur la situation patrimoniale et financière et sur le résultat de l'entreprise (C. com., art. R. 123-195).",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. com., art. R. 123-195",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197052/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k29",
+   "type": "comp",
+   "q": "Quelles micro-entreprises restent tenues d'établir une annexe à leurs comptes annuels selon l'article L. 123-16-1 du Code de commerce ?",
+   "r": "<b>Celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières</b> ; les autres en sont dispensées. Le classement s'apprécie au titre du dernier exercice clos ; dépasser ou cesser de dépasser deux des trois seuils n'a d'incidence que si cela se produit pendant deux exercices consécutifs.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. com., art. L. 123-16-1 et L. 123-16",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k30",
+   "type": "def",
+   "q": "Selon le PCG 2025, à quel type d'événement des produits et charges doivent-ils être directement liés pour relever du résultat exceptionnel ?",
+   "r": "<b>À un événement majeur et inhabituel</b> (PCG, art. 513-5, issu du règlement ANC n° 2022-06, applicable aux exercices ouverts à compter du 1er janvier 2025).",
+   "base": [
+    "Définitions#6",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k31",
+   "type": "def",
+   "q": "Quand un événement est-il qualifié de majeur pour le classement en résultat exceptionnel selon le PCG 2025 ?",
+   "r": "<b>Lorsque ses conséquences sont susceptibles d'influencer le jugement des utilisateurs des documents de synthèse.</b> Pour relever du résultat exceptionnel, l'événement doit aussi être inhabituel.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k32",
+   "type": "def",
+   "q": "Quand un événement est-il présumé inhabituel pour le classement en résultat exceptionnel selon le PCG 2025 ?",
+   "r": "<b>Lorsqu'un même événement ne s'est pas produit au cours des derniers exercices</b> et qu'il est peu probable qu'il se reproduise au cours des prochains.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06) ; art. 531-5 pour les exercices ouverts à compter du 1er janvier 2027 (règlement ANC n° 2026-03)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k33",
+   "type": "comp",
+   "q": "Où sont classés, selon le PCG 2025, les aides, remboursements et indemnités reçus en compensation de charges d'exploitation liées à un événement majeur et inhabituel ?",
+   "r": "<b>En résultat d'exploitation</b>, et non en résultat exceptionnel. En revanche, les produits et charges ultérieurs liés à l'événement restent exceptionnels jusqu'à l'extinction de ses conséquences.",
+   "base": [
+    "Points de vigilance#4"
+   ],
+   "src": "PCG, art. 513-5 (règlement ANC n° 2022-06)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k34",
+   "type": "comp",
+   "q": "Quelles écritures le règlement ANC n° 2022-06 classe-t-il en résultat exceptionnel, en plus de celles liées aux événements majeurs et inhabituels ?",
+   "r": "<b>Les écritures comptables d'origine purement fiscale</b>, telles que définies et prévues par les règlements de l'ANC. Le règlement s'applique aux exercices ouverts à compter du 1er janvier 2025.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Règlement ANC n° 2022-06 ; arrêté du 26 décembre 2023 ; PCG, art. 513-5",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue10-01-k35",
+   "type": "comp",
+   "q": "Quels comptes enregistrent les cessions d'immobilisations incorporelles et corporelles depuis la suppression des comptes 675 et 775 par le règlement ANC n° 2023-03 ?",
+   "r": "<b>Les comptes 657 et 757</b>, ce dernier intitulé « Produits des cessions d'immobilisations incorporelles et corporelles ». Ce changement vaut pour les exercices ouverts à compter du 1er janvier 2025, en cohérence avec le règlement 2022-06.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Règlement ANC n° 2023-03 du 7 juillet 2023 ; plan de comptes 2026",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_03/R2023_03.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

@@ -1,0 +1,420 @@
+{
+ "id": "ue6-06",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue6-06-k01",
+   "type": "def",
+   "q": "Qu'est-ce que le budget de trésorerie d'une entreprise ?",
+   "r": "<b>La prévision, mois par mois, des encaissements et des décaissements et du solde de trésorerie qui en résulte.</b> Sa construction et l'équilibrage des excédents et des déficits relèvent, dans le programme, de la gestion de la trésorerie.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "Arrêté du 13 février 2019, annexe 1, programme de l'UE6, partie 4 (la gestion de la trésorerie)",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/19/Hebdo26/ESRS1900135A.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k02",
+   "type": "comp",
+   "q": "En quoi le budget de trésorerie diffère-t-il du compte de résultat quant aux montants et aux dates retenus ?",
+   "r": "<b>Le budget raisonne en flux TTC et en dates de règlement</b>, alors que le compte de résultat enregistre les produits et charges hors taxes, sans tenir compte des dates d'encaissement ou de paiement.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "C. com., art. L. 123-13 ; CGI, art. 269",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k03",
+   "type": "comp",
+   "q": "Pourquoi les dotations, les variations de stocks et la quote-part de subvention (747) ne figurent-elles pas dans le budget de trésorerie ?",
+   "r": "<b>Parce que ce ne sont pas des mouvements de trésorerie.</b> Le budget retient les encaissements et décaissements, pour leur montant TTC ; les dotations (68), les variations de stocks (603, 713) et la quote-part de subvention (747) n'en font pas partie.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 603, 68, 713 et 747 ; C. com., art. L. 123-13",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k04",
+   "type": "comp",
+   "q": "Dans le budget de trésorerie d'une entreprise au régime réel normal de TVA, comment se détermine la TVA à décaisser du mois ?",
+   "r": "<b>TVA collectée (44571) − TVA déductible sur biens et services (44566) et sur immobilisations (44562).</b> La dette (44551) est déclarée et payée le mois suivant ; déclaration mensuelle, avec option trimestrielle si la TVA exigible annuelle est inférieure à 4 000 €.",
+   "base": [
+    "Règles essentielles#0",
+    "Chiffres et seuils#2"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 44551, 44562, 44566 et 44571 ; CGI, art. 287 et 1693",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k05",
+   "type": "comp",
+   "q": "Selon le CGI, quand la TVA devient-elle exigible pour les ventes de biens et pour les prestations de services ?",
+   "r": "<b>À la livraison pour les ventes de biens, à l'encaissement pour les prestations de services</b> (sauf option pour les débits). Le budget de TVA respecte ces règles pour dater la TVA collectée et déductible.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "CGI, art. 269",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k06",
+   "type": "comp",
+   "q": "Dans le budget de trésorerie, à quel moment décaisse-t-on les salaires nets et les cotisations sociales ?",
+   "r": "<b>Les salaires nets le mois même, les cotisations le mois suivant.</b> Les cotisations sont versées au plus tard le 5 ou le 15 du mois suivant la période d'emploi, selon l'effectif et la date de paie.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CSS, art. R. 243-6",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k07",
+   "type": "comp",
+   "q": "Selon le Code de commerce, dans quel délai maximal les dividendes doivent-ils être mis en paiement ?",
+   "r": "<b>Dans les neuf mois après la clôture de l'exercice</b>, sauf prolongation par décision de justice. Le dividende est fixé par l'assemblée générale après approbation des comptes ; le budget inscrit le décaissement au mois de la mise en paiement qu'elle décide.",
+   "base": [
+    "Règles essentielles#10",
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 232-13 et L. 232-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229032/2020-12-29",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k08",
+   "type": "def",
+   "q": "Comment le plan comptable général définit-il la trésorerie nette d'une entreprise ?",
+   "r": "<b>Les disponibilités (512, 53) diminuées des concours bancaires courants et soldes créditeurs de banques (519).</b> C'est la trésorerie que le budget prévoit et que le tableau de financement explique.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "PCG, chapitre « Tableau de financement » ; plan de comptes PCG 2025",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k09",
+   "type": "def",
+   "q": "Que désigne la notion de concours bancaires courants dans le plan comptable général ?",
+   "r": "<b>Les soldes créditeurs de banques (découvert, facilité de caisse), enregistrés au compte 519.</b> Ils constituent la trésorerie passive et non des dettes financières ; le crédit de mobilisation de créances commerciales est suivi en 5191.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 519 et 5191 ; PCG, chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k10",
+   "type": "comp",
+   "q": "Pourquoi un découvert bancaire permanent est-il un signal d'alerte dans l'analyse de la trésorerie d'une entreprise ?",
+   "r": "<b>Parce qu'il masque un besoin de financement stable.</b> Les concours bancaires courants sont de la trésorerie négative, pas des dettes financières.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "PCG, chapitre « Tableau de financement » ; plan de comptes PCG 2025, compte 519",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k11",
+   "type": "comp",
+   "q": "À quel risque juridique s'expose une entreprise dont le déficit de trésorerie n'est pas financé ?",
+   "r": "<b>À la cessation des paiements</b>, c'est-à-dire l'impossibilité de faire face au passif exigible avec l'actif disponible. L'équilibrage du budget de trésorerie n'est donc pas facultatif.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. L. 631-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k12",
+   "type": "comp",
+   "q": "À quelles conditions une banque peut-elle réduire ou interrompre un concours à durée indéterminée autre qu'occasionnel ?",
+   "r": "<b>Sur notification écrite et après un préavis fixé lors de l'octroi, qui ne peut être inférieur à soixante jours.</b> Exceptions : comportement gravement répréhensible ou situation irrémédiablement compromise.",
+   "base": [
+    "Règles essentielles#5",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. mon. fin., art. L. 313-12",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k13",
+   "type": "def",
+   "q": "Qu'est-ce que l'escompte d'un effet de commerce auprès d'une banque ?",
+   "r": "<b>La remise à la banque d'un effet de commerce (lettre de change) avant son échéance, contre versement immédiat du montant diminué des agios.</b> L'effet remis est suivi au compte 5114 « Effets à l'escompte », les intérêts d'escompte au compte 6616.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. com., art. L. 511-1 et suivants ; plan de comptes PCG 2025, comptes 5114 et 6616",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k14",
+   "type": "def",
+   "q": "Qu'est-ce que la cession Dailly prévue par le Code monétaire et financier ?",
+   "r": "<b>La cession ou le nantissement de créances professionnelles à un établissement de crédit par la simple remise d'un bordereau</b>, en garantie ou en propriété d'un crédit. Contrairement à l'escompte, elle ne nécessite pas d'effet de commerce.",
+   "base": [
+    "Définitions#3",
+    "Définitions#2"
+   ],
+   "src": "C. mon. fin., art. L. 313-23 à L. 313-34",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k15",
+   "type": "def",
+   "q": "Qu'est-ce que l'affacturage dans le financement à court terme de l'entreprise ?",
+   "r": "<b>Le transfert des créances commerciales à un factor</b> qui les finance, en assure le recouvrement et, selon le contrat, garantit le risque d'impayé. Le factor est subrogé dans les droits du créancier.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. civ., art. 1346-1 (subrogation conventionnelle)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k16",
+   "type": "def",
+   "q": "Que mesure le taux effectif global (TEG) d'un crédit de trésorerie ?",
+   "r": "<b>Le coût réel du crédit</b> : il comprend les intérêts, frais, commissions et rémunérations de toute nature et se calcule actuariellement. Il permet de comparer découvert, escompte et affacturage sur la base du montant réellement reçu et de la durée réelle.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. mon. fin., art. L. 314-1 et R. 314-2",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k17",
+   "type": "comp",
+   "q": "Comment le PCG 2025 classe-t-il les intérêts d'escompte ou de découvert et les commissions bancaires ?",
+   "r": "<b>Les intérêts sont des charges financières (6616 « Intérêts bancaires et sur opérations de financement »)</b> ; les commissions bancaires sont des charges externes (627 « Services bancaires et assimilés », dont 6275 « Frais sur effets »).",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 627, 6275 et 6616",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k18",
+   "type": "comp",
+   "q": "Dans quels comptes du PCG 2025 rattache-t-on les intérêts courus sur concours bancaires et sur obligations détenues ?",
+   "r": "<b>Concours bancaires : 5186 pour les intérêts courus à payer, 5187 pour ceux à recevoir.</b> Les intérêts courus sur obligations et bons détenus sont rattachés en 5088.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 5088, 5186 et 5187",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k19",
+   "type": "comp",
+   "q": "Depuis le PCG 2025, dans quel compte enregistre-t-on les intérêts courus sur les emprunts bancaires ?",
+   "r": "<b>Au compte 1648</b> : depuis le règlement ANC n° 2022-06, les intérêts courus sur emprunts sont enregistrés par nature. Les comptes de trésorerie (50, 51, 519) sont, eux, inchangés.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Plan de comptes PCG 2025 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k20",
+   "type": "def",
+   "q": "Que sont les titres de créances négociables selon le Code monétaire et financier ?",
+   "r": "<b>Des titres émis au gré de l'émetteur, négociables sur un marché réglementé ou de gré à gré, représentant un droit de créance</b> (NEU CP à court terme, NEU MTN à moyen terme). Les entreprises en émettent pour se financer ou en acquièrent pour placer leurs excédents.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. mon. fin., art. L. 213-1 à L. 213-4",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k21",
+   "type": "comp",
+   "q": "Pourquoi les NEU CP et les certificats de dépôt sont-ils réservés aux trésoreries importantes ?",
+   "r": "<b>Parce que les titres de créances négociables ont un montant unitaire minimal de 150 000 €</b> (ou sa contre-valeur en devises).",
+   "base": [
+    "Chiffres et seuils#1"
+   ],
+   "src": "C. mon. fin., art. D. 213-1 et suivants",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k22",
+   "type": "comp",
+   "q": "Parmi les OPCVM, qu'est-ce qui distingue une SICAV d'un fonds commun de placement ?",
+   "r": "<b>La personnalité morale</b> : la SICAV est une société qui a pour objet la gestion d'un portefeuille d'instruments financiers et de dépôts ; le fonds commun de placement, qui n'a pas la personnalité morale, est une copropriété d'instruments financiers et de dépôts.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "C. mon. fin., art. L. 214-7 et L. 214-8",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k23",
+   "type": "def",
+   "q": "Que sont les valeurs mobilières de placement dans le plan comptable général 2025 ?",
+   "r": "<b>Des titres acquis pour placer des excédents de trésorerie, enregistrés en classe 5 (compte 50)</b> : actions (503), obligations (506), bons du Trésor et bons de caisse à court terme (507), autres valeurs mobilières (508).",
+   "base": [
+    "Définitions#7"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 50, 503, 506, 507 et 508",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k24",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue les valeurs mobilières de placement des titres immobilisés ou de participation dans le PCG 2025 ?",
+   "r": "<b>Leur destination et leur classe</b> : les valeurs mobilières de placement placent des excédents de trésorerie (classe 5, compte 50) ; les titres immobilisés ou de participation sont des emplois stables (classe 2, comptes 26 et 27).",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 26, 27 et 50",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k25",
+   "type": "comp",
+   "q": "Comment la Banque de France traite-t-elle les valeurs mobilières de placement dans son analyse des entreprises ?",
+   "r": "<b>Elle les assimile à de la trésorerie.</b> Plus largement, dans son analyse des entreprises, elle retraite la trésorerie active et les dettes financières des groupes.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "Banque de France, « La situation des entreprises », note méthodologique (avril 2025)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k26",
+   "type": "def",
+   "q": "Qu'est-ce que l'Autorité des marchés financiers (AMF) ?",
+   "r": "<b>Une autorité publique indépendante</b> qui veille à la protection de l'épargne investie dans les instruments financiers, à l'information des investisseurs et au bon fonctionnement des marchés.",
+   "base": [
+    "Définitions#8"
+   ],
+   "src": "C. mon. fin., art. L. 621-1, L. 421-1 et L. 424-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k27",
+   "type": "def",
+   "q": "Que recouvrent les instruments financiers au sens du Code monétaire et financier ?",
+   "r": "<b>Les titres financiers (titres de capital, titres de créance, parts d'organismes de placement collectif) et les contrats financiers (contrats à terme, options, échanges).</b> Les contrats financiers servent à couvrir les risques de taux et de change.",
+   "base": [
+    "Règles essentielles#12",
+    "Points de vigilance#4"
+   ],
+   "src": "C. mon. fin., art. L. 211-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k28",
+   "type": "comp",
+   "q": "Selon le Code de commerce, quel principe détermine le droit de vote attaché aux actions ?",
+   "r": "<b>Le droit de vote est proportionnel à la quotité de capital que les actions représentent</b>, et chaque action donne droit à une voix au moins.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. com., art. L. 225-122 et L. 232-12",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031/2026-04-28",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k29",
+   "type": "def",
+   "q": "Qu'est-ce qu'une obligation au sens du Code de commerce ?",
+   "r": "<b>Un titre négociable qui confère, dans une même émission, les mêmes droits de créance pour une même valeur nominale.</b> Le coupon est calculé sur le nominal ; le prix payé à l'achat est le cours au pied du coupon augmenté du coupon couru.",
+   "base": [
+    "Règles essentielles#11",
+    "Règles essentielles#8"
+   ],
+   "src": "C. com., art. L. 228-38",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k30",
+   "type": "def",
+   "q": "Qu'est-ce que l'€STR sur le marché monétaire de la zone euro ?",
+   "r": "<b>Le taux au jour le jour en euros administré par la Banque centrale européenne.</b> Les placements monétaires et les crédits à taux variable sont indexés sur ce type de taux de référence.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Orientation (UE) 2019/1265 de la BCE (€STR) ; règlement (UE) 2016/1011 (indices de référence)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k31",
+   "type": "def",
+   "q": "Qu'est-ce que l'Euribor sur le marché monétaire de la zone euro ?",
+   "r": "<b>Un indice de référence interbancaire, d'une durée de 1 semaine à 12 mois</b>, administré sous le règlement européen sur les indices de référence. Les placements monétaires et les crédits à taux variable y sont indexés.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Orientation (UE) 2019/1265 de la BCE (€STR) ; règlement (UE) 2016/1011 (indices de référence)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k32",
+   "type": "comp",
+   "q": "Quel taux a remplacé l'Eonia comme taux de référence au jour le jour de la zone euro ?",
+   "r": "<b>L'€STR, publié par la BCE</b> : depuis le 3 janvier 2022, l'Eonia a disparu et l'€STR est le seul taux de référence au jour le jour de la zone euro. Les OPCVM monétaires s'y comparent.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Orientation (UE) 2019/1265 de la BCE",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k33",
+   "type": "comp",
+   "q": "Selon le PCG, comment traite-t-on les créances et dettes libellées en monnaies étrangères et leurs écarts de conversion ?",
+   "r": "<b>Elles sont converties au dernier cours de change</b> ; les écarts sont inscrits en comptes transitoires : 476 pour une perte latente, 477 pour un gain latent.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 420-5 ; plan de comptes PCG 2025, comptes 476 et 477",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-06-k34",
+   "type": "comp",
+   "q": "Quel est l'effet d'une vente ou d'un achat à terme de devises pour une entreprise exposée au risque de change ?",
+   "r": "<b>Elle fixe le cours de change dès aujourd'hui</b> : c'est une couverture du risque de change sur les créances et dettes en monnaies étrangères.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, art. 420-5 ; plan de comptes PCG 2025, comptes 476 et 477",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

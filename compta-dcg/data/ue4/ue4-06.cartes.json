@@ -1,0 +1,427 @@
+{
+ "id": "ue4-06",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue4-06-k01",
+   "type": "def",
+   "q": "Que l'article 34 de la Constitution réserve-t-il à la loi en matière d'impositions de toutes natures ?",
+   "r": "<b>L'assiette, le taux et les modalités de recouvrement.</b> Selon le Conseil constitutionnel, le législateur qui définit une imposition doit en déterminer les modalités de recouvrement, qui couvrent le contrôle, le recouvrement, le contentieux, les garanties et les sanctions.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "Constitution, art. 34 ; Conseil constitutionnel, résumés analytiques des décisions",
+   "url": "https://www.conseil-constitutionnel.fr/nouveaux-cahiers-du-conseil-constitutionnel/resumes-analytiques-des-decisions-rendues-au-cours-du-trimestre-3",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k02",
+   "type": "def",
+   "q": "De quelles cotisations se compose la contribution économique territoriale (CET) ?",
+   "r": "<b>De la cotisation foncière des entreprises (CFE)</b>, assise sur la valeur locative des biens passibles de taxe foncière, <b>et de la cotisation sur la valeur ajoutée des entreprises (CVAE)</b>, assise sur la valeur ajoutée produite. L'article 1447-0 du CGI qui l'institue est en vigueur jusqu'au 1er janvier 2030.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "CGI, art. 1447-0 (loi n° 2009-1673 du 30 décembre 2009 ; abrogation à compter du 1er janvier 2030 par la loi n° 2022-1726 du 30 décembre 2022, art. 55)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000021640942",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k03",
+   "type": "comp",
+   "q": "Qui est redevable de la cotisation foncière des entreprises (CFE) ?",
+   "r": "<b>Les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires qui exercent à titre habituel une activité professionnelle non salariée.</b> Les locations d'immeubles, autres que les locations nues à usage d'habitation, sont réputées professionnelles.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 1447, I, 1467, 1467 A et 1478, II",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k04",
+   "type": "comp",
+   "q": "Quelle est la base d'imposition de la cotisation foncière des entreprises (CFE) ?",
+   "r": "<b>La valeur locative des biens passibles de taxe foncière</b> dont le redevable a disposé pour son activité pendant la période de référence, c'est-à-dire l'avant-dernière année.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 1447, I, 1467, 1467 A et 1478, II",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k05",
+   "type": "comp",
+   "q": "Comment s'applique la cotisation foncière des entreprises (CFE) l'année de la création de l'entreprise, puis la première année d'imposition ?",
+   "r": "<b>Aucune CFE n'est due l'année de la création.</b> La base de la première année d'imposition est ensuite réduite de moitié.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "CGI, art. 1447, I, 1467, 1467 A et 1478, II",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k06",
+   "type": "comp",
+   "q": "Quelle modification la loi de finances pour 2026 a-t-elle apportée à la liste des redevables de la CFE (CGI, art. 1447, I) ?",
+   "r": "<b>Le texte vise désormais les « entités » non dotées de la personnalité morale</b>, aux côtés des personnes physiques ou morales et des fiduciaires, alors que la rédaction antérieure visait les « sociétés » non dotées de la personnalité morale. Cette rédaction s'applique depuis le 21 février 2026.",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "CGI, art. 1447, I (loi n° 2026-103 du 19 février 2026, art. 55)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k07",
+   "type": "comp",
+   "q": "Lorsqu'un commerçant exerce dans un local qu'il loue, qui est redevable de la CFE et qui de la taxe foncière ?",
+   "r": "<b>Le commerçant locataire est redevable de la CFE, son bailleur de la taxe foncière.</b> La taxe foncière est établie au nom du propriétaire, alors que la CFE est due par la personne qui exerce l'activité professionnelle.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "CGI, art. 1400 et 1447",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034110958",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k08",
+   "type": "comp",
+   "q": "Quelle est la base d'imposition des taxes foncières sur les propriétés bâties et sur les propriétés non bâties ?",
+   "r": "<b>La valeur locative cadastrale</b>, sous déduction de 50 % pour les propriétés bâties et de 20 % pour les propriétés non bâties. La déduction de 50 % est faite en considération des frais de gestion, d'assurances, d'amortissement, d'entretien et de réparation.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "CGI, art. 1388, 1396, 1400 et 1415",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006311555",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k09",
+   "type": "comp",
+   "q": "Quelle est l'assiette de la taxe sur les salaires due par un employeur ?",
+   "r": "<b>La fraction des rémunérations correspondant au rapport entre le chiffre d'affaires non soumis à la TVA et le chiffre d'affaires total.</b> Un barème progressif s'applique ensuite par salarié.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 231, 1 et 2 bis",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k10",
+   "type": "comp",
+   "q": "Quelles conditions un employeur doit-il remplir pour être dispensé de la taxe sur les salaires ?",
+   "r": "<b>Être assujetti à la TVA l'année du versement des rémunérations et l'avoir été sur 90 % au moins de son chiffre d'affaires l'année précédente.</b> Une seule de ces deux conditions ne suffit pas.",
+   "base": [
+    "Points de vigilance#4",
+    "Règles essentielles#4"
+   ],
+   "src": "CGI, art. 231, 1 ; CE, 31 mars 2023, n° 460838",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000047411303",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k11",
+   "type": "comp",
+   "q": "Comment le droit d'enregistrement sur les cessions de droits sociaux varie-t-il selon la nature des titres cédés ?",
+   "r": "<ul><li>Actions (hors personnes morales à prépondérance immobilière) : 0,1 %.</li><li>Parts sociales des sociétés dont le capital n'est pas divisé en actions : 3 %, après un abattement de 23 000 € proratisé au nombre de parts cédées.</li><li>Participations dans des personnes morales à prépondérance immobilière : 5 %.</li></ul>",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "CGI, art. 726, I",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k12",
+   "type": "comp",
+   "q": "Quelle est l'assiette des droits d'enregistrement dus sur une cession de fonds de commerce ?",
+   "r": "<b>Le prix de la clientèle, du droit au bail et des objets mobiliers servant à l'exploitation.</b> Le tarif de l'article 719 du CGI se combine avec des taxes additionnelles, dont la taxe départementale de l'article 1595.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "CGI, art. 719 et 1595 ; BOI-ENR-DMTOM-10-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/3313-PGP.html/identifiant=BOI-ENR-DMTOM-10-20-20-20240619",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k13",
+   "type": "def",
+   "q": "Que sont les droits de mutation à titre gratuit en droit fiscal ?",
+   "r": "<b>Les droits dus sur les successions et les donations.</b> Leur champ territorial dépend du domicile fiscal, au sens de l'article 4 B du CGI, du défunt ou du donateur et de l'héritier ou du donataire.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "CGI, art. 750 ter et 4 B ; BOI-ENR-DMTG-10-10-30",
+   "url": "https://bofip.impots.gouv.fr/index.php/bofip/3543-PGP.html/identifiant=BOI-ENR-DMTG-10-10-30-20120912",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k14",
+   "type": "comp",
+   "q": "Quelle est la situation du conjoint survivant et du partenaire de PACS au regard des droits de mutation par décès ?",
+   "r": "<b>Le conjoint survivant et le partenaire de PACS sont exonérés</b> de droits de mutation par décès.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 779, I, 784 et 796-0 bis",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026292566",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k15",
+   "type": "comp",
+   "q": "Quelles donations antérieures sont rappelées pour la perception des droits de mutation à titre gratuit ?",
+   "r": "<b>Les donations consenties depuis moins de quinze ans</b> sont rappelées lors de la perception des droits de mutation à titre gratuit.",
+   "base": [
+    "Règles essentielles#7"
+   ],
+   "src": "CGI, art. 779, I, 784 et 796-0 bis",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026292566",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k16",
+   "type": "def",
+   "q": "Qu'est-ce que l'impôt sur la fortune immobilière (IFI) ?",
+   "r": "<b>Un impôt annuel dû par les personnes physiques dont les actifs immobiliers nets excèdent 1 300 000 € au 1er janvier.</b>",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 964, 1° et 2° ; BOI-PAT-IFI-10-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/11293-PGP.html/identifiant=BOI-PAT-IFI-10-20-20-20180608",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k17",
+   "type": "comp",
+   "q": "Sur quels actifs immobiliers sont imposées à l'IFI les personnes domiciliées en France et celles qui ne le sont pas ?",
+   "r": "<b>Les personnes domiciliées en France (article 4 B du CGI) sont imposables sur leurs actifs situés en France et hors de France</b> ; les autres, sur leurs seuls actifs immobiliers français. Celles qui n'ont pas été domiciliées en France au cours des cinq années civiles précédant leur installation ne sont imposées que sur leurs actifs français jusqu'au 31 décembre de la cinquième année qui suit celle de leur installation.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "CGI, art. 964, 1° et 2° ; BOI-PAT-IFI-10-20-20",
+   "url": "https://bofip.impots.gouv.fr/bofip/11293-PGP.html/identifiant=BOI-PAT-IFI-10-20-20-20180608",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k18",
+   "type": "comp",
+   "q": "Quels allègements l'IFI prévoit-il pour la résidence principale et pour les biens immobiliers professionnels du redevable ?",
+   "r": "<b>Un abattement de 30 % sur la valeur vénale de l'immeuble occupé à titre de résidence principale</b> (un seul immeuble par foyer) et <b>une exonération des biens immobiliers affectés à l'activité professionnelle principale</b> du redevable.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "CGI, art. 964, 973 et 975",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048806768",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k19",
+   "type": "def",
+   "q": "Qu'est-ce que la garantie contre les changements de doctrine prévue par l'article L. 80 A du LPF ?",
+   "r": "<b>Aucun rehaussement d'impositions antérieures ne peut être opéré</b> lorsque le différend porte sur l'interprétation du texte fiscal par un redevable de bonne foi, dès lors que cette interprétation avait été formellement admise par l'administration. Les instructions ou circulaires publiées et non rapportées à la date des opérations sont opposables, y compris celles relatives au recouvrement et aux pénalités.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "LPF, art. L. 80 A",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k20",
+   "type": "comp",
+   "q": "Quelle prise de position de l'administration lors d'un contrôle fiscal est couverte par la garantie de l'article L. 80 A du LPF ?",
+   "r": "<b>La position prise sur les points examinés au cours d'un examen ou d'une vérification de comptabilité ou d'un examen contradictoire de la situation fiscale personnelle</b>, y compris tacitement lorsqu'elle ne les a pas rectifiés. La règle vaut pour les contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "LPF, art. L. 80 A, 2e alinéa (loi n° 2018-727 du 10 août 2018, art. 9) ; BOI-CF-PGR-30-25",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k21",
+   "type": "comp",
+   "q": "Lorsque l'administration a successivement admis plusieurs interprétations d'un texte, laquelle le contribuable peut-il invoquer au titre de l'article L. 80 A du LPF ?",
+   "r": "<b>Seule la dernière interprétation formellement admise</b>, et uniquement si elle est antérieure à l'imposition primitive. L'article L. 80 A ne confère aucun pouvoir réglementaire à l'administration.",
+   "base": [
+    "Points de vigilance#5"
+   ],
+   "src": "CE, Section, 8 mars 2013, n° 353782 ; CAA Douai, 2 juin 2021, n° 21DA00829",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000027150930/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k22",
+   "type": "comp",
+   "q": "Comment qualifier, au regard de l'article L. 80 A du LPF, la remise en cause d'un crédit d'impôt imputé sur l'imposition primitive ?",
+   "r": "<b>Comme un rehaussement au sens de l'article L. 80 A.</b> Le contribuable peut donc invoquer la doctrine publiée.",
+   "base": [
+    "Points de vigilance#6"
+   ],
+   "src": "CE, 20 juin 2023, n° 462501",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000047708701?init=true&amp=&page=1&amp=&query=462501&amp=&searchField=ALL&amp=&tab_selection=all",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k23",
+   "type": "comp",
+   "q": "Jusqu'à quand s'exerce le droit de reprise de l'administration pour l'impôt sur le revenu, l'impôt sur les sociétés et la TVA ?",
+   "r": "<b>IR et IS : jusqu'à la fin de la troisième année qui suit celle au titre de laquelle l'imposition est due</b> (dixième année en cas d'activité occulte). TVA : jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "LPF, art. L. 169 et L. 176",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051759330",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k24",
+   "type": "comp",
+   "q": "Quand une activité est-elle réputée occulte pour l'application du délai de reprise de dix ans ?",
+   "r": "<b>Lorsque les déclarations n'ont pas été déposées dans le délai légal et que l'activité n'a pas été portée à la connaissance d'un organisme compétent</b>, ou lorsqu'il s'agit d'une activité illicite. Le délai de dix ans ne vise que les catégories de revenus que le contribuable n'a fait figurer dans aucune déclaration.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "LPF, art. L. 169, 2e alinéa",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051759330",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k25",
+   "type": "comp",
+   "q": "De quel délai dispose le contribuable pour répondre à une proposition de rectification dans la procédure de rectification contradictoire ?",
+   "r": "<b>Trente jours, prorogés de trente jours</b> sur demande reçue avant l'expiration du délai. La proposition est motivée de manière à lui permettre de formuler ses observations ou de faire connaître son acceptation.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "LPF, art. L. 11, L. 57, L. 57 A et R*57-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815142",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k26",
+   "type": "comp",
+   "q": "Quel est l'effet du silence gardé soixante jours par l'administration sur les observations d'une entreprise vérifiée sous les seuils de l'article L. 57 A du LPF ?",
+   "r": "<b>Les observations du contribuable sont considérées comme acceptées.</b> Pour ces entreprises, l'administration qui rejette les observations doit répondre, de manière motivée, dans les soixante jours.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "LPF, art. L. 11, L. 57, L. 57 A et R*57-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033815142",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k27",
+   "type": "comp",
+   "q": "Dans quel cas le délai de soixante jours de l'article L. 57 A du LPF ne s'applique-t-il à aucun exercice vérifié ?",
+   "r": "<b>Lorsque l'entreprise vérifiée dépasse les seuils de chiffre d'affaires au titre de l'un quelconque des exercices vérifiés et rectifiés.</b> Le délai de réponse de l'administration aux observations n'est alors limité pour aucun exercice.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "LPF, art. L. 57 A ; CE, 20 juin 2023, n° 467042",
+   "url": "https://www.legifrance.gouv.fr/juri/id/CETATEXT000047708711",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k28",
+   "type": "comp",
+   "q": "Comment la majoration pour insuffisance de déclaration (CGI, art. 1729) est-elle graduée selon le comportement du contribuable ?",
+   "r": "<b>40 % en cas de manquement délibéré ; 80 % en cas d'abus de droit ou de manœuvres frauduleuses.</b> Pour l'abus de droit, elle est ramenée à 40 % s'il n'est pas établi que le contribuable en a eu l'initiative principale ou en a été le principal bénéficiaire.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 1728, 1 et 1729 ; BOI-CF-INF-20-10-10",
+   "url": "https://bofip.impots.gouv.fr/bofip/4342-PGP.html/identifiant%3DBOI-CF-INF-20-10-10-20170308",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k29",
+   "type": "def",
+   "q": "Qu'est-ce que l'intérêt de retard prévu par l'article 1727 du CGI ?",
+   "r": "<b>Un intérêt dû sur toute créance de nature fiscale non acquittée dans le délai légal</b>, au taux de 0,20 % par mois, en sus des sanctions éventuelles. Il est réduit de 50 % en cas de dépôt spontané d'une déclaration rectificative, sous conditions.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "CGI, art. 1727",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051213330",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k30",
+   "type": "def",
+   "q": "Quels actes constituent un abus de droit fiscal que l'administration peut écarter (LPF, art. L. 64) ?",
+   "r": "<b>Les actes fictifs</b>, ou ceux qui, recherchant le bénéfice d'une application littérale des textes ou de décisions à l'encontre des objectifs poursuivis par leurs auteurs, n'ont pu être inspirés par aucun autre motif que celui d'éluder ou d'atténuer les charges fiscales normalement supportées.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "LPF, art. L. 64 ; CE, Assemblée, 28 octobre 2020, n° 428048",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k31",
+   "type": "comp",
+   "q": "Comment l'administration peut-elle écarter une interprétation formellement admise qui ajoute à la loi et dont se prévaut le redevable (LPF, art. L. 80 A) ?",
+   "r": "<b>En mettant en œuvre la procédure de l'abus de droit</b>, si elle démontre, par des éléments objectifs, la finalité abusive de la situation. Hors ce cas, le redevable peut se prévaloir d'une telle interprétation même si elle ajoute à la loi.",
+   "base": [
+    "Points de vigilance#7"
+   ],
+   "src": "LPF, art. L. 64 et L. 80 A ; CE, Assemblée, 28 octobre 2020, n° 428048",
+   "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000042474925",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k32",
+   "type": "comp",
+   "q": "Dans quel délai de droit commun doit être présentée la réclamation préalable qui ouvre tout contentieux fiscal ?",
+   "r": "<b>Au plus tard le 31 décembre de la deuxième année suivant</b> la mise en recouvrement du rôle ou la notification de l'avis de mise en recouvrement, le versement de l'impôt contesté ou la réalisation de l'événement qui la motive. Elle est présentée au service des impôts.",
+   "base": [
+    "Règles essentielles#17"
+   ],
+   "src": "LPF, art. L. 190, R*196-1 et R*196-2",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006180177/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k33",
+   "type": "comp",
+   "q": "Dans quel délai doit être présentée une réclamation contre la taxe foncière, la CFE ou un autre impôt direct local ?",
+   "r": "<b>Au plus tard le 31 décembre de l'année suivant la mise en recouvrement</b>, et non de la deuxième année. Le Conseil d'État l'a appliqué à une taxe foncière en 2025.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "LPF, art. R*196-2 ; CE, 15 janvier 2025, n° 467615",
+   "url": "https://www.legifrance.gouv.fr/juri/id/CETATEXT000050988327",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k34",
+   "type": "def",
+   "q": "Qu'est-ce que le sursis de paiement dont peut bénéficier le contribuable qui conteste une imposition ?",
+   "r": "<b>La faculté de différer le paiement de la partie contestée et des pénalités afférentes</b>, si le contribuable le demande expressément dans sa réclamation en précisant le montant ou les bases du dégrèvement demandé ; au-delà d'un montant fixé par décret, il doit constituer des garanties. L'exigibilité de la créance et la prescription de l'action en recouvrement sont suspendues jusqu'à la décision définitive sur la réclamation.",
+   "base": [
+    "Règles essentielles#18"
+   ],
+   "src": "LPF, art. L. 277",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039278590",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue4-06-k35",
+   "type": "comp",
+   "q": "Quelle est la durée maximale d'une vérification sur place de comptabilité lorsque le chiffre d'affaires de l'entreprise n'excède pas les limites du régime simplifié d'imposition ?",
+   "r": "<b>Trois mois</b>, délai porté à six mois en cas de graves irrégularités privant de valeur probante la comptabilité. À distinguer de l'examen contradictoire de la situation fiscale personnelle, qui ne peut en principe excéder un an (deux ans notamment en cas de découverte d'une activité occulte).",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "LPF, art. L. 12 et L. 52 ; BOI-CF-PGR-20-30",
+   "url": "https://bofip.impots.gouv.fr/bofip/243-PGP.html/identifiant=BOI-CF-PGR-20-30-20171220",
+   "fiab": "stable"
+  }
+ ]
+}

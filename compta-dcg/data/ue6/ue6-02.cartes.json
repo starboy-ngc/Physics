@@ -1,0 +1,373 @@
+{
+ "id": "ue6-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue6-02-k01",
+   "type": "def",
+   "q": "Que décrit le bilan d'une entreprise selon le Code de commerce ?",
+   "r": "Il <b>décrit séparément les éléments actifs et passifs</b> de l'entreprise et fait apparaître, de façon distincte, les <b>capitaux propres</b>. Le modèle du PCG présente l'actif en trois colonnes : brut, amortissements et dépréciations, net.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. com., art. L. 123-13 ; PCG, modèle de bilan",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k02",
+   "type": "def",
+   "q": "Qu'est-ce que le bilan fonctionnel en analyse financière ?",
+   "r": "<b>Une lecture du bilan en valeurs brutes par cycles</b> : investissement, financement, exploitation, trésorerie. Les amortissements et dépréciations figurant en colonne du modèle de bilan sont reclassés en ressources stables.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "PCG, modèle de bilan (colonnes brut, amortissements et dépréciations, net) ; programme de l'UE6, analyse de la structure financière",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k03",
+   "type": "comp",
+   "q": "Pourquoi le bilan fonctionnel ajoute-t-il les amortissements et dépréciations aux ressources stables au lieu de les déduire de l'actif ?",
+   "r": "<b>Parce qu'ils représentent une ressource conservée par l'entreprise.</b> Les immobilisations et l'actif circulant sont donc retenus pour leur valeur brute, et les amortissements et dépréciations rejoignent les provisions dans les ressources stables.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "PCG, modèle de bilan ; PCG, chapitre « Tableau de financement » (CAF en ressource durable)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k04",
+   "type": "def",
+   "q": "Qu'est-ce que le fonds de roulement net global (FRNG) ?",
+   "r": "<b>L'excédent des ressources durables sur les emplois stables.</b> Le tableau de financement du PCG en mesure la variation au cours de l'exercice, sous forme de ressource nette ou d'emploi net.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », première partie (variation du fonds de roulement net global)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k05",
+   "type": "def",
+   "q": "Quelles variations du besoin en fonds de roulement la seconde partie du tableau de financement du PCG distingue-t-elle ?",
+   "r": "Les variations <b>« exploitation »</b> (stocks, créances clients et autres créances d'exploitation, dettes fournisseurs et autres dettes d'exploitation) et <b>« hors exploitation »</b> (autres débiteurs et créditeurs). Elle y ajoute la variation <b>« trésorerie »</b>, qui ne relève pas du BFR.",
+   "base": [
+    "Définitions#3",
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », seconde partie",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k06",
+   "type": "def",
+   "q": "Qu'est-ce que la trésorerie nette dans l'analyse du bilan fonctionnel ?",
+   "r": "<b>Les disponibilités diminuées des concours bancaires courants et soldes créditeurs de banques</b> (compte 519), qui constituent la trésorerie passive.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "PCG, chapitre « Tableau de financement », variation « trésorerie » ; plan de comptes PCG 2025, compte 519",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k07",
+   "type": "comp",
+   "q": "Quelle relation fondamentale relie le fonds de roulement net global, le besoin en fonds de roulement et la trésorerie nette ?",
+   "r": "<b>FRNG − BFR = trésorerie nette.</b> Dans le tableau de financement du PCG, la variation du FRNG est égale à la somme des variations du BFR d'exploitation, du BFR hors exploitation et de la trésorerie.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "PCG, chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k08",
+   "type": "comp",
+   "q": "Où le bilan fonctionnel classe-t-il les concours bancaires courants et soldes créditeurs de banques (compte 519) ?",
+   "r": "<b>En trésorerie passive</b> : ils sont exclus des dettes financières, comme dans la variation « trésorerie » du tableau de financement du PCG.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "PCG, chapitre « Tableau de financement » ; plan de comptes PCG 2025, compte 519",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k09",
+   "type": "def",
+   "q": "Qu'est-ce que le crédit-bail au sens du Code monétaire et financier ?",
+   "r": "<b>Une opération de location</b> de biens d'équipement, de matériel d'outillage ou de biens immobiliers, qui donne au locataire <b>la possibilité d'acquérir le bien</b> moyennant un prix convenu tenant compte des versements effectués à titre de loyers. Le bien n'est pas à l'actif du locataire.",
+   "base": [
+    "Définitions#5"
+   ],
+   "src": "C. mon. fin., art. L. 313-7",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k10",
+   "type": "comp",
+   "q": "Comment le bilan fonctionnel retraite-t-il un bien pris en crédit-bail par l'entreprise locataire ?",
+   "r": "Le bien est <b>ajouté aux emplois stables pour sa valeur d'origine</b>, avec en contrepartie des <b>amortissements en ressources stables</b> et une <b>dette financière pour la valeur nette</b>.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "Banque de France, Bulletin n° 220/1 (novembre-décembre 2018) ; C. mon. fin., art. L. 313-7",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k11",
+   "type": "comp",
+   "q": "Pourquoi un ratio d'autonomie financière calculé sans retraitement du crédit-bail est-il flatté ?",
+   "r": "Parce que <b>le crédit-bail est hors bilan dans les comptes sociaux</b> (le locataire n'est pas propriétaire) : son financement n'apparaît pas dans les dettes, alors que <b>la Banque de France le compte dans l'endettement</b>.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "C. mon. fin., art. L. 313-7 ; Banque de France, Bulletin n° 220/1 (2018)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k12",
+   "type": "comp",
+   "q": "Comment le bilan fonctionnel retraite-t-il les effets escomptés non échus ?",
+   "r": "Il les <b>réintègre dans les créances d'exploitation</b> et les <b>ajoute à la trésorerie passive</b>. Sortis de l'actif, ils restent en effet un engagement de l'entreprise, mentionné dans l'annexe.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "PCG, annexe : engagements financiers donnés (effets escomptés non échus)",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k13",
+   "type": "comp",
+   "q": "Comment le bilan fonctionnel traite-t-il les écarts de conversion actif et passif (comptes 476 et 477) ?",
+   "r": "Il <b>les annule pour revenir à la valeur d'origine</b> de la créance ou de la dette. Ces comptes transitoires reçoivent les différences nées de la conversion des créances et dettes en monnaies étrangères au dernier cours de change.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "PCG, art. 420-5 ; plan de comptes PCG 2025, comptes 476 et 477",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k14",
+   "type": "comp",
+   "q": "Comment le bilan fonctionnel classe-t-il les charges constatées d'avance (486) et les produits constatés d'avance (487) ?",
+   "r": "Ces comptes de régularisation sont <b>rattachés au BFR d'exploitation ou hors exploitation selon la nature de l'opération</b>.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 486 et 487 ; PCG, chapitre « Tableau de financement »",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k15",
+   "type": "comp",
+   "q": "Pourquoi le bilan fonctionnel soustrait-il des capitaux propres le capital souscrit non appelé (compte 109) ?",
+   "r": "<b>Parce qu'il ne constitue pas encore une ressource.</b> Dans une SA, c'est la part des apports en numéraire, au-delà de la fraction libérée à la souscription, que la société n'a pas encore appelée ; ce surplus doit être libéré dans les cinq ans.",
+   "base": [
+    "Règles essentielles#7",
+    "Chiffres et seuils#1"
+   ],
+   "src": "Plan de comptes PCG 2025, compte 109 ; C. com., art. L. 225-3 et L. 225-144",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k16",
+   "type": "comp",
+   "q": "Dans une SA, quelle fraction minimale des apports en numéraire doit être libérée à la constitution et lors d'une augmentation de capital ?",
+   "r": "<b>La moitié au moins</b> à la souscription lors de la constitution, <b>le quart au moins</b> lors d'une augmentation de capital ; le surplus est libéré dans les cinq ans.",
+   "base": [
+    "Chiffres et seuils#1",
+    "Règles essentielles#7"
+   ],
+   "src": "C. com., art. L. 225-3 et L. 225-144 ; plan de comptes PCG 2025",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k17",
+   "type": "comp",
+   "q": "Comment le bilan fonctionnel classe-t-il les intérêts courus non échus sur emprunts et les intérêts courus sur concours bancaires (5186) ?",
+   "r": "Ils sont <b>retirés des dettes financières et classés en dettes hors exploitation</b>.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "Plan de comptes PCG 2025, comptes 1618, 1638, 1648 et 5186 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k18",
+   "type": "comp",
+   "q": "Dans quel compte le PCG 2025 enregistre-t-il les intérêts courus sur un emprunt bancaire ?",
+   "r": "<b>Au compte 1648</b>, et non plus au compte 1688, qui ne subsiste que pour les autres emprunts et dettes assimilées. Les sujets anciens doivent être relus avec le nouveau plan de comptes.",
+   "base": [
+    "Points de vigilance#5",
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "Plan de comptes PCG 2025 ; règlement ANC n° 2022-06",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k21",
+   "type": "comp",
+   "q": "Comment la Banque de France exprime-t-elle les délais de paiement des clients et des fournisseurs ?",
+   "r": "Les <b>créances clients en jours de chiffre d'affaires</b> et les <b>dettes fournisseurs en jours d'achats et charges externes</b>, ces derniers étant retraités du crédit-bail.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "Banque de France, fascicule de résultats sectoriels 2023, définition des ratios",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k22",
+   "type": "comp",
+   "q": "Avant de convertir en jours un ratio de rotation clients ou fournisseurs, que faut-il vérifier sur ses deux termes ?",
+   "r": "<b>Que le numérateur et le dénominateur sont exprimés sur la même base</b> (TTC ou HT), par exemple des créances clients et un chiffre d'affaires tous deux TTC.",
+   "base": [
+    "Points de vigilance#2"
+   ],
+   "src": "Banque de France, fascicule de résultats sectoriels 2023, définition des ratios",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k23",
+   "type": "comp",
+   "q": "Selon la règle générale de l'article L. 441-10 du Code de commerce, quels délais de paiement s'appliquent entre professionnels ?",
+   "r": "Sauf clause contraire, <b>trente jours</b> après la réception des marchandises ou l'exécution de la prestation ; le délai convenu ne peut dépasser <b>soixante jours</b> à compter de l'émission de la facture, ou <b>quarante-cinq jours fin de mois</b> par dérogation. Ces plafonds bornent le crédit clients et le crédit fournisseurs.",
+   "base": [
+    "Règles essentielles#10",
+    "Chiffres et seuils#0"
+   ],
+   "src": "C. com., art. L. 441-10",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k24",
+   "type": "def",
+   "q": "Comment l'Insee définit-il la rentabilité économique d'une entreprise ?",
+   "r": "<b>Le rapport de l'EBE à l'actif économique</b>, c'est-à-dire à la somme des immobilisations brutes corporelles et incorporelles et du besoin en fonds de roulement.",
+   "base": [
+    "Définitions#6"
+   ],
+   "src": "Insee, définition « Taux de marge (statistique d'entreprise) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k25",
+   "type": "comp",
+   "q": "Pourquoi un taux de marge élevé ne suffit-il pas à conclure à une rentabilité économique forte ?",
+   "r": "Parce qu'il <b>traduit souvent un capital d'exploitation important</b>. Avant de conclure, il faut rapporter l'EBE (ou le résultat d'exploitation) aux capitaux investis.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "Insee, définition « Taux de marge (statistique d'entreprise) »",
+   "url": "https://www.insee.fr/fr/metadonnees/definition/c1574",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k26",
+   "type": "comp",
+   "q": "Dans l'analyse de la rentabilité, à quelle condition l'effet de levier de l'endettement est-il favorable ?",
+   "r": "<b>Tant que la rentabilité économique avant impôt (Re) est supérieure au taux de la dette (i).</b> L'écart entre Re et i, multiplié par le rapport des dettes aux capitaux propres, vient alors s'ajouter à Re dans la rentabilité financière.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "CGI, art. 219, I (taux de 25 %) ; programme de l'UE6, analyse de la rentabilité (effet de levier)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046868562",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k27",
+   "type": "comp",
+   "q": "Pourquoi le règlement ANC n° 2022-06 modifie-t-il la lecture du résultat d'exploitation utilisé dans la rentabilité économique ?",
+   "r": "Parce que <b>les cessions d'immobilisations incorporelles et corporelles passent en exploitation</b>. Ce règlement modernise les états financiers pour les exercices ouverts à compter du 1er janvier 2025.",
+   "base": [
+    "Ce qui a changé récemment#1"
+   ],
+   "src": "Règlement ANC n° 2022-06 du 4 novembre 2022",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k28",
+   "type": "comp",
+   "q": "Quelle information de l'annexe permet de classer l'actif par liquidité et le passif par exigibilité dans le bilan financier ?",
+   "r": "<b>L'état des échéances des créances et des dettes</b> à la clôture, qui les ventile à un an au plus et à plus d'un an ; d'où la coupure à un an du bilan financier.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "PCG, annexe : état des échéances des créances et des dettes",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k29",
+   "type": "def",
+   "q": "Qu'est-ce que la cessation des paiements au sens du Code de commerce ?",
+   "r": "<b>L'impossibilité de faire face au passif exigible avec l'actif disponible.</b> C'est la traduction juridique d'une crise de liquidité, distincte de l'insolvabilité (actif total inférieur aux dettes).",
+   "base": [
+    "Définitions#7"
+   ],
+   "src": "C. com., art. L. 631-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k30",
+   "type": "comp",
+   "q": "Pourquoi une entreprise bénéficiaire peut-elle néanmoins se trouver en cessation des paiements ?",
+   "r": "Parce que <b>liquidité et solvabilité ne se confondent pas</b> : si son BFR explose, son actif disponible peut ne plus couvrir son passif exigible.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. com., art. L. 631-1",
+   "url": null,
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k31",
+   "type": "comp",
+   "q": "Selon l'article L. 232-11 du Code de commerce, quand une distribution aux actionnaires est-elle interdite ?",
+   "r": "Hors réduction de capital, <b>lorsque les capitaux propres sont ou deviendraient inférieurs au capital augmenté des réserves que la loi ou les statuts ne permettent pas de distribuer</b>. Une telle distribution constitue un dividende fictif.",
+   "base": [
+    "Règles essentielles#12",
+    "Points de vigilance#4"
+   ],
+   "src": "C. com., art. L. 232-11",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue6-02-k32",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue le classement des postes du bilan financier de celui du bilan fonctionnel ?",
+   "r": "Le <b>bilan financier</b> classe l'actif par liquidité et le passif par exigibilité, avec une coupure à un an. Le <b>bilan fonctionnel</b> lit le bilan en valeurs brutes par cycles : investissement, financement, exploitation, trésorerie.",
+   "base": [
+    "Règles essentielles#13",
+    "Définitions#1"
+   ],
+   "src": "PCG, annexe : état des échéances des créances et des dettes",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_Janvier2025/Recueil-NF-Janvier-2025.pdf",
+   "fiab": "stable"
+  }
+ ]
+}

@@ -90,6 +90,7 @@
  "exercices": [
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Quel texte constitue le Plan comptable général applicable aux comptes individuels des exercices ouverts à compter du 1er janvier 2025 ?",
    "opts": [
     "Le règlement ANC n° 2014-03 modifié",
@@ -105,6 +106,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Un règlement de l'Autorité des normes comptables devient obligatoire :",
    "opts": [
     "Dès son adoption par le collège de l'ANC",
@@ -120,6 +122,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les normes IFRS sont obligatoires en France pour :",
    "opts": [
     "Les comptes individuels de toutes les sociétés anonymes",
@@ -135,6 +138,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Parmi les propositions suivantes concernant l'Autorité des normes comptables, lesquelles sont exactes ? (plusieurs réponses possibles)",
    "opts": [
     "Elle a été créée par l'ordonnance du 22 janvier 2009 en remplacement du CNC et du CRC",
@@ -155,6 +159,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Depuis le 1er janvier 2024, l'autorité de supervision des commissaires aux comptes en France est :",
    "opts": [
     "Le Haut Conseil du commissariat aux comptes (H3C)",
@@ -170,6 +175,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Les normes d'exercice professionnel (NEP) des commissaires aux comptes sont rendues obligatoires par :",
    "opts": [
     "Un règlement de l'ANC",
@@ -185,6 +191,7 @@
   },
   {
    "type": "qcm",
+   "nature": "chiffre",
    "q": "En 2025, une SAS doit nommer un commissaire aux comptes dès lors qu'elle dépasse, à la clôture de l'exercice, deux des trois seuils suivants :",
    "opts": [
     "4 M€ de bilan, 8 M€ de CA HT, 50 salariés",
@@ -200,6 +207,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En 2025, la SAS Verdon présente à la clôture un total de bilan de 5 200 000 €, un chiffre d'affaires HT de 9 400 000 € et 62 salariés. Combien de seuils de nomination obligatoire d'un commissaire aux comptes (5 M€ de bilan, 10 M€ de CA, 50 salariés) sont dépassés ?",
    "a": 2,
    "unit": "",
@@ -211,6 +219,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La durée du mandat d'un commissaire aux comptes nommé dans le cadre d'une mission classique est de :",
    "opts": [
     "Trois exercices",
@@ -226,6 +235,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles affirmations distinguent correctement l'expert-comptable du commissaire aux comptes ? (plusieurs réponses possibles)",
    "opts": [
     "L'expert-comptable est lié au client par une lettre de mission contractuelle",
@@ -246,6 +256,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Classez chaque mission normalisée de l'expert-comptable selon le niveau d'assurance qu'elle procure.",
    "cats": [
     "Présentation des comptes",
@@ -285,6 +296,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Selon le Code de commerce, les comptes annuels doivent être :",
    "opts": [
     "Exacts, exhaustifs et certifiés chaque année",
@@ -300,6 +312,7 @@
   },
   {
    "type": "tri",
+   "nature": "notion",
    "q": "Associez chaque situation au principe comptable qu'elle illustre.",
    "cats": [
     "Prudence",
@@ -341,6 +354,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "La valeur actuelle d'un actif, au sens du PCG, est :",
    "opts": [
     "Son coût d'acquisition diminué des amortissements",
@@ -356,6 +370,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles opérations constituent un changement de méthode comptable au sens du PCG ? (plusieurs réponses possibles)",
    "opts": [
     "Première comptabilisation en provision des engagements de retraite jusque-là mentionnés en annexe",
@@ -376,6 +391,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "L'effet d'un changement de méthode comptable à l'initiative de l'entreprise est, sauf disposition fiscale contraire, comptabilisé :",
    "opts": [
     "En charges ou produits exceptionnels de l'exercice du changement",
@@ -391,6 +407,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "Une machine acquise 120 000 € le 1er janvier N est amortie en linéaire sur 10 ans sans valeur résiduelle. Au 1er janvier N+3, l'entreprise révise la durée d'utilité résiduelle : la machine ne servira plus que 4 ans. Calculez la dotation aux amortissements de l'exercice N+3 (en euros).",
    "a": 21000,
    "unit": "€",
@@ -402,6 +419,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "En N, une entreprise découvre qu'une facture de maintenance de 30 000 € relative à N−2 n'a jamais été comptabilisée. Comment traiter cette correction d'erreur selon le PCG ?",
    "opts": [
     "Corriger les comptes de N−2 et les republier",
@@ -417,6 +435,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Clôture au 31 décembre N, arrêté des comptes le 15 mars N+1. Le 20 janvier N+1, un client dont la créance de 40 000 € figurait au bilan, déjà en redressement judiciaire en décembre, est mis en liquidation. Quel traitement dans les comptes de N ?",
    "opts": [
     "Aucun traitement : l'événement est postérieur à la clôture",
@@ -432,6 +451,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Le 10 février N+1, avant l'arrêté des comptes de N, un incendie détruit un entrepôt de l'entreprise, sans remettre en cause la continuité d'exploitation. Dans les comptes de N :",
    "opts": [
     "On constate une dépréciation de l'entrepôt",
@@ -447,6 +467,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles informations figurent obligatoirement dans l'annexe des comptes annuels d'une société de taille moyenne ? (plusieurs réponses possibles)",
    "opts": [
     "Les règles et méthodes comptables retenues et leurs changements",
@@ -467,6 +488,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "En 2025, une SARL commerciale ne dépassant pas deux des seuils 450 000 € de total de bilan, 900 000 € de chiffre d'affaires net et 10 salariés :",
    "opts": [
     "Est dispensée d'établir une annexe",
@@ -482,6 +504,7 @@
   },
   {
    "type": "calc",
+   "nature": "calcul",
    "q": "En 2025, la SAS Mirabel affiche un total de bilan de 6 800 000 €, un chiffre d'affaires net de 16 200 000 € et 45 salariés. Les seuils de la catégorie « petite entreprise » sont 7 500 000 € de bilan, 15 000 000 € de CA et 50 salariés (il faut dépasser deux critères pour changer de catégorie). Combien de ces seuils la société dépasse-t-elle ?",
    "a": 1,
    "unit": "",
@@ -493,6 +516,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Une entreprise déroge à une prescription comptable parce que son application donnerait une image non fidèle. Quelle obligation en découle ?",
    "opts": [
     "Obtenir l'autorisation préalable de l'ANC avant la clôture",
@@ -508,6 +532,7 @@
   },
   {
    "type": "multi",
+   "nature": "notion",
    "q": "Quelles entités sont tenues d'établir des comptes annuels conformes au PCG ? (plusieurs réponses possibles)",
    "opts": [
     "Une SARL de négoce",
@@ -528,6 +553,7 @@
   },
   {
    "type": "qcm",
+   "nature": "notion",
    "q": "Au DSCG, l'UE 4 (comptabilité et audit) s'appuie sur la hiérarchie des normes vue au DCG. Quelle affirmation est exacte concernant l'articulation PCG / IFRS ?",
    "opts": [
     "Le PCG renvoie aux IFRS pour toute question qu'il ne traite pas",

@@ -1,0 +1,430 @@
+{
+ "id": "ue3-04",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue3-04-k01",
+   "type": "def",
+   "q": "Qu'est-ce qu'un licenciement, pour un salarié en contrat à durée indéterminée (CDI) ?",
+   "r": "<b>La rupture du CDI à l'initiative de l'employeur.</b> Il est motivé et justifié par une cause réelle et sérieuse, qu'il repose sur un motif inhérent à la personne du salarié (motif personnel, disciplinaire ou non) ou sur un motif économique.",
+   "base": [
+    "Définitions#0"
+   ],
+   "src": "C. trav., art. L. 1231-1, L. 1232-1 et L. 1233-2",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k02",
+   "type": "def",
+   "q": "Qu'est-ce qu'un licenciement pour motif économique selon le Code du travail ?",
+   "r": "<b>Un licenciement effectué pour un ou plusieurs motifs non inhérents à la personne du salarié</b>, résultant d'une suppression ou transformation d'emploi ou d'une modification, refusée par le salarié, d'un élément essentiel du contrat.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 1233-3 (version en vigueur depuis le 1er avril 2018)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762081",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k03",
+   "type": "comp",
+   "q": "Selon le Code du travail, à quels événements notamment sont consécutives la suppression ou transformation d'emploi ou la modification du contrat justifiant un licenciement économique ?",
+   "r": "Notamment à <b>des difficultés économiques, des mutations technologiques, une réorganisation nécessaire à la sauvegarde de la compétitivité ou la cessation d'activité</b> de l'entreprise.",
+   "base": [
+    "Définitions#1"
+   ],
+   "src": "C. trav., art. L. 1233-3 (version en vigueur depuis le 1er avril 2018)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762081",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k04",
+   "type": "def",
+   "q": "Qu'est-ce que la rupture conventionnelle d'un contrat de travail à durée indéterminée (CDI) ?",
+   "r": "<b>Le mode de rupture par lequel l'employeur et le salarié conviennent en commun des conditions de la rupture du CDI.</b> Exclusive du licenciement et de la démission, elle ne peut être imposée par l'une ou l'autre des parties.",
+   "base": [
+    "Définitions#2"
+   ],
+   "src": "C. trav., art. L. 1237-11 et L. 1237-14",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k05",
+   "type": "comp",
+   "q": "Quelle intervention administrative conditionne la validité de la convention de rupture conventionnelle signée par l'employeur et le salarié ?",
+   "r": "<b>Elle n'est valable qu'après homologation par l'autorité administrative.</b> Le juge judiciaire ne peut pas homologuer lui-même la convention à la place de l'administration.",
+   "base": [
+    "Définitions#2",
+    "Points de vigilance#2"
+   ],
+   "src": "C. trav., art. L. 1237-11 et L. 1237-14",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k06",
+   "type": "def",
+   "q": "Qu'est-ce que la présomption de démission prévue par le Code du travail ?",
+   "r": "<b>Le salarié qui abandonne volontairement son poste et ne reprend pas le travail après avoir été mis en demeure de justifier son absence et de reprendre son poste, dans le délai fixé par l'employeur, est présumé avoir démissionné</b> à l'expiration de ce délai.",
+   "base": [
+    "Définitions#3"
+   ],
+   "src": "C. trav., art. L. 1237-1 et L. 1237-1-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046773104",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k07",
+   "type": "def",
+   "q": "Qu'est-ce qu'une faute grave justifiant le licenciement d'un salarié ?",
+   "r": "<b>Une faute qui rend impossible le maintien du salarié dans l'entreprise, même pendant le préavis.</b> Elle prive le salarié du préavis et de l'indemnité de licenciement.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. trav., art. L. 1234-1, L. 1234-9 et L. 1235-1 ; service-public.fr, fiche F1137",
+   "url": "https://www.service-public.fr/particuliers/vosdroits/F1137?successfulShare=true/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k08",
+   "type": "comp",
+   "q": "Qu'est-ce qui distingue la faute lourde de la faute grave d'un salarié licencié ?",
+   "r": "<b>L'intention de nuire à l'employeur.</b> Comme la faute grave, la faute lourde rend impossible le maintien du salarié dans l'entreprise, mais elle suppose en outre cette intention.",
+   "base": [
+    "Définitions#4"
+   ],
+   "src": "C. trav., art. L. 1234-1, L. 1234-9 et L. 1235-1 ; service-public.fr, fiche F1137",
+   "url": "https://www.service-public.fr/particuliers/vosdroits/F1137?successfulShare=true/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k09",
+   "type": "comp",
+   "q": "Quelles sont les étapes de la procédure de licenciement pour motif personnel prévues par le Code du travail ?",
+   "r": "<b>Convocation à un entretien préalable</b> par lettre recommandée ou remise en main propre contre décharge, <b>entretien</b> au moins cinq jours ouvrables après la présentation de la lettre, où le salarié peut se faire assister, puis <b>notification par lettre recommandée avec avis de réception</b> énonçant le ou les motifs, expédiée au moins deux jours ouvrables après la date prévue de l'entretien.",
+   "base": [
+    "Règles essentielles#0"
+   ],
+   "src": "C. trav., art. L. 1232-2 à L. 1232-6, L. 1235-2 et R. 1232-13 (décret n° 2017-1702 du 15 décembre 2017)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036212577",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k10",
+   "type": "comp",
+   "q": "Comment le Code du travail caractérise-t-il les difficultés économiques pouvant justifier un licenciement pour motif économique ?",
+   "r": "<b>Par l'évolution significative d'au moins un indicateur</b> : baisse des commandes ou du chiffre d'affaires, pertes d'exploitation, dégradation de la trésorerie ou de l'excédent brut d'exploitation.",
+   "base": [
+    "Règles essentielles#1"
+   ],
+   "src": "C. trav., art. L. 1233-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762081",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k11",
+   "type": "comp",
+   "q": "Outre l'ordre des licenciements, le plan de sauvegarde de l'emploi et le CSP, quelles obligations préalables pèsent sur l'employeur envisageant un licenciement économique ?",
+   "r": "<b>Des efforts de formation et d'adaptation et une recherche de reclassement</b> sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe, ainsi que <b>la consultation du CSE et l'information de l'administration</b>.",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 1233-4, L. 1233-5, L. 1233-8, L. 1233-19 et L. 1233-45",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k12",
+   "type": "comp",
+   "q": "Quels critères déterminent l'ordre des licenciements pour motif économique selon le Code du travail ?",
+   "r": "<b>Les charges de famille, l'ancienneté, la situation sociale rendant la réinsertion difficile et les qualités professionnelles.</b>",
+   "base": [
+    "Règles essentielles#2"
+   ],
+   "src": "C. trav., art. L. 1233-4, L. 1233-5, L. 1233-8, L. 1233-19 et L. 1233-45",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k13",
+   "type": "comp",
+   "q": "Quand un plan de sauvegarde de l'emploi (PSE) est-il obligatoire en cas de projet de licenciement pour motif économique ?",
+   "r": "<b>Dans les entreprises d'au moins 50 salariés, lorsque le projet concerne au moins 10 salariés dans une même période de 30 jours.</b> Il est fixé par un accord collectif majoritaire validé par l'administration (DREETS) ou établi par un document unilatéral de l'employeur homologué par elle.",
+   "base": [
+    "Règles essentielles#3"
+   ],
+   "src": "C. trav., art. L. 1233-61, L. 1233-24-1, L. 1233-24-4, L. 1233-57-2 et L. 1233-57-3",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k14",
+   "type": "comp",
+   "q": "Quel est l'effet de l'adhésion du salarié au contrat de sécurisation professionnelle (CSP) proposé lors d'un licenciement économique envisagé ?",
+   "r": "<b>L'adhésion emporte rupture du contrat de travail.</b> Le délai de contestation de douze mois à compter de l'adhésion n'est opposable au salarié que s'il a été mentionné dans la proposition de CSP.",
+   "base": [
+    "Règles essentielles#4"
+   ],
+   "src": "C. trav., art. L. 1233-66 et L. 1233-67",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031014016/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k15",
+   "type": "comp",
+   "q": "Que fixe la convention de rupture conventionnelle signée par l'employeur et le salarié en CDI ?",
+   "r": "<b>Le montant de l'indemnité spécifique et la date de rupture.</b> L'indemnité ne peut être inférieure à l'indemnité légale de licenciement, et la rupture ne peut intervenir avant le lendemain de l'homologation.",
+   "base": [
+    "Règles essentielles#5"
+   ],
+   "src": "C. trav., art. L. 1237-12, L. 1237-13, R. 1237-3 et D. 1237-3-1 (décret n° 2021-1639 du 13 décembre 2021)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019071182",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k16",
+   "type": "comp",
+   "q": "De quel droit chaque partie dispose-t-elle après la signature d'une convention de rupture conventionnelle ?",
+   "r": "<b>D'un droit de rétractation de quinze jours calendaires</b> à compter de la signature par les deux parties. La demande d'homologation ne peut être valablement adressée avant l'expiration de ce délai.",
+   "base": [
+    "Règles essentielles#5",
+    "Points de vigilance#2"
+   ],
+   "src": "C. trav., art. L. 1237-12, L. 1237-13, R. 1237-3 et D. 1237-3-1 (décret n° 2021-1639 du 13 décembre 2021)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019071182",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k17",
+   "type": "comp",
+   "q": "Que se passe-t-il si l'administration ne notifie aucune décision sur une demande d'homologation de rupture conventionnelle dans le délai légal ?",
+   "r": "<b>L'homologation est réputée acquise.</b> L'administration dispose de quinze jours ouvrables à compter de la réception de la demande pour vérifier le respect des conditions légales et la liberté du consentement.",
+   "base": [
+    "Règles essentielles#6"
+   ],
+   "src": "C. trav., art. L. 1237-14",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k18",
+   "type": "comp",
+   "q": "Quelle juridiction connaît des litiges relatifs à une rupture conventionnelle, à son homologation ou à un refus d'homologation ?",
+   "r": "<b>Le conseil de prud'hommes, à l'exclusion de tout autre recours.</b> Le recours doit être formé dans les douze mois de l'homologation, même si le salarié n'en a pas été informé, et ce délai vaut pour toutes les contestations, y compris pour vice du consentement.",
+   "base": [
+    "Règles essentielles#6",
+    "Points de vigilance#2"
+   ],
+   "src": "C. trav., art. L. 1237-14",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k19",
+   "type": "comp",
+   "q": "Selon la Cour de cassation, quelle prescription s'applique à l'action en paiement de l'indemnité compensatrice de préavis ?",
+   "r": "<b>La prescription triennale</b>, car cette indemnité, due lorsque le préavis n'est pas exécuté du fait de l'employeur, a la nature d'une créance salariale ; le délai de 12 mois applicable à la contestation de la rupture ne s'y applique pas.",
+   "base": [
+    "Chiffres et seuils#7",
+    "Règles essentielles#7"
+   ],
+   "src": "Cass. soc., 12 février 2025, n° 23-18.876, publié au bulletin ; C. trav., art. L. 3245-1",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000051243749",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k20",
+   "type": "comp",
+   "q": "À quelles conditions un salarié licencié a-t-il droit à l'indemnité légale de licenciement ?",
+   "r": "<b>Être en CDI et compter huit mois d'ancienneté ininterrompus</b> lorsqu'il est licencié ; l'indemnité n'est pas due en cas de faute grave.",
+   "base": [
+    "Règles essentielles#8"
+   ],
+   "src": "C. trav., art. L. 1234-9 ; R. 1234-1, R. 1234-2 et R. 1234-4",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000035644692",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k21",
+   "type": "comp",
+   "q": "Quels documents l'employeur doit-il remettre au salarié à la fin du contrat de travail ?",
+   "r": "<b>Un certificat de travail, l'attestation destinée à France Travail et le solde de tout compte</b>, inventaire des sommes versées lors de la rupture. Le reçu pour solde de tout compte peut être dénoncé dans les six mois de sa signature ; il devient ensuite libératoire pour l'employeur pour les sommes qui y sont mentionnées.",
+   "base": [
+    "Règles essentielles#9"
+   ],
+   "src": "C. trav., art. L. 1234-19, L. 1234-20 et R. 1234-9",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k22",
+   "type": "comp",
+   "q": "Quelle indemnité le juge accorde-t-il pour un licenciement sans cause réelle et sérieuse lorsque l'une ou l'autre des parties refuse la réintégration ?",
+   "r": "<b>Une indemnité comprise entre des montants minimaux et maximaux fixés en mois de salaire brut selon l'ancienneté</b> en années complètes (barème). Le juge peut tenir compte des indemnités de licenciement versées, à l'exception de l'indemnité légale.",
+   "base": [
+    "Règles essentielles#10"
+   ],
+   "src": "C. trav., art. L. 1235-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762052",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k23",
+   "type": "comp",
+   "q": "Quand le barème d'indemnisation du licenciement sans cause réelle et sérieuse est-il écarté par le Code du travail ?",
+   "r": "<b>Lorsque le licenciement est entaché de nullité</b> (violation d'une liberté fondamentale, harcèlement moral ou sexuel, discrimination, salarié protégé…). À défaut de réintégration, l'indemnité ne peut alors être inférieure aux salaires des six derniers mois.",
+   "base": [
+    "Règles essentielles#11"
+   ],
+   "src": "C. trav., art. L. 1235-3-1",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762026",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k24",
+   "type": "comp",
+   "q": "Quelle sanction s'applique lorsque le licenciement repose sur une cause réelle et sérieuse mais que la procédure requise n'a pas été observée ?",
+   "r": "<b>Le juge accorde au salarié une indemnité qui ne peut être supérieure à un mois de salaire.</b>",
+   "base": [
+    "Règles essentielles#12"
+   ],
+   "src": "C. trav., art. L. 1235-2",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036261950",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k25",
+   "type": "def",
+   "q": "Qu'est-ce que la mise à la retraite d'un salarié selon le Code du travail ?",
+   "r": "<b>La possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge du taux plein automatique (67 ans)</b>, après l'avoir interrogé par écrit sur son intention de partir ; en cas de refus, la mise à la retraite est impossible pendant l'année qui suit, et ce chaque année jusqu'à ses 69 ans. Cette rupture ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement.",
+   "base": [
+    "Règles essentielles#13"
+   ],
+   "src": "C. trav., art. L. 1237-5 (version en vigueur depuis le 26 octobre 2025), L. 1237-7, L. 1237-9 et L. 1237-10 ; CSS, art. L. 351-8",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052437183",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k26",
+   "type": "comp",
+   "q": "Quels effets produit la prise d'acte de la rupture de son contrat de travail par un salarié ?",
+   "r": "<b>Ceux d'un licenciement sans cause réelle et sérieuse si les faits reprochés à l'employeur la justifiaient, ceux d'une démission dans le cas contraire.</b> Le salarié peut aussi rester en poste et demander au juge la résiliation judiciaire du contrat.",
+   "base": [
+    "Règles essentielles#15"
+   ],
+   "src": "Cass. soc., 25 juin 2003, n° 01-42.679, publié au bulletin ; C. trav., art. L. 1451-1 (loi n° 2014-743 du 1er juillet 2014) ; Cass. soc., 18 septembre 2019, n° 18-15.765 ; C. civ., art. 1224 et 1227",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007045912/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k27",
+   "type": "def",
+   "q": "Qu'est-ce que la rupture conventionnelle collective prévue par le Code du travail ?",
+   "r": "<b>Un mode de rupture dont un accord collectif détermine le contenu, excluant tout licenciement pour atteindre les objectifs de suppression d'emplois.</b> L'accord, qui fixe notamment le nombre maximal de départs envisagés, est validé par l'autorité administrative.",
+   "base": [
+    "Règles essentielles#16"
+   ],
+   "src": "C. trav., art. L. 1237-19, L. 1237-19-1 (version en vigueur depuis le 1er janvier 2026) et L. 1237-19-3",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762168",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k28",
+   "type": "comp",
+   "q": "Que doit respecter la mise en demeure adressée au salarié en abandon de poste pour déclencher la présomption de démission ?",
+   "r": "<b>Le délai qu'elle fixe ne peut être inférieur à quinze jours à compter de sa présentation</b>, et elle doit informer le salarié des conséquences de l'absence de reprise du travail, comme l'a précisé le Conseil d'État le 18 décembre 2024.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. trav., art. L. 1237-1-1 et R. 1237-13 ; CE, 18 décembre 2024, n° 473640",
+   "url": "https://www.conseil-etat.fr/fr/arianeweb/CE/analyse/2024-12-18/473640",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k29",
+   "type": "comp",
+   "q": "Qu'est-ce qui fait obstacle à la présomption de démission du salarié ayant abandonné son poste ?",
+   "r": "<b>Un motif légitime</b> : raisons médicales, exercice du droit de retrait ou du droit de grève, refus d'exécuter une instruction contraire à une réglementation… Le salarié peut contester la rupture devant le conseil de prud'hommes, qui statue au fond dans le mois.",
+   "base": [
+    "Ce qui a changé récemment#0"
+   ],
+   "src": "C. trav., art. L. 1237-1-1 et R. 1237-13 ; CE, 18 décembre 2024, n° 473640",
+   "url": "https://www.conseil-etat.fr/fr/arianeweb/CE/analyse/2024-12-18/473640",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k30",
+   "type": "comp",
+   "q": "Que permet à l'employeur le contrat de valorisation de l'expérience institué à titre expérimental par la loi du 24 octobre 2025 ?",
+   "r": "<b>Mettre le salarié à la retraite sans recueillir son accord, dès qu'il remplit les conditions d'une pension à taux plein.</b> Ce CDI est conclu avec un salarié recruté à 60 ans au moins (57 ans si un accord collectif le prévoit).",
+   "base": [
+    "Ce qui a changé récemment#2"
+   ],
+   "src": "Loi n° 2025-989 du 24 octobre 2025, art. 4 ; C. trav., art. L. 1237-5 ; Urssaf, « Les indemnités de retraite »",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000052430969",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k31",
+   "type": "comp",
+   "q": "Sur quel motif repose le licenciement du salarié qui refuse la modification de son contrat résultant d'un accord de performance collective ?",
+   "r": "<b>Sur un motif spécifique constituant une cause réelle et sérieuse</b>, avec la procédure du licenciement pour motif personnel. Il est toutefois sans cause réelle et sérieuse si l'accord comportait des dispositions étrangères à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne.",
+   "base": [
+    "Ce qui a changé récemment#4"
+   ],
+   "src": "C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k32",
+   "type": "comp",
+   "q": "Quelle indemnité le salarié licencié pour faute grave ou pour faute lourde conserve-t-il malgré la gravité de sa faute ?",
+   "r": "<b>L'indemnité compensatrice de congés payés.</b> Pour la faute lourde, le Conseil constitutionnel a déclaré contraires à la Constitution les mots de l'ancien article L. 3141-26 qui excluaient cette indemnité.",
+   "base": [
+    "Points de vigilance#0"
+   ],
+   "src": "C. trav., art. L. 1234-1, L. 1234-9 et L. 3141-28 ; Cons. const., décision n° 2015-523 QPC du 2 mars 2016",
+   "url": "https://www.conseil-constitutionnel.fr/decision/2016/2015523QPC.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k33",
+   "type": "comp",
+   "q": "Comment le juge doit-il appliquer le barème d'indemnisation du licenciement sans cause réelle et sérieuse selon la Cour de cassation ?",
+   "r": "<b>Il apprécie la situation concrète du salarié à l'intérieur des bornes légales</b> ; il ne peut pas écarter le barème en invoquant l'article 24 de la Charte sociale européenne.",
+   "base": [
+    "Points de vigilance#1"
+   ],
+   "src": "Cons. const., décision n° 2018-761 DC du 21 mars 2018 ; Cass. soc., 9 avril 2025, n° 24-13.958 ; C. trav., art. L. 1235-3 et L. 1235-3-1",
+   "url": "https://www.conseil-constitutionnel.fr/decision/2018/2018761DC.htm",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k34",
+   "type": "comp",
+   "q": "Quel est le rôle du bureau de conciliation et d'orientation du conseil de prud'hommes ?",
+   "r": "<b>Il cherche à concilier les parties et met l'affaire en état</b>, avant que celle-ci soit portée devant le bureau de jugement. Il est composé d'un conseiller salarié et d'un conseiller employeur.",
+   "base": [
+    "Points de vigilance#3"
+   ],
+   "src": "C. trav., art. L. 1453-1 A à L. 1453-9 et L. 1454-1 ; service-public.fr, fiche F1052",
+   "url": "https://www.service-public.fr/particuliers/vosdroits/F1052?quest0=1&quest=/",
+   "fiab": "stable"
+  },
+  {
+   "id": "ue3-04-k35",
+   "type": "comp",
+   "q": "Dans quels cas un contrat à durée déterminée (CDD) peut-il être rompu avant l'échéance de son terme ?",
+   "r": "<b>D'un commun accord, ou en cas de faute grave, de force majeure ou d'inaptitude constatée par le médecin du travail.</b> Le salarié peut aussi le rompre en justifiant d'une embauche en CDI. La rupture anticipée injustifiée par l'employeur ouvre droit à des dommages-intérêts au moins égaux aux rémunérations que le salarié aurait perçues jusqu'au terme.",
+   "base": [
+    "Règles essentielles#14"
+   ],
+   "src": "C. trav., art. L. 1243-1 à L. 1243-5",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029946319",
+   "fiab": "stable"
+  }
+ ]
+}
