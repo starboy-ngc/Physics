@@ -3,8 +3,8 @@
 Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six matières, une fiche documentaire
 sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
-test quotidien, révisions espacées, plan comptable général 2025 commenté compte par compte (606 comptes),
-jeu de progression (« l'expédition vers les aurores ») et 64 succès à débloquer (bronze, argent, or) dans six catégories :
+test quotidien, révisions espacées avec plateau d'avancement par thème, plan comptable général 2025 commenté
+compte par compte (612 comptes), jeu de progression (« l'expédition vers les aurores ») et 66 succès à débloquer (bronze, argent, or) dans six catégories :
 régularité, précision, maîtrise, matières, exploration et expédition.
 
 ## Utiliser
@@ -25,6 +25,23 @@ aucun serveur. La progression est gardée dans le navigateur ; un code de sauveg
 
 Référentiel : PCG 2025 (règlement ANC n° 2022-06), droit et fiscalité 2025-2026. Les chiffres qui changent
 chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé et signalés « chiffres 2025 ».
+
+## Révisions espacées
+
+Chaque question répondue entre sur une échelle de rappel :
+
+| Marche | Demain | 2 jours | 5 jours | 10 jours | 20 jours | 30 jours | Chaque mois |
+|---|---|---|---|---|---|---|---|
+
+- question nouvelle réussie : elle revient dans 2 jours ; ratée : elle revient demain ;
+- bonne réponse le jour où elle est due (ou après) : une marche vers la droite ; la dernière marche se répète chaque mois ;
+- erreur : une marche vers la gauche, et la question revient selon le délai de cette marche (une erreur à « 10 jours » la ramène à « 5 jours ») ;
+- une bonne réponse donnée avant l'échéance (en relisant un chapitre, par exemple) ne fait pas monter la question.
+
+L'onglet Révisions affiche le plateau d'avancement (nombre de questions sur chaque marche) pour l'ensemble et pour
+chaque matière, avec le détail par chapitre, la part de questions mémorisées (10 jours et plus), la réussite sur
+30 jours, la tendance sur 7 jours, la charge des 14 prochains jours et la courbe de réussite sur 30 jours.
+Le nombre de nouvelles questions introduites par jour se règle de 0 à 30 (10 par défaut).
 
 ## Fiches documentaires
 

@@ -10,6 +10,7 @@
   --accent: #1f5f8b; --accent-soft: #e3eef6;
   --ok: #2d7a4f; --ok-soft: #e2f1e7; --bad: #b4302c; --bad-soft: #f8e4e2; --warn: #9a6a12; --warn-soft: #f6ecd4;
   --bronze: #9a5b2e; --silver: #5f6b78; --gold: #9a7410;
+  --st1: #86b6ef; --st1-ink: #0b0b0b; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #1c5cab; --st3-ink: #ffffff; --st4: #0d366b; --st4-ink: #ffffff; --viz1: #2a78d6;
   --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
   --display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -18,13 +19,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
-    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a;
+    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
-  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a;
+  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a; --st1: #1c5cab; --st1-ink: #ffffff; --st2: #3987e5; --st2-ink: #0b0b0b; --st3: #6da7ec; --st3-ink: #0b0b0b; --st4: #b7d3f6; --st4-ink: #0b0b0b; --viz1: #3987e5;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -188,6 +189,58 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .toast.show { opacity: 1; }
 .xp-pop { position: fixed; right: 16px; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: #fff; font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
 .xp-pop.show { opacity: 1; transform: translateY(0); }
+.ladder { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; margin: 10px 0 4px; max-width: 640px; }
+.ladder span { text-align: center; font: 500 0.74rem var(--mono); padding: 6px 2px; border-radius: 4px; }
+.plat { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 2px; }
+.plat .cell { border-radius: 4px; padding: 6px 2px; text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 46px; }
+.plat .cell .v { font: 600 1.02rem var(--body); line-height: 1.2; }
+.plat .cell .l { font: 0.66rem var(--mono); letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.plat.mini .cell { min-height: 34px; padding: 3px 2px; }
+.plat.mini .cell .v { font-size: 0.86rem; }
+.cell.b0, .ladder .b0 { background: var(--rule-soft); color: var(--muted); }
+.cell.b1, .ladder .b1 { background: var(--st1); color: var(--st1-ink); }
+.cell.b2, .ladder .b2 { background: var(--st2); color: var(--st2-ink); }
+.cell.b3, .ladder .b3 { background: var(--st3); color: var(--st3-ink); }
+.cell.b4, .ladder .b4 { background: var(--st4); color: var(--st4-ink); }
+.cell.empty { opacity: 0.38; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); margin: 4px 0 10px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 5px; }
+.themes { display: grid; gap: 10px; }
+.theme { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; display: grid; gap: 8px; }
+.theme .th { display: flex; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; align-items: baseline; }
+.theme .th .ttl { font-weight: 600; }
+.kpis { display: flex; gap: 4px 14px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
+.kpis b { color: var(--ink); font-weight: 600; }
+.theme details summary { cursor: pointer; font-size: 0.84rem; color: var(--accent); }
+.theme .chaps { display: grid; gap: 8px; margin-top: 8px; }
+.theme .chaps .ct { font-size: 0.82rem; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.move { margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--rule); font-size: 0.9rem; }
+.move .ladder { margin: 6px 0 0; }
+.move .ladder span { padding: 3px 2px; font-size: 0.66rem; }
+.move .ladder span.off { background: var(--rule-soft); color: var(--muted); opacity: 0.6; }
+.move .ladder span.cur { outline: 2px solid var(--ink); outline-offset: -2px; }
+.chart { position: relative; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 10px 4px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .grid line { stroke: var(--rule-soft); stroke-width: 1; }
+.chart .axis line { stroke: var(--rule); stroke-width: 1; }
+.chart text { fill: var(--muted); font: 11px var(--mono); }
+.chart text.val { fill: var(--ink); font-weight: 500; }
+.chart .bar { fill: var(--viz1); }
+.chart .hit { fill: transparent; cursor: default; }
+.chart .hit:hover + .bar, .chart .hit:focus + .bar { opacity: 0.8; }
+.chart .line { fill: none; stroke: var(--viz1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .area { fill: var(--viz1); opacity: 0.1; }
+.chart .dot { fill: var(--viz1); stroke: var(--card); stroke-width: 2; }
+.chart .xh { stroke: var(--muted); stroke-width: 1; }
+.tip { position: absolute; pointer-events: none; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 9px; font-size: 0.8rem; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12); opacity: 0; transition: opacity .12s; white-space: nowrap; z-index: 5; }
+.tip b { font-size: 0.95rem; }
+.tip.show { opacity: 1; }
+.datatab { font-size: 0.82rem; }
+.datatab table { border-collapse: collapse; margin-top: 6px; }
+.datatab td, .datatab th { padding: 3px 10px 3px 0; text-align: left; font-variant-numeric: tabular-nums; }
+.setting { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.86rem; color: var(--muted); }
+.setting select { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 4px 8px; }
+@media (max-width: 480px) { .plat .cell .l { font-size: 0.6rem; } .plat .cell .v { font-size: 0.92rem; } }
 .sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
 .succ { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; background: var(--card); display: grid; grid-template-columns: 42px 1fr; gap: 3px 10px; align-content: start; }
 .succ .ic { font-size: 1.6rem; line-height: 1.1; grid-row: span 4; text-align: center; }
@@ -283,26 +336,56 @@ function sanitize(html) { return String(html || "").replace(/<script[\s\S]*?<\/s
 
 // ---------- État ----------
 const KEY = "debit-credit.v2";
-const INTERVALS = [1, 3, 7, 15, 30, 60];
-const ACQUIS = 3;
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0 } });
-function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; return o; }
+// Échelle de révision : une bonne réponse fait monter d'une étape, une erreur fait redescendre d'une étape.
+// Étape 0 : demain · 1 : 2 jours · 2 : 5 jours · 3 : 10 jours · 4 : 20 jours · 5 : 30 jours · 6 : chaque mois.
+const STEPS = [
+  { j: 1, nom: "Demain", court: "Dem." }, { j: 2, nom: "2 jours", court: "2 j" }, { j: 5, nom: "5 jours", court: "5 j" },
+  { j: 10, nom: "10 jours", court: "10 j" }, { j: 20, nom: "20 jours", court: "20 j" }, { j: 30, nom: "30 jours", court: "30 j" },
+  { j: 0, nom: "Chaque mois", court: "Mois" },
+];
+const MAX_STEP = STEPS.length - 1;
+const ACQUIS = 3; // une question est « mémorisée » à partir de l'étape 10 jours
+const BANDS = [{ nom: "Nouvelles" }, { nom: "À reprendre (demain)" }, { nom: "En apprentissage (2 et 5 jours)" }, { nom: "Mémorisées (10 et 20 jours)" }, { nom: "Ancrées (30 jours et chaque mois)" }];
+const bandOf = st => st <= 0 ? 1 : st <= 2 ? 2 : st <= 4 ? 3 : 4;
+function startOfDay(t) { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); }
+function dueAfter(step, from) { const d = new Date(startOfDay(from)); if (step >= MAX_STEP) d.setMonth(d.getMonth() + 1); else d.setDate(d.getDate() + STEPS[step].j); return d.getTime(); }
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, hist: {}, newIntro: {}, newPerDay: 10, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0 } });
+function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; o.hist = o.hist || {}; o.newIntro = o.newIntro || {}; if (typeof o.newPerDay !== "number") o.newPerDay = 10; return o; }
 let state = EMPTY();
 function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
 function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
 function save() { persist(); clearTimeout(save.h); save.h = setTimeout(() => checkSucces(false), 0); }
 function card(id) { return state.cards[id] || { s: 0, due: 0, n: 0, ok: 0 }; }
 function record(id, ok, mode) {
-  const c = card(id); const ex = EXO[id];
+  const c = card(id); const ex = EXO[id]; const now = Date.now();
+  const seen = (c.n || 0) > 0; const from = seen ? (c.s || 0) : null; const isDue = !seen || c.due <= now;
   c.n = (c.n || 0) + 1; if (ok) c.ok = (c.ok || 0) + 1;
-  if (ok) { c.s = Math.min(c.s + 1, INTERVALS.length); c.due = Date.now() + INTERVALS[c.s - 1] * DAY; }
-  else { c.s = 0; c.due = Date.now() + DAY; }
+  let moved = true;
+  if (!seen) c.s = ok ? 1 : 0;
+  else if (ok) { if (isDue) c.s = Math.min((c.s || 0) + 1, MAX_STEP); else moved = false; }
+  else c.s = Math.max((c.s || 0) - 1, 0);
+  if (moved) c.due = dueAfter(c.s, now);
+  c.last = now; if (!seen) c.first = todayKey();
   state.cards[id] = c;
   const d = todayKey(); state.days[d] = (state.days[d] || 0) + 1;
+  const h = state.hist[d] || (state.hist[d] = { n: 0, ok: 0, ue: {} }); h.n++; if (ok) h.ok++;
+  const ue = ex && CHAP_BY[ex.chap] ? CHAP_BY[ex.chap].ue : "?"; const hu = h.ue[ue] || (h.ue[ue] = [0, 0]); hu[0]++; if (ok) hu[1]++;
   if (ok) { state.stats.run++; state.stats.best = Math.max(state.stats.best, state.stats.run); } else state.stats.run = 0;
   if (mode === "revision") state.stats.revs++;
   if (ok && ex) addXp((mode === "revision" ? 5 : 10) * (ex.niveau || 1));
   save(); updateBadge(); renderRank();
+  return { from, to: c.s, moved, due: c.due, ok, isNew: !seen };
+}
+function fmtDue(t) { const days = Math.round((startOfDay(t) - startOfDay(Date.now())) / DAY); if (days <= 0) return "aujourd'hui"; if (days === 1) return "demain"; return `le ${new Date(t).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}`; }
+function ladderHTML(cur, from) { return `<div class="ladder" aria-hidden="true">${STEPS.map((st, i) => `<span class="b${bandOf(i)} ${i > cur ? "off" : ""} ${i === cur ? "cur" : ""}">${st.court}</span>`).join("")}</div>`; }
+function moveNote(host, mv) {
+  const fb = host.querySelector(".feedback"); if (!fb || !mv) return;
+  const nom = i => `« ${STEPS[i].nom} »`; let t;
+  if (mv.isNew) t = mv.ok ? `Nouvelle question réussie : elle entre à l'étape ${nom(mv.to)} et reviendra ${fmtDue(mv.due)}.` : `Nouvelle question à reprendre : elle reviendra ${fmtDue(mv.due)}.`;
+  else if (!mv.moved) t = `Pas encore à réviser : elle reste à l'étape ${nom(mv.to)} et reviendra ${fmtDue(mv.due)}.`;
+  else if (mv.ok) t = mv.to === mv.from ? `Étape ${nom(mv.to)} maintenue : elle reviendra ${fmtDue(mv.due)}.` : `Bonne réponse : étape ${nom(mv.from)} → ${nom(mv.to)}. Elle reviendra ${fmtDue(mv.due)}.`;
+  else t = mv.to === mv.from ? `Erreur : elle reste à l'étape ${nom(mv.to)} et reviendra ${fmtDue(mv.due)}.` : `Erreur : retour de l'étape ${nom(mv.from)} à ${nom(mv.to)}. Elle reviendra ${fmtDue(mv.due)}.`;
+  const div = document.createElement("div"); div.className = "move"; div.innerHTML = `<div>${esc(t)}</div>${ladderHTML(mv.to)}`; fb.appendChild(div);
 }
 function addXp(n) { state.xp = (state.xp || 0) + n; const p = document.getElementById("xpPop"); p.textContent = `+${n} XP`; p.classList.add("show"); clearTimeout(addXp.h); addXp.h = setTimeout(() => p.classList.remove("show"), 1200); }
 const RANKS = [[0, "Mousse"], [400, "Matelot"], [1200, "Timonier"], [2500, "Second"], [4500, "Capitaine"], [7500, "Navigateur des aurores"], [12000, "Gardien du phare"]];
@@ -505,12 +588,14 @@ const SUCCES = [
   S("grand-livre", "Précision", "or", "📚", "Grand livre", "100 écritures justes du premier coup", () => okBy(["ecriture"]), 100),
   S("calculateur", "Précision", "argent", "🧮", "Calculateur", "50 calculs justes du premier coup", () => okBy(["calc"]), 50),
   S("oeil-exerce", "Précision", "argent", "🔍", "Œil exercé", "50 QCM à réponses multiples justes", () => okBy(["multi"]), 50),
-  S("notions-10", "Maîtrise", "bronze", "🌱", "Dix notions", "10 notions acquises (trois réussites espacées)", acquiredCount, 10),
-  S("notions-50", "Maîtrise", "bronze", "🌿", "Cinquante notions", "50 notions acquises", acquiredCount, 50),
-  S("notions-100", "Maîtrise", "argent", "🌳", "Cent notions", "100 notions acquises", acquiredCount, 100),
-  S("notions-250", "Maîtrise", "argent", "🌲", "Deux cent cinquante notions", "250 notions acquises", acquiredCount, 250),
-  S("notions-500", "Maîtrise", "or", "🏞", "Cinq cents notions", "500 notions acquises", acquiredCount, 500),
-  S("notions-1000", "Maîtrise", "or", "🗺", "Mille notions", "1 000 notions acquises", acquiredCount, 1000),
+  S("notions-10", "Maîtrise", "bronze", "🌱", "Dix notions", "10 questions mémorisées (étape « 10 jours » atteinte)", acquiredCount, 10),
+  S("notions-50", "Maîtrise", "bronze", "🌿", "Cinquante notions", "50 questions mémorisées", acquiredCount, 50),
+  S("notions-100", "Maîtrise", "argent", "🌳", "Cent notions", "100 questions mémorisées", acquiredCount, 100),
+  S("notions-250", "Maîtrise", "argent", "🌲", "Deux cent cinquante notions", "250 questions mémorisées", acquiredCount, 250),
+  S("notions-500", "Maîtrise", "or", "🏞", "Cinq cents notions", "500 questions mémorisées", acquiredCount, 500),
+  S("notions-1000", "Maîtrise", "or", "🗺", "Mille notions", "1 000 questions mémorisées", acquiredCount, 1000),
+  S("ancrage", "Maîtrise", "argent", "⚓", "Ancrage", "10 questions arrivées à l'étape « chaque mois »", () => Object.values(state.cards).filter(k => k.n > 0 && (k.s || 0) >= MAX_STEP).length, 10),
+  S("memoire-acier", "Maîtrise", "or", "🛡", "Mémoire d'acier", "100 questions arrivées à l'étape « chaque mois »", () => Object.values(state.cards).filter(k => k.n > 0 && (k.s || 0) >= MAX_STEP).length, 100),
   S("chapitre-fini", "Maîtrise", "bronze", "📖", "Chapitre bouclé", "Terminer la série d'exercices d'un chapitre", () => Object.keys(state.done).length, 1),
   S("premier-camp", "Maîtrise", "argent", "⛺", "Premier camp", "Un chapitre entièrement acquis", campsLit, 1),
   S("dix-camps", "Maîtrise", "or", "🏕", "Dix camps", "Dix chapitres entièrement acquis", campsLit, 10),
@@ -576,7 +661,11 @@ function renderAccueil() {
   <div class="tile"><div class="big">${due}</div><div class="lab">révision${due > 1 ? "s" : ""} à faire</div></div>
   <div class="tile"><div class="big">${streak()}</div><div class="lab">jour${streak() > 1 ? "s" : ""} d'affilée · ${todayN} réponse${todayN > 1 ? "s" : ""} aujourd'hui</div></div>
 </div>
-<h3 style="margin-top:4px">Prochains succès</h3>
+<div class="cta"><div><div class="t">Révisions espacées : ${dueFor("Tous").length} question${dueFor("Tous").length > 1 ? "s" : ""} à revoir</div><div class="muted small">Plus ${Math.min(newLeftToday(), newPool("Tous").length)} nouvelle${Math.min(newLeftToday(), newPool("Tous").length) > 1 ? "s" : ""} aujourd'hui. Demain, 2, 5, 10, 20, 30 jours, puis chaque mois.</div></div><button class="btn" id="goRev">Réviser</button></div>
+<h3 style="margin-top:4px">Plateau d'avancement</h3>
+${plateauHTML(Object.keys(EXO))}
+<div class="legend" style="margin-top:6px">${BANDS.map((b, i) => `<span><i style="background:var(${i === 0 ? "--rule-soft" : `--st${i}`})"></i>${esc(b.nom)}</span>`).join("")}</div>
+<h3>Prochains succès</h3>
 <div class="sgrid">${nextSucces(3).map(succCard).join("")}</div>
 <div class="actions" style="margin-top:8px"><button class="btn quiet" id="goSucc">Tous les succès (${Object.keys(state.succes).length} / ${SUCCES.length})</button></div>
 <h3>Trente derniers jours</h3>
@@ -587,6 +676,7 @@ function renderAccueil() {
 ${nc ? `<div class="actions"><button class="btn ghost" id="goNext">Chapitre conseillé : ${esc(nc.ue)} · ${esc(nc.title)}</button></div>` : ""}`;
   main.querySelector("#goTest").onclick = () => go({ tab: "test" });
   main.querySelector("#goSucc").onclick = () => go({ tab: "succes" });
+  main.querySelector("#goRev").onclick = () => go({ tab: "revisions" });
   main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
   if (nc) main.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
 }
@@ -667,10 +757,10 @@ ${c.sources && c.sources.length ? `<div class="sources"><b>Sources</b><ul>${c.so
     stage.innerHTML = seg("ex") + `<div class="crumb"><span class="progress" id="prog"></span><button id="toLesson">Revoir le cours</button></div><div id="host"></div>`;
     bindSeg(); stage.querySelector("#toLesson").onclick = showLesson;
     const host = stage.querySelector("#host"); const prog = stage.querySelector("#prog");
-    const series = runSeries(host, c.exercices, () => `${u.code} · ${c.title}`, (ex, ok) => record(ex.id, ok), score => {
+    const series = runSeries(host, c.exercices, () => `${u.code} · ${c.title}`, (ex, ok) => moveNote(host, record(ex.id, ok)), score => {
       state.done[c.id] = (state.done[c.id] || 0) + 1; addXp(30); save();
       const nc = cs[idx + 1];
-      host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Chapitre terminé</h3><p>${score} exercice${score > 1 ? "s" : ""} sur ${c.exercices.length} réussi${score > 1 ? "s" : ""} du premier coup. Les notions ratées reviendront demain en révision, les autres dans trois jours.</p><div class="actions">${nc ? `<button class="btn" id="goNext">Chapitre suivant : ${esc(nc.title)}</button>` : ""}<button class="btn ghost" id="redo">Refaire les exercices</button><button class="btn quiet" id="toUe">Retour à la matière</button></div></div>`;
+      host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Chapitre terminé</h3><p>${score} exercice${score > 1 ? "s" : ""} sur ${c.exercices.length} réussi${score > 1 ? "s" : ""} du premier coup. Les questions ratées reviendront demain dans les révisions, les autres dans deux jours, puis 5, 10, 20, 30 jours et chaque mois.</p><div class="actions">${nc ? `<button class="btn" id="goNext">Chapitre suivant : ${esc(nc.title)}</button>` : ""}<button class="btn ghost" id="redo">Refaire les exercices</button><button class="btn quiet" id="toUe">Retour à la matière</button></div></div>`;
       prog.textContent = "Terminé";
       if (nc) host.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
       host.querySelector("#redo").onclick = () => series.redo();
@@ -696,20 +786,132 @@ function renderTest() {
     host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); host.querySelector("#toR").onclick = () => go({ tab: "revisions" });
   };
   if (!remaining.length) { finishScreen(); return; }
-  runSeries(host, remaining, chapLabel, (ex, ok) => { plan.answers[ex.id] = ok; record(ex.id, ok, "test"); save(); }, finishScreen, { set textContent(v) { const done = list.length - remaining.length; const i = parseInt(v) || 0; prog.textContent = `Question ${done + i} / ${list.length}`; } });
+  runSeries(host, remaining, chapLabel, (ex, ok) => { plan.answers[ex.id] = ok; moveNote(host, record(ex.id, ok, "test")); save(); }, finishScreen, { set textContent(v) { const done = list.length - remaining.length; const i = parseInt(v) || 0; prog.textContent = `Question ${done + i} / ${list.length}`; } });
 }
 
+// ---------- Révisions espacées ----------
+let revTheme = "Tous";
+const themeOf = id => { const e = EXO[id]; return e && CHAP_BY[e.chap] ? CHAP_BY[e.chap].ue : "?"; };
+const inTheme = (id, th) => th === "Tous" || themeOf(id) === th || (EXO[id] && EXO[id].chap === th);
+function dueFor(th) { const now = Date.now(); return Object.keys(state.cards).filter(id => EXO[id] && state.cards[id].n > 0 && state.cards[id].due <= now && inTheme(id, th)).sort((a, b) => state.cards[a].due - state.cards[b].due); }
+function newPool(th) { const out = []; for (const u of UES) for (const c of ueChaps(u.code)) for (const e of c.exercices) if (!(state.cards[e.id] && state.cards[e.id].n > 0) && inTheme(e.id, th)) out.push(e.id); return out; }
+function newLeftToday() { return Math.max(0, (state.newPerDay || 0) - (state.newIntro[todayKey()] || 0)); }
+function stepCounts(ids) { const c = [0, 0, 0, 0, 0, 0, 0, 0]; for (const id of ids) { const k = state.cards[id]; if (!k || !k.n) c[0]++; else c[1 + Math.min(k.s || 0, MAX_STEP)]++; } return c; }
+function plateauHTML(ids, mini) {
+  const c = stepCounts(ids); const labels = ["Nouv.", ...STEPS.map(x => x.court)]; const titles = ["Nouvelles", ...STEPS.map(x => x.nom)];
+  return `<div class="plat ${mini ? "mini" : ""}" role="img" aria-label="${esc(titles.map((t, i) => `${t} : ${c[i]}`).join(", "))}">${c.map((n, i) => `<div class="cell b${i === 0 ? 0 : bandOf(i - 1)} ${n ? "" : "empty"}" title="${esc(titles[i])} : ${n} question${n > 1 ? "s" : ""}"><span class="v">${fmt(n)}</span><span class="l">${labels[i]}</span></div>`).join("")}</div>`;
+}
+function rateOver(days, th, offset) {
+  let n = 0, ok = 0; const d = new Date(); d.setDate(d.getDate() - (offset || 0));
+  for (let i = 0; i < days; i++) { const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; const h = state.hist[k]; if (h) { if (!th || th === "Tous") { n += h.n; ok += h.ok; } else if (h.ue[th]) { n += h.ue[th][0]; ok += h.ue[th][1]; } } d.setDate(d.getDate() - 1); }
+  return { n, ok, r: n ? ok / n : null };
+}
+const pct = r => r == null ? "–" : `${Math.round(r * 100)} %`;
+function forecast(days) { const out = []; const t0 = startOfDay(Date.now()); for (let i = 0; i < days; i++) { const a = i === 0 ? -Infinity : t0 + i * DAY, b = t0 + (i + 1) * DAY; let n = 0; for (const id in state.cards) { const k = state.cards[id]; if (EXO[id] && k.n > 0 && k.due >= a && k.due < b) n++; } out.push({ t: t0 + i * DAY, n }); } return out; }
+function last30() { const out = []; const d = new Date(); d.setDate(d.getDate() - 29); for (let i = 0; i < 30; i++) { const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; const h = state.hist[k]; out.push({ t: d.getTime(), n: h ? h.n : 0, ok: h ? h.ok : 0 }); d.setDate(d.getDate() + 1); } return out; }
+const dayLbl = (t, i) => i === 0 ? "auj." : new Date(t).toLocaleDateString("fr-FR", { day: "numeric", month: "numeric" });
+function niceMax(v) { if (v <= 4) return 4; const p = Math.pow(10, Math.floor(Math.log10(v))); const m = v / p; return (m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; }
+function bindTip(box, items) {
+  const tip = box.querySelector(".tip");
+  box.querySelectorAll("[data-i]").forEach(el => {
+    const show = () => { const it = items[+el.dataset.i]; tip.textContent = ""; const b = document.createElement("b"); b.textContent = it.v; tip.appendChild(b); tip.appendChild(document.createElement("br")); tip.appendChild(document.createTextNode(it.l)); const r = el.getBoundingClientRect(), br = box.getBoundingClientRect(); tip.classList.add("show"); const x = Math.min(Math.max(r.left - br.left + r.width / 2 - tip.offsetWidth / 2, 4), br.width - tip.offsetWidth - 4); tip.style.left = x + "px"; tip.style.top = Math.max(r.top - br.top - tip.offsetHeight - 6, 0) + "px"; if (el.dataset.x) { const xh = box.querySelector(".xh"); if (xh) { xh.setAttribute("x1", el.dataset.x); xh.setAttribute("x2", el.dataset.x); xh.style.display = ""; } } };
+    const hide = () => { tip.classList.remove("show"); const xh = box.querySelector(".xh"); if (xh) xh.style.display = "none"; };
+    el.addEventListener("pointerenter", show); el.addEventListener("focus", show); el.addEventListener("pointerleave", hide); el.addEventListener("blur", hide);
+  });
+}
+function columnsSVG(data) {
+  const W = 640, H = 190, L = 34, R = 8, T = 18, B = 24, n = data.length, slot = (W - L - R) / n, bw = Math.min(24, slot * 0.62);
+  const max = niceMax(Math.max(1, ...data.map(d => d.n))); const y = v => T + (H - T - B) * (1 - v / max);
+  const iMax = data.reduce((a, d, i) => d.n > data[a].n ? i : a, 0);
+  let g = `<g class="grid">${[0, max / 2, max].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
+  g += [0, max / 2, max].map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`).join("");
+  data.forEach((d, i) => {
+    const cx = L + slot * i + slot / 2, x = cx - bw / 2, top = y(d.n), base = y(0), h = base - top, r = Math.min(4, h);
+    const path = h > 0 ? `M${x},${base}V${top + r}Q${x},${top} ${x + r},${top}H${x + bw - r}Q${x + bw},${top} ${x + bw},${top + r}V${base}Z` : "";
+    g += `<rect class="hit" data-i="${i}" tabindex="0" x="${L + slot * i}" y="${T}" width="${slot}" height="${H - T - B}"><title>${dayLbl(d.t, i)} : ${d.n}</title></rect>${path ? `<path class="bar" d="${path}"/>` : ""}`;
+    if ((i === 0 || i === iMax) && d.n > 0) g += `<text class="val" x="${cx}" y="${top - 5}" text-anchor="middle">${fmt(d.n)}</text>`;
+    if (i % 2 === 0 || n <= 8) g += `<text x="${cx}" y="${H - 6}" text-anchor="middle">${dayLbl(d.t, i)}</text>`;
+  });
+  g += `<g class="axis"><line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/></g>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Questions à réviser par jour sur les ${n} prochains jours">${g}</svg>`;
+}
+function lineSVG(data) {
+  const W = 640, H = 190, L = 40, R = 46, T = 14, B = 24, n = data.length, step = (W - L - R) / (n - 1);
+  const x = i => L + step * i, y = v => T + (H - T - B) * (1 - v);
+  let g = `<g class="grid">${[0, 0.5, 1].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
+  g += [0, 0.5, 1].map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v * 100)} %</text>`).join("");
+  // Les jours sans réponse n'ont pas de taux : la ligne relie les jours mesurés, les points marquent les vraies mesures.
+  const pts = []; data.forEach((d, i) => { if (d.n) pts.push([x(i), y(d.ok / d.n)]); });
+  if (pts.length > 1) g += `<path class="area" d="M${pts[0][0]},${y(0)}L${pts.map(p => p.join(",")).join("L")}L${pts[pts.length - 1][0]},${y(0)}Z"/><path class="line" d="M${pts.map(p => p.join(",")).join("L")}"/>`;
+  g += `<line class="xh" x1="0" x2="0" y1="${T}" y2="${y(0)}" style="display:none"/>`;
+  data.forEach((d, i) => { if (d.n) g += `<circle class="dot" cx="${x(i)}" cy="${y(d.ok / d.n)}" r="4"/>`; });
+  const lastI = data.map((d, i) => d.n ? i : -1).filter(i => i >= 0).pop();
+  if (lastI != null) g += `<text class="val" x="${x(lastI) + 8}" y="${y(data[lastI].ok / data[lastI].n) + 4}" text-anchor="start">${Math.round(data[lastI].ok / data[lastI].n * 100)} %</text>`;
+  [0, 7, 14, 21, 29].forEach(i => { g += `<text x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : "middle"}">${i === 29 ? "auj." : new Date(data[i].t).toLocaleDateString("fr-FR", { day: "numeric", month: "numeric" })}</text>`; });
+  data.forEach((d, i) => { g += `<rect class="hit" data-i="${i}" data-x="${x(i)}" tabindex="0" x="${x(i) - step / 2}" y="${T}" width="${step}" height="${H - T - B}"><title>${new Date(d.t).toLocaleDateString("fr-FR")} : ${d.n ? Math.round(d.ok / d.n * 100) + " %" : "aucune réponse"}</title></rect>`; });
+  g += `<g class="axis"><line x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/></g>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Taux de bonnes réponses du premier coup, 30 derniers jours">${g}</svg>`;
+}
+function themeRow(u) {
+  const ids = ueChaps(u.code).flatMap(c => c.exercices.map(e => e.id)); const due = dueFor(u.code).length; const r30 = rateOver(30, u.code);
+  const mem = ids.filter(id => (card(id).s || 0) >= ACQUIS && card(id).n > 0).length;
+  return `<div class="theme"><div class="th"><span><span class="ttl">${esc(u.code)} · ${esc(u.nom)}</span></span><span class="kpis"><span><b>${Math.round(mem / ids.length * 100)} %</b> mémorisé</span><span>réussite 30 j : <b>${pct(r30.r)}</b></span><span><b>${due}</b> à réviser</span></span></div>
+${plateauHTML(ids)}
+<div class="actions" style="margin-top:2px"><button class="btn ghost" data-start="${u.code}" ${due + Math.min(newLeftToday(), newPool(u.code).length) ? "" : "disabled"}>Réviser ce thème (${due} + ${Math.min(newLeftToday(), newPool(u.code).length)} nouvelles)</button></div>
+<details><summary>Détail par chapitre</summary><div class="chaps">${ueChaps(u.code).map(c => { const cid = c.exercices.map(e => e.id); const d = dueFor(c.id).length; return `<div><div class="ct"><span>${c.ordre}. ${esc(c.title)}</span><span class="muted">${d} à réviser</span></div>${plateauHTML(cid, true)}</div>`; }).join("")}</div></details></div>`;
+}
 function renderRevisions() {
-  const due = shuffle(dueList()).slice(0, 25);
-  if (!due.length) {
-    const upcoming = Object.entries(state.cards).filter(([, c]) => c.n > 0).sort((a, b) => a[1].due - b[1].due)[0];
-    const when = upcoming ? Math.max(1, Math.ceil((upcoming[1].due - Date.now()) / DAY)) : null;
-    main.innerHTML = `<h2>Révisions</h2><p>Rien à revoir pour le moment.</p><p class="muted">${when ? `Prochaine révision dans ${when} jour${when > 1 ? "s" : ""}.` : "Les notions vues dans les chapitres et les tests reviendront ici à intervalles croissants (1, 3, 7, 15, 30, 60 jours)."}</p><div class="actions"><button class="btn" id="toM">Aller aux matières</button></div>`;
-    main.querySelector("#toM").onclick = () => go({ tab: "matieres" }); return;
-  }
-  main.innerHTML = `<h2>Révisions</h2><p class="muted">${due.length} notion${due.length > 1 ? "s" : ""} à revoir. Une bonne réponse espace la prochaine révision, une erreur la ramène à demain.</p><div class="crumb"><span class="progress" id="prog"></span></div><div id="host"></div>`;
+  const allIds = Object.keys(EXO); const dueAll = dueFor("Tous").length; const today = state.hist[todayKey()] || { n: 0, ok: 0 };
+  const r7 = rateOver(7), r7p = rateOver(7, null, 7); const mem = allIds.filter(id => card(id).n > 0 && (card(id).s || 0) >= ACQUIS).length; const anc = allIds.filter(id => card(id).n > 0 && (card(id).s || 0) >= 5).length;
+  const delta = r7.r != null && r7p.r != null ? Math.round((r7.r - r7p.r) * 100) : null;
+  const dueTh = dueFor(revTheme).length, newTh = Math.min(newLeftToday(), newPool(revTheme).length);
+  const fc = forecast(14), l30 = last30();
+  const nextDue = Object.values(state.cards).filter(k => k.n > 0 && k.due > Date.now()).sort((a, b) => a.due - b.due)[0];
+  main.innerHTML = `<h2>Révisions espacées</h2>
+<p class="muted">Chaque question avance sur une échelle. Bonne réponse : une marche vers la droite. Erreur : une marche vers la gauche, et la question revient selon cette marche. Une question jamais vue entre à « 2 jours » si elle est réussie, à « demain » sinon.</p>
+${ladderHTML(MAX_STEP)}
+<div class="filters" style="margin-top:12px"><div class="chips" role="group" aria-label="Thème">${["Tous", ...UES.map(u => u.code)].map(c => `<button data-th="${c}" aria-pressed="${c === revTheme}">${c === "Tous" ? "Tous les thèmes" : c}</button>`).join("")}</div>
+<label class="setting" for="npd">Nouvelles questions par jour <select id="npd">${[0, 5, 10, 15, 20, 30].map(v => `<option value="${v}" ${v === state.newPerDay ? "selected" : ""}>${v}</option>`).join("")}</select></label></div>
+<div class="cta"><div><div class="t">${dueTh + newTh ? `${dueTh} à réviser · ${newTh} nouvelle${newTh > 1 ? "s" : ""}` : "Tout est à jour"}</div><div class="muted small">${revTheme === "Tous" ? "Tous les thèmes mélangés" : `Thème ${esc(revTheme)} · ${esc(UE_BY[revTheme].nom)}`}. ${dueTh + newTh ? "Les questions dues passent en premier, les plus anciennes d'abord." : nextDue ? `Prochaine révision ${fmtDue(nextDue.due)}.` : "Commencez par quelques nouvelles questions."}</div></div><button class="btn red" id="startRev" ${dueTh + newTh ? "" : "disabled"}>Commencer</button></div>
+<div class="board">
+  <div class="tile"><div class="big">${dueAll}</div><div class="lab">à réviser aujourd'hui (tous thèmes)</div></div>
+  <div class="tile"><div class="big">${today.n}</div><div class="lab">réponses aujourd'hui · ${pct(today.n ? today.ok / today.n : null)} justes</div></div>
+  <div class="tile"><div class="big">${pct(r7.r)}</div><div class="lab">réussite sur 7 jours${delta != null ? ` · <span style="color:var(${delta >= 0 ? "--ok" : "--bad"})">${delta >= 0 ? "▲ +" : "▼ "}${delta} pts</span> vs 7 j précédents` : ""}</div></div>
+  <div class="tile"><div class="big">${fmt(mem)}<span class="muted" style="font-size:1rem"> / ${fmt(allIds.length)}</span></div><div class="lab">questions mémorisées (10 jours et plus) · ${fmt(anc)} ancrées</div></div>
+</div>
+<h3>Plateau d'avancement par thème</h3>
+<div class="legend">${BANDS.map((b, i) => `<span><i style="background:var(${i === 0 ? "--rule-soft" : `--st${i}`})"></i>${esc(b.nom)}</span>`).join("")}</div>
+<div class="themes">${UES.map(themeRow).join("")}</div>
+<h3>À réviser les 14 prochains jours</h3>
+<div class="chart" id="chF">${columnsSVG(fc)}<div class="tip"></div></div>
+<h3>Réussite du premier coup, 30 derniers jours</h3>
+<div class="chart" id="chL">${lineSVG(l30)}<div class="tip"></div></div>
+<details class="datatab"><summary>Voir les données des graphiques</summary><table><thead><tr><th>Jour</th><th>À réviser</th></tr></thead><tbody>${fc.map((d, i) => `<tr><td>${dayLbl(d.t, i)}</td><td>${d.n}</td></tr>`).join("")}</tbody></table><table><thead><tr><th>Jour</th><th>Réponses</th><th>Justes</th><th>Taux</th></tr></thead><tbody>${l30.filter(d => d.n).map(d => `<tr><td>${new Date(d.t).toLocaleDateString("fr-FR")}</td><td>${d.n}</td><td>${d.ok}</td><td>${pct(d.ok / d.n)}</td></tr>`).join("") || `<tr><td colspan="4">Aucune réponse sur la période.</td></tr>`}</tbody></table></details>`;
+  bindTip(main.querySelector("#chF"), fc.map((d, i) => ({ v: `${d.n} question${d.n > 1 ? "s" : ""}`, l: i === 0 ? "aujourd'hui (retards inclus)" : new Date(d.t).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) })));
+  bindTip(main.querySelector("#chL"), l30.map(d => ({ v: d.n ? pct(d.ok / d.n) : "aucune réponse", l: `${new Date(d.t).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}${d.n ? ` · ${d.ok} / ${d.n}` : ""}` })));
+  main.querySelectorAll(".chips button[data-th]").forEach(b => b.onclick = () => { revTheme = b.dataset.th; renderRevisions(); });
+  main.querySelector("#npd").onchange = e => { state.newPerDay = +e.target.value; save(); renderRevisions(); };
+  main.querySelector("#startRev").onclick = () => startSession(revTheme);
+  main.querySelectorAll("[data-start]").forEach(b => b.onclick = () => { revTheme = b.dataset.start; startSession(revTheme); });
+}
+function startSession(th) {
+  const due = dueFor(th); const fresh = newPool(th).slice(0, newLeftToday());
+  const queue = [...due.slice(0, 60), ...fresh].map(id => EXO[id]);
+  if (!queue.length) { renderRevisions(); return; }
+  const moves = { up: 0, down: 0, stay: 0, nouv: 0 };
+  main.innerHTML = `<div class="crumb"><button id="back">← Tableau des révisions</button><span class="progress" id="prog"></span></div><h2>Séance de révision</h2><p class="muted small">${due.length} question${due.length > 1 ? "s" : ""} due${due.length > 1 ? "s" : ""}${due.length > 60 ? " (60 premières dans cette séance)" : ""} et ${fresh.length} nouvelle${fresh.length > 1 ? "s" : ""}. ${th === "Tous" ? "Tous les thèmes." : `Thème ${esc(th)}.`}</p><div id="host"></div>`;
+  main.querySelector("#back").onclick = () => renderRevisions();
   const host = main.querySelector("#host");
-  runSeries(host, due.map(id => EXO[id]), chapLabel, (ex, ok) => record(ex.id, ok, "revision"), score => { host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Révisions terminées</h3><p>${score} sur ${due.length} du premier coup.</p><div class="actions"><button class="btn" id="toA">Retour à l'accueil</button></div></div>`; host.querySelector("#toA").onclick = () => go({ tab: "accueil" }); }, main.querySelector("#prog"));
+  runSeries(host, queue, chapLabel, (ex, ok) => {
+    const mv = record(ex.id, ok, "revision");
+    if (mv.isNew) { const k = todayKey(); state.newIntro[k] = (state.newIntro[k] || 0) + 1; moves.nouv++; save(); }
+    else if (mv.to > mv.from) moves.up++; else if (mv.to < mv.from) moves.down++; else moves.stay++;
+    moveNote(host, mv);
+  }, score => {
+    main.querySelector("#prog").textContent = "Terminé";
+    host.innerHTML = `<div class="exo"><h3 style="margin-top:0">Séance terminée : ${score} sur ${queue.length} du premier coup</h3><p>${moves.up} question${moves.up > 1 ? "s ont" : " a"} monté d'une marche, ${moves.down} ${moves.down > 1 ? "sont redescendues" : "est redescendue"}, ${moves.nouv} nouvelle${moves.nouv > 1 ? "s" : ""} ${moves.nouv > 1 ? "sont entrées" : "est entrée"} sur l'échelle.</p>${plateauHTML(th === "Tous" ? Object.keys(EXO) : Object.keys(EXO).filter(id => inTheme(id, th)))}<div class="actions"><button class="btn" id="toR">Voir le tableau des révisions</button><button class="btn quiet" id="toA">Retour à l'accueil</button></div></div>`;
+    host.querySelector("#toR").onclick = () => renderRevisions(); host.querySelector("#toA").onclick = () => go({ tab: "accueil" });
+  }, main.querySelector("#prog"));
 }
 
 function renderPcg() {
