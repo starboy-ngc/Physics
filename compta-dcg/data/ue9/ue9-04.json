@@ -146,7 +146,7 @@
   },
   {
    "ref": "CGI, art. 261 C",
-   "note": "Exonération de TVA des opérations d'assurance et des intérêts bancaires"
+   "note": "Exonération de TVA des opérations d'assurance, des intérêts bancaires et des livraisons de timbres-poste à leur valeur officielle"
   },
   {
    "ref": "CGI, art. 1447 et 1380",
@@ -437,7 +437,7 @@
     "À enregistrer les transferts de charges"
    ],
    "a": 1,
-   "why": "Quand une opération (retrait d'espèces, virement entre deux banques) apparaît à la fois dans le journal de banque et dans le journal de caisse ou de l'autre banque, chaque journal l'enregistre pour sa part en contrepartie de 580, qui se solde. Les virements clients passent par 411/512, les salaires par 421/512, et la technique des transferts de charges a disparu du PCG 2025 (le règlement ANC n° 2025-05 ne maintient le compte 791 que pour les concessions d'aménagement).",
+   "why": "Quand une opération (retrait d'espèces, virement entre deux banques) apparaît à la fois dans le journal de banque et dans le journal de caisse ou de l'autre banque, chaque journal l'enregistre pour sa part en contrepartie de 580, qui se solde. Les virements clients passent par 411/512, les salaires par 421/512, et la technique des transferts de charges a disparu du PCG 2025 (le règlement ANC n° 2025-05 ne maintient le compte 791, dans le plan de comptes des organismes de logement social, que pour les concessions d'aménagement).",
    "src": "PCG 2025, art. 1121-1 (plan de comptes)",
    "fiab": "stable"
   },
@@ -568,8 +568,8 @@
     1,
     3
    ],
-   "why": "Les assurances et les intérêts bancaires sont exonérés de TVA (CGI, art. 261 C) et les timbres-poste vendus par La Poste au titre du service universel le sont aussi (art. 261, 4-11°) : la charge est enregistrée pour son montant total. Le téléphone et les honoraires d'avocat sont soumis à la TVA à 20 %, déductible en 44566.",
-   "src": "CGI, art. 261 et 261 C",
+   "why": "Les assurances et les intérêts bancaires sont exonérés de TVA (CGI, art. 261 C) et les livraisons de timbres-poste à leur valeur officielle le sont aussi (art. 261 C, 3°) : la charge est enregistrée pour son montant total. Le téléphone et les honoraires d'avocat sont soumis à la TVA à 20 %, déductible en 44566.",
+   "src": "CGI, art. 261 C",
    "fiab": "stable"
   },
   {

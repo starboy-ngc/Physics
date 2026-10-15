@@ -1,6 +1,6 @@
 {
  "id": "ue4-04",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -22,7 +22,7 @@
   {
    "ref": "CGI, art. 209, I",
    "objet": "Territorialité (entreprises exploitées en France), renvoi aux règles des BIC, report en avant plafonné des déficits",
-   "url": null,
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048847486",
    "version": "en vigueur"
   },
   {
@@ -87,9 +87,9 @@
   },
   {
    "ref": "CGI, art. 302 septies A bis ; BOI-BAREME-000044",
-   "objet": "Régime simplifié d'imposition : seuils de 840 000 € et 254 000 € pour 2026 à 2028",
+   "objet": "Régime simplifié d'imposition : limites de chiffre d'affaires de 945 000 € et 286 000 € pour 2026 à 2028 (840 000 € et 254 000 € de 2023 à 2025)",
    "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
-   "version": "BOFiP du 19 août 2026"
+   "version": "BOFiP du 19 août 2026 (révision triennale au 1er janvier 2026 ; montants 2026-2028 publiés par economie.gouv.fr)"
   },
   {
    "ref": "Loi n° 2025-127 du 14 février 2025, art. 48 ; loi n° 2026-103 du 19 février 2026, art. 12 ; BOI-IS-AUT-60",
@@ -147,11 +147,11 @@
     {
      "t": "<b>Territorialité</b> : l'IS ne frappe que les bénéfices réalisés dans les entreprises exploitées en France, ainsi que ceux dont l'imposition est attribuée à la France par une convention fiscale internationale. Les résultats d'une exploitation située à l'étranger (succursale) ne sont donc pas pris en compte en France, qu'ils soient bénéficiaires ou déficitaires.",
      "src": "CGI, art. 209, I",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048847486",
      "fiab": "stable"
     },
     {
-     "t": "<b>Options</b> : les sociétés de personnes peuvent opter pour l'IS ; elles peuvent renoncer à cette option jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée, après quoi elle devient irrévocable, et une société qui a renoncé ne peut plus opter à nouveau. À l'inverse, la SARL de famille et, pour cinq exercices au plus, les SA, SAS et SARL de moins de cinq ans remplissant les conditions peuvent opter pour le régime des sociétés de personnes.",
+     "t": "<b>Options</b> : les sociétés de personnes peuvent opter pour l'IS ; elles peuvent renoncer à cette option jusqu'au cinquième exercice suivant celui au titre duquel elle a été exercée, après quoi elle devient irrévocable, et une société qui a renoncé ne peut plus opter à nouveau. À l'inverse, la SARL de famille peut opter pour le régime des sociétés de personnes ; les SA, SAS et SARL non cotées créées depuis moins de cinq ans, employant moins de cinquante salariés, réalisant un chiffre d'affaires ou un total de bilan inférieur à 10 millions d'euros, dont le capital et les droits de vote sont détenus à 50 % au moins par des personnes physiques et à 34 % au moins par les dirigeants, le peuvent pour cinq exercices au plus.",
      "cite": "« La société peut renoncer à son option pour l'assujettissement à l'impôt sur les sociétés jusqu'au cinquième exercice suivant celui au titre duquel l'option a été exercée. »",
      "src": "CGI, art. 206, 3, 239, 1, 239 bis AA et 239 bis AB",
      "url": "https://bofip.impots.gouv.fr/bofip/822-PGP.html/identifiant=BOI-IS-CHAMP-40-20221123",
@@ -195,8 +195,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime mère-fille</b> : sur option, la société mère soumise à l'IS au taux normal qui détient au moins 5 % du capital de la filiale et conserve les titres deux ans retranche de son bénéfice net les produits de ces participations, sous réserve de la réintégration d'une quote-part de frais et charges de 5 % du produit total, crédit d'impôt compris. Ce taux est ramené à 1 % pour les produits qu'une société membre d'un groupe fiscalement intégré reçoit d'une autre société membre de ce groupe.",
-     "src": "CGI, art. 145 et 216, I",
+     "t": "<b>Régime mère-fille</b> : sur option, la société mère soumise à l'IS au taux normal qui détient au moins 5 % du capital de la filiale, en pleine propriété ou en nue-propriété (titres nominatifs ou déposés auprès d'un intermédiaire), et conserve les titres deux ans retranche de son bénéfice net les produits de ces participations, sous réserve de la réintégration d'une quote-part de frais et charges de 5 % du produit total, crédit d'impôt compris. Ce taux est ramené à 1 % pour les produits qu'une société membre d'un groupe fiscalement intégré reçoit d'une autre société membre de ce groupe.",
+     "src": "CGI, art. 145, 1 et 216, I ; BOI-IS-BASE-10-10-10-20",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048831340",
      "fiab": "stable"
     },
@@ -208,9 +208,10 @@
     },
     {
      "t": "<b>Report en avant des déficits</b> : le déficit est reportable sans limitation de durée sur les bénéfices des exercices suivants, mais l'imputation sur le bénéfice d'un exercice est plafonnée à 1 000 000 € majoré de 50 % de la fraction du bénéfice qui excède ce montant ; la fraction non imputée reste reportable dans les mêmes conditions.",
-     "src": "CGI, art. 209, I, 3e alinéa",
-     "url": null,
-     "fiab": "stable"
+     "src": "CGI, art. 209, I, 3e alinéa ; BOI-IS-DEF-10-30",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048847486",
+     "fiab": "stable",
+     "cite": "« Si ce bénéfice n'est pas suffisant pour que la déduction puisse être intégralement opérée, l'excédent du déficit est reporté dans les mêmes conditions sur les exercices suivants. »"
     },
     {
      "t": "<b>Report en arrière (carry-back)</b> : sur option, le déficit d'un exercice peut être imputé sur le bénéfice de l'exercice précédent, dans la limite de la fraction non distribuée de ce bénéfice et de 1 000 000 €. Il en résulte une créance égale à l'IS acquitté sur le bénéfice ainsi absorbé, utilisable pour payer l'IS des exercices clos au cours des cinq années suivantes et remboursée au terme de ce délai ; le remboursement est anticipé en cas de conciliation, de sauvegarde, de redressement ou de liquidation judiciaires.",
@@ -220,14 +221,14 @@
     },
     {
      "t": "<b>Paiement</b> : l'IS est liquidé par la société. Quatre acomptes sont versés au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre, calculés sur le dernier exercice clos (le premier sur l'avant-dernier, puis régularisé). Le solde est versé au plus tard le 15 du quatrième mois suivant la clôture, ou le 15 mai pour un exercice clos le 31 décembre (relevé n° 2572). Sont dispensées d'acomptes les sociétés nouvelles pour leur premier exercice et celles dont l'IS de référence n'excède pas 3 000 €, condition appréciée à chaque échéance.",
-     "src": "CGI, art. 1668, 1 et 2 ; CGI, ann. III, art. 359, 3 ; BOI-IS-DECLA-20-10",
+     "src": "CGI, art. 1668, 1 et 2 ; CGI, ann. III, art. 359, 3 ; BOI-IS-DECLA-20-10 ; BOI-IS-DECLA-20-20",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033836779",
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime d'imposition</b> : les sociétés dont le chiffre d'affaires hors taxes n'excède pas 840 000 € (ventes, fourniture de logement) ou 254 000 € (autres activités) relèvent du régime simplifié (liasse n° 2033) ; au-delà, du régime réel normal (liasse n° 2050 à 2059). La déclaration de résultats n° 2065 accompagne la liasse.",
-     "src": "CGI, art. 302 septies A bis et 223 ; BOI-BAREME-000044",
-     "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
+     "t": "<b>Régime d'imposition</b> : pour 2026 à 2028, les sociétés dont le chiffre d'affaires hors taxes n'excède pas 945 000 € (ventes, fourniture de logement) ou 286 000 € (autres activités) relèvent du régime simplifié (liasse n° 2033) ; au-delà, du régime réel normal (liasse n° 2050 à 2059). Ces limites étaient de 840 000 € et 254 000 € de 2023 à 2025. La déclaration de résultats n° 2065 accompagne la liasse.",
+     "src": "CGI, art. 302 septies A bis et 223 ; BOI-BAREME-000044 ; economie.gouv.fr, régime réel simplifié",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-sa-fiscalite-et-ses-impots/limpot-sur-les-benefices-ir-et/imposition-des-entreprises-quest-ce-que-le-regime-reel-simplifie",
      "fiab": "millésimé 2026"
     },
     {
@@ -238,10 +239,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Intégration fiscale</b> : une société soumise à l'IS, dont le capital n'est pas détenu à 95 % au moins par une autre personne morale soumise à l'IS, peut se constituer seule redevable de l'IS dû sur le résultat d'ensemble du groupe formé avec les sociétés dont elle détient au moins 95 % du capital, directement ou indirectement, de manière continue au cours de l'exercice. Les déficits subis avant l'entrée dans le groupe ne s'imputent que sur le bénéfice propre de la société qui les a subis.",
-     "src": "CGI, art. 223 A et 223 I, 1",
-     "url": null,
-     "fiab": "stable"
+     "t": "<b>Intégration fiscale</b> : une société soumise à l'IS, dont le capital n'est pas détenu à 95 % au moins par une autre personne morale soumise à l'IS, peut se constituer seule redevable de l'IS dû sur le résultat d'ensemble du groupe formé avec les sociétés dont elle détient au moins 95 % du capital, directement ou indirectement, de manière continue au cours de l'exercice ; l'option vaut pour cinq exercices. Les déficits subis avant l'entrée dans le groupe ne s'imputent que sur le bénéfice propre de la société qui les a subis.",
+     "src": "CGI, art. 223 A et 223 I, 1 ; BOI-IS-GPE-10-20-10",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048834056",
+     "fiab": "stable",
+     "cite": "« Le capital de la société mère mentionnée au même premier alinéa ne doit pas être détenu à 95 % au moins, directement ou indirectement, par une autre personne morale soumise à l'impôt sur les sociétés »"
     },
     {
      "t": "<b>Crédit d'impôt recherche</b> : imputable sur l'IS ; il est égal à 30 % des dépenses de recherche pour la fraction n'excédant pas 100 millions d'euros et à 5 % au-delà. Les dépenses d'innovation des PME (crédit d'impôt innovation) ouvrent droit à un taux de 20 %, dans la limite de 400 000 € de dépenses par an.",
@@ -268,18 +270,6 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Déficits</b> : imputation en avant plafonnée à <span class=\"mono\">1 000 000 €</span> majoré de 50 % du bénéfice excédant ce montant ; report en arrière limité à <span class=\"mono\">1 000 000 €</span> et au bénéfice non distribué de l'exercice précédent ; créance remboursée au terme de <span class=\"mono\">5 ans</span>.",
-     "src": "CGI, art. 209, I et 220 quinquies",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053560738",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Seuils du régime simplifié (2026 à 2028)</b> : <span class=\"mono\">840 000 €</span> (ventes et fourniture de logement) et <span class=\"mono\">254 000 €</span> (autres activités) de chiffre d'affaires hors taxes.",
-     "src": "CGI, art. 302 septies A bis ; BOI-BAREME-000044",
-     "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
-     "fiab": "millésimé 2026"
-    },
-    {
      "t": "<b>Plafonds d'amortissement des véhicules de tourisme</b> : <span class=\"mono\">30 000 €</span> (moins de 20 g de CO2/km), <span class=\"mono\">20 300 €</span>, <span class=\"mono\">18 300 €</span> et <span class=\"mono\">9 900 €</span> selon le niveau d'émissions.",
      "src": "CGI, art. 39, 4-a ; notice 2033-NOT-SD 2026",
      "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/2033-sd/2026/2033-sd_5395.pdf",
@@ -298,9 +288,9 @@
      "fiab": "millésimé 2025"
     },
     {
-     "t": "<b>Taux maximal des intérêts de comptes courants (clôtures 2026)</b> : <span class=\"mono\">4,49 %</span> (exercices clos du 31 janvier au 27 février 2026), <span class=\"mono\">4,44 %</span> (du 28 février au 30 mars 2026), <span class=\"mono\">4,39 %</span> (du 31 mars au 29 avril 2026) et <span class=\"mono\">4,34 %</span> (du 31 mai au 29 juin 2026), pour des exercices de douze mois.",
-     "src": "CGI, art. 39, 1-3° ; BOI-BIC-CHG-50-50-30 (28 janvier et 13 mai 2026) ; ACTU-2026-00094",
-     "url": "https://bofip.impots.gouv.fr/bofip/5505-PGP.html/identifiant=BOI-BIC-CHG-50-50-30-20260513",
+     "t": "<b>Taux maximal des intérêts de comptes courants (clôtures 2026)</b> : pour des exercices de douze mois, <span class=\"mono\">4,49 %</span> (clos du 31 janvier au 27 février 2026), <span class=\"mono\">4,44 %</span> (du 28 février au 30 mars), <span class=\"mono\">4,39 %</span> (du 31 mars au 29 avril), <span class=\"mono\">4,37 %</span> (du 30 avril au 30 mai), <span class=\"mono\">4,34 %</span> (du 31 mai au 29 juin) et <span class=\"mono\">4,33 %</span> (du 30 juin au 29 septembre 2026). Taux trimestriels de référence : 4,31 % au premier trimestre et 4,35 % au deuxième trimestre 2026.",
+     "src": "CGI, art. 39, 1-3° ; BOI-BIC-CHG-50-50-30 (28 janvier, 13 mai et 5 août 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/5505-PGP.html/identifiant=BOI-BIC-CHG-50-50-30-20260805",
      "fiab": "millésimé 2026"
     }
    ]
@@ -324,6 +314,12 @@
      "t": "<b>Loi de finances pour 2026 (art. 14)</b> : la déduction des intérêts au taux de marché prévue au a du I de l'article 212, jusque-là réservée aux sommes avancées par des entreprises liées, est étendue aux entreprises associées non liées, pour les exercices clos à compter du 31 décembre 2025. La condition de libération intégrale du capital demeure.",
      "src": "Loi n° 2026-103 du 19 février 2026, art. 14 ; CGI, art. 212, I-a ; BOI-IS-BASE-35-20",
      "url": "https://bofip.impots.gouv.fr/bofip/14999-PGP.html/ACTU-2026-00052",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Crédit d'impôt innovation (loi de finances pour 2025)</b> : le crédit d'impôt en faveur des dépenses d'innovation des PME (conception de prototypes ou d'installations pilotes de produits nouveaux) est prorogé jusqu'au 31 décembre 2027 ; en contrepartie, son taux de droit commun est abaissé de 30 % à 20 %, les dépenses restant retenues dans la limite globale de 400 000 € par an.",
+     "src": "Loi n° 2025-127 du 14 février 2025 ; CGI, art. 244 quater B, II-k ; BOFiP, ACTU-2025-00105 ; BOI-BIC-RICI-10-10-45-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/14709-PGP.html/ACTU-2025-00105",
      "fiab": "stable"
     },
     {
@@ -354,6 +350,13 @@
      "t": "<b>Double conséquence des charges réintégrées</b> : une charge écartée parce qu'elle profite à un associé (intérêts excédentaires, rémunération excessive, avantage occulte) est réintégrée au résultat de la société et imposée chez le bénéficiaire comme revenu distribué, sans l'abattement de 40 %.",
      "src": "CGI, art. 109, 111 et 158, 3-3° ; BOI-RPPM-RCM-20-10-30-10",
      "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Plus-values des sociétés à l'IS</b> : hors titres de participation et cas particuliers, le régime du long terme ne s'applique plus aux cessions d'éléments d'actif des sociétés à l'IS (art. 219, I-a quater) ; la plus-value est comprise dans le résultat de l'exercice et taxée au taux normal. L'étalement sur trois exercices de la plus-value nette à court terme (art. 39 quaterdecies, 1) n'est pas ouvert aux entreprises soumises à l'IS.",
+     "cite": "« Ces dispositions ne sont pas applicables aux plus-values nettes à court terme réalisées par les entreprises soumises à l'impôt sur les sociétés au cours des exercices ouverts à compter du 1er janvier 1987. »",
+     "src": "CGI, art. 39 quaterdecies, 1 et 219, I-a quater",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046860376",
      "fiab": "stable"
     },
     {

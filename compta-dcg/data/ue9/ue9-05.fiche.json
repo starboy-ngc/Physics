@@ -1,6 +1,6 @@
 {
  "id": "ue9-05",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -32,9 +32,9 @@
   },
   {
    "ref": "C. com., art. R. 123-181 et R. 123-184",
-   "objet": "Actif immobilisé ; titres de participation (présomption au-delà de 10 % du capital)",
+   "objet": "Actif immobilisé (R. 123-181) ; participations : droits dans le capital créant un lien durable, présomption au-delà de 10 % du capital (R. 123-184)",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197050",
-   "version": "en vigueur (sous-paragraphe « Du bilan », art. R. 123-181 à R. 123-191 ; R. 123-181 en vigueur depuis le 1er janvier 2016)"
+   "version": "en vigueur (sous-paragraphe « Du bilan », art. R. 123-181 à R. 123-191) ; R. 123-181 et R. 123-184 en vigueur depuis le 1er janvier 2016 (R. 123-184 : décret n° 2015-903 du 23 juillet 2015)"
   },
   {
    "ref": "C. com., art. L. 123-16 et D. 123-200",
@@ -58,25 +58,25 @@
    "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
    "objet": "Cessions d'immobilisations incorporelles et corporelles en résultat d'exploitation (657/757), résultat exceptionnel redéfini, suppression des transferts de charges",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
-   "version": "homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2025"
+   "version": "homologué par arrêté du 26 décembre 2023 (arrêté qui homologue aussi les règlements n° 2023-01 à 2023-08) ; exercices ouverts à compter du 1er janvier 2025"
   },
   {
    "ref": "Règlement ANC n° 2023-05 du 10 novembre 2023",
    "objet": "« Solutions informatiques » à la place des « logiciels » (PCG, art. 611-1 et s. ; intitulé du compte 205)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05.pdf",
-   "version": "homologué par arrêté du 26 décembre 2023"
+   "version": "homologué par arrêté du 26 décembre 2023 ; exercices ouverts à compter du 1er janvier 2024"
   },
   {
    "ref": "Règlement ANC n° 2026-03 du 6 mars 2026",
-   "objet": "Modification du PCG ; définition du résultat exceptionnel reprise à l'art. 531-5",
+   "objet": "Modification du PCG relative à la comptabilisation des produits des ventes ; définition du résultat exceptionnel reprise à l'art. 531-5",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
    "version": "homologué par arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027"
   },
   {
    "ref": "CGI, art. 39 A ; CGI, ann. II, art. 22 et 23",
-   "objet": "Amortissement dégressif : biens éligibles, biens exclus, coefficients",
+   "objet": "Amortissement dégressif : coefficients (art. 39 A) ; biens éligibles et biens exclus, dont les biens usagés et ceux de moins de trois ans (ann. II, art. 22) ; calcul de l'annuité et prorata de l'exercice d'acquisition (ann. II, art. 23)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
-   "version": "en vigueur"
+   "version": "en vigueur (annexe II : section « Amortissement dégressif des biens d'équipement », art. 22 à 25)"
   },
   {
    "ref": "CGI, art. 39, 1-2°",
@@ -98,7 +98,7 @@
   },
   {
    "ref": "BOI-BIC-AMT-20-20-20 et BOI-BIC-AMT-20-20-30",
-   "objet": "Amortissement dégressif : biens concernés, point de départ, taux, passage au linéaire",
+   "objet": "Amortissement dégressif : biens concernés et biens exclus, dont les voitures de tourisme (BOI-BIC-AMT-20-20-20-10 et -30) ; point de départ, taux, passage au linéaire (BOI-BIC-AMT-20-20-30)",
    "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
    "version": "BOFiP du 12 septembre 2012"
   }
@@ -122,28 +122,31 @@
      "cite": "« Les éléments destinés à servir de façon durable à l'activité de l'entreprise constituent l'actif immobilisé. »"
     },
     {
-     "t": "<b>Immobilisation incorporelle</b> : actif non monétaire sans substance physique. Le compte <code>205</code> regroupe concessions, brevets, licences, marques, procédés et <b>solutions informatiques</b> (terme qui remplace « logiciels » depuis le règlement ANC n° 2023-05) ; le compte <code>207</code> enregistre le fonds commercial.",
+     "t": "<b>Immobilisation incorporelle</b> : actif non monétaire sans substance physique. Le compte <code>205</code> enregistre les concessions, brevets, licences, marques et procédés ainsi que les dépenses d'acquisition ou de création de <b>solutions informatiques</b> (terme qui remplace « logiciels » depuis le règlement ANC n° 2023-05) ; le compte <code>207</code> enregistre le fonds commercial.",
      "src": "PCG, art. 211-5 ; plan de comptes, comptes 205 et 207 ; règlement ANC n° 2023-05",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable",
+     "cite": "« Une immobilisation incorporelle est un actif non monétaire sans substance physique. »"
+    },
+    {
+     "t": "<b>Immobilisation corporelle</b> : actif physique détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours. Selon le commentaire de l'ANC, cette utilisation au-delà de l'exercice en cours s'entend d'une utilisation d'une durée supérieure à 12 mois.",
+     "src": "PCG, art. 211-6 et commentaire de l'ANC (recueil des normes comptables françaises au 1er janvier 2026)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/Recueil-PCG-Janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Immobilisation corporelle</b> : actif physique détenu pour être utilisé dans la production ou la fourniture de biens ou de services, pour être loué à des tiers ou à des fins de gestion interne, dont l'entité attend qu'il soit utilisé au-delà de l'exercice en cours.",
-     "src": "PCG, art. 211-6",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Titres de participation</b> (compte <code>261</code>) : droits dans le capital d'autres sociétés dont la détention durable est utile à l'activité de l'entreprise, notamment pour exercer une influence sur la société émettrice ou en assurer le contrôle ; la détention d'une fraction du capital supérieure à 10 % fait présumer la participation.",
+     "t": "<b>Participations</b> (titres de participation, compte <code>261</code>) : droits dans le capital d'autres personnes morales, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. Les titres représentant une fraction du capital supérieure à 10 % sont présumés être des participations.",
      "src": "C. com., art. R. 123-184 ; plan de comptes, compte 261",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197050",
-     "fiab": "stable"
+     "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006258148",
+     "fiab": "stable",
+     "cite": "« Constituent des participations les droits dans le capital d'autres personnes morales, matérialisés ou non par des titres, qui, en créant un lien durable avec celles-ci, sont destinés à contribuer à l'activité de la société détentrice. »"
     },
     {
-     "t": "<b>Amortissement</b> : répartition systématique du montant amortissable d'un actif en fonction de son utilisation. Un actif est amortissable lorsque son utilisation par l'entité est déterminable ; le plan d'amortissement est défini par l'entité pour chaque actif amortissable, à partir de sa durée et de son mode d'utilisation.",
+     "t": "<b>Amortissement</b> : répartition systématique du montant amortissable d'un actif selon son utilisation. Un actif immobilisé dont la durée d'utilisation est limitée (critères notamment physiques, techniques, juridiques ou économiques) est amorti ; un actif dont la durée d'utilisation n'est pas limitée n'est pas amorti, mais peut être déprécié.",
      "src": "PCG, art. 214-1 et 214-13",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Un actif immobilisé dont la durée d'utilisation est limitée fait l'objet d'un amortissement. »"
     },
     {
      "t": "<b>Valeur actuelle</b> : la plus élevée de la valeur vénale et de la valeur d'usage. La <b>dépréciation</b> constate que la valeur actuelle d'un actif est devenue inférieure à sa valeur nette comptable, qui est alors ramenée à la valeur d'inventaire à la clôture.",
@@ -207,16 +210,17 @@
      "cite": "« La quote-part de charges correspondant à la sous-activité n'est pas incorporable au coût de production. »"
     },
     {
-     "t": "<b>Plan d'amortissement</b> : le mode retenu traduit au mieux le rythme de consommation des avantages économiques attendus, le mode <b>linéaire</b> s'appliquant à défaut de mode mieux adapté ; le montant amortissable est la valeur brute sous déduction de la valeur résiduelle lorsque celle-ci est à la fois significative et mesurable. Le plan est défini à la date d'entrée du bien et toute modification significative de l'utilisation prévue entraîne sa révision prospective.",
+     "t": "<b>Plan d'amortissement</b> : le mode retenu traduit au mieux le rythme de consommation des avantages économiques attendus, le mode <b>linéaire</b> s'appliquant à défaut de mode mieux adapté ; le montant amortissable est la valeur brute sous déduction de la valeur résiduelle (nette des coûts de sortie attendus), prise en compte seulement lorsqu'elle est à la fois significative et mesurable. Le plan est défini à la date d'entrée du bien et toute modification significative de l'utilisation prévue entraîne sa révision prospective.",
      "src": "PCG, art. 214-1 à 214-4, 214-13 et 214-14",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Point de départ</b> : l'amortissement linéaire court en principe à compter de la <b>mise en service</b> du bien, d'où un prorata temporis la première année ; l'annuité dégressive court du <b>premier jour du mois d'acquisition</b> jusqu'à la clôture de l'exercice.",
-     "src": "BOI-BIC-AMT-20-20-30",
+     "t": "<b>Point de départ</b> : l'amortissement linéaire court en principe à compter du jour de la <b>mise en service</b> du bien, d'où un prorata temporis la première année ; l'annuité dégressive court du <b>premier jour du mois d'acquisition</b> jusqu'à la clôture de l'exercice. Fiscalement, le temps couru se compte en jours pour le linéaire et en mois pour le dégressif.",
+     "src": "BOI-BIC-AMT-20-20-30 ; CGI, ann. II, art. 23",
      "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« le temps couru s'apprécie en jours pour le calcul de l'amortissement linéaire et en mois pour le calcul de l'amortissement dégressif. »"
     },
     {
      "t": "<b>Dotation</b> : débit <code>6811</code> « Dotations aux amortissements sur immobilisations incorporelles et corporelles », crédit <code>28</code> (amortissements, même racine que le compte d'immobilisation) ; le compte 2 conserve la valeur brute.",
@@ -225,8 +229,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Amortissement dégressif</b> (fiscal) : il vise les biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués par les entreprises industrielles et figurant sur la liste de l'annexe II ; les biens d'occasion et ceux dont la durée normale d'utilisation est inférieure à trois ans en sont exclus. Le taux dégressif est le taux linéaire multiplié par un coefficient.",
-     "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 et 23 ; BOI-BIC-AMT-20-20-20",
+     "t": "<b>Amortissement dégressif</b> (fiscal) : il vise les biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués par les entreprises industrielles et figurant sur la liste de l'annexe II ; les biens déjà usagés lors de leur acquisition et ceux dont la durée normale d'utilisation est inférieure à trois ans en sont exclus, de même que les voitures de tourisme. Le taux dégressif est le taux linéaire multiplié par un coefficient.",
+     "src": "CGI, art. 39 A ; CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-20-10 et BOI-BIC-AMT-20-20-20-30",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
      "fiab": "stable",
      "cite": "« L'amortissement des biens d'équipement, autres que les immeubles d'habitation, les chantiers et les locaux servant à l'exercice de la profession, acquis ou fabriqués à compter du 1er janvier 1960 par les entreprises industrielles »"
@@ -235,7 +239,8 @@
      "t": "<b>Calcul du dégressif</b> : l'annuité s'applique à la valeur résiduelle (valeur restant à amortir) ; lorsque l'annuité dégressive devient inférieure au quotient de cette valeur résiduelle par le nombre d'années restant à courir, l'entreprise peut pratiquer cette dernière annuité (passage au linéaire).",
      "src": "BOI-BIC-AMT-20-20-30",
      "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« lorsque l'annuité dégressive d'amortissement ainsi calculée pour un exercice devient inférieure à l'annuité correspondant au quotient de la valeur résiduelle par le nombre d'années d'utilisation restant à courir, l'entreprise peut déduire ce dernier montant. »"
     },
     {
      "t": "<b>Amortissements dérogatoires</b> : la fraction de l'amortissement fiscal qui excède l'amortissement comptable est dotée au compte <code>145</code> (provision réglementée) par le débit du compte <code>68725</code> ; lorsque l'amortissement comptable devient supérieur, le compte 145 est repris par le crédit du compte <code>78725</code>. Ces écritures d'origine purement fiscale relèvent du résultat exceptionnel.",
@@ -276,18 +281,11 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "Coefficients de l'amortissement dégressif : <span class=\"mono\">1,25</span> lorsque la durée normale d'utilisation est de trois ou quatre ans, <span class=\"mono\">1,75</span> pour cinq ou six ans, <span class=\"mono\">2,25</span> au-delà de six ans.",
-     "src": "CGI, art. 39 A",
+     "t": "Coefficients de l'amortissement dégressif : <span class=\"mono\">1,25</span> lorsque la durée normale d'utilisation est de trois ou quatre ans, <span class=\"mono\">1,75</span> pour cinq ou six ans, <span class=\"mono\">2,25</span> au-delà de six ans. Exemple : bien amortissable sur cinq ans, taux linéaire <span class=\"mono\">20 %</span>, taux dégressif 20 % × 1,75 = <span class=\"mono\">35 %</span>.",
+     "src": "CGI, art. 39 A ; BOI-BIC-AMT-20-20-30 (exemple)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
      "fiab": "stable",
      "cite": "« Les taux d'amortissement dégressif sont obtenus en multipliant les taux d'amortissement linéaire par un coefficient fixé à : a. 1,25 lorsque la durée normale d'utilisation est de trois ou quatre ans ; b. 1,75 lorsque cette durée normale est de cinq ou six ans ; c. 2,25 lorsque cette durée normale est supérieure à six ans. »"
-    },
-    {
-     "t": "Exemple de taux : bien amortissable sur cinq ans, taux linéaire <span class=\"mono\">20 %</span>, taux dégressif <span class=\"mono\">35 %</span>.",
-     "src": "BOI-BIC-AMT-20-20-30",
-     "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
-     "fiab": "stable",
-     "cite": "« Le taux de l'amortissement dégressif est donc, en l'espèce, de 20 x 1,75 = 35 %. »"
     },
     {
      "t": "Tolérance fiscale : matériels et outillages, petits mobiliers et matériels de bureau, logiciels d'une valeur unitaire hors taxes n'excédant pas <span class=\"mono\">500 €</span> admis en charges immédiatement déductibles (seuil apprécié, le cas échéant, sur le prix global des éléments composant le matériel). La tolérance ne vise ni les biens dont l'utilisation constitue l'objet même de l'activité, ni l'équipement initial complet en mobilier d'un immeuble de bureaux, d'un restaurant ou d'un magasin.",
@@ -296,10 +294,11 @@
      "fiab": "stable"
     },
     {
-     "t": "Présomption de titres de participation : fraction du capital supérieure à <span class=\"mono\">10 %</span>.",
+     "t": "Présomption de participation : titres représentant une fraction du capital supérieure à <span class=\"mono\">10 %</span>.",
      "src": "C. com., art. R. 123-184",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197050",
-     "fiab": "stable"
+     "url": "https://legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000005634379&idArticle=LEGIARTI000006258148",
+     "fiab": "stable",
+     "cite": "« Sont présumés être des participations les titres représentant une fraction du capital supérieure à 10 %. »"
     },
     {
      "t": "Petite entreprise (option d'amortissement du fonds commercial sur dix ans) : ne pas dépasser deux des trois seuils suivants, applicables aux exercices ouverts à compter du 1er janvier 2024 et en vigueur en 2026 : total du bilan <span class=\"mono\">7 500 000 €</span>, chiffre d'affaires net <span class=\"mono\">15 000 000 €</span>, <span class=\"mono\">50</span> salariés en moyenne.",
@@ -333,10 +332,11 @@
      "cite": "« Les aides, les remboursements et les indemnités directement liés à l'évènement majeur et inhabituel et reçus en compensation de charges d'exploitation sont classés en résultat d'exploitation. »"
     },
     {
-     "t": "<b>Règlement ANC n° 2023-05 du 10 novembre 2023</b> (homologué par arrêté du 26 décembre 2023) : les règles sur les logiciels sont remplacées par un dispositif sur les « <b>solutions informatiques</b> » (PCG, art. 611-1 et s.) ; l'intitulé du compte 205 vise désormais les solutions informatiques.",
-     "src": "Règlement ANC n° 2023-05 ; PCG, art. 611-1 et s. ; plan de comptes, compte 205",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05.pdf",
-     "fiab": "stable"
+     "t": "<b>Règlement ANC n° 2023-05 du 10 novembre 2023</b> (homologué par arrêté du 26 décembre 2023, exercices ouverts à compter du 1er janvier 2024) : les règles sur les logiciels et les sites internet sont remplacées par un dispositif sur les « <b>solutions informatiques</b> » (PCG, art. 611-1 et s.) ; le compte 205 enregistre désormais les dépenses d'acquisition ou de création de solutions informatiques.",
+     "src": "Règlement ANC n° 2023-05 ; arrêté du 26 décembre 2023 ; PCG, art. 611-1 et s. ; plan de comptes, compte 205",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2023/R2023_05/R2023_05_version-commentee.pdf",
+     "fiab": "stable",
+     "cite": "« Le compte 205 enregistre également les dépenses d'acquisition ou de création de solutions informatiques »"
     },
     {
      "t": "<b>Loi de finances pour 2026</b> (loi n° 2026-103 du 19 février 2026, art. 13) : prorogation jusqu'au 31 décembre 2029 du dispositif temporaire, créé par la loi de finances pour 2022, qui rend déductible l'amortissement des fonds commerciaux acquis à compter du 1er janvier 2022.",
@@ -346,7 +346,7 @@
      "cite": "« Prorogation du dispositif temporaire de déductibilité de l’amortissement constaté au titre des fonds commerciaux »"
     },
     {
-     "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b> (homologué par arrêté du 12 août 2026, exercices ouverts à compter du 1er janvier 2027) : la définition du résultat exceptionnel issue du règlement n° 2022-06 est reprise à l'article 531-5 du PCG.",
+     "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b>, relatif à la comptabilisation des produits des ventes (homologué par arrêté du 12 août 2026, exercices ouverts à compter du 1er janvier 2027) : la définition du résultat exceptionnel issue du règlement n° 2022-06 (événement majeur et inhabituel) est reprise à l'article 531-5 du PCG.",
      "src": "Règlement ANC n° 2026-03 ; arrêté du 12 août 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
      "fiab": "stable"
@@ -380,6 +380,13 @@
      "src": "CGI, art. 39 A ; plan de comptes, comptes 145 et 28",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
+    },
+    {
+     "t": "Pièges sur le dégressif : un bien acquis d'occasion, un bien dont la durée normale d'utilisation est inférieure à trois ans ou une voiture de tourisme ne peut pas être amorti en dégressif ; il est amorti en <b>linéaire</b>. Lire aussi la liste des biens éligibles de l'annexe II avant d'appliquer un coefficient.",
+     "src": "CGI, ann. II, art. 22 ; BOI-BIC-AMT-20-20-20-10 et BOI-BIC-AMT-20-20-20-30",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006191215",
+     "fiab": "stable",
+     "cite": "« Sont exclus du bénéfice de l'amortissement dégressif les biens qui étaient déjà usagés au moment de leur acquisition par l'entreprise ainsi que ceux dont la durée normale d'utilisation est inférieure à trois ans. »"
     },
     {
      "t": "Lien UE4 et DSCG : fiscalement, la plus-value de cession d'un élément acquis ou créé depuis moins de deux ans est à court terme ; pour un élément amortissable détenu depuis au moins deux ans, elle est à court terme à hauteur des amortissements déduits et à long terme au-delà (entreprises relevant de l'impôt sur le revenu). Cette qualification ne modifie pas l'enregistrement comptable en 657 et 757.",

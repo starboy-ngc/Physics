@@ -141,7 +141,7 @@
    "num": "649",
    "label": "Remboursements de charges de personnel",
    "sens": "C",
-   "explication": "Le compte 649 enregistre les remboursements de charges de personnel reçus de tiers : indemnités journalières de sécurité sociale subrogées, remboursements de formation par un opérateur de compétences, aides à l'embauche, remboursements de salaires de personnel détaché. Il se crédite du montant reçu ou à recevoir par le débit du 431, du 4387 ou du 512. Son solde créditeur vient en déduction des charges de personnel dans le résultat d'exploitation. Il remplace l'ancien transfert de charges 791 pour ces opérations.",
+   "explication": "Le compte 649 enregistre les remboursements de charges de personnel reçus de tiers : indemnités journalières de sécurité sociale subrogées, remboursements de formation par un opérateur de compétences, aides à l'embauche, remboursements de salaires de personnel détaché. Il se crédite du montant reçu ou à recevoir par le débit du 431, du 439 Organismes sociaux – Produits à recevoir (avant 2025 : 4387) ou du 512. Son solde créditeur vient en déduction des charges de personnel dans le résultat d'exploitation. Il remplace l'ancien transfert de charges 791 pour ces opérations.",
    "exemple": "Indemnités journalières subrogées reçues de la CPAM 1 500 € : 512 D 1 500 / 649 C 1 500.",
    "piege": "Ne pas créditer le 641 du remboursement : le brut reste la charge réelle, et le remboursement s'inscrit séparément au 649.",
    "pcg2025": "Compte créé par le règlement ANC n° 2022-06 : il reçoit les remboursements de charges de personnel qui passaient avant 2025 par le 791 « Transferts de charges d'exploitation », supprimé."
@@ -663,7 +663,7 @@
    "num": "699",
    "label": "Produits - Reports en arrière des déficits",
    "sens": "C",
-   "explication": "Le compte 699 enregistre la créance d'impôt née de l'option pour le report en arrière du déficit (carry-back) : le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent, dans la limite de 1 000 000 €, et génère une créance sur le Trésor. Il se crédite du montant de la créance par le débit du 444 (ou du 4487). Il figure au compte de résultat en diminution de la charge d'impôt sur les bénéfices. La créance est remboursable au bout de cinq ans si elle n'a pas été utilisée.",
+   "explication": "Le compte 699 enregistre la créance d'impôt née de l'option pour le report en arrière du déficit (carry-back) : le déficit de l'exercice est imputé sur le bénéfice de l'exercice précédent, dans la limite de 1 000 000 €, et génère une créance sur le Trésor. Il se crédite du montant de la créance par le débit du 444. Il figure au compte de résultat en diminution de la charge d'impôt sur les bénéfices. La créance est remboursable au bout de cinq ans si elle n'a pas été utilisée.",
    "exemple": "Déficit de 200 000 € reporté en arrière sur un bénéfice taxé à 25 % : créance 50 000 € : 444 D 50 000 / 699 C 50 000.",
    "piege": "Le report en avant du déficit ne donne lieu à aucune écriture en comptabilité individuelle : seul le report en arrière crée une créance comptabilisée.",
    "pcg2025": null

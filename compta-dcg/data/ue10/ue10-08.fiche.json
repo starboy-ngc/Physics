@@ -1,6 +1,6 @@
 {
  "id": "ue10-08",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026 ; intitulés des deux premiers points repris du programme de l'UE 10 publié au BO n° 13 du 27 mars 2014",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -18,22 +18,22 @@
    "version": "applicable aux exercices ouverts à compter du 1er janvier 2020 ; modifié notamment par les règlements ANC n° 2024-07 et n° 2026-01 ; recueil du secteur non lucratif au 1er janvier 2026"
   },
   {
-   "ref": "C. com., art. L. 612-1, L. 612-4 et L. 612-5",
-   "objet": "Personnes morales de droit privé non commerçantes ayant une activité économique et associations subventionnées : comptes annuels, commissaire aux comptes, conventions",
+   "ref": "C. com., art. L. 612-1, L. 612-4, L. 612-5, R. 612-1 et D. 612-5",
+   "objet": "Personnes morales de droit privé non commerçantes ayant une activité économique et associations subventionnées : comptes annuels, commissaire aux comptes, conventions ; seuils de 50 salariés, 3 100 000 € de chiffre d'affaires ou de ressources et 1 550 000 € de total du bilan (R. 612-1), 153 000 € de subventions (D. 612-5)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038610679",
-   "version": "L. 612-1 et L. 612-4 en vigueur depuis le 1er janvier 2024 (ordonnance n° 2023-1142 du 6 décembre 2023)"
-  },
-  {
-   "ref": "C. com., art. R. 612-1 et D. 612-5",
-   "objet": "Seuils : 50 salariés, 3 100 000 € de chiffre d'affaires ou de ressources, 1 550 000 € de total du bilan (R. 612-1) ; 153 000 € de subventions (D. 612-5)",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000025883370/",
-   "version": "en vigueur ; D. 612-5 en vigueur depuis le 27 mars 2007"
+   "version": "L. 612-1 et L. 612-4 en vigueur depuis le 1er janvier 2024 (ordonnance n° 2023-1142 du 6 décembre 2023) ; D. 612-5 en vigueur depuis le 27 mars 2007"
   },
   {
    "ref": "C. com., art. L. 123-25 à L. 123-28-2",
    "objet": "Obligations comptables applicables à certains commerçants personnes physiques (régime réel simplifié, micro-entreprise)",
    "url": "https://legifrance.gouv.fr/affichCode.do?cidTexte=LEGITEXT000005634379&idSectionTA=LEGISCTA000024039860",
    "version": "en vigueur (sous-section 2 de la section 2 du chapitre III, titre II, livre Ier)"
+  },
+  {
+   "ref": "C. civ., art. 1855 et 1856",
+   "objet": "Sociétés civiles : information des associés et reddition annuelle des comptes de gestion par les gérants (rapport écrit d'ensemble sur l'activité)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444320/2026-04-25",
+   "version": "en vigueur depuis le 1er juillet 1978"
   },
   {
    "ref": "CGI, art. 93 et 93 A ; BOI-BNC-BASE-20-10-20",
@@ -60,10 +60,10 @@
    "version": "en vigueur ; L. 233-17-2 créé par l'ordonnance n° 2015-900 du 23 juillet 2015"
   },
   {
-   "ref": "C. com., art. L. 233-17, L. 230-2 et D. 230-2",
-   "objet": "Exemptions de consolidation : sous-groupes et ensembles ne constituant pas un grand groupe",
+   "ref": "C. com., art. L. 233-17, L. 233-17-1, L. 230-2 et D. 230-2",
+   "objet": "Exemptions de consolidation : sous-groupes, ensembles ne constituant pas un grand groupe, entreprises contrôlées d'intérêt négligeable",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535260",
-   "version": "L. 233-17 dans sa rédaction issue de l'ordonnance n° 2023-1142, en vigueur depuis le 1er janvier 2025 ; D. 230-2 modifié par le décret n° 2024-152 du 28 février 2024"
+   "version": "L. 233-17 dans sa rédaction issue de l'ordonnance n° 2023-1142, en vigueur depuis le 1er janvier 2025 ; L. 233-17-1 modifié par l'ordonnance n° 2015-900 du 23 juillet 2015 ; D. 230-2 modifié par le décret n° 2024-152 du 28 février 2024"
   },
   {
    "ref": "C. com., art. L. 233-18 et L. 233-24",
@@ -90,16 +90,16 @@
    "version": "L. 234-1 en vigueur depuis le 20 novembre 2016 (loi n° 2016-1547 du 18 novembre 2016)"
   },
   {
-   "ref": "NEP 320 (arrêté du 19 juillet 2012) ; NEP 500 et NEP 700 (arrêté du 27 juillet 2023 modifié par l'arrêté du 4 octobre 2023)",
-   "objet": "Caractère significatif et seuil de signification ; caractère probant des éléments collectés ; rapports du commissaire aux comptes sur les comptes",
+   "ref": "NEP 320 (C. com., art. A. 821-70 ; arrêté du 19 juillet 2012) ; NEP 500 et NEP 700 (arrêté du 27 juillet 2023 modifié par l'arrêté du 4 octobre 2023) ; NEP 600 révisée (C. com., art. A. 821-64 ; arrêté du 29 octobre 2025)",
+   "objet": "Caractère significatif et seuil de signification ; caractère probant des éléments collectés ; rapports du commissaire aux comptes sur les comptes ; audit des comptes de groupe",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000047931335",
-   "version": "NEP révisées publiées au JO du 4 août 2023"
+   "version": "NEP 320 homologuée par arrêté du 19 juillet 2012 (JO du 26 juillet 2012), figurant à l'article A. 821-70 en vigueur depuis le 1er janvier 2024 ; NEP 500 et 700 révisées publiées au JO du 4 août 2023 ; NEP 600 révisée applicable aux exercices ouverts à compter du 4 novembre 2025"
   },
   {
    "ref": "CGI, art. 38, 4 bis ; CGI, ann. III, art. 38 quater ; C. com., art. L. 123-22 ; LPF, art. L. 102 B",
    "objet": "Liaison comptabilité-fiscalité, intangibilité du bilan d'ouverture et conservation des documents comptables",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006296545",
-   "version": "38 quater en vigueur depuis le 17 mars 1984 ; L. 102 B dans sa rédaction en vigueur depuis le 1er janvier 2023"
+   "version": "38 quater en vigueur depuis le 17 mars 1984 ; L. 102 B dans sa rédaction issue de la loi n° 2022-1726 du 30 décembre 2022, en vigueur en 2026"
   }
  ],
  "sections": [
@@ -143,13 +143,13 @@
     },
     {
      "t": "<b>Seuil de signification</b> : montant au-delà duquel les décisions économiques ou le jugement fondé sur les comptes sont susceptibles d'être influencés ; le commissaire aux comptes le fixe lors de la planification à partir de critères pertinents (résultat courant, résultat net, chiffre d'affaires, capitaux propres…) et peut le revoir en cours de mission si des faits nouveaux remettent en cause son évaluation initiale. Le <b>seuil de planification</b>, inférieur, permet de réduire à un niveau acceptable le risque que le montant des anomalies relevées non corrigées et des anomalies non détectées excède le seuil de signification.",
-     "src": "NEP 320 (application de la notion de caractère significatif), homologuée par arrêté du 19 juillet 2012",
+     "src": "NEP 320 (application de la notion de caractère significatif lors de la planification et de la réalisation d'un audit), C. com., art. A. 821-70 ; homologuée par arrêté du 19 juillet 2012",
      "url": "https://doc.cncc.fr/docs/nep-320-application-de-la-notion/attachments/nep-320",
      "fiab": "stable"
     },
     {
-     "t": "<b>Contrôle interne</b> : dispositif de la société, défini et mis en œuvre sous sa responsabilité, comprenant un ensemble de moyens, de comportements, de procédures et d'actions qui contribue à la maîtrise de ses activités et lui permet de prendre en compte les risques significatifs (opérationnels, financiers, de conformité) ; il vise notamment la conformité aux lois et règlements, le bon fonctionnement des processus internes et la fiabilité des informations financières. La NEP 315 révisée (arrêté du 13 novembre 2024) retient une définition du contrôle interne fondée sur le référentiel COSO et ses composantes.",
-     "src": "AMF, Cadre de référence sur les dispositifs de gestion des risques et de contrôle interne (recommandation DOC-2010-16) ; NEP 315 révisée",
+     "t": "<b>Contrôle interne</b> : dispositif de la société, défini et mis en œuvre sous sa responsabilité, comprenant un ensemble de moyens, de comportements, de procédures et d'actions qui contribue à la maîtrise de ses activités et lui permet de prendre en compte les risques significatifs (opérationnels, financiers, de conformité) ; il vise notamment la conformité aux lois et règlements, le bon fonctionnement des processus internes et la fiabilité des informations financières. La NEP 315 révisée (arrêté du 13 novembre 2024, exercices ouverts à compter du 19 novembre 2024) analyse le contrôle interne en cinq composantes intégrées, dont l'environnement de contrôle, le processus d'évaluation des risques de l'entité, le système d'information et le pilotage du contrôle interne (évaluations réalisées par l'entité pour s'assurer de son efficacité).",
+     "src": "AMF, Cadre de référence sur les dispositifs de gestion des risques et de contrôle interne (recommandation DOC-2010-16) ; NEP 315 révisée (arrêté du 13 novembre 2024)",
      "url": "https://www.amf-france.org/sites/institutionnel/files/contenu_simple/rapports_groupes_travail/Cadre%20de%20reference%20sur%20les%20dispositifs%20de%20gestion%20des%20risques%20et%20de%20controle%20interne.pdf",
      "fiab": "stable"
     }
@@ -199,6 +199,13 @@
      "fiab": "stable"
     },
     {
+     "t": "<b>Sociétés civiles</b> : les gérants doivent, au moins une fois dans l'année, rendre compte de leur gestion aux associés ; cette reddition de comptes comporte un rapport écrit d'ensemble sur l'activité de la société au cours de l'année ou de l'exercice écoulé, indiquant les bénéfices réalisés ou prévisibles et les pertes encourues ou prévues (C. civ., art. 1856) ; les associés peuvent obtenir, au moins une fois par an, communication des livres et des documents sociaux (art. 1855). Personnes morales non commerçantes, elles ne sont tenues d'établir des comptes annuels au titre du Code de commerce que si elles ont une activité économique et dépassent les seuils de l'article R. 612-1 (L. 612-1).",
+     "cite": "« rapport écrit d'ensemble sur l'activité de la société au cours de l'année ou de l'exercice écoulé »",
+     "src": "C. civ., art. 1855 et 1856 ; C. com., art. L. 612-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444320/2026-04-25",
+     "fiab": "stable"
+    },
+    {
      "t": "<b>Groupement d'intérêt économique</b> : son but est de faciliter ou de développer l'activité économique de ses membres, d'améliorer ou d'accroître les résultats de cette activité, non de réaliser des bénéfices pour lui-même ; son activité n'a qu'un caractère auxiliaire. Le contrôle des comptes est exercé par un ou plusieurs commissaires aux comptes nommés par l'assemblée pour six exercices lorsque le groupement émet des obligations ou compte cent salariés ou plus à la clôture d'un exercice (L. 251-12).",
      "cite": "« Il n'est pas de réaliser des bénéfices pour lui-même. Son activité doit se rattacher à l'activité économique de ses membres et ne peut avoir qu'un caractère auxiliaire par rapport à celle-ci. »",
      "src": "C. com., art. L. 251-1 et L. 251-12",
@@ -213,8 +220,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Exemptions de consolidation</b> : une société contrôlée par une entreprise qui l'inclut dans ses comptes consolidés publiés est exemptée, sauf opposition d'actionnaires ou d'associés représentant au moins le dixième de son capital et sauf si elle a émis des titres admis aux négociations sur un marché réglementé ; est aussi exempté l'ensemble qui ne constitue pas un grand groupe au sens de l'article L. 230-2 (dépassement d'au moins deux des trois critères : total du bilan, chiffre d'affaires net, nombre moyen de salariés, aux seuils de l'article D. 230-2) lorsqu'aucune de ses sociétés ne relève des catégories de l'article L. 123-16-2 (entités d'intérêt public).",
-     "src": "C. com., art. L. 233-17, L. 230-2 et D. 230-2 (décret n° 2024-152 du 28 février 2024)",
+     "t": "<b>Exemptions de consolidation</b> : une société contrôlée par une entreprise qui l'inclut dans ses comptes consolidés publiés est exemptée, sauf opposition d'actionnaires ou d'associés représentant au moins le dixième de son capital et sauf si elle a émis des titres admis aux négociations sur un marché réglementé ; est aussi exempté l'ensemble qui ne constitue pas un grand groupe au sens de l'article L. 230-2 (dépassement d'au moins deux des trois critères : total du bilan, chiffre d'affaires net, nombre moyen de salariés, aux seuils de l'article D. 230-2) lorsqu'aucune de ses sociétés ne relève des catégories de l'article L. 123-16-2 (entités d'intérêt public) ; la société est encore exemptée, sous réserve d'en justifier dans l'annexe, lorsque les entreprises qu'elle contrôle de manière exclusive ou conjointe présentent, individuellement et collectivement, un intérêt négligeable au regard de l'objectif d'image fidèle des comptes consolidés (L. 233-21) ou peuvent être exclues de la consolidation (L. 233-19) (L. 233-17-1).",
+     "src": "C. com., art. L. 233-17, L. 233-17-1, L. 230-2 et D. 230-2 (décret n° 2024-152 du 28 février 2024)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535260",
      "fiab": "stable"
     },
@@ -272,7 +279,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Conservation des documents</b> : les documents comptables et les pièces justificatives sont conservés pendant dix ans (C. com., art. L. 123-22) ; sur le plan fiscal, les livres, registres, documents et pièces sur lesquels s'exercent les droits de communication, d'enquête et de contrôle sont conservés six ans à compter de la date de la dernière opération mentionnée ou de leur établissement (LPF, art. L. 102 B) ; lorsque la comptabilité est informatisée, la copie des fichiers des écritures comptables est remise au début d'une vérification (LPF, art. L. 47 A).",
+     "t": "<b>Conservation des documents</b> : les documents comptables et les pièces justificatives sont conservés pendant dix ans (C. com., art. L. 123-22) ; sur le plan fiscal, les livres, registres, documents et pièces sur lesquels s'exercent les droits de communication, d'enquête et de contrôle sont conservés six ans à compter de la date de la dernière opération mentionnée ou de leur établissement (LPF, art. L. 102 B, rédaction en vigueur en 2026) ; lorsque la comptabilité est informatisée, la copie des fichiers des écritures comptables est remise au début d'une vérification (LPF, art. L. 47 A).",
      "cite": "« Les documents comptables et les pièces justificatives sont conservés pendant dix ans. »",
      "src": "C. com., art. L. 123-22 ; LPF, art. L. 102 B et L. 47 A",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
@@ -320,14 +327,14 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Procédure d'alerte</b> (SA) : réponse du dirigeant sous <span class=\"mono\">quinze jours</span> ; invitation à délibérer adressée dans les <span class=\"mono\">huit jours</span> de la réponse ou de l'expiration du délai ; délibération du conseil dans les <span class=\"mono\">quinze jours</span> de la réception de la lettre ; reprise possible de la procédure dans les <span class=\"mono\">six mois</span> de son déclenchement.",
+     "t": "<b>Procédure d'alerte</b> (SA) : réponse du dirigeant sous <span class=\"mono\">quinze jours</span> ; invitation à délibérer adressée dans les <span class=\"mono\">huit jours</span> de la réponse ou de l'expiration du délai ; convocation du conseil dans les <span class=\"mono\">huit jours</span> et délibération dans les <span class=\"mono\">quinze jours</span> de la réception de la lettre ; reprise possible de la procédure dans les <span class=\"mono\">six mois</span> de son déclenchement.",
      "cite": "« La délibération intervient dans les quinze jours qui suivent la réception de cette lettre. »",
-     "src": "C. com., art. L. 234-1 et R. 234-2",
+     "src": "C. com., art. L. 234-1 et R. 234-2 (en vigueur depuis le 27 mars 2007)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006264900",
      "fiab": "stable"
     },
     {
-     "t": "<b>Conservation et intangibilité</b> : <span class=\"mono\">10 ans</span> pour les documents comptables et pièces justificatives (C. com.) ; <span class=\"mono\">6 ans</span> pour les documents soumis aux droits de communication et de contrôle de l'administration (LPF) ; erreurs du bilan d'ouverture du premier exercice non prescrit corrigeables lorsqu'elles sont intervenues plus de <span class=\"mono\">7 ans</span> avant son ouverture.",
+     "t": "<b>Conservation et intangibilité</b> : <span class=\"mono\">10 ans</span> pour les documents comptables et pièces justificatives (C. com.) ; <span class=\"mono\">6 ans</span> pour les documents soumis aux droits de communication et de contrôle de l'administration (LPF, rédaction en vigueur en 2026) ; erreurs du bilan d'ouverture du premier exercice non prescrit corrigeables lorsqu'elles sont intervenues plus de <span class=\"mono\">7 ans</span> avant son ouverture.",
      "src": "C. com., art. L. 123-22 ; LPF, art. L. 102 B ; CGI, art. 38, 4 bis ; BOI-CF-COM-10-10-30-10",
      "url": "https://bofip.impots.gouv.fr/bofip/8877-PGP.html/identifiant=BOI-CF-COM-10-10-30-10-20180720",
      "fiab": "stable"
@@ -356,8 +363,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Normes d'exercice professionnel révisées</b> : l'arrêté du 27 juillet 2023 (JO du 4 août 2023), modifié par l'arrêté du 4 octobre 2023, homologue plusieurs NEP révisées, dont la NEP 200 (principes applicables à l'audit), la NEP 500 et la NEP 700 ; l'arrêté du 13 novembre 2024 (JO du 19 novembre 2024) homologue onze NEP révisées, dont les NEP 315 et 330 (définition du contrôle interne fondée sur le COSO), applicables aux exercices ouverts à compter du 19 novembre 2024, la NEP 265 (faiblesses du contrôle interne) et la NEP 600 (audit des comptes consolidés).",
-     "src": "Arrêté du 27 juillet 2023 modifié par l'arrêté du 4 octobre 2023 ; arrêté du 13 novembre 2024",
+     "t": "<b>Normes d'exercice professionnel révisées</b> : l'arrêté du 27 juillet 2023 (JO du 4 août 2023), modifié par l'arrêté du 4 octobre 2023, homologue plusieurs NEP révisées, dont la NEP 200 (principes applicables à l'audit), la NEP 500 et la NEP 700 ; l'arrêté du 13 novembre 2024 (JO du 19 novembre 2024) homologue onze NEP révisées, dont les NEP 315 et 330 (définition du contrôle interne fondée sur le COSO), applicables aux exercices ouverts à compter du 19 novembre 2024, la NEP 265 (faiblesses du contrôle interne) et la NEP 600 (audit des comptes consolidés), remplacée depuis par la version homologuée le 29 octobre 2025. La NEP 320 (caractère significatif) demeure celle homologuée par l'arrêté du 19 juillet 2012, codifiée à l'article A. 821-70 du Code de commerce.",
+     "src": "Arrêté du 27 juillet 2023 modifié par l'arrêté du 4 octobre 2023 ; arrêté du 13 novembre 2024 ; arrêté du 19 juillet 2012 (NEP 320) ; C. com., art. A. 821-70",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050510512",
      "fiab": "stable"
     },
@@ -372,6 +379,13 @@
      "t": "<b>Associations : règlements ANC n° 2024-07 et n° 2026-01</b> : le règlement n° 2024-07 du 6 décembre 2024 (distinction entre dettes et autres fonds propres), homologué par arrêté du 26 décembre 2025, modifie notamment le règlement n° 2018-06 et s'applique aux exercices ouverts à compter du 1er janvier 2026 (application anticipée possible) ; le règlement n° 2026-01 du 9 janvier 2026, homologué par l'arrêté du 12 août 2026, remplace à l'article 421-1 du règlement n° 2018-06 le terme « jetons » par « crypto-actifs et assimilés ».",
      "src": "Arrêté du 26 décembre 2025 (règlements ANC n° 2024-07 et n° 2025-05) ; arrêté du 12 août 2026 (règlements ANC n° 2026-01 à 2026-04)",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053174797",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>NEP 600 révisée</b> (audit des comptes de groupe, y compris l'utilisation des travaux des auditeurs des composants) : adoptée par la Haute autorité de l'audit le 9 octobre 2025 et homologuée par l'arrêté du 29 octobre 2025, qui en reprend le texte à l'article A. 821-64 du Code de commerce, elle s'applique aux exercices ouverts à compter du 4 novembre 2025, soit aux audits de l'exercice 2026 lorsque l'exercice coïncide avec l'année civile ; elle remplace la version homologuée par l'arrêté du 13 novembre 2024 et tient compte de la norme internationale ISA 600 révisée ainsi que des NEP 315 et 330 révisées.",
+     "cite": "« La norme d'exercice professionnel révisée relative à l'audit des comptes de groupe (y compris l'utilisation des travaux des auditeurs des composants) – aspects particuliers, adoptée par la Haute Autorité de l'audit le 9 octobre 2025, est homologuée. »",
+     "src": "Arrêté du 29 octobre 2025, art. 1er ; C. com., art. A. 821-64 ; NEP 600 révisée",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052486126",
      "fiab": "stable"
     }
    ]

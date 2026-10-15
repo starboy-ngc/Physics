@@ -1,6 +1,6 @@
 {
  "id": "ue9-01",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -37,8 +37,14 @@
    "version": "en vigueur (L. 123-16-1 issu de l'ordonnance n° 2014-86 du 30 janvier 2014 ; L. 123-16 modifié par la loi n° 2019-486 du 22 mai 2019)"
   },
   {
+   "ref": "C. com., art. L. 123-16-2",
+   "objet": "Entités exclues des allègements des articles L. 123-16 et L. 123-16-1 (établissements de crédit, de paiement et de monnaie électronique, assurance et réassurance, organismes de retraite professionnelle, mutuelles et institutions de prévoyance)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043757746",
+   "version": "en vigueur depuis le 3 juillet 2021"
+  },
+  {
    "ref": "C. com., art. L. 123-17 à L. 123-21",
-   "objet": "Permanence des méthodes, évaluation séparée et non-compensation, prudence, continuité d'exploitation, bénéfices réalisés",
+   "objet": "Permanence des méthodes, évaluation séparée, non-compensation et bilan d'ouverture, prudence, continuité d'exploitation, bénéfices réalisés",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178754/",
    "version": "en vigueur (L. 123-17, L. 123-19 et L. 123-20 réécrits par l'ordonnance n° 2015-900 du 23 juillet 2015, en vigueur depuis le 1er janvier 2016)"
   },
@@ -51,8 +57,8 @@
   {
    "ref": "C. com., art. R. 123-195",
    "objet": "Contenu de l'annexe : informations d'importance significative",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197052/",
-   "version": "en vigueur (modifié par le décret n° 2015-903 du 23 juillet 2015)"
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927471",
+   "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015)"
   },
   {
    "ref": "C. com., art. D. 123-200",
@@ -67,8 +73,8 @@
    "version": "en vigueur le 1er mars 2024 ; comptes et rapports des exercices ouverts à compter du 1er janvier 2024"
   },
   {
-   "ref": "PCG (règlement ANC n° 2014-03 consolidé au 1er janvier 2026), art. 121-1, 121-3, 121-5, 211-1, 321-1, 511-1, 511-2, 512-1, 513-1, 513-2 et 513-5",
-   "objet": "Définition de la comptabilité, de l'actif, du passif, des charges, des produits et du résultat ; résultat exceptionnel",
+   "ref": "PCG (règlement ANC n° 2014-03 consolidé au 1er janvier 2026), art. 121-1, 121-3, 121-5, 122-1, 122-2, 211-1, 211-7, 321-1, 511-1, 511-2, 512-1, 513-1, 513-2 et 513-5",
+   "objet": "Définition de la comptabilité, de l'actif, du stock, du passif, des charges, des produits et du résultat ; changements de méthodes ; résultat exceptionnel",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "version": "version consolidée au 1er janvier 2026 (intègre le règlement ANC n° 2022-06)"
   },
@@ -123,11 +129,18 @@
      "cite": "« Un passif est un élément du patrimoine ayant une valeur économique négative pour l'entité »"
     },
     {
-     "t": "<b>Actif immobilisé</b> : ensemble des éléments destinés à servir de façon durable à l'activité de l'entreprise. Le modèle de bilan, établi par un règlement de l'ANC auquel renvoie l'article R. 123-182, présente ensuite l'actif circulant (stocks et en-cours, avances et acomptes versés, créances, valeurs mobilières de placement, disponibilités).",
-     "src": "C. com., art. R. 123-181 et R. 123-182 ; modèle de bilan du PCG (règlement ANC n° 2022-06)",
+     "t": "<b>Actif immobilisé</b> : ensemble des éléments destinés à servir de façon durable à l'activité de l'entreprise. L'actif du bilan, dont le modèle est établi par un règlement de l'ANC, présente ensuite l'actif circulant : stocks et en-cours, avances et acomptes versés sur commandes, créances, valeurs mobilières de placement et disponibilités.",
+     "src": "C. com., art. R. 123-181 et R. 123-182",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927431",
      "fiab": "stable",
      "cite": "« Les éléments destinés à servir de façon durable à l'activité de l'entreprise constituent l'actif immobilisé. »"
+    },
+    {
+     "t": "<b>Stock</b> : actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production. Il relève de l'actif circulant, alors que l'immobilisation est destinée à servir de façon durable à l'activité.",
+     "src": "PCG, art. 211-7 ; C. com., art. R. 123-181 et R. 123-182",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "fiab": "stable",
+     "cite": "« Un stock est un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production »"
     },
     {
      "t": "<b>Charges</b> : sommes ou valeurs versées ou à verser en contrepartie de marchandises, approvisionnements, travaux et services consommés, ou en exécution d'une obligation légale (art. 511-2). Une dépense qui ne remplit pas les conditions de définition et de comptabilisation d'un actif et n'est pas incorporable à son coût est comptabilisée en charges, sous réserve des articles 212-9 à 212-11 (art. 511-1).",
@@ -190,9 +203,9 @@
      "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },
     {
-     "t": "L'<b>annexe</b> complète et commente l'information donnée par le bilan et le compte de résultat ; outre les informations obligatoires prévues notamment aux articles L. 123-13 à L. 123-21, elle comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat.",
+     "t": "L'<b>annexe</b> complète et commente l'information donnée par le bilan et le compte de résultat (art. L. 123-13). Outre les informations obligatoires prévues notamment aux articles L. 123-13 à L. 123-21 et par règlement de l'ANC, elle comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise (art. R. 123-195).",
      "src": "C. com., art. L. 123-13 et R. 123-195",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006197052/",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927471",
      "fiab": "stable",
      "cite": "« l'annexe comporte toutes les informations d'importance significative sur la situation patrimoniale et financière et sur le résultat de l'entreprise. »"
     },
@@ -211,11 +224,11 @@
      "cite": "« Si, dans un cas exceptionnel, l'application d'une prescription comptable se révèle impropre à donner une image fidèle du patrimoine, de la situation financière ou du résultat, il doit y être dérogé. »"
     },
     {
-     "t": "<b>Évaluation séparée et non-compensation</b> : les éléments d'actif et de passif sont évalués séparément ; aucune compensation n'est opérée entre postes d'actif et de passif du bilan ni entre postes de charges et de produits du compte de résultat, sauf dans des cas exceptionnels prévus par un règlement de l'ANC.",
+     "t": "<b>Évaluation séparée et non-compensation</b> : les éléments d'actif et de passif sont évalués séparément ; aucune compensation n'est opérée entre postes d'actif et de passif du bilan ni entre postes de charges et de produits du compte de résultat, sauf dans des cas exceptionnels prévus par un règlement de l'ANC. Le même article pose l'<b>intangibilité du bilan d'ouverture</b> : le bilan d'ouverture d'un exercice doit correspondre au bilan de clôture de l'exercice précédent.",
      "src": "C. com., art. L. 123-19",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927177",
      "fiab": "stable",
-     "cite": "« Les éléments d'actif et de passif doivent être évalués séparément. »"
+     "cite": "« Aucune compensation ne peut être opérée entre les postes d'actif et de passif du bilan ou entre les postes de charges et de produits du compte de résultat, sauf dans des cas exceptionnels prévus par un règlement de l'Autorité des normes comptables. »"
     },
     {
      "t": "<b>Prudence</b> et <b>continuité d'exploitation</b> : les comptes annuels respectent le principe de prudence et sont établis en présumant que le commerçant poursuit ses activités. Même en cas d'absence ou d'insuffisance du bénéfice, il est procédé aux amortissements, dépréciations et provisions nécessaires.",
@@ -232,8 +245,8 @@
      "cite": "« Seuls les bénéfices réalisés à la date de clôture d'un exercice peuvent être inscrits dans les comptes annuels. »"
     },
     {
-     "t": "<b>Permanence des méthodes</b> : sauf dans des cas exceptionnels, afin de donner une image fidèle et dans les conditions prévues par un règlement de l'ANC, les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre. Le PCG définit les exceptions : changement de réglementation comptable ou changement de méthode à l'initiative de l'entité (art. 122-1 et 122-2).",
-     "src": "C. com., art. L. 123-17 ; PCG, art. 121-5",
+     "t": "<b>Permanence des méthodes</b> : sauf dans des cas exceptionnels, afin de donner une image fidèle et dans les conditions prévues par un règlement de l'ANC, les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre. Le PCG admet deux origines de changement : un changement de réglementation comptable, qui s'impose à l'entité, ou un changement à l'initiative de l'entité (art. 122-1). Ce dernier suppose un choix entre plusieurs méthodes conformes et une meilleure information financière (art. 122-2).",
+     "src": "C. com., art. L. 123-17 ; PCG, art. 121-5, 122-1 et 122-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927173",
      "fiab": "stable",
      "cite": "« Sauf dans des cas exceptionnels, afin de donner une image fidèle du patrimoine, de la situation financière et du résultat de l'entreprise et dans les conditions prévues par un règlement de l'Autorité des normes comptables, les méthodes comptables retenues et la structure du bilan et du compte de résultat ne peuvent être modifiées d'un exercice à l'autre. »"
@@ -245,7 +258,7 @@
      "fiab": "stable"
     },
     {
-     "t": "Les produits et les charges sont classés au compte de résultat de manière à faire apparaître, par différence, les éléments du résultat courant et le résultat exceptionnel. Le compte de résultat, dont le modèle est fixé par règlement de l'ANC, présente les charges d'exploitation, financières et exceptionnelles, la participation des salariés et l'impôt sur le bénéfice, puis les produits d'exploitation, financiers et exceptionnels, et enfin le résultat de l'exercice.",
+     "t": "Les produits et les charges sont classés au compte de résultat de manière à faire apparaître, par différence, les éléments du résultat courant et le résultat exceptionnel, défini par l'article R. 123-192 comme celui dont la réalisation n'est pas liée à l'exploitation courante de l'entreprise (le PCG en précise le contenu à l'article 513-5). Le compte de résultat, dont le modèle est fixé par règlement de l'ANC, présente les charges d'exploitation, financières et exceptionnelles, la participation des salariés et l'impôt sur le bénéfice, puis les produits d'exploitation, financiers et exceptionnels, et enfin le résultat de l'exercice.",
      "src": "C. com., art. R. 123-192 et R. 123-193 ; PCG, art. 513-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927468",
      "fiab": "stable",
@@ -366,7 +379,7 @@
      "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },
     {
-     "t": "Les <b>micro-entreprises</b> sont dispensées d'annexe, sauf celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières ; les petites entreprises peuvent adopter une présentation simplifiée de leurs comptes annuels et les moyennes entreprises une présentation simplifiée de leur compte de résultat, dans les conditions fixées par règlement de l'ANC. Ces allègements ne s'appliquent pas aux entités exclues par l'article L. 123-16-2, notamment les personnes dont les titres sont admis aux négociations sur un marché réglementé et celles qui font appel à la générosité du public.",
+     "t": "Les <b>micro-entreprises</b> sont dispensées d'annexe, sauf celles dont l'activité consiste à gérer des titres de participations et de valeurs mobilières ; les petites entreprises peuvent adopter une présentation simplifiée de leurs comptes annuels et les moyennes entreprises une présentation simplifiée de leur compte de résultat, dans les conditions fixées par règlement de l'ANC. Ces allègements ne s'appliquent pas aux entités visées par l'article L. 123-16-2, notamment les établissements de crédit et sociétés de financement, les établissements de paiement et de monnaie électronique et les entreprises d'assurance et de réassurance.",
      "src": "C. com., art. L. 123-16, L. 123-16-1 et L. 123-16-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556285/",
      "fiab": "stable",

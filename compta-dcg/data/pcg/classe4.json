@@ -249,10 +249,10 @@
    "num": "42",
    "label": "Personnel et comptes rattachés",
    "sens": "C",
-   "explication": "Le compte 42 enregistre les dettes et créances envers le personnel : rémunérations dues (421), comité social et économique (422), participation (424), avances (425), dépôts (426), oppositions (427), charges à payer (428). Il est crédité des salaires nets dus et débité de leur paiement ; les cotisations sociales vont en 43. Il figure au passif dans le poste Dettes fiscales et sociales (sauf 425 à l'actif). La charge de personnel elle-même est enregistrée en 641 (salaires bruts) et 645 (cotisations patronales).",
+   "explication": "Le compte 42 enregistre les dettes et créances envers le personnel : rémunérations dues (421), comité social et économique (422), participation (424), avances, acomptes et autres créances sur le personnel (425), dépôts (426), oppositions (427), charges à payer (428). Il est crédité des salaires nets dus et débité de leur paiement ; les cotisations sociales vont en 43. Il figure au passif dans le poste Dettes fiscales et sociales (sauf 425 à l'actif). La charge de personnel elle-même est enregistrée en 641 (salaires bruts) et 645 (cotisations patronales).",
    "exemple": "Paie du mois : salaires bruts 50 000 €, cotisations salariales 11 000 €, acomptes 2 000 € : 641 D 50 000 / 421 C 37 000 / 431 et 437 C 11 000 / 425 C 2 000.",
    "piege": "Le compte 421 est crédité du net à payer, pas du brut : la différence est due aux organismes sociaux (43) et à l'État (prélèvement à la source, 4421).",
-   "pcg2025": null
+   "pcg2025": "Le règlement ANC 2022-06 réserve le compte 428 aux charges à payer (la subdivision 4287 Produits à recevoir est supprimée) et renomme le compte 425 « Personnel – Avances et acomptes et autres comptes débiteurs »."
   },
   {
    "num": "421",
@@ -283,12 +283,12 @@
   },
   {
    "num": "425",
-   "label": "Personnel – Avances et acomptes",
+   "label": "Personnel – Avances et acomptes et autres comptes débiteurs",
    "sens": "D",
-   "explication": "Le compte 425 enregistre les avances et acomptes sur salaires versés au personnel avant la paie, ainsi que les avances pour frais de déplacement à justifier. Il est débité lors du versement et crédité lors de la retenue sur le bulletin de paie ou de la justification des frais. Il figure à l'actif dans le poste Autres créances ; c'est le seul compte 42 à solde débiteur.",
+   "explication": "Le compte 425 enregistre les avances et acomptes sur salaires versés au personnel avant la paie, les avances pour frais de déplacement à justifier et, plus largement, les autres positions débitrices envers le personnel. Il est débité lors du versement et crédité lors de la retenue sur le bulletin de paie ou de la justification des frais. Il figure à l'actif dans le poste Autres créances ; c'est le seul compte 42 à solde débiteur.",
    "exemple": "Acompte de 800 € versé le 15 : 425 D 800 / 512 C 800 ; paie de fin de mois : 641 D 2 500 / 425 C 800 / 431 C 550 / 421 C 1 150.",
    "piege": "Un prêt au personnel remboursable sur plusieurs mois va en 2743, pas en 425.",
-   "pcg2025": null
+   "pcg2025": "Renommé par le règlement ANC 2022-06 : « Personnel – Avances et acomptes et autres comptes débiteurs » (anciennement « Personnel – Avances et acomptes ») ; le compte 428 ne portant plus de produits à recevoir (4287 supprimé), les autres positions débitrices envers le personnel relèvent de ce compte."
   },
   {
    "num": "426",
@@ -310,12 +310,12 @@
   },
   {
    "num": "428",
-   "label": "Personnel – Charges à payer et produits à recevoir",
+   "label": "Personnel – Charges à payer",
    "sens": "C",
-   "explication": "Le compte 428 enregistre, à la clôture, les dettes envers le personnel certaines dans leur principe mais dont le montant est estimé : congés payés acquis non pris (4282), participation à répartir (4284), primes et autres charges à payer (4286), produits à recevoir du personnel (4287). Il est crédité par le débit des comptes 641 (ou 691) et contre-passé à l'ouverture. Il figure au passif dans les dettes sociales (4287 à l'actif).",
+   "explication": "Le compte 428 enregistre, à la clôture, les dettes envers le personnel certaines dans leur principe mais dont le montant est estimé : congés payés acquis non pris (4282), participation à répartir (4284), primes et autres charges à payer (4286). Il est crédité par le débit des comptes 641 (ou 691) et contre-passé à l'ouverture. Il figure au passif dans les dettes sociales. Depuis 2025, il ne porte plus de produits à recevoir : l'ancien 4287 a disparu du plan de comptes.",
    "exemple": "Congés acquis au 31 décembre : 30 000 € bruts : 6412 D 30 000 / 4282 C 30 000 et cotisations patronales 13 000 € : 645 D 13 000 / 4382 C 13 000.",
    "piege": "La dette de congés payés concerne le brut (4282) et les charges sociales patronales correspondantes (4382) : deux écritures.",
-   "pcg2025": null
+   "pcg2025": "Renommé par le règlement ANC 2022-06 : « Personnel – Charges à payer » (anciennement « Personnel – Charges à payer et produits à recevoir ») ; 4282, 4284 et 4286 sont maintenus, la subdivision 4287 Produits à recevoir est supprimée."
   },
   {
    "num": "4282",
@@ -345,13 +345,22 @@
    "pcg2025": null
   },
   {
+   "num": "4287",
+   "label": "Produits à recevoir",
+   "sens": "D",
+   "explication": "Le compte 4287 enregistrait, dans le plan 2024, les produits à recevoir du personnel à la clôture : sommes acquises par l'entreprise sur un salarié mais non encore retenues ou encaissées. Il était débité par le crédit du compte de produit concerné et contre-passé à l'ouverture. Le plan de comptes 2025 ne le reprend plus : le compte 428 est limité aux charges à payer, et les positions débitrices envers le personnel relèvent du compte 425.",
+   "exemple": "Avant 2025 : 4287 D / compte de produit C ; depuis 2025 : 425 D / compte de produit C.",
+   "piege": "Les manuels antérieurs à 2025 citent encore 4287 : ce compte n'existe plus dans le plan de comptes 2025.",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 425 Personnel – Avances et acomptes et autres comptes débiteurs (le compte 428 ne porte plus que des charges à payer)."
+  },
+  {
    "num": "43",
    "label": "Sécurité sociale et autres organismes sociaux",
    "sens": "C",
-   "explication": "Le compte 43 enregistre les dettes envers les organismes sociaux : URSSAF (431), caisses de retraite complémentaire, prévoyance, mutuelles (437), et les charges sociales à payer à la clôture (438). Il est crédité des cotisations salariales (retenues sur les salaires, par le débit du 641) et des cotisations patronales (par le débit du 645) et débité lors des paiements. Il figure au passif dans le poste Dettes fiscales et sociales.",
+   "explication": "Le compte 43 enregistre les dettes envers les organismes sociaux : URSSAF (431), caisses de retraite complémentaire, prévoyance, mutuelles (437), et les charges sociales à payer à la clôture (438), ainsi que les produits à recevoir des organismes sociaux (439). Il est crédité des cotisations salariales (retenues sur les salaires, par le débit du 641) et des cotisations patronales (par le débit du 645) et débité lors des paiements. Il figure au passif dans le poste Dettes fiscales et sociales, sauf le 439, à l'actif dans les autres créances.",
    "exemple": "Cotisations patronales URSSAF du mois 20 000 € : 645 D 20 000 / 431 C 20 000 ; paiement : 431 D 20 000 / 512 C 20 000.",
    "piege": "Les cotisations salariales ne sont pas une charge pour l'entreprise : elles sont incluses dans le salaire brut (641) et simplement reversées (431 C).",
-   "pcg2025": null
+   "pcg2025": "Le règlement ANC 2022-06 limite le compte 438 aux charges à payer (la subdivision 4387 Produits à recevoir est supprimée) et crée le compte 439 Organismes sociaux – Produits à recevoir."
   },
   {
    "num": "431",
@@ -373,12 +382,12 @@
   },
   {
    "num": "438",
-   "label": "Organismes sociaux – Charges à payer et produits à recevoir",
+   "label": "Organismes sociaux – Charges à payer",
    "sens": "C",
-   "explication": "Le compte 438 enregistre, à la clôture, les charges sociales certaines mais non encore exigibles ou estimées : cotisations sur congés à payer (4382), autres charges sociales à payer (4386, par exemple cotisations sur les primes provisionnées), produits à recevoir des organismes sociaux (4387, indemnités journalières à percevoir). Il est crédité par le débit du 645 et contre-passé à l'ouverture. Il figure au passif dans les dettes sociales (4387 à l'actif).",
+   "explication": "Le compte 438 enregistre, à la clôture, les charges sociales certaines mais non encore exigibles ou estimées : cotisations sur congés à payer (4382) et autres charges sociales à payer (4386, par exemple cotisations sur les primes provisionnées). Il est crédité par le débit du 645 et contre-passé à l'ouverture. Il figure au passif dans les dettes sociales. Depuis 2025, les produits à recevoir des organismes sociaux (ancien 4387) sont enregistrés au compte 439.",
    "exemple": "Charges sociales patronales sur les congés payés provisionnés (43 % de 30 000 €) : 645 D 12 900 / 4382 C 12 900.",
    "piege": "",
-   "pcg2025": null
+   "pcg2025": "Renommé par le règlement ANC 2022-06 : « Organismes sociaux – Charges à payer » (anciennement « Organismes sociaux – Charges à payer et produits à recevoir ») ; 4382 et 4386 sont maintenus, la subdivision 4387 est supprimée au profit du compte 439."
   },
   {
    "num": "4382",
@@ -399,13 +408,31 @@
    "pcg2025": null
   },
   {
+   "num": "4387",
+   "label": "Produits à recevoir",
+   "sens": "D",
+   "explication": "Le compte 4387 enregistrait, dans le plan 2024, les produits à recevoir des organismes sociaux à la clôture : indemnités journalières de sécurité sociale acquises par l'employeur subrogé, remboursements de cotisations attendus. Il était débité par le crédit du compte concerné et contre-passé à l'ouverture. Depuis 2025, ces sommes sont enregistrées au compte 439 Organismes sociaux – Produits à recevoir.",
+   "exemple": "Avant 2025 : 4387 D 1 200 / 791 C 1 200 (indemnités journalières à recevoir) ; depuis 2025 : 439 D 1 200 / 649 C 1 200.",
+   "piege": "Les sujets antérieurs à 2025 utilisent 4387 (et souvent 791) : traduire en 439 et 649.",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 439 Organismes sociaux – Produits à recevoir."
+  },
+  {
+   "num": "439",
+   "label": "Organismes sociaux – Produits à recevoir",
+   "sens": "D",
+   "explication": "Le compte 439 enregistre, à la clôture, les sommes acquises par l'entreprise auprès des organismes sociaux mais non encore reçues : indemnités journalières de sécurité sociale dues à l'employeur qui a maintenu le salaire (subrogation), remboursements ou régularisations de cotisations attendus. Il est débité par le crédit du compte concerné (649 Remboursements de charges de personnel, ou 645 pour une régularisation de cotisations) et contre-passé à l'ouverture. Il figure à l'actif dans les autres créances.",
+   "exemple": "Indemnités journalières subrogées de décembre, 1 200 €, non encore versées par la CPAM au 31 décembre : 439 D 1 200 / 649 C 1 200.",
+   "piege": "Ne pas porter ces produits à recevoir au 438 : depuis 2025, le 438 ne reçoit que des charges à payer.",
+   "pcg2025": "Créé par le règlement ANC 2022-06 en remplacement du compte 4387 Produits à recevoir (organismes sociaux)."
+  },
+  {
    "num": "44",
    "label": "État et autres collectivités publiques",
    "sens": "D/C",
    "explication": "Le compte 44 enregistre les créances et dettes envers l'État et les collectivités publiques : subventions à recevoir (441), impôts recouvrés pour le compte de l'État (442), opérations particulières (443), impôt sur les bénéfices (444), TVA (445), obligations cautionnées (446), autres impôts et taxes (447), charges à payer et produits à recevoir (448). Il est débité des créances (TVA déductible, acomptes d'IS, subventions) et crédité des dettes (TVA collectée, IS, taxes). Il figure au bilan en dettes fiscales (passif) ou en autres créances (actif) selon le solde de chaque compte.",
    "exemple": "Liquidation de l'IS dû : 695 D 30 000 / 444 C 30 000.",
    "piege": "Les sous-comptes 445 ne se compensent pas au bilan sauf pour la liquidation de la TVA : TVA déductible à l'actif, TVA à décaisser au passif.",
-   "pcg2025": null
+   "pcg2025": "Le règlement ANC 2022-06 restructure le compte 448 : 4481 État – Charges à payer (44811 Charges fiscales sur congés à payer, 44812 Charges à payer) et 4482 État – Produits à recevoir ; les anciens 4486 et 4487 sont supprimés."
   },
   {
    "num": "441",
@@ -644,38 +671,65 @@
   {
    "num": "448",
    "label": "État – Charges à payer et produits à recevoir",
+   "sens": "D/C",
+   "explication": "Le compte 448 enregistre, à la clôture, les impôts et taxes dus à l'État mais non encore liquidés ou exigibles, au compte 4481 État – Charges à payer (44811 charges fiscales sur congés à payer ; 44812 autres charges à payer : taxe foncière, CVAE de l'exercice), et les produits à recevoir de l'État au compte 4482 État – Produits à recevoir (dégrèvement notifié, remboursement de taxe attendu). Le 4481 est crédité par le débit des comptes 63 ; le 4482 est débité par le crédit du compte concerné ; tous deux sont contre-passés à l'ouverture. Le 4481 figure au passif dans les dettes fiscales, le 4482 à l'actif dans les autres créances.",
+   "exemple": "Taxe foncière de l'exercice, avis non encore reçu, estimée à 2 000 € : 63512 D 2 000 / 44812 C 2 000.",
+   "piege": "Depuis 2025, 4482 ne désigne plus les charges fiscales sur congés à payer (désormais 44811) mais les produits à recevoir de l'État : attention aux corrigés antérieurs à 2025.",
+   "pcg2025": "Subdivisions réorganisées par le règlement ANC 2022-06 : 4481 État – Charges à payer (44811 Charges fiscales sur congés à payer, 44812 Charges à payer) et 4482 État – Produits à recevoir ; les anciens 4486 et 4487 sont supprimés."
+  },
+  {
+   "num": "4481",
+   "label": "État – Charges à payer",
    "sens": "C",
-   "explication": "Le compte 448 enregistre, à la clôture, les impôts et taxes dus à l'État mais non encore liquidés ou exigibles (4482 charges fiscales sur congés à payer, 4486 charges à payer : taxe foncière, taxe d'apprentissage, CVAE de l'exercice), et les produits à recevoir de l'État (4487 : dégrèvements attendus, subventions acquises). Il est crédité par le débit des comptes 63 et contre-passé à l'ouverture. Il figure au passif dans les dettes fiscales (4487 à l'actif).",
-   "exemple": "Taxe d'apprentissage due sur les salaires de l'exercice, non encore déclarée : 6312 D 2 000 / 4486 C 2 000.",
-   "piege": "",
-   "pcg2025": null
+   "explication": "Le compte 4481 regroupe, à la clôture, les impôts et taxes rattachés à l'exercice mais non encore liquidés ou exigibles : charges fiscales sur congés à payer (44811) et autres charges fiscales à payer (44812). Il est crédité par le débit du compte 63 concerné et contre-passé à l'ouverture de l'exercice suivant. Il figure au passif dans les dettes fiscales et sociales.",
+   "exemple": "Taxes assises sur les congés payés provisionnés : 633 D 400 / 44811 C 400 ; solde de CVAE estimé : 63511 D 1 500 / 44812 C 1 500.",
+   "piege": "On utilise ses subdivisions 44811 et 44812, pas les anciens 4482 et 4486 du plan 2024.",
+   "pcg2025": "Créé par le règlement ANC 2022-06 : regroupe les charges à payer envers l'État, enregistrées jusqu'en 2024 aux comptes 4482 (charges fiscales sur congés à payer) et 4486 (charges à payer)."
+  },
+  {
+   "num": "44811",
+   "label": "Charges fiscales sur congés à payer",
+   "sens": "C",
+   "explication": "Le compte 44811 enregistre, à la clôture, les taxes assises sur les salaires (taxe sur les salaires, taxe d'apprentissage, contribution formation) afférentes à l'indemnité de congés payés provisionnée en 4282. Il est crédité par le débit du 631 ou 633 et contre-passé à l'ouverture. Il figure au passif dans les dettes fiscales.",
+   "exemple": "Taxes sur les congés provisionnés : 633 D 400 / 44811 C 400.",
+   "piege": "Jusqu'en 2024, ce compte portait le numéro 4482 ; depuis 2025, 4482 désigne les produits à recevoir de l'État.",
+   "pcg2025": "Créé par le règlement ANC 2022-06 en remplacement du compte 4482 Charges fiscales sur congés à payer du plan 2024."
+  },
+  {
+   "num": "44812",
+   "label": "Charges à payer",
+   "sens": "C",
+   "explication": "Le compte 44812 enregistre, à la clôture, les impôts et taxes de l'exercice non encore liquidés : solde de CVAE, taxe foncière dont l'avis n'est pas encore reçu, taxes annuelles sur les véhicules de tourisme. Il est crédité par le débit du compte 63 concerné et contre-passé à l'ouverture. Il figure au passif dans les dettes fiscales.",
+   "exemple": "Solde de CVAE estimé 1 500 € : 63511 D 1 500 / 44812 C 1 500.",
+   "piege": "Jusqu'en 2024, ces charges à payer allaient au 4486, supprimé.",
+   "pcg2025": "Créé par le règlement ANC 2022-06 en remplacement du compte 4486 Charges à payer."
   },
   {
    "num": "4482",
-   "label": "Charges fiscales sur congés à payer",
-   "sens": "C",
-   "explication": "Le compte 4482 enregistre, à la clôture, les taxes assises sur les salaires (taxe sur les salaires, taxe d'apprentissage, contribution formation) afférentes à l'indemnité de congés payés provisionnée en 4282. Il est crédité par le débit du 631 ou 633 et contre-passé à l'ouverture. Il figure au passif dans les dettes fiscales.",
-   "exemple": "Taxes sur les congés provisionnés : 633 D 400 / 4482 C 400.",
-   "piege": "",
-   "pcg2025": null
+   "label": "État – Produits à recevoir",
+   "sens": "D",
+   "explication": "Depuis le plan de comptes 2025, le compte 4482 enregistre, à la clôture, les sommes acquises mais non encore reçues de l'État : dégrèvement d'impôt notifié, remboursement de taxe attendu. Il est débité par le crédit du compte concerné (le plus souvent le compte 63 de l'impôt dégrevé) et contre-passé à l'ouverture. Il figure à l'actif dans les autres créances. Les subventions d'exploitation acquises vont en 441, les créances d'impôt sur les bénéfices en 444.",
+   "exemple": "Dégrèvement de taxe foncière notifié, 600 €, non encore remboursé : 4482 D 600 / 63512 C 600.",
+   "piege": "Dans les corrigés antérieurs à 2025, 4482 désigne les charges fiscales sur congés à payer (au crédit) ; depuis 2025, c'est un compte de créance (au débit), et les charges fiscales sur congés à payer vont en 44811.",
+   "pcg2025": "Changement de sens par le règlement ANC 2022-06 : 4482 devient « État – Produits à recevoir » (ancien 4487) ; jusqu'en 2024, il désignait les « Charges fiscales sur congés à payer », désormais au compte 44811."
   },
   {
    "num": "4486",
    "label": "Charges à payer",
    "sens": "C",
-   "explication": "Le compte 4486 enregistre, à la clôture, les impôts et taxes de l'exercice non encore liquidés : solde de CVAE, taxe foncière non reçue, taxe sur les véhicules de société, amendes fiscales notifiées. Il est crédité par le débit du compte 63 concerné et contre-passé à l'ouverture. Il figure au passif dans les dettes fiscales.",
-   "exemple": "Solde de CVAE estimé 1 500 € : 63511 D 1 500 / 4486 C 1 500.",
-   "piege": "",
-   "pcg2025": null
+   "explication": "Le compte 4486 enregistrait, dans le plan 2024, les impôts et taxes de l'exercice non encore liquidés à la clôture : solde de CVAE, taxe foncière dont l'avis n'était pas reçu. Il était crédité par le débit du compte 63 concerné et contre-passé à l'ouverture. Depuis 2025, ces charges à payer sont enregistrées au compte 44812, subdivision de 4481 État – Charges à payer.",
+   "exemple": "Avant 2025 : 63511 D 1 500 / 4486 C 1 500 ; depuis 2025 : 63511 D 1 500 / 44812 C 1 500.",
+   "piege": "Les sujets antérieurs à 2025 utilisent 4486 : traduire en 44812.",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 44812 Charges à payer (subdivision de 4481 État – Charges à payer)."
   },
   {
    "num": "4487",
    "label": "Produits à recevoir",
    "sens": "D",
-   "explication": "Le compte 4487 enregistre, à la clôture, les sommes acquises mais non encore reçues de l'État : dégrèvement d'impôt notifié, remboursement de taxe, crédit d'impôt acquis. Il est débité par le crédit du compte de produit ou de charge concerné (7584 Dégrèvements d'impôts autres qu'impôts sur les bénéfices, ou le compte 63 concerné) et contre-passé à l'ouverture. Il figure à l'actif dans les autres créances.",
-   "exemple": "Dégrèvement de taxe foncière notifié 600 € : 4487 D 600 / 63512 C 600.",
-   "piege": "",
-   "pcg2025": null
+   "explication": "Le compte 4487 enregistrait, dans le plan 2024, les sommes acquises mais non encore reçues de l'État à la clôture : dégrèvement d'impôt notifié, remboursement de taxe attendu. Il était débité par le crédit du compte concerné et contre-passé à l'ouverture. Depuis 2025, ces produits à recevoir sont enregistrés au compte 4482 État – Produits à recevoir.",
+   "exemple": "Avant 2025 : 4487 D 600 / 63512 C 600 ; depuis 2025 : 4482 D 600 / 63512 C 600.",
+   "piege": "Ne pas confondre le nouveau 4482 (produits à recevoir, au débit) avec l'ancien 4482 (charges fiscales sur congés à payer, au crédit).",
+   "pcg2025": "Supprimé par le règlement ANC 2022-06 ; utiliser 4482 État – Produits à recevoir."
   },
   {
    "num": "45",

@@ -1,6 +1,6 @@
 {
  "id": "ue9-02",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -22,19 +22,25 @@
    "ref": "C. com., art. L. 123-22",
    "objet": "Documents comptables en euros et en français, tenus sans blanc ni altération ; conservation dix ans",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
-   "version": "en vigueur depuis le 4 janvier 2003 (loi n° 2003-7 du 3 janvier 2003)"
+   "version": "en vigueur"
   },
   {
    "ref": "C. com., art. L. 123-23",
-   "objet": "Force probante de la comptabilité régulièrement tenue",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341/2022-01-17",
-   "version": "en vigueur"
+   "objet": "Force probante de la comptabilité régulièrement tenue ; communication des documents comptables en justice",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341",
+   "version": "en vigueur depuis le 21 septembre 2000"
   },
   {
    "ref": "C. com., art. L. 123-25",
    "objet": "Personnes physiques au régime réel simplifié : créances et dettes enregistrées à la clôture, dispense d'annexe",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028556295",
    "version": "en vigueur depuis le 2 février 2014 (ordonnance n° 2014-86)"
+  },
+  {
+   "ref": "C. com., art. L. 123-28",
+   "objet": "Personnes physiques au régime micro (CGI, art. 50-0) : dispense de comptes annuels, livre des recettes et registre des achats",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/",
+   "version": "en vigueur (section 2 : de la comptabilité des commerçants, art. L. 123-12 à L. 123-28-2)"
   },
   {
    "ref": "C. com., art. R. 123-173",
@@ -61,10 +67,10 @@
    "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015)"
   },
   {
-   "ref": "C. com., art. R. 123-203 à R. 123-208",
-   "objet": "Obligations comptables allégées de certains commerçants personnes physiques (date du relevé bancaire, centralisation trimestrielle)",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
-   "version": "section en vigueur (section 2 : de la comptabilité des commerçants, art. R. 123-172 à R. 123-208-8)"
+   "ref": "C. com., art. R. 123-203 et R. 123-204",
+   "objet": "Dérogations : enregistrement à la date du relevé bancaire (R. 123-203) ; centralisation trimestrielle (R. 123-204)",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000030927480",
+   "version": "R. 123-203 en vigueur depuis le 27 mars 2007 ; R. 123-204 modifié par le décret n° 2015-903 du 23 juillet 2015, en vigueur depuis le 1er janvier 2016 (sous-section 2 : art. R. 123-203 à D. 123-208-01)"
   },
   {
    "ref": "Plan de comptes du PCG (art. 1121-1), version au 1er janvier 2026",
@@ -86,9 +92,9 @@
   },
   {
    "ref": "Règlement ANC n° 2024-07 du 6 décembre 2024",
-   "objet": "Autres fonds propres ; modification de l'art. 1121-1 (bons de souscription)",
-   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf",
-   "version": "homologué par arrêté du 26 décembre 2025 ; exercices ouverts à compter du 1er janvier 2026"
+   "objet": "Autres fonds propres (modèles de bilan des art. 821-1 et 822-1) ; « bons de souscription de titres en capital » (art. 838-1)",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_JO.pdf",
+   "version": "homologué par arrêté du 26 décembre 2025 (JO du 27 décembre 2025) ; exercices ouverts à compter du 1er janvier 2026, application anticipée possible"
   },
   {
    "ref": "Règlement ANC n° 2026-03 du 6 mars 2026",
@@ -147,11 +153,11 @@
      "cite": "« Toute personne physique ou morale ayant la qualité de commerçant doit procéder à l'enregistrement comptable des mouvements affectant le patrimoine de son entreprise. Ces mouvements sont enregistrés chronologiquement. »"
     },
     {
-     "t": "Tout commerçant tient obligatoirement un <b>livre-journal</b> et un <b>grand livre</b> ; des documents électroniques peuvent en tenir lieu s'ils sont identifiés et datés dès leur établissement par des moyens offrant toute garantie en matière de preuve.",
+     "t": "Tout commerçant tient obligatoirement un <b>livre-journal</b> et un <b>grand livre</b> ; des documents sous forme électronique peuvent en tenir lieu : ils sont alors identifiés et datés dès leur établissement par des moyens offrant toute garantie en matière de preuve.",
      "src": "C. com., art. R. 123-173",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927447",
      "fiab": "stable",
-     "cite": "« tout commerçant tient obligatoirement un livre-journal et un grand-livre »"
+     "cite": "« Des documents sous forme électronique peuvent tenir lieu de livre-journal et de grand-livre ; dans ce cas, ils sont identifiés et datés dès leur établissement par des moyens offrant toute garantie en matière de preuve. »"
     },
     {
      "t": "Tout enregistrement comptable précise l'<b>origine</b>, le <b>contenu</b> et l'<b>imputation</b> de chaque donnée ainsi que les références de la <b>pièce justificative</b> qui l'appuie.",
@@ -185,7 +191,7 @@
      "src": "C. com., art. L. 123-22",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
      "fiab": "stable",
-     "cite": "« Les documents comptables sont établis en euros et en langue française. »"
+     "cite": "« Les documents comptables sont établis en euros et en langue française. Les documents comptables relatifs à l'enregistrement des opérations et à l'inventaire sont établis et tenus sans blanc ni altération d'aucune sorte, dans des conditions fixées par décret en Conseil d'Etat. »"
     },
     {
      "t": "La classe 6 regroupe les comptes destinés à enregistrer, dans l'exercice, les <b>charges par nature</b> ; les charges d'exploitation normale et courante sont enregistrées dans les comptes 60 à 65 et les charges financières au compte 66.",
@@ -228,9 +234,15 @@
      "fiab": "stable"
     },
     {
+     "t": "Par dérogation aux articles L. 123-12 à L. 123-23, les <b>personnes physiques</b> bénéficiant du régime de l'article 50-0 du CGI (micro-entreprises) peuvent ne pas établir de comptes annuels. Elles tiennent un <b>livre</b> mentionnant chronologiquement le montant et l'origine des recettes et, si leur commerce principal est la vente de marchandises, objets, fournitures et denrées à emporter ou à consommer sur place, ou la fourniture de logement, un <b>registre</b> récapitulé par année présentant le détail de leurs achats.",
+     "src": "C. com., art. L. 123-28",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161250/",
+     "fiab": "stable"
+    },
+    {
      "t": "Les commerçants personnes physiques visés aux articles L. 123-25 (régime réel simplifié) et L. 123-28 (régime micro de l'article 50-0 du CGI) peuvent enregistrer les encaissements et les paiements à la <b>date figurant sur le relevé</b> de leur établissement de crédit, par dérogation à l'enregistrement « opération par opération et jour par jour ».",
-     "src": "C. com., art. R. 123-203 à R. 123-208 (sous-section 2 : obligations comptables applicables à certains commerçants, personnes physiques)",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
+     "src": "C. com., art. R. 123-203 (sous-section 2 : obligations comptables applicables à certains commerçants, personnes physiques ou morales)",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000030927480",
      "fiab": "stable",
      "cite": "« Par dérogation à l'article R. 123-174, les personnes mentionnées aux articles L. 123-25 et L. 123-28 peuvent procéder à l'enregistrement comptable des encaissements et des paiements en retenant la date de l'opération figurant sur le relevé qui leur est adressé par un établissement de crédit. »"
     }
@@ -240,10 +252,11 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "Centralisation des journaux et livres auxiliaires : au moins <span class=\"mono\">une fois par mois</span>. Par dérogation, les personnes mentionnées aux articles L. 123-25 à L. 123-27 peuvent centraliser <span class=\"mono\">tous les trois mois</span>.",
-     "src": "C. com., art. R. 123-176 ; art. R. 123-203 à R. 123-208 (dérogation trimestrielle)",
+     "t": "Centralisation des journaux et livres auxiliaires sur le livre-journal et le grand livre : au moins <span class=\"mono\">une fois par mois</span>. Par dérogation, les personnes mentionnées aux articles L. 123-25 à L. 123-27 et au deuxième alinéa de l'article L. 123-16-1 peuvent ne centraliser que <span class=\"mono\">tous les trois mois</span>.",
+     "src": "C. com., art. R. 123-176 ; art. R. 123-204 (dérogation trimestrielle)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Les écritures portées sur les journaux et les livres auxiliaires sont centralisées une fois par mois au moins sur le livre-journal et le grand livre. »"
     },
     {
      "t": "Inventaire : au moins une fois tous les <span class=\"mono\">douze mois</span>.",
@@ -271,16 +284,17 @@
      "fiab": "stable"
     },
     {
-     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus la technique du <b>transfert de charges</b> (anciens comptes 791, 796 et 797 ; mention supprimée de l'article 512-1 par le règlement n° 2022-06). Le règlement n° 2025-05 du 5 décembre 2025, homologué par arrêté du 26 décembre 2025, maintient le compte 791 pour les seules opérations de concession d'aménagement.",
-     "src": "Règlement ANC n° 2022-06 ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 du 5 décembre 2025",
+     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus la technique du <b>transfert de charges</b> : le règlement n° 2022-06 a supprimé les comptes 791, 796 et 797. Le compte 791 « Transfert de charges » ne subsiste, à titre d'exception au PCG, que dans le plan de comptes des organismes de logement social, exclusivement pour les opérations de concession d'aménagement (règlement n° 2025-05 du 5 décembre 2025, homologué par arrêté du 26 décembre 2025, exercices ouverts à compter du 1er janvier 2026).",
+     "src": "Règlement ANC n° 2022-06 ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 du 5 décembre 2025 (modifiant les règlements n° 2015-04 et n° 2023-03), art. 3",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Avis/2025/Avis-2025_01.pdf",
      "fiab": "stable"
     },
     {
-     "t": "Le règlement ANC n° 2024-07 du 6 décembre 2024 (autres fonds propres), homologué par arrêté du 26 décembre 2025 et applicable aux exercices ouverts à compter du 1er janvier 2026, modifie notamment l'article 1121-1 (plan de comptes) pour les bons de souscription.",
-     "src": "Règlement ANC n° 2024-07 (version commentée) ; arrêté du 26 décembre 2025",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_version-commentee-def.pdf",
-     "fiab": "stable"
+     "t": "Le règlement ANC n° 2024-07 du 6 décembre 2024 (autres fonds propres), homologué par arrêté du 26 décembre 2025 (JO du 27 décembre 2025), s'applique aux exercices ouverts à compter du 1er janvier 2026, avec application anticipée possible. Il définit la composition de la rubrique « Autres fonds propres » des modèles de bilan du système de base (art. 821-1) et du système abrégé (art. 822-1), et remplace, à l'article 838-1, « bons de souscription d'actions » par « bons de souscription de titres en capital ».",
+     "src": "Règlement ANC n° 2024-07 du 6 décembre 2024 ; arrêté du 26 décembre 2025 portant homologation des règlements n° 2024-07 et n° 2025-05",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2024/R2024-07/REGLT_2024_07_JO.pdf",
+     "fiab": "stable",
+     "cite": "« La rubrique des autres fonds propres figurant aux modèles du bilan des articles 821-1 et 822-1 est constituée des : fonds non remboursables définis à l'article 315-1 ; avances conditionnées définies à l'article 316-1 et droits du concédant définis à l'article 1212-22. »"
     },
     {
      "t": "Le règlement ANC n° 2026-03 du 6 mars 2026, homologué par arrêté du 12 août 2026, remplace « Pôle emploi » par « France Travail » dans l'intitulé du compte 6454. Il s'applique aux exercices ouverts à compter du 1er janvier 2027 (application anticipée possible) : le plan de comptes au 1er janvier 2026 porte encore l'intitulé « Cotisations à Pôle emploi ».",
@@ -316,15 +330,15 @@
     },
     {
      "t": "Piège : le PCG 2025 n'a pas supprimé le <b>système abrégé</b>. Le plan de comptes reste commun au système de base et au système abrégé, et les modèles du système abrégé (art. 822-1) ont encore été modifiés par le règlement ANC n° 2024-07.",
-     "src": "PCG, art. 1121-1 et 822-1 ; règlement ANC n° 2024-07",
+     "src": "PCG, art. 1121-1 et 822-1 ; règlement ANC n° 2024-07 (modèles de bilan des art. 821-1 et 822-1)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable",
      "cite": "« Le plan de comptes présenté ci-après, est commun au système de base et au système abrégé. »"
     },
     {
-     "t": "Lien DSCG (audit, contentieux) : la comptabilité régulièrement tenue peut être admise en justice pour faire <b>preuve</b> entre commerçants pour faits de commerce ; irrégulièrement tenue, elle ne peut être invoquée par son auteur à son profit.",
+     "t": "Lien DSCG (audit, contentieux) : la comptabilité régulièrement tenue peut être admise en justice pour faire <b>preuve</b> entre commerçants pour faits de commerce ; irrégulièrement tenue, elle ne peut être invoquée par son auteur à son profit. La <b>communication</b> des documents comptables ne peut être ordonnée en justice que dans les affaires de succession, communauté, partage de société et en cas de redressement ou de liquidation judiciaires.",
      "src": "C. com., art. L. 123-23",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341/2022-01-17",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219341",
      "fiab": "stable",
      "cite": "« La comptabilité régulièrement tenue peut être admise en justice pour faire preuve entre commerçants pour faits de commerce. Si elle a été irrégulièrement tenue, elle ne peut être invoquée par son auteur à son profit. »"
     }

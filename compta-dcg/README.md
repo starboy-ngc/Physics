@@ -37,7 +37,11 @@ rattaché à un texte officiel n'est pas écrit. L'onglet « Fiches » permet un
 Limite : les sites officiels ne sont pas joignables depuis l'environnement de production ; les liens et extraits
 proviennent de recherches restreintes aux domaines officiels, jamais d'URL reconstituées. `check-fiches.js`
 contrôle la présence des fiches, l'absence de formulations hésitantes et la couverture en liens.
-Les rapports de relecture sont dans `data/<ue>/RAPPORT-fiches.md`.
+Chaque fiche a été relue à charge par un relecteur distinct, avec des recherches sur les domaines officiels
+(13 à 16 recherches par fiche lors de la passe finale) ; les rapports sont dans `data/<ue>/rapports/<id>.md`.
+Les points qui n'ont pas pu être confirmés ne figurent pas comme affirmations dans les fiches ; ils sont
+regroupés dans `data/POINTS-OUVERTS.md` pour une vérification humaine. `data/FAITS-CONFIRMES.md` liste les
+faits récents confirmés (PASS et SMIC 2026, LFSS 2026, loi n° 2026-403, règlements ANC 2026…).
 
 ## Méthode de production et de vérification
 

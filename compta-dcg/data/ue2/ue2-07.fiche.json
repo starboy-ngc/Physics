@@ -1,6 +1,6 @@
 {
  "id": "ue2-07",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1, BO ESR n° 26 du 27 juin 2019, applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -52,29 +52,29 @@
    "ref": "C. com., art. L. 141-2 à L. 141-28",
    "objet": "Vente du fonds de commerce : privilège du vendeur, publicité, opposition des créanciers, apport en société",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146036/",
-   "version": "en vigueur (L. 141-1 abrogé par la loi n° 2019-744 du 19 juillet 2019 ; L. 141-12 dans sa rédaction en vigueur depuis le 24 mai 2019)"
+   "version": "en vigueur (L. 141-1 abrogé par la loi n° 2019-744 du 19 juillet 2019 ; L. 141-12 dans sa rédaction en vigueur depuis le 24 mai 2019 ; L. 141-5 et L. 141-6 dans leur rédaction en vigueur depuis le 1er janvier 2023 ; L. 141-21 modifié par l'ordonnance n° 2023-393 du 24 mai 2023)"
   },
   {
    "ref": "C. com., art. L. 142-1 à L. 142-5",
-   "objet": "Nantissement du fonds de commerce et éléments qu'il peut comprendre",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072497",
-   "version": "en vigueur (L. 142-1 modifié par l'ordonnance n° 2021-1192 du 15 septembre 2021 portant réforme du droit des sûretés)"
+   "objet": "Nantissement du fonds de commerce : éléments qu'il peut comprendre, inscription dans les trente jours",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
+   "version": "en vigueur (L. 142-1 et L. 142-2 modifiés par l'ordonnance n° 2021-1192 du 15 septembre 2021, L. 142-2 dans sa version en vigueur depuis le 1er janvier 2023 ; délai d'inscription de trente jours de L. 142-4 issu de la loi n° 2015-990 du 6 août 2015)"
   },
   {
    "ref": "C. com., art. L. 144-1 à L. 144-13",
    "objet": "Location-gérance : définition, solidarité du loueur jusqu'à la publication, exigibilité des dettes en fin de contrat",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146039",
-   "version": "en vigueur (L. 144-7 modifié par la loi n° 2016-1691 du 9 décembre 2016)"
+   "version": "en vigueur (L. 144-7 modifié par la loi n° 2016-1691 du 9 décembre 2016 ; L. 144-3 à L. 144-5 abrogés par la loi n° 2019-744 du 19 juillet 2019, art. 2)"
   },
   {
    "ref": "C. com., art. L. 145-1 à L. 145-60",
    "objet": "Statut des baux commerciaux : champ, durée, renouvellement, indemnité d'éviction, loyer, déspécialisation",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146040/",
-   "version": "en vigueur (loi n° 2014-626 du 18 juin 2014 ; L. 145-4 modifié par la loi n° 2018-1021 du 23 novembre 2018 ; L. 145-38-1 créé par la loi n° 2026-403 du 26 mai 2026)"
+   "version": "en vigueur (loi n° 2014-626 du 18 juin 2014 ; L. 145-4 modifié par la loi n° 2018-1021 du 23 novembre 2018 ; L. 145-38-1 créé et L. 145-40 modifié par la loi n° 2026-403 du 26 mai 2026, en vigueur depuis le 28 mai 2026)"
   },
   {
-   "ref": "CGI, art. 719, 1584 et 1595 ; BOI-ENR-DMTOM-10-20-20",
-   "objet": "Droits d'enregistrement sur les cessions de fonds de commerce et de clientèles et taxes additionnelles",
+   "ref": "CGI, art. 719, 1584, 1595 et 1684 ; BOI-ENR-DMTOM-10-20-20",
+   "objet": "Droits d'enregistrement sur les cessions de fonds de commerce et de clientèles, taxes additionnelles ; solidarité fiscale du cessionnaire (art. 1684)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019291809",
    "version": "en vigueur (seuils de 23 000 € et 200 000 €) ; BOFiP du 19 juin 2024"
   },
@@ -129,8 +129,8 @@
     },
     {
      "t": "<b>Éléments du fonds de commerce</b> : l'article L. 142-2 énumère limitativement les éléments susceptibles d'être compris dans le nantissement d'un fonds : l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage, le mobilier commercial, le matériel ou l'outillage servant à l'exploitation, les brevets d'invention, les licences, les marques, les dessins et modèles industriels et, généralement, les droits de propriété intellectuelle qui y sont attachés.",
-     "src": "C. com., art. L. 142-2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006220989/",
+     "src": "C. com., art. L. 142-2 (version en vigueur depuis le 1er janvier 2023)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072493",
      "fiab": "stable"
     },
     {
@@ -164,8 +164,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Guichet unique</b> : les entreprises déclarent leur création, les modifications de leur situation et la cessation de leur activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné par décret ; ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard. Les formalités liées à l'accès aux activités réglementées sont réservées.",
-     "src": "C. com., art. L. 123-33",
+     "t": "<b>Guichet unique</b> : depuis le 1er janvier 2023, les entreprises déclarent leur création, les modifications de leur situation et la cessation de leur activité en déposant, par voie électronique, un dossier unique auprès d'un organisme unique désigné par décret ; ce dépôt vaut déclaration auprès de chaque organisme destinataire dès lors que le dossier est régulier et complet à son égard. Les formalités liées à l'accès aux activités réglementées sont réservées.",
+     "src": "C. com., art. L. 123-33 (version en vigueur depuis le 1er janvier 2023)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
      "fiab": "stable"
     },
@@ -197,17 +197,18 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Privilège du vendeur</b> : il n'existe que si la vente est constatée par un acte authentique ou sous seing privé dûment enregistré et s'il est inscrit sur un registre public tenu au greffe du tribunal de commerce du lieu d'exploitation du fonds. Il ne porte que sur les éléments énumérés dans la vente et dans l'inscription et, à défaut de désignation précise, sur l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. Des prix distincts sont établis pour les éléments incorporels, le matériel et les marchandises.",
-     "cite": "« Des prix distincts sont établis pour les éléments incorporels du fonds, le matériel et les marchandises. »",
-     "src": "C. com., art. L. 141-5",
+     "t": "<b>Privilège du vendeur</b> : il n'a lieu que si la vente a été constatée par un acte authentique ou sous seing privé, dûment enregistré. Il est rendu opposable aux tiers par son inscription sur un registre tenu au greffe du tribunal de commerce ; l'inscription prise dans les trente jours de l'acte de vente prime toute inscription prise dans le même délai du chef de l'acquéreur et est opposable à ses créanciers en cas de sauvegarde, de redressement ou de liquidation judiciaire. Le privilège ne porte que sur les éléments du fonds énumérés dans la vente et dans l'inscription ; des prix distincts sont établis pour les éléments incorporels, le matériel et les marchandises.",
+     "cite": "« Le privilège du vendeur d'un fonds de commerce n'a lieu que si la vente a été constatée par un acte authentique ou sous seing privé, dûment enregistré. »",
+     "src": "C. com., art. L. 141-5 et L. 141-6 (versions en vigueur depuis le 1er janvier 2023)",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161258",
      "fiab": "stable"
     },
     {
-     "t": "<b>Nantissement du fonds</b> : le fonds de commerce peut être nanti sans autres conditions et formalités que celles prévues par le Code de commerce ; le nantissement ne donne pas au créancier le droit de se faire attribuer le fonds en paiement. À défaut de désignation expresse et précise dans l'acte qui le constitue, il ne comprend que l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage. Les marchandises ne figurent pas dans la liste limitative de l'article L. 142-2.",
-     "src": "C. com., art. L. 142-1 et L. 142-2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072497",
-     "fiab": "stable"
+     "t": "<b>Nantissement du fonds</b> : le fonds de commerce peut être nanti sans autres conditions et formalités que celles prévues par le Code de commerce ; le nantissement ne donne pas au créancier le droit de se faire attribuer le fonds en paiement. À défaut de désignation expresse et précise dans l'acte qui le constitue, il ne comprend que l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage ; les marchandises ne figurent pas dans la liste limitative de l'article L. 142-2. L'inscription doit être prise, à peine de nullité du nantissement, dans les trente jours suivant la date de l'acte constitutif.",
+     "src": "C. com., art. L. 142-1, L. 142-2 et L. 142-4",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146037",
+     "fiab": "stable",
+     "cite": "« L'inscription doit être prise, à peine de nullité du nantissement, dans les trente jours suivant la date de l'acte constitutif. »"
     },
     {
      "t": "<b>Location-gérance</b> : jusqu'à la publication du contrat, le loueur du fonds est solidairement responsable avec le locataire-gérant des dettes contractées par celui-ci à l'occasion de l'exploitation du fonds ; la prolongation de cette solidarité pendant six mois après la publication a été supprimée par la loi n° 2016-1691 du 9 décembre 2016. Le contrat est publié dans la quinzaine de sa date, sous forme d'extrait ou d'avis, dans un support habilité à recevoir les annonces légales. La fin de la location-gérance rend immédiatement exigibles les dettes afférentes à l'exploitation du fonds contractées par le locataire-gérant pendant la gérance.",
@@ -217,8 +218,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Apport du fonds à une société</b> : c'est un apport en nature, réalisé par le transfert des droits correspondants et la mise à la disposition effective des biens ; l'apporteur en propriété est garant envers la société comme un vendeur envers son acheteur. L'apport obéit à des règles propres de publicité et de protection des créanciers de l'apporteur. Dans la SARL et la SA, les apports en nature sont évalués par un commissaire aux apports, sauf dans les cas de dispense prévus par la loi.",
-     "src": "C. civ., art. 1843-3 ; C. com., art. L. 141-21, L. 141-22, L. 223-9 et L. 225-8",
+     "t": "<b>Apport du fonds à une société</b> : c'est un apport en nature, réalisé par le transfert des droits correspondants et la mise à la disposition effective des biens ; l'apporteur en propriété est garant envers la société comme un vendeur envers son acheteur. L'apport est porté à la connaissance des tiers selon les règles de publicité de la vente, avec l'indication du greffe du tribunal de commerce où, dans les dix jours de la dernière publication, les créanciers non inscrits de l'apporteur déclarent leur qualité et le montant de leur créance. Dans la SARL et la SA, les apports en nature sont évalués par un commissaire aux apports, sauf dans les cas de dispense prévus par la loi.",
+     "src": "C. civ., art. 1843-3 ; C. com., art. L. 141-21 (modifié par l'ordonnance n° 2023-393 du 24 mai 2023), L. 141-22, L. 223-9 et L. 225-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006444153/",
      "fiab": "stable"
     },
@@ -287,15 +288,15 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Délais et seuils du bail commercial</b> : 9 ans au minimum ; congé du preneur possible à chaque échéance triennale, avec 6 mois de préavis ; 3 ans au maximum pour l'ensemble des baux dérogatoires ; congé donné 6 mois à l'avance ; révision du loyer tous les 3 ans ; 10 % de variation de la valeur locative pour déplafonner en révision et 10 % du loyer de l'année précédente comme hausse annuelle maximale en cas de déplafonnement ; 12 ans de durée effective, par tacite prolongation, au-delà desquels le loyer de renouvellement n'est plus plafonné.",
-     "src": "C. com., art. L. 145-4, L. 145-5, L. 145-9, L. 145-34 et L. 145-38",
+     "t": "<b>Délais et seuils du bail commercial</b> : 9 ans au minimum ; congé du preneur possible à chaque échéance triennale, avec 6 mois de préavis ; 3 ans au maximum pour l'ensemble des baux dérogatoires ; congé donné 6 mois à l'avance ; révision du loyer tous les 3 ans ; 10 % de variation de la valeur locative pour déplafonner en révision et 10 % du loyer de l'année précédente comme hausse annuelle maximale en cas de déplafonnement ; 12 ans de durée effective, par tacite prolongation, au-delà desquels le loyer de renouvellement n'est plus plafonné ; depuis la loi n° 2026-403, dépôt de garantie limité au loyer d'un trimestre et restitué dans les 3 mois de la remise des clés.",
+     "src": "C. com., art. L. 145-4, L. 145-5, L. 145-9, L. 145-34, L. 145-38 et L. 145-40",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146040/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Délais du fonds de commerce</b> : 15 jours pour publier la vente du fonds ou le contrat de location-gérance ; 10 jours, après la dernière publication de la vente, pour l'opposition des créanciers du vendeur ; solidarité du loueur avec le locataire-gérant jusqu'à la publication du contrat de location-gérance (sans prolongation de six mois depuis la loi n° 2016-1691 du 9 décembre 2016).",
-     "src": "C. com., art. L. 141-12, L. 141-14 et L. 144-7",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038584414",
+     "t": "<b>Délais du fonds de commerce</b> : 15 jours pour publier la vente du fonds ou le contrat de location-gérance ; 10 jours, après la dernière publication de la vente, pour l'opposition des créanciers du vendeur ; 30 jours, à compter de l'acte de vente, pour que l'inscription du privilège du vendeur prime les inscriptions prises du chef de l'acquéreur ; 30 jours, à compter de l'acte constitutif, pour inscrire le nantissement à peine de nullité ; solidarité du loueur avec le locataire-gérant jusqu'à la publication du contrat de location-gérance (sans prolongation de six mois depuis la loi n° 2016-1691 du 9 décembre 2016).",
+     "src": "C. com., art. L. 141-6, L. 141-12, L. 141-14, L. 142-4 et L. 144-7",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133174/",
      "fiab": "stable"
     },
     {
@@ -316,21 +317,16 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Loi n° 2026-403 du 26 mai 2026 de simplification de la vie économique</b> : elle crée l'article L. 145-38-1 du Code de commerce, qui autorise une clause encadrant, dans les mêmes proportions à la hausse et à la baisse, la variation annuelle de l'indice pris en compte pour la révision du loyer commercial.",
-     "src": "Loi n° 2026-403 du 26 mai 2026 ; C. com., art. L. 145-38-1",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054137977",
-     "fiab": "stable"
+     "t": "<b>Loi n° 2026-403 du 26 mai 2026 de simplification de la vie économique (bail commercial)</b> : depuis le 28 mai 2026, l'article L. 145-38-1 autorise, par dérogation à l'article L. 112-1 du Code monétaire et financier, une clause limitant dans les mêmes proportions, à la hausse et à la baisse, la variation annuelle de l'indice retenu pour la révision du loyer (art. L. 145-38 et L. 145-39). Le preneur de locaux à usage commercial ou artisanal peut obtenir de droit, sur sa demande et s'il n'a pas d'arriéré, le paiement mensuel du loyer, y compris dans les baux en cours. Pour les baux conclus ou renouvelés depuis la promulgation de la loi, le dépôt de garantie ne peut excéder le loyer d'un trimestre et ne porte pas intérêt ; il est restitué dans un délai maximal de trois mois à compter de la remise des clés.",
+     "src": "Loi n° 2026-403 du 26 mai 2026 ; C. com., art. L. 145-38-1 et L. 145-40 (section « Du loyer », art. L. 145-32-1 à L. 145-40)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161267/",
+     "fiab": "stable",
+     "cite": "« Par dérogation à l'article L. 112-1 du code monétaire et financier, est autorisée dans le bail des locaux à usage commercial la clause […] »"
     },
     {
      "t": "<b>Tribunaux des activités économiques</b> : la loi n° 2023-1059 du 20 novembre 2023 expérimente, pour quatre ans, dans au moins neuf et au plus douze tribunaux de commerce désignés par arrêté, un tribunal des activités économiques compétent pour les procédures amiables et collectives quel que soit le statut du débiteur, sauf exceptions légales. L'arrêté du 5 juillet 2024 a fixé le début de l'expérimentation au 1er janvier 2025 et désigné douze tribunaux.",
      "src": "Loi n° 2023-1059 du 20 novembre 2023, art. 26 ; décret n° 2024-674 du 3 juillet 2024 ; arrêté du 5 juillet 2024",
      "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000048430544",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Guichet unique électronique</b> : depuis le 1er janvier 2023, les formalités de création, de modification et de cessation d'activité des entreprises sont accomplies par le dépôt d'un dossier unique, par voie électronique, auprès de l'organisme unique.",
-     "src": "C. com., art. L. 123-33 (version en vigueur depuis le 1er janvier 2023)",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595879",
      "fiab": "stable"
     },
     {
@@ -340,8 +336,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Réforme des sûretés</b> : depuis le 1er janvier 2022, l'ordonnance n° 2021-1192 du 15 septembre 2021 range parmi les actes de commerce, entre toutes personnes, les cautionnements de dettes commerciales (C. com., art. L. 110-1, 11°) et a modifié l'article L. 142-1 relatif au nantissement du fonds de commerce.",
-     "src": "Ordonnance n° 2021-1192 du 15 septembre 2021 ; C. com., art. L. 110-1 et L. 142-1",
+     "t": "<b>Réforme des sûretés</b> : l'ordonnance n° 2021-1192 du 15 septembre 2021 range parmi les actes de commerce, entre toutes personnes, les cautionnements de dettes commerciales (C. com., art. L. 110-1, 11°, depuis le 1er janvier 2022) et a modifié les articles L. 142-1 et L. 142-2 relatifs au nantissement du fonds de commerce. Depuis le 1er janvier 2023, l'inscription au greffe ne conditionne plus l'existence du privilège du vendeur du fonds, mais son opposabilité aux tiers.",
+     "src": "Ordonnance n° 2021-1192 du 15 septembre 2021 ; C. com., art. L. 110-1, L. 141-5, L. 141-6, L. 142-1 et L. 142-2",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044072567",
      "fiab": "stable"
     }
@@ -371,8 +367,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Règles abrogées encore citées par des manuels</b> : les mentions obligatoires de l'acte de cession du fonds de commerce (ancien art. L. 141-1) ont été supprimées par la loi n° 2019-744 du 19 juillet 2019. La solidarité du loueur pendant six mois après la publication du contrat de location-gérance a été supprimée par la loi n° 2016-1691 du 9 décembre 2016 : elle ne figurait que dans la version de l'article L. 144-7 en vigueur du 21 septembre 2000 au 11 décembre 2016.",
-     "src": "Loi n° 2019-744 du 19 juillet 2019, art. 1er ; loi n° 2016-1691 du 9 décembre 2016 ; C. com., art. L. 144-7",
+     "t": "<b>Règles abrogées encore citées par des manuels</b> : les mentions obligatoires de l'acte de cession du fonds (ancien art. L. 141-1) et la condition d'exploitation préalable du fonds pendant deux ans imposée au loueur en location-gérance (ancien art. L. 144-3) ont été abrogées par la loi n° 2019-744 du 19 juillet 2019 (art. 1er et 2). La solidarité du loueur pendant six mois après la publication du contrat de location-gérance a été supprimée par la loi n° 2016-1691 du 9 décembre 2016 : elle ne figurait que dans la version de l'article L. 144-7 en vigueur du 21 septembre 2000 au 11 décembre 2016. Dans sa version antérieure au 1er janvier 2023, l'article L. 141-6 imposait l'inscription du privilège du vendeur, à peine de nullité, dans les trente jours de l'acte de vente.",
+     "src": "Loi n° 2019-744 du 19 juillet 2019, art. 1er et 2 ; loi n° 2016-1691 du 9 décembre 2016 ; C. com., art. L. 144-7 et L. 141-6 (versions antérieures)",
      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000038792157",
      "fiab": "stable"
     },
@@ -381,6 +377,12 @@
      "cite": "« La distinction des patrimoines personnel et professionnel de l'entrepreneur individuel ne l'autorise pas à se porter caution en garantie d'une dette dont il est débiteur principal. »",
      "src": "C. com., art. L. 526-22 et L. 526-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049048964",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Solidarité fiscale de l'acquéreur du fonds</b> : le cessionnaire d'un fonds de commerce peut être tenu solidairement avec le cédant au paiement de l'impôt sur le revenu dû au titre des bénéfices de l'exploitation, dans la limite du prix du fonds. Il ne peut être mis en cause que pendant quatre-vingt-dix jours à compter de la déclaration de cession prévue au 1 de l'article 201 du CGI, si elle a été déposée dans le délai ; ce délai est ramené à trente jours lorsque le cédant a déposé ses déclarations dans les délais et était à jour de ses obligations déclaratives et de paiement le dernier jour du mois précédant la cession. Le délai ne court donc pas de la publication de la vente.",
+     "src": "CGI, art. 1684, 1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033812284",
      "fiab": "stable"
     }
    ]

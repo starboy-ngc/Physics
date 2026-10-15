@@ -510,7 +510,7 @@
    "num": "631",
    "label": "Impôts, taxes et versements assimilés sur rémunérations (administration des impôts)",
    "sens": "D",
-   "explication": "Le compte 631 enregistre les taxes assises sur les salaires recouvrées par l'administration fiscale : taxe sur les salaires (6311), taxe d'apprentissage (6312), participation à la formation professionnelle continue (6313), cotisation pour défaut d'investissement dans la construction (6314), autres (6318). Il se débite du montant dû par le crédit du 447 ou du 4486. Il figure dans les charges d'exploitation. Depuis que la taxe d'apprentissage et la contribution formation sont recouvrées par l'URSSAF, le 633 est souvent privilégié pour elles.",
+   "explication": "Le compte 631 enregistre les taxes assises sur les salaires recouvrées par l'administration fiscale : taxe sur les salaires (6311), taxe d'apprentissage (6312), participation à la formation professionnelle continue (6313), cotisation pour défaut d'investissement dans la construction (6314), autres (6318). Il se débite du montant dû par le crédit du 447 ou, à la clôture, du 44812 État – Charges à payer (44811 pour les taxes afférentes aux congés à payer ; avant 2025 : 4486 et 4482). Il figure dans les charges d'exploitation. Depuis que la taxe d'apprentissage et la contribution formation sont recouvrées par l'URSSAF, le 633 est souvent privilégié pour elles.",
    "exemple": "Taxe sur les salaires d'une clinique non assujettie à la TVA, 4 200 € : 6311 D 4 200 / 447 C 4 200.",
    "piege": "La distinction 631/633 porte sur l'organisme destinataire, pas sur la nature de la taxe : la même contribution formation peut être au 6313 ou au 6333.",
    "pcg2025": null

@@ -1,6 +1,6 @@
 {
  "id": "ue4-06",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -33,7 +33,7 @@
   },
   {
    "ref": "LPF, art. L. 12 et L. 52 ; BOI-CF-PGR-20-30",
-   "objet": "Durée limitée des vérifications sur place et de l'examen de la situation fiscale personnelle",
+   "objet": "Durée limitée des vérifications sur place (trois mois, six mois en cas de graves irrégularités) et de l'examen de la situation fiscale personnelle",
    "url": "https://bofip.impots.gouv.fr/bofip/243-PGP.html/identifiant=BOI-CF-PGR-20-30-20171220",
    "version": "BOFiP du 20 décembre 2017"
   },
@@ -65,11 +65,11 @@
    "ref": "CGI, art. 1586 ter à 1586 nonies ; loi n° 2025-127 du 14 février 2025, art. 62",
    "objet": "Cotisation sur la valeur ajoutée des entreprises, contribution complémentaire 2025 et calendrier de suppression",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000021576521/",
-   "version": "en vigueur"
+   "version": "en vigueur (taux maximal de 0,28 % pour 2026 et 2027, 0,19 % en 2028 et 0,09 % en 2029, fixés par la loi n° 2025-127, art. 62, et non modifiés par la loi n° 2026-103 du 19 février 2026)"
   },
   {
    "ref": "CGI, art. 1380 à 1400 et 1415",
-   "objet": "Taxes foncières sur les propriétés bâties et non bâties : base, redevable, date d'appréciation",
+   "objet": "Taxes foncières sur les propriétés bâties et non bâties : base, redevable, exonération temporaire des constructions nouvelles, date d'appréciation",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179803/",
    "version": "en vigueur"
   },
@@ -77,7 +77,7 @@
    "ref": "CGI, art. 231",
    "objet": "Taxe sur les salaires : redevables, rapport d'assujettissement, barème",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
-   "version": "en vigueur"
+   "version": "en vigueur (limites des tranches du barème : 9 229 € et 18 423 € pour les rémunérations versées en 2026)"
   },
   {
    "ref": "CGI, art. 726",
@@ -86,16 +86,16 @@
    "version": "en vigueur (version en vigueur depuis le 1er janvier 2024, modifiée par la loi n° 2023-1322 du 29 décembre 2023)"
   },
   {
-   "ref": "CGI, art. 719 ; BOI-ENR-DMTOM-10-20-20",
-   "objet": "Cessions de fonds de commerce et de clientèles : tarif et taxes additionnelles",
+   "ref": "CGI, art. 719 et 1594 D ; BOI-ENR-DMTOM-10-20-20 ; loi n° 2025-127 du 14 février 2025, art. 116",
+   "objet": "Cessions de fonds de commerce et de clientèles (tarif et taxes additionnelles) ; relèvement temporaire du taux départemental des droits de mutation à titre onéreux d'immeubles",
    "url": "https://bofip.impots.gouv.fr/bofip/3313-PGP.html/identifiant=BOI-ENR-DMTOM-10-20-20-20240619",
-   "version": "BOFiP du 19 juin 2024"
+   "version": "BOFiP du 19 juin 2024 ; art. 116 de la loi n° 2025-127 applicable aux actes passés du 1er avril 2025 au 31 mars 2028 (calendrier modifié par la loi n° 2026-103, art. 121)"
   },
   {
    "ref": "CGI, art. 750 ter, 777 à 796-0 bis ; BOI-ENR-DMTG-10-10-30",
-   "objet": "Droits de mutation à titre gratuit : territorialité, abattements, exonération du conjoint et du partenaire de PACS",
+   "objet": "Droits de mutation à titre gratuit : territorialité, abattements, exonération du conjoint et du partenaire de PACS, pacte Dutreil (art. 787 B)",
    "url": "https://bofip.impots.gouv.fr/index.php/bofip/3543-PGP.html/identifiant=BOI-ENR-DMTG-10-10-30-20120912",
-   "version": "BOFiP du 12 septembre 2012"
+   "version": "BOFiP du 12 septembre 2012 ; art. 787 B modifié par la loi n° 2026-103 du 19 février 2026, art. 8 (transmissions à compter du 21 février 2026)"
   },
   {
    "ref": "CGI, art. 964 à 983 ; BOI-PAT-IFI-10-20-20",
@@ -165,6 +165,12 @@
      "fiab": "stable"
     },
     {
+     "t": "<b>Constructions nouvelles</b> : les constructions nouvelles, reconstructions et additions de construction à usage d'habitation sont exonérées de taxe foncière sur les propriétés bâties durant les deux années qui suivent celle de leur achèvement ; la commune peut, par délibération, réduire cette exonération à 40, 50, 60, 70, 80 ou 90 % de la base imposable. Les locaux qui ne sont pas affectés à l'habitation sont exonérés à hauteur de 40 % de la base imposable pendant deux ans.",
+     "src": "CGI, art. 1383 (version en vigueur depuis le 1er janvier 2021) ; BOI-IF-TFB-10-60",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041465492",
+     "fiab": "stable"
+    },
+    {
      "t": "<b>Taxe sur les salaires</b> : due sur les rémunérations versées par les employeurs qui ne sont pas assujettis à la TVA ou ne l'ont pas été sur 90 % au moins de leur chiffre d'affaires l'année précédente. L'assiette est la fraction des rémunérations correspondant au rapport entre le chiffre d'affaires non soumis à la TVA et le chiffre d'affaires total ; barème progressif par salarié (taux de 4,25 %, taux majorés de 8,50 % et 13,60 %).",
      "src": "CGI, art. 231, 1 et 2 bis",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
@@ -194,8 +200,9 @@
     {
      "t": "<b>IFI</b> : seuil d'imposition de 1 300 000 € d'actifs immobiliers nets au 1er janvier ; abattement de 30 % sur la valeur vénale de l'immeuble occupé à titre de résidence principale (un seul immeuble par foyer) ; les biens immobiliers affectés à l'activité professionnelle principale du redevable sont exonérés.",
      "src": "CGI, art. 964, 973 et 975",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036384999",
-     "fiab": "stable"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048806768",
+     "fiab": "stable",
+     "cite": "« un abattement de 30 % est effectué sur la valeur vénale réelle de l'immeuble lorsque celui-ci est occupé à titre de résidence principale par son propriétaire »"
     },
     {
      "t": "<b>Délai de reprise</b> : pour l'impôt sur le revenu et l'impôt sur les sociétés, le droit de reprise s'exerce jusqu'à la fin de la troisième année qui suit celle au titre de laquelle l'imposition est due (dixième année en cas d'activité occulte) ; pour la TVA, jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible.",
@@ -204,7 +211,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Durée des contrôles</b> : la vérification sur place de la comptabilité ne peut s'étendre sur plus de trois mois pour les entreprises dont le chiffre d'affaires ou les recettes n'excèdent pas les limites du régime simplifié d'imposition ; l'examen contradictoire de la situation fiscale personnelle ne peut en principe excéder un an, délai porté à deux ans notamment en cas de découverte d'une activité occulte.",
+     "t": "<b>Durée des contrôles</b> : la vérification sur place de la comptabilité ne peut s'étendre sur plus de trois mois pour les entreprises dont le chiffre d'affaires ou les recettes n'excèdent pas les limites du régime simplifié d'imposition ; ce délai est porté à six mois en cas de graves irrégularités privant de valeur probante la comptabilité. L'examen contradictoire de la situation fiscale personnelle ne peut en principe excéder un an, délai porté à deux ans notamment en cas de découverte d'une activité occulte.",
      "src": "LPF, art. L. 12 et L. 52 ; BOI-CF-PGR-20-30",
      "url": "https://bofip.impots.gouv.fr/bofip/243-PGP.html/identifiant=BOI-CF-PGR-20-30-20171220",
      "fiab": "stable"
@@ -216,9 +223,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Prise de position lors d'un contrôle</b> : la garantie de l'article L. 80 A couvre aussi la position prise par l'administration au cours d'un contrôle ; cette règle s'applique aux contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
+     "t": "<b>Prise de position lors d'un contrôle</b> : la garantie de l'article L. 80 A couvre aussi la position prise par l'administration sur les points examinés au cours d'un examen ou d'une vérification de comptabilité ou d'un examen contradictoire de la situation fiscale personnelle, y compris tacitement lorsqu'elle ne les a pas rectifiés ; cette règle s'applique aux contrôles dont les avis sont adressés depuis le 1er janvier 2019.",
      "cite": "« Ces dispositions s'appliquent aux contrôles dont les avis sont adressés à compter du 1er janvier 2019. »",
-     "src": "LPF, art. L. 80 A",
+     "src": "LPF, art. L. 80 A, 2e alinéa (loi n° 2018-727 du 10 août 2018, art. 9) ; BOI-CF-PGR-30-25",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037312533",
      "fiab": "stable"
     },
@@ -268,42 +275,23 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "<b>Tableau des majorations</b> : <span class=\"mono\">10 %</span> (défaut ou retard sans mise en demeure ou dans les trente jours de celle-ci, insuffisance d'impôt sur le revenu sans manquement délibéré) ; <span class=\"mono\">20 %</span> (déclaration de revenus déposée dans les trente jours d'une mise en demeure) ; <span class=\"mono\">40 %</span> (déclaration déposée plus de trente jours après une mise en demeure, manquement délibéré) ; <span class=\"mono\">80 %</span> (manœuvres frauduleuses, abus de droit, activité occulte).",
-     "src": "CGI, art. 1728, 1729 et 1758 A ; BOI-ANNX-000277",
-     "url": "https://bofip.impots.gouv.fr/bofip/4344-PGP.html/identifiant=BOI-ANNX-000277-20150608",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Délais</b> : reprise de <span class=\"mono\">3 ans</span> (impôt sur le revenu, impôt sur les sociétés, TVA), portée à <span class=\"mono\">10 ans</span> en cas d'activité occulte ; réponse à une proposition de rectification : <span class=\"mono\">30 jours</span>, prorogeables de 30 jours ; réclamation jusqu'au 31 décembre de la <span class=\"mono\">2e année</span> suivant la mise en recouvrement (année suivante pour les impôts directs locaux).",
-     "cite": "« Pour les taxes sur le chiffre d'affaires, le droit de reprise de l'administration s'exerce jusqu'à la fin de la troisième année suivant celle au cours de laquelle la taxe est devenue exigible »",
-     "src": "LPF, art. L. 11, L. 169, L. 176, R*57-1, R*196-1 et R*196-2",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038595822",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Droits d'enregistrement</b> : actions <span class=\"mono\">0,1 %</span> ; parts sociales <span class=\"mono\">3 %</span> après abattement de <span class=\"mono\">23 000 €</span> ; personnes morales à prépondérance immobilière <span class=\"mono\">5 %</span> ; fonds de commerce, taux globaux <span class=\"mono\">0 / 3 / 5 %</span> (seuils de 23 000 € et 200 000 €).",
-     "src": "CGI, art. 719 et 726 ; BOI-ENR-DMTOM-10-20-20",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019291809",
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Patrimoine</b> : abattement de <span class=\"mono\">100 000 €</span> par enfant et par ascendant (successions et donations) ; seuil de l'IFI <span class=\"mono\">1 300 000 €</span> ; abattement de <span class=\"mono\">30 %</span> sur la résidence principale.",
-     "cite": "« un abattement de 30 % est effectué sur la valeur vénale réelle de l'immeuble lorsque celui-ci est occupé à titre de résidence principale par son propriétaire »",
-     "src": "CGI, art. 779, 964 et 973",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048806768",
-     "fiab": "stable"
-    },
-    {
      "t": "<b>Barème de l'IFI</b> : <span class=\"mono\">0,50 %</span> pour la fraction de 800 001 € à 1 300 000 € et <span class=\"mono\">0,70 %</span> pour la fraction de 1 300 001 € à 2 570 000 €, les taux suivants s'appliquant au-delà ; une décote joue pour les patrimoines nets taxables compris entre 1 300 000 € et 1 400 000 €.",
      "src": "CGI, art. 977",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036385041?idSecParent=LEGISCTA000036384995",
      "fiab": "stable"
     },
     {
-     "t": "<b>Taxe sur les salaires (rémunérations versées en 2025)</b> : taux de <span class=\"mono\">4,25 %</span> ; taux majoré de <span class=\"mono\">8,50 %</span> pour la fraction des rémunérations individuelles annuelles comprise entre 9 147 € et 18 259 € et de <span class=\"mono\">13,60 %</span> au-delà de 18 259 €. Les limites des tranches sont relevées chaque année comme la limite supérieure de la première tranche du barème de l'impôt sur le revenu de l'année précédente.",
-     "src": "CGI, art. 231, 2 bis ; BOI-TPS-TS-30",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051764961",
-     "fiab": "millésimé 2025"
+     "t": "<b>Taxe sur les salaires (rémunérations versées en 2026)</b> : taux de <span class=\"mono\">4,25 %</span> ; taux majoré de <span class=\"mono\">8,50 %</span> pour la fraction des rémunérations individuelles annuelles comprise entre 9 229 € et 18 423 € et de <span class=\"mono\">13,60 %</span> au-delà de 18 423 €. Les limites des tranches sont relevées chaque année dans la même proportion que la limite supérieure de la première tranche du barème de l'impôt sur le revenu de l'année précédente.",
+     "src": "CGI, art. 231, 2 bis ; formulaire n° 2501-SD (2026)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048827004",
+     "fiab": "millésimé 2026",
+     "cite": "« Ces limites sont relevées chaque année dans la même proportion que la limite supérieure de la première tranche du barème de l'impôt sur le revenu de l'année précédente. »"
+    },
+    {
+     "t": "<b>Taux maximal de la CVAE</b> (chiffre d'affaires supérieur à 50 M€) : <span class=\"mono\">0,19 %</span> en 2025, <span class=\"mono\">0,28 %</span> en 2026 et 2027, <span class=\"mono\">0,19 %</span> en 2028 et <span class=\"mono\">0,09 %</span> en 2029, la CVAE étant supprimée en 2030 ; le taux reste nul tant que le chiffre d'affaires n'excède pas 500 000 €.",
+     "src": "CGI, art. 1586 quater (loi n° 2025-127 du 14 février 2025, art. 62) ; BOI-CVAE-LIQ-10",
+     "url": "https://bofip.impots.gouv.fr/bofip/839-PGP.html/identifiant=BOI-CVAE-LIQ-10-20251119",
+     "fiab": "millésimé 2026"
     }
    ]
   },
@@ -318,8 +306,8 @@
      "fiab": "millésimé 2025"
     },
     {
-     "t": "<b>Loi de finances pour 2026 et CVAE</b> : le projet de loi de finances pour 2026 prévoyait d'avancer de deux ans, à 2028, la suppression de la CVAE ; la loi n° 2026-103 du 19 février 2026 n'a pas retenu cette accélération : le taux maximal de l'article 1586 quater reste de 0,28 % en 2026 et l'article 1447-0 demeure en vigueur jusqu'au 1er janvier 2030.",
-     "src": "Loi n° 2026-103 du 19 février 2026 ; CGI, art. 1447-0 et 1586 quater",
+     "t": "<b>Loi de finances pour 2026 et CVAE</b> : le projet de loi de finances pour 2026 prévoyait d'avancer de deux ans, à 2028, la suppression de la CVAE ; la loi n° 2026-103 du 19 février 2026 n'a pas retenu cette accélération : le taux maximal de l'article 1586 quater reste de 0,28 % en 2026 et 2027, puis baisse à 0,19 % en 2028 et à 0,09 % en 2029, et l'article 1447-0 demeure en vigueur jusqu'au 1er janvier 2030.",
+     "src": "Loi n° 2026-103 du 19 février 2026 ; CGI, art. 1447-0 et 1586 quater ; economie.gouv.fr, « Loi de finances 2026 : ce qui change pour les entreprises »",
      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000053508155",
      "fiab": "millésimé 2026"
     },
@@ -328,6 +316,18 @@
      "src": "CGI, art. 1447, I (loi n° 2026-103 du 19 février 2026, art. 55)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023380872",
      "fiab": "stable"
+    },
+    {
+     "t": "<b>Droits de mutation à titre onéreux d'immeubles (loi de finances pour 2025, art. 116)</b> : pour les actes passés et conventions conclues du 1er avril 2025 au 31 mars 2028, les conseils départementaux peuvent relever le taux de l'article 1594 D au-delà de 4,50 %, dans la limite de 5 % ; la hausse ne s'applique pas lorsque le bien constitue pour l'acquéreur une première propriété destinée à sa résidence principale. La loi de finances pour 2026 (art. 121) a modifié le calendrier d'entrée en vigueur des délibérations.",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 116 ; loi n° 2026-103 du 19 février 2026, art. 121 ; CGI, art. 1594 D ; BOFiP ACTU-2025-00129",
+     "url": "https://bofip.impots.gouv.fr/bofip/14771-PGP.html/ACTU-2025-00129",
+     "fiab": "millésimé 2025"
+    },
+    {
+     "t": "<b>Pacte Dutreil (loi de finances pour 2026, art. 8)</b> : pour les transmissions par décès ou donation intervenues à compter du 21 février 2026, les biens dits « somptuaires » qui ne sont pas exclusivement affectés à l'activité professionnelle (notamment logements non professionnels, objets d'art, véhicules de tourisme, bijoux) sont exclus de l'exonération partielle de 75 %, et la durée de l'engagement individuel de conservation passe de quatre à six ans.",
+     "src": "Loi n° 2026-103 du 19 février 2026, art. 8 ; CGI, art. 787 B et 787 C ; BOFiP ACTU-2026-00114",
+     "url": "https://bofip.impots.gouv.fr/bofip/15125-PGP.html/ACTU-2026-00114",
+     "fiab": "millésimé 2026"
     }
    ]
   },
@@ -335,7 +335,7 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Qui paie quoi</b> : la taxe foncière est établie au nom du propriétaire, la CFE est due par la personne qui exerce l'activité professionnelle ; un commerçant locataire de son local paie la CFE, son bailleur la taxe foncière (sauf clause du bail la lui refacturant).",
+     "t": "<b>Qui paie quoi</b> : la taxe foncière est établie au nom du propriétaire, la CFE est due par la personne qui exerce l'activité professionnelle ; un commerçant locataire de son local est redevable de la CFE, son bailleur de la taxe foncière.",
      "cite": "« Sous réserve des dispositions des articles 1403 et 1404, toute propriété, bâtie ou non bâtie, doit être imposée au nom du propriétaire actuel. »",
      "src": "CGI, art. 1400 et 1447",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034110958",

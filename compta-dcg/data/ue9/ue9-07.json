@@ -35,7 +35,7 @@
   },
   {
    "h": "Produits à recevoir",
-   "html": "<p>Symétriquement, le produit est <b>acquis</b> en N (livraison faite, prestation exécutée, intérêts courus) mais la facture n'est pas encore émise. On enregistre le produit HT au crédit du compte de classe 7 et la créance dans un compte de régularisation :</p><ul><li>Client, facture à établir : débit <code>418</code> Clients, produits non encore facturés, crédit 7xx, crédit <code>44587</code> TVA sur factures à établir.</li><li>Fournisseur : ristourne à obtenir : débit <code>4098</code>, crédit 609.</li><li>État : subvention acquise non encore versée : débit <code>441</code>.</li><li>Intérêts courus sur un placement : débit <code>5088</code> (VMP) ou <code>2768</code> (immobilisations financières), crédit <code>764</code> Revenus des VMP ou <code>762</code> pour les titres immobilisés.</li></ul><p>Exemple : prestation de 1 500 HT réalisée en décembre, facturée en janvier.</p><div class=\"note\"><b>TVA.</b> La TVA sur les charges à payer et les produits à recevoir passe par les comptes d'attente 44586 et 44587, jamais par 44566 et 44571 : sans facture, elle n'est ni déductible ni exigible.</div>",
+   "html": "<p>Symétriquement, le produit est <b>acquis</b> en N (livraison faite, prestation exécutée, intérêts courus) mais la facture n'est pas encore émise. On enregistre le produit HT au crédit du compte de classe 7 et la créance dans un compte de régularisation :</p><ul><li>Client, facture à établir : débit <code>418</code> Clients, produits non encore facturés, crédit 7xx, crédit <code>44587</code> TVA sur factures à établir.</li><li>Fournisseur : ristourne à obtenir : débit <code>4098</code>, crédit 609.</li><li>État : subvention acquise non encore versée : débit <code>441</code> ; dégrèvement d'impôt notifié non encore reçu : débit <code>4482</code> État – Produits à recevoir (avant 2025 : 4487).</li><li>Organismes sociaux : indemnités journalières subrogées à recevoir : débit <code>439</code> Organismes sociaux – Produits à recevoir (avant 2025 : 4387), crédit <code>649</code>.</li><li>Intérêts courus sur un placement : débit <code>5088</code> (VMP) ou <code>2768</code> (immobilisations financières), crédit <code>764</code> Revenus des VMP ou <code>762</code> pour les titres immobilisés.</li></ul><p>Exemple : prestation de 1 500 HT réalisée en décembre, facturée en janvier.</p><div class=\"note\"><b>TVA.</b> La TVA sur les charges à payer et les produits à recevoir passe par les comptes d'attente 44586 et 44587, jamais par 44566 et 44571 : sans facture, elle n'est ni déductible ni exigible.</div>",
    "entry": [
     {
      "a": "418",
@@ -150,7 +150,7 @@
   },
   {
    "ref": "PCG 2025, art. 1121-1 (plan de comptes)",
-   "note": "Comptes 408, 418, 4282, 4286, 4382, 4386, 4481, 44586, 44587, 486, 487, 1648, 5088, 120/129, 695/444, 1061, 457, 110/119"
+   "note": "Comptes 408, 418, 4282, 4286, 4382, 4386, 439, 4481, 4482, 44586, 44587, 486, 487, 1648, 5088, 120/129, 695/444, 1061, 457, 110/119"
   },
   {
    "ref": "Règlement ANC n° 2022-06",

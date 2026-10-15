@@ -1,6 +1,6 @@
 {
  "id": "ue4-05",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE 4 Droit fiscal, 150 heures), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -50,16 +50,16 @@
    "version": "en vigueur"
   },
   {
-   "ref": "CGI, art. 293 B et 293 F",
+   "ref": "CGI, art. 293 B et 293 F ; BOI-TVA-DECLA-40-10-10",
    "objet": "Franchise en base de TVA : seuils, sortie du régime, option",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006162567/",
-   "version": "version applicable du 1er mars 2025 au 1er janvier 2027 (seuils de 85 000 € et 37 500 €) ; seuil unique de 25 000 € de la LF 2025 (art. 32) supprimé par la loi n° 2025-1044 du 3 novembre 2025"
+   "version": "version applicable du 1er mars 2025 au 1er janvier 2027 (seuils de 85 000 € et 37 500 €) ; seuil unique de 25 000 € de la LF 2025 (art. 32) supprimé par la loi n° 2025-1044 du 3 novembre 2025 ; BOFiP du 1er juillet 2026"
   },
   {
-   "ref": "CGI, art. 302 septies A et 287 ; BOI-BAREME-000036",
+   "ref": "CGI, art. 287 et 302 septies A ; CIBS, art. L. 162-4, L. 162-5 et A. 162-7 ; BOI-BAREME-000036",
    "objet": "Régime simplifié de déclaration (jusqu'au 31 décembre 2026) : seuils de chiffre d'affaires, acomptes, déclaration annuelle",
    "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701",
-   "version": "BOFiP du 1er juillet 2026 ; régime supprimé à compter du 1er janvier 2027 (LF 2025, art. 38)"
+   "version": "seuils 2026 constatés par l'arrêté du 27 janvier 2026 (actualisation triennale) ; BOFiP du 1er juillet 2026 ; régime supprimé à compter du 1er janvier 2027 (LF 2025, art. 38)"
   },
   {
    "ref": "CGI, art. 289 et 289 bis ; CGI, ann. II, art. 242 nonies A",
@@ -83,7 +83,19 @@
    "ref": "Ordonnance n° 2025-1247 du 17 décembre 2025",
    "objet": "Recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
-   "version": "abrogation des articles du CGI relatifs à la TVA à compter du 1er janvier 2027"
+   "version": "abrogation des articles du CGI relatifs à la TVA à compter du 1er janvier 2027 (date initiale du 1er septembre 2026 reportée par l'ordonnance n° 2026-671 du 27 juillet 2026, art. 17)"
+  },
+  {
+   "ref": "Ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
+   "objet": "Divers ajustements du code des impositions sur les biens et services : report au 1er janvier 2027 de l'entrée en vigueur de la recodification de la TVA",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054497326",
+   "version": "JO du 28 juillet 2026"
+  },
+  {
+   "ref": "Loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 81",
+   "objet": "Taux réduit de 5,5 % pour les opérations du service public de gestion des déchets",
+   "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000053508597",
+   "version": "en vigueur depuis le 1er mars 2026 (XII de l'article 81)"
   }
  ],
  "sections": [
@@ -210,9 +222,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime simplifié</b> (jusqu'au 31 décembre 2026) : réservé aux entreprises dont le chiffre d'affaires n'excède pas les seuils et dont la TVA due au titre de l'année précédente n'excède pas 15 000 € ; deux acomptes semestriels (juillet et décembre) de 55 % et 40 % de la taxe due au titre de l'exercice précédent, puis déclaration annuelle CA12 avec le solde.",
-     "src": "CGI, art. 287, 3 et 302 septies A ; notice 3517-S-NOT-SD",
-     "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/3517-s-sd/2024/3517-s-sd_4724.pdf",
+     "t": "<b>Régime simplifié</b> (jusqu'au 31 décembre 2026) : réservé aux entreprises dont le chiffre d'affaires n'excède pas les seuils (945 000 € ou 286 000 € en 2026) et dont la TVA due au titre de l'année précédente n'excède pas 15 000 € ; deux acomptes semestriels (juillet et décembre) de 55 % et 40 % de la taxe due au titre de l'exercice précédent, puis déclaration annuelle CA12 avec le solde.",
+     "src": "CGI, art. 287, 3 et 302 septies A ; CIBS, art. L. 162-4 et L. 162-5 ; notice 3517-S-NOT-SD (2026)",
+     "url": "https://www.impots.gouv.fr/sites/default/files/formulaires/3517-s-sd/2026/3517-s-sd_5424.pdf",
      "fiab": "millésimé 2026"
     },
     {
@@ -239,29 +251,30 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Seuils du régime simplifié de TVA (2023 à 2025)</b> : chiffre d'affaires n'excédant pas <span class=\"mono\">840 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">254 000 €</span> (autres prestations de services) ; maintien du régime l'année de dépassement tant que le chiffre d'affaires n'excède pas <span class=\"mono\">925 000 €</span> et <span class=\"mono\">287 000 €</span>. Le régime est supprimé à compter du 1er janvier 2027.",
-     "src": "CGI, art. 302 septies A ; BOI-BAREME-000036",
-     "url": "https://bofip.impots.gouv.fr/bofip/9368-PGP.html/identifiant=BOI-BAREME-000036-20260701",
-     "fiab": "millésimé 2025"
-    },
-    {
-     "t": "<b>Franchise en base (2025 et 2026)</b> : chiffre d'affaires de l'année civile précédente n'excédant pas <span class=\"mono\">85 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">37 500 €</span> (autres prestations de services), et chiffre d'affaires de l'année en cours n'excédant pas <span class=\"mono\">93 500 €</span> ou <span class=\"mono\">41 250 €</span> ; depuis le 1er janvier 2025, le dépassement de ces derniers seuils en cours d'année fait perdre la franchise pour les opérations réalisées à compter de la date du dépassement.",
-     "src": "CGI, art. 293 B, I (version applicable du 1er mars 2025 au 1er janvier 2027) ; loi n° 2025-1044 du 3 novembre 2025",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006162567/",
+     "t": "<b>Seuils du régime simplifié de déclaration (2026)</b> : chiffre d'affaires de l'année précédente n'excédant pas <span class=\"mono\">945 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">286 000 €</span> (autres prestations de services), et chiffre d'affaires de l'année en cours n'excédant pas <span class=\"mono\">1 040 000 €</span> ou <span class=\"mono\">323 000 €</span> ; de 2023 à 2025 : 840 000 € / 925 000 € et 254 000 € / 287 000 €. Le régime est supprimé à compter du 1er janvier 2027.",
+     "cite": "« Les seuils mentionnés aux articles L. 162-4 et L. 162-5, déterminés en fonction des activités concernées et de la période d'appréciation, sont, pour l'année 2026, les suivants »",
+     "src": "CIBS, art. L. 162-4, L. 162-5 et A. 162-7 (arrêté du 27 janvier 2026) ; BOI-BAREME-000036 (1er juillet 2026)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049803752",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Régularisations</b> : <span class=\"mono\">20 ans</span> pour les immeubles, <span class=\"mono\">5 ans</span> pour les autres immobilisations ; variation du coefficient supérieure à <span class=\"mono\">1/10</span>.",
-     "src": "CGI, ann. II, art. 207, II et III",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046086720",
+     "t": "<b>Franchise en base (2025 et 2026)</b> : chiffre d'affaires de l'année civile précédente n'excédant pas <span class=\"mono\">85 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">37 500 €</span> (autres prestations de services), et chiffre d'affaires de l'année en cours n'excédant pas <span class=\"mono\">93 500 €</span> ou <span class=\"mono\">41 250 €</span> ; depuis le 1er janvier 2025, le dépassement de ces derniers seuils en cours d'année fait perdre la franchise pour les opérations réalisées à compter de la date du dépassement.",
+     "src": "CGI, art. 293 B, I (version applicable du 1er mars 2025 au 1er janvier 2027 ; LF 2024, art. 82 ; loi n° 2025-1044 du 3 novembre 2025, art. 1) ; BOI-TVA-DECLA-40-10-10 (1er juillet 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/849-PGP.html/identifiant=BOI-TVA-DECLA-40-10-10-20260701",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Crédit de TVA</b> : remboursement mensuel ou trimestriel à partir de <span class=\"mono\">760 €</span> (réel normal) ; demande annuelle, déposée en janvier au titre de l'année précédente, à partir de <span class=\"mono\">150 €</span>.",
+     "cite": "« La demande de remboursement doit porter sur un montant au moins égal à 760 €. »",
+     "src": "CGI, ann. II, art. 242-0 A et 242-0 C ; BOI-TVA-DED-50-20-10",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030066036",
      "fiab": "stable"
     },
     {
-     "t": "<b>Crédit de TVA</b> : remboursement mensuel ou trimestriel à partir de <span class=\"mono\">760 €</span> (réel normal) ; demande annuelle de remboursement à partir de <span class=\"mono\">150 €</span>.",
-     "cite": "« La demande de remboursement doit porter sur un montant au moins égal à 760 €. »",
-     "src": "CGI, ann. II, art. 242-0 A à 242-0 D",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030066036",
-     "fiab": "stable"
+     "t": "<b>Périodicité des déclarations CA3 (réel normal)</b> : en 2026, déclaration mensuelle, le dépôt par trimestre civil étant admis lorsque la taxe exigible annuellement est inférieure à <span class=\"mono\">4 000 €</span>. À compter du 1er janvier 2027, la CA3 est trimestrielle tant que le chiffre d'affaires n'excède pas <span class=\"mono\">1 000 000 €</span> pour l'année civile précédente et <span class=\"mono\">1 100 000 €</span> pour l'année en cours, mensuelle au-delà.",
+     "src": "CGI, art. 287, 1 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
+     "url": "https://www.impots.gouv.fr/actualite/le-regime-simplifie-dimposition-la-tva-est-supprime-compter-du-1er-janvier-2027",
+     "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Acomptes du régime simplifié</b> (jusqu'au 31 décembre 2026) : <span class=\"mono\">55 %</span> en juillet et <span class=\"mono\">40 %</span> en décembre de la TVA due au titre de l'exercice précédent (hors TVA sur immobilisations) ; dispense si cette TVA est inférieure à <span class=\"mono\">1 000 €</span>.",
@@ -282,14 +295,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Franchise en base, seuil unique de 25 000 €</b> : la loi de finances pour 2025 (art. 32) prévoyait un seuil unique de 25 000 € (27 500 € pour l'année en cours) à compter du 1er mars 2025 ; l'administration a suspendu cet abaissement des seuils jusqu'au 31 décembre 2025.",
-     "src": "Loi n° 2025-127 du 14 février 2025, art. 32 ; BOFiP, ACTU-2025-00087 (rescrit sur la sortie de la franchise en 2025)",
-     "url": "https://bofip.impots.gouv.fr/bofip/14687-PGP.html/ACTU-2025-00087",
-     "fiab": "millésimé 2025"
-    },
-    {
-     "t": "<b>Abandon du seuil unique</b> : la loi n° 2025-1044 du 3 novembre 2025 modifie l'article 32 de la loi de finances pour 2025 et écarte le seuil unique de 25 000 € ; les seuils de 85 000 € et 37 500 € (93 500 € et 41 250 € pour l'année en cours) restent applicables en 2025 et en 2026.",
-     "src": "Loi n° 2025-1044 du 3 novembre 2025 visant à garantir un cadre fiscal stable, juste et lisible pour nos micro-entrepreneurs et nos petites entreprises ; CGI, art. 293 B",
+     "t": "<b>Franchise en base : abandon du seuil unique</b> : la loi de finances pour 2025 (art. 32) prévoyait un seuil unique de 25 000 € à compter du 1er mars 2025, dont l'application a été suspendue par l'administration ; la loi n° 2025-1044 du 3 novembre 2025 modifie cet article 32 et écarte le seuil unique : les seuils de 85 000 € et 37 500 € (93 500 € et 41 250 € pour l'année en cours) restent applicables en 2025 et en 2026. La fiche DGFiP 2026 sur les régimes des petites entreprises précise que les modifications de la franchise prévues par la loi de finances pour 2025, puis par celle pour 2026, ne sont pas entrées en vigueur.",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 32 ; loi n° 2025-1044 du 3 novembre 2025 visant à garantir un cadre fiscal stable, juste et lisible pour nos micro-entrepreneurs et nos petites entreprises ; BOFiP, ACTU-2025-00087 et ACTU-2025-00144 ; DGFiP, « Les régimes réservés aux petites entreprises » (2026)",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052485808",
      "fiab": "millésimé 2026"
     },
@@ -300,15 +307,27 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du 1er janvier 2027 (loi de finances pour 2025, art. 38, dont le VI fixe cette date, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; la déclaration annuelle CA12 et les acomptes semestriels disparaissent, les redevables concernés relevant du régime réel normal (déclarations CA3).",
+     "t": "<b>Nouvelles mentions sur les factures</b> : avec la réforme de la facturation électronique, quatre mentions s'ajoutent à compter du 1er septembre 2026 : le numéro SIREN du client, la catégorie de l'opération (livraison de biens, prestation de services ou les deux), l'option pour le paiement de la TVA d'après les débits le cas échéant, et l'adresse de livraison des biens lorsqu'elle diffère de l'adresse de facturation du client.",
+     "src": "CGI, art. 289 bis ; CGI, ann. II, art. 242 nonies A ; impots.gouv.fr, « J'approfondis mes connaissances sur la réforme »",
+     "url": "https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du 1er janvier 2027 (loi de finances pour 2025, art. 38, dont le VI fixe cette date, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; les redevables concernés basculent automatiquement au régime réel normal et déposent des CA3, trimestrielles ou mensuelles selon leur chiffre d'affaires. Pour un exercice clos le 31 décembre 2026, la dernière déclaration annuelle n° 3517-S est déposée au plus tard le 4 mai 2027.",
      "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
      "url": "https://www.impots.gouv.fr/actualite/le-regime-simplifie-dimposition-la-tva-est-supprime-compter-du-1er-janvier-2027",
      "fiab": "stable"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 recodifie la taxe sur la valeur ajoutée et modifie le code des impositions sur les biens et services ; Légifrance signale les articles du CGI relatifs à la TVA cités dans cette fiche (par exemple art. 278 et 293 B) comme abrogés à compter du 1er janvier 2027. Le rapport au Président de la République annonce des mesures échelonnées du 1er janvier 2027 au 1er juillet 2030, dont la suppression du régime simplifié de déclaration et de paiement de la TVA.",
-     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services ; rapport au Président de la République (JO)",
-     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère les dispositions législatives relatives à la TVA du CGI vers le livre II du code des impositions sur les biens et services (CIBS). L'entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au 1er janvier 2027 par l'ordonnance n° 2026-671 du 27 juillet 2026 (art. 17) : jusqu'au 31 décembre 2026, les articles du CGI cités dans cette fiche restent applicables. Le rapport au Président de la République annonce des mesures échelonnées jusqu'au 1er juillet 2030, dont la suppression du régime simplifié de déclaration et de paiement de la TVA.",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, et rapport au Président de la République ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17 ; BOFiP, ACTU-2026-00126",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000054497326",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Gestion des déchets au taux de 5,5 %</b> : depuis le 1er mars 2026, les prestations de collecte et de traitement des déchets des ménages et assimilés relevant du service public de gestion des déchets, ainsi que les prestations qui concourent à leur bon déroulement, relèvent du taux réduit de 5,5 % ; les livraisons de biens réalisées pour les besoins de ce service restent au taux normal de 20 %.",
+     "src": "Loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 81, II ; BOFiP, ACTU-2026-00063 et BOI-TVA-LIQ-30-20-70 (15 avril 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/15015-PGP.html/ACTU-2026-00063",
      "fiab": "stable"
     }
    ]
@@ -349,8 +368,8 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Session 2027 et références</b> : à compter du 1er janvier 2027, le régime simplifié de TVA disparaît et les articles du CGI relatifs à la TVA sont abrogés au profit du code des impositions sur les biens et services ; les opérations de 2027 relèvent, hors franchise, du régime réel normal (CA3), sous réserve de la mesure transitoire prévue pour les exercices qui ne coïncident pas avec l'année civile.",
-     "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; ordonnance n° 2025-1247 du 17 décembre 2025",
+     "t": "<b>Session 2027 et références</b> : à compter du 1er janvier 2027, le régime simplifié de TVA disparaît et les articles du CGI relatifs à la TVA sont abrogés au profit du code des impositions sur les biens et services (date reportée du 1er septembre 2026 au 1er janvier 2027) ; les opérations de 2027 relèvent, hors franchise, du régime réel normal (CA3), sous réserve de la mesure transitoire prévue pour les exercices qui ne coïncident pas avec l'année civile.",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 38 ; ordonnance n° 2025-1247 du 17 décembre 2025 ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
     }

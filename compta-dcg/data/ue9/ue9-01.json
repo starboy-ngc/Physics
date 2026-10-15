@@ -310,8 +310,8 @@
     "N'a pas de durée fixée"
    ],
    "a": 1,
-   "why": "La durée de l'exercice est en principe de 12 mois, mais la date de clôture est libre (30 juin, 30 septembre…) : une entreprise saisonnière peut clôturer après sa haute saison. Le premier exercice peut être plus court ou plus long par exception. Seules les entreprises relevant des BNC doivent clôturer au 31 décembre, ce qui est une règle fiscale et non comptable.",
-   "src": "C. com., art. L. 123-12",
+   "why": "La durée de l'exercice est en principe de 12 mois, mais la date de clôture est libre (30 juin, 30 septembre…) : une entreprise saisonnière peut clôturer après sa haute saison. Le premier exercice peut être plus court ou plus long par exception. Les titulaires de bénéfices non commerciaux sont imposés sur le bénéfice de l'année civile, même si leur exercice comptable est clos en cours d'année : c'est une règle fiscale, qui n'impose pas de clôturer les comptes au 31 décembre.",
+   "src": "C. com., art. L. 123-12 ; BOFiP, BNC, régime de la déclaration contrôlée (année civile)",
    "fiab": "stable"
   },
   {

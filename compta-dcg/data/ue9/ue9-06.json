@@ -47,7 +47,7 @@
   },
   {
    "h": "Dépréciation des stocks et des créances",
-   "html": "<p>Une <b>dépréciation</b> constate que la <b>valeur actuelle</b> d'un actif est devenue inférieure à sa valeur nette comptable (PCG, art. 214-5 ; stocks : art. 214-22). Elle est constatée <b>que la perte soit définitive ou non</b> (C. com., art. L. 123-18) ; pour une créance, la perte devenue définitive est en revanche sortie du bilan par le compte 654 (voir plus bas). C'est une charge calculée (<code>68</code>) avec en contrepartie un compte soustractif d'actif (<code>29</code>, <code>39</code>, <code>49</code>, <code>59</code>) ; l'actif lui-même reste à son coût.</p><ul><li><b>Stock</b> dont le prix de vente probable (net des frais de vente) est passé sous le coût : <code>68173</code> / <code>397</code> (marchandises), <code>391</code> (matières), <code>395</code> (produits).</li><li><b>Client en difficulté</b> : on reclasse d'abord la créance <b>TTC</b> en <code>416</code> Clients douteux ou litigieux, puis on déprécie le montant <b>HT</b> probablement perdu : <code>68174</code> / <code>491</code>. La TVA n'est pas dépréciée, car elle sera récupérée sur l'État si la créance est perdue.</li><li>À chaque clôture, la dépréciation est <b>ajustée</b> : dotation complémentaire si le risque augmente, <b>reprise</b> (<code>491</code> / <code>78174</code>, ou <code>397</code> / <code>78173</code>) s'il diminue ou disparaît.</li></ul><p>Exemple : client Hekla, créance 3 600 TTC, perte probable 50 % → dépréciation 1 500 (3 000 HT × 50 %).</p>",
+   "html": "<p>Une <b>dépréciation</b> constate que la <b>valeur actuelle</b> d'un actif est devenue inférieure à sa valeur nette comptable (PCG, art. 214-5 ; valeur actuelle : art. 214-6). Elle est constatée <b>que la perte soit définitive ou non</b> (C. com., art. L. 123-18) ; pour une créance, la perte devenue définitive est en revanche sortie du bilan par le compte 654 (voir plus bas). C'est une charge calculée (<code>68</code>) avec en contrepartie un compte soustractif d'actif (<code>29</code>, <code>39</code>, <code>49</code>, <code>59</code>) ; l'actif lui-même reste à son coût.</p><ul><li><b>Stock</b> dont le prix de vente probable (net des frais de vente) est passé sous le coût : <code>68173</code> / <code>397</code> (marchandises), <code>391</code> (matières), <code>395</code> (produits).</li><li><b>Client en difficulté</b> : on reclasse d'abord la créance <b>TTC</b> en <code>416</code> Clients douteux ou litigieux, puis on déprécie le montant <b>HT</b> probablement perdu : <code>68174</code> / <code>491</code>. La TVA n'est pas dépréciée, car elle sera récupérée sur l'État si la créance est perdue.</li><li>À chaque clôture, la dépréciation est <b>ajustée</b> : dotation complémentaire si le risque augmente, <b>reprise</b> (<code>491</code> / <code>78174</code>, ou <code>397</code> / <code>78173</code>) s'il diminue ou disparaît.</li></ul><p>Exemple : client Hekla, créance 3 600 TTC, perte probable 50 % → dépréciation 1 500 (3 000 HT × 50 %).</p>",
    "entry": [
     {
      "a": "68174",
@@ -103,7 +103,7 @@
   },
   {
    "h": "Provisions pour risques et charges",
-   "html": "<p>Une <b>provision</b> est un <b>passif</b> dont l'échéance ou le montant n'est pas fixé de façon précise (PCG, art. 321-1 et s.). Elle est comptabilisée lorsque trois conditions sont réunies à la clôture (art. 322-1) : une <b>obligation</b> envers un tiers existe, elle entraînera <b>probablement une sortie de ressources</b> sans contrepartie équivalente, et son montant peut être <b>estimé de façon fiable</b>. Litige avec un salarié ou un client, garantie donnée aux clients, amende probable, perte de change latente.</p><p>Comptes : <code>1511</code> litiges, <code>1512</code> garanties données aux clients, <code>1514</code> amendes et pénalités, <code>1515</code> pertes de change, <code>152</code> provisions pour charges (dont <code>1521</code> pensions). Dotation : débit <code>6815</code> (exploitation), <code>6865</code> (financier) ou <code>6875</code> (exceptionnel), crédit 15. Reprise quand le risque disparaît ou se réalise : débit 15, crédit <code>7815</code>, <code>7865</code> ou <code>7875</code>.</p><div class=\"note\"><b>Dépréciation ≠ provision.</b> La dépréciation corrige la valeur d'un <b>actif</b> (29, 39, 49, 59). La provision est un <b>passif</b> (15). Les deux sont des charges calculées, réversibles par reprise, et obéissent au même principe de prudence.</div><p>Quand le litige se dénoue (paiement de 4 800 au salarié), on enregistre la charge réelle (débit 6xx, crédit 512) et l'on reprend la provision devenue sans objet (débit 1511, crédit 7815).</p>",
+   "html": "<p>Une <b>provision</b> est un <b>passif</b> dont l'échéance ou le montant n'est pas fixé de façon précise (PCG, art. 321-5). Elle est comptabilisée lorsque trois conditions sont réunies à la clôture : une <b>obligation</b> envers un tiers existe, elle entraînera <b>probablement ou certainement une sortie de ressources</b> sans contrepartie au moins équivalente (art. 322-1 et 322-2), et son montant peut être <b>évalué avec une fiabilité suffisante</b> ; à défaut, aucun passif n'est comptabilisé et une information est donnée en annexe (art. 322-4). Litige avec un salarié ou un client, garantie donnée aux clients, amende probable, perte de change latente.</p><p>Comptes : <code>1511</code> litiges, <code>1512</code> garanties données aux clients, <code>1514</code> amendes et pénalités, <code>1515</code> pertes de change, <code>152</code> provisions pour charges (dont <code>1521</code> pensions). Dotation : débit <code>6815</code> (exploitation), <code>6865</code> (financier) ou <code>6875</code> (exceptionnel), crédit 15. Reprise quand le risque disparaît ou se réalise : débit 15, crédit <code>7815</code>, <code>7865</code> ou <code>7875</code>.</p><div class=\"note\"><b>Dépréciation ≠ provision.</b> La dépréciation corrige la valeur d'un <b>actif</b> (29, 39, 49, 59). La provision est un <b>passif</b> (15). Les deux sont des charges calculées, réversibles par reprise, et obéissent au même principe de prudence.</div><p>Quand le litige se dénoue (paiement de 4 800 au salarié), on enregistre la charge réelle (débit 6xx, crédit 512) et l'on reprend la provision devenue sans objet (débit 1511, crédit 7815).</p>",
    "entry": [
     {
      "a": "6815",
@@ -125,12 +125,12 @@
    "note": "Définition et coût d'entrée des stocks, méthodes CMP et PEPS"
   },
   {
-   "ref": "PCG, art. 214-5, 214-15 s. et 214-22",
-   "note": "Définition de la dépréciation, test de dépréciation, dépréciation des stocks"
+   "ref": "PCG, art. 214-5, 214-6 et 214-15 s.",
+   "note": "Définition de la dépréciation, valeur actuelle, test de dépréciation"
   },
   {
-   "ref": "PCG, art. 321-1 et s. et 322-1",
-   "note": "Définition et conditions de comptabilisation des provisions"
+   "ref": "PCG, art. 321-1 et s., 322-1 à 322-4 et 323-10",
+   "note": "Définitions (passif, dette, provision), conditions de comptabilisation des provisions, révision à chaque clôture"
   },
   {
    "ref": "PCG, art. 121-4 et 121-5",
@@ -343,8 +343,8 @@
      }
     ]
    ],
-   "why": "Dotation aux provisions d'exploitation au débit de 6815, provision pour litiges (passif) au crédit de 1511. Les trois conditions de l'article 322-1 sont réunies : obligation probable, sortie de ressources, montant estimable. On ne crédite pas 421, car rien n'est encore dû de façon certaine au salarié.",
-   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 322-1",
+   "why": "Dotation aux provisions d'exploitation au débit de 6815, provision pour litiges (passif) au crédit de 1511. Les conditions des articles 322-1 et 322-2 sont réunies (obligation à la clôture, sortie de ressources probable sans contrepartie) et le montant est estimable (art. 322-4). On ne crédite pas 421, car rien n'est encore dû de façon certaine au salarié.",
+   "src": "PCG 2025, art. 1121-1 (plan de comptes) ; PCG, art. 322-1, 322-2 et 322-4",
    "fiab": "stable"
   },
   {
@@ -489,8 +489,8 @@
     1,
     2
    ],
-   "why": "L'article 322-1 du PCG pose trois conditions : obligation à la clôture, sortie probable de ressources, estimation fiable. Si la date et le montant étaient connus avec précision, ce serait une dette (art. 321-4), pas une provision ; et une facture reçue donne lieu à une charge à payer, non à une provision.",
-   "src": "PCG, art. 321-1 et s. et 322-1",
+   "why": "Les articles 322-1 et 322-2 du PCG exigent une obligation à la clôture et une sortie de ressources probable ou certaine sans contrepartie ; l'article 322-4 écarte le passif dont le montant ne peut être évalué avec une fiabilité suffisante (information en annexe). Si la date et le montant étaient connus avec précision, ce serait une dette (art. 321-4), pas une provision ; et une facture reçue donne lieu à une charge à payer, non à une provision.",
+   "src": "PCG, art. 321-1 et s., 322-1, 322-2 et 322-4",
    "fiab": "stable"
   },
   {
@@ -584,8 +584,8 @@
     "Débit 68173 : 2 000 ; crédit 397 : 2 000"
    ],
    "a": 1,
-   "why": "Valeur actuelle = valeur vénale nette = (18 − 1) × 1 000 = 17 000. Coût = 20 000. Dépréciation nécessaire = 3 000 ; déjà constatée 1 200 ; dotation complémentaire = 1 800 (PCG, art. 214-22). Doter 3 000 doublonnerait, 2 000 oublie les frais de vente, et une reprise supposerait que la valeur ait remonté.",
-   "src": "PCG, art. 214-22",
+   "why": "Valeur actuelle = valeur vénale nette = (18 − 1) × 1 000 = 17 000. Coût = 20 000. Dépréciation nécessaire = 3 000 ; déjà constatée 1 200 ; dotation complémentaire = 1 800 (PCG, art. 214-6 : valeur vénale nette des coûts de sortie). Doter 3 000 doublonnerait, 2 000 oublie les frais de vente, et une reprise supposerait que la valeur ait remonté.",
+   "src": "PCG, art. 214-5 et 214-6",
    "fiab": "stable"
   },
   {

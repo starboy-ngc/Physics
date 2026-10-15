@@ -1,6 +1,6 @@
 {
  "id": "ue9-03",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -43,21 +43,21 @@
   },
   {
    "ref": "CGI, art. 287 et 302 septies A",
-   "objet": "Déclarations de TVA : CA3 du régime réel normal ; régime simplifié (CA12 et acomptes semestriels)",
-   "url": null,
+   "objet": "Déclarations de TVA : CA3 du régime réel normal (mensuelle, trimestrielle sous 4 000 € de taxe annuelle) ; régime simplifié (CA12 et acomptes semestriels)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191928/",
    "version": "en vigueur jusqu'au 31 décembre 2026 ; régime simplifié supprimé à compter du 1er janvier 2027 (loi n° 2025-127 du 14 février 2025, art. 38)"
   },
   {
    "ref": "CGI, art. 289 ; CGI, ann. II, art. 242 nonies A",
-   "objet": "Obligation de facturation, factures rectificatives, mentions obligatoires",
+   "objet": "Obligation de facturation, factures rectificatives (art. 289, I-5), mentions obligatoires, dont les nouvelles mentions liées à la facturation électronique",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048827413",
-   "version": "en vigueur en 2026 (art. 289 abrogé au 1er janvier 2027 par l'ordonnance n° 2025-1247)"
+   "version": "en vigueur en 2026 (art. 242 nonies A dans sa rédaction issue du décret n° 2024-1195 ; art. 289 abrogé au 1er janvier 2027 par l'ordonnance n° 2025-1247)"
   },
   {
-   "ref": "CGI, art. 289 bis ; loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91",
-   "objet": "Facturation électronique entre assujettis : calendrier 2026-2027",
+   "ref": "CGI, art. 289 bis et 289 E ; loi n° 2023-1322 du 29 décembre 2023 (LF 2024), art. 91 ; loi n° 2026-103 du 19 février 2026 (LF 2026), art. 123",
+   "objet": "Facturation électronique entre assujettis et transmission des données à l'administration (e-reporting) : calendrier 2026-2027",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048727345",
-   "version": "réception obligatoire pour tous et émission pour les grandes entreprises et ETI depuis le 1er septembre 2026 ; émission pour les PME et microentreprises au 1er septembre 2027"
+   "version": "réception obligatoire pour tous et émission pour les grandes entreprises et ETI depuis le 1er septembre 2026 ; émission pour les PME et microentreprises au 1er septembre 2027 ; art. 289 E dans la rédaction de la LF 2026, art. 123"
   },
   {
    "ref": "CGI, art. 293 B ; loi n° 2025-1044 du 3 novembre 2025",
@@ -67,9 +67,9 @@
   },
   {
    "ref": "C. com., art. L. 441-9, L. 441-10 et D. 441-5",
-   "objet": "Facture commerciale : délivrance, mentions (réductions, escompte, pénalités de retard, indemnité forfaitaire de 40 €)",
-   "url": null,
-   "version": "en vigueur (ordonnance n° 2019-359 du 24 avril 2019)"
+   "objet": "Facture commerciale : délivrance, mentions (réductions, escompte, pénalités de retard, indemnité forfaitaire de 40 €) ; délais de paiement (60 jours, ou 45 jours fin de mois)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000038411051/",
+   "version": "en vigueur (ordonnance n° 2019-359 du 24 avril 2019 ; D. 441-5 modifié par le décret n° 2021-211 du 24 février 2021)"
   },
   {
    "ref": "C. com., art. L. 123-19 et L. 123-22",
@@ -96,10 +96,10 @@
    "version": "2022-06 : exercices ouverts à compter du 1er janvier 2025 (homologué par arrêté du 26 décembre 2023) ; 2025-05 : homologué par arrêté du 26 décembre 2025"
   },
   {
-   "ref": "Ordonnance n° 2025-1247 du 17 décembre 2025",
+   "ref": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
    "objet": "Recodification de la TVA dans le code des impositions sur les biens et services",
    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
-   "version": "articles du CGI relatifs à la TVA applicables jusqu'au 1er janvier 2027"
+   "version": "articles du CGI relatifs à la TVA applicables jusqu'au 31 décembre 2026 : entrée en vigueur de la recodification reportée du 1er septembre 2026 au 1er janvier 2027 par l'ordonnance n° 2026-671"
   }
  ],
  "sections": [
@@ -122,8 +122,7 @@
      "t": "<b>Fait générateur</b> : événement qui réalise les conditions légales de la taxe (pour une livraison de biens, la livraison) ; <b>exigibilité</b> : moment à partir duquel le Trésor peut réclamer la taxe au redevable. L'exigibilité chez le fournisseur fixe aussi la naissance du droit à déduction chez le client.",
      "src": "CGI, art. 269, 1 et 2 ; CGI, art. 271, I",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827",
-     "fiab": "stable",
-     "cite": "« Le droit à déduction prend naissance lorsque la taxe déductible devient exigible chez le redevable. »"
+     "fiab": "stable"
     },
     {
      "t": "<b>Réductions commerciales</b> : rabais, remises et ristournes (comptes <code>609</code> « Rabais, remises et ristournes obtenus sur achats » et <code>709</code> « Rabais, remises et ristournes accordés par l'entreprise ») ; <b>réduction financière</b> : l'escompte de règlement (<code>665</code> « Escomptes accordés », charge financière ; <code>765</code> « Escomptes obtenus », produit financier).",
@@ -133,7 +132,7 @@
     },
     {
      "t": "<b>Avoir</b> (facture rectificative) : tout document qui modifie la facture initiale et y fait référence de façon spécifique et non équivoque est assimilé à une facture.",
-     "src": "CGI, art. 289, I",
+     "src": "CGI, art. 289, I-5",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048827413",
      "fiab": "stable"
     },
@@ -174,9 +173,9 @@
      "fiab": "stable"
     },
     {
-     "t": "Au titre du Code de commerce, la facture mentionne notamment le nom et l'adresse des parties, la date de la vente ou de la prestation, la quantité, la dénomination précise et le prix unitaire hors taxes, toute réduction de prix acquise à la date de la vente et directement liée à l'opération (à l'exclusion des escomptes non prévus sur la facture), la date de règlement, les conditions d'escompte, le taux des pénalités de retard et le montant de l'indemnité forfaitaire pour frais de recouvrement.",
+     "t": "Au titre du Code de commerce, la facture mentionne notamment le nom et l'adresse des parties (et leur adresse de facturation si elle est différente), la date de la vente ou de la prestation, la quantité, la dénomination précise et le prix unitaire hors taxes, toute réduction de prix acquise à la date de la vente et directement liée à l'opération (à l'exclusion des escomptes non prévus sur la facture), le numéro du bon de commande lorsqu'il a été préalablement établi par l'acheteur, la date de règlement, les conditions d'escompte, le taux des pénalités de retard et le montant de l'indemnité forfaitaire pour frais de recouvrement.",
      "src": "C. com., art. L. 441-9, I",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000038411051/",
      "fiab": "stable"
     },
     {
@@ -193,7 +192,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Vente</b> : le compte de produit (classe 70) est crédité du montant hors taxes collectées, la TVA collectée au crédit de <code>44571</code>, le client <code>411</code> débité du montant TTC. La TVA transite par les comptes de tiers <code>445</code> « État – Taxes sur le chiffre d'affaires » : elle n'est ni une charge ni un produit pour l'assujetti.",
+     "t": "<b>Vente</b> : le compte de produit (classe 70) est crédité du montant hors taxes collectées, la TVA collectée au crédit de <code>44571</code>, le client <code>411</code> débité du montant TTC. La TVA transite par les comptes de tiers <code>445</code> « État – Taxes sur le chiffre d'affaires » : elle n'est ni une charge ni un produit pour l'assujetti. Enregistrer une vente TTC en <code>707</code> est l'erreur classique.",
      "src": "Plan de comptes du PCG (art. 1121-1), comptes 411, 445 et 70",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable",
@@ -231,14 +230,15 @@
      "fiab": "stable"
     },
     {
-     "t": "Les redevables placés sous le <b>régime réel normal</b> déposent chaque mois une déclaration (CA3) ; lorsque la taxe exigible annuellement est inférieure à 4 000 €, ils sont admis à la déposer par trimestre civil.",
-     "src": "CGI, art. 287, 2",
-     "url": null,
-     "fiab": "stable"
+     "t": "En 2026, les redevables placés sous le <b>régime réel normal</b> déposent chaque mois une déclaration (CA3) ; lorsque la taxe exigible annuellement est inférieure à <span class=\"mono\">4 000 €</span>, ils sont admis à la déposer par trimestre civil. Ce seuil s'apprécie au début de chaque trimestre, d'après la taxe exigible au cours des quatre trimestres civils précédents.",
+     "src": "CGI, art. 287, 2 ; CE, 17 octobre 2022, n° 458767",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191928/",
+     "fiab": "millésimé 2026",
+     "cite": "« Lorsque la taxe exigible annuellement est inférieure à 4 000 €, ils sont admis à déposer leurs déclarations par trimestre civil. »"
     },
     {
-     "t": "La <b>refacturation de frais</b> à un tiers ne peut plus être neutralisée par un compte de transfert de charges : la mention « les transferts de charges » est supprimée des produits de l'article 512-1, et aucune compensation n'est admise entre charges et produits sauf exception prévue par un règlement de l'ANC. La refacturation est donc un produit (compte <code>708</code> « Produits des activités annexes ») et la charge reste inscrite à son compte.",
-     "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; C. com., art. L. 123-19 ; plan de comptes du PCG, compte 708",
+     "t": "La <b>refacturation de frais</b> à un tiers ne peut plus être neutralisée par un compte de transfert de charges : la mention « les transferts de charges » est supprimée des produits de l'article 512-1, et aucune compensation n'est admise entre charges et produits sauf exception prévue par un règlement de l'ANC. La refacturation est donc un produit, que l'ANC rattache au compte <code>708</code> « Produits des activités annexes » (avis n° 2025-01), et la charge reste inscrite à son compte.",
+     "src": "Règlement ANC n° 2022-06 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; C. com., art. L. 123-19 ; plan de comptes du PCG, compte 708",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
      "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
@@ -249,28 +249,29 @@
    "h": "Chiffres et seuils",
    "items": [
     {
-     "t": "Taux de TVA en France continentale : taux normal <span class=\"mono\">20 %</span> (art. 278) ; taux réduit de <span class=\"mono\">10 %</span> (art. 278 bis et 279 : notamment restauration, transport de voyageurs) ; taux réduit de <span class=\"mono\">5,5 %</span> (art. 278-0 bis : notamment produits alimentaires, livres) ; taux particulier de <span class=\"mono\">2,1 %</span> (médicaments remboursables, art. 281 octies ; publications de presse, art. 298 septies).",
+     "t": "Taux de TVA en France continentale : taux normal <span class=\"mono\">20 %</span> (art. 278) ; taux réduit de <span class=\"mono\">10 %</span> (art. 278 bis et 279 : notamment restauration, transport de voyageurs) ; taux réduit de <span class=\"mono\">5,5 %</span> (art. 278-0 bis : notamment produits alimentaires, livres) ; taux particulier de <span class=\"mono\">2,1 %</span> (médicaments remboursables ou agréés, art. 281 octies ; publications de presse, art. 298 septies).",
      "src": "CGI, art. 278, 278-0 bis, 278 bis, 279, 281 octies et 298 septies",
      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179654/",
      "fiab": "stable"
     },
     {
-     "t": "Pénalités de retard : à défaut de stipulation, taux de la Banque centrale européenne à son opération de refinancement la plus récente majoré de <span class=\"mono\">10 points</span> ; un taux contractuel ne peut être inférieur à <span class=\"mono\">trois fois</span> le taux d'intérêt légal. Tout professionnel en retard de paiement doit de plein droit une indemnité forfaitaire pour frais de recouvrement de <span class=\"mono\">40 €</span>.",
-     "src": "C. com., art. L. 441-10, II et D. 441-5",
-     "url": null,
-     "fiab": "stable"
+     "t": "<b>Délais et pénalités</b> : le délai de paiement convenu ne peut dépasser <span class=\"mono\">60 jours</span> à compter de la date d'émission de la facture, ou <span class=\"mono\">45 jours fin de mois</span> si ce délai est expressément stipulé. À défaut de stipulation, les pénalités de retard sont calculées au taux de la Banque centrale européenne à son opération de refinancement la plus récente majoré de <span class=\"mono\">10 points</span> (taux en vigueur au 1er janvier pour le premier semestre, au 1er juillet pour le second) ; un taux contractuel ne peut être inférieur à <span class=\"mono\">trois fois</span> le taux d'intérêt légal. Tout professionnel en retard de paiement doit de plein droit une indemnité forfaitaire pour frais de recouvrement de <span class=\"mono\">40 €</span>.",
+     "src": "C. com., art. L. 441-10, I et II, et D. 441-5 ; DGCCRF, « Délais de paiement : les règles à connaître »",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038411055",
+     "fiab": "stable",
+     "cite": "« Le montant de l'indemnité forfaitaire pour frais de recouvrement prévue au II de l'article L. 441-10 est fixé à 40 euros. »"
     },
     {
      "t": "Régime simplifié (jusqu'au 31 décembre 2026) : acomptes de juillet et de décembre égaux à <span class=\"mono\">55 %</span> et <span class=\"mono\">40 %</span> de la taxe due au titre de l'exercice précédent (avant déduction de la TVA sur immobilisations), solde avec la déclaration annuelle (CA12) ; dispense d'acomptes si cette taxe est inférieure à <span class=\"mono\">1 000 €</span>.",
      "src": "CGI, art. 287, 3",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006191928/",
      "fiab": "millésimé 2026",
      "cite": "« Ils sont égaux, respectivement, à 55 % et 40 % de la taxe due au titre de l'exercice précédent avant déduction de la taxe sur la valeur ajoutée relative aux biens constituant des immobilisations. »"
     },
     {
      "t": "Franchise en base (2025 et 2026) : chiffre d'affaires de l'année civile précédente n'excédant pas <span class=\"mono\">85 000 €</span> (livraisons de biens, ventes à consommer sur place, hébergement) ou <span class=\"mono\">37 500 €</span> (autres prestations de services), et chiffre d'affaires de l'année en cours n'excédant pas <span class=\"mono\">93 500 €</span> ou <span class=\"mono\">41 250 €</span>. La franchise dispense l'assujetti établi en France du paiement de la TVA sur ses livraisons de biens et prestations de services.",
-     "src": "CGI, art. 293 B, I (version applicable du 1er mars 2025 au 1er janvier 2027) ; loi n° 2025-1044 du 3 novembre 2025",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006162567/",
+     "src": "CGI, art. 293 B, I (version applicable du 1er mars 2025 au 1er janvier 2027) ; loi n° 2025-1044 du 3 novembre 2025 ; BOFiP, BOI-TVA-DECLA-40-10-10 (1er juillet 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/849-PGP.html/identifiant=BOI-TVA-DECLA-40-10-10-20260701",
      "fiab": "millésimé 2026"
     },
     {
@@ -298,9 +299,15 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Facturation électronique</b> : depuis le <b>1er septembre 2026</b>, toutes les entreprises assujetties établies en France doivent pouvoir recevoir des factures électroniques, et les grandes entreprises et ETI doivent les émettre ; l'obligation d'émission s'étend aux PME et microentreprises au <b>1er septembre 2027</b>.",
-     "src": "CGI, art. 289 bis ; loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 91 ; décret n° 2022-1299 du 7 octobre 2022",
+     "t": "<b>Facturation électronique</b> : depuis le <b>1er septembre 2026</b>, toutes les entreprises assujetties établies en France doivent recevoir les factures électroniques par une plateforme agréée, et les grandes entreprises et ETI doivent les émettre ; l'obligation d'émission s'étend aux PME et microentreprises au <b>1er septembre 2027</b>. La transmission des données de transaction et de paiement à l'administration (e-reporting, art. 289 E, réécrit par la loi de finances pour 2026, art. 123) suit le même calendrier.",
+     "src": "CGI, art. 289 bis et 289 E ; loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 91 ; loi n° 2026-103 du 19 février 2026, art. 123 ; décret n° 2022-1299 du 7 octobre 2022 ; impots.gouv.fr, FAQ « J'approfondis la facturation électronique »",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048727345",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Nouvelles mentions des factures</b> : avec la facturation électronique, la facture mentionne aussi le numéro SIREN de l'assujetti et de son client (numéro prévu à l'article R. 123-221 du Code de commerce), l'adresse de livraison des biens si elle diffère de l'adresse du client, la nature des opérations (livraisons de biens, prestations de services ou les deux) et, le cas échéant, la mention « Option pour le paiement de la taxe d'après les débits ». Ces mentions suivent le calendrier de l'obligation d'émission : factures émises depuis le 1er septembre 2026, et à compter du 1er septembre 2027 pour les PME et microentreprises.",
+     "src": "CGI, ann. II, art. 242 nonies A, I (rédaction du décret n° 2024-1195) ; impots.gouv.fr, « J'approfondis mes connaissances sur la réforme »",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000050811276",
      "fiab": "stable"
     },
     {
@@ -311,14 +318,7 @@
      "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
     },
     {
-     "t": "Le plan de comptes applicable est celui de l'article 1121-1 du PCG (version 2026), commun au système de base et au système abrégé.",
-     "src": "Plan de comptes du PCG, versions 2025 et 2026 (PCG, art. 1121-1)",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
-     "fiab": "stable",
-     "cite": "« Le plan de comptes présenté ci-après, est commun au système de base et au système abrégé. »"
-    },
-    {
-     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du <b>1er janvier 2027</b> (loi de finances pour 2025, art. 38, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; la déclaration annuelle CA12 et les acomptes semestriels disparaissent, et les redevables concernés relèvent du régime réel normal (CA3).",
+     "t": "<b>Régime simplifié de TVA</b> : il est supprimé à compter du <b>1er janvier 2027</b> (loi de finances pour 2025, art. 38, avec une mesure transitoire pour les exercices qui ne coïncident pas avec l'année civile) ; la déclaration annuelle CA12 et les acomptes semestriels disparaissent. Les redevables concernés relèvent du régime réel normal : CA3 trimestrielle tant que le chiffre d'affaires n'excède pas <span class=\"mono\">1 000 000 €</span> pour l'année civile précédente et <span class=\"mono\">1 100 000 €</span> pour l'année en cours, mensuelle au-delà.",
      "src": "Loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 38 ; impots.gouv.fr, « Le régime simplifié d'imposition à la TVA est supprimé à compter du 1er janvier 2027 »",
      "url": "https://www.impots.gouv.fr/actualite/le-regime-simplifie-dimposition-la-tva-est-supprime-compter-du-1er-janvier-2027",
      "fiab": "stable"
@@ -330,9 +330,15 @@
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la TVA dans le code des impositions sur les biens et services ; Légifrance présente les articles du CGI relatifs à la TVA cités dans cette fiche (par exemple art. 278 et 293 B) comme applicables jusqu'au 1er janvier 2027. Les règles de fond de la fiche sont celles en vigueur en 2026.",
-     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la TVA dans le code des impositions sur les biens et services ; son entrée en vigueur, d'abord fixée au 1er septembre 2026, a été reportée au <b>1er janvier 2027</b> par l'ordonnance n° 2026-671 du 27 juillet 2026 (art. 17). Jusqu'au 31 décembre 2026, les articles du CGI cités dans cette fiche restent applicables.",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services ; ordonnance n° 2026-671 du 27 juillet 2026, art. 17",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Abonnements d'électricité et de gaz</b> : la loi de finances pour 2025 (art. 20) supprime le taux réduit de 5,5 % prévu au B de l'article 278-0 bis pour les abonnements d'électricité (puissance inférieure ou égale à 36 kVA) et de gaz naturel distribué par réseaux. Le taux normal de <span class=\"mono\">20 %</span> s'applique aux abonnements relatifs aux périodes courant à compter du <b>1er août 2025</b>, quelle que soit la date de leur facturation ou de leur paiement.",
+     "src": "Loi n° 2025-127 du 14 février 2025 de finances pour 2025, art. 20 ; CGI, art. 278-0 bis, B ; BOFiP, BOI-RES-TVA-000209 (26 août 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/14705-PGP.html/identifiant=BOI-RES-TVA-000209-20260826",
      "fiab": "stable"
     }
    ]
@@ -357,13 +363,6 @@
      "src": "PCG, art. 213-8",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
-    },
-    {
-     "t": "Les produits de la classe 7 sont <b>hors taxes</b> : enregistrer une vente TTC en 707 est l'erreur classique.",
-     "src": "Plan de comptes du PCG (art. 1121-1), classe 7",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
-     "fiab": "stable",
-     "cite": "« Les produits de la classe 7 sont enregistrés hors taxes collectées. »"
     },
     {
      "t": "<b>Refacturation et débours</b> : une dépense engagée en son nom propre puis refacturée est un produit soumis à la TVA ; les débours (dépenses engagées au nom et pour le compte du client, inscrites dans des comptes de passage, dont l'intermédiaire rend compte et justifie la nature et le montant exact) sont exclus de la base d'imposition.",

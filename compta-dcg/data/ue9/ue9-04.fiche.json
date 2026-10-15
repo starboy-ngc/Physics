@@ -1,6 +1,6 @@
 {
  "id": "ue9-04",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -43,28 +43,28 @@
    "version": "en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015)"
   },
   {
-   "ref": "C. com., art. R. 123-203 (sous-section R. 123-203 à R. 123-208)",
-   "objet": "Dérogation à R. 123-174 : enregistrement des encaissements et paiements à la date du relevé bancaire (personnes des art. L. 123-25 et L. 123-28)",
+   "ref": "C. com., art. R. 123-203 et R. 123-204",
+   "objet": "Dérogations : enregistrement des encaissements et paiements à la date du relevé bancaire (R. 123-203, personnes des art. L. 123-25 et L. 123-28) ; centralisation trimestrielle des journaux auxiliaires (R. 123-204)",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161453/",
-   "version": "en vigueur (section 2 : de la comptabilité des commerçants, art. R. 123-172 à R. 123-208-8)"
+   "version": "R. 123-203 en vigueur depuis le 27 mars 2007 ; R. 123-204 modifié par le décret n° 2015-903 du 23 juillet 2015, en vigueur depuis le 1er janvier 2016 (section 2 : de la comptabilité des commerçants, art. R. 123-172 à R. 123-208-8)"
   },
   {
    "ref": "C. com., art. L. 123-22",
    "objet": "Conservation des documents comptables et pièces justificatives pendant dix ans",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/",
-   "version": "en vigueur depuis le 4 janvier 2003 (loi n° 2003-7 du 3 janvier 2003)"
+   "version": "en vigueur"
   },
   {
    "ref": "C. trav., art. L. 3242-1, L. 3243-2 et R. 3243-1",
    "objet": "Mensualisation et paiement mensuel du salaire, acompte ; bulletin de paie et ses mentions",
-   "url": null,
-   "version": "en vigueur"
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006160763",
+   "version": "en vigueur (titre IV : paiement du salaire, art. L. 3241-1 à L. 3245-2) ; L. 3243-2 dans sa rédaction en vigueur depuis le 1er janvier 2017 (remise électronique du bulletin de paie)"
   },
   {
    "ref": "CSS, art. L. 242-1 et L. 136-1-1",
    "objet": "Assiette des cotisations de sécurité sociale : revenus d'activité",
-   "url": null,
-   "version": "en vigueur"
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006185915/",
+   "version": "en vigueur (sous-section 1 : dispositions générales, art. L. 242-1 à L. 242-4-4) ; L. 136-1-1 dans sa rédaction en vigueur depuis le 31 décembre 2025 (loi n° 2025-1403 du 30 décembre 2025)"
   },
   {
    "ref": "CSS, art. L. 241-13 ; décret n° 2026-509 du 12 juin 2026",
@@ -76,7 +76,7 @@
    "ref": "CGI, art. 204 A, 204 E et 1671",
    "objet": "Prélèvement à la source de l'impôt sur le revenu : retenue opérée par l'employeur ; taux individualisé des couples",
    "url": "https://bofip.impots.gouv.fr/bofip/11178-PGP.html/identifiant=BOI-IR-PAS-20250507",
-   "version": "en vigueur (taux individualisé par défaut pour les couples depuis le 1er septembre 2025)"
+   "version": "en vigueur (taux individualisé par défaut pour les couples depuis le 1er septembre 2025 : loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 19)"
   },
   {
    "ref": "CGI, art. 1447",
@@ -85,10 +85,10 @@
    "version": "en vigueur depuis le 21 février 2026 (loi n° 2026-103 du 19 février 2026, art. 55)"
   },
   {
-   "ref": "CGI, art. 261 C",
-   "objet": "Exonération de TVA des opérations bancaires et financières (octroi de crédits) et des opérations d'assurance",
-   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
-   "version": "en vigueur au 14 octobre 2026 (TVA recodifiée par l'ordonnance n° 2025-1247 du 17 décembre 2025)"
+   "ref": "CGI, art. 261 C, 1° à 3° ; art. 260 B",
+   "objet": "Exonération de TVA des opérations bancaires et financières (octroi de crédits), des opérations d'assurance et des livraisons de timbres-poste à leur valeur officielle ; option des établissements bancaires pour la taxation (art. 260 B)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467574",
+   "version": "dernière rédaction issue de la loi n° 2019-1479 du 28 décembre 2019, art. 33 ; abrogé par l'ordonnance n° 2025-1247 du 17 décembre 2025, art. 9, à compter du 1er janvier 2027 (TVA recodifiée au livre II du code des impositions sur les biens et services)"
   },
   {
    "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
@@ -134,9 +134,10 @@
     },
     {
      "t": "<b>Bulletin de paie</b> : pièce justificative que l'employeur remet au salarié lors du paiement du salaire ; ses mentions sont fixées par l'article R. 3243-1. Sauf opposition du salarié, il peut être remis sous forme électronique.",
-     "src": "C. trav., art. L. 3243-2 et R. 3243-1",
-     "url": null,
-     "fiab": "stable"
+     "src": "C. trav., art. L. 3243-2 (rédaction en vigueur depuis le 1er janvier 2017) et R. 3243-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033024092",
+     "fiab": "stable",
+     "cite": "« Sauf opposition du salarié, l'employeur peut procéder à la remise du bulletin de paie sous forme électronique »"
     },
     {
      "t": "<b>Prélèvement à la source</b> : pour les traitements et salaires, l'impôt sur le revenu est prélevé par une retenue à la source que l'employeur, débiteur des revenus, opère puis reverse au comptable public ; la dette correspondante est inscrite au compte <code>4421</code> « Prélèvements à la source (Impôt sur le revenu) ».",
@@ -164,8 +165,8 @@
      "cite": "« Le livre-journal et le grand livre sont détaillés en autant de journaux auxiliaires et de livres auxiliaires que les besoins du commerce l'exigent. »"
     },
     {
-     "t": "Les charges externes sont enregistrées <b>hors taxes</b> aux comptes 61/62, la TVA déductible au compte <code>44566</code> « TVA sur autres biens et services » ; une charge exonérée de TVA (intérêts, primes d'assurance) est enregistrée pour son montant total, sans TVA déductible.",
-     "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62 et 44566 ; CGI, art. 261 C",
+     "t": "Les charges externes sont enregistrées <b>hors taxes</b> aux comptes 61/62, la TVA déductible au compte <code>44566</code> « TVA sur autres biens et services » ; une charge exonérée de TVA (intérêts, primes d'assurance, timbres-poste acquis à leur valeur officielle) est enregistrée pour son montant total, sans TVA déductible.",
+     "src": "Plan de comptes (version au 1er janvier 2026), comptes 61, 62 et 44566 ; CGI, art. 261 C, 1° à 3°",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -189,23 +190,25 @@
      "cite": "« La cotisation foncière des entreprises est due chaque année par les personnes physiques ou morales, les entités non dotées de la personnalité morale ou les fiduciaires »"
     },
     {
-     "t": "La <b>taxe foncière</b> est établie annuellement sur les propriétés bâties ; elle est due par le propriétaire actuel (par l'usufruitier en cas d'usufruit), pour l'année entière, d'après les faits existants au 1er janvier de l'année d'imposition. Pour l'entité propriétaire, c'est une charge du compte <code>6351</code>.",
-     "src": "CGI, art. 1380, 1400 et 1415 ; plan de comptes, compte 6351",
+     "t": "La <b>taxe foncière</b> est établie annuellement sur les propriétés bâties ; elle est due par le propriétaire actuel (par l'usufruitier en cas d'usufruit), pour l'année entière, d'après les faits existants au 1er janvier de l'année d'imposition. Pour l'entité propriétaire, c'est une charge du compte <code>6351</code>, subdivision <code>63512</code> « Taxes foncières ».",
+     "src": "CGI, art. 1380, 1400 et 1415 ; plan de comptes, comptes 6351 et 63512",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034110958",
      "fiab": "stable",
      "cite": "« Sous réserve des dispositions des articles 1403 et 1404, toute propriété, bâtie ou non bâtie, doit être imposée au nom du propriétaire actuel. »"
     },
     {
-     "t": "La rémunération des salariés est <b>mensuelle</b> et son paiement est effectué une fois par mois ; un acompte correspondant, pour une quinzaine, à la moitié de la rémunération mensuelle est versé au salarié qui en fait la demande (compte <code>425</code> « Personnel – Avances et acomptes »). Ces règles ne s'appliquent pas aux salariés travaillant à domicile, saisonniers, intermittents et temporaires.",
-     "src": "C. trav., art. L. 3242-1 ; plan de comptes, compte 425",
-     "url": null,
-     "fiab": "stable"
+     "t": "La rémunération des salariés est <b>mensuelle</b> et son paiement est effectué une fois par mois ; un acompte correspondant, pour une quinzaine, à la moitié de la rémunération mensuelle est versé au salarié qui en fait la demande (compte <code>425</code> « Personnel – Avances et acomptes et autres comptes débiteurs »). Ces règles ne s'appliquent pas aux salariés travaillant à domicile, saisonniers, intermittents et temporaires.",
+     "src": "C. trav., art. L. 3242-1 ; plan de comptes (version au 1er janvier 2026), compte 425",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006902858",
+     "fiab": "stable",
+     "cite": "« Le paiement de la rémunération est effectué une fois par mois. Un acompte correspondant, pour une quinzaine, à la moitié de la rémunération mensuelle, est versé au salarié qui en fait la demande. »"
     },
     {
-     "t": "Les <b>cotisations de sécurité sociale</b> sont calculées sur les revenus d'activité définis à l'article L. 136-1-1 : les sommes ainsi que les avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail (salaires, primes, indemnités, avantages en nature), sous réserve des exclusions prévues par la loi.",
-     "src": "CSS, art. L. 242-1 et L. 136-1-1",
-     "url": null,
-     "fiab": "stable"
+     "t": "Les <b>cotisations de sécurité sociale</b> sont calculées sur les revenus d'activité retenus pour l'assiette de la CSG (art. L. 136-1-1) : toutes les sommes ainsi que les avantages et accessoires en nature ou en argent dus en contrepartie ou à l'occasion d'un travail, d'une activité ou de l'exercice d'un mandat ou d'une fonction élective, quelles qu'en soient la dénomination et la qualité de celui qui les attribue. Les remboursements de frais professionnels, dans les conditions fixées par arrêté, ne constituent pas un revenu d'activité ; l'article L. 242-1 exclut en outre de l'assiette notamment l'intéressement et la participation.",
+     "src": "CSS, art. L. 242-1 et L. 136-1-1 (rédaction en vigueur depuis le 31 décembre 2025, loi n° 2025-1403 du 30 décembre 2025)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053282440",
+     "fiab": "stable",
+     "cite": "« Ne constituent pas un revenu d'activité les remboursements effectués au titre de frais professionnels »"
     },
     {
      "t": "<b>Écriture de paie</b> : débit <code>641</code> du salaire brut ; crédit <code>431</code> « Sécurité sociale » (cotisations salariales dues à l'URSSAF), <code>437</code> « Autres organismes sociaux » (retraite complémentaire, prévoyance), <code>4421</code> (prélèvement à la source), <code>425</code> (acomptes déjà versés) et <code>421</code> « Personnel – Rémunérations dues » (net à payer).",
@@ -260,12 +263,12 @@
     {
      "t": "Paiement du salaire : <span class=\"mono\">une fois par mois</span> ; acompte à la demande du salarié : pour une quinzaine, <span class=\"mono\">la moitié</span> de la rémunération mensuelle.",
      "src": "C. trav., art. L. 3242-1",
-     "url": null,
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006902858",
      "fiab": "stable"
     },
     {
-     "t": "Journaux auxiliaires (banque, caisse) : centralisation au livre-journal et au grand livre au moins <span class=\"mono\">une fois par mois</span>. Par dérogation, les personnes mentionnées aux articles L. 123-25 à L. 123-27 peuvent centraliser <span class=\"mono\">tous les trois mois</span>.",
-     "src": "C. com., art. R. 123-176 ; sous-section R. 123-203 à R. 123-208 (dérogation trimestrielle)",
+     "t": "Journaux auxiliaires (banque, caisse) : centralisation au livre-journal et au grand livre au moins <span class=\"mono\">une fois par mois</span>. Par dérogation, les personnes mentionnées aux articles L. 123-25 à L. 123-27 et au deuxième alinéa de l'article L. 123-16-1 peuvent centraliser <span class=\"mono\">tous les trois mois</span>.",
+     "src": "C. com., art. R. 123-176 et R. 123-204",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257957",
      "fiab": "stable"
     },
@@ -294,8 +297,8 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus la technique du <b>transfert de charges</b> (mention supprimée de l'article 512-1 par le règlement n° 2022-06) ; les remboursements de charges de personnel sont enregistrés au compte <code>649</code> « Remboursements de charges de personnel ». Le règlement n° 2025-05 du 5 décembre 2025, homologué par arrêté du 26 décembre 2025, maintient le compte 791 pour les seules opérations de concession d'aménagement.",
-     "src": "Règlement ANC n° 2022-06 ; règlement ANC n° 2025-05 ; plan de comptes (version au 1er janvier 2026), compte 649",
+     "t": "Depuis les exercices ouverts à compter du 1er janvier 2025, le PCG ne prévoit plus la technique du <b>transfert de charges</b> : le règlement n° 2022-06 retire les transferts de charges de la liste des produits de l'article 512-1 ; les remboursements de charges de personnel sont enregistrés au compte <code>649</code> « Remboursements de charges de personnel ». Le compte 791 ne subsiste, à titre d'exception, que dans le plan de comptes des organismes de logement social, pour les seules opérations de concession d'aménagement (règlement n° 2025-05 du 5 décembre 2025, homologué par arrêté du 26 décembre 2025).",
+     "src": "Règlement ANC n° 2022-06, art. 1 (PCG, art. 512-1) ; avis ANC n° 2025-01 du 12 mai 2025 ; règlement ANC n° 2025-05 (modifiant les règlements n° 2015-04 et n° 2023-03) ; plan de comptes (version au 1er janvier 2026), compte 649",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2022/R2022_06/R2022_06.pdf",
      "fiab": "stable",
      "cite": "« A l'article 512-1, les mots « • les transferts de charges ; » sont supprimés. »"
@@ -321,8 +324,8 @@
      "cite": "« En 2026, la réduction générale dégressive (RGD) et les réductions des taux des cotisations d'assurance maladie et d'allocations familiales fusionnent au bénéfice d'une réduction générale dégressive unique (RGDU). »"
     },
     {
-     "t": "Depuis le 1er septembre 2025, le taux de <b>prélèvement à la source</b> des conjoints ou partenaires de PACS soumis à imposition commune est, sauf option contraire du contribuable, individualisé ; chaque taux individualisé s'applique aux seuls revenus personnels du conjoint concerné.",
-     "src": "CGI, art. 204 E et 204 M ; BOI-IR-PAS-20-20-20",
+     "t": "Depuis le 1er septembre 2025, le taux de <b>prélèvement à la source</b> des conjoints ou partenaires de PACS soumis à imposition commune est, sauf option contraire du contribuable, individualisé ; chaque taux individualisé s'applique aux seuls revenus personnels du conjoint concerné (réforme issue de l'article 19 de la loi de finances pour 2024).",
+     "src": "Loi n° 2023-1322 du 29 décembre 2023 de finances pour 2024, art. 19 ; CGI, art. 204 E et 204 M ; BOI-IR-PAS-20-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/11256-PGP.html/identifiant=BOI-IR-PAS-20-20-20-20250507",
      "fiab": "stable"
     },
@@ -333,8 +336,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 recodifie la taxe sur la valeur ajoutée et modifie le code des impositions sur les biens et services ; Légifrance signale des articles du CGI relatifs à la TVA (par exemple art. 278 et 293 B) comme abrogés à compter du 1er janvier 2027. Les références au CGI de cette fiche (art. 261 C) sont celles en vigueur au 14 octobre 2026.",
-     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la taxe sur la valeur ajoutée au livre II du code des impositions sur les biens et services (CIBS). Son article 9 abroge l'article 261 C du CGI ; Légifrance fixe au 1er janvier 2027 l'abrogation des dispositions TVA du CGI concernées et présente l'exonération des opérations d'assurance aux articles L. 213-129 à L. 213-131 du CIBS (version au 1er janvier 2027). Les références de cette fiche (CGI, art. 260 B et 261 C) sont celles de la numérotation du CGI.",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 portant recodification de la taxe sur la valeur ajoutée et diverses modifications du code des impositions sur les biens et services, art. 9 ; CGI, art. 261 C (abrogé) ; CIBS, art. L. 213-129 à L. 213-131",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
     }
@@ -350,10 +353,11 @@
      "fiab": "stable"
     },
     {
-     "t": "Piège TVA : les intérêts et agios (octroi de crédits) et les primes d'assurance sont <b>exonérés de TVA</b> (CGI, art. 261 C, 1° et 2°) ; aucune TVA déductible n'est enregistrée. Les frais et commissions bancaires vont au compte <code>627</code> « Services bancaires et assimilés », distinct des intérêts (compte 661).",
-     "src": "CGI, art. 261 C ; plan de comptes (version au 1er janvier 2026), comptes 616, 627 et 661",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006179649/",
-     "fiab": "stable"
+     "t": "Piège TVA : les intérêts et agios (octroi de crédits), les primes d'assurance et les livraisons de timbres-poste à leur valeur officielle sont <b>exonérés de TVA</b> (CGI, art. 261 C, 1° à 3°) ; aucune TVA déductible n'est enregistrée. Les frais et commissions bancaires vont au compte <code>627</code> « Services bancaires et assimilés », distinct des intérêts (compte 661) ; ils ne supportent la TVA que si l'établissement a opté pour la taxation des opérations qu'il désigne (CGI, art. 260 B).",
+     "src": "CGI, art. 261 C et 260 B ; plan de comptes (version au 1er janvier 2026), comptes 616, 627 et 661",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041467574",
+     "fiab": "stable",
+     "cite": "« les livraisons à leur valeur officielle de timbres fiscaux et de timbres-poste ayant cours ou valeur d'affranchissement en France »"
     },
     {
      "t": "Dans un rapprochement, un chèque émis non encore débité par la banque a déjà été enregistré à son émission, sur sa pièce justificative : il figure sur l'état de rapprochement mais ne donne lieu à <b>aucune nouvelle écriture</b>. Seules les opérations connues par le relevé et absentes de la comptabilité sont enregistrées.",
@@ -365,6 +369,12 @@
      "t": "Lien DSCG : la CFE et la CVAE sont des impôts directs autres que l'impôt sur les bénéfices, enregistrés en charges d'exploitation au compte <code>6351</code> ; seul l'impôt sur les bénéfices passe par le compte <code>695</code>.",
      "src": "CGI, art. 1447 et 1586 ter ; plan de comptes (version au 1er janvier 2026), comptes 6351 et 695",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "Une amende ou une pénalité n'est pas un impôt : depuis le PCG 2025, elle est enregistrée au compte <code>6582</code> « Pénalités, amendes fiscales et pénales », subdivision du compte 658 « Pénalités et autres charges » (charges de gestion courante), et non au compte 63 ; avant 2025, elle relevait du compte <code>6712</code>.",
+     "src": "Plan de comptes (version au 1er janvier 2025), comptes 658 et 6582 ; plan de comptes 2024, compte 6712",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/Plan-de-comptes-PCG-2025.pdf",
      "fiab": "stable"
     },
     {

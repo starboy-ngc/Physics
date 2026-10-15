@@ -50,7 +50,7 @@
   },
   {
    "ref": "Plan de comptes 2026 (PCG, art. 1121-1)",
-   "objet": "Comptes 1061, 110, 119, 120, 129, 1648, 408, 4181, 4282, 4286, 4382, 4386, 444, 448, 4481, 44811, 457, 467, 468, 486, 487, 5088, 5181, 5188, 5198, 695",
+   "objet": "Comptes 1061, 110, 119, 120, 129, 1648, 408, 4181, 4282, 4286, 4382, 4386, 439, 444, 448, 4481, 44811, 44812, 4482, 457, 467, 468, 486, 487, 5088, 5181, 5188, 5198, 695",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "version": "version au 1er janvier 2026"
   },
@@ -121,8 +121,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Produit à recevoir</b> : produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture : factures à établir <code>4181</code>, produits à recevoir de l'État (compte <code>448</code> « État – Charges à payer et produits à recevoir »), produits à recevoir divers <code>467</code>.",
-     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448 et 467",
+     "t": "<b>Produit à recevoir</b> : produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture : factures à établir <code>4181</code>, produits à recevoir de l'État <code>4482</code> « État – Produits à recevoir » (subdivision du compte 448), des organismes sociaux <code>439</code> « Organismes sociaux – Produits à recevoir », produits à recevoir divers <code>467</code>.",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448, 4482, 439 et 467",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -171,8 +171,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Produits à recevoir</b> : débit de <code>4181</code> (montant TTC), de <code>467</code> ou, pour l'État, du compte <code>448</code> ; crédit du compte de produit (classe 7, hors taxes) et de <code>44587</code> « Taxes sur le chiffre d'affaires sur factures à établir ».",
-     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448, 467 et 44587",
+     "t": "<b>Produits à recevoir</b> : débit de <code>4181</code> (montant TTC), de <code>467</code>, de <code>439</code> pour les organismes sociaux ou, pour l'État, de <code>4482</code> « État – Produits à recevoir » ; crédit du compte de produit (classe 7, hors taxes) et de <code>44587</code> « Taxes sur le chiffre d'affaires sur factures à établir ».",
+     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 439, 4482, 467 et 44587",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -319,8 +319,8 @@
      "fiab": "stable"
     },
     {
-     "t": "Plan de comptes en vigueur (issu du règlement ANC n° 2022-06) : charges à payer et produits à recevoir divers en <code>468</code> « Divers comptes créditeurs et charges à payer » et <code>467</code> « Divers comptes débiteurs et produits à recevoir » (plan 2024 : 4686 et 4687) ; comptes <code>428</code> « Personnel – Charges à payer » et <code>438</code> « Organismes sociaux – Charges à payer » ; charges à payer envers l'État en <code>4481</code> « État – Charges à payer », dont <code>44811</code> « Charges fiscales sur congés à payer » (plan 2024 : 4482).",
-     "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 428, 438, 4481, 44811, 467 et 468 ; plan de comptes 2024 (PCG, art. 932-1)",
+     "t": "Plan de comptes en vigueur (issu du règlement ANC n° 2022-06) : charges à payer et produits à recevoir divers en <code>468</code> « Divers comptes créditeurs et charges à payer » et <code>467</code> « Divers comptes débiteurs et produits à recevoir » (plan 2024 : 4686 et 4687) ; comptes <code>428</code> « Personnel – Charges à payer » (plan 2024 : 4287 Produits à recevoir, supprimé) et <code>438</code> « Organismes sociaux – Charges à payer », les produits à recevoir des organismes sociaux passant au compte <code>439</code> (plan 2024 : 4387) ; charges à payer envers l'État en <code>4481</code> « État – Charges à payer », dont <code>44811</code> « Charges fiscales sur congés à payer » (plan 2024 : 4482) et <code>44812</code> « Charges à payer » (plan 2024 : 4486) ; produits à recevoir de l'État en <code>4482</code> « État – Produits à recevoir » (plan 2024 : 4487).",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 428, 438, 439, 4481, 44811, 44812, 4482, 467 et 468 ; plan de comptes 2024 (PCG, art. 932-1)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },

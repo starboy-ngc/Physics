@@ -78,7 +78,7 @@
   },
   {
    "h": "Mise au rebut, sinistre et immobilisations incorporelles",
-   "html": "<p><b>Mise au rebut</b> : le bien est détruit ou abandonné sans contrepartie. On passe la dotation complémentaire, puis la sortie (débit 28xx, débit 657 pour la VNC, crédit 2xx). Aucun produit : la VNC est entièrement perdue. <b>Sinistre</b> : même sortie, et l'indemnité versée par l'assureur est un produit en <code>7587</code> Indemnités d'assurance (avant 2025 : transfert de charges 791, supprimé).</p><p><b>Immobilisations incorporelles</b> (compte 20) : <code>205</code> logiciels et <b>brevets</b> acquis (amortissables sur leur durée d'utilité, souvent 1 à 5 ans pour un logiciel), <code>207</code> <b>fonds commercial</b> (présumé à durée d'utilité non limitée, donc non amorti mais soumis chaque année à un test de dépréciation ; les petites entreprises peuvent l'amortir sur 10 ans), <code>201</code> frais d'établissement (option). Leur amortissement passe par <code>6811</code> et <code>280x</code>, et leur cession par 657/757 comme pour les corporelles.</p><p>Un logiciel <b>créé</b> en interne pour les besoins de l'entreprise peut être immobilisé à son coût de production via <code>721</code> Production immobilisée, immobilisations incorporelles, sous conditions strictes étudiées en UE10 (PCG, art. 611-1 et s.).</p>"
+   "html": "<p><b>Mise au rebut</b> : le bien est détruit ou abandonné sans contrepartie. On passe la dotation complémentaire, puis la sortie (débit 28xx, débit 657 pour la VNC, crédit 2xx). Aucun produit : la VNC est entièrement perdue. <b>Sinistre</b> : même sortie, et l'indemnité versée par l'assureur est un produit en <code>7587</code> Indemnités d'assurance (et non plus en transfert de charges, technique supprimée par le règlement ANC n° 2022-06).</p><p><b>Immobilisations incorporelles</b> (compte 20) : <code>205</code> solutions informatiques (logiciels) et <b>brevets</b> acquis (amortissables sur leur durée d'utilité, souvent 1 à 5 ans pour un logiciel), <code>207</code> <b>fonds commercial</b> (présumé à durée d'utilité non limitée, donc non amorti mais soumis chaque année à un test de dépréciation ; les petites entreprises peuvent l'amortir sur 10 ans), <code>201</code> frais d'établissement (option). Leur amortissement passe par <code>6811</code> et <code>280x</code>, et leur cession par 657/757 comme pour les corporelles.</p><p>Un logiciel <b>créé</b> en interne pour les besoins de l'entreprise peut être immobilisé à son coût de production via <code>721</code> Production immobilisée, immobilisations incorporelles, sous conditions strictes étudiées en UE10 (PCG, art. 611-1 et s.).</p>"
   },
   {
    "h": "Immobilisations financières de base",
@@ -446,7 +446,7 @@
     2
    ],
    "why": "Le dégressif (CGI, art. 39 A) s'applique sur la VNC, aux biens neufs d'au moins 3 ans figurant sur la liste de l'article 22 de l'annexe II, avec les coefficients 1,25 / 1,75 / 2,25. Les véhicules de tourisme en sont exclus, et le prorata court depuis le premier jour du mois d'acquisition, à la différence du linéaire qui part de la mise en service.",
-   "src": "CGI, art. 39 A ; ann. II, art. 22",
+   "src": "CGI, art. 39 A ; ann. II, art. 22 ; BOI-BIC-AMT-20-20-20-10",
    "fiab": "stable"
   },
   {
@@ -510,7 +510,7 @@
     2,
     4
    ],
-   "why": "L'amortissement suppose une durée d'utilité déterminable. Le terrain a une durée illimitée, les titres de participation ne se consomment pas (ils se déprécient le cas échéant) et le fonds commercial est présumé à durée non limitée (PCG, art. 214-3, sauf option des petites entreprises sur 10 ans). Logiciel et construction ont une durée d'utilité et s'amortissent.",
+   "why": "L'amortissement suppose une durée d'utilisation limitée (PCG, art. 214-1). Le terrain a une durée illimitée, les titres de participation ne se consomment pas (ils se déprécient le cas échéant) et le fonds commercial est présumé à durée non limitée (PCG, art. 214-3, sauf option des petites entreprises sur 10 ans). Logiciel et construction ont une durée d'utilité et s'amortissent.",
    "src": "PCG, art. 214-1 et 214-3",
    "fiab": "stable"
   },

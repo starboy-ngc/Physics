@@ -1,6 +1,6 @@
 {
  "id": "ue9-06",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE9 Comptabilité), BO ESR n° 32 du 28 août 2025 (session 2027) ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -55,16 +55,16 @@
    "version": "en vigueur (version consultée au 25 février 2026)"
   },
   {
-   "ref": "PCG (règlement ANC n° 2014-03), art. 211-7, 213-30 à 213-34 et 214-5",
-   "objet": "Définition du stock ; coût d'entrée des stocks ; méthodes de sortie des articles interchangeables ; définition de la dépréciation",
+   "ref": "PCG (règlement ANC n° 2014-03), art. 211-7, 213-30 à 213-35, 214-5 et 214-6",
+   "objet": "Définition du stock ; coût d'entrée des stocks (pertes et gaspillages exclus) ; méthodes de sortie des articles interchangeables ; définition de la dépréciation ; valeur actuelle",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "version": "version consolidée au 1er janvier 2026"
   },
   {
-   "ref": "PCG, art. 321-1 et suivants (titre III : passifs)",
-   "objet": "Passif, dette, provision ; obligation à l'égard d'un tiers ; révision des provisions à chaque clôture",
+   "ref": "PCG, art. 321-1, 321-4, 321-5, 322-1, 322-2, 322-4, 323-2, 323-3 et 323-10 (titre III : passifs)",
+   "objet": "Passif, dette, provision ; conditions de comptabilisation ; passif dont le montant ne peut être évalué avec une fiabilité suffisante (annexe) ; meilleure estimation ; révision à chaque date d'établissement des comptes",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-   "version": "version consolidée au 1er janvier 2026"
+   "version": "version consolidée au 1er janvier 2026 (art. 322-1 restitué dans la version au 1er janvier 2024 ; art. 323-10 dans les versions 2025 et 2026)"
   },
   {
    "ref": "PCG, art. 512-1, 513-4 et 513-5",
@@ -79,10 +79,10 @@
    "version": "version au 1er janvier 2026 (règlement ANC n° 2014-03 modifié, notamment par le règlement n° 2022-06)"
   },
   {
-   "ref": "CGI, art. 272, 1 et art. 278",
-   "objet": "Imputation ou remboursement de la TVA sur créances devenues définitivement irrécouvrables ; taux normal de 20 %",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026950057",
-   "version": "applicables en 2026 (art. 278 en vigueur depuis le 1er janvier 2014 ; TVA recodifiée par l'ordonnance n° 2025-1247 du 17 décembre 2025 à compter du 1er janvier 2027)"
+   "ref": "CGI, art. 272",
+   "objet": "Imputation ou remboursement de la TVA perçue sur des ventes ou services résiliés, annulés ou dont la créance est devenue définitivement irrécouvrable ; dès le jugement de liquidation judiciaire",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031817248",
+   "version": "applicable jusqu'au 31 décembre 2026 ; abrogé à compter du 1er janvier 2027 par l'ordonnance n° 2025-1247 du 17 décembre 2025 (TVA recodifiée dans le code des impositions sur les biens et services)"
   },
   {
    "ref": "Règlement ANC n° 2022-06 du 4 novembre 2022",
@@ -97,10 +97,10 @@
    "version": "homologué par arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027, application anticipée possible"
   },
   {
-   "ref": "Ordonnance n° 2025-1247 du 17 décembre 2025",
-   "objet": "Recodification de la TVA dans le code des impositions sur les biens et services",
-   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
-   "version": "publiée au JO ; articles TVA du CGI applicables jusqu'au 1er janvier 2027"
+   "ref": "CGI, art. 278",
+   "objet": "Taux normal de TVA : 20 %",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026950057",
+   "version": "en vigueur depuis le 1er janvier 2014, applicable jusqu'au 1er janvier 2027 (ordonnance n° 2025-1247 du 17 décembre 2025)"
   }
  ],
  "sections": [
@@ -109,8 +109,9 @@
    "items": [
     {
      "t": "<b>Stock</b> : actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures.",
+     "cite": "« Un stock est un actif détenu pour être vendu dans le cours normal de l'activité, ou en cours de production pour une telle vente, ou destiné à être consommé dans le processus de production ou de prestation de services, sous forme de matières premières ou de fournitures. »",
      "src": "PCG, art. 211-7",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -121,9 +122,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Passif</b> : élément du patrimoine ayant une valeur économique négative pour l'entité, c'est-à-dire une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci. <b>Provision</b> : passif dont l'échéance ou le montant n'est pas fixé de façon précise ; <b>dette</b> : passif certain dont l'échéance et le montant sont fixés de façon précise.",
+     "t": "<b>Passif</b> : élément du patrimoine ayant une valeur économique négative pour l'entité, c'est-à-dire une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci ; l'obligation peut être légale, réglementaire ou contractuelle, ou découler des pratiques passées de l'entité. <b>Dette</b> : passif certain dont l'échéance et le montant sont fixés de façon précise ; <b>provision</b> : passif dont l'échéance ou le montant n'est pas fixé de façon précise.",
      "cite": "« Un passif est un élément du patrimoine ayant une valeur économique négative pour l'entité »",
-     "src": "PCG, art. 321-1 et suivants (provision : art. 321-5)",
+     "src": "PCG, art. 321-1 (passif), 321-4 (dette) et 321-5 (provision)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
@@ -135,9 +136,9 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Valeur actuelle</b> : valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise. La <b>valeur d'inventaire</b> est égale à la valeur actuelle ; c'est elle qu'on compare, à la clôture, au coût d'entrée d'un stock ou d'un titre.",
+     "t": "<b>Valeur actuelle</b> : valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise ; pour le PCG, c'est la plus élevée de la valeur vénale (montant qui pourrait être obtenu de la vente de l'actif à la clôture, net des coûts de sortie) et de la valeur d'usage. La <b>valeur d'inventaire</b> est égale à la valeur actuelle ; c'est elle qu'on compare, à la clôture, au coût d'entrée d'un stock ou d'un titre.",
      "cite": "« La valeur actuelle est une valeur d'estimation qui s'apprécie en fonction du marché et de l'utilité du bien pour l'entreprise »",
-     "src": "C. com., art. R. 123-178, 4° et 5°",
+     "src": "C. com., art. R. 123-178, 4° et 5° ; PCG, art. 214-6",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006257973",
      "fiab": "stable"
     },
@@ -187,7 +188,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Coût d'entrée des stocks</b> : coût d'acquisition pour les biens achetés, coût de production pour les biens produits. Le coût d'acquisition est égal au prix d'achat majoré des frais accessoires ; pour un stock, il comprend les droits de douane et taxes non récupérables, sous déduction des remises, rabais et escomptes de règlement, ainsi que le transport, la manutention et les autres coûts directement attribuables.",
+     "t": "<b>Coût d'entrée des stocks</b> : coût d'acquisition pour les biens achetés, coût de production pour les biens produits. Le coût des stocks comprend les coûts d'acquisition, de transformation et les autres coûts engagés pour amener les stocks à l'endroit et dans l'état où ils se trouvent ; les pertes et gaspillages en sont exclus. Le coût d'acquisition comprend le prix d'achat, y compris les droits de douane et autres taxes non récupérables, après déduction des rabais commerciaux, remises et escomptes de règlement, ainsi que les frais de transport, de manutention et autres coûts directement attribuables à l'acquisition.",
      "cite": "« A leur date d'entrée dans le patrimoine de l'entreprise, les biens acquis à titre onéreux sont enregistrés à leur coût d'acquisition, les biens acquis à titre gratuit à leur valeur vénale et les biens produits à leur coût de production. »",
      "src": "C. com., art. L. 123-18 et R. 123-178, 1° ; PCG, art. 213-30 et 213-31",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
@@ -196,7 +197,7 @@
     {
      "t": "Les <b>biens fongibles</b> sont évalués soit au coût moyen pondéré d'acquisition ou de production, soit selon la méthode « premier entré, premier sorti » (PEPS). Pour les articles interchangeables, le coût moyen pondéré est calculé à chaque entrée ou sur une période n'excédant pas la durée moyenne de stockage ; la même méthode s'applique aux stocks de nature et d'usage similaires.",
      "cite": "« Les biens fongibles sont évalués soit à leur coût moyen pondéré d'acquisition ou de production, soit en considérant que le premier bien sorti est le premier bien entré. »",
-     "src": "C. com., art. L. 123-18 ; PCG, art. 213-34",
+     "src": "C. com., art. L. 123-18 ; PCG, art. 213-34 et 213-35",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219310",
      "fiab": "stable"
     },
@@ -207,27 +208,42 @@
      "fiab": "stable"
     },
     {
+     "t": "Pour juger d'une éventuelle dépréciation des stocks, on prend en considération le <b>prix et les perspectives de vente</b> : le coût d'entrée est comparé à la valeur actuelle, c'est-à-dire, pour un stock destiné à la vente, au prix de vente probable net des coûts de sortie. Sur le plan fiscal, la dépréciation est admise lorsque le prix de revient des stocks dépasse leur valeur de marché.",
+     "cite": "« lorsque le prix de revient des stocks inscrits à l'actif est considéré comme supérieur à leur valeur de marché en tenant compte du prix et des perspectives de vente »",
+     "src": "PCG, art. 214-6 et règles d'évaluation des stocks à la clôture ; BOI-BIC-PDSTK-20-20-10-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/1491-PGP.html/identifiant=BOI-BIC-PDSTK-20-20-10-20-20130923",
+     "fiab": "stable"
+    },
+    {
      "t": "<b>Clients douteux</b> : la créance est virée de <code>411</code> à <code>416</code> « Clients douteux ou litigieux » pour son montant TTC ; la dépréciation (<code>68174</code> / <code>491</code>) porte sur la perte probable, mesurée <b>hors taxes</b> puisque la TVA collectée sur une créance devenue irrécouvrable est récupérable.",
-     "src": "Plan de comptes 2026, comptes 416, 491 et 68174 ; PCG, art. 214-5 ; CGI, art. 272, 1",
+     "src": "Plan de comptes 2026, comptes 416, 491 et 68174 ; PCG, art. 214-5 ; CGI, art. 272",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Créance irrécouvrable</b> : la perte définitive est portée en <code>654</code> « Pertes sur créances irrécouvrables » pour le montant hors taxes, la TVA récupérée au débit de <code>44571</code>, le compte <code>416</code> (ou <code>411</code>) crédité du TTC ; la dépréciation devenue sans objet est reprise (<code>491</code> / <code>78174</code>).",
-     "src": "Plan de comptes 2026, comptes 416, 44571, 491, 654 et 78174 ; CGI, art. 272, 1",
+     "t": "<b>Créance irrécouvrable</b> : la perte définitive est portée en <code>654</code> « Pertes sur créances irrécouvrables » (<code>6541</code> créances de l'exercice, <code>6544</code> créances des exercices antérieurs) pour le montant hors taxes, la TVA récupérée au débit de <code>44571</code>, le compte <code>416</code> (ou <code>411</code>) crédité du TTC ; la dépréciation devenue sans objet est reprise (<code>491</code> / <code>78174</code>).",
+     "src": "Plan de comptes 2026, comptes 416, 44571, 491, 654 et 78174 ; CGI, art. 272",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "La TVA perçue à l'occasion de ventes ou de services est imputée ou remboursée lorsque ces opérations sont résiliées ou annulées, ou lorsque les créances correspondantes sont devenues définitivement irrécouvrables ; la récupération suppose la rectification préalable de la facture initiale.",
-     "src": "CGI, art. 272, 1",
-     "url": null,
+     "t": "La TVA perçue à l'occasion de ventes ou de services est imputée ou remboursée lorsque ces opérations sont résiliées ou annulées, ou lorsque les créances correspondantes sont devenues définitivement irrécouvrables ; en cas de liquidation judiciaire, l'imputation ou le remboursement peuvent intervenir dès la date du jugement qui la prononce. La récupération est subordonnée à la rectification préalable de la facture initiale.",
+     "cite": "« La taxe sur la valeur ajoutée qui a été perçue à l'occasion de ventes ou de services est imputée ou remboursée dans les conditions prévues à l'article 271 »",
+     "src": "CGI, art. 272 (applicable jusqu'au 31 décembre 2026) ; BOI-TVA-DED-40-10-20",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031817248",
      "fiab": "stable"
     },
     {
      "t": "<b>Titres</b> : à la clôture, chaque ligne de titres est comparée à sa valeur d'inventaire ; la moins-value latente est dépréciée (<code>6866</code> / <code>296</code> ou <code>297</code> pour les titres immobilisés, <code>6866</code> / <code>590</code> pour les valeurs mobilières de placement ; reprise par <code>7866</code>), la plus-value latente n'est pas comptabilisée.",
      "src": "C. com., art. L. 123-18 et L. 123-19 ; plan de comptes 2026, comptes 296, 297, 590, 6866 et 7866",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Valeur d'inventaire des titres</b> : les titres de participation sont évalués à leur valeur d'utilité (rentabilité, capitaux propres, perspectives, conjoncture, cours moyens de bourse du dernier mois…) ; les autres titres immobilisés cotés, hors TIAP, au cours moyen du dernier mois, et ceux qui ne sont pas cotés à leur valeur probable de négociation. Les valeurs mobilières de placement sont évaluées dans les mêmes conditions que ces titres immobilisés (cours moyen du dernier mois pour les titres cotés).",
+     "cite": "« L'évaluation des titres de placement est effectuée dans les mêmes conditions que celles prévues aux articles 221-1, 221-2, 221-6 et 221-7 pour les titres immobilisés. »",
+     "src": "PCG, art. 221-3, 221-6 et 222-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -238,10 +254,10 @@
      "fiab": "stable"
     },
     {
-     "t": "Une <b>provision</b> n'est constituée que si l'entité a, à la clôture, une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers, sans contrepartie au moins équivalente attendue de celui-ci. L'obligation peut être légale, réglementaire ou contractuelle, ou découler des pratiques passées de l'entité.",
-     "cite": "« Cette obligation peut être d'ordre légal, réglementaire ou contractuel. Elle peut également découler des pratiques passées de l'entité »",
-     "src": "PCG, art. 321-1 et suivants",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "t": "<b>Comptabilisation d'une provision</b> : un passif est comptabilisé lorsque l'entité a, à la clôture, une obligation à l'égard d'un tiers dont il est probable ou certain qu'elle provoquera une sortie de ressources au bénéfice de ce tiers sans contrepartie au moins équivalente attendue de celui-ci. Dans le cas exceptionnel où son montant ne peut être évalué avec une fiabilité suffisante, aucun passif n'est comptabilisé : l'annexe décrit la nature du passif et les incertitudes sur le montant ou l'échéance.",
+     "cite": "« À l'exception des cas prévus aux articles 322-4 et 322-13, un passif est comptabilisé lorsque l'entité a une obligation à l'égard d'un tiers »",
+     "src": "PCG, art. 322-1, 322-2 et 322-4 ; règlement ANC n° 2022-06 (informations en annexe)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -257,10 +273,17 @@
      "fiab": "stable"
     },
     {
+     "t": "<b>Évaluation d'une provision</b> : elle est évaluée à la meilleure estimation de la sortie de ressources nécessaire pour éteindre l'obligation. Pour un grand nombre d'obligations similaires (garanties données sur des produits, par exemple), la probabilité d'une sortie de ressources s'apprécie sur l'ensemble de ces obligations ; pour une obligation unique, le montant retenu est en général celui de l'hypothèse la plus probable.",
+     "cite": "« Les provisions sont évaluées au montant représentant la meilleure estimation de la sortie de ressources nécessaire à l'extinction de l'obligation »",
+     "src": "PCG, art. 323-2 et 323-3 et règles de comptabilisation des passifs (titre III) ; ANC, note sur les liens entre états financiers et durabilité (février 2025)",
+     "url": "https://www.anc.gouv.fr/files/anc/files/4_Durabilit%C3%A9/Ressources%20P%C3%A9dagogiques/Liens-entre-les-etats-financiers-et-de-durabilite-sur-le-climat---Contribution-de-l-ANC-a-la-reflexion---202502.pdf",
+     "fiab": "stable"
+    },
+    {
      "t": "Les provisions sont revues à chaque clôture et ajustées à la meilleure estimation : dotation complémentaire si le besoin augmente, reprise s'il diminue ou disparaît. La reprise est un produit de l'exercice (comptes 78).",
      "cite": "« Les provisions sont revues à chaque date d'établissement des comptes et ajustées pour refléter la meilleure estimation à cette date. »",
-     "src": "PCG, art. 321-1 et suivants et 512-1",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "src": "PCG, art. 323-10 et 512-1",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     }
    ]
@@ -287,6 +310,13 @@
      "src": "CGI, art. 278",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026950057",
      "fiab": "millésimé 2026"
+    },
+    {
+     "t": "Restitution de la TVA sur créance irrécouvrable : la demande est présentée au plus tard le <span class=\"mono\">31 décembre de la deuxième année</span> qui suit celle de la résiliation, de l'annulation ou de l'irrécouvrabilité de la créance.",
+     "cite": "« avant le 31 décembre de la deuxième année qui suit celle au cours de laquelle se situe la résiliation ou l'annulation des opérations ou l'irrecouvrabilité de la créance »",
+     "src": "BOI-TVA-DED-40-10-20 ; CGI, art. 272",
+     "url": "https://bofip.impots.gouv.fr/bofip/1100-PGP.html/identifiant=BOI-TVA-DED-40-10-20-20170405",
+     "fiab": "stable"
     }
    ]
   },
@@ -307,8 +337,8 @@
      "fiab": "stable"
     },
     {
-     "t": "Le compte <code>6714</code> « Créances devenues irrécouvrables dans l'exercice », subdivision des charges exceptionnelles sur opérations de gestion, a disparu avec le PCG 2025 : toute perte sur créance irrécouvrable est enregistrée en <code>654</code>.",
-     "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026, compte 654",
+     "t": "Le compte <code>6714</code> « Créances devenues irrécouvrables dans l'exercice », subdivision des charges exceptionnelles sur opérations de gestion dans le plan de comptes 2024, ne figure plus au plan de comptes depuis le PCG 2025 : toute perte sur créance irrécouvrable est enregistrée en <code>654</code> (<code>6541</code> créances de l'exercice, <code>6544</code> créances des exercices antérieurs).",
+     "src": "Règlement ANC n° 2022-06 ; plans de comptes 2024 et 2026, comptes 6714 et 654",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -320,8 +350,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la TVA dans le code des impositions sur les biens et services ; Légifrance présente les articles TVA du CGI (par exemple l'art. 278) comme applicables jusqu'au 1er janvier 2027. Les articles 272 et 278 cités dans cette fiche sont ceux applicables en 2026.",
-     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025",
+     "t": "<b>Recodification de la TVA</b> : l'ordonnance n° 2025-1247 du 17 décembre 2025 transfère la TVA dans le code des impositions sur les biens et services ; l'art. 272 du CGI (TVA sur créances irrécouvrables) est abrogé à compter du 1er janvier 2027. Le BOFiP précise que les références aux anciennes dispositions du CGI s'entendent des dispositions du code des impositions sur les biens et services qui les reprennent. Les articles 272 et 278 cités dans cette fiche sont ceux applicables en 2026.",
+     "src": "Ordonnance n° 2025-1247 du 17 décembre 2025 ; CGI, art. 272 ; BOI-RES-TVA-000253",
      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053091516",
      "fiab": "stable"
     }
@@ -331,15 +361,17 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "La dépréciation d'une créance douteuse se calcule sur le <b>hors taxes</b>, car la TVA sera récupérée si la créance est perdue, alors que le compte 416 est mouvementé pour le TTC. Déprécier le TTC est une erreur classique.",
-     "src": "Plan de comptes 2026, comptes 416 et 491 ; CGI, art. 272, 1",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
+     "t": "La dépréciation d'une créance douteuse se calcule sur le <b>hors taxes</b>, alors que le compte 416 est mouvementé pour le TTC : déprécier le TTC est une erreur classique. La TVA collectée n'est pas récupérée au stade de la dépréciation : elle ne l'est qu'une fois la créance devenue définitivement irrécouvrable, ce que le fournisseur doit pouvoir démontrer.",
+     "cite": "« L'imputation ou la restitution de la taxe ne peut être obtenue que si le fournisseur ou le prestataire est en mesure de démontrer que sa créance est définitivement irrécouvrable. »",
+     "src": "Plan de comptes 2026, comptes 416 et 491 ; CGI, art. 272 ; BOI-TVA-DED-40-10-20",
+     "url": "https://bofip.impots.gouv.fr/bofip/1100-PGP.html/identifiant=BOI-TVA-DED-40-10-20-20170405",
      "fiab": "stable"
     },
     {
      "t": "Ne pas confondre <b>dépréciation</b>, qui corrige la valeur d'un actif (comptes 29, 39, 49, 59), et <b>provision</b>, qui est un passif (compte 15).",
-     "src": "PCG, art. 214-5 et 321-1 et suivants ; plan de comptes 2026",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
+     "cite": "« La dépréciation d'un actif est la constatation que sa valeur actuelle est devenue inférieure à sa valeur nette comptable. »",
+     "src": "PCG, art. 214-5, 321-1 et 321-5 ; plan de comptes 2026",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {

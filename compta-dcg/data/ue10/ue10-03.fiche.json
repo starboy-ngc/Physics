@@ -1,6 +1,6 @@
 {
  "id": "ue10-03",
- "maj": "2026-10-14",
+ "maj": "2026-10-15",
  "programme": {
   "ref": "Arrêté du 4 août 2025, annexe 1 (programme des unités d'enseignement du DCG, UE10 Comptabilité approfondie), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026 ; intitulés « Cadre conceptuel » et « Rattachement des charges et des produits au résultat de l'exercice » repris du programme de l'UE 10 publié au BO n° 13 du 27 mars 2014",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
@@ -36,16 +36,22 @@
    "version": "exercices ouverts à compter du 1er janvier 2025"
   },
   {
+   "ref": "Règlement ANC n° 2026-03 du 6 mars 2026",
+   "objet": "Comptabilisation des produits des ventes (produits des ventes de biens et de services, cessions d'immobilisations) ; compte 6454",
+   "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+   "version": "homologué par l'arrêté du 12 août 2026 ; exercices ouverts à compter du 1er janvier 2027, application anticipée possible"
+  },
+  {
    "ref": "CGI, art. 39 A ; CGI, ann. II, art. 22",
    "objet": "Amortissement dégressif : champ, coefficients, biens exclus",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037987291",
    "version": "en vigueur"
   },
   {
-   "ref": "CGI, art. 39 B",
-   "objet": "Amortissement minimal linéaire ; perte du droit de déduire les amortissements différés",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302320/1995-10-27",
-   "version": "en vigueur (rédaction du 27 octobre 1995)"
+   "ref": "CGI, art. 39 B ; BOI-BIC-AMT-10-50-30",
+   "objet": "Amortissement minimal linéaire ; perte du droit de déduire les amortissements différés ; appréciation de l'obligation (BOFiP du 2 août 2017)",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302321",
+   "version": "en vigueur"
   },
   {
    "ref": "CGI, art. 39, 1-2°",
@@ -54,8 +60,8 @@
    "version": "en vigueur (dérogation prorogée par la loi n° 2026-103 du 19 février 2026, art. 13)"
   },
   {
-   "ref": "Loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 13 ; BOI-ACTU-2026-00042",
-   "objet": "Prorogation du dispositif temporaire de déductibilité de l'amortissement des fonds commerciaux",
+   "ref": "Loi n° 2026-103 du 19 février 2026 de finances pour 2026, art. 13 ; loi n° 2021-1900 du 30 décembre 2021, art. 23 ; BOI-ACTU-2026-00042",
+   "objet": "Prorogation (fonds acquis jusqu'au 31 décembre 2029) du dispositif temporaire de déductibilité de l'amortissement des fonds commerciaux institué par la loi de finances pour 2022 (fonds acquis du 1er janvier 2022 au 31 décembre 2025)",
    "url": "https://bofip.impots.gouv.fr/bofip/14980-PGP.html/ACTU-2026-00042",
    "version": "actualité BOFiP 2026"
   },
@@ -70,12 +76,6 @@
    "objet": "Amortissement dégressif : biens concernés, point de départ, taux, passage au linéaire",
    "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
    "version": "BOFiP du 12 septembre 2012"
-  },
-  {
-   "ref": "BOI-BIC-AMT-10-50-30",
-   "objet": "Obligation de constater un amortissement minimal (art. 39 B)",
-   "url": "https://bofip.impots.gouv.fr/bofip/4711-PGP.html/identifiant=BOI-BIC-AMT-10-50-30-20170802",
-   "version": "BOFiP du 2 août 2017"
   },
   {
    "ref": "CGI, art. 39 duodecies ; BOI-BIC-PVMV-20-10",
@@ -93,7 +93,7 @@
    "ref": "C. com., art. R. 123-195 ; CMF, art. R. 313-14",
    "objet": "Contenu de l'annexe ; information sur le crédit-bail",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927471",
-   "version": "R. 123-195 en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015) ; R. 313-14 en vigueur"
+   "version": "R. 123-195 en vigueur depuis le 1er janvier 2016 (décret n° 2015-903 du 23 juillet 2015) ; R. 313-14 en vigueur (paragraphe « Publicité comptable des opérations de crédit-bail »)"
   },
   {
    "ref": "C. com., art. L. 123-16 et D. 123-200",
@@ -184,7 +184,7 @@
      "t": "<b>Amortissement minimal</b> : à la clôture de chaque exercice, la somme des amortissements effectivement pratiqués depuis l'acquisition ou la création d'un élément ne peut être inférieure au montant cumulé des amortissements calculés suivant le mode linéaire et répartis sur la durée normale d'utilisation ; à défaut, l'entreprise perd définitivement le droit de déduire la fraction des amortissements ainsi différée.",
      "cite": "« À la clôture de chaque exercice, la somme des amortissements effectivement pratiqués depuis l'acquisition ou la création d'un élément donné ne peut être inférieure au montant cumulé des amortissements calculés suivant le mode linéaire et répartis sur la durée normale d'utilisation. »",
      "src": "CGI, art. 39 B",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302320/1995-10-27",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006302321",
      "fiab": "stable"
     },
     {
@@ -206,7 +206,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Effet de la dépréciation</b> : pour un actif amortissable, la comptabilisation d'une dépréciation modifie de manière prospective sa base amortissable. Les dépréciations sont reprises lorsque les raisons qui les ont motivées ont cessé d'exister, à l'exception de celles des fonds commerciaux, qui ne sont jamais reprises, même si la valeur actuelle redevient supérieure à la valeur nette comptable.",
+     "t": "<b>Effet de la dépréciation</b> : pour un actif amortissable, la comptabilisation d'une dépréciation modifie de manière prospective sa base amortissable. Les dépréciations sont rapportées au résultat quand les raisons qui les ont motivées ont cessé d'exister, à l'exception de celles des fonds commerciaux, qui ne sont jamais reprises, même si la valeur actuelle redevient supérieure à la valeur nette comptable.",
+     "cite": "« Les dépréciations sont rapportées au résultat quand les raisons qui les ont motivées ont cessé d'exister. Par exception, les dépréciations comptabilisées sur le fonds commercial ne sont jamais reprises. »",
      "src": "PCG, art. 214-17 et 214-19",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
@@ -253,10 +254,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Crédit-bail et annexe</b> : outre les informations prévues par le Code de commerce, l'annexe comporte celles de l'article R. 313-14 du Code monétaire et financier. Ce texte impose notamment, en distinguant crédit-bail mobilier et immobilier, de faire apparaître distinctement les loyers au compte de résultat et d'évaluer dans l'annexe le montant total des redevances restant à supporter ; cette règle vise les autres personnes morales et les commerçants personnes physiques, les sociétés commerciales relevant d'une obligation d'information distincte.",
+     "t": "<b>Crédit-bail et annexe</b> : outre les informations prévues par le Code de commerce, l'annexe comporte celles de l'article R. 313-14 du Code monétaire et financier. Les sociétés commerciales y indiquent, pour les biens pris en crédit-bail, la valeur des biens au moment de la signature du contrat, le montant des redevances de l'exercice et leur cumul, les dotations aux amortissements qui auraient été enregistrées si les biens avaient été acquis, ainsi que l'évaluation à la clôture des redevances restant dues et du prix d'achat résiduel, ventilée par échéance (un an au plus, plus d'un an et cinq ans au plus, plus de cinq ans). Les autres personnes morales et les commerçants personnes physiques, en distinguant crédit-bail mobilier et immobilier, font apparaître distinctement les loyers au compte de résultat et évaluent dans l'annexe le montant total des redevances restant à supporter.",
      "cite": "« Evaluer dans l'annexe et à la date de clôture du bilan le montant total des redevances leur restant à supporter en exécution des obligations stipulées dans un ou plusieurs contrats de crédit-bail. »",
      "src": "C. com., art. R. 123-195 ; CMF, art. R. 313-14",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006684083",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072026/LEGISCTA000006194113/",
      "fiab": "stable"
     }
    ]
@@ -316,15 +317,16 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Loi de finances pour 2022</b> (loi n° 2021-1900 du 30 décembre 2021, art. 23) : déductibilité temporaire des amortissements des fonds commerciaux acquis à compter du 1er janvier 2022, initialement jusqu'au 31 décembre 2025, pour les acquisitions à titre onéreux comme pour les fonds reçus lors d'un apport ou d'une fusion.",
-     "src": "Loi n° 2021-1900 du 30 décembre 2021, art. 23 ; BOI-BIC-AMT-10-20",
-     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000044637674",
+     "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b> (homologué par l'arrêté du 12 août 2026) : modifie le PCG au sujet de la comptabilisation des produits des ventes, avec une section consacrée aux produits des ventes de biens et de services et aux cessions d'immobilisations ; il s'applique aux exercices ouverts à compter du 1er janvier 2027, une application anticipée étant possible. Les exercices 2025 et 2026 restent régis par le PCG issu du règlement n° 2022-06.",
+     "cite": "« Le Collège de l'ANC a adopté le 6 mars 2026 un règlement modifiant le règlement ANC N° 2014-03 relatif au plan comptable général au sujet de la comptabilisation des produits des ventes. »",
+     "src": "Règlement ANC n° 2026-03 du 6 mars 2026 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04",
+     "url": "https://www.anc.gouv.fr/reglement-anc-ndeg2026-03-du-6-mars-2026",
      "fiab": "stable"
     },
     {
-     "t": "<b>Loi de finances pour 2026</b> (loi n° 2026-103 du 19 février 2026, art. 13) : proroge de quatre ans le dispositif temporaire ; l'amortissement des fonds commerciaux acquis jusqu'au 31 décembre 2029 est déductible. Le BOFiP a été mis à jour le 5 août 2026.",
-     "cite": "« Prorogation du dispositif temporaire de déductibilité de l’amortissement constaté au titre des fonds commerciaux »",
-     "src": "Loi n° 2026-103 du 19 février 2026, art. 13 ; BOI-ACTU-2026-00042 ; BOI-BIC-AMT-10-10 (5 août 2026)",
+     "t": "<b>Loi de finances pour 2026</b> (loi n° 2026-103 du 19 février 2026, art. 13) : proroge de quatre ans le dispositif temporaire institué par la loi de finances pour 2022 (loi n° 2021-1900, art. 23), qui visait les fonds commerciaux acquis du 1er janvier 2022 au 31 décembre 2025 ; l'amortissement des fonds acquis jusqu'au 31 décembre 2029 est déductible. Le BOFiP a été mis à jour le 5 août 2026.",
+     "cite": "« L'article 13 de la loi n° 2026-103 du 19 février 2026 de finances pour 2026 proroge, pour une durée de quatre ans, la déductibilité des amortissements des fonds commerciaux du résultat imposable. »",
+     "src": "Loi n° 2026-103 du 19 février 2026, art. 13 ; loi n° 2021-1900 du 30 décembre 2021, art. 23 ; BOI-ACTU-2026-00042 ; BOI-BIC-AMT-10-10 et BOI-BIC-AMT-10-20 (5 août 2026)",
      "url": "https://bofip.impots.gouv.fr/bofip/14980-PGP.html/ACTU-2026-00042",
      "fiab": "millésimé 2026"
     },
@@ -346,7 +348,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Point de départ</b> : la première annuité dégressive court du premier jour du mois d'acquisition (prorata en mois), alors que l'amortissement linéaire part en principe de la mise en service ; une mise en service postérieure à l'acquisition crée un écart entre les deux plans.",
+     "t": "<b>Point de départ</b> : la première annuité dégressive court du premier jour du mois d'acquisition (prorata en mois), alors que l'amortissement linéaire part en principe de la mise en service ; une mise en service postérieure à l'acquisition crée un écart entre les deux plans. Pour un bien acheté, la date d'acquisition est celle de l'accord sur la chose et le prix, même si la livraison et le paiement interviennent plus tard.",
      "src": "BOI-BIC-AMT-20-20-30",
      "url": "https://bofip.impots.gouv.fr/bofip/4699-PGP.html/identifiant=BOI-BIC-AMT-20-20-30-20120912",
      "fiab": "stable"
@@ -378,9 +380,10 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Lien DSCG</b> : dans les comptes individuels, le bien pris en crédit-bail reste hors bilan jusqu'à la levée de l'option et fait l'objet d'une information en annexe ; les comptes consolidés sont établis selon le règlement ANC n° 2020-01 ou selon les normes IFRS adoptées par l'Union européenne, référentiels où le traitement des contrats de location est approfondi au DSCG.",
-     "src": "PCG, art. 212-5 ; CMF, art. R. 313-14 ; C. com., art. L. 233-24 ; règlement ANC n° 2020-01",
-     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/recueil/REGLT-2020_01-VERSION-RECUEIL2026.pdf",
+     "t": "<b>Lien DSCG</b> : dans les comptes individuels, le bien pris en crédit-bail reste hors bilan jusqu'à la levée de l'option et fait l'objet d'une information en annexe. Dans les comptes consolidés établis selon le règlement ANC n° 2020-01, les contrats de crédit-bail et contrats assimilés sont inscrits chez le preneur au bilan (immobilisation et emprunt correspondant) et au compte de résultat (dotation aux amortissements et charge financière) ; les comptes consolidés peuvent aussi être établis selon les normes IFRS adoptées par l'Union européenne, approfondies au DSCG.",
+     "cite": "« chez le preneur : au bilan sous forme d'une immobilisation et d'un emprunt correspondant ; au compte de résultat, sous forme d'une dotation aux amortissements et d'une charge financière »",
+     "src": "PCG, art. 212-5 ; CMF, art. R. 313-14 ; règlement ANC n° 2020-01, art. 272-2 (version consolidée 2024) ; C. com., art. L. 233-24",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/Comptes%20consolid%C3%A9s/2024/Reglt_2020_01_version_recueil2024.pdf",
      "fiab": "stable"
     }
    ]

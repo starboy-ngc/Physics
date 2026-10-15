@@ -43,7 +43,7 @@
   },
   {
    "h": "Le test de dépréciation",
-   "html": "<p>À chaque clôture, l'entreprise recherche s'il existe un <b>indice de perte de valeur</b> (PCG art. 214-15 à 214-19) : indices externes (baisse de la valeur de marché, évolution technologique, économique ou juridique défavorable, hausse des taux d'intérêt) ou internes (obsolescence, dégradation physique, performances inférieures aux prévisions, abandon programmé). En présence d'un indice, on compare la <b>VNC</b> à la <b>valeur actuelle</b>, qui est la plus élevée de la <b>valeur vénale</b> (prix de vente net) et de la <b>valeur d'usage</b> (flux nets de trésorerie attendus).</p><ul><li>VNC &gt; valeur actuelle : <b>dépréciation</b> égale à l'écart, débit <b>6816</b>, crédit <b>29xx</b> ;</li><li>VNC ≤ valeur actuelle : rien, la plus-value latente est ignorée.</li></ul><p>La dépréciation <b>modifie le plan de façon prospective</b> : la nouvelle base amortissable est la VNC dépréciée, répartie sur la durée résiduelle. Si la valeur actuelle remonte, la dépréciation est <b>reprise</b> (débit 29xx, crédit <b>7816</b>) sans que la VNC puisse dépasser celle qui aurait existé sans dépréciation. Exception : la dépréciation d'un fonds commercial n'est jamais reprise.</p><p>Exemple : VNC d'une machine <span class=\"mono\">60 000</span>, valeur vénale <span class=\"mono\">42 000</span>, valeur d'usage <span class=\"mono\">48 000</span> : valeur actuelle 48 000, dépréciation <span class=\"mono\">12 000</span>.</p>",
+   "html": "<p>À chaque clôture, l'entreprise recherche s'il existe un <b>indice de perte de valeur</b> (PCG art. 214-15 à 214-19) : indices externes (baisse de la valeur de marché, évolution technologique, économique ou juridique défavorable, hausse des taux d'intérêt) ou internes (obsolescence, dégradation physique, performances inférieures aux prévisions, abandon programmé). En présence d'un indice, on compare la <b>VNC</b> à la <b>valeur actuelle</b>, qui est la plus élevée de la <b>valeur vénale</b> (prix de vente net) et de la <b>valeur d'usage</b> (flux nets de trésorerie attendus).</p><ul><li>VNC &gt; valeur actuelle : <b>dépréciation</b> égale à l'écart, débit <b>6816</b>, crédit <b>29xx</b> ;</li><li>VNC ≤ valeur actuelle : rien, la plus-value latente est ignorée.</li></ul><p>La dépréciation <b>modifie le plan de façon prospective</b> : la nouvelle base amortissable est la VNC dépréciée, répartie sur la durée résiduelle. Lorsque les raisons qui l'ont motivée ont cessé d'exister, la dépréciation est <b>reprise</b> (débit 29xx, crédit <b>7816</b>) (PCG art. 214-19). Exception : la dépréciation d'un fonds commercial n'est jamais reprise.</p><p>Exemple : VNC d'une machine <span class=\"mono\">60 000</span>, valeur vénale <span class=\"mono\">42 000</span>, valeur d'usage <span class=\"mono\">48 000</span> : valeur actuelle 48 000, dépréciation <span class=\"mono\">12 000</span>.</p>",
    "entry": [
     {
      "a": "6816",
@@ -101,7 +101,7 @@
   },
   {
    "h": "Crédit-bail et location-financement",
-   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (CMF, art. R. 313-14, auquel renvoie l'art. R. 123-195 C. com. ; PCG, contenu de l'annexe, art. 831-1 s.).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01), le retraitement de la <b>location-financement</b> (inscription du bien à l'actif et de la dette au passif) est la méthode préférentielle ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
+   "html": "<p>Dans les comptes individuels, le preneur d'un <b>crédit-bail</b> n'est pas propriétaire : le bien ne figure pas à son actif. Les <b>redevances</b> sont des charges externes : <b>6122</b> crédit-bail mobilier, <b>6125</b> crédit-bail immobilier ; le <b>dépôt de garantie</b> versé est une immobilisation financière (275). L'<b>annexe</b> doit présenter le retraitement : valeur d'origine du bien, amortissements qui auraient été pratiqués, redevances payées et restant à payer, prix de levée d'option (CMF, art. R. 313-14, auquel renvoie l'art. R. 123-195 C. com. ; PCG, contenu de l'annexe, art. 831-1 s.).</p><p>À la <b>levée d'option</b>, le bien entre à l'actif pour le <b>prix de levée</b> (plus les frais directement attribuables) et est amorti sur sa durée d'utilisation résiduelle : l'amortissement pratiqué sur l'option est souvent court, ce qui génère un amortissement dérogatoire si le fisc impose une durée plus longue.</p><p>En comptes consolidés (règlement ANC 2020-01, art. 272-2), les contrats de <b>crédit-bail et contrats assimilés</b> sont inscrits chez le preneur au bilan (immobilisation et emprunt correspondant) et au compte de résultat (dotation aux amortissements et charge financière) ; en IFRS (IFRS 16, DSCG), le locataire comptabilise toujours un droit d'utilisation et une dette de loyers. Le PCG, lui, s'en tient à l'approche juridique.</p><div class=\"note\"><b>Piège.</b> Une redevance de crédit-bail payée d'avance pour N+1 est une charge constatée d'avance (486), pas une immobilisation.</div>"
   }
  ],
  "sources": [
@@ -136,6 +136,10 @@
   {
    "ref": "PCG, titre IX (fonctionnement des comptes 61, 65 et 75)",
    "note": "Fonctionnement des comptes 6122/6125 et 657/757"
+  },
+  {
+   "ref": "Règlement ANC n° 2020-01, art. 272-2",
+   "note": "Comptes consolidés : inscription au bilan du preneur des contrats de crédit-bail et contrats assimilés (immobilisation et emprunt)"
   }
  ],
  "exercices": [
@@ -377,22 +381,22 @@
     "10 000 €"
    ],
    "a": 1,
-   "why": "La dépréciation modifie le plan de façon prospective (PCG art. 214-17) : la nouvelle base est la VNC dépréciée, 48 000 / 4 = 12 000 € par an. Continuer à amortir 15 000 (60 000 / 4) conduirait à une VNC négative ; les autres montants n'ont pas de fondement. Fiscalement, l'écart avec l'amortissement initial est neutralisé par la déduction de la dépréciation.",
+   "why": "La dépréciation modifie le plan de façon prospective (PCG art. 214-17) : la nouvelle base est la VNC dépréciée, 48 000 / 4 = 12 000 € par an. Continuer à amortir 15 000 (60 000 / 4) conduirait à une VNC négative ; les autres montants n'ont pas de fondement.",
    "src": "PCG art. 214-17",
    "fiab": "stable",
    "niveau": 2
   },
   {
    "type": "qcm",
-   "q": "Fin N+1, la valeur actuelle du matériel déprécié en N remonte nettement. Quelle règle encadre la reprise de la dépréciation ?",
+   "q": "Fin N+1, les raisons qui avaient motivé la dépréciation du matériel constatée en N ont cessé d'exister. Quelle règle s'applique ?",
    "opts": [
     "La reprise est interdite pour toutes les immobilisations",
-    "La reprise est limitée : la VNC après reprise ne peut dépasser la VNC qui aurait existé sans dépréciation",
-    "La reprise est intégrale et porte sur le montant initial de 12 000 €",
+    "La dépréciation est rapportée au résultat (débit 29xx, crédit 7816), puisque les raisons qui l'ont motivée ont cessé d'exister",
+    "La dépréciation est maintenue au bilan jusqu'à la cession du bien",
     "La reprise est enregistrée en 7811"
    ],
    "a": 1,
-   "why": "PCG art. 214-19 : la dépréciation est reprise (29xx / 7816) lorsque la valeur actuelle redevient supérieure à la VNC, mais sans porter la VNC au-delà de celle qu'aurait donnée le plan initial sans dépréciation. Ce plafond diminue chaque année avec l'amortissement. Le compte 7811 concerne les reprises d'amortissements ; l'interdiction de reprise ne vise que le fonds commercial.",
+   "why": "PCG art. 214-19 : les dépréciations sont rapportées au résultat quand les raisons qui les ont motivées ont cessé d'exister ; la reprise d'une dépréciation d'immobilisation corporelle se comptabilise au débit de 29xx et au crédit de 7816. L'interdiction de reprise ne vise que le fonds commercial ; rien n'impose d'attendre la cession ; le compte 7811 concerne les reprises d'amortissements.",
    "src": "PCG art. 214-19",
    "fiab": "stable",
    "niveau": 3
