@@ -108,3 +108,41 @@ Format (JSON strict, indentation 1 espace) :
 - `sections` : les cinq sections ci-dessus, dans cet ordre. 20 à 40 items au total ; « Règles essentielles » est la plus fournie (10 à 20 items). « Ce qui a changé récemment » liste les réformes 2023-2026 utiles (lois de finances, LFSS, ordonnances, règlement ANC 2022-06, décret 2024-152…) avec date et source. « Points de vigilance » : pièges d'examen et liens avec le DSCG, chacun rattaché à un texte.
 - Chaque item : `t` (HTML limité aux balises du contrat, 1 à 4 phrases, formulation fidèle au texte), `src` (référence précise), `url` (officielle ou null), `fiab`, `cite` facultatif.
 - Valider : `node validate.js data/<ue>/<id>.fiche.json`.
+
+## 8. Cartes de notions (`data/<ue>/<id>.cartes.json`) — révisions espacées
+
+Objectif : un jeu de cartes recto/verso « à la Anki » pour mémoriser les **définitions** et **comprendre les règles** du chapitre. Les révisions espacées (demain, 2, 5, 10, 20, 30 jours, puis chaque mois) ne portent que sur ces notions : **aucun calcul**, aucune écriture, aucun chiffre millésimé. La personne lit la question, formule sa réponse de tête, retourne la carte puis indique honnêtement si elle savait.
+
+Règle d'or : **une carte ne dit rien que la fiche documentaire ne dise déjà.** Chaque carte repose sur un ou deux items de la fiche du chapitre (`base`), eux-mêmes sourcés sur un texte officiel. On n'invente pas de cours ; on reformule fidèlement, en plus court.
+
+```json
+{
+ "id": "ue2-02",
+ "maj": "2026-10-15",
+ "cartes": [
+  {
+   "id": "ue2-02-k01",
+   "type": "def",
+   "q": "Qu'est-ce qu'une société à responsabilité limitée (SARL) ?",
+   "r": "Une société instituée par une ou plusieurs personnes qui ne supportent les pertes qu'à concurrence de leurs apports.",
+   "base": ["Définitions#0"],
+   "src": "C. com., art. L. 223-1",
+   "url": "https://www.legifrance.gouv.fr/…",
+   "fiab": "stable"
+  }
+ ]
+}
+```
+
+- `id` : `<id du chapitre>-kNN` (k01, k02…), unique et définitif (la progression de la personne y est attachée : ne jamais renuméroter une carte existante ; une carte supprimée laisse un trou).
+- `type` : `def` (définition d'une notion, d'un acte, d'un document, d'un compte, d'un organe) ou `comp` (compréhension : condition, effet, sanction, distinction entre deux notions, rôle, raison d'être d'une règle, qualification d'une situation sans calcul).
+- `q` (recto) : une seule question, 6 à 30 mots, terminée par « ? », compréhensible sans contexte (nommer la forme sociale, l'impôt, le contrat… dont on parle), qui ne contient pas la réponse. Une seule réponse attendue ; si la règle a des exceptions, la question en délimite le champ.
+- `r` (verso) : la réponse, 8 à 70 mots, 1 à 3 phrases. HTML limité à `b i br ul li`. Commence par l'élément de réponse essentiel (mis en `<b>` si utile), puis la précision qui aide à retenir. Fidèle au texte de la fiche : mêmes conditions, mêmes exceptions, même vocabulaire juridique.
+- `base` : 1 ou 2 références `"<Titre de section>#<index>"` vers les items de la fiche (index à partir de 0) qui fondent la réponse.
+- `src` et `url` : **copiés à l'identique** depuis le premier item de `base` (`url` : la même URL officielle ou `null`). Jamais d'URL nouvelle.
+- `fiab` : toujours `stable`. Les items millésimés (SMIC, PASS, barèmes, seuils annuels, taux de l'année) ne donnent pas de carte.
+- Interdits : calcul à faire (montant, taux appliqué, prorata, délai à décompter à partir de dates), écriture comptable chiffrée, question piège, question « par cœur » sur un chiffre annuel. Un chiffre **stable** qui fait partie d'une règle (100 associés au plus dans une SARL, majorité des deux tiers) est admis quand la question porte sur la règle.
+- Volume : 15 à 35 cartes par chapitre ; au moins 5 `def` et 5 `comp`. Chaque item de la section « Définitions » donne au moins une carte ; les « Règles essentielles » sont largement couvertes ; « Points de vigilance » et « Ce qui a changé récemment » donnent des cartes de compréhension.
+- Valider : `node validate.js data/<ue>/<id>.cartes.json` (le validateur relit la fiche voisine pour contrôler `base`, `src` et `url`).
+
+Les exercices des chapitres portent aussi un champ `nature` : `notion` (définition, règle, qualification, choix d'un compte, classement, sans calcul), `calcul` (il faut calculer : montant, taux, prorata, délai à décompter) ou `chiffre` (rappel d'un chiffre millésimé). Seuls les QCM, QCM multiples et classements de nature `notion` entrent dans les révisions espacées, avec les cartes et les comptes du plan comptable (intitulé et rôle, comptes supprimés exclus).

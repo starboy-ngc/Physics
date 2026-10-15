@@ -4,7 +4,7 @@ Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six mat
 sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
 test quotidien, révisions espacées avec plateau d'avancement par thème, plan comptable général 2025 commenté
-compte par compte (612 comptes), jeu de progression (« l'expédition vers les aurores ») et 66 succès à débloquer (bronze, argent, or) dans six catégories :
+compte par compte (612 comptes), jeu de progression (« l'expédition vers les aurores ») et 69 succès à débloquer (bronze, argent, or) dans six catégories :
 régularité, précision, maîtrise, matières, exploration et expédition.
 
 ## Utiliser
@@ -28,20 +28,35 @@ chaque année (SMIC, PASS, barème de l'IR, seuils) sont datés dans l'énoncé 
 
 ## Révisions espacées
 
-Chaque question répondue entre sur une échelle de rappel :
+Les révisions espacées (le principe d'Anki) ne portent que sur les **définitions et la compréhension**, jamais
+sur des calculs :
+
+- des **cartes de notions** recto/verso, rédigées à partir des fiches documentaires : chaque carte renvoie aux
+  items de la fiche dont elle est tirée et à leur texte officiel. On répond de tête, on retourne la carte, puis
+  on indique si on savait (« Je savais » ou « Je ne savais pas ») ;
+- les **QCM et classements de compréhension** des chapitres, ceux qui ne demandent aucun calcul (champ
+  `nature` = `notion`, classement fait par deux relecteurs indépendants ; en cas de désaccord, la question est
+  écartée) ;
+- les **comptes du plan comptable** en vigueur : intitulé et rôle (les comptes supprimés en 2025 sont exclus).
+
+Les calculs et les écritures se travaillent dans les exercices des chapitres et dans le test du jour.
+
+Chaque notion avance sur une échelle de rappel :
 
 | Marche | Demain | 2 jours | 5 jours | 10 jours | 20 jours | 30 jours | Chaque mois |
 |---|---|---|---|---|---|---|---|
 
-- question nouvelle réussie : elle revient dans 2 jours ; ratée : elle revient demain ;
+- notion nouvelle réussie : elle revient dans 2 jours ; ratée : elle revient demain ;
 - bonne réponse le jour où elle est due (ou après) : une marche vers la droite ; la dernière marche se répète chaque mois ;
-- erreur : une marche vers la gauche, et la question revient selon le délai de cette marche (une erreur à « 10 jours » la ramène à « 5 jours ») ;
-- une bonne réponse donnée avant l'échéance (en relisant un chapitre, par exemple) ne fait pas monter la question.
+- erreur : une marche vers la gauche, et la notion revient selon le délai de cette marche (une erreur à « 10 jours » la ramène à « 5 jours ») ;
+- une bonne réponse donnée avant l'échéance (en refaisant un chapitre, par exemple) ne fait pas monter la notion.
 
-L'onglet Révisions affiche le plateau d'avancement (nombre de questions sur chaque marche) pour l'ensemble et pour
-chaque matière, avec le détail par chapitre, la part de questions mémorisées (10 jours et plus), la réussite sur
-30 jours, la tendance sur 7 jours, la charge des 14 prochains jours et la courbe de réussite sur 30 jours.
-Le nombre de nouvelles questions introduites par jour se règle de 0 à 30 (10 par défaut).
+L'onglet Révisions affiche le plateau d'avancement (nombre de notions sur chaque marche) pour l'ensemble, pour
+chaque matière et pour le plan comptable, avec le détail par chapitre ou par classe de comptes, la part de notions
+mémorisées (10 jours et plus), la réussite sur 30 jours, la tendance sur 7 jours, la charge des 14 prochains jours
+et la courbe de réussite sur 30 jours. Les nouvelles notions arrivent en alternant les thèmes, en commençant par
+les chapitres déjà ouverts ; leur nombre par jour se règle de 0 à 30 (10 par défaut). Chaque chapitre a aussi un
+onglet « Notions » qui liste ses cartes et lance une séance limitée au chapitre.
 
 ## Fiches documentaires
 

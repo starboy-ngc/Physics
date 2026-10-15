@@ -45,6 +45,8 @@ function checkChapter(ch, errs) {
     if (typeof e.src !== "string" || e.src.length < 3) errs.push(`${w}: source « src » manquante`);
     if (!FIAB.test(e.fiab || "")) errs.push(`${w}: fiab invalide « ${e.fiab} »`);
     if (![1, 2, 3].includes(e.niveau)) errs.push(`${w}: niveau doit être 1, 2 ou 3`);
+    if (e.nature !== undefined && !["notion", "calcul", "chiffre"].includes(e.nature)) errs.push(`${w}: nature invalide « ${e.nature} » (notion, calcul ou chiffre)`);
+    if (e.nature === "notion" && !["qcm", "multi", "tri"].includes(e.type)) errs.push(`${w}: un exercice ${e.type} ne peut pas être de nature « notion »`);
     switch (e.type) {
       case "qcm":
         if (!Array.isArray(e.opts) || e.opts.length < 3 || e.opts.length > 5) errs.push(`${w}: qcm doit avoir 3 à 5 options`);
@@ -127,6 +129,45 @@ function checkPcg(list, errs) {
   });
   if (list.some(a => ["675", "775", "791", "796", "797", "777"].includes(a.num) && !/supprim/i.test(a.pcg2025 || ""))) errs.push("plan comptable : 675/775/777/791/796/797 ne peuvent figurer que comme comptes supprimés (pcg2025 doit le dire)");
 }
+function checkCartes(d, file, errs) {
+  const path = require("path");
+  if (!/^ue(2|3|4|6|9|10)-\d\d$/.test(d.id || "")) errs.push(`cartes : id invalide ${d.id}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d.maj || "")) errs.push("cartes : maj doit être une date AAAA-MM-JJ");
+  const ff = path.join(path.dirname(file), `${d.id}.fiche.json`);
+  let fiche = null; try { fiche = JSON.parse(fs.readFileSync(ff, "utf8")); } catch (e) { errs.push(`cartes : fiche voisine illisible (${ff})`); }
+  const item = ref => { const m = /^(.+)#(\d+)$/.exec(ref || ""); if (!m || !fiche) return null; const sct = (fiche.sections || []).find(x => x.h === m[1]); return sct && sct.items ? sct.items[+m[2]] || null : null; };
+  const list = d.cartes;
+  if (!Array.isArray(list)) { errs.push("cartes : tableau « cartes » manquant"); return; }
+  if (list.length < 15 || list.length > 35) errs.push(`cartes : ${list.length} cartes (15 à 35 attendues)`);
+  const ids = new Set(), qs = new Set(); const n = { def: 0, comp: 0 };
+  list.forEach((k, i) => {
+    const w = `cartes[${i}] ${k.id || ""}`;
+    if (!new RegExp(`^${d.id}-k\\d\\d$`).test(k.id || "")) errs.push(`${w}: id doit être ${d.id}-kNN`);
+    if (ids.has(k.id)) errs.push(`${w}: id en double`); ids.add(k.id);
+    if (!["def", "comp"].includes(k.type)) errs.push(`${w}: type doit être def ou comp`); else n[k.type]++;
+    const q = String(k.q || ""), words = q.trim().split(/\s+/).length;
+    if (!/\?$/.test(q.trim())) errs.push(`${w}: la question doit se terminer par « ? »`);
+    if (words < 5 || words > 34) errs.push(`${w}: question de ${words} mots (6 à 30 attendus)`);
+    if (/<[a-z]/i.test(q)) errs.push(`${w}: pas de HTML dans la question`);
+    const key = q.toLowerCase().replace(/[^a-zà-ÿ0-9]+/g, " ").trim(); if (qs.has(key)) errs.push(`${w}: question en double`); qs.add(key);
+    const r = String(k.r || ""); const rw = r.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
+    if (rw < 6 || rw > 80) errs.push(`${w}: réponse de ${rw} mots (8 à 70 attendus)`);
+    (r.match(/<\/?([a-zA-Z0-9]+)([^>]*)>/g) || []).forEach(t => { const m = t.match(/^<\/?([a-zA-Z0-9]+)([^>]*)>$/); if (!["b", "i", "br", "ul", "li"].includes(m[1].toLowerCase()) || (m[2].trim() && m[2].trim() !== "/")) errs.push(`${w}: balise interdite dans la réponse ${t}`); });
+    if (/[×÷=]/.test(q)) errs.push(`${w}: la question ressemble à un calcul`);
+    if (k.fiab !== "stable") errs.push(`${w}: fiab doit être « stable » (pas de carte sur un chiffre millésimé)`);
+    if (!Array.isArray(k.base) || k.base.length < 1 || k.base.length > 2) { errs.push(`${w}: base doit lister 1 ou 2 items de la fiche`); return; }
+    const its = k.base.map(item);
+    k.base.forEach((b, j) => { if (!its[j]) errs.push(`${w}: base « ${b} » introuvable dans la fiche`); });
+    if (its[0]) {
+      if (k.src !== its[0].src) errs.push(`${w}: src « ${k.src} » différente de celle de l'item de base « ${its[0].src} »`);
+      if ((k.url || null) !== (its[0].url || null)) errs.push(`${w}: url différente de celle de l'item de base`);
+      if (k.url === undefined) errs.push(`${w}: url doit être présente (URL de l'item de base ou null)`);
+      if (its.some(x => x && /millésimé/.test(x.fiab || ""))) errs.push(`${w}: repose sur un item millésimé`);
+    }
+  });
+  if (n.def < 5) errs.push(`cartes : ${n.def} cartes « def » (5 minimum)`);
+  if (n.comp < 5) errs.push(`cartes : ${n.comp} cartes « comp » (5 minimum)`);
+}
 let failed = 0;
 for (const f of process.argv.slice(2)) {
   const errs = [];
@@ -134,6 +175,7 @@ for (const f of process.argv.slice(2)) {
   try { data = JSON.parse(fs.readFileSync(f, "utf8")); } catch (e) { console.log(`✗ ${f} : JSON invalide — ${e.message}`); failed++; continue; }
   let info = "";
   if (data.comptes) { checkPcg(data.comptes, errs); info = `${data.comptes.length} comptes`; }
+  else if (data.cartes) { checkCartes(data, f, errs); info = `cartes, ${(data.cartes || []).length} (${(data.cartes || []).filter(k => k.type === "def").length} déf.)`; }
   else if (data.maj && data.sections) { checkFiche(data, errs); info = `fiche, ${(data.sections || []).reduce((a, s) => a + (s.items || []).length, 0)} items, ${(data.textes || []).length} textes`; }
   else { const c = checkChapter(data, errs); info = `${(data.exercices || []).length} exercices ${JSON.stringify(c)}`; total += (data.exercices || []).length; }
   if (errs.length) { failed++; console.log(`✗ ${f} (${info})`); errs.forEach(e => console.log("   - " + e)); }

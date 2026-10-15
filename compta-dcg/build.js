@@ -17,6 +17,11 @@ for (const p of plan.chapitres) {
     let fok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), ff], { stdio: "pipe" }); } catch (e) { fok = false; }
     if (fok || lenient) ch.fiche = JSON.parse(fs.readFileSync(ff, "utf8")); else skipped.push(p.id + " (fiche invalide)");
   } else if (strict) skipped.push(p.id + " (fiche absente)");
+  const fc = f.replace(/\.json$/, ".cartes.json");
+  if (fs.existsSync(fc)) {
+    let cok = true; try { execFileSync("node", [path.join(ROOT, "validate.js"), fc], { stdio: "pipe" }); } catch (e) { cok = false; }
+    if ((cok || lenient) && ch.fiche) ch.cartes = JSON.parse(fs.readFileSync(fc, "utf8")).cartes; else skipped.push(p.id + " (cartes invalides)");
+  } else if (strict) skipped.push(p.id + " (cartes absentes)");
   chapitres.push(ch);
 }
 chapitres.sort((a, b) => order[a.ue] - order[b.ue] || a.ordre - b.ordre);
@@ -37,5 +42,7 @@ const out = tpl.replace("/*__DATA__*/null", json);
 fs.mkdirSync(path.join(ROOT, "dist"), { recursive: true });
 fs.writeFileSync(path.join(ROOT, "dist/DebitCredit.html"), out);
 const nEx = chapitres.reduce((a, c) => a + c.exercices.length, 0);
-console.log(`dist/DebitCredit.html : ${chapitres.length} chapitres (${chapitres.filter(c => c.fiche).length} fiches), ${nEx} exercices, ${pcgU.length} comptes, ${(out.length / 1024).toFixed(0)} Ko`);
+const nCartes = chapitres.reduce((a, c) => a + (c.cartes || []).length, 0);
+const nNotion = chapitres.reduce((a, c) => a + c.exercices.filter(e => e.nature === "notion").length, 0);
+console.log(`dist/DebitCredit.html : ${chapitres.length} chapitres (${chapitres.filter(c => c.fiche).length} fiches), ${nEx} exercices dont ${nNotion} de notion, ${nCartes} cartes, ${pcgU.length} comptes, ${(out.length / 1024).toFixed(0)} Ko`);
 if (skipped.length) console.log("Ignorés : " + skipped.join(", "));
