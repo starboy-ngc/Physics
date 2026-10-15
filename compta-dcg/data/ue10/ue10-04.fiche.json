@@ -44,13 +44,13 @@
   },
   {
    "ref": "PCG, art. 420-1 et suivants",
-   "objet": "Opérations en devises : conversion, écarts de conversion actif et passif, provision pour pertes de change ; dispositions particulières (art. 420-6 : instrument de couverture au sens de l'art. 628-7, position globale de change) ; disponibilités en devises (art. 420-7)",
+   "objet": "Opérations en devises : coût d'entrée des actifs acquis en devises au cours du jour de l'opération (420-1), conversion des créances et dettes sur la base du dernier cours du change et écarts de conversion (420-5), dispositions particulières de la provision (420-6 : instrument de couverture au sens de l'art. 628-7, position globale de change), liquidités en devises (420-7), comptes d'écarts de conversion (420-8)",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
    "version": "consolidée au 1er janvier 2026"
   },
   {
    "ref": "PCG, plan de comptes au 1er janvier 2026",
-   "objet": "Comptes 31 à 39, 603, 713, 4181, 44587, 476, 477, 1515, 1516, 656, 756, 666, 766, 6865 et 7865",
+   "objet": "Comptes 31 à 39, 603, 713, 4181, 44587, 476, 477 (dont 4768 et 4778 « Différences compensées par couverture de change »), 1515, 1516, 656, 756, 666, 766, 6865 et 7865",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "version": "plan de comptes 2026"
   },
@@ -74,7 +74,7 @@
   },
   {
    "ref": "Règlement ANC n° 2015-05 du 2 juillet 2015",
-   "objet": "Instruments financiers à terme et opérations de couverture",
+   "objet": "Instruments financiers à terme et opérations de couverture (comptabilité de couverture, symétrie de l'art. 628-11)",
    "url": null,
    "version": "intégré au PCG (section 8 du chapitre II du titre VI, art. 628-1 et suivants)"
   },
@@ -86,13 +86,13 @@
   },
   {
    "ref": "CGI, ann. III, art. 38 nonies",
-   "objet": "Prix de revient des stocks : coût d'acquisition des biens achetés, coût de production des biens fabriqués",
+   "objet": "Prix de revient des stocks : pour les biens achetés, prix d'achat diminué des remises, rabais et escomptes obtenus et augmenté des frais de transport, de manutention et autres coûts directement engagés ; pour les biens fabriqués, coût de production",
    "url": null,
    "version": "en vigueur"
   },
   {
    "ref": "BOFiP, BOI-BIC-PDSTK-20-20-10-10",
-   "objet": "Valorisation fiscale des stocks : prix de revient ou cours du jour s'il est inférieur ; articles interchangeables évalués au coût moyen pondéré ou, éventuellement, selon la méthode « premier entré, premier sorti »",
+   "objet": "Valorisation fiscale des stocks : prix de revient ou cours du jour s'il est inférieur ; articles interchangeables non identifiables évalués au coût moyen pondéré ou, éventuellement, selon la méthode « premier entré, premier sorti » ; refus de considérer systématiquement comme sortis les articles entrés en dernier",
    "url": "https://bofip.impots.gouv.fr/bofip/1497-PGP.html/identifiant=BOI-BIC-PDSTK-20-20-10-10-20120912",
    "version": "publication du 12 septembre 2012"
   },
@@ -133,10 +133,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Écart de conversion</b> : différence entre la valeur d'entrée des créances et dettes libellées en monnaie étrangère et leur valeur convertie au cours de clôture, inscrite dans des comptes transitoires de bilan : 476 « Différences de conversion – Actif » (pertes latentes) et 477 « Différences de conversion – Passif » (gains latents).",
-     "src": "PCG, art. 420-5 ; plan de comptes 2026, comptes 476 et 477",
+     "t": "<b>Écart de conversion</b> : les créances et dettes libellées en monnaie étrangère sont converties sur la base du dernier cours du change ; lorsque la conversion au cours de la date d'arrêté des comptes modifie les montants précédemment comptabilisés, les différences de conversion sont inscrites dans des comptes transitoires, en attente de régularisations ultérieures : 476 « Différences de conversion – Actif » (pertes latentes) et 477 « Différences de conversion – Passif » (gains latents).",
+     "src": "PCG, art. 420-5 et 420-8 ; plan de comptes 2026, comptes 476 et 477",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Les créances et les dettes en monnaies étrangères sont converties et comptabilisées en monnaie nationale sur la base du dernier cours du change. »"
     }
    ]
   },
@@ -154,7 +155,8 @@
      "t": "<b>Capacité normale et sous-activité</b> : les frais généraux fixes de production sont affectés aux coûts de transformation sur la base de la capacité normale des installations, c'est-à-dire la production moyenne attendue sur plusieurs exercices ou saisons dans des circonstances normales ; le niveau réel de production peut être retenu s'il est proche de la capacité normale. Les frais généraux fixes non affectés du fait d'une faible production (sous-activité) sont comptabilisés en charges de l'exercice au cours duquel ils sont encourus.",
      "src": "PCG, art. 213-32",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« L'affectation des frais généraux fixes de production aux coûts de transformation est fondée sur la capacité normale des installations de production. »"
     },
     {
      "t": "<b>Coûts administratifs</b> : ils sont exclus du coût d'acquisition et du coût de production des stocks, à l'exception des coûts de structures dédiées ; comme la quote-part de sous-activité, ils restent des charges de l'exercice.",
@@ -177,8 +179,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Évaluation fiscale des stocks</b> : les stocks sont évalués au prix de revient ou au cours du jour de la clôture de l'exercice si ce cours est inférieur au prix de revient ; le prix de revient s'entend du coût d'acquisition pour les biens achetés et du coût de production pour les biens fabriqués. Selon la doctrine administrative, les articles interchangeables qui ne peuvent être identifiés unitairement sont évalués au coût moyen pondéré ou, éventuellement, selon la méthode PEPS. Lorsque le cours du jour est inférieur au prix de revient, une provision pour dépréciation est constituée à due concurrence.",
-     "src": "CGI, art. 38, 3 ; CGI, ann. III, art. 38 nonies et 38 decies ; BOI-BIC-PDSTK-20-20-10-10",
+     "t": "<b>Évaluation fiscale des stocks</b> : les stocks sont évalués au prix de revient ou au cours du jour de la clôture de l'exercice si ce cours est inférieur au prix de revient ; le prix de revient s'entend du coût d'acquisition pour les biens achetés (prix d'achat diminué des remises, rabais et escomptes obtenus, augmenté des frais de transport, de manutention et autres coûts directement engagés) et du coût de production pour les biens fabriqués. Selon la doctrine administrative, les articles interchangeables qui ne peuvent être identifiés unitairement sont évalués au coût moyen pondéré ou, éventuellement, selon la méthode PEPS ; l'entreprise ne peut pas considérer systématiquement comme sortis les articles achetés ou fabriqués en dernier. L'écart entre le prix de revient et le cours du jour inférieur peut être constaté par une provision pour dépréciation, que l'entreprise doit justifier.",
+     "src": "CGI, art. 38, 3 ; CGI, ann. III, art. 38 nonies ; BOI-BIC-PDSTK-20-20-10-10",
      "url": "https://bofip.impots.gouv.fr/bofip/1497-PGP.html/identifiant=BOI-BIC-PDSTK-20-20-10-10-20120912",
      "fiab": "stable"
     },
@@ -206,7 +208,8 @@
      "t": "<b>Méthode à l'achèvement</b> : le chiffre d'affaires et le résultat sont comptabilisés au terme de l'opération ; en cours d'exécution, les travaux sont constatés en en-cours de production à leur coût (comptes 33 et 34 par les comptes 7133 et 7134), sans dégagement de marge.",
      "src": "PCG, art. 622-2 et suivants ; plan de comptes 2026, comptes 33, 34 et 713",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« La méthode à l'achèvement consiste à comptabiliser le chiffre d'affaires et le résultat au terme de l'opération. »"
     },
     {
      "t": "<b>Méthode à l'avancement</b> : le chiffre d'affaires et le résultat sont comptabilisés au fur et à mesure de l'avancement des contrats, mesuré de façon fiable (rapport entre les coûts des travaux exécutés à la clôture et le total prévisionnel des coûts, ou mesures physiques) ; le produit non encore facturé est enregistré en produit à recevoir au compte 4181 « Clients – factures à établir ». Si le résultat à terminaison ne peut être estimé de façon fiable, aucun bénéfice n'est dégagé : le produit est limité au montant des charges engagées.",
@@ -216,15 +219,15 @@
      "cite": "« La méthode à l'avancement consiste à comptabiliser le chiffre d'affaires et le résultat au fur et à mesure de l'avancement des contrats. »"
     },
     {
-     "t": "<b>Perte à terminaison</b> : lorsqu'il devient probable que le total des coûts du contrat dépassera le total des produits, la perte globale probable est prise en compte dès qu'elle est connue, quelle que soit la méthode retenue, en application du principe de prudence ; elle est provisionnée déduction faite des pertes déjà constatées en résultat ou par dépréciation des en-cours (compte 1516 « Provisions pour pertes sur contrats »).",
-     "cite": "« Les comptes annuels doivent respecter le principe de prudence. »",
-     "src": "PCG, art. 622-1 et suivants ; C. com., art. L. 123-20 ; plan de comptes 2026, compte 1516",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000030927181",
+     "t": "<b>Perte à terminaison</b> : une perte sur un contrat doit être provisionnée dès qu'elle devient probable, en application du principe de prudence. Que l'entité applique la méthode à l'achèvement ou la méthode à l'avancement, la perte globale probable est provisionnée sous déduction des pertes éventuellement déjà constatées (en résultat à l'avancement, par dépréciation des en-cours à l'achèvement), au compte 1516 « Provisions pour pertes sur contrats ».",
+     "cite": "« Une perte sur un contrat doit être provisionnée dès qu'elle devient probable. »",
+     "src": "PCG au 1er janvier 2026 (contrats à long terme, art. 622-1 et suivants) ; C. com., art. L. 123-20 ; plan de comptes 2026, compte 1516",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Conversion des opérations en devises</b> : les charges, produits, créances et dettes libellés en monnaie étrangère sont convertis et comptabilisés en euros sur la base du cours de change à la date de l'opération ; la comptabilisation des opérations couvertes relève des règles de la comptabilité de couverture (règlement ANC n° 2015-05).",
-     "src": "PCG, art. 420-1 et suivants ; règlement ANC n° 2015-05",
+     "t": "<b>Conversion des opérations en devises</b> : le coût d'entrée des immobilisations et des stocks acquis en devises est converti en euros au cours du jour de l'opération ; les créances et dettes en monnaies étrangères sont converties et comptabilisées sur la base du dernier cours du change. La comptabilisation des opérations couvertes relève de la comptabilité de couverture (art. 628-1 et suivants, issus du règlement ANC n° 2015-05).",
+     "src": "PCG, art. 420-1 et 420-5 ; règlement ANC n° 2015-05",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     },
@@ -242,16 +245,17 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Écarts de change réalisés</b> : au règlement, la différence entre le montant réglé en euros et la valeur comptable de la créance ou de la dette est un résultat de change ; sur les créances et dettes commerciales, il est enregistré en exploitation aux comptes 656 « Pertes de change sur créances et dettes commerciales » et 756 « Gains de change sur créances et dettes commerciales » ; sur les opérations financières (prêts, emprunts, disponibilités), il est enregistré aux comptes 666 « Pertes de change financières » et 766 « Gains de change financiers ». La provision constituée à la clôture est reprise (compte 7865).",
-     "src": "Plan de comptes 2026, comptes 656, 666, 756, 766, 6865 et 7865 ; règlement ANC n° 2023-03",
+     "t": "<b>Écarts de change réalisés</b> : au règlement, la différence entre le montant réglé en euros et la valeur comptable de la créance ou de la dette est un résultat de change ; sur les créances et dettes commerciales, il est enregistré en exploitation aux comptes 656 « Pertes de change sur créances et dettes commerciales » et 756 « Gains de change sur créances et dettes commerciales » ; sur les opérations financières (prêts, emprunts, disponibilités), il est enregistré aux comptes 666 « Pertes de change financières » et 766 « Gains de change financiers ». La provision pour pertes de change constituée à la clôture est reprise lors du règlement.",
+     "src": "Plan de comptes 2026, comptes 656, 666, 756 et 766 ; règlement ANC n° 2023-03",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Disponibilités en devises</b> : les liquidités et exigibilités immédiates en devises sont converties au cours de clôture ; les écarts sont comptabilisés directement dans le résultat de l'exercice (666 « Pertes de change financières » ou 766 « Gains de change financiers »), sauf application des dispositions relatives aux opérations de couverture. Il n'y a ni écart de conversion 476/477 ni provision.",
+     "t": "<b>Disponibilités en devises</b> : les liquidités et exigibilités immédiates en devises existant à la clôture sont converties en euros sur la base du dernier cours de change au comptant ; les écarts constatés sont comptabilisés directement dans le résultat de l'exercice (666 « Pertes de change financières » ou 766 « Gains de change financiers »), sauf application des dispositions relatives aux opérations de couverture. Il n'y a ni écart de conversion 476/477 ni provision.",
      "src": "PCG, art. 420-7 ; plan de comptes 2026, comptes 666 et 766",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Les écarts de conversion constatés sont comptabilisés dans le résultat de l'exercice, sauf en cas d'application des dispositions relatives aux opérations de couverture mentionnées à la section 8. »"
     },
     {
      "t": "<b>Fiscalité des écarts de conversion</b> : les écarts de conversion des créances et dettes libellées en monnaies étrangères, déterminés à la clôture en fonction du dernier cours de change, sont pris en compte pour la détermination du résultat imposable de l'exercice (déduction des pertes latentes 476, réintégration des gains latents 477) ; corrélativement, la provision pour pertes de change, qui couvre une perte déjà déduite, est réintégrée.",
@@ -277,14 +281,14 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Comptes des opérations en devises</b> : 476 et 477 (écarts de conversion), 1515 (provision pour pertes de change), 656 et 756 (écarts réalisés sur créances et dettes commerciales), 666 et 766 (écarts réalisés sur opérations financières), 6865 et 7865 (dotation et reprise).",
+     "t": "<b>Comptes des opérations en devises</b> : 476 et 477 (écarts de conversion), dont 4768 et 4778 « Différences compensées par couverture de change » ; 1515 (provision pour pertes de change) ; 656 et 756 (écarts réalisés sur créances et dettes commerciales) ; 666 et 766 (écarts réalisés sur opérations financières) ; 6865 « Dotations aux provisions financières » et 7865 « Reprises sur provisions financières ».",
      "src": "Plan de comptes 2026, comptes 15, 47, 65, 66, 68, 75, 76 et 78",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Cours de conversion</b> : cours de change à la date de l'opération à l'entrée ; cours de clôture pour les créances et dettes à l'inventaire, l'écart avec la valeur d'entrée allant en 476 ou 477.",
-     "src": "PCG, art. 420-1 à 420-5",
+     "t": "<b>Cours de conversion</b> : cours du jour de l'opération pour le coût d'entrée des actifs acquis en devises ; dernier cours du change pour les créances et dettes, l'écart avec la valeur d'entrée allant en 476 ou 477 ; dernier cours de change au comptant pour les liquidités en devises existant à la clôture.",
+     "src": "PCG, art. 420-1, 420-5 et 420-7",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     }
@@ -309,6 +313,13 @@
      "t": "<b>Règlement ANC n° 2026-03 du 6 mars 2026</b>, homologué par l'arrêté du 12 août 2026 : il modifie le PCG sur la comptabilisation des produits des ventes et reprend la définition du résultat exceptionnel à l'article 531-5 ; il s'applique aux exercices ouverts à compter du 1er janvier 2027 et peut être appliqué par anticipation. Les règles de cette fiche sont celles du PCG consolidé au 1er janvier 2026.",
      "cite": "« Le présent règlement s'applique aux comptes afférents aux exercices ouverts à compter du 1er janvier 2027. »",
      "src": "Règlement ANC n° 2026-03 du 6 mars 2026, art. 4 ; arrêté du 12 août 2026",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrats à long terme à compter de 2027</b> : le règlement ANC n° 2026-03 abroge la section du PCG consacrée aux contrats à long terme (art. 622-1 et suivants) et reprend leur régime dans une nouvelle section (art. 523-1 à 523-8) : la définition (projet unique dont l'exécution s'étend sur au moins deux périodes comptables ou exercices) et le choix entre méthode à l'achèvement et méthode à l'avancement sont maintenus ; quelle que soit la méthode, la perte globale probable reste provisionnée, sous déduction des pertes éventuellement déjà constatées.",
+     "cite": "« La section 2 « Contrats à long terme » du chapitre II du titre VI est abrogée. »",
+     "src": "Règlement ANC n° 2026-03 du 6 mars 2026 (PCG, art. 523-1 à 523-8) ; arrêté du 12 août 2026",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/2026_03-JO.pdf",
      "fiab": "stable"
     }
@@ -342,9 +353,9 @@
      "fiab": "stable"
     },
     {
-     "t": "Lorsqu'une créance ou une dette en devises est couverte (par exemple par une vente ou un achat à terme de devises), la perte latente n'est provisionnée qu'à concurrence du risque non couvert ; la comptabilisation des instruments financiers à terme et des opérations de couverture relève du règlement ANC n° 2015-05.",
-     "src": "PCG, art. 420-6 ; règlement ANC n° 2015-05",
-     "url": null,
+     "t": "Lorsqu'une créance ou une dette en devises est couverte (par exemple par une vente ou un achat à terme de devises), les effets de la couverture sont reconnus de manière symétrique à ceux de l'élément couvert ; les différences de conversion compensées par la couverture sont isolées dans les sous-comptes 4768 et 4778 « Différences compensées par couverture de change », et une perte latente qualifiée d'instrument de couverture ne donne lieu à aucune provision. La comptabilisation des instruments financiers à terme et des opérations de couverture relève du règlement ANC n° 2015-05.",
+     "src": "PCG, art. 420-6 et 628-11 ; plan de comptes 2026, comptes 4768 et 4778 ; règlement ANC n° 2015-05",
+     "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
@@ -360,8 +371,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Vocabulaire, changement de méthode et changement d'estimation</b> : depuis le règlement ANC n° 2018-01, le PCG parle de « méthode de référence » et non plus de « méthode préférentielle ». Le passage de l'achèvement à l'avancement, méthode de référence, est un changement de méthode à l'initiative de l'entité qui n'a pas à être justifié et qui est irréversible ; son effet, calculé de façon rétrospective, est imputé en report à nouveau à l'ouverture, sauf si des règles fiscales imposent de le comptabiliser en résultat. La révision du coût total estimé d'un contrat est en revanche un changement d'estimation, qui n'a d'effet que sur l'exercice en cours et les exercices futurs.",
-     "src": "PCG, art. 121-5, 122-2, 122-3 et 122-5 ; règlement ANC n° 2018-01",
+     "t": "<b>Vocabulaire, changement de méthode et changement d'estimation</b> : depuis le règlement ANC n° 2018-01, le PCG parle de « méthode de référence » et non plus de « méthode préférentielle ». Le passage de l'achèvement à l'avancement, méthode de référence, est un changement de méthode à l'initiative de l'entité qui n'a pas à être justifié et qui est irréversible ; la décision d'adopter la méthode à l'avancement porte sur tous les contrats en cours à cette date et son effet, calculé de façon rétrospective, est imputé en report à nouveau à l'ouverture, sauf si des règles fiscales imposent de le comptabiliser en résultat. La révision du coût total estimé d'un contrat, comme les modalités retenues pour mesurer son avancement, relève en revanche des estimations : elle n'a d'effet que sur l'exercice en cours et les exercices futurs.",
+     "src": "PCG, art. 121-5, 122-2, 122-3, 122-5 et 622-7 ; règlement ANC n° 2018-01",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/Recueils/PCG_janvier2026/PCG--1er-janvier-2026.pdf",
      "fiab": "stable"
     }

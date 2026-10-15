@@ -60,7 +60,7 @@
   },
   {
    "h": "Logiciels et sites internet",
-   "html": "<p>Un <b>logiciel acquis</b> est une immobilisation incorporelle (205) amortie sur sa durée d'utilisation ; un logiciel indissociable d'un matériel suit le matériel. Depuis le règlement ANC n° 2023-05, logiciels et sites internet relèvent des règles communes aux <b>solutions informatiques</b> (PCG art. 611-1 à 611-8 et 612-1). Une solution <b>créée</b> pour un usage interne ou commercial peut être immobilisée à son coût de production lorsque les conditions d'activation sont réunies : les coûts des <b>études préliminaires</b> restent en charges et l'activation cesse lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction. En pratique :</p><table><thead><tr><th>Phase</th><th>Traitement</th></tr></thead><tbody><tr><td>Études préliminaires (étude préalable)</td><td>Charges</td></tr><tr><td>Conception détaillée (analyse organique), programmation, tests, documentation technique</td><td>Coût de production immobilisé</td></tr><tr><td>Formation des utilisateurs, maintenance</td><td>Charges</td></tr></tbody></table><p>Les <b>sites internet</b> (art. 612-1) suivent les mêmes règles que les autres solutions informatiques : les coûts de création d'un site sont activables lorsque les conditions d'activation sont réunies, les études préliminaires restant en charges.</p><p>Exemple : Codex achève un logiciel de gestion interne dont le coût de production activable s'élève à <span class=\"mono\">24 000 €</span>.</p>",
+   "html": "<p>Un <b>logiciel acquis</b> est une immobilisation incorporelle (205) amortie sur sa durée d'utilisation ; un logiciel indissociable d'un matériel suit le matériel. Depuis le règlement ANC n° 2023-05, logiciels et sites internet relèvent des règles communes aux <b>solutions informatiques</b> (PCG art. 611-1 à 611-8 ; les anciens articles 600-1 à 612-4 sont abrogés). Une solution <b>créée</b> pour un usage interne ou commercial peut être immobilisée à son coût de production lorsque les conditions d'activation sont réunies : les coûts des <b>études préliminaires</b> restent en charges et l'activation cesse lorsque la solution est en état de fonctionner selon l'utilisation prévue par la direction. En pratique :</p><table><thead><tr><th>Phase</th><th>Traitement</th></tr></thead><tbody><tr><td>Études préliminaires (étude préalable)</td><td>Charges</td></tr><tr><td>Conception détaillée (analyse organique), programmation, tests, documentation technique</td><td>Coût de production immobilisé</td></tr><tr><td>Formation des utilisateurs, maintenance</td><td>Charges</td></tr></tbody></table><p>Les <b>sites internet</b>, que le PCG ne distingue plus (la notion de solution informatique remplace celles de logiciel et de site internet), suivent les mêmes règles que les autres solutions informatiques : les coûts de création d'un site sont activables lorsque les conditions d'activation sont réunies, les études préliminaires restant en charges.</p><p>Exemple : Codex achève un logiciel de gestion interne dont le coût de production activable s'élève à <span class=\"mono\">24 000 €</span>.</p>",
    "entry": [
     {
      "a": "205",
@@ -115,7 +115,7 @@
    "note": "Frais de développement (six critères) ; frais d'établissement"
   },
   {
-   "ref": "PCG art. 611-1 à 611-8 et 612-1 (règlement ANC n° 2023-05)",
+   "ref": "PCG art. 611-1 à 611-8 (règlement ANC n° 2023-05)",
    "note": "Solutions informatiques : logiciels et sites internet"
   },
   {
@@ -582,8 +582,8 @@
     "Comptabilisés en frais d'établissement"
    ],
    "a": 1,
-   "why": "PCG art. 612-1 (règlement ANC n° 2023-05) : les solutions informatiques utilisées dans les sites internet suivent les règles des articles 611-1 à 611-8 ; les coûts de création d'un site sont activables lorsque les conditions d'activation sont réunies, les études préliminaires restant en charges. Un site n'est donc ni systématiquement une charge de publicité, ni un matériel (2183), ni un frais d'établissement (201).",
-   "src": "PCG art. 612-1 (règlement ANC n° 2023-05)",
+   "why": "Règlement ANC n° 2023-05 : la notion de « solution informatique » remplace celles de « logiciel » et de « site internet » (anciens art. 600-1 à 612-4 du PCG abrogés). Les coûts de création d'un site suivent donc les articles 611-1 à 611-8 : ils sont activables lorsque les conditions d'activation sont réunies, les études préliminaires restant en charges. Un site n'est donc ni systématiquement une charge de publicité, ni un matériel (2183), ni un frais d'établissement (201).",
+   "src": "PCG art. 611-1 à 611-8 (règlement ANC n° 2023-05)",
    "fiab": "stable",
    "niveau": 2
   },

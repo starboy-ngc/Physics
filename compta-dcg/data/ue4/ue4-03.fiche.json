@@ -58,26 +58,26 @@
   {
    "ref": "CGI, art. 50-0",
    "objet": "Régime des micro-entreprises (micro-BIC) : seuils actualisés tous les trois ans (sauf celui des meublés de tourisme non classés), abattements de 71 %, 50 % et 30 %",
-   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006199553",
-   "version": "en vigueur (section « Régime des micro-entreprises », version courante ; 1° bis issu de la loi n° 2024-1039 du 19 novembre 2024, art. 7) ; seuils 2026-2028 de 203 100 € et 83 600 € au BOI-BAREME-000044 du 19 août 2026"
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006199553/",
+   "version": "en vigueur depuis le 16 février 2025 (sous-section « Régime des micro-entreprises » ; 1° bis issu de la loi n° 2024-1039 du 19 novembre 2024, art. 7) ; seuils actualisés pour 2026 à 2028 (203 100 € et 83 600 €) publiés au BOI-BAREME-000044 du 19 août 2026"
   },
   {
    "ref": "CGI, art. 302 septies A bis ; BOI-BAREME-000044",
    "objet": "Régime simplifié d'imposition : limites de chiffre d'affaires (840 000 € / 254 000 € de 2023 à 2025 ; 945 000 € / 286 000 € de 2026 à 2028) ; barème officiel des seuils des régimes BA, BIC et BNC",
    "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
-   "version": "BOFiP du 19 août 2026 (révision triennale des seuils intervenue au 1er janvier 2026)"
+   "version": "BOFiP du 19 août 2026 (révision triennale des seuils au 1er janvier 2026, montants 2026-2028 repris par economie.gouv.fr)"
   },
   {
    "ref": "CGI, art. 151 septies ; BOI-BIC-PVMV-40-10-10-30",
    "objet": "Exonération des plus-values des petites entreprises en fonction des recettes (totale jusqu'à 250 000 € ou 90 000 €, dégressive jusqu'à 350 000 € ou 126 000 €) ; non-cumul avec l'article 238 quindecies",
    "url": "https://bofip.impots.gouv.fr/bofip/6230-PGP.html/identifiant=BOI-BIC-PVMV-40-10-10-30-20250723",
-   "version": "BOFiP du 23 juillet 2025 (l'identifiant Légifrance de 2018 de l'art. 151 septies est retiré : article modifié depuis)"
+   "version": "article en vigueur depuis le 16 février 2025 (seuils des activités agricoles relevés par la loi n° 2025-127 du 14 février 2025, art. 70) ; commentaire BOFiP du 23 juillet 2025"
   },
   {
    "ref": "CGI, art. 238 quindecies ; BOI-BIC-PVMV-40-20-50",
-   "objet": "Exonération des plus-values de transmission d'une entreprise individuelle ou d'une branche complète d'activité : totale jusqu'à 500 000 €, partielle jusqu'à 1 000 000 €",
+   "objet": "Exonération, sur option, des plus-values de transmission d'une entreprise individuelle ou d'une branche complète d'activité : totale jusqu'à 500 000 €, partielle jusqu'à 1 000 000 €",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051216496",
-   "version": "en vigueur depuis le 16 février 2025 ; commentaire BOFiP du 23 juillet 2025 (BOI-BIC-PVMV-40-20-50)"
+   "version": "en vigueur depuis le 16 février 2025 (loi n° 2025-127 du 14 février 2025, art. 70) ; commentaire BOFiP du 23 juillet 2025 (BOI-BIC-PVMV-40-20-50)"
   },
   {
    "ref": "CGI, art. 156, I",
@@ -89,7 +89,7 @@
    "ref": "CGI, art. 154 quinquies",
    "objet": "CSG déductible de l'exploitant (6,8 points)",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
-   "version": "en vigueur (version en vigueur depuis le 27 juin 2026 ; fraction déductible de 6,8 points)"
+   "version": "en vigueur depuis le 27 juin 2026 (loi n° 2026-534 du 25 juin 2026, art. 65) ; fraction déductible de 6,8 points"
   },
   {
    "ref": "BOI-BIC-AMT-20-40-50",
@@ -126,7 +126,7 @@
      "t": "<b>Micro-BIC</b> : régime applicable lorsque le chiffre d'affaires hors taxes de l'année civile précédente ou de l'avant-dernière année n'excède pas les seuils de l'article 50-0 (il n'est donc perdu qu'après deux années consécutives de dépassement). Le bénéfice est égal au chiffre d'affaires diminué d'un abattement de 71 % pour les ventes et de 50 % pour les prestations de services (30 % pour les meublés de tourisme non classés), chaque abattement ne pouvant être inférieur à 305 €. Les seuils sont actualisés tous les trois ans, sauf celui des meublés de tourisme non classés.",
      "cite": "« les seuils mentionnés au présent 1, à l'exception du seuil prévu au 1° bis, sont actualisés tous les trois ans »",
      "src": "CGI, art. 50-0, 1",
-     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006199553",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006199553/",
      "fiab": "stable"
     },
     {
@@ -169,8 +169,8 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Rémunération de l'exploitant individuel</b> : elle n'est pas une charge déductible (il s'agit d'une affectation du résultat) et doit être réintégrée si elle a été comptabilisée en charge. Le salaire du conjoint qui participe effectivement à l'exercice de la profession est déductible, à condition d'avoir donné lieu au versement des cotisations sociales.",
-     "src": "CGI, art. 154 ; BOFiP « Rémunérations de l'exploitant individuel, des associés de sociétés et des membres de leurs familles »",
+     "t": "<b>Rémunération de l'exploitant individuel</b> : elle n'est pas une charge déductible (il s'agit d'une affectation du résultat) et doit être réintégrée si elle a été comptabilisée en charge. Le salaire du conjoint qui participe effectivement à l'exercice de la profession est déductible, à condition d'avoir donné lieu au versement des cotisations sociales. La limite de 17 500 € qui visait les exploitants non adhérents d'un organisme de gestion agréé (version de l'article 154 en vigueur du 1er janvier 2016 au 31 décembre 2018) ne figure plus dans le texte en vigueur.",
+     "src": "CGI, art. 154, I (version en vigueur depuis le 1er janvier 2019) ; BOFiP « Rémunérations de l'exploitant individuel, des associés de sociétés et des membres de leurs familles »",
      "url": "https://bofip.impots.gouv.fr/bofip/1022-PGP.html",
      "fiab": "stable"
     },
@@ -243,10 +243,11 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Transmission d'entreprise (art. 238 quindecies)</b> : les plus-values réalisées lors de la transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins cinq ans sont exonérées en totalité lorsque la valeur des éléments transmis n'excède pas <span class=\"mono\">500 000 €</span>, et partiellement lorsqu'elle est comprise entre 500 000 € et <span class=\"mono\">1 000 000 €</span> (fraction exonérée : (1 000 000 € − valeur) / 500 000 €). Les plus-values afférentes aux biens immobiliers restent imposables dans les conditions de droit commun. Ce régime ne peut pas se cumuler avec l'exonération de l'article 151 septies.",
-     "src": "CGI, art. 238 quindecies ; BOI-BIC-PVMV-40-20-50 ; BOI-BIC-PVMV-40-10-10-30 (non-cumul)",
+     "t": "<b>Transmission d'entreprise (art. 238 quindecies)</b> : sur option, les plus-values réalisées lors de la transmission d'une entreprise individuelle ou d'une branche complète d'activité exercée depuis au moins cinq ans sont exonérées en totalité lorsque la valeur des éléments transmis n'excède pas <span class=\"mono\">500 000 €</span>, et partiellement lorsqu'elle est comprise entre 500 000 € et <span class=\"mono\">1 000 000 €</span> (fraction exonérée : (1 000 000 € − valeur) / 500 000 €). Les plus-values afférentes aux biens immobiliers restent imposables dans les conditions de droit commun. Ce régime ne peut pas se cumuler avec l'exonération de l'article 151 septies.",
+     "src": "CGI, art. 238 quindecies, I (version en vigueur depuis le 16 février 2025) ; BOI-BIC-PVMV-40-20-50 ; BOI-BIC-PVMV-40-10-10-30 (non-cumul)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051216496",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« La totalité de leur montant lorsque le prix stipulé des éléments transmis ou leur valeur vénale, auxquels sont ajoutées les charges en capital et les indemnités stipulées au profit du cédant, à quelque titre et pour quelque cause que ce soit, est inférieur ou égal à 500 000 € »"
     },
     {
      "t": "<b>Déficit BIC</b> : le déficit professionnel s'impute sur le revenu global de l'année, l'excédent étant reporté sur le revenu global jusqu'à la sixième année inclusivement ; les déficits BIC non professionnels (activité à laquelle l'exploitant ne participe pas personnellement, continûment et directement) ne s'imputent que sur les bénéfices de même nature, sur dix années pour les déficits de location meublée non professionnelle.",
@@ -256,7 +257,7 @@
     },
     {
      "t": "<b>CSG de l'exploitant</b> : la CSG assise sur le revenu d'activité de l'exploitant est déductible à hauteur de 6,8 points ; le surplus et la CRDS ne sont pas déductibles.",
-     "src": "CGI, art. 154 quinquies (version en vigueur depuis le 27 juin 2026)",
+     "src": "CGI, art. 154 quinquies (version en vigueur depuis le 27 juin 2026, loi n° 2026-534 du 25 juin 2026)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
      "fiab": "stable"
     },
@@ -273,10 +274,9 @@
    "items": [
     {
      "t": "<b>Seuils des régimes BIC</b> : micro-BIC jusqu'à <span class=\"mono\">188 700 €</span> (ventes, fourniture de logement) et <span class=\"mono\">77 700 €</span> (autres activités) pour 2023 à 2025, <span class=\"mono\">203 100 €</span> et <span class=\"mono\">83 600 €</span> pour 2026 à 2028 ; réel simplifié jusqu'à <span class=\"mono\">840 000 €</span> et <span class=\"mono\">254 000 €</span> pour 2023 à 2025, <span class=\"mono\">945 000 €</span> et <span class=\"mono\">286 000 €</span> pour 2026 à 2028 ; <span class=\"mono\">15 000 €</span> pour la location de meublés de tourisme non classés (seuil non actualisé).",
-     "src": "CGI, art. 50-0, 1 et 302 septies A bis ; BOI-BAREME-000044 (19 août 2026) ; impots.gouv.fr ; economie.gouv.fr",
-     "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
-     "fiab": "millésimé 2026",
-     "cite": "« Supérieur à 203 100 € et inférieur ou égal à 945 000 € »"
+     "src": "CGI, art. 50-0, 1 et 302 septies A bis ; BOI-BAREME-000044 (19 août 2026) ; economie.gouv.fr, régime réel simplifié ; impots.gouv.fr (seuils 2023-2025)",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-sa-fiscalite-et-ses-impots/limpot-sur-les-benefices-ir-et/imposition-des-entreprises-quest-ce-que-le-regime-reel-simplifie",
+     "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Plafonds d'amortissement des véhicules de tourisme</b> (émissions mesurées selon la méthode WLTP, véhicules acquis depuis le 1er janvier 2021) : <span class=\"mono\">30 000 €</span> si les émissions sont inférieures à 20 g/km ; <span class=\"mono\">20 300 €</span> de 20 à 49 g/km ; <span class=\"mono\">18 300 €</span> de 50 à 160 g/km ; <span class=\"mono\">9 900 €</span> au-delà de 160 g/km.",
@@ -310,10 +310,10 @@
    "items": [
     {
      "t": "<b>Seuils 2026-2028</b> : la révision triennale des seuils (articles 50-0 et 302 septies A bis) porte le micro-BIC de 188 700 € / 77 700 € à 203 100 € / 83 600 € et le régime simplifié de 840 000 € / 254 000 € à 945 000 € / 286 000 €, pour les années 2026 à 2028. Le seuil de 15 000 € des meublés de tourisme non classés n'est pas actualisé.",
-     "src": "CGI, art. 50-0, 1 et 302 septies A bis ; BOI-BAREME-000044 (19 août 2026) ; BOFiP, ACTU-2025-00127",
+     "src": "CGI, art. 50-0, 1 et 302 septies A bis ; BOI-BAREME-000044 (19 août 2026) ; BOFiP, ACTU-2025-00127 ; economie.gouv.fr",
      "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
      "fiab": "millésimé 2026",
-     "cite": "« La révision triennale des seuils des régimes d'imposition applicables aux bénéfices industriels et commerciaux (BIC), aux bénéfices agricoles (BA) et aux bénéfices non commerciaux (BNC), ainsi que la révision des seuils relatifs à la dispense de bilan, est intervenue au 1er janvier 2026. »"
+     "cite": "« les seuils mentionnés au présent 1, à l'exception du seuil prévu au 1° bis, sont actualisés tous les trois ans »"
     },
     {
      "t": "<b>Loi n° 2024-1039 du 19 novembre 2024 (art. 7)</b> : à compter des revenus 2025, les meublés de tourisme non classés relèvent d'un seuil de micro-BIC de 15 000 € et d'un abattement de 30 % ; les meublés de tourisme classés et les chambres d'hôtes relèvent, comme les autres locations meublées, du seuil des autres activités (77 700 € en 2025, 83 600 € en 2026) et de l'abattement de 50 %.",
@@ -330,7 +330,7 @@
     {
      "t": "<b>Fonds commerciaux</b> : par dérogation, l'amortissement comptable des fonds commerciaux acquis entre le 1er janvier 2022 et le 31 décembre 2029 est déductible ; l'article 13 de la loi n° 2026-103 du 19 février 2026 de finances pour 2026 a prorogé de quatre ans ce dispositif, qui visait jusque-là les fonds acquis au plus tard le 31 décembre 2025 (exercices clos à compter du 1er janvier 2026). Les fonds acquis auprès d'une entreprise liée ou placée sous le contrôle de la même personne physique sont exclus.",
      "cite": "« Le présent alinéa ne s'applique pas aux fonds acquis auprès d'une entreprise liée au sens du 12 »",
-     "src": "CGI, art. 39, 1-2° ; loi n° 2026-103 du 19 février 2026, art. 13 ; BOFiP, ACTU-2026-00042",
+     "src": "CGI, art. 39, 1-2° ; loi n° 2026-103 du 19 février 2026, art. 13, III ; BOFiP, ACTU-2026-00042 (5 août 2026)",
      "url": "https://bofip.impots.gouv.fr/bofip/14980-PGP.html/ACTU-2026-00042",
      "fiab": "millésimé 2026"
     },
@@ -338,12 +338,12 @@
      "t": "<b>LFSS 2026 et plus-values à long terme</b> : la loi n° 2025-1403 du 30 décembre 2025 de financement de la sécurité sociale pour 2026 porte la CSG sur les revenus du patrimoine de 9,2 % à 10,6 %, à compter des revenus 2025. Les plus-values nettes à long terme des BIC taxées à 12,8 % supportent ainsi <span class=\"mono\">18,6 %</span> de prélèvements sociaux (CSG 10,6 %, CRDS 0,5 %, prélèvement de solidarité 7,5 %), soit 31,4 % au total ; leur exonération d'impôt sur le revenu lors d'un départ à la retraite ne vaut pas exonération de prélèvements sociaux.",
      "src": "Loi n° 2025-1403 du 30 décembre 2025, art. 12 (CSS, art. L. 136-8) ; brochure pratique IR 2026, revenus et plus-values des professions non salariées",
      "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/11-revenus_non_salaries_161a182.pdf",
-     "fiab": "millésimé 2025"
+     "fiab": "millésimé 2025",
+     "cite": "« Les prélèvements sociaux (CSG de 10,6 %, CRDS de 0,5 % et prélèvement de solidarité de 7,5 %) seront mis en recouvrement par l'administration fiscale. »"
     },
     {
-     "t": "<b>Réforme de l'assiette sociale des indépendants</b> : à compter de la régularisation des cotisations 2025 (avril 2026), les cotisations sociales et la CSG-CRDS de l'exploitant sont calculées sur une assiette unique, le revenu brut abattu de 26 % ; la part de CSG-CRDS diminue, compensée notamment par une hausse de la cotisation retraite. Les micro-entrepreneurs conservent leur propre base de calcul.",
-     "cite": "« Cette réforme diminue le montant de la CSG-CRDS due tout en étant compensée notamment par l'augmentation de la cotisation retraite. »",
-     "src": "LFSS 2024, art. 18 ; LFSS 2025, art. 13 ; décret n° 2024-688 du 5 juillet 2024 ; urssaf.fr",
+     "t": "<b>Réforme de l'assiette sociale des indépendants</b> : à compter de la régularisation des cotisations 2025, effectuée en 2026, les cotisations sociales et la CSG-CRDS de l'exploitant sont calculées sur une assiette unique, le revenu brut social diminué d'un abattement forfaitaire de 26 %. L'assiette de la CSG-CRDS diminue, les cotisations sociales n'y étant plus réintégrées ; les barèmes des cotisations maladie et retraite sont relevés en compensation. Les exploitants relevant d'un régime micro conservent leur abattement forfaitaire propre au lieu de l'abattement de 26 %.",
+     "src": "LFSS 2024 (loi n° 2023-1250 du 26 décembre 2023), art. 18 ; décret n° 2024-688 du 5 juillet 2024 ; urssaf.fr",
      "url": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/reforme-cotisations-independants.html",
      "fiab": "millésimé 2026"
     }
@@ -375,7 +375,7 @@
      "src": "CGI, art. 39, 1-5°",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053542680",
      "fiab": "stable",
-     "cite": "« Dans ce cas, les provisions sont, s'il y a lieu, rapportées aux résultats du plus ancien des exercices soumis à vérification. »"
+     "cite": "« rapportées aux résultats du plus ancien des exercices soumis à vérification »"
     },
     {
      "t": "<b>Plafond des véhicules : norme d'homologation et date d'acquisition</b> : les bornes de CO2 diffèrent selon que les émissions du véhicule sont mesurées selon l'ancien dispositif (NEDC) ou selon la méthode WLTP. Pour un véhicule NEDC acquis depuis le 1er janvier 2021, le plafond de 20 300 € vise les émissions de 20 à moins de 60 g/km et celui de 9 900 € les émissions supérieures à 130 g/km. La fraction non déductible se réintègre chaque année pendant toute la durée d'amortissement.",

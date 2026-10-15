@@ -13,7 +13,7 @@
   },
   {
    "h": "Méthodes de valorisation des sorties : CMP et PEPS",
-   "html": "<p>Pour les biens interchangeables, le PCG admet deux méthodes (art. 213-34) : le <b>coût moyen pondéré</b> (CMP), calculé <b>après chaque entrée</b> ou <b>en fin de période</b>, et le <b>premier entré, premier sorti</b> (PEPS ou FIFO). La méthode du dernier entré, premier sorti (LIFO) est interdite dans les comptes individuels. </p><p>Exemple (article Z) : stock initial <span class=\"mono\">100 unités à 10 €</span> ; entrée le 1er mars <span class=\"mono\">200 à 13 €</span> ; sortie le 15 mars <span class=\"mono\">150</span> ; entrée le 1er avril <span class=\"mono\">100 à 16 €</span> ; sortie le 20 avril <span class=\"mono\">200</span>. Stock final : 50 unités.</p><table><thead><tr><th>Méthode</th><th>Calcul</th><th>Stock final</th></tr></thead><tbody><tr><td>CMP après chaque entrée</td><td>(1 000 + 2 600)/300 = 12 ; puis (150 × 12 + 1 600)/250 = 13,60</td><td>50 × 13,60 = 680</td></tr><tr><td>CMP fin de période</td><td>(1 000 + 2 600 + 1 600)/400 = 13</td><td>50 × 13 = 650</td></tr><tr><td>PEPS</td><td>Les 50 unités restantes sont les dernières entrées (16 €)</td><td>50 × 16 = 800</td></tr></tbody></table><p>En période de hausse des prix, le PEPS donne le stock final le plus élevé et donc le résultat le plus fort ; le CMP lisse les variations. Le choix doit être permanent ; le fisc admet les deux (CGI ann. III, art. 38 nonies).</p>"
+   "html": "<p>Pour les biens interchangeables, le PCG admet deux méthodes (art. 213-34) : le <b>coût moyen pondéré</b> (CMP), calculé <b>après chaque entrée</b> ou <b>en fin de période</b> (période n'excédant pas la durée moyenne de stockage), et le <b>premier entré, premier sorti</b> (PEPS ou FIFO). La méthode du dernier entré, premier sorti (LIFO) est interdite dans les comptes individuels. </p><p>Exemple (article Z) : stock initial <span class=\"mono\">100 unités à 10 €</span> ; entrée le 1er mars <span class=\"mono\">200 à 13 €</span> ; sortie le 15 mars <span class=\"mono\">150</span> ; entrée le 1er avril <span class=\"mono\">100 à 16 €</span> ; sortie le 20 avril <span class=\"mono\">200</span>. Stock final : 50 unités.</p><table><thead><tr><th>Méthode</th><th>Calcul</th><th>Stock final</th></tr></thead><tbody><tr><td>CMP après chaque entrée</td><td>(1 000 + 2 600)/300 = 12 ; puis (150 × 12 + 1 600)/250 = 13,60</td><td>50 × 13,60 = 680</td></tr><tr><td>CMP fin de période</td><td>(1 000 + 2 600 + 1 600)/400 = 13</td><td>50 × 13 = 650</td></tr><tr><td>PEPS</td><td>Les 50 unités restantes sont les dernières entrées (16 €)</td><td>50 × 16 = 800</td></tr></tbody></table><p>En période de hausse des prix, le PEPS donne le stock final le plus élevé et donc le résultat le plus fort ; le CMP lisse les variations. Le choix doit être permanent ; le fisc admet les deux pour les articles interchangeables non identifiables (BOI-BIC-PDSTK-20-20-10-10).</p>"
   },
   {
    "h": "Inventaire intermittent, variation de stocks et dépréciation",
@@ -73,7 +73,7 @@
   },
   {
    "h": "Opérations en devises : conversion et écarts à la clôture",
-   "html": "<p>Les créances et dettes libellées en monnaie étrangère sont converties en euros au <b>cours du jour</b> de l'opération (PCG art. 420-1 s.), ou au cours de couverture si l'opération est couverte. À la <b>clôture</b>, elles sont réévaluées au cours de clôture ; la différence avec la valeur d'entrée est portée dans des comptes transitoires de bilan :</p><ul><li><b>476 Différences de conversion – Actif</b> : pertes latentes (baisse d'une créance, hausse d'une dette) ;</li><li><b>477 Différences de conversion – Passif</b> : gains latents.</li></ul><p>Par prudence, les <b>pertes latentes</b> donnent lieu à une <b>provision pour pertes de change</b> : débit 6865, crédit <b>1515</b> (compte maintenu par le PCG 2025). Les <b>gains latents</b> ne sont pas comptabilisés en résultat. La provision peut être limitée en cas de couverture de change, de position globale de change par devise et par échéance, ou d'emprunt en devises finançant une immobilisation (étalement). À l'ouverture de l'exercice suivant, les écarts 476/477 sont <b>contrepassés</b>. Les disponibilités en devises sont converties au cours de clôture directement par 666/766.</p><p>Exemple : créance de <span class=\"mono\">10 000 USD</span> comptabilisée à <span class=\"mono\">0,92 €</span> (9 200 €) ; cours de clôture <span class=\"mono\">0,90 €</span> (9 000 €). Perte latente 200 €.</p>",
+   "html": "<p>Les créances et dettes libellées en monnaie étrangère sont converties en euros au <b>cours du jour</b> de l'opération (PCG art. 420-1 s.) ; si l'opération est couverte, les règles de la comptabilité de couverture s'appliquent (PCG art. 628-1 s., issus du règlement ANC 2015-05). À la <b>clôture</b>, elles sont réévaluées au cours de clôture ; la différence avec la valeur d'entrée est portée dans des comptes transitoires de bilan :</p><ul><li><b>476 Différences de conversion – Actif</b> : pertes latentes (baisse d'une créance, hausse d'une dette) ;</li><li><b>477 Différences de conversion – Passif</b> : gains latents.</li></ul><p>Par prudence, les <b>pertes latentes</b> donnent lieu à une <b>provision pour pertes de change</b> : débit 6865, crédit <b>1515</b> (compte maintenu par le PCG 2025). Les <b>gains latents</b> ne sont pas comptabilisés en résultat. La provision peut être limitée en cas de couverture de change, de position globale de change par devise et par échéance, ou d'emprunt en devises finançant une immobilisation (étalement). À l'ouverture de l'exercice suivant, les écarts 476/477 sont <b>contrepassés</b>. Les disponibilités en devises sont converties au cours de clôture directement par 666/766.</p><p>Exemple : créance de <span class=\"mono\">10 000 USD</span> comptabilisée à <span class=\"mono\">0,92 €</span> (9 200 €) ; cours de clôture <span class=\"mono\">0,90 €</span> (9 000 €). Perte latente 200 €.</p>",
    "entry": [
     {
      "a": "476",
@@ -100,7 +100,7 @@
   },
   {
    "h": "Écarts de change réalisés, couverture et fiscalité",
-   "html": "<p>Au <b>règlement</b>, la différence entre le montant encaissé ou décaissé en euros et la valeur comptable d'origine est un écart de change <b>réalisé</b>. Sur une créance client ou une dette fournisseur, il relève du résultat d'exploitation : <b>656 Pertes de change sur créances et dettes commerciales</b> ou <b>756 Gains de change sur créances et dettes commerciales</b>. Sur une opération financière (emprunt, prêt, disponibilités), il va en <b>666 Pertes de change financières</b> ou <b>766 Gains de change financiers</b>. La provision 1515 constituée est reprise (7865) et l'écart de conversion a été contrepassé à l'ouverture, de sorte que le résultat de N+1 ne supporte que la variation intervenue depuis la clôture, le reste étant neutralisé par la reprise.</p><p>Exemple (suite) : la créance de 10 000 USD est encaissée en N+1 à <span class=\"mono\">0,89 €</span> : 8 900 € reçus pour une créance de 9 200 €, perte de change réalisée <span class=\"mono\">300 €</span>, au débit du compte 656.</p><p><b>Couverture</b> : une vente à terme de devises fige le cours ; la créance couverte est alors maintenue au cours de couverture et aucune provision n'est nécessaire sur la partie couverte (règlement ANC 2015-05 sur les instruments financiers à terme).</p><p><b>Fiscalité</b> : les écarts de conversion sont pris en compte immédiatement dans le résultat fiscal (CGI art. 38, 4) : la perte latente (476) est déduite extra-comptablement et le gain latent (477) réintégré ; corrélativement, la provision 1515 n'est <b>pas déductible</b> (réintégration) et sa reprise est déduite. C'est une source classique de retraitements sur le tableau 2058-A.</p>",
+   "html": "<p>Au <b>règlement</b>, la différence entre le montant encaissé ou décaissé en euros et la valeur comptable d'origine est un écart de change <b>réalisé</b>. Sur une créance client ou une dette fournisseur, il relève du résultat d'exploitation : <b>656 Pertes de change sur créances et dettes commerciales</b> ou <b>756 Gains de change sur créances et dettes commerciales</b>. Sur une opération financière (emprunt, prêt, disponibilités), il va en <b>666 Pertes de change financières</b> ou <b>766 Gains de change financiers</b>. La provision 1515 constituée est reprise (7865) et l'écart de conversion a été contrepassé à l'ouverture, de sorte que le résultat de N+1 ne supporte que la variation intervenue depuis la clôture, le reste étant neutralisé par la reprise.</p><p>Exemple (suite) : la créance de 10 000 USD est encaissée en N+1 à <span class=\"mono\">0,89 €</span> : 8 900 € reçus pour une créance de 9 200 €, perte de change réalisée <span class=\"mono\">300 €</span>, au débit du compte 656.</p><p><b>Couverture</b> : une vente à terme de devises fige le cours ; les effets de la couverture sont reconnus de manière symétrique à ceux de la créance couverte (PCG art. 628-11), les différences de conversion compensées sont isolées en 4768 / 4778 « Différences compensées par couverture de change » et aucune provision n'est nécessaire sur la partie couverte (règlement ANC 2015-05 sur les instruments financiers à terme).</p><p><b>Fiscalité</b> : les écarts de conversion sont pris en compte immédiatement dans le résultat fiscal (CGI art. 38, 4) : la perte latente (476) est déduite extra-comptablement et le gain latent (477) réintégré ; corrélativement, la provision 1515 n'est <b>pas déductible</b> (réintégration) et sa reprise est déduite. C'est une source classique de retraitements sur le tableau 2058-A.</p>",
    "entry": [
     {
      "a": "512",
@@ -152,7 +152,7 @@
   },
   {
    "ref": "CGI ann. III, art. 38 nonies",
-   "note": "Évaluation fiscale des stocks (coût de revient, CMP ou PEPS)"
+   "note": "Prix de revient fiscal des stocks (coût d'acquisition ou de production)"
   },
   {
    "ref": "C. com., art. L. 123-18",
@@ -165,6 +165,14 @@
   {
    "ref": "Plan de comptes 2026, comptes 656, 756, 666 et 766",
    "note": "Écarts de change réalisés : commerciaux en exploitation (656/756), financiers en 666/766"
+  },
+  {
+   "ref": "BOI-BIC-PDSTK-20-20-10-10",
+   "note": "Valorisation fiscale des stocks : CMP ou, éventuellement, PEPS pour les articles interchangeables"
+  },
+  {
+   "ref": "PCG art. 628-11 ; plan de comptes 2026, comptes 4768 et 4778",
+   "note": "Couverture : symétrie et différences compensées par couverture de change"
   }
  ],
  "exercices": [
@@ -647,8 +655,8 @@
     1,
     2
    ],
-   "why": "PCG art. 420-6 et 420-7 : la provision peut être ajustée en cas de couverture de change (cours garanti), de position globale de change par devise (compensation des pertes et gains latents de même échéance) et d'emprunt en devises finançant une immobilisation (étalement de la perte sur la durée restante). Aucun seuil de montant n'existe et la localisation du client est indifférente.",
-   "src": "PCG art. 420-6 et 420-7",
+   "why": "PCG art. 420-6 : la provision peut être ajustée en cas de couverture de change (cours garanti), de position globale de change par devise (compensation des pertes et gains latents de même échéance) et d'emprunt en devises finançant une immobilisation (étalement de la perte sur la durée restante). Aucun seuil de montant n'existe et la localisation du client est indifférente.",
+   "src": "PCG art. 420-6",
    "fiab": "stable",
    "niveau": 3
   },

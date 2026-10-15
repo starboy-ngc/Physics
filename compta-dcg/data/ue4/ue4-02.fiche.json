@@ -15,38 +15,38 @@
   {
    "ref": "CGI, art. 79 à 83 et 81 quater",
    "objet": "Traitements et salaires : revenu imposable, exonération des heures supplémentaires, déduction forfaitaire de 10 % ou frais réels",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195916",
-   "version": "art. 81 quater en vigueur (loi n° 2022-1157 du 16 août 2022)"
+   "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
+   "version": "art. 81 quater en vigueur (plafond de 7 500 € issu de la loi n° 2022-1157 du 16 août 2022) ; impots.gouv.fr, revenus 2025"
   },
   {
    "ref": "CGI, art. 80 duodecies ; BOI-RSA-CHAMP-20-40-10-30",
    "objet": "Régime des indemnités de rupture du contrat de travail",
-   "url": "https://bofip.impots.gouv.fr/bofip/4935-PGP.html/identifiant=BOI-RSA-CHAMP-20-40-10-30-20250429",
-   "version": "BOFiP du 29 avril 2025"
+   "url": null,
+   "version": "en vigueur ; BOI-RSA-CHAMP-20-40-10-30"
   },
   {
    "ref": "CGI, art. 62 ; BOI-RSA-GER-20",
    "objet": "Rémunérations des gérants majoritaires de SARL et associés de sociétés de personnes ayant opté pour l'IS",
-   "url": "https://bofip.impots.gouv.fr/bofip/6347-PGP.html/identifiant=BOI-RSA-GER-20-20120912",
-   "version": "BOFiP du 12 septembre 2012"
+   "url": null,
+   "version": "en vigueur ; BOI-RSA-GER-20"
   },
   {
    "ref": "CGI, art. 158, 5 et 6 ; BOI-RSA-PENS-30-20",
    "objet": "Pensions (abattement de 10 %) et rentes viagères à titre onéreux (fraction imposable selon l'âge)",
-   "url": "https://bofip.impots.gouv.fr/bofip/369-PGP.html/identifiant=BOI-RSA-PENS-30-20-20170711",
-   "version": "BOFiP du 11 juillet 2017"
+   "url": "https://www.impots.gouv.fr/particulier/pensions-de-retraite",
+   "version": "en vigueur ; impots.gouv.fr, revenus 2025 déclarés en 2026"
   },
   {
    "ref": "CGI, art. 117 quater, 125 A, 158, 3-2° et 200 A ; BOI-RPPM-RCM-20-10-30-10",
    "objet": "Revenus de capitaux mobiliers : prélèvement forfaitaire non libératoire, PFU, option pour le barème et abattement de 40 %",
-   "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
-   "version": "BOFiP du 20 décembre 2019"
+   "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/08-RCM_121a136.pdf",
+   "version": "Brochure pratique IR 2026 (revenus 2025), revenus soumis à un prélèvement forfaitaire"
   },
   {
    "ref": "CGI, art. 242 quater",
    "objet": "Dispense du prélèvement forfaitaire non libératoire sous condition de revenu fiscal de référence",
-   "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-beneficier-dune-dispense-du-prelevement-forfaitaire-non-liberatoire",
-   "version": "impots.gouv.fr, revenus 2025"
+   "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
+   "version": "impots.gouv.fr, 2026"
   },
   {
    "ref": "CGI, art. 32 et 156, I-3° ; BOI-RFPI-BASE-30-20",
@@ -55,38 +55,38 @@
    "version": "BOFiP du 16 septembre 2025"
   },
   {
-   "ref": "CGI, art. 150 U et 150 VC ; BOI-RFPI-PVI-20-20",
+   "ref": "CGI, art. 150 U et 150 VC",
    "objet": "Plus-values immobilières des particuliers : exonérations, abattements pour durée de détention",
-   "url": "https://bofip.impots.gouv.fr/bofip/292-PGP.html/identifiant=BOI-RFPI-PVI-20-20-20230718",
-   "version": "BOFiP du 18 juillet 2023 ; art. 150 VC en vigueur"
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197216",
+   "version": "en vigueur (Légifrance, section des art. 150 A bis à 150 VH)"
   },
   {
    "ref": "CGI, art. 1609 nonies G ; BOI-RFPI-TPVIE-20",
    "objet": "Taxe sur les plus-values immobilières élevées (au-delà de 50 000 €)",
-   "url": "https://bofip.impots.gouv.fr/bofip/8597-PGP.html/identifiant=BOI-RFPI-TPVIE-20-20130806",
-   "version": "BOFiP du 6 août 2013"
+   "url": "https://bofip.impots.gouv.fr/bofip/8597-PGP.html/identifiant=BOI-RFPI-TPVIE-20-20180824",
+   "version": "BOFiP du 24 août 2018"
   },
   {
    "ref": "CGI, art. 150 VB ; loi n° 2025-127 du 14 février 2025 de finances pour 2025",
-   "objet": "Plus-values immobilières des particuliers : prix d'acquisition minoré des amortissements déduits par les loueurs en meublé non professionnels",
-   "url": null,
-   "version": "en vigueur (rédaction issue de la loi de finances pour 2025)"
+   "objet": "Plus-values immobilières des particuliers : majorations du prix d'acquisition et, depuis la loi de finances pour 2025, minoration des amortissements déduits par les loueurs en meublé non professionnels",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051202577",
+   "version": "en vigueur ; III ajouté par la loi n° 2025-127 du 14 février 2025, art. 84, pour les cessions réalisées à compter du 15 février 2025"
   },
   {
    "ref": "CGI, art. 150-0 A et 150-0 D ter",
    "objet": "Plus-values de cession de valeurs mobilières ; abattement fixe de 500 000 € du dirigeant partant à la retraite",
-   "url": null,
-   "version": "en vigueur (abattement fixe du dirigeant prorogé jusqu'au 31 décembre 2031 par la loi de finances pour 2025)"
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006197215/",
+   "version": "en vigueur (abattement fixe du dirigeant applicable aux cessions réalisées jusqu'au 31 décembre 2031)"
   },
   {
    "ref": "CGI, art. 157, 5° bis ; BOI-RPPM-RCM-40-50-40",
    "objet": "Plan d'épargne en actions : exonération d'IR après cinq ans",
-   "url": "https://bofip.impots.gouv.fr/bofip/2220-PGP.html/identifiant=BOI-RPPM-RCM-40-50-40-20240730",
-   "version": "BOFiP du 30 juillet 2024"
+   "url": null,
+   "version": "en vigueur ; BOI-RPPM-RCM-40-50-40"
   },
   {
    "ref": "CGI, art. 102 ter et 64 bis ; BOI-BAREME-000044",
-   "objet": "Micro-BNC (34 %) et micro-BA (87 %) : seuils 2026-2028",
+   "objet": "Micro-BNC (34 %) et micro-BA (87 %) : seuils 2026-2028 (83 600 € et 129 200 €)",
    "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
    "version": "BOFiP du 19 août 2026"
   },
@@ -97,10 +97,10 @@
    "version": "BOFiP 2025"
   },
   {
-   "ref": "CGI, art. 154 quinquies",
+   "ref": "CGI, art. 154 quinquies ; BOI-IR-BASE-20-20",
    "objet": "CSG déductible (6,8 points) sur les revenus du patrimoine soumis au barème",
-   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
-   "version": "en vigueur"
+   "url": "https://bofip.impots.gouv.fr/bofip/887-PGP.html/identifiant=BOI-IR-BASE-20-20-20170724",
+   "version": "en vigueur (6,8 points, fraction inchangée après la LFSS 2026)"
   }
  ],
  "sections": [
@@ -109,38 +109,37 @@
    "items": [
     {
      "t": "<b>Traitements et salaires</b> : rémunérations perçues en contrepartie d'un travail subordonné (salaire, primes, heures supplémentaires, avantages en nature). Le revenu net imposable est obtenu après déduction des cotisations sociales obligatoires et de la CSG déductible, puis des frais professionnels (10 % ou frais réels).",
-     "src": "CGI, art. 79, 82 et 83 ; BOI-RSA-BASE-30-50-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/2287-PGP.html/identifiant=BOI-RSA-BASE-30-50-20-20170224",
+     "src": "CGI, art. 79, 82 et 83 ; impots.gouv.fr, salaires et assimilés",
+     "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
      "fiab": "stable"
     },
     {
      "t": "<b>Rémunérations de l'article 62</b> : la rémunération du gérant majoritaire d'une SARL n'ayant pas opté pour le régime des sociétés de personnes est imposée selon les règles des traitements et salaires : déduction forfaitaire de 10 % du montant net après cotisations sociales, ou frais réels sur option.",
-     "src": "CGI, art. 62 ; impots.gouv.fr",
-     "url": "https://www.impots.gouv.fr/particulier/questions/je-suis-gerant-dune-societe-puis-je-beneficier-des-frais-reels",
+     "src": "CGI, art. 62",
+     "url": null,
      "fiab": "stable"
     },
     {
      "t": "<b>Revenus de capitaux mobiliers</b> : revenus distribués (dividendes) et produits de placements à revenu fixe (intérêts). Par défaut, ils sont soumis au prélèvement forfaitaire unique de 12,8 % ; sur option globale, ils sont retenus dans le revenu net global soumis au barème progressif.",
-     "src": "CGI, art. 200 A ; BOI-RPPM-RCM-20-10-30-10",
-     "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+     "src": "CGI, art. 200 A ; economie.gouv.fr, prélèvement forfaitaire unique",
+     "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mes-autres-impots-et-taxes/comment-fonctionne-le-prelevement",
      "fiab": "stable"
     },
     {
      "t": "<b>Micro-foncier</b> : régime applicable lorsque les loyers bruts du foyer fiscal ne dépassent pas 15 000 €, charges non comprises ; un abattement forfaitaire de 30 % représentatif de l'ensemble des charges est appliqué automatiquement. Aucun déficit ne peut être constaté sous ce régime.",
-     "cite": "« Les contribuables imposés selon le régime « micro-foncier » ne peuvent constater, par construction, de déficits fonciers. »",
      "src": "CGI, art. 32 ; BOI-RFPI-BASE-30-20",
      "url": "https://bofip.impots.gouv.fr/bofip/4142-PGP.html/identifiant=BOI-RFPI-BASE-30-20-20250916",
      "fiab": "stable"
     },
     {
      "t": "<b>Rente viagère à titre onéreux</b> : seule une fraction de la rente est imposable, fixée une fois pour toutes selon l'âge du crédirentier à l'entrée en jouissance : 70 % avant 50 ans, 50 % de 50 à 59 ans, 40 % de 60 à 69 ans, 30 % à partir de 70 ans.",
-     "src": "CGI, art. 158, 6 ; BOI-RSA-PENS-30-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/369-PGP.html/identifiant=BOI-RSA-PENS-30-20-20170711",
+     "src": "CGI, art. 158, 6",
+     "url": null,
      "fiab": "stable"
     },
     {
      "t": "<b>Micro-BNC</b> : le bénéfice imposable est égal aux recettes brutes diminuées d'un abattement forfaitaire de 34 % ; <b>micro-BA</b> : moyenne des recettes de l'année et des deux années précédentes diminuée d'un abattement de 87 %, qui ne peut être inférieur à 305 €.",
-     "cite": "« cet abattement ne peut être inférieur à 305 € »",
+     "cite": "« Cet abattement ne peut être inférieur à 305 €. »",
      "src": "CGI, art. 102 ter et 64 bis",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197191",
      "fiab": "stable"
@@ -152,46 +151,46 @@
    "items": [
     {
      "t": "<b>Heures supplémentaires</b> : les rémunérations et majorations des heures supplémentaires et complémentaires sont exonérées d'impôt sur le revenu dans une limite annuelle de <span class=\"mono\">7 500 €</span> (net imposable), applicable depuis le 1er janvier 2022 ; la fraction excédentaire est ajoutée au salaire imposable. Le plafond s'apprécie globalement en cas de pluralité d'employeurs.",
-     "src": "CGI, art. 81 quater",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195916",
+     "src": "CGI, art. 81 quater ; impots.gouv.fr, salaires et assimilés",
+     "url": "https://www.impots.gouv.fr/particulier/salaires-et-assimiles",
      "fiab": "stable"
     },
     {
      "t": "<b>Déduction forfaitaire de 10 %</b> : appliquée d'office sur le salaire net, avec un minimum et un plafond par salarié révisés chaque année dans la même proportion que la limite supérieure de la première tranche du barème. Le contribuable peut y renoncer pour déduire ses frais réels justifiés, auquel cas les allocations pour frais versées par l'employeur deviennent imposables.",
-     "src": "CGI, art. 83, 3° ; BOI-RSA-BASE-30-50-20",
+     "src": "CGI, art. 83, 3° ; impots.gouv.fr, déduction forfaitaire de 10 %",
      "url": "https://www.impots.gouv.fr/particulier/questions/comment-puis-je-beneficier-de-la-deduction-forfaitaire-de-10",
      "fiab": "stable"
     },
     {
      "t": "<b>Indemnité de licenciement</b> : exonérée à hauteur du plus élevé des montants suivants : l'indemnité légale ou conventionnelle ; le double de la rémunération annuelle brute de l'année civile précédant la rupture ; 50 % de l'indemnité perçue, ces deux derniers montants étant retenus dans la limite de six fois le plafond annuel de la sécurité sociale. Les indemnités versées dans le cadre d'un plan de sauvegarde de l'emploi et celles allouées par le juge pour un licenciement irrégulier ou sans cause réelle et sérieuse sont exonérées en totalité.",
      "src": "CGI, art. 80 duodecies, 1 ; BOI-RSA-CHAMP-20-40-10-30",
-     "url": "https://bofip.impots.gouv.fr/bofip/4935-PGP.html/identifiant=BOI-RSA-CHAMP-20-40-10-30-20250429",
+     "url": null,
      "fiab": "stable"
     },
     {
-     "t": "<b>Pensions de retraite</b> : abattement de 10 % distinct de celui des salaires, avec un minimum par pensionné et un plafond apprécié pour l'ensemble du foyer fiscal ; les prestations de retraite versées en capital bénéficient d'un abattement de 10 % non plafonné.",
-     "src": "CGI, art. 158, 5-a ; BOI-RSA-PENS-30-10-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/7456-PGP.html/identifiant=BOI-RSA-PENS-30-10-20-20260810",
+     "t": "<b>Pensions de retraite</b> : abattement de 10 % distinct de celui des salaires, avec un minimum par pensionné et un plafond apprécié pour l'ensemble du foyer fiscal. Les prestations de retraite versées en capital pour lesquelles le bénéficiaire opte pour le prélèvement forfaitaire de 7,5 % bénéficient d'un abattement de 10 % non plafonné.",
+     "src": "CGI, art. 158, 5-a ; impots.gouv.fr, pensions de retraite",
+     "url": "https://www.impots.gouv.fr/particulier/pensions-de-retraite",
      "fiab": "stable"
     },
     {
-     "t": "<b>Prélèvement forfaitaire non libératoire</b> : à l'encaissement, l'établissement payeur prélève un acompte d'IR de 12,8 % (et les prélèvements sociaux). Dispense possible sur attestation sur l'honneur remise avant le 30 novembre de l'année précédant le paiement, si le revenu fiscal de référence de l'avant-dernière année est inférieur aux seuils légaux ; la dispense ne concerne pas les prélèvements sociaux.",
-     "src": "CGI, art. 117 quater, 125 A et 242 quater",
-     "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-beneficier-dune-dispense-du-prelevement-forfaitaire-non-liberatoire",
+     "t": "<b>Prélèvement forfaitaire non libératoire</b> : à l'encaissement, l'établissement payeur prélève un acompte d'IR de 12,8 % (et les prélèvements sociaux). Dispense possible sur attestation sur l'honneur remise au plus tard le 30 novembre de l'année précédant celle de la perception des revenus, si le revenu fiscal de référence de l'avant-dernière année est inférieur aux seuils légaux ; la dispense ne concerne pas les prélèvements sociaux.",
+     "src": "CGI, art. 117 quater, 125 A et 242 quater ; impots.gouv.fr, revenus mobiliers",
+     "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
      "fiab": "stable"
     },
     {
      "t": "<b>PFU ou barème</b> : sous PFU, le prélèvement est calculé sur le montant brut des dividendes sans abattement de 40 %, sans déduction des frais ni de la CSG. Sur option globale pour le barème, l'abattement de 40 % s'applique aux dividendes de sociétés ayant leur siège dans l'UE ou dans un État conventionné, les frais sont déductibles et une fraction de la CSG devient déductible.",
-     "cite": "« l'abattement de 40 % prévu au 2° du 3 de l'article 158 du CGI ne s'applique qu'aux revenus distribués qui sont pris en compte dans le revenu net global soumis au barème progressif de l'impôt sur le revenu, dans les conditions prévues au 2 de l'article 200 A du CGI »",
-     "src": "CGI, art. 158, 3-2° et 200 A ; BOI-RPPM-RCM-20-10-30-10",
-     "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+     "src": "CGI, art. 158, 3-2° et 200 A ; impots.gouv.fr, valeurs mobilières",
+     "url": "https://www.impots.gouv.fr/particulier/questions/jai-des-valeurs-mobilieres-comment-sont-elles-imposees",
      "fiab": "stable"
     },
     {
-     "t": "<b>CSG déductible</b> : lorsque les revenus du patrimoine (fonciers, RCM au barème, rentes viagères à titre onéreux) sont soumis au barème progressif, la CSG correspondante est déductible du revenu global de l'année de son paiement à hauteur de 6,8 points ; elle ne l'est pas pour les revenus imposés au PFU ou à un taux proportionnel.",
-     "src": "CGI, art. 154 quinquies, I",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288608",
-     "fiab": "stable"
+     "t": "<b>CSG déductible</b> : lorsque les revenus du patrimoine (fonciers, RCM au barème, rentes viagères à titre onéreux) sont soumis au barème progressif, la CSG correspondante est déductible du revenu global de l'année de son paiement à hauteur de 6,8 points ; elle ne l'est pas pour les revenus imposés au PFU ou à un taux proportionnel. La hausse de la CSG décidée par la LFSS 2026 ne modifie pas cette fraction.",
+     "src": "CGI, art. 154 quinquies ; BOI-IR-BASE-20-20 ; brochure IR 2026, principales nouveautés",
+     "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/nouveautes.pdf",
+     "fiab": "stable",
+     "cite": "« Le taux de CSG déductible reste à 6,8 %. »"
     },
     {
      "t": "<b>Déficit foncier</b> : au régime réel, la fraction du déficit qui ne provient pas des intérêts d'emprunt s'impute sur le revenu global dans la limite de <span class=\"mono\">10 700 €</span> par an ; le surplus et la fraction liée aux intérêts se reportent sur les revenus fonciers des dix années suivantes. La limite est portée jusqu'à <span class=\"mono\">21 400 €</span> à hauteur des dépenses de rénovation énergétique faisant passer le logement d'une classe E, F ou G à une classe A à D.",
@@ -202,32 +201,32 @@
     {
      "t": "<b>Plus-values immobilières : abattement pour durée de détention</b> : pour l'impôt sur le revenu, 6 % par année de détention au-delà de la cinquième jusqu'à la vingt et unième, puis 4 % la vingt-deuxième année (exonération après 22 ans) ; pour les prélèvements sociaux, 1,65 % par an de la sixième à la vingt et unième année, 1,60 % la vingt-deuxième, puis 9 % par an au-delà (exonération après 30 ans).",
      "src": "CGI, art. 150 VC, I ; BOI-RFPI-PVI-20-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/292-PGP.html/identifiant=BOI-RFPI-PVI-20-20-20230718",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197216",
      "fiab": "stable"
     },
     {
      "t": "<b>Exonération de la résidence principale</b> : la plus-value de cession de l'immeuble qui constitue la résidence principale du cédant au jour de la cession est exonérée ; <b>première cession d'un autre logement</b> : si le cédant n'a pas été propriétaire de sa résidence principale au cours des quatre années précédant la cession, exonération de la fraction du prix qu'il remploie, dans un délai de 24 mois calculé de date à date, à l'acquisition ou la construction de sa résidence principale.",
-     "src": "CGI, art. 150 U, II-1° et 1° bis ; BOI-RFPI-PVI-10-40-30 ; CE, 15 juillet 2021, n° 453490",
-     "url": "https://bofip.impots.gouv.fr/bofip/7284-PGP.html/identifiant=BOI-RFPI-PVI-10-40-30-20210707",
+     "src": "CGI, art. 150 U, II-1° et 1° bis",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052866677/2025-11-28",
      "fiab": "stable"
     },
     {
      "t": "<b>Taxe sur les plus-values immobilières élevées</b> : due en plus de l'impôt sur les plus-values de cession d'immeubles autres que des terrains à bâtir lorsque la plus-value nette imposable excède 50 000 €, ce seuil s'appréciant après application de l'abattement pour durée de détention ; son taux progresse de 2 % à 6 % selon le montant de la plus-value.",
      "src": "CGI, art. 1609 nonies G ; BOI-RFPI-TPVIE-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/8597-PGP.html/identifiant=BOI-RFPI-TPVIE-20-20130806",
+     "url": "https://bofip.impots.gouv.fr/bofip/8597-PGP.html/identifiant=BOI-RFPI-TPVIE-20-20180824",
      "fiab": "stable"
     },
     {
-     "t": "<b>Dirigeant de PME partant à la retraite</b> : les plus-values de cession des titres sont réduites d'un abattement fixe de <span class=\"mono\">500 000 €</span>, applicable au PFU comme au barème si les titres sont détenus depuis au moins un an, à condition notamment d'avoir exercé une fonction de direction de manière continue pendant les cinq années précédant la cession. Il n'est pas cumulable avec les abattements proportionnels pour durée de détention.",
-     "src": "CGI, art. 150-0 D ter",
-     "url": null,
-     "fiab": "stable"
+     "t": "<b>Dirigeant de PME partant à la retraite</b> : les plus-values de cession des titres sont réduites d'un abattement fixe de <span class=\"mono\">500 000 €</span>, applicable quel que soit le mode d'imposition (PFU ou barème) si les titres sont détenus depuis au moins un an, à condition notamment d'avoir exercé une fonction de direction de manière continue pendant les cinq années précédant la cession et de faire valoir ses droits à la retraite dans les deux années qui précèdent ou suivent la cession. Il n'est pas cumulable avec les abattements proportionnels pour durée de détention et ne s'applique qu'à l'impôt sur le revenu : les prélèvements sociaux restent dus.",
+     "src": "CGI, art. 150-0 D ter ; impots.gouv.fr, dirigeant de PME partant à la retraite",
+     "url": "https://www.impots.gouv.fr/particulier/questions/dirigeant-de-pme-partant-la-retraite-comment-sera-imposee-la-plus-value-que-je",
+     "fiab": "stable",
+     "cite": "« Cet abattement ne s'applique qu'en matière d'impôt sur le revenu, les prélèvements sociaux restent dus. »"
     },
     {
      "t": "<b>PEA</b> : les produits et plus-values des placements effectués dans un PEA sont exonérés d'impôt sur le revenu si aucun retrait n'intervient pendant cinq ans à compter du premier versement ; après cinq ans, le gain net reste soumis aux prélèvements sociaux et un retrait partiel n'entraîne pas la clôture du plan.",
-     "cite": "« le gain net est exonéré d'impôt sur le revenu mais reste soumis aux prélèvements sociaux dus sur les produits de placement (CSS, art. L. 136-7, II-5°). »",
      "src": "CGI, art. 157, 5° bis ; BOI-RPPM-RCM-40-50-40",
-     "url": "https://bofip.impots.gouv.fr/bofip/2220-PGP.html/identifiant=BOI-RPPM-RCM-40-50-40-20240730",
+     "url": null,
      "fiab": "stable"
     },
     {
@@ -239,7 +238,7 @@
     {
      "t": "<b>Micro-BNC et déclaration contrôlée</b> : le régime déclaratif spécial s'applique lorsque les recettes de l'année civile précédente ou de l'avant-dernière année n'excèdent pas le seuil de l'article 102 ter ; au-delà, ou sur option, le bénéfice est déterminé selon la déclaration contrôlée (recettes encaissées moins dépenses payées).",
      "src": "CGI, art. 96 et 102 ter ; BOI-BNC-DECLA-20-10",
-     "url": "https://bofip.impots.gouv.fr/bofip/4807-PGP.html",
+     "url": "https://bofip.impots.gouv.fr/bofip/4807-PGP.html/identifiant=BOI-BNC-DECLA-20-10-20260819",
      "fiab": "stable"
     }
    ]
@@ -249,8 +248,7 @@
    "items": [
     {
      "t": "<b>Déduction forfaitaire de 10 % (revenus 2025, déclarés en 2026)</b> : minimum <span class=\"mono\">509 €</span> par salarié (sauf rémunération inférieure), maximum <span class=\"mono\">14 555 €</span> par salarié.",
-     "cite": "« 509 € minimum par salarié sauf si la rémunération déclarée est inférieure à ce montant. 14 555 € maximum par salarié. »",
-     "src": "CGI, art. 83, 3° ; impots.gouv.fr, frais professionnels (revenus 2025)",
+     "src": "CGI, art. 83, 3° ; impots.gouv.fr, déduction forfaitaire de 10 % (revenus 2025)",
      "url": "https://www.impots.gouv.fr/particulier/questions/comment-puis-je-beneficier-de-la-deduction-forfaitaire-de-10",
      "fiab": "millésimé 2026"
     },
@@ -263,39 +261,38 @@
     },
     {
      "t": "<b>Abattement de 10 % sur les pensions (revenus 2025, déclarés en 2026)</b> : plafond de <span class=\"mono\">4 439 €</span> pour l'ensemble du foyer, minimum de <span class=\"mono\">454 €</span> par bénéficiaire (limité au montant de la pension si elle est inférieure).",
-     "cite": "« Abattement de 10 % limité à 4 439 € pour l'ensemble du foyer avec un minimum de 454 € par bénéficiaire »",
+     "cite": "« Abattement de 10 % limité à 4 439 € pour l'ensemble du foyer »",
      "src": "CGI, art. 158, 5-a ; impots.gouv.fr, pensions de retraite",
      "url": "https://www.impots.gouv.fr/particulier/pensions-de-retraite",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Dispense du prélèvement forfaitaire non libératoire</b> : revenu fiscal de référence de N-2 inférieur à <span class=\"mono\">25 000 €</span> (personne seule) ou <span class=\"mono\">50 000 €</span> (couple) pour les intérêts ; <span class=\"mono\">50 000 €</span> ou <span class=\"mono\">75 000 €</span> pour les dividendes.",
-     "src": "CGI, art. 242 quater ; impots.gouv.fr",
-     "url": "https://www.impots.gouv.fr/particulier/questions/puis-je-beneficier-dune-dispense-du-prelevement-forfaitaire-non-liberatoire",
+     "t": "<b>Dispense du prélèvement forfaitaire non libératoire</b> : revenu fiscal de référence de l'avant-dernière année inférieur à <span class=\"mono\">25 000 €</span> (célibataire, veuf ou divorcé) ou <span class=\"mono\">50 000 €</span> (couple soumis à imposition commune) pour les intérêts ; <span class=\"mono\">50 000 €</span> ou <span class=\"mono\">75 000 €</span> pour les dividendes.",
+     "src": "CGI, art. 242 quater ; impots.gouv.fr, revenus mobiliers",
+     "url": "https://www.impots.gouv.fr/particulier/les-revenus-mobiliers",
      "fiab": "stable"
     },
     {
-     "t": "<b>PFU</b> : 12,8 % d'impôt sur le revenu, auxquels s'ajoutent les prélèvements sociaux sur les produits de placement : 17,2 % jusqu'au 31 décembre 2025, <span class=\"mono\">18,6 %</span> depuis le 1er janvier 2026 (CSG portée à 10,6 % par la LFSS 2026), soit un total de <span class=\"mono\">31,4 %</span>.",
-     "cite": "« Ce PFU est de 31,4 % et comprend à la fois l'impôt sur le revenu (12,8 %) et les prélèvements sociaux (18,6 %) »",
-     "src": "CGI, art. 200 A ; CSS, art. L. 136-8 (loi n° 2025-1403 du 30 décembre 2025, LFSS 2026) ; impots.gouv.fr, PEA",
-     "url": "https://www.impots.gouv.fr/particulier/questions/jai-un-plan-depargne-en-actions-pea-les-retraits-sont-ils-imposables",
+     "t": "<b>PFU</b> : 12,8 % d'impôt sur le revenu et <span class=\"mono\">18,6 %</span> de prélèvements sociaux, soit <span class=\"mono\">31,4 %</span> (30 % avec l'ancien taux de 17,2 %). Les prélèvements sociaux opérés à la source sur les produits de placement sont de 17,2 % jusqu'au 31 décembre 2025 et de 18,6 % depuis le 1er janvier 2026 ; pour les revenus du patrimoine, dont les plus-values mobilières, le taux de 18,6 % s'applique dès les revenus de 2025.",
+     "cite": "« 12,8 % au titre de l'impôt sur le revenu et 18,6 % au titre des prélèvements sociaux »",
+     "src": "CGI, art. 200 A ; CSS, art. L. 136-8 (loi n° 2025-1403 du 30 décembre 2025, art. 12) ; impots.gouv.fr, plus-values mobilières",
+     "url": "https://www.impots.gouv.fr/particulier/questions/jai-realise-une-plus-value-mobiliere-comment-est-elle-imposee",
      "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Micro-foncier</b> : revenu brut foncier du foyer n'excédant pas <span class=\"mono\">15 000 €</span>, abattement de 30 % ; <b>déficit foncier</b> : imputation sur le revenu global limitée à <span class=\"mono\">10 700 €</span>, portée au maximum à <span class=\"mono\">21 400 €</span> pour les dépenses de rénovation énergétique payées entre le 1er janvier 2023 et le 31 décembre 2027.",
-     "src": "CGI, art. 32 et 156, I-3° ; impots.gouv.fr, location vide",
-     "url": "https://www.impots.gouv.fr/particulier/location-vide-de-meubles",
-     "fiab": "stable"
+     "src": "CGI, art. 32 et 156, I-3° ; economie.gouv.fr, déficit foncier",
+     "url": "https://www.economie.gouv.fr/particuliers/gerer-mon-argent/investir-dans-limmobilier/tout-savoir-sur-le-deficit-foncier",
+     "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Seuils des régimes micro 2026-2028</b> (BOFiP du 19 août 2026) : micro-BIC <span class=\"mono\">188 700 €</span> (ventes et fourniture de logement) et <span class=\"mono\">77 700 €</span> (autres activités, y compris location meublée) ; micro-BNC <span class=\"mono\">77 700 €</span> ; micro-BA <span class=\"mono\">120 000 €</span> ; meublés de tourisme non classés <span class=\"mono\">15 000 €</span>.",
-     "src": "CGI, art. 50-0, 102 ter et 64 bis ; BOI-BAREME-000044",
+     "t": "<b>Seuils des régimes micro 2026-2028</b> (BOFiP du 19 août 2026) : micro-BIC <span class=\"mono\">203 100 €</span> (ventes et fourniture de logement) et <span class=\"mono\">83 600 €</span> (autres activités, y compris location meublée classique et meublés de tourisme classés) ; micro-BNC <span class=\"mono\">83 600 €</span> ; micro-BA <span class=\"mono\">129 200 €</span> (moyenne triennale des recettes) ; meublés de tourisme non classés <span class=\"mono\">15 000 €</span>. Seuils 2023-2025 : 188 700 €, 77 700 € et 120 000 €.",
+     "src": "CGI, art. 50-0, 102 ter et 64 bis ; BOI-BAREME-000044 ; BOFiP ACTU-2025-00127",
      "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
      "fiab": "millésimé 2026"
     },
     {
      "t": "<b>Meublé de tourisme non classé (revenus 2025)</b> : seuil du micro-BIC de <span class=\"mono\">15 000 €</span> de chiffre d'affaires (contre 77 700 € en 2024) et abattement de <span class=\"mono\">30 %</span> ; si le chiffre d'affaires a dépassé 15 000 € en 2023 et 2024, le régime réel s'applique aux revenus 2025.",
-     "cite": "« Seuil du régime micro : 15 000 € de chiffre d'affaires en 2025 (contre 77 700 € en 2024). »",
      "src": "CGI, art. 50-0, 1-1° bis (loi n° 2024-1039 du 19 novembre 2024, art. 7) ; impots.gouv.fr",
      "url": "https://www.impots.gouv.fr/particulier/questions/je-suis-proprietaire-dune-location-meublee-de-tourisme-quel-est-le-nouveau",
      "fiab": "millésimé 2025"
@@ -306,33 +303,34 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Loi n° 2024-1039 du 19 novembre 2024 (art. 7)</b> : nouvelles modalités du régime micro pour les locations meublées ; les meublés de tourisme non classés relèvent d'un seuil de 15 000 € et d'un abattement de 30 %, les autres locations meublées (longue durée, meublés classés, chambres d'hôtes) conservent l'abattement de 50 %.",
-     "src": "CGI, art. 50-0 ; BOFiP, ACTU-2025-00127",
+     "t": "<b>Loi n° 2024-1039 du 19 novembre 2024 (art. 7)</b> : nouvelles modalités du régime micro pour les locations meublées à compter des revenus 2025 ; les meublés de tourisme non classés relèvent d'un seuil de 15 000 € et d'un abattement de 30 %, les autres locations meublées (longue durée, meublés classés, chambres d'hôtes) d'un abattement de 50 % et du seuil des autres activités, actualisé à 83 600 € pour 2026.",
+     "src": "CGI, art. 50-0 ; BOFiP ACTU-2025-00127",
      "url": "https://bofip.impots.gouv.fr/bofip/14765-PGP.html/ACTU-2025-00127",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Seuils micro 2026-2028</b> : le BOFiP du 19 août 2026 retient pour 2026 à 2028 les seuils de 188 700 € (ventes et fourniture de logement) et 77 700 € (autres activités, micro-BNC), et 15 000 € pour les meublés de tourisme non classés ; les montants de 203 100 € et 83 600 €, qui auraient résulté de l'actualisation triennale, ne figurent pas au barème officiel.",
-     "src": "CGI, art. 50-0 ; BOI-BAREME-000044 (19 août 2026)",
+     "t": "<b>Seuils micro 2026-2028</b> : les limites des régimes micro sont actualisées tous les trois ans dans la même proportion que la limite supérieure de la première tranche du barème, arrondies à la centaine d'euros la plus proche. Pour 2026 à 2028 : 203 100 € (ventes et fourniture de logement), 83 600 € (autres activités et micro-BNC), 129 200 € (micro-BA) ; le seuil de 15 000 € des meublés de tourisme non classés est maintenu en 2026.",
+     "src": "CGI, art. 50-0, 102 ter et 64 bis ; BOI-BAREME-000044 (19 août 2026) ; BOI-BA-BASE-15-10",
      "url": "https://bofip.impots.gouv.fr/bofip/14069-PGP.html/identifiant=BOI-BAREME-000044-20260819",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Prélèvements sociaux sur les produits de placement</b> : la loi de financement de la sécurité sociale pour 2026 (loi n° 2025-1403 du 30 décembre 2025) porte la CSG de droit commun sur les revenus du capital à 10,6 % (prélèvements sociaux 18,6 %) et maintient un taux dérogatoire de 9,2 % pour certains revenus, dont les revenus fonciers.",
-     "src": "CSS, art. L. 136-8 (loi n° 2025-1403 du 30 décembre 2025) ; economie.gouv.fr, loi de finances 2026",
-     "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/loi-de-finances-2026-ce-qui-change-pour-les-particuliers",
+     "t": "<b>Prélèvements sociaux (LFSS 2026, loi n° 2025-1403 du 30 décembre 2025, art. 12)</b> : le taux de la CSG sur les revenus du patrimoine et les produits de placement passe de 9,2 % à 10,6 %, ce qui porte les prélèvements sociaux à 18,6 % ; la hausse s'applique à compter des revenus 2025 pour les revenus du patrimoine et depuis le 1er janvier 2026 pour les produits de placement. Les revenus fonciers, les plus-values immobilières, l'assurance-vie et l'épargne logement restent soumis à la CSG au taux de 9,2 % (prélèvements sociaux de 17,2 %).",
+     "src": "CSS, art. L. 136-8 (loi n° 2025-1403 du 30 décembre 2025, art. 12) ; brochure IR 2026, principales nouveautés",
+     "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/nouveautes.pdf",
+     "fiab": "millésimé 2026",
+     "cite": "« Les revenus fonciers, les plus-values immobilières, l'assurance-vie, l'épargne logement restent soumis au taux de 9,2 %. »"
+    },
+    {
+     "t": "<b>Abattement fixe du dirigeant partant à la retraite</b> : applicable aux cessions réalisées jusqu'au <span class=\"mono\">31 décembre 2031</span> ; porté à <span class=\"mono\">600 000 €</span> pour les cessions réalisées à compter du 1er janvier 2025 lors de la transmission d'exploitations agricoles à de jeunes agriculteurs bénéficiant des aides à l'installation (art. 73 B).",
+     "src": "CGI, art. 150-0 D ter ; brochure IR 2026, plus-values et gains divers",
+     "url": "https://www.impots.gouv.fr/www2/fichiers/documentation/brochure/ir_2026/pdf_som/09-plus_values_137a156.pdf",
      "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Abattement fixe du dirigeant partant à la retraite</b> : prorogé pour les cessions réalisées jusqu'au <span class=\"mono\">31 décembre 2031</span> ; porté à 600 000 € pour les cessions au profit de jeunes agriculteurs bénéficiant d'aides à l'installation.",
-     "src": "CGI, art. 150-0 D ter (LF 2025)",
-     "url": null,
-     "fiab": "stable"
-    },
-    {
-     "t": "<b>Loueurs en meublé non professionnels (LF 2025)</b> : pour les cessions réalisées depuis l'entrée en vigueur de la loi de finances pour 2025, le prix d'acquisition retenu pour calculer la plus-value immobilière est minoré des amortissements déduits pendant la location au régime réel ; certains logements de résidences de services (étudiants, personnes âgées ou handicapées) sont exclus de cette minoration.",
-     "src": "CGI, art. 150 VB (loi n° 2025-127 du 14 février 2025 de finances pour 2025)",
-     "url": null,
+     "t": "<b>Loueurs en meublé non professionnels (loi n° 2025-127 du 14 février 2025, art. 84)</b> : pour les cessions réalisées à compter du 15 février 2025, lendemain de la promulgation de la loi, le prix d'acquisition retenu pour calculer la plus-value immobilière est minoré des amortissements admis en déduction pendant la location.",
+     "src": "CGI, art. 150 VB, III (loi n° 2025-127 du 14 février 2025, art. 84)",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000051168884",
      "fiab": "stable"
     }
    ]
@@ -342,8 +340,8 @@
    "items": [
     {
      "t": "<b>Option barème globale</b> : l'option pour le barème porte sur l'ensemble des RCM et des plus-values mobilières de l'année ; on ne peut pas retenir le barème pour les dividendes et le PFU pour les plus-values. L'abattement de 40 % n'existe qu'au barème.",
-     "src": "CGI, art. 200 A, 2 ; BOI-RPPM-RCM-20-10-30-10",
-     "url": "https://bofip.impots.gouv.fr/bofip/2218-PGP.html/identifiant=BOI-RPPM-RCM-20-10-30-10-20191220",
+     "src": "CGI, art. 200 A, 2 ; economie.gouv.fr, prélèvement forfaitaire unique",
+     "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mes-autres-impots-et-taxes/comment-fonctionne-le-prelevement",
      "fiab": "stable"
     },
     {
@@ -355,20 +353,19 @@
     {
      "t": "<b>Plus-value immobilière : deux horloges</b> : l'exonération d'impôt sur le revenu est acquise après 22 ans de détention, celle des prélèvements sociaux seulement après 30 ans ; les abattements se calculent par année pleine au-delà de la cinquième.",
      "src": "CGI, art. 150 VC ; BOI-RFPI-PVI-20-20",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047970756/2026-05-06",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197216",
      "fiab": "stable"
     },
     {
      "t": "<b>Première cession d'un logement</b> : l'exonération du 1° bis suppose que le cédant n'ait pas été propriétaire de sa résidence principale, directement ou indirectement, au cours des quatre années précédant la cession, et le remploi dans les 24 mois ; elle ne concerne pas la résidence principale elle-même (1°).",
-     "src": "CGI, art. 150 U, II-1° bis ; CE, 15 juillet 2021, n° 453490",
-     "url": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000043799824",
+     "src": "CGI, art. 150 U, II-1° bis",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052866677/2025-11-28",
      "fiab": "stable"
     },
     {
      "t": "<b>Rente viagère</b> : l'âge retenu est celui du crédirentier à la date d'entrée en jouissance de la rente, non l'âge atteint l'année d'imposition ; la fraction imposable reste ensuite invariable.",
-     "cite": "« il faut appliquer les pourcentages fixés en fonction de l'âge du crédirentier au 6 de l'article 158 du CGI »",
-     "src": "CGI, art. 158, 6 ; BOI-RSA-PENS-30-20",
-     "url": "https://bofip.impots.gouv.fr/bofip/369-PGP.html/identifiant=BOI-RSA-PENS-30-20-20170711",
+     "src": "CGI, art. 158, 6",
+     "url": null,
      "fiab": "stable"
     },
     {

@@ -9,7 +9,7 @@
  "lecon": [
   {
    "h": "Classification et coût d'entrée des titres",
-   "html": "<p>Le classement d'un titre dépend de l'<b>intention</b> de l'entreprise à l'acquisition (PCG art. 221-1 s.) :</p><table><thead><tr><th>Compte</th><th>Nature</th><th>Intention</th></tr></thead><tbody><tr><td>261 Titres de participation</td><td>Actions</td><td>Exercer une influence ou un contrôle ; présumés au-delà de 10 % du capital (C. com., art. R. 123-184)</td></tr><tr><td>271 Titres immobilisés (droit de propriété)</td><td>Actions</td><td>Conservation durable sans influence</td></tr><tr><td>272 Titres immobilisés (droit de créance)</td><td>Obligations</td><td>Conservation durable</td></tr><tr><td>273 TIAP</td><td>Actions</td><td>Activité de portefeuille : rentabilité à moyen terme</td></tr><tr><td>50 VMP (503 actions, 506 obligations)</td><td>Tous</td><td>Placement de trésorerie à court terme</td></tr></tbody></table><p>Les titres entrent au <b>prix d'achat</b>. Les <b>frais d'acquisition</b> (courtages, commissions, honoraires) sont, sur <b>option</b>, incorporés au coût ou comptabilisés en charges (627) ; cette option est distincte de celle retenue pour les immobilisations corporelles et incorporelles. Le coupon couru acheté avec une obligation n'est pas un coût du titre mais une créance d'intérêts.</p><p>Exemple : Holdex achète <span class=\"mono\">500 actions</span> de sa filiale à <span class=\"mono\">40 €</span> ; frais de courtage <span class=\"mono\">300 € HT</span>, TVA 60 €, option charges.</p>",
+   "html": "<p>Le classement d'un titre dépend de l'<b>intention</b> de l'entreprise à l'acquisition (PCG art. 221-1 s.) :</p><table><thead><tr><th>Compte</th><th>Nature</th><th>Intention</th></tr></thead><tbody><tr><td>261 Titres de participation</td><td>Actions</td><td>Exercer une influence ou un contrôle ; présumés au-delà de 10 % du capital (C. com., art. R. 123-184)</td></tr><tr><td>271 Titres immobilisés (droit de propriété)</td><td>Actions</td><td>Conservation durable sans influence</td></tr><tr><td>272 Titres immobilisés (droit de créance)</td><td>Obligations</td><td>Conservation durable</td></tr><tr><td>273 TIAP</td><td>Actions</td><td>Activité de portefeuille : rentabilité satisfaisante à plus ou moins longue échéance, sans intervention dans la gestion</td></tr><tr><td>50 VMP (503 actions, 506 obligations)</td><td>Tous</td><td>Placement de trésorerie à court terme</td></tr></tbody></table><p>Les titres entrent au <b>prix d'achat</b>. Les <b>frais d'acquisition</b> (courtages, commissions, honoraires) sont, sur <b>option</b>, incorporés au coût ou comptabilisés en charges (627) ; cette option est distincte de celle retenue pour les immobilisations corporelles et incorporelles. Le coupon couru acheté avec une obligation n'est pas un coût du titre mais une créance d'intérêts.</p><p>Exemple : Holdex achète <span class=\"mono\">500 actions</span> de sa filiale à <span class=\"mono\">40 €</span> ; frais de courtage <span class=\"mono\">300 € HT</span>, TVA 60 €, option charges.</p>",
    "entry": [
     {
      "a": "261",
@@ -36,7 +36,7 @@
   },
   {
    "h": "Évaluation des titres à la clôture",
-   "html": "<p>À l'inventaire, chaque <b>ligne de titres</b> est évaluée à sa <b>valeur d'inventaire</b> (PCG art. 221-3 à 221-6) :</p><ul><li><b>Titres de participation</b> : <b>valeur d'utilité</b>, ce que l'entreprise accepterait de décaisser pour les acquérir si elle devait le faire, appréciée à partir de la rentabilité, des perspectives, des capitaux propres, du cours éventuel ;</li><li><b>Titres cotés</b> (autres titres immobilisés, VMP) : <b>cours moyen du dernier mois</b> de l'exercice ;</li><li><b>Titres non cotés</b> : valeur probable de négociation ;</li><li><b>TIAP</b> : valeur qui tient compte des perspectives d'évolution générale de l'entreprise.</li></ul><p>Si la valeur d'inventaire est inférieure au coût d'entrée, une <b>dépréciation</b> est constatée : débit <b>6866</b> Dotations aux dépréciations des éléments financiers, crédit <b>296</b> (participations), <b>297</b> (autres titres immobilisés) ou <b>590</b> (VMP). Les plus-values latentes ne sont pas comptabilisées et <b>aucune compensation</b> n'est admise entre lignes de titres, sauf, pour les VMP cotées, en cas de baisse anormale et momentanée. La dépréciation est ajustée à chaque clôture et reprise par <b>7866</b>.</p><p>Exemple : les 500 actions Holdex acquises 20 000 € ont une valeur d'utilité de <span class=\"mono\">18 000 €</span> à la clôture.</p>",
+   "html": "<p>À l'inventaire, chaque <b>ligne de titres</b> est évaluée à sa <b>valeur d'inventaire</b> (PCG art. 221-3 à 221-6) :</p><ul><li><b>Titres de participation</b> : <b>valeur d'utilité</b>, ce que l'entreprise accepterait de décaisser pour les acquérir si elle devait le faire, appréciée à partir de la rentabilité, des perspectives, des capitaux propres, du cours éventuel ;</li><li><b>Titres cotés</b> (autres titres immobilisés, VMP) : <b>cours moyen du dernier mois</b> de l'exercice ;</li><li><b>Titres non cotés</b> : valeur probable de négociation ;</li><li><b>TIAP</b> : valeur qui tient compte des perspectives d'évolution générale de l'entreprise.</li></ul><p>Si la valeur d'inventaire est inférieure au coût d'entrée, une <b>dépréciation</b> est constatée : débit <b>6866</b> Dotations aux dépréciations des éléments financiers, crédit <b>296</b> (participations), <b>297</b> (autres titres immobilisés) ou <b>590</b> (VMP). Les plus-values latentes ne sont pas comptabilisées et <b>aucune compensation</b> n'est admise entre lignes de titres, sauf, pour les titres cotés autres que les titres de participation et les TIAP (VMP comprises), en cas de baisse anormale et momentanée (PCG art. 221-7 et 222-1). La dépréciation est ajustée à chaque clôture et reprise par <b>7866</b>.</p><p>Exemple : les 500 actions Holdex acquises 20 000 € ont une valeur d'utilité de <span class=\"mono\">18 000 €</span> à la clôture.</p>",
    "entry": [
     {
      "a": "6866",
@@ -136,7 +136,7 @@
  ],
  "sources": [
   {
-   "ref": "PCG art. 221-1 à 221-7",
+   "ref": "PCG art. 221-1 à 221-7 et 222-1",
    "note": "Titres : classement, coût d'entrée, option sur les frais, valeur d'inventaire, dépréciation"
   },
   {
@@ -148,11 +148,11 @@
    "note": "Comptes 6671/7671 (immobilisations financières autres que les TIAP), 6672/7672 (TIAP) et 6673/7673 (VMP)"
   },
   {
-   "ref": "PCG, titre IX (comptes 163, 169, 481, 6861 et 6862)",
+   "ref": "PCG art. 212-10 et 212-11 ; PCG, titre IX (comptes 163, 169, 481, 6861 et 6862)",
    "note": "Emprunt obligataire : prime de remboursement, frais d'émission et leur amortissement"
   },
   {
-   "ref": "PCG art. 321-1, 321-5, 322-1 et 323-1",
+   "ref": "PCG art. 321-1, 321-5, 322-1 et 323-2",
    "note": "Définition du passif, de la provision ; conditions de comptabilisation ; évaluation"
   },
   {
@@ -183,8 +183,8 @@
     "273 Titres immobilisés de l'activité de portefeuille"
    ],
    "a": 1,
-   "why": "L'intention d'exercer une influence et de créer des liens durables caractérise les titres de participation (PCG art. 221-1), présumés au-delà de 10 % du capital (C. com., art. R. 123-184). Les VMP visent un placement à court terme, les 271 une conservation durable sans influence, les TIAP une activité de portefeuille axée sur la rentabilité.",
-   "src": "PCG art. 221-1 ; C. com., art. R. 123-184",
+   "why": "L'intention d'exercer une influence et de créer des liens durables caractérise les titres de participation, présumés au-delà de 10 % du capital (C. com., art. R. 123-184 ; PCG art. 221-3). Les VMP visent un placement à court terme, les 271 une conservation durable sans influence, les TIAP une activité de portefeuille axée sur la rentabilité.",
+   "src": "C. com., art. R. 123-184 ; PCG art. 221-3",
    "fiab": "stable",
    "niveau": 1
   },
@@ -313,8 +313,8 @@
    "a": 800,
    "unit": "€",
    "tol": 0.5,
-   "why": "Les titres cotés sont évalués au cours moyen du dernier mois (PCG art. 221-6), soit 41 €, et non au cours du jour de clôture (43 €). Valeur d'inventaire : 200 × 41 = 8 200 ; coût : 200 × 45 = 9 000. Dépréciation = 9 000 − 8 200 = 800 € (6866 / 590). Avec le cours de clôture, on aurait obtenu 400, ce qui est l'erreur classique.",
-   "src": "PCG art. 221-6",
+   "why": "Les titres cotés sont évalués au cours moyen du dernier mois (PCG art. 221-6, applicable aux VMP par renvoi de l'art. 222-1), soit 41 €, et non au cours du jour de clôture (43 €). Valeur d'inventaire : 200 × 41 = 8 200 ; coût : 200 × 45 = 9 000. Dépréciation = 9 000 − 8 200 = 800 € (6866 / 590). Avec le cours de clôture, on aurait obtenu 400, ce qui est l'erreur classique.",
+   "src": "PCG art. 221-6 et 222-1",
    "fiab": "stable",
    "niveau": 2
   },
@@ -345,7 +345,7 @@
     ]
    ],
    "why": "Dépréciation = 20 000 − 18 000 = 2 000 : charge financière 6866 Dotations aux dépréciations des éléments financiers et compte de dépréciation 2961 (titres de participation). On ne crédite jamais le compte 261 lui-même ; 590 concerne les VMP ; 6816 vise les immobilisations incorporelles et corporelles ; 7866 est une reprise.",
-   "src": "PCG art. 221-3 et 221-7",
+   "src": "PCG art. 221-3 ; PCG, titre IX (comptes 2961 et 6866)",
    "fiab": "stable",
    "niveau": 2
   },
@@ -364,8 +364,8 @@
     1,
     3
    ],
-   "why": "PCG art. 221-7 : évaluation par ligne, sans compensation entre lignes (exception limitée aux VMP cotées), moins-values latentes dépréciées via 6866 et comptes 29/59, plus-values latentes ignorées par prudence. La dépréciation des titres est reprise (7866) si la valeur remonte : seule la dépréciation du fonds commercial est irréversible.",
-   "src": "PCG art. 221-7",
+   "why": "Évaluation par ligne (C. com., art. L. 123-19), sans compensation entre lignes, sauf baisse anormale et momentanée de titres cotés autres que les titres de participation et les TIAP, VMP comprises (PCG art. 221-7 et 222-1) ; moins-values latentes dépréciées via 6866 et comptes 29/59, plus-values latentes ignorées par prudence. La dépréciation des titres est reprise (7866) si la valeur remonte : seule la dépréciation du fonds commercial est irréversible.",
+   "src": "C. com., art. L. 123-19 ; PCG art. 221-7 et 222-1",
    "fiab": "stable",
    "niveau": 2
   },
@@ -443,7 +443,7 @@
    ],
    "a": 0,
    "why": "Immobilisation financière : prix brut en 7671, valeur comptable brute (coût d'entrée 20 000, pas la valeur nette) en 6671, et reprise de la dépréciation devenue sans objet (2961 / 7866). La présentation nette en 7673 est réservée aux VMP ; 657/757 aux immobilisations corporelles et incorporelles ; sortir 18 000 ferait disparaître la dépréciation sans la reprendre et laisserait 2 000 au compte 261.",
-   "src": "Règlement ANC n° 2022-06 ; PCG art. 221-7",
+   "src": "Règlement ANC n° 2022-06 ; PCG, titre IX (comptes 6671, 7671, 2961 et 7866)",
    "fiab": "stable",
    "niveau": 3
   },
@@ -565,8 +565,8 @@
     0,
     1
    ],
-   "why": "Le PCG laisse le choix entre la charge immédiate (627) et l'étalement sur la durée de l'emprunt, de façon linéaire ou au prorata des intérêts courus, via 481 Frais d'émission des emprunts, amorti par 6862 Dotations aux amortissements des frais d'émission des emprunts (avant 2025 : 4816 et 6812). Les frais ne se confondent pas avec la prime de remboursement (169), qui résulte de l'écart entre prix de remboursement et prix d'émission ; ils ne touchent ni le capital ni les frais d'établissement.",
-   "src": "PCG, titre IX (comptes 481 et 6862) ; règlement ANC n° 2022-06",
+   "why": "Le PCG laisse le choix entre la charge immédiate (627) et l'étalement sur la durée de l'emprunt, d'une manière appropriée aux modalités de remboursement (linéairement si le résultat n'est pas sensiblement différent), via 481 Frais d'émission des emprunts, amorti par 6862 Dotations aux amortissements des frais d'émission des emprunts (avant 2025 : 4816 et 6812). Les frais ne se confondent pas avec la prime de remboursement (169), qui résulte de l'écart entre prix de remboursement et prix d'émission ; ils ne touchent ni le capital ni les frais d'établissement.",
+   "src": "PCG art. 212-11 ; PCG, titre IX (comptes 481 et 6862) ; règlement ANC n° 2022-06",
    "fiab": "stable",
    "niveau": 2
   },
@@ -797,7 +797,7 @@
    ],
    "a": 1,
    "why": "La dépréciation ne se solde pas d'elle-même : il faut la reprendre (2961 / 7866) lors de la cession, sinon le bilan présente une dépréciation sur des titres qui n'existent plus et le produit de reprise de 2 000 manque au résultat financier, qui est donc sous-évalué. Le compte 657 concerne les immobilisations incorporelles et corporelles.",
-   "src": "PCG art. 221-7 ; règlement ANC n° 2022-06",
+   "src": "PCG, titre IX (comptes 2961 et 7866) ; règlement ANC n° 2022-06",
    "fiab": "stable",
    "niveau": 3
   }

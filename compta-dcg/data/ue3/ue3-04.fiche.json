@@ -5,10 +5,10 @@
   "ref": "Arrêté du 4 août 2025 (NOR MENS2523324A), annexe 1 (DCG, UE 3 Droit social), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019 (BO ESR n° 26 du 27 juin 2019) pour la session 2026.",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "Accompagner l'employeur dans la rupture du contrat de travail : modes de rupture (licenciement individuel et collectif, démission, rupture conventionnelle, prise d'acte, résiliation judiciaire, départ à la retraite) et leurs effets",
-   "Maîtriser les règles encadrant la formation, l'exécution et la rupture du contrat de travail dans le cadre du CDI à temps plein",
-   "Étude conjointe du droit du travail et du droit de la protection sociale (assurance chômage à la suite de la rupture)",
-   "Épreuve n° 3 « Droit social » : épreuve écrite de 3 heures portant sur l'étude de situations pratiques, un commentaire de documents ou des questions"
+   "Accompagner l'employeur dans la rupture du contrat de travail : modes de rupture (licenciement individuel et collectif, démission, rupture conventionnelle, prise d'acte, résiliation judiciaire, départ à la retraite) et leurs effets (programme de 2019)",
+   "Maîtriser les règles encadrant la formation, l'exécution et la rupture du contrat de travail dans le cadre du CDI à temps plein (programme de 2019)",
+   "Étude conjointe du droit du travail et du droit de la protection sociale",
+   "Épreuve n° 3 « Droit social » (arrêté du 4 août 2025) : épreuve écrite de 3 heures portant sur l'étude de situations pratiques, un commentaire de documents ou des questions"
   ]
  },
  "textes": [
@@ -22,7 +22,7 @@
    "ref": "C. trav., art. L. 1237-1 à L. 1237-19-14",
    "objet": "Autres cas de rupture : démission, présomption de démission, retraite, rupture conventionnelle individuelle et collective",
    "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177863/",
-   "version": "en vigueur (L. 1237-1-1 créé par la loi n° 2022-1598 du 21 décembre 2022 ; L. 1237-5 modifié par la loi n° 2025-989 du 24 octobre 2025, en vigueur depuis le 26 octobre 2025)"
+   "version": "en vigueur (L. 1237-1-1 créé par la loi n° 2022-1598 du 21 décembre 2022 ; L. 1237-5 modifié par la loi n° 2025-989 du 24 octobre 2025, en vigueur depuis le 26 octobre 2025 ; L. 1237-19-1 en vigueur depuis le 1er janvier 2026)"
   },
   {
    "ref": "C. trav., art. L. 1237-11 à L. 1237-16",
@@ -63,8 +63,8 @@
   {
    "ref": "Ordonnance n° 2017-1387 du 22 septembre 2017 ; Cons. const., décision n° 2018-761 DC du 21 mars 2018",
    "objet": "Prévisibilité et sécurisation des relations de travail : barème des indemnités (L. 1235-3), délai de contestation de 12 mois ; conformité à la Constitution de la loi de ratification",
-   "url": null,
-   "version": "ordonnance ratifiée par la loi n° 2018-217 du 29 mars 2018"
+   "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000035607388",
+   "version": "ordonnance ratifiée par l'article 10 de la loi n° 2018-217 du 29 mars 2018"
   },
   {
    "ref": "Décret n° 2023-275 du 17 avril 2023 ; CE, 18 décembre 2024, n° 473640",
@@ -76,19 +76,19 @@
    "ref": "CSS, art. L. 137-12",
    "objet": "Contribution patronale spécifique sur les indemnités de rupture conventionnelle et de mise à la retraite",
    "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000047452706",
-   "version": "taux de 40 % issu de la loi n° 2025-1403 du 30 décembre 2025 (LFSS 2026)"
+   "version": "taux de 40 % issu de la loi n° 2025-1403 du 30 décembre 2025 (LFSS 2026) ; ruptures conventionnelles dont le terme est postérieur au 1er janvier 2026"
   },
   {
    "ref": "Loi n° 2025-989 du 24 octobre 2025",
    "objet": "Emploi des salariés expérimentés : contrat de valorisation de l'expérience (art. 4) et mise à la retraite",
    "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000052430940/",
-   "version": "publiée au JO ; expérimentation de cinq ans"
+   "version": "publiée au JO ; contrat de valorisation de l'expérience à titre expérimental pendant cinq ans (art. 4)"
   },
   {
-   "ref": "Cass. soc., 6 décembre 2017, n° 16-10.220",
-   "objet": "Rupture conventionnelle : point de départ du délai de recours de douze mois",
-   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000036177446/",
-   "version": "publié au bulletin"
+   "ref": "C. trav., art. D. 1237-1 à D. 1237-2-3",
+   "objet": "Retraite : indemnité minimale de départ volontaire (D. 1237-1) ; délais d'interrogation du salarié et de réponse avant la mise à la retraite (D. 1237-2-1)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018483273/",
+   "version": "en vigueur (D. 1237-1 créé par le décret n° 2008-244 du 7 mars 2008)"
   },
   {
    "ref": "Cass. soc., 12 février 2025, n° 23-18.876",
@@ -97,10 +97,10 @@
    "version": "publié au bulletin"
   },
   {
-   "ref": "Service-public.fr, fiche F1137 « Licenciement pour faute simple, grave ou lourde : quelles conséquences pour le salarié ? »",
-   "objet": "Conséquences de la qualification de la faute pour le salarié",
-   "url": "https://www.service-public.fr/particuliers/vosdroits/F1137?successfulShare=true/",
-   "version": "fiche officielle (Direction de l'information légale et administrative)"
+   "ref": "Avenant n° 2 du 10 avril 2026 à la convention du 15 novembre 2024 relative à l'assurance chômage ; arrêté d'agrément du 19 juin 2026",
+   "objet": "Assurance chômage : règles spécifiques aux allocataires indemnisés après une rupture conventionnelle individuelle (fins de contrat à compter du 1er septembre 2026)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054297458",
+   "version": "agréé par arrêté du 19 juin 2026 ; convention du 15 novembre 2024 agréée par arrêté du 19 décembre 2024"
   }
  ],
  "sections": [
@@ -144,9 +144,10 @@
    "h": "Règles essentielles",
    "items": [
     {
-     "t": "<b>Procédure du licenciement pour motif personnel</b> : convocation à un entretien préalable par lettre recommandée ou remise en main propre contre décharge, indiquant l'objet de la convocation ; entretien au moins cinq jours ouvrables après la présentation de la lettre, le salarié pouvant se faire assister ; notification par lettre recommandée avec avis de réception énonçant le ou les motifs, expédiée au moins deux jours ouvrables après la date prévue de l'entretien. Les motifs peuvent ensuite être précisés par l'employeur, de sa propre initiative ou à la demande du salarié.",
-     "src": "C. trav., art. L. 1232-2 à L. 1232-6, L. 1235-2 et R. 1232-13",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
+     "t": "<b>Procédure du licenciement pour motif personnel</b> : convocation à un entretien préalable par lettre recommandée ou remise en main propre contre décharge, indiquant l'objet de la convocation ; entretien au moins cinq jours ouvrables après la présentation de la lettre, le salarié pouvant se faire assister ; notification par lettre recommandée avec avis de réception énonçant le ou les motifs, expédiée au moins deux jours ouvrables après la date prévue de l'entretien. Dans les quinze jours suivant la notification, le salarié peut demander des précisions sur les motifs ; l'employeur dispose de quinze jours après réception de la demande pour en apporter s'il le souhaite, et peut aussi, dans les quinze jours suivant la notification, préciser les motifs à son initiative.",
+     "cite": "« Dans les quinze jours suivant la notification du licenciement, le salarié peut, par lettre recommandée avec avis de réception ou remise contre récépissé, demander à l'employeur des précisions sur les motifs énoncés dans la lettre de licenciement. »",
+     "src": "C. trav., art. L. 1232-2 à L. 1232-6, L. 1235-2 et R. 1232-13 (décret n° 2017-1702 du 15 décembre 2017)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036212577",
      "fiab": "stable"
     },
     {
@@ -156,15 +157,22 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Obligations préalables au licenciement économique</b> : efforts de formation et d'adaptation et recherche de reclassement sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe ; critères d'ordre des licenciements (charges de famille, ancienneté, situation sociale rendant la réinsertion difficile, qualités professionnelles) ; proposition du contrat de sécurisation professionnelle dans les entreprises non soumises au congé de reclassement ; consultation du CSE et information de l'administration ; priorité de réembauche pendant un an à compter de la rupture, si le salarié en fait la demande dans ce délai.",
-     "src": "C. trav., art. L. 1233-4, L. 1233-5, L. 1233-8, L. 1233-19, L. 1233-45 et L. 1233-66",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
+     "t": "<b>Obligations préalables au licenciement économique</b> : efforts de formation et d'adaptation et recherche de reclassement sur les emplois disponibles situés sur le territoire national, dans l'entreprise ou le groupe ; critères d'ordre des licenciements (charges de famille, ancienneté, situation sociale rendant la réinsertion difficile, qualités professionnelles) ; consultation du CSE et information de l'administration ; priorité de réembauche pendant un an à compter de la rupture, si le salarié en fait la demande dans ce délai.",
+     "src": "C. trav., art. L. 1233-4, L. 1233-5, L. 1233-8, L. 1233-19 et L. 1233-45",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
      "fiab": "stable"
     },
     {
      "t": "<b>Plan de sauvegarde de l'emploi</b> : obligatoire dans les entreprises d'au moins 50 salariés lorsque le projet de licenciement concerne au moins 10 salariés dans une même période de 30 jours ; il est soit fixé par un accord collectif majoritaire validé par l'administration (DREETS), soit établi par un document unilatéral de l'employeur homologué par elle.",
      "src": "C. trav., art. L. 1233-61, L. 1233-24-1, L. 1233-24-4, L. 1233-57-2 et L. 1233-57-3",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Contrat de sécurisation professionnelle (CSP)</b> : dans les entreprises non soumises au congé de reclassement (art. L. 1233-71), l'employeur propose le CSP à chaque salarié dont il envisage le licenciement pour motif économique ; à défaut, France Travail le propose et l'employeur verse une contribution égale à deux mois de salaire brut, portée à trois mois si le salarié adhère. L'adhésion emporte rupture du contrat de travail ; le délai de contestation de douze mois à compter de l'adhésion n'est opposable au salarié que s'il a été mentionné dans la proposition de CSP.",
+     "cite": "« Toute contestation portant sur la rupture du contrat de travail ou son motif se prescrit par douze mois à compter de l'adhésion au contrat de sécurisation professionnelle. »",
+     "src": "C. trav., art. L. 1233-66 et L. 1233-67",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031014016/",
      "fiab": "stable"
     },
     {
@@ -174,7 +182,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Homologation et recours</b> : l'administration dispose de quinze jours ouvrables à compter de la réception de la demande pour vérifier le respect des conditions légales et la liberté du consentement ; à défaut de notification dans ce délai, l'homologation est réputée acquise. Tout litige concernant la convention, l'homologation ou le refus d'homologation relève du conseil de prud'hommes, à l'exclusion de tout autre recours ; le recours doit être formé dans les douze mois de l'homologation, à peine d'irrecevabilité.",
+     "t": "<b>Homologation et recours</b> : à l'issue du délai de rétractation, la partie la plus diligente adresse la demande d'homologation ; l'administration dispose de quinze jours ouvrables à compter de sa réception pour vérifier le respect des conditions légales et la liberté du consentement ; à défaut de notification dans ce délai, l'homologation est réputée acquise. Tout litige concernant la convention, l'homologation ou le refus d'homologation relève du conseil de prud'hommes, à l'exclusion de tout autre recours ; le recours doit être formé dans les douze mois de l'homologation, à peine d'irrecevabilité.",
      "src": "C. trav., art. L. 1237-14",
      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
      "fiab": "stable"
@@ -199,7 +207,7 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Licenciement sans cause réelle et sérieuse</b> : si l'une ou l'autre des parties refuse la réintégration, le juge octroie une indemnité comprise entre des montants minimaux et maximaux fixés en mois de salaire brut selon l'ancienneté (plafond de 20 mois à partir de 29 ans d'ancienneté ; plancher de 3 mois à partir de 2 ans dans les entreprises d'au moins 11 salariés, planchers réduits de 0,5 à 2,5 mois en dessous). Le juge peut tenir compte des indemnités de licenciement versées, à l'exception de l'indemnité légale.",
+     "t": "<b>Licenciement sans cause réelle et sérieuse</b> : si l'une ou l'autre des parties refuse la réintégration, le juge octroie une indemnité comprise entre des montants minimaux et maximaux fixés en mois de salaire brut selon l'ancienneté en années complètes. Le maximum progresse de 1 mois (moins d'un an d'ancienneté) à 20 mois (29 ans et plus) ; le minimum est de 3 mois à partir de 2 ans d'ancienneté ; dans les entreprises de moins de 11 salariés, des minimums dérogatoires vont de 0,5 mois (1 et 2 ans) à 2,5 mois (9 et 10 ans). Le juge peut tenir compte des indemnités de licenciement versées, à l'exception de l'indemnité légale.",
      "src": "C. trav., art. L. 1235-3",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762052",
      "fiab": "stable"
@@ -213,12 +221,12 @@
     {
      "t": "<b>Irrégularité de procédure</b> : lorsque le licenciement repose sur une cause réelle et sérieuse mais que la procédure requise n'a pas été observée, le juge accorde au salarié une indemnité qui ne peut être supérieure à un mois de salaire.",
      "src": "C. trav., art. L. 1235-2",
-     "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000036261950/2026-01-28",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036261950",
      "fiab": "stable"
     },
     {
-     "t": "<b>Mise à la retraite et départ à la retraite</b> : l'employeur peut mettre à la retraite le salarié qui a atteint l'âge du taux plein automatique (67 ans, CSS, art. L. 351-8) ; avant cet âge et jusqu'au 69e anniversaire, il doit l'interroger chaque année par écrit, trois mois avant son anniversaire, sur son intention de partir ; un refus du salarié lui interdit la mise à la retraite pendant l'année qui suit. La mise à la retraite ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement ; le salarié qui part volontairement respecte le préavis de licenciement et perçoit l'indemnité de départ à la retraite.",
-     "src": "C. trav., art. L. 1237-5 (version en vigueur depuis le 26 octobre 2025), L. 1237-7, L. 1237-9, L. 1237-10 et D. 1237-2-1",
+     "t": "<b>Mise à la retraite</b> : possibilité donnée à l'employeur de rompre le contrat d'un salarié ayant atteint l'âge prévu au 1° de l'article L. 351-8 CSS (âge du taux plein automatique, 67 ans). Avant cette date, l'employeur interroge par écrit le salarié sur son intention de quitter volontairement l'entreprise pour bénéficier d'une pension de vieillesse ; en cas de réponse négative ou à défaut d'interrogation, il ne peut pas le mettre à la retraite pendant l'année qui suit, la même procédure s'appliquant chaque année jusqu'au 69e anniversaire du salarié. La mise à la retraite ouvre droit à une indemnité au moins égale à l'indemnité légale de licenciement ; le salarié qui part volontairement respecte le préavis de licenciement et perçoit l'indemnité de départ à la retraite.",
+     "src": "C. trav., art. L. 1237-5 (version en vigueur depuis le 26 octobre 2025), L. 1237-7, L. 1237-9 et L. 1237-10 ; CSS, art. L. 351-8",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000052437183",
      "fiab": "stable"
     },
@@ -229,15 +237,17 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Prise d'acte et résiliation judiciaire</b> : le salarié qui reproche à l'employeur des manquements suffisamment graves pour empêcher la poursuite du contrat peut prendre acte de la rupture (effets d'un licenciement sans cause réelle et sérieuse si les manquements sont établis, d'une démission sinon) ; saisi d'une demande de qualification de cette rupture, le conseil de prud'hommes porte l'affaire directement devant le bureau de jugement, qui statue au fond dans le mois. Le salarié peut aussi rester en poste et demander au juge la résiliation judiciaire du contrat.",
-     "src": "C. trav., art. L. 1451-1 (loi n° 2014-743 du 1er juillet 2014) ; Cass. soc., 25 juin 2003, n° 01-42.679 ; C. civ., art. 1224 et 1227",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000029176775",
+     "t": "<b>Prise d'acte et résiliation judiciaire</b> : lorsque le salarié prend acte de la rupture en raison de faits qu'il reproche à l'employeur, la rupture produit les effets d'un licenciement sans cause réelle et sérieuse si les faits invoqués la justifiaient, d'une démission dans le cas contraire. Saisi d'une demande de qualification de la rupture, le conseil de prud'hommes porte l'affaire directement devant le bureau de jugement, qui statue au fond dans le délai d'un mois ; la règle vaut aussi pour la demande de requalification d'une démission. Le salarié peut également rester en poste et demander au juge la résiliation judiciaire du contrat.",
+     "cite": "« lorsqu'un salarié prend acte de la rupture de son contrat de travail en raison de faits qu'il reproche à son employeur, cette rupture produit les effets, soit d'un licenciement sans cause réelle et sérieuse si les faits invoqués la justifiaient, soit, dans le cas contraire, d'une démission »",
+     "src": "Cass. soc., 25 juin 2003, n° 01-42.679, publié au bulletin ; C. trav., art. L. 1451-1 (loi n° 2014-743 du 1er juillet 2014) ; Cass. soc., 18 septembre 2019, n° 18-15.765 ; C. civ., art. 1224 et 1227",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007045912/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Rupture conventionnelle collective</b> : un accord collectif peut déterminer le contenu d'une rupture conventionnelle collective excluant tout licenciement ; il fixe notamment le nombre maximal de départs envisagés, les conditions d'adhésion des salariés et les indemnités de rupture, qui ne peuvent être inférieures aux indemnités légales de licenciement, et il est transmis à l'administration pour validation.",
-     "src": "C. trav., art. L. 1237-19 à L. 1237-19-14",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177863/",
+     "t": "<b>Rupture conventionnelle collective</b> : un accord collectif peut déterminer le contenu d'une rupture conventionnelle collective excluant tout licenciement pour atteindre les objectifs de suppression d'emplois. Il fixe notamment le nombre maximal de départs envisagés, de suppressions d'emplois associées et la durée pendant laquelle les ruptures peuvent être engagées, ainsi que les modalités de calcul des indemnités de rupture. Il est transmis à l'autorité administrative, qui le valide après s'être assurée notamment de la présence de ces clauses.",
+     "cite": "« Les modalités de calcul des indemnités de rupture garanties au salarié, qui ne peuvent être inférieures aux indemnités légales dues en cas de licenciement »",
+     "src": "C. trav., art. L. 1237-19, L. 1237-19-1 (version en vigueur depuis le 1er janvier 2026) et L. 1237-19-3",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762168",
      "fiab": "stable"
     }
    ]
@@ -254,7 +264,7 @@
     {
      "t": "<b>Rupture conventionnelle</b> : rétractation dans les 15 jours calendaires suivant la signature ; instruction de l'homologation en 15 jours ouvrables ; recours dans les 12 mois de l'homologation.",
      "src": "C. trav., art. L. 1237-13 et L. 1237-14",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000019071180",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000019071189",
      "fiab": "stable"
     },
     {
@@ -264,27 +274,34 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Licenciement économique</b> : PSE obligatoire à partir de 10 licenciements sur 30 jours dans les entreprises d'au moins 50 salariés ; priorité de réembauche pendant 1 an ; contrat de sécurisation professionnelle dans les entreprises de moins de 1 000 salariés ; seuils d'appréciation des difficultés économiques : 1, 2, 3 ou 4 trimestres selon l'effectif (moins de 11, 11 à 49, 50 à 299, 300 et plus).",
-     "src": "C. trav., art. L. 1233-3, L. 1233-45, L. 1233-61 et L. 1233-65",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006160710/",
+     "t": "<b>Licenciement économique</b> : PSE obligatoire à partir de 10 licenciements sur 30 jours dans les entreprises d'au moins 50 salariés ; priorité de réembauche pendant 1 an ; contestation de la rupture dans les 12 mois de l'adhésion au CSP ; durée de baisse des commandes ou du chiffre d'affaires caractérisant les difficultés économiques : 1, 2, 3 ou 4 trimestres selon l'effectif (moins de 11, 11 à moins de 50, 50 à moins de 300, 300 salariés et plus).",
+     "src": "C. trav., art. L. 1233-3, L. 1233-45, L. 1233-61 et L. 1233-67",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177859/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Contestation de la rupture : 12 mois</b> à compter de sa notification (licenciement, rupture de l'essai, prise d'acte) ; délais plus courts réservés par le code (rupture conventionnelle, licenciement économique avec CSP).",
-     "cite": "« Toute action portant sur la rupture du contrat de travail se prescrit par douze mois à compter de la notification de la rupture. »",
-     "src": "C. trav., art. L. 1471-1",
+     "t": "<b>Contestation de la rupture : 12 mois</b> à compter de la notification de la rupture pour toute action portant sur la rupture du contrat de travail, sous réserve des délais propres prévus par le code, notamment pour la rupture conventionnelle (12 mois à compter de l'homologation) et pour l'adhésion au CSP (12 mois à compter de l'adhésion). <b>Reçu pour solde de tout compte</b> : dénonciation possible dans les 6 mois qui suivent sa signature.",
+     "src": "C. trav., art. L. 1471-1, L. 1233-67, L. 1234-20 et L. 1237-14",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000036762126",
      "fiab": "stable"
     },
     {
-     "t": "<b>Reçu pour solde de tout compte : 6 mois</b> pour le dénoncer ; <b>mise à la retraite d'office : 70 ans</b> ; <b>appel des jugements prud'homaux</b> : le conseil statue en dernier ressort lorsque les prétentions ne dépassent pas 5 000 €.",
+     "t": "<b>Taux de ressort du conseil de prud'hommes : 5 000 €</b>. En dessous de ce taux, le conseil statue en dernier ressort. Le montant, relevé de 4 000 € à 5 000 € par le décret n° 2020-1066 du 17 août 2020, s'applique aux instances introduites à compter du 1er septembre 2020.",
      "cite": "« Le taux de compétence en dernier ressort du conseil de prud'hommes est de 5 000 euros. »",
-     "src": "C. trav., art. L. 1234-20, L. 1237-5 et D. 1462-3",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018484997/",
+     "src": "C. trav., art. L. 1462-1 et D. 1462-3 (version en vigueur depuis le 20 août 2020)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042244522",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Retraite</b> : l'employeur qui envisage une mise à la retraite interroge le salarié par écrit trois mois avant son anniversaire ; le salarié dispose d'un mois pour répondre ; la procédure se renouvelle chaque année jusqu'au 69e anniversaire. <b>Indemnité légale de départ volontaire à la retraite</b> : 1/2 mois de salaire après 10 ans d'ancienneté, 1 mois après 15 ans, 1 mois et demi après 20 ans, 2 mois après 30 ans.",
+     "cite": "« Le délai mentionné au septième alinéa de l'article L. 1237-5 est fixé à trois mois avant l'anniversaire du salarié. »",
+     "src": "C. trav., art. L. 1237-5, L. 1237-9, D. 1237-1 et D. 1237-2-1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018483273/",
      "fiab": "stable"
     },
     {
      "t": "<b>Indemnité compensatrice de préavis : 3 ans</b>. Elle a la nature d'une créance salariale et relève de la prescription triennale, et non du délai de 12 mois applicable à la contestation de la rupture.",
+     "cite": "« l'action en paiement d'une indemnité compensatrice de préavis outre congés payés afférents, qui a la nature d'une créance salariale, est soumise à la prescription triennale prévue par l'article L. 3245-1 du code du travail »",
      "src": "Cass. soc., 12 février 2025, n° 23-18.876, publié au bulletin ; C. trav., art. L. 3245-1",
      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000051243749",
      "fiab": "stable"
@@ -295,27 +312,35 @@
    "h": "Ce qui a changé récemment",
    "items": [
     {
-     "t": "<b>Présomption de démission en cas d'abandon de poste</b> : créée par la loi n° 2022-1598 du 21 décembre 2022 et précisée par le décret n° 2023-275 du 17 avril 2023 (délai de reprise d'au moins quinze jours fixé par la mise en demeure) ; le salarié présumé démissionnaire n'est pas indemnisé par l'assurance chômage au titre d'une perte involontaire d'emploi ; il peut saisir le conseil de prud'hommes pour contester la présomption, l'affaire étant jugée dans le mois.",
-     "src": "C. trav., art. L. 1237-1-1 et R. 1237-13",
-     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000006177863/",
+     "t": "<b>Présomption de démission en cas d'abandon de poste</b> : créée par la loi n° 2022-1598 du 21 décembre 2022 et précisée par le décret n° 2023-275 du 17 avril 2023, selon lequel le délai fixé par la mise en demeure ne peut être inférieur à quinze jours à compter de sa présentation ; un motif légitime (raisons médicales, exercice du droit de retrait ou du droit de grève, refus d'exécuter une instruction contraire à une réglementation…) fait obstacle à la présomption. Le Conseil d'État a validé le décret le 18 décembre 2024, en précisant que la mise en demeure doit informer le salarié des conséquences de l'absence de reprise du travail. Le salarié peut contester la rupture devant le conseil de prud'hommes, qui statue au fond dans le mois.",
+     "cite": "« ce dernier doit nécessairement être informé, lors de la mise en demeure, des conséquences pouvant résulter de l'absence de reprise du travail sauf motif légitime justifiant son absence »",
+     "src": "C. trav., art. L. 1237-1-1 et R. 1237-13 ; CE, 18 décembre 2024, n° 473640",
+     "url": "https://www.conseil-etat.fr/fr/arianeweb/CE/analyse/2024-12-18/473640",
      "fiab": "stable"
     },
     {
-     "t": "<b>Ordonnance n° 2017-1387 du 22 septembre 2017</b> (ratifiée par la loi n° 2018-217 du 29 mars 2018) : barème obligatoire des indemnités pour licenciement sans cause réelle et sérieuse, délai de contestation de la rupture ramené à 12 mois, possibilité de préciser les motifs après notification, plafonnement à un mois de salaire de l'indemnité pour transmission tardive du CDD, rupture conventionnelle collective, appréciation des difficultés économiques au niveau national pour les groupes.",
-     "src": "Ordonnance n° 2017-1387 du 22 septembre 2017 ; loi n° 2018-217 du 29 mars 2018",
-     "url": "https://www.legifrance.gouv.fr/dossierlegislatif/JORFDOLE000035611593",
+     "t": "<b>Contribution patronale spécifique portée à 40 % (LFSS 2026)</b> : l'employeur verse, au profit de la Caisse nationale d'assurance vieillesse, une contribution sur les indemnités de rupture conventionnelle individuelle et de mise à la retraite, assise sur leur part exclue de l'assiette des cotisations de sécurité sociale, qu'elle soit ou non assujettie à la CSG. Le taux passe de 30 % à 40 % ; pour la rupture conventionnelle, il s'applique aux ruptures dont le terme est postérieur au 1er janvier 2026 (déclaration sous le code type de personnel 719).",
+     "src": "CSS, art. L. 137-12 (loi n° 2025-1403 du 30 décembre 2025) ; Urssaf, « Les indemnités de rupture conventionnelle »",
+     "url": "https://www.urssaf.fr/accueil/employeur/embaucher-gerer-salaries/gerer-fin-relation-travail/rupture-conventionnelle.html",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>Contrat de valorisation de l'expérience (loi n° 2025-989 du 24 octobre 2025, art. 4)</b> : à titre expérimental pendant cinq ans, ce CDI conclu avec un salarié recruté à 60 ans au moins (57 ans si un accord collectif le prévoit) permet à l'employeur de le mettre à la retraite, sans recueillir son accord, dès qu'il remplit les conditions d'une pension à taux plein (à 67 ans, ou avant s'il a l'âge légal et les trimestres requis). L'indemnité de mise à la retraite est alors exonérée de la contribution patronale spécifique dans la limite de 2 PASS, jusqu'au 31 décembre 2028. L'article L. 1237-5 a été modifié en conséquence (version en vigueur depuis le 26 octobre 2025).",
+     "src": "Loi n° 2025-989 du 24 octobre 2025, art. 4 ; C. trav., art. L. 1237-5 ; Urssaf, « Les indemnités de retraite »",
+     "url": "https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000052430969",
      "fiab": "stable"
     },
     {
-     "t": "<b>Validation constitutionnelle du barème</b> : le Conseil constitutionnel a déclaré conforme à la Constitution la loi ratifiant les ordonnances du 22 septembre 2017, y compris le plafonnement des indemnités pour licenciement sans cause réelle et sérieuse de l'article L. 1235-3.",
-     "src": "Cons. const., décision n° 2018-761 DC du 21 mars 2018",
-     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000036755473",
-     "fiab": "stable"
+     "t": "<b>Assurance chômage après rupture conventionnelle individuelle (1er septembre 2026)</b> : pour les salariés dont le contrat prend fin à compter du 1er septembre 2026, quelle que soit la date de signature de la convention, la durée maximale d'indemnisation des allocataires âgés de moins de 55 ans à la fin du contrat passe de 18 mois à 456 jours, soit environ 15 mois (608 jours pour les allocataires résidant en outre-mer, hors Mayotte). La rupture conventionnelle collective n'est pas concernée et le calcul du différé d'indemnisation spécifique est inchangé.",
+     "src": "Avenant n° 2 du 10 avril 2026 à la convention du 15 novembre 2024 relative à l'assurance chômage, agréé par arrêté du 19 juin 2026",
+     "url": "https://www.unedic.org/actualites/assurance-chomage-ce-qui-change-le-1er-septembre-2026",
+     "fiab": "millésimé 2026"
     },
     {
-     "t": "<b>Rupture conventionnelle : point de départ du recours</b> : le délai de douze mois court de la date d'homologation, même en l'absence de notification de la décision au salarié, et s'applique à toutes les contestations, y compris pour vice du consentement ; le juge judiciaire ne peut pas homologuer lui-même une convention refusée par l'administration.",
-     "src": "Cass. soc., 6 décembre 2017, n° 16-10.220 ; Cass. soc., 14 janvier 2016, n° 14-26.220",
-     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000036177446/",
+     "t": "<b>Refus d'un accord de performance collective (2026)</b> : le licenciement du salarié qui refuse la modification de son contrat résultant d'un APC repose sur un motif spécifique constituant une cause réelle et sérieuse et suit la procédure du licenciement pour motif personnel ; mais seules les clauses relatives à la durée du travail, à la rémunération et à la mobilité professionnelle ou géographique interne peuvent s'imposer au contrat, et le licenciement est sans cause réelle et sérieuse si l'accord comportait des dispositions étrangères à ces objets.",
+     "cite": "« le licenciement du salarié qui refuse l'application à son contrat de travail d'un accord de performance collective comportant des dispositions étrangères à ces objets et modifiant son contrat de travail, est sans cause réelle et sérieuse »",
+     "src": "C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026, n° 24-19.461 et s., publié au bulletin",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000054167543",
      "fiab": "stable"
     }
    ]
@@ -324,29 +349,35 @@
    "h": "Points de vigilance",
    "items": [
     {
-     "t": "<b>Faute grave et indemnités</b> : la faute grave prive le salarié du préavis et de l'indemnité de licenciement, mais jamais de l'indemnité compensatrice de congés payés ; la faute lourde ne prive plus de cette dernière depuis la censure de l'ancien article L. 3141-26 (Cons. const., n° 2015-523 QPC du 2 mars 2016).",
-     "src": "C. trav., art. L. 1234-1, L. 1234-9 et L. 3141-28",
-     "url": "https://www.service-public.fr/particuliers/vosdroits/F1137?successfulShare=true/",
+     "t": "<b>Faute grave ou lourde et congés payés</b> : la faute grave prive le salarié du préavis et de l'indemnité de licenciement, mais non de l'indemnité compensatrice de congés payés. La faute lourde n'en prive pas davantage : le Conseil constitutionnel a déclaré contraires à la Constitution, avec effet à la publication de sa décision, les mots de l'ancien article L. 3141-26 qui excluaient cette indemnité en cas de faute lourde.",
+     "src": "C. trav., art. L. 1234-1, L. 1234-9 et L. 3141-28 ; Cons. const., décision n° 2015-523 QPC du 2 mars 2016",
+     "url": "https://www.conseil-constitutionnel.fr/decision/2016/2015523QPC.htm",
      "fiab": "stable"
     },
     {
-     "t": "<b>Refus d'un accord de performance collective</b> : le licenciement repose sur un motif spécifique constituant une cause réelle et sérieuse et suit la procédure du licenciement pour motif personnel ; il est sans cause réelle et sérieuse si l'accord comportait des clauses étrangères à la durée du travail, à la rémunération ou à la mobilité interne.",
-     "src": "C. trav., art. L. 2254-2 ; Cass. soc., 28 mai 2026, n° 24-19.461 et s.",
-     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037385300",
+     "t": "<b>Barème : portée et contrôle</b> : en fixant un référentiel obligatoire, le législateur a poursuivi un objectif d'intérêt général de prévisibilité des conséquences de la rupture, et le Conseil constitutionnel a écarté les griefs dirigés contre le barème ; les maximums ne s'appliquent pas aux licenciements nuls. La Cour de cassation juge que le juge ne peut pas écarter le barème en invoquant l'article 24 de la Charte sociale européenne : il apprécie la situation concrète du salarié à l'intérieur des bornes légales.",
+     "src": "Cons. const., décision n° 2018-761 DC du 21 mars 2018 ; Cass. soc., 9 avril 2025, n° 24-13.958 ; C. trav., art. L. 1235-3 et L. 1235-3-1",
+     "url": "https://www.conseil-constitutionnel.fr/decision/2018/2018761DC.htm",
      "fiab": "stable"
     },
     {
-     "t": "<b>Procédure prud'homale</b> : la contestation du licenciement passe par le bureau de conciliation et d'orientation, chargé de concilier les parties, puis le bureau de jugement ; le salarié peut se défendre seul ou être représenté par une personne habilitée (défenseur syndical, avocat).",
-     "cite": "« Le salarié peut se défendre seul devant le conseil de prud'hommes. Il peut également être représenté par une personne habilitée. »",
-     "src": "C. trav., art. L. 1454-1 ; service-public.fr, fiche F1052",
+     "t": "<b>Rupture conventionnelle : jurisprudence</b> : le délai de recours de douze mois court de la date d'homologation, même si le salarié n'en a pas été informé, et s'applique à toutes les contestations, y compris pour vice du consentement. La demande d'homologation ne peut être valablement adressée avant l'expiration du délai de rétractation, et le juge judiciaire ne peut pas homologuer lui-même la convention à la place de l'administration.",
+     "src": "Cass. soc., 6 décembre 2017, n° 16-10.220 ; Cass. soc., 14 janvier 2016, n° 14-26.220 ; C. trav., art. L. 1237-14",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000036177446/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Procédure prud'homale</b> : l'affaire est d'abord portée devant le bureau de conciliation et d'orientation, composé d'un conseiller salarié et d'un conseiller employeur, qui cherche à concilier les parties et met l'affaire en état, puis devant le bureau de jugement. Le salarié peut se défendre seul ou être représenté par une personne habilitée, notamment un avocat ou un défenseur syndical.",
+     "cite": "« il peut également être représenté par une personne habilitée »",
+     "src": "C. trav., art. L. 1453-1 A à L. 1453-9 et L. 1454-1 ; service-public.fr, fiche F1052",
      "url": "https://www.service-public.fr/particuliers/vosdroits/F1052?quest0=1&quest=/",
      "fiab": "stable"
     },
     {
-     "t": "<b>Lien avec l'assurance chômage</b> : la rupture conventionnelle homologuée et le licenciement ouvrent droit à l'allocation d'aide au retour à l'emploi (perte involontaire d'emploi), la démission seulement si elle est légitime ou dans le cadre d'un projet de reconversion ; les indemnités supra-légales entraînent un différé d'indemnisation.",
-     "src": "C. trav., art. L. 5422-1 ; règlement d'assurance chômage annexé à la convention du 15 novembre 2024, agréée par arrêté du 19 décembre 2024",
-     "url": null,
-     "fiab": "stable"
+     "t": "<b>Lien avec l'assurance chômage</b> : l'allocation d'assurance suppose une privation d'emploi involontaire ou assimilée ; la rupture conventionnelle homologuée et le licenciement y ouvrent droit, la démission seulement si elle est considérée comme légitime ou dans le cadre d'un projet de reconversion professionnelle. Les indemnités de rupture supra-légales entraînent un différé d'indemnisation spécifique : leur montant est divisé par 111,8 (valeur 2026), dans la limite de 150 jours (75 jours en cas de licenciement pour motif économique).",
+     "src": "C. trav., art. L. 5422-1 ; convention du 15 novembre 2024 relative à l'assurance chômage et règlement général annexé ; Unédic, fiche « Différé d'indemnisation spécifique en cas d'indemnités supra-légales »",
+     "url": "https://www.unedic.org/la-reglementation/fiches-thematiques/differe-dindemnisation-specifique-en-cas-dindemnites-supra-legales",
+     "fiab": "millésimé 2026"
     }
    ]
   }

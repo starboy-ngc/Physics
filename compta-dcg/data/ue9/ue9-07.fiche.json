@@ -50,7 +50,7 @@
   },
   {
    "ref": "Plan de comptes 2026 (PCG, art. 1121-1)",
-   "objet": "Comptes 1061, 110, 119, 120, 129, 1648, 408, 4181, 4282, 4286, 4382, 4386, 444, 4486, 4487, 457, 467, 468, 486, 487, 5088, 5181, 5188, 5198, 695",
+   "objet": "Comptes 1061, 110, 119, 120, 129, 1648, 408, 4181, 4282, 4286, 4382, 4386, 444, 448, 4481, 44811, 457, 467, 468, 486, 487, 5088, 5181, 5188, 5198, 695",
    "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
    "version": "version au 1er janvier 2026"
   },
@@ -70,13 +70,19 @@
    "ref": "C. com., art. L. 232-10",
    "objet": "Réserve légale : prélèvement d'un vingtième au moins, jusqu'au dixième du capital",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
-   "version": "en vigueur depuis le 1er octobre 2025 (ordonnance n° 2025-229 du 12 mars 2025, art. 62)"
+   "version": "en vigueur depuis le 1er octobre 2025 (ordonnance n° 2025-229 du 12 mars 2025, art. 62 et 70 : suppression de la formule « à peine de nullité de toute délibération contraire »)"
   },
   {
    "ref": "C. com., art. L. 232-11",
    "objet": "Bénéfice distribuable ; limite des distributions ; dividende fictif",
    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
    "version": "en vigueur (dernière modification : loi n° 2003-7 du 3 janvier 2003)"
+  },
+  {
+   "ref": "C. com., art. L. 232-12",
+   "objet": "Détermination des dividendes après approbation des comptes et constatation de sommes distribuables ; dividende fictif ; acomptes sur dividendes",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229031",
+   "version": "en vigueur"
   },
   {
    "ref": "C. com., art. L. 232-13",
@@ -91,16 +97,10 @@
    "version": "en vigueur depuis le 21 février 2026 (loi n° 2026-103 du 19 février 2026)"
   },
   {
-   "ref": "CGI, art. 1668 ; BOI-IS-DECLA-20-10",
-   "objet": "Paiement de l'IS : acomptes trimestriels et solde",
+   "ref": "CGI, art. 1668 et ann. III, art. 359 ; BOI-IS-DECLA-20-10",
+   "objet": "Paiement de l'IS : acomptes trimestriels, dispense d'acomptes (impôt de référence n'excédant pas 3 000 €, premier exercice) et solde",
    "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
    "version": "CGI en vigueur ; BOFiP, version du 10 juin 2020"
-  },
-  {
-   "ref": "Ordonnance n° 2025-229 du 12 mars 2025",
-   "objet": "Réforme du régime des nullités en droit des sociétés (dont l'art. L. 232-10 du Code de commerce)",
-   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
-   "version": "applicable depuis le 1er octobre 2025 (art. 70)"
   }
  ],
  "sections": [
@@ -115,14 +115,14 @@
      "cite": "« Le compte de résultat récapitule les produits et les charges de l'exercice, sans qu'il soit tenu compte de leur date d'encaissement ou de paiement. »"
     },
     {
-     "t": "<b>Charge à payer</b> : charge de l'exercice dont la facture ou la liquidation n'interviendra qu'après la clôture ; elle est portée au passif dans les comptes de tiers « factures non parvenues » ou « charges à payer » (<code>408</code>, <code>4282</code>, <code>4286</code>, <code>4382</code>, <code>4386</code>, <code>4486</code>, <code>468</code>). Elle se distingue de la <b>provision</b> (compte 15), passif dont l'échéance ou le montant n'est pas fixé de façon précise.",
-     "src": "C. com., art. L. 123-13, al. 2 ; PCG, art. 321-5 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 408, 4282, 4286, 4382, 4386, 4486 et 468",
+     "t": "<b>Charge à payer</b> : charge de l'exercice dont la facture ou la liquidation n'interviendra qu'après la clôture ; elle est portée au passif dans les comptes de tiers « factures non parvenues » ou « charges à payer » (<code>408</code>, <code>4282</code>, <code>4286</code>, <code>4382</code>, <code>4386</code>, <code>4481</code>, <code>468</code>). Elle se distingue de la <b>provision</b> (compte 15), passif dont l'échéance ou le montant n'est pas fixé de façon précise.",
+     "src": "C. com., art. L. 123-13, al. 2 ; PCG, art. 321-5 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 408, 4282, 4286, 4382, 4386, 4481 et 468",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Produit à recevoir</b> : produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture : factures à établir <code>4181</code>, produits à recevoir <code>4387</code> (organismes sociaux), <code>4487</code> (État), <code>467</code> (divers).",
-     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 4387, 4487 et 467",
+     "t": "<b>Produit à recevoir</b> : produit acquis à l'exercice (livraison effectuée, prestation exécutée) dont la facture n'est pas encore établie à la clôture : factures à établir <code>4181</code>, produits à recevoir de l'État (compte <code>448</code> « État – Charges à payer et produits à recevoir »), produits à recevoir divers <code>467</code>.",
+     "src": "C. com., art. L. 123-13, al. 2 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448 et 467",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -165,14 +165,14 @@
      "cite": "« Il doit être tenu compte des passifs qui ont pris naissance au cours de l'exercice ou d'un exercice antérieur, même s'ils sont connus entre la date de la clôture de l'exercice et celle de l'établissement des comptes. »"
     },
     {
-     "t": "<b>Charges à payer</b> : débit du compte de charge (classe 6) pour le montant hors taxes et, s'il s'agit d'une facture fournisseur non parvenue, de <code>44586</code> « Taxes sur le chiffre d'affaires sur factures non parvenues » ; crédit de <code>408</code>, <code>4282</code> / <code>4382</code> (congés à payer et charges sociales correspondantes), <code>4286</code> / <code>4386</code>, <code>4486</code> ou <code>468</code>.",
-     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 408, 4282, 4286, 4382, 4386, 4486, 44586 et 468",
+     "t": "<b>Charges à payer</b> : débit du compte de charge (classe 6) pour le montant hors taxes et, s'il s'agit d'une facture fournisseur non parvenue, de <code>44586</code> « Taxes sur le chiffre d'affaires sur factures non parvenues » ; crédit de <code>408</code>, <code>4282</code> / <code>4382</code> (congés à payer et charges sociales correspondantes), <code>4286</code> / <code>4386</code> (autres charges à payer), <code>4481</code> « État – Charges à payer » (<code>44811</code> pour les charges fiscales sur congés à payer) ou <code>468</code>.",
+     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 408, 4282, 4286, 4382, 4386, 4481, 44811, 44586 et 468",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Produits à recevoir</b> : débit de <code>4181</code> (montant TTC) ou de <code>4387</code>, <code>4487</code>, <code>467</code> ; crédit du compte de produit (classe 7, hors taxes) et de <code>44587</code> « Taxes sur le chiffre d'affaires sur factures à établir ».",
-     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 4387, 4487, 467 et 44587",
+     "t": "<b>Produits à recevoir</b> : débit de <code>4181</code> (montant TTC), de <code>467</code> ou, pour l'État, du compte <code>448</code> ; crédit du compte de produit (classe 7, hors taxes) et de <code>44587</code> « Taxes sur le chiffre d'affaires sur factures à établir ».",
+     "src": "Plan de comptes 2026 (PCG, art. 1121-1), comptes 4181, 448, 467 et 44587",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
@@ -229,7 +229,7 @@
     },
     {
      "t": "<b>Paiement de l'IS</b> : quatre acomptes, au plus tard les 15 mars, 15 juin, 15 septembre et 15 décembre, calculés sur le bénéfice du dernier exercice clos (le premier acompte sur l'avant-dernier exercice clos, puis régularisé) ; le <b>solde</b> est versé au plus tard le 15 du quatrième mois qui suit la clôture (le 15 mai de l'année suivante pour un exercice clos le 31 décembre).",
-     "src": "CGI, art. 1668, 1 et 2 ; BOI-IS-DECLA-20-10",
+     "src": "CGI, art. 1668, 1 et 2 ; BOI-IS-DECLA-20-10 ; BOI-IS-DECLA-20-20",
      "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
      "fiab": "stable"
     },
@@ -254,8 +254,8 @@
      "fiab": "stable"
     },
     {
-     "t": "Hors le cas de réduction du capital, aucune distribution ne peut être faite lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au capital augmenté des réserves non distribuables ; un dividende distribué en violation de ces règles est un dividende fictif.",
-     "src": "C. com., art. L. 232-11",
+     "t": "Hors le cas de réduction du capital, aucune distribution ne peut être faite lorsque les capitaux propres sont ou deviendraient, du fait de la distribution, inférieurs au capital augmenté des réserves non distribuables. Les dividendes sont déterminés par l'assemblée après approbation des comptes et constatation de sommes distribuables ; tout dividende distribué en violation de ces règles est un <b>dividende fictif</b>, dont la répartition par les dirigeants est pénalement sanctionnée.",
+     "src": "C. com., art. L. 232-11 et L. 232-12 ; L. 241-3, 2° (SARL) et L. 242-6, 1° (SA)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006229026",
      "fiab": "stable",
      "cite": "« Hors le cas de réduction du capital, aucune distribution ne peut être faite aux actionnaires lorsque les capitaux propres sont ou deviendraient à la suite de celle-ci inférieurs au montant du capital augmenté des réserves que la loi ou les statuts ne permettent pas de distribuer. »"
@@ -269,7 +269,8 @@
      "t": "Réserve légale : prélèvement d'au moins <span class=\"mono\">5 %</span> (un vingtième) du bénéfice de l'exercice diminué des pertes antérieures, jusqu'à ce que la réserve atteigne <span class=\"mono\">10 %</span> (le dixième) du capital social.",
      "src": "C. com., art. L. 232-10",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322888",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Dans les sociétés à responsabilité limitée et les sociétés par actions, il est fait sur le bénéfice de l'exercice, diminué, le cas échéant, des pertes antérieures, un prélèvement d'un vingtième au moins affecté à la formation d'un fonds de réserve dit \" réserve légale \". »"
     },
     {
      "t": "Mise en paiement des dividendes dans un délai maximal de <span class=\"mono\">neuf mois</span> après la clôture de l'exercice ; ce délai peut être prolongé par décision de justice.",
@@ -286,17 +287,18 @@
      "cite": "« Le taux normal de l'impôt est fixé à 25 %. »"
     },
     {
-     "t": "Exercice d'une durée différente de douze mois : la limite de <span class=\"mono\">42 500 €</span> est multipliée par le rapport entre le nombre de mois de l'exercice et 12.",
-     "src": "BOI-IS-LIQ-20-20 ; CGI, art. 219, I-b",
+     "t": "Exercice d'une durée différente de douze mois : la limite de <span class=\"mono\">42 500 €</span> est multipliée par le rapport entre le nombre de mois de l'exercice et 12 (jours résiduels comptés pour 1/30 de mois) ; exemple de l'administration : exercice du 1er janvier au 15 septembre (8,5 mois), limite de <span class=\"mono\">30 104 €</span> (42 500 × 8,5/12).",
+     "src": "BOI-IS-LIQ-20-20 (version du 21 juin 2023) ; CGI, art. 219, I-b",
      "url": "https://bofip.impots.gouv.fr/bofip/2065-PGP.html/identifiant=BOI-IS-LIQ-20-20-20230621",
      "fiab": "millésimé 2026",
      "cite": "« Le montant maximal de bénéfice éligible au taux réduit au titre d'un exercice d'une durée différente de douze mois est obtenu en affectant le montant de 42 500 € d'un coefficient égal au rapport existant entre le nombre de mois compris dans cet exercice et 12. »"
     },
     {
-     "t": "Dispense d'acomptes d'IS lorsque l'impôt correspondant au bénéfice de référence n'excède pas <span class=\"mono\">3 000 €</span> ; les sociétés nouvellement créées en sont dispensées au cours de leur premier exercice d'activité.",
+     "t": "Dispense d'acomptes d'IS lorsque l'impôt de référence n'excède pas <span class=\"mono\">3 000 €</span> ; les sociétés nouvellement créées en sont dispensées au cours de leur premier exercice d'activité ou de leur première période d'imposition.",
      "src": "CGI, ann. III, art. 359, 3 ; CGI, art. 1668, 1 ; BOI-IS-DECLA-20-10",
-     "url": "https://bofip.impots.gouv.fr/bofip/3558-PGP.html/identifiant=BOI-IS-DECLA-20-10-20200610",
-     "fiab": "stable"
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006299811",
+     "fiab": "stable",
+     "cite": "« Sont dispensés de verser des acomptes, les redevables pour lesquels le montant de l'impôt de référence mentionné aux alinéas précédents n'excède pas 3 000 euros. »"
     }
    ]
   },
@@ -317,14 +319,14 @@
      "fiab": "stable"
     },
     {
-     "t": "Depuis 2025, les charges à payer et produits à recevoir divers sont portés aux comptes <code>468</code> « Divers comptes créditeurs et charges à payer » et <code>467</code> « Divers comptes débiteurs et produits à recevoir » (anciens 4686 et 4687).",
-     "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 467 et 468",
+     "t": "Plan de comptes en vigueur (issu du règlement ANC n° 2022-06) : charges à payer et produits à recevoir divers en <code>468</code> « Divers comptes créditeurs et charges à payer » et <code>467</code> « Divers comptes débiteurs et produits à recevoir » (plan 2024 : 4686 et 4687) ; comptes <code>428</code> « Personnel – Charges à payer » et <code>438</code> « Organismes sociaux – Charges à payer » ; charges à payer envers l'État en <code>4481</code> « État – Charges à payer », dont <code>44811</code> « Charges fiscales sur congés à payer » (plan 2024 : 4482).",
+     "src": "Règlement ANC n° 2022-06 ; plan de comptes 2026 (PCG, art. 1121-1), comptes 428, 438, 4481, 44811, 467 et 468 ; plan de comptes 2024 (PCG, art. 932-1)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Plans%20comptables/2026/Plan-de-comptes-2026.pdf",
      "fiab": "stable"
     },
     {
-     "t": "<b>Règlement ANC n° 2026-04</b> du 4 mai 2026, homologué par arrêté du 12 août 2026 (JO du 3 septembre 2026) : il réécrit l'article 515-1 du PCG (impôt sur les bénéfices et contributions qui s'y rattachent, taux en vigueur à la clôture) et abroge l'article 515-1-1.",
-     "src": "Règlement ANC n° 2026-04 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04",
+     "t": "<b>Règlement ANC n° 2026-04</b> du 4 mai 2026, homologué par arrêté du 12 août 2026 (JO du 3 septembre 2026) : il réécrit l'article 515-1 du PCG sur la comptabilisation de l'impôt sur les bénéfices et des contributions qui s'y rattachent (contribution exceptionnelle des grandes entreprises, contribution sociale sur les bénéfices) ; le taux appliqué reste celui en vigueur à la date de clôture.",
+     "src": "Règlement ANC n° 2026-04 ; arrêté du 12 août 2026 portant homologation des règlements ANC n° 2026-01 à 2026-04 (JORFTEXT000054791025)",
      "url": "https://www.anc.gouv.fr/files/anc/files/1_Normes_fran%C3%A7aises/Reglements/2026/2026%20homologu%C3%A9/REGLT_2026_04_JO-SITE.pdf",
      "fiab": "millésimé 2026"
     },
@@ -335,16 +337,17 @@
      "fiab": "stable"
     },
     {
-     "t": "<b>Contribution exceptionnelle sur les bénéfices des grandes entreprises</b> : créée par la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025, art. 48) pour les sociétés à l'IS réalisant au moins 1 milliard d'euros de chiffre d'affaires, assise sur la moyenne de l'IS de l'exercice et de l'exercice précédent (taux de 20,6 %, ou 41,2 % à partir de 3 milliards) ; prorogée d'un exercice par la loi n° 2026-103 du 19 février 2026 (art. 12), avec un seuil de 1,5 milliard d'euros pour le second exercice clos à compter du 31 décembre 2025.",
-     "src": "Loi n° 2025-127 du 14 février 2025, art. 48 ; loi n° 2026-103 du 19 février 2026, art. 12 ; BOI-IS-AUT-60",
-     "url": "https://bofip.impots.gouv.fr/bofip/15092-PGP.html/ACTU-2026-00097",
+     "t": "<b>Contribution exceptionnelle sur les bénéfices des grandes entreprises</b> : créée par la loi de finances pour 2025 (loi n° 2025-127 du 14 février 2025, art. 48) pour les sociétés à l'IS réalisant au moins 1 milliard d'euros de chiffre d'affaires, assise sur la moyenne de l'IS de l'exercice et de l'exercice précédent (taux de 20,6 %, ou 41,2 % à partir de 3 milliards) ; prorogée par la loi n° 2026-103 du 19 février 2026 (art. 12) au titre du second exercice clos à compter du 31 décembre 2025, pour les sociétés dont le chiffre d'affaires dépasse 1,5 milliard d'euros, aux mêmes taux, avec un lissage entre 1,5 et 1,6 milliard.",
+     "src": "Loi n° 2025-127 du 14 février 2025, art. 48 ; loi n° 2026-103 du 19 février 2026, art. 12 ; BOI-IS-AUT-60 (version du 12 août 2026)",
+     "url": "https://bofip.impots.gouv.fr/bofip/14607-PGP.html/identifiant=BOI-IS-AUT-60-20260812",
      "fiab": "millésimé 2026"
     },
     {
      "t": "Seuils de taille relevés par le décret n° 2024-152 du 28 février 2024 (exercices ouverts à compter du 1er janvier 2024, toujours applicables en 2026) : sont des petites entreprises, admises à présenter des comptes annuels simplifiés, celles qui ne dépassent pas deux des trois seuils suivants : total du bilan 7 500 000 €, chiffre d'affaires net 15 000 000 €, 50 salariés.",
      "src": "C. com., art. L. 123-16 et D. 123-200 (décret n° 2024-152 du 28 février 2024)",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216681",
-     "fiab": "millésimé 2026"
+     "fiab": "millésimé 2026",
+     "cite": "« 2° En ce qui concerne les petites entreprises, le total du bilan est fixé à 7 500 000 euros, le montant net du chiffre d'affaires à 15 000 000 euros et le nombre moyen de salariés employés au cours de l'exercice à 50. »"
     }
    ]
   },
@@ -381,7 +384,8 @@
      "t": "Lien DSCG (fiscalité) : fiscalement, les produits sont rattachés à l'exercice de la livraison des biens ou de l'achèvement des prestations, et les prestations continues ou à échéances successives au fur et à mesure de leur exécution ; une vente facturée avant la clôture mais livrée après n'est donc pas un produit de l'exercice clos (produit constaté d'avance).",
      "src": "CGI, art. 38, 2 bis ; C. com., art. L. 123-21",
      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051203585",
-     "fiab": "stable"
+     "fiab": "stable",
+     "cite": "« Pour l'application des 1 et 2, les produits correspondant à des créances sur la clientèle ou à des versements reçus à l'avance en paiement du prix sont rattachés à l'exercice au cours duquel intervient la livraison des biens pour les ventes ou opérations assimilées et l'achèvement des prestations pour les fournitures de services. »"
     }
    ]
   }

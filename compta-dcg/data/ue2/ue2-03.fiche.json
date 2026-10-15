@@ -2,96 +2,379 @@
  "id": "ue2-03",
  "maj": "2026-10-14",
  "programme": {
-  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE2 Droit des sociétés et des groupements d'affaires), BO ESR n° 25 du 20 juin 2019, applicable à la session 2026",
+  "ref": "Arrêté du 4 août 2025, annexe 1 (DCG, UE2 Droit des affaires), BO ESR n° 32 du 28 août 2025, applicable à compter de la session 2027 ; arrêté du 13 février 2019, annexe 1 (UE2 Droit des sociétés et des groupements d'affaires), BO ESR n° 26 du 27 juin 2019, applicable à la session 2026",
   "url": "https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENS2523324A",
   "points": [
-   "Programme 2025 : « 3.2 Identifier la forme sociétaire adaptée à la situation du client » (60 heures), notamment la SAS et sa forme unipersonnelle, les dirigeants et les associés",
-   "Programme 2025 : les sociétés cotées sont exclues ; le rachat par la société de ses propres actions est renvoyé à l'UE 10 du DCG",
+   "Programme 2025 : « 3.2 Identifier la forme sociétaire adaptée à la situation du client » (60 heures), dont les dirigeants et les associés",
    "Programme 2025 : « 2.4 Adapter la forme sociétaire aux demandes du client » (6 heures)",
+   "Programme 2025 : le cas de rachat par l'entité de ses propres actions est exclu de l'UE 2 (traité en UE 10 du DCG)",
    "Programme 2019 : « 2- Les principaux types de sociétés » (60 heures) : sociétés anonymes (forme classique et à directoire), sociétés par actions simplifiées (pluripersonnelle et unipersonnelle)",
    "Exclusion commune : « Les pactes d'associés seront exclus (traités en UE 1 de DSCG) »"
   ]
  },
  "textes": [
-  { "ref": "C. com., art. L. 224-2", "objet": "Capital minimal de la société anonyme : 37 000 €", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur (lien vers la section du Code de commerce qui contient l'article)" },
-  { "ref": "C. com., art. L. 225-1 à L. 225-3", "objet": "Définition de la SA, nombre d'actionnaires, libération de moitié, interdiction des apports en industrie", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur (L. 225-1 modifié par l'ordonnance n° 2015-1127 du 10 septembre 2015 : deux associés au moins dans la SA non cotée)" },
-  { "ref": "C. com., art. L. 225-17 à L. 225-56", "objet": "Conseil d'administration, président, directeur général et directeurs généraux délégués", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur" },
-  { "ref": "C. com., art. L. 225-57 à L. 225-93", "objet": "Directoire et conseil de surveillance", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur" },
-  { "ref": "C. com., art. L. 225-38 à L. 225-43", "objet": "Conventions réglementées, libres et interdites dans la SA", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur" },
-  { "ref": "C. com., art. L. 225-96 à L. 225-99 ; L. 225-123", "objet": "Quorums et majorités des assemblées ; droit de vote double", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur (loi n° 2019-744 du 19 juillet 2019 pour le calcul sur les voix exprimées)" },
-  { "ref": "C. com., art. L. 225-231", "objet": "Expertise de gestion : actionnaires détenant au moins 5 % du capital", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur" },
-  { "ref": "C. com., art. L. 225-254", "objet": "Prescription triennale de l'action en responsabilité contre les administrateurs et le directeur général", "url": null, "version": "en vigueur" },
-  { "ref": "C. com., art. L. 227-1 à L. 227-20-1", "objet": "Régime de la société par actions simplifiée (page du chapitre VII)", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "version": "en vigueur (L. 227-20-1 créé par l'ordonnance n° 2025-229 du 12 mars 2025)" },
-  { "ref": "C. com., art. L. 228-11", "objet": "Actions de préférence", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "version": "en vigueur" },
-  { "ref": "C. civ., art. 1844", "objet": "Droit de tout associé de participer aux décisions collectives", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038799283", "version": "en vigueur depuis le 21 juillet 2019" },
-  { "ref": "C. civ., art. 1844-10", "objet": "Violation des statuts et nullité (ordonnance n° 2025-229)", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322322", "version": "en vigueur depuis le 1er octobre 2025" },
-  { "ref": "C. com., art. L. 821-40 ; art. D. 221-5", "objet": "Désignation obligatoire du commissaire aux comptes ; seuils fixés par décret", "url": null, "version": "L. 821-40 issu de l'ordonnance n° 2023-1142 du 6 décembre 2023, applicable depuis le 1er janvier 2024 ; seuils de D. 221-5 relevés par le décret n° 2024-152 du 28 février 2024 pour les exercices ouverts à compter du 1er janvier 2024" },
-  { "ref": "CGI, art. 726", "objet": "Droits d'enregistrement sur les cessions de droits sociaux : 0,1 % pour les actions", "url": null, "version": "en vigueur" },
-  { "ref": "CSS, art. L. 311-3, 11°, 12° et 23°", "objet": "Affiliation au régime général des dirigeants de SA et de SAS (et des gérants minoritaires de SARL)", "url": null, "version": "en vigueur" }
+  {
+   "ref": "C. com., art. L. 224-2",
+   "objet": "Capital minimal de la société anonyme : 37 000 €",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020148425",
+   "version": "en vigueur depuis le 1er avril 2009 (fin du minimum de 225 000 € des sociétés faisant publiquement appel à l'épargne)"
+  },
+  {
+   "ref": "C. com., art. L. 225-1 à L. 225-3 ; L. 225-8",
+   "objet": "Définition de la SA, nombre d'associés, libération de moitié, interdiction des apports en industrie ; désignation du commissaire aux apports",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146046",
+   "version": "en vigueur (L. 225-1 modifié par l'ordonnance n° 2015-1127 du 10 septembre 2015 : deux associés au moins dans la SA non cotée ; L. 225-8 dans sa rédaction applicable depuis le 1er octobre 2025, ordonnance n° 2025-229)"
+  },
+  {
+   "ref": "C. com., art. L. 225-17 à L. 225-56",
+   "objet": "Conseil d'administration, président, directeur général et directeurs généraux délégués",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+   "version": "en vigueur (L. 225-37 modifié par la loi n° 2024-537 du 13 juin 2024 : consultation écrite du conseil, applicable depuis le 14 septembre 2024)"
+  },
+  {
+   "ref": "C. com., art. L. 225-57 à L. 225-93",
+   "objet": "Directoire et conseil de surveillance",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178760/",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 225-38 à L. 225-43",
+   "objet": "Conventions réglementées, libres et interdites dans la SA",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 225-96 à L. 225-99, L. 225-105 et L. 225-123",
+   "objet": "Quorums et majorités des assemblées, changement de nationalité, ordre du jour et révocation des administrateurs, droit de vote double",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161273",
+   "version": "en vigueur (calcul sur les voix exprimées : loi n° 2019-744 du 19 juillet 2019 ; L. 225-105 dans sa version en vigueur depuis le 15 juin 2024)"
+  },
+  {
+   "ref": "C. com., art. L. 225-218, L. 225-231 et L. 227-9-1 ; art. D. 221-5",
+   "objet": "Contrôle : désignation obligatoire du commissaire aux comptes au-delà de deux des trois seuils fixés par décret (SA et SAS) ; expertise de gestion (5 % du capital)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161275/",
+   "version": "en vigueur (L. 225-218 modifié par l'ordonnance n° 2020-1142 ; D. 221-5 issu du décret n° 2024-152 du 28 février 2024, exercices ouverts à compter du 1er janvier 2024)"
+  },
+  {
+   "ref": "C. com., art. L. 225-251 à L. 225-254",
+   "objet": "Responsabilité civile des administrateurs et du directeur général ; prescription de trois ans",
+   "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161278",
+   "version": "en vigueur"
+  },
+  {
+   "ref": "C. com., art. L. 227-1 à L. 227-20-1",
+   "objet": "Régime de la société par actions simplifiée (chapitre VII du titre II du livre II)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+   "version": "en vigueur (L. 227-2 dans sa rédaction issue de l'ordonnance n° 2019-1067 du 21 octobre 2019 ; L. 227-19 modifié par la loi n° 2019-744 du 19 juillet 2019 ; L. 227-20-1 créé par l'ordonnance n° 2025-229 du 12 mars 2025, art. 43, applicable depuis le 1er octobre 2025)"
+  },
+  {
+   "ref": "C. com., art. L. 228-11",
+   "objet": "Actions de préférence",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049720022",
+   "version": "en vigueur depuis le 15 juin 2024 (loi n° 2024-537 du 13 juin 2024)"
+  },
+  {
+   "ref": "C. civ., art. 1844 ; Cass. com., 23 octobre 2007, n° 06-16.537",
+   "objet": "Droit de tout associé de participer aux décisions collectives ; application à l'exclusion d'un associé de SAS",
+   "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000017919115/",
+   "version": "art. 1844 en vigueur depuis le 21 juillet 2019 ; arrêt publié au Bulletin"
+  },
+  {
+   "ref": "Ordonnance n° 2025-229 du 12 mars 2025 ; C. civ., art. 1844-10 ; C. com., art. L. 227-20-1",
+   "objet": "Réforme des nullités : la violation des statuts ne constitue pas une cause de nullité, sauf si la loi en dispose autrement ; nullité prévue par les statuts dans la SAS",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+   "version": "applicable depuis le 1er octobre 2025 (art. 70)"
+  },
+  {
+   "ref": "Loi n° 2024-537 du 13 juin 2024",
+   "objet": "Attractivité : actions de préférence (L. 228-11) ; consultation écrite et participation à distance du conseil d'administration (L. 225-37)",
+   "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049707573",
+   "version": "JO du 14 juin 2024 ; L. 228-11 en vigueur depuis le 15 juin 2024, L. 225-37 depuis le 14 septembre 2024 (décret n° 2024-904 du 8 octobre 2024)"
+  },
+  {
+   "ref": "CGI, art. 726",
+   "objet": "Droits d'enregistrement sur les cessions de droits sociaux : 0,1 % pour les actions",
+   "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
+   "version": "en vigueur depuis le 1er janvier 2024 (loi n° 2023-1322 du 29 décembre 2023)"
+  },
+  {
+   "ref": "CSS, art. L. 311-3, 11°, 12° et 23°",
+   "objet": "Affiliation au régime général des dirigeants de SA et de SAS (et des gérants minoritaires de SARL)",
+   "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006141616/",
+   "version": "en vigueur (dernière rédaction issue de la loi n° 2025-199 du 28 février 2025)"
+  }
  ],
  "sections": [
   {
    "h": "Définitions",
    "items": [
-    { "t": "<b>Société anonyme</b> : société dont le capital est divisé en actions et qui est constituée entre des associés qui ne supportent les pertes qu'à concurrence de leurs apports. Elle est constituée entre deux associés ou plus ; ce nombre ne peut être inférieur à sept lorsque ses actions sont admises aux négociations sur un marché réglementé.", "src": "C. com., art. L. 225-1", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Société par actions simplifiée</b> : société instituée par une ou plusieurs personnes qui ne supportent les pertes qu'à concurrence de leur apport ; lorsqu'elle ne comporte qu'une seule personne, celle-ci est dénommée « associé unique » et exerce les pouvoirs dévolus aux associés. Les règles de la SA lui sont applicables dans la mesure où elles sont compatibles avec les dispositions propres à la SAS, à l'exception notamment de l'article L. 224-2 (capital minimal) et des règles relatives au conseil d'administration, à la direction générale, au directoire, au conseil de surveillance et aux assemblées d'actionnaires.", "src": "C. com., art. L. 227-1", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>Président de SAS</b> : la société est représentée à l'égard des tiers par un président désigné dans les conditions prévues par les statuts, qui peut être une personne morale. Il est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société dans la limite de l'objet social ; envers les tiers, la société est engagée même par ses actes qui ne relèvent pas de l'objet social, à moins qu'elle ne prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer, la seule publication des statuts ne suffisant pas à constituer cette preuve. Les statuts peuvent prévoir qu'un directeur général ou un directeur général délégué exerce les mêmes pouvoirs.", "src": "C. com., art. L. 227-6 et L. 227-7", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>Conventions réglementées de la SA</b> : toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote (ou, pour une société actionnaire, la société qui la contrôle), ainsi que les conventions auxquelles l'une de ces personnes est indirectement intéressée et celles conclues avec une entreprise dont le directeur général, un directeur général délégué ou un administrateur de la société est propriétaire, associé indéfiniment responsable, gérant, administrateur, membre du conseil de surveillance ou, de façon générale, dirigeant. Sont exclues les conventions portant sur des opérations courantes conclues à des conditions normales et celles conclues entre deux sociétés dont l'une détient, directement ou indirectement, la totalité du capital de l'autre.", "src": "C. com., art. L. 225-38 et L. 225-39", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Actions de préférence</b> : actions avec ou sans droit de vote, assorties de droits particuliers de toute nature, à titre temporaire ou permanent, qui peuvent être créées lors de la constitution de la société ou au cours de son existence ; ces droits sont définis par les statuts. Les actions de préférence sans droit de vote ne peuvent représenter plus de la moitié du capital social (plus du quart dans les sociétés dont les actions sont admises aux négociations sur un marché réglementé).", "src": "C. com., art. L. 228-11", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" }
+    {
+     "t": "<b>Société anonyme</b> : société dont le capital est divisé en actions et qui est constituée entre des associés qui ne supportent les pertes qu'à concurrence de leurs apports. Elle est constituée entre deux associés ou plus ; ce nombre ne peut être inférieur à sept lorsque ses actions sont admises aux négociations sur un marché réglementé.",
+     "src": "C. com., art. L. 225-1",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146046",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Société par actions simplifiée</b> : société instituée par une ou plusieurs personnes qui ne supportent les pertes qu'à concurrence de leur apport ; lorsqu'elle ne comporte qu'une seule personne, celle-ci est dénommée « associé unique » et exerce les pouvoirs dévolus aux associés. Les règles de la SA lui sont applicables dans la mesure où elles sont compatibles avec les dispositions propres à la SAS, à l'exception notamment de l'article L. 224-2 (capital minimal) et des règles relatives au conseil d'administration, à la direction générale, au directoire, au conseil de surveillance et aux assemblées d'actionnaires.",
+     "src": "C. com., art. L. 227-1",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Président de SAS</b> : la société est représentée à l'égard des tiers par un président désigné dans les conditions prévues par les statuts, qui peut être une personne morale. Il est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société dans la limite de l'objet social ; envers les tiers, la société est engagée même par ses actes qui ne relèvent pas de l'objet social, à moins qu'elle ne prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer, la seule publication des statuts ne suffisant pas à constituer cette preuve. Les statuts peuvent prévoir qu'un directeur général ou un directeur général délégué exerce les mêmes pouvoirs.",
+     "src": "C. com., art. L. 227-6 et L. 227-7",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conventions réglementées de la SA</b> : toute convention intervenant, directement ou par personne interposée, entre la société et son directeur général, un directeur général délégué, un administrateur ou un actionnaire disposant de plus de 10 % des droits de vote (ou, pour une société actionnaire, la société qui la contrôle), ainsi que les conventions auxquelles l'une de ces personnes est indirectement intéressée et celles conclues avec une entreprise dont le directeur général, un directeur général délégué ou un administrateur de la société est propriétaire, associé indéfiniment responsable, gérant, administrateur, membre du conseil de surveillance ou, de façon générale, dirigeant. Sont exclues les conventions portant sur des opérations courantes conclues à des conditions normales et celles conclues entre deux sociétés dont l'une détient, directement ou indirectement, la totalité du capital de l'autre.",
+     "src": "C. com., art. L. 225-38 et L. 225-39",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Actions de préférence</b> : actions avec ou sans droit de vote, assorties de droits particuliers de toute nature, à titre temporaire ou permanent, qui peuvent être créées lors de la constitution de la société ou au cours de son existence. Ces droits sont définis par les statuts, dans le respect, pour les sociétés dont les actions sont admises aux négociations sur un marché réglementé ou sur un système multilatéral de négociation, des articles L. 225-122 à L. 225-125 ou des conditions de l'article L. 22-10-46-1. Les actions de préférence sans droit de vote ne peuvent représenter plus de la moitié du capital social (plus du quart dans les sociétés dont les actions sont admises aux négociations sur un marché réglementé).",
+     "src": "C. com., art. L. 228-11 (rédaction issue de la loi n° 2024-537 du 13 juin 2024, en vigueur depuis le 15 juin 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049720022",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Règles essentielles",
    "items": [
-    { "t": "<b>Constitution de la SA</b> : capital minimal de 37 000 € ; les actions de numéraire sont libérées, lors de la souscription, de la moitié au moins de leur valeur nominale, le surplus étant appelé par le conseil d'administration ou le directoire dans un délai qui ne peut excéder cinq ans à compter de l'immatriculation ; les actions ne peuvent représenter des apports en industrie ; les apports en nature sont évalués, sous leur responsabilité, par un ou plusieurs commissaires aux apports.", "src": "C. com., art. L. 224-2, L. 225-3 et L. 225-8", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Conseil d'administration</b> : trois membres au moins et dix-huit au plus, personnes physiques ou morales (la personne morale désigne un représentant permanent). Les administrateurs sont nommés par l'assemblée générale constitutive ou ordinaire, ou désignés dans les statuts ; la durée de leurs fonctions, fixée par les statuts, ne peut excéder six ans (trois ans en cas de nomination dans les statuts). Ils sont révocables à tout moment par l'assemblée générale ordinaire. Le conseil détermine les orientations de l'activité de la société et veille à leur mise en œuvre, conformément à son intérêt social, en prenant en considération les enjeux sociaux et environnementaux de son activité ; il se saisit de toute question intéressant la bonne marche de la société et procède aux contrôles et vérifications qu'il juge opportuns.", "src": "C. com., art. L. 225-17, L. 225-18, L. 225-20 et L. 225-35", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Direction générale</b> : assumée, au choix du conseil d'administration, soit par le président du conseil (PDG), soit par une autre personne physique nommée par le conseil, le directeur général, qui peut être assisté d'un à cinq directeurs généraux délégués. Le DG est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, dans la limite de l'objet social et sous réserve des pouvoirs que la loi attribue aux assemblées et au conseil ; il engage la société même par les actes qui ne relèvent pas de l'objet social, sauf si elle prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer. Il est révocable à tout moment par le conseil ; la révocation sans juste motif peut donner lieu à dommages-intérêts, sauf lorsque le DG assume les fonctions de président du conseil.", "src": "C. com., art. L. 225-51-1, L. 225-53, L. 225-55 et L. 225-56", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Formule dualiste</b> : la société est dirigée par un directoire de cinq membres au plus (les statuts peuvent porter ce nombre à sept lorsque les actions sont admises aux négociations sur un marché réglementé), personnes physiques nommées par le conseil de surveillance, qui confère à l'un d'eux la qualité de président ; lorsque le capital est inférieur à 150 000 €, les fonctions du directoire peuvent être exercées par une seule personne (directeur général unique). Le conseil de surveillance (trois à dix-huit membres, nommés par l'assemblée générale) exerce le contrôle permanent de la gestion de la société par le directoire ; aucun membre du conseil de surveillance ne peut faire partie du directoire.", "src": "C. com., art. L. 225-58, L. 225-59, L. 225-68, L. 225-69, L. 225-74 et L. 225-75", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Procédure des conventions réglementées (SA)</b> : autorisation préalable et motivée du conseil d'administration, l'intéressé qui siège au conseil ne prenant pas part au vote ; avis au commissaire aux comptes, qui présente un rapport spécial à l'assemblée ; l'assemblée statue sur ce rapport, l'intéressé ne prenant pas part au vote. Les conventions approuvées comme désapprouvées produisent leurs effets à l'égard des tiers, sauf annulation pour fraude ; les conséquences préjudiciables des conventions désapprouvées peuvent être mises à la charge de l'intéressé. La convention conclue sans autorisation préalable peut être annulée si elle a eu des conséquences dommageables pour la société.", "src": "C. com., art. L. 225-38 à L. 225-42", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Conventions interdites (SA)</b> : à peine de nullité du contrat, il est interdit aux administrateurs autres que les personnes morales, au directeur général, aux directeurs généraux délégués et aux représentants permanents des personnes morales administrateurs de contracter des emprunts auprès de la société, de se faire consentir par elle un découvert ou de faire cautionner ou avaliser par elle leurs engagements envers les tiers ; l'interdiction s'étend à leurs conjoints, ascendants, descendants et à toute personne interposée. Elle ne s'applique pas, lorsque la société exploite un établissement bancaire ou financier, aux opérations courantes de ce commerce conclues à des conditions normales.", "src": "C. com., art. L. 225-43", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Assemblée générale ordinaire</b> : elle prend toutes les décisions autres que la modification des statuts ; elle ne délibère valablement sur première convocation que si les actionnaires présents ou représentés possèdent au moins le cinquième des actions ayant le droit de vote ; sur seconde convocation, aucun quorum n'est requis. Elle statue à la majorité des voix exprimées par les actionnaires présents ou représentés.", "src": "C. com., art. L. 225-98", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Assemblée générale extraordinaire</b> : seule habilitée à modifier les statuts dans toutes leurs dispositions, elle ne peut toutefois augmenter les engagements des actionnaires, sous réserve des opérations résultant d'un regroupement d'actions régulièrement effectué. Quorum du quart des actions ayant le droit de vote sur première convocation, du cinquième sur seconde ; majorité des deux tiers des voix exprimées. Les assemblées spéciales des titulaires d'une catégorie d'actions, dont l'approbation rend définitive la modification des droits de cette catégorie, délibèrent avec un quorum du tiers puis du cinquième, à la majorité des deux tiers des voix exprimées.", "src": "C. com., art. L. 225-96 et L. 225-99", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Droit de vote double</b> : les statuts, ou une assemblée générale extraordinaire ultérieure, peuvent attribuer un droit de vote double à toutes les actions entièrement libérées pour lesquelles il est justifié d'une inscription nominative depuis deux ans au moins au nom du même actionnaire.", "src": "C. com., art. L. 225-123", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Expertise de gestion (SA)</b> : un ou plusieurs actionnaires représentant au moins 5 % du capital social, individuellement ou groupés, ainsi qu'une association d'actionnaires remplissant les conditions légales, peuvent poser par écrit au président du conseil d'administration ou au directoire des questions sur une ou plusieurs opérations de gestion ; à défaut de réponse dans un délai d'un mois ou de communication d'éléments de réponse satisfaisants, ils peuvent demander en référé la désignation d'un ou plusieurs experts.", "src": "C. com., art. L. 225-231", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Responsabilité des administrateurs et du DG</b> : ils sont responsables, individuellement ou solidairement selon le cas, envers la société ou envers les tiers, des infractions aux dispositions législatives ou réglementaires applicables aux SA, des violations des statuts et des fautes commises dans leur gestion. L'action, sociale ou individuelle, se prescrit par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation ; dix ans lorsque le fait est qualifié crime.", "src": "C. com., art. L. 225-251 et L. 225-254", "url": null, "fiab": "stable" },
-    { "t": "<b>SAS : capital et titres</b> : aucun capital minimal (l'article L. 224-2 est écarté) ; les règles de la SA sur la libération des actions de numéraire (moitié à la souscription) s'appliquent ; les statuts peuvent prévoir l'émission d'actions inaliénables résultant d'apports en industrie. La SAS ne peut pas procéder à une offre au public de titres financiers ni à l'admission de ses actions aux négociations sur un marché réglementé, sous réserve des offres limitées que la loi lui ouvre (notamment celles réservées à des investisseurs qualifiés ou à un cercle restreint d'investisseurs).", "src": "C. com., art. L. 227-1, L. 225-3 et L. 227-2", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>SAS : décisions collectives obligatoires</b> : les statuts déterminent les décisions qui doivent être prises collectivement, mais les attributions des assemblées de SA en matière d'augmentation, d'amortissement ou de réduction du capital, de fusion, de scission, de dissolution, de transformation, de nomination des commissaires aux comptes, de comptes annuels et de bénéfices sont exercées collectivement par les associés. Dans la SAS à associé unique, celui-ci approuve les comptes dans les six mois de la clôture, ne peut déléguer ses pouvoirs, et ses décisions sont répertoriées dans un registre. Les décisions prises en violation de ces règles peuvent être annulées à la demande de tout intéressé.", "src": "C. com., art. L. 227-9", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>SAS : clauses statutaires sur les titres</b> : inaliénabilité des actions pour une durée n'excédant pas dix ans (L. 227-13), agrément préalable de toute cession (L. 227-14), exclusion d'un associé (L. 227-16), suspension des droits en cas de changement de contrôle d'une société associée (L. 227-17). Toute cession en violation de ces clauses est nulle (L. 227-15).", "src": "C. com., art. L. 227-13 à L. 227-17", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>SAS : adoption des clauses</b> : la clause d'inaliénabilité ne peut être adoptée ou modifiée qu'à l'unanimité des associés ; les clauses d'agrément, d'exclusion et de changement de contrôle sont adoptées ou modifiées par une décision collective des associés dans les conditions prévues par les statuts.", "src": "C. com., art. L. 227-19 (loi n° 2019-744 du 19 juillet 2019)", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>SAS : conventions</b> : le commissaire aux comptes ou, s'il n'en a pas été désigné, le président présente aux associés un rapport sur les conventions intervenues, directement ou par personne interposée, entre la société et son président, l'un de ses dirigeants ou un actionnaire disposant de plus de 10 % des droits de vote (ou la société qui le contrôle) ; les associés statuent sur ce rapport. Les conventions non approuvées produisent néanmoins leurs effets, à charge pour l'intéressé et, éventuellement, pour le président et les autres dirigeants d'en supporter les conséquences dommageables. Dans la SAS à associé unique, il est seulement fait mention au registre des décisions des conventions conclues entre la société et son dirigeant. Les interdictions de l'article L. 225-43 s'appliquent au président et aux dirigeants.", "src": "C. com., art. L. 227-10 et L. 227-12", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" }
+    {
+     "t": "<b>Constitution de la SA</b> : capital minimal de 37 000 € ; les actions de numéraire sont libérées, lors de la souscription, de la moitié au moins de leur valeur nominale, le surplus étant appelé par le conseil d'administration ou le directoire dans un délai qui ne peut excéder cinq ans à compter de l'immatriculation ; les actions ne peuvent représenter des apports en industrie. Les apports en nature et les avantages particuliers sont évalués, sous leur responsabilité, par un ou plusieurs commissaires aux apports désignés à l'unanimité des fondateurs ou, à défaut, par décision de justice.",
+     "cite": "« En cas d'apports en nature comme au cas de stipulation d'avantages particuliers au profit de personnes associées ou non, un ou plusieurs commissaires aux apports sont désignés à l'unanimité des fondateurs ou, à défaut, par décision de justice, à la demande des fondateurs ou de l'un d'entre eux. »",
+     "src": "C. com., art. L. 224-2, L. 225-3 et L. 225-8 (rédaction applicable depuis le 1er octobre 2025, ordonnance n° 2025-229)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322382",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conseil d'administration</b> : trois membres au moins et dix-huit au plus, personnes physiques ou morales (la personne morale désigne un représentant permanent). Les administrateurs sont nommés par l'assemblée générale constitutive ou ordinaire, ou désignés dans les statuts ; la durée de leurs fonctions, fixée par les statuts, ne peut excéder six ans (trois ans en cas de nomination dans les statuts). Ils sont révocables à tout moment par l'assemblée générale ordinaire. Le conseil détermine les orientations de l'activité de la société et veille à leur mise en œuvre, conformément à son intérêt social, en prenant en considération les enjeux sociaux et environnementaux de son activité ; il se saisit de toute question intéressant la bonne marche de la société et procède aux contrôles et vérifications qu'il juge opportuns.",
+     "src": "C. com., art. L. 225-17, L. 225-18, L. 225-20 et L. 225-35",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Direction générale</b> : assumée, au choix du conseil d'administration, soit par le président du conseil (PDG), soit par une autre personne physique nommée par le conseil, le directeur général, qui peut être assisté d'un à cinq directeurs généraux délégués. Le DG est investi des pouvoirs les plus étendus pour agir en toute circonstance au nom de la société, dans la limite de l'objet social et sous réserve des pouvoirs que la loi attribue aux assemblées et au conseil ; il engage la société même par les actes qui ne relèvent pas de l'objet social, sauf si elle prouve que le tiers savait que l'acte dépassait cet objet ou ne pouvait l'ignorer. Il est révocable à tout moment par le conseil ; la révocation sans juste motif peut donner lieu à dommages-intérêts, sauf lorsque le DG assume les fonctions de président du conseil.",
+     "src": "C. com., art. L. 225-51-1, L. 225-53, L. 225-55 et L. 225-56",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Formule dualiste</b> : la société est dirigée par un directoire de cinq membres au plus (les statuts peuvent porter ce nombre à sept lorsque les actions sont admises aux négociations sur un marché réglementé), personnes physiques nommées par le conseil de surveillance, qui confère à l'un d'eux la qualité de président ; lorsque le capital est inférieur à 150 000 €, les fonctions du directoire peuvent être exercées par une seule personne (directeur général unique). Le conseil de surveillance (trois à dix-huit membres, nommés par l'assemblée générale) exerce le contrôle permanent de la gestion de la société par le directoire ; aucun membre du conseil de surveillance ne peut faire partie du directoire.",
+     "src": "C. com., art. L. 225-58, L. 225-59, L. 225-68, L. 225-69, L. 225-74 et L. 225-75",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006178760/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Procédure des conventions réglementées (SA)</b> : autorisation préalable et motivée du conseil d'administration, l'intéressé qui siège au conseil ne prenant pas part au vote ; avis au commissaire aux comptes, qui présente un rapport spécial à l'assemblée ; l'assemblée statue sur ce rapport, l'intéressé ne prenant pas part au vote. Les conventions approuvées comme désapprouvées produisent leurs effets à l'égard des tiers, sauf annulation pour fraude ; les conséquences préjudiciables des conventions désapprouvées peuvent être mises à la charge de l'intéressé. La convention conclue sans autorisation préalable peut être annulée si elle a eu des conséquences dommageables pour la société.",
+     "src": "C. com., art. L. 225-38 à L. 225-42",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Conventions interdites (SA)</b> : à peine de nullité du contrat, il est interdit aux administrateurs autres que les personnes morales, au directeur général, aux directeurs généraux délégués et aux représentants permanents des personnes morales administrateurs de contracter des emprunts auprès de la société, de se faire consentir par elle un découvert ou de faire cautionner ou avaliser par elle leurs engagements envers les tiers ; l'interdiction s'étend à leurs conjoints, ascendants, descendants et à toute personne interposée. Elle ne s'applique pas, lorsque la société exploite un établissement bancaire ou financier, aux opérations courantes de ce commerce conclues à des conditions normales.",
+     "src": "C. com., art. L. 225-43",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Assemblée générale ordinaire</b> : elle prend toutes les décisions autres que celles réservées à l'assemblée extraordinaire par les articles L. 225-96 et L. 225-97 ; elle ne délibère valablement sur première convocation que si les actionnaires présents ou représentés possèdent au moins le cinquième des actions ayant le droit de vote ; sur seconde convocation, aucun quorum n'est requis. Elle statue à la majorité des voix exprimées par les actionnaires présents ou représentés.",
+     "cite": "« L'assemblée générale ordinaire prend toutes les décisions autres que celles visées aux articles L. 225-96 et L. 225-97. »",
+     "src": "C. com., art. L. 225-98",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161273",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Assemblée générale extraordinaire</b> : seule habilitée à modifier les statuts dans toutes leurs dispositions, elle ne peut toutefois augmenter les engagements des actionnaires, sous réserve des opérations résultant d'un regroupement d'actions régulièrement effectué. Quorum du quart des actions ayant le droit de vote sur première convocation, du cinquième sur seconde ; majorité des deux tiers des voix exprimées. Elle peut changer la nationalité de la société à condition que le pays d'accueil ait conclu avec la France une convention spéciale permettant d'acquérir sa nationalité et de transférer le siège social sur son territoire, en conservant à la société sa personnalité juridique. Les assemblées spéciales des titulaires d'une catégorie d'actions, dont l'approbation rend définitive la modification des droits de cette catégorie, délibèrent avec un quorum du tiers puis du cinquième, à la majorité des deux tiers des voix exprimées.",
+     "src": "C. com., art. L. 225-96, L. 225-97 et L. 225-99",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161273",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Droit de vote double</b> : les statuts, ou une assemblée générale extraordinaire ultérieure, peuvent attribuer un droit de vote double à toutes les actions entièrement libérées pour lesquelles il est justifié d'une inscription nominative depuis deux ans au moins au nom du même actionnaire.",
+     "src": "C. com., art. L. 225-123",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161273",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Expertise de gestion (SA)</b> : un ou plusieurs actionnaires représentant au moins 5 % du capital social, individuellement ou groupés, ainsi qu'une association d'actionnaires remplissant les conditions légales, peuvent poser par écrit au président du conseil d'administration ou au directoire des questions sur une ou plusieurs opérations de gestion ; à défaut de réponse dans un délai d'un mois ou de communication d'éléments de réponse satisfaisants, ils peuvent demander en référé la désignation d'un ou plusieurs experts.",
+     "src": "C. com., art. L. 225-231",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006161275/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Responsabilité des administrateurs et du DG</b> : ils sont responsables, individuellement ou solidairement selon le cas, envers la société ou envers les tiers, des infractions aux dispositions législatives ou réglementaires applicables aux SA, des violations des statuts et des fautes commises dans leur gestion. Aucune décision de l'assemblée générale ne peut avoir pour effet d'éteindre une action en responsabilité contre eux pour faute commise dans l'accomplissement de leur mandat. L'action, sociale ou individuelle, se prescrit par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation ; dix ans lorsque le fait est qualifié crime.",
+     "cite": "« L'action en responsabilité contre les administrateurs ou le directeur général, tant sociale qu'individuelle, se prescrit par trois ans, à compter du fait dommageable ou s'il a été dissimulé, de sa révélation. Toutefois, lorsque le fait est qualifié crime, l'action se prescrit par dix ans. »",
+     "src": "C. com., art. L. 225-251, L. 225-253 et L. 225-254",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161278",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>SAS : capital et titres</b> : aucun capital minimal (l'article L. 224-2 est écarté) ; les règles de la SA sur la libération des actions de numéraire (moitié à la souscription) s'appliquent ; les statuts peuvent prévoir l'émission d'actions inaliénables résultant d'apports en industrie. La SAS ne peut procéder à une offre au public de titres financiers ni à l'admission de ses actions aux négociations sur un marché réglementé ; l'article L. 227-2 lui ouvre néanmoins certaines offres, notamment celles de l'article L. 411-2 du Code monétaire et financier (offres réservées à des investisseurs qualifiés ou à un cercle restreint d'investisseurs agissant pour compte propre).",
+     "src": "C. com., art. L. 227-1, L. 225-3 et L. 227-2 (rédaction issue de l'ordonnance n° 2019-1067 du 21 octobre 2019) ; CMF, art. L. 411-2",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>SAS : décisions collectives obligatoires</b> : les statuts déterminent les décisions qui doivent être prises collectivement, mais les attributions des assemblées de SA en matière d'augmentation, d'amortissement ou de réduction du capital, de fusion, de scission, de dissolution, de transformation, de nomination des commissaires aux comptes, de comptes annuels et de bénéfices sont exercées collectivement par les associés. Dans la SAS à associé unique, celui-ci approuve les comptes dans les six mois de la clôture, ne peut déléguer ses pouvoirs, et ses décisions sont répertoriées dans un registre. Les décisions prises en violation de ces règles peuvent être annulées à la demande de tout intéressé.",
+     "src": "C. com., art. L. 227-9",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>SAS : clauses statutaires sur les titres</b> : inaliénabilité des actions pour une durée n'excédant pas dix ans (L. 227-13), agrément préalable de toute cession (L. 227-14), obligation pour un associé de céder ses actions, dite clause d'exclusion (L. 227-16), suspension des droits non pécuniaires et exclusion en cas de changement de contrôle d'une société associée (L. 227-17). Toute cession effectuée en violation de ces clauses est nulle (L. 227-15). Les articles L. 227-13 à L. 227-19 ne s'appliquent pas à la SAS ne comprenant qu'un seul associé (L. 227-20).",
+     "src": "C. com., art. L. 227-13 à L. 227-17 et L. 227-20",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>SAS : adoption des clauses</b> : les clauses d'inaliénabilité (L. 227-13) et de changement de contrôle (L. 227-17) ne peuvent être adoptées ou modifiées qu'à l'unanimité des associés ; les clauses d'agrément (L. 227-14) et d'exclusion (L. 227-16) ne peuvent être adoptées ou modifiées que par une décision prise collectivement par les associés dans les conditions et formes prévues par les statuts.",
+     "src": "C. com., art. L. 227-19 (rédaction issue de la loi n° 2019-744 du 19 juillet 2019, en vigueur depuis le 21 juillet 2019)",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>SAS : conventions</b> : le commissaire aux comptes ou, s'il n'en a pas été désigné, le président présente aux associés un rapport sur les conventions intervenues, directement ou par personne interposée, entre la société et son président, l'un de ses dirigeants ou un actionnaire disposant de plus de 10 % des droits de vote (ou la société qui le contrôle) ; les associés statuent sur ce rapport. Les conventions non approuvées produisent néanmoins leurs effets, à charge pour l'intéressé et, éventuellement, pour le président et les autres dirigeants d'en supporter les conséquences dommageables. Dans la SAS à associé unique, il est seulement fait mention au registre des décisions des conventions conclues entre la société et son dirigeant. Les interdictions de l'article L. 225-43 s'appliquent au président et aux dirigeants.",
+     "src": "C. com., art. L. 227-10 et L. 227-12",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Chiffres et seuils",
    "items": [
-    { "t": "<b>37 000 €</b> : capital minimal de la SA (et de la société en commandite par actions) ; aucun capital minimal pour la SAS, à laquelle l'article L. 224-2 ne s'applique pas.", "src": "C. com., art. L. 224-2 et L. 227-1", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>2 ou 7 associés</b> au minimum (7 si les actions sont admises aux négociations sur un marché réglementé) ; <b>3 à 18</b> administrateurs ou membres du conseil de surveillance ; directoire de <b>5</b> membres au plus (7 si les statuts le prévoient dans une société cotée ; une seule personne possible si le capital est inférieur à 150 000 €) ; <b>5</b> directeurs généraux délégués au plus.", "src": "C. com., art. L. 225-1, L. 225-17, L. 225-53, L. 225-58 et L. 225-69", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Limites d'âge</b> : à défaut de disposition expresse des statuts, le nombre des administrateurs ayant dépassé 70 ans ne peut être supérieur au tiers des administrateurs en fonctions, et la limite d'âge du directeur général est fixée à 65 ans. <b>Cumul</b> : une personne physique ne peut exercer simultanément plus de cinq mandats d'administrateur de SA ayant leur siège sur le territoire français, sous réserve des dérogations prévues par le texte (notamment pour les mandats exercés dans des sociétés contrôlées).", "src": "C. com., art. L. 225-19, L. 225-21 et L. 225-54", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Quorums et majorités</b> : AGO 1/5 puis aucun quorum, majorité des voix exprimées ; AGE 1/4 puis 1/5, deux tiers des voix exprimées ; assemblée spéciale 1/3 puis 1/5, deux tiers. Les abstentions et les votes blancs ou nuls ne sont pas comptés comme des voix exprimées.", "src": "C. com., art. L. 225-96, L. 225-98 et L. 225-99", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Seuils du commissaire aux comptes</b> (SA et SAS, exercices ouverts à compter du 1er janvier 2024) : 5 000 000 € de total de bilan, 10 000 000 € de chiffre d'affaires hors taxes, 50 salariés ; la désignation est obligatoire lorsque deux de ces trois seuils sont dépassés à la clôture d'un exercice.", "src": "C. com., art. L. 821-40 ; art. D. 221-5 (décret n° 2024-152 du 28 février 2024)", "url": null, "fiab": "millésimé 2024" },
-    { "t": "<b>0,1 %</b> : droit d'enregistrement sur les cessions d'actions ; <b>3 %</b> pour les cessions de parts sociales des sociétés dont le capital n'est pas divisé en actions, après un abattement ; <b>5 %</b> pour les cessions de participations dans des personnes morales à prépondérance immobilière, même lorsqu'il s'agit d'actions.", "src": "CGI, art. 726, I", "url": null, "fiab": "stable" },
-    { "t": "<b>5 % du capital</b> pour demander une expertise de gestion dans la SA ; <b>plus de 10 % des droits de vote</b> pour qu'un actionnaire relève de la procédure des conventions réglementées ; <b>deux ans</b> au moins d'inscription nominative pour le droit de vote double.", "src": "C. com., art. L. 225-38, L. 225-123 et L. 225-231", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" }
+    {
+     "t": "<b>37 000 €</b> : capital minimal de la SA (et de la société en commandite par actions) ; aucun capital minimal pour la SAS, à laquelle l'article L. 224-2 ne s'applique pas.",
+     "src": "C. com., art. L. 224-2 et L. 227-1",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000020148425",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>2 ou 7 associés</b> au minimum (7 si les actions sont admises aux négociations sur un marché réglementé) ; <b>3 à 18</b> administrateurs ou membres du conseil de surveillance ; directoire de <b>5</b> membres au plus (7 si les statuts le prévoient dans une société cotée ; une seule personne possible si le capital est inférieur à 150 000 €) ; <b>5</b> directeurs généraux délégués au plus.",
+     "src": "C. com., art. L. 225-1, L. 225-17, L. 225-53, L. 225-58 et L. 225-69",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146046",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Limites d'âge</b> : à défaut de disposition expresse des statuts, le nombre des administrateurs ayant dépassé 70 ans ne peut être supérieur au tiers des administrateurs en fonctions, et la limite d'âge du directeur général est fixée à 65 ans. <b>Cumul</b> : une personne physique ne peut exercer simultanément plus de cinq mandats d'administrateur de SA ayant leur siège sur le territoire français, sous réserve des dérogations prévues par le texte (notamment pour les mandats exercés dans des sociétés contrôlées).",
+     "src": "C. com., art. L. 225-19, L. 225-21 et L. 225-54",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006178759",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Quorums et majorités</b> : AGO 1/5 puis aucun quorum, majorité des voix exprimées ; AGE 1/4 puis 1/5, deux tiers des voix exprimées ; assemblée spéciale 1/3 puis 1/5, deux tiers. Les abstentions et les votes blancs ou nuls ne sont pas comptés comme des voix exprimées.",
+     "src": "C. com., art. L. 225-96, L. 225-98 et L. 225-99",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161273",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Seuils du commissaire aux comptes</b> (SA et SAS, seuils applicables en 2026, fixés par le décret n° 2024-152 pour les exercices ouverts à compter du 1er janvier 2024) : 5 000 000 € de total de bilan, 10 000 000 € de chiffre d'affaires hors taxes, 50 salariés ; la désignation est obligatoire lorsque deux de ces trois seuils sont dépassés à la clôture d'un exercice. L'obligation cesse lorsque la société n'a pas dépassé deux de ces seuils pendant les deux exercices précédant l'expiration du mandat.",
+     "cite": "« La société n'est plus tenue de désigner un commissaire aux comptes dès lors qu'elle n'a pas dépassé les chiffres fixés pour deux de ces trois critères pendant les deux exercices précédant l'expiration du mandat du commissaire aux comptes. »",
+     "src": "C. com., art. L. 225-218 et L. 227-9-1 ; art. D. 221-5 (décret n° 2024-152 du 28 février 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041553404",
+     "fiab": "millésimé 2026"
+    },
+    {
+     "t": "<b>0,1 %</b> : droit d'enregistrement sur les cessions d'actions ; <b>3 %</b> pour les cessions de parts sociales des sociétés dont le capital n'est pas divisé en actions, après un abattement sur la valeur de chaque part égal au rapport entre 23 000 € et le nombre total de parts sociales ; <b>5 %</b> pour les cessions de participations dans des personnes morales à prépondérance immobilière, même lorsqu'il s'agit d'actions.",
+     "cite": "« il est appliqué sur la valeur de chaque part sociale un abattement égal au rapport entre la somme de 23 000 € et le nombre total de parts sociales de la société »",
+     "src": "CGI, art. 726, I (version en vigueur depuis le 1er janvier 2024)",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044978804",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>5 % du capital</b> pour demander une expertise de gestion dans la SA ; <b>plus de 10 % des droits de vote</b> pour qu'un actionnaire relève de la procédure des conventions réglementées ; <b>deux ans</b> au moins d'inscription nominative pour le droit de vote double.",
+     "src": "C. com., art. L. 225-38, L. 225-123 et L. 225-231",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146046",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Ce qui a changé récemment",
    "items": [
-    { "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> : nouvel article L. 227-20-1 dans la SAS et nouvelle rédaction de l'article 1844-10 du Code civil : la violation des statuts n'entraîne la nullité d'une décision que si la loi ou, pour la SAS, les statuts le prévoient expressément. Applicable depuis le 1er octobre 2025.", "cite": "« Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. »", "src": "C. civ., art. 1844-10 ; C. com., art. L. 227-20-1", "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051322322", "fiab": "stable" },
-    { "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement des seuils de désignation obligatoire du commissaire aux comptes à 5 M€ de total de bilan et 10 M€ de chiffre d'affaires hors taxes, l'effectif restant fixé à 50 salariés (auparavant 4 M€ et 8 M€), pour les exercices ouverts à compter du 1er janvier 2024.", "src": "Décret n° 2024-152 du 28 février 2024 ; C. com., art. D. 221-5", "url": null, "fiab": "millésimé 2024" },
-    { "t": "<b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> : réorganisation du titre II du livre VIII du Code de commerce, consacré aux commissaires aux comptes ; depuis le 1er janvier 2024, les règles de désignation du commissaire aux comptes figurent aux articles L. 821-40 et suivants.", "src": "Ordonnance n° 2023-1142 du 6 décembre 2023 ; C. com., art. L. 821-40", "url": null, "fiab": "stable" },
-    { "t": "<b>Loi n° 2019-744 du 19 juillet 2019</b> (Soilihi) : dans la SA, les majorités d'assemblée se calculent sur les voix exprimées (abstentions et votes blancs ou nuls exclus) ; dans la SAS, les clauses d'agrément, d'exclusion et de changement de contrôle ne requièrent plus l'unanimité mais la majorité statutaire, seule la clause d'inaliénabilité restant soumise à l'unanimité.", "src": "C. com., art. L. 225-96, L. 225-98 et L. 227-19", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>Loi n° 2019-486 du 22 mai 2019</b> (PACTE) : suppression de l'obligation pour toute SA de nommer un commissaire aux comptes ; l'obligation dépend désormais, pour la SA comme pour la SAS, du dépassement des seuils fixés par décret. L'obligation propre aux SAS contrôlant ou contrôlées par une autre société a été remplacée par une obligation propre aux sociétés tête d'un groupe et à leurs filiales significatives, elle aussi appréciée au regard de seuils.", "src": "Loi n° 2019-486 du 22 mai 2019, art. 20 ; C. com., art. L. 821-40", "url": null, "fiab": "stable" }
+    {
+     "t": "<b>Ordonnance n° 2025-229 du 12 mars 2025</b> (réforme des nullités en droit des sociétés) : selon le nouvel alinéa de l'article 1844-10 du Code civil, sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. Pour la SAS, le nouvel article L. 227-20-1 permet aux statuts de prévoir la nullité des décisions prises en violation des règles qu'ils fixent. Applicable depuis le 1er octobre 2025.",
+     "cite": "« Sauf si la loi en dispose autrement, la violation des statuts ne constitue pas une cause de nullité. »",
+     "src": "Ordonnance n° 2025-229 du 12 mars 2025, art. 43 et 70 ; C. civ., art. 1844-10 ; C. com., art. L. 227-20-1",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051316108",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2024-537 du 13 juin 2024</b> (financement des entreprises et attractivité) : depuis le 15 juin 2024, les droits particuliers des actions de préférence sont définis par les statuts, les sociétés dont les actions sont admises sur un marché réglementé ou un système multilatéral de négociation devant respecter les articles L. 225-122 à L. 225-125 ou le régime de l'article L. 22-10-46-1 (actions de préférence à droits de vote multiples créées lors de la première admission, pour dix ans au plus). Depuis le 14 septembre 2024, les statuts peuvent prévoir le recours à la consultation écrite des administrateurs, y compris par voie électronique, chacun d'eux pouvant s'y opposer ; sauf disposition contraire des statuts ou du règlement intérieur, l'administrateur qui participe au conseil par un moyen de télécommunication est réputé présent pour le calcul du quorum et de la majorité (modalités : décret n° 2024-904 du 8 octobre 2024).",
+     "src": "Loi n° 2024-537 du 13 juin 2024 ; C. com., art. L. 228-11, L. 22-10-46-1 et L. 225-37 ; décret n° 2024-904 du 8 octobre 2024",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049707573",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Décret n° 2024-152 du 28 février 2024</b> : relèvement des seuils de désignation obligatoire du commissaire aux comptes à 5 M€ de total de bilan et 10 M€ de chiffre d'affaires hors taxes, l'effectif restant fixé à 50 salariés (auparavant 4 M€ et 8 M€). Entré en vigueur le 1er mars 2024, il s'applique aux comptes des exercices ouverts à compter du 1er janvier 2024.",
+     "cite": "« Conformément à l'article 4 du décret n° 2024-152 du 28 février 2024, ces dispositions entrent en vigueur le 1er mars 2024. Ces mêmes dispositions s'appliquent aux comptes et rapports afférents aux exercices ouverts à compter du 1er janvier 2024. »",
+     "src": "Décret n° 2024-152 du 28 février 2024, art. 4 ; C. com., art. D. 221-5",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049209674",
+     "fiab": "millésimé 2024"
+    },
+    {
+     "t": "<b>Ordonnance n° 2023-1142 du 6 décembre 2023</b> : réorganisation du titre II du livre VIII du Code de commerce, consacré aux commissaires aux comptes ; depuis le 1er janvier 2024, les règles de désignation, de mandat et de certification figurent aux articles L. 821-40 et suivants. Les seuils qui rendent la désignation obligatoire restent posés, pour la SA et la SAS, par les articles L. 225-218 et L. 227-9-1.",
+     "src": "Ordonnance n° 2023-1142 du 6 décembre 2023 ; C. com., art. L. 821-40 et s., L. 225-218 et L. 227-9-1",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000048519395",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2019-744 du 19 juillet 2019</b> (simplification, clarification et actualisation du droit des sociétés) : dans la SA, les majorités d'assemblée se calculent sur les voix exprimées, les abstentions et les votes blancs ou nuls n'étant plus comptés ; dans la SAS, les clauses d'agrément et d'exclusion sont désormais adoptées ou modifiées par décision collective aux conditions statutaires, alors que l'unanimité était exigée auparavant, les clauses d'inaliénabilité et de changement de contrôle restant soumises à l'unanimité.",
+     "src": "Loi n° 2019-744 du 19 juillet 2019 ; C. com., art. L. 225-96, L. 225-98 et L. 227-19",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Loi n° 2019-486 du 22 mai 2019</b> (PACTE) : la SA, comme la SAS, n'est tenue de désigner un commissaire aux comptes que si elle dépasse, à la clôture d'un exercice, deux des trois seuils fixés par décret. En dessous des seuils, la désignation pour trois exercices est obligatoire lorsque des associés représentant au moins le tiers du capital en font la demande motivée, et la nomination peut être demandée en justice par des associés représentant au moins le dixième du capital. L'obligation propre aux SAS contrôlant ou contrôlées par une autre société a été remplacée par une obligation propre aux sociétés tête d'un groupe et à leurs filiales significatives, appréciée au regard de seuils (aujourd'hui L. 821-43).",
+     "src": "Loi n° 2019-486 du 22 mai 2019, art. 20 ; C. com., art. L. 225-218, L. 227-9-1 et L. 821-43",
+     "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042339836",
+     "fiab": "stable"
+    }
    ]
   },
   {
    "h": "Points de vigilance",
    "items": [
-    { "t": "<b>Deux tiers de quoi ?</b> Dans la SA, l'AGE statue aux deux tiers des voix exprimées par les actionnaires présents ou représentés ; dans la SARL constituée après la loi n° 2005-882 du 2 août 2005, les modifications statutaires sont décidées par les associés représentant au moins les deux tiers des parts détenues par les associés présents ou représentés. Les bases de calcul diffèrent, comme les quorums : l'AGO de SA n'exige aucun quorum sur seconde convocation.", "src": "C. com., art. L. 225-96, L. 225-98 et L. 223-30", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Droit de vote dans la SAS</b> : tout associé a le droit de participer aux décisions collectives ; la liberté statutaire ne permet pas d'y déroger hors des cas prévus par la loi. Les statuts d'une SAS ne peuvent donc pas priver l'associé dont l'exclusion est proposée du droit de voter sur cette décision.", "src": "C. civ., art. 1844 ; Cass. com., 23 octobre 2007, n° 06-16.537", "url": null, "fiab": "stable" },
-    { "t": "<b>Président personne morale</b> : la SAS peut être présidée par une personne morale, dont les dirigeants sont soumis aux mêmes conditions et obligations et encourent les mêmes responsabilités que s'ils étaient président en leur nom propre ; dans la SA, le président du conseil, le directeur général et les membres du directoire sont nécessairement des personnes physiques.", "src": "C. com., art. L. 227-7 ; L. 225-47, L. 225-51-1 et L. 225-59", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/", "fiab": "stable" },
-    { "t": "<b>Révocation</b> : les administrateurs et les membres du conseil de surveillance sont révocables à tout moment par l'assemblée générale ordinaire ; le directeur général est révocable à tout moment par le conseil d'administration, et les membres du directoire par l'assemblée générale ou, si les statuts le prévoient, par le conseil de surveillance, mais une révocation sans juste motif peut alors donner lieu à dommages-intérêts (sauf pour le DG qui est aussi président du conseil). Dans la SAS, les conditions de révocation du président relèvent des statuts.", "src": "C. com., art. L. 225-18, L. 225-55, L. 225-61 et L. 225-75 ; L. 227-5", "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133176/", "fiab": "stable" },
-    { "t": "<b>Périmètre d'examen</b> : le programme 2025 exclut les sociétés cotées du champ de l'UE 2 et renvoie le rachat d'actions propres à l'UE 10 ; les règles propres aux sociétés dont les actions sont admises sur un marché réglementé (sept associés au moins, directoire porté à sept membres, droit de vote double attribué de plein droit) relèvent de ce champ exclu.", "src": "Arrêté du 4 août 2025, annexe 1, UE2", "url": "https://www.bulletin-officiel.education.gouv.fr/sites/default/files/2025-08/ensup324_annexe-1.pdf", "fiab": "stable" },
-    { "t": "<b>Statut social du dirigeant</b> : le président du conseil d'administration, le directeur général et les directeurs généraux délégués de SA, ainsi que les présidents et dirigeants de SAS, relèvent du régime général de la sécurité sociale, sans condition de détention du capital ; les gérants de SARL n'y sont affiliés que s'ils ne possèdent pas ensemble plus de la moitié du capital.", "src": "CSS, art. L. 311-3, 11°, 12° et 23°", "url": null, "fiab": "stable" }
+    {
+     "t": "<b>Deux tiers de quoi ?</b> Dans la SA, l'AGE statue aux deux tiers des voix exprimées par les actionnaires présents ou représentés ; dans la SARL constituée après la loi n° 2005-882 du 2 août 2005, les modifications statutaires sont décidées par les associés représentant au moins les deux tiers des parts détenues par les associés présents ou représentés. Les bases de calcul diffèrent, comme les quorums : l'AGO de SA n'exige aucun quorum sur seconde convocation.",
+     "src": "C. com., art. L. 225-96, L. 225-98 et L. 223-30",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006161273",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Droit de vote dans la SAS</b> : tout associé a le droit de participer aux décisions collectives (C. civ., art. 1844). Les statuts d'une SAS peuvent prévoir qu'un associé est tenu de céder ses actions (L. 227-16), mais lorsque cette cession dépend d'une décision collective, l'associé dont l'exclusion est proposée reste en droit de participer à la décision et de voter. Une stipulation qui le prive de ce droit de vote est réputée non écrite (Cass. com., 29 mai 2024).",
+     "src": "C. civ., art. 1844, al. 1er ; C. com., art. L. 227-16 ; Cass. com., 23 octobre 2007, n° 06-16.537 ; Cass. com., 29 mai 2024, n° 22-13.158",
+     "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000017919115/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Président personne morale</b> : la SAS peut être présidée par une personne morale, dont les dirigeants sont soumis aux mêmes conditions et obligations et encourent les mêmes responsabilités que s'ils étaient président en leur nom propre ; dans la SA, le président du conseil, le directeur général et les membres du directoire sont nécessairement des personnes physiques.",
+     "src": "C. com., art. L. 227-7 ; L. 225-47, L. 225-51-1 et L. 225-59",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006146048/",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Révocation</b> : les administrateurs et les membres du conseil de surveillance sont révocables à tout moment par l'assemblée générale ordinaire ; le directeur général est révocable à tout moment par le conseil d'administration, et les membres du directoire par l'assemblée générale ou, si les statuts le prévoient, par le conseil de surveillance, mais une révocation sans juste motif peut alors donner lieu à dommages-intérêts (sauf pour le DG qui est aussi président du conseil). Dans la SAS, les conditions de révocation du président relèvent des statuts.",
+     "src": "C. com., art. L. 225-18, L. 225-55, L. 225-61 et L. 225-75 ; L. 227-5",
+     "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006146046",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Périmètre d'examen</b> : le programme 2025 exclut de l'UE 2 le rachat par la société de ses propres actions, traité en UE 10, ainsi que les pactes d'associés, traités en UE 1 du DSCG. Les règles propres aux sociétés dont les actions sont admises aux négociations sur un marché réglementé (sept associés au moins, directoire pouvant compter sept membres, actions de préférence à droits de vote multiples de l'article L. 22-10-46-1) dérogent au régime de la SA non cotée.",
+     "src": "Arrêté du 4 août 2025, annexe 1, UE 2 ; C. com., art. L. 225-1, L. 225-58 et L. 22-10-46-1",
+     "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/annexe-1-programme-des-unit-s-d-enseignement-du-dipl-me-de-comptabilit-et-de-gestion-dcg--37751.pdf",
+     "fiab": "stable"
+    },
+    {
+     "t": "<b>Statut social du dirigeant</b> : le président du conseil d'administration, le directeur général et les directeurs généraux délégués de SA (12°), ainsi que les présidents et dirigeants de SAS (23°), relèvent du régime général de la sécurité sociale, sans condition de détention du capital ; les gérants de SARL n'y sont affiliés que s'ils ne possèdent pas ensemble plus de la moitié du capital (11°).",
+     "src": "CSS, art. L. 311-3, 11°, 12° et 23°",
+     "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006073189/LEGISCTA000006141616/",
+     "fiab": "stable"
+    }
    ]
   }
  ]
