@@ -4,7 +4,8 @@ Application web autonome (un seul fichier HTML, fonctionne hors ligne) : six mat
 sourcée sur les textes officiels pour chaque chapitre, leçons complètes,
 1 168 exercices corrigés (QCM, QCM à réponses multiples, calculs, classements, écritures au journal),
 test quotidien, révisions espacées, plan comptable général 2025 commenté compte par compte (606 comptes),
-jeu de progression (« l'expédition vers les aurores »).
+jeu de progression (« l'expédition vers les aurores ») et 64 succès à débloquer (bronze, argent, or) dans six catégories :
+régularité, précision, maîtrise, matières, exploration et expédition.
 
 ## Utiliser
 

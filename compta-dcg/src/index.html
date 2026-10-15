@@ -9,6 +9,7 @@
   --rule: #cfd8cb; --rule-soft: #e4eae0; --margin: #b4302c;
   --accent: #1f5f8b; --accent-soft: #e3eef6;
   --ok: #2d7a4f; --ok-soft: #e2f1e7; --bad: #b4302c; --bad-soft: #f8e4e2; --warn: #9a6a12; --warn-soft: #f6ecd4;
+  --bronze: #9a5b2e; --silver: #5f6b78; --gold: #9a7410;
   --sky1: #0b1630; --sky2: #16305a; --aurora1: #39e58c; --aurora2: #7a5cff; --aurora3: #2bd4d4;
   --display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -17,13 +18,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
-    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020;
+    --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #131a20; --card: #1a232b; --ink: #e6eae4; --muted: #98a4ad; --rule: #2e3a44; --rule-soft: #243039; --margin: #e0675f;
-  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020;
+  --accent: #7fb4dc; --accent-soft: #1f3140; --ok: #6fc28f; --ok-soft: #1d3327; --bad: #e37a70; --bad-soft: #3a2220; --warn: #e0b45a; --warn-soft: #3a3020; --bronze: #d9925c; --silver: #b4bfca; --gold: #e3c15a;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -177,11 +178,6 @@ tr.bad-line td.lib::after { content: " ✗"; color: var(--bad); }
 .sky { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); background: var(--sky1); margin-bottom: 14px; }
 .sky canvas { display: block; width: 100%; height: auto; }
 .sky .legend { position: absolute; right: 12px; bottom: 10px; text-align: right; color: #dfe7f3; font: 500 0.78rem var(--mono); letter-spacing: 0.05em; text-transform: uppercase; text-shadow: 0 1px 2px #000; }
-.badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
-.bdg { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; background: var(--card); font-size: 0.86rem; }
-.bdg.off { opacity: 0.5; }
-.bdg .ic { font-size: 1.2rem; }
-.bdg b { display: block; }
 .hist { display: flex; gap: 3px; align-items: flex-end; height: 70px; margin: 8px 0 4px; }
 .hist i { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; min-width: 4px; opacity: 0.85; }
 .hist i.none { background: var(--rule-soft); }
@@ -192,7 +188,26 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 .toast.show { opacity: 1; }
 .xp-pop { position: fixed; right: 16px; bottom: calc(60px + env(safe-area-inset-bottom, 0px)); background: var(--ok); color: #fff; font: 500 0.9rem var(--mono); padding: 6px 10px; border-radius: 6px; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
 .xp-pop.show { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .toast, .xp-pop { transition: none; } }
+.sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.succ { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; background: var(--card); display: grid; grid-template-columns: 42px 1fr; gap: 3px 10px; align-content: start; }
+.succ .ic { font-size: 1.6rem; line-height: 1.1; grid-row: span 4; text-align: center; }
+.succ.locked .ic { filter: grayscale(1); opacity: 0.45; }
+.succ.locked b { color: var(--muted); }
+.succ .d { font-size: 0.84rem; color: var(--muted); }
+.succ .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font: 0.74rem var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.succ .bar { margin-top: 2px; }
+.succ.unlocked.or { border-color: var(--gold); }
+.succ.unlocked.argent { border-color: var(--silver); }
+.tier { font: 500 0.66rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 7px; border-radius: 999px; border: 1px solid currentColor; }
+.tier.bronze { color: var(--bronze); } .tier.argent { color: var(--silver); } .tier.or { color: var(--gold); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.chips button { font: 500 0.84rem var(--body); border: 1px solid var(--rule); background: var(--card); color: var(--muted); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.chips button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.succ-pop { position: fixed; left: 50%; top: calc(16px + env(safe-area-inset-top, 0px)); transform: translate(-50%, -12px); background: var(--card); color: var(--ink); border: 1px solid var(--gold); border-radius: 10px; padding: 10px 16px; display: flex; gap: 12px; align-items: center; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none; z-index: 50; max-width: 92vw; width: max-content; }
+.succ-pop.show { opacity: 1; transform: translate(-50%, 0); }
+.succ-pop .ic { font-size: 1.9rem; }
+.succ-pop .k { font: 500 0.7rem var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+@media (prefers-reduced-motion: reduce) { .toast, .xp-pop, .succ-pop { transition: none; } }
 @media (max-width: 480px) {
   .row { grid-template-columns: 40px 1fr; }
   .row .right { grid-column: 2; text-align: left; }
@@ -217,6 +232,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
     <button role="tab" data-tab="revisions" aria-selected="false">Révisions <span class="badge zero" id="dueBadge">0</span></button>
     <button role="tab" data-tab="pcg" aria-selected="false">Plan comptable</button>
     <button role="tab" data-tab="expedition" aria-selected="false">Expédition</button>
+    <button role="tab" data-tab="succes" aria-selected="false">Succès <span class="badge zero" id="succBadge">0</span></button>
   </nav>
   <main id="main"></main>
   <details class="save">
@@ -233,6 +249,7 @@ details.save textarea { width: 100%; min-height: 70px; font: 0.8rem var(--mono);
 </div>
 <div class="toast" id="toast"></div>
 <div class="xp-pop" id="xpPop"></div>
+<div class="succ-pop" id="succPop" role="status" aria-live="polite"></div>
 <script>
 const DATA = /*__DATA__*/null;
 </script>
@@ -268,10 +285,12 @@ function sanitize(html) { return String(html || "").replace(/<script[\s\S]*?<\/s
 const KEY = "debit-credit.v2";
 const INTERVALS = [1, 3, 7, 15, 30, 60];
 const ACQUIS = 3;
-const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {} });
+const EMPTY = () => ({ cards: {}, days: {}, xp: 0, daily: {}, read: {}, done: {}, seen: {}, fiches: {}, succes: {}, stats: { run: 0, best: 0, revs: 0, src: 0, search: 0, unseen: 0, init: 0 } });
+function normalize(st) { const e = EMPTY(); const o = Object.assign(e, st || {}); o.stats = Object.assign(EMPTY().stats, (st && st.stats) || {}); o.succes = o.succes || {}; o.fiches = o.fiches || {}; return o; }
 let state = EMPTY();
-function load() { try { const s = localStorage.getItem(KEY); if (s) state = Object.assign(EMPTY(), JSON.parse(s)); } catch (e) { } }
-function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
+function load() { try { const s = localStorage.getItem(KEY); if (s) state = normalize(JSON.parse(s)); } catch (e) { } }
+function persist() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } refreshSaveBox(); }
+function save() { persist(); clearTimeout(save.h); save.h = setTimeout(() => checkSucces(false), 0); }
 function card(id) { return state.cards[id] || { s: 0, due: 0, n: 0, ok: 0 }; }
 function record(id, ok, mode) {
   const c = card(id); const ex = EXO[id];
@@ -280,6 +299,8 @@ function record(id, ok, mode) {
   else { c.s = 0; c.due = Date.now() + DAY; }
   state.cards[id] = c;
   const d = todayKey(); state.days[d] = (state.days[d] || 0) + 1;
+  if (ok) { state.stats.run++; state.stats.best = Math.max(state.stats.best, state.stats.run); } else state.stats.run = 0;
+  if (mode === "revision") state.stats.revs++;
   if (ok && ex) addXp((mode === "revision" ? 5 : 10) * (ex.niveau || 1));
   save(); updateBadge(); renderRank();
 }
@@ -443,20 +464,101 @@ function dailyPlan(dateKey) {
 }
 function dailyHistory(days) { const out = []; const d = new Date(); for (let i = days - 1; i >= 0; i--) { const x = new Date(d); x.setDate(d.getDate() - i); const k = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; const p = state.daily[k]; out.push({ k, p: p && p.done ? p.score / p.ids.length : null }); } return out; }
 
-// ---------- Badges ----------
-const BADGES = [
-  { id: "first", ic: "✎", nom: "Première ligne", desc: "Premier exercice réussi", test: () => Object.values(state.cards).some(c => c.ok > 0) },
-  { id: "ecriture", ic: "⚖", nom: "Partie double", desc: "Une écriture au journal juste du premier coup", test: () => Object.keys(state.cards).some(id => EXO[id] && EXO[id].type === "ecriture" && state.cards[id].ok > 0) },
-  { id: "test", ic: "☀", nom: "Rituel", desc: "Un test du jour terminé", test: () => Object.values(state.daily).some(p => p.done) },
-  { id: "parfait", ic: "★", nom: "Sans faute", desc: "Un test du jour à 100 %", test: () => Object.values(state.daily).some(p => p.done && p.score === p.ids.length) },
-  { id: "s7", ic: "🔥", nom: "Sept jours", desc: "Sept jours d'affilée", test: () => streak() >= 7 },
-  { id: "s30", ic: "🏔", nom: "Un mois", desc: "Trente jours d'affilée", test: () => streak() >= 30 },
-  { id: "chap", ic: "⛺", nom: "Premier camp", desc: "Un chapitre entièrement acquis", test: () => CHAPS.some(c => chapMastery(c) >= 0.999) },
-  { id: "ue", ic: "🧭", nom: "Une matière", desc: "Une matière entièrement acquise", test: () => UES.some(u => ueMastery(u.code) >= 0.999) },
-  { id: "n100", ic: "📚", nom: "Cent notions", desc: "Cent notions acquises", test: () => acquiredCount() >= 100 },
-  { id: "pcg", ic: "🔎", nom: "Plan comptable", desc: "Cinquante comptes consultés", test: () => Object.keys(state.seen).length >= 50 },
-  { id: "aurore", ic: "✦", nom: "Aurore", desc: "La moitié du parcours acquise", test: () => globalMastery() >= 0.5 },
+// ---------- Succès ----------
+const TIER_XP = { bronze: 20, argent: 50, or: 100 };
+const SUCC_CATS = ["Régularité", "Précision", "Maîtrise", "Matières", "Exploration", "Expédition"];
+function okBy(types) { let n = 0; for (const id in state.cards) { const e = EXO[id]; if (e && types.includes(e.type)) n += state.cards[id].ok || 0; } return n; }
+function totalOk() { let n = 0; for (const id in state.cards) n += state.cards[id].ok || 0; return n; }
+function answered() { let n = 0; for (const id in state.cards) n += state.cards[id].n || 0; return n; }
+const testsDone = () => Object.values(state.daily).filter(p => p.done).length;
+const perfects = () => Object.values(state.daily).filter(p => p.done && p.score === p.ids.length).length;
+const campsLit = () => CHAPS.filter(c => chapMastery(c) >= 0.999).length;
+const uesStarted = () => UES.filter(u => ueChaps(u.code).some(c => chapMastery(c) >= 0.999)).length;
+const S = (id, cat, tier, ic, nom, desc, prog, target) => ({ id, cat, tier, ic, nom, desc, prog, target });
+const UE_SUCC = { UE9: ["📒", "Maître des comptes"], UE10: ["🏛", "Expert en évaluation"], UE2: ["⚖", "Juriste d'affaires"], UE3: ["🤝", "Spécialiste du droit social"], UE4: ["🧾", "Fiscaliste"], UE6: ["📈", "Directeur financier"] };
+const SUCCES = [
+  S("premier-pas", "Régularité", "bronze", "👣", "Premier pas", "Répondre à un premier exercice", answered, 1),
+  S("rituel", "Régularité", "bronze", "☀", "Rituel", "Terminer un test du jour", testsDone, 1),
+  S("tests-10", "Régularité", "argent", "📅", "Dix rendez-vous", "Terminer 10 tests du jour", testsDone, 10),
+  S("tests-50", "Régularité", "or", "🗓", "Cinquante rendez-vous", "Terminer 50 tests du jour", testsDone, 50),
+  S("tests-100", "Régularité", "or", "🏅", "Centurion", "Terminer 100 tests du jour", testsDone, 100),
+  S("serie-3", "Régularité", "bronze", "🔥", "Trois jours", "Travailler 3 jours d'affilée", streak, 3),
+  S("serie-7", "Régularité", "bronze", "🔥", "Une semaine", "Travailler 7 jours d'affilée", streak, 7),
+  S("serie-14", "Régularité", "argent", "🔥", "Deux semaines", "Travailler 14 jours d'affilée", streak, 14),
+  S("serie-30", "Régularité", "argent", "🏔", "Un mois", "Travailler 30 jours d'affilée", streak, 30),
+  S("serie-60", "Régularité", "or", "🌋", "Deux mois", "Travailler 60 jours d'affilée", streak, 60),
+  S("serie-100", "Régularité", "or", "🌌", "Cent jours", "Travailler 100 jours d'affilée", streak, 100),
+  S("revs-50", "Régularité", "bronze", "🔁", "Mémoire courte", "Faire 50 révisions", () => state.stats.revs, 50),
+  S("revs-250", "Régularité", "argent", "🔁", "Mémoire longue", "Faire 250 révisions", () => state.stats.revs, 250),
+  S("revs-1000", "Régularité", "or", "🧠", "Mémoire d'éléphant", "Faire 1 000 révisions", () => state.stats.revs, 1000),
+  S("premiere-ligne", "Précision", "bronze", "✎", "Première ligne", "Une réponse juste du premier coup", totalOk, 1),
+  S("justes-100", "Précision", "bronze", "✔", "Cent bonnes réponses", "100 réponses justes du premier coup", totalOk, 100),
+  S("justes-500", "Précision", "argent", "✔", "Cinq cents bonnes réponses", "500 réponses justes du premier coup", totalOk, 500),
+  S("justes-1500", "Précision", "or", "💎", "Infaillible", "1 500 réponses justes du premier coup", totalOk, 1500),
+  S("lancee-10", "Précision", "bronze", "🎯", "Sur sa lancée", "10 bonnes réponses d'affilée", () => state.stats.best, 10),
+  S("lancee-25", "Précision", "argent", "🎯", "Dans le mille", "25 bonnes réponses d'affilée", () => state.stats.best, 25),
+  S("lancee-50", "Précision", "or", "🏹", "Imbattable", "50 bonnes réponses d'affilée", () => state.stats.best, 50),
+  S("sans-faute", "Précision", "argent", "★", "Sans faute", "Un test du jour à 20 sur 20", perfects, 1),
+  S("sans-faute-5", "Précision", "or", "🌟", "Cinq sans-faute", "Cinq tests du jour à 20 sur 20", perfects, 5),
+  S("partie-double", "Précision", "bronze", "⚖", "Partie double", "Une écriture au journal juste du premier coup", () => okBy(["ecriture"]), 1),
+  S("teneur-livres", "Précision", "argent", "📓", "Teneur de livres", "25 écritures justes du premier coup", () => okBy(["ecriture"]), 25),
+  S("grand-livre", "Précision", "or", "📚", "Grand livre", "100 écritures justes du premier coup", () => okBy(["ecriture"]), 100),
+  S("calculateur", "Précision", "argent", "🧮", "Calculateur", "50 calculs justes du premier coup", () => okBy(["calc"]), 50),
+  S("oeil-exerce", "Précision", "argent", "🔍", "Œil exercé", "50 QCM à réponses multiples justes", () => okBy(["multi"]), 50),
+  S("notions-10", "Maîtrise", "bronze", "🌱", "Dix notions", "10 notions acquises (trois réussites espacées)", acquiredCount, 10),
+  S("notions-50", "Maîtrise", "bronze", "🌿", "Cinquante notions", "50 notions acquises", acquiredCount, 50),
+  S("notions-100", "Maîtrise", "argent", "🌳", "Cent notions", "100 notions acquises", acquiredCount, 100),
+  S("notions-250", "Maîtrise", "argent", "🌲", "Deux cent cinquante notions", "250 notions acquises", acquiredCount, 250),
+  S("notions-500", "Maîtrise", "or", "🏞", "Cinq cents notions", "500 notions acquises", acquiredCount, 500),
+  S("notions-1000", "Maîtrise", "or", "🗺", "Mille notions", "1 000 notions acquises", acquiredCount, 1000),
+  S("chapitre-fini", "Maîtrise", "bronze", "📖", "Chapitre bouclé", "Terminer la série d'exercices d'un chapitre", () => Object.keys(state.done).length, 1),
+  S("premier-camp", "Maîtrise", "argent", "⛺", "Premier camp", "Un chapitre entièrement acquis", campsLit, 1),
+  S("dix-camps", "Maîtrise", "or", "🏕", "Dix camps", "Dix chapitres entièrement acquis", campsLit, 10),
+  S("tous-camps", "Maîtrise", "or", "🗻", "Toutes les étapes", "Les 42 chapitres entièrement acquis", campsLit, CHAPS.length),
+  ...UES.map(u => S("ue-" + u.code.toLowerCase(), "Matières", "or", (UE_SUCC[u.code] || ["🎓"])[0], (UE_SUCC[u.code] || ["", u.nom])[1], `${u.code} ${u.nom} entièrement acquise (en %)`, () => Math.floor(ueMastery(u.code) * 100), 100)),
+  S("polyvalent", "Matières", "argent", "🧭", "Polyvalent", "Au moins un chapitre acquis dans chacune des six matières", uesStarted, UES.length),
+  S("expert", "Matières", "or", "🎓", "Prêt pour le DSCG", "Les six matières entièrement acquises", () => UES.filter(u => ueMastery(u.code) >= 0.999).length, UES.length),
+  S("premier-dossier", "Exploration", "bronze", "🗂", "Premier dossier", "Lire une fiche documentaire", () => Object.keys(state.fiches).length, 1),
+  S("dix-dossiers", "Exploration", "argent", "🗃", "Dix dossiers", "Lire 10 fiches documentaires", () => Object.keys(state.fiches).length, 10),
+  S("bibliothecaire", "Exploration", "or", "🏛", "Bibliothécaire", "Lire les 42 fiches documentaires", () => Object.keys(state.fiches).length, CHAPS.length),
+  S("a-la-source", "Exploration", "bronze", "🔗", "À la source", "Ouvrir un texte officiel depuis une fiche", () => state.stats.src, 1),
+  S("documentaliste", "Exploration", "argent", "📜", "Documentaliste", "Ouvrir 25 textes officiels", () => state.stats.src, 25),
+  S("fouille", "Exploration", "bronze", "🔎", "Fouille", "Faire une recherche dans les fiches", () => state.stats.search, 1),
+  S("comptes-50", "Exploration", "bronze", "🔢", "Plan comptable", "Consulter 50 comptes", () => Object.keys(state.seen).length, 50),
+  S("comptes-200", "Exploration", "argent", "🔢", "Nomenclature", "Consulter 200 comptes", () => Object.keys(state.seen).length, 200),
+  S("comptes-tous", "Exploration", "or", "🧾", "Tout le PCG", "Consulter tous les comptes du plan", () => Object.keys(state.seen).length, PCG.length),
+  ...RANKS.slice(1).map(([xp, nom], i) => S("grade-" + (i + 1), "Expédition", i < 2 ? "bronze" : i < 4 ? "argent" : "or", ["⚓", "🧭", "⛵", "🎖", "✦", "🗼"][i] || "⚓", nom, `Atteindre le grade de ${nom} (${fmt(xp)} XP)`, () => state.xp || 0, xp)),
+  S("aurore-25", "Expédition", "argent", "🌄", "Premières lueurs", "Un quart du parcours acquis (en %)", () => Math.floor(globalMastery() * 100), 25),
+  S("aurore-50", "Expédition", "or", "🌌", "Aurore", "La moitié du parcours acquise (en %)", () => Math.floor(globalMastery() * 100), 50),
+  S("aurore-100", "Expédition", "or", "🌠", "Les aurores boréales", "Tout le parcours acquis (en %)", () => Math.floor(globalMastery() * 100), 100),
 ];
+const SUCC_BY = Object.fromEntries(SUCCES.map(x => [x.id, x]));
+const succQueue = [];
+function checkSucces(silent) {
+  const fresh = [];
+  for (let guard = 0; guard < 6; guard++) {
+    const now = SUCCES.filter(x => !state.succes[x.id] && x.prog() >= x.target);
+    if (!now.length) break;
+    for (const x of now) { state.succes[x.id] = Date.now(); state.xp = (state.xp || 0) + TIER_XP[x.tier]; fresh.push(x); }
+  }
+  if (!fresh.length) return;
+  if (!silent) { state.stats.unseen += fresh.length; succQueue.push(...fresh); showNextSucc(); }
+  persist(); updateSuccBadge(); renderRank();
+}
+function showNextSucc() {
+  const p = document.getElementById("succPop");
+  if (showNextSucc.busy || !succQueue.length || !p) return;
+  const x = succQueue.shift(); showNextSucc.busy = true;
+  p.innerHTML = `<span class="ic">${x.ic}</span><span><span class="k">Succès débloqué · ${x.tier}</span><br><b>${esc(x.nom)}</b> <span class="mono small" style="color:var(--ok)">+${TIER_XP[x.tier]} XP</span><br><span class="small muted">${esc(x.desc)}</span></span>`;
+  p.classList.add("show");
+  setTimeout(() => { p.classList.remove("show"); setTimeout(() => { showNextSucc.busy = false; showNextSucc(); }, 350); }, 3400);
+}
+function updateSuccBadge() { const b = document.getElementById("succBadge"); if (!b) return; const u = state.stats.unseen || 0; b.textContent = u ? "+" + u : String(Object.keys(state.succes).length); b.classList.toggle("zero", !u); }
+function succCard(x) {
+  const got = state.succes[x.id]; const cur = Math.min(x.prog(), x.target); const pct = Math.round(cur / x.target * 100);
+  return `<div class="succ ${got ? "unlocked" : "locked"} ${x.tier}"><span class="ic" aria-hidden="true">${x.ic}</span><b>${esc(x.nom)}</b><span class="d">${esc(x.desc)}</span><span class="meta"><span class="tier ${x.tier}">${x.tier}</span>${got ? `obtenu le ${new Date(got).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}` : `${fmt(cur)} / ${fmt(x.target)}`}<span>+${TIER_XP[x.tier]} XP</span></span>${got ? "" : `<div class="bar"><i style="width:${pct}%"></i></div>`}</div>`;
+}
+function nextSucces(n) { return SUCCES.filter(x => !state.succes[x.id]).map(x => ({ x, r: Math.min(1, x.prog() / x.target) })).sort((a, b) => b.r - a.r || TIER_XP[a.x.tier] - TIER_XP[b.x.tier]).slice(0, n).map(o => o.x); }
 
 // ---------- Vues ----------
 const main = document.getElementById("main");
@@ -474,13 +576,17 @@ function renderAccueil() {
   <div class="tile"><div class="big">${due}</div><div class="lab">révision${due > 1 ? "s" : ""} à faire</div></div>
   <div class="tile"><div class="big">${streak()}</div><div class="lab">jour${streak() > 1 ? "s" : ""} d'affilée · ${todayN} réponse${todayN > 1 ? "s" : ""} aujourd'hui</div></div>
 </div>
-<h3 style="margin-top:4px">Trente derniers jours</h3>
+<h3 style="margin-top:4px">Prochains succès</h3>
+<div class="sgrid">${nextSucces(3).map(succCard).join("")}</div>
+<div class="actions" style="margin-top:8px"><button class="btn quiet" id="goSucc">Tous les succès (${Object.keys(state.succes).length} / ${SUCCES.length})</button></div>
+<h3>Trente derniers jours</h3>
 <div class="hist" title="Score des tests du jour">${hist.map(h => `<i class="${h.p == null ? "none" : ""}" style="height:${h.p == null ? 8 : Math.max(8, Math.round(h.p * 100))}%" title="${h.k}${h.p == null ? "" : " : " + Math.round(h.p * 100) + " %"}"></i>`).join("")}</div>
 <p class="muted small">Chaque barre est le score d'un test du jour. Les barres grises sont les jours sans test.</p>
 <h3>Par matière</h3>
 <div class="ledger">${UES.map((u, i) => { const m = ueMastery(u.code); const n = ueChaps(u.code).length; return `<button class="row" data-ue="${u.code}"><span class="num">${esc(u.code.replace("UE", ""))}</span><span><span class="ttl">${esc(u.nom)}</span><br><span class="sub">${n} chapitre${n > 1 ? "s" : ""} · ${ueChaps(u.code).reduce((a, c) => a + c.exercices.length, 0)} exercices</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
 ${nc ? `<div class="actions"><button class="btn ghost" id="goNext">Chapitre conseillé : ${esc(nc.ue)} · ${esc(nc.title)}</button></div>` : ""}`;
   main.querySelector("#goTest").onclick = () => go({ tab: "test" });
+  main.querySelector("#goSucc").onclick = () => go({ tab: "succes" });
   main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
   if (nc) main.querySelector("#goNext").onclick = () => go({ tab: "chap", id: nc.id });
 }
@@ -503,6 +609,7 @@ function renderFiches() {
     const t = q.trim().toLowerCase();
     if (t.length < 3) { res.innerHTML = list(); }
     else {
+      if (!draw.counted) { draw.counted = true; state.stats.search++; save(); }
       const hits = [];
       for (const c of withF) for (const sct of c.fiche.sections) for (const it of sct.items) if ((strip(it.t) + " " + it.src).toLowerCase().includes(t)) hits.push({ c, sct, it });
       res.innerHTML = hits.length ? `<p class="muted small">${hits.length} énoncé${hits.length > 1 ? "s" : ""}${hits.length > 80 ? " (80 premiers affichés)" : ""}</p><div class="fiche"><ol class="fl">${hits.slice(0, 80).map(h => `<li class="fi"><div class="eyebrow">${esc(h.c.ue)} · ${esc(h.c.title)} · ${esc(h.sct.h)}</div><div>${sanitize(h.it.t)}</div><div class="fsrc">Source : ${esc(h.it.src)} · <a href="${esc(srcLink(h.it.src, h.it.url))}" target="_blank" rel="noopener">${h.it.url ? "consulter le texte officiel" : "rechercher sur Légifrance"}</a> · <button class="linkbtn" data-c="${h.c.id}">ouvrir la fiche</button></div></li>`).join("")}</ol></div>` : `<p class="muted">Aucun énoncé ne contient « ${esc(q)} ».</p>`;
@@ -545,7 +652,7 @@ function renderChap(id, startAt) {
   const seg = mode => c.fiche ? `<div class="crumb"><span class="seg"><button data-m="fiche" aria-pressed="${mode === "fiche"}">Fiche documentaire</button><button data-m="lesson" aria-pressed="${mode === "lesson"}">Cours</button><button data-m="ex" aria-pressed="${mode === "ex"}">Exercices</button></span></div>` : "";
   const bindSeg = () => stage.querySelectorAll(".seg button").forEach(b => b.onclick = () => ({ fiche: showFiche, lesson: showLesson, ex: showExercises })[b.dataset.m]());
   const showFiche = () => {
-    state.read[c.id] = true; save();
+    state.read[c.id] = true; state.fiches[c.id] = 1; save();
     stage.innerHTML = seg("fiche") + ficheHTML(c.fiche) + `<div class="actions"><button class="btn ghost" id="toLesson">Lire le cours</button><button class="btn" id="startEx">Passer aux exercices (${c.exercices.length})</button></div>`;
     bindSeg(); stage.querySelector("#toLesson").onclick = showLesson; stage.querySelector("#startEx").onclick = () => { showExercises(); window.scrollTo({ top: 0 }); };
   };
@@ -631,16 +738,40 @@ function renderPcg() {
   draw();
 }
 
+// ---------- Succès (vue) ----------
+let succFilter = "Tous";
+function renderSucces() {
+  state.stats.unseen = 0; persist(); updateSuccBadge();
+  const got = SUCCES.filter(x => state.succes[x.id]);
+  const xpS = got.reduce((a, x) => a + TIER_XP[x.tier], 0);
+  const byTier = t => got.filter(x => x.tier === t).length;
+  const nx = nextSucces(1)[0];
+  main.innerHTML = `<h2>Succès</h2><p class="muted">${SUCCES.length} succès en six catégories. Chacun se débloque automatiquement et rapporte de l'XP : 20 pour le bronze, 50 pour l'argent, 100 pour l'or.</p>
+<div class="board"><div class="tile"><div class="big">${got.length}<span class="muted" style="font-size:1rem"> / ${SUCCES.length}</span></div><div class="lab">succès débloqués</div></div><div class="tile"><div class="big">${byTier("or")} · ${byTier("argent")} · ${byTier("bronze")}</div><div class="lab">or · argent · bronze</div></div><div class="tile"><div class="big">${fmt(xpS)}</div><div class="lab">XP gagnés grâce aux succès</div></div></div>
+${nx ? `<p class="small"><b>Le plus proche :</b> ${esc(nx.nom)}, ${esc(nx.desc.toLowerCase())} (${fmt(Math.min(nx.prog(), nx.target))} / ${fmt(nx.target)}).</p>` : ""}
+<div class="chips" role="group" aria-label="Catégories">${["Tous", ...SUCC_CATS].map(c => { const list = c === "Tous" ? SUCCES : SUCCES.filter(x => x.cat === c); return `<button data-c="${c}" aria-pressed="${c === succFilter}">${c} <span class="mono">${list.filter(x => state.succes[x.id]).length}/${list.length}</span></button>`; }).join("")}</div>
+<div class="sgrid" id="sg"></div>`;
+  const draw = () => {
+    const list = succFilter === "Tous" ? SUCCES : SUCCES.filter(x => x.cat === succFilter);
+    main.querySelector("#sg").innerHTML = list.map(succCard).join("");
+    main.querySelectorAll(".chips button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.c === succFilter)));
+  };
+  main.querySelectorAll(".chips button").forEach(b => b.onclick = () => { succFilter = b.dataset.c; draw(); });
+  draw();
+}
+
 // ---------- Expédition ----------
 const ETAPES = [["UE9", "Les fjords"], ["UE10", "La vallée"], ["UE2", "Les plateaux"], ["UE3", "Les glaciers"], ["UE4", "Les volcans"], ["UE6", "Le cap des aurores"]];
 function renderExpedition() {
   const r = rank(); const g = globalMastery();
   main.innerHTML = `<h2>L'expédition vers les aurores</h2><p class="muted">Chaque chapitre acquis allume un camp sur la route. Plus vous avancez, plus le ciel s'illumine. Le test du jour entretient la lanterne : une série de jours d'affilée la garde allumée.</p>
 <div class="sky"><canvas id="skyC" width="960" height="420" aria-label="Carte de l'expédition"></canvas><div class="legend">Aurore à ${Math.round(g * 100)} % · lanterne ${streak() > 0 ? "allumée depuis " + streak() + " jour" + (streak() > 1 ? "s" : "") : "éteinte"}</div></div>
-<div class="board"><div class="tile"><div class="big">${esc(r.name)}</div><div class="lab">${fmt(state.xp)} XP${r.next ? ` · prochain grade « ${esc(r.next[1])} » à ${fmt(r.next[0])} XP` : " · grade maximal"}</div></div><div class="tile"><div class="big">${CHAPS.filter(c => chapMastery(c) >= 0.999).length}<span class="muted" style="font-size:1rem"> / ${CHAPS.length}</span></div><div class="lab">camps allumés</div></div><div class="tile"><div class="big">${BADGES.filter(b => b.test()).length}<span class="muted" style="font-size:1rem"> / ${BADGES.length}</span></div><div class="lab">insignes</div></div></div>
+<div class="board"><div class="tile"><div class="big">${esc(r.name)}</div><div class="lab">${fmt(state.xp)} XP${r.next ? ` · prochain grade « ${esc(r.next[1])} » à ${fmt(r.next[0])} XP` : " · grade maximal"}</div></div><div class="tile"><div class="big">${CHAPS.filter(c => chapMastery(c) >= 0.999).length}<span class="muted" style="font-size:1rem"> / ${CHAPS.length}</span></div><div class="lab">camps allumés</div></div><div class="tile"><div class="big">${Object.keys(state.succes).length}<span class="muted" style="font-size:1rem"> / ${SUCCES.length}</span></div><div class="lab">succès</div></div></div>
 <h3>Étapes</h3><div class="ledger">${ETAPES.map(([code, nom], i) => { const u = UE_BY[code]; if (!u) return ""; const m = ueMastery(code); return `<button class="row" data-ue="${code}"><span class="num">${i + 1}</span><span><span class="ttl">${esc(nom)}</span><br><span class="sub">${esc(u.nom)} · ${ueChaps(code).filter(c => chapMastery(c) >= 0.999).length}/${ueChaps(code).length} camps</span></span><span class="right"><div class="bar ${m >= 0.999 ? "full" : ""}"><i style="width:${Math.round(m * 100)}%"></i></div><span class="mono muted small">${Math.round(m * 100)} %</span></span></button>`; }).join("")}</div>
-<h3>Insignes</h3><div class="badges">${BADGES.map(b => `<div class="bdg ${b.test() ? "" : "off"}"><span class="ic">${b.ic}</span><b>${esc(b.nom)}</b><span class="muted">${esc(b.desc)}</span></div>`).join("")}</div>
-<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute.</p>`;
+<h3>Derniers succès</h3>${(() => { const last = SUCCES.filter(x => state.succes[x.id]).sort((a, b) => state.succes[b.id] - state.succes[a.id]).slice(0, 4); return last.length ? `<div class="sgrid">${last.map(succCard).join("")}</div>` : `<p class="muted">Aucun succès pour l'instant. Le premier se débloque dès la première réponse.</p>`; })()}
+<div class="actions"><button class="btn ghost" id="toSucc">Voir les ${SUCCES.length} succès</button></div>
+<p class="muted small" style="margin-top:12px">XP : 10 × niveau par exercice réussi du premier coup (5 × niveau en révision), 30 par chapitre terminé, 50 par test du jour, 100 de plus s'il est sans faute, et 20, 50 ou 100 par succès débloqué selon son palier.</p>`;
+  main.querySelector("#toSucc").onclick = () => go({ tab: "succes" });
   main.querySelectorAll(".row").forEach(b => b.onclick = () => go({ tab: "ue", code: b.dataset.ue }));
   drawSky(main.querySelector("#skyC"));
 }
@@ -671,7 +802,7 @@ function go(v) {
   view = v;
   const tab = { ue: "matieres", chap: "matieres" }[v.tab] || v.tab;
   document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
-  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition })[v.tab]();
+  ({ accueil: renderAccueil, matieres: renderMatieres, fiches: renderFiches, ue: () => renderUe(v.code), chap: () => renderChap(v.id, v.start), test: renderTest, revisions: renderRevisions, pcg: renderPcg, expedition: renderExpedition, succes: renderSucces })[v.tab]();
   try { history.replaceState(null, "", "#" + (v.tab === "ue" ? "m" + v.code.toLowerCase() : v.tab === "chap" ? v.id : v.tab)); } catch (e) { }
   updateBadge(); renderRank(); window.scrollTo({ top: 0 });
 }
@@ -681,7 +812,7 @@ document.getElementById("brand").onclick = () => go({ tab: "accueil" });
 // ---------- Sauvegarde ----------
 function refreshSaveBox() { const box = document.getElementById("saveBox"); if (box && document.activeElement !== box) { try { box.value = btoa(unescape(encodeURIComponent(JSON.stringify(state)))); } catch (e) { } } }
 document.getElementById("copySave").onclick = () => { const box = document.getElementById("saveBox"); refreshSaveBox(); (navigator.clipboard ? navigator.clipboard.writeText(box.value) : Promise.reject()).then(() => toast("Code copié.")).catch(() => { box.select(); toast("Sélectionnez et copiez le code."); }); };
-document.getElementById("restoreSave").onclick = () => { const box = document.getElementById("saveBox"); try { const s = JSON.parse(decodeURIComponent(escape(atob(box.value.trim())))); if (!s.cards) throw 0; state = Object.assign(EMPTY(), s); save(); go({ tab: "accueil" }); toast("Progression restaurée."); } catch (e) { toast("Code illisible."); } };
+document.getElementById("restoreSave").onclick = () => { const box = document.getElementById("saveBox"); try { const s = JSON.parse(decodeURIComponent(escape(atob(box.value.trim())))); if (!s.cards) throw 0; state = normalize(s); save(); go({ tab: "accueil" }); toast("Progression restaurée."); } catch (e) { toast("Code illisible."); } };
 let resetArmed = false;
 document.getElementById("resetSave").onclick = e => { if (!resetArmed) { resetArmed = true; e.target.textContent = "Confirmer la remise à zéro"; setTimeout(() => { resetArmed = false; e.target.textContent = "Tout remettre à zéro"; }, 4000); return; } state = EMPTY(); save(); resetArmed = false; e.target.textContent = "Tout remettre à zéro"; go({ tab: "accueil" }); toast("Progression effacée."); };
 
@@ -689,9 +820,12 @@ document.getElementById("resetSave").onclick = e => { if (!resetArmed) { resetAr
 load();
 document.getElementById("buildInfo").textContent = `Version du ${DATA.build.date} · ${CHAPS.length} chapitres · ${Object.keys(EXO).length} exercices · ${PCG.length} comptes. Ce fichier fonctionne hors ligne : enregistrez-le et ouvrez-le avec un navigateur.`;
 refreshSaveBox();
+if (!state.stats.init) { checkSucces(true); state.stats.init = 1; persist(); }
+updateSuccBadge();
+document.addEventListener("click", e => { const a = e.target.closest && e.target.closest(".fsrc a, .fiche table a, .fiche .small a"); if (a) { state.stats.src++; save(); } });
 (function boot() {
   const h = (location.hash || "").slice(1);
-  if (["matieres", "fiches", "test", "revisions", "pcg", "expedition"].includes(h)) go({ tab: h });
+  if (["matieres", "fiches", "test", "revisions", "pcg", "expedition", "succes"].includes(h)) go({ tab: h });
   else if (/^mue\d+$/.test(h) && UE_BY[h.slice(1).toUpperCase()]) go({ tab: "ue", code: h.slice(1).toUpperCase() });
   else if (CHAP_BY[h]) go({ tab: "chap", id: h });
   else go({ tab: "accueil" });
